@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Welcome, {{ user.username }}</h2>
+<p>Bio: {{ user.people.biography }}</p>
+
+<hr>
+<ul>
+    <li><a href="{% url 'profile_update' %}">Edit Profile Info</a></li>
+    <li><a href="{% url 'password_change' %}">Change Password</a></li>
+</ul>
+
+<form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
+
+{% endblock content %}

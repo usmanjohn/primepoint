@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Create an Account</h2>
+
+<form method="POST" enctype="multipart/form-data"> <!-- enctype is REQUIRED for images -->
+    {% csrf_token %}
+
+    <!-- Display Non-Field Errors (e.g. password mismatch) -->
+    {% if u_form.errors or p_form.errors %}
+        <div style="color: red; margin-bottom: 20px;">
+            <strong>Please fix the errors below.</strong>
+        </div>
+    {% endif %}
+
+    <fieldset>
+        <legend>Account Credentials</legend>
+        {% for field in u_form %}
+            <div class="field-container">
+                {{ field.label_tag }}<br>
+                {{ field }}
+                {% if field.help_text %}
+                    <small style="color: gray; display: block;">{{ field.help_text }}</small>
+                {% endif %}
+                {% for error in field.errors %}
+                    <p style="color: red; font-size: 0.8em;">{{ error }}</p>
+                {% endfor %}
+            </div>
+            <br>
+        {% endfor %}
+    </fieldset>
+
+    <fieldset>
+        <legend>Profile Details</legend>
+        {% for field in p_form %}
+            <div class="field-container">
+                {{ field.label_tag }}<br>
+                {{ field }}
+                {% for error in field.errors %}
+                    <p style="color: red; font-size: 0.8em;">{{ error }}</p>
+                {% endfor %}
+            </div>
+            <br>
+        {% endfor %}
+    </fieldset>
+
+    <button type="submit">Register</button>
+</form>
+
+<p>Already have an account? <a href="{% url 'login' %}">Log In</a></p>
+{% endblock content %}
+
