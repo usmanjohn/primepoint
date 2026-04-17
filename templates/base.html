@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0f172a">
+    <meta name="theme-color" content="#0f172a"> 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="CORE">
@@ -611,7 +611,11 @@
         <nav class="nav-menu">
             <span class="nav-section">Main</span>
 
-            <a href="{% url 'index' %}" class="nav-link {% block nav_analytics %}{% endblock %}">
+            <a href="{% url 'index' %}" class="nav-link {% block nav_index %}{% endblock %}">
+                <i class="bi bi-speedometer2"></i>
+                <span class="nav-label">Index</span>
+            </a>
+            <a href="{% url 'analytics-home' %}" class="nav-link {% block nav_analytics %}{% endblock %}">
                 <i class="bi bi-speedometer2"></i>
                 <span class="nav-label">Analytics</span>
             </a>
