@@ -1,52 +1,332 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title %}Create Account — CORE{% endblock %}
+{% block page_name %}Register{% endblock %}
+
+{% block extra_css %}
+<style>
+    .auth-wrapper {
+        min-height: calc(100dvh - var(--topbar-h));
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 3rem 1rem;
+        background: var(--body-bg);
+    }
+
+    .auth-card {
+        width: 100%;
+        max-width: 560px;
+    }
+
+    /* Card shell */
+    .auth-card .card {
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+        overflow: hidden;
+    }
+
+    /* Top accent strip */
+    .auth-card .card::before {
+        content: '';
+        display: block;
+        height: 4px;
+        background: linear-gradient(90deg, #38bdf8, #818cf8);
+    }
+
+    .auth-body {
+        padding: 2.25rem 2rem;
+    }
+
+    /* Header */
+    .auth-header {
+        margin-bottom: 2rem;
+    }
+
+    .auth-icon {
+        width: 48px; height: 48px;
+        background: linear-gradient(135deg, rgba(56,189,248,0.15), rgba(129,140,248,0.15));
+        border: 1px solid rgba(56,189,248,0.25);
+        border-radius: 14px;
+        display: grid; place-items: center;
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+        color: #38bdf8;
+    }
+
+    .auth-title {
+        font-family: 'Syne', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text);
+        margin: 0 0 4px;
+    }
+
+    .auth-subtitle {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        margin: 0;
+    }
+
+    /* Section label */
+    .form-section-label {
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin: 0 0 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .form-section-label::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+    }
+
+    /* Field group */
+    .field-group {
+        margin-bottom: 1rem;
+    }
+
+    .field-group label {
+        display: block;
+        font-size: 0.82rem;
+        font-weight: 500;
+        color: var(--text);
+        margin-bottom: 6px;
+    }
+
+    /* Override Django-rendered inputs */
+    .field-group input[type="text"],
+    .field-group input[type="email"],
+    .field-group input[type="password"],
+    .field-group input[type="file"],
+    .field-group select,
+    .field-group textarea {
+        width: 100%;
+        padding: 10px 14px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--surface);
+        color: var(--text);
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.9rem;
+        transition: border-color 0.18s, box-shadow 0.18s;
+        outline: none;
+        -webkit-appearance: none;
+    }
+
+    .field-group input:focus,
+    .field-group select:focus,
+    .field-group textarea:focus {
+        border-color: #38bdf8;
+        box-shadow: 0 0 0 3px rgba(56,189,248,0.12);
+    }
+
+    .field-group input.is-invalid,
+    .field-group select.is-invalid,
+    .field-group textarea.is-invalid {
+        border-color: #f87171;
+        box-shadow: 0 0 0 3px rgba(248,113,113,0.12);
+    }
+
+    .field-group input[type="file"] {
+        padding: 8px 12px;
+        cursor: pointer;
+        color: var(--text-muted);
+        font-size: 0.82rem;
+    }
+
+    .field-group input[type="file"]::file-selector-button {
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.78rem;
+        font-weight: 500;
+        padding: 4px 12px;
+        border: 1px solid var(--border);
+        border-radius: 7px;
+        background: var(--surface-2);
+        color: var(--text);
+        cursor: pointer;
+        margin-right: 10px;
+        transition: 0.15s;
+    }
+
+    .field-group input[type="file"]::file-selector-button:hover {
+        background: var(--border);
+    }
+
+    .field-help {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        margin-top: 5px;
+        line-height: 1.4;
+    }
+
+    .field-error {
+        font-size: 0.75rem;
+        color: #ef4444;
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .field-error::before {
+        content: '\F333';
+        font-family: 'bootstrap-icons';
+        font-size: 0.75rem;
+    }
+
+    /* Section divider */
+    .section-gap { margin-top: 1.75rem; }
+
+    /* Submit button */
+    .btn-register {
+        width: 100%;
+        padding: 12px;
+        margin-top: 1.75rem;
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #38bdf8, #818cf8);
+        color: #fff;
+        font-family: 'Syne', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        cursor: pointer;
+        transition: opacity 0.18s, transform 0.18s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .btn-register:hover  { opacity: 0.9; transform: translateY(-1px); }
+    .btn-register:active { opacity: 1;   transform: translateY(0); }
+
+    /* Footer link */
+    .auth-footer {
+        text-align: center;
+        margin-top: 1.5rem;
+        font-size: 0.875rem;
+        color: var(--text-muted);
+    }
+
+    .auth-footer a {
+        color: #38bdf8;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    .auth-footer a:hover { text-decoration: underline; }
+
+    /* Global error banner */
+    .error-banner {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+        border-radius: 12px;
+        padding: 12px 14px;
+        margin-bottom: 1.5rem;
+        font-size: 0.85rem;
+        color: #b91c1c;
+    }
+
+    .error-banner i { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+
+    @media (max-width: 575.98px) {
+        .auth-body { padding: 1.5rem 1.25rem; }
+        .auth-wrapper { padding: 1.5rem 0.75rem; align-items: flex-start; }
+    }
+</style>
+{% endblock %}
 
 {% block content %}
-<h2>Create an Account</h2>
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <div class="card">
+            <div class="auth-body">
 
-<form method="POST" enctype="multipart/form-data"> <!-- enctype is REQUIRED for images -->
-    {% csrf_token %}
+                <!-- Header -->
+                <div class="auth-header">
+                    <div class="auth-icon"><i class="bi bi-person-plus"></i></div>
+                    <h1 class="auth-title">Create an account</h1>
+                    <p class="auth-subtitle">Fill in your details below to get started.</p>
+                </div>
 
-    <!-- Display Non-Field Errors (e.g. password mismatch) -->
-    {% if u_form.errors or p_form.errors %}
-        <div style="color: red; margin-bottom: 20px;">
-            <strong>Please fix the errors below.</strong>
-        </div>
-    {% endif %}
-
-    <fieldset>
-        <legend>Account Credentials</legend>
-        {% for field in u_form %}
-            <div class="field-container">
-                {{ field.label_tag }}<br>
-                {{ field }}
-                {% if field.help_text %}
-                    <small style="color: gray; display: block;">{{ field.help_text }}</small>
+                <!-- Error banner -->
+                {% if u_form.errors or p_form.errors %}
+                <div class="error-banner" role="alert">
+                    <i class="bi bi-exclamation-circle-fill"></i>
+                    <div>
+                        <strong>Please fix the errors below</strong> before continuing.
+                    </div>
+                </div>
                 {% endif %}
-                {% for error in field.errors %}
-                    <p style="color: red; font-size: 0.8em;">{{ error }}</p>
-                {% endfor %}
+
+                <form method="POST" enctype="multipart/form-data" novalidate>
+                    {% csrf_token %}
+
+                    <!-- Account Credentials -->
+                    <p class="form-section-label">Account credentials</p>
+
+                    {% for field in u_form %}
+                    <div class="field-group">
+                        {{ field.label_tag }}
+                        {% if field.errors %}
+                            {% with field.field.widget.attrs as attrs %}
+                                {{ field.as_widget|add_class:"is-invalid" }}
+                            {% endwith %}
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+                        {% if field.help_text %}
+                            <p class="field-help">{{ field.help_text }}</p>
+                        {% endif %}
+                        {% for error in field.errors %}
+                            <p class="field-error">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+
+                    <!-- Profile Details -->
+                    <div class="section-gap">
+                        <p class="form-section-label">Profile details</p>
+                    </div>
+
+                    {% for field in p_form %}
+                    <div class="field-group">
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {% if field.help_text %}
+                            <p class="field-help">{{ field.help_text }}</p>
+                        {% endif %}
+                        {% for error in field.errors %}
+                            <p class="field-error">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+
+                    <button type="submit" class="btn-register">
+                        <i class="bi bi-check2-circle"></i>
+                        Create my account
+                    </button>
+                </form>
+
             </div>
-            <br>
-        {% endfor %}
-    </fieldset>
+        </div>
 
-    <fieldset>
-        <legend>Profile Details</legend>
-        {% for field in p_form %}
-            <div class="field-container">
-                {{ field.label_tag }}<br>
-                {{ field }}
-                {% for error in field.errors %}
-                    <p style="color: red; font-size: 0.8em;">{{ error }}</p>
-                {% endfor %}
-            </div>
-            <br>
-        {% endfor %}
-    </fieldset>
-
-    <button type="submit">Register</button>
-</form>
-
-<p>Already have an account? <a href="{% url 'login' %}">Log In</a></p>
-{% endblock content %}
-
+        <p class="auth-footer">
+            Already have an account? <a href="{% url 'login' %}">Log in instead</a>
+        </p>
+    </div>
+</div>
+{% endblock %}
