@@ -9,6 +9,10 @@ class People(models.Model):
     image = models.ImageField(upload_to='profile_images/', blank=True, null=True)
     link = models.URLField(blank=True)
     
+    is_admin = models.BooleanField(default=False)
+    is_master = models.BooleanField(default=False)
+    is_student = models.BooleanField(default=False)
+    is_assistant = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.user.username}"

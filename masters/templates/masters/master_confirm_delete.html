@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-danger shadow">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0">Confirm Deletion</h4>
+                </div>
+                <div class="card-body text-center">
+                    <p class="lead">Are you sure you want to delete the profile for <strong>"{{ object.name }}"</strong>?</p>
+                    <p class="text-danger small">This action cannot be undone. All associated data and certificates will be removed.</p>
+                    
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="d-grid gap-2 d-md-block">
+                            <button type="submit" class="btn btn-danger px-4">Yes, Delete Permanently</button>
+                            <a href="{% url 'masters-detail' object.id %}" class="btn btn-secondary px-4">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

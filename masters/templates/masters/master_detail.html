@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'masters-list' %}">Masters</a></li>
+            <li class="breadcrumb-item active">{{ master.name }}</li>
+        </ol>
+    </nav>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h1 class="card-title">{{ master.name }}</h1>
+            <h6 class="card-subtitle mb-2 text-muted">{{ master.subject }} | {{ master.category }}</h6>
+            <hr>
+            <p class="card-text">{{ master.description }}</p>
+            
+            {% if master.certificates %}
+                <div class="mt-3">
+                    <strong>Certificate:</strong> 
+                    <a href="{{ master.certificates.url }}" target="_blank" class="btn btn-sm btn-outline-info">View File</a>
+                </div>
+            {% endif %}
+
+            {% if master.url %}
+                <p><strong>Website:</strong> <a href="{{ master.url }}">{{ master.url }}</a></p>
+            {% endif %}
+
+            <!-- Security: Only show actions to the owner -->
+            {% if user == master.profile.user %}
+                <div class="mt-4">
+                    <a href="{% url 'update-master' master.pk %}" class="btn btn-warning">Edit Profile</a>
+                    <a href="{% url 'delete-master' master.pk %}" class="btn btn-danger">Delete</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
