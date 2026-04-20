@@ -1,7 +1,7 @@
 {
-  "name": "CORE Dashboard",
-  "short_name": "CORE",
-  "description": "CORE — your unified dashboard",
+  "name": "Powerty Dashboard",
+  "short_name": "Powerty",
+  "description": "Powerty — your unified dashboard",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
@@ -12,4 +12,4 @@
     { "src": "/static/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ],
   "categories": ["productivity", "utilities"]
-}
+} 
