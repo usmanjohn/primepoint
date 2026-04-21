@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Results for {{ attempt.practice.title }}</h2>
+<div class="alert alert-info">
+    Your Score: <strong>{{ attempt.score }}%</strong>
+</div>
+
+<hr>
+{% for ans in attempt.answers.all %}
+    <div class="result-item" style="margin-bottom: 20px;">
+        <p><strong>Q:</strong> {{ ans.question.question_text|safe }}</p>
+        <p>Your Answer: {{ ans.selected_choice }} | 
+           Status: {% if ans.is_correct %}✅ Correct{% else %}❌ Incorrect{% endif %}</p>
+        {% if not ans.is_correct %}
+            <div style="background: #f9f9f9; padding: 10px;">
+                <strong>Explanation:</strong> {{ ans.question.explanation|safe }}
+            </div>
+        {% endif %}
+    </div>
+{% endfor %}
+<a href="{% url 'practice-list' %}">Back to Practices</a>
+{% endblock %}

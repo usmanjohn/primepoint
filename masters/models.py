@@ -1,8 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
 from people.models import People
+
 class Master(models.Model):
     profile = models.ForeignKey(People, on_delete=models.CASCADE) 
+    specialty = models.ForeignKey('practice.Subject', on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=100)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)

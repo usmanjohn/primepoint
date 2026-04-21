@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ practice.title }}</h1>
+<p>{{ practice.description }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    {% for q in questions %}
+        <div class="question-block" style="margin-bottom: 30px; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
+            <h3>Question {{ forloop.counter }}</h3>
+            <div>{{ q.question_text|safe }}</div>
+            
+            {% if q.image %}
+                <img src="{{ q.image.url }}" style="max-width: 300px;">
+            {% endif %}
+
+            <div class="choices" style="margin-top: 10px;">
+                <label><input type="radio" name="question_{{ q.id }}" value="1"> {{ q.choice1|safe }}</label><br>
+                <label><input type="radio" name="question_{{ q.id }}" value="2"> {{ q.choice2|safe }}</label><br>
+                {% if q.choice3 %}<label><input type="radio" name="question_{{ q.id }}" value="3"> {{ q.choice3|safe }}</label><br>{% endif %}
+                {% if q.choice4 %}<label><input type="radio" name="question_{{ q.id }}" value="4"> {{ q.choice4|safe }}</label><br>{% endif %}
+                {% if q.choice5 %}<label><input type="radio" name="question_{{ q.id }}" value="5"> {{ q.choice5|safe }}</label><br>{% endif %}
+            </div>
+        </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Submit Answers</button>
+</form>
+
+<!-- MathJax for rendering LaTeX from CKEditor -->
+<script src="https://polyfill.io"></script>
+<script id="MathJax-script" async src="https://jsdelivr.net"></script>
+{% endblock %}
