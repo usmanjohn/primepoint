@@ -1,33 +1,210 @@
 {% extends "base.html" %}
 
+{% block title %}{{ practice.title }} — PracticeHub{% endblock %}
+{% block page_title %}Practice Detail{% endblock %}
+
+{% block topbar_actions %}
+  <a href="{% url 'practice_list' %}" class="btn btn-outline btn-sm">← Back</a>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+  .detail-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 28px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .detail-layout { grid-template-columns: 1fr; }
+  }
+
+  .practice-header { margin-bottom: 24px; }
+  .practice-header h1 { font-size: 1.8rem; margin-bottom: 10px; }
+  .practice-header p  { color: var(--muted); line-height: 1.7; }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 24px;
+  }
+  .info-item {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+  }
+  .info-item .label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; }
+  .info-item .value { font-size: 1rem; font-weight: 600; margin-top: 4px; font-family: 'Syne', sans-serif; }
+
+  /* Sidebar card */
+  .action-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    position: sticky;
+    top: 80px;
+  }
+  .action-card h3 { font-size: 1rem; margin-bottom: 18px; color: var(--muted); font-weight: 500; font-family: 'DM Sans', sans-serif; text-transform: uppercase; letter-spacing: 1px; font-size: .75rem; }
+
+  .score-ring {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto 20px;
+  }
+  .score-ring .score-val { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 700; }
+  .score-ring .score-lbl { font-size: 0.65rem; color: var(--muted); }
+
+  .start-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 14px;
+    font-size: 1rem;
+    border-radius: 10px;
+    margin-top: 18px;
+  }
+
+  .attempt-warning {
+    background: rgba(248,113,113,.1);
+    border: 1px solid rgba(248,113,113,.2);
+    color: var(--danger);
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 0.82rem;
+    text-align: center;
+    margin-top: 14px;
+  }
+
+  .rules-list {
+    list-style: none;
+    margin-top: 16px;
+  }
+  .rules-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .rules-list li:last-child { border-bottom: none; }
+  .rules-list li span:first-child { font-size: 1rem; }
+</style>
+{% endblock %}
+
 {% block content %}
-<h1>{{ practice.title }}</h1>
-<p>{{ practice.description }}</p>
+<div class="detail-layout">
 
-<form method="post">
-    {% csrf_token %}
-    {% for q in questions %}
-        <div class="question-block" style="margin-bottom: 30px; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
-            <h3>Question {{ forloop.counter }}</h3>
-            <div>{{ q.question_text|safe }}</div>
-            
-            {% if q.image %}
-                <img src="{{ q.image.url }}" style="max-width: 300px;">
-            {% endif %}
+  <!-- ── LEFT: Info ─────────────────────────── -->
+  <div>
+    <div class="practice-header">
+      <div style="display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap;">
+        <span class="badge badge-{{ practice.level }}">{{ practice.level }}</span>
+        <span class="badge {% if practice.is_free %}badge-free{% else %}badge-paid{% endif %}">
+          {% if practice.is_free %}Free{% else %}Paid{% endif %}
+        </span>
+        {% if practice.subject %}
+          <span class="badge" style="background:var(--bg3); color:var(--muted);">{{ practice.subject.name }}</span>
+        {% endif %}
+      </div>
 
-            <div class="choices" style="margin-top: 10px;">
-                <label><input type="radio" name="question_{{ q.id }}" value="1"> {{ q.choice1|safe }}</label><br>
-                <label><input type="radio" name="question_{{ q.id }}" value="2"> {{ q.choice2|safe }}</label><br>
-                {% if q.choice3 %}<label><input type="radio" name="question_{{ q.id }}" value="3"> {{ q.choice3|safe }}</label><br>{% endif %}
-                {% if q.choice4 %}<label><input type="radio" name="question_{{ q.id }}" value="4"> {{ q.choice4|safe }}</label><br>{% endif %}
-                {% if q.choice5 %}<label><input type="radio" name="question_{{ q.id }}" value="5"> {{ q.choice5|safe }}</label><br>{% endif %}
-            </div>
-        </div>
-    {% endfor %}
-    <button type="submit" class="btn btn-primary">Submit Answers</button>
-</form>
+      <h1>{{ practice.title }}</h1>
+      {% if practice.description %}
+        <p>{{ practice.description }}</p>
+      {% endif %}
+    </div>
 
-<!-- MathJax for rendering LaTeX from CKEditor -->
-<script src="https://polyfill.io"></script>
-<script id="MathJax-script" async src="https://jsdelivr.net"></script>
+    <!-- Stats grid -->
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="label">Questions</div>
+        <div class="value">{{ question_count }}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Total Points</div>
+        <div class="value">{{ total_points }}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Pass Score</div>
+        <div class="value">{{ practice.pass_score }}%</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Time Limit</div>
+        <div class="value">{% if practice.time_limit %}{{ practice.time_limit }} min{% else %}No limit{% endif %}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Max Attempts</div>
+        <div class="value">{% if practice.max_attempts == 0 %}Unlimited{% else %}{{ practice.max_attempts }}{% endif %}</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Your Attempts</div>
+        <div class="value">{{ attempt_count }}</div>
+      </div>
+    </div>
+
+    <!-- Behavior rules -->
+    <div class="card" style="margin-top:24px;">
+      <h3 style="font-size:.85rem; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:4px;">Practice Rules</h3>
+      <ul class="rules-list">
+        <li>
+          <span>🔀</span>
+          Questions are {% if practice.shuffle_questions %}<strong style="color:var(--text);">shuffled</strong>{% else %}in <strong style="color:var(--text);">fixed order</strong>{% endif %}
+        </li>
+        <li>
+          <span>🔀</span>
+          Choices are {% if practice.shuffle_choices %}<strong style="color:var(--text);">shuffled</strong>{% else %}in <strong style="color:var(--text);">fixed order</strong>{% endif %}
+        </li>
+        <li>
+          <span>👁</span>
+          Answers {% if practice.show_answers_after %}<strong style="color:var(--text);">shown</strong> after completion{% else %}<strong style="color:var(--text);">hidden</strong> after completion{% endif %}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── RIGHT: Action sidebar ─────────────── -->
+  <div class="action-card">
+    {% if last_attempt %}
+      <h3>Your Last Score</h3>
+      <div class="score-ring">
+        <span class="score-val">{{ last_attempt.score|floatformat:0 }}%</span>
+        <span class="score-lbl">score</span>
+      </div>
+      <a href="{% url 'practice_result' last_attempt.id %}" class="btn btn-outline" style="width:100%; justify-content:center;">
+        View Result
+      </a>
+      <hr class="divider" />
+    {% endif %}
+
+    <h3>{% if last_attempt %}Try Again{% else %}Start Practice{% endif %}</h3>
+
+    {% if can_attempt %}
+      <p style="font-size:.83rem; color:var(--muted); margin-bottom:4px;">
+        You have
+        {% if practice.max_attempts == 0 %}
+          unlimited attempts.
+        {% else %}
+          {{ attempt_count }} / {{ practice.max_attempts }} attempts used.
+        {% endif %}
+      </p>
+      <a href="{% url 'start_practice' practice.pk %}" class="btn btn-primary start-btn">
+        🚀 Start Now
+      </a>
+    {% else %}
+      <div class="attempt-warning">
+        You've used all {{ practice.max_attempts }} attempt(s) for this practice.
+      </div>
+    {% endif %}
+  </div>
+
+</div>
 {% endblock %}
