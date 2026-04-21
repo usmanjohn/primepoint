@@ -33,7 +33,9 @@ INSTALLED_APPS = [
     'prime',
     'people',
     'analytics',
-    'masters'
+    'masters',
+    'practice',
+    'panda',
 ]
 
 MIDDLEWARE = [

@@ -16,7 +16,7 @@
                         {% csrf_token %}
                         <div class="d-grid gap-2 d-md-block">
                             <button type="submit" class="btn btn-danger px-4">Yes, Delete Permanently</button>
-                            <a href="{% url 'masters-detail' object.id %}" class="btn btn-secondary px-4">Cancel</a>
+                            <a href="{% url 'masters-detail' master.id %}" class="btn btn-secondary px-4">Cancel</a>
                         </div>
                     </form>
                 </div>

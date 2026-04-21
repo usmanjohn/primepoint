@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <div class="jumbotron bg-light p-5 rounded shadow">
+        <h1 class="display-4">Welcome to the Panda App!</h1>
+        <p class="lead">This is your central hub for managing your learning journey. Here you can create and view your Master profiles, track your progress, and access all your certificates in one place.</p>
+        <hr class="my-4">
+        <p>Use the navigation bar above to explore your Masters, add new ones, and keep track of your achievements. Happy learning!</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'masters-home' %}" role="button">View My Masters</a>
+    </div>
+</div>
+    
+    {% endblock %}
+    

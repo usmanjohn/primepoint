@@ -631,16 +631,16 @@
                 <span class="nav-badge">3</span>
             </a>
 
-            <span class="nav-section">Account</span>
+            <span class="nav-section">Practice</span>
 
-            <a href="#" class="nav-link {% block nav_profile %}{% endblock %}">
+            <a href="{% url 'practice-home' %}" class="nav-link {% block nav_profile %}{% endblock %}">
                 <i class="bi bi-person-circle"></i>
-                <span class="nav-label">Profile</span>
+                <span class="nav-label">Practice</span>
             </a>
 
-            <a href="#" class="nav-link {% block nav_settings %}{% endblock %}">
+            <a href="{% url 'panda-home' %}" class="nav-link {% block nav_settings %}{% endblock %}">
                 <i class="bi bi-gear"></i>
-                <span class="nav-label">Settings</span>
+                <span class="nav-label">Pandas</span>
             </a>
 
             <span class="nav-section">Support</span>
