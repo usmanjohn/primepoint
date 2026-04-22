@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from .models import Master
 from .forms import MasterForm
+from django.contrib import messages
 
 def master_list(request):
     masters = Master.objects.all().order_by('-created_at')
@@ -14,6 +15,11 @@ def master_detail(request, master_id):
 
 @login_required
 def master_create(request):
+    user = request.user
+    if user.profile.master is not None:
+        message = "You already have a Master profile. Please edit your existing profile instead."
+        messages.error(request, message)
+        return redirect('masters-home')  # or some error page
     if request.method == 'POST':
         form = MasterForm(request.POST)
         if form.is_valid():

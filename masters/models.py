@@ -1,12 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
-from people.models import People
+from people.models import Profile
 
 from django.db import models
 from django.db.models import Avg
 
 class Master(models.Model):
-    profile = models.ForeignKey(People, on_delete=models.CASCADE) 
+    profile = models.OneToOneField(Profile, on_delete=models.CASCADE) 
     name = models.CharField(max_length=100)
     description = models.TextField()
     subject = models.CharField(max_length=100)

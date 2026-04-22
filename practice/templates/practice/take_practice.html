@@ -1,103 +1,126 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Question {{ current_index|add:1 }} — {{ practice.title }}{% endblock %}
+{% block title %}Q{{ current_index|add:1 }} — {{ practice.title }}{% endblock %}
+
 
 {% block content %}
-<!-- IMMERSIVE QUIZ WRAPPER -->
-<div class="quiz-wrapper d-flex flex-column">
-    
-    <!-- PROGRESS HEADER -->
-    <div class="quiz-progress-container">
-        {% widthratio answered_count total_questions 100 as pct %}
-        <div class="progress-info d-flex justify-content-between align-items-end px-4 mb-2">
-            <span class="stat-label">Progress: {{ pct }}%</span>
-            <span class="stat-label">{{ answered_count }} of {{ total_questions }} Answered</span>
+{% widthratio answered_count total_questions 100 as pct %}
+
+<div class="quiz-shell">
+
+  <!-- ── HEADER ────────────────────────────── -->
+  <header class="quiz-header">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2">
+      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+    </svg>
+    <span class="quiz-title">{{ practice.title }}</span>
+    <span class="quiz-counter">{{ answered_count }} / {{ total_questions }} answered</span>
+  </header>
+
+  <!-- ── PROGRESS BAR ──────────────────────── -->
+  <div class="quiz-progress">
+    <div class="quiz-progress-fill" style="width: {{ pct }}%;"></div>
+  </div>
+
+  <!-- ── BODY ──────────────────────────────── -->
+  <div class="quiz-body">
+
+    <!-- Question Navigator -->
+    <nav class="q-nav">
+      {% for q in questions %}
+        {% with forloop.counter0 as idx %}
+          <a href="?q={{ idx }}"
+             class="q-dot
+               {% if idx == current_index %}active{% endif %}
+               {% if q.id in answered_ids %}answered{% endif %}"
+             title="Question {{ forloop.counter }}">
+            {{ forloop.counter }}
+          </a>
+        {% endwith %}
+      {% endfor %}
+    </nav>
+
+    <!-- Main Content -->
+    <main class="q-main">
+
+      <div class="q-eyebrow">
+        <span class="q-badge">Question {{ current_index|add:1 }} of {{ total_questions }}</span>
+        <span class="q-pts">{{ current_question.points }} point{{ current_question.points|pluralize }}</span>
+      </div>
+
+      <h2 class="q-text">{{ current_question.question_text|safe }}</h2>
+
+      {% if current_question.image %}
+        <img src="{{ current_question.image.url }}" alt="Question image" class="q-img">
+      {% endif %}
+
+      {% if current_question.hint %}
+        <div class="q-hint">
+          <span class="q-hint-icon">💡</span>
+          <span>{{ current_question.hint|safe }}</span>
         </div>
-        <div class="progress-track-custom">
-            <div class="progress-fill-custom" style="width: {{ pct }}%;"></div>
-        </div>
+      {% endif %}
+
+      <!-- Choices -->
+      <!-- Choices -->
+<form method="post" id="quiz-form">
+  {% csrf_token %}
+  <div class="choices">
+    {% for choice in choices %}
+      <label class="choice {% if choice.id in existing_choice_ids %}selected{% endif %}">
+  <input
+    type="checkbox"
+    name="choices"
+    value="{{ choice.id }}"
+    {% if choice.id in existing_choice_ids %}checked{% endif %}
+    onchange="updateSelection(this)" 
+  >
+  <div class="choice-box">✓</div>
+  <span class="choice-label">{{ choice.text }}</span>
+</label>
+    {% endfor %}
+  </div>
+</form>
+    </main><!-- /q-main -->
+  </div><!-- /quiz-body -->
+
+  <!-- ── STICKY FOOTER ─────────────────────── -->
+  <footer class="q-footer">
+    <span class="footer-progress">
+      <strong>{{ pct }}%</strong> complete
+    </span>
+
+    <div class="footer-actions">
+      {% if current_index > 0 %}
+        <a href="?q={{ current_index|add:"-1" }}" class="btn-back">
+          ← Back
+        </a>
+      {% endif %}
+
+      {% if is_last_question %}
+        <button type="submit" form="quiz-form" name="finish" class="btn-finish">
+          Submit Practice ✓
+        </button>
+      {% else %}
+        <button type="submit" form="quiz-form" class="btn-next">
+          Next →
+        </button>
+      {% endif %}
     </div>
+  </footer>
 
-    <div class="quiz-main-layout d-flex flex-grow-1 overflow-hidden">
-        
-        <!-- LEFT: SLIM NAVIGATOR -->
-        <aside class="quiz-nav-sidebar d-none d-md-flex flex-column gap-2 p-3">
-            {% for q in questions %}
-                {% with forloop.counter0 as idx %}
-                <a href="?q={{ idx }}" 
-                   class="q-nav-dot {% if idx == current_index %}active{% endif %} {% if q.id in answered_ids %}answered{% endif %}"
-                   title="Question {{ forloop.counter }}">
-                    {{ forloop.counter }}
-                </a>
-                {% endwith %}
-            {% endfor %}
-        </aside>
+</div><!-- /quiz-shell -->
 
-        <!-- CENTER: QUESTION CONTENT -->
-        <main class="quiz-content-area flex-grow-1 p-4 p-lg-5">
-            <div class="max-width-container mx-auto" style="max-width: 800px;">
-                
-                <div class="q-meta mb-2">
-                    <span class="badge-core bg-chrome text-accent border border-accent">QUESTION {{ current_index|add:1 }}</span>
-                    <span class="ms-2 text-muted small">{{ current_question.points }} Points</span>
-                </div>
-
-                <h2 class="q-text mb-4">{{ current_question.question_text|safe }}</h2>
-
-                {% if current_question.image %}
-                    <div class="q-image-container mb-4">
-                        <img src="{{ current_question.image.url }}" class="img-fluid rounded-4 border">
-                    </div>
-                {% endif %}
-
-                {% if current_question.hint %}
-                    <div class="q-hint-card mb-4">
-                        <i class="bi bi-lightbulb-fill me-2"></i>
-                        <span>{{ current_question.hint|safe }}</span>
-                    </div>
-                {% endif %}
-
-                <!-- CHOICES FORM -->
-                <form method="post" id="quiz-form">
-                    {% csrf_token %}
-                    <div class="choices-stack d-flex flex-column gap-3">
-                        {% for choice in choices %}
-                        <label class="choice-card {% if choice.id in existing_choice_ids %}selected{% endif %}">
-                            <input type="checkbox" name="choices" value="{{ choice.id }}" 
-                                   {% if choice.id in existing_choice_ids %}checked{% endif %} 
-                                   onchange="toggleChoice(this)" class="d-none">
-                            <div class="choice-check"></div>
-                            <div class="choice-text">{{ choice.text }}</div>
-                        </label>
-                        {% endfor %}
-                    </div>
-                </form>
-            </div>
-        </main>
-    </div>
-
-    <!-- STICKY FOOTER -->
-    <footer class="quiz-footer-actions p-3 px-4 border-top bg-white d-flex justify-content-between align-items-center">
-        <div>
-            {% if current_index > 0 %}
-                <a href="?q={{ current_index|add:"-1" }}" class="btn-auth-outline">
-                    <i class="bi bi-chevron-left me-2"></i>Prev
-                </a>
-            {% endif %}
-        </div>
-
-        <div class="d-flex gap-2">
-            {% if is_last_question %}
-                <button type="submit" form="quiz-form" name="finish" class="btn-auth-primary border-0 px-5">
-                    Finish Practice <i class="bi bi-check-all ms-2"></i>
-                </button>
-            {% else %}
-                <button type="submit" form="quiz-form" class="btn-auth-primary border-0 px-5">
-                    Next Question <i class="bi bi-chevron-right ms-2"></i>
-                </button>
-            {% endif %}
-        </div>
-    </footer>
-</div>
+<script>
+function updateSelection(checkbox) {
+  // Find the parent label and toggle the 'selected' class based on checked status
+  const label = checkbox.closest('label');
+  if (checkbox.checked) {
+    label.classList.add('selected');
+  } else {
+    label.classList.remove('selected');
+  }
+}
+</script>
 {% endblock %}

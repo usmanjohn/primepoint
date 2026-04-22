@@ -1,18 +1,382 @@
 {% extends 'base.html' %}
 
+{% block title %}{{ viewed_user.username }} — Profile{% endblock %}
+{% block page_name %}Profile{% endblock %}
+
 {% block content %}
-<h2>Welcome, {{ user.username }}</h2>
-<p>Bio: {{ user.people.biography }}</p>
 
-<hr>
-<ul>
-    <li><a href="{% url 'profile_update' %}">Edit Profile Info</a></li>
-    <li><a href="{% url 'password_change' %}">Change Password</a></li>
-</ul>
+<!-- ── Profile Banner ─────────────────────────────────────────── -->
+<div class="profile-banner">
+    <div class="profile-banner-bg"></div>
+    <div class="profile-banner-body">
 
-<form action="{% url 'logout' %}" method="post">
-    {% csrf_token %}
-    <button type="submit">Logout</button>
-</form>
+        <div class="profile-avatar-wrap">
+            <img src="{{ people.image_url }}" class="profile-avatar" alt="Profile photo of {{ viewed_user.username }}">
+            {% if people.is_master %}
+                <span class="profile-role-dot master" title="Master"></span>
+            {% elif people.is_student %}
+                <span class="profile-role-dot student" title="Student"></span>
+            {% endif %}
+        </div>
+
+        <div class="profile-identity">
+            <h1 class="profile-name">
+                {{ people.first_name|default:viewed_user.username }}
+                <span class="profile-username">@{{ viewed_user.username }}</span>
+            </h1>
+            <div class="profile-roles">
+                {% if people.is_admin %}<span class="role-chip admin">Admin</span>{% endif %}
+                {% if people.is_director %}<span class="role-chip director">Director</span>{% endif %}
+                {% if people.is_cofounder %}<span class="role-chip cofounder">Co-founder</span>{% endif %}
+                {% if people.is_master %}<span class="role-chip master">Master</span>{% endif %}
+                {% if people.is_student %}<span class="role-chip student">Student</span>{% endif %}
+                {% if people.is_assistant %}<span class="role-chip assistant">Assistant</span>{% endif %}
+            </div>
+        </div>
+
+        {% if is_own_profile %}
+        <div class="profile-hero-actions ms-auto">
+            <a href="{% url 'profile_update' %}" class="btn-core-outline">
+                <i class="bi bi-pencil"></i> Edit Profile
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- ── Two-column layout ──────────────────────────────────────── -->
+<div class="row g-4">
+
+    <!-- Left: Personal Info & Actions -->
+    <div class="col-lg-4">
+
+        <!-- About Card -->
+        <div class="card profile-card mb-4">
+            <div class="card-header d-flex align-items-center gap-2">
+                <i class="bi bi-person-circle text-accent"></i>
+                About
+            </div>
+            <div class="card-body">
+                {% if people.biography %}
+                    <p class="profile-bio">{{ people.biography }}</p>
+                {% else %}
+                    <p class="text-muted fst-italic small mb-3">No biography yet.</p>
+                {% endif %}
+
+                <div class="profile-info-list">
+                    {% if is_own_profile and viewed_user.email %}
+                    <div class="profile-info-item">
+                        <i class="bi bi-envelope"></i>
+                        <span>{{ viewed_user.email }}</span>
+                    </div>
+                    {% endif %}
+                    {% if people.date_of_birth %}
+                    <div class="profile-info-item">
+                        <i class="bi bi-calendar3"></i>
+                        <span>{{ people.date_of_birth|date:"F j, Y" }}</span>
+                    </div>
+                    {% endif %}
+                    {% if people.link %}
+                    <div class="profile-info-item">
+                        <i class="bi bi-link-45deg"></i>
+                        <a href="{{ people.link }}" target="_blank" rel="noopener noreferrer">{{ people.link }}</a>
+                    </div>
+                    {% endif %}
+                    <div class="profile-info-item">
+                        <i class="bi bi-clock-history"></i>
+                        <span>Joined {{ viewed_user.date_joined|date:"F Y" }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions (own profile only) -->
+        {% if is_own_profile %}
+        <div class="card profile-card">
+            <div class="card-header d-flex align-items-center gap-2">
+                <i class="bi bi-lightning-charge text-accent"></i>
+                Quick Actions
+            </div>
+            <div class="card-body p-0">
+                <a href="{% url 'profile_update' %}" class="profile-action-link">
+                    <i class="bi bi-pencil-square"></i>
+                    <span>Edit Profile</span>
+                    <i class="bi bi-chevron-right ms-auto"></i>
+                </a>
+                <a href="{% url 'password_change' %}" class="profile-action-link">
+                    <i class="bi bi-shield-lock"></i>
+                    <span>Change Password</span>
+                    <i class="bi bi-chevron-right ms-auto"></i>
+                </a>
+                {% if master %}
+                <a href="{% url 'update-master' master.pk %}" class="profile-action-link">
+                    <i class="bi bi-person-badge"></i>
+                    <span>Edit Master Profile</span>
+                    <i class="bi bi-chevron-right ms-auto"></i>
+                </a>
+                <a href="{% url 'manage_practices' %}" class="profile-action-link">
+                    <i class="bi bi-book"></i>
+                    <span>Manage Practices</span>
+                    <i class="bi bi-chevron-right ms-auto"></i>
+                </a>
+                {% else %}
+                <a href="{% url 'masters-create' %}" class="profile-action-link">
+                    <i class="bi bi-person-plus"></i>
+                    <span>Become a Master</span>
+                    <i class="bi bi-chevron-right ms-auto"></i>
+                </a>
+                {% endif %}
+                <form action="{% url 'logout' %}" method="post" class="m-0">
+                    {% csrf_token %}
+                    <button type="submit" class="profile-action-link profile-action-danger w-100 border-0 bg-transparent text-start">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span>Sign Out</span>
+                        <i class="bi bi-chevron-right ms-auto"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+
+    <!-- Right: Stats + Role-specific content -->
+    <div class="col-lg-8">
+
+        <!-- Stats Row -->
+        <div class="row g-3 mb-4">
+            {% if master %}
+            <div class="col-6 col-sm-3">
+                <div class="profile-stat-card">
+                    <div class="profile-stat-icon"><i class="bi bi-people-fill"></i></div>
+                    <div class="profile-stat-value">{{ master.student_count }}</div>
+                    <div class="profile-stat-label">Students</div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-3">
+                <div class="profile-stat-card">
+                    <div class="profile-stat-icon"><i class="bi bi-star-fill"></i></div>
+                    <div class="profile-stat-value">{{ master.avg_rating|floatformat:1 }}</div>
+                    <div class="profile-stat-label">Avg Rating</div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-3">
+                <div class="profile-stat-card">
+                    <div class="profile-stat-icon"><i class="bi bi-book-fill"></i></div>
+                    <div class="profile-stat-value">{{ master.practices.count }}</div>
+                    <div class="profile-stat-label">Practices</div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-3">
+                <div class="profile-stat-card">
+                    <div class="profile-stat-icon"><i class="bi bi-calendar-check"></i></div>
+                    <div class="profile-stat-value">{{ master.created_at|date:"Y" }}</div>
+                    <div class="profile-stat-label">Since</div>
+                </div>
+            </div>
+
+            {% elif panda %}
+            <div class="col-6 col-sm-3">
+                <div class="profile-stat-card">
+                    <div class="profile-stat-icon"><i class="bi bi-award-fill"></i></div>
+                    <div class="profile-stat-value" style="font-size:1rem;">{{ panda.rank }}</div>
+                    <div class="profile-stat-label">Rank</div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-3">
+                <div class="profile-stat-card">
+                    <div class="profile-stat-icon"><i class="bi bi-lightning-fill"></i></div>
+                    <div class="profile-stat-value">{{ panda.rating }}</div>
+                    <div class="profile-stat-label">Rating</div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-3">
+                <div class="profile-stat-card">
+                    <div class="profile-stat-icon"><i class="bi bi-check2-circle"></i></div>
+                    <div class="profile-stat-value">{{ panda.attempts.count }}</div>
+                    <div class="profile-stat-label">Attempts</div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-3">
+                <div class="profile-stat-card">
+                    <div class="profile-stat-icon"><i class="bi bi-bookmark-fill"></i></div>
+                    <div class="profile-stat-value" style="font-size:0.9rem;">{{ panda.purpose|title }}</div>
+                    <div class="profile-stat-label">Purpose</div>
+                </div>
+            </div>
+
+            {% else %}
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body text-center py-5">
+                        <i class="bi bi-person-circle" style="font-size:3rem; color:var(--text-muted);"></i>
+                        <h6 class="mt-3 mb-1 fw-bold">No role assigned yet</h6>
+                        {% if is_own_profile %}
+                        <p class="text-muted small mb-3">Apply to become a Master or join as a Student to unlock features.</p>
+                        <a href="{% url 'masters-create' %}" class="btn-core-primary">Apply as Master</a>
+                        {% else %}
+                        <p class="text-muted small mb-0">This user hasn't taken on a role yet.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Master Profile Card -->
+        {% if master %}
+        <div class="card profile-card mb-4">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-person-badge text-accent"></i>
+                    Master Profile
+                </div>
+                <a href="{% url 'masters-detail' master.pk %}" class="btn-text-link">View public page →</a>
+            </div>
+            <div class="card-body">
+                <div class="master-name">{{ master.name }}</div>
+                <div class="master-subject mt-1">
+                    <i class="bi bi-mortarboard"></i> {{ master.subject }}
+                    {% if master.category %}
+                    <span class="ms-2 role-chip master">{{ master.category }}</span>
+                    {% endif %}
+                </div>
+                <p class="master-desc mt-3">{{ master.description }}</p>
+            </div>
+        </div>
+
+        <!-- Practices -->
+        {% if practices %}
+        <div class="card profile-card mb-4">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-book-half text-accent"></i>
+                    Published Practices
+                </div>
+                {% if is_own_profile %}
+                <a href="{% url 'manage_practices' %}" class="btn-text-link">Manage all →</a>
+                {% endif %}
+            </div>
+            <div class="card-body p-0">
+                {% for p in practices %}
+                <a href="{% url 'practice_detail' p.pk %}" class="practice-row-link">
+                    <div class="practice-row-info">
+                        <span class="practice-row-title">{{ p.title }}</span>
+                        <span class="practice-row-meta">{% if p.subject %}{{ p.subject }} · {% endif %}{{ p.level|title }}</span>
+                    </div>
+                    <div class="practice-row-badges">
+                        {% if p.is_free %}<span class="badge-sm free">Free</span>{% else %}<span class="badge-sm paid">Paid</span>{% endif %}
+                        <i class="bi bi-chevron-right text-muted" style="font-size:0.75rem;"></i>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% elif is_own_profile %}
+        <div class="card profile-card mb-4">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-book-half text-accent"></i>
+                    Practices
+                </div>
+                <a href="{% url 'manage_practices' %}" class="btn-text-link">Manage →</a>
+            </div>
+            <div class="card-body text-center py-4">
+                <p class="text-muted small mb-2">No published practices yet.</p>
+                <a href="{% url 'manage_practices' %}" class="btn-core-outline" style="font-size:0.8rem;">
+                    <i class="bi bi-plus"></i> Create Practice
+                </a>
+            </div>
+        </div>
+        {% endif %}
+        {% endif %}
+
+        <!-- Panda (Student) Profile Card -->
+        {% if panda %}
+        <div class="card profile-card mb-4">
+            <div class="card-header d-flex align-items-center gap-2">
+                <i class="bi bi-mortarboard-fill text-accent"></i>
+                Student Profile
+            </div>
+            <div class="card-body">
+                <div class="panda-rank-display">
+                    <div class="panda-rank-badge {{ panda.rank|lower }}">
+                        <i class="bi bi-award-fill"></i>
+                        {{ panda.rank }}
+                    </div>
+                    <div class="panda-rating-bar">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="small text-muted">Rating Progress</span>
+                            <span class="small fw-bold">{{ panda.rating }} pts</span>
+                        </div>
+                        <div class="progress" style="height:6px; border-radius:10px; background:var(--border);">
+                            <div class="progress-bar"
+                                 style="width:{% widthratio panda.rating 300 100 %}%; background:var(--accent); border-radius:10px;">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-1">
+                            <span style="font-size:0.6rem; color:var(--text-muted);">Novice</span>
+                            <span style="font-size:0.6rem; color:var(--text-muted);">Scholar</span>
+                            <span style="font-size:0.6rem; color:var(--text-muted);">Expert</span>
+                            <span style="font-size:0.6rem; color:var(--text-muted);">Grandmaster</span>
+                        </div>
+                    </div>
+                </div>
+
+                {% if panda.master %}
+                <div class="panda-master-info mt-3 pt-3" style="border-top:1px solid var(--border);">
+                    <span class="small text-muted">Current Master: </span>
+                    <a href="{% url 'masters-detail' panda.master.pk %}" class="panda-master-link">
+                        <i class="bi bi-person-badge"></i> {{ panda.master.name }}
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Recent Attempts (own profile only — private data) -->
+        {% if is_own_profile %}
+        {% if recent_attempts %}
+        <div class="card profile-card">
+            <div class="card-header d-flex align-items-center gap-2">
+                <i class="bi bi-clock-history text-accent"></i>
+                Recent Practice Attempts
+            </div>
+            <div class="card-body p-0">
+                {% for attempt in recent_attempts %}
+                <a href="{% url 'practice_result' attempt.pk %}" class="practice-row-link">
+                    <div class="practice-row-info">
+                        <span class="practice-row-title">{{ attempt.practice.title }}</span>
+                        <span class="practice-row-meta">{{ attempt.completed_at|date:"M j, Y" }}</span>
+                    </div>
+                    <div class="practice-row-badges">
+                        <span class="score-chip {% if attempt.score >= attempt.practice.pass_score %}pass{% else %}fail{% endif %}">
+                            {{ attempt.score|floatformat:0 }}%
+                        </span>
+                        <i class="bi bi-chevron-right text-muted" style="font-size:0.75rem;"></i>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <div class="card profile-card">
+            <div class="card-header d-flex align-items-center gap-2">
+                <i class="bi bi-clock-history text-accent"></i>
+                Recent Practice Attempts
+            </div>
+            <div class="card-body text-center py-4">
+                <p class="text-muted small mb-2">No completed attempts yet.</p>
+                <a href="{% url 'practice_list' %}" class="btn-core-outline" style="font-size:0.8rem;">
+                    <i class="bi bi-book"></i> Browse Practices
+                </a>
+            </div>
+        </div>
+        {% endif %}
+        {% endif %}
+        {% endif %}
+
+    </div>
+</div>
 
 {% endblock content %}

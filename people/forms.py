@@ -1,17 +1,17 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import People
+from .models import Profile
 from django.contrib.auth.forms import UserCreationForm
 
 class UserRegistrationForm(UserCreationForm):
-    
+
     class Meta:
         model = User
         fields = ['username']
 
-class PeopleUpdateForm(forms.ModelForm):
+class ProfileUpdateForm(forms.ModelForm):
     class Meta:
-        model = People
+        model = Profile
         fields = ['first_name', 'date_of_birth', 'biography', 'image']
         widgets = {
             # This triggers the browser's date picker

@@ -120,10 +120,6 @@ def take_practice(request, attempt_id):
     practice = attempt.practice
     questions = list(practice.questions.prefetch_related('choices').order_by('order'))
 
-    if practice.shuffle_questions:
-        import random
-        random.shuffle(questions)
-
     # Which question index are we on?
     question_index = int(request.GET.get('q', 0))
     question_index = max(0, min(question_index, len(questions) - 1))
