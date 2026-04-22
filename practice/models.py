@@ -26,6 +26,9 @@ class Practice(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.title
+
 class PracticeQuestion(models.Model):
     practice = models.ForeignKey(Practice, on_delete=models.CASCADE, related_name='questions')
 
@@ -40,10 +43,18 @@ class PracticeQuestion(models.Model):
 
     made_by = models.ForeignKey(Master, on_delete=models.CASCADE, null=True, blank=True)
 
+    def __str__(self):
+    # strip_tags removes <p>, <b>, etc.
+    # .strip() removes leading/trailing newlines or spaces
+        clean_text = strip_tags(self.question_text).strip()
+        return f"{clean_text[:30]}... ({self.practice.title[:15]})"
+
 class PracticeChoice(models.Model):
     question = models.ForeignKey(PracticeQuestion, on_delete=models.CASCADE, related_name='choices')
     text = models.TextField()
     is_correct = models.BooleanField(default=False)
+    def __str__(self):
+        return strip_tags(self.text)[:20]+self.question.question_text[:20]
 
 class PracticeAttempt(models.Model):
     panda = models.ForeignKey(Panda, on_delete=models.CASCADE, related_name='attempts')
@@ -63,6 +74,9 @@ class PracticeAttempt(models.Model):
 
     start_time = models.DateTimeField(auto_now_add=True)
     completed_at = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.panda.profile.user.username} - {self.practice.title} ({self.status})"
 
 class UserAnswer(models.Model):
     attempt = models.ForeignKey(PracticeAttempt, on_delete=models.CASCADE, related_name='answers')

@@ -4,11 +4,19 @@ from people.models import People
 class Panda(models.Model):
     PURPOSE_CHOICES = [('learning', 'Learning'), ('entertainment', 'Entertainment'), ('other', 'Other')]
     name = models.CharField(max_length=100, default='Panda')
-    master = models.ForeignKey(Master,null = True, blank = True, on_delete=models.CASCADE, related_name='panda')
+    master = models.ForeignKey(Master, null=True, blank=True, on_delete=models.CASCADE, related_name='panda')
     profile = models.OneToOneField(People, on_delete=models.CASCADE, related_name='panda')
     purpose = models.CharField(max_length=20, choices=PURPOSE_CHOICES, default='learning')
     rating = models.IntegerField(default=0) 
 
+    # --- New Logic ---
+    @property
+    def rank(self):
+        """Dynamic rank based on rating."""
+        if self.rating < 50: return "Novice"
+        if self.rating < 150: return "Scholar"
+        if self.rating < 300: return "Expert"
+        return "Grandmaster"
 
     def __str__(self):
-        return self.name
+        return f"{self.name} ({self.rank})"

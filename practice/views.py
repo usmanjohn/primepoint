@@ -14,7 +14,7 @@ from .models import Practice, PracticeQuestion, PracticeChoice, PracticeAttempt,
 # ─────────────────────────────────────────────
 def practice_list(request):
     practices = Practice.objects.filter(is_published=True).select_related('subject', 'master')
-
+    print(f"DEBUG: Initial practices count: {practices.count()}")
     # Filter by subject
     subject_id = request.GET.get('subject')
     if subject_id:
@@ -112,7 +112,7 @@ def start_practice(request, pk):
 # ─────────────────────────────────────────────
 @login_required
 def take_practice(request, attempt_id):
-    attempt = get_object_or_404(PracticeAttempt, id=attempt_id, panda=request.user.panda)
+    attempt = get_object_or_404(PracticeAttempt, id=attempt_id, panda=request.user.profile.panda)
 
     if attempt.status != 'in_progress':
         return redirect('practice_result', attempt_id=attempt.id)
@@ -127,6 +127,7 @@ def take_practice(request, attempt_id):
     # Which question index are we on?
     question_index = int(request.GET.get('q', 0))
     question_index = max(0, min(question_index, len(questions) - 1))
+    print(f"DEBUG: question_index={question_index}, total_questions={len(questions)}")
     current_question = questions[question_index]
 
     # Already-saved answer for this question

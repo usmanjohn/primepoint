@@ -1,236 +1,103 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %}{{ practice.title }} — Question {{ current_index|add:1 }}{% endblock %}
-{% block page_title %}{{ practice.title }}{% endblock %}
-
-{% block topbar_actions %}
-  <span style="font-size:.85rem; color:var(--muted);">
-    Question {{ current_index|add:1 }} of {{ total_questions }}
-  </span>
-{% endblock %}
-
-{% block extra_head %}
-<style>
-  /* Remove default page padding for immersive quiz */
-  .page-content { padding: 0; display: flex; flex-direction: column; height: calc(100vh - 60px); }
-
-  /* ── Progress bar ── */
-  .progress-track {
-    height: 4px;
-    background: var(--bg3);
-    flex-shrink: 0;
-  }
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    transition: width 0.4s ease;
-  }
-
-  /* ── Quiz area ── */
-  .quiz-area {
-    flex: 1;
-    display: flex;
-    gap: 0;
-    overflow: hidden;
-  }
-
-  /* Left: question navigator */
-  .q-nav {
-    width: 64px;
-    background: var(--bg2);
-    border-right: 1px solid var(--border);
-    padding: 20px 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    overflow-y: auto;
-  }
-  .q-nav-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background: var(--bg3);
-    color: var(--muted);
-    font-size: 0.75rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: all 0.15s;
-  }
-  .q-nav-btn:hover  { border-color: var(--accent); color: var(--text); }
-  .q-nav-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-  .q-nav-btn.answered { border-color: var(--success); color: var(--success); }
-
-  /* Center: question + choices */
-  .q-main {
-    flex: 1;
-    padding: 40px 48px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-    max-width: 780px;
-  }
-
-  .q-number { font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
-  .q-text   { font-size: 1.1rem; line-height: 1.7; }
-  .q-hint   { background: rgba(108,99,255,.08); border-left: 3px solid var(--accent); padding: 10px 14px; border-radius: 0 8px 8px 0; font-size: .85rem; color: var(--accent2); }
-
-  /* Choice pills */
-  .choices { display: flex; flex-direction: column; gap: 10px; }
-  .choice-label {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 14px 18px;
-    background: var(--bg3);
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.15s;
-    font-size: .9rem;
-    line-height: 1.5;
-  }
-  .choice-label:hover { border-color: var(--accent); background: rgba(108,99,255,.06); }
-  .choice-label input { display: none; }
-  .choice-label.selected { border-color: var(--accent); background: rgba(108,99,255,.12); color: var(--text); }
-
-  .choice-indicator {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 2px solid var(--border);
-    flex-shrink: 0;
-    margin-top: 1px;
-    transition: all 0.15s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: .6rem;
-  }
-  .choice-label.selected .choice-indicator {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #fff;
-  }
-  .choice-indicator::before { content: ''; }
-  .choice-label.selected .choice-indicator::before { content: '✓'; }
-
-  /* Footer actions */
-  .q-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 48px;
-    border-top: 1px solid var(--border);
-    background: var(--bg2);
-    flex-shrink: 0;
-  }
-
-  .q-footer .answered-indicator {
-    font-size: .8rem;
-    color: var(--muted);
-  }
-  .q-footer .answered-indicator strong { color: var(--success); }
-</style>
-{% endblock %}
+{% block title %}Question {{ current_index|add:1 }} — {{ practice.title }}{% endblock %}
 
 {% block content %}
-<!-- Progress bar -->
-<div class="progress-track">
-  {% widthratio answered_count total_questions 100 as pct %}
-  <div class="progress-fill" style="width: {{ pct }}%;"></div>
-</div>
-
-<div class="quiz-area">
-
-  <!-- ── Question navigator ── -->
-  <div class="q-nav">
-    {% for q in questions %}
-      {% with forloop.counter0 as idx %}
-        <a
-          href="?q={{ idx }}"
-          class="q-nav-btn
-            {% if idx == current_index %}active
-            {% else %}
-              {% for ans in attempt.answers.all %}
-                {% if ans.question_id == q.id %}answered{% endif %}
-              {% endfor %}
-            {% endif %}"
-        >{{ forloop.counter }}</a>
-      {% endwith %}
-    {% endfor %}
-  </div>
-
-  <!-- ── Main question area ── -->
-  <div class="q-main">
-    <div>
-      <div class="q-number">Question {{ current_index|add:1 }} · {{ current_question.points }} pt{{ current_question.points|pluralize }}</div>
-      <div class="q-text">{{ current_question.question_text|safe }}</div>
+<!-- IMMERSIVE QUIZ WRAPPER -->
+<div class="quiz-wrapper d-flex flex-column">
+    
+    <!-- PROGRESS HEADER -->
+    <div class="quiz-progress-container">
+        {% widthratio answered_count total_questions 100 as pct %}
+        <div class="progress-info d-flex justify-content-between align-items-end px-4 mb-2">
+            <span class="stat-label">Progress: {{ pct }}%</span>
+            <span class="stat-label">{{ answered_count }} of {{ total_questions }} Answered</span>
+        </div>
+        <div class="progress-track-custom">
+            <div class="progress-fill-custom" style="width: {{ pct }}%;"></div>
+        </div>
     </div>
 
-    {% if current_question.hint %}
-      <div class="q-hint">💡 {{ current_question.hint|safe }}</div>
-    {% endif %}
+    <div class="quiz-main-layout d-flex flex-grow-1 overflow-hidden">
+        
+        <!-- LEFT: SLIM NAVIGATOR -->
+        <aside class="quiz-nav-sidebar d-none d-md-flex flex-column gap-2 p-3">
+            {% for q in questions %}
+                {% with forloop.counter0 as idx %}
+                <a href="?q={{ idx }}" 
+                   class="q-nav-dot {% if idx == current_index %}active{% endif %} {% if q.id in answered_ids %}answered{% endif %}"
+                   title="Question {{ forloop.counter }}">
+                    {{ forloop.counter }}
+                </a>
+                {% endwith %}
+            {% endfor %}
+        </aside>
 
-    {% if current_question.image %}
-      <img src="{{ current_question.image.url }}" alt="Question image"
-           style="max-width:100%; border-radius:8px; border:1px solid var(--border);" />
-    {% endif %}
+        <!-- CENTER: QUESTION CONTENT -->
+        <main class="quiz-content-area flex-grow-1 p-4 p-lg-5">
+            <div class="max-width-container mx-auto" style="max-width: 800px;">
+                
+                <div class="q-meta mb-2">
+                    <span class="badge-core bg-chrome text-accent border border-accent">QUESTION {{ current_index|add:1 }}</span>
+                    <span class="ms-2 text-muted small">{{ current_question.points }} Points</span>
+                </div>
 
-    <!-- Choices form -->
-    <form method="post" id="quiz-form">
-      {% csrf_token %}
-      <div class="choices">
-        {% for choice in choices %}
-          <label class="choice-label {% if choice.id in existing_choice_ids %}selected{% endif %}" id="label-{{ choice.id }}">
-            <input
-              type="checkbox"
-              name="choices"
-              value="{{ choice.id }}"
-              {% if choice.id in existing_choice_ids %}checked{% endif %}
-              onchange="toggleSelected(this)"
-            />
-            <span class="choice-indicator"></span>
-            <span>{{ choice.text }}</span>
-          </label>
-        {% endfor %}
-      </div>
-    </form>
-  </div>
+                <h2 class="q-text mb-4">{{ current_question.question_text|safe }}</h2>
+
+                {% if current_question.image %}
+                    <div class="q-image-container mb-4">
+                        <img src="{{ current_question.image.url }}" class="img-fluid rounded-4 border">
+                    </div>
+                {% endif %}
+
+                {% if current_question.hint %}
+                    <div class="q-hint-card mb-4">
+                        <i class="bi bi-lightbulb-fill me-2"></i>
+                        <span>{{ current_question.hint|safe }}</span>
+                    </div>
+                {% endif %}
+
+                <!-- CHOICES FORM -->
+                <form method="post" id="quiz-form">
+                    {% csrf_token %}
+                    <div class="choices-stack d-flex flex-column gap-3">
+                        {% for choice in choices %}
+                        <label class="choice-card {% if choice.id in existing_choice_ids %}selected{% endif %}">
+                            <input type="checkbox" name="choices" value="{{ choice.id }}" 
+                                   {% if choice.id in existing_choice_ids %}checked{% endif %} 
+                                   onchange="toggleChoice(this)" class="d-none">
+                            <div class="choice-check"></div>
+                            <div class="choice-text">{{ choice.text }}</div>
+                        </label>
+                        {% endfor %}
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- STICKY FOOTER -->
+    <footer class="quiz-footer-actions p-3 px-4 border-top bg-white d-flex justify-content-between align-items-center">
+        <div>
+            {% if current_index > 0 %}
+                <a href="?q={{ current_index|add:"-1" }}" class="btn-auth-outline">
+                    <i class="bi bi-chevron-left me-2"></i>Prev
+                </a>
+            {% endif %}
+        </div>
+
+        <div class="d-flex gap-2">
+            {% if is_last_question %}
+                <button type="submit" form="quiz-form" name="finish" class="btn-auth-primary border-0 px-5">
+                    Finish Practice <i class="bi bi-check-all ms-2"></i>
+                </button>
+            {% else %}
+                <button type="submit" form="quiz-form" class="btn-auth-primary border-0 px-5">
+                    Next Question <i class="bi bi-chevron-right ms-2"></i>
+                </button>
+            {% endif %}
+        </div>
+    </footer>
 </div>
-
-<!-- ── Footer ── -->
-<div class="q-footer">
-  <span class="answered-indicator">
-    <strong>{{ answered_count }}</strong> / {{ total_questions }} answered
-  </span>
-
-  <div style="display:flex; gap:10px;">
-    {% if current_index > 0 %}
-      <a href="?q={{ current_index|add:"-1" }}" class="btn btn-outline">← Previous</a>
-    {% endif %}
-
-    {% if is_last_question %}
-      <button type="submit" form="quiz-form" name="finish" class="btn btn-primary">
-        ✅ Finish & Submit
-      </button>
-    {% else %}
-      <button type="submit" form="quiz-form" class="btn btn-primary">
-        Next →
-      </button>
-    {% endif %}
-  </div>
-</div>
-
-<script>
-  // Visually toggle selected state on choice labels
-  function toggleSelected(input) {
-    const label = input.closest('.choice-label');
-    label.classList.toggle('selected', input.checked);
-  }
-</script>
 {% endblock %}

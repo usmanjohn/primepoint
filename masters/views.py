@@ -60,7 +60,7 @@ from .forms import MasterForm
 
 def master_list(request):
     masters = Master.objects.all().order_by('-created_at')
-    return render(request, 'masters/master_home.html', {'masters': masters})
+    return render(request, 'masters/master_list.html', {'masters': masters})
 
 def master_detail(request, master_id):
     master = get_object_or_404(Master, id=master_id)

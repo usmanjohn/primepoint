@@ -1,24 +1,50 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>Our Masters</h1>
+        <h1 class="page-title">Our Masters</h1>
         <a href="{% url 'masters-create' %}" class="btn btn-primary">+ Add New Master</a>
     </div>
 
     <div class="row">
         {% for master in masters %}
-            <div class="col-md-4 mb-3">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ master.name }}</h5>
-                        <p class="text-muted small">{{ master.subject }}</p>
-                        <p class="card-text text-truncate">{{ master.description }}</p>
-                        <a href="{% url 'masters-detail' master.id %}" class="btn btn-sm btn-outline-primary">View Details</a>
+        <div class="col-md-6 col-xl-4">
+            <div class="card h-100 transition-hover border-0 shadow-sm">
+                <div class="card-body p-4 text-center">
+                    <!-- Profile Image with Ring -->
+                    {% if master.profile.image %}
+                            <img src="{{ master.profile.image.url }}" 
+                                 class="rounded-circle border border-4 border-white shadow-sm" 
+                                 style="width: 80px; height: 80px; object-fit: cover;">
+                        {% else %}
+                            <!-- Fallback to a default image in your static folder -->
+                            <img src="{% static 'images/logo.jpg' %}" 
+                                 class="rounded-circle border border-4 border-white shadow-sm" 
+                                 style="width: 80px; height: 80px; object-fit: cover;">
+                        {% endif %}
+                    
+                    <h5 class="page-title mb-1" style="font-size: 1.1rem;">{{ master.name }}</h5>
+                    <span class="badge-core bg-accent-glow text-accent mb-3">{{ master.subject }}</span>
+                    
+                    <p class="text-muted small mb-4 line-clamp-2">{{ master.description }}</p>
+                    
+                    <div class="d-flex justify-content-between border-top pt-3">
+                        <div class="text-start">
+                            <div class="extra-small text-muted uppercase">Students</div>
+                            <div class="fw-bold">{{ master.panda.count }}</div>
+                        </div>
+                        <div class="text-end">
+                            <div class="extra-small text-muted uppercase">Category</div>
+                            <div class="fw-bold text-accent">{{ master.category|default:"General" }}</div>
+                        </div>
                     </div>
                 </div>
+                <div class="card-footer bg-transparent border-0 p-3">
+                    <a href="#" class="btn-auth-outline w-100 text-center">View Profile</a>
+                </div>
             </div>
+        </div>
         {% empty %}
             <p>No masters found. Be the first to create one!</p>
         {% endfor %}
