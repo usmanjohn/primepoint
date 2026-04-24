@@ -9,6 +9,8 @@
 - Use Function-Based Views (FBVs).
 - Templates must use Bootstrap CSS classes [if applicable].
 - Avoid Javascript where applicable
+- Make the pages mobile friendly
+- Make the project support PWA
 ## Common Commands
 - Run Server: `python manage.py runserver`
 - Migrations: `python manage.py makemigrations && python manage.py migrate`

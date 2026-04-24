@@ -4,7 +4,7 @@ from people.models import Profile
 class Panda(models.Model):
     PURPOSE_CHOICES = [('learning', 'Learning'), ('entertainment', 'Entertainment'), ('other', 'Other')]
     name = models.CharField(max_length=100, default='Panda')
-    master = models.ForeignKey(Master, null=True, blank=True, on_delete=models.CASCADE, related_name='panda')
+    masters = models.ManyToManyField(Master, blank=True, related_name='pandas')
     profile = models.OneToOneField(Profile, on_delete=models.CASCADE, related_name='panda')
     purpose = models.CharField(max_length=20, choices=PURPOSE_CHOICES, default='learning')
     rating = models.IntegerField(default=0) 

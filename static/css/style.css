@@ -1035,7 +1035,7 @@ h1, h2, h3, h4, h5, h6, .font-display {
   background: #fffdf9;
   box-shadow: 0 3px 14px rgba(201,146,58,.12);
 }
-.choice.selected {
+.choice:has(input:checked) {
   border-color: var(--gold);
   background: linear-gradient(135deg, #fffaf2 0%, #fef6e7 100%);
   box-shadow: 0 3px 16px rgba(201,146,58,.18);
@@ -1056,7 +1056,7 @@ h1, h2, h3, h4, h5, h6, .font-display {
   font-size: .7rem;
   color: transparent;
 }
-.choice.selected .choice-box {
+.choice:has(input:checked) .choice-box {
   background: var(--gold);
   border-color: var(--gold);
   color: #fff;
@@ -1067,7 +1067,7 @@ h1, h2, h3, h4, h5, h6, .font-display {
   line-height: 1.5;
   color: var(--ink);
 }
-.choice.selected .choice-label { font-weight: 500; }
+.choice:has(input:checked) .choice-label { font-weight: 500; }
 
 /* ── STICKY FOOTER ───────────────────────── */
 .q-footer {

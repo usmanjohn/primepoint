@@ -11,7 +11,7 @@
             <h1 class="page-title">Manage Practices</h1>
             <p class="page-subtitle">Create, edit, and monitor your practice sessions.</p>
         </div>
-        <a href="#" class="btn-auth-primary text-decoration-none py-2 px-4 shadow-sm">
+        <a href="{% url 'create_practice' %}" class="btn-auth-primary text-decoration-none py-2 px-4 shadow-sm">
             <i class="bi bi-plus-lg me-2"></i>New Practice
         </a>
     </div>
@@ -71,8 +71,9 @@
                                     <i class="bi bi-three-dots-vertical"></i>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="{% url 'practice_detail' practice.pk %}"><i class="bi bi-eye"></i> View</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="bi bi-pencil"></i> Edit</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'manage_questions' practice.pk %}"><i class="bi bi-list-ol"></i> Questions</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'edit_practice' practice.pk %}"><i class="bi bi-pencil"></i> Settings</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'practice_detail' practice.pk %}"><i class="bi bi-eye"></i> Preview</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li>
                                         <form method="post" action="{% url 'toggle_publish' practice.pk %}">
@@ -80,6 +81,15 @@
                                             <button type="submit" class="dropdown-item {% if practice.is_published %}text-danger{% else %}text-success{% endif %}">
                                                 <i class="bi {% if practice.is_published %}bi-eye-slash{% else %}bi-cloud-arrow-up{% endif %}"></i>
                                                 {% if practice.is_published %}Unpublish{% else %}Publish{% endif %}
+                                            </button>
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <form method="post" action="{% url 'toggle_available' practice.pk %}">
+                                            {% csrf_token %}
+                                            <button type="submit" class="dropdown-item {% if practice.is_available_for_all %}text-warning{% else %}text-muted{% endif %}">
+                                                <i class="bi {% if practice.is_available_for_all %}bi-lock{% else %}bi-share{% endif %}"></i>
+                                                {% if practice.is_available_for_all %}Make Private{% else %}Share for Homework{% endif %}
                                             </button>
                                         </form>
                                     </li>
@@ -97,7 +107,7 @@
         <i class="bi bi-folder-plus text-muted" style="font-size: 3rem;"></i>
         <h3 class="mt-3">No practices yet</h3>
         <p class="text-muted mb-4">Start by creating your first session for students.</p>
-        <a href="#" class="btn-auth-primary text-decoration-none py-2 px-5 d-inline-block">Create Now</a>
+        <a href="{% url 'create_practice' %}" class="btn-auth-primary text-decoration-none py-2 px-5 d-inline-block">Create Now</a>
     </div>
     {% endif %}
 </div>

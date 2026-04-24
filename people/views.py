@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from .forms import UserRegistrationForm, ProfileUpdateForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from masters.models import Master
 
 
 def register(request):
@@ -22,11 +23,32 @@ def register(request):
 
 
 def _profile_context(viewed_user, is_own_profile):
+    from homework.models import Homework, HomeworkAssignment
     people = viewed_user.profile
     master = getattr(people, 'master', None)
     panda = getattr(people, 'panda', None)
     practices = master.practices.filter(is_published=True).order_by('-created_at')[:5] if master else []
     recent_attempts = panda.attempts.filter(status='completed').order_by('-completed_at')[:5] if panda else []
+    all_masters = Master.objects.order_by('name') if panda else []
+
+    # Homework for profile display (own profile only — private data)
+    panda_hw_pending = panda_hw_done = master_hw = None
+    if is_own_profile:
+        if panda:
+            assignments = (
+                panda.homework_assignments
+                .select_related('homework__master', 'homework__practice', 'attempt')
+                .order_by('homework__due_date')
+            )
+            panda_hw_pending = assignments.filter(status='pending')[:5]
+            panda_hw_done = assignments.filter(status__in=['submitted', 'graded'])[:5]
+        if master:
+            master_hw = (
+                master.homeworks
+                .prefetch_related('assignments')
+                .order_by('-created_at')[:5]
+            )
+
     return {
         'people': people,
         'viewed_user': viewed_user,
@@ -35,6 +57,10 @@ def _profile_context(viewed_user, is_own_profile):
         'practices': practices,
         'recent_attempts': recent_attempts,
         'is_own_profile': is_own_profile,
+        'all_masters': all_masters,
+        'panda_hw_pending': panda_hw_pending,
+        'panda_hw_done': panda_hw_done,
+        'master_hw': master_hw,
     }
 
 
@@ -60,3 +86,14 @@ def profile_update(request):
     else:
         p_form = ProfileUpdateForm(instance=request.user.profile)
     return render(request, 'people/update_profile.html', {'p_form': p_form})
+
+
+@login_required
+def update_panda_masters(request):
+    panda = getattr(request.user.profile, 'panda', None)
+    if not panda or request.method != 'POST':
+        return redirect('profile')
+    selected_ids = request.POST.getlist('masters')
+    panda.masters.set(Master.objects.filter(pk__in=selected_ids))
+    messages.success(request, 'Your masters have been updated.')
+    return redirect('profile')

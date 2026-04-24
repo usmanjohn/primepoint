@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block nav_homework %}active{% endblock %}
+{% block title %}Manage Homework — CORE{% endblock %}
+
+{% block content %}
+<div class="content-area">
+
+  <div class="page-header d-flex justify-content-between align-items-end">
+    <div>
+      <h1 class="page-title">Manage Homework</h1>
+      <p class="page-subtitle">Assign and track homework for your students.</p>
+    </div>
+    <div class="d-flex gap-2">
+      <a href="{% url 'manage_groups' %}" class="btn-auth-outline text-decoration-none py-2 px-4">
+        <i class="bi bi-people me-2"></i>Groups
+      </a>
+      <a href="{% url 'create_homework' %}" class="btn-auth-primary text-decoration-none py-2 px-4 shadow-sm">
+        <i class="bi bi-plus-lg me-2"></i>New Homework
+      </a>
+    </div>
+  </div>
+
+  {% if homeworks %}
+  <div class="card border-0 shadow-sm overflow-hidden">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="bg-chrome text-white">
+          <tr>
+            <th class="ps-4 border-0">Homework</th>
+            <th class="border-0">Practice</th>
+            <th class="border-0 text-center">Pending</th>
+            <th class="border-0 text-center">Submitted</th>
+            <th class="border-0 text-center">Graded</th>
+            <th class="border-0">Due Date</th>
+            <th class="pe-4 border-0 text-end">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for hw in homeworks %}
+          <tr>
+            <td class="ps-4">
+              <div class="fw-bold text-dark">{{ hw.title }}</div>
+              <div class="text-muted extra-small">Created {{ hw.created_at|date:"M d, Y" }}</div>
+            </td>
+            <td>
+              <span class="text-muted" style="font-size:0.83rem;">{{ hw.practice.title|default:"—" }}</span>
+            </td>
+            <td class="text-center fw-medium text-warning">{{ hw.pending_count }}</td>
+            <td class="text-center fw-medium text-success">{{ hw.submitted_count }}</td>
+            <td class="text-center fw-medium" style="color: var(--accent);">{{ hw.graded_count }}</td>
+            <td>
+              {% if hw.due_date %}
+                <span class="text-muted" style="font-size:0.83rem;">{{ hw.due_date|date:"M d, Y H:i" }}</span>
+              {% else %}
+                <span class="text-muted" style="font-size:0.83rem;">No due date</span>
+              {% endif %}
+            </td>
+            <td class="pe-4 text-end">
+              <div class="dropdown">
+                <button class="btn btn-sm btn-light border" type="button" data-bs-toggle="dropdown">
+                  <i class="bi bi-three-dots-vertical"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item" href="{% url 'homework_detail' hw.pk %}"><i class="bi bi-people me-2"></i>View Students</a></li>
+                  <li><a class="dropdown-item" href="{% url 'assign_homework' hw.pk %}"><i class="bi bi-person-plus me-2"></i>Assign More</a></li>
+                  <li><a class="dropdown-item" href="{% url 'edit_homework' hw.pk %}"><i class="bi bi-pencil me-2"></i>Edit</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item text-danger" href="{% url 'delete_homework' hw.pk %}"><i class="bi bi-trash me-2"></i>Delete</a></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {% else %}
+  <div class="card p-5 text-center bg-transparent border-dashed">
+    <i class="bi bi-journal-plus text-muted" style="font-size: 3rem;"></i>
+    <h3 class="mt-3">No homework yet</h3>
+    <p class="text-muted mb-4">Create your first homework assignment for your students.</p>
+    <a href="{% url 'create_homework' %}" class="btn-auth-primary text-decoration-none py-2 px-5 d-inline-block">Create Now</a>
+  </div>
+  {% endif %}
+
+</div>
+{% endblock %}

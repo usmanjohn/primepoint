@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block nav_homework %}active{% endblock %}
+{% block title %}{% if group %}Edit Group{% else %}New Group{% endif %} — CORE{% endblock %}
+
+{% block extra_css %}
+<style>
+.form-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.form-section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--border);
+}
+.form-label-core {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+}
+.student-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.5rem;
+}
+.student-check-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.15s;
+}
+.student-check-label:hover { border-color: var(--accent); }
+.student-check-label input[type=checkbox] { accent-color: var(--accent); }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="content-area">
+
+  <div class="page-header">
+    <a href="{% url 'manage_groups' %}" class="btn-auth-outline text-decoration-none py-1 px-3 mb-3 d-inline-flex align-items-center gap-1" style="font-size:0.82rem;">
+      <i class="bi bi-arrow-left"></i> Groups
+    </a>
+    <h1 class="page-title">{% if group %}Edit "{{ group.name }}"{% else %}New Group{% endif %}</h1>
+  </div>
+
+  <form method="post">
+    {% csrf_token %}
+    <div class="row g-4">
+      <div class="col-12 col-lg-8">
+
+        <div class="form-section">
+          <p class="form-section-title">Group Details</p>
+          <div class="mb-4">
+            <label class="form-label-core">Group Name</label>
+            {{ form.name }}
+            {% if form.name.errors %}<div class="text-danger mt-1" style="font-size:0.78rem;">{{ form.name.errors }}</div>{% endif %}
+          </div>
+
+          <div>
+            <label class="form-label-core">Members</label>
+            {% if form.members.field.queryset.exists %}
+              <div class="student-list mt-2">
+                {% for checkbox in form.members %}
+                <label class="student-check-label">
+                  {{ checkbox.tag }}
+                  {{ checkbox.choice_label }}
+                </label>
+                {% endfor %}
+              </div>
+            {% else %}
+              <p class="text-muted" style="font-size:0.83rem;">No students linked to your master profile yet.</p>
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
+      <div class="col-12 col-lg-4">
+        <div class="form-section">
+          <p class="form-section-title">Actions</p>
+          <button type="submit" class="btn-auth-primary w-100 py-2 mb-2">
+            {% if group %}Save Changes{% else %}Create Group{% endif %}
+          </button>
+          <a href="{% url 'manage_groups' %}" class="btn-auth-outline w-100 py-2 text-decoration-none text-center d-block">Cancel</a>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
+{% endblock %}

@@ -35,7 +35,7 @@
             <div class="row g-3 mb-4">
                 {% include "partials/info_item.html" with label="Questions" value=question_count icon="bi-list-ol" %}
                 {% include "partials/info_item.html" with label="Total Points" value=total_points icon="bi-award" %}
-                {% include "partials/info_item.html" with label="Pass Score" value=practice.pass_score|add:"%" icon="bi-check2-circle" %}
+                {% include "partials/info_item.html" with label="Pass Score" value=practice.pass_score|floatformat:0 icon="bi-check2-circle" %}
                 {% include "partials/info_item.html" with label="Time Limit" value=practice.time_limit|default:"No limit" icon="bi-clock" %}
             </div>
 
@@ -43,14 +43,6 @@
             <div class="card p-4">
                 <h5 class="card-header border-0 bg-transparent p-0 mb-3" style="font-size: 0.85rem; letter-spacing: 1px; color: var(--text-muted);">PRACTICE RULES</h5>
                 <ul class="list-unstyled mb-0">
-                    <li class="d-flex align-items-center gap-3 py-3 border-bottom border-light">
-                        <i class="bi bi-shuffle text-accent fs-5"></i>
-                        <span class="text-muted">Questions are <strong>{% if practice.shuffle_questions %}shuffled{% else %}ordered{% endif %}</strong></span>
-                    </li>
-                    <li class="d-flex align-items-center gap-3 py-3 border-bottom border-light">
-                        <i class="bi bi-ui-checks-grid text-accent fs-5"></i>
-                        <span class="text-muted">Choice order is <strong>{% if practice.shuffle_choices %}randomized{% else %}fixed{% endif %}</strong></span>
-                    </li>
                     <li class="d-flex align-items-center gap-3 py-3">
                         <i class="bi bi-eye text-accent fs-5"></i>
                         <span class="text-muted">Detailed answers <strong>{% if practice.show_answers_after %}revealed{% else %}hidden{% endif %}</strong> at the end</span>

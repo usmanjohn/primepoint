@@ -1,79 +1,456 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}All Practices — CORE{% endblock %}
+{% block title %}Practice Hub{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ── Hero ─────────────────────────────────────────── */
+.pl-hero {
+  padding: 2rem 0 1.75rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.75rem;
+}
+.pl-eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+.pl-hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0 0 0.35rem;
+  line-height: 1.15;
+}
+.pl-hero-sub {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin: 0;
+}
+.pl-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+.pl-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.8rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.pl-pill i { color: var(--accent); font-size: 0.8rem; }
+
+/* ── Filters ──────────────────────────────────────── */
+.pl-filters {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+}
+.pl-filter-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+  margin-right: 0.25rem;
+}
+.pl-search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 180px;
+}
+.pl-search-wrap i {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  pointer-events: none;
+}
+.pl-search-wrap input {
+  width: 100%;
+  padding: 0.55rem 0.9rem 0.55rem 2.25rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  font-size: 0.84rem;
+  color: var(--text);
+  transition: var(--transition);
+}
+.pl-search-wrap input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+  background: var(--surface);
+}
+.pl-search-wrap input::placeholder { color: var(--text-muted); }
+.pl-select {
+  padding: 0.55rem 0.9rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  font-size: 0.84rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.pl-select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+.pl-btn-apply {
+  padding: 0.55rem 1.25rem;
+  background: var(--accent);
+  color: #0d1117;
+  border: none;
+  border-radius: 9px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+.pl-btn-apply:hover { background: #7dd3fc; }
+.pl-btn-clear {
+  padding: 0.55rem 0.9rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+.pl-btn-clear:hover { border-color: var(--danger); color: var(--danger); }
+
+/* ── Active filter tags ───────────────────────────── */
+.pl-active-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+.pl-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.22rem 0.7rem;
+  background: var(--accent-glow);
+  border: 1px solid rgba(56,189,248,0.25);
+  border-radius: 99px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.pl-results-info {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+.pl-results-info strong { color: var(--text); }
+
+/* ── Card Grid ────────────────────────────────────── */
+.pl-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+  gap: 1.1rem;
+}
+.pl-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.22s ease, border-color 0.2s ease;
+  position: relative;
+}
+.pl-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--pc);
+  opacity: 0.9;
+}
+.pl-card--easy   { --pc: #22c55e; }
+.pl-card--medium { --pc: #f59e0b; }
+.pl-card--hard   { --pc: #f87171; }
+.pl-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+  border-color: var(--pc);
+  text-decoration: none;
+  color: inherit;
+}
+.pl-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.35rem 1.4rem 1.25rem;
+}
+.pl-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+.pl-card-badges { display: flex; flex-direction: column; gap: 0.3rem; align-items: flex-end; }
+.pl-badge {
+  display: inline-block;
+  padding: 0.18rem 0.6rem;
+  border-radius: 5px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.pl-badge--easy   { background: rgba(34,197,94,0.12);  color: #16a34a; }
+.pl-badge--medium { background: rgba(245,158,11,0.12); color: #b45309; }
+.pl-badge--hard   { background: rgba(248,113,113,0.12);color: #dc2626; }
+.pl-badge--free   { background: rgba(56,189,248,0.12); color: #0284c7; }
+.pl-badge--paid   { background: rgba(100,116,139,0.1); color: #475569; }
+
+.pl-qcount {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--pc) 0%, color-mix(in srgb, var(--pc) 60%, #fff) 100%);
+  border-radius: 12px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.pl-qcount-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+}
+.pl-qcount-lbl {
+  font-size: 0.48rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
+}
+
+.pl-card-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+  margin: 0 0 0.45rem;
+}
+.pl-card-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+  flex: 1;
+}
+.pl-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border);
+}
+.pl-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.pl-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.28rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+.pl-meta-item i { font-size: 0.8rem; }
+.pl-card-cta {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--pc);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+/* ── Empty state ──────────────────────────────────── */
+.pl-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  grid-column: 1 / -1;
+}
+.pl-empty-icon { font-size: 2.75rem; color: var(--border); display: block; margin-bottom: 1rem; }
+.pl-empty h3 { font-family: 'Syne', sans-serif; color: var(--text); margin-bottom: 0.4rem; }
+.pl-empty p  { color: var(--text-muted); font-size: 0.88rem; margin: 0; }
+
+@media (max-width: 575px) {
+  .pl-hero h1 { font-size: 1.6rem; }
+  .pl-filter-label { display: none; }
+  .pl-grid { grid-template-columns: 1fr; }
+}
+</style>
+{% endblock %}
 
 {% block content %}
 <div class="content-area">
-    <!-- PAGE HEADER -->
-    <div class="page-header">
-        <h1 class="page-title">All Practices</h1>
-        <p class="page-subtitle">Explore available sessions and sharpen your skills.</p>
+
+  <!-- ── HERO ───────────────────────────────────────── -->
+  <div class="pl-hero">
+    <p class="pl-eyebrow">Practice Hub</p>
+    <h1>Sharpen your skills,<br>one session at a time.</h1>
+    <p class="pl-hero-sub">Pick a topic, challenge yourself, and track your progress across every session.</p>
+    <div class="pl-pills">
+      <span class="pl-pill"><i class="bi bi-collection-fill"></i> {{ practices|length }} Practice{{ practices|length|pluralize }} available</span>
+      <span class="pl-pill"><i class="bi bi-bookmarks-fill"></i> {{ subjects|length }} Subject{{ subjects|length|pluralize }}</span>
+      <span class="pl-pill"><i class="bi bi-lightning-charge-fill"></i> Free &amp; Paid sessions</span>
+    </div>
+  </div>
+
+  <!-- ── FILTERS ─────────────────────────────────────── -->
+  <form method="get" class="pl-filters">
+    <span class="pl-filter-label"><i class="bi bi-funnel-fill me-1"></i>Filter</span>
+
+    <div class="pl-search-wrap">
+      <i class="bi bi-search"></i>
+      <input type="text" name="q" placeholder="Search practices…" value="{{ query }}">
     </div>
 
-    <!-- FILTER BAR -->
-    <form method="get" class="filter-bar d-flex flex-wrap gap-2 mb-4">
-        <div class="search-wrapper">
-            <input type="text" name="q" class="form-core" placeholder="Search practices..." value="{{ query }}">
-        </div>
+    <select name="subject" class="pl-select">
+      <option value="">All Subjects</option>
+      {% for subj in subjects %}
+        <option value="{{ subj.id }}" {% if selected_subject == subj.id|stringformat:"s" %}selected{% endif %}>
+          {{ subj.name }}
+        </option>
+      {% endfor %}
+    </select>
 
-        <select name="subject" class="form-core">
-            <option value="">All Subjects</option>
-            {% for subj in subjects %}
-                <option value="{{ subj.id }}" {% if selected_subject == subj.id|stringformat:"s" %}selected{% endif %}>
-                    {{ subj.name }}
-                </option>
-            {% endfor %}
-        </select>
+    <select name="level" class="pl-select">
+      <option value="">Any Level</option>
+      <option value="easy"   {% if selected_level == 'easy'   %}selected{% endif %}>Easy</option>
+      <option value="medium" {% if selected_level == 'medium' %}selected{% endif %}>Medium</option>
+      <option value="hard"   {% if selected_level == 'hard'   %}selected{% endif %}>Hard</option>
+    </select>
 
-        <select name="level" class="form-core">
-            <option value="">Any Level</option>
-            <option value="easy" {% if selected_level == 'easy' %}selected{% endif %}>Easy</option>
-            <option value="medium" {% if selected_level == 'medium' %}selected{% endif %}>Medium</option>
-            <option value="hard" {% if selected_level == 'hard' %}selected{% endif %}>Hard</option>
-        </select>
+    <button type="submit" class="pl-btn-apply"><i class="bi bi-search me-1"></i>Search</button>
 
-        <button type="submit" class="btn-auth-primary border-0">Apply Filters</button>
-        
-        {% if query or selected_subject or selected_level %}
-            <a href="{% url 'practice_list' %}" class="btn-auth-outline">Clear</a>
-        {% endif %}
-    </form>
-
-    <!-- PRACTICE GRID -->
-    {% if practices %}
-    <div class="row g-4">
-        {% for practice in practices %}
-        <div class="col-12 col-md-6 col-xl-4">
-            <a href="{% url 'practice_detail' practice.pk %}" class="card h-100 text-decoration-none transition-hover">
-                <div class="card-body p-4 d-flex flex-column">
-                    <div class="d-flex justify-content-between align-items-start mb-3">
-                        <h3 class="practice-title mb-0">{{ practice.title }}</h3>
-                        <span class="badge-core badge-{{ practice.level }}">{{ practice.level|upper }}</span>
-                    </div>
-
-                    {% if practice.description %}
-                        <p class="practice-desc mb-3">{{ practice.description }}</p>
-                    {% endif %}
-
-                    <div class="practice-meta mt-auto pt-3 border-top d-flex gap-3">
-                        <span class="meta-item"><i class="bi bi-folder2"></i> {{ practice.subject.name }}</span>
-                        <span class="meta-item"><i class="bi bi-question-circle"></i> {{ practice.questions.count }}</span>
-                        {% if practice.time_limit %}
-                            <span class="meta-item"><i class="bi bi-stopwatch"></i> {{ practice.time_limit }}m</span>
-                        {% endif %}
-                    </div>
-                </div>
-            </a>
-        </div>
-        {% endfor %}
-    </div>
-    {% else %}
-    <div class="empty-state py-5 text-center">
-        <i class="bi bi-search text-muted" style="font-size: 3rem;"></i>
-        <h3 class="mt-3">No practices found</h3>
-        <p class="text-muted">Try adjusting your filters or search terms.</p>
-    </div>
+    {% if query or selected_subject or selected_level %}
+      <a href="{% url 'practice_list' %}" class="pl-btn-clear"><i class="bi bi-x-lg me-1"></i>Clear</a>
     {% endif %}
+  </form>
+
+  <!-- ── ACTIVE FILTER TAGS ─────────────────────────── -->
+  {% if query or selected_subject or selected_level %}
+  <div class="pl-active-row">
+    {% if query %}
+      <span class="pl-tag"><i class="bi bi-search"></i> "{{ query }}"</span>
+    {% endif %}
+    {% if selected_level %}
+      <span class="pl-tag"><i class="bi bi-bar-chart"></i> {{ selected_level }}</span>
+    {% endif %}
+    {% if selected_subject %}
+      {% for subj in subjects %}{% if subj.id|stringformat:"s" == selected_subject %}
+        <span class="pl-tag"><i class="bi bi-bookmark"></i> {{ subj.name }}</span>
+      {% endif %}{% endfor %}
+    {% endif %}
+    <span class="pl-results-info"><strong>{{ practices|length }}</strong> result{{ practices|length|pluralize }} found</span>
+  </div>
+  {% endif %}
+
+  <!-- ── CARD GRID ───────────────────────────────────── -->
+  <div class="pl-grid">
+    {% for practice in practices %}
+    <a href="{% url 'practice_detail' practice.pk %}" class="pl-card pl-card--{{ practice.level }}">
+      <div class="pl-card-body">
+
+        <div class="pl-card-header">
+          <div class="pl-qcount">
+            <span class="pl-qcount-num">{{ practice.question_count }}</span>
+            <span class="pl-qcount-lbl">Q's</span>
+          </div>
+          <div class="pl-card-badges">
+            <span class="pl-badge pl-badge--{{ practice.level }}">{{ practice.level }}</span>
+            <span class="pl-badge {% if practice.is_free %}pl-badge--free{% else %}pl-badge--paid{% endif %}">
+              {% if practice.is_free %}Free{% else %}Paid{% endif %}
+            </span>
+          </div>
+        </div>
+
+        <h3 class="pl-card-title">{{ practice.title }}</h3>
+
+        {% if practice.description %}
+          <p class="pl-card-desc">{{ practice.description }}</p>
+        {% else %}
+          <p class="pl-card-desc" style="opacity:0.4;font-style:italic;">No description provided.</p>
+        {% endif %}
+
+        <div class="pl-card-footer">
+          <div class="pl-card-meta">
+            {% if practice.subject %}
+              <span class="pl-meta-item"><i class="bi bi-bookmark"></i> {{ practice.subject.name }}</span>
+            {% endif %}
+            {% if practice.time_limit %}
+              <span class="pl-meta-item"><i class="bi bi-stopwatch"></i> {{ practice.time_limit }}m</span>
+            {% else %}
+              <span class="pl-meta-item"><i class="bi bi-infinity"></i> No limit</span>
+            {% endif %}
+          </div>
+          <span class="pl-card-cta">Start <i class="bi bi-arrow-right"></i></span>
+        </div>
+
+      </div>
+    </a>
+    {% empty %}
+    <div class="pl-empty">
+      <i class="bi bi-search pl-empty-icon"></i>
+      <h3>No practices found</h3>
+      <p>Try different keywords or remove some filters.</p>
+    </div>
+    {% endfor %}
+  </div>
+
 </div>
 {% endblock %}

@@ -2,19 +2,29 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.utils import timezone
-from django.db.models import Q, Count, Avg
+from django.db.models import Q, Count
 from panda.models import Panda
-from masters.models import Master   
 
 from .models import Practice, PracticeQuestion, PracticeChoice, PracticeAttempt, UserAnswer, Subject
+from .forms import PracticeForm, PracticeQuestionForm
+
+# Avoid circular import — imported lazily in finish_practice
+def _auto_link_homework(attempt):
+    from homework.models import HomeworkAssignment
+    HomeworkAssignment.objects.filter(
+        panda=attempt.panda,
+        homework__practice=attempt.practice,
+        status='pending',
+    ).update(attempt=attempt, status='submitted', submitted_at=attempt.completed_at)
 
 
 # ─────────────────────────────────────────────
 # 1. PRACTICE LIST — Browse & filter practices
 # ─────────────────────────────────────────────
 def practice_list(request):
-    practices = Practice.objects.filter(is_published=True).select_related('subject', 'master')
-    print(f"DEBUG: Initial practices count: {practices.count()}")
+    practices = Practice.objects.filter(is_published=True).select_related('subject', 'master').annotate(
+        question_count=Count('questions', distinct=True)
+    )
     # Filter by subject
     subject_id = request.GET.get('subject')
     if subject_id:
@@ -60,7 +70,7 @@ def practice_detail(request, pk):
     total_points = sum(q.points for q in practice.questions.all())
 
     # How many attempts has this panda already made?
-    panda, created = Panda.objects.get_or_create(profile=request.user.profile)
+    panda, _ = Panda.objects.get_or_create(profile=request.user.profile)
     attempt_count = PracticeAttempt.objects.filter(panda=panda, practice=practice).count()
     can_attempt = practice.max_attempts == 0 or attempt_count < practice.max_attempts
 
@@ -89,7 +99,7 @@ def practice_detail(request, pk):
 @login_required
 def start_practice(request, pk):
     practice = get_object_or_404(Practice, pk=pk, is_published=True)
-    panda, created = Panda.objects.get_or_create(profile=request.user.profile)
+    panda, _ = Panda.objects.get_or_create(profile=request.user.profile)
 
     # Check attempt limit
     attempt_count = PracticeAttempt.objects.filter(panda=panda, practice=practice).count()
@@ -123,7 +133,6 @@ def take_practice(request, attempt_id):
     # Which question index are we on?
     question_index = int(request.GET.get('q', 0))
     question_index = max(0, min(question_index, len(questions) - 1))
-    print(f"DEBUG: question_index={question_index}, total_questions={len(questions)}")
     current_question = questions[question_index]
 
     # Already-saved answer for this question
@@ -149,12 +158,16 @@ def take_practice(request, attempt_id):
         return redirect(f"{request.path}?q={question_index + 1}")
 
     choices = list(current_question.choices.all())
-    if practice.shuffle_choices:
-        import random
-        random.shuffle(choices)
 
-    # Progress: how many questions have been answered
-    answered_count = UserAnswer.objects.filter(attempt=attempt).count()
+    answered_ids = set(UserAnswer.objects.filter(attempt=attempt).values_list('question_id', flat=True))
+
+    # Timer: calculate remaining seconds; redirect immediately if already expired
+    seconds_remaining = None
+    if practice.time_limit:
+        elapsed = (timezone.now() - attempt.start_time).total_seconds()
+        seconds_remaining = max(0, int(practice.time_limit * 60 - elapsed))
+        if seconds_remaining == 0:
+            return redirect('finish_practice', attempt_id=attempt.id)
 
     context = {
         'attempt': attempt,
@@ -165,8 +178,10 @@ def take_practice(request, attempt_id):
         'total_questions': len(questions),
         'choices': choices,
         'existing_choice_ids': existing_choice_ids,
-        'answered_count': answered_count,
+        'answered_ids': answered_ids,
+        'answered_count': len(answered_ids),
         'is_last_question': question_index == len(questions) - 1,
+        'seconds_remaining': seconds_remaining,
     }
     return render(request, 'practice/take_practice.html', context)
 
@@ -200,6 +215,7 @@ def finish_practice(request, attempt_id):
         attempt.status = 'completed'
         attempt.completed_at = timezone.now()
         attempt.save()
+        _auto_link_homework(attempt)
 
     return redirect('practice_result', attempt_id=attempt.id)
 
@@ -211,25 +227,40 @@ def finish_practice(request, attempt_id):
 def practice_result(request, attempt_id):
     attempt = get_object_or_404(PracticeAttempt, id=attempt_id, panda=request.user.profile.panda)
     practice = attempt.practice
+    panda = request.user.profile.panda
 
     passed = attempt.score >= practice.pass_score
     duration = None
     if attempt.completed_at:
         delta = attempt.completed_at - attempt.start_time
-        duration = int(delta.total_seconds() // 60)  # minutes
+        duration = int(delta.total_seconds() // 60)
 
-    # Build per-question results for review
+    attempt_count = PracticeAttempt.objects.filter(panda=panda, practice=practice).count()
+    can_retry = practice.max_attempts == 0 or attempt_count < practice.max_attempts
+
+    total_questions = practice.questions.count()
+    total_points = sum(q.points for q in practice.questions.all())
+    earned_points = round(attempt.score / 100 * total_points, 1) if total_points > 0 else 0
+
+    # Build per-question results for review (all questions, answered or not)
     question_results = []
     if practice.show_answers_after:
-        answers = attempt.answers.prefetch_related(
-            'question__choices', 'selected_choices'
-        ).select_related('question')
+        # Index answers by question_id so we can look them up quickly
+        answers_by_qid = {}
+        for ans in attempt.answers.prefetch_related('selected_choices'):
+            answers_by_qid[ans.question_id] = ans
 
-        for answer in answers.order_by('question__order'):
-            question = answer.question
+        for question in practice.questions.prefetch_related('choices').order_by('order'):
             correct_ids = set(question.choices.filter(is_correct=True).values_list('id', flat=True))
-            selected_ids = set(answer.selected_choices.values_list('id', flat=True))
-            is_correct = correct_ids == selected_ids
+
+            if question.id in answers_by_qid:
+                selected_ids = set(answers_by_qid[question.id].selected_choices.values_list('id', flat=True))
+                is_correct = correct_ids == selected_ids
+                was_answered = True
+            else:
+                selected_ids = set()
+                is_correct = False
+                was_answered = False
 
             question_results.append({
                 'question': question,
@@ -237,6 +268,7 @@ def practice_result(request, attempt_id):
                 'selected_ids': selected_ids,
                 'correct_ids': correct_ids,
                 'is_correct': is_correct,
+                'was_answered': was_answered,
             })
 
     context = {
@@ -244,30 +276,33 @@ def practice_result(request, attempt_id):
         'practice': practice,
         'passed': passed,
         'duration': duration,
+        'can_retry': can_retry,
+        'total_questions': total_questions,
+        'earned_points': earned_points,
+        'total_points': total_points,
         'question_results': question_results,
     }
     return render(request, 'practice/practice_result.html', context)
 
 
 # ─────────────────────────────────────────────
-# 7. MANAGE practice — Master's dashboard
+# 7. MANAGE PRACTICES — Master's dashboard
 # ─────────────────────────────────────────────
 @login_required
 def manage_practices(request):
-    master = request.user.profile.master  # Adjust to your Master lookup
+    if not hasattr(request.user.profile, 'master'):
+        messages.error(request, "You need a Master profile to manage practices.")
+        return redirect('masters-create')
+    master = request.user.profile.master
     practices = Practice.objects.filter(master=master).annotate(
-        question_count=Count('questions'),
-        attempt_count=Count('practiceattempt'),
+        question_count=Count('questions', distinct=True),
+        attempt_count=Count('attempts', distinct=True),
     ).order_by('-created_at')
-
-    context = {
-        'practices': practices,
-    }
-    return render(request, 'practice/manage_practices.html', context)
+    return render(request, 'practice/manage_practices.html', {'practices': practices})
 
 
 # ─────────────────────────────────────────────
-# 8. TOGGLE PUBLISH — Quick publish/unpublish
+# 8. TOGGLE PUBLISH
 # ─────────────────────────────────────────────
 @login_required
 def toggle_publish(request, pk):
@@ -277,3 +312,160 @@ def toggle_publish(request, pk):
     status = "published" if practice.is_published else "unpublished"
     messages.success(request, f'"{practice.title}" has been {status}.')
     return redirect('manage_practices')
+
+
+# ─────────────────────────────────────────────
+# 9. TOGGLE AVAILABLE FOR ALL
+# ─────────────────────────────────────────────
+@login_required
+def toggle_available(request, pk):
+    practice = get_object_or_404(Practice, pk=pk, master=request.user.profile.master)
+    practice.is_available_for_all = not practice.is_available_for_all
+    practice.save()
+    state = "shared with all masters" if practice.is_available_for_all else "set to private"
+    messages.success(request, f'"{practice.title}" {state}.')
+    return redirect('manage_practices')
+
+
+# ─────────────────────────────────────────────
+# 10. CREATE PRACTICE
+# ─────────────────────────────────────────────
+@login_required
+def create_practice(request):
+    if not hasattr(request.user.profile, 'master'):
+        messages.error(request, "You need a Master profile to create practices.")
+        return redirect('masters-create')
+    master = request.user.profile.master
+
+    if request.method == 'POST':
+        form = PracticeForm(request.POST)
+        if form.is_valid():
+            practice = form.save(commit=False)
+            practice.master = master
+            practice.save()
+            messages.success(request, f'"{practice.title}" created. Now add questions.')
+            return redirect('manage_questions', pk=practice.pk)
+    else:
+        form = PracticeForm()
+    return render(request, 'practice/practice_form.html', {'form': form, 'action': 'create'})
+
+
+# ─────────────────────────────────────────────
+# 10. EDIT PRACTICE
+# ─────────────────────────────────────────────
+@login_required
+def edit_practice(request, pk):
+    practice = get_object_or_404(Practice, pk=pk, master=request.user.profile.master)
+    if request.method == 'POST':
+        form = PracticeForm(request.POST, instance=practice)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Practice settings updated.')
+            return redirect('manage_questions', pk=practice.pk)
+    else:
+        form = PracticeForm(instance=practice)
+    return render(request, 'practice/practice_form.html', {
+        'form': form, 'action': 'edit', 'practice': practice,
+    })
+
+
+# ─────────────────────────────────────────────
+# 11. MANAGE QUESTIONS — Question list for a practice
+# ─────────────────────────────────────────────
+@login_required
+def manage_questions(request, pk):
+    practice = get_object_or_404(Practice, pk=pk, master=request.user.profile.master)
+    questions = practice.questions.prefetch_related('choices').all()
+    return render(request, 'practice/manage_questions.html', {
+        'practice': practice,
+        'questions': questions,
+    })
+
+
+# ─────────────────────────────────────────────
+# 12. ADD QUESTION
+# ─────────────────────────────────────────────
+@login_required
+def add_question(request, pk):
+    practice = get_object_or_404(Practice, pk=pk, master=request.user.profile.master)
+
+    if request.method == 'POST':
+        form = PracticeQuestionForm(request.POST, request.FILES)
+        if form.is_valid():
+            question = form.save(commit=False)
+            question.practice = practice
+            question.made_by = practice.master
+            question.save()
+            for i in range(1, 5):
+                text = request.POST.get(f'choice_text_{i}', '').strip()
+                is_correct = f'choice_correct_{i}' in request.POST
+                if text:
+                    PracticeChoice.objects.create(question=question, text=text, is_correct=is_correct)
+            messages.success(request, 'Question added.')
+            return redirect('manage_questions', pk=practice.pk)
+    else:
+        form = PracticeQuestionForm(initial={'order': practice.questions.count() + 1})
+
+    choice_slots = [{'num': i, 'text': '', 'is_correct': False} for i in range(1, 5)]
+    return render(request, 'practice/question_form.html', {
+        'practice': practice,
+        'form': form,
+        'action': 'add',
+        'choice_slots': choice_slots,
+    })
+
+
+# ─────────────────────────────────────────────
+# 13. EDIT QUESTION
+# ─────────────────────────────────────────────
+@login_required
+def edit_question(request, pk, qpk):
+    practice = get_object_or_404(Practice, pk=pk, master=request.user.profile.master)
+    question = get_object_or_404(PracticeQuestion, pk=qpk, practice=practice)
+    existing = list(question.choices.all())
+
+    if request.method == 'POST':
+        form = PracticeQuestionForm(request.POST, request.FILES, instance=question)
+        if form.is_valid():
+            form.save()
+            question.choices.all().delete()
+            for i in range(1, 5):
+                text = request.POST.get(f'choice_text_{i}', '').strip()
+                is_correct = f'choice_correct_{i}' in request.POST
+                if text:
+                    PracticeChoice.objects.create(question=question, text=text, is_correct=is_correct)
+            messages.success(request, 'Question updated.')
+            return redirect('manage_questions', pk=practice.pk)
+    else:
+        form = PracticeQuestionForm(instance=question)
+
+    # Build 4 pre-filled slots for the template
+    choice_slots = []
+    for i in range(1, 5):
+        c = existing[i - 1] if i - 1 < len(existing) else None
+        choice_slots.append({
+            'num': i,
+            'text': c.text if c else '',
+            'is_correct': c.is_correct if c else False,
+        })
+
+    return render(request, 'practice/question_form.html', {
+        'practice': practice,
+        'form': form,
+        'action': 'edit',
+        'question': question,
+        'choice_slots': choice_slots,
+    })
+
+
+# ─────────────────────────────────────────────
+# 14. DELETE QUESTION
+# ─────────────────────────────────────────────
+@login_required
+def delete_question(request, pk, qpk):
+    practice = get_object_or_404(Practice, pk=pk, master=request.user.profile.master)
+    question = get_object_or_404(PracticeQuestion, pk=qpk, practice=practice)
+    if request.method == 'POST':
+        question.delete()
+        messages.success(request, 'Question deleted.')
+    return redirect('manage_questions', pk=practice.pk)

@@ -22,10 +22,8 @@ class Master(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def update_stats(self):
-        """Call this to refresh teacher stats based on related Pandas."""
-        self.student_count = self.panda.count()
-        # Assuming Panda has a rating field representing student performance/satisfaction
-        avg = self.panda.aggregate(Avg('rating'))['rating__avg'] or 0
+        self.student_count = self.pandas.count()
+        avg = self.pandas.aggregate(Avg('rating'))['rating__avg'] or 0
         self.avg_rating = avg
         self.save()
 

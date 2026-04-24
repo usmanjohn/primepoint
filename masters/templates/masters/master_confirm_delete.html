@@ -1,27 +1,29 @@
 {% extends 'base.html' %}
 
+{% block title %}Delete Profile — CORE{% endblock %}
+
 {% block content %}
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card border-danger shadow">
-                <div class="card-header bg-danger text-white">
-                    <h4 class="mb-0">Confirm Deletion</h4>
-                </div>
-                <div class="card-body text-center">
-                    <p class="lead">Are you sure you want to delete the profile for <strong>"{{ object.name }}"</strong>?</p>
-                    <p class="text-danger small">This action cannot be undone. All associated data and certificates will be removed.</p>
-                    
-                    <form method="POST">
-                        {% csrf_token %}
-                        <div class="d-grid gap-2 d-md-block">
-                            <button type="submit" class="btn btn-danger px-4">Yes, Delete Permanently</button>
-                            <a href="{% url 'masters-detail' master.id %}" class="btn btn-secondary px-4">Cancel</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+<div class="content-area">
+  <div style="max-width: 500px; margin: 3rem auto;">
+    <div class="card p-4 text-center" style="border-top: 4px solid var(--danger);">
+      <i class="bi bi-exclamation-triangle-fill" style="font-size: 2.5rem; color: var(--danger);"></i>
+      <h2 class="page-title mt-3 mb-2" style="font-size: 1.3rem;">Delete Master Profile</h2>
+      <p class="text-muted mb-1">
+        You are about to permanently delete the profile for <strong>"{{ master.name }}"</strong>.
+      </p>
+      <p class="small text-muted mb-4">
+        This will also remove all associated practices and data. This cannot be undone.
+      </p>
+      <form method="post" class="d-flex gap-3 justify-content-center">
+        {% csrf_token %}
+        <button type="submit" class="btn-auth-primary border-0 py-2 px-4" style="background: var(--danger);">
+          <i class="bi bi-trash me-1"></i>Yes, Delete Permanently
+        </button>
+        <a href="{% url 'masters-detail' master.id %}" class="btn-auth-outline text-decoration-none py-2 px-4">
+          Cancel
+        </a>
+      </form>
     </div>
+  </div>
 </div>
 {% endblock %}

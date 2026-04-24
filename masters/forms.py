@@ -1,12 +1,23 @@
 from django import forms
 from .models import Master
 
+
 class MasterForm(forms.ModelForm):
-    # Change __dict__ to Meta
-    class Meta: 
+    class Meta:
         model = Master
-        fields = ['profile', 'name', 'subject', 'category', 'description']
+        fields = ['name', 'subject', 'category', 'description']
         widgets = {
-            'description': forms.Textarea(attrs={'rows': 4, 'placeholder': 'Tell us about your expertise...'}),
-            'name': forms.TextInput(attrs={'placeholder': 'Master Name'}),
+            'name': forms.TextInput(attrs={
+                'class': 'form-core', 'placeholder': 'Your display name',
+            }),
+            'subject': forms.TextInput(attrs={
+                'class': 'form-core', 'placeholder': 'e.g. Mathematics, Programming…',
+            }),
+            'category': forms.TextInput(attrs={
+                'class': 'form-core', 'placeholder': 'e.g. Science, Languages…',
+            }),
+            'description': forms.Textarea(attrs={
+                'class': 'form-core', 'rows': 4,
+                'placeholder': 'Tell students about your expertise and teaching style…',
+            }),
         }

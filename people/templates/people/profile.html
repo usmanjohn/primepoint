@@ -291,6 +291,42 @@
         {% endif %}
         {% endif %}
 
+        <!-- Master Homework Card (own profile only) -->
+        {% if master and is_own_profile %}
+        <div class="card profile-card mb-4">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-journal-bookmark-fill text-accent"></i>
+                    My Homework (as Master)
+                </div>
+                <a href="{% url 'manage_homework' %}" class="btn-text-link">Manage all →</a>
+            </div>
+            {% if master_hw %}
+            <div class="card-body p-0">
+                {% for hw in master_hw %}
+                <a href="{% url 'homework_detail' hw.pk %}" class="practice-row-link">
+                    <div class="practice-row-info">
+                        <span class="practice-row-title">{{ hw.title }}</span>
+                        <span class="practice-row-meta">
+                            {{ hw.pending_count }} pending · {{ hw.submitted_count }} submitted
+                            {% if hw.due_date %} · Due {{ hw.due_date|date:"M d" }}{% endif %}
+                        </span>
+                    </div>
+                    <i class="bi bi-chevron-right text-muted" style="font-size:0.75rem;"></i>
+                </a>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="card-body text-center py-4">
+                <p class="text-muted small mb-2">No homework created yet.</p>
+                <a href="{% url 'create_homework' %}" class="btn-core-outline" style="font-size:0.8rem;">
+                    <i class="bi bi-plus"></i> Create Homework
+                </a>
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
         <!-- Panda (Student) Profile Card -->
         {% if panda %}
         <div class="card profile-card mb-4">
@@ -323,12 +359,41 @@
                     </div>
                 </div>
 
-                {% if panda.master %}
-                <div class="panda-master-info mt-3 pt-3" style="border-top:1px solid var(--border);">
-                    <span class="small text-muted">Current Master: </span>
-                    <a href="{% url 'masters-detail' panda.master.pk %}" class="panda-master-link">
-                        <i class="bi bi-person-badge"></i> {{ panda.master.name }}
-                    </a>
+                <!-- Current masters -->
+                {% with current_masters=panda.masters.all %}
+                {% if current_masters %}
+                <div class="mt-3 pt-3" style="border-top:1px solid var(--border);">
+                    <span class="small text-muted d-block mb-2">My Masters</span>
+                    <div class="d-flex flex-wrap gap-2">
+                        {% for m in current_masters %}
+                        <a href="{% url 'masters-detail' m.pk %}" class="panda-master-link d-inline-flex align-items-center gap-1">
+                            <i class="bi bi-person-badge"></i> {{ m.name }}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                {% endwith %}
+
+                <!-- Master picker (own profile only) -->
+                {% if is_own_profile and all_masters %}
+                <div class="mt-3 pt-3" style="border-top:1px solid var(--border);">
+                    <span class="small text-muted d-block mb-2">Choose your masters</span>
+                    <form method="post" action="{% url 'update_panda_masters' %}">
+                        {% csrf_token %}
+                        <div class="d-flex flex-column gap-1 mb-3">
+                            {% for m in all_masters %}
+                            <label class="d-flex align-items-center gap-2" style="font-size:0.85rem; cursor:pointer; padding:0.4rem 0.6rem; border:1px solid var(--border); border-radius:8px;">
+                                <input type="checkbox" name="masters" value="{{ m.pk }}"
+                                    {% if m in panda.masters.all %}checked{% endif %}
+                                    style="accent-color:var(--accent);">
+                                <span class="fw-semibold">{{ m.name }}</span>
+                                <span class="text-muted ms-1" style="font-size:0.75rem;">{{ m.subject }}</span>
+                            </label>
+                            {% endfor %}
+                        </div>
+                        <button type="submit" class="btn-core-outline w-100" style="font-size:0.82rem;">Save Masters</button>
+                    </form>
                 </div>
                 {% endif %}
             </div>
@@ -337,7 +402,7 @@
         <!-- Recent Attempts (own profile only — private data) -->
         {% if is_own_profile %}
         {% if recent_attempts %}
-        <div class="card profile-card">
+        <div class="card profile-card mb-4">
             <div class="card-header d-flex align-items-center gap-2">
                 <i class="bi bi-clock-history text-accent"></i>
                 Recent Practice Attempts
@@ -360,7 +425,7 @@
             </div>
         </div>
         {% else %}
-        <div class="card profile-card">
+        <div class="card profile-card mb-4">
             <div class="card-header d-flex align-items-center gap-2">
                 <i class="bi bi-clock-history text-accent"></i>
                 Recent Practice Attempts
@@ -373,6 +438,59 @@
             </div>
         </div>
         {% endif %}
+
+        <!-- Homework cards (student view) -->
+        <div class="card profile-card mb-4">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-journal-bookmark-fill text-accent"></i>
+                    My Homework
+                    {% if panda_hw_pending.count %}<span class="badge bg-warning text-dark rounded-pill ms-1" style="font-size:0.65rem;">{{ panda_hw_pending.count }}</span>{% endif %}
+                </div>
+                <a href="{% url 'my_homework' %}" class="btn-text-link">See all →</a>
+            </div>
+            {% if panda_hw_pending or panda_hw_done %}
+            <div class="card-body p-0">
+                {% for a in panda_hw_pending %}
+                <a href="{% url 'practice_detail' a.homework.practice.pk %}" class="practice-row-link">
+                    <div class="practice-row-info">
+                        <span class="practice-row-title">{{ a.homework.title }}</span>
+                        <span class="practice-row-meta">
+                            {{ a.homework.master.name }}{% if a.homework.due_date %} · Due {{ a.homework.due_date|date:"M d" }}{% endif %}
+                        </span>
+                    </div>
+                    <div class="practice-row-badges">
+                        <span class="badge-sm" style="background:#fff3cd; color:#856404;">Pending</span>
+                        <i class="bi bi-chevron-right text-muted" style="font-size:0.75rem;"></i>
+                    </div>
+                </a>
+                {% endfor %}
+                {% for a in panda_hw_done %}
+                <div class="practice-row-link" style="cursor:default;">
+                    <div class="practice-row-info">
+                        <span class="practice-row-title">{{ a.homework.title }}</span>
+                        <span class="practice-row-meta">
+                            {{ a.homework.master.name }}{% if a.submitted_at %} · {{ a.submitted_at|date:"M d" }}{% endif %}
+                        </span>
+                    </div>
+                    <div class="practice-row-badges">
+                        {% if a.attempt %}
+                        <span class="score-chip {% if a.attempt.score >= a.homework.practice.pass_score %}pass{% else %}fail{% endif %}">
+                            {{ a.attempt.score|floatformat:0 }}%
+                        </span>
+                        {% else %}
+                        <span class="badge-sm" style="background:#d1f2d1; color:#0d6e0d;">{{ a.get_status_display }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="card-body text-center py-4">
+                <p class="text-muted small mb-0">No homework assigned yet.</p>
+            </div>
+            {% endif %}
+        </div>
         {% endif %}
         {% endif %}
 
