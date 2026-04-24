@@ -95,6 +95,11 @@
                 <span class="nav-label">Homework</span>
             </a>
 
+            <a href="{% url 'discussion_home' %}" class="nav-link {% block nav_discussion %}{% endblock %}">
+                <i class="bi bi-chat-square-dots-fill"></i>
+                <span class="nav-label">Discussion</span>
+            </a>
+
             <span class="nav-section">Support</span>
         
             <a href="#" class="nav-link {% block nav_about %}{% endblock %}">

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'practice',
     'panda',
     'homework',
+    'discussion',
 ]
 
 MIDDLEWARE = [

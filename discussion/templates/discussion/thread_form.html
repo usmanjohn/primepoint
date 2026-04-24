@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ action }} Thread — Discussion{% endblock %}
+{% block page_name %}{{ action }} Thread{% endblock %}
+{% block nav_discussion %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+:root {
+    --disc-radius: 14px;
+    --disc-card-bg: var(--chrome-bg, #1e293b);
+    --disc-border: rgba(255,255,255,0.07);
+    --disc-muted: rgba(255,255,255,0.45);
+    --disc-accent: #6366f1;
+    --disc-accent-glow: rgba(99,102,241,0.15);
+}
+.form-card {
+    background: var(--disc-card-bg);
+    border: 1px solid var(--disc-border);
+    border-radius: var(--disc-radius);
+    padding: 2rem;
+    max-width: 760px; margin: 0 auto;
+}
+.form-card h5 { font-family: 'Syne', sans-serif; font-weight: 700; margin-bottom: 1.5rem; }
+.form-label { font-size: .85rem; font-weight: 600; margin-bottom: .35rem; }
+.form-control, .form-select {
+    background: rgba(255,255,255,.04) !important;
+    border: 1px solid var(--disc-border) !important;
+    border-radius: 10px !important; color: inherit !important;
+}
+.form-control:focus, .form-select:focus {
+    border-color: var(--disc-accent) !important;
+    box-shadow: 0 0 0 3px var(--disc-accent-glow) !important;
+}
+.form-control::placeholder { color: var(--disc-muted); }
+.announce-row {
+    display: flex; align-items: center; gap: .75rem;
+    background: rgba(167,139,250,.08); border: 1px solid rgba(167,139,250,.2);
+    border-radius: 10px; padding: .75rem 1rem;
+}
+.announce-row label { font-size: .88rem; color: #c4b5fd; margin: 0; font-weight: 500; }
+.announce-row small { display: block; font-size: .75rem; color: var(--disc-muted); }
+.tip-box {
+    background: var(--disc-accent-glow); border: 1px solid rgba(99,102,241,.2);
+    border-radius: 10px; padding: .75rem 1rem; font-size: .82rem; margin-bottom: 1.5rem;
+    color: #a5b4fc;
+}
+.btn-submit {
+    background: var(--disc-accent); color: #fff; border: none;
+    border-radius: 10px; padding: .65rem 1.75rem; font-weight: 600;
+    cursor: pointer; transition: opacity .15s;
+}
+.btn-submit:hover { opacity: .88; }
+.btn-cancel {
+    background: rgba(255,255,255,.05); border: 1px solid var(--disc-border);
+    border-radius: 10px; padding: .65rem 1.25rem; color: inherit;
+    text-decoration: none; font-size: .88rem; transition: background .12s;
+}
+.btn-cancel:hover { background: rgba(255,255,255,.09); color: inherit; }
+.char-hint { font-size: .75rem; color: var(--disc-muted); float: right; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 px-md-4 py-4">
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb" style="font-size:.82rem;">
+            <li class="breadcrumb-item"><a href="{% url 'discussion_home' %}" style="color:#a5b4fc;">Discussion</a></li>
+            {% if thread %}
+            <li class="breadcrumb-item"><a href="{% url 'thread_detail' thread.pk %}" style="color:#a5b4fc;">{{ thread.title|truncatechars:30 }}</a></li>
+            {% endif %}
+            <li class="breadcrumb-item active text-muted">{{ action }} Thread</li>
+        </ol>
+    </nav>
+
+    <div class="form-card">
+        <h5>
+            {% if action == 'Create' %}
+            <i class="bi bi-plus-circle-fill me-2" style="color:#6366f1;"></i>Start a New Thread
+            {% else %}
+            <i class="bi bi-pencil-fill me-2" style="color:#6366f1;"></i>Edit Thread
+            {% endif %}
+        </h5>
+
+        {% if action == 'Create' %}
+        <div class="tip-box">
+            <i class="bi bi-lightbulb me-1"></i>
+            <strong>Pro tip:</strong> A clear, specific title and detailed description gets better answers faster.
+        </div>
+        {% endif %}
+
+        <form method="post" novalidate>
+            {% csrf_token %}
+
+            <!-- Title -->
+            <div class="mb-3">
+                <label class="form-label" for="{{ form.title.id_for_label }}">
+                    Title <span style="color:#ef4444;">*</span>
+                </label>
+                {{ form.title }}
+                {% if form.title.errors %}
+                <div class="text-danger mt-1" style="font-size:.8rem;">{{ form.title.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <!-- Category -->
+            <div class="mb-3">
+                <label class="form-label" for="{{ form.category.id_for_label }}">
+                    Category <span style="color:#ef4444;">*</span>
+                </label>
+                {{ form.category }}
+                {% if form.category.errors %}
+                <div class="text-danger mt-1" style="font-size:.8rem;">{{ form.category.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <!-- Body -->
+            <div class="mb-3">
+                <label class="form-label" for="{{ form.body.id_for_label }}">
+                    Content <span style="color:#ef4444;">*</span>
+                </label>
+                {{ form.body }}
+                {% if form.body.errors %}
+                <div class="text-danger mt-1" style="font-size:.8rem;">{{ form.body.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <!-- Announcement (masters/admins only) -->
+            {% if form.is_announcement %}
+            <div class="announce-row mb-3">
+                {{ form.is_announcement }}
+                <div>
+                    <label class="form-check-label" for="{{ form.is_announcement.id_for_label }}">
+                        {{ form.is_announcement.label }}
+                    </label>
+                    <small>{{ form.is_announcement.help_text }}</small>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Actions -->
+            <div class="d-flex gap-2 justify-content-end mt-4">
+                {% if thread %}
+                <a href="{% url 'thread_detail' thread.pk %}" class="btn-cancel">Cancel</a>
+                {% else %}
+                <a href="{% url 'discussion_home' %}" class="btn-cancel">Cancel</a>
+                {% endif %}
+                <button type="submit" class="btn-submit">
+                    {% if action == 'Create' %}
+                    <i class="bi bi-send me-1"></i>Post Thread
+                    {% else %}
+                    <i class="bi bi-check2 me-1"></i>Save Changes
+                    {% endif %}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

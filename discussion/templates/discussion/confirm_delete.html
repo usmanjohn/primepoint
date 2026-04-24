@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Confirmation — Discussion{% endblock %}
+{% block page_name %}Confirm Delete{% endblock %}
+{% block nav_discussion %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+:root {
+    --disc-card-bg: var(--chrome-bg, #1e293b);
+    --disc-border: rgba(255,255,255,0.07);
+}
+.confirm-card {
+    background: var(--disc-card-bg);
+    border: 1px solid rgba(239,68,68,.3);
+    border-radius: 14px; padding: 2.5rem;
+    max-width: 500px; margin: 3rem auto; text-align: center;
+}
+.confirm-card .icon { font-size: 2.5rem; color: #ef4444; margin-bottom: 1rem; }
+.confirm-card h5 { font-weight: 700; margin-bottom: .5rem; }
+.confirm-card p { color: rgba(255,255,255,.55); font-size: .9rem; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 px-md-4 py-4">
+    <div class="confirm-card">
+        <div class="icon"><i class="bi bi-exclamation-triangle-fill"></i></div>
+        <h5>Delete {{ type|title }}?</h5>
+        <p>
+            {% if type == 'thread' %}
+            This will permanently delete the thread "<strong>{{ object.title }}</strong>" and all its replies.
+            {% else %}
+            This reply will be permanently removed.
+            {% endif %}
+            This action cannot be undone.
+        </p>
+        <div class="d-flex gap-2 justify-content-center mt-3">
+            {% if type == 'thread' %}
+            <a href="{% url 'discussion_home' %}"
+               style="background:rgba(255,255,255,.05);border:1px solid var(--disc-border);border-radius:10px;padding:.6rem 1.25rem;text-decoration:none;color:inherit;">
+                Cancel
+            </a>
+            {% else %}
+            <a href="{% url 'thread_detail' thread_pk %}"
+               style="background:rgba(255,255,255,.05);border:1px solid var(--disc-border);border-radius:10px;padding:.6rem 1.25rem;text-decoration:none;color:inherit;">
+                Cancel
+            </a>
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit"
+                        style="background:#ef4444;color:#fff;border:none;border-radius:10px;padding:.6rem 1.5rem;font-weight:600;cursor:pointer;">
+                    <i class="bi bi-trash me-1"></i>Yes, Delete
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Edit Reply — Discussion{% endblock %}
+{% block page_name %}Edit Reply{% endblock %}
+{% block nav_discussion %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+:root {
+    --disc-card-bg: var(--chrome-bg, #1e293b);
+    --disc-border: rgba(255,255,255,0.07);
+    --disc-accent: #6366f1;
+    --disc-accent-glow: rgba(99,102,241,0.15);
+    --disc-muted: rgba(255,255,255,0.45);
+}
+.form-card {
+    background: var(--disc-card-bg);
+    border: 1px solid var(--disc-border);
+    border-radius: 14px; padding: 2rem;
+    max-width: 680px; margin: 0 auto;
+}
+.form-control {
+    background: rgba(255,255,255,.04) !important;
+    border: 1px solid var(--disc-border) !important;
+    border-radius: 10px !important; color: inherit !important;
+}
+.form-control:focus {
+    border-color: var(--disc-accent) !important;
+    box-shadow: 0 0 0 3px var(--disc-accent-glow) !important;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 px-md-4 py-4">
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb" style="font-size:.82rem;">
+            <li class="breadcrumb-item"><a href="{% url 'discussion_home' %}" style="color:#a5b4fc;">Discussion</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'thread_detail' reply.thread.pk %}" style="color:#a5b4fc;">{{ reply.thread.title|truncatechars:30 }}</a></li>
+            <li class="breadcrumb-item active text-muted">Edit Reply</li>
+        </ol>
+    </nav>
+
+    <div class="form-card">
+        <h5 style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:1.25rem;">
+            <i class="bi bi-pencil-fill me-2" style="color:#6366f1;"></i>Edit Reply
+        </h5>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.body }}
+            <div class="d-flex gap-2 justify-content-end mt-3">
+                <a href="{% url 'thread_detail' reply.thread.pk %}"
+                   style="background:rgba(255,255,255,.05);border:1px solid var(--disc-border);border-radius:10px;padding:.6rem 1.25rem;text-decoration:none;color:inherit;font-size:.88rem;">
+                    Cancel
+                </a>
+                <button type="submit"
+                        style="background:#6366f1;color:#fff;border:none;border-radius:10px;padding:.6rem 1.5rem;font-weight:600;cursor:pointer;">
+                    <i class="bi bi-check2 me-1"></i>Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
