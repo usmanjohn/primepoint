@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block title %}Edit Reply — Discussion{% endblock %}
 {% block page_name %}Edit Reply{% endblock %}
@@ -7,55 +6,53 @@
 
 {% block extra_css %}
 <style>
-:root {
-    --disc-card-bg: var(--chrome-bg, #1e293b);
-    --disc-border: rgba(255,255,255,0.07);
-    --disc-accent: #6366f1;
-    --disc-accent-glow: rgba(99,102,241,0.15);
-    --disc-muted: rgba(255,255,255,0.45);
+.disc-wrap {
+    --dbg: #0d1117; --dborder: rgba(255,255,255,.08);
+    --dmuted: rgba(255,255,255,.50); --dtext: #e2e8f0;
+    --daccent: #6366f1; --daccent-glow: rgba(99,102,241,.15);
 }
 .form-card {
-    background: var(--disc-card-bg);
-    border: 1px solid var(--disc-border);
-    border-radius: 14px; padding: 2rem;
-    max-width: 680px; margin: 0 auto;
+    background: var(--dbg); border: 1px solid var(--dborder);
+    border-radius: 14px; padding: 2rem; max-width: 680px;
+    margin: 0 auto; color: var(--dtext);
 }
-.form-control {
-    background: rgba(255,255,255,.04) !important;
-    border: 1px solid var(--disc-border) !important;
-    border-radius: 10px !important; color: inherit !important;
+.form-card h5 { font-family:'Syne',sans-serif; font-weight:700; color:var(--dtext); margin-bottom:1.2rem; }
+.form-card .form-control {
+    background: rgba(255,255,255,.06) !important;
+    border: 1px solid var(--dborder) !important;
+    border-radius: 10px !important;
+    color: var(--dtext) !important;
 }
-.form-control:focus {
-    border-color: var(--disc-accent) !important;
-    box-shadow: 0 0 0 3px var(--disc-accent-glow) !important;
+.form-card .form-control::placeholder { color: var(--dmuted) !important; }
+.form-card .form-control:focus {
+    border-color: var(--daccent) !important;
+    box-shadow: 0 0 0 3px var(--daccent-glow) !important;
 }
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid px-3 px-md-4 py-4">
+<div class="container-fluid px-3 px-md-4 py-4 disc-wrap">
     <nav aria-label="breadcrumb" class="mb-3">
         <ol class="breadcrumb" style="font-size:.82rem;">
-            <li class="breadcrumb-item"><a href="{% url 'discussion_home' %}" style="color:#a5b4fc;">Discussion</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'thread_detail' reply.thread.pk %}" style="color:#a5b4fc;">{{ reply.thread.title|truncatechars:30 }}</a></li>
-            <li class="breadcrumb-item active text-muted">Edit Reply</li>
+            <li class="breadcrumb-item"><a href="{% url 'discussion_home' %}" style="color:#6366f1;">Discussion</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'thread_detail' reply.thread.pk %}" style="color:#6366f1;">{{ reply.thread.title|truncatechars:30 }}</a></li>
+            <li class="breadcrumb-item active" style="color:#64748b;">Edit Reply</li>
         </ol>
     </nav>
 
     <div class="form-card">
-        <h5 style="font-family:'Syne',sans-serif;font-weight:700;margin-bottom:1.25rem;">
-            <i class="bi bi-pencil-fill me-2" style="color:#6366f1;"></i>Edit Reply
-        </h5>
+        <h5><i class="bi bi-pencil-fill me-2" style="color:#6366f1;"></i>Edit Reply</h5>
         <form method="post">
             {% csrf_token %}
             {{ form.body }}
             <div class="d-flex gap-2 justify-content-end mt-3">
                 <a href="{% url 'thread_detail' reply.thread.pk %}"
-                   style="background:rgba(255,255,255,.05);border:1px solid var(--disc-border);border-radius:10px;padding:.6rem 1.25rem;text-decoration:none;color:inherit;font-size:.88rem;">
+                   style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:.58rem 1.2rem;text-decoration:none;color:#e2e8f0;font-size:.88rem;">
                     Cancel
                 </a>
                 <button type="submit"
-                        style="background:#6366f1;color:#fff;border:none;border-radius:10px;padding:.6rem 1.5rem;font-weight:600;cursor:pointer;">
+                        style="background:#6366f1;color:#fff;border:none;border-radius:10px;padding:.58rem 1.5rem;font-weight:600;cursor:pointer;font-size:.88rem;">
                     <i class="bi bi-check2 me-1"></i>Save
                 </button>
             </div>

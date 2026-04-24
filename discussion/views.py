@@ -13,7 +13,7 @@ def _is_privileged(user):
 
 def discussion_home(request):
     threads = Thread.objects.select_related('author', 'category').annotate(
-        reply_count=Count('replies', distinct=True),
+        num_replies=Count('replies', distinct=True),
         score=Sum('votes__value'),
     )
 
@@ -34,7 +34,7 @@ def discussion_home(request):
     elif sort == 'activity':
         threads = threads.order_by('-is_pinned', '-updated_at')
     elif sort == 'unanswered':
-        threads = threads.filter(reply_count=0).order_by('-created_at')
+        threads = threads.filter(num_replies=0).order_by('-created_at')
     else:
         threads = threads.order_by('-is_pinned', '-created_at')
 
