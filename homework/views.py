@@ -111,10 +111,31 @@ def homework_detail(request, pk):
         raise PermissionDenied
 
     homework = get_object_or_404(Homework, pk=pk, master=master)
-    assignments = homework.assignments.select_related('panda__profile__user', 'attempt')
+    assignments = homework.assignments.select_related(
+        'panda__profile__user', 'attempt'
+    ).order_by('panda__profile__user__first_name', 'panda__profile__user__username')
+
+    # Map panda_id → assignment for group lookup
+    assignment_map = {a.panda_id: a for a in assignments}
+
+    # Find groups that have at least one member assigned to this homework
+    groups_with_members = []
+    for group in master.panda_groups.prefetch_related('members__profile__user'):
+        member_assignments = [
+            assignment_map[panda.pk]
+            for panda in group.members.all()
+            if panda.pk in assignment_map
+        ]
+        if member_assignments:
+            groups_with_members.append({
+                'group': group,
+                'assignments': member_assignments,
+            })
+
     return render(request, 'homework/homework_detail.html', {
         'homework': homework,
         'assignments': assignments,
+        'groups_with_members': groups_with_members,
     })
 
 

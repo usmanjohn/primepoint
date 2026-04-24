@@ -19,6 +19,10 @@ urlpatterns = [
     path('create/', views.create_practice, name='create_practice'),
     path('<int:pk>/edit/', views.edit_practice, name='edit_practice'),
 
+    # Master — student results
+    path('<int:pk>/attempts/', views.practice_attempts, name='practice_attempts'),
+    path('attempt/<int:attempt_id>/review/', views.review_attempt, name='review_attempt'),
+
     # Master management — question level
     path('<int:pk>/questions/', views.manage_questions, name='manage_questions'),
     path('<int:pk>/questions/add/', views.add_question, name='add_question'),

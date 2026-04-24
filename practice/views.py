@@ -469,3 +469,93 @@ def delete_question(request, pk, qpk):
         question.delete()
         messages.success(request, 'Question deleted.')
     return redirect('manage_questions', pk=practice.pk)
+
+
+# ─────────────────────────────────────────────
+# 15. PRACTICE ATTEMPTS — Master views all student results
+# ─────────────────────────────────────────────
+@login_required
+def practice_attempts(request, pk):
+    practice = get_object_or_404(Practice, pk=pk, master=request.user.profile.master)
+    attempts = (
+        PracticeAttempt.objects
+        .filter(practice=practice, status='completed')
+        .select_related('panda__profile__user')
+        .order_by('-completed_at')
+    )
+    total_points = sum(q.points for q in practice.questions.all())
+    attempt_data = []
+    for attempt in attempts:
+        earned = round(attempt.score / 100 * total_points, 1) if total_points > 0 else 0
+        duration = None
+        if attempt.completed_at:
+            delta = attempt.completed_at - attempt.start_time
+            duration = int(delta.total_seconds() // 60)
+        attempt_data.append({
+            'attempt': attempt,
+            'earned': earned,
+            'duration': duration,
+            'passed': attempt.score >= practice.pass_score,
+        })
+    context = {
+        'practice': practice,
+        'attempt_data': attempt_data,
+        'total_points': total_points,
+    }
+    return render(request, 'practice/practice_attempts.html', context)
+
+
+# ─────────────────────────────────────────────
+# 16. REVIEW ATTEMPT — Master sees student's answers question by question
+# ─────────────────────────────────────────────
+@login_required
+def review_attempt(request, attempt_id):
+    attempt = get_object_or_404(PracticeAttempt, id=attempt_id)
+    practice = attempt.practice
+    # Only the master who owns the practice can review
+    if not hasattr(request.user.profile, 'master') or practice.master != request.user.profile.master:
+        messages.error(request, "You don't have permission to review this attempt.")
+        return redirect('manage_practices')
+
+    total_points = sum(q.points for q in practice.questions.all())
+    earned_points = round(attempt.score / 100 * total_points, 1) if total_points > 0 else 0
+    duration = None
+    if attempt.completed_at:
+        delta = attempt.completed_at - attempt.start_time
+        duration = int(delta.total_seconds() // 60)
+
+    answers_by_qid = {}
+    for ans in attempt.answers.prefetch_related('selected_choices'):
+        answers_by_qid[ans.question_id] = ans
+
+    question_results = []
+    for question in practice.questions.prefetch_related('choices').order_by('order'):
+        correct_ids = set(question.choices.filter(is_correct=True).values_list('id', flat=True))
+        if question.id in answers_by_qid:
+            selected_ids = set(answers_by_qid[question.id].selected_choices.values_list('id', flat=True))
+            is_correct = correct_ids == selected_ids
+            was_answered = True
+        else:
+            selected_ids = set()
+            is_correct = False
+            was_answered = False
+
+        question_results.append({
+            'question': question,
+            'choices': question.choices.all(),
+            'selected_ids': selected_ids,
+            'correct_ids': correct_ids,
+            'is_correct': is_correct,
+            'was_answered': was_answered,
+        })
+
+    context = {
+        'attempt': attempt,
+        'practice': practice,
+        'passed': attempt.score >= practice.pass_score,
+        'duration': duration,
+        'total_points': total_points,
+        'earned_points': earned_points,
+        'question_results': question_results,
+    }
+    return render(request, 'practice/review_attempt.html', context)

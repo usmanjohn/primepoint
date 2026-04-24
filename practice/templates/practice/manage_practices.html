@@ -72,6 +72,7 @@
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li><a class="dropdown-item" href="{% url 'manage_questions' practice.pk %}"><i class="bi bi-list-ol"></i> Questions</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'practice_attempts' practice.pk %}"><i class="bi bi-people"></i> Student Results</a></li>
                                     <li><a class="dropdown-item" href="{% url 'edit_practice' practice.pk %}"><i class="bi bi-pencil"></i> Settings</a></li>
                                     <li><a class="dropdown-item" href="{% url 'practice_detail' practice.pk %}"><i class="bi bi-eye"></i> Preview</a></li>
                                     <li><hr class="dropdown-divider"></li>
