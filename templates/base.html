@@ -61,55 +61,55 @@
 
         <!-- Nav items -->
         <nav class="nav-menu">
-            <span class="nav-section">Main</span>
-        
+            <span class="nav-section">{% if request.session.lang == 'uz' %}Asosiy{% else %}Main{% endif %}</span>
+
             <a href="{% url 'index' %}" class="nav-link {% block nav_index %}{% endblock %}">
                 <i class="bi bi-grid-1x2-fill"></i>
-                <span class="nav-label">Index</span>
+                <span class="nav-label">{% if request.session.lang == 'uz' %}Bosh sahifa{% else %}Index{% endif %}</span>
             </a>
             <a href="{% url 'analytics-home' %}" class="nav-link {% block nav_analytics %}{% endblock %}">
                 <i class="bi bi-bar-chart-line-fill"></i>
-                <span class="nav-label">Analytics</span>
+                <span class="nav-label">{% if request.session.lang == 'uz' %}Tahlil{% else %}Analytics{% endif %}</span>
             </a>
-        
+
             <a href="{% url 'masters-home' %}" class="nav-link {% block nav_masters %}{% endblock %}">
                 <i class="fa-solid fa-person-chalkboard"></i>
-                <span class="nav-label">Masters</span>
+                <span class="nav-label">{% if request.session.lang == 'uz' %}Ustodlar{% else %}Masters{% endif %}</span>
                 <span class="nav-badge">3</span>
             </a>
-        
-            <span class="nav-section">Practice</span>
-        
+
+            <span class="nav-section">{% if request.session.lang == 'uz' %}Amaliyot{% else %}Practice{% endif %}</span>
+
             <a href="{% url 'practice_list' %}" class="nav-link {% block nav_practice %}{% endblock %}">
                 <i class="bi bi-book-half"></i>
-                <span class="nav-label">Practice</span>
+                <span class="nav-label">{% if request.session.lang == 'uz' %}Mashqlar{% else %}Practice{% endif %}</span>
             </a>
-        
+
             <a href="{% url 'panda-home' %}" class="nav-link {% block nav_pandas %}{% endblock %}">
                 <i class="bi bi-mortarboard-fill"></i>
-                <span class="nav-label">Pandas</span>
+                <span class="nav-label">{% if request.session.lang == 'uz' %}Pandalar{% else %}Pandas{% endif %}</span>
             </a>
 
             <a href="{% url 'my_homework' %}" class="nav-link {% block nav_homework %}{% endblock %}">
                 <i class="bi bi-journal-bookmark-fill"></i>
-                <span class="nav-label">Homework</span>
+                <span class="nav-label">{% if request.session.lang == 'uz' %}Uy vazifasi{% else %}Homework{% endif %}</span>
             </a>
 
             <a href="{% url 'discussion_home' %}" class="nav-link {% block nav_discussion %}{% endblock %}">
                 <i class="bi bi-chat-square-dots-fill"></i>
-                <span class="nav-label">Discussion</span>
+                <span class="nav-label">{% if request.session.lang == 'uz' %}Muhokama{% else %}Discussion{% endif %}</span>
             </a>
 
-            <span class="nav-section">Support</span>
-        
-            <a href="#" class="nav-link {% block nav_about %}{% endblock %}">
+            <span class="nav-section">{% if request.session.lang == 'uz' %}Yordam{% else %}Support{% endif %}</span>
+
+            <a href="{% url 'about' %}" class="nav-link {% block nav_about %}{% endblock %}">
                 <i class="bi bi-patch-question"></i>
-                <span class="nav-label">About</span>
+                <span class="nav-label">{% if request.session.lang == 'uz' %}Haqida{% else %}About{% endif %}</span>
             </a>
-        
+
             <a href="#" class="nav-link {% block nav_help %}{% endblock %}">
                 <i class="bi bi-headset"></i>
-                <span class="nav-label">Help</span>
+                <span class="nav-label">{% if request.session.lang == 'uz' %}Yordam{% else %}Help{% endif %}</span>
             </a>
         </nav>
         
@@ -121,7 +121,7 @@
                     {{ user.username|slice:":2"|upper }}
                 </div>
                 <div class="footer-detail">
-                    <span class="role-badge">{% if user.is_staff %}Admin{% else %}Member{% endif %}</span>
+                    <span class="role-badge">{% if user.is_staff %}Admin{% else %}{% if request.session.lang == 'uz' %}A'zo{% else %}Member{% endif %}{% endif %}</span>
                     <span class="username">{{ user.username }}</span>
                 </div>
                 <div class="status-dot ms-auto" title="Online"></div>
@@ -154,13 +154,28 @@
                 </span>
             </div>
 
-            <!-- Search -->
-            <div class="topbar-search d-none d-lg-flex flex-grow-1" style="max-width:280px;">
+            <!-- Search (desktop) -->
+            <form method="get" action="{% url 'search' %}" class="topbar-search d-none d-lg-flex flex-grow-1" style="max-width:280px;">
                 <i class="bi bi-search"></i>
-                <input type="search" placeholder="Search…" aria-label="Search">
-            </div>
+                <input type="search" name="q" placeholder="Search…" aria-label="Search" autocomplete="off">
+            </form>
+
+            <!-- Search icon (mobile) -->
+            <a href="{% url 'search' %}" class="icon-btn d-lg-none" aria-label="Search">
+                <i class="bi bi-search"></i>
+            </a>
 
             <div class="topbar-right">
+                <!-- Language switcher -->
+                <form method="post" action="{% url 'set_language' %}" class="lang-switcher">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    <button type="submit" name="lang" value="en"
+                        class="lang-btn {% if request.session.lang != 'uz' %}lang-btn--active{% endif %}">EN</button>
+                    <button type="submit" name="lang" value="uz"
+                        class="lang-btn {% if request.session.lang == 'uz' %}lang-btn--active{% endif %}">UZ</button>
+                </form>
+
                 <!-- Notifications -->
                 <a href="#" class="icon-btn" aria-label="Notifications">
                     <i class="bi bi-bell"></i>
@@ -188,12 +203,12 @@
                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <a class="dropdown-item" href="{% url 'profile' %}">
-                                <i class="bi bi-person"></i>My Profile
+                                <i class="bi bi-person"></i>{% if request.session.lang == 'uz' %}Mening profilim{% else %}My Profile{% endif %}
                             </a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="#">
-                                <i class="bi bi-gear"></i>Settings
+                                <i class="bi bi-gear"></i>{% if request.session.lang == 'uz' %}Sozlamalar{% else %}Settings{% endif %}
                             </a>
                         </li>
                         <li><hr class="dropdown-divider"></li>
@@ -201,7 +216,7 @@
                             <form action="{% url 'logout' %}" method="post">
                                 {% csrf_token %}
                                 <button type="submit" class="dropdown-item text-danger w-100 border-0 bg-transparent text-start">
-                                    <i class="bi bi-box-arrow-right"></i>Sign out
+                                    <i class="bi bi-box-arrow-right"></i>{% if request.session.lang == 'uz' %}Chiqish{% else %}Sign out{% endif %}
                                 </button>
                             </form>
                         </li>
@@ -210,8 +225,8 @@
 
                 <!-- User menu: guest -->
                 {% else %}
-                <a href="{% url 'login' %}" class="btn-auth-outline">Log in</a>
-                <a href="{% url 'register' %}" class="btn-auth-primary">Register</a>
+                <a href="{% url 'login' %}" class="btn-auth-outline">{% if request.session.lang == 'uz' %}Kirish{% else %}Log in{% endif %}</a>
+                <a href="{% url 'register' %}" class="btn-auth-primary">{% if request.session.lang == 'uz' %}Ro'yxat{% else %}Register{% endif %}</a>
                 {% endif %}
             </div>
         </header>

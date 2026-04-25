@@ -1,31 +1,535 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block content %}
-<div class="container mt-4">
-    <h1>Analytics Dashboard</h1>
-    <div class="row">
-        <div class="col-md-6">
-            <h3>Visitor Statistics</h3>
-            <canvas id="visitorChart"></canvas>
-        </div>
-        <div class="col-md-6">
-            <h3>Page Views</h3>
-            <canvas id="pageViewsChart"></canvas>
-        </div>
-    </div>
+{% block title %}{% if request.session.lang == 'uz' %}Tahlil{% else %}Analytics{% endif %} — CORE{% endblock %}
+{% block page_name %}{% if request.session.lang == 'uz' %}Tahlil{% else %}Analytics{% endif %}{% endblock %}
+{% block nav_analytics %}active{% endblock %}
 
-    <div class="row mt-4">
-        <div class="col-md-6">
-            <h3>Traffic Sources</h3>
-            <canvas id="trafficSourcesChart"></canvas>
-        </div>
-        <div class="col-md-6">
-            <h3>Device Usage</h3>
-            <canvas id="deviceUsageChart"></canvas>
-        </div>
+{% block extra_css %}
+<style>
+/* ── Layout ─────────────────────────────────────────────────── */
+.an-section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 1rem;
+}
+.an-heading {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 1.1rem;
+}
 
-    </div>
+/* ── KPI cards ──────────────────────────────────────────────── */
+.an-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.7rem;
+  margin-bottom: 1.75rem;
+}
+.an-kpi {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  transition: border-color .18s, transform .18s;
+}
+.an-kpi:hover { border-color: var(--accent); transform: translateY(-2px); }
+.an-kpi-icon { font-size: 1.3rem; color: var(--accent); }
+.an-kpi-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1;
+}
+.an-kpi-lbl {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
 
-</div>
+/* ── Chart cards ────────────────────────────────────────────── */
+.an-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.4rem 1.5rem;
+}
+.an-chart-wrap { position: relative; }
+
+/* ── Personal stats cards ───────────────────────────────────── */
+.an-my-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+.an-my-kpi {
+  background: var(--chrome);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  text-align: center;
+}
+.an-my-kpi-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+.an-my-kpi-lbl {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-muted);
+}
+
+/* ── Section divider ────────────────────────────────────────── */
+.an-divider {
+  border-top: 1px solid var(--border);
+  margin: 2rem 0 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.an-divider-label {
+  background: var(--surface);
+  padding: 0.2rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  white-space: nowrap;
+  margin-top: -0.7rem;
+}
+</style>
 {% endblock %}
 
+{% block content %}
+{% with lang=request.session.lang %}
+
+<!-- ── PLATFORM ANALYTICS ────────────────────────────────────── -->
+<p class="an-section-title">{% if lang == 'uz' %}Platforma statistikasi{% else %}Platform Overview{% endif %}</p>
+
+<!-- KPI row -->
+<div class="an-kpi-grid">
+  <div class="an-kpi">
+    <div class="an-kpi-icon"><i class="bi bi-mortarboard-fill"></i></div>
+    <div class="an-kpi-num">{{ total_students }}</div>
+    <div class="an-kpi-lbl">{% if lang == 'uz' %}O'quvchilar{% else %}Students{% endif %}</div>
+  </div>
+  <div class="an-kpi">
+    <div class="an-kpi-icon"><i class="fa-solid fa-person-chalkboard"></i></div>
+    <div class="an-kpi-num">{{ total_masters }}</div>
+    <div class="an-kpi-lbl">{% if lang == 'uz' %}Ustodlar{% else %}Masters{% endif %}</div>
+  </div>
+  <div class="an-kpi">
+    <div class="an-kpi-icon"><i class="bi bi-book-half"></i></div>
+    <div class="an-kpi-num">{{ total_practices }}</div>
+    <div class="an-kpi-lbl">{% if lang == 'uz' %}Mashqlar{% else %}Practices{% endif %}</div>
+  </div>
+  <div class="an-kpi">
+    <div class="an-kpi-icon"><i class="bi bi-graph-up-arrow"></i></div>
+    <div class="an-kpi-num">{{ platform_avg }}%</div>
+    <div class="an-kpi-lbl">{% if lang == 'uz' %}O'rt. ball{% else %}Avg Score{% endif %}</div>
+  </div>
+  <div class="an-kpi">
+    <div class="an-kpi-icon"><i class="bi bi-question-circle-fill"></i></div>
+    <div class="an-kpi-num">{{ total_questions }}</div>
+    <div class="an-kpi-lbl">{% if lang == 'uz' %}Savollar{% else %}Questions{% endif %}</div>
+  </div>
+  <div class="an-kpi">
+    <div class="an-kpi-icon"><i class="bi bi-chat-square-dots-fill"></i></div>
+    <div class="an-kpi-num">{{ total_threads }}</div>
+    <div class="an-kpi-lbl">{% if lang == 'uz' %}Muhokamalar{% else %}Discussions{% endif %}</div>
+  </div>
+  <div class="an-kpi">
+    <div class="an-kpi-icon"><i class="bi bi-journal-bookmark-fill"></i></div>
+    <div class="an-kpi-num">{{ total_homework }}</div>
+    <div class="an-kpi-lbl">{% if lang == 'uz' %}Uy vazifalari{% else %}Homework{% endif %}</div>
+  </div>
+</div>
+
+<!-- Row 1: Attempts line + Level donut -->
+<div class="row g-3 mb-3">
+  <div class="col-lg-8">
+    <div class="an-card h-100">
+      <p class="an-heading">{% if lang == 'uz' %}So'nggi 30 kundagi urinishlar{% else %}Attempts — Last 30 Days{% endif %}</p>
+      <div class="an-chart-wrap" style="height:220px;">
+        <canvas id="attemptsLine"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="an-card h-100">
+      <p class="an-heading">{% if lang == 'uz' %}Qiyinlik darajasi{% else %}Difficulty Levels{% endif %}</p>
+      <div class="an-chart-wrap" style="height:220px;">
+        <canvas id="levelDonut"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Row 2: Score distribution + Rank donut + Free/Paid -->
+<div class="row g-3 mb-3">
+  <div class="col-lg-6">
+    <div class="an-card h-100">
+      <p class="an-heading">{% if lang == 'uz' %}Ball taqsimoti{% else %}Score Distribution{% endif %}</p>
+      <div class="an-chart-wrap" style="height:210px;">
+        <canvas id="scoreBar"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div class="an-card h-100">
+      <p class="an-heading">{% if lang == 'uz' %}Darajalar{% else %}Student Ranks{% endif %}</p>
+      <div class="an-chart-wrap" style="height:210px;">
+        <canvas id="rankDonut"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div class="an-card h-100">
+      <p class="an-heading">{% if lang == 'uz' %}Bepul / Pullik{% else %}Free vs Paid{% endif %}</p>
+      <div class="an-chart-wrap" style="height:210px;">
+        <canvas id="freePaidDonut"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Row 3: Top masters bar -->
+<div class="row g-3 mb-2">
+  <div class="col-12">
+    <div class="an-card">
+      <p class="an-heading">{% if lang == 'uz' %}Top ustodlar (o'quvchilar soni bo'yicha){% else %}Top Masters by Students{% endif %}</p>
+      <div class="an-chart-wrap" style="height:180px;">
+        <canvas id="topMastersBar"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PERSONAL ANALYTICS ─────────────────────────────────────── -->
+{% if my_stats %}
+<div class="an-divider">
+  <div class="an-divider-label">
+    <i class="bi bi-person-circle me-1"></i>
+    {% if lang == 'uz' %}Mening statistikam{% else %}My Analytics{% endif %}
+    — {{ my_stats.panda.profile.first_name|default:request.user.username }}
+  </div>
+</div>
+
+<!-- My KPIs -->
+<div class="an-my-kpi-grid">
+  <div class="an-my-kpi">
+    <div class="an-my-kpi-num">{{ my_stats.total }}</div>
+    <div class="an-my-kpi-lbl">{% if lang == 'uz' %}Urinishlar{% else %}Attempts{% endif %}</div>
+  </div>
+  <div class="an-my-kpi">
+    <div class="an-my-kpi-num">{{ my_stats.avg_score }}%</div>
+    <div class="an-my-kpi-lbl">{% if lang == 'uz' %}O'rt. ball{% else %}Avg Score{% endif %}</div>
+  </div>
+  <div class="an-my-kpi">
+    <div class="an-my-kpi-num">{{ my_stats.best_score }}%</div>
+    <div class="an-my-kpi-lbl">{% if lang == 'uz' %}Eng yuqori{% else %}Best Score{% endif %}</div>
+  </div>
+  <div class="an-my-kpi">
+    <div class="an-my-kpi-num">{{ my_stats.pass_rate }}%</div>
+    <div class="an-my-kpi-lbl">{% if lang == 'uz' %}O'tish darajasi{% else %}Pass Rate{% endif %}</div>
+  </div>
+  <div class="an-my-kpi">
+    <div class="an-my-kpi-num">{{ my_stats.hw_done }}/{{ my_stats.hw_total }}</div>
+    <div class="an-my-kpi-lbl">{% if lang == 'uz' %}Uy vazifasi{% else %}Homework{% endif %}</div>
+  </div>
+  <div class="an-my-kpi">
+    <div class="an-my-kpi-num">{{ my_stats.panda.rating }}</div>
+    <div class="an-my-kpi-lbl">{% if lang == 'uz' %}Reyting{% else %}Rating{% endif %}</div>
+  </div>
+</div>
+
+<!-- My charts row -->
+<div class="row g-3 mb-3">
+  {% if my_attempts_chart %}
+  <div class="col-lg-7">
+    <div class="an-card h-100">
+      <p class="an-heading">{% if lang == 'uz' %}So'nggi urinishlar natijalari{% else %}My Recent Scores{% endif %}</p>
+      <div class="an-chart-wrap" style="height:200px;">
+        <canvas id="myScoreLine"></canvas>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  <div class="col-lg-{% if my_attempts_chart %}5{% else %}6{% endif %}">
+    <div class="row g-3 h-100">
+      {% if my_level_chart %}
+      <div class="col-12">
+        <div class="an-card">
+          <p class="an-heading">{% if lang == 'uz' %}Darajalar bo'yicha natijam{% else %}My Score by Level{% endif %}</p>
+          <div class="an-chart-wrap" style="height:130px;">
+            <canvas id="myLevelBar"></canvas>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% if my_hw_chart %}
+      <div class="col-12">
+        <div class="an-card">
+          <p class="an-heading">{% if lang == 'uz' %}Uy vazifasi holati{% else %}Homework Status{% endif %}</p>
+          <div class="an-chart-wrap" style="height:130px;">
+            <canvas id="myHwDonut"></canvas>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<!-- ── MASTER PERSONAL ANALYTICS ─────────────────────────────── -->
+{% if my_master_stats %}
+<div class="an-divider">
+  <div class="an-divider-label">
+    <i class="fa-solid fa-person-chalkboard me-1"></i>
+    {% if lang == 'uz' %}Ustod statistikasi{% else %}My Master Stats{% endif %}
+    — {{ my_master_stats.master.name }}
+  </div>
+</div>
+
+<div class="an-my-kpi-grid">
+  <div class="an-my-kpi">
+    <div class="an-my-kpi-num">{{ my_master_stats.student_count }}</div>
+    <div class="an-my-kpi-lbl">{% if lang == 'uz' %}O'quvchilar{% else %}Students{% endif %}</div>
+  </div>
+  <div class="an-my-kpi">
+    <div class="an-my-kpi-num">{{ my_master_stats.practice_count }}</div>
+    <div class="an-my-kpi-lbl">{% if lang == 'uz' %}Mashqlar{% else %}Practices{% endif %}</div>
+  </div>
+  <div class="an-my-kpi">
+    <div class="an-my-kpi-num">{{ my_master_stats.avg_rating }}</div>
+    <div class="an-my-kpi-lbl">{% if lang == 'uz' %}Reyting{% else %}Avg Rating{% endif %}</div>
+  </div>
+  <div class="an-my-kpi">
+    <div class="an-my-kpi-num">{{ my_master_stats.avg_student_score }}%</div>
+    <div class="an-my-kpi-lbl">{% if lang == 'uz' %}O'quvchi o'rt. ball{% else %}Student Avg Score{% endif %}</div>
+  </div>
+  <div class="an-my-kpi">
+    <div class="an-my-kpi-num">{{ my_master_stats.total_attempts_on_me }}</div>
+    <div class="an-my-kpi-lbl">{% if lang == 'uz' %}Jami urinishlar{% else %}Total Attempts{% endif %}</div>
+  </div>
+</div>
+
+<div class="d-flex gap-2 flex-wrap mb-2">
+  <a href="{% url 'masters-detail' my_master_stats.master.pk %}" class="btn-core-outline text-decoration-none">
+    <i class="bi bi-person-badge"></i> {% if lang == 'uz' %}Ustod sahifam{% else %}My Master Page{% endif %}
+  </a>
+  <a href="{% url 'manage_practices' %}" class="btn-core-outline text-decoration-none">
+    <i class="bi bi-collection"></i> {% if lang == 'uz' %}Mashqlarni boshqarish{% else %}Manage Practices{% endif %}
+  </a>
+</div>
+{% endif %}
+
+{% if not my_stats and request.user.is_authenticated %}
+<div class="an-divider">
+  <div class="an-divider-label">{% if lang == 'uz' %}Mening statistikam{% else %}My Analytics{% endif %}</div>
+</div>
+<div class="an-card text-center py-5">
+  <i class="bi bi-person-circle" style="font-size:2.5rem; color:var(--border);"></i>
+  <h6 class="mt-3 mb-1 fw-bold">{% if lang == 'uz' %}Hali ma'lumot yo'q{% else %}No personal data yet{% endif %}</h6>
+  <p class="text-muted small mb-3">{% if lang == 'uz' %}Statistika ko'rish uchun biror mashqni bajaring.{% else %}Complete a practice to see your personal analytics.{% endif %}</p>
+  <a href="{% url 'practice_list' %}" class="btn-core-primary text-decoration-none">
+    <i class="bi bi-book"></i> {% if lang == 'uz' %}Mashqlarni ko'rish{% else %}Browse Practices{% endif %}
+  </a>
+</div>
+{% elif not request.user.is_authenticated %}
+<div class="an-divider">
+  <div class="an-divider-label">{% if lang == 'uz' %}Mening statistikam{% else %}My Analytics{% endif %}</div>
+</div>
+<div class="an-card text-center py-5">
+  <i class="bi bi-lock" style="font-size:2.5rem; color:var(--border);"></i>
+  <h6 class="mt-3 mb-1 fw-bold">{% if lang == 'uz' %}Kirish talab etiladi{% else %}Login required{% endif %}</h6>
+  <p class="text-muted small mb-3">{% if lang == 'uz' %}Shaxsiy statistika ko'rish uchun tizimga kiring.{% else %}Log in to view your personal stats and charts.{% endif %}</p>
+  <a href="{% url 'login' %}" class="btn-core-primary text-decoration-none">
+    {% if lang == 'uz' %}Kirish{% else %}Log in{% endif %}
+  </a>
+</div>
+{% endif %}
+
+{% endwith %}
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+(function () {
+  // ── Theme tokens ─────────────────────────────────────────────
+  const s  = getComputedStyle(document.documentElement);
+  const accent  = '#38bdf8';
+  const grid    = 'rgba(255,255,255,0.06)';
+  const txtMute = 'rgba(255,255,255,0.35)';
+  const surface = 'rgba(255,255,255,0.04)';
+
+  const COLORS = {
+    easy:   '#22c55e',
+    medium: '#f59e0b',
+    hard:   '#f87171',
+    novice: '#94a3b8',
+    scholar:'#38bdf8',
+    expert: '#a78bfa',
+    grand:  '#f59e0b',
+    free:   '#34d399',
+    paid:   '#a78bfa',
+  };
+
+  // ── Shared defaults ──────────────────────────────────────────
+  Chart.defaults.color = txtMute;
+  Chart.defaults.font.family = "'DM Sans', sans-serif";
+  Chart.defaults.font.size   = 11;
+
+  function gridOpts() {
+    return { color: grid, drawTicks: false };
+  }
+  function tickOpts() {
+    return { color: txtMute, padding: 6 };
+  }
+
+  // ── helpers ──────────────────────────────────────────────────
+  function lineChart(id, data, label, color) {
+    const ctx = document.getElementById(id);
+    if (!ctx) return;
+    const gradient = ctx.getContext('2d').createLinearGradient(0, 0, 0, ctx.offsetHeight || 200);
+    gradient.addColorStop(0, color + '44');
+    gradient.addColorStop(1, color + '00');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: data.labels,
+        datasets: [{
+          label: label,
+          data: data.values,
+          borderColor: color,
+          backgroundColor: gradient,
+          borderWidth: 2,
+          pointRadius: 3,
+          pointBackgroundColor: color,
+          tension: 0.4,
+          fill: true,
+        }],
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
+        scales: {
+          x: { grid: gridOpts(), ticks: { ...tickOpts(), maxTicksLimit: 8, maxRotation: 0 } },
+          y: { grid: gridOpts(), ticks: tickOpts(), beginAtZero: true },
+        },
+      },
+    });
+  }
+
+  function donutChart(id, data, colors) {
+    const ctx = document.getElementById(id);
+    if (!ctx) return;
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: data.labels,
+        datasets: [{ data: data.values, backgroundColor: colors, borderWidth: 0, hoverOffset: 6 }],
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false, cutout: '68%',
+        plugins: {
+          legend: { position: 'bottom', labels: { boxWidth: 10, padding: 12, color: txtMute } },
+          tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.parsed}` } },
+        },
+      },
+    });
+  }
+
+  function barChart(id, data, colors, horizontal) {
+    const ctx = document.getElementById(id);
+    if (!ctx) return;
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: data.labels,
+        datasets: [{
+          data: data.values,
+          backgroundColor: Array.isArray(colors) ? colors : data.values.map(() => colors),
+          borderRadius: 6,
+          borderSkipped: false,
+        }],
+      },
+      options: {
+        indexAxis: horizontal ? 'y' : 'x',
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { grid: horizontal ? { display: false } : gridOpts(), ticks: tickOpts(), beginAtZero: true },
+          y: { grid: horizontal ? gridOpts() : { display: false }, ticks: tickOpts() },
+        },
+      },
+    });
+  }
+
+  // ── Platform charts ──────────────────────────────────────────
+  const attemptsData  = {{ attempts_chart|safe }};
+  const levelData     = {{ level_data|safe }};
+  const scoreData     = {{ score_data|safe }};
+  const rankData      = {{ rank_data|safe }};
+  const topMasters    = {{ top_masters_data|safe }};
+  const freePaidData  = {{ free_paid_data|safe }};
+
+  lineChart('attemptsLine', attemptsData, 'Attempts', accent);
+
+  donutChart('levelDonut', levelData,
+    [COLORS.easy, COLORS.medium, COLORS.hard]);
+
+  // score bar — gradient from green to red by bucket
+  const scoreColors = scoreData.values.map((_, i) => {
+    const hue = Math.round(120 - i * 13);
+    return `hsl(${hue},75%,55%)`;
+  });
+  barChart('scoreBar', scoreData, scoreColors, false);
+
+  donutChart('rankDonut', rankData,
+    [COLORS.novice, COLORS.scholar, COLORS.expert, COLORS.grand]);
+
+  donutChart('freePaidDonut', freePaidData,
+    [COLORS.free, COLORS.paid]);
+
+  barChart('topMastersBar', topMasters, accent, true);
+
+  // ── Personal charts ──────────────────────────────────────────
+  {% if my_attempts_chart %}
+  lineChart('myScoreLine', {{ my_attempts_chart|safe }}, 'Score', accent);
+  {% endif %}
+
+  {% if my_level_chart %}
+  barChart('myLevelBar', {{ my_level_chart|safe }},
+    [COLORS.easy, COLORS.medium, COLORS.hard], false);
+  {% endif %}
+
+  {% if my_hw_chart %}
+  donutChart('myHwDonut', {{ my_hw_chart|safe }},
+    [COLORS.free, COLORS.paid]);
+  {% endif %}
+})();
+</script>
+{% endblock %}

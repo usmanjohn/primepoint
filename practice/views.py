@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.utils import timezone
 from django.db.models import Q, Count
 from panda.models import Panda
+from masters.models import Master
 
 from .models import Practice, PracticeQuestion, PracticeChoice, PracticeAttempt, UserAnswer, Subject
 from .forms import PracticeForm, PracticeQuestionForm
@@ -22,25 +23,28 @@ def _auto_link_homework(attempt):
 # 1. PRACTICE LIST — Browse & filter practices
 # ─────────────────────────────────────────────
 def practice_list(request):
-    practices = Practice.objects.filter(is_published=True).select_related('subject', 'master').annotate(
+    practices = Practice.objects.filter(is_published=True).select_related(
+        'subject', 'master__profile__user'
+    ).annotate(
         question_count=Count('questions', distinct=True)
     )
-    # Filter by subject
+
     subject_id = request.GET.get('subject')
     if subject_id:
         practices = practices.filter(subject_id=subject_id)
 
-    # Filter by level
     level = request.GET.get('level')
     if level:
         practices = practices.filter(level=level)
 
-    # Filter free/paid
+    master_id = request.GET.get('master')
+    if master_id:
+        practices = practices.filter(master_id=master_id)
+
     is_free = request.GET.get('is_free')
     if is_free == '1':
         practices = practices.filter(is_free=True)
 
-    # Search by title
     query = request.GET.get('q')
     if query:
         practices = practices.filter(
@@ -48,12 +52,26 @@ def practice_list(request):
         )
 
     subjects = Subject.objects.all()
+    masters = Master.objects.filter(practices__is_published=True).select_related(
+        'profile__user'
+    ).distinct()
+
+    # Resolve selected master name for the active filter tag
+    selected_master_name = ''
+    if master_id:
+        try:
+            selected_master_name = masters.get(pk=master_id).name
+        except Master.DoesNotExist:
+            pass
 
     context = {
         'practices': practices,
         'subjects': subjects,
+        'masters': masters,
         'selected_subject': subject_id,
         'selected_level': level,
+        'selected_master': master_id,
+        'selected_master_name': selected_master_name,
         'query': query or '',
     }
     return render(request, 'practice/practice_list.html', context)

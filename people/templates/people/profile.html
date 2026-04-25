@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ viewed_user.username }} — Profile{% endblock %}
-{% block page_name %}Profile{% endblock %}
+{% block title %}{{ viewed_user.username }} — {% if request.session.lang == 'uz' %}Profil{% else %}Profile{% endif %}{% endblock %}
+{% block page_name %}{% if request.session.lang == 'uz' %}Profil{% else %}Profile{% endif %}{% endblock %}
 
 {% block content %}
+{% with lang=request.session.lang %}
 
 <!-- ── Profile Banner ─────────────────────────────────────────── -->
 <div class="profile-banner">
@@ -15,7 +16,7 @@
             {% if people.is_master %}
                 <span class="profile-role-dot master" title="Master"></span>
             {% elif people.is_student %}
-                <span class="profile-role-dot student" title="Student"></span>
+                <span class="profile-role-dot student" title="{% if lang == 'uz' %}Talaba{% else %}Student{% endif %}"></span>
             {% endif %}
         </div>
 
@@ -26,18 +27,18 @@
             </h1>
             <div class="profile-roles">
                 {% if people.is_admin %}<span class="role-chip admin">Admin</span>{% endif %}
-                {% if people.is_director %}<span class="role-chip director">Director</span>{% endif %}
-                {% if people.is_cofounder %}<span class="role-chip cofounder">Co-founder</span>{% endif %}
-                {% if people.is_master %}<span class="role-chip master">Master</span>{% endif %}
-                {% if people.is_student %}<span class="role-chip student">Student</span>{% endif %}
-                {% if people.is_assistant %}<span class="role-chip assistant">Assistant</span>{% endif %}
+                {% if people.is_director %}<span class="role-chip director">{% if lang == 'uz' %}Direktor{% else %}Director{% endif %}</span>{% endif %}
+                {% if people.is_cofounder %}<span class="role-chip cofounder">{% if lang == 'uz' %}Hammuassis{% else %}Co-founder{% endif %}</span>{% endif %}
+                {% if people.is_master %}<span class="role-chip master">{% if lang == 'uz' %}Ustod{% else %}Master{% endif %}</span>{% endif %}
+                {% if people.is_student %}<span class="role-chip student">{% if lang == 'uz' %}Talaba{% else %}Student{% endif %}</span>{% endif %}
+                {% if people.is_assistant %}<span class="role-chip assistant">{% if lang == 'uz' %}Yordamchi{% else %}Assistant{% endif %}</span>{% endif %}
             </div>
         </div>
 
         {% if is_own_profile %}
         <div class="profile-hero-actions ms-auto">
             <a href="{% url 'profile_update' %}" class="btn-core-outline">
-                <i class="bi bi-pencil"></i> Edit Profile
+                <i class="bi bi-pencil"></i> {% if lang == 'uz' %}Profilni tahrirlash{% else %}Edit Profile{% endif %}
             </a>
         </div>
         {% endif %}
@@ -54,13 +55,13 @@
         <div class="card profile-card mb-4">
             <div class="card-header d-flex align-items-center gap-2">
                 <i class="bi bi-person-circle text-accent"></i>
-                About
+                {% if lang == 'uz' %}Haqida{% else %}About{% endif %}
             </div>
             <div class="card-body">
                 {% if people.biography %}
                     <p class="profile-bio">{{ people.biography }}</p>
                 {% else %}
-                    <p class="text-muted fst-italic small mb-3">No biography yet.</p>
+                    <p class="text-muted fst-italic small mb-3">{% if lang == 'uz' %}Hali tarjimai hol yo'q.{% else %}No biography yet.{% endif %}</p>
                 {% endif %}
 
                 <div class="profile-info-list">
@@ -84,7 +85,7 @@
                     {% endif %}
                     <div class="profile-info-item">
                         <i class="bi bi-clock-history"></i>
-                        <span>Joined {{ viewed_user.date_joined|date:"F Y" }}</span>
+                        <span>{% if lang == 'uz' %}Qo'shilgan{% else %}Joined{% endif %} {{ viewed_user.date_joined|date:"F Y" }}</span>
                     </div>
                 </div>
             </div>
@@ -95,34 +96,34 @@
         <div class="card profile-card">
             <div class="card-header d-flex align-items-center gap-2">
                 <i class="bi bi-lightning-charge text-accent"></i>
-                Quick Actions
+                {% if lang == 'uz' %}Tezkor amallar{% else %}Quick Actions{% endif %}
             </div>
             <div class="card-body p-0">
                 <a href="{% url 'profile_update' %}" class="profile-action-link">
                     <i class="bi bi-pencil-square"></i>
-                    <span>Edit Profile</span>
+                    <span>{% if lang == 'uz' %}Profilni tahrirlash{% else %}Edit Profile{% endif %}</span>
                     <i class="bi bi-chevron-right ms-auto"></i>
                 </a>
                 <a href="{% url 'password_change' %}" class="profile-action-link">
                     <i class="bi bi-shield-lock"></i>
-                    <span>Change Password</span>
+                    <span>{% if lang == 'uz' %}Parolni o'zgartirish{% else %}Change Password{% endif %}</span>
                     <i class="bi bi-chevron-right ms-auto"></i>
                 </a>
                 {% if master %}
                 <a href="{% url 'update-master' master.pk %}" class="profile-action-link">
                     <i class="bi bi-person-badge"></i>
-                    <span>Edit Master Profile</span>
+                    <span>{% if lang == 'uz' %}Ustod profilini tahrirlash{% else %}Edit Master Profile{% endif %}</span>
                     <i class="bi bi-chevron-right ms-auto"></i>
                 </a>
                 <a href="{% url 'manage_practices' %}" class="profile-action-link">
                     <i class="bi bi-book"></i>
-                    <span>Manage Practices</span>
+                    <span>{% if lang == 'uz' %}Mashqlarni boshqarish{% else %}Manage Practices{% endif %}</span>
                     <i class="bi bi-chevron-right ms-auto"></i>
                 </a>
                 {% else %}
                 <a href="{% url 'masters-create' %}" class="profile-action-link">
                     <i class="bi bi-person-plus"></i>
-                    <span>Become a Master</span>
+                    <span>{% if lang == 'uz' %}Ustod bo'lish{% else %}Become a Master{% endif %}</span>
                     <i class="bi bi-chevron-right ms-auto"></i>
                 </a>
                 {% endif %}
@@ -130,7 +131,7 @@
                     {% csrf_token %}
                     <button type="submit" class="profile-action-link profile-action-danger w-100 border-0 bg-transparent text-start">
                         <i class="bi bi-box-arrow-right"></i>
-                        <span>Sign Out</span>
+                        <span>{% if lang == 'uz' %}Chiqish{% else %}Sign Out{% endif %}</span>
                         <i class="bi bi-chevron-right ms-auto"></i>
                     </button>
                 </form>
@@ -150,28 +151,28 @@
                 <div class="profile-stat-card">
                     <div class="profile-stat-icon"><i class="bi bi-people-fill"></i></div>
                     <div class="profile-stat-value">{{ master.student_count }}</div>
-                    <div class="profile-stat-label">Students</div>
+                    <div class="profile-stat-label">{% if lang == 'uz' %}O'quvchilar{% else %}Students{% endif %}</div>
                 </div>
             </div>
             <div class="col-6 col-sm-3">
                 <div class="profile-stat-card">
                     <div class="profile-stat-icon"><i class="bi bi-star-fill"></i></div>
                     <div class="profile-stat-value">{{ master.avg_rating|floatformat:1 }}</div>
-                    <div class="profile-stat-label">Avg Rating</div>
+                    <div class="profile-stat-label">{% if lang == 'uz' %}O'rt. reyting{% else %}Avg Rating{% endif %}</div>
                 </div>
             </div>
             <div class="col-6 col-sm-3">
                 <div class="profile-stat-card">
                     <div class="profile-stat-icon"><i class="bi bi-book-fill"></i></div>
                     <div class="profile-stat-value">{{ master.practices.count }}</div>
-                    <div class="profile-stat-label">Practices</div>
+                    <div class="profile-stat-label">{% if lang == 'uz' %}Mashqlar{% else %}Practices{% endif %}</div>
                 </div>
             </div>
             <div class="col-6 col-sm-3">
                 <div class="profile-stat-card">
                     <div class="profile-stat-icon"><i class="bi bi-calendar-check"></i></div>
                     <div class="profile-stat-value">{{ master.created_at|date:"Y" }}</div>
-                    <div class="profile-stat-label">Since</div>
+                    <div class="profile-stat-label">{% if lang == 'uz' %}Dan beri{% else %}Since{% endif %}</div>
                 </div>
             </div>
 
@@ -180,28 +181,28 @@
                 <div class="profile-stat-card">
                     <div class="profile-stat-icon"><i class="bi bi-award-fill"></i></div>
                     <div class="profile-stat-value" style="font-size:1rem;">{{ panda.rank }}</div>
-                    <div class="profile-stat-label">Rank</div>
+                    <div class="profile-stat-label">{% if lang == 'uz' %}Daraja{% else %}Rank{% endif %}</div>
                 </div>
             </div>
             <div class="col-6 col-sm-3">
                 <div class="profile-stat-card">
                     <div class="profile-stat-icon"><i class="bi bi-lightning-fill"></i></div>
                     <div class="profile-stat-value">{{ panda.rating }}</div>
-                    <div class="profile-stat-label">Rating</div>
+                    <div class="profile-stat-label">{% if lang == 'uz' %}Reyting{% else %}Rating{% endif %}</div>
                 </div>
             </div>
             <div class="col-6 col-sm-3">
                 <div class="profile-stat-card">
                     <div class="profile-stat-icon"><i class="bi bi-check2-circle"></i></div>
                     <div class="profile-stat-value">{{ panda.attempts.count }}</div>
-                    <div class="profile-stat-label">Attempts</div>
+                    <div class="profile-stat-label">{% if lang == 'uz' %}Urinishlar{% else %}Attempts{% endif %}</div>
                 </div>
             </div>
             <div class="col-6 col-sm-3">
                 <div class="profile-stat-card">
                     <div class="profile-stat-icon"><i class="bi bi-bookmark-fill"></i></div>
                     <div class="profile-stat-value" style="font-size:0.9rem;">{{ panda.purpose|title }}</div>
-                    <div class="profile-stat-label">Purpose</div>
+                    <div class="profile-stat-label">{% if lang == 'uz' %}Maqsad{% else %}Purpose{% endif %}</div>
                 </div>
             </div>
 
@@ -210,12 +211,12 @@
                 <div class="card">
                     <div class="card-body text-center py-5">
                         <i class="bi bi-person-circle" style="font-size:3rem; color:var(--text-muted);"></i>
-                        <h6 class="mt-3 mb-1 fw-bold">No role assigned yet</h6>
+                        <h6 class="mt-3 mb-1 fw-bold">{% if lang == 'uz' %}Hali rol tayinlanmagan{% else %}No role assigned yet{% endif %}</h6>
                         {% if is_own_profile %}
-                        <p class="text-muted small mb-3">Apply to become a Master or join as a Student to unlock features.</p>
-                        <a href="{% url 'masters-create' %}" class="btn-core-primary">Apply as Master</a>
+                        <p class="text-muted small mb-3">{% if lang == 'uz' %}Xususiyatlarni ochish uchun Ustod yoki Talaba sifatida ro'yxatdan o'ting.{% else %}Apply to become a Master or join as a Student to unlock features.{% endif %}</p>
+                        <a href="{% url 'masters-create' %}" class="btn-core-primary">{% if lang == 'uz' %}Ustod sifatida ariza{% else %}Apply as Master{% endif %}</a>
                         {% else %}
-                        <p class="text-muted small mb-0">This user hasn't taken on a role yet.</p>
+                        <p class="text-muted small mb-0">{% if lang == 'uz' %}Bu foydalanuvchi hali rol tanlamagan.{% else %}This user hasn't taken on a role yet.{% endif %}</p>
                         {% endif %}
                     </div>
                 </div>
@@ -229,9 +230,9 @@
             <div class="card-header d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center gap-2">
                     <i class="bi bi-person-badge text-accent"></i>
-                    Master Profile
+                    {% if lang == 'uz' %}Ustod profili{% else %}Master Profile{% endif %}
                 </div>
-                <a href="{% url 'masters-detail' master.pk %}" class="btn-text-link">View public page →</a>
+                <a href="{% url 'masters-detail' master.pk %}" class="btn-text-link">{% if lang == 'uz' %}Ochiq sahifani ko'rish →{% else %}View public page →{% endif %}</a>
             </div>
             <div class="card-body">
                 <div class="master-name">{{ master.name }}</div>
@@ -251,10 +252,10 @@
             <div class="card-header d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center gap-2">
                     <i class="bi bi-book-half text-accent"></i>
-                    Published Practices
+                    {% if lang == 'uz' %}Nashr etilgan mashqlar{% else %}Published Practices{% endif %}
                 </div>
                 {% if is_own_profile %}
-                <a href="{% url 'manage_practices' %}" class="btn-text-link">Manage all →</a>
+                <a href="{% url 'manage_practices' %}" class="btn-text-link">{% if lang == 'uz' %}Barchasini boshqarish →{% else %}Manage all →{% endif %}</a>
                 {% endif %}
             </div>
             <div class="card-body p-0">
@@ -265,7 +266,7 @@
                         <span class="practice-row-meta">{% if p.subject %}{{ p.subject }} · {% endif %}{{ p.level|title }}</span>
                     </div>
                     <div class="practice-row-badges">
-                        {% if p.is_free %}<span class="badge-sm free">Free</span>{% else %}<span class="badge-sm paid">Paid</span>{% endif %}
+                        {% if p.is_free %}<span class="badge-sm free">{% if lang == 'uz' %}Bepul{% else %}Free{% endif %}</span>{% else %}<span class="badge-sm paid">{% if lang == 'uz' %}Pullik{% else %}Paid{% endif %}</span>{% endif %}
                         <i class="bi bi-chevron-right text-muted" style="font-size:0.75rem;"></i>
                     </div>
                 </a>
@@ -277,14 +278,14 @@
             <div class="card-header d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center gap-2">
                     <i class="bi bi-book-half text-accent"></i>
-                    Practices
+                    {% if lang == 'uz' %}Mashqlar{% else %}Practices{% endif %}
                 </div>
-                <a href="{% url 'manage_practices' %}" class="btn-text-link">Manage →</a>
+                <a href="{% url 'manage_practices' %}" class="btn-text-link">{% if lang == 'uz' %}Boshqarish →{% else %}Manage →{% endif %}</a>
             </div>
             <div class="card-body text-center py-4">
-                <p class="text-muted small mb-2">No published practices yet.</p>
+                <p class="text-muted small mb-2">{% if lang == 'uz' %}Hali nashr etilgan mashqlar yo'q.{% else %}No published practices yet.{% endif %}</p>
                 <a href="{% url 'manage_practices' %}" class="btn-core-outline" style="font-size:0.8rem;">
-                    <i class="bi bi-plus"></i> Create Practice
+                    <i class="bi bi-plus"></i> {% if lang == 'uz' %}Mashq yaratish{% else %}Create Practice{% endif %}
                 </a>
             </div>
         </div>
@@ -297,9 +298,9 @@
             <div class="card-header d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center gap-2">
                     <i class="bi bi-journal-bookmark-fill text-accent"></i>
-                    My Homework (as Master)
+                    {% if lang == 'uz' %}Uy vazifalaram (Ustod){% else %}My Homework (as Master){% endif %}
                 </div>
-                <a href="{% url 'manage_homework' %}" class="btn-text-link">Manage all →</a>
+                <a href="{% url 'manage_homework' %}" class="btn-text-link">{% if lang == 'uz' %}Barchasini boshqarish →{% else %}Manage all →{% endif %}</a>
             </div>
             {% if master_hw %}
             <div class="card-body p-0">
@@ -308,8 +309,8 @@
                     <div class="practice-row-info">
                         <span class="practice-row-title">{{ hw.title }}</span>
                         <span class="practice-row-meta">
-                            {{ hw.pending_count }} pending · {{ hw.submitted_count }} submitted
-                            {% if hw.due_date %} · Due {{ hw.due_date|date:"M d" }}{% endif %}
+                            {{ hw.pending_count }} {% if lang == 'uz' %}kutilmoqda{% else %}pending{% endif %} · {{ hw.submitted_count }} {% if lang == 'uz' %}topshirilgan{% else %}submitted{% endif %}
+                            {% if hw.due_date %} · {% if lang == 'uz' %}Muddat{% else %}Due{% endif %} {{ hw.due_date|date:"M d" }}{% endif %}
                         </span>
                     </div>
                     <i class="bi bi-chevron-right text-muted" style="font-size:0.75rem;"></i>
@@ -318,9 +319,9 @@
             </div>
             {% else %}
             <div class="card-body text-center py-4">
-                <p class="text-muted small mb-2">No homework created yet.</p>
+                <p class="text-muted small mb-2">{% if lang == 'uz' %}Hali uy vazifasi yaratilmagan.{% else %}No homework created yet.{% endif %}</p>
                 <a href="{% url 'create_homework' %}" class="btn-core-outline" style="font-size:0.8rem;">
-                    <i class="bi bi-plus"></i> Create Homework
+                    <i class="bi bi-plus"></i> {% if lang == 'uz' %}Uy vazifasi yaratish{% else %}Create Homework{% endif %}
                 </a>
             </div>
             {% endif %}
@@ -332,7 +333,7 @@
         <div class="card profile-card mb-4">
             <div class="card-header d-flex align-items-center gap-2">
                 <i class="bi bi-mortarboard-fill text-accent"></i>
-                Student Profile
+                {% if lang == 'uz' %}Talaba profili{% else %}Student Profile{% endif %}
             </div>
             <div class="card-body">
                 <div class="panda-rank-display">
@@ -342,8 +343,8 @@
                     </div>
                     <div class="panda-rating-bar">
                         <div class="d-flex justify-content-between mb-1">
-                            <span class="small text-muted">Rating Progress</span>
-                            <span class="small fw-bold">{{ panda.rating }} pts</span>
+                            <span class="small text-muted">{% if lang == 'uz' %}Reyting jarayoni{% else %}Rating Progress{% endif %}</span>
+                            <span class="small fw-bold">{{ panda.rating }} {% if lang == 'uz' %}ball{% else %}pts{% endif %}</span>
                         </div>
                         <div class="progress" style="height:6px; border-radius:10px; background:var(--border);">
                             <div class="progress-bar"
@@ -351,10 +352,10 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-between mt-1">
-                            <span style="font-size:0.6rem; color:var(--text-muted);">Novice</span>
-                            <span style="font-size:0.6rem; color:var(--text-muted);">Scholar</span>
-                            <span style="font-size:0.6rem; color:var(--text-muted);">Expert</span>
-                            <span style="font-size:0.6rem; color:var(--text-muted);">Grandmaster</span>
+                            <span style="font-size:0.6rem; color:var(--text-muted);">{% if lang == 'uz' %}Yangi{% else %}Novice{% endif %}</span>
+                            <span style="font-size:0.6rem; color:var(--text-muted);">{% if lang == 'uz' %}Bilimdon{% else %}Scholar{% endif %}</span>
+                            <span style="font-size:0.6rem; color:var(--text-muted);">{% if lang == 'uz' %}Mutaxassis{% else %}Expert{% endif %}</span>
+                            <span style="font-size:0.6rem; color:var(--text-muted);">{% if lang == 'uz' %}Grandmaster{% else %}Grandmaster{% endif %}</span>
                         </div>
                     </div>
                 </div>
@@ -363,7 +364,7 @@
                 {% with current_masters=panda.masters.all %}
                 {% if current_masters %}
                 <div class="mt-3 pt-3" style="border-top:1px solid var(--border);">
-                    <span class="small text-muted d-block mb-2">My Masters</span>
+                    <span class="small text-muted d-block mb-2">{% if lang == 'uz' %}Mening ustodlarim{% else %}My Masters{% endif %}</span>
                     <div class="d-flex flex-wrap gap-2">
                         {% for m in current_masters %}
                         <a href="{% url 'masters-detail' m.pk %}" class="panda-master-link d-inline-flex align-items-center gap-1">
@@ -378,7 +379,7 @@
                 <!-- Master picker (own profile only) -->
                 {% if is_own_profile and all_masters %}
                 <div class="mt-3 pt-3" style="border-top:1px solid var(--border);">
-                    <span class="small text-muted d-block mb-2">Choose your masters</span>
+                    <span class="small text-muted d-block mb-2">{% if lang == 'uz' %}Ustodlarni tanlang{% else %}Choose your masters{% endif %}</span>
                     <form method="post" action="{% url 'update_panda_masters' %}">
                         {% csrf_token %}
                         <div class="d-flex flex-column gap-1 mb-3">
@@ -392,7 +393,7 @@
                             </label>
                             {% endfor %}
                         </div>
-                        <button type="submit" class="btn-core-outline w-100" style="font-size:0.82rem;">Save Masters</button>
+                        <button type="submit" class="btn-core-outline w-100" style="font-size:0.82rem;">{% if lang == 'uz' %}Ustodlarni saqlash{% else %}Save Masters{% endif %}</button>
                     </form>
                 </div>
                 {% endif %}
@@ -405,7 +406,7 @@
         <div class="card profile-card mb-4">
             <div class="card-header d-flex align-items-center gap-2">
                 <i class="bi bi-clock-history text-accent"></i>
-                Recent Practice Attempts
+                {% if lang == 'uz' %}So'nggi amaliyot urinishlari{% else %}Recent Practice Attempts{% endif %}
             </div>
             <div class="card-body p-0">
                 {% for attempt in recent_attempts %}
@@ -428,12 +429,12 @@
         <div class="card profile-card mb-4">
             <div class="card-header d-flex align-items-center gap-2">
                 <i class="bi bi-clock-history text-accent"></i>
-                Recent Practice Attempts
+                {% if lang == 'uz' %}So'nggi amaliyot urinishlari{% else %}Recent Practice Attempts{% endif %}
             </div>
             <div class="card-body text-center py-4">
-                <p class="text-muted small mb-2">No completed attempts yet.</p>
+                <p class="text-muted small mb-2">{% if lang == 'uz' %}Hali tugatilgan urinishlar yo'q.{% else %}No completed attempts yet.{% endif %}</p>
                 <a href="{% url 'practice_list' %}" class="btn-core-outline" style="font-size:0.8rem;">
-                    <i class="bi bi-book"></i> Browse Practices
+                    <i class="bi bi-book"></i> {% if lang == 'uz' %}Mashqlarni ko'rish{% else %}Browse Practices{% endif %}
                 </a>
             </div>
         </div>
@@ -444,10 +445,10 @@
             <div class="card-header d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center gap-2">
                     <i class="bi bi-journal-bookmark-fill text-accent"></i>
-                    My Homework
+                    {% if lang == 'uz' %}Mening uy vazifalaram{% else %}My Homework{% endif %}
                     {% if panda_hw_pending.count %}<span class="badge bg-warning text-dark rounded-pill ms-1" style="font-size:0.65rem;">{{ panda_hw_pending.count }}</span>{% endif %}
                 </div>
-                <a href="{% url 'my_homework' %}" class="btn-text-link">See all →</a>
+                <a href="{% url 'my_homework' %}" class="btn-text-link">{% if lang == 'uz' %}Barchasini ko'rish →{% else %}See all →{% endif %}</a>
             </div>
             {% if panda_hw_pending or panda_hw_done %}
             <div class="card-body p-0">
@@ -456,11 +457,11 @@
                     <div class="practice-row-info">
                         <span class="practice-row-title">{{ a.homework.title }}</span>
                         <span class="practice-row-meta">
-                            {{ a.homework.master.name }}{% if a.homework.due_date %} · Due {{ a.homework.due_date|date:"M d" }}{% endif %}
+                            {{ a.homework.master.name }}{% if a.homework.due_date %} · {% if lang == 'uz' %}Muddat{% else %}Due{% endif %} {{ a.homework.due_date|date:"M d" }}{% endif %}
                         </span>
                     </div>
                     <div class="practice-row-badges">
-                        <span class="badge-sm" style="background:#fff3cd; color:#856404;">Pending</span>
+                        <span class="badge-sm" style="background:#fff3cd; color:#856404;">{% if lang == 'uz' %}Kutilmoqda{% else %}Pending{% endif %}</span>
                         <i class="bi bi-chevron-right text-muted" style="font-size:0.75rem;"></i>
                     </div>
                 </a>
@@ -487,7 +488,7 @@
             </div>
             {% else %}
             <div class="card-body text-center py-4">
-                <p class="text-muted small mb-0">No homework assigned yet.</p>
+                <p class="text-muted small mb-0">{% if lang == 'uz' %}Hali uy vazifasi berilmagan.{% else %}No homework assigned yet.{% endif %}</p>
             </div>
             {% endif %}
         </div>
@@ -497,4 +498,5 @@
     </div>
 </div>
 
+{% endwith %}
 {% endblock content %}

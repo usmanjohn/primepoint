@@ -217,9 +217,8 @@
             <span class="pd-rating-val">{{ panda.rating }} pts</span>
           </div>
           <div class="pd-progress">
-            {% with pct=panda.rating|add:0 %}
-            <div class="pd-progress-bar" style="width: {% if panda.rating >= 300 %}100{% else %}{% widthratio panda.rating 300 100 %}{% endif %}%"></div>
-            {% endwith %}
+            {% widthratio panda.rating 300 100 as rating_pct %}
+            <div class="pd-progress-bar" style="width: {{ rating_pct }}%"></div>
           </div>
         </div>
 

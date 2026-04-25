@@ -1,5 +1,109 @@
 {% extends 'base.html' %}
+{% block nav_index %}active{% endblock %}
+{% block page_name %}{% if request.session.lang == 'uz' %}Bosh sahifa{% else %}Dashboard{% endif %}{% endblock %}
 
 {% block content %}
-<h1>This is index </h1>
+{% with lang=request.session.lang %}
+
+<div class="mb-4">
+    <h2 class="fw-bold mb-1">
+        {% if lang == 'uz' %}Xush kelibsiz!{% else %}Welcome!{% endif %}
+    </h2>
+    <p class="text-muted">
+        {% if lang == 'uz' %}
+            Powerty — o'quv va amaliyot platformasi. Quyidagi bo'limlardan birini tanlang.
+        {% else %}
+            Powerty — your learning and practice platform. Choose a section below.
+        {% endif %}
+    </p>
+</div>
+
+<div class="row g-3">
+
+    <div class="col-12 col-sm-6 col-lg-4">
+        <a href="{% url 'analytics-home' %}" class="text-decoration-none">
+            <div class="card h-100 border-0 shadow-sm p-3">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                    <div class="fs-3 text-primary"><i class="bi bi-bar-chart-line-fill"></i></div>
+                    <h5 class="mb-0 fw-semibold">{% if lang == 'uz' %}Tahlil{% else %}Analytics{% endif %}</h5>
+                </div>
+                <p class="text-muted small mb-0">
+                    {% if lang == 'uz' %}O'quv jarayoni statistikasi va natijalari.{% else %}Track your progress and learning stats.{% endif %}
+                </p>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-4">
+        <a href="{% url 'masters-home' %}" class="text-decoration-none">
+            <div class="card h-100 border-0 shadow-sm p-3">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                    <div class="fs-3 text-warning"><i class="fa-solid fa-person-chalkboard"></i></div>
+                    <h5 class="mb-0 fw-semibold">{% if lang == 'uz' %}Ustodlar{% else %}Masters{% endif %}</h5>
+                </div>
+                <p class="text-muted small mb-0">
+                    {% if lang == 'uz' %}Tajribali o'qituvchilar bilan ishlang.{% else %}Learn from experienced instructors.{% endif %}
+                </p>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-4">
+        <a href="{% url 'practice_list' %}" class="text-decoration-none">
+            <div class="card h-100 border-0 shadow-sm p-3">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                    <div class="fs-3 text-success"><i class="bi bi-book-half"></i></div>
+                    <h5 class="mb-0 fw-semibold">{% if lang == 'uz' %}Mashqlar{% else %}Practice{% endif %}</h5>
+                </div>
+                <p class="text-muted small mb-0">
+                    {% if lang == 'uz' %}Bilimlarni mustahkamlash uchun mashqlar.{% else %}Exercises to reinforce your knowledge.{% endif %}
+                </p>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-4">
+        <a href="{% url 'panda-home' %}" class="text-decoration-none">
+            <div class="card h-100 border-0 shadow-sm p-3">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                    <div class="fs-3 text-info"><i class="bi bi-mortarboard-fill"></i></div>
+                    <h5 class="mb-0 fw-semibold">{% if lang == 'uz' %}Pandalar{% else %}Pandas{% endif %}</h5>
+                </div>
+                <p class="text-muted small mb-0">
+                    {% if lang == 'uz' %}Ma'lumotlar tahlili bo'yicha darslar.{% else %}Data analysis lessons and tasks.{% endif %}
+                </p>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-4">
+        <a href="{% url 'my_homework' %}" class="text-decoration-none">
+            <div class="card h-100 border-0 shadow-sm p-3">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                    <div class="fs-3 text-danger"><i class="bi bi-journal-bookmark-fill"></i></div>
+                    <h5 class="mb-0 fw-semibold">{% if lang == 'uz' %}Uy vazifasi{% else %}Homework{% endif %}</h5>
+                </div>
+                <p class="text-muted small mb-0">
+                    {% if lang == 'uz' %}Topshirilgan va bajarilishi kerak bo'lgan ishlar.{% else %}Submitted and pending assignments.{% endif %}
+                </p>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-4">
+        <a href="{% url 'discussion_home' %}" class="text-decoration-none">
+            <div class="card h-100 border-0 shadow-sm p-3">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                    <div class="fs-3" style="color:var(--accent);"><i class="bi bi-chat-square-dots-fill"></i></div>
+                    <h5 class="mb-0 fw-semibold">{% if lang == 'uz' %}Muhokama{% else %}Discussion{% endif %}</h5>
+                </div>
+                <p class="text-muted small mb-0">
+                    {% if lang == 'uz' %}Savollar va fikr almashish maydoni.{% else %}Ask questions and share ideas.{% endif %}
+                </p>
+            </div>
+        </a>
+    </div>
+
+</div>
+{% endwith %}
 {% endblock %}

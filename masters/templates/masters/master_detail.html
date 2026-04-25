@@ -2,93 +2,134 @@
 {% load static %}
 
 {% block title %}{{ master.name }} — Masters{% endblock %}
+{% block page_name %}{% if request.session.lang == 'uz' %}Ustod{% else %}Master{% endif %}{% endblock %}
+{% block nav_masters %}active{% endblock %}
 
 {% block extra_css %}
 <style>
-.md-back { margin-bottom: 1.5rem; }
-.md-profile-card {
+/* ── Hero ───────────────────────────────────────────────────── */
+.mdt-back { margin-bottom: 1.5rem; }
+
+.mdt-hero {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 2rem;
-  display: flex;
-  gap: 1.75rem;
-  align-items: flex-start;
+  border-radius: 20px;
+  overflow: hidden;
   margin-bottom: 1.5rem;
 }
-.md-avatar {
+.mdt-hero-banner {
+  height: 110px;
+  background: linear-gradient(135deg, var(--accent-glow) 0%, var(--chrome) 100%);
+  position: relative;
+}
+.mdt-hero-body {
+  padding: 0 2rem 1.75rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+.mdt-avatar-wrap {
+  position: relative;
+  margin-top: -44px;
+  flex-shrink: 0;
+}
+.mdt-avatar {
   width: 88px;
   height: 88px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--border);
-  flex-shrink: 0;
+  border: 3px solid var(--surface);
+  box-shadow: 0 0 0 2px var(--border);
+  display: block;
 }
-.md-name {
+.mdt-identity { flex: 1; min-width: 0; padding-top: 0.75rem; }
+.mdt-name {
   font-family: 'Syne', sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   font-weight: 800;
   color: var(--text);
-  margin: 0 0 0.25rem;
+  margin: 0 0 0.3rem;
+  line-height: 1.2;
 }
-.md-subject {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--accent);
-  background: var(--accent-glow);
-  padding: 0.2rem 0.7rem;
-  border-radius: 6px;
-  display: inline-block;
-  margin-bottom: 0.75rem;
+.mdt-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.6rem; }
+.mdt-chip-subject {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.3px;
+  color: var(--accent); background: var(--accent-glow);
+  padding: 0.2rem 0.7rem; border-radius: 5px;
 }
-.md-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.65; margin: 0; }
-.md-actions { margin-left: auto; display: flex; gap: 0.5rem; align-items: flex-start; flex-shrink: 0; }
+.mdt-chip-cat {
+  font-size: 0.72rem; font-weight: 600;
+  color: var(--text-muted); background: var(--chrome);
+  padding: 0.2rem 0.7rem; border-radius: 5px;
+  border: 1px solid var(--border);
+}
+.mdt-profile-link {
+  font-size: 0.78rem; font-weight: 600; color: var(--text-muted);
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem;
+}
+.mdt-profile-link:hover { color: var(--accent); }
+.mdt-hero-actions { margin-left: auto; display: flex; gap: 0.5rem; align-items: flex-end; flex-shrink: 0; padding-top: 0.75rem; }
 
-.md-stats {
+/* ── Stats row ──────────────────────────────────────────────── */
+.mdt-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 0.75rem;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.5rem;
 }
-.md-stat-card {
+.mdt-stat {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 1rem;
+  padding: 1rem 0.9rem;
+  text-align: center;
 }
-.md-stat-num {
+.mdt-stat-icon { font-size: 1.15rem; color: var(--accent); margin-bottom: 0.35rem; }
+.mdt-stat-num {
   font-family: 'Syne', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 800;
-  color: var(--text);
-  line-height: 1;
+  font-size: 1.35rem; font-weight: 800;
+  color: var(--text); line-height: 1;
   margin-bottom: 0.2rem;
 }
-.md-stat-lbl {
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: 700;
+.mdt-stat-lbl {
+  font-size: 0.62rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.5px;
   color: var(--text-muted);
 }
 
-.md-section-title {
+/* ── Section ────────────────────────────────────────────────── */
+.mdt-section { margin-bottom: 1.75rem; }
+.mdt-section-hdr {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 1rem;
+}
+.mdt-section-title {
   font-family: 'Syne', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--text);
-  margin: 0 0 1rem;
+  font-size: 0.95rem; font-weight: 700; color: var(--text); margin: 0;
 }
 
-.md-practice-grid {
+/* ── About card ─────────────────────────────────────────────── */
+.mdt-about {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+/* ── Practice grid ──────────────────────────────────────────── */
+.mdt-practice-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 0.85rem;
 }
-.md-pcard {
+.mdt-pcard {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 1.25rem;
   text-decoration: none;
   color: inherit;
@@ -99,133 +140,262 @@
   overflow: hidden;
   transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
 }
-.md-pcard::before {
+.mdt-pcard::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 3px;
-  background: var(--pc);
+  background: var(--pc, var(--border));
 }
-.md-pcard--easy   { --pc: #22c55e; }
-.md-pcard--medium { --pc: #f59e0b; }
-.md-pcard--hard   { --pc: #f87171; }
-.md-pcard:hover {
+.mdt-pcard--easy   { --pc: #22c55e; }
+.mdt-pcard--medium { --pc: #f59e0b; }
+.mdt-pcard--hard   { --pc: #f87171; }
+.mdt-pcard:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(0,0,0,0.08);
   border-color: var(--pc);
-  color: inherit;
-  text-decoration: none;
+  color: inherit; text-decoration: none;
 }
-.md-pcard-title {
+.mdt-pcard-title {
   font-family: 'Syne', sans-serif;
-  font-size: 0.92rem;
-  font-weight: 700;
-  color: var(--text);
-  margin: 0;
+  font-size: 0.92rem; font-weight: 700;
+  color: var(--text); margin: 0;
 }
-.md-pcard-meta {
-  display: flex;
-  gap: 0.75rem;
-  font-size: 0.75rem;
-  color: var(--text-muted);
+.mdt-pcard-meta {
+  display: flex; gap: 0.75rem;
+  font-size: 0.75rem; color: var(--text-muted);
 }
-.md-pcard-meta i { font-size: 0.8rem; }
-.md-badge {
+.mdt-pcard-meta i { font-size: 0.8rem; }
+.mdt-pcard-score {
+  margin-top: auto;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.mdt-badge {
   padding: 0.18rem 0.6rem;
   border-radius: 5px;
-  font-size: 0.62rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  display: inline-block;
-  width: fit-content;
+  font-size: 0.62rem; font-weight: 700;
+  text-transform: uppercase; display: inline-block; width: fit-content;
 }
-.md-badge--easy   { background: rgba(34,197,94,0.12);  color: #16a34a; }
-.md-badge--medium { background: rgba(245,158,11,0.12); color: #b45309; }
-.md-badge--hard   { background: rgba(248,113,113,0.12);color: #dc2626; }
+.mdt-badge--easy   { background: rgba(34,197,94,0.12);  color: #16a34a; }
+.mdt-badge--medium { background: rgba(245,158,11,0.12); color: #b45309; }
+.mdt-badge--hard   { background: rgba(248,113,113,0.12);color: #dc2626; }
+.mdt-badge--free   { background: rgba(56,189,248,0.12); color: #0284c7; }
+.mdt-badge--paid   { background: rgba(139,92,246,0.12); color: #7c3aed; }
+.mdt-avg-score { font-size: 0.72rem; color: var(--text-muted); }
+.mdt-avg-score span { font-weight: 700; color: var(--text); }
 
+/* ── Students grid ──────────────────────────────────────────── */
+.mdt-students {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.65rem;
+}
+.mdt-student-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.18s, transform 0.18s;
+  text-align: center;
+}
+.mdt-student-card:hover { border-color: var(--accent); transform: translateY(-2px); color: inherit; text-decoration: none; }
+.mdt-student-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  object-fit: cover; border: 2px solid var(--border);
+}
+.mdt-student-name { font-size: 0.8rem; font-weight: 600; color: var(--text); }
+.mdt-student-rank { font-size: 0.68rem; color: var(--text-muted); }
+
+/* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 600px) {
-  .md-profile-card { flex-direction: column; }
-  .md-actions { margin-left: 0; }
+  .mdt-hero-body { padding: 0 1.25rem 1.25rem; gap: 1rem; }
+  .mdt-hero-actions { width: 100%; justify-content: flex-start; }
+  .mdt-avatar { width: 72px; height: 72px; }
+  .mdt-avatar-wrap { margin-top: -36px; }
 }
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="content-area">
+{% with lang=request.session.lang %}
 
-  <nav class="md-back">
-    <a href="{% url 'masters-home' %}" class="btn-auth-outline text-decoration-none">
-      <i class="bi bi-arrow-left me-2"></i>All Masters
-    </a>
-  </nav>
+<!-- Back -->
+<nav class="mdt-back">
+  <a href="{% url 'masters-home' %}" class="btn-core-outline text-decoration-none">
+    <i class="bi bi-arrow-left"></i>
+    {% if lang == 'uz' %}Barcha ustodlar{% else %}All Masters{% endif %}
+  </a>
+</nav>
 
-  <!-- PROFILE CARD -->
-  <div class="md-profile-card">
-    <img src="{{ master.profile.image_url }}" alt="{{ master.name }}" class="md-avatar">
-    <div style="flex:1; min-width:0;">
-      <h1 class="md-name">{{ master.name }}</h1>
-      <span class="md-subject">{{ master.subject }}</span>
-      {% if master.category %}
-        <span class="text-muted small ms-2">{{ master.category }}</span>
-      {% endif %}
-      <p class="md-desc mt-2">{{ master.description }}</p>
+<!-- HERO -->
+<div class="mdt-hero">
+  <div class="mdt-hero-banner"></div>
+  <div class="mdt-hero-body">
+
+    <div class="mdt-avatar-wrap">
+      <img src="{{ master.profile.image_url }}" alt="{{ master.name }}" class="mdt-avatar">
     </div>
-    {% if user == master.profile.user %}
-    <div class="md-actions">
-      <a href="{% url 'update-master' master.pk %}" class="btn-auth-outline text-decoration-none py-1 px-3" style="font-size:0.82rem;">
-        <i class="bi bi-pencil me-1"></i>Edit
+
+    <div class="mdt-identity">
+      <h1 class="mdt-name">{{ master.name }}</h1>
+      <div class="mdt-chips">
+        <span class="mdt-chip-subject">{{ master.subject }}</span>
+        {% if master.category %}<span class="mdt-chip-cat">{{ master.category }}</span>{% endif %}
+      </div>
+      <a href="{% url 'user_profile' master.profile.user.username %}" class="mdt-profile-link">
+        <i class="bi bi-person-circle"></i>
+        @{{ master.profile.user.username }}
       </a>
-      <form method="post" action="{% url 'delete-master' master.pk %}">
+    </div>
+
+    <div class="mdt-hero-actions">
+      {% if user == master.profile.user %}
+      <a href="{% url 'update-master' master.pk %}" class="btn-core-outline text-decoration-none" style="font-size:0.82rem;">
+        <i class="bi bi-pencil"></i> {% if lang == 'uz' %}Tahrirlash{% else %}Edit{% endif %}
+      </a>
+      <form method="post" action="{% url 'delete-master' master.pk %}" class="m-0">
         {% csrf_token %}
-        <button type="submit" class="btn-auth-outline py-1 px-3 border-0" style="font-size:0.82rem; color:var(--danger); border-color:var(--danger);"
-          onclick="return confirm('Delete your Master profile? This cannot be undone.')">
-          <i class="bi bi-trash me-1"></i>Delete
+        <button type="submit" class="btn-core-outline border-0"
+          style="font-size:0.82rem; color:#f87171;"
+          onclick="return confirm('{% if lang == "uz" %}O\'chirmoqchimisiz?{% else %}Delete your Master profile? This cannot be undone.{% endif %}')">
+          <i class="bi bi-trash"></i> {% if lang == 'uz' %}O'chirish{% else %}Delete{% endif %}
         </button>
       </form>
+      {% endif %}
     </div>
+
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="mdt-stats">
+  <div class="mdt-stat">
+    <div class="mdt-stat-icon"><i class="bi bi-book-fill"></i></div>
+    <div class="mdt-stat-num">{{ practices|length }}</div>
+    <div class="mdt-stat-lbl">{% if lang == 'uz' %}Mashqlar{% else %}Practices{% endif %}</div>
+  </div>
+  <div class="mdt-stat">
+    <div class="mdt-stat-icon"><i class="bi bi-people-fill"></i></div>
+    <div class="mdt-stat-num">{{ master.student_count }}</div>
+    <div class="mdt-stat-lbl">{% if lang == 'uz' %}O'quvchilar{% else %}Students{% endif %}</div>
+  </div>
+  <div class="mdt-stat">
+    <div class="mdt-stat-icon"><i class="bi bi-star-fill"></i></div>
+    <div class="mdt-stat-num">{{ master.avg_rating|floatformat:1 }}</div>
+    <div class="mdt-stat-lbl">{% if lang == 'uz' %}Reyting{% else %}Avg Rating{% endif %}</div>
+  </div>
+  <div class="mdt-stat">
+    <div class="mdt-stat-icon"><i class="bi bi-graph-up-arrow"></i></div>
+    <div class="mdt-stat-num">{{ avg_student_score|floatformat:0 }}%</div>
+    <div class="mdt-stat-lbl">{% if lang == 'uz' %}O'rt. ball{% else %}Avg Score{% endif %}</div>
+  </div>
+  <div class="mdt-stat">
+    <div class="mdt-stat-icon"><i class="bi bi-question-circle-fill"></i></div>
+    <div class="mdt-stat-num">{{ total_questions }}</div>
+    <div class="mdt-stat-lbl">{% if lang == 'uz' %}Savollar{% else %}Questions{% endif %}</div>
+  </div>
+  <div class="mdt-stat">
+    <div class="mdt-stat-icon"><i class="bi bi-hourglass-split"></i></div>
+    <div class="mdt-stat-num">
+      {% if experience_years > 0 %}{{ experience_years }}{% else %}&lt;1{% endif %}
+    </div>
+    <div class="mdt-stat-lbl">{% if lang == 'uz' %}Yil tajriba{% else %}Yrs Active{% endif %}</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+{% if master.profile.biography or master.description %}
+<div class="mdt-section">
+  <div class="mdt-section-hdr">
+    <h2 class="mdt-section-title">
+      <i class="bi bi-person-circle me-1" style="color:var(--accent);"></i>
+      {% if lang == 'uz' %}Haqida{% else %}About{% endif %}
+    </h2>
+  </div>
+  <div class="mdt-about">
+    {% if master.profile.biography %}{{ master.profile.biography }}{% else %}{{ master.description }}{% endif %}
+  </div>
+</div>
+{% endif %}
+
+<!-- PRACTICES -->
+{% if practices %}
+<div class="mdt-section">
+  <div class="mdt-section-hdr">
+    <h2 class="mdt-section-title">
+      <i class="bi bi-book-half me-1" style="color:var(--accent);"></i>
+      {% if lang == 'uz' %}Mashqlar{% else %}Practices{% endif %}
+    </h2>
+    {% if user == master.profile.user %}
+    <a href="{% url 'manage_practices' %}" class="btn-text-link" style="font-size:0.8rem;">
+      {% if lang == 'uz' %}Barchasini boshqarish →{% else %}Manage all →{% endif %}
+    </a>
     {% endif %}
   </div>
-
-  <!-- STATS -->
-  <div class="md-stats">
-    <div class="md-stat-card">
-      <div class="md-stat-num">{{ practices|length }}</div>
-      <div class="md-stat-lbl">Published Practices</div>
-    </div>
-    <div class="md-stat-card">
-      <div class="md-stat-num">{{ master.student_count }}</div>
-      <div class="md-stat-lbl">Students</div>
-    </div>
-    <div class="md-stat-card">
-      <div class="md-stat-num">{{ master.created_at|date:"M Y" }}</div>
-      <div class="md-stat-lbl">Joined</div>
-    </div>
-  </div>
-
-  <!-- PRACTICES -->
-  {% if practices %}
-  <h2 class="md-section-title">Practices by {{ master.name }}</h2>
-  <div class="md-practice-grid">
+  <div class="mdt-practice-grid">
     {% for p in practices %}
-    <a href="{% url 'practice_detail' p.pk %}" class="md-pcard md-pcard--{{ p.level }}">
-      <span class="md-badge md-badge--{{ p.level }}">{{ p.level }}</span>
-      <p class="md-pcard-title">{{ p.title }}</p>
-      <div class="md-pcard-meta">
-        <span><i class="bi bi-question-circle"></i> {{ p.question_count }} Q</span>
-        {% if p.time_limit %}<span><i class="bi bi-stopwatch"></i> {{ p.time_limit }}m</span>{% endif %}
+    <a href="{% url 'practice_detail' p.pk %}" class="mdt-pcard mdt-pcard--{{ p.level }}">
+      <div class="d-flex gap-2 align-items-center">
+        <span class="mdt-badge mdt-badge--{{ p.level }}">{{ p.level }}</span>
+        {% if p.is_free %}
+          <span class="mdt-badge mdt-badge--free">{% if lang == 'uz' %}Bepul{% else %}Free{% endif %}</span>
+        {% else %}
+          <span class="mdt-badge mdt-badge--paid">{% if lang == 'uz' %}Pullik{% else %}Paid{% endif %}</span>
+        {% endif %}
       </div>
+      <p class="mdt-pcard-title">{{ p.title }}</p>
+      <div class="mdt-pcard-meta">
+        <span><i class="bi bi-question-circle"></i> {{ p.question_count }}</span>
+        {% if p.time_limit %}<span><i class="bi bi-stopwatch"></i> {{ p.time_limit }}m</span>{% endif %}
+        <span><i class="bi bi-play-circle"></i> {{ p.attempt_count }}</span>
+      </div>
+      {% if p.avg_score is not None %}
+      <div class="mdt-avg-score">
+        {% if lang == 'uz' %}O'rt. ball{% else %}Avg score{% endif %}: <span>{{ p.avg_score|floatformat:0 }}%</span>
+      </div>
+      {% endif %}
     </a>
     {% endfor %}
   </div>
-  {% endif %}
-
-  {% if user == master.profile.user %}
-  <div class="mt-4 pt-3 border-top">
-    <a href="{% url 'manage_practices' %}" class="btn-auth-primary text-decoration-none py-2 px-4">
-      <i class="bi bi-collection me-2"></i>Manage My Practices
-    </a>
-  </div>
-  {% endif %}
-
 </div>
+{% endif %}
+
+<!-- STUDENTS -->
+{% if students %}
+<div class="mdt-section">
+  <div class="mdt-section-hdr">
+    <h2 class="mdt-section-title">
+      <i class="bi bi-mortarboard-fill me-1" style="color:var(--accent);"></i>
+      {% if lang == 'uz' %}O'quvchilar{% else %}Students{% endif %}
+    </h2>
+  </div>
+  <div class="mdt-students">
+    {% for panda in students %}
+    <a href="{% url 'user_profile' panda.profile.user.username %}" class="mdt-student-card">
+      <img src="{{ panda.profile.image_url }}" alt="{{ panda.name }}" class="mdt-student-avatar">
+      <div class="mdt-student-name">{{ panda.profile.first_name|default:panda.profile.user.username }}</div>
+      <div class="mdt-student-rank">{{ panda.rank }}</div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+<!-- Own profile CTA -->
+{% if user == master.profile.user %}
+<div class="mt-2 pt-3" style="border-top:1px solid var(--border);">
+  <a href="{% url 'manage_practices' %}" class="btn-core-primary text-decoration-none">
+    <i class="bi bi-collection"></i>
+    {% if lang == 'uz' %}Mashqlarni boshqarish{% else %}Manage My Practices{% endif %}
+  </a>
+</div>
+{% endif %}
+
+{% endwith %}
 {% endblock %}

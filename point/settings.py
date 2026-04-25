@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django.contrib.sitemaps',
+
     #third party
     'widget_tweaks',
     'django_ckeditor_5',
