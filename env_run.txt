@@ -1,1 +1,1 @@
-source /Users/abduraimovusmanjon/Desktop/envs/prime/bin/activate
+\
