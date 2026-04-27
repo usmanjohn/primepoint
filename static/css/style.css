@@ -582,6 +582,28 @@ h1, h2, h3, h4, h5, h6, .font-display {
 ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
 
 /* ─── Responsive ─────────────────────────────────────────────────── */
+
+/* Desktop (≥992px): explicit overrides to guarantee proper layout */
+@media (min-width: 992px) {
+    #sidebar {
+        transform: none !important;
+        width: var(--sidebar-w);
+    }
+    #nav-toggler:checked ~ #sidebar {
+        width: var(--sidebar-w-col);
+        transform: none !important;
+    }
+    .main-wrapper {
+        margin-left: var(--sidebar-w);
+    }
+    #nav-toggler:checked ~ .main-wrapper {
+        margin-left: var(--sidebar-w-col);
+    }
+    .mob-bottom-nav {
+        display: none !important;
+    }
+}
+
 @media (max-width: 991.98px) {
     #sidebar {
         transform: translateX(-100%);
@@ -598,26 +620,81 @@ h1, h2, h3, h4, h5, h6, .font-display {
 
     .main-wrapper { margin-left: 0 !important; }
 
-    #nav-toggler { display: none !important; } /* disable desktop toggle */
+    #nav-toggler { display: none !important; } /* disable desktop toggle on mobile */
 
     .topbar-search { display: none; }
 
-    .content-area { padding: 1.25rem; }
+    .content-area { padding: 1.25rem; padding-bottom: calc(1.25rem + 64px); }
 }
 
 @media (max-width: 575.98px) {
     .top-navbar { padding: 0 1rem; }
-    .content-area { padding: 1rem; }
+    .content-area { padding: 1rem; padding-bottom: calc(1rem + 64px); }
     .user-trigger .uname { display: none; }
+
+    /* Tighter cards on small phones */
+    .card { border-radius: 12px; }
+    .ms-grid { grid-template-columns: 1fr; }
+    .mdt-practice-grid { grid-template-columns: 1fr; }
+    .mdt-students { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+    .an-kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .an-my-kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .mdt-stats { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ─── Mobile Bottom Navigation (PWA) ────────────────────────── */
+.mob-bottom-nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 64px;
+    background: var(--chrome-bg);
+    border-top: 1px solid var(--chrome-border);
+    display: flex;
+    align-items: stretch;
+    z-index: 1050;
+    /* Safe area for phones with home bar */
+    padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.mob-nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    color: var(--chrome-text);
+    text-decoration: none;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    transition: color 0.15s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mob-nav-item i { font-size: 1.25rem; line-height: 1; }
+
+.mob-nav-item:hover,
+.mob-nav-item.active {
+    color: var(--accent);
+}
+
+.mob-nav-item.active i {
+    filter: drop-shadow(0 0 4px var(--accent));
+}
+
+/* Hide bottom nav during quiz so the quiz footer is fully visible */
+.quiz-active .mob-bottom-nav { display: none !important; }
+.quiz-active .content-area   { padding-bottom: 0 !important; }
 
 /* ─── Utility ────────────────────────────────────────────────────── */
 .text-accent { color: var(--accent); }
 .bg-chrome  { background: var(--chrome-bg); }
 
-/*----Practice
-
+/* ─── Form Core (shared inputs/textareas) ────────────────────── */
 .form-core {
+    width: 100%;
+    max-width: 100%;
     background: var(--surface);
     border: 1px solid var(--border);
     color: var(--text);
@@ -625,6 +702,8 @@ h1, h2, h3, h4, h5, h6, .font-display {
     border-radius: 10px;
     font-size: 0.875rem;
     transition: var(--transition);
+    box-sizing: border-box;
+    display: block;
 }
 .form-core:focus {
     outline: none;
@@ -632,7 +711,7 @@ h1, h2, h3, h4, h5, h6, .font-display {
     box-shadow: 0 0 0 3px var(--accent-glow);
 }
 
-/* --- Practice Specifics --- */
+/* ─── Practice Specifics ─────────────────────────────────────── */
 .transition-hover {
     transition: transform 0.2s ease, border-color 0.2s ease;
 }
@@ -681,11 +760,15 @@ h1, h2, h3, h4, h5, h6, .font-display {
     padding: 1rem;
     height: 100%;
 }
+.info-card-stat .min-width-0 { min-width: 0; }
 .stat-label {
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .stat-value {
     font-family: 'Syne', sans-serif;
@@ -1769,3 +1852,589 @@ h1, h2, h3, h4, h5, h6, .font-display {
 }
 
 .lang-btn--active:hover { background: #7dd3fc; color: #0d1117; }
+
+/* ═══════════════════════════════════════════════════════════════
+   TUTORIALS
+═══════════════════════════════════════════════════════════════ */
+
+/* ── Category colour palette ─────────────────────────────────── */
+:root {
+    --cat-math:        #818cf8;
+    --cat-science:     #34d399;
+    --cat-programming: #38bdf8;
+    --cat-language:    #fb923c;
+    --cat-history:     #f59e0b;
+    --cat-other:       #94a3b8;
+}
+
+/* ── Filter Pill Row ─────────────────────────────────────────── */
+.tut-filter-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin: 0 -0.25rem;
+    padding: 0 0.25rem;
+}
+.tut-filter-scroll::-webkit-scrollbar { display: none; }
+
+.tut-filter-pills {
+    display: flex;
+    gap: 8px;
+    white-space: nowrap;
+    padding-bottom: 4px;
+}
+
+.tut-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 16px;
+    border-radius: 50px;
+    border: 1.5px solid var(--border);
+    background: var(--surface);
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.18s;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+.tut-pill:hover { border-color: var(--accent); color: var(--accent); }
+.tut-pill--active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #0d1117;
+    font-weight: 600;
+}
+.tut-pill--active:hover { background: #7dd3fc; border-color: #7dd3fc; color: #0d1117; }
+
+/* ── Tutorial Cards ──────────────────────────────────────────── */
+.tut-card-link { display: block; }
+.tut-card-link:hover .tut-card {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+    border-color: var(--accent);
+}
+.tut-card {
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+/* Thumbnail */
+.tut-thumb {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.tut-thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+}
+.tut-card-link:hover .tut-thumb-img { transform: scale(1.04); }
+
+/* Gradient fallback by category */
+.tut-thumb-fb {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+}
+.tut-thumb-fb--math        { background: linear-gradient(135deg, #312e81, #4338ca); color: var(--cat-math); }
+.tut-thumb-fb--science     { background: linear-gradient(135deg, #064e3b, #047857); color: var(--cat-science); }
+.tut-thumb-fb--programming { background: linear-gradient(135deg, #0c4a6e, #0369a1); color: var(--cat-programming); }
+.tut-thumb-fb--language    { background: linear-gradient(135deg, #7c2d12, #c2410c); color: var(--cat-language); }
+.tut-thumb-fb--history     { background: linear-gradient(135deg, #78350f, #b45309); color: var(--cat-history); }
+.tut-thumb-fb--other       { background: linear-gradient(135deg, #1e293b, #334155); color: var(--cat-other); }
+
+/* Category chip (on card + detail) */
+.tut-cat-chip {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+}
+/* Inside a thumbnail: float it as an overlay badge */
+.tut-thumb .tut-cat-chip {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+.tut-cat-chip--math        { background: rgba(129,140,248,.22); color: var(--cat-math);        border: 1px solid rgba(129,140,248,.3); }
+.tut-cat-chip--science     { background: rgba(52,211,153,.22);  color: var(--cat-science);     border: 1px solid rgba(52,211,153,.3); }
+.tut-cat-chip--programming { background: rgba(56,189,248,.22);  color: var(--cat-programming); border: 1px solid rgba(56,189,248,.3); }
+.tut-cat-chip--language    { background: rgba(251,146,60,.22);  color: var(--cat-language);    border: 1px solid rgba(251,146,60,.3); }
+.tut-cat-chip--history     { background: rgba(245,158,11,.22);  color: var(--cat-history);     border: 1px solid rgba(245,158,11,.3); }
+.tut-cat-chip--other       { background: rgba(148,163,184,.22); color: var(--cat-other);       border: 1px solid rgba(148,163,184,.3); }
+
+/* Card text */
+.tut-card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 6px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.tut-card-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.5;
+}
+
+/* Card footer */
+.tut-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+    gap: 8px;
+}
+.tut-card-author {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+}
+.tut-mini-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    display: grid;
+    place-items: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.6rem;
+    color: #fff;
+    flex-shrink: 0;
+}
+.tut-card-author-name {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.tut-card-stats {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+.tut-card-stats i { font-size: 0.75rem; }
+
+/* ── Empty State ─────────────────────────────────────────────── */
+.tut-empty-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--text-muted);
+    margin: 0 auto;
+}
+
+/* ── Detail Page ─────────────────────────────────────────────── */
+
+/* CSS scroll-driven reading progress bar */
+.tut-read-progress {
+    position: fixed;
+    top: var(--topbar-h);
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: var(--accent);
+    transform-origin: left;
+    transform: scaleX(0);
+    z-index: 1035;
+    pointer-events: none;
+}
+@supports (animation-timeline: scroll()) {
+    .tut-read-progress {
+        animation: tut-prog-grow linear;
+        animation-timeline: scroll(root);
+    }
+    @keyframes tut-prog-grow {
+        from { transform: scaleX(0); }
+        to   { transform: scaleX(1); }
+    }
+}
+
+/* Hero card */
+.tut-detail-hero {
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    position: relative;
+}
+.tut-detail-thumb {
+    position: relative;
+    width: 100%;
+    height: clamp(200px, 32vw, 380px);
+    overflow: hidden;
+}
+.tut-detail-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
+.tut-detail-thumb-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(13,17,23,.6) 0%, transparent 60%);
+}
+.tut-detail-hero-body {
+    padding: 1.75rem 2rem;
+}
+.tut-detail-hero-body--over {
+    /* When there's a thumbnail, give a little less top padding */
+    padding-top: 1.25rem;
+}
+.tut-detail-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.25;
+    margin: 0 0 8px;
+}
+.tut-detail-subtitle {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0 0 1.25rem;
+    max-width: 640px;
+}
+
+/* Meta row */
+.tut-detail-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.tut-detail-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.tut-detail-author-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+}
+.tut-detail-date {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 1px;
+}
+.tut-detail-meta-stats {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* ── Prose (rich-text content display) ──────────────────────── */
+.tut-prose {
+    color: var(--text);
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 100%;
+    word-break: break-word;
+    overflow: hidden; /* hard-clip anything CKEditor injects wider than the column */
+}
+
+/* CKEditor wraps images in <figure class="image" style="width:Xpx"> —
+   target both the figure AND the img so neither can escape the column. */
+.tut-prose figure,
+.tut-prose .image,
+.tut-prose figure.image {
+    max-width: 100% !important;
+    width: auto !important;
+    overflow: hidden;
+    margin: 1rem auto;
+}
+.tut-prose h1,
+.tut-prose h2,
+.tut-prose h3,
+.tut-prose h4 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    color: var(--text);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+}
+.tut-prose h1 { font-size: 1.75rem; }
+.tut-prose h2 { font-size: 1.4rem; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
+.tut-prose h3 { font-size: 1.15rem; }
+.tut-prose h4 { font-size: 1rem; }
+.tut-prose p  { margin: 0 0 1.1rem; }
+.tut-prose a  { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; }
+.tut-prose a:hover { opacity: 0.8; }
+.tut-prose ul,
+.tut-prose ol {
+    padding-left: 1.5rem;
+    margin: 0 0 1.1rem;
+}
+.tut-prose li { margin-bottom: 0.35rem; }
+.tut-prose blockquote {
+    border-left: 4px solid var(--accent);
+    background: rgba(56,189,248,.06);
+    margin: 1.25rem 0;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0 10px 10px 0;
+    color: var(--text-muted);
+    font-style: italic;
+}
+.tut-prose code {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 0.875em;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 2px 6px;
+    color: var(--accent);
+}
+.tut-prose pre {
+    background: #0d1117;
+    border: 1px solid var(--chrome-border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    overflow-x: auto;
+    margin: 1.25rem 0;
+    font-size: 0.875rem;
+    line-height: 1.65;
+}
+.tut-prose pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #e2e8f0;
+    font-size: inherit;
+}
+/* Force all prose images (including CKEditor inline w/h) to be responsive */
+.tut-prose img,
+.tut-prose figure img {
+    max-width: 100% !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: 65vh;
+    object-fit: contain;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    margin: 1rem auto;
+    display: block;
+}
+.tut-prose figure { margin: 1.5rem 0; }
+.tut-prose figcaption {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 6px;
+    font-style: italic;
+}
+.tut-prose table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.25rem 0;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.tut-prose th {
+    background: var(--surface-2);
+    font-weight: 600;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+}
+.tut-prose td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+}
+.tut-prose tr:last-child td { border-bottom: none; }
+.tut-prose tr:hover td { background: var(--surface-2); }
+.tut-prose hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+/* MathJax display override */
+.tut-prose .MJX-TEX { font-size: 1.05em; }
+.tut-prose mjx-container[display="true"] {
+    overflow-x: auto;
+    padding: 0.5rem 0;
+}
+
+/* ── Related Tutorials Sidebar ───────────────────────────────── */
+.tut-related-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text);
+    transition: background 0.15s;
+}
+.tut-related-item:hover { background: var(--surface-2); color: var(--text); }
+.tut-related-thumb {
+    width: 56px;
+    height: 44px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+}
+.tut-related-thumb-fb {
+    width: 56px;
+    height: 44px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+.tut-related-body { min-width: 0; }
+.tut-related-title {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+    margin-bottom: 3px;
+}
+.tut-related-meta { font-size: 0.72rem; color: var(--text-muted); }
+
+/* ── Like / Dislike Reaction Bar ─────────────────────────────── */
+.tut-react-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 1.1rem 1.5rem;
+    background: var(--surface-2);
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+}
+
+.tut-react-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-muted);
+    margin-right: 4px;
+    flex-shrink: 0;
+}
+
+.tut-react-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    border: 2px solid var(--border);
+    background: var(--surface);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.18s;
+    text-decoration: none;
+    line-height: 1;
+    white-space: nowrap;
+}
+.tut-react-btn:hover { background: var(--surface); }
+.tut-react-btn i { font-size: 1.1rem; line-height: 1; }
+
+.tut-react-btn--like:hover {
+    border-color: var(--online);
+    color: var(--online);
+    background: rgba(34,197,94,.06);
+}
+.tut-react-btn--like.tut-react-btn--on {
+    border-color: var(--online);
+    color: var(--online);
+    background: rgba(34,197,94,.1);
+}
+
+.tut-react-btn--dislike:hover {
+    border-color: var(--danger);
+    color: var(--danger);
+    background: rgba(248,113,113,.06);
+}
+.tut-react-btn--dislike.tut-react-btn--on {
+    border-color: var(--danger);
+    color: var(--danger);
+    background: rgba(248,113,113,.1);
+}
+
+/* Hide form chrome — the button IS the form submit */
+.tut-react-form { margin: 0; padding: 0; display: contents; }
+
+/* Like count chip on list cards */
+.tut-like-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.72rem;
+    color: var(--online);
+    font-weight: 600;
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 575.98px) {
+    .tut-detail-hero-body { padding: 1.1rem; }
+    .tut-detail-title { font-size: 1.25rem; }
+    .tut-prose { font-size: 0.93rem; }
+    .tut-prose pre { padding: 0.85rem; font-size: 0.8rem; }
+    .tut-prose h1 { font-size: 1.35rem; }
+    .tut-prose h2 { font-size: 1.15rem; }
+    .tut-detail-meta-stats { gap: 8px; font-size: 0.73rem; }
+    .tut-react-bar { padding: 0.9rem 1rem; gap: 8px; }
+    .tut-react-btn { padding: 7px 14px; font-size: 0.82rem; }
+}

@@ -1,0 +1,297 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+{% block nav_tutorials %}active{% endblock %}
+{% block page_name %}{{ tutorial.title }}{% endblock %}
+{% block meta_description %}{{ tutorial.summary|default:tutorial.title }}{% endblock %}
+
+{% block extra_css %}
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)'], ['$', '$']],
+            displayMath: [['\\[', '\\]'], ['$$', '$$']],
+            processEscapes: true,
+            tags: 'ams',
+        },
+        options: {
+            skipHtmlTags: ['script','noscript','style','textarea','pre','code'],
+        },
+        startup: { typeset: false },
+    };
+</script>
+<script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<!-- Reading progress bar (CSS scroll-driven) -->
+<div class="tut-read-progress" aria-hidden="true"></div>
+
+<!-- ── Breadcrumb ──────────────────────────────────────────────── -->
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb mb-0" style="font-size:0.8rem;">
+        <li class="breadcrumb-item">
+            <a href="{% url 'tutorial_list' %}" style="color:var(--accent);">
+                {% trans "Tutorials" %}
+            </a>
+        </li>
+        <li class="breadcrumb-item active text-truncate" style="max-width:220px;">
+            {{ tutorial.title }}
+        </li>
+    </ol>
+</nav>
+
+<!-- ── Hero ───────────────────────────────────────────────────── -->
+<div class="tut-detail-hero mb-4">
+    {% if tutorial.thumbnail %}
+    <div class="tut-detail-thumb">
+        <img src="{{ tutorial.thumbnail.url }}" alt="{{ tutorial.title }}">
+        <div class="tut-detail-thumb-overlay"></div>
+    </div>
+    {% endif %}
+
+    <div class="tut-detail-hero-body
+                {% if tutorial.thumbnail %}tut-detail-hero-body--over{% endif %}">
+
+        <!-- Category + edit buttons row -->
+        <div class="d-flex align-items-center justify-content-between gap-2 mb-3 flex-wrap">
+            <span class="tut-cat-chip tut-cat-chip--{{ tutorial.category }}">
+                <i class="bi {{ tutorial.category_icon }} me-1"></i>
+                {{ tutorial.get_category_display }}
+            </span>
+            {% if can_edit %}
+            <div class="d-flex gap-2">
+                <a href="{% url 'tutorial_edit' tutorial.pk %}"
+                   class="btn-core-outline" style="padding:5px 12px;font-size:0.78rem;">
+                    <i class="bi bi-pencil"></i>{% trans "Edit" %}
+                </a>
+                <a href="{% url 'tutorial_delete' tutorial.pk %}"
+                   class="btn-core-outline"
+                   style="padding:5px 12px;font-size:0.78rem;border-color:var(--danger);color:var(--danger);">
+                    <i class="bi bi-trash"></i>
+                </a>
+            </div>
+            {% endif %}
+        </div>
+
+        <h1 class="tut-detail-title">{{ tutorial.title }}</h1>
+        {% if tutorial.summary %}
+        <p class="tut-detail-subtitle">{{ tutorial.summary }}</p>
+        {% endif %}
+
+        <!-- Meta row -->
+        <div class="tut-detail-meta">
+            <a href="{% url 'user_profile' tutorial.author.username %}"
+               class="tut-detail-author text-decoration-none">
+                <div class="avatar-sm flex-shrink-0">
+                    {{ tutorial.author.username|slice:":2"|upper }}
+                </div>
+                <div>
+                    <div class="tut-detail-author-name">
+                        {{ tutorial.author.get_full_name|default:tutorial.author.username }}
+                    </div>
+                    <div class="tut-detail-date">{{ tutorial.created_at|date:"N j, Y" }}</div>
+                </div>
+            </a>
+            <div class="tut-detail-meta-stats">
+                <span><i class="bi bi-eye me-1"></i>{{ tutorial.views }}</span>
+                <span><i class="bi bi-clock me-1"></i>{{ tutorial.read_time }}&nbsp;{% trans "min" %}</span>
+                <span style="color:var(--online);">
+                    <i class="bi bi-hand-thumbs-up-fill me-1"></i>{{ like_count }}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ── Main layout: article + sidebar ────────────────────────── -->
+<div class="row g-4 align-items-start">
+
+    <!-- Article -->
+    <div class="col-12 col-lg-8">
+        <div class="card p-0 overflow-hidden">
+
+            <!-- Content -->
+            <div class="tut-prose p-4 p-md-5" id="tut-content">
+                {{ tutorial.content|safe }}
+            </div>
+
+            <!-- ── Reaction Bar ──────────────────────────────── -->
+            <div class="tut-react-bar">
+                <span class="tut-react-label">{% trans "Helpful?" %}</span>
+
+                {% if user.is_authenticated %}
+                    <!-- Like -->
+                    <form method="post" action="{% url 'tutorial_react' tutorial.pk %}"
+                          class="tut-react-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="reaction" value="like">
+                        <button type="submit"
+                                class="tut-react-btn tut-react-btn--like
+                                       {% if user_reaction == 'like' %}tut-react-btn--on{% endif %}">
+                            <i class="bi bi-hand-thumbs-up{% if user_reaction == 'like' %}-fill{% endif %}"></i>
+                            {% trans "Like" %}&nbsp;<strong>{{ like_count }}</strong>
+                        </button>
+                    </form>
+
+                    <!-- Dislike -->
+                    <form method="post" action="{% url 'tutorial_react' tutorial.pk %}"
+                          class="tut-react-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="reaction" value="dislike">
+                        <button type="submit"
+                                class="tut-react-btn tut-react-btn--dislike
+                                       {% if user_reaction == 'dislike' %}tut-react-btn--on{% endif %}">
+                            <i class="bi bi-hand-thumbs-down{% if user_reaction == 'dislike' %}-fill{% endif %}"></i>
+                            {% trans "Dislike" %}&nbsp;<strong>{{ dislike_count }}</strong>
+                        </button>
+                    </form>
+
+                {% else %}
+                    <!-- Guest: show counts only -->
+                    <span class="tut-react-btn tut-react-btn--like" style="cursor:default;opacity:.7;">
+                        <i class="bi bi-hand-thumbs-up"></i>
+                        {% trans "Like" %}&nbsp;<strong>{{ like_count }}</strong>
+                    </span>
+                    <span class="tut-react-btn tut-react-btn--dislike" style="cursor:default;opacity:.7;">
+                        <i class="bi bi-hand-thumbs-down"></i>
+                        {% trans "Dislike" %}&nbsp;<strong>{{ dislike_count }}</strong>
+                    </span>
+                    <a href="{% url 'login' %}?next={{ request.path }}"
+                       style="font-size:0.78rem;color:var(--accent);margin-left:auto;white-space:nowrap;">
+                        {% trans "Log in to react" %}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Back link -->
+        <div class="mt-3">
+            <a href="{% url 'tutorial_list' %}" class="btn-core-outline">
+                <i class="bi bi-arrow-left"></i>{% trans "All Tutorials" %}
+            </a>
+        </div>
+    </div>
+
+    <!-- ── Sidebar ─────────────────────────────────────────────── -->
+    <div class="col-12 col-lg-4">
+
+        <!-- Author Card -->
+        <a href="{% url 'user_profile' tutorial.author.username %}"
+           class="card p-3 mb-3 d-block text-decoration-none"
+           style="transition:border-color .18s;"
+           onmouseover="this.style.borderColor='var(--accent)'"
+           onmouseout="this.style.borderColor=''">
+            <div class="d-flex align-items-center gap-3 mb-2">
+                <div class="avatar-sm flex-shrink-0">
+                    {{ tutorial.author.username|slice:":2"|upper }}
+                </div>
+                <div>
+                    <div class="fw-semibold" style="font-size:0.9rem;color:var(--text);">
+                        {{ tutorial.author.get_full_name|default:tutorial.author.username }}
+                    </div>
+                    <div style="font-size:0.75rem;color:var(--text-muted);">
+                        {% trans "Author" %}
+                        {% if tutorial.author.is_staff %}
+                        &nbsp;·&nbsp;<span style="color:var(--accent);">Staff</span>
+                        {% endif %}
+                        <span class="ms-1" style="color:var(--accent);">
+                            <i class="bi bi-box-arrow-up-right" style="font-size:0.65rem;"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div style="font-size:0.78rem;color:var(--text-muted);">
+                <i class="bi bi-calendar3 me-1"></i>
+                {{ tutorial.created_at|date:"N j, Y" }}
+                {% if tutorial.updated_at != tutorial.created_at %}
+                <span class="ms-2">
+                    <i class="bi bi-arrow-clockwise me-1"></i>
+                    {{ tutorial.updated_at|date:"N j, Y" }}
+                </span>
+                {% endif %}
+            </div>
+        </a>
+
+        <!-- Quick stats -->
+        <div class="row g-2 mb-3">
+            <div class="col-4">
+                <div class="card p-2 text-center">
+                    <div class="fw-bold" style="font-size:1.1rem;font-family:'Syne',sans-serif;color:var(--text);">
+                        {{ tutorial.views }}
+                    </div>
+                    <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);">
+                        {% trans "Views" %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card p-2 text-center">
+                    <div class="fw-bold" style="font-size:1.1rem;font-family:'Syne',sans-serif;color:var(--online);">
+                        {{ like_count }}
+                    </div>
+                    <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);">
+                        {% trans "Likes" %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card p-2 text-center">
+                    <div class="fw-bold" style="font-size:1.1rem;font-family:'Syne',sans-serif;color:var(--text);">
+                        {{ tutorial.read_time }}m
+                    </div>
+                    <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);">
+                        {% trans "Read" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related tutorials -->
+        {% if related %}
+        <div class="card p-3">
+            <h6 class="form-section-label mb-3">
+                <i class="bi bi-journals" style="color:var(--accent);"></i>
+                {% trans "Related" %}
+            </h6>
+            <div class="d-flex flex-column gap-2">
+                {% for rel in related %}
+                <a href="{% url 'tutorial_detail' rel.pk %}" class="tut-related-item">
+                    {% if rel.thumbnail %}
+                    <img src="{{ rel.thumbnail.url }}" alt="{{ rel.title }}"
+                         class="tut-related-thumb">
+                    {% else %}
+                    <div class="tut-related-thumb tut-related-thumb-fb
+                                tut-thumb-fb--{{ rel.category }}">
+                        <i class="bi {{ rel.category_icon }}"></i>
+                    </div>
+                    {% endif %}
+                    <div class="tut-related-body">
+                        <div class="tut-related-title">{{ rel.title }}</div>
+                        <div class="tut-related-meta">
+                            <i class="bi bi-clock me-1"></i>{{ rel.read_time }}m
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+    </div><!-- /sidebar -->
+</div><!-- /row -->
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (window.MathJax) {
+            MathJax.startup.promise.then(() =>
+                MathJax.typesetPromise([document.getElementById('tut-content')])
+            );
+        }
+    });
+</script>
+{% endblock %}

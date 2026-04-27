@@ -10,6 +10,7 @@ from .forms import MasterForm
 from practice.models import PracticeAttempt
 
 
+@login_required
 def master_list(request):
     masters = Master.objects.all().annotate(
         practice_count=Count('practices', distinct=True),
@@ -18,6 +19,7 @@ def master_list(request):
     return render(request, 'masters/master_list.html', {'masters': masters})
 
 
+@login_required
 def master_detail(request, master_id):
     master = get_object_or_404(Master, id=master_id)
 
@@ -97,3 +99,26 @@ def master_delete(request, pk):
         messages.success(request, "Master profile deleted.")
         return redirect('masters-home')
     return render(request, 'masters/master_confirm_delete.html', {'master': master})
+
+
+@login_required
+def certificate_generator(request):
+    is_master = hasattr(request.user, 'profile') and hasattr(request.user.profile, 'master')
+    if not request.user.is_staff and not is_master:
+        raise PermissionDenied
+
+    master = None
+    students = []
+    if is_master:
+        master = request.user.profile.master
+        students = (
+            master.pandas
+            .select_related('profile__user')
+            .order_by('profile__user__first_name', 'profile__user__username')
+        )
+
+    return render(request, 'masters/certificate.html', {
+        'master':   master,
+        'students': students,
+        'today':    timezone.now().date(),
+    })

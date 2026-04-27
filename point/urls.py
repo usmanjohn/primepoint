@@ -14,6 +14,7 @@ sitemaps = {
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('i18n/', include('django.conf.urls.i18n')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path("ckeditor5/", include('django_ckeditor_5.urls')),
     
@@ -25,6 +26,7 @@ urlpatterns = [
     path('panda/', include('panda.urls')),
     path('homework/', include('homework.urls')),
     path('discussion/', include('discussion.urls')),
+    path('tutorials/', include('tutorial.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

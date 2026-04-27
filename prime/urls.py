@@ -4,8 +4,8 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('about/', views.about, name='about'),
-    path('set-language/', views.set_language, name='set_language'),
     path('search/', views.search, name='search'),
+    path('sw.js', views.service_worker, name='service_worker'),
 ]
 
  

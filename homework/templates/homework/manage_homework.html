@@ -1,29 +1,93 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
 {% block nav_homework %}active{% endblock %}
 {% block title %}Manage Homework — CORE{% endblock %}
 
-{% block content %}
-<div class="content-area">
+{% block extra_css %}
+<style>
+/* ── Mobile homework card ─────────────────────────────────────── */
+.hw-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.hw-card-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+.hw-card-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  align-items: center;
+}
+.hw-card-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.hw-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--border);
+  margin-top: 0.1rem;
+}
+.hw-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: 0.15s;
+}
+.hw-action-btn:hover { border-color: var(--accent); color: var(--accent); }
+.hw-action-btn.danger { color: var(--danger); }
+.hw-action-btn.danger:hover { border-color: var(--danger); background: rgba(248,113,113,0.06); }
+</style>
+{% endblock %}
 
-  <div class="page-header d-flex justify-content-between align-items-end">
+{% block content %}
+
+  <div class="page-header d-flex justify-content-between align-items-start align-items-sm-end flex-wrap gap-2">
     <div>
       <h1 class="page-title">Manage Homework</h1>
       <p class="page-subtitle">Assign and track homework for your students.</p>
     </div>
-    <div class="d-flex gap-2">
-      <a href="{% url 'manage_groups' %}" class="btn-auth-outline text-decoration-none py-2 px-4">
-        <i class="bi bi-people me-2"></i>Groups
+    <div class="d-flex gap-2 flex-wrap">
+      <a href="{% url 'manage_groups' %}" class="btn-core-outline text-decoration-none">
+        <i class="bi bi-people"></i> Groups
       </a>
-      <a href="{% url 'create_homework' %}" class="btn-auth-primary text-decoration-none py-2 px-4 shadow-sm">
-        <i class="bi bi-plus-lg me-2"></i>New Homework
+      <a href="{% url 'create_homework' %}" class="btn-core-primary text-decoration-none">
+        <i class="bi bi-plus-lg"></i> New Homework
       </a>
     </div>
   </div>
 
   {% if homeworks %}
-  <div class="card border-0 shadow-sm overflow-hidden">
+
+  <!-- ── DESKTOP TABLE (md and up) ───────────────────────────── -->
+  <div class="card border-0 shadow-sm overflow-hidden d-none d-md-block">
     <div class="table-responsive">
       <table class="table table-hover align-middle mb-0">
         <thead class="bg-chrome text-white">
@@ -44,12 +108,10 @@
               <div class="fw-bold text-dark">{{ hw.title }}</div>
               <div class="text-muted extra-small">Created {{ hw.created_at|date:"M d, Y" }}</div>
             </td>
-            <td>
-              <span class="text-muted" style="font-size:0.83rem;">{{ hw.practice.title|default:"—" }}</span>
-            </td>
+            <td><span class="text-muted" style="font-size:0.83rem;">{{ hw.practice.title|default:"—" }}</span></td>
             <td class="text-center fw-medium text-warning">{{ hw.pending_count }}</td>
             <td class="text-center fw-medium text-success">{{ hw.submitted_count }}</td>
-            <td class="text-center fw-medium" style="color: var(--accent);">{{ hw.graded_count }}</td>
+            <td class="text-center fw-medium" style="color:var(--accent);">{{ hw.graded_count }}</td>
             <td>
               {% if hw.due_date %}
                 <span class="text-muted" style="font-size:0.83rem;">{{ hw.due_date|date:"M d, Y H:i" }}</span>
@@ -77,14 +139,45 @@
       </table>
     </div>
   </div>
+
+  <!-- ── MOBILE CARDS (below md) ─────────────────────────────── -->
+  <div class="d-flex flex-column gap-3 d-md-none">
+    {% for hw in homeworks %}
+    <div class="hw-card">
+      <p class="hw-card-title">{{ hw.title }}</p>
+
+      <div class="hw-card-meta">
+        <span><i class="bi bi-book-half" style="color:var(--accent);"></i> {{ hw.practice.title|default:"—" }}</span>
+        {% if hw.due_date %}
+          <span><i class="bi bi-calendar3"></i> {{ hw.due_date|date:"M d, Y" }}</span>
+        {% else %}
+          <span class="text-muted">No due date</span>
+        {% endif %}
+      </div>
+
+      <div class="d-flex gap-3">
+        <span class="hw-card-stat text-warning"><i class="bi bi-hourglass-split"></i> {{ hw.pending_count }} pending</span>
+        <span class="hw-card-stat text-success"><i class="bi bi-check-circle"></i> {{ hw.submitted_count }} submitted</span>
+        <span class="hw-card-stat" style="color:var(--accent);"><i class="bi bi-star"></i> {{ hw.graded_count }} graded</span>
+      </div>
+
+      <div class="hw-card-actions">
+        <a href="{% url 'homework_detail' hw.pk %}" class="hw-action-btn"><i class="bi bi-people"></i> Students</a>
+        <a href="{% url 'assign_homework' hw.pk %}" class="hw-action-btn"><i class="bi bi-person-plus"></i> Assign</a>
+        <a href="{% url 'edit_homework' hw.pk %}" class="hw-action-btn"><i class="bi bi-pencil"></i> Edit</a>
+        <a href="{% url 'delete_homework' hw.pk %}" class="hw-action-btn danger"><i class="bi bi-trash"></i> Delete</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
   {% else %}
   <div class="card p-5 text-center bg-transparent border-dashed">
-    <i class="bi bi-journal-plus text-muted" style="font-size: 3rem;"></i>
+    <i class="bi bi-journal-plus text-muted" style="font-size:3rem;"></i>
     <h3 class="mt-3">No homework yet</h3>
     <p class="text-muted mb-4">Create your first homework assignment for your students.</p>
-    <a href="{% url 'create_homework' %}" class="btn-auth-primary text-decoration-none py-2 px-5 d-inline-block">Create Now</a>
+    <a href="{% url 'create_homework' %}" class="btn-core-primary text-decoration-none py-2 px-5 d-inline-block">Create Now</a>
   </div>
   {% endif %}
 
-</div>
 {% endblock %}

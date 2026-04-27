@@ -33,10 +33,10 @@
 
             <!-- STATS GRID -->
             <div class="row g-3 mb-4">
-                {% include "partials/info_item.html" with label="Questions" value=question_count icon="bi-list-ol" %}
-                {% include "partials/info_item.html" with label="Total Points" value=total_points icon="bi-award" %}
-                {% include "partials/info_item.html" with label="Pass Score" value=practice.pass_score|floatformat:0 icon="bi-check2-circle" %}
-                {% include "partials/info_item.html" with label="Time Limit" value=practice.time_limit|default:"No limit" icon="bi-clock" %}
+                <div class="col-6 col-md-3">{% include "partials/info_item.html" with label="Questions" value=question_count icon="bi-list-ol" %}</div>
+                <div class="col-6 col-md-3">{% include "partials/info_item.html" with label="Total Points" value=total_points icon="bi-award" %}</div>
+                <div class="col-6 col-md-3">{% include "partials/info_item.html" with label="Pass Score" value=practice.pass_score|floatformat:0 icon="bi-check2-circle" %}</div>
+                <div class="col-6 col-md-3">{% include "partials/info_item.html" with label="Time Limit" value=practice.time_limit|default:"No limit" icon="bi-clock" %}</div>
             </div>
 
             <!-- RULES CARD -->

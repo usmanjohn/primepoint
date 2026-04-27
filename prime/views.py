@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.conf import settings
 from django.db.models import Q
 
 from masters.models import Master
@@ -6,18 +8,16 @@ from practice.models import Practice
 from discussion.models import Thread
 
 
+def service_worker(request):
+    sw_path = settings.BASE_DIR / 'static' / 'sw.js'
+    return HttpResponse(sw_path.read_text(), content_type='application/javascript; charset=utf-8')
+
+
 def index(request):
     return render(request, 'prime/index.html')
 
 def about(request):
     return render(request, 'prime/about.html')
-
-def set_language(request):
-    if request.method == 'POST':
-        lang = request.POST.get('lang', 'en')
-        if lang in ('en', 'uz'):
-            request.session['lang'] = lang
-    return redirect(request.POST.get('next', '/'))
 
 def search(request):
     query = request.GET.get('q', '').strip()

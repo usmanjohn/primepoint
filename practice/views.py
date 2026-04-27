@@ -22,6 +22,7 @@ def _auto_link_homework(attempt):
 # ─────────────────────────────────────────────
 # 1. PRACTICE LIST — Browse & filter practices
 # ─────────────────────────────────────────────
+@login_required
 def practice_list(request):
     practices = Practice.objects.filter(is_published=True).select_related(
         'subject', 'master__profile__user'

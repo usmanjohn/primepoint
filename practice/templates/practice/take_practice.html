@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block body_class %}quiz-active{% endblock %}
 {% block title %}Q{{ current_index|add:1 }} — {{ practice.title }}{% endblock %}
 
 {% block extra_css %}

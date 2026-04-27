@@ -69,6 +69,7 @@ def profile(request):
     return render(request, 'people/profile.html', _profile_context(request.user, True))
 
 
+@login_required
 def user_profile(request, username):
     viewed_user = get_object_or_404(User, username=username)
     is_own = request.user.is_authenticated and request.user == viewed_user

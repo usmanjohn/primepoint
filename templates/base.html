@@ -1,10 +1,10 @@
-{% load static %}
+{% load static i18n %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0f172a"> 
+    <meta name="theme-color" content="#0f172a">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="CORE">
@@ -13,6 +13,7 @@
     <!-- PWA Manifest -->
     <link rel="manifest" href="{% static 'manifest.json' %}">
     <link rel="apple-touch-icon" href="{% static 'icons/icon-192.png' %}">
+    <meta name="mobile-web-app-capable" content="yes">
 
 
 
@@ -27,11 +28,11 @@
     <!-- Google Fonts: Syne (headings) + DM Sans (body) -->
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    
+
 
     {% block extra_css %}{% endblock %}
 </head>
-<body>
+<body class="{% block body_class %}{% endblock %}">
 
     <!-- Togglers -->
     <input type="checkbox" id="nav-toggler">
@@ -61,58 +62,63 @@
 
         <!-- Nav items -->
         <nav class="nav-menu">
-            <span class="nav-section">{% if request.session.lang == 'uz' %}Asosiy{% else %}Main{% endif %}</span>
+            <span class="nav-section">{% trans "Main" %}</span>
 
             <a href="{% url 'index' %}" class="nav-link {% block nav_index %}{% endblock %}">
                 <i class="bi bi-grid-1x2-fill"></i>
-                <span class="nav-label">{% if request.session.lang == 'uz' %}Bosh sahifa{% else %}Index{% endif %}</span>
+                <span class="nav-label">{% trans "Index" %}</span>
             </a>
             <a href="{% url 'analytics-home' %}" class="nav-link {% block nav_analytics %}{% endblock %}">
                 <i class="bi bi-bar-chart-line-fill"></i>
-                <span class="nav-label">{% if request.session.lang == 'uz' %}Tahlil{% else %}Analytics{% endif %}</span>
+                <span class="nav-label">{% trans "Analytics" %}</span>
             </a>
 
             <a href="{% url 'masters-home' %}" class="nav-link {% block nav_masters %}{% endblock %}">
                 <i class="fa-solid fa-person-chalkboard"></i>
-                <span class="nav-label">{% if request.session.lang == 'uz' %}Ustodlar{% else %}Masters{% endif %}</span>
+                <span class="nav-label">{% trans "Masters" %}</span>
                 <span class="nav-badge">3</span>
             </a>
 
-            <span class="nav-section">{% if request.session.lang == 'uz' %}Amaliyot{% else %}Practice{% endif %}</span>
+            <span class="nav-section">{% trans "Practice" %}</span>
 
             <a href="{% url 'practice_list' %}" class="nav-link {% block nav_practice %}{% endblock %}">
                 <i class="bi bi-book-half"></i>
-                <span class="nav-label">{% if request.session.lang == 'uz' %}Mashqlar{% else %}Practice{% endif %}</span>
+                <span class="nav-label">{% trans "Practice" %}</span>
             </a>
 
             <a href="{% url 'panda-home' %}" class="nav-link {% block nav_pandas %}{% endblock %}">
                 <i class="bi bi-mortarboard-fill"></i>
-                <span class="nav-label">{% if request.session.lang == 'uz' %}Pandalar{% else %}Pandas{% endif %}</span>
+                <span class="nav-label">{% trans "Pandas" %}</span>
             </a>
 
             <a href="{% url 'my_homework' %}" class="nav-link {% block nav_homework %}{% endblock %}">
                 <i class="bi bi-journal-bookmark-fill"></i>
-                <span class="nav-label">{% if request.session.lang == 'uz' %}Uy vazifasi{% else %}Homework{% endif %}</span>
+                <span class="nav-label">{% trans "Homework" %}</span>
             </a>
 
             <a href="{% url 'discussion_home' %}" class="nav-link {% block nav_discussion %}{% endblock %}">
                 <i class="bi bi-chat-square-dots-fill"></i>
-                <span class="nav-label">{% if request.session.lang == 'uz' %}Muhokama{% else %}Discussion{% endif %}</span>
+                <span class="nav-label">{% trans "Discussion" %}</span>
             </a>
 
-            <span class="nav-section">{% if request.session.lang == 'uz' %}Yordam{% else %}Support{% endif %}</span>
+            <a href="{% url 'tutorial_list' %}" class="nav-link {% block nav_tutorials %}{% endblock %}">
+                <i class="bi bi-journal-text"></i>
+                <span class="nav-label">{% trans "Tutorials" %}</span>
+            </a>
+
+            <span class="nav-section">{% trans "Support" %}</span>
 
             <a href="{% url 'about' %}" class="nav-link {% block nav_about %}{% endblock %}">
                 <i class="bi bi-patch-question"></i>
-                <span class="nav-label">{% if request.session.lang == 'uz' %}Haqida{% else %}About{% endif %}</span>
+                <span class="nav-label">{% trans "About" %}</span>
             </a>
 
             <a href="#" class="nav-link {% block nav_help %}{% endblock %}">
                 <i class="bi bi-headset"></i>
-                <span class="nav-label">{% if request.session.lang == 'uz' %}Yordam{% else %}Help{% endif %}</span>
+                <span class="nav-label">{% trans "Help" %}</span>
             </a>
         </nav>
-        
+
 
         <!-- Footer -->
         <div class="sidebar-footer">
@@ -121,7 +127,7 @@
                     {{ user.username|slice:":2"|upper }}
                 </div>
                 <div class="footer-detail">
-                    <span class="role-badge">{% if user.is_staff %}Admin{% else %}{% if request.session.lang == 'uz' %}A'zo{% else %}Member{% endif %}{% endif %}</span>
+                    <span class="role-badge">{% if user.is_staff %}Admin{% else %}{% trans "Member" %}{% endif %}</span>
                     <span class="username">{{ user.username }}</span>
                 </div>
                 <div class="status-dot ms-auto" title="Online"></div>
@@ -167,20 +173,22 @@
 
             <div class="topbar-right">
                 <!-- Language switcher -->
-                <form method="post" action="{% url 'set_language' %}" class="lang-switcher">
+                <form method="post" action="{% url 'set_language' %}" class="lang-switcher d-none d-sm-flex">
                     {% csrf_token %}
                     <input type="hidden" name="next" value="{{ request.path }}">
-                    <button type="submit" name="lang" value="en"
-                        class="lang-btn {% if request.session.lang != 'uz' %}lang-btn--active{% endif %}">EN</button>
-                    <button type="submit" name="lang" value="uz"
-                        class="lang-btn {% if request.session.lang == 'uz' %}lang-btn--active{% endif %}">UZ</button>
+                    <button type="submit" name="language" value="en"
+                        class="lang-btn {% if LANGUAGE_CODE != 'uz' %}lang-btn--active{% endif %}">EN</button>
+                    <button type="submit" name="language" value="uz"
+                        class="lang-btn {% if LANGUAGE_CODE == 'uz' %}lang-btn--active{% endif %}">UZ</button>
                 </form>
 
-                <!-- Notifications -->
+                <!-- Notifications (hide on xs for guests to save space) -->
+                {% if user.is_authenticated %}
                 <a href="#" class="icon-btn" aria-label="Notifications">
                     <i class="bi bi-bell"></i>
                     <span class="notif-dot"></span>
                 </a>
+                {% endif %}
 
                 <!-- User menu: authenticated -->
                 {% if user.is_authenticated %}
@@ -203,12 +211,12 @@
                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <a class="dropdown-item" href="{% url 'profile' %}">
-                                <i class="bi bi-person"></i>{% if request.session.lang == 'uz' %}Mening profilim{% else %}My Profile{% endif %}
+                                <i class="bi bi-person"></i>{% trans "My Profile" %}
                             </a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="#">
-                                <i class="bi bi-gear"></i>{% if request.session.lang == 'uz' %}Sozlamalar{% else %}Settings{% endif %}
+                                <i class="bi bi-gear"></i>{% trans "Settings" %}
                             </a>
                         </li>
                         <li><hr class="dropdown-divider"></li>
@@ -216,7 +224,7 @@
                             <form action="{% url 'logout' %}" method="post">
                                 {% csrf_token %}
                                 <button type="submit" class="dropdown-item text-danger w-100 border-0 bg-transparent text-start">
-                                    <i class="bi bi-box-arrow-right"></i>{% if request.session.lang == 'uz' %}Chiqish{% else %}Sign out{% endif %}
+                                    <i class="bi bi-box-arrow-right"></i>{% trans "Sign out" %}
                                 </button>
                             </form>
                         </li>
@@ -225,8 +233,10 @@
 
                 <!-- User menu: guest -->
                 {% else %}
-                <a href="{% url 'login' %}" class="btn-auth-outline">{% if request.session.lang == 'uz' %}Kirish{% else %}Log in{% endif %}</a>
-                <a href="{% url 'register' %}" class="btn-auth-primary">{% if request.session.lang == 'uz' %}Ro'yxat{% else %}Register{% endif %}</a>
+                <a href="{% url 'login' %}" class="btn-auth-outline d-none d-sm-inline-flex">{% trans "Log in" %}</a>
+                <a href="{% url 'register' %}" class="btn-auth-primary d-none d-sm-inline-flex">{% trans "Register" %}</a>
+                <!-- Mobile: single compact button -->
+                <a href="{% url 'login' %}" class="btn-auth-primary d-sm-none" style="padding:7px 14px; font-size:0.82rem;">{% trans "Login" %}</a>
                 {% endif %}
             </div>
         </header>
@@ -250,6 +260,31 @@
 
     </div><!-- /main-wrapper -->
 
+    <!-- Mobile Bottom Nav (PWA) -->
+    <nav class="mob-bottom-nav d-lg-none" aria-label="Mobile navigation">
+        <a href="{% url 'index' %}" class="mob-nav-item {% block mob_nav_index %}{% endblock %}">
+            <i class="bi bi-grid-1x2-fill"></i><span>{% trans "Home" %}</span>
+        </a>
+        <a href="{% url 'masters-home' %}" class="mob-nav-item {% block mob_nav_masters %}{% endblock %}">
+            <i class="fa-solid fa-person-chalkboard"></i><span>{% trans "Masters" %}</span>
+        </a>
+        <a href="{% url 'practice_list' %}" class="mob-nav-item {% block mob_nav_practice %}{% endblock %}">
+            <i class="bi bi-book-half"></i><span>{% trans "Practice" %}</span>
+        </a>
+        <a href="{% url 'discussion_home' %}" class="mob-nav-item {% block mob_nav_discussion %}{% endblock %}">
+            <i class="bi bi-chat-square-dots-fill"></i><span>{% trans "Chat" %}</span>
+        </a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'profile' %}" class="mob-nav-item {% block mob_nav_profile %}{% endblock %}">
+            <i class="bi bi-person-fill"></i><span>{% trans "Profile" %}</span>
+        </a>
+        {% else %}
+        <a href="{% url 'login' %}" class="mob-nav-item">
+            <i class="bi bi-box-arrow-in-right"></i><span>{% trans "Login" %}</span>
+        </a>
+        {% endif %}
+    </nav>
+
     <!-- Bootstrap JS (Dropdowns, Alerts) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -257,7 +292,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register("{% static 'sw.js' %}");
+                navigator.serviceWorker.register('/sw.js', { scope: '/' });
             });
         }
     </script>

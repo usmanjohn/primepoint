@@ -11,6 +11,7 @@ def _is_privileged(user):
     return user.is_staff or getattr(getattr(user, 'profile', None), 'is_master', False)
 
 
+@login_required
 def discussion_home(request):
     threads = Thread.objects.select_related('author', 'category').annotate(
         num_replies=Count('replies', distinct=True),
@@ -49,6 +50,7 @@ def discussion_home(request):
     return render(request, 'discussion/home.html', context)
 
 
+@login_required
 def thread_detail(request, pk):
     thread = get_object_or_404(Thread.objects.select_related('author', 'category'), pk=pk)
     Thread.objects.filter(pk=pk).update(view_count=thread.view_count + 1)

@@ -1,8 +1,10 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from django.db.models import Count
 from .models import Panda
 
 
+@login_required
 def panda_home(request):
     panders = (
         Panda.objects

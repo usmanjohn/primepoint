@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from django.db.models import Count, Avg, Q, Sum
 from django.db.models.functions import TruncDay
 from django.utils import timezone
@@ -24,6 +25,7 @@ def _fill_daily_series(qs, days=30):
     return labels, values
 
 
+@login_required
 def analytics(request):
     # ── Platform stats ────────────────────────────────────────────
     total_students  = Panda.objects.count()

@@ -1,0 +1,592 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-25 14:56+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: analytics/templates/analytics/home.html:4
+#: analytics/templates/analytics/home.html:5
+#: prime/templates/prime/index.html:24 templates/base.html:72
+msgid "Analytics"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:126
+msgid "Platform Overview"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:133
+#: analytics/templates/analytics/home.html:317
+#: masters/templates/masters/master_detail.html:285
+#: masters/templates/masters/master_detail.html:374
+#: masters/templates/masters/master_list.html:185
+#: people/templates/people/profile.html:154
+msgid "Students"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:138
+#: masters/templates/masters/master_list.html:4
+#: masters/templates/masters/master_list.html:5
+#: prime/templates/prime/index.html:38
+#: prime/templates/prime/search_results.html:41 templates/base.html:77
+msgid "Masters"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:143
+#: analytics/templates/analytics/home.html:321
+#: masters/templates/masters/master_detail.html:280
+#: masters/templates/masters/master_detail.html:332
+#: masters/templates/masters/master_list.html:181
+#: people/templates/people/profile.html:168
+#: people/templates/people/profile.html:281
+msgid "Practices"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:148
+#: analytics/templates/analytics/home.html:245
+#: masters/templates/masters/master_detail.html:295
+msgid "Avg Score"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:153
+#: masters/templates/masters/master_detail.html:300
+msgid "Questions"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:158
+#: prime/templates/prime/search_results.html:99
+msgid "Discussions"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:163
+#: analytics/templates/analytics/home.html:257
+#: prime/templates/prime/index.html:80 templates/base.html:95
+msgid "Homework"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:171
+msgid "Attempts — Last 30 Days"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:179
+msgid "Difficulty Levels"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:191
+msgid "Score Distribution"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:199
+msgid "Student Ranks"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:207
+msgid "Free vs Paid"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:219
+msgid "Top Masters by Students"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:232
+#: analytics/templates/analytics/home.html:349
+#: analytics/templates/analytics/home.html:361
+msgid "My Analytics"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:241
+#: people/templates/people/profile.html:198
+msgid "Attempts"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:249
+msgid "Best Score"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:253
+msgid "Pass Rate"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:261
+#: masters/templates/masters/master_list.html:189
+#: people/templates/people/profile.html:191
+msgid "Rating"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:270
+msgid "My Recent Scores"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:282
+msgid "My Score by Level"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:292
+msgid "Homework Status"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:309
+msgid "My Master Stats"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:325
+#: masters/templates/masters/master_detail.html:290
+#: people/templates/people/profile.html:161
+msgid "Avg Rating"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:329
+msgid "Student Avg Score"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:333
+msgid "Total Attempts"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:339
+msgid "My Master Page"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:342
+#: people/templates/people/profile.html:120
+msgid "Manage Practices"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:353
+msgid "No personal data yet"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:354
+msgid "Complete a practice to see your personal analytics."
+msgstr ""
+
+#: analytics/templates/analytics/home.html:356
+#: people/templates/people/profile.html:437
+msgid "Browse Practices"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:365
+msgid "Login required"
+msgstr ""
+
+#: analytics/templates/analytics/home.html:366
+msgid "Log in to view your personal stats and charts."
+msgstr ""
+
+#: analytics/templates/analytics/home.html:368 templates/base.html:228
+msgid "Log in"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:5
+#: people/templates/people/profile.html:32
+msgid "Master"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:231
+msgid "All Masters"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:259
+msgid "Edit"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:265
+msgid "Delete your Master profile? This cannot be undone."
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:266
+msgid "Delete"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:307
+msgid "Yrs Active"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:317
+#: people/templates/people/profile.html:58 templates/base.html:107
+msgid "About"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:336
+#: people/templates/people/profile.html:258
+#: people/templates/people/profile.html:303
+msgid "Manage all"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:346
+#: people/templates/people/profile.html:269
+msgid "Free"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:348
+#: people/templates/people/profile.html:269
+msgid "Paid"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:359
+msgid "Avg score"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:394
+msgid "Manage My Practices"
+msgstr ""
+
+#: masters/templates/masters/master_list.html:147
+msgid "Community"
+msgstr ""
+
+#: masters/templates/masters/master_list.html:148
+msgid "Meet the Masters"
+msgstr ""
+
+#: masters/templates/masters/master_list.html:149
+msgid "Educators, experts, and mentors creating practice sessions for you."
+msgstr ""
+
+#: masters/templates/masters/master_list.html:154
+#: masters/templates/masters/master_list.html:201
+#: people/templates/people/profile.html:126
+msgid "Become a Master"
+msgstr ""
+
+#: masters/templates/masters/master_list.html:158
+msgid "My Practices"
+msgstr ""
+
+#: masters/templates/masters/master_list.html:163
+msgid "Login to Join"
+msgstr ""
+
+#: masters/templates/masters/master_list.html:191
+msgid "View"
+msgstr ""
+
+#: masters/templates/masters/master_list.html:197
+msgid "No masters yet"
+msgstr ""
+
+#: masters/templates/masters/master_list.html:198
+msgid "Be the first to create a Master profile and share your knowledge."
+msgstr ""
+
+#: people/templates/people/profile.html:4
+#: people/templates/people/profile.html:5
+msgid "Profile"
+msgstr ""
+
+#: people/templates/people/profile.html:19
+#: people/templates/people/profile.html:33
+msgid "Student"
+msgstr ""
+
+#: people/templates/people/profile.html:30
+msgid "Director"
+msgstr ""
+
+#: people/templates/people/profile.html:31
+msgid "Co-founder"
+msgstr ""
+
+#: people/templates/people/profile.html:34
+msgid "Assistant"
+msgstr ""
+
+#: people/templates/people/profile.html:41
+#: people/templates/people/profile.html:104
+msgid "Edit Profile"
+msgstr ""
+
+#: people/templates/people/profile.html:64
+msgid "No biography yet."
+msgstr ""
+
+#: people/templates/people/profile.html:88
+msgid "Joined"
+msgstr ""
+
+#: people/templates/people/profile.html:99
+msgid "Quick Actions"
+msgstr ""
+
+#: people/templates/people/profile.html:109
+msgid "Change Password"
+msgstr ""
+
+#: people/templates/people/profile.html:115
+msgid "Edit Master Profile"
+msgstr ""
+
+#: people/templates/people/profile.html:134
+msgid "Sign Out"
+msgstr ""
+
+#: people/templates/people/profile.html:175
+msgid "Since"
+msgstr ""
+
+#: people/templates/people/profile.html:184
+msgid "Rank"
+msgstr ""
+
+#: people/templates/people/profile.html:205
+msgid "Purpose"
+msgstr ""
+
+#: people/templates/people/profile.html:214
+msgid "No role assigned yet"
+msgstr ""
+
+#: people/templates/people/profile.html:216
+msgid "Apply to become a Master or join as a Student to unlock features."
+msgstr ""
+
+#: people/templates/people/profile.html:217
+msgid "Apply as Master"
+msgstr ""
+
+#: people/templates/people/profile.html:219
+msgid "This user hasn't taken on a role yet."
+msgstr ""
+
+#: people/templates/people/profile.html:233
+msgid "Master Profile"
+msgstr ""
+
+#: people/templates/people/profile.html:235
+msgid "View public page"
+msgstr ""
+
+#: people/templates/people/profile.html:255
+msgid "Published Practices"
+msgstr ""
+
+#: people/templates/people/profile.html:283
+msgid "Manage"
+msgstr ""
+
+#: people/templates/people/profile.html:286
+msgid "No published practices yet."
+msgstr ""
+
+#: people/templates/people/profile.html:288
+msgid "Create Practice"
+msgstr ""
+
+#: people/templates/people/profile.html:301
+msgid "My Homework (as Master)"
+msgstr ""
+
+#: people/templates/people/profile.html:312
+msgid "pending"
+msgstr ""
+
+#: people/templates/people/profile.html:312
+msgid "submitted"
+msgstr ""
+
+#: people/templates/people/profile.html:313
+#: people/templates/people/profile.html:460
+msgid "Due"
+msgstr ""
+
+#: people/templates/people/profile.html:322
+msgid "No homework created yet."
+msgstr ""
+
+#: people/templates/people/profile.html:324
+msgid "Create Homework"
+msgstr ""
+
+#: people/templates/people/profile.html:336
+msgid "Student Profile"
+msgstr ""
+
+#: people/templates/people/profile.html:346
+msgid "Rating Progress"
+msgstr ""
+
+#: people/templates/people/profile.html:347
+msgid "pts"
+msgstr ""
+
+#: people/templates/people/profile.html:355
+msgid "Novice"
+msgstr ""
+
+#: people/templates/people/profile.html:356
+msgid "Scholar"
+msgstr ""
+
+#: people/templates/people/profile.html:357
+msgid "Expert"
+msgstr ""
+
+#: people/templates/people/profile.html:358
+msgid "Grandmaster"
+msgstr ""
+
+#: people/templates/people/profile.html:367
+msgid "My Masters"
+msgstr ""
+
+#: people/templates/people/profile.html:382
+msgid "Choose your masters"
+msgstr ""
+
+#: people/templates/people/profile.html:396
+msgid "Save Masters"
+msgstr ""
+
+#: people/templates/people/profile.html:409
+#: people/templates/people/profile.html:432
+msgid "Recent Practice Attempts"
+msgstr ""
+
+#: people/templates/people/profile.html:435
+msgid "No completed attempts yet."
+msgstr ""
+
+#: people/templates/people/profile.html:448
+msgid "My Homework"
+msgstr ""
+
+#: people/templates/people/profile.html:451
+msgid "See all"
+msgstr ""
+
+#: people/templates/people/profile.html:464
+msgid "Pending"
+msgstr ""
+
+#: people/templates/people/profile.html:491
+msgid "No homework assigned yet."
+msgstr ""
+
+#: point/settings.py:149
+msgid "English"
+msgstr ""
+
+#: point/settings.py:150
+msgid "Uzbek"
+msgstr ""
+
+#: prime/templates/prime/index.html:4
+msgid "Dashboard"
+msgstr ""
+
+#: prime/templates/prime/index.html:10
+msgid "Welcome!"
+msgstr ""
+
+#: prime/templates/prime/index.html:13
+msgid "Powerty — your learning and practice platform. Choose a section below."
+msgstr ""
+
+#: prime/templates/prime/index.html:27
+msgid "Track your progress and learning stats."
+msgstr ""
+
+#: prime/templates/prime/index.html:41
+msgid "Learn from experienced instructors."
+msgstr ""
+
+#: prime/templates/prime/index.html:52 templates/base.html:81
+#: templates/base.html:85
+msgid "Practice"
+msgstr ""
+
+#: prime/templates/prime/index.html:55
+msgid "Exercises to reinforce your knowledge."
+msgstr ""
+
+#: prime/templates/prime/index.html:66 templates/base.html:90
+msgid "Pandas"
+msgstr ""
+
+#: prime/templates/prime/index.html:69
+msgid "Data analysis lessons and tasks."
+msgstr ""
+
+#: prime/templates/prime/index.html:83
+msgid "Submitted and pending assignments."
+msgstr ""
+
+#: prime/templates/prime/index.html:94 templates/base.html:100
+msgid "Discussion"
+msgstr ""
+
+#: prime/templates/prime/index.html:97
+msgid "Ask questions and share ideas."
+msgstr ""
+
+#: prime/templates/prime/search_results.html:26
+msgid "Search"
+msgstr ""
+
+#: prime/templates/prime/search_results.html:33
+#, python-format
+msgid "%(count)s result for \"<strong>%(q)s</strong>\""
+msgid_plural "%(count)s results for \"<strong>%(q)s</strong>\""
+msgstr[0] ""
+msgstr[1] ""
+
+#: prime/templates/prime/search_results.html:68
+msgid "Practice Sets"
+msgstr ""
+
+#: prime/templates/prime/search_results.html:126
+msgid "No results found. Try different keywords."
+msgstr ""
+
+#: prime/templates/prime/search_results.html:135
+msgid "Type something to search across masters, practices, and discussions."
+msgstr ""
+
+#: templates/base.html:64
+msgid "Main"
+msgstr ""
+
+#: templates/base.html:68
+msgid "Index"
+msgstr ""
+
+#: templates/base.html:103
+msgid "Support"
+msgstr ""
+
+#: templates/base.html:112
+msgid "Help"
+msgstr ""
+
+#: templates/base.html:124
+msgid "Member"
+msgstr ""
+
+#: templates/base.html:206
+msgid "My Profile"
+msgstr ""
+
+#: templates/base.html:211
+msgid "Settings"
+msgstr ""
+
+#: templates/base.html:219
+msgid "Sign out"
+msgstr ""
+
+#: templates/base.html:229
+msgid "Register"
+msgstr ""

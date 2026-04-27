@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
-{% block title %}{% if request.session.lang == 'uz' %}Ustodlar{% else %}Masters{% endif %} — CORE{% endblock %}
-{% block page_name %}{% if request.session.lang == 'uz' %}Ustodlar{% else %}Masters{% endif %}{% endblock %}
+{% block title %}{% trans "Masters" %} — CORE{% endblock %}
+{% block page_name %}{% trans "Masters" %}{% endblock %}
 {% block nav_masters %}active{% endblock %}
+{% block mob_nav_masters %}active{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -31,7 +32,7 @@
 
 .ms-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
   gap: 1.1rem;
 }
 
@@ -144,23 +145,23 @@
   <!-- HERO -->
   <div class="ms-hero d-flex justify-content-between align-items-end flex-wrap gap-3">
     <div>
-      <p class="ms-eyebrow">{% if request.session.lang == 'uz' %}Jamoa{% else %}Community{% endif %}</p>
-      <h1>{% if request.session.lang == 'uz' %}Ustodlar bilan tanishing{% else %}Meet the Masters{% endif %}</h1>
-      <p class="ms-hero-sub">{% if request.session.lang == 'uz' %}Siz uchun amaliyot sessiyalari yaratuvchi mutaxassislar.{% else %}Educators, experts, and mentors creating practice sessions for you.{% endif %}</p>
+      <p class="ms-eyebrow">{% trans "Community" %}</p>
+      <h1>{% trans "Meet the Masters" %}</h1>
+      <p class="ms-hero-sub">{% trans "Educators, experts, and mentors creating practice sessions for you." %}</p>
     </div>
     {% if user.is_authenticated %}
       {% if not user.profile.master %}
         <a href="{% url 'masters-create' %}" class="btn-auth-primary text-decoration-none py-2 px-4">
-          <i class="bi bi-person-plus me-2"></i>{% if request.session.lang == 'uz' %}Ustod bo'lish{% else %}Become a Master{% endif %}
+          <i class="bi bi-person-plus me-2"></i>{% trans "Become a Master" %}
         </a>
       {% else %}
         <a href="{% url 'manage_practices' %}" class="btn-auth-outline text-decoration-none py-2 px-4">
-          <i class="bi bi-collection me-2"></i>{% if request.session.lang == 'uz' %}Mening mashqlarim{% else %}My Practices{% endif %}
+          <i class="bi bi-collection me-2"></i>{% trans "My Practices" %}
         </a>
       {% endif %}
     {% else %}
       <a href="{% url 'login' %}" class="btn-auth-outline text-decoration-none py-2 px-4">
-        {% if request.session.lang == 'uz' %}Kirish{% else %}Login to Join{% endif %}
+        {% trans "Login to Join" %}
       </a>
     {% endif %}
   </div>
@@ -178,27 +179,27 @@
       <div class="ms-card-footer">
         <div class="ms-stat">
           <div class="ms-stat-num">{{ master.practice_count }}</div>
-          <div class="ms-stat-lbl">{% if request.session.lang == 'uz' %}Mashqlar{% else %}Practices{% endif %}</div>
+          <div class="ms-stat-lbl">{% trans "Practices" %}</div>
         </div>
         <div class="ms-stat">
           <div class="ms-stat-num">{{ master.student_count_live }}</div>
-          <div class="ms-stat-lbl">{% if request.session.lang == 'uz' %}O'quvchi{% else %}Students{% endif %}</div>
+          <div class="ms-stat-lbl">{% trans "Students" %}</div>
         </div>
         <div class="ms-stat">
           <div class="ms-stat-num" style="font-size:0.95rem;">{{ master.avg_rating|floatformat:1 }}</div>
-          <div class="ms-stat-lbl">{% if request.session.lang == 'uz' %}Reyting{% else %}Rating{% endif %}</div>
+          <div class="ms-stat-lbl">{% trans "Rating" %}</div>
         </div>
-        <span class="ms-view-btn">{% if request.session.lang == 'uz' %}Ko'rish{% else %}View{% endif %} <i class="bi bi-arrow-right"></i></span>
+        <span class="ms-view-btn">{% trans "View" %} <i class="bi bi-arrow-right"></i></span>
       </div>
     </a>
     {% empty %}
     <div class="ms-empty">
       <i class="bi bi-people"></i>
-      <h3>{% if request.session.lang == 'uz' %}Hali ustodlar yo'q{% else %}No masters yet{% endif %}</h3>
-      <p>{% if request.session.lang == 'uz' %}Birinchi bo'lib Ustod profili yarating va bilimlaringizni ulashing.{% else %}Be the first to create a Master profile and share your knowledge.{% endif %}</p>
+      <h3>{% trans "No masters yet" %}</h3>
+      <p>{% trans "Be the first to create a Master profile and share your knowledge." %}</p>
       {% if user.is_authenticated %}
         <a href="{% url 'masters-create' %}" class="btn-auth-primary text-decoration-none py-2 px-4 mt-3 d-inline-block">
-          {% if request.session.lang == 'uz' %}Ustod bo'lish{% else %}Become a Master{% endif %}
+          {% trans "Become a Master" %}
         </a>
       {% endif %}
     </div>
