@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Count, Sum, Q
+from django.http import JsonResponse
 
 from .models import Category, Thread, Reply, ThreadVote, ReplyVote
 from .forms import ThreadForm, ReplyForm
@@ -179,12 +180,16 @@ def vote_thread(request, pk, value=1):
         return redirect('thread_detail', pk=pk)
     thread = get_object_or_404(Thread, pk=pk)
     vote, created = ThreadVote.objects.get_or_create(user=request.user, thread=thread, defaults={'value': value})
+    user_vote = value
     if not created:
         if vote.value == value:
             vote.delete()
+            user_vote = 0
         else:
             vote.value = value
             vote.save()
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return JsonResponse({'score': thread.vote_score, 'user_vote': user_vote})
     return redirect(request.META.get('HTTP_REFERER') or 'discussion_home')
 
 
@@ -194,12 +199,16 @@ def vote_reply(request, pk, value=1):
         return redirect('discussion_home')
     reply = get_object_or_404(Reply, pk=pk)
     vote, created = ReplyVote.objects.get_or_create(user=request.user, reply=reply, defaults={'value': value})
+    user_vote = value
     if not created:
         if vote.value == value:
             vote.delete()
+            user_vote = 0
         else:
             vote.value = value
             vote.save()
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return JsonResponse({'score': reply.vote_score, 'user_vote': user_vote, 'reply_pk': reply.pk})
     return redirect(request.META.get('HTTP_REFERER') or 'discussion_home')
 
 

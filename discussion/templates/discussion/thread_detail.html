@@ -199,7 +199,7 @@
             <article class="post-card op {% if thread.is_announcement %}ann{% endif %}">
                 <div class="vgutter">
                     {% if user.is_authenticated %}
-                    <form method="post" action="{% url 'vote_thread_up' thread.pk %}">
+                    <form method="post" action="{% url 'vote_thread_up' thread.pk %}" data-vote-form data-vote-target="thread" data-vote-value="1">
                         {% csrf_token %}
                         <button type="submit" class="vbtn {% if user_thread_vote == 1 %}up{% endif %}" title="Upvote">
                             <i class="bi bi-arrow-up"></i>
@@ -210,7 +210,7 @@
                         {{ thread.vote_score }}
                     </span>
                     {% if user.is_authenticated %}
-                    <form method="post" action="{% url 'vote_thread_down' thread.pk %}">
+                    <form method="post" action="{% url 'vote_thread_down' thread.pk %}" data-vote-form data-vote-target="thread" data-vote-value="-1">
                         {% csrf_token %}
                         <button type="submit" class="vbtn {% if user_thread_vote == -1 %}down{% endif %}" title="Downvote">
                             <i class="bi bi-arrow-down"></i>
@@ -271,7 +271,7 @@
             <article class="post-card {% if reply.is_accepted %}accepted{% endif %}" id="reply-{{ reply.pk }}">
                 <div class="vgutter">
                     {% if user.is_authenticated %}
-                    <form method="post" action="{% url 'vote_reply_up' reply.pk %}">
+                    <form method="post" action="{% url 'vote_reply_up' reply.pk %}" data-vote-form data-vote-target="reply-{{ reply.pk }}" data-vote-value="1">
                         {% csrf_token %}
                         <button type="submit" class="vbtn {% if reply.user_vote_value == 1 %}up{% endif %}" title="Upvote">
                             <i class="bi bi-arrow-up"></i>
@@ -282,7 +282,7 @@
                         {{ reply.vote_score }}
                     </span>
                     {% if user.is_authenticated %}
-                    <form method="post" action="{% url 'vote_reply_down' reply.pk %}">
+                    <form method="post" action="{% url 'vote_reply_down' reply.pk %}" data-vote-form data-vote-target="reply-{{ reply.pk }}" data-vote-value="-1">
                         {% csrf_token %}
                         <button type="submit" class="vbtn {% if reply.user_vote_value == -1 %}down{% endif %}" title="Downvote">
                             <i class="bi bi-arrow-down"></i>
@@ -392,4 +392,31 @@
         </aside>
     </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.querySelectorAll('[data-vote-form]').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        fetch(form.action, {
+            method: 'POST',
+            headers: {'X-Requested-With': 'XMLHttpRequest'},
+            body: new FormData(form),
+        })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+            var gut     = form.closest('.vgutter');
+            var scoreEl = gut.querySelector('.vscore');
+            var upBtn   = gut.querySelector('[data-vote-value="1"] .vbtn');
+            var downBtn = gut.querySelector('[data-vote-value="-1"] .vbtn');
+
+            scoreEl.textContent = d.score;
+            scoreEl.className = 'vscore' + (d.score > 0 ? ' pos' : d.score < 0 ? ' neg' : '');
+            if (upBtn)   upBtn.classList.toggle('up',   d.user_vote === 1);
+            if (downBtn) downBtn.classList.toggle('down', d.user_vote === -1);
+        });
+    });
+});
+</script>
 {% endblock %}

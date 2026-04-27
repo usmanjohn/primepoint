@@ -124,27 +124,27 @@
                 {% if user.is_authenticated %}
                     <!-- Like -->
                     <form method="post" action="{% url 'tutorial_react' tutorial.pk %}"
-                          class="tut-react-form">
+                          class="tut-react-form" data-react-form>
                         {% csrf_token %}
                         <input type="hidden" name="reaction" value="like">
-                        <button type="submit"
+                        <button type="submit" id="react-like-btn"
                                 class="tut-react-btn tut-react-btn--like
                                        {% if user_reaction == 'like' %}tut-react-btn--on{% endif %}">
-                            <i class="bi bi-hand-thumbs-up{% if user_reaction == 'like' %}-fill{% endif %}"></i>
-                            {% trans "Like" %}&nbsp;<strong>{{ like_count }}</strong>
+                            <i id="react-like-icon" class="bi bi-hand-thumbs-up{% if user_reaction == 'like' %}-fill{% endif %}"></i>
+                            {% trans "Like" %}&nbsp;<strong id="react-like-count">{{ like_count }}</strong>
                         </button>
                     </form>
 
                     <!-- Dislike -->
                     <form method="post" action="{% url 'tutorial_react' tutorial.pk %}"
-                          class="tut-react-form">
+                          class="tut-react-form" data-react-form>
                         {% csrf_token %}
                         <input type="hidden" name="reaction" value="dislike">
-                        <button type="submit"
+                        <button type="submit" id="react-dislike-btn"
                                 class="tut-react-btn tut-react-btn--dislike
                                        {% if user_reaction == 'dislike' %}tut-react-btn--on{% endif %}">
-                            <i class="bi bi-hand-thumbs-down{% if user_reaction == 'dislike' %}-fill{% endif %}"></i>
-                            {% trans "Dislike" %}&nbsp;<strong>{{ dislike_count }}</strong>
+                            <i id="react-dislike-icon" class="bi bi-hand-thumbs-down{% if user_reaction == 'dislike' %}-fill{% endif %}"></i>
+                            {% trans "Dislike" %}&nbsp;<strong id="react-dislike-count">{{ dislike_count }}</strong>
                         </button>
                     </form>
 
@@ -286,12 +286,40 @@
 
 {% block extra_js %}
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        if (window.MathJax) {
-            MathJax.startup.promise.then(() =>
-                MathJax.typesetPromise([document.getElementById('tut-content')])
-            );
-        }
+document.addEventListener('DOMContentLoaded', function () {
+    if (window.MathJax) {
+        MathJax.startup.promise.then(() =>
+            MathJax.typesetPromise([document.getElementById('tut-content')])
+        );
+    }
+
+    document.querySelectorAll('[data-react-form]').forEach(function (form) {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var data = new FormData(form);
+            fetch(form.action, {
+                method: 'POST',
+                headers: {'X-Requested-With': 'XMLHttpRequest'},
+                body: data,
+            })
+            .then(function (r) { return r.json(); })
+            .then(function (d) {
+                document.getElementById('react-like-count').textContent = d.like_count;
+                document.getElementById('react-dislike-count').textContent = d.dislike_count;
+
+                var likeBtn  = document.getElementById('react-like-btn');
+                var likeIcon = document.getElementById('react-like-icon');
+                var dislikeBtn  = document.getElementById('react-dislike-btn');
+                var dislikeIcon = document.getElementById('react-dislike-icon');
+
+                likeBtn.classList.toggle('tut-react-btn--on', d.user_reaction === 'like');
+                likeIcon.className = 'bi bi-hand-thumbs-up' + (d.user_reaction === 'like' ? '-fill' : '');
+
+                dislikeBtn.classList.toggle('tut-react-btn--on', d.user_reaction === 'dislike');
+                dislikeIcon.className = 'bi bi-hand-thumbs-down' + (d.user_reaction === 'dislike' ? '-fill' : '');
+            });
+        });
     });
+});
 </script>
 {% endblock %}

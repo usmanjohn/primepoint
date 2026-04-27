@@ -8,6 +8,8 @@ from django.utils import timezone
 from .models import Master
 from .forms import MasterForm
 from practice.models import PracticeAttempt
+from homework.models import PandaGroup, Homework
+from tutorial.models import Tutorial
 
 
 @login_required
@@ -22,8 +24,10 @@ def master_list(request):
 @login_required
 def master_detail(request, master_id):
     master = get_object_or_404(Master, id=master_id)
+    is_owner = (request.user == master.profile.user)
 
-    practices = master.practices.filter(is_published=True).annotate(
+    practice_qs = master.practices if is_owner else master.practices.filter(is_published=True)
+    practices = practice_qs.annotate(
         question_count=Count('questions', distinct=True),
         attempt_count=Count('attempts', distinct=True),
         avg_score=Avg('attempts__score'),
@@ -40,8 +44,28 @@ def master_detail(request, master_id):
 
     students = master.pandas.select_related('profile__user').order_by('-rating')[:8]
 
+    groups = []
+    homeworks = []
+    if is_owner:
+        groups = master.panda_groups.annotate(
+            member_count_ann=Count('members')
+        ).order_by('name')
+        homeworks = (
+            master.homeworks
+            .select_related('practice')
+            .prefetch_related('assignments')
+            .order_by('-created_at')
+        )
+
+    tutorials = (
+        Tutorial.objects
+        .filter(author=master.profile.user, is_published=True)
+        .order_by('-created_at')[:6]
+    )
+
     return render(request, 'masters/master_detail.html', {
         'master': master,
+        'is_owner': is_owner,
         'practices': practices,
         'avg_student_score': avg_student_score,
         'total_attempts': total_attempts,
@@ -49,6 +73,9 @@ def master_detail(request, master_id):
         'experience_years': experience_years,
         'experience_months': experience_months,
         'students': students,
+        'groups': groups,
+        'homeworks': homeworks,
+        'tutorials': tutorials,
     })
 
 

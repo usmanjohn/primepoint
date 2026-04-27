@@ -213,12 +213,91 @@
 .mdt-student-name { font-size: 0.8rem; font-weight: 600; color: var(--text); }
 .mdt-student-rank { font-size: 0.68rem; color: var(--text-muted); }
 
+/* ── Tutorials grid ─────────────────────────────────────────── */
+.mdt-tut-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(220px,100%), 1fr));
+  gap: 0.85rem;
+}
+.mdt-tut-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.1rem;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  transition: transform 0.18s, border-color 0.18s;
+  position: relative;
+}
+.mdt-tut-card:hover { transform: translateY(-2px); border-color: var(--accent); color: inherit; text-decoration: none; }
+.mdt-tut-cat { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; background: var(--accent-glow); color: var(--accent); padding: 0.15rem 0.55rem; border-radius: 4px; width: fit-content; }
+.mdt-tut-title { font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--text); margin: 0; line-height: 1.3; }
+.mdt-tut-meta { display: flex; gap: 0.6rem; font-size: 0.72rem; color: var(--text-muted); flex-wrap: wrap; margin-top: auto; }
+.mdt-tut-actions { position: absolute; top: 0.75rem; right: 0.75rem; display: flex; gap: 0.3rem; }
+
+/* ── Groups ─────────────────────────────────────────────────── */
+.mdt-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(200px,100%), 1fr));
+  gap: 0.65rem;
+}
+.mdt-group-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.mdt-group-icon { font-size: 1.2rem; color: var(--accent); flex-shrink: 0; }
+.mdt-group-body { flex: 1; min-width: 0; }
+.mdt-group-name { font-size: 0.88rem; font-weight: 600; color: var(--text); margin: 0 0 0.1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mdt-group-meta { font-size: 0.7rem; color: var(--text-muted); }
+.mdt-group-actions { display: flex; gap: 0.3rem; flex-shrink: 0; }
+
+/* ── Homeworks ──────────────────────────────────────────────── */
+.mdt-hw-list { display: flex; flex-direction: column; gap: 0.65rem; }
+.mdt-hw-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.mdt-hw-info { flex: 1; min-width: 0; }
+.mdt-hw-title { font-size: 0.9rem; font-weight: 600; color: var(--text); margin: 0 0 0.2rem; }
+.mdt-hw-sub { font-size: 0.72rem; color: var(--text-muted); }
+.mdt-hw-counts { display: flex; gap: 0.85rem; flex-shrink: 0; }
+.mdt-hw-cnt { display: flex; flex-direction: column; align-items: center; gap: 1px; }
+.mdt-hw-cnt-num { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--text); line-height: 1; }
+.mdt-hw-cnt-lbl { font-size: 0.55rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; color: var(--text-muted); }
+.mdt-hw-actions { display: flex; gap: 0.35rem; flex-shrink: 0; }
+
+/* ── Empty state ────────────────────────────────────────────── */
+.mdt-empty {
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
 /* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 600px) {
   .mdt-hero-body { padding: 0 1.25rem 1.25rem; gap: 1rem; }
   .mdt-hero-actions { width: 100%; justify-content: flex-start; }
   .mdt-avatar { width: 72px; height: 72px; }
   .mdt-avatar-wrap { margin-top: -36px; }
+  .mdt-hw-counts { display: none; }
 }
 </style>
 {% endblock %}
@@ -328,28 +407,32 @@
 {% endif %}
 
 <!-- PRACTICES -->
-{% if practices %}
+{% if practices or is_owner %}
 <div class="mdt-section">
   <div class="mdt-section-hdr">
     <h2 class="mdt-section-title">
       <i class="bi bi-book-half me-1" style="color:var(--accent);"></i>
       {% trans "Practices" %}
     </h2>
-    {% if user == master.profile.user %}
+    {% if is_owner %}
     <a href="{% url 'manage_practices' %}" class="btn-text-link" style="font-size:0.8rem;">
       {% trans "Manage all" %} →
     </a>
     {% endif %}
   </div>
+  {% if practices %}
   <div class="mdt-practice-grid">
     {% for p in practices %}
     <a href="{% url 'practice_detail' p.pk %}" class="mdt-pcard mdt-pcard--{{ p.level }}">
-      <div class="d-flex gap-2 align-items-center">
+      <div class="d-flex gap-2 align-items-center flex-wrap">
         <span class="mdt-badge mdt-badge--{{ p.level }}">{{ p.level }}</span>
         {% if p.is_free %}
           <span class="mdt-badge mdt-badge--free">{% trans "Free" %}</span>
         {% else %}
           <span class="mdt-badge mdt-badge--paid">{% trans "Paid" %}</span>
+        {% endif %}
+        {% if is_owner and not p.is_published %}
+          <span class="mdt-badge" style="background:rgba(148,163,184,.15);color:#64748b;">Draft</span>
         {% endif %}
       </div>
       <p class="mdt-pcard-title">{{ p.title }}</p>
@@ -366,6 +449,13 @@
     </a>
     {% endfor %}
   </div>
+  {% else %}
+  <div class="mdt-empty">
+    <i class="bi bi-collection me-1"></i>
+    No practices yet.
+    <a href="{% url 'manage_practices' %}" class="ms-1" style="color:var(--accent);">Create one →</a>
+  </div>
+  {% endif %}
 </div>
 {% endif %}
 
@@ -390,16 +480,179 @@
 </div>
 {% endif %}
 
+<!-- TUTORIALS -->
+{% if tutorials or is_owner %}
+<div class="mdt-section">
+  <div class="mdt-section-hdr">
+    <h2 class="mdt-section-title">
+      <i class="bi bi-journal-text me-1" style="color:var(--accent);"></i>
+      {% trans "Tutorials" %}
+    </h2>
+    {% if is_owner %}
+    <a href="{% url 'tutorial_create' %}" class="btn-text-link" style="font-size:0.8rem;">
+      + {% trans "New" %} →
+    </a>
+    {% endif %}
+  </div>
+  {% if tutorials %}
+  <div class="mdt-tut-grid">
+    {% for t in tutorials %}
+    <a href="{% url 'tutorial_detail' t.pk %}" class="mdt-tut-card">
+      {% if is_owner %}
+      <div class="mdt-tut-actions">
+        <a href="{% url 'tutorial_edit' t.pk %}" class="btn-auth-outline py-1 px-2 text-decoration-none" style="font-size:0.65rem;" onclick="event.stopPropagation();">
+          <i class="bi bi-pencil-square"></i>
+        </a>
+      </div>
+      {% endif %}
+      <span class="mdt-tut-cat">{{ t.category }}</span>
+      <p class="mdt-tut-title">{{ t.title }}</p>
+      <div class="mdt-tut-meta">
+        <span><i class="bi bi-eye me-1"></i>{{ t.views }}</span>
+        <span><i class="bi bi-clock me-1"></i>{{ t.read_time }}m read</span>
+        <span><i class="bi bi-calendar3 me-1"></i>{{ t.created_at|date:"M d" }}</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="mdt-empty">
+    <i class="bi bi-journal-text me-1"></i>
+    No tutorials published yet.
+    <a href="{% url 'tutorial_create' %}" class="ms-1" style="color:var(--accent);">Write one →</a>
+  </div>
+  {% endif %}
+</div>
+{% endif %}
+
+<!-- GROUPS (owner only) -->
+{% if is_owner %}
+<div class="mdt-section">
+  <div class="mdt-section-hdr">
+    <h2 class="mdt-section-title">
+      <i class="bi bi-diagram-3-fill me-1" style="color:var(--accent);"></i>
+      {% trans "Groups" %}
+    </h2>
+    <a href="{% url 'create_group' %}" class="btn-text-link" style="font-size:0.8rem;">
+      + {% trans "New" %} →
+    </a>
+  </div>
+  {% if groups %}
+  <div class="mdt-groups">
+    {% for g in groups %}
+    <div class="mdt-group-card">
+      <i class="bi bi-people-fill mdt-group-icon"></i>
+      <div class="mdt-group-body">
+        <div class="mdt-group-name">{{ g.name }}</div>
+        <div class="mdt-group-meta">{{ g.member_count_ann }} student{{ g.member_count_ann|pluralize }}</div>
+      </div>
+      <div class="mdt-group-actions">
+        <a href="{% url 'edit_group' g.pk %}" class="btn-auth-outline py-1 px-2 text-decoration-none" style="font-size:0.65rem;" title="Edit group">
+          <i class="bi bi-pencil-square"></i>
+        </a>
+        <a href="{% url 'delete_group' g.pk %}" class="btn-auth-outline py-1 px-2 text-decoration-none" style="font-size:0.65rem;color:#f87171;" title="Delete group"
+           onclick="return confirm('Delete group {{ g.name }}?')">
+          <i class="bi bi-trash"></i>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="mdt-empty">
+    <i class="bi bi-diagram-3 me-1"></i>
+    No groups yet.
+    <a href="{% url 'create_group' %}" class="ms-1" style="color:var(--accent);">Create one →</a>
+  </div>
+  {% endif %}
+</div>
+
+<!-- HOMEWORKS (owner only) -->
+<div class="mdt-section">
+  <div class="mdt-section-hdr">
+    <h2 class="mdt-section-title">
+      <i class="bi bi-journal-bookmark-fill me-1" style="color:var(--accent);"></i>
+      {% trans "Homeworks" %}
+    </h2>
+    <a href="{% url 'create_homework' %}" class="btn-text-link" style="font-size:0.8rem;">
+      + {% trans "New" %} →
+    </a>
+  </div>
+  {% if homeworks %}
+  <div class="mdt-hw-list">
+    {% for hw in homeworks %}
+    <div class="mdt-hw-card">
+      <div class="mdt-hw-info">
+        <div class="mdt-hw-title">{{ hw.title }}</div>
+        <div class="mdt-hw-sub">
+          {% if hw.practice %}
+            <i class="bi bi-book me-1"></i>{{ hw.practice.title }}
+            &nbsp;·&nbsp;
+          {% endif %}
+          {% if hw.due_date %}
+            <i class="bi bi-calendar-event me-1"></i>Due {{ hw.due_date|date:"M d, Y" }}
+          {% else %}
+            <i class="bi bi-infinity me-1"></i>No due date
+          {% endif %}
+        </div>
+      </div>
+      <div class="mdt-hw-counts">
+        <div class="mdt-hw-cnt">
+          <span class="mdt-hw-cnt-num" style="color:#f59e0b;">{{ hw.pending_count }}</span>
+          <span class="mdt-hw-cnt-lbl">Pending</span>
+        </div>
+        <div class="mdt-hw-cnt">
+          <span class="mdt-hw-cnt-num" style="color:var(--accent);">{{ hw.submitted_count }}</span>
+          <span class="mdt-hw-cnt-lbl">Submitted</span>
+        </div>
+        <div class="mdt-hw-cnt">
+          <span class="mdt-hw-cnt-num" style="color:#22c55e;">{{ hw.graded_count }}</span>
+          <span class="mdt-hw-cnt-lbl">Graded</span>
+        </div>
+      </div>
+      <div class="mdt-hw-actions">
+        <a href="{% url 'homework_detail' hw.pk %}" class="btn-auth-outline py-1 px-2 text-decoration-none" style="font-size:0.65rem;" title="View">
+          <i class="bi bi-eye"></i>
+        </a>
+        <a href="{% url 'edit_homework' hw.pk %}" class="btn-auth-outline py-1 px-2 text-decoration-none" style="font-size:0.65rem;" title="Edit">
+          <i class="bi bi-pencil-square"></i>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="mdt-empty">
+    <i class="bi bi-journal-bookmark me-1"></i>
+    No homeworks yet.
+    <a href="{% url 'create_homework' %}" class="ms-1" style="color:var(--accent);">Create one →</a>
+  </div>
+  {% endif %}
+</div>
+{% endif %}
+
 <!-- Own profile CTA -->
-{% if user == master.profile.user %}
+{% if is_owner %}
 <div class="mt-2 pt-3 d-flex flex-wrap gap-2" style="border-top:1px solid var(--border);">
   <a href="{% url 'manage_practices' %}" class="btn-core-primary text-decoration-none">
     <i class="bi bi-collection"></i>
-    {% trans "Manage My Practices" %}
+    {% trans "Manage Practices" %}
+  </a>
+  <a href="{% url 'manage_homework' %}" class="btn-core-outline text-decoration-none">
+    <i class="bi bi-journal-bookmark-fill"></i>
+    {% trans "Manage Homeworks" %}
+  </a>
+  <a href="{% url 'manage_groups' %}" class="btn-core-outline text-decoration-none">
+    <i class="bi bi-diagram-3-fill"></i>
+    {% trans "Manage Groups" %}
+  </a>
+  <a href="{% url 'tutorial_create' %}" class="btn-core-outline text-decoration-none">
+    <i class="bi bi-journal-text"></i>
+    {% trans "New Tutorial" %}
   </a>
   <a href="{% url 'masters-certificate' %}" class="btn-core-outline text-decoration-none">
     <i class="bi bi-award"></i>
-    {% trans "Generate Certificate" %}
+    {% trans "Certificate" %}
   </a>
 </div>
 {% endif %}

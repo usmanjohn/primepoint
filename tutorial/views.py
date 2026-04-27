@@ -4,6 +4,7 @@ from django.core.exceptions import PermissionDenied
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.db.models import F, Count, Q
+from django.http import JsonResponse
 
 from .models import Tutorial, TutorialReaction, CATEGORY_CHOICES
 from .forms import TutorialForm
@@ -85,17 +86,25 @@ def tutorial_react(request, pk):
     if reaction_type not in ('like', 'dislike'):
         return redirect('tutorial_detail', pk=pk)
 
+    user_reaction = None
     existing = TutorialReaction.objects.filter(user=request.user, tutorial=tutorial).first()
     if existing:
         if existing.reaction == reaction_type:
-            existing.delete()          # toggle off
+            existing.delete()
         else:
             existing.reaction = reaction_type
-            existing.save()            # switch side
+            existing.save()
+            user_reaction = reaction_type
     else:
-        TutorialReaction.objects.create(
-            user=request.user, tutorial=tutorial, reaction=reaction_type
-        )
+        TutorialReaction.objects.create(user=request.user, tutorial=tutorial, reaction=reaction_type)
+        user_reaction = reaction_type
+
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return JsonResponse({
+            'like_count': tutorial.reactions.filter(reaction='like').count(),
+            'dislike_count': tutorial.reactions.filter(reaction='dislike').count(),
+            'user_reaction': user_reaction,
+        })
 
     return redirect('tutorial_detail', pk=pk)
 
