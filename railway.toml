@@ -2,4 +2,4 @@
 buildCommand = "python manage.py collectstatic --noinput"
 
 [deploy]
-startCommand = "python manage.py migrate --noinput && gunicorn point.wsgi --workers 2 --timeout 120 --bind 0.0.0.0:$PORT"
+startCommand = "python manage.py migrate --noinput && python manage.py create_korean_practice --master prime || true && gunicorn point.wsgi --workers 2 --timeout 120 --bind 0.0.0.0:$PORT"
