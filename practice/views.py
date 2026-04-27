@@ -147,7 +147,10 @@ def take_practice(request, attempt_id):
         return redirect('practice_result', attempt_id=attempt.id)
 
     practice = attempt.practice
-    questions = list(practice.questions.prefetch_related('choices').order_by('order'))
+    questions = list(
+        practice.questions.prefetch_related('choices')
+        .filter(choices__isnull=False).distinct().order_by('order')
+    )
 
     # Which question index are we on?
     question_index = int(request.GET.get('q', 0))
@@ -188,6 +191,11 @@ def take_practice(request, attempt_id):
         if seconds_remaining == 0:
             return redirect('finish_practice', attempt_id=attempt.id)
 
+    is_owner = (
+        hasattr(request.user.profile, 'master')
+        and practice.master == request.user.profile.master
+    )
+
     context = {
         'attempt': attempt,
         'practice': practice,
@@ -201,6 +209,7 @@ def take_practice(request, attempt_id):
         'answered_count': len(answered_ids),
         'is_last_question': question_index == len(questions) - 1,
         'seconds_remaining': seconds_remaining,
+        'is_owner': is_owner,
     }
     return render(request, 'practice/take_practice.html', context)
 
@@ -269,7 +278,9 @@ def practice_result(request, attempt_id):
         for ans in attempt.answers.prefetch_related('selected_choices'):
             answers_by_qid[ans.question_id] = ans
 
-        for question in practice.questions.prefetch_related('choices').order_by('order'):
+        qs = (practice.questions.prefetch_related('choices')
+              .filter(choices__isnull=False).distinct().order_by('order'))
+        for question in qs:
             correct_ids = set(question.choices.filter(is_correct=True).values_list('id', flat=True))
 
             if question.id in answers_by_qid:
@@ -290,6 +301,11 @@ def practice_result(request, attempt_id):
                 'was_answered': was_answered,
             })
 
+    is_owner = (
+        hasattr(request.user.profile, 'master')
+        and practice.master == request.user.profile.master
+    )
+
     context = {
         'attempt': attempt,
         'practice': practice,
@@ -300,6 +316,7 @@ def practice_result(request, attempt_id):
         'earned_points': earned_points,
         'total_points': total_points,
         'question_results': question_results,
+        'is_owner': is_owner,
     }
     return render(request, 'practice/practice_result.html', context)
 
@@ -548,7 +565,9 @@ def review_attempt(request, attempt_id):
         answers_by_qid[ans.question_id] = ans
 
     question_results = []
-    for question in practice.questions.prefetch_related('choices').order_by('order'):
+    qs = (practice.questions.prefetch_related('choices')
+          .filter(choices__isnull=False).distinct().order_by('order'))
+    for question in qs:
         correct_ids = set(question.choices.filter(is_correct=True).values_list('id', flat=True))
         if question.id in answers_by_qid:
             selected_ids = set(answers_by_qid[question.id].selected_choices.values_list('id', flat=True))
@@ -576,5 +595,6 @@ def review_attempt(request, attempt_id):
         'total_points': total_points,
         'earned_points': earned_points,
         'question_results': question_results,
+        'is_owner': True,
     }
     return render(request, 'practice/review_attempt.html', context)

@@ -142,6 +142,9 @@
         <span class="res-q-badge {% if not qr.was_answered %}skipped{% elif qr.is_correct %}correct{% else %}wrong{% endif %}">
           {% if not qr.was_answered %}Not Answered{% elif qr.is_correct %}Correct{% else %}Incorrect{% endif %}
         </span>
+        <a href="{% url 'edit_question' practice.pk qr.question.pk %}" class="btn-auth-outline py-1 px-2 ms-2 text-decoration-none" style="font-size:0.7rem;">
+          <i class="bi bi-pencil-square"></i> Edit
+        </a>
       </div>
 
       <div class="res-qcard-body">

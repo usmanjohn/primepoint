@@ -281,6 +281,11 @@
           {% elif qr.is_correct %}Correct
           {% else %}Incorrect{% endif %}
         </span>
+        {% if is_owner %}
+          <a href="{% url 'edit_question' practice.pk qr.question.pk %}" class="btn-auth-outline py-1 px-2 ms-2 text-decoration-none" style="font-size:0.7rem;">
+            <i class="bi bi-pencil-square"></i> Edit
+          </a>
+        {% endif %}
       </div>
 
       <div class="res-qcard-body">
