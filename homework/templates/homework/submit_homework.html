@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Submit Homework — CORE{% endblock %}
+
+{% block extra_css %}
+<style>
+.form-label-core {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+
+      <a href="{% url 'my_homework' %}" class="btn-auth-outline text-decoration-none py-1 px-3 mb-4 d-inline-flex align-items-center gap-1" style="font-size:0.82rem;">
+        <i class="bi bi-arrow-left"></i> My Homework
+      </a>
+
+      <div class="card border-0 shadow-sm p-4" style="background: var(--surface);">
+        <h4 class="mb-1" style="font-family: 'Syne', sans-serif;">{{ assignment.homework.title }}</h4>
+        <p class="text-muted mb-3" style="font-size:0.82rem;">From {{ assignment.homework.master.name }}</p>
+
+        {% if assignment.homework.description %}
+        <div class="p-3 mb-4 rounded" style="background: var(--bg); border: 1px solid var(--border); font-size:0.88rem; white-space: pre-line;">
+          {{ assignment.homework.description }}
+        </div>
+        {% endif %}
+
+        <form method="post">
+          {% csrf_token %}
+          <div class="mb-4">
+            <label class="form-label-core">Your Answer / Notes</label>
+            {{ form.notes }}
+          </div>
+          <div class="d-flex gap-2">
+            <button type="submit" class="btn-auth-primary py-2 px-4">Submit Homework</button>
+            <a href="{% url 'my_homework' %}" class="btn-auth-outline py-2 px-4 text-decoration-none">Cancel</a>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

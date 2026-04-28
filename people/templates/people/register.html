@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Create Account — Powerty{% endblock %}
+{% block page_name %}Register{% endblock %}
+
+{% block content %}
+<div class="auth-wrapper" style="align-items: flex-start;">
+    <div class="auth-card auth-card-wide">
+        <div class="card">
+            <div class="auth-body">
+
+                <div class="auth-header">
+                    <div class="auth-icon"><i class="bi bi-person-plus"></i></div>
+                    <h1 class="auth-title">Create an account</h1>
+                    <p class="auth-subtitle">Fill in your details below to get started.</p>
+                </div>
+
+                {% if u_form.errors or p_form.errors %}
+                <div class="error-banner" role="alert">
+                    <i class="bi bi-exclamation-circle-fill"></i>
+                    <div><strong>Please fix the errors below</strong> before continuing.</div>
+                </div>
+                {% endif %}
+
+                <form method="POST" enctype="multipart/form-data" novalidate>
+                    {% csrf_token %}
+
+                    <p class="form-section-label">Account credentials</p>
+
+                    {% for field in u_form %}
+                    <div class="field-group">
+                        {{ field.label_tag }}
+                        {% if field.errors %}
+                            {{ field|add_class:"is-invalid" }}
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+                        {% if field.help_text %}
+                            <p class="field-help">{{ field.help_text }}</p>
+                        {% endif %}
+                        {% for error in field.errors %}
+                            <p class="field-error">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+
+                    <div class="section-gap">
+                        <p class="form-section-label">Profile details</p>
+                    </div>
+
+                    {% for field in p_form %}
+                    <div class="field-group">
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {% if field.help_text %}
+                            <p class="field-help">{{ field.help_text }}</p>
+                        {% endif %}
+                        {% for error in field.errors %}
+                            <p class="field-error">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+
+                    <button type="submit" class="btn-submit">
+                        <i class="bi bi-check2-circle"></i> Create my account
+                    </button>
+                </form>
+
+            </div>
+        </div>
+
+        <p class="auth-footer">
+            Already have an account? <a href="{% url 'login' %}">Log in instead</a>
+        </p>
+    </div>
+</div>
+{% endblock %}
