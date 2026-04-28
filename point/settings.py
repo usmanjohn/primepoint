@@ -190,10 +190,32 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'static']
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+    },
+}
+
+# Railway Storage Bucket — media files only (env vars injected by Railway)
+_bucket_endpoint = os.environ.get('ENDPOINT')
+if _bucket_endpoint:
+    AWS_ACCESS_KEY_ID = os.environ.get('ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = os.environ.get('BUCKET')
+    AWS_S3_ENDPOINT_URL = _bucket_endpoint
+    AWS_S3_REGION_NAME = os.environ.get('REGION', 'auto')
+    AWS_S3_FILE_OVERWRITE = False
+    AWS_DEFAULT_ACL = None
+    AWS_QUERYSTRING_AUTH = True
+    AWS_QUERYSTRING_EXPIRE = 604800  # 7 days
+    STORAGES["default"]["BACKEND"] = "storages.backends.s3boto3.S3Boto3Storage"
 
 
 LOGIN_REDIRECT_URL = 'profile'
