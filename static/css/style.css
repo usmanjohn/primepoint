@@ -624,12 +624,12 @@ h1, h2, h3, h4, h5, h6, .font-display {
 
     .topbar-search { display: none; }
 
-    .content-area { padding: 1.25rem; padding-bottom: calc(1.25rem + 64px); }
+    .content-area { padding: 1.25rem; padding-bottom: calc(1.25rem + 68px); }
 }
 
 @media (max-width: 575.98px) {
-    .top-navbar { padding: 0 1rem; }
-    .content-area { padding: 1rem; padding-bottom: calc(1rem + 64px); }
+    .top-navbar { padding: 0 0.875rem; gap: 8px; }
+    .content-area { padding: 1rem; padding-bottom: calc(1rem + 68px); }
     .user-trigger .uname { display: none; }
 
     /* Tighter cards on small phones */
@@ -640,6 +640,30 @@ h1, h2, h3, h4, h5, h6, .font-display {
     .an-kpi-grid { grid-template-columns: repeat(2, 1fr); }
     .an-my-kpi-grid { grid-template-columns: repeat(2, 1fr); }
     .mdt-stats { grid-template-columns: repeat(2, 1fr); }
+
+    /* ── Compact action buttons ── */
+    .btn-core-primary,
+    .btn-core-outline {
+        padding: 7px 13px;
+        font-size: 0.82rem;
+    }
+    .btn-auth-primary,
+    .btn-auth-outline {
+        padding: 6px 13px;
+        font-size: 0.82rem;
+    }
+    .btn-submit { font-size: 0.9rem; }
+    .btn-back, .btn-next, .btn-finish {
+        padding: 9px 16px;
+        font-size: 0.83rem;
+    }
+
+    /* ── Language switcher: hide on very small ── */
+    .lang-switcher { display: none !important; }
+
+    /* ── Page header tighter ── */
+    .page-title { font-size: 1.35rem; }
+    .messages-container { padding: 0 1rem; }
 }
 
 /* ─── Mobile Bottom Navigation (PWA) ────────────────────────── */
@@ -1264,7 +1288,11 @@ h1, h2, h3, h4, h5, h6, .font-display {
 @media (max-width: 640px) {
   .q-nav { display: none; }
   .q-main { padding: 24px 20px 110px; }
-  .q-footer { left: 0; padding: 12px 20px; }
+  .q-footer {
+    left: 0;
+    padding: 12px 20px;
+    padding-bottom: max(12px, env(safe-area-inset-bottom, 12px));
+  }
   .q-text { font-size: 1.1rem; }
 }
 

@@ -4,6 +4,7 @@
 {% block title %}Practice Hub{% endblock %}
 {% block page_name %}Practice Hub{% endblock %}
 {% block nav_practice %}active{% endblock %}
+{% block mob_nav_practice %}active{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -319,16 +320,24 @@
    RESPONSIVE
 ══════════════════════════════════════ */
 @media (max-width: 575px) {
-  .pl-hero h1 { font-size: 1.6rem; }
+  .pl-hero { padding: 1.25rem 0 1.1rem; }
+  .pl-hero h1 { font-size: 1.35rem; }
   .pl-filter-label { display: none; }
   .pl-grid { grid-template-columns: 1fr; }
   .pl-footer-sep { display: none; }
+  /* Compact filter row on mobile */
+  .pl-filters { padding: 0.75rem; gap: 0.45rem; }
+  .pl-search-wrap { min-width: 0; }
+  .pl-select { font-size: 0.8rem; padding: 0.45rem 0.65rem; }
+  .pl-btn-apply { padding: 0.45rem 0.85rem; font-size: 0.8rem; }
+  .pl-btn-clear { padding: 0.45rem 0.65rem; font-size: 0.8rem; }
+  .pl-pills { gap: 0.35rem; }
+  .pl-pill { font-size: 0.7rem; padding: 0.25rem 0.65rem; }
 }
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="content-area">
 
   <!-- ── HERO ─────────────────────────────────────── -->
   <div class="pl-hero">
@@ -482,5 +491,4 @@
     {% endfor %}
   </div>
 
-</div>
 {% endblock %}

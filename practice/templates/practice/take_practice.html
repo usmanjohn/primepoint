@@ -123,12 +123,12 @@
 
     <div class="footer-actions">
       {% if current_index > 0 %}
-        <a href="?q={{ current_index|add:"-1" }}" class="btn-back">← Back</a>
+        <a href="?q={{ current_index|add:"-1" }}" class="btn-back">←<span class="d-none d-sm-inline"> Back</span></a>
       {% endif %}
 
       {% if is_last_question %}
         <button type="submit" form="quiz-form" name="finish" class="btn-finish">
-          Submit Practice ✓
+          Submit<span class="d-none d-sm-inline"> Practice</span> ✓
         </button>
       {% else %}
         <button type="submit" form="quiz-form" class="btn-next">Next →</button>

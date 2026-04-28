@@ -134,10 +134,9 @@
 {% endblock %}
 
 {% block content %}
-<div class="content-area">
   <nav class="mb-4">
     <a href="{% url 'manage_questions' practice.pk %}" class="btn-auth-outline text-decoration-none">
-      <i class="bi bi-arrow-left me-2"></i>Back to Questions
+      <i class="bi bi-arrow-left"></i><span class="d-none d-sm-inline ms-2">Back to Questions</span>
     </a>
   </nav>
 
@@ -245,5 +244,4 @@
     </form>
   </div>
 
-</div>
 {% endblock %}

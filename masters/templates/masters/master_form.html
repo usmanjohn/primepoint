@@ -61,10 +61,9 @@
 {% endblock %}
 
 {% block content %}
-<div class="content-area">
   <nav class="mb-4">
     <a href="{% url 'masters-home' %}" class="btn-auth-outline text-decoration-none">
-      <i class="bi bi-arrow-left me-2"></i>Back to Masters
+      <i class="bi bi-arrow-left"></i><span class="d-none d-sm-inline ms-2">Back to Masters</span>
     </a>
   </nav>
 
@@ -104,5 +103,4 @@
     </div>
   </div>
 
-</div>
 {% endblock %}

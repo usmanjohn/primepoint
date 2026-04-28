@@ -150,7 +150,6 @@
 {% endblock %}
 
 {% block content %}
-<div class="content-area">
 
   <!-- HEADER -->
   <div class="mq-header">
@@ -172,10 +171,10 @@
     </div>
     <div class="mq-actions">
       <a href="{% url 'edit_practice' practice.pk %}" class="btn-auth-outline text-decoration-none py-2 px-3" style="font-size:0.82rem;">
-        <i class="bi bi-sliders me-1"></i>Settings
+        <i class="bi bi-sliders"></i><span class="d-none d-sm-inline ms-1">Settings</span>
       </a>
       <a href="{% url 'add_question' practice.pk %}" class="btn-auth-primary text-decoration-none py-2 px-3" style="font-size:0.82rem;">
-        <i class="bi bi-plus-lg me-1"></i>Add Question
+        <i class="bi bi-plus-lg"></i><span class="d-none d-sm-inline ms-1">Add Question</span>
       </a>
     </div>
   </div>
@@ -265,5 +264,4 @@
   </div>
   {% endif %}
 
-</div>
 {% endblock %}
