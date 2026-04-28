@@ -1,0 +1,326 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block nav_homework %}active{% endblock %}
+{% block title %}Homework — CORE{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ── Shared hero ── */
+.hw-hero {
+  padding: 2rem 0 1.75rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.75rem;
+}
+.hw-eyebrow {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem;
+}
+.hw-hero h1 {
+  font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800;
+  color: var(--text); margin: 0 0 0.35rem;
+}
+.hw-hero-sub { color: var(--text-muted); font-size: 0.88rem; margin: 0; }
+
+/* ── Section headers ── */
+.hw-section-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.hw-section-label {
+  font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted);
+  margin: 0;
+}
+
+/* ── Master quick-action buttons ── */
+.hw-action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.hw-action-btn {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 0.35rem;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  padding: 1rem 1.1rem; text-decoration: none; color: var(--text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.hw-action-btn:hover {
+  border-color: var(--accent); box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  color: var(--text); text-decoration: none;
+}
+.hw-action-btn i { font-size: 1.3rem; color: var(--accent); }
+.hw-action-btn span { font-size: 0.82rem; font-weight: 600; }
+.hw-action-btn small { font-size: 0.72rem; color: var(--text-muted); line-height: 1.3; }
+
+/* ── Master homework summary table ── */
+.hw-summary-table { width: 100%; border-collapse: collapse; margin-bottom: 0.5rem; }
+.hw-summary-table th {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--text-muted); padding: 0.4rem 0.6rem; border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+.hw-summary-table td { padding: 0.65rem 0.6rem; font-size: 0.84rem; vertical-align: middle; }
+.hw-summary-table tr + tr td { border-top: 1px solid var(--border); }
+.hw-summary-table a { color: var(--text); text-decoration: none; font-weight: 600; }
+.hw-summary-table a:hover { color: var(--accent); }
+
+/* ── Groups strip ── */
+.hw-group-strip {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;
+}
+.hw-group-chip {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+  padding: 0.3rem 0.85rem; font-size: 0.78rem; font-weight: 600;
+  text-decoration: none; color: var(--text);
+  transition: border-color 0.15s;
+}
+.hw-group-chip:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+.hw-group-chip .chip-count {
+  background: var(--accent-glow); color: var(--accent);
+  border-radius: 10px; padding: 0 0.4rem; font-size: 0.68rem; font-weight: 700;
+}
+.hw-group-new {
+  border-style: dashed; color: var(--text-muted);
+}
+
+/* ── Role divider ── */
+.hw-role-divider {
+  border: none; border-top: 1px solid var(--border);
+  margin: 2rem 0 1.75rem;
+}
+
+/* ── Student assignment cards ── */
+.hw-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 1.2rem;
+  margin-bottom: 0.75rem; transition: border-color 0.2s;
+}
+.hw-card:hover { border-color: var(--accent); }
+.hw-card-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; flex-shrink: 0;
+}
+.hw-icon-practice { background: var(--accent-glow); color: var(--accent); }
+.hw-card-body { flex: 1; min-width: 0; }
+.hw-card-title {
+  font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700;
+  color: var(--text); margin: 0 0 0.2rem;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.hw-card-meta { font-size: 0.78rem; color: var(--text-muted); }
+.hw-card-meta span + span::before { content: ' · '; }
+.hw-status-badge {
+  font-size: 0.68rem; font-weight: 700; padding: 0.2rem 0.6rem;
+  border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.hw-badge-pending   { background: #fff3cd; color: #856404; }
+.hw-badge-submitted { background: #d1f2d1; color: #0d6e0d; }
+.hw-badge-graded    { background: var(--accent-glow); color: var(--accent); }
+.hw-empty { text-align: center; padding: 2rem 1rem; color: var(--text-muted); }
+.hw-empty i { font-size: 2rem; display: block; margin-bottom: 0.75rem; }
+</style>
+{% endblock %}
+
+{% block content %}
+
+  <!-- ═══════════════════════════════════════════════════════ MASTER PANEL -->
+  {% if master %}
+  <div class="hw-hero d-flex justify-content-between align-items-end flex-wrap gap-3">
+    <div>
+      <p class="hw-eyebrow">Master</p>
+      <h1>Homework Hub</h1>
+      <p class="hw-hero-sub">Assign, track, and manage homework for your students.</p>
+    </div>
+    <a href="{% url 'create_homework' %}" class="btn-auth-primary text-decoration-none py-2 px-4">
+      <i class="bi bi-plus-lg me-2"></i>New Homework
+    </a>
+  </div>
+
+  <!-- Quick-action buttons -->
+  <div class="hw-action-grid">
+    <a href="{% url 'create_homework' %}" class="hw-action-btn">
+      <i class="bi bi-plus-square-dotted"></i>
+      <span>New Homework</span>
+      <small>Create &amp; assign</small>
+    </a>
+    <a href="{% url 'manage_homework' %}" class="hw-action-btn">
+      <i class="bi bi-journals"></i>
+      <span>All Homework</span>
+      <small>Manage &amp; track</small>
+    </a>
+    <a href="{% url 'create_group' %}" class="hw-action-btn">
+      <i class="bi bi-people-fill"></i>
+      <span>New Group</span>
+      <small>Group students</small>
+    </a>
+    <a href="{% url 'manage_groups' %}" class="hw-action-btn">
+      <i class="bi bi-diagram-3-fill"></i>
+      <span>My Groups</span>
+      <small>{{ groups.count }} group{{ groups.count|pluralize }}</small>
+    </a>
+  </div>
+
+  <!-- Groups strip -->
+  {% if groups %}
+  <div class="hw-section-header mb-2">
+    <p class="hw-section-label">Groups</p>
+    <a href="{% url 'manage_groups' %}" style="font-size:0.78rem; color: var(--accent); text-decoration:none;">Manage →</a>
+  </div>
+  <div class="hw-group-strip mb-4">
+    {% for group in groups %}
+    <a href="{% url 'edit_group' group.pk %}" class="hw-group-chip">
+      <i class="bi bi-people"></i>
+      {{ group.name }}
+      <span class="chip-count">{{ group.member_count }}</span>
+    </a>
+    {% endfor %}
+    <a href="{% url 'create_group' %}" class="hw-group-chip hw-group-new">
+      <i class="bi bi-plus"></i> Add group
+    </a>
+  </div>
+  {% else %}
+  <div class="hw-group-strip mb-4">
+    <a href="{% url 'create_group' %}" class="hw-group-chip hw-group-new">
+      <i class="bi bi-plus"></i> Create your first group
+    </a>
+  </div>
+  {% endif %}
+
+  <!-- Recent homeworks summary -->
+  <div class="hw-section-header">
+    <p class="hw-section-label">Recent Homework</p>
+    <a href="{% url 'manage_homework' %}" style="font-size:0.78rem; color: var(--accent); text-decoration:none;">See all →</a>
+  </div>
+
+  {% if master_homeworks %}
+  <div class="card border-0 shadow-sm overflow-hidden mb-2" style="border-radius: 14px;">
+    <table class="hw-summary-table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Type</th>
+          <th class="text-center">Pending</th>
+          <th class="text-center">Submitted</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for hw in master_homeworks %}
+        <tr>
+          <td><a href="{% url 'homework_detail' hw.pk %}">{{ hw.title }}</a></td>
+          <td>
+            <span class="text-muted" style="font-size:0.83rem;">{{ hw.practice.title|default:"—" }}</span>
+          </td>
+          <td class="text-center fw-medium text-warning">{{ hw.pending_count }}</td>
+          <td class="text-center fw-medium text-success">{{ hw.submitted_count }}</td>
+          <td class="text-end pe-2">
+            <a href="{% url 'assign_homework' hw.pk %}" class="text-muted" style="font-size:0.78rem; text-decoration:none;" title="Assign more">
+              <i class="bi bi-person-plus"></i>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <div class="hw-empty" style="padding: 1.5rem;">
+    <i class="bi bi-journal-plus"></i>
+    <p class="mb-2">No homework created yet.</p>
+    <a href="{% url 'create_homework' %}" class="btn-auth-primary text-decoration-none py-1 px-4" style="font-size:0.82rem;">Create Now</a>
+  </div>
+  {% endif %}
+  {% endif %}
+  <!-- ════════════════════════════════════════════ END MASTER PANEL -->
+
+
+  <!-- ══════════════════════════════════════════════ STUDENT PANEL -->
+  {% if pending is not None %}
+
+  {% if master %}<hr class="hw-role-divider">{% endif %}
+
+  {% if not master %}
+  <div class="hw-hero">
+    <p class="hw-eyebrow">Student</p>
+    <h1>My Homework</h1>
+    <p class="hw-hero-sub">Track assignments from your masters.</p>
+  </div>
+  {% else %}
+  <div class="hw-section-header mb-3" style="margin-top: 0.25rem;">
+    <p class="hw-section-label" style="font-size: 0.82rem; color: var(--text);">
+      <i class="bi bi-mortarboard-fill me-1" style="color: var(--accent);"></i>My Assignments <span class="text-muted fw-normal">(as a student)</span>
+    </p>
+  </div>
+  {% endif %}
+
+  <!-- PENDING -->
+  <div class="mb-4">
+    <p class="hw-section-label">
+      Pending
+      {% if pending.count %}<span class="ms-1 badge bg-warning text-dark rounded-pill">{{ pending.count }}</span>{% endif %}
+    </p>
+    {% for a in pending %}
+    <div class="hw-card">
+      <div class="hw-card-icon hw-icon-practice">
+        <i class="bi bi-journal-check"></i>
+      </div>
+      <div class="hw-card-body">
+        <p class="hw-card-title">{{ a.homework.title }}</p>
+        <div class="hw-card-meta">
+          <span>{{ a.homework.master.name }}</span>
+          {% if a.homework.due_date %}<span>Due {{ a.homework.due_date|date:"M d, Y H:i" }}</span>{% endif %}
+          <span>Practice</span>
+        </div>
+      </div>
+      <span class="hw-status-badge hw-badge-pending">Pending</span>
+      <a href="{% url 'practice_detail' a.homework.practice.pk %}" class="btn-auth-primary text-decoration-none py-1 px-3 ms-2" style="font-size:0.8rem; flex-shrink:0;">
+        Start Practice
+      </a>
+    </div>
+    {% empty %}
+    <div class="hw-empty">
+      <i class="bi bi-check2-circle"></i>
+      <p class="mb-0">No pending homework — you're all caught up!</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- SUBMITTED / GRADED -->
+  <div>
+    <p class="hw-section-label">Submitted &amp; Graded</p>
+    {% for a in submitted %}
+    <div class="hw-card">
+      <div class="hw-card-icon hw-icon-practice">
+        <i class="bi bi-journal-check"></i>
+      </div>
+      <div class="hw-card-body">
+        <p class="hw-card-title">{{ a.homework.title }}</p>
+        <div class="hw-card-meta">
+          <span>{{ a.homework.master.name }}</span>
+          {% if a.submitted_at %}<span>Submitted {{ a.submitted_at|date:"M d, Y" }}</span>{% endif %}
+          {% if a.attempt %}<span>Score: {{ a.attempt.score|floatformat:0 }}%</span>{% endif %}
+        </div>
+        {% if a.feedback %}
+        <div class="mt-1" style="font-size:0.8rem; color: var(--accent);">
+          <i class="bi bi-chat-left-text me-1"></i>{{ a.feedback }}
+        </div>
+        {% endif %}
+      </div>
+      <span class="hw-status-badge hw-badge-{{ a.status }}">{{ a.get_status_display }}</span>
+    </div>
+    {% empty %}
+    <div class="hw-empty">
+      <i class="bi bi-inbox"></i>
+      <p class="mb-0">No submitted homework yet.</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% endif %}
+  <!-- ═════════════════════════════════════════ END STUDENT PANEL -->
+
+{% endblock %}

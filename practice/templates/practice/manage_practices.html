@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}Manage Practices — CORE{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ── Mobile practice card ─────────────────────────────────────── */
+.mp-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  position: relative;
+  overflow: hidden;
+}
+.mp-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--accent);
+}
+.mp-card-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  padding-top: 0.25rem;
+}
+.mp-card-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.85rem;
+  align-items: center;
+}
+.mp-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--border);
+}
+.mp-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: 0.15s;
+}
+.mp-action-btn:hover { border-color: var(--accent); color: var(--accent); }
+.mp-action-btn.pub { color: #16a34a; }
+.mp-action-btn.pub:hover { border-color: #16a34a; background: rgba(34,197,94,0.06); }
+.mp-action-btn.unpub { color: var(--danger); }
+.mp-action-btn.unpub:hover { border-color: var(--danger); background: rgba(248,113,113,0.06); }
+</style>
+{% endblock %}
+
+{% block content %}
+
+    <!-- PAGE HEADER -->
+    <div class="page-header d-flex justify-content-between align-items-start align-items-sm-end flex-wrap gap-2">
+        <div>
+            <h1 class="page-title">Manage Practices</h1>
+            <p class="page-subtitle">Create, edit, and monitor your practice sessions.</p>
+        </div>
+        <a href="{% url 'create_practice' %}" class="btn-core-primary text-decoration-none">
+            <i class="bi bi-plus-lg"></i> New Practice
+        </a>
+    </div>
+
+    <!-- SUMMARY ROW -->
+    <div class="row g-3 mb-4">
+        <div class="col-12 col-sm-4">
+            {% include "partials/info_item.html" with label="Total Practices" value=practices|length icon="bi-collection" %}
+        </div>
+        <div class="col-12 col-sm-4">
+            {% include "partials/info_item.html" with label="Active Users" value="--" icon="bi-people" %}
+        </div>
+        <div class="col-12 col-sm-4">
+            {% include "partials/info_item.html" with label="Avg. Score" value="--" icon="bi-graph-up-arrow" %}
+        </div>
+    </div>
+
+    {% if practices %}
+
+    <!-- ── DESKTOP TABLE (md and up) ─────────────────────────── -->
+    <div class="card border-0 shadow-sm overflow-hidden d-none d-md-block">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="bg-chrome text-white">
+                    <tr>
+                        <th class="ps-4 border-0">Practice Info</th>
+                        <th class="border-0">Subject</th>
+                        <th class="border-0 text-center">Level</th>
+                        <th class="border-0 text-center">Questions</th>
+                        <th class="border-0">Status</th>
+                        <th class="pe-4 border-0 text-end">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for practice in practices %}
+                    <tr>
+                        <td class="ps-4">
+                            <div class="fw-bold text-dark">{{ practice.title }}</div>
+                            <div class="text-muted extra-small">Added {{ practice.created_at|date:"M d, Y" }}</div>
+                        </td>
+                        <td><span class="text-muted">{{ practice.subject.name|default:"Unassigned" }}</span></td>
+                        <td class="text-center">
+                            <span class="badge-core badge-{{ practice.level }}">{{ practice.level }}</span>
+                        </td>
+                        <td class="text-center fw-medium">{{ practice.question_count }}</td>
+                        <td>
+                            {% if practice.is_published %}
+                                <span class="status-indicator online">Published</span>
+                            {% else %}
+                                <span class="status-indicator draft">Draft</span>
+                            {% endif %}
+                        </td>
+                        <td class="pe-4 text-end">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-light border" type="button" data-bs-toggle="dropdown">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="{% url 'manage_questions' practice.pk %}"><i class="bi bi-list-ol"></i> Questions</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'practice_attempts' practice.pk %}"><i class="bi bi-people"></i> Student Results</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'edit_practice' practice.pk %}"><i class="bi bi-pencil"></i> Settings</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'practice_detail' practice.pk %}"><i class="bi bi-eye"></i> Preview</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <form method="post" action="{% url 'toggle_publish' practice.pk %}">
+                                            {% csrf_token %}
+                                            <button type="submit" class="dropdown-item {% if practice.is_published %}text-danger{% else %}text-success{% endif %}">
+                                                <i class="bi {% if practice.is_published %}bi-eye-slash{% else %}bi-cloud-arrow-up{% endif %}"></i>
+                                                {% if practice.is_published %}Unpublish{% else %}Publish{% endif %}
+                                            </button>
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <form method="post" action="{% url 'toggle_available' practice.pk %}">
+                                            {% csrf_token %}
+                                            <button type="submit" class="dropdown-item {% if practice.is_available_for_all %}text-warning{% else %}text-muted{% endif %}">
+                                                <i class="bi {% if practice.is_available_for_all %}bi-lock{% else %}bi-share{% endif %}"></i>
+                                                {% if practice.is_available_for_all %}Make Private{% else %}Share for Homework{% endif %}
+                                            </button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ── MOBILE CARDS (below md) ───────────────────────────── -->
+    <div class="d-flex flex-column gap-3 d-md-none">
+        {% for practice in practices %}
+        <div class="mp-card">
+            <p class="mp-card-title">{{ practice.title }}</p>
+
+            <div class="mp-card-meta">
+                <span>{{ practice.subject.name|default:"No subject" }}</span>
+                <span class="badge-core badge-{{ practice.level }}">{{ practice.level }}</span>
+                <span><i class="bi bi-question-circle"></i> {{ practice.question_count }} questions</span>
+                {% if practice.is_published %}
+                    <span class="status-indicator online">Published</span>
+                {% else %}
+                    <span class="status-indicator draft">Draft</span>
+                {% endif %}
+            </div>
+
+            <div class="mp-card-actions">
+                <a href="{% url 'manage_questions' practice.pk %}" class="mp-action-btn"><i class="bi bi-list-ol"></i> Questions</a>
+                <a href="{% url 'practice_attempts' practice.pk %}" class="mp-action-btn"><i class="bi bi-people"></i> Results</a>
+                <a href="{% url 'edit_practice' practice.pk %}" class="mp-action-btn"><i class="bi bi-pencil"></i> Edit</a>
+                <a href="{% url 'practice_detail' practice.pk %}" class="mp-action-btn"><i class="bi bi-eye"></i> Preview</a>
+                <form method="post" action="{% url 'toggle_publish' practice.pk %}" class="m-0">
+                    {% csrf_token %}
+                    <button type="submit" class="mp-action-btn {% if practice.is_published %}unpub{% else %}pub{% endif %}">
+                        <i class="bi {% if practice.is_published %}bi-eye-slash{% else %}bi-cloud-arrow-up{% endif %}"></i>
+                        {% if practice.is_published %}Unpublish{% else %}Publish{% endif %}
+                    </button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% else %}
+    <div class="card p-5 text-center bg-transparent border-dashed">
+        <i class="bi bi-folder-plus text-muted" style="font-size:3rem;"></i>
+        <h3 class="mt-3">No practices yet</h3>
+        <p class="text-muted mb-4">Start by creating your first session for students.</p>
+        <a href="{% url 'create_practice' %}" class="btn-core-primary text-decoration-none py-2 px-5 d-inline-block">Create Now</a>
+    </div>
+    {% endif %}
+
+{% endblock %}
