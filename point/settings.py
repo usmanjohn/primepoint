@@ -203,14 +203,12 @@ STORAGES = {
     },
 }
 
-# Railway Storage Bucket — media files only (env vars injected by Railway)
-_bucket_endpoint = os.environ.get('ENDPOINT')
+# Railway Storage Bucket — media files only (env vars injected by Railway AWS SDK preset)
+_bucket_endpoint = os.environ.get('AWS_ENDPOINT_URL')
 if _bucket_endpoint:
-    AWS_ACCESS_KEY_ID = os.environ.get('ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = os.environ.get('SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = os.environ.get('BUCKET')
+    AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_S3_BUCKET_NAME')
     AWS_S3_ENDPOINT_URL = _bucket_endpoint
-    AWS_S3_REGION_NAME = os.environ.get('REGION', 'auto')
+    AWS_S3_REGION_NAME = os.environ.get('AWS_DEFAULT_REGION', 'auto')
     AWS_S3_FILE_OVERWRITE = False
     AWS_DEFAULT_ACL = None
     AWS_QUERYSTRING_AUTH = True
