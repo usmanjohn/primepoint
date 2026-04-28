@@ -75,6 +75,7 @@ cover/
 
 # Translations
 *.mo
+!locale/**/LC_MESSAGES/django.mo
 
 # Django stuff:
 
