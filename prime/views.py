@@ -4,6 +4,7 @@ from django.conf import settings
 from django.db.models import Q, Avg
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.cache import cache
 
 from masters.models import Master
 from practice.models import Practice, PracticeAttempt
@@ -19,14 +20,17 @@ def service_worker(request):
 
 
 def index(request):
-    stats = {
-        'masters': Master.objects.count(),
-        'practices': Practice.objects.filter(is_published=True).count(),
-        'students': Panda.objects.count(),
-        'threads': Thread.objects.count(),
-        'tutorials': Tutorial.objects.filter(is_published=True).count(),
-        'homework': Homework.objects.count(),
-    }
+    stats = cache.get('index_stats')
+    if stats is None:
+        stats = {
+            'masters': Master.objects.count(),
+            'practices': Practice.objects.filter(is_published=True).count(),
+            'students': Panda.objects.count(),
+            'threads': Thread.objects.count(),
+            'tutorials': Tutorial.objects.filter(is_published=True).count(),
+            'homework': Homework.objects.count(),
+        }
+        cache.set('index_stats', stats, 300)
 
     my_stats = None
     if request.user.is_authenticated:

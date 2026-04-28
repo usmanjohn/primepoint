@@ -1,4 +1,4 @@
-const CACHE = 'powerty-v4';
+const CACHE = 'powerty-v5';
 const PRECACHE = [
     '/static/css/style.css',
     'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css',
@@ -24,6 +24,7 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
     if (e.request.method !== 'GET') return;
+    if (!e.request.url.startsWith('http')) return;
     if (e.request.url.includes('/admin/')) return;
     if (e.request.url.includes('/ckeditor5/')) return;
 
