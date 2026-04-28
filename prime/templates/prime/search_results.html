@@ -37,7 +37,7 @@
         {% if masters %}
         <section class="mb-5">
             <h6 class="text-uppercase text-secondary mb-3" style="font-size:0.75rem;letter-spacing:.08em;">
-                <i class="fa-solid fa-person-chalkboard me-1"></i>
+                <i class="bi bi-person-workspace me-1"></i>
                 {% trans "Masters" %}
                 <span class="badge bg-secondary ms-1">{{ masters.count }}</span>
             </h6>
@@ -45,7 +45,7 @@
                 {% for m in masters %}
                 <a href="{% url 'masters-detail' m.pk %}" class="search-result-card text-decoration-none">
                     <div class="search-result-icon">
-                        <i class="fa-solid fa-person-chalkboard"></i>
+                        <i class="bi bi-person-workspace"></i>
                     </div>
                     <div class="search-result-body">
                         <div class="search-result-title">{{ m.name }}</div>

@@ -215,7 +215,7 @@
     <a href="{% url 'masters-home' %}" class="feat-card">
       <div class="feat-card-top">
         <div class="feat-icon" style="background:rgba(245,158,11,0.13); color:#f59e0b;">
-          <i class="fa-solid fa-person-chalkboard"></i>
+          <i class="bi bi-person-workspace"></i>
         </div>
         <div class="feat-count">
           <div class="feat-count-num">{{ stats.masters }}</div>
@@ -361,7 +361,7 @@
   {% elif my_stats.type == 'master' %}
   <div class="my-stats-head">
     <div class="feat-icon" style="background:rgba(245,158,11,0.13); color:#f59e0b; width:36px; height:36px; font-size:1rem;">
-      <i class="fa-solid fa-person-chalkboard"></i>
+      <i class="bi bi-person-workspace"></i>
     </div>
     <span class="my-stats-head-title">{% trans "Master" %} — {{ my_stats.master.name }}</span>
   </div>
