@@ -15,3 +15,5 @@
 - Run Server: `python manage.py runserver`
 - Migrations: `python manage.py makemigrations && python manage.py migrate`
 
+## Deployment
+- Deployed on railways through github repo.
