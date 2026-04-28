@@ -1,7 +1,7 @@
 # Django Project: [Prime Point]
 
 ## Project Structure
-- `apps/`: Main directory for all custom apps.
+- Custom apps (`prime`, `people`, `analytics`, `masters`, `practice`, `panda`, `homework`, `discussion`, `tutorial`) are located in the root directory.
 - `templates/`: Global templates folder.
 - `static/css/style.css`: Primary location for custom styles.
 

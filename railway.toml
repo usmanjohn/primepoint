@@ -1,5 +1,5 @@
 [build]
-buildCommand = "python manage.py collectstatic --noinput"
+buildCommand = "python manage.py compilemessages && python manage.py collectstatic --noinput"
 
 [deploy]
 startCommand = "python manage.py migrate --noinput && gunicorn point.wsgi --workers 3 --timeout 30 --preload --bind 0.0.0.0:$PORT"
