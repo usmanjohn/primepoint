@@ -151,142 +151,169 @@
         </div>
     </aside>
 
+    <!-- MAIN WRAPPER -->
+    <div class="main-wrapper">
 
-    <!-- TOP NAV -->
-    <header id="top-nav">
-        <!-- Sidebar toggle (mobile) -->
-        <label for="mob-toggler" class="toggle-btn d-lg-none" aria-label="{% trans "Open sidebar" %}">
-            <i class="bi bi-list"></i>
-        </label>
+        <!-- Top Navbar -->
+        <header class="top-navbar" role="banner">
 
-        <div class="page-info">
-            <span class="page-name">{% block page_name %}{% trans "Index" %}{% endblock %}</span>
-        </div>
+            <div class="topbar-left">
+                <!-- Mobile hamburger -->
+                <label for="mob-toggler" class="icon-btn d-lg-none" aria-label="{% trans "Open sidebar" %}">
+                    <i class="bi bi-list"></i>
+                </label>
 
-        <div class="ms-auto d-flex align-items-center gap-2 gap-md-3">
-
-            <!-- Search -->
-            <form action="{% url 'search' %}" method="get" class="search-form d-none d-md-block">
-                <i class="bi bi-search"></i>
-                <input type="text" name="q" placeholder="{% trans "Search..." %}" aria-label="{% trans "Search" %}">
-            </form>
-
-            <!-- Language Switcher -->
-            <div class="dropdown">
-                <button class="btn-icon" type="button" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-label="{% trans "Switch language" %}">
-                    <i class="bi bi-translate"></i>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end border-0 shadow-sm p-2" aria-labelledby="langDropdown" style="background: var(--surface); border-radius:12px;">
-                    {% get_current_language as CURRENT_LANG %}
-                    {% get_available_languages as AVAILABLE_LANGS %}
-                    {% for lang_code, lang_name in AVAILABLE_LANGS %}
-                    <li>
-                        <form action="{% url 'set_language' %}" method="post" class="d-inline">
-                            {% csrf_token %}
-                            <input name="next" type="hidden" value="{{ request.get_full_path }}">
-                            <input name="language" type="hidden" value="{{ lang_code }}">
-                            <button type="submit" class="dropdown-item rounded-3 {% if CURRENT_LANG == lang_code %}active{% endif %}" style="font-size: 0.85rem;">
-                                {{ lang_name }}
-                            </button>
-                        </form>
-                    </li>
-                    {% endfor %}
-                </ul>
+                <!-- Breadcrumb / page context -->
+                <span class="topbar-breadcrumb d-none d-md-block">
+                    Powerty &rsaquo; <span class="current">{% block page_name %}Dashboard{% endblock %}</span>
+                </span>
             </div>
 
-            <!-- Profile Dropdown -->
-            <div class="dropdown">
-                <button class="profile-trigger" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false" aria-label="{% trans "User menu" %}">
-                    <div class="avatar-sm">
-                        {% if user.is_authenticated %}
-                            {{ user.username|slice:":1"|upper }}
-                        {% else %}
-                            <i class="bi bi-person"></i>
-                        {% endif %}
+            <!-- Search (desktop) -->
+            <form method="get" action="{% url 'search' %}" class="topbar-search d-none d-lg-flex flex-grow-1" style="max-width:280px;">
+                <i class="bi bi-search"></i>
+                <input type="search" name="q" placeholder="{% trans "Search..." %}" aria-label="{% trans "Search" %}" autocomplete="off">
+            </form>
+
+            <!-- Search icon (mobile) -->
+            <a href="{% url 'search' %}" class="icon-btn d-lg-none" aria-label="{% trans "Search" %}">
+                <i class="bi bi-search"></i>
+            </a>
+
+            <div class="topbar-right">
+                <!-- Language switcher -->
+                <form method="post" action="{% url 'set_language' %}" class="lang-switcher d-none d-sm-flex">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    <button type="submit" name="language" value="en"
+                        class="lang-btn {% if LANGUAGE_CODE != 'uz' %}lang-btn--active{% endif %}">EN</button>
+                    <button type="submit" name="language" value="uz"
+                        class="lang-btn {% if LANGUAGE_CODE == 'uz' %}lang-btn--active{% endif %}">UZ</button>
+                </form>
+
+                <!-- Notifications -->
+                {% if user.is_authenticated %}
+                <a href="#" class="icon-btn" aria-label="Notifications">
+                    <i class="bi bi-bell"></i>
+                    <span class="notif-dot"></span>
+                </a>
+                {% endif %}
+
+                <!-- User menu: authenticated -->
+                {% if user.is_authenticated %}
+                <div class="dropdown">
+                    <div class="user-trigger" data-bs-toggle="dropdown" aria-expanded="false"
+                         role="button" tabindex="0" aria-label="{% trans "User menu" %}">
+                        <div class="avatar-sm">{{ user.username|slice:":2"|upper }}</div>
+                        <span class="uname">{{ user.username }}</span>
+                        <i class="bi bi-chevron-down" style="font-size:0.7rem; opacity:0.6;"></i>
                     </div>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end border-0 shadow-lg p-2 mt-2" aria-labelledby="profileDropdown" style="background: var(--surface); border-radius:14px; min-width:200px;">
-                    {% if user.is_authenticated %}
-                        <li class="px-3 py-2 border-bottom mb-2" style="border-color: var(--border) !important;">
-                            <div class="fw-bold text-truncate" style="font-size:0.85rem;">{{ user.username }}</div>
-                            <div class="text-muted text-truncate" style="font-size:0.75rem;">{{ user.email }}</div>
+                    <ul class="dropdown-menu dropdown-menu-end mt-2" role="menu">
+                        <li>
+                            <div class="dropdown-header">
+                                <div style="font-weight:600; color:var(--chrome-text-act); font-size:0.88rem;">
+                                    {{ user.get_full_name|default:user.username }}
+                                </div>
+                                {{ user.email }}
+                            </div>
                         </li>
-                        <li><a class="dropdown-item rounded-3 d-flex align-items-center gap-2" href="{% url 'profile' %}">
-                            <i class="bi bi-person-circle"></i> {% trans "My Profile" %}
-                        </a></li>
-                        <li><a class="dropdown-item rounded-3 d-flex align-items-center gap-2" href="#">
-                            <i class="bi bi-gear"></i> {% trans "Settings" %}
-                        </a></li>
-                        <li><hr class="dropdown-divider" style="opacity:0.1;"></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'profile' %}">
+                                <i class="bi bi-person"></i>{% trans "My Profile" %}
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <i class="bi bi-gear"></i>{% trans "Settings" %}
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
                         <li>
                             <form action="{% url 'logout' %}" method="post">
                                 {% csrf_token %}
-                                <button type="submit" class="dropdown-item rounded-3 d-flex align-items-center gap-2 text-danger">
-                                    <i class="bi bi-box-arrow-right"></i> {% trans "Sign out" %}
+                                <button type="submit" class="dropdown-item text-danger w-100 border-0 bg-transparent text-start">
+                                    <i class="bi bi-box-arrow-right"></i>{% trans "Sign out" %}
                                 </button>
                             </form>
                         </li>
-                    {% else %}
-                        <li><a class="dropdown-item rounded-3 d-flex align-items-center gap-2" href="{% url 'login' %}">
-                            <i class="bi bi-box-arrow-in-right"></i> {% trans "Log in" %}
-                        </a></li>
-                        <li><a class="dropdown-item rounded-3 d-flex align-items-center gap-2" href="{% url 'signup' %}">
-                            <i class="bi bi-person-plus"></i> {% trans "Register" %}
-                        </a></li>
-                    {% endif %}
-                </ul>
+                    </ul>
+                </div>
+
+                <!-- User menu: guest -->
+                {% else %}
+                <a href="{% url 'login' %}" class="btn-auth-outline d-none d-sm-inline-flex">{% trans "Log in" %}</a>
+                <a href="{% url 'register' %}" class="btn-auth-primary d-none d-sm-inline-flex">{% trans "Register" %}</a>
+                <a href="{% url 'login' %}" class="btn-auth-primary d-sm-none" style="padding:7px 14px; font-size:0.82rem;">{% trans "Login" %}</a>
+                {% endif %}
             </div>
+        </header>
+
+        <!-- Django Messages -->
+        {% if messages %}
+        <div class="messages-container" role="alert" aria-live="polite">
+            {% for message in messages %}
+            <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show rounded-3 mt-2 mb-0" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
         </div>
-    </header>
+        {% endif %}
 
-
-    <!-- MAIN CONTENT -->
-    <main id="main-content">
-        <div class="container-fluid p-0">
+        <!-- Page Content -->
+        <main class="content-area" id="main-content">
             {% block content %}{% endblock %}
-        </div>
-    </main>
+        </main>
 
-    <!-- MOBILE BOTTOM NAV -->
-    <nav id="mobile-nav" class="d-lg-none">
-        <a href="{% url 'index' %}" class="mob-link {% block mob_nav_index %}{% endblock %}">
-            <i class="bi bi-grid-1x2-fill"></i>
-            <span>{% trans "Home" %}</span>
+    </div><!-- /main-wrapper -->
+
+    <!-- Mobile Bottom Nav (PWA) -->
+    <nav class="mob-bottom-nav d-lg-none" aria-label="Mobile navigation">
+        <a href="{% url 'index' %}" class="mob-nav-item {% block mob_nav_index %}{% endblock %}">
+            <i class="bi bi-grid-1x2-fill"></i><span>{% trans "Home" %}</span>
         </a>
-        <a href="{% url 'masters-home' %}" class="mob-link {% block mob_nav_masters %}{% endblock %}">
-            <i class="bi bi-person-workspace"></i>
-            <span>{% trans "Masters" %}</span>
+        <a href="{% url 'masters-home' %}" class="mob-nav-item {% block mob_nav_masters %}{% endblock %}">
+            <i class="bi bi-person-workspace"></i><span>{% trans "Masters" %}</span>
         </a>
-        <a href="{% url 'practice_list' %}" class="mob-link {% block mob_nav_practice %}{% endblock %}">
-            <i class="bi bi-book-half"></i>
-            <span>{% trans "Practice" %}</span>
+        <a href="{% url 'practice_list' %}" class="mob-nav-item {% block mob_nav_practice %}{% endblock %}">
+            <i class="bi bi-book-half"></i><span>{% trans "Practice" %}</span>
         </a>
-        <a href="{% url 'panda-home' %}" class="mob-link {% block mob_nav_pandas %}{% endblock %}">
-            <i class="bi bi-mortarboard-fill"></i>
-            <span>{% trans "Chat" %}</span>
+        <a href="{% url 'discussion_home' %}" class="mob-nav-item {% block mob_nav_discussion %}{% endblock %}">
+            <i class="bi bi-chat-square-dots-fill"></i><span>{% trans "Chat" %}</span>
         </a>
-        <a href="{% url 'profile' %}" class="mob-link {% block mob_nav_profile %}{% endblock %}">
-            <i class="bi bi-person-circle"></i>
-            <span>{% trans "Profile" %}</span>
+        {% if user.is_authenticated %}
+        <a href="{% url 'profile' %}" class="mob-nav-item {% block mob_nav_profile %}{% endblock %}">
+            <i class="bi bi-person-fill"></i><span>{% trans "Profile" %}</span>
         </a>
-        {% if not user.is_authenticated %}
-        <a href="{% url 'login' %}" class="mob-link">
-            <i class="bi bi-box-arrow-in-right"></i>
-            <span>{% trans "Login" %}</span>
+        {% else %}
+        <a href="{% url 'login' %}" class="mob-nav-item">
+            <i class="bi bi-box-arrow-in-right"></i><span>{% trans "Login" %}</span>
         </a>
         {% endif %}
     </nav>
 
-    <!-- Scripts -->
+    <!-- Bootstrap JS (self-hosted) -->
     <script src="{% static 'vendor/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'sw.js' %}"></script>
+
+    <!-- PWA Service Worker Registration -->
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('{% static 'sw.js' %}')
-                .then(reg => console.log('SW Registered'))
-                .catch(err => console.log('SW Failed', err));
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js', { scope: '/' });
+            });
         }
     </script>
+    <script>
+        function toggleChoice(input) {
+            const card = input.closest('.choice-card');
+            if (input.type === 'radio') {
+                card.closest('.choices-stack').querySelectorAll('.choice-card').forEach(c => c.classList.remove('selected'));
+            }
+            card.classList.toggle('selected', input.checked);
+        }
+    </script>
+
     {% block extra_js %}{% endblock %}
 </body>
 </html>
