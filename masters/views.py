@@ -91,7 +91,7 @@ def master_create(request):
             master = form.save(commit=False)
             master.profile = request.user.profile
             master.save()
-            messages.success(request, "Master profile created! You can now create practices.")
+            messages.success(request, "Your Master application has been submitted. You'll gain full access once an admin approves it.")
             return redirect('masters-home')
     else:
         form = MasterForm()
@@ -131,7 +131,7 @@ def master_delete(request, pk):
 @login_required
 def certificate_generator(request):
     is_master = hasattr(request.user, 'profile') and hasattr(request.user.profile, 'master')
-    if not request.user.is_staff and not is_master:
+    if not request.user.is_staff and not (is_master and request.user.profile.master.is_approved):
         raise PermissionDenied
 
     master = None

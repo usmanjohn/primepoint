@@ -16,7 +16,7 @@ def _can_create(user):
     if user.is_staff:
         return True
     try:
-        return hasattr(user.profile, 'master')
+        return hasattr(user.profile, 'master') and user.profile.master.is_approved
     except Exception:
         return False
 

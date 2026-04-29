@@ -330,6 +330,9 @@ def manage_practices(request):
         messages.error(request, "You need a Master profile to manage practices.")
         return redirect('masters-create')
     master = request.user.profile.master
+    if not master.is_approved:
+        messages.warning(request, "Your Master application is pending admin approval.")
+        return redirect('masters-home')
     practices = Practice.objects.filter(master=master).annotate(
         question_count=Count('questions', distinct=True),
         attempt_count=Count('attempts', distinct=True),
@@ -372,6 +375,9 @@ def create_practice(request):
         messages.error(request, "You need a Master profile to create practices.")
         return redirect('masters-create')
     master = request.user.profile.master
+    if not master.is_approved:
+        messages.warning(request, "Your Master application is pending admin approval.")
+        return redirect('masters-home')
 
     if request.method == 'POST':
         form = PracticeForm(request.POST)
