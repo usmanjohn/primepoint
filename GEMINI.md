@@ -17,3 +17,6 @@
 
 ## Deployment
 - Deployed on railways through github repo.
+
+## Language 
+- Uzbek and English languages

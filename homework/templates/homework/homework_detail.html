@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
-{% block title %}{{ homework.title }} — Homework Detail{% endblock %}
+{% block title %}{{ homework.title }} — {% trans "Homework Detail" %}{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -54,7 +54,7 @@
   <div class="page-header d-flex justify-content-between align-items-start flex-wrap gap-3">
     <div>
       <a href="{% url 'manage_homework' %}" class="btn-auth-outline text-decoration-none py-1 px-3 mb-3 d-inline-flex align-items-center gap-1" style="font-size:0.82rem;">
-        <i class="bi bi-arrow-left"></i> All Homework
+        <i class="bi bi-arrow-left"></i> {% trans "All Homework" %}
       </a>
       <h1 class="page-title mb-1">{{ homework.title }}</h1>
       <div class="d-flex flex-wrap gap-2 align-items-center mt-1">
@@ -64,16 +64,16 @@
           </a>
         {% endif %}
         {% if homework.due_date %}
-          <span class="text-muted" style="font-size:0.8rem;"><i class="bi bi-calendar3 me-1"></i>Due {{ homework.due_date|date:"M d, Y H:i" }}</span>
+          <span class="text-muted" style="font-size:0.8rem;"><i class="bi bi-calendar3 me-1"></i>{% trans "Due" %} {{ homework.due_date|date:"M d, Y H:i" }}</span>
         {% endif %}
       </div>
     </div>
     <div class="d-flex gap-2">
       <a href="{% url 'assign_homework' homework.pk %}" class="btn-auth-primary text-decoration-none py-2 px-3">
-        <i class="bi bi-person-plus me-1"></i>Assign More
+        <i class="bi bi-person-plus me-1"></i>{% trans "Assign More" %}
       </a>
       <a href="{% url 'edit_homework' homework.pk %}" class="btn-auth-outline text-decoration-none py-2 px-3">
-        <i class="bi bi-pencil me-1"></i>Edit
+        <i class="bi bi-pencil me-1"></i>{% trans "Edit" %}
       </a>
       <a href="{% url 'delete_homework' homework.pk %}" class="btn btn-sm btn-outline-danger py-2 px-3">
         <i class="bi bi-trash"></i>
@@ -90,13 +90,13 @@
   <!-- SUMMARY STATS -->
   <div class="row g-3 mb-4">
     <div class="col-4">
-      {% include "partials/info_item.html" with label="Pending" value=homework.pending_count icon="bi-hourglass-split" %}
+      {% include "partials/info_item.html" with label=_("Pending") value=homework.pending_count icon="bi-hourglass-split" %}
     </div>
     <div class="col-4">
-      {% include "partials/info_item.html" with label="Submitted" value=homework.submitted_count icon="bi-check-circle" %}
+      {% include "partials/info_item.html" with label=_("Submitted") value=homework.submitted_count icon="bi-check-circle" %}
     </div>
     <div class="col-4">
-      {% include "partials/info_item.html" with label="Graded" value=homework.graded_count icon="bi-award" %}
+      {% include "partials/info_item.html" with label=_("Graded") value=homework.graded_count icon="bi-award" %}
     </div>
   </div>
 
@@ -105,7 +105,7 @@
     <!-- ── GROUP RESULTS (shown only when groups are relevant) ── -->
     {% if groups_with_members %}
     <h2 class="page-subtitle fw-bold mb-3" style="font-size:1rem;">
-      <i class="bi bi-collection me-2" style="color:var(--accent);"></i>Results by Group
+      <i class="bi bi-collection me-2" style="color:var(--accent);"></i>{% trans "Results by Group" %}
     </h2>
 
     {% for gd in groups_with_members %}
@@ -113,18 +113,18 @@
       <div class="group-header">
         <i class="bi bi-people-fill" style="color:var(--accent);"></i>
         {{ gd.group.name }}
-        <span class="group-badge">{{ gd.assignments|length }} student{{ gd.assignments|length|pluralize }}</span>
+        <span class="group-badge">{{ gd.assignments|length }} {% trans "student" %}{{ gd.assignments|length|pluralize }}</span>
       </div>
       <div class="group-table-wrap">
         <div class="table-responsive">
           <table class="table table-hover align-middle mb-0">
             <thead style="background:var(--surface-2); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.4px;">
               <tr>
-                <th class="ps-4 border-0 text-muted">Student</th>
-                <th class="border-0 text-muted">Status</th>
-                <th class="border-0 text-muted">Submitted</th>
-                <th class="border-0 text-center text-muted">Score</th>
-                <th class="pe-4 border-0 text-end text-muted">Review</th>
+                <th class="ps-4 border-0 text-muted">{% trans "Student" %}</th>
+                <th class="border-0 text-muted">{% trans "Status" %}</th>
+                <th class="border-0 text-muted">{% trans "Submitted" %}</th>
+                <th class="border-0 text-center text-muted">{% trans "Score" %}</th>
+                <th class="pe-4 border-0 text-end text-muted">{% trans "Review" %}</th>
               </tr>
             </thead>
             <tbody>
@@ -138,11 +138,11 @@
                 </td>
                 <td>
                   {% if a.status == 'pending' %}
-                    <span class="status-indicator draft">Pending</span>
+                    <span class="status-indicator draft">{% trans "Pending" %}</span>
                   {% elif a.status == 'submitted' %}
-                    <span class="status-indicator online">Submitted</span>
+                    <span class="status-indicator online">{% trans "Submitted" %}</span>
                   {% else %}
-                    <span class="status-indicator" style="background:#e8f0fe; color:var(--accent);">Graded</span>
+                    <span class="status-indicator" style="background:#e8f0fe; color:var(--accent);">{% trans "Graded" %}</span>
                   {% endif %}
                 </td>
                 <td>
@@ -163,7 +163,7 @@
                 </td>
                 <td class="pe-4 text-end">
                   {% if a.attempt %}
-                    <a href="{% url 'review_attempt' a.attempt.id %}" class="btn btn-sm btn-light border" title="Review answers">
+                    <a href="{% url 'review_attempt' a.attempt.id %}" class="btn btn-sm btn-light border" title="{% trans "Review answers" %}">
                       <i class="bi bi-eye"></i>
                     </a>
                   {% else %}
@@ -182,19 +182,19 @@
 
     <!-- ── ALL STUDENTS (flat table) ── -->
     <h2 class="page-subtitle fw-bold mb-3" style="font-size:1rem;">
-      <i class="bi bi-list-ul me-2" style="color:var(--accent);"></i>All Students
+      <i class="bi bi-list-ul me-2" style="color:var(--accent);"></i>{% trans "All Students" %}
     </h2>
     <div class="card border-0 shadow-sm overflow-hidden">
       <div class="table-responsive">
         <table class="table table-hover align-middle mb-0">
           <thead class="bg-chrome text-white">
             <tr>
-              <th class="ps-4 border-0">Student</th>
-              <th class="border-0">Status</th>
-              <th class="border-0">Submitted</th>
-              <th class="border-0 text-center">Score</th>
-              <th class="border-0">Feedback</th>
-              <th class="pe-4 border-0 text-end">Review</th>
+              <th class="ps-4 border-0">{% trans "Student" %}</th>
+              <th class="border-0">{% trans "Status" %}</th>
+              <th class="border-0">{% trans "Submitted" %}</th>
+              <th class="border-0 text-center">{% trans "Score" %}</th>
+              <th class="border-0">{% trans "Feedback" %}</th>
+              <th class="pe-4 border-0 text-end">{% trans "Review" %}</th>
             </tr>
           </thead>
           <tbody>
@@ -208,11 +208,11 @@
               </td>
               <td>
                 {% if a.status == 'pending' %}
-                  <span class="status-indicator draft">Pending</span>
+                  <span class="status-indicator draft">{% trans "Pending" %}</span>
                 {% elif a.status == 'submitted' %}
-                  <span class="status-indicator online">Submitted</span>
+                  <span class="status-indicator online">{% trans "Submitted" %}</span>
                 {% else %}
-                  <span class="status-indicator" style="background:#e8f0fe; color:var(--accent);">Graded</span>
+                  <span class="status-indicator" style="background:#e8f0fe; color:var(--accent);">{% trans "Graded" %}</span>
                 {% endif %}
               </td>
               <td>
@@ -240,7 +240,7 @@
               </td>
               <td class="pe-4 text-end">
                 {% if a.attempt %}
-                  <a href="{% url 'review_attempt' a.attempt.id %}" class="btn btn-sm btn-light border" title="Review answers">
+                  <a href="{% url 'review_attempt' a.attempt.id %}" class="btn btn-sm btn-light border" title="{% trans "Review answers" %}">
                     <i class="bi bi-eye"></i>
                   </a>
                 {% else %}
@@ -257,8 +257,8 @@
   {% else %}
   <div class="card p-5 text-center bg-transparent border-dashed">
     <i class="bi bi-people text-muted" style="font-size: 2.5rem;"></i>
-    <h4 class="mt-3">No students assigned</h4>
-    <p class="text-muted">Edit this homework to assign it to students.</p>
+    <h4 class="mt-3">{% trans "No students assigned" %}</h4>
+    <p class="text-muted">{% trans "Edit this homework to assign it to students." %}</p>
   </div>
   {% endif %}
 

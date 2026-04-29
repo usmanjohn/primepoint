@@ -1,8 +1,8 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static i18n %}
 
-{% block title %}Practice Hub{% endblock %}
-{% block page_name %}Practice Hub{% endblock %}
+{% block title %}{% trans "Practice Hub" %}{% endblock %}
+{% block page_name %}{% trans "Practice Hub" %}{% endblock %}
 {% block nav_practice %}active{% endblock %}
 {% block mob_nav_practice %}active{% endblock %}
 
@@ -341,27 +341,27 @@
 
   <!-- ── HERO ─────────────────────────────────────── -->
   <div class="pl-hero">
-    <p class="pl-eyebrow">Practice Hub</p>
-    <h1>Sharpen your skills,<br>one session at a time.</h1>
-    <p class="pl-hero-sub">Pick a topic, challenge yourself, and track your progress across every session.</p>
+    <p class="pl-eyebrow">{% trans "Practice Hub" %}</p>
+    <h1>{% trans "Sharpen your skills," %}<br>{% trans "one session at a time." %}</h1>
+    <p class="pl-hero-sub">{% trans "Pick a topic, challenge yourself, and track your progress across every session." %}</p>
     <div class="pl-pills">
-      <span class="pl-pill"><i class="bi bi-collection-fill"></i> {{ practices|length }} Practice{{ practices|length|pluralize }} available</span>
-      <span class="pl-pill"><i class="bi bi-bookmarks-fill"></i> {{ subjects|length }} Subject{{ subjects|length|pluralize }}</span>
-      <span class="pl-pill"><i class="bi bi-lightning-charge-fill"></i> Free &amp; Paid sessions</span>
+      <span class="pl-pill"><i class="bi bi-collection-fill"></i> {{ practices|length }} {% trans "Practice" %}{{ practices|length|pluralize }} {% trans "available" %}</span>
+      <span class="pl-pill"><i class="bi bi-bookmarks-fill"></i> {{ subjects|length }} {% trans "Subject" %}{{ subjects|length|pluralize }}</span>
+      <span class="pl-pill"><i class="bi bi-lightning-charge-fill"></i> {% trans "Free & Paid sessions" %}</span>
     </div>
   </div>
 
   <!-- ── FILTERS ───────────────────────────────────── -->
   <form method="get" class="pl-filters">
-    <span class="pl-filter-label"><i class="bi bi-funnel-fill me-1"></i>Filter</span>
+    <span class="pl-filter-label"><i class="bi bi-funnel-fill me-1"></i>{% trans "Filter" %}</span>
 
     <div class="pl-search-wrap">
       <i class="bi bi-search"></i>
-      <input type="text" name="q" placeholder="Search practices…" value="{{ query }}">
+      <input type="text" name="q" placeholder="{% trans "Search practices…" %}" value="{{ query }}">
     </div>
 
     <select name="subject" class="pl-select">
-      <option value="">All Subjects</option>
+      <option value="">{% trans "All Subjects" %}</option>
       {% for subj in subjects %}
         <option value="{{ subj.id }}" {% if selected_subject == subj.id|stringformat:"s" %}selected{% endif %}>
           {{ subj.name }}
@@ -370,14 +370,14 @@
     </select>
 
     <select name="level" class="pl-select">
-      <option value="">Any Level</option>
-      <option value="easy"   {% if selected_level == 'easy'   %}selected{% endif %}>Easy</option>
-      <option value="medium" {% if selected_level == 'medium' %}selected{% endif %}>Medium</option>
-      <option value="hard"   {% if selected_level == 'hard'   %}selected{% endif %}>Hard</option>
+      <option value="">{% trans "Any Level" %}</option>
+      <option value="easy"   {% if selected_level == 'easy'   %}selected{% endif %}>{% trans "Easy" %}</option>
+      <option value="medium" {% if selected_level == 'medium' %}selected{% endif %}>{% trans "Medium" %}</option>
+      <option value="hard"   {% if selected_level == 'hard'   %}selected{% endif %}>{% trans "Hard" %}</option>
     </select>
 
     <select name="master" class="pl-select">
-      <option value="">Any Master</option>
+      <option value="">{% trans "Any Master" %}</option>
       {% for master in masters %}
         <option value="{{ master.pk }}" {% if selected_master == master.pk|stringformat:"s" %}selected{% endif %}>
           {{ master.name }}
@@ -385,10 +385,10 @@
       {% endfor %}
     </select>
 
-    <button type="submit" class="pl-btn-apply"><i class="bi bi-search me-1"></i>Search</button>
+    <button type="submit" class="pl-btn-apply"><i class="bi bi-search me-1"></i>{% trans "Search" %}</button>
 
     {% if query or selected_subject or selected_level or selected_master %}
-      <a href="{% url 'practice_list' %}" class="pl-btn-clear"><i class="bi bi-x-lg me-1"></i>Clear</a>
+      <a href="{% url 'practice_list' %}" class="pl-btn-clear"><i class="bi bi-x-lg me-1"></i>{% trans "Clear" %}</a>
     {% endif %}
   </form>
 
@@ -409,7 +409,7 @@
     {% if selected_master and selected_master_name %}
       <span class="pl-tag"><i class="bi bi-person-badge"></i> {{ selected_master_name }}</span>
     {% endif %}
-    <span class="pl-results-info"><strong>{{ practices|length }}</strong> result{{ practices|length|pluralize }} found</span>
+    <span class="pl-results-info"><strong>{{ practices|length }}</strong> {% trans "result" %}{{ practices|length|pluralize }} {% trans "found" %}</span>
   </div>
   {% endif %}
 
@@ -427,12 +427,12 @@
           <div class="pl-top-badges">
             <span class="pl-badge pl-badge--{{ practice.level }}">{{ practice.get_level_display|default:practice.level }}</span>
             <span class="pl-badge {% if practice.is_free %}pl-badge--free{% else %}pl-badge--paid{% endif %}">
-              {% if practice.is_free %}Free{% else %}Paid{% endif %}
+              {% if practice.is_free %}{% trans "Free" %}{% else %}{% trans "Paid" %}{% endif %}
             </span>
           </div>
           <div class="pl-qcount">
             <span class="pl-qcount-num">{{ practice.question_count }}</span>
-            <span class="pl-qcount-lbl">Questions</span>
+            <span class="pl-qcount-lbl">{% trans "Questions" %}</span>
           </div>
         </div>
 
@@ -442,7 +442,7 @@
           {% if practice.description %}
             <p class="pl-card-desc">{{ practice.description }}</p>
           {% else %}
-            <p class="pl-card-desc" style="opacity:0.38; font-style:italic;">No description provided.</p>
+            <p class="pl-card-desc" style="opacity:0.38; font-style:italic;">{% trans "No description provided." %}</p>
           {% endif %}
         </div>
 
@@ -471,7 +471,7 @@
           </span>
         {% else %}
           <span class="pl-meta-item">
-            <i class="bi bi-infinity"></i>Open
+            <i class="bi bi-infinity"></i>{% trans "Open" %}
           </span>
         {% endif %}
 
@@ -485,8 +485,8 @@
     {% empty %}
     <div class="pl-empty">
       <i class="bi bi-search pl-empty-icon"></i>
-      <h3>No practices found</h3>
-      <p>Try different keywords or remove some filters.</p>
+      <h3>{% trans "No practices found" %}</h3>
+      <p>{% trans "Try different keywords or remove some filters." %}</p>
     </div>
     {% endfor %}
   </div>
