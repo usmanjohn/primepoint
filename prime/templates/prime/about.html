@@ -627,7 +627,9 @@
         <div class="ab-founder-banner-accent"><i class="bi bi-rocket-takeoff-fill"></i></div>
       </div>
       <div class="ab-founder-body">
-        <div class="ab-founder-avatar">U</div>
+        <div class="ab-founder-avatar">
+          <img src="{% static 'images/founders/usmanjon.jpg' %}" alt="Usmanjon">
+        </div>
         <p class="ab-founder-name">Usmanjon</p>
         <span class="ab-founder-role">Co-Founder &amp; CEO</span>
         <ul class="ab-founder-details">
@@ -646,8 +648,8 @@
     <div class="ab-founder-card placeholder-card">
       <div class="ab-founder-banner" style="background: linear-gradient(135deg, #1e293b 0%, #0f2033 100%);"></div>
       <div class="ab-founder-body">
-        <div class="ab-founder-avatar" style="background:var(--surface-2); color:var(--border);">
-          <i class="bi bi-person-plus" style="font-size:1.6rem;"></i>
+        <div class="ab-founder-avatar">
+          <img src="{% static 'images/founders/usmanjon.jpg' %}" alt="Co-Founder">
         </div>
         <p class="ab-founder-name" style="color:var(--text-muted);">Co-Founder</p>
         <span class="ab-founder-role" style="opacity:0.5;">— Coming Soon —</span>
@@ -659,8 +661,8 @@
     <div class="ab-founder-card placeholder-card">
       <div class="ab-founder-banner" style="background: linear-gradient(135deg, #1e293b 0%, #0f2033 100%);"></div>
       <div class="ab-founder-body">
-        <div class="ab-founder-avatar" style="background:var(--surface-2); color:var(--border);">
-          <i class="bi bi-person-plus" style="font-size:1.6rem;"></i>
+        <div class="ab-founder-avatar">
+          <img src="{% static 'images/founders/usmanjon.jpg' %}" alt="Team Member">
         </div>
         <p class="ab-founder-name" style="color:var(--text-muted);">Team Member</p>
         <span class="ab-founder-role" style="opacity:0.5;">— Coming Soon —</span>
@@ -682,25 +684,31 @@
 
     <p class="ab-partner-group-label"><i class="bi bi-handshake me-1"></i>Partners</p>
     <div class="ab-partner-row">
-      <div class="ab-partner-chip dashed">
-        <div class="ab-partner-logo"><i class="bi bi-building"></i></div>
+      <div class="ab-partner-chip">
+        <div class="ab-partner-logo" style="padding:2px;">
+          <img src="{% static 'images/partners/komak.png' %}" alt="Ko'mak Loyihasi" style="width:100%;height:100%;object-fit:contain;border-radius:6px;">
+        </div>
         <div>
-          <div class="ab-partner-name">Partner Institution</div>
-          <div class="ab-partner-type">Education — Incoming</div>
+          <div class="ab-partner-name">Ko'mak Loyihasi</div>
+          <div class="ab-partner-type">Social Initiative</div>
         </div>
       </div>
-      <div class="ab-partner-chip dashed">
-        <div class="ab-partner-logo"><i class="bi bi-globe"></i></div>
+      <div class="ab-partner-chip">
+        <div class="ab-partner-logo" style="padding:2px;">
+          <img src="{% static 'images/partners/yoshlar_agentlik.png' %}" alt="Yoshlar Ishlari Agentligi" style="width:100%;height:100%;object-fit:contain;border-radius:6px;">
+        </div>
         <div>
-          <div class="ab-partner-name">Technology Partner</div>
-          <div class="ab-partner-type">Platform — Incoming</div>
+          <div class="ab-partner-name">Yoshlar Ishlari Agentligi</div>
+          <div class="ab-partner-type">Government Agency</div>
         </div>
       </div>
-      <div class="ab-partner-chip dashed">
-        <div class="ab-partner-logo"><i class="bi bi-mortarboard"></i></div>
+      <div class="ab-partner-chip">
+        <div class="ab-partner-logo" style="padding:2px;">
+          <img src="{% static 'images/partners/sirdaryo_hokimligi.png' %}" alt="Sirdaryo tuman hokimligi" style="width:100%;height:100%;object-fit:contain;border-radius:6px;">
+        </div>
         <div>
-          <div class="ab-partner-name">Academic Partner</div>
-          <div class="ab-partner-type">University — Incoming</div>
+          <div class="ab-partner-name">Sirdaryo tuman hokimligi</div>
+          <div class="ab-partner-type">Local Government</div>
         </div>
       </div>
     </div>
