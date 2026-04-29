@@ -69,19 +69,30 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'point.urls'
 
+_template_options = {
+    'context_processors': [
+        'django.template.context_processors.request',
+        'django.contrib.auth.context_processors.auth',
+        'django.contrib.messages.context_processors.messages',
+        'django.template.context_processors.i18n',
+    ],
+}
+# In production, wrap loaders with the cached loader so templates are compiled once per worker.
+# APP_DIRS cannot be used together with explicit loaders, so we list them manually here.
+if not DEBUG:
+    _template_options['loaders'] = [
+        ('django.template.loaders.cached.Loader', [
+            'django.template.loaders.filesystem.Loader',
+            'django.template.loaders.app_directories.Loader',
+        ]),
+    ]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [BASE_DIR / 'templates'],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.i18n',
-            ],
-        },
+        'APP_DIRS': DEBUG,  # Must be False when custom loaders are set
+        'OPTIONS': _template_options,
     },
 ]
 
@@ -95,6 +106,21 @@ DATABASES = {
     'default': dj_database_url.config(
         default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
         conn_max_age=600,
+    )
+}
+
+# Cache — use Redis when available (add REDIS_URL on Railway), otherwise in-memory
+_redis_url = os.environ.get('REDIS_URL')
+CACHES = {
+    'default': (
+        {
+            'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+            'LOCATION': _redis_url,
+        }
+        if _redis_url
+        else {
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        }
     )
 }
 
@@ -199,9 +225,12 @@ STORAGES = {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
+
+# Tell browsers to cache static files for 1 year (WhiteNoise adds cache-busting hashes)
+WHITENOISE_MAX_AGE = 31536000
 
 # Railway Storage Bucket — media files only (env vars injected by Railway AWS SDK preset)
 _bucket_endpoint = os.environ.get('AWS_ENDPOINT_URL')

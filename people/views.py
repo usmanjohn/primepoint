@@ -29,7 +29,7 @@ def _profile_context(viewed_user, is_own_profile):
     panda = getattr(people, 'panda', None)
     practices = master.practices.filter(is_published=True).order_by('-created_at')[:5] if master else []
     recent_attempts = panda.attempts.filter(status='completed').order_by('-completed_at')[:5] if panda else []
-    all_masters = Master.objects.order_by('name') if panda else []
+    all_masters = Master.objects.only('id', 'name').order_by('name') if panda else []
 
     # Homework for profile display (own profile only — private data)
     panda_hw_pending = panda_hw_done = master_hw = None

@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.conf import settings
-from django.db.models import Q, Avg
+from django.db.models import Q, Avg, Max, Count
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
+from django.contrib.auth.models import User
 
 from masters.models import Master
 from practice.models import Practice, PracticeAttempt
@@ -34,31 +35,44 @@ def index(request):
 
     my_stats = None
     if request.user.is_authenticated:
-        try:
-            panda = request.user.profile.panda
-            done = PracticeAttempt.objects.filter(panda=panda, status='completed')
-            total_attempts = done.count()
-            avg_score = done.aggregate(avg=Avg('score'))['avg'] or 0
-            best_score = done.order_by('-score').values_list('score', flat=True).first() or 0
-            pass_rate = (done.filter(score__gte=50).count() / max(total_attempts, 1)) * 100
-            hw_total = HomeworkAssignment.objects.filter(panda=panda).count()
-            hw_done = HomeworkAssignment.objects.filter(panda=panda, status__in=['submitted', 'graded']).count()
+        # Single query: fetch user + profile + panda + master relations
+        user = (
+            User.objects
+            .select_related('profile__panda', 'profile__master')
+            .get(pk=request.user.pk)
+        )
+        profile = user.profile
+        panda = getattr(profile, 'panda', None)
+
+        if panda:
+            # One query for all practice stats
+            agg = PracticeAttempt.objects.filter(
+                panda=panda, status='completed'
+            ).aggregate(
+                total=Count('id'),
+                avg=Avg('score'),
+                best=Max('score'),
+                pass_count=Count('id', filter=Q(score__gte=50)),
+            )
+            total_attempts = agg['total'] or 0
+            # One query for all homework stats
+            hw = HomeworkAssignment.objects.filter(panda=panda).aggregate(
+                total=Count('id'),
+                done=Count('id', filter=Q(status__in=['submitted', 'graded'])),
+            )
             my_stats = {
                 'type': 'student',
                 'panda': panda,
                 'total_attempts': total_attempts,
-                'avg_score': round(avg_score, 1),
-                'best_score': round(float(best_score), 1),
-                'pass_rate': round(pass_rate, 1),
-                'hw_total': hw_total,
-                'hw_done': hw_done,
+                'avg_score': round(agg['avg'] or 0, 1),
+                'best_score': round(float(agg['best'] or 0), 1),
+                'pass_rate': round(((agg['pass_count'] or 0) / max(total_attempts, 1)) * 100, 1),
+                'hw_total': hw['total'] or 0,
+                'hw_done': hw['done'] or 0,
             }
-        except Exception:
-            pass
-
-        if my_stats is None:
-            try:
-                master = request.user.profile.master
+        else:
+            master = getattr(profile, 'master', None)
+            if master:
                 my_stats = {
                     'type': 'master',
                     'master': master,
@@ -66,8 +80,6 @@ def index(request):
                     'practice_count': master.practices.filter(is_published=True).count(),
                     'avg_rating': float(master.avg_rating),
                 }
-            except Exception:
-                pass
 
     return render(request, 'prime/index.html', {'stats': stats, 'my_stats': my_stats})
 
