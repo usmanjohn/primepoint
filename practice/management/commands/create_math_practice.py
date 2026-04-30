@@ -240,10 +240,10 @@ class Command(BaseCommand):
 
         # Create or get the practice and ensure it is published
         practice, created = Practice.objects.get_or_create(
-            title='Mathematics Basic: Natural Numbers and Basic Operations',
+            title='Mathematics Basic: Natural Numbers and Basic Operations - Text-based',
             master=master,
             defaults={
-                'description': 'Practice basic operations with natural numbers.',
+                'description': 'Practice basic operations with natural numbers, including addition, subtraction, multiplication, and division, through text-based problems.',
                 'subject': subject,
                 'level': 'easy',
                 'is_free': True,
