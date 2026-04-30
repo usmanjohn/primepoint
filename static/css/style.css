@@ -658,9 +658,6 @@ h1, h2, h3, h4, h5, h6, .font-display {
         font-size: 0.83rem;
     }
 
-    /* ── Language switcher: hide on very small ── */
-    .lang-switcher { display: none !important; }
-
     /* ── Page header tighter ── */
     .page-title { font-size: 1.35rem; }
     .messages-container { padding: 0 1rem; }

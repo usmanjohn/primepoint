@@ -194,7 +194,7 @@
 
             <div class="topbar-right">
                 <!-- Language switcher -->
-                <form method="post" action="{% url 'set_language' %}" class="lang-switcher d-none d-sm-flex">
+                <form method="post" action="{% url 'set_language' %}" class="lang-switcher">
                     {% csrf_token %}
                     <input type="hidden" name="next" value="{{ request.path }}">
                     <button type="submit" name="language" value="en"
