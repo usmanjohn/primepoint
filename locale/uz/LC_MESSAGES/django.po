@@ -1214,6 +1214,66 @@ msgstr "Hammasini ko'rish"
 msgid "Create Tutorial"
 msgstr "Darslik yaratish"
 
+#: people/templates/people/login.html
+msgid "Log In — Powerty"
+msgstr "Kirish — Powerty"
+
+#: people/templates/people/login.html
+msgid "Log in to your Powerty account."
+msgstr "Powerty hisobingizga kiring."
+
+#: people/templates/people/login.html
+msgid "Forgot password?"
+msgstr "Parolni unutdingizmi?"
+
+#: people/templates/people/login.html
+msgid "Don't have an account?"
+msgstr "Hisobingiz yo'qmi?"
+
+#: people/templates/people/login.html
+msgid "Create one now"
+msgstr "Hozir ro'yxatdan o'ting"
+
+#: people/templates/people/register.html
+msgid "Create Account — Powerty"
+msgstr "Ro'yxatdan o'tish — Powerty"
+
+#: people/templates/people/register.html
+msgid "Create an account"
+msgstr "Ro'yxatdan o'tish"
+
+#: people/templates/people/register.html
+msgid "Fill in your details below to get started."
+msgstr "Boshlash uchun ma'lumotlaringizni kiriting."
+
+#: people/templates/people/register.html
+msgid "Please fix the errors below"
+msgstr "Iltimos, quyidagi xatoliklarni to'g'rilang"
+
+#: people/templates/people/register.html
+msgid "before continuing."
+msgstr "davom etishdan oldin."
+
+#: people/templates/people/register.html
+msgid "Account credentials"
+msgstr "Hisob ma'lumotlari"
+
+#: people/templates/people/register.html
+msgid "Profile details"
+msgstr "Profil ma'lumotlari"
+
+#: people/templates/people/register.html
+msgid "Create my account"
+msgstr "Hisobimni yaratish"
+
+#: people/templates/people/register.html
+msgid "Already have an account?"
+msgstr "Hisobingiz bormi?"
+
+#: people/templates/people/register.html
+msgid "Log in instead"
+msgstr "Kirish"
+
 #~ msgid "My Analytics"
 #~ msgstr "Mening statistikam"
 

@@ -1881,6 +1881,12 @@ h1, h2, h3, h4, h5, h6, .font-display {
 
 .lang-btn--active:hover { background: #7dd3fc; color: #0d1117; }
 
+.sidebar-lang {
+    padding: 8px 14px;
+    border-top: 1px solid var(--chrome-border);
+    flex-shrink: 0;
+}
+
 /* ═══════════════════════════════════════════════════════════════
    TUTORIALS
 ═══════════════════════════════════════════════════════════════ */

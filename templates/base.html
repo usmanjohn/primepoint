@@ -129,6 +129,18 @@
         </nav>
 
 
+        <!-- Language switcher (mobile sidebar) -->
+        <div class="sidebar-lang d-lg-none">
+            <form method="post" action="{% url 'set_language' %}" class="lang-switcher">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.path }}">
+                <button type="submit" name="language" value="en"
+                    class="lang-btn {% if LANGUAGE_CODE != 'uz' %}lang-btn--active{% endif %}">EN</button>
+                <button type="submit" name="language" value="uz"
+                    class="lang-btn {% if LANGUAGE_CODE == 'uz' %}lang-btn--active{% endif %}">UZ</button>
+            </form>
+        </div>
+
         <!-- Footer -->
         <div class="sidebar-footer">
             {% if user.is_authenticated %}
