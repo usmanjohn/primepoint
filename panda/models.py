@@ -19,4 +19,4 @@ class Panda(models.Model):
         return "Grandmaster"
 
     def __str__(self):
-        return f"{self.name} ({self.rank})"
+        return f"{self.profile.user.username} ({self.rank})"
