@@ -3,159 +3,157 @@ from django.contrib.auth.models import User
 from masters.models import Master
 from practice.models import Subject, Practice, PracticeQuestion, PracticeChoice
 
-
 QUESTIONS = [
-    # ── 이/가 (subject marker) ──────────────────────────────────────────
+    # 1. present continuous (-고 있다)
     {
-        'text': '<p>빈칸에 알맞은 조사를 고르세요.</p><p><strong>저___ 학생이에요.</strong></p>',
-        'hint': '<p>앞 단어가 모음으로 끝나면 <strong>가</strong>, 받침이 있으면 <strong>이</strong>를 써요.</p>',
-        'explanation': '<p><strong>가</strong>: \'저\'는 모음 \'ㅓ\'로 끝나므로 주격 조사 <strong>가</strong>를 사용해요. → "저가 학생이에요."</p>',
-        'correct': '가',
-        'choices': ['이', '가', '은', '는'],
+        'text': '<p>빈칸에 알맞은 표현을 고르세요.</p><p><strong>민수 씨는 지금 도서관에서 책을 읽고 ___.</strong></p>',
+        'hint': '<p>\'지금\' 하고 있는 행동을 나타내는 표현을 고르세요.</p>',
+        'explanation': '<p><strong>있어요</strong>: "-고 있다"는 현재 진행형입니다. "읽고 있어요"는 지금 읽는 중이라는 뜻입니다.</p>',
+        'correct': '있어요',
+        'choices': ['있어요', '했어요', '거예요', '보세요'],
     },
     {
-        'text': '<p>빈칸에 알맞은 조사를 고르세요.</p><p><strong>이 책___ 누구 것이에요?</strong></p>',
-        'hint': '<p>\'책\'의 마지막 글자에 받침이 있나요? 받침이 있으면 <strong>이</strong>를 써요.</p>',
-        'explanation': '<p><strong>이</strong>: \'책\'은 받침 \'ㄱ\'으로 끝나므로 주격 조사 <strong>이</strong>를 사용해요. → "이 책이 누구 것이에요?"</p>',
-        'correct': '이',
-        'choices': ['이', '가', '을', '를'],
+        'text': '<p>빈칸에 알맞은 표현을 고르세요.</p><p><strong>버스를 10분 동안 기다리고 ___.</strong></p>',
+        'hint': '<p>진행 중인 동작(~ing)을 완성해 보세요.</p>',
+        'explanation': '<p><strong>있어요</strong>: 기다리는 동작이 계속되고 있으므로 "-고 있어요"가 적절합니다.</p>',
+        'correct': '있어요',
+        'choices': ['있어요', '싶어요', '이에요', '했어요'],
     },
     {
-        'text': '<p>빈칸에 알맞은 조사를 고르세요.</p><p><strong>오늘은 날씨___ 정말 좋아요.</strong></p>',
-        'hint': '<p>\'날씨\'의 마지막 글자 \'씨\'에 받침이 있나요?</p>',
-        'explanation': '<p><strong>가</strong>: \'날씨\'는 모음 \'ㅣ\'로 끝나므로 주격 조사 <strong>가</strong>를 사용해요. → "날씨가 정말 좋아요."</p>',
-        'correct': '가',
-        'choices': ['이', '가', '만', '도'],
+        'text': '<p>빈칸에 알맞은 표현을 고르세요.</p><p><strong>동생은 방에서 공부를 ___ 있어요.</strong></p>',
+        'hint': '<p>\'공부하다\'의 진행형은 어떻게 만들까요?</p>',
+        'explanation': '<p><strong>하고</strong>: 동사 어간 뒤에 "-고 있다"를 붙여 진행을 나타냅니다.</p>',
+        'correct': '하고',
+        'choices': ['해', '하고', '해서', '하면'],
     },
     {
-        'text': '<p>빈칸에 알맞은 조사를 고르세요.</p><p><strong>제 친구___ 노래를 잘해요.</strong></p>',
-        'hint': '<p>\'친구\'의 마지막 글자 \'구\'에 받침이 있나요?</p>',
-        'explanation': '<p><strong>가</strong>: \'친구\'는 모음 \'ㅜ\'로 끝나므로 주격 조사 <strong>가</strong>를 사용해요. → "제 친구가 노래를 잘해요."</p>',
-        'correct': '가',
-        'choices': ['이', '가', '의', '는'],
-    },
-    # ── 은/는 (topic marker) ────────────────────────────────────────────
-    {
-        'text': '<p>빈칸에 알맞은 조사를 고르세요.</p><p><strong>저___ 매일 운동해요.</strong></p>',
-        'hint': '<p>주제를 나타내는 보조사예요. 앞 단어가 모음으로 끝나면 <strong>는</strong>, 받침이 있으면 <strong>은</strong>을 써요.</p>',
-        'explanation': '<p><strong>는</strong>: \'저\'는 모음으로 끝나므로 주제 보조사 <strong>는</strong>을 사용해요. → "저는 매일 운동해요."</p>',
-        'correct': '는',
-        'choices': ['이', '가', '은', '는'],
+        'text': '<p>빈칸에 알맞은 표현을 고르세요.</p><p><strong>지금 사과를 ___ 있어요.</strong></p>',
+        'hint': '<p>\'먹다\'를 진행형으로 바꿔보세요.</p>',
+        'explanation': '<p><strong>먹고</strong>: "먹다"의 어간 "먹-"에 "-고 있어요"를 연결합니다.</p>',
+        'correct': '먹고',
+        'choices': ['먹어', '먹고', '먹지', '먹은'],
     },
     {
-        'text': '<p>빈칸에 알맞은 조사를 고르세요.</p><p><strong>오늘___ 학교에 안 가요.</strong></p>',
-        'hint': '<p>\'오늘\'의 마지막 글자 \'늘\'에 받침이 있나요? 받침이 있으면 <strong>은</strong>을 써요.</p>',
-        'explanation': '<p><strong>은</strong>: \'오늘\'은 받침 \'ㄹ\'으로 끝나므로 주제 보조사 <strong>은</strong>을 사용해요. → "오늘은 학교에 안 가요."</p>',
-        'correct': '은',
-        'choices': ['은', '는', '이', '가'],
+        'text': '<p>빈칸에 알맞은 표현을 고르세요.</p><p><strong>친구에게 편지를 ___ 있어요.</strong></p>',
+        'hint': '<p>\'쓰다\'의 진행형 표현을 찾아보세요.</p>',
+        'explanation': '<p><strong>쓰고</strong>: "쓰다"의 어간 "쓰-"에 "-고"를 붙여 진행형을 만듭니다.</p>',
+        'correct': '쓰고',
+        'choices': ['쓰고', '써서', '쓰면', '썼고'],
+    },
+
+    # 2. Future Tense (-(으)ㄹ 거예요)
+    {
+        'text': '<p>빈칸에 알맞은 표현을 고르세요.</p><p><strong>주말에 친구를 ___ 거예요.</strong></p>',
+        'hint': '<p>\'만나다\'의 미래 계획을 표현해 보세요.</p>',
+        'explanation': '<p><strong>만날</strong>: 받침이 없는 동사 뒤에는 "-ㄹ 거예요"를 사용합니다.</p>',
+        'correct': '만날',
+        'choices': ['만나', '만나는', '만날', '만났'],
     },
     {
-        'text': '<p>빈칸에 알맞은 조사를 고르세요.</p><p><strong>한국어___ 정말 재미있어요.</strong></p>',
-        'hint': '<p>\'한국어\'의 마지막 글자 \'어\'에 받침이 있나요?</p>',
-        'explanation': '<p><strong>는</strong>: \'한국어\'는 모음 \'ㅓ\'로 끝나므로 주제 보조사 <strong>는</strong>을 사용해요. → "한국어는 정말 재미있어요."</p>',
-        'correct': '는',
-        'choices': ['은', '는', '을', '를'],
-    },
-    # ── 을/를 (object marker) ───────────────────────────────────────────
-    {
-        'text': '<p>빈칸에 알맞은 조사를 고르세요.</p><p><strong>저는 밥___ 먹어요.</strong></p>',
-        'hint': '<p>목적격 조사예요. \'밥\'에 받침이 있으면 <strong>을</strong>, 없으면 <strong>를</strong>을 써요.</p>',
-        'explanation': '<p><strong>을</strong>: \'밥\'은 받침 \'ㅂ\'으로 끝나므로 목적격 조사 <strong>을</strong>을 사용해요. → "저는 밥을 먹어요."</p>',
-        'correct': '을',
-        'choices': ['이', '가', '을', '를'],
+        'text': '<p>빈칸에 알맞은 표현을 고르세요.</p><p><strong>저녁에 비빔밥을 ___ 거예요.</strong></p>',
+        'hint': '<p>\'먹다\'에 받침이 있나요?</p>',
+        'explanation': '<p><strong>먹을</strong>: 받침이 있는 동사 뒤에는 "-을 거예요"를 사용합니다.</p>',
+        'correct': '먹을',
+        'choices': ['먹', '먹는', '먹을', '먹은'],
     },
     {
-        'text': '<p>빈칸에 알맞은 조사를 고르세요.</p><p><strong>저는 음악___ 들어요.</strong></p>',
-        'hint': '<p>\'음악\'의 마지막 글자 \'악\'에 받침 \'ㄱ\'이 있어요. 받침이 있으면 어떤 조사를 쓸까요?</p>',
-        'explanation': '<p><strong>을</strong>: \'음악\'은 받침 \'ㄱ\'으로 끝나므로 목적격 조사 <strong>을</strong>을 사용해요. → "저는 음악을 들어요."</p>',
-        'correct': '을',
-        'choices': ['은', '는', '을', '를'],
+        'text': '<p>빈칸에 알맞은 표현을 고르세요.</p><p><strong>내일 학교에 ___ 거예요.</strong></p>',
+        'hint': '<p>\'가다\'의 미래형을 고르세요.</p>',
+        'explanation': '<p><strong>갈</strong>: "가다"는 받침이 없으므로 "갈 거예요"가 됩니다.</p>',
+        'correct': '갈',
+        'choices': ['가', '갈', '갔', '가는'],
     },
     {
-        'text': '<p>빈칸에 알맞은 조사를 고르세요.</p><p><strong>저는 한국어___ 공부해요.</strong></p>',
-        'hint': '<p>\'한국어\'의 마지막 글자 \'어\'에 받침이 있나요?</p>',
-        'explanation': '<p><strong>를</strong>: \'한국어\'는 모음 \'ㅓ\'로 끝나므로 목적격 조사 <strong>를</strong>을 사용해요. → "저는 한국어를 공부해요."</p>',
-        'correct': '를',
-        'choices': ['이', '가', '을', '를'],
+        'text': '<p>빈칸에 알맞은 표현을 고르세요.</p><p><strong>내일은 집에서 숙제를 ___ 거예요.</strong></p>',
+        'hint': '<p>\'하다\'의 미래형은 무엇일까요?</p>',
+        'explanation': '<p><strong>할</strong>: "하다"는 "할 거예요"로 바뀝니다.</p>',
+        'correct': '할',
+        'choices': ['해', '할', '한', '하고'],
     },
     {
-        'text': '<p>빈칸에 알맞은 조사를 고르세요.</p><p><strong>아이가 물___ 마셔요.</strong></p>',
-        'hint': '<p>\'물\'의 마지막 글자에 받침 \'ㄹ\'이 있어요. 받침이 있으면 <strong>을</strong>을 써요.</p>',
-        'explanation': '<p><strong>을</strong>: \'물\'은 받침 \'ㄹ\'으로 끝나므로 목적격 조사 <strong>을</strong>을 사용해요. → "아이가 물을 마셔요."</p>',
-        'correct': '을',
-        'choices': ['을', '를', '만', '도'],
+        'text': '<p>빈칸에 알맞은 표현을 고르세요.</p><p><strong>곧 손님이 ___ 거예요.</strong></p>',
+        'hint': '<p>\'오다\'의 미래형을 찾아보세요.</p>',
+        'explanation': '<p><strong>올</strong>: "오다"는 받침이 없으므로 "올 거예요"가 맞습니다.</p>',
+        'correct': '올',
+        'choices': ['와', '올', '오는', '와서'],
     },
-    # ── -만 (only) ──────────────────────────────────────────────────────
+
+    # 3. Present Tense (-아요/어요)
     {
-        'text': '<p>빈칸에 알맞은 조사를 고르세요.</p><p><strong>저는 커피___ 마셔요. 다른 음료는 마시지 않아요.</strong></p>',
-        'hint': '<p>"오직 그것뿐"이라는 의미로 다른 것을 제외할 때 쓰는 보조사예요.</p>',
-        'explanation': '<p><strong>만</strong>: \'-만\'은 한정을 나타내는 보조사예요. "커피만 마셔요" = 커피를 마시고 다른 음료는 마시지 않아요.</p>',
-        'correct': '만',
-        'choices': ['만', '도', '의', '은'],
-    },
-    {
-        'text': '<p>빈칸에 알맞은 조사를 고르세요.</p><p><strong>저는 한국어___ 배워요. 다른 언어는 배우지 않아요.</strong></p>',
-        'hint': '<p>특정 하나만을 강조하고 나머지를 제외할 때 쓰는 보조사예요.</p>',
-        'explanation': '<p><strong>만</strong>: \'-만\'은 "오직 ~뿐"이라는 의미예요. "한국어만 배워요" = 한국어를 배우고 다른 언어는 배우지 않아요.</p>',
-        'correct': '만',
-        'choices': ['만', '도', '를', '의'],
+        'text': '<p>빈칸에 알맞은 표현을 고르세요.</p><p><strong>저는 매일 한국어를 ___.</strong></p>',
+        'hint': '<p>\'공부하다\'의 현재형(해요체)은?</p>',
+        'explanation': '<p><strong>공부해요</strong>: "-하다" 동사는 "-해요"로 바뀝니다.</p>',
+        'correct': '공부해요',
+        'choices': ['공부해요', '공부해', '공부하세요', '공부했어요'],
     },
     {
-        'text': '<p>빈칸에 알맞은 조사를 고르세요.</p><p><strong>오늘___ 쉬고 싶어요. 내일부터 다시 열심히 할 거예요.</strong></p>',
-        'hint': '<p>"오늘 하루만"이라는 시간 한정의 의미가 필요해요.</p>',
-        'explanation': '<p><strong>만</strong>: \'-만\'은 시간에도 쓸 수 있어요. "오늘만 쉬고 싶어요" = 오늘 하루만 쉬고, 내일부터는 다시 일해요.</p>',
-        'correct': '만',
-        'choices': ['은', '만', '도', '의'],
-    },
-    # ── -도 (also / too) ────────────────────────────────────────────────
-    {
-        'text': '<p>빈칸에 알맞은 조사를 고르세요.</p><p><strong>저는 사과를 좋아해요. 바나나___ 좋아해요.</strong></p>',
-        'hint': '<p>"~도 마찬가지", "게다가 ~도"라는 의미를 나타내는 보조사예요.</p>',
-        'explanation': '<p><strong>도</strong>: \'-도\'는 첨가를 나타내요. "바나나도 좋아해요" = 사과를 좋아하고, 게다가 바나나도 좋아해요.</p>',
-        'correct': '도',
-        'choices': ['만', '도', '의', '이'],
+        'text': '<p>빈칸에 알맞은 표현을 고르세요.</p><p><strong>동생이 밥을 ___.</strong></p>',
+        'hint': '<p>\'먹다\'는 \'아\'가 아니므로 무엇이 올까요?</p>',
+        'explanation': '<p><strong>먹어요</strong>: "먹다"의 어간에 "어"가 오므로 "먹어요"가 됩니다.</p>',
+        'correct': '먹어요',
+        'choices': ['먹아요', '먹어요', '먹해요', '먹요'],
     },
     {
-        'text': '<p>빈칸에 알맞은 조사를 고르세요.</p><p><strong>오빠가 한국어를 배워요. 저___ 한국어를 배워요.</strong></p>',
-        'hint': '<p>앞에서 언급한 것과 같은 행동이나 상태를 나타낼 때 써요.</p>',
-        'explanation': '<p><strong>도</strong>: \'-도\'는 "마찬가지로"라는 의미예요. "저도 배워요" = 오빠처럼 나도 한국어를 배워요.</p>',
-        'correct': '도',
-        'choices': ['만', '도', '는', '가'],
+        'text': '<p>빈칸에 알맞은 표현을 고르세요.</p><p><strong>학교에 ___.</strong></p>',
+        'hint': '<p>\'가다\'를 자연스러운 현재형으로 바꿔보세요.</p>',
+        'explanation': '<p><strong>가요</strong>: "가다 + 아요"는 축약되어 "가요"가 됩니다.</p>',
+        'correct': '가요',
+        'choices': ['가요', '가어요', '가해요', '가이요'],
     },
     {
-        'text': '<p>빈칸에 알맞은 조사를 고르세요.</p><p><strong>한국어가 어려워요. 일본어___ 어려워요.</strong></p>',
-        'hint': '<p>"이것 역시"라는 의미를 나타내는 보조사예요.</p>',
-        'explanation': '<p><strong>도</strong>: \'-도\'는 앞서 언급한 것에 더해 이것도 포함됨을 나타내요. "일본어도 어려워요" = 한국어처럼 일본어도 어려워요.</p>',
-        'correct': '도',
-        'choices': ['만', '도', '를', '의'],
-    },
-    # ── -의 (possessive) ────────────────────────────────────────────────
-    {
-        'text': '<p>빈칸에 알맞은 조사를 고르세요.</p><p><strong>이것은 제 친구___ 가방이에요.</strong></p>',
-        'hint': '<p>소유나 소속 관계를 나타내는 조사예요. 영어의 <em>\'s</em>와 비슷해요.</p>',
-        'explanation': '<p><strong>의</strong>: \'-의\'는 소유격 조사예요. "친구의 가방" = 친구가 소유한 가방이에요.</p>',
-        'correct': '의',
-        'choices': ['가', '이', '의', '는'],
+        'text': '<p>빈칸에 알맞은 표현을 고르세요.</p><p><strong>수학이 조금 ___.</strong></p>',
+        'hint': '<p>\'어렵다\'의 현재형은?</p>',
+        'explanation': '<p><strong>어려워요</strong>: "어렵다"는 "어려워요"로 바뀝니다.</p>',
+        'correct': '어려워요',
+        'choices': ['어렵아요', '어려워요', '어렵해요', '어렵요'],
     },
     {
-        'text': '<p>빈칸에 알맞은 조사를 고르세요.</p><p><strong>우리나라___ 음식은 정말 맛있어요.</strong></p>',
-        'hint': '<p>"~에 속하는", "~의 것"이라는 소속 관계를 나타내요.</p>',
-        'explanation': '<p><strong>의</strong>: \'-의\'는 소속 관계를 나타내요. "우리나라의 음식" = 우리나라에 속하는 음식이에요.</p>',
-        'correct': '의',
-        'choices': ['의', '를', '이', '가'],
+        'text': '<p>빈칸에 알맞은 표현을 고르세요.</p><p><strong>공책에 이름을 ___.</strong></p>',
+        'hint': '<p>\'적다\'의 현재형을 고르세요.</p>',
+        'explanation': '<p><strong>적어요</strong>: 어간 "적-"에 "-어요"가 붙습니다.</p>',
+        'correct': '적어요',
+        'choices': ['적아요', '적어요', '적해요', '적요'],
+    },
+
+    # 4. Past Tense (-았/었/했어요)
+    {
+        'text': '<p>빈칸에 알맞은 표현을 고르세요.</p><p><strong>어제 친구를 ___.</strong></p>',
+        'hint': '<p>\'만나다\'의 과거형을 찾아보세요.</p>',
+        'explanation': '<p><strong>만났어요</strong>: "만나다"의 과거형은 "만났어요"입니다.</p>',
+        'correct': '만났어요',
+        'choices': ['만나요', '만나겠어요', '만났어요', '만나고 있어요'],
     },
     {
-        'text': '<p>빈칸에 알맞은 조사를 고르세요.</p><p><strong>이 사진은 선생님___ 것이에요.</strong></p>',
-        'hint': '<p>누구의 것인지를 나타내는 조사예요.</p>',
-        'explanation': '<p><strong>의</strong>: \'-의\'는 소유를 나타내는 조사예요. "선생님의 것" = 선생님이 소유한 것이에요.</p>',
-        'correct': '의',
-        'choices': ['만', '도', '의', '이'],
+        'text': '<p>빈칸에 알맞은 표현을 고르세요.</p><p><strong>아까 밥을 ___.</strong></p>',
+        'hint': '<p>\'먹다\'의 과거형은 무엇일까요?</p>',
+        'explanation': '<p><strong>먹었어요</strong>: 어간 "먹-" 뒤에 "-었어요"가 붙습니다.</p>',
+        'correct': '먹었어요',
+        'choices': ['먹어요', '먹었어요', '먹겠어요', '먹고 있어요'],
     },
+    {
+        'text': '<p>빈칸에 알맞은 표현을 고르세요.</p><p><strong>지난주에 시험 공부를 ___.</strong></p>',
+        'hint': '<p>\'하다\'의 과거형을 고르세요.</p>',
+        'explanation': '<p><strong>했어요</strong>: "-하다"의 과거형은 "-했어요"입니다.</p>',
+        'correct': '했어요',
+        'choices': ['해요', '했어요', '할 거예요', '하고 있어요'],
+    },
+    {
+        'text': '<p>빈칸에 알맞은 표현을 고르세요.</p><p><strong>어제 학교에 안 ___.</strong></p>',
+        'hint': '<p>\'가다\'의 과거형을 고르세요.</p>',
+        'explanation': '<p><strong>갔어요</strong>: "가다"의 과거형은 "갔어요"입니다.</p>',
+        'correct': '갔어요',
+        'choices': ['가요', '갔어요', '갈 거예요', '가고 있어요'],
+    },
+    {
+        'text': '<p>빈칸에 알맞은 표현을 고르세요.</p><p><strong>어제 집에서 책을 ___.</strong></p>',
+        'hint': '<p>\'읽다\'의 과거형을 고르세요.</p>',
+        'explanation': '<p><strong>읽었어요</strong>: "읽다"의 어간에 "-었어요"를 붙입니다.</p>',
+        'correct': '읽었어요',
+        'choices': ['읽어요', '읽었어요', '읽을 거예요', '읽고 있어요'],
+    }
 ]
-
-
 class Command(BaseCommand):
-    help = 'Create a Korean grammar particle practice test (이/가, 은/는, 을/를, -만, -도, -의)'
+    help = 'Create a Korean grammar particle practice test (Tenses)'
 
     def add_arguments(self, parser):
         parser.add_argument('--master', required=True, help='Username of the master to assign this practice to')
@@ -173,14 +171,14 @@ class Command(BaseCommand):
 
         subject, _ = Subject.objects.get_or_create(
             name='한국어',
-            defaults={'description': '한국어 문법 및 어휘 연습'},
+            defaults={'description': '한국어 문법 및 어휘 연습-tenses'},
         )
 
         practice, created = Practice.objects.get_or_create(
-            title='한국어 조사 연습 (이/가, 은/는, 을/를, -만, -도, -의)',
+            title='한국어 tenses',
             master=master,
             defaults={
-                'description': '한국어의 기본 조사 이/가, 은/는, 을/를, -만, -도, -의를 연습하는 테스트예요.',
+                'description': '한국어의 기본 tenses를 연습하는 테스트예요.',
                 'subject': subject,
                 'level': 'easy',
                 'is_free': True,
