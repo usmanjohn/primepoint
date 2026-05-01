@@ -1318,3 +1318,247 @@ msgstr "Kirish"
 
 #~ msgid "Data analysis lessons and tasks."
 #~ msgstr "Ma'lumotlar tahlili bo'yicha darslar."
+
+#: prime/templates/prime/about.html
+msgid "Strong mind bends the line."
+msgstr "Kuchli aql chizig'ni egadi."
+
+#: prime/templates/prime/about.html
+msgid "A learning platform built for curious minds — where students grow through structured practice, mentorship from expert masters, and a community that pushes boundaries together."
+msgstr "Qiziquvchan onglar uchun qurilgan ta'lim platformasi — o'quvchilar tizimli mashqlar, mutaxassis ustodlarning mentorlik va chegaralarni kengaytiruvchi jamoa orqali rivojlanadigan joy."
+
+#: prime/templates/prime/about.html
+msgid "Start Practicing"
+msgstr "Mashqni boshlash"
+
+#: prime/templates/prime/about.html
+msgid "Free to Start"
+msgstr "Bepul boshlash"
+
+#: prime/templates/prime/about.html
+msgid "Clear Goal"
+msgstr "Aniq maqsad"
+
+#: prime/templates/prime/about.html
+msgid "Every Learner"
+msgstr "Har bir o'quvchi"
+
+#: prime/templates/prime/about.html
+msgid "Our Mission"
+msgstr "Bizning maqsadimiz"
+
+#: prime/templates/prime/about.html
+msgid "Sharpening minds,"
+msgstr "Onglarni charxlash,"
+
+#: prime/templates/prime/about.html
+msgid "one question at a time."
+msgstr "har bir savol bilan."
+
+#: prime/templates/prime/about.html
+msgid "Prime Point was founded on a simple belief: the best way to build a strong mind is through deliberate, structured practice. We connect passionate learners with expert masters and give them the tools to grow — at their own pace, on their own terms."
+msgstr "Prime Point oddiy bir e'tiqod asosida tashkil etilgan: kuchli ong qurishning eng yaxshi yo'li — maqsadli, tizimli mashq. Biz ishtiyoqli o'quvchilarni mutaxassis ustodlar bilan bog'laymiz va ularga o'sish uchun qurollar beramiz — o'z sur'atlarida, o'z shartlarida."
+
+#: prime/templates/prime/about.html
+msgid "We are not just a quiz app. We are a full learning ecosystem — from homework assignments to live discussion, from beginner practices to expert-level challenges."
+msgstr "Biz shunchaki viktorina ilovasi emasmiz. Biz to'liq ta'lim ekotizimizmiz — uy vazifalaridan jonli muhokamagacha, boshlang'ich mashqlardan ekspert darajasidagi qiyinchiliklargacha."
+
+#: prime/templates/prime/about.html
+msgid "Deliberate Practice"
+msgstr "Maqsadli mashq"
+
+#: prime/templates/prime/about.html
+msgid "Targeted, measurable improvement every session"
+msgstr "Har bir mashg'ulotda aniq va o'lchovli taraqqiyot"
+
+#: prime/templates/prime/about.html
+msgid "Expert Mentorship"
+msgstr "Mutaxassis mentorlik"
+
+#: prime/templates/prime/about.html
+msgid "Learn directly from masters in their field"
+msgstr "O'z sohasidagi ustodlardan bevosita o'rganing"
+
+#: prime/templates/prime/about.html
+msgid "Visible Progress"
+msgstr "Ko'rinadigan taraqqiyot"
+
+#: prime/templates/prime/about.html
+msgid "Track your rank from Novice to Grandmaster"
+msgstr "Yangilikdan Grandmastergacha darajangizni kuzating"
+
+#: prime/templates/prime/about.html
+msgid "Community Learning"
+msgstr "Jamoaviy ta'lim"
+
+#: prime/templates/prime/about.html
+msgid "Discuss, debate, and grow alongside peers"
+msgstr "Tengdoshlar bilan muhokama qiling va birgalikda rivojlaning"
+
+#: prime/templates/prime/about.html
+msgid "What We Offer"
+msgstr "Nima taklif etamiz"
+
+#: prime/templates/prime/about.html
+msgid "Everything you need to level up."
+msgstr "Darajangizni oshirish uchun hamma narsa."
+
+#: prime/templates/prime/about.html
+msgid "Hundreds of curated practice sessions across subjects and difficulty levels. Filter by topic, master, or level — and track your score every attempt."
+msgstr "Turli fanlar va qiyinlik darajalari bo'yicha yuzlab tanlangan mashq sessiyalari. Mavzu, ustod yoki daraja bo'yicha filtrlang — va har bir urinishda natijangizni kuzating."
+
+#: prime/templates/prime/about.html
+msgid "Homework System"
+msgstr "Uy vazifasi tizimi"
+
+#: prime/templates/prime/about.html
+msgid "Masters assign targeted practice as homework to individual students or groups. Deadlines, auto-grading, and submission tracking built in."
+msgstr "Ustodlar alohida o'quvchilarga yoki guruhlarga uy vazifasi sifatida maqsadli mashqlar tayinlaydi. Muddatlar, avtomatik baholash va topshiriqlarni kuzatish o'rnatilgan."
+
+#: prime/templates/prime/about.html
+msgid "Master Profiles"
+msgstr "Ustod profillari"
+
+#: prime/templates/prime/about.html
+msgid "Follow experts in your field. Each master curates their own practice library and can guide their students through structured learning paths."
+msgstr "Sohangizdagi mutaxassislarni kuzating. Har bir ustod o'zining mashqlar kutubxonasini boshqaradi va tizimli o'quv yo'llari orqali o'quvchilarini yo'naltiradi."
+
+#: prime/templates/prime/about.html
+msgid "Discussion Forum"
+msgstr "Muhokama forumi"
+
+#: prime/templates/prime/about.html
+msgid "Engage with the community — ask questions, share insights, vote on answers, and learn from conversations that go beyond the practice sheet."
+msgstr "Jamoa bilan muloqot qiling — savollar bering, fikrlar ulashing, javoblarga ovoz bering va mashq varag'idan tashqariga chiqadigan suhbatlardan o'rganing."
+
+#: prime/templates/prime/about.html
+msgid "Rank System"
+msgstr "Daraja tizimi"
+
+#: prime/templates/prime/about.html
+msgid "Earn points through practice and climb from Novice to Grandmaster. Your rank reflects your dedication — and motivates you to keep going."
+msgstr "Mashq orqali ball to'plang va Yangilikdan Grandmastergacha ko'tariling. Darajangiz fidoyiligingizni aks ettiradi — va davom etishga undaydi."
+
+#: prime/templates/prime/about.html
+msgid "Masters see exactly where each student struggles — question by question, choice by choice. Targeted feedback becomes effortless."
+msgstr "Ustodlar har bir o'quvchining qayerda qiynalayotganini aniq ko'radi — savol savoldan, tanlov tanlovdan. Maqsadli fikr-mulohaza berish osonlashadi."
+
+#: prime/templates/prime/about.html
+msgid "How It Works"
+msgstr "Qanday ishlaydi"
+
+#: prime/templates/prime/about.html
+msgid "Simple steps. Real results."
+msgstr "Oddiy qadamlar. Haqiqiy natijalar."
+
+#: prime/templates/prime/about.html
+msgid "Create your account"
+msgstr "Hisobingizni yarating"
+
+#: prime/templates/prime/about.html
+msgid "Sign up free in seconds. Build your student profile and choose your learning goals."
+msgstr "Soniyalar ichida bepul ro'yxatdan o'ting. O'quvchi profilingizni yarating va o'quv maqsadlaringizni belgilang."
+
+#: prime/templates/prime/about.html
+msgid "Follow a Master"
+msgstr "Ustodni kuzating"
+
+#: prime/templates/prime/about.html
+msgid "Browse expert masters and follow the ones whose subjects align with your goals."
+msgstr "Mutaxassis ustodlarni ko'rib chiqing va maqsadlaringizga mos keladiganlarini kuzating."
+
+#: prime/templates/prime/about.html
+msgid "Practice & Submit"
+msgstr "Mashq qiling va topshiring"
+
+#: prime/templates/prime/about.html
+msgid "Take timed or open-ended practice sessions. Submit homework assigned by your masters."
+msgstr "Vaqt chegaralangan yoki ochiq mashq sessiyalarini bajaring. Ustodlaringiz tomonidan berilgan uy vazifalarini topshiring."
+
+#: prime/templates/prime/about.html
+msgid "Review & Grow"
+msgstr "Tahlil qiling va rivojlaning"
+
+#: prime/templates/prime/about.html
+msgid "See detailed feedback on every answer. Improve your weak points. Rise through the ranks."
+msgstr "Har bir javob uchun batafsil fikr-mulohaza ko'ring. Zaif tomonlaringizni yaxshilang. Darajangizni oshiring."
+
+#: prime/templates/prime/about.html
+msgid "The Team"
+msgstr "Jamoa"
+
+#: prime/templates/prime/about.html
+msgid "Built by people who care about learning."
+msgstr "O'rganishga g'amxo'r odamlar tomonidan qurilgan."
+
+#: prime/templates/prime/about.html
+msgid "Partners"
+msgstr "Hamkorlar"
+
+#: prime/templates/prime/about.html
+msgid "Investors"
+msgstr "Investorlar"
+
+#: prime/templates/prime/about.html
+msgid "Backed by believers."
+msgstr "Ishonuvchilar tomonidan qo'llab-quvvatlanadi."
+
+#: prime/templates/prime/about.html
+msgid "We are actively building partnerships with educational institutions, EdTech investors, and technology companies that share our vision of accessible, quality learning."
+msgstr "Biz ta'lim muassasalari, EdTech investorlari va qulay, sifatli ta'lim bo'yicha bizning qarashlarga qo'shiladigan texnologiya kompaniyalari bilan hamkorlik qilamiz."
+
+#: prime/templates/prime/about.html
+msgid "Social Initiative"
+msgstr "Ijtimoiy tashabbus"
+
+#: prime/templates/prime/about.html
+msgid "Government Agency"
+msgstr "Davlat idorasi"
+
+#: prime/templates/prime/about.html
+msgid "Local Government"
+msgstr "Mahalliy hokimiyat"
+
+#: prime/templates/prime/about.html
+msgid "Seed Investor"
+msgstr "Boshlang'ich investor"
+
+#: prime/templates/prime/about.html
+msgid "EdTech — Incoming"
+msgstr "EdTech — Kelayotgan"
+
+#: prime/templates/prime/about.html
+msgid "Angel Investor"
+msgstr "Angel investor"
+
+#: prime/templates/prime/about.html
+msgid "Venture — Incoming"
+msgstr "Venture — Kelayotgan"
+
+#: prime/templates/prime/about.html
+msgid "Interested in partnering or investing?"
+msgstr "Hamkorlik yoki investitsiya qilishga qiziqasizmi?"
+
+#: prime/templates/prime/about.html
+msgid "Reach out at"
+msgstr "Murojaat qiling"
+
+#: prime/templates/prime/about.html
+msgid "Ready to bend the line?"
+msgstr "Chizig'ni egishga tayyormisiz?"
+
+#: prime/templates/prime/about.html
+msgid "Join Prime Point today — free, fast, and built for minds that want more."
+msgstr "Bugun Prime Pointga qo'shiling — bepul, tez va ko'proq istovchi onglar uchun qurilgan."
+
+#: prime/templates/prime/about.html
+msgid "Go to Practices"
+msgstr "Mashqlarga o'tish"
+
+#: prime/templates/prime/about.html
+msgid "Join Free"
+msgstr "Bepul qo'shiling"
+
+#: prime/templates/prime/about.html
+msgid "Sign In"
+msgstr "Kirish"

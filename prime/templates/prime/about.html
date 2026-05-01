@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
-{% block title %}About — Prime Point{% endblock %}
-{% block page_name %}About{% endblock %}
+{% block title %}{% trans "About" %} — Prime Point{% endblock %}
+{% block page_name %}{% trans "About" %}{% endblock %}
 {% block nav_about %}active{% endblock %}
 
 {% block extra_css %}
@@ -282,7 +282,7 @@
   opacity: 0.6;
 }
 .ab-founder-banner {
-  height: 72px;
+  height: 80px;
   background: linear-gradient(135deg, #0d1117 0%, #1e293b 100%);
   position: relative;
 }
@@ -302,8 +302,8 @@
 }
 .ab-founder-body { padding: 0 1.25rem 1.5rem; }
 .ab-founder-avatar {
-  width: 68px;
-  height: 68px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   background: var(--surface-2);
   border: 3px solid var(--surface);
@@ -314,11 +314,13 @@
   font-size: 1.4rem;
   font-weight: 800;
   color: var(--accent);
-  margin-top: -34px;
+  margin-top: -36px;
   margin-bottom: 0.85rem;
   overflow: hidden;
+  position: relative;
+  z-index: 1;
 }
-.ab-founder-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.ab-founder-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 .ab-founder-name {
   font-family: 'Syne', sans-serif;
   font-size: 1rem;
@@ -382,11 +384,11 @@
 .ab-partner-chip {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.6rem 1.1rem;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 14px;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 .ab-partner-chip:hover {
@@ -395,20 +397,22 @@
 }
 .ab-partner-chip.dashed { border-style: dashed; opacity: 0.55; }
 .ab-partner-logo {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
   background: var(--surface-2);
   border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   color: var(--text-muted);
   flex-shrink: 0;
+  overflow: hidden;
 }
-.ab-partner-name { font-size: 0.82rem; font-weight: 600; color: var(--text); }
-.ab-partner-type { font-size: 0.68rem; color: var(--text-muted); }
+.ab-partner-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 8px; }
+.ab-partner-name { font-size: 0.88rem; font-weight: 600; color: var(--text); }
+.ab-partner-type { font-size: 0.72rem; color: var(--text-muted); }
 
 /* ── CTA banner ──────────────────────────────────── */
 .ab-cta {
@@ -446,9 +450,13 @@
   .ab-brand { font-size: 1.8rem; }
   .ab-section-title { font-size: 1.4rem; }
   .ab-cta h2 { font-size: 1.4rem; }
+  .ab-partner-chip { padding: 0.6rem 1rem; gap: 0.6rem; }
+  .ab-partner-logo { width: 44px; height: 44px; }
+  .ab-partner-row { gap: 0.6rem; }
 }
 @media (max-width: 479px) {
   .ab-stats { grid-template-columns: repeat(2, 1fr); }
+  .ab-partner-chip { width: 100%; }
 }
 </style>
 {% endblock %}
@@ -462,17 +470,16 @@
       <img src="{% static 'images/logo.jpg' %}" alt="Prime Point Logo">
     </div>
     <h1 class="ab-brand">Prime <span>Point</span></h1>
-    <p class="ab-slogan">"Strong mind bends the line."</p>
+    <p class="ab-slogan">"{% trans "Strong mind bends the line." %}"</p>
     <p class="ab-hero-desc">
-      A learning platform built for curious minds — where students grow through structured practice,
-      mentorship from expert masters, and a community that pushes boundaries together.
+      {% trans "A learning platform built for curious minds — where students grow through structured practice, mentorship from expert masters, and a community that pushes boundaries together." %}
     </p>
     <div class="ab-hero-ctas">
       <a href="{% url 'practice_list' %}" class="btn-auth-primary text-decoration-none py-2 px-5">
-        <i class="bi bi-lightning-charge me-2"></i>Start Practicing
+        <i class="bi bi-lightning-charge me-2"></i>{% trans "Start Practicing" %}
       </a>
       <a href="{% url 'masters-home' %}" class="btn-auth-outline text-decoration-none py-2 px-5">
-        <i class="bi bi-person-badge me-2"></i>Meet the Masters
+        <i class="bi bi-person-badge me-2"></i>{% trans "Meet the Masters" %}
       </a>
     </div>
   </div>
@@ -481,65 +488,62 @@
   <div class="ab-stats">
     <div class="ab-stat">
       <div class="ab-stat-num">∞</div>
-      <div class="ab-stat-lbl">Practices</div>
+      <div class="ab-stat-lbl">{% trans "Practices" %}</div>
     </div>
     <div class="ab-stat">
       <div class="ab-stat-num">100%</div>
-      <div class="ab-stat-lbl">Free to Start</div>
+      <div class="ab-stat-lbl">{% trans "Free to Start" %}</div>
     </div>
     <div class="ab-stat">
       <div class="ab-stat-num">1</div>
-      <div class="ab-stat-lbl">Clear Goal</div>
+      <div class="ab-stat-lbl">{% trans "Clear Goal" %}</div>
     </div>
     <div class="ab-stat">
       <div class="ab-stat-num">∀</div>
-      <div class="ab-stat-lbl">Every Learner</div>
+      <div class="ab-stat-lbl">{% trans "Every Learner" %}</div>
     </div>
   </div>
 
   <!-- ── MISSION ───────────────────────────────────── -->
   <div class="ab-mission">
     <div>
-      <span class="ab-eyebrow">Our Mission</span>
-      <h2 class="ab-section-title">Sharpening minds,<br>one question at a time.</h2>
+      <span class="ab-eyebrow">{% trans "Our Mission" %}</span>
+      <h2 class="ab-section-title">{% trans "Sharpening minds," %}<br>{% trans "one question at a time." %}</h2>
       <div class="ab-divider"></div>
       <p class="ab-section-sub">
-        Prime Point was founded on a simple belief: the best way to build a strong mind is through
-        deliberate, structured practice. We connect passionate learners with expert masters and give
-        them the tools to grow — at their own pace, on their own terms.
+        {% trans "Prime Point was founded on a simple belief: the best way to build a strong mind is through deliberate, structured practice. We connect passionate learners with expert masters and give them the tools to grow — at their own pace, on their own terms." %}
       </p>
       <p class="ab-section-sub mt-3">
-        We are not just a quiz app. We are a full learning ecosystem — from homework assignments
-        to live discussion, from beginner practices to expert-level challenges.
+        {% trans "We are not just a quiz app. We are a full learning ecosystem — from homework assignments to live discussion, from beginner practices to expert-level challenges." %}
       </p>
     </div>
     <div class="ab-mission-visual">
       <div class="ab-value-pill">
         <div class="ab-value-icon"><i class="bi bi-bullseye"></i></div>
         <div class="ab-value-text">
-          <strong>Deliberate Practice</strong>
-          <span>Targeted, measurable improvement every session</span>
+          <strong>{% trans "Deliberate Practice" %}</strong>
+          <span>{% trans "Targeted, measurable improvement every session" %}</span>
         </div>
       </div>
       <div class="ab-value-pill">
         <div class="ab-value-icon"><i class="bi bi-people-fill"></i></div>
         <div class="ab-value-text">
-          <strong>Expert Mentorship</strong>
-          <span>Learn directly from masters in their field</span>
+          <strong>{% trans "Expert Mentorship" %}</strong>
+          <span>{% trans "Learn directly from masters in their field" %}</span>
         </div>
       </div>
       <div class="ab-value-pill">
         <div class="ab-value-icon"><i class="bi bi-graph-up-arrow"></i></div>
         <div class="ab-value-text">
-          <strong>Visible Progress</strong>
-          <span>Track your rank from Novice to Grandmaster</span>
+          <strong>{% trans "Visible Progress" %}</strong>
+          <span>{% trans "Track your rank from Novice to Grandmaster" %}</span>
         </div>
       </div>
       <div class="ab-value-pill">
         <div class="ab-value-icon"><i class="bi bi-chat-dots-fill"></i></div>
         <div class="ab-value-text">
-          <strong>Community Learning</strong>
-          <span>Discuss, debate, and grow alongside peers</span>
+          <strong>{% trans "Community Learning" %}</strong>
+          <span>{% trans "Discuss, debate, and grow alongside peers" %}</span>
         </div>
       </div>
     </div>
@@ -547,76 +551,76 @@
 
   <!-- ── SERVICES ──────────────────────────────────── -->
   <div class="mb-4">
-    <span class="ab-eyebrow">What We Offer</span>
-    <h2 class="ab-section-title">Everything you need to level up.</h2>
+    <span class="ab-eyebrow">{% trans "What We Offer" %}</span>
+    <h2 class="ab-section-title">{% trans "Everything you need to level up." %}</h2>
     <div class="ab-divider"></div>
   </div>
   <div class="ab-services-grid">
     <div class="ab-service-card">
       <div class="ab-service-icon"><i class="bi bi-book-half"></i></div>
-      <p class="ab-service-name">Practice Hub</p>
-      <p class="ab-service-desc">Hundreds of curated practice sessions across subjects and difficulty levels. Filter by topic, master, or level — and track your score every attempt.</p>
+      <p class="ab-service-name">{% trans "Practice Hub" %}</p>
+      <p class="ab-service-desc">{% trans "Hundreds of curated practice sessions across subjects and difficulty levels. Filter by topic, master, or level — and track your score every attempt." %}</p>
     </div>
     <div class="ab-service-card">
       <div class="ab-service-icon"><i class="bi bi-journal-bookmark-fill"></i></div>
-      <p class="ab-service-name">Homework System</p>
-      <p class="ab-service-desc">Masters assign targeted practice as homework to individual students or groups. Deadlines, auto-grading, and submission tracking built in.</p>
+      <p class="ab-service-name">{% trans "Homework System" %}</p>
+      <p class="ab-service-desc">{% trans "Masters assign targeted practice as homework to individual students or groups. Deadlines, auto-grading, and submission tracking built in." %}</p>
     </div>
     <div class="ab-service-card">
       <div class="ab-service-icon"><i class="bi bi-person-badge-fill"></i></div>
-      <p class="ab-service-name">Master Profiles</p>
-      <p class="ab-service-desc">Follow experts in your field. Each master curates their own practice library and can guide their students through structured learning paths.</p>
+      <p class="ab-service-name">{% trans "Master Profiles" %}</p>
+      <p class="ab-service-desc">{% trans "Follow experts in your field. Each master curates their own practice library and can guide their students through structured learning paths." %}</p>
     </div>
     <div class="ab-service-card">
       <div class="ab-service-icon"><i class="bi bi-chat-square-dots-fill"></i></div>
-      <p class="ab-service-name">Discussion Forum</p>
-      <p class="ab-service-desc">Engage with the community — ask questions, share insights, vote on answers, and learn from conversations that go beyond the practice sheet.</p>
+      <p class="ab-service-name">{% trans "Discussion Forum" %}</p>
+      <p class="ab-service-desc">{% trans "Engage with the community — ask questions, share insights, vote on answers, and learn from conversations that go beyond the practice sheet." %}</p>
     </div>
     <div class="ab-service-card">
       <div class="ab-service-icon"><i class="bi bi-award-fill"></i></div>
-      <p class="ab-service-name">Rank System</p>
-      <p class="ab-service-desc">Earn points through practice and climb from Novice to Grandmaster. Your rank reflects your dedication — and motivates you to keep going.</p>
+      <p class="ab-service-name">{% trans "Rank System" %}</p>
+      <p class="ab-service-desc">{% trans "Earn points through practice and climb from Novice to Grandmaster. Your rank reflects your dedication — and motivates you to keep going." %}</p>
     </div>
     <div class="ab-service-card">
       <div class="ab-service-icon"><i class="bi bi-bar-chart-line-fill"></i></div>
-      <p class="ab-service-name">Analytics</p>
-      <p class="ab-service-desc">Masters see exactly where each student struggles — question by question, choice by choice. Targeted feedback becomes effortless.</p>
+      <p class="ab-service-name">{% trans "Analytics" %}</p>
+      <p class="ab-service-desc">{% trans "Masters see exactly where each student struggles — question by question, choice by choice. Targeted feedback becomes effortless." %}</p>
     </div>
   </div>
 
   <!-- ── HOW IT WORKS ───────────────────────────────── -->
   <div class="mb-4">
-    <span class="ab-eyebrow">How It Works</span>
-    <h2 class="ab-section-title">Simple steps. Real results.</h2>
+    <span class="ab-eyebrow">{% trans "How It Works" %}</span>
+    <h2 class="ab-section-title">{% trans "Simple steps. Real results." %}</h2>
     <div class="ab-divider"></div>
   </div>
   <div class="ab-steps mb-5">
     <div class="ab-step">
       <div class="ab-step-num">1</div>
-      <p class="ab-step-title">Create your account</p>
-      <p class="ab-step-desc">Sign up free in seconds. Build your student profile and choose your learning goals.</p>
+      <p class="ab-step-title">{% trans "Create your account" %}</p>
+      <p class="ab-step-desc">{% trans "Sign up free in seconds. Build your student profile and choose your learning goals." %}</p>
     </div>
     <div class="ab-step">
       <div class="ab-step-num">2</div>
-      <p class="ab-step-title">Follow a Master</p>
-      <p class="ab-step-desc">Browse expert masters and follow the ones whose subjects align with your goals.</p>
+      <p class="ab-step-title">{% trans "Follow a Master" %}</p>
+      <p class="ab-step-desc">{% trans "Browse expert masters and follow the ones whose subjects align with your goals." %}</p>
     </div>
     <div class="ab-step">
       <div class="ab-step-num">3</div>
-      <p class="ab-step-title">Practice & Submit</p>
-      <p class="ab-step-desc">Take timed or open-ended practice sessions. Submit homework assigned by your masters.</p>
+      <p class="ab-step-title">{% trans "Practice & Submit" %}</p>
+      <p class="ab-step-desc">{% trans "Take timed or open-ended practice sessions. Submit homework assigned by your masters." %}</p>
     </div>
     <div class="ab-step">
       <div class="ab-step-num">4</div>
-      <p class="ab-step-title">Review & Grow</p>
-      <p class="ab-step-desc">See detailed feedback on every answer. Improve your weak points. Rise through the ranks.</p>
+      <p class="ab-step-title">{% trans "Review & Grow" %}</p>
+      <p class="ab-step-desc">{% trans "See detailed feedback on every answer. Improve your weak points. Rise through the ranks." %}</p>
     </div>
   </div>
 
   <!-- ── FOUNDERS ───────────────────────────────────── -->
   <div class="mb-4">
-    <span class="ab-eyebrow">The Team</span>
-    <h2 class="ab-section-title">Built by people who care about learning.</h2>
+    <span class="ab-eyebrow">{% trans "The Team" %}</span>
+    <h2 class="ab-section-title">{% trans "Built by people who care about learning." %}</h2>
     <div class="ab-divider"></div>
   </div>
   <div class="ab-founders-grid">
@@ -674,59 +678,58 @@
 
   <!-- ── PARTNERS & INVESTORS ───────────────────────── -->
   <div class="ab-partners-section">
-    <span class="ab-eyebrow">Partners &amp; Investors</span>
-    <h2 class="ab-section-title">Backed by believers.</h2>
+    <span class="ab-eyebrow">{% trans "Partners" %} &amp; {% trans "Investors" %}</span>
+    <h2 class="ab-section-title">{% trans "Backed by believers." %}</h2>
     <div class="ab-divider"></div>
     <p class="ab-section-sub mb-4">
-      We are actively building partnerships with educational institutions, EdTech investors, and
-      technology companies that share our vision of accessible, quality learning.
+      {% trans "We are actively building partnerships with educational institutions, EdTech investors, and technology companies that share our vision of accessible, quality learning." %}
     </p>
 
-    <p class="ab-partner-group-label"><i class="bi bi-handshake me-1"></i>Partners</p>
+    <p class="ab-partner-group-label"><i class="bi bi-handshake me-1"></i>{% trans "Partners" %}</p>
     <div class="ab-partner-row">
       <div class="ab-partner-chip">
-        <div class="ab-partner-logo" style="padding:2px;">
-          <img src="{% static 'images/partners/komak.png' %}" alt="Ko'mak Loyihasi" style="width:100%;height:100%;object-fit:contain;border-radius:6px;">
+        <div class="ab-partner-logo">
+          <img src="{% static 'images/partners/komak.png' %}" alt="Ko'mak Loyihasi">
         </div>
         <div>
           <div class="ab-partner-name">Ko'mak Loyihasi</div>
-          <div class="ab-partner-type">Social Initiative</div>
+          <div class="ab-partner-type">{% trans "Social Initiative" %}</div>
         </div>
       </div>
       <div class="ab-partner-chip">
-        <div class="ab-partner-logo" style="padding:2px;">
-          <img src="{% static 'images/partners/yoshlar_agentlik.png' %}" alt="Yoshlar Ishlari Agentligi" style="width:100%;height:100%;object-fit:contain;border-radius:6px;">
+        <div class="ab-partner-logo">
+          <img src="{% static 'images/partners/yoshlar_agentlik.png' %}" alt="Yoshlar Ishlari Agentligi">
         </div>
         <div>
           <div class="ab-partner-name">Yoshlar Ishlari Agentligi</div>
-          <div class="ab-partner-type">Government Agency</div>
+          <div class="ab-partner-type">{% trans "Government Agency" %}</div>
         </div>
       </div>
       <div class="ab-partner-chip">
-        <div class="ab-partner-logo" style="padding:2px;">
-          <img src="{% static 'images/partners/sirdaryo_hokimligi.png' %}" alt="Sirdaryo tuman hokimligi" style="width:100%;height:100%;object-fit:contain;border-radius:6px;">
+        <div class="ab-partner-logo">
+          <img src="{% static 'images/partners/sirdaryo_hokimligi.png' %}" alt="Sirdaryo tuman hokimligi">
         </div>
         <div>
           <div class="ab-partner-name">Sirdaryo tuman hokimligi</div>
-          <div class="ab-partner-type">Local Government</div>
+          <div class="ab-partner-type">{% trans "Local Government" %}</div>
         </div>
       </div>
     </div>
 
-    <p class="ab-partner-group-label"><i class="bi bi-graph-up-arrow me-1"></i>Investors</p>
+    <p class="ab-partner-group-label"><i class="bi bi-graph-up-arrow me-1"></i>{% trans "Investors" %}</p>
     <div class="ab-partner-row">
       <div class="ab-partner-chip dashed">
         <div class="ab-partner-logo"><i class="bi bi-bank"></i></div>
         <div>
-          <div class="ab-partner-name">Seed Investor</div>
-          <div class="ab-partner-type">EdTech — Incoming</div>
+          <div class="ab-partner-name">{% trans "Seed Investor" %}</div>
+          <div class="ab-partner-type">{% trans "EdTech — Incoming" %}</div>
         </div>
       </div>
       <div class="ab-partner-chip dashed">
         <div class="ab-partner-logo"><i class="bi bi-cash-coin"></i></div>
         <div>
-          <div class="ab-partner-name">Angel Investor</div>
-          <div class="ab-partner-type">Venture — Incoming</div>
+          <div class="ab-partner-name">{% trans "Angel Investor" %}</div>
+          <div class="ab-partner-type">{% trans "Venture — Incoming" %}</div>
         </div>
       </div>
     </div>
@@ -734,8 +737,8 @@
     <div class="card border-0 p-4 text-center" style="background:var(--accent-glow); border-radius:14px; border:1px solid rgba(56,189,248,0.25) !important;">
       <p style="color:var(--accent); font-size:0.88rem; margin:0;">
         <i class="bi bi-envelope-fill me-2"></i>
-        Interested in partnering or investing?
-        <strong>Reach out at <a href="mailto:hello@primepoint.app" style="color:var(--accent);">hello@primepoint.app</a></strong>
+        {% trans "Interested in partnering or investing?" %}
+        <strong>{% trans "Reach out at" %} <a href="mailto:hello@primepoint.app" style="color:var(--accent);">hello@primepoint.app</a></strong>
       </p>
     </div>
   </div>
@@ -745,22 +748,22 @@
     <div class="ab-logo-ring" style="margin-bottom:1.25rem;">
       <img src="{% static 'images/logo.jpg' %}" alt="Prime Point">
     </div>
-    <h2>Ready to bend the line?</h2>
-    <p>Join Prime Point today — free, fast, and built for minds that want more.</p>
+    <h2>{% trans "Ready to bend the line?" %}</h2>
+    <p>{% trans "Join Prime Point today — free, fast, and built for minds that want more." %}</p>
     <div class="ab-cta-btns">
       {% if user.is_authenticated %}
         <a href="{% url 'practice_list' %}" class="btn-auth-primary text-decoration-none py-2 px-5">
-          <i class="bi bi-lightning-charge me-2"></i>Go to Practices
+          <i class="bi bi-lightning-charge me-2"></i>{% trans "Go to Practices" %}
         </a>
         <a href="{% url 'profile' %}" class="btn-auth-outline text-decoration-none py-2 px-5" style="border-color:rgba(255,255,255,0.2); color:#94a3b8;">
-          <i class="bi bi-person me-2"></i>My Profile
+          <i class="bi bi-person me-2"></i>{% trans "My Profile" %}
         </a>
       {% else %}
         <a href="{% url 'register' %}" class="btn-auth-primary text-decoration-none py-2 px-5">
-          <i class="bi bi-person-plus me-2"></i>Join Free
+          <i class="bi bi-person-plus me-2"></i>{% trans "Join Free" %}
         </a>
         <a href="{% url 'login' %}" class="btn-auth-outline text-decoration-none py-2 px-5" style="border-color:rgba(255,255,255,0.2); color:#94a3b8;">
-          Sign In
+          {% trans "Sign In" %}
         </a>
       {% endif %}
     </div>
