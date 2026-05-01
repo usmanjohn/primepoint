@@ -373,45 +373,49 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--text-muted);
-  margin-bottom: 0.85rem;
+  margin-bottom: 1rem;
 }
-.ab-partner-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.85rem;
+.ab-partner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
   margin-bottom: 1.75rem;
 }
-.ab-partner-chip {
+.ab-partner-card {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1.25rem;
+  text-align: center;
+  gap: 0.85rem;
+  padding: 1.5rem 1rem 1.25rem;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 14px;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  border-radius: 16px;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
-.ab-partner-chip:hover {
+.ab-partner-card:hover {
   border-color: var(--accent);
-  box-shadow: 0 4px 16px rgba(56,189,248,0.1);
+  box-shadow: 0 6px 20px rgba(56,189,248,0.12);
+  transform: translateY(-3px);
 }
-.ab-partner-chip.dashed { border-style: dashed; opacity: 0.55; }
+.ab-partner-card.dashed { border-style: dashed; opacity: 0.55; }
 .ab-partner-logo {
-  width: 52px;
-  height: 52px;
-  border-radius: 10px;
+  width: 100px;
+  height: 100px;
+  border-radius: 16px;
   background: var(--surface-2);
   border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 2rem;
   color: var(--text-muted);
-  flex-shrink: 0;
   overflow: hidden;
+  flex-shrink: 0;
 }
-.ab-partner-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 8px; }
-.ab-partner-name { font-size: 0.88rem; font-weight: 600; color: var(--text); }
+.ab-partner-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 14px; padding: 6px; }
+.ab-partner-info { display: flex; flex-direction: column; gap: 0.2rem; }
+.ab-partner-name { font-size: 0.88rem; font-weight: 700; color: var(--text); line-height: 1.3; }
 .ab-partner-type { font-size: 0.72rem; color: var(--text-muted); }
 
 /* ── CTA banner ──────────────────────────────────── */
@@ -450,13 +454,12 @@
   .ab-brand { font-size: 1.8rem; }
   .ab-section-title { font-size: 1.4rem; }
   .ab-cta h2 { font-size: 1.4rem; }
-  .ab-partner-chip { padding: 0.6rem 1rem; gap: 0.6rem; }
-  .ab-partner-logo { width: 44px; height: 44px; }
-  .ab-partner-row { gap: 0.6rem; }
+  .ab-partner-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .ab-partner-logo { width: 80px; height: 80px; }
 }
 @media (max-width: 479px) {
   .ab-stats { grid-template-columns: repeat(2, 1fr); }
-  .ab-partner-chip { width: 100%; }
+  .ab-partner-grid { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
 {% endblock %}
@@ -637,40 +640,62 @@
         <p class="ab-founder-name">Usmanjon</p>
         <span class="ab-founder-role">Co-Founder &amp; CEO</span>
         <ul class="ab-founder-details">
-          <li><i class="bi bi-mortarboard-fill"></i> Education: <em>— fill in —</em></li>
-          <li><i class="bi bi-geo-alt-fill"></i> Location: <em>— fill in —</em></li>
-          <li><i class="bi bi-briefcase-fill"></i> Background: <em>— fill in —</em></li>
-          <li><i class="bi bi-star-fill"></i> Expertise: <em>— fill in —</em></li>
+          <li><i class="bi bi-mortarboard-fill"></i> Education: <em>— KAIST —</em></li>
+          <li><i class="bi bi-geo-alt-fill"></i> Location: <em>— Sohil city —</em></li>
+          <li><i class="bi bi-briefcase-fill"></i> Background: <em>— Data Science —</em></li>
+          <li><i class="bi bi-star-fill"></i> Expertise: <em>— Korean, English, Mathematics —</em></li>
         </ul>
         <p class="ab-founder-bio">
-          — Fill in your bio here. What drives you, what you've built, what you believe. —
+          — Strong mind bends the line. —
         </p>
       </div>
     </div>
 
     <!-- Placeholder slot 2 -->
-    <div class="ab-founder-card placeholder-card">
-      <div class="ab-founder-banner" style="background: linear-gradient(135deg, #1e293b 0%, #0f2033 100%);"></div>
+    <div class="ab-founder-card">
+      <div class="ab-founder-banner">
+        <div class="ab-founder-banner-accent"><i class="bi bi-rocket-takeoff-fill"></i></div>
+      </div>
       <div class="ab-founder-body">
         <div class="ab-founder-avatar">
-          <img src="{% static 'images/founders/usmanjon.jpg' %}" alt="Co-Founder">
+          <img src="{% static 'images/founders/usmanjon.jpg' %}" alt="Usmanjon">
+          
         </div>
-        <p class="ab-founder-name" style="color:var(--text-muted);">Co-Founder</p>
-        <span class="ab-founder-role" style="opacity:0.5;">— Coming Soon —</span>
-        <p class="ab-founder-bio" style="font-style:italic;">This spot is reserved for the next visionary joining the team.</p>
+        <p class="ab-founder-name">Ro'zimurod</p>
+        <span class="ab-founder-role">Co-Founder, Master</span>
+        <ul class="ab-founder-details">
+          <li><i class="bi bi-mortarboard-fill"></i> Education: <em>— TDSUOS —</em></li>
+          <li><i class="bi bi-geo-alt-fill"></i> Location: <em>— Sohil city —</em></li>
+          <li><i class="bi bi-briefcase-fill"></i> Background: <em>— English language —</em></li>
+          <li><i class="bi bi-star-fill"></i> Expertise: <em>— English —</em></li>
+        </ul>
+        <p class="ab-founder-bio">
+          — Strong mind bends the line. —
+        </p>
       </div>
     </div>
 
     <!-- Placeholder slot 3 -->
-    <div class="ab-founder-card placeholder-card">
-      <div class="ab-founder-banner" style="background: linear-gradient(135deg, #1e293b 0%, #0f2033 100%);"></div>
+    <div class="ab-founder-card">
+      <div class="ab-founder-banner">
+        <div class="ab-founder-banner-accent"><i class="bi bi-rocket-takeoff-fill"></i></div>
+      </div>
       <div class="ab-founder-body">
         <div class="ab-founder-avatar">
-          <img src="{% static 'images/founders/usmanjon.jpg' %}" alt="Team Member">
+          <img src="{% static 'images/founders/usmanjon.jpg' %}" alt="Usmanjon">
+          
         </div>
-        <p class="ab-founder-name" style="color:var(--text-muted);">Team Member</p>
-        <span class="ab-founder-role" style="opacity:0.5;">— Coming Soon —</span>
-        <p class="ab-founder-bio" style="font-style:italic;">Growing the team with the right people at the right time.</p>
+        <p class="ab-founder-name">Inomjon</p>
+        <span class="ab-founder-role">Co-Founder, Master</span>
+        <ul class="ab-founder-details">
+          <li><i class="bi bi-mortarboard-fill"></i> Education: <em>— TDIU —</em></li>
+          <li><i class="bi bi-geo-alt-fill"></i> Location: <em>— Sohil city —</em></li>
+          <li><i class="bi bi-briefcase-fill"></i> Background: <em>— Finance —</em></li>
+          <li><i class="bi bi-star-fill"></i> Expertise: <em>— Math —</em></li>
+        </ul>
+        <p class="ab-founder-bio">
+          — Strong mind bends the line. —
+        </p>
       </div>
     </div>
 
@@ -686,30 +711,30 @@
     </p>
 
     <p class="ab-partner-group-label"><i class="bi bi-handshake me-1"></i>{% trans "Partners" %}</p>
-    <div class="ab-partner-row">
-      <div class="ab-partner-chip">
+    <div class="ab-partner-grid">
+      <div class="ab-partner-card">
         <div class="ab-partner-logo">
           <img src="{% static 'images/partners/komak.png' %}" alt="Ko'mak Loyihasi">
         </div>
-        <div>
+        <div class="ab-partner-info">
           <div class="ab-partner-name">Ko'mak Loyihasi</div>
           <div class="ab-partner-type">{% trans "Social Initiative" %}</div>
         </div>
       </div>
-      <div class="ab-partner-chip">
+      <div class="ab-partner-card">
         <div class="ab-partner-logo">
           <img src="{% static 'images/partners/yoshlar_agentlik.png' %}" alt="Yoshlar Ishlari Agentligi">
         </div>
-        <div>
+        <div class="ab-partner-info">
           <div class="ab-partner-name">Yoshlar Ishlari Agentligi</div>
           <div class="ab-partner-type">{% trans "Government Agency" %}</div>
         </div>
       </div>
-      <div class="ab-partner-chip">
+      <div class="ab-partner-card">
         <div class="ab-partner-logo">
           <img src="{% static 'images/partners/sirdaryo_hokimligi.png' %}" alt="Sirdaryo tuman hokimligi">
         </div>
-        <div>
+        <div class="ab-partner-info">
           <div class="ab-partner-name">Sirdaryo tuman hokimligi</div>
           <div class="ab-partner-type">{% trans "Local Government" %}</div>
         </div>
@@ -717,17 +742,17 @@
     </div>
 
     <p class="ab-partner-group-label"><i class="bi bi-graph-up-arrow me-1"></i>{% trans "Investors" %}</p>
-    <div class="ab-partner-row">
-      <div class="ab-partner-chip dashed">
+    <div class="ab-partner-grid">
+      <div class="ab-partner-card dashed">
         <div class="ab-partner-logo"><i class="bi bi-bank"></i></div>
-        <div>
+        <div class="ab-partner-info">
           <div class="ab-partner-name">{% trans "Seed Investor" %}</div>
           <div class="ab-partner-type">{% trans "EdTech — Incoming" %}</div>
         </div>
       </div>
-      <div class="ab-partner-chip dashed">
+      <div class="ab-partner-card dashed">
         <div class="ab-partner-logo"><i class="bi bi-cash-coin"></i></div>
-        <div>
+        <div class="ab-partner-info">
           <div class="ab-partner-name">{% trans "Angel Investor" %}</div>
           <div class="ab-partner-type">{% trans "Venture — Incoming" %}</div>
         </div>
