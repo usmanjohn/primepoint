@@ -181,10 +181,10 @@ class Command(BaseCommand):
 
         # Create or get the practice and ensure it is published
         practice, created = Practice.objects.get_or_create(
-            title='English Basic: WH questions',
+            title='English Basic: Tense Questions Practice',
             master=master,
             defaults={
-                'description': 'Practice using the correct form of the WH question words (what, where, when, who, why, how, which, whose) in various contexts.',
+                'description': 'Practice using the correct form of the Tenses in various contexts.',
                 'subject': subject,
                 'level': 'easy',
                 'is_free': True,
