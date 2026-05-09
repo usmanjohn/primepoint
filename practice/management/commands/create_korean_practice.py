@@ -280,10 +280,10 @@ class Command(BaseCommand):
         )
 
         practice, created = Practice.objects.get_or_create(
-            title='시간 및 시제 연습',
+            title='불규칙 (Noto‘g‘ri fe’llar)',
             master=master,
             defaults={
-                'description': '한국어의 시간 및 시제를 연습하는 테스트.',
+                'description': '한국어 불규칙 활용 연습.',
                 'subject': subject,
                 'level': 'easy',
                 'is_free': True,
