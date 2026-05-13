@@ -19,8 +19,14 @@ class Profile(models.Model):
     def __str__(self):
         return f"{self.user.username}"
     
+    _DEFAULT_AVATARS = [
+        'father.png', 'monkey.png', 'ogway.png', 'panda.png',
+        'shifu.png', 'taylung.png', 'tiger.png', 'turna.png',
+    ]
+
     @property
     def image_url(self):
         if self.image and hasattr(self.image, 'url'):
             return self.image.url
-        return "/static/images/logo.png"
+        avatar = self._DEFAULT_AVATARS[self.user.pk % len(self._DEFAULT_AVATARS)]
+        return f'/static/images/users/{avatar}'
