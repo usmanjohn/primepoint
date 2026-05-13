@@ -126,6 +126,31 @@
                 </div>
             </div>
 
+            <!-- Linked Practices -->
+            {% if form.fields.practices.queryset.exists %}
+            <div class="card p-4 mb-3">
+                <h6 class="form-section-label mb-3">
+                    <i class="bi bi-pencil-square" style="color:var(--accent);"></i>
+                    {% trans "Linked Practices" %}
+                </h6>
+                <p style="font-size:0.78rem;color:var(--text-muted);" class="mb-3">
+                    {% trans "Students will see buttons to these practices on the tutorial page." %}
+                </p>
+                <div style="max-height:220px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;">
+                    {% for choice in form.practices %}
+                    <label class="d-flex align-items-center gap-2 p-2 rounded-2"
+                           style="cursor:pointer;font-size:0.83rem;color:var(--text);border:1px solid var(--border);background:var(--surface-2);">
+                        {{ choice.tag }}
+                        <span class="text-truncate">{{ choice.choice_label }}</span>
+                    </label>
+                    {% endfor %}
+                </div>
+                {% if form.practices.errors %}
+                <div class="field-error mt-2">{{ form.practices.errors|join:", " }}</div>
+                {% endif %}
+            </div>
+            {% endif %}
+
             <!-- Math Formula Guide -->
             <div class="card p-4 mb-3" style="border-color:rgba(56,189,248,.25);background:rgba(56,189,248,.04);">
                 <h6 class="form-section-label mb-3">

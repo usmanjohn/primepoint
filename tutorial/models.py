@@ -35,6 +35,11 @@ class Tutorial(models.Model):
         help_text='Short description shown on listing cards.'
     )
     content      = CKEditor5Field(config_name='tutorial')
+    practices    = models.ManyToManyField(
+        'practice.Practice',
+        blank=True,
+        related_name='tutorials',
+    )
     is_published = models.BooleanField(default=True)
     views        = models.PositiveIntegerField(default=0)
     created_at   = models.DateTimeField(auto_now_add=True)

@@ -72,6 +72,7 @@ def tutorial_detail(request, pk):
         'like_count':    like_count,
         'dislike_count': dislike_count,
         'user_reaction': user_reaction,
+        'linked_practices': tutorial.practices.filter(is_published=True),
     })
 
 
@@ -115,15 +116,16 @@ def tutorial_create(request):
         raise PermissionDenied
 
     if request.method == 'POST':
-        form = TutorialForm(request.POST, request.FILES)
+        form = TutorialForm(request.POST, request.FILES, user=request.user)
         if form.is_valid():
             tut = form.save(commit=False)
             tut.author = request.user
             tut.save()
+            form.save_m2m()
             messages.success(request, 'Tutorial published successfully!')
             return redirect('tutorial_detail', pk=tut.pk)
     else:
-        form = TutorialForm()
+        form = TutorialForm(user=request.user)
 
     return render(request, 'tutorial/tutorial_form.html', {'form': form})
 
@@ -135,13 +137,13 @@ def tutorial_edit(request, pk):
         raise PermissionDenied
 
     if request.method == 'POST':
-        form = TutorialForm(request.POST, request.FILES, instance=tutorial)
+        form = TutorialForm(request.POST, request.FILES, instance=tutorial, user=request.user)
         if form.is_valid():
             form.save()
             messages.success(request, 'Tutorial updated.')
             return redirect('tutorial_detail', pk=tutorial.pk)
     else:
-        form = TutorialForm(instance=tutorial)
+        form = TutorialForm(instance=tutorial, user=request.user)
 
     return render(request, 'tutorial/tutorial_form.html', {
         'form': form, 'tutorial': tutorial,

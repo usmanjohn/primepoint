@@ -248,6 +248,26 @@
             </div>
         </div>
 
+        <!-- Linked Practices -->
+        {% if linked_practices %}
+        <div class="card p-3 mb-3">
+            <h6 class="form-section-label mb-3">
+                <i class="bi bi-pencil-square" style="color:var(--accent);"></i>
+                {% trans "Practice" %}
+            </h6>
+            <div class="d-flex flex-column gap-2">
+                {% for practice in linked_practices %}
+                <a href="{% url 'practice_detail' practice.pk %}"
+                   class="btn-core d-flex align-items-center justify-content-between gap-2"
+                   style="font-size:0.85rem;text-decoration:none;">
+                    <span class="text-truncate">{{ practice.title }}</span>
+                    <i class="bi bi-arrow-right-circle flex-shrink-0"></i>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
         <!-- Related tutorials -->
         {% if related %}
         <div class="card p-3">
