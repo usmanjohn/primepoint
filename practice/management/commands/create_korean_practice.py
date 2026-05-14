@@ -3,216 +3,187 @@ from django.contrib.auth.models import User
 from masters.models import Master
 from practice.models import Subject, Practice, PracticeQuestion, PracticeChoice
 
+
 QUESTIONS = [
     {
-        'text': '<p><strong>A: 이 수프가 아주 뜨거워요.<br>B: 그러면 조금씩 천천히 ________.</strong></p>',
-        'hint': '<p>정중한 명령이나 권유를 나타내는 표현입니다.</p>',
-        'explanation': '<p><strong>드세요</strong>: 상대방에게 행동을 정중하게 권유할 때 사용하는 -(으)세요 문법입니다. (먹다의 높임말)</p>',
-        'correct': '드세요',
-        'choices': ['드세요', '드시지 마세요', '드실까요?', '드십시다'],
+        'text': "<p><strong>A: 하늘이 갑자기 어두워졌어요.<br>B: 네, 하늘이 어두워지________ 갑자기 굵은 비가 쏟아졌어요.</strong></p>",
+        'explanation': "<p><strong>어두워지자마자</strong>: <code>-자마자</code> qo'shimchasi biror holat sodir bo'lgan zahoti darhol keyingisi yuz berganini ifodalaydi.</p>",
+        'correct': "어두워지자마자",
+        'choices': ["어두워지자마자", "어두워지는 동안", "어두워진 후에", "어두워지면서"]
     },
     {
-        'text': '<p><strong>A: 내일 아주 일찍 일어나야 해서 피곤해요.<br>B: 그러니까 오늘 밤늦게까지 ________.</strong></p>',
-        'hint': '<p>상대방에게 어떤 행동을 금지할 때 사용합니다.</p>',
-        'explanation': '<p><strong>놀지 마세요</strong>: 금지를 나타내는 -지 마세요 문법입니다.</p>',
-        'correct': '놀지 마세요',
-        'choices': ['놀지 마세요', '놀아 주세요', '놀까요?', '놀아야 해요'],
+        'text': "<p><strong>A: 한국어 실력이 정말 훌륭해요! 한국에 오신 지 얼마나 되셨어요?<br>B: 한국에 ________ 벌써 5년이 넘었어요.</strong></p>",
+        'explanation': "<p><strong>온 지</strong>: <code>-(으)ㄴ 지</code> qo'shimchasi vaqt hisobini bildiradi. '오다' fe'li unliga tugagani uchun '-ㄴ 지' qo'shiladi.</p>",
+        'correct': "온 지",
+        'choices': ["온 지", "오기 전에", "오면서", "올 때"]
     },
     {
-        'text': '<p><strong>A: 회의실이 어디에 있습니까?<br>B: 저기 안쪽 복도로 쭉 ________.</strong></p>',
-        'hint': '<p>격식 있는 자리에서 명령이나 권유를 할 때 사용합니다.</p>',
-        'explanation': '<p><strong>들어가십시오</strong>: 아주 정중하고 격식 있는 명령을 나타내는 -(으)십시오 문법입니다.</p>',
-        'correct': '들어가십시오',
-        'choices': ['들어가십시오', '들어갈게요', '들어가려고 해요', '들어가면 안 돼요'],
+        'text': "<p><strong>A: 이 독한 감기약은 언제 먹어야 합니까?<br>B: 머리가 심하게 ________ 식사와 상관없이 바로 한 알씩 드세요.</strong></p>",
+        'explanation': "<p><strong>아플 때</strong>: <code>-(으)ㄹ 때</code> qo'shimchasi vaqtni bildiradi. '아프다' unliga tugagani uchun '-ㄹ 때' qo'shiladi.</p>",
+        'correct': "아플 때",
+        'choices': ["아플 때", "아프기 전에", "아픈 후에", "아프면서"]
     },
     {
-        'text': '<p><strong>A: 오늘 저녁에 아주 맵고 맛있는 음식을 ________?<br>B: 네, 스트레스가 풀리게 같이 먹어요!</strong></p>',
-        'hint': '<p>상대방의 의향을 묻거나 제안할 때 사용합니다.</p>',
-        'explanation': '<p><strong>먹을까요?</strong>: 제안이나 의견을 묻는 -(으)ㄹ까요? 문법입니다.</p>',
-        'correct': '먹을까요?',
-        'choices': ['먹을까요?', '먹으십시오', '먹으러 가요', '먹지 마세요'],
+        'text': "<p><strong>A: 방이 너무 지저분해요. 언제 청소할 거예요?<br>B: 이 재미있는 드라마를 다 ________ 깨끗하게 청소할게요.</strong></p>",
+        'explanation': "<p><strong>보고 나서</strong>: <code>-고 나서</code> harakatning to'liq yakunlanib, so'ngra keyingi ish boshlanishini bildiradi.</p>",
+        'correct': "보고 나서",
+        'choices': ["보고 나서", "보는 동안", "보기 전에", "보자마자"]
     },
     {
-        'text': '<p><strong>A: 이번 주말에 날씨가 매우 맑아요.<br>B: 그럼 다 같이 높은 산으로 ________.</strong></p>',
-        'hint': '<p>여러 사람이 함께 어떤 행동을 하자고 제안할 때 사용합니다.</p>',
-        'explanation': '<p><strong>올라갑시다</strong>: 청유와 제안을 나타내는 -ㅂ시다/읍시다 문법입니다.</p>',
-        'correct': '올라갑시다',
-        'choices': ['올라갑시다', '올라갈게요', '올라가지 마세요', '올라가면 좋겠다'],
+        'text': "<p><strong>A: 운전 중에는 휴대전화를 사용하면 절대 안 됩니다.<br>B: 죄송합니다. 앞으로는 운전________ 절대 통화하지 않겠습니다.</strong></p>",
+        'explanation': "<p><strong>하면서</strong>: <code>-(으)면서</code> bir vaqtning o'zida bo'layotgan ikkita harakatni bog'laydi.</p>",
+        'correct': "하면서",
+        'choices': ["하면서", "한 후에", "하기 전에", "하는 동안"]
     },
     {
-        'text': '<p><strong>A: 이 상자가 너무 무거워요.<br>B: 알겠어요. 제가 들어 줄게요.<br>A: 네, 안전하게 탁자 위로 좀 ________.</strong></p>',
-        'hint': '<p>다른 사람에게 어떤 행동을 해 달라고 요청할 때 사용합니다.</p>',
-        'explanation': '<p><strong>옮겨 주세요</strong>: 남에게 부탁할 때 사용하는 -아/어 주세요 문법입니다.</p>',
-        'correct': '옮겨 주세요',
-        'choices': ['옮겨 주세요', '옮기면 안 돼요', '옮길 필요가 있어요', '옮기러 가요'],
+        'text': "<p><strong>A: 제가 잠깐 외출한 사이에 귀여운 강아지가 신발을 심하게 물어뜯었네요.<br>B: 네, 수미 씨가 밖에서 쇼핑하________ 강아지가 많이 심심했던 것 같아요.</strong></p>",
+        'explanation': "<p><strong>는 동안</strong>: <code>-는 동안</code> davomiylikni bildiradi va ko'pincha turli shaxslarning harakatlarida ishlatiladi.</p>",
+        'correct': "는 동안",
+        'choices': ["는 동안", "면서", "기 전에", "ㄴ 후에"]
     },
     {
-        'text': '<p><strong>A: 밖이 무척 시끄러워서 잘 안 들려요. 창문을 꽉 ________?<br>B: 네, 제가 바로 닫아 드릴게요.</strong></p>',
-        'hint': '<p>상대방에게 아주 정중하게 부탁할 때 사용합니다.</p>',
-        'explanation': '<p><strong>닫아 주시겠어요?</strong>: 정중한 요청을 나타내는 -아/어 주시겠어요? 문법입니다.</p>',
-        'correct': '닫아 주시겠어요?',
-        'choices': ['닫아 주시겠어요?', '닫을래요?', '닫아야 해요', '닫으러 가요'],
+        'text': "<p><strong>A: 이 중요한 서류들은 어떻게 할까요?<br>B: 회의가 완전히 ________ 부장님께 직접 전달해 주세요.</strong></p>",
+        'explanation': "<p><strong>끝난 후에</strong>: <code>-(으)ㄴ 후에</code> ishning tugashini va keyingisi boshlanishini ko'rsatadi.</p>",
+        'correct': "끝난 후에",
+        'choices': ["끝난 후에", "끝나기 전에", "끝날 때", "끝나면서"]
     },
     {
-        'text': '<p><strong>A: 미술관 안에서 이 아름다운 그림을 사진으로 찍어도 돼요?<br>B: 아니요, 여기서 사진을 ________.</strong></p>',
-        'hint': '<p>어떤 행동을 하는 것이 허용되지 않음을 나타냅니다.</p>',
-        'explanation': '<p><strong>찍으면 안 돼요</strong>: 금지나 불허를 나타내는 -(으)면 안 돼요 문법입니다.</p>',
-        'correct': '찍으면 안 돼요',
-        'choices': ['찍으면 안 돼요', '찍지 않아도 돼요', '찍어도 돼요', '찍을게요'],
+        'text': "<p><strong>A: 비행기 탑승 시간이 정말 얼마 안 남았어요.<br>B: 비행기에 ________ 면세점에서 화장품을 빨리 사야 해요.</strong></p>",
+        'explanation': "<p><strong>타기 전에</strong>: <code>-기 전에</code> biron ishni qilishdan oldingi vaqtni bildiradi.</p>",
+        'correct': "타기 전에",
+        'choices': ["타기 전에", "타고 나서", "탈 때", "타자마자"]
     },
     {
-        'text': '<p><strong>A: 내일은 아주 중요한 회사 면접이 있어요.<br>B: 그러면 단정한 정장을 반드시 ________.</strong></p>',
-        'hint': '<p>어떤 행동을 하는 것이 필수적임을 나타냅니다.</p>',
-        'explanation': '<p><strong>입어야 해요</strong>: 의무나 필수를 나타내는 -아/어야 하다 문법입니다.</p>',
-        'correct': '입어야 해요',
-        'choices': ['입어야 해요', '입으면 되다', '입지 마세요', '입어 주세요'],
+        'text': "<p><strong>A: 저기 저 식당은 항상 사람이 많고 줄이 엄청 길어요.<br>B: 네, 저기가 우리 동네에서 가장 맛있는 매운 냉면을 ________ 식당이거든요.</strong></p>",
+        'explanation': "<p><strong>파는</strong>: <code>-는</code> hozirgi zamon sifatdoshidir. '팔다' (sotmoq) fe'lidagi 'ㄹ' tushib qolib, '파는' bo'ladi.</p>",
+        'correct': "파는",
+        'choices': ["파는", "판", "팔", "팔면서"]
     },
     {
-        'text': '<p><strong>A: 외국어를 아주 자연스럽게 잘하고 싶어요.<br>B: 그러면 매일 꾸준히 ________.</strong></p>',
-        'hint': '<p>어떤 목적을 위해 그 행동이 필요함을 나타냅니다.</p>',
-        'explanation': '<p><strong>연습할 필요가 있어요</strong>: 필요성을 나타내는 -(으)ㄹ 필요가 있다 문법입니다.</p>',
-        'correct': '연습할 필요가 있어요',
-        'choices': ['연습할 필요가 있어요', '연습할래요?', '연습하면 안 돼요', '연습합시다'],
+        'text': "<p><strong>A: 어제 백화점에서 비싸게 산 가방 어때요?<br>B: 디자인은 아주 예쁜데, 어제 ________ 가방이 생각보다 조금 무거워요.</strong></p>",
+        'explanation': "<p><strong>산</strong>: <code>-(으)ㄴ</code> o'tgan zamon sifatdoshidir. '사다' fe'liga '-ㄴ' qo'shiladi.</p>",
+        'correct': "산",
+        'choices': ["산", "사는", "살", "사면서"]
     },
     {
-        'text': '<p><strong>A: 이번 방학 계획이 뭐예요?<br>B: 저는 조용한 바닷가에서 푹 ________.</strong></p>',
-        'hint': '<p>말하는 사람의 소망이나 희망을 나타냅니다.</p>',
-        'explanation': '<p><strong>쉬면 좋겠어요</strong>: 바램을 나타내는 -(으)면 좋겠어요 문법입니다.</p>',
-        'correct': '쉬면 좋겠어요',
-        'choices': ['쉬면 좋겠어요', '쉬어 주세요', '쉬지 마세요', '쉬어야 해요'],
+        'text': "<p><strong>A: 이번 주말에 친구들과 즐거운 캠핑을 가기로 했어요.<br>B: 와, 신나겠네요! 가서 다 같이 ________ 고기와 신선한 채소는 모두 준비했어요?</strong></p>",
+        'explanation': "<p><strong>먹을</strong>: <code>-(으)ㄹ</code> kelasi zamon sifatdoshidir. '먹다' undosh bilan tugagani uchun '-을' qo'shiladi.</p>",
+        'correct': "먹을",
+        'choices': ["먹을", "먹는", "먹은", "먹고 나서"]
     },
     {
-        'text': '<p><strong>A: 저녁에 달콤하고 시원한 아이스크림을 같이 ________?<br>B: 네, 저도 단 게 먹고 싶었어요!</strong></p>',
-        'hint': '<p>친한 사이에서 의향을 묻거나 가볍게 제안할 때 사용합니다.</p>',
-        'explanation': '<p><strong>먹을래요?</strong>: 의향을 묻거나 제안하는 -(으)ㄹ래요? 문법입니다.</p>',
-        'correct': '먹을래요?',
-        'choices': ['먹을래요?', '먹읍시다', '먹어 주세요', '먹으십시오'],
+        'text': "<p><strong>A: 나중에 어떤 집으로 이사하고 싶어요?<br>B: 저는 창문이 크고 햇빛이 잘 들어오는 아주 ________ 집에서 살고 싶어요.</strong></p>",
+        'explanation': "<p><strong>밝은</strong>: <code>-(으)ㄴ</code> sifatlarga qo'shilib aniqlovchi yasaydi. '밝다' undoshga tugagani uchun '-은' qo'shiladi.</p>",
+        'correct': "밝은",
+        'choices': ["밝은", "밝는", "밝을", "밝으면서"]
     },
     {
-        'text': '<p><strong>A: 거실이 너무 지저분해요. 누가 청소할 거예요?<br>B: 제가 지금 바로 깨끗하게 ________.</strong></p>',
-        'hint': '<p>말하는 사람의 의지나 약속을 나타냅니다.</p>',
-        'explanation': '<p><strong>청소할게요</strong>: 자신의 의지나 약속을 표현하는 -(으)ㄹ게요 문법입니다.</p>',
-        'correct': '청소할게요',
-        'choices': ['청소할게요', '청소하세요', '청소할까요?', '청소하면 안 돼요'],
+        'text': "<p><strong>A: 오늘 아침에 많이 피곤해 보였어요.<br>B: 네, 어젯밤에 너무 피곤해서 푹신한 침대에 ________ 깊은 잠이 들었어요.</strong></p>",
+        'explanation': "<p><strong>눕자마자</strong>: <code>-자마자</code> harakatning darhol ketma-ketligini bildiradi.</p>",
+        'correct': "눕자마자",
+        'choices': ["눕자마자", "누운 후에", "눕기 전에", "누울 때"]
     },
     {
-        'text': '<p><strong>A: 내년 새해 목표가 무엇입니까?<br>B: 저는 매일 아침 일찍 규칙적으로 ________.</strong></p>',
-        'hint': '<p>어떤 행동을 할 계획이나 의도가 있음을 나타냅니다.</p>',
-        'explanation': '<p><strong>운동하려고 해요</strong>: 의도나 계획을 나타내는 -(으)려고 하다 문법입니다.</p>',
-        'correct': '운동하려고 해요',
-        'choices': ['운동하려고 해요', '운동할게요', '운동하세요', '운동해 주시겠어요?'],
+        'text': "<p><strong>A: 집이 엄청 조용하네요. 아이들은 뭐 해요?<br>B: 아이들이 방에서 편안하게 낮잠을 ________ 저는 거실을 조용히 치웠어요.</strong></p>",
+        'explanation': "<p><strong>자는 동안</strong>: <code>-는 동안</code> ikki xil shaxsning harakatlari bir vaqtda bo'layotganini ifodalash uchun juda mos.</p>",
+        'correct': "자는 동안",
+        'choices': ["자는 동안", "자면서", "자고 나서", "자기 전에"]
     },
     {
-        'text': '<p><strong>A: 지금 급하게 밖으로 왜 나가요?<br>B: 날씨가 너무 더워서 시원한 음료수를 ________.</strong></p>',
-        'hint': '<p>이동하는 목적을 나타냅니다.</p>',
-        'explanation': '<p><strong>사러 가요</strong>: 목적을 위해 이동함을 나타내는 -(으)러 가다 문법입니다.</p>',
-        'correct': '사러 가요',
-        'choices': ['사러 가요', '사면 좋겠어요', '사지 마세요', '사도 돼요'],
+        'text': "<p><strong>A: 저녁 맛있게 먹고 우리 산책할까요?<br>B: 네, 시원한 밤바람을 ________ 넓은 공원을 천천히 걸어요.</strong></p>",
+        'explanation': "<p><strong>맞으면서</strong>: <code>-(으)면서</code> qo'shimchasi. '맞다' undoshga tugagani uchun '-으면서' ulanadi.</p>",
+        'correct': "맞으면서",
+        'choices': ["맞으면서", "맞는 동안", "맞고 나서", "맞기 전에"]
     },
     {
-        'text': '<p><strong>A: 내일도 일찍 회사에 출근해야 해요?<br>B: 아니요, 내일은 공휴일이라서 ________.</strong></p>',
-        'hint': '<p>어떤 행동을 할 의무나 필요가 없음을 나타냅니다.</p>',
-        'explanation': '<p><strong>출근하지 않아도 돼요</strong>: 불필요나 면제를 나타내는 -지 않아도 되다 문법입니다.</p>',
-        'correct': '출근하지 않아도 돼요',
-        'choices': ['출근하지 않아도 돼요', '출근해야 해요', '출근하려고 해요', '출근할 필요가 있어요'],
+        'text': "<p><strong>A: 수미 씨와 언제부터 그렇게 친해졌어요?<br>B: 우리가 서로 ________ 벌써 10년이 다 되어가요. 정말 소중한 친구예요.</strong></p>",
+        'explanation': "<p><strong>안 지</strong>: <code>-(으)ㄴ 지</code> qo'shimchasi. '알다' (bilmoq/tanimoq) fe'lidagi 'ㄹ' harfi tushib qoladi va '-ㄴ 지' qo'shiladi.</p>",
+        'correct': "안 지",
+        'choices': ["안 지", "알기 전에", "알면서", "아는 동안"]
     },
     {
-        'text': '<p><strong>A: 복잡한 서울역에 어떻게 가요?<br>B: 여기서 파란색 지하철 1호선을 ________.</strong></p>',
-        'hint': '<p>어떤 조건을 충족하면 충분하거나 해결됨을 나타냅니다.</p>',
-        'explanation': '<p><strong>타면 돼요</strong>: 최소한의 요건이나 해결책을 나타내는 -(으)면 되다 문법입니다.</p>',
-        'correct': '타면 돼요',
-        'choices': ['타면 돼요', '타면 안 돼요', '타지 마세요', '타러 가요'],
+        'text': "<p><strong>A: 이 냄새나는 쓰레기들은 언제 버릴까요?<br>B: 식사를 모두 ________ 한꺼번에 모아서 밖에 버립시다.</strong></p>",
+        'explanation': "<p><strong>하고 나서</strong>: <code>-고 나서</code> ovqatlanish jarayoni butunlay tugagach, tozalashga o'tishни bildiradi.</p>",
+        'correct': "하고 나서",
+        'choices': ["하고 나서", "하기 전에", "하면서", "할 때"]
     },
     {
-        'text': '<p><strong>A: 다리가 너무 아픈데, 이 푹신한 의자에 잠시 ________?<br>B: 네, 편하게 앉으세요.</strong></p>',
-        'hint': '<p>어떤 행동을 하는 것에 대한 허락을 구하거나 허용할 때 사용합니다.</p>',
-        'explanation': '<p><strong>앉아도 돼요?</strong>: 허락을 나타내는 -아/어도 되다 문법입니다.</p>',
-        'correct': '앉아도 돼요?',
-        'choices': ['앉아도 돼요?', '앉아야 해요?', '앉으십시오', '앉을래요?'],
+        'text': "<p><strong>A: 외국 생활을 하면서 고향이 가장 그리울 때가 언제예요?<br>B: 저는 혼자 좁은 방에 있는데 몸이 많이 ________ 따뜻한 가족들이 가장 보고 싶어요.</strong></p>",
+        'explanation': "<p><strong>아플 때</strong>: <code>-(으)ㄹ 때</code> kasal bo'lgan paytni bildiradi.</p>",
+        'correct': "아플 때",
+        'choices': ["아플 때", "아프기 전에", "아픈 후에", "아프면서"]
     },
     {
-        'text': '<p><strong>A: 내일 멀리 소풍 가는데 비가 오면 어떡하죠?<br>B: 날씨가 아주 ________.</strong></p>',
-        'hint': '<p>어떤 일이 일어나기를 바라는 마음을 독백처럼 나타냅니다.</p>',
-        'explanation': '<p><strong>맑으면 좋겠다</strong>: 강한 소망이나 바램을 나타내는 -(으)면 좋겠다 문법입니다.</p>',
-        'correct': '맑으면 좋겠다',
-        'choices': ['맑으면 좋겠다', '맑아도 된다', '맑아야 한다', '맑을게요'],
+        'text': "<p><strong>A: 언제 교수님께 다시 연락을 드릴까요?<br>B: 내일 오전 복잡한 수업을 모두 ________ 교수님 연구실로 조용히 찾아가 보세요.</strong></p>",
+        'explanation': "<p><strong>마친 후에</strong>: <code>-(으)ㄴ 후에</code> dars tugaganidan keyingi vaqtni bildiradi.</p>",
+        'correct': "마친 후에",
+        'choices': ["마친 후에", "마치기 전에", "마칠 때", "마치면서"]
     },
     {
-        'text': '<p><strong>A: 안내 말씀 드리겠습니다. 승객 여러분께서는 모두 안전벨트를 ________.<br>B: (비행기 안내 방송)</strong></p>',
-        'hint': '<p>공식적인 상황에서 바라는 바를 정중하게 요청할 때 사용합니다.</p>',
-        'explanation': '<p><strong>매 주시기 바랍니다</strong>: 공식적인 요청을 나타내는 -기 바랍니다 문법입니다.</p>',
-        'correct': '매 주시기 바랍니다',
-        'choices': ['매 주시기 바랍니다', '매지 마십시오', '맬까요?', '매면 안 됩니다'],
+        'text': "<p><strong>A: 밖에 눈이 펑펑 오고 있어요.<br>B: 길이 많이 미끄러우니까, 외출________ 꼭 따뜻한 겨울 신발을 신으세요.</strong></p>",
+        'explanation': "<p><strong>하기 전에</strong>: <code>-기 전에</code> uydan chiqishdan oldingi vaqtni ko'rsatadi.</p>",
+        'correct': "하기 전에",
+        'choices': ["하기 전에", "한 후에", "할 때", "하면서"]
     },
     {
-        'text': '<p><strong>A: 이 복잡한 수학 문제가 너무 어려워요.<br>B: 혼자 고민하지 말고 선생님께 자세히 ________.</strong></p>',
-        'hint': '<p>명령이나 부드러운 권유를 나타냅니다.</p>',
-        'explanation': '<p><strong>물어보세요</strong>: 권유를 나타내는 -(으)세요 문법입니다.</p>',
-        'correct': '물어보세요',
-        'choices': ['물어보세요', '물어볼게요', '물어보면 안 돼요', '물어보러 가요'],
+        'text': "<p><strong>A: 도서관에서 어떤 책을 그렇게 집중해서 찾고 있어요?<br>B: 제가 요즘 자주 ________ 한국어 고급 문법 책을 찾고 있어요.</strong></p>",
+        'explanation': "<p><strong>읽는</strong>: <code>-는</code> hozirgi zamon sifatdoshidir. '읽다' fe'liga '-는' ulanadi.</p>",
+        'correct': "읽는",
+        'choices': ["읽는", "읽은", "읽을", "읽기 전에"]
     },
     {
-        'text': '<p><strong>A: 비가 와서 바닥이 많이 미끄러워요.<br>B: 매우 위험하니까 복도에서 빨리 ________.</strong></p>',
-        'hint': '<p>어떤 행동을 하지 말라고 지시할 때 사용합니다.</p>',
-        'explanation': '<p><strong>뛰지 마세요</strong>: 금지를 나타내는 -지 마세요 문법입니다.</p>',
-        'correct': '뛰지 마세요',
-        'choices': ['뛰지 마세요', '뛰어야 해요', '뛸 필요가 있어요', '뛰어도 돼요'],
+        'text': "<p><strong>A: 식탁 위에 있는 이 달콤한 딸기 케이크는 누가 샀어요?<br>B: 아, 그거 제가 아침에 유명한 빵집에서 ________ 케이크예요. 맛있게 드세요!</strong></p>",
+        'explanation': "<p><strong>사 온</strong>: <code>-(으)ㄴ</code> o'tgan zamon sifatdoshidir. '사 오다' (sotib olib kelmoq) fe'liga '-ㄴ' qo'shilgan.</p>",
+        'correct': "사 온",
+        'choices': ["사 온", "사 오는", "사 올", "사 오고 나서"]
     },
     {
-        'text': '<p><strong>A: 도서관에서 책을 다 빌렸어요.<br>B: 그럼 이제 조용한 카페에서 같이 ________?</strong></p>',
-        'hint': '<p>상대방의 의견을 물으며 제안할 때 사용합니다.</p>',
-        'explanation': '<p><strong>공부할까요?</strong>: 제안을 나타내는 -(으)ㄹ까요? 문법입니다.</p>',
-        'correct': '공부할까요?',
-        'choices': ['공부할까요?', '공부하십시오', '공부하지 않아도 돼요', '공부하면 되다'],
+        'text': "<p><strong>A: 다음 주 워크숍에서 무엇을 주로 논의하나요?<br>B: 내년 새로운 글로벌 프로젝트에 대해 ________ 내용이 아주 많습니다.</strong></p>",
+        'explanation': "<p><strong>발표할</strong>: <code>-(으)ㄹ</code> kelasi zamon sifatdoshidir. '발표하다' (taqdimot qilmoq) fe'liga '-ㄹ' ulanadi.</p>",
+        'correct': "발표할",
+        'choices': ["발표할", "발표하는", "발표한", "발표하면서"]
     },
     {
-        'text': '<p><strong>A: 오늘 중요한 프로젝트를 다 끝냈어요!<br>B: 그럼 다 같이 시원한 맥주를 ________.</strong></p>',
-        'hint': '<p>다 같이 어떤 행동을 하자고 제안할 때 사용합니다.</p>',
-        'explanation': '<p><strong>마십시다</strong>: 청유를 나타내는 -ㅂ시다/읍시다 문법입니다.</p>',
-        'correct': '마십시다',
-        'choices': ['마십시다', '마실게요', '마시려고 해요', '마시러 와요'],
+        'text': "<p><strong>A: 수미 씨가 만나는 남자친구는 어떤 사람이에요?<br>B: 성격이 정말 착하고 남을 배려하는 마음이 ________ 사람이에요.</strong></p>",
+        'explanation': "<p><strong>따뜻한</strong>: <code>-(으)ㄴ</code> sifatga qo'shilib aniqlovchi yasaydi. '따뜻하다' (issiq/mehribon) + '-ㄴ'.</p>",
+        'correct': "따뜻한",
+        'choices': ["따뜻한", "따뜻하는", "따뜻할", "따뜻하면서"]
     },
     {
-        'text': '<p><strong>A: 양손에 무거운 짐이 있어서 문을 열 수가 없어요.<br>B: 제가 도와드릴까요?<br>A: 네, 문 좀 활짝 ________.</strong></p>',
-        'hint': '<p>다른 사람에게 도움이나 행동을 요청할 때 사용합니다.</p>',
-        'explanation': '<p><strong>열어 주세요</strong>: 부탁을 나타내는 -아/어 주세요 문법입니다.</p>',
-        'correct': '열어 주세요',
-        'choices': ['열어 주세요', '열면 안 돼요', '열어야 해요', '열어 주시겠어요?'],  # '열어 주시겠어요?' is also correct conceptually, but '열어 주세요' fits the less formal dynamic better. To be strict, let's make the alternate option incorrect structurally: '열을래요?'
+        'text': "<p><strong>A: 매일 아침에 일찍 일어나서 보통 제일 먼저 뭐 해요?<br>B: 저는 아침에 눈을 ________ 시원한 생수를 꿀꺽꿀꺽 한 잔 마셔요.</strong></p>",
+        'explanation': "<p><strong>뜨자마자</strong>: <code>-자마자</code> ko'zni ochish bilan suv ichish harakati ketma-ket yuz berganini bildiradi.</p>",
+        'correct': "뜨자마자",
+        'choices': ["뜨자마자", "뜬 후에", "뜨는 동안", "뜨기 전에"]
     },
     {
-        'text': '<p><strong>A: 수업 시간에 계속 졸려요.<br>B: 그래도 수업 시간에 책상에 엎드려 ________.</strong></p>',
-        'hint': '<p>어떤 행동을 하면 규정에 어긋나거나 나쁜 결과가 생길 때 사용합니다.</p>',
-        'explanation': '<p><strong>자면 안 돼요</strong>: 금지를 나타내는 -(으)면 안 돼요 문법입니다.</p>',
-        'correct': '자면 안 돼요',
-        'choices': ['자면 안 돼요', '자도 돼요', '자려고 해요', '자면 좋겠어요'],
+        'text': "<p><strong>A: 밥 먹을 때 스마트폰을 계속 보면 건강에 매우 안 좋대요.<br>B: 맞아요. 저도 이제 밥을 ________ 스마트폰을 절대 보지 않으려고 해요.</strong></p>",
+        'explanation': "<p><strong>먹으면서</strong>: <code>-(으)면서</code> ovqatlanish va telefon ko'rish harakatlarining bir vaqtda sodir bo'lishiga ishora qiladi.</p>",
+        'correct': "먹으면서",
+        'choices': ["먹으면서", "먹기 전에", "먹고 나서", "먹은 지"]
     },
     {
-        'text': '<p><strong>A: 밖에는 눈이 엄청 많이 오고 있어요.<br>B: 길이 미끄러우니까 운전을 정말 조심해서 ________.</strong></p>',
-        'hint': '<p>반드시 그렇게 해야 함을 나타냅니다.</p>',
-        'explanation': '<p><strong>해야 해요</strong>: 의무를 나타내는 -아/어야 하다 문법입니다.</p>',
-        'correct': '해야 해요',
-        'choices': ['해야 해요', '하면 돼요', '하지 마세요', '할 필요가 있다'],
+        'text': "<p><strong>A: 제가 잠깐 우체국에 다녀올게요.<br>B: 알겠습니다. 민수 씨가 우체국에 ________ 저는 여기서 중요한 서류를 빨리 복사할게요.</strong></p>",
+        'explanation': "<p><strong>다녀오는 동안</strong>: <code>-는 동안</code> bir kishi pochitada bo'lgan vaqt davomida boshqa kishi hujjat nusxalayotganini bildiradi.</p>",
+        'correct': "다녀오는 동안",
+        'choices': ["다녀오는 동안", "다녀오면서", "다녀오기 전에", "다녀온 후에"]
     },
     {
-        'text': '<p><strong>A: 이 서류들을 누가 우체국에 가져갈까요?<br>B: 제가 마침 밖으로 나가는 길이니까 제가 ________.</strong></p>',
-        'hint': '<p>자신이 어떤 일을 하겠다고 상대방에게 약속할 때 사용합니다.</p>',
-        'explanation': '<p><strong>가져갈게요</strong>: 약속과 의지를 나타내는 -(으)ㄹ게요 문법입니다.</p>',
-        'correct': '가져갈게요',
-        'choices': ['가져갈게요', '가져가세요', '가져가면 안 돼요', '가져가려고 해요'],
+        'text': "<p><strong>A: 클래식 기타를 정말 멋지게 잘 치시네요! 얼마나 연습하셨어요?<br>B: 기타를 ________ 꽤 오래됐어요. 중학생 때부터 매일 꾸준히 쳤거든요.</strong></p>",
+        'explanation': "<p><strong>배운 지</strong>: <code>-(으)ㄴ 지</code> gitara o'rganishni boshlagan vaqtdan beri qancha o'tganini ko'rsatadi.</p>",
+        'correct': "배운 지",
+        'choices': ["배운 지", "배우기 전에", "배우면서", "배우자마자"]
     },
     {
-        'text': '<p><strong>A: 주말에 보통 뭐 해요?<br>B: 예쁜 풍경을 ________ 자주 산에 가요.</strong></p>',
-        'hint': '<p>이동하는 목적이나 이유를 나타냅니다.</p>',
-        'explanation': '<p><strong>보러</strong>: 어떤 행동을 하기 위해 이동함을 나타내는 -(으)러 가다/오다 문법입니다.</p>',
-        'correct': '보러',
-        'choices': ['보러', '보려고', '보아서', '보면'],
+        'text': "<p><strong>A: 손과 옷이 너무 더러워요. 밖에서 대체 뭐 했어요?<br>B: 흙바닥에서 열심히 축구를 ________ 옷을 빨리 깨끗하게 갈아입어야 해요.</strong></p>",
+        'explanation': "<p><strong>하고 나서</strong>: <code>-고 나서</code> futbol o'ynab bo'lgandan keyin kiyim almashtirish kerakligini bildiradi.</p>",
+        'correct': "하고 나서",
+        'choices': ["하고 나서", "하기 전에", "하면서", "할 때"]
     },
     {
-        'text': '<p><strong>A: 이 빨간 구두가 아주 예뻐요. 제가 한 번 ________?<br>B: 네, 사이즈가 맞는지 편하게 신어 보세요.</strong></p>',
-        'hint': '<p>행동에 대한 허락을 구할 때 사용합니다.</p>',
-        'explanation': '<p><strong>신어도 돼요?</strong>: 허락을 구하는 -아/어도 되다 문법입니다.</p>',
-        'correct': '신어도 돼요?',
-        'choices': ['신어도 돼요?', '신어야 해요?', '신을 필요가 있어요?', '신으러 가요?'],
+        'text': "<p><strong>A: 이번 주말에 볼 액션 영화 표를 언제 예매할까요?<br>B: 좋은 자리가 다 ________ 지금 당장 빨리 예매합시다.</strong></p>",
+        'explanation': "<p><strong>팔리기 전에</strong>: <code>-기 전에</code> chiptalar sotilib ketishidan oldin degan ma'noni beradi.</p>",
+        'correct': "팔리기 전에",
+        'choices': ["팔리기 전에", "팔린 후에", "팔릴 때", "팔리자마자"]
     }
 ]
 
@@ -239,10 +210,10 @@ class Command(BaseCommand):
         )
 
         practice, created = Practice.objects.get_or_create(
-            title='한국어 2. Buyruq, Istak, Imkoniyat va Majburiyatni Ifodalovchi Fe\'l Formlari',  # --- IGNORE ---
+            title='한국어 V-(으)ㄴ 후에, 기 전에',  # --- IGNORE ---
             master=master,
             defaults={
-                'description': 'Buyruq, Istak, Imkoniyat va Majburiyatni Ifodalovchi Fe\'l Formlari',
+                'description': '기 전에, ㄴ 후에, -(으)면서 등 다양한 한국어 문법 입자들을 활용하여 문장 완성하기 연습입니다.',
                 'subject': subject,
                 'level': 'medium',
                 'is_free': True,
