@@ -296,8 +296,8 @@
         <a href="{% url 'classroom:list' %}" class="mob-nav-item {% block mob_nav_classroom %}{% endblock %}">
             <i class="bi bi-easel-fill"></i><span>{% trans "Classrooms" %}</span>
         </a>
-        <a href="{% url 'discussion_home' %}" class="mob-nav-item {% block mob_nav_discussion %}{% endblock %}">
-            <i class="bi bi-chat-square-dots-fill"></i><span>{% trans "Chat" %}</span>
+        <a href="{% url 'practice_list' %}" class="mob-nav-item {% block mob_nav_practice %}{% endblock %}">
+            <i class="bi bi-book-half"></i><span>{% trans "Practice" %}</span>
         </a>
         {% if user.is_authenticated %}
         <a href="{% url 'profile' %}" class="mob-nav-item {% block mob_nav_profile %}{% endblock %}">

@@ -95,10 +95,12 @@ def classroom_detail(request, pk):
         lessons = classroom.lessons.all()
     else:
         lessons = classroom.lessons.filter(is_published=True)
+    members = classroom.get_all_pandas().select_related('profile__user')[:12]
     return render(request, 'classroom/classroom_detail.html', {
         'classroom': classroom,
         'lessons': lessons,
         'is_master_user': is_master_user,
+        'members': members,
     })
 
 

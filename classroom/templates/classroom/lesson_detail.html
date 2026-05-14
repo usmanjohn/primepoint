@@ -96,6 +96,7 @@
     border-radius: 10px; padding: .85rem 1rem;
     display: flex; align-items: center; gap: .65rem;
     text-decoration: none; transition: border-color .15s, box-shadow .15s;
+    min-width: 0; overflow: hidden;
   }
   .cr-item-card:hover { border-color: var(--accent); box-shadow: 0 4px 12px rgba(0,0,0,.06); }
   .cr-item-icon {
@@ -104,9 +105,11 @@
     display: flex; align-items: center; justify-content: center;
     font-size: .9rem; flex-shrink: 0;
   }
-  .cr-item-name { font-size: .83rem; font-weight: 600; color: var(--text); min-width: 0;
-    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .cr-item-sub { font-size: .72rem; color: var(--text-muted); }
+  .cr-item-text { min-width: 0; flex: 1; overflow: hidden; }
+  .cr-item-name { font-size: .83rem; font-weight: 600; color: var(--text);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    display: block; max-width: 100%; }
+  .cr-item-sub { font-size: .72rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
   .cr-empty-item { font-size: .83rem; color: var(--text-muted); padding: .75rem 0; }
 
   @media (max-width: 575.98px) {
@@ -240,9 +243,9 @@
       {% for practice in practices %}
       <a href="{% url 'practice_detail' practice.pk %}" class="cr-item-card">
         <div class="cr-item-icon"><i class="bi bi-book-half"></i></div>
-        <div>
-          <div class="cr-item-name">{{ practice.title }}</div>
-          <div class="cr-item-sub">{{ practice.get_level_display }}</div>
+        <div class="cr-item-text">
+          <span class="cr-item-name">{{ practice.title }}</span>
+          <span class="cr-item-sub">{{ practice.get_level_display }}</span>
         </div>
       </a>
       {% endfor %}
@@ -262,9 +265,9 @@
       {% for hw in homeworks %}
       <a href="{% url 'homework_detail' hw.pk %}" class="cr-item-card">
         <div class="cr-item-icon"><i class="bi bi-journal-bookmark-fill"></i></div>
-        <div>
-          <div class="cr-item-name">{{ hw.title }}</div>
-          <div class="cr-item-sub">{% if hw.due_date %}{% trans "Due" %} {{ hw.due_date|date:"M d" }}{% else %}{% trans "No due date" %}{% endif %}</div>
+        <div class="cr-item-text">
+          <span class="cr-item-name">{{ hw.title }}</span>
+          <span class="cr-item-sub">{% if hw.due_date %}{% trans "Due" %} {{ hw.due_date|date:"M d" }}{% else %}{% trans "No due date" %}{% endif %}</span>
         </div>
       </a>
       {% endfor %}
@@ -284,9 +287,9 @@
       {% for tut in tutorials %}
       <a href="{% url 'tutorial_detail' tut.pk %}" class="cr-item-card">
         <div class="cr-item-icon"><i class="bi bi-journal-text"></i></div>
-        <div>
-          <div class="cr-item-name">{{ tut.title }}</div>
-          <div class="cr-item-sub">{{ tut.read_time }} {% trans "min read" %}</div>
+        <div class="cr-item-text">
+          <span class="cr-item-name">{{ tut.title }}</span>
+          <span class="cr-item-sub">{{ tut.read_time }} {% trans "min read" %}</span>
         </div>
       </a>
       {% endfor %}

@@ -106,16 +106,20 @@
           <label for="{{ form.description.id_for_label }}">{% trans "Description" %}</label>
           {{ form.description }}
         </div>
-        <!-- Order + Published row -->
+        <!-- Order + Status + Published row -->
         <div class="d-flex gap-3 flex-wrap">
-          <div class="cr-field" style="flex:0 0 120px;">
+          <div class="cr-field" style="flex:0 0 100px;">
             <label for="{{ form.order.id_for_label }}">{% trans "Order" %}</label>
             {{ form.order }}
+          </div>
+          <div class="cr-field" style="flex:1; min-width:140px;">
+            <label for="{{ form.status.id_for_label }}">{% trans "Status" %}</label>
+            {{ form.status }}
           </div>
           <div class="cr-field" style="padding-top:1.5rem;">
             <div class="cr-check-row">
               {{ form.is_published }}
-              <label for="{{ form.is_published.id_for_label }}">{% trans "Published (visible to students)" %}</label>
+              <label for="{{ form.is_published.id_for_label }}">{% trans "Published" %}</label>
             </div>
           </div>
         </div>
