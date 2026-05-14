@@ -53,7 +53,7 @@ class ClassroomMembershipForm(forms.Form):
 class LessonForm(forms.ModelForm):
     class Meta:
         model = Lesson
-        fields = ['title', 'description', 'order', 'is_published', 'practices', 'homeworks', 'tutorials']
+        fields = ['title', 'description', 'order', 'status', 'is_published', 'practices', 'homeworks', 'tutorials']
         widgets = {
             'title': forms.TextInput(attrs={
                 'class': 'form-core', 'placeholder': 'e.g. Lesson 1 — Greetings',
@@ -62,6 +62,7 @@ class LessonForm(forms.ModelForm):
                 'class': 'form-core', 'rows': 3,
             }),
             'order': forms.NumberInput(attrs={'class': 'form-core', 'min': 0}),
+            'status': forms.Select(attrs={'class': 'form-core'}),
             'is_published': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
             'practices': forms.CheckboxSelectMultiple(),
             'homeworks': forms.CheckboxSelectMultiple(),

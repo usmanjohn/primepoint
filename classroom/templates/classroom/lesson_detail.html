@@ -135,6 +135,19 @@
         <p style="color:var(--text-muted);font-size:.88rem;margin:.25rem 0 0;">{{ lesson.description }}</p>
         {% endif %}
         <div class="cr-lesson-meta">
+          {% if lesson.status == 'not_started' %}
+            <span style="font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:20px;background:rgba(100,116,139,.1);color:#64748b;">
+              <i class="bi bi-circle me-1"></i>{% trans "Not Yet" %}
+            </span>
+          {% elif lesson.status == 'ongoing' %}
+            <span style="font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:20px;background:var(--accent-glow);color:var(--accent);">
+              <i class="bi bi-play-circle-fill me-1"></i>{% trans "Ongoing" %}
+            </span>
+          {% else %}
+            <span style="font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:20px;background:rgba(34,197,94,.1);color:#16a34a;">
+              <i class="bi bi-check-circle-fill me-1"></i>{% trans "Finished" %}
+            </span>
+          {% endif %}
           {% if is_master_user %}
             {% if lesson.is_published %}
               <span class="cr-status-pub"><i class="bi bi-broadcast me-1"></i>{% trans "Live" %}</span>

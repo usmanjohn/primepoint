@@ -196,6 +196,14 @@
   {% endif %}
 </div>
 
+{% if not request.user.is_authenticated %}
+<div class="alert alert-info rounded-3 mb-3" style="font-size:.85rem;">
+  <i class="bi bi-info-circle me-1"></i>
+  {% trans "Log in to see which classrooms you're enrolled in." %}
+  <a href="{% url 'login' %}" class="ms-1 fw-bold" style="color:var(--accent);">{% trans "Sign in" %}</a>
+</div>
+{% endif %}
+
 <div class="cr-grid">
   {% for cr in classrooms %}
   <div class="cr-card">
@@ -215,11 +223,22 @@
       </div>
     </div>
     <div class="cr-card-footer">
-      <span class="cr-status {% if cr.is_active %}cr-status-active{% else %}cr-status-inactive{% endif %}">
-        {% if cr.is_active %}{% trans "Active" %}{% else %}{% trans "Inactive" %}{% endif %}
-      </span>
+      {% if is_master %}
+        <span class="cr-status {% if cr.is_active %}cr-status-active{% else %}cr-status-inactive{% endif %}">
+          {% if cr.is_active %}{% trans "Active" %}{% else %}{% trans "Inactive" %}{% endif %}
+        </span>
+      {% elif cr.pk in enrolled_ids %}
+        <span class="cr-status cr-status-active">
+          <i class="bi bi-check-circle-fill me-1"></i>{% trans "Enrolled" %}
+        </span>
+      {% else %}
+        <span class="cr-status" style="background:rgba(100,116,139,.1);color:#64748b;">
+          <i class="bi bi-lock me-1"></i>{% trans "Private" %}
+        </span>
+      {% endif %}
       <a href="{% url 'classroom:detail' cr.pk %}" class="cr-enter-btn">
-        {% trans "Enter" %} <i class="bi bi-arrow-right"></i>
+        {% if cr.pk in enrolled_ids or is_master %}{% trans "Enter" %}{% else %}{% trans "View" %}{% endif %}
+        <i class="bi bi-arrow-right"></i>
       </a>
     </div>
   </div>
@@ -231,7 +250,7 @@
       {% if is_master %}
         {% trans "Create your first classroom and start teaching." %}
       {% else %}
-        {% trans "You haven't been added to any classroom yet." %}
+        {% trans "No classrooms have been created yet." %}
       {% endif %}
     </p>
     {% if is_master %}

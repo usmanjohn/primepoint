@@ -129,6 +129,20 @@ def master_delete(request, pk):
 
 
 @login_required
+def master_remove_student(request, pk, panda_pk):
+    master = get_object_or_404(Master, pk=pk)
+    if request.user != master.profile.user:
+        raise PermissionDenied
+    from panda.models import Panda
+    panda = get_object_or_404(Panda, pk=panda_pk)
+    if request.method == 'POST':
+        master.pandas.remove(panda)
+        master.update_stats()
+        messages.success(request, f'Removed {panda.profile.user.username} from your students.')
+    return redirect('masters-detail', master_id=master.pk)
+
+
+@login_required
 def certificate_generator(request):
     is_master = hasattr(request.user, 'profile') and hasattr(request.user.profile, 'master')
     if not request.user.is_staff and not (is_master and request.user.profile.master.is_approved):

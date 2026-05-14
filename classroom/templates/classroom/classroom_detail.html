@@ -133,20 +133,24 @@
   }
   .cr-lesson-badges { display: flex; gap: .4rem; align-items: center; }
   .cr-badge-draft {
-    font-size: .7rem;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 20px;
-    background: rgba(251,191,36,.12);
-    color: #b45309;
+    font-size: .7rem; font-weight: 600; padding: 2px 8px;
+    border-radius: 20px; background: rgba(251,191,36,.12); color: #b45309;
   }
   .cr-badge-pub {
-    font-size: .7rem;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 20px;
-    background: rgba(34,197,94,.1);
-    color: #16a34a;
+    font-size: .7rem; font-weight: 600; padding: 2px 8px;
+    border-radius: 20px; background: rgba(34,197,94,.1); color: #16a34a;
+  }
+  .cr-badge-status-not_started {
+    font-size: .68rem; font-weight: 600; padding: 2px 8px;
+    border-radius: 20px; background: rgba(100,116,139,.1); color: #64748b;
+  }
+  .cr-badge-status-ongoing {
+    font-size: .68rem; font-weight: 600; padding: 2px 8px;
+    border-radius: 20px; background: var(--accent-glow); color: var(--accent);
+  }
+  .cr-badge-status-finished {
+    font-size: .68rem; font-weight: 600; padding: 2px 8px;
+    border-radius: 20px; background: rgba(34,197,94,.1); color: #16a34a;
   }
   .cr-lesson-link {
     color: var(--accent);
@@ -239,6 +243,12 @@
       {% endif %}
     </div>
     <div class="cr-lesson-badges">
+      <span class="cr-badge-status-{{ lesson.status }}">
+        {% if lesson.status == 'not_started' %}<i class="bi bi-circle me-1"></i>{% trans "Not Yet" %}
+        {% elif lesson.status == 'ongoing' %}<i class="bi bi-play-circle-fill me-1"></i>{% trans "Ongoing" %}
+        {% else %}<i class="bi bi-check-circle-fill me-1"></i>{% trans "Finished" %}
+        {% endif %}
+      </span>
       {% if is_master_user %}
         {% if lesson.is_published %}
           <span class="cr-badge-pub">{% trans "Live" %}</span>

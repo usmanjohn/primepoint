@@ -13,6 +13,7 @@ from discussion.models import Thread
 from tutorial.models import Tutorial
 from panda.models import Panda
 from homework.models import Homework, HomeworkAssignment
+from classroom.models import Classroom
 
 
 def service_worker(request):
@@ -30,6 +31,7 @@ def index(request):
             'threads': Thread.objects.count(),
             'tutorials': Tutorial.objects.filter(is_published=True).count(),
             'homework': Homework.objects.count(),
+            'classrooms': Classroom.objects.filter(is_active=True).count(),
         }
         cache.set('index_stats', stats, 300)
 

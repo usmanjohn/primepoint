@@ -293,8 +293,8 @@
         <a href="{% url 'masters-home' %}" class="mob-nav-item {% block mob_nav_masters %}{% endblock %}">
             <i class="bi bi-person-workspace"></i><span>{% trans "Masters" %}</span>
         </a>
-        <a href="{% url 'practice_list' %}" class="mob-nav-item {% block mob_nav_practice %}{% endblock %}">
-            <i class="bi bi-book-half"></i><span>{% trans "Practice" %}</span>
+        <a href="{% url 'classroom:list' %}" class="mob-nav-item {% block mob_nav_classroom %}{% endblock %}">
+            <i class="bi bi-easel-fill"></i><span>{% trans "Classrooms" %}</span>
         </a>
         <a href="{% url 'discussion_home' %}" class="mob-nav-item {% block mob_nav_discussion %}{% endblock %}">
             <i class="bi bi-chat-square-dots-fill"></i><span>{% trans "Chat" %}</span>

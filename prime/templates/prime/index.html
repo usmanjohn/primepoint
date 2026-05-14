@@ -307,6 +307,22 @@
     </a>
   </div>
 
+  <div class="col-12 col-sm-6 col-lg-4">
+    <a href="{% url 'classroom:list' %}" class="feat-card">
+      <div class="feat-card-top">
+        <div class="feat-icon" style="background:rgba(56,189,248,0.13); color:#38bdf8;">
+          <i class="bi bi-easel-fill"></i>
+        </div>
+        <div class="feat-count">
+          <div class="feat-count-num">{{ stats.classrooms }}</div>
+          <div class="feat-count-lbl">{% trans "Rooms" %}</div>
+        </div>
+      </div>
+      <p class="feat-title">{% trans "Classrooms" %}</p>
+      <p class="feat-desc">{% trans "Private rooms where masters teach enrolled students." %}</p>
+    </a>
+  </div>
+
 </div>
 
 <!-- ── My Stats (authenticated users only) ──────────────────── -->

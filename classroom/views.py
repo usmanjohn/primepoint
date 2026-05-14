@@ -30,24 +30,31 @@ def _require_member(request, classroom):
 
 # ── Classroom CRUD ─────────────────────────────────────────────────────────────
 
-@login_required
 def classroom_list(request):
-    master = _get_master(request)
-    if master:
-        classrooms = master.classrooms.all()
-        is_master = True
-    else:
-        try:
-            panda = request.user.profile.panda
-            classrooms = Classroom.objects.filter(
-                Q(groups__members=panda) | Q(individual_pandas=panda)
-            ).distinct()
-        except Exception:
-            classrooms = Classroom.objects.none()
-        is_master = False
+    all_classrooms = Classroom.objects.filter(is_active=True).select_related('master').order_by('-created_at')
+    is_master = False
+    enrolled_ids = set()
+
+    if request.user.is_authenticated:
+        master = _get_master(request)
+        if master:
+            is_master = True
+            all_classrooms = Classroom.objects.filter(master=master).order_by('-created_at')
+        else:
+            try:
+                panda = request.user.profile.panda
+                enrolled_ids = set(
+                    Classroom.objects.filter(
+                        Q(groups__members=panda) | Q(individual_pandas=panda)
+                    ).values_list('id', flat=True)
+                )
+            except Exception:
+                pass
+
     return render(request, 'classroom/classroom_list.html', {
-        'classrooms': classrooms,
+        'classrooms': all_classrooms,
         'is_master': is_master,
+        'enrolled_ids': enrolled_ids,
     })
 
 
@@ -73,11 +80,17 @@ def classroom_create(request):
     })
 
 
-@login_required
 def classroom_detail(request, pk):
     classroom = get_object_or_404(Classroom, pk=pk)
-    _require_member(request, classroom)
-    is_master_user = (request.user == classroom.master.profile.user)
+    is_member = classroom.is_member(request.user)
+    is_master_user = (
+        request.user.is_authenticated and
+        request.user == classroom.master.profile.user
+    )
+    if not is_member:
+        return render(request, 'classroom/classroom_locked.html', {
+            'classroom': classroom,
+        })
     if is_master_user:
         lessons = classroom.lessons.all()
     else:

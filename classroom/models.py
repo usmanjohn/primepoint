@@ -48,10 +48,17 @@ class Classroom(models.Model):
 
 
 class Lesson(models.Model):
+    STATUS_CHOICES = [
+        ('not_started', 'Not Yet'),
+        ('ongoing', 'Ongoing'),
+        ('finished', 'Finished'),
+    ]
+
     classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE, related_name='lessons')
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     order = models.PositiveIntegerField(default=0)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='not_started')
     practices = models.ManyToManyField('practice.Practice', blank=True, related_name='lessons')
     homeworks = models.ManyToManyField('homework.Homework', blank=True, related_name='lessons')
     tutorials = models.ManyToManyField('tutorial.Tutorial', blank=True, related_name='lessons')

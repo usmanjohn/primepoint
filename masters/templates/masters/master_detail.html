@@ -470,11 +470,27 @@
   </div>
   <div class="mdt-students">
     {% for panda in students %}
-    <a href="{% url 'user_profile' panda.profile.user.username %}" class="mdt-student-card">
-      <img src="{{ panda.profile.image_url }}" alt="{{ panda.name }}" class="mdt-student-avatar">
-      <div class="mdt-student-name">{{ panda.profile.first_name|default:panda.profile.user.username }}</div>
-      <div class="mdt-student-rank">{{ panda.rank }}</div>
-    </a>
+    <div class="mdt-student-card" style="position:relative;">
+      <a href="{% url 'user_profile' panda.profile.user.username %}" style="display:contents; text-decoration:none; color:inherit;">
+        <img src="{{ panda.profile.image_url }}" alt="{{ panda.name }}" class="mdt-student-avatar">
+        <div class="mdt-student-name">{{ panda.profile.first_name|default:panda.profile.user.username }}</div>
+        <div class="mdt-student-rank">{{ panda.rank }}</div>
+      </a>
+      {% if is_owner %}
+      <form method="post" action="{% url 'master-remove-student' master.pk panda.pk %}"
+            style="position:absolute;top:6px;right:6px;"
+            onsubmit="return confirm('Remove {{ panda.profile.user.username }} from your students?')">
+        {% csrf_token %}
+        <button type="submit"
+          style="background:transparent;border:none;width:24px;height:24px;border-radius:5px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-muted);transition:color .12s,background .12s;"
+          onmouseover="this.style.color='#f87171';this.style.background='rgba(248,113,113,.1)';"
+          onmouseout="this.style.color='var(--text-muted)';this.style.background='transparent';"
+          title="{% trans "Remove student" %}">
+          <i class="bi bi-x" style="font-size:.9rem;"></i>
+        </button>
+      </form>
+      {% endif %}
+    </div>
     {% endfor %}
   </div>
 </div>
