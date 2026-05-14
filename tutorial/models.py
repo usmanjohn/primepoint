@@ -7,19 +7,17 @@ from django.utils.html import strip_tags
 
 CATEGORY_CHOICES = [
     ('math',        'Mathematics'),
-    ('science',     'Science'),
+    ('korean',     'Korean'),
     ('programming', 'Programming'),
-    ('language',    'Language'),
-    ('history',     'History'),
+    ('english',    'English'),
     ('other',       'Other'),
 ]
 
 CATEGORY_ICONS = {
     'math':        'bi-calculator',
-    'science':     'bi-flask',
+    'korean':      'bi-flag',
     'programming': 'bi-code-slash',
-    'language':    'bi-translate',
-    'history':     'bi-hourglass-split',
+    'english':     'bi-translate',
     'other':       'bi-lightbulb',
 }
 
