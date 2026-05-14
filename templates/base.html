@@ -115,6 +115,11 @@
                 <span class="nav-label">{% trans "Tutorials" %}</span>
             </a>
 
+            <a href="{% url 'classroom:list' %}" class="nav-link {% block nav_classroom %}{% endblock %}">
+                <i class="bi bi-easel-fill"></i>
+                <span class="nav-label">{% trans "Classrooms" %}</span>
+            </a>
+
             <span class="nav-section">{% trans "Support" %}</span>
 
             <a href="{% url 'about' %}" class="nav-link {% block nav_about %}{% endblock %}">

@@ -1,0 +1,293 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{{ lesson.title }} – {{ classroom.name }} – Powerty{% endblock %}
+{% block page_name %}{{ lesson.title }}{% endblock %}
+{% block nav_classroom %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+  .cr-lesson-wrap { max-width: 860px; margin: 0 auto; }
+  .cr-lesson-header {
+    padding: 1.75rem 0 1.5rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+  .cr-breadcrumb {
+    font-size: .78rem; color: var(--text-muted); margin-bottom: .5rem;
+    display: flex; align-items: center; gap: .35rem;
+  }
+  .cr-breadcrumb a { color: var(--accent); text-decoration: none; }
+  .cr-breadcrumb a:hover { color: #7dd3fc; }
+  .cr-lesson-title {
+    font-family: 'Syne', sans-serif; font-size: 1.6rem;
+    font-weight: 800; color: var(--text); margin: 0 0 .5rem;
+  }
+  .cr-lesson-meta {
+    display: flex; align-items: center; gap: 1rem;
+    flex-wrap: wrap; margin-top: .5rem;
+  }
+  .cr-lesson-meta-item {
+    font-size: .78rem; color: var(--text-muted);
+    display: flex; align-items: center; gap: .3rem;
+  }
+  .cr-lesson-meta-item i { color: var(--accent); }
+  .cr-lesson-actions { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1rem; }
+  .cr-status-pub { background: rgba(34,197,94,.1); color: #16a34a; padding: 3px 10px; border-radius: 20px; font-size: .72rem; font-weight: 600; }
+  .cr-status-draft { background: rgba(251,191,36,.12); color: #b45309; padding: 3px 10px; border-radius: 20px; font-size: .72rem; font-weight: 600; }
+
+  /* Content sections */
+  .cr-content-section { margin-bottom: 2rem; }
+  .cr-content-section-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1rem; padding-bottom: .75rem; border-bottom: 1px solid var(--border);
+  }
+  .cr-content-section-title {
+    font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700;
+    color: var(--text); display: flex; align-items: center; gap: .5rem;
+  }
+  .cr-content-section-title i { color: var(--accent); }
+
+  /* Note cards */
+  .cr-note-list { display: flex; flex-direction: column; gap: .6rem; }
+  .cr-note-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: .75rem 1rem;
+    display: flex; align-items: center; gap: .75rem;
+    transition: border-color .15s;
+  }
+  .cr-note-card:hover { border-color: var(--accent); }
+  .cr-note-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: rgba(248,113,113,.08); color: #f87171;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .cr-note-name { font-size: .88rem; font-weight: 600; color: var(--text); flex: 1; min-width: 0;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cr-note-date { font-size: .72rem; color: var(--text-muted); }
+  .cr-note-actions { display: flex; gap: .4rem; }
+  .cr-note-btn {
+    width: 30px; height: 30px; border-radius: 7px; border: 1px solid var(--border);
+    background: var(--surface-2); color: var(--text-muted);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .8rem; text-decoration: none; cursor: pointer;
+    transition: background .12s, color .12s, border-color .12s;
+  }
+  .cr-note-btn:hover { background: var(--accent-glow); color: var(--accent); border-color: var(--accent); }
+  .cr-note-btn-danger:hover { background: rgba(248,113,113,.1); color: var(--danger); border-color: var(--danger); }
+
+  /* Upload form */
+  .cr-upload-form {
+    margin-top: 1rem; background: var(--surface-2); border: 1px dashed var(--border);
+    border-radius: 10px; padding: 1rem;
+  }
+  .cr-upload-form-title { font-size: .78rem; font-weight: 700; color: var(--text-muted); margin-bottom: .6rem; letter-spacing: .04em; text-transform: uppercase; }
+  .cr-upload-row { display: flex; gap: .75rem; align-items: flex-end; flex-wrap: wrap; }
+  .cr-upload-row .cr-field { flex: 1; min-width: 160px; margin: 0; }
+  .cr-upload-row .cr-field label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--text-muted); display: block; margin-bottom: .3rem; }
+
+  /* Content item rows */
+  .cr-item-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: .75rem;
+  }
+  .cr-item-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: .85rem 1rem;
+    display: flex; align-items: center; gap: .65rem;
+    text-decoration: none; transition: border-color .15s, box-shadow .15s;
+  }
+  .cr-item-card:hover { border-color: var(--accent); box-shadow: 0 4px 12px rgba(0,0,0,.06); }
+  .cr-item-icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: var(--accent-glow); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .9rem; flex-shrink: 0;
+  }
+  .cr-item-name { font-size: .83rem; font-weight: 600; color: var(--text); min-width: 0;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .cr-item-sub { font-size: .72rem; color: var(--text-muted); }
+  .cr-empty-item { font-size: .83rem; color: var(--text-muted); padding: .75rem 0; }
+
+  @media (max-width: 575.98px) {
+    .cr-lesson-title { font-size: 1.3rem; }
+    .cr-item-grid { grid-template-columns: 1fr; }
+    .cr-upload-row { flex-direction: column; }
+    .cr-upload-row .btn-auth-primary { width: 100%; justify-content: center; }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="cr-lesson-wrap">
+  <div class="cr-lesson-header">
+    <div class="cr-breadcrumb">
+      <a href="{% url 'classroom:list' %}">{% trans "Classrooms" %}</a>
+      <i class="bi bi-chevron-right" style="font-size:.65rem;"></i>
+      <a href="{% url 'classroom:detail' classroom.pk %}">{{ classroom.name }}</a>
+      <i class="bi bi-chevron-right" style="font-size:.65rem;"></i>
+      <span>{{ lesson.title }}</span>
+    </div>
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;">
+      <div>
+        <h1 class="cr-lesson-title">{{ lesson.title }}</h1>
+        {% if lesson.description %}
+        <p style="color:var(--text-muted);font-size:.88rem;margin:.25rem 0 0;">{{ lesson.description }}</p>
+        {% endif %}
+        <div class="cr-lesson-meta">
+          {% if is_master_user %}
+            {% if lesson.is_published %}
+              <span class="cr-status-pub"><i class="bi bi-broadcast me-1"></i>{% trans "Live" %}</span>
+            {% else %}
+              <span class="cr-status-draft"><i class="bi bi-pencil me-1"></i>{% trans "Draft" %}</span>
+            {% endif %}
+          {% endif %}
+          <span class="cr-lesson-meta-item"><i class="bi bi-sort-numeric-up"></i>{% trans "Lesson" %} {{ lesson.order|add:1 }}</span>
+        </div>
+      </div>
+      {% if is_master_user %}
+      <div class="cr-lesson-actions">
+        <a href="{% url 'classroom:lesson_edit' classroom.pk lesson.pk %}" class="btn-auth-outline">
+          <i class="bi bi-pencil me-1"></i>{% trans "Edit" %}
+        </a>
+        <a href="{% url 'classroom:lesson_delete' classroom.pk lesson.pk %}" class="btn-auth-outline" style="color:var(--danger);border-color:var(--danger);">
+          <i class="bi bi-trash me-1"></i>{% trans "Delete" %}
+        </a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Notes Section -->
+  <div class="cr-content-section">
+    <div class="cr-content-section-header">
+      <div class="cr-content-section-title">
+        <i class="bi bi-file-earmark-pdf-fill"></i>{% trans "Notes" %}
+        <span style="font-size:.75rem;color:var(--text-muted);font-weight:400;">({{ notes.count }})</span>
+      </div>
+    </div>
+    <div class="cr-note-list">
+      {% for note in notes %}
+      <div class="cr-note-card">
+        <div class="cr-note-icon"><i class="bi bi-file-earmark-pdf-fill"></i></div>
+        <div class="cr-note-name">{{ note.title|default:note.file.name }}</div>
+        <div class="cr-note-date">{{ note.uploaded_at|date:"M d, Y" }}</div>
+        <div class="cr-note-actions">
+          <a href="{{ note.file.url }}" target="_blank" class="cr-note-btn" title="{% trans "Download" %}">
+            <i class="bi bi-download"></i>
+          </a>
+          {% if is_master_user %}
+          <form method="post" action="{% url 'classroom:note_delete' classroom.pk lesson.pk note.pk %}" style="display:contents;">
+            {% csrf_token %}
+            <button type="submit" class="cr-note-btn cr-note-btn-danger" title="{% trans "Delete note" %}"
+              onclick="return confirm('{% trans "Delete this note?" %}')">
+              <i class="bi bi-trash"></i>
+            </button>
+          </form>
+          {% endif %}
+        </div>
+      </div>
+      {% empty %}
+      <p class="cr-empty-item">{% trans "No notes uploaded yet." %}</p>
+      {% endfor %}
+    </div>
+
+    {% if is_master_user and note_form %}
+    <div class="cr-upload-form">
+      <div class="cr-upload-form-title"><i class="bi bi-upload me-1"></i>{% trans "Upload PDF Note" %}</div>
+      <form method="post" action="{% url 'classroom:note_upload' classroom.pk lesson.pk %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="cr-upload-row">
+          <div class="cr-field">
+            <label for="{{ note_form.title.id_for_label }}">{% trans "Title" %}</label>
+            {{ note_form.title }}
+          </div>
+          <div class="cr-field">
+            <label for="{{ note_form.file.id_for_label }}">{% trans "File (PDF)" %}</label>
+            {{ note_form.file }}
+          </div>
+          <button type="submit" class="btn-auth-primary" style="white-space:nowrap;">
+            <i class="bi bi-upload me-1"></i>{% trans "Upload" %}
+          </button>
+        </div>
+      </form>
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- Practices Section -->
+  {% if practices %}
+  <div class="cr-content-section">
+    <div class="cr-content-section-header">
+      <div class="cr-content-section-title">
+        <i class="bi bi-book-half"></i>{% trans "Practices" %}
+      </div>
+    </div>
+    <div class="cr-item-grid">
+      {% for practice in practices %}
+      <a href="{% url 'practice_detail' practice.pk %}" class="cr-item-card">
+        <div class="cr-item-icon"><i class="bi bi-book-half"></i></div>
+        <div>
+          <div class="cr-item-name">{{ practice.title }}</div>
+          <div class="cr-item-sub">{{ practice.get_level_display }}</div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Homeworks Section -->
+  {% if homeworks %}
+  <div class="cr-content-section">
+    <div class="cr-content-section-header">
+      <div class="cr-content-section-title">
+        <i class="bi bi-journal-bookmark-fill"></i>{% trans "Homeworks" %}
+      </div>
+    </div>
+    <div class="cr-item-grid">
+      {% for hw in homeworks %}
+      <a href="{% url 'homework_detail' hw.pk %}" class="cr-item-card">
+        <div class="cr-item-icon"><i class="bi bi-journal-bookmark-fill"></i></div>
+        <div>
+          <div class="cr-item-name">{{ hw.title }}</div>
+          <div class="cr-item-sub">{% if hw.due_date %}{% trans "Due" %} {{ hw.due_date|date:"M d" }}{% else %}{% trans "No due date" %}{% endif %}</div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Tutorials Section -->
+  {% if tutorials %}
+  <div class="cr-content-section">
+    <div class="cr-content-section-header">
+      <div class="cr-content-section-title">
+        <i class="bi bi-journal-text"></i>{% trans "Tutorials" %}
+      </div>
+    </div>
+    <div class="cr-item-grid">
+      {% for tut in tutorials %}
+      <a href="{% url 'tutorial_detail' tut.pk %}" class="cr-item-card">
+        <div class="cr-item-icon"><i class="bi bi-journal-text"></i></div>
+        <div>
+          <div class="cr-item-name">{{ tut.title }}</div>
+          <div class="cr-item-sub">{{ tut.read_time }} {% trans "min read" %}</div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if not practices and not homeworks and not tutorials and not notes %}
+  {% if not is_master_user %}
+  <div style="text-align:center;padding:3rem;color:var(--text-muted);">
+    <i class="bi bi-hourglass" style="font-size:2.5rem;opacity:.3;display:block;margin-bottom:.75rem;"></i>
+    <p>{% trans "Content coming soon." %}</p>
+  </div>
+  {% endif %}
+  {% endif %}
+</div>
+{% endblock %}

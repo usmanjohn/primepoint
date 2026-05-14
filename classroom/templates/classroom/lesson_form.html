@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{{ form_title }} – Powerty{% endblock %}
+{% block page_name %}{{ form_title }}{% endblock %}
+{% block nav_classroom %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+  .cr-form-wrap { max-width: 720px; margin: 0 auto; }
+  .cr-form-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .cr-form-header {
+    padding: 1.25rem 1.75rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+  }
+  .cr-form-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: var(--accent-glow);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent); font-size: 1.1rem; flex-shrink: 0;
+  }
+  .cr-form-header h2 {
+    font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700;
+    color: var(--text); margin: 0;
+  }
+  .cr-field { margin-bottom: 1.25rem; }
+  .cr-field > label {
+    display: block; font-size: .72rem; font-weight: 700;
+    letter-spacing: .06em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: .4rem;
+  }
+  .cr-field .errorlist {
+    list-style: none; padding: 0; margin: .3rem 0 0;
+    font-size: .78rem; color: var(--danger);
+  }
+  /* Checkbox list section */
+  .cr-linked-section {
+    border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+  }
+  .cr-linked-header {
+    padding: .65rem 1rem; background: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+    font-size: .72rem; font-weight: 700; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--text-muted);
+    display: flex; align-items: center; gap: .4rem;
+  }
+  .cr-linked-body { padding: .75rem 1rem; }
+  .cr-linked-body ul {
+    list-style: none; padding: 0; margin: 0;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: .4rem;
+  }
+  .cr-linked-body ul li label {
+    display: flex; align-items: center; gap: .5rem;
+    padding: .4rem .6rem; border-radius: 8px;
+    font-size: .83rem; color: var(--text); cursor: pointer;
+    border: 1px solid transparent; transition: background .12s, border-color .12s;
+  }
+  .cr-linked-body ul li label:hover { background: var(--accent-glow); border-color: var(--accent); }
+  .cr-linked-body ul li input[type="checkbox"] { accent-color: var(--accent); }
+  .cr-linked-empty { font-size: .82rem; color: var(--text-muted); }
+  .cr-check-row { display: flex; align-items: center; gap: .6rem; }
+  .cr-check-row label { font-size: .88rem; color: var(--text); margin: 0; cursor: pointer; }
+  .cr-form-actions {
+    padding: 1.25rem 1.75rem; border-top: 1px solid var(--border);
+    display: flex; gap: .75rem; align-items: center;
+  }
+  @media (max-width: 575.98px) {
+    .cr-linked-body ul { grid-template-columns: 1fr; }
+    .cr-form-actions { flex-direction: column; }
+    .cr-form-actions .btn-auth-primary,
+    .cr-form-actions .btn-auth-outline { width: 100%; justify-content: center; }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="cr-form-wrap">
+  <a href="{% url 'classroom:detail' classroom.pk %}" class="btn-auth-outline mb-3 d-inline-flex align-items-center gap-1">
+    <i class="bi bi-arrow-left"></i> {{ classroom.name }}
+  </a>
+
+  <div class="cr-form-card">
+    <div class="cr-form-header">
+      <div class="cr-form-icon"><i class="bi bi-journal-plus"></i></div>
+      <h2>{{ form_title }}</h2>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <div style="padding:1.5rem 1.75rem;">
+        <!-- Title -->
+        <div class="cr-field">
+          <label for="{{ form.title.id_for_label }}">{% trans "Title" %}</label>
+          {{ form.title }}
+          {% if form.title.errors %}<ul class="errorlist">{% for e in form.title.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+        </div>
+        <!-- Description -->
+        <div class="cr-field">
+          <label for="{{ form.description.id_for_label }}">{% trans "Description" %}</label>
+          {{ form.description }}
+        </div>
+        <!-- Order + Published row -->
+        <div class="d-flex gap-3 flex-wrap">
+          <div class="cr-field" style="flex:0 0 120px;">
+            <label for="{{ form.order.id_for_label }}">{% trans "Order" %}</label>
+            {{ form.order }}
+          </div>
+          <div class="cr-field" style="padding-top:1.5rem;">
+            <div class="cr-check-row">
+              {{ form.is_published }}
+              <label for="{{ form.is_published.id_for_label }}">{% trans "Published (visible to students)" %}</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Practices -->
+        <div class="cr-field">
+          <div class="cr-linked-section">
+            <div class="cr-linked-header"><i class="bi bi-book-half"></i>{% trans "Link Practices" %}</div>
+            <div class="cr-linked-body">
+              {% if form.practices.field.queryset.count %}
+              {{ form.practices }}
+              {% else %}
+              <p class="cr-linked-empty">{% trans "No published practices available." %}</p>
+              {% endif %}
+              {% if form.practices.errors %}<ul class="errorlist">{% for e in form.practices.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+            </div>
+          </div>
+        </div>
+
+        <!-- Homeworks -->
+        <div class="cr-field">
+          <div class="cr-linked-section">
+            <div class="cr-linked-header"><i class="bi bi-journal-bookmark-fill"></i>{% trans "Link Homeworks" %}</div>
+            <div class="cr-linked-body">
+              {% if form.homeworks.field.queryset.count %}
+              {{ form.homeworks }}
+              {% else %}
+              <p class="cr-linked-empty">{% trans "No homeworks created yet." %}</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <!-- Tutorials -->
+        <div class="cr-field">
+          <div class="cr-linked-section">
+            <div class="cr-linked-header"><i class="bi bi-journal-text"></i>{% trans "Link Tutorials" %}</div>
+            <div class="cr-linked-body">
+              {% if form.tutorials.field.queryset.count %}
+              {{ form.tutorials }}
+              {% else %}
+              <p class="cr-linked-empty">{% trans "No published tutorials available." %}</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cr-form-actions">
+        <button type="submit" class="btn-auth-primary">
+          <i class="bi bi-check-lg me-1"></i>{% trans "Save Lesson" %}
+        </button>
+        {% if lesson %}
+        <a href="{% url 'classroom:lesson_detail' classroom.pk lesson.pk %}" class="btn-auth-outline">{% trans "Cancel" %}</a>
+        {% else %}
+        <a href="{% url 'classroom:detail' classroom.pk %}" class="btn-auth-outline">{% trans "Cancel" %}</a>
+        {% endif %}
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

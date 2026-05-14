@@ -1,0 +1,275 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{{ classroom.name }} – Powerty{% endblock %}
+{% block page_name %}{{ classroom.name }}{% endblock %}
+{% block nav_classroom %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+  .cr-header {
+    padding: 2rem 0 1.75rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+  .cr-header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .cr-eyebrow {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .35rem;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+  }
+  .cr-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text);
+    margin: 0 0 .4rem;
+    line-height: 1.2;
+  }
+  .cr-title-accent {
+    display: inline-block;
+    width: 5px;
+    height: 1.8rem;
+    border-radius: 3px;
+    background: {{ classroom.cover_color }};
+    vertical-align: middle;
+    margin-right: .6rem;
+  }
+  .cr-desc {
+    color: var(--text-muted);
+    font-size: .88rem;
+    max-width: 600px;
+  }
+  .cr-header-actions {
+    display: flex;
+    gap: .6rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .cr-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: .75rem;
+    flex-wrap: wrap;
+  }
+  .cr-meta-item {
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+    font-size: .78rem;
+    color: var(--text-muted);
+  }
+  .cr-meta-item i { color: var(--accent); }
+
+  /* Lessons list */
+  .cr-lessons-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .cr-lessons-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .cr-lesson-list { display: flex; flex-direction: column; gap: .75rem; }
+  .cr-lesson-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .cr-lesson-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px rgba(0,0,0,.06);
+  }
+  .cr-lesson-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+  .cr-lesson-info { flex: 1; min-width: 0; }
+  .cr-lesson-name {
+    font-weight: 600;
+    font-size: .93rem;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .cr-lesson-desc {
+    font-size: .78rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .cr-lesson-badges { display: flex; gap: .4rem; align-items: center; }
+  .cr-badge-draft {
+    font-size: .7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: rgba(251,191,36,.12);
+    color: #b45309;
+  }
+  .cr-badge-pub {
+    font-size: .7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: rgba(34,197,94,.1);
+    color: #16a34a;
+  }
+  .cr-lesson-link {
+    color: var(--accent);
+    font-size: .8rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+  }
+  .cr-lesson-link:hover { color: #7dd3fc; }
+  .cr-empty {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text-muted);
+  }
+  .cr-empty-icon { font-size: 2.5rem; opacity: .3; margin-bottom: .75rem; }
+  @media (max-width: 575.98px) {
+    .cr-title { font-size: 1.4rem; }
+    .cr-lesson-desc { display: none; }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="cr-header">
+  <div class="cr-header-top">
+    <div>
+      <div class="cr-eyebrow">
+        <i class="bi bi-lock-fill" style="font-size:.65rem;"></i>
+        {% trans "Private Classroom" %}
+      </div>
+      <h1 class="cr-title">
+        <span class="cr-title-accent"></span>{{ classroom.name }}
+      </h1>
+      {% if classroom.description %}
+      <p class="cr-desc">{{ classroom.description }}</p>
+      {% endif %}
+      <div class="cr-meta-row">
+        <span class="cr-meta-item">
+          <i class="bi bi-person-workspace"></i>{{ classroom.master.name }}
+        </span>
+        <span class="cr-meta-item">
+          <i class="bi bi-collection"></i>{{ classroom.lesson_count }} {% trans "lessons" %}
+        </span>
+        <span class="cr-meta-item">
+          <i class="bi bi-people"></i>{{ classroom.member_count }} {% trans "members" %}
+        </span>
+      </div>
+    </div>
+    <div class="cr-header-actions">
+      <a href="{% url 'classroom:discussion_list' classroom.pk %}" class="btn-auth-outline">
+        <i class="bi bi-chat-square-dots me-1"></i>{% trans "Discussion" %}
+      </a>
+      {% if is_master_user %}
+      <a href="{% url 'classroom:manage' classroom.pk %}" class="btn-auth-outline">
+        <i class="bi bi-people me-1"></i>{% trans "Members" %}
+      </a>
+      <a href="{% url 'classroom:edit' classroom.pk %}" class="btn-auth-outline">
+        <i class="bi bi-pencil me-1"></i>{% trans "Edit" %}
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="cr-lessons-header">
+  <div class="cr-lessons-title">
+    <i class="bi bi-collection me-2" style="color:var(--accent);"></i>{% trans "Lessons" %}
+  </div>
+  {% if is_master_user %}
+  <a href="{% url 'classroom:lesson_create' classroom.pk %}" class="btn-auth-primary">
+    <i class="bi bi-plus-lg me-1"></i>{% trans "Add Lesson" %}
+  </a>
+  {% endif %}
+</div>
+
+<div class="cr-lesson-list">
+  {% for lesson in lessons %}
+  <div class="cr-lesson-card">
+    <div class="cr-lesson-num">{{ forloop.counter }}</div>
+    <div class="cr-lesson-info">
+      <div class="cr-lesson-name">{{ lesson.title }}</div>
+      {% if lesson.description %}
+      <div class="cr-lesson-desc">{{ lesson.description }}</div>
+      {% endif %}
+    </div>
+    <div class="cr-lesson-badges">
+      {% if is_master_user %}
+        {% if lesson.is_published %}
+          <span class="cr-badge-pub">{% trans "Live" %}</span>
+        {% else %}
+          <span class="cr-badge-draft">{% trans "Draft" %}</span>
+        {% endif %}
+      {% endif %}
+    </div>
+    <a href="{% url 'classroom:lesson_detail' classroom.pk lesson.pk %}" class="cr-lesson-link">
+      {% trans "Open" %} <i class="bi bi-arrow-right"></i>
+    </a>
+  </div>
+  {% empty %}
+  <div class="cr-empty">
+    <div class="cr-empty-icon"><i class="bi bi-journal"></i></div>
+    <p class="mb-0">
+      {% if is_master_user %}
+        {% trans "No lessons yet. Add your first lesson above." %}
+      {% else %}
+        {% trans "No lessons published yet." %}
+      {% endif %}
+    </p>
+  </div>
+  {% endfor %}
+</div>
+
+{% if is_master_user %}
+<div class="mt-4 pt-3 border-top d-flex gap-2">
+  <a href="{% url 'classroom:delete' classroom.pk %}" class="btn-auth-outline" style="color:var(--danger); border-color:var(--danger);">
+    <i class="bi bi-trash me-1"></i>{% trans "Delete Classroom" %}
+  </a>
+</div>
+{% endif %}
+{% endblock %}
