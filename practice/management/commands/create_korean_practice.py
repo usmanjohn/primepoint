@@ -235,7 +235,6 @@ class Command(BaseCommand):
             question = PracticeQuestion.objects.create(
                 practice=practice,
                 question_text=q['text'],
-                hint=q['hint'],
                 explanation=q['explanation'],
                 order=i,
                 points=1,
