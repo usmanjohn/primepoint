@@ -90,6 +90,10 @@ def about(request):
     return render(request, 'prime/about.html')
 
 
+def help_page(request):
+    return render(request, 'prime/help.html')
+
+
 def search(request):
     query = request.GET.get('q', '').strip()
     masters = Practice.objects.none()

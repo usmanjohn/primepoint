@@ -1562,3 +1562,595 @@ msgstr "Bepul qo'shiling"
 #: prime/templates/prime/about.html
 msgid "Sign In"
 msgstr "Kirish"
+
+#: prime/templates/prime/help.html
+msgid "Help Center"
+msgstr "Yordam markazi"
+
+#: prime/templates/prime/help.html
+msgid "Everything you need to know about using Prime Point — whether you are a student looking to grow, a master building your classroom, or an educational center onboarding your team."
+msgstr "Prime Pointdan foydalanish haqida bilishingiz kerak bo'lgan hamma narsa — o'sishni istagan o'quvchi, darsxonasini qurayotgan ustod yoki jamoasini o'rgatayotgan ta'lim markazi uchun."
+
+#: prime/templates/prime/help.html
+msgid "Browse Masters"
+msgstr "Ustodlarni ko'rish"
+
+#: prime/templates/prime/help.html
+msgid "Quick Start"
+msgstr "Tezkor boshlash"
+
+#: prime/templates/prime/help.html
+msgid "Up and running in four steps"
+msgstr "To'rt qadamda ishga kiring"
+
+#: prime/templates/prime/help.html
+msgid "Create an Account"
+msgstr "Hisob yaratish"
+
+#: prime/templates/prime/help.html
+msgid "Register for free. No payment required — just a username and password."
+msgstr "Bepul ro'yxatdan o'ting. To'lov talab qilinmaydi — faqat foydalanuvchi nomi va parol."
+
+#: prime/templates/prime/help.html
+msgid "Go to your Profile and use the Masters selector to choose the educators you want to follow."
+msgstr "Profilingizga o'ting va kuzatmoqchi bo'lgan o'qituvchilarni tanlash uchun Ustodlar tanlagichidan foydalaning."
+
+#: prime/templates/prime/help.html
+msgid "Take a Practice"
+msgstr "Mashqni topshirish"
+
+#: prime/templates/prime/help.html
+msgid "Choose a timed or open-ended practice set and submit your answers to earn points."
+msgstr "Vaqtli yoki ochiq mashqlar to'plamini tanlang va ball olish uchun javoblaringizni yuboring."
+
+#: prime/templates/prime/help.html
+msgid "Rise in Rank"
+msgstr "Darajada ko'tarilish"
+
+#: prime/templates/prime/help.html
+msgid "Accumulate points and climb from Novice all the way to Grandmaster."
+msgstr "Ball to'plang va Yangilikdan Grandmastergacha ko'tariling."
+
+#: prime/templates/prime/help.html
+msgid "For Educators"
+msgstr "O'qituvchilar uchun"
+
+#: prime/templates/prime/help.html
+msgid "Becoming a Master"
+msgstr "Ustod bo'lish"
+
+#: prime/templates/prime/help.html
+msgid "Masters are approved educators who create content, manage students, and run classrooms. Becoming a Master is a straightforward three-step process."
+msgstr "Ustodlar — kontent yaratadiagan, o'quvchilarni boshqaradigan va darsxonalarni yuritadigan tasdiqlangan o'qituvchilar. Ustod bo'lish uch bosqichli oddiy jarayon."
+
+#: prime/templates/prime/help.html
+msgid "Submit Your Application"
+msgstr "Arizangizni yuboring"
+
+#: prime/templates/prime/help.html
+msgid "Visit the Masters page and click 'Become a Master'. Fill in your name, subject, and a short description."
+msgstr "Ustodlar sahifasiga o'ting va 'Ustod bo'lish' tugmasini bosing. Ismingiz, faning va qisqa tavsifni to'ldiring."
+
+#: prime/templates/prime/help.html
+msgid "Await Admin Approval"
+msgstr "Admin tasdiqlashini kuting"
+
+#: prime/templates/prime/help.html
+msgid "An admin reviews your profile. Your dashboard will show a pending badge while the review is in progress."
+msgstr "Admin profilingizni ko'rib chiqadi. Ko'rib chiqish davomida boshqaruv panelingizda kutish belgisi ko'rsatiladi."
+
+#: prime/templates/prime/help.html
+msgid "Unlock Full Master Tools"
+msgstr "Barcha Ustod vositalarini oching"
+
+#: prime/templates/prime/help.html
+msgid "Once approved, you can create practices, assign homework, publish tutorials, and run private classrooms."
+msgstr "Tasdiqlanganingizdan so'ng mashqlar yaratish, uy vazifalari tayinlash, darsliklar chop etish va xususiy darsxonalar yuritish mumkin."
+
+#: prime/templates/prime/help.html
+msgid "Apply Now"
+msgstr "Hozir ariza bering"
+
+#: prime/templates/prime/help.html
+msgid "Application Flow"
+msgstr "Ariza jarayoni"
+
+#: prime/templates/prime/help.html
+msgid "Fill in the Master application form"
+msgstr "Ustod ariza shaklini to'ldiring"
+
+#: prime/templates/prime/help.html
+msgid "Pending admin review"
+msgstr "Admin ko'rib chiqmoqda"
+
+#: prime/templates/prime/help.html
+msgid "Approved — all tools unlocked"
+msgstr "Tasdiqlandi — barcha vositalar ochildi"
+
+#: prime/templates/prime/help.html
+msgid "Approved"
+msgstr "Tasdiqlangan"
+
+#: prime/templates/prime/help.html
+msgid "Master Capabilities"
+msgstr "Ustod imkoniyatlari"
+
+#: prime/templates/prime/help.html
+msgid "What Masters Can Do"
+msgstr "Ustodlar nima qila oladi"
+
+#: prime/templates/prime/help.html
+msgid "Approved Masters have a full suite of teaching and management tools at their disposal."
+msgstr "Tasdiqlangan Ustodlarda o'qitish va boshqarish uchun to'liq vositalar to'plami mavjud."
+
+#: prime/templates/prime/help.html
+msgid "Create Practices"
+msgstr "Mashqlar yaratish"
+
+#: prime/templates/prime/help.html
+msgid "Build multiple-choice question sets with difficulty levels (easy / medium / hard), time limits, pass scores, and max attempt caps."
+msgstr "Qiyinlik darajasi (oson / o'rta / qiyin), vaqt chegarasi, o'tish bali va maksimal urinishlar bilan test savollari to'plamlari tuzing."
+
+#: prime/templates/prime/help.html
+msgid "Manage Students"
+msgstr "O'quvchilarni boshqarish"
+
+#: prime/templates/prime/help.html
+msgid "View everyone who follows you. Remove students from your roster and organise them into named groups for bulk operations."
+msgstr "Sizi kuzatayotgan barcha kishilarni ko'ring. O'quvchilarni ro'yxatdan o'chiring va ommaviy amallar uchun ularni nomlangan guruhlarga joylashtiring."
+
+#: prime/templates/prime/help.html
+msgid "Create Groups"
+msgstr "Guruhlar yaratish"
+
+#: prime/templates/prime/help.html
+msgid "Group students by class, level, or any criteria. Assign homework to a whole group with a single action instead of individually."
+msgstr "O'quvchilarni sinf, daraja yoki boshqa mezonlar bo'yicha guruhlang. Har biri alohida o'rniga bitta amal bilan butun guruhga uy vazifasi tayinlang."
+
+#: prime/templates/prime/help.html
+msgid "Assign Homework"
+msgstr "Uy vazifasi tayinlash"
+
+#: prime/templates/prime/help.html
+msgid "Link any practice to individual students or groups, add notes, and set an optional deadline. Track status — Pending, Submitted, or Graded."
+msgstr "Har qanday mashqni alohida o'quvchilarga yoki guruhlarga bog'lang, izoh qo'shing va ixtiyoriy muddat belgilang. Holat — Kutilmoqda, Topshirilgan yoki Baholangan."
+
+#: prime/templates/prime/help.html
+msgid "Write Tutorials"
+msgstr "Darsliklar yozish"
+
+#: prime/templates/prime/help.html
+msgid "Publish rich-text articles with a category, thumbnail, and linked practices. Students can like or dislike your tutorials."
+msgstr "Kategoriya, eskiz va bog'langan mashqlar bilan boy matnli maqolalar chop eting. O'quvchilar darsliklaringizni yoqtirishi yoki yoqtirmasligi mumkin."
+
+#: prime/templates/prime/help.html
+msgid "Run Classrooms"
+msgstr "Darsxonalarni yuritish"
+
+#: prime/templates/prime/help.html
+msgid "Create private classrooms with structured lessons. Attach practices, homework, and tutorials to each lesson. Host a classroom-level discussion."
+msgstr "Tuzilgan darslar bilan xususiy darsxonalar yarating. Har bir darsga mashqlar, uy vazifalari va darsliklarni biriktiring. Darsxona darajasida muhokama o'tkazing."
+
+#: prime/templates/prime/help.html
+msgid "Generate Certificates"
+msgstr "Sertifikatlar yaratish"
+
+#: prime/templates/prime/help.html
+msgid "Issue printable certificates to your students directly from your Master profile page — no third-party tool needed."
+msgstr "O'quvchilaringizga Ustod profili sahifangizdan to'g'ridan-to'g'ri chop etiladigan sertifikatlar bering — uchinchi tomon vositasi shart emas."
+
+#: prime/templates/prime/help.html
+msgid "For Students"
+msgstr "O'quvchilar uchun"
+
+#: prime/templates/prime/help.html
+msgid "Student Guide"
+msgstr "O'quvchi qo'llanmasi"
+
+#: prime/templates/prime/help.html
+msgid "How to Choose and Follow a Master"
+msgstr "Ustod qanday tanlanadi va obuna qilinadi"
+
+#: prime/templates/prime/help.html
+msgid "Browse the Masters list to see all approved educators. Click any master to view their profile, subject, average student score, and the practices they have published."
+msgstr "Barcha tasdiqlangan o'qituvchilarni ko'rish uchun Ustodlar ro'yxatiga o'ting. Profilini, fanini, o'quvchilarning o'rtacha balini va chop etilgan mashqlarini ko'rish uchun istalgan ustodga bosing."
+
+#: prime/templates/prime/help.html
+msgid "Go to your Profile page after logging in."
+msgstr "Kirganingizdan so'ng Profil sahifangizga o'ting."
+
+#: prime/templates/prime/help.html
+msgid "Scroll to the Masters section and use the selector to add the masters you want to follow."
+msgstr "Ustodlar bo'limiga o'ting va kuzatmoqchi bo'lgan ustodlarni qo'shish uchun tanlagichdan foydalaning."
+
+#: prime/templates/prime/help.html
+msgid "Save your profile. The master's practices and homework will now be accessible to you."
+msgstr "Profilingizni saqlang. Ustodning mashqlari va uy vazifalari endi sizga ochiq bo'ladi."
+
+#: prime/templates/prime/help.html
+msgid "You can follow multiple masters at the same time."
+msgstr "Bir vaqtning o'zida bir nechta ustodga obuna bo'lish mumkin."
+
+#: prime/templates/prime/help.html
+msgid "Remove a master from your selector at any time to unfollow."
+msgstr "Obunani bekor qilish uchun istalgan vaqt tanlagichdan ustodni o'chiring."
+
+#: prime/templates/prime/help.html
+msgid "How it looks"
+msgstr "Qanday ko'rinadi"
+
+#: prime/templates/prime/help.html
+msgid "Browse Masters page"
+msgstr "Ustodlar sahifasini ko'rish"
+
+#: prime/templates/prime/help.html
+msgid "View master profile & practices"
+msgstr "Ustod profili va mashqlarini ko'rish"
+
+#: prime/templates/prime/help.html
+msgid "Open your Profile → Masters selector"
+msgstr "Profil → Ustodlar tanlagichini oching"
+
+#: prime/templates/prime/help.html
+msgid "Save — now enrolled as a student"
+msgstr "Saqlash — endi o'quvchi sifatida ro'yxatdan o'tdingiz"
+
+#: prime/templates/prime/help.html
+msgid "Done"
+msgstr "Bajarildi"
+
+#: prime/templates/prime/help.html
+msgid "Feature Guide"
+msgstr "Xususiyatlar bo'yicha qo'llanma"
+
+#: prime/templates/prime/help.html
+msgid "Platform Features"
+msgstr "Platforma xususiyatlari"
+
+#: prime/templates/prime/help.html
+msgid "Practice System"
+msgstr "Mashqlar tizimi"
+
+#: prime/templates/prime/help.html
+msgid "Practices are the core of Prime Point. Each practice is a set of multiple-choice questions created by a master. Masters configure exactly how students experience each practice."
+msgstr "Mashqlar Prime Pointning asosi. Har bir mashq ustod tomonidan yaratilgan ko'p tanlovli savollar to'plami. Ustodlar o'quvchilar har bir mashqni qanday boshdan kechirishini aniq sozlaydi."
+
+#: prime/templates/prime/help.html
+msgid "Three difficulty levels: Easy, Medium, Hard."
+msgstr "Uchta qiyinlik darajasi: Oson, O'rta, Qiyin."
+
+#: prime/templates/prime/help.html
+msgid "Optional time limit — the timer counts down and auto-submits when it expires."
+msgstr "Ixtiyoriy vaqt chegarasi — taymer orqaga hisoblaydi va muddati tugaganda avtomatik topshiradi."
+
+#: prime/templates/prime/help.html
+msgid "Pass score threshold — you must reach this percentage to pass."
+msgstr "O'tish bali chegarasi — o'tish uchun ushbu foizga yetishingiz kerak."
+
+#: prime/templates/prime/help.html
+msgid "Max attempts cap — masters can limit how many times a student can retry."
+msgstr "Maksimal urinishlar chegarasi — ustodlar o'quvchi necha marta qayta urinishini cheklashi mumkin."
+
+#: prime/templates/prime/help.html
+msgid "Show-answers-after option — correct answers are revealed once the attempt is completed."
+msgstr "To'g'ri javoblarni ko'rsatish opsiyasi — urinish tugagandan so'ng to'g'ri javoblar ochiladi."
+
+#: prime/templates/prime/help.html
+msgid "Free and available-for-all flags — masters can open a practice to the entire platform."
+msgstr "Bepul va hammaga ochiq bayroqlar — ustodlar mashqni butun platforma uchun ochaoladi."
+
+#: prime/templates/prime/help.html
+msgid "Practice Metadata"
+msgstr "Mashq ma'lumotlari"
+
+#: prime/templates/prime/help.html
+msgid "Level"
+msgstr "Daraja"
+
+#: prime/templates/prime/help.html
+msgid "Max Attempts"
+msgstr "Maks. urinishlar"
+
+#: prime/templates/prime/help.html
+msgid "Masters link a practice to a homework assignment and push it directly to students or groups. Students complete the linked practice to submit the homework."
+msgstr "Ustodlar mashqni uy vazifasiga bog'laydi va to'g'ridan-to'g'ri o'quvchilarga yoki guruhlarga yuboradi. O'quvchilar uy vazifasini topshirish uchun bog'langan mashqni bajaradi."
+
+#: prime/templates/prime/help.html
+msgid "Create homework: give it a title, optional notes, a linked practice, and an optional due date."
+msgstr "Uy vazifasini yarating: sarlavha, ixtiyoriy izoh, bog'langan mashq va ixtiyoriy topshirish muddatini kiriting."
+
+#: prime/templates/prime/help.html
+msgid "Assign to individual students or to an entire group in one step."
+msgstr "Bir qadamda alohida o'quvchilarga yoki butun guruhga tayinlang."
+
+#: prime/templates/prime/help.html
+msgid "Student completes the practice → homework status moves to Submitted automatically."
+msgstr "O'quvchi mashqni bajaradi → uy vazifasi holati avtomatik ravishda Topshirilgan'ga o'tadi."
+
+#: prime/templates/prime/help.html
+msgid "Master grades the submission and can leave written feedback."
+msgstr "Ustod topshiriqni baholaydi va yozma fikr bildirishi mumkin."
+
+#: prime/templates/prime/help.html
+msgid "Track per-student status from the homework detail view."
+msgstr "Uy vazifasi tafsilotlari ko'rinishidan har bir o'quvchi holatini kuzating."
+
+#: prime/templates/prime/help.html
+msgid "Assignment Overview"
+msgstr "Topshiriq ko'rinishi"
+
+#: prime/templates/prime/help.html
+msgid "Group: Advanced Class"
+msgstr "Guruh: Ilg'or sinf"
+
+#: prime/templates/prime/help.html
+msgid "students"
+msgstr "o'quvchi"
+
+#: prime/templates/prime/help.html
+msgid "Practice: Grammar Test 3"
+msgstr "Mashq: Grammatika testi 3"
+
+#: prime/templates/prime/help.html
+msgid "Due date"
+msgstr "Topshirish muddati"
+
+#: prime/templates/prime/help.html
+msgid "Tutorial System"
+msgstr "Darsliklar tizimi"
+
+#: prime/templates/prime/help.html
+msgid "Tutorials are long-form rich-text articles written by masters. They can include images, formatted text, and links to related practices — turning a lesson into an interactive experience."
+msgstr "Darsliklar — ustodlar tomonidan yozilgan boy matnli uzun maqolalar. Ular rasmlar, formatlangan matn va tegishli mashqlarga havolalarni o'z ichiga olishi mumkin — darsni interaktiv tajribaga aylantiradi."
+
+#: prime/templates/prime/help.html
+msgid "Categories: Mathematics, Korean, Programming, English, Other."
+msgstr "Kategoriyalar: Matematika, Koreys, Dasturlash, Ingliz, Boshqa."
+
+#: prime/templates/prime/help.html
+msgid "Read time is estimated automatically from the word count."
+msgstr "O'qish vaqti so'zlar sonidan avtomatik hisoblanadi."
+
+#: prime/templates/prime/help.html
+msgid "Students can like or dislike a tutorial to give the author feedback."
+msgstr "O'quvchilar muallifga fikr bildirish uchun darslikni yoqtirishi yoki yoqtirmasligi mumkin."
+
+#: prime/templates/prime/help.html
+msgid "Link any number of practices to a tutorial so students can test themselves immediately."
+msgstr "O'quvchilar darhol o'zlarini sinab ko'rishi uchun darslikka istalgan miqdordagi mashqlarni bog'lang."
+
+#: prime/templates/prime/help.html
+msgid "View count is tracked so masters can see which tutorials are most popular."
+msgstr "Ko'rishlar soni kuzatiladi, shuning uchun ustodlar qaysi darsliklar mashhurligini ko'rishi mumkin."
+
+#: prime/templates/prime/help.html
+msgid "Tutorial Card"
+msgstr "Darslik kartasi"
+
+#: prime/templates/prime/help.html
+msgid "Programming"
+msgstr "Dasturlash"
+
+#: prime/templates/prime/help.html
+msgid "Classroom System"
+msgstr "Darsxona tizimi"
+
+#: prime/templates/prime/help.html
+msgid "Classrooms are private learning spaces managed by a master. They contain structured lessons, and only enrolled students can access the content."
+msgstr "Darsxonalar — ustod tomonidan boshqariladigan xususiy ta'lim makonlari. Ular tuzilgan darslarni o'z ichiga oladi va faqat ro'yxatdan o'tgan o'quvchilar kontentga kira oladi."
+
+#: prime/templates/prime/help.html
+msgid "Add students individually or import a whole group at once."
+msgstr "O'quvchilarni alohida qo'shing yoki butun guruhni bir vaqtda import qiling."
+
+#: prime/templates/prime/help.html
+msgid "Each classroom has ordered lessons with a status: Not Started, Ongoing, or Finished."
+msgstr "Har bir darsxonada tartibli darslar mavjud: Boshlanmagan, Davom etmoqda yoki Tugallangan."
+
+#: prime/templates/prime/help.html
+msgid "Attach practices, homework assignments, and tutorials to any lesson."
+msgstr "Har qanday darsga mashqlar, uy vazifalari va darsliklarni biriktiring."
+
+#: prime/templates/prime/help.html
+msgid "Upload lesson notes (PDFs, slides) that students can download per lesson."
+msgstr "O'quvchilar har bir dars uchun yuklab olishi mumkin bo'lgan dars eslatmalarini (PDF, slaydlar) yuklang."
+
+#: prime/templates/prime/help.html
+msgid "Each classroom has its own discussion board for class-specific questions."
+msgstr "Har bir darsxonada sinf-xususiy savollar uchun o'zining muhokama doskasi mavjud."
+
+#: prime/templates/prime/help.html
+msgid "Lesson Structure"
+msgstr "Dars tuzilishi"
+
+#: prime/templates/prime/help.html
+msgid "Lesson 1: Introduction"
+msgstr "1-dars: Kirish"
+
+#: prime/templates/prime/help.html
+msgid "Finished"
+msgstr "Tugallangan"
+
+#: prime/templates/prime/help.html
+msgid "Lesson 2: Core Concepts"
+msgstr "2-dars: Asosiy tushunchalar"
+
+#: prime/templates/prime/help.html
+msgid "Ongoing"
+msgstr "Davom etmoqda"
+
+#: prime/templates/prime/help.html
+msgid "Lesson 3: Practice Session"
+msgstr "3-dars: Mashq sessiyasi"
+
+#: prime/templates/prime/help.html
+msgid "Not Started"
+msgstr "Boshlanmagan"
+
+#: prime/templates/prime/help.html
+msgid "The platform-wide discussion forum lets anyone ask questions, share insights, or start a conversation. The best answers rise to the top through community voting."
+msgstr "Platformadagi muhokama forumi har kimga savol berish, fikr ulashish yoki suhbat boshlash imkonini beradi. Eng yaxshi javoblar jamoat ovoz berishi orqali yuqoriga ko'tariladi."
+
+#: prime/templates/prime/help.html
+msgid "Threads are organised by category — find the right section quickly."
+msgstr "Mavzular kategoriya bo'yicha tartiblanadi — kerakli bo'limni tez toping."
+
+#: prime/templates/prime/help.html
+msgid "Announcements and pinned threads stay at the top of their category."
+msgstr "E'lonlar va mahkamlangan mavzular o'z kategoriyasining yuqorisida qoladi."
+
+#: prime/templates/prime/help.html
+msgid "Upvote helpful threads and replies — downvote off-topic ones."
+msgstr "Foydali mavzular va javoblarga ovoz bering — mavzuga mos kelmaydiganlarga salbiy ovoz bering."
+
+#: prime/templates/prime/help.html
+msgid "Thread authors can mark one reply as the accepted answer."
+msgstr "Mavzu mualliflari bitta javobni qabul qilingan javob sifatida belgilashi mumkin."
+
+#: prime/templates/prime/help.html
+msgid "Sort by Latest, Most Votes, Recent Activity, or Unanswered."
+msgstr "Eng yangi, Ko'p ovozli, So'nggi faollik yoki Javobsiz bo'yicha tartiblash."
+
+#: prime/templates/prime/help.html
+msgid "Thread Example"
+msgstr "Mavzu namunasi"
+
+#: prime/templates/prime/help.html
+msgid "How do I improve my score?"
+msgstr "Balimni qanday yaxshilayman?"
+
+#: prime/templates/prime/help.html
+msgid "replies"
+msgstr "javob"
+
+#: prime/templates/prime/help.html
+msgid "Best answer accepted"
+msgstr "Eng yaxshi javob qabul qilindi"
+
+#: prime/templates/prime/help.html
+msgid "Progression"
+msgstr "Rivojlanish"
+
+#: prime/templates/prime/help.html
+msgid "Your rank is calculated from the total points earned across all completed practices. The higher your score on each attempt, the more points you receive."
+msgstr "Darajangiz barcha bajarilgan mashqlar bo'yicha to'plangan umumiy ballar asosida hisoblanadi. Har bir urinishdagi balingiz qanchalik yuqori bo'lsa, shunchalik ko'proq ball olasiz."
+
+#: prime/templates/prime/help.html
+msgid "Points: 0 – 49"
+msgstr "Ball: 0 – 49"
+
+#: prime/templates/prime/help.html
+msgid "Just getting started. Every journey begins here."
+msgstr "Endigina boshlanmoqda. Har qanday yo'l shu yerdan boshlanadi."
+
+#: prime/templates/prime/help.html
+msgid "Points: 50 – 149"
+msgstr "Ball: 50 – 149"
+
+#: prime/templates/prime/help.html
+msgid "Building knowledge and consistent study habits."
+msgstr "Bilim va muntazam o'qish odatlarini shakllantirish."
+
+#: prime/templates/prime/help.html
+msgid "Points: 150 – 299"
+msgstr "Ball: 150 – 299"
+
+#: prime/templates/prime/help.html
+msgid "Deep understanding across multiple subjects."
+msgstr "Bir nechta fanda chuqur tushuncha."
+
+#: prime/templates/prime/help.html
+msgid "Points: 300+"
+msgstr "Ball: 300+"
+
+#: prime/templates/prime/help.html
+msgid "The highest rank. Mastery of the platform's hardest challenges."
+msgstr "Eng yuqori daraja. Platformaning eng qiyin sinovlarini egallash."
+
+#: prime/templates/prime/help.html
+msgid "FAQ"
+msgstr "Ko'p so'raladigan savollar"
+
+#: prime/templates/prime/help.html
+msgid "Frequently Asked Questions"
+msgstr "Ko'p so'raladigan savollar"
+
+#: prime/templates/prime/help.html
+msgid "Is Prime Point free?"
+msgstr "Prime Point bepulmi?"
+
+#: prime/templates/prime/help.html
+msgid "Yes. Creating an account, following masters, taking practices, and participating in discussions is completely free. Some practices may be marked as free by the master; others may be restricted to enrolled students only."
+msgstr "Ha. Hisob yaratish, ustodlarga obuna bo'lish, mashqlar topshirish va muhokamada ishtirok etish mutlaqo bepul. Ba'zi mashqlar ustod tomonidan bepul deb belgilanishi mumkin; boshqalari faqat ro'yxatdan o'tgan o'quvchilar uchun cheklanishi mumkin."
+
+#: prime/templates/prime/help.html
+msgid "How do I become a Master?"
+msgstr "Qanday qilib Ustod bo'laman?"
+
+#: prime/templates/prime/help.html
+msgid "Visit the Masters page and click 'Become a Master'. Complete the short application form with your name, subject area, and a brief description. An administrator will review and approve your application. Once approved, all master tools are unlocked immediately."
+msgstr "Ustodlar sahifasiga o'ting va 'Ustod bo'lish' tugmasini bosing. Ismingiz, fan sohaniz va qisqa tavsif bilan qisqa ariza shaklini to'ldiring. Administrator arizangizni ko'rib chiqadi va tasdiqlaydi. Tasdiqlanganidan so'ng barcha ustod vositalari darhol ochiladi."
+
+#: prime/templates/prime/help.html
+msgid "How do I follow a Master?"
+msgstr "Ustodga qanday obuna bo'laman?"
+
+#: prime/templates/prime/help.html
+msgid "Go to your Profile page and scroll to the Masters section. Use the multi-select to add any masters you want to follow, then save your profile. You can add or remove masters at any time the same way."
+msgstr "Profil sahifangizga o'ting va Ustodlar bo'limiga o'ting. Kuzatmoqchi bo'lgan ustodlarni qo'shish uchun ko'p tanlovdan foydalaning, so'ng profilingizni saqlang. Xuddi shu tarzda istalgan vaqt ustodlarni qo'shish yoki o'chirish mumkin."
+
+#: prime/templates/prime/help.html
+msgid "How are points earned?"
+msgstr "Ballar qanday to'planadi?"
+
+#: prime/templates/prime/help.html
+msgid "Each time you complete a practice, points are added to your student profile based on your score. Higher scores give more points. Points accumulate across all practices and determine your rank on the platform."
+msgstr "Har safar mashqni bajarganingizda, ballaringizga qarab o'quvchi profilingizga ball qo'shiladi. Yuqori ball ko'proq ball beradi. Ballar barcha mashqlar bo'yicha to'planadi va platformadagi darajangizni belgilaydi."
+
+#: prime/templates/prime/help.html
+msgid "What happens if I exceed the maximum attempts on a practice?"
+msgstr "Mashqdagi maksimal urinishlardan oshib ketsam nima bo'ladi?"
+
+#: prime/templates/prime/help.html
+msgid "Once you reach the maximum attempts set by the master, the Start button is disabled and you will see a message indicating you have used all your attempts. Contact your master if you need an additional attempt."
+msgstr "Ustod tomonidan belgilangan maksimal urinishlarga yetganingizdan so'ng, Boshlash tugmasi o'chiriladi va barcha urinishlaringizni ishlatganligi haqida xabar ko'rasiz. Qo'shimcha urinish kerak bo'lsa, ustodingizga murojaat qiling."
+
+#: prime/templates/prime/help.html
+msgid "Can I enroll in multiple classrooms?"
+msgstr "Bir nechta darsxonaga yozilish mumkinmi?"
+
+#: prime/templates/prime/help.html
+msgid "Yes. A master can add you to as many classrooms as they manage. Each classroom is independent with its own lessons, content, and discussion board."
+msgstr "Ha. Ustod sizni boshqaradigan darsxonalarning istalganiga qo'shishi mumkin. Har bir darsxona o'z darslari, kontenti va muhokama doskasi bilan mustaqil."
+
+#: prime/templates/prime/help.html
+msgid "Can a master see my homework submissions and scores?"
+msgstr "Ustod uy vazifasini topshirishlarimni va ballarimni ko'ra oladimi?"
+
+#: prime/templates/prime/help.html
+msgid "Yes. When a master assigns homework, they can view each student's submission status, score, and any written feedback they leave. This lets masters track progress and provide personalised guidance."
+msgstr "Ha. Ustod uy vazifasini tayinlaganida, har bir o'quvchining topshirish holati, bali va qoldirgan yozma fikrlarini ko'rishi mumkin. Bu ustodlarga rivojlanishni kuzatish va shaxsiylashtirilgan yo'riqnoma berish imkonini beradi."
+
+#: prime/templates/prime/help.html
+msgid "What tutorial categories are available?"
+msgstr "Qanday darslik kategoriyalari mavjud?"
+
+#: prime/templates/prime/help.html
+msgid "Tutorials are organised into five categories: Mathematics, Korean, Programming, English, and Other. Masters choose the best matching category when publishing a tutorial."
+msgstr "Darsliklar beshta kategoriyaga bo'lingan: Matematika, Koreys, Dasturlash, Ingliz va Boshqa. Ustodlar darslik chop etishda eng mos kategoriyani tanlaydi."
+
+#: prime/templates/prime/help.html
+msgid "Ready to get started?"
+msgstr "Boshlashga tayyormisiz?"
+
+#: prime/templates/prime/help.html
+msgid "Join Prime Point today — it is free for students and educators alike."
+msgstr "Bugun Prime Pointga qo'shiling — o'quvchilar va o'qituvchilar uchun bepul."
+
+#: prime/templates/prime/help.html
+msgid "Create Free Account"
+msgstr "Bepul hisob yaratish"
+
+#: prime/templates/prime/help.html
+msgid "Log In"
+msgstr "Kirish"
