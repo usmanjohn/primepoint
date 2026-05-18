@@ -11,6 +11,7 @@
 - Avoid Javascript where applicable
 - Make the pages mobile friendly
 - Make the project support PWA
+- Always in two languages: English (main) and uzbek.
 ## Common Commands
 - Run Server: `python manage.py runserver`
 - Migrations: `python manage.py makemigrations && python manage.py migrate`
