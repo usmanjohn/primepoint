@@ -2154,3 +2154,71 @@ msgstr "Bepul hisob yaratish"
 #: prime/templates/prime/help.html
 msgid "Log In"
 msgstr "Kirish"
+
+#: people/models.py
+msgid "Tutorial"
+msgstr "Darslik"
+
+#: people/models.py
+msgid "Lesson"
+msgstr "Dars"
+
+#: people/models.py
+msgid "Classroom"
+msgstr "Sinf xonasi"
+
+#: people/templates/people/notifications.html
+msgid "Notifications"
+msgstr "Bildirishnomalar"
+
+#: people/templates/people/notifications.html
+msgid "Inbox"
+msgstr "Kiruvchi"
+
+#: people/templates/people/notifications.html
+msgid "ago"
+msgstr "avval"
+
+#: people/templates/people/notifications.html
+msgid "You have no notifications yet."
+msgstr "Hali bildirishnomalar yo'q."
+
+#: people/signals.py
+msgid "New Homework: %(title)s"
+msgstr "Yangi uy vazifasi: %(title)s"
+
+#: people/signals.py
+msgid "%(master)s assigned you new homework."
+msgstr "%(master)s sizga yangi uy vazifasini tayinladi."
+
+#: people/signals.py
+msgid "New Practice: %(title)s"
+msgstr "Yangi mashq: %(title)s"
+
+#: people/signals.py
+msgid "%(master)s published a new practice."
+msgstr "%(master)s yangi mashq nashr etdi."
+
+#: people/signals.py
+msgid "New Tutorial: %(title)s"
+msgstr "Yangi darslik: %(title)s"
+
+#: people/signals.py
+msgid "%(master)s published a new tutorial."
+msgstr "%(master)s yangi darslik nashr etdi."
+
+#: people/signals.py
+msgid "New Lesson: %(lesson)s"
+msgstr "Yangi dars: %(lesson)s"
+
+#: people/signals.py
+msgid "A new lesson was published in %(classroom)s."
+msgstr "%(classroom)s sinfxonasida yangi dars nashr etildi."
+
+#: people/signals.py
+msgid "New Discussion: %(title)s"
+msgstr "Yangi muhokama: %(title)s"
+
+#: people/signals.py
+msgid "%(master)s started a new discussion in %(classroom)s."
+msgstr "%(master)s %(classroom)s sinfxonasida yangi muhokama boshladi."

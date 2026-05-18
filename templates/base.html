@@ -210,9 +210,13 @@
 
                 <!-- Notifications -->
                 {% if user.is_authenticated %}
-                <a href="#" class="icon-btn" aria-label="Notifications">
-                    <i class="bi bi-bell"></i>
-                    <span class="notif-dot"></span>
+                <a href="{% url 'notifications' %}" class="icon-btn position-relative" aria-label="{% trans 'Notifications' %}">
+                    <i class="bi bi-bell{% if unread_notif_count %}-fill{% endif %}"></i>
+                    {% if unread_notif_count %}
+                    <span class="notif-dot position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size:0.6rem; padding:3px 5px;">
+                        {% if unread_notif_count > 99 %}99+{% else %}{{ unread_notif_count }}{% endif %}
+                    </span>
+                    {% endif %}
                 </a>
                 {% endif %}
 

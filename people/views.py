@@ -4,6 +4,7 @@ from .forms import UserRegistrationForm, ProfileUpdateForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from masters.models import Master
+from .models import Notification
 
 
 def register(request):
@@ -98,3 +99,20 @@ def update_panda_masters(request):
     panda.masters.set(Master.objects.filter(pk__in=selected_ids))
     messages.success(request, 'Your masters have been updated.')
     return redirect('profile')
+
+
+@login_required
+def notifications(request):
+    notifs = Notification.objects.filter(user=request.user).select_related('user')[:60]
+    Notification.objects.filter(user=request.user, is_read=False).update(is_read=True)
+    return render(request, 'people/notifications.html', {'notifications': notifs})
+
+
+@login_required
+def mark_notification_read(request, pk):
+    notif = get_object_or_404(Notification, pk=pk, user=request.user)
+    notif.is_read = True
+    notif.save(update_fields=['is_read'])
+    if notif.url:
+        return redirect(notif.url)
+    return redirect('notifications')

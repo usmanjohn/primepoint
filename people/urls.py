@@ -4,6 +4,8 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('register/', views.register, name='register'),
+    path('notifications/', views.notifications, name='notifications'),
+    path('notifications/<int:pk>/read/', views.mark_notification_read, name='notification_read'),
     path('profile/', views.profile, name='profile'),
     path('profile/update/', views.profile_update, name='profile_update'),
     path('profile/masters/', views.update_panda_masters, name='update_panda_masters'),
