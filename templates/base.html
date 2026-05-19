@@ -85,7 +85,7 @@
             <a href="{% url 'masters-home' %}" class="nav-link {% block nav_masters %}{% endblock %}">
                 <i class="bi bi-person-workspace"></i>
                 <span class="nav-label">{% trans "Masters" %}</span>
-                <span class="nav-badge">3</span>
+                {% if nav_masters_count %}<span class="nav-badge">{{ nav_masters_count }}</span>{% endif %}
             </a>
 
             <span class="nav-section">{% trans "Practice" %}</span>
@@ -93,11 +93,13 @@
             <a href="{% url 'practice_list' %}" class="nav-link {% block nav_practice %}{% endblock %}">
                 <i class="bi bi-book-half"></i>
                 <span class="nav-label">{% trans "Practice" %}</span>
+                {% if nav_practices_count %}<span class="nav-badge">{{ nav_practices_count }}</span>{% endif %}
             </a>
 
             <a href="{% url 'panda-home' %}" class="nav-link {% block nav_pandas %}{% endblock %}">
                 <i class="bi bi-mortarboard-fill"></i>
                 <span class="nav-label">{% trans "Pandas" %}</span>
+                {% if nav_students_count %}<span class="nav-badge">{{ nav_students_count }}</span>{% endif %}
             </a>
 
             <a href="{% url 'my_homework' %}" class="nav-link {% block nav_homework %}{% endblock %}">
@@ -108,16 +110,19 @@
             <a href="{% url 'discussion_home' %}" class="nav-link {% block nav_discussion %}{% endblock %}">
                 <i class="bi bi-chat-square-dots-fill"></i>
                 <span class="nav-label">{% trans "Discussion" %}</span>
+                {% if nav_threads_count %}<span class="nav-badge">{{ nav_threads_count }}</span>{% endif %}
             </a>
 
             <a href="{% url 'tutorial_list' %}" class="nav-link {% block nav_tutorials %}{% endblock %}">
                 <i class="bi bi-journal-text"></i>
                 <span class="nav-label">{% trans "Tutorials" %}</span>
+                {% if nav_tutorials_count %}<span class="nav-badge">{{ nav_tutorials_count }}</span>{% endif %}
             </a>
 
             <a href="{% url 'classroom:list' %}" class="nav-link {% block nav_classroom %}{% endblock %}">
                 <i class="bi bi-easel-fill"></i>
                 <span class="nav-label">{% trans "Classrooms" %}</span>
+                {% if nav_classrooms_count %}<span class="nav-badge">{{ nav_classrooms_count }}</span>{% endif %}
             </a>
 
             <span class="nav-section">{% trans "Support" %}</span>
