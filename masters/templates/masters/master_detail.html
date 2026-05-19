@@ -224,27 +224,42 @@
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 1.1rem;
-  text-decoration: none;
   color: var(--text);
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
   transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
   position: relative;
+  cursor: pointer;
 }
-.mdt-tut-card:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--text); text-decoration: none; box-shadow: 0 6px 20px rgba(56,189,248,0.08); }
+.mdt-tut-card:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 6px 20px rgba(56,189,248,0.08); }
 .mdt-tut-cat { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; background: var(--accent-glow); color: var(--accent); padding: 0.15rem 0.55rem; border-radius: 4px; width: fit-content; }
 .mdt-tut-title { font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--text); margin: 0; line-height: 1.3; }
 .mdt-tut-meta { display: flex; gap: 0.6rem; font-size: 0.72rem; color: var(--text-muted); flex-wrap: wrap; margin-top: auto; }
-.mdt-tut-actions { position: absolute; top: 0.75rem; right: 0.75rem; display: flex; gap: 0.3rem; }
-.mdt-tut-edit-btn {
+
+/* ── Content-area icon button (replaces btn-auth-outline in cards) */
+.mdt-icon-btn {
   display: inline-flex; align-items: center; justify-content: center;
-  padding: 4px 8px; border-radius: 6px; font-size: 0.65rem;
-  border: 1px solid var(--border); background: var(--surface);
-  color: var(--text-muted); text-decoration: none;
+  width: 28px; height: 28px; border-radius: 7px; font-size: 0.78rem;
+  border: 1px solid var(--border); background: var(--surface-2, #f8fafc);
+  color: var(--text-muted); text-decoration: none; cursor: pointer;
   transition: border-color 0.15s, color 0.15s, background 0.15s;
+  position: relative; z-index: 2; flex-shrink: 0;
 }
-.mdt-tut-edit-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
+.mdt-icon-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
+.mdt-icon-btn--danger:hover { border-color: #f87171; color: #f87171; background: rgba(248,113,113,0.08); }
+
+/* ── Show-more / expand button ──────────────────────────────── */
+.mdt-item-hidden { display: none !important; }
+.mdt-show-more {
+  display: flex; align-items: center; justify-content: center; gap: 0.45rem;
+  width: 100%; margin-top: 0.65rem; padding: 0.6rem 1rem;
+  border: 1px dashed var(--border); border-radius: 12px;
+  background: transparent; color: var(--text-muted);
+  font-size: 0.8rem; font-weight: 600; cursor: pointer;
+  transition: border-color 0.18s, color 0.18s, background 0.18s;
+}
+.mdt-show-more:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
 
 /* ── Groups ─────────────────────────────────────────────────── */
 .mdt-groups {
@@ -429,9 +444,9 @@
     {% endif %}
   </div>
   {% if practices %}
-  <div class="mdt-practice-grid">
+  <div class="mdt-practice-grid" id="mdt-practices">
     {% for p in practices %}
-    <a href="{% url 'practice_detail' p.pk %}" class="mdt-pcard mdt-pcard--{{ p.level }}">
+    <a href="{% url 'practice_detail' p.pk %}" class="mdt-pcard mdt-pcard--{{ p.level }} {% if forloop.counter > 6 %}mdt-item-hidden{% endif %}">
       <div class="d-flex gap-2 align-items-center flex-wrap">
         <span class="mdt-badge mdt-badge--{{ p.level }}">{{ p.level }}</span>
         {% if p.is_free %}
@@ -440,7 +455,7 @@
           <span class="mdt-badge mdt-badge--paid">{% trans "Paid" %}</span>
         {% endif %}
         {% if is_owner and not p.is_published %}
-          <span class="mdt-badge" style="background:rgba(148,163,184,.15);color:#64748b;">Draft</span>
+          <span class="mdt-badge" style="background:rgba(148,163,184,.15);color:#64748b;">{% trans "Draft" %}</span>
         {% endif %}
       </div>
       <p class="mdt-pcard-title">{{ p.title }}</p>
@@ -450,18 +465,24 @@
         <span><i class="bi bi-play-circle"></i> {{ p.attempt_count }}</span>
       </div>
       {% if p.avg_score is not None %}
-      <div class="mdt-avg-score">
-        {% trans "Avg score" %}: <span>{{ p.avg_score|floatformat:0 }}%</span>
-      </div>
+      <div class="mdt-avg-score">{% trans "Avg score" %}: <span>{{ p.avg_score|floatformat:0 }}%</span></div>
       {% endif %}
     </a>
     {% endfor %}
   </div>
+  {% if practices|length > 6 %}
+  <button class="mdt-show-more" onclick="mdtExpand(this,'mdt-practices')"
+          data-more="{% trans 'Show' %} {{ practices|length|add:'-6' }} {% trans 'more' %}"
+          data-less="{% trans 'Show less' %}">
+    <i class="bi bi-chevron-down"></i>
+    <span>{% trans "Show" %} {{ practices|length|add:"-6" }} {% trans "more" %}</span>
+  </button>
+  {% endif %}
   {% else %}
   <div class="mdt-empty">
     <i class="bi bi-collection me-1"></i>
-    No practices yet.
-    <a href="{% url 'manage_practices' %}" class="ms-1" style="color:var(--accent);">Create one →</a>
+    {% trans "No practices yet." %}
+    <a href="{% url 'manage_practices' %}" class="ms-1" style="color:var(--accent);">{% trans "Create one" %} →</a>
   </div>
   {% endif %}
 </div>
@@ -476,31 +497,34 @@
       {% trans "Students" %}
     </h2>
   </div>
-  <div class="mdt-students">
+  <div class="mdt-students" id="mdt-students">
     {% for panda in students %}
-    <div class="mdt-student-card" style="position:relative;">
-      <a href="{% url 'user_profile' panda.profile.user.username %}" style="display:contents; text-decoration:none; color:inherit;">
-        <img src="{{ panda.profile.image_url }}" alt="{{ panda.name }}" class="mdt-student-avatar">
-        <div class="mdt-student-name">{{ panda.profile.first_name|default:panda.profile.user.username }}</div>
-        <div class="mdt-student-rank">{{ panda.rank }}</div>
-      </a>
+    <div class="mdt-student-card {% if forloop.counter > 6 %}mdt-item-hidden{% endif %}" style="position:relative;">
+      <a href="{% url 'user_profile' panda.profile.user.username %}" class="stretched-link" aria-label="{{ panda.profile.user.username }}"></a>
+      <img src="{{ panda.profile.image_url }}" alt="{{ panda.profile.user.username }}" class="mdt-student-avatar">
+      <div class="mdt-student-name">{{ panda.profile.first_name|default:panda.profile.user.username }}</div>
+      <div class="mdt-student-rank">{{ panda.rank }}</div>
       {% if is_owner %}
       <form method="post" action="{% url 'master-remove-student' master.pk panda.pk %}"
-            style="position:absolute;top:6px;right:6px;"
-            onsubmit="return confirm('Remove {{ panda.profile.user.username }} from your students?')">
+            style="position:absolute;top:5px;right:5px;z-index:2;"
+            onsubmit="return confirm('Remove {{ panda.profile.user.username }}?')">
         {% csrf_token %}
-        <button type="submit"
-          style="background:transparent;border:none;width:24px;height:24px;border-radius:5px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-muted);transition:color .12s,background .12s;"
-          onmouseover="this.style.color='#f87171';this.style.background='rgba(248,113,113,.1)';"
-          onmouseout="this.style.color='var(--text-muted)';this.style.background='transparent';"
-          title="{% trans "Remove student" %}">
-          <i class="bi bi-x" style="font-size:.9rem;"></i>
+        <button type="submit" class="mdt-icon-btn mdt-icon-btn--danger" title="{% trans 'Remove student' %}">
+          <i class="bi bi-x"></i>
         </button>
       </form>
       {% endif %}
     </div>
     {% endfor %}
   </div>
+  {% if students|length > 6 %}
+  <button class="mdt-show-more" onclick="mdtExpand(this,'mdt-students')"
+          data-more="{% trans 'Show' %} {{ students|length|add:'-6' }} {% trans 'more' %}"
+          data-less="{% trans 'Show less' %}">
+    <i class="bi bi-chevron-down"></i>
+    <span>{% trans "Show" %} {{ students|length|add:"-6" }} {% trans "more" %}</span>
+  </button>
+  {% endif %}
 </div>
 {% endif %}
 
@@ -519,15 +543,14 @@
     {% endif %}
   </div>
   {% if tutorials %}
-  <div class="mdt-tut-grid">
+  <div class="mdt-tut-grid" id="mdt-tutorials">
     {% for t in tutorials %}
-    <a href="{% url 'tutorial_detail' t.pk %}" class="mdt-tut-card">
+    <div class="mdt-tut-card {% if forloop.counter > 6 %}mdt-item-hidden{% endif %}">
+      <a href="{% url 'tutorial_detail' t.pk %}" class="stretched-link" aria-label="{{ t.title }}"></a>
       {% if is_owner %}
-      <div class="mdt-tut-actions">
-        <a href="{% url 'tutorial_edit' t.pk %}" class="mdt-tut-edit-btn" onclick="event.stopPropagation();">
-          <i class="bi bi-pencil-square"></i>
-        </a>
-      </div>
+      <a href="{% url 'tutorial_edit' t.pk %}" class="mdt-icon-btn" style="align-self:flex-end;" title="{% trans 'Edit tutorial' %}">
+        <i class="bi bi-pencil-square"></i>
+      </a>
       {% endif %}
       <span class="mdt-tut-cat">{{ t.get_category_display }}</span>
       <p class="mdt-tut-title">{{ t.title }}</p>
@@ -536,14 +559,22 @@
         <span><i class="bi bi-clock me-1"></i>{{ t.read_time }}m {% trans "read" %}</span>
         <span><i class="bi bi-calendar3 me-1"></i>{{ t.created_at|date:"M d" }}</span>
       </div>
-    </a>
+    </div>
     {% endfor %}
   </div>
+  {% if tutorials|length > 6 %}
+  <button class="mdt-show-more" onclick="mdtExpand(this,'mdt-tutorials')"
+          data-more="{% trans 'Show' %} {{ tutorials|length|add:'-6' }} {% trans 'more' %}"
+          data-less="{% trans 'Show less' %}">
+    <i class="bi bi-chevron-down"></i>
+    <span>{% trans "Show" %} {{ tutorials|length|add:"-6" }} {% trans "more" %}</span>
+  </button>
+  {% endif %}
   {% else %}
   <div class="mdt-empty">
     <i class="bi bi-journal-text me-1"></i>
-    No tutorials published yet.
-    <a href="{% url 'tutorial_create' %}" class="ms-1" style="color:var(--accent);">Write one →</a>
+    {% trans "No tutorials published yet." %}
+    {% if is_owner %}<a href="{% url 'tutorial_create' %}" class="ms-1" style="color:var(--accent);">{% trans "Write one" %} →</a>{% endif %}
   </div>
   {% endif %}
 </div>
@@ -571,10 +602,10 @@
         <div class="mdt-group-meta">{{ g.member_count_ann }} student{{ g.member_count_ann|pluralize }}</div>
       </div>
       <div class="mdt-group-actions">
-        <a href="{% url 'edit_group' g.pk %}" class="btn-auth-outline py-1 px-2 text-decoration-none" style="font-size:0.65rem;" title="Edit group">
+        <a href="{% url 'edit_group' g.pk %}" class="mdt-icon-btn" title="{% trans 'Edit group' %}">
           <i class="bi bi-pencil-square"></i>
         </a>
-        <a href="{% url 'delete_group' g.pk %}" class="btn-auth-outline py-1 px-2 text-decoration-none" style="font-size:0.65rem;color:#f87171;" title="Delete group"
+        <a href="{% url 'delete_group' g.pk %}" class="mdt-icon-btn mdt-icon-btn--danger" title="{% trans 'Delete group' %}"
            onclick="return confirm('Delete group {{ g.name }}?')">
           <i class="bi bi-trash"></i>
         </a>
@@ -635,10 +666,10 @@
         </div>
       </div>
       <div class="mdt-hw-actions">
-        <a href="{% url 'homework_detail' hw.pk %}" class="btn-auth-outline py-1 px-2 text-decoration-none" style="font-size:0.65rem;" title="View">
+        <a href="{% url 'homework_detail' hw.pk %}" class="mdt-icon-btn" title="{% trans 'View' %}">
           <i class="bi bi-eye"></i>
         </a>
-        <a href="{% url 'edit_homework' hw.pk %}" class="btn-auth-outline py-1 px-2 text-decoration-none" style="font-size:0.65rem;" title="Edit">
+        <a href="{% url 'edit_homework' hw.pk %}" class="mdt-icon-btn" title="{% trans 'Edit' %}">
           <i class="bi bi-pencil-square"></i>
         </a>
       </div>
@@ -681,4 +712,26 @@
 </div>
 {% endif %}
 
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function mdtExpand(btn, sectionId) {
+  var section = document.getElementById(sectionId);
+  var hidden = section.querySelectorAll('.mdt-item-hidden');
+  var label = btn.querySelector('span');
+  var icon = btn.querySelector('i');
+  if (hidden.length) {
+    hidden.forEach(function(el) { el.classList.remove('mdt-item-hidden'); });
+    label.textContent = btn.dataset.less;
+    icon.className = 'bi bi-chevron-up';
+  } else {
+    Array.from(section.children).forEach(function(el, i) {
+      if (i >= 6) el.classList.add('mdt-item-hidden');
+    });
+    label.textContent = btn.dataset.more;
+    icon.className = 'bi bi-chevron-down';
+  }
+}
+</script>
 {% endblock %}

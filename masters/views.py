@@ -43,7 +43,7 @@ def master_detail(request, master_id):
     experience_months = (days_active % 365) // 30
 
     student_count = master.pandas.count()
-    students = master.pandas.select_related('profile__user').order_by('-rating')[:8]
+    students = master.pandas.select_related('profile__user').order_by('-rating')
 
     groups = []
     homeworks = []
@@ -61,7 +61,7 @@ def master_detail(request, master_id):
     tutorials = (
         Tutorial.objects
         .filter(author=master.profile.user, is_published=True)
-        .order_by('-created_at')[:6]
+        .order_by('-created_at')
     )
 
     return render(request, 'masters/master_detail.html', {
