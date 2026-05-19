@@ -29,7 +29,7 @@
 
 .pd-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1.1rem;
 }
 
@@ -43,6 +43,7 @@
   text-decoration: none;
   color: inherit;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
 }
 .pd-card:hover {
   transform: translateY(-4px);
@@ -51,6 +52,30 @@
   color: inherit;
   text-decoration: none;
 }
+
+/* Top 3 gold / silver / bronze border */
+.pd-card.rank-1 { border-color: #f59e0b; box-shadow: 0 0 0 1px #f59e0b33; }
+.pd-card.rank-2 { border-color: #94a3b8; box-shadow: 0 0 0 1px #94a3b820; }
+.pd-card.rank-3 { border-color: #b45309; box-shadow: 0 0 0 1px #b4530920; }
+
+.pd-position {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 800;
+}
+.pd-position.pos-1 { background: #f59e0b; color: #fff; }
+.pd-position.pos-2 { background: #94a3b8; color: #fff; }
+.pd-position.pos-3 { background: #b45309; color: #fff; }
+.pd-position.pos-other { background: var(--surface-2); color: var(--text-muted); }
+
 .pd-card-top {
   padding: 1.5rem 1.5rem 1rem;
   display: flex;
@@ -66,6 +91,10 @@
   border: 3px solid var(--border);
   margin-bottom: 0.85rem;
 }
+.rank-1 .pd-avatar { border-color: #f59e0b; }
+.rank-2 .pd-avatar { border-color: #94a3b8; }
+.rank-3 .pd-avatar { border-color: #b45309; }
+
 .pd-name {
   font-family: 'Syne', sans-serif;
   font-size: 1rem;
@@ -78,6 +107,8 @@
   color: var(--text-muted);
   margin-bottom: 0.55rem;
 }
+
+/* Rank badges */
 .pd-rank {
   font-size: 0.7rem;
   font-weight: 700;
@@ -91,6 +122,7 @@
 .pd-rank-expert      { background: rgba(34,197,94,.12);  color: #16a34a; }
 .pd-rank-grandmaster { background: rgba(251,191,36,.15); color: #b45309; }
 
+/* Rating bar */
 .pd-rating-wrap { width: 100%; padding: 0 0.25rem; margin-bottom: 0.25rem; }
 .pd-rating-row {
   display: flex;
@@ -108,50 +140,51 @@
 }
 .pd-progress-bar {
   height: 100%;
-  background: var(--accent);
   border-radius: 99px;
   transition: width 0.4s ease;
 }
+.bar-novice      { background: #94a3b8; }
+.bar-scholar     { background: var(--accent); }
+.bar-expert      { background: #16a34a; }
+.bar-grandmaster { background: #f59e0b; }
 
+/* Footer stats */
 .pd-card-footer {
   margin-top: auto;
-  padding: 0.9rem 1.5rem;
+  padding: 0.75rem 1.25rem;
   border-top: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.5rem;
 }
-.pd-stat { text-align: center; }
+.pd-stat { text-align: center; flex: 1; }
 .pd-stat-num {
   font-family: 'Syne', sans-serif;
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--text);
   line-height: 1;
 }
 .pd-stat-lbl {
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: var(--text-muted);
 }
+.pd-divider { width: 1px; height: 28px; background: var(--border); }
 .pd-profile-btn {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--accent);
   display: flex;
   align-items: center;
   gap: 0.2rem;
   text-decoration: none;
+  white-space: nowrap;
 }
 .pd-profile-btn:hover { color: var(--accent); text-decoration: underline; }
-
-.pd-purpose {
-  font-size: 0.73rem;
-  color: var(--text-muted);
-  margin-bottom: 0.6rem;
-}
 
 .pd-empty {
   grid-column: 1 / -1;
@@ -161,6 +194,21 @@
 .pd-empty i { font-size: 2.5rem; color: var(--border); display: block; margin-bottom: 1rem; }
 .pd-empty h3 { font-family: 'Syne', sans-serif; color: var(--text); margin-bottom: 0.4rem; }
 .pd-empty p  { color: var(--text-muted); font-size: 0.88rem; }
+
+/* avg score chip */
+.avg-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 5px;
+  margin-bottom: 0.7rem;
+}
+.avg-chip-high { background: rgba(34,197,94,.12); color: #16a34a; }
+.avg-chip-mid  { background: rgba(251,191,36,.12); color: #b45309; }
+.avg-chip-low  { background: rgba(148,163,184,.12); color: #64748b; }
 </style>
 {% endblock %}
 
@@ -170,9 +218,9 @@
   <!-- HERO -->
   <div class="pd-hero d-flex justify-content-between align-items-end flex-wrap gap-3">
     <div>
-      <p class="pd-eyebrow">Community</p>
+      <p class="pd-eyebrow">Leaderboard</p>
       <h1>Our Students</h1>
-      <p class="pd-hero-sub">Learners growing their skills through practice and dedication.</p>
+      <p class="pd-hero-sub">Ranked by rating — earned through practice and results.</p>
     </div>
     {% if user.is_authenticated %}
       <a href="{% url 'profile' %}" class="btn-auth-outline text-decoration-none py-2 px-4">
@@ -189,8 +237,18 @@
   <div class="pd-grid">
     {% for panda in panders %}
 
-    {% with rank=panda.rank %}
-    <div class="pd-card">
+    {% with rank=panda.rank pos=panda.rank_position %}
+    <div class="pd-card {% if pos == 1 %}rank-1{% elif pos == 2 %}rank-2{% elif pos == 3 %}rank-3{% endif %}">
+
+      <!-- Position badge -->
+      <div class="pd-position {% if pos == 1 %}pos-1{% elif pos == 2 %}pos-2{% elif pos == 3 %}pos-3{% else %}pos-other{% endif %}">
+        {% if pos <= 3 %}
+          {% if pos == 1 %}🥇{% elif pos == 2 %}🥈{% else %}🥉{% endif %}
+        {% else %}
+          {{ pos }}
+        {% endif %}
+      </div>
+
       <div class="pd-card-top">
 
         <img src="{{ panda.profile.image_url }}" alt="{{ panda.profile.user.username }}" class="pd-avatar">
@@ -205,12 +263,16 @@
           {% elif rank == 'Expert' %}pd-rank-expert
           {% elif rank == 'Scholar' %}pd-rank-scholar
           {% else %}pd-rank-novice{% endif %}">
-          {{ rank }}
+          {% if rank == 'Grandmaster' %}⭐ {% endif %}{{ rank }}
         </span>
 
-        <p class="pd-purpose"><i class="bi bi-mortarboard me-1"></i>{{ panda.get_purpose_display }}</p>
+        {% if panda.avg_score is not None %}
+          <span class="avg-chip {% if panda.avg_score >= 75 %}avg-chip-high{% elif panda.avg_score >= 50 %}avg-chip-mid{% else %}avg-chip-low{% endif %}">
+            <i class="bi bi-graph-up"></i> Avg {{ panda.avg_score|floatformat:0 }}%
+          </span>
+        {% endif %}
 
-        <!-- Rating bar — capped visually at 300 (Grandmaster threshold) -->
+        <!-- Rating progress bar -->
         <div class="pd-rating-wrap">
           <div class="pd-rating-row">
             <span>Rating</span>
@@ -218,7 +280,13 @@
           </div>
           <div class="pd-progress">
             {% widthratio panda.rating 300 100 as rating_pct %}
-            <div class="pd-progress-bar" style="width: {{ rating_pct }}%"></div>
+            <div class="pd-progress-bar
+              {% if rank == 'Grandmaster' %}bar-grandmaster
+              {% elif rank == 'Expert' %}bar-expert
+              {% elif rank == 'Scholar' %}bar-scholar
+              {% else %}bar-novice{% endif %}"
+              style="width: {% if rating_pct > 100 %}100{% else %}{{ rating_pct }}{% endif %}%">
+            </div>
           </div>
         </div>
 
@@ -227,14 +295,16 @@
       <div class="pd-card-footer">
         <div class="pd-stat">
           <div class="pd-stat-num">{{ panda.attempt_count }}</div>
-          <div class="pd-stat-lbl">Attempts</div>
+          <div class="pd-stat-lbl">Tests</div>
         </div>
+        <div class="pd-divider"></div>
         <div class="pd-stat">
           <div class="pd-stat-num">{{ panda.masters_count }}</div>
           <div class="pd-stat-lbl">Masters</div>
         </div>
+        <div class="pd-divider"></div>
         <a href="{% url 'user_profile' panda.profile.user.username %}" class="pd-profile-btn">
-          See Profile <i class="bi bi-arrow-right"></i>
+          View <i class="bi bi-arrow-right"></i>
         </a>
       </div>
     </div>

@@ -87,6 +87,7 @@ class PracticeAttempt(models.Model):
 
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='in_progress')
     score = models.FloatField(default=0)
+    rating_points = models.FloatField(default=0, help_text='Rating points awarded for this attempt.')
 
     start_time = models.DateTimeField(auto_now_add=True)
     completed_at = models.DateTimeField(null=True, blank=True)

@@ -3,187 +3,186 @@ from django.contrib.auth.models import User
 from masters.models import Master
 from practice.models import Subject, Practice, PracticeQuestion, PracticeChoice
 
-
 QUESTIONS = [
     {
-        'text': "<p><strong>A: 하늘이 갑자기 어두워졌어요.<br>B: 네, 하늘이 어두워지________ 갑자기 굵은 비가 쏟아졌어요.</strong></p>",
-        'explanation': "<p><strong>어두워지자마자</strong>: <code>-자마자</code> qo'shimchasi biror holat sodir bo'lgan zahoti darhol keyingisi yuz berganini ifodalaydi.</p>",
-        'correct': "어두워지자마자",
-        'choices': ["어두워지자마자", "어두워지는 동안", "어두워진 후에", "어두워지면서"]
+        'text': "<p><strong>A: 어제 파티에 왜 안 왔어요?<br>B: 갑자기 배가 너무 아파서 ________.</strong></p>",
+        'explanation': "<p><strong>가지 못했어요</strong>: Kasallik tufayli bora olmaslik (imkoniyat yo'qligi) <code>-지 못하다</code> bilan o'tgan zamonda ifodalanadi.</p>",
+        'correct': "가지 못했어요",
+        'choices': ["가지 않았어요", "안 갔어요", "가지 못했어요", "가지 않아요"]
     },
     {
-        'text': "<p><strong>A: 한국어 실력이 정말 훌륭해요! 한국에 오신 지 얼마나 되셨어요?<br>B: 한국에 ________ 벌써 5년이 넘었어요.</strong></p>",
-        'explanation': "<p><strong>온 지</strong>: <code>-(으)ㄴ 지</code> qo'shimchasi vaqt hisobini bildiradi. '오다' fe'li unliga tugagani uchun '-ㄴ 지' qo'shiladi.</p>",
-        'correct': "온 지",
-        'choices': ["온 지", "오기 전에", "오면서", "올 때"]
+        'text': "<p><strong>A: 이 구두 살 거예요?<br>B: 아니요, 디자인은 예쁜데 가격이 너무 비싸서 ________.</strong></p>",
+        'explanation': "<p><strong>안 살 거예요</strong>: O'z xohishi/qarori bilan sotib olmaslik <code>안 V</code> yoki <code>-지 않다</code> orqali beriladi.</p>",
+        'correct': "안 살 거예요",
+        'choices': ["못 살 거예요", "안 살 거예요", "사지 못해요", "사지 않아요"]
     },
     {
-        'text': "<p><strong>A: 이 독한 감기약은 언제 먹어야 합니까?<br>B: 머리가 심하게 ________ 식사와 상관없이 바로 한 알씩 드세요.</strong></p>",
-        'explanation': "<p><strong>아플 때</strong>: <code>-(으)ㄹ 때</code> qo'shimchasi vaqtni bildiradi. '아프다' unliga tugagani uchun '-ㄹ 때' qo'shiladi.</p>",
-        'correct': "아플 때",
-        'choices': ["아플 때", "아프기 전에", "아픈 후에", "아프면서"]
+        'text': "<p><strong>A: 요즘도 매일 운동하세요?<br>B: 아니요, 최근에 회사 일이 너무 바빠서 아예 운동을 ________.</strong></p>",
+        'explanation': "<p><strong>못 해요</strong>: Vaqt yo'qligi sababli mashq qila olmaslik <code>못 V</code> bilan yoziladi.</p>",
+        'correct': "못 해요",
+        'choices': ["못 해요", "안 해요", "하지 않아요", "하지 않았어요"]
     },
     {
-        'text': "<p><strong>A: 방이 너무 지저분해요. 언제 청소할 거예요?<br>B: 이 재미있는 드라마를 다 ________ 깨끗하게 청소할게요.</strong></p>",
-        'explanation': "<p><strong>보고 나서</strong>: <code>-고 나서</code> harakatning to'liq yakunlanib, so'ngra keyingi ish boshlanishini bildiradi.</p>",
-        'correct': "보고 나서",
-        'choices': ["보고 나서", "보는 동안", "보기 전에", "보자마자"]
+        'text': "<p><strong>A: 한국어 뉴스를 다 알아들어요?<br>B: 아니요, 말이 너무 빨라서 아직 완벽하게 ________.</strong></p>",
+        'explanation': "<p><strong>이해하지 못해요</strong>: Qobiliyat yoki bilim yetishmasligi sababli tushuna olmaslik <code>-지 못하다</code> orqali yasaladi.</p>",
+        'correct': "이해하지 못해요",
+        'choices': ["이해하지 않아요", "안 이해해요", "이해하지 않았어요", "이해하지 못해요"]
     },
     {
-        'text': "<p><strong>A: 운전 중에는 휴대전화를 사용하면 절대 안 됩니다.<br>B: 죄송합니다. 앞으로는 운전________ 절대 통화하지 않겠습니다.</strong></p>",
-        'explanation': "<p><strong>하면서</strong>: <code>-(으)면서</code> bir vaqtning o'zida bo'layotgan ikkita harakatni bog'laydi.</p>",
-        'correct': "하면서",
-        'choices': ["하면서", "한 후에", "하기 전에", "하는 동안"]
+        'text': "<p><strong>A: 겨울인데 날씨가 춥지 않네요.<br>B: 네, 올해 겨울은 예년보다 별로 ________.</strong></p>",
+        'explanation': "<p><strong>춥지 않아요</strong>: Sifatlarni (춥다 - sovuq) inkor qilishda faqat <code>안</code> yoki <code>-지 않다</code> ishlatiladi. Sifatlar bilan '못' qo'llanmaydi.</p>",
+        'correct': "춥지 않아요",
+        'choices': ["춥지 못해요", "춥지 않아요", "못 추워요", "안 추웠어요"]
     },
     {
-        'text': "<p><strong>A: 제가 잠깐 외출한 사이에 귀여운 강아지가 신발을 심하게 물어뜯었네요.<br>B: 네, 수미 씨가 밖에서 쇼핑하________ 강아지가 많이 심심했던 것 같아요.</strong></p>",
-        'explanation': "<p><strong>는 동안</strong>: <code>-는 동안</code> davomiylikni bildiradi va ko'pincha turli shaxslarning harakatlarida ishlatiladi.</p>",
-        'correct': "는 동안",
-        'choices': ["는 동안", "면서", "기 전에", "ㄴ 후에"]
+        'text': "<p><strong>A: 내일 아침 회의에 참석할 수 있어요?<br>B: 죄송해요. 내일 오전에 병원에 가야 해서 ________.</strong></p>",
+        'explanation': "<p><strong>참석하지 못해요</strong>: Boshqa reja sababli qatnasha olmaslik (imkoniyat yo'qligi) <code>-지 못하다</code> bilan aytiladi.</p>",
+        'correct': "참석하지 못해요",
+        'choices': ["참석하지 않아요", "안 참석해요", "참석하지 못해요", "참석하지 않았어요"]
     },
     {
-        'text': "<p><strong>A: 이 중요한 서류들은 어떻게 할까요?<br>B: 회의가 완전히 ________ 부장님께 직접 전달해 주세요.</strong></p>",
-        'explanation': "<p><strong>끝난 후에</strong>: <code>-(으)ㄴ 후에</code> ishning tugashini va keyingisi boshlanishini ko'rsatadi.</p>",
-        'correct': "끝난 후에",
-        'choices': ["끝난 후에", "끝나기 전에", "끝날 때", "끝나면서"]
+        'text': "<p><strong>A: 출근할 때 운전해서 가요?<br>B: 아니요, 아침에 차가 막히는 게 싫어서 평소에 운전을 아예 ________.</strong></p>",
+        'explanation': "<p><strong>안 해요</strong>: Tirbandlikni yoqtirmagani uchun o'z xohishi bilan mashina haydamaslik <code>안 V</code> (oddiy inkor) orqali beriladi.</p>",
+        'correct': "안 해요",
+        'choices': ["안 해요", "못 해요", "하지 못해요", "하지 못했어요"]
     },
     {
-        'text': "<p><strong>A: 비행기 탑승 시간이 정말 얼마 안 남았어요.<br>B: 비행기에 ________ 면세점에서 화장품을 빨리 사야 해요.</strong></p>",
-        'explanation': "<p><strong>타기 전에</strong>: <code>-기 전에</code> biron ishni qilishdan oldingi vaqtni bildiradi.</p>",
-        'correct': "타기 전에",
-        'choices': ["타기 전에", "타고 나서", "탈 때", "타자마자"]
+        'text': "<p><strong>A: 아까 전화 왜 안 받았어요?<br>B: 회의 중이라서 휴대폰 소리를 전혀 ________.</strong></p>",
+        'explanation': "<p><strong>듣지 못했어요</strong>: Majlisda bo'lgani uchun ovozni eshitishga imkon bo'lmagani (tashqi sabab) <code>-지 못하다</code> qolipiga tushadi.</p>",
+        'correct': "듣지 못했어요",
+        'choices': ["듣지 않았어요", "안 들었어요", "듣지 않아요", "듣지 못했어요"]
     },
     {
-        'text': "<p><strong>A: 저기 저 식당은 항상 사람이 많고 줄이 엄청 길어요.<br>B: 네, 저기가 우리 동네에서 가장 맛있는 매운 냉면을 ________ 식당이거든요.</strong></p>",
-        'explanation': "<p><strong>파는</strong>: <code>-는</code> hozirgi zamon sifatdoshidir. '팔다' (sotmoq) fe'lidagi 'ㄹ' tushib qolib, '파는' bo'ladi.</p>",
-        'correct': "파는",
-        'choices': ["파는", "판", "팔", "팔면서"]
+        'text': "<p><strong>A: 이 가방 어때요? 무거워 보여요.<br>B: 아니요, 보기보다 별로 ________.</strong></p>",
+        'explanation': "<p><strong>무겁지 않아요</strong>: '무겁다' (og'ir) sifat bo'lib, holatni inkor qilish uchun <code>-지 않다</code> ishlatamiz.</p>",
+        'correct': "무겁지 않아요",
+        'choices': ["무겁지 못해요", "못 무거워요", "무겁지 않아요", "안 무거웠어요"]
     },
     {
-        'text': "<p><strong>A: 어제 백화점에서 비싸게 산 가방 어때요?<br>B: 디자인은 아주 예쁜데, 어제 ________ 가방이 생각보다 조금 무거워요.</strong></p>",
-        'explanation': "<p><strong>산</strong>: <code>-(으)ㄴ</code> o'tgan zamon sifatdoshidir. '사다' fe'liga '-ㄴ' qo'shiladi.</p>",
-        'correct': "산",
-        'choices': ["산", "사는", "살", "사면서"]
+        'text': "<p><strong>A: 삼겹살 좀 드시겠어요?<br>B: 저는 채식주의자라서 고기를 절대 ________.</strong></p>",
+        'explanation': "<p><strong>먹지 않아요</strong>: E'tiqod yoki qat'iy qaror tufayli go'sht yemaslik <code>-지 않다</code> bilan ifodalanadi.</p>",
+        'correct': "먹지 않아요",
+        'choices': ["먹지 않아요", "먹지 못해요", "못 먹어요", "안 먹었어요"]
     },
     {
-        'text': "<p><strong>A: 이번 주말에 친구들과 즐거운 캠핑을 가기로 했어요.<br>B: 와, 신나겠네요! 가서 다 같이 ________ 고기와 신선한 채소는 모두 준비했어요?</strong></p>",
-        'explanation': "<p><strong>먹을</strong>: <code>-(으)ㄹ</code> kelasi zamon sifatdoshidir. '먹다' undosh bilan tugagani uchun '-을' qo'shiladi.</p>",
-        'correct': "먹을",
-        'choices': ["먹을", "먹는", "먹은", "먹고 나서"]
+        'text': "<p><strong>A: 어제 밤에 일찍 주무셨어요?<br>B: 아니요, 커피를 너무 많이 마셔서 새벽까지 ________.</strong></p>",
+        'explanation': "<p><strong>자지 못했어요</strong>: Qahva ta'sirida uxlash imkoniyati yo'qolgani <code>-지 못하다</code> orqali o'tgan zamonda beriladi.</p>",
+        'correct': "자지 못했어요",
+        'choices': ["자지 않았어요", "자지 못했어요", "안 잤어요", "자지 않아요"]
     },
     {
-        'text': "<p><strong>A: 나중에 어떤 집으로 이사하고 싶어요?<br>B: 저는 창문이 크고 햇빛이 잘 들어오는 아주 ________ 집에서 살고 싶어요.</strong></p>",
-        'explanation': "<p><strong>밝은</strong>: <code>-(으)ㄴ</code> sifatlarga qo'shilib aniqlovchi yasaydi. '밝다' undoshga tugagani uchun '-은' qo'shiladi.</p>",
-        'correct': "밝은",
-        'choices': ["밝은", "밝는", "밝을", "밝으면서"]
+        'text': "<p><strong>A: 저녁 식사 다 하셨어요?<br>B: 아니요, 입맛이 없어서 밥을 반도 ________.</strong></p>",
+        'explanation': "<p><strong>못 먹었어요</strong>: Ishtaha yo'qligi sababli yeya olmaslik holati <code>못 V</code> orqali ko'rsatiladi.</p>",
+        'correct': "못 먹었어요",
+        'choices': ["안 먹었어요", "먹지 않았어요", "먹지 않아요", "못 먹었어요"]
     },
     {
-        'text': "<p><strong>A: 오늘 아침에 많이 피곤해 보였어요.<br>B: 네, 어젯밤에 너무 피곤해서 푹신한 침대에 ________ 깊은 잠이 들었어요.</strong></p>",
-        'explanation': "<p><strong>눕자마자</strong>: <code>-자마자</code> harakatning darhol ketma-ketligini bildiradi.</p>",
-        'correct': "눕자마자",
-        'choices': ["눕자마자", "누운 후에", "눕기 전에", "누울 때"]
+        'text': "<p><strong>A: 컴퓨터 수리를 다 끝내셨나요?<br>B: 아니요, 부품이 없어서 아직 ________.</strong></p>",
+        'explanation': "<p><strong>고치지 못했어요</strong>: Qism (detal) yo'qligi tufayli ta'mirlay olmaslik qobiliyat/imkoniyat cheklanganligini bildiradi.</p>",
+        'correct': "고치지 못했어요",
+        'choices': ["고치지 않아요", "안 고쳤어요", "고치지 못했어요", "고치지 못해요"]
     },
     {
-        'text': "<p><strong>A: 집이 엄청 조용하네요. 아이들은 뭐 해요?<br>B: 아이들이 방에서 편안하게 낮잠을 ________ 저는 거실을 조용히 치웠어요.</strong></p>",
-        'explanation': "<p><strong>자는 동안</strong>: <code>-는 동안</code> ikki xil shaxsning harakatlari bir vaqtda bo'layotganini ifodalash uchun juda mos.</p>",
-        'correct': "자는 동안",
-        'choices': ["자는 동안", "자면서", "자고 나서", "자기 전에"]
+        'text': "<p><strong>A: 새 집은 마음에 들어요?<br>B: 방은 넓은데 거실이 생각보다 ________.</strong></p>",
+        'explanation': "<p><strong>넓지 않아요</strong>: '넓다' (keng) sifatini inkor qilishda <code>-지 않다</code> qo'llaniladi.</p>",
+        'correct': "넓지 않아요",
+        'choices': ["넓지 못해요", "넓지 않아요", "못 넓어요", "안 넓었어요"]
     },
     {
-        'text': "<p><strong>A: 저녁 맛있게 먹고 우리 산책할까요?<br>B: 네, 시원한 밤바람을 ________ 넓은 공원을 천천히 걸어요.</strong></p>",
-        'explanation': "<p><strong>맞으면서</strong>: <code>-(으)면서</code> qo'shimchasi. '맞다' undoshga tugagani uchun '-으면서' ulanadi.</p>",
-        'correct': "맞으면서",
-        'choices': ["맞으면서", "맞는 동안", "맞고 나서", "맞기 전에"]
+        'text': "<p><strong>A: 오늘 저녁에 같이 영화 볼래요?<br>B: 미안해요. 내일 시험이 있어서 오늘은 ________.</strong></p>",
+        'explanation': "<p><strong>못 가요</strong>: Imtihon sababli bora olmaslik (imkoniyat yo'qligi) <code>못 V</code> yordamida yoziladi.</p>",
+        'correct': "못 가요",
+        'choices': ["못 가요", "안 가요", "가지 않아요", "가지 않았어요"]
     },
     {
-        'text': "<p><strong>A: 수미 씨와 언제부터 그렇게 친해졌어요?<br>B: 우리가 서로 ________ 벌써 10년이 다 되어가요. 정말 소중한 친구예요.</strong></p>",
-        'explanation': "<p><strong>안 지</strong>: <code>-(으)ㄴ 지</code> qo'shimchasi. '알다' (bilmoq/tanimoq) fe'lidagi 'ㄹ' harfi tushib qoladi va '-ㄴ 지' qo'shiladi.</p>",
-        'correct': "안 지",
-        'choices': ["안 지", "알기 전에", "알면서", "아는 동안"]
+        'text': "<p><strong>A: 길에서 우연히 옛날 친구를 만났는데, 그 친구가 저를 ________.<br>B: 정말요? 서운했겠네요.</strong></p>",
+        'explanation': "<p><strong>알아보지 못했어요</strong>: Taniy olmaslik (qobiliyat/imkoniyat yo'qligi) '알아보다' fe'li bilan <code>-지 못하다</code> shaklida keladi.</p>",
+        'correct': "알아보지 못했어요",
+        'choices': ["알아보지 않았어요", "안 알아봤어요", "알아보지 못해요", "알아보지 못했어요"]
     },
     {
-        'text': "<p><strong>A: 이 냄새나는 쓰레기들은 언제 버릴까요?<br>B: 식사를 모두 ________ 한꺼번에 모아서 밖에 버립시다.</strong></p>",
-        'explanation': "<p><strong>하고 나서</strong>: <code>-고 나서</code> ovqatlanish jarayoni butunlay tugagach, tozalashga o'tishни bildiradi.</p>",
-        'correct': "하고 나서",
-        'choices': ["하고 나서", "하기 전에", "하면서", "할 때"]
+        'text': "<p><strong>A: 이 국이 많이 짠가요?<br>B: 아니요, 간이 딱 맞아서 하나도 ________.</strong></p>",
+        'explanation': "<p><strong>짜지 않아요</strong>: '짜다' (sho'r) sifatiga inkor shakli <code>-지 않다</code> yoki <code>안</code> qo'shiladi.</p>",
+        'correct': "짜지 않아요",
+        'choices': ["짜지 못해요", "짜지 않아요", "못 짜요", "안 짰어요"]
     },
     {
-        'text': "<p><strong>A: 외국 생활을 하면서 고향이 가장 그리울 때가 언제예요?<br>B: 저는 혼자 좁은 방에 있는데 몸이 많이 ________ 따뜻한 가족들이 가장 보고 싶어요.</strong></p>",
-        'explanation': "<p><strong>아플 때</strong>: <code>-(으)ㄹ 때</code> kasal bo'lgan paytni bildiradi.</p>",
-        'correct': "아플 때",
-        'choices': ["아플 때", "아프기 전에", "아픈 후에", "아프면서"]
+        'text': "<p><strong>A: 한국 노래를 부를 줄 알아요?<br>B: 아니요, 가사를 몰라서 아직 한 곡도 ________.</strong></p>",
+        'explanation': "<p><strong>부르지 못해요</strong>: Matnni bilmagani uchun kuylay olmaslik imkoniyatsizligi <code>-지 못하다</code> bilan ko'rsatiladi.</p>",
+        'correct': "부르지 못해요",
+        'choices': ["부르지 않아요", "안 불러요", "부르지 못해요", "부르지 않았어요"]
     },
     {
-        'text': "<p><strong>A: 언제 교수님께 다시 연락을 드릴까요?<br>B: 내일 오전 복잡한 수업을 모두 ________ 교수님 연구실로 조용히 찾아가 보세요.</strong></p>",
-        'explanation': "<p><strong>마친 후에</strong>: <code>-(으)ㄴ 후에</code> dars tugaganidan keyingi vaqtni bildiradi.</p>",
-        'correct': "마친 후에",
-        'choices': ["마친 후에", "마치기 전에", "마칠 때", "마치면서"]
+        'text': "<p><strong>A: 일요일에 항상 등산하세요?<br>B: 아니요, 비가 오는 날에는 위험해서 아예 ________.</strong></p>",
+        'explanation': "<p><strong>안 가요</strong>: Xavfli bo'lgani uchun o'z qarori bilan toqqa chiqmasligi <code>안 V</code> bilan aytiladi.</p>",
+        'correct': "안 가요",
+        'choices': ["안 가요", "못 가요", "가지 못해요", "가지 못했어요"]
     },
     {
-        'text': "<p><strong>A: 밖에 눈이 펑펑 오고 있어요.<br>B: 길이 많이 미끄러우니까, 외출________ 꼭 따뜻한 겨울 신발을 신으세요.</strong></p>",
-        'explanation': "<p><strong>하기 전에</strong>: <code>-기 전에</code> uydan chiqishdan oldingi vaqtni ko'rsatadi.</p>",
-        'correct': "하기 전에",
-        'choices': ["하기 전에", "한 후에", "할 때", "하면서"]
+        'text': "<p><strong>A: 어제 보낸 이메일 확인하셨어요?<br>B: 죄송해요. 인터넷이 끊겨서 아직 ________.</strong></p>",
+        'explanation': "<p><strong>확인하지 못했어요</strong>: Internet tarmog'i yo'qligi sababli tekshira olmaslik <code>-지 못하다</code> orqali beriladi.</p>",
+        'correct': "확인하지 못했어요",
+        'choices': ["확인하지 않았어요", "안 확인했어요", "확인하지 않아요", "확인하지 못했어요"]
     },
     {
-        'text': "<p><strong>A: 도서관에서 어떤 책을 그렇게 집중해서 찾고 있어요?<br>B: 제가 요즘 자주 ________ 한국어 고급 문법 책을 찾고 있어요.</strong></p>",
-        'explanation': "<p><strong>읽는</strong>: <code>-는</code> hozirgi zamon sifatdoshidir. '읽다' fe'liga '-는' ulanadi.</p>",
-        'correct': "읽는",
-        'choices': ["읽는", "읽은", "읽을", "읽기 전에"]
+        'text': "<p><strong>A: 새로 산 치마를 왜 한 번도 안 입었어요?<br>B: 사이즈가 너무 작아서 저한테 ________.</strong></p>",
+        'explanation': "<p><strong>맞지 않아요</strong>: Kiyimning o'ziga mos kelmasligi (맞다) holatni bildiradi, shuning uchun <code>-지 않다</code> ishlatiladi.</p>",
+        'correct': "맞지 않아요",
+        'choices': ["맞지 못해요", "맞지 않아요", "못 맞아요", "안 맞았어요"]
     },
     {
-        'text': "<p><strong>A: 식탁 위에 있는 이 달콤한 딸기 케이크는 누가 샀어요?<br>B: 아, 그거 제가 아침에 유명한 빵집에서 ________ 케이크예요. 맛있게 드세요!</strong></p>",
-        'explanation': "<p><strong>사 온</strong>: <code>-(으)ㄴ</code> o'tgan zamon sifatdoshidir. '사 오다' (sotib olib kelmoq) fe'liga '-ㄴ' qo'shilgan.</p>",
-        'correct': "사 온",
-        'choices': ["사 온", "사 오는", "사 올", "사 오고 나서"]
+        'text': "<p><strong>A: 어제 약속 시간에 왜 늦었어요?<br>B: 길을 잃어버려서 제시간에 ________.</strong></p>",
+        'explanation': "<p><strong>도착하지 못했어요</strong>: Adashib qolganlik sababli manzilga vaqtida bora olmaslik <code>-지 못하다</code> qolipiga kiradi.</p>",
+        'correct': "도착하지 못했어요",
+        'choices': ["도착하지 않았어요", "안 도착했어요", "도착하지 못했어요", "도착하지 않아요"]
     },
     {
-        'text': "<p><strong>A: 다음 주 워크숍에서 무엇을 주로 논의하나요?<br>B: 내년 새로운 글로벌 프로젝트에 대해 ________ 내용이 아주 많습니다.</strong></p>",
-        'explanation': "<p><strong>발표할</strong>: <code>-(으)ㄹ</code> kelasi zamon sifatdoshidir. '발표하다' (taqdimot qilmoq) fe'liga '-ㄹ' ulanadi.</p>",
-        'correct': "발표할",
-        'choices': ["발표할", "발표하는", "발표한", "발표하면서"]
+        'text': "<p><strong>A: 수영을 꽤 잘하시네요! 어렸을 때 배웠어요?<br>B: 아니요, 어릴 때는 물이 무서워서 전혀 ________.</strong></p>",
+        'explanation': "<p><strong>하지 못했어요</strong>: Bolalikdagi suvdan qo'rqish sababli suza olmaslikni o'tgan zamonda <code>-지 못하다</code> bilan ifodalaymiz.</p>",
+        'correct': "하지 못했어요",
+        'choices': ["하지 못했어요", "하지 않았어요", "안 했어요", "하지 않아요"]
     },
     {
-        'text': "<p><strong>A: 수미 씨가 만나는 남자친구는 어떤 사람이에요?<br>B: 성격이 정말 착하고 남을 배려하는 마음이 ________ 사람이에요.</strong></p>",
-        'explanation': "<p><strong>따뜻한</strong>: <code>-(으)ㄴ</code> sifatga qo'shilib aniqlovchi yasaydi. '따뜻하다' (issiq/mehribon) + '-ㄴ'.</p>",
-        'correct': "따뜻한",
-        'choices': ["따뜻한", "따뜻하는", "따뜻할", "따뜻하면서"]
+        'text': "<p><strong>A: 그 식당 음식은 어때요? 맛있어요?<br>B: 소문이 많이 났는데, 막상 먹어보니 별로 ________.</strong></p>",
+        'explanation': "<p><strong>맛있지 않았어요</strong>: '맛있다' (mazali) sifati inkor qilinganda odatda <code>-지 않다</code> shaklidan foydalaniladi.</p>",
+        'correct': "맛있지 않았어요",
+        'choices': ["맛있지 못했어요", "못 맛있어요", "안 맛있었어요", "맛있지 않았어요"]
     },
     {
-        'text': "<p><strong>A: 매일 아침에 일찍 일어나서 보통 제일 먼저 뭐 해요?<br>B: 저는 아침에 눈을 ________ 시원한 생수를 꿀꺽꿀꺽 한 잔 마셔요.</strong></p>",
-        'explanation': "<p><strong>뜨자마자</strong>: <code>-자마자</code> ko'zni ochish bilan suv ichish harakati ketma-ket yuz berganini bildiradi.</p>",
-        'correct': "뜨자마자",
-        'choices': ["뜨자마자", "뜬 후에", "뜨는 동안", "뜨기 전에"]
+        'text': "<p><strong>A: 이메일 비밀번호를 잊어버렸어요?<br>B: 네, 아무리 생각해도 도무지 ________.</strong></p>",
+        'explanation': "<p><strong>생각나지 않아요</strong>: Eslay olmaslik '생각나다' fe'li bilan <code>-지 않다</code> (o'z-o'zidan sodir bo'lmayotgan holat) sifatida ko'p ishlatiladi.</p>",
+        'correct': "생각나지 않아요",
+        'choices': ["생각나지 못해요", "생각나지 않아요", "못 생각나요", "안 생각났어요"]
     },
     {
-        'text': "<p><strong>A: 밥 먹을 때 스마트폰을 계속 보면 건강에 매우 안 좋대요.<br>B: 맞아요. 저도 이제 밥을 ________ 스마트폰을 절대 보지 않으려고 해요.</strong></p>",
-        'explanation': "<p><strong>먹으면서</strong>: <code>-(으)면서</code> ovqatlanish va telefon ko'rish harakatlarining bir vaqtda sodir bo'lishiga ishora qiladi.</p>",
-        'correct': "먹으면서",
-        'choices': ["먹으면서", "먹기 전에", "먹고 나서", "먹은 지"]
+        'text': "<p><strong>A: 담배 피우세요?<br>B: 아니요, 건강을 위해서 3년 전부터 아예 ________.</strong></p>",
+        'explanation': "<p><strong>피우지 않아요</strong>: O'z xohishi bilan chekishni tashlagani <code>-지 않다</code> bilan ifodalanadi.</p>",
+        'correct': "피우지 않아요",
+        'choices': ["피우지 못해요", "피우지 못했어요", "피우지 않아요", "안 피웠어요"]
     },
     {
-        'text': "<p><strong>A: 제가 잠깐 우체국에 다녀올게요.<br>B: 알겠습니다. 민수 씨가 우체국에 ________ 저는 여기서 중요한 서류를 빨리 복사할게요.</strong></p>",
-        'explanation': "<p><strong>다녀오는 동안</strong>: <code>-는 동안</code> bir kishi pochitada bo'lgan vaqt davomida boshqa kishi hujjat nusxalayotganini bildiradi.</p>",
-        'correct': "다녀오는 동안",
-        'choices': ["다녀오는 동안", "다녀오면서", "다녀오기 전에", "다녀온 후에"]
+        'text': "<p><strong>A: 부모님께 자주 전화하세요?<br>B: 최근에 야근이 너무 많아서 거의 ________.</strong></p>",
+        'explanation': "<p><strong>못 했어요</strong>: Haddan tashqari ko'p ishlagani sababli qo'ng'iroq qila olmaslik <code>못 V</code> bilan ko'rsatiladi.</p>",
+        'correct': "못 했어요",
+        'choices': ["못 했어요", "안 했어요", "하지 않았어요", "하지 않아요"]
     },
     {
-        'text': "<p><strong>A: 클래식 기타를 정말 멋지게 잘 치시네요! 얼마나 연습하셨어요?<br>B: 기타를 ________ 꽤 오래됐어요. 중학생 때부터 매일 꾸준히 쳤거든요.</strong></p>",
-        'explanation': "<p><strong>배운 지</strong>: <code>-(으)ㄴ 지</code> gitara o'rganishni boshlagan vaqtdan beri qancha o'tganini ko'rsatadi.</p>",
-        'correct': "배운 지",
-        'choices': ["배운 지", "배우기 전에", "배우면서", "배우자마자"]
+        'text': "<p><strong>A: 아까 산 신발을 왜 환불했어요?<br>B: 디자인은 마음에 드는데, 신어보니까 전혀 ________.</strong></p>",
+        'explanation': "<p><strong>편하지 않았어요</strong>: '편하다' (qulay) sifati inkor qilinganda <code>-지 않다</code> orqali aytiladi.</p>",
+        'correct': "편하지 않았어요",
+        'choices': ["편하지 못했어요", "못 편했어요", "안 편해요", "편하지 않았어요"]
     },
     {
-        'text': "<p><strong>A: 손과 옷이 너무 더러워요. 밖에서 대체 뭐 했어요?<br>B: 흙바닥에서 열심히 축구를 ________ 옷을 빨리 깨끗하게 갈아입어야 해요.</strong></p>",
-        'explanation': "<p><strong>하고 나서</strong>: <code>-고 나서</code> futbol o'ynab bo'lgandan keyin kiyim almashtirish kerakligini bildiradi.</p>",
-        'correct': "하고 나서",
-        'choices': ["하고 나서", "하기 전에", "하면서", "할 때"]
+        'text': "<p><strong>A: 이 책을 다 읽으셨나요?<br>B: 아니요, 내용이 너무 어려워서 끝까지 ________.</strong></p>",
+        'explanation': "<p><strong>읽지 못했어요</strong>: Qiyinligi sababli o'qishni tugata olmaslik qobiliyatsizligi <code>-지 못하다</code> orqali beriladi.</p>",
+        'correct': "읽지 못했어요",
+        'choices': ["읽지 않았어요", "읽지 못했어요", "안 읽었어요", "읽지 않아요"]
     },
     {
-        'text': "<p><strong>A: 이번 주말에 볼 액션 영화 표를 언제 예매할까요?<br>B: 좋은 자리가 다 ________ 지금 당장 빨리 예매합시다.</strong></p>",
-        'explanation': "<p><strong>팔리기 전에</strong>: <code>-기 전에</code> chiptalar sotilib ketishidan oldin degan ma'noni beradi.</p>",
-        'correct': "팔리기 전에",
-        'choices': ["팔리기 전에", "팔린 후에", "팔릴 때", "팔리자마자"]
+        'text': "<p><strong>A: 지갑을 잃어버렸다고요? 찾으셨어요?<br>B: 온 집안을 다 뒤졌는데도 결국 ________.</strong></p>",
+        'explanation': "<p><strong>찾지 못했어요</strong>: Har qancha qidirsa ham topa olmaslik natijasi <code>-지 못하다</code> orqali bildiriladi.</p>",
+        'correct': "찾지 못했어요",
+        'choices': ["찾지 않았어요", "안 찾았어요", "찾지 못했어요", "찾지 않아요"]
     }
 ]
 
@@ -210,10 +209,10 @@ class Command(BaseCommand):
         )
 
         practice, created = Practice.objects.get_or_create(
-            title='한국어 V-(으)ㄴ 후에, 기 전에',  # --- IGNORE ---
+            title='Negatives: ~지 않다 / 안 V / ~지 못하다 / 못 V',  # --- IGNORE ---
             master=master,
             defaults={
-                'description': '기 전에, ㄴ 후에, -(으)면서 등 다양한 한국어 문법 입자들을 활용하여 문장 완성하기 연습입니다.',
+                'description': 'Practice using various negative forms in Korean grammar, including ~지 않다, 안 V, ~지 못하다, and 못 V.',
                 'subject': subject,
                 'level': 'medium',
                 'is_free': True,

@@ -239,11 +239,21 @@ def finish_practice(request, attempt_id):
 
         score = (earned_points / total_points * 100) if total_points > 0 else 0
 
+        level_mul = {'easy': 1.0, 'medium': 1.5, 'hard': 2.0}.get(practice.level, 1.0)
+        rating_pts = round((score / 100) * 10 * level_mul + 2, 1)
+
         attempt.score = score
+        attempt.rating_points = rating_pts
         attempt.status = 'completed'
         attempt.completed_at = timezone.now()
         attempt.save()
         _auto_link_homework(attempt)
+
+        # Recalculate panda's total rating from all completed attempts
+        panda = attempt.panda
+        all_pts = list(panda.attempts.filter(status='completed').values_list('rating_points', flat=True))
+        panda.rating = round(sum(all_pts))
+        panda.save(update_fields=['rating'])
 
     return redirect('practice_result', attempt_id=attempt.id)
 

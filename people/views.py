@@ -6,6 +6,33 @@ from django.contrib.auth.decorators import login_required
 from masters.models import Master
 from .models import Notification
 
+_RANK_THRESHOLDS = [
+    (0, 'Novice', 50),
+    (50, 'Scholar', 150),
+    (150, 'Expert', 300),
+    (300, 'Grandmaster', None),
+]
+
+def _next_rank_pts(rating):
+    for low, name, cap in _RANK_THRESHOLDS:
+        if cap and rating < cap:
+            return cap
+    return None
+
+def _next_rank_name(rating):
+    if rating < 50: return 'Scholar'
+    if rating < 150: return 'Expert'
+    if rating < 300: return 'Grandmaster'
+    return None
+
+def _rank_progress_pct(rating):
+    """Percent through the current rank tier (0-100)."""
+    tiers = [(0, 50), (50, 150), (150, 300), (300, 500)]
+    for low, high in tiers:
+        if rating < high:
+            return min(100, round((rating - low) / (high - low) * 100))
+    return 100
+
 
 def register(request):
     if request.method == 'POST':
@@ -28,9 +55,29 @@ def _profile_context(viewed_user, is_own_profile):
     people = viewed_user.profile
     master = getattr(people, 'master', None)
     panda = getattr(people, 'panda', None)
+    from django.db.models import Avg, Count as _Count
     practices = master.practices.filter(is_published=True).order_by('-created_at')[:5] if master else []
-    recent_attempts = panda.attempts.filter(status='completed').order_by('-completed_at')[:5] if panda else []
+    recent_attempts = (
+        panda.attempts.filter(status='completed')
+        .select_related('practice')
+        .order_by('-completed_at')[:8]
+    ) if panda else []
     all_masters = Master.objects.only('id', 'name').order_by('name') if panda else []
+
+    # Rating stats for student profile
+    rating_stats = None
+    if panda:
+        agg = panda.attempts.filter(status='completed').aggregate(
+            total=_Count('id'),
+            avg_score=Avg('score'),
+        )
+        rating_stats = {
+            'total_tests': agg['total'] or 0,
+            'avg_score': round(agg['avg_score'] or 0, 1),
+            'next_rank_pts': _next_rank_pts(panda.rating),
+            'next_rank_name': _next_rank_name(panda.rating),
+            'rank_progress_pct': _rank_progress_pct(panda.rating),
+        }
 
     # Homework for profile display (own profile only — private data)
     panda_hw_pending = panda_hw_done = master_hw = None
@@ -62,6 +109,7 @@ def _profile_context(viewed_user, is_own_profile):
         'panda_hw_pending': panda_hw_pending,
         'panda_hw_done': panda_hw_done,
         'master_hw': master_hw,
+        'rating_stats': rating_stats,
     }
 
 
