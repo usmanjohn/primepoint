@@ -42,6 +42,7 @@ def master_detail(request, master_id):
     experience_years = days_active // 365
     experience_months = (days_active % 365) // 30
 
+    student_count = master.pandas.count()
     students = master.pandas.select_related('profile__user').order_by('-rating')[:8]
 
     groups = []
@@ -72,6 +73,7 @@ def master_detail(request, master_id):
         'total_questions': total_questions,
         'experience_years': experience_years,
         'experience_months': experience_months,
+        'student_count': student_count,
         'students': students,
         'groups': groups,
         'homeworks': homeworks,

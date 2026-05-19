@@ -225,18 +225,26 @@
   border-radius: 14px;
   padding: 1.1rem;
   text-decoration: none;
-  color: inherit;
+  color: var(--text);
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
-  transition: transform 0.18s, border-color 0.18s;
+  transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
   position: relative;
 }
-.mdt-tut-card:hover { transform: translateY(-2px); border-color: var(--accent); color: inherit; text-decoration: none; }
+.mdt-tut-card:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--text); text-decoration: none; box-shadow: 0 6px 20px rgba(56,189,248,0.08); }
 .mdt-tut-cat { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; background: var(--accent-glow); color: var(--accent); padding: 0.15rem 0.55rem; border-radius: 4px; width: fit-content; }
 .mdt-tut-title { font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 700; color: var(--text); margin: 0; line-height: 1.3; }
 .mdt-tut-meta { display: flex; gap: 0.6rem; font-size: 0.72rem; color: var(--text-muted); flex-wrap: wrap; margin-top: auto; }
 .mdt-tut-actions { position: absolute; top: 0.75rem; right: 0.75rem; display: flex; gap: 0.3rem; }
+.mdt-tut-edit-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 4px 8px; border-radius: 6px; font-size: 0.65rem;
+  border: 1px solid var(--border); background: var(--surface);
+  color: var(--text-muted); text-decoration: none;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.mdt-tut-edit-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
 
 /* ── Groups ─────────────────────────────────────────────────── */
 .mdt-groups {
@@ -364,7 +372,7 @@
   </div>
   <div class="mdt-stat">
     <div class="mdt-stat-icon"><i class="bi bi-people-fill"></i></div>
-    <div class="mdt-stat-num">{{ master.student_count }}</div>
+    <div class="mdt-stat-num">{{ student_count }}</div>
     <div class="mdt-stat-lbl">{% trans "Students" %}</div>
   </div>
   <div class="mdt-stat">
@@ -516,16 +524,16 @@
     <a href="{% url 'tutorial_detail' t.pk %}" class="mdt-tut-card">
       {% if is_owner %}
       <div class="mdt-tut-actions">
-        <a href="{% url 'tutorial_edit' t.pk %}" class="btn-auth-outline py-1 px-2 text-decoration-none" style="font-size:0.65rem;" onclick="event.stopPropagation();">
+        <a href="{% url 'tutorial_edit' t.pk %}" class="mdt-tut-edit-btn" onclick="event.stopPropagation();">
           <i class="bi bi-pencil-square"></i>
         </a>
       </div>
       {% endif %}
-      <span class="mdt-tut-cat">{{ t.category }}</span>
+      <span class="mdt-tut-cat">{{ t.get_category_display }}</span>
       <p class="mdt-tut-title">{{ t.title }}</p>
       <div class="mdt-tut-meta">
         <span><i class="bi bi-eye me-1"></i>{{ t.views }}</span>
-        <span><i class="bi bi-clock me-1"></i>{{ t.read_time }}m read</span>
+        <span><i class="bi bi-clock me-1"></i>{{ t.read_time }}m {% trans "read" %}</span>
         <span><i class="bi bi-calendar3 me-1"></i>{{ t.created_at|date:"M d" }}</span>
       </div>
     </a>
