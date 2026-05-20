@@ -3,158 +3,156 @@ from django.contrib.auth.models import User
 from masters.models import Master
 from practice.models import Subject, Practice, PracticeQuestion, PracticeChoice
 
-QUESTIONS = [
+QUESTIONS_PART2 = [
     {
-        'text': "<p><strong>A: 지민 씨, 어제 백화점에서 뭐 샀어요?<br>B: 겨울 코트가 너무 비싸서 그냥 가방________ 하나 샀어요.</strong></p>",
-        'explanation': "<p><strong>가방을</strong>: '샀어요' (sotib oldim) o'timli fe'li kelgani uchun 'gabaong' (sumka) so'ziga tushum kelishigi (<code>-을/를</code>) qo'shilishi kerak. Unli bilan tugagani uchun <code>를</code> tanlanadi.</p>",
-        'correct': "가방을",
-        'choices': ["가방이", "가방은", "가방을", "가방가"]
+        'text': "<p><strong>A: 아지즈 씨, 지금 어디에 가고 있어요?<br>B: 내일 시험이 있어서 공부하러 도서관________ 가고 있어요.</strong></p>",
+        'explanation': "<p><strong>도서관에</strong>: '가다' (bormoq) yo'nalish fe'li kelganda, harakat yo'nalgan joyga <code>-에</code> kelishigi qo'shiladi.</p>",
+        'correct': "도서관에",
+        'choices': ["도서관에서", "도서관에", "도서관부터", "도서관까지"]
     },
     {
-        'text': "<p><strong>A: 창문을 열어 보니까 밖에 눈________ 많이 내리고 있네요.<br>B: 우와, 정말요? 오늘 날씨가 많이 춥겠어요.</strong></p>",
-        'explanation': "<p><strong>눈이</strong>: Tabiat hodisalarini (yomg'ir, qor, shamol) ilk bor tasvirlaganda yoki yangi ma'lumot berilganda ega kelishigi (<code>-이/가</code>) ishlatiladi. '눈' undosh bilan tugagani uchun <code>이</code> keladi.</p>",
-        'correct': "눈이",
-        'choices': ["눈은", "눈이", "눈을", "눈가"]
+        'text': "<p><strong>A: 주말에 보통 어디에서 친구를 만나요?<br>B: 주말에는 보통 조용한 카페________ 만나서 커피를 마셔요.</strong></p>",
+        'explanation': "<p><strong>카페에서</strong>: '만나다' (chrashmoq) kabi dinamik ish-harakat sodir bo'layotgan joyni ifodalash uchun o'rin-payt kelishigi (<code>-에서</code>) ishlatilishi kerak.</p>",
+        'correct': "카페에서",
+        'choices': ["카페에", "카페에서", "카페부터", "카페까지"]
     },
     {
-        'text': "<p><strong>A: 수박 한 통에 얼마예요?<br>B: 수박________ 한 통에 25,000원입니다. 아주 달고 맛있어요.</strong></p>",
-        'explanation': "<p><strong>수박은</strong>: Suhbatning asosiy mavzusini belgilash yoki narx so'ralgan buyumga urg'u berish uchun mavzu yuklamasi (<code>-은/는</code>) ishlatiladi. Undosh bilan tugagani uchun <code>은</code> to'g'ri.</p>",
-        'correct': "수박은",
-        'choices': ["수박이", "수박을", "수박은", "수박가"]
+        'text': "<p><strong>A: 회사 근무 시간이 어떻게 되나요?<br>B: 오전 9시________ 오후 6시까지 일합니다. 주말에는 쉽니다.</strong></p>",
+        'explanation': "<p><strong>9시부터</strong>: Vaqtning boshlanish nuqtasini ko'rsatish uchun <code>-부터</code> yuklamasi ishlatiladi. '오후 6시까지' (soat 6-gacha) iborasi bilan juftlik hosil qiladi.</p>",
+        'correct': "9시부터",
+        'choices': ["9시에", "9시에서", "9시부터", "9시까지"]
     },
     {
-        'text': "<p><strong>A: 마크 씨, 혹시 시간 있으면 저 좀 도와줄 수 있어요?<br>B: 미안해요. 지금 중요함 이메일________ 쓰고 있어서 조금 바빠요.</strong></p>",
-        'explanation': "<p><strong>이메일을</strong>: '쓰고 있다' (yozmoqda) harakati to'g'ridan-to'g'ri 'imeil'ga yo'naltirilgan. O'zbek tilidagi '-ni' kelishigiga mos keladigan tushum kelishigi (<code>-을/를</code>) kerak.</p>",
-        'correct': "이메일을",
-        'choices': ["이메일이", "이메일은", "이메일을", "이메일가"]
+        'text': "<p><strong>A: 안바르 씨의 고향은 어디예요?<br>B: 저는 우즈베키스탄________ 왔습니다. 만나서 반갑습니다.</strong></p>",
+        'explanation': "<p><strong>우즈베키스탄에서</strong>: Kelib chiqish mamlakati yoki harakatning boshlanish joyini '오다' (kelmoq) fe'li bilan ifodalashda <code>-에서</code> ishlatiladi.</p>",
+        'correct': "우즈베키스탄에서",
+        'choices': ["우즈베키스탄에", "우즈베키스탄에서", "우즈베키스탄부터", "우즈베키스탄까지"]
     },
     {
-        'text': "<p><strong>A: 누가 교실 청소를 안 하고 그냥 갔어요?<br>B: 아까 민우________ 청소를 안 하고 집에 가는 걸 봤어요.</strong></p>",
-        'explanation': "<p><strong>민우가</strong>: '누가?' (Kim?) degan aniq savolga javob berayotganda, harakatni bajargan aniq shaxsni (egani) ko'rsatish uchun ega kelishigi (<code>-이/가</code>) ishlatiladi.</p>",
-        'correct': "민우가",
-        'choices': ["민우는", "민우가", "민우를", "민우이"]
+        'text': "<p><strong>A: 집이 학교하고 가깝습니까?<br>B: 네, 아주 가깝습니다. 집________ 학교까지 걸어서 5분밖에 안 걸려요.</strong></p>",
+        'explanation': "<p><strong>집에서</strong>: Joylar orasidagi masofa haqida gap ketganda, boshlanish joyiga <code>-에서</code>, tugash joyiga esa '까지' qo'shiladi.</p>",
+        'correct': "집에서",
+        'choices': ["집에", "집에서", "집부터", "집까지"]
     },
     {
-        'text': "<p><strong>A: 한국어 공부가 아주 재미있지요?<br>B: 네, 한국어________ 재미있어요. 하지만 단어가 너무 어려워요.</strong></p>",
-        'explanation': "<p><strong>한국어는</strong>: Gapning bosh mavzusi yoki taqqoslash obyekti sifatida 'Koreys tiliga kelsak, u qiziqarli (lekin so'zlari qiyin)' ma'nosini ifodalash uchun <code>-은/는</code> qo'llanadi.</p>",
-        'correct': "한국어는",
-        'choices': ["한국어가", "한국어는", "한국어를", "한국어이"]
+        'text': "<p><strong>A: 마크 씨, 혹시 지금 방에 책상이 있어요?<br>B: 네, 방________ 침대하고 책상이 모두 있어요.</strong></p>",
+        'explanation': "<p><strong>방에</strong>: Shaxs yoki narsaning ma'lum bir joyda mavjudligini (<code>있다/없다</code>) ko'rsatish uchun joy so'ziga <code>-에</code> qo'shiladi.</p>",
+        'correct': "방에",
+        'choices': ["방에", "방에서", "방부터", "방까지"]
     },
     {
-        'text': "<p><strong>A: 주말에 보통 뭐 하면서 시간을 보내세요?<br>B: 집에서 재미있는 영화________ 보거나 음악을 들어요.</strong></p>",
-        'explanation': "<p><strong>영화를</strong>: '보다' (ko'rmoq) fe'lining obyekti bo'lgani uchun tushum kelishigi (<code>-을/를</code>) ishlatiladi. '영화' unli bilan tugagani uchun <code>를</code> keladi.</p>",
-        'correct': "영화를",
-        'choices': ["영화가", "영화는", "영화를", "영화이"]
+        'text': "<p><strong>A: 한국 대학교는 보통 몇 월________ 첫 학기가 시작돼요?<br>B: 한국은 보통 3월에 새 학기가 시작됩니다.</strong></p>",
+        'explanation': "<p><strong>월에</strong>: Muayyan vaqtni (yil, oy, kun, soat) ko'rsatish uchun vaqt so'zidan keyin har doim <code>-에</code> payt kelishigi qo'yiladi.</p>",
+        'correct': "월에",
+        'choices': ["월에", "월에서", "월부터", "월까지"]
     },
     {
-        'text': "<p><strong>A: 저기요, 아까 주문한 음식________ 아직 안 나왔어요.<br>B: 죄송합니다, 손님. 주방에 확인해 보고 바로 가져다 드리겠습니다.</strong></p>",
-        'explanation': "<p><strong>음식이</strong>: Muayyan holatning egasini ko'rsatish va yangi faktni (ovqat chiqmaganini) ta'kidlash uchun ega kelishigi (<code>-이/가</code>) ishlatiladi.</p>",
-        'correct': "음식이",
-        'choices': ["음식은", "음식이", "음식을", "음식가"]
+        'text': "<p><strong>A: 어제 저녁에 왜 전화를 안 받았어요?<br>B: 미안해요. 그때 극장________ 친구하고 영화를 보고 있었어요.</strong></p>",
+        'explanation': "<p><strong>극장에서</strong>: '영화를 보다' (kino ko'rmoq) dinamik harakati sodir bo'layotgan aniq joyni ifodalash uchun <code>-에서</code> talab qilinadi.</p>",
+        'correct': "극장에서",
+        'choices': ["극장에", "극장에서", "극장부터", "극장까지"]
     },
     {
-        'text': "<p><strong>A: 와, 동생분이 키가 아주 크네요!<br>B: 네, 제 남동생________ 키가 커요. 하지만 여동생은 키가 작아요.</strong></p>",
-        'explanation': "<p><strong>남동생은</strong>: Bu yerda 'uksam (남동생)' va 'singlim (여동생)' bir-biriga solishtirilmoqda (kontrast). Taqqoslash vaziyatlarida majburiy ravishda mavzu yuklamasi (<code>-은/는</code>) ishlatiladi.</p>",
-        'correct': "남동생은",
-        'choices': ["남동생이", "남동생은", "남동생을", "남동생가"]
+        'text': "<p><strong>A: 겨울 방학이 언제까지예요?<br>B: 이번 주 금요일________ 방학이고 다음 주 월요일에 개학해요.</strong></p>",
+        'explanation': "<p><strong>금요일까지</strong>: Vaqt yoki muddatning oxirgi tugash nuqtasini belgilash uchun <code>-까지</code> (gacha) yuklamasi qo'shiladi.</p>",
+        'correct': "금요일까지",
+        'choices': ["금요일에", "금요일에서", "금요일부터", "금요일까지"]
     },
     {
-        'text': "<p><strong>A: 아지즈 씨, 어제 왜 전화를 안 받았어요?<br>B: 미안해요, 핸드폰________ 고장 나서 수리점에 맡겼었어요.</strong></p>",
-        'explanation': "<p><strong>핸드폰이</strong>: 'Buzilib qoldi' holatining bevosita egasi telefon bo'lgani va sababini tushuntirayotgani uchun ega kelishigi (<code>-이/가</code>) eng to'g'ri variant hisoblanadi.</p>",
-        'correct': "핸드폰이",
-        'choices': ["핸드폰은", "핸드폰이", "핸드폰을", "핸드폰가"]
+        'text': "<p><strong>A: 흐엉 씨, 한국에 언제 오셨어요?<br>B: 저는 지난주 토요일________ 한국에 도착했습니다.</strong></p>",
+        'explanation': "<p><strong>토요일에</strong>: 'Geenhanju toyoil' (O'tgan hafta shanba) aniq vaqtni anglatgani uchun unga payt kelishigi <code>-에</code> biriktiriladi.</p>",
+        'correct': "토요일에",
+        'choices': ["토요일에", "토요일에서", "토요일부터", "토요일까지"]
     },
     {
-        'text': "<p><strong>A: 배가 너무 고픈데 냉장고에 먹을 게 있을까요?<br>B: 냉장고 안에 우유________ 맛있는 빵이 조금 있어요. 먹으세요.</strong></p>",
-        'explanation': "<p><strong>우유와</strong>: Bu yerda variantlar orasida to'g'ri keladigan bog'lovchi yoki tushum zanjiri tahlil qilinadi. Ammo gap oxirida '빵이 있어요' bo'lgani uchun, undan oldingi otlarni moslash kerak. Variantlarda to'g'ri shakl berilmagan taqdirda, tushum kelishigi zanjiri tekshiriladi. '우유를' orqali nonni yeyish obyekti qilish mumkin edi, lekin 'bor' fe'li (있다) kelganda subyekt zanjiri tutiladi. (Tuzatish: Bu savolda variantlarni to'g'rilab <code>우유하고</code> yoki <code>우유가</code> o'rniga tushum so'ralmoqda deb hisoblasak, gap strukturasi o'zgaradi. Keling, sodda obyekti bor savolga almashtiramiz):<br><strong>A: 마트에 가서 뭐 살 거예요?<br>B: 우유________ 맛있는 빵을 좀 살 거예요.</strong></p>",
-        'explanation_fixed': "<p><strong>우유를</strong>: '살 거예요' (sotib olmoqchiman) o'timli fe'li uchun 'u-yu' (sut) so'zi obyektdir, shuning uchun <code>를</code> qo'yiladi.</p>",
-        'correct': "우유를",
-        'choices': ["우유가", "우유는", "우유를", "우유이"]
+        'text': "<p><strong>A: 매일 저녁 몇 시에 운동을 하세요?<br>B: 퇴근하고 보통 밤 8시________ 9시까지 헬스장에서 운동해요.</strong></p>",
+        'explanation': "<p><strong>8시부터</strong>: Orqasidan '9시까지' kelgani sababli, vaqtning boshlanish chegarasini bildiruvchi <code>-부터</code> eng to'g'ri variantdir.</p>",
+        'correct': "8시부터",
+        'choices': ["8시에", "8시에서", "8시부터", "8시까지"]
     },
     {
-        'text': "<p><strong>A: 안바르 씨, 이번 시험 준비는 잘 하셨어요?<br>B: 수학은 아주 쉬웠어요. 그런데 과학________ 너무 어려워서 걱정이에요.</strong></p>",
-        'explanation': "<p><strong>과학은</strong>: Matematika (수학은) oson bo'lgani, lekin tabiatshunoslik (과학) qiyin bo'lganini qarama-qarshi qo'yib taqqoslash (kontrast) uchun <code>-은/는</code> ishlatiladi.</p>",
-        'correct': "과학은",
-        'choices': ["과학이", "과학은", "과학을", "과학가"]
+        'text': "<p><strong>A: 안드레이 씨, 주말에 공원________ 뭐 했어요?<br>B: 날씨가 좋아서 자전거를 탔어요.</strong></p>",
+        'explanation': "<p><strong>공원에서</strong>: 공원 (bog') ichida '자전거를 타다' (velosiped uchmoq) harakati bajarilgani sababli o'rin-payt kelishigi <code>-에서</code> qo'yiladi.</p>",
+        'correct': "공원에서",
+        'choices': ["공원에", "공원에서", "공원부터", "공원까지"]
     },
     {
-        'text': "<p><strong>A: 밖에서 무슨 소리가 나는 것 같아요. 나가 볼까요?<br>B: 아, 그냥 바람________ 많이 불어서 문이 흔들리는 소리예요.</strong></p>",
-        'explanation': "<p><strong>바람이</strong>: '바람이 불다' (shamol esmoq) birikmasida shamol gapning egasi hisoblanadi. Undosh bilan tugagani uchun <code>이</code> qo'shiladi.</p>",
-        'correct': "바람이",
-        'choices': ["바람은", "바람이", "바람을", "바람가"]
+        'text': "<p><strong>A: 실례지만 시청에 가려면 어디________ 내려야 합니까?<br>B: 다음 버스 정류장에서 내리시면 됩니다.</strong></p>",
+        'explanation': "<p><strong>어디에서</strong>: '내리다' (tushmoq) harakati bajariladigan joy so'ralayotgani uchun <code>어디에서</code> (qayerda) shakli to'g'ri bo'ladi.</p>",
+        'correct': "어디에서",
+        'choices': ["어디에", "어디에서", "어디부터", "어디까지"]
     },
     {
-        'text': "<p><strong>A: 커피를 좋아하세요, 아니면 차를 좋아하세요?<br>B: 저는 커피________ 전혀 안 마셔요. 보통 녹차를 마셔요.</strong></p>",
-        'explanation': "<p><strong>커피는</strong>: Umumiy mavzu sifatida 'Kofega kelsak, men uni ichmayman' deb o'z odatini taqqoslab aytayotgani uchun <code>는</code> yuklamasi mos keladi.</p>",
-        'correct': "커피는",
-        'choices': ["커피가", "커피는", "커피를", "커피이"]
+        'text': "<p><strong>A: 수진 씨, 이번 휴가 때 어디________ 갈 거예요?<br>B: 가족들과 함께 제주도에 가려고 해요.</strong></p>",
+        'explanation': "<p><strong>어디에</strong>: '갈 거예요' (bormoqchiman) yo'nalish fe'li bilan ishlatilganda, so'roq so'zi bo'lgan 'eodi' (qayer) ga <code>-에</code> qo'shiladi.</p>",
+        'correct': "어디에",
+        'choices': ["어디에", "어디에서", "어디부터", "어디까지"]
     },
     {
-        'text': "<p><strong>A: 흐엉 씨, 한국 요리를 잘해요?<br>B: 잘 못해요. 하지만 불고기________ 맛이 괜찮게 만들 수 있어요.</strong></p>",
-        'explanation': "<p><strong>불고기는</strong>: Boshqa ovqatlarni yaxshi qilolmasligini, lekin aynan bulgogini (boshqalariga qaraganda) yaxshi qila olishini taqqoslab ajratish uchun <code>는</code> ishlatiladi.</p>",
-        'correct': "불고기는",
-        'choices': ["불고기가", "불고기는", "불고기를", "불고기이"]
+        'text': "<p><strong>A: 이 백화점은 몇 시에 문을 닫아요?<br>B: 밤 10시________ 영업이 끝납니다. 서두르세요.</strong></p>",
+        'explanation': "<p><strong>10시에</strong>: Vaqt aniq ko'rsatilganda va o'sha vaqtda biror holat yuz berganda <code>-에</code> ishlatiladi.</p>",
+        'correct': "10시에",
+        'choices': ["10시에", "10시에서", "10시부터", "10시까지"]
     },
     {
-        'text': "<p><strong>A: 오늘 아침에 지각했지요? 왜 늦었어요?<br>B: 평소보다 도로에 차________ 너무 많아서 버스가 움직이지 못했어요.</strong></p>",
-        'explanation': "<p><strong>차가 [[이/가]]</strong>: '차' (mashina) so'zi '많다' (ko'p) sifatining egasi hisoblanadi. Unli bilan tugagani uchun <code>가</code> kelishi shart.</p>",
-        'correct': "차가",
-        'choices': ["차는", "차가", "차를", "차이"]
+        'text': "<p><strong>A: 서울역________ 인천공항까지 지하철로 얼마나 걸려요?<br>B: 급행열차를 타면 50분쯤 걸려요.</strong></p>",
+        'explanation': "<p><strong>서울역에서</strong>: '인천공항까지' bilan bog'lanib, masofaning boshlanish nuqtasini ko'rsatgani uchun joy nomi ortidan <code>-에서</code> kelishi shart.</p>",
+        'correct': "서울역에서",
+        'choices': ["서울역에", "서울역에서", "서울역부터", "서울역까지"]
     },
     {
-        'text': "<p><strong>A: 새로 산 노트북이 어때요? 마음에 들어요?<br>B: 네, 디자인________ 아주 깔끔하고 속도도 엄청 빨라요.</strong></p>",
-        'explanation': "<p><strong>디자인이</strong>: Noutbukning muayyan bir qismi yoki xususiyatini ajratib ko'rsatib, uning holatini (깔끔하다) tasvirlash uchun ega kelishigi <code>이</code> ishlatiladi.</p>",
-        'correct': "디자인이",
-        'choices': ["디자인은", "디자인이", "디자인을", "디자인가"]
+        'text': "<p><strong>A: 자밀 씨, 어제 쇼핑몰________ 옷을 많이 샀어요?<br>B: 아니요, 구경만 하고 아무것도 안 샀어요.</strong></p>",
+        'explanation': "<p><strong>쇼핑몰에서</strong>: '옷을 사다' (kiyim sotib olmoq) yoki '구경하다' (tomosha qilmoq) harakatlari bajarilgan joyni anglatish uchun <code>-에서</code> mos keladi.</p>",
+        'correct': "쇼핑몰에서",
+        'choices': ["쇼핑몰에", "쇼핑몰에서", "쇼핑몰부터", "쇼핑몰까지"]
     },
     {
-        'text': "<p><strong>A: 주말에 친구들과 같이 축구 경기 보러 가기로 했어요?<br>B: 아니요, 친구들이 바쁘다고 해서 그냥 혼자 야구________ 보러 가려고요.</strong></p>",
-        'explanation': "<p><strong>야구를</strong>: '보러 가다' (ko'rishga bormoq) harakatining obyekti '야구' (beysbol) bo'lgani uchun tushum kelishigi (<code>-을/를</code>) qo'llanadi.</p>",
-        'correct': "야구를",
-        'choices': ["야구가", "야구는", "야구를", "야구이"]
+        'text': "<p><strong>A: 혹시 지갑을 어디에 두었는지 기억나요?<br>B: 아! 아까 거실 탁자 위________ 올려놓은 것 같아요. 가 보세요.</strong></p>",
+        'explanation': "<p><strong>탁자 위에</strong>: Narsani ma'lum bir nuqtaga qo'yib qo'yish (올려놓다, 두다, 놓다) yo'nalishli joylashuvni bildirgani uchun <code>-에</code> bilan qo'llanadi.</p>",
+        'correct': "탁자 위에",
+        'choices': ["탁자 위에", "탁자 위에서", "탁자 위부터", "탁자 위까지"]
     },
     {
-        'text': "<p><strong>A: 오늘 저녁 사 주셔서 감사합니다. 정말 잘 먹었습니다.<br>B: 아닙니다. 다음에는 아지즈 씨가 맛있는 음식________ 사 주세요.</strong></p>",
-        'explanation': "<p><strong>음식을</strong>: '사 주다' (sotib bermoq / mehmon qilmoq) fe'lining bevosita to'ldiruvchisi '음식' (taom) so'zidir, shu bois <code>을</code> keladi.</p>",
-        'correct': "음식을",
-        'choices': ["음식이", "음식은", "음식을", "음식가"]
+        'text': "<p><strong>A: 은행 업무는 보통 몇 시에 끝나요?<br>B: 오후 4시________ 은행 문을 닫으니까 그 전에 가셔야 해요.</strong></p>",
+        'explanation': "<p><strong>4시에</strong>: Ish-harakat (bank yopilishi) sodir bo'ladigan aniq vaqt momentini ko'rsatgani uchun <code>-에</code> to'g'ri keladi.</p>",
+        'correct': "4시에",
+        'choices': ["4시에", "4시에서", "4시부터", "4시까지"]
     },
     {
-        'text': "<p><strong>A: 안바르 씨, 이번 휴가 때 고향에 갈 거예요?<br>B: 네, 고향에 계시는 부모님________ 너무 보고 싶어서 꼭 갈 거예요.</strong></p>",
-        'explanation': "<p><strong>부모님이</strong>: Koreys tilida '보고 싶다' (sog'inmoq/ko'rgisi kelmoq) iborasi bilan ko'pincha subyekt qaratilib ega kelishigi (<code>-이/가</code>) ishlatilishi juda qonuniyatli va tabiiy hisoblanadi.</p>",
-        'correct': "부모님이",
-        'choices': ["부모님은", "부모님이", "부모님을", "부모님가"]
+        'text': "<p><strong>A: 오늘 한국어 수업은 몇 시부터예요?<br>B: 오후 2시________ 시작하니까 늦지 않게 오세요.</strong></p>",
+        'explanation': "<p><strong>부터</strong>: Darsning boshlanish vaqt chegarasini ta'kidlayotgani va savolda '몇 시부터예요?' deb so'ralgani uchun javobda ham <code>-부터</code> ishlatiladi.</p>",
+        'correct': "부터",
+        'choices': ["에", "에서", "부터", "까지"]
     },
     {
-        'text': "<p><strong>A: 실례지만 누구를 찾으러 오셨습니까?<br>B: 김영수 과장님________ 자리에 계십니까? 만나러 왔습니다.</strong></p>",
-        'explanation': "<p><strong>과장님이</strong>: '자리에 있다' (joyida bo'lmoq) fe'lining egasini aniqlashtirish uchun <code>이</code> kelishigi ishlatiladi.</p>",
-        'correct': "과장님이",
-        'choices': ["과장님은", "과장님이", "과장님을", "과장님가"]
+        'text': "<p><strong>A: 식당 코너는 몇 층________ 있어요?<br>B: 건물 5층에 있으니까 엘리베이터를 타세요.</strong></p>",
+        'explanation': "<p><strong>층에</strong>: '있다' (bor) fe'li bilan birga kelib, qavatning joylashuv o'rnini ko'rsatgani uchun <code>-에</code> qo'shiladi.</p>",
+        'correct': "층에",
+        'choices': ["층에", "층에서", "층부터", "층까지"]
     },
     {
-        'text': "<p><strong>A: 소라 씨, 아까 산 가방은 어디에 뒀어요?<br>B: 너무 무거워서 거실에 있는 책상 위________ 올려두었어요.</strong></p>",
-        'explanation': "<p><strong>(Asosiy Kelishiklar kontekstiga moslash uchun tushum o'zgartirildi): B: 가방________ 너무 무거워서 거실 책상 위에 올려두었어요.</strong></p>",
-        'explanation_fixed': "<p><strong>가방이</strong>: '무겁다' (og'ir) sifatining egasi sumka bo'lgani uchun ega kelishigi <code>이</code> qo'yiladi.</p>",
-        'correct': "가방이",
-        'choices': ["가방은", "가방이", "가방을", "가방가"]
+        'text': "<p><strong>A: 소라 씨는 회사에 다녀요?<br>B: 아니요, 회사에 안 다녀요. 지금은 집________ 재택근무를 하고 있어요.</strong></p>",
+        'explanation': "<p><strong>집에서</strong>: '재택근무를 하다' (uyda turib ishlamoq) harakat fe'li bo'lgani sababli harakat bajarilayotgan joyni ko'rsatuvchi <code>-에서</code> tanlanadi.</p>",
+        'correct': "집에서",
+        'choices': ["집에", "집에서", "집부터", "집까지"]
     },
     {
-        'text': "<p><strong>A: 이 두 우산 중에서 어떤 것이 안바르 씨의 것이에요?<br>B: 이 파란색 우산________ 제 것입니다. 검은색은 친구 거예요.</strong></p>",
-        'explanation': "<p><strong>우산이</strong>: Bir nechta narsa ichidan aynan bittasini aniq ajratib 'mana shu' deb ko'rsatganda (Ega ta'kidlanganda) <code>-이/가</code> ishlatiladi.</p>",
-        'correct': "우산이",
-        'choices': ["우산은", "우산이", "우산을", "우산가"]
+        'text': "<p><strong>A: 여름 휴가는 언제부터 언제까지예요?<br>B: 8월 1일부터 8월 5일________ 휴가예요.</strong></p>",
+        'explanation': "<p><strong>5일까지</strong>: '8월 1일부터' (1-avgustdan) iborasi bilan bog'lanib, ta'til tugaydigan oxirgi muddat chegarasini ko'rsatish uchun <code>-까지</code> kerak.</p>",
+        'correct': "5일까지",
+        'choices': ["5일에", "5일에서", "5일부터", "5일까지"]
     },
     {
-        'text': "<p><strong>A: 매일 저녁에 퇴근하고 나면 보통 뭐 하세요?<br>B: 건강을 위해서 동네 한 바퀴 시원하게 산책________ 해요.</strong></p>",
-        'explanation': "<p><strong>산책을</strong>: '하다' fe'li bilan birga kelib 'sayr qilmoq' iborasini yasayotgan so'zga tushum kelishigi (<code>-을/를</code>) qo'shiladi. Undosh bilan tugagani uchun <code>을</code> to'g'ri.</p>",
-        'correct': "산책을",
-        'choices': ["산책이", "산책은", "산책을", "산책가"]
+        'text': "<p><strong>A: 한국 여행을 가고 싶은데 어디가 좋아요?<br>B: 서울도 좋지만 제주도________ 꼭 가 보세요. 정말 아름다워요.</strong></p>",
+        'explanation': "<p><strong>제주도에</strong>: '가 보다' (borib ko'rmoq) yo'nalishli fe'li bo'lgani sababli boriladigan manzilga <code>-에</code> qo'shiladi.</p>",
+        'correct': "제주도에",
+        'choices': ["제주도에", "제주도에서", "제주도부터", "제주도까지"]
     },
     {
-        'text': "<p><strong>A: 어제 새로 오픈한 우즈베크 식당에 가 봤어요?<br>B: 네, 가 봤어요. 그런데 거기는 전통 빵________ 팔지 않아서 아쉬웠어요.</strong></p>",
-        'explanation': "<p><strong>빵을</strong>: '팔다' (sotmoq) fe'lining bevosita obyekti non bo'lgani sababli tushum kelishigi <code>을</code> kelishi lozim.</p>",
-        'correct': "빵을",
-        'choices': ["빵이", "빵은", "빵을", "빵가"]
+        'text': "<p><strong>A: 한국어 말하기 대회가 어디________ 열립니까?<br>B: 대학교 본관 대강당에서 열릴 예정입니다.</strong></p>",
+        'explanation': "<p><strong>어디에서</strong>: '열리다' (o'tkazilmoq/ochilmoq) tadbiri sodir bo'ladigan joy so'ralayotgani uchun <code>어디에서</code> qo'llanilishi lozim.</p>",
+        'correct': "어디에서",
+        'choices': ["어디에", "어디에서", "어디부터", "어디까지"]
     }
 ]
 
@@ -182,10 +180,10 @@ class Command(BaseCommand):
         )
 
         practice, created = Practice.objects.get_or_create(
-            title='1-dars: Asosiy Kelishiklar',  # --- IGNORE ---
+            title='4-dars: Vaqt/Joy Kelishiklari',  # --- IGNORE ---
             master=master,
             defaults={
-                'description': 'Koreys tili - 3 dars: Asosiy kelishiklar (Egalik hamda tushum kelishiklari)',
+                'description': 'Koreys tili - 4 dars: Vaqt/Joy kelishiklari haqida testlar',
                 'subject': subject,
                 'level': 'hard',
                 'is_free': True,
