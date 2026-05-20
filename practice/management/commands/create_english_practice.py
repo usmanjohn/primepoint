@@ -182,7 +182,7 @@ class Command(BaseCommand):
             title='English Basic Choosing timeline based on tenses',
             master=master,
             defaults={
-                'description': 'Practice using the correct form of timeline and tenses in various contexts.',
+                'description': 'Prtice using the correct form of timeline and tenses in various contexts.',
                 'subject': subject,
                 'level': 'easy',
                 'is_free': True,
