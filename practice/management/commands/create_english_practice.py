@@ -179,7 +179,7 @@ class Command(BaseCommand):
 
         # Create or get the practice and ensure it is published
         practice, created = Practice.objects.get_or_create(
-            title='English Basic: Choosing timeline based on tenses',
+            title='English Basic Choosing timeline based on tenses',
             master=master,
             defaults={
                 'description': 'Practice using the correct form of timeline and tenses in various contexts.',
