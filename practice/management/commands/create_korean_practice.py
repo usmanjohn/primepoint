@@ -3,157 +3,158 @@ from django.contrib.auth.models import User
 from masters.models import Master
 from practice.models import Subject, Practice, PracticeQuestion, PracticeChoice
 
-
 QUESTIONS = [
     {
-        'text': "<p><strong>A: 마크 씨, 지금 바쁘세요?<br>B: 네, 중요한 보고서를 ________ 조금만 기다려 주세요.</strong></p>",
-        'explanation': "<p><strong>작성하고 있어요</strong>: 현재 행동이 계속 진행 중임을 강조하는 진행 시제(<code>-고 있다</code>)가 가장 자연스럽습니다.</p>",
-        'correct': "작성하고 있어요",
-        'choices': ["작성했었어요", "작성할 거예요", "작성하고 있어요", "작성합니다"]
+        'text': "<p><strong>A: 지민 씨, 어제 백화점에서 뭐 샀어요?<br>B: 겨울 코트가 너무 비싸서 그냥 가방________ 하나 샀어요.</strong></p>",
+        'explanation': "<p><strong>가방을</strong>: '샀어요' (sotib oldim) o'timli fe'li kelgani uchun 'gabaong' (sumka) so'ziga tushum kelishigi (<code>-을/를</code>) qo'shilishi kerak. Unli bilan tugagani uchun <code>를</code> tanlanadi.</p>",
+        'correct': "가방을",
+        'choices': ["가방이", "가방은", "가방을", "가방가"]
     },
     {
-        'text': "<p><strong>A: 와, 오늘 하늘이 정말 맑고 예쁘네요!<br>B: 네, 바람도 시원하고 날씨가 무척 ________.</strong></p>",
-        'explanation': "<p><strong>좋습니다</strong>: 현재의 상태를 공식적이거나 정중하게 표현할 때 격식체인 <code>-(스)ㅂ니다</code>를 사용합니다.</p>",
-        'correct': "좋습니다",
-        'choices': ["좋았습니다", "좋을 거예요", "좋고 있었어요", "좋습니다"]
+        'text': "<p><strong>A: 창문을 열어 보니까 밖에 눈________ 많이 내리고 있네요.<br>B: 우와, 정말요? 오늘 날씨가 많이 춥겠어요.</strong></p>",
+        'explanation': "<p><strong>눈이</strong>: Tabiat hodisalarini (yomg'ir, qor, shamol) ilk bor tasvirlaganda yoki yangi ma'lumot berilganda ega kelishigi (<code>-이/가</code>) ishlatiladi. '눈' undosh bilan tugagani uchun <code>이</code> keladi.</p>",
+        'correct': "눈이",
+        'choices': ["눈은", "눈이", "눈을", "눈가"]
     },
     {
-        'text': "<p><strong>A: 리사 씨는 예전에도 머리가 짧았어요?<br>B: 아니요, 고등학생 때는 머리가 아주 ________. 지금은 단발머리지만요.</strong></p>",
-        'explanation': "<p><strong>길었었어요</strong>: 과거에는 그랬지만 현재는 그렇지 않은 단절된 과거 상태를 나타내므로 과거 완료 시제(<code>-았었었어요</code>)가 올바릅니다.</p>",
-        'correct': "길었었어요",
-        'choices': ["길어요", "길고 있어요", "길었었어요", "길 거예요"]
+        'text': "<p><strong>A: 수박 한 통에 얼마예요?<br>B: 수박________ 한 통에 25,000원입니다. 아주 달고 맛있어요.</strong></p>",
+        'explanation': "<p><strong>수박은</strong>: Suhbatning asosiy mavzusini belgilash yoki narx so'ralgan buyumga urg'u berish uchun mavzu yuklamasi (<code>-은/는</code>) ishlatiladi. Undosh bilan tugagani uchun <code>은</code> to'g'ri.</p>",
+        'correct': "수박은",
+        'choices': ["수박이", "수박을", "수박은", "수박가"]
     },
     {
-        'text': "<p><strong>A: 이번 주말에 특별한 계획이 있으신가요?<br>B: 네, 가족들과 함께 제주도로 여행을 ________. 항공권도 벌써 예매했어요.</strong></p>",
-        'explanation': "<p><strong>갈 거예요</strong>: 미래의 확실한 계획이나 예정된 일정을 나타낼 때는 미래 시제(<code>-(으)ㄹ 거예요</code>)를 씁니다.</p>",
-        'correct': "갈 거예요",
-        'choices': ["갑니다", "갔었어요", "갈 거예요", "가고 있어요"]
+        'text': "<p><strong>A: 마크 씨, 혹시 시간 있으면 저 좀 도와줄 수 있어요?<br>B: 미안해요. 지금 중요함 이메일________ 쓰고 있어서 조금 바빠요.</strong></p>",
+        'explanation': "<p><strong>이메일을</strong>: '쓰고 있다' (yozmoqda) harakati to'g'ridan-to'g'ri 'imeil'ga yo'naltirilgan. O'zbek tilidagi '-ni' kelishigiga mos keladigan tushum kelishigi (<code>-을/를</code>) kerak.</p>",
+        'correct': "이메일을",
+        'choices': ["이메일이", "이메일은", "이메일을", "이메일가"]
     },
     {
-        'text': "<p><strong>A: 어제 퇴근하고 뭐 하셨어요?<br>B: 너무 피곤해서 집에 오자마자 바로 ________.</strong></p>",
-        'explanation': "<p><strong>잤어요</strong>: '어제' 일어난 과거의 완료된 행동을 나타내므로 일반 과거 시제(<code>-았/었어요</code>)가 정답입니다.</p>",
-        'correct': "잤어요",
-        'choices': ["자요", "잤어요", "잘 거예요", "자고 있어요"]
+        'text': "<p><strong>A: 누가 교실 청소를 안 하고 그냥 갔어요?<br>B: 아까 민우________ 청소를 안 하고 집에 가는 걸 봤어요.</strong></p>",
+        'explanation': "<p><strong>민우가</strong>: '누가?' (Kim?) degan aniq savolga javob berayotganda, harakatni bajargan aniq shaxsni (egani) ko'rsatish uchun ega kelishigi (<code>-이/가</code>) ishlatiladi.</p>",
+        'correct': "민우가",
+        'choices': ["민우는", "민우가", "민우를", "민우이"]
     },
     {
-        'text': "<p><strong>A: 안바르 씨, 혹시 지금 음악을 ________?<br>B: 아, 죄소합니다. 소리가 너무 컸나요? 바로 줄일게요.</strong></p>",
-        'explanation': "<p><strong>듣고 있어요</strong>: 대화 시점에 상대방이 행동을 실시간으로 진행 중인지 묻고 있으므로 진행 시제(<code>-고 있다</code>)를 사용합니다.</p>",
-        'correct': "듣고 있어요",
-        'choices': ["들었어요", "듣겠습니다", "듣고 있어요", "들었었어요"]
+        'text': "<p><strong>A: 한국어 공부가 아주 재미있지요?<br>B: 네, 한국어________ 재미있어요. 하지만 단어가 너무 어려워요.</strong></p>",
+        'explanation': "<p><strong>한국어는</strong>: Gapning bosh mavzusi yoki taqqoslash obyekti sifatida 'Koreys tiliga kelsak, u qiziqarli (lekin so'zlari qiyin)' ma'nosini ifodalash uchun <code>-은/는</code> qo'llanadi.</p>",
+        'correct': "한국어는",
+        'choices': ["한국어가", "한국어는", "한국어를", "한국어이"]
     },
     {
-        'text': "<p><strong>A: 새로 개봉한 영화 봤어요?<br>B: 아니요, 아직 안 봤어요. 오늘 퇴근한 후에 극장에 ________.</strong></p>",
-        'explanation': "<p><strong>갈 거예요</strong>: 오늘 퇴근 후라는 미래의 행동 계획을 이야기하고 있으므로 미래 시제(<code>-(으)ㄹ 거예요</code>)가 적절합니다.</p>",
-        'correct': "갈 거예요",
-        'choices': ["갔었어요", "갔었어요", "갈 거예요", "가고 있어요"]
+        'text': "<p><strong>A: 주말에 보통 뭐 하면서 시간을 보내세요?<br>B: 집에서 재미있는 영화________ 보거나 음악을 들어요.</strong></p>",
+        'explanation': "<p><strong>영화를</strong>: '보다' (ko'rmoq) fe'lining obyekti bo'lgani uchun tushum kelishigi (<code>-을/를</code>) ishlatiladi. '영화' unli bilan tugagani uchun <code>를</code> keladi.</p>",
+        'correct': "영화를",
+        'choices': ["영화가", "영화는", "영화를", "영화이"]
     },
     {
-        'text': "<p><strong>A: 흐엉 씨는 매운 음식을 잘 먹어요?<br>B: 고향에 있을 때는 잘 ________, 한국에 온 뒤로는 전혀 못 먹어요.</strong></p>",
-        'explanation': "<p><strong>먹었었어요</strong>: 과거에는 잘 먹었으나 현재는 못 먹는, 현재와 상반되는 과거의 사실을 강조하기 위해 uzoq o'tgan zamon(<code>-았었었어요</code>)을 씁니다.</p>",
-        'correct': "먹었었어요",
-        'choices': ["먹어요", "먹을 거예요", "먹고 있어요", "먹었었어요"]
+        'text': "<p><strong>A: 저기요, 아까 주문한 음식________ 아직 안 나왔어요.<br>B: 죄송합니다, 손님. 주방에 확인해 보고 바로 가져다 드리겠습니다.</strong></p>",
+        'explanation': "<p><strong>음식이</strong>: Muayyan holatning egasini ko'rsatish va yangi faktni (ovqat chiqmaganini) ta'kidlash uchun ega kelishigi (<code>-이/가</code>) ishlatiladi.</p>",
+        'correct': "음식이",
+        'choices': ["음식은", "음식이", "음식을", "음식가"]
     },
     {
-        'text': "<p><strong>A: 안드레이 씨, 주말에 보통 뭐 해요?<br>B: 저는 일요일마다 집 근처 공원에서 자전거를 ________.</strong></p>",
-        'explanation': "<p><strong>타요</strong>: 반복적인 습관이나 일상적인 행동을 친근하고 공손하게 말할 때는 현재 시제 해요체(<code>-아/어요</code>)가 가장 자연스럽습니다.</p>",
-        'correct': "타요",
-        'choices': ["탔어요", "타요", "탔었어요", "탈 거예요"]
+        'text': "<p><strong>A: 와, 동생분이 키가 아주 크네요!<br>B: 네, 제 남동생________ 키가 커요. 하지만 여동생은 키가 작아요.</strong></p>",
+        'explanation': "<p><strong>남동생은</strong>: Bu yerda 'uksam (남동생)' va 'singlim (여동생)' bir-biriga solishtirilmoqda (kontrast). Taqqoslash vaziyatlarida majburiy ravishda mavzu yuklamasi (<code>-은/는</code>) ishlatiladi.</p>",
+        'correct': "남동생은",
+        'choices': ["남동생이", "남동생은", "남동생을", "남동생가"]
     },
     {
-        'text': "<p><strong>A: 안녕하십니까? 처음 뵙겠습니다.<br>B: 반갑습니다. 저는 우즈베키스탄에서 온 아지즈라고 ________.</strong></p>",
-        'explanation': "<p><strong>합니다</strong>: 처음 만난 사람에게 정중하게 자기소개를 하는 비즈니스/격식 상황이므로 격식체 현재형(<code>-(스)ㅂ니다</code>)이 맞습니다.</p>",
-        'correct': "합니다",
-        'choices': ["해요", "합니다", "했었습니다", "할 거예요"]
+        'text': "<p><strong>A: 아지즈 씨, 어제 왜 전화를 안 받았어요?<br>B: 미안해요, 핸드폰________ 고장 나서 수리점에 맡겼었어요.</strong></p>",
+        'explanation': "<p><strong>핸드폰이</strong>: 'Buzilib qoldi' holatining bevosita egasi telefon bo'lgani va sababini tushuntirayotgani uchun ega kelishigi (<code>-이/가</code>) eng to'g'ri variant hisoblanadi.</p>",
+        'correct': "핸드폰이",
+        'choices': ["핸드폰은", "핸드폰이", "핸드폰을", "핸드폰가"]
     },
     {
-        'text': "<p><strong>A: 밖에 비가 많이 와요?<br>B: 아니요, 지금은 비가 그치고 시원한 바람이 ________.</strong></p>",
-        'explanation': "<p><strong>불어요</strong>: 현재의 날씨 상태를 자연스럽게 묘사하는 아/어요 형이 들어가야 합니다.</p>",
-        'correct': "불어요",
-        'choices': ["불었어요", "불었었어요", "불 거예요", "불어요"]
+        'text': "<p><strong>A: 배가 너무 고픈데 냉장고에 먹을 게 있을까요?<br>B: 냉장고 안에 우유________ 맛있는 빵이 조금 있어요. 먹으세요.</strong></p>",
+        'explanation': "<p><strong>우유와</strong>: Bu yerda variantlar orasida to'g'ri keladigan bog'lovchi yoki tushum zanjiri tahlil qilinadi. Ammo gap oxirida '빵이 있어요' bo'lgani uchun, undan oldingi otlarni moslash kerak. Variantlarda to'g'ri shakl berilmagan taqdirda, tushum kelishigi zanjiri tekshiriladi. '우유를' orqali nonni yeyish obyekti qilish mumkin edi, lekin 'bor' fe'li (있다) kelganda subyekt zanjiri tutiladi. (Tuzatish: Bu savolda variantlarni to'g'rilab <code>우유하고</code> yoki <code>우유가</code> o'rniga tushum so'ralmoqda deb hisoblasak, gap strukturasi o'zgaradi. Keling, sodda obyekti bor savolga almashtiramiz):<br><strong>A: 마트에 가서 뭐 살 거예요?<br>B: 우유________ 맛있는 빵을 좀 살 거예요.</strong></p>",
+        'explanation_fixed': "<p><strong>우유를</strong>: '살 거예요' (sotib olmoqchiman) o'timli fe'li uchun 'u-yu' (sut) so'zi obyektdir, shuning uchun <code>를</code> qo'yiladi.</p>",
+        'correct': "우유를",
+        'choices': ["우유가", "우유는", "우유를", "우유이"]
     },
     {
-        'text': "<p><strong>A: 소라 씨, 아까 낮에 전화했는데 왜 안 받았어요?<br>B: 미안해요, 그때 마침 헬스장에서 운동을 ________.</strong></p>",
-        'explanation': "<p><strong>하고 있었어요</strong>: 과거의 특정 시점('아까 낮에')에 행동이 진행 중이었음을 나타내므로 과거 진행형(<code>-고 있었다</code>)을 사용합니다.</p>",
-        'correct': "하고 있었어요",
-        'choices': ["해요", "하고 있었어요", "할 거예요", "했었어요"]
+        'text': "<p><strong>A: 안바르 씨, 이번 시험 준비는 잘 하셨어요?<br>B: 수학은 아주 쉬웠어요. 그런데 과학________ 너무 어려워서 걱정이에요.</strong></p>",
+        'explanation': "<p><strong>과학은</strong>: Matematika (수학은) oson bo'lgani, lekin tabiatshunoslik (과학) qiyin bo'lganini qarama-qarshi qo'yib taqqoslash (kontrast) uchun <code>-은/는</code> ishlatiladi.</p>",
+        'correct': "과학은",
+        'choices': ["과학이", "과학은", "과학을", "과학가"]
     },
     {
-        'text': "<p><strong>A: 이번 방학에 고향에 내려가실 건가요?<br>B: 네, 방학이 시작되자마자 부모님을 뵈러 고향에 ________.</strong></p>",
-        'explanation': "<p><strong>갈 거예요</strong>: 미래의 확고한 개인적 예정이나 의지를 표현하는 Kelasi zamon shakli(<code>-(으)ㄹ 거예요</code>)가 적절합니다.</p>",
-        'correct': "갈 거예요",
-        'choices': ["갔어요", "갈 거예요", "갔었어요", "가고 있어요"]
+        'text': "<p><strong>A: 밖에서 무슨 소리가 나는 것 같아요. 나가 볼까요?<br>B: 아, 그냥 바람________ 많이 불어서 문이 흔들리는 소리예요.</strong></p>",
+        'explanation': "<p><strong>바람이</strong>: '바람이 불다' (shamol esmoq) birikmasida shamol gapning egasi hisoblanadi. Undosh bilan tugagani uchun <code>이</code> qo'shiladi.</p>",
+        'correct': "바람이",
+        'choices': ["바람은", "바람이", "바람을", "바람가"]
     },
     {
-        'text': "<p><strong>A: 자밀 씨, 담배 피우세요?<br>B: 아니요, 몇 년 전에는 많이 ________ 지금은 완전히 끊었어요.</strong></p>",
-        'explanation': "<p><strong>피웠었어요</strong>: '지금은 완전히 끊었다'는 사실로 보아 과거의 행동이 현재와 완전히 단절되었음을 알 수 있으므로 <code>-았었었어요</code>가 가장 적절합니다.</p>",
-        'correct': "피웠었어요",
-        'choices': ["피워요", "피우고 있어요", "피웠었어요", "피울 거예요"]
+        'text': "<p><strong>A: 커피를 좋아하세요, 아니면 차를 좋아하세요?<br>B: 저는 커피________ 전혀 안 마셔요. 보통 녹차를 마셔요.</strong></p>",
+        'explanation': "<p><strong>커피는</strong>: Umumiy mavzu sifatida 'Kofega kelsak, men uni ichmayman' deb o'z odatini taqqoslab aytayotgani uchun <code>는</code> yuklamasi mos keladi.</p>",
+        'correct': "커피는",
+        'choices': ["커피가", "커피는", "커피를", "커피이"]
     },
     {
-        'text': "<p><strong>A: 지금 시장에 같이 갈래요?<br>B: 죄송해요. 저는 지금 저녁을 ________ 시장에 갈 시간이 없어요.</strong></p>",
-        'explanation': "<p><strong>만들고 있어서</strong>: 현재 요리를 하는 중(진행)이라는 이유를 대야 하므로 진행 시제(<code>-고 있다</code>)의 변형이 알맞습니다.</p>",
-        'correct': "만들고 있어서",
-        'choices': ["만들어서", "만들었어서", "만들고 있어서", "만들 거라서"]
+        'text': "<p><strong>A: 흐엉 씨, 한국 요리를 잘해요?<br>B: 잘 못해요. 하지만 불고기________ 맛이 괜찮게 만들 수 있어요.</strong></p>",
+        'explanation': "<p><strong>불고기는</strong>: Boshqa ovqatlarni yaxshi qilolmasligini, lekin aynan bulgogini (boshqalariga qaraganda) yaxshi qila olishini taqqoslab ajratish uchun <code>는</code> ishlatiladi.</p>",
+        'correct': "불고기는",
+        'choices': ["불고기가", "불고기는", "불고기를", "불고기이"]
     },
     {
-        'text': "<p><strong>A: 우즈베키스탄 날씨는 보통 어때요?<br>B: 여름에는 아주 무덥고 겨울에는 눈이 많이 ________.</strong></p>",
-        'explanation': "<p><strong>내립니다</strong>: 일반적인 자연 현상이나 사실을 정중하고 격식 있게 설명할 때 격식체 현재형(<code>-(스)ㅂ니다</code>)을 사용합니다.</p>",
-        'correct': "내립니다",
-        'choices': ["내렸습니다", "내리겠습니다", "내립니다", "내리고 있었습니다"]
+        'text': "<p><strong>A: 오늘 아침에 지각했지요? 왜 늦었어요?<br>B: 평소보다 도로에 차________ 너무 많아서 버스가 움직이지 못했어요.</strong></p>",
+        'explanation': "<p><strong>차가 [[이/가]]</strong>: '차' (mashina) so'zi '많다' (ko'p) sifatining egasi hisoblanadi. Unli bilan tugagani uchun <code>가</code> kelishi shart.</p>",
+        'correct': "차가",
+        'choices': ["차는", "차가", "차를", "차이"]
     },
     {
-        'text': "<p><strong>A: 수진 씨, 얼굴색이 안 좋네요. 어디 아파요?<br>B: 네, 어제 밤부터 배가 너무 ________.</strong></p>",
-        'explanation': "<p><strong>아파요</strong>: '어제 밤부터 시작해서 지금까지 계속 아픈 현재 상태'를 친근하게 나타내므로 현재형 해요체가 알맞습니다.</p>",
-        'correct': "아파요",
-        'choices': ["아팠었어요", "아파요", "아플 거예요", "아프고 있었어요"]
+        'text': "<p><strong>A: 새로 산 노트북이 어때요? 마음에 들어요?<br>B: 네, 디자인________ 아주 깔끔하고 속도도 엄청 빨라요.</strong></p>",
+        'explanation': "<p><strong>디자인이</strong>: Noutbukning muayyan bir qismi yoki xususiyatini ajratib ko'rsatib, uning holatini (깔끔하다) tasvirlash uchun ega kelishigi <code>이</code> ishlatiladi.</p>",
+        'correct': "디자인이",
+        'choices': ["디자인은", "디자인이", "디자인을", "디자인가"]
     },
     {
-        'text': "<p><strong>A: 민우 씨, 아까 동방신기 노래 부르던데 팬이에요?<br>B: 중학생 때는 정말 많이 ________, 지금은 다른 가수를 더 좋아해요.</strong></p>",
-        'explanation': "<p><strong>좋아했었어요</strong>: 과거(중학생 때)의 취향이 현재에는 완전히 바뀌었음을 나타내는 과거 완료 문맥입니다.</p>",
-        'correct': "좋아했었어요",
-        'choices': ["좋아해요", "좋아하고 있어요", "좋아할 거예요", "좋아했었어요"]
+        'text': "<p><strong>A: 주말에 친구들과 같이 축구 경기 보러 가기로 했어요?<br>B: 아니요, 친구들이 바쁘다고 해서 그냥 혼자 야구________ 보러 가려고요.</strong></p>",
+        'explanation': "<p><strong>야구를</strong>: '보러 가다' (ko'rishga bormoq) harakatining obyekti '야구' (beysbol) bo'lgani uchun tushum kelishigi (<code>-을/를</code>) qo'llanadi.</p>",
+        'correct': "야구를",
+        'choices': ["야구가", "야구는", "야구를", "야구이"]
     },
     {
-        'text': "<p><strong>A: 내일 백화점 세일 마지막 날이래요.<br>B: 그래요? 그럼 내일 사람이 아주 ________. 일찍 가야겠어요.</strong></p>",
-        'explanation': "<p><strong>많을 거예요</strong>: 미래 상황에 대한 추측(Mire taxmini)을 나타낼 때는 형용사 뒤에 <code>-(으)ㄹ 거예요</code>를 씁니다.</p>",
-        'correct': "많을 거예요",
-        'choices': ["많아요", "많았습니다", "많을 거예요", "많고 있어요"]
+        'text': "<p><strong>A: 오늘 저녁 사 주셔서 감사합니다. 정말 잘 먹었습니다.<br>B: 아닙니다. 다음에는 아지즈 씨가 맛있는 음식________ 사 주세요.</strong></p>",
+        'explanation': "<p><strong>음식을</strong>: '사 주다' (sotib bermoq / mehmon qilmoq) fe'lining bevosita to'ldiruvchisi '음식' (taom) so'zidir, shu bois <code>을</code> keladi.</p>",
+        'correct': "음식을",
+        'choices': ["음식이", "음식은", "음식을", "음식가"]
     },
     {
-        'text': "<p><strong>A: 지난주 토요일에 왜 동호회 모임에 안 왔어요?<br>B: 회사에 급한 일이 생겨서 주말에도 출근을 ________.</strong></p>",
-        'explanation': "<p><strong>했어요</strong>: 이미 지난주에 완료된 객관적 사실을 말하므로 일반 과거 시제(<code>-았/었어요</code>)가 정답입니다.</p>",
-        'correct': "했어요",
-        'choices': ["해요", "했어요", "할 거예요", "하고 있어요"]
+        'text': "<p><strong>A: 안바르 씨, 이번 휴가 때 고향에 갈 거예요?<br>B: 네, 고향에 계시는 부모님________ 너무 보고 싶어서 꼭 갈 거예요.</strong></p>",
+        'explanation': "<p><strong>부모님이</strong>: Koreys tilida '보고 싶다' (sog'inmoq/ko'rgisi kelmoq) iborasi bilan ko'pincha subyekt qaratilib ega kelishigi (<code>-이/가</code>) ishlatilishi juda qonuniyatli va tabiiy hisoblanadi.</p>",
+        'correct': "부모님이",
+        'choices': ["부모님은", "부모님이", "부모님을", "부모님가"]
     },
     {
-        'text': "<p><strong>A: 영민 씨, 지금 어디예요? 약속 시간이 지났어요.<br>B: 정말 미안해요! 지금 지하철을 ________ 조금만 더 기다려 주세요.</strong></p>",
-        'explanation': "<p><strong>타고 있어요</strong>: 실시간 이동 중인 상태를 명확하게 전달하기 위해 현재 진행형(<code>-고 있다</code>)을 사용합니다.</p>",
-        'correct': "타고 있어요",
-        'choices': ["탔어요", "탔었어요", "탈 거예요", "타고 있어요"]
+        'text': "<p><strong>A: 실례지만 누구를 찾으러 오셨습니까?<br>B: 김영수 과장님________ 자리에 계십니까? 만나러 왔습니다.</strong></p>",
+        'explanation': "<p><strong>과장님이</strong>: '자리에 있다' (joyida bo'lmoq) fe'lining egasini aniqlashtirish uchun <code>이</code> kelishigi ishlatiladi.</p>",
+        'correct': "과장님이",
+        'choices': ["과장님은", "과장님이", "과장님을", "과장님가"]
     },
     {
-        'text': "<p><strong>A: 켈리 씨, 한국어 실력이 정말 유창하시네요!<br>B: 아닙니다. 아직 많이 ________. 더 열심히 노력하겠습니다.</strong></p>",
-        'explanation': "<p><strong>부족합니다</strong>: 칭찬에 겸손하게 답하며 격식 있는 대화 자리이므로 격식체 현재형(<code>-습니다</code>)이 완벽합니다.</p>",
-        'correct': "부족합니다",
-        'choices': ["부족했습니다", "부족합니다", "부족할 거예요", "부족했었습니다"]
+        'text': "<p><strong>A: 소라 씨, 아까 산 가방은 어디에 뒀어요?<br>B: 너무 무거워서 거실에 있는 책상 위________ 올려두었어요.</strong></p>",
+        'explanation': "<p><strong>(Asosiy Kelishiklar kontekstiga moslash uchun tushum o'zgartirildi): B: 가방________ 너무 무거워서 거실 책상 위에 올려두었어요.</strong></p>",
+        'explanation_fixed': "<p><strong>가방이</strong>: '무겁다' (og'ir) sifatining egasi sumka bo'lgani uchun ega kelishigi <code>이</code> qo'yiladi.</p>",
+        'correct': "가방이",
+        'choices': ["가방은", "가방이", "가방을", "가방가"]
     },
     {
-        'text': "<p><strong>A: 이 옷 예전에는 자주 입더니 요즘은 왜 안 입어요?<br>B: 살이 많이 쪄서 이제는 이 옷이 너무 ________.</strong></p>",
-        'explanation': "<p><strong>작아요</strong>: 현재 몸에 맞지 않는 옷의 상태(현재 사실)를 묘사하므로 해요체 현재 시제가 옵니다.</p>",
-        'correct': "작아요",
-        'choices': ["작았어요", "작아요", "작을 거예요", "작았었어요"]
+        'text': "<p><strong>A: 이 두 우산 중에서 어떤 것이 안바르 씨의 것이에요?<br>B: 이 파란색 우산________ 제 것입니다. 검은색은 친구 거예요.</strong></p>",
+        'explanation': "<p><strong>우산이</strong>: Bir nechta narsa ichidan aynan bittasini aniq ajratib 'mana shu' deb ko'rsatganda (Ega ta'kidlanganda) <code>-이/가</code> ishlatiladi.</p>",
+        'correct': "우산이",
+        'choices': ["우산은", "우산이", "우산을", "우산가"]
     },
     {
-        'text': "<p><strong>A: 내일 오후에 날씨가 흐리다고 하네요.<br>B: 그래요? 그럼 우산을 꼭 ________ 나가야겠네요.</strong></p>",
-        'explanation': "<p><strong>챙겨서</strong>: '내일'이라는 미래 예측 하에 행동을 전제하므로 기본 연결어미가 오지만, 전체 맥락은 미래의 상황에 대처하는 문맥입니다. 여기서는 문맥상 단순 동사 연결어미 형태로 보이지만 보기가 시제를 묻는다면 챙길 거예요 와 연관됩니다. (시제 변형 지문으로 대체 가능: '내일 우산을 ________.' -> 챙길 거예요)</p>",
-        'correct': "챙길 거예요",
-        'choices': ["챙겼어요", "챙기고 있어요", "챙길 거예요", "챙겼었어요"]
+        'text': "<p><strong>A: 매일 저녁에 퇴근하고 나면 보통 뭐 하세요?<br>B: 건강을 위해서 동네 한 바퀴 시원하게 산책________ 해요.</strong></p>",
+        'explanation': "<p><strong>산책을</strong>: '하다' fe'li bilan birga kelib 'sayr qilmoq' iborasini yasayotgan so'zga tushum kelishigi (<code>-을/를</code>) qo'shiladi. Undosh bilan tugagani uchun <code>을</code> to'g'ri.</p>",
+        'correct': "산책을",
+        'choices': ["산책이", "산책은", "산책을", "산책가"]
     },
     {
-        'text': "<p><strong>A: 옛날에 이 공원에 자주 왔었어요?<br>B: 네, 10년 전에는 매일 여기서 운동을 ________, 지금은 멀리 이사해서 안 와요.</strong></p>",
-        'explanation': "<p><strong>했었어요</strong>: 10년 전이라는 먼 과거의 단절된 습관적 행동을 강조하기 때문에 uzoq o'tgan zamon(<code>-았었었어요</code>)이 정답입니다.</p>",
-        'correct': "했었어요",
-        'choices': ["해요", "하고 있어요", "했었어요", "할 거예요"]
+        'text': "<p><strong>A: 어제 새로 오픈한 우즈베크 식당에 가 봤어요?<br>B: 네, 가 봤어요. 그런데 거기는 전통 빵________ 팔지 않아서 아쉬웠어요.</strong></p>",
+        'explanation': "<p><strong>빵을</strong>: '팔다' (sotmoq) fe'lining bevosita obyekti non bo'lgani sababli tushum kelishigi <code>을</code> kelishi lozim.</p>",
+        'correct': "빵을",
+        'choices': ["빵이", "빵은", "빵을", "빵가"]
     }
 ]
 
@@ -181,10 +182,10 @@ class Command(BaseCommand):
         )
 
         practice, created = Practice.objects.get_or_create(
-            title='1-dars: Zamonlar',  # --- IGNORE ---
+            title='1-dars: Asosiy Kelishiklar',  # --- IGNORE ---
             master=master,
             defaults={
-                'description': 'Koreys tili - 1 dars: Zamonlar va ularning aniqlovchilari bilan bogʻliq savollar toʻplami.',
+                'description': 'Koreys tili - 3 dars: Asosiy kelishiklar (Egalik hamda tushum kelishiklari)',
                 'subject': subject,
                 'level': 'hard',
                 'is_free': True,

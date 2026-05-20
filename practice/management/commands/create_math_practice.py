@@ -3,128 +3,8 @@ from django.contrib.auth.models import User
 from masters.models import Master
 from practice.models import Subject, Practice, PracticeQuestion, PracticeChoice
 
-QUESTIONS = [
-{
-'text': "Quyidagi sonlardan qaysi biri 2 ga qoldiqsiz bo'linadi?",
-'explanation': "Juft sonlar (oxirgi raqami 0, 2, 4, 6, 8 bilan tugaydigan sonlar) 2 ga qoldiqsiz bo'linadi. 458 juft son bo'lgani uchun 2 ga bo'linadi.",
-'correct': "458",
-'choices': ["453", "455", "458", "459"]
-},
-{
-'text': "Qaysi son 3 ga qoldiqsiz bo'linadi?",
-'explanation': "Raqamlar yig'indisi 3 ga bo'linadigan sonlar 3 ga qoldiqsiz bo'linadi. 2 + 3 + 4 = 9. 9 soni 3 ga bo'lingani uchun 234 soni 3 ga bo'linadi.",
-'correct': "234",
-'choices': ["232", "233", "234", "235"]
-},
-{
-'text': "Quyidagi sonlardan qaysi biri 4 ga qoldiqsiz bo'linadi?",
-'explanation': "Sonning oxirgi ikkita raqamidan tuzilgan son 4 ga bo'linishi kerak. 724 sonining oxirgi ikki raqami 24 bo'lib, u 4 ga bo'linadi.",
-'correct': "724",
-'choices': ["714", "722", "724", "725"]
-},
-{
-'text': "Qaysi son 5 ga qoldiqsiz bo'linadi?",
-'explanation': "Oxirgi raqami 0 yoki 5 bilan tugaydigan sonlar 5 ga qoldiqsiz bo'linadi. 865 soni 5 bilan tugagani uchun javob 865.",
-'correct': "865",
-'choices': ["861", "864", "865", "869"]
-},
-{
-'text': "Quyidagi sonlardan qaysi biri 6 ga qoldiqsiz bo'linadi?",
-'explanation': "Ham 2 ga (juft son), ham 3 ga (raqamlar yig'indisi 3 ga bo'linadigan) bo'lingan son 6 ga bo'linadi. 312 juft son va raqamlar yig'indisi 3 + 1 + 2 = 6 (3 ga bo'linadi).",
-'correct': "312",
-'choices': ["311", "312", "314", "316"]
-},
-{
-'text': "Qaysi son 8 ga qoldiqsiz bo'linadi?",
-'explanation': "Sonning oxirgi uchta raqamidan tuzilgan son 8 ga bo'linishi kerak. 3120 sonining oxirgi uchta raqami 120 bo'lib, u 8 ga bo'linadi (120 : 8 = 15).",
-'correct': "3120",
-'choices': ["3110", "3116", "3120", "3124"]
-},
-{
-'text': "Quyidagi sonlardan qaysi biri 9 ga qoldiqsiz bo'linadi?",
-'explanation': "Raqamlar yig'indisi 9 ga bo'linadigan sonlar 9 ga qoldiqsiz bo'linadi. 5 + 4 + 9 = 18. 18 soni 9 ga bo'lingani uchun 549 soni 9 ga bo'linadi.",
-'correct': "549",
-'choices': ["543", "546", "549", "551"]
-},
-{
-'text': "Qaysi son 10 ga qoldiqsiz bo'linadi?",
-'explanation': "Oxirgi raqami faqat 0 bilan tugaydigan sonlar 10 ga qoldiqsiz bo'linadi. 1290 soni 0 bilan tugagani uchun javob 1290.",
-'correct': "1290",
-'choices': ["1295", "1290", "1292", "1203"]
-},
-{
-'text': "Quyidagi sonlardan qaysi biri 12 ga qoldiqsiz bo'linadi?",
-'explanation': "Bir vaqtning o'zida ham 3 ga, ham 4 ga bo'linadigan sonlar 12 ga bo'linadi. 216 sonining oxirgi ikki raqami 16 (4 ga bo'linadi) va raqamlar yig'indisi 2 + 1 + 6 = 9 (3 ga bo'linadi).",
-'correct': "216",
-'choices': ["210", "214", "216", "218"]
-},
-{
-'text': "Qaysi son 24 ga qoldiqsiz bo'linadi?",
-'explanation': "Bir vaqtning o'zida ham 3 ga, ham 8 ga bo'linadigan sonlar 24 ga bo'linadi. 360 soni 8 ga bo'linadi (360 : 8 = 45) va raqamlar yig'indisi 3 + 6 + 0 = 9 (3 ga bo'linadi).",
-'correct': "360",
-'choices': ["340", "350", "360", "370"]
-},
-{
-'text': "Quyidagi sonlardan qaysi biri 3 ga ham, 5 ga ham qoldiqsiz bo'linadi?",
-'explanation': "Son 5 bilan tugashi (5 ga bo'linishi) va raqamlar yig'indisi 3 ga bo'linishi kerak. 165 sonining raqamlar yig'indisi 1 + 6 + 5 = 12 (3 ga bo'linadi).",
-'correct': "165",
-'choices': ["160", "165", "170", "175"]
-},
-{
-'text': "Qaysi son 4 ga ham, 6 ga ham qoldiqsiz bo'linadi?",
-'explanation': "144 soni 4 ga bo'linadi (oxirgi ikki raqami 44). Shuningdek u juft va raqamlar yig'indisi 1 + 4 + 4 = 9 bo'lgani uchun 3 ga (demak 6 ga ham) bo'linadi.",
-'correct': "144",
-'choices': ["140", "144", "146", "150"]
-},
-{
-'text': "Quyidagi sonlardan qaysi biri 15 ga qoldiqsiz bo'linadi?",
-'explanation': "15 ga bo'linishi uchun son ham 3 ga, ham 5 ga bo'linishi kerak. 225 soni 5 bilan tugaydi va raqamlar yig'indisi 2 + 2 + 5 = 9 (3 ga bo'linadi).",
-'correct': "225",
-'choices': ["220", "225", "232", "235"]
-},
-{
-'text': "Qaysi son 18 ga qoldiqsiz bo'linadi?",
-'explanation': "18 ga bo'linishi uchun son ham 2 ga (juft), ham 9 ga bo'linishi kerak. 162 juft son va raqamlar yig'indisi 1 + 6 + 2 = 9 (9 ga bo'linadi).",
-'correct': "162",
-'choices': ["156", "160", "162", "164"]
-},
-{
-'text': "Quyidagi sonlardan qaysi biri 9 ga bo'linadi, lekin 10 ga bo'linmaydi?",
-'explanation': "171 sonining raqamlar yig'indisi 1 + 7 + 1 = 9 (9 ga bo'linadi), lekin oxiri 0 bilan tugamaganligi uchun 10 ga bo'linmaydi.",
-'correct': "171",
-'choices': ["170", "171", "180", "190"]
-},
-{
-'text': "Qaysi son 20 ga qoldiqsiz bo'linadi?",
-'explanation': "20 ga bo'linadigan sonning oxirgi raqami 0 bo'lishi va oxirgi ikkita raqamidan tuzilgan son 4 ga bo'linishi kerak. 480 sonida 80 soni 4 ga bo'linadi.",
-'correct': "480",
-'choices': ["430", "450", "470", "480"]
-},
-{
-'text': "Quyidagi sonlardan qaysi biri 8 ga ham, 9 ga ham qoldiqsiz bo'linadi?",
-'explanation': "720 soni 8 ga bo'linadi (720 : 8 = 90) va raqamlar yig'indisi 7 + 2 + 0 = 9 bo'lib, 9 ga ham bo'linadi.",
-'correct': "720",
-'choices': ["710", "718", "720", "728"]
-},
-{
-'text': "Qaysi son ham 2 ga, ham 3 ga, ham 5 ga qoldiqsiz bo'linadi?",
-'explanation': "300 soni 0 bilan tugagani uchun 2 va 5 ga bo'linadi. Raqamlar yig'indisi 3 + 0 + 0 = 3 bo'lgani uchun 3 ga ham bo'linadi.",
-'correct': "300",
-'choices': ["250", "285", "300", "310"]
-},
-{
-'text': "Quyidagi sonlardan qaysi biri 12 ga bo'linadi, lekin 24 ga bo'linmaydi?",
-'explanation': "180 soni 12 ga qoldiqsiz bo'linadi (180 : 12 = 15), lekin 24 ga bo'linganda qoldiq qoladi (180 : 24 = 7, qoldiq 12).",
-'correct': "180",
-'choices': ["120", "144", "168", "180"]
-},
-{
-'text': "Qaysi son 36 ga qoldiqsiz bo'linadi?",
-'explanation': "36 ga bo'linishi uchun son ham 4 ga, ham 9 ga bo'linishi shart. 252 sonining oxirgi ikki raqami 52 (4 ga bo'linadi) va raqamlar yig'indisi 2 + 5 + 2 = 9 (9 ga bo'linadi).",
-'correct': "252",
-'choices': ["240", "250", "252", "260"]
-}
-]
+
+QUESTIONS = [{'text': "43 281 sonini o'nliklargacha yaxlitlang.",'explanation': "O'nliklar xonasida 8 raqami turibdi. Undan keyingi raqam esa 1 (5 dan kichik). Shuning uchun 8 o'zgarmaydi va keyingi raqam 0 ga aylanadi: 43 280.",'correct': "43 280",'choices': ["43 200", "43 280", "43 290", "43 300"]},{'text': "8 764 sonini yuzliklargacha yaxlitlang.",'explanation': "Yuzliklar xonasida 7 raqami turibdi. Undan keyingi raqam 6 (5 yoki undan katta). Shuning uchun 7 raqami 1 taga ortib 8 bo'ladi, qolgan raqamlar 0 ga aylanadi: 8 800.",'correct': "8 800",'choices': ["8 700", "8 760", "8 800", "9 000"]},{'text': "154 912 sonini mingliklargacha yaxlitlang.",'explanation': "Mingliklar xonasida 4 raqami turibdi. Undan keyingi raqam 9 (5 dan katta). Shuning uchun 4 raqami 1 taga ortib 5 bo'ladi, undan keyingi barcha raqamlar nolga aylanadi: 155 000.",'correct': "155 000",'choices': ["154 000", "154 900", "155 000", "150 000"]},{'text': "14,28 sonini ondalar (verguldan keyingi birinchi xona) xonasigacha yaxlitlang.",'explanation': "Ondalar xonasida 2 raqami turibdi. Undan keyingi raqam 8 (5 dan katta) bo'lgani uchun 2 raqami 1 taga ortib 3 bo'ladi: 14,3.",'correct': "14,3",'choices': ["14,2", "14,3", "14,0", "14,28"]},{'text': "3,641 sonini yuzdan birlar (verguldan keyingi ikkinchi xona) xonasigacha yaxlitlang.",'explanation': "Yuzdan birlar xonasida 4 raqami turibdi. Undan keyingi raqam 1 (5 dan kichik) bo'lgani uchun 4 raqami o'zgarmaydi: 3,64.",'correct': "3,64",'choices': ["3,60", "3,64", "3,65", "3,70"]},{'text': "0,5782 sonini mingdan birlar (verguldan keyingi uchinchi xona) xonasigacha yaxlitlang.",'explanation': "Mingdan birlar xonasida 8 raqami turibdi. Undan keyingi raqam 2 (5 dan kichik) bo'lgani uchun 8 raqami o'zgarmaydi: 0,578.",'correct': "0,578",'choices': ["0,578", "0,579", "0,580", "0,570"]},{'text': "89,63 sonini birliklargacha (butun qismigacha) yaxlitlang.",'explanation': "Birliklar xonasida 9 raqami turibdi. Verguldan keyingi birinchi raqam esa 6 (5 dan katta). Shuning uchun 89 soni 1 taga ortib 90 bo'ladi.",'correct': "90",'choices': ["89", "89,6", "90", "100"]},{'text': "296 345 sonini o'n mingliklargacha yaxlitlang.",'explanation': "O'n mingliklar xonasida 9 raqami turibdi. Undan keyingi raqam 6 (5 dan katta). 9 raqami 1 taga ortganda keyingi xonaga o'tadi, natijada 29 soni 30 ga aylanadi: 300 000.",'correct': "300 000",'choices': ["290 000", "296 000", "296 300", "300 000"]},{'text': "0,075 sonini yuzdan birlargacha yaxlitlang.",'explanation': "Yuzdan birlar xonasida 7 raqami turibdi. Undan keyingi raqam 5 ga teng bo'lgani uchun 7 raqami 1 taga ortadi va 8 bo'ladi: 0,08.",'correct': "0,08",'choices': ["0,07", "0,08", "0,10", "0,075"]},{'text': "5,4197 sonini mingdan birlargacha yaxlitlang.",'explanation': "Mingdan birlar xonasida 9 raqami turibdi. Undan keyingi raqam 7 (5 dan katta). 9 raqami 1 taga ortganda o'zidan oldingi 1 raqamini 2 ga aylantiradi: 5,420 (yoki 5,42).",'correct': "5,420",'choices': ["5,419", "5,420", "5,410", "5,430"]},{'text': "1 245 sonini yuzliklargacha yaxlitlang.",'explanation': "Yuzliklar xonasida 2 raqami turibdi. Undan keyingi raqam 4 (5 dan kichik). Shuning uchun 2 o'zgarmaydi va qolgan raqamlar nolga aylanadi: 1 200.",'correct': "1 200",'choices': ["1 200", "1 240", "1 250", "1 300"]},{'text': "0,91 sonini ondalar xonasigacha yaxlitlang.",'explanation': "Ondalar xonasida 9 raqami turibdi. Undan keyingi raqam 1 (5 dan kichik) bo'lgani uchun 9 raqami o'zgarmaydi: 0,9.",'correct': "0,9",'choices': ["0,9", "1,0", "0,91", "0,8"]},{'text': "74 982 sonini o'nliklargacha yaxlitlang.",'explanation': "O'nliklar xonasida 8 raqami turibdi. Undan keyingi raqam 2 (5 dan kichik) bo'lgani uchun 8 raqami o'zgarmaydi, oxirgi raqam 0 ga aylanadi: 74 980.",'correct': "74 980",'choices': ["74 900", "74 980", "74 990", "75 000"]},{'text': "123,456 sonini birliklargacha yaxlitlang.",'explanation': "Birliklar xonasida 3 raqami turibdi. Verguldan keyingi birinchi raqam esa 4 (5 dan kichik). Shuning uchun butun qism o'zgarmaydi: 123.",'correct': "123",'choices': ["123", "124", "123,5", "123,4"]},{'text': "9 999 sonini yuzliklargacha yaxlitlang.",'explanation': "Yuzliklar xonasida 9 raqami turibdi. Undan keyingi raqam 9 (5 dan katta). Shuning uchun yuzliklar xonasi 1 taga ortadi va zanjirsimon tarzda butun son 10 000 ga aylanadi.",'correct': "10 000",'choices': ["9 900", "9 990", "10 000", "10 100"]}]
 
 
 
@@ -154,10 +34,10 @@ class Command(BaseCommand):
 
         # Create or get the practice and ensure it is published
         practice, created = Practice.objects.get_or_create(
-            title='Bo\'lish qoidalari',
+            title='Yahlitlash savollari',
             master=master,
             defaults={
-                'description': 'Practice on divisibility rules for various numbers, helping students quickly determine if a number is divisible by another without performing full division.',
+                'description': 'Yahlitlash savollarini o\'z ichiga olgan amaliy test.',
                 'subject': subject,
                 'level': 'easy',
                 'is_free': True,
