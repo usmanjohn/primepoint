@@ -4,217 +4,220 @@ from masters.models import Master
 from practice.models import Subject, Practice, PracticeQuestion, PracticeChoice
 
 QUESTIONS = [
-    {
-        'text': "<p>Omborda 345 t kartoshka bor edi[cite: 1]. Birinchi haftada 27 t, ikkinchi haftada esa birinchi haftaga qaraganda 8 t kam kartoshka sotuvga chiqarildi[cite: 1]. Omborda necha tonna kartoshka qoldi?[cite: 1]</p>",
-        'hint': "<p>Amallarni bosqichma-bosqich bajaring.</p>",
-        'explanation': "<p>Ikkinchi haftada 27 - 8 = 19 t sotilgan[cite: 1]. Jami sotilgani: 27 + 19 = 46 t[cite: 1]. Omborda qolgani: 345 - 46 = 299 t[cite: 1].</p>",
-        'correct': "299 t",
-        'choices': ["310 t", "299 t", "291 t", "318 t"]
-    },
-    {
-        'text': "<p>AB kesmani C va D nuqtalar ketma-ket kelgan AC, CD va DB qismlarga ajratadi[cite: 1]. Agar AC kesma uzunligi 34 mm, CD kesma AC kesmadan 12 mm qisqa, DB kesma esa AD dan 25 mm qisqa bo'lsa, AB kesma uzunligini toping[cite: 1].</p>",
-        'hint': "<p>Har bir kesma qismining uzunligini alohida toping.</p>",
-        'explanation': "<p>CD = 34 - 12 = 22 mm[cite: 1]. AD = AC + CD = 34 + 22 = 56 mm[cite: 1]. DB = 56 - 25 = 31 mm[cite: 1]. Umumiy uzunlik AB = 34 + 22 + 31 = 87 mm[cite: 1].</p>",
-        'correct': "87 mm",
-        'choices': ["75 mm", "87 mm", "92 mm", "101 mm"]
-    },
-    {
-        'text': "<p>Tenglamani yeching: (x + 43) - 23 = 52[cite: 1].</p>",
-        'hint': "<p>Noma'lum qatnashgan qavsni yaxlit deb oling.</p>",
-        'explanation': "<p>Tenglamaning chap qismini soddalashtiramiz: x + 43 - 23 = x + 20[cite: 1]. Bundan x + 20 = 52 kelib chiqadi[cite: 1]. x = 52 - 20 = 32[cite: 1].</p>",
-        'correct': "32",
-        'choices': ["25", "32", "72", "45"]
-    },
-    {
-        'text': "<p>Botir bir son o'yladi[cite: 1]. Agar unga 74 ni qo'shib, hosil bo'lgan yig'indiga yana 21 qo'shilsa, 142 hosil bo'ladi[cite: 1]. Botir qaysi sonni o'ylagan?[cite: 1]</p>",
-        'hint': "<p>Teskari amallar yordamida yeching.</p>",
-        'explanation': "<p>Tenglama tuzamiz: x + 74 + 21 = 142[cite: 1]. Soddalashtirsak: x + 95 = 142. Bundan x = 142 - 95 = 47[cite: 1].</p>",
-        'correct': "47",
-        'choices': ["57", "37", "47", "63"]
-    },
-    {
-        'text': "<p>Quyidagi ikkita sondan qaysi biri katta? 6 877 500 600 yoki 6 876 999 999[cite: 1].</p>",
-        'hint': "<p>Sonlarni xonalar bo'yicha taqqoslang.</p>",
-        'explanation': "<p>Millionlar sinfidagi raqamlarni taqqoslaganda 6877 million 6876 milliondan kattaligi ko'rinadi[cite: 1]. Demak, birinchi son katta.</p>",
-        'correct': "6 877 500 600",
-        'choices': ["6 876 999 999", "6 877 500 600", "Ikkalasi teng", "Aniqlab bo'lmaydi"]
-    },
-    {
-        'text': "<p>Amallarni bajaring: 314 - (114 + 77)[cite: 1].</p>",
-        'hint': "<p>Sondan yig'indini ayirish xossasidan foydalaning.</p>",
-        'explanation': "<p>Qoida bo'yicha: 314 - 114 - 77 = 200 - 77 = 123[cite: 1].</p>",
-        'correct': "123",
-        'choices': ["277", "123", "200", "133"]
-    },
-    {
-        'text': "<p>Hadichaning 2500 so'm puli bor edi[cite: 1]. U 500 so'mga daftar va 600 so'mga muzqaymoq sotib oldi[cite: 1]. Hadichaning yana qancha puli qoldi?</p>",
-        'hint': "<p>Jami xarajatni topib, umumiy puldan ayiring.</p>",
-        'explanation': "<p>Xarid jami: 500 + 600 = 1100 so'm[cite: 1]. Qolgan pul: 2500 - 1100 = 1400 so'm[cite: 1].</p>",
-        'correct': "1400 so'm",
-        'choices': ["1100 so'm", "1500 so'm", "1400 so'm", "1000 so'm"]
-    },
-    {
-        'text': "<p>Tenglamani yeching: (122 + x) - 291 = 157[cite: 1].</p>",
-        'hint': "<p>Avval qavs ichidagi yig'indini toping.</p>",
-        'explanation': "<p>Noma'lum kamayuvchini topish uchun ayiriluvchini ayirmaga qo'shamiz: 122 + x = 157 + 291 = 448[cite: 1]. x = 448 - 122 = 326[cite: 1].</p>",
-        'correct': "326",
-        'choices': ["326", "236", "418", "168"]
-    },
-    {
-        'text': "<p>Asqar Samarqanddan Toshkentga tezligi 100 km/soat bo'lgan yengil avtomashinada 3 soatda yetib keldi[cite: 1]. Toshkentdan Samarqandga tezligi 75 km/soat bo'lgan avtobusda qaytdi[cite: 1]. Asqar necha soatda Toshkentdan Samarqandga yetib kelgan?[cite: 1]</p>",
-        'hint': "<p>Avval shaharlar orasidagi masofani hisoblang.</p>",
-        'explanation': "<p>Masofa S = v * t = 100 * 3 = 300 km[cite: 1]. Qaytishdagi vaqt t = S / v = 300 / 75 = 4 soat[cite: 1].</p>",
-        'correct': "4 soatda",
-        'choices': ["2.5 soatda", "3 soatda", "4 soatda", "5 soatda"]
-    },
-    {
-        'text': "<p>Kattalikni grammda ifodalang: 2 sr 20 kg 349 g[cite: 1].</p>",
-        'hint': "<p>1 sentner necha kilogramm ekanligini yodga oling.</p>",
-        'explanation': "<p>1 sr = 100 kg = 100 000 g, 1 kg = 1000 g[cite: 1]. 2 sr = 200 000 g, 20 kg = 20 000 g[cite: 1]. Jami: 200 000 + 20 000 + 349 = 220 349 g[cite: 1].</p>",
-        'correct': "220 349 g",
-        'choices': ["20 349 g", "220 349 g", "2 200 349 g", "202 349 g"]
-    },
-    {
-        'text': "<p>Hadicha gulzorga kirib, birinchi kuni 56 ta tuvakdagi gullarga suv quydi[cite: 1]. Ikkinchi kuni esa birinchi kundan p dona ko'p gulga suv quydi[cite: 1]. Hadicha jami nechta gulga suv quygan? p = 34 bo'lganda hisoblang[cite: 1].</p>",
-        'hint': "<p>Ikkinchi kundagi gullar sonini toping.</p>",
-        'explanation': "<p>Ikkinchi kuni 56 + 34 = 90 ta gul sug'organ[cite: 1]. Jami sug'orilgan gullar: 56 + 90 = 146 ta[cite: 1].</p>",
-        'correct': "146 ta",
-        'choices': ["90 ta", "126 ta", "146 ta", "166 ta"]
-    },
-    {
-        'text': "<p>To'g'ri to'rtburchak shaklidagi maktab hovlisining bo'yi 216 m, eni esa bo'yidan 45 m qisqa[cite: 1]. Maktab hovlisining perimetrini hisoblang[cite: 1].</p>",
-        'hint': "<p>Perimetr formulasidan foydalaning.</p>",
-        'explanation': "<p>Eni b = 216 - 45 = 171 m[cite: 1]. Perimetr P = 2(a + b) = 2 * (216 + 171) = 2 * 387 = 774 m[cite: 1].</p>",
-        'correct': "774 m",
-        'choices': ["387 m", "774 m", "864 m", "684 m"]
-    },
-    {
-        'text': "<p>Tenglamani yeching: 542 - (y - 307) = 148[cite: 1].</p>",
-        'hint': "<p>Yig'indidan sonni ayirish xossasini yoki noma'lum qavsni topish qoidasini qo'llang.</p>",
-        'explanation': "<p>Noma'lum ayiriluvchini topamiz: y - 307 = 542 - 148 = 394[cite: 1]. Bundan y = 394 + 307 = 701[cite: 1].</p>",
-        'correct': "701",
-        'choices': ["601", "701", "394", "501"]
-    },
-    {
-        'text': "<p>Uchta javonda 47 ta kitob bor[cite: 1]. Ikkinchi javonda birinchisidan 4 ta kam, uchinchi javondan esa 2 ta ko'p kitob bor[cite: 1]. Birinchi javonda nechta kitob bor?[cite: 1]</p>",
-        'hint': "<p>Tenglashtirish usulidan foydalaning.</p>",
-        'explanation': "<p>Agar 1-javonda x kitob bo'lsa, 2-sida x - 4[cite: 1]. 2-sida 3-sidan 2 ta ko'p bo'lsa, 3-sida x - 6 bo'ladi. Tenglama: x + x - 4 + x - 6 = 47 => 3x - 10 = 47 => 3x = 57 => x = 19[cite: 1].</p>",
-        'correct': "19 ta",
-        'choices': ["15 ta", "19 ta", "13 ta", "21 ta"]
-    },
-    {
-        'text': "<p>Qafasda tustovuq va quyonlar boqilmoqda[cite: 1]. Ularning jami boshi 35 ta, jami oyoqlari esa 94 ta[cite: 1]. Qafasda nechta tustovuq va nechta quyon bor?[cite: 1]</p>",
-        'hint': "<p>Barcha hayvonlarni 2 oyoqli deb faraz qilib ko'ring.</p>",
-        'explanation': "<p>Faraz qilaylik barchasi qush (2 oyoq). U holda 35 * 2 = 70 oyoq bo'lardi[cite: 1]. Qolgan 94 - 70 = 24 oyoq quyonlarning qo'shimcha oyoqlari[cite: 1]. Demak, 24 / 2 = 12 ta quyon va 35 - 12 = 23 ta tustovuq[cite: 1].</p>",
-        'correct': "23 ta tustovuq va 12 ta quyon",
-        'choices': ["20 ta tustovuq va 15 ta quyon", "23 ta tustovuq va 12 ta quyon", "12 ta tustovuq va 23 ta quyon", "25 ta tustovuq va 10 ta quyon"]
-    },
-    {
-        'text': "<p>Dono singlisi Nargizadan 7 yosh katta[cite: 1]. Uning yoshi otasining yoshidan 3 marta kichik[cite: 1]. Agar Nargiza 5 yoshda bo'lsa, Dononing otasi yoshini toping[cite: 1].</p>",
-        'hint': "<p>Avval Dononing yoshini toping.</p>",
-        'explanation': "<p>Dononing yoshi: 5 + 7 = 12 yosh[cite: 1]. Otasining yoshi: 12 * 3 = 36 yosh[cite: 1].</p>",
-        'correct': "36 yosh",
-        'choices': ["32 yosh", "36 yosh", "42 yosh", "28 yosh"]
-    },
-    {
-        'text': "<p>Amallarni bajaring: (1269 + 1261) : 115[cite: 1].</p>",
-        'hint': "<p>Avval qavs ichini hisoblang.</p>",
-        'explanation': "<p>Qavs ichidagi yig'indi: 1269 + 1261 = 2530[cite: 1]. Bo'linma: 2530 : 115 = 22[cite: 1].</p>",
-        'correct': "22",
-        'choices': ["20", "22", "24", "26"]
-    },
-    {
-        'text': "<p>Tenglamani yeching: 107 * x = 4815[cite: 1].</p>",
-        'hint': "<p>Noma'lum ko'paytuvchini topish uchun bo'lishdan foydalaning.</p>",
-        'explanation': "<p>Ko'paytmani ma'lum ko'paytuvchiga bo'lamiz: x = 4815 : 107 = 45[cite: 1].</p>",
-        'correct': "45",
-        'choices': ["35", "45", "55", "40"]
-    },
-    {
-        'text': "<p>Qulay usul bilan hisoblang: 4 * 2 * 25 * 5 * 8 * 125[cite: 1].</p>",
-        'hint': "<p>Guruhlash qonunidan foydalaning.</p>",
-        'explanation': "<p>Ko'paytuvchilarni guruhlaymiz: (4 * 25) * (2 * 5) * (8 * 125) = 100 * 10 * 1000 = 1 000 000[cite: 1].</p>",
-        'correct': "1 000 000",
-        'choices': ["100 000", "1 000 000", "10 000 000", "10 000"]
-    },
-    {
-        'text': "<p>Uzunligi 240 m bo'lgan simning 5/6 qismi qirqib olindi[cite: 1]. Necha metr sim qirqib olingan?[cite: 1]</p>",
-        'hint': "<p>Kasrning qismini topish qoidasidan foydalaning.</p>",
-        'explanation': "<p>240 m ni 6 ga bo'lib 5 ga ko'paytiramiz: 240 : 6 * 5 = 40 * 5 = 200 m[cite: 1].</p>",
-        'correct': "200 m",
-        'choices': ["180 m", "200 m", "220 m", "150 m"]
-    },
-    {
-        'text': "<p>To'g'ri to'rtburchak shaklidagi yer maydonining o'lchamlari 750 m va 440 m[cite: 1]. Uning yuzini toping va gektarda ifodalang[cite: 1].</p>",
-        'hint': "<p>1 gektar necha kvadrat metr ekanligini yodga oling.</p>",
-        'explanation': "<p>Yuzasi S = 750 * 440 = 330 000 m<sup>2</sup>[cite: 1]. 1 gektar 10 000 m<sup>2</sup> bo'lgani uchun: 330 000 / 10 000 = 33 ga[cite: 1].</p>",
-        'correct': "33 ga",
-        'choices': ["33 ga", "330 ga", "3,3 ga", "3300 ga"]
-    },
-    {
-        'text': "<p>Tenglamani yeching: 3x + 5x + 96 = 1568[cite: 1].</p>",
-        'hint': "<p>Tenglamani ixchamlang va ishlashda davom eting.</p>",
-        'explanation': "<p>Ifodani soddalashtiramiz: 8x + 96 = 1568[cite: 1]. 8x = 1568 - 96 = 1472[cite: 1]. x = 1472 : 8 = 184[cite: 1].</p>",
-        'correct': "184",
-        'choices': ["192", "184", "174", "168"]
-    },
-    {
-        'text': "<p>Beton qorishmasi tayyorlash uchun 3 hissa qumga 2 hissa sement aralashtiriladi[cite: 1]. 60 kg beton qorishmasi tayyorlash uchun necha kilogramm qum va necha kilogramm sement olish kerak?[cite: 1]</p>",
-        'hint': "<p>Umumiy hissalar sonini toping.</p>",
-        'explanation': "<p>Jami hissalar soni: 3 + 2 = 5 hissa[cite: 1]. 1 hissa massasi: 60 : 5 = 12 kg[cite: 1]. Qum: 3 * 12 = 36 kg, Sement: 2 * 12 = 24 kg[cite: 1].</p>",
-        'correct': "36 kg qum, 24 kg sement",
-        'choices': ["30 kg qum, 30 kg sement", "36 kg qum, 24 kg sement", "40 kg qum, 20 kg sement", "42 kg qum, 18 kg sement"]
-    },
-    {
-        'text': "<p>Ifodadagi amallarni bajarish tartibini aniqlang va uning qiymatini toping: 762 - 413 + 381 - 256[cite: 1].</p>",
-        'hint': "<p>Qavssiz ifodalarda bir xil darajali amallar chapdan o'ngga bajariladi.</p>",
-        'explanation': "<p>Ketma-ket bajaramiz: 762 - 413 = 349[cite: 1]. 349 + 381 = 730[cite: 1]. 730 - 256 = 474[cite: 1].</p>",
-        'correct': "474",
-        'choices': ["464", "474", "574", "384"]
-    },
-    {
-        'text': "<p>Kater daryo oqimi bo'yicha suzmoqda[cite: 1]. Daryo oqimining tezligi 3 km/soat[cite: 1]. Agar katerning o'z (turg'un suvdagi) tezligi 18 km/soat bo'lsa, u 2 soatda qancha masofani bosib o'tadi?[cite: 1]</p>",
-        'hint': "<p>Avval katerning oqim bo'yicha tezligini toping.</p>",
-        'explanation': "<p>Oqim bo'yicha tezlik: 18 + 3 = 21 km/soat[cite: 1]. Masofa: 21 * 2 = 42 km[cite: 1].</p>",
-        'correct': "42 km",
-        'choices': ["36 km", "30 km", "42 km", "48 km"]
-    },
-    {
-        'text': "<p>O'lchamlari 12 dm, 21 dm va 14 dm bo'lgan to'g'ri burchakli parallelepiped sirtining yuzini hisoblang[cite: 1].</p>",
-        'hint': "<p>Sirt yuzasi formulasi: S = 2(ab + bc + ac).</p>",
-        'explanation': "<p>S = 2 * (12*21 + 21*14 + 12*14) = 2 * (252 + 294 + 168) = 2 * 714 = 1428 dm<sup>2</sup>[cite: 1].</p>",
-        'correct': "1428 dm2",
-        'choices': ["1248 dm2", "1428 dm2", "1824 dm2", "714 dm2"]
-    },
-    {
-        'text': "<p>O'nli kasrlarni ayiring: 4,5 - 1,451[cite: 1].</p>",
-        'hint': "<p>Kamayuvchiga kerakli nollarni qo'shib ustun shaklida ayiring.</p>",
-        'explanation': "<p>4,500 qilib tekislaymiz[cite: 1]. 4,500 - 1,451 = 3,049[cite: 1].</p>",
-        'correct': "3,049",
-        'choices': ["3,149", "3,049", "2,949", "3,059"]
-    },
-    {
-        'text': "<p>Tenglamani yeching: 8,2x - 4,4x = 38,38[cite: 1].</p>",
-        'hint': "<p>Noma'lum qatnashgan hadlarni soddalashtiring.</p>",
-        'explanation': "<p>8,2x - 4,4x = 3,8x[cite: 1]. 3,8x = 38,38 tenglamasi hosil bo'ladi[cite: 1]. x = 38,38 : 3,8 = 10,1[cite: 1].</p>",
-        'correct': "10,1",
-        'choices': ["11,1", "10,1", "9,1", "1,01"]
-    },
-    {
-        'text': "<p>Sayohatchi 4 soat 2,7 m/s tezlik bilan, so'ng esa 5 soat 1,8 m/s tezlik bilan yurdi[cite: 1]. Sayohatchining o'rtacha tezligi qancha?[cite: 1]</p>",
-        'hint': "<p>Umumiy masofani umumiy vaqtga bo'ling.</p>",
-        'explanation': "<p>Jami bosib o'tilgan yo'l: 4 * 2,7 + 5 * 1,8 = 10,8 + 9,0 = 19,8 km[cite: 1]. Jami vaqt: 4 + 5 = 9 soat[cite: 1]. O'rtacha tezlik: 19,8 : 9 = 2,2 m/s[cite: 1].</p>",
-        'correct': "2,2 m/s",
-        'choices': ["2,0 m/s", "2,2 m/s", "2,4 m/s", "2,5 m/s"]
-    },
-    {
-        'text': "<p>Asakadagi avtomobil zavodi bir haftada 840 ta avtomobil ishlab chiqardi[cite: 1]. Ularning 20 foizi Spark avtomobilidir[cite: 1]. Zavod bir haftada nechta Spark avtomobili ishlab chiqargan?[cite: 1]</p>",
-        'hint': "<p>Sonning foizini topish uchun foiz miqdorini 100 ga bo'lib ko'paytiring.</p>",
-        'explanation': "<p>840 ning 1 foizi 8,4 ga teng[cite: 1]. 20 foizni topish uchun: 8,4 * 20 = 168 ta[cite: 1].</p>",
-        'correct': "168 ta",
-        'choices': ["148 ta", "168 ta", "180 ta", "158 ta"]
-    }
+{
+'text': "Qaysi son 3 ga ham, 5 ga ham qoldıqsiz bo'linadi?",
+'hint': "3 va 5 ga bo'linish belgilarini eslang: oxirgi raqami 0 yoki 5 bo'lishi va raqamlar yig'indisi 3 ga bo'linishi kerak.",
+'explanation': "135 sonining oxirgi raqami 5, demak u 5 ga bo'linadi. Raqamlar yig'indisi: 1 + 3 + 5 = 9. 9 soni 3 ga bo'linadi. Demak, 135 soni ham 3 ga, ham 5 ga bo'linadi.",
+'correct': "135",
+'choices': ["135", "124", "250", "311"]
+},
+{
+'text': "45 284 sonini yuzliklargacha yaxlitlang.",
+'hint': "Yuzliklar xonasidagi raqamdan keyingi raqamga e'tibor bering. Agar u 5 yoki undan katta bo'lsa, yuzliklar bittaga ortadi.",
+'explanation': "45 284 sonida yuzliklar xonasida 2 raqami turibdi. Undan keyingi raqam 8 (5 dan katta). Shuning uchun 2 raqami 1 taga ortib 3 bo'ladi, qolgan raqamlar nolga aylanadi: 45 300.",
+'correct': "45 300",
+'choices': ["45 200", "45 300", "45 000", "46 000"]
+},
+{
+'text': "Velosipedchi 12 km/h tezlik bilan 3 soatda qancha masofani bosib o'tadi?",
+'hint': "Masofani topish uchun tezlikni vaqtga ko'paytiring.",
+'explanation': "Masofa formulasi: S = v * t. Bu yerda v = 12 km/h, t = 3 soat. S = 12 * 3 = 36 km.",
+'correct': "36 km",
+'choices': ["36 km", "15 km", "4 km", "48 km"]
+},
+{
+'text': "Quyidagi sonlardan qaysi biri 4 ga qoldıqsiz bo'linadi?",
+'hint': "Sonning oxirgi ikkita raqamidan tuzilgan son 4 ga bo'linishi kerak.",
+'explanation': "516 sonining oxirgi ikkita raqami 16. 16 soni 4 ga qoldıqsiz bo'linadi (16 : 4 = 4). Demak, 516 soni 4 ga bo'linadi.",
+'correct': "516",
+'choices': ["514", "516", "510", "519"]
+},
+{
+'text': "874 192 sonini mingliklargacha yaxlitlang.",
+'hint': "Mingliklar xonasidagi raqamdan keyingi raqamga qarang. U 1 ga teng, ya'ni 5 dan kichik.",
+'explanation': "874 192 sonida mingliklar xonasida 4 turibdi. Undan keyin 1 kelgani uchun 4 o'zgarmaydi, keyingi barcha raqamlar nolga aylanadi: 874 000.",
+'correct': "874 000",
+'choices': ["874 000", "875 000", "870 000", "880 000"]
+},
+{
+'text': "Avtomobil 240 km masofani 4 soatda bosib o'tdi. Uning tezligini toping.",
+'hint': "Tezlikni topish uchun masofani vaqtga bo'ling.",
+'explanation': "Tezlik formulasi: v = S / t. Bu yerda S = 240 km, t = 4 soat. v = 240 / 4 = 60 km/h.",
+'correct': "60 km/h",
+'choices': ["50 km/h", "60 km/h", "70 km/h", "80 km/h"]
+},
+{
+'text': "Berilgan sonlardan qaysi biri 9 ga qoldıqsiz bo'linadi?",
+'hint': "Sonning raqamlar yig'indisi 9 ga bo'linishi kerak.",
+'explanation': "729 sonining raqamlar yig'indisi: 7 + 2 + 9 = 18. 18 soni 9 ga bo'linadi (18 : 9 = 2). Demak, 729 soni 9 ga bo'linadi.",
+'correct': "729",
+'choices': ["723", "726", "729", "731"]
+},
+{
+'text': "O'nli kasrni yaxlitlang: 12,38 sonini ondalar (yondosh) xonasigacha yaxlitlang.",
+'hint': "Verguldan keyingi birinchi raqamdan keyin kelayotgan raqamga qarang.",
+'explanation': "12,38 sonida ondalar xonasida 3 turibdi. Undan keyingi raqam 8 bo'lgani uchun 3 raqami 1 taga ortadi: 12,4.",
+'correct': "12,4",
+'choices': ["12,3", "12,4", "12,0", "13,0"]
+},
+{
+'text': "Tezyurar poyezd 90 km/h tezlik bilan 450 km masofani necha soatda bosib o'tadi?",
+'hint': "Vaqtni topish uchun masofani tezlikka bo'lish kerak.",
+'explanation': "Vaqt formulasi: t = S / v. Bu yerda S = 450 km, v = 90 km/h. t = 450 / 90 = 5 soat.",
+'correct': "5 soat",
+'choices': ["4 soat", "5 soat", "6 soat", "7 soat"]
+},
+{
+'text': "Qaysi son 6 ga qoldıqsiz bo'linadi?",
+'hint': "6 ga bo'linishi uchun son bir vaqtda ham 2 ga (juft son), ham 3 ga bo'linishi kerak.",
+'explanation': "144 juft son bo'lgani uchun 2 ga bo'linadi. Raqamlar yig'indisi: 1 + 4 + 4 = 9. 9 soni 3 ga bo'lingani uchun 144 ham 3 ga bo'linadi. Demak, u 6 ga bo'linadi.",
+'correct': "144",
+'choices': ["144", "142", "145", "148"]
+},
+{
+'text': "3,721 sonini yuzdan birlar xonasigacha yaxlitlang.",
+'hint': "Verguldan keyingi ikkinchi raqamdan keyin turgan raqamga e'tibor bering.",
+'explanation': "Yuzdan birlar xonasida 2 turibdi. Undan keyingi raqam 1 (5 dan kichik). Shuning uchun 2 o'zgarmaydi: 3,72.",
+'correct': "3,72",
+'choices': ["3,70", "3,72", "3,73", "3,80"]
+},
+{
+'text': "Ikki shahar o'rtasidagi masofa 350 km. Avtobus bu masofani 70 km/h tezlik bilan necha soatda bosib o'tadi?",
+'hint': "Masofani tezlikka bo'lib vaqtni toping.",
+'explanation': "t = S / v poydevoriga ko'ra: t = 350 / 70 = 5 soat.",
+'correct': "5 soat",
+'choices': ["4 soat", "5 soat", "6 soat", "5.5 soat"]
+},
+{
+'text': "Quyidagi sonlardan qaysi biri 8 ga qoldıqsiz bo'linadi?",
+'hint': "Sonning oxirgi uchta raqamidan tuzilgan son 8 ga bo'linishi kerak.",
+'explanation': "1248 sonining oxirgi uchta raqami 248. 248 : 8 = 31. Demak, 1248 soni 8 ga qoldıqsiz bo'linadi.",
+'correct': "1248",
+'choices': ["1244", "1246", "1248", "1250"]
+},
+{
+'text': "682 sonini o'nliklargacha yaxlitlang.",
+'hint': "O'nliklar xonasida 8 turibdi, undan keyingi raqam esa 2.",
+'explanation': "Oxirgi raqam 2 bo'lgani uchun u 5 dan kichik, o'nliklar xonasi o'zgarmaydi va oxirgi raqam 0 bo'ladi: 680.",
+'correct': "680",
+'choices': ["680", "690", "700", "670"]
+},
+{
+'text': "Sardor 4 m/s tezlik bilan 2 daqiqa yugurdi. U qancha masofaga yugurgan?",
+'hint': "Daqiqani soniyaga o'tkazib oling: 1 daqiqa = 60 soniya.",
+'explanation': "2 daqiqa = 120 soniya. Masofa: S = v * t = 4 * 120 = 480 metr.",
+'correct': "480 m",
+'choices': ["400 m", "480 m", "500 m", "240 m"]
+},
+{
+'text': "Qaysi son 12 ga qoldıqsiz bo'linadi?",
+'hint': "12 ga bo'linishi uchun son bir vaqtda ham 3 ga, ham 4 ga bo'linishi shart.",
+'explanation': "156 sonining oxirgi ikki raqami 56 (4 ga bo'linadi). Raqamlar yig'indisi: 1 + 5 + 6 = 12 (3 ga bo'linadi). Demak, 156 soni 12 ga bo'linadi.",
+'correct': "156",
+'choices': ["152", "154", "156", "158"]
+},
+{
+'text': "9 995 sonini mingliklargacha yaxlitlang.",
+'hint': "Mingliklar xonasidan keyingi raqam 9 ga teng.",
+'explanation': "Yaxlitlanayotgan xonadan keyin 9 turgani uchun mingliklar 1 taga ortadi: 9 + 1 = 10. Natija: 10 000.",
+'correct': "10 000",
+'choices': ["9 000", "9 900", "10 000", "10 100"]
+},
+{
+'text': "Kema 25 km/h tezlik bilan 4 soat, keyin esa 30 km/h tezlik bilan 2 soat yurdi. Kema jami qancha masofani o'tgan?",
+'hint': "Har bir bosqichdagi masofani alohida topib, keyin qo'shing.",
+'explanation': "1-bosqich: 25 * 4 = 100 km. 2-bosqich: 30 * 2 = 60 km. Jami masofa: 100 + 60 = 160 km.",
+'correct': "160 km",
+'choices': ["140 km", "150 km", "160 km", "170 km"]
+},
+{
+'text': "Quyidagi sonlardan qaysi biri 24 ga qoldıqsiz bo'linadi?",
+'hint': "24 ga bo'linadigan son ham 3 ga, ham 8 ga bo'linishi kerak.",
+'explanation': "168 soni 8 ga bo'linadi (168 : 8 = 21). Raqamlar yig'indisi: 1 + 6 + 8 = 15 (3 ga bo'linadi). Demak, 168 soni 24 ga bo'linadi.",
+'correct': "168",
+'choices': ["164", "168", "172", "160"]
+},
+{
+'text': "0,846 sonini yuzdan birlargacha yaxlitlang.",
+'hint': "Yuzdan bir xonasida 4 raqami bor, undan keyin esa 6 turibdi.",
+'explanation': "Keyingi raqam 6 (5 dan katta) bo'lgani uchun 4 raqami 1 taga ko'payadi: 0,85.",
+'correct': "0,85",
+'choices': ["0,84", "0,85", "0,80", "0,90"]
+},
+{
+'text': "Mototsiklchi 60 km/h tezlik bilan 2 soatda bosib o'tgan masofani, piyoda 5 km/h tezlik bilan necha soatda bosib o'tadi?",
+'hint': "Avval mototsiklchi bosib o'tgan masofani toping, keyin uni piyodaning tezligiga bo'ling.",
+'explanation': "Masofa: S = 60 * 2 = 120 km. Piyodaning vaqti: t = 120 / 5 = 24 soat.",
+'correct': "24 soat",
+'choices': ["20 soat", "22 soat", "24 soat", "26 soat"]
+},
+{
+'text': "Qaysi son 10 ga ham, 9 ga ham qoldıqsiz bo'linadi?",
+'hint': "Sonning oxiri 0 bilan tugashi va raqamlari yig'indisi 9 ga bo'linishi kerak.",
+'explanation': "540 sonining oxirgi raqami 0 (10 ga bo'linadi). Raqamlar yig'indisi: 5 + 4 + 0 = 9 (9 ga bo'linadi). Demak, javob 540.",
+'correct': "540",
+'choices': ["500", "530", "540", "549"]
+},
+{
+'text': "2 345 sonini o'nliklargacha yaxlitlang.",
+'hint': "O'nliklar xonasida 4 turibdi, keyingi raqam esa 5.",
+'explanation': "Keyingi raqam 5 bo'lgani uchun o'nliklar xonasidagi 4 raqami 1 taga ortadi: 2 350.",
+'correct': "2 350",
+'choices': ["2 340", "2 350", "2 300", "2 400"]
+},
+{
+'text': "Ikki qishloqdan bir-biriga qarab bir vaqtda ikki piyoda yo'lga chiqdi. Ulardan birining tezligi 4 km/h, ikkinchisiniki 5 km/h. Agar ular 3 soatdan keyin uchrashgan bo'lsa, qishloqlar aro masofani toping.",
+'hint': "Yaqinlashish tezligini topish uchun piyodalarning tezliklarini qo'shing.",
+'explanation': "Yaqinlashish tezligi: 4 + 5 = 9 km/h. Umumiy masofa: S = 9 * 3 = 27 km.",
+'correct': "27 km",
+'choices': ["24 km", "25 km", "27 km", "30 km"]
+},
+{
+'text': "Quyidagi sonlardan qaysi biri 3 ga bo'linadi, lekin 9 ga bo'linmaydi?",
+'hint': "Raqamlar yig'indisi 3 ga bo'linsin, lekin 9 ga bo'linmasin.",
+'explanation': "111 sonining raqamlar yig'indisi: 1 + 1 + 1 = 3. 3 soni 3 ga bo'linadi, lekin 9 ga bo'linmaydi.",
+'correct': "111",
+'choices': ["111", "117", "126", "108"]
+},
+{
+'text': "15,75 sonini birliklargacha (butun qismigacha) yaxlitlang.",
+'hint': "Birliklar xonasida 5 turibdi, verguldan keyingi birinchi raqam esa 7.",
+'explanation': "Verguldan keyin 7 (5 dan katta) kelgani uchun birliklar xonasidagi 5 raqami 1 taga ortadi: 16.",
+'correct': "16",
+'choices': ["15", "15,7", "16", "17"]
+},
+{
+'text': "Eshon 80 km/h tezlikda harakatlanayotgan avtomobilda 4 soat yo'l yurdi. Mo'ljallangan joyga yetib borish uchun yana 20 km qoldi. Jami masofa qancha bo'lgan?",
+'hint': "Bosib o'tilgan masofaga qolgan masofani qo'shing.",
+'explanation': "Bosib o'tilgan masofa: 80 * 4 = 320 km. Jami masofa: 320 + 20 = 340 km.",
+'correct': "340 km",
+'choices': ["320 km", "340 km", "300 km", "360 km"]
+},
+{
+'text': "Quyidagi sonlardan qaysi biri ham 2 ga, ham 3 ga, ham 5 ga qoldıqsiz bo'linadi?",
+'hint': "Son juft bo'lishi, 0 bilan tugashi va raqamlar yig'indisi 3 ga bo'linishi kerak.",
+'explanation': "120 soni 0 bilan tugaydi (2 va 5 ga bo'linadi). Raqamlar yig'indisi: 1 + 2 + 0 = 3 (3 ga bo'linadi).",
+'correct': "120",
+'choices': ["115", "120", "124", "130"]
+},
+{
+'text': "0,0067 sonini mingdan birlar xonasigacha yaxlitlang.",
+'hint': "Mingdan birlar xonasida (verguldan keyingi uchinchi raqam) 6 turibdi.",
+'explanation': "6 dan keyingi raqam 7 bo'lgani uchun 6 raqami 1 taga ortadi va 0,007 hosil bo'ladi.",
+'correct': "0,007",
+'choices': ["0,006", "0,007", "0,010", "0,001"]
+},
+{
+'text': "Tezligi 15 km/h bo'lgan velosipedchi 4 soatda bosib o'tgan masofani, tezligi 60 km/h bo'lgan avtomobil qancha vaqtda bosib o'tadi?",
+'hint': "Velosipedchi bosib o'tgan masofani hisoblang va uni avtomobil tezligiga bo'ling.",
+'explanation': "Masofa: S = 15 * 4 = 60 km. Avtomobil vaqti: t = 60 / 60 = 1 soat.",
+'correct': "1 soat",
+'choices': ["1 soat", "2 soat", "0.5 soat", "1.5 soat"]
+}
 ]
+
+
+
 class Command(BaseCommand):
     help = 'Create a math practice test'
 
@@ -240,10 +243,10 @@ class Command(BaseCommand):
 
         # Create or get the practice and ensure it is published
         practice, created = Practice.objects.get_or_create(
-            title='Mathematics Basic: Natural Numbers and Basic Operations - Text-based',
+            title='Bo\'lish qoidalari, yahlitlash hamda masofaga oid savollar',
             master=master,
             defaults={
-                'description': 'Practice basic operations with natural numbers, including addition, subtraction, multiplication, and division, through text-based problems.',
+                'description': 'Practice on divisibility rules, rounding, and distance/speed/time problems.',
                 'subject': subject,
                 'level': 'easy',
                 'is_free': True,
