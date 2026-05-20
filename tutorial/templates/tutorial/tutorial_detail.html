@@ -248,6 +248,51 @@
             </div>
         </div>
 
+        <!-- Playlist navigation -->
+        {% if playlist_context %}
+        <div class="card p-3 mb-3">
+            <h6 class="form-section-label mb-2">
+                <i class="bi bi-collection-play" style="color:var(--accent);"></i>
+                {% trans "Playlist" %}
+            </h6>
+            <a href="{% url 'playlist_detail' playlist_context.playlist.pk %}"
+               class="fw-semibold text-decoration-none d-block mb-1 text-truncate"
+               style="font-size:0.85rem;color:var(--text);">
+                {{ playlist_context.playlist.title }}
+            </a>
+            <div class="mb-3" style="font-size:0.75rem;color:var(--text-muted);">
+                {% trans "Part" %} {{ playlist_context.position }} {% trans "of" %} {{ playlist_context.total }}
+            </div>
+            <!-- progress bar -->
+            <div class="rounded-pill overflow-hidden mb-3"
+                 style="height:4px;background:var(--surface-2);">
+                <div class="rounded-pill"
+                     style="height:4px;background:var(--accent);
+                            width:{% widthratio playlist_context.position playlist_context.total 100 %}%;">
+                </div>
+            </div>
+            <div class="d-flex gap-2">
+                {% if playlist_context.prev %}
+                <a href="{% url 'tutorial_detail' playlist_context.prev.pk %}"
+                   class="btn-core-outline flex-fill text-center" style="font-size:0.8rem;padding:5px 8px;">
+                    <i class="bi bi-chevron-left"></i> {% trans "Prev" %}
+                </a>
+                {% endif %}
+                {% if playlist_context.next %}
+                <a href="{% url 'tutorial_detail' playlist_context.next.pk %}"
+                   class="btn-core-primary flex-fill text-center" style="font-size:0.8rem;padding:5px 8px;">
+                    {% trans "Next" %} <i class="bi bi-chevron-right"></i>
+                </a>
+                {% else %}
+                <span class="flex-fill text-center rounded-3 py-1"
+                      style="font-size:0.78rem;color:var(--text-muted);background:var(--surface-2);border:1px solid var(--border);">
+                    <i class="bi bi-check-circle me-1" style="color:var(--online);"></i>{% trans "Completed" %}
+                </span>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
         <!-- Linked Practices -->
         {% if linked_practices %}
         <div class="card p-3 mb-3">

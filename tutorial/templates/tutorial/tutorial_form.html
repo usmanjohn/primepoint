@@ -126,6 +126,34 @@
                 </div>
             </div>
 
+            <!-- Playlist assignment -->
+            {% if form.fields.playlist.queryset.exists or form.initial.playlist %}
+            <div class="card p-4 mb-3">
+                <h6 class="form-section-label mb-3">
+                    <i class="bi bi-collection-play" style="color:var(--accent);"></i>
+                    {% trans "Playlist" %}
+                </h6>
+                <p style="font-size:0.78rem;color:var(--text-muted);" class="mb-3">
+                    {% trans "Add this tutorial to one of your playlists." %}
+                </p>
+                <div class="field-group">
+                    <label for="{{ form.playlist.id_for_label }}">{% trans "Playlist" %}</label>
+                    {{ form.playlist }}
+                    {% if form.playlist.errors %}
+                    <div class="field-error">{{ form.playlist.errors|join:", " }}</div>
+                    {% endif %}
+                </div>
+                <div class="field-group mb-0">
+                    <label for="{{ form.playlist_order.id_for_label }}">{% trans "Order in Playlist" %}</label>
+                    {{ form.playlist_order }}
+                    <p class="field-help">{% trans "Lower number = earlier in the playlist (e.g. 1, 2, 3…)" %}</p>
+                    {% if form.playlist_order.errors %}
+                    <div class="field-error">{{ form.playlist_order.errors|join:", " }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+
             <!-- Linked Practices -->
             {% if form.fields.practices.queryset.exists %}
             <div class="card p-4 mb-3">

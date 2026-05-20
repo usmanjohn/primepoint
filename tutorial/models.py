@@ -69,6 +69,55 @@ class Tutorial(models.Model):
         return max(1, round(words / 200))
 
 
+class TutorialPlaylist(models.Model):
+    title       = models.CharField(max_length=200)
+    slug        = models.SlugField(max_length=220, blank=True)
+    author      = models.ForeignKey(User, on_delete=models.CASCADE, related_name='playlists')
+    category    = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='other')
+    description = models.CharField(max_length=300, blank=True)
+    thumbnail   = models.ImageField(upload_to='playlists/thumbnails/', blank=True, null=True)
+    is_published = models.BooleanField(default=True)
+    created_at  = models.DateTimeField(auto_now_add=True)
+    updated_at  = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base = slugify(self.title) or 'playlist'
+            slug, n = base, 1
+            while TutorialPlaylist.objects.filter(slug=slug).exclude(pk=self.pk).exists():
+                slug = f'{base}-{n}'
+                n += 1
+            self.slug = slug
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+
+    @property
+    def category_icon(self):
+        return CATEGORY_ICONS.get(self.category, 'bi-lightbulb')
+
+    @property
+    def tutorial_count(self):
+        return self.items.count()
+
+
+class PlaylistTutorial(models.Model):
+    playlist = models.ForeignKey(TutorialPlaylist, on_delete=models.CASCADE, related_name='items')
+    tutorial = models.ForeignKey(Tutorial, on_delete=models.CASCADE, related_name='playlist_items')
+    order    = models.PositiveSmallIntegerField(default=0)
+
+    class Meta:
+        ordering        = ['order']
+        unique_together = [('playlist', 'tutorial')]
+
+    def __str__(self):
+        return f'{self.playlist} — #{self.order} {self.tutorial}'
+
+
 class TutorialReaction(models.Model):
     LIKE    = 'like'
     DISLIKE = 'dislike'

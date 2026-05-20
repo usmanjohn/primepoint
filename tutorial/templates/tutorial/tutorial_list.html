@@ -35,6 +35,9 @@
             <span>{{ label }}</span>
         </a>
         {% endfor %}
+        <a href="{% url 'playlist_list' %}" class="tut-pill" style="border-color:var(--accent);color:var(--accent);">
+            <i class="bi bi-collection-play"></i><span>{% trans "Playlists" %}</span>
+        </a>
     </div>
 </div>
 
