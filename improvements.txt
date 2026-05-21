@@ -1,0 +1,6 @@
+1. On The analytics page, free vs paid pie chart should be replaced with the type of the practices by category, such as math, korean, english etc. 
+2. Analytics page homework card should be replaced with the number of tutorials. 
+3. On the practice list page, if the user is approved master, there should be a button add practice. 
+4. The color of the practices should be a little bit different by the subject to find the relative pracitces easier.
+5. On the creation of playlist for the tutorials, image upload for the covers should be available.  
+6. There should be a button for the admin to download all the practices or practices by subjects from the deployed app easier, to excel. All practices in one list, each practice is seperated with one empty row. If some columns (such as hints) are None, then their relative value should be empty.
