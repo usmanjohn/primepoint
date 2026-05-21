@@ -134,6 +134,36 @@
 .pl-card--medium { --pc: #f59e0b; --pc-dim: rgba(245,158,11,0.1); --pc-text: #92400e; }
 .pl-card--hard   { --pc: #f87171; --pc-dim: rgba(248,113,113,0.1);--pc-text: #b91c1c; }
 
+/* Subject accent — thin left border on the card */
+.pl-card[data-subject-color] {
+  border-left-width: 3px;
+  border-left-style: solid;
+}
+
+/* Export bar (staff only) */
+.pl-export-bar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+}
+.pl-btn-excel {
+  padding: 0.5rem 1.2rem;
+  background: #16a34a; color: #fff;
+  border: none; border-radius: 9px;
+  font-size: 0.83rem; font-weight: 700;
+  cursor: pointer; white-space: nowrap;
+  text-decoration: none;
+  transition: var(--transition);
+  display: inline-flex; align-items: center; gap: 0.35rem;
+}
+.pl-btn-excel:hover { opacity: 0.88; color: #fff; }
+
 /* Outer wrapper is a div — avoids nested <a> tags (invalid HTML) */
 .pl-card {
   display: flex;
@@ -351,6 +381,33 @@
     </div>
   </div>
 
+  <!-- ── APPROVED MASTER: Add Practice button ────── -->
+  {% if is_approved_master %}
+  <div class="d-flex justify-content-end mb-3">
+    <a href="{% url 'create_practice' %}" class="pl-btn-apply">
+      <i class="bi bi-plus-lg me-1"></i>{% trans "Add Practice" %}
+    </a>
+  </div>
+  {% endif %}
+
+  <!-- ── ADMIN: Export to Excel ───────────────────── -->
+  {% if request.user.is_staff %}
+  <div class="pl-export-bar">
+    <span class="pl-filter-label"><i class="bi bi-file-earmark-excel-fill me-1"></i>{% trans "Export" %}</span>
+    <form method="get" action="{% url 'export_practices' %}" style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
+      <select name="subject" class="pl-select">
+        <option value="">{% trans "All Subjects" %}</option>
+        {% for subj in subjects %}
+          <option value="{{ subj.id }}">{{ subj.name }}</option>
+        {% endfor %}
+      </select>
+      <button type="submit" class="pl-btn-excel">
+        <i class="bi bi-file-earmark-excel-fill"></i>{% trans "Download Excel" %}
+      </button>
+    </form>
+  </div>
+  {% endif %}
+
   <!-- ── FILTERS ───────────────────────────────────── -->
   <form method="get" class="pl-filters">
     <span class="pl-filter-label"><i class="bi bi-funnel-fill me-1"></i>{% trans "Filter" %}</span>
@@ -417,7 +474,8 @@
   <div class="pl-grid">
     {% for practice in practices %}
 
-    <div class="pl-card pl-card--{{ practice.level }}">
+    <div class="pl-card pl-card--{{ practice.level }}"
+         {% if practice.subject and practice.subject.color %}data-subject-color="{{ practice.subject.color }}" style="border-left: 3px solid {{ practice.subject.color }};"{% endif %}>
 
       <!-- Main clickable area: top-band + body (valid single <a>) -->
       <a href="{% url 'practice_detail' practice.pk %}" class="pl-card-link">
@@ -459,7 +517,7 @@
         <div class="pl-footer-sep"></div>
 
         {% if practice.subject %}
-          <span class="pl-meta-item">
+          <span class="pl-meta-item" {% if practice.subject.color %}style="color: {{ practice.subject.color }};"{% endif %}>
             <i class="bi bi-bookmark-fill"></i>{{ practice.subject.name }}
           </span>
           <div class="pl-footer-sep"></div>

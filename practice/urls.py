@@ -23,6 +23,9 @@ urlpatterns = [
     path('<int:pk>/attempts/', views.practice_attempts, name='practice_attempts'),
     path('attempt/<int:attempt_id>/review/', views.review_attempt, name='review_attempt'),
 
+    # Admin export
+    path('export/', views.export_practices, name='export_practices'),
+
     # Master management — question level
     path('<int:pk>/questions/', views.manage_questions, name='manage_questions'),
     path('<int:pk>/questions/add/', views.add_question, name='add_question'),

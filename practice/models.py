@@ -11,6 +11,7 @@ LEVEL_CHOICES = [('easy', 'Easy'), ('medium', 'Medium'), ('hard', 'Hard')]
 class Subject(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
+    color = models.CharField(max_length=7, default='#6366f1', help_text='Hex color for card accent, e.g. #6366f1')
 
     class Meta:
         ordering = ['name']

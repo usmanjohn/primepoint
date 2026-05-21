@@ -10,8 +10,8 @@ import json
 from masters.models import Master
 from panda.models import Panda
 from practice.models import Practice, PracticeAttempt, PracticeQuestion
-from homework.models import Homework
 from discussion.models import Thread
+from tutorial.models import Tutorial
 
 
 def _fill_daily_series(qs, days=30):
@@ -38,7 +38,7 @@ def analytics(request):
     total_attempts  = PracticeAttempt.objects.filter(status='completed').count()
     total_questions = PracticeQuestion.objects.count()
     total_threads   = Thread.objects.count()
-    total_homework  = Homework.objects.count()
+    total_tutorials = Tutorial.objects.filter(is_published=True).count()
 
     platform_avg = (PracticeAttempt.objects
                     .filter(status='completed')
@@ -92,12 +92,19 @@ def analytics(request):
         'values': [m.sc for m in top_masters],
     })
 
-    # ── Free vs Paid donut ────────────────────────────────────────
-    free_count = Practice.objects.filter(is_published=True, is_free=True).count()
-    paid_count = total_practices - free_count
-    free_paid_data = json.dumps({
-        'labels': ['Free', 'Paid'],
-        'values': [free_count, paid_count],
+    # ── Practices by Subject donut ────────────────────────────────
+    subj_qs = (Practice.objects.filter(is_published=True)
+               .values('subject__name', 'subject__color')
+               .annotate(c=Count('id')))
+    subj_labels, subj_values, subj_colors = [], [], []
+    for row in subj_qs:
+        subj_labels.append(row['subject__name'] or 'Other')
+        subj_values.append(row['c'])
+        subj_colors.append(row['subject__color'] or '#94a3b8')
+    subject_data = json.dumps({
+        'labels': subj_labels,
+        'values': subj_values,
+        'colors': subj_colors,
     })
 
     ctx = {
@@ -107,13 +114,13 @@ def analytics(request):
         'total_attempts':  total_attempts,
         'total_questions': total_questions,
         'total_threads':   total_threads,
-        'total_homework':  total_homework,
+        'total_tutorials': total_tutorials,
         'platform_avg':    round(float(platform_avg), 1),
         'level_data':      level_data,
         'attempts_chart':  attempts_chart,
         'score_data':      score_data,
         'rank_data':       rank_data,
         'top_masters_data': top_masters_data,
-        'free_paid_data':  free_paid_data,
+        'subject_data':    subject_data,
     }
     return render(request, 'analytics/home.html', ctx)

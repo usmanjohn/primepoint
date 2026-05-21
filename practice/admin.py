@@ -1,7 +1,11 @@
 from django.contrib import admin
 from .models import Practice, PracticeQuestion, PracticeChoice, Subject
 
-admin.site.register(Subject)
+class SubjectAdmin(admin.ModelAdmin):
+    list_display = ('name', 'color')
+    fields = ('name', 'description', 'color')
+
+admin.site.register(Subject, SubjectAdmin)
 
 class PracticeQuestionInline(admin.TabularInline):
     model = PracticeQuestion

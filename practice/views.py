@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.utils import timezone
 from django.db.models import Q, Count
+from django.http import HttpResponse
+from django.utils.html import strip_tags
 from panda.models import Panda
 from masters.models import Master
 
@@ -65,6 +67,13 @@ def practice_list(request):
         except Master.DoesNotExist:
             pass
 
+    is_approved_master = (
+        request.user.is_authenticated
+        and hasattr(request.user, 'profile')
+        and hasattr(request.user.profile, 'master')
+        and request.user.profile.master.is_approved
+    )
+
     context = {
         'practices': practices,
         'subjects': subjects,
@@ -74,6 +83,7 @@ def practice_list(request):
         'selected_master': master_id,
         'selected_master_name': selected_master_name,
         'query': query or '',
+        'is_approved_master': is_approved_master,
     }
     return render(request, 'practice/practice_list.html', context)
 
@@ -614,3 +624,95 @@ def review_attempt(request, attempt_id):
         'is_owner': True,
     }
     return render(request, 'practice/review_attempt.html', context)
+
+
+# ─────────────────────────────────────────────
+# 17. EXPORT PRACTICES — Admin Excel download
+# ─────────────────────────────────────────────
+@login_required
+def export_practices(request):
+    if not request.user.is_staff:
+        messages.error(request, "You don't have permission to export practices.")
+        return redirect('practice_list')
+
+    import openpyxl
+    from openpyxl.styles import Font, PatternFill, Alignment
+
+    subject_id = request.GET.get('subject')
+
+    practices = (
+        Practice.objects
+        .select_related('subject', 'master')
+        .prefetch_related('questions__choices')
+        .order_by('subject__name', 'title')
+    )
+    if subject_id:
+        practices = practices.filter(subject_id=subject_id)
+
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = 'Practices'
+
+    header = [
+        'Practice Title', 'Subject', 'Level', 'Free', 'Pass Score (%)',
+        'Time Limit (min)', 'Question #', 'Question Text', 'Hint', 'Explanation',
+        'Choice 1', 'C1 Correct', 'Choice 2', 'C2 Correct',
+        'Choice 3', 'C3 Correct', 'Choice 4', 'C4 Correct',
+    ]
+    ws.append(header)
+    header_font = Font(bold=True)
+    header_fill = PatternFill('solid', fgColor='1E293B')
+    for cell in ws[1]:
+        cell.font = Font(bold=True, color='E2E8F0')
+        cell.fill = header_fill
+        cell.alignment = Alignment(horizontal='center')
+
+    for practice in practices:
+        questions = list(practice.questions.prefetch_related('choices').order_by('order'))
+        rows_to_write = questions if questions else [None]
+        for q_num, question in enumerate(rows_to_write, 1):
+            row = [
+                practice.title,
+                practice.subject.name if practice.subject else '',
+                practice.get_level_display(),
+                'Yes' if practice.is_free else 'No',
+                practice.pass_score,
+                practice.time_limit if practice.time_limit is not None else '',
+            ]
+            if question is not None:
+                choices = list(question.choices.all())
+                row += [
+                    q_num,
+                    strip_tags(question.question_text).strip(),
+                    strip_tags(question.hint).strip() if question.hint else '',
+                    strip_tags(question.explanation).strip() if question.explanation else '',
+                ]
+                for i in range(4):
+                    if i < len(choices):
+                        row += [choices[i].text, 'Yes' if choices[i].is_correct else 'No']
+                    else:
+                        row += ['', '']
+            else:
+                row += ['', '', '', '', '', '', '', '', '', '', '', '']
+            ws.append(row)
+        ws.append([])  # empty separator row between practices
+
+    # Auto-size columns
+    for col in ws.columns:
+        max_len = max((len(str(cell.value or '')) for cell in col), default=0)
+        ws.column_dimensions[col[0].column_letter].width = min(max_len + 4, 60)
+
+    subject_obj = None
+    if subject_id:
+        try:
+            subject_obj = Subject.objects.get(pk=subject_id)
+        except Subject.DoesNotExist:
+            pass
+    filename = f'practices_{subject_obj.name}.xlsx' if subject_obj else 'practices_all.xlsx'
+
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    )
+    response['Content-Disposition'] = f'attachment; filename="{filename}"'
+    wb.save(response)
+    return response

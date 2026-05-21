@@ -158,9 +158,9 @@
     <div class="an-kpi-lbl">{% trans "Discussions" %}</div>
   </div>
   <div class="an-kpi">
-    <div class="an-kpi-icon"><i class="bi bi-journal-bookmark-fill"></i></div>
-    <div class="an-kpi-num">{{ total_homework }}</div>
-    <div class="an-kpi-lbl">{% trans "Homework" %}</div>
+    <div class="an-kpi-icon"><i class="bi bi-play-btn-fill"></i></div>
+    <div class="an-kpi-num">{{ total_tutorials }}</div>
+    <div class="an-kpi-lbl">{% trans "Tutorials" %}</div>
   </div>
 </div>
 
@@ -204,9 +204,9 @@
   </div>
   <div class="col-lg-3">
     <div class="an-card h-100">
-      <p class="an-heading">{% trans "Free vs Paid" %}</p>
+      <p class="an-heading">{% trans "By Subject" %}</p>
       <div class="an-chart-wrap" style="height:210px;">
-        <canvas id="freePaidDonut"></canvas>
+        <canvas id="subjectDonut"></canvas>
       </div>
     </div>
   </div>
@@ -347,7 +347,7 @@
   const scoreData     = {{ score_data|safe }};
   const rankData      = {{ rank_data|safe }};
   const topMasters    = {{ top_masters_data|safe }};
-  const freePaidData  = {{ free_paid_data|safe }};
+  const subjectData   = {{ subject_data|safe }};
 
   lineChart('attemptsLine', attemptsData, 'Attempts', accent);
 
@@ -364,8 +364,7 @@
   donutChart('rankDonut', rankData,
     [COLORS.novice, COLORS.scholar, COLORS.expert, COLORS.grand]);
 
-  donutChart('freePaidDonut', freePaidData,
-    [COLORS.free, COLORS.paid]);
+  donutChart('subjectDonut', subjectData, subjectData.colors);
 
   barChart('topMastersBar', topMasters, accent, true);
 
