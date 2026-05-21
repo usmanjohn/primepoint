@@ -100,10 +100,6 @@ class TutorialPlaylist(models.Model):
     def category_icon(self):
         return CATEGORY_ICONS.get(self.category, 'bi-lightbulb')
 
-    @property
-    def tutorial_count(self):
-        return self.items.count()
-
 
 class PlaylistTutorial(models.Model):
     playlist = models.ForeignKey(TutorialPlaylist, on_delete=models.CASCADE, related_name='items')
