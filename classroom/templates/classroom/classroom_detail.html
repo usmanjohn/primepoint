@@ -113,14 +113,14 @@
     <span class="cr-meta-item"><i class="bi bi-people"></i>{{ classroom.member_count }} {% trans "members" %}</span>
   </div>
   <div class="cr-action-row">
-    <a href="{% url 'classroom:discussion_list' classroom.pk %}" class="btn-auth-outline">
+    <a href="{% url 'classroom:discussion_list' classroom.pk %}" class="btn-auth-outline" style="color:var(--danger);border-color:var(--danger);">
       <i class="bi bi-chat-square-dots me-1"></i>{% trans "Discussion" %}
     </a>
     {% if is_master_user %}
     <a href="{% url 'classroom:edit' classroom.pk %}" class="btn-auth-primary">
       <i class="bi bi-pencil me-1"></i>{% trans "Edit Classroom" %}
     </a>
-    <a href="{% url 'classroom:manage' classroom.pk %}" class="btn-auth-outline">
+    <a href="{% url 'classroom:manage' classroom.pk %}" class="btn-auth-info" style="color:var(--info);border-color:var(--info);>
       <i class="bi bi-people me-1"></i>{% trans "Members" %}
     </a>
     {% endif %}

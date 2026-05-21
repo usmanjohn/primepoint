@@ -163,10 +163,10 @@
       </div>
       {% if is_master_user %}
       <div class="cr-lesson-actions">
-        <a href="{% url 'classroom:lesson_edit' classroom.pk lesson.pk %}" class="btn-auth-outline">
+        <a href="{% url 'classroom:lesson_edit' classroom.pk lesson.pk %}" class="btn-auth-primary">
           <i class="bi bi-pencil me-1"></i>{% trans "Edit" %}
         </a>
-        <a href="{% url 'classroom:lesson_delete' classroom.pk lesson.pk %}" class="btn-auth-outline" style="color:var(--danger);border-color:var(--danger);">
+        <a href="{% url 'classroom:lesson_delete' classroom.pk lesson.pk %}" class="btn-auth-info" style="color:var(--danger);border-color:var(--danger);">
           <i class="bi bi-trash me-1"></i>{% trans "Delete" %}
         </a>
       </div>
@@ -230,7 +230,26 @@
     </div>
     {% endif %}
   </div>
-
+  {% if tutorials %}
+  <div class="cr-content-section">
+    <div class="cr-content-section-header">
+      <div class="cr-content-section-title">
+        <i class="bi bi-journal-text"></i>{% trans "Tutorials" %}
+      </div>
+    </div>
+    <div class="cr-item-grid">
+      {% for tut in tutorials %}
+      <a href="{% url 'tutorial_detail' tut.pk %}" class="cr-item-card">
+        <div class="cr-item-icon"><i class="bi bi-journal-text"></i></div>
+        <div class="cr-item-text">
+          <span class="cr-item-name">{{ tut.title }}</span>
+          <span class="cr-item-sub">{{ tut.read_time }} {% trans "min read" %}</span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
   <!-- Practices Section -->
   {% if practices %}
   <div class="cr-content-section">
@@ -276,26 +295,7 @@
   {% endif %}
 
   <!-- Tutorials Section -->
-  {% if tutorials %}
-  <div class="cr-content-section">
-    <div class="cr-content-section-header">
-      <div class="cr-content-section-title">
-        <i class="bi bi-journal-text"></i>{% trans "Tutorials" %}
-      </div>
-    </div>
-    <div class="cr-item-grid">
-      {% for tut in tutorials %}
-      <a href="{% url 'tutorial_detail' tut.pk %}" class="cr-item-card">
-        <div class="cr-item-icon"><i class="bi bi-journal-text"></i></div>
-        <div class="cr-item-text">
-          <span class="cr-item-name">{{ tut.title }}</span>
-          <span class="cr-item-sub">{{ tut.read_time }} {% trans "min read" %}</span>
-        </div>
-      </a>
-      {% endfor %}
-    </div>
-  </div>
-  {% endif %}
+  
 
   {% if not practices and not homeworks and not tutorials and not notes %}
   {% if not is_master_user %}
