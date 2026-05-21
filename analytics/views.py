@@ -10,6 +10,7 @@ import json
 from masters.models import Master
 from panda.models import Panda
 from practice.models import Practice, PracticeAttempt, PracticeQuestion
+from practice.views import SUBJECT_PALETTE
 from discussion.models import Thread
 from tutorial.models import Tutorial
 
@@ -93,14 +94,15 @@ def analytics(request):
     })
 
     # ── Practices by Subject donut ────────────────────────────────
-    subj_qs = (Practice.objects.filter(is_published=True)
-               .values('subject__name', 'subject__color')
-               .annotate(c=Count('id')))
-    subj_labels, subj_values, subj_colors = [], [], []
-    for row in subj_qs:
-        subj_labels.append(row['subject__name'] or 'Other')
-        subj_values.append(row['c'])
-        subj_colors.append(row['subject__color'] or '#94a3b8')
+    subj_qs = list(
+        Practice.objects.filter(is_published=True)
+        .values('subject__name')
+        .annotate(c=Count('id'))
+        .order_by('subject__name')
+    )
+    subj_labels = [row['subject__name'] or 'Other' for row in subj_qs]
+    subj_values = [row['c'] for row in subj_qs]
+    subj_colors = [SUBJECT_PALETTE[i % len(SUBJECT_PALETTE)] for i in range(len(subj_qs))]
     subject_data = json.dumps({
         'labels': subj_labels,
         'values': subj_values,

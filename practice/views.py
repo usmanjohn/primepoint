@@ -11,6 +11,19 @@ from masters.models import Master
 from .models import Practice, PracticeQuestion, PracticeChoice, PracticeAttempt, UserAnswer, Subject
 from .forms import PracticeForm, PracticeQuestionForm
 
+SUBJECT_PALETTE = [
+    '#38bdf8',  # sky blue
+    '#f59e0b',  # amber
+    '#22c55e',  # green
+    '#f87171',  # coral red
+    '#a78bfa',  # violet
+    '#fb923c',  # orange
+    '#34d399',  # emerald
+    '#e879f9',  # fuchsia
+    '#facc15',  # yellow
+    '#60a5fa',  # blue
+]
+
 # Avoid circular import — imported lazily in finish_practice
 def _auto_link_homework(attempt):
     from homework.models import HomeworkAssignment
@@ -54,7 +67,11 @@ def practice_list(request):
             Q(title__icontains=query) | Q(description__icontains=query)
         )
 
-    subjects = Subject.objects.all()
+    subjects = list(Subject.objects.all())
+    subject_color_map = {
+        s.pk: SUBJECT_PALETTE[i % len(SUBJECT_PALETTE)]
+        for i, s in enumerate(subjects)
+    }
     masters = Master.objects.filter(practices__is_published=True).select_related(
         'profile__user'
     ).distinct()
@@ -84,6 +101,7 @@ def practice_list(request):
         'selected_master_name': selected_master_name,
         'query': query or '',
         'is_approved_master': is_approved_master,
+        'subject_color_map': subject_color_map,
     }
     return render(request, 'practice/practice_list.html', context)
 

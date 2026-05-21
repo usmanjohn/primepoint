@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static i18n %}
+{% load static i18n practice_extras %}
 
 {% block title %}{% trans "Practice Hub" %}{% endblock %}
 {% block page_name %}{% trans "Practice Hub" %}{% endblock %}
@@ -474,8 +474,9 @@
   <div class="pl-grid">
     {% for practice in practices %}
 
+    {% with scolor=subject_color_map|get_item:practice.subject_id %}
     <div class="pl-card pl-card--{{ practice.level }}"
-         {% if practice.subject and practice.subject.color %}data-subject-color="{{ practice.subject.color }}" style="border-left: 3px solid {{ practice.subject.color }};"{% endif %}>
+         {% if scolor %}style="border-left: 3px solid {{ scolor }};"{% endif %}>
 
       <!-- Main clickable area: top-band + body (valid single <a>) -->
       <a href="{% url 'practice_detail' practice.pk %}" class="pl-card-link">
@@ -517,7 +518,7 @@
         <div class="pl-footer-sep"></div>
 
         {% if practice.subject %}
-          <span class="pl-meta-item" {% if practice.subject.color %}style="color: {{ practice.subject.color }};"{% endif %}>
+          <span class="pl-meta-item" {% if scolor %}style="color: {{ scolor }}; font-weight:700;"{% endif %}>
             <i class="bi bi-bookmark-fill"></i>{{ practice.subject.name }}
           </span>
           <div class="pl-footer-sep"></div>
@@ -539,6 +540,7 @@
       </div>
 
     </div>
+    {% endwith %}
 
     {% empty %}
     <div class="pl-empty">
