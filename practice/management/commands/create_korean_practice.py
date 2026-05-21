@@ -2,190 +2,280 @@ from django.core.management.base import BaseCommand, CommandError
 from django.contrib.auth.models import User
 from masters.models import Master
 from practice.models import Subject, Practice, PracticeQuestion, PracticeChoice
+
+
 QUESTIONS = [
     {
-        'text': "<p><strong>A: 지민 씨, 제주도 날씨가 어때요?<br>B: 바람이 많이 ________ 아주 춥습니다.</strong></p>",
-        'explanation': "<p><strong>불고</strong>: Sharoitlarni ketma-ket qo'shib ifodalash uchun Fe'l o'zagiga (불다) <code>-고</code> bog'lovchisi qo'shiladi.</p>",
-        'correct': "불고",
-        'choices': ["불고", "불거나", "부는데", "불지만"]
+        'text': "<p><strong>A: 민수 씨는 아침에 무엇을 해요?<br>B: 아주 일찍 운동________ 샤워를 합니다.</strong></p>",
+        'explanation': "<p><strong>한 후에</strong>: 첫 번째 행동이 끝난 다음 다른 행동을 할 때 <code>V-(으)ㄴ 후에</code>를 사용합니다. 여기서는 운동하다 → 운동한 후에 입니다.</p>",
+        'correct': "한 후에",
+        'choices': ["한 후에", "하기 전에", "하면서", "하자마자"]
     },
     {
-        'text': "<p><strong>A: 한국 요리는 보통 어때요?<br>B: 조금 매________ 아주 맛있습니다.</strong></p>",
-        'explanation': "<p><strong>우나</strong>: Bu yerda qarama-qarshilik ma'nosidagi <code>-지만</code> grammatikasi to'g'ri keladi (매우다 + 지만 = 매웁지만 -> 매우+지만 = 매지만).</p>",
-        'correct': "매워요",
-        'choices': ["맵고", "맵거나", "맵지만", "매운데"]
+        'text': "<p><strong>A: 자기 전에 보통 무엇을 해요?<br>B: 따뜻한 차를 마시________ 조용히 음악을 들어요.</strong></p>",
+        'explanation': "<p><strong>기 전에</strong>: 어떤 행동을 하기 이전 상황을 나타낼 때 <code>V-기 전에</code>를 사용합니다. 마시다 → 마시기 전에 입니다.</p>",
+        'correct': "기 전에",
+        'choices': ["고 나서", "는 동안", "기 전에", "자마자"]
     },
     {
-        'text': "<p><strong>A: 주말에 보통 뭐 하세요?<br>B: 집에서 책을 일________ 음악을 들어요.</strong></p>",
-        'explanation': "<p><strong>읽거나</strong>: Ikki harakatdan birini tanlash ('yoki') ma'nosida faqat fe'llarga qo'shiladigan <code>-거나</code> ishlatiladi.</p>",
-        'correct': "읽거나",
-        'choices': ["읽고", "읽거나", "읽지만", "읽는데"]
+        'text': "<p><strong>A: 언제 가장 행복해요?<br>B: 가족들과 맛있는 음식을 먹________ 정말 행복해요.</strong></p>",
+        'explanation': "<p><strong>을 때</strong>: 어떤 행동이나 상태가 일어나는 시간을 나타낼 때 <code>A/V-(으)ㄹ 때</code>를 사용합니다. 먹다 → 먹을 때 입니다.</p>",
+        'correct': "을 때",
+        'choices': ["은 후에", "을 때", "는 동안", "으면서"]
     },
     {
-        'text': "<p><strong>A: 이 백화점 물건들은 어때요?<br>B: 디자인은 예________ 가격이 너무 비싸요.</strong></p>",
-        'explanation': "<p><strong>쁜데</strong>: Sifatlar bilan (예쁘다) kontekst yaratish yoki yumshoq qarama-qarshilik bildirish uchun <code>-(으)는데</code> (예쁜데) ishlatiladi.</p>",
-        'correct': "예쁜데",
-        'choices': ["예쁘고", "예쁘거나", "예쁜데", "예쁘지만"]
+        'text': "<p><strong>A: 어떤 학생을 좋아하세요?<br>B: 항상 열심히 공부________ 학생을 좋아합니다.</strong></p>",
+        'explanation': "<p><strong>하는</strong>: 현재 진행되거나 반복되는 행동으로 명사를 꾸밀 때 <code>V-는</code>을 사용합니다. 공부하다 → 공부하는 학생 입니다.</p>",
+        'correct': "하는",
+        'choices': ["한", "하는", "할", "하던"]
     },
     {
-        'text': "<p><strong>A: 요즘 날씨가 어때요?<br>B: 낮에는 따뜻하________ 밤에는 꽤 쌀쌀해요.</strong></p>",
-        'explanation': "<p><strong>지만</strong>: Kunduzi va kechasi o'rtasidagi yaqqol qarama-qarshilikni ko'rsatish uchun <code>-지만</code> eng ma'qul variantdir.</p>",
-        'correct': "지만",
-        'choices': ["고", "거나", "지만", "는데"]
+        'text': "<p><strong>A: 어제 본 드라마가 어땠어요?<br>B: 정말 슬프________ 드라마였어요.</strong></p>",
+        'explanation': "<p><strong>고 재미있는</strong>: 형용사와 관형사형 표현을 사용해 명사를 꾸밀 수 있습니다. 재미있다 → 재미있는 드라마 입니다.</p>",
+        'correct': "고 재미있는",
+        'choices': ["고 재미있는", "고 재미있을", "고 재미있은", "고 재미있던"]
     },
     {
-        'text': "<p><strong>A: 소라 씨, 지금 뭐 해요?<br>B: 친구를 기다리________ 지루해서 미치겠어요.</strong></p>",
-        'explanation': "<p><strong>는데</strong>: Hozirgi holatni tushuntirib, unga zamin yaratish (kontekst) uchun fe'lga <code>-는데</code> qo'shiladi.</p>",
-        'correct': "기다리는데",
-        'choices': ["기다리고", "기다리거나", "기다리지만", "기다리는데"]
+        'text': "<p><strong>A: 주말에 무엇을 할 거예요?<br>B: 친구와 같이 읽________ 책을 도서관에서 빌릴 거예요.</strong></p>",
+        'explanation': "<p><strong>을</strong>: 앞으로 할 행동이 명사를 꾸밀 때 <code>V-(으)ㄹ</code> 형태를 사용합니다. 읽다 → 읽을 책 입니다.</p>",
+        'correct': "을",
+        'choices': ["은", "는", "을", "던"]
     },
     {
-        'text': "<p><strong>A: 이 신발은 어때요?<br>B: 굽이 높________ 발이 전혀 아프지 않아요.</strong></p>",
-        'explanation': "<p><strong>지만</strong>: 'To'pig'i baland, lekin oyoq og'rimaydi' degan keskin qarama-qarshilikni ifodalash uchun <code>-지만</code> kerak.</p>",
-        'correct': "높지만",
-        'choices': ["높고", "높거나", "높지만", "높은데"]
+        'text': "<p><strong>A: 요즘 어떻게 공부해요?<br>B: 잔잔한 음악을 들으________ 집중해서 공부해요.</strong></p>",
+        'explanation': "<p><strong>면서</strong>: 같은 사람이 두 가지 행동을 동시에 할 때 <code>V-(으)면서</code>를 사용합니다. 듣다 → 들으면서 입니다.</p>",
+        'correct': "면서",
+        'choices': ["자마자", "고 나서", "면서", "는 동안"]
     },
     {
-        'text': "<p><strong>A: 목이 너무 아파요.<br>B: 따뜻한 물을 마시________ 약을 드세요.</strong></p>",
-        'explanation': "<p><strong>거나</strong>: Ikki maslahatdan birini bajarish tanlovini ko'rsatish uchun fe'lga <code>-거나</code> qo'shiladi.</p>",
-        'correct': "마시거나",
-        'choices': ["마시고", "마시거나", "마시지만", "마시는데"]
+        'text': "<p><strong>A: 기다리는 동안 무엇을 했어요?<br>B: 친구를 기다리________ 재미있는 소설을 읽었어요.</strong></p>",
+        'explanation': "<p><strong>는 동안</strong>: 어떤 행동이 계속되는 시간 동안 다른 일이 일어날 때 <code>V-는 동안</code>을 사용합니다. 기다리다 → 기다리는 동안 입니다.</p>",
+        'correct': "는 동안",
+        'choices': ["은 후에", "기 전에", "는 동안", "자마자"]
     },
     {
-        'text': "<p><strong>A: 새로 이사한 집은 어때요?<br>B: 조용하________ 넓어서 아주 마음에 들어요.</strong></p>",
-        'explanation': "<p><strong>고</strong>: Ijobiy sifatlarni ketma-ket sanab o'tish uchun sifat o'zagiga <code>-고</code> ulangan.</p>",
-        'correct': "조용하고",
-        'choices': ["조용하고", "조용하거나", "조용하지만", "조용 한데"]
+        'text': "<p><strong>A: 숙제를 다 했어요?<br>B: 네, 숙제를 다 하________ 편안하게 쉬었어요.</strong></p>",
+        'explanation': "<p><strong>고 나서</strong>: 첫 번째 행동이 완전히 끝난 후 다음 행동을 할 때 <code>V-고 나서</code>를 사용합니다.</p>",
+        'correct': "고 나서",
+        'choices': ["자마자", "고 나서", "는 동안", "은 후에"]
     },
     {
-        'text': "<p><strong>A: 어제 산 가방은 잘 들고 다녀요?<br>B: 크기는 작________ 수납공간이 많아서 편해요.</strong></p>",
-        'explanation': "<p><strong>은데</strong>: Sifat (작다) unli bilan tugamagan (받침 bor), shuning uchun fon yaratish ma'nosida <code>-은데</code> shakli to'g'ri bo'ladi.</p>",
-        'correct': "작은데",
-        'choices': ["작고", "작거나", "작은데", "작지만"]
+        'text': "<p><strong>A: 어제 왜 그렇게 피곤했어요?<br>B: 집에 들어오________ 바로 침대에서 잠들었어요.</strong></p>",
+        'explanation': "<p><strong>자마자</strong>: 첫 번째 행동 직후 바로 다음 행동이 일어날 때 <code>V-자마자</code>를 사용합니다. 들어오다 → 들어오자마자 입니다.</p>",
+        'correct': "자마자",
+        'choices': ["고 나서", "는 동안", "기 전에", "자마자"]
     },
     {
-        'text': "<p><strong>A: 주말에 영화를 볼까요?<br>B: 제가 지금 좀 바________ 내일 보면 안 될까요?</strong></p>",
-        'explanation': "<p><strong>쁜데</strong>: O'zining bandligini sabab/fon qilib ko'rsatib, rad javobini silliq ifodalashda <code>-ㄴ데</code> (바쁜데) ishlatiladi.</p>",
-        'correct': "바쁜데",
-        'choices': ["바쁘고", "바쁘거나", "바쁜데", "바쁘지만"]
+        'text': "<p><strong>A: 한국어를 공부한 지 얼마나 되었어요?<br>B: 한국어를 배우________ 거의 2년이 되었어요.</strong></p>",
+        'explanation': "<p><strong>운 지</strong>: 어떤 행동을 시작한 후 지난 시간을 나타낼 때 <code>V-(으)ㄴ 지</code>를 사용합니다. 배우다 → 배운 지 입니다.</p>",
+        'correct': "운 지",
+        'choices': ["는 동안", "고 나서", "운 지", "기 전에"]
     },
     {
-        'text': "<p><strong>A: 이 옷은 어때요?<br>B: 색상이 밝________ 가볍고 시원해 보여요.</strong></p>",
-        'explanation': "<p><strong>고</strong>: 'Yorqin va yengil' ma'nosida ikkita ijobiy sifatni bog'lash uchun <code>-고</code> to'g'ri tanlovdir.</p>",
-        'correct': "밝고",
-        'choices': ["밝고", "밝거나", "밝지만", "밝은데"]
+        'text': "<p><strong>A: 비가 많이 올 때 무엇을 해요?<br>B: 따뜻한 커피를 마시________ 조용히 책을 읽어요.</strong></p>",
+        'explanation': "<p><strong>면서</strong>: 같은 사람이 동시에 두 행동을 할 때 <code>V-(으)면서</code>를 사용합니다.</p>",
+        'correct': "면서",
+        'choices': ["면서", "자마자", "고 나서", "은 후에"]
     },
     {
-        'text': "<p><strong>A: 스트레스를 받으면 어떻게 해요?<br>B: 매운 음식을 먹________ 소리를 크게 질러요.</strong></p>",
-        'explanation': "<p><strong>거나</strong>: Stressdan xalos bo'lishning ikki variantidan birini tanlashni ifodalash uchun fe'lga <code>-거나</code> ulanadi.</p>",
-        'correct': "먹거나",
-        'choices': ["먹고", "먹거나", "먹지만", "먹는데"]
+        'text': "<p><strong>A: 어떤 음식을 좋아하세요?<br>B: 어머니가 정성스럽게 만드________ 음식을 아주 좋아해요.</strong></p>",
+        'explanation': "<p><strong>는</strong>: 현재 진행되거나 반복되는 행동으로 명사를 꾸밀 때 <code>V-는</code>을 사용합니다. 만들다 → 만드는 음식 입니다.</p>",
+        'correct': "는",
+        'choices': ["는", "은", "을", "던"]
     },
     {
-        'text': "<p><strong>A: 한국 생활이 힘들지 않아요?<br>B: 처음에는 외롭________ 지금은 친구가 많아서 괜찮아요.</strong></p>",
-        'explanation': "<p><strong>았지만</strong>: O'tmishdagi holat (외로웠다) bilan hozirgi holatni qarama-qarshi qo'yish uchun o'tgan zamon o'zagiga <code>-지만</code> qo'shilgan.</p>",
-        'correct': "외로웠지만",
-        'choices': ["외롭고", "외롭거나", "외로웠지만", "외로운데"]
+        'text': "<p><strong>A: 회사에 가기 전에 무엇을 했어요?<br>B: 급하게 아침을 먹________ 서둘러 나갔어요.</strong></p>",
+        'explanation': "<p><strong>은 후에</strong>: 어떤 행동이 끝난 다음 다른 행동이 이어질 때 <code>V-(으)ㄴ 후에</code>를 사용합니다. 먹다 → 먹은 후에 입니다.</p>",
+        'correct': "은 후에",
+        'choices': ["기 전에", "자마자", "은 후에", "는 동안"]
     },
     {
-        'text': "<p><strong>A: 민수 씨, 지금 시간 있어요?<br>B: 숙제를 하________ 어려운 부분이 있어서요. 좀 도와줄래요?</strong></p>",
-        'explanation': "<p><strong>는데</strong>: Vaziyat haqida ma'lumot berib, yordam so'rashga zamin hozirlash uchun fe'lga <code>-는데</code> qo'shiladi.</p>",
-        'correct': "하는데",
-        'choices': ["하고", "하거나", "하지만", "하는데"]
+        'text': "<p><strong>A: 언제 가장 바빠요?<br>B: 시험이 있________ 정말 정신이 없어요.</strong></p>",
+        'explanation': "<p><strong>을 때</strong>: 특정 상황이나 시간을 나타낼 때 <code>A/V-(으)ㄹ 때</code>를 사용합니다. 있다 → 있을 때 입니다.</p>",
+        'correct': "을 때",
+        'choices': ["은 후에", "을 때", "는 동안", "자마자"]
     },
     {
-        'text': "<p><strong>A: 저 가수가 누구예요?<br>B: 얼굴은 잘생기________ 노래는 별로 못해요.</strong></p>",
-        'explanation': "<p><strong>지만</strong>: Tashqi ko'rinish va qobiliyat o'rtasidagi zidlikni ko'rsatish uchun <code>-지만</code> ishlatiladi.</p>",
-        'correct': "잘생겼지만",
-        'choices': ["잘생기고", "잘생기거나", "잘생겼지만", "잘생기는데"]
+        'text': "<p><strong>A: 점심을 먹은 후에 무엇을 했어요?<br>B: 시원한 카페에 가________ 친구와 재미있게 이야기했어요.</strong></p>",
+        'explanation': "<p><strong>ㄴ 후에</strong>: 첫 번째 행동이 끝난 뒤 다음 행동이 이어질 때 <code>V-(으)ㄴ 후에</code>를 사용합니다. 가다 → 간 후에 입니다.</p>",
+        'correct': "간 후에",
+        'choices': ["가기 전에", "가는 동안", "간 후에", "가자마자"]
     },
     {
-        'text': "<p><strong>A: 감기에 걸려서 머리가 너무 아파요.<br>B: 집에 가서 푹 쉬________ 병원에 꼭 가 보세요.</strong></p>",
-        'explanation': "<p><strong>거나</strong>: Ikki harakatdan birini tanlash tavsiya etilganda fe'lga <code>-거나</code> qo'shiladi.</p>",
-        'correct': "쉬거나",
-        'choices': ["쉬고", "쉬거나", "쉬지만", "쉬는데"]
+        'text': "<p><strong>A: 시험 보기 전에 무엇을 해요?<br>B: 조용한 곳에서 깊게 숨을 쉬________ 마음을 편하게 해요.</strong></p>",
+        'explanation': "<p><strong>기 전에</strong>: 어떤 행동 이전의 상황을 말할 때 <code>V-기 전에</code>를 사용합니다. 쉬다 → 쉬기 전에 입니다.</p>",
+        'correct': "기 전에",
+        'choices': ["은 후에", "고 나서", "기 전에", "자마자"]
     },
     {
-        'text': "<p><strong>A: 이 노트북 어때요?<br>B: 가볍________ 성능이 아주 좋아서 인기가 많아요.</strong></p>",
-        'explanation': "<p><strong>고</strong>: Noutbukning yaxshi jihatlarini (yengil va kuchli) birgalikda sanash uchun <code>-고</code> ishlatiladi.</p>",
-        'correct': "가볍고",
-        'choices': ["가볍고", "가볍거나", "가볍지만", "가벼운데"]
+        'text': "<p><strong>A: 언제 음악을 자주 들어요?<br>B: 버스를 타________ 밝은 음악을 자주 들어요.</strong></p>",
+        'explanation': "<p><strong>ㄹ 때</strong>: 어떤 행동이 일어나는 시간을 나타낼 때 <code>A/V-(으)ㄹ 때</code>를 사용합니다. 타다 → 탈 때 입니다.</p>",
+        'correct': "ㄹ 때",
+        'choices': ["는 동안", "ㄹ 때", "은 후에", "고 나서"]
     },
     {
-        'text': "<p><strong>A: 혹시 마트 가세요?<br>B: 네, 가 마트에 가________ 필요한 거 있어요?</strong></p>",
-        'explanation': "<p><strong>는데</strong>: Ma'lum bir harakatni bajarayotganini aytib, suhbatdoshdan ehtiyojini so'rash fonini yaratish uchun <code>-는데</code> qo'shiladi.</p>",
-        'correct': "가는데",
-        'choices': ["가고", "가거나", "가지만", "가는데"]
+        'text': "<p><strong>A: 어떤 커피를 좋아하세요?<br>B: 향기가 진하________ 커피를 좋아해요.</strong></p>",
+        'explanation': "<p><strong>ㄴ</strong>: 형용사가 명사를 꾸밀 때 <code>A-(으)ㄴ</code>을 사용합니다. 진하다 → 진한 커피 입니다.</p>",
+        'correct': "ㄴ",
+        'choices': ["는", "ㄹ", "ㄴ", "던"]
     },
     {
-        'text': "<p><strong>A: 어제 본 영화는 어땠어요?<br>B: 조금 유치하________ 영상미가 무척 아름다웠어요.</strong></p>",
-        'explanation': "<p><strong>지만</strong>: Salbiy jihat (yosh bolalarcha) va ijobiy jihat (vizual go'zallik) o'rtasidagi qarama-qarshilikni ko'rsatish uchun <code>-지만</code> ishlatiladi.</p>",
-        'correct': "유치하지만",
-        'choices': ["유치하고", "유치하거나", "유치하지만", "유치한데"]
+        'text': "<p><strong>A: 지금 무엇을 찾고 있어요?<br>B: 내일 중요한 모임에 입________ 옷을 찾고 있어요.</strong></p>",
+        'explanation': "<p><strong>을</strong>: 미래에 할 행동으로 명사를 꾸밀 때 <code>V-(으)ㄹ</code>을 사용합니다. 입다 → 입을 옷 입니다.</p>",
+        'correct': "을",
+        'choices': ["은", "는", "을", "던"]
     },
     {
-        'text': "<p><strong>A: 길이 너무 막히네요.<br>B: 지하철을 타________ 버스를 타는 게 빠를 것 같아요.</strong></p>",
-        'explanation': "<p><strong>거나</strong>: Transport vositalarini tanlash imkoniyatini ko'rsatish uchun fe'l o'zagiga <code>-거나</code> ulanadi.</p>",
-        'correct': "타거나",
-        'choices': ["타고", "타거나", "타지만", "탄데"]
+        'text': "<p><strong>A: 요즘 어떻게 운동해요?<br>B: 신나는 음악을 들으________ 열심히 달려요.</strong></p>",
+        'explanation': "<p><strong>으면서</strong>: 같은 사람이 동시에 두 행동을 할 때 <code>V-(으)면서</code>를 사용합니다. 듣다 → 들으면서 입니다.</p>",
+        'correct': "으면서",
+        'choices': ["자마자", "고 나서", "으면서", "는 동안"]
     },
     {
-        'text': "<p><strong>A: 김치찌개가 많이 매워요?<br>B: 외관은 매워 보이________ 생각보다 맵지 않아요.</strong></p>",
-        'explanation': "<p><strong>지만</strong>: Ko'rinishi va haqiqiy ta'mi o'rtasidagi zidlikni aniq ifodalash uchun <code>-지만</code> grammatikasi qo'llaniladi.</p>",
-        'correct': "보이지만",
-        'choices': ["보이고", "보이거나", "보이지만", "보이는데"]
+        'text': "<p><strong>A: 어머니가 요리하는 동안 무엇을 했어요?<br>B: 저는 깨끗하게 방을 청소하________ 있었어요.</strong></p>",
+        'explanation': "<p><strong>고</strong>: 두 행동을 자연스럽게 연결할 때 <code>-고</code>를 사용할 수 있습니다.</p>",
+        'correct': "고",
+        'choices': ["자마자", "고", "으면서", "기 전에"]
     },
     {
-        'text': "<p><strong>A: 이 카페는 항상 사람이 많네요.<br>B: 분위기가 좋________ 커피 맛도 훌륭하거든요.</strong></p>",
-        'explanation': "<p><strong>고</strong>: Kafening afzalliklarini ketma-ket qo'shib ta'riflash uchun <code>-고</code> to'g'ri keladi.</p>",
-        'correct': "좋고",
-        'choices': ["좋고", "좋거나", "좋지만", "좋은데"]
+        'text': "<p><strong>A: 퇴근하고 나서 보통 무엇을 해요?<br>B: 따뜻하게 샤워를 하________ 편하게 쉬어요.</strong></p>",
+        'explanation': "<p><strong>고 나서</strong>: 첫 번째 행동이 완전히 끝난 뒤 다음 행동이 이어질 때 사용합니다.</p>",
+        'correct': "고 나서",
+        'choices': ["는 동안", "자마자", "고 나서", "기 전에"]
     },
     {
-        'text': "<p><strong>A: 저 옷을 사고 싶은데 돈이 부족해요.<br>B: 돈을 더 모으________ 아르바이트를 시작해 보세요.</strong></p>",
-        'explanation': "<p><strong>거나</strong>: Muammoni hal qilish uchun taklif etilayotgan ikki yo'ldan biri nazarda tutilgani uchun fe'lga <code>-거나</code> qo'shiladi.</p>",
-        'correct': "모으거나",
-        'choices': ["모으고", "모으거나", "모으지만", "모으는데"]
+        'text': "<p><strong>A: 학교에 도착하자마자 무엇을 했어요?<br>B: 바로 교실에 들어가________ 선생님께 인사했어요.</strong></p>",
+        'explanation': "<p><strong>서</strong>: 연결된 행동을 자연스럽게 이어 줄 때 사용합니다. 들어가서 인사했어요.</p>",
+        'correct': "서",
+        'choices': ["고", "서", "지만", "는데"]
     },
     {
-        'text': "<p><strong>A: 한국말을 왜 이렇게 잘해요?<br>B: 매일 연습하________ 아직 발음이 많이 서툴러요.</strong></p>",
-        'explanation': "<p><strong>지만</strong>: Harakat (har kuni mashq qilish) va natija (talaffuzning xomligi) o'rtasidagi qarama-qarshilikni ko'rsatish uchun <code>-지만</code> ishlatiladi.</p>",
-        'correct': "연습하지만",
-        'choices': ["연습하고", "연습하거나", "연습하지만", "연습하는데"]
+        'text': "<p><strong>A: 한국에 온 지 얼마나 되었어요?<br>B: 한국에서 생활한 지 벌써 3년이 넘________.</strong></p>",
+        'explanation': "<p><strong>어요</strong>: 기간 표현 뒤에 자연스럽게 연결되는 표현입니다. 넘었어요가 완성형입니다.</p>",
+        'correct': "었어요",
+        'choices': ["겠어요", "었어요", "지요", "네요"]
     },
     {
-        'text': "<p><strong>A: 배가 고픈데 냉장고에 먹을 게 없네요.<br>B: 제가 라면을 끓이________ 같이 먹을래요?</strong></p>",
-        'explanation': "<p><strong>는데</strong>: Keyingi taklifga zamin yaratuvchi holatni tushuntirish uchun fe'lga <code>-는데</code> qo'shiladi.</p>",
-        'correct': "끓이는데",
-        'choices': ["끓이고", "끓이거나", "끓이지만", "끓이는데"]
+        'text': "<p><strong>A: 언제 산책하는 것을 좋아하세요?<br>B: 날씨가 맑________ 공원에서 천천히 산책해요.</strong></p>",
+        'explanation': "<p><strong>을 때</strong>: 특정 상황이나 시간에 하는 행동을 나타낼 때 사용합니다. 맑다 → 맑을 때 입니다.</p>",
+        'correct': "을 때",
+        'choices': ["은 후에", "자마자", "을 때", "는 동안"]
     },
     {
-        'text': "<p><strong>A: 시험 준비는 잘 돼 가요?<br>B: 밤을 새워 공부하________ 성적이 잘 안 나와서 속상해요.</strong></p>",
-        'explanation': "<p><strong>지만</strong>: Qilingan mehnat (tunni tunga ulab o'qish) va kutilmagan salbiy natija o'rtasidagi keskin farq uchun <code>-지만</code> qo'llaniladi.</p>",
-        'correct': "공부하지만",
-        'choices': ["공부하고", "공부하거나", "공부하지만", "공부하는데"]
+        'text': "<p><strong>A: 어떤 영화를 좋아해요?<br>B: 감동적이________ 따뜻한 영화를 좋아해요.</strong></p>",
+        'explanation': "<p><strong>고</strong>: 형용사를 연결해 동시에 여러 특징을 설명할 때 <code>-고</code>를 사용합니다.</p>",
+        'correct': "고",
+        'choices': ["지만", "고", "거나", "는데"]
     },
     {
-        'text': "<p><strong>A: 이 스마트폰은 어떤가요?<br>B: 화질이 선명하________ 배터리가 오래가서 아주 좋습니다.</strong></p>",
-        'explanation': "<p><strong>고</strong>: Telefonning ikki xil ijobiy sifatini (tiniq tasvir va uzoqqa yetadigan batareya) birlashtirish uchun <code>-고</code> to'g'ri variantdir.</p>",
-        'correct': "선명하고",
-        'choices': ["선명하고", "선명하거나", "선명하지만", "선명한데"]
+        'text': "<p><strong>A: 아침 운동을 한 후에 기분이 어때요?<br>B: 몸이 가볍________ 아주 상쾌해요.</strong></p>",
+        'explanation': "<p><strong>고</strong>: 두 가지 상태를 연결할 때 자연스럽게 사용합니다.</p>",
+        'correct': "고",
+        'choices': ["지만", "거나", "고", "는데"]
     },
     {
-        'text': "<p><strong>A: 주말에 주로 집에서 쉬나요?<br>B: 네, 잠을 자________ 하루 종일 게임을 해요.</strong></p>",
-        'explanation': "<p><strong>거나</strong>: Dam olish kunidagi ikki xil mashg'ulotdan birini tanlab bajarish ma'nosida fe'lga <code>-거나</code> ulangan.</p>",
-        'correct': "자거나",
-        'choices': ["자고", "자거나", "자지만", "자는데"]
+        'text': "<p><strong>A: 수업이 시작되기 전에 학생들은 무엇을 해요?<br>B: 조용히 자리에 앉________ 책을 읽어요.</strong></p>",
+        'explanation': "<p><strong>아서</strong>: 순차적인 행동을 자연스럽게 연결할 때 사용합니다. 앉아서 읽어요.</p>",
+        'correct': "아서",
+        'choices': ["지만", "아서", "거나", "는데"]
     },
     {
-        'text': "<p><strong>A: 지수 씨한테 연락해 봤어요?<br>B: 전화를 하________ 전화를 받지 않네요. 무슨 일 있을까요?</strong></p>",
-        'explanation': "<p><strong>는데</strong>: Qo'ng'iroq qilganlik holatini fon qilib ko'rsatib, uning oqibatini aytish uchun fe'lga <code>-는데</code> qo'shiladi.</p>",
-        'correct': "하는데",
-        'choices': ["하고", "하거나", "하지만", "하는데"]
+        'text': "<p><strong>A: 휴가 때 어디에 가고 싶어요?<br>B: 조용하고 아름답________ 바다에 가고 싶어요.</strong></p>",
+        'explanation': "<p><strong>은</strong>: 형용사가 명사를 꾸밀 때 <code>A-(으)ㄴ</code>을 사용합니다. 아름답다 → 아름다운 바다 입니다.</p>",
+        'correct': "은",
+        'choices': ["는", "은", "을", "던"]
+    },
+    {
+        'text': "<p><strong>A: 친구를 기다리는 동안 무엇을 했어요?<br>B: 따뜻한 커피를 마시________ 휴대폰을 봤어요.</strong></p>",
+        'explanation': "<p><strong>면서</strong>: 같은 사람이 동시에 두 행동을 할 때 사용합니다.</p>",
+        'correct': "면서",
+        'choices': ["고 나서", "자마자", "면서", "은 후에"]
+    },
+    {
+        'text': "<p><strong>A: 집에 오자마자 왜 샤워했어요?<br>B: 날씨가 너무 덥________ 바로 씻고 싶었어요.</strong></p>",
+        'explanation': "<p><strong>어서</strong>: 이유를 설명할 때 <code>-아서/어서</code>를 사용합니다.</p>",
+        'correct': "어서",
+        'choices': ["지만", "거나", "어서", "는데"]
+    },
+    {
+        'text': "<p><strong>A: 어떤 사람을 존경하세요?<br>B: 항상 성실하게 일하________ 사람을 존경해요.</strong></p>",
+        'explanation': "<p><strong>는</strong>: 현재 반복되는 행동으로 명사를 꾸밀 때 사용합니다.</p>",
+        'correct': "는",
+        'choices': ["은", "는", "을", "던"]
+    },
+    {
+        'text': "<p><strong>A: 발표를 하기 전에 긴장했어요?<br>B: 네, 너무 떨리________ 계속 연습했어요.</strong></p>",
+        'explanation': "<p><strong>어서</strong>: 이유를 설명하는 표현입니다. 떨리어서 → 떨려서 로 줄어듭니다.</p>",
+        'correct': "어서",
+        'choices': ["어서", "지만", "고", "거나"]
+    },
+    {
+        'text': "<p><strong>A: 시험이 끝난 후에 무엇을 하고 싶어요?<br>B: 맛있는 음식을 먹________ 푹 쉬고 싶어요.</strong></p>",
+        'explanation': "<p><strong>고</strong>: 두 행동을 연결할 때 사용하는 표현입니다.</p>",
+        'correct': "고",
+        'choices': ["고", "지만", "거나", "는데"]
+    },
+    {
+        'text': "<p><strong>A: 비 오는 날에는 무엇을 해요?<br>B: 조용한 카페에서 따뜻한 차를 마시________ 책을 읽어요.</strong></p>",
+        'explanation': "<p><strong>면서</strong>: 동시에 두 행동을 할 때 사용하는 표현입니다.</p>",
+        'correct': "면서",
+        'choices': ["은 후에", "고 나서", "면서", "자마자"]
+    },
+    {
+        'text': "<p><strong>A: 한국어를 배운 지 얼마나 되었어요?<br>B: 진지하게 공부한 지 아직 1년이 안 되________.</strong></p>",
+        'explanation': "<p><strong>어요</strong>: 기간 표현과 함께 자주 쓰이는 형태입니다. 안 되었어요가 자연스럽습니다.</p>",
+        'correct': "었어요",
+        'choices': ["겠어요", "었어요", "지요", "네요"]
+    },
+    {
+        'text': "<p><strong>A: 어떤 음악을 자주 들어요?<br>B: 조용하________ 부드러운 음악을 좋아해요.</strong></p>",
+        'explanation': "<p><strong>고</strong>: 형용사를 연결해서 여러 특징을 설명합니다.</p>",
+        'correct': "고",
+        'choices': ["거나", "고", "지만", "는데"]
+    },
+    {
+        'text': "<p><strong>A: 여행을 가기 전에 무엇을 준비해요?<br>B: 필요한 물건을 꼼꼼하게 챙기________ 계획을 세워요.</strong></p>",
+        'explanation': "<p><strong>고</strong>: 순차적인 행동을 연결할 때 사용합니다.</p>",
+        'correct': "고",
+        'choices': ["지만", "고", "거나", "는데"]
+    },
+    {
+        'text': "<p><strong>A: 어떤 계절을 가장 좋아하세요?<br>B: 하늘이 맑고 바람이 시원하________ 가을을 좋아해요.</strong></p>",
+        'explanation': "<p><strong>ㄴ</strong>: 형용사가 명사를 꾸밀 때 사용합니다. 시원하다 → 시원한 가을 입니다.</p>",
+        'correct': "ㄴ",
+        'choices': ["는", "ㄹ", "ㄴ", "던"]
+    },
+    {
+        'text': "<p><strong>A: 수업을 듣는 동안 졸리지 않았어요?<br>B: 교수님 설명이 너무 재미있________ 전혀 졸리지 않았어요.</strong></p>",
+        'explanation': "<p><strong>어서</strong>: 이유를 설명하는 표현입니다.</p>",
+        'correct': "어서",
+        'choices': ["지만", "어서", "거나", "는데"]
+    },
+    {
+        'text': "<p><strong>A: 아침에 일어나자마자 무엇을 해요?<br>B: 창문을 열________ 신선한 공기를 마셔요.</strong></p>",
+        'explanation': "<p><strong>고</strong>: 순차적인 행동을 연결하는 표현입니다.</p>",
+        'correct': "고",
+        'choices': ["고", "지만", "거나", "는데"]
+    },
+    {
+        'text': "<p><strong>A: 어떤 도시에서 살고 싶어요?<br>B: 조용하________ 자연이 아름다운 도시에서 살고 싶어요.</strong></p>",
+        'explanation': "<p><strong>고</strong>: 형용사를 연결해 여러 특징을 설명합니다.</p>",
+        'correct': "고",
+        'choices': ["고", "지만", "거나", "는데"]
+    },
+    {
+        'text': "<p><strong>A: 친구를 만난 후에 어디에 갔어요?<br>B: 근처 식당에 가________ 맛있는 저녁을 먹었어요.</strong></p>",
+        'explanation': "<p><strong>서</strong>: 장소 이동 후 이어지는 행동을 자연스럽게 연결합니다.</p>",
+        'correct': "서",
+        'choices': ["고", "서", "지만", "는데"]
+    },
+    {
+        'text': "<p><strong>A: 언제 가장 기분이 좋아요?<br>B: 좋아하는 사람들과 함께 이야기하________ 정말 행복해요.</strong></p>",
+        'explanation': "<p><strong>ㄹ 때</strong>: 특정 상황이나 시간을 나타낼 때 사용합니다. 이야기하다 → 이야기할 때 입니다.</p>",
+        'correct': "ㄹ 때",
+        'choices': ["은 후에", "는 동안", "자마자", "ㄹ 때"]
     }
 ]
-
-
 
 
 class Command(BaseCommand):
@@ -211,10 +301,10 @@ class Command(BaseCommand):
         )
 
         practice, created = Practice.objects.get_or_create(
-            title='11-dars: Gaplarni bog\'lash',  # --- IGNORE ---
+            title='12-dars: Ketma ketlik',  # --- IGNORE ---
             master=master,
             defaults={
-                'description': 'Gaplarni bog\'lovchi yuklamalar.',
+                'description': 'Ketma-ketlik  bog\'lovchilarini o\'rganish uchun amaliy test.',
                 'subject': subject,
                 'level': 'hard',
                 'is_free': True,
