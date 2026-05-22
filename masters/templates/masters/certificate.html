@@ -1,0 +1,776 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block nav_masters %}active{% endblock %}
+{% block mob_nav_masters %}active{% endblock %}
+{% block page_name %}{% trans "Certificate Generator" %}{% endblock %}
+{% block title %}{% trans "Certificate Generator" %} — Prime Point{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   CERTIFICATE GENERATOR — PAGE CHROME
+═══════════════════════════════════════════════════════════════ */
+.cg-wrap { display: flex; flex-direction: column; gap: 1rem; }
+
+/* ── Controls Bar ────────────────────────────────────────────── */
+.cg-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 0.85rem 1.1rem;
+}
+.cg-bar-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+.cg-bar-sep {
+    width: 1px; height: 26px;
+    background: var(--border);
+    flex-shrink: 0;
+    margin: 0 2px;
+}
+.cg-sel {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.83rem;
+    padding: 6px 12px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color .18s;
+    max-width: 200px;
+}
+.cg-sel:focus { border-color: var(--accent); }
+
+.cg-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 15px;
+    border-radius: 9px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1.5px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    transition: .18s;
+    white-space: nowrap;
+}
+.cg-btn:hover { border-color: var(--accent); color: var(--accent); }
+.cg-btn i { font-size: 0.95rem; }
+
+.cg-btn-dl {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #0d1117;
+    font-weight: 700;
+    padding: 8px 20px;
+}
+.cg-btn-dl:hover { background: #7dd3fc; border-color: #7dd3fc; color: #0d1117; }
+
+.cg-hint {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+}
+.cg-hint i { color: var(--accent); font-size: 0.7rem; }
+
+/* ── Preview stage ───────────────────────────────────────────── */
+.cg-stage {
+    background: #1e1e1e;
+    border-radius: 16px;
+    padding: 28px 24px;
+    overflow: hidden;
+    position: relative;
+    /* height set by JS */
+}
+.cg-stage-inner {
+    transform-origin: top center;
+    /* scale set by JS */
+    display: flex;
+    justify-content: center;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   THE CERTIFICATE — A4 LANDSCAPE (297mm × 210mm)
+═══════════════════════════════════════════════════════════════ */
+.cert {
+    width: 297mm;
+    height: 210mm;
+    background: #fdfcf5;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,.55);
+    flex-shrink: 0;
+}
+
+/* ── Outer double-gold border (CSS rings) ────────────────────── */
+.cert-ring-outer {
+    position: absolute;
+    inset: 5.5mm;
+    border: 2.5px solid #c4922a;
+    z-index: 20;
+    pointer-events: none;
+}
+.cert-ring-inner {
+    position: absolute;
+    inset: 8.5mm;
+    border: .8px solid rgba(196,146,42,.6);
+    z-index: 20;
+    pointer-events: none;
+}
+
+/* ── Corner ornaments ─────────────────────────────────────────── */
+.cert-corner {
+    position: absolute;
+    width: 14mm;
+    height: 14mm;
+    z-index: 21;
+    pointer-events: none;
+}
+.cert-corner--tl { top: 3mm; left: 3mm; border-top: 3px solid #c4922a; border-left: 3px solid #c4922a; }
+.cert-corner--tr { top: 3mm; right: 3mm; border-top: 3px solid #c4922a; border-right: 3px solid #c4922a; }
+.cert-corner--bl { bottom: 3mm; left: 3mm; border-bottom: 3px solid #c4922a; border-left: 3px solid #c4922a; }
+.cert-corner--br { bottom: 3mm; right: 3mm; border-bottom: 3px solid #c4922a; border-right: 3px solid #c4922a; }
+
+/* ── Background watermark ────────────────────────────────────── */
+.cert-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 15% 15%, rgba(196,146,42,.07) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 85%, rgba(12,26,58,.05) 0%, transparent 55%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ── HEADER — navy band ──────────────────────────────────────── */
+.cert-head {
+    height: 52mm;
+    background: linear-gradient(135deg, #0a1628 0%, #142244 60%, #1a2e5a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16mm;
+    position: relative;
+    flex-shrink: 0;
+    z-index: 2;
+}
+/* Gold shimmer line at bottom of header */
+.cert-head::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3.5px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(196,146,42,.3) 10%,
+        #c4922a 30%,
+        #f0d9b5 50%,
+        #c4922a 70%,
+        rgba(196,146,42,.3) 90%,
+        transparent 100%);
+}
+
+/* Logo + brand */
+.cert-brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    z-index: 3;
+}
+.cert-logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: contain;
+    background: #fff;
+    padding: 4px;
+    border: 2px solid rgba(196,146,42,.55);
+    box-shadow: 0 0 0 3px rgba(196,146,42,.15);
+    flex-shrink: 0;
+}
+.cert-brand-text { display: flex; flex-direction: column; gap: 3px; }
+.cert-brand-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: .14em;
+    line-height: 1;
+}
+.cert-brand-tagline {
+    font-size: 7.5px;
+    color: rgba(196,146,42,.85);
+    letter-spacing: .32em;
+    text-transform: uppercase;
+}
+
+/* Decorative dot-grid on the right */
+.cert-head-deco {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 3;
+}
+.cert-deco-row { display: flex; gap: 5px; }
+.cert-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: rgba(196,146,42,.35);
+}
+.cert-dot.on { background: #c4922a; }
+
+/* ── BODY ────────────────────────────────────────────────────── */
+.cert-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5mm 20mm 3mm;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    gap: 0;
+}
+
+/* Ornamental diamond divider */
+.cert-ornament {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 200mm;
+    margin: 3mm 0;
+}
+.cert-ornament .orn-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(196,146,42,.7));
+}
+.cert-ornament .orn-line-r {
+    background: linear-gradient(90deg, rgba(196,146,42,.7), transparent);
+}
+.cert-ornament .orn-diamond {
+    width: 7px; height: 7px;
+    background: #c4922a;
+    transform: rotate(45deg);
+    flex-shrink: 0;
+}
+.cert-ornament .orn-diamond.big {
+    width: 10px; height: 10px;
+}
+
+/* Main title */
+.cert-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 27px;
+    font-weight: 800;
+    color: #0a1628;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    line-height: 1;
+    margin: 1mm 0;
+}
+
+.cert-certify-text {
+    font-size: 10.5px;
+    color: #64748b;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    margin: 3.5mm 0 1.5mm;
+}
+
+/* Recipient name — big & editable */
+.cert-name-wrap {
+    position: relative;
+    margin: 1mm 0 2mm;
+}
+.cert-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 46px;
+    font-weight: 700;
+    color: #0a1628;
+    line-height: 1.1;
+    border-bottom: 2.5px solid #c4922a;
+    padding: 0 8px 3px;
+    min-width: 180px;
+    display: inline-block;
+    cursor: text;
+}
+.cert-name:focus { outline: none; background: rgba(196,146,42,.07); border-radius: 6px 6px 0 0; }
+
+/* Achievement line */
+.cert-achieve {
+    font-size: 11.5px;
+    color: #475569;
+    letter-spacing: .08em;
+    margin: 2mm 0 1.5mm;
+    cursor: text;
+}
+.cert-achieve:focus { outline: none; background: rgba(196,146,42,.06); border-radius: 4px; padding: 0 4px; }
+
+/* Course name */
+.cert-course-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+}
+.cert-course-dash {
+    width: 28px; height: 1.5px;
+    background: #c4922a;
+    flex-shrink: 0;
+}
+.cert-course {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #c4922a;
+    letter-spacing: .04em;
+    cursor: text;
+    min-width: 100px;
+    text-align: center;
+}
+.cert-course:focus { outline: none; background: rgba(196,146,42,.09); border-radius: 5px; padding: 0 6px; }
+
+/* ── FOOTER — navy band ──────────────────────────────────────── */
+.cert-foot {
+    height: 36mm;
+    background: linear-gradient(135deg, #0a1628 0%, #142244 60%, #1a2e5a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16mm;
+    position: relative;
+    flex-shrink: 0;
+    z-index: 2;
+}
+.cert-foot::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3.5px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(196,146,42,.3) 10%,
+        #c4922a 30%,
+        #f0d9b5 50%,
+        #c4922a 70%,
+        rgba(196,146,42,.3) 90%,
+        transparent 100%);
+}
+
+/* Footer columns */
+.cert-foot-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-width: 48mm;
+}
+.cert-foot-val {
+    font-family: 'Syne', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #e2e8f0;
+    border-bottom: 1px solid rgba(196,146,42,.5);
+    padding-bottom: 3px;
+    min-width: 44mm;
+    text-align: center;
+    cursor: text;
+}
+.cert-foot-val:focus { outline: none; background: rgba(196,146,42,.12); border-radius: 4px; }
+.cert-foot-label {
+    font-size: 6.5px;
+    color: rgba(196,146,42,.8);
+    letter-spacing: .3em;
+    text-transform: uppercase;
+}
+
+/* Central seal */
+.cert-seal-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+.cert-seal {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    border: 2.5px solid #c4922a;
+    background: rgba(196,146,42,.1);
+    box-shadow: 0 0 0 4px rgba(196,146,42,.14), 0 0 0 7px rgba(196,146,42,.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+}
+.cert-seal-pp {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    color: #c4922a;
+    letter-spacing: .06em;
+    line-height: 1;
+}
+.cert-seal-word {
+    font-size: 5px;
+    color: rgba(196,146,42,.7);
+    letter-spacing: .25em;
+    text-transform: uppercase;
+}
+.cert-slogan {
+    font-size: 7.5px;
+    color: rgba(196,146,42,.65);
+    letter-spacing: .08em;
+    font-style: italic;
+    text-align: center;
+    max-width: 60mm;
+}
+
+/* ═══ EDITABLE FIELD HOVER STYLE ═══════════════════════════════ */
+[contenteditable="true"]:hover:not(:focus) {
+    box-shadow: 0 0 0 2px rgba(196,146,42,.35);
+    border-radius: 4px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PRINT / PDF
+═══════════════════════════════════════════════════════════════ */
+@page { size: A4 landscape; margin: 0; }
+
+@media print {
+    /* Hide everything that isn't the certificate */
+    #sidebar,
+    .mob-bottom-nav,
+    .top-navbar,
+    .messages-container,
+    .cg-bar,
+    .cg-hint { display: none !important; }
+
+    body, html { margin: 0 !important; padding: 0 !important; background: white !important; }
+
+    .main-wrapper {
+        margin-left: 0 !important;
+        min-height: unset !important;
+        display: block !important;
+    }
+    .content-area {
+        padding: 0 !important;
+        background: white !important;
+        display: block !important;
+    }
+    .cg-wrap { gap: 0 !important; }
+
+    .cg-stage {
+        background: none !important;
+        padding: 0 !important;
+        border-radius: 0 !important;
+        overflow: visible !important;
+        height: auto !important;
+    }
+    .cg-stage-inner {
+        transform: none !important;
+        display: block !important;
+    }
+    .cert {
+        width: 297mm !important;
+        height: 210mm !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+}
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="cg-wrap" id="cg-wrap">
+
+    <!-- ── Controls bar ──────────────────────────────────────── -->
+    <div class="cg-bar" id="cg-bar">
+
+        <!-- Student picker -->
+        {% if students %}
+        <span class="cg-bar-label">{% trans "Student" %}</span>
+        <select class="cg-sel" id="student-pick" onchange="pickStudent(this)">
+            <option value="">— {% trans "select student" %} —</option>
+            {% for panda in students %}
+            <option value="{{ panda.profile.user.get_full_name|default:panda.profile.user.username }}">
+                {{ panda.profile.user.get_full_name|default:panda.profile.user.username }}
+            </option>
+            {% endfor %}
+        </select>
+        <div class="cg-bar-sep"></div>
+        {% endif %}
+
+        <!-- Quick-focus field buttons -->
+        <span class="cg-bar-label d-none d-sm-inline">{% trans "Edit" %}</span>
+        <button class="cg-btn" onclick="focus_('cert-name')">
+            <i class="bi bi-person-fill"></i><span class="d-none d-md-inline">{% trans "Name" %}</span>
+        </button>
+        <button class="cg-btn" onclick="focus_('cert-course')">
+            <i class="bi bi-journal-text"></i><span class="d-none d-md-inline">{% trans "Course" %}</span>
+        </button>
+        <button class="cg-btn" onclick="focus_('cert-achieve')">
+            <i class="bi bi-chat-quote"></i><span class="d-none d-md-inline">{% trans "Text" %}</span>
+        </button>
+        <button class="cg-btn" onclick="focus_('cert-date')">
+            <i class="bi bi-calendar3"></i><span class="d-none d-md-inline">{% trans "Date" %}</span>
+        </button>
+        <button class="cg-btn" onclick="focus_('cert-instructor')">
+            <i class="bi bi-person-check-fill"></i><span class="d-none d-md-inline">{% trans "Instructor" %}</span>
+        </button>
+
+        <div class="cg-bar-sep"></div>
+        <button class="cg-btn" onclick="resetCert()" title="{% trans 'Reset to defaults' %}">
+            <i class="bi bi-arrow-counterclockwise"></i>
+        </button>
+
+        <!-- Download PDF -->
+        <button class="cg-btn cg-btn-dl ms-auto" onclick="window.print()">
+            <i class="bi bi-file-earmark-pdf-fill"></i>{% trans "Download PDF" %}
+        </button>
+    </div>
+
+    <!-- hint -->
+    <p class="cg-hint mb-0">
+        <i class="bi bi-pencil-fill"></i>
+        {% trans "Click any text directly on the certificate to edit it. Select a student from the dropdown to auto-fill their name." %}
+    </p>
+
+    <!-- ── Certificate stage ─────────────────────────────────── -->
+    <div class="cg-stage" id="cg-stage">
+        <div class="cg-stage-inner" id="cg-stage-inner">
+
+            <!-- ════════════════════════════════════
+                 THE CERTIFICATE  (A4 landscape)
+            ════════════════════════════════════ -->
+            <div class="cert" id="cert">
+
+                <!-- Decorative rings & corners -->
+                <div class="cert-ring-outer"></div>
+                <div class="cert-ring-inner"></div>
+                <div class="cert-corner cert-corner--tl"></div>
+                <div class="cert-corner cert-corner--tr"></div>
+                <div class="cert-corner cert-corner--bl"></div>
+                <div class="cert-corner cert-corner--br"></div>
+                <div class="cert-bg"></div>
+
+                <!-- ── HEADER ───────────────────────── -->
+                <header class="cert-head">
+                    <div class="cert-brand">
+                        <img src="{% static 'images/logo.jpg' %}" alt="Prime Point"
+                             class="cert-logo">
+                        <div class="cert-brand-text">
+                            <span class="cert-brand-name">PRIME POINT</span>
+                            <span class="cert-brand-tagline">Education &amp; Excellence</span>
+                        </div>
+                    </div>
+                    <!-- Dot grid decoration -->
+                    <div class="cert-head-deco" aria-hidden="true">
+                        <div class="cert-deco-row">
+                            <div class="cert-dot on"></div><div class="cert-dot on"></div>
+                            <div class="cert-dot"></div><div class="cert-dot"></div>
+                        </div>
+                        <div class="cert-deco-row">
+                            <div class="cert-dot"></div><div class="cert-dot on"></div>
+                            <div class="cert-dot on"></div><div class="cert-dot"></div>
+                        </div>
+                        <div class="cert-deco-row">
+                            <div class="cert-dot"></div><div class="cert-dot"></div>
+                            <div class="cert-dot on"></div><div class="cert-dot on"></div>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- ── BODY ─────────────────────────── -->
+                <div class="cert-body">
+
+                    <!-- Ornamental divider -->
+                    <div class="cert-ornament">
+                        <div class="orn-line"></div>
+                        <div class="orn-diamond"></div>
+                        <div class="orn-diamond big"></div>
+                        <div class="orn-diamond"></div>
+                        <div class="orn-line orn-line-r"></div>
+                    </div>
+
+                    <div class="cert-title">Certificate of Achievement</div>
+
+                    <div class="cert-ornament">
+                        <div class="orn-line"></div>
+                        <div class="orn-diamond"></div>
+                        <div class="orn-diamond big"></div>
+                        <div class="orn-diamond"></div>
+                        <div class="orn-line orn-line-r"></div>
+                    </div>
+
+                    <div class="cert-certify-text">— &nbsp;This is to certify that&nbsp; —</div>
+
+                    <!-- Recipient name -->
+                    <div class="cert-name-wrap">
+                        <span class="cert-name"
+                              id="cert-name"
+                              contenteditable="true"
+                              spellcheck="false"
+                              data-default="Recipient Name">Recipient Name</span>
+                    </div>
+
+                    <!-- Achievement description -->
+                    <div class="cert-achieve"
+                         id="cert-achieve"
+                         contenteditable="true"
+                         spellcheck="false"
+                         data-default="has successfully completed the course">has successfully completed the course</div>
+
+                    <!-- Course name -->
+                    <div class="cert-course-row">
+                        <div class="cert-course-dash"></div>
+                        <span class="cert-course"
+                              id="cert-course"
+                              contenteditable="true"
+                              spellcheck="false"
+                              data-default="Course Name">Course Name</span>
+                        <div class="cert-course-dash"></div>
+                    </div>
+
+                </div><!-- /cert-body -->
+
+                <!-- ── FOOTER ────────────────────────── -->
+                <footer class="cert-foot">
+
+                    <!-- Date -->
+                    <div class="cert-foot-col">
+                        <div class="cert-foot-val"
+                             id="cert-date"
+                             contenteditable="true"
+                             spellcheck="false"
+                             data-default="{{ today|date:'F j, Y' }}">{{ today|date:"F j, Y" }}</div>
+                        <div class="cert-foot-label">Date Issued</div>
+                    </div>
+
+                    <!-- Central seal + slogan -->
+                    <div class="cert-seal-col">
+                        <div class="cert-seal">
+                            <span class="cert-seal-pp">PP</span>
+                            <span class="cert-seal-word">Certified</span>
+                        </div>
+                        <div class="cert-slogan">"Strong mind bends the line"</div>
+                    </div>
+
+                    <!-- Instructor -->
+                    <div class="cert-foot-col">
+                        <div class="cert-foot-val"
+                             id="cert-instructor"
+                             contenteditable="true"
+                             spellcheck="false"
+                             data-default="{% if master %}{{ master.name }}{% else %}Instructor Name{% endif %}">{% if master %}{{ master.name }}{% else %}Instructor Name{% endif %}</div>
+                        <div class="cert-foot-label">Instructor / Master</div>
+                    </div>
+
+                </footer><!-- /cert-foot -->
+
+            </div><!-- /cert -->
+        </div><!-- /cg-stage-inner -->
+    </div><!-- /cg-stage -->
+
+</div><!-- /cg-wrap -->
+{% endblock %}
+
+
+{% block extra_js %}
+<script>
+(function () {
+    /* ── Scale certificate to fill the preview stage ──────────── */
+    function scaleCert() {
+        var inner = document.getElementById('cg-stage-inner');
+        var stage = document.getElementById('cg-stage');
+        var cert  = document.getElementById('cert');
+        if (!inner || !stage || !cert) return;
+
+        /* Natural pixel dimensions (297mm × 210mm at 96 dpi) */
+        var CW = 297 * (96 / 25.4);   /* ≈ 1122 px */
+        var CH = 210 * (96 / 25.4);   /* ≈  794 px */
+
+        var availW = stage.clientWidth - 48;   /* subtract side padding */
+        var scale  = Math.min(availW / CW, 1); /* never upscale */
+
+        inner.style.transform       = 'scale(' + scale + ')';
+        inner.style.transformOrigin = 'top center';
+
+        /* Shrink the stage height so it hugs the scaled certificate */
+        stage.style.height = Math.ceil(CH * scale + 56) + 'px';
+    }
+
+    window.addEventListener('load',   scaleCert);
+    window.addEventListener('resize', scaleCert);
+
+    /* ── Fill recipient name from student dropdown ─────────────── */
+    window.pickStudent = function (sel) {
+        if (sel.value) {
+            document.getElementById('cert-name').textContent = sel.value;
+        }
+    };
+
+    /* ── Focus a specific editable field ──────────────────────── */
+    window.focus_ = function (id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.focus();
+        /* Place cursor at end of text */
+        var range = document.createRange();
+        var sel   = window.getSelection();
+        range.selectNodeContents(el);
+        range.collapse(false);
+        sel.removeAllRanges();
+        sel.addRange(range);
+    };
+
+    /* ── Reset all fields to their data-default values ─────────── */
+    window.resetCert = function () {
+        document.querySelectorAll('[data-default]').forEach(function (el) {
+            el.textContent = el.dataset.default;
+        });
+        var pick = document.getElementById('student-pick');
+        if (pick) pick.value = '';
+    };
+
+    /* ── Prevent Enter key from inserting line breaks ──────────── */
+    var singleLine = ['cert-name', 'cert-course', 'cert-date', 'cert-instructor'];
+    singleLine.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') { e.preventDefault(); el.blur(); }
+        });
+    });
+
+    /* ── Strip pasted HTML (plain text only) ───────────────────── */
+    document.querySelectorAll('[contenteditable="true"]').forEach(function (el) {
+        el.addEventListener('paste', function (e) {
+            e.preventDefault();
+            var text = (e.clipboardData || window.clipboardData).getData('text/plain');
+            document.execCommand('insertText', false, text);
+        });
+    });
+})();
+</script>
+{% endblock %}

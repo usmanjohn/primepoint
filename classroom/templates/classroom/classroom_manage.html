@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Manage Members" %} – {{ classroom.name }} – Powerty{% endblock %}
+{% block page_name %}{% trans "Manage Members" %}{% endblock %}
+{% block nav_classroom %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+  .cr-manage-wrap { max-width: 800px; margin: 0 auto; }
+  .cr-section-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .cr-section-header {
+    padding: 1.1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+  }
+  .cr-section-header i { color: var(--accent); font-size: 1rem; }
+  .cr-section-header h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+  }
+  .cr-section-body { padding: 1.25rem 1.5rem; }
+  .cr-check-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: .6rem;
+  }
+  .cr-check-item {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    padding: .6rem .75rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+  }
+  .cr-check-item:hover { border-color: var(--accent); background: var(--accent-glow); }
+  .cr-check-item input[type="checkbox"] { accent-color: var(--accent); }
+  .cr-check-item label {
+    font-size: .85rem;
+    color: var(--text);
+    cursor: pointer;
+    margin: 0;
+  }
+  .cr-check-empty { font-size: .85rem; color: var(--text-muted); }
+  .cr-roster {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+  .cr-roster-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: .78rem;
+    color: var(--text);
+  }
+  .cr-roster-chip i { color: var(--accent); font-size: .7rem; }
+  @media (max-width: 575.98px) {
+    .cr-check-grid { grid-template-columns: 1fr; }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="cr-manage-wrap">
+  <a href="{% url 'classroom:detail' classroom.pk %}" class="btn-auth-outline mb-3 d-inline-flex align-items-center gap-1">
+    <i class="bi bi-arrow-left"></i> {{ classroom.name }}
+  </a>
+
+  <form method="post">
+    {% csrf_token %}
+
+    <!-- Groups -->
+    <div class="cr-section-card">
+      <div class="cr-section-header">
+        <i class="bi bi-collection"></i>
+        <h3>{% trans "Attach Groups" %}</h3>
+      </div>
+      <div class="cr-section-body">
+        {% if form.groups.field.queryset.count %}
+        <div class="cr-check-grid">
+          {% for choice in form.groups %}
+          <label class="cr-check-item">
+            {{ choice.tag }} <span>{{ choice.choice_label }}</span>
+          </label>
+          {% endfor %}
+        </div>
+        {% else %}
+        <p class="cr-check-empty">{% trans "No groups found. Create groups in the Homework section first." %}</p>
+        {% endif %}
+        {% if form.groups.errors %}<div class="text-danger mt-2" style="font-size:.8rem;">{{ form.groups.errors }}</div>{% endif %}
+      </div>
+    </div>
+
+    <!-- Individual pandas -->
+    <div class="cr-section-card">
+      <div class="cr-section-header">
+        <i class="bi bi-person-plus"></i>
+        <h3>{% trans "Add Individual Students" %}</h3>
+      </div>
+      <div class="cr-section-body">
+        {% if form.individual_pandas.field.queryset.count %}
+        <div class="cr-check-grid">
+          {% for choice in form.individual_pandas %}
+          <label class="cr-check-item">
+            {{ choice.tag }} <span>{{ choice.choice_label }}</span>
+          </label>
+          {% endfor %}
+        </div>
+        {% else %}
+        <p class="cr-check-empty">{% trans "No students connected to you yet." %}</p>
+        {% endif %}
+        {% if form.individual_pandas.errors %}<div class="text-danger mt-2" style="font-size:.8rem;">{{ form.individual_pandas.errors }}</div>{% endif %}
+      </div>
+    </div>
+
+    <button type="submit" class="btn-auth-primary mb-4">
+      <i class="bi bi-check-lg me-1"></i>{% trans "Update Members" %}
+    </button>
+  </form>
+
+  <!-- Current member roster -->
+  {% if all_pandas %}
+  <div class="cr-section-card">
+    <div class="cr-section-header">
+      <i class="bi bi-people"></i>
+      <h3>{% trans "Current Members" %} ({{ all_pandas.count }})</h3>
+    </div>
+    <div class="cr-section-body">
+      <div class="cr-roster">
+        {% for panda in all_pandas %}
+        <span class="cr-roster-chip">
+          <i class="bi bi-person-fill"></i>{{ panda.profile.user.username }}
+        </span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

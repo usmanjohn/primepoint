@@ -1,0 +1,264 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Classrooms" %} – Powerty{% endblock %}
+{% block page_name %}{% trans "Classrooms" %}{% endblock %}
+{% block nav_classroom %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+  :root {
+    --cr-radius: 16px;
+  }
+  .cr-hero {
+    padding: 2rem 0 1.75rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .cr-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: .35rem;
+  }
+  .cr-hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text);
+    margin: 0;
+    line-height: 1.15;
+  }
+  .cr-hero-sub {
+    color: var(--text-muted);
+    font-size: .88rem;
+    margin-top: .4rem;
+  }
+  .cr-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.25rem;
+  }
+  .cr-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--cr-radius);
+    overflow: hidden;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .cr-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,.09);
+    border-color: var(--accent);
+  }
+  .cr-card-strip {
+    height: 5px;
+    width: 100%;
+  }
+  .cr-card-body {
+    padding: 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+  .cr-card-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .cr-card-desc {
+    font-size: .83rem;
+    color: var(--text-muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex: 1;
+  }
+  .cr-card-chips {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+    margin-top: .25rem;
+  }
+  .cr-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    font-size: .75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 3px 9px;
+  }
+  .cr-chip i { font-size: .7rem; }
+  .cr-master-row {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .78rem;
+    color: var(--text-muted);
+    margin-top: .1rem;
+  }
+  .cr-master-row img, .cr-master-avatar {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--accent-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .65rem;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .cr-card-footer {
+    padding: .85rem 1.25rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cr-status {
+    font-size: .72rem;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+  .cr-status-active { background: rgba(34,197,94,.1); color: #16a34a; }
+  .cr-status-inactive { background: rgba(100,116,139,.1); color: #64748b; }
+  .cr-enter-btn {
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+  }
+  .cr-enter-btn:hover { color: #7dd3fc; }
+  .cr-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-muted);
+  }
+  .cr-empty-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: .35;
+  }
+  .cr-empty h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    color: var(--text);
+    margin-bottom: .4rem;
+  }
+  @media (max-width: 575.98px) {
+    .cr-hero h1 { font-size: 1.5rem; }
+    .cr-grid { grid-template-columns: 1fr; }
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="cr-hero">
+  <div>
+    <div class="cr-eyebrow">{% trans "Learning" %}</div>
+    <h1>{% trans "Classrooms" %}</h1>
+    <p class="cr-hero-sub">
+      {% if is_master %}
+        {% trans "Your private teaching spaces." %}
+      {% else %}
+        {% trans "Your enrolled classrooms." %}
+      {% endif %}
+    </p>
+  </div>
+  {% if is_master %}
+  <a href="{% url 'classroom:create' %}" class="btn-auth-primary">
+    <i class="bi bi-plus-lg me-1"></i>{% trans "New Classroom" %}
+  </a>
+  {% endif %}
+</div>
+
+{% if not request.user.is_authenticated %}
+<div class="alert alert-info rounded-3 mb-3" style="font-size:.85rem;">
+  <i class="bi bi-info-circle me-1"></i>
+  {% trans "Log in to see which classrooms you're enrolled in." %}
+  <a href="{% url 'login' %}" class="ms-1 fw-bold" style="color:var(--accent);">{% trans "Sign in" %}</a>
+</div>
+{% endif %}
+
+<div class="cr-grid">
+  {% for cr in classrooms %}
+  <div class="cr-card">
+    <div class="cr-card-strip" style="background:{{ cr.cover_color }};"></div>
+    <div class="cr-card-body">
+      <div class="cr-card-name">{{ cr.name }}</div>
+      {% if cr.description %}
+      <div class="cr-card-desc">{{ cr.description }}</div>
+      {% endif %}
+      <div class="cr-master-row">
+        <div class="cr-master-avatar">{{ cr.master.name|slice:":1"|upper }}</div>
+        <span>{{ cr.master.name }}</span>
+      </div>
+      <div class="cr-card-chips">
+        <span class="cr-chip"><i class="bi bi-collection"></i>{{ cr.lesson_count }} {% trans "lessons" %}</span>
+        <span class="cr-chip"><i class="bi bi-people"></i>{{ cr.member_count }} {% trans "members" %}</span>
+      </div>
+    </div>
+    <div class="cr-card-footer">
+      {% if is_master %}
+        <span class="cr-status {% if cr.is_active %}cr-status-active{% else %}cr-status-inactive{% endif %}">
+          {% if cr.is_active %}{% trans "Active" %}{% else %}{% trans "Inactive" %}{% endif %}
+        </span>
+      {% elif cr.pk in enrolled_ids %}
+        <span class="cr-status cr-status-active">
+          <i class="bi bi-check-circle-fill me-1"></i>{% trans "Enrolled" %}
+        </span>
+      {% else %}
+        <span class="cr-status" style="background:rgba(100,116,139,.1);color:#64748b;">
+          <i class="bi bi-lock me-1"></i>{% trans "Private" %}
+        </span>
+      {% endif %}
+      <a href="{% url 'classroom:detail' cr.pk %}" class="cr-enter-btn">
+        {% if cr.pk in enrolled_ids or is_master %}{% trans "Enter" %}{% else %}{% trans "View" %}{% endif %}
+        <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+  {% empty %}
+  <div class="cr-empty">
+    <div class="cr-empty-icon"><i class="bi bi-easel"></i></div>
+    <h3>{% trans "No classrooms yet" %}</h3>
+    <p class="mb-3">
+      {% if is_master %}
+        {% trans "Create your first classroom and start teaching." %}
+      {% else %}
+        {% trans "No classrooms have been created yet." %}
+      {% endif %}
+    </p>
+    {% if is_master %}
+    <a href="{% url 'classroom:create' %}" class="btn-auth-primary">
+      <i class="bi bi-plus-lg me-1"></i>{% trans "Create Classroom" %}
+    </a>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

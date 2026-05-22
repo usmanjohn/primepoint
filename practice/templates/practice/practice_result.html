@@ -1,0 +1,326 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Result — {{ practice.title }}{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ── Hero ───────────────────────────────── */
+.res-hero {
+  text-align: center;
+  padding: 2.5rem 1rem 2rem;
+}
+.res-score-ring {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 5px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  transition: border-color .3s;
+}
+.res-score-ring.passed {
+  border-color: var(--online);
+  box-shadow: 0 0 28px rgba(34,197,94,.18);
+}
+.res-score-ring.failed {
+  border-color: var(--danger);
+  box-shadow: 0 0 28px rgba(248,113,113,.18);
+}
+.res-score-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1;
+}
+.res-score-lbl {
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.res-verdict {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0 0 0.35rem;
+}
+.res-verdict.passed { color: var(--online); }
+.res-verdict.failed { color: var(--danger); }
+.res-sub { color: var(--text-muted); font-size: 0.88rem; margin: 0 0 1.5rem; }
+.res-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.6rem; }
+
+/* ── Stat bar ───────────────────────────── */
+.res-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  max-width: 680px;
+  margin: 0 auto 2.5rem;
+}
+.res-stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.85rem 0.5rem;
+  text-align: center;
+}
+.res-stat-icon { font-size: 1rem; color: var(--accent); display: block; margin-bottom: 0.3rem; }
+.res-stat-val {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.1;
+  word-break: break-word;
+}
+.res-stat-lbl {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+/* ── Review section ─────────────────────── */
+.res-review { max-width: 800px; margin: 0 auto; }
+.res-review-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.res-qcard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 0.85rem;
+  border-left: 4px solid var(--border);
+}
+.res-qcard.correct  { border-left-color: var(--online); }
+.res-qcard.wrong    { border-left-color: var(--danger); }
+.res-qcard.skipped  { border-left-color: #94a3b8; }
+
+.res-qcard-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.res-q-num {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+.res-q-badge {
+  padding: 0.18rem 0.65rem;
+  border-radius: 5px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.res-q-badge.correct  { background: rgba(34,197,94,.12);  color: #16a34a; }
+.res-q-badge.wrong    { background: rgba(248,113,113,.12); color: #dc2626; }
+.res-q-badge.skipped  { background: rgba(148,163,184,.12); color: #64748b; }
+
+.res-qcard-body { padding: 1rem 1.25rem; }
+.res-q-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  margin: 0 0 0.85rem;
+  line-height: 1.55;
+}
+.res-choices { display: flex; flex-direction: column; gap: 0.4rem; }
+.res-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.6rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+.res-choice.correct-answer {
+  background: rgba(34,197,94,.07);
+  border-color: rgba(34,197,94,.3);
+  color: #15803d;
+}
+.res-choice.wrong-pick {
+  background: rgba(248,113,113,.07);
+  border-color: rgba(248,113,113,.3);
+  color: #dc2626;
+}
+.res-choice.neutral { background: var(--surface-2); color: var(--text-muted); }
+.res-choice-icon { flex-shrink: 0; margin-top: 1px; }
+
+.res-explanation {
+  margin-top: 0.85rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: var(--accent-glow);
+  border: 1px solid rgba(56,189,248,.2);
+}
+.res-explanation-lbl {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+}
+.res-explanation-text { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; }
+
+@media (max-width: 575px) {
+  .res-stats { grid-template-columns: repeat(2, 1fr); }
+  .res-score-num { font-size: 1.5rem; }
+  .res-verdict { font-size: 1.2rem; }
+  .res-qcard-head { flex-direction: column; align-items: flex-start; gap: 0.35rem; }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+  <!-- ── HERO ─────────────────────────────── -->
+  <div class="res-hero">
+    <div class="res-score-ring {% if passed %}passed{% else %}failed{% endif %}">
+      <span class="res-score-num">{{ attempt.score|floatformat:0 }}</span>
+      <span class="res-score-lbl">Score</span>
+    </div>
+
+    <h1 class="res-verdict {% if passed %}passed{% else %}failed{% endif %}">
+      {% if passed %}
+        <i class="bi bi-patch-check-fill"></i> Passed!
+      {% else %}
+        <i class="bi bi-exclamation-octagon-fill"></i> Keep Improving
+      {% endif %}
+    </h1>
+    <p class="res-sub">
+      You scored <strong>{{ attempt.score|floatformat:1 }}%</strong>.
+      Pass requirement was <strong>{{ practice.pass_score }}%</strong>.
+    </p>
+
+    <div class="res-actions">
+      {% if can_retry %}
+        <a href="{% url 'start_practice' practice.pk %}" class="btn-auth-primary border-0 px-4 py-2">
+          <i class="bi bi-arrow-repeat me-1"></i>Try Again
+        </a>
+      {% endif %}
+      <a href="{% url 'practice_detail' practice.pk %}" class="btn-auth-outline px-4 py-2 text-decoration-none">
+        Back to Practice
+      </a>
+      <a href="{% url 'practice_list' %}" class="btn-auth-outline px-4 py-2 text-decoration-none">
+        Browse Others
+      </a>
+    </div>
+  </div>
+
+  <!-- ── STATS ─────────────────────────────── -->
+  <div class="res-stats">
+    <div class="res-stat">
+      <i class="bi bi-clock res-stat-icon"></i>
+      <div class="res-stat-val">{% if duration %}{{ duration }}m{% else %}—{% endif %}</div>
+      <div class="res-stat-lbl">Time Taken</div>
+    </div>
+    <div class="res-stat">
+      <i class="bi bi-list-task res-stat-icon"></i>
+      <div class="res-stat-val">{{ total_questions }}</div>
+      <div class="res-stat-lbl">Questions</div>
+    </div>
+    <div class="res-stat">
+      <i class="bi bi-bullseye res-stat-icon"></i>
+      <div class="res-stat-val">{{ attempt.score|floatformat:1 }}%</div>
+      <div class="res-stat-lbl">Score</div>
+    </div>
+    <div class="res-stat">
+      <i class="bi bi-award res-stat-icon"></i>
+      <div class="res-stat-val">{{ earned_points }}/{{ total_points }}</div>
+      <div class="res-stat-lbl">Points</div>
+    </div>
+  </div>
+
+  <!-- ── ANSWER REVIEW ─────────────────────── -->
+  {% if question_results %}
+  <div class="res-review">
+    <h2 class="res-review-title">
+      <i class="bi bi-journal-check me-2" style="color:var(--accent);"></i>Detailed Review
+    </h2>
+
+    {% for qr in question_results %}
+    <div class="res-qcard
+      {% if not qr.was_answered %}skipped
+      {% elif qr.is_correct %}correct
+      {% else %}wrong{% endif %}">
+
+      <div class="res-qcard-head">
+        <span class="res-q-num">Question {{ forloop.counter }}</span>
+        <span class="res-q-badge
+          {% if not qr.was_answered %}skipped
+          {% elif qr.is_correct %}correct
+          {% else %}wrong{% endif %}">
+          {% if not qr.was_answered %}Not Answered
+          {% elif qr.is_correct %}Correct
+          {% else %}Incorrect{% endif %}
+        </span>
+        {% if is_owner %}
+          <a href="{% url 'edit_question' practice.pk qr.question.pk %}" class="btn-auth-outline py-1 px-2 ms-2 text-decoration-none" style="font-size:0.7rem;">
+            <i class="bi bi-pencil-square"></i> Edit
+          </a>
+        {% endif %}
+      </div>
+
+      <div class="res-qcard-body">
+        <p class="res-q-text">{{ qr.question.question_text|safe }}</p>
+
+        <div class="res-choices">
+          {% for choice in qr.choices %}
+            {% if choice.id in qr.correct_ids %}
+              <div class="res-choice correct-answer">
+                <i class="bi bi-check-circle-fill res-choice-icon"></i>
+                <span>{{ choice.text }}</span>
+              </div>
+            {% elif choice.id in qr.selected_ids %}
+              <div class="res-choice wrong-pick">
+                <i class="bi bi-x-circle-fill res-choice-icon"></i>
+                <span>{{ choice.text }}</span>
+              </div>
+            {% else %}
+              <div class="res-choice neutral">
+                <i class="bi bi-circle res-choice-icon"></i>
+                <span>{{ choice.text }}</span>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        {% if qr.question.explanation %}
+        <div class="res-explanation">
+          <div class="res-explanation-lbl"><i class="bi bi-info-circle me-1"></i>Explanation</div>
+          <div class="res-explanation-text">{{ qr.question.explanation|safe }}</div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+{% endblock %}

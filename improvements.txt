@@ -1,0 +1,6 @@
+1. Create an app for the games
+a. The first game is for math, where a system selects a random number between 1 and 1000 (could be adjustible);
+b. User inputs a number in each round, and system tells whether a user number is low or high or equal to the system number. 
+c. The game continues until user finds a system number.
+d. System will tell how many times a user tried to find the number in each round. 
+

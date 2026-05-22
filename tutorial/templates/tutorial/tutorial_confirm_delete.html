@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block nav_tutorials %}active{% endblock %}
+{% block page_name %}{% trans "Delete Tutorial" %}{% endblock %}
+
+{% block content %}
+<div class="auth-wrapper" style="min-height:calc(100dvh - var(--topbar-h) - 100px);">
+    <div class="auth-card">
+        <div class="card" style="border-radius:20px;overflow:hidden;">
+            <div style="height:4px;background:var(--danger);"></div>
+            <div class="auth-body">
+                <div class="auth-icon" style="background:rgba(248,113,113,.12);border-color:rgba(248,113,113,.25);color:var(--danger);">
+                    <i class="bi bi-trash"></i>
+                </div>
+                <h2 class="auth-title">{% trans "Delete Tutorial?" %}</h2>
+                <p class="auth-subtitle mb-4">
+                    {% trans "This action cannot be undone. The tutorial" %}
+                    <strong style="color:var(--text);">{{ tutorial.title }}</strong>
+                    {% trans "will be permanently removed." %}
+                </p>
+
+                <form method="post" class="d-flex flex-column gap-3">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-submit" style="background:var(--danger);">
+                        <i class="bi bi-trash-fill"></i>{% trans "Yes, delete it" %}
+                    </button>
+                    <a href="{% url 'tutorial_detail' tutorial.pk %}"
+                       class="btn-core-outline text-center justify-content-center">
+                        {% trans "Cancel" %}
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

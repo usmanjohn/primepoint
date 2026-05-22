@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{{ classroom.name }} – Powerty{% endblock %}
+{% block page_name %}{{ classroom.name }}{% endblock %}
+{% block nav_classroom %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+  .cr-locked-wrap {
+    max-width: 520px;
+    margin: 4rem auto;
+    text-align: center;
+  }
+  .cr-locked-strip {
+    height: 6px;
+    border-radius: 3px;
+    background: {{ classroom.cover_color }};
+    margin: 0 auto 2rem;
+    width: 60px;
+  }
+  .cr-locked-icon {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: rgba(56,189,248,.1);
+    border: 2px solid rgba(56,189,248,.2);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 1.8rem;
+    color: var(--accent);
+  }
+  .cr-locked-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem; font-weight: 800;
+    color: var(--text); margin: 0 0 .5rem;
+  }
+  .cr-locked-sub {
+    font-size: .9rem; color: var(--text-muted); margin: 0 0 2rem;
+    line-height: 1.6;
+  }
+  .cr-master-contact {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 1.25rem 1.5rem;
+    display: flex; align-items: center; gap: 1rem; text-align: left;
+    margin-bottom: 1.5rem;
+  }
+  .cr-master-ava {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--accent-glow); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; font-weight: 700; flex-shrink: 0;
+    border: 2px solid rgba(56,189,248,.2);
+  }
+  .cr-master-name {
+    font-family: 'Syne', sans-serif;
+    font-size: .95rem; font-weight: 700; color: var(--text); margin: 0 0 .2rem;
+  }
+  .cr-master-sub { font-size: .78rem; color: var(--text-muted); }
+  .cr-locked-actions { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="cr-locked-wrap">
+  <div class="cr-locked-strip"></div>
+  <div class="cr-locked-icon"><i class="bi bi-lock-fill"></i></div>
+  <h1 class="cr-locked-title">{{ classroom.name }}</h1>
+  <p class="cr-locked-sub">
+    {% trans "This classroom is private. You need to be enrolled by the master to access its lessons and discussions." %}
+  </p>
+
+  <div class="cr-master-contact">
+    <div class="cr-master-ava">{{ classroom.master.name|slice:":1"|upper }}</div>
+    <div>
+      <div class="cr-master-name">{{ classroom.master.name }}</div>
+      <div class="cr-master-sub">
+        <i class="bi bi-info-circle me-1"></i>
+        {% trans "Contact this master to request access to the classroom." %}
+      </div>
+    </div>
+  </div>
+
+  <div class="cr-locked-actions">
+    <a href="{% url 'masters-detail' classroom.master.pk %}" class="btn-auth-primary">
+      <i class="bi bi-person-workspace me-1"></i>{% trans "Visit Master Profile" %}
+    </a>
+    <a href="{% url 'classroom:list' %}" class="btn-auth-outline">
+      <i class="bi bi-arrow-left me-1"></i>{% trans "All Classrooms" %}
+    </a>
+  </div>
+</div>
+{% endblock %}

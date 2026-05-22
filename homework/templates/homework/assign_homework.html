@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block nav_homework %}active{% endblock %}
+{% block title %}Assign Homework — CORE{% endblock %}
+
+{% block extra_css %}
+<style>
+.form-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.form-section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--border);
+}
+.student-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.5rem;
+}
+.student-check-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.15s;
+}
+.student-check-label:hover { border-color: var(--accent); }
+.student-check-label input[type=checkbox] { accent-color: var(--accent); }
+.already-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 0.1rem 0.5rem;
+  margin-left: auto;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+  <div class="page-header">
+    <a href="{% url 'homework_detail' homework.pk %}" class="btn-auth-outline text-decoration-none py-1 px-3 mb-3 d-inline-flex align-items-center gap-1" style="font-size:0.82rem;">
+      <i class="bi bi-arrow-left"></i> Back
+    </a>
+    <h1 class="page-title mb-1">Assign More Students</h1>
+    <p class="page-subtitle">Reuse "<strong>{{ homework.title }}</strong>" for new students or groups. Already-assigned students are skipped automatically.</p>
+  </div>
+
+  <form method="post">
+    {% csrf_token %}
+    <div class="row g-4">
+      <div class="col-12 col-lg-8">
+
+        <!-- GROUPS -->
+        <div class="form-section">
+          <p class="form-section-title">Groups</p>
+          {% if form.groups.field.queryset.exists %}
+            <div class="student-list">
+              {% for checkbox in form.groups %}
+              <label class="student-check-label">
+                {{ checkbox.tag }}
+                {{ checkbox.choice_label }}
+              </label>
+              {% endfor %}
+            </div>
+          {% else %}
+            <p class="text-muted mb-0" style="font-size:0.83rem;">
+              No groups yet. <a href="{% url 'create_group' %}">Create a group</a> to assign faster.
+            </p>
+          {% endif %}
+        </div>
+
+        <!-- INDIVIDUAL STUDENTS -->
+        <div class="form-section">
+          <p class="form-section-title">Individual Students</p>
+          {% if form.pandas.field.queryset.exists %}
+            <div class="student-list">
+              {% for checkbox in form.pandas %}
+              <label class="student-check-label {% if checkbox.data.value|add:'0' in already_assigned %}opacity-50{% endif %}">
+                {{ checkbox.tag }}
+                {{ checkbox.choice_label }}
+                {% if checkbox.data.value in already_assigned %}
+                  <span class="already-tag">assigned</span>
+                {% endif %}
+              </label>
+              {% endfor %}
+            </div>
+          {% else %}
+            <p class="text-muted mb-0" style="font-size:0.85rem;">No students linked to your master profile yet.</p>
+          {% endif %}
+        </div>
+
+      </div>
+      <div class="col-12 col-lg-4">
+        <div class="form-section">
+          <p class="form-section-title">Actions</p>
+          <button type="submit" class="btn-auth-primary w-100 py-2 mb-2">Assign Selected</button>
+          <a href="{% url 'homework_detail' homework.pk %}" class="btn-auth-outline w-100 py-2 text-decoration-none text-center d-block">Cancel</a>
+        </div>
+      </div>
+    </div>
+  </form>
+
+{% endblock %}

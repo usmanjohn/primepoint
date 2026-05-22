@@ -1,0 +1,422 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ thread.title }} — Discussion{% endblock %}
+{% block page_name %}{{ thread.title|truncatechars:40 }}{% endblock %}
+{% block nav_discussion %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+.disc-wrap {
+    --dr: 14px;
+    --dbg: #0d1117;
+    --dborder: rgba(255,255,255,0.08);
+    --dmuted: rgba(255,255,255,0.50);
+    --dtext: #e2e8f0;
+    --daccent: #6366f1;
+    --daccent-glow: rgba(99,102,241,0.15);
+    --dgreen: #22c55e;
+    --dyellow: #f59e0b;
+    --dred: #ef4444;
+    color: var(--dtext);
+}
+
+/* ── Layout ── */
+.detail-layout { display: grid; grid-template-columns: 1fr 232px; gap: 1.5rem; align-items: start; }
+@media (max-width: 860px) { .detail-layout { grid-template-columns: 1fr; } }
+
+/* ── Post card ── */
+.post-card {
+    background: var(--dbg);
+    border: 1px solid var(--dborder);
+    border-radius: var(--dr);
+    display: grid; grid-template-columns: 52px 1fr;
+    overflow: hidden; margin-bottom: .85rem;
+    color: var(--dtext);
+}
+.post-card.op  { border-top: 3px solid var(--daccent); }
+.post-card.ann { border-top: 3px solid #a78bfa; }
+.post-card.accepted { border-color: var(--dgreen); }
+
+/* Vote gutter */
+.vgutter {
+    background: rgba(255,255,255,.02);
+    border-right: 1px solid var(--dborder);
+    display: flex; flex-direction: column; align-items: center;
+    gap: .3rem; padding: .9rem .4rem;
+}
+.vbtn {
+    width: 30px; height: 30px; border-radius: 7px;
+    border: 1px solid var(--dborder);
+    background: rgba(255,255,255,.04); color: var(--dmuted);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all .14s; font-size: .88rem;
+}
+.vbtn:hover { border-color: var(--daccent); color: #a5b4fc; background: var(--daccent-glow); }
+.vbtn.up   { background: rgba(34,197,94,.15); border-color: var(--dgreen); color: var(--dgreen); }
+.vbtn.down { background: rgba(239,68,68,.15); border-color: var(--dred); color: var(--dred); }
+.vscore {
+    font-size: .9rem; font-weight: 700; text-align: center; min-width: 22px;
+    color: var(--daccent);
+}
+.vscore.pos { color: var(--dgreen); }
+.vscore.neg { color: var(--dred); }
+.accept-btn {
+    width: 30px; height: 30px; border-radius: 7px;
+    border: 1px solid rgba(34,197,94,.25);
+    background: none; color: var(--dmuted);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: .9rem; transition: all .14s;
+    margin-top: .2rem;
+}
+.accept-btn:hover { background: rgba(34,197,94,.12); color: var(--dgreen); }
+.accept-btn.active { background: rgba(34,197,94,.18); border-color: var(--dgreen); color: var(--dgreen); }
+
+/* Post content */
+.pbody { padding: 1rem 1.25rem; }
+.pmeta {
+    display: flex; flex-wrap: wrap; align-items: center; gap: .45rem;
+    font-size: .8rem; color: var(--dmuted); margin-bottom: .7rem;
+}
+.pmeta .achip { display: flex; align-items: center; gap: .38rem; }
+.pmeta .achip .av {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--daccent-glow); border: 1px solid var(--daccent);
+    font-size: .65rem; font-weight: 700; color: #a5b4fc;
+    display: flex; align-items: center; justify-content: center;
+}
+.pmeta .achip a { color: #a5b4fc; text-decoration: none; font-weight: 600; }
+.pmeta .achip a:hover { text-decoration: underline; }
+.ptext {
+    font-size: .95rem; line-height: 1.75; color: var(--dtext);
+    white-space: pre-wrap; word-break: break-word;
+}
+.pactions {
+    display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .9rem;
+    padding-top: .7rem; border-top: 1px solid var(--dborder);
+}
+.abtn {
+    font-size: .77rem; padding: .22rem .6rem; border-radius: 6px;
+    border: 1px solid transparent; background: none; color: var(--dmuted);
+    cursor: pointer; text-decoration: none; transition: all .12s;
+}
+.abtn:hover { background: rgba(255,255,255,.06); color: var(--dtext); border-color: var(--dborder); }
+.abtn.del:hover { color: var(--dred); border-color: rgba(239,68,68,.3); }
+
+/* Accepted banner */
+.acc-banner {
+    display: flex; align-items: center; gap: .45rem;
+    background: rgba(34,197,94,.1); border: 1px solid rgba(34,197,94,.22);
+    border-radius: 8px; padding: .45rem .75rem; font-size: .8rem;
+    color: var(--dgreen); font-weight: 600; margin-bottom: .6rem;
+}
+
+/* ── Tags ── */
+.tag { font-size: .7rem; font-weight: 600; padding: .18rem .52rem; border-radius: 20px; text-transform: uppercase; letter-spacing: .03em; }
+.tag-cat    { background: var(--daccent-glow); color: #a5b4fc; }
+.tag-pin    { background: rgba(245,158,11,.15); color: var(--dyellow); }
+.tag-ann    { background: rgba(167,139,250,.15); color: #a78bfa; }
+.tag-closed { background: rgba(107,114,128,.15); color: #9ca3af; }
+
+/* ── Reply compose ── */
+.reply-compose {
+    background: var(--dbg); border: 1px solid var(--dborder);
+    border-radius: var(--dr); padding: 1.25rem; margin-top: 1.4rem;
+    color: var(--dtext);
+}
+.reply-compose h6 { font-size: .88rem; font-weight: 700; margin-bottom: .75rem; color: var(--dtext); }
+.reply-compose textarea {
+    background: rgba(255,255,255,.05) !important;
+    border: 1px solid var(--dborder) !important;
+    border-radius: 10px !important;
+    color: var(--dtext) !important;
+    resize: vertical;
+}
+.reply-compose textarea::placeholder { color: var(--dmuted) !important; }
+.reply-compose textarea:focus {
+    border-color: var(--daccent) !important;
+    box-shadow: 0 0 0 3px var(--daccent-glow) !important;
+}
+.reply-submit {
+    background: var(--daccent); color: #fff; border: none;
+    border-radius: 8px; padding: .52rem 1.25rem; font-weight: 600;
+    font-size: .88rem; cursor: pointer; transition: opacity .15s;
+}
+.reply-submit:hover { opacity: .88; }
+
+/* ── Sidebar ── */
+.sidebar-card {
+    background: var(--dbg); border: 1px solid var(--dborder);
+    border-radius: var(--dr); padding: 1rem; margin-bottom: 1rem;
+    color: var(--dtext);
+}
+.sidebar-card h6 {
+    font-size: .7rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .06em; color: var(--dmuted); margin-bottom: .65rem;
+}
+.srow {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: .83rem; padding: .28rem 0;
+    border-bottom: 1px solid var(--dborder);
+    color: var(--dtext);
+}
+.srow:last-child { border-bottom: none; }
+.srow .sv { font-weight: 600; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 px-md-4 py-3 disc-wrap">
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb" style="font-size:.82rem;">
+            <li class="breadcrumb-item"><a href="{% url 'discussion_home' %}" style="color:#6366f1;">Discussion</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'discussion_home' %}?category={{ thread.category.slug }}" style="color:#6366f1;">{{ thread.category.name }}</a></li>
+            <li class="breadcrumb-item active" style="color:#64748b;">{{ thread.title|truncatechars:45 }}</li>
+        </ol>
+    </nav>
+
+    <div class="detail-layout">
+
+        <!-- ── Main ── -->
+        <div>
+
+            <!-- Title -->
+            <div class="mb-3">
+                <div class="d-flex flex-wrap gap-1 mb-1">
+                    <span class="tag tag-cat"><i class="bi {{ thread.category.icon }} me-1"></i>{{ thread.category.name }}</span>
+                    {% if thread.is_announcement %}<span class="tag tag-ann"><i class="bi bi-megaphone-fill me-1"></i>Announcement</span>{% endif %}
+                    {% if thread.is_pinned %}<span class="tag tag-pin"><i class="bi bi-pin-fill me-1"></i>Pinned</span>{% endif %}
+                    {% if thread.is_closed %}<span class="tag tag-closed"><i class="bi bi-lock-fill me-1"></i>Closed</span>{% endif %}
+                </div>
+                <h4 class="fw-bold mb-0" style="font-family:'Syne',sans-serif;color:#1e293b;line-height:1.3;">
+                    {{ thread.title }}
+                </h4>
+            </div>
+
+            <!-- Original post -->
+            <article class="post-card op {% if thread.is_announcement %}ann{% endif %}">
+                <div class="vgutter">
+                    {% if user.is_authenticated %}
+                    <form method="post" action="{% url 'vote_thread_up' thread.pk %}" data-vote-form data-vote-target="thread" data-vote-value="1">
+                        {% csrf_token %}
+                        <button type="submit" class="vbtn {% if user_thread_vote == 1 %}up{% endif %}" title="Upvote">
+                            <i class="bi bi-arrow-up"></i>
+                        </button>
+                    </form>
+                    {% endif %}
+                    <span class="vscore {% if thread.vote_score > 0 %}pos{% elif thread.vote_score < 0 %}neg{% endif %}">
+                        {{ thread.vote_score }}
+                    </span>
+                    {% if user.is_authenticated %}
+                    <form method="post" action="{% url 'vote_thread_down' thread.pk %}" data-vote-form data-vote-target="thread" data-vote-value="-1">
+                        {% csrf_token %}
+                        <button type="submit" class="vbtn {% if user_thread_vote == -1 %}down{% endif %}" title="Downvote">
+                            <i class="bi bi-arrow-down"></i>
+                        </button>
+                    </form>
+                    {% endif %}
+                </div>
+                <div class="pbody">
+                    <div class="pmeta">
+                        <div class="achip">
+                            <div class="av">{{ thread.author.username|slice:":2"|upper }}</div>
+                            <a href="{% url 'user_profile' thread.author.username %}">{{ thread.author.username }}</a>
+                        </div>
+                        <span>·</span>
+                        <span>{{ thread.created_at|timesince }} ago</span>
+                        {% if thread.updated_at != thread.created_at %}
+                        <span style="color:var(--dmuted);">(edited)</span>
+                        {% endif %}
+                    </div>
+                    <div class="ptext">{{ thread.body }}</div>
+                    {% if can_manage %}
+                    <div class="pactions">
+                        <a href="{% url 'edit_thread' thread.pk %}" class="abtn">
+                            <i class="bi bi-pencil me-1"></i>Edit
+                        </a>
+                        <form method="post" action="{% url 'toggle_close' thread.pk %}" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="abtn">
+                                {% if thread.is_closed %}<i class="bi bi-unlock me-1"></i>Reopen
+                                {% else %}<i class="bi bi-lock me-1"></i>Close{% endif %}
+                            </button>
+                        </form>
+                        {% if user.is_staff %}
+                        <form method="post" action="{% url 'toggle_pin' thread.pk %}" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="abtn">
+                                {% if thread.is_pinned %}<i class="bi bi-pin-angle me-1"></i>Unpin
+                                {% else %}<i class="bi bi-pin me-1"></i>Pin{% endif %}
+                            </button>
+                        </form>
+                        {% endif %}
+                        <a href="{% url 'delete_thread' thread.pk %}" class="abtn del">
+                            <i class="bi bi-trash me-1"></i>Delete
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </article>
+
+            <!-- Replies -->
+            {% if replies %}
+            <div class="d-flex align-items-center gap-2 mb-2 mt-4" style="color:#1e293b;">
+                <i class="bi bi-chat-text" style="color:#6366f1;"></i>
+                <strong style="font-size:.95rem;">{{ replies.count }} {% if replies.count == 1 %}Reply{% else %}Replies{% endif %}</strong>
+            </div>
+
+            {% for reply in replies %}
+            <article class="post-card {% if reply.is_accepted %}accepted{% endif %}" id="reply-{{ reply.pk }}">
+                <div class="vgutter">
+                    {% if user.is_authenticated %}
+                    <form method="post" action="{% url 'vote_reply_up' reply.pk %}" data-vote-form data-vote-target="reply-{{ reply.pk }}" data-vote-value="1">
+                        {% csrf_token %}
+                        <button type="submit" class="vbtn {% if reply.user_vote_value == 1 %}up{% endif %}" title="Upvote">
+                            <i class="bi bi-arrow-up"></i>
+                        </button>
+                    </form>
+                    {% endif %}
+                    <span class="vscore {% if reply.vote_score > 0 %}pos{% elif reply.vote_score < 0 %}neg{% endif %}">
+                        {{ reply.vote_score }}
+                    </span>
+                    {% if user.is_authenticated %}
+                    <form method="post" action="{% url 'vote_reply_down' reply.pk %}" data-vote-form data-vote-target="reply-{{ reply.pk }}" data-vote-value="-1">
+                        {% csrf_token %}
+                        <button type="submit" class="vbtn {% if reply.user_vote_value == -1 %}down{% endif %}" title="Downvote">
+                            <i class="bi bi-arrow-down"></i>
+                        </button>
+                    </form>
+                    {% endif %}
+                    {% if is_thread_author or user.is_staff %}
+                    <form method="post" action="{% url 'mark_accepted' reply.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" class="accept-btn {% if reply.is_accepted %}active{% endif %}"
+                                title="{% if reply.is_accepted %}Unmark accepted{% else %}Mark as accepted answer{% endif %}">
+                            <i class="bi bi-check2-circle"></i>
+                        </button>
+                    </form>
+                    {% endif %}
+                </div>
+                <div class="pbody">
+                    {% if reply.is_accepted %}
+                    <div class="acc-banner"><i class="bi bi-check-circle-fill"></i> Accepted Answer</div>
+                    {% endif %}
+                    <div class="pmeta">
+                        <div class="achip">
+                            <div class="av">{{ reply.author.username|slice:":2"|upper }}</div>
+                            <a href="{% url 'user_profile' reply.author.username %}">{{ reply.author.username }}</a>
+                        </div>
+                        <span>·</span>
+                        <span>{{ reply.created_at|timesince }} ago</span>
+                        {% if reply.updated_at != reply.created_at %}<span style="color:var(--dmuted);">(edited)</span>{% endif %}
+                    </div>
+                    <div class="ptext">{{ reply.body }}</div>
+                    {% if user.is_authenticated %}
+                    {% if reply.author == user or user.is_staff %}
+                    <div class="pactions">
+                        <a href="{% url 'edit_reply' reply.pk %}" class="abtn"><i class="bi bi-pencil me-1"></i>Edit</a>
+                        <a href="{% url 'delete_reply' reply.pk %}" class="abtn del"><i class="bi bi-trash me-1"></i>Delete</a>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </article>
+            {% endfor %}
+            {% endif %}
+
+            <!-- Reply compose -->
+            {% if user.is_authenticated %}
+                {% if not thread.is_closed %}
+                <div class="reply-compose">
+                    <h6><i class="bi bi-reply me-1" style="color:#6366f1;"></i>Write a Reply</h6>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ reply_form.body }}
+                        <div class="d-flex justify-content-end mt-2">
+                            <button type="submit" class="reply-submit">
+                                <i class="bi bi-send me-1"></i>Post Reply
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                {% else %}
+                <div class="reply-compose text-center" style="color:var(--dmuted);font-size:.88rem;">
+                    <i class="bi bi-lock-fill me-1"></i>This thread is closed. No new replies.
+                </div>
+                {% endif %}
+            {% else %}
+            <div class="reply-compose text-center" style="color:var(--dmuted);font-size:.88rem;">
+                <a href="{% url 'login' %}" style="color:#a5b4fc;">Log in</a> to post a reply.
+            </div>
+            {% endif %}
+
+        </div>
+
+        <!-- ── Sidebar ── -->
+        <aside>
+            <div class="sidebar-card">
+                <h6>Thread Info</h6>
+                <div class="srow"><span>Category</span><span class="sv">{{ thread.category.name }}</span></div>
+                <div class="srow"><span>Replies</span><span class="sv">{{ thread.reply_count }}</span></div>
+                <div class="srow"><span>Views</span><span class="sv">{{ thread.view_count }}</span></div>
+                <div class="srow"><span>Score</span><span class="sv">{{ thread.vote_score }}</span></div>
+                <div class="srow"><span>Posted</span><span class="sv">{{ thread.created_at|date:"M d, Y" }}</span></div>
+                {% if thread.has_accepted_answer %}
+                <div class="srow"><span>Status</span><span class="sv" style="color:#22c55e;">✓ Solved</span></div>
+                {% endif %}
+            </div>
+
+            <div class="sidebar-card">
+                <h6>Author</h6>
+                <div class="d-flex align-items-center gap-2 mb-2">
+                    <div style="width:34px;height:34px;border-radius:50%;background:var(--daccent-glow);border:1px solid var(--daccent);display:flex;align-items:center;justify-content:center;font-weight:700;color:#a5b4fc;font-size:.78rem;flex-shrink:0;">
+                        {{ thread.author.username|slice:":2"|upper }}
+                    </div>
+                    <div>
+                        <div style="font-size:.88rem;font-weight:600;color:var(--dtext);">{{ thread.author.username }}</div>
+                        <div style="font-size:.74rem;color:var(--dmuted);">{{ thread.author.threads.count }} threads</div>
+                    </div>
+                </div>
+                <a href="{% url 'user_profile' thread.author.username %}"
+                   style="display:block;text-align:center;padding:.42rem;background:rgba(255,255,255,.05);border:1px solid var(--dborder);border-radius:8px;font-size:.8rem;color:var(--dtext);text-decoration:none;">
+                    View Profile
+                </a>
+            </div>
+
+            <a href="{% url 'discussion_home' %}"
+               style="display:block;text-align:center;padding:.5rem;background:#0d1117;border:1px solid rgba(255,255,255,.08);border-radius:10px;font-size:.82rem;color:#e2e8f0;text-decoration:none;">
+                <i class="bi bi-arrow-left me-1"></i>Back to Discussion
+            </a>
+        </aside>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.querySelectorAll('[data-vote-form]').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        fetch(form.action, {
+            method: 'POST',
+            headers: {'X-Requested-With': 'XMLHttpRequest'},
+            body: new FormData(form),
+        })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+            var gut     = form.closest('.vgutter');
+            var scoreEl = gut.querySelector('.vscore');
+            var upBtn   = gut.querySelector('[data-vote-value="1"] .vbtn');
+            var downBtn = gut.querySelector('[data-vote-value="-1"] .vbtn');
+
+            scoreEl.textContent = d.score;
+            scoreEl.className = 'vscore' + (d.score > 0 ? ' pos' : d.score < 0 ? ' neg' : '');
+            if (upBtn)   upBtn.classList.toggle('up',   d.user_vote === 1);
+            if (downBtn) downBtn.classList.toggle('down', d.user_vote === -1);
+        });
+    });
+});
+</script>
+{% endblock %}

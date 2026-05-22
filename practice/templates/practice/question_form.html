@@ -1,0 +1,247 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% if action == 'edit' %}Edit Question{% else %}Add Question{% endif %} — {{ practice.title }}{% endblock %}
+
+{% block extra_css %}
+<style>
+.qf-wrap { max-width: 740px; margin: 0 auto; }
+.qf-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+.qf-card-header {
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.qf-card-header-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--accent-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+.qf-card-header h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+.qf-card-body { padding: 1.5rem 1.75rem; }
+.qf-field { margin-bottom: 1.1rem; }
+.qf-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+.qf-field .form-core { width: 100%; }
+.qf-field .errorlist {
+  list-style: none;
+  padding: 0;
+  margin: 0.3rem 0 0;
+  font-size: 0.77rem;
+  color: var(--danger);
+}
+.qf-help { font-size: 0.74rem; color: var(--text-muted); margin-top: 0.2rem; }
+.qf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+/* Choice rows */
+.choice-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+  transition: border-color 0.15s;
+}
+.choice-row:has(input[type="checkbox"]:checked) {
+  border-color: #22c55e;
+  background: rgba(34,197,94,0.05);
+}
+.choice-num {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+.choice-row input[type="text"],
+.choice-row input[type="text"].form-core {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+.choice-row input[type="text"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+.choice-correct-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+.choice-correct-wrap input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #22c55e;
+  cursor: pointer;
+}
+.choice-correct-lbl {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-muted);
+}
+
+.qf-actions {
+  display: flex;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  margin-top: 0.5rem;
+}
+@media (max-width: 480px) { .qf-row { grid-template-columns: 1fr; } }
+</style>
+{% endblock %}
+
+{% block content %}
+  <nav class="mb-4">
+    <a href="{% url 'manage_questions' practice.pk %}" class="btn-auth-outline text-decoration-none">
+      <i class="bi bi-arrow-left"></i><span class="d-none d-sm-inline ms-2">Back to Questions</span>
+    </a>
+  </nav>
+
+  <div class="qf-wrap">
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <!-- QUESTION CARD -->
+      <div class="qf-card">
+        <div class="qf-card-header">
+          <div class="qf-card-header-icon"><i class="bi bi-question-lg"></i></div>
+          <h2>{% if action == 'edit' %}Edit Question{% else %}New Question{% endif %}</h2>
+        </div>
+        <div class="qf-card-body">
+
+          <div class="qf-field">
+            <label class="qf-label" for="{{ form.question_text.id_for_label }}">Question Text</label>
+            {{ form.question_text }}
+            {% if form.question_text.errors %}<ul class="errorlist">{% for e in form.question_text.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+          </div>
+
+          <div class="qf-field">
+            <label class="qf-label" for="{{ form.image.id_for_label }}">Image <span style="font-weight:400; text-transform:none;">(optional)</span></label>
+            {{ form.image }}
+            {% if action == 'edit' and question.image %}
+              <p class="qf-help">Current: <a href="{{ question.image.url }}" target="_blank">view image</a></p>
+            {% endif %}
+          </div>
+
+          <div class="qf-row">
+            <div class="qf-field">
+              <label class="qf-label" for="{{ form.points.id_for_label }}">Points</label>
+              {{ form.points }}
+            </div>
+            <div class="qf-field">
+              <label class="qf-label" for="{{ form.order.id_for_label }}">Display Order</label>
+              {{ form.order }}
+              <p class="qf-help">Lower number = shown first</p>
+            </div>
+          </div>
+
+          <div class="qf-field">
+            <label class="qf-label" for="{{ form.hint.id_for_label }}">Hint <span style="font-weight:400; text-transform:none;">(optional)</span></label>
+            {{ form.hint }}
+            <p class="qf-help">Shown to students as a tip during the quiz</p>
+          </div>
+
+          <div class="qf-field">
+            <label class="qf-label" for="{{ form.explanation.id_for_label }}">Explanation <span style="font-weight:400; text-transform:none;">(optional)</span></label>
+            {{ form.explanation }}
+            <p class="qf-help">Shown on the result page after submission</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CHOICES CARD -->
+      <div class="qf-card">
+        <div class="qf-card-header">
+          <div class="qf-card-header-icon"><i class="bi bi-ui-checks"></i></div>
+          <h2>Answer Choices</h2>
+        </div>
+        <div class="qf-card-body">
+          <p class="text-muted" style="font-size:0.82rem; margin-bottom:1rem;">
+            Enter up to 4 choices. Check <strong>Correct</strong> for each right answer. Leave a row blank to skip it.
+          </p>
+
+          {% for slot in choice_slots %}
+          <div class="choice-row">
+            <div>
+              <div class="choice-num">Choice {{ slot.num }}</div>
+              <input
+                type="text"
+                name="choice_text_{{ slot.num }}"
+                class="form-core"
+                placeholder="Enter choice {{ slot.num }}…"
+                value="{{ slot.text }}"
+              >
+            </div>
+            <div class="choice-correct-wrap">
+              <input
+                type="checkbox"
+                name="choice_correct_{{ slot.num }}"
+                id="correct_{{ slot.num }}"
+                {% if slot.is_correct %}checked{% endif %}
+              >
+              <label class="choice-correct-lbl" for="correct_{{ slot.num }}">Correct</label>
+            </div>
+          </div>
+          {% endfor %}
+
+          <div class="qf-actions">
+            <button type="submit" class="btn-auth-primary border-0 py-2 px-4">
+              {% if action == 'edit' %}
+                <i class="bi bi-check2 me-1"></i>Save Changes
+              {% else %}
+                <i class="bi bi-plus-lg me-1"></i>Add Question
+              {% endif %}
+            </button>
+            <a href="{% url 'manage_questions' practice.pk %}" class="btn-auth-outline text-decoration-none py-2 px-4">Cancel</a>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+{% endblock %}

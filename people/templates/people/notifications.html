@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Notifications" %} — Prime Point{% endblock %}
+
+{% block extra_css %}
+<style>
+.notif-hero {
+  padding: 2rem 0 1.75rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.75rem;
+}
+.notif-eyebrow {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem;
+}
+.notif-hero h1 {
+  font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800;
+  color: var(--text); margin: 0;
+}
+
+.notif-list { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.notif-card {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--chrome-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.15s, background 0.15s;
+}
+.notif-card:hover { border-color: var(--accent); background: var(--chrome-bg-hover, var(--chrome-bg)); color: var(--text); }
+.notif-card.unread { border-left: 3px solid var(--accent); }
+
+.notif-icon {
+  width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--accent-light, rgba(99,102,241,0.12));
+  color: var(--accent); font-size: 1.1rem;
+}
+
+.notif-body { flex: 1; min-width: 0; }
+.notif-title { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.15rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.notif-msg { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.25rem; }
+.notif-time { font-size: 0.75rem; color: var(--text-muted); }
+
+.notif-unread-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent); flex-shrink: 0; margin-top: 6px;
+}
+
+.notif-empty {
+  text-align: center; padding: 4rem 1rem; color: var(--text-muted);
+}
+.notif-empty i { font-size: 3rem; display: block; margin-bottom: 1rem; opacity: 0.4; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-4" style="max-width:720px;">
+
+  <div class="notif-hero">
+    <p class="notif-eyebrow">{% trans "Inbox" %}</p>
+    <h1>{% trans "Notifications" %}</h1>
+  </div>
+
+  {% if notifications %}
+  <div class="notif-list">
+    {% for notif in notifications %}
+    <a href="{% url 'notification_read' notif.pk %}" class="notif-card {% if not notif.is_read %}unread{% endif %}">
+      <div class="notif-icon">
+        <i class="bi {{ notif.icon }}"></i>
+      </div>
+      <div class="notif-body">
+        <div class="notif-title">{{ notif.title }}</div>
+        {% if notif.message %}<div class="notif-msg">{{ notif.message }}</div>{% endif %}
+        <div class="notif-time">{{ notif.created_at|timesince }} {% trans "ago" %}</div>
+      </div>
+      {% if not notif.is_read %}<div class="notif-unread-dot"></div>{% endif %}
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="notif-empty">
+    <i class="bi bi-bell-slash"></i>
+    <p>{% trans "You have no notifications yet." %}</p>
+  </div>
+  {% endif %}
+
+</div>
+{% endblock %}
