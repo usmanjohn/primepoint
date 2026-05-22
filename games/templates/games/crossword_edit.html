@@ -27,7 +27,7 @@
 }
 .edit-grid td {
     width: 48px; height: 48px;
-    padding: 0; border: none;
+    padding: 0; border: 1px solid #6b7280;
     position: relative; cursor: pointer;
     user-select: none;
 }
@@ -35,8 +35,8 @@
 @media (max-width: 400px) { .edit-grid td { width: 32px; height: 32px; } }
 
 .ec-empty   { background: #374151; }
-.ec-filled  { background: #fff; border: 1.5px solid #cbd5e1; }
-.ec-filled:hover { border-color: #7c3aed; background: #f5f3ff; }
+.ec-filled  { background: #fff; }
+.ec-filled:hover { background: #f5f3ff; }
 .ec-selected { border: 2.5px solid #7c3aed !important; background: #ede9fe !important; }
 
 .ec-syl {
@@ -389,12 +389,9 @@ function renderWordList() {
     });
 }
 
-// ── Cell click handler ────────────────────────────────────────────────────────
-function onCellClick(r, c) {
-    selR = r; selC = c;
-
-    // Check if any words pass through this cell
-    const wordsHere = words.filter(w => {
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function getWordsAt(r, c) {
+    return words.filter(w => {
         for (let i = 0; i < w.length; i++) {
             const wr = w.direction === 'down' ? w.row + i : w.row;
             const wc = w.direction === 'across' ? w.col + i : w.col;
@@ -402,9 +399,32 @@ function onCellClick(r, c) {
         }
         return false;
     });
+}
 
-    if (wordsHere.length > 0) {
+function setDir(dir) {
+    selDir = dir;
+    document.getElementById('dir-h').classList.toggle('active', dir === 'across');
+    document.getElementById('dir-v').classList.toggle('active', dir === 'down');
+}
+
+// ── Cell click handler ────────────────────────────────────────────────────────
+function onCellClick(r, c) {
+    selR = r; selC = c;
+
+    const wordsHere = getWordsAt(r, c);
+    const hasAcross = wordsHere.some(w => w.direction === 'across');
+    const hasDown   = wordsHere.some(w => w.direction === 'down');
+
+    if (hasAcross && hasDown) {
+        // Both directions filled — only show existing info
         showExistingInfo(wordsHere);
+    } else if (wordsHere.length > 0) {
+        // One direction filled — auto-select the other and show place form
+        const suggestDir = hasAcross ? 'down' : 'across';
+        setDir(suggestDir);
+        showPlaceForm(r, c);
+        document.getElementById('cell-hint').textContent =
+            `Cell (${r+1},${c+1}) — add a ${suggestDir === 'across' ? 'horizontal →' : 'vertical ↓'} word:`;
     } else {
         showPlaceForm(r, c);
     }
