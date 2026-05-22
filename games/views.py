@@ -1,5 +1,7 @@
 import json
 import random
+from django.core.exceptions import PermissionDenied
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import CrosswordPuzzle
@@ -117,15 +119,13 @@ def crossword_play(request, pk):
     saved_answers = request.session.get(session_key, {})
     checked       = request.session.get(check_key, False)
 
-    # Build number map: (r, c) -> number for word-start cells
     number_map = {}
     for word in words:
         key = (word['row'], word['col'])
         if key not in number_map:
             number_map[key] = word['number']
 
-    # Build grid_rows: list of rows, each a list of cell dicts
-    grid_rows = []
+    grid_rows_data = []
     total_correct = 0
     total_cells   = 0
     for r in range(rows):
@@ -148,7 +148,7 @@ def crossword_play(request, pk):
                     'correct':  correct,
                     'number':   number_map.get((r, c)),
                 })
-        grid_rows.append(row_cells)
+        grid_rows_data.append(row_cells)
 
     all_correct = checked and total_cells > 0 and total_correct == total_cells
 
@@ -157,7 +157,7 @@ def crossword_play(request, pk):
 
     context = {
         'puzzle':       puzzle,
-        'grid_rows':    grid_rows,
+        'grid_rows':    grid_rows_data,
         'across_clues': across_clues,
         'down_clues':   down_clues,
         'checked':      checked,
@@ -165,3 +165,25 @@ def crossword_play(request, pk):
         'words_json':   json.dumps(words),
     }
     return render(request, 'games/crossword_play.html', context)
+
+
+@login_required
+def crossword_edit(request, pk):
+    if not request.user.is_staff:
+        raise PermissionDenied
+    puzzle = get_object_or_404(CrosswordPuzzle, pk=pk)
+
+    if request.method == 'POST':
+        try:
+            data  = json.loads(request.body)
+            rows  = max(1, min(int(data.get('rows', puzzle.grid_rows)), 20))
+            cols  = max(1, min(int(data.get('cols', puzzle.grid_cols)), 10))
+            words = data.get('words', [])
+            cells = data.get('cells', [])
+            puzzle.grid_data = {'rows': rows, 'cols': cols, 'words': words, 'cells': cells}
+            puzzle.save()
+            return JsonResponse({'ok': True, 'word_count': len(words)})
+        except Exception as e:
+            return JsonResponse({'ok': False, 'error': str(e)}, status=400)
+
+    return render(request, 'games/crossword_edit.html', {'puzzle': puzzle})

@@ -6,4 +6,5 @@ urlpatterns = [
     path('number-guess/', views.number_guess, name='number_guess'),
     path('crossword/', views.crossword_list, name='crossword_list'),
     path('crossword/<int:pk>/', views.crossword_play, name='crossword_play'),
+    path('crossword/<int:pk>/edit/', views.crossword_edit, name='crossword_edit'),
 ]

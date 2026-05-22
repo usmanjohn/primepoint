@@ -414,11 +414,34 @@ function onClueClick(e) {
     if (el) { highlight(word, tr, tc); el.focus(); }
 }
 
-// ── Attach ────────────────────────────────────────────────────────
+// ── Attach (with Korean IME composition support) ──────────────────
 document.querySelectorAll('.cw-input').forEach(el => {
+    let composing = false;
+
+    el.addEventListener('compositionstart', () => { composing = true; });
+
+    el.addEventListener('compositionend', e => {
+        composing = false;
+        // e.data is the fully composed character (e.g. 원)
+        const composed = e.data || el.value;
+        let syl = '';
+        for (let i = composed.length - 1; i >= 0; i--) {
+            if (isKorean(composed[i])) { syl = composed[i]; break; }
+        }
+        el.value = syl;
+        if (syl && activeWord) {
+            const r = +el.dataset.r, c = +el.dataset.c;
+            const { r: nr, c: nc } = nextPos(activeWord, r, c);
+            if (inWord(activeWord, nr, nc)) {
+                const ni = inp(nr, nc);
+                if (ni) ni.focus();
+            }
+        }
+    });
+
     el.addEventListener('focus',   onFocus);
     el.addEventListener('click',   onClick);
-    el.addEventListener('input',   onInput);
+    el.addEventListener('input',   e => { if (!composing) onInput(e); });
     el.addEventListener('keydown', onKeydown);
 });
 document.querySelectorAll('.clue-item').forEach(el => {

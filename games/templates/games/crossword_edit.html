@@ -1,0 +1,620 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}Edit Grid — {{ puzzle.title }}{% endblock %}
+{% block page_name %}Grid Editor{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ── Layout ────────────────────────────────────────── */
+.edit-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+}
+@media (min-width: 768px) {
+    .edit-wrap { flex-direction: row; align-items: flex-start; }
+}
+
+/* ── Grid table ────────────────────────────────────── */
+.edit-grid-outer { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.edit-grid {
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin: 0 auto;
+}
+.edit-grid td {
+    width: 48px; height: 48px;
+    padding: 0; border: none;
+    position: relative; cursor: pointer;
+    user-select: none;
+}
+@media (max-width: 600px) { .edit-grid td { width: 38px; height: 38px; } }
+@media (max-width: 400px) { .edit-grid td { width: 32px; height: 32px; } }
+
+.ec-empty   { background: #374151; }
+.ec-filled  { background: #fff; border: 1.5px solid #cbd5e1; }
+.ec-filled:hover { border-color: #7c3aed; background: #f5f3ff; }
+.ec-selected { border: 2.5px solid #7c3aed !important; background: #ede9fe !important; }
+
+.ec-syl {
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; height: 100%;
+    font-size: 16px; font-weight: 700; color: #1e293b;
+    pointer-events: none;
+}
+.ec-num {
+    position: absolute; top: 1px; left: 2px;
+    font-size: 9px; line-height: 1;
+    color: #6d28d9; font-weight: 700;
+    pointer-events: none; user-select: none;
+}
+
+/* ── Side panel ────────────────────────────────────── */
+.edit-panel {
+    flex: 1; min-width: 260px; max-width: 340px;
+    display: flex; flex-direction: column; gap: 1rem;
+}
+@media (max-width: 767px) { .edit-panel { min-width: 0; width: 100%; max-width: none; } }
+
+.panel-card {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+.panel-title {
+    font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .08em;
+    color: #7c3aed; margin-bottom: 0.6rem;
+}
+.panel-hint { font-size: 0.82rem; color: var(--text-muted); }
+
+.dir-btn {
+    padding: 0.35rem 0.9rem;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 6px; background: #fff;
+    font-size: 0.85rem; font-weight: 600;
+    cursor: pointer; color: #374151;
+    transition: all 0.12s;
+}
+.dir-btn.active {
+    background: #7c3aed; border-color: #7c3aed; color: #fff;
+}
+
+.form-label-sm { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); margin-bottom: 2px; }
+.form-control-sm {
+    width: 100%; padding: 0.35rem 0.5rem;
+    border: 1.5px solid #e2e8f0; border-radius: 7px;
+    font-size: 0.88rem; background: var(--surface); color: var(--text);
+    outline: none;
+}
+.form-control-sm:focus { border-color: #7c3aed; }
+
+/* ── Word list ─────────────────────────────────────── */
+.word-item {
+    display: flex; align-items: flex-start; gap: 0.5rem;
+    padding: 0.4rem 0.3rem; border-radius: 7px;
+    margin-bottom: 2px;
+}
+.word-item:hover { background: #f5f3ff; }
+.word-badge {
+    font-size: 0.7rem; font-weight: 700; color: #6d28d9;
+    min-width: 22px; padding-top: 2px; flex-shrink: 0;
+}
+.word-text { font-size: 0.85rem; font-weight: 700; color: var(--text); }
+.word-dir  { font-size: 0.72rem; color: var(--text-muted); }
+.word-clue { font-size: 0.76rem; color: var(--text-muted); line-height: 1.3; }
+.del-btn {
+    margin-left: auto; flex-shrink: 0;
+    border: none; background: none; cursor: pointer;
+    color: #ef4444; font-size: 0.8rem; padding: 2px 4px;
+    border-radius: 4px;
+}
+.del-btn:hover { background: #fee2e2; }
+
+/* ── Error toast ───────────────────────────────────── */
+#error-toast {
+    position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+    background: #dc2626; color: #fff;
+    padding: 0.5rem 1.2rem; border-radius: 8px;
+    font-size: 0.85rem; font-weight: 600;
+    display: none; z-index: 9999; white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+#save-toast {
+    position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+    background: #16a34a; color: #fff;
+    padding: 0.5rem 1.2rem; border-radius: 8px;
+    font-size: 0.85rem; font-weight: 600;
+    display: none; z-index: 9999;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-3" style="max-width:1100px;">
+
+    <!-- Header -->
+    <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+            <a href="/admin/games/crosswordpuzzle/{{ puzzle.pk }}/change/"
+               class="text-decoration-none d-inline-flex align-items-center gap-1"
+               style="color:var(--text-muted); font-size:0.85rem;">
+                <i class="bi bi-arrow-left"></i> Admin
+            </a>
+            <h1 class="fs-5 fw-bold mb-0" style="color:var(--text);">
+                &#9998; {{ puzzle.title }}
+                <span style="font-size:0.78rem; color:var(--text-muted); font-weight:400; margin-left:4px;">
+                    {{ puzzle.grid_rows }}×{{ puzzle.grid_cols }}
+                </span>
+            </h1>
+        </div>
+        <button id="save-btn" class="btn fw-semibold px-4"
+                style="background:#7c3aed; border-color:#7c3aed; color:#fff;">
+            <i class="bi bi-floppy"></i> Save Puzzle
+        </button>
+    </div>
+
+    <div class="edit-wrap">
+
+        <!-- Grid -->
+        <div>
+            <div class="edit-grid-outer">
+                <table class="edit-grid" id="edit-grid">
+                    <tbody id="edit-tbody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Side panel -->
+        <div class="edit-panel">
+
+            <!-- Place word form -->
+            <div class="panel-card" id="place-panel">
+                <div class="panel-title">Place Word</div>
+                <p class="panel-hint mb-2" id="cell-hint">Click any cell to start placing a word.</p>
+
+                <div id="word-form" style="display:none;">
+                    <div class="mb-2">
+                        <div class="form-label-sm mb-1">Direction</div>
+                        <div class="d-flex gap-2">
+                            <button class="dir-btn active" id="dir-h" type="button">&#8594; Horizontal</button>
+                            <button class="dir-btn" id="dir-v" type="button">&#8595; Vertical</button>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label-sm">Word (Korean)</div>
+                        <input type="text" id="word-input" class="form-control-sm"
+                               placeholder="예: 원어민" autocomplete="off" autocorrect="off"
+                               autocapitalize="off" spellcheck="false">
+                    </div>
+                    <div class="mb-2">
+                        <div class="form-label-sm">Clue (Korean)</div>
+                        <textarea id="clue-ko" class="form-control-sm" rows="2"
+                                  placeholder="한국어로 힌트를 적으세요"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-label-sm">Clue (Uzbek)</div>
+                        <textarea id="clue-uz" class="form-control-sm" rows="2"
+                                  placeholder="O'zbekcha izoh yozing"></textarea>
+                    </div>
+                    <button id="place-btn" type="button" class="btn fw-semibold w-100"
+                            style="background:#7c3aed; border-color:#7c3aed; color:#fff;">
+                        Place Word
+                    </button>
+                </div>
+
+                <!-- Existing word info (shown when clicking a filled cell) -->
+                <div id="existing-info" style="display:none;">
+                    <div id="existing-words-list"></div>
+                    <button id="cancel-existing" type="button"
+                            class="btn btn-sm btn-outline-secondary mt-2 w-100">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+
+            <!-- Placed words list -->
+            <div class="panel-card">
+                <div class="panel-title">Placed Words (<span id="word-count">0</span>)</div>
+                <div id="word-list">
+                    <p class="panel-hint">No words placed yet.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Toasts -->
+<div id="error-toast"></div>
+<div id="save-toast">&#10003; Saved!</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function () {
+'use strict';
+
+const ROWS = {{ puzzle.grid_rows }};
+const COLS = {{ puzzle.grid_cols }};
+const PUZZLE_PK = {{ puzzle.pk }};
+const CSRF = '{{ csrf_token }}';
+
+// ── State ─────────────────────────────────────────────────────────────────────
+let words = [];        // [{word, direction, row, col, clue_korean, clue_uzbek, number, length}]
+let selR = null, selC = null;
+let selDir = 'across';
+
+// Load existing grid data
+{% if puzzle.grid_data and puzzle.grid_data.words %}
+words = {{ puzzle.grid_data.words|safe }};
+{% endif %}
+
+// ── Build grid table ──────────────────────────────────────────────────────────
+function buildTable() {
+    const tbody = document.getElementById('edit-tbody');
+    tbody.innerHTML = '';
+    for (let r = 0; r < ROWS; r++) {
+        const tr = document.createElement('tr');
+        for (let c = 0; c < COLS; c++) {
+            const td = document.createElement('td');
+            td.id = `td-${r}-${c}`;
+            td.addEventListener('click', () => onCellClick(r, c));
+            tr.appendChild(td);
+        }
+        tbody.appendChild(tr);
+    }
+}
+
+// ── Compute cells from words ──────────────────────────────────────────────────
+function computeCells() {
+    const cells = Array.from({length: ROWS}, () => Array(COLS).fill(null));
+    words.forEach(w => {
+        const syls = [...w.word];
+        syls.forEach((syl, i) => {
+            const r = w.direction === 'down' ? w.row + i : w.row;
+            const c = w.direction === 'across' ? w.col + i : w.col;
+            if (r < ROWS && c < COLS) cells[r][c] = syl;
+        });
+    });
+    return cells;
+}
+
+// ── Assign word numbers by reading order ─────────────────────────────────────
+function assignNumbers() {
+    const starts = {};
+    words.forEach(w => {
+        const k = w.row + ',' + w.col;
+        if (!starts[k]) starts[k] = [];
+        starts[k].push(w);
+    });
+    const keys = Object.keys(starts).sort((a, b) => {
+        const [ar, ac] = a.split(',').map(Number);
+        const [br, bc] = b.split(',').map(Number);
+        return ar !== br ? ar - br : ac - bc;
+    });
+    let num = 1;
+    const numMap = {};
+    keys.forEach(k => { numMap[k] = num++; });
+    words.forEach(w => { w.number = numMap[w.row + ',' + w.col]; });
+}
+
+// ── Render entire grid ────────────────────────────────────────────────────────
+function renderGrid() {
+    assignNumbers();
+    const cells = computeCells();
+
+    // Build a cell-to-words lookup for start-cell numbers
+    const startNums = {};
+    words.forEach(w => {
+        const k = w.row + ',' + w.col;
+        if (!startNums[k]) startNums[k] = w.number;
+    });
+
+    for (let r = 0; r < ROWS; r++) {
+        for (let c = 0; c < COLS; c++) {
+            const td = document.getElementById(`td-${r}-${c}`);
+            const syl = cells[r][c];
+
+            // Clear
+            td.className = '';
+            td.innerHTML = '';
+
+            const isSelected = (r === selR && c === selC);
+
+            if (syl !== null) {
+                td.classList.add('ec-filled');
+                if (isSelected) td.classList.add('ec-selected');
+
+                const numKey = r + ',' + c;
+                if (startNums[numKey] !== undefined) {
+                    const numSpan = document.createElement('span');
+                    numSpan.className = 'ec-num';
+                    numSpan.textContent = startNums[numKey];
+                    td.appendChild(numSpan);
+                }
+                const sylDiv = document.createElement('div');
+                sylDiv.className = 'ec-syl';
+                sylDiv.textContent = syl;
+                td.appendChild(sylDiv);
+            } else {
+                td.classList.add('ec-empty');
+                if (isSelected) td.classList.add('ec-selected');
+            }
+        }
+    }
+
+    renderWordList();
+}
+
+// ── Render word list panel ────────────────────────────────────────────────────
+function renderWordList() {
+    const container = document.getElementById('word-list');
+    const countEl   = document.getElementById('word-count');
+    countEl.textContent = words.length;
+
+    if (!words.length) {
+        container.innerHTML = '<p class="panel-hint">No words placed yet.</p>';
+        return;
+    }
+
+    const sorted = [...words].sort((a, b) => a.number - b.number);
+    container.innerHTML = '';
+    sorted.forEach(w => {
+        const idx = words.indexOf(w);
+        const div = document.createElement('div');
+        div.className = 'word-item';
+        const dirLabel = w.direction === 'across' ? '→' : '↓';
+        div.innerHTML = `
+            <span class="word-badge">${w.number}${dirLabel}</span>
+            <div style="flex:1; min-width:0;">
+                <div class="word-text">${w.word}</div>
+                <div class="word-dir">${w.direction === 'across' ? 'Horizontal' : 'Vertical'} (${w.row+1},${w.col+1})</div>
+                ${w.clue_korean ? `<div class="word-clue">${w.clue_korean}</div>` : ''}
+                ${w.clue_uzbek  ? `<div class="word-clue">${w.clue_uzbek}</div>` : ''}
+            </div>
+            <button class="del-btn" title="Delete word" data-idx="${idx}">&#10005;</button>
+        `;
+        div.querySelector('.del-btn').addEventListener('click', e => {
+            e.stopPropagation();
+            deleteWord(+e.currentTarget.dataset.idx);
+        });
+        container.appendChild(div);
+    });
+}
+
+// ── Cell click handler ────────────────────────────────────────────────────────
+function onCellClick(r, c) {
+    selR = r; selC = c;
+
+    // Check if any words pass through this cell
+    const wordsHere = words.filter(w => {
+        for (let i = 0; i < w.length; i++) {
+            const wr = w.direction === 'down' ? w.row + i : w.row;
+            const wc = w.direction === 'across' ? w.col + i : w.col;
+            if (wr === r && wc === c) return true;
+        }
+        return false;
+    });
+
+    if (wordsHere.length > 0) {
+        showExistingInfo(wordsHere);
+    } else {
+        showPlaceForm(r, c);
+    }
+    renderGrid();
+}
+
+function showPlaceForm(r, c) {
+    document.getElementById('cell-hint').textContent = `Start cell: row ${r+1}, col ${c+1}`;
+    document.getElementById('word-form').style.display = 'block';
+    document.getElementById('existing-info').style.display = 'none';
+    document.getElementById('word-input').value = '';
+    document.getElementById('clue-ko').value = '';
+    document.getElementById('clue-uz').value = '';
+    document.getElementById('word-input').focus();
+}
+
+function showExistingInfo(wordsHere) {
+    document.getElementById('word-form').style.display = 'none';
+    document.getElementById('existing-info').style.display = 'block';
+    document.getElementById('cell-hint').textContent = 'Words at this cell:';
+
+    const list = document.getElementById('existing-words-list');
+    list.innerHTML = '';
+    wordsHere.forEach(w => {
+        const div = document.createElement('div');
+        div.className = 'word-item';
+        const dirLabel = w.direction === 'across' ? '→' : '↓';
+        div.innerHTML = `
+            <span class="word-badge">${w.number}${dirLabel}</span>
+            <div style="flex:1;"><div class="word-text">${w.word}</div>
+            <div class="word-clue">${w.clue_korean || ''}${w.clue_uzbek ? ' / ' + w.clue_uzbek : ''}</div></div>
+            <button class="del-btn" title="Delete">&#10005;</button>
+        `;
+        const idx = words.indexOf(w);
+        div.querySelector('.del-btn').addEventListener('click', () => {
+            deleteWord(idx);
+            cancelSelection();
+        });
+        list.appendChild(div);
+    });
+}
+
+function cancelSelection() {
+    selR = null; selC = null;
+    document.getElementById('cell-hint').textContent = 'Click any cell to start placing a word.';
+    document.getElementById('word-form').style.display = 'none';
+    document.getElementById('existing-info').style.display = 'none';
+    renderGrid();
+}
+
+// ── Direction buttons ─────────────────────────────────────────────────────────
+document.getElementById('dir-h').addEventListener('click', () => {
+    selDir = 'across';
+    document.getElementById('dir-h').classList.add('active');
+    document.getElementById('dir-v').classList.remove('active');
+});
+document.getElementById('dir-v').addEventListener('click', () => {
+    selDir = 'down';
+    document.getElementById('dir-v').classList.add('active');
+    document.getElementById('dir-h').classList.remove('active');
+});
+document.getElementById('cancel-existing').addEventListener('click', cancelSelection);
+
+// ── Validate and place a word ─────────────────────────────────────────────────
+function validatePlacement(wordText, dir, r, c) {
+    const syls = [...wordText];   // split by Unicode code point (handles Korean correctly)
+    if (syls.length === 0) return 'Word cannot be empty.';
+
+    if (dir === 'across' && c + syls.length > COLS)
+        return `Word "${wordText}" is ${syls.length} syllables but only ${COLS - c} column(s) remain.`;
+    if (dir === 'down' && r + syls.length > ROWS)
+        return `Word "${wordText}" is ${syls.length} syllables but only ${ROWS - r} row(s) remain.`;
+
+    const cells = computeCells();
+
+    // Build cell→direction map
+    const cellDirs = {};
+    words.forEach(w => {
+        for (let i = 0; i < w.length; i++) {
+            const wr = w.direction === 'down' ? w.row + i : w.row;
+            const wc = w.direction === 'across' ? w.col + i : w.col;
+            const k = wr + '_' + wc;
+            if (!cellDirs[k]) cellDirs[k] = new Set();
+            cellDirs[k].add(w.direction);
+        }
+    });
+
+    for (let i = 0; i < syls.length; i++) {
+        const cr = dir === 'down' ? r + i : r;
+        const cc = dir === 'across' ? c + i : c;
+        const existing = cells[cr][cc];
+
+        if (existing !== null) {
+            // Same-direction word already here
+            const dirsHere = cellDirs[cr + '_' + cc] || new Set();
+            if (dirsHere.has(dir)) {
+                return `Cell (${cr+1},${cc+1}) already has a ${dir === 'across' ? 'horizontal' : 'vertical'} word.`;
+            }
+            // Syllable mismatch at intersection
+            if (existing !== syls[i]) {
+                return `Syllable mismatch at cell (${cr+1},${cc+1}): you wrote "${syls[i]}" but "${existing}" is already there.`;
+            }
+        }
+    }
+    return null;
+}
+
+document.getElementById('place-btn').addEventListener('click', placeWord);
+document.getElementById('word-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); placeWord(); }
+});
+
+function placeWord() {
+    if (selR === null) return showError('Click a cell first.');
+
+    const wordText = document.getElementById('word-input').value.trim();
+    const clueKo   = document.getElementById('clue-ko').value.trim();
+    const clueUz   = document.getElementById('clue-uz').value.trim();
+
+    if (!wordText) return showError('Enter a word.');
+
+    const err = validatePlacement(wordText, selDir, selR, selC);
+    if (err) return showError(err);
+
+    const syls = [...wordText];
+    words.push({
+        word:        wordText,
+        direction:   selDir,
+        row:         selR,
+        col:         selC,
+        length:      syls.length,
+        clue_korean: clueKo,
+        clue_uzbek:  clueUz,
+        number:      0,  // reassigned in assignNumbers
+    });
+
+    selR = null; selC = null;
+    document.getElementById('cell-hint').textContent = 'Click any cell to start placing a word.';
+    document.getElementById('word-form').style.display = 'none';
+    renderGrid();
+}
+
+// ── Delete a word ─────────────────────────────────────────────────────────────
+function deleteWord(idx) {
+    words.splice(idx, 1);
+    renderGrid();
+}
+
+// ── Save ──────────────────────────────────────────────────────────────────────
+document.getElementById('save-btn').addEventListener('click', saveGrid);
+
+function saveGrid() {
+    assignNumbers();
+    const cells = computeCells();
+
+    const payload = {
+        rows:  ROWS,
+        cols:  COLS,
+        cells: cells,
+        words: words.map(w => ({
+            number:      w.number,
+            word:        w.word,
+            direction:   w.direction,
+            row:         w.row,
+            col:         w.col,
+            length:      w.length,
+            clue_korean: w.clue_korean,
+            clue_uzbek:  w.clue_uzbek,
+        })),
+    };
+
+    document.getElementById('save-btn').textContent = 'Saving…';
+    document.getElementById('save-btn').disabled = true;
+
+    fetch(`/games/crossword/${PUZZLE_PK}/edit/`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-CSRFToken': CSRF },
+        body: JSON.stringify(payload),
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.ok) {
+            const t = document.getElementById('save-toast');
+            t.textContent = `✓ Saved! ${data.word_count} word(s) placed.`;
+            t.style.display = 'block';
+            setTimeout(() => { t.style.display = 'none'; }, 2500);
+        } else {
+            showError('Save failed: ' + (data.error || 'unknown error'));
+        }
+    })
+    .catch(() => showError('Network error — try again.'))
+    .finally(() => {
+        document.getElementById('save-btn').innerHTML = '<i class="bi bi-floppy"></i> Save Puzzle';
+        document.getElementById('save-btn').disabled = false;
+    });
+}
+
+// ── Error toast ───────────────────────────────────────────────────────────────
+function showError(msg) {
+    const t = document.getElementById('error-toast');
+    t.textContent = msg;
+    t.style.display = 'block';
+    clearTimeout(t._timer);
+    t._timer = setTimeout(() => { t.style.display = 'none'; }, 3500);
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+buildTable();
+renderGrid();
+
+})();
+</script>
+{% endblock %}
