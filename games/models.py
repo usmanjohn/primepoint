@@ -15,6 +15,7 @@ class KoreanWord(models.Model):
 
 class CrosswordPuzzle(models.Model):
     title        = models.CharField(max_length=100)
+    cover_image  = models.ImageField(upload_to='crossword/', null=True, blank=True)
     words        = models.ManyToManyField(KoreanWord, blank=True)
     grid_data    = models.JSONField(null=True, blank=True)
     is_published = models.BooleanField(default=False)
