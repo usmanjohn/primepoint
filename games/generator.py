@@ -8,6 +8,7 @@ and the two words must be perpendicular (one across, one down).
 import random
 
 DEFAULT_GRID_SIZE = 15
+MIN_INTERNAL_SIZE = 42   # internal canvas is always at least this large
 
 
 # ── Grid helpers ──────────────────────────────────────────────────────────────
@@ -36,16 +37,13 @@ def _valid(syl, dirs, syllables, row, col, direction, rows, cols):
     end_r = row + dr * (length - 1)
     end_c = col + dc * (length - 1)
 
-    # Bounds check
     if end_r >= rows or end_c >= cols:
         return False
 
-    # Cell immediately before the start must be empty
     br, bc = row - dr, col - dc
     if 0 <= br < rows and 0 <= bc < cols and syl[br][bc] is not None:
         return False
 
-    # Cell immediately after the end must be empty
     ar, ac = end_r + dr, end_c + dc
     if 0 <= ar < rows and 0 <= ac < cols and syl[ar][ac] is not None:
         return False
@@ -59,13 +57,11 @@ def _valid(syl, dirs, syllables, row, col, direction, rows, cols):
 
         if cell_syl is not None:
             if cell_syl != syllable:
-                return False  # Syllable conflict
+                return False
             if direction in cell_dirs:
-                return False  # Same-direction word already here — would merge
-            # Perpendicular intersection — valid
+                return False
             has_intersection = True
         else:
-            # Empty cell: no parallel neighbour allowed
             if direction == 'across':
                 if r > 0 and syl[r - 1][c] is not None:
                     return False
@@ -97,14 +93,12 @@ def _candidates(syl, dirs, word, rows, cols):
                     continue
                 cell_dirs = dirs[r][c]
 
-                # Try across — only if cell is NOT already part of an across word
                 if 'across' not in cell_dirs:
                     start_c = c - idx
                     if start_c >= 0 and start_c + length <= cols:
                         if _valid(syl, dirs, syllables, r, start_c, 'across', rows, cols):
                             results.add((r, start_c, 'across'))
 
-                # Try down — only if cell is NOT already part of a down word
                 if 'down' not in cell_dirs:
                     start_r = r - idx
                     if start_r >= 0 and start_r + length <= rows:
@@ -112,6 +106,14 @@ def _candidates(syl, dirs, word, rows, cols):
                             results.add((start_r, c, 'down'))
 
     return list(results)
+
+
+# ── Candidate scoring ─────────────────────────────────────────────────────────
+
+def _score_candidate(syllables, remaining_words):
+    """Count how many unplaced words share a syllable with this placement."""
+    placement_syls = set(syllables)
+    return sum(1 for wo in remaining_words if set(wo.word) & placement_syls)
 
 
 # ── Grid cropping ─────────────────────────────────────────────────────────────
@@ -136,74 +138,96 @@ def _crop(syl, rows, cols):
     return cropped, min_r, min_c
 
 
+# ── Single attempt ────────────────────────────────────────────────────────────
+
+def _single_attempt(first, rest, size):
+    rows = cols = size
+    syl  = _empty_syl(rows, cols)
+    dirs = _empty_dir(rows, cols)
+    placed = []
+    placed_pks = set()
+
+    r0 = rows // 2
+    c0 = (cols - len(first.word)) // 2
+    _place_word(syl, dirs, first.word, r0, c0, 'across')
+    placed.append((first, r0, c0, 'across'))
+    placed_pks.add(first.pk)
+
+    for wo in rest:
+        if wo.pk in placed_pks:
+            continue
+        cands = _candidates(syl, dirs, wo.word, rows, cols)
+        if not cands:
+            continue
+
+        remaining = [w for w in rest if w.pk not in placed_pks and w.pk != wo.pk]
+        syllables  = list(wo.word)
+
+        if len(cands) > 1:
+            scored = [(
+                _score_candidate(syllables, remaining),
+                random.random(),   # tiebreak
+                r, c, d
+            ) for r, c, d in cands]
+            scored.sort(key=lambda x: (-x[0], x[1]))
+            r, c, direction = scored[0][2], scored[0][3], scored[0][4]
+        else:
+            r, c, direction = cands[0]
+
+        _place_word(syl, dirs, wo.word, r, c, direction)
+        placed.append((wo, r, c, direction))
+        placed_pks.add(wo.pk)
+
+    return placed, syl
+
+
 # ── Main entry point ──────────────────────────────────────────────────────────
 
-def generate_crossword(word_objects, grid_size=None, max_attempts=50):
+def generate_crossword(word_objects, grid_size=None, max_attempts=300):
     """
     Generate a crossword from a queryset/list of KoreanWord objects.
-    grid_size controls the working canvas (cropped afterwards).
     Returns a dict with keys: rows, cols, cells, words — or None on failure.
     """
     words = list(word_objects)
     if not words:
         return None
 
-    size = max(10, min(grid_size or DEFAULT_GRID_SIZE, 25))
+    requested = max(10, min(grid_size or DEFAULT_GRID_SIZE, 25))
+    # Use a much larger internal canvas so word placement is rarely blocked by bounds
+    size = max(requested * 3, MIN_INTERNAL_SIZE)
 
-    # Score each word by how many others share at least one syllable
     def connectivity(wo):
         syls = set(wo.word)
         return sum(1 for other in words if other.pk != wo.pk and syls & set(other.word))
 
     scored = sorted(words, key=connectivity, reverse=True)
-    n_first = min(len(scored), 10)  # try top-10 most connected words as first word
+    n = len(scored)
 
     best_placed = []
-    best_grid = None
+    best_grid   = None
 
     for attempt in range(max_attempts):
-        first = scored[attempt % n_first]
+        first = scored[attempt % n]
         rest  = [w for w in scored if w.pk != first.pk]
+        random.shuffle(rest)
 
-        # Shuffle the bottom half for variety; keep top half in order
-        split = len(rest) // 2
-        bottom = rest[split:]
-        random.shuffle(bottom)
-        rest = rest[:split] + bottom
-
-        rows = cols = size
-        syl  = _empty_syl(rows, cols)
-        dirs = _empty_dir(rows, cols)
-        placed = []
-
-        # First word: horizontally centred
-        r0 = rows // 2
-        c0 = (cols - len(first.word)) // 2
-        _place_word(syl, dirs, first.word, r0, c0, 'across')
-        placed.append((first, r0, c0, 'across'))
-
-        for wo in rest:
-            cands = _candidates(syl, dirs, wo.word, rows, cols)
-            if not cands:
-                continue
-            random.shuffle(cands)
-            r, c, direction = cands[0]
-            _place_word(syl, dirs, wo.word, r, c, direction)
-            placed.append((wo, r, c, direction))
+        placed, syl = _single_attempt(first, rest, size)
 
         if len(placed) > len(best_placed):
             best_placed = placed
-            best_grid   = syl
+            best_grid   = [row[:] for row in syl]
+
+        # Early exit if we placed everything
+        if len(best_placed) == n:
+            break
 
     if not best_placed:
         return None
 
-    # Crop to tight bounds
     cropped, row_off, col_off = _crop(best_grid, size, size)
     final_rows = len(cropped)
     final_cols = len(cropped[0]) if cropped else 0
 
-    # Adjust word positions for crop offset and build number map
     adjusted = [(wo, r - row_off, c - col_off, d) for wo, r, c, d in best_placed]
 
     across = sorted([(wo, r, c, d) for wo, r, c, d in adjusted if d == 'across'], key=lambda x: (x[1], x[2]))

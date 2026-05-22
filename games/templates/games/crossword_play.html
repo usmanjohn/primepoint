@@ -34,9 +34,8 @@
     border: none;
     position: relative;
 }
-@media (max-width: 400px) {
-    .cw-grid td { width: 32px; height: 32px; }
-}
+@media (max-width: 600px) { .cw-grid td { width: 34px; height: 34px; } }
+@media (max-width: 400px) { .cw-grid td { width: 28px; height: 28px; } }
 .cw-black { background: #1e293b; }
 .cw-cell  { background: #fff; border: 1.5px solid #cbd5e1; }
 .cw-cell.hl       { background: #ede9fe; border-color: #7c3aed; }
@@ -59,35 +58,20 @@
     width: 100%; height: 100%;
     border: none; background: transparent;
     text-align: center;
-    font-size: 1rem; font-weight: 700; color: #1e293b;
+    font-size: 16px; font-weight: 700; color: #1e293b;
     outline: none; cursor: pointer;
     caret-color: transparent;
     padding: 0;
     display: block;
     -webkit-appearance: none;
+    touch-action: manipulation;
 }
-@media (max-width: 400px) { .cw-input { font-size: 0.82rem; } }
 .cw-static {
     display: flex; align-items: center; justify-content: center;
     width: 100%; height: 100%;
-    font-size: 1rem; font-weight: 700; color: #1e293b;
+    font-size: 16px; font-weight: 700; color: #1e293b;
 }
-@media (max-width: 400px) { .cw-static { font-size: 0.82rem; } }
-
-/* ── Active word banner (mobile) ──────────────────── */
-#active-banner {
-    display: none;
-    gap: 0.5rem;
-    background: #ede9fe;
-    border-radius: 10px;
-    padding: 0.6rem 0.9rem;
-    margin-bottom: 0.75rem;
-    align-items: flex-start;
-}
-@media (max-width: 767px) { #active-banner { display: flex; } }
-#banner-num { font-size: 0.75rem; font-weight: 700; color: #6d28d9; min-width:18px; padding-top:2px; }
-#banner-ko  { font-size: 0.88rem; font-weight: 600; color: #1e293b; }
-#banner-uz  { font-size: 0.78rem; color: #64748b; }
+.cw-cell { touch-action: manipulation; }
 
 /* ── Clues panel ──────────────────────────────────── */
 .cw-clues { flex: 1; min-width: 0; }
@@ -154,15 +138,6 @@
     {% if not grid_rows %}
     <div class="alert alert-warning rounded-3">{% trans "This puzzle has no grid yet. Ask an admin to generate it." %}</div>
     {% else %}
-
-    <!-- Active word banner (mobile) -->
-    <div id="active-banner">
-        <span id="banner-num"></span>
-        <div>
-            <div id="banner-ko"></div>
-            <div id="banner-uz"></div>
-        </div>
-    </div>
 
     <div class="cw-wrap">
 
@@ -313,14 +288,6 @@ function highlight(word, focusR, focusC) {
     if (clue) {
         clue.classList.add('hl-clue');
         clue.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-
-    // Mobile banner
-    const banner = document.getElementById('active-banner');
-    if (banner) {
-        document.getElementById('banner-num').textContent = word.number;
-        document.getElementById('banner-ko').textContent  = word.clue_korean;
-        document.getElementById('banner-uz').textContent  = word.clue_uzbek;
     }
 }
 
