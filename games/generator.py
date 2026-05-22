@@ -7,7 +7,7 @@ and the two words must be perpendicular (one across, one down).
 """
 import random
 
-GRID_SIZE = 21
+DEFAULT_GRID_SIZE = 15
 
 
 # ── Grid helpers ──────────────────────────────────────────────────────────────
@@ -138,14 +138,17 @@ def _crop(syl, rows, cols):
 
 # ── Main entry point ──────────────────────────────────────────────────────────
 
-def generate_crossword(word_objects, max_attempts=50):
+def generate_crossword(word_objects, grid_size=None, max_attempts=50):
     """
     Generate a crossword from a queryset/list of KoreanWord objects.
+    grid_size controls the working canvas (cropped afterwards).
     Returns a dict with keys: rows, cols, cells, words — or None on failure.
     """
     words = list(word_objects)
     if not words:
         return None
+
+    size = max(10, min(grid_size or DEFAULT_GRID_SIZE, 25))
 
     # Score each word by how many others share at least one syllable
     def connectivity(wo):
@@ -168,7 +171,7 @@ def generate_crossword(word_objects, max_attempts=50):
         random.shuffle(bottom)
         rest = rest[:split] + bottom
 
-        rows = cols = GRID_SIZE
+        rows = cols = size
         syl  = _empty_syl(rows, cols)
         dirs = _empty_dir(rows, cols)
         placed = []
@@ -196,7 +199,7 @@ def generate_crossword(word_objects, max_attempts=50):
         return None
 
     # Crop to tight bounds
-    cropped, row_off, col_off = _crop(best_grid, GRID_SIZE, GRID_SIZE)
+    cropped, row_off, col_off = _crop(best_grid, size, size)
     final_rows = len(cropped)
     final_cols = len(cropped[0]) if cropped else 0
 

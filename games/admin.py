@@ -18,7 +18,7 @@ def action_generate_grid(modeladmin, request, queryset):
         if words.count() < 3:
             messages.warning(request, f'"{puzzle.title}": add at least 3 words first.')
             continue
-        result = generate_crossword(words)
+        result = generate_crossword(words, grid_size=puzzle.grid_size)
         if result is None:
             messages.error(request, f'"{puzzle.title}": generation failed — add more words with shared syllables.')
             continue
@@ -36,7 +36,7 @@ class CrosswordPuzzleAdmin(admin.ModelAdmin):
     filter_horizontal = ('words',)
     actions           = [action_generate_grid]
     readonly_fields   = ('grid_status_detail', 'generate_button')
-    fields            = ('title', 'cover_image', 'is_published', 'words',
+    fields            = ('title', 'cover_image', 'grid_size', 'is_published', 'words',
                          'generate_button', 'grid_status_detail')
 
     # ── Custom URLs ──────────────────────────────────────────────────
@@ -55,7 +55,7 @@ class CrosswordPuzzleAdmin(admin.ModelAdmin):
         if words.count() < 3:
             self.message_user(request, 'Add at least 3 words before generating.', messages.WARNING)
         else:
-            result = generate_crossword(words)
+            result = generate_crossword(words, grid_size=puzzle.grid_size)
             if result:
                 puzzle.grid_data = result
                 puzzle.save()

@@ -13,9 +13,14 @@ class KoreanWord(models.Model):
         ordering = ['word']
 
 
+GRID_SIZE_CHOICES = [(s, f'{s} × {s}') for s in (10, 12, 13, 15, 17, 20)]
+
+
 class CrosswordPuzzle(models.Model):
     title        = models.CharField(max_length=100)
     cover_image  = models.ImageField(upload_to='crossword/', null=True, blank=True)
+    grid_size    = models.IntegerField(default=15, choices=GRID_SIZE_CHOICES,
+                                       help_text='Working grid size — larger allows more words but creates a bigger puzzle.')
     words        = models.ManyToManyField(KoreanWord, blank=True)
     grid_data    = models.JSONField(null=True, blank=True)
     is_published = models.BooleanField(default=False)
