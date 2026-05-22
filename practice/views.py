@@ -43,7 +43,7 @@ def practice_list(request):
         'subject', 'master__profile__user'
     ).annotate(
         question_count=Count('questions', distinct=True)
-    )
+    ).order_by('-created_at')
 
     subject_id = request.GET.get('subject')
     if subject_id:
