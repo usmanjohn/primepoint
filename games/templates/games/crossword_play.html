@@ -170,7 +170,7 @@
                                        autocorrect="off"
                                        autocapitalize="off"
                                        spellcheck="false"
-                                       maxlength="2"
+                                       maxlength="6"
                                        name="cell_{{ cell.r }}_{{ cell.c }}"
                                        value="{{ cell.answer }}"
                                        data-r="{{ cell.r }}"
@@ -347,22 +347,31 @@ function onInput(e) {
     const r = +target.dataset.r, c = +target.dataset.c;
     const raw = target.value;
 
-    // Find last Korean syllable (handles IME where partial jamo come first)
+    // Find last fully-composed Korean syllable (U+AC00–U+D7A3).
+    // Partial jamo in the composition buffer are ignored by isKorean().
     let syl = '';
     for (let i = raw.length - 1; i >= 0; i--) {
         if (isKorean(raw[i])) { syl = raw[i]; break; }
     }
 
+    clearTimeout(target._advTimer);
     if (syl) {
         target.value = syl;
-        // Auto-advance to next cell in word
-        if (activeWord) {
+        // Debounce the advance so the user has time to add 받침 before we move.
+        // On mobile keyboards that skip composition events the IME fires 'input'
+        // with just onset+vowel (e.g. "하"); the 받침 arrives in the NEXT event.
+        // 300 ms is enough for a deliberate tap while feeling instant to the user.
+        target._advTimer = setTimeout(() => {
+            // Guard: skip if focus already moved (compositionend beat us here)
+            // or if the word context changed.
+            if (document.activeElement !== target) return;
+            if (!activeWord || !inWord(activeWord, r, c)) return;
             const { r: nr, c: nc } = nextPos(activeWord, r, c);
             if (inWord(activeWord, nr, nc)) {
                 const ni = inp(nr, nc);
-                if (ni) { ni.focus(); }
+                if (ni) ni.focus();
             }
-        }
+        }, 300);
     } else {
         target.value = '';
     }
@@ -428,6 +437,7 @@ document.querySelectorAll('.cw-input').forEach(el => {
         // el.value already holds the fully composed character.
         setTimeout(() => {
             composing = false;
+            clearTimeout(el._advTimer);   // cancel any debounce from onInput
             let syl = '';
             const raw = el.value;
             for (let i = raw.length - 1; i >= 0; i--) {
