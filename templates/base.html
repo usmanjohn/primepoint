@@ -125,6 +125,11 @@
                 {% if nav_classrooms_count %}<span class="nav-badge">{{ nav_classrooms_count }}</span>{% endif %}
             </a>
 
+            <a href="{% url 'games_home' %}" class="nav-link {% block nav_games %}{% endblock %}">
+                <i class="bi bi-controller"></i>
+                <span class="nav-label">{% trans "Games" %}</span>
+            </a>
+
             <span class="nav-section">{% trans "Support" %}</span>
 
             <a href="{% url 'about' %}" class="nav-link {% block nav_about %}{% endblock %}">

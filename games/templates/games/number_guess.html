@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Number Guess" %} — Powerty{% endblock %}
+{% block page_name %}{% trans "Number Guess" %}{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4" style="max-width:520px;">
+
+    <a href="{% url 'games_home' %}" class="text-secondary text-decoration-none d-inline-flex align-items-center gap-1 mb-3" style="font-size:0.85rem;">
+        <i class="bi bi-arrow-left"></i> {% trans "Games" %}
+    </a>
+
+    <h1 class="fs-4 fw-bold mb-1">&#x1F522; {% trans "Number Guess" %}</h1>
+    <p class="text-secondary mb-4" style="font-size:0.88rem;">
+        {% trans "Guess the secret number the system has chosen." %}
+    </p>
+
+    {% if not started %}
+    <!-- New Game Form -->
+    <div class="card p-4" style="background:var(--chrome-2); border:1px solid var(--chrome-3);">
+        <h2 class="fs-5 fw-semibold mb-3">{% trans "Start a New Game" %}</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="new">
+            <div class="mb-3">
+                <label for="max_num" class="form-label fw-medium">{% trans "Maximum number" %}</label>
+                <input type="number" id="max_num" name="max_num" value="1000" min="10" max="10000"
+                       class="form-control" style="background:var(--chrome-1); border-color:var(--chrome-3); color:var(--chrome-text-act);">
+                <div class="form-text">{% trans "The system will pick a number between 1 and this value." %}</div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">{% trans "Start Game" %}</button>
+        </form>
+    </div>
+
+    {% elif won %}
+    <!-- Won -->
+    <div class="card p-4 text-center mb-3" style="background:var(--chrome-2); border:1px solid var(--chrome-3);">
+        <div style="font-size:3rem;">&#x1F389;</div>
+        <h2 class="fs-5 fw-bold mt-2 mb-1" style="color:#4ade80;">{% trans "You got it!" %}</h2>
+        <p class="text-secondary mb-1">
+            {% blocktrans with num=target %}The secret number was <strong>{{ num }}</strong>.{% endblocktrans %}
+        </p>
+        <p class="text-secondary mb-3">
+            {% blocktrans with n=attempts %}You found it in <strong>{{ n }}</strong> attempt(s).{% endblocktrans %}
+        </p>
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="new">
+            <input type="hidden" name="max_num" value="{{ max_num }}">
+            <button type="submit" class="btn btn-primary">{% trans "Play Again" %}</button>
+        </form>
+    </div>
+
+    {% else %}
+    <!-- Active Game -->
+
+    <!-- Status bar -->
+    <div class="d-flex align-items-center gap-3 mb-3 p-3 rounded-3" style="background:var(--chrome-2); border:1px solid var(--chrome-3);">
+        <div class="text-center">
+            <div class="fw-bold fs-5" style="color:var(--chrome-text-act);">{{ attempts }}</div>
+            <div class="text-secondary" style="font-size:0.75rem;">{% trans "Attempts" %}</div>
+        </div>
+        <div class="vr" style="opacity:0.2;"></div>
+        <div class="text-center">
+            <div class="fw-bold fs-5" style="color:var(--chrome-text-act);">1 – {{ max_num }}</div>
+            <div class="text-secondary" style="font-size:0.75rem;">{% trans "Range" %}</div>
+        </div>
+    </div>
+
+    <!-- Feedback -->
+    {% if result == 'low' %}
+    <div class="alert d-flex align-items-center gap-2 mb-3 rounded-3" style="background:#1e3a2f; border:1px solid #4ade80; color:#4ade80;">
+        <i class="bi bi-arrow-up-circle-fill fs-5"></i>
+        <span>{% blocktrans with n=last_guess %}{{ n }} is too low — go higher!{% endblocktrans %}</span>
+    </div>
+    {% elif result == 'high' %}
+    <div class="alert d-flex align-items-center gap-2 mb-3 rounded-3" style="background:#3a1e1e; border:1px solid #f87171; color:#f87171;">
+        <i class="bi bi-arrow-down-circle-fill fs-5"></i>
+        <span>{% blocktrans with n=last_guess %}{{ n }} is too high — go lower!{% endblocktrans %}</span>
+    </div>
+    {% elif result == 'invalid' %}
+    <div class="alert alert-warning mb-3 rounded-3">{% trans "Please enter a valid number." %}</div>
+    {% elif result == 'out_of_range' %}
+    <div class="alert alert-warning mb-3 rounded-3">
+        {% blocktrans with max=max_num %}Enter a number between 1 and {{ max }}.{% endblocktrans %}
+    </div>
+    {% endif %}
+
+    <!-- Guess Form -->
+    <div class="card p-4 mb-3" style="background:var(--chrome-2); border:1px solid var(--chrome-3);">
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="guess">
+            <label for="guess" class="form-label fw-medium">{% trans "Your guess" %}</label>
+            <div class="input-group">
+                <input type="number" id="guess" name="guess" min="1" max="{{ max_num }}"
+                       class="form-control form-control-lg"
+                       style="background:var(--chrome-1); border-color:var(--chrome-3); color:var(--chrome-text-act);"
+                       placeholder="1 – {{ max_num }}" autofocus required>
+                <button type="submit" class="btn btn-primary px-4">{% trans "Guess" %}</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Give up / New Game -->
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="new">
+        <input type="hidden" name="max_num" value="{{ max_num }}">
+        <button type="submit" class="btn btn-outline-secondary w-100">{% trans "Give up & start new game" %}</button>
+    </form>
+    {% endif %}
+
+</div>
+{% endblock %}
