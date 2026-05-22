@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Prime Point\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-22 10:03+0000\n"
+"POT-Creation-Date: 2026-05-22 10:36+0000\n"
 "PO-Revision-Date: 2026-04-29 15:20+0000\n"
 "Last-Translator: Prime Point\n"
 "Language-Team: Uzbek\n"
@@ -703,6 +703,14 @@ msgstr "Hali nashr etilgan mashqlar yo'q."
 msgid "Save Lesson"
 msgstr "Dars"
 
+#: games/templates/games/crossword_list.html:4
+#: games/templates/games/crossword_list.html:5
+#: games/templates/games/crossword_list.html:16
+#: games/templates/games/games_home.html:42
+msgid "Korean Crossword"
+msgstr "Koreys krossvord"
+
+#: games/templates/games/crossword_list.html:12
 #: games/templates/games/games_home.html:4
 #: games/templates/games/games_home.html:5
 #: games/templates/games/games_home.html:12
@@ -710,25 +718,90 @@ msgstr "Dars"
 msgid "Games"
 msgstr "O'yinlar"
 
+#: games/templates/games/crossword_list.html:17
+msgid "Read the clue and fill in the Korean syllable blocks."
+msgstr "Izohni o'qing va koreys bo'g'inlarini to'ldiring."
+
+#: games/templates/games/crossword_list.html:33
+msgid "words"
+msgstr "so'z"
+
+#: games/templates/games/crossword_list.html:36
+#: games/templates/games/games_home.html:48
+msgid "Korean"
+msgstr "Koreys"
+
+#: games/templates/games/crossword_list.html:46
+msgid "No puzzles published yet. Check back soon!"
+msgstr "Hali nashr etilgan krossvordlar yo'q. Tez orada tekshiring!"
+
+#: games/templates/games/crossword_play.html:121
+msgid "Crossword"
+msgstr "Krossvord"
+
+#: games/templates/games/crossword_play.html:132
+#: practice/templates/practice/practice_detail.html:76
+msgid "Try Again"
+msgstr "Yana urinib ko'rish"
+
+#: games/templates/games/crossword_play.html:142
+msgid "Excellent! All correct!"
+msgstr "Ajoyib! Hammasi to'g'ri!"
+
+#: games/templates/games/crossword_play.html:148
+#: games/templates/games/number_guess.html:61
+msgid "Play Again"
+msgstr "Qayta o'ynash"
+
+#: games/templates/games/crossword_play.html:155
+msgid "This puzzle has no grid yet. Ask an admin to generate it."
+msgstr "Bu krossvord hali yaratilmagan. Admin bilan bog'laning."
+
+#: games/templates/games/crossword_play.html:175
+msgid "Crossword grid"
+msgstr "Krossvord to'ri"
+
+#: games/templates/games/crossword_play.html:203
+msgid "Cell"
+msgstr "Katak"
+
+#: games/templates/games/crossword_play.html:217
+msgid "Check Answers"
+msgstr "Javoblarni tekshirish"
+
+#: games/templates/games/crossword_play.html:228
+msgid "Across"
+msgstr "Gorizontal"
+
+#: games/templates/games/crossword_play.html:246
+msgid "Down"
+msgstr "Vertikal"
+
 #: games/templates/games/games_home.html:13
 msgid "Play educational mini-games to sharpen your skills."
 msgstr "Ko'nikmalaringizni oshirish uchun ta'limiy mini-o'yinlar o'ynang."
 
-#: games/templates/games/games_home.html:22
+#: games/templates/games/games_home.html:24
 #: games/templates/games/number_guess.html:4
 #: games/templates/games/number_guess.html:5
 #: games/templates/games/number_guess.html:16
 msgid "Number Guess"
 msgstr "Sonni top"
 
-#: games/templates/games/games_home.html:24
+#: games/templates/games/games_home.html:28
 msgid ""
 "The system picks a secret number. Guess it with as few tries as possible!"
 msgstr "Tizim yashirin son tanlaydi. Uni imkon qadar kam urinishda toping!"
 
-#: games/templates/games/games_home.html:26
+#: games/templates/games/games_home.html:30
 msgid "Math"
 msgstr "Matematika"
+
+#: games/templates/games/games_home.html:46
+msgid ""
+"Read the clue and fill in the Korean syllable blocks. Both Uzbek and Korean "
+"clues included!"
+msgstr "Izohni o'qing va koreys bo'g'inlarini to'ldiring. O'zbek va koreys izohlar bor!"
 
 #: games/templates/games/number_guess.html:17
 msgid "Guess the secret number the system has chosen."
@@ -763,10 +836,6 @@ msgstr "Yashirin son <strong>%(num)s</strong> edi."
 #, python-format
 msgid "You found it in <strong>%(n)s</strong> attempt(s)."
 msgstr "Siz uni <strong>%(n)s</strong> ta urinishda topdingiz."
-
-#: games/templates/games/number_guess.html:61
-msgid "Play Again"
-msgstr "Qayta o'ynash"
 
 #: games/templates/games/number_guess.html:74
 #: people/templates/people/profile.html:294
@@ -1575,10 +1644,6 @@ msgstr "So'nggi natijangiz"
 #: practice/templates/practice/practice_detail.html:70
 msgid "View Detailed Result"
 msgstr "Batafsil natijani ko'rish"
-
-#: practice/templates/practice/practice_detail.html:76
-msgid "Try Again"
-msgstr "Yana urinib ko'rish"
 
 #: practice/templates/practice/practice_detail.html:76
 msgid "Start Practice"

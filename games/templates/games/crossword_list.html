@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Korean Crossword" %} — Powerty{% endblock %}
+{% block page_name %}{% trans "Korean Crossword" %}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4">
+
+    <a href="{% url 'games_home' %}" class="text-decoration-none d-inline-flex align-items-center gap-1 mb-3" style="color:var(--text-muted); font-size:0.85rem;">
+        <i class="bi bi-arrow-left"></i> {% trans "Games" %}
+    </a>
+
+    <div class="mb-4">
+        <h1 class="fs-4 fw-bold mb-1" style="color:var(--text);">&#x1F9E9; {% trans "Korean Crossword" %}</h1>
+        <p style="color:var(--text-muted); font-size:0.88rem; margin:0;">{% trans "Read the clue and fill in the Korean syllable blocks." %}</p>
+    </div>
+
+    {% if puzzles %}
+    <div class="row g-3">
+        {% for puzzle in puzzles %}
+        <div class="col-12 col-sm-6 col-lg-4">
+            <a href="{% url 'crossword_play' puzzle.pk %}" class="text-decoration-none d-block h-100">
+                <div class="card border-0 shadow-sm h-100" style="border-radius:14px; overflow:hidden;">
+                    <div style="background:linear-gradient(135deg,#7c3aed 0%,#4f46e5 100%); padding:1.25rem 1.5rem;">
+                        <div style="font-size:2rem; line-height:1; margin-bottom:0.5rem;">&#x1F9E9;</div>
+                        <h2 class="fs-5 fw-bold mb-0" style="color:#fff;">{{ puzzle.title }}</h2>
+                    </div>
+                    <div class="card-body p-3" style="background:var(--surface);">
+                        {% if puzzle.grid_data %}
+                        <span class="badge" style="background:#ede9fe; color:#6d28d9; font-size:0.78rem;">
+                            {{ puzzle.grid_data.words|length }} {% trans "words" %}
+                        </span>
+                        {% endif %}
+                        <span class="badge ms-1" style="background:#e0f2fe; color:#0369a1; font-size:0.78rem;">{% trans "Korean" %}</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-5" style="color:var(--text-muted);">
+        <div style="font-size:3rem;">&#x1F9E9;</div>
+        <p class="mt-2">{% trans "No puzzles published yet. Check back soon!" %}</p>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}
