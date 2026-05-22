@@ -198,7 +198,7 @@
                     <span>{% trans "Change Password" %}</span>
                     <i class="bi bi-chevron-right ms-auto"></i>
                 </a>
-                {% if people.is_admin %}
+                {% if people.is_admin or viewed_user.is_staff %}
                 <a href="/admin/" class="profile-action-link">
                     <i class="bi bi-gear-wide-connected"></i>
                     <span>{% trans "Admin Panel" %}</span>
