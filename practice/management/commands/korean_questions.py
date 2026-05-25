@@ -790,3 +790,716 @@ quest_taqqoslash_yuklama = [
     }
 ]
 
+QUESTIONS_14 = [
+    {
+        'text': "<p><strong>A: 눈이 너무 아프고 피곤해요.<br>B: 어두운 곳에서 스마트폰을 보지 말고, 밝은 곳에서 책을 ________.</strong></p>",
+        'explanation': "<p><strong>읽으세요</strong>: [한국어] 상대방에게 어떤 행동을 하도록 권유하거나 명령할 때 <code>V-(으)세요</code>를 사용합니다. 읽다 → 읽으세요 입니다.<br>[O'zbekcha] Boshqalarga biror harakatni bajarishni buyurish yoki maslahat berish uchun <code>V-(으)세요</code> ishlatiladi. 읽다 → 읽으세요.</p>",
+        'correct': "읽으세요",
+        'choices': ["읽어야 해요", "읽으세요", "읽지 마세요", "읽어도 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 밖이 너무 추워요.<br>B: 감기에 걸리지 않게 아주 두껍고 따뜻한 옷을 ________.</strong></p>",
+        'explanation': "<p><strong>입으세요</strong>: [한국어] 행동을 권유할 때 <code>V-(으)세요</code>를 사용합니다. 입다 → 입으세요 입니다.<br>[O'zbekcha] Boshqalarga maslahat berish uchun <code>V-(으)세요</code> ishlatiladi. 입다 → 입으세요.</p>",
+        'correct': "입으세요",
+        'choices': ["입으면 안 돼요", "입지 마세요", "입으세요", "입지 않아도 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 바닥이 물 때문에 아주 미끄러워요.<br>B: 크게 다치지 않게 천천히 걸으면서 매우 ________.</strong></p>",
+        'explanation': "<p><strong>조심하세요</strong>: [한국어] 주의를 당부하며 명령할 때 <code>V-(으)세요</code>를 사용합니다. 조심하다 → 조심하세요 입니다.<br>[O'zbekcha] Ehtiyot bo'lishni buyurish uchun <code>V-(으)세요</code> ishlatiladi. 조심하다 → 조심하세요.</p>",
+        'correct': "조심하세요",
+        'choices': ["조심하세요", "조심해도 돼요", "조심해야 해요", "조심하지 마세요"]
+    },
+    {
+        'text': "<p><strong>A: 배가 너무 고파서 쓰러질 것 같아요.<br>B: 그럼 제가 만든 이 따뜻하고 맛있는 수프를 먼저 ________.</strong></p>",
+        'explanation': "<p><strong>드세요</strong>: [한국어] '먹다'의 높임말인 '드시/잡수시'에 <code>-(으)세요</code>를 붙여 권유를 나타냅니다.<br>[O'zbekcha] '먹다' (yemoq) fe'lining hurmat shakli '드시다'ga <code>-(으)세요</code> qo'shilib, ovqatlanishni taklif qilish uchun ishlatiladi.</p>",
+        'correct': "드세요",
+        'choices': ["먹어야 해요", "먹지 마세요", "드세요", "들면 안 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 오랫동안 서 있었더니 다리가 몹시 아파요.<br>B: 저기 푹신하고 편안한 빈 의자가 있으니 빨리 가서 ________.</strong></p>",
+        'explanation': "<p><strong>앉으세요</strong>: [한국어] 상대방에게 자리에 앉으라고 권유할 때 <code>V-(으)세요</code>를 사용합니다. 앉다 → 앉으세요 입니다.<br>[O'zbekcha] Birovga o'tirishni taklif qilish uchun <code>V-(으)세요</code> ishlatiladi. 앉다 → 앉으세요.</p>",
+        'correct': "앉으세요",
+        'choices': ["앉아도 돼요", "앉으세요", "앉으면 안 돼요", "앉지 마세요"]
+    },
+    {
+        'text': "<p><strong>A: 밤에 커피를 마시면 잠이 잘 안 와요.<br>B: 그럼 저녁 식사 후에는 진한 커피를 절대 ________.</strong></p>",
+        'explanation': "<p><strong>마시지 마세요</strong>: [한국어] 상대방에게 행동을 금지할 때 <code>V-지 마세요</code>를 사용합니다. 마시다 → 마시지 마세요 입니다.<br>[O'zbekcha] Boshqalarga biror narsani qilmaslikni buyurish (taqiqlash) uchun <code>V-지 마세요</code> ishlatiladi. 마시다 → 마시지 마세요.</p>",
+        'correct': "마시지 마세요",
+        'choices': ["마셔야 해요", "마시지 마세요", "마셔도 돼요", "마시세요"]
+    },
+    {
+        'text': "<p><strong>A: 복도에서 아이들이 너무 시끄럽게 뛰놀고 있어요.<br>B: 위험하니까 복도에서는 절대 ________.</strong></p>",
+        'explanation': "<p><strong>뛰지 마세요</strong>: [한국어] 행동을 강력히 금지할 때 <code>V-지 마세요</code>를 사용합니다. 뛰다 → 뛰지 마세요 입니다.<br>[O'zbekcha] Yugurishni taqiqlash uchun <code>V-지 마세요</code> ishlatiladi. 뛰다 → 뛰지 마세요.</p>",
+        'correct': "뛰지 마세요",
+        'choices': ["뛰지 마세요", "뛰어야 해요", "뛰세요", "뛰어도 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 내일 아주 중요한 회사 회의가 있는 거 아시죠?<br>B: 네, 중요한 서류를 챙기는 것을 절대 ________.</strong></p>",
+        'explanation': "<p><strong>잊지 마세요</strong>: [한국어] 잊어버리는 행동을 금지(당부)할 때 <code>V-지 마세요</code>를 사용합니다. 잊다 → 잊지 마세요 입니다.<br>[O'zbekcha] Unutmaslikni qattiq tayinlash uchun <code>V-지 마세요</code> ishlatiladi. 잊다 → 잊지 마세요.</p>",
+        'correct': "잊지 마세요",
+        'choices': ["잊어야 해요", "잊으면 안 돼요", "잊지 마세요", "잊지 않아도 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 박물관에 있는 오래된 도자기가 정말 아름답네요!<br>B: 눈으로만 예쁘게 보고 손으로는 절대 ________.</strong></p>",
+        'explanation': "<p><strong>만지지 마세요</strong>: [한국어] 손을 대는 행동을 금지할 때 <code>V-지 마세요</code>를 사용합니다. 만지다 → 만지지 마세요 입니다.<br>[O'zbekcha] Tegishni taqiqlash uchun <code>V-지 마세요</code> ishlatiladi. 만지다 → 만지지 마세요.</p>",
+        'correct': "만지지 마세요",
+        'choices': ["만져도 돼요", "만지지 마세요", "만지세요", "만져야 해요"]
+    },
+    {
+        'text': "<p><strong>A: 한국어 문법이 너무 복잡하고 어려워서 포기하고 싶어요.<br>B: 처음에는 다 힘드니까 절대 ________.</strong></p>",
+        'explanation': "<p><strong>포기하지 마세요</strong>: [한국어] 포기하는 것을 말릴 때 <code>V-지 마세요</code>를 사용합니다. 포기하다 → 포기하지 마세요 입니다.<br>[O'zbekcha] Taslim bo'lmaslikka (voz kechmaslikka) undash uchun <code>V-지 마세요</code> ishlatiladi. 포기하다 → 포기하지 마세요.</p>",
+        'correct': "포기하지 마세요",
+        'choices': ["포기해야 해요", "포기해도 돼요", "포기하지 않아도 돼요", "포기하지 마세요"]
+    },
+    {
+        'text': "<p><strong>A: 회사 약속 시간에 많이 늦을 것 같아요.<br>B: 늦으면 큰일 나니까, 택시를 타고 지금 당장 빨리 ________.</strong></p>",
+        'explanation': "<p><strong>가야 해요</strong>: [한국어] 행동의 필수적인 의무를 나타낼 때 <code>A/V-아/어야 되다/하다</code>를 사용합니다. 가다 → 가야 해요 입니다.<br>[O'zbekcha] Borish majburiy ekanligini bildirish uchun <code>A/V-아/어야 되다/하다</code> ishlatiladi. 가다 → 가야 해요.</p>",
+        'correct': "가야 해요",
+        'choices': ["가야 해요", "가도 돼요", "가지 마세요", "가지 않아도 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 이 쓴 약을 언제 먹어야 가장 효과가 좋나요?<br>B: 식사가 완전히 끝난 후 30분 뒤에 반드시 ________.</strong></p>",
+        'explanation': "<p><strong>먹어야 해요</strong>: [한국어] 약을 먹는 것이 필수적임을 나타낼 때 <code>A/V-아/어야 되다/하다</code>를 사용합니다. 먹다 → 먹어야 해요 입니다.<br>[O'zbekcha] Dorini ichish zarur ekanligini bildirish uchun <code>A/V-아/어야 되다/하다</code> ishlatiladi. 먹다 → 먹어야 해요.</p>",
+        'correct': "먹어야 해요",
+        'choices': ["먹어도 돼요", "먹지 마세요", "먹어야 해요", "먹으면 안 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 조용한 도서관에서 친구와 크게 떠들어도 되나요?<br>B: 아니요, 도서관에서는 다른 사람들을 위해 항상 ________.</strong></p>",
+        'explanation': "<p><strong>조용해야 해요</strong>: [한국어] 상태에 대한 의무나 필수 조건을 나타낼 때 <code>A/V-아/어야 되다/하다</code>를 사용합니다. 조용하다 → 조용해야 해요 입니다.<br>[O'zbekcha] Jim turish majburiy holat ekanligini bildirish uchun <code>A/V-아/어야 되다/하다</code> ishlatiladi. 조용하다 → 조용해야 해요.</p>",
+        'correct': "조용해야 해요",
+        'choices': ["조용해도 돼요", "조용해야 해요", "조용하지 않아도 돼요", "조용하면 안 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 내일 아주 일찍 일어나서 험한 등산을 가야 해요.<br>B: 그럼 오늘 밤에는 늦게까지 깨어 있지 말고 일찍 ________.</strong></p>",
+        'explanation': "<p><strong>자야 해요</strong>: [한국어] 일찍 자는 것이 내일을 위한 필수적인 일임을 나타낼 때 <code>A/V-아/어야 되다/하다</code>를 사용합니다. 자다 → 자야 해요 입니다.<br>[O'zbekcha] Erta uxlash zarurligini bildirish uchun <code>A/V-아/어야 되다/하다</code> ishlatiladi. 자다 → 자야 해요.</p>",
+        'correct': "자야 해요",
+        'choices': ["자지 마세요", "자도 돼요", "자면 안 돼요", "자야 해요"]
+    },
+    {
+        'text': "<p><strong>A: 복잡한 한국어를 유창하게 잘하고 싶어요.<br>B: 매일매일 한국인 친구들과 꾸준히 대화 ________.</strong></p>",
+        'explanation': "<p><strong>연습해야 해요</strong>: [한국어] 목표를 이루기 위해 필수적인 행동을 나타낼 때 <code>A/V-아/어야 되다/하다</code>를 사용합니다. 연습하다 → 연습해야 해요 입니다.<br>[O'zbekcha] Mashq qilish majburiy ekanligini bildirish uchun <code>A/V-아/어야 되다/하다</code> ishlatiladi. 연습하다 → 연습해야 해요.</p>",
+        'correct': "연습해야 해요",
+        'choices': ["연습하지 마세요", "연습해야 해요", "연습해도 돼요", "연습하지 않아도 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 다리가 너무 아픈데, 여기 빈자리에 잠시 ________?<br>B: 네, 지금 아무도 없으니까 편하게 앉으세요.</strong></p>",
+        'explanation': "<p><strong>앉아도 돼요</strong>: [한국어] 어떤 행동을 해도 괜찮은지 허락을 구할 때 <code>A/V-아/어도 되다</code>를 사용합니다. 앉다 → 앉아도 돼요 입니다.<br>[O'zbekcha] O'tirishga ruxsat so'rash uchun <code>A/V-아/어도 되다</code> ishlatiladi. 앉다 → 앉아도 돼요.</p>",
+        'correct': "앉아도 돼요",
+        'choices': ["앉으면 안 돼요", "앉지 마세요", "앉아도 돼요", "앉아야 해요"]
+    },
+    {
+        'text': "<p><strong>A: 조용한 미술관 안에서 이 예쁜 그림을 사진으로 ________?<br>B: 네, 플래시만 터뜨리지 않으면 마음껏 찍으셔도 됩니다.</strong></p>",
+        'explanation': "<p><strong>찍어도 돼요</strong>: [한국어] 사진 촬영에 대한 허락을 구할 때 <code>A/V-아/어도 되다</code>를 사용합니다. 찍다 → 찍어도 돼요 입니다.<br>[O'zbekcha] Rasmga olishga ruxsat so'rash uchun <code>A/V-아/어도 되다</code> ishlatiladi. 찍다 → 찍어도 돼요.</p>",
+        'correct': "찍어도 돼요",
+        'choices': ["찍어야 해요", "찍으면 안 돼요", "찍지 마세요", "찍어도 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 열심히 다이어트 중인데 이 달콤한 초콜릿 케이크를 한 입만 ________?<br>B: 네, 오늘 열심히 운동했으니까 조금은 괜찮아요.</strong></p>",
+        'explanation': "<p><strong>먹어도 돼요</strong>: [한국어] 음식을 먹어도 되는지 허락이나 용인을 구할 때 <code>A/V-아/어도 되다</code>를 사용합니다. 먹다 → 먹어도 돼요 입니다.<br>[O'zbekcha] Yeyishga ruxsat so'rash uchun <code>A/V-아/어도 되다</code> ishlatiladi. 먹다 → 먹어도 돼요.</p>",
+        'correct': "먹어도 돼요",
+        'choices': ["먹어도 돼요", "먹어야 해요", "먹으면 안 돼요", "먹지 마세요"]
+    },
+    {
+        'text': "<p><strong>A: 오늘 몸이 너무 안 좋은데, 회사에서 조금 ________?<br>B: 네, 팀장님께 말씀드리고 먼저 들어가서 푹 쉬세요.</strong></p>",
+        'explanation': "<p><strong>일찍 가도 돼요</strong>: [한국어] 조퇴에 대한 허락을 구할 때 <code>A/V-아/어도 되다</code>를 사용합니다. 가다 → 가도 돼요 입니다.<br>[O'zbekcha] Erta ketishga ruxsat so'rash uchun <code>A/V-아/어도 되다</code> ishlatiladi. 가다 → 가도 돼요.</p>",
+        'correct': "일찍 가도 돼요",
+        'choices': ["일찍 가야 해요", "일찍 가지 마세요", "일찍 가면 안 돼요", "일찍 가도 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 좁은 방 안이 너무 답답하고 더운데, 시원하게 창문을 ________?<br>B: 네, 바깥 공기가 아주 맑으니 활짝 여세요.</strong></p>",
+        'explanation': "<p><strong>열어도 돼요</strong>: [한국어] 창문을 여는 것에 대한 허락을 구할 때 <code>A/V-아/어도 되다</code>를 사용합니다. 열다 → 열어도 돼요 입니다.<br>[O'zbekcha] Derazani ochishga ruxsat so'rash uchun <code>A/V-아/어도 되다</code> ishlatiladi. 열다 → 열어도 돼요.</p>",
+        'correct': "열어도 돼요",
+        'choices': ["열지 마세요", "열어야 해요", "열어도 돼요", "열면 안 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 다 마신 플라스틱 음료수 병을 아무 데나 버려도 되나요?<br>B: 아니요, 깨끗한 길거리에 쓰레기를 함부로 ________.</strong></p>",
+        'explanation': "<p><strong>버리면 안 돼요</strong>: [한국어] 어떤 행동을 금지하거나 허락하지 않을 때 <code>A/V-(으)면 안 되다</code>를 사용합니다. 버리다 → 버리면 안 돼요 입니다.<br>[O'zbekcha] Tashlashni taqiqlash yoki ruxsat yo'qligini bildirish uchun <code>A/V-(으)면 안 되다</code> ishlatiladi. 버리다 → 버리면 안 돼요.</p>",
+        'correct': "버리면 안 돼요",
+        'choices': ["버리면 안 돼요", "버려도 돼요", "버려야 해요", "버리지 않아도 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 내일 아침 일찍 출발하는 고속 기차를 타야 해요.<br>B: 네, 기차는 정확한 정시에 출발하니까 절대 ________.</strong></p>",
+        'explanation': "<p><strong>늦으면 안 돼요</strong>: [한국어] 늦는 것을 강하게 금지할 때 <code>A/V-(으)면 안 되다</code>를 사용합니다. 늦다 → 늦으면 안 돼요 입니다.<br>[O'zbekcha] Kechikish taqiqlanganligini bildirish uchun <code>A/V-(으)면 안 되다</code> ishlatiladi. 늦다 → 늦으면 안 돼요.</p>",
+        'correct': "늦으면 안 돼요",
+        'choices': ["늦어도 돼요", "늦어야 해요", "늦으면 안 돼요", "늦지 않아도 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 어둡고 조용한 영화관 안에서 친구와 재미있게 이야기해도 되나요?<br>B: 아니요, 다른 사람들의 관람을 방해하니까 크게 ________.</strong></p>",
+        'explanation': "<p><strong>떠들면 안 돼요</strong>: [한국어] 떠드는 행동을 금지할 때 <code>A/V-(으)면 안 되다</code>를 사용합니다. 떠들다 → 떠들면 안 돼요 입니다.<br>[O'zbekcha] Shovqin qilish mumkin emasligini bildirish uchun <code>A/V-(으)면 안 되다</code> ishlatiladi. 떠들다 → 떠들면 안 돼요.</p>",
+        'correct': "떠들면 안 돼요",
+        'choices': ["떠들어야 해요", "떠들면 안 돼요", "떠들어도 돼요", "떠들지 않아도 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 저기 '관계자 외 출입 금지'라고 적힌 방에 들어가도 되나요?<br>B: 아니요, 허락 없이 함부로 ________.</strong></p>",
+        'explanation': "<p><strong>들어가면 안 돼요</strong>: [한국어] 출입을 금지할 때 <code>A/V-(으)면 안 되다</code>를 사용합니다. 들어가다 → 들어가면 안 돼요 입니다.<br>[O'zbekcha] Kirish taqiqlanganligini bildirish uchun <code>A/V-(으)면 안 되다</code> ishlatiladi. 들어가다 → 들어가면 안 돼요.</p>",
+        'correct': "들어가면 안 돼요",
+        'choices': ["들어가야 해요", "들어가도 돼요", "들어가지 않아도 돼요", "들어가면 안 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 배가 심하게 아파서 병원에 다녀왔어요.<br>B: 그럼 다 나을 때까지 차갑고 매운 음식을 절대 ________.</strong></p>",
+        'explanation': "<p><strong>먹으면 안 돼요</strong>: [한국어] 음식 섭취를 금지할 때 <code>A/V-(으)면 안 되다</code>를 사용합니다. 먹다 → 먹으면 안 돼요 입니다.<br>[O'zbekcha] Yeyish taqiqlanganligini bildirish uchun <code>A/V-(으)면 안 되다</code> ishlatiladi. 먹다 → 먹으면 안 돼요.</p>",
+        'correct': "먹으면 안 돼요",
+        'choices': ["먹어야 해요", "먹으면 안 돼요", "먹어도 돼요", "먹지 않아도 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 내일은 국가 공휴일인데 회사에 아침 일찍 출근해야 하나요?<br>B: 아니요, 내일은 공식적으로 쉬는 날이니까 회사에 ________.</strong></p>",
+        'explanation': "<p><strong>가지 않아도 돼요</strong>: [한국어] 어떤 행동을 할 필요가 없음을 나타낼 때 <code>A/V-지 않아도 되다</code>를 사용합니다. 가다 → 가지 않아도 돼요 입니다.<br>[O'zbekcha] Borishga hojat yo'qligini bildirish uchun <code>A/V-지 않아도 되다</code> ishlatiladi. 가다 → 가지 않아도 돼요.</p>",
+        'correct': "가지 않아도 돼요",
+        'choices': ["가야 해요", "가면 안 돼요", "가지 않아도 돼요", "가지 마세요"]
+    },
+    {
+        'text': "<p><strong>A: 친한 친구 생일 파티에 아주 비싼 선물을 사 가야 할까요?<br>B: 아니요, 진심 어린 마음이 중요하니까 굳이 비싼 것을 ________.</strong></p>",
+        'explanation': "<p><strong>사지 않아도 돼요</strong>: [한국어] 구매할 필요가 없음을 나타낼 때 <code>A/V-지 않아도 되다</code>를 사용합니다. 사다 → 사지 않아도 돼요 입니다.<br>[O'zbekcha] Sotib olishga zarurat yo'qligini bildirish uchun <code>A/V-지 않아도 되다</code> ishlatiladi. 사다 → 사지 않아도 돼요.</p>",
+        'correct': "사지 않아도 돼요",
+        'choices': ["사야 해요", "사지 않아도 돼요", "사면 안 돼요", "사지 마세요"]
+    },
+    {
+        'text': "<p><strong>A: 오늘 즐거운 파티에 꼭 답답한 검은색 정장을 입어야 합니까?<br>B: 아니요, 편안한 캐주얼 파티니까 굳이 정장을 ________.</strong></p>",
+        'explanation': "<p><strong>안 입어도 돼요</strong>: [한국어] <code>A/V-지 않아도 되다</code>는 <code>안 A/V-아/어도 되다</code>로 바꾸어 쓸 수 있습니다. 정장을 입을 필요성이 없음을 의미합니다.<br>[O'zbekcha] <code>A/V-지 않아도 되다</code> bilan bir xil ma'noda kelib, kiyishga hojat yo'qligini bildiradi.</p>",
+        'correct': "안 입어도 돼요",
+        'choices': ["입으면 안 돼요", "입지 마세요", "입어야 해요", "안 입어도 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 이 복잡하고 두꺼운 서류를 오늘 안으로 전부 끝내야 하나요?<br>B: 급한 일이 전혀 아니니까 오늘 무리해서 다 ________.</strong></p>",
+        'explanation': "<p><strong>하지 않아도 돼요</strong>: [한국어] 행동을 완수할 의무나 필요가 없음을 나타낼 때 <code>A/V-지 않아도 되다</code>를 사용합니다. 하다 → 하지 않아도 돼요 입니다.<br>[O'zbekcha] Qilishga majburiyat yo'qligini bildirish uchun <code>A/V-지 않아도 되다</code> ishlatiladi. 하다 → 하지 않아도 돼요.</p>",
+        'correct': "하지 않아도 돼요",
+        'choices': ["해야 해요", "하면 안 돼요", "하지 않아도 돼요", "하지 마세요"]
+    },
+    {
+        'text': "<p><strong>A: 무덥고 습한 여름에도 회사에서 반드시 넥타이를 매야 하나요?<br>B: 아니요, 여름에는 너무 덥기 때문에 직원들의 편의를 위해 넥타이를 ________.</strong></p>",
+        'explanation': "<p><strong>안 매도 돼요</strong>: [한국어] <code>A/V-지 않아도 되다</code>와 같은 의미로, 넥타이를 맬 필요가 없음을 나타냅니다.<br>[O'zbekcha] Bo'yinbog' taqishga zarurat yo'qligini bildirish uchun ishlatiladi.</p>",
+        'correct': "안 매도 돼요",
+        'choices': ["안 매도 돼요", "매야 해요", "매면 안 돼요", "매지 마세요"]
+    }
+]
+
+QUESTIONS_15 = [
+    {
+        'text': "<p><strong>A: 이번 여름 휴가 때 어디로 여행 가요?<br>B: 저는 아름다운 제주도의 푸른 바다를 꼭 ________.</strong></p>",
+        'explanation': "<p><strong>보고 싶어요</strong>: [한국어] 화자 자신의 강한 희망이나 바람을 나타낼 때 <code>V-고 싶다</code>를 사용합니다. 보다 → 보고 싶어요 입니다.<br>[O'zbekcha] So'zlovchining biror ish-harakatni bajarish xohishini bildiradi (-moqchi / -gisi kelyapti). 보다 → 보고 싶어요.</p>",
+        'correct': "보고 싶어요",
+        'choices': ["보았으면 좋겠어요", "보고 싶어요", "보지 마세요", "보아야 해요"]
+    },
+    {
+        'text': "<p><strong>A: 날씨가 매일 찌는 듯이 너무 덥네요.<br>B: 네, 빨리 시원하고 상쾌한 가을비가 흠뻑 ________.</strong></p>",
+        'explanation': "<p><strong>내렸으면 좋겠어요</strong>: [한국어] 어떤 일이나 상태가 이루어지기를 간절히 바랄 때 <code>A/V-았/었으면 좋겠다</code>를 사용합니다. 내리다 → 내렸으면 좋겠어요 입니다.<br>[O'zbekcha] Biror ish-harakat yoki holat sodir bo'lishiga umid qilishni yoki tilashni bildiradi (-sa yaxshi bo'lardi). 내리다 → 내렸으면 좋겠어요.</p>",
+        'correct': "내렸으면 좋겠어요",
+        'choices': ["내리고 싶어요", "내리지 마세요", "내렸으면 좋겠어요", "내리면 안 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 이번 생일 선물로 무엇을 가장 ________?<br>B: 저는 아주 빠르고 예쁜 최신 스마트폰을 받고 싶어요.</strong></p>",
+        'explanation': "<p><strong>받고 싶어요</strong>: [한국어] 상대방의 희망을 물어볼 때 <code>V-고 싶다</code>를 사용합니다. 받다 → 받고 싶어요 입니다.<br>[O'zbekcha] Boshqa odamning xohishini so'rash uchun <code>V-고 싶다</code> ishlatiladi. 받다 → 받고 싶어요.</p>",
+        'correct': "받고 싶어요",
+        'choices': ["받았으면 좋겠어요", "받아야 해요", "받고 싶어요", "받지 마세요"]
+    },
+    {
+        'text': "<p><strong>A: 내일 주말에 소풍을 가는데 날씨가 어떨까요?<br>B: 내일은 제발 화창하고 맑은 해가 반짝 ________.</strong></p>",
+        'explanation': "<p><strong>떴으면 좋겠어요</strong>: [한국어] 날씨가 좋아지기를 바라는 소망을 나타낼 때 <code>A/V-았/었으면 좋겠다</code>를 사용합니다. 뜨다 → 떴으면 좋겠어요 입니다.<br>[O'zbekcha] Ob-havo yaxshi bo'lishini tilash uchun <code>A/V-았/었으면 좋겠다</code> ishlatiladi. 뜨다 → 떴으면 좋겠어요.</p>",
+        'correct': "떴으면 좋겠어요",
+        'choices': ["뜨고 싶어요", "떴으면 좋겠어요", "뜨면 안 돼요", "뜨지 마세요"]
+    },
+    {
+        'text': "<p><strong>A: 한국어를 아주 열심히 공부하시네요!<br>B: 네, 나중에 훌륭한 한국 회사에 꼭 ________.</strong></p>",
+        'explanation': "<p><strong>취직하고 싶어요</strong>: [한국어] 자신의 미래 목표나 희망을 나타낼 때 <code>V-고 싶다</code>를 사용합니다. 취직하다 → 취직하고 싶어요 입니다.<br>[O'zbekcha] O'zining kelajakdagi maqsadini yoki xohishini bildirish uchun <code>V-고 싶다</code> ishlatiladi. 취직하다 → 취직하고 싶어요.</p>",
+        'correct': "취직하고 싶어요",
+        'choices': ["취직하고 싶어요", "취직했으면 좋겠어요", "취직해야 해요", "취직하지 마세요"]
+    },
+    {
+        'text': "<p><strong>A: 독감에 심하게 걸려서 온몸이 너무 아파요.<br>B: 약을 드시고 오늘 밤에는 따뜻한 방에서 푹 ________.</strong></p>",
+        'explanation': "<p><strong>쉬었으면 좋겠어요</strong>: [한국어] 다른 사람이 푹 쉬기를 바라는 마음을 나타낼 때 <code>A/V-았/었으면 좋겠다</code>를 사용합니다. 쉬다 → 쉬었으면 좋겠어요 입니다.<br>[O'zbekcha] Boshqa odamning yaxshi dam olishini xohlashni bildirish uchun <code>A/V-았/었으면 좋겠다</code> ishlatiladi. 쉬다 → 쉬었으면 좋겠어요.</p>",
+        'correct': "쉬었으면 좋겠어요",
+        'choices': ["쉬어야 해요", "쉬면 안 돼요", "쉬었으면 좋겠어요", "쉬고 싶어요"]
+    },
+    {
+        'text': "<p><strong>A: 배가 너무 고파서 쓰러질 것 같아요.<br>B: 저도요. 빨리 식당에 가서 아주 맛있는 불고기를 ________.</strong></p>",
+        'explanation': "<p><strong>먹고 싶어요</strong>: [한국어] 밥을 먹고자 하는 강한 욕구를 나타낼 때 <code>V-고 싶다</code>를 사용합니다. 먹다 → 먹고 싶어요 입니다.<br>[O'zbekcha] Ovqat yeyishga bo'lgan kuchli xohishni bildirish uchun <code>V-고 싶다</code> ishlatiladi. 먹다 → 먹고 싶어요.</p>",
+        'correct': "먹고 싶어요",
+        'choices': ["먹었으면 좋겠어요", "먹고 싶어요", "먹어야 해요", "먹지 마세요"]
+    },
+    {
+        'text': "<p><strong>A: 오늘 저녁에 아주 중요한 국가대표 축구 경기가 있어요.<br>B: 우리 팀이 이번 경기에서 꼭 통쾌하게 ________.</strong></p>",
+        'explanation': "<p><strong>이겼으면 좋겠어요</strong>: [한국어] 승리하기를 바라는 간절한 마음을 나타낼 때 <code>A/V-았/었으면 좋겠다</code>를 사용합니다. 이기다 → 이겼으면 좋겠어요 입니다.<br>[O'zbekcha] G'alaba qozonishni tilash uchun <code>A/V-았/었으면 좋겠다</code> ishlatiladi. 이기다 → 이겼으면 좋겠어요.</p>",
+        'correct': "이겼으면 좋겠어요",
+        'choices': ["이겼으면 좋겠어요", "이기고 싶어요", "이기지 마세요", "이기면 안 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 하루 종일 서서 일했더니 다리가 끊어질 것 같아요.<br>B: 집에 가자마자 푹신하고 부드러운 침대에 바로 ________.</strong></p>",
+        'explanation': "<p><strong>눕고 싶어요</strong>: [한국어] 피곤해서 눕고자 하는 희망을 나타낼 때 <code>V-고 싶다</code>를 사용합니다. 눕다 → 눕고 싶어요 입니다.<br>[O'zbekcha] Charchab yotishni xohlashni bildirish uchun <code>V-고 싶다</code> ishlatiladi. 눕다 → 눕고 싶어요.</p>",
+        'correct': "눕고 싶어요",
+        'choices': ["누웠으면 좋겠어요", "누워야 해요", "눕고 싶어요", "눕지 마세요"]
+    },
+    {
+        'text': "<p><strong>A: 새해 소원이 무엇입니까?<br>B: 사랑하는 우리 부모님이 항상 아프지 않고 ________.</strong></p>",
+        'explanation': "<p><strong>건강하셨으면 좋겠어요</strong>: [한국어] 부모님의 건강을 기원할 때 <code>A/V-았/었으면 좋겠다</code>를 사용합니다. 건강하시다 → 건강하셨으면 좋겠어요 입니다.<br>[O'zbekcha] Ota-onaning sog'ligini tilash uchun <code>A/V-았/었으면 좋겠다</code> ishlatiladi. 건강하시다(hurmat shakli) → 건강하셨으면 좋겠어요.</p>",
+        'correct': "건강하셨으면 좋겠어요",
+        'choices': ["건강하고 싶어요", "건강하셨으면 좋겠어요", "건강해야 해요", "건강하지 마세요"]
+    },
+    {
+        'text': "<p><strong>A: 스트레스가 너무 많이 쌓였어요.<br>B: 주말에 친구들과 신나게 노래방에 가서 큰 소리로 노래를 ________.</strong></p>",
+        'explanation': "<p><strong>부르고 싶어요</strong>: [한국어] 노래를 부르며 스트레스를 풀고자 하는 희망을 나타낼 때 <code>V-고 싶다</code>를 사용합니다. 부르다 → 부르고 싶어요 입니다.<br>[O'zbekcha] Qo'shiq aytish orqali dam olish xohishini bildirish uchun <code>V-고 싶다</code> ishlatiladi. 부르다 → 부르고 싶어요.</p>",
+        'correct': "부르고 싶어요",
+        'choices': ["불렀으면 좋겠어요", "부르지 마세요", "부르고 싶어요", "불러야 해요"]
+    },
+    {
+        'text': "<p><strong>A: 한국 전통 문화에 관심이 많으시네요.<br>B: 네, 기회가 된다면 아름다운 한복을 직접 꼭 ________.</strong></p>",
+        'explanation': "<p><strong>입어 보고 싶어요</strong>: [한국어] 새로운 경험을 해보고 싶은 소망을 나타낼 때 <code>V-아/어 보다</code>와 <code>-고 싶다</code>를 결합하여 사용합니다. 입어 보다 → 입어 보고 싶어요 입니다.<br>[O'zbekcha] Yangi tajribani sinab ko'rish xohishini bildirish uchun ishlatiladi. 입어 보다 → 입어 보고 싶어요.</p>",
+        'correct': "입어 보고 싶어요",
+        'choices': ["입어 보았으면 좋겠어요", "입어 봐야 해요", "입어 보지 마세요", "입어 보고 싶어요"]
+    },
+    {
+        'text': "<p><strong>A: 이번 크리스마스에는 날씨가 어떨까요?<br>B: 로맨틱한 분위기를 위해 하얀 눈이 펑펑 ________.</strong></p>",
+        'explanation': "<p><strong>왔으면 좋겠어요</strong>: [한국어] 눈이 오기를 바라는 마음을 나타낼 때 <code>A/V-았/었으면 좋겠다</code>를 사용합니다. 오다 → 왔으면 좋겠어요 입니다.<br>[O'zbekcha] Qor yog'ishini tilash uchun <code>A/V-았/었으면 좋겠다</code> ishlatiladi. 오다 → 왔으면 좋겠어요.</p>",
+        'correct': "왔으면 좋겠어요",
+        'choices': ["오고 싶어요", "왔으면 좋겠어요", "오면 안 돼요", "오지 마세요"]
+    },
+    {
+        'text': "<p><strong>A: 만약 새가 된다면 무엇을 할 거예요?<br>B: 저 넓고 푸른 하늘을 아주 자유롭게 훨훨 ________.</strong></p>",
+        'explanation': "<p><strong>날고 싶어요</strong>: [한국어] 하늘을 날고자 하는 화자의 강한 소망을 나타낼 때 <code>V-고 싶다</code>를 사용합니다. 날다 → 날고 싶어요 입니다.<br>[O'zbekcha] Osmonda uchish xohishini bildirish uchun <code>V-고 싶다</code> ishlatiladi. 날다 → 날고 싶어요.</p>",
+        'correct': "날고 싶어요",
+        'choices': ["날고 싶어요", "날았으면 좋겠어요", "날지 마세요", "날아야 해요"]
+    },
+    {
+        'text': "<p><strong>A: 다음 주에 정말 중요한 졸업 시험이 있어요.<br>B: 열심히 공부하셨으니 꼭 좋은 성적을 ________.</strong></p>",
+        'explanation': "<p><strong>받았으면 좋겠어요</strong>: [한국어] 상대방이 좋은 결과를 얻기를 기원할 때 <code>A/V-았/었으면 좋겠다</code>를 사용합니다. 받다 → 받았으면 좋겠어요 입니다.<br>[O'zbekcha] Boshqa odamga yaxshi natija tilash uchun <code>A/V-았/었으면 좋겠다</code> ishlatiladi. 받다 → 받았으면 좋겠어요.</p>",
+        'correct': "받았으면 좋겠어요",
+        'choices': ["받고 싶어요", "받아야 해요", "받았으면 좋겠어요", "받으면 안 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 날씨가 너무 더워서 땀이 뻘뻘 나요.<br>B: 냉장고에 있는 달콤하고 시원한 아이스크림을 당장 ________.</strong></p>",
+        'explanation': "<p><strong>먹고 싶어요</strong>: [한국어] 화자의 당장의 욕구를 나타낼 때 <code>V-고 싶다</code>를 사용합니다. 먹다 → 먹고 싶어요 입니다.<br>[O'zbekcha] So'zlovchining ayni paytdagi xohishini bildirish uchun <code>V-고 싶다</code> ishlatiladi. 먹다 → 먹고 싶어요.</p>",
+        'correct': "먹고 싶어요",
+        'choices': ["먹었으면 좋겠어요", "먹고 싶어요", "먹어야 해요", "먹지 마세요"]
+    },
+    {
+        'text': "<p><strong>A: 강아지를 잃어버려서 너무 슬퍼요.<br>B: 어떡해요. 빨리 그 귀여운 강아지를 안전하게 ________.</strong></p>",
+        'explanation': "<p><strong>찾았으면 좋겠어요</strong>: [한국어] 잃어버린 것을 무사히 찾기를 바라는 소망을 나타낼 때 <code>A/V-았/었으면 좋겠다</code>를 사용합니다. 찾다 → 찾았으면 좋겠어요 입니다.<br>[O'zbekcha] Yo'qolgan narsani eson-omon topishni tilash uchun <code>A/V-았/었으면 좋겠다</code> ishlatiladi. 찾다 → 찾았으면 좋겠어요.</p>",
+        'correct': "찾았으면 좋겠어요",
+        'choices': ["찾으면 안 돼요", "찾지 마세요", "찾고 싶어요", "찾았으면 좋겠어요"]
+    },
+    {
+        'text': "<p><strong>A: 겨울이 되니까 입을 옷이 없네요.<br>B: 백화점에 가서 예쁘고 따뜻한 겨울 코트를 하나 ________.</strong></p>",
+        'explanation': "<p><strong>사고 싶어요</strong>: [한국어] 물건을 구매하고 싶은 욕구를 나타낼 때 <code>V-고 싶다</code>를 사용합니다. 사다 → 사고 싶어요 입니다.<br>[O'zbekcha] Biror narsa sotib olish xohishini bildirish uchun <code>V-고 싶다</code> ishlatiladi. 사다 → 사고 싶어요.</p>",
+        'correct': "사고 싶어요",
+        'choices': ["사고 싶어요", "샀으면 좋겠어요", "사야 해요", "사지 마세요"]
+    },
+    {
+        'text': "<p><strong>A: 요즘 매일매일 너무 힘들고 지쳐요.<br>B: 앞으로는 우울한 일 없이 항상 행복한 일만 가득________.</strong></p>",
+        'explanation': "<p><strong>했으면 좋겠어요</strong>: [한국어] 상대방의 삶이 행복해지기를 바라는 소망을 나타낼 때 <code>A/V-았/었으면 좋겠다</code>를 사용합니다. 하다 → 했으면 좋겠어요 입니다.<br>[O'zbekcha] Boshqa odamning hayoti baxtli bo'lishini tilash uchun <code>A/V-았/었으면 좋겠다</code> ishlatiladi. 하다 → 했으면 좋겠어요.</p>",
+        'correct': "했으면 좋겠어요",
+        'choices': ["하고 싶어요", "했으면 좋겠어요", "해야 해요", "하면 안 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 고향에 안 가본 지 너무 오래되었어요.<br>B: 저도요. 너무 그립고 사랑하는 가족들을 빨리 ________.</strong></p>",
+        'explanation': "<p><strong>만나고 싶어요</strong>: [한국어] 가족을 보고 싶은 강한 그리움과 희망을 나타낼 때 <code>V-고 싶다</code>를 사용합니다. 만나다 → 만나고 싶어요 입니다.<br>[O'zbekcha] Oilani ko'rishga bo'lgan kuchli sog'inch va xohishni bildirish uchun <code>V-고 싶다</code> ishlatiladi. 만나다 → 만나고 싶어요.</p>",
+        'correct': "만나고 싶어요",
+        'choices': ["만났으면 좋겠어요", "만나야 해요", "만나고 싶어요", "만나지 마세요"]
+    },
+    {
+        'text': "<p><strong>A: 나중에 나이가 들면 어디서 지낼 계획인가요?<br>B: 복잡한 도시를 완전히 떠나서 평화롭고 조용한 시골에서 ________.</strong></p>",
+        'explanation': "<p><strong>살고 싶어요</strong>: [한국어] 미래의 삶에 대한 개인적인 희망을 나타낼 때 <code>V-고 싶다</code>를 사용합니다. 살다 → 살고 싶어요 입니다.<br>[O'zbekcha] Kelajakdagi hayot haqidagi shaxsiy xohishni bildirish uchun <code>V-고 싶다</code> ishlatiladi. 살다 → 살고 싶어요.</p>",
+        'correct': "살고 싶어요",
+        'choices': ["살았으면 좋겠어요", "살고 싶어요", "살아야 해요", "살면 안 돼요"]
+    },
+    {
+        'text': "<p><strong>A: 만약에 복권 1등에 당첨되면 어떨 것 같아요?<br>B: 생각만 해도 좋네요! 진짜로 당첨되어서 엄청난 부자가 ________.</strong></p>",
+        'explanation': "<p><strong>되었으면 좋겠어요</strong>: [한국어] 부자가 되기를 바라는 큰 소망을 나타낼 때 <code>A/V-았/었으면 좋겠다</code>를 사용합니다. 되다 → 되었으면 좋겠어요 입니다.<br>[O'zbekcha] Boy bo'lishni orzu qilishni bildirish uchun <code>A/V-았/었으면 좋겠다</code> ishlatiladi. 되다 → 되었으면 좋겠어요.</p>",
+        'correct': "되었으면 좋겠어요",
+        'choices': ["되었으면 좋겠어요", "되고 싶어요", "되지 마세요", "되어야 해요"]
+    },
+    {
+        'text': "<p><strong>A: 왜 그렇게 매일 늦게까지 한국어 회화를 연습하세요?<br>B: 한국인 친구들과 막힘없이 자연스럽게 대화를 ________.</strong></p>",
+        'explanation': "<p><strong>하고 싶어요</strong>: [한국어] 대화를 원활하게 하고자 하는 화자의 구체적인 목표와 희망을 나타낼 때 <code>V-고 싶다</code>를 사용합니다. 하다 → 하고 싶어요 입니다.<br>[O'zbekcha] Suhbatlashishni xohlash haqidagi maqsadni bildirish uchun <code>V-고 싶다</code> ishlatiladi. 하다 → 하고 싶어요.</p>",
+        'correct': "하고 싶어요",
+        'choices': ["했으면 좋겠어요", "해야 해요", "하지 마세요", "하고 싶어요"]
+    },
+    {
+        'text': "<p><strong>A: 수술한 다리가 아직도 많이 불편하신가요?<br>B: 네, 빨리 다리가 완벽하게 전부 ________.</strong></p>",
+        'explanation': "<p><strong>나았으면 좋겠어요</strong>: [한국어] 질병이나 상처가 회복되기를 간절히 바랄 때 <code>A/V-았/었으면 좋겠다</code>를 사용합니다. 낫다('ㅅ' 불규칙) → 나았으면 좋겠어요 입니다.<br>[O'zbekcha] Kasallik yoki jarohatning tezroq tuzalishini tilash uchun <code>A/V-았/었으면 좋겠다</code> ishlatiladi. 낫다 → 나았으면 좋겠어요.</p>",
+        'correct': "나았으면 좋겠어요",
+        'choices': ["낫고 싶어요", "나았으면 좋겠어요", "낫지 마세요", "나아야 해요"]
+    },
+    {
+        'text': "<p><strong>A: 뉴스에서 매일 슬픈 전쟁 소식만 들려서 너무 마음이 아파요.<br>B: 맞아요. 세상의 모든 사람들이 항상 평화롭게 ________.</strong></p>",
+        'explanation': "<p><strong>지냈으면 좋겠어요</strong>: [한국어] 평화로운 세상을 바라는 큰 소망과 기원을 나타낼 때 <code>A/V-았/었으면 좋겠다</code>를 사용합니다. 지내다 → 지냈으면 좋겠어요 입니다.<br>[O'zbekcha] Tinchlik va xotirjamlikni tilash uchun <code>A/V-았/었으면 좋겠다</code> ishlatiladi. 지내다 → 지냈으면 좋겠어요.</p>",
+        'correct': "지냈으면 좋겠어요",
+        'choices': ["지내고 싶어요", "지내면 안 돼요", "지냈으면 좋겠어요", "지내지 마세요"]
+    }
+]
+
+QUESTIONS_16 = [
+    {
+        'text': "<p><strong>A: 어제 왜 친구들 모임에 안 오셨어요?<br>B: 갑자기 회사에 아주 급한 일이 ________ 참석하지 못했습니다. 죄송해요.</strong></p>",
+        'explanation': "<p><strong>생겨서</strong>: [한국어] 앞의 내용이 뒤의 내용에 대한 이유나 원인이 될 때 <code>A/V-아/어서</code>를 사용합니다. 생기다 → 생겨서 입니다.<br>[O'zbekcha] Oldingi gap keyingi gapning sababi yoki asosi bo'lganda <code>A/V-아/어서</code> ishlatiladi. 생기다 → 생겨서.</p>",
+        'correct': "생겨서",
+        'choices': ["생기니까", "생겨서", "생긴 덕분에", "생기기 전에"]
+    },
+    {
+        'text': "<p><strong>A: 밖이 너무 춥고 바람이 심하게 부네요.<br>B: 날씨가 아주 ________ 오늘은 밖으로 나가지 말고 집에서 푹 쉽시다.</strong></p>",
+        'explanation': "<p><strong>추우니까</strong>: [한국어] 이유를 나타내며, 뒤에 명령문이나 청유문(-ㅂ시다, -(으)세요)이 올 때는 <code>A/V-(으)니까</code>를 사용해야 합니다. 춥다 → 추우니까 입니다.<br>[O'zbekcha] Sababni bildiradi, agar gap oxirida buyruq yoki taklif (maslahat) kelsa, <code>A/V-(으)니까</code> ishlatilishi shart. 춥다 → 추우니까.</p>",
+        'correct': "추우니까",
+        'choices': ["추워서", "추우니까", "추운 덕분에", "추웠기 때문에"]
+    },
+    {
+        'text': "<p><strong>A: 길이 왜 이렇게 심하게 막히나요?<br>B: 어제 밤에 갑자기 내린 폭설 ________ 도로가 꽁꽁 얼어붙었어요.</strong></p>",
+        'explanation': "<p><strong>때문에</strong>: [한국어] 명사 뒤에 붙어서 분명한 이유나 원인을 나타낼 때 <code>N 때문에</code>를 사용합니다. 폭설(명사) → 폭설 때문에 입니다.<br>[O'zbekcha] Ot (N) ga qo'shilib, aniq sabab yoki omilni bildirish uchun <code>N 때문에</code> ishlatiladi. 폭설 → 폭설 때문에.</p>",
+        'correct': "때문에",
+        'choices': ["때문에", "덕분에", "이라서", "이니까"]
+    },
+    {
+        'text': "<p><strong>A: 이번에 정말 어려운 한국어 능력 시험에 합격하셨네요! 축하해요.<br>B: 모두 훌륭하신 선생님께서 친절하게 가르쳐 주신 ________입니다. 정말 감사합니다.</strong></p>",
+        'explanation': "<p><strong>덕분</strong>: [한국어] 어떤 사람이나 일 때문에 좋은 결과가 생겼을 때 <code>N 덕분 / A/V-(으)ㄴ 덕분에</code>를 사용합니다. 가르쳐 주신(동사 수식) + 덕분 입니다.<br>[O'zbekcha] Biror kishi yoki holat sharofati bilan yaxshi natijaga erishilganda <code>덕분에</code> ishlatiladi (-sharofati bilan / yordamida).</p>",
+        'correct': "덕분",
+        'choices': ["때문", "탓", "덕분", "후"]
+    },
+    {
+        'text': "<p><strong>A: 밥을 왜 그렇게 급하게 서둘러서 먹어요?<br>B: 오후에 아주 중요한 바이어 미팅이 ________ 빨리 먹고 사무실로 가야 해요.</strong></p>",
+        'explanation': "<p><strong>있어서</strong>: [한국어] 일반적인 이유를 나타낼 때 <code>A/V-아/어서</code>를 씁니다. 있다 → 있어서 입니다.<br>[O'zbekcha] Oddiy sababni bildirish uchun <code>A/V-아/어서</code> ishlatiladi. 있다 → 있어서.</p>",
+        'correct': "있어서",
+        'choices': ["있어서", "있기 때문에", "있는 덕분에", "있으니까"]
+    },
+    {
+        'text': "<p><strong>A: 시간이 너무 늦었는데 어떻게 할까요?<br>B: 지금은 대중교통이 모두 ________ 편하게 택시를 타고 갑시다.</strong></p>",
+        'explanation': "<p><strong>끊겼으니까</strong>: [한국어] 뒤에 청유문('갑시다')이 오므로 이유를 나타내는 <code>A/V-(으)니까</code>를 사용해야 합니다. 끊기다 → 끊겼으니까 입니다.<br>[O'zbekcha] Gap oxirida taklif ('갑시다') kelgani uchun sababni bildiruvchi <code>A/V-(으)니까</code> ishlatilishi kerak. 끊기다 → 끊겼으니까.</p>",
+        'correct': "끊겼으니까",
+        'choices': ["끊겨서", "끊긴 덕분에", "끊기기 때문에", "끊겼으니까"]
+    },
+    {
+        'text': "<p><strong>A: 오늘 아침에 왜 그렇게 화가 잔뜩 났어요?<br>B: 무례한 직장 동료 ________ 아침부터 기분이 정말 안 좋았어요.</strong></p>",
+        'explanation': "<p><strong>때문에</strong>: [한국어] 명사 뒤에 붙어 부정적인 원인이나 일반적인 이유를 강조할 때 <code>N 때문에</code>를 씁니다.<br>[O'zbekcha] Ot (N) orqasidan kelib, asosan salbiy sabab yoki holatni bildirish uchun <code>N 때문에</code> ishlatiladi.</p>",
+        'correct': "때문에",
+        'choices': ["덕분에", "때문에", "라서", "니까"]
+    },
+    {
+        'text': "<p><strong>A: 사업이 아주 크게 성공하셨다고 들었어요!<br>B: 네, 모두 저를 믿고 끝까지 도와주신 부모님 ________ 성공할 수 있었습니다.</strong></p>",
+        'explanation': "<p><strong>덕분에</strong>: [한국어] 부모님의 도움으로 '성공'이라는 긍정적인 결과를 얻었으므로 <code>N 덕분에</code>를 사용합니다.<br>[O'zbekcha] Ota-onaning yordami bilan 'muvaffaqiyat' kabi ijobiy natijaga erishilgani uchun <code>N 덕분에</code> ishlatiladi.</p>",
+        'correct': "덕분에",
+        'choices': ["때문에", "덕분에", "이어서", "이니까"]
+    },
+    {
+        'text': "<p><strong>A: 어제 밤에 잠을 거의 못 주무셨어요?<br>B: 네, 옆집이 너무 심하게 ________ 한숨도 잘 수 없었어요.</strong></p>",
+        'explanation': "<p><strong>시끄러워서</strong>: [한국어] 잠을 못 잔 이유를 나타내는 <code>A/V-아/어서</code>입니다. 시끄럽다('ㅂ' 불규칙) → 시끄러워서 입니다.<br>[O'zbekcha] Uxlolmaslik sababini bildiruvchi <code>A/V-아/어서</code>. 시끄럽다 → 시끄러워서.</p>",
+        'correct': "시끄러워서",
+        'choices': ["시끄러우니까", "시끄러운 덕분에", "시끄러워서", "시끄러웠기 때문에"]
+    },
+    {
+        'text': "<p><strong>A: 비가 너무 많이 쏟아지는데 창문을 열까요?<br>B: 아니요, 비가 거세게 ________ 창문을 꽉 닫으세요.</strong></p>",
+        'explanation': "<p><strong>오니까</strong>: [한국어] 뒤에 명령문('닫으세요')이 오므로 이유를 나타내는 <code>A/V-(으)니까</code>를 사용합니다. 오다 → 오니까 입니다.<br>[O'zbekcha] Keyingi gap buyruq ('닫으세요') bo'lganligi sababli <code>A/V-(으)니까</code> ishlatiladi. 오다 → 오니까.</p>",
+        'correct': "오니까",
+        'choices': ["와서", "오기 때문에", "오니까", "온 덕분에"]
+    },
+    {
+        'text': "<p><strong>A: 무거운 짐을 혼자서 다 옮기셨어요?<br>B: 아니요, 힘센 친동생이 적극적으로 ________ 아주 빠르고 쉽게 끝냈어요.</strong></p>",
+        'explanation': "<p><strong>도와준 덕분에</strong>: [한국어] 동생의 도움으로 긍정적인 결과가 생겼으므로 <code>V-(으)ㄴ 덕분에</code>를 사용합니다. 도와주다 → 도와준 덕분에 입니다.<br>[O'zbekcha] Ukaning yordami bilan ijobiy natijaga erishilgani sababli <code>V-(으)ㄴ 덕분에</code> ishlatiladi. 도와주다 → 도와준 덕분에.</p>",
+        'correct': "도와준 덕분에",
+        'choices': ["도와줘서", "도와주니까", "도와준 덕분에", "도와주기 때문에"]
+    },
+    {
+        'text': "<p><strong>A: 영화표를 왜 미리 예매해야 합니까?<br>B: 주말에는 영화관에 사람들이 굉장히 ________ 미리 예매하는 것이 좋습니다.</strong></p>",
+        'explanation': "<p><strong>많기 때문에</strong>: [한국어] 객관적이고 명확한 이유를 강하게 말할 때 <code>A/V-기 때문에</code>를 사용합니다. 많다 → 많기 때문에 입니다.<br>[O'zbekcha] Obyektiv va aniq sababni kuchliroq ta'kidlash uchun <code>A/V-기 때문에</code> ishlatiladi. 많다 → 많기 때문에.</p>",
+        'correct': "많기 때문에",
+        'choices': ["많은 덕분에", "많기 때문에", "많아서", "많아도"]
+    },
+    {
+        'text': "<p><strong>A: 배가 너무 아파서 견딜 수가 없어요.<br>B: 아이스크림을 너무 많이 ________ 배가 아픈 거예요. 빨리 약을 드세요.</strong></p>",
+        'explanation': "<p><strong>먹어서</strong>: [한국어] 배가 아픈 원인을 나타내는 <code>A/V-아/어서</code>입니다. 먹다 → 먹어서 입니다.<br>[O'zbekcha] Qorin og'rig'ining sababini bildiruvchi <code>A/V-아/어서</code>. 먹다 → 먹어서.</p>",
+        'correct': "먹어서",
+        'choices': ["먹어서", "먹으니까", "먹기 때문에", "먹은 덕분에"]
+    },
+    {
+        'text': "<p><strong>A: 내일 아침 일찍 산에 올라갈까요?<br>B: 내일은 길이 많이 ________ 조심해서 등산해야 해요.</strong></p>",
+        'explanation': "<p><strong>미끄러울 테니까</strong>: [한국어] 추측을 나타내는 '-(으)ㄹ 테다' 뒤에 명령/당부의 이유를 나타내는 '-(으)니까'가 결합된 형태입니다.<br>[O'zbekcha] Taxminni bildiruvchi '-(으)ㄹ 테다' va buyruq/maslahat sababini bildiruvchi '-(으)니까' ning birikmasi.</p>",
+        'correct': "미끄러울 테니까",
+        'choices': ["미끄러워서", "미끄러운 덕분에", "미끄러울 테니까", "미끄럽기 때문에"]
+    },
+    {
+        'text': "<p><strong>A: 왜 매일매일 꾸준히 한국어 단어를 외워요?<br>B: 어휘력이 부족하면 한국인들과 대화하기가 아주 ________ 열심히 외우고 있어요.</strong></p>",
+        'explanation': "<p><strong>어렵기 때문에</strong>: [한국어] 공부하는 명확한 이유를 나타낼 때 <code>A/V-기 때문에</code>를 씁니다. 어렵다 → 어렵기 때문에 입니다.<br>[O'zbekcha] O'qishning aniq sababini bildirish uchun <code>A/V-기 때문에</code> ishlatiladi. 어렵다 → 어렵기 때문에.</p>",
+        'correct': "어렵기 때문에",
+        'choices': ["어려워서", "어렵기 때문에", "어려우니까", "어려운 덕분에"]
+    },
+    {
+        'text': "<p><strong>A: 길을 잃어버리지 않고 식당을 잘 찾으셨네요!<br>B: 네, 스마트폰의 정확한 지도 앱 ________ 아주 쉽게 찾아올 수 있었어요.</strong></p>",
+        'explanation': "<p><strong>덕분에</strong>: [한국어] 지도 앱이라는 명사(N)의 긍정적인 역할로 좋은 결과가 생겼으므로 <code>N 덕분에</code>를 씁니다.<br>[O'zbekcha] Xarita ilovasi (N) ning ijobiy yordami natijasida yaxshi natija bo'lgani uchun <code>N 덕분에</code> ishlatiladi.</p>",
+        'correct': "덕분에",
+        'choices': ["덕분에", "때문에", "이라서", "이니까"]
+    },
+    {
+        'text': "<p><strong>A: 매운 고추장 찌개가 입맛에 잘 맞으세요?<br>B: 아니요, 너무 심하게 ________ 물을 세 컵이나 마셨어요.</strong></p>",
+        'explanation': "<p><strong>매워서</strong>: [한국어] 물을 많이 마신 이유를 나타내는 <code>A/V-아/어서</code>입니다. 맵다('ㅂ' 불규칙) → 매워서 입니다.<br>[O'zbekcha] Ko'p suv ichishning sababini bildiruvchi <code>A/V-아/어서</code>. 맵다 → 매워서.</p>",
+        'correct': "매워서",
+        'choices': ["매우니까", "매워서", "매운 덕분에", "맵기 때문에"]
+    },
+    {
+        'text': "<p><strong>A: 이 복잡한 서류 작업을 오늘 안에 다 끝내야 할까요?<br>B: 시간이 아주 많이 ________ 오늘은 그만 퇴근합시다.</strong></p>",
+        'explanation': "<p><strong>늦었으니까</strong>: [한국어] 뒤에 청유문('퇴근합시다')이 오므로 과거 시제 '았/었' 뒤에도 붙을 수 있는 <code>A/V-(으)니까</code>를 사용합니다.<br>[O'zbekcha] Gap oxirida taklif kelyapti va o'tgan zamon '았/었' ga ham qo'shilishi mumkin bo'lgan <code>A/V-(으)니까</code> ishlatiladi.</p>",
+        'correct': "늦었으니까",
+        'choices': ["늦어서", "늦기 때문에", "늦었으니까", "늦은 덕분에"]
+    },
+    {
+        'text': "<p><strong>A: 컴퓨터가 갑자기 왜 고장 났어요?<br>B: 무서운 컴퓨터 바이러스 ________ 중요한 파일이 다 지워지고 고장 났어요.</strong></p>",
+        'explanation': "<p><strong>때문에</strong>: [한국어] 명사(바이러스) 뒤에 붙어 고장의 원인을 나타낼 때 <code>N 때문에</code>를 씁니다.<br>[O'zbekcha] Ot (virus) orqasidan kelib, buzilishning sababini bildirish uchun <code>N 때문에</code> ishlatiladi.</p>",
+        'correct': "때문에",
+        'choices': ["덕분에", "라서", "때문에", "니까"]
+    },
+    {
+        'text': "<p><strong>A: 매일 아침 조깅을 하니까 건강이 어때요?<br>B: 매일 아침 꾸준히 운동을 ________ 요즘 몸이 정말 가볍고 상쾌해요.</strong></p>",
+        'explanation': "<p><strong>한 덕분에</strong>: [한국어] 운동을 한 긍정적인 결과로 건강해졌으므로 <code>V-(으)ㄴ 덕분에</code>를 씁니다. 하다 → 한 덕분에 입니다.<br>[O'zbekcha] Sport bilan shug'ullanishning ijobiy natijasi sifatida sog'lomlashgani uchun <code>V-(으)ㄴ 덕분에</code> ishlatiladi. 하다 → 한 덕분에.</p>",
+        'correct': "한 덕분에",
+        'choices': ["한 덕분에", "해서", "하니까", "하기 때문에"]
+    },
+    {
+        'text': "<p><strong>A: 왜 식당에서 아무것도 안 드시고 그냥 나오셨어요?<br>B: 식당 안에 사람이 너무 ________ 빈자리가 없어서 그냥 나왔어요.</strong></p>",
+        'explanation': "<p><strong>많아서</strong>: [한국어] 자리가 없었던 이유를 자연스럽게 이어주는 <code>A/V-아/어서</code>입니다. 많다 → 많아서 입니다.<br>[O'zbekcha] Bo'sh joy yo'qligining sababini tabiiy ravishda bog'lovchi <code>A/V-아/어서</code>. 많다 → 많아서.</p>",
+        'correct': "많아서",
+        'choices': ["많으니까", "많은 덕분에", "많아서", "많기 때문에"]
+    },
+    {
+        'text': "<p><strong>A: 영화관 앞인데 빨리 들어갈까요?<br>B: 영화 시작 시간이 아직 한 시간이나 ________ 커피숍에서 커피 한잔 마셔요.</strong></p>",
+        'explanation': "<p><strong>남았으니까</strong>: [한국어] 뒤에 청유문('마셔요')이 오므로 <code>A/V-(으)니까</code>를 사용합니다. 남다 + 았/었 + 니까 입니다.<br>[O'zbekcha] Gap oxirida taklif kelyapti, shuning uchun <code>A/V-(으)니까</code> ishlatiladi.</p>",
+        'correct': "남았으니까",
+        'choices': ["남아서", "남았으니까", "남기 때문에", "남은 덕분에"]
+    },
+    {
+        'text': "<p><strong>A: 어제 약속 시간에 왜 그렇게 늦으셨어요?<br>B: 갑자기 내린 소나기 ________ 길이 너무 미끄러워서 차가 많이 막혔어요.</strong></p>",
+        'explanation': "<p><strong>때문에</strong>: [한국어] 명사(소나기)로 인한 부정적 원인을 나타낼 때 <code>N 때문에</code>를 씁니다.<br>[O'zbekcha] Ot (jala) sababli yuzaga kelgan salbiy holatni bildirish uchun <code>N 때문에</code> ishlatiladi.</p>",
+        'correct': "때문에",
+        'choices': ["때문에", "덕분에", "라서", "니까"]
+    },
+    {
+        'text': "<p><strong>A: 프로젝트를 혼자서 다 끝내느라 고생 많으셨어요.<br>B: 팀원들이 옆에서 많이 ________ 생각보다 아주 일찍 끝낼 수 있었어요.</strong></p>",
+        'explanation': "<p><strong>도와준 덕분에</strong>: [한국어] 팀원들의 도움으로 일찍 끝나는 좋은 결과가 생겼으므로 <code>V-(으)ㄴ 덕분에</code>를 씁니다.<br>[O'zbekcha] Jamoa a'zolarining yordami bilan ish erta tugashidek ijobiy natija bo'lgani uchun <code>V-(으)ㄴ 덕분에</code> ishlatiladi.</p>",
+        'correct': "도와준 덕분에",
+        'choices': ["도와줘서", "도와주니까", "도와준 덕분에", "도와주기 때문에"]
+    },
+    {
+        'text': "<p><strong>A: 머리가 너무 복잡하고 스트레스가 심해요.<br>B: 머리가 아주 ________ 오늘은 책상에서 일어나 산책을 좀 하세요.</strong></p>",
+        'explanation': "<p><strong>아프니까</strong>: [한국어] 뒤에 명령문('산책을 하세요')이 오므로 <code>A/V-(으)니까</code>를 사용합니다. 아프다 → 아프니까 입니다.<br>[O'zbekcha] Gap oxirida buyruq kelyapti, shuning uchun sababni bildiruvchi <code>A/V-(으)니까</code> ishlatiladi. 아프다 → 아프니까.</p>",
+        'correct': "아프니까",
+        'choices': ["아파서", "아픈 덕분에", "아프니까", "아프기 때문에"]
+    },
+    {
+        'text': "<p><strong>A: 너무 많이 걸었더니 발가락이 너무 아파요.<br>B: 새로 산 신발이 너무 ________ 발이 아픈 거예요. 편한 신발로 갈아 신으세요.</strong></p>",
+        'explanation': "<p><strong>작아서</strong>: [한국어] 발이 아픈 원인을 나타내는 <code>A/V-아/어서</code>입니다. 작다 → 작아서 입니다.<br>[O'zbekcha] Oyoq og'rig'i sababini bildiruvchi <code>A/V-아/어서</code>. 작다 → 작아서.</p>",
+        'correct': "작아서",
+        'choices': ["작기 때문에", "작아서", "작으니까", "작은 덕분에"]
+    },
+    {
+        'text': "<p><strong>A: 선생님, 이 한국어 문법을 도저히 이해할 수 없어요.<br>B: 이 문법은 아주 복잡하고 ________ 제가 다시 한 번 천천히 설명해 드릴게요.</strong></p>",
+        'explanation': "<p><strong>어려우니까</strong>: [한국어] 화자의 의지나 청유/명령을 나타내는 문장 앞에는 <code>A/V-(으)니까</code>를 씁니다. 어렵다 → 어려우니까 입니다.<br>[O'zbekcha] So'zlovchining niyati yoki buyruq/taklif gapdan oldin sababni bildirish uchun <code>A/V-(으)니까</code> ishlatiladi.</p>",
+        'correct': "어려우니까",
+        'choices': ["어려워서", "어려운 덕분에", "어려웠기 때문에", "어려우니까"]
+    },
+    {
+        'text': "<p><strong>A: 비행기 출발 시간이 벌써 지났는데 왜 아직 안 떠나죠?<br>B: 갑작스러운 기상 악화 ________ 비행기 이륙이 1시간 지연되었습니다.</strong></p>",
+        'explanation': "<p><strong>때문에</strong>: [한국어] 명사(기상 악화) 뒤에 붙어 공지 등에서 명확한 이유를 나타낼 때 <code>N 때문에</code>를 씁니다.<br>[O'zbekcha] E'lonlarda ot (ob-havo yomonlashishi) orqasidan kelib, aniq sababni bildirish uchun <code>N 때문에</code> ishlatiladi.</p>",
+        'correct': "때문에",
+        'choices': ["덕분에", "이라서", "때문에", "이니까"]
+    },
+    {
+        'text': "<p><strong>A: 우와! 어떻게 이렇게 맛있는 김치찌개를 끓이셨어요?<br>B: 시골에서 할머니가 직접 보내주신 신선하고 맛있는 김치 ________ 아주 맛있게 끓였어요.</strong></p>",
+        'explanation': "<p><strong>덕분에</strong>: [한국어] 맛있는 김치(명사)라는 긍정적인 요소 덕분에 찌개가 맛있어졌으므로 <code>N 덕분에</code>를 씁니다.<br>[O'zbekcha] Mazali kimchi (ot) sharofati bilan sho'rva shirin chiqqani uchun <code>N 덕분에</code> ishlatiladi.</p>",
+        'correct': "덕분에",
+        'choices': ["때문에", "덕분에", "이라서", "이니까"]
+    },
+    {
+        'text': "<p><strong>A: 한국 노래를 왜 그렇게 매일 반복해서 들으세요?<br>B: 한국 노래 가사가 정말 아름답고 ________ 매일 들어도 전혀 지루하지 않아요.</strong></p>",
+        'explanation': "<p><strong>좋아서</strong>: [한국어] 노래를 듣는 자연스러운 이유를 나타낼 때 <code>A/V-아/어서</code>를 씁니다. 좋다 → 좋아서 입니다.<br>[O'zbekcha] Qo'shiq eshitishning tabiiy sababini bildirish uchun <code>A/V-아/어서</code> ishlatiladi. 좋다 → 좋아서.</p>",
+        'correct': "좋아서",
+        'choices': ["좋으니까", "좋은 덕분에", "좋기 때문에", "좋아서"]
+    }
+]
+
+QUESTIONS_17 = [
+    {
+        'text': "<p><strong>A: 밖이 추우니까 문을 좀 빨리 ________.<br>B: 네, 알겠습니다. </strong></p>",
+        'explanation': "<p><strong>01 <code>V-아/어 주세요</code> / <code>V-아/어 주시겠어요?</code></strong>: 다른 사람에게 어떤 행동을 하도록 요청하거나 부탁할 때 사용합니다. 동사 어간이 'ㅏ, ㅗ'로 끝나면 `-(아)` 주세요/주시겠어요?, 그 외로 끝나면 `-(어)` 주세요/주시겠어요?, '하다'로 끝나면 `-(해)` 주세요/주시겠어요?를 사용합니다. <code>V-아/어 주시겠어요?</code>가 더 부드럽고 예의 바른 표현입니다. 💡 <br><br><strong>01 <code>V-아/어 주세요</code> / <code>V-아/어 주시겠어요?</code></strong>: Boshqa odamga biror harakatni bajarishni iltimos qilish yoki so'rash uchun ishlatiladi. Fe'l o'zagi 'ㅏ, ㅗ' bilan tugasa `-(아)` 주세요/주시겠어요?, boshqa narsa bilan tugasa `-(어)` 주세요/주시겠어요?, '하다' bilan tugasa `-(해)` 주세요/주시겠어요? ishlatiladi. <code>V-아/어 주시겠어요?</code> yumshoqroq va xushmuomalalik ifodasidir. 💡</p>",
+        'correct': "닫아 주세요",
+        'choices': ["닫아 줄게요", "닫아 주세요", "닫아 줄까요?", "닫아 주시겠어요?"]
+    },
+    {
+        'text': "<p><strong>A: 제 안경을 어디에 두었는지 모르겠어요. 함께 좀 빨리 ________.<br>B: 그래요? 그럼 이 주변을 좀 찾아 주세요.</strong></p>",
+        'explanation': "<p><strong>01 <code>V-아/어 주세요</code></strong>: 부탁할 때 사용합니다. 찾다 -> 찾아 주세요. 빨리 부탁할 때는 부사 '빨리'와 함께 씁니다.<br><strong>01 <code>V-아/어 주세요</code></strong>: Iltimos qilganda ishlatiladi. 찾다 -> 찾아 주세요. Tezda iltimos qilganda '빨리' ravishi bilan birga keladi.</p>",
+        'correct': "찾아 주세요",
+        'choices': ["찾아 주시겠어요?", "찾아 줄까요?", "찾아 주세요", "찾아 줄게요"]
+    },
+    {
+        'text': "<p><strong>A: 이 편지를 어떻게 써야 해요?<br>B: 음, 이 양식에 친절하게 좀 ________.</strong></p>",
+        'explanation': "<p><strong>01 <code>V-아/어 주세요</code></strong>: 부탁할 때 사용합니다. 쓰다 -> 써 주세요. 친절하게 부탁할 때는 부사 '친절하게'와 함께 씁니다.<br><strong>01 <code>V-아/어 주세요</code></strong>: Iltimos qilganda ishlatiladi. 쓰다 -> 써 주세요. Xushmuomalalik bilan iltimos qilganda '친절하게' ravishi bilan birga keladi.</p>",
+        'correct': "써 주세요",
+        'choices': ["써 주세요", "써 줄게요", "써 주시겠어요?", "써 줄까요?"]
+    },
+    {
+        'text': "<p><strong>A: 목이 너무 말라요. 물 좀 빨리 ________.<br>B: 네, 여기 있습니다. </strong></p>",
+        'explanation': "<p><strong>01 <code>V-아/어 주세요</code></strong>: 부탁할 때 사용합니다. 가져다주다 -> 가져다주세요. 빨리 부탁할 때는 부사 '빨리'와 함께 씁니다.<br><strong>01 <code>V-아/어 주세요</code></strong>: Iltimos qilganda ishlatiladi. 가져다주다 -> 가져다주세요. Tezda iltimos qilganda '빨리' ravishi bilan birga keladi.</p>",
+        'correct': "가져다주세요",
+        'choices': ["가져다줄게요", "가져다주세요", "가져다줄까요?", "가져다주시겠어요?"]
+    },
+    {
+        'text': "<p><strong>A: 소리가 너무 작아요. 소리를 조금 더 ________.<br>B: 아, 네. 알겠습니다. </strong></p>",
+        'explanation': "<p><strong>01 <code>V-아/어 주세요</code></strong>: 부탁할 때 사용합니다. 키우다 -> 키워 주세요. 조금 더 부탁할 때는 부사 '조금 더'와 함께 씁니다.<br><strong>01 <code>V-아/어 주세요</code></strong>: Iltimos qilganda ishlatiladi. 키우da -> 키워 주세요. Biroz ko'proq iltimos qilganda '조금 더' ravishi bilan birga keladi.</p>",
+        'correct': "키워 주세요",
+        'choices': ["키워 줄까요?", "키워 주세요", "키워 주시겠어요?", "키워 줄게요"]
+    },
+    {
+        'text': "<p><strong>A: 이 상자가 너무 무거워요. 같이 좀 빨리 ________.<br>B: 네, 저기에 놓아 주세요. </strong></p>",
+        'explanation': "<p><strong>01 <code>V-아/어 주세요</code></strong>: 부탁할 때 사용합니다. 들다 -> 들어 주세요. 빨리 부탁할 때는 부사 '빨리'와 함께 씁니다.<br><strong>01 <code>V-아/어 주세요</code></strong>: Iltimos qilganda ishlatiladi. 들다 -> 들어 주세요. Tezda iltimos qilganda '빨리' ravishi bilan birga keladi.</p>",
+        'correct': "들어 주세요",
+        'choices': ["들어 주시겠어요?", "들어 줄게요", "들어 줄까요?", "들어 주세요"]
+    },
+    {
+        'text': "<p><strong>A: 공부하고 있어요. 조금만 친절하게 ________.<br>B: 미안해요. </strong></p>",
+        'explanation': "<p><strong>01 <code>V-아/어 주세요</code></strong>: 부탁할 때 사용합니다. 조용히 하다 -> 조용히 해 주세요. 친절하게 부탁할 때는 부사 '친절하게'와 함께 씁니다.<br><strong>01 <code>V-아/어 주세요</code></strong>: Iltimos qilganda ishlatiladi. 조용히 하다 -> 조용히 해 주세요. Xushmuomalalik bilan iltimos qilganda '친절하게' ravishi bilan birga keladi.</p>",
+        'correct': "조용히 해 주세요",
+        'choices': ["조용히 해 주시겠어요?", "조용히 해 줄게요", "조용히 해 주세요", "조용히 해 줄까요?"]
+    },
+    {
+        'text': "<p><strong>A: 한국말이 너무 빨라서 안 들려요. 조금 천천히 ________.<br>B: 죄송합니다.</strong></p>",
+        'explanation': "<p><strong>01 <code>V-아/어 주세요</code></strong>: 부탁할 때 사용합니다. 말하다 -> 말해 주세요. 조금 천천히 부탁할 때는 부사 '조금 천천히'와 함께 씁니다.<br><strong>01 <code>V-아/어 주세요</code></strong>: Iltimos qilganda ishlatiladi. 말하다 -> 말해 주세요. Biroz sekin iltimos qilganda '조금 천천히' ravishi bilan birga keladi.</p>",
+        'correct': "말해 주세요",
+        'choices': ["말해 줄게요", "말해 주시겠어요?", "말해 줄까요?", "말해 주세요"]
+    },
+    {
+        'text': "<p><strong>A: 실례지만, 서울역으로 가는 길을 좀 빨리 ________.<br>B: 네, 이리로 가세요. </strong></p>",
+        'explanation': "<p><strong>01 <code>V-아/어 주시겠어요?</code></strong>: 더 예의 바른 표현입니다. 알려주다 -> 알려주시겠어요?. 빨리 부탁할 때는 부사 '빨리'와 함께 씁니다.<br><strong>01 <code>V-아/어 주시겠어요?</code></strong>: Xushmuomalalik ifodasidir. 알려주다 -> 알려주시겠어요?. Tezda iltimos qilganda '빨리' ravishi bilan birga keladi.</p>",
+        'correct': "알려주시겠어요?",
+        'choices': ["알려줄까요?", "알려주시겠어요?", "알려주세요", "알려줄게요"]
+    },
+    {
+        'text': "<p><strong>A: 저 죄송하지만, 저희 사진을 좀 친절하게 ________.<br>B: 네, 찍어 드릴게요. </strong></p>",
+        'explanation': "<p><strong>01 <code>V-아/어 주시겠어요?</code></strong>: 더 예의 바른 표현입니다. 찍다 -> 찍어주시겠어요?. 친절하게 부탁할 때는 부사 '친절하게'와 함께 씁니다.<br><strong>01 <code>V-아/어 주시겠어요?</code></strong>: Xushmuomalalik ifodasidir. 찍다 -> 찍어주시겠어요?. Xushmuomalalik bilan iltimos qilganda '친절하게' ravishi bilan birga keladi.</p>",
+        'correct': "찍어주시겠어요?",
+        'choices': ["찍어주세요", "찍어주시겠어요?", "찍어줄까요?", "찍어줄게요"]
+    },
+    {
+        'text': "<p><strong>A: 이 돈을 좀 만 원짜리로 빨리 ________.<br>B: 네, 여기 있습니다. </strong></p>",
+        'explanation': "<p><strong>01 <code>V-아/어 주시겠어요?</code></strong>: 더 예의 바른 표현입니다. 바꾸다 -> 바꿔주시겠어요?. 빨리 부탁할 때는 부사 '빨리'와 함께 씁니다.<br><strong>01 <code>V-아/어 주시겠어요?</code></strong>: Xushmuomalalik ifodasidir. 바꾸다 -> 바꿔주시겠어요?. Tezda iltimos qilganda '빨리' ravishi bilan birga keladi.</p>",
+        'correct': "바꿔주시겠어요?",
+        'choices': ["바꿔주세요", "바꿔줄게요", "바꿔줄까요?", "바꿔주시겠어요?"]
+    },
+    {
+        'text': "<p><strong>A: 한국어 숙제가 너무 어려워요. 저를 좀 빨리 ________.<br>B: 네, 그래요. </strong></p>",
+        'explanation': "<p><strong>01 <code>V-아/어 주시겠어요?</code></strong>: 더 예의 바른 표현입니다. 도와주다 -> 도와주시겠어요?. 빨리 부탁할 때는 부사 '빨리'와 함께 씁니다.<br><strong>01 <code>V-아/어 주시겠어요?</code></strong>: Xushmuomalalik ifodasidir. 도와주다 -> 도와주시겠어요?. Tezda iltimos qilganda '빨리' ravishi bilan birga keladi.</p>",
+        'correct': "도와주시겠어요?",
+        'choices': ["도와주세요", "도와주시겠어요?", "도와줄게요", "도와줄까요?"]
+    },
+    {
+        'text': "<p><strong>A: 한국말이 너무 빨라서 잘 이해가 안 돼요. 조금 천천히 친절하게 ________.<br>B: 죄송합니다.</strong></p>",
+        'explanation': "<p><strong>01 <code>V-아/어 주시겠어요?</code></strong>: 더 예의 바른 표현입니다. 말씀해주다 -> 말씀해주시겠어요?. 조금 천천히 친절하게 부탁할 때는 부사 '조금 천천히 친절하게'와 함께 씁니다.<br><strong>01 <code>V-아/어 주시겠어요?</code></strong>: Xushmuomalalik ifodasidir. 말씀해주다 -> 말씀해주시겠어요?. Biroz sekin xushmuomalalik bilan iltimos qilganda '조금 천천히 친절하게' ravishi bilan birga keladi.</p>",
+        'correct': "말씀해주시겠어요?",
+        'choices': ["말씀해주세요", "말씀해주시겠어요?", "말씀해줄까요?", "말씀해줄게요"]
+    },
+    {
+        'text': "<p><strong>A: 에어컨 온도를 조금 더 빨리 ________.<br>B: 네, 알겠습니다. </strong></p>",
+        'explanation': "<p><strong>01 <code>V-아/어 주시겠어요?</code></strong>: 더 예의 바른 표현입니다. 높여주다 -> 높여주시겠어요?. 조금 더 빨리 부탁할 때는 부사 '조금 더 빨리'와 함께 씁니다.<br><strong>01 <code>V-아/어 주시겠어요?</code></strong>: Xushmuomalalik ifodasidir. 높여주다 -> 높여주시겠어요?. Biroz ko'proq tezda iltimos qilganda '조금 더 빨리' ravishi bilan birga keladi.</p>",
+        'correct': "높여주시겠어요?",
+        'choices': ["높여주세요", "높여줄까요?", "높여주시겠어요?", "높여줄게요"]
+    },
+    {
+        'text': "<p><strong>A: 이 메뉴판을 좀 친절하게 ________.<br>B: 네, 여기 있습니다. </strong></p>",
+        'explanation': "<p><strong>01 <code>V-아/어 주시겠어요?</code></strong>: 더 예의 바른 표현입니다. 읽어주다 -> 읽어주시겠어요?. 친절하게 부탁할 때는 부사 '친절하게'와 함께 씁니다.<br><strong>01 <code>V-아/어 주시겠어요?</code></strong>: Xushmuomalalik ifodasidir. 읽어주다 -> 읽어주시겠어요?. Xushmuomalalik bilan iltimos qilganda '친절하게' ravishi bilan birga keladi.</p>",
+        'correct': "읽어주시겠어요?",
+        'choices': ["읽어주세요", "읽어줄까요?", "읽어주시겠어요?", "읽어줄게요"]
+    },
+    {
+        'text': "<p><strong>A: 목이 마른데, 물 한 잔만 빨리 ________.<br>B: 네, 여기 있습니다. </strong></p>",
+        'explanation': "<p><strong>01 <code>V-아/어 주시겠어요?</code></strong>: 더 예의 바른 표현입니다. 가져다주다 -> 가져다주시겠어요?. 빨리 부탁할 때는 부사 '빨리'와 함께 씁니다.<br><strong>01 <code>V-아/어 주시겠어요?</code></strong>: Xushmuomalalik ifodasidir. 가져다주다 -> 가져다주시겠어요?. Tezda iltimos qilganda '빨리' ravishi bilan birga keladi.</p>",
+        'correct': "가져다주시겠어요?",
+        'choices': ["가져다주세요", "가져다줄까요?", "가져다줄게요", "가져다주시겠어요?"]
+    },
+    {
+        'text': "<p><strong>A: 방이 너무 더러워요.<br>B: 그럼 제가 같이 빨리 ________.</strong></p>",
+        'explanation': "<p><strong>02 <code>V-아/어 줄게요</code> / <code>V-아/어 줄까요?</code></strong>: 말하는 사람이 다른 사람을 위해 어떤 행동을 하겠다고 제안하거나 자원할 때 사용합니다. 동사 어간 'ㅏ, ㅗ' -> `-(아)` 줄게요/줄까요?, 그 외 -> `-(어)` 줄게요/줄까요?, '하다' -> `-(해)` 줄게요/줄까요?를 사용합니다. <code>V-아/어 줄게요</code>는 의지를, <code>V-아/어 줄까요?</code>는 제안과 의견을 묻습니다. 💡<br><br><strong>02 <code>V-아/어 줄게요</code> / <code>V-아/어 줄까요?</code></strong>: Gapirayotgan kishi boshqa kishi uchun biror harakatni bajarishni taklif qilganda yoki ko'ngilli bo'lib turganda ishlatiladi. Fe'l o'zagi 'ㅏ, ㅗ' bilan tugasa `-(아)` 줄게요/줄까요?, boshqa narsa bilan tugasa `-(어)` 줄게요/줄까요?, '하다' bilan tugasa `-(해)` 줄게요/줄까요? ishlatiladi. <code>V-아/어 줄게요</code> irodani bildiradi, `V-아/어 줄까요?` taklif va fikrni so'raydi. 💡</p>",
+        'correct': "청소해 줄게요",
+        'choices': ["청소해 줄게요", "청소해 줄까요?", "청소해 주세요", "청소해 주시겠어요?"]
+    },
+    {
+        'text': "<p><strong>A: 집 열쇠를 어디에 두었는지 모르겠어요.<br>B: 그래요? 그럼 제가 함께 좀 빨리 ________.</strong></p>",
+        'explanation': "<p><strong>02 <code>V-아/어 줄게요</code></strong>: 자원할 때 사용합니다. 찾다 -> 찾아 줄게요. 빨리 자원할 때는 부사 '빨리'와 함께 씁니다.<br><strong>02 <code>V-아/어 줄게요</code></strong>: Ko'ngilli bo'lganda ishlatiladi. 찾다 -> 찾아 줄게요. Tezda ko'ngilli bo'lganda '빨리' ravishi bilan birga keladi.</p>",
+        'correct': "찾아 줄게요",
+        'choices': ["찾아 주시겠어요?", "찾아 줄까요?", "찾아 줄게요", "찾아 주세요"]
+    },
+    {
+        'text': "<p><strong>A: 이 한국어 편지를 잘 모르겠어요.<br>B: 그럼 제가 친절하게 ________.</strong></p>",
+        'explanation': "<p><strong>02 <code>V-아/어 줄게요</code></strong>: 자원할 때 사용합니다. 번역하다 -> 번역해 줄게요. 친절하게 자원할 때는 부사 '친절하게'와 함께 씁니다.<br><strong>02 <code>V-아/어 줄게요</code></strong>: Ko'ngilli bo'lganda ishlatiladi. 번역하다 -> 번역해 줄게요. Xushmuomalalik bilan ko'ngilli bo'lganda '친절하게' ravishi bilan birga keladi.</p>",
+        'correct': "번역해 줄게요",
+        'choices': ["번역해 주세요", "번역해 줄게요", "번역해 주시겠어요?", "번역해 줄까요?"]
+    },
+    {
+        'text': "<p><strong>A: 오늘 저녁 요리는 제가 할게요.<br>B: 아니요, 제가 같이 맛있는 저녁을 ________.</strong></p>",
+        'explanation': "<p><strong>02 <code>V-아/어 줄게요</code></strong>: 자원할 때 사용합니다. 만들다 -> 만들어 줄게요. 맛있는 저녁을 자원할 때는 형용사 '맛있는'과 함께 씁니다.<br><strong>02 <code>V-아/어 줄게요</code></strong>: Ko'ngilli bo'lganda ishlatiladi. 만들다 -> 만들어 줄게요. Mazali kechki ovqat uchun ko'ngilli bo'lganda '맛있는' sifati bilan birga keladi.</p>",
+        'correct': "만들어 줄게요",
+        'choices': ["만들어 주세요", "만들어 주시겠어요?", "만들어 줄까요?", "만들어 줄게요"]
+    },
+    {
+        'text': "<p><strong>A: 문이 닫혀 있네요.<br>B: 네, 그럼 제가 이 열쇠로 빨리 ________.</strong></p>",
+        'explanation': "<p><strong>02 <code>V-아/어 줄게요</code></strong>: 자원할 때 사용합니다. 열다 -> 열어 줄게요. 빨리 자원할 때는 부사 '빨리'와 함께 씁니다.<br><strong>02 <code>V-아/어 줄게요</code></strong>: Ko'ngilli bo'lganda ishlatiladi. 열다 -> 열어 줄게요. Tezda ko'ngilli bo'lganda '빨리' ravishi bilan birga keladi.</p>",
+        'correct': "열어 줄게요",
+        'choices': ["열어 줄까요?", "열어 줄게요", "열어 주세요", "열어 주시겠어요?"]
+    },
+    {
+        'text': "<p><strong>A: 컴퓨터가 고장 난 것 같아요.<br>B: 그래요? 그럼 제가 좀 친절하게 ________.</strong></p>",
+        'explanation': "<p><strong>02 <code>V-아/어 줄게요</code></strong>: 자원할 때 사용합니다. 보다 -> 봐 줄게요. 친절하게 자원할 때는 부사 '친절하게'와 함께 씁니다.<br><strong>02 <code>V-아/어 줄게요</code></strong>: Ko'ngilli bo'lganda ishlatiladi. 보다 -> 봐 줄게요. Xushmuomalalik bilan ko'ngilli bo'lganda '친절하게' ravishi bilan birga keladi.</p>",
+        'correct': "봐 줄게요",
+        'choices': ["봐 주시겠어요?", "봐 줄까요?", "봐 줄게요", "봐 주세요"]
+    },
+    {
+        'text': "<p><strong>A: 공부하고 있어요.<br>B: 아, 네. 그럼 제가 조금 친절하게 ________.</strong></p>",
+        'explanation': "<p><strong>02 <code>V-아/어 줄게요</code></strong>: 자원할 때 사용합니다. 조용히 하다 -> 조용히 해 줄게요. 친절하게 자원할 때는 부사 '친절하게'와 함께 씁니다.<br><strong>02 <code>V-아/어 줄게요</code></strong>: Ko'ngilli bo'lganda ishlatiladi. 조용히 하다 -> 조용히 해 줄게요. Xushmuomalalik bilan ko'ngilli bo'lganda '친절하게' ravishi bilan birga keladi.</p>",
+        'correct': "조용히 해 줄게요",
+        'choices': ["조용히 해 줄까요?", "조용히 해 주세요", "조용히 해 줄게요", "조용히 해 주시겠어요?"]
+    },
+    {
+        'text': "<p><strong>A: 우리 사진을 좀 찍고 싶어요.<br>B: 네, 그럼 제가 친절하게 ________.</strong></p>",
+        'explanation': "<p><strong>02 <code>V-아/어 줄게요</code></strong>: 자원할 때 사용합니다. 찍다 -> 찍어 줄게요. 친절하게 자원할 때는 부사 '친절하게'와 함께 씁니다.<br><strong>02 <code>V-아/어 줄게요</code></strong>: Ko'ngilli bo'lganda ishlatiladi. 찍다 -> 찍어 줄게요. Xushmuomalalik bilan ko'ngilli bo'lganda '친절하게' ravishi bilan birga keladi.</p>",
+        'correct': "찍어 줄게요",
+        'choices': ["찍어 줄게요", "찍어 줄까요?", "찍어 주세요", "찍어 주시겠어요?"]
+    },
+    {
+        'text': "<p><strong>A: 지각할 것 같아요.<br>B: 그럼 제가 택시를 좀 빨리 ________?</strong></p>",
+        'explanation': "<p><strong>02 <code>V-아/어 줄까요?</code></strong>: 제안할 때 사용합니다. 부르다 -> 불러 줄까요?. 빨리 제안할 때는 부사 '빨리'와 함께 씁니다.<br><strong>02 <code>V-아/어 줄까요?</code></strong>: Taklif qilganda ishlatiladi. 부르다 -> 불러 줄까요?. Tezda taklif qilganda '빨리' ravishi bilan birga keladi.</p>",
+        'correct': "불러 줄까요?",
+        'choices': ["불러 줄게요", "불러 줄까요?", "불러 주세요", "불러 주시겠어요?"]
+    },
+    {
+        'text': "<p><strong>A: 이 한국어 이메일이 너무 어려워요.<br>B: 그럼 제가 친절하게 ________?</strong></p>",
+        'explanation': "<p><strong>02 <code>V-아/어 줄까요?</code></strong>: 제안할 때 사용합니다. 번역하다 -> 번역해 줄까요?. 친절하게 제안할 때는 부사 '친절하게'와 함께 씁니다.<br><strong>02 <code>V-아/어 줄까요?</code></strong>: Taklif qilganda ishlatiladi. 번역하다 -> 번역해 줄까요?. Xushmuomalalik bilan taklif qilganda '친절하게' ravishi bilan birga keladi.</p>",
+        'correct': "번역해 줄까요?",
+        'choices': ["번역해 주세요", "번역해 줄까요?", "번역해 주시겠어요?", "번역해 줄게요"]
+    },
+    {
+        'text': "<p><strong>A: 커피 마시고 싶어요.<br>B: 그럼 제가 맛있는 커피를 빨리 ________?</strong></p>",
+        'explanation': "<p><strong>02 <code>V-아/어 줄까요?</code></strong>: 제안할 때 사용합니다. 만들다 -> 만들어 줄까요?. 맛있는 커피를 빨리 제안할 때는 형용사 '맛있는'과 부사 '빨리'와 함께 씁니다.<br><strong>02 <code>V-아/어 줄까요?</code></strong>: Taklif qilganda ishlatiladi. 만들다 -> 만들어 줄까요?. Mazali kofe uchun tezda taklif qilganda '맛있는' sifati va '빨리' ravishi bilan birga keladi.</p>",
+        'correct': "만들어 줄까요?",
+        'choices': ["만들어 주세요", "만들어 주시겠어요?", "만들어 줄까요?", "만들어 줄게요"]
+    },
+    {
+        'text': "<p><strong>A: 청소하기 귀찮아요.<br>B: 그럼 제가 같이 빨리 ________?</strong></p>",
+        'explanation': "<p><strong>02 <code>V-아/어 줄까요?</code></strong>: 제안할 때 사용합니다. 청소하다 -> 청소해 줄까요?. 빨리 제안할 때는 부사 '빨리'와 함께 씁니다.<br><strong>02 <code>V-아/어 줄까요?</code></strong>: Taklif qilganda ishlatiladi. 청소하다 -> 청소해 줄까요?. Tezda taklif qilganda '빨리' ravishi bilan birga keladi.</p>",
+        'correct': "청소해 줄까요?",
+        'choices': ["청소해 주세요", "청소해 줄게요", "청소해 줄까요?", "청소해 주시겠어요?"]
+    },
+    {
+        'text': "<p><strong>A: 이 상자가 너무 무거워요.<br>B: 그럼 제가 같이 좀 빨리 ________?</strong></p>",
+        'explanation': "<p><strong>02 <code>V-아/어 줄까요?</code></strong>: 제안할 때 사용합니다. 들다 -> 들어 줄까요?. 빨리 제안할 때는 부사 '빨리'와 함께 씁니다.<br><strong>02 <code>V-아/어 줄까요?</code></strong>: Taklif qilganda ishlatiladi. 들다 -> 들어 줄까요?. Tezda taklif qilganda '빨리' ravishi bilan birga keladi.</p>",
+        'correct': "들어 줄까요?",
+        'choices': ["들어 줄까요?", "들어 줄게요", "들어 주세요", "들어 주시겠어요?"]
+    },
+    {
+        'text': "<p><strong>A: 이 메뉴판을 잘 모르겠어요.<br>B: 그럼 제가 좀 친절하게 ________?</strong></p>",
+        'explanation': "<p><strong>02 <code>V-아/어 줄까요?</code></strong>: 제안할 때 사용합니다. 읽다 -> 읽어 줄까요?. 친절하게 제안할 때는 부사 '친절하게'와 함께 씁니다.<br><strong>02 <code>V-아/어 줄까요?</code></strong>: Taklif qilganda ishlatiladi. 읽다 -> 읽어 줄까요?. Xushmuomalalik bilan taklif qilganda '친절하게' ravishi bilan birga keladi.</p>",
+        'correct': "읽어 줄까요?",
+        'choices': ["읽어 주시겠어요?", "읽어 줄게요", "읽어 줄까요?", "읽어 주세요"]
+    },
+    {
+        'text': "<p><strong>A: 한국어 숙제가 너무 어려워요.<br>B: 그럼 제가 좀 빨리 ________?</strong></p>",
+        'explanation': "<p><strong>02 <code>V-아/어 줄까요?</code></strong>: 제안할 때 사용합니다. 도와주다 -> 도와줄까요?. 빨리 제안할 때는 부사 '빨리'와 함께 씁니다.<br><strong>02 <code>V-아/어 줄까요?</code></strong>: Taklif qilganda ishlatiladi. 도와주다 -> 도와줄까요?. Tezda taklif qilganda '빨리' ravishi bilan birga keladi.</p>",
+        'correct': "도와줄까요?",
+        'choices': ["도와줄까요?", "도와주세요", "도와줄게요", "도와주시겠어요?"]
+    },
+    {
+        'text': "<p><strong>A: 이 코트가 무거워요.<br>B: 그럼 제가 코트를 빨리 좀 ________?</strong></p>",
+        'explanation': "<p><strong>02 <code>V-아/어 줄까요?</code></strong>: 제안할 때 사용합니다. 받아주다 -> 받아줄까요?. 빨리 제안할 때는 부사 '빨리'와 함께 씁니다.<br><strong>02 <code>V-아/어 줄까요?</code></strong>: Taklif qilganda ishlatiladi. 받아주다 -> 받아줄까요?. Tezda taklif qilganda '빨리' ravishi bilan birga keladi.</p>",
+        'correct': "받아줄까요?",
+        'choices': ["받아주세요", "받아줄게요", "받아줄까요?", "받아주시겠어요?"]
+    }
+]

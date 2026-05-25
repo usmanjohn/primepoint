@@ -4,41 +4,33 @@ from masters.models import Master
 from practice.models import Subject, Practice, PracticeQuestion, PracticeChoice
 
 from .korean_questions import (
-    quest_joy_vaqt_olmosh,
-    quest_yonalish_vosita_olmosh,
-    quest_harakat_qaratilgan_olmosh,
-    quest_qoshish_yuklama,
-    quest_taqqoslash_yuklama,
-)
+    QUESTIONS_14,
+    QUESTIONS_15,
+    QUESTIONS_16,
+    QUESTIONS_17)
 
 PRACTICES = [
     {
-        'title': '5-dars: Joy va vaqt yuklamalari (에/에서/부터/까지)',
-        'description': "Joy va vaqt yuklamalari (에 vs 에서, 부터, 까지) mavzusidagi amaliy test.",
-        'questions': quest_joy_vaqt_olmosh,
+        'title': '14-dars',
+        'description': "amaliy test.",
+        'questions': QUESTIONS_14,
     },
     {
-        'title': '6-dars: Yo\'nalish va vosita yuklamasi (으로/로)',
-        'description': "Yo'nalish va vosita yuklamasi (으로/로) mavzusidagi amaliy test.",
-        'questions': quest_yonalish_vosita_olmosh,
+        'title': '15-dars',
+        'description': "amaliy test.",
+        'questions': QUESTIONS_15,
     },
     {
-        'title': '7-dars: Harakat qaratilgan yuklamalar (한테/에게/께/마다)',
-        'description': "Harakat qaratilgan yuklamalar (한테, 에게, 께, 마다) mavzusidagi amaliy test.",
-        'questions': quest_harakat_qaratilgan_olmosh,
+        'title': '16-dars',
+        'description': "amaliy test.",
+        'questions': QUESTIONS_16,
     },
     {
-        'title': '8-dars: Qo\'shimcha yuklamalar (도/만/밖에/쯤)',
-        'description': "Qo'shimcha yuklamalar (도, 만, 밖에, 쯤) mavzusidagi amaliy test.",
-        'questions': quest_qoshish_yuklama,
-    },
-    {
-        'title': '9-dars: Taqqoslash yuklamalari (이나/나/처럼/같이/보다)',
-        'description': "Taqqoslash yuklamalari (이나/나, 처럼, 같이, 보다) mavzusidagi amaliy test.",
-        'questions': quest_taqqoslash_yuklama,
+        'title': '17-dars',
+        'description': "amaliy test.",
+        'questions': QUESTIONS_17,
     },
 ]
-
 
 class Command(BaseCommand):
     help = 'Create Korean grammar particle practice tests (lessons 5–9)'
