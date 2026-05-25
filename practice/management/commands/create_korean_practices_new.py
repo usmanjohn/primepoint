@@ -4,32 +4,94 @@ from masters.models import Master
 from practice.models import Subject, Practice, PracticeQuestion, PracticeChoice
 
 from .korean_questions import (
-    QUESTIONS_14,
-    QUESTIONS_15,
-    QUESTIONS_16,
-    QUESTIONS_17)
+    QUESTIONS_18,
+    QUESTIONS_19,
+    QUESTIONS_20,
+    QUESTIONS_21,
+    QUESTIONS_22,
+    QUESTIONS_23,
+    QUESTIONS_24,
+    QUESTIONS_25,
+    QUESTIONS_26,
+    QUESTIONS_27,
+    QUESTIONS_28,
+    QUESTIONS_29,
+    QUESTIONS_30,
+    QUESTIONS_31    
+    )
 
 PRACTICES = [
     {
-        'title': '14-dars',
+        'title': '18-dars',
         'description': "amaliy test.",
-        'questions': QUESTIONS_14,
+        'questions': QUESTIONS_18,
     },
     {
-        'title': '15-dars',
+        'title': '19-dars',
         'description': "amaliy test.",
-        'questions': QUESTIONS_15,
+        'questions': QUESTIONS_19,
     },
     {
-        'title': '16-dars',
+        'title': '20-dars',
         'description': "amaliy test.",
-        'questions': QUESTIONS_16,
+        'questions': QUESTIONS_20,
     },
     {
-        'title': '17-dars',
+        'title': '21-dars',
         'description': "amaliy test.",
-        'questions': QUESTIONS_17,
+        'questions': QUESTIONS_21,
     },
+    {
+        'title': '22-dars',
+        'description': "amaliy test.",
+        'questions': QUESTIONS_22,
+    },
+    {
+        'title': '23-dars',
+        'description': "amaliy test.",
+        'questions': QUESTIONS_23,
+    },
+    {
+        'title': '24-dars',
+        'description': "amaliy test.",
+        'questions': QUESTIONS_24,
+    },
+    {
+        'title': '25-dars',
+        'description': "amaliy test.",
+        'questions': QUESTIONS_25,
+    },
+    {
+        'title': '26-dars',
+        'description': "amaliy test.",
+        'questions': QUESTIONS_26,
+    },
+    {
+        'title': '27-dars',
+        'description': "amaliy test.",
+        'questions': QUESTIONS_27,
+    },
+    {
+        'title': '28-dars',
+        'description': "amaliy test.",
+        'questions': QUESTIONS_28,
+    },
+    {
+        'title': '29-dars',
+        'description': "amaliy test.",
+        'questions': QUESTIONS_29,
+    },
+    {
+        'title': '30-dars',
+        'description': "amaliy test.",
+        'questions': QUESTIONS_30,
+    },
+    {
+        'title': '31-dars',
+        'description': "amaliy test.",
+        'questions': QUESTIONS_31,
+    }
+
 ]
 
 class Command(BaseCommand):
@@ -61,7 +123,7 @@ class Command(BaseCommand):
                 defaults={
                     'description': practice_data['description'],
                     'subject': subject,
-                    'level': 'hard',
+                    'level': 'medium',
                     'is_free': True,
                     'is_published': True,
                     'is_available_for_all': True,
