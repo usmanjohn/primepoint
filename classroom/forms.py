@@ -53,13 +53,16 @@ class ClassroomMembershipForm(forms.Form):
 class LessonForm(forms.ModelForm):
     class Meta:
         model = Lesson
-        fields = ['title', 'description', 'order', 'status', 'is_published', 'practices', 'homeworks', 'tutorials']
+        fields = ['title', 'description', 'youtube_url', 'order', 'status', 'is_published', 'practices', 'homeworks', 'tutorials']
         widgets = {
             'title': forms.TextInput(attrs={
                 'class': 'form-core', 'placeholder': 'e.g. Lesson 1 — Greetings',
             }),
             'description': forms.Textarea(attrs={
                 'class': 'form-core', 'rows': 3,
+            }),
+            'youtube_url': forms.URLInput(attrs={
+                'class': 'form-core', 'placeholder': 'https://www.youtube.com/watch?v=...',
             }),
             'order': forms.NumberInput(attrs={'class': 'form-core', 'min': 0}),
             'status': forms.Select(attrs={'class': 'form-core'}),
@@ -121,3 +124,32 @@ class ClassroomReplyForm(forms.ModelForm):
             }),
         }
         labels = {'body': ''}
+
+
+class HomeworkInlineForm(forms.ModelForm):
+    class Meta:
+        model = Homework
+        fields = ['title', 'notes', 'practice', 'due_date']
+        widgets = {
+            'title': forms.TextInput(attrs={
+                'class': 'form-core', 'placeholder': 'e.g. Vocabulary Exercise',
+            }),
+            'notes': forms.Textarea(attrs={
+                'class': 'form-core', 'rows': 2,
+                'placeholder': 'Instructions for students (optional)',
+            }),
+            'practice': forms.Select(attrs={'class': 'form-core'}),
+            'due_date': forms.DateTimeInput(attrs={
+                'class': 'form-core', 'type': 'datetime-local',
+            }, format='%Y-%m-%dT%H:%M'),
+        }
+
+    def __init__(self, master, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        from practice.models import Practice as PracticeModel
+        from django.db.models import Q as DQ
+        self.fields['practice'].queryset = PracticeModel.objects.filter(
+            DQ(master=master, is_published=True) | DQ(is_available_for_all=True, is_published=True)
+        )
+        self.fields['practice'].required = False
+        self.fields['due_date'].required = False

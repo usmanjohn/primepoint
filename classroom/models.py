@@ -1,3 +1,4 @@
+import re
 from django.db import models
 from django.db.models import Q
 from masters.models import Master
@@ -62,12 +63,23 @@ class Lesson(models.Model):
     practices = models.ManyToManyField('practice.Practice', blank=True, related_name='lessons')
     homeworks = models.ManyToManyField('homework.Homework', blank=True, related_name='lessons')
     tutorials = models.ManyToManyField('tutorial.Tutorial', blank=True, related_name='lessons')
+    youtube_url = models.URLField(blank=True, help_text='Optional YouTube video URL for this lesson.')
     is_published = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ['order', 'created_at']
+
+    @property
+    def youtube_embed_url(self):
+        url = self.youtube_url.strip()
+        if not url:
+            return ''
+        m = re.search(r'(?:v=|youtu\.be/|embed/)([A-Za-z0-9_-]{11})', url)
+        if m:
+            return f'https://www.youtube.com/embed/{m.group(1)}'
+        return url
 
     def __str__(self):
         return f"{self.classroom.name} – {self.title}"

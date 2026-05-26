@@ -106,6 +106,12 @@
           <label for="{{ form.description.id_for_label }}">{% trans "Description" %}</label>
           {{ form.description }}
         </div>
+        <!-- YouTube URL -->
+        <div class="cr-field">
+          <label for="{{ form.youtube_url.id_for_label }}">{% trans "YouTube Video URL" %} <span style="font-weight:400;text-transform:none;">({% trans "optional" %})</span></label>
+          {{ form.youtube_url }}
+          {% if form.youtube_url.errors %}<ul class="errorlist">{% for e in form.youtube_url.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+        </div>
         <!-- Order + Status + Published row -->
         <div class="d-flex gap-3 flex-wrap">
           <div class="cr-field" style="flex:0 0 100px;">

@@ -8,7 +8,9 @@ from .models import Classroom, Lesson, LessonNote, ClassroomDiscussion, Classroo
 from .forms import (
     ClassroomForm, ClassroomMembershipForm, LessonForm,
     LessonNoteForm, ClassroomDiscussionForm, ClassroomReplyForm,
+    HomeworkInlineForm,
 )
+from homework.models import Homework
 
 
 def _get_master(request):
@@ -204,6 +206,7 @@ def lesson_detail(request, classroom_pk, lesson_pk):
     homeworks = lesson.homeworks.all()
     tutorials = lesson.tutorials.all()
     note_form = LessonNoteForm() if is_master_user else None
+    hw_form = HomeworkInlineForm(classroom.master) if is_master_user else None
     return render(request, 'classroom/lesson_detail.html', {
         'classroom': classroom,
         'lesson': lesson,
@@ -212,6 +215,7 @@ def lesson_detail(request, classroom_pk, lesson_pk):
         'homeworks': homeworks,
         'tutorials': tutorials,
         'note_form': note_form,
+        'hw_form': hw_form,
         'is_master_user': is_master_user,
     })
 
@@ -251,6 +255,27 @@ def lesson_delete(request, classroom_pk, lesson_pk):
         'classroom': classroom,
         'lesson': lesson,
     })
+
+
+# ── Lesson Homework (inline create) ───────────────────────────────────────────
+
+@login_required
+def lesson_homework_create(request, classroom_pk, lesson_pk):
+    classroom = get_object_or_404(Classroom, pk=classroom_pk)
+    _require_master_owns(request, classroom)
+    lesson = get_object_or_404(Lesson, pk=lesson_pk, classroom=classroom)
+    master = classroom.master
+    if request.method == 'POST':
+        form = HomeworkInlineForm(master, request.POST)
+        if form.is_valid():
+            hw = form.save(commit=False)
+            hw.master = master
+            hw.save()
+            lesson.homeworks.add(hw)
+            messages.success(request, 'Homework created and attached to this lesson.')
+        else:
+            messages.error(request, 'Please fix the errors below.')
+    return redirect('classroom:lesson_detail', classroom_pk=classroom.pk, lesson_pk=lesson.pk)
 
 
 # ── Lesson Notes ───────────────────────────────────────────────────────────────

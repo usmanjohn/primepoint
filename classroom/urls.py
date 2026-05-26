@@ -18,6 +18,9 @@ urlpatterns = [
     path('<int:classroom_pk>/lessons/<int:lesson_pk>/edit/', views.lesson_edit, name='lesson_edit'),
     path('<int:classroom_pk>/lessons/<int:lesson_pk>/delete/', views.lesson_delete, name='lesson_delete'),
 
+    # Lesson Homework (inline create)
+    path('<int:classroom_pk>/lessons/<int:lesson_pk>/homework/create/', views.lesson_homework_create, name='lesson_homework_create'),
+
     # Lesson Notes
     path('<int:classroom_pk>/lessons/<int:lesson_pk>/notes/upload/', views.lesson_note_upload, name='note_upload'),
     path('<int:classroom_pk>/lessons/<int:lesson_pk>/notes/<int:note_pk>/delete/', views.lesson_note_delete, name='note_delete'),
