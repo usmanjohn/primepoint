@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class CrosswordPuzzle(models.Model):
@@ -15,3 +16,42 @@ class CrosswordPuzzle(models.Model):
 
     class Meta:
         ordering = ['-created_at']
+
+
+class CodeBreakerPuzzle(models.Model):
+    DIFFICULTY_EASY   = 'easy'
+    DIFFICULTY_MEDIUM = 'medium'
+    DIFFICULTY_HARD   = 'hard'
+    DIFFICULTY_CHOICES = [
+        (DIFFICULTY_EASY,   'Easy'),
+        (DIFFICULTY_MEDIUM, 'Medium'),
+        (DIFFICULTY_HARD,   'Hard'),
+    ]
+
+    title       = models.CharField(max_length=200)
+    secret_word = models.CharField(max_length=100)
+    hint        = models.TextField(blank=True)
+    difficulty  = models.CharField(max_length=10, choices=DIFFICULTY_CHOICES, default=DIFFICULTY_EASY)
+    created_by  = models.ForeignKey(User, on_delete=models.CASCADE, related_name='codebreaker_puzzles')
+    is_active   = models.BooleanField(default=True)
+    created_at  = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.title} ({self.get_difficulty_display()})'
+
+    class Meta:
+        ordering = ['-created_at']
+
+
+class CodeBreakerClue(models.Model):
+    puzzle          = models.ForeignKey(CodeBreakerPuzzle, on_delete=models.CASCADE, related_name='clues')
+    letter_index    = models.PositiveSmallIntegerField()
+    letter          = models.CharField(max_length=1)
+    math_expression = models.CharField(max_length=300)
+    answer          = models.PositiveSmallIntegerField()
+
+    def __str__(self):
+        return f'[{self.puzzle}] pos {self.letter_index}: {self.letter} = {self.math_expression}'
+
+    class Meta:
+        ordering = ['letter_index']

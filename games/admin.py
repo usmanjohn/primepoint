@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import reverse
 from django.utils.html import format_html
-from .models import CrosswordPuzzle
+from .models import CrosswordPuzzle, CodeBreakerPuzzle, CodeBreakerClue
 
 
 @admin.register(CrosswordPuzzle)
@@ -53,3 +53,29 @@ class CrosswordPuzzleAdmin(admin.ModelAdmin):
         url = reverse('crossword_edit', args=[obj.pk])
         return format_html('<a href="{}">Edit grid</a>', url)
     editor_link.short_description = 'Editor'
+
+
+class CodeBreakerClueInline(admin.TabularInline):
+    model       = CodeBreakerClue
+    extra       = 0
+    fields      = ('letter_index', 'letter', 'math_expression', 'answer')
+    ordering    = ('letter_index',)
+
+
+@admin.register(CodeBreakerPuzzle)
+class CodeBreakerPuzzleAdmin(admin.ModelAdmin):
+    list_display  = ('title', 'secret_word', 'difficulty', 'is_active', 'created_by', 'clue_count', 'created_at')
+    list_filter   = ('difficulty', 'is_active')
+    search_fields = ('title', 'secret_word')
+    inlines       = [CodeBreakerClueInline]
+
+    def clue_count(self, obj):
+        return obj.clues.count()
+    clue_count.short_description = 'Clues'
+
+
+@admin.register(CodeBreakerClue)
+class CodeBreakerClueAdmin(admin.ModelAdmin):
+    list_display  = ('puzzle', 'letter_index', 'letter', 'math_expression', 'answer')
+    list_filter   = ('puzzle__difficulty',)
+    search_fields = ('puzzle__title', 'letter', 'math_expression')

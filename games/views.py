@@ -1,10 +1,79 @@
 import json
 import random
+import time
 from django.core.exceptions import PermissionDenied
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import CrosswordPuzzle
+from .models import CrosswordPuzzle, CodeBreakerPuzzle, CodeBreakerClue
+
+
+# ---------------------------------------------------------------------------
+# Code Breaker — math-expression generator
+# ---------------------------------------------------------------------------
+
+def _cb_candidates(target, difficulty):
+    """Return a list of math expression strings whose value equals `target`."""
+    t = target
+    exprs = []
+
+    if difficulty == CodeBreakerPuzzle.DIFFICULTY_EASY:
+        for a in range(0, t + 1):
+            exprs.append(f"{a} + {t - a}")
+        for b in range(1, 19):
+            exprs.append(f"{t + b} - {b}")
+        for b in range(1, 10):
+            c = random.randint(1, max(1, t - b))
+            exprs.append(f"{t + b + c} - {b} - {c}")
+
+    elif difficulty == CodeBreakerPuzzle.DIFFICULTY_MEDIUM:
+        for i in range(2, t + 1):
+            if t % i == 0 and t // i >= 2:
+                exprs.append(f"{i} × {t // i}")
+        for a in range(2, 11):
+            b = a * a - t
+            if 0 <= b <= 60:
+                exprs.append(f"{a}² - {b}")
+            b = t - a * a
+            if 0 <= b <= 60:
+                exprs.append(f"{a}² + {b}")
+        for a in range(2, 9):
+            for b in range(2, 9):
+                c = t - a * b
+                if 0 <= c <= 25:
+                    exprs.append(f"{a} × {b} + {c}")
+                c = a * b - t
+                if 1 <= c <= 25:
+                    exprs.append(f"{a} × {b} - {c}")
+
+    elif difficulty == CodeBreakerPuzzle.DIFFICULTY_HARD:
+        for b in range(1, 25):
+            exprs.append(f"2x + {b} = {2*t + b},  find x")
+        for b in range(1, 20):
+            if 3 * t - b > 0:
+                exprs.append(f"3x - {b} = {3*t - b},  find x")
+        for b in range(2, 7):
+            for c in range(2, 7):
+                exprs.append(f"{t + b*c} - {b} × {c}")
+        for c in range(2, t + 1):
+            if t % c == 0:
+                prod = t // c
+                if 2 <= prod <= 20:
+                    for a in range(1, prod):
+                        exprs.append(f"({a} + {prod - a}) × {c}")
+
+    return exprs
+
+
+def _generate_cb_expression(target, difficulty, used_exprs):
+    """Return a unique math expression string for `target` (1–26)."""
+    candidates = _cb_candidates(target, difficulty)
+    random.shuffle(candidates)
+    for expr in candidates:
+        if expr not in used_exprs:
+            return expr
+    a = random.randint(0, target)
+    return f"{a} + {target - a}"
 
 
 @login_required
@@ -187,3 +256,169 @@ def crossword_edit(request, pk):
             return JsonResponse({'ok': False, 'error': str(e)}, status=400)
 
     return render(request, 'games/crossword_edit.html', {'puzzle': puzzle})
+
+
+# ---------------------------------------------------------------------------
+# Code Breaker views
+# ---------------------------------------------------------------------------
+
+@login_required
+def codebreaker_list(request):
+    puzzles = CodeBreakerPuzzle.objects.filter(is_active=True)
+    return render(request, 'games/codebreaker_list.html', {'puzzles': puzzles})
+
+
+@login_required
+def codebreaker_play(request, pk):
+    puzzle = get_object_or_404(CodeBreakerPuzzle, pk=pk, is_active=True)
+    clues  = list(puzzle.clues.order_by('letter_index'))
+
+    start_key  = f'cb_{pk}_start'
+    solved_key = f'cb_{pk}_solved'
+
+    if request.method == 'POST' and request.POST.get('action') == 'reset':
+        request.session.pop(start_key, None)
+        request.session.pop(solved_key, None)
+        request.session.pop(f'cb_{pk}_attempts', None)
+        return redirect('codebreaker_play', pk=pk)
+
+    if start_key not in request.session:
+        request.session[start_key] = int(time.time())
+
+    solved_indices = request.session.get(solved_key, [])
+
+    clue_data = []
+    for clue in clues:
+        clue_data.append({
+            'letter_index':    clue.letter_index,
+            'math_expression': clue.math_expression,
+            'solved':          clue.letter_index in solved_indices,
+            'letter':          clue.letter if clue.letter_index in solved_indices else '_',
+        })
+
+    all_solved = len(clue_data) > 0 and len(solved_indices) >= len(clue_data)
+    elapsed    = None
+    if all_solved:
+        elapsed = int(time.time()) - request.session.get(start_key, int(time.time()))
+
+    alphabet = [(i, chr(64 + i)) for i in range(1, 27)]
+
+    context = {
+        'puzzle':       puzzle,
+        'clues':        clue_data,
+        'solved_count': len(solved_indices),
+        'total_clues':  len(clue_data),
+        'all_solved':   all_solved,
+        'elapsed':      elapsed,
+        'alphabet':     alphabet,
+    }
+    return render(request, 'games/codebreaker_play.html', context)
+
+
+@login_required
+def codebreaker_check(request, pk):
+    if request.method != 'POST':
+        return JsonResponse({'error': 'POST only'}, status=405)
+
+    puzzle = get_object_or_404(CodeBreakerPuzzle, pk=pk, is_active=True)
+
+    try:
+        data         = json.loads(request.body)
+        letter_index = int(data['letter_index'])
+        user_answer  = int(data['answer'])
+    except (KeyError, ValueError, TypeError, json.JSONDecodeError):
+        return JsonResponse({'correct': False})
+
+    try:
+        clue = puzzle.clues.get(letter_index=letter_index)
+    except CodeBreakerClue.DoesNotExist:
+        return JsonResponse({'correct': False})
+
+    solved_key   = f'cb_{pk}_solved'
+    attempts_key = f'cb_{pk}_attempts'
+    start_key    = f'cb_{pk}_start'
+
+    attempts = request.session.get(attempts_key, {})
+    str_idx  = str(letter_index)
+    attempts[str_idx] = attempts.get(str_idx, 0) + 1
+    request.session[attempts_key] = attempts
+
+    if user_answer == clue.answer:
+        solved = request.session.get(solved_key, [])
+        if letter_index not in solved:
+            solved.append(letter_index)
+        request.session[solved_key] = solved
+
+        total      = puzzle.clues.count()
+        all_solved = len(solved) >= total
+        elapsed    = None
+        if all_solved:
+            elapsed = int(time.time()) - request.session.get(start_key, int(time.time()))
+
+        return JsonResponse({
+            'correct':    True,
+            'letter':     clue.letter,
+            'all_solved': all_solved,
+            'elapsed':    elapsed,
+        })
+
+    return JsonResponse({'correct': False})
+
+
+@login_required
+def codebreaker_create(request):
+    is_master = hasattr(request.user, 'profile') and request.user.profile.is_master
+    if not request.user.is_staff and not is_master:
+        raise PermissionDenied
+
+    errors = []
+
+    if request.method == 'POST':
+        title       = request.POST.get('title', '').strip()
+        secret_word = request.POST.get('secret_word', '').strip().upper()
+        hint        = request.POST.get('hint', '').strip()
+        difficulty  = request.POST.get('difficulty', CodeBreakerPuzzle.DIFFICULTY_EASY)
+
+        if not title:
+            errors.append('Title is required.')
+        if not secret_word:
+            errors.append('Secret word is required.')
+        elif not all(c.isalpha() or c.isspace() for c in secret_word):
+            errors.append('Secret word must contain only letters (spaces allowed).')
+        elif not any(c.isalpha() for c in secret_word):
+            errors.append('Secret word must contain at least one letter.')
+        if difficulty not in (CodeBreakerPuzzle.DIFFICULTY_EASY,
+                               CodeBreakerPuzzle.DIFFICULTY_MEDIUM,
+                               CodeBreakerPuzzle.DIFFICULTY_HARD):
+            errors.append('Invalid difficulty.')
+
+        if not errors:
+            puzzle = CodeBreakerPuzzle.objects.create(
+                title=title,
+                secret_word=secret_word,
+                hint=hint,
+                difficulty=difficulty,
+                created_by=request.user,
+            )
+            used_exprs = set()
+            for i, ch in enumerate(secret_word):
+                if not ch.isalpha():
+                    continue
+                letter_num = ord(ch) - ord('A') + 1
+                expr       = _generate_cb_expression(letter_num, difficulty, used_exprs)
+                used_exprs.add(expr)
+                CodeBreakerClue.objects.create(
+                    puzzle=puzzle,
+                    letter_index=i,
+                    letter=ch,
+                    math_expression=expr,
+                    answer=letter_num,
+                )
+            return redirect('codebreaker_play', pk=puzzle.pk)
+
+    context = {
+        'errors':      errors,
+        'difficulties': CodeBreakerPuzzle.DIFFICULTY_CHOICES,
+        'post':        request.POST if request.method == 'POST' else {},
+    }
+    return render(request, 'games/codebreaker_create.html', context)

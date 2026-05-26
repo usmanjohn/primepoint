@@ -7,4 +7,9 @@ urlpatterns = [
     path('crossword/', views.crossword_list, name='crossword_list'),
     path('crossword/<int:pk>/', views.crossword_play, name='crossword_play'),
     path('crossword/<int:pk>/edit/', views.crossword_edit, name='crossword_edit'),
+    # Code Breaker
+    path('codebreaker/', views.codebreaker_list, name='codebreaker_list'),
+    path('codebreaker/create/', views.codebreaker_create, name='codebreaker_create'),
+    path('codebreaker/<int:pk>/', views.codebreaker_play, name='codebreaker_play'),
+    path('codebreaker/<int:pk>/check/', views.codebreaker_check, name='codebreaker_check'),
 ]

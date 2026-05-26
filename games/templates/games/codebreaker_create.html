@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "New Code Breaker Puzzle" %} — Powerty{% endblock %}
+{% block page_name %}{% trans "Code Breaker" %}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4" style="max-width:640px;">
+
+    <a href="{% url 'codebreaker_list' %}" class="text-decoration-none d-inline-flex align-items-center gap-1 mb-3"
+       style="color:var(--text-muted); font-size:0.85rem;">
+        <i class="bi bi-arrow-left"></i> {% trans "Code Breaker" %}
+    </a>
+
+    <h1 class="fs-4 fw-bold mb-1" style="color:var(--text);">&#x2795; {% trans "New Puzzle" %}</h1>
+    <p style="color:var(--text-muted); font-size:0.88rem; margin:0 0 1.5rem;">
+        {% trans "Math clues are auto-generated from the secret word based on difficulty." %}
+    </p>
+
+    {% if errors %}
+    <div class="alert alert-danger mb-3" style="border-radius:10px; background:#3d1c1c; border:1px solid #f85149; color:#f85149; font-size:0.85rem;">
+        <ul class="mb-0 ps-3">
+            {% for err in errors %}<li>{{ err }}</li>{% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <form method="post" autocomplete="off">
+        {% csrf_token %}
+
+        <!-- Title -->
+        <div class="mb-3">
+            <label class="form-label" style="color:var(--text); font-size:0.85rem; font-weight:600;">
+                {% trans "Puzzle Title" %}
+            </label>
+            <input type="text" name="title" value="{{ post.title }}" required
+                   class="form-control"
+                   style="background:#161b22; border:1px solid #30363d; color:#e6edf3; border-radius:8px;"
+                   placeholder="e.g. Science Words — Set 1">
+        </div>
+
+        <!-- Secret word -->
+        <div class="mb-3">
+            <label class="form-label" style="color:var(--text); font-size:0.85rem; font-weight:600;">
+                {% trans "Secret Word / Phrase" %} <span style="color:#8b949e;">(A–Z only)</span>
+            </label>
+            <input type="text" name="secret_word" value="{{ post.secret_word }}" required
+                   class="form-control"
+                   style="background:#161b22; border:1px solid #30363d; color:#e6edf3; border-radius:8px; text-transform:uppercase; letter-spacing:.1em; font-weight:700;"
+                   placeholder="e.g. PYTHON"
+                   oninput="this.value=this.value.toUpperCase()">
+            <div style="color:#8b949e; font-size:0.78rem; margin-top:4px;">
+                {% trans "Each letter gets one math clue. Spaces are shown as gaps." %}
+            </div>
+        </div>
+
+        <!-- Hint -->
+        <div class="mb-3">
+            <label class="form-label" style="color:var(--text); font-size:0.85rem; font-weight:600;">
+                {% trans "Hint" %} <span style="color:#8b949e;">({% trans "optional" %})</span>
+            </label>
+            <input type="text" name="hint" value="{{ post.hint }}"
+                   class="form-control"
+                   style="background:#161b22; border:1px solid #30363d; color:#e6edf3; border-radius:8px;"
+                   placeholder="e.g. A popular programming language">
+        </div>
+
+        <!-- Difficulty -->
+        <div class="mb-4">
+            <label class="form-label" style="color:var(--text); font-size:0.85rem; font-weight:600;">
+                {% trans "Difficulty" %}
+            </label>
+            <div class="d-flex gap-2 flex-wrap">
+                {% for val, label in difficulties %}
+                <label style="cursor:pointer;">
+                    <input type="radio" name="difficulty" value="{{ val }}"
+                           {% if post.difficulty == val or not post and val == 'easy' %}checked{% endif %}
+                           style="display:none;" class="cb-diff-radio">
+                    <span class="cb-diff-btn" data-val="{{ val }}" style="
+                        display:inline-block; padding:6px 18px; border-radius:8px; font-size:0.84rem;
+                        font-weight:600; border:2px solid #30363d; cursor:pointer;
+                        background:#161b22; color:#8b949e; user-select:none; transition:all .15s;">
+                        {{ label }}
+                    </span>
+                </label>
+                {% endfor %}
+            </div>
+            <div class="mt-2" style="color:#8b949e; font-size:0.78rem;">
+                <span id="diff-desc"></span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn w-100 fw-bold"
+                style="background:#1f6feb; color:#fff; border:none; border-radius:10px; padding:.6rem 1rem; font-size:0.95rem;">
+            <i class="bi bi-magic"></i> {% trans "Generate & Play" %}
+        </button>
+    </form>
+
+</div>
+
+<style>
+.cb-diff-radio:checked + .cb-diff-btn {
+    background:#1f6feb; color:#fff; border-color:#58a6ff;
+}
+</style>
+
+<script>
+const DIFF_DESC = {
+    easy:   "{% trans 'Addition and subtraction with numbers under 20.' %}",
+    medium: "{% trans 'Multiplication, squares, and mixed operations under 100.' %}",
+    hard:   "{% trans 'Mixed operations, negative numbers, and simple algebra (find x).' %}",
+};
+
+function updateDiffDisplay() {
+    const checked = document.querySelector('.cb-diff-radio:checked');
+    if (checked) {
+        document.getElementById('diff-desc').textContent = DIFF_DESC[checked.value] || '';
+    }
+}
+
+document.querySelectorAll('.cb-diff-radio').forEach(function(r) {
+    r.addEventListener('change', updateDiffDisplay);
+});
+
+updateDiffDisplay();
+</script>
+{% endblock %}
