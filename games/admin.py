@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.urls import reverse
 from django.utils.html import format_html
-from .models import CrosswordPuzzle, CodeBreakerPuzzle, CodeBreakerClue
+from .models import CrosswordPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge
+from .views import _pc_correct_numbers
 
 
 @admin.register(CrosswordPuzzle)
@@ -79,3 +80,14 @@ class CodeBreakerClueAdmin(admin.ModelAdmin):
     list_display  = ('puzzle', 'letter_index', 'letter', 'math_expression', 'answer')
     list_filter   = ('puzzle__difficulty',)
     search_fields = ('puzzle__title', 'letter', 'math_expression')
+
+
+@admin.register(PrimeClimbChallenge)
+class PrimeClimbChallengeAdmin(admin.ModelAdmin):
+    list_display  = ('title', 'mode', 'target', 'is_active', 'created_by', 'answer_count', 'created_at')
+    list_filter   = ('mode', 'is_active')
+    search_fields = ('title',)
+
+    def answer_count(self, obj):
+        return len(_pc_correct_numbers(obj.mode, obj.target))
+    answer_count.short_description = 'Answers'

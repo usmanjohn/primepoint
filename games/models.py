@@ -55,3 +55,29 @@ class CodeBreakerClue(models.Model):
 
     class Meta:
         ordering = ['letter_index']
+
+
+class PrimeClimbChallenge(models.Model):
+    PRIMES    = 'primes'
+    SQUARES   = 'squares'
+    MULTIPLES = 'multiples'
+    MODE_CHOICES = [
+        (PRIMES,    'Primes'),
+        (SQUARES,   'Perfect Squares'),
+        (MULTIPLES, 'Multiples of N'),
+    ]
+
+    title      = models.CharField(max_length=200)
+    mode       = models.CharField(max_length=20, choices=MODE_CHOICES)
+    target     = models.IntegerField(null=True, blank=True)
+    hint       = models.TextField(blank=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='primeclimb_challenges')
+    is_active  = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        label = f' of {self.target}' if self.mode == self.MULTIPLES and self.target else ''
+        return f'{self.title} ({self.get_mode_display()}{label})'
+
+    class Meta:
+        ordering = ['-created_at']

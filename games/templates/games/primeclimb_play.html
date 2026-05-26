@@ -1,0 +1,313 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ challenge.title }} — {% trans "Prime Climb" %} — Powerty{% endblock %}
+{% block page_name %}{% trans "Prime Climb Grid" %}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ── grid ── */
+.pc-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 3px;
+    max-width: 540px;
+    margin: 0 auto;
+}
+
+/* ── cell ── */
+.pc-cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 5px;
+    font-size: clamp(.58rem, 1.7vw, .82rem);
+    font-weight: 600;
+    color: #8b949e;
+    cursor: pointer;
+    transition: background .12s, border-color .12s, color .12s, transform .1s;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.pc-cell:hover:not(.locked) {
+    border-color: #58a6ff;
+    color: #e6edf3;
+    transform: scale(1.08);
+    z-index: 1;
+    position: relative;
+}
+.pc-cell.sel {
+    background: #1f3a5f;
+    border-color: #58a6ff;
+    color: #58a6ff;
+}
+.pc-cell.pc-correct {
+    background: #1a4a2a;
+    border-color: #3fb950;
+    color: #3fb950;
+}
+.pc-cell.pc-wrong {
+    background: #4a1a1a;
+    border-color: #f85149;
+    color: #f85149;
+}
+.pc-cell.pc-missed {
+    background: #3d2810;
+    border-color: #f0883e;
+    color: #f0883e;
+}
+.pc-cell.locked {
+    cursor: default;
+    pointer-events: none;
+}
+
+/* ── score panel ── */
+#pc-score-panel {
+    max-width: 540px;
+    margin: 1rem auto 0;
+}
+
+/* ── star rating ── */
+.pc-star { font-size: 1.4rem; line-height: 1; }
+.pc-star.on  { color: #e3b341; }
+.pc-star.off { color: #30363d; }
+
+/* ── legend dots ── */
+.pc-legend-dot {
+    width: 12px; height: 12px;
+    border-radius: 3px;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+/* ── counter pill ── */
+#pc-sel-count {
+    display: inline-block;
+    background: #21262d;
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 0.78rem;
+    color: #8b949e;
+    margin-bottom: .75rem;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4">
+
+    <!-- Back -->
+    <a href="{% url 'primeclimb_list' %}" class="text-decoration-none d-inline-flex align-items-center gap-1 mb-3"
+       style="color:var(--text-muted); font-size:0.85rem;">
+        <i class="bi bi-arrow-left"></i> {% trans "Prime Climb Grid" %}
+    </a>
+
+    <!-- Header -->
+    <div class="d-flex align-items-start justify-content-between flex-wrap gap-2 mb-3"
+         style="max-width:540px; margin:0 auto 0.75rem;">
+        <div>
+            <h1 class="fs-5 fw-bold mb-0" style="color:var(--text);">{{ challenge.title }}</h1>
+            {% if challenge.hint %}
+            <p style="color:#f0883e; font-size:0.83rem; margin:.2rem 0 0;">
+                <i class="bi bi-lightbulb-fill"></i> {{ challenge.hint }}
+            </p>
+            {% endif %}
+        </div>
+        <div class="d-flex align-items-center gap-2">
+            <span class="badge" style="font-size:0.75rem;
+                {% if challenge.mode == 'primes' %}background:#dbeafe; color:#1d4ed8;
+                {% elif challenge.mode == 'squares' %}background:#fef3c7; color:#92400e;
+                {% else %}background:#d1fae5; color:#065f46;{% endif %}">
+                {{ challenge.get_mode_display }}{% if challenge.mode == 'multiples' %} of {{ challenge.target }}{% endif %}
+            </span>
+            <form method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" name="action" value="reset"
+                        class="btn btn-sm"
+                        style="background:#21262d; color:#8b949e; border:none; font-size:0.76rem; border-radius:6px;">
+                    <i class="bi bi-arrow-counterclockwise"></i> {% trans "Reset" %}
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Selection counter -->
+    <div style="max-width:540px; margin:0 auto;">
+        <span id="pc-sel-count">0 {% trans "selected" %}</span>
+    </div>
+
+    <!-- Grid -->
+    <div class="pc-grid" id="pc-grid">
+        {% for row in grid_rows %}
+        {% for n in row %}
+        <div class="pc-cell" id="pcn-{{ n }}" data-n="{{ n }}">{{ n }}</div>
+        {% endfor %}
+        {% endfor %}
+    </div>
+
+    <!-- Action buttons -->
+    <div class="d-flex gap-2 justify-content-center mt-3" style="max-width:540px; margin-left:auto; margin-right:auto;">
+        <button id="pc-check-btn" class="btn fw-bold flex-fill"
+                style="background:#1f6feb; color:#fff; border:none; border-radius:9px; padding:.55rem 1rem;">
+            <i class="bi bi-check2-circle"></i> {% trans "Check Answers" %}
+        </button>
+    </div>
+
+    <!-- Score panel (hidden until check) -->
+    <div id="pc-score-panel" style="display:none;">
+        <div class="card border-0 mt-3" style="background:#161b22; border-radius:14px; overflow:hidden;">
+            <div class="card-body p-4 text-center">
+                <div id="pc-stars" class="mb-2"></div>
+                <div class="fs-2 fw-bold mb-1" id="pc-score-text" style="color:#3fb950;"></div>
+                <p class="mb-3" style="color:#8b949e; font-size:0.85rem;" id="pc-score-sub"></p>
+                <div class="d-flex gap-3 justify-content-center flex-wrap mb-3" id="pc-score-details"></div>
+                <div class="d-flex gap-2 justify-content-center flex-wrap">
+                    <button id="pc-retry-btn" class="btn btn-sm"
+                            style="background:#21262d; color:#e6edf3; border:none; border-radius:8px; padding:.45rem 1.2rem; font-weight:600;">
+                        <i class="bi bi-arrow-repeat"></i> {% trans "Try Again" %}
+                    </button>
+                    <a href="{% url 'primeclimb_list' %}" class="btn btn-sm"
+                       style="background:#238636; color:#fff; border:none; border-radius:8px; padding:.45rem 1.2rem; font-weight:600;">
+                        {% trans "All Challenges" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="d-flex gap-3 flex-wrap justify-content-center mt-3"
+         style="max-width:540px; margin-left:auto; margin-right:auto; font-size:0.78rem; color:#8b949e;">
+        <span class="d-flex align-items-center gap-1">
+            <span class="pc-legend-dot" style="background:#1f3a5f; border:1px solid #58a6ff;"></span>{% trans "Selected" %}
+        </span>
+        <span class="d-flex align-items-center gap-1">
+            <span class="pc-legend-dot" style="background:#1a4a2a; border:1px solid #3fb950;"></span>{% trans "Correct" %}
+        </span>
+        <span class="d-flex align-items-center gap-1">
+            <span class="pc-legend-dot" style="background:#4a1a1a; border:1px solid #f85149;"></span>{% trans "Wrong" %}
+        </span>
+        <span class="d-flex align-items-center gap-1">
+            <span class="pc-legend-dot" style="background:#3d2810; border:1px solid #f0883e;"></span>{% trans "Missed" %}
+        </span>
+    </div>
+
+</div>
+
+<script>
+(function () {
+    const CHECK_URL  = "{% url 'primeclimb_check' challenge.pk %}";
+    const CSRF_TOKEN = "{{ csrf_token }}";
+
+    // Restore previous state from server session
+    const prevSelected  = {{ prev_selected|safe }};       // [] or [2,3,5,...]
+    const prevChecked   = {{ prev_checked|yesno:"true,false" }};
+    const prevScore     = {{ prev_score|safe }};           // null or score object
+    const correctNums   = {{ correct_nums_json|safe }};    // null or [2,3,5,...] (only if checked)
+
+    const selected = new Set(prevSelected);
+
+    function getCell(n) { return document.getElementById('pcn-' + n); }
+
+    function updateCounter() {
+        const el = document.getElementById('pc-sel-count');
+        el.textContent = selected.size + ' {% trans "selected" %}';
+    }
+
+    function applyResults(data) {
+        // Lock all cells
+        document.querySelectorAll('.pc-cell').forEach(function(c) {
+            c.classList.add('locked');
+            c.classList.remove('sel');
+        });
+        data.correct.forEach(function(n) { getCell(n).classList.add('pc-correct'); });
+        data.wrong.forEach(function(n)   { getCell(n).classList.add('pc-wrong'); });
+        data.missed.forEach(function(n)  { getCell(n).classList.add('pc-missed'); });
+
+        // Stars: 3=100%, 2=≥70%, 1=≥40%
+        const pct = data.total > 0 ? data.score / data.total : 0;
+        const stars = pct >= 1 ? 3 : pct >= 0.7 ? 2 : pct >= 0.4 ? 1 : 0;
+        let starsHtml = '';
+        for (let i = 1; i <= 3; i++) {
+            starsHtml += '<span class="pc-star ' + (i <= stars ? 'on' : 'off') + '">&#9733;</span>';
+        }
+        document.getElementById('pc-stars').innerHTML = starsHtml;
+
+        document.getElementById('pc-score-text').textContent =
+            data.score + ' / ' + data.total;
+        document.getElementById('pc-score-sub').textContent =
+            '{% trans "numbers found" %}';
+
+        const detailsEl = document.getElementById('pc-score-details');
+        detailsEl.innerHTML =
+            '<span style="color:#3fb950; font-size:.82rem;"><i class="bi bi-check-lg"></i> ' + data.correct.length + ' {% trans "correct" %}</span>' +
+            '<span style="color:#f85149; font-size:.82rem;"><i class="bi bi-x-lg"></i> '     + data.wrong.length   + ' {% trans "wrong" %}</span>' +
+            '<span style="color:#f0883e; font-size:.82rem;"><i class="bi bi-circle"></i> '   + data.missed.length  + ' {% trans "missed" %}</span>';
+
+        document.getElementById('pc-check-btn').style.display = 'none';
+        document.getElementById('pc-score-panel').style.display = 'block';
+    }
+
+    // Click handler
+    document.querySelectorAll('.pc-cell').forEach(function(cell) {
+        cell.addEventListener('click', function() {
+            if (cell.classList.contains('locked')) return;
+            const n = parseInt(cell.dataset.n, 10);
+            if (selected.has(n)) {
+                selected.delete(n);
+                cell.classList.remove('sel');
+            } else {
+                selected.add(n);
+                cell.classList.add('sel');
+            }
+            updateCounter();
+        });
+    });
+
+    // Restore previously selected cells
+    prevSelected.forEach(function(n) {
+        const c = getCell(n);
+        if (c) c.classList.add('sel');
+    });
+    updateCounter();
+
+    // If already checked on a previous visit, re-apply immediately
+    if (prevChecked && prevScore) {
+        applyResults(prevScore);
+    }
+
+    // Check button
+    document.getElementById('pc-check-btn').addEventListener('click', function() {
+        if (selected.size === 0) return;
+        this.disabled = true;
+        fetch(CHECK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'X-CSRFToken': CSRF_TOKEN },
+            body: JSON.stringify({ selected: Array.from(selected) }),
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) { applyResults(data); })
+        .catch(function() {
+            document.getElementById('pc-check-btn').disabled = false;
+        });
+    });
+
+    // Retry button — POST reset
+    document.getElementById('pc-retry-btn').addEventListener('click', function() {
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = window.location.pathname;
+        const csrf = document.createElement('input');
+        csrf.type = 'hidden'; csrf.name = 'csrfmiddlewaretoken'; csrf.value = CSRF_TOKEN;
+        const action = document.createElement('input');
+        action.type = 'hidden'; action.name = 'action'; action.value = 'reset';
+        form.appendChild(csrf); form.appendChild(action);
+        document.body.appendChild(form); form.submit();
+    });
+}());
+</script>
+{% endblock %}

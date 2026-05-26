@@ -5,7 +5,7 @@ from django.core.exceptions import PermissionDenied
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import CrosswordPuzzle, CodeBreakerPuzzle, CodeBreakerClue
+from .models import CrosswordPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge
 
 
 # ---------------------------------------------------------------------------
@@ -422,3 +422,144 @@ def codebreaker_create(request):
         'post':        request.POST if request.method == 'POST' else {},
     }
     return render(request, 'games/codebreaker_create.html', context)
+
+
+# ---------------------------------------------------------------------------
+# Prime Climb Grid views
+# ---------------------------------------------------------------------------
+
+def _pc_correct_numbers(mode, target=None):
+    """Return the list of correct numbers (1–100) for a given challenge mode."""
+    if mode == PrimeClimbChallenge.PRIMES:
+        sieve = [True] * 101
+        sieve[0] = sieve[1] = False
+        for i in range(2, 11):
+            if sieve[i]:
+                for j in range(i * i, 101, i):
+                    sieve[j] = False
+        return [i for i in range(2, 101) if sieve[i]]
+    elif mode == PrimeClimbChallenge.SQUARES:
+        return [i * i for i in range(1, 11)]
+    elif mode == PrimeClimbChallenge.MULTIPLES and target:
+        return list(range(target, 101, target))
+    return []
+
+
+@login_required
+def primeclimb_list(request):
+    challenges = PrimeClimbChallenge.objects.filter(is_active=True)
+    return render(request, 'games/primeclimb_list.html', {'challenges': challenges})
+
+
+@login_required
+def primeclimb_play(request, pk):
+    challenge = get_object_or_404(PrimeClimbChallenge, pk=pk, is_active=True)
+
+    checked_key  = f'pc_{pk}_checked'
+    selected_key = f'pc_{pk}_selected'
+    score_key    = f'pc_{pk}_score'
+
+    if request.method == 'POST' and request.POST.get('action') == 'reset':
+        for k in (checked_key, selected_key, score_key):
+            request.session.pop(k, None)
+        return redirect('primeclimb_play', pk=pk)
+
+    prev_checked  = request.session.get(checked_key, False)
+    prev_selected = request.session.get(selected_key, [])
+    prev_score    = request.session.get(score_key, None)
+
+    correct_nums = _pc_correct_numbers(challenge.mode, challenge.target)
+
+    grid_rows = [list(range(r, r + 10)) for r in range(1, 101, 10)]
+
+    context = {
+        'challenge':      challenge,
+        'grid_rows':      grid_rows,
+        'prev_selected':  json.dumps(prev_selected),
+        'prev_checked':   prev_checked,
+        'prev_score':     json.dumps(prev_score) if prev_score else 'null',
+        'correct_nums_json': json.dumps(correct_nums) if prev_checked else 'null',
+        'total_answer':   len(correct_nums),
+    }
+    return render(request, 'games/primeclimb_play.html', context)
+
+
+@login_required
+def primeclimb_check(request, pk):
+    if request.method != 'POST':
+        return JsonResponse({'error': 'POST only'}, status=405)
+
+    challenge = get_object_or_404(PrimeClimbChallenge, pk=pk, is_active=True)
+
+    try:
+        data     = json.loads(request.body)
+        selected = [int(n) for n in data.get('selected', [])]
+    except (ValueError, TypeError, json.JSONDecodeError):
+        return JsonResponse({'error': 'Invalid data'}, status=400)
+
+    answer_set   = set(_pc_correct_numbers(challenge.mode, challenge.target))
+    selected_set = set(selected)
+
+    correct = sorted(answer_set & selected_set)
+    wrong   = sorted(selected_set - answer_set)
+    missed  = sorted(answer_set - selected_set)
+
+    score = {
+        'correct': correct,
+        'wrong':   wrong,
+        'missed':  missed,
+        'score':   len(correct),
+        'total':   len(answer_set),
+    }
+
+    request.session[f'pc_{pk}_checked']  = True
+    request.session[f'pc_{pk}_selected'] = selected
+    request.session[f'pc_{pk}_score']    = score
+
+    return JsonResponse(score)
+
+
+@login_required
+def primeclimb_create(request):
+    is_master = hasattr(request.user, 'profile') and request.user.profile.is_master
+    if not request.user.is_staff and not is_master:
+        raise PermissionDenied
+
+    errors = []
+
+    if request.method == 'POST':
+        title  = request.POST.get('title', '').strip()
+        mode   = request.POST.get('mode', '')
+        hint   = request.POST.get('hint', '').strip()
+        target = None
+
+        if not title:
+            errors.append('Title is required.')
+        if mode not in (PrimeClimbChallenge.PRIMES,
+                         PrimeClimbChallenge.SQUARES,
+                         PrimeClimbChallenge.MULTIPLES):
+            errors.append('Select a valid challenge type.')
+        if mode == PrimeClimbChallenge.MULTIPLES:
+            try:
+                target = int(request.POST.get('target', ''))
+                if not (2 <= target <= 50):
+                    errors.append('Multiples target must be between 2 and 50.')
+            except (ValueError, TypeError):
+                errors.append('Enter a valid number for the multiples target.')
+
+        if not errors:
+            challenge = PrimeClimbChallenge.objects.create(
+                title=title,
+                mode=mode,
+                target=target,
+                hint=hint,
+                created_by=request.user,
+            )
+            return redirect('primeclimb_play', pk=challenge.pk)
+
+    context = {
+        'errors':  errors,
+        'modes':   PrimeClimbChallenge.MODE_CHOICES,
+        'post':    request.POST if request.method == 'POST' else {},
+    }
+    return render(request, 'games/primeclimb_create.html', context)

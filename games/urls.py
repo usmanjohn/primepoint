@@ -12,4 +12,9 @@ urlpatterns = [
     path('codebreaker/create/', views.codebreaker_create, name='codebreaker_create'),
     path('codebreaker/<int:pk>/', views.codebreaker_play, name='codebreaker_play'),
     path('codebreaker/<int:pk>/check/', views.codebreaker_check, name='codebreaker_check'),
+    # Prime Climb Grid
+    path('primeclimb/', views.primeclimb_list, name='primeclimb_list'),
+    path('primeclimb/create/', views.primeclimb_create, name='primeclimb_create'),
+    path('primeclimb/<int:pk>/', views.primeclimb_play, name='primeclimb_play'),
+    path('primeclimb/<int:pk>/check/', views.primeclimb_check, name='primeclimb_check'),
 ]

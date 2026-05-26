@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "New Prime Climb Challenge" %} — Powerty{% endblock %}
+{% block page_name %}{% trans "Prime Climb Grid" %}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4" style="max-width:600px;">
+
+    <a href="{% url 'primeclimb_list' %}" class="text-decoration-none d-inline-flex align-items-center gap-1 mb-3"
+       style="color:var(--text-muted); font-size:0.85rem;">
+        <i class="bi bi-arrow-left"></i> {% trans "Prime Climb Grid" %}
+    </a>
+
+    <h1 class="fs-4 fw-bold mb-1" style="color:var(--text);">&#x2795; {% trans "New Challenge" %}</h1>
+    <p style="color:var(--text-muted); font-size:0.88rem; margin:0 0 1.5rem;">
+        {% trans "Students will select numbers on the 1–100 grid that match your chosen category." %}
+    </p>
+
+    {% if errors %}
+    <div class="alert mb-3" style="border-radius:10px; background:#3d1c1c; border:1px solid #f85149; color:#f85149; font-size:0.85rem;">
+        <ul class="mb-0 ps-3">
+            {% for err in errors %}<li>{{ err }}</li>{% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <form method="post" autocomplete="off">
+        {% csrf_token %}
+
+        <!-- Title -->
+        <div class="mb-3">
+            <label class="form-label" style="color:var(--text); font-size:0.85rem; font-weight:600;">
+                {% trans "Challenge Title" %}
+            </label>
+            <input type="text" name="title" value="{{ post.title }}" required
+                   class="form-control"
+                   style="background:#161b22; border:1px solid #30363d; color:#e6edf3; border-radius:8px;"
+                   placeholder="e.g. Hunt for Primes">
+        </div>
+
+        <!-- Mode -->
+        <div class="mb-3">
+            <label class="form-label" style="color:var(--text); font-size:0.85rem; font-weight:600;">
+                {% trans "Challenge Type" %}
+            </label>
+            <div class="d-flex gap-2 flex-wrap">
+                {% for val, label in modes %}
+                <label style="cursor:pointer;">
+                    <input type="radio" name="mode" value="{{ val }}" class="pc-mode-radio"
+                           {% if post.mode == val or not post.mode and val == 'primes' %}checked{% endif %}
+                           style="display:none;">
+                    <span class="pc-mode-btn" data-val="{{ val }}" style="
+                        display:inline-block; padding:7px 18px; border-radius:8px;
+                        font-size:0.84rem; font-weight:600;
+                        border:2px solid #30363d;
+                        background:#161b22; color:#8b949e;
+                        cursor:pointer; user-select:none; transition:all .15s;">
+                        {{ label }}
+                    </span>
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Target (multiples only) -->
+        <div id="target-row" class="mb-3" style="display:none;">
+            <label class="form-label" style="color:var(--text); font-size:0.85rem; font-weight:600;">
+                {% trans "Multiples of N — enter N" %} <span style="color:#8b949e;">(2–50)</span>
+            </label>
+            <input type="number" name="target" id="target-input"
+                   value="{{ post.target }}" min="2" max="50"
+                   class="form-control" style="background:#161b22; border:1px solid #30363d; color:#e6edf3; border-radius:8px; max-width:140px;"
+                   placeholder="e.g. 7">
+            <div id="multiples-preview" style="color:#8b949e; font-size:0.78rem; margin-top:4px;"></div>
+        </div>
+
+        <!-- Hint -->
+        <div class="mb-4">
+            <label class="form-label" style="color:var(--text); font-size:0.85rem; font-weight:600;">
+                {% trans "Hint" %} <span style="color:#8b949e;">({% trans "optional" %})</span>
+            </label>
+            <input type="text" name="hint" value="{{ post.hint }}"
+                   class="form-control"
+                   style="background:#161b22; border:1px solid #30363d; color:#e6edf3; border-radius:8px;"
+                   placeholder="e.g. Numbers that have no other factors">
+        </div>
+
+        <button type="submit" class="btn w-100 fw-bold"
+                style="background:#2ea043; color:#fff; border:none; border-radius:10px; padding:.6rem 1rem; font-size:0.95rem;">
+            <i class="bi bi-grid-3x3-gap-fill"></i> {% trans "Create Challenge" %}
+        </button>
+    </form>
+
+</div>
+
+<style>
+.pc-mode-radio:checked + .pc-mode-btn {
+    background: #196c2e;
+    color: #3fb950;
+    border-color: #3fb950;
+}
+</style>
+
+<script>
+function syncModeUI() {
+    const checked = document.querySelector('.pc-mode-radio:checked');
+    const isMultiples = checked && checked.value === 'multiples';
+    document.getElementById('target-row').style.display = isMultiples ? '' : 'none';
+    if (!isMultiples) document.getElementById('multiples-preview').textContent = '';
+}
+
+document.querySelectorAll('.pc-mode-radio').forEach(function(r) {
+    r.addEventListener('change', syncModeUI);
+});
+
+document.getElementById('target-input').addEventListener('input', function() {
+    const n = parseInt(this.value, 10);
+    if (isNaN(n) || n < 2 || n > 50) {
+        document.getElementById('multiples-preview').textContent = '';
+        return;
+    }
+    const multiples = [];
+    for (let i = n; i <= 100; i += n) multiples.push(i);
+    document.getElementById('multiples-preview').textContent =
+        multiples.length + ' {% trans "numbers" %}: ' + multiples.slice(0, 8).join(', ') +
+        (multiples.length > 8 ? ' …' : '');
+});
+
+syncModeUI();
+</script>
+{% endblock %}
