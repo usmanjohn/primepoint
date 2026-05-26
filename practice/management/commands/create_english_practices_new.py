@@ -53,7 +53,7 @@ PRACTICES = [
     {
         'title': '8-dars',
         'description': "amaliy test.",
-        'questions': QUESTIONS_SET_8,
+        'questions': QUESTIONS_SET_8}
 ]
 
 class Command(BaseCommand):
