@@ -288,7 +288,6 @@
           oninput="updateProgress()">{{ written|default:'' }}</textarea>
       {% else %}
         {% for choice in question.choices.all %}
-        {% with is_sel=sel_id|stringformat:"s" %}
         <label class="choice-label {% if sel_id == choice.id %}selected{% endif %}"
                id="lbl-{{ question.id }}-{{ choice.id }}"
                for="c{{ question.id }}-{{ choice.id }}">
@@ -299,14 +298,9 @@
             value="{{ choice.id }}"
             {% if sel_id == choice.id %}checked{% endif %}
             onchange="onChoiceChange({{ question.id }}, {{ choice.id }})">
-          <span class="choice-num">{{ choice.number }}</span>
-          {% if choice.image %}
-            <img src="{{ choice.image.url }}" class="choice-img" alt="">
-          {% else %}
-            <span>{{ choice.text }}</span>
-          {% endif %}
+          <span class="choice-num">{{ forloop.counter }}</span>
+          <span>{{ choice.text }}</span>
         </label>
-        {% endwith %}
         {% endfor %}
       {% endif %}
     </div>

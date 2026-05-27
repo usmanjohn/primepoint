@@ -1,8 +1,10 @@
 {% extends "base.html" %}
-{% load static i18n %}
+{% load static i18n exam_extras %}
 
-{% block title %}{% trans "TOPIK Exams" %} — CORE{% endblock %}
-{% block page_name %}{% trans "TOPIK Exams" %}{% endblock %}
+{% block title %}{% trans "Exams" %} — CORE{% endblock %}
+{% block page_name %}{% trans "Exams" %}{% endblock %}
+{% block nav_exam %}active{% endblock %}
+{% block mob_nav_exam %}active{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -19,13 +21,32 @@
   margin: 0 0 0.35rem;
 }
 .exam-hero-sub { color: var(--text-muted); font-size: 0.88rem; }
+.lang-section-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 1.5rem 0 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.lang-section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
 .exam-card {
   border: 1px solid var(--border);
   border-radius: 16px;
   background: var(--surface);
-  padding: 1.5rem;
+  padding: 1.4rem;
   transition: border-color 0.15s, box-shadow 0.15s;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .exam-card:hover {
   border-color: var(--accent);
@@ -37,115 +58,120 @@
   gap: 0.4rem;
   background: var(--accent);
   color: #000;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 1px;
-  padding: 0.25rem 0.7rem;
+  padding: 0.22rem 0.65rem;
   border-radius: 99px;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+.lang-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  margin-left: 0.35rem;
+  vertical-align: middle;
 }
 .exam-title {
   font-family: 'Syne', sans-serif;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--text);
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
-.exam-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
-}
-.exam-meta-item {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.78rem;
-  color: var(--text-muted);
-}
-.exam-meta-item i { color: var(--accent); }
 .section-pills {
   display: flex;
-  gap: 0.4rem;
+  gap: 0.35rem;
   flex-wrap: wrap;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.85rem;
 }
 .section-pill {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 600;
-  padding: 0.2rem 0.6rem;
+  padding: 0.18rem 0.55rem;
   border-radius: 99px;
   border: 1px solid var(--border);
   color: var(--text-muted);
   background: var(--bg);
 }
-.status-badge {
-  font-size: 0.72rem;
-  font-weight: 700;
-  padding: 0.25rem 0.7rem;
-  border-radius: 99px;
+.exam-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 1.1rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
 }
-.status-inprogress { background: rgba(250,204,21,0.15); color: #facc15; border: 1px solid rgba(250,204,21,0.3); }
-.status-done { background: rgba(34,197,94,0.12); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+.exam-meta i { color: var(--accent); }
+.attempted-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 99px;
+  background: rgba(34,197,94,0.1);
+  color: #22c55e;
+  border: 1px solid rgba(34,197,94,0.25);
+  margin-bottom: 0.6rem;
+  display: inline-block;
+}
 </style>
 {% endblock %}
 
 {% block content %}
 <div class="exam-hero">
-  <p class="pl-eyebrow">TOPIK II</p>
+  <p style="font-size:0.68rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem;">TOPIK</p>
   <h1>{% trans "Full Exams" %} / 시험</h1>
-  <p class="exam-hero-sub">{% trans "Complete timed exam — Listening, Reading, Writing in sequence." %}<br>듣기 → 읽기 → 쓰기</p>
+  <p class="exam-hero-sub">{% trans "Complete timed exams — Listening → Reading → Writing in sequence." %}</p>
 </div>
 
 {% if exams %}
-<div class="row g-4">
-  {% for exam in exams %}
-  {% with attempt=attempts_by_exam|default_if_none:None %}
-  <div class="col-12 col-md-6 col-xl-4">
-    <div class="exam-card d-flex flex-column">
-      <div>
-        <span class="exam-number-badge"><i class="bi bi-journal-text"></i>{% trans "Exam" %} #{{ exam.exam_number }}</span>
-        {% with attempt=attempts_by_exam|default:"" %}{% endwith %}
-        {% if exam.id in attempts_by_exam %}
-          {% with a=attempts_by_exam|default:"" %}
-          {% endwith %}
-        {% endif %}
-        <div class="exam-title">{{ exam.title }}</div>
-
-        <div class="section-pills">
-          <span class="section-pill"><i class="bi bi-headphones"></i> {% trans "Listening" %} {{ exam.listening_minutes }}{% trans "min" %}</span>
-          <span class="section-pill"><i class="bi bi-book"></i> {% trans "Reading" %} {{ exam.reading_minutes }}{% trans "min" %}</span>
-          <span class="section-pill"><i class="bi bi-pencil"></i> {% trans "Writing" %} {{ exam.writing_minutes }}{% trans "min" %}</span>
-        </div>
-
-        <div class="exam-meta">
-          <span class="exam-meta-item"><i class="bi bi-clock"></i> {{ exam.listening_minutes|add:exam.reading_minutes|add:exam.writing_minutes }} {% trans "min total" %}</span>
-          {% if exam.listening_audio %}<span class="exam-meta-item"><i class="bi bi-volume-up"></i> {% trans "Audio included" %}</span>{% endif %}
-        </div>
-      </div>
-
-      <div class="mt-auto">
-        {% if exam.id in attempts_by_exam %}
-          {% with a=attempts_by_exam|default_if_none:None %}{% endwith %}
-        {% endif %}
-        <a href="{% url 'exam_detail' exam.id %}" class="btn-auth w-100 text-center text-decoration-none">
-          {% if exam.id in attempts_by_exam %}
-            {% trans "View / Retake" %}
-          {% else %}
-            {% trans "View Exam" %}
+  {% regroup exams by get_language_display as lang_groups %}
+  {% for group in lang_groups %}
+  <div class="lang-section-title"><i class="bi bi-translate"></i>{{ group.grouper }}</div>
+  <div class="row g-4 mb-2">
+    {% for exam in group.list %}
+    {% with attempt=attempts_by_exam|get_item:exam.id %}
+    <div class="col-12 col-md-6 col-xl-4">
+      <div class="exam-card">
+        <div>
+          <span class="exam-number-badge"><i class="bi bi-journal-text"></i>{% trans "Exam" %} #{{ exam.exam_number }}</span>
+          {% if attempt and attempt.current_section == 'completed' %}
+            <span class="attempted-badge"><i class="bi bi-check2-circle me-1"></i>{% trans "Completed" %}</span>
+          {% elif attempt %}
+            <span class="attempted-badge" style="background:rgba(250,204,21,0.1);color:#facc15;border-color:rgba(250,204,21,0.25);"><i class="bi bi-hourglass-split me-1"></i>{% trans "In progress" %}</span>
           {% endif %}
-        </a>
+          <div class="exam-title">{{ exam.title }}</div>
+          <div class="section-pills">
+            <span class="section-pill"><i class="bi bi-headphones"></i> {% trans "Listening" %} {{ exam.listening_minutes }}{% trans "min" %}</span>
+            <span class="section-pill"><i class="bi bi-book"></i> {% trans "Reading" %} {{ exam.reading_minutes }}{% trans "min" %}</span>
+            <span class="section-pill"><i class="bi bi-pencil"></i> {% trans "Writing" %} {{ exam.writing_minutes }}{% trans "min" %}</span>
+          </div>
+          <div class="exam-meta">
+            <span><i class="bi bi-clock"></i> {{ exam.listening_minutes|add:exam.reading_minutes|add:exam.writing_minutes }} {% trans "min total" %}</span>
+            {% if exam.listening_audio %}<span><i class="bi bi-volume-up"></i> {% trans "Audio included" %}</span>{% endif %}
+          </div>
+        </div>
+        <div class="mt-auto">
+          <a href="{% url 'exam_detail' exam.id %}" class="btn-auth w-100 text-center text-decoration-none">
+            {% if attempt %}{% trans "View / Retake" %}{% else %}{% trans "View Exam" %}{% endif %}
+          </a>
+        </div>
       </div>
     </div>
+    {% endwith %}
+    {% endfor %}
   </div>
-  {% endwith %}
   {% endfor %}
-</div>
 {% else %}
-<div class="text-center py-5">
-  <i class="bi bi-journal-x" style="font-size: 3rem; color: var(--text-muted); opacity: 0.4;"></i>
-  <p class="text-muted mt-3">{% trans "No exams published yet." %}</p>
-</div>
+  <div class="text-center py-5">
+    <i class="bi bi-journal-x" style="font-size:3rem;color:var(--text-muted);opacity:0.4;display:block;margin-bottom:0.75rem;"></i>
+    <p class="text-muted">{% trans "No exams published yet." %}</p>
+  </div>
 {% endif %}
 {% endblock %}

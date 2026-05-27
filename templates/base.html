@@ -130,6 +130,11 @@
                 <span class="nav-label">{% trans "Games" %}</span>
             </a>
 
+            <a href="{% url 'exam_list' %}" class="nav-link {% block nav_exam %}{% endblock %}">
+                <i class="bi bi-journal-check"></i>
+                <span class="nav-label">{% trans "Exams" %}</span>
+            </a>
+
             <span class="nav-section">{% trans "Support" %}</span>
 
             <a href="{% url 'about' %}" class="nav-link {% block nav_about %}{% endblock %}">
@@ -307,8 +312,8 @@
         <a href="{% url 'masters-home' %}" class="mob-nav-item {% block mob_nav_masters %}{% endblock %}">
             <i class="bi bi-person-workspace"></i><span>{% trans "Masters" %}</span>
         </a>
-        <a href="{% url 'classroom:list' %}" class="mob-nav-item {% block mob_nav_classroom %}{% endblock %}">
-            <i class="bi bi-easel-fill"></i><span>{% trans "Classrooms" %}</span>
+        <a href="{% url 'exam_list' %}" class="mob-nav-item {% block mob_nav_exam %}{% endblock %}">
+            <i class="bi bi-journal-check"></i><span>{% trans "Exams" %}</span>
         </a>
         <a href="{% url 'practice_list' %}" class="mob-nav-item {% block mob_nav_practice %}{% endblock %}">
             <i class="bi bi-book-half"></i><span>{% trans "Practice" %}</span>

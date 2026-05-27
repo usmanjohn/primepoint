@@ -3,7 +3,14 @@ from django.utils import timezone
 
 
 class Exam(models.Model):
+    LANGUAGE_CHOICES = [
+        ('korean', '한국어 (Korean)'),
+        ('english', 'English'),
+        ('japanese', '日本語 (Japanese)'),
+        ('chinese', '中文 (Chinese)'),
+    ]
     title = models.CharField(max_length=200)
+    language = models.CharField(max_length=20, choices=LANGUAGE_CHOICES, default='korean')
     exam_number = models.IntegerField()
     listening_audio = models.FileField(upload_to='exam_audio/', blank=True, null=True)
     listening_minutes = models.IntegerField(default=60)
@@ -15,7 +22,7 @@ class Exam(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['-exam_number']
+        ordering = ['language', '-exam_number']
 
     def __str__(self):
         return self.title
@@ -46,16 +53,14 @@ class ExamQuestion(models.Model):
 
 class ExamChoice(models.Model):
     question = models.ForeignKey(ExamQuestion, on_delete=models.CASCADE, related_name='choices')
-    number = models.IntegerField()
-    text = models.CharField(max_length=500, blank=True)
-    image = models.ImageField(upload_to='exam_images/', blank=True, null=True)
+    text = models.CharField(max_length=500)
     is_correct = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ['number']
+        ordering = ['id']
 
     def __str__(self):
-        return f'Q{self.question.number} choice {self.number}'
+        return f'Q{self.question.number}: {self.text[:40]}'
 
 
 class ExamAttempt(models.Model):

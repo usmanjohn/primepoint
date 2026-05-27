@@ -2,6 +2,8 @@
 {% load static i18n %}
 
 {% block title %}{{ exam.title }} — CORE{% endblock %}
+{% block nav_exam %}active{% endblock %}
+{% block mob_nav_exam %}active{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -50,7 +52,7 @@
 
 <div class="row g-4">
   <div class="col-lg-8">
-    <div class="mb-1" style="font-size:0.7rem;font-weight:700;letter-spacing:2px;color:var(--accent);text-transform:uppercase;">TOPIK II — Exam #{{ exam.exam_number }}</div>
+    <div class="mb-1" style="font-size:0.7rem;font-weight:700;letter-spacing:2px;color:var(--accent);text-transform:uppercase;">{{ exam.get_language_display }} — Exam #{{ exam.exam_number }}</div>
     <h1 class="page-title mb-4">{{ exam.title }}</h1>
 
     <!-- Stats -->

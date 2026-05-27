@@ -5,7 +5,7 @@ from .models import Exam, ExamQuestion, ExamChoice, ExamAttempt, ExamAnswer
 class ExamChoiceInline(admin.TabularInline):
     model = ExamChoice
     extra = 4
-    fields = ('number', 'text', 'image', 'is_correct')
+    fields = ('text', 'is_correct')
 
 
 class ExamQuestionInline(admin.TabularInline):
@@ -17,14 +17,14 @@ class ExamQuestionInline(admin.TabularInline):
 
 @admin.register(Exam)
 class ExamAdmin(admin.ModelAdmin):
-    list_display = ('title', 'exam_number', 'is_published', 'allow_audio_replay', 'allow_audio_pause', 'created_at')
+    list_display = ('title', 'language', 'exam_number', 'is_published', 'allow_audio_replay', 'allow_audio_pause', 'created_at')
     list_editable = ('is_published', 'allow_audio_replay', 'allow_audio_pause')
-    list_filter = ('is_published',)
+    list_filter = ('is_published', 'language')
     search_fields = ('title',)
     inlines = [ExamQuestionInline]
     fieldsets = (
         (None, {
-            'fields': ('title', 'exam_number', 'listening_audio', 'is_published'),
+            'fields': ('title', 'language', 'exam_number', 'listening_audio', 'is_published'),
         }),
         ('Section Durations', {
             'fields': ('listening_minutes', 'reading_minutes', 'writing_minutes'),
