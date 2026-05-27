@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{{ exam.title }} — CORE{% endblock %}
+
+{% block extra_css %}
+<style>
+.info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+@media (min-width: 576px) { .info-grid { grid-template-columns: repeat(3, 1fr); } }
+.info-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+}
+.info-box i { font-size: 1.3rem; color: var(--accent); display: block; margin-bottom: 0.4rem; }
+.info-box .val { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+.info-box .lbl { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+.section-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.section-row:last-child { border-bottom: none; }
+.section-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.icon-listen { background: rgba(56,189,248,0.12); color: #38bdf8; }
+.icon-read   { background: rgba(34,197,94,0.12);  color: #22c55e; }
+.icon-write  { background: rgba(167,139,250,0.12); color: #a78bfa; }
+.section-name { font-weight: 600; color: var(--text); font-size: 0.9rem; }
+.section-sub  { font-size: 0.75rem; color: var(--text-muted); }
+.section-dur  { margin-left: auto; font-size: 0.82rem; font-weight: 600; color: var(--text-muted); white-space: nowrap; }
+</style>
+{% endblock %}
+
+{% block content %}
+<nav class="mb-4">
+  <a href="{% url 'exam_list' %}" class="btn-auth-outline text-decoration-none">
+    <i class="bi bi-arrow-left"></i><span class="d-none d-sm-inline ms-2">{% trans "All Exams" %}</span>
+  </a>
+</nav>
+
+<div class="row g-4">
+  <div class="col-lg-8">
+    <div class="mb-1" style="font-size:0.7rem;font-weight:700;letter-spacing:2px;color:var(--accent);text-transform:uppercase;">TOPIK II — Exam #{{ exam.exam_number }}</div>
+    <h1 class="page-title mb-4">{{ exam.title }}</h1>
+
+    <!-- Stats -->
+    <div class="info-grid mb-4">
+      <div class="info-box"><i class="bi bi-headphones"></i><div class="val">{{ listening_count }}</div><div class="lbl">{% trans "Listening Qs" %}</div></div>
+      <div class="info-box"><i class="bi bi-book"></i><div class="val">{{ reading_count }}</div><div class="lbl">{% trans "Reading Qs" %}</div></div>
+      <div class="info-box"><i class="bi bi-pencil"></i><div class="val">{{ writing_count }}</div><div class="lbl">{% trans "Writing Qs" %}</div></div>
+      <div class="info-box"><i class="bi bi-clock"></i><div class="val">{{ exam.listening_minutes|add:exam.reading_minutes|add:exam.writing_minutes }}</div><div class="lbl">{% trans "Total Min" %}</div></div>
+      {% if exam.listening_audio %}<div class="info-box"><i class="bi bi-volume-up"></i><div class="val">{% trans "Yes" %}</div><div class="lbl">{% trans "Audio" %}</div></div>{% endif %}
+    </div>
+
+    <!-- Sections -->
+    <div class="card p-3 mb-4">
+      <h6 style="font-size:0.72rem;font-weight:700;letter-spacing:1.5px;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.5rem;">{% trans "EXAM SECTIONS" %}</h6>
+      <div class="section-row">
+        <div class="section-icon icon-listen"><i class="bi bi-headphones-fill"></i></div>
+        <div>
+          <div class="section-name">듣기 — {% trans "Listening" %}</div>
+          <div class="section-sub">{{ listening_count }} {% trans "questions" %}</div>
+        </div>
+        <div class="section-dur"><i class="bi bi-clock me-1"></i>{{ exam.listening_minutes }} {% trans "min" %}</div>
+      </div>
+      <div class="section-row">
+        <div class="section-icon icon-read"><i class="bi bi-book-fill"></i></div>
+        <div>
+          <div class="section-name">읽기 — {% trans "Reading" %}</div>
+          <div class="section-sub">{{ reading_count }} {% trans "questions" %}</div>
+        </div>
+        <div class="section-dur"><i class="bi bi-clock me-1"></i>{{ exam.reading_minutes }} {% trans "min" %}</div>
+      </div>
+      <div class="section-row">
+        <div class="section-icon icon-write"><i class="bi bi-pencil-fill"></i></div>
+        <div>
+          <div class="section-name">쓰기 — {% trans "Writing" %}</div>
+          <div class="section-sub">{{ writing_count }} {% trans "questions" %}</div>
+        </div>
+        <div class="section-dur"><i class="bi bi-clock me-1"></i>{{ exam.writing_minutes }} {% trans "min" %}</div>
+      </div>
+    </div>
+
+    <!-- Rules -->
+    <div class="card p-3">
+      <h6 style="font-size:0.72rem;font-weight:700;letter-spacing:1.5px;color:var(--text-muted);text-transform:uppercase;margin-bottom:0.75rem;">{% trans "RULES" %} / 규칙</h6>
+      <ul class="list-unstyled mb-0" style="font-size:0.85rem;color:var(--text-muted);">
+        <li class="d-flex gap-2 align-items-start py-2 border-bottom" style="border-color:var(--border) !important;"><i class="bi bi-arrow-right-circle-fill text-accent mt-1"></i>{% trans "Sections are completed in order: Listening → Reading → Writing" %}</li>
+        <li class="d-flex gap-2 align-items-start py-2 border-bottom" style="border-color:var(--border) !important;"><i class="bi bi-clock-fill text-accent mt-1"></i>{% trans "Timer runs continuously and cannot be paused." %}</li>
+        <li class="d-flex gap-2 align-items-start py-2 border-bottom" style="border-color:var(--border) !important;"><i class="bi bi-check-circle-fill text-accent mt-1"></i>{% trans "Listening and Reading are auto-scored. Writing is graded by a teacher." %}</li>
+        <li class="d-flex gap-2 align-items-start py-2"><i class="bi bi-scroll text-accent mt-1"></i>{% trans "Scroll freely through all questions in a section — answer in any order." %}</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="col-lg-4">
+    <div class="card p-4 sticky-top" style="top: 80px; z-index: 10;">
+      {% if last_attempt %}
+        <h6 class="text-muted text-uppercase mb-3" style="font-size:0.7rem;letter-spacing:1px;">{% trans "Previous Attempt" %}</h6>
+        <div class="mb-1 small text-muted">{% trans "Listening" %}: <strong class="text-accent">{% if last_attempt.listening_score is not None %}{{ last_attempt.listening_score }}%{% else %}—{% endif %}</strong></div>
+        <div class="mb-1 small text-muted">{% trans "Reading" %}: <strong class="text-accent">{% if last_attempt.reading_score is not None %}{{ last_attempt.reading_score }}%{% else %}—{% endif %}</strong></div>
+        <div class="mb-3 small text-muted">{% trans "Writing" %}: <strong class="text-accent">{% if last_attempt.writing_score is not None %}{{ last_attempt.writing_score }}{% else %}{% trans "Pending" %}{% endif %}</strong></div>
+        {% if last_attempt.current_section != 'completed' %}
+          <a href="{% url 'take_section' last_attempt.id %}" class="btn-auth w-100 text-center text-decoration-none mb-2">
+            {% trans "Continue Exam" %} →
+          </a>
+          <hr style="opacity:0.1;">
+        {% else %}
+          <a href="{% url 'exam_result' last_attempt.id %}" class="btn-auth-outline w-100 text-center text-decoration-none mb-3">
+            {% trans "View Result" %}
+          </a>
+        {% endif %}
+      {% endif %}
+
+      <form method="post" action="{% url 'start_exam' exam.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn-auth w-100">
+          {% if last_attempt %}{% trans "Retake Exam" %}{% else %}{% trans "Start Exam" %}{% endif %}
+        </button>
+      </form>
+      <p class="text-muted text-center mt-3" style="font-size:0.75rem;">
+        {% trans "Total time:" %} {{ exam.listening_minutes|add:exam.reading_minutes|add:exam.writing_minutes }} {% trans "minutes" %}
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

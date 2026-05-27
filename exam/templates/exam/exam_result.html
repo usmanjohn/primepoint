@@ -1,0 +1,254 @@
+{% extends "base.html" %}
+{% load static i18n exam_extras %}
+
+{% block title %}{% trans "Result" %} — {{ exam.title }}{% endblock %}
+
+{% block extra_css %}
+<style>
+.score-section {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.score-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.score-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.icon-listen { background: rgba(56,189,248,0.12); color: #38bdf8; }
+.icon-read   { background: rgba(34,197,94,0.12);  color: #22c55e; }
+.icon-write  { background: rgba(167,139,250,0.12); color: #a78bfa; }
+.score-big {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+.score-pending {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 99px;
+  background: rgba(250,204,21,0.12);
+  color: #facc15;
+  border: 1px solid rgba(250,204,21,0.3);
+}
+.answer-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+.answer-row:last-child { border-bottom: none; }
+.q-badge {
+  min-width: 28px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+.ans-correct { color: #22c55e; font-weight: 600; }
+.ans-wrong { color: #ef4444; }
+.ans-blank { color: var(--text-muted); font-style: italic; }
+.collapsible-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+.collapsible-toggle:hover { border-color: var(--accent); color: var(--accent); }
+</style>
+{% endblock %}
+
+{% block content %}
+<nav class="mb-4">
+  <a href="{% url 'exam_list' %}" class="btn-auth-outline text-decoration-none">
+    <i class="bi bi-arrow-left"></i><span class="d-none d-sm-inline ms-2">{% trans "All Exams" %}</span>
+  </a>
+</nav>
+
+<div class="mb-1" style="font-size:0.7rem;font-weight:700;letter-spacing:2px;color:var(--accent);text-transform:uppercase;">{% trans "EXAM RESULT" %}</div>
+<h1 class="page-title mb-1">{{ exam.title }}</h1>
+<p class="text-muted mb-4" style="font-size:0.85rem;">{% trans "Completed" %}: {{ attempt.completed_at|date:"d M Y, H:i" }}</p>
+
+<!-- Score summary -->
+<div class="row g-3 mb-4">
+  <div class="col-12 col-sm-4">
+    <div class="score-section text-center">
+      <div class="score-icon icon-listen mx-auto mb-2"><i class="bi bi-headphones-fill"></i></div>
+      <div class="text-muted mb-1" style="font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;">듣기 — {% trans "Listening" %}</div>
+      {% if attempt.listening_score is not None %}
+        <div class="score-big">{{ attempt.listening_score }}<span style="font-size:1rem;">%</span></div>
+      {% else %}
+        <span class="score-pending">{% trans "No questions" %}</span>
+      {% endif %}
+    </div>
+  </div>
+  <div class="col-12 col-sm-4">
+    <div class="score-section text-center">
+      <div class="score-icon icon-read mx-auto mb-2"><i class="bi bi-book-fill"></i></div>
+      <div class="text-muted mb-1" style="font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;">읽기 — {% trans "Reading" %}</div>
+      {% if attempt.reading_score is not None %}
+        <div class="score-big">{{ attempt.reading_score }}<span style="font-size:1rem;">%</span></div>
+      {% else %}
+        <span class="score-pending">{% trans "No questions" %}</span>
+      {% endif %}
+    </div>
+  </div>
+  <div class="col-12 col-sm-4">
+    <div class="score-section text-center">
+      <div class="score-icon icon-write mx-auto mb-2"><i class="bi bi-pencil-fill"></i></div>
+      <div class="text-muted mb-1" style="font-size:0.72rem;text-transform:uppercase;letter-spacing:1px;">쓰기 — {% trans "Writing" %}</div>
+      {% if attempt.writing_score is not None %}
+        <div class="score-big">{{ attempt.writing_score }}<span style="font-size:1rem;"> pt</span></div>
+      {% else %}
+        <span class="score-pending">{% trans "Pending review" %} / 채점 중</span>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<!-- Listening answers -->
+{% if listening_questions %}
+<div class="score-section mb-4">
+  <div class="score-header">
+    <div class="score-icon icon-listen"><i class="bi bi-headphones-fill"></i></div>
+    <div>
+      <div style="font-weight:700;color:var(--text);">듣기 — {% trans "Listening" %}</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);">{{ listening_questions|length }} {% trans "questions" %}</div>
+    </div>
+    <button class="collapsible-toggle ms-auto" onclick="toggleSection('listen-detail')">
+      {% trans "Show / Hide Answers" %}
+    </button>
+  </div>
+  <div id="listen-detail" style="display:none;">
+    {% for question in listening_questions %}
+    {% with ans=answer_map|get_item:question.id %}
+    <div class="answer-row">
+      <span class="q-badge">Q{{ question.number }}</span>
+      <div style="flex:1;">
+        <div style="color:var(--text);margin-bottom:0.25rem;">{{ question.question_text|truncatechars:100 }}</div>
+        {% if ans and ans.selected_choice %}
+          {% if ans.selected_choice.is_correct %}
+            <span class="ans-correct"><i class="bi bi-check-circle-fill me-1"></i>{{ ans.selected_choice.text }}</span>
+          {% else %}
+            <span class="ans-wrong"><i class="bi bi-x-circle-fill me-1"></i>{{ ans.selected_choice.text }}</span>
+            {% for c in question.choices.all %}{% if c.is_correct %}<span class="ans-correct ms-2"><i class="bi bi-check2 me-1"></i>{{ c.text }}</span>{% endif %}{% endfor %}
+          {% endif %}
+        {% else %}
+          <span class="ans-blank">{% trans "Not answered" %}</span>
+          {% for c in question.choices.all %}{% if c.is_correct %}<span class="ans-correct ms-2"><i class="bi bi-check2 me-1"></i>{{ c.text }}</span>{% endif %}{% endfor %}
+        {% endif %}
+      </div>
+    </div>
+    {% endwith %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+<!-- Reading answers -->
+{% if reading_questions %}
+<div class="score-section mb-4">
+  <div class="score-header">
+    <div class="score-icon icon-read"><i class="bi bi-book-fill"></i></div>
+    <div>
+      <div style="font-weight:700;color:var(--text);">읽기 — {% trans "Reading" %}</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);">{{ reading_questions|length }} {% trans "questions" %}</div>
+    </div>
+    <button class="collapsible-toggle ms-auto" onclick="toggleSection('read-detail')">
+      {% trans "Show / Hide Answers" %}
+    </button>
+  </div>
+  <div id="read-detail" style="display:none;">
+    {% for question in reading_questions %}
+    {% with ans=answer_map|get_item:question.id %}
+    <div class="answer-row">
+      <span class="q-badge">Q{{ question.number }}</span>
+      <div style="flex:1;">
+        <div style="color:var(--text);margin-bottom:0.25rem;">{{ question.question_text|truncatechars:100 }}</div>
+        {% if ans and ans.selected_choice %}
+          {% if ans.selected_choice.is_correct %}
+            <span class="ans-correct"><i class="bi bi-check-circle-fill me-1"></i>{{ ans.selected_choice.text }}</span>
+          {% else %}
+            <span class="ans-wrong"><i class="bi bi-x-circle-fill me-1"></i>{{ ans.selected_choice.text }}</span>
+            {% for c in question.choices.all %}{% if c.is_correct %}<span class="ans-correct ms-2"><i class="bi bi-check2 me-1"></i>{{ c.text }}</span>{% endif %}{% endfor %}
+          {% endif %}
+        {% else %}
+          <span class="ans-blank">{% trans "Not answered" %}</span>
+          {% for c in question.choices.all %}{% if c.is_correct %}<span class="ans-correct ms-2"><i class="bi bi-check2 me-1"></i>{{ c.text }}</span>{% endif %}{% endfor %}
+        {% endif %}
+      </div>
+    </div>
+    {% endwith %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+<!-- Writing answers -->
+{% if writing_questions %}
+<div class="score-section mb-4">
+  <div class="score-header">
+    <div class="score-icon icon-write"><i class="bi bi-pencil-fill"></i></div>
+    <div>
+      <div style="font-weight:700;color:var(--text);">쓰기 — {% trans "Writing" %}</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);">{% trans "Graded by teacher" %}</div>
+    </div>
+    <button class="collapsible-toggle ms-auto" onclick="toggleSection('write-detail')">
+      {% trans "Show / Hide Answers" %}
+    </button>
+  </div>
+  <div id="write-detail" style="display:none;">
+    {% for question in writing_questions %}
+    {% with ans=answer_map|get_item:question.id %}
+    <div class="answer-row">
+      <span class="q-badge">Q{{ question.number }}</span>
+      <div style="flex:1;">
+        <div style="color:var(--text);margin-bottom:0.35rem;">{{ question.question_text|truncatechars:120 }}</div>
+        {% if ans and ans.written_answer %}
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.85rem;font-size:0.83rem;color:var(--text-muted);white-space:pre-wrap;">{{ ans.written_answer }}</div>
+        {% else %}
+          <span class="ans-blank">{% trans "Not answered" %}</span>
+        {% endif %}
+      </div>
+    </div>
+    {% endwith %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+<!-- Actions -->
+<div class="d-flex gap-3 flex-wrap mt-2">
+  <a href="{% url 'exam_detail' exam.id %}" class="btn-auth text-decoration-none">{% trans "Retake Exam" %}</a>
+  <a href="{% url 'exam_list' %}" class="btn-auth-outline text-decoration-none">{% trans "All Exams" %}</a>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function toggleSection(id) {
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === 'none' ? 'block' : 'none';
+}
+</script>
+{% endblock %}

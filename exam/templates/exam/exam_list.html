@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{% trans "TOPIK Exams" %} — CORE{% endblock %}
+{% block page_name %}{% trans "TOPIK Exams" %}{% endblock %}
+
+{% block extra_css %}
+<style>
+.exam-hero {
+  padding: 2rem 0 1.75rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.75rem;
+}
+.exam-hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0 0 0.35rem;
+}
+.exam-hero-sub { color: var(--text-muted); font-size: 0.88rem; }
+.exam-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  padding: 1.5rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  height: 100%;
+}
+.exam-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.exam-number-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--accent);
+  color: #000;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 0.25rem 0.7rem;
+  border-radius: 99px;
+  margin-bottom: 0.75rem;
+}
+.exam-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+.exam-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.exam-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+.exam-meta-item i { color: var(--accent); }
+.section-pills {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+.section-pill {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  background: var(--bg);
+}
+.status-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.7rem;
+  border-radius: 99px;
+}
+.status-inprogress { background: rgba(250,204,21,0.15); color: #facc15; border: 1px solid rgba(250,204,21,0.3); }
+.status-done { background: rgba(34,197,94,0.12); color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="exam-hero">
+  <p class="pl-eyebrow">TOPIK II</p>
+  <h1>{% trans "Full Exams" %} / 시험</h1>
+  <p class="exam-hero-sub">{% trans "Complete timed exam — Listening, Reading, Writing in sequence." %}<br>듣기 → 읽기 → 쓰기</p>
+</div>
+
+{% if exams %}
+<div class="row g-4">
+  {% for exam in exams %}
+  {% with attempt=attempts_by_exam|default_if_none:None %}
+  <div class="col-12 col-md-6 col-xl-4">
+    <div class="exam-card d-flex flex-column">
+      <div>
+        <span class="exam-number-badge"><i class="bi bi-journal-text"></i>{% trans "Exam" %} #{{ exam.exam_number }}</span>
+        {% with attempt=attempts_by_exam|default:"" %}{% endwith %}
+        {% if exam.id in attempts_by_exam %}
+          {% with a=attempts_by_exam|default:"" %}
+          {% endwith %}
+        {% endif %}
+        <div class="exam-title">{{ exam.title }}</div>
+
+        <div class="section-pills">
+          <span class="section-pill"><i class="bi bi-headphones"></i> {% trans "Listening" %} {{ exam.listening_minutes }}{% trans "min" %}</span>
+          <span class="section-pill"><i class="bi bi-book"></i> {% trans "Reading" %} {{ exam.reading_minutes }}{% trans "min" %}</span>
+          <span class="section-pill"><i class="bi bi-pencil"></i> {% trans "Writing" %} {{ exam.writing_minutes }}{% trans "min" %}</span>
+        </div>
+
+        <div class="exam-meta">
+          <span class="exam-meta-item"><i class="bi bi-clock"></i> {{ exam.listening_minutes|add:exam.reading_minutes|add:exam.writing_minutes }} {% trans "min total" %}</span>
+          {% if exam.listening_audio %}<span class="exam-meta-item"><i class="bi bi-volume-up"></i> {% trans "Audio included" %}</span>{% endif %}
+        </div>
+      </div>
+
+      <div class="mt-auto">
+        {% if exam.id in attempts_by_exam %}
+          {% with a=attempts_by_exam|default_if_none:None %}{% endwith %}
+        {% endif %}
+        <a href="{% url 'exam_detail' exam.id %}" class="btn-auth w-100 text-center text-decoration-none">
+          {% if exam.id in attempts_by_exam %}
+            {% trans "View / Retake" %}
+          {% else %}
+            {% trans "View Exam" %}
+          {% endif %}
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endwith %}
+  {% endfor %}
+</div>
+{% else %}
+<div class="text-center py-5">
+  <i class="bi bi-journal-x" style="font-size: 3rem; color: var(--text-muted); opacity: 0.4;"></i>
+  <p class="text-muted mt-3">{% trans "No exams published yet." %}</p>
+</div>
+{% endif %}
+{% endblock %}

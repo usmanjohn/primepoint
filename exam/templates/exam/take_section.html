@@ -1,0 +1,429 @@
+{% extends "base.html" %}
+{% load static i18n exam_extras %}
+
+{% block title %}{{ section_label }} — {{ exam.title }}{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ── Sticky exam bar ─────────────────────────────────── */
+.exam-bar {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0.6rem 0;
+}
+.exam-bar-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.section-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+.badge-listen { background: rgba(56,189,248,0.15); color: #38bdf8; }
+.badge-read   { background: rgba(34,197,94,0.12);  color: #22c55e; }
+.badge-write  { background: rgba(167,139,250,0.12); color: #a78bfa; }
+.timer-box {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Syne', monospace;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-left: auto;
+}
+.timer-warn  { color: #f59e0b !important; }
+.timer-danger { color: #ef4444 !important; }
+
+/* ── Audio bar ───────────────────────────────────────── */
+.audio-bar {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0.55rem 0;
+  position: sticky;
+  top: 53px;
+  z-index: 199;
+}
+.audio-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.audio-inner audio {
+  flex: 1;
+  min-width: 180px;
+  height: 34px;
+}
+.audio-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.28rem 0.7rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.audio-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── Answered progress ───────────────────────────────── */
+.answered-bar {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0.3rem 0;
+  position: sticky;
+  top: {% if attempt.current_section == 'listening' and exam.listening_audio %}105px{% else %}53px{% endif %};
+  z-index: 198;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+.answered-progress {
+  height: 3px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-top: 0.25rem;
+}
+.answered-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 99px;
+  transition: width 0.3s;
+}
+
+/* ── Question cards ──────────────────────────────────── */
+.q-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+  scroll-margin-top: 140px;
+}
+.q-num {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+.q-passage {
+  background: var(--bg);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.85rem;
+  font-size: 0.87rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  white-space: pre-wrap;
+}
+.q-text {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+.q-img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 0.85rem;
+  display: block;
+}
+.choice-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  font-size: 0.88rem;
+  color: var(--text);
+}
+.choice-label:hover { border-color: var(--accent); background: rgba(56,189,248,0.05); }
+.choice-label input[type=radio] { display: none; }
+.choice-label.selected { border-color: var(--accent); background: rgba(56,189,248,0.1); }
+.choice-num {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s;
+}
+.choice-label.selected .choice-num { background: var(--accent); border-color: var(--accent); color: #000; }
+.choice-img { max-width: 100%; border-radius: 6px; }
+.writing-area {
+  width: 100%;
+  min-height: 180px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  resize: vertical;
+}
+.writing-area:focus { border-color: var(--accent); outline: none; }
+
+/* ── Sticky finish bar ───────────────────────────────── */
+.finish-bar {
+  position: sticky;
+  bottom: 0;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 0.75rem 0;
+  z-index: 197;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Exam status bar -->
+<div class="exam-bar">
+  <div class="container-fluid px-3">
+    <div class="exam-bar-inner">
+      {% if attempt.current_section == 'listening' %}
+        <span class="section-badge badge-listen"><i class="bi bi-headphones-fill me-1"></i>듣기 — {% trans "Listening" %}</span>
+      {% elif attempt.current_section == 'reading' %}
+        <span class="section-badge badge-read"><i class="bi bi-book-fill me-1"></i>읽기 — {% trans "Reading" %}</span>
+      {% else %}
+        <span class="section-badge badge-write"><i class="bi bi-pencil-fill me-1"></i>쓰기 — {% trans "Writing" %}</span>
+      {% endif %}
+      <small class="text-muted d-none d-sm-inline" style="font-size:0.72rem;">{% trans "Section" %} {{ section_order_index }}/{{ total_sections }}</small>
+      <div class="timer-box" id="timer-box">
+        <i class="bi bi-clock"></i>
+        <span id="timer-display">--:--</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Audio bar (listening section only) -->
+{% if attempt.current_section == 'listening' and exam.listening_audio %}
+<div class="audio-bar">
+  <div class="container-fluid px-3">
+    <div class="audio-inner">
+      <i class="bi bi-volume-up text-accent flex-shrink-0"></i>
+      <audio id="exam-audio" autoplay>
+        <source src="{{ exam.listening_audio.url }}">
+        {% trans "Your browser does not support audio." %}
+      </audio>
+      {% if exam.allow_audio_pause %}
+        <button type="button" class="audio-btn" id="btn-pause" onclick="togglePause()">
+          <i class="bi bi-pause-fill" id="pause-icon"></i>
+          <span id="pause-label">{% trans "Pause" %}</span>
+        </button>
+      {% endif %}
+      {% if exam.allow_audio_replay %}
+        <button type="button" class="audio-btn" onclick="replayAudio()">
+          <i class="bi bi-arrow-counterclockwise"></i>{% trans "Replay" %}
+        </button>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<!-- Answered progress -->
+<div class="answered-bar">
+  <div class="container-fluid px-3">
+    <span>{% trans "Answered" %}: <strong id="answered-count">0</strong> / {{ questions|length }}</span>
+    <div class="answered-progress">
+      <div class="answered-fill" id="answered-fill" style="width:0%"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Main scrolling form -->
+<form method="post" action="{% url 'submit_section' attempt.id %}" id="exam-form">
+  {% csrf_token %}
+  <div class="mt-4 mb-5">
+
+    {% for question in questions %}
+    {% with sel_id=selected_choices|get_item:question.id written=written_answers|get_item:question.id %}
+    <div class="q-card" id="qcard-{{ question.id }}">
+      <div class="q-num">{% trans "Question" %} {{ question.number }}</div>
+
+      {% if question.passage %}
+        <div class="q-passage">{{ question.passage }}</div>
+      {% endif %}
+      {% if question.passage_image %}
+        <img src="{{ question.passage_image.url }}" class="q-img" alt="{% trans 'Passage image' %}">
+      {% endif %}
+
+      <div class="q-text">{{ question.question_text }}</div>
+
+      {% if question.question_image %}
+        <img src="{{ question.question_image.url }}" class="q-img" alt="{% trans 'Question image' %}">
+      {% endif %}
+
+      {% if question.is_writing %}
+        <textarea
+          class="writing-area"
+          name="q{{ question.id }}"
+          placeholder="{% trans 'Write your answer here...' %} / 여기에 답을 쓰세요..."
+          oninput="updateProgress()">{{ written|default:'' }}</textarea>
+      {% else %}
+        {% for choice in question.choices.all %}
+        {% with is_sel=sel_id|stringformat:"s" %}
+        <label class="choice-label {% if sel_id == choice.id %}selected{% endif %}"
+               id="lbl-{{ question.id }}-{{ choice.id }}"
+               for="c{{ question.id }}-{{ choice.id }}">
+          <input
+            type="radio"
+            name="q{{ question.id }}"
+            id="c{{ question.id }}-{{ choice.id }}"
+            value="{{ choice.id }}"
+            {% if sel_id == choice.id %}checked{% endif %}
+            onchange="onChoiceChange({{ question.id }}, {{ choice.id }})">
+          <span class="choice-num">{{ choice.number }}</span>
+          {% if choice.image %}
+            <img src="{{ choice.image.url }}" class="choice-img" alt="">
+          {% else %}
+            <span>{{ choice.text }}</span>
+          {% endif %}
+        </label>
+        {% endwith %}
+        {% endfor %}
+      {% endif %}
+    </div>
+    {% endwith %}
+    {% empty %}
+      <div class="text-center py-5 text-muted">
+        <i class="bi bi-hourglass" style="font-size:2.5rem;opacity:0.4;display:block;margin-bottom:0.75rem;"></i>
+        {% trans "No questions in this section yet." %}
+      </div>
+    {% endfor %}
+
+  </div>
+
+  <!-- Sticky finish button -->
+  <div class="finish-bar">
+    <div class="container-fluid px-3 d-flex align-items-center justify-content-between gap-3">
+      <span class="text-muted" style="font-size:0.78rem;">
+        {% if section_order_index < total_sections %}
+          {% trans "Next section:" %}
+          {% if attempt.current_section == 'listening' %}읽기 ({% trans "Reading" %})
+          {% elif attempt.current_section == 'reading' %}쓰기 ({% trans "Writing" %})
+          {% endif %}
+        {% else %}
+          {% trans "This is the last section." %}
+        {% endif %}
+      </span>
+      <button type="submit" class="btn-auth" style="white-space:nowrap;">
+        {% if section_order_index < total_sections %}
+          {% trans "Finish & Continue" %} →
+        {% else %}
+          {% trans "Submit Exam" %}
+        {% endif %}
+      </button>
+    </div>
+  </div>
+</form>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// ── Timer ─────────────────────────────────────────────
+let seconds = {{ seconds_remaining }};
+const timerDisplay = document.getElementById('timer-display');
+const timerBox = document.getElementById('timer-box');
+const examForm = document.getElementById('exam-form');
+
+function pad(n) { return String(n).padStart(2, '0'); }
+function formatTime(s) { return pad(Math.floor(s / 60)) + ':' + pad(s % 60); }
+timerDisplay.textContent = formatTime(seconds);
+
+const timerInterval = setInterval(() => {
+  seconds = Math.max(0, seconds - 1);
+  timerDisplay.textContent = formatTime(seconds);
+  if (seconds <= 300 && seconds > 60) {
+    timerBox.classList.add('timer-warn');
+    timerBox.classList.remove('timer-danger');
+  } else if (seconds <= 60) {
+    timerBox.classList.remove('timer-warn');
+    timerBox.classList.add('timer-danger');
+  }
+  if (seconds === 0) {
+    clearInterval(timerInterval);
+    examForm.submit();
+  }
+}, 1000);
+
+// ── Choice highlighting ───────────────────────────────
+function onChoiceChange(questionId, choiceId) {
+  document.querySelectorAll(`[id^="lbl-${questionId}-"]`).forEach(el => el.classList.remove('selected'));
+  const lbl = document.getElementById(`lbl-${questionId}-${choiceId}`);
+  if (lbl) lbl.classList.add('selected');
+  updateProgress();
+}
+
+// ── Answered progress ─────────────────────────────────
+const totalQ = {{ questions|length }};
+function updateProgress() {
+  let count = 0;
+  document.querySelectorAll('.q-card').forEach(card => {
+    const qid = card.id.replace('qcard-', '');
+    const radio = document.querySelector(`input[name="q${qid}"]:checked`);
+    const textarea = card.querySelector('textarea');
+    if (radio || (textarea && textarea.value.trim().length > 0)) count++;
+  });
+  document.getElementById('answered-count').textContent = count;
+  document.getElementById('answered-fill').style.width = totalQ > 0 ? (count / totalQ * 100) + '%' : '0%';
+}
+updateProgress();
+
+// ── Audio controls ────────────────────────────────────
+{% if attempt.current_section == 'listening' and exam.listening_audio %}
+const examAudio = document.getElementById('exam-audio');
+let audioPaused = false;
+
+function togglePause() {
+  if (audioPaused) {
+    examAudio.play();
+    audioPaused = false;
+    document.getElementById('pause-icon').className = 'bi bi-pause-fill';
+    document.getElementById('pause-label').textContent = '{% trans "Pause" %}';
+  } else {
+    examAudio.pause();
+    audioPaused = true;
+    document.getElementById('pause-icon').className = 'bi bi-play-fill';
+    document.getElementById('pause-label').textContent = '{% trans "Resume" %}';
+  }
+}
+
+function replayAudio() {
+  examAudio.currentTime = 0;
+  examAudio.play();
+  audioPaused = false;
+  {% if exam.allow_audio_pause %}
+  document.getElementById('pause-icon').className = 'bi bi-pause-fill';
+  document.getElementById('pause-label').textContent = '{% trans "Pause" %}';
+  {% endif %}
+}
+{% endif %}
+</script>
+{% endblock %}
