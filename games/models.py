@@ -57,6 +57,55 @@ class CodeBreakerClue(models.Model):
         ordering = ['letter_index']
 
 
+class OddOneOutPack(models.Model):
+    LANG_EN  = 'en'
+    LANG_KO  = 'ko'
+    LANG_UZ  = 'uz'
+    LANG_ANY = 'any'
+    LANGUAGE_CHOICES = [
+        (LANG_EN,  'English'),
+        (LANG_KO,  'Korean'),
+        (LANG_UZ,  'Uzbek'),
+        (LANG_ANY, 'Mixed'),
+    ]
+
+    title       = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+    language    = models.CharField(max_length=10, choices=LANGUAGE_CHOICES, default=LANG_ANY)
+    created_by  = models.ForeignKey(User, on_delete=models.CASCADE, related_name='oddoneout_packs')
+    is_active   = models.BooleanField(default=True)
+    created_at  = models.DateTimeField(auto_now_add=True)
+
+    def question_count(self):
+        return self.questions.count()
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['-created_at']
+
+
+class OddOneOutQuestion(models.Model):
+    pack        = models.ForeignKey(OddOneOutPack, on_delete=models.CASCADE, related_name='questions')
+    word_1      = models.CharField(max_length=120)
+    word_2      = models.CharField(max_length=120)
+    word_3      = models.CharField(max_length=120)
+    word_4      = models.CharField(max_length=120)
+    odd_index   = models.PositiveSmallIntegerField(help_text='0-based index of the odd word (0=word_1, 1=word_2, …)')
+    explanation = models.CharField(max_length=400, blank=True)
+    order       = models.PositiveSmallIntegerField(default=0)
+
+    def words_list(self):
+        return [self.word_1, self.word_2, self.word_3, self.word_4]
+
+    def __str__(self):
+        return f'[{self.pack}] {self.word_1} / {self.word_2} / {self.word_3} / {self.word_4}'
+
+    class Meta:
+        ordering = ['order', 'pk']
+
+
 class WordOrderChallenge(models.Model):
     title      = models.CharField(max_length=200)
     sentence   = models.CharField(max_length=500)

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "New Odd One Out Pack" %} — Powerty{% endblock %}
+{% block page_name %}{% trans "Odd One Out" %}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4" style="max-width:560px;">
+
+    <a href="{% url 'oddoneout_list' %}" class="text-decoration-none d-inline-flex align-items-center gap-1 mb-3"
+       style="color:var(--text-muted); font-size:0.85rem;">
+        <i class="bi bi-arrow-left"></i> {% trans "Odd One Out" %}
+    </a>
+
+    <h1 class="fs-4 fw-bold mb-1" style="color:var(--text);">&#x2795; {% trans "New Pack" %}</h1>
+    <p style="color:var(--text-muted); font-size:0.88rem; margin:0 0 1.5rem;">
+        {% trans "Create a pack, then add questions to it on the next page." %}
+    </p>
+
+    {% if errors %}
+    <div class="alert mb-3" style="border-radius:10px; background:#3d1c1c; border:1px solid #f85149; color:#f85149; font-size:0.85rem;">
+        <ul class="mb-0 ps-3">{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul>
+    </div>
+    {% endif %}
+
+    <form method="post" autocomplete="off">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label class="form-label" style="color:var(--text); font-size:0.85rem; font-weight:600;">{% trans "Pack Title" %}</label>
+            <input type="text" name="title" value="{{ post.title }}" required class="form-control"
+                   style="background:#161b22; border:1px solid #30363d; color:#e6edf3; border-radius:8px;"
+                   placeholder="{% trans 'e.g. Irregular Verbs' %}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" style="color:var(--text); font-size:0.85rem; font-weight:600;">
+                {% trans "Description" %} <span style="color:#8b949e;">({% trans "optional" %})</span>
+            </label>
+            <input type="text" name="description" value="{{ post.description }}" class="form-control"
+                   style="background:#161b22; border:1px solid #30363d; color:#e6edf3; border-radius:8px;"
+                   placeholder="{% trans 'e.g. Find the word that is NOT an irregular verb' %}">
+        </div>
+
+        <div class="mb-4">
+            <label class="form-label" style="color:var(--text); font-size:0.85rem; font-weight:600;">{% trans "Language" %}</label>
+            <div class="d-flex gap-2 flex-wrap">
+                {% for val, label in languages %}
+                <label style="cursor:pointer;">
+                    <input type="radio" name="language" value="{{ val }}" class="oo-lang-radio"
+                           {% if post.language == val or not post.language and val == 'any' %}checked{% endif %}
+                           style="display:none;">
+                    <span class="oo-lang-btn" style="display:inline-block; padding:7px 16px; border-radius:8px;
+                        font-size:0.84rem; font-weight:600; border:2px solid #30363d;
+                        background:#161b22; color:#8b949e; cursor:pointer; user-select:none; transition:all .15s;">
+                        {{ label }}
+                    </span>
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+
+        <button type="submit" class="btn w-100 fw-bold"
+                style="background:#0891b2; color:#fff; border:none; border-radius:10px; padding:.6rem 1rem; font-size:0.95rem;">
+            <i class="bi bi-arrow-right-circle"></i> {% trans "Create & Add Questions" %}
+        </button>
+    </form>
+</div>
+
+<style>
+.oo-lang-radio:checked + .oo-lang-btn { background:#0e4f5c; color:#22d3ee; border-color:#0891b2; }
+</style>
+{% endblock %}

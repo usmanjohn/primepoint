@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Manage" %} — {{ pack.title }} — Powerty{% endblock %}
+{% block page_name %}{% trans "Odd One Out" %}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4" style="max-width:700px;">
+
+    <a href="{% url 'oddoneout_list' %}" class="text-decoration-none d-inline-flex align-items-center gap-1 mb-3"
+       style="color:var(--text-muted); font-size:0.85rem;">
+        <i class="bi bi-arrow-left"></i> {% trans "Odd One Out" %}
+    </a>
+
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4">
+        <div>
+            <h1 class="fs-4 fw-bold mb-0" style="color:var(--text);">&#x270F;&#xFE0F; {{ pack.title }}</h1>
+            <p style="color:var(--text-muted); font-size:0.85rem; margin:.2rem 0 0;">
+                {{ questions.count }} {% trans "questions" %} &mdash; {{ pack.get_language_display }}
+            </p>
+        </div>
+        <a href="{% url 'oddoneout_play' pack.pk %}" class="btn btn-sm"
+           style="background:#0891b2; color:#fff; border:none; border-radius:8px; font-weight:600;">
+            <i class="bi bi-play-fill"></i> {% trans "Play" %}
+        </a>
+    </div>
+
+    {% if errors %}
+    <div class="alert mb-3" style="border-radius:10px; background:#3d1c1c; border:1px solid #f85149; color:#f85149; font-size:0.85rem;">
+        <ul class="mb-0 ps-3">{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul>
+    </div>
+    {% endif %}
+
+    <!-- Add question form -->
+    <div class="card border-0 mb-4" style="background:#161b22; border-radius:14px;">
+        <div class="card-body p-3">
+            <h2 class="fs-6 fw-bold mb-3" style="color:var(--text);">&#x2795; {% trans "Add a Question" %}</h2>
+            <form method="post" autocomplete="off">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="add">
+
+                <div class="row g-2 mb-2">
+                    <div class="col-6 col-sm-3">
+                        <input type="text" name="word_1" value="{{ post.word_1 }}"
+                               placeholder="{% trans 'Word' %} 1" required class="form-control form-control-sm"
+                               style="background:#0d1117; border:1px solid #30363d; color:#e6edf3; border-radius:8px;">
+                    </div>
+                    <div class="col-6 col-sm-3">
+                        <input type="text" name="word_2" value="{{ post.word_2 }}"
+                               placeholder="{% trans 'Word' %} 2" required class="form-control form-control-sm"
+                               style="background:#0d1117; border:1px solid #30363d; color:#e6edf3; border-radius:8px;">
+                    </div>
+                    <div class="col-6 col-sm-3">
+                        <input type="text" name="word_3" value="{{ post.word_3 }}"
+                               placeholder="{% trans 'Word' %} 3" required class="form-control form-control-sm"
+                               style="background:#0d1117; border:1px solid #30363d; color:#e6edf3; border-radius:8px;">
+                    </div>
+                    <div class="col-6 col-sm-3">
+                        <input type="text" name="word_4" value="{{ post.word_4 }}"
+                               placeholder="{% trans 'Word' %} 4" required class="form-control form-control-sm"
+                               style="background:#0d1117; border:1px solid #30363d; color:#e6edf3; border-radius:8px;">
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label" style="color:#8b949e; font-size:0.8rem; margin-bottom:4px;">
+                        {% trans "Which word is the odd one out?" %}
+                    </label>
+                    <div class="d-flex gap-2 flex-wrap" id="oo-odd-selector">
+                        {% for i, label in "0,11,22,33,4"|ljust:0 %}{% endfor %}
+                        {% for idx in "0123" %}
+                        <label style="cursor:pointer; flex:1; min-width:60px;">
+                            <input type="radio" name="odd_index" value="{{ idx }}" class="oo-odd-radio"
+                                   style="display:none;">
+                            <span class="oo-odd-btn" data-idx="{{ idx }}" style="
+                                display:block; text-align:center; padding:6px 4px;
+                                border-radius:8px; font-size:0.82rem; font-weight:600;
+                                border:2px solid #30363d; background:#0d1117; color:#8b949e;
+                                cursor:pointer; transition:all .12s;">
+                                {% trans "Word" %} {{ idx|add:"1" }}
+                            </span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <input type="text" name="explanation" value="{{ post.explanation }}"
+                           placeholder="{% trans 'Explanation (optional) — e.g. «went» is irregular, the others are regular' %}"
+                           class="form-control form-control-sm"
+                           style="background:#0d1117; border:1px solid #30363d; color:#e6edf3; border-radius:8px;">
+                </div>
+
+                <button type="submit" class="btn btn-sm fw-bold"
+                        style="background:#0891b2; color:#fff; border:none; border-radius:8px; padding:.45rem 1.2rem;">
+                    <i class="bi bi-plus-lg"></i> {% trans "Add Question" %}
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Existing questions -->
+    {% if questions %}
+    <h2 class="fs-6 fw-bold mb-2" style="color:var(--text);">{% trans "Questions" %} ({{ questions.count }})</h2>
+    <div class="d-flex flex-column gap-2">
+        {% for q in questions %}
+        <div class="card border-0" style="background:#161b22; border-radius:12px;">
+            <div class="card-body p-3 d-flex align-items-start gap-3 flex-wrap">
+                <div style="flex:1; min-width:0;">
+                    <div class="d-flex gap-2 flex-wrap mb-1">
+                        {% for w in q.words_list %}
+                        <span style="padding:4px 12px; border-radius:8px; font-size:0.85rem; font-weight:600;
+                            {% if forloop.counter0 == q.odd_index %}
+                                background:#3d1c1c; border:1px solid #f85149; color:#f85149;
+                            {% else %}
+                                background:#1a4a2a; border:1px solid #3fb950; color:#3fb950;
+                            {% endif %}">
+                            {{ w }}{% if forloop.counter0 == q.odd_index %} &#x2605;{% endif %}
+                        </span>
+                        {% endfor %}
+                    </div>
+                    {% if q.explanation %}
+                    <p style="color:#8b949e; font-size:0.78rem; margin:0;">
+                        <i class="bi bi-info-circle"></i> {{ q.explanation }}
+                    </p>
+                    {% endif %}
+                </div>
+                <form method="post" style="flex-shrink:0;">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="qpk" value="{{ q.pk }}">
+                    <button type="submit" class="btn btn-sm"
+                            style="background:#3d1c1c; color:#f85149; border:none; border-radius:6px; font-size:0.76rem;">
+                        <i class="bi bi-trash3"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p style="color:var(--text-muted); font-size:0.88rem;">{% trans "No questions yet — add the first one above." %}</p>
+    {% endif %}
+
+</div>
+
+<style>
+.oo-odd-radio:checked + .oo-odd-btn { background:#0e4f5c; color:#22d3ee; border-color:#0891b2; }
+</style>
+
+<script>
+// Update button labels dynamically as the teacher types
+(function(){
+    const inputs = [
+        document.querySelector('input[name="word_1"]'),
+        document.querySelector('input[name="word_2"]'),
+        document.querySelector('input[name="word_3"]'),
+        document.querySelector('input[name="word_4"]'),
+    ];
+    const btns = document.querySelectorAll('.oo-odd-btn');
+    const base = '{% trans "Word" %}';
+
+    function sync() {
+        btns.forEach(function(btn, i) {
+            const val = inputs[i] && inputs[i].value.trim();
+            btn.textContent = val || (base + ' ' + (i+1));
+        });
+    }
+    inputs.forEach(function(inp){ if(inp) inp.addEventListener('input', sync); });
+    sync();
+}());
+</script>
+{% endblock %}

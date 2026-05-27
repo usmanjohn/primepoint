@@ -1,0 +1,398 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ pack.title }} — {% trans "Odd One Out" %} — Powerty{% endblock %}
+{% block page_name %}{% trans "Odd One Out" %}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ── 2×2 tile grid ── */
+.oo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+/* ── single tile ── */
+.oo-tile {
+    padding: 18px 12px;
+    background: #161b22;
+    border: 2px solid #30363d;
+    border-radius: 14px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #e6edf3;
+    cursor: pointer;
+    text-align: center;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: border-color .12s, background .12s, transform .1s;
+    word-break: break-word;
+}
+.oo-tile:hover:not(.oo-locked) {
+    border-color: #0891b2;
+    transform: translateY(-2px);
+}
+.oo-tile.oo-correct {
+    background: #1a4a2a;
+    border-color: #3fb950;
+    color: #3fb950;
+}
+.oo-tile.oo-wrong {
+    background: #3d1c1c;
+    border-color: #f85149;
+    color: #f85149;
+}
+.oo-tile.oo-reveal {
+    background: #1a4a2a;
+    border-color: #3fb950;
+    color: #3fb950;
+    animation: oo-pulse .4s ease;
+}
+.oo-tile.oo-locked { cursor: default; pointer-events: none; }
+
+@keyframes oo-pulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.04); }
+    100% { transform: scale(1); }
+}
+@keyframes oo-shake {
+    0%,100% { transform: translateX(0); }
+    25%     { transform: translateX(-6px); }
+    75%     { transform: translateX(6px); }
+}
+.oo-shake { animation: oo-shake .35s ease; }
+
+/* ── progress bar ── */
+.oo-progress-bar {
+    height: 6px;
+    border-radius: 3px;
+    background: #21262d;
+    overflow: hidden;
+    max-width: 480px;
+    margin: 0 auto .75rem;
+}
+.oo-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #0891b2, #22d3ee);
+    border-radius: 3px;
+    transition: width .3s ease;
+}
+
+/* ── result dot strip ── */
+.oo-dots {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 480px;
+    margin: 0 auto .5rem;
+}
+.oo-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #30363d;
+}
+.oo-dot.done-ok  { background: #3fb950; }
+.oo-dot.done-bad { background: #f85149; }
+.oo-dot.current  { background: #0891b2; }
+
+/* ── explanation card ── */
+#oo-explanation {
+    display: none;
+    max-width: 480px;
+    margin: .75rem auto 0;
+    border-radius: 10px;
+    padding: .6rem 1rem;
+    font-size: .83rem;
+    border: 1px solid #30363d;
+    background: #161b22;
+    color: #8b949e;
+    text-align: center;
+}
+
+/* ── score screen ── */
+#oo-score-screen {
+    display: none;
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4">
+
+    <!-- Back -->
+    <a href="{% url 'oddoneout_list' %}" class="text-decoration-none d-inline-flex align-items-center gap-1 mb-3"
+       style="color:var(--text-muted); font-size:0.85rem;">
+        <i class="bi bi-arrow-left"></i> {% trans "Odd One Out" %}
+    </a>
+
+    {% if empty %}
+    <div class="text-center py-5" style="color:var(--text-muted);">
+        <div style="font-size:3rem;">&#x1F9E0;</div>
+        <p class="mt-2">{% trans "This pack has no questions yet." %}</p>
+        {% if request.user.is_staff or request.user.profile.is_master %}
+        <a href="{% url 'oddoneout_manage' pack.pk %}" class="btn btn-sm mt-2"
+           style="background:#0891b2; color:#fff; border:none; border-radius:8px;">
+            {% trans "Add Questions" %}
+        </a>
+        {% endif %}
+    </div>
+    {% else %}
+
+    <!-- Header -->
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3"
+         style="max-width:480px; margin-left:auto; margin-right:auto;">
+        <div>
+            <h1 class="fs-5 fw-bold mb-0" style="color:var(--text);">{{ pack.title }}</h1>
+            {% if pack.description %}
+            <p style="color:#8b949e; font-size:0.82rem; margin:.1rem 0 0;">{{ pack.description }}</p>
+            {% endif %}
+        </div>
+        <div class="d-flex gap-2">
+            <span style="color:#8b949e; font-size:0.82rem; align-self:center;">
+                &#x23F1; <strong id="oo-timer">00:00</strong>
+            </span>
+            <form method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" name="action" value="reset" class="btn btn-sm"
+                        style="background:#21262d; color:#8b949e; border:none; font-size:0.76rem; border-radius:6px;">
+                    <i class="bi bi-arrow-counterclockwise"></i> {% trans "Restart" %}
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="oo-progress-bar">
+        <div class="oo-progress-fill" id="oo-progress-fill"
+             style="width:{% widthratio q_index q_total 100 %}%"></div>
+    </div>
+
+    <!-- Dot strip -->
+    <div class="oo-dots" id="oo-dots">
+        {% for r in results %}
+        <div class="oo-dot {% if r == True %}done-ok{% elif r == False %}done-bad{% elif forloop.counter0 == q_index %}current{% endif %}"></div>
+        {% endfor %}
+    </div>
+
+    <!-- Question counter -->
+    <div style="max-width:480px; margin:.25rem auto .75rem; text-align:center; color:#8b949e; font-size:0.82rem;">
+        {% trans "Question" %} {{ q_index|add:1 }} / {{ q_total }}
+    </div>
+
+    <!-- Score screen (shown when done) -->
+    <div id="oo-score-screen" {% if done_all %}style="display:block;"{% endif %}>
+        <div class="card border-0" style="background:#161b22; border-radius:18px;">
+            <div class="card-body p-4 text-center">
+                <div style="font-size:3rem; margin-bottom:.5rem;">
+                    {% if score == q_total %}&#x1F3C6;{% elif score >= q_total|add:"-1" %}&#x1F44D;{% else %}&#x1F4AA;{% endif %}
+                </div>
+                <h2 class="fs-4 fw-bold mb-1" style="color:var(--text);">
+                    {{ score }} / {{ q_total }}
+                </h2>
+                <p style="color:#8b949e; font-size:.88rem; margin:.25rem 0 1rem;">
+                    {% if score == q_total %}
+                        {% trans "Perfect score!" %}
+                    {% elif score >= q_total|add:"-1" %}
+                        {% trans "Almost perfect — great work!" %}
+                    {% else %}
+                        {% trans "Good try — play again to improve!" %}
+                    {% endif %}
+                </p>
+                {% if elapsed %}
+                <p style="color:#8b949e; font-size:.82rem; margin:0 0 1.2rem;">
+                    &#x23F1; <strong id="oo-final-time" style="color:#e6edf3;"></strong>
+                </p>
+                {% endif %}
+                <div class="d-flex gap-2 justify-content-center flex-wrap">
+                    <form method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" name="action" value="reset" class="btn btn-sm fw-bold"
+                                style="background:#21262d; color:#e6edf3; border:none; border-radius:8px; padding:.45rem 1.2rem;">
+                            <i class="bi bi-arrow-repeat"></i> {% trans "Play Again" %}
+                        </button>
+                    </form>
+                    <a href="{% url 'oddoneout_list' %}" class="btn btn-sm fw-bold"
+                       style="background:#238636; color:#fff; border:none; border-radius:8px; padding:.45rem 1.2rem;">
+                        {% trans "All Packs" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Question + tiles (hidden once all done) -->
+    <div id="oo-question-area" {% if done_all %}style="display:none;"{% endif %}>
+
+        <!-- Instruction -->
+        <div style="max-width:480px; margin:0 auto .75rem; text-align:center;
+                    color:#8b949e; font-size:0.82rem; font-style:italic;">
+            {% trans "Tap the word that does NOT belong with the others." %}
+        </div>
+
+        <!-- 2×2 tile grid -->
+        <div class="oo-grid" id="oo-grid">
+            {% for w in disp_words %}
+            <div class="oo-tile{% if already_answered %} oo-locked {% if forloop.counter0 == odd_display %}oo-reveal{% else %}oo-correct{% endif %}{% endif %}"
+                 data-pos="{{ forloop.counter0 }}">
+                {{ w }}
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Explanation -->
+        <div id="oo-explanation">
+            {% if already_answered and question.explanation %}
+            <span style="display:block;">{{ question.explanation }}</span>
+            {% endif %}
+        </div>
+
+        <!-- Next / Finish button -->
+        {% if already_answered %}
+        <div class="d-flex justify-content-center mt-3">
+            {% if q_index < q_total|add:"-1" %}
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" name="action" value="next" class="btn fw-bold"
+                        style="background:#0891b2; color:#fff; border:none; border-radius:9px; padding:.55rem 1.8rem;">
+                    {% trans "Next" %} <i class="bi bi-arrow-right"></i>
+                </button>
+            </form>
+            {% endif %}
+        </div>
+        {% endif %}
+
+    </div>
+
+    {% endif %}{# end if not empty #}
+
+</div>
+
+<script>
+(function(){
+    const CHECK_URL  = "{% url 'oddoneout_check' pack.pk %}";
+    const CSRF_TOKEN = "{{ csrf_token }}";
+    const START_MS   = {{ start_ms|default:0 }};
+    const IS_DONE    = {{ done_all|yesno:"true,false" }};
+    const Q_INDEX    = {{ q_index|default:0 }};
+    const Q_TOTAL    = {{ q_total|default:0 }};
+    {% if done_all and elapsed %}
+    const ELAPSED    = {{ elapsed }};
+    {% else %}
+    const ELAPSED    = null;
+    {% endif %}
+
+    /* ── timer ── */
+    function fmtTime(s) {
+        return String(Math.floor(s/60)).padStart(2,'0') + ':' + String(s%60).padStart(2,'0');
+    }
+    const timerEl = document.getElementById('oo-timer');
+    if (timerEl) {
+        if (IS_DONE && ELAPSED !== null) {
+            timerEl.textContent = fmtTime(ELAPSED);
+            const ft = document.getElementById('oo-final-time');
+            if (ft) ft.textContent = fmtTime(ELAPSED);
+        } else if (!IS_DONE) {
+            setInterval(function(){
+                timerEl.textContent = fmtTime(Math.floor((Date.now()-START_MS)/1000));
+            }, 500);
+        }
+    }
+
+    /* ── tile click ── */
+    var answered = {{ already_answered|yesno:"true,false" }};
+    document.querySelectorAll('.oo-tile').forEach(function(tile) {
+        tile.addEventListener('click', function() {
+            if (answered || tile.classList.contains('oo-locked')) return;
+            answered = true;
+            const pos = parseInt(tile.dataset.pos);
+
+            fetch(CHECK_URL, {
+                method: 'POST',
+                headers: {'Content-Type':'application/json','X-CSRFToken':CSRF_TOKEN},
+                body: JSON.stringify({q_index: Q_INDEX, selected: pos}),
+            })
+            .then(function(r){ return r.json(); })
+            .then(function(data) {
+                const tiles = document.querySelectorAll('.oo-tile');
+                tiles.forEach(function(t){ t.classList.add('oo-locked'); });
+
+                if (data.correct) {
+                    tile.classList.add('oo-correct');
+                } else {
+                    tile.classList.add('oo-wrong');
+                    tile.classList.add('oo-shake');
+                    // Reveal the correct one
+                    tiles.forEach(function(t) {
+                        if (parseInt(t.dataset.pos) === data.odd_display) {
+                            t.classList.add('oo-reveal');
+                        }
+                    });
+                }
+
+                // Explanation
+                if (data.explanation) {
+                    const expEl = document.getElementById('oo-explanation');
+                    if (expEl) {
+                        expEl.innerHTML = '<i class="bi bi-info-circle"></i> ' + data.explanation;
+                        expEl.style.display = 'block';
+                    }
+                }
+
+                // Update dot strip & progress
+                updateDots(data);
+
+                // Show next / score
+                if (data.done_all) {
+                    setTimeout(function() {
+                        document.getElementById('oo-question-area').style.display = 'none';
+                        const ss = document.getElementById('oo-score-screen');
+                        if (ss) ss.style.display = 'block';
+                        if (timerEl && data.elapsed) timerEl.textContent = fmtTime(data.elapsed);
+                        const ft = document.getElementById('oo-final-time');
+                        if (ft && data.elapsed) ft.textContent = fmtTime(data.elapsed);
+                    }, 1000);
+                } else {
+                    // Show next button after short delay
+                    setTimeout(function() {
+                        const nextWrap = document.createElement('div');
+                        nextWrap.className = 'd-flex justify-content-center mt-3';
+                        nextWrap.innerHTML =
+                            '<form method="post">' +
+                            '<input type="hidden" name="csrfmiddlewaretoken" value="' + CSRF_TOKEN + '">' +
+                            '<button type="submit" name="action" value="next" class="btn fw-bold" ' +
+                            'style="background:#0891b2;color:#fff;border:none;border-radius:9px;padding:.55rem 1.8rem;">' +
+                            '{% trans "Next" %} <i class="bi bi-arrow-right"></i></button></form>';
+                        document.getElementById('oo-question-area').appendChild(nextWrap);
+                    }, 600);
+                }
+            })
+            .catch(function(){ answered = false; });
+        });
+    });
+
+    function updateDots(data) {
+        const dots = document.querySelectorAll('.oo-dot');
+        dots.forEach(function(d, i) {
+            d.classList.remove('current','done-ok','done-bad');
+            if (i < Q_INDEX) {
+                // Already answered before this session (from server render)
+            }
+            if (i === Q_INDEX) {
+                d.classList.add(data.correct ? 'done-ok' : 'done-bad');
+            }
+        });
+        // Update progress bar
+        const fill = document.getElementById('oo-progress-fill');
+        if (fill) fill.style.width = Math.round(((Q_INDEX+1)/Q_TOTAL)*100) + '%';
+    }
+}());
+</script>
+{% endblock %}

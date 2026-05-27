@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import reverse
 from django.utils.html import format_html
-from .models import CrosswordPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge
+from .models import CrosswordPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion
 from .views import _pc_correct_numbers
 
 
@@ -98,6 +98,30 @@ class SortingRaceChallengeAdmin(admin.ModelAdmin):
     list_display  = ('title', 'difficulty', 'is_active', 'created_by', 'created_at')
     list_filter   = ('difficulty', 'is_active')
     search_fields = ('title',)
+
+
+class OddOneOutQuestionInline(admin.TabularInline):
+    model  = OddOneOutQuestion
+    extra  = 1
+    fields = ('word_1', 'word_2', 'word_3', 'word_4', 'odd_index', 'explanation', 'order')
+
+
+@admin.register(OddOneOutPack)
+class OddOneOutPackAdmin(admin.ModelAdmin):
+    list_display  = ('title', 'language', 'question_count', 'is_active', 'created_by', 'created_at')
+    list_filter   = ('language', 'is_active')
+    search_fields = ('title',)
+    inlines       = [OddOneOutQuestionInline]
+
+    def question_count(self, obj):
+        return obj.question_count()
+    question_count.short_description = 'Questions'
+
+
+@admin.register(OddOneOutQuestion)
+class OddOneOutQuestionAdmin(admin.ModelAdmin):
+    list_display  = ('pack', 'word_1', 'word_2', 'word_3', 'word_4', 'odd_index', 'order')
+    list_filter   = ('pack',)
 
 
 @admin.register(WordOrderChallenge)

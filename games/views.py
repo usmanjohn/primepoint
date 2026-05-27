@@ -6,7 +6,7 @@ from django.core.exceptions import PermissionDenied
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import CrosswordPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge
+from .models import CrosswordPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion
 
 
 # ---------------------------------------------------------------------------
@@ -917,3 +917,224 @@ def wordorder_create(request):
         'post':   request.POST if request.method == 'POST' else {},
     }
     return render(request, 'games/wordorder_create.html', context)
+
+
+# ---------------------------------------------------------------------------
+# Odd One Out views
+# ---------------------------------------------------------------------------
+
+@login_required
+def oddoneout_list(request):
+    packs = OddOneOutPack.objects.filter(is_active=True)
+    return render(request, 'games/oddoneout_list.html', {'packs': packs})
+
+
+@login_required
+def oddoneout_create(request):
+    is_master = hasattr(request.user, 'profile') and request.user.profile.is_master
+    if not request.user.is_staff and not is_master:
+        raise PermissionDenied
+
+    errors = []
+    if request.method == 'POST':
+        title    = request.POST.get('title', '').strip()
+        desc     = request.POST.get('description', '').strip()
+        language = request.POST.get('language', OddOneOutPack.LANG_ANY)
+
+        if not title:
+            errors.append('Title is required.')
+        if language not in (OddOneOutPack.LANG_EN, OddOneOutPack.LANG_KO,
+                             OddOneOutPack.LANG_UZ, OddOneOutPack.LANG_ANY):
+            errors.append('Select a valid language.')
+
+        if not errors:
+            pack = OddOneOutPack.objects.create(
+                title=title,
+                description=desc,
+                language=language,
+                created_by=request.user,
+            )
+            return redirect('oddoneout_manage', pk=pack.pk)
+
+    context = {
+        'errors':    errors,
+        'languages': OddOneOutPack.LANGUAGE_CHOICES,
+        'post':      request.POST if request.method == 'POST' else {},
+    }
+    return render(request, 'games/oddoneout_create.html', context)
+
+
+@login_required
+def oddoneout_manage(request, pk):
+    is_master = hasattr(request.user, 'profile') and request.user.profile.is_master
+    if not request.user.is_staff and not is_master:
+        raise PermissionDenied
+
+    pack   = get_object_or_404(OddOneOutPack, pk=pk)
+    errors = []
+
+    if request.method == 'POST':
+        action = request.POST.get('action')
+
+        if action == 'add':
+            w1  = request.POST.get('word_1', '').strip()
+            w2  = request.POST.get('word_2', '').strip()
+            w3  = request.POST.get('word_3', '').strip()
+            w4  = request.POST.get('word_4', '').strip()
+            odd = request.POST.get('odd_index', '')
+            expl = request.POST.get('explanation', '').strip()
+
+            if not all([w1, w2, w3, w4]):
+                errors.append('All four words are required.')
+            try:
+                odd_i = int(odd)
+                if odd_i not in range(4):
+                    raise ValueError
+            except (ValueError, TypeError):
+                errors.append('Select which word is the odd one out.')
+
+            if not errors:
+                next_order = pack.questions.count()
+                OddOneOutQuestion.objects.create(
+                    pack=pack,
+                    word_1=w1, word_2=w2, word_3=w3, word_4=w4,
+                    odd_index=odd_i,
+                    explanation=expl,
+                    order=next_order,
+                )
+                return redirect('oddoneout_manage', pk=pk)
+
+        elif action == 'delete':
+            qpk = request.POST.get('qpk')
+            OddOneOutQuestion.objects.filter(pk=qpk, pack=pack).delete()
+            return redirect('oddoneout_manage', pk=pk)
+
+    questions = pack.questions.all()
+    context = {
+        'pack':      pack,
+        'questions': questions,
+        'errors':    errors,
+        'post':      request.POST if request.method == 'POST' else {},
+    }
+    return render(request, 'games/oddoneout_manage.html', context)
+
+
+@login_required
+def oddoneout_play(request, pk):
+    pack = get_object_or_404(OddOneOutPack, pk=pk, is_active=True)
+    questions = list(pack.questions.all())
+
+    if not questions:
+        return render(request, 'games/oddoneout_play.html', {
+            'pack': pack, 'empty': True,
+        })
+
+    cur_key     = f'oo_{pk}_current'
+    results_key = f'oo_{pk}_results'
+    disp_key    = f'oo_{pk}_display'
+    start_key   = f'oo_{pk}_start'
+
+    if request.method == 'POST' and request.POST.get('action') == 'reset':
+        for k in (cur_key, results_key, disp_key, start_key):
+            request.session.pop(k, None)
+        return redirect('oddoneout_play', pk=pk)
+
+    if request.method == 'POST' and request.POST.get('action') == 'next':
+        cur = request.session.get(cur_key, 0)
+        request.session[cur_key] = min(cur + 1, len(questions) - 1)
+        return redirect('oddoneout_play', pk=pk)
+
+    # Initialise session
+    if cur_key not in request.session:
+        # Pre-compute a shuffled display order for every question
+        display_orders = []
+        for q in questions:
+            order = list(range(4))
+            random.shuffle(order)
+            display_orders.append(order)
+        request.session[disp_key]     = display_orders
+        request.session[cur_key]      = 0
+        request.session[results_key]  = [None] * len(questions)
+        request.session[start_key]    = int(time.time())
+
+    cur            = request.session.get(cur_key, 0)
+    results        = request.session.get(results_key, [None] * len(questions))
+    display_orders = request.session.get(disp_key, [list(range(4))] * len(questions))
+    start_time     = request.session.get(start_key, int(time.time()))
+
+    # Clamp current in case questions were deleted
+    cur = min(cur, len(questions) - 1)
+
+    q           = questions[cur]
+    disp_order  = display_orders[cur]        # e.g. [2, 0, 3, 1]
+    all_words   = q.words_list()
+    disp_words  = [all_words[i] for i in disp_order]
+    odd_display = disp_order.index(q.odd_index)  # which display position is odd
+
+    already_answered = results[cur] is not None
+    done_all         = all(r is not None for r in results)
+    elapsed          = int(time.time()) - start_time if done_all else None
+
+    context = {
+        'pack':             pack,
+        'question':         q,
+        'disp_words':       disp_words,
+        'odd_display':      odd_display,
+        'q_index':          cur,
+        'q_total':          len(questions),
+        'results':          results,
+        'already_answered': already_answered,
+        'done_all':         done_all,
+        'elapsed':          elapsed,
+        'score':            sum(1 for r in results if r),
+        'start_ms':         start_time * 1000,
+    }
+    return render(request, 'games/oddoneout_play.html', context)
+
+
+@login_required
+def oddoneout_check(request, pk):
+    if request.method != 'POST':
+        return JsonResponse({'error': 'POST only'}, status=405)
+
+    pack = get_object_or_404(OddOneOutPack, pk=pk, is_active=True)
+
+    try:
+        data          = json.loads(request.body)
+        q_index       = int(data['q_index'])
+        selected_disp = int(data['selected'])
+    except (KeyError, ValueError, TypeError, json.JSONDecodeError):
+        return JsonResponse({'error': 'Invalid data'}, status=400)
+
+    questions = list(pack.questions.all())
+    if q_index >= len(questions):
+        return JsonResponse({'error': 'Bad index'}, status=400)
+
+    q           = questions[q_index]
+    disp_key    = f'oo_{pk}_display'
+    results_key = f'oo_{pk}_results'
+    start_key   = f'oo_{pk}_start'
+
+    display_orders = request.session.get(disp_key, [list(range(4))] * len(questions))
+    disp_order     = display_orders[q_index]
+    original_idx   = disp_order[selected_disp]
+    correct        = (original_idx == q.odd_index)
+    odd_display    = disp_order.index(q.odd_index)
+
+    results = request.session.get(results_key, [None] * len(questions))
+    if results[q_index] is None:
+        results[q_index] = correct
+        request.session[results_key] = results
+
+    done_all = all(r is not None for r in results)
+    elapsed  = int(time.time()) - request.session.get(start_key, int(time.time())) if done_all else None
+
+    return JsonResponse({
+        'correct':     correct,
+        'odd_display': odd_display,
+        'explanation': q.explanation,
+        'done_all':    done_all,
+        'elapsed':     elapsed,
+        'score':       sum(1 for r in results if r),
+        'total':       len(questions),
+    })

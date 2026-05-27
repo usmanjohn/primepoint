@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Odd One Out" %} — Powerty{% endblock %}
+{% block page_name %}{% trans "Odd One Out" %}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4">
+
+    <a href="{% url 'games_home' %}" class="text-decoration-none d-inline-flex align-items-center gap-1 mb-3"
+       style="color:var(--text-muted); font-size:0.85rem;">
+        <i class="bi bi-arrow-left"></i> {% trans "Games" %}
+    </a>
+
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4">
+        <div>
+            <h1 class="fs-4 fw-bold mb-1" style="color:var(--text);">&#x1F9E0; {% trans "Odd One Out" %}</h1>
+            <p style="color:var(--text-muted); font-size:0.88rem; margin:0;">
+                {% trans "Three words belong together — one does not. Find the odd one out!" %}
+            </p>
+        </div>
+        {% if request.user.is_staff or request.user.profile.is_master %}
+        <a href="{% url 'oddoneout_create' %}" class="btn btn-sm"
+           style="background:#0891b2; color:#fff; font-weight:600; border:none; border-radius:8px;">
+            <i class="bi bi-plus-lg"></i> {% trans "New Pack" %}
+        </a>
+        {% endif %}
+    </div>
+
+    {% if packs %}
+    <div class="row g-3">
+        {% for pack in packs %}
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="card border-0 shadow-sm h-100" style="border-radius:14px; overflow:hidden;">
+                <a href="{% url 'oddoneout_play' pack.pk %}" class="text-decoration-none d-block">
+                    <div style="background:linear-gradient(135deg,#0891b2 0%,#0e7490 100%); padding:1.25rem 1.5rem;">
+                        <div style="font-size:2.4rem; line-height:1; margin-bottom:0.5rem;">&#x1F9E0;</div>
+                        <h2 class="fs-5 fw-bold mb-0" style="color:#fff;">{{ pack.title }}</h2>
+                    </div>
+                </a>
+                <div class="card-body p-3" style="background:var(--surface);">
+                    {% if pack.description %}
+                    <p style="color:var(--text-muted); font-size:0.84rem; margin:0 0 .5rem;">{{ pack.description }}</p>
+                    {% endif %}
+                    <div class="d-flex gap-2 flex-wrap align-items-center justify-content-between">
+                        <div class="d-flex gap-2 flex-wrap">
+                            <span class="badge" style="font-size:0.75rem; background:#cffafe; color:#0e7490;">
+                                {{ pack.question_count }} {% trans "questions" %}
+                            </span>
+                            <span class="badge" style="font-size:0.75rem;
+                                {% if pack.language == 'en' %}background:#dbeafe; color:#1d4ed8;
+                                {% elif pack.language == 'ko' %}background:#fce7f3; color:#9d174d;
+                                {% elif pack.language == 'uz' %}background:#d1fae5; color:#065f46;
+                                {% else %}background:#f3f4f6; color:#374151;{% endif %}">
+                                {{ pack.get_language_display }}
+                            </span>
+                        </div>
+                        {% if request.user.is_staff or request.user.profile.is_master %}
+                        <a href="{% url 'oddoneout_manage' pack.pk %}"
+                           style="color:#8b949e; font-size:0.78rem; text-decoration:none;">
+                            <i class="bi bi-pencil-square"></i> {% trans "Edit" %}
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-5" style="color:var(--text-muted);">
+        <div style="font-size:3rem;">&#x1F9E0;</div>
+        <p class="mt-2">{% trans "No packs yet. Check back soon!" %}</p>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

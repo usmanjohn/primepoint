@@ -22,6 +22,12 @@ urlpatterns = [
     path('sortingrace/create/', views.sortingrace_create, name='sortingrace_create'),
     path('sortingrace/<int:pk>/', views.sortingrace_play, name='sortingrace_play'),
     path('sortingrace/<int:pk>/check/', views.sortingrace_check, name='sortingrace_check'),
+    # Odd One Out
+    path('oddoneout/', views.oddoneout_list, name='oddoneout_list'),
+    path('oddoneout/create/', views.oddoneout_create, name='oddoneout_create'),
+    path('oddoneout/<int:pk>/manage/', views.oddoneout_manage, name='oddoneout_manage'),
+    path('oddoneout/<int:pk>/', views.oddoneout_play, name='oddoneout_play'),
+    path('oddoneout/<int:pk>/check/', views.oddoneout_check, name='oddoneout_check'),
     # Word Order Chaos
     path('wordorder/', views.wordorder_list, name='wordorder_list'),
     path('wordorder/create/', views.wordorder_create, name='wordorder_create'),
