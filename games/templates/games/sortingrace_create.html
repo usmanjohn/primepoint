@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "New Sorting Race Challenge" %} — Powerty{% endblock %}
+{% block page_name %}{% trans "Sorting Race" %}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4" style="max-width:600px;">
+
+    <a href="{% url 'sortingrace_list' %}" class="text-decoration-none d-inline-flex align-items-center gap-1 mb-3"
+       style="color:var(--text-muted); font-size:0.85rem;">
+        <i class="bi bi-arrow-left"></i> {% trans "Sorting Race" %}
+    </a>
+
+    <h1 class="fs-4 fw-bold mb-1" style="color:var(--text);">&#x2795; {% trans "New Challenge" %}</h1>
+    <p style="color:var(--text-muted); font-size:0.88rem; margin:0 0 1.5rem;">
+        {% trans "Students will swap elements to sort the array from smallest to largest." %}
+    </p>
+
+    {% if errors %}
+    <div class="alert mb-3" style="border-radius:10px; background:#3d1c1c; border:1px solid #f85149; color:#f85149; font-size:0.85rem;">
+        <ul class="mb-0 ps-3">
+            {% for err in errors %}<li>{{ err }}</li>{% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <form method="post" autocomplete="off">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label class="form-label" style="color:var(--text); font-size:0.85rem; font-weight:600;">
+                {% trans "Challenge Title" %}
+            </label>
+            <input type="text" name="title" value="{{ post.title }}" required
+                   class="form-control"
+                   style="background:#161b22; border:1px solid #30363d; color:#e6edf3; border-radius:8px;"
+                   placeholder="{% trans 'e.g. Sort the Chaos' %}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" style="color:var(--text); font-size:0.85rem; font-weight:600;">
+                {% trans "Difficulty" %}
+            </label>
+            <div class="d-flex gap-2 flex-wrap">
+                {% for val, label in difficulties %}
+                <label style="cursor:pointer;">
+                    <input type="radio" name="difficulty" value="{{ val }}" class="sr-diff-radio"
+                           {% if post.difficulty == val or not post.difficulty and val == 'easy' %}checked{% endif %}
+                           style="display:none;">
+                    <span class="sr-diff-btn" data-val="{{ val }}" style="
+                        display:inline-block; padding:7px 18px; border-radius:8px;
+                        font-size:0.84rem; font-weight:600;
+                        border:2px solid #30363d;
+                        background:#161b22; color:#8b949e;
+                        cursor:pointer; user-select:none; transition:all .15s;">
+                        {{ label }}
+                    </span>
+                </label>
+                {% endfor %}
+            </div>
+            <div id="sr-diff-hint" style="color:#8b949e; font-size:0.78rem; margin-top:6px;"></div>
+        </div>
+
+        <div class="mb-4">
+            <label class="form-label" style="color:var(--text); font-size:0.85rem; font-weight:600;">
+                {% trans "Hint" %} <span style="color:#8b949e;">({% trans "optional" %})</span>
+            </label>
+            <input type="text" name="hint" value="{{ post.hint }}"
+                   class="form-control"
+                   style="background:#161b22; border:1px solid #30363d; color:#e6edf3; border-radius:8px;"
+                   placeholder="{% trans 'e.g. Remember: √3 ≈ 1.73, π/2 ≈ 1.57' %}">
+        </div>
+
+        <button type="submit" class="btn w-100 fw-bold"
+                style="background:#f97316; color:#fff; border:none; border-radius:10px; padding:.6rem 1rem; font-size:0.95rem;">
+            <i class="bi bi-shuffle"></i> {% trans "Create Challenge" %}
+        </button>
+    </form>
+
+</div>
+
+<style>
+.sr-diff-radio:checked + .sr-diff-btn { background:#7c2d12; color:#fb923c; border-color:#f97316; }
+</style>
+
+<script>
+const hints = {
+    easy:   '{% trans "7 integers (positive and negative)" %}',
+    medium: '{% trans "8 items: integers, fractions, and decimals" %}',
+    hard:   '{% trans "9 items: fractions, √2, √3, π/2 and their negatives — very close values!" %}'
+};
+
+function syncDiff() {
+    const checked = document.querySelector('.sr-diff-radio:checked');
+    document.getElementById('sr-diff-hint').textContent = checked ? (hints[checked.value] || '') : '';
+}
+document.querySelectorAll('.sr-diff-radio').forEach(function(r) {
+    r.addEventListener('change', syncDiff);
+});
+syncDiff();
+</script>
+{% endblock %}

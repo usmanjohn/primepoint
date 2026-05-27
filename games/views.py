@@ -1,11 +1,12 @@
 import json
+import math
 import random
 import time
 from django.core.exceptions import PermissionDenied
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import CrosswordPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge
+from .models import CrosswordPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge
 
 
 # ---------------------------------------------------------------------------
@@ -563,3 +564,223 @@ def primeclimb_create(request):
         'post':    request.POST if request.method == 'POST' else {},
     }
     return render(request, 'games/primeclimb_create.html', context)
+
+
+# ---------------------------------------------------------------------------
+# Sorting Race — number pools
+# ---------------------------------------------------------------------------
+
+_SR_MEDIUM_POOL = [
+    {"display": "-8",   "value": -8.0},
+    {"display": "-5",   "value": -5.0},
+    {"display": "-3",   "value": -3.0},
+    {"display": "-1",   "value": -1.0},
+    {"display": "0",    "value":  0.0},
+    {"display": "2",    "value":  2.0},
+    {"display": "4",    "value":  4.0},
+    {"display": "7",    "value":  7.0},
+    {"display": "-1/2", "value": -0.5},
+    {"display": "1/3",  "value":  1/3},
+    {"display": "2/3",  "value":  2/3},
+    {"display": "3/4",  "value":  0.75},
+    {"display": "-3/4", "value": -0.75},
+    {"display": "5/4",  "value":  1.25},
+    {"display": "5/3",  "value":  5/3},
+    {"display": "-5/3", "value": -5/3},
+    {"display": "0.28", "value":  0.28},
+    {"display": "1.5",  "value":  1.5},
+    {"display": "-2.5", "value": -2.5},
+]
+
+_SR_HARD_POOL = [
+    {"display": "-π/4",  "value": -math.pi / 4},
+    {"display": "-3/4",       "value": -0.75},
+    {"display": "-√2/2", "value": -math.sqrt(2) / 2},
+    {"display": "-3/8",       "value": -3 / 8},
+    {"display": "5/7",        "value":  5 / 7},
+    {"display": "3/4",        "value":  0.75},
+    {"display": "π/2",   "value":  math.pi / 2},
+    {"display": "5/3",        "value":  5 / 3},
+    {"display": "√3",    "value":  math.sqrt(3)},
+    {"display": "-7/4",       "value": -7 / 4},
+    {"display": "-√3",   "value": -math.sqrt(3)},
+    {"display": "√5",    "value":  math.sqrt(5)},
+    {"display": "7/3",        "value":  7 / 3},
+    {"display": "√2",    "value":  math.sqrt(2)},
+    {"display": "-5/3",       "value": -5 / 3},
+    {"display": "π/4",   "value":  math.pi / 4},
+    {"display": "-√5",   "value": -math.sqrt(5)},
+    {"display": "11/8",       "value":  11 / 8},
+    {"display": "√2/2",  "value":  math.sqrt(2) / 2},
+]
+
+
+def _sr_generate_array(difficulty):
+    if difficulty == SortingRaceChallenge.EASY:
+        nums  = random.sample(range(-20, 31), 7)
+        items = [{"display": str(n), "value": float(n)} for n in nums]
+    elif difficulty == SortingRaceChallenge.MEDIUM:
+        items = random.sample(_SR_MEDIUM_POOL, 8)
+    else:
+        items = random.sample(_SR_HARD_POOL, 9)
+
+    # Shuffle; ensure the result is not already sorted
+    items = list(items)
+    random.shuffle(items)
+    sorted_vals = sorted(items, key=lambda x: x['value'])
+    attempts = 0
+    while items == sorted_vals and attempts < 20:
+        random.shuffle(items)
+        attempts += 1
+
+    return items
+
+
+# ---------------------------------------------------------------------------
+# Sorting Race views
+# ---------------------------------------------------------------------------
+
+@login_required
+def sortingrace_list(request):
+    challenges = SortingRaceChallenge.objects.filter(is_active=True)
+    return render(request, 'games/sortingrace_list.html', {'challenges': challenges})
+
+
+@login_required
+def sortingrace_play(request, pk):
+    challenge = get_object_or_404(SortingRaceChallenge, pk=pk, is_active=True)
+
+    items_key = f'sr_{pk}_items'
+    order_key = f'sr_{pk}_order'
+    moves_key = f'sr_{pk}_moves'
+    start_key = f'sr_{pk}_start'
+    done_key  = f'sr_{pk}_done'
+
+    if request.method == 'POST' and request.POST.get('action') == 'reset':
+        for k in (items_key, order_key, moves_key, start_key, done_key):
+            request.session.pop(k, None)
+        return redirect('sortingrace_play', pk=pk)
+
+    if items_key not in request.session:
+        items = _sr_generate_array(challenge.difficulty)
+        n = len(items)
+        sorted_order = sorted(range(n), key=lambda i: items[i]['value'])
+        order = list(range(n))
+        random.shuffle(order)
+        while order == sorted_order:
+            random.shuffle(order)
+        request.session[items_key] = items
+        request.session[order_key] = order
+        request.session[moves_key] = 0
+        request.session[start_key] = int(time.time())
+        request.session[done_key]  = False
+
+    items      = request.session[items_key]
+    order      = request.session[order_key]
+    moves      = request.session[moves_key]
+    start_time = request.session[start_key]
+    done       = request.session[done_key]
+    elapsed    = int(time.time()) - start_time if done else None
+
+    initial_items = [{'display': items[i]['display'], 'pos': pos} for pos, i in enumerate(order)]
+
+    context = {
+        'challenge':     challenge,
+        'initial_items': initial_items,
+        'items_json':    json.dumps(items),
+        'order_json':    json.dumps(order),
+        'moves':         moves,
+        'start_ms':      start_time * 1000,
+        'done':          done,
+        'elapsed':       elapsed,
+    }
+    return render(request, 'games/sortingrace_play.html', context)
+
+
+@login_required
+def sortingrace_check(request, pk):
+    if request.method != 'POST':
+        return JsonResponse({'error': 'POST only'}, status=405)
+
+    challenge = get_object_or_404(SortingRaceChallenge, pk=pk, is_active=True)
+
+    try:
+        data  = json.loads(request.body)
+        order = [int(i) for i in data.get('order', [])]
+        moves = int(data.get('moves', 0))
+    except (ValueError, TypeError, json.JSONDecodeError):
+        return JsonResponse({'error': 'Invalid data'}, status=400)
+
+    items_key = f'sr_{pk}_items'
+    order_key = f'sr_{pk}_order'
+    moves_key = f'sr_{pk}_moves'
+    start_key = f'sr_{pk}_start'
+    done_key  = f'sr_{pk}_done'
+
+    items = request.session.get(items_key)
+    if not items or len(order) != len(items):
+        return JsonResponse({'error': 'No active game'}, status=400)
+
+    request.session[order_key] = order
+    request.session[moves_key] = moves
+
+    values    = [items[i]['value'] for i in order]
+    is_sorted = all(values[j] <= values[j + 1] for j in range(len(values) - 1))
+
+    if is_sorted:
+        elapsed = int(time.time()) - request.session.get(start_key, int(time.time()))
+        request.session[done_key] = True
+        return JsonResponse({'correct': True, 'moves': moves, 'elapsed': elapsed})
+
+    # Check if one swap away
+    n      = len(order)
+    nearly = False
+    for a in range(n):
+        for b in range(a + 1, n):
+            test = order[:]
+            test[a], test[b] = test[b], test[a]
+            tv = [items[i]['value'] for i in test]
+            if all(tv[j] <= tv[j + 1] for j in range(len(tv) - 1)):
+                nearly = True
+                break
+        if nearly:
+            break
+
+    return JsonResponse({'correct': False, 'nearly': nearly})
+
+
+@login_required
+def sortingrace_create(request):
+    is_master = hasattr(request.user, 'profile') and request.user.profile.is_master
+    if not request.user.is_staff and not is_master:
+        raise PermissionDenied
+
+    errors = []
+
+    if request.method == 'POST':
+        title      = request.POST.get('title', '').strip()
+        difficulty = request.POST.get('difficulty', SortingRaceChallenge.EASY)
+        hint       = request.POST.get('hint', '').strip()
+
+        if not title:
+            errors.append('Title is required.')
+        if difficulty not in (SortingRaceChallenge.EASY,
+                               SortingRaceChallenge.MEDIUM,
+                               SortingRaceChallenge.HARD):
+            errors.append('Invalid difficulty.')
+
+        if not errors:
+            challenge = SortingRaceChallenge.objects.create(
+                title=title,
+                difficulty=difficulty,
+                hint=hint,
+                created_by=request.user,
+            )
+            return redirect('sortingrace_play', pk=challenge.pk)
+
+    context = {
+        'errors':      errors,
+        'difficulties': SortingRaceChallenge.DIFFICULTY_CHOICES,
+        'post':        request.POST if request.method == 'POST' else {},
+    }
+    return render(request, 'games/sortingrace_create.html', context)

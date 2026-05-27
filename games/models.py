@@ -57,6 +57,30 @@ class CodeBreakerClue(models.Model):
         ordering = ['letter_index']
 
 
+class SortingRaceChallenge(models.Model):
+    EASY   = 'easy'
+    MEDIUM = 'medium'
+    HARD   = 'hard'
+    DIFFICULTY_CHOICES = [
+        (EASY,   'Easy'),
+        (MEDIUM, 'Medium'),
+        (HARD,   'Hard'),
+    ]
+
+    title      = models.CharField(max_length=200)
+    difficulty = models.CharField(max_length=10, choices=DIFFICULTY_CHOICES, default=EASY)
+    hint       = models.TextField(blank=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sortingrace_challenges')
+    is_active  = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.title} ({self.get_difficulty_display()})'
+
+    class Meta:
+        ordering = ['-created_at']
+
+
 class PrimeClimbChallenge(models.Model):
     PRIMES    = 'primes'
     SQUARES   = 'squares'

@@ -1,0 +1,407 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ challenge.title }} — {% trans "Sorting Race" %} — Powerty{% endblock %}
+{% block page_name %}{% trans "Sorting Race" %}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ── array container ── */
+.sr-array {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+/* ── single number card ── */
+.sr-card {
+    min-width: 76px;
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #161b22;
+    border: 2px solid #30363d;
+    border-radius: 14px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: border-color .15s, background .15s, transform .12s, box-shadow .15s;
+    padding: 10px 14px;
+    position: relative;
+}
+.sr-card:hover:not(.sr-locked) {
+    border-color: #f97316;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(249,115,22,.18);
+    z-index: 1;
+}
+.sr-card.sr-selected {
+    background: #1c2b3a;
+    border-color: #58a6ff;
+    box-shadow: 0 0 0 3px rgba(88,166,255,.25);
+    transform: translateY(-4px) scale(1.05);
+}
+.sr-card.sr-correct {
+    background: #1a4a2a;
+    border-color: #3fb950;
+}
+.sr-card.sr-locked {
+    cursor: default;
+    pointer-events: none;
+}
+
+.sr-number {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #e6edf3;
+    text-align: center;
+    line-height: 1.2;
+    white-space: nowrap;
+    letter-spacing: .01em;
+}
+.sr-card.sr-selected .sr-number  { color: #58a6ff; }
+.sr-card.sr-correct  .sr-number  { color: #3fb950; }
+
+/* ── position index (faint label) ── */
+.sr-pos-label {
+    position: absolute;
+    top: 4px;
+    left: 7px;
+    font-size: 0.62rem;
+    color: #484f58;
+    font-weight: 600;
+    pointer-events: none;
+}
+
+/* ── shake animation ── */
+@keyframes sr-shake {
+    0%,100% { transform: translateX(0); }
+    20%      { transform: translateX(-6px); }
+    40%      { transform: translateX(6px); }
+    60%      { transform: translateX(-4px); }
+    80%      { transform: translateX(4px); }
+}
+.sr-shake { animation: sr-shake .4s ease; }
+
+/* ── swap flash ── */
+@keyframes sr-flash {
+    0%   { background: #1f3a5f; }
+    60%  { background: #1c3550; }
+    100% { background: #161b22; }
+}
+.sr-flash { animation: sr-flash .35s ease; }
+
+/* ── stats bar ── */
+#sr-stats {
+    max-width: 680px;
+    margin: 0 auto .75rem;
+    display: flex;
+    gap: 1.25rem;
+    font-size: 0.83rem;
+    color: #8b949e;
+    flex-wrap: wrap;
+    align-items: center;
+}
+#sr-stats strong { color: #e6edf3; }
+
+/* ── win overlay ── */
+#sr-win-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.72);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+#sr-win-box {
+    background: #161b22;
+    border: 1px solid #3fb950;
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    text-align: center;
+    max-width: 380px;
+    width: 100%;
+}
+
+/* ── nearly-sorted toast ── */
+#sr-nearly {
+    display: none;
+    max-width: 680px;
+    margin: .5rem auto 0;
+    background: #3d2c10;
+    border: 1px solid #f0883e;
+    border-radius: 10px;
+    padding: .5rem 1rem;
+    font-size: .83rem;
+    color: #f0883e;
+    text-align: center;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4">
+
+    <!-- Back -->
+    <a href="{% url 'sortingrace_list' %}" class="text-decoration-none d-inline-flex align-items-center gap-1 mb-3"
+       style="color:var(--text-muted); font-size:0.85rem;">
+        <i class="bi bi-arrow-left"></i> {% trans "Sorting Race" %}
+    </a>
+
+    <!-- Header -->
+    <div class="d-flex align-items-start justify-content-between flex-wrap gap-2 mb-3"
+         style="max-width:680px; margin-left:auto; margin-right:auto;">
+        <div>
+            <h1 class="fs-5 fw-bold mb-0" style="color:var(--text);">{{ challenge.title }}</h1>
+            {% if challenge.hint %}
+            <p style="color:#f0883e; font-size:0.83rem; margin:.2rem 0 0;">
+                <i class="bi bi-lightbulb-fill"></i> {{ challenge.hint }}
+            </p>
+            {% endif %}
+        </div>
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+            <span class="badge" style="font-size:0.75rem;
+                {% if challenge.difficulty == 'easy' %}background:#d1fae5; color:#065f46;
+                {% elif challenge.difficulty == 'medium' %}background:#fef3c7; color:#92400e;
+                {% else %}background:#fee2e2; color:#991b1b;{% endif %}">
+                {{ challenge.get_difficulty_display }}
+            </span>
+            <form method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" name="action" value="reset" class="btn btn-sm"
+                        style="background:#21262d; color:#8b949e; border:none; font-size:0.76rem; border-radius:6px;">
+                    <i class="bi bi-shuffle"></i> {% trans "New Array" %}
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Instruction banner -->
+    <div style="max-width:680px; margin:0 auto .75rem;">
+        <div style="background:#1c2130; border:1px solid #30363d; border-radius:10px; padding:.55rem 1rem;
+                    font-size:.82rem; color:#8b949e; display:flex; align-items:center; gap:.5rem;">
+            <i class="bi bi-info-circle" style="color:#58a6ff; flex-shrink:0;"></i>
+            <span>{% trans "Click a card to select it, then click another card to swap. Sort smallest → largest." %}</span>
+        </div>
+    </div>
+
+    <!-- Stats bar -->
+    <div id="sr-stats">
+        <span>&#x1F3C3; {% trans "Moves" %}: <strong id="sr-moves">{{ moves }}</strong></span>
+        <span>&#x23F1; <strong id="sr-timer">00:00</strong></span>
+        {% if done %}<span style="color:#3fb950;">&#x2705; {% trans "Sorted!" %}</span>{% endif %}
+    </div>
+
+    <!-- Array -->
+    <div class="sr-array{% if done %} sr-locked{% endif %}" id="sr-array">
+        {% for item in initial_items %}
+        <div class="sr-card{% if done %} sr-correct sr-locked{% endif %}" data-pos="{{ item.pos }}">
+            <span class="sr-pos-label">{{ forloop.counter }}</span>
+            <span class="sr-number">{{ item.display }}</span>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Nearly-sorted toast -->
+    <div id="sr-nearly">
+        <i class="bi bi-stars"></i> {% trans "Almost there — just one more swap!" %}
+    </div>
+
+    <!-- Action buttons -->
+    <div class="d-flex gap-2 justify-content-center mt-3" style="max-width:680px; margin-left:auto; margin-right:auto;">
+        {% if not done %}
+        <button id="sr-check-btn" class="btn fw-bold flex-fill"
+                style="background:#f97316; color:#fff; border:none; border-radius:9px; padding:.55rem 1rem; max-width:280px;">
+            <i class="bi bi-check2-circle"></i> {% trans "Check Order" %}
+        </button>
+        {% else %}
+        <a href="{% url 'sortingrace_list' %}" class="btn fw-bold"
+           style="background:#238636; color:#fff; border:none; border-radius:9px; padding:.55rem 1.4rem;">
+            {% trans "All Challenges" %}
+        </a>
+        {% endif %}
+    </div>
+
+    <!-- Reference legend -->
+    <div style="max-width:680px; margin:1.2rem auto 0; font-size:0.78rem; color:#484f58; text-align:center;">
+        {% if challenge.difficulty == 'hard' %}
+        {% trans "Reference" %}: &nbsp; √2 ≈ 1.414 &nbsp;|&nbsp; √3 ≈ 1.732 &nbsp;|&nbsp; √5 ≈ 2.236 &nbsp;|&nbsp; π/4 ≈ 0.785 &nbsp;|&nbsp; π/2 ≈ 1.571
+        {% endif %}
+    </div>
+
+</div>
+
+<!-- Win overlay -->
+<div id="sr-win-overlay">
+    <div id="sr-win-box">
+        <div style="font-size:3rem; margin-bottom:.5rem;">&#x1F3C6;</div>
+        <h2 class="fs-4 fw-bold mb-1" style="color:#3fb950;">{% trans "Sorted!" %}</h2>
+        <p style="color:#8b949e; font-size:.9rem; margin:.25rem 0 1rem;">
+            {% trans "Array is in perfect ascending order." %}
+        </p>
+        <div class="d-flex gap-3 justify-content-center mb-1" style="font-size:1rem;">
+            <span style="color:#e6edf3;">&#x1F3C3; <strong id="sr-win-moves">0</strong> {% trans "moves" %}</span>
+            <span style="color:#e6edf3;">&#x23F1; <strong id="sr-win-time">00:00</strong></span>
+        </div>
+        <div class="d-flex gap-2 justify-content-center mt-3 flex-wrap">
+            <button id="sr-win-reset" class="btn btn-sm fw-bold"
+                    style="background:#21262d; color:#e6edf3; border:none; border-radius:8px; padding:.45rem 1.2rem;">
+                <i class="bi bi-shuffle"></i> {% trans "New Array" %}
+            </button>
+            <a href="{% url 'sortingrace_list' %}" class="btn btn-sm fw-bold"
+               style="background:#238636; color:#fff; border:none; border-radius:8px; padding:.45rem 1.2rem;">
+                {% trans "All Challenges" %}
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    const CHECK_URL  = "{% url 'sortingrace_check' challenge.pk %}";
+    const CSRF_TOKEN = "{{ csrf_token }}";
+    const START_MS   = {{ start_ms }};
+    const IS_DONE    = {{ done|yesno:"true,false" }};
+
+    let currentOrder = {{ order_json|safe }};
+    const items      = {{ items_json|safe }};
+    let moves        = {{ moves }};
+    let selectedPos  = null;
+
+    /* ── timer ── */
+    function fmtTime(secs) {
+        const m = Math.floor(secs / 60).toString().padStart(2, '0');
+        const s = (secs % 60).toString().padStart(2, '0');
+        return m + ':' + s;
+    }
+    const timerEl = document.getElementById('sr-timer');
+    {% if done and elapsed is not None %}
+    timerEl.textContent = fmtTime({{ elapsed }});
+    {% else %}
+    if (!IS_DONE) {
+        setInterval(function () {
+            timerEl.textContent = fmtTime(Math.floor((Date.now() - START_MS) / 1000));
+        }, 500);
+    }
+    {% endif %}
+
+    /* ── card helpers ── */
+    function getCard(pos) {
+        return document.querySelector('.sr-card[data-pos="' + pos + '"]');
+    }
+    function getNumberEl(pos) {
+        return getCard(pos).querySelector('.sr-number');
+    }
+
+    /* ── swap two visual positions ── */
+    function doSwap(a, b) {
+        // Swap in logical order
+        var tmp = currentOrder[a];
+        currentOrder[a] = currentOrder[b];
+        currentOrder[b] = tmp;
+
+        // Update display
+        getNumberEl(a).textContent = items[currentOrder[a]].display;
+        getNumberEl(b).textContent = items[currentOrder[b]].display;
+
+        // Flash animation
+        var ca = getCard(a), cb = getCard(b);
+        ca.classList.add('sr-flash');
+        cb.classList.add('sr-flash');
+        setTimeout(function () {
+            ca.classList.remove('sr-flash', 'sr-selected');
+            cb.classList.remove('sr-flash');
+        }, 360);
+
+        moves++;
+        document.getElementById('sr-moves').textContent = moves;
+    }
+
+    /* ── click handler ── */
+    if (!IS_DONE) {
+        document.querySelectorAll('.sr-card').forEach(function (card) {
+            card.addEventListener('click', function () {
+                if (card.classList.contains('sr-locked')) return;
+                var pos = parseInt(card.dataset.pos, 10);
+
+                if (selectedPos === null) {
+                    selectedPos = pos;
+                    card.classList.add('sr-selected');
+                } else if (selectedPos === pos) {
+                    card.classList.remove('sr-selected');
+                    selectedPos = null;
+                } else {
+                    var prev = getCard(selectedPos);
+                    prev.classList.remove('sr-selected');
+                    doSwap(selectedPos, pos);
+                    selectedPos = null;
+                }
+            });
+        });
+    }
+
+    /* ── check button ── */
+    var checkBtn = document.getElementById('sr-check-btn');
+    if (checkBtn) {
+        checkBtn.addEventListener('click', function () {
+            checkBtn.disabled = true;
+            fetch(CHECK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'X-CSRFToken': CSRF_TOKEN },
+                body: JSON.stringify({ order: currentOrder, moves: moves }),
+            })
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                if (data.correct) {
+                    // Turn cards green
+                    document.querySelectorAll('.sr-card').forEach(function (c) {
+                        c.classList.add('sr-correct', 'sr-locked');
+                        c.classList.remove('sr-selected');
+                    });
+                    // Populate win overlay
+                    var e = data.elapsed || 0;
+                    document.getElementById('sr-win-moves').textContent = data.moves;
+                    document.getElementById('sr-win-time').textContent  = fmtTime(e);
+                    timerEl.textContent = fmtTime(e);
+                    document.getElementById('sr-win-overlay').style.display = 'flex';
+                } else {
+                    if (data.nearly) {
+                        var nl = document.getElementById('sr-nearly');
+                        nl.style.display = 'block';
+                        setTimeout(function () { nl.style.display = 'none'; }, 2500);
+                    }
+                    var arr = document.getElementById('sr-array');
+                    arr.classList.add('sr-shake');
+                    setTimeout(function () { arr.classList.remove('sr-shake'); }, 450);
+                    checkBtn.disabled = false;
+                }
+            })
+            .catch(function () { checkBtn.disabled = false; });
+        });
+    }
+
+    /* ── win overlay reset button ── */
+    var winReset = document.getElementById('sr-win-reset');
+    if (winReset) {
+        winReset.addEventListener('click', function () {
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = window.location.pathname;
+            var csrf = document.createElement('input');
+            csrf.type = 'hidden'; csrf.name = 'csrfmiddlewaretoken'; csrf.value = CSRF_TOKEN;
+            var act  = document.createElement('input');
+            act.type = 'hidden'; act.name = 'action'; act.value = 'reset';
+            form.appendChild(csrf); form.appendChild(act);
+            document.body.appendChild(form); form.submit();
+        });
+    }
+}());
+</script>
+{% endblock %}

@@ -17,4 +17,9 @@ urlpatterns = [
     path('primeclimb/create/', views.primeclimb_create, name='primeclimb_create'),
     path('primeclimb/<int:pk>/', views.primeclimb_play, name='primeclimb_play'),
     path('primeclimb/<int:pk>/check/', views.primeclimb_check, name='primeclimb_check'),
+    # Sorting Race
+    path('sortingrace/', views.sortingrace_list, name='sortingrace_list'),
+    path('sortingrace/create/', views.sortingrace_create, name='sortingrace_create'),
+    path('sortingrace/<int:pk>/', views.sortingrace_play, name='sortingrace_play'),
+    path('sortingrace/<int:pk>/check/', views.sortingrace_check, name='sortingrace_check'),
 ]
