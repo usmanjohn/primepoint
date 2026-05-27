@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "New Word Order Challenge" %} — Powerty{% endblock %}
+{% block page_name %}{% trans "Word Order Chaos" %}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4" style="max-width:600px;">
+
+    <a href="{% url 'wordorder_list' %}" class="text-decoration-none d-inline-flex align-items-center gap-1 mb-3"
+       style="color:var(--text-muted); font-size:0.85rem;">
+        <i class="bi bi-arrow-left"></i> {% trans "Word Order Chaos" %}
+    </a>
+
+    <h1 class="fs-4 fw-bold mb-1" style="color:var(--text);">&#x2795; {% trans "New Challenge" %}</h1>
+    <p style="color:var(--text-muted); font-size:0.88rem; margin:0 0 1.5rem;">
+        {% trans "Students will unscramble the sentence one word tile at a time." %}
+    </p>
+
+    {% if errors %}
+    <div class="alert mb-3" style="border-radius:10px; background:#3d1c1c; border:1px solid #f85149; color:#f85149; font-size:0.85rem;">
+        <ul class="mb-0 ps-3">
+            {% for err in errors %}<li>{{ err }}</li>{% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <form method="post" autocomplete="off">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label class="form-label" style="color:var(--text); font-size:0.85rem; font-weight:600;">
+                {% trans "Challenge Title" %}
+            </label>
+            <input type="text" name="title" value="{{ post.title }}" required
+                   class="form-control"
+                   style="background:#161b22; border:1px solid #30363d; color:#e6edf3; border-radius:8px;"
+                   placeholder="{% trans 'e.g. Present Simple Sentence' %}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" style="color:var(--text); font-size:0.85rem; font-weight:600;">
+                {% trans "Correct Sentence" %}
+                <span style="color:#8b949e; font-weight:400;">({% trans "3–20 words, split by spaces" %})</span>
+            </label>
+            <textarea name="sentence" id="wo-sentence" rows="3" required
+                      class="form-control"
+                      style="background:#161b22; border:1px solid #30363d; color:#e6edf3; border-radius:8px; resize:vertical;"
+                      placeholder="{% trans 'e.g. The cat sat on the mat' %}">{{ post.sentence }}</textarea>
+            <div id="wo-word-count" style="color:#8b949e; font-size:0.78rem; margin-top:4px;">
+                {% trans "0 words" %}
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label class="form-label" style="color:var(--text); font-size:0.85rem; font-weight:600;">
+                {% trans "Hint" %} <span style="color:#8b949e;">({% trans "optional" %})</span>
+            </label>
+            <input type="text" name="hint" value="{{ post.hint }}"
+                   class="form-control"
+                   style="background:#161b22; border:1px solid #30363d; color:#e6edf3; border-radius:8px;"
+                   placeholder="{% trans 'e.g. This is a present simple sentence' %}">
+        </div>
+
+        <button type="submit" class="btn w-100 fw-bold"
+                style="background:#7c3aed; color:#fff; border:none; border-radius:10px; padding:.6rem 1rem; font-size:0.95rem;">
+            <i class="bi bi-shuffle"></i> {% trans "Create Challenge" %}
+        </button>
+    </form>
+
+</div>
+
+<script>
+(function () {
+    const textarea = document.getElementById('wo-sentence');
+    const counter  = document.getElementById('wo-word-count');
+    const singular = '{% trans "word" %}';
+    const plural   = '{% trans "words" %}';
+
+    function update() {
+        const words = textarea.value.trim().split(/\s+/).filter(Boolean);
+        const n = words.length;
+        counter.textContent = n + ' ' + (n === 1 ? singular : plural);
+        counter.style.color = (n < 3 || n > 20) ? '#f85149' : '#3fb950';
+    }
+    textarea.addEventListener('input', update);
+    update();
+}());
+</script>
+{% endblock %}

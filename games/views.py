@@ -6,7 +6,7 @@ from django.core.exceptions import PermissionDenied
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import CrosswordPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge
+from .models import CrosswordPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge
 
 
 # ---------------------------------------------------------------------------
@@ -784,3 +784,136 @@ def sortingrace_create(request):
         'post':        request.POST if request.method == 'POST' else {},
     }
     return render(request, 'games/sortingrace_create.html', context)
+
+
+# ---------------------------------------------------------------------------
+# Word Order Chaos views
+# ---------------------------------------------------------------------------
+
+@login_required
+def wordorder_list(request):
+    challenges = WordOrderChallenge.objects.filter(is_active=True)
+    return render(request, 'games/wordorder_list.html', {'challenges': challenges})
+
+
+@login_required
+def wordorder_play(request, pk):
+    challenge = get_object_or_404(WordOrderChallenge, pk=pk, is_active=True)
+
+    words_key  = f'wo_{pk}_words'
+    answer_key = f'wo_{pk}_answer'
+    bank_key   = f'wo_{pk}_bank'
+    start_key  = f'wo_{pk}_start'
+    done_key   = f'wo_{pk}_done'
+
+    if request.method == 'POST' and request.POST.get('action') == 'reset':
+        for k in (words_key, answer_key, bank_key, start_key, done_key):
+            request.session.pop(k, None)
+        return redirect('wordorder_play', pk=pk)
+
+    if words_key not in request.session:
+        words = challenge.sentence.split()
+        bank  = list(range(len(words)))
+        random.shuffle(bank)
+        request.session[words_key]  = words
+        request.session[answer_key] = []
+        request.session[bank_key]   = bank
+        request.session[start_key]  = int(time.time())
+        request.session[done_key]   = False
+
+    words      = request.session[words_key]
+    answer     = request.session[answer_key]
+    bank       = request.session[bank_key]
+    start_time = request.session[start_key]
+    done       = request.session[done_key]
+    elapsed    = int(time.time()) - start_time if done else None
+
+    context = {
+        'challenge':   challenge,
+        'words_json':  json.dumps(words),
+        'answer_json': json.dumps(answer),
+        'bank_json':   json.dumps(bank),
+        'start_ms':    start_time * 1000,
+        'done':        done,
+        'elapsed':     elapsed,
+    }
+    return render(request, 'games/wordorder_play.html', context)
+
+
+@login_required
+def wordorder_check(request, pk):
+    if request.method != 'POST':
+        return JsonResponse({'error': 'POST only'}, status=405)
+
+    challenge = get_object_or_404(WordOrderChallenge, pk=pk, is_active=True)
+
+    try:
+        data   = json.loads(request.body)
+        answer = [int(i) for i in data.get('answer', [])]
+        bank   = [int(i) for i in data.get('bank', [])]
+    except (ValueError, TypeError, json.JSONDecodeError):
+        return JsonResponse({'error': 'Invalid data'}, status=400)
+
+    words_key  = f'wo_{pk}_words'
+    answer_key = f'wo_{pk}_answer'
+    bank_key   = f'wo_{pk}_bank'
+    start_key  = f'wo_{pk}_start'
+    done_key   = f'wo_{pk}_done'
+
+    words = request.session.get(words_key)
+    if not words:
+        return JsonResponse({'error': 'No active game'}, status=400)
+
+    request.session[answer_key] = answer
+    request.session[bank_key]   = bank
+
+    if bank:
+        return JsonResponse({'error': 'incomplete'})
+
+    correct = (answer == list(range(len(words))))
+    if correct:
+        elapsed = int(time.time()) - request.session.get(start_key, int(time.time()))
+        request.session[done_key] = True
+        return JsonResponse({'correct': True, 'elapsed': elapsed})
+
+    return JsonResponse({'correct': False})
+
+
+@login_required
+def wordorder_create(request):
+    is_master = hasattr(request.user, 'profile') and request.user.profile.is_master
+    if not request.user.is_staff and not is_master:
+        raise PermissionDenied
+
+    errors = []
+
+    if request.method == 'POST':
+        title    = request.POST.get('title', '').strip()
+        sentence = request.POST.get('sentence', '').strip()
+        hint     = request.POST.get('hint', '').strip()
+
+        if not title:
+            errors.append('Title is required.')
+        if not sentence:
+            errors.append('Sentence is required.')
+        else:
+            word_count = len(sentence.split())
+            if word_count < 3:
+                errors.append('Sentence must have at least 3 words.')
+            elif word_count > 20:
+                errors.append('Sentence must have 20 words or fewer.')
+
+        if not errors:
+            challenge = WordOrderChallenge.objects.create(
+                title=title,
+                sentence=sentence,
+                hint=hint,
+                created_by=request.user,
+            )
+            return redirect('wordorder_play', pk=challenge.pk)
+
+    context = {
+        'errors': errors,
+        'post':   request.POST if request.method == 'POST' else {},
+    }
+    return render(request, 'games/wordorder_create.html', context)

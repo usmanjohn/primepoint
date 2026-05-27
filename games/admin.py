@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import reverse
 from django.utils.html import format_html
-from .models import CrosswordPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge
+from .models import CrosswordPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge
 from .views import _pc_correct_numbers
 
 
@@ -98,3 +98,14 @@ class SortingRaceChallengeAdmin(admin.ModelAdmin):
     list_display  = ('title', 'difficulty', 'is_active', 'created_by', 'created_at')
     list_filter   = ('difficulty', 'is_active')
     search_fields = ('title',)
+
+
+@admin.register(WordOrderChallenge)
+class WordOrderChallengeAdmin(admin.ModelAdmin):
+    list_display  = ('title', 'word_count', 'is_active', 'created_by', 'created_at')
+    list_filter   = ('is_active',)
+    search_fields = ('title', 'sentence')
+
+    def word_count(self, obj):
+        return obj.word_count()
+    word_count.short_description = 'Words'

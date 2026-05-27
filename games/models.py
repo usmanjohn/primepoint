@@ -57,6 +57,24 @@ class CodeBreakerClue(models.Model):
         ordering = ['letter_index']
 
 
+class WordOrderChallenge(models.Model):
+    title      = models.CharField(max_length=200)
+    sentence   = models.CharField(max_length=500)
+    hint       = models.TextField(blank=True)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='wordorder_challenges')
+    is_active  = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def word_count(self):
+        return len(self.sentence.split())
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['-created_at']
+
+
 class SortingRaceChallenge(models.Model):
     EASY   = 'easy'
     MEDIUM = 'medium'

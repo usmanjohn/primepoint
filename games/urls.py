@@ -22,4 +22,9 @@ urlpatterns = [
     path('sortingrace/create/', views.sortingrace_create, name='sortingrace_create'),
     path('sortingrace/<int:pk>/', views.sortingrace_play, name='sortingrace_play'),
     path('sortingrace/<int:pk>/check/', views.sortingrace_check, name='sortingrace_check'),
+    # Word Order Chaos
+    path('wordorder/', views.wordorder_list, name='wordorder_list'),
+    path('wordorder/create/', views.wordorder_create, name='wordorder_create'),
+    path('wordorder/<int:pk>/', views.wordorder_play, name='wordorder_play'),
+    path('wordorder/<int:pk>/check/', views.wordorder_check, name='wordorder_check'),
 ]

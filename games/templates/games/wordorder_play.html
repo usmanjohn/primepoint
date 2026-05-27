@@ -1,0 +1,595 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ challenge.title }} — {% trans "Word Order Chaos" %} — Powerty{% endblock %}
+{% block page_name %}{% trans "Word Order Chaos" %}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ── zones ── */
+.wo-zone {
+    min-height: 68px;
+    border-radius: 14px;
+    padding: 10px 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: flex-start;
+    align-content: flex-start;
+    transition: border-color .15s, background .15s;
+    position: relative;
+}
+.wo-answer-zone {
+    border: 2px dashed #30363d;
+    background: #0d1117;
+}
+.wo-bank-zone {
+    border: 2px solid #21262d;
+    background: #161b22;
+}
+.wo-zone.wo-zone-hover {
+    border-color: #7c3aed;
+    background: #1a1033;
+}
+.wo-zone.wo-zone-correct {
+    border-color: #3fb950 !important;
+    background: #0d1f0e !important;
+}
+
+/* ── empty hint ── */
+.wo-empty-hint {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #484f58;
+    font-size: 0.82rem;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* ── drop cursor ── */
+.wo-drop-cursor {
+    width: 3px;
+    min-height: 36px;
+    background: #7c3aed;
+    border-radius: 2px;
+    flex-shrink: 0;
+    pointer-events: none;
+}
+
+/* ── word tile ── */
+.wo-tile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 14px;
+    background: #21262d;
+    border: 2px solid #30363d;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #e6edf3;
+    cursor: grab;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: border-color .12s, background .12s, transform .1s, opacity .15s;
+    touch-action: none;
+    white-space: nowrap;
+}
+.wo-tile:hover {
+    border-color: #7c3aed;
+    transform: translateY(-2px);
+}
+.wo-tile.wo-tile-dragging {
+    opacity: 0.35;
+    transform: none;
+}
+.wo-tile.wo-tile-ghost {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.88;
+    transform: scale(1.06) rotate(-2deg);
+    box-shadow: 0 8px 24px rgba(124,58,237,.35);
+    border-color: #7c3aed;
+    cursor: grabbing;
+}
+.wo-answer-zone .wo-tile { border-color: #4f46e5; background: #1e1b4b; }
+.wo-answer-zone .wo-tile:hover { border-color: #a78bfa; }
+.wo-zone-correct .wo-tile { border-color: #3fb950 !important; background: #1a4a2a !important; color: #3fb950 !important; }
+
+/* ── shake ── */
+@keyframes wo-shake {
+    0%,100% { transform: translateX(0); }
+    20%      { transform: translateX(-7px); }
+    40%      { transform: translateX(7px); }
+    60%      { transform: translateX(-4px); }
+    80%      { transform: translateX(4px); }
+}
+.wo-shake { animation: wo-shake .4s ease; }
+
+/* ── win overlay ── */
+#wo-win-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.75);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+#wo-win-box {
+    background: #161b22;
+    border: 1px solid #3fb950;
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    text-align: center;
+    max-width: 360px;
+    width: 100%;
+}
+
+/* ── toast ── */
+#wo-toast {
+    display: none;
+    max-width: 680px;
+    margin: .5rem auto 0;
+    border-radius: 10px;
+    padding: .5rem 1rem;
+    font-size: .83rem;
+    text-align: center;
+}
+#wo-toast.warn  { background:#3d2c10; border:1px solid #f0883e; color:#f0883e; }
+#wo-toast.error { background:#3d1c1c; border:1px solid #f85149; color:#f85149; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4">
+
+    <!-- Back -->
+    <a href="{% url 'wordorder_list' %}" class="text-decoration-none d-inline-flex align-items-center gap-1 mb-3"
+       style="color:var(--text-muted); font-size:0.85rem;">
+        <i class="bi bi-arrow-left"></i> {% trans "Word Order Chaos" %}
+    </a>
+
+    <!-- Header -->
+    <div class="d-flex align-items-start justify-content-between flex-wrap gap-2 mb-2"
+         style="max-width:680px; margin-left:auto; margin-right:auto;">
+        <div>
+            <h1 class="fs-5 fw-bold mb-0" style="color:var(--text);">{{ challenge.title }}</h1>
+            {% if challenge.hint %}
+            <p style="color:#f0883e; font-size:0.83rem; margin:.2rem 0 0;">
+                <i class="bi bi-lightbulb-fill"></i> {{ challenge.hint }}
+            </p>
+            {% endif %}
+        </div>
+        <form method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" name="action" value="reset" class="btn btn-sm"
+                    style="background:#21262d; color:#8b949e; border:none; font-size:0.76rem; border-radius:6px;">
+                <i class="bi bi-shuffle"></i> {% trans "Shuffle Again" %}
+            </button>
+        </form>
+    </div>
+
+    <!-- Stats -->
+    <div style="max-width:680px; margin:0 auto .75rem; font-size:0.83rem; color:#8b949e; display:flex; gap:1.2rem; flex-wrap:wrap;">
+        <span>&#x23F1; <strong id="wo-timer">00:00</strong></span>
+        <span id="wo-placed-count">0 / {{ challenge.word_count }} {% trans "placed" %}</span>
+    </div>
+
+    <!-- Instruction -->
+    <div style="max-width:680px; margin:0 auto .75rem;">
+        <div style="background:#1c2130; border:1px solid #30363d; border-radius:10px; padding:.5rem 1rem;
+                    font-size:.81rem; color:#8b949e; display:flex; align-items:center; gap:.5rem;">
+            <i class="bi bi-info-circle" style="color:#7c3aed; flex-shrink:0;"></i>
+            <span>{% trans "Tap a word to move it. Drag to place it at a specific position." %}</span>
+        </div>
+    </div>
+
+    <!-- Answer zone -->
+    <div style="max-width:680px; margin:0 auto .5rem;">
+        <div style="font-size:0.78rem; color:#8b949e; margin-bottom:4px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;">
+            {% trans "Your Answer" %}
+        </div>
+        <div class="wo-zone wo-answer-zone{% if done %} wo-zone-correct{% endif %}" id="wo-answer" data-zone="answer">
+            <span class="wo-empty-hint" id="wo-answer-hint">{% trans "Tap or drag words here" %} &#x2191;</span>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="wo-toast"></div>
+
+    <!-- Bank zone -->
+    <div style="max-width:680px; margin:.75rem auto 0;">
+        <div style="font-size:0.78rem; color:#8b949e; margin-bottom:4px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;">
+            {% trans "Word Bank" %}
+        </div>
+        <div class="wo-zone wo-bank-zone" id="wo-bank" data-zone="bank">
+        </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="d-flex gap-2 justify-content-center mt-3" style="max-width:680px; margin-left:auto; margin-right:auto;">
+        {% if not done %}
+        <button id="wo-check-btn" class="btn fw-bold flex-fill"
+                style="background:#7c3aed; color:#fff; border:none; border-radius:9px; padding:.55rem 1rem; max-width:280px;">
+            <i class="bi bi-check2-circle"></i> {% trans "Check Answer" %}
+        </button>
+        {% else %}
+        <a href="{% url 'wordorder_list' %}" class="btn fw-bold"
+           style="background:#238636; color:#fff; border:none; border-radius:9px; padding:.55rem 1.4rem;">
+            {% trans "All Challenges" %}
+        </a>
+        {% endif %}
+    </div>
+
+</div>
+
+<!-- Win overlay -->
+<div id="wo-win-overlay">
+    <div id="wo-win-box">
+        <div style="font-size:3rem; margin-bottom:.5rem;">&#x1F389;</div>
+        <h2 class="fs-4 fw-bold mb-1" style="color:#3fb950;">{% trans "Correct!" %}</h2>
+        <p style="color:#8b949e; font-size:.9rem; margin:.25rem 0 1rem;">
+            {% trans "You rebuilt the sentence perfectly." %}
+        </p>
+        <p style="color:#e6edf3; font-size:.88rem; margin:0 0 1rem; font-style:italic;" id="wo-win-sentence"></p>
+        <div style="font-size:1rem; color:#e6edf3; margin-bottom:1rem;">
+            &#x23F1; <strong id="wo-win-time">00:00</strong>
+        </div>
+        <div class="d-flex gap-2 justify-content-center flex-wrap">
+            <button id="wo-win-reset" class="btn btn-sm fw-bold"
+                    style="background:#21262d; color:#e6edf3; border:none; border-radius:8px; padding:.45rem 1.2rem;">
+                <i class="bi bi-shuffle"></i> {% trans "Play Again" %}
+            </button>
+            <a href="{% url 'wordorder_list' %}" class="btn btn-sm fw-bold"
+               style="background:#238636; color:#fff; border:none; border-radius:8px; padding:.45rem 1.2rem;">
+                {% trans "All Challenges" %}
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    const CHECK_URL  = "{% url 'wordorder_check' challenge.pk %}";
+    const CSRF_TOKEN = "{{ csrf_token }}";
+    const START_MS   = {{ start_ms }};
+    const IS_DONE    = {{ done|yesno:"true,false" }};
+
+    const words          = {{ words_json|safe }};
+    let   currentAnswer  = {{ answer_json|safe }};
+    let   currentBank    = {{ bank_json|safe }};
+
+    /* ── timer ── */
+    function fmtTime(s) {
+        return String(Math.floor(s/60)).padStart(2,'0') + ':' + String(s%60).padStart(2,'0');
+    }
+    const timerEl = document.getElementById('wo-timer');
+    {% if done and elapsed is not None %}
+    timerEl.textContent = fmtTime({{ elapsed }});
+    {% else %}
+    if (!IS_DONE) setInterval(function(){
+        timerEl.textContent = fmtTime(Math.floor((Date.now()-START_MS)/1000));
+    }, 500);
+    {% endif %}
+
+    /* ── placed counter ── */
+    const placedCountEl = document.getElementById('wo-placed-count');
+    function updatePlaced() {
+        placedCountEl.textContent = currentAnswer.length + ' / ' + words.length + ' {% trans "placed" %}';
+    }
+
+    /* ── toast ── */
+    let toastTimer = null;
+    function showToast(msg, type) {
+        const el = document.getElementById('wo-toast');
+        el.className = type;
+        el.innerHTML = msg;
+        el.style.display = 'block';
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function(){ el.style.display='none'; }, 2800);
+    }
+
+    /* ── render ── */
+    function renderAll() {
+        const answerZone = document.getElementById('wo-answer');
+        const bankZone   = document.getElementById('wo-bank');
+        const answerHint = document.getElementById('wo-answer-hint');
+
+        answerZone.innerHTML = '';
+        bankZone.innerHTML   = '';
+
+        // Re-add hint span
+        answerHint.style.display = currentAnswer.length === 0 ? 'flex' : 'none';
+        answerZone.appendChild(answerHint);
+
+        currentAnswer.forEach(function(idx, pos) {
+            answerZone.appendChild(makeTile(idx, 'answer', pos));
+        });
+        currentBank.forEach(function(idx, pos) {
+            bankZone.appendChild(makeTile(idx, 'bank', pos));
+        });
+
+        updatePlaced();
+    }
+
+    /* ── tile factory ── */
+    function makeTile(idx, zone, pos) {
+        const t = document.createElement('div');
+        t.className   = 'wo-tile';
+        t.textContent = words[idx];
+        t.dataset.idx  = idx;
+        t.dataset.zone = zone;
+        t.dataset.pos  = pos;
+        t.draggable    = true;
+
+        if (!IS_DONE) {
+            // Click: tap to move
+            t.addEventListener('click', function(e) {
+                if (e._fromDrag) return;
+                if (zone === 'bank') {
+                    currentBank.splice(pos, 1);
+                    currentAnswer.push(idx);
+                } else {
+                    currentAnswer.splice(pos, 1);
+                    currentBank.push(idx);
+                }
+                renderAll();
+            });
+            // Desktop DnD
+            t.addEventListener('dragstart', handleDragStart);
+            t.addEventListener('dragend',   handleDragEnd);
+            // Touch
+            t.addEventListener('touchstart', handleTouchStart, {passive: false});
+        }
+        return t;
+    }
+
+    /* ════════════════════════════════
+       DESKTOP HTML5 DRAG & DROP
+    ════════════════════════════════ */
+    let dndIdx  = null;
+    let dndZone = null;
+    let dndPos  = null;
+    let dropCursor = null;
+
+    function handleDragStart(e) {
+        dndIdx  = parseInt(this.dataset.idx);
+        dndZone = this.dataset.zone;
+        dndPos  = parseInt(this.dataset.pos);
+        this.classList.add('wo-tile-dragging');
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/plain', dndIdx);
+    }
+
+    function handleDragEnd() {
+        this.classList.remove('wo-tile-dragging');
+        removeDropCursor();
+        document.querySelectorAll('.wo-zone').forEach(function(z){
+            z.classList.remove('wo-zone-hover');
+        });
+    }
+
+    function setupZoneDnd(zoneEl) {
+        zoneEl.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            this.classList.add('wo-zone-hover');
+            showDropCursor(e.clientX, this);
+        });
+        zoneEl.addEventListener('dragleave', function(e) {
+            if (!this.contains(e.relatedTarget)) {
+                this.classList.remove('wo-zone-hover');
+                removeDropCursor();
+            }
+        });
+        zoneEl.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.classList.remove('wo-zone-hover');
+            const targetZone = this.dataset.zone;
+            const insertAt   = getInsertPos(e.clientX, this);
+            removeDropCursor();
+            doMove(dndIdx, dndZone, targetZone, insertAt);
+        });
+    }
+
+    function showDropCursor(clientX, zoneEl) {
+        removeDropCursor();
+        const insertAt = getInsertPos(clientX, zoneEl);
+        dropCursor = document.createElement('div');
+        dropCursor.className = 'wo-drop-cursor';
+        const tiles = Array.from(zoneEl.querySelectorAll('.wo-tile'));
+        if (insertAt >= tiles.length) {
+            zoneEl.appendChild(dropCursor);
+        } else {
+            zoneEl.insertBefore(dropCursor, tiles[insertAt]);
+        }
+    }
+
+    function removeDropCursor() {
+        if (dropCursor && dropCursor.parentNode) dropCursor.parentNode.removeChild(dropCursor);
+        dropCursor = null;
+    }
+
+    function getInsertPos(clientX, zoneEl) {
+        const tiles = Array.from(zoneEl.querySelectorAll('.wo-tile'));
+        for (let i = 0; i < tiles.length; i++) {
+            const r = tiles[i].getBoundingClientRect();
+            if (clientX < r.left + r.width / 2) return i;
+        }
+        return tiles.length;
+    }
+
+    setupZoneDnd(document.getElementById('wo-answer'));
+    setupZoneDnd(document.getElementById('wo-bank'));
+
+    /* ════════════════════════════════
+       TOUCH DRAG
+    ════════════════════════════════ */
+    let touchIdx   = null;
+    let touchZone  = null;
+    let touchPos   = null;
+    let touchGhost = null;
+    let touchSrcEl = null;
+
+    function handleTouchStart(e) {
+        e.preventDefault();
+        const t = e.currentTarget;
+        touchIdx  = parseInt(t.dataset.idx);
+        touchZone = t.dataset.zone;
+        touchPos  = parseInt(t.dataset.pos);
+        touchSrcEl = t;
+        t.classList.add('wo-tile-dragging');
+
+        const rect = t.getBoundingClientRect();
+        touchGhost = t.cloneNode(true);
+        touchGhost.className = 'wo-tile wo-tile-ghost';
+        touchGhost.style.width  = rect.width + 'px';
+        touchGhost.style.left   = rect.left + 'px';
+        touchGhost.style.top    = rect.top  + 'px';
+        document.body.appendChild(touchGhost);
+
+        document.addEventListener('touchmove',  handleTouchMove,  {passive:false});
+        document.addEventListener('touchend',   handleTouchEnd,   {once:true});
+        document.addEventListener('touchcancel',handleTouchCancel,{once:true});
+    }
+
+    function handleTouchMove(e) {
+        e.preventDefault();
+        if (!touchGhost) return;
+        const touch = e.touches[0];
+        touchGhost.style.left = (touch.clientX - touchGhost.offsetWidth  / 2) + 'px';
+        touchGhost.style.top  = (touch.clientY - touchGhost.offsetHeight / 2) + 'px';
+
+        touchGhost.style.display = 'none';
+        const el = document.elementFromPoint(touch.clientX, touch.clientY);
+        touchGhost.style.display = '';
+
+        document.querySelectorAll('.wo-zone').forEach(function(z){ z.classList.remove('wo-zone-hover'); });
+        const zone = el && el.closest('.wo-zone');
+        if (zone) zone.classList.add('wo-zone-hover');
+    }
+
+    function handleTouchEnd(e) {
+        document.removeEventListener('touchmove', handleTouchMove);
+        if (!touchGhost) return;
+        const touch = e.changedTouches[0];
+        touchGhost.remove();
+        touchGhost = null;
+
+        if (touchSrcEl) touchSrcEl.classList.remove('wo-tile-dragging');
+        document.querySelectorAll('.wo-zone').forEach(function(z){ z.classList.remove('wo-zone-hover'); });
+
+        touchGhost = null;
+        const phantom = document.createElement('div');
+        phantom.style.cssText = 'position:fixed;pointer-events:none;z-index:9998;width:1px;height:1px;';
+        phantom.style.left = touch.clientX + 'px';
+        phantom.style.top  = touch.clientY + 'px';
+        document.body.appendChild(phantom);
+        const el   = document.elementFromPoint(touch.clientX, touch.clientY);
+        phantom.remove();
+
+        const zone = el && el.closest('.wo-zone');
+        if (!zone) { touchIdx = null; return; }
+
+        const targetZone = zone.dataset.zone;
+        const insertAt   = getInsertPos(touch.clientX, zone);
+        doMove(touchIdx, touchZone, targetZone, insertAt);
+        touchIdx = null;
+    }
+
+    function handleTouchCancel() {
+        document.removeEventListener('touchmove', handleTouchMove);
+        if (touchGhost) { touchGhost.remove(); touchGhost = null; }
+        if (touchSrcEl) touchSrcEl.classList.remove('wo-tile-dragging');
+        touchIdx = null;
+    }
+
+    /* ════════════════════════════════
+       SHARED MOVE LOGIC
+    ════════════════════════════════ */
+    function doMove(idx, fromZone, toZone, insertAt) {
+        if (fromZone === 'bank') {
+            currentBank = currentBank.filter(function(i){ return i !== idx; });
+        } else {
+            currentAnswer = currentAnswer.filter(function(i){ return i !== idx; });
+        }
+        if (toZone === 'answer') {
+            currentAnswer.splice(insertAt, 0, idx);
+        } else {
+            currentBank.splice(insertAt, 0, idx);
+        }
+        renderAll();
+    }
+
+    /* ════════════════════════════════
+       CHECK
+    ════════════════════════════════ */
+    const checkBtn = document.getElementById('wo-check-btn');
+    if (checkBtn) {
+        checkBtn.addEventListener('click', function() {
+            if (currentBank.length > 0) {
+                showToast('<i class="bi bi-exclamation-circle"></i> {% trans "Place all words in the answer row first." %}', 'warn');
+                return;
+            }
+            checkBtn.disabled = true;
+            fetch(CHECK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'X-CSRFToken': CSRF_TOKEN },
+                body: JSON.stringify({ answer: currentAnswer, bank: currentBank }),
+            })
+            .then(function(r){ return r.json(); })
+            .then(function(data) {
+                if (data.error === 'incomplete') {
+                    showToast('<i class="bi bi-exclamation-circle"></i> {% trans "Place all words in the answer row first." %}', 'warn');
+                    checkBtn.disabled = false;
+                    return;
+                }
+                if (data.correct) {
+                    document.getElementById('wo-answer').classList.add('wo-zone-correct');
+                    document.getElementById('wo-win-sentence').textContent = words.join(' ');
+                    document.getElementById('wo-win-time').textContent = fmtTime(data.elapsed || 0);
+                    timerEl.textContent = fmtTime(data.elapsed || 0);
+                    document.getElementById('wo-win-overlay').style.display = 'flex';
+                } else {
+                    const answerZone = document.getElementById('wo-answer');
+                    answerZone.classList.add('wo-shake');
+                    setTimeout(function(){ answerZone.classList.remove('wo-shake'); }, 450);
+                    showToast('<i class="bi bi-x-circle"></i> {% trans "Not quite right — keep trying!" %}', 'error');
+                    checkBtn.disabled = false;
+                }
+            })
+            .catch(function(){ checkBtn.disabled = false; });
+        });
+    }
+
+    /* ── win overlay reset ── */
+    const winReset = document.getElementById('wo-win-reset');
+    if (winReset) {
+        winReset.addEventListener('click', function() {
+            var form = document.createElement('form');
+            form.method = 'POST'; form.action = window.location.pathname;
+            var csrf = document.createElement('input');
+            csrf.type='hidden'; csrf.name='csrfmiddlewaretoken'; csrf.value=CSRF_TOKEN;
+            var act = document.createElement('input');
+            act.type='hidden'; act.name='action'; act.value='reset';
+            form.appendChild(csrf); form.appendChild(act);
+            document.body.appendChild(form); form.submit();
+        });
+    }
+
+    /* ── initial render ── */
+    renderAll();
+
+    {% if done %}
+    document.getElementById('wo-answer').classList.add('wo-zone-correct');
+    {% endif %}
+}());
+</script>
+{% endblock %}
