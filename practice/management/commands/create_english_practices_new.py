@@ -4,56 +4,35 @@ from masters.models import Master
 from practice.models import Subject, Practice, PracticeQuestion, PracticeChoice
 
 from .english_questions import (
-    QUESTIONS_SET_1,
-    QUESTIONS_SET_2,
-    QUESTIONS_SET_3,
-    QUESTIONS_SET_4,
-    QUESTIONS_SET_5,
-    QUESTIONS_SET_6,
-    QUESTIONS_SET_7,
-    QUESTIONS_SET_8)
+    QUESTIONS_11, QUESTIONS_12, QUESTIONS_13, QUESTIONS_14,QUESTIONS_15)
 
 
 PRACTICES = [
     {
-        'title': '1-dars',
+        'title': '11-dars',
         'description': "amaliy test.",
-        'questions': QUESTIONS_SET_1,
+        'questions': QUESTIONS_11,
     },
     {
-        'title': '2-dars',
+        'title': '12-dars',
         'description': "amaliy test.",
-        'questions': QUESTIONS_SET_2,
+        'questions': QUESTIONS_12,
     },
     {
-        'title': '3-dars',
+        'title': '13-dars',
         'description': "amaliy test.",
-        'questions': QUESTIONS_SET_3,
+        'questions': QUESTIONS_13,
     },
     {
-        'title': '4-dars',
+        'title': '14-dars',
         'description': "amaliy test.",
-        'questions': QUESTIONS_SET_4,
+        'questions': QUESTIONS_14,
     },
     {
-        'title': '5-dars',
+        'title': '15-dars',
         'description': "amaliy test.",
-        'questions': QUESTIONS_SET_5,
-    },
-    {
-        'title': '6-dars',
-        'description': "amaliy test.",
-        'questions': QUESTIONS_SET_6,
-    },
-    {
-        'title': '7-dars',
-        'description': "amaliy test.",
-        'questions': QUESTIONS_SET_7,
-    },
-    {
-        'title': '8-dars',
-        'description': "amaliy test.",
-        'questions': QUESTIONS_SET_8}
+        'questions': QUESTIONS_15,
+    }
 ]
 
 class Command(BaseCommand):
