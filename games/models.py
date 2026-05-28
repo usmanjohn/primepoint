@@ -107,9 +107,29 @@ class OddOneOutQuestion(models.Model):
 
 
 class WordOrderChallenge(models.Model):
+    LANG_EN  = 'en'
+    LANG_KO  = 'ko'
+    LANG_UZ  = 'uz'
+    LANGUAGE_CHOICES = [
+        (LANG_EN, 'English'),
+        (LANG_KO, 'Korean'),
+        (LANG_UZ, 'Uzbek'),
+    ]
+
+    EASY   = 'easy'
+    MEDIUM = 'medium'
+    HARD   = 'hard'
+    DIFFICULTY_CHOICES = [
+        (EASY,   'Easy'),
+        (MEDIUM, 'Medium'),
+        (HARD,   'Hard'),
+    ]
+
     title      = models.CharField(max_length=200)
     sentence   = models.CharField(max_length=500)
     hint       = models.TextField(blank=True)
+    language   = models.CharField(max_length=10, choices=LANGUAGE_CHOICES, default=LANG_EN)
+    difficulty = models.CharField(max_length=10, choices=DIFFICULTY_CHOICES, default=EASY)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='wordorder_challenges')
     is_active  = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -121,7 +141,7 @@ class WordOrderChallenge(models.Model):
         return self.title
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['language', 'difficulty', 'pk']
 
 
 class SortingRaceChallenge(models.Model):

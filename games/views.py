@@ -792,8 +792,31 @@ def sortingrace_create(request):
 
 @login_required
 def wordorder_list(request):
-    challenges = WordOrderChallenge.objects.filter(is_active=True)
-    return render(request, 'games/wordorder_list.html', {'challenges': challenges})
+    challenges = WordOrderChallenge.objects.filter(is_active=True).order_by('language', 'difficulty', 'pk')
+
+    GROUP_ORDER = [
+        ('en', 'easy',   'English — Easy'),
+        ('en', 'medium', 'English — Medium'),
+        ('en', 'hard',   'English — Hard'),
+        ('ko', 'easy',   '한국어 — 쉬운 문제'),
+        ('ko', 'medium', '한국어 — 중간 문제'),
+        ('ko', 'hard',   '한국어 — 어려운 문제'),
+        ('uz', 'easy',   "O'zbek — Oson"),
+        ('uz', 'medium', "O'zbek — O'rta"),
+        ('uz', 'hard',   "O'zbek — Qiyin"),
+    ]
+
+    bucket = {}
+    for ch in challenges:
+        bucket.setdefault((ch.language, ch.difficulty), []).append(ch)
+
+    grouped = [
+        {'label': label, 'items': bucket[(lang, diff)]}
+        for lang, diff, label in GROUP_ORDER
+        if (lang, diff) in bucket
+    ]
+
+    return render(request, 'games/wordorder_list.html', {'grouped': grouped})
 
 
 @login_required

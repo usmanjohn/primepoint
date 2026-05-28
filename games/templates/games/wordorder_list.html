@@ -28,31 +28,71 @@
         {% endif %}
     </div>
 
-    {% if challenges %}
-    <div class="row g-3">
-        {% for ch in challenges %}
-        <div class="col-12 col-sm-6 col-lg-4">
-            <a href="{% url 'wordorder_play' ch.pk %}" class="text-decoration-none d-block h-100">
-                <div class="card border-0 shadow-sm h-100" style="border-radius:14px; overflow:hidden;">
-                    <div style="background:linear-gradient(135deg,#7c3aed 0%,#4f46e5 100%); padding:1.25rem 1.5rem;">
-                        <div style="font-size:2.4rem; line-height:1; margin-bottom:0.5rem;">&#x1F4DD;</div>
-                        <h2 class="fs-5 fw-bold mb-0" style="color:#fff;">{{ ch.title }}</h2>
-                    </div>
-                    <div class="card-body p-3" style="background:var(--surface);">
-                        {% if ch.hint %}
-                        <p style="color:var(--text-muted); font-size:0.84rem; margin:0 0 .5rem;">
-                            <i class="bi bi-lightbulb" style="color:#f0883e;"></i> {{ ch.hint }}
-                        </p>
-                        {% endif %}
-                        <span class="badge" style="font-size:0.75rem; background:#ede9fe; color:#6d28d9;">
-                            {{ ch.word_count }} {% trans "words" %}
-                        </span>
+    {% if grouped %}
+
+    <div class="accordion" id="wordorderAccordion">
+        {% for group in grouped %}
+        {% with gid="group"|add:forloop.counter0|stringformat:"s" %}
+        <div class="accordion-item border-0 mb-3" style="border-radius:14px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.08);">
+
+            {# ── Header ── #}
+            <h2 class="accordion-header" id="heading-{{ gid }}">
+                <button class="accordion-button {% if not forloop.first %}collapsed{% endif %} fw-semibold"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapse-{{ gid }}"
+                        aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+                        aria-controls="collapse-{{ gid }}"
+                        style="background:linear-gradient(135deg,#7c3aed 0%,#4f46e5 100%); color:#fff; border-radius:0;">
+                    <span style="font-size:1.2rem; margin-right:.6rem;">&#x1F4DD;</span>
+                    {{ group.label }}
+                    <span class="badge ms-2" style="background:rgba(255,255,255,.25); color:#fff; font-size:.75rem;">
+                        {{ group.items|length }}
+                    </span>
+                </button>
+            </h2>
+
+            {# ── Body ── #}
+            <div id="collapse-{{ gid }}"
+                 class="accordion-collapse collapse {% if forloop.first %}show{% endif %}"
+                 aria-labelledby="heading-{{ gid }}"
+                 data-bs-parent="#wordorderAccordion">
+                <div class="accordion-body p-3" style="background:var(--surface);">
+                    <div class="row g-3">
+                        {% for ch in group.items %}
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <a href="{% url 'wordorder_play' ch.pk %}" class="text-decoration-none d-block h-100">
+                                <div class="card border-0 shadow-sm h-100"
+                                     style="border-radius:12px; overflow:hidden; transition:transform .15s;">
+                                    <div class="card-body p-3" style="background:var(--surface);">
+                                        <div class="d-flex align-items-start justify-content-between gap-2 mb-2">
+                                            <span class="fw-semibold" style="color:var(--text); font-size:.9rem;">
+                                                {{ ch.title }}
+                                            </span>
+                                            <span class="badge" style="font-size:.72rem; background:#ede9fe; color:#6d28d9; white-space:nowrap;">
+                                                {{ ch.word_count }} {% trans "words" %}
+                                            </span>
+                                        </div>
+                                        {% if ch.hint %}
+                                        <p style="color:var(--text-muted); font-size:.8rem; margin:0;">
+                                            <i class="bi bi-lightbulb" style="color:#f0883e;"></i>
+                                            {{ ch.hint|truncatechars:60 }}
+                                        </p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %}
                     </div>
                 </div>
-            </a>
+            </div>
+
         </div>
+        {% endwith %}
         {% endfor %}
     </div>
+
     {% else %}
     <div class="text-center py-5" style="color:var(--text-muted);">
         <div style="font-size:3rem;">&#x1F4DD;</div>
