@@ -150,11 +150,49 @@
 {% block content %}
 <div class="container-fluid px-3 py-4">
 
-    <!-- Back -->
-    <a href="{% url 'wordorder_list' %}" class="text-decoration-none d-inline-flex align-items-center gap-1 mb-3"
-       style="color:var(--text-muted); font-size:0.85rem;">
-        <i class="bi bi-arrow-left"></i> {% trans "Word Order Chaos" %}
-    </a>
+    <!-- Back + Prev/Next nav -->
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3"
+         style="max-width:680px; margin-left:auto; margin-right:auto;">
+        <a href="{% url 'wordorder_list' %}?lang={{ challenge.language }}"
+           class="text-decoration-none d-inline-flex align-items-center gap-1"
+           style="color:var(--text-muted); font-size:0.85rem;">
+            <i class="bi bi-arrow-left"></i> {% trans "Word Order Chaos" %}
+        </a>
+
+        <div class="d-flex align-items-center gap-2">
+            {% if prev_pk %}
+            <a href="{% url 'wordorder_play' prev_pk %}"
+               class="btn btn-sm d-inline-flex align-items-center gap-1"
+               style="background:#21262d; color:#e6edf3; border:none; border-radius:7px; font-size:.8rem; padding:.3rem .7rem;">
+                <i class="bi bi-chevron-left"></i> {% trans "Prev" %}
+            </a>
+            {% else %}
+            <button class="btn btn-sm" disabled
+                    style="background:#161b22; color:#484f58; border:none; border-radius:7px; font-size:.8rem; padding:.3rem .7rem; cursor:not-allowed;">
+                <i class="bi bi-chevron-left"></i> {% trans "Prev" %}
+            </button>
+            {% endif %}
+
+            {% if position_label %}
+            <span style="color:var(--text-muted); font-size:.8rem; white-space:nowrap;">
+                {{ position_label }}
+            </span>
+            {% endif %}
+
+            {% if next_pk %}
+            <a href="{% url 'wordorder_play' next_pk %}"
+               class="btn btn-sm d-inline-flex align-items-center gap-1"
+               style="background:#21262d; color:#e6edf3; border:none; border-radius:7px; font-size:.8rem; padding:.3rem .7rem;">
+                {% trans "Next" %} <i class="bi bi-chevron-right"></i>
+            </a>
+            {% else %}
+            <button class="btn btn-sm" disabled
+                    style="background:#161b22; color:#484f58; border:none; border-radius:7px; font-size:.8rem; padding:.3rem .7rem; cursor:not-allowed;">
+                {% trans "Next" %} <i class="bi bi-chevron-right"></i>
+            </button>
+            {% endif %}
+        </div>
+    </div>
 
     <!-- Header -->
     <div class="d-flex align-items-start justify-content-between flex-wrap gap-2 mb-2"
@@ -247,7 +285,13 @@
                     style="background:#21262d; color:#e6edf3; border:none; border-radius:8px; padding:.45rem 1.2rem;">
                 <i class="bi bi-shuffle"></i> {% trans "Play Again" %}
             </button>
-            <a href="{% url 'wordorder_list' %}" class="btn btn-sm fw-bold"
+            {% if next_pk %}
+            <a href="{% url 'wordorder_play' next_pk %}" class="btn btn-sm fw-bold"
+               style="background:#7c3aed; color:#fff; border:none; border-radius:8px; padding:.45rem 1.2rem;">
+                {% trans "Next" %} <i class="bi bi-chevron-right"></i>
+            </a>
+            {% endif %}
+            <a href="{% url 'wordorder_list' %}?lang={{ challenge.language }}" class="btn btn-sm fw-bold"
                style="background:#238636; color:#fff; border:none; border-radius:8px; padding:.45rem 1.2rem;">
                 {% trans "All Challenges" %}
             </a>

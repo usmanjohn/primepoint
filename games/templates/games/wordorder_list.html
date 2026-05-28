@@ -28,14 +28,47 @@
         {% endif %}
     </div>
 
-    {% if grouped %}
+    {# ── Language picker ── #}
+    <p class="fw-semibold mb-2" style="color:var(--text); font-size:.9rem;">
+        {% trans "Choose a language to get started:" %}
+    </p>
+    <div class="d-flex flex-wrap gap-3 mb-4">
+        {% for card in lang_cards %}
+        <a href="?lang={{ card.code }}"
+           class="text-decoration-none"
+           style="flex:1 1 140px; max-width:200px;">
+            <div class="p-3 text-center"
+                 style="border-radius:16px; cursor:pointer; transition:box-shadow .15s, transform .15s;
+                        {% if card.active %}
+                        background:linear-gradient(135deg,#7c3aed,#4f46e5);
+                        border:2px solid #7c3aed;
+                        box-shadow:0 4px 18px rgba(124,58,237,.35);
+                        transform:translateY(-2px);
+                        {% else %}
+                        background:var(--surface);
+                        border:2px solid var(--border, #30363d);
+                        {% endif %}">
+                <div style="font-size:2.2rem; line-height:1.1; margin-bottom:.4rem;">{{ card.flag }}</div>
+                <div class="fw-bold" style="font-size:1rem; color:{% if card.active %}#fff{% else %}var(--text){% endif %};">
+                    {{ card.label }}
+                </div>
+                <div style="font-size:.78rem; color:{% if card.active %}rgba(255,255,255,.75){% else %}var(--text-muted){% endif %}; margin-top:.15rem;">
+                    {{ card.count }} {% trans "sentences" %}
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+
+    {# ── Challenges for selected language ── #}
+    {% if active_lang and grouped %}
 
     <div class="accordion" id="wordorderAccordion">
         {% for group in grouped %}
-        {% with gid="group"|add:forloop.counter0|stringformat:"s" %}
-        <div class="accordion-item border-0 mb-3" style="border-radius:14px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.08);">
+        {% with gid=forloop.counter0|stringformat:"s" %}
+        <div class="accordion-item border-0 mb-3"
+             style="border-radius:14px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.08);">
 
-            {# ── Header ── #}
             <h2 class="accordion-header" id="heading-{{ gid }}">
                 <button class="accordion-button {% if not forloop.first %}collapsed{% endif %} fw-semibold"
                         type="button"
@@ -43,16 +76,17 @@
                         data-bs-target="#collapse-{{ gid }}"
                         aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
                         aria-controls="collapse-{{ gid }}"
-                        style="background:linear-gradient(135deg,#7c3aed 0%,#4f46e5 100%); color:#fff; border-radius:0;">
-                    <span style="font-size:1.2rem; margin-right:.6rem;">&#x1F4DD;</span>
+                        style="background:linear-gradient(135deg,#7c3aed 0%,#4f46e5 100%);
+                               color:#fff; border-radius:0;">
+                    <span style="font-size:1.1rem; margin-right:.5rem;">&#x1F4DD;</span>
                     {{ group.label }}
-                    <span class="badge ms-2" style="background:rgba(255,255,255,.25); color:#fff; font-size:.75rem;">
+                    <span class="badge ms-2"
+                          style="background:rgba(255,255,255,.25); color:#fff; font-size:.73rem;">
                         {{ group.items|length }}
                     </span>
                 </button>
             </h2>
 
-            {# ── Body ── #}
             <div id="collapse-{{ gid }}"
                  class="accordion-collapse collapse {% if forloop.first %}show{% endif %}"
                  aria-labelledby="heading-{{ gid }}"
@@ -65,18 +99,19 @@
                                 <div class="card border-0 shadow-sm h-100"
                                      style="border-radius:12px; overflow:hidden; transition:transform .15s;">
                                     <div class="card-body p-3" style="background:var(--surface);">
-                                        <div class="d-flex align-items-start justify-content-between gap-2 mb-2">
+                                        <div class="d-flex align-items-start justify-content-between gap-2 mb-1">
                                             <span class="fw-semibold" style="color:var(--text); font-size:.9rem;">
                                                 {{ ch.title }}
                                             </span>
-                                            <span class="badge" style="font-size:.72rem; background:#ede9fe; color:#6d28d9; white-space:nowrap;">
+                                            <span class="badge"
+                                                  style="font-size:.72rem; background:#ede9fe; color:#6d28d9; white-space:nowrap;">
                                                 {{ ch.word_count }} {% trans "words" %}
                                             </span>
                                         </div>
                                         {% if ch.hint %}
-                                        <p style="color:var(--text-muted); font-size:.8rem; margin:0;">
+                                        <p style="color:var(--text-muted); font-size:.78rem; margin:0;">
                                             <i class="bi bi-lightbulb" style="color:#f0883e;"></i>
-                                            {{ ch.hint|truncatechars:60 }}
+                                            {{ ch.hint|truncatechars:55 }}
                                         </p>
                                         {% endif %}
                                     </div>
@@ -93,10 +128,9 @@
         {% endfor %}
     </div>
 
-    {% else %}
-    <div class="text-center py-5" style="color:var(--text-muted);">
-        <div style="font-size:3rem;">&#x1F4DD;</div>
-        <p class="mt-2">{% trans "No challenges yet. Check back soon!" %}</p>
+    {% elif active_lang %}
+    <div class="text-center py-4" style="color:var(--text-muted);">
+        <p>{% trans "No challenges found for this language." %}</p>
     </div>
     {% endif %}
 

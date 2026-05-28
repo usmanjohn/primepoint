@@ -792,36 +792,63 @@ def sortingrace_create(request):
 
 @login_required
 def wordorder_list(request):
-    challenges = WordOrderChallenge.objects.filter(is_active=True).order_by('language', 'difficulty', 'pk')
+    active_lang = request.GET.get('lang', '')
 
-    GROUP_ORDER = [
-        ('en', 'easy',   'English — Easy'),
-        ('en', 'medium', 'English — Medium'),
-        ('en', 'hard',   'English — Hard'),
-        ('ko', 'easy',   '한국어 — 쉬운 문제'),
-        ('ko', 'medium', '한국어 — 중간 문제'),
-        ('ko', 'hard',   '한국어 — 어려운 문제'),
-        ('uz', 'easy',   "O'zbek — Oson"),
-        ('uz', 'medium', "O'zbek — O'rta"),
-        ('uz', 'hard',   "O'zbek — Qiyin"),
+    all_qs = WordOrderChallenge.objects.filter(is_active=True)
+
+    LANG_META = [
+        {'code': 'en', 'label': 'English',  'flag': '🇬🇧'},
+        {'code': 'ko', 'label': '한국어',    'flag': '🇰🇷'},
+        {'code': 'uz', 'label': "O'zbek",   'flag': '🇺🇿'},
+    ]
+    lang_cards = [
+        {**m, 'count': all_qs.filter(language=m['code']).count(),
+         'active': active_lang == m['code']}
+        for m in LANG_META
+        if all_qs.filter(language=m['code']).exists()
     ]
 
-    bucket = {}
-    for ch in challenges:
-        bucket.setdefault((ch.language, ch.difficulty), []).append(ch)
+    DIFF_LABELS = {
+        'en': {'easy': 'Easy', 'medium': 'Medium', 'hard': 'Hard'},
+        'ko': {'easy': '쉬운 문제', 'medium': '중간 문제', 'hard': '어려운 문제'},
+        'uz': {'easy': 'Oson',   'medium': "O'rta",     'hard': 'Qiyin'},
+    }
 
-    grouped = [
-        {'label': label, 'items': bucket[(lang, diff)]}
-        for lang, diff, label in GROUP_ORDER
-        if (lang, diff) in bucket
-    ]
+    grouped = []
+    if active_lang:
+        diff_labels = DIFF_LABELS.get(active_lang, DIFF_LABELS['en'])
+        challenges  = all_qs.filter(language=active_lang).order_by('difficulty', 'pk')
+        bucket = {}
+        for ch in challenges:
+            bucket.setdefault(ch.difficulty, []).append(ch)
+        for diff in ('easy', 'medium', 'hard'):
+            if diff in bucket:
+                grouped.append({'label': diff_labels[diff], 'items': bucket[diff]})
 
-    return render(request, 'games/wordorder_list.html', {'grouped': grouped})
+    return render(request, 'games/wordorder_list.html', {
+        'lang_cards':   lang_cards,
+        'grouped':      grouped,
+        'active_lang':  active_lang,
+    })
 
 
 @login_required
 def wordorder_play(request, pk):
     challenge = get_object_or_404(WordOrderChallenge, pk=pk, is_active=True)
+
+    sibling_ids = list(
+        WordOrderChallenge.objects.filter(is_active=True, language=challenge.language)
+        .order_by('difficulty', 'pk')
+        .values_list('pk', flat=True)
+    )
+    try:
+        pos     = sibling_ids.index(challenge.pk)
+        prev_pk = sibling_ids[pos - 1] if pos > 0 else None
+        next_pk = sibling_ids[pos + 1] if pos < len(sibling_ids) - 1 else None
+        position_label = f'{pos + 1} / {len(sibling_ids)}'
+    except ValueError:
+        prev_pk = next_pk = None
+        position_label = ''
 
     words_key  = f'wo_{pk}_words'
     answer_key = f'wo_{pk}_answer'
@@ -852,13 +879,16 @@ def wordorder_play(request, pk):
     elapsed    = int(time.time()) - start_time if done else None
 
     context = {
-        'challenge':   challenge,
-        'words_json':  json.dumps(words),
-        'answer_json': json.dumps(answer),
-        'bank_json':   json.dumps(bank),
-        'start_ms':    start_time * 1000,
-        'done':        done,
-        'elapsed':     elapsed,
+        'challenge':      challenge,
+        'words_json':     json.dumps(words),
+        'answer_json':    json.dumps(answer),
+        'bank_json':      json.dumps(bank),
+        'start_ms':       start_time * 1000,
+        'done':           done,
+        'elapsed':        elapsed,
+        'prev_pk':        prev_pk,
+        'next_pk':        next_pk,
+        'position_label': position_label,
     }
     return render(request, 'games/wordorder_play.html', context)
 
