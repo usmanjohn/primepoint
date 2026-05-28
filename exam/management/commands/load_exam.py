@@ -25,7 +25,7 @@ class Command(BaseCommand):
         parser.add_argument('--clear', action='store_true', help='Delete existing questions for this exam first')
         parser.add_argument('--dry-run', action='store_true', help='Show what would be created without saving')
 
-    def handle(self, *args, **options):
+    def handle(self, **options):
         path = Path(options['json_file'])
         if not path.exists():
             raise CommandError(f'File not found: {path}')
