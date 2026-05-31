@@ -6,7 +6,7 @@ from django.core.exceptions import PermissionDenied
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import CrosswordPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion
+from .models import CrosswordPuzzle, EnglishCrossword, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion
 
 
 # ---------------------------------------------------------------------------
@@ -1191,3 +1191,121 @@ def oddoneout_check(request, pk):
         'score':       sum(1 for r in results if r),
         'total':       len(questions),
     })
+
+
+# ---------------------------------------------------------------------------
+# English Crossword views
+# ---------------------------------------------------------------------------
+
+@login_required
+def english_crossword_list(request):
+    puzzles = EnglishCrossword.objects.filter(is_published=True)
+    return render(request, 'games/english_crossword_list.html', {'puzzles': puzzles})
+
+
+@login_required
+def english_crossword_play(request, pk):
+    puzzle    = get_object_or_404(EnglishCrossword, pk=pk, is_published=True)
+    grid_data = puzzle.grid_data or {}
+    words     = grid_data.get('words', [])
+    cells     = grid_data.get('cells', [])
+    rows      = grid_data.get('rows', 0)
+    cols      = grid_data.get('cols', 0)
+
+    session_key = f'encw_{pk}_answers'
+    check_key   = f'encw_{pk}_checked'
+
+    if request.method == 'POST':
+        action = request.POST.get('action')
+
+        if action == 'reset':
+            request.session.pop(session_key, None)
+            request.session.pop(check_key, None)
+            return redirect('english_crossword_play', pk=pk)
+
+        if action == 'check':
+            answers = {}
+            for word in words:
+                direction = word['direction']
+                for i in range(word['length']):
+                    r = word['row'] + (i if direction == 'down' else 0)
+                    c = word['col'] + (i if direction == 'across' else 0)
+                    key = f'{r}_{c}'
+                    val = request.POST.get(f'cell_{r}_{c}', '').strip().upper()
+                    if val:
+                        answers[key] = val
+            request.session[session_key] = answers
+            request.session[check_key]   = True
+            return redirect('english_crossword_play', pk=pk)
+
+    saved_answers = request.session.get(session_key, {})
+    checked       = request.session.get(check_key, False)
+
+    number_map = {}
+    for word in words:
+        key = (word['row'], word['col'])
+        if key not in number_map:
+            number_map[key] = word['number']
+
+    grid_rows_data = []
+    total_correct = 0
+    total_cells   = 0
+    for r in range(rows):
+        row_cells = []
+        for c in range(cols):
+            cell_val = cells[r][c] if cells else None
+            if cell_val is None:
+                row_cells.append({'is_black': True})
+            else:
+                total_cells += 1
+                answer  = saved_answers.get(f'{r}_{c}', '')
+                correct = (answer.upper() == cell_val.upper()) if checked else None
+                if correct:
+                    total_correct += 1
+                row_cells.append({
+                    'is_black': False,
+                    'r':        r,
+                    'c':        c,
+                    'answer':   answer,
+                    'correct':  correct,
+                    'number':   number_map.get((r, c)),
+                })
+        grid_rows_data.append(row_cells)
+
+    all_correct = checked and total_cells > 0 and total_correct == total_cells
+
+    across_clues = sorted([w for w in words if w['direction'] == 'across'], key=lambda x: x['number'])
+    down_clues   = sorted([w for w in words if w['direction'] == 'down'],   key=lambda x: x['number'])
+
+    context = {
+        'puzzle':       puzzle,
+        'grid_rows':    grid_rows_data,
+        'across_clues': across_clues,
+        'down_clues':   down_clues,
+        'checked':      checked,
+        'all_correct':  all_correct,
+        'words_json':   json.dumps(words),
+    }
+    return render(request, 'games/english_crossword_play.html', context)
+
+
+@login_required
+def english_crossword_edit(request, pk):
+    if not request.user.is_staff:
+        raise PermissionDenied
+    puzzle = get_object_or_404(EnglishCrossword, pk=pk)
+
+    if request.method == 'POST':
+        try:
+            data  = json.loads(request.body)
+            rows  = max(1, min(int(data.get('rows', puzzle.grid_rows)), 25))
+            cols  = max(1, min(int(data.get('cols', puzzle.grid_cols)), 25))
+            words = data.get('words', [])
+            cells = data.get('cells', [])
+            puzzle.grid_data = {'rows': rows, 'cols': cols, 'words': words, 'cells': cells}
+            puzzle.save()
+            return JsonResponse({'ok': True, 'word_count': len(words)})
+        except Exception as e:
+            return JsonResponse({'ok': False, 'error': str(e)}, status=400)
+
+    return render(request, 'games/english_crossword_edit.html', {'puzzle': puzzle})

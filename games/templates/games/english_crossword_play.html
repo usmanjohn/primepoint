@@ -1,0 +1,439 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ puzzle.title }} — Powerty{% endblock %}
+{% block page_name %}{{ puzzle.title }}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ── Crossword layout ─────────────────────────────── */
+.cw-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+@media (min-width: 768px) {
+    .cw-wrap { flex-direction: row; align-items: flex-start; }
+}
+
+/* ── Grid ─────────────────────────────────────────── */
+.cw-grid-outer {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.cw-grid {
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin: 0 auto;
+}
+.cw-grid td {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    position: relative;
+}
+@media (max-width: 600px) { .cw-grid td { width: 30px; height: 30px; } }
+@media (max-width: 400px) { .cw-grid td { width: 26px; height: 26px; } }
+.cw-black { background: #1e293b; }
+.cw-cell  { background: #fff; border: 1.5px solid #cbd5e1; }
+.cw-cell.hl       { background: #dbeafe; border-color: #3b82f6; }
+.cw-cell.hl-focus { background: #bfdbfe; border-color: #2563eb; }
+.cw-cell.correct  { background: #dcfce7 !important; border-color: #4ade80 !important; }
+.cw-cell.wrong    { background: #fee2e2 !important; border-color: #f87171 !important; }
+
+.cw-num {
+    position: absolute;
+    top: 1px; left: 2px;
+    font-size: 8px;
+    line-height: 1;
+    color: #2563eb;
+    font-weight: 700;
+    pointer-events: none;
+    z-index: 1;
+    user-select: none;
+}
+.cw-input {
+    width: 100%; height: 100%;
+    border: none; background: transparent;
+    text-align: center;
+    font-size: 15px; font-weight: 700; color: #1e293b;
+    outline: none; cursor: pointer;
+    caret-color: transparent;
+    padding: 0;
+    display: block;
+    -webkit-appearance: none;
+    touch-action: manipulation;
+    text-transform: uppercase;
+}
+.cw-static {
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; height: 100%;
+    font-size: 15px; font-weight: 700; color: #1e293b;
+    text-transform: uppercase;
+}
+.cw-cell { touch-action: manipulation; }
+
+/* ── Clues panel ──────────────────────────────────── */
+.cw-clues { flex: 1; min-width: 0; }
+@media (min-width: 768px) { .cw-clues { max-width: 300px; max-height: 70vh; overflow-y: auto; } }
+
+.clue-section-title {
+    font-size: 0.68rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .08em;
+    color: #2563eb; margin-bottom: 0.4rem;
+}
+.clue-item {
+    display: flex; gap: 0.45rem;
+    padding: 0.4rem 0.5rem;
+    border-radius: 7px; cursor: pointer;
+    transition: background 0.12s;
+    margin-bottom: 1px;
+}
+.clue-item:hover    { background: #eff6ff; }
+.clue-item.hl-clue  { background: #dbeafe; }
+.clue-num-badge { font-size: 0.72rem; font-weight: 700; color: #2563eb; min-width:18px; padding-top:2px; }
+.clue-en { font-size: 0.82rem; font-weight: 600; color: #1e293b; line-height: 1.3; }
+.clue-uz { font-size: 0.76rem; color: #64748b; line-height: 1.3; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-3" style="max-width:960px;">
+
+    <a href="{% url 'english_crossword_list' %}" class="text-decoration-none d-inline-flex align-items-center gap-1 mb-3"
+       style="color:var(--text-muted); font-size:0.85rem;">
+        <i class="bi bi-arrow-left"></i> {% trans "English Crossword" %}
+    </a>
+
+    <!-- Header -->
+    <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+        <h1 class="fs-5 fw-bold mb-0" style="color:var(--text);">&#x1F9E9; {{ puzzle.title }}</h1>
+        {% if checked %}
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="reset">
+            <button type="submit" class="btn btn-sm btn-outline-secondary" style="font-size:0.82rem;">
+                <i class="bi bi-arrow-counterclockwise"></i> {% trans "Try Again" %}
+            </button>
+        </form>
+        {% endif %}
+    </div>
+
+    {% if all_correct %}
+    <div class="card border-0 shadow-sm text-center mb-4" style="border-radius:14px; overflow:hidden;">
+        <div style="background:linear-gradient(135deg,#16a34a 0%,#166534 100%); padding:1.5rem;">
+            <div style="font-size:2.5rem;">&#x1F389;</div>
+            <h2 class="fs-5 fw-bold mt-2 mb-0" style="color:#fff;">{% trans "Excellent! All correct!" %}</h2>
+        </div>
+        <div class="card-body" style="background:var(--surface);">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="reset">
+                <button type="submit" class="btn btn-success fw-semibold px-4">{% trans "Play Again" %}</button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if not grid_rows %}
+    <div class="alert alert-warning rounded-3">{% trans "This puzzle has no grid yet. Ask an admin to generate it." %}</div>
+    {% else %}
+
+    <div class="cw-wrap">
+
+        <!-- Grid + submit -->
+        <div>
+            <div class="cw-grid-outer">
+                <form method="post" id="cw-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="check">
+                    <table class="cw-grid" id="cw-table" role="grid" aria-label="{% trans 'Crossword grid' %}">
+                        <tbody>
+                        {% for row in grid_rows %}
+                        <tr>
+                            {% for cell in row %}
+                            {% if cell.is_black %}
+                            <td class="cw-black" aria-hidden="true"></td>
+                            {% else %}
+                            <td class="cw-cell{% if checked %}{% if cell.correct %} correct{% else %} wrong{% endif %}{% endif %}"
+                                data-r="{{ cell.r }}" data-c="{{ cell.c }}">
+                                {% if cell.number %}
+                                <span class="cw-num">{{ cell.number }}</span>
+                                {% endif %}
+                                {% if checked %}
+                                <div class="cw-static">{{ cell.answer }}</div>
+                                {% else %}
+                                <input class="cw-input"
+                                       type="text"
+                                       inputmode="text"
+                                       autocomplete="off"
+                                       autocorrect="off"
+                                       autocapitalize="characters"
+                                       spellcheck="false"
+                                       maxlength="2"
+                                       name="cell_{{ cell.r }}_{{ cell.c }}"
+                                       value="{{ cell.answer }}"
+                                       data-r="{{ cell.r }}"
+                                       data-c="{{ cell.c }}"
+                                       aria-label="{% trans 'Cell' %} {{ cell.r }},{{ cell.c }}">
+                                {% endif %}
+                            </td>
+                            {% endif %}
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    {% if not checked %}
+                    <div class="text-center mt-3">
+                        <button type="submit"
+                                class="btn btn-lg fw-semibold px-5"
+                                style="background:#2563eb; border-color:#2563eb; color:#fff;">
+                            <i class="bi bi-check2-circle"></i> {% trans "Check Answers" %}
+                        </button>
+                    </div>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+
+        <!-- Clues -->
+        <div class="cw-clues">
+            <div class="card border-0 shadow-sm p-3" style="background:var(--surface); border-radius:12px;">
+                <div class="clue-section-title">{% trans "Across" %} &#x2192;</div>
+                {% for word in across_clues %}
+                <div class="clue-item"
+                     data-num="{{ word.number }}"
+                     data-dir="{{ word.direction }}"
+                     data-row="{{ word.row }}"
+                     data-col="{{ word.col }}"
+                     data-len="{{ word.length }}">
+                    <span class="clue-num-badge">{{ word.number }}</span>
+                    <div>
+                        <div class="clue-en">{{ word.clue_english }}</div>
+                        {% if word.clue_uzbek %}<div class="clue-uz">{{ word.clue_uzbek }}</div>{% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+
+                <hr style="border-color:var(--border); margin:0.6rem 0;">
+
+                <div class="clue-section-title">{% trans "Down" %} &#x2193;</div>
+                {% for word in down_clues %}
+                <div class="clue-item"
+                     data-num="{{ word.number }}"
+                     data-dir="{{ word.direction }}"
+                     data-row="{{ word.row }}"
+                     data-col="{{ word.col }}"
+                     data-len="{{ word.length }}">
+                    <span class="clue-num-badge">{{ word.number }}</span>
+                    <div>
+                        <div class="clue-en">{{ word.clue_english }}</div>
+                        {% if word.clue_uzbek %}<div class="clue-uz">{{ word.clue_uzbek }}</div>{% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div><!-- /cw-wrap -->
+    {% endif %}
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function () {
+'use strict';
+
+const words = {{ words_json|safe }};
+
+// ── Build cell→words lookup ────────────────────────────────────────
+const cellWords = {};
+words.forEach(w => {
+    for (let i = 0; i < w.length; i++) {
+        const r = w.direction === 'down'   ? w.row + i : w.row;
+        const c = w.direction === 'across' ? w.col + i : w.col;
+        const k = r + '_' + c;
+        if (!cellWords[k]) cellWords[k] = [];
+        cellWords[k].push(w);
+    }
+});
+
+let activeWord = null;
+
+// ── DOM helpers ────────────────────────────────────────────────────
+function inp(r, c)  { return document.querySelector(`.cw-input[data-r="${r}"][data-c="${c}"]`); }
+function cell(r, c) { return document.querySelector(`td[data-r="${r}"][data-c="${c}"]`); }
+
+// ── Highlight active word ──────────────────────────────────────────
+function highlight(word, focusR, focusC) {
+    document.querySelectorAll('.cw-cell.hl, .cw-cell.hl-focus').forEach(el => el.classList.remove('hl', 'hl-focus'));
+    document.querySelectorAll('.clue-item.hl-clue').forEach(el => el.classList.remove('hl-clue'));
+
+    activeWord = word;
+
+    for (let i = 0; i < word.length; i++) {
+        const r = word.direction === 'down'   ? word.row + i : word.row;
+        const c = word.direction === 'across' ? word.col + i : word.col;
+        const td = cell(r, c);
+        if (!td) continue;
+        td.classList.add(r === focusR && c === focusC ? 'hl-focus' : 'hl');
+    }
+
+    const clue = document.querySelector(`.clue-item[data-num="${word.number}"][data-dir="${word.direction}"]`);
+    if (clue) {
+        clue.classList.add('hl-clue');
+        clue.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+}
+
+// ── Cell-in-word check ─────────────────────────────────────────────
+function inWord(word, r, c) {
+    for (let i = 0; i < word.length; i++) {
+        const wr = word.direction === 'down'   ? word.row + i : word.row;
+        const wc = word.direction === 'across' ? word.col + i : word.col;
+        if (wr === r && wc === c) return true;
+    }
+    return false;
+}
+
+// ── Advance / retreat within active word ──────────────────────────
+function nextPos(word, r, c) {
+    return word.direction === 'across' ? { r, c: c + 1 } : { r: r + 1, c };
+}
+function prevPos(word, r, c) {
+    return word.direction === 'across' ? { r, c: c - 1 } : { r: r - 1, c };
+}
+
+// ── Event: focus ──────────────────────────────────────────────────
+function onFocus(e) {
+    const r = +e.target.dataset.r, c = +e.target.dataset.c;
+    const ws = cellWords[r + '_' + c] || [];
+    if (!ws.length) return;
+    if (activeWord && inWord(activeWord, r, c)) {
+        highlight(activeWord, r, c);
+    } else {
+        highlight(ws[0], r, c);
+    }
+}
+
+// ── Event: click (toggles direction at intersection) ──────────────
+function onClick(e) {
+    const r = +e.target.dataset.r, c = +e.target.dataset.c;
+    const ws = cellWords[r + '_' + c] || [];
+    if (!ws.length) return;
+    if (activeWord && inWord(activeWord, r, c) && ws.length > 1) {
+        const other = ws.find(w => w.direction !== activeWord.direction);
+        if (other) { highlight(other, r, c); return; }
+    }
+    highlight(ws[0], r, c);
+}
+
+// ── Event: input (English letter handling) ────────────────────────
+function onInput(e) {
+    const target = e.target;
+    const r = +target.dataset.r, c = +target.dataset.c;
+    const raw = target.value.toUpperCase().replace(/[^A-Z]/g, '');
+
+    // Keep only the last typed letter
+    const letter = raw.length > 0 ? raw[raw.length - 1] : '';
+    target.value = letter;
+
+    if (letter && activeWord && inWord(activeWord, r, c)) {
+        const { r: nr, c: nc } = nextPos(activeWord, r, c);
+        if (inWord(activeWord, nr, nc)) {
+            const ni = inp(nr, nc);
+            if (ni) ni.focus();
+        }
+    }
+}
+
+// ── Event: keydown (backspace + arrows) ───────────────────────────
+function onKeydown(e) {
+    const target = e.target;
+    const r = +target.dataset.r, c = +target.dataset.c;
+
+    if (e.key === 'Backspace') {
+        e.preventDefault();
+        if (target.value) {
+            target.value = '';
+        } else if (activeWord) {
+            const { r: pr, c: pc } = prevPos(activeWord, r, c);
+            if (inWord(activeWord, pr, pc)) {
+                const pi = inp(pr, pc);
+                if (pi) { pi.value = ''; pi.focus(); }
+            }
+        }
+        return;
+    }
+
+    const arrowMap = { ArrowRight:[0,1], ArrowLeft:[0,-1], ArrowDown:[1,0], ArrowUp:[-1,0] };
+    if (arrowMap[e.key]) {
+        e.preventDefault();
+        const [dr, dc] = arrowMap[e.key];
+        const ni = inp(r + dr, c + dc);
+        if (ni) ni.focus();
+        return;
+    }
+
+    // Tab key — advance to first empty cell of next word
+    if (e.key === 'Tab') {
+        e.preventDefault();
+        const dir = e.shiftKey ? -1 : 1;
+        const sorted = [...words].sort((a, b) => a.number - b.number);
+        const curIdx = activeWord ? sorted.findIndex(w => w.number === activeWord.number && w.direction === activeWord.direction) : -1;
+        const nextIdx = (curIdx + dir + sorted.length) % sorted.length;
+        const nextWord = sorted[nextIdx];
+        if (nextWord) {
+            let tr = nextWord.row, tc = nextWord.col;
+            for (let i = 0; i < nextWord.length; i++) {
+                const nr = nextWord.direction === 'down'   ? nextWord.row + i : nextWord.row;
+                const nc = nextWord.direction === 'across' ? nextWord.col + i : nextWord.col;
+                const el = inp(nr, nc);
+                if (el && !el.value) { tr = nr; tc = nc; break; }
+            }
+            const el = inp(tr, tc);
+            if (el) { highlight(nextWord, tr, tc); el.focus(); }
+        }
+    }
+}
+
+// ── Event: clue click ─────────────────────────────────────────────
+function onClueClick(e) {
+    const item = e.currentTarget;
+    const num = +item.dataset.num, dir = item.dataset.dir;
+    const word = words.find(w => w.number === num && w.direction === dir);
+    if (!word) return;
+    let tr = word.row, tc = word.col;
+    for (let i = 0; i < word.length; i++) {
+        const r = word.direction === 'down'   ? word.row + i : word.row;
+        const c = word.direction === 'across' ? word.col + i : word.col;
+        const el = inp(r, c);
+        if (el && !el.value) { tr = r; tc = c; break; }
+    }
+    const el = inp(tr, tc);
+    if (el) { highlight(word, tr, tc); el.focus(); }
+}
+
+// ── Attach events ──────────────────────────────────────────────────
+document.querySelectorAll('.cw-input').forEach(el => {
+    el.addEventListener('focus',   onFocus);
+    el.addEventListener('click',   onClick);
+    el.addEventListener('input',   onInput);
+    el.addEventListener('keydown', onKeydown);
+});
+document.querySelectorAll('.clue-item').forEach(el => {
+    el.addEventListener('click', onClueClick);
+});
+
+// Focus first cell
+const first = document.querySelector('.cw-input');
+if (first) first.focus();
+
+})();
+</script>
+{% endblock %}

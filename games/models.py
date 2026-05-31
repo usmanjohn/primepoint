@@ -144,6 +144,24 @@ class WordOrderChallenge(models.Model):
         ordering = ['language', 'difficulty', 'pk']
 
 
+class EnglishCrossword(models.Model):
+    title        = models.CharField(max_length=100)
+    cover_image  = models.ImageField(upload_to='crossword_en/', null=True, blank=True)
+    grid_rows    = models.IntegerField(default=15, help_text='Height of the grid (1–25).')
+    grid_cols    = models.IntegerField(default=15, help_text='Width of the grid (1–25).')
+    grid_data    = models.JSONField(null=True, blank=True)
+    is_published = models.BooleanField(default=False)
+    created_at   = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'English Crossword'
+        verbose_name_plural = 'English Crosswords'
+
+
 class SortingRaceChallenge(models.Model):
     EASY   = 'easy'
     MEDIUM = 'medium'
