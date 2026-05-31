@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.urls import reverse
 from django.utils.html import format_html
-from .models import CrosswordPuzzle, EnglishCrossword, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion
+from .models import CrosswordPuzzle, EnglishCrossword, WordSearchPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion
+from .views import generate_word_search
 from .views import _pc_correct_numbers
 
 
@@ -105,6 +106,36 @@ class EnglishCrosswordAdmin(admin.ModelAdmin):
         url = reverse('english_crossword_edit', args=[obj.pk])
         return format_html('<a href="{}">Edit grid</a>', url)
     editor_link.short_description = 'Editor'
+
+
+def generate_wordsearch_grids(modeladmin, request, queryset):
+    for puzzle in queryset:
+        words = puzzle.word_list.splitlines()
+        size  = max(10, min(puzzle.grid_size, 20))
+        grid, placed = generate_word_search(words, size)
+        puzzle.grid_data = {'size': size, 'grid': grid, 'words': placed}
+        puzzle.save()
+    modeladmin.message_user(request, f'Generated grids for {queryset.count()} puzzle(s).')
+generate_wordsearch_grids.short_description = 'Generate word-search grid'
+
+
+@admin.register(WordSearchPuzzle)
+class WordSearchPuzzleAdmin(admin.ModelAdmin):
+    list_display  = ('title', 'grid_size', 'word_count', 'is_published', 'grid_status', 'created_at')
+    list_filter   = ('is_published',)
+    actions       = [generate_wordsearch_grids]
+    fields        = ('title', 'word_list', 'grid_size', 'is_published')
+
+    def word_count(self, obj):
+        return len([w for w in obj.word_list.splitlines() if w.strip()])
+    word_count.short_description = 'Words'
+
+    def grid_status(self, obj):
+        if obj.grid_data:
+            n = len(obj.grid_data.get('words', []))
+            return f'✓ {n} placed'
+        return '— not generated'
+    grid_status.short_description = 'Grid'
 
 
 class CodeBreakerClueInline(admin.TabularInline):

@@ -28,6 +28,9 @@ urlpatterns = [
     path('oddoneout/<int:pk>/manage/', views.oddoneout_manage, name='oddoneout_manage'),
     path('oddoneout/<int:pk>/', views.oddoneout_play, name='oddoneout_play'),
     path('oddoneout/<int:pk>/check/', views.oddoneout_check, name='oddoneout_check'),
+    # Word Search
+    path('wordsearch/', views.wordsearch_list, name='wordsearch_list'),
+    path('wordsearch/<int:pk>/', views.wordsearch_play, name='wordsearch_play'),
     # English Crossword
     path('english-crossword/', views.english_crossword_list, name='english_crossword_list'),
     path('english-crossword/<int:pk>/', views.english_crossword_play, name='english_crossword_play'),

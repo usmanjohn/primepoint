@@ -1,0 +1,310 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ puzzle.title }} — Powerty{% endblock %}
+{% block page_name %}{{ puzzle.title }}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+.ws-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+@media (min-width: 768px) {
+    .ws-wrap { flex-direction: row; align-items: flex-start; }
+}
+
+/* ── Grid ───────────────────────────────────────────── */
+.ws-grid-outer { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.ws-grid {
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin: 0 auto;
+    user-select: none;
+    -webkit-user-select: none;
+}
+.ws-grid td {
+    width: 34px; height: 34px;
+    text-align: center; vertical-align: middle;
+    font-size: 14px; font-weight: 700;
+    color: #1e293b;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.08s;
+    -webkit-tap-highlight-color: transparent;
+}
+@media (max-width: 600px) { .ws-grid td { width: 26px; height: 26px; font-size: 12px; } }
+@media (max-width: 400px) { .ws-grid td { width: 22px; height: 22px; font-size: 11px; } }
+
+.ws-grid td.selecting { background: #fef9c3; }
+.ws-grid td.found     { background: #bbf7d0 !important; color: #065f46; }
+.ws-grid td.start     { background: #fde68a; }
+
+/* ── Word list ─────────────────────────────────────── */
+.ws-words { flex: 1; min-width: 0; }
+@media (min-width: 768px) { .ws-words { max-width: 220px; } }
+
+.word-chip {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    margin: 3px;
+    border-radius: 20px;
+    background: #f1f5f9;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #334155;
+    letter-spacing: 0.03em;
+    transition: all 0.15s;
+}
+.word-chip.found {
+    background: #d1fae5;
+    color: #065f46;
+    text-decoration: line-through;
+}
+
+/* ── Score banner ──────────────────────────────────── */
+.score-bar {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.6rem 1rem;
+    background: var(--surface);
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    margin-bottom: 0.75rem;
+}
+.score-num { font-size: 1.3rem; font-weight: 800; color: #059669; }
+.score-label { font-size: 0.82rem; color: var(--text-muted); }
+
+/* ── Flash ─────────────────────────────────────────── */
+#ws-flash {
+    position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+    padding: 0.45rem 1.1rem; border-radius: 8px;
+    font-size: 0.85rem; font-weight: 600;
+    display: none; z-index: 9999;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    white-space: nowrap;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-3" style="max-width:900px;">
+
+    <a href="{% url 'wordsearch_list' %}" class="text-decoration-none d-inline-flex align-items-center gap-1 mb-3"
+       style="color:var(--text-muted); font-size:0.85rem;">
+        <i class="bi bi-arrow-left"></i> {% trans "Word Search" %}
+    </a>
+
+    <div class="d-flex align-items-center justify-content-between mb-2 flex-wrap gap-2">
+        <h1 class="fs-5 fw-bold mb-0" style="color:var(--text);">&#x1F50D; {{ puzzle.title }}</h1>
+        <button id="reset-btn" class="btn btn-sm btn-outline-secondary" style="font-size:0.82rem;">
+            <i class="bi bi-arrow-counterclockwise"></i> {% trans "Reset" %}
+        </button>
+    </div>
+
+    <!-- Score -->
+    <div class="score-bar">
+        <div class="score-num"><span id="found-count">0</span> / <span id="total-count">0</span></div>
+        <div class="score-label">{% trans "words found" %}</div>
+        <div id="congrats" style="display:none; font-size:0.9rem; font-weight:700; color:#059669; margin-left:auto;">
+            &#x1F389; {% trans "All found!" %}
+        </div>
+    </div>
+
+    {% if not size %}
+    <div class="alert alert-warning rounded-3">{% trans "This puzzle has no grid yet." %}</div>
+    {% else %}
+    <div class="ws-wrap">
+
+        <!-- Grid -->
+        <div class="ws-grid-outer">
+            <table class="ws-grid" id="ws-table">
+                <tbody id="ws-tbody"></tbody>
+            </table>
+        </div>
+
+        <!-- Word list -->
+        <div class="ws-words">
+            <div class="card border-0 shadow-sm p-3" style="background:var(--surface); border-radius:12px;">
+                <div style="font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:#059669; margin-bottom:0.5rem;">
+                    {% trans "Find these words" %}
+                </div>
+                <div id="word-chips"></div>
+                <div class="mt-3" style="font-size:0.75rem; color:var(--text-muted); line-height:1.5;">
+                    <i class="bi bi-info-circle"></i>
+                    {% trans "Tap a letter to start, tap the last letter to select." %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% endif %}
+
+</div>
+<div id="ws-flash"></div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function () {
+'use strict';
+
+const GRID  = {{ grid_json|safe }};
+const WORDS = {{ words_json|safe }};  // [{word, start_r, start_c, end_r, end_c}]
+
+if (!GRID.length) return;
+
+const SIZE = GRID.length;
+
+// ── State ─────────────────────────────────────────────────────────
+let selStart  = null;   // {r, c}
+let foundSet  = new Set();  // words already found
+
+// ── Build grid table ──────────────────────────────────────────────
+const tbody = document.getElementById('ws-tbody');
+for (let r = 0; r < SIZE; r++) {
+    const tr = document.createElement('tr');
+    for (let c = 0; c < SIZE; c++) {
+        const td = document.createElement('td');
+        td.textContent  = GRID[r][c];
+        td.dataset.r    = r;
+        td.dataset.c    = c;
+        td.addEventListener('click', onCellClick);
+        tr.appendChild(td);
+    }
+    tbody.appendChild(tr);
+}
+
+// ── Build word chips ──────────────────────────────────────────────
+const chipsEl    = document.getElementById('word-chips');
+const foundCount = document.getElementById('found-count');
+const totalCount = document.getElementById('total-count');
+totalCount.textContent = WORDS.length;
+
+WORDS.forEach(w => {
+    const chip = document.createElement('span');
+    chip.className   = 'word-chip';
+    chip.id          = 'chip-' + w.word;
+    chip.textContent = w.word;
+    chipsEl.appendChild(chip);
+});
+
+// ── Cell helpers ──────────────────────────────────────────────────
+function td(r, c) {
+    return tbody.querySelector(`td[data-r="${r}"][data-c="${c}"]`);
+}
+
+function cellsBetween(r1, c1, r2, c2) {
+    const dr = Math.sign(r2 - r1), dc = Math.sign(c2 - c1);
+    const steps = Math.max(Math.abs(r2-r1), Math.abs(c2-c1));
+    // Must be on same row, col, or diagonal
+    if (r1 !== r2 && c1 !== c2 && Math.abs(r2-r1) !== Math.abs(c2-c1)) return null;
+    const cells = [];
+    for (let i = 0; i <= steps; i++) cells.push({r: r1+dr*i, c: c1+dc*i});
+    return cells;
+}
+
+// ── Clear selection highlight ──────────────────────────────────────
+function clearSelecting() {
+    tbody.querySelectorAll('.selecting, .start').forEach(el => {
+        el.classList.remove('selecting', 'start');
+    });
+}
+
+// ── Paint found cells permanently ─────────────────────────────────
+function paintFound(cells) {
+    cells.forEach(({r, c}) => {
+        const el = td(r, c);
+        if (el) el.classList.add('found');
+    });
+}
+
+// ── Check if selection matches a word ─────────────────────────────
+function checkSelection(cells) {
+    const letters = cells.map(({r, c}) => GRID[r][c]).join('');
+    const rev     = letters.split('').reverse().join('');
+    for (const w of WORDS) {
+        if (foundSet.has(w.word)) continue;
+        if (w.word === letters || w.word === rev) {
+            foundSet.add(w.word);
+            paintFound(cells);
+            const chip = document.getElementById('chip-' + w.word);
+            if (chip) chip.classList.add('found');
+            foundCount.textContent = foundSet.size;
+            if (foundSet.size === WORDS.length) {
+                document.getElementById('congrats').style.display = 'block';
+            }
+            flash('&#x2714; ' + w.word, '#16a34a');
+            return;
+        }
+    }
+    flash('{% trans "Not a word — try again" %}', '#dc2626');
+}
+
+// ── Cell click ─────────────────────────────────────────────────────
+function onCellClick(e) {
+    const r = +e.currentTarget.dataset.r;
+    const c = +e.currentTarget.dataset.c;
+
+    if (!selStart) {
+        // First tap — mark start
+        selStart = {r, c};
+        clearSelecting();
+        const el = td(r, c);
+        if (el) el.classList.add('start');
+        return;
+    }
+
+    // Second tap — try to form a selection
+    const cells = cellsBetween(selStart.r, selStart.c, r, c);
+    clearSelecting();
+    selStart = null;
+
+    if (!cells || cells.length < 2) {
+        // Invalid direction or same cell — reset to this cell as new start
+        selStart = {r, c};
+        const el = td(r, c);
+        if (el) el.classList.add('start');
+        return;
+    }
+
+    // Highlight selection briefly
+    cells.forEach(({r: cr, c: cc}) => {
+        const el = td(cr, cc);
+        if (el && !el.classList.contains('found')) el.classList.add('selecting');
+    });
+
+    checkSelection(cells);
+
+    // Clear selecting highlight after a moment (found cells keep their colour)
+    setTimeout(clearSelecting, 600);
+}
+
+// ── Reset ──────────────────────────────────────────────────────────
+document.getElementById('reset-btn').addEventListener('click', () => {
+    foundSet.clear();
+    selStart = null;
+    clearSelecting();
+    tbody.querySelectorAll('.found').forEach(el => el.classList.remove('found'));
+    document.querySelectorAll('.word-chip').forEach(el => el.classList.remove('found'));
+    foundCount.textContent = 0;
+    document.getElementById('congrats').style.display = 'none';
+});
+
+// ── Flash message ──────────────────────────────────────────────────
+function flash(msg, bg) {
+    const el = document.getElementById('ws-flash');
+    el.innerHTML  = msg;
+    el.style.background = bg;
+    el.style.color = '#fff';
+    el.style.display = 'block';
+    clearTimeout(el._t);
+    el._t = setTimeout(() => { el.style.display = 'none'; }, 1400);
+}
+
+})();
+</script>
+{% endblock %}

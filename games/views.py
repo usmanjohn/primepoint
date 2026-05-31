@@ -6,7 +6,8 @@ from django.core.exceptions import PermissionDenied
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import CrosswordPuzzle, EnglishCrossword, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion
+import string
+from .models import CrosswordPuzzle, EnglishCrossword, WordSearchPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion
 
 
 # ---------------------------------------------------------------------------
@@ -1309,3 +1310,68 @@ def english_crossword_edit(request, pk):
             return JsonResponse({'ok': False, 'error': str(e)}, status=400)
 
     return render(request, 'games/english_crossword_edit.html', {'puzzle': puzzle})
+
+
+# ---------------------------------------------------------------------------
+# Word Search — generator + views
+# ---------------------------------------------------------------------------
+
+_WS_DIRS = [(0,1),(0,-1),(1,0),(-1,0),(1,1),(1,-1),(-1,1),(-1,-1)]
+
+def generate_word_search(words, size=15):
+    words = [w.strip().upper() for w in words if w.strip() and w.strip().isalpha()]
+    grid  = [[None] * size for _ in range(size)]
+    placed = []
+
+    random.shuffle(words)
+    for word in words:
+        for _ in range(200):
+            dr, dc = random.choice(_WS_DIRS)
+            r_min = max(0, -(dr * (len(word)-1)))
+            r_max = min(size-1, size-1 - max(0, dr*(len(word)-1)))
+            c_min = max(0, -(dc * (len(word)-1)))
+            c_max = min(size-1, size-1 - max(0, dc*(len(word)-1)))
+            if r_min > r_max or c_min > c_max:
+                continue
+            r = random.randint(r_min, r_max)
+            c = random.randint(c_min, c_max)
+            ok = all(
+                grid[r+dr*i][c+dc*i] in (None, word[i])
+                for i in range(len(word))
+            )
+            if ok:
+                for i, letter in enumerate(word):
+                    grid[r+dr*i][c+dc*i] = letter
+                placed.append({
+                    'word':    word,
+                    'start_r': r,            'start_c': c,
+                    'end_r':   r+dr*(len(word)-1),
+                    'end_c':   c+dc*(len(word)-1),
+                })
+                break
+
+    for r in range(size):
+        for c in range(size):
+            if grid[r][c] is None:
+                grid[r][c] = random.choice(string.ascii_uppercase)
+
+    return grid, placed
+
+
+@login_required
+def wordsearch_list(request):
+    puzzles = WordSearchPuzzle.objects.filter(is_published=True)
+    return render(request, 'games/wordsearch_list.html', {'puzzles': puzzles})
+
+
+@login_required
+def wordsearch_play(request, pk):
+    puzzle    = get_object_or_404(WordSearchPuzzle, pk=pk, is_published=True)
+    grid_data = puzzle.grid_data or {}
+    context = {
+        'puzzle':     puzzle,
+        'grid_json':  json.dumps(grid_data.get('grid', [])),
+        'words_json': json.dumps(grid_data.get('words', [])),
+        'size':       grid_data.get('size', 15),
+    }
+    return render(request, 'games/wordsearch_play.html', context)
