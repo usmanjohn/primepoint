@@ -26,6 +26,9 @@ urlpatterns = [
     # Admin export
     path('export/', views.export_practices, name='export_practices'),
 
+    # Print question sheet
+    path('<int:pk>/print/', views.print_practice, name='print_practice'),
+
     # Master management — question level
     path('<int:pk>/questions/', views.manage_questions, name='manage_questions'),
     path('<int:pk>/questions/add/', views.add_question, name='add_question'),

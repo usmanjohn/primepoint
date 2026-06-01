@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ practice.title }} — Question Sheet</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 13px;
+  color: #1a1a1a;
+  background: #fff;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.print-header {
+  border-bottom: 2px solid #1e293b;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+.print-header h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.3rem;
+}
+.print-meta {
+  font-size: 0.78rem;
+  color: #64748b;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+}
+.print-meta span { display: flex; align-items: center; gap: 0.25rem; }
+
+.print-hint {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  font-size: 0.78rem;
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.question-block {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #e2e8f0;
+  page-break-inside: avoid;
+}
+.question-block:last-child { border-bottom: none; }
+
+.q-num-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.q-num {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: #1e293b;
+  color: #fff;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.q-pts {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.q-text {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #1e293b;
+  line-height: 1.55;
+  margin-bottom: 0.65rem;
+}
+
+.choices-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem 1rem;
+}
+.choice-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  font-size: 0.83rem;
+  color: #334155;
+  line-height: 1.45;
+}
+.choice-letter {
+  font-weight: 700;
+  color: #64748b;
+  flex-shrink: 0;
+  min-width: 1.1rem;
+}
+.choice-item.correct { color: #15803d; font-weight: 600; }
+.choice-item.correct .choice-letter { color: #15803d; }
+
+.print-footer {
+  margin-top: 2rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #e2e8f0;
+  font-size: 0.72rem;
+  color: #94a3b8;
+  text-align: center;
+}
+
+/* ── Print-only adjustments ── */
+@media print {
+  body { padding: 0; }
+  .no-print { display: none !important; }
+  .print-hint { display: none; }
+  a { text-decoration: none; color: inherit; }
+  .choices-grid { page-break-inside: avoid; }
+}
+
+/* ── Screen nav bar ── */
+.screen-nav {
+  background: #1e293b;
+  color: #fff;
+  padding: 0.6rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  margin: -2rem -2rem 2rem;
+}
+.screen-nav a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+.screen-nav a:hover { color: #fff; }
+.screen-nav .btn-print {
+  margin-left: auto;
+  background: #38bdf8;
+  color: #0d1117;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+.screen-nav .btn-print:hover { opacity: 0.85; }
+</style>
+</head>
+<body>
+
+<div class="screen-nav no-print">
+  <a href="{% url 'manage_questions' practice.pk %}">&larr; Back to Questions</a>
+  <span style="color:#64748b; font-size:0.78rem;">{{ practice.title }}</span>
+  <a href="javascript:window.print()" class="btn-print">&#128438; Print / Save PDF</a>
+</div>
+
+<div class="print-header">
+  <h1>{{ practice.title }}</h1>
+  <div class="print-meta">
+    {% if practice.subject %}<span>Subject: {{ practice.subject.name }}</span>{% endif %}
+    <span>Level: {{ practice.get_level_display }}</span>
+    <span>Questions: {{ questions|length }}</span>
+    {% if practice.time_limit %}<span>Time limit: {{ practice.time_limit }} min</span>{% endif %}
+    <span>Pass score: {{ practice.pass_score }}%</span>
+  </div>
+</div>
+
+<div class="print-hint">
+  Open this page in your browser and use <strong>Ctrl + P</strong> (or File &rarr; Print) to save as PDF or print.
+</div>
+
+{% for question in questions %}
+<div class="question-block">
+  <div class="q-num-row">
+    <span class="q-num">Q{{ forloop.counter }}</span>
+    {% if question.points != 1 %}<span class="q-pts">{{ question.points }} pts</span>{% endif %}
+  </div>
+  <div class="q-text">{{ question.question_text|striptags }}</div>
+  <div class="choices-grid">
+    {% for choice in question.choices.all %}
+    <div class="choice-item {% if choice.is_correct %}correct{% endif %}">
+      <span class="choice-letter">{% if forloop.counter == 1 %}A{% elif forloop.counter == 2 %}B{% elif forloop.counter == 3 %}C{% else %}D{% endif %}.</span>
+      <span>{{ choice.text }}{% if choice.is_correct %} ✓{% endif %}</span>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% empty %}
+<p style="color:#64748b; text-align:center; padding:2rem 0;">No questions added yet.</p>
+{% endfor %}
+
+
+<div class="print-footer">
+  {{ practice.title }} &mdash; {{ questions|length }} question{{ questions|length|pluralize }} &mdash; PrimePoint
+</div>
+
+</body>
+</html>

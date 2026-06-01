@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -7,6 +8,8 @@ from django.http import HttpResponse
 from django.utils.html import strip_tags
 from panda.models import Panda
 from masters.models import Master
+
+_ILLEGAL_CHARS_RE = re.compile(r'[\x00-\x08\x0b\x0c\x0e-\x1f]')
 
 from .models import Practice, PracticeQuestion, PracticeChoice, PracticeAttempt, UserAnswer, Subject
 from .forms import PracticeForm, PracticeQuestionForm
@@ -685,13 +688,18 @@ def export_practices(request):
         cell.fill = header_fill
         cell.alignment = Alignment(horizontal='center')
 
+    def _clean(value):
+        if not value:
+            return ''
+        return _ILLEGAL_CHARS_RE.sub('', str(value))
+
     for practice in practices:
-        questions = list(practice.questions.prefetch_related('choices').order_by('order'))
+        questions = list(practice.questions.all())
         rows_to_write = questions if questions else [None]
         for q_num, question in enumerate(rows_to_write, 1):
             row = [
-                practice.title,
-                practice.subject.name if practice.subject else '',
+                _clean(practice.title),
+                _clean(practice.subject.name) if practice.subject else '',
                 practice.get_level_display(),
                 'Yes' if practice.is_free else 'No',
                 practice.pass_score,
@@ -701,13 +709,13 @@ def export_practices(request):
                 choices = list(question.choices.all())
                 row += [
                     q_num,
-                    strip_tags(question.question_text).strip(),
-                    strip_tags(question.hint).strip() if question.hint else '',
-                    strip_tags(question.explanation).strip() if question.explanation else '',
+                    _clean(strip_tags(question.question_text)),
+                    _clean(strip_tags(question.hint)) if question.hint else '',
+                    _clean(strip_tags(question.explanation)) if question.explanation else '',
                 ]
                 for i in range(4):
                     if i < len(choices):
-                        row += [choices[i].text, 'Yes' if choices[i].is_correct else 'No']
+                        row += [_clean(choices[i].text), 'Yes' if choices[i].is_correct else 'No']
                     else:
                         row += ['', '']
             else:
@@ -734,3 +742,16 @@ def export_practices(request):
     response['Content-Disposition'] = f'attachment; filename="{filename}"'
     wb.save(response)
     return response
+
+
+# ─────────────────────────────────────────────
+# 18. PRINT PRACTICE — Printable question sheet
+# ─────────────────────────────────────────────
+@login_required
+def print_practice(request, pk):
+    practice = get_object_or_404(Practice, pk=pk, master=request.user.profile.master)
+    questions = practice.questions.prefetch_related('choices').order_by('order')
+    return render(request, 'practice/print_practice.html', {
+        'practice': practice,
+        'questions': questions,
+    })
