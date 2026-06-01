@@ -401,3 +401,16 @@ def delete_certificate(request, pk, cert_pk):
         cert.delete()
         messages.success(request, 'Certificate revoked.')
     return redirect('masters-student-detail', pk=master.pk, panda_pk=panda_pk)
+
+
+@login_required
+def certificate_view(request, cert_pk):
+    cert = get_object_or_404(Certificate, pk=cert_pk)
+    is_owner = (request.user == cert.panda.profile.user)
+    is_master = (request.user == cert.master.profile.user)
+    if not is_owner and not is_master and not request.user.is_staff:
+        raise PermissionDenied
+    return render(request, 'masters/certificate_view.html', {
+        'cert': cert,
+        'today': cert.issued_at.date(),
+    })

@@ -19,4 +19,7 @@ urlpatterns = [
     path('<int:pk>/my-students/<int:panda_pk>/certificate/', views.issue_certificate, name='masters-issue-certificate'),
     path('<int:pk>/payments/<int:payment_pk>/delete/', views.delete_payment, name='masters-delete-payment'),
     path('<int:pk>/certificates/<int:cert_pk>/delete/', views.delete_certificate, name='masters-delete-certificate'),
+
+    # Student certificate view (read-only + download)
+    path('certificates/<int:cert_pk>/view/', views.certificate_view, name='certificate-view'),
 ]

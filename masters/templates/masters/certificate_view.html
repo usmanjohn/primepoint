@@ -1,0 +1,372 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{{ cert.title }} — {% trans "Certificate" %}{% endblock %}
+{% block page_name %}{% trans "Certificate" %}{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ── Page chrome ──────────────────────────────────────────── */
+.cv-wrap { display: flex; flex-direction: column; gap: 1rem; }
+
+.cv-bar {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 0.85rem 1.1rem;
+}
+.cv-bar-label {
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; color: var(--text-muted); white-space: nowrap;
+}
+.cv-bar-sep { width: 1px; height: 26px; background: var(--border); flex-shrink: 0; margin: 0 2px; }
+
+.cv-btn-dl {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 9px 22px; border-radius: 10px; font-size: 0.88rem;
+    font-weight: 700; cursor: pointer;
+    background: var(--accent); border: none;
+    color: #0d1117; transition: opacity .18s;
+}
+.cv-btn-dl:hover { opacity: .85; }
+
+.cv-info-chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 5px 12px; border-radius: 8px;
+    background: rgba(34,197,94,.1); color: #16a34a;
+    font-size: 0.78rem; font-weight: 600;
+}
+
+/* Color swatches */
+.cv-color-group { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.cv-color-item { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.cv-color-item label { font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); }
+.cv-color-item input[type=color] {
+    width: 30px; height: 30px; padding: 2px; border: 1.5px solid var(--border);
+    border-radius: 7px; background: var(--surface); cursor: pointer; transition: border-color .15s;
+}
+.cv-color-item input[type=color]:hover { border-color: var(--accent); }
+
+/* ── Preview stage ─────────────────────────────────────────── */
+.cv-stage {
+    background: #1a1a1a; border-radius: 16px;
+    padding: 28px 24px; overflow: hidden; position: relative;
+}
+.cv-stage-inner { transform-origin: top center; display: flex; justify-content: center; }
+
+/* ═══════════════════════════════════════════════════════════════
+   THE CERTIFICATE  (A4 landscape 297mm × 210mm)
+═══════════════════════════════════════════════════════════════ */
+.cert {
+    --cert-accent:    #c4922a;
+    --cert-header:    #0a1628;
+    --cert-body-bg:   #fdfcf5;
+    --cert-text:      #0d1b2a;
+
+    width: 297mm; height: 210mm;
+    background: var(--cert-body-bg);
+    position: relative; display: flex; flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,.6);
+    flex-shrink: 0;
+}
+
+.cert-ring-outer {
+    position: absolute; inset: 5mm;
+    border: 2.5px solid var(--cert-accent);
+    z-index: 20; pointer-events: none;
+}
+.cert-ring-inner {
+    position: absolute; inset: 8.5mm;
+    border: 1px solid color-mix(in srgb, var(--cert-accent) 45%, transparent);
+    z-index: 20; pointer-events: none;
+}
+.cert-corner {
+    position: absolute; width: 16mm; height: 16mm;
+    z-index: 21; pointer-events: none;
+}
+.cert-corner--tl { top:2.5mm; left:2.5mm;   border-top:3px solid var(--cert-accent); border-left:3px solid var(--cert-accent); }
+.cert-corner--tr { top:2.5mm; right:2.5mm;  border-top:3px solid var(--cert-accent); border-right:3px solid var(--cert-accent); }
+.cert-corner--bl { bottom:2.5mm; left:2.5mm;  border-bottom:3px solid var(--cert-accent); border-left:3px solid var(--cert-accent); }
+.cert-corner--br { bottom:2.5mm; right:2.5mm; border-bottom:3px solid var(--cert-accent); border-right:3px solid var(--cert-accent); }
+
+.cert-bg {
+    position: absolute; inset: 0;
+    background:
+        radial-gradient(ellipse 60% 55% at 15% 18%, color-mix(in srgb, var(--cert-accent) 8%, transparent) 0%, transparent 100%),
+        radial-gradient(ellipse 60% 55% at 85% 82%, color-mix(in srgb, var(--cert-header) 6%, transparent) 0%, transparent 100%);
+    z-index: 0; pointer-events: none;
+}
+.cert-watermark {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px; height: 140px;
+    border-radius: 50%; overflow: hidden;
+    opacity: 0.04; pointer-events: none; z-index: 1;
+}
+.cert-watermark img { width: 100%; height: 100%; object-fit: contain; }
+
+/* Header */
+.cert-head {
+    height: 56mm; background: var(--cert-header);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 16mm; position: relative; flex-shrink: 0; z-index: 2;
+}
+.cert-head::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3.5px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        color-mix(in srgb, var(--cert-accent) 40%, transparent) 8%,
+        var(--cert-accent) 28%,
+        color-mix(in srgb, var(--cert-accent) 80%, white) 50%,
+        var(--cert-accent) 72%,
+        color-mix(in srgb, var(--cert-accent) 40%, transparent) 92%,
+        transparent 100%);
+}
+.cert-brand { display: flex; align-items: center; gap: 15px; z-index: 3; }
+.cert-logo {
+    width: 80px; height: 80px; border-radius: 50%; object-fit: contain;
+    background: #fff; padding: 5px;
+    border: 2.5px solid color-mix(in srgb, var(--cert-accent) 60%, transparent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--cert-accent) 18%, transparent), 0 4px 16px rgba(0,0,0,.35);
+    flex-shrink: 0;
+}
+.cert-brand-text { display: flex; flex-direction: column; gap: 4px; }
+.cert-brand-name { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: #fff; letter-spacing: .18em; line-height: 1; }
+.cert-brand-tagline { font-size: 7px; color: color-mix(in srgb, var(--cert-accent) 85%, white); letter-spacing: .35em; text-transform: uppercase; }
+.cert-head-type { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; z-index: 3; }
+.cert-head-type-label { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.75); letter-spacing: .28em; text-transform: uppercase; }
+.cert-head-type-dots { display: flex; gap: 5px; }
+.cert-head-type-dot { width: 6px; height: 6px; border-radius: 50%; background: color-mix(in srgb, var(--cert-accent) 40%, transparent); }
+.cert-head-type-dot.on { background: var(--cert-accent); }
+
+/* Body */
+.cert-body {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 4mm 22mm 2mm; position: relative; z-index: 2; text-align: center; gap: 0;
+}
+.cert-ornament { display: flex; align-items: center; gap: 8px; width: 100%; max-width: 210mm; margin: 3mm 0; }
+.cert-orn-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--cert-accent) 70%, transparent)); }
+.cert-orn-line-r { background: linear-gradient(90deg, color-mix(in srgb, var(--cert-accent) 70%, transparent), transparent); }
+.cert-orn-diamond { width: 7px; height: 7px; background: var(--cert-accent); transform: rotate(45deg); flex-shrink: 0; }
+.cert-orn-diamond.big { width: 11px; height: 11px; }
+.cert-certify-text { font-size: 9px; color: #64748b; letter-spacing: .28em; text-transform: uppercase; margin: 2.5mm 0 0.5mm; }
+.cert-title { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; color: var(--cert-text); letter-spacing: .22em; text-transform: uppercase; line-height: 1; margin: 0; }
+.cert-name { font-family: 'Syne', sans-serif; font-size: 50px; font-weight: 700; color: var(--cert-text); line-height: 1.05; border-bottom: 3px solid var(--cert-accent); padding: 0 10px 4px; display: inline-block; }
+.cert-name-wrap { margin: 1.5mm 0 2mm; }
+.cert-achieve { font-size: 11px; color: #475569; letter-spacing: .1em; margin: 2mm 0 1.5mm; }
+.cert-course-row { display: flex; align-items: center; gap: 12px; margin: 0; }
+.cert-course-dash { width: 30px; height: 1.5px; background: var(--cert-accent); flex-shrink: 0; }
+.cert-course { font-family: 'Syne', sans-serif; font-size: 19px; font-weight: 700; color: var(--cert-accent); letter-spacing: .06em; text-align: center; }
+
+/* Footer */
+.cert-foot {
+    height: 38mm; background: var(--cert-header);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 16mm; position: relative; flex-shrink: 0; z-index: 2;
+}
+.cert-foot::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3.5px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        color-mix(in srgb, var(--cert-accent) 40%, transparent) 8%,
+        var(--cert-accent) 28%,
+        color-mix(in srgb, var(--cert-accent) 80%, white) 50%,
+        var(--cert-accent) 72%,
+        color-mix(in srgb, var(--cert-accent) 40%, transparent) 92%,
+        transparent 100%);
+}
+.cert-foot-col { display: flex; flex-direction: column; align-items: center; gap: 5px; min-width: 50mm; }
+.cert-foot-val { font-family: 'Syne', sans-serif; font-size: 12.5px; font-weight: 600; color: #e2e8f0; border-bottom: 1px solid color-mix(in srgb, var(--cert-accent) 55%, transparent); padding-bottom: 4px; min-width: 46mm; text-align: center; }
+.cert-foot-label { font-size: 6px; color: color-mix(in srgb, var(--cert-accent) 80%, white); letter-spacing: .32em; text-transform: uppercase; }
+.cert-seal-col { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.cert-seal { width: 54px; height: 54px; border-radius: 50%; border: 2.5px solid var(--cert-accent); background: color-mix(in srgb, var(--cert-accent) 12%, transparent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--cert-accent) 15%, transparent), 0 0 0 8px color-mix(in srgb, var(--cert-accent) 7%, transparent); display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.cert-seal-pp { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 800; color: var(--cert-accent); letter-spacing: .06em; line-height: 1; }
+.cert-seal-word { font-size: 5px; color: color-mix(in srgb, var(--cert-accent) 70%, white); letter-spacing: .25em; text-transform: uppercase; }
+.cert-slogan { font-size: 7px; color: color-mix(in srgb, var(--cert-accent) 65%, white); letter-spacing: .08em; font-style: italic; text-align: center; max-width: 60mm; }
+
+/* ── PRINT ──────────────────────────────────────────────────── */
+@page { size: A4 landscape; margin: 0; }
+
+@media print {
+    #sidebar, .mob-bottom-nav, .top-navbar, .messages-container,
+    .cv-bar, .cv-meta { display: none !important; }
+    body, html { margin: 0 !important; padding: 0 !important; background: white !important; }
+    .main-wrapper { margin-left: 0 !important; min-height: unset !important; display: block !important; }
+    .content-area { padding: 0 !important; background: white !important; display: block !important; }
+    .cv-wrap { gap: 0 !important; }
+    .cv-stage { background: none !important; padding: 0 !important; border-radius: 0 !important; overflow: visible !important; height: auto !important; }
+    .cv-stage-inner { transform: none !important; display: block !important; }
+    .cert { width: 297mm !important; height: 210mm !important; box-shadow: none !important; page-break-inside: avoid; break-inside: avoid; }
+}
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="cv-wrap" id="cv-wrap">
+
+    <!-- ── Top bar ──────────────────────────────────────────────── -->
+    <div class="cv-bar" id="cv-bar">
+        <a href="{% url 'profile' %}" class="cv-btn-dl" style="background:var(--surface); border:1.5px solid var(--border); color:var(--text);">
+            <i class="bi bi-arrow-left"></i>
+        </a>
+
+        <span class="cv-info-chip">
+            <i class="bi bi-award-fill"></i>
+            {{ cert.title }}
+        </span>
+
+        <span style="font-size:0.78rem; color:var(--text-muted);">
+            <i class="bi bi-person-badge me-1"></i>{{ cert.master.name }}
+            &nbsp;·&nbsp;
+            <i class="bi bi-calendar3 me-1"></i>{{ cert.issued_at|date:"F j, Y" }}
+        </span>
+
+        <div class="cv-bar-sep"></div>
+
+        <!-- Color pickers — students can customize before printing -->
+        <div class="cv-color-group">
+            <div class="cv-color-item">
+                <label>{% trans "Header" %}</label>
+                <input type="color" id="pick-header" value="#0a1628" oninput="setCertColor('--cert-header', this.value)">
+            </div>
+            <div class="cv-color-item">
+                <label>{% trans "Accent" %}</label>
+                <input type="color" id="pick-accent" value="#c4922a" oninput="setCertColor('--cert-accent', this.value)">
+            </div>
+            <div class="cv-color-item">
+                <label>{% trans "Background" %}</label>
+                <input type="color" id="pick-bg" value="#fdfcf5" oninput="setCertColor('--cert-body-bg', this.value)">
+            </div>
+        </div>
+
+        <div class="cv-bar-sep"></div>
+
+        <button class="cv-btn-dl ms-auto" onclick="window.print()">
+            <i class="bi bi-file-earmark-pdf-fill"></i> {% trans "Download PDF" %}
+        </button>
+    </div>
+
+    <!-- ── Certificate stage ────────────────────────────────────── -->
+    <div class="cv-stage" id="cv-stage">
+        <div class="cv-stage-inner" id="cv-stage-inner">
+
+            <div class="cert" id="cert">
+
+                <div class="cert-ring-outer"></div>
+                <div class="cert-ring-inner"></div>
+                <div class="cert-corner cert-corner--tl"></div>
+                <div class="cert-corner cert-corner--tr"></div>
+                <div class="cert-corner cert-corner--bl"></div>
+                <div class="cert-corner cert-corner--br"></div>
+                <div class="cert-bg"></div>
+                <div class="cert-watermark"><img src="{% static 'images/logo.jpg' %}" alt=""></div>
+
+                <!-- Header -->
+                <header class="cert-head">
+                    <div class="cert-brand">
+                        <img src="{% static 'images/logo.jpg' %}" alt="Prime Point" class="cert-logo">
+                        <div class="cert-brand-text">
+                            <span class="cert-brand-name">PRIME POINT</span>
+                            <span class="cert-brand-tagline">Education &amp; Excellence</span>
+                        </div>
+                    </div>
+                    <div class="cert-head-type">
+                        <span class="cert-head-type-label">Certificate</span>
+                        <div class="cert-head-type-dots">
+                            <div class="cert-head-type-dot on"></div>
+                            <div class="cert-head-type-dot on"></div>
+                            <div class="cert-head-type-dot"></div>
+                            <div class="cert-head-type-dot"></div>
+                            <div class="cert-head-type-dot on"></div>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Body -->
+                <div class="cert-body">
+                    <div class="cert-ornament">
+                        <div class="cert-orn-line"></div>
+                        <div class="cert-orn-diamond"></div>
+                        <div class="cert-orn-diamond big"></div>
+                        <div class="cert-orn-diamond"></div>
+                        <div class="cert-orn-line cert-orn-line-r"></div>
+                    </div>
+
+                    <div class="cert-title">Certificate of Achievement</div>
+
+                    <div class="cert-ornament">
+                        <div class="cert-orn-line"></div>
+                        <div class="cert-orn-diamond"></div>
+                        <div class="cert-orn-diamond big"></div>
+                        <div class="cert-orn-diamond"></div>
+                        <div class="cert-orn-line cert-orn-line-r"></div>
+                    </div>
+
+                    <div class="cert-certify-text">— &nbsp;This is to certify that&nbsp; —</div>
+
+                    <div class="cert-name-wrap">
+                        <span class="cert-name">{{ cert.panda.profile.first_name|default:cert.panda.profile.user.username }}</span>
+                    </div>
+
+                    <div class="cert-achieve">{{ cert.description|default:"has successfully completed the course" }}</div>
+
+                    <div class="cert-course-row">
+                        <div class="cert-course-dash"></div>
+                        <span class="cert-course">{{ cert.title }}</span>
+                        <div class="cert-course-dash"></div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <footer class="cert-foot">
+                    <div class="cert-foot-col">
+                        <div class="cert-foot-val">{{ cert.issued_at|date:"F j, Y" }}</div>
+                        <div class="cert-foot-label">Date Issued</div>
+                    </div>
+                    <div class="cert-seal-col">
+                        <div class="cert-seal">
+                            <span class="cert-seal-pp">PP</span>
+                            <span class="cert-seal-word">Certified</span>
+                        </div>
+                        <div class="cert-slogan">"Strong mind bends the line"</div>
+                    </div>
+                    <div class="cert-foot-col">
+                        <div class="cert-foot-val">{{ cert.master.name }}</div>
+                        <div class="cert-foot-label">Instructor / Master</div>
+                    </div>
+                </footer>
+
+            </div><!-- /cert -->
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+
+{% block extra_js %}
+<script>
+(function () {
+    function scaleCert() {
+        var inner = document.getElementById('cv-stage-inner');
+        var stage = document.getElementById('cv-stage');
+        if (!inner || !stage) return;
+        var CW = 297 * (96 / 25.4);
+        var CH = 210 * (96 / 25.4);
+        var availW = stage.clientWidth - 48;
+        var scale = Math.min(availW / CW, 1);
+        inner.style.transform = 'scale(' + scale + ')';
+        inner.style.transformOrigin = 'top center';
+        stage.style.height = Math.ceil(CH * scale + 56) + 'px';
+    }
+    window.addEventListener('load', scaleCert);
+    window.addEventListener('resize', scaleCert);
+
+    window.setCertColor = function (prop, value) {
+        document.getElementById('cert').style.setProperty(prop, value);
+    };
+})();
+</script>
+{% endblock %}

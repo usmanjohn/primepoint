@@ -471,6 +471,9 @@
           <div class="cert-desc">{{ cert.description }}</div>
           {% endif %}
         </div>
+        <a href="{% url 'certificate-view' cert.pk %}" class="sd-icon-btn" title="{% trans 'View certificate' %}" style="color:var(--accent);">
+          <i class="bi bi-eye"></i>
+        </a>
         <form method="post" action="{% url 'masters-delete-certificate' master.pk cert.pk %}"
               style="margin:0;" onsubmit="return confirm('{% trans "Revoke this certificate?" %}')">
           {% csrf_token %}
