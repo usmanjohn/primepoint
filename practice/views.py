@@ -751,7 +751,9 @@ def export_practices(request):
 def print_practice(request, pk):
     practice = get_object_or_404(Practice, pk=pk, master=request.user.profile.master)
     questions = practice.questions.prefetch_related('choices').order_by('order')
+    show_answers = request.GET.get('answers', 'show') != 'hide'
     return render(request, 'practice/print_practice.html', {
         'practice': practice,
         'questions': questions,
+        'show_answers': show_answers,
     })

@@ -37,6 +37,17 @@ body {
 }
 .print-meta span { display: flex; align-items: center; gap: 0.25rem; }
 
+.answer-mode-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.6rem;
+  border-radius: 4px;
+  margin-top: 0.4rem;
+}
+.answer-mode-badge.shown  { background: #dcfce7; color: #15803d; }
+.answer-mode-badge.hidden { background: #fef9c3; color: #92400e; }
+
 .print-hint {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
@@ -134,6 +145,7 @@ body {
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-wrap: wrap;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -145,6 +157,18 @@ body {
   font-size: 0.8rem;
 }
 .screen-nav a:hover { color: #fff; }
+.btn-toggle {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-toggle.hide-answers { background: #fef9c3; color: #92400e; }
+.btn-toggle.hide-answers:hover { background: #fde68a; color: #78350f; }
+.btn-toggle.show-answers { background: #dcfce7; color: #15803d; }
+.btn-toggle.show-answers:hover { background: #bbf7d0; color: #14532d; }
 .screen-nav .btn-print {
   margin-left: auto;
   background: #38bdf8;
@@ -155,15 +179,24 @@ body {
   font-weight: 700;
   font-size: 0.82rem;
   cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
 }
-.screen-nav .btn-print:hover { opacity: 0.85; }
+.screen-nav .btn-print:hover { opacity: 0.85; color: #0d1117; }
 </style>
 </head>
 <body>
 
 <div class="screen-nav no-print">
-  <a href="{% url 'manage_questions' practice.pk %}">&larr; Back to Questions</a>
+  <a href="{% url 'manage_questions' practice.pk %}">&larr; Back</a>
   <span style="color:#64748b; font-size:0.78rem;">{{ practice.title }}</span>
+
+  {% if show_answers %}
+    <a href="?answers=hide" class="btn-toggle hide-answers">&#128065; Hide Answers</a>
+  {% else %}
+    <a href="?answers=show" class="btn-toggle show-answers">&#10003; Show Answers</a>
+  {% endif %}
+
   <a href="javascript:window.print()" class="btn-print">&#128438; Print / Save PDF</a>
 </div>
 
@@ -176,10 +209,15 @@ body {
     {% if practice.time_limit %}<span>Time limit: {{ practice.time_limit }} min</span>{% endif %}
     <span>Pass score: {{ practice.pass_score }}%</span>
   </div>
+  {% if show_answers %}
+    <span class="answer-mode-badge shown">&#10003; Correct answers marked</span>
+  {% else %}
+    <span class="answer-mode-badge hidden">&#128065; Answer key hidden — student copy</span>
+  {% endif %}
 </div>
 
-<div class="print-hint">
-  Open this page in your browser and use <strong>Ctrl + P</strong> (or File &rarr; Print) to save as PDF or print.
+<div class="print-hint no-print">
+  Use <strong>Ctrl + P</strong> (or File &rarr; Print) to save as PDF or print.
 </div>
 
 {% for question in questions %}
@@ -191,9 +229,9 @@ body {
   <div class="q-text">{{ question.question_text|striptags }}</div>
   <div class="choices-grid">
     {% for choice in question.choices.all %}
-    <div class="choice-item {% if choice.is_correct %}correct{% endif %}">
+    <div class="choice-item {% if show_answers and choice.is_correct %}correct{% endif %}">
       <span class="choice-letter">{% if forloop.counter == 1 %}A{% elif forloop.counter == 2 %}B{% elif forloop.counter == 3 %}C{% else %}D{% endif %}.</span>
-      <span>{{ choice.text }}{% if choice.is_correct %} ✓{% endif %}</span>
+      <span>{{ choice.text }}{% if show_answers and choice.is_correct %} &#10003;{% endif %}</span>
     </div>
     {% endfor %}
   </div>
@@ -202,9 +240,9 @@ body {
 <p style="color:#64748b; text-align:center; padding:2rem 0;">No questions added yet.</p>
 {% endfor %}
 
-
 <div class="print-footer">
   {{ practice.title }} &mdash; {{ questions|length }} question{{ questions|length|pluralize }} &mdash; PrimePoint
+  {% if not show_answers %} &mdash; Student Copy{% endif %}
 </div>
 
 </body>

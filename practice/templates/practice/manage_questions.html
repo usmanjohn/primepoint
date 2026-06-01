@@ -170,7 +170,7 @@
       </p>
     </div>
     <div class="mq-actions">
-      <a href="{% url 'print_practice' practice.pk %}" target="_blank" class="btn-auth-outline text-decoration-none py-2 px-3" style="font-size:0.82rem;">
+      <a href="{% url 'print_practice' practice.pk %}?answers=hide" target="_blank" class="btn-auth-outline text-decoration-none py-2 px-3" style="font-size:0.82rem;" title="Print without answers (student copy)">
         <i class="bi bi-printer"></i><span class="d-none d-sm-inline ms-1">Print</span>
       </a>
       <a href="{% url 'edit_practice' practice.pk %}" class="btn-auth-outline text-decoration-none py-2 px-3" style="font-size:0.82rem;">
