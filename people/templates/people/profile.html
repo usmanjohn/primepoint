@@ -406,6 +406,26 @@
         {% endif %}
         {% endif %}
 
+        <!-- My Students link (master, own profile only) -->
+        {% if master and is_own_profile and master.is_approved %}
+        <div class="card profile-card mb-4">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center gap-2">
+                    <i class="bi bi-people-fill text-accent"></i>
+                    {% trans "My Students" %}
+                </div>
+                <a href="{% url 'masters-my-students' master.pk %}" class="btn-text-link">{% trans "Manage" %} →</a>
+            </div>
+            <div class="card-body text-center py-3">
+                <p class="fw-bold mb-0" style="font-size:1.5rem;">{{ master.student_count }}</p>
+                <p class="text-muted small mb-2">{% trans "students enrolled" %}</p>
+                <a href="{% url 'masters-my-students' master.pk %}" class="btn-core-primary text-decoration-none" style="font-size:0.82rem;">
+                    <i class="bi bi-people"></i> {% trans "Open Student Dashboard" %}
+                </a>
+            </div>
+        </div>
+        {% endif %}
+
         <!-- Master Homework Card (own profile only) -->
         {% if master and is_own_profile %}
         <div class="card profile-card mb-4">
@@ -599,6 +619,32 @@
                 <a href="{% url 'practice_list' %}" class="btn-core-outline" style="font-size:0.8rem;">
                     <i class="bi bi-book"></i> {% trans "Browse Practices" %}
                 </a>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Certificates (student, always visible if they have any) -->
+        {% if certificates %}
+        <div class="card profile-card mb-4">
+            <div class="card-header d-flex align-items-center gap-2">
+                <i class="bi bi-award-fill" style="color:#f59e0b;"></i>
+                {% trans "Certificates" %}
+            </div>
+            <div class="card-body p-0">
+                {% for cert in certificates %}
+                <div style="display:flex; align-items:center; gap:0.75rem; padding:0.75rem 1rem; {% if not forloop.last %}border-bottom:1px solid var(--border);{% endif %}">
+                    <i class="bi bi-award-fill" style="color:#f59e0b; font-size:1.2rem; flex-shrink:0;"></i>
+                    <div style="flex:1; min-width:0;">
+                        <div style="font-weight:700; font-size:0.88rem; color:var(--text);">{{ cert.title }}</div>
+                        <div style="font-size:0.72rem; color:var(--text-muted);">
+                            {{ cert.master.name }} · {{ cert.issued_at|date:"M d, Y" }}
+                        </div>
+                        {% if cert.description %}
+                        <div style="font-size:0.75rem; color:var(--text-muted); margin-top:0.15rem;">{{ cert.description|truncatechars:80 }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
             </div>
         </div>
         {% endif %}

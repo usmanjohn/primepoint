@@ -1,0 +1,493 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ panda.profile.first_name|default:panda.profile.user.username }} — {% trans "Student Detail" %}{% endblock %}
+{% block page_name %}{% trans "Student Detail" %}{% endblock %}
+{% block nav_masters %}active{% endblock %}
+{% block mob_nav_masters %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ── Layout ─────────────────────────────────────────────────── */
+.sd-back { margin-bottom: 1.25rem; }
+
+.sd-hero {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.sd-avatar { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 3px solid var(--border); flex-shrink: 0; }
+.sd-identity { flex: 1; min-width: 0; }
+.sd-name { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--text); margin: 0 0 0.2rem; }
+.sd-meta { font-size: 0.78rem; color: var(--text-muted); display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.sd-meta-item { display: flex; align-items: center; gap: 0.3rem; }
+
+/* ── Stats ──────────────────────────────────────────────────── */
+.sd-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+.sd-stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.75rem 0.65rem;
+  text-align: center;
+}
+.sd-stat-icon { font-size: 1rem; color: var(--accent); margin-bottom: 0.2rem; }
+.sd-stat-num { font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 800; color: var(--text); line-height: 1; }
+.sd-stat-lbl { font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: var(--text-muted); margin-top: 0.15rem; }
+
+/* ── Section card ───────────────────────────────────────────── */
+.sd-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 1.25rem;
+  overflow: hidden;
+}
+.sd-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--chrome, rgba(0,0,0,0.02));
+}
+.sd-card-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.88rem; font-weight: 700;
+  color: var(--text); margin: 0;
+  display: flex; align-items: center; gap: 0.45rem;
+}
+.sd-card-body { padding: 1.25rem; }
+
+/* ── Form layout ────────────────────────────────────────────── */
+.sd-form { display: flex; flex-direction: column; gap: 0.65rem; }
+.sd-form-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.65rem; }
+.sd-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: var(--text-muted); display: block; margin-bottom: 0.25rem; }
+.sd-input {
+  width: 100%; font-size: 0.85rem;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--chrome, rgba(0,0,0,0.02));
+  color: var(--text);
+}
+.sd-input:focus { outline: none; border-color: var(--accent); }
+.sd-select { appearance: none; -webkit-appearance: none; }
+
+/* ── Attendance record ──────────────────────────────────────── */
+.att-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.att-row {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.82rem;
+}
+.att-date { font-weight: 600; color: var(--text); min-width: 90px; }
+.att-notes { flex: 1; color: var(--text-muted); font-size: 0.78rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.att-chip {
+  padding: 0.12rem 0.55rem; border-radius: 5px;
+  font-size: 0.68rem; font-weight: 700; white-space: nowrap;
+}
+.att-chip.present { background: rgba(34,197,94,.12); color: #16a34a; }
+.att-chip.absent  { background: rgba(248,113,113,.12); color: #dc2626; }
+.att-chip.late    { background: rgba(245,158,11,.12); color: #b45309; }
+
+/* ── Payment table ──────────────────────────────────────────── */
+.pay-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.pay-table th {
+  padding: 0.55rem 0.75rem;
+  font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  text-align: left; white-space: nowrap;
+}
+.pay-table td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle; color: var(--text);
+}
+.pay-table tr:last-child td { border-bottom: none; }
+.pay-chip {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  padding: 0.1rem 0.5rem; border-radius: 5px;
+  font-size: 0.68rem; font-weight: 700;
+}
+.pay-chip.paid    { background: rgba(34,197,94,.12); color: #16a34a; }
+.pay-chip.unpaid  { background: rgba(248,113,113,.12); color: #dc2626; }
+.pay-chip.partial { background: rgba(245,158,11,.12); color: #b45309; }
+
+/* ── Certificate card ───────────────────────────────────────── */
+.cert-list { display: flex; flex-direction: column; gap: 0.55rem; }
+.cert-row {
+  display: flex; align-items: center; gap: 0.85rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(56,189,248,0.03) 0%, transparent 100%);
+}
+.cert-icon { font-size: 1.4rem; color: #f59e0b; flex-shrink: 0; }
+.cert-info { flex: 1; min-width: 0; }
+.cert-title { font-weight: 700; font-size: 0.88rem; color: var(--text); }
+.cert-meta { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.1rem; }
+.cert-desc { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+/* ── Icon action btn ────────────────────────────────────────── */
+.sd-icon-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 7px;
+  border: 1px solid var(--border); background: transparent;
+  color: var(--text-muted); text-decoration: none;
+  font-size: 0.78rem; cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  flex-shrink: 0;
+}
+.sd-icon-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
+.sd-icon-btn.danger:hover { border-color: #f87171; color: #f87171; background: rgba(248,113,113,.08); }
+
+/* ── Empty ──────────────────────────────────────────────────── */
+.sd-empty { padding: 1.5rem; text-align: center; color: var(--text-muted); font-size: 0.82rem; }
+.sd-empty i { display: block; font-size: 1.8rem; margin-bottom: 0.4rem; opacity: 0.45; }
+
+/* ── Rank badge ─────────────────────────────────────────────── */
+.rank-chip {
+  display: inline-block; padding: 0.15rem 0.6rem;
+  border-radius: 6px; font-size: 0.72rem; font-weight: 700;
+}
+.rank-chip.rank-novice      { background: rgba(148,163,184,.15); color: #64748b; }
+.rank-chip.rank-scholar     { background: var(--accent-glow); color: var(--accent); }
+.rank-chip.rank-expert      { background: rgba(34,197,94,.12); color: #16a34a; }
+.rank-chip.rank-grandmaster { background: rgba(251,191,36,.18); color: #b45309; }
+
+@media (max-width: 600px) {
+  .sd-hero { padding: 1rem; gap: 0.85rem; }
+  .sd-avatar { width: 56px; height: 56px; }
+  .sd-card-body { padding: 0.9rem; }
+  .pay-table .hide-sm { display: none; }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- Back -->
+<nav class="sd-back">
+  <a href="{% url 'masters-my-students' master.pk %}" class="btn-core-outline text-decoration-none" style="font-size:0.82rem;">
+    <i class="bi bi-arrow-left"></i> {% trans "My Students" %}
+  </a>
+</nav>
+
+<!-- Hero -->
+<div class="sd-hero">
+  <img src="{{ panda.profile.image_url }}" alt="{{ panda.profile.user.username }}" class="sd-avatar">
+  <div class="sd-identity">
+    <h1 class="sd-name">{{ panda.profile.first_name|default:panda.profile.user.username }}</h1>
+    <div class="sd-meta">
+      <span class="sd-meta-item"><i class="bi bi-at"></i>{{ panda.profile.user.username }}</span>
+      <span class="sd-meta-item">
+        <span class="rank-chip rank-{{ panda.rank|lower }}">{{ panda.rank }}</span>
+      </span>
+      <span class="sd-meta-item"><i class="bi bi-lightning-fill" style="color:var(--accent);"></i> {{ panda.rating }} pts</span>
+      {% if enrollment %}
+      <span class="sd-meta-item"><i class="bi bi-calendar3"></i> {% trans "Joined" %} {{ enrollment.joined_at|date:"M d, Y" }}</span>
+      {% endif %}
+    </div>
+  </div>
+  <a href="{% url 'user_profile' panda.profile.user.username %}" class="btn-core-outline text-decoration-none" style="font-size:0.8rem; flex-shrink:0;">
+    <i class="bi bi-person-circle"></i> {% trans "Profile" %}
+  </a>
+</div>
+
+<!-- Stats -->
+<div class="sd-stats">
+  <div class="sd-stat">
+    <div class="sd-stat-icon"><i class="bi bi-clipboard-check-fill"></i></div>
+    <div class="sd-stat-num">{{ stats.total|default:0 }}</div>
+    <div class="sd-stat-lbl">{% trans "Tests taken" %}</div>
+  </div>
+  <div class="sd-stat">
+    <div class="sd-stat-icon"><i class="bi bi-graph-up-arrow"></i></div>
+    <div class="sd-stat-num">{{ stats.avg_score|floatformat:0|default:"—" }}{% if stats.avg_score %}%{% endif %}</div>
+    <div class="sd-stat-lbl">{% trans "Avg score" %}</div>
+  </div>
+  <div class="sd-stat">
+    <div class="sd-stat-icon"><i class="bi bi-calendar-check-fill" style="color:#22c55e;"></i></div>
+    <div class="sd-stat-num">{{ att_present }}</div>
+    <div class="sd-stat-lbl">{% trans "Present" %}</div>
+  </div>
+  <div class="sd-stat">
+    <div class="sd-stat-icon"><i class="bi bi-calendar-x-fill" style="color:#f87171;"></i></div>
+    <div class="sd-stat-num">{{ att_total|add:"-"|add:att_present }}</div>
+    <div class="sd-stat-lbl">{% trans "Absent/Late" %}</div>
+  </div>
+  <div class="sd-stat">
+    <div class="sd-stat-icon"><i class="bi bi-award-fill" style="color:#f59e0b;"></i></div>
+    <div class="sd-stat-num">{{ certificates|length }}</div>
+    <div class="sd-stat-lbl">{% trans "Certificates" %}</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- ATTENDANCE -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="sd-card">
+  <div class="sd-card-header">
+    <h2 class="sd-card-title">
+      <i class="bi bi-calendar-check-fill" style="color:var(--accent);"></i>
+      {% trans "Attendance" %}
+      {% if att_total > 0 %}
+      <span style="font-size:0.72rem; color:var(--text-muted); font-weight:400; margin-left:0.3rem;">
+        {{ att_present }}/{{ att_total }} {% trans "present" %}
+      </span>
+      {% endif %}
+    </h2>
+  </div>
+  <div class="sd-card-body">
+    <!-- Mark attendance form -->
+    <form method="post" action="{% url 'masters-mark-attendance' master.pk panda.pk %}" class="sd-form mb-4">
+      {% csrf_token %}
+      <div class="sd-form-row">
+        <div>
+          <label class="sd-label">{% trans "Date" %}</label>
+          <input type="date" name="date" class="sd-input" value="{{ today|date:'Y-m-d' }}" required>
+        </div>
+        <div>
+          <label class="sd-label">{% trans "Status" %}</label>
+          <select name="status" class="sd-input sd-select" required>
+            <option value="present">{% trans "Present" %}</option>
+            <option value="absent">{% trans "Absent" %}</option>
+            <option value="late">{% trans "Late" %}</option>
+          </select>
+        </div>
+        <div>
+          <label class="sd-label">{% trans "Notes (optional)" %}</label>
+          <input type="text" name="notes" class="sd-input" placeholder="{% trans 'e.g. Left early' %}">
+        </div>
+      </div>
+      <div>
+        <button type="submit" class="btn-core-primary" style="font-size:0.82rem;">
+          <i class="bi bi-check2-square"></i> {% trans "Mark Attendance" %}
+        </button>
+      </div>
+    </form>
+
+    <!-- Attendance history -->
+    {% if attendances %}
+    <div class="att-list">
+      {% for att in attendances %}
+      <div class="att-row">
+        <span class="att-date">{{ att.date|date:"M d, Y" }}</span>
+        <span class="att-chip {{ att.status }}">
+          {% if att.status == 'present' %}<i class="bi bi-check-circle-fill"></i>
+          {% elif att.status == 'absent' %}<i class="bi bi-x-circle-fill"></i>
+          {% else %}<i class="bi bi-clock-fill"></i>{% endif %}
+          {{ att.get_status_display }}
+        </span>
+        <span class="att-notes">{{ att.notes }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="sd-empty">
+      <i class="bi bi-calendar3"></i>
+      {% trans "No attendance records yet. Mark the first one above." %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- PAYMENTS -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="sd-card">
+  <div class="sd-card-header">
+    <h2 class="sd-card-title">
+      <i class="bi bi-credit-card-fill" style="color:var(--accent);"></i>
+      {% trans "Payments" %}
+    </h2>
+  </div>
+  <div class="sd-card-body">
+    <!-- Add payment form -->
+    <form method="post" action="{% url 'masters-add-payment' master.pk panda.pk %}" class="sd-form mb-4">
+      {% csrf_token %}
+      <div class="sd-form-row">
+        <div>
+          <label class="sd-label">{% trans "Period" %}</label>
+          <input type="text" name="period_label" class="sd-input" placeholder="{% trans 'e.g. June 2026' %}">
+        </div>
+        <div>
+          <label class="sd-label">{% trans "Amount" %}</label>
+          <input type="number" name="amount" class="sd-input" placeholder="0.00" step="0.01" min="0" required>
+        </div>
+        <div>
+          <label class="sd-label">{% trans "Status" %}</label>
+          <select name="status" class="sd-input sd-select">
+            <option value="paid">{% trans "Paid" %}</option>
+            <option value="unpaid" selected>{% trans "Unpaid" %}</option>
+            <option value="partial">{% trans "Partial" %}</option>
+          </select>
+        </div>
+      </div>
+      <div class="sd-form-row">
+        <div>
+          <label class="sd-label">{% trans "Due Date" %}</label>
+          <input type="date" name="due_date" class="sd-input">
+        </div>
+        <div>
+          <label class="sd-label">{% trans "Payment Date" %}</label>
+          <input type="date" name="payment_date" class="sd-input">
+        </div>
+        <div>
+          <label class="sd-label">{% trans "Notes" %}</label>
+          <input type="text" name="notes" class="sd-input" placeholder="{% trans 'Optional note...' %}">
+        </div>
+      </div>
+      <div>
+        <button type="submit" class="btn-core-primary" style="font-size:0.82rem;">
+          <i class="bi bi-plus-circle"></i> {% trans "Add Payment Record" %}
+        </button>
+      </div>
+    </form>
+
+    <!-- Payment history -->
+    {% if payments %}
+    <div style="overflow-x:auto;">
+      <table class="pay-table">
+        <thead>
+          <tr>
+            <th>{% trans "Period" %}</th>
+            <th>{% trans "Amount" %}</th>
+            <th>{% trans "Status" %}</th>
+            <th class="hide-sm">{% trans "Due" %}</th>
+            <th class="hide-sm">{% trans "Paid on" %}</th>
+            <th class="hide-sm">{% trans "Notes" %}</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for pay in payments %}
+          <tr>
+            <td style="font-weight:600;">{{ pay.period_label|default:"—" }}</td>
+            <td style="font-weight:700; color:var(--text);">{{ pay.amount }}</td>
+            <td>
+              <span class="pay-chip {{ pay.status }}">
+                {% if pay.status == 'paid' %}<i class="bi bi-check-circle-fill"></i>
+                {% elif pay.status == 'unpaid' %}<i class="bi bi-x-circle-fill"></i>
+                {% else %}<i class="bi bi-dash-circle-fill"></i>{% endif %}
+                {{ pay.get_status_display }}
+              </span>
+            </td>
+            <td class="hide-sm" style="color:var(--text-muted);">
+              {{ pay.due_date|date:"M d, Y"|default:"—" }}
+            </td>
+            <td class="hide-sm" style="color:var(--text-muted);">
+              {{ pay.payment_date|date:"M d, Y"|default:"—" }}
+            </td>
+            <td class="hide-sm" style="color:var(--text-muted); max-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
+              {{ pay.notes|default:"—" }}
+            </td>
+            <td>
+              <form method="post" action="{% url 'masters-delete-payment' master.pk pay.pk %}"
+                    style="margin:0;" onsubmit="return confirm('{% trans "Delete this payment record?" %}')">
+                {% csrf_token %}
+                <button type="submit" class="sd-icon-btn danger" title="{% trans 'Delete' %}">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="sd-empty">
+      <i class="bi bi-credit-card"></i>
+      {% trans "No payment records yet. Add the first one above." %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- CERTIFICATES -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="sd-card">
+  <div class="sd-card-header">
+    <h2 class="sd-card-title">
+      <i class="bi bi-award-fill" style="color:#f59e0b;"></i>
+      {% trans "Certificates" %}
+    </h2>
+    <a href="{% url 'masters-certificate' %}" class="btn-text-link" style="font-size:0.78rem;">
+      {% trans "PDF generator" %} →
+    </a>
+  </div>
+  <div class="sd-card-body">
+    <!-- Issue certificate form -->
+    <form method="post" action="{% url 'masters-issue-certificate' master.pk panda.pk %}" class="sd-form mb-4">
+      {% csrf_token %}
+      <div>
+        <label class="sd-label">{% trans "Certificate Title" %}</label>
+        <input type="text" name="title" class="sd-input" placeholder="{% trans 'e.g. English B2 Completion Certificate' %}" required>
+      </div>
+      <div>
+        <label class="sd-label">{% trans "Description (optional)" %}</label>
+        <textarea name="description" class="sd-input" rows="2"
+                  placeholder="{% trans 'e.g. Awarded for completing the Advanced English course...' %}"></textarea>
+      </div>
+      <div>
+        <button type="submit" class="btn-core-primary" style="font-size:0.82rem;">
+          <i class="bi bi-award"></i> {% trans "Issue Certificate" %}
+        </button>
+      </div>
+    </form>
+
+    <!-- Issued certificates -->
+    {% if certificates %}
+    <div class="cert-list">
+      {% for cert in certificates %}
+      <div class="cert-row">
+        <i class="bi bi-award-fill cert-icon"></i>
+        <div class="cert-info">
+          <div class="cert-title">{{ cert.title }}</div>
+          <div class="cert-meta">
+            <i class="bi bi-calendar3 me-1"></i>{{ cert.issued_at|date:"M d, Y" }}
+            {% if not cert.is_visible %}
+            <span class="ms-2" style="color:#94a3b8; font-size:0.65rem;">({% trans "hidden on profile" %})</span>
+            {% endif %}
+          </div>
+          {% if cert.description %}
+          <div class="cert-desc">{{ cert.description }}</div>
+          {% endif %}
+        </div>
+        <form method="post" action="{% url 'masters-delete-certificate' master.pk cert.pk %}"
+              style="margin:0;" onsubmit="return confirm('{% trans "Revoke this certificate?" %}')">
+          {% csrf_token %}
+          <button type="submit" class="sd-icon-btn danger" title="{% trans 'Revoke' %}">
+            <i class="bi bi-trash"></i>
+          </button>
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="sd-empty">
+      <i class="bi bi-award"></i>
+      {% trans "No certificates issued yet. Issue the first one above — it will appear on the student's profile." %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

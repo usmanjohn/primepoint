@@ -97,6 +97,9 @@ def _profile_context(viewed_user, is_own_profile):
                 .order_by('-created_at')[:5]
             )
 
+    from masters.models import Certificate
+    certificates = Certificate.objects.filter(panda=panda, is_visible=True).select_related('master') if panda else []
+
     return {
         'people': people,
         'viewed_user': viewed_user,
@@ -110,6 +113,7 @@ def _profile_context(viewed_user, is_own_profile):
         'panda_hw_done': panda_hw_done,
         'master_hw': master_hw,
         'rating_stats': rating_stats,
+        'certificates': certificates,
     }
 
 
@@ -140,11 +144,25 @@ def profile_update(request):
 
 @login_required
 def update_panda_masters(request):
+    from masters.models import StudentEnrollment
     panda = getattr(request.user.profile, 'panda', None)
     if not panda or request.method != 'POST':
         return redirect('profile')
-    selected_ids = request.POST.getlist('masters')
+    selected_ids = set(int(i) for i in request.POST.getlist('masters'))
+    current_ids = set(panda.masters.values_list('pk', flat=True))
+
+    new_ids = selected_ids - current_ids
+    removed_ids = current_ids - selected_ids
+
     panda.masters.set(Master.objects.filter(pk__in=selected_ids))
+
+    for master_id in new_ids:
+        StudentEnrollment.objects.get_or_create(
+            master_id=master_id, panda=panda,
+        )
+    for master_id in removed_ids:
+        StudentEnrollment.objects.filter(master_id=master_id, panda=panda).delete()
+
     messages.success(request, 'Your masters have been updated.')
     return redirect('profile')
 

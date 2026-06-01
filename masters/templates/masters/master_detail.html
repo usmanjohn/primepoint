@@ -358,6 +358,9 @@
 
     <div class="mdt-hero-actions">
       {% if user == master.profile.user %}
+      <a href="{% url 'masters-my-students' master.pk %}" class="btn-core-primary text-decoration-none" style="font-size:0.82rem;">
+        <i class="bi bi-people-fill"></i> {% trans "My Students" %}
+      </a>
       <a href="{% url 'masters-certificate' %}" class="btn-core-outline text-decoration-none" style="font-size:0.82rem;">
         <i class="bi bi-award"></i> {% trans "Certificate" %}
       </a>
@@ -689,7 +692,11 @@
 <!-- Own profile CTA -->
 {% if is_owner %}
 <div class="mt-2 pt-3 d-flex flex-wrap gap-2" style="border-top:1px solid var(--border);">
-  <a href="{% url 'manage_practices' %}" class="btn-core-primary text-decoration-none">
+  <a href="{% url 'masters-my-students' master.pk %}" class="btn-core-primary text-decoration-none">
+    <i class="bi bi-people-fill"></i>
+    {% trans "My Students" %}
+  </a>
+  <a href="{% url 'manage_practices' %}" class="btn-core-outline text-decoration-none">
     <i class="bi bi-collection"></i>
     {% trans "Manage Practices" %}
   </a>

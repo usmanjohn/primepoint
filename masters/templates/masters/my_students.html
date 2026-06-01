@@ -1,0 +1,333 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "My Students" %} — {{ master.name }}{% endblock %}
+{% block page_name %}{% trans "My Students" %}{% endblock %}
+{% block nav_masters %}active{% endblock %}
+{% block mob_nav_masters %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+.ms-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.ms-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0;
+}
+.ms-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0.15rem 0 0;
+}
+.ms-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+
+/* Stats row */
+.ms-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+}
+.ms-stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.85rem 0.75rem;
+  text-align: center;
+}
+.ms-stat-icon { font-size: 1.1rem; color: var(--accent); margin-bottom: 0.25rem; }
+.ms-stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.3rem; font-weight: 800;
+  color: var(--text); line-height: 1;
+  margin-bottom: 0.15rem;
+}
+.ms-stat-lbl { font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
+
+/* Add student form */
+.ms-add-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+.ms-add-label {
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+  color: var(--text-muted); display: block; margin-bottom: 0.3rem;
+}
+
+/* Student table */
+.ms-table-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.ms-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.ms-table th {
+  padding: 0.65rem 1rem;
+  font-size: 0.62rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  background: var(--chrome, rgba(0,0,0,0.02));
+  text-align: left;
+  white-space: nowrap;
+}
+.ms-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  font-size: 0.85rem;
+  color: var(--text);
+}
+.ms-table tr:last-child td { border-bottom: none; }
+.ms-table tr:hover td { background: var(--chrome, rgba(0,0,0,0.02)); }
+
+.ms-student-info { display: flex; align-items: center; gap: 0.65rem; }
+.ms-avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border); flex-shrink: 0; }
+.ms-name { font-weight: 600; color: var(--text); }
+.ms-username { font-size: 0.72rem; color: var(--text-muted); }
+
+/* Rank badge */
+.rank-chip {
+  display: inline-block; padding: 0.12rem 0.5rem;
+  border-radius: 5px; font-size: 0.68rem; font-weight: 700;
+}
+.rank-chip.rank-novice      { background: rgba(148,163,184,.15); color: #64748b; }
+.rank-chip.rank-scholar     { background: var(--accent-glow); color: var(--accent); }
+.rank-chip.rank-expert      { background: rgba(34,197,94,.12); color: #16a34a; }
+.rank-chip.rank-grandmaster { background: rgba(251,191,36,.18); color: #b45309; }
+
+/* Payment badge */
+.pay-chip {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  padding: 0.12rem 0.5rem; border-radius: 5px;
+  font-size: 0.68rem; font-weight: 700;
+}
+.pay-chip.paid    { background: rgba(34,197,94,.12); color: #16a34a; }
+.pay-chip.unpaid  { background: rgba(248,113,113,.12); color: #dc2626; }
+.pay-chip.partial { background: rgba(245,158,11,.12); color: #b45309; }
+.pay-chip.none    { background: rgba(148,163,184,.12); color: #64748b; }
+
+/* Attendance bar */
+.att-bar-wrap { display: flex; align-items: center; gap: 0.45rem; }
+.att-bar {
+  flex: 1; height: 6px; border-radius: 10px;
+  background: var(--border); overflow: hidden; min-width: 40px;
+}
+.att-bar-fill { height: 100%; border-radius: 10px; background: #22c55e; }
+.att-text { font-size: 0.72rem; color: var(--text-muted); white-space: nowrap; }
+
+/* Action buttons */
+.ms-row-actions { display: flex; gap: 0.3rem; align-items: center; }
+.ms-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px; border-radius: 7px;
+  border: 1px solid var(--border); background: transparent;
+  color: var(--text-muted); text-decoration: none;
+  font-size: 0.8rem; cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.ms-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
+.ms-btn.danger:hover { border-color: #f87171; color: #f87171; background: rgba(248,113,113,.08); }
+
+/* Empty state */
+.ms-empty {
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: 14px;
+  padding: 2.5rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+.ms-empty i { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; opacity: 0.5; }
+
+@media (max-width: 700px) {
+  .ms-table .hide-sm { display: none; }
+  .ms-table td, .ms-table th { padding: 0.6rem 0.65rem; }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- Header -->
+<div class="ms-header">
+  <div>
+    <a href="{% url 'masters-detail' master.pk %}" style="font-size:0.8rem; color:var(--text-muted); text-decoration:none;">
+      <i class="bi bi-arrow-left me-1"></i>{{ master.name }}
+    </a>
+    <h1 class="ms-title mt-1">{% trans "My Students" %}</h1>
+    <p class="ms-subtitle">{{ student_rows|length }} {% trans "student(s) enrolled" %}</p>
+  </div>
+  <div class="ms-actions">
+    <a href="{% url 'masters-certificate' %}" class="btn-core-outline text-decoration-none" style="font-size:0.82rem;">
+      <i class="bi bi-award"></i> {% trans "Certificates" %}
+    </a>
+    <a href="{% url 'masters-detail' master.pk %}" class="btn-core-outline text-decoration-none" style="font-size:0.82rem;">
+      <i class="bi bi-eye"></i> {% trans "Public Page" %}
+    </a>
+  </div>
+</div>
+
+<!-- Summary stats -->
+{% if student_rows %}
+{% with total=student_rows|length %}
+<div class="ms-stats">
+  <div class="ms-stat">
+    <div class="ms-stat-icon"><i class="bi bi-people-fill"></i></div>
+    <div class="ms-stat-num">{{ total }}</div>
+    <div class="ms-stat-lbl">{% trans "Students" %}</div>
+  </div>
+  <div class="ms-stat">
+    <div class="ms-stat-icon"><i class="bi bi-check-circle-fill" style="color:#22c55e;"></i></div>
+    <div class="ms-stat-num">
+      {% with paid_count=0 %}
+      {% for row in student_rows %}{% if row.last_payment.status == 'paid' %}{% with paid_count=paid_count|add:1 %}{% endwith %}{% endif %}{% endfor %}
+      {{ student_rows|length }}
+      {% endwith %}
+    </div>
+    <div class="ms-stat-lbl">{% trans "Total" %}</div>
+  </div>
+  <div class="ms-stat">
+    <div class="ms-stat-icon"><i class="bi bi-star-fill" style="color:#f59e0b;"></i></div>
+    <div class="ms-stat-num">{{ master.avg_rating|floatformat:1 }}</div>
+    <div class="ms-stat-lbl">{% trans "Avg Rating" %}</div>
+  </div>
+</div>
+{% endwith %}
+{% endif %}
+
+<!-- Add student -->
+<form method="post" action="{% url 'masters-add-student' master.pk %}" class="ms-add-form">
+  {% csrf_token %}
+  <div style="flex:1; min-width: 180px;">
+    <label class="ms-add-label" for="add-username">{% trans "Add Student by Username" %}</label>
+    <input type="text" id="add-username" name="username" required
+           class="form-control form-control-sm"
+           placeholder="{% trans 'Enter username...' %}"
+           style="border-radius:8px; border:1px solid var(--border); background:var(--chrome); color:var(--text); font-size:0.85rem;">
+  </div>
+  <button type="submit" class="btn-core-primary" style="white-space:nowrap; font-size:0.82rem; height:34px;">
+    <i class="bi bi-person-plus"></i> {% trans "Add" %}
+  </button>
+</form>
+
+<!-- Student table -->
+{% if student_rows %}
+<div class="ms-table-wrap">
+  <table class="ms-table">
+    <thead>
+      <tr>
+        <th>{% trans "Student" %}</th>
+        <th>{% trans "Rank" %}</th>
+        <th class="hide-sm">{% trans "Joined" %}</th>
+        <th>{% trans "Payment" %}</th>
+        <th class="hide-sm">{% trans "Attendance" %}</th>
+        <th class="hide-sm">{% trans "Avg Score" %}</th>
+        <th>{% trans "Actions" %}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in student_rows %}
+      <tr>
+        <td>
+          <div class="ms-student-info">
+            <img src="{{ row.panda.profile.image_url }}" alt="{{ row.panda.profile.user.username }}" class="ms-avatar">
+            <div>
+              <div class="ms-name">{{ row.panda.profile.first_name|default:row.panda.profile.user.username }}</div>
+              <div class="ms-username">@{{ row.panda.profile.user.username }}</div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <span class="rank-chip rank-{{ row.panda.rank|lower }}">{{ row.panda.rank }}</span>
+        </td>
+        <td class="hide-sm" style="color:var(--text-muted); font-size:0.8rem;">
+          {% if row.enrollment %}
+            {{ row.enrollment.joined_at|date:"M d, Y" }}
+          {% else %}
+            <span class="text-muted">—</span>
+          {% endif %}
+        </td>
+        <td>
+          {% if row.last_payment %}
+            <span class="pay-chip {{ row.last_payment.status }}">
+              {% if row.last_payment.status == 'paid' %}<i class="bi bi-check-circle-fill"></i>
+              {% elif row.last_payment.status == 'unpaid' %}<i class="bi bi-x-circle-fill"></i>
+              {% else %}<i class="bi bi-dash-circle-fill"></i>{% endif %}
+              {{ row.last_payment.get_status_display }}
+            </span>
+            {% if row.last_payment.period_label %}
+            <div style="font-size:0.65rem; color:var(--text-muted); margin-top:0.2rem;">{{ row.last_payment.period_label }}</div>
+            {% endif %}
+          {% else %}
+            <span class="pay-chip none">{% trans "No records" %}</span>
+          {% endif %}
+        </td>
+        <td class="hide-sm">
+          {% if row.attendance_total > 0 %}
+          <div class="att-bar-wrap">
+            <div class="att-bar">
+              <div class="att-bar-fill" style="width:{% widthratio row.attendance_present row.attendance_total 100 %}%;"></div>
+            </div>
+            <span class="att-text">{{ row.attendance_present }}/{{ row.attendance_total }}</span>
+          </div>
+          {% else %}
+            <span style="font-size:0.75rem; color:var(--text-muted);">—</span>
+          {% endif %}
+        </td>
+        <td class="hide-sm" style="font-size:0.85rem; font-weight:600;">
+          {% if row.panda.avg_score %}
+            {{ row.panda.avg_score|floatformat:0 }}%
+          {% else %}
+            <span style="color:var(--text-muted);">—</span>
+          {% endif %}
+        </td>
+        <td>
+          <div class="ms-row-actions">
+            <a href="{% url 'masters-student-detail' master.pk row.panda.pk %}" class="ms-btn" title="{% trans 'View details' %}">
+              <i class="bi bi-eye"></i>
+            </a>
+            <form method="post" action="{% url 'master-remove-student' master.pk row.panda.pk %}"
+                  style="margin:0;" onsubmit="return confirm('{% trans "Remove this student?" %}')">
+              {% csrf_token %}
+              <button type="submit" class="ms-btn danger" title="{% trans 'Remove student' %}">
+                <i class="bi bi-person-dash"></i>
+              </button>
+            </form>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% else %}
+<div class="ms-empty">
+  <i class="bi bi-people"></i>
+  <h6 class="fw-bold mb-1">{% trans "No students yet" %}</h6>
+  <p class="small mb-0">{% trans "Add students using their username above, or students can choose you as their master from their profile." %}</p>
+</div>
+{% endif %}
+
+{% endblock %}
