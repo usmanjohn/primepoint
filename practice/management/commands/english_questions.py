@@ -1,1099 +1,917 @@
-
-QUESTIONS_10 = [
+QUESTIONS_past_perfect = [
     {
-        'text': '<p>Choose the correct option.</p><p><strong>I ___ for you for two hours. Where have you been?</strong></p>',
-        'explanation': '<p><strong>have been waiting</strong> is correct. We use Present Perfect Continuous for an action that started in the past and is still happening. <br><br><em>(<strong>have been waiting</strong> to\'g\'ri. Biz o\'tmishda boshlanib, hozir ham davom etayotgan harakatlar uchun Present Perfect Continuous zamonini ishlatamiz.)</em></p>',
-        'correct': 'have been waiting',
-        'choices': ['have waited', 'am waiting', 'have been waiting', 'was waiting'],
+        'text': '<p>Choose the correct option.</p><p><strong>By the time the incredibly exhausted tourists arrived, the bus ___ already ___.</strong></p>',
+        'explanation': '<p><strong>had / departed</strong> is correct. Past Perfect is used for the action that happened first in the past. <br><br><em>(<strong>had / departed</strong> to\'g\'ri. O\'tmishda birinchi sodir bo\'lgan harakat uchun Past Perfect ishlatiladi.)</em></p>',
+        'correct': 'had / departed',
+        'choices': ['has / departed', 'had / departed', 'was / departing', 'did / depart']
     },
     {
-        'text': '<p>Choose the correct option.</p><p><strong>She ___ three books this week.</strong></p>',
-        'explanation': '<p><strong>has read</strong> is correct. We use Present Perfect because we are focusing on the completed result and quantity (three books). <br><br><em>(<strong>has read</strong> to\'g\'ri. Biz Present Perfect zamonini ishlatamiz, chunki e\'tibor tugallangan natija va miqdorga (uchta kitob) qaratilgan.)</em></p>',
-        'correct': 'has read',
-        'choices': ['has been reading', 'has read', 'is reading', 'reads'],
+        'text': '<p>Choose the correct option.</p><p><strong>She gracefully declined the extremely generous offer because she ___ another job.</strong></p>',
+        'explanation': '<p><strong>had found</strong> is correct. Finding the job happened before declining the offer. <br><br><em>(<strong>had found</strong> to\'g\'ri. Ish topish taklifni rad etishdan oldin sodir bo\'lgan.)</em></p>',
+        'correct': 'had found',
+        'choices': ['found', 'finds', 'would find', 'had found']
     },
     {
-        'text': '<p>Choose the correct option.</p><p><strong>How long ___ English? Your pronunciation is great!</strong></p>',
-        'explanation': '<p><strong>have you been learning</strong> is correct. We use Present Perfect Continuous with "How long" to ask about the duration of an ongoing process. <br><br><em>(<strong>have you been learning</strong> to\'g\'ri. Biz davom etayotgan jarayonning qancha vaqt o\'tganini so\'rash uchun "How long" bilan Present Perfect Continuous zamonini ishlatamiz.)</em></p>',
-        'correct': 'have you been learning',
-        'choices': ['did you learn', 'are you learning', 'do you learn', 'have you been learning'],
+        'text': '<p>Choose the correct option.</p><p><strong>The beautifully decorated cake was gone; the children ___ it completely.</strong></p>',
+        'explanation': '<p><strong>had eaten</strong> is correct. The eating was completed before the observation in the past. <br><br><em>(<strong>had eaten</strong> to\'g\'ri. Yeyish harakati o\'tmishdagi kuzatuvdan oldin tugallangan.)</em></p>',
+        'correct': 'had eaten',
+        'choices': ['ate', 'were eating', 'had eaten', 'have eaten']
     },
     {
-        'text': '<p>Choose the correct option.</p><p><strong>I ___ my best friend since we were children.</strong></p>',
-        'explanation': '<p><strong>have known</strong> is correct. "Know" is a state verb, so we cannot use it in the continuous form even if it shows duration. <br><br><em>(<strong>have known</strong> to\'g\'ri. "Know" (bilmoq/tanimoq) holat fe\'lidir, shuning uchun davomiylikni ko\'rsatsa ham uni davomiy (continuous) shaklda ishlata olmaymiz.)</em></p>',
-        'correct': 'have known',
-        'choices': ['have known', 'have been knowing', 'knew', 'am knowing'],
+        'text': '<p>Choose the correct option.</p><p><strong>He suddenly realized that he ___ his highly important documents at home.</strong></p>',
+        'explanation': '<p><strong>had left</strong> is correct. The leaving of documents happened before he realized it. <br><br><em>(<strong>had left</strong> to\'g\'ri. Hujjatlarni qoldirish u anglab yetishidan oldin sodir bo\'lgan.)</em></p>',
+        'correct': 'had left',
+        'choices': ['had left', 'leaves', 'has left', 'was leaving']
     },
     {
-        'text': '<p>Choose the correct option.</p><p><strong>The ground is wet. It ___ .</strong></p>',
-        'explanation': '<p><strong>has been raining</strong> is correct. We use Present Perfect Continuous for a recently finished action that leaves a visible result (wet ground). <br><br><em>(<strong>has been raining</strong> to\'g\'ri. Yaqinda tugagan va hozir ko\'rinib turgan natijani (ho\'l yer) qoldirgan harakatlar uchun Present Perfect Continuous zamonini ishlatamiz.)</em></p>',
-        'correct': 'has been raining',
-        'choices': ['rained', 'rains', 'has been raining', 'has rained'],
+        'text': '<p>Choose the correct option.</p><p><strong>The profoundly silent room felt strange because I ___ such quietness before.</strong></p>',
+        'explanation': '<p><strong>had never experienced</strong> is correct. It describes a life experience before a specific past moment. <br><br><em>(<strong>had never experienced</strong> to\'g\'ri. O\'tmishdagi ma\'lum bir vaqtdan oldingi hayotiy tajribani bildiradi.)</em></p>',
+        'correct': 'had never experienced',
+        'choices': ['never experience', 'have never experienced', 'had never experienced', 'never experienced']
     },
     {
-        'text': '<p>Choose the correct option.</p><p><strong>He ___ all the cookies! The jar is completely empty.</strong></p>',
-        'explanation': '<p><strong>has eaten</strong> is correct. The action is completed and the focus is on the result (the jar is empty). <br><br><em>(<strong>has eaten</strong> to\'g\'ri. Harakat tugallangan va urg\'u natijaga (idish bo\'shligiga) qaratilgan.)</em></p>',
-        'correct': 'has eaten',
-        'choices': ['ate', 'has eaten', 'has been eating', 'is eating'],
+        'text': '<p>Choose the correct option.</p><p><strong>When the fiercely competitive race started, the rain ___ unexpectedly.</strong></p>',
+        'explanation': '<p><strong>had stopped</strong> is correct. The rain stopped before the race began. <br><br><em>(<strong>had stopped</strong> to\'g\'ri. Yomg\'ir poyga boshlanishidan oldin to\'xtagan edi.)</em></p>',
+        'correct': 'had stopped',
+        'choices': ['stopped', 'had stopped', 'was stopping', 'has stopped']
     },
     {
-        'text': '<p>Choose the correct option.</p><p><strong>They ___ on this project since 2024.</strong></p>',
-        'explanation': '<p><strong>have been working</strong> is correct. The action started in the past and is still ongoing. <br><br><em>(<strong>have been working</strong> to\'g\'ri. Harakat o\'tmishda boshlangan va hozir ham davom etmoqda.)</em></p>',
-        'correct': 'have been working',
-        'choices': ['have been working', 'are working', 'worked', 'have worked'],
+        'text': '<p>Choose the correct option.</p><p><strong>The fiercely loyal dog patiently waited where his master ___ him.</strong></p>',
+        'explanation': '<p><strong>had left</strong> is correct. The master leaving the dog happened earlier. <br><br><em>(<strong>had left</strong> to\'g\'ri. Egasining itni qoldirishi oldinroq sodir bo\'lgan.)</em></p>',
+        'correct': 'had left',
+        'choices': ['had left', 'has left', 'leaves', 'left']
     },
     {
-        'text': '<p>Choose the correct option.</p><p><strong>We ___ each other much lately.</strong></p>',
-        'explanation': '<p><strong>haven\'t seen</strong> is correct. "See" is usually a state verb in this context, focusing on the lack of contact over a recent period. <br><br><em>(<strong>haven\'t seen</strong> to\'g\'ri. "See" (ko\'rmoq) bu o\'rinda holat fe\'li bo\'lib, so\'nggi paytlardagi aloqaning yo\'qligiga e\'tibor qaratadi.)</em></p>',
-        'correct': 'haven\'t seen',
-        'choices': ['didn\'t see', 'don\'t see', 'haven\'t been seeing', 'haven\'t seen'],
+        'text': '<p>Choose the correct option.</p><p><strong>They ___ the wildly popular movie before they finally read the book.</strong></p>',
+        'explanation': '<p><strong>had watched</strong> is correct. Watching the movie preceded reading the book. <br><br><em>(<strong>had watched</strong> to\'g\'ri. Kinoni ko\'rish kitobni o\'qishdan oldin bo\'lgan.)</em></p>',
+        'correct': 'had watched',
+        'choices': ['watched', 'were watching', 'have watched', 'had watched']
     },
     {
-        'text': '<p>Choose the correct option.</p><p><strong>You look exhausted. What ___ ?</strong></p>',
-        'explanation': '<p><strong>have you been doing</strong> is correct. We are asking about the continuous action that caused the visible present result (exhaustion). <br><br><em>(<strong>have you been doing</strong> to\'g\'ri. Biz hozirgi natijaga (charchoqqa) sabab bo\'lgan davomiy harakat haqida so\'rayapmiz.)</em></p>',
-        'correct': 'have you been doing',
-        'choices': ['did you do', 'have you done', 'have you been doing', 'are you doing'],
+        'text': '<p>Choose the correct option.</p><p><strong>I nervously checked my deeply hidden pockets, but someone ___ my wallet.</strong></p>',
+        'explanation': '<p><strong>had stolen</strong> is correct. The stealing happened before checking the pockets. <br><br><em>(<strong>had stolen</strong> to\'g\'ri. O\'g\'irlik cho\'ntaklarni tekshirishdan oldin sodir bo\'lgan.)</em></p>',
+        'correct': 'had stolen',
+        'choices': ['stole', 'steals', 'had stolen', 'has stolen']
     },
     {
-        'text': '<p>Choose the correct option.</p><p><strong>I ___ my room. That\'s why there is paint on my clothes, but I am only half finished.</strong></p>',
-        'explanation': '<p><strong>have been painting</strong> is correct. The action is incomplete and still ongoing, with visible evidence (paint on clothes). <br><br><em>(<strong>have been painting</strong> to\'g\'ri. Harakat hali tugallanmagan va davom etmoqda, hamda uning asorati (kiyimdagi bo\'yoq) ko\'rinib turibdi.)</em></p>',
-        'correct': 'have been painting',
-        'choices': ['painted', 'have been painting', 'have painted', 'am painting'],
+        'text': '<p>Choose the correct option.</p><p><strong>Because the incredibly stubborn man ___ his medicine, his illness worsened rapidly.</strong></p>',
+        'explanation': '<p><strong>hadn\'t taken</strong> is correct. Not taking the medicine was the prior cause of the worsening. <br><br><em>(<strong>hadn\'t taken</strong> to\'g\'ri. Dorini ichmaslik kasallik og\'irlashishidan oldingi sabab edi.)</em></p>',
+        'correct': 'hadn\'t taken',
+        'choices': ['hasn\'t taken', 'didn\'t take', 'hadn\'t taken', 'doesn\'t take']
     },
     {
-        'text': '<p>Choose the correct option.</p><p><strong>Somebody ___ my coffee. The cup is half empty.</strong></p>',
-        'explanation': '<p><strong>has been drinking</strong> is correct. The action is ongoing or recently stopped, and the coffee isn\'t completely gone. <br><br><em>(<strong>has been drinking</strong> to\'g\'ri. Harakat davom etgan yoki yaqinda to\'xtagan, va qahva to\'liq tugamagan.)</em></p>',
-        'correct': 'has been drinking',
-        'choices': ['has been drinking', 'drinks', 'drank', 'has drunk'],
+        'text': '<p>Choose the correct option.</p><p><strong>The exceptionally talented musician ___ for years before she became famous.</strong></p>',
+        'explanation': '<p><strong>had practiced</strong> is correct. Practice happened before fame. <br><br><em>(<strong>had practiced</strong> to\'g\'ri. Mashq qilish mashhurlikdan oldin bo\'lgan.)</em></p>',
+        'correct': 'had practiced',
+        'choices': ['practiced', 'had practiced', 'has practiced', 'practices']
     },
     {
-        'text': '<p>Choose the correct option.</p><p><strong>I ___ my keys. Can you help me find them?</strong></p>',
-        'explanation': '<p><strong>have lost</strong> is correct. The action is completed and has a clear present result (keys are missing). <br><br><em>(<strong>have lost</strong> to\'g\'ri. Harakat tugallangan va uning hozirgi aniq natijasi bor (kalitlar yo\'qolgan).)</em></p>',
-        'correct': 'have lost',
-        'choices': ['have been losing', 'am losing', 'have lost', 'lost'],
+        'text': '<p>Choose the correct option.</p><p><strong>We quickly realized that we ___ the entirely wrong path.</strong></p>',
+        'explanation': '<p><strong>had chosen</strong> is correct. The choice was made before the realization. <br><br><em>(<strong>had chosen</strong> to\'g\'ri. Tanlov anglab yetishdan oldin qilingan edi.)</em></p>',
+        'correct': 'had chosen',
+        'choices': ['chose', 'were choosing', 'have chosen', 'had chosen']
     },
     {
-        'text': '<p>Choose the correct option.</p><p><strong>How many times ___ New York?</strong></p>',
-        'explanation': '<p><strong>have you visited</strong> is correct. We use Present Perfect for quantities and repeated experiences ("How many times"). <br><br><em>(<strong>have you visited</strong> to\'g\'ri. Biz miqdor va takrorlangan tajribalar uchun ("Necha marta") Present Perfect zamonini ishlatamiz.)</em></p>',
-        'correct': 'have you visited',
-        'choices': ['do you visit', 'have you visited', 'did you visit', 'have you been visiting'],
+        'text': '<p>Choose the correct option.</p><p><strong>She was extremely angry because she ___ for over two hours.</strong></p>',
+        'explanation': '<p><strong>had waited</strong> is correct. The waiting caused the past anger. <br><br><em>(<strong>had waited</strong> to\'g\'ri. Kutish o\'tmishdagi jahlga sabab bo\'lgan.)</em></p>',
+        'correct': 'had waited',
+        'choices': ['waits', 'had waited', 'waited', 'has waited']
     },
     {
-        'text': '<p>Choose the correct option.</p><p><strong>He ___ for an hour and he is very tired now.</strong></p>',
-        'explanation': '<p><strong>has been running</strong> is correct. The action has a duration (for an hour) and explains a present result (being tired). <br><br><em>(<strong>has been running</strong> to\'g\'ri. Harakatning davomiyligi bor (bir soat davomida) va u hozirgi natijani (charchaganini) tushuntiradi.)</em></p>',
-        'correct': 'has been running',
-        'choices': ['runs', 'ran', 'has run', 'has been running'],
+        'text': '<p>Choose the correct option.</p><p><strong>The amazingly fast sprinter ___ the finish line before anyone else even came close.</strong></p>',
+        'explanation': '<p><strong>had crossed</strong> is correct. Crossing happened prior to others coming close. <br><br><em>(<strong>had crossed</strong> to\'g\'ri. Chiziqni kesib o\'tish boshqalar yaqinlashishidan oldin sodir bo\'ldi.)</em></p>',
+        'correct': 'had crossed',
+        'choices': ['had crossed', 'crossed', 'was crossing', 'has crossed']
     },
     {
-        'text': '<p>Choose the correct option.</p><p><strong>I ___ chocolate. It\'s my favorite!</strong></p>',
-        'explanation': '<p><strong>have always loved</strong> is correct. "Love" is a state verb, so it cannot be used in a continuous tense. <br><br><em>(<strong>have always loved</strong> to\'g\'ri. "Love" (sevmoq/yoqtirmoq) holat fe\'lidir, shuning uchun uni davomiy zamonda ishlatib bo\'lmaydi.)</em></p>',
-        'correct': 'have always loved',
-        'choices': ['have always loved', 'have always been loving', 'always loved', 'am always loving'],
+        'text': '<p>Choose the correct option.</p><p><strong>They easily won the challenging match because they ___ so rigorously.</strong></p>',
+        'explanation': '<p><strong>had trained</strong> is correct. The training preceded the victory. <br><br><em>(<strong>had trained</strong> to\'g\'ri. Mashg\'ulot g\'alabadan oldin bo\'lgan.)</em></p>',
+        'correct': 'had trained',
+        'choices': ['train', 'trained', 'have trained', 'had trained']
     },
     {
-        'text': '<p>Choose the correct option.</p><p><strong>She ___ her essay all morning. She needs a break.</strong></p>',
-        'explanation': '<p><strong>has been writing</strong> is correct. "All morning" emphasizes the uninterrupted duration of the action. <br><br><em>(<strong>has been writing</strong> to\'g\'ri. "All morning" (butun ertalab) harakatning uzluksiz davom etganligiga urg\'u beradi.)</em></p>',
-        'correct': 'has been writing',
-        'choices': ['wrote', 'has written', 'has been writing', 'is writing'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>She ___ five pages of her essay so far.</strong></p>',
-        'explanation': '<p><strong>has written</strong> is correct. "Five pages" shows the quantity of the completed action up to now. <br><br><em>(<strong>has written</strong> to\'g\'ri. "Five pages" (besh sahifa) hozirgi paytgacha tugallangan harakatning miqdorini ko\'rsatadi.)</em></p>',
-        'correct': 'has written',
-        'choices': ['wrote', 'has written', 'has been writing', 'writes'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I ___ about buying a new car recently. What do you think?</strong></p>',
-        'explanation': '<p><strong>have been thinking</strong> is correct. "Think" (meaning "consider") can be used in continuous form. "Recently" points to an ongoing process. <br><br><em>(<strong>have been thinking</strong> to\'g\'ri. "Think" (o\'ylamoq/ko\'rib chiqmoq ma\'nosida) davomiy shaklda ishlatilishi mumkin. "Recently" (yaqinda/shu kunlarda) davom etayotgan jarayonni ko\'rsatadi.)</em></p>',
-        'correct': 'have been thinking',
-        'choices': ['thought', 'am thinking', 'have thought', 'have been thinking'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>We ___ this car for five years. It\'s very reliable.</strong></p>',
-        'explanation': '<p><strong>have had</strong> is correct. "Have" (meaning "possess") is a state verb and cannot be continuous. <br><br><em>(<strong>have had</strong> to\'g\'ri. "Have" (egalik qilmoq ma\'nosida) holat fe\'lidir va uni davomiy zamonda ishlatib bo\'lmaydi.)</em></p>',
-        'correct': 'have had',
-        'choices': ['had', 'have been having', 'have had', 'are having'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>Why are your hands dirty? I ___ my bike.</strong></p>',
-        'explanation': '<p><strong>have been fixing</strong> is correct. Fixing the bike is the ongoing activity that explains the present result (dirty hands). <br><br><em>(<strong>have been fixing</strong> to\'g\'ri. Velosipedni tuzatish - bu hozirgi natijaga (iflos qo\'llarga) sabab bo\'lgan davomiy mashg\'ulotdir.)</em></p>',
-        'correct': 'have been fixing',
-        'choices': ['have been fixing', 'have fixed', 'am fixing', 'fixed'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I ___ the bike. You can ride it now.</strong></p>',
-        'explanation': '<p><strong>have fixed</strong> is correct. The action is finished, and the result is that the bike is ready to use. <br><br><em>(<strong>have fixed</strong> to\'g\'ri. Harakat tugagan va natijada velosiped haydashga tayyor.)</em></p>',
-        'correct': 'have fixed',
-        'choices': ['fixed', 'have fixed', 'have been fixing', 'am fixing'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>He ___ the lesson at all. He needs extra help.</strong></p>',
-        'explanation': '<p><strong>hasn\'t understood</strong> is correct. "Understand" is a state verb and cannot be used in continuous tenses. <br><br><em>(<strong>hasn\'t understood</strong> to\'g\'ri. "Understand" (tushunmoq) holat fe\'lidir va uni davomiy zamonlarda ishlatib bo\'lmaydi.)</em></p>',
-        'correct': 'hasn\'t understood',
-        'choices': ['didn\'t understand', 'hasn\'t been understanding', 'hasn\'t understood', 'isn\'t understanding'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>___ sushi? It\'s delicious!</strong></p>',
-        'explanation': '<p><strong>Have you ever eaten</strong> is correct. We use Present Perfect with "ever" to ask about life experiences up to now. <br><br><em>(<strong>Have you ever eaten</strong> to\'g\'ri. Biz hozirgi kungacha bo\'lgan hayotiy tajribalar haqida so\'rash uchun "ever" bilan Present Perfect ishlatamiz.)</em></p>',
-        'correct': 'Have you ever eaten',
-        'choices': ['Did you ever eat', 'Have you ever eaten', 'Have you ever been eating', 'Are you ever eating'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>It ___ since yesterday evening, and the roads are covered in white.</strong></p>',
-        'explanation': '<p><strong>has been snowing</strong> is correct. The action started in the past (yesterday evening) and is still continuing. <br><br><em>(<strong>has been snowing</strong> to\'g\'ri. Harakat o\'tmishda (kecha kechqurun) boshlangan va hozir ham davom etmoqda.)</em></p>',
-        'correct': 'has been snowing',
-        'choices': ['has been snowing', 'snows', 'has snowed', 'snowed'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I ___ in ghosts since I was a child.</strong></p>',
-        'explanation': '<p><strong>have believed</strong> is correct. "Believe" is a state verb and cannot be continuous. <br><br><em>(<strong>have believed</strong> to\'g\'ri. "Believe" (ishonmoq) holat fe\'lidir va uni davomiy (continuous) shaklda ishlata olmaymiz.)</em></p>',
-        'correct': 'have believed',
-        'choices': ['believed', 'am believing', 'have been believing', 'have believed'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The baby ___ for three hours. Let\'s wake him up.</strong></p>',
-        'explanation': '<p><strong>has been sleeping</strong> is correct. This emphasizes the continuous duration of the sleep up to now. <br><br><em>(<strong>has been sleeping</strong> to\'g\'ri. Bu uyquning hozirgi paytgacha bo\'lgan davomiyligiga urg\'u beradi.)</em></p>',
-        'correct': 'has been sleeping',
-        'choices': ['slept', 'has been sleeping', 'is sleeping', 'has slept'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>Someone ___ my chocolates! The box is completely empty.</strong></p>',
-        'explanation': '<p><strong>has eaten</strong> is correct. The action is completed, leaving a result (the box is empty). <br><br><em>(<strong>has eaten</strong> to\'g\'ri. Harakat tugallangan va o\'zidan natija qoldirgan (quti bo\'sh).)</em></p>',
-        'correct': 'has eaten',
-        'choices': ['ate', 'is eating', 'has eaten', 'has been eating'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>How long ___ for the bus? He looks annoyed.</strong></p>',
-        'explanation': '<p><strong>has he been waiting</strong> is correct. We use "How long" with Present Perfect Continuous to focus on the duration of an ongoing action. <br><br><em>(<strong>has he been waiting</strong> to\'g\'ri. Davom etayotgan harakatning muddatiga urg\'u berish uchun biz "How long" bilan Present Perfect Continuous ishlatamiz.)</em></p>',
-        'correct': 'has he been waiting',
-        'choices': ['has he been waiting', 'did he wait', 'is he waiting', 'has he waited'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I ___ my homework. Can I go out to play now?</strong></p>',
-        'explanation': '<p><strong>have finished</strong> is correct. The action of finishing is complete, bringing a result (permission to play). <br><br><em>(<strong>have finished</strong> to\'g\'ri. Tugatish harakati yakunlangan, va u natija olib keladi (o\'ynashga ruxsat).)</em></p>',
-        'correct': 'have finished',
-        'choices': ['am finishing', 'finished', 'have been finishing', 'have finished'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>My eyes hurt because I ___ TV for too long.</strong></p>',
-        'explanation': '<p><strong>have been watching</strong> is correct. The continuous action explains the visible present result (hurting eyes). <br><br><em>(<strong>have been watching</strong> to\'g\'ri. Davomiy harakat hozirgi ko\'rinib turgan natijani (ko\'z og\'rishini) tushuntiradi.)</em></p>',
-        'correct': 'have been watching',
-        'choices': ['watch', 'have been watching', 'have watched', 'watched'],
-    }
-]
-
-QUESTIONS_11 = [
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I really enjoy ___ books in my free time.</strong></p>',
-        'explanation': '<p><strong>reading</strong> is correct. The verb "enjoy" is always followed by a gerund (-ing). <br><br><em>(<strong>reading</strong> to\'g\'ri. "Enjoy" (zavqlanmoq) fe\'lidan so\'ng doim gerundiy keladi.)</em></p>',
-        'correct': 'reading',
-        'choices': ['to read', 'reading', 'read', 'to reading'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>She wants ___ a new language this year.</strong></p>',
-        'explanation': '<p><strong>to learn</strong> is correct. The verb "want" is followed by an infinitive (to + verb). <br><br><em>(<strong>to learn</strong> to\'g\'ri. "Want" (xohlamoq) fe\'lidan so\'ng doim infinitiv ishlatiladi.)</em></p>',
-        'correct': 'to learn',
-        'choices': ['learning', 'learn', 'to learn', 'learned'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>We talked about ___ a new project for the education center.</strong></p>',
-        'explanation': '<p><strong>starting</strong> is correct. We always use a gerund after a preposition like "about". <br><br><em>(<strong>starting</strong> to\'g\'ri. "About" (haqida) kabi predloglardan keyin har doim gerundiy ishlatamiz.)</em></p>',
-        'correct': 'starting',
-        'choices': ['to start', 'starting', 'start', 'started'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I went to the store ___ some milk.</strong></p>',
-        'explanation': '<p><strong>to buy</strong> is correct. We use the infinitive to show the purpose of an action (why you did something). <br><br><em>(<strong>to buy</strong> to\'g\'ri. Harakatning maqsadini (nima uchun qilinganini) ko\'rsatish uchun biz infinitivdan foydalanamiz.)</em></p>',
-        'correct': 'to buy',
-        'choices': ['buying', 'for buy', 'to buy', 'buy'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>He stopped ___ two years ago for his health.</strong></p>',
-        'explanation': '<p><strong>smoking</strong> is correct. "Stop" + gerund means to quit an action completely. <br><br><em>(<strong>smoking</strong> to\'g\'ri. "Stop" + gerundiy harakatni butunlay tashlashni (to\'xtatishni) anglatadi.)</em></p>',
-        'correct': 'smoking',
-        'choices': ['to smoke', 'smoking', 'smoke', 'smoked'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>We were driving and stopped ___ some food on the way.</strong></p>',
-        'explanation': '<p><strong>to buy</strong> is correct. "Stop" + infinitive means interrupting your current action in order to do something else. <br><br><em>(<strong>to buy</strong> to\'g\'ri. "Stop" + infinitiv boshqa biror ishni qilish maqsadida joriy harakatdan to\'xtashni anglatadi.)</em></p>',
-        'correct': 'to buy',
-        'choices': ['buying', 'to buy', 'buy', 'bought'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>___ is a great way to stay fit and healthy.</strong></p>',
-        'explanation': '<p><strong>Swimming</strong> is correct. When an action is the subject of a sentence, we use the gerund form. <br><br><em>(<strong>Swimming</strong> to\'g\'ri. Harakat gapning egasi (bosh qismi) bo\'lib kelganida, biz gerundiy shaklidan foydalanamiz.)</em></p>',
-        'correct': 'Swimming',
-        'choices': ['To swim', 'Swim', 'Swimming', 'Swam'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>They decided ___ the old house.</strong></p>',
-        'explanation': '<p><strong>to sell</strong> is correct. The verb "decide" is always followed by an infinitive. <br><br><em>(<strong>to sell</strong> to\'g\'ri. "Decide" (qaror qilmoq) fe\'lidan so\'ng doim infinitiv keladi.)</em></p>',
-        'correct': 'to sell',
-        'choices': ['selling', 'to sell', 'sell', 'sold'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>He promised ___ me with my Python homework.</strong></p>',
-        'explanation': '<p><strong>to help</strong> is correct. The verb "promise" is followed by an infinitive. <br><br><em>(<strong>to help</strong> to\'g\'ri. "Promise" (vada bermoq) fe\'lidan keyin infinitiv ishlatiladi.)</em></p>',
-        'correct': 'to help',
-        'choices': ['helping', 'to help', 'help', 'helped'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>Do you mind ___ the window? It\'s hot in here.</strong></p>',
-        'explanation': '<p><strong>opening</strong> is correct. The verb "mind" is always followed by a gerund. <br><br><em>(<strong>opening</strong> to\'g\'ri. "Mind" (qarshi bo\'lmoq) fe\'lidan so\'ng har doim gerundiy keladi.)</em></p>',
-        'correct': 'opening',
-        'choices': ['to open', 'opening', 'open', 'opened'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I clearly remember ___ the door before leaving. I double-checked it!</strong></p>',
-        'explanation': '<p><strong>locking</strong> is correct. "Remember" + gerund refers to having a memory of a past action. <br><br><em>(<strong>locking</strong> to\'g\'ri. "Remember" + gerundiy o\'tmishda qilingan harakatni xotirlashni bildiradi.)</em></p>',
-        'correct': 'locking',
-        'choices': ['to lock', 'locking', 'lock', 'locked'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>Please remember ___ the milk on your way home.</strong></p>',
-        'explanation': '<p><strong>to buy</strong> is correct. "Remember" + infinitive means not forgetting to do a required task. <br><br><em>(<strong>to buy</strong> to\'g\'ri. "Remember" + infinitiv qilinishi kerak bo\'lgan vazifani unutmaslikni bildiradi.)</em></p>',
-        'correct': 'to buy',
-        'choices': ['buying', 'to buy', 'buy', 'bought'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>You should avoid ___ too much junk food.</strong></p>',
-        'explanation': '<p><strong>eating</strong> is correct. The verb "avoid" is followed by a gerund. <br><br><em>(<strong>eating</strong> to\'g\'ri. "Avoid" (qochmoq/saqlanmoq) fe\'lidan so\'ng gerundiy ishlatiladi.)</em></p>',
-        'correct': 'eating',
-        'choices': ['to eat', 'eating', 'eat', 'ate'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>We plan ___ to Japan next summer.</strong></p>',
-        'explanation': '<p><strong>to travel</strong> is correct. The verb "plan" is followed by an infinitive. <br><br><em>(<strong>to travel</strong> to\'g\'ri. "Plan" (rejalashtirmoq) fe\'lidan so\'ng infinitiv keladi.)</em></p>',
-        'correct': 'to travel',
-        'choices': ['traveling', 'to travel', 'travel', 'traveled'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>He left the room without ___ a single word.</strong></p>',
-        'explanation': '<p><strong>saying</strong> is correct. "Without" is a preposition, and prepositions must be followed by a gerund. <br><br><em>(<strong>saying</strong> to\'g\'ri. "Without" (siz/masdan) predlog hisoblanadi va predloglardan keyin gerundiy kelishi shart.)</em></p>',
-        'correct': 'saying',
-        'choices': ['to say', 'saying', 'say', 'said'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>Have you finished ___ your essay yet?</strong></p>',
-        'explanation': '<p><strong>writing</strong> is correct. The verb "finish" is always followed by a gerund. <br><br><em>(<strong>writing</strong> to\'g\'ri. "Finish" (tugatmoq) fe\'lidan keyin doim gerundiy keladi.)</em></p>',
-        'correct': 'writing',
-        'choices': ['to write', 'writing', 'write', 'wrote'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I hope ___ you soon!</strong></p>',
-        'explanation': '<p><strong>to see</strong> is correct. The verb "hope" points to the future and is followed by an infinitive. <br><br><em>(<strong>to see</strong> to\'g\'ri. "Hope" (umid qilmoq) fe\'li kelajakka ishora qiladi va o\'zidan so\'ng infinitiv oladi.)</em></p>',
-        'correct': 'to see',
-        'choices': ['seeing', 'to see', 'see', 'saw'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I am trying ___ this math problem, but it\'s very hard.</strong></p>',
-        'explanation': '<p><strong>to solve</strong> is correct. "Try" + infinitive means making an effort to do something difficult. <br><br><em>(<strong>to solve</strong> to\'g\'ri. "Try" + infinitiv qiyin narsani bajarishga harakat qilishni anglatadi.)</em></p>',
-        'correct': 'to solve',
-        'choices': ['solving', 'to solve', 'solve', 'solved'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The computer isn\'t working. Have you tried ___ it?</strong></p>',
-        'explanation': '<p><strong>restarting</strong> is correct. "Try" + gerund means experimenting with something to see if it solves a problem. <br><br><em>(<strong>restarting</strong> to\'g\'ri. "Try" + gerundiy muammoni hal qilish yoki qilmasligini sinab ko\'rish (eksperiment qilish) ma\'nosida keladi.)</em></p>',
-        'correct': 'restarting',
-        'choices': ['to restart', 'restarting', 'restart', 'restarted'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>He suggested ___ to the park for a walk.</strong></p>',
-        'explanation': '<p><strong>going</strong> is correct. The verb "suggest" must be followed by a gerund, not an infinitive. <br><br><em>(<strong>going</strong> to\'g\'ri. "Suggest" (taklif qilmoq) fe\'lidan keyin infinitiv emas, gerundiy ishlatilishi shart.)</em></p>',
-        'correct': 'going',
-        'choices': ['to go', 'going', 'go', 'went'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I need ___ some urgent emails right now.</strong></p>',
-        'explanation': '<p><strong>to send</strong> is correct. The verb "need" is followed by an infinitive. <br><br><em>(<strong>to send</strong> to\'g\'ri. "Need" (muhtoj bo\'lmoq/kerak) fe\'lidan so\'ng infinitiv keladi.)</em></p>',
-        'correct': 'to send',
-        'choices': ['sending', 'to send', 'send', 'sent'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>She is very good at ___ new languages quickly.</strong></p>',
-        'explanation': '<p><strong>learning</strong> is correct. "At" is a preposition, and prepositions are always followed by gerunds. <br><br><em>(<strong>learning</strong> to\'g\'ri. "At" (-da) predlog hisoblanadi va predloglardan keyin har doim gerundiy keladi.)</em></p>',
-        'correct': 'learning',
-        'choices': ['to learn', 'learning', 'learn', 'learned'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>Don\'t forget ___ your grandmother on her birthday!</strong></p>',
-        'explanation': '<p><strong>to call</strong> is correct. "Forget" + infinitive is used for a future action you must not fail to do. <br><br><em>(<strong>to call</strong> to\'g\'ri. "Forget" + infinitiv kelajakda qilinishi kerak bo\'lgan va yoddan chiqmasligi muhim bo\'lgan harakatlar uchun ishlatiladi.)</em></p>',
-        'correct': 'to call',
-        'choices': ['calling', 'to call', 'call', 'called'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I prefer ___ coffee in the morning.</strong></p>',
-        'explanation': '<p><strong>drinking</strong> is correct. "Prefer" can take both, but gerund is most common for general preferences. <br><br><em>(<strong>drinking</strong> to\'g\'ri. "Prefer" (afzal ko\'rmoq) ikkalasini ham qabul qilishi mumkin, ammo umumiy odatlar uchun asosan gerundiy ishlatiladi.)</em></p>',
-        'correct': 'drinking',
-        'choices': ['to drinking', 'drinking', 'drink', 'drank'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I would like ___ a pizza, please.</strong></p>',
-        'explanation': '<p><strong>to order</strong> is correct. While "like" can take a gerund, "would like" is ALWAYS followed by an infinitive. <br><br><em>(<strong>to order</strong> to\'g\'ri. "Like" gerundiyni qabul qilsa ham, "would like" (xohlardim) har doim o\'zidan keyin infinitiv oladi.)</em></p>',
-        'correct': 'to order',
-        'choices': ['ordering', 'to order', 'order', 'ordered'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>He gave up ___ fast food to get healthy.</strong></p>',
-        'explanation': '<p><strong>eating</strong> is correct. "Give up" is a phrasal verb ending in a preposition (up), so it needs a gerund. <br><br><em>(<strong>eating</strong> to\'g\'ri. "Give up" (voz kechmoq) predlog (up) bilan tugaydigan iborali fe\'l bo\'lgani uchun u gerundiy talab qiladi.)</em></p>',
-        'correct': 'eating',
-        'choices': ['to eat', 'eating', 'eat', 'ate'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>She is learning ___ the guitar.</strong></p>',
-        'explanation': '<p><strong>to play</strong> is correct. The verb "learn" is followed by an infinitive. <br><br><em>(<strong>to play</strong> to\'g\'ri. "Learn" (o\'rganmoq) fe\'lidan keyin infinitiv ishlatiladi.)</em></p>',
-        'correct': 'to play',
-        'choices': ['playing', 'to play', 'play', 'played'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>Please keep ___ until you reach the end of the street.</strong></p>',
-        'explanation': '<p><strong>walking</strong> is correct. The verb "keep" (meaning to continue) is followed by a gerund. <br><br><em>(<strong>walking</strong> to\'g\'ri. "Keep" (davom etmoq ma\'nosida) fe\'lidan so\'ng gerundiy keladi.)</em></p>',
-        'correct': 'walking',
-        'choices': ['to walk', 'walking', 'walk', 'walked'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>It is easy ___ mistakes when you are tired.</strong></p>',
-        'explanation': '<p><strong>to make</strong> is correct. We use the infinitive form after an adjective (like "easy"). <br><br><em>(<strong>to make</strong> to\'g\'ri. Biz sifatlardan (masalan, "easy" - oson) keyin infinitiv shaklidan foydalanamiz.)</em></p>',
-        'correct': 'to make',
-        'choices': ['making', 'to make', 'make', 'made'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I look forward to ___ you again.</strong></p>',
-        'explanation': '<p><strong>seeing</strong> is correct. In the phrase "look forward to", "to" is a preposition, so it must be followed by a gerund. <br><br><em>(<strong>seeing</strong> to\'g\'ri. "Look forward to" (intizorlik bilan kutmoq) iborasidagi "to" predlog vazifasida keladi, shuning uchun undan keyin gerundiy kelishi shart.)</em></p>',
-        'correct': 'seeing',
-        'choices': ['to see', 'seeing', 'see', 'saw'],
-    }
-]
-
-QUESTIONS_12 = [
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If you heat water to 100 degrees, it ___.</strong></p>',
-        'explanation': '<p><strong>boils</strong> is correct. This is a Zero Conditional sentence describing a scientific fact, so we use Present Simple in both parts. <br><br><em>(<strong>boils</strong> to\'g\'ri. Bu ilmiy faktni tasvirlovchi nolinchi shart gapi, shuning uchun biz ikkala qismda ham Present Simple ishlatamiz.)</em></p>',
-        'correct': 'boils',
-        'choices': ['will boil', 'boils', 'boiled', 'is boiling'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If it rains tomorrow, I ___ at home.</strong></p>',
-        'explanation': '<p><strong>will stay</strong> is correct. This is a First Conditional sentence talking about a specific future plan. <br><br><em>(<strong>will stay</strong> to\'g\'ri. Bu kelajakdagi aniq reja haqida gapiradigan birinchi shart gapi.)</em></p>',
-        'correct': 'will stay',
-        'choices': ['stay', 'stayed', 'will stay', 'am staying'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If you mix red and blue, you ___ purple.</strong></p>',
-        'explanation': '<p><strong>get</strong> is correct. Mixing colors is a general fact that always produces the same result (Zero Conditional). <br><br><em>(<strong>get</strong> to\'g\'ri. Ranglarni aralashtirish har doim bir xil natija beradigan umumiy faktdir (Nolinchi shart gapi).)</em></p>',
-        'correct': 'get',
-        'choices': ['will get', 'got', 'are getting', 'get'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If you ___ hurry up, you will miss the train!</strong></p>',
-        'explanation': '<p><strong>don\'t</strong> is correct. In the First Conditional, the "If" part uses the Present Simple tense. <br><br><em>(<strong>don\'t</strong> to\'g\'ri. Birinchi shart gapida "If" (agar) qismi Present Simple (oddiy hozirgi) zamonidan foydalanadi.)</em></p>',
-        'correct': 'don\'t',
-        'choices': ['won\'t', 'don\'t', 'didn\'t', 'aren\'t'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If people eat too much, they ___ fat.</strong></p>',
-        'explanation': '<p><strong>get</strong> is correct. This is a general truth or biological fact (Zero Conditional). <br><br><em>(<strong>get</strong> to\'g\'ri. Bu umumiy haqiqat yoki biologik faktdir (Nolinchi shart gapi).)</em></p>',
-        'correct': 'get',
-        'choices': ['will get', 'got', 'get', 'are getting'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If I see him later, I ___ him the good news.</strong></p>',
-        'explanation': '<p><strong>will tell</strong> is correct. This is a real possibility in the future (First Conditional). <br><br><em>(<strong>will tell</strong> to\'g\'ri. Bu kelajakdagi real ehtimollikdir (Birinchi shart gapi).)</em></p>',
-        'correct': 'will tell',
-        'choices': ['tell', 'told', 'will tell', 'am telling'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>Babies cry if they ___ hungry.</strong></p>',
-        'explanation': '<p><strong>are</strong> is correct. This is a general fact about babies (Zero Conditional). <br><br><em>(<strong>are</strong> to\'g\'ri. Bu chaqaloqlar haqidagi umumiy faktdir (Nolinchi shart gapi).)</em></p>',
-        'correct': 'are',
-        'choices': ['will be', 'are', 'were', 'be'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If you eat all that cake, you ___ sick.</strong></p>',
-        'explanation': '<p><strong>will feel</strong> is correct. This is a warning about a specific future result (First Conditional). <br><br><em>(<strong>will feel</strong> to\'g\'ri. Bu kelajakdagi aniq natija haqidagi ogohlantirishdir (Birinchi shart gapi).)</em></p>',
-        'correct': 'will feel',
-        'choices': ['feel', 'felt', 'are feeling', 'will feel'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>Plants die if they ___ enough water.</strong></p>',
-        'explanation': '<p><strong>don\'t get</strong> is correct. This is a scientific fact, so it requires the Zero Conditional (Present Simple). <br><br><em>(<strong>don\'t get</strong> to\'g\'ri. Bu ilmiy fakt, shuning uchun u Nolinchi shart gapini (Present Simple) talab qiladi.)</em></p>',
-        'correct': 'don\'t get',
-        'choices': ['won\'t get', 'didn\'t get', 'don\'t get', 'not get'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If we leave now, we ___ on time.</strong></p>',
-        'explanation': '<p><strong>will arrive</strong> is correct. This is a specific plan or prediction for the immediate future (First Conditional). <br><br><em>(<strong>will arrive</strong> to\'g\'ri. Bu yaqin kelajak uchun aniq reja yoki bashorat (Birinchi shart gapi).)</em></p>',
-        'correct': 'will arrive',
-        'choices': ['arrive', 'will arrive', 'arrived', 'are arriving'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>When the sun goes down, it ___ dark.</strong></p>',
-        'explanation': '<p><strong>gets</strong> is correct. "When" can often replace "If" in Zero Conditional sentences to express a 100% certain fact. <br><br><em>(<strong>gets</strong> to\'g\'ri. 100% aniq faktni ifodalash uchun nolinchi shart gaplarida "When" (qachonki) so\'zi ko\'pincha "If" (agar) o\'rniga kelishi mumkin.)</em></p>',
-        'correct': 'gets',
-        'choices': ['will get', 'gets', 'got', 'is getting'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If I have enough money next month, I ___ a new Mac.</strong></p>',
-        'explanation': '<p><strong>will buy</strong> is correct. This refers to a possible specific action in the future (First Conditional). <br><br><em>(<strong>will buy</strong> to\'g\'ri. Bu kelajakdagi ehtimoliy aniq harakatni bildiradi (Birinchi shart gapi).)</em></p>',
-        'correct': 'will buy',
-        'choices': ['buy', 'bought', 'will buy', 'am buying'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If you press this button, the computer ___.</strong></p>',
-        'explanation': '<p><strong>turns off</strong> is correct. This describes how a machine works, which is a fact (Zero Conditional). <br><br><em>(<strong>turns off</strong> to\'g\'ri. Bu mashinaning qanday ishlashini tasvirlaydi, bu esa faktdir (Nolinchi shart gapi).)</em></p>',
-        'correct': 'turns off',
-        'choices': ['will turn off', 'turned off', 'turns off', 'turn off'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If you drop that glass, it ___.</strong></p>',
-        'explanation': '<p><strong>will break</strong> is correct. This is a warning about what will specifically happen if you do this right now. <br><br><em>(<strong>will break</strong> to\'g\'ri. Bu agar siz hozir buni qilsangiz nima sodir bo\'lishi haqida aniq ogohlantirishdir.)</em></p>',
-        'correct': 'will break',
-        'choices': ['breaks', 'will break', 'broke', 'is breaking'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>Ice melts if you ___ it.</strong></p>',
-        'explanation': '<p><strong>heat</strong> is correct. This is a scientific fact. The "if" clause uses Present Simple. <br><br><em>(<strong>heat</strong> to\'g\'ri. Bu ilmiy fakt. "If" (agar) qismi Present Simple zamonidan foydalanadi.)</em></p>',
-        'correct': 'heat',
-        'choices': ['will heat', 'heated', 'are heating', 'heat'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If the weather ___ nice this weekend, we will go to the park.</strong></p>',
-        'explanation': '<p><strong>is</strong> is correct. In the First Conditional, the "If" part must be in the Present Simple tense, even though it talks about the future. <br><br><em>(<strong>is</strong> to\'g\'ri. Birinchi shart gapida kelajak haqida gapirilsa ham, "If" qismi Present Simple zamonida bo\'lishi shart.)</em></p>',
-        'correct': 'is',
-        'choices': ['will be', 'is', 'was', 'be'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If she invites me, I ___ to the party.</strong></p>',
-        'explanation': '<p><strong>will go</strong> is correct. This is a promise or a likely future action based on a condition. <br><br><em>(<strong>will go</strong> to\'g\'ri. Bu shartga asoslangan va\'da yoki kelajakdagi ehtimoli yuqori harakat.)</em></p>',
-        'correct': 'will go',
-        'choices': ['go', 'will go', 'went', 'am going'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>A snake bites if it ___ scared.</strong></p>',
-        'explanation': '<p><strong>is</strong> is correct. This is a general fact about animal behavior (Zero Conditional). <br><br><em>(<strong>is</strong> to\'g\'ri. Bu hayvonlarning xulq-atvori haqidagi umumiy faktdir (Nolinchi shart gapi).)</em></p>',
-        'correct': 'is',
-        'choices': ['will be', 'is', 'was', 'be'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If he doesn\'t call me back, I ___ very angry.</strong></p>',
-        'explanation': '<p><strong>will be</strong> is correct. This is a specific reaction to a future possibility (First Conditional). <br><br><em>(<strong>will be</strong> to\'g\'ri. Bu kelajakdagi ehtimolga nisbatan aniq reaksiya (Birinchi shart gapi).)</em></p>',
-        'correct': 'will be',
-        'choices': ['am', 'was', 'will be', 'be'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>Wood floats if you ___ it in water.</strong></p>',
-        'explanation': '<p><strong>drop</strong> is correct. This is a law of physics (Zero Conditional). Both verbs are in Present Simple. <br><br><em>(<strong>drop</strong> to\'g\'ri. Bu fizika qonuni (Nolinchi shart gapi). Ikkala fe\'l ham Present Simple zamonida.)</em></p>',
-        'correct': 'drop',
-        'choices': ['will drop', 'dropped', 'drop', 'are dropping'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If you ___ me with Python, I will help you with English.</strong></p>',
-        'explanation': '<p><strong>help</strong> is correct. This is a deal/promise for the future. The "If" part uses Present Simple. <br><br><em>(<strong>help</strong> to\'g\'ri. Bu kelajak uchun kelishuv/va\'da. "If" qismi Present Simple dan foydalanadi.)</em></p>',
-        'correct': 'help',
-        'choices': ['will help', 'helped', 'help', 'are helping'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If you stand in the rain without an umbrella, you ___ wet.</strong></p>',
-        'explanation': '<p><strong>get</strong> is correct. This is a logical fact that is always true (Zero Conditional). <br><br><em>(<strong>get</strong> to\'g\'ri. Bu har doim to\'g\'ri keladigan mantiqiy fakt (Nolinchi shart gapi).)</em></p>',
-        'correct': 'get',
-        'choices': ['will get', 'get', 'got', 'getting'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If they win the match, they ___ the trophy.</strong></p>',
-        'explanation': '<p><strong>will get</strong> is correct. This is a possible future result of a specific event (First Conditional). <br><br><em>(<strong>will get</strong> to\'g\'ri. Bu aniq bir voqeaning kelajakdagi ehtimoliy natijasi (Birinchi shart gapi).)</em></p>',
-        'correct': 'will get',
-        'choices': ['get', 'will get', 'got', 'are getting'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>You get green if you ___ yellow and blue.</strong></p>',
-        'explanation': '<p><strong>mix</strong> is correct. Mixing colors is a universal truth, so we use Present Simple in both clauses. <br><br><em>(<strong>mix</strong> to\'g\'ri. Ranglarni aralashtirish umumjahon haqiqatidir, shuning uchun biz ikkala qismda ham Present Simple ishlatamiz.)</em></p>',
-        'correct': 'mix',
-        'choices': ['will mix', 'mixed', 'mix', 'are mixing'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If I don\'t sleep well tonight, I ___ tired tomorrow.</strong></p>',
-        'explanation': '<p><strong>will be</strong> is correct. This connects a present condition to a specific future result (First Conditional). <br><br><em>(<strong>will be</strong> to\'g\'ri. Bu hozirgi holatni kelajakdagi aniq natija bilan bog\'laydi (Birinchi shart gapi).)</em></p>',
-        'correct': 'will be',
-        'choices': ['am', 'was', 'will be', 'be'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If you put salt in water, it ___.</strong></p>',
-        'explanation': '<p><strong>dissolves</strong> is correct. This is a scientific fact. We use Zero Conditional. <br><br><em>(<strong>dissolves</strong> to\'g\'ri. Bu ilmiy fakt. Biz Nolinchi shart gapidan foydalanamiz.)</em></p>',
-        'correct': 'dissolves',
-        'choices': ['will dissolve', 'dissolves', 'dissolved', 'is dissolving'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If the students do their homework, they ___ faster.</strong></p>',
-        'explanation': '<p><strong>will learn</strong> is correct. This is a likely outcome of a specific situation (First Conditional). <br><br><em>(<strong>will learn</strong> to\'g\'ri. Bu aniq vaziyatning ehtimoli yuqori bo\'lgan natijasi (Birinchi shart gapi).)</em></p>',
-        'correct': 'will learn',
-        'choices': ['learn', 'learned', 'will learn', 'are learning'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I get a headache if I ___ at the screen too long.</strong></p>',
-        'explanation': '<p><strong>stare</strong> is correct. This is a personal routine or fact about the speaker (Zero Conditional). <br><br><em>(<strong>stare</strong> to\'g\'ri. Bu so\'zlovchi haqidagi shaxsiy odat yoki fakt (Nolinchi shart gapi).)</em></p>',
-        'correct': 'stare',
-        'choices': ['will stare', 'stared', 'stare', 'am staring'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If the Django app crashes, I ___ the server logs immediately.</strong></p>',
-        'explanation': '<p><strong>will check</strong> is correct. This is an action plan for a possible future event (First Conditional). <br><br><em>(<strong>will check</strong> to\'g\'ri. Bu kelajakdagi ehtimoliy hodisa uchun harakat rejasi (Birinchi shart gapi).)</em></p>',
-        'correct': 'will check',
-        'choices': ['check', 'will check', 'checked', 'am checking'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If you ___ water, it turns into ice.</strong></p>',
-        'explanation': '<p><strong>freeze</strong> is correct. This is a factual statement (Zero Conditional). <br><br><em>(<strong>freeze</strong> to\'g\'ri. Bu faktik tasdiq (Nolinchi shart gapi).)</em></p>',
-        'correct': 'freeze',
-        'choices': ['will freeze', 'freeze', 'froze', 'are freezing'],
-    }
-]
-QUESTIONS_13 = [
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If I ___ a million dollars, I would travel to Japan.</strong></p>',
-        'explanation': '<p><strong>had</strong> is correct. In the Second Conditional, the "If" clause uses the Past Simple tense. <br><br><em>(<strong>had</strong> to\'g\'ri. Ikkinchi shart gapida "If" (agar) qismi Past Simple (oddiy o\'tgan) zamondan foydalanadi.)</em></p>',
-        'correct': 'had',
-        'choices': ['have', 'had', 'would have', 'am having'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If she practiced every day, she ___ the chess tournament.</strong></p>',
-        'explanation': '<p><strong>would win</strong> is correct. The result clause uses "would + verb" to show the imaginary outcome. <br><br><em>(<strong>would win</strong> to\'g\'ri. Natija qismida xayoliy oqibatni ko\'rsatish uchun "would + fe\'l" ishlatiladi.)</em></p>',
-        'correct': 'would win',
-        'choices': ['will win', 'wins', 'would win', 'won'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If I ___ you, I would learn Python and Django.</strong></p>',
-        'explanation': '<p><strong>were</strong> is correct. In the Second Conditional, we use "were" for all subjects (I, he, she, it) to give advice. <br><br><em>(<strong>were</strong> to\'g\'ri. Ikkinchi shart gapida maslahat berish uchun barcha shaxslarga (I, he, she, it) nisbatan "were" ishlatamiz.)</em></p>',
-        'correct': 'were',
-        'choices': ['was', 'am', 'were', 'be'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>We ___ faster if we didn\'t have so many bugs in the code.</strong></p>',
-        'explanation': '<p><strong>would deploy</strong> is correct. The "If" clause is in the past (didn\'t have), so the result needs "would + verb". <br><br><em>(<strong>would deploy</strong> to\'g\'ri. "If" qismi o\'tgan zamonda (didn\'t have) turibdi, shuning uchun natija qismi "would + fe\'l" talab qiladi.)</em></p>',
-        'correct': 'would deploy',
-        'choices': ['will deploy', 'deploy', 'would deploy', 'deployed'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If he ___ the answer, he would tell us immediately.</strong></p>',
-        'explanation': '<p><strong>knew</strong> is correct. This is an imaginary present situation, so we use the Past Simple form of "know". <br><br><em>(<strong>knew</strong> to\'g\'ri. Bu xayoliy hozirgi vaziyat, shuning uchun biz "know" (bilmoq) fe\'lining Past Simple shaklidan foydalanamiz.)</em></p>',
-        'correct': 'knew',
-        'choices': ['knows', 'will know', 'would know', 'knew'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I wouldn\'t do that if I ___ in your position!</strong></p>',
-        'explanation': '<p><strong>were</strong> is correct. The phrase "If I were..." is the standard grammatical structure for imagining yourself as someone else. <br><br><em>(<strong>were</strong> to\'g\'ri. "If I were..." iborasi o\'zingizni boshqa birovning o\'rnida tasavvur qilish uchun standart grammatik qurilmadir.)</em></p>',
-        'correct': 'were',
-        'choices': ['was', 'am', 'were', 'had been'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If you ___ less junk food, you would feel much healthier.</strong></p>',
-        'explanation': '<p><strong>ate</strong> is correct. We use the Past Simple (ate) after "if" to describe an unlikely or imaginary habit. <br><br><em>(<strong>ate</strong> to\'g\'ri. Biz sodir bo\'lishi qiyin yoki xayoliy odatni tasvirlash uchun "if" dan keyin Past Simple (ate) ishlatamiz.)</em></p>',
-        'correct': 'ate',
-        'choices': ['eat', 'will eat', 'would eat', 'ate'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>What ___ if you found a lost wallet on the street?</strong></p>',
-        'explanation': '<p><strong>would you do</strong> is correct. This is a question about an imaginary situation, asking for the imaginary result. <br><br><em>(<strong>would you do</strong> to\'g\'ri. Bu xayoliy vaziyat haqidagi savol bo\'lib, unda xayoliy natija so\'ralmoqda.)</em></p>',
-        'correct': 'would you do',
-        'choices': ['will you do', 'do you do', 'would you do', 'did you do'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If the students ___ more free time, they would play games all day.</strong></p>',
-        'explanation': '<p><strong>had</strong> is correct. "Had" is the Past Simple form required in the condition clause. <br><br><em>(<strong>had</strong> to\'g\'ri. "Had" shart ergash gapda talab qilinadigan Past Simple shaklidir.)</em></p>',
-        'correct': 'had',
-        'choices': ['have', 'had', 'would have', 'will have'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>They ___ a new house if they had enough money.</strong></p>',
-        'explanation': '<p><strong>would buy</strong> is correct. The condition (had enough money) is imaginary, so the result must use "would". <br><br><em>(<strong>would buy</strong> to\'g\'ri. Shart (yetarli puli bo\'lishi) xayoliydir, shuning uchun natijada "would" ishlatilishi shart.)</em></p>',
-        'correct': 'would buy',
-        'choices': ['will buy', 'buy', 'bought', 'would buy'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If it ___ in July, I would be very surprised.</strong></p>',
-        'explanation': '<p><strong>snowed</strong> is correct. Snowing in July is highly unlikely, requiring the Second Conditional\'s past tense form. <br><br><em>(<strong>snowed</strong> to\'g\'ri. Iyul oyida qor yog\'ishi ehtimoldan juda yiroq, shuning uchun Ikkinchi shart gapining o\'tgan zamon shakli talab qilinadi.)</em></p>',
-        'correct': 'snowed',
-        'choices': ['snows', 'will snow', 'snowed', 'would snow'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I would help you with the website if I ___ how to code.</strong></p>',
-        'explanation': '<p><strong>knew</strong> is correct. Reality is "I don\'t know", so the imaginary opposite requires Past Simple. <br><br><em>(<strong>knew</strong> to\'g\'ri. Haqiqiy holat "Men bilmayman", shuning uchun xayoliy qarama-qarshi vaziyat Past Simple ni talab qiladi.)</em></p>',
-        'correct': 'knew',
-        'choices': ['know', 'knew', 'would know', 'am knowing'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If she ___ Japanese fluently, she would move to Tokyo today.</strong></p>',
-        'explanation': '<p><strong>spoke</strong> is correct. The "If" clause takes the Past Simple for an impossible present situation. <br><br><em>(<strong>spoke</strong> to\'g\'ri. Hozirgi imkonsiz vaziyat uchun "If" qismiga Past Simple qo\'yiladi.)</em></p>',
-        'correct': 'spoke',
-        'choices': ['speaks', 'spoke', 'would speak', 'will speak'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If we didn\'t have to work today, we ___ to the mountains.</strong></p>',
-        'explanation': '<p><strong>would go</strong> is correct. We are imagining the result of an impossible condition (not working today). <br><br><em>(<strong>would go</strong> to\'g\'ri. Biz imkonsiz shartning (bugun ishlamaslikning) natijasini tasavvur qilyapmiz.)</em></p>',
-        'correct': 'would go',
-        'choices': ['will go', 'go', 'would go', 'went'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>Where ___ if you could live anywhere in the world?</strong></p>',
-        'explanation': '<p><strong>would you live</strong> is correct. We use "would" to ask about imaginary choices or preferences. <br><br><em>(<strong>would you live</strong> to\'g\'ri. Xayoliy tanlovlar yoki xohishlarni so\'rash uchun biz "would" dan foydalanamiz.)</em></p>',
-        'correct': 'would you live',
-        'choices': ['will you live', 'would you live', 'do you live', 'did you live'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If my car ___ broken, I would drive you to the education center.</strong></p>',
-        'explanation': '<p><strong>weren\'t</strong> is correct. We use "were not" (weren\'t) for all subjects in formal Second Conditional sentences. <br><br><em>(<strong>weren\'t</strong> to\'g\'ri. Rasmiy Ikkinchi shart gaplarida biz barcha shaxslar uchun "were not" (weren\'t) ishlatamiz.)</em></p>',
-        'correct': 'weren\'t',
-        'choices': ['isn\'t', 'wasn\'t', 'weren\'t', 'wouldn\'t be'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>He would get the job if he ___ more confident during interviews.</strong></p>',
-        'explanation': '<p><strong>were</strong> is correct. Even for "he", we use "were" to describe this imaginary state of being. <br><br><em>(<strong>were</strong> to\'g\'ri. Bu xayoliy holatni tasvirlash uchun "he" (u) shaxsi uchun ham "were" ishlatamiz.)</em></p>',
-        'correct': 'were',
-        'choices': ['is', 'were', 'was', 'would be'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If I found a great tutorial online, I ___ it with my students.</strong></p>',
-        'explanation': '<p><strong>would share</strong> is correct. The "If" part is in the past (found), so the result needs "would". <br><br><em>(<strong>would share</strong> to\'g\'ri. "If" qismi o\'tgan zamonda (found), shuning uchun natijada "would" kerak.)</em></p>',
-        'correct': 'would share',
-        'choices': ['will share', 'share', 'shared', 'would share'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If she ___ so far away, we would visit her every week.</strong></p>',
-        'explanation': '<p><strong>didn\'t live</strong> is correct. This is the negative Past Simple form for the condition clause. <br><br><em>(<strong>didn\'t live</strong> to\'g\'ri. Bu shart ergash gap uchun Past Simple dagi inkor shakli.)</em></p>',
-        'correct': 'didn\'t live',
-        'choices': ['doesn\'t live', 'didn\'t live', 'wouldn\'t live', 'not lived'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The project would finish faster if we ___ more team members.</strong></p>',
-        'explanation': '<p><strong>had</strong> is correct. Imagining a different present reality requires the Past Simple. <br><br><em>(<strong>had</strong> to\'g\'ri. Boshqacha hozirgi reallikni tasavvur qilish Past Simple zamonini talab qiladi.)</em></p>',
-        'correct': 'had',
-        'choices': ['have', 'had', 'would have', 'are having'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If you ___ your phone, how would you call your family?</strong></p>',
-        'explanation': '<p><strong>lost</strong> is correct. This is an imaginary, unlikely situation, taking the Past Simple form of "lose". <br><br><em>(<strong>lost</strong> to\'g\'ri. Bu xayoliy, sodir bo\'lishi dargumon vaziyat bo\'lib, "lose" (yo\'qotmoq) fe\'lining Past Simple shaklini oladi.)</em></p>',
-        'correct': 'lost',
-        'choices': ['lose', 'lost', 'will lose', 'would lose'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I ___ that old laptop if it weren\'t so expensive.</strong></p>',
-        'explanation': '<p><strong>would buy</strong> is correct. The condition is impossible (it IS expensive), so the result uses "would". <br><br><em>(<strong>would buy</strong> to\'g\'ri. Shart imkonsiz (u qimmat), shuning uchun natijada "would" ishlatiladi.)</em></p>',
-        'correct': 'would buy',
-        'choices': ['will buy', 'bought', 'would buy', 'buy'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If humans ___ on Mars, they would need special breathing suits.</strong></p>',
-        'explanation': '<p><strong>lived</strong> is correct. Imagining an impossible present/future scenario uses Past Simple. <br><br><em>(<strong>lived</strong> to\'g\'ri. Imkonsiz hozirgi/kelajak ssenariysini tasavvur qilishda Past Simple ishlatiladi.)</em></p>',
-        'correct': 'lived',
-        'choices': ['live', 'lived', 'would live', 'are living'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>Would you go to the conference if they ___ you to speak?</strong></p>',
-        'explanation': '<p><strong>invited</strong> is correct. The main clause uses "would", meaning the condition clause must be in Past Simple. <br><br><em>(<strong>invited</strong> to\'g\'ri. Asosiy gap "would" dan foydalangan, ya\'ni shart qismi Past Simple da bo\'lishi shart.)</em></p>',
-        'correct': 'invited',
-        'choices': ['invite', 'will invite', 'invited', 'would invite'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If I ___ a bird, I would fly across the world.</strong></p>',
-        'explanation': '<p><strong>were</strong> is correct. A classic impossible scenario requiring the special "were" form. <br><br><em>(<strong>were</strong> to\'g\'ri. Maxsus "were" shaklini talab qiluvchi klassik imkonsiz ssenariy.)</em></p>',
-        'correct': 'were',
-        'choices': ['was', 'am', 'were', 'had been'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>He would be much healthier if he ___ some exercise.</strong></p>',
-        'explanation': '<p><strong>did</strong> is correct. This is advice or an imaginary better situation, needing Past Simple. <br><br><em>(<strong>did</strong> to\'g\'ri. Bu maslahat yoki xayoliy yaxshiroq vaziyat bo\'lib, Past Simple zamonini talab qiladi.)</em></p>',
-        'correct': 'did',
-        'choices': ['does', 'do', 'would do', 'did'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If the weather ___ better, we would go for a walk outside.</strong></p>',
-        'explanation': '<p><strong>were</strong> is correct. The weather is a single thing (it), but we still use "were" in formal Second Conditional. <br><br><em>(<strong>were</strong> to\'g\'ri. Ob-havo birlikdagi narsa (it), lekin rasmiy Ikkinchi shart gapida baribir "were" ishlatamiz.)</em></p>',
-        'correct': 'were',
-        'choices': ['was', 'is', 'were', 'would be'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If you ___ more English books, your vocabulary would improve fast.</strong></p>',
-        'explanation': '<p><strong>read</strong> is correct. We need the past tense of "read" (spelled the same, pronounced "red") after "if". <br><br><em>(<strong>read</strong> to\'g\'ri. "If" dan keyin "read" (o\'qimoq) fe\'lining o\'tgan zamon shakli kerak (yozilishi bir xil, lekin "red" deb o\'qiladi).)</em></p>',
-        'correct': 'read',
-        'choices': ['read', 'will read', 'would read', 'are reading'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I ___ so stressed if I didn\'t have a big deadline tomorrow.</strong></p>',
-        'explanation': '<p><strong>wouldn\'t be</strong> is correct. This is the negative result of an imaginary condition. <br><br><em>(<strong>wouldn\'t be</strong> to\'g\'ri. Bu xayoliy shartning inkor natijasi.)</em></p>',
-        'correct': 'wouldn\'t be',
-        'choices': ['won\'t be', 'am not', 'wouldn\'t be', 'wasn\'t'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If I knew the password, I ___ the system immediately.</strong></p>',
-        'explanation': '<p><strong>would unlock</strong> is correct. The imaginary result of knowing the password uses "would". <br><br><em>(<strong>would unlock</strong> to\'g\'ri. Parolni bilishning xayoliy natijasi "would" dan foydalanadi.)</em></p>',
-        'correct': 'would unlock',
-        'choices': ['will unlock', 'unlocked', 'would unlock', 'unlock'],
-    }
-]
-
-
-QUESTIONS_14 = [
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The teacher ___ helped me with my English is excellent.</strong></p>',
-        'explanation': '<p><strong>who</strong> is correct. We use "who" for people. <br><br><em>(<strong>who</strong> to\'g\'ri. Biz insonlar uchun "who" ishlatamiz.)</em></p>',
-        'correct': 'who',
-        'choices': ['which', 'who', 'what', 'where'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The laptop ___ is on the desk belongs to the manager.</strong></p>',
-        'explanation': '<p><strong>which</strong> is correct. We use "which" for things and objects. <br><br><em>(<strong>which</strong> to\'g\'ri. Biz narsa va obyektlar uchun "which" ishlatamiz.)</em></p>',
-        'correct': 'which',
-        'choices': ['who', 'which', 'whom', 'where'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>Here is the book ___ you were looking for.</strong></p>',
-        'explanation': '<p><strong>that</strong> is correct. "That" is used for things and is very common in spoken English. <br><br><em>(<strong>that</strong> to\'g\'ri. "That" narsalar uchun ishlatiladi va og\'zaki ingliz tilida juda keng tarqalgan.)</em></p>',
-        'correct': 'that',
-        'choices': ['who', 'where', 'that', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The students ___ pass the exam will get a certificate.</strong></p>',
-        'explanation': '<p><strong>who</strong> is correct. "Students" are people, so we must use "who" (or "that"). <br><br><em>(<strong>who</strong> to\'g\'ri. "Students" (O\'quvchilar) insonlar hisoblanadi, shuning uchun biz "who" (yoki "that") ishlatishimiz shart.)</em></p>',
-        'correct': 'who',
-        'choices': ['which', 'who', 'whom', 'whose'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The restaurant ___ we ate at last night was very expensive.</strong></p>',
-        'explanation': '<p><strong>(no word needed)</strong> is correct. The next word is a pronoun ("we"), so you can drop the relative word completely. <br><br><em>(<strong>(no word needed) (so\'z kerak emas)</strong> to\'g\'ri. Keyingi so\'z olmosh ("we") bo\'lganligi sababli, nisbiy so\'zni butunlay tushirib qoldirish mumkin.)</em></p>',
-        'correct': '(no word needed)',
-        'choices': ['who', 'what', '(no word needed)', 'whose'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The man ___ is talking to Sarah is the new director.</strong></p>',
-        'explanation': '<p><strong>who</strong> is correct. We use "who" for a person. We cannot omit it because the next word is a verb ("is"). <br><br><em>(<strong>who</strong> to\'g\'ri. Biz insonlar uchun "who" ishlatamiz. Uni tushirib qoldira olmaymiz, chunki keyingi so\'z fe\'l ("is").)</em></p>',
-        'correct': 'who',
-        'choices': ['which', 'who', 'whom', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The bag ___ I bought yesterday is made of genuine leather.</strong></p>',
-        'explanation': '<p><strong>(no word needed)</strong> is correct. You can omit the relative word because the next word is a pronoun ("I"). <br><br><em>(<strong>(no word needed)</strong> to\'g\'ri. Nisbiy so\'zni tushirib qoldirishingiz mumkin, chunki keyingi so\'z olmosh ("I").)</em></p>',
-        'correct': '(no word needed)',
-        'choices': ['(no word needed)', 'who', 'whom', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>Do you know the boy ___ won the chess tournament?</strong></p>',
-        'explanation': '<p><strong>who</strong> is correct. The boy is a person, and the next word is a verb ("won"), so we must use "who". <br><br><em>(<strong>who</strong> to\'g\'ri. Bola inson hisoblanadi va keyingi so\'z fe\'l ("won"), shuning uchun "who" ishlatishimiz shart.)</em></p>',
-        'correct': 'who',
-        'choices': ['which', 'who', 'whom', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The code ___ he wrote has a few minor bugs.</strong></p>',
-        'explanation': '<p><strong>(no word needed)</strong> is correct. Since the next word is a pronoun ("he"), we can drop the relative word. <br><br><em>(<strong>(no word needed)</strong> to\'g\'ri. Keyingi so\'z olmosh ("he") bo\'lgani uchun nisbiy so\'zni tushirib qoldira olamiz.)</em></p>',
-        'correct': '(no word needed)',
-        'choices': ['(no word needed)', 'who', 'whom', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The course ___ I am taking is very difficult but interesting.</strong></p>',
-        'explanation': '<p><strong>that</strong> is correct. "That" is perfect for describing things like a course. <br><br><em>(<strong>that</strong> to\'g\'ri. "That" kurs kabi narsalarni tasvirlash uchun juda mos.)</em></p>',
-        'correct': 'that',
-        'choices': ['that', 'who', 'whom', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I don\'t like people ___ complain all the time.</strong></p>',
-        'explanation': '<p><strong>who</strong> is correct. For people, we use "who". We cannot omit it because the next word is a verb ("complain"). <br><br><em>(<strong>who</strong> to\'g\'ri. Insonlar uchun biz "who" ishlatamiz. Keyingi so\'z fe\'l ("complain") bo\'lgani uchun uni tushirib qoldira olmaymiz.)</em></p>',
-        'correct': 'who',
-        'choices': ['which', 'who', 'whom', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The letter ___ arrived today is for you.</strong></p>',
-        'explanation': '<p><strong>which</strong> is correct. We use "which" for things (the letter). It cannot be dropped because "arrived" is a verb. <br><br><em>(<strong>which</strong> to\'g\'ri. Biz narsalar (xat) uchun "which" ishlatamiz. "arrived" fe\'l bo\'lgani uchun uni tushirib qoldirib bo\'lmaydi.)</em></p>',
-        'correct': 'which',
-        'choices': ['which', 'who', 'whom', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>She is the girl ___ works in the local library.</strong></p>',
-        'explanation': '<p><strong>who</strong> is correct. We use "who" to refer to people. <br><br><em>(<strong>who</strong> to\'g\'ri. Insonlarga ishora qilish uchun "who" ishlatamiz.)</em></p>',
-        'correct': 'who',
-        'choices': ['who', 'which', 'whom', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The phone ___ is ringing belongs to my boss.</strong></p>',
-        'explanation': '<p><strong>which</strong> is correct. We use "which" for objects. <br><br><em>(<strong>which</strong> to\'g\'ri. Biz obyektlar uchun "which" ishlatamiz.)</em></p>',
-        'correct': 'which',
-        'choices': ['which', 'who', 'whom', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The woman ___ you saw yesterday is my aunt.</strong></p>',
-        'explanation': '<p><strong>(no word needed)</strong> is correct. You can drop the relative word because the next word is a pronoun ("you"). <br><br><em>(<strong>(no word needed)</strong> to\'g\'ri. Keyingi so\'z olmosh ("you") bo\'lgani uchun nisbiy so\'zni tushirib qoldirishingiz mumkin.)</em></p>',
-        'correct': '(no word needed)',
-        'choices': ['(no word needed)', 'which', 'what', 'whose'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I found the keys ___ I lost yesterday.</strong></p>',
-        'explanation': '<p><strong>that</strong> is correct. "That" is used for things. (You could also omit it here). <br><br><em>(<strong>that</strong> to\'g\'ri. "That" narsalar uchun ishlatiladi. (Bu yerda uni tushirib qoldirishingiz ham mumkin edi).)</em></p>',
-        'correct': 'that',
-        'choices': ['that', 'who', 'whom', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The doctor ___ treated me is very famous.</strong></p>',
-        'explanation': '<p><strong>who</strong> is correct. "Doctor" is a person, and the next word is a verb ("treated"). <br><br><em>(<strong>who</strong> to\'g\'ri. "Doktor" inson hisoblanadi, va keyingi so\'z fe\'l ("treated").)</em></p>',
-        'correct': 'who',
-        'choices': ['who', 'which', 'whom', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The shoes ___ I am wearing are very comfortable.</strong></p>',
-        'explanation': '<p><strong>(no word needed)</strong> is correct. The next word is the pronoun "I", so the relative word can be omitted. <br><br><em>(<strong>(no word needed)</strong> to\'g\'ri. Keyingi so\'z "I" olmoshi, shuning uchun nisbiy so\'zni tushirib qoldirish mumkin.)</em></p>',
-        'correct': '(no word needed)',
-        'choices': ['(no word needed)', 'who', 'whom', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The bus ___ goes to the airport leaves every hour.</strong></p>',
-        'explanation': '<p><strong>which</strong> is correct. A bus is a thing, and it is followed by a verb ("goes"), so "which" is needed. <br><br><em>(<strong>which</strong> to\'g\'ri. Avtobus narsa, va undan keyin fe\'l ("goes") kelyapti, shuning uchun "which" kerak.)</em></p>',
-        'correct': 'which',
-        'choices': ['which', 'who', 'whom', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>Where is the cheese ___ was in the fridge?</strong></p>',
-        'explanation': '<p><strong>that</strong> is correct. We use "that" (or "which") for things. We cannot omit it because of the verb "was". <br><br><em>(<strong>that</strong> to\'g\'ri. Biz narsalar uchun "that" (yoki "which") ishlatamiz. "was" fe\'li bo\'lgani sababli uni tushirib qoldira olmaymiz.)</em></p>',
-        'correct': 'that',
-        'choices': ['that', 'who', 'whom', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>A software developer is someone ___ writes computer code.</strong></p>',
-        'explanation': '<p><strong>who</strong> is correct. "Someone" refers to a person. <br><br><em>(<strong>who</strong> to\'g\'ri. "Someone" (kimdir) insonga ishora qiladi.)</em></p>',
-        'correct': 'who',
-        'choices': ['who', 'which', 'whom', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The video ___ you shared is very funny.</strong></p>',
-        'explanation': '<p><strong>(no word needed)</strong> is correct. The word following the blank is a pronoun ("you"). <br><br><em>(<strong>(no word needed)</strong> to\'g\'ri. Bo\'sh joydan keyingi so\'z olmosh ("you") hisoblanadi.)</em></p>',
-        'correct': '(no word needed)',
-        'choices': ['(no word needed)', 'who', 'whom', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I need a smartphone ___ has a good camera.</strong></p>',
-        'explanation': '<p><strong>that</strong> is correct. Used for things. (Cannot be omitted because the next word is the verb "has"). <br><br><em>(<strong>that</strong> to\'g\'ri. Narsalar uchun ishlatiladi. (Keyingi so\'z "has" fe\'li bo\'lgani uchun tushirib qoldirib bo\'lmaydi).)</em></p>',
-        'correct': 'that',
-        'choices': ['that', 'who', 'whom', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The friend ___ I was waiting for didn\'t arrive.</strong></p>',
-        'explanation': '<p><strong>(no word needed)</strong> is correct. Although it is a person, the next word is a pronoun ("I"), making it optional. <br><br><em>(<strong>(no word needed)</strong> to\'g\'ri. U inson bo\'lishiga qaramay, keyingi so\'z olmosh ("I"), bu esa uni ixtiyoriy qiladi.)</em></p>',
-        'correct': '(no word needed)',
-        'choices': ['(no word needed)', 'which', 'what', 'whose'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The project ___ we are working on is a secret.</strong></p>',
-        'explanation': '<p><strong>(no word needed)</strong> is correct. The next word is the pronoun "we". <br><br><em>(<strong>(no word needed)</strong> to\'g\'ri. Keyingi so\'z "we" olmoshi.)</em></p>',
-        'correct': '(no word needed)',
-        'choices': ['(no word needed)', 'who', 'whom', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>Can you pass me the pen ___ is on the table?</strong></p>',
-        'explanation': '<p><strong>which</strong> is correct. Pen is a thing, and the next word is a verb. <br><br><em>(<strong>which</strong> to\'g\'ri. Ruchka narsa hisoblanadi va keyingi so\'z fe\'l.)</em></p>',
-        'correct': 'which',
-        'choices': ['which', 'who', 'whom', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The teacher ___ explains things clearly is the best.</strong></p>',
-        'explanation': '<p><strong>who</strong> is correct. "Teacher" is a person. <br><br><em>(<strong>who</strong> to\'g\'ri. "O\'qituvchi" inson hisoblanadi.)</em></p>',
-        'correct': 'who',
-        'choices': ['who', 'which', 'whom', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The cake ___ she baked was delicious.</strong></p>',
-        'explanation': '<p><strong>that</strong> is correct. Used for a thing (cake). It could also be omitted here. <br><br><em>(<strong>that</strong> to\'g\'ri. Narsa (tort) uchun ishlatiladi. Bu yerda uni tushirib qoldirish ham mumkin edi.)</em></p>',
-        'correct': 'that',
-        'choices': ['that', 'who', 'whom', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>Anyone ___ wants to join the team must apply today.</strong></p>',
-        'explanation': '<p><strong>who</strong> is correct. "Anyone" refers to a person, and it is followed by a verb. <br><br><em>(<strong>who</strong> to\'g\'ri. "Anyone" (kimki) insonga ishora qiladi va undan keyin fe\'l keladi.)</em></p>',
-        'correct': 'who',
-        'choices': ['which', 'who', 'whom', 'what'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>The advice ___ you gave me was very helpful.</strong></p>',
-        'explanation': '<p><strong>(no word needed)</strong> is correct. The next word is the pronoun "you", allowing the relative pronoun to be dropped. <br><br><em>(<strong>(no word needed)</strong> to\'g\'ri. Keyingi so\'z "you" olmoshi, bu nisbiy olmoshni tushirib qoldirishga imkon beradi.)</em></p>',
-        'correct': '(no word needed)',
-        'choices': ['(no word needed)', 'who', 'whom', 'what'],
-    }
-]
-
-QUESTIONS_15 = [
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If it rains tomorrow, we ___ at home.</strong></p>',
-        'explanation': '<p><strong>will stay</strong> is correct. This is the First Conditional (real future plan). <br><br><em>(<strong>will stay</strong> to\'g\'ri. Bu Birinchi shart gapi (kelajakdagi haqiqiy reja).)</em></p>',
-        'correct': 'will stay',
-        'choices': ['stay', 'would stay', 'will stay', 'would have stayed'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If I ___ a million dollars right now, I would buy a big house.</strong></p>',
-        'explanation': '<p><strong>had</strong> is correct. This is the Second Conditional (imaginary present). The "if" part needs Past Simple. <br><br><em>(<strong>had</strong> to\'g\'ri. Bu Ikkinchi shart gapi (xayoliy hozirgi payt). "If" qismi Past Simple zamonini talab qiladi.)</em></p>',
-        'correct': 'had',
-        'choices': ['have', 'had', 'will have', 'had had'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If she had studied harder last year, she ___ the exam.</strong></p>',
-        'explanation': '<p><strong>would have passed</strong> is correct. This is the Third Conditional (imaginary past). <br><br><em>(<strong>would have passed</strong> to\'g\'ri. Bu Uchinchi shart gapi (xayoliy o\'tmish).)</em></p>',
-        'correct': 'would have passed',
-        'choices': ['will pass', 'would pass', 'passed', 'would have passed'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If you ___ hurry, you will miss the train!</strong></p>',
-        'explanation': '<p><strong>don\'t</strong> is correct. First Conditional uses Present Simple in the "if" clause for future possibilities. <br><br><em>(<strong>don\'t</strong> to\'g\'ri. Birinchi shart gapi kelajak ehtimolliklari uchun "if" qismida Present Simple dan foydalanadi.)</em></p>',
-        'correct': 'don\'t',
-        'choices': ['won\'t', 'wouldn\'t', 'didn\'t', 'don\'t'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I ___ you if I had known you were in the hospital yesterday.</strong></p>',
-        'explanation': '<p><strong>would have visited</strong> is correct. Third Conditional. The chance is gone because it happened yesterday. <br><br><em>(<strong>would have visited</strong> to\'g\'ri. Uchinchi shart gapi. Imkoniyat qo\'ldan boy berilgan, chunki bu kecha sodir bo\'lgan.)</em></p>',
-        'correct': 'would have visited',
-        'choices': ['will visit', 'would visit', 'visited', 'would have visited'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If I ___ you, I wouldn\'t text him back.</strong></p>',
-        'explanation': '<p><strong>were</strong> is correct. Second Conditional for giving advice. We use "were" for all subjects. <br><br><em>(<strong>were</strong> to\'g\'ri. Maslahat berish uchun Ikkinchi shart gapi. Biz barcha shaxslar uchun "were" ishlatamiz.)</em></p>',
-        'correct': 'were',
-        'choices': ['am', 'was', 'were', 'had been'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If we leave now, we ___ there by 5 PM.</strong></p>',
-        'explanation': '<p><strong>will be</strong> is correct. First conditional representing a real plan. <br><br><em>(<strong>will be</strong> to\'g\'ri. Haqiqiy rejani ifodalovchi Birinchi shart gapi.)</em></p>',
-        'correct': 'will be',
-        'choices': ['are', 'will be', 'would be', 'would have been'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>He would travel the world if he ___ rich, but he is poor.</strong></p>',
-        'explanation': '<p><strong>were</strong> is correct. Second Conditional for an imaginary present reality. <br><br><em>(<strong>were</strong> to\'g\'ri. Xayoliy hozirgi reallik uchun Ikkinchi shart gapi.)</em></p>',
-        'correct': 'were',
-        'choices': ['is', 'was', 'were', 'had been'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If I had seen the red light, I ___ the car.</strong></p>',
-        'explanation': '<p><strong>would have stopped</strong> is correct. Third conditional for a past situation that cannot be changed. <br><br><em>(<strong>would have stopped</strong> to\'g\'ri. O\'zgartirib bo\'lmaydigan o\'tmishdagi vaziyat uchun Uchinchi shart gapi.)</em></p>',
-        'correct': 'would have stopped',
-        'choices': ['will stop', 'would stop', 'stopped', 'would have stopped'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>We will go to the park if the weather ___ nice.</strong></p>',
-        'explanation': '<p><strong>is</strong> is correct. First conditional uses Present Simple in the "if" clause. <br><br><em>(<strong>is</strong> to\'g\'ri. Birinchi shart gapi "if" qismida Present Simple ishlatadi.)</em></p>',
-        'correct': 'is',
-        'choices': ['will be', 'would be', 'is', 'was'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If she ___ Japanese fluently, she would live in Tokyo right now.</strong></p>',
-        'explanation': '<p><strong>spoke</strong> is correct. Second Conditional (imagining a different present reality). <br><br><em>(<strong>spoke</strong> to\'g\'ri. Ikkinchi shart gapi (boshqacha hozirgi reallikni tasavvur qilish).)</em></p>',
-        'correct': 'spoke',
-        'choices': ['speaks', 'spoke', 'would speak', 'had spoken'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>They ___ the match yesterday if their best player hadn\'t been injured.</strong></p>',
-        'explanation': '<p><strong>would have won</strong> is correct. Third conditional (imagining a different past outcome). <br><br><em>(<strong>would have won</strong> to\'g\'ri. Uchinchi shart gapi (o\'tmishdagi boshqacha natijani tasavvur qilish).)</em></p>',
-        'correct': 'would have won',
-        'choices': ['will win', 'would win', 'won', 'would have won'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If you eat all that chocolate, you ___ sick later!</strong></p>',
-        'explanation': '<p><strong>will feel</strong> is correct. First Conditional (real future warning). <br><br><em>(<strong>will feel</strong> to\'g\'ri. Birinchi shart gapi (kelajakdagi haqiqiy ogohlantirish).)</em></p>',
-        'correct': 'will feel',
-        'choices': ['feel', 'would feel', 'will feel', 'felt'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I wouldn\'t do that if I ___ you.</strong></p>',
-        'explanation': '<p><strong>were</strong> is correct. Second conditional for advice. <br><br><em>(<strong>were</strong> to\'g\'ri. Maslahat uchun Ikkinchi shart gapi.)</em></p>',
-        'correct': 'were',
-        'choices': ['am', 'was', 'were', 'had been'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If we ___ the map, we wouldn\'t have gotten lost in the forest yesterday.</strong></p>',
-        'explanation': '<p><strong>had brought</strong> is correct. Third Conditional. The "if" clause needs Past Perfect (had + V3). <br><br><em>(<strong>had brought</strong> to\'g\'ri. Uchinchi shart gapi. "if" qismi Past Perfect (had + V3) talab qiladi.)</em></p>',
-        'correct': 'had brought',
-        'choices': ['bring', 'brought', 'had brought', 'have brought'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If he calls me tonight, I ___ answer.</strong></p>',
-        'explanation': '<p><strong>won\'t</strong> is correct. First conditional for a real future decision. <br><br><em>(<strong>won\'t</strong> to\'g\'ri. Kelajakdagi haqiqiy qaror uchun Birinchi shart gapi.)</em></p>',
-        'correct': 'won\'t',
-        'choices': ['wouldn\'t', 'don\'t', 'won\'t', 'didn\'t'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>What would you do if you ___ a wallet on the street?</strong></p>',
-        'explanation': '<p><strong>found</strong> is correct. Second conditional. Imaginary situation requires Past Simple. <br><br><em>(<strong>found</strong> to\'g\'ri. Ikkinchi shart gapi. Xayoliy vaziyat Past Simple talab qiladi.)</em></p>',
-        'correct': 'found',
-        'choices': ['find', 'will find', 'found', 'had found'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I ___ the email if my computer hadn\'t crashed.</strong></p>',
-        'explanation': '<p><strong>would have sent</strong> is correct. Third Conditional (regret about the past). <br><br><em>(<strong>would have sent</strong> to\'g\'ri. Uchinchi shart gapi (o\'tmish haqidagi afsus).)</em></p>',
-        'correct': 'would have sent',
-        'choices': ['will send', 'would send', 'sent', 'would have sent'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If you ___ more water, you will feel better.</strong></p>',
-        'explanation': '<p><strong>drink</strong> is correct. First Conditional. Present Simple is used in the condition. <br><br><em>(<strong>drink</strong> to\'g\'ri. Birinchi shart gapi. Shartda Present Simple ishlatiladi.)</em></p>',
-        'correct': 'drink',
-        'choices': ['drank', 'will drink', 'drink', 'had drunk'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If she ___ more time, she would learn how to code.</strong></p>',
-        'explanation': '<p><strong>had</strong> is correct. Second conditional (imaginary present). Reality: she doesn\'t have time. <br><br><em>(<strong>had</strong> to\'g\'ri. Ikkinchi shart gapi (xayoliy hozirgi payt). Reallik: uning vaqti yo\'q.)</em></p>',
-        'correct': 'had',
-        'choices': ['has', 'will have', 'had', 'had had'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If they had invited me to the party, I ___.</strong></p>',
-        'explanation': '<p><strong>would have gone</strong> is correct. Third conditional. Imaginary past action. <br><br><em>(<strong>would have gone</strong> to\'g\'ri. Uchinchi shart gapi. O\'tmishdagi xayoliy harakat.)</em></p>',
-        'correct': 'would have gone',
-        'choices': ['will go', 'would go', 'went', 'would have gone'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If the train ___, we will be late for the meeting.</strong></p>',
-        'explanation': '<p><strong>is delayed</strong> is correct. First conditional. Present simple for a real future possibility. <br><br><em>(<strong>is delayed</strong> to\'g\'ri. Birinchi shart gapi. Kelajakdagi real ehtimollik uchun Present Simple.)</em></p>',
-        'correct': 'is delayed',
-        'choices': ['was delayed', 'will be delayed', 'is delayed', 'had been delayed'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>I would buy that laptop if it ___ so expensive.</strong></p>',
-        'explanation': '<p><strong>weren\'t</strong> is correct. Second conditional. Imaginary present. We use "weren\'t" formally. <br><br><em>(<strong>weren\'t</strong> to\'g\'ri. Ikkinchi shart gapi. Xayoliy hozirgi payt. Biz rasmiy holatda "weren\'t" ishlatamiz.)</em></p>',
-        'correct': 'weren\'t',
-        'choices': ['isn\'t', 'won\'t be', 'weren\'t', 'hasn\'t been'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If I ___ that the movie was so boring, I wouldn\'t have watched it.</strong></p>',
-        'explanation': '<p><strong>had known</strong> is correct. Third conditional. The condition clause takes Past Perfect. <br><br><em>(<strong>had known</strong> to\'g\'ri. Uchinchi shart gapi. Shart ergash gap Past Perfect oladi.)</em></p>',
-        'correct': 'had known',
-        'choices': ['knew', 'know', 'had known', 'have known'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>If you help me with this project, I ___ you for lunch.</strong></p>',
-        'explanation': '<p><strong>will pay</strong> is correct. First conditional for a real promise. <br><br><em>(<strong>will pay</strong> to\'g\'ri. Haqiqiy va\'da uchun Birinchi shart gapi.)</em></p>',
-        'correct': 'will pay',
-        'choices': ['pay', 'would pay', 'will pay', 'paid'],
-    },
-    {
-        'text': '<p>Choose the correct option.</p><p><strong>What would you have done if you ___ the keys yesterday?</strong></p>',
-        'explanation': '<p><strong>had lost</strong> is correct. Third conditional question about the past. <br><br><em>(<strong>had lost</strong> to\'g\'ri. O\'tmish haqidagi Uchinchi shart gapi savoli.)</em></p>',
+        'text': '<p>Choose the correct option.</p><p><strong>I couldn\'t quickly open the remarkably heavy door because I ___ my keys.</strong></p>',
+        'explanation': '<p><strong>had lost</strong> is correct. Losing the keys prevented opening the door later. <br><br><em>(<strong>had lost</strong> to\'g\'ri. Kalitni yo\'qotish keyinroq eshikni ochishga to\'sqinlik qildi.)</em></p>',
         'correct': 'had lost',
-        'choices': ['lose', 'lost', 'had lost', 'would lose'],
+        'choices': ['lose', 'lost', 'had lost', 'have lost']
     },
     {
-        'text': '<p>Choose the correct option.</p><p><strong>If we didn\'t have to work today, we ___ to the beach.</strong></p>',
-        'explanation': '<p><strong>would go</strong> is correct. Second conditional. Imaginary present situation. <br><br><em>(<strong>would go</strong> to\'g\'ri. Ikkinchi shart gapi. Xayoliy hozirgi vaziyat.)</em></p>',
-        'correct': 'would go',
-        'choices': ['will go', 'would go', 'went', 'would have gone'],
+        'text': '<p>Choose the correct option.</p><p><strong>By the time the fiercely burning fire was extinguished, it ___ the roof entirely.</strong></p>',
+        'explanation': '<p><strong>had destroyed</strong> is correct. The destruction happened before the fire was put out. <br><br><em>(<strong>had destroyed</strong> to\'g\'ri. Vayronagarchilik olov o\'chirilishidan oldin bo\'lgan.)</em></p>',
+        'correct': 'had destroyed',
+        'choices': ['has destroyed', 'destroyed', 'was destroying', 'had destroyed']
     },
     {
-        'text': '<p>Choose the correct option.</p><p><strong>If he ___ the password, he won\'t be able to log in.</strong></p>',
-        'explanation': '<p><strong>forgets</strong> is correct. First conditional. Present Simple for future conditions. <br><br><em>(<strong>forgets</strong> to\'g\'ri. Birinchi shart gapi. Kelajak shartlari uchun Present Simple.)</em></p>',
-        'correct': 'forgets',
-        'choices': ['forgot', 'will forget', 'forgets', 'had forgotten'],
+        'text': '<p>Choose the correct option.</p><p><strong>The brilliantly written article was rejected because she ___ the deadline.</strong></p>',
+        'explanation': '<p><strong>had missed</strong> is correct. Missing the deadline happened before the rejection. <br><br><em>(<strong>had missed</strong> to\'g\'ri. Muddatni o\'tkazib yuborish rad etilishdan oldin sodir bo\'lgan.)</em></p>',
+        'correct': 'had missed',
+        'choices': ['missed', 'had missed', 'misses', 'has missed']
     },
     {
-        'text': '<p>Choose the correct option.</p><p><strong>She would have been furious if she ___ the truth.</strong></p>',
-        'explanation': '<p><strong>had found out</strong> is correct. Third conditional for a past condition that didn\'t happen. <br><br><em>(<strong>had found out</strong> to\'g\'ri. Sodir bo\'lmagan o\'tmishdagi shart uchun Uchinchi shart gapi.)</em></p>',
-        'correct': 'had found out',
-        'choices': ['found out', 'finds out', 'had found out', 'would find out'],
+        'text': '<p>Choose the correct option.</p><p><strong>He suddenly remembered he ___ the surprisingly expensive bill.</strong></p>',
+        'explanation': '<p><strong>hadn\'t paid</strong> is correct. The failure to pay happened before he remembered. <br><br><em>(<strong>hadn\'t paid</strong> to\'g\'ri. To\'lamaslik eslashidan oldin bo\'lgan.)</em></p>',
+        'correct': 'hadn\'t paid',
+        'choices': ['hasn\'t paid', 'didn\'t pay', 'hadn\'t paid', 'doesn\'t pay']
     },
     {
-        'text': '<p>Choose the correct option.</p><p><strong>If I were a bird, I ___ everywhere.</strong></p>',
-        'explanation': '<p><strong>would fly</strong> is correct. Second conditional. Impossible present situation. <br><br><em>(<strong>would fly</strong> to\'g\'ri. Ikkinchi shart gapi. Hozirgi imkonsiz vaziyat.)</em></p>',
-        'correct': 'would fly',
-        'choices': ['will fly', 'flew', 'would fly', 'would have flown'],
+        'text': '<p>Choose the correct option.</p><p><strong>The utterly exhausted children slept deeply because they ___ vigorously all day.</strong></p>',
+        'explanation': '<p><strong>had played</strong> is correct. Playing preceded sleeping. <br><br><em>(<strong>had played</strong> to\'g\'ri. O\'ynash uxlashdan oldin sodir bo\'lgan.)</em></p>',
+        'correct': 'had played',
+        'choices': ['had played', 'play', 'played', 'were playing']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>She confidently spoke Spanish because she ___ in Madrid previously.</strong></p>',
+        'explanation': '<p><strong>had lived</strong> is correct. Living in Madrid happened before speaking confidently. <br><br><em>(<strong>had lived</strong> to\'g\'ri. Madriddagi hayot ishonchli gapirishdan oldin bo\'lgan.)</em></p>',
+        'correct': 'had lived',
+        'choices': ['lived', 'lives', 'had lived', 'has lived']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The totally empty room echoed because they ___ all the heavy furniture.</strong></p>',
+        'explanation': '<p><strong>had removed</strong> is correct. Removal of furniture caused the later echoing. <br><br><em>(<strong>had removed</strong> to\'g\'ri. Mebelni olib chiqish keyinroq aks-sado berishiga sabab bo\'ldi.)</em></p>',
+        'correct': 'had removed',
+        'choices': ['remove', 'had removed', 'removed', 'have removed']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>By the time the incredibly slow waiter brought our food, it ___ completely cold.</strong></p>',
+        'explanation': '<p><strong>had become</strong> is correct. The food became cold before it arrived. <br><br><em>(<strong>had become</strong> to\'g\'ri. Ovqat kelishidan oldin sovub bo\'lgan edi.)</em></p>',
+        'correct': 'had become',
+        'choices': ['became', 'has become', 'becomes', 'had become']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>I barely recognized my old, dear friend because he ___ significantly.</strong></p>',
+        'explanation': '<p><strong>had changed</strong> is correct. The change happened prior to the moment of recognition. <br><br><em>(<strong>had changed</strong> to\'g\'ri. O\'zgarish tanib qolish vaqtidan oldin sodir bo\'lgan.)</em></p>',
+        'correct': 'had changed',
+        'choices': ['changed', 'had changed', 'changes', 'has changed']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The thoroughly cleaned house looked amazing after she ___ for hours.</strong></p>',
+        'explanation': '<p><strong>had scrubbed</strong> is correct. The scrubbing happened before the house looked amazing. <br><br><em>(<strong>had scrubbed</strong> to\'g\'ri. Ishqalab yuvish uyning ajoyib ko\'rinishidan oldin bo\'lgan.)</em></p>',
+        'correct': 'had scrubbed',
+        'choices': ['had scrubbed', 'scrubbed', 'was scrubbing', 'has scrubbed']
     }
 ]
 
+QUESTIONS_mixed_cond = [
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>If he ___ the incredibly fast car more carefully, he wouldn\'t have crashed.</strong></p>',
+        'explanation': '<p><strong>had driven</strong> is correct. Third conditional uses Past Perfect in the "if" clause. <br><br><em>(<strong>had driven</strong> to\'g\'ri. Uchinchi shart gapining "if" qismida Past Perfect ishlatiladi.)</em></p>',
+        'correct': 'had driven',
+        'choices': ['drove', 'had driven', 'would drive', 'drives']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>I wouldn\'t be so utterly exhausted now if I ___ earlier last night.</strong></p>',
+        'explanation': '<p><strong>had slept</strong> is correct. Mixed conditional: past action affecting the present. <br><br><em>(<strong>had slept</strong> to\'g\'ri. Aralash shart gapi: o\'tmishdagi harakat hozirgi holatga ta\'sir qilyapti.)</em></p>',
+        'correct': 'had slept',
+        'choices': ['slept', 'sleep', 'have slept', 'had slept']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>If the brilliant scientist had published his work, he ___ a prestigious award.</strong></p>',
+        'explanation': '<p><strong>would have won</strong> is correct. Third conditional result clause uses would + have + V3. <br><br><em>(<strong>would have won</strong> to\'g\'ri. Uchinchi shart gapining natija qismida would + have + V3 ishlatiladi.)</em></p>',
+        'correct': 'would have won',
+        'choices': ['would win', 'will win', 'would have won', 'won']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>If she ___ that strictly guarded secret, she wouldn\'t be in terrible trouble today.</strong></p>',
+        'explanation': '<p><strong>hadn\'t revealed</strong> is correct. Mixed conditional with a past condition. <br><br><em>(<strong>hadn\'t revealed</strong> to\'g\'ri. O\'tmishdagi shartga ega bo\'lgan aralash shart gapi.)</em></p>',
+        'correct': 'hadn\'t revealed',
+        'choices': ['didn\'t reveal', 'wouldn\'t reveal', 'hasn\'t revealed', 'hadn\'t revealed']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>They ___ entirely lost in the dark forest if they had brought a simple map.</strong></p>',
+        'explanation': '<p><strong>wouldn\'t have gotten</strong> is correct. Third conditional for a past imaginary result. <br><br><em>(<strong>wouldn\'t have gotten</strong> to\'g\'ri. O\'tmishdagi xayoliy natija uchun uchinchi shart gapi.)</em></p>',
+        'correct': 'wouldn\'t have gotten',
+        'choices': ['wouldn\'t get', 'wouldn\'t have gotten', 'won\'t get', 'didn\'t get']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>If I had learned to code brilliantly in my youth, I ___ a senior developer now.</strong></p>',
+        'explanation': '<p><strong>would be</strong> is correct. Mixed conditional showing a present result. <br><br><em>(<strong>would be</strong> to\'g\'ri. Hozirgi natijani ko\'rsatuvchi aralash shart gapi.)</em></p>',
+        'correct': 'would be',
+        'choices': ['would be', 'will be', 'am', 'would have been']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>If the incredibly brave firefighters hadn\'t arrived quickly, the historic house ___.</strong></p>',
+        'explanation': '<p><strong>would have burned down</strong> is correct. Third conditional result in the past. <br><br><em>(<strong>would have burned down</strong> to\'g\'ri. O\'tmishdagi uchinchi shart gapi natijasi.)</em></p>',
+        'correct': 'would have burned down',
+        'choices': ['would burn down', 'burned down', 'would have burned down', 'will burn down']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>You ___ deeply deeply hungry right now if you had eaten that huge breakfast.</strong></p>',
+        'explanation': '<p><strong>wouldn\'t be</strong> is correct. Mixed conditional: past action, present feeling. <br><br><em>(<strong>wouldn\'t be</strong> to\'g\'ri. Aralash shart gapi: o\'tmishdagi ish, hozirgi holat/hissiyot.)</em></p>',
+        'correct': 'wouldn\'t be',
+        'choices': ['won\'t be', 'wouldn\'t be', 'wouldn\'t have been', 'aren\'t']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>If we ___ heavily on that risky investment, we wouldn\'t be completely bankrupt today.</strong></p>',
+        'explanation': '<p><strong>hadn\'t relied</strong> is correct. Past action affecting the present situation. <br><br><em>(<strong>hadn\'t relied</strong> to\'g\'ri. Hozirgi vaziyatga ta\'sir qiluvchi o\'tmishdagi harakat.)</em></p>',
+        'correct': 'hadn\'t relied',
+        'choices': ['hadn\'t relied', 'didn\'t rely', 'don\'t rely', 'wouldn\'t rely']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>She would have gladly accepted the difficult task if she ___ enough free time.</strong></p>',
+        'explanation': '<p><strong>had had</strong> is correct. Third conditional requires Past Perfect (had + had). <br><br><em>(<strong>had had</strong> to\'g\'ri. Uchinchi shart gapi Past Perfect (had + had) ni talab qiladi.)</em></p>',
+        'correct': 'had had',
+        'choices': ['had', 'would have', 'has', 'had had']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>If I ___ perfectly fluent in Japanese, I would have easily understood the complex movie last night.</strong></p>',
+        'explanation': '<p><strong>were</strong> is correct. Mixed conditional: present permanent state (being fluent) affecting a past event. <br><br><em>(<strong>were</strong> to\'g\'ri. Aralash shart gapi: hozirgi doimiy holat o\'tmishdagi voqeaga ta\'sir qilyapti.)</em></p>',
+        'correct': 'were',
+        'choices': ['am', 'had been', 'were', 'would be']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The exceptionally talented team ___ the championship if their star player hadn\'t been injured.</strong></p>',
+        'explanation': '<p><strong>would have won</strong> is correct. Third conditional past result. <br><br><em>(<strong>would have won</strong> to\'g\'ri. Uchinchi shart gapi o\'tmish natijasi.)</em></p>',
+        'correct': 'would have won',
+        'choices': ['will win', 'would win', 'would have won', 'won']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>If he had listened to my very serious warning, he ___ safely at home right now.</strong></p>',
+        'explanation': '<p><strong>would be</strong> is correct. Past condition, present result (Mixed). <br><br><em>(<strong>would be</strong> to\'g\'ri. O\'tmish sharti, hozirgi natija (Aralash).)</em></p>',
+        'correct': 'would be',
+        'choices': ['would have been', 'would be', 'is', 'will be']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>I would have happily helped you paint the large house if you ___ me earlier.</strong></p>',
+        'explanation': '<p><strong>had asked</strong> is correct. Third conditional "if" clause. <br><br><em>(<strong>had asked</strong> to\'g\'ri. Uchinchi shart gapining "if" qismi.)</em></p>',
+        'correct': 'had asked',
+        'choices': ['had asked', 'asked', 'would ask', 'ask']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>If they ___ their extremely expensive tickets, they would be enjoying the grand concert now.</strong></p>',
+        'explanation': '<p><strong>hadn\'t lost</strong> is correct. Mixed conditional past condition. <br><br><em>(<strong>hadn\'t lost</strong> to\'g\'ri. Aralash shart gapi o\'tmish sharti.)</em></p>',
+        'correct': 'hadn\'t lost',
+        'choices': ['didn\'t lose', 'haven\'t lost', 'hadn\'t lost', 'don\'t lose']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>We ___ completely utterly drenched yesterday if we had brought our sturdy umbrellas.</strong></p>',
+        'explanation': '<p><strong>wouldn\'t have gotten</strong> is correct. Third conditional negative result. <br><br><em>(<strong>wouldn\'t have gotten</strong> to\'g\'ri. Uchinchi shart gapining inkor natijasi.)</em></p>',
+        'correct': 'wouldn\'t have gotten',
+        'choices': ['wouldn\'t get', 'didn\'t get', 'won\'t get', 'wouldn\'t have gotten']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>If she had meticulously prepared for the tough interview, she ___ the manager position now.</strong></p>',
+        'explanation': '<p><strong>would have</strong> is correct. Mixed conditional (past preparation, present possession of the job). <br><br><em>(<strong>would have</strong> to\'g\'ri. Aralash shart gapi (o\'tmishdagi tayyorgarlik, hozirda ishga egalik).)</em></p>',
+        'correct': 'would have',
+        'choices': ['would have had', 'will have', 'would have', 'has']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>If the desperately ill patient had taken the medicine reliably, he ___ peacefully yesterday.</strong></p>',
+        'explanation': '<p><strong>would have recovered</strong> is correct. Both condition and result are in the past. <br><br><em>(<strong>would have recovered</strong> to\'g\'ri. Shart ham, natija ham o\'tmishda.)</em></p>',
+        'correct': 'would have recovered',
+        'choices': ['would recover', 'would have recovered', 'recovered', 'will recover']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>I wouldn\'t be intensely studying so late tonight if I ___ my work earlier today.</strong></p>',
+        'explanation': '<p><strong>had finished</strong> is correct. Mixed conditional. <br><br><em>(<strong>had finished</strong> to\'g\'ri. Aralash shart gapi.)</em></p>',
+        'correct': 'had finished',
+        'choices': ['finished', 'have finished', 'had finished', 'would finish']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>If he ___ truly honest with me from the beginning, I wouldn\'t be furiously angry now.</strong></p>',
+        'explanation': '<p><strong>had been</strong> is correct. Past condition affecting present state. <br><br><em>(<strong>had been</strong> to\'g\'ri. Hozirgi holatga ta\'sir qiluvchi o\'tmish sharti.)</em></p>',
+        'correct': 'had been',
+        'choices': ['was', 'were', 'had been', 'has been']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>She would have immediately recognized the famous actor if he ___ massive sunglasses.</strong></p>',
+        'explanation': '<p><strong>hadn\'t worn</strong> is correct. Third conditional negative condition. <br><br><em>(<strong>hadn\'t worn</strong> to\'g\'ri. Uchinchi shart gapi inkor sharti.)</em></p>',
+        'correct': 'hadn\'t worn',
+        'choices': ['didn\'t wear', 'hadn\'t worn', 'wouldn\'t wear', 'doesn\'t wear']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>If you had carefully locked the front door, the clever thief ___ in easily.</strong></p>',
+        'explanation': '<p><strong>couldn\'t have broken</strong> is correct. Third conditional with modal ability. <br><br><em>(<strong>couldn\'t have broken</strong> to\'g\'ri. Qobiliyat modal fe\'li bilan uchinchi shart gapi.)</em></p>',
+        'correct': 'couldn\'t have broken',
+        'choices': ['couldn\'t break', 'didn\'t break', 'couldn\'t have broken', 'can\'t break']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>If I ___ an expert brilliantly trained in mechanics, I would have fixed the broken engine yesterday.</strong></p>',
+        'explanation': '<p><strong>were</strong> is correct. Mixed conditional (present permanent state, past result). <br><br><em>(<strong>were</strong> to\'g\'ri. Aralash shart gapi (hozirgi doimiy holat, o\'tmish natijasi).)</em></p>',
+        'correct': 'were',
+        'choices': ['were', 'am', 'had been', 'would be']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The completely ruined cake would have tasted delicious if you ___ entirely too much salty butter.</strong></p>',
+        'explanation': '<p><strong>hadn\'t added</strong> is correct. Third conditional. <br><br><em>(<strong>hadn\'t added</strong> to\'g\'ri. Uchinchi shart gapi.)</em></p>',
+        'correct': 'hadn\'t added',
+        'choices': ['didn\'t add', 'wouldn\'t add', 'don\'t add', 'hadn\'t added']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>If she had miraculously survived the terrible accident, she ___ 100 years old today.</strong></p>',
+        'explanation': '<p><strong>would be</strong> is correct. Mixed conditional with a present result. <br><br><em>(<strong>would be</strong> to\'g\'ri. Hozirgi natijali aralash shart gapi.)</em></p>',
+        'correct': 'would be',
+        'choices': ['will be', 'would have been', 'would be', 'is']
+    }
+]
+
+QUESTIONS_passive_voice = [
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The incredibly delicate antique vase ___ accidentally ___ by the careless maid yesterday.</strong></p>',
+        'explanation': '<p><strong>was / dropped</strong> is correct. Past Simple Passive (was/were + V3). <br><br><em>(<strong>was / dropped</strong> to\'g\'ri. Past Simple Passive (was/were + V3).)</em></p>',
+        'correct': 'was / dropped',
+        'choices': ['is / dropped', 'was / dropping', 'was / dropped', 'has / dropped']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Look closely! The remarkably beautiful ancient mural ___ carefully ___ right now.</strong></p>',
+        'explanation': '<p><strong>is being / restored</strong> is correct. Present Continuous Passive (is being + V3). <br><br><em>(<strong>is being / restored</strong> to\'g\'ri. Present Continuous Passive (is being + V3).)</em></p>',
+        'correct': 'is being / restored',
+        'choices': ['is / restored', 'is being / restored', 'has been / restored', 'was / restored']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The profoundly complex mathematical theorem ___ finally ___ by the young genius.</strong></p>',
+        'explanation': '<p><strong>has been / solved</strong> is correct. Present Perfect Passive (has been + V3). <br><br><em>(<strong>has been / solved</strong> to\'g\'ri. Present Perfect Passive (has been + V3).)</em></p>',
+        'correct': 'has been / solved',
+        'choices': ['has / solved', 'is being / solved', 'has been / solved', 'was being / solved']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>All highly confidential employee records ___ securely stored in the heavy safe at all times.</strong></p>',
+        'explanation': '<p><strong>must be</strong> is correct. Modal Passive for obligation. <br><br><em>(<strong>must be</strong> to\'g\'ri. Majburiyat uchun Modal Passive.)</em></p>',
+        'correct': 'must be',
+        'choices': ['must be', 'must have', 'have to', 'must been']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The completely ruined bridge ___ extensively before the dangerous storm hit.</strong></p>',
+        'explanation': '<p><strong>had been repaired</strong> is correct. Past Perfect Passive. <br><br><em>(<strong>had been repaired</strong> to\'g\'ri. Past Perfect Passive.)</em></p>',
+        'correct': 'had been repaired',
+        'choices': ['had repaired', 'has been repaired', 'had been repaired', 'was repaired']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Right at this moment, intensely spicy food ___ eagerly ___ in the busy kitchen.</strong></p>',
+        'explanation': '<p><strong>is being / prepared</strong> is correct. Present Continuous Passive. <br><br><em>(<strong>is being / prepared</strong> to\'g\'ri. Present Continuous Passive.)</em></p>',
+        'correct': 'is being / prepared',
+        'choices': ['is / prepared', 'has been / prepared', 'was being / prepared', 'is being / prepared']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The wildly popular new gadget ___ globally next thoroughly exciting month.</strong></p>',
+        'explanation': '<p><strong>will be launched</strong> is correct. Future Simple Passive. <br><br><em>(<strong>will be launched</strong> to\'g\'ri. Future Simple Passive.)</em></p>',
+        'correct': 'will be launched',
+        'choices': ['will launch', 'will be launched', 'is launched', 'would be launched']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The highly mysterious ancient manuscript ___ accurately yet by any renowned scholar.</strong></p>',
+        'explanation': '<p><strong>hasn\'t been translated</strong> is correct. Present Perfect Passive (negative). <br><br><em>(<strong>hasn\'t been translated</strong> to\'g\'ri. Present Perfect Passive (inkor).)</em></p>',
+        'correct': 'hasn\'t been translated',
+        'choices': ['hasn\'t translated', 'hasn\'t been translated', 'wasn\'t translated', 'isn\'t being translated']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>I deeply suspect that my private emails ___ secretly ___ by someone recently.</strong></p>',
+        'explanation': '<p><strong>have been / read</strong> is correct. Present Perfect Passive for a recent completed action. <br><br><em>(<strong>have been / read</strong> to\'g\'ri. Yaqinda tugallangan harakat uchun Present Perfect Passive.)</em></p>',
+        'correct': 'have been / read',
+        'choices': ['are being / read', 'have / read', 'have been / read', 'were / reading']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The extremely dangerous wild tiger ___ safely caught before it reached the quiet village.</strong></p>',
+        'explanation': '<p><strong>had been</strong> is correct. Past Perfect Passive (action completed before another past action). <br><br><em>(<strong>had been</strong> to\'g\'ri. Past Perfect Passive (boshqa o\'tmishdagi harakatdan oldin tugallangan harakat).)</em></p>',
+        'correct': 'had been',
+        'choices': ['had been', 'has been', 'was being', 'is']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>That outrageously expensive diamond necklace ___ cautiously ___ during the glamorous party last night.</strong></p>',
+        'explanation': '<p><strong>was being / worn</strong> is correct. Past Continuous Passive. <br><br><em>(<strong>was being / worn</strong> to\'g\'ri. Past Continuous Passive.)</em></p>',
+        'correct': 'was being / worn',
+        'choices': ['was / worn', 'is being / worn', 'was being / worn', 'had been / worn']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The brilliantly written novel ___ highly enthusiastically by literary critics worldwide.</strong></p>',
+        'explanation': '<p><strong>is praised</strong> is correct. Present Simple Passive for a general fact. <br><br><em>(<strong>is praised</strong> to\'g\'ri. Umumiy haqiqat uchun Present Simple Passive.)</em></p>',
+        'correct': 'is praised',
+        'choices': ['praises', 'is praised', 'has praised', 'was praising']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Those thoroughly confusing instructions ___ completely ___ by the new employees.</strong></p>',
+        'explanation': '<p><strong>were / misunderstood</strong> is correct. Past Simple Passive. <br><br><em>(<strong>were / misunderstood</strong> to\'g\'ri. Past Simple Passive.)</em></p>',
+        'correct': 'were / misunderstood',
+        'choices': ['were / misunderstood', 'have / misunderstood', 'are / misunderstanding', 'had / misunderstood']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The vitally important medicine ___ quickly directly to the hastily set up hospital.</strong></p>',
+        'explanation': '<p><strong>must be delivered</strong> is correct. Modal Passive (must be + V3). <br><br><em>(<strong>must be delivered</strong> to\'g\'ri. Modal Passive (must be + V3).)</em></p>',
+        'correct': 'must be delivered',
+        'choices': ['must deliver', 'must be delivered', 'must have delivered', 'must delivering']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>When I boldly entered the room, the terribly loud music ___ instantly ___.</strong></p>',
+        'explanation': '<p><strong>was / turned off</strong> is correct. Past Simple Passive. <br><br><em>(<strong>was / turned off</strong> to\'g\'ri. Past Simple Passive.)</em></p>',
+        'correct': 'was / turned off',
+        'choices': ['was / turned off', 'is / turned off', 'had / turned off', 'has / turned off']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>A beautifully crafted wooden table ___ skillfully by the surprisingly fast carpenter now.</strong></p>',
+        'explanation': '<p><strong>is being made</strong> is correct. Present Continuous Passive. <br><br><em>(<strong>is being made</strong> to\'g\'ri. Present Continuous Passive.)</em></p>',
+        'correct': 'is being made',
+        'choices': ['is making', 'is made', 'is being made', 'has been made']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>My thoroughly washed car ___ amazingly clean after it ___ professionally yesterday.</strong></p>',
+        'explanation': '<p><strong>was polished</strong> is correct. Past Simple Passive. <br><br><em>(<strong>was polished</strong> to\'g\'ri. Past Simple Passive.)</em></p>',
+        'correct': 'was polished',
+        'choices': ['polished', 'has been polished', 'was polished', 'is polished']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Unfortunately, the incredibly fun outdoor festival ___ abruptly due to the heavy rain.</strong></p>',
+        'explanation': '<p><strong>has been cancelled</strong> is correct. Present Perfect Passive for recent news. <br><br><em>(<strong>has been cancelled</strong> to\'g\'ri. Yaqindagi yangiliklar uchun Present Perfect Passive.)</em></p>',
+        'correct': 'has been cancelled',
+        'choices': ['has cancelled', 'has been cancelled', 'is cancelling', 'will cancel']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The strictly confidential meeting ___ quietly ___ behind heavily guarded doors.</strong></p>',
+        'explanation': '<p><strong>was being / held</strong> is correct. Past Continuous Passive. <br><br><em>(<strong>was being / held</strong> to\'g\'ri. Past Continuous Passive.)</em></p>',
+        'correct': 'was being / held',
+        'choices': ['was being / held', 'is / held', 'has been / held', 'was / holding']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Several remarkably generous donations ___ anonymously to the desperately needy charity yesterday.</strong></p>',
+        'explanation': '<p><strong>were given</strong> is correct. Past Simple Passive. <br><br><em>(<strong>were given</strong> to\'g\'ri. Past Simple Passive.)</em></p>',
+        'correct': 'were given',
+        'choices': ['gave', 'have been given', 'were given', 'are given']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The completely lost keys ___ unexpectedly ___ under the heavy, dusty sofa.</strong></p>',
+        'explanation': '<p><strong>were / found</strong> is correct. Past Simple Passive. <br><br><em>(<strong>were / found</strong> to\'g\'ri. Past Simple Passive.)</em></p>',
+        'correct': 'were / found',
+        'choices': ['are / found', 'were / found', 'have / found', 'were / finding']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The utterly exhausted workers eagerly hoped that their massive salaries ___ soon.</strong></p>',
+        'explanation': '<p><strong>would be increased</strong> is correct. Future in the past passive (would be + V3). <br><br><em>(<strong>would be increased</strong> to\'g\'ri. O\'tgan zamondagi kelasi zamon majhul nisbati (would be + V3).)</em></p>',
+        'correct': 'would be increased',
+        'choices': ['will increase', 'would be increased', 'are increased', 'have been increased']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The widely debated new law ___ forcefully ___ by the surprisingly united parliament tomorrow.</strong></p>',
+        'explanation': '<p><strong>will be / passed</strong> is correct. Future Simple Passive. <br><br><em>(<strong>will be / passed</strong> to\'g\'ri. Future Simple Passive.)</em></p>',
+        'correct': 'will be / passed',
+        'choices': ['will be / passed', 'will / pass', 'is / passed', 'has been / passed']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The deeply moving speech ___ passionately by the exceptionally talented orator.</strong></p>',
+        'explanation': '<p><strong>was delivered</strong> is correct. Past Simple Passive. <br><br><em>(<strong>was delivered</strong> to\'g\'ri. Past Simple Passive.)</em></p>',
+        'correct': 'was delivered',
+        'choices': ['delivered', 'was delivering', 'was delivered', 'has delivered']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>My fiercely independent cat wildly hates ___ suddenly ___ by loud strangers.</strong></p>',
+        'explanation': '<p><strong>being / touched</strong> is correct. Passive Gerund (being + V3) after hate. <br><br><em>(<strong>being / touched</strong> to\'g\'ri. Hate fe\'lidan keyin Passive Gerund (being + V3).)</em></p>',
+        'correct': 'being / touched',
+        'choices': ['to touch', 'touching', 'being / touched', 'be / touched']
+    }
+]
+
+QUESTIONS_reported_speech = [
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"I strictly always eat healthy food," the exceptionally fit athlete proudly said. <br>The athlete proudly said that he strictly always ___ healthy food.</strong></p>',
+        'explanation': '<p><strong>ate</strong> is correct. Present Simple backshifts to Past Simple. <br><br><em>(<strong>ate</strong> to\'g\'ri. Present Simple bir qadam orqaga, Past Simple ga o\'zgaradi.)</em></p>',
+        'correct': 'ate',
+        'choices': ['eat', 'eats', 'ate', 'had eaten']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"We are rapidly developing a deeply complex AI now," the brilliant scientists stated. <br>The scientists stated that they ___ a deeply complex AI ___.</strong></p>',
+        'explanation': '<p><strong>were developing / then</strong> is correct. Present Continuous shifts to Past Continuous, and "now" shifts to "then". <br><br><em>(<strong>were developing / then</strong> to\'g\'ri. Present Continuous Past Continuous ga, "now" esa "then" ga o\'zgaradi.)</em></p>',
+        'correct': 'were developing / then',
+        'choices': ['are developing / now', 'were developing / then', 'had developed / then', 'developed / now']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"I completely forgot the highly important meeting yesterday," she whispered nervously. <br>She whispered nervously that she ___ the highly important meeting ___.</strong></p>',
+        'explanation': '<p><strong>had completely forgotten / the day before</strong> is correct. Past Simple shifts to Past Perfect, and "yesterday" shifts to "the day before". <br><br><em>(<strong>had completely forgotten / the day before</strong> to\'g\'ri. Past Simple Past Perfect ga, "yesterday" esa "the day before" ga o\'zgaradi.)</em></p>',
+        'correct': 'had completely forgotten / the day before',
+        'choices': ['completely forgot / yesterday', 'has completely forgotten / the previous day', 'had completely forgotten / the day before', 'was completely forgetting / yesterday']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"I will definitely visit the incredibly beautiful museum tomorrow," he promised cheerfully. <br>He promised cheerfully that he ___ the incredibly beautiful museum ___.</strong></p>',
+        'explanation': '<p><strong>would definitely visit / the next day</strong> is correct. "Will" shifts to "would", and "tomorrow" shifts to "the next day". <br><br><em>(<strong>would definitely visit / the next day</strong> to\'g\'ri. "Will" "would" ga, "tomorrow" esa "the next day" ga o\'zgaradi.)</em></p>',
+        'correct': 'would definitely visit / the next day',
+        'choices': ['will definitely visit / tomorrow', 'would definitely visit / the next day', 'definitely visited / the following day', 'had definitely visited / tomorrow']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"I have already firmly decided," the fiercely independent woman declared. <br>The woman declared that she ___ already firmly decided.</strong></p>',
+        'explanation': '<p><strong>had</strong> is correct. Present Perfect shifts to Past Perfect. <br><br><em>(<strong>had</strong> to\'g\'ri. Present Perfect Past Perfect ga o\'zgaradi.)</em></p>',
+        'correct': 'had',
+        'choices': ['has', 'had', 'was', 'did']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"We can easily solve this terribly difficult puzzle," the clever kids shouted. <br>The clever kids shouted that they ___ easily solve ___ terribly difficult puzzle.</strong></p>',
+        'explanation': '<p><strong>could / that</strong> is correct. "Can" shifts to "could", and "this" shifts to "that". <br><br><em>(<strong>could / that</strong> to\'g\'ri. "Can" "could" ga, "this" esa "that" ga o\'zgaradi.)</em></p>',
+        'correct': 'could / that',
+        'choices': ['could / that', 'can / this', 'could / this', 'can / that']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"I am reading a truly fascinating book here," she murmured quietly. <br>She murmured quietly that she was reading a truly fascinating book ___.</strong></p>',
+        'explanation': '<p><strong>there</strong> is correct. "Here" changes to "there" in reported speech. <br><br><em>(<strong>there</strong> to\'g\'ri. O\'zlashtirma gapda "Here" "there" ga o\'zgaradi.)</em></p>',
+        'correct': 'there',
+        'choices': ['here', 'there', 'then', 'that']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"I must immediately leave the highly crowded room," he said frantically. <br>He said frantically that he ___ immediately leave the highly crowded room.</strong></p>',
+        'explanation': '<p><strong>had to</strong> is correct. "Must" generally shifts to "had to". <br><br><em>(<strong>had to</strong> to\'g\'ri. "Must" odatda "had to" ga o\'zgaradi.)</em></p>',
+        'correct': 'had to',
+        'choices': ['must', 'has to', 'had to', 'would']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"The incredibly fierce storm destroyed the old bridge last week," the reporter explained. <br>The reporter explained that the incredibly fierce storm ___ the old bridge ___.</strong></p>',
+        'explanation': '<p><strong>had destroyed / the previous week</strong> is correct. Past Simple shifts to Past Perfect, and "last week" shifts to "the previous week". <br><br><em>(<strong>had destroyed / the previous week</strong> to\'g\'ri. Past Simple Past Perfect ga, "last week" "the previous week" ga o\'zgaradi.)</em></p>',
+        'correct': 'had destroyed / the previous week',
+        'choices': ['destroyed / last week', 'had destroyed / the previous week', 'has destroyed / the previous week', 'had destroyed / last week']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"I don\'t truly understand this wildly complicated formula," the confused student admitted. <br>The student admitted that he ___ truly understand ___ wildly complicated formula.</strong></p>',
+        'explanation': '<p><strong>didn\'t / that</strong> is correct. "Don\'t" shifts to "didn\'t", and "this" to "that". <br><br><em>(<strong>didn\'t / that</strong> to\'g\'ri. "Don\'t" "didn\'t" ga, "this" "that" ga o\'zgaradi.)</em></p>',
+        'correct': 'didn\'t / that',
+        'choices': ['doesn\'t / this', 'didn\'t / this', 'hadn\'t / that', 'didn\'t / that']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"We were peacefully sleeping when the loud alarm rang," they complained bitterly. <br>They complained bitterly that they ___ peacefully sleeping when the loud alarm had rung.</strong></p>',
+        'explanation': '<p><strong>had been</strong> is correct. Past Continuous shifts to Past Perfect Continuous. <br><br><em>(<strong>had been</strong> to\'g\'ri. Past Continuous Past Perfect Continuous ga o\'zgaradi.)</em></p>',
+        'correct': 'had been',
+        'choices': ['were', 'had been', 'have been', 'are']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"I will absolutely never forgive his incredibly rude behavior," she stated coldly. <br>She stated coldly that she ___ absolutely never forgive his incredibly rude behavior.</strong></p>',
+        'explanation': '<p><strong>would</strong> is correct. "Will" shifts to "would". <br><br><em>(<strong>would</strong> to\'g\'ri. "Will" "would" ga o\'zgaradi.)</em></p>',
+        'correct': 'would',
+        'choices': ['will', 'would', 'should', 'could']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"These remarkably delicious cookies are freshly baked," the generous baker smiled. <br>The generous baker smiled that ___ remarkably delicious cookies ___ freshly baked.</strong></p>',
+        'explanation': '<p><strong>those / were</strong> is correct. "These" shifts to "those", and "are" shifts to "were". <br><br><em>(<strong>those / were</strong> to\'g\'ri. "These" "those" ga, "are" "were" ga o\'zgaradi.)</em></p>',
+        'correct': 'those / were',
+        'choices': ['these / are', 'those / are', 'those / were', 'these / were']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"I haven\'t seen the widely discussed movie yet," he confessed honestly. <br>He confessed honestly that he ___ the widely discussed movie yet.</strong></p>',
+        'explanation': '<p><strong>hadn\'t seen</strong> is correct. Present Perfect shifts to Past Perfect. <br><br><em>(<strong>hadn\'t seen</strong> to\'g\'ri. Present Perfect Past Perfect ga o\'zgaradi.)</em></p>',
+        'correct': 'hadn\'t seen',
+        'choices': ['hadn\'t seen', 'hasn\'t seen', 'didn\'t see', 'wasn\'t seeing']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"We may possibly arrive slightly late tonight," they texted hurriedly. <br>They texted hurriedly that they ___ possibly arrive slightly late ___.</strong></p>',
+        'explanation': '<p><strong>might / that night</strong> is correct. "May" shifts to "might", and "tonight" shifts to "that night". <br><br><em>(<strong>might / that night</strong> to\'g\'ri. "May" "might" ga, "tonight" "that night" ga o\'zgaradi.)</em></p>',
+        'correct': 'might / that night',
+        'choices': ['may / tonight', 'might / that night', 'could / tonight', 'might / tonight']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"The intensely hot sun rises accurately in the east," the wise teacher taught. <br>The wise teacher taught that the intensely hot sun ___ accurately in the east.</strong></p>',
+        'explanation': '<p><strong>rises</strong> is correct. Universal facts usually do not shift their tense. <br><br><em>(<strong>rises</strong> to\'g\'ri. Umumjahon haqiqatlarining zamoni odatda o\'zgarmaydi.)</em></p>',
+        'correct': 'rises',
+        'choices': ['rises', 'rose', 'had risen', 'is rising']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"I bought this beautifully crafted ring yesterday," he whispered romantically. <br>He whispered romantically that he had bought ___ beautifully crafted ring ___.</strong></p>',
+        'explanation': '<p><strong>that / the day before</strong> is correct. "This" shifts to "that", and "yesterday" shifts to "the day before". <br><br><em>(<strong>that / the day before</strong> to\'g\'ri. "This" "that" ga, "yesterday" "the day before" ga o\'zgaradi.)</em></p>',
+        'correct': 'that / the day before',
+        'choices': ['this / yesterday', 'that / yesterday', 'that / the day before', 'this / the previous day']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"I am waiting eagerly for your extremely important call," she said eagerly. <br>She said eagerly that she ___ eagerly for my extremely important call.</strong></p>',
+        'explanation': '<p><strong>was waiting</strong> is correct. Present Continuous shifts to Past Continuous. <br><br><em>(<strong>was waiting</strong> to\'g\'ri. Present Continuous Past Continuous ga o\'zgaradi.)</em></p>',
+        'correct': 'was waiting',
+        'choices': ['was waiting', 'is waiting', 'waited', 'had waited']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"They had already left silently before the noisy party started," he explained calmly. <br>He explained calmly that they ___ already left silently before the noisy party had started.</strong></p>',
+        'explanation': '<p><strong>had</strong> is correct. Past Perfect does not change (it cannot shift further back). <br><br><em>(<strong>had</strong> to\'g\'ri. Past Perfect o\'zgarmaydi (undan orqaroqqa siljib bo\'lmaydi).)</em></p>',
+        'correct': 'had',
+        'choices': ['have', 'had', 'were', 'did']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"I can\'t possibly finish this enormously heavy workload today," he complained tiredly. <br>He complained tiredly that he ___ possibly finish ___ enormously heavy workload ___.</strong></p>',
+        'explanation': '<p><strong>couldn\'t / that / that day</strong> is correct. "Can\'t" to "couldn\'t", "this" to "that", "today" to "that day". <br><br><em>(<strong>couldn\'t / that / that day</strong> to\'g\'ri. "Can\'t" "couldn\'t" ga, "this" "that" ga, "today" "that day" ga o\'zgaradi.)</em></p>',
+        'correct': 'couldn\'t / that / that day',
+        'choices': ['can\'t / this / today', 'couldn\'t / this / that day', 'couldn\'t / that / that day', 'wouldn\'t / that / today']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"We thoroughly enjoyed the remarkably scenic tour," the happy tourists said. <br>The happy tourists said that they ___ thoroughly enjoyed the remarkably scenic tour.</strong></p>',
+        'explanation': '<p><strong>had</strong> is correct. "enjoyed" (Past Simple) shifts to "had enjoyed" (Past Perfect). <br><br><em>(<strong>had</strong> to\'g\'ri. "enjoyed" (Past Simple) "had enjoyed" (Past Perfect) ga o\'zgaradi.)</em></p>',
+        'correct': 'had',
+        'choices': ['have', 'had', 'were', 'did']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"I usually wake up extremely early," the disciplined soldier stated firmly. <br>The disciplined soldier stated firmly that he usually ___ up extremely early.</strong></p>',
+        'explanation': '<p><strong>woke</strong> is correct. Present Simple "wake" shifts to Past Simple "woke". <br><br><em>(<strong>woke</strong> to\'g\'ri. Present Simple "wake" Past Simple "woke" ga o\'zgaradi.)</em></p>',
+        'correct': 'woke',
+        'choices': ['wake', 'wakes', 'woke', 'had woken']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"The highly skilled surgeon is performing the delicate operation right now," the nurse whispered. <br>The nurse whispered that the highly skilled surgeon ___ performing the delicate operation ___.</strong></p>',
+        'explanation': '<p><strong>was / then</strong> is correct. "Is" to "was", and "right now" to "then" (or right then). <br><br><em>(<strong>was / then</strong> to\'g\'ri. "Is" "was" ga, "right now" "then" ga o\'zgaradi.)</em></p>',
+        'correct': 'was / then',
+        'choices': ['is / now', 'was / now', 'had been / then', 'was / then']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"I will have flawlessly completed the extremely difficult task by tomorrow," she promised ambitiously. <br>She promised ambitiously that she ___ flawlessly completed the extremely difficult task by the next day.</strong></p>',
+        'explanation': '<p><strong>would have</strong> is correct. "Will have" shifts to "would have". <br><br><em>(<strong>would have</strong> to\'g\'ri. "Will have" "would have" ga o\'zgaradi.)</em></p>',
+        'correct': 'would have',
+        'choices': ['would have', 'will have', 'had', 'should have']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>"I don\'t actually like this overly spicy food," the polite guest admitted quietly. <br>The polite guest admitted quietly that he ___ actually like ___ overly spicy food.</strong></p>',
+        'explanation': '<p><strong>didn\'t / that</strong> is correct. "Don\'t" shifts to "didn\'t", and "this" to "that". <br><br><em>(<strong>didn\'t / that</strong> to\'g\'ri. "Don\'t" "didn\'t" ga, "this" "that" ga o\'zgaradi.)</em></p>',
+        'correct': 'didn\'t / that',
+        'choices': ['doesn\'t / this', 'didn\'t / that', 'hadn\'t / that', 'didn\'t / this']
+    }
+]
+
+QUESTIONS_modal_of_deduction = [
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The profoundly thick grass is entirely wet. It ___ heavily last night.</strong></p>',
+        'explanation': '<p><strong>must have rained</strong> is correct. Strong logical deduction about a past event based on present evidence. <br><br><em>(<strong>must have rained</strong> to\'g\'ri. Hozirgi dalilga asoslanib o\'tmish haqida kuchli mantiqiy xulosa.)</em></p>',
+        'correct': 'must have rained',
+        'choices': ['must rain', 'must have rained', 'might rain', 'can\'t have rained']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The exceptionally bright student failed the surprisingly easy test. He ___ appropriately for it.</strong></p>',
+        'explanation': '<p><strong>can\'t have studied</strong> is correct. It expresses a strong disbelief about the past. <br><br><em>(<strong>can\'t have studied</strong> to\'g\'ri. O\'tmish haqida kuchli ishonchsizlikni bildiradi.)</em></p>',
+        'correct': 'can\'t have studied',
+        'choices': ['must have studied', 'might have studied', 'can\'t have studied', 'should study']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>I deeply vividly remember clearly locking the door, but it\'s wide open. Someone ___ in!</strong></p>',
+        'explanation': '<p><strong>must have broken</strong> is correct. Strong deduction about a past break-in. <br><br><em>(<strong>must have broken</strong> to\'g\'ri. O\'tmishdagi buzib kirish haqida kuchli xulosa.)</em></p>',
+        'correct': 'must have broken',
+        'choices': ['must break', 'might break', 'can\'t have broken', 'must have broken']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The notoriously clumsy waiter isn\'t here yet. He ___ the completely wrong bus.</strong></p>',
+        'explanation': '<p><strong>might have taken</strong> is correct. A reasonable possibility (50%) in the past. <br><br><em>(<strong>might have taken</strong> to\'g\'ri. O\'tmishdagi ehtimollik (50%).)</em></p>',
+        'correct': 'might have taken',
+        'choices': ['might have taken', 'must take', 'can\'t have taken', 'should take']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>That tiny, frail bird ___ that incredibly heavy fruit all by itself. It\'s physically impossible!</strong></p>',
+        'explanation': '<p><strong>couldn\'t have carried</strong> is correct. It denotes an absolute impossibility in the past. <br><br><em>(<strong>couldn\'t have carried</strong> to\'g\'ri. Bu o\'tmishdagi mutlaq imkonsizlikni bildiradi.)</em></p>',
+        'correct': 'couldn\'t have carried',
+        'choices': ['must have carried', 'might have carried', 'couldn\'t have carried', 'shouldn\'t carry']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>She looks utterly delighted and is holding a shiny trophy. She ___ the fiercely competitive contest.</strong></p>',
+        'explanation': '<p><strong>must have won</strong> is correct. Strong logical conclusion from visible evidence. <br><br><em>(<strong>must have won</strong> to\'g\'ri. Ko\'rinib turgan dalildan kuchli mantiqiy xulosa.)</em></p>',
+        'correct': 'must have won',
+        'choices': ['might win', 'must have won', 'can\'t have won', 'won']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>You safely arrived so breathtakingly early! You ___ astonishingly fast.</strong></p>',
+        'explanation': '<p><strong>must have driven</strong> is correct. Logical conclusion for the cause of early arrival. <br><br><em>(<strong>must have driven</strong> to\'g\'ri. Vaqtli yetib kelish sababiga mantiqiy xulosa.)</em></p>',
+        'correct': 'must have driven',
+        'choices': ['can\'t have driven', 'might drive', 'must have driven', 'should drive']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>My highly important keys are suddenly missing. I ___ them in the incredibly busy coffee shop.</strong></p>',
+        'explanation': '<p><strong>may have left</strong> is correct. Expresses a possibility in the past. <br><br><em>(<strong>may have left</strong> to\'g\'ri. O\'tmishdagi ehtimollikni bildiradi.)</em></p>',
+        'correct': 'may have left',
+        'choices': ['must leave', 'can\'t have left', 'may have left', 'would leave']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>He incredibly rapidly finished the entire massive pizza. He ___ absolutely starving.</strong></p>',
+        'explanation': '<p><strong>must have been</strong> is correct. High certainty deduction about his past state. <br><br><em>(<strong>must have been</strong> to\'g\'ri. Uning o\'tmishdagi holati haqida yuqori ishonchli xulosa.)</em></p>',
+        'correct': 'must have been',
+        'choices': ['must have been', 'might be', 'can\'t have been', 'should have been']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The intensely loyal dog is calmly sleeping. It ___ the frighteningly loud fireworks outside.</strong></p>',
+        'explanation': '<p><strong>can\'t have heard</strong> is correct. Disbelief; if it heard, it wouldn\'t be calm. <br><br><em>(<strong>can\'t have heard</strong> to\'g\'ri. Ishonchsizlik; agar eshitganida, tinch yotmasdi.)</em></p>',
+        'correct': 'can\'t have heard',
+        'choices': ['must have heard', 'might hear', 'can\'t have heard', 'should hear']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>She totally ignored my friendly wave. She ___ me in that heavily crowded street.</strong></p>',
+        'explanation': '<p><strong>might not have seen</strong> is correct. A possible reason for her ignoring the wave. <br><br><em>(<strong>might not have seen</strong> to\'g\'ri. Uning to\'lqinni e\'tiborsiz qoldirishining ehtimoliy sababi.)</em></p>',
+        'correct': 'might not have seen',
+        'choices': ['must not see', 'can\'t have seen', 'might not have seen', 'shouldn\'t see']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The thoroughly cleaned windows are sparkling brightly. The energetic cleaner ___ a miraculously good job.</strong></p>',
+        'explanation': '<p><strong>must have done</strong> is correct. Strong deduction based on the clean windows. <br><br><em>(<strong>must have done</strong> to\'g\'ri. Toza derazalarga asoslangan kuchli xulosa.)</em></p>',
+        'correct': 'must have done',
+        'choices': ['might do', 'must have done', 'can\'t have done', 'will do']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The notoriously stingy boss generously bought lunch for everyone! He ___ a highly profitable deal today.</strong></p>',
+        'explanation': '<p><strong>must have closed</strong> is correct. A strong logical guess for an unusual action. <br><br><em>(<strong>must have closed</strong> to\'g\'ri. G\'ayrioddiy harakat uchun kuchli mantiqiy taxmin.)</em></p>',
+        'correct': 'must have closed',
+        'choices': ['can\'t have closed', 'might close', 'must have closed', 'should close']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>You only briefly met him once 10 years ago. You ___ his complicated name accurately.</strong></p>',
+        'explanation': '<p><strong>can\'t have remembered</strong> is correct. Expresses strong disbelief or impossibility. <br><br><em>(<strong>can\'t have remembered</strong> to\'g\'ri. Kuchli ishonchsizlik yoki imkonsizlikni bildiradi.)</em></p>',
+        'correct': 'can\'t have remembered',
+        'choices': ['must have remembered', 'might remember', 'can\'t have remembered', 'must remember']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The completely empty bottle is right there on the table. Someone ___ the incredibly expensive wine.</strong></p>',
+        'explanation': '<p><strong>must have drunk</strong> is correct. Logical conclusion from the empty bottle. <br><br><em>(<strong>must have drunk</strong> to\'g\'ri. Bo\'sh shishadan kelib chiqadigan mantiqiy xulosa.)</em></p>',
+        'correct': 'must have drunk',
+        'choices': ['must have drunk', 'can\'t have drunk', 'might drink', 'should drink']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>He entirely forgot our remarkably special anniversary. He ___ intensely busy at work.</strong></p>',
+        'explanation': '<p><strong>must have been</strong> is correct. A strong deduction to explain his forgetting. <br><br><em>(<strong>must have been</strong> to\'g\'ri. Uning unutishini tushuntiradigan kuchli xulosa.)</em></p>',
+        'correct': 'must have been',
+        'choices': ['must be', 'might be', 'must have been', 'can\'t have been']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>They excitedly bought a massive new mansion. They ___ the extremely lucrative lottery.</strong></p>',
+        'explanation': '<p><strong>must have won</strong> is correct. The most logical conclusion for sudden wealth. <br><br><em>(<strong>must have won</strong> to\'g\'ri. Kutilmagan boylik uchun eng mantiqiy xulosa.)</em></p>',
+        'correct': 'must have won',
+        'choices': ['can\'t have won', 'might win', 'must have won', 'will win']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The brutally difficult exam was unexpectedly cancelled. The strict teacher ___ suddenly ill.</strong></p>',
+        'explanation': '<p><strong>might have fallen</strong> is correct. A possible, but not certain, reason for cancellation. <br><br><em>(<strong>might have fallen</strong> to\'g\'ri. Bekor qilinishning ehtimoliy, ammo aniq bo\'lmagan sababi.)</em></p>',
+        'correct': 'might have fallen',
+        'choices': ['must fall', 'might have fallen', 'can\'t have fallen', 'would fall']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>He completely fluently speaks purely authentic Italian. He ___ intensely in Italy for years.</strong></p>',
+        'explanation': '<p><strong>must have lived</strong> is correct. Strong deduction based on his fluent speaking ability. <br><br><em>(<strong>must have lived</strong> to\'g\'ri. Uning ravon gapirish qobiliyatiga asoslangan kuchli xulosa.)</em></p>',
+        'correct': 'must have lived',
+        'choices': ['might live', 'can\'t have lived', 'must have lived', 'should live']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The profoundly silent child didn\'t touch the brightly colored toy. He ___ it at all.</strong></p>',
+        'explanation': '<p><strong>might not have liked</strong> is correct. A possible reason for his lack of interest. <br><br><em>(<strong>might not have liked</strong> to\'g\'ri. Uning qiziqmasligi uchun ehtimoliy sabab.)</em></p>',
+        'correct': 'might not have liked',
+        'choices': ['must not like', 'might not have liked', 'can\'t like', 'must have liked']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The brilliantly sharp knife is covered in thick mud. It ___ casually in the dirty garden.</strong></p>',
+        'explanation': '<p><strong>must have been dropped</strong> is correct. Deduction + Passive voice. <br><br><em>(<strong>must have been dropped</strong> to\'g\'ri. Xulosa + Majhul nisbat.)</em></p>',
+        'correct': 'must have been dropped',
+        'choices': ['must have dropped', 'can\'t have been dropped', 'must have been dropped', 'might drop']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>She arrived precisely on time despite the terribly heavy traffic. She ___ an incredibly clever shortcut.</strong></p>',
+        'explanation': '<p><strong>must have taken</strong> is correct. The only logical way to arrive on time in traffic. <br><br><em>(<strong>must have taken</strong> to\'g\'ri. Tirbandlikda o\'z vaqtida kelishning yagona mantiqiy yo\'li.)</em></p>',
+        'correct': 'must have taken',
+        'choices': ['can\'t have taken', 'must have taken', 'might take', 'should take']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>His exceptionally fast computer is completely broken. He ___ a maliciously harmful virus.</strong></p>',
+        'explanation': '<p><strong>must have downloaded</strong> is correct. Strong conclusion for the cause of the break. <br><br><em>(<strong>must have downloaded</strong> to\'g\'ri. Buzilish sababi bo\'yicha kuchli xulosa.)</em></p>',
+        'correct': 'must have downloaded',
+        'choices': ['must download', 'might download', 'can\'t have downloaded', 'must have downloaded']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>The previously locked gate is slightly open. The completely absent-minded guard ___ it.</strong></p>',
+        'explanation': '<p><strong>might have forgotten</strong> is correct. A 50% possibility blaming the guard. <br><br><em>(<strong>might have forgotten</strong> to\'g\'ri. Qorovulni ayblovchi 50% ehtimollik.)</em></p>',
+        'correct': 'might have forgotten',
+        'choices': ['might have forgotten', 'can\'t have forgotten', 'must forget', 'would forget']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>That exceptionally small car ___ entirely all 10 heavy passengers comfortably!</strong></p>',
+        'explanation': '<p><strong>couldn\'t have fit</strong> is correct. Denotes sheer impossibility in the past. <br><br><em>(<strong>couldn\'t have fit</strong> to\'g\'ri. O\'tmishdagi mutlaq imkonsizlikni bildiradi.)</em></p>',
+        'correct': 'couldn\'t have fit',
+        'choices': ['must have fit', 'might fit', 'couldn\'t have fit', 'should fit']
+    }
+]
+
+QUESTIONS_inversion = [
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Never before ___ such an incredibly stunning and vibrant sunset.</strong></p>',
+        'explanation': '<p><strong>have I seen</strong> is correct. Inversion after "Never". Auxiliary verb (have) comes before the subject (I). <br><br><em>(<strong>have I seen</strong> to\'g\'ri. "Never" dan keyin Inversiya. Yordamchi fe\'l (have) egadan (I) oldin keladi.)</em></p>',
+        'correct': 'have I seen',
+        'choices': ['I have seen', 'have I seen', 'saw I', 'I saw']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Rarely ___ genuinely wise and profoundly humble leaders nowadays.</strong></p>',
+        'explanation': '<p><strong>do we encounter</strong> is correct. Inversion after "Rarely" in Present Simple requires "do/does". <br><br><em>(<strong>do we encounter</strong> to\'g\'ri. Present Simple da "Rarely" dan keyingi Inversiya "do/does" ni talab qiladi.)</em></p>',
+        'correct': 'do we encounter',
+        'choices': ['do we encounter', 'we encounter', 'we do encounter', 'encounter we']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Not only ___ astonishingly fast, but he also possesses incredibly sharp agility.</strong></p>',
+        'explanation': '<p><strong>does he run</strong> is correct. Inversion after "Not only" in Present Simple. <br><br><em>(<strong>does he run</strong> to\'g\'ri. Present Simple da "Not only" dan keyin Inversiya.)</em></p>',
+        'correct': 'does he run',
+        'choices': ['he runs', 'runs he', 'does he run', 'he does run']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Under no strictly guarded circumstances ___ allowed to enter this highly restricted area.</strong></p>',
+        'explanation': '<p><strong>are you</strong> is correct. Inversion after the negative phrase "Under no circumstances". <br><br><em>(<strong>are you</strong> to\'g\'ri. "Under no circumstances" inkor iborasidan keyin Inversiya.)</em></p>',
+        'correct': 'are you',
+        'choices': ['are you', 'you are', 'do you be', 'you do be']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Seldom ___ so brutally exhausted after a seemingly brief workout.</strong></p>',
+        'explanation': '<p><strong>have I felt</strong> is correct. Inversion with "Seldom" and Present Perfect. <br><br><em>(<strong>have I felt</strong> to\'g\'ri. "Seldom" va Present Perfect bilan Inversiya.)</em></p>',
+        'correct': 'have I felt',
+        'choices': ['I have felt', 'have I felt', 'I felt', 'felt I']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Scarcely ___ the deliciously warm dinner when the terribly loud phone abruptly rang.</strong></p>',
+        'explanation': '<p><strong>had we started</strong> is correct. Inversion with "Scarcely" + Past Perfect. <br><br><em>(<strong>had we started</strong> to\'g\'ri. "Scarcely" + Past Perfect bilan Inversiya.)</em></p>',
+        'correct': 'had we started',
+        'choices': ['we had started', 'we started', 'had we started', 'started we']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Not only ___ the extraordinarily difficult test, but she also scored flawlessly.</strong></p>',
+        'explanation': '<p><strong>did she pass</strong> is correct. Inversion after "Not only" in Past Simple uses "did". <br><br><em>(<strong>did she pass</strong> to\'g\'ri. Past Simple da "Not only" dan keyingi Inversiya "did" dan foydalanadi.)</em></p>',
+        'correct': 'did she pass',
+        'choices': ['did she pass', 'she passed', 'she did pass', 'passed she']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Hardly ___ deeply peacefully asleep when the suddenly terrifying thunder crashed.</strong></p>',
+        'explanation': '<p><strong>had I fallen</strong> is correct. "Hardly" + Past Perfect Inversion. <br><br><em>(<strong>had I fallen</strong> to\'g\'ri. "Hardly" + Past Perfect Inversiyasi.)</em></p>',
+        'correct': 'had I fallen',
+        'choices': ['I had fallen', 'had I fallen', 'I fell', 'did I fall']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>No sooner ___ the exceptionally heavy door than the extremely vicious dog barked.</strong></p>',
+        'explanation': '<p><strong>had he opened</strong> is correct. "No sooner" requires inversion with Past Perfect. <br><br><em>(<strong>had he opened</strong> to\'g\'ri. "No sooner" Past Perfect bilan inversiyani talab qiladi.)</em></p>',
+        'correct': 'had he opened',
+        'choices': ['he had opened', 'opened he', 'had he opened', 'he opened']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Little ___ deeply understand the disastrously huge consequences of his careless actions.</strong></p>',
+        'explanation': '<p><strong>did he</strong> is correct. Inversion after "Little" (meaning he didn\'t understand). <br><br><em>(<strong>did he</strong> to\'g\'ri. "Little" (tushunmasdi ma\'nosida) dan keyin Inversiya.)</em></p>',
+        'correct': 'did he',
+        'choices': ['he did', 'he understood', 'did he', 'understood he']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Never ___ wildly incredibly successful without genuinely putting in massive effort.</strong></p>',
+        'explanation': '<p><strong>will you be</strong> is correct. Future Simple inversion after "Never". <br><br><em>(<strong>will you be</strong> to\'g\'ri. "Never" dan keyin Future Simple inversiyasi.)</em></p>',
+        'correct': 'will you be',
+        'choices': ['will you be', 'you will be', 'are you', 'you are']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Not until the highly respected professor thoroughly explained it ___ the deeply complex theory.</strong></p>',
+        'explanation': '<p><strong>did I grasp</strong> is correct. Inversion happens in the main clause after "Not until...". <br><br><em>(<strong>did I grasp</strong> to\'g\'ri. Inversiya "Not until..." dan keyingi asosiy gapda sodir bo\'ladi.)</em></p>',
+        'correct': 'did I grasp',
+        'choices': ['I grasped', 'did I grasp', 'I did grasp', 'grasped I']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>On no account ___ the highly dangerous red button under the metallic desk!</strong></p>',
+        'explanation': '<p><strong>should you press</strong> is correct. Modal inversion after negative phrase "On no account". <br><br><em>(<strong>should you press</strong> to\'g\'ri. "On no account" inkor iborasidan keyin Modal inversiya.)</em></p>',
+        'correct': 'should you press',
+        'choices': ['you should press', 'press you', 'you press', 'should you press']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Rarely ___ such phenomenally high temperatures in this normally profoundly cold region.</strong></p>',
+        'explanation': '<p><strong>do we see</strong> is correct. Present Simple inversion after "Rarely". <br><br><em>(<strong>do we see</strong> to\'g\'ri. "Rarely" dan keyin Present Simple inversiyasi.)</em></p>',
+        'correct': 'do we see',
+        'choices': ['do we see', 'we see', 'see we', 'we do see']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Only genuinely exceptionally late at night ___ effectively study completely undisturbed.</strong></p>',
+        'explanation': '<p><strong>can she</strong> is correct. Inversion after "Only + phrase" using modal "can". <br><br><em>(<strong>can she</strong> to\'g\'ri. "Only + ibora" dan keyin "can" modal fe\'li bilan Inversiya.)</em></p>',
+        'correct': 'can she',
+        'choices': ['she can', 'can she', 'does she can', 'she does can']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Never in my surprisingly long life ___ a more breathtakingly beautifully painted masterpiece.</strong></p>',
+        'explanation': '<p><strong>have I witnessed</strong> is correct. Present Perfect inversion after "Never". <br><br><em>(<strong>have I witnessed</strong> to\'g\'ri. "Never" dan keyin Present Perfect inversiyasi.)</em></p>',
+        'correct': 'have I witnessed',
+        'choices': ['I have witnessed', 'I witnessed', 'have I witnessed', 'witnessed I']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Not only ___ ridiculously terribly late, but he entirely utterly forgot the vital documents.</strong></p>',
+        'explanation': '<p><strong>was he</strong> is correct. Inversion with the "to be" verb (was/were) acts as its own auxiliary. <br><br><em>(<strong>was he</strong> to\'g\'ri. "to be" fe\'li (was/were) bilan inversiya o\'ziga yordamchi fe\'l vazifasini bajaradi.)</em></p>',
+        'correct': 'was he',
+        'choices': ['was he', 'he was', 'did he be', 'he did be']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Hardly ___ perfectly gracefully onto the brilliantly lit stage when the huge crowd roared.</strong></p>',
+        'explanation': '<p><strong>had she stepped</strong> is correct. "Hardly" + Past Perfect Inversion. <br><br><em>(<strong>had she stepped</strong> to\'g\'ri. "Hardly" + Past Perfect Inversiyasi.)</em></p>',
+        'correct': 'had she stepped',
+        'choices': ['she had stepped', 'stepped she', 'had she stepped', 'she stepped']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Little ___ profoundly intensely changing the entire incredibly modern world.</strong></p>',
+        'explanation': '<p><strong>did they know</strong> is correct. "Little" with Past Simple inversion. <br><br><em>(<strong>did they know</strong> to\'g\'ri. Past Simple inversiyasi bilan "Little".)</em></p>',
+        'correct': 'did they know',
+        'choices': ['they knew', 'did they know', 'they did know', 'knew they']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>In no incredibly wildly imaginative way ___ directly responsible for the massive failure.</strong></p>',
+        'explanation': '<p><strong>am I</strong> is correct. Inversion with "to be" after a negative prepositional phrase. <br><br><em>(<strong>am I</strong> to\'g\'ri. Inkor predlogli iboradan keyin "to be" bilan inversiya.)</em></p>',
+        'correct': 'am I',
+        'choices': ['I am', 'am I', 'do I be', 'I do be']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>No sooner ___ safely comfortably indoors than it violently instantly started pouring rain.</strong></p>',
+        'explanation': '<p><strong>had we gone</strong> is correct. "No sooner" + Past Perfect inversion. <br><br><em>(<strong>had we gone</strong> to\'g\'ri. "No sooner" + Past Perfect inversiyasi.)</em></p>',
+        'correct': 'had we gone',
+        'choices': ['we had gone', 'went we', 'had we gone', 'we went']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Not once ___ surprisingly gracefully deeply apologize for his incredibly incredibly rude remarks.</strong></p>',
+        'explanation': '<p><strong>did he</strong> is correct. Past simple inversion after "Not once". <br><br><em>(<strong>did he</strong> to\'g\'ri. "Not once" dan keyin Past simple inversiyasi.)</em></p>',
+        'correct': 'did he',
+        'choices': ['he apologized', 'he did', 'did he', 'apologized he']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Seldom ___ a truly fiercely competitive match strictly fairly judged nowadays.</strong></p>',
+        'explanation': '<p><strong>is</strong> is correct. Inversion with the verb "to be" (Present Simple passive context). <br><br><em>(<strong>is</strong> to\'g\'ri. "to be" fe\'li bilan inversiya (Present Simple majhul nisbat konteksti).)</em></p>',
+        'correct': 'is',
+        'choices': ['is', 'it is', 'does', 'it does']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Only when the thoroughly completely dark night fell ___ stealthily quietly escape.</strong></p>',
+        'explanation': '<p><strong>did they</strong> is correct. Inversion in the main clause after "Only when + clause". <br><br><em>(<strong>did they</strong> to\'g\'ri. "Only when + gap" dan keyin asosiy gapda Inversiya.)</em></p>',
+        'correct': 'did they',
+        'choices': ['they escaped', 'did they', 'they did', 'escaped they']
+    },
+    {
+        'text': '<p>Choose the correct option.</p><p><strong>Never again ___ foolishly blindly incredibly heavily trust that suspiciously sly salesman!</strong></p>',
+        'explanation': '<p><strong>will I</strong> is correct. Future inversion after "Never again". <br><br><em>(<strong>will I</strong> to\'g\'ri. "Never again" dan keyin kelasi zamon inversiyasi.)</em></p>',
+        'correct': 'will I',
+        'choices': ['I will', 'will I', 'do I', 'I do']
+    }
+]

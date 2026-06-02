@@ -4,34 +4,39 @@ from masters.models import Master
 from practice.models import Subject, Practice, PracticeQuestion, PracticeChoice
 
 from .english_questions import (
-    QUESTIONS_11, QUESTIONS_12, QUESTIONS_13, QUESTIONS_14,QUESTIONS_15)
+    QUESTIONS_past_perfect,QUESTIONS_mixed_cond, QUESTIONS_passive_voice, QUESTIONS_reported_speech, QUESTIONS_modal_of_deduction, QUESTIONS_inversion)
 
 
 PRACTICES = [
     {
-        'title': '11-dars',
+        'title': 'Class - 16, Past Perfect',
         'description': "amaliy test.",
-        'questions': QUESTIONS_11,
+        'questions': QUESTIONS_past_perfect,
     },
     {
-        'title': '12-dars',
+        'title': 'Class - 17, Mixed Conditionals',
         'description': "amaliy test.",
-        'questions': QUESTIONS_12,
+        'questions':   QUESTIONS_mixed_cond,
     },
     {
-        'title': '13-dars',
+        'title': 'Class - 18, Passive Voice',
         'description': "amaliy test.",
-        'questions': QUESTIONS_13,
+        'questions': QUESTIONS_passive_voice,
     },
     {
-        'title': '14-dars',
+        'title': 'Class - 19, Reported Speech',
         'description': "amaliy test.",
-        'questions': QUESTIONS_14,
+        'questions': QUESTIONS_reported_speech,
     },
     {
-        'title': '15-dars',
+        'title': 'Class - 20, Modal Verbs of Deduction',
         'description': "amaliy test.",
-        'questions': QUESTIONS_15,
+        'questions': QUESTIONS_modal_of_deduction,
+    },
+    {
+        'title': 'Class - 21, Inversion',
+        'description': "amaliy test.",
+        'questions': QUESTIONS_inversion,
     }
 ]
 
