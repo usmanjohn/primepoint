@@ -1,6 +1,9 @@
+import json
+
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.http import JsonResponse
 from django.utils import timezone
 
 from panda.models import Panda
@@ -213,6 +216,47 @@ def submit_section(request, attempt_id):
     if next_section == 'completed':
         return redirect('exam_result', attempt_id=attempt.id)
     return redirect('take_section', attempt_id=attempt.id)
+
+
+# ─────────────────────────────────────────────
+# 5b. AUTOSAVE (AJAX)
+# ─────────────────────────────────────────────
+@login_required
+def autosave_section(request, attempt_id):
+    if request.method != 'POST':
+        return JsonResponse({'ok': False}, status=405)
+    attempt = get_object_or_404(ExamAttempt, pk=attempt_id)
+    panda = _get_panda(request)
+    if attempt.panda != panda or attempt.current_section == 'completed':
+        return JsonResponse({'ok': False}, status=403)
+    try:
+        data = json.loads(request.body)
+    except (json.JSONDecodeError, ValueError):
+        return JsonResponse({'ok': False}, status=400)
+    questions = {q.id: q for q in attempt.exam.questions.filter(section=attempt.current_section)}
+    for qid_str, value in data.items():
+        try:
+            qid = int(qid_str)
+        except (ValueError, TypeError):
+            continue
+        question = questions.get(qid)
+        if not question:
+            continue
+        if question.is_writing:
+            ExamAnswer.objects.update_or_create(
+                attempt=attempt, question=question,
+                defaults={'written_answer': str(value)[:10000], 'selected_choice': None},
+            )
+        elif value:
+            try:
+                choice = ExamChoice.objects.get(pk=int(value), question=question)
+                ExamAnswer.objects.update_or_create(
+                    attempt=attempt, question=question,
+                    defaults={'selected_choice': choice, 'written_answer': ''},
+                )
+            except (ExamChoice.DoesNotExist, ValueError, TypeError):
+                pass
+    return JsonResponse({'ok': True})
 
 
 # ─────────────────────────────────────────────

@@ -45,25 +45,66 @@
 .timer-warn  { color: #f59e0b !important; }
 .timer-danger { color: #ef4444 !important; }
 
-/* ── Audio bar ───────────────────────────────────────── */
+/* ── Custom Audio Player ─────────────────────────────── */
 .audio-bar {
   background: var(--bg);
   border-bottom: 1px solid var(--border);
-  padding: 0.55rem 0;
+  padding: 0.6rem 0;
   position: sticky;
   top: 53px;
   z-index: 199;
 }
-.audio-inner {
+.audio-player-wrap {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.75rem;
   flex-wrap: wrap;
 }
-.audio-inner audio {
+.audio-play-btn {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: opacity 0.15s;
+}
+.audio-play-btn:hover { opacity: 0.85; }
+.audio-track-wrap {
   flex: 1;
-  min-width: 180px;
-  height: 34px;
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.audio-track {
+  width: 100%;
+  height: 5px;
+  background: var(--border);
+  border-radius: 99px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.audio-track-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 99px;
+  width: 0%;
+  pointer-events: none;
+  transition: width 0.5s linear;
+}
+.audio-times {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-family: monospace;
 }
 .audio-btn {
   display: inline-flex;
@@ -80,30 +121,147 @@
   white-space: nowrap;
 }
 .audio-btn:hover { border-color: var(--accent); color: var(--accent); }
+.audio-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--accent);
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
 
-/* ── Answered progress ───────────────────────────────── */
+/* ── Answered progress bar ───────────────────────────── */
 .answered-bar {
   background: var(--bg);
   border-bottom: 1px solid var(--border);
   padding: 0.3rem 0;
   position: sticky;
-  top: {% if attempt.current_section == 'listening' and exam.listening_audio %}105px{% else %}53px{% endif %};
+  top: {% if attempt.current_section == 'listening' and exam.listening_audio %}115px{% else %}53px{% endif %};
   z-index: 198;
   font-size: 0.72rem;
   color: var(--text-muted);
 }
+.answered-bar-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 .answered-progress {
+  flex: 1;
   height: 3px;
   background: var(--border);
   border-radius: 99px;
   overflow: hidden;
-  margin-top: 0.25rem;
+  margin-top: 0;
 }
 .answered-fill {
   height: 100%;
   background: var(--accent);
   border-radius: 99px;
   transition: width 0.3s;
+}
+.nav-trigger-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.22rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.nav-trigger-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── Question Navigator Drawer ───────────────────────── */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 399;
+  display: none;
+  backdrop-filter: blur(2px);
+}
+.nav-overlay.open { display: block; }
+.nav-drawer {
+  position: fixed;
+  right: -310px;
+  top: 0;
+  bottom: 0;
+  width: 290px;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  z-index: 400;
+  transition: right 0.25s cubic-bezier(0.4,0,0.2,1);
+  padding: 1.25rem;
+  overflow-y: auto;
+  box-shadow: -6px 0 30px rgba(0,0,0,0.25);
+}
+.nav-drawer.open { right: 0; }
+.nav-drawer-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-close-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0;
+  line-height: 1;
+}
+.nav-close-btn:hover { color: var(--text); }
+.q-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+}
+.q-nav-btn {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.12s;
+  text-decoration: none;
+}
+.q-nav-btn.answered {
+  border-color: #22c55e;
+  background: rgba(34,197,94,0.12);
+  color: #22c55e;
+}
+.q-nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+.nav-legend {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+.nav-legend-dot {
+  width: 10px; height: 10px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  margin-top: 1px;
 }
 
 /* ── Question cards ──────────────────────────────────── */
@@ -113,7 +271,7 @@
   background: var(--surface);
   padding: 1.25rem 1.5rem;
   margin-bottom: 1.25rem;
-  scroll-margin-top: 140px;
+  scroll-margin-top: 155px;
 }
 .q-num {
   font-size: 0.68rem;
@@ -197,8 +355,118 @@
   padding: 0.75rem 0;
   z-index: 197;
 }
+.autosave-indicator {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.autosave-indicator.saving { color: #f59e0b; }
+.autosave-indicator.saved  { color: #22c55e; }
+
+/* ── Submit Confirmation Modal ───────────────────────── */
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 500;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
+}
+.confirm-overlay.open { display: flex; }
+.confirm-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 2rem;
+  max-width: 380px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+.confirm-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: rgba(56,189,248,0.12);
+  color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  margin: 0 auto 1rem;
+}
+.confirm-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  text-align: center;
+  margin-bottom: 0.4rem;
+}
+.confirm-sub {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+.confirm-warn {
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.25);
+  border-radius: 10px;
+  padding: 0.65rem 0.9rem;
+  font-size: 0.8rem;
+  color: #ef4444;
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+.confirm-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+.confirm-actions button { flex: 1; }
 </style>
 {% endblock %}
+
+<!-- Navigator Overlay -->
+<div class="nav-overlay" id="nav-overlay" onclick="closeNav()"></div>
+
+<!-- Navigator Drawer -->
+<div class="nav-drawer" id="nav-drawer">
+  <div class="nav-drawer-title">
+    <span><i class="bi bi-grid-3x3-gap me-1"></i>{% trans "Questions" %}</span>
+    <button class="nav-close-btn" onclick="closeNav()"><i class="bi bi-x-lg"></i></button>
+  </div>
+  <div class="q-nav-grid" id="q-nav-grid">
+    {% for question in questions %}
+    <a href="#qcard-{{ question.id }}" class="q-nav-btn {% if selected_choices|get_item:question.id or written_answers|get_item:question.id %}answered{% endif %}"
+       id="navbtn-{{ question.id }}"
+       onclick="closeNav()">{{ question.number }}</a>
+    {% endfor %}
+  </div>
+  <div class="nav-legend">
+    <span style="display:flex;align-items:center;gap:0.3rem;">
+      <span class="nav-legend-dot" style="background:rgba(34,197,94,0.3);border:1.5px solid #22c55e;"></span>{% trans "Answered" %}
+    </span>
+    <span style="display:flex;align-items:center;gap:0.3rem;">
+      <span class="nav-legend-dot" style="background:var(--bg);border:1.5px solid var(--border);"></span>{% trans "Unanswered" %}
+    </span>
+  </div>
+</div>
+
+<!-- Submit Confirmation Modal -->
+<div class="confirm-overlay" id="confirm-overlay">
+  <div class="confirm-box">
+    <div class="confirm-icon"><i class="bi bi-send-check"></i></div>
+    <div class="confirm-title" id="confirm-title">{% trans "Submit Section?" %}</div>
+    <div class="confirm-sub" id="confirm-sub">{% trans "Are you sure you want to submit and move to the next section?" %}</div>
+    <div class="confirm-warn" id="confirm-warn" style="display:none;"></div>
+    <div class="confirm-actions">
+      <button class="btn-auth-outline" onclick="closeConfirm()">{% trans "Cancel" %}</button>
+      <button class="btn-auth" id="confirm-submit-btn">{% trans "Yes, Submit" %}</button>
+    </div>
+  </div>
+</div>
 
 {% block content %}
 <!-- Exam status bar -->
@@ -225,21 +493,33 @@
 {% if attempt.current_section == 'listening' and exam.listening_audio %}
 <div class="audio-bar">
   <div class="container-fluid px-3">
-    <div class="audio-inner">
-      <i class="bi bi-volume-up text-accent flex-shrink-0"></i>
-      <audio id="exam-audio" autoplay>
+    <div class="audio-player-wrap">
+      <span class="audio-label"><i class="bi bi-headphones me-1"></i>{% trans "Audio" %}</span>
+
+      <!-- Hidden native audio element -->
+      <audio id="exam-audio" preload="auto">
         <source src="{{ exam.listening_audio.url }}">
-        {% trans "Your browser does not support audio." %}
       </audio>
-      {% if exam.allow_audio_pause %}
-        <button type="button" class="audio-btn" id="btn-pause" onclick="togglePause()">
-          <i class="bi bi-pause-fill" id="pause-icon"></i>
-          <span id="pause-label">{% trans "Pause" %}</span>
-        </button>
-      {% endif %}
+
+      <!-- Play / Pause -->
+      <button type="button" class="audio-play-btn" id="play-btn" onclick="toggleAudio()">
+        <i class="bi bi-play-fill" id="play-icon"></i>
+      </button>
+
+      <!-- Progress track -->
+      <div class="audio-track-wrap">
+        <div class="audio-track" id="audio-track" onclick="seekAudio(event)">
+          <div class="audio-track-fill" id="audio-fill"></div>
+        </div>
+        <div class="audio-times">
+          <span id="audio-current">0:00</span>
+          <span id="audio-total">--:--</span>
+        </div>
+      </div>
+
       {% if exam.allow_audio_replay %}
         <button type="button" class="audio-btn" onclick="replayAudio()">
-          <i class="bi bi-arrow-counterclockwise"></i>{% trans "Replay" %}
+          <i class="bi bi-arrow-counterclockwise"></i><span class="d-none d-sm-inline ms-1">{% trans "Replay" %}</span>
         </button>
       {% endif %}
     </div>
@@ -250,9 +530,14 @@
 <!-- Answered progress -->
 <div class="answered-bar">
   <div class="container-fluid px-3">
-    <span>{% trans "Answered" %}: <strong id="answered-count">0</strong> / {{ questions|length }}</span>
-    <div class="answered-progress">
-      <div class="answered-fill" id="answered-fill" style="width:0%"></div>
+    <div class="answered-bar-inner">
+      <span>{% trans "Answered" %}: <strong id="answered-count">0</strong> / {{ questions|length }}</span>
+      <div class="answered-progress">
+        <div class="answered-fill" id="answered-fill" style="width:0%"></div>
+      </div>
+      <button type="button" class="nav-trigger-btn" onclick="openNav()">
+        <i class="bi bi-grid-3x3-gap"></i><span class="d-none d-sm-inline ms-1">{% trans "Navigate" %}</span>
+      </button>
     </div>
   </div>
 </div>
@@ -284,8 +569,9 @@
         <textarea
           class="writing-area"
           name="q{{ question.id }}"
+          data-qid="{{ question.id }}"
           placeholder="{% trans 'Write your answer here...' %} / 여기에 답을 쓰세요..."
-          oninput="updateProgress()">{{ written|default:'' }}</textarea>
+          oninput="updateProgress(); updateNavigator();">{{ written|default:'' }}</textarea>
       {% else %}
         {% for choice in question.choices.all %}
         <label class="choice-label {% if sel_id == choice.id %}selected{% endif %}"
@@ -317,17 +603,10 @@
   <!-- Sticky finish button -->
   <div class="finish-bar">
     <div class="container-fluid px-3 d-flex align-items-center justify-content-between gap-3">
-      <span class="text-muted" style="font-size:0.78rem;">
-        {% if section_order_index < total_sections %}
-          {% trans "Next section:" %}
-          {% if attempt.current_section == 'listening' %}읽기 ({% trans "Reading" %})
-          {% elif attempt.current_section == 'reading' %}쓰기 ({% trans "Writing" %})
-          {% endif %}
-        {% else %}
-          {% trans "This is the last section." %}
-        {% endif %}
-      </span>
-      <button type="submit" class="btn-auth" style="white-space:nowrap;">
+      <div class="autosave-indicator" id="autosave-indicator">
+        <i class="bi bi-cloud-check"></i><span id="autosave-label">{% trans "Auto-save on" %}</span>
+      </div>
+      <button type="button" class="btn-auth" style="white-space:nowrap;" onclick="showConfirm()">
         {% if section_order_index < total_sections %}
           {% trans "Finish & Continue" %} →
         {% else %}
@@ -341,6 +620,11 @@
 
 {% block extra_js %}
 <script>
+const AUTOSAVE_URL = '{% url "autosave_section" attempt.id %}';
+const CSRF_TOKEN = '{{ csrf_token }}';
+const totalQ = {{ questions|length }};
+const isLastSection = {{ section_order_index }} >= {{ total_sections }};
+
 // ── Timer ─────────────────────────────────────────────
 let seconds = {{ seconds_remaining }};
 const timerDisplay = document.getElementById('timer-display');
@@ -363,7 +647,8 @@ const timerInterval = setInterval(() => {
   }
   if (seconds === 0) {
     clearInterval(timerInterval);
-    examForm.submit();
+    clearInterval(autosaveInterval);
+    doAutoSave(true);
   }
 }, 1000);
 
@@ -373,11 +658,11 @@ function onChoiceChange(questionId, choiceId) {
   const lbl = document.getElementById(`lbl-${questionId}-${choiceId}`);
   if (lbl) lbl.classList.add('selected');
   updateProgress();
+  updateNavigator();
 }
 
 // ── Answered progress ─────────────────────────────────
-const totalQ = {{ questions|length }};
-function updateProgress() {
+function countAnswered() {
   let count = 0;
   document.querySelectorAll('.q-card').forEach(card => {
     const qid = card.id.replace('qcard-', '');
@@ -385,39 +670,172 @@ function updateProgress() {
     const textarea = card.querySelector('textarea');
     if (radio || (textarea && textarea.value.trim().length > 0)) count++;
   });
+  return count;
+}
+
+function updateProgress() {
+  const count = countAnswered();
   document.getElementById('answered-count').textContent = count;
   document.getElementById('answered-fill').style.width = totalQ > 0 ? (count / totalQ * 100) + '%' : '0%';
 }
 updateProgress();
 
-// ── Audio controls ────────────────────────────────────
+// ── Question Navigator ────────────────────────────────
+function updateNavigator() {
+  document.querySelectorAll('.q-card').forEach(card => {
+    const qid = card.id.replace('qcard-', '');
+    const radio = document.querySelector(`input[name="q${qid}"]:checked`);
+    const textarea = card.querySelector('textarea');
+    const answered = !!(radio || (textarea && textarea.value.trim().length > 0));
+    const navBtn = document.getElementById(`navbtn-${qid}`);
+    if (navBtn) navBtn.classList.toggle('answered', answered);
+  });
+}
+updateNavigator();
+
+function openNav() {
+  document.getElementById('nav-drawer').classList.add('open');
+  document.getElementById('nav-overlay').classList.add('open');
+}
+function closeNav() {
+  document.getElementById('nav-drawer').classList.remove('open');
+  document.getElementById('nav-overlay').classList.remove('open');
+}
+
+// ── Auto-save ─────────────────────────────────────────
+const autosaveIndicator = document.getElementById('autosave-indicator');
+const autosaveLabel = document.getElementById('autosave-label');
+
+function collectAnswers() {
+  const data = {};
+  document.querySelectorAll('.q-card').forEach(card => {
+    const qid = card.id.replace('qcard-', '');
+    const radio = document.querySelector(`input[name="q${qid}"]:checked`);
+    const textarea = card.querySelector('textarea');
+    if (radio) data[qid] = radio.value;
+    else if (textarea) data[qid] = textarea.value;
+  });
+  return data;
+}
+
+async function doAutoSave(thenSubmit = false) {
+  autosaveIndicator.className = 'autosave-indicator saving';
+  autosaveLabel.textContent = '{% trans "Saving..." %}';
+  try {
+    await fetch(AUTOSAVE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-CSRFToken': CSRF_TOKEN },
+      body: JSON.stringify(collectAnswers()),
+    });
+    autosaveIndicator.className = 'autosave-indicator saved';
+    autosaveLabel.textContent = '{% trans "Saved" %} ✓';
+    setTimeout(() => {
+      autosaveIndicator.className = 'autosave-indicator';
+      autosaveLabel.textContent = '{% trans "Auto-save on" %}';
+    }, 2000);
+  } catch(e) {
+    autosaveIndicator.className = 'autosave-indicator';
+    autosaveLabel.textContent = '{% trans "Auto-save on" %}';
+  }
+  if (thenSubmit) examForm.submit();
+}
+
+const autosaveInterval = setInterval(() => doAutoSave(), 60000);
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) doAutoSave();
+});
+
+// ── Submit Confirmation ───────────────────────────────
+function showConfirm() {
+  const unanswered = totalQ - countAnswered();
+  const title = document.getElementById('confirm-title');
+  const sub = document.getElementById('confirm-sub');
+  const warn = document.getElementById('confirm-warn');
+
+  title.textContent = isLastSection ? '{% trans "Submit Exam?" %}' : '{% trans "Finish Section?" %}';
+  sub.textContent = isLastSection
+    ? '{% trans "This will complete and score your exam." %}'
+    : '{% trans "You cannot go back to this section once you continue." %}';
+
+  if (unanswered > 0) {
+    warn.style.display = 'block';
+    warn.innerHTML = `<i class="bi bi-exclamation-triangle-fill me-1"></i>${unanswered} {% trans "question(s) not answered" %}`;
+  } else {
+    warn.style.display = 'none';
+  }
+  document.getElementById('confirm-overlay').classList.add('open');
+}
+
+function closeConfirm() {
+  document.getElementById('confirm-overlay').classList.remove('open');
+}
+
+document.getElementById('confirm-submit-btn').addEventListener('click', () => {
+  closeConfirm();
+  doAutoSave(true);
+});
+
+// ── Audio Player ──────────────────────────────────────
 {% if attempt.current_section == 'listening' and exam.listening_audio %}
 const examAudio = document.getElementById('exam-audio');
-let audioPaused = false;
+const playIcon = document.getElementById('play-icon');
+const audioFill = document.getElementById('audio-fill');
+const audioCurrent = document.getElementById('audio-current');
+const audioTotal = document.getElementById('audio-total');
 
-function togglePause() {
-  if (audioPaused) {
+function fmtAudioTime(s) {
+  if (isNaN(s)) return '--:--';
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return m + ':' + String(sec).padStart(2, '0');
+}
+
+examAudio.addEventListener('loadedmetadata', () => {
+  audioTotal.textContent = fmtAudioTime(examAudio.duration);
+});
+
+examAudio.addEventListener('timeupdate', () => {
+  const pct = examAudio.duration ? (examAudio.currentTime / examAudio.duration) * 100 : 0;
+  audioFill.style.width = pct + '%';
+  audioCurrent.textContent = fmtAudioTime(examAudio.currentTime);
+});
+
+examAudio.addEventListener('play', () => {
+  playIcon.className = 'bi bi-pause-fill';
+});
+examAudio.addEventListener('pause', () => {
+  playIcon.className = 'bi bi-play-fill';
+});
+examAudio.addEventListener('ended', () => {
+  playIcon.className = 'bi bi-arrow-counterclockwise';
+});
+
+function toggleAudio() {
+  if (examAudio.paused) {
     examAudio.play();
-    audioPaused = false;
-    document.getElementById('pause-icon').className = 'bi bi-pause-fill';
-    document.getElementById('pause-label').textContent = '{% trans "Pause" %}';
   } else {
+    {% if exam.allow_audio_pause %}
     examAudio.pause();
-    audioPaused = true;
-    document.getElementById('pause-icon').className = 'bi bi-play-fill';
-    document.getElementById('pause-label').textContent = '{% trans "Resume" %}';
+    {% endif %}
   }
+}
+
+function seekAudio(e) {
+  if (!examAudio.duration) return;
+  const track = document.getElementById('audio-track');
+  const rect = track.getBoundingClientRect();
+  const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+  examAudio.currentTime = ratio * examAudio.duration;
 }
 
 function replayAudio() {
   examAudio.currentTime = 0;
   examAudio.play();
-  audioPaused = false;
-  {% if exam.allow_audio_pause %}
-  document.getElementById('pause-icon').className = 'bi bi-pause-fill';
-  document.getElementById('pause-label').textContent = '{% trans "Pause" %}';
-  {% endif %}
 }
+
+// Auto-play after a short delay to let the page settle
+setTimeout(() => { examAudio.play().catch(() => {}); }, 800);
 {% endif %}
 </script>
 {% endblock %}
