@@ -97,7 +97,6 @@
   border-radius: 99px;
   width: 0%;
   pointer-events: none;
-  transition: width 0.5s linear;
 }
 .audio-times {
   display: flex;
@@ -152,7 +151,6 @@
   background: var(--border);
   border-radius: 99px;
   overflow: hidden;
-  margin-top: 0;
 }
 .answered-fill {
   height: 100%;
@@ -428,18 +426,20 @@
 </style>
 {% endblock %}
 
-<!-- Navigator Overlay -->
+{% block content %}
+<!-- ── Navigator Overlay (must be inside block) ───────── -->
 <div class="nav-overlay" id="nav-overlay" onclick="closeNav()"></div>
 
-<!-- Navigator Drawer -->
+<!-- ── Navigator Drawer ───────────────────────────────── -->
 <div class="nav-drawer" id="nav-drawer">
   <div class="nav-drawer-title">
     <span><i class="bi bi-grid-3x3-gap me-1"></i>{% trans "Questions" %}</span>
     <button class="nav-close-btn" onclick="closeNav()"><i class="bi bi-x-lg"></i></button>
   </div>
-  <div class="q-nav-grid" id="q-nav-grid">
+  <div class="q-nav-grid">
     {% for question in questions %}
-    <a href="#qcard-{{ question.id }}" class="q-nav-btn {% if selected_choices|get_item:question.id or written_answers|get_item:question.id %}answered{% endif %}"
+    <a href="#qcard-{{ question.id }}"
+       class="q-nav-btn {% if selected_choices|get_item:question.id or written_answers|get_item:question.id %}answered{% endif %}"
        id="navbtn-{{ question.id }}"
        onclick="closeNav()">{{ question.number }}</a>
     {% endfor %}
@@ -454,7 +454,7 @@
   </div>
 </div>
 
-<!-- Submit Confirmation Modal -->
+<!-- ── Submit Confirmation Modal ─────────────────────── -->
 <div class="confirm-overlay" id="confirm-overlay">
   <div class="confirm-box">
     <div class="confirm-icon"><i class="bi bi-send-check"></i></div>
@@ -463,12 +463,11 @@
     <div class="confirm-warn" id="confirm-warn" style="display:none;"></div>
     <div class="confirm-actions">
       <button class="btn-auth-outline" onclick="closeConfirm()">{% trans "Cancel" %}</button>
-      <button class="btn-auth" id="confirm-submit-btn">{% trans "Yes, Submit" %}</button>
+      <button class="btn-auth" onclick="submitConfirmed()">{% trans "Yes, Submit" %}</button>
     </div>
   </div>
 </div>
 
-{% block content %}
 <!-- Exam status bar -->
 <div class="exam-bar">
   <div class="container-fluid px-3">
@@ -496,19 +495,16 @@
     <div class="audio-player-wrap">
       <span class="audio-label"><i class="bi bi-headphones me-1"></i>{% trans "Audio" %}</span>
 
-      <!-- Hidden native audio element -->
       <audio id="exam-audio" preload="auto">
         <source src="{{ exam.listening_audio.url }}">
       </audio>
 
-      <!-- Play / Pause -->
-      <button type="button" class="audio-play-btn" id="play-btn" onclick="toggleAudio()">
+      <button type="button" class="audio-play-btn" onclick="toggleAudio()">
         <i class="bi bi-play-fill" id="play-icon"></i>
       </button>
 
-      <!-- Progress track -->
       <div class="audio-track-wrap">
-        <div class="audio-track" id="audio-track" onclick="seekAudio(event)">
+        <div class="audio-track" onclick="seekAudio(event)">
           <div class="audio-track-fill" id="audio-fill"></div>
         </div>
         <div class="audio-times">
@@ -569,7 +565,6 @@
         <textarea
           class="writing-area"
           name="q{{ question.id }}"
-          data-qid="{{ question.id }}"
           placeholder="{% trans 'Write your answer here...' %} / 여기에 답을 쓰세요..."
           oninput="updateProgress(); updateNavigator();">{{ written|default:'' }}</textarea>
       {% else %}
@@ -624,12 +619,12 @@ const AUTOSAVE_URL = '{% url "autosave_section" attempt.id %}';
 const CSRF_TOKEN = '{{ csrf_token }}';
 const totalQ = {{ questions|length }};
 const isLastSection = {{ section_order_index }} >= {{ total_sections }};
+const examForm = document.getElementById('exam-form');
 
 // ── Timer ─────────────────────────────────────────────
 let seconds = {{ seconds_remaining }};
 const timerDisplay = document.getElementById('timer-display');
 const timerBox = document.getElementById('timer-box');
-const examForm = document.getElementById('exam-form');
 
 function pad(n) { return String(n).padStart(2, '0'); }
 function formatTime(s) { return pad(Math.floor(s / 60)) + ':' + pad(s % 60); }
@@ -741,23 +736,17 @@ async function doAutoSave(thenSubmit = false) {
 }
 
 const autosaveInterval = setInterval(() => doAutoSave(), 60000);
-
-document.addEventListener('visibilitychange', () => {
-  if (document.hidden) doAutoSave();
-});
+document.addEventListener('visibilitychange', () => { if (document.hidden) doAutoSave(); });
 
 // ── Submit Confirmation ───────────────────────────────
 function showConfirm() {
   const unanswered = totalQ - countAnswered();
-  const title = document.getElementById('confirm-title');
-  const sub = document.getElementById('confirm-sub');
-  const warn = document.getElementById('confirm-warn');
-
-  title.textContent = isLastSection ? '{% trans "Submit Exam?" %}' : '{% trans "Finish Section?" %}';
-  sub.textContent = isLastSection
+  document.getElementById('confirm-title').textContent =
+    isLastSection ? '{% trans "Submit Exam?" %}' : '{% trans "Finish Section?" %}';
+  document.getElementById('confirm-sub').textContent = isLastSection
     ? '{% trans "This will complete and score your exam." %}'
     : '{% trans "You cannot go back to this section once you continue." %}';
-
+  const warn = document.getElementById('confirm-warn');
   if (unanswered > 0) {
     warn.style.display = 'block';
     warn.innerHTML = `<i class="bi bi-exclamation-triangle-fill me-1"></i>${unanswered} {% trans "question(s) not answered" %}`;
@@ -771,10 +760,10 @@ function closeConfirm() {
   document.getElementById('confirm-overlay').classList.remove('open');
 }
 
-document.getElementById('confirm-submit-btn').addEventListener('click', () => {
+function submitConfirmed() {
   closeConfirm();
   doAutoSave(true);
-});
+}
 
 // ── Audio Player ──────────────────────────────────────
 {% if attempt.current_section == 'listening' and exam.listening_audio %}
@@ -785,7 +774,7 @@ const audioCurrent = document.getElementById('audio-current');
 const audioTotal = document.getElementById('audio-total');
 
 function fmtAudioTime(s) {
-  if (isNaN(s)) return '--:--';
+  if (!s || isNaN(s)) return '--:--';
   const m = Math.floor(s / 60);
   const sec = Math.floor(s % 60);
   return m + ':' + String(sec).padStart(2, '0');
@@ -793,49 +782,43 @@ function fmtAudioTime(s) {
 
 examAudio.addEventListener('loadedmetadata', () => {
   audioTotal.textContent = fmtAudioTime(examAudio.duration);
+  // Auto-extend timer to match audio duration if audio is longer
+  const audioDurationSecs = Math.ceil(examAudio.duration);
+  if (audioDurationSecs > seconds) {
+    seconds = audioDurationSecs + 120; // audio length + 2 min buffer to finish answering
+    timerDisplay.textContent = formatTime(seconds);
+  }
 });
 
 examAudio.addEventListener('timeupdate', () => {
-  const pct = examAudio.duration ? (examAudio.currentTime / examAudio.duration) * 100 : 0;
-  audioFill.style.width = pct + '%';
+  if (examAudio.duration) {
+    audioFill.style.width = (examAudio.currentTime / examAudio.duration * 100) + '%';
+  }
   audioCurrent.textContent = fmtAudioTime(examAudio.currentTime);
 });
 
-examAudio.addEventListener('play', () => {
-  playIcon.className = 'bi bi-pause-fill';
-});
-examAudio.addEventListener('pause', () => {
-  playIcon.className = 'bi bi-play-fill';
-});
-examAudio.addEventListener('ended', () => {
-  playIcon.className = 'bi bi-arrow-counterclockwise';
-});
+examAudio.addEventListener('play',  () => { playIcon.className = 'bi bi-pause-fill'; });
+examAudio.addEventListener('pause', () => { playIcon.className = 'bi bi-play-fill'; });
+examAudio.addEventListener('ended', () => { playIcon.className = 'bi bi-arrow-counterclockwise'; });
 
 function toggleAudio() {
-  if (examAudio.paused) {
-    examAudio.play();
+  if (examAudio.paused || examAudio.ended) {
+    examAudio.play().catch(() => {});
   } else {
-    {% if exam.allow_audio_pause %}
-    examAudio.pause();
-    {% endif %}
+    {% if exam.allow_audio_pause %}examAudio.pause();{% endif %}
   }
 }
 
 function seekAudio(e) {
   if (!examAudio.duration) return;
-  const track = document.getElementById('audio-track');
-  const rect = track.getBoundingClientRect();
-  const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-  examAudio.currentTime = ratio * examAudio.duration;
+  const rect = e.currentTarget.getBoundingClientRect();
+  examAudio.currentTime = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width)) * examAudio.duration;
 }
 
 function replayAudio() {
   examAudio.currentTime = 0;
-  examAudio.play();
+  examAudio.play().catch(() => {});
 }
-
-// Auto-play after a short delay to let the page settle
-setTimeout(() => { examAudio.play().catch(() => {}); }, 800);
 {% endif %}
 </script>
 {% endblock %}
