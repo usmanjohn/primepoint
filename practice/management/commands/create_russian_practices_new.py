@@ -11,6 +11,7 @@ from .russian_questions import (
     QUESTIONS_chast_8,
     QUESTIONS_chast_9,
     QUESTIONS_chast_10,
+    QUESTIONS_mixed_chapter_1,
     QUESTIONS_chast_11,
     QUESTIONS_chast_12,
     QUESTIONS_chast_13,
