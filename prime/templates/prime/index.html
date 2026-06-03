@@ -323,6 +323,22 @@
     </a>
   </div>
 
+  <div class="col-12 col-sm-6 col-lg-4">
+    <a href="{% url 'exam_list' %}" class="feat-card">
+      <div class="feat-card-top">
+        <div class="feat-icon" style="background:rgba(99,102,241,0.13); color:#6366f1;">
+          <i class="bi bi-journal-text"></i>
+        </div>
+        <div class="feat-count">
+          <div class="feat-count-num">{{ stats.exams }}</div>
+          <div class="feat-count-lbl">{% trans "Exams" %}</div>
+        </div>
+      </div>
+      <p class="feat-title">{% trans "Exams" %}</p>
+      <p class="feat-desc">{% trans "Full timed exams — Listening, Reading and Writing." %}</p>
+    </a>
+  </div>
+
 </div>
 
 <!-- ── My Stats (authenticated users only) ──────────────────── -->
