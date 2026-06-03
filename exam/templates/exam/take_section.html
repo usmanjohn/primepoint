@@ -545,11 +545,11 @@
   <div class="mt-4 mb-5">
 
     {% for question in questions %}
-    {% with sel_id=selected_choices|get_item:question.id written=written_answers|get_item:question.id %}
-    {% if question.passage or question.passage_image %}
+    {% with sel_id=selected_choices|get_item:question.id written=written_answers|get_item:question.id passage=passage_map|get_item:question.number %}
+    {% if passage %}
     <div class="q-passage-group">
-      {% if question.passage %}<div class="q-passage">{{ question.passage|safe }}</div>{% endif %}
-      {% if question.passage_image %}<img src="{{ question.passage_image.url }}" class="q-img" alt="{% trans 'Passage image' %}">{% endif %}
+      {% if passage.text %}<div class="q-passage">{{ passage.text|safe }}</div>{% endif %}
+      {% if passage.image %}<img src="{{ passage.image.url }}" class="q-img" alt="{% trans 'Passage image' %}">{% endif %}
     </div>
     {% endif %}
     <div class="q-card" id="qcard-{{ question.id }}">

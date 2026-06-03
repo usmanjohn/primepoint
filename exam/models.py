@@ -59,8 +59,6 @@ class ExamQuestion(models.Model):
     exam = models.ForeignKey(Exam, on_delete=models.CASCADE, related_name='questions')
     section = models.CharField(max_length=20, choices=SECTION_CHOICES)
     number = models.IntegerField()
-    passage = models.TextField(blank=True)
-    passage_image = models.ImageField(upload_to='exam_images/', blank=True, null=True)
     question_text = models.TextField(blank=True)
     question_image = models.ImageField(upload_to='exam_images/', blank=True, null=True)
     is_writing = models.BooleanField(default=False)
