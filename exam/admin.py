@@ -4,34 +4,21 @@ from django_ckeditor_5.widgets import CKEditor5Widget
 from .models import Exam, ExamPassage, ExamQuestion, ExamChoice, ExamAttempt, ExamAnswer
 
 
-class ExamPassageForm(forms.ModelForm):
-    text = forms.CharField(
+class ExamQuestionForm(forms.ModelForm):
+    passage = forms.CharField(
         required=False,
-        label='Passage text',
+        label='Passage (leave blank if none)',
         widget=CKEditor5Widget(config_name='minimal', attrs={'class': 'django_ckeditor_5'}),
     )
-
-    class Meta:
-        model = ExamPassage
-        fields = '__all__'
-
-
-class ExamQuestionForm(forms.ModelForm):
     question_text = forms.CharField(
         required=False,
+        label='Question text (leave blank for audio-only)',
         widget=CKEditor5Widget(config_name='minimal', attrs={'class': 'django_ckeditor_5'}),
     )
 
     class Meta:
         model = ExamQuestion
         fields = '__all__'
-
-
-class ExamPassageInline(admin.TabularInline):
-    model = ExamPassage
-    form = ExamPassageForm
-    extra = 1
-    fields = ('section', 'question_from', 'question_to', 'text', 'image')
 
 
 class ExamChoiceInline(admin.TabularInline):
@@ -43,7 +30,7 @@ class ExamChoiceInline(admin.TabularInline):
 class ExamQuestionInline(admin.TabularInline):
     model = ExamQuestion
     extra = 0
-    fields = ('number', 'section', 'question_text', 'question_image', 'is_writing')
+    fields = ('number', 'section', 'question_image', 'is_writing')
     show_change_link = True
 
 
@@ -53,7 +40,7 @@ class ExamAdmin(admin.ModelAdmin):
     list_editable = ('is_published', 'allow_audio_replay', 'allow_audio_pause')
     list_filter = ('is_published', 'language')
     search_fields = ('title',)
-    inlines = [ExamPassageInline, ExamQuestionInline]
+    inlines = [ExamQuestionInline]
     fieldsets = (
         (None, {
             'fields': ('title', 'language', 'exam_number', 'listening_audio', 'is_published'),
@@ -68,22 +55,14 @@ class ExamAdmin(admin.ModelAdmin):
     )
 
 
-@admin.register(ExamPassage)
-class ExamPassageAdmin(admin.ModelAdmin):
-    form = ExamPassageForm
-    list_display = ('exam', 'section', 'question_from', 'question_to')
-    list_filter = ('exam', 'section')
-    fields = ('exam', 'section', 'question_from', 'question_to', 'text', 'image')
-
-
 @admin.register(ExamQuestion)
 class ExamQuestionAdmin(admin.ModelAdmin):
     form = ExamQuestionForm
     list_display = ('exam', 'section', 'number', 'question_text_short', 'is_writing')
     list_filter = ('exam', 'section', 'is_writing')
-    search_fields = ('question_text',)
+    search_fields = ('question_text', 'passage')
     inlines = [ExamChoiceInline]
-    fields = ('exam', 'section', 'number', 'question_text', 'question_image', 'is_writing')
+    fields = ('exam', 'section', 'number', 'passage', 'passage_image', 'question_text', 'question_image', 'is_writing')
 
     def question_text_short(self, obj):
         from django.utils.html import strip_tags
