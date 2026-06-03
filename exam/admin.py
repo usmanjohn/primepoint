@@ -1,5 +1,37 @@
+from django import forms
 from django.contrib import admin
-from .models import Exam, ExamQuestion, ExamChoice, ExamAttempt, ExamAnswer
+from django_ckeditor_5.widgets import CKEditor5Widget
+from .models import Exam, ExamPassage, ExamQuestion, ExamChoice, ExamAttempt, ExamAnswer
+
+
+class ExamPassageForm(forms.ModelForm):
+    text = forms.CharField(
+        required=False,
+        label='Passage text',
+        widget=CKEditor5Widget(config_name='minimal', attrs={'class': 'django_ckeditor_5'}),
+    )
+
+    class Meta:
+        model = ExamPassage
+        fields = '__all__'
+
+
+class ExamQuestionForm(forms.ModelForm):
+    question_text = forms.CharField(
+        required=False,
+        widget=CKEditor5Widget(config_name='minimal', attrs={'class': 'django_ckeditor_5'}),
+    )
+
+    class Meta:
+        model = ExamQuestion
+        fields = '__all__'
+
+
+class ExamPassageInline(admin.TabularInline):
+    model = ExamPassage
+    form = ExamPassageForm
+    extra = 1
+    fields = ('section', 'question_from', 'question_to', 'text', 'image')
 
 
 class ExamChoiceInline(admin.TabularInline):
@@ -21,7 +53,7 @@ class ExamAdmin(admin.ModelAdmin):
     list_editable = ('is_published', 'allow_audio_replay', 'allow_audio_pause')
     list_filter = ('is_published', 'language')
     search_fields = ('title',)
-    inlines = [ExamQuestionInline]
+    inlines = [ExamPassageInline, ExamQuestionInline]
     fieldsets = (
         (None, {
             'fields': ('title', 'language', 'exam_number', 'listening_audio', 'is_published'),
@@ -36,16 +68,27 @@ class ExamAdmin(admin.ModelAdmin):
     )
 
 
+@admin.register(ExamPassage)
+class ExamPassageAdmin(admin.ModelAdmin):
+    form = ExamPassageForm
+    list_display = ('exam', 'section', 'question_from', 'question_to')
+    list_filter = ('exam', 'section')
+    fields = ('exam', 'section', 'question_from', 'question_to', 'text', 'image')
+
+
 @admin.register(ExamQuestion)
 class ExamQuestionAdmin(admin.ModelAdmin):
+    form = ExamQuestionForm
     list_display = ('exam', 'section', 'number', 'question_text_short', 'is_writing')
     list_filter = ('exam', 'section', 'is_writing')
-    search_fields = ('question_text', 'passage')
+    search_fields = ('question_text',)
     inlines = [ExamChoiceInline]
-    fields = ('exam', 'section', 'number', 'passage', 'passage_image', 'question_text', 'question_image', 'is_writing')
+    fields = ('exam', 'section', 'number', 'question_text', 'question_image', 'is_writing')
 
     def question_text_short(self, obj):
-        return obj.question_text[:60] + '…' if len(obj.question_text) > 60 else obj.question_text
+        from django.utils.html import strip_tags
+        plain = strip_tags(obj.question_text)
+        return plain[:60] + '…' if len(plain) > 60 else plain
     question_text_short.short_description = 'Question'
 
 

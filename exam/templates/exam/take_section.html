@@ -279,16 +279,17 @@
   color: var(--accent);
   margin-bottom: 0.5rem;
 }
+.q-passage-group {
+  border: 1px solid var(--accent);
+  border-radius: 14px;
+  background: var(--surface);
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.5rem;
+}
 .q-passage {
-  background: var(--bg);
-  border-left: 3px solid var(--accent);
-  border-radius: 0 8px 8px 0;
-  padding: 0.75rem 1rem;
-  margin-bottom: 0.85rem;
-  font-size: 0.87rem;
-  color: var(--text-muted);
-  line-height: 1.75;
-  white-space: pre-wrap;
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.8;
 }
 .q-text {
   font-size: 0.95rem;
@@ -544,18 +545,19 @@
   <div class="mt-4 mb-5">
 
     {% for question in questions %}
-    {% with sel_id=selected_choices|get_item:question.id written=written_answers|get_item:question.id %}
+    {% with sel_id=selected_choices|get_item:question.id written=written_answers|get_item:question.id passage=passage_map|get_item:question.number %}
+    {% if passage %}
+    <div class="q-passage-group">
+      {% if passage.text %}<div class="q-passage">{{ passage.text|safe }}</div>{% endif %}
+      {% if passage.image %}<img src="{{ passage.image.url }}" class="q-img" alt="{% trans 'Passage image' %}">{% endif %}
+    </div>
+    {% endif %}
     <div class="q-card" id="qcard-{{ question.id }}">
       <div class="q-num">{% trans "Question" %} {{ question.number }}</div>
 
-      {% if question.passage %}
-        <div class="q-passage">{{ question.passage }}</div>
+      {% if question.question_text %}
+      <div class="q-text">{{ question.question_text|safe }}</div>
       {% endif %}
-      {% if question.passage_image %}
-        <img src="{{ question.passage_image.url }}" class="q-img" alt="{% trans 'Passage image' %}">
-      {% endif %}
-
-      <div class="q-text">{{ question.question_text }}</div>
 
       {% if question.question_image %}
         <img src="{{ question.question_image.url }}" class="q-img" alt="{% trans 'Question image' %}">

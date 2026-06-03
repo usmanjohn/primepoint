@@ -147,7 +147,7 @@
     <div class="answer-row">
       <span class="q-badge">Q{{ question.number }}</span>
       <div style="flex:1;">
-        <div style="color:var(--text);margin-bottom:0.25rem;">{{ question.question_text|truncatechars:100 }}</div>
+        <div style="color:var(--text);margin-bottom:0.25rem;">{{ question.question_text|striptags|truncatechars:100 }}</div>
         {% if ans and ans.selected_choice %}
           {% if ans.selected_choice.is_correct %}
             <span class="ans-correct"><i class="bi bi-check-circle-fill me-1"></i>{{ ans.selected_choice.text }}</span>
@@ -186,7 +186,7 @@
     <div class="answer-row">
       <span class="q-badge">Q{{ question.number }}</span>
       <div style="flex:1;">
-        <div style="color:var(--text);margin-bottom:0.25rem;">{{ question.question_text|truncatechars:100 }}</div>
+        <div style="color:var(--text);margin-bottom:0.25rem;">{{ question.question_text|striptags|truncatechars:100 }}</div>
         {% if ans and ans.selected_choice %}
           {% if ans.selected_choice.is_correct %}
             <span class="ans-correct"><i class="bi bi-check-circle-fill me-1"></i>{{ ans.selected_choice.text }}</span>
@@ -225,7 +225,7 @@
     <div class="answer-row">
       <span class="q-badge">Q{{ question.number }}</span>
       <div style="flex:1;">
-        <div style="color:var(--text);margin-bottom:0.35rem;">{{ question.question_text|truncatechars:120 }}</div>
+        <div style="color:var(--text);margin-bottom:0.35rem;">{{ question.question_text|striptags|truncatechars:120 }}</div>
         {% if ans and ans.written_answer %}
           <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.6rem 0.85rem;font-size:0.83rem;color:var(--text-muted);white-space:pre-wrap;">{{ ans.written_answer }}</div>
         {% else %}

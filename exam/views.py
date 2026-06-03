@@ -7,7 +7,7 @@ from django.http import JsonResponse
 from django.utils import timezone
 
 from panda.models import Panda
-from .models import Exam, ExamQuestion, ExamChoice, ExamAttempt, ExamAnswer
+from .models import Exam, ExamPassage, ExamQuestion, ExamChoice, ExamAttempt, ExamAnswer
 
 SECTION_ORDER = ['listening', 'reading', 'writing']
 SECTION_LABELS = {
@@ -138,6 +138,10 @@ def take_section(request, attempt_id):
 
     questions = attempt.exam.questions.filter(section=attempt.current_section).prefetch_related('choices')
 
+    # Build a dict: question_number → passage (for questions that start a passage group)
+    passages_qs = ExamPassage.objects.filter(exam=attempt.exam, section=attempt.current_section)
+    passage_map = {p.question_from: p for p in passages_qs}
+
     # Build maps of existing answers for pre-populating the form
     existing_answers = ExamAnswer.objects.filter(
         attempt=attempt,
@@ -150,6 +154,7 @@ def take_section(request, attempt_id):
         'attempt': attempt,
         'exam': attempt.exam,
         'questions': questions,
+        'passage_map': passage_map,
         'selected_choices': selected_choices,
         'written_answers': written_answers,
         'seconds_remaining': seconds_remaining,

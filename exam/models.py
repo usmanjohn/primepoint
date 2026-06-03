@@ -28,18 +28,38 @@ class Exam(models.Model):
         return self.title
 
 
+SECTION_CHOICES = [
+    ('listening', 'Listening / 듣기'),
+    ('reading', 'Reading / 읽기'),
+    ('writing', 'Writing / 쓰기'),
+]
+
+
+class ExamPassage(models.Model):
+    exam = models.ForeignKey(Exam, on_delete=models.CASCADE, related_name='passages')
+    section = models.CharField(max_length=20, choices=SECTION_CHOICES)
+    question_from = models.IntegerField()
+    question_to = models.IntegerField()
+    text = models.TextField(blank=True)
+    image = models.ImageField(upload_to='exam_images/', blank=True, null=True)
+
+    class Meta:
+        ordering = ['question_from']
+
+    def __str__(self):
+        if self.question_from == self.question_to:
+            return f'{self.exam} — {self.get_section_display()} Q{self.question_from} passage'
+        return f'{self.exam} — {self.get_section_display()} Q{self.question_from}–{self.question_to} passage'
+
+    def get_section_display(self):
+        return dict(SECTION_CHOICES).get(self.section, self.section)
+
+
 class ExamQuestion(models.Model):
-    SECTION_CHOICES = [
-        ('listening', 'Listening / 듣기'),
-        ('reading', 'Reading / 읽기'),
-        ('writing', 'Writing / 쓰기'),
-    ]
     exam = models.ForeignKey(Exam, on_delete=models.CASCADE, related_name='questions')
     section = models.CharField(max_length=20, choices=SECTION_CHOICES)
     number = models.IntegerField()
-    passage = models.TextField(blank=True)
-    passage_image = models.ImageField(upload_to='exam_images/', blank=True, null=True)
-    question_text = models.TextField()
+    question_text = models.TextField(blank=True)
     question_image = models.ImageField(upload_to='exam_images/', blank=True, null=True)
     is_writing = models.BooleanField(default=False)
 
