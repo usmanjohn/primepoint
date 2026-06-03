@@ -10,6 +10,8 @@ CATEGORY_CHOICES = [
     ('korean',     'Korean'),
     ('programming', 'Programming'),
     ('english',    'English'),
+    ('japanese',    'Japanese'),
+    ('russian',    'Russian'),
     ('other',       'Other'),
 ]
 
@@ -18,6 +20,8 @@ CATEGORY_ICONS = {
     'korean':      'bi-flag',
     'programming': 'bi-code-slash',
     'english':     'bi-translate',
+    'japanese':    'bi-brilliance',
+    'russian':     'bi-globe-europe-africa',
     'other':       'bi-lightbulb',
 }
 
