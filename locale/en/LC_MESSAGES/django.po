@@ -590,3 +590,106 @@ msgstr ""
 #: templates/base.html:229
 msgid "Register"
 msgstr ""
+
+#: games/templates/games/target_number.html games/templates/games/games_home.html
+msgid "Target Number"
+msgstr ""
+
+#: games/templates/games/games_home.html
+msgid "Combine 6 numbers with +, −, ×, ÷ to hit the target. Three difficulty levels!"
+msgstr ""
+
+#: games/templates/games/target_number.html
+msgid "Combine the numbers using +, −, ×, ÷ to reach the target!"
+msgstr ""
+
+#: games/templates/games/target_number.html
+msgid "Start a New Game"
+msgstr ""
+
+#: games/templates/games/target_number.html
+msgid "6 numbers (1–9), target 10–50"
+msgstr ""
+
+#: games/templates/games/target_number.html
+msgid "4 numbers (1–15) + 2 special, target 50–200"
+msgstr ""
+
+#: games/templates/games/target_number.html
+msgid "4 numbers (1–9) + 2 special, target 100–999"
+msgstr ""
+
+#: games/templates/games/target_number.html
+msgid "Start Game"
+msgstr ""
+
+#: games/templates/games/target_number.html
+msgid "Target reached!"
+msgstr ""
+
+#: games/templates/games/target_number.html
+#, python-format
+msgid "You hit <strong>%(t)s</strong>!"
+msgstr ""
+
+#: games/templates/games/target_number.html
+#, python-format
+msgid "Solved in <strong>%(n)s</strong> attempt(s)."
+msgstr ""
+
+#: games/templates/games/target_number.html
+#, python-format
+msgid "Personal best: <strong>%(b)s</strong> attempt(s)."
+msgstr ""
+
+#: games/templates/games/target_number.html
+msgid "Play Again"
+msgstr ""
+
+#: games/templates/games/target_number.html
+msgid "Target"
+msgstr ""
+
+#: games/templates/games/target_number.html
+msgid "Your numbers"
+msgstr ""
+
+#: games/templates/games/target_number.html
+msgid "Clear"
+msgstr ""
+
+#: games/templates/games/target_number.html
+msgid "Click numbers and operators above…"
+msgstr ""
+
+#: games/templates/games/target_number.html
+msgid "Check"
+msgstr ""
+
+#: games/templates/games/target_number.html
+msgid "New Game"
+msgstr ""
+
+#: games/templates/games/target_number.html
+msgid "You reached the target!"
+msgstr ""
+
+#: games/templates/games/target_number.html
+msgid "Exactly right!"
+msgstr ""
+
+#: games/templates/games/target_number.html
+msgid "Result"
+msgstr ""
+
+#: games/templates/games/target_number.html
+msgid "Distance from target"
+msgstr ""
+
+#: games/templates/games/target_number.html
+msgid "Network error — try again."
+msgstr ""
+
+#: games/templates/games/target_number.html
+msgid "Math"
+msgstr ""

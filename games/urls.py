@@ -40,4 +40,7 @@ urlpatterns = [
     path('wordorder/create/', views.wordorder_create, name='wordorder_create'),
     path('wordorder/<int:pk>/', views.wordorder_play, name='wordorder_play'),
     path('wordorder/<int:pk>/check/', views.wordorder_check, name='wordorder_check'),
+    # Target Number
+    path('target-number/', views.target_number, name='target_number'),
+    path('target-number/check/', views.target_number_check, name='target_number_check'),
 ]

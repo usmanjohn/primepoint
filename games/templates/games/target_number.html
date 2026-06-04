@@ -1,0 +1,452 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Target Number" %} — PrimePoint{% endblock %}
+{% block page_name %}{% trans "Target Number" %}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+.tn-tile {
+    min-width: 54px; min-height: 54px;
+    display: flex; align-items: center; justify-content: center;
+    background: #161b22; border: 2px solid #30363d; border-radius: 12px;
+    font-size: 1.25rem; font-weight: 700; color: #e6edf3;
+    cursor: pointer; user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: border-color .15s, background .15s, transform .12s, opacity .15s;
+    padding: 6px 14px;
+}
+.tn-tile:hover:not(.tn-used) {
+    border-color: #f97316;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(249,115,22,.2);
+}
+.tn-tile.tn-used {
+    opacity: .28; cursor: default; pointer-events: none;
+}
+.tn-op {
+    min-width: 46px; min-height: 46px;
+    display: flex; align-items: center; justify-content: center;
+    background: #0d1117; border: 1.5px solid #30363d; border-radius: 8px;
+    font-size: 1.1rem; font-weight: 700; color: #58a6ff;
+    cursor: pointer; user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: background .12s, border-color .12s;
+    padding: 4px 12px;
+}
+.tn-op:hover { background: #1c2b3a; border-color: #58a6ff; }
+#tn-expr {
+    font-size: 1.3rem; font-weight: 600; letter-spacing: .03em;
+    color: #e6edf3; background: #0d1117;
+    border: 2px solid #30363d; border-radius: 10px;
+    padding: 10px 14px; width: 100%; text-align: center;
+    outline: none; caret-color: #f97316;
+    transition: border-color .15s, box-shadow .15s;
+}
+#tn-expr:focus { border-color: #58a6ff; box-shadow: 0 0 0 3px rgba(88,166,255,.15); }
+#tn-expr.tn-correct { border-color: #3fb950; box-shadow: 0 0 0 3px rgba(63,185,80,.25); }
+#tn-expr.tn-wrong   { border-color: #f85149; box-shadow: 0 0 0 3px rgba(248,81,73,.2); }
+.tn-target-box {
+    background: linear-gradient(135deg, #f97316 0%, #c2410c 100%);
+    border-radius: 14px; padding: 1.5rem;
+    text-align: center; color: #fff;
+}
+.tn-target-num { font-size: clamp(2.8rem, 10vw, 4.5rem); font-weight: 700; line-height: 1; }
+#tn-distance { font-size: 0.88rem; min-height: 1.4em; }
+#tn-timer { font-variant-numeric: tabular-nums; }
+#tn-celebration {
+    display: none; position: fixed; inset: 0; z-index: 9999;
+    background: rgba(13,17,23,.93);
+    align-items: center; justify-content: center;
+    flex-direction: column; text-align: center; padding: 2rem;
+}
+#tn-celebration.show { display: flex; }
+@media (max-width: 480px) {
+    .tn-tile { min-width: 48px; min-height: 48px; font-size: 1.05rem; padding: 6px 10px; }
+    .tn-op   { min-width: 42px; min-height: 42px; font-size: 1rem; }
+    #tn-expr { font-size: 1.1rem; }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4" style="max-width:620px;">
+
+    <a href="{% url 'games_home' %}" class="text-decoration-none d-inline-flex align-items-center gap-1 mb-3"
+       style="color:var(--text-muted); font-size:0.85rem;">
+        <i class="bi bi-arrow-left"></i> {% trans "Games" %}
+    </a>
+
+    <div class="mb-4">
+        <h1 class="fs-4 fw-bold mb-1" style="color:var(--text);">🎯 {% trans "Target Number" %}</h1>
+        <p style="color:var(--text-muted); font-size:0.88rem; margin:0;">
+            {% trans "Combine the numbers using +, −, ×, ÷ to reach the target!" %}
+        </p>
+    </div>
+
+    {% if not started %}
+    {# ── START SCREEN ── #}
+    <div class="card border-0 shadow-sm" style="border-radius:14px; overflow:hidden;">
+        <div style="background:linear-gradient(135deg,#f97316 0%,#c2410c 100%); padding:1.25rem 1.5rem;">
+            <h2 class="fs-5 fw-bold mb-0" style="color:#fff;">🎯 {% trans "Start a New Game" %}</h2>
+        </div>
+        <div class="card-body p-4" style="background:var(--surface);">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="new">
+                <div class="mb-4">
+                    <label class="form-label fw-semibold" style="color:var(--text);">{% trans "Difficulty" %}</label>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <label class="tn-diff-label" style="cursor:pointer;">
+                            <input type="radio" name="difficulty" value="easy" checked class="visually-hidden tn-diff-radio">
+                            <span class="btn btn-sm tn-diff-btn" data-value="easy"
+                                  style="background:#d1fae5; color:#065f46; border:2px solid #d1fae5;">{% trans "Easy" %}</span>
+                        </label>
+                        <label class="tn-diff-label" style="cursor:pointer;">
+                            <input type="radio" name="difficulty" value="medium" class="visually-hidden tn-diff-radio">
+                            <span class="btn btn-sm tn-diff-btn" data-value="medium"
+                                  style="background:#fef3c7; color:#92400e; border:2px solid #fef3c7;">{% trans "Medium" %}</span>
+                        </label>
+                        <label class="tn-diff-label" style="cursor:pointer;">
+                            <input type="radio" name="difficulty" value="hard" class="visually-hidden tn-diff-radio">
+                            <span class="btn btn-sm tn-diff-btn" data-value="hard"
+                                  style="background:#fee2e2; color:#991b1b; border:2px solid #fee2e2;">{% trans "Hard" %}</span>
+                        </label>
+                    </div>
+                    <div class="mt-2" style="font-size:0.82rem; color:var(--text-muted);" id="tn-diff-desc">
+                        {% trans "6 numbers (1–9), target 10–50" %}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-lg w-100 fw-semibold"
+                        style="background:#f97316; border-color:#f97316; color:#fff;">
+                    {% trans "Start Game" %}
+                </button>
+            </form>
+        </div>
+    </div>
+
+    {% elif solved %}
+    {# ── SOLVED SCREEN ── #}
+    <div class="card border-0 shadow-sm text-center" style="border-radius:14px; overflow:hidden;">
+        <div style="background:linear-gradient(135deg,#16a34a 0%,#166534 100%); padding:2rem 1.5rem;">
+            <div style="font-size:3.5rem; line-height:1;">🎉</div>
+            <h2 class="fs-4 fw-bold mt-2 mb-0" style="color:#fff;">{% trans "Target reached!" %}</h2>
+        </div>
+        <div class="card-body p-4" style="background:var(--surface);">
+            <p style="color:var(--text); font-size:1rem;" class="mb-2">
+                {% blocktrans with t=target %}You hit <strong>{{ t }}</strong>!{% endblocktrans %}
+            </p>
+            <p style="color:var(--text-muted);" class="mb-1">
+                {% blocktrans with n=attempts %}Solved in <strong>{{ n }}</strong> attempt(s).{% endblocktrans %}
+            </p>
+            {% if best %}
+            <p style="color:var(--text-muted);" class="mb-4">
+                {% blocktrans with b=best %}Personal best: <strong>{{ b }}</strong> attempt(s).{% endblocktrans %}
+            </p>
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="new">
+                <input type="hidden" name="difficulty" value="{{ difficulty }}">
+                <button type="submit" class="btn btn-success btn-lg fw-semibold px-5">
+                    {% trans "Play Again" %}
+                </button>
+            </form>
+        </div>
+    </div>
+
+    {% else %}
+    {# ── ACTIVE GAME ── #}
+
+    <!-- Status bar -->
+    <div class="card border-0 shadow-sm mb-3"
+         style="border-radius:12px; background:linear-gradient(135deg,#f97316 0%,#c2410c 100%);">
+        <div class="card-body py-3 d-flex align-items-center justify-content-center gap-4">
+            <div class="text-center">
+                <div class="fw-bold" id="tn-timer" style="font-size:1.4rem; color:#fff; line-height:1;">0s</div>
+                <div style="font-size:0.72rem; color:rgba(255,255,255,0.75); text-transform:uppercase; letter-spacing:.05em;">{% trans "Time" %}</div>
+            </div>
+            <div style="width:1px; height:36px; background:rgba(255,255,255,0.3);"></div>
+            <div class="text-center">
+                <div class="fw-bold" id="tn-attempts-display"
+                     style="font-size:1.4rem; color:#fff; line-height:1;">{{ attempts }}</div>
+                <div style="font-size:0.72rem; color:rgba(255,255,255,0.75); text-transform:uppercase; letter-spacing:.05em;">{% trans "Attempts" %}</div>
+            </div>
+            <div style="width:1px; height:36px; background:rgba(255,255,255,0.3);"></div>
+            <div class="text-center">
+                <div class="fw-bold" style="font-size:0.9rem; color:#fff;">
+                    {% if difficulty == 'easy' %}{% trans "Easy" %}
+                    {% elif difficulty == 'medium' %}{% trans "Medium" %}
+                    {% else %}{% trans "Hard" %}{% endif %}
+                </div>
+                <div style="font-size:0.72rem; color:rgba(255,255,255,0.75); text-transform:uppercase; letter-spacing:.05em;">{% trans "Level" %}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Target -->
+    <div class="tn-target-box mb-3">
+        <div style="font-size:0.8rem; color:rgba(255,255,255,0.75); text-transform:uppercase;
+                    letter-spacing:.08em; margin-bottom:.25rem;">{% trans "Target" %}</div>
+        <div class="tn-target-num">{{ target }}</div>
+    </div>
+
+    <!-- Number tiles -->
+    <div class="mb-3">
+        <div style="font-size:0.78rem; color:var(--text-muted); font-weight:600;
+                    text-transform:uppercase; letter-spacing:.05em; margin-bottom:.5rem;">
+            {% trans "Your numbers" %}
+        </div>
+        <div class="d-flex flex-wrap gap-2 justify-content-center" id="tn-tiles">
+            {% for num in numbers %}
+            <div class="tn-tile" data-value="{{ num }}" data-index="{{ forloop.counter0 }}">{{ num }}</div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Operator buttons -->
+    <div class="d-flex flex-wrap gap-2 justify-content-center mb-3">
+        <div class="tn-op" data-op="+">+</div>
+        <div class="tn-op" data-op="−">−</div>
+        <div class="tn-op" data-op="×">×</div>
+        <div class="tn-op" data-op="÷">÷</div>
+        <div class="tn-op" data-op="(">(</div>
+        <div class="tn-op" data-op=")">)</div>
+        <div class="tn-op" id="tn-backspace" style="color:#f85149;">⌫</div>
+        <div class="tn-op" id="tn-clear" style="color:#8b949e; font-size:.85rem;">{% trans "Clear" %}</div>
+    </div>
+
+    <!-- Expression input -->
+    <div class="mb-2">
+        <input type="text" id="tn-expr"
+               placeholder="{% trans "Click numbers and operators above…" %}"
+               autocomplete="off" spellcheck="false">
+    </div>
+
+    <!-- Distance feedback -->
+    <div id="tn-distance" class="text-center mb-3" style="color:var(--text-muted);"></div>
+
+    <!-- Buttons -->
+    <div class="d-flex gap-2 mb-3">
+        <button id="tn-submit" class="btn btn-lg flex-grow-1 fw-semibold"
+                style="background:#f97316; border-color:#f97316; color:#fff;">
+            = {% trans "Check" %}
+        </button>
+    </div>
+    <form method="post" id="tn-new-form">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="new">
+        <input type="hidden" name="difficulty" value="{{ difficulty }}">
+        <button type="submit" class="btn btn-outline-secondary w-100"
+                style="color:var(--text-muted); border-color:var(--border);">
+            {% trans "New Game" %}
+        </button>
+    </form>
+    {% endif %}
+
+</div>
+
+<!-- Celebration overlay -->
+{% if started and not solved %}
+<div id="tn-celebration">
+    <div style="font-size:3.5rem; line-height:1; margin-bottom:.75rem;">🎉</div>
+    <div style="font-size:clamp(2rem,10vw,4rem); font-weight:700; color:#f97316; margin:.5rem 0;">{{ target }}</div>
+    <p style="color:#8b949e; font-size:0.9rem; margin:.25rem 0 .5rem;">{% trans "You reached the target!" %}</p>
+    <p id="tn-cel-detail" style="color:#8b949e; font-size:0.85rem; margin:0 0 1.5rem;"></p>
+    <button onclick="document.getElementById('tn-new-form').submit()"
+            class="btn" style="background:#238636; color:#fff; font-weight:600;
+                               border:none; border-radius:8px; padding:.55rem 1.6rem;">
+        {% trans "Play Again" %}
+    </button>
+</div>
+{% endif %}
+
+{% block extra_js %}
+<script>
+(function () {
+    const CHECK_URL   = "{% url 'target_number_check' %}";
+    const CSRF_TOKEN  = "{{ csrf_token }}";
+    const START_MS    = {{ start_ms }};
+    const ALREADY_SOLVED = {{ solved|yesno:"true,false" }};
+    const STARTED = {{ started|yesno:"true,false" }};
+
+    if (!STARTED) {
+        // Difficulty description switcher on start screen
+        var diffDescs = {
+            'easy':   "{% trans '6 numbers (1–9), target 10–50' %}",
+            'medium': "{% trans '4 numbers (1–15) + 2 special, target 50–200' %}",
+            'hard':   "{% trans '4 numbers (1–9) + 2 special, target 100–999' %}",
+        };
+        document.querySelectorAll('.tn-diff-radio').forEach(function (radio) {
+            radio.addEventListener('change', function () {
+                var desc = document.getElementById('tn-diff-desc');
+                if (desc) desc.textContent = diffDescs[radio.value] || '';
+                // Visually mark selected button
+                document.querySelectorAll('.tn-diff-btn').forEach(function (btn) {
+                    btn.style.outline = '';
+                });
+                var btn = document.querySelector('.tn-diff-btn[data-value="' + radio.value + '"]');
+                if (btn) btn.style.outline = '3px solid #1f6feb';
+            });
+        });
+        return;
+    }
+
+    if (ALREADY_SOLVED) return;
+
+    // ── Timer ──
+    var timerEl = document.getElementById('tn-timer');
+    var timerInterval = null;
+    function fmtTime(s) {
+        var m = Math.floor(s / 60);
+        return m > 0 ? m + 'm ' + (s % 60) + 's' : (s % 60) + 's';
+    }
+    if (timerEl) {
+        timerInterval = setInterval(function () {
+            var elapsed = Math.floor((Date.now() - START_MS) / 1000);
+            timerEl.textContent = fmtTime(elapsed);
+        }, 1000);
+    }
+
+    // ── State ──
+    var expr = '';
+    var exprInput  = document.getElementById('tn-expr');
+    var distDiv    = document.getElementById('tn-distance');
+    var attDisplay = document.getElementById('tn-attempts-display');
+    var celebEl    = document.getElementById('tn-celebration');
+    var celDetail  = document.getElementById('tn-cel-detail');
+
+    function updateDisplay() {
+        if (exprInput) exprInput.value = expr;
+    }
+
+    function syncTileUsed() {
+        // Count how many times each numeric value appears in current expr
+        var counts = {};
+        var matches = expr.match(/\d+/g) || [];
+        for (var i = 0; i < matches.length; i++) {
+            var v = parseInt(matches[i], 10);
+            counts[v] = (counts[v] || 0) + 1;
+        }
+        // Walk tiles and mark used from left to right
+        var remaining = JSON.parse(JSON.stringify(counts));
+        document.querySelectorAll('.tn-tile').forEach(function (tile) {
+            var v = parseInt(tile.dataset.value, 10);
+            if (remaining[v] > 0) {
+                tile.classList.add('tn-used');
+                remaining[v]--;
+            } else {
+                tile.classList.remove('tn-used');
+            }
+        });
+    }
+
+    function clearFeedback() {
+        if (exprInput) { exprInput.classList.remove('tn-correct', 'tn-wrong'); }
+        if (distDiv)   { distDiv.textContent = ''; distDiv.style.color = ''; }
+    }
+
+    // ── Tile clicks ──
+    document.querySelectorAll('.tn-tile').forEach(function (tile) {
+        tile.addEventListener('click', function () {
+            if (tile.classList.contains('tn-used')) return;
+            expr += tile.dataset.value;
+            syncTileUsed();
+            updateDisplay();
+            clearFeedback();
+        });
+    });
+
+    // ── Op button clicks ──
+    document.querySelectorAll('.tn-op[data-op]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            expr += btn.dataset.op;
+            updateDisplay();
+            clearFeedback();
+        });
+    });
+
+    // ── Backspace ──
+    var bsBtn = document.getElementById('tn-backspace');
+    if (bsBtn) bsBtn.addEventListener('click', function () {
+        if (!expr.length) return;
+        expr = expr.slice(0, -1);
+        syncTileUsed();
+        updateDisplay();
+        clearFeedback();
+    });
+
+    // ── Clear ──
+    var clearBtn = document.getElementById('tn-clear');
+    if (clearBtn) clearBtn.addEventListener('click', function () {
+        expr = '';
+        document.querySelectorAll('.tn-tile').forEach(function (t) { t.classList.remove('tn-used'); });
+        updateDisplay();
+        clearFeedback();
+    });
+
+    // Allow typing directly into the input
+    if (exprInput) {
+        exprInput.removeAttribute('readonly');
+        exprInput.addEventListener('input', function () {
+            expr = exprInput.value;
+            syncTileUsed();
+            clearFeedback();
+        });
+        exprInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') { e.preventDefault(); doCheck(); }
+        });
+    }
+
+    // ── AJAX check ──
+    var submitBtn = document.getElementById('tn-submit');
+    if (submitBtn) submitBtn.addEventListener('click', doCheck);
+
+    function doCheck() {
+        var currentExpr = exprInput ? exprInput.value.trim() : expr.trim();
+        if (!currentExpr) return;
+
+        fetch(CHECK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'X-CSRFToken': CSRF_TOKEN },
+            body: JSON.stringify({ expression: currentExpr }),
+        })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+            if (attDisplay && data.attempts !== undefined) attDisplay.textContent = data.attempts;
+
+            if (data.error && !data.hasOwnProperty('correct')) {
+                if (distDiv) { distDiv.style.color = '#f85149'; distDiv.textContent = data.error; }
+                if (exprInput) exprInput.classList.add('tn-wrong');
+                return;
+            }
+
+            if (data.correct) {
+                if (exprInput) exprInput.classList.add('tn-correct');
+                if (distDiv)   { distDiv.style.color = '#3fb950'; distDiv.textContent = "{% trans 'Exactly right!' %}"; }
+                if (timerInterval) clearInterval(timerInterval);
+                if (celDetail) {
+                    celDetail.textContent = "{% trans 'Time' %}: " + fmtTime(data.elapsed)
+                        + " · {% trans 'Attempts' %}: " + data.attempts;
+                }
+                setTimeout(function () {
+                    if (celebEl) celebEl.classList.add('show');
+                }, 500);
+            } else {
+                if (exprInput) exprInput.classList.add('tn-wrong');
+                if (distDiv) {
+                    distDiv.style.color = '#f0883e';
+                    distDiv.textContent = "{% trans 'Result' %}: " + data.result
+                        + " — {% trans 'Distance from target' %}: " + data.distance;
+                }
+            }
+        })
+        .catch(function () {
+            if (distDiv) { distDiv.style.color = '#f85149'; distDiv.textContent = "{% trans 'Network error — try again.' %}"; }
+        });
+    }
+}());
+</script>
+{% endblock %}
+{% endblock %}

@@ -3610,3 +3610,87 @@ msgstr "Darslik yaratish"
 
 #~ msgid "Data analysis lessons and tasks."
 #~ msgstr "Ma'lumotlar tahlili bo'yicha darslar."
+
+#: games/templates/games/target_number.html games/templates/games/games_home.html
+msgid "Target Number"
+msgstr "Maqsad Raqam"
+
+#: games/templates/games/games_home.html
+msgid "Combine 6 numbers with +, −, ×, ÷ to hit the target. Three difficulty levels!"
+msgstr "6 raqamni +, −, ×, ÷ yordamida birlashtiring va maqsadga yeting. Uch qiyinchilik darajasi!"
+
+#: games/templates/games/target_number.html
+msgid "Combine the numbers using +, −, ×, ÷ to reach the target!"
+msgstr "Raqamlarni +, −, ×, ÷ yordamida birlashtiring va maqsadga yeting!"
+
+#: games/templates/games/target_number.html
+msgid "6 numbers (1–9), target 10–50"
+msgstr "6 raqam (1–9), maqsad 10–50"
+
+#: games/templates/games/target_number.html
+msgid "4 numbers (1–15) + 2 special, target 50–200"
+msgstr "4 raqam (1–15) + 2 maxsus, maqsad 50–200"
+
+#: games/templates/games/target_number.html
+msgid "4 numbers (1–9) + 2 special, target 100–999"
+msgstr "4 raqam (1–9) + 2 maxsus, maqsad 100–999"
+
+#: games/templates/games/target_number.html
+msgid "Target reached!"
+msgstr "Maqsadga yetildi!"
+
+#: games/templates/games/target_number.html
+#, python-format
+msgid "You hit <strong>%(t)s</strong>!"
+msgstr "<strong>%(t)s</strong> ga yetdingiz!"
+
+#: games/templates/games/target_number.html
+#, python-format
+msgid "Solved in <strong>%(n)s</strong> attempt(s)."
+msgstr "<strong>%(n)s</strong> ta urinishda hal qildingiz."
+
+#: games/templates/games/target_number.html
+#, python-format
+msgid "Personal best: <strong>%(b)s</strong> attempt(s)."
+msgstr "Shaxsiy rekord: <strong>%(b)s</strong> ta urinish."
+
+#: games/templates/games/target_number.html
+msgid "Target"
+msgstr "Maqsad"
+
+#: games/templates/games/target_number.html
+msgid "Your numbers"
+msgstr "Sizning raqamlaringiz"
+
+#: games/templates/games/target_number.html
+msgid "Click numbers and operators above…"
+msgstr "Yuqoridagi raqam va amallarni bosing…"
+
+#: games/templates/games/target_number.html
+msgid "Check"
+msgstr "Tekshirish"
+
+#: games/templates/games/target_number.html
+msgid "New Game"
+msgstr "Yangi O'yin"
+
+#: games/templates/games/target_number.html
+msgid "You reached the target!"
+msgstr "Maqsadga yetdingiz!"
+
+#: games/templates/games/target_number.html
+msgid "Exactly right!"
+msgstr "Aynan to'g'ri!"
+
+#: games/templates/games/target_number.html
+msgid "Result"
+msgstr "Natija"
+
+#: games/templates/games/target_number.html
+msgid "Distance from target"
+msgstr "Maqsaddan farq"
+
+#: games/templates/games/target_number.html
+msgid "Network error — try again."
+msgstr "Tarmoq xatosi — qayta urinib ko'ring."
+

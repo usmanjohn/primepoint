@@ -1,5 +1,7 @@
+import ast
 import json
 import math
+import operator
 import random
 import time
 from django.core.exceptions import PermissionDenied
@@ -1375,3 +1377,175 @@ def wordsearch_play(request, pk):
         'size':       grid_data.get('size', 15),
     }
     return render(request, 'games/wordsearch_play.html', context)
+
+
+# ---------------------------------------------------------------------------
+# Target Number
+# ---------------------------------------------------------------------------
+
+_TN_DIFFICULTY = {
+    'easy':   {'small': (1, 9),   'large': [],                'small_count': 6, 'large_count': 0, 'target_range': (10, 50)},
+    'medium': {'small': (1, 15),  'large': [10, 25, 50],      'small_count': 4, 'large_count': 2, 'target_range': (50, 200)},
+    'hard':   {'small': (1, 9),   'large': [25, 50, 75, 100], 'small_count': 4, 'large_count': 2, 'target_range': (100, 999)},
+}
+
+_TN_OPS = {
+    ast.Add:  operator.add,
+    ast.Sub:  operator.sub,
+    ast.Mult: operator.mul,
+    ast.Div:  operator.truediv,
+}
+
+def _tn_eval(node):
+    if isinstance(node, ast.Expression):
+        return _tn_eval(node.body)
+    if isinstance(node, ast.Constant) and isinstance(node.value, (int, float)):
+        return node.value
+    if isinstance(node, ast.BinOp) and type(node.op) in _TN_OPS:
+        left, right = _tn_eval(node.left), _tn_eval(node.right)
+        if isinstance(node.op, ast.Div):
+            if right == 0:
+                raise ValueError("Division by zero")
+            result = operator.truediv(left, right)
+            if result != int(result):
+                raise ValueError("Non-integer result")
+            return int(result)
+        return _TN_OPS[type(node.op)](left, right)
+    if isinstance(node, ast.UnaryOp) and isinstance(node.op, ast.USub):
+        return -_tn_eval(node.operand)
+    raise ValueError(f"Unsafe node: {type(node).__name__}")
+
+
+def _tn_extract_numbers(node):
+    if isinstance(node, ast.Expression):
+        return _tn_extract_numbers(node.body)
+    if isinstance(node, ast.Constant) and isinstance(node.value, (int, float)):
+        return [int(node.value)]
+    if isinstance(node, ast.BinOp):
+        return _tn_extract_numbers(node.left) + _tn_extract_numbers(node.right)
+    if isinstance(node, ast.UnaryOp) and isinstance(node.op, ast.USub):
+        return _tn_extract_numbers(node.operand)
+    return []
+
+
+def _tn_generate(difficulty):
+    cfg = _TN_DIFFICULTY[difficulty]
+    nums = [random.randint(cfg['small'][0], cfg['small'][1]) for _ in range(cfg['small_count'])]
+    if cfg['large_count']:
+        nums += random.sample(cfg['large'], cfg['large_count'])
+
+    lo, hi = cfg['target_range']
+    ops = [operator.add, operator.sub, operator.mul]
+    target = lo - 1
+
+    for _ in range(50):
+        use_count = random.randint(3, min(5, len(nums)))
+        seed = random.sample(nums, use_count)
+        acc = seed[0]
+        for n in seed[1:]:
+            candidate = random.choice(ops)(acc, n)
+            if isinstance(candidate, int) and candidate > 0:
+                acc = candidate
+        if lo <= acc <= hi:
+            target = acc
+            break
+    else:
+        target = max(lo, min(hi, nums[0] + nums[1]))
+
+    return nums, target
+
+
+@login_required
+def target_number(request):
+    if request.method == 'POST':
+        action = request.POST.get('action')
+        if action == 'new':
+            difficulty = request.POST.get('difficulty', 'easy')
+            if difficulty not in ('easy', 'medium', 'hard'):
+                difficulty = 'easy'
+            nums, target = _tn_generate(difficulty)
+            request.session.update({
+                'tn_numbers':    nums,
+                'tn_target':     target,
+                'tn_difficulty': difficulty,
+                'tn_start':      int(time.time()),
+                'tn_attempts':   0,
+                'tn_solved':     False,
+            })
+            return redirect('target_number')
+
+    context = {
+        'started':    request.session.get('tn_numbers') is not None,
+        'numbers':    request.session.get('tn_numbers', []),
+        'target':     request.session.get('tn_target'),
+        'difficulty': request.session.get('tn_difficulty', 'easy'),
+        'attempts':   request.session.get('tn_attempts', 0),
+        'solved':     request.session.get('tn_solved', False),
+        'best':       request.session.get('tn_best'),
+        'start_ms':   (request.session['tn_start'] * 1000) if request.session.get('tn_start') else 0,
+    }
+    return render(request, 'games/target_number.html', context)
+
+
+@login_required
+def target_number_check(request):
+    if request.method != 'POST':
+        return JsonResponse({'error': 'POST only'}, status=405)
+
+    numbers = request.session.get('tn_numbers')
+    target  = request.session.get('tn_target')
+    if numbers is None or target is None:
+        return JsonResponse({'error': 'No active game'}, status=400)
+
+    try:
+        data = json.loads(request.body)
+        expression = str(data.get('expression', '')).strip()
+    except (ValueError, json.JSONDecodeError):
+        return JsonResponse({'error': 'Invalid JSON'}, status=400)
+
+    if not expression:
+        return JsonResponse({'error': 'Empty expression'}, status=400)
+
+    safe_expr = expression.replace('×', '*').replace('÷', '/')
+
+    try:
+        tree = ast.parse(safe_expr, mode='eval')
+    except SyntaxError:
+        return JsonResponse({'error': 'Syntax error', 'result': None, 'correct': False, 'distance': None})
+
+    try:
+        used = _tn_extract_numbers(tree)
+    except ValueError:
+        return JsonResponse({'error': 'Invalid expression', 'result': None, 'correct': False, 'distance': None})
+
+    pool_copy = list(numbers)
+    for n in used:
+        if n in pool_copy:
+            pool_copy.remove(n)
+        else:
+            return JsonResponse({'error': 'Number not in pool', 'result': None, 'correct': False, 'distance': None})
+
+    try:
+        result = _tn_eval(tree)
+    except (ValueError, ZeroDivisionError):
+        return JsonResponse({'error': 'Invalid operation', 'result': None, 'correct': False, 'distance': None})
+
+    correct  = (result == target)
+    distance = abs(result - target)
+    elapsed  = int(time.time()) - request.session.get('tn_start', int(time.time()))
+    request.session['tn_attempts'] = request.session.get('tn_attempts', 0) + 1
+    attempts = request.session['tn_attempts']
+
+    if correct and not request.session.get('tn_solved'):
+        request.session['tn_solved'] = True
+        best = request.session.get('tn_best')
+        if best is None or attempts < best:
+            request.session['tn_best'] = attempts
+
+    return JsonResponse({
+        'result':   result,
+        'correct':  correct,
+        'distance': distance,
+        'attempts': attempts,
+        'elapsed':  elapsed,
+    })
