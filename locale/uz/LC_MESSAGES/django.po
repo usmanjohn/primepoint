@@ -3624,8 +3624,8 @@ msgid "Combine the numbers using +, −, ×, ÷ to reach the target!"
 msgstr "Raqamlarni +, −, ×, ÷ yordamida birlashtiring va maqsadga yeting!"
 
 #: games/templates/games/target_number.html
-msgid "6 numbers (1–9), target 10–50"
-msgstr "6 raqam (1–9), maqsad 10–50"
+msgid "4 numbers (1–9), target 10–50"
+msgstr "4 raqam (1–9), maqsad 10–50"
 
 #: games/templates/games/target_number.html
 msgid "4 numbers (1–15) + 2 special, target 50–200"

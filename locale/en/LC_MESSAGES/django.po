@@ -608,7 +608,7 @@ msgid "Start a New Game"
 msgstr ""
 
 #: games/templates/games/target_number.html
-msgid "6 numbers (1–9), target 10–50"
+msgid "4 numbers (1–9), target 10–50"
 msgstr ""
 
 #: games/templates/games/target_number.html

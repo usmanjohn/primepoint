@@ -115,7 +115,7 @@
                         </label>
                     </div>
                     <div class="mt-2" style="font-size:0.82rem; color:var(--text-muted);" id="tn-diff-desc">
-                        {% trans "6 numbers (1–9), target 10–50" %}
+                        {% trans "4 numbers (1–9), target 10–50" %}
                     </div>
                 </div>
                 <button type="submit" class="btn btn-lg w-100 fw-semibold"
@@ -219,9 +219,9 @@
 
     <!-- Expression input -->
     <div class="mb-2">
-        <input type="text" id="tn-expr"
+        <input type="text" id="tn-expr" readonly
                placeholder="{% trans "Click numbers and operators above…" %}"
-               autocomplete="off" spellcheck="false">
+               autocomplete="off" spellcheck="false" style="cursor:default;">
     </div>
 
     <!-- Distance feedback -->
@@ -265,16 +265,16 @@
 {% block extra_js %}
 <script>
 (function () {
-    const CHECK_URL   = "{% url 'target_number_check' %}";
-    const CSRF_TOKEN  = "{{ csrf_token }}";
-    const START_MS    = {{ start_ms }};
-    const ALREADY_SOLVED = {{ solved|yesno:"true,false" }};
-    const STARTED = {{ started|yesno:"true,false" }};
+    var CHECK_URL      = "{% url 'target_number_check' %}";
+    var CSRF_TOKEN     = "{{ csrf_token }}";
+    var START_MS       = {{ start_ms }};
+    var ALREADY_SOLVED = {{ solved|yesno:"true,false" }};
+    var STARTED        = {{ started|yesno:"true,false" }};
 
+    // ── Difficulty description switcher (start screen only) ──
     if (!STARTED) {
-        // Difficulty description switcher on start screen
         var diffDescs = {
-            'easy':   "{% trans '6 numbers (1–9), target 10–50' %}",
+            'easy':   "{% trans '4 numbers (1–9), target 10–50' %}",
             'medium': "{% trans '4 numbers (1–15) + 2 special, target 50–200' %}",
             'hard':   "{% trans '4 numbers (1–9) + 2 special, target 100–999' %}",
         };
@@ -282,12 +282,9 @@
             radio.addEventListener('change', function () {
                 var desc = document.getElementById('tn-diff-desc');
                 if (desc) desc.textContent = diffDescs[radio.value] || '';
-                // Visually mark selected button
-                document.querySelectorAll('.tn-diff-btn').forEach(function (btn) {
-                    btn.style.outline = '';
-                });
-                var btn = document.querySelector('.tn-diff-btn[data-value="' + radio.value + '"]');
-                if (btn) btn.style.outline = '3px solid #1f6feb';
+                document.querySelectorAll('.tn-diff-btn').forEach(function (b) { b.style.outline = ''; });
+                var sel = document.querySelector('.tn-diff-btn[data-value="' + radio.value + '"]');
+                if (sel) sel.style.outline = '3px solid #1f6feb';
             });
         });
         return;
@@ -304,46 +301,46 @@
     }
     if (timerEl) {
         timerInterval = setInterval(function () {
-            var elapsed = Math.floor((Date.now() - START_MS) / 1000);
-            timerEl.textContent = fmtTime(elapsed);
+            timerEl.textContent = fmtTime(Math.floor((Date.now() - START_MS) / 1000));
         }, 1000);
     }
 
-    // ── State ──
-    var expr = '';
+    // ── DOM refs ──
     var exprInput  = document.getElementById('tn-expr');
     var distDiv    = document.getElementById('tn-distance');
     var attDisplay = document.getElementById('tn-attempts-display');
     var celebEl    = document.getElementById('tn-celebration');
     var celDetail  = document.getElementById('tn-cel-detail');
 
-    function updateDisplay() {
-        if (exprInput) exprInput.value = expr;
+    // ── Action stack ──
+    // Each entry: {type:'tile', tileIndex:N, chars:'25'} or {type:'op', chars:'+'}
+    // tile graying is based on tileIndex so duplicate values never interfere.
+    var stack = [];
+
+    function currentExpr() {
+        return stack.map(function (a) { return a.chars; }).join('');
     }
 
-    function syncTileUsed() {
-        // Count how many times each numeric value appears in current expr
-        var counts = {};
-        var matches = expr.match(/\d+/g) || [];
-        for (var i = 0; i < matches.length; i++) {
-            var v = parseInt(matches[i], 10);
-            counts[v] = (counts[v] || 0) + 1;
-        }
-        // Walk tiles and mark used from left to right
-        var remaining = JSON.parse(JSON.stringify(counts));
+    function applyTileState() {
+        var usedSet = {};
+        stack.forEach(function (a) {
+            if (a.type === 'tile') usedSet[a.tileIndex] = true;
+        });
         document.querySelectorAll('.tn-tile').forEach(function (tile) {
-            var v = parseInt(tile.dataset.value, 10);
-            if (remaining[v] > 0) {
+            if (usedSet[tile.dataset.index]) {
                 tile.classList.add('tn-used');
-                remaining[v]--;
             } else {
                 tile.classList.remove('tn-used');
             }
         });
     }
 
+    function updateDisplay() {
+        if (exprInput) exprInput.value = currentExpr();
+    }
+
     function clearFeedback() {
-        if (exprInput) { exprInput.classList.remove('tn-correct', 'tn-wrong'); }
+        if (exprInput) exprInput.classList.remove('tn-correct', 'tn-wrong');
         if (distDiv)   { distDiv.textContent = ''; distDiv.style.color = ''; }
     }
 
@@ -351,8 +348,8 @@
     document.querySelectorAll('.tn-tile').forEach(function (tile) {
         tile.addEventListener('click', function () {
             if (tile.classList.contains('tn-used')) return;
-            expr += tile.dataset.value;
-            syncTileUsed();
+            stack.push({ type: 'tile', tileIndex: tile.dataset.index, chars: tile.dataset.value });
+            applyTileState();
             updateDisplay();
             clearFeedback();
         });
@@ -361,18 +358,18 @@
     // ── Op button clicks ──
     document.querySelectorAll('.tn-op[data-op]').forEach(function (btn) {
         btn.addEventListener('click', function () {
-            expr += btn.dataset.op;
+            stack.push({ type: 'op', chars: btn.dataset.op });
             updateDisplay();
             clearFeedback();
         });
     });
 
-    // ── Backspace ──
+    // ── Backspace — pops one action from the stack ──
     var bsBtn = document.getElementById('tn-backspace');
     if (bsBtn) bsBtn.addEventListener('click', function () {
-        if (!expr.length) return;
-        expr = expr.slice(0, -1);
-        syncTileUsed();
+        if (!stack.length) return;
+        stack.pop();
+        applyTileState();
         updateDisplay();
         clearFeedback();
     });
@@ -380,37 +377,24 @@
     // ── Clear ──
     var clearBtn = document.getElementById('tn-clear');
     if (clearBtn) clearBtn.addEventListener('click', function () {
-        expr = '';
-        document.querySelectorAll('.tn-tile').forEach(function (t) { t.classList.remove('tn-used'); });
+        stack = [];
+        applyTileState();
         updateDisplay();
         clearFeedback();
     });
-
-    // Allow typing directly into the input
-    if (exprInput) {
-        exprInput.removeAttribute('readonly');
-        exprInput.addEventListener('input', function () {
-            expr = exprInput.value;
-            syncTileUsed();
-            clearFeedback();
-        });
-        exprInput.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter') { e.preventDefault(); doCheck(); }
-        });
-    }
 
     // ── AJAX check ──
     var submitBtn = document.getElementById('tn-submit');
     if (submitBtn) submitBtn.addEventListener('click', doCheck);
 
     function doCheck() {
-        var currentExpr = exprInput ? exprInput.value.trim() : expr.trim();
-        if (!currentExpr) return;
+        var expr = currentExpr().trim();
+        if (!expr) return;
 
         fetch(CHECK_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'X-CSRFToken': CSRF_TOKEN },
-            body: JSON.stringify({ expression: currentExpr }),
+            body: JSON.stringify({ expression: expr }),
         })
         .then(function (r) { return r.json(); })
         .then(function (data) {
@@ -430,9 +414,7 @@
                     celDetail.textContent = "{% trans 'Time' %}: " + fmtTime(data.elapsed)
                         + " · {% trans 'Attempts' %}: " + data.attempts;
                 }
-                setTimeout(function () {
-                    if (celebEl) celebEl.classList.add('show');
-                }, 500);
+                setTimeout(function () { if (celebEl) celebEl.classList.add('show'); }, 500);
             } else {
                 if (exprInput) exprInput.classList.add('tn-wrong');
                 if (distDiv) {

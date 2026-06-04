@@ -1384,7 +1384,7 @@ def wordsearch_play(request, pk):
 # ---------------------------------------------------------------------------
 
 _TN_DIFFICULTY = {
-    'easy':   {'small': (1, 9),   'large': [],                'small_count': 6, 'large_count': 0, 'target_range': (10, 50)},
+    'easy':   {'small': (1, 9),   'large': [],                'small_count': 4, 'large_count': 0, 'target_range': (10, 50)},
     'medium': {'small': (1, 15),  'large': [10, 25, 50],      'small_count': 4, 'large_count': 2, 'target_range': (50, 200)},
     'hard':   {'small': (1, 9),   'large': [25, 50, 75, 100], 'small_count': 4, 'large_count': 2, 'target_range': (100, 999)},
 }
