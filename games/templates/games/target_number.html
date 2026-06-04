@@ -400,12 +400,6 @@
         .then(function (data) {
             if (attDisplay && data.attempts !== undefined) attDisplay.textContent = data.attempts;
 
-            if (data.error && !data.hasOwnProperty('correct')) {
-                if (distDiv) { distDiv.style.color = '#f85149'; distDiv.textContent = data.error; }
-                if (exprInput) exprInput.classList.add('tn-wrong');
-                return;
-            }
-
             if (data.correct) {
                 if (exprInput) exprInput.classList.add('tn-correct');
                 if (distDiv)   { distDiv.style.color = '#3fb950'; distDiv.textContent = "{% trans 'Exactly right!' %}"; }
@@ -415,6 +409,9 @@
                         + " · {% trans 'Attempts' %}: " + data.attempts;
                 }
                 setTimeout(function () { if (celebEl) celebEl.classList.add('show'); }, 500);
+            } else if (data.result === null || data.result === undefined) {
+                if (exprInput) exprInput.classList.add('tn-wrong');
+                if (distDiv) { distDiv.style.color = '#f85149'; distDiv.textContent = data.error || "{% trans 'Invalid expression' %}"; }
             } else {
                 if (exprInput) exprInput.classList.add('tn-wrong');
                 if (distDiv) {

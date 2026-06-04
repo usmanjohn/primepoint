@@ -1506,7 +1506,7 @@ def target_number_check(request):
     if not expression:
         return JsonResponse({'error': 'Empty expression'}, status=400)
 
-    safe_expr = expression.replace('×', '*').replace('÷', '/')
+    safe_expr = expression.replace('×', '*').replace('÷', '/').replace('−', '-')
 
     try:
         tree = ast.parse(safe_expr, mode='eval')
