@@ -1,16 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
+from django.utils.translation import gettext_lazy as _
 from django_ckeditor_5.fields import CKEditor5Field
 
 
 SKILL_CHOICES = [
-    ('reading',   'Reading'),
-    ('writing',   'Writing'),
-    ('listening', 'Listening'),
-    ('speaking',  'Speaking'),
-    ('vocab',     'Vocabulary'),
-    ('strategy',  'Strategy'),
+    ('reading',   _('Reading')),
+    ('writing',   _('Writing')),
+    ('listening', _('Listening')),
+    ('speaking',  _('Speaking')),
+    ('vocab',     _('Vocabulary')),
+    ('strategy',  _('Strategy')),
 ]
 
 SKILL_ICONS = {
@@ -96,30 +97,32 @@ class Lesson(models.Model):
 class LessonBlock(models.Model):
     """One ordered content block inside a lesson.
 
-    Fields are type-driven and nullable so new block types (writing template,
-    keyword glossary, tip callout) can be added later by extending BLOCK_TYPES,
-    with no schema redesign.
+    Every field is optional, so a single block can hold any mix of: an image
+    (with caption), explanatory rich text, and — if you add choices — a
+    multiple-choice question with an explanation. The template renders whatever
+    is filled in, in this order: image → text → question → explanation. No block
+    "type" to set; just fill the parts you want.
     """
-    BLOCK_TYPES = [
-        ('text',  'Explanation'),
-        ('image', 'Image / screenshot'),
-        ('mcq',   'Multiple choice'),
-    ]
     lesson      = models.ForeignKey(Lesson, on_delete=models.CASCADE, related_name='blocks')
-    block_type  = models.CharField(max_length=20, choices=BLOCK_TYPES, default='text')
     order       = models.PositiveIntegerField(default=0)
+    image       = models.ImageField(upload_to='examprep/blocks/', blank=True, null=True,
+                                    help_text='Optional image / book screenshot, shown at the top of the block.')
+    caption     = models.CharField(max_length=300, blank=True,
+                                   help_text='Optional caption under the image.')
     rich_text   = CKEditor5Field(config_name='tutorial', blank=True, null=True,
-                                 help_text='Body text, or the question prompt for MCQ blocks.')
-    image       = models.ImageField(upload_to='examprep/blocks/', blank=True, null=True)
-    caption     = models.CharField(max_length=300, blank=True)
+                                 help_text='Explanation text, or the question prompt if this block has choices.')
     explanation = CKEditor5Field(blank=True, null=True,
-                                 help_text='Shown after the student submits an MCQ answer.')
+                                 help_text='Shown after the student answers. Only used when the block has choices.')
 
     class Meta:
         ordering = ['order', 'id']
 
+    @property
+    def is_question(self):
+        return self.choices.exists()
+
     def __str__(self):
-        return f'{self.lesson.title} — {self.get_block_type_display()} #{self.order}'
+        return f'{self.lesson.title} — block #{self.order}'
 
 
 class BlockChoice(models.Model):

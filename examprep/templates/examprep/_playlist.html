@@ -1,0 +1,16 @@
+{% load i18n %}
+<ol class="list-group list-group-flush list-group-numbered mb-0">
+    {% for item in siblings %}
+    <li class="list-group-item d-flex align-items-center gap-2
+               {% if item.id == lesson.id %}active{% endif %}">
+        {% if item.id == lesson.id %}
+        <span class="flex-grow-1">{{ item.title }}</span>
+        <i class="bi bi-play-fill flex-shrink-0"></i>
+        {% else %}
+        <a href="{% url 'examprep_lesson' item.track.slug item.skill item.slug %}"
+           class="flex-grow-1 text-decoration-none stretched-link">{{ item.title }}</a>
+        {% if not item.is_published %}<span class="badge text-bg-warning flex-shrink-0">{% trans "Draft" %}</span>{% endif %}
+        {% endif %}
+    </li>
+    {% endfor %}
+</ol>

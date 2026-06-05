@@ -18,8 +18,8 @@ class ExamTrackAdmin(admin.ModelAdmin):
 class LessonBlockInline(admin.StackedInline):
     model  = LessonBlock
     extra  = 1
-    fields = ['order', 'block_type', 'rich_text', 'image', 'caption', 'explanation']
-    show_change_link = True   # open the block to edit its MCQ choices
+    fields = ['order', 'image', 'caption', 'rich_text', 'explanation']
+    show_change_link = True   # open the block to add multiple-choice options
 
 
 @admin.register(Lesson)
@@ -41,7 +41,7 @@ class BlockChoiceInline(admin.TabularInline):
 
 @admin.register(LessonBlock)
 class LessonBlockAdmin(admin.ModelAdmin):
-    list_display  = ['lesson', 'block_type', 'order']
-    list_filter   = ['block_type', 'lesson__track']
+    list_display  = ['lesson', 'order', 'caption']
+    list_filter   = ['lesson__track', 'lesson__skill']
     search_fields = ['lesson__title', 'caption']
     inlines       = [BlockChoiceInline]

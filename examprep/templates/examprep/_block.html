@@ -1,0 +1,62 @@
+{% load i18n %}
+{% comment %}
+  Renders whatever the block contains, in order:
+  image (+caption) → rich text → question choices → explanation (after submit).
+{% endcomment %}
+<div class="examprep-block">
+
+    {% if block.image %}
+    <figure class="mb-3">
+        <img src="{{ block.image.url }}" class="img-fluid rounded shadow-sm"
+             alt="{{ block.caption|default:_('Lesson image') }}">
+        {% if block.caption %}
+        <figcaption class="text-secondary small mt-2">{{ block.caption }}</figcaption>
+        {% endif %}
+    </figure>
+    {% endif %}
+
+    {% if block.rich_text %}
+    <div class="ck-content {% if block.is_question %}fw-medium mb-3{% endif %}">{{ block.rich_text|safe }}</div>
+    {% endif %}
+
+    {% if block.is_question %}
+    <div class="d-grid gap-2">
+        {% for choice in block.choices.all %}
+        {% comment %} After submit: green = correct answer, red = wrongly picked. {% endcomment %}
+        <label class="examprep-choice border rounded p-2 px-3 d-flex align-items-center gap-2
+            {% if submitted %}
+                {% if choice.is_correct %}border-success bg-success-subtle
+                {% elif choice.was_selected %}border-danger bg-danger-subtle{% endif %}
+            {% endif %}">
+            <input type="radio" class="form-check-input mt-0 flex-shrink-0"
+                   name="mcq_{{ block.id }}" value="{{ choice.id }}"
+                   {% if choice.was_selected %}checked{% endif %}>
+            <span class="flex-grow-1">{{ choice.text }}</span>
+            {% if submitted %}
+                {% if choice.is_correct %}
+                    <i class="bi bi-check-circle-fill text-success flex-shrink-0"></i>
+                {% elif choice.was_selected %}
+                    <i class="bi bi-x-circle-fill text-danger flex-shrink-0"></i>
+                {% endif %}
+            {% endif %}
+        </label>
+        {% endfor %}
+    </div>
+
+    {% if submitted %}
+    <div class="mt-3">
+        {% if block.is_correct %}
+        <p class="text-success fw-semibold mb-2"><i class="bi bi-check2 me-1"></i>{% trans "Correct!" %}</p>
+        {% elif block.answered %}
+        <p class="text-danger fw-semibold mb-2"><i class="bi bi-x me-1"></i>{% trans "Not quite." %}</p>
+        {% else %}
+        <p class="text-secondary fw-semibold mb-2"><i class="bi bi-dash-circle me-1"></i>{% trans "No answer selected." %}</p>
+        {% endif %}
+        {% if block.explanation %}
+        <div class="ck-content small text-secondary border-start ps-3">{{ block.explanation|safe }}</div>
+        {% endif %}
+    </div>
+    {% endif %}
+    {% endif %}
+
+</div>

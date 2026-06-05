@@ -11,46 +11,85 @@
     <ol class="breadcrumb small mb-0">
         <li class="breadcrumb-item"><a href="{% url 'examprep_home' %}">{% trans "Exam Prep" %}</a></li>
         <li class="breadcrumb-item"><a href="{% url 'examprep_track' lesson.track.slug %}">{{ lesson.track.name }}</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'examprep_skill' lesson.track.slug skill %}">{{ skill_label }}</a></li>
         <li class="breadcrumb-item active" aria-current="page">{{ lesson.title }}</li>
     </ol>
 </nav>
 
-<div class="mb-4">
-    <h1 class="page-title mb-1">{{ lesson.title }}</h1>
-    <p class="page-subtitle mb-0">
-        <i class="bi {{ lesson.skill_icon }} me-1"></i>{{ lesson.get_skill_display }}
-    </p>
-</div>
+<div class="row g-4">
+    <!-- ── Main content ─────────────────────────────────────────── -->
+    <div class="col-12 col-lg-8 order-lg-1">
 
-{% if submitted %}
-<div class="alert alert-info d-flex align-items-center gap-2" role="alert">
-    <i class="bi bi-check2-circle"></i>
-    <span>{% trans "Answers checked. Correct answers and explanations are shown below." %}</span>
-</div>
-{% endif %}
+        <!-- Mobile playlist (native, no JS) -->
+        <details class="d-lg-none mb-3 border rounded p-2 px-3">
+            <summary class="fw-semibold">
+                <i class="bi {{ skill_icon }} me-1"></i>{{ skill_label }}
+                <span class="text-secondary">· {{ current_no }}/{{ total_no }}</span>
+            </summary>
+            {% include 'examprep/_playlist.html' %}
+        </details>
 
-<form method="post" class="examprep-lesson" style="max-width:760px;">
-    {% csrf_token %}
+        <div class="d-flex align-items-baseline justify-content-between mb-1">
+            <h1 class="page-title mb-0">{{ lesson.title }}</h1>
+        </div>
+        <p class="page-subtitle mb-4">
+            <i class="bi {{ skill_icon }} me-1"></i>{{ skill_label }}
+            · {% blocktrans %}Lesson {{ current_no }} of {{ total_no }}{% endblocktrans %}
+        </p>
 
-    {% for block in blocks %}
-    <div class="mb-4">
-        {% if block.block_type == 'text' %}
-            {% include 'examprep/_block_text.html' with block=block %}
-        {% elif block.block_type == 'image' %}
-            {% include 'examprep/_block_image.html' with block=block %}
-        {% elif block.block_type == 'mcq' %}
-            {% include 'examprep/_block_mcq.html' with block=block submitted=submitted %}
+        {% if submitted %}
+        <div class="alert alert-info d-flex align-items-center gap-2" role="alert">
+            <i class="bi bi-check2-circle"></i>
+            <span>{% trans "Answers checked. Correct answers and explanations are shown below." %}</span>
+        </div>
         {% endif %}
-    </div>
-    {% endfor %}
 
-    {% if has_mcq %}
-    <div class="d-grid d-sm-block">
-        <button type="submit" class="btn btn-primary">
-            <i class="bi bi-check2-square me-1"></i>{% trans "Check answers" %}
-        </button>
+        <form method="post" class="examprep-lesson">
+            {% csrf_token %}
+            {% for block in blocks %}
+            <div class="mb-4">{% include 'examprep/_block.html' with block=block submitted=submitted %}</div>
+            {% endfor %}
+
+            {% if has_question %}
+            <div class="d-grid d-sm-block mb-4">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-check2-square me-1"></i>{% trans "Check answers" %}
+                </button>
+            </div>
+            {% endif %}
+        </form>
+
+        <!-- ── Prev / Next navigation ───────────────────────────── -->
+        <div class="d-flex justify-content-between gap-2 border-top pt-3">
+            {% if prev_lesson %}
+            <a href="{% url 'examprep_lesson' lesson.track.slug skill prev_lesson.slug %}"
+               class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left me-1"></i>{% trans "Previous" %}
+            </a>
+            {% else %}<span></span>{% endif %}
+
+            {% if next_lesson %}
+            <a href="{% url 'examprep_lesson' lesson.track.slug skill next_lesson.slug %}"
+               class="btn btn-primary ms-auto">
+                {% trans "Next" %}<i class="bi bi-arrow-right ms-1"></i>
+            </a>
+            {% else %}
+            <a href="{% url 'examprep_track' lesson.track.slug %}" class="btn btn-success ms-auto">
+                <i class="bi bi-check2-all me-1"></i>{% trans "Finish" %}
+            </a>
+            {% endif %}
+        </div>
     </div>
-    {% endif %}
-</form>
+
+    <!-- ── Desktop playlist sidebar ─────────────────────────────── -->
+    <div class="col-lg-4 order-lg-2 d-none d-lg-block">
+        <div class="card border-0 shadow-sm" style="position:sticky;top:1rem;">
+            <div class="card-header bg-transparent fw-semibold">
+                <i class="bi {{ skill_icon }} me-1"></i>{{ skill_label }}
+            </div>
+            {% include 'examprep/_playlist.html' %}
+        </div>
+    </div>
+</div>
 
 {% endblock %}

@@ -3411,7 +3411,7 @@ msgstr ""
 
 #: tutorial/templates/tutorial/tutorial_detail.html:284
 msgid "Next"
-msgstr ""
+msgstr "Keyingi"
 
 #: tutorial/templates/tutorial/tutorial_detail.html:289
 msgid "Completed"
@@ -3738,7 +3738,47 @@ msgstr "Unchalik emas."
 msgid "No answer selected."
 msgstr "Javob tanlanmadi."
 
-#: examprep/templates/examprep/_block_image.html
+#: examprep/templates/examprep/_block.html
 msgid "Lesson image"
 msgstr "Dars rasmi"
+
+#: examprep/models.py
+msgid "Reading"
+msgstr "O'qish"
+
+#: examprep/models.py
+msgid "Writing"
+msgstr "Yozish"
+
+#: examprep/models.py
+msgid "Listening"
+msgstr "Tinglash"
+
+#: examprep/models.py
+msgid "Speaking"
+msgstr "Gapirish"
+
+#: examprep/models.py
+msgid "Vocabulary"
+msgstr "Lug'at"
+
+#: examprep/models.py
+msgid "Strategy"
+msgstr "Strategiya"
+
+#: examprep/templates/examprep/track_detail.html
+msgid "Choose a section to start working through its lessons in order."
+msgstr "Darslarni tartib bilan boshlash uchun bo'limni tanlang."
+
+#: examprep/templates/examprep/lesson_detail.html
+msgid "Lesson %(current_no)s of %(total_no)s"
+msgstr "%(current_no)s-dars, jami %(total_no)s"
+
+#: examprep/templates/examprep/lesson_detail.html
+msgid "Previous"
+msgstr "Oldingi"
+
+#: examprep/templates/examprep/lesson_detail.html
+msgid "Finish"
+msgstr "Yakunlash"
 
