@@ -1,0 +1,9 @@
+{% load i18n %}
+<figure class="examprep-block examprep-block--image mb-0">
+    {% if block.image %}
+    <img src="{{ block.image.url }}" class="img-fluid rounded shadow-sm" alt="{{ block.caption|default:_('Lesson image') }}">
+    {% endif %}
+    {% if block.caption %}
+    <figcaption class="text-secondary small mt-2">{{ block.caption }}</figcaption>
+    {% endif %}
+</figure>

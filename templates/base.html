@@ -135,6 +135,11 @@
                 <span class="nav-label">{% trans "Exams" %}</span>
             </a>
 
+            <a href="{% url 'examprep_home' %}" class="nav-link {% block nav_examprep %}{% endblock %}">
+                <i class="bi bi-journal-bookmark"></i>
+                <span class="nav-label">{% trans "Exam Prep" %}</span>
+            </a>
+
             <span class="nav-section">{% trans "Support" %}</span>
 
             <a href="{% url 'about' %}" class="nav-link {% block nav_about %}{% endblock %}">

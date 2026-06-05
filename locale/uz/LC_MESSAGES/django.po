@@ -3694,3 +3694,51 @@ msgstr "Maqsaddan farq"
 msgid "Network error — try again."
 msgstr "Tarmoq xatosi — qayta urinib ko'ring."
 
+#: examprep/templates/examprep/home.html templates/base.html
+msgid "Exam Prep"
+msgstr "Imtihonga tayyorgarlik"
+
+#: examprep/templates/examprep/home.html
+msgid "Learn how to approach IELTS, TOPIK, GMAT, SAT and more — step by step."
+msgstr ""
+"IELTS, TOPIK, GMAT, SAT va boshqa imtihonlarni qanday yechishni "
+"bosqichma-bosqich o'rganing."
+
+#: examprep/templates/examprep/home.html
+#, python-format
+msgid "%(counter)s lesson"
+msgid_plural "%(counter)s lessons"
+msgstr[0] "%(counter)s dars"
+
+#: examprep/templates/examprep/home.html
+msgid "No exam tracks are available yet. Check back soon."
+msgstr "Hozircha imtihon yo'nalishlari yo'q. Tez orada qayta tekshiring."
+
+#: examprep/templates/examprep/track_detail.html
+msgid "No lessons here yet."
+msgstr "Bu yerda hali darslar yo'q."
+
+#: examprep/templates/examprep/lesson_detail.html
+msgid "Answers checked. Correct answers and explanations are shown below."
+msgstr "Javoblar tekshirildi. To'g'ri javoblar va izohlar quyida ko'rsatilgan."
+
+#: examprep/templates/examprep/lesson_detail.html
+msgid "Check answers"
+msgstr "Javoblarni tekshirish"
+
+#: examprep/templates/examprep/_block_mcq.html
+msgid "Correct!"
+msgstr "To'g'ri!"
+
+#: examprep/templates/examprep/_block_mcq.html
+msgid "Not quite."
+msgstr "Unchalik emas."
+
+#: examprep/templates/examprep/_block_mcq.html
+msgid "No answer selected."
+msgstr "Javob tanlanmadi."
+
+#: examprep/templates/examprep/_block_image.html
+msgid "Lesson image"
+msgstr "Dars rasmi"
+

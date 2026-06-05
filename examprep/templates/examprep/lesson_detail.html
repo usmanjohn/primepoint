@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+{% block nav_examprep %}active{% endblock %}
+{% block mob_nav_examprep %}active{% endblock %}
+{% block page_name %}{{ lesson.title }}{% endblock %}
+{% block title %}{{ lesson.title }} — {% trans "Exam Prep" %}{% endblock %}
+
+{% block content %}
+
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb small mb-0">
+        <li class="breadcrumb-item"><a href="{% url 'examprep_home' %}">{% trans "Exam Prep" %}</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'examprep_track' lesson.track.slug %}">{{ lesson.track.name }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ lesson.title }}</li>
+    </ol>
+</nav>
+
+<div class="mb-4">
+    <h1 class="page-title mb-1">{{ lesson.title }}</h1>
+    <p class="page-subtitle mb-0">
+        <i class="bi {{ lesson.skill_icon }} me-1"></i>{{ lesson.get_skill_display }}
+    </p>
+</div>
+
+{% if submitted %}
+<div class="alert alert-info d-flex align-items-center gap-2" role="alert">
+    <i class="bi bi-check2-circle"></i>
+    <span>{% trans "Answers checked. Correct answers and explanations are shown below." %}</span>
+</div>
+{% endif %}
+
+<form method="post" class="examprep-lesson" style="max-width:760px;">
+    {% csrf_token %}
+
+    {% for block in blocks %}
+    <div class="mb-4">
+        {% if block.block_type == 'text' %}
+            {% include 'examprep/_block_text.html' with block=block %}
+        {% elif block.block_type == 'image' %}
+            {% include 'examprep/_block_image.html' with block=block %}
+        {% elif block.block_type == 'mcq' %}
+            {% include 'examprep/_block_mcq.html' with block=block submitted=submitted %}
+        {% endif %}
+    </div>
+    {% endfor %}
+
+    {% if has_mcq %}
+    <div class="d-grid d-sm-block">
+        <button type="submit" class="btn btn-primary">
+            <i class="bi bi-check2-square me-1"></i>{% trans "Check answers" %}
+        </button>
+    </div>
+    {% endif %}
+</form>
+
+{% endblock %}

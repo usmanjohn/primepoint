@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+{% block nav_examprep %}active{% endblock %}
+{% block mob_nav_examprep %}active{% endblock %}
+{% block page_name %}{{ track.name }}{% endblock %}
+{% block title %}{{ track.name }} — {% trans "Exam Prep" %}{% endblock %}
+
+{% block content %}
+
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb small mb-0">
+        <li class="breadcrumb-item"><a href="{% url 'examprep_home' %}">{% trans "Exam Prep" %}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ track.name }}</li>
+    </ol>
+</nav>
+
+<div class="d-flex align-items-center gap-3 mb-4">
+    <span class="d-inline-flex align-items-center justify-content-center rounded-3 flex-shrink-0"
+          style="width:48px;height:48px;background:{{ track.color }}1a;color:{{ track.color }};">
+        <i class="bi {{ track.icon }} fs-4"></i>
+    </span>
+    <div>
+        <h1 class="page-title mb-0">{{ track.name }}</h1>
+        {% if track.summary %}<p class="page-subtitle mb-0">{{ track.summary }}</p>{% endif %}
+    </div>
+</div>
+
+{% if grouped %}
+    {% for group in grouped %}
+    <section class="mb-4">
+        <h2 class="h6 text-uppercase text-secondary fw-bold mb-3">
+            <i class="bi {{ group.icon }} me-1"></i>{{ group.label }}
+        </h2>
+        <div class="row g-3">
+            {% for lesson in group.lessons %}
+            <div class="col-12 col-sm-6 col-lg-4">
+                <a href="{% url 'examprep_lesson' track.slug lesson.slug %}"
+                   class="card h-100 text-decoration-none border-0 shadow-sm">
+                    {% if lesson.thumbnail %}
+                    <img src="{{ lesson.thumbnail.url }}" class="card-img-top" alt="{{ lesson.title }}"
+                         style="height:140px;object-fit:cover;">
+                    {% endif %}
+                    <div class="card-body">
+                        <h3 class="h6 mb-1">{{ lesson.title }}</h3>
+                        {% if lesson.summary %}
+                        <p class="text-secondary small mb-0">{{ lesson.summary }}</p>
+                        {% endif %}
+                    </div>
+                    {% if not lesson.is_published %}
+                    <div class="card-footer bg-transparent border-0 pt-0">
+                        <span class="badge text-bg-warning">{% trans "Draft" %}</span>
+                    </div>
+                    {% endif %}
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endfor %}
+{% else %}
+<div class="text-center text-secondary py-5">
+    <i class="bi bi-journal-text fs-1 d-block mb-2"></i>
+    <p class="mb-0">{% trans "No lessons here yet." %}</p>
+</div>
+{% endif %}
+
+{% endblock %}
