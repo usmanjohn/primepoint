@@ -1,2011 +1,2383 @@
-QUESTIONS_chast_21 = [
+QUESTIONS_chast_31 = [
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Извините, у меня нет ___. (брат)</strong></p>',
-        'explanation': '<p><strong>брата</strong> is correct. After "нет" (negation), the noun takes the Genitive case. "Брат" (masculine) becomes "брата". <br><br><em>(<strong>брата</strong> — правильный ответ. После слова «нет» используется родительный падеж. Мужской род принимает окончание -а.)</em></p>',
-        'correct': 'брата',
-        'choices': ['брат', 'брату', 'братом', 'брата']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я каждый день ___ задачи на Python. (решать/решить)</strong></p>',
+        'explanation': '<p><strong>решаю</strong> is correct. "Каждый день" (every day) indicates a regular, repeating action, which requires the Imperfective aspect (Несовершенный вид). <br><br><em>(<strong>решаю</strong> — правильный ответ. Регулярное действие требует несовершенного вида.)</em></p>',
+        'correct': 'решаю',
+        'choices': ['решаю', 'решил', 'решу', 'решаем']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>У него сейчас нет ___. (машина)</strong></p>',
-        'explanation': '<p><strong>машины</strong> is correct. "Машина" (feminine) changes to "машины" in Genitive. <br><br><em>(<strong>машины</strong> — правильный ответ. Женский род на -а меняется на -ы в родительном падеже.)</em></p>',
-        'correct': 'машины',
-        'choices': ['машина', 'машину', 'машине', 'машины']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Вчера я наконец-то ___ эту сложную проблему. (решать/решить)</strong></p>',
+        'explanation': '<p><strong>решил</strong> is correct. "Наконец-то" (finally) indicates a completed action with a result, requiring the Perfective aspect (Совершенный вид). <br><br><em>(<strong>решил</strong> — правильный ответ. Действие завершено, есть результат — нужен совершенный вид.)</em></p>',
+        'correct': 'решил',
+        'choices': ['решал', 'решаю', 'решил', 'решали']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>В офисе нет ___. (интернет)</strong></p>',
-        'explanation': '<p><strong>интернета</strong> is correct. "Интернет" (masculine) adds -а. <br><br><em>(<strong>интернета</strong> — правильный ответ. Мужской род добавляет окончание -а.)</em></p>',
-        'correct': 'интернета',
-        'choices': ['интернет', 'интернету', 'интернетом', 'интернета']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Обычно мы ___ код вместе. (писать/написать)</strong></p>',
+        'explanation': '<p><strong>пишем</strong> is correct. "Обычно" (usually) points to a regular process (Imperfective). <br><br><em>(<strong>пишем</strong> — правильный ответ. Регулярный процесс, несовершенный вид.)</em></p>',
+        'correct': 'пишем',
+        'choices': ['напишем', 'писали', 'написали', 'пишем']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>К сожалению, у нас нет ___. (время)</strong></p>',
-        'explanation': '<p><strong>времени</strong> is correct. "Время" is an exception and becomes "времени" in Genitive. <br><br><em>(<strong>времени</strong> — правильный ответ. Слово-исключение «время» в родительном падеже имеет форму «времени».)</em></p>',
-        'correct': 'времени',
-        'choices': ['время', 'времю', 'временем', 'времени']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Завтра я обязательно ___ этот отчёт. (писать/написать)</strong></p>',
+        'explanation': '<p><strong>напишу</strong> is correct. "Обязательно" + tomorrow points to a promised result in the future (Perfective). <br><br><em>(<strong>напишу</strong> — правильный ответ. Гарантированный результат в будущем, совершенный вид.)</em></p>',
+        'correct': 'напишу',
+        'choices': ['пишу', 'напишу', 'писал', 'буду писать']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>У меня с собой нет ___. (деньги)</strong></p>',
-        'explanation': '<p><strong>денег</strong> is correct. Plural Genitive of "деньги" is "денег". <br><br><em>(<strong>денег</strong> — правильный ответ. Родительный падеж множественного числа от слова «деньги».)</em></p>',
-        'correct': 'денег',
-        'choices': ['деньги', 'денег', 'деньгам', 'деньгами']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Он очень долго ___ техническую документацию. (читать/прочитать)</strong></p>',
+        'explanation': '<p><strong>читал</strong> is correct. "Долго" (for a long time) focuses on the duration/process, requiring Imperfective. <br><br><em>(<strong>читал</strong> — правильный ответ. Акцент на длительности процесса, несовершенный вид.)</em></p>',
+        'correct': 'читал',
+        'choices': ['читал', 'прочитал', 'прочитает', 'читает']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>У тебя нет ___, чтобы подписать документ? (ручка)</strong></p>',
-        'explanation': '<p><strong>ручки</strong> is correct. "Ручка" -> "ручки". After "к", we use "и" instead of "ы". <br><br><em>(<strong>ручки</strong> — правильный ответ. По правилу орфографии после «к» пишется «и».)</em></p>',
-        'correct': 'ручки',
-        'choices': ['ручка', 'ручку', 'ручки', 'ручкой']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Она уже ___ твоё сообщение в Slack. (читать/прочитать)</strong></p>',
+        'explanation': '<p><strong>прочитала</strong> is correct. "Уже" (already) focuses on the completed result (Perfective). <br><br><em>(<strong>прочитала</strong> — правильный ответ. Действие выполнено до конца, есть результат.)</em></p>',
+        'correct': 'прочитала',
+        'choices': ['читала', 'читает', 'прочитала', 'будет читать']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>У нас нет никакой ___. (проблема)</strong></p>',
-        'explanation': '<p><strong>проблемы</strong> is correct. "Проблема" -> "проблемы". <br><br><em>(<strong>проблемы</strong> — правильный ответ. Женский род на -а меняется на -ы.)</em></p>',
-        'correct': 'проблемы',
-        'choices': ['проблема', 'проблему', 'проблемы', 'проблем']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Клиенты часто ___ в поддержку. (звонить/позвонить)</strong></p>',
+        'explanation': '<p><strong>звонят</strong> is correct. "Часто" (often) requires the Imperfective aspect for repeated actions. <br><br><em>(<strong>звонят</strong> — правильный ответ. Повторяющееся действие.)</em></p>',
+        'correct': 'звонят',
+        'choices': ['позвонят', 'звонят', 'позвонили', 'звонили']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Для поездки нет ___. (виза)</strong></p>',
-        'explanation': '<p><strong>визы</strong> is correct. "Виза" -> "визы". <br><br><em>(<strong>визы</strong> — правильный ответ. Окончание -ы в родительном падеже.)</em></p>',
-        'correct': 'визы',
-        'choices': ['виза', 'визу', 'визе', 'визы']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Не волнуйся, я ___ тебе вечером. (звонить/позвонить)</strong></p>',
+        'explanation': '<p><strong>позвоню</strong> is correct. A single intended action in the future requires Perfective. <br><br><em>(<strong>позвоню</strong> — правильный ответ. Однократное действие в будущем, совершенный вид.)</em></p>',
+        'correct': 'позвоню',
+        'choices': ['звоню', 'позвонил', 'буду звонить', 'позвоню']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>У студента сейчас нет ___. (работа)</strong></p>',
-        'explanation': '<p><strong>работы</strong> is correct. "Работа" -> "работы". <br><br><em>(<strong>работы</strong> — правильный ответ. Окончание -ы.)</em></p>',
-        'correct': 'работы',
-        'choices': ['работа', 'работу', 'работы', 'работой']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Менеджер сейчас ___ наш контракт. (проверять/проверить)</strong></p>',
+        'explanation': '<p><strong>проверяет</strong> is correct. "Сейчас" (now) indicates an ongoing process in the present (Imperfective). <br><br><em>(<strong>проверяет</strong> — правильный ответ. Процесс происходит прямо сейчас.)</em></p>',
+        'correct': 'проверяет',
+        'choices': ['проверит', 'проверял', 'проверяет', 'проверил']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>В зале больше нет свободного ___. (место)</strong></p>',
-        'explanation': '<p><strong>места</strong> is correct. Neuter nouns ending in -о change to -а in Genitive. <br><br><em>(<strong>места</strong> — правильный ответ. Средний род на -о меняется на -а.)</em></p>',
-        'correct': 'места',
-        'choices': ['место', 'месту', 'места', 'местом']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Тимлид уже ___ мой код, всё отлично. (проверять/проверить)</strong></p>',
+        'explanation': '<p><strong>проверил</strong> is correct. The action is complete and successful ("всё отлично"), so Perfective is needed. <br><br><em>(<strong>проверил</strong> — правильный ответ. Завершенное действие с результатом.)</em></p>',
+        'correct': 'проверил',
+        'choices': ['проверял', 'проверяет', 'проверил', 'будет проверять']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>В этой комнате нет ___. (окно)</strong></p>',
-        'explanation': '<p><strong>окна</strong> is correct. "Окно" -> "окна". <br><br><em>(<strong>окна</strong> — правильный ответ. Средний род, окончание -а.)</em></p>',
-        'correct': 'окна',
-        'choices': ['окно', 'окне', 'окну', 'окна']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>В холодильнике нет ___. (молоко)</strong></p>',
-        'explanation': '<p><strong>молока</strong> is correct. "Молоко" -> "молока". <br><br><em>(<strong>молока</strong> — правильный ответ. Средний род, окончание -а.)</em></p>',
-        'correct': 'молока',
-        'choices': ['молоко', 'молоку', 'молока', 'молоком']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>В баре нет ___. (пиво)</strong></p>',
-        'explanation': '<p><strong>пива</strong> is correct. "Пиво" -> "пива". <br><br><em>(<strong>пива</strong> — правильный ответ. Средний род, окончание -а.)</em></p>',
-        'correct': 'пива',
-        'choices': ['пиво', 'пиву', 'пива', 'пивом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>У меня нет ___ на этот поезд. (билет)</strong></p>',
-        'explanation': '<p><strong>билета</strong> is correct. "Билет" -> "билета". <br><br><em>(<strong>билета</strong> — правильный ответ. Мужской род добавляет -а.)</em></p>',
-        'correct': 'билета',
-        'choices': ['билет', 'билету', 'билета', 'билетом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>У вас нет ко мне ни одного ___? (вопрос)</strong></p>',
-        'explanation': '<p><strong>вопроса</strong> is correct. "Вопрос" -> "вопроса". <br><br><em>(<strong>вопроса</strong> — правильный ответ. Мужской род, окончание -а.)</em></p>',
-        'correct': 'вопроса',
-        'choices': ['вопрос', 'вопросу', 'вопросом', 'вопроса']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>У системы нет ___ от сервера. (ответ)</strong></p>',
-        'explanation': '<p><strong>ответа</strong> is correct. "Ответ" -> "ответа". <br><br><em>(<strong>ответа</strong> — правильный ответ. Мужской род, окончание -а.)</em></p>',
-        'correct': 'ответа',
-        'choices': ['ответ', 'ответу', 'ответом', 'ответа']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>У клиента нет ___. (паспорт)</strong></p>',
-        'explanation': '<p><strong>паспорта</strong> is correct. "Паспорт" -> "паспорта". <br><br><em>(<strong>паспорта</strong> — правильный ответ. Мужской род, окончание -а.)</em></p>',
-        'correct': 'паспорта',
-        'choices': ['паспорт', 'паспорту', 'паспортом', 'паспорта']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>У меня нет ___ к базе данных. (доступ)</strong></p>',
-        'explanation': '<p><strong>доступа</strong> is correct. "Доступ" -> "доступа". <br><br><em>(<strong>доступа</strong> — правильный ответ. Мужской род, окончание -а.)</em></p>',
-        'correct': 'доступа',
-        'choices': ['доступ', 'доступу', 'доступом', 'доступа']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>У пользователя нет ___. (аккаунт)</strong></p>',
-        'explanation': '<p><strong>аккаунта</strong> is correct. "Аккаунт" -> "аккаунта". <br><br><em>(<strong>аккаунта</strong> — правильный ответ. Мужской род, окончание -а.)</em></p>',
-        'correct': 'аккаунта',
-        'choices': ['аккаунт', 'аккаунту', 'аккаунтом', 'аккаунта']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>У компании нет своего ___. (сервер)</strong></p>',
-        'explanation': '<p><strong>сервера</strong> is correct. "Сервер" -> "сервера". <br><br><em>(<strong>сервера</strong> — правильный ответ. Мужской род, окончание -а.)</em></p>',
-        'correct': 'сервера',
-        'choices': ['сервер', 'серверу', 'сервером', 'сервера']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>В коде нет ни одной ___. (ошибка)</strong></p>',
-        'explanation': '<p><strong>ошибки</strong> is correct. "Ошибка" -> "ошибки". <br><br><em>(<strong>ошибки</strong> — правильный ответ. Женский род, окончание -и после к.)</em></p>',
-        'correct': 'ошибки',
-        'choices': ['ошибка', 'ошибку', 'ошибке', 'ошибки']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Здесь нет ___ данных. (база)</strong></p>',
-        'explanation': '<p><strong>базы</strong> is correct. "База" -> "базы". <br><br><em>(<strong>базы</strong> — правильный ответ. Женский род, окончание -ы.)</em></p>',
-        'correct': 'базы',
-        'choices': ['база', 'базу', 'базе', 'базы']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Сегодня нет ___ в офисе. (директор)</strong></p>',
-        'explanation': '<p><strong>директора</strong> is correct. "Директор" -> "директора". <br><br><em>(<strong>директора</strong> — правильный ответ. Мужской род, одушевленное, окончание -а.)</em></p>',
-        'correct': 'директора',
-        'choices': ['директор', 'директору', 'директором', 'директора']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>На митинге нет ___. (менеджер)</strong></p>',
-        'explanation': '<p><strong>менеджера</strong> is correct. "Менеджер" -> "менеджера". <br><br><em>(<strong>менеджера</strong> — правильный ответ. Мужской род, окончание -а.)</em></p>',
-        'correct': 'менеджера',
-        'choices': ['менеджер', 'менеджеру', 'менеджером', 'менеджера']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>В банке пока нет ни одного ___. (клиент)</strong></p>',
-        'explanation': '<p><strong>клиента</strong> is correct. "Клиент" -> "клиента". <br><br><em>(<strong>клиента</strong> — правильный ответ. Одушевленное существительное мужского рода, окончание -а.)</em></p>',
-        'correct': 'клиента',
-        'choices': ['клиент', 'клиенту', 'клиентом', 'клиента']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>У нас нет нужных ___. (документы)</strong></p>',
-        'explanation': '<p><strong>документов</strong> is correct. Plural Genitive of "документы". <br><br><em>(<strong>документов</strong> — правильный ответ. Родительный падеж множественного числа.)</em></p>',
-        'correct': 'документов',
-        'choices': ['документы', 'документам', 'документами', 'документов']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>На диске нет новых ___. (данные)</strong></p>',
-        'explanation': '<p><strong>данных</strong> is correct. Plural Genitive of "данные". <br><br><em>(<strong>данных</strong> — правильный ответ. Родительный падеж множественного числа.)</em></p>',
-        'correct': 'данных',
-        'choices': ['данные', 'данным', 'данными', 'данных']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>На карте нет ___. (рубли)</strong></p>',
-        'explanation': '<p><strong>рублей</strong> is correct. Plural Genitive of "рубли". <br><br><em>(<strong>рублей</strong> — правильный ответ. Родительный падеж множественного числа.)</em></p>',
-        'correct': 'рублей',
-        'choices': ['рубли', 'рублям', 'рублями', 'рублей']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>У него нет ___. (сестра)</strong></p>',
-        'explanation': '<p><strong>сестры</strong> is correct. "Сестра" -> "сестры". <br><br><em>(<strong>сестры</strong> — правильный ответ. Женский род, окончание -ы.)</em></p>',
-        'correct': 'сестры',
-        'choices': ['сестра', 'сестру', 'сестре', 'сестры']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>К сожалению, у меня нет твоего ___. (номер)</strong></p>',
-        'explanation': '<p><strong>номера</strong> is correct. "Номер" -> "номера". <br><br><em>(<strong>номера</strong> — правильный ответ. Мужской род, окончание -а.)</em></p>',
-        'correct': 'номера',
-        'choices': ['номер', 'номеру', 'номером', 'номера']
-    }
-]
-
-QUESTIONS_chast_22 = [
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Это телефон моего ___. (брат)</strong></p>',
-        'explanation': '<p><strong>брата</strong> is correct. Genitive is used to show possession ("of my brother"). <br><br><em>(<strong>брата</strong> — правильный ответ. Родительный падеж выражает принадлежность.)</em></p>',
-        'correct': 'брата',
-        'choices': ['брат', 'брату', 'брата', 'братом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ждём решения ___. (директор)</strong></p>',
-        'explanation': '<p><strong>директора</strong> is correct. "Decision of the director". <br><br><em>(<strong>директора</strong> — правильный ответ. Принадлежность в родительном падеже.)</em></p>',
-        'correct': 'директора',
-        'choices': ['директор', 'директору', 'директора', 'директором']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я проверяю код нового ___. (программист)</strong></p>',
-        'explanation': '<p><strong>программиста</strong> is correct. "Code of the programmer". <br><br><em>(<strong>программиста</strong> — правильный ответ. Родительный падеж, принадлежность.)</em></p>',
-        'correct': 'программиста',
-        'choices': ['программист', 'программисту', 'программиста', 'программистом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Это главный офис нашей ___. (компания)</strong></p>',
-        'explanation': '<p><strong>компании</strong> is correct. "Office of our company". <br><br><em>(<strong>компании</strong> — правильный ответ. Женский род на -ия меняется на -ии.)</em></p>',
-        'correct': 'компании',
-        'choices': ['компания', 'компанию', 'компании', 'компанией']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>У меня нет прав ___. (администратор)</strong></p>',
-        'explanation': '<p><strong>администратора</strong> is correct. "Rights of the administrator". <br><br><em>(<strong>администратора</strong> — правильный ответ. Родительный падеж.)</em></p>',
-        'correct': 'администратора',
-        'choices': ['администратор', 'администратору', 'администратора', 'администратором']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Где находится адрес ___? (клиент)</strong></p>',
-        'explanation': '<p><strong>клиента</strong> is correct. "Address of the client". <br><br><em>(<strong>клиента</strong> — правильный ответ. Принадлежность в родительном падеже.)</em></p>',
-        'correct': 'клиента',
-        'choices': ['клиент', 'клиенту', 'клиента', 'клиентом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Скажите номер вашей ___. (карта)</strong></p>',
-        'explanation': '<p><strong>карты</strong> is correct. "Number of your card". <br><br><em>(<strong>карты</strong> — правильный ответ. Женский род на -а меняется на -ы.)</em></p>',
-        'correct': 'карты',
-        'choices': ['карта', 'карту', 'карты', 'карте']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мне нравится дизайн этого ___. (сайт)</strong></p>',
-        'explanation': '<p><strong>сайта</strong> is correct. "Design of the website". <br><br><em>(<strong>сайта</strong> — правильный ответ. Мужской род добавляет -а.)</em></p>',
-        'correct': 'сайта',
-        'choices': ['сайт', 'сайту', 'сайта', 'сайтом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Введите имя ___. (пользователь)</strong></p>',
-        'explanation': '<p><strong>пользователя</strong> is correct. "Name of the user". Ends in a soft sign (-ь), so adds -я. <br><br><em>(<strong>пользователя</strong> — правильный ответ. Мужской род на мягкий знак получает окончание -я.)</em></p>',
-        'correct': 'пользователя',
-        'choices': ['пользователь', 'пользователю', 'пользователя', 'пользователем']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Какая цена ___. (билет)</strong></p>',
-        'explanation': '<p><strong>билета</strong> is correct. "Price of the ticket". <br><br><em>(<strong>билета</strong> — правильный ответ. Мужской род добавляет -а.)</em></p>',
-        'correct': 'билета',
-        'choices': ['билет', 'билету', 'билета', 'билетом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я сейчас вышел из ___. (офис)</strong></p>',
-        'explanation': '<p><strong>офиса</strong> is correct. The preposition "из" (from) requires the Genitive case. <br><br><em>(<strong>офиса</strong> — правильный ответ. Предлог «из» требует родительного падежа.)</em></p>',
-        'correct': 'офиса',
-        'choices': ['офис', 'офисе', 'офиса', 'офису']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Она только что пришла из ___. (банк)</strong></p>',
-        'explanation': '<p><strong>банка</strong> is correct. "Из" + Genitive. <br><br><em>(<strong>банка</strong> — правильный ответ. Мужской род с предлогом «из».)</em></p>',
-        'correct': 'банка',
-        'choices': ['банк', 'банке', 'банка', 'банком']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мой коллега приехал из ___. (Москва)</strong></p>',
-        'explanation': '<p><strong>Москвы</strong> is correct. "Москва" -> "Москвы" in Genitive after "из". <br><br><em>(<strong>Москвы</strong> — правильный ответ. Женский род на -а меняется на -ы.)</em></p>',
-        'correct': 'Москвы',
-        'choices': ['Москва', 'Москву', 'Москвой', 'Москвы']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Наш сервер работает из ___. (Россия)</strong></p>',
-        'explanation': '<p><strong>России</strong> is correct. "Россия" -> "России". <br><br><em>(<strong>России</strong> — правильный ответ. Страны на -ия имеют окончание -ии в родительном падеже.)</em></p>',
-        'correct': 'России',
-        'choices': ['Россия', 'Россию', 'Россией', 'России']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы заказали еду из ___. (ресторан)</strong></p>',
-        'explanation': '<p><strong>ресторана</strong> is correct. "Из ресторана" (from the restaurant). <br><br><em>(<strong>ресторана</strong> — правильный ответ. Родительный падеж с предлогом «из».)</em></p>',
-        'correct': 'ресторана',
-        'choices': ['ресторан', 'ресторану', 'ресторана', 'рестораном']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я сегодня работаю из ___. (дом)</strong></p>',
-        'explanation': '<p><strong>дома</strong> is correct. "Из дома" (from home). <br><br><em>(<strong>дома</strong> — правильный ответ. Исключение в ударении, но окончание стандартное -а.)</em></p>',
-        'correct': 'дома',
-        'choices': ['дом', 'дому', 'дома', 'домом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Дети вернулись из ___. (школа)</strong></p>',
-        'explanation': '<p><strong>школы</strong> is correct. "Из школы" (from school). <br><br><em>(<strong>школы</strong> — правильный ответ. Женский род, окончание -ы.)</em></p>',
-        'correct': 'школы',
-        'choices': ['школа', 'школу', 'школе', 'школы']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Он пришёл из ___. (университет)</strong></p>',
-        'explanation': '<p><strong>университета</strong> is correct. "Из университета" (from university). <br><br><em>(<strong>университета</strong> — правильный ответ. Мужской род, окончание -а.)</em></p>',
-        'correct': 'университета',
-        'choices': ['университет', 'университету', 'университета', 'университетом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Она только что вернулась из ___. (отпуск)</strong></p>',
-        'explanation': '<p><strong>отпуска</strong> is correct. "Из отпуска" (from vacation). <br><br><em>(<strong>отпуска</strong> — правильный ответ. Родительный падеж, окончание -а.)</em></p>',
-        'correct': 'отпуска',
-        'choices': ['отпуск', 'отпуску', 'отпуском', 'отпуска']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы выехали из ___. (город)</strong></p>',
-        'explanation': '<p><strong>города</strong> is correct. "Из города" (out of the city). <br><br><em>(<strong>города</strong> — правильный ответ. Родительный падеж с предлогом «из».)</em></p>',
-        'correct': 'города',
-        'choices': ['город', 'городу', 'города', 'городом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Это машина моего ___. (друг)</strong></p>',
-        'explanation': '<p><strong>друга</strong> is correct. Possession in Genitive. <br><br><em>(<strong>друга</strong> — правильный ответ. Принадлежность в родительном падеже.)</em></p>',
-        'correct': 'друга',
-        'choices': ['друг', 'другу', 'другом', 'друга']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Это идея моей ___. (подруга)</strong></p>',
-        'explanation': '<p><strong>подруги</strong> is correct. "Подруга" -> "подруги" (because of spelling rule after г). <br><br><em>(<strong>подруги</strong> — правильный ответ. После «г» пишется «и».)</em></p>',
-        'correct': 'подруги',
-        'choices': ['подруга', 'подругу', 'подруге', 'подруги']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Наш новый клиент из ___. (Америка)</strong></p>',
-        'explanation': '<p><strong>Америки</strong> is correct. "Из" + Genitive. <br><br><em>(<strong>Америки</strong> — правильный ответ. Предлог «из» требует родительного падежа, после «к» пишется «и».)</em></p>',
-        'correct': 'Америки',
-        'choices': ['Америка', 'Америку', 'Америке', 'Америки']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Эти товары импортированы из ___. (Европа)</strong></p>',
-        'explanation': '<p><strong>Европы</strong> is correct. "Из Европы" (from Europe). <br><br><em>(<strong>Европы</strong> — правильный ответ. Женский род, окончание -ы.)</em></p>',
-        'correct': 'Европы',
-        'choices': ['Европа', 'Европу', 'Европой', 'Европы']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы идём пешком из ___. (отель)</strong></p>',
-        'explanation': '<p><strong>отеля</strong> is correct. "Отель" (ends in soft sign) adds -я. <br><br><em>(<strong>отеля</strong> — правильный ответ. Мужской род на мягкий знак получает окончание -я.)</em></p>',
-        'correct': 'отеля',
-        'choices': ['отель', 'отелю', 'отелем', 'отеля']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я принёс тебе кофе из ___. (кафе)</strong></p>',
-        'explanation': '<p><strong>кафе</strong> is correct. "Кафе" is indeclinable and never changes form. <br><br><em>(<strong>кафе</strong> — правильный ответ. Слово «кафе» не склоняется ни в одном падеже.)</em></p>',
-        'correct': 'кафе',
-        'choices': ['кафы', 'кафе', 'кафом', 'кафу']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Пакет из ___. (магазин)</strong></p>',
-        'explanation': '<p><strong>магазина</strong> is correct. "Из магазина" (from the store). <br><br><em>(<strong>магазина</strong> — правильный ответ. Мужской род, окончание -а.)</em></p>',
-        'correct': 'магазина',
-        'choices': ['магазин', 'магазину', 'магазином', 'магазина']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Главный файл этой ___. (система)</strong></p>',
-        'explanation': '<p><strong>системы</strong> is correct. Possession in Genitive. <br><br><em>(<strong>системы</strong> — правильный ответ. Принадлежность, женский род на -ы.)</em></p>',
-        'correct': 'системы',
-        'choices': ['система', 'систему', 'системе', 'системы']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я не помню пароль от ___. (телефон)</strong></p>',
-        'explanation': '<p><strong>телефона</strong> is correct. The preposition "от" also takes Genitive. <br><br><em>(<strong>телефона</strong> — правильный ответ. Предлог «от» требует родительного падежа.)</em></p>',
-        'correct': 'телефона',
-        'choices': ['телефон', 'телефону', 'телефоном', 'телефона']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Где ключи от ___. (машина)</strong></p>',
-        'explanation': '<p><strong>машины</strong> is correct. "От машины" (from the car). <br><br><em>(<strong>машины</strong> — правильный ответ. Родительный падеж после предлога «от».)</em></p>',
-        'correct': 'машины',
-        'choices': ['машина', 'машину', 'машиной', 'машины']
-    }
-]
-
-QUESTIONS_chast_23 = [
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Число 20 по-русски — это ___.</strong></p>',
-        'explanation': '<p><strong>двадцать</strong> is correct. 20 is "двадцать". <br><br><em>(<strong>двадцать</strong> — правильный ответ. Числительное 20.)</em></p>',
-        'correct': 'двадцать',
-        'choices': ['двенадцать', 'двадцать', 'тридцать', 'сорок']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Число 30 по-русски — это ___.</strong></p>',
-        'explanation': '<p><strong>тридцать</strong> is correct. 30 is "тридцать". <br><br><em>(<strong>тридцать</strong> — правильный ответ. Числительное 30.)</em></p>',
-        'correct': 'тридцать',
-        'choices': ['тринадцать', 'сорок', 'тридцать', 'двадцать']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Число 40 по-русски — это ___.</strong></p>',
-        'explanation': '<p><strong>сорок</strong> is correct. 40 is an irregular number "сорок". <br><br><em>(<strong>сорок</strong> — правильный ответ. Числительное 40 является исключением.)</em></p>',
-        'correct': 'сорок',
-        'choices': ['четыредесят', 'сорок', 'четырнадцать', 'шестьдесят']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Число 50 по-русски — это ___.</strong></p>',
-        'explanation': '<p><strong>пятьдесят</strong> is correct. 50 is "пятьдесят". <br><br><em>(<strong>пятьдесят</strong> — правильный ответ. Образовано от пять + десят.)</em></p>',
-        'correct': 'пятьдесят',
-        'choices': ['пятнадцать', 'сорок', 'пятьдесят', 'шестьдесят']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Число 60 по-русски — это ___.</strong></p>',
-        'explanation': '<p><strong>шестьдесят</strong> is correct. 60 is "шестьдесят". <br><br><em>(<strong>шестьдесят</strong> — правильный ответ. Образовано от шесть + десят.)</em></p>',
-        'correct': 'шестьдесят',
-        'choices': ['шестнадцать', 'шестьдесят', 'семьдесят', 'пятьдесят']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Число 70 по-русски — это ___.</strong></p>',
-        'explanation': '<p><strong>семьдесят</strong> is correct. 70 is "семьдесят". <br><br><em>(<strong>семьдесят</strong> — правильный ответ. Образовано от семь + десят.)</em></p>',
-        'correct': 'семьдесят',
-        'choices': ['семнадцать', 'шестьдесят', 'восемьдесят', 'семьдесят']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Число 80 по-русски — это ___.</strong></p>',
-        'explanation': '<p><strong>восемьдесят</strong> is correct. 80 is "восемьдесят". <br><br><em>(<strong>восемьдесят</strong> — правильный ответ. Образовано от восемь + десят.)</em></p>',
-        'correct': 'восемьдесят',
-        'choices': ['девяносто', 'восемнадцать', 'восемьдесят', 'семьдесят']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Число 90 по-русски — это ___.</strong></p>',
-        'explanation': '<p><strong>девяносто</strong> is correct. 90 is an irregular number "девяносто". <br><br><em>(<strong>девяносто</strong> — правильный ответ. Числительное 90 является исключением.)</em></p>',
-        'correct': 'девяносто',
-        'choices': ['девятьдесят', 'девяносто', 'сто', 'восемьдесят']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Число 100 по-русски — это ___.</strong></p>',
-        'explanation': '<p><strong>сто</strong> is correct. 100 is "сто". <br><br><em>(<strong>сто</strong> — правильный ответ. Круглое число 100.)</em></p>',
-        'correct': 'сто',
-        'choices': ['десятьдесят', 'сто', 'тысяча', 'девяносто']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Число 25 по-русски — это ___.</strong></p>',
-        'explanation': '<p><strong>двадцать пять</strong> is correct. 25 combines 20 and 5. <br><br><em>(<strong>двадцать пять</strong> — правильный ответ. Составное числительное 25.)</em></p>',
-        'correct': 'двадцать пять',
-        'choices': ['два пять', 'двадцать пять', 'двадцать пят', 'тридцать пять']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мне 21 ___. (year)</strong></p>',
-        'explanation': '<p><strong>год</strong> is correct. Numbers ending in 1 (except 11) take "год". <br><br><em>(<strong>год</strong> — правильный ответ. Числительные, оканчивающиеся на 1, кроме 11, требуют слова «год».)</em></p>',
-        'correct': 'год',
-        'choices': ['год', 'года', 'лет', 'годов']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Моему брату 22 ___. (years)</strong></p>',
-        'explanation': '<p><strong>года</strong> is correct. Numbers ending in 2, 3, 4 (except 12-14) take "года". <br><br><em>(<strong>года</strong> — правильный ответ. Числительные, оканчивающиеся на 2, 3, 4, требуют слова «года».)</em></p>',
-        'correct': 'года',
-        'choices': ['год', 'года', 'лет', 'годы']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Ей 25 ___. (years)</strong></p>',
-        'explanation': '<p><strong>лет</strong> is correct. Numbers ending in 5-9 and 0 (plus 11-14) take "лет". <br><br><em>(<strong>лет</strong> — правильный ответ. Числительные, оканчивающиеся на 5-0 и 11-14, требуют слова «лет».)</em></p>',
-        'correct': 'лет',
-        'choices': ['год', 'года', 'лет', 'годов']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>В этом месяце 31 ___. (day)</strong></p>',
-        'explanation': '<p><strong>день</strong> is correct. Ends in 1, so the noun is singular nominative. <br><br><em>(<strong>день</strong> — правильный ответ. Число оканчивается на 1, используется именительный падеж единственного числа.)</em></p>',
-        'correct': 'день',
-        'choices': ['дней', 'дня', 'дни', 'день']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Книга стоит 42 ___. (dollar)</strong></p>',
-        'explanation': '<p><strong>доллара</strong> is correct. Ends in 2, so the noun is in Genitive singular. <br><br><em>(<strong>доллара</strong> — правильный ответ. Число оканчивается на 2, используется родительный падеж единственного числа.)</em></p>',
-        'correct': 'доллара',
-        'choices': ['доллар', 'долларов', 'доллары', 'доллара']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>У меня есть 50 ___. (rubles)</strong></p>',
-        'explanation': '<p><strong>рублей</strong> is correct. Ends in 0, so the noun is in Genitive plural. <br><br><em>(<strong>рублей</strong> — правильный ответ. Круглые десятки требуют родительного падежа множественного числа.)</em></p>',
-        'correct': 'рублей',
-        'choices': ['рубль', 'рубля', 'рубли', 'рублей']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Работа выполнена на 100 ___. (percent)</strong></p>',
-        'explanation': '<p><strong>процентов</strong> is correct. Ends in 0, so Genitive plural. <br><br><em>(<strong>процентов</strong> — правильный ответ. 100 требует родительного падежа множественного числа.)</em></p>',
-        'correct': 'процентов',
-        'choices': ['процент', 'процента', 'проценты', 'процентов']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ждал тебя 33 ___. (minutes)</strong></p>',
-        'explanation': '<p><strong>минуты</strong> is correct. Ends in 3, so Genitive singular. "минута" -> "минуты". <br><br><em>(<strong>минуты</strong> — правильный ответ. Число оканчивается на 3, родительный падеж единственного числа.)</em></p>',
-        'correct': 'минуты',
-        'choices': ['минута', 'минут', 'минуты', 'минутами']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Проект занял 45 ___. (hours)</strong></p>',
-        'explanation': '<p><strong>часов</strong> is correct. Ends in 5, so Genitive plural. "час" -> "часов". <br><br><em>(<strong>часов</strong> — правильный ответ. Число оканчивается на 5, родительный падеж множественного числа.)</em></p>',
-        'correct': 'часов',
-        'choices': ['час', 'часа', 'часы', 'часов']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>В одной минуте 60 ___. (seconds)</strong></p>',
-        'explanation': '<p><strong>секунд</strong> is correct. Ends in 0, so Genitive plural. "секунда" -> "секунд". <br><br><em>(<strong>секунд</strong> — правильный ответ. Круглые десятки требуют родительного падежа множественного числа.)</em></p>',
-        'correct': 'секунд',
-        'choices': ['секунда', 'секунды', 'секунд', 'секундам']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Сколько будет 20 + 20?</strong></p>',
-        'explanation': '<p><strong>сорок</strong> is correct. 20 + 20 = 40. <br><br><em>(<strong>сорок</strong> — правильный ответ. 20 плюс 20 равно 40.)</em></p>',
-        'correct': 'сорок',
-        'choices': ['тридцать', 'пятьдесят', 'сорок', 'шестьдесят']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Сколько будет 50 + 50?</strong></p>',
-        'explanation': '<p><strong>сто</strong> is correct. 50 + 50 = 100. <br><br><em>(<strong>сто</strong> — правильный ответ. 50 плюс 50 равно 100.)</em></p>',
-        'correct': 'сто',
-        'choices': ['девяносто', 'сто', 'восемьдесят', 'тысяча']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>В коде найдена 21 ___. (error)</strong></p>',
-        'explanation': '<p><strong>ошибка</strong> is correct. Ends in 1, so the noun is singular nominative. <br><br><em>(<strong>ошибка</strong> — правильный ответ. Оканчивается на 1, именительный падеж единственного числа.)</em></p>',
-        'correct': 'ошибка',
-        'choices': ['ошибок', 'ошибки', 'ошибка', 'ошибку']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я скачал 22 ___. (file)</strong></p>',
-        'explanation': '<p><strong>файла</strong> is correct. Ends in 2, Genitive singular. "файл" -> "файла". <br><br><em>(<strong>файла</strong> — правильный ответ. Оканчивается на 2, родительный падеж единственного числа.)</em></p>',
-        'correct': 'файла',
-        'choices': ['файл', 'файлов', 'файлы', 'файла']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>В компании работают 25 ___. (programmers)</strong></p>',
-        'explanation': '<p><strong>программистов</strong> is correct. Ends in 5, Genitive plural. <br><br><em>(<strong>программистов</strong> — правильный ответ. Оканчивается на 5, родительный падеж множественного числа.)</em></p>',
-        'correct': 'программистов',
-        'choices': ['программист', 'программиста', 'программисты', 'программистов']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Число 21 по-русски — это ___.</strong></p>',
-        'explanation': '<p><strong>двадцать один</strong> is correct. 21 combines 20 and 1. <br><br><em>(<strong>двадцать один</strong> — правильный ответ. Составное числительное 21.)</em></p>',
-        'correct': 'двадцать один',
-        'choices': ['двадцать один', 'два один', 'двенадцать один', 'тридцать один']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Число 42 по-русски — это ___.</strong></p>',
-        'explanation': '<p><strong>сорок два</strong> is correct. 42 combines 40 and 2. <br><br><em>(<strong>сорок два</strong> — правильный ответ. Составное числительное 42.)</em></p>',
-        'correct': 'сорок два',
-        'choices': ['четыре два', 'сорок два', 'сорок две', 'пятьдесят два']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Число 33 по-русски — это ___.</strong></p>',
-        'explanation': '<p><strong>тридцать три</strong> is correct. 33 combines 30 and 3. <br><br><em>(<strong>тридцать три</strong> — правильный ответ. Составное числительное 33.)</em></p>',
-        'correct': 'тридцать три',
-        'choices': ['три три', 'тринадцать три', 'тридцать три', 'сорок три']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Число 99 по-русски — это ___.</strong></p>',
-        'explanation': '<p><strong>девяносто девять</strong> is correct. 99 combines 90 and 9. <br><br><em>(<strong>девяносто девять</strong> — правильный ответ. Составное числительное 99.)</em></p>',
-        'correct': 'девяносто девять',
-        'choices': ['девять девять', 'девяносто девять', 'девятьдесят девять', 'сто девять']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Число 55 по-русски — это ___.</strong></p>',
-        'explanation': '<p><strong>пятьдесят пять</strong> is correct. 55 combines 50 and 5. <br><br><em>(<strong>пятьдесят пять</strong> — правильный ответ. Составное числительное 55.)</em></p>',
-        'correct': 'пятьдесят пять',
-        'choices': ['пять пять', 'пятьдесят пять', 'пятнадцать пять', 'сорок пять']
-    }
-]
-QUESTIONS_chast_24 = [
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я голоден. Пойдём на бизнес-___?</strong></p>',
-        'explanation': '<p><strong>ланч</strong> is correct. "Бизнес-ланч" is a common term for a set business lunch. <br><br><em>(<strong>ланч</strong> — правильный ответ. Популярное выражение для обеда в рабочее время.)</em></p>',
-        'correct': 'ланч',
-        'choices': ['ужин', 'завтрак', 'ланч', 'кофе']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Дайте, пожалуйста, ___. Я хочу посмотреть цены.</strong></p>',
-        'explanation': '<p><strong>меню</strong> is correct. You ask for the menu to see prices. <br><br><em>(<strong>меню</strong> — правильный ответ. Список блюд и цен в ресторане.)</em></p>',
-        'correct': 'меню',
-        'choices': ['счёт', 'меню', 'чек', 'салат']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы всё съели. Принесите, пожалуйста, ___.</strong></p>',
-        'explanation': '<p><strong>счёт</strong> is correct. You ask for the bill/check (счёт) after finishing the meal. <br><br><em>(<strong>счёт</strong> — правильный ответ. Документ для оплаты в кафе.)</em></p>',
-        'correct': 'счёт',
-        'choices': ['меню', 'счёт', 'воду', 'стол']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я не ем мясо. У вас есть ___?</strong></p>',
-        'explanation': '<p><strong>рыба</strong> is correct. "Рыба" means fish. <br><br><em>(<strong>рыба</strong> — правильный ответ. Альтернатива мясу.)</em></p>',
-        'correct': 'рыба',
-        'choices': ['курица', 'говядина', 'рыба', 'свинина']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>На первое я буду ___. (soup)</strong></p>',
-        'explanation': '<p><strong>суп</strong> is correct. Soup is typically eaten as the first course. <br><br><em>(<strong>суп</strong> — правильный ответ. Традиционное первое блюдо.)</em></p>',
-        'correct': 'суп',
-        'choices': ['десерт', 'салат', 'суп', 'чай']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я пью чёрный ___ без сахара. (coffee)</strong></p>',
-        'explanation': '<p><strong>кофе</strong> is correct. "Кофе" means coffee. <br><br><em>(<strong>кофе</strong> — правильный ответ. Популярный утренний напиток.)</em></p>',
-        'correct': 'кофе',
-        'choices': ['чай', 'кофе', 'сок', 'суп']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Дайте бутылку минеральной ___. (water)</strong></p>',
-        'explanation': '<p><strong>воды</strong> is correct. Genitive case of "вода" (water) after "бутылка". <br><br><em>(<strong>воды</strong> — правильный ответ. Родительный падеж от слова «вода».)</em></p>',
-        'correct': 'воды',
-        'choices': ['вода', 'воду', 'воде', 'воды']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Вы будете платить ___ или картой? (cash)</strong></p>',
-        'explanation': '<p><strong>наличными</strong> is correct. Means "by cash". <br><br><em>(<strong>наличными</strong> — правильный ответ. Способ оплаты бумажными деньгами.)</em></p>',
-        'correct': 'наличными',
-        'choices': ['наличные', 'наличными', 'деньги', 'банком']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Какой ___ торт! (sweet/delicious)</strong></p>',
-        'explanation': '<p><strong>вкусный</strong> is correct. Means delicious/tasty. <br><br><em>(<strong>вкусный</strong> — правильный ответ. Оценка вкуса еды.)</em></p>',
-        'correct': 'вкусный',
-        'choices': ['солёный', 'горький', 'вкусный', 'острый']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я не люблю ___, дайте зелёный чай. (black)</strong></p>',
-        'explanation': '<p><strong>чёрный</strong> is correct. Opposing black tea to green tea. <br><br><em>(<strong>чёрный</strong> — правильный ответ. Вид чая.)</em></p>',
-        'correct': 'чёрный',
-        'choices': ['чёрный', 'белый', 'красный', 'жёлтый']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я оставлю официанту ___. (tips)</strong></p>',
-        'explanation': '<p><strong>чаевые</strong> is correct. "Чаевые" means tips. <br><br><em>(<strong>чаевые</strong> — правильный ответ. Деньги, оставляемые за хорошее обслуживание.)</em></p>',
-        'correct': 'чаевые',
-        'choices': ['счёт', 'налоги', 'чаевые', 'зарплату']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>На гарнир я возьму ___. (potatoes)</strong></p>',
-        'explanation': '<p><strong>картошку</strong> is correct. Accusative case of "картошка". <br><br><em>(<strong>картошку</strong> — правильный ответ. Винительный падеж, популярный гарнир.)</em></p>',
-        'correct': 'картошку',
-        'choices': ['картошка', 'картошки', 'картошку', 'картошкой']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>В этом салате очень много ___. (salt)</strong></p>',
-        'explanation': '<p><strong>соли</strong> is correct. Genitive of "соль". <br><br><em>(<strong>соли</strong> — правильный ответ. Родительный падеж после слова «много».)</em></p>',
-        'correct': 'соли',
-        'choices': ['соль', 'соли', 'солью', 'солей']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Пожалуйста, ___ столик на двоих. (book/reserve)</strong></p>',
-        'explanation': '<p><strong>забронируйте</strong> is correct. Means "please reserve". <br><br><em>(<strong>забронируйте</strong> — правильный ответ. Просьба зарезервировать место.)</em></p>',
-        'correct': 'забронируйте',
-        'choices': ['купите', 'забронируйте', 'продайте', 'отдайте']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы заказали ___ в офис, потому что много работы. (pizza)</strong></p>',
-        'explanation': '<p><strong>пиццу</strong> is correct. Accusative case of "пицца". <br><br><em>(<strong>пиццу</strong> — правильный ответ. Винительный падеж слова «пицца».)</em></p>',
-        'correct': 'пиццу',
-        'choices': ['пицца', 'пицце', 'пиццу', 'пиццы']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Принесите ещё один ___, пожалуйста. (glass)</strong></p>',
-        'explanation': '<p><strong>стакан</strong> is correct. Means glass (usually for water or juice). <br><br><em>(<strong>стакан</strong> — правильный ответ. Стеклянная посуда для напитков.)</em></p>',
-        'correct': 'стакан',
-        'choices': ['тарелка', 'вилка', 'стакан', 'нож']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мне нужна ___, чтобы есть суп. (spoon)</strong></p>',
-        'explanation': '<p><strong>ложка</strong> is correct. Means spoon. <br><br><em>(<strong>ложка</strong> — правильный ответ. Столовый прибор для жидкой еды.)</em></p>',
-        'correct': 'ложка',
-        'choices': ['вилка', 'ложка', 'нож', 'тарелка']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я буду есть салат, дайте мне ___. (fork)</strong></p>',
-        'explanation': '<p><strong>вилку</strong> is correct. Accusative of "вилка" (fork). <br><br><em>(<strong>вилку</strong> — правильный ответ. Винительный падеж слова «вилка».)</em></p>',
-        'correct': 'вилку',
-        'choices': ['ложку', 'вилку', 'нож', 'стакан']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Чтобы разрезать стейк, нужен ___. (knife)</strong></p>',
-        'explanation': '<p><strong>нож</strong> is correct. Means knife. <br><br><em>(<strong>нож</strong> — правильный ответ. Прибор для разрезания еды.)</em></p>',
-        'correct': 'нож',
-        'choices': ['вилка', 'ложка', 'нож', 'бокал']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Кофе слишком ___, я не могу его пить. (hot)</strong></p>',
-        'explanation': '<p><strong>горячий</strong> is correct. Matches masculine "кофе". <br><br><em>(<strong>горячий</strong> — правильный ответ. Мужской род, именительный падеж.)</em></p>',
-        'correct': 'горячий',
-        'choices': ['горячая', 'горячее', 'горячий', 'горячие']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Этот десерт очень ___. (sweet)</strong></p>',
-        'explanation': '<p><strong>сладкий</strong> is correct. Means sweet, matches masculine "десерт". <br><br><em>(<strong>сладкий</strong> — правильный ответ. Мужской род, характеристика десерта.)</em></p>',
-        'correct': 'сладкий',
-        'choices': ['солёный', 'острый', 'сладкий', 'кислый']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я люблю ___ еду. (spicy)</strong></p>',
-        'explanation': '<p><strong>острую</strong> is correct. Accusative feminine of "острый" (spicy). <br><br><em>(<strong>острую</strong> — правильный ответ. Винительный падеж, женский род.)</em></p>',
-        'correct': 'острую',
-        'choices': ['острая', 'острую', 'острый', 'острое']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>У вас есть свежий ___? (bread)</strong></p>',
-        'explanation': '<p><strong>хлеб</strong> is correct. Means bread. <br><br><em>(<strong>хлеб</strong> — правильный ответ. Мужской род, именительный/винительный падеж неодушевленного предмета.)</em></p>',
-        'correct': 'хлеб',
-        'choices': ['мясо', 'молоко', 'хлеб', 'вода']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>В обеденный перерыв мы ходим в ___. (canteen/cafeteria)</strong></p>',
-        'explanation': '<p><strong>столовую</strong> is correct. Accusative of "столовая". <br><br><em>(<strong>столовую</strong> — правильный ответ. Винительный падеж слова «столовая».)</em></p>',
-        'correct': 'столовую',
-        'choices': ['столовая', 'столовой', 'столовую', 'столовое']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Девушка, ___! Мы готовы сделать заказ. (Waitress!)</strong></p>',
-        'explanation': '<p><strong>официантка</strong> is correct. Though calling "девушка" is common, referring to the role is "официантка" (waitress). Let\'s use a polite call: "Извините, можно сделать заказ?". Here, let\'s fit the blank: "Девушка, ___!" -> подойдите (come here). But if it\'s a noun: "Извините, позовите ___." -> официанта. Let\'s adjust choices for the blank to represent the person: "Девушка, можно ___?" -> меню. Let\'s use: "Девушка, принесите ___." -> меню. For this specific text: "___, мы готовы сделать заказ" -> Официант. <br><br><em>(<strong>Официант</strong> — правильный ответ. Обращение к работнику ресторана.)</em></p>',
-        'correct': 'Официант',
-        'choices': ['Менеджер', 'Повар', 'Официант', 'Директор']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Дайте мне яблочный ___. (juice)</strong></p>',
-        'explanation': '<p><strong>сок</strong> is correct. Means juice. <br><br><em>(<strong>сок</strong> — правильный ответ. Неодушевленное существительное мужского рода.)</em></p>',
-        'correct': 'сок',
-        'choices': ['суп', 'сок', 'чай', 'кофе']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Что вы будете ___? (to drink)</strong></p>',
-        'explanation': '<p><strong>пить</strong> is correct. Infinitive verb "to drink". <br><br><em>(<strong>пить</strong> — правильный ответ. Глагол в начальной форме.)</em></p>',
-        'correct': 'пить',
-        'choices': ['есть', 'пить', 'спать', 'работать']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я не хочу ___, я сыт. (to eat)</strong></p>',
-        'explanation': '<p><strong>есть</strong> is correct. Infinitive verb "to eat". <br><br><em>(<strong>есть</strong> — правильный ответ. Глагол в начальной форме, антоним к «я сыт».)</em></p>',
-        'correct': 'есть',
-        'choices': ['пить', 'есть', 'платить', 'заказать']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>У вас работает ___, или только самовывоз? (delivery)</strong></p>',
-        'explanation': '<p><strong>доставка</strong> is correct. Means delivery. <br><br><em>(<strong>доставка</strong> — правильный ответ. Услуга привоза еды домой или в офис.)</em></p>',
-        'correct': 'доставка',
-        'choices': ['оплата', 'скидка', 'доставка', 'кухня']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы закажем ___ в ресторане. (table)</strong></p>',
-        'explanation': '<p><strong>столик</strong> is correct. Diminutive of "стол", commonly used for booking in a restaurant. <br><br><em>(<strong>столик</strong> — правильный ответ. Уменьшительно-ласкательная форма, используемая при бронировании.)</em></p>',
-        'correct': 'столик',
-        'choices': ['стул', 'столик', 'диван', 'офис']
-    }
-]
-
-QUESTIONS_chast_25 = [
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я звоню ___. (клиент)</strong></p>',
-        'explanation': '<p><strong>клиенту</strong> is correct. The verb "звонить" requires the Dative case (Кому?). Masculine nouns take -у. <br><br><em>(<strong>клиенту</strong> — правильный ответ. Дательный падеж после глагола «звонить».)</em></p>',
-        'correct': 'клиенту',
-        'choices': ['клиент', 'клиента', 'клиенту', 'клиентом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я отправляю файл ___. (директор)</strong></p>',
-        'explanation': '<p><strong>директору</strong> is correct. "Отправлять" (to send) requires Dative for the recipient. <br><br><em>(<strong>директору</strong> — правильный ответ. Адресат действия стоит в дательном падеже.)</em></p>',
-        'correct': 'директору',
-        'choices': ['директор', 'директора', 'директору', 'директором']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Он пишет письмо ___. (Анна)</strong></p>',
-        'explanation': '<p><strong>Анне</strong> is correct. Feminine nouns ending in -а take -е in Dative. <br><br><em>(<strong>Анне</strong> — правильный ответ. Женский род на -а меняется на -е в дательном падеже.)</em></p>',
-        'correct': 'Анне',
-        'choices': ['Анна', 'Анну', 'Анне', 'Анной']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы даём доступ ___. (пользователь)</strong></p>',
-        'explanation': '<p><strong>пользователю</strong> is correct. Masculine nouns ending in -ь take -ю in Dative. <br><br><em>(<strong>пользователю</strong> — правильный ответ. Дательный падеж, окончание -ю.)</em></p>',
-        'correct': 'пользователю',
-        'choices': ['пользователь', 'пользователя', 'пользователю', 'пользователем']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Код выдал ошибку ___. (программист)</strong></p>',
-        'explanation': '<p><strong>программисту</strong> is correct. Dative case (to the programmer). <br><br><em>(<strong>программисту</strong> — правильный ответ. Адресат действия, дательный падеж.)</em></p>',
-        'correct': 'программисту',
-        'choices': ['программист', 'программиста', 'программисту', 'программистом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я помогаю ___. (коллега)</strong></p>',
-        'explanation': '<p><strong>коллеге</strong> is correct. "Помогать" (to help) requires Dative. "Коллега" takes -е. <br><br><em>(<strong>коллеге</strong> — правильный ответ. Глагол «помогать» требует дательного падежа.)</em></p>',
-        'correct': 'коллеге',
-        'choices': ['коллега', 'коллегу', 'коллеге', 'коллегой']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Объясни задачу ___. (менеджер)</strong></p>',
-        'explanation': '<p><strong>менеджеру</strong> is correct. "Объяснять" (to explain) requires Dative for the person receiving the explanation. <br><br><em>(<strong>менеджеру</strong> — правильный ответ. Дательный падеж, адресат.)</em></p>',
-        'correct': 'менеджеру',
-        'choices': ['менеджер', 'менеджера', 'менеджеру', 'менеджером']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Передай привет ___. (брат)</strong></p>',
-        'explanation': '<p><strong>брату</strong> is correct. "Передать" (to pass on/give) requires Dative. <br><br><em>(<strong>брату</strong> — правильный ответ. Дательный падеж мужского рода.)</em></p>',
-        'correct': 'брату',
-        'choices': ['брат', 'брата', 'брату', 'братом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ответил на письмо ___. (компания)</strong></p>',
-        'explanation': '<p><strong>компании</strong> is correct. Feminine nouns in -ия take -ии in Dative. <br><br><em>(<strong>компании</strong> — правильный ответ. Существительные на -ия в дательном падеже имеют окончание -ии.)</em></p>',
-        'correct': 'компании',
-        'choices': ['компания', 'компанию', 'компании', 'компанией']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Позвони ___, пожалуйста. (я)</strong></p>',
-        'explanation': '<p><strong>мне</strong> is correct. Dative of pronoun "я". <br><br><em>(<strong>мне</strong> — правильный ответ. Дательный падеж местоимения «я».)</em></p>',
-        'correct': 'мне',
-        'choices': ['я', 'меня', 'мне', 'мной']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ напишу завтра. (ты)</strong></p>',
-        'explanation': '<p><strong>тебе</strong> is correct. Dative of pronoun "ты". <br><br><em>(<strong>тебе</strong> — правильный ответ. Дательный падеж местоимения «ты».)</em></p>',
-        'correct': 'тебе',
-        'choices': ['ты', 'тебя', 'тебе', 'тобой']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы дали ___ новый проект. (он)</strong></p>',
-        'explanation': '<p><strong>ему</strong> is correct. Dative of pronoun "он". <br><br><em>(<strong>ему</strong> — правильный ответ. Дательный падеж местоимения «он».)</em></p>',
-        'correct': 'ему',
-        'choices': ['он', 'его', 'ему', 'им']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я купил ___ цветы. (она)</strong></p>',
-        'explanation': '<p><strong>ей</strong> is correct. Dative of pronoun "она". <br><br><em>(<strong>ей</strong> — правильный ответ. Дательный падеж местоимения «она».)</em></p>',
-        'correct': 'ей',
-        'choices': ['она', 'её', 'ей', 'ней']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Директор всё ___ объяснил. (мы)</strong></p>',
-        'explanation': '<p><strong>нам</strong> is correct. Dative of pronoun "мы". <br><br><em>(<strong>нам</strong> — правильный ответ. Дательный падеж местоимения «мы».)</em></p>',
-        'correct': 'нам',
-        'choices': ['мы', 'нас', 'нам', 'нами']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ отправлю ссылку. (вы)</strong></p>',
-        'explanation': '<p><strong>вам</strong> is correct. Dative of pronoun "вы". <br><br><em>(<strong>вам</strong> — правильный ответ. Дательный падеж местоимения «вы».)</em></p>',
-        'correct': 'вам',
-        'choices': ['вы', 'вас', 'вам', 'вами']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Клиенты просили, и мы ___ помогли. (они)</strong></p>',
-        'explanation': '<p><strong>им</strong> is correct. Dative of pronoun "они". <br><br><em>(<strong>им</strong> — правильный ответ. Дательный падеж местоимения «они».)</em></p>',
-        'correct': 'им',
-        'choices': ['они', 'их', 'им', 'ими']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ ты звонишь? (кто)</strong></p>',
-        'explanation': '<p><strong>Кому</strong> is correct. Dative of question word "кто". <br><br><em>(<strong>Кому</strong> — правильный ответ. Дательный падеж вопросительного слова «кто».)</em></p>',
-        'correct': 'Кому',
-        'choices': ['Кто', 'Кого', 'Кому', 'Кем']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Покажи свой код ___. (тимлид)</strong></p>',
-        'explanation': '<p><strong>тимлиду</strong> is correct. Masculine noun, takes -у. <br><br><em>(<strong>тимлиду</strong> — правильный ответ. Дательный падеж, адресат действия.)</em></p>',
-        'correct': 'тимлиду',
-        'choices': ['тимлид', 'тимлида', 'тимлиду', 'тимлидом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я доверяю своему ___. (опыт)</strong></p>',
-        'explanation': '<p><strong>опыту</strong> is correct. "Доверять" takes Dative. Inanimate noun. <br><br><em>(<strong>опыту</strong> — правильный ответ. Глагол «доверять» требует дательного падежа.)</em></p>',
-        'correct': 'опыту',
-        'choices': ['опыт', 'опыта', 'опыту', 'опытом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Система отправила запрос ___. (сервер)</strong></p>',
-        'explanation': '<p><strong>серверу</strong> is correct. Masculine inanimate in Dative. <br><br><em>(<strong>серверу</strong> — правильный ответ. Дательный падеж.)</em></p>',
-        'correct': 'серверу',
-        'choices': ['сервер', 'сервера', 'серверу', 'сервером']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы подарили цветы ___. (мама)</strong></p>',
-        'explanation': '<p><strong>маме</strong> is correct. Feminine noun takes -е in Dative. <br><br><em>(<strong>маме</strong> — правильный ответ. Адресат подарка в дательном падеже.)</em></p>',
-        'correct': 'маме',
-        'choices': ['мама', 'маму', 'маме', 'мамой']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Сообщите пароль ___. (администратор)</strong></p>',
-        'explanation': '<p><strong>администратору</strong> is correct. Dative case. <br><br><em>(<strong>администратору</strong> — правильный ответ. Сообщить (кому?) — дательный падеж.)</em></p>',
-        'correct': 'администратору',
-        'choices': ['администратор', 'администратора', 'администратору', 'администратором']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Она советует ___ учить Питон. (подруга)</strong></p>',
-        'explanation': '<p><strong>подруге</strong> is correct. "Советовать" (to advise) takes Dative. <br><br><em>(<strong>подруге</strong> — правильный ответ. Глагол «советовать» требует дательного падежа.)</em></p>',
-        'correct': 'подруге',
-        'choices': ['подруга', 'подругу', 'подруге', 'подругой']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Он обещал ___, что всё сделает. (начальник)</strong></p>',
-        'explanation': '<p><strong>начальнику</strong> is correct. "Обещать" (to promise) takes Dative. <br><br><em>(<strong>начальнику</strong> — правильный ответ. Глагол «обещать» требует дательного падежа.)</em></p>',
-        'correct': 'начальнику',
-        'choices': ['начальник', 'начальника', 'начальнику', 'начальником']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Отдай документы ___. (бухгалтер)</strong></p>',
-        'explanation': '<p><strong>бухгалтеру</strong> is correct. "Отдать" (to give back/hand over) takes Dative. <br><br><em>(<strong>бухгалтеру</strong> — правильный ответ. Кому отдать? — Дательный падеж.)</em></p>',
-        'correct': 'бухгалтеру',
-        'choices': ['бухгалтер', 'бухгалтера', 'бухгалтеру', 'бухгалтером']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я рад твоему ___. (успех)</strong></p>',
-        'explanation': '<p><strong>успеху</strong> is correct. The short adjective "рад" (glad) requires the Dative case. <br><br><em>(<strong>успеху</strong> — правильный ответ. Слово «рад» управляет дательным падежом.)</em></p>',
-        'correct': 'успеху',
-        'choices': ['успех', 'успеха', 'успеху', 'успехом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Они идут навстречу ___. (проблемы)</strong></p>',
-        'explanation': '<p><strong>проблемам</strong> is correct. Plural Dative of "проблема". The preposition "навстречу" takes Dative. <br><br><em>(<strong>проблемам</strong> — правильный ответ. Предлог «навстречу» требует дательного падежа, множественное число.)</em></p>',
-        'correct': 'проблемам',
-        'choices': ['проблемы', 'проблем', 'проблемам', 'проблемами']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я верю ___. (он)</strong></p>',
-        'explanation': '<p><strong>ему</strong> is correct. "Верить" (to believe) requires Dative. <br><br><em>(<strong>ему</strong> — правильный ответ. Глагол «верить» требует дательного падежа.)</em></p>',
-        'correct': 'ему',
-        'choices': ['он', 'его', 'ему', 'им']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Спасибо ___ за помощь! (вы)</strong></p>',
-        'explanation': '<p><strong>вам</strong> is correct. "Спасибо" is followed by Dative. <br><br><em>(<strong>вам</strong> — правильный ответ. Благодарность кому-то выражается через дательный падеж.)</em></p>',
-        'correct': 'вам',
-        'choices': ['вы', 'вас', 'вам', 'вами']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Улыбнись ___. (камера)</strong></p>',
-        'explanation': '<p><strong>камере</strong> is correct. "Улыбаться" takes Dative. <br><br><em>(<strong>камере</strong> — правильный ответ. Дательный падеж, женский род.)</em></p>',
-        'correct': 'камере',
-        'choices': ['камера', 'камеру', 'камере', 'камерой']
-    }
-]
-
-QUESTIONS_chast_26 = [
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ 25 лет. (я)</strong></p>',
-        'explanation': '<p><strong>Мне</strong> is correct. Age is expressed using the Dative case of the person. <br><br><em>(<strong>Мне</strong> — правильный ответ. Возраст выражается дательным падежом.)</em></p>',
-        'correct': 'Мне',
-        'choices': ['Я', 'Меня', 'Мне', 'Мной']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Сколько ___ лет? (ты)</strong></p>',
-        'explanation': '<p><strong>тебе</strong> is correct. Dative of "ты". <br><br><em>(<strong>тебе</strong> — правильный ответ. Дательный падеж для указания возраста.)</em></p>',
-        'correct': 'тебе',
-        'choices': ['ты', 'тебя', 'тебе', 'тобой']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ 30 лет. (он)</strong></p>',
-        'explanation': '<p><strong>Ему</strong> is correct. Dative of "он". <br><br><em>(<strong>Ему</strong> — правильный ответ. Дательный падеж местоимения «он».)</em></p>',
-        'correct': 'Ему',
-        'choices': ['Он', 'Его', 'Ему', 'Им']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ 21 год. (она)</strong></p>',
-        'explanation': '<p><strong>Ей</strong> is correct. Dative of "она". <br><br><em>(<strong>Ей</strong> — правильный ответ. Дательный падеж местоимения «она».)</em></p>',
-        'correct': 'Ей',
-        'choices': ['Она', 'Её', 'Ей', 'Ней']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ очень холодно здесь. (мы)</strong></p>',
-        'explanation': '<p><strong>Нам</strong> is correct. Physical states (cold, hot) use Dative. <br><br><em>(<strong>Нам</strong> — правильный ответ. Физическое состояние передается через дательный падеж.)</em></p>',
-        'correct': 'Нам',
-        'choices': ['Мы', 'Нас', 'Нам', 'Нами']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ понятно задание? (вы)</strong></p>',
-        'explanation': '<p><strong>Вам</strong> is correct. Mental states/understanding use Dative. <br><br><em>(<strong>Вам</strong> — правильный ответ. Состояние понимания требует дательного падежа.)</em></p>',
-        'correct': 'Вам',
-        'choices': ['Вы', 'Вас', 'Вам', 'Вами']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>В офисе сломался кондиционер, ___ очень жарко. (они)</strong></p>',
-        'explanation': '<p><strong>им</strong> is correct. Dative of "они". <br><br><em>(<strong>им</strong> — правильный ответ. Дательный падеж местоимения «они».)</em></p>',
-        'correct': 'им',
-        'choices': ['они', 'их', 'им', 'ими']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ нужно закончить проект сегодня. (я)</strong></p>',
-        'explanation': '<p><strong>Мне</strong> is correct. Necessity ("нужно/надо") requires Dative. <br><br><em>(<strong>Мне</strong> — правильный ответ. Выражение необходимости через дательный падеж.)</em></p>',
-        'correct': 'Мне',
-        'choices': ['Я', 'Меня', 'Мне', 'Мной']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ надо учить новые фреймворки. (ты)</strong></p>',
-        'explanation': '<p><strong>Тебе</strong> is correct. "Надо" requires Dative. <br><br><em>(<strong>Тебе</strong> — правильный ответ. Дательный падеж с модальным словом «надо».)</em></p>',
-        'correct': 'Тебе',
-        'choices': ['Ты', 'Тебя', 'Тебе', 'Тобой']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ можно войти? (я)</strong></p>',
-        'explanation': '<p><strong>Мне</strong> is correct. Permission ("можно") requires Dative. <br><br><em>(<strong>Мне</strong> — правильный ответ. Выражение разрешения требует дательного падежа.)</em></p>',
-        'correct': 'Мне',
-        'choices': ['Я', 'Меня', 'Мне', 'Мной']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Без пропуска ___ нельзя входить в серверную. (они)</strong></p>',
-        'explanation': '<p><strong>им</strong> is correct. Prohibition ("нельзя") requires Dative. <br><br><em>(<strong>им</strong> — правильный ответ. Выражение запрета с дательным падежом.)</em></p>',
-        'correct': 'им',
-        'choices': ['они', 'их', 'им', 'ими']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ трудно писать код без документации. (программист)</strong></p>',
-        'explanation': '<p><strong>Программисту</strong> is correct. State ("трудно") requires Dative. <br><br><em>(<strong>Программисту</strong> — правильный ответ. Состояние «трудно» управляет дательным падежом.)</em></p>',
-        'correct': 'Программисту',
-        'choices': ['Программист', 'Программиста', 'Программисту', 'Программистом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Моему ___ 50 лет. (отец)</strong></p>',
-        'explanation': '<p><strong>отцу</strong> is correct. Dative of "отец" (drops "е", adds "у"). <br><br><em>(<strong>отцу</strong> — правильный ответ. Дательный падеж слова «отец».)</em></p>',
-        'correct': 'отцу',
-        'choices': ['отец', 'отца', 'отцу', 'отцом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Моей ___ скучно дома. (сестра)</strong></p>',
-        'explanation': '<p><strong>сестре</strong> is correct. State ("скучно") requires Dative. <br><br><em>(<strong>сестре</strong> — правильный ответ. Состояние скуки передается через дательный падеж.)</em></p>',
-        'correct': 'сестре',
-        'choices': ['сестра', 'сестру', 'сестре', 'сестрой']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Этой ___ уже 10 лет. (компания)</strong></p>',
-        'explanation': '<p><strong>компании</strong> is correct. Age of an entity requires Dative. <br><br><em>(<strong>компании</strong> — правильный ответ. Возраст организации выражается дательным падежом.)</em></p>',
-        'correct': 'компании',
-        'choices': ['компания', 'компанию', 'компании', 'компанией']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Новому ___ всё интересно. (сотрудник)</strong></p>',
-        'explanation': '<p><strong>сотруднику</strong> is correct. State ("интересно") requires Dative. <br><br><em>(<strong>сотруднику</strong> — правильный ответ. Состояние «интересно» управляет дательным падежом.)</em></p>',
-        'correct': 'сотруднику',
-        'choices': ['сотрудник', 'сотрудника', 'сотруднику', 'сотрудником']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ было очень весело на корпоративе. (мы)</strong></p>',
-        'explanation': '<p><strong>Нам</strong> is correct. Past state ("было весело") requires Dative. <br><br><em>(<strong>Нам</strong> — правильный ответ. Дательный падеж для выражения эмоционального состояния.)</em></p>',
-        'correct': 'Нам',
-        'choices': ['Мы', 'Нас', 'Нам', 'Нами']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Сколько лет вашему ___? (проект)</strong></p>',
-        'explanation': '<p><strong>проекту</strong> is correct. Dative case for age. <br><br><em>(<strong>проекту</strong> — правильный ответ. Дательный падеж для указания возраста неодушевленного предмета.)</em></p>',
-        'correct': 'проекту',
-        'choices': ['проект', 'проекта', 'проекту', 'проектом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ страшно потерять данные. (администратор)</strong></p>',
-        'explanation': '<p><strong>Администратору</strong> is correct. State ("страшно") requires Dative. <br><br><em>(<strong>Администратору</strong> — правильный ответ. Состояние страха через дательный падеж.)</em></p>',
-        'correct': 'Администратору',
-        'choices': ['Администратор', 'Администратора', 'Администратору', 'Администратором']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ легко работать с этой базой данных. (я)</strong></p>',
-        'explanation': '<p><strong>Мне</strong> is correct. State ("легко") requires Dative. <br><br><em>(<strong>Мне</strong> — правильный ответ. Состояние «легко» управляет дательным падежом.)</em></p>',
-        'correct': 'Мне',
-        'choices': ['Я', 'Меня', 'Мне', 'Мной']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ плохо. Вызовите врача. (он)</strong></p>',
-        'explanation': '<p><strong>Ему</strong> is correct. Physical state of illness/discomfort uses Dative. <br><br><em>(<strong>Ему</strong> — правильный ответ. Физическое недомогание выражается дательным падежом.)</em></p>',
-        'correct': 'Ему',
-        'choices': ['Он', 'Его', 'Ему', 'Им']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Если ___ нужно, я могу помочь. (вы)</strong></p>',
-        'explanation': '<p><strong>вам</strong> is correct. "Нужно" requires Dative. <br><br><em>(<strong>вам</strong> — правильный ответ. Дательный падеж местоимения «вы» с модальным словом «нужно».)</em></p>',
-        'correct': 'вам',
-        'choices': ['вы', 'вас', 'вам', 'вами']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Твоей ___ будет приятно получить цветы. (девушка)</strong></p>',
-        'explanation': '<p><strong>девушке</strong> is correct. Emotional state ("приятно") uses Dative. <br><br><em>(<strong>девушке</strong> — правильный ответ. Состояние удовольствия через дательный падеж.)</em></p>',
-        'correct': 'девушке',
-        'choices': ['девушка', 'девушку', 'девушке', 'девушкой']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ пора идти на встречу. (мы)</strong></p>',
-        'explanation': '<p><strong>Нам</strong> is correct. The word "пора" (it is time to) requires Dative. <br><br><em>(<strong>Нам</strong> — правильный ответ. Слово «пора» управляет дательным падежом.)</em></p>',
-        'correct': 'Нам',
-        'choices': ['Мы', 'Нас', 'Нам', 'Нами']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Директору ___, когда сервер падает. (angry/unpleasant)</strong></p>',
-        'explanation': '<p><strong>неприятно</strong> is correct. Adverb describing state, matching the Dative subject. <br><br><em>(<strong>неприятно</strong> — правильный ответ. Наречие состояния, согласующееся с дательным падежом.)</em></p>',
-        'correct': 'неприятно',
-        'choices': ['неприятный', 'неприятно', 'неприятная', 'неприятные']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Тебе ___? Закрыть окно? (cold)</strong></p>',
-        'explanation': '<p><strong>холодно</strong> is correct. State adverb for "cold". <br><br><em>(<strong>холодно</strong> — правильный ответ. Наречие физического состояния.)</em></p>',
-        'correct': 'холодно',
-        'choices': ['холодный', 'холодная', 'холодно', 'холодные']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ грустно, когда проект закрывают. (команда)</strong></p>',
-        'explanation': '<p><strong>Команде</strong> is correct. State ("грустно") requires Dative. <br><br><em>(<strong>Команде</strong> — правильный ответ. Женский род, окончание -е в дательном падеже.)</em></p>',
-        'correct': 'Команде',
-        'choices': ['Команда', 'Команду', 'Команде', 'Командой']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Ему ___ 18 лет, он уже взрослый. (to execute/turn - past tense)</strong></p>',
-        'explanation': '<p><strong>исполнилось</strong> is correct. "Исполнилось" is used with Dative for turning an age. It takes the neuter form because the subject is "18 лет". <br><br><em>(<strong>исполнилось</strong> — правильный ответ. Глагол используется с дательным падежом для обозначения достижения возраста.)</em></p>',
-        'correct': 'исполнилось',
-        'choices': ['исполнился', 'исполнилась', 'исполнилось', 'исполнились']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Скоро нашему ___ исполнится 5 лет. (стартап)</strong></p>',
-        'explanation': '<p><strong>стартапу</strong> is correct. Age of an entity requires Dative. <br><br><em>(<strong>стартапу</strong> — правильный ответ. Дательный падеж для мужского рода.)</em></p>',
-        'correct': 'стартапу',
-        'choices': ['стартап', 'стартапа', 'стартапу', 'стартапом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ стыдно за эту ошибку в коде. (я)</strong></p>',
-        'explanation': '<p><strong>Мне</strong> is correct. State ("стыдно") requires Dative. <br><br><em>(<strong>Мне</strong> — правильный ответ. Состояние стыда управляет дательным падежом.)</em></p>',
-        'correct': 'Мне',
-        'choices': ['Я', 'Меня', 'Мне', 'Мной']
-    }
-]
-
-QUESTIONS_chast_27 = [
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я работаю ___. (программист)</strong></p>',
-        'explanation': '<p><strong>программистом</strong> is correct. "Работать" (to work as) requires the Instrumental case. <br><br><em>(<strong>программистом</strong> — правильный ответ. Глагол «работать» требует творительного падежа, мужской род получает окончание -ом.)</em></p>',
-        'correct': 'программистом',
-        'choices': ['программист', 'программисту', 'программистом', 'программиста']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Она работает ___ в банке. (менеджер)</strong></p>',
-        'explanation': '<p><strong>менеджером</strong> is correct. Instrumental case for professions. <br><br><em>(<strong>менеджером</strong> — правильный ответ. Творительный падеж для профессий.)</em></p>',
-        'correct': 'менеджером',
-        'choices': ['менеджером', 'менеджер', 'менеджера', 'менеджеру']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мой брат хочет стать ___. (директор)</strong></p>',
-        'explanation': '<p><strong>директором</strong> is correct. "Стать" (to become) requires the Instrumental case. <br><br><em>(<strong>директором</strong> — правильный ответ. Глагол «стать» требует творительного падежа.)</em></p>',
-        'correct': 'директором',
-        'choices': ['директор', 'директору', 'директора', 'директором']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Анна работает ___. (учитель)</strong></p>',
-        'explanation': '<p><strong>учителем</strong> is correct. Masculine nouns ending in a soft sign (-ь) take -ем. <br><br><em>(<strong>учителем</strong> — правильный ответ. Мужской род на мягкий знак получает окончание -ем.)</em></p>',
-        'correct': 'учителем',
-        'choices': ['учитель', 'учителя', 'учителем', 'учителю']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Раньше я был ___. (студент)</strong></p>',
-        'explanation': '<p><strong>студентом</strong> is correct. "Быть" in the past tense with a profession/status takes Instrumental. <br><br><em>(<strong>студентом</strong> — правильный ответ. Глагол «быть» в прошедшем времени управляет творительным падежом.)</em></p>',
-        'correct': 'студентом',
-        'choices': ['студенту', 'студентом', 'студент', 'студента']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Она была отличной ___. (студентка)</strong></p>',
-        'explanation': '<p><strong>студенткой</strong> is correct. Feminine nouns take -ой/-ей in Instrumental. <br><br><em>(<strong>студенткой</strong> — правильный ответ. Женский род получает окончание -ой.)</em></p>',
-        'correct': 'студенткой',
-        'choices': ['студентка', 'студентку', 'студентке', 'студенткой']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Он будет ___. (врач)</strong></p>',
-        'explanation': '<p><strong>врачом</strong> is correct. Instrumental case after "будет". Note the stressed -ом after "ч". <br><br><em>(<strong>врачом</strong> — правильный ответ. Творительный падеж после глагола «быть» в будущем времени, под ударением пишется -ом.)</em></p>',
-        'correct': 'врачом',
-        'choices': ['врач', 'врачом', 'врачу', 'врача']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Они хотят стать ___. (программисты)</strong></p>',
-        'explanation': '<p><strong>программистами</strong> is correct. Plural nouns take -ами/-ями in Instrumental. <br><br><em>(<strong>программистами</strong> — правильный ответ. Творительный падеж множественного числа.)</em></p>',
-        'correct': 'программистами',
-        'choices': ['программисты', 'программистов', 'программистами', 'программистам']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы были ___, а стали врагами. (друзья)</strong></p>',
-        'explanation': '<p><strong>друзьями</strong> is correct. Instrumental plural of "друзья". <br><br><em>(<strong>друзьями</strong> — правильный ответ. Творительный падеж множественного числа от слова «друзья».)</em></p>',
-        'correct': 'друзьями',
-        'choices': ['друзья', 'друзей', 'друзьям', 'друзьями']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я пишу контракт ___. (ручка)</strong></p>',
-        'explanation': '<p><strong>ручкой</strong> is correct. Instrumental case is used for instruments/tools (writing *with* a pen). <br><br><em>(<strong>ручкой</strong> — правильный ответ. Творительный падеж используется для обозначения инструмента действия.)</em></p>',
-        'correct': 'ручкой',
-        'choices': ['ручка', 'ручку', 'ручкой', 'ручке']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Нарисуй интерфейс ___. (карандаш)</strong></p>',
-        'explanation': '<p><strong>карандашом</strong> is correct. Masculine tool taking -ом. <br><br><em>(<strong>карандашом</strong> — правильный ответ. Инструмент действия, мужской род.)</em></p>',
-        'correct': 'карандашом',
-        'choices': ['карандаш', 'карандашу', 'карандашом', 'карандаша']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы едим суп ___. (ложка)</strong></p>',
-        'explanation': '<p><strong>ложкой</strong> is correct. Feminine tool taking -ой. <br><br><em>(<strong>ложкой</strong> — правильный ответ. Инструмент действия, женский род.)</em></p>',
-        'correct': 'ложкой',
-        'choices': ['ложку', 'ложка', 'ложкой', 'ложке']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ем салат ___. (вилка)</strong></p>',
-        'explanation': '<p><strong>вилкой</strong> is correct. Feminine tool taking -ой. <br><br><em>(<strong>вилкой</strong> — правильный ответ. Инструмент действия, женский род.)</em></p>',
-        'correct': 'вилкой',
-        'choices': ['вилка', 'вилку', 'вилке', 'вилкой']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Стейк нужно резать ___. (нож)</strong></p>',
-        'explanation': '<p><strong>ножом</strong> is correct. Masculine tool taking -ом. <br><br><em>(<strong>ножом</strong> — правильный ответ. Инструмент действия, мужской род.)</em></p>',
-        'correct': 'ножом',
-        'choices': ['нож', 'ножу', 'ножа', 'ножом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я открыл дверь ___. (ключ)</strong></p>',
-        'explanation': '<p><strong>ключом</strong> is correct. Masculine tool taking stressed -ом. <br><br><em>(<strong>ключом</strong> — правильный ответ. Инструмент действия, мужской род под ударением.)</em></p>',
-        'correct': 'ключом',
-        'choices': ['ключ', 'ключа', 'ключом', 'ключу']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Он вытер лицо ___. (полотенце)</strong></p>',
-        'explanation': '<p><strong>полотенцем</strong> is correct. Neuter tool taking -ем. <br><br><em>(<strong>полотенцем</strong> — правильный ответ. Инструмент действия, средний род на -е получает окончание -ем.)</em></p>',
-        'correct': 'полотенцем',
-        'choices': ['полотенце', 'полотенцу', 'полотенцем', 'полотенца']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Она управляет большим ___. (проект)</strong></p>',
-        'explanation': '<p><strong>проектом</strong> is correct. The verb "управлять" (to manage) requires the Instrumental case. <br><br><em>(<strong>проектом</strong> — правильный ответ. Глагол «управлять» требует творительного падежа.)</em></p>',
-        'correct': 'проектом',
-        'choices': ['проект', 'проекту', 'проектом', 'проекта']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Директор руководит ___. (компания)</strong></p>',
-        'explanation': '<p><strong>компанией</strong> is correct. "Руководить" (to direct/lead) takes Instrumental. <br><br><em>(<strong>компанией</strong> — правильный ответ. Глагол «руководить» управляет творительным падежом.)</em></p>',
-        'correct': 'компанией',
-        'choices': ['компания', 'компанию', 'компании', 'компанией']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я интересуюсь ___. (программирование)</strong></p>',
-        'explanation': '<p><strong>программированием</strong> is correct. "Интересоваться" (to be interested in) takes Instrumental. <br><br><em>(<strong>программированием</strong> — правильный ответ. Глагол «интересоваться» управляет творительным падежом.)</em></p>',
-        'correct': 'программированием',
-        'choices': ['программирование', 'программированию', 'программированием', 'программирования']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мой брат увлекается ___. (спорт)</strong></p>',
-        'explanation': '<p><strong>спортом</strong> is correct. "Увлекаться" (to be keen on) takes Instrumental. <br><br><em>(<strong>спортом</strong> — правильный ответ. Глагол «увлекаться» требует творительного падежа.)</em></p>',
-        'correct': 'спортом',
-        'choices': ['спорт', 'спорту', 'спорта', 'спортом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Он увлекается ___. (музыка)</strong></p>',
-        'explanation': '<p><strong>музыкой</strong> is correct. Feminine noun in Instrumental. <br><br><em>(<strong>музыкой</strong> — правильный ответ. Творительный падеж женского рода.)</em></p>',
-        'correct': 'музыкой',
-        'choices': ['музыка', 'музыку', 'музыкой', 'музыке']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы гордимся нашим ___. (сын)</strong></p>',
-        'explanation': '<p><strong>сыном</strong> is correct. "Гордиться" (to be proud of) takes Instrumental. <br><br><em>(<strong>сыном</strong> — правильный ответ. Глагол «гордиться» управляет творительным падежом.)</em></p>',
-        'correct': 'сыном',
-        'choices': ['сын', 'сыну', 'сына', 'сыном']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Они гордятся своей ___. (работа)</strong></p>',
-        'explanation': '<p><strong>работой</strong> is correct. Feminine noun in Instrumental. <br><br><em>(<strong>работой</strong> — правильный ответ. Глагол «гордиться» требует творительного падежа.)</em></p>',
-        'correct': 'работой',
-        'choices': ['работа', 'работу', 'работой', 'работе']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я занимаюсь ___. (бизнес)</strong></p>',
-        'explanation': '<p><strong>бизнесом</strong> is correct. "Заниматься" (to be occupied with/do) takes Instrumental. <br><br><em>(<strong>бизнесом</strong> — правильный ответ. Глагол «заниматься» управляет творительным падежом.)</em></p>',
-        'correct': 'бизнесом',
-        'choices': ['бизнес', 'бизнесу', 'бизнеса', 'бизнесом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Чем вы ___? (интересоваться)</strong></p>',
-        'explanation': '<p><strong>интересуетесь</strong> is correct. Second person plural/formal. Question word is "Чем" (Instrumental of "Что"). <br><br><em>(<strong>интересуетесь</strong> — правильный ответ. Глагол во 2-м лице множественного числа.)</em></p>',
-        'correct': 'интересуетесь',
-        'choices': ['интересуетесь', 'интересуются', 'интересуется', 'интересуемся']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ ты хочешь стать? (кто)</strong></p>',
-        'explanation': '<p><strong>Кем</strong> is correct. Instrumental of "кто" is "кем". <br><br><em>(<strong>Кем</strong> — правильный ответ. Творительный падеж вопросительного слова «кто».)</em></p>',
-        'correct': 'Кем',
-        'choices': ['Кто', 'Кого', 'Кому', 'Кем']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ ты сейчас занимаешься? (что)</strong></p>',
-        'explanation': '<p><strong>Чем</strong> is correct. Instrumental of "что" is "чем". <br><br><em>(<strong>Чем</strong> — правильный ответ. Творительный падеж вопросительного слова «что».)</em></p>',
-        'correct': 'Чем',
-        'choices': ['Что', 'Чего', 'Чему', 'Чем']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Он кажется хорошим ___. (человек)</strong></p>',
-        'explanation': '<p><strong>человеком</strong> is correct. "Казаться" (to seem) takes Instrumental. <br><br><em>(<strong>человеком</strong> — правильный ответ. Глагол «казаться» управляет творительным падежом.)</em></p>',
-        'correct': 'человеком',
-        'choices': ['человек', 'человеку', 'человека', 'человеком']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Эти данные кажутся мне ___. (ошибка)</strong></p>',
-        'explanation': '<p><strong>ошибкой</strong> is correct. Instrumental of "ошибка". <br><br><em>(<strong>ошибкой</strong> — правильный ответ. Творительный падеж женского рода.)</em></p>',
-        'correct': 'ошибкой',
-        'choices': ['ошибка', 'ошибку', 'ошибке', 'ошибкой']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы называем его ___. (гений)</strong></p>',
-        'explanation': '<p><strong>гением</strong> is correct. "Называть" (to call someone something) takes Accusative for the person and Instrumental for the name. <br><br><em>(<strong>гением</strong> — правильный ответ. Глагол «называть» требует творительного падежа для второго объекта.)</em></p>',
-        'correct': 'гением',
-        'choices': ['гений', 'гения', 'гению', 'гением']
-    }
-]
-
-QUESTIONS_chast_28 = [
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я люблю кофе с ___. (молоко)</strong></p>',
-        'explanation': '<p><strong>молоком</strong> is correct. The preposition "с" (with) requires the Instrumental case. Neuter "молоко" takes -ом. <br><br><em>(<strong>молоком</strong> — правильный ответ. Предлог «с» со значением совместности требует творительного падежа.)</em></p>',
-        'correct': 'молоком',
-        'choices': ['молоко', 'молоку', 'молока', 'молоком']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Дайте чай с ___. (сахар)</strong></p>',
-        'explanation': '<p><strong>сахаром</strong> is correct. Masculine "сахар" takes -ом. <br><br><em>(<strong>сахаром</strong> — правильный ответ. Творительный падеж мужского рода.)</em></p>',
-        'correct': 'сахаром',
-        'choices': ['сахар', 'сахару', 'сахаром', 'сахара']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я буду воду с ___. (лимон)</strong></p>',
-        'explanation': '<p><strong>лимоном</strong> is correct. Masculine "лимон" takes -ом. <br><br><em>(<strong>лимоном</strong> — правильный ответ. Творительный падеж.)</em></p>',
-        'correct': 'лимоном',
-        'choices': ['лимон', 'лимону', 'лимоном', 'лимона']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы заказали пиццу с ___. (сыр)</strong></p>',
-        'explanation': '<p><strong>сыром</strong> is correct. Masculine "сыр" takes -ом. <br><br><em>(<strong>сыром</strong> — правильный ответ. Творительный падеж.)</em></p>',
-        'correct': 'сыром',
-        'choices': ['сыр', 'сыру', 'сыром', 'сыра']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Принесите салат с ___. (курица)</strong></p>',
-        'explanation': '<p><strong>курицей</strong> is correct. Feminine "курица" takes -ей (due to spelling rules after ц). <br><br><em>(<strong>курицей</strong> — правильный ответ. Творительный падеж женского рода, после «ц» без ударения пишется «е».)</em></p>',
-        'correct': 'курицей',
-        'choices': ['курица', 'курицу', 'курицей', 'курицой']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я буду суп с ___. (мясо)</strong></p>',
-        'explanation': '<p><strong>мясом</strong> is correct. Neuter "мясо" takes -ом. <br><br><em>(<strong>мясом</strong> — правильный ответ. Творительный падеж среднего рода.)</em></p>',
-        'correct': 'мясом',
-        'choices': ['мясо', 'мясу', 'мясом', 'мяса']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы едим рис с ___. (рыба)</strong></p>',
-        'explanation': '<p><strong>рыбой</strong> is correct. Feminine "рыба" takes -ой. <br><br><em>(<strong>рыбой</strong> — правильный ответ. Творительный падеж женского рода.)</em></p>',
-        'correct': 'рыбой',
-        'choices': ['рыба', 'рыбу', 'рыбой', 'рыбе']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я живу с ___. (брат)</strong></p>',
-        'explanation': '<p><strong>братом</strong> is correct. "With brother". <br><br><em>(<strong>братом</strong> — правильный ответ. Творительный падеж.)</em></p>',
-        'correct': 'братом',
-        'choices': ['брат', 'брату', 'братом', 'брата']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Вчера я гулял с ___. (сестра)</strong></p>',
-        'explanation': '<p><strong>сестрой</strong> is correct. Feminine noun takes -ой. <br><br><em>(<strong>сестрой</strong> — правильный ответ. Творительный падеж женского рода.)</em></p>',
-        'correct': 'сестрой',
-        'choices': ['сестра', 'сестру', 'сестрой', 'сестре']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Он пошёл на обед с ___. (друг)</strong></p>',
-        'explanation': '<p><strong>другом</strong> is correct. "With a friend". <br><br><em>(<strong>другом</strong> — правильный ответ. Творительный падеж мужского рода.)</em></p>',
-        'correct': 'другом',
-        'choices': ['друг', 'другу', 'другом', 'друга']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я работаю с хорошим ___. (клиент)</strong></p>',
-        'explanation': '<p><strong>клиентом</strong> is correct. "With a client". <br><br><em>(<strong>клиентом</strong> — правильный ответ. Творительный падеж.)</em></p>',
-        'correct': 'клиентом',
-        'choices': ['клиент', 'клиенту', 'клиентом', 'клиента']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>У меня встреча с ___. (директор)</strong></p>',
-        'explanation': '<p><strong>директором</strong> is correct. "Meeting with the director". <br><br><em>(<strong>директором</strong> — правильный ответ. Творительный падеж.)</em></p>',
-        'correct': 'директором',
-        'choices': ['директор', 'директору', 'директора', 'директором']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы подписали договор с ___. (компания)</strong></p>',
-        'explanation': '<p><strong>компанией</strong> is correct. Feminine "компания" takes -ей. <br><br><em>(<strong>компанией</strong> — правильный ответ. Творительный падеж слова на -ия.)</em></p>',
-        'correct': 'компанией',
-        'choices': ['компания', 'компанию', 'компанией', 'компании']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я пришёл на вечеринку с ___. (жена)</strong></p>',
-        'explanation': '<p><strong>женой</strong> is correct. "With wife". <br><br><em>(<strong>женой</strong> — правильный ответ. Творительный падеж женского рода.)</em></p>',
-        'correct': 'женой',
-        'choices': ['жена', 'жену', 'женой', 'жене']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Она была там с ___. (муж)</strong></p>',
-        'explanation': '<p><strong>мужем</strong> is correct. "With husband". <br><br><em>(<strong>мужем</strong> — правильный ответ. Творительный падеж мужского рода.)</em></p>',
-        'correct': 'мужем',
-        'choices': ['муж', 'мужу', 'мужем', 'мужа']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Ты хочешь пойти в кино со ___? (я)</strong></p>',
-        'explanation': '<p><strong>мной</strong> is correct. "С" becomes "со" before "мной" (Instrumental of "я"). <br><br><em>(<strong>мной</strong> — правильный ответ. Творительный падеж местоимения «я».)</em></p>',
-        'correct': 'мной',
-        'choices': ['я', 'меня', 'мне', 'мной']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я всегда согласен с ___. (ты)</strong></p>',
-        'explanation': '<p><strong>тобой</strong> is correct. Instrumental of "ты". <br><br><em>(<strong>тобой</strong> — правильный ответ. Творительный падеж местоимения «ты».)</em></p>',
-        'correct': 'тобой',
-        'choices': ['ты', 'тебя', 'тебе', 'тобой']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы вчера виделись с ___. (он)</strong></p>',
-        'explanation': '<p><strong>ним</strong> is correct. Pronouns starting with a vowel take an "н-" after prepositions. <br><br><em>(<strong>ним</strong> — правильный ответ. Творительный падеж местоимения «он» с предлогом.)</em></p>',
-        'correct': 'ним',
-        'choices': ['он', 'им', 'ним', 'его']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я хочу поговорить с ___. (она)</strong></p>',
-        'explanation': '<p><strong>ней</strong> is correct. Pronouns starting with a vowel take an "н-" after prepositions. <br><br><em>(<strong>ней</strong> — правильный ответ. Творительный падеж местоимения «она» с предлогом.)</em></p>',
-        'correct': 'ней',
-        'choices': ['она', 'ею', 'ней', 'её']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Пойдемте с ___. (мы)</strong></p>',
-        'explanation': '<p><strong>нами</strong> is correct. Instrumental of "мы". <br><br><em>(<strong>нами</strong> — правильный ответ. Творительный падеж местоимения «мы».)</em></p>',
-        'correct': 'нами',
-        'choices': ['мы', 'нас', 'нам', 'нами']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Нам приятно работать с ___. (вы)</strong></p>',
-        'explanation': '<p><strong>вами</strong> is correct. Instrumental of "вы". <br><br><em>(<strong>вами</strong> — правильный ответ. Творительный падеж местоимения «вы».)</em></p>',
-        'correct': 'вами',
-        'choices': ['вы', 'вас', 'вам', 'вами']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Банк связался с ___. (они)</strong></p>',
-        'explanation': '<p><strong>ними</strong> is correct. Instrumental of "они" with "н-". <br><br><em>(<strong>ними</strong> — правильный ответ. Творительный падеж местоимения «они» с предлогом.)</em></p>',
-        'correct': 'ними',
-        'choices': ['они', 'ими', 'ними', 'их']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я пришел в бар с ___. (друзья)</strong></p>',
-        'explanation': '<p><strong>друзьями</strong> is correct. Plural Instrumental of "друзья". <br><br><em>(<strong>друзьями</strong> — правильный ответ. Творительный падеж множественного числа.)</em></p>',
-        'correct': 'друзьями',
-        'choices': ['друзья', 'друзей', 'друзьями', 'друзьям']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>У нас проблемы с ___. (деньги)</strong></p>',
-        'explanation': '<p><strong>деньгами</strong> is correct. Plural Instrumental of "деньги". <br><br><em>(<strong>деньгами</strong> — правильный ответ. Творительный падеж множественного числа.)</em></p>',
-        'correct': 'деньгами',
-        'choices': ['деньги', 'денег', 'деньгам', 'деньгами']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я работаю с хорошими ___. (программисты)</strong></p>',
-        'explanation': '<p><strong>программистами</strong> is correct. Plural Instrumental. <br><br><em>(<strong>программистами</strong> — правильный ответ. Творительный падеж множественного числа.)</em></p>',
-        'correct': 'программистами',
-        'choices': ['программисты', 'программистов', 'программистами', 'программистам']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>С кем вы разговаривали? С ___. (менеджеры)</strong></p>',
-        'explanation': '<p><strong>менеджерами</strong> is correct. Plural Instrumental. <br><br><em>(<strong>менеджерами</strong> — правильный ответ. Творительный падеж множественного числа.)</em></p>',
-        'correct': 'менеджерами',
-        'choices': ['менеджеры', 'менеджеров', 'менеджерами', 'менеджерам']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>С ___ вы туда пойдете? (кто)</strong></p>',
-        'explanation': '<p><strong>кем</strong> is correct. Instrumental of "кто" is "кем". "С кем?" = "With whom?". <br><br><em>(<strong>кем</strong> — правильный ответ. Творительный падеж вопросительного слова «кто».)</em></p>',
-        'correct': 'кем',
-        'choices': ['кто', 'кого', 'кому', 'кем']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>С ___ этот пирог? С мясом. (что)</strong></p>',
-        'explanation': '<p><strong>чем</strong> is correct. Instrumental of "что" is "чем". "С чем?" = "With what?". <br><br><em>(<strong>чем</strong> — правильный ответ. Творительный падеж вопросительного слова «что».)</em></p>',
-        'correct': 'чем',
-        'choices': ['что', 'чего', 'чему', 'чем']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Папка с важными ___. (документы)</strong></p>',
-        'explanation': '<p><strong>документами</strong> is correct. Plural Instrumental. <br><br><em>(<strong>документами</strong> — правильный ответ. Творительный падеж множественного числа.)</em></p>',
-        'correct': 'документами',
-        'choices': ['документы', 'документов', 'документам', 'документами']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я люблю хлеб с ___. (масло)</strong></p>',
-        'explanation': '<p><strong>маслом</strong> is correct. Neuter "масло" takes -ом. <br><br><em>(<strong>маслом</strong> — правильный ответ. Творительный падеж среднего рода.)</em></p>',
-        'correct': 'маслом',
-        'choices': ['масло', 'маслу', 'маслом', 'масла']
-    }
-]
-
-QUESTIONS_chast_29 = [
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ пью кофе по утрам. Это моя привычка. (usually)</strong></p>',
-        'explanation': '<p><strong>обычно</strong> is correct. "Обычно" means usually. <br><br><em>(<strong>обычно</strong> — правильный ответ. Наречие частотности, означающее привычное действие.)</em></p>',
-        'correct': 'обычно',
-        'choices': ['никогда', 'обычно', 'потом', 'вчера']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ не опаздываю на работу. (never)</strong></p>',
-        'explanation': '<p><strong>никогда</strong> is correct. "Никогда" means never, used with "не" for double negation. <br><br><em>(<strong>никогда</strong> — правильный ответ. Используется с частицей «не».)</em></p>',
-        'correct': 'никогда',
-        'choices': ['всегда', 'часто', 'никогда', 'обычно']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ ходим в этот ресторан, он нам очень нравится. (often)</strong></p>',
-        'explanation': '<p><strong>часто</strong> is correct. "Часто" means often. <br><br><em>(<strong>часто</strong> — правильный ответ. Наречие, означающее многократное действие.)</em></p>',
-        'correct': 'часто',
-        'choices': ['редко', 'никогда', 'часто', 'завтра']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ смотрю телевизор, у меня нет времени. (rarely)</strong></p>',
-        'explanation': '<p><strong>редко</strong> is correct. "Редко" means rarely/seldom. <br><br><em>(<strong>редко</strong> — правильный ответ. Наречие, означающее нечастое действие.)</em></p>',
-        'correct': 'редко',
-        'choices': ['всегда', 'часто', 'редко', 'обычно']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ я работаю из дома, но чаще из офиса. (sometimes)</strong></p>',
-        'explanation': '<p><strong>иногда</strong> is correct. "Иногда" means sometimes. <br><br><em>(<strong>иногда</strong> — правильный ответ. Означает время от времени.)</em></p>',
-        'correct': 'иногда',
-        'choices': ['иногда', 'никогда', 'всегда', 'обычно']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Он ___ говорит правду. Ему можно верить. (always)</strong></p>',
-        'explanation': '<p><strong>всегда</strong> is correct. "Всегда" means always. <br><br><em>(<strong>всегда</strong> — правильный ответ. Означает постоянно, во всех случаях.)</em></p>',
-        'correct': 'всегда',
-        'choices': ['никогда', 'редко', 'всегда', 'иногда']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ закончил университет. Прошло 10 лет. (a long time ago)</strong></p>',
-        'explanation': '<p><strong>давно</strong> is correct. "Давно" means a long time ago. <br><br><em>(<strong>давно</strong> — правильный ответ. Указывает на далекое прошлое.)</em></p>',
-        'correct': 'давно',
-        'choices': ['недавно', 'давно', 'скоро', 'сейчас']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ открыли новый офис. Всего месяц назад. (recently)</strong></p>',
-        'explanation': '<p><strong>недавно</strong> is correct. "Недавно" means recently. <br><br><em>(<strong>недавно</strong> — правильный ответ. Указывает на близкое прошлое.)</em></p>',
-        'correct': 'недавно',
-        'choices': ['давно', 'скоро', 'недавно', 'обычно']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ выпустим обновление. Ждите релиза на этой неделе. (soon)</strong></p>',
-        'explanation': '<p><strong>скоро</strong> is correct. "Скоро" means soon. <br><br><em>(<strong>скоро</strong> — правильный ответ. Указывает на близкое будущее.)</em></p>',
-        'correct': 'скоро',
-        'choices': ['давно', 'недавно', 'скоро', 'вчера']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я занят. Я позвоню тебе ___. (later)</strong></p>',
-        'explanation': '<p><strong>потом</strong> is correct. "Потом" means later/then. <br><br><em>(<strong>потом</strong> — правильный ответ. Означает действие после чего-либо.)</em></p>',
-        'correct': 'потом',
-        'choices': ['раньше', 'потом', 'давно', 'вчера']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ я был программистом, а теперь тимлид. (earlier/before)</strong></p>',
-        'explanation': '<p><strong>раньше</strong> is correct. "Раньше" means earlier or before. <br><br><em>(<strong>раньше</strong> — правильный ответ. Указывает на предшествующее время.)</em></p>',
-        'correct': 'раньше',
-        'choices': ['потом', 'скоро', 'завтра', 'раньше']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Где ты ___? (now)</strong></p>',
-        'explanation': '<p><strong>сейчас</strong> is correct. "Сейчас" means now/currently. <br><br><em>(<strong>сейчас</strong> — правильный ответ. Означает в данный момент.)</em></p>',
-        'correct': 'сейчас',
-        'choices': ['завтра', 'потом', 'вчера', 'сейчас']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы идём в кино ___. (today)</strong></p>',
-        'explanation': '<p><strong>сегодня</strong> is correct. "Сегодня" means today. <br><br><em>(<strong>сегодня</strong> — правильный ответ. Означает в текущий день.)</em></p>',
-        'correct': 'сегодня',
-        'choices': ['завтра', 'сегодня', 'вчера', 'давно']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Собрание будет ___. (tomorrow)</strong></p>',
-        'explanation': '<p><strong>завтра</strong> is correct. "Завтра" means tomorrow. <br><br><em>(<strong>завтра</strong> — правильный ответ. Означает на следующий день.)</em></p>',
-        'correct': 'завтра',
-        'choices': ['вчера', 'сегодня', 'завтра', 'давно']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ мы закончили этот проект. (yesterday)</strong></p>',
-        'explanation': '<p><strong>вчера</strong> is correct. "Вчера" means yesterday. <br><br><em>(<strong>вчера</strong> — правильный ответ. Означает в предыдущий день.)</em></p>',
-        'correct': 'вчера',
-        'choices': ['завтра', 'сегодня', 'скоро', 'вчера']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Он ___ делает ошибки. Он очень внимательный. (rarely)</strong></p>',
-        'explanation': '<p><strong>редко</strong> is correct. "Редко" fits the context of being careful. <br><br><em>(<strong>редко</strong> — правильный ответ. По смыслу подходит к характеристике внимательного человека.)</em></p>',
-        'correct': 'редко',
-        'choices': ['всегда', 'редко', 'часто', 'обычно']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ пью алкоголь. Совсем нет. (never)</strong></p>',
-        'explanation': '<p><strong>никогда</strong> is correct. Combined with "не", it expresses absolute negation. <br><br><em>(<strong>никогда</strong> — правильный ответ. Означает ни разу в жизни.)</em></p>',
-        'correct': 'никогда',
-        'choices': ['часто', 'обычно', 'никогда', 'иногда']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Как ___ вы проверяете почту?</strong></p>',
-        'explanation': '<p><strong>часто</strong> is correct. "Как часто" means how often. <br><br><em>(<strong>часто</strong> — правильный ответ. Устойчивое вопросительное выражение.)</em></p>',
-        'correct': 'часто',
-        'choices': ['редко', 'обычно', 'часто', 'никогда']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ читаю новости утром, во время завтрака. (usually)</strong></p>',
-        'explanation': '<p><strong>обычно</strong> is correct. Describes a routine. <br><br><em>(<strong>обычно</strong> — правильный ответ. Описание регулярной привычки.)</em></p>',
-        'correct': 'обычно',
-        'choices': ['недавно', 'обычно', 'никогда', 'завтра']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Ты ___ забываешь свои пароли! (always)</strong></p>',
-        'explanation': '<p><strong>всегда</strong> is correct. "Всегда" expresses constant repetition. <br><br><em>(<strong>всегда</strong> — правильный ответ. Означает каждый раз.)</em></p>',
-        'correct': 'всегда',
-        'choices': ['всегда', 'никогда', 'редко', 'недавно']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я купил этот телефон ___. (recently)</strong></p>',
-        'explanation': '<p><strong>недавно</strong> is correct. Refers to a short time ago. <br><br><em>(<strong>недавно</strong> — правильный ответ. Указывает на недавнее действие в прошлом.)</em></p>',
-        'correct': 'недавно',
-        'choices': ['завтра', 'давно', 'недавно', 'скоро']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ это обсуждали, несколько лет назад. (a long time ago)</strong></p>',
-        'explanation': '<p><strong>давно</strong> is correct. "Несколько лет назад" indicates a long time. <br><br><em>(<strong>давно</strong> — правильный ответ. Подтверждается контекстом «несколько лет назад».)</em></p>',
-        'correct': 'давно',
-        'choices': ['давно', 'недавно', 'скоро', 'завтра']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Уже поздно, мне ___ пора домой. (soon / it is time)</strong></p>',
-        'explanation': '<p><strong>скоро</strong> is correct. "Скоро пора" or just "уже пора", but let\'s use the adverbs: "мне ___ нужно идти" -> скоро. Let\'s adjust the blank: "Мы ___ пойдём домой." -> скоро. <br><br><em>(<strong>скоро</strong> — правильный ответ. Указывает на скорое действие.)</em></p>',
-        'correct': 'скоро',
-        'choices': ['давно', 'скоро', 'вчера', 'никогда']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Сначала мы напишем код, а ___ его протестируем. (then/later)</strong></p>',
-        'explanation': '<p><strong>потом</strong> is correct. Shows sequence of actions (сначала... а потом). <br><br><em>(<strong>потом</strong> — правильный ответ. Показывает последовательность: сначала одно, потом другое.)</em></p>',
-        'correct': 'потом',
-        'choices': ['раньше', 'потом', 'вчера', 'давно']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ я не знал русский язык, а теперь говорю хорошо. (earlier)</strong></p>',
-        'explanation': '<p><strong>Раньше</strong> is correct. Contrasts past with present ("а теперь"). <br><br><em>(<strong>Раньше</strong> — правильный ответ. Противопоставление прошлого и настоящего.)</em></p>',
-        'correct': 'Раньше',
-        'choices': ['Потом', 'Скоро', 'Раньше', 'Завтра']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ могу найти время для спорта, но не каждый день. (sometimes)</strong></p>',
-        'explanation': '<p><strong>иногда</strong> is correct. "Но не каждый день" confirms it\'s not always or often. <br><br><em>(<strong>иногда</strong> — правильный ответ. Подтверждается контекстом «не каждый день».)</em></p>',
-        'correct': 'иногда',
-        'choices': ['всегда', 'никогда', 'иногда', 'обычно']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Он ___ не отвечает на мои звонки. (never)</strong></p>',
-        'explanation': '<p><strong>никогда</strong> is correct. Used with "не" for absolute negation. <br><br><em>(<strong>никогда</strong> — правильный ответ. Двойное отрицание с частицей «не».)</em></p>',
-        'correct': 'никогда',
-        'choices': ['всегда', 'никогда', 'часто', 'обычно']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ работаем в команде. Мы всё делаем вместе. (always)</strong></p>',
-        'explanation': '<p><strong>всегда</strong> is correct. Context "всё делаем вместе" implies constant collaboration. <br><br><em>(<strong>всегда</strong> — правильный ответ. Подтверждается контекстом о постоянной совместной работе.)</em></p>',
-        'correct': 'всегда',
-        'choices': ['редко', 'никогда', 'иногда', 'всегда']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Она ___ приходит в офис первой. (usually)</strong></p>',
-        'explanation': '<p><strong>обычно</strong> is correct. Describes a standard habit. <br><br><em>(<strong>обычно</strong> — правильный ответ. Описывает привычное поведение.)</em></p>',
-        'correct': 'обычно',
-        'choices': ['никогда', 'обычно', 'недавно', 'потом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ видел эту ошибку, но не помню как её исправить. (recently/sometime ago)</strong></p>',
-        'explanation': '<p><strong>недавно</strong> is correct. Fits the context of remembering something from the near past. <br><br><em>(<strong>недавно</strong> — правильный ответ. Подходит по смыслу для действия, произошедшего в близком прошлом.)</em></p>',
-        'correct': 'недавно',
-        'choices': ['скоро', 'завтра', 'недавно', 'потом']
-    }
-]
-
-QUESTIONS_mixed_parts_20_29 = [
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Это очень ___ пароль. (complex)</strong></p>',
-        'explanation': '<blockquote><mark>Прилагательные: Мужской род</mark></blockquote><p><strong>сложный</strong> is correct. "Пароль" is masculine, so the adjective takes -ый. <br><br><em>(<strong>сложный</strong> — правильный ответ. Мужской род, именительный падеж.)</em></p>',
-        'correct': 'сложный',
-        'choices': ['сложная', 'сложное', 'сложные', 'сложный']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>У нас внедряется ___ система. (new)</strong></p>',
-        'explanation': '<blockquote><mark>Прилагательные: Женский род</mark></blockquote><p><strong>новая</strong> is correct. "Система" is feminine, taking -ая. <br><br><em>(<strong>новая</strong> — правильный ответ. Женский род, согласуется со словом «система».)</em></p>',
-        'correct': 'новая',
-        'choices': ['новый', 'новая', 'новое', 'новые']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>В офисе остались только ___ компьютеры. (old)</strong></p>',
-        'explanation': '<blockquote><mark>Прилагательные: Множественное число</mark></blockquote><p><strong>старые</strong> is correct. "Компьютеры" is plural. <br><br><em>(<strong>старые</strong> — правильный ответ. Множественное число.)</em></p>',
-        'correct': 'старые',
-        'choices': ['старый', 'старая', 'старое', 'старые']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Извините, у меня сейчас нет ___. (время)</strong></p>',
-        'explanation': '<blockquote><mark>Родительный падеж: Отрицание</mark></blockquote><p><strong>времени</strong> is correct. Exception word "время" becomes "времени" in Genitive after "нет". <br><br><em>(<strong>времени</strong> — правильный ответ. Слово-исключение в родительном падеже.)</em></p>',
-        'correct': 'времени',
-        'choices': ['время', 'временем', 'времени', 'времю']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>В коде нет ни одной ___. (ошибка)</strong></p>',
-        'explanation': '<blockquote><mark>Родительный падеж: Отрицание</mark></blockquote><p><strong>ошибки</strong> is correct. "Ошибка" -> "ошибки". <br><br><em>(<strong>ошибки</strong> — правильный ответ. Женский род, родительный падеж после слова «нет».)</em></p>',
-        'correct': 'ошибки',
-        'choices': ['ошибка', 'ошибку', 'ошибке', 'ошибки']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>У этого пользователя нет ___ к базе. (доступ)</strong></p>',
-        'explanation': '<blockquote><mark>Родительный падеж: Отрицание</mark></blockquote><p><strong>доступа</strong> is correct. Masculine noun takes -а in Genitive. <br><br><em>(<strong>доступа</strong> — правильный ответ. Мужской род добавляет -а в родительном падеже.)</em></p>',
-        'correct': 'доступа',
-        'choices': ['доступ', 'доступу', 'доступом', 'доступа']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Это главный офис нашей ___. (компания)</strong></p>',
-        'explanation': '<blockquote><mark>Родительный падеж: Принадлежность</mark></blockquote><p><strong>компании</strong> is correct. "Of our company" -> Genitive case. <br><br><em>(<strong>компании</strong> — правильный ответ. Принадлежность, женский род на -ия меняется на -ии.)</em></p>',
-        'correct': 'компании',
-        'choices': ['компания', 'компанию', 'компании', 'компанией']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Он только что вернулся из ___. (университет)</strong></p>',
-        'explanation': '<blockquote><mark>Родительный падеж: Предлог ИЗ</mark></blockquote><p><strong>университета</strong> is correct. Preposition "из" requires Genitive. <br><br><em>(<strong>университета</strong> — правильный ответ. Предлог «из» требует родительного падежа.)</em></p>',
-        'correct': 'университета',
-        'choices': ['университет', 'университету', 'университета', 'университетом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ждём ответ от ___. (клиент)</strong></p>',
-        'explanation': '<blockquote><mark>Родительный падеж: Предлог ОТ</mark></blockquote><p><strong>клиента</strong> is correct. Preposition "от" requires Genitive. <br><br><em>(<strong>клиента</strong> — правильный ответ. Предлог «от» требует родительного падежа.)</em></p>',
-        'correct': 'клиента',
-        'choices': ['клиент', 'клиенту', 'клиентом', 'клиента']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Этот платный курс стоит 42 ___. (доллар)</strong></p>',
-        'explanation': '<blockquote><mark>Числительные: Подсчет</mark></blockquote><p><strong>доллара</strong> is correct. Numbers ending in 2, 3, 4 take Genitive Singular. <br><br><em>(<strong>доллара</strong> — правильный ответ. Числительное оканчивается на 2, требуется родительный падеж единственного числа.)</em></p>',
-        'correct': 'доллара',
-        'choices': ['доллар', 'долларов', 'доллары', 'доллара']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Моему старшему брату 30 ___. (years)</strong></p>',
-        'explanation': '<blockquote><mark>Числительные: Возраст</mark></blockquote><p><strong>лет</strong> is correct. Numbers ending in 0 (like 30) take "лет". <br><br><em>(<strong>лет</strong> — правильный ответ. Круглые десятки требуют слова «лет».)</em></p>',
-        'correct': 'лет',
-        'choices': ['год', 'года', 'лет', 'годов']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Работа выполнена на 100 ___. (percent)</strong></p>',
-        'explanation': '<blockquote><mark>Числительные: Подсчет</mark></blockquote><p><strong>процентов</strong> is correct. Numbers ending in 0 take Genitive Plural. <br><br><em>(<strong>процентов</strong> — правильный ответ. 100 требует родительного падежа множественного числа.)</em></p>',
-        'correct': 'процентов',
-        'choices': ['процент', 'процента', 'проценты', 'процентов']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Официант, принесите, пожалуйста, ___. Мы хотим заказать. (menu)</strong></p>',
-        'explanation': '<blockquote><mark>Лексика: Кафе и ресторан</mark></blockquote><p><strong>меню</strong> is correct. Menu is "меню". <br><br><em>(<strong>меню</strong> — правильный ответ. Список блюд и напитков.)</em></p>',
-        'correct': 'меню',
-        'choices': ['счёт', 'чек', 'меню', 'завтрак']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы всё съели. Можно попросить ___? (bill/check)</strong></p>',
-        'explanation': '<blockquote><mark>Лексика: Кафе и ресторан</mark></blockquote><p><strong>счёт</strong> is correct. The bill is "счёт". <br><br><em>(<strong>счёт</strong> — правильный ответ. Документ для оплаты заказа.)</em></p>',
-        'correct': 'счёт',
-        'choices': ['меню', 'карту', 'счёт', 'столик']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Торт был очень ___! Спасибо повару. (delicious)</strong></p>',
-        'explanation': '<blockquote><mark>Лексика: Еда</mark></blockquote><p><strong>вкусный</strong> is correct. Matches masculine "торт". <br><br><em>(<strong>вкусный</strong> — правильный ответ. Оценка вкуса блюда, мужской род.)</em></p>',
-        'correct': 'вкусный',
-        'choices': ['острый', 'вкусный', 'солёный', 'кислый']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мне нужно позвонить ___. (клиент)</strong></p>',
-        'explanation': '<blockquote><mark>Дательный падеж: Адресат</mark></blockquote><p><strong>клиенту</strong> is correct. "Звонить" takes Dative case. <br><br><em>(<strong>клиенту</strong> — правильный ответ. Глагол «звонить» требует дательного падежа.)</em></p>',
-        'correct': 'клиенту',
-        'choices': ['клиент', 'клиента', 'клиенту', 'клиентом']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Пожалуйста, отправь этот отчёт ___. (директор)</strong></p>',
-        'explanation': '<blockquote><mark>Дательный падеж: Адресат</mark></blockquote><p><strong>директору</strong> is correct. "Отправить" takes Dative case for the recipient. <br><br><em>(<strong>директору</strong> — правильный ответ. Кому отправляем? — Дательный падеж.)</em></p>',
-        'correct': 'директору',
-        'choices': ['директор', 'директора', 'директору', 'директором']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Вчера мы помогли новому ___. (коллега)</strong></p>',
-        'explanation': '<blockquote><mark>Дательный падеж: Адресат</mark></blockquote><p><strong>коллеге</strong> is correct. "Помогать" takes Dative. <br><br><em>(<strong>коллеге</strong> — правильный ответ. Глагол «помогать» требует дательного падежа, окончание -е.)</em></p>',
-        'correct': 'коллеге',
-        'choices': ['коллега', 'коллегу', 'коллеге', 'коллегой']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>___ нужно закончить эту задачу сегодня. (я)</strong></p>',
-        'explanation': '<blockquote><mark>Дательный падеж: Необходимость</mark></blockquote><p><strong>Мне</strong> is correct. "Нужно" takes Dative. <br><br><em>(<strong>Мне</strong> — правильный ответ. Дательный падеж с модальным словом «нужно».)</em></p>',
-        'correct': 'Мне',
-        'choices': ['Я', 'Меня', 'Мне', 'Мной']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Вчера ___ исполнилось 20 лет. (он)</strong></p>',
-        'explanation': '<blockquote><mark>Дательный падеж: Возраст</mark></blockquote><p><strong>ему</strong> is correct. Age uses the Dative case of the pronoun. <br><br><em>(<strong>ему</strong> — правильный ответ. Возраст выражается дательным падежом.)</em></p>',
-        'correct': 'ему',
-        'choices': ['он', 'его', 'ему', 'им']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Откройте, пожалуйста, окно, ___ жарко. (мы)</strong></p>',
-        'explanation': '<blockquote><mark>Дательный падеж: Состояние</mark></blockquote><p><strong>нам</strong> is correct. Physical states use Dative. <br><br><em>(<strong>нам</strong> — правильный ответ. Физическое состояние передается через дательный падеж.)</em></p>',
-        'correct': 'нам',
-        'choices': ['мы', 'нас', 'нам', 'нами']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мой брат выучился и стал ___. (программист)</strong></p>',
-        'explanation': '<blockquote><mark>Творительный падеж: Профессия</mark></blockquote><p><strong>программистом</strong> is correct. "Стать" takes Instrumental case. <br><br><em>(<strong>программистом</strong> — правильный ответ. Глагол «стать» требует творительного падежа.)</em></p>',
-        'correct': 'программистом',
-        'choices': ['программист', 'программиста', 'программистом', 'программисту']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Пожалуйста, подпишите договор синей ___. (ручка)</strong></p>',
-        'explanation': '<blockquote><mark>Творительный падеж: Инструмент</mark></blockquote><p><strong>ручкой</strong> is correct. Instrumental case represents the tool used for an action. <br><br><em>(<strong>ручкой</strong> — правильный ответ. Инструмент действия выражается творительным падежом.)</em></p>',
-        'correct': 'ручкой',
-        'choices': ['ручка', 'ручку', 'ручкой', 'ручке']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я уже давно интересуюсь ___. (программирование)</strong></p>',
-        'explanation': '<blockquote><mark>Творительный падеж: Увлечение</mark></blockquote><p><strong>программированием</strong> is correct. "Интересоваться" takes Instrumental. <br><br><em>(<strong>программированием</strong> — правильный ответ. Глагол «интересоваться» управляет творительным падежом.)</em></p>',
-        'correct': 'программированием',
-        'choices': ['программирование', 'программированию', 'программированием', 'программирования']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я всегда пью кофе с ___. (молоко)</strong></p>',
-        'explanation': '<blockquote><mark>Творительный падеж: Предлог С</mark></blockquote><p><strong>молоком</strong> is correct. Preposition "с" (with) takes Instrumental case. <br><br><em>(<strong>молоком</strong> — правильный ответ. Предлог совместности «с» требует творительного падежа.)</em></p>',
-        'correct': 'молоком',
-        'choices': ['молоко', 'молоку', 'молока', 'молоком']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Вечером в пятницу я иду в бар с ___. (друзья)</strong></p>',
-        'explanation': '<blockquote><mark>Творительный падеж: Множественное число</mark></blockquote><p><strong>друзьями</strong> is correct. Plural Instrumental of "друзья". <br><br><em>(<strong>друзьями</strong> — правильный ответ. Творительный падеж множественного числа.)</em></p>',
-        'correct': 'друзьями',
-        'choices': ['друзья', 'друзей', 'друзьями', 'друзьям']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Ты пойдёшь на обед со ___? (я)</strong></p>',
-        'explanation': '<blockquote><mark>Творительный падеж: Местоимения</mark></blockquote><p><strong>мной</strong> is correct. "С" changes to "со" before "мной". <br><br><em>(<strong>мной</strong> — правильный ответ. Творительный падеж местоимения «я».)</em></p>',
-        'correct': 'мной',
-        'choices': ['я', 'меня', 'мне', 'мной']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ пью кофе по утрам. Это моя привычка. (usually)</strong></p>',
-        'explanation': '<blockquote><mark>Наречия времени</mark></blockquote><p><strong>обычно</strong> is correct. Means "usually" and indicates a habit. <br><br><em>(<strong>обычно</strong> — правильный ответ. Описание регулярной привычки.)</em></p>',
-        'correct': 'обычно',
-        'choices': ['никогда', 'обычно', 'потом', 'недавно']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ не забываю сохранять свой код. (never)</strong></p>',
-        'explanation': '<blockquote><mark>Наречия времени</mark></blockquote><p><strong>никогда</strong> is correct. Used with "не" for absolute negation. <br><br><em>(<strong>никогда</strong> — правильный ответ. Двойное отрицание с частицей «не».)</em></p>',
-        'correct': 'никогда',
-        'choices': ['всегда', 'никогда', 'редко', 'часто']
-    },
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ выпустили новый релиз, всего неделю назад. (recently)</strong></p>',
-        'explanation': '<blockquote><mark>Наречия времени</mark></blockquote><p><strong>недавно</strong> is correct. Refers to a short time ago. <br><br><em>(<strong>недавно</strong> — правильный ответ. Указывает на недавнее действие в прошлом.)</em></p>',
-        'correct': 'недавно',
-        'choices': ['скоро', 'давно', 'недавно', 'потом']
-    }
-]
-
-QUESTIONS_chast_30 = [
-    {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я (мужчина) вчера весь день ___ в офисе. (работать)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Мужской род</mark></blockquote><p><strong>работал</strong> is correct. For a masculine subject "я", the past tense ends in "-л". <br><br><em>(<strong>работал</strong> — правильный ответ. Прошедшее время для мужского рода имеет окончание -л.)</em></p>',
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ в этом банке 5 лет. (работать/поработать)</strong></p>',
+        'explanation': '<p><strong>работал</strong> is correct. Stating a long duration in the past uses Imperfective. <br><br><em>(<strong>работал</strong> — правильный ответ. Констатация факта длительного действия в прошлом.)</em></p>',
         'correct': 'работал',
-        'choices': ['работала', 'работали', 'работал', 'работало']
+        'choices': ['поработал', 'работаю', 'работал', 'буду работать']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Моя коллега ___ этот отчёт утром. (писать)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Женский род</mark></blockquote><p><strong>писала</strong> is correct. "Коллега" (female here) requires the feminine ending "-ла". <br><br><em>(<strong>писала</strong> — правильный ответ. Прошедшее время для женского рода имеет окончание -ла.)</em></p>',
-        'correct': 'писала',
-        'choices': ['писал', 'писало', 'писали', 'писала']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы всегда ___ кофе в этом кафе. (покупать/купить)</strong></p>',
+        'explanation': '<p><strong>покупаем</strong> is correct. "Всегда" (always) shows a regular habit (Imperfective). <br><br><em>(<strong>покупаем</strong> — правильный ответ. Постоянная привычка, несовершенный вид.)</em></p>',
+        'correct': 'покупаем',
+        'choices': ['купим', 'покупаем', 'купили', 'покупали']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Вчера мы ___ новый сервис. (тестировать)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Множественное число</mark></blockquote><p><strong>тестировали</strong> is correct. The pronoun "мы" requires the plural ending "-ли". <br><br><em>(<strong>тестировали</strong> — правильный ответ. Прошедшее время для множественного числа имеет окончание -ли.)</em></p>',
-        'correct': 'тестировали',
-        'choices': ['тестировал', 'тестировала', 'тестировали', 'тестировало']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Вчера мы ___ новый мощный сервер. (покупать/купить)</strong></p>',
+        'explanation': '<p><strong>купили</strong> is correct. A specific completed purchase in the past requires Perfective. <br><br><em>(<strong>купили</strong> — правильный ответ. Однократное успешное действие в прошлом.)</em></p>',
+        'correct': 'купили',
+        'choices': ['покупали', 'купим', 'покупаем', 'купили']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Извините, вчера сервер не ___. (работать)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Мужской род</mark></blockquote><p><strong>работал</strong> is correct. "Сервер" is masculine, so it takes "-л". <br><br><em>(<strong>работал</strong> — правильный ответ. Сервер — существительное мужского рода.)</em></p>',
-        'correct': 'работал',
-        'choices': ['работала', 'работало', 'работал', 'работали']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Вы часто ___ такие письма? (отправлять/отправить)</strong></p>',
+        'explanation': '<p><strong>отправляете</strong> is correct. "Часто" (often) requires Imperfective for repeated actions. <br><br><em>(<strong>отправляете</strong> — правильный ответ. Повторяющееся действие.)</em></p>',
+        'correct': 'отправляете',
+        'choices': ['отправите', 'отправили', 'отправляете', 'отправляли']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Ты (женщина) ___ письмо от директора? (читать)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Женский род</mark></blockquote><p><strong>читала</strong> is correct. The subject "ты" refers to a woman, so it takes "-ла". <br><br><em>(<strong>читала</strong> — правильный ответ. Обращение к женщине требует окончания -ла.)</em></p>',
-        'correct': 'читала',
-        'choices': ['читал', 'читали', 'читала', 'читало']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я только что ___ файл клиенту. (отправлять/отправить)</strong></p>',
+        'explanation': '<p><strong>отправил</strong> is correct. "Только что" (just now) highlights the completion of the action (Perfective). <br><br><em>(<strong>отправил</strong> — правильный ответ. Только что завершенное действие.)</em></p>',
+        'correct': 'отправил',
+        'choices': ['отправляю', 'отправил', 'отправлял', 'отправлю']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Это приложение раньше ___ быстрее. (работать)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Средний род</mark></blockquote><p><strong>работало</strong> is correct. "Приложение" is neuter, so it takes "-ло". <br><br><em>(<strong>работало</strong> — правильный ответ. Приложение — существительное среднего рода.)</em></p>',
-        'correct': 'работало',
-        'choices': ['работал', 'работала', 'работали', 'работало']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Программист весь вечер ___ баги. (исправлять/исправить)</strong></p>',
+        'explanation': '<p><strong>исправлял</strong> is correct. "Весь вечер" (all evening) emphasizes the duration of the process (Imperfective). <br><br><em>(<strong>исправлял</strong> — правильный ответ. Акцент на процессе, который длился весь вечер.)</em></p>',
+        'correct': 'исправлял',
+        'choices': ['исправил', 'исправляет', 'исправлял', 'исправит']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Вчера они ___ мне три раза. (звонить)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Множественное число</mark></blockquote><p><strong>звонили</strong> is correct. "Они" requires the plural ending "-ли". <br><br><em>(<strong>звонили</strong> — правильный ответ. Местоимение «они» требует множественного числа.)</em></p>',
-        'correct': 'звонили',
-        'choices': ['звонил', 'звонила', 'звонили', 'звонило']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Ура! Я ___ эту ошибку! (исправлять/исправить)</strong></p>',
+        'explanation': '<p><strong>исправил</strong> is correct. "Ура!" shows excitement over a successful result (Perfective). <br><br><em>(<strong>исправил</strong> — правильный ответ. Эмоция от успешного завершения, нужен результат.)</em></p>',
+        'correct': 'исправил',
+        'choices': ['исправлял', 'исправил', 'исправляю', 'буду исправлять']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я (женщина) ___ эту ошибку только сегодня. (видеть)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Женский род</mark></blockquote><p><strong>видела</strong> is correct. The subject "я" is feminine, taking "-ла". <br><br><em>(<strong>видела</strong> — правильный ответ. Женский род требует окончания -ла.)</em></p>',
-        'correct': 'видела',
-        'choices': ['видел', 'видела', 'видело', 'видели']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы сейчас ___ архитектуру проекта. (обсуждать/обсудить)</strong></p>',
+        'explanation': '<p><strong>обсуждаем</strong> is correct. "Сейчас" (now) implies an ongoing process (Imperfective). <br><br><em>(<strong>обсуждаем</strong> — правильный ответ. Процесс в настоящем времени.)</em></p>',
+        'correct': 'обсуждаем',
+        'choices': ['обсудим', 'обсуждаем', 'обсудили', 'обсуждали']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Вы ___ об этой проблеме? (знать)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Множественное число / Вежливая форма</mark></blockquote><p><strong>знали</strong> is correct. "Вы" (plural or formal singular) always takes the plural "-ли". <br><br><em>(<strong>знали</strong> — правильный ответ. Местоимение «вы» всегда используется с окончанием -ли в прошедшем времени.)</em></p>',
-        'correct': 'знали',
-        'choices': ['знал', 'знала', 'знало', 'знали']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ этот вопрос вчера, решение принято. (обсуждать/обсудить)</strong></p>',
+        'explanation': '<p><strong>обсудили</strong> is correct. The action is complete and a decision was made (Perfective). <br><br><em>(<strong>обсудили</strong> — правильный ответ. Завершенное действие с итогом "решение принято".)</em></p>',
+        'correct': 'обсудили',
+        'choices': ['обсуждали', 'обсуждаем', 'обсудят', 'обсудили']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Директор долго ___ на митинге. (говорить)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Мужской род</mark></blockquote><p><strong>говорил</strong> is correct. "Директор" is masculine, taking "-л". <br><br><em>(<strong>говорил</strong> — правильный ответ. Существительное мужского рода.)</em></p>',
-        'correct': 'говорил',
-        'choices': ['говорила', 'говорил', 'говорили', 'говорило']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Анна всегда ___ на письма очень быстро. (отвечать/ответить)</strong></p>',
+        'explanation': '<p><strong>отвечает</strong> is correct. "Всегда" (always) describes a characteristic habit (Imperfective). <br><br><em>(<strong>отвечает</strong> — правильный ответ. Постоянная привычка Анны.)</em></p>',
+        'correct': 'отвечает',
+        'choices': ['ответила', 'ответит', 'отвечает', 'отвечала']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Команда разработчиков ___ этот баг два дня. (искать)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Женский род</mark></blockquote><p><strong>искала</strong> is correct. The subject is "Команда" (feminine), not "разработчиков". <br><br><em>(<strong>искала</strong> — правильный ответ. Подлежащее «команда» женского рода, поэтому окончание -ла.)</em></p>',
-        'correct': 'искала',
-        'choices': ['искал', 'искали', 'искала', 'искало']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Директор ___ на моё письмо час назад. (отвечать/ответить)</strong></p>',
+        'explanation': '<p><strong>ответил</strong> is correct. A single completed action in the past (Perfective). <br><br><em>(<strong>ответил</strong> — правильный ответ. Разовое завершенное действие в прошлом.)</em></p>',
+        'correct': 'ответил',
+        'choices': ['отвечал', 'ответил', 'отвечает', 'ответит']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Что ты (мужчина) ___ вчера вечером? (делать)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Мужской род</mark></blockquote><p><strong>делал</strong> is correct. "Ты" referring to a man takes "-л". <br><br><em>(<strong>делал</strong> — правильный ответ. Обращение к мужчине требует окончания -л.)</em></p>',
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я каждый день ___ работу ровно в 9:00. (начинать/начать)</strong></p>',
+        'explanation': '<p><strong>начинаю</strong> is correct. "Каждый день" indicates repetition (Imperfective). <br><br><em>(<strong>начинаю</strong> — правильный ответ. Ежедневное, повторяющееся действие.)</em></p>',
+        'correct': 'начинаю',
+        'choices': ['начну', 'начинаю', 'начал', 'начинал']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Завтра мы ___ новый спринт. (начинать/начать)</strong></p>',
+        'explanation': '<p><strong>начнём</strong> is correct. A specific event starting in the future requires Perfective. <br><br><em>(<strong>начнём</strong> — правильный ответ. Разовое действие в будущем, совершенный вид.)</em></p>',
+        'correct': 'начнём',
+        'choices': ['начинаем', 'начинали', 'начнём', 'начнут']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Пользователи редко ___ правила до конца. (читать/прочитать)</strong></p>',
+        'explanation': '<p><strong>читают</strong> is correct. "Редко" (rarely) requires Imperfective for a recurring habit. <br><br><em>(<strong>читают</strong> — правильный ответ. Наречие частотности требует несовершенного вида.)</em></p>',
+        'correct': 'читают',
+        'choices': ['прочитают', 'прочитали', 'читают', 'читали']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ документацию и всё настроил. (читать/прочитать)</strong></p>',
+        'explanation': '<p><strong>прочитал</strong> is correct. The result of reading led to successful setup (Perfective). <br><br><em>(<strong>прочитал</strong> — правильный ответ. Есть конкретный результат: прочитал и настроил.)</em></p>',
+        'correct': 'прочитал',
+        'choices': ['читал', 'прочитаю', 'читаю', 'прочитал']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Банк каждый день ___ тысячи платежей. (переводить/перевести)</strong></p>',
+        'explanation': '<p><strong>переводит</strong> is correct. A routine process happening every day uses Imperfective. <br><br><em>(<strong>переводит</strong> — правильный ответ. Постоянный процесс.)</em></p>',
+        'correct': 'переводит',
+        'choices': ['переведёт', 'переводит', 'перевёл', 'переводил']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ тебе 100 долларов вчера вечером. (переводить/перевести)</strong></p>',
+        'explanation': '<p><strong>перевёл</strong> is correct. A single completed transaction requires Perfective. <br><br><em>(<strong>перевёл</strong> — правильный ответ. Однократное завершенное действие.)</em></p>',
+        'correct': 'перевёл',
+        'choices': ['переводил', 'перевожу', 'перевёл', 'буду переводить']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ эту задачу очень долго. (делать/сделать)</strong></p>',
+        'explanation': '<p><strong>делали</strong> is correct. "Очень долго" implies a long duration/process (Imperfective). <br><br><em>(<strong>делали</strong> — правильный ответ. Акцент на длительности процесса в прошлом.)</em></p>',
+        'correct': 'делали',
+        'choices': ['сделали', 'делают', 'делали', 'сделают']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Отлично! Мы ___ это! (делать/сделать)</strong></p>',
+        'explanation': '<p><strong>сделали</strong> is correct. "Отлично!" shows joy for a finished result (Perfective). <br><br><em>(<strong>сделали</strong> — правильный ответ. Радость от достижения результата.)</em></p>',
+        'correct': 'сделали',
+        'choices': ['делали', 'сделаем', 'сделали', 'делаем']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я не ___ этот язык программирования. (понимать/понять)</strong></p>',
+        'explanation': '<p><strong>понимаю</strong> is correct. The state of not understanding in the present requires Imperfective. <br><br><em>(<strong>понимаю</strong> — правильный ответ. Состояние в настоящем времени.)</em></p>',
+        'correct': 'понимаю',
+        'choices': ['понял', 'пойму', 'понимал', 'понимаю']
+    }
+]
+
+QUESTIONS_chast_32 = [
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Вчера я весь день ___ сложный отчёт. (делать/сделать)</strong></p>',
+        'explanation': '<p><strong>делал</strong> is correct. "Весь день" emphasizes the process duration (Imperfective past). <br><br><em>(<strong>делал</strong> — правильный ответ. Процесс длился весь день, несовершенный вид.)</em></p>',
         'correct': 'делал',
-        'choices': ['делала', 'делало', 'делали', 'делал']
+        'choices': ['делал', 'сделал', 'буду делать', 'делаю']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Система долго ___ данные. (обрабатывать)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Женский род</mark></blockquote><p><strong>обрабатывала</strong> is correct. "Система" is feminine, taking "-ла". <br><br><em>(<strong>обрабатывала</strong> — правильный ответ. Система — существительное женского рода.)</em></p>',
-        'correct': 'обрабатывала',
-        'choices': ['обрабатывал', 'обрабатывали', 'обрабатывала', 'обрабатывало']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Вчера я наконец-то ___ этот отчёт. (делать/сделать)</strong></p>',
+        'explanation': '<p><strong>сделал</strong> is correct. "Наконец-то" means it was finally completed (Perfective past). <br><br><em>(<strong>сделал</strong> — правильный ответ. Действие завершено, получен результат.)</em></p>',
+        'correct': 'сделал',
+        'choices': ['сделал', 'делал', 'делаю', 'сделаю']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Раньше я (мужчина) ___ в другом городе. (жить)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Мужской род</mark></blockquote><p><strong>жил</strong> is correct. "Я" (masculine) takes "-л". <br><br><em>(<strong>жил</strong> — правильный ответ. Мужской род, глагол «жить».)</em></p>',
-        'correct': 'жил',
-        'choices': ['жила', 'жило', 'жил', 'жили']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Он очень долго ___ код для этого модуля. (писать/написать)</strong></p>',
+        'explanation': '<p><strong>писал</strong> is correct. "Долго" highlights the time spent on the process (Imperfective). <br><br><em>(<strong>писал</strong> — правильный ответ. Акцент на времени, потраченном на процесс.)</em></p>',
+        'correct': 'писал',
+        'choices': ['написал', 'писал', 'напишет', 'пишет']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>В выходные дети ___ в компьютерные игры. (играть)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Множественное число</mark></blockquote><p><strong>играли</strong> is correct. "Дети" is plural. <br><br><em>(<strong>играли</strong> — правильный ответ. Подлежащее во множественном числе требует окончания -ли.)</em></p>',
-        'correct': 'играли',
-        'choices': ['играл', 'играла', 'играли', 'играло']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Он быстро ___ скрипт и пошёл домой. (писать/написать)</strong></p>',
+        'explanation': '<p><strong>написал</strong> is correct. "Быстро" + a sequence of actions shows completion (Perfective). <br><br><em>(<strong>написал</strong> — правильный ответ. Завершенное действие, после которого последовало другое.)</em></p>',
+        'correct': 'написал',
+        'choices': ['напишет', 'писал', 'написал', 'будет писать']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Руководство компании ___ новый бюджет. (обсуждать)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Средний род</mark></blockquote><p><strong>обсуждало</strong> is correct. "Руководство" is neuter, taking "-ло". <br><br><em>(<strong>обсуждало</strong> — правильный ответ. Руководство — существительное среднего рода.)</em></p>',
-        'correct': 'обсуждало',
-        'choices': ['обсуждал', 'обсуждала', 'обсуждали', 'обсуждало']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ эту задачу два часа. (решать/решить)</strong></p>',
+        'explanation': '<p><strong>решали</strong> is correct. Specifying duration ("два часа") requires the Imperfective. <br><br><em>(<strong>решали</strong> — правильный ответ. Указание на продолжительность процесса.)</em></p>',
+        'correct': 'решали',
+        'choices': ['решали', 'решили', 'решим', 'решают']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Центральный банк ___ ставку. (менять)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Мужской род</mark></blockquote><p><strong>менял</strong> is correct. "Банк" is masculine, taking "-л". <br><br><em>(<strong>менял</strong> — правильный ответ. Банк — мужской род.)</em></p>',
-        'correct': 'менял',
-        'choices': ['меняла', 'меняло', 'меняли', 'менял']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>В итоге мы ___ эту задачу. (решать/решить)</strong></p>',
+        'explanation': '<p><strong>решили</strong> is correct. "В итоге" (in the end) shows a successful result (Perfective). <br><br><em>(<strong>решили</strong> — правильный ответ. Достигнут финальный результат.)</em></p>',
+        'correct': 'решили',
+        'choices': ['решают', 'решали', 'решим', 'решили']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Я (женщина) не ___ твой пароль, извини. (помнить)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Женский род</mark></blockquote><p><strong>помнила</strong> is correct. "Я" (feminine) takes "-ла". <br><br><em>(<strong>помнила</strong> — правильный ответ. Женский род требует окончания -ла.)</em></p>',
-        'correct': 'помнила',
-        'choices': ['помнил', 'помнила', 'помнило', 'помнили']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Клиент ___ тебе три раза, пока тебя не было. (звонить/позвонить)</strong></p>',
+        'explanation': '<p><strong>звонил</strong> is correct. Repeated action in the past requires the Imperfective. <br><br><em>(<strong>звонил</strong> — правильный ответ. Многократное действие в прошлом.)</em></p>',
+        'correct': 'звонил',
+        'choices': ['позвонил', 'звонит', 'звонил', 'позвонят']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Вчера мы с клиентом ___ в ресторане. (обедать)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Множественное число</mark></blockquote><p><strong>обедали</strong> is correct. "Мы" is plural. <br><br><em>(<strong>обедали</strong> — правильный ответ. Местоимение «мы» требует множественного числа.)</em></p>',
-        'correct': 'обедали',
-        'choices': ['обедал', 'обедала', 'обедали', 'обедало']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Клиент ___ мне, и мы обо всём договорились. (звонить/позвонить)</strong></p>',
+        'explanation': '<p><strong>позвонил</strong> is correct. A single action leading to a result (Perfective). <br><br><em>(<strong>позвонил</strong> — правильный ответ. Однократное результативное действие.)</em></p>',
+        'correct': 'позвонил',
+        'choices': ['звонил', 'позвонил', 'будет звонить', 'звонит']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Жена ___ очень вкусный ужин. (готовить)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Женский род</mark></blockquote><p><strong>готовила</strong> is correct. "Жена" is feminine. <br><br><em>(<strong>готовила</strong> — правильный ответ. Существительное женского рода.)</em></p>',
-        'correct': 'готовила',
-        'choices': ['готовил', 'готовила', 'готовило', 'готовили']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я внимательно ___ договор перед встречей. (читать/прочитать)</strong></p>',
+        'explanation': '<p><strong>читал</strong> is correct. The focus is on the process of reading carefully (Imperfective). <br><br><em>(<strong>читал</strong> — правильный ответ. Внимание уделяется самому процессу.)</em></p>',
+        'correct': 'читал',
+        'choices': ['прочитал', 'читал', 'прочитает', 'буду читать']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Твоё письмо ___ в папке спам. (лежать)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Средний род</mark></blockquote><p><strong>лежало</strong> is correct. "Письмо" is neuter. <br><br><em>(<strong>лежало</strong> — правильный ответ. Письмо — средний род, поэтому окончание -ло.)</em></p>',
-        'correct': 'лежало',
-        'choices': ['лежал', 'лежала', 'лежало', 'лежали']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ договор и подписал его. (читать/прочитать)</strong></p>',
+        'explanation': '<p><strong>прочитал</strong> is correct. Completed action before another completed action (Perfective). <br><br><em>(<strong>прочитал</strong> — правильный ответ. Завершенное действие, за которым последовало другое действие.)</em></p>',
+        'correct': 'прочитал',
+        'choices': ['прочитает', 'читал', 'прочитал', 'читает']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы очень долго ___ этого клиента. (ждать)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Множественное число</mark></blockquote><p><strong>ждали</strong> is correct. "Мы" is plural. <br><br><em>(<strong>ждали</strong> — правильный ответ. Местоимение «мы» требует окончания -ли.)</em></p>',
-        'correct': 'ждали',
-        'choices': ['ждал', 'ждала', 'ждали', 'ждало']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Она весь вечер ___ сериал. (смотреть/посмотреть)</strong></p>',
+        'explanation': '<p><strong>смотрела</strong> is correct. "Весь вечер" dictates a durative process (Imperfective). <br><br><em>(<strong>смотрела</strong> — правильный ответ. Процесс длился весь вечер.)</em></p>',
+        'correct': 'смотрела',
+        'choices': ['смотрела', 'посмотрела', 'посмотрит', 'смотрит']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Клиенты часто ___ про скидки. (спрашивать)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Множественное число</mark></blockquote><p><strong>спрашивали</strong> is correct. "Клиенты" is plural. <br><br><em>(<strong>спрашивали</strong> — правильный ответ. Подлежащее во множественном числе.)</em></p>',
-        'correct': 'спрашивали',
-        'choices': ['спрашивал', 'спрашивала', 'спрашивало', 'спрашивали']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Она ___ сериал и пошла спать. (смотреть/посмотреть)</strong></p>',
+        'explanation': '<p><strong>посмотрела</strong> is correct. Action completed before another action (Perfective). <br><br><em>(<strong>посмотрела</strong> — правильный ответ. Полностью завершенное действие перед сном.)</em></p>',
+        'correct': 'посмотрела',
+        'choices': ['смотрела', 'смотрит', 'посмотрела', 'будет смотреть']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Раньше он ___ пить только чёрный чай. (любить)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Мужской род</mark></blockquote><p><strong>любил</strong> is correct. "Он" is masculine. <br><br><em>(<strong>любил</strong> — правильный ответ. Местоимение мужского рода.)</em></p>',
-        'correct': 'любил',
-        'choices': ['любила', 'любило', 'любили', 'любил']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы часто ___ кофе в том кафе. (покупать/купить)</strong></p>',
+        'explanation': '<p><strong>покупали</strong> is correct. "Часто" means a repeated habit in the past (Imperfective). <br><br><em>(<strong>покупали</strong> — правильный ответ. Регулярно повторяющееся действие в прошлом.)</em></p>',
+        'correct': 'покупали',
+        'choices': ['покупали', 'купили', 'купим', 'покупают']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мой старый компьютер ___ очень медленно. (работать)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Мужской род</mark></blockquote><p><strong>работал</strong> is correct. "Компьютер" is masculine. <br><br><em>(<strong>работал</strong> — правильный ответ. Компьютер — мужской род.)</em></p>',
-        'correct': 'работал',
-        'choices': ['работала', 'работало', 'работали', 'работал']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Вчера мы ___ новую кофемашину в офис. (покупать/купить)</strong></p>',
+        'explanation': '<p><strong>купили</strong> is correct. A single accomplished purchase (Perfective). <br><br><em>(<strong>купили</strong> — правильный ответ. Однократное результативное действие в прошлом.)</em></p>',
+        'correct': 'купили',
+        'choices': ['покупают', 'покупали', 'купили', 'купим']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Она ___ на море в прошлом году. (отдыхать)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Женский род</mark></blockquote><p><strong>отдыхала</strong> is correct. "Она" is feminine. <br><br><em>(<strong>отдыхала</strong> — правильный ответ. Местоимение женского рода.)</em></p>',
-        'correct': 'отдыхала',
-        'choices': ['отдыхал', 'отдыхала', 'отдыхало', 'отдыхали']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Программист весь день ___ ошибки в коде. (исправлять/исправить)</strong></p>',
+        'explanation': '<p><strong>исправлял</strong> is correct. "Весь день" shows duration of the activity (Imperfective). <br><br><em>(<strong>исправлял</strong> — правильный ответ. Процесс длился весь день.)</em></p>',
+        'correct': 'исправлял',
+        'choices': ['исправлял', 'исправил', 'исправляет', 'исправит']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Наши программисты ___ новый фреймворк. (изучать)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Множественное число</mark></blockquote><p><strong>изучали</strong> is correct. "Программисты" is plural. <br><br><em>(<strong>изучали</strong> — правильный ответ. Множественное число.)</em></p>',
-        'correct': 'изучали',
-        'choices': ['изучал', 'изучала', 'изучали', 'изучало']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Он ___ самый главный баг. (исправлять/исправить)</strong></p>',
+        'explanation': '<p><strong>исправил</strong> is correct. A successful completed action (Perfective). <br><br><em>(<strong>исправил</strong> — правильный ответ. Успешный результат.)</em></p>',
+        'correct': 'исправил',
+        'choices': ['исправлял', 'исправляет', 'исправил', 'будет исправлять']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Что вы ___ сказать на этой встрече? (хотеть)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Множественное число / Вежливая форма</mark></blockquote><p><strong>хотели</strong> is correct. "Вы" requires the plural ending. <br><br><em>(<strong>хотели</strong> — правильный ответ. Местоимение «вы» требует окончания -ли.)</em></p>',
-        'correct': 'хотели',
-        'choices': ['хотел', 'хотела', 'хотело', 'хотели']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ ему письма каждый день. (отправлять/отправить)</strong></p>',
+        'explanation': '<p><strong>отправлял</strong> is correct. "Каждый день" shows repetition in the past (Imperfective). <br><br><em>(<strong>отправлял</strong> — правильный ответ. Регулярно повторяющееся действие.)</em></p>',
+        'correct': 'отправлял',
+        'choices': ['отправил', 'отправлял', 'отправляю', 'отправлю']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Солнце ярко ___ всё утро. (светить)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Средний род</mark></blockquote><p><strong>светило</strong> is correct. "Солнце" is neuter. <br><br><em>(<strong>светило</strong> — правильный ответ. Солнце — существительное среднего рода, окончание -ло.)</em></p>',
-        'correct': 'светило',
-        'choices': ['светил', 'светила', 'светило', 'светили']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ финальный отчёт вчера вечером. (отправлять/отправить)</strong></p>',
+        'explanation': '<p><strong>отправил</strong> is correct. A specific, completed event (Perfective). <br><br><em>(<strong>отправил</strong> — правильный ответ. Однократное завершенное действие.)</em></p>',
+        'correct': 'отправил',
+        'choices': ['отправлю', 'отправлял', 'отправляет', 'отправил']
     },
     {
-        'text': '<p>Выберите правильный вариант.</p><p><strong>Мой телефон ___ на столе, но сейчас его там нет. (лежать)</strong></p>',
-        'explanation': '<blockquote><mark>Прошедшее время: Мужской род</mark></blockquote><p><strong>лежал</strong> is correct. "Телефон" is masculine. <br><br><em>(<strong>лежал</strong> — правильный ответ. Телефон — существительное мужского рода.)</em></p>',
-        'correct': 'лежал',
-        'choices': ['лежала', 'лежало', 'лежал', 'лежали']
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы долго ___ этот вопрос на собрании. (обсуждать/обсудить)</strong></p>',
+        'explanation': '<p><strong>обсуждали</strong> is correct. "Долго" emphasizes the length of the discussion (Imperfective). <br><br><em>(<strong>обсуждали</strong> — правильный ответ. Акцент на длительности процесса обсуждения.)</em></p>',
+        'correct': 'обсуждали',
+        'choices': ['обсуждали', 'обсудили', 'обсудим', 'обсуждают']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>В конце концов мы ___ всё и приняли решение. (обсуждать/обсудить)</strong></p>',
+        'explanation': '<p><strong>обсудили</strong> is correct. The discussion is fully completed leading to a result (Perfective). <br><br><em>(<strong>обсудили</strong> — правильный ответ. Завершенное действие с итогом.)</em></p>',
+        'correct': 'обсудили',
+        'choices': ['обсуждали', 'обсуждают', 'обсудят', 'обсудили']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ презентацию все выходные. (готовить/приготовить)</strong></p>',
+        'explanation': '<p><strong>готовил</strong> is correct. "Все выходные" is a duration of time (Imperfective). <br><br><em>(<strong>готовил</strong> — правильный ответ. Процесс длился все выходные.)</em></p>',
+        'correct': 'готовил',
+        'choices': ['приготовил', 'готовил', 'приготовлю', 'готовлю']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ презентацию к понедельнику. (готовить/подготовить)</strong></p>',
+        'explanation': '<p><strong>подготовил</strong> is correct. A result achieved by a deadline ("к понедельнику") needs Perfective. <br><br><em>(<strong>подготовил</strong> — правильный ответ. Результат достигнут к определенному сроку.)</em></p>',
+        'correct': 'подготовил',
+        'choices': ['готовил', 'подготовит', 'подготовил', 'готовлю']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Раньше он всегда ___ быстро. (отвечать/ответить)</strong></p>',
+        'explanation': '<p><strong>отвечал</strong> is correct. "Всегда" points to a past habit (Imperfective). <br><br><em>(<strong>отвечал</strong> — правильный ответ. Привычное действие в прошлом.)</em></p>',
+        'correct': 'отвечал',
+        'choices': ['ответил', 'отвечает', 'отвечал', 'ответит']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Он ___ на мой вопрос только сегодня. (отвечать/ответить)</strong></p>',
+        'explanation': '<p><strong>ответил</strong> is correct. A specific response that happened once (Perfective). <br><br><em>(<strong>ответил</strong> — правильный ответ. Однократное действие с результатом.)</em></p>',
+        'correct': 'ответил',
+        'choices': ['отвечал', 'ответит', 'ответил', 'будет отвечать']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ этот дом два года. (строить/построить)</strong></p>',
+        'explanation': '<p><strong>строили</strong> is correct. The duration "два года" requires the process verb (Imperfective). <br><br><em>(<strong>строили</strong> — правильный ответ. Указание на продолжительность процесса.)</em></p>',
+        'correct': 'строили',
+        'choices': ['строили', 'построили', 'построят', 'строят']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ этот дом в прошлом году. (строить/построить)</strong></p>',
+        'explanation': '<p><strong>построили</strong> is correct. Refers to the completion of the construction (Perfective). <br><br><em>(<strong>построили</strong> — правильный ответ. Факт завершения строительства в прошлом.)</em></p>',
+        'correct': 'построили',
+        'choices': ['строили', 'строят', 'построили', 'будут строить']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Студенты ___ новые слова всю ночь. (учить/выучить)</strong></p>',
+        'explanation': '<p><strong>учили</strong> is correct. "Всю ночь" focuses on the extended process (Imperfective). <br><br><em>(<strong>учили</strong> — правильный ответ. Процесс, длившийся всю ночь.)</em></p>',
+        'correct': 'учили',
+        'choices': ['выучили', 'учили', 'выучат', 'учат']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Студент ___ все слова к экзамену. (учить/выучить)</strong></p>',
+        'explanation': '<p><strong>выучил</strong> is correct. Achieving the complete result before a deadline (Perfective). <br><br><em>(<strong>выучил</strong> — правильный ответ. 100% результат, действие завершено.)</em></p>',
+        'correct': 'выучил',
+        'choices': ['учил', 'выучил', 'будет учить', 'учит']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ текст два часа. (переводить/перевести)</strong></p>',
+        'explanation': '<p><strong>переводил</strong> is correct. The duration "два часа" means it was a process (Imperfective). <br><br><em>(<strong>переводил</strong> — правильный ответ. Указание на время протекания процесса.)</em></p>',
+        'correct': 'переводил',
+        'choices': ['переводил', 'перевёл', 'переведет', 'переводит']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ текст и отправил его клиенту. (переводить/перевести)</strong></p>',
+        'explanation': '<p><strong>перевёл</strong> is correct. A completed action before sending it (Perfective). <br><br><em>(<strong>перевёл</strong> — правильный ответ. Завершенное действие, дающее результат для следующего шага.)</em></p>',
+        'correct': 'перевёл',
+        'choices': ['переводил', 'переводит', 'переведет', 'перевёл']
+    }
+]
+
+QUESTIONS_chast_33 = [
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Завтра я весь день ___ этот отчёт. (буду делать/сделаю)</strong></p>',
+        'explanation': '<p><strong>буду делать</strong> is correct. "Весь день" indicates a future process (Complex Future / Imperfective). <br><br><em>(<strong>буду делать</strong> — правильный ответ. Длительное действие в будущем.)</em></p>',
+        'correct': 'буду делать',
+        'choices': ['сделаю', 'буду делать', 'делал', 'делаю']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ отчёт к вечеру, обещаю. (буду делать/сделаю)</strong></p>',
+        'explanation': '<p><strong>сделаю</strong> is correct. A promised result by a specific time (Simple Future / Perfective). <br><br><em>(<strong>сделаю</strong> — правильный ответ. Результат к определенному сроку.)</em></p>',
+        'correct': 'сделаю',
+        'choices': ['буду делать', 'сделал', 'сделаю', 'делаю']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ код всю следующую неделю. (будем писать/напишем)</strong></p>',
+        'explanation': '<p><strong>будем писать</strong> is correct. "Всю неделю" highlights duration in the future (Imperfective). <br><br><em>(<strong>будем писать</strong> — правильный ответ. Процесс, который займет всю неделю.)</em></p>',
+        'correct': 'будем писать',
+        'choices': ['будем писать', 'напишем', 'писали', 'пишем']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ этот код завтра. (будем писать/напишем)</strong></p>',
+        'explanation': '<p><strong>напишем</strong> is correct. Focus on completing the task tomorrow (Perfective). <br><br><em>(<strong>напишем</strong> — правильный ответ. Ожидаемый завершенный результат в будущем.)</em></p>',
+        'correct': 'напишем',
+        'choices': ['будем писать', 'пишем', 'напишем', 'писали']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>В субботу я ___ книгу. (буду читать/прочитаю)</strong></p>',
+        'explanation': '<p><strong>буду читать</strong> is correct. Describing plans for the process of reading without necessarily finishing it. <br><br><em>(<strong>буду читать</strong> — правильный ответ. План заняться процессом чтения.)</em></p>',
+        'correct': 'буду читать',
+        'choices': ['буду читать', 'прочитал', 'прочитаю', 'читаю']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ эту книгу за выходные. (буду читать/прочитаю)</strong></p>',
+        'explanation': '<p><strong>прочитаю</strong> is correct. "За выходные" implies completing it within the timeframe (Perfective). <br><br><em>(<strong>прочитаю</strong> — правильный ответ. Достижение результата за указанный период.)</em></p>',
+        'correct': 'прочитаю',
+        'choices': ['читал', 'буду читать', 'читаю', 'прочитаю']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Вечером мы ___ интересный фильм. (будем смотреть/посмотрим)</strong></p>',
+        'explanation': '<p><strong>будем смотреть</strong> is correct. Describing the process/activity planned for the evening. <br><br><em>(<strong>будем смотреть</strong> — правильный ответ. Акцент на процессе как способе провести время.)</em></p>',
+        'correct': 'будем смотреть',
+        'choices': ['будем смотреть', 'посмотрим', 'смотрели', 'смотрим']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ фильм и пойдём спать. (будем смотреть/посмотрим)</strong></p>',
+        'explanation': '<p><strong>посмотрим</strong> is correct. Action must be completed before the next future action begins (Perfective). <br><br><em>(<strong>посмотрим</strong> — правильный ответ. Завершенное действие, предшествующее другому.)</em></p>',
+        'correct': 'посмотрим',
+        'choices': ['будем смотреть', 'смотрим', 'посмотрели', 'посмотрим']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ тебе каждый день. (буду звонить/позвоню)</strong></p>',
+        'explanation': '<p><strong>буду звонить</strong> is correct. Repeated action in the future (Imperfective). <br><br><em>(<strong>буду звонить</strong> — правильный ответ. Многократное повторяющееся действие.)</em></p>',
+        'correct': 'буду звонить',
+        'choices': ['позвоню', 'звоню', 'буду звонить', 'звонил']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ тебе завтра утром. (буду звонить/позвоню)</strong></p>',
+        'explanation': '<p><strong>позвоню</strong> is correct. A single action in the future (Perfective). <br><br><em>(<strong>позвоню</strong> — правильный ответ. Однократное действие в будущем.)</em></p>',
+        'correct': 'позвоню',
+        'choices': ['буду звонить', 'позвоню', 'звоню', 'звонил']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Завтра сисадмин ___ проблемы с сервером весь день. (будет решать/решит)</strong></p>',
+        'explanation': '<p><strong>будет решать</strong> is correct. "Весь день" indicates future duration. <br><br><em>(<strong>будет решать</strong> — правильный ответ. Длительный процесс в будущем.)</em></p>',
+        'correct': 'будет решать',
+        'choices': ['будет решать', 'решит', 'решал', 'решает']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Не волнуйтесь, сисадмин скоро ___ эту проблему. (будет решать/решит)</strong></p>',
+        'explanation': '<p><strong>решит</strong> is correct. Focus on the successful completion/result. <br><br><em>(<strong>решит</strong> — правильный ответ. Обещание скорого результата.)</em></p>',
+        'correct': 'решит',
+        'choices': ['решает', 'решал', 'решит', 'будет решать']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ это на следующем митинге. (будем обсуждать/обсудим)</strong></p>',
+        'explanation': '<p><strong>будем обсуждать</strong> is correct. Planning a process for the meeting. (Note: "обсудим" is also common, but as an ongoing agenda item, "будем обсуждать" is explicitly process). <br><br><em>(<strong>будем обсуждать</strong> — правильный ответ. Планирование процесса обсуждения.)</em></p>',
+        'correct': 'будем обсуждать',
+        'choices': ['обсудим', 'будем обсуждать', 'обсуждаем', 'обсуждали']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы быстро ___ это и начнём работать. (будем обсуждать/обсудим)</strong></p>',
+        'explanation': '<p><strong>обсудим</strong> is correct. "Быстро" + next action shows it will be completed quickly (Perfective). <br><br><em>(<strong>обсудим</strong> — правильный ответ. Быстрое завершение действия.)</em></p>',
+        'correct': 'обсудим',
+        'choices': ['будем обсуждать', 'обсуждаем', 'обсудили', 'обсудим']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ базу данных два часа. (буду проверять/проверю)</strong></p>',
+        'explanation': '<p><strong>буду проверять</strong> is correct. "Два часа" states the duration of the future process. <br><br><em>(<strong>буду проверять</strong> — правильный ответ. Акцент на времени, которое займет процесс.)</em></p>',
+        'correct': 'буду проверять',
+        'choices': ['проверяю', 'проверил', 'буду проверять', 'проверю']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ логи через 5 минут. (буду проверять/проверю)</strong></p>',
+        'explanation': '<p><strong>проверю</strong> is correct. A quick, single action resulting in being checked (Perfective). <br><br><em>(<strong>проверю</strong> — правильный ответ. Однократное действие на результат.)</em></p>',
+        'correct': 'проверю',
+        'choices': ['буду проверять', 'проверю', 'проверяю', 'проверял']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Хакеры ___ спам каждый день. (будут отправлять/отправят)</strong></p>',
+        'explanation': '<p><strong>будут отправлять</strong> is correct. "Каждый день" describes a future repeated habit (Imperfective). <br><br><em>(<strong>будут отправлять</strong> — правильный ответ. Многократное действие в будущем.)</em></p>',
+        'correct': 'будут отправлять',
+        'choices': ['отправят', 'будут отправлять', 'отправляют', 'отправили']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ письмо директору завтра. (буду отправлять/отправлю)</strong></p>',
+        'explanation': '<p><strong>отправлю</strong> is correct. A single, discrete future event (Perfective). <br><br><em>(<strong>отправлю</strong> — правильный ответ. Однократное завершенное действие.)</em></p>',
+        'correct': 'отправлю',
+        'choices': ['отправлю', 'отправляю', 'буду отправлять', 'отправлял']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Команда ___ ошибки до самого релиза. (будет исправлять/исправит)</strong></p>',
+        'explanation': '<p><strong>будет исправлять</strong> is correct. Describes a continuous process lasting until a certain point. <br><br><em>(<strong>будет исправлять</strong> — правильный ответ. Длительный процесс до определенного момента.)</em></p>',
+        'correct': 'будет исправлять',
+        'choices': ['будет исправлять', 'исправит', 'исправляет', 'исправляла']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ все баги к пятнице. (будем исправлять/исправим)</strong></p>',
+        'explanation': '<p><strong>исправим</strong> is correct. "К пятнице" sets a deadline for the result (Perfective). <br><br><em>(<strong>исправим</strong> — правильный ответ. Достижение 100% результата к дедлайну.)</em></p>',
+        'correct': 'исправим',
+        'choices': ['будем исправлять', 'исправляем', 'исправили', 'исправим']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>На выходных я ___ и ничего не делать. (буду отдыхать/отдохну)</strong></p>',
+        'explanation': '<p><strong>буду отдыхать</strong> is correct. Describes the process of spending the weekend. <br><br><em>(<strong>буду отдыхать</strong> — правильный ответ. Процесс времяпрепровождения.)</em></p>',
+        'correct': 'буду отдыхать',
+        'choices': ['отдохну', 'буду отдыхать', 'отдыхал', 'отдыхаю']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>В следующем году мы ___ новую квартиру. (будем покупать/купим)</strong></p>',
+        'explanation': '<p><strong>купим</strong> is correct. Focus on the final achievement of buying a new apartment. <br><br><em>(<strong>купим</strong> — правильный ответ. Важен сам факт свершения покупки.)</em></p>',
+        'correct': 'купим',
+        'choices': ['покупаем', 'покупали', 'будем покупать', 'купим']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Теперь я ___ продукты каждую неделю. (буду покупать/куплю)</strong></p>',
+        'explanation': '<p><strong>буду покупать</strong> is correct. "Каждую неделю" implies a new future habit (Imperfective). <br><br><em>(<strong>буду покупать</strong> — правильный ответ. Зарождение новой регулярной привычки.)</em></p>',
+        'correct': 'буду покупать',
+        'choices': ['буду покупать', 'куплю', 'покупал', 'купил']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Кто ___ ужин сегодня? (будет готовить/приготовит)</strong></p>',
+        'explanation': '<p><strong>будет готовить</strong> is correct. Asking who will engage in the process of cooking. <br><br><em>(<strong>будет готовить</strong> — правильный ответ. Вопрос о том, кто займется процессом.)</em></p>',
+        'correct': 'будет готовить',
+        'choices': ['готовил', 'готовит', 'будет готовить', 'приготовит']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ пиццу вечером. (буду готовить/приготовлю)</strong></p>',
+        'explanation': '<p><strong>приготовлю</strong> is correct. Promising a ready pizza in the evening (Perfective). <br><br><em>(<strong>приготовлю</strong> — правильный ответ. Обещание готового результата.)</em></p>',
+        'correct': 'приготовлю',
+        'choices': ['готовлю', 'приготовил', 'буду готовить', 'приготовлю']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Завтра весь день ___ снег. (будет идти/пойдёт)</strong></p>',
+        'explanation': '<p><strong>будет идти</strong> is correct. "Весь день" indicates continuous weather process. <br><br><em>(<strong>будет идти</strong> — правильный ответ. Длительный процесс в будущем.)</em></p>',
+        'correct': 'будет идти',
+        'choices': ['идёт', 'шёл', 'будет идти', 'пойдёт']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ эти деньги завтра утром. (буду переводить/переведу)</strong></p>',
+        'explanation': '<p><strong>переведу</strong> is correct. A specific, intended single action in the future. <br><br><em>(<strong>переведу</strong> — правильный ответ. Однократное действие на результат.)</em></p>',
+        'correct': 'переведу',
+        'choices': ['переводил', 'буду переводить', 'переводит', 'переведу']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ тексты весь семестр. (будем переводить/переведём)</strong></p>',
+        'explanation': '<p><strong>будем переводить</strong> is correct. "Весь семестр" sets an ongoing duration. <br><br><em>(<strong>будем переводить</strong> — правильный ответ. Акцент на длительности на протяжении семестра.)</em></p>',
+        'correct': 'будем переводить',
+        'choices': ['переведём', 'будем переводить', 'переводили', 'переводим']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Как долго вы ___ эту функцию? (будете тестировать/протестируете)</strong></p>',
+        'explanation': '<p><strong>будете тестировать</strong> is correct. "Как долго" naturally asks about the duration of the process. <br><br><em>(<strong>будете тестировать</strong> — правильный ответ. Вопрос о продолжительности процесса.)</em></p>',
+        'correct': 'будете тестировать',
+        'choices': ['тестировали', 'протестируете', 'тестируете', 'будете тестировать']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ её до обеда, не переживайте. (будем тестировать/протестируем)</strong></p>',
+        'explanation': '<p><strong>протестируем</strong> is correct. "До обеда" promises completion by a certain time limit. <br><br><em>(<strong>протестируем</strong> — правильный ответ. Завершение процесса до указанного срока.)</em></p>',
+        'correct': 'протестируем',
+        'choices': ['будем тестировать', 'протестируем', 'тестировали', 'тестируем']
+    }
+]
+
+QUESTIONS_chast_34 = [
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Куда ты сейчас ___? В офис? (идти/ходить)</strong></p>',
+        'explanation': '<blockquote><mark>Идти: Bir yo\'nalishli harakat</mark></blockquote><p><strong>идёшь</strong> to\'g\'ri javob. Harakat hozir va bir yo\'nalishda sodir bo\'lmoqda. <br><br><em>(<strong>идёшь</strong> — правильный ответ. Движение происходит прямо сейчас в одном направлении.)</em></p>',
+        'correct': 'идёшь',
+        'choices': ['ходишь', 'идёт', 'идёшь', 'иду']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ на митинг. Буду через 5 минут. (идти/ходить)</strong></p>',
+        'explanation': '<blockquote><mark>Идти: Bir yo\'nalishli harakat</mark></blockquote><p><strong>иду</strong> to\'g\'ri javob. So\'zlovchi hozir aniq bir maqsad sari harakatlanmoqda. <br><br><em>(<strong>иду</strong> — правильный ответ. Однонаправленное движение в данный момент.)</em></p>',
+        'correct': 'иду',
+        'choices': ['хожу', 'иду', 'идёшь', 'идёт']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Обычно я ___ на работу пешком. (идти/ходить)</strong></p>',
+        'explanation': '<blockquote><mark>Ходить: Doimiy harakat</mark></blockquote><p><strong>хожу</strong> to\'g\'ri javob. "Обычно" so\'zi harakatning muntazamligini bildiradi. <br><br><em>(<strong>хожу</strong> — правильный ответ. Слово «обычно» указывает на регулярное, повторяющееся действие.)</em></p>',
+        'correct': 'хожу',
+        'choices': ['иду', 'идёт', 'ходишь', 'хожу']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Наши программисты часто ___ в этот ресторан. (идти/ходить)</strong></p>',
+        'explanation': '<blockquote><mark>Ходить: Doimiy harakat</mark></blockquote><p><strong>ходят</strong> to\'g\'ri javob. "Часто" takrorlanuvchi harakatni (ko\'p yo\'nalishli) bildiradi. <br><br><em>(<strong>ходят</strong> — правильный ответ. Многократное действие, используются глаголы разнонаправленного движения.)</em></p>',
+        'correct': 'ходят',
+        'choices': ['ходят', 'идут', 'идём', 'ходим']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Смотри, директор ___ сюда! (идти/ходить)</strong></p>',
+        'explanation': '<blockquote><mark>Идти: Bir yo\'nalishli harakat</mark></blockquote><p><strong>идёт</strong> to\'g\'ri javob. Harakat hozirgi paytda kuzatilmoqda. <br><br><em>(<strong>идёт</strong> — правильный ответ. Движение происходит на глазах у говорящего.)</em></p>',
+        'correct': 'идёт',
+        'choices': ['ходит', 'иду', 'идёт', 'идёшь']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ в банк каждый день. (идти/ходить)</strong></p>',
+        'explanation': '<blockquote><mark>Ходить: Doimiy harakat</mark></blockquote><p><strong>ходим</strong> to\'g\'ri javob. Har kuni takrorlanadigan ish-harakat. <br><br><em>(<strong>ходим</strong> — правильный ответ. Регулярное действие, повторяющееся каждый день.)</em></p>',
+        'correct': 'ходим',
+        'choices': ['идём', 'ходим', 'идут', 'ходят']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Сейчас мы ___ на обед. (идти/ходить)</strong></p>',
+        'explanation': '<blockquote><mark>Идти: Bir yo\'nalishli harakat</mark></blockquote><p><strong>идём</strong> to\'g\'ri javob. Ular hozir tushlikka qarab ketishmoqda. <br><br><em>(<strong>идём</strong> — правильный ответ. Процесс движения к цели прямо сейчас.)</em></p>',
+        'correct': 'идём',
+        'choices': ['ходим', 'идёте', 'идём', 'ходят']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Куда вы ___ каждый вечер? (идти/ходить)</strong></p>',
+        'explanation': '<blockquote><mark>Ходить: Doimiy harakat</mark></blockquote><p><strong>ходите</strong> to\'g\'ri javob. Har oqshom takrorlanadigan holat so\'ralmoqda. <br><br><em>(<strong>ходите</strong> — правильный ответ. Вопрос о регулярном действии.)</em></p>',
+        'correct': 'ходите',
+        'choices': ['идёте', 'идут', 'ходите', 'ходим']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Тише, клиенты ___! (идти/ходить)</strong></p>',
+        'explanation': '<blockquote><mark>Идти: Bir yo\'nalishli harakat</mark></blockquote><p><strong>идут</strong> to\'g\'ri javob. Mijozlar aynan shu daqiqada yaqinlashmoqda. <br><br><em>(<strong>идут</strong> — правильный ответ. Клиенты приближаются в данный момент.)</em></p>',
+        'correct': 'идут',
+        'choices': ['ходят', 'идут', 'идёт', 'ходим']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Ты часто ___ в спортзал? (идти/ходить)</strong></p>',
+        'explanation': '<blockquote><mark>Ходить: Doimiy harakat</mark></blockquote><p><strong>ходишь</strong> to\'g\'ri javob. Doimiy odat haqida so\'ralmoqda. <br><br><em>(<strong>ходишь</strong> — правильный ответ. Вопрос о привычке и регулярном посещении.)</em></p>',
+        'correct': 'ходишь',
+        'choices': ['иду', 'идёшь', 'ходишь', 'ходит']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Вчера я ___ в серверную. (идти/ходить - бир марта borib kelish)</strong></p>',
+        'explanation': '<blockquote><mark>Ходить: O\'tgan zamonda borib kelish</mark></blockquote><p><strong>ходил</strong> to\'g\'ri javob. Agar kishi borib, qaytib kelgan bo\'lsa, "ходил" ishlatiladi. <br><br><em>(<strong>ходил</strong> — правильный ответ. Обозначает завершенный поход туда и обратно в прошлом.)</em></p>',
+        'correct': 'ходил',
+        'choices': ['шёл', 'ходила', 'ходил', 'шла']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Когда я ___ на работу, я встретил друга. (идти/ходить - jarayon)</strong></p>',
+        'explanation': '<blockquote><mark>Идти: O\'tgan zamondagi jarayon</mark></blockquote><p><strong>шёл</strong> to\'g\'ri javob. Yo\'lda ketayotgan paytda (jarayonida) biror narsa sodir bo\'lgan. <br><br><em>(<strong>шёл</strong> — правильный ответ. Обозначает процесс движения в один конец в прошлом.)</em></p>',
+        'correct': 'шёл',
+        'choices': ['ходил', 'шла', 'шёл', 'ходило']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Она ___ в бухгалтерию за документами. (идти/ходить - qaytib keldi)</strong></p>',
+        'explanation': '<blockquote><mark>Ходить: Borib kelish</mark></blockquote><p><strong>ходила</strong> to\'g\'ri javob. Ayol kishi borib, hujjatlarni olib qaytgan. <br><br><em>(<strong>ходила</strong> — правильный ответ. Поход туда и обратно для женщины.)</em></p>',
+        'correct': 'ходила',
+        'choices': ['шла', 'ходила', 'ходил', 'шёл']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ по парку, когда начался дождь. (идти/ходить - jarayon)</strong></p>',
+        'explanation': '<blockquote><mark>Идти: O\'tgan zamondagi jarayon</mark></blockquote><p><strong>шли</strong> to\'g\'ri javob. Sayr qilish (yurish) jarayonida yomg\'ir boshlandi. <br><br><em>(<strong>шли</strong> — правильный ответ. Процесс движения во множественном числе в момент другого события.)</em></p>',
+        'correct': 'шли',
+        'choices': ['ходили', 'шли', 'шёл', 'ходил']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Дети весь день ___ по торговому центру. (идти/ходить)</strong></p>',
+        'explanation': '<blockquote><mark>Ходить: Turli yo\'nalishlardagi harakat</mark></blockquote><p><strong>ходили</strong> to\'g\'ri javob. Ular turli tomonlarga uzoq vaqt harakatlanishgan. <br><br><em>(<strong>ходили</strong> — правильный ответ. Длительное движение в разных направлениях.)</em></p>',
+        'correct': 'ходили',
+        'choices': ['шли', 'шёл', 'ходили', 'ходил']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мой сын уже ___! Ему 1 год. (идти/ходить - qobiliyat)</strong></p>',
+        'explanation': '<blockquote><mark>Ходить: Harakat qilish qobiliyati</mark></blockquote><p><strong>ходит</strong> to\'g\'ri javob. Bola yurishni o\'rganganini (qobiliyatni) bildiradi. <br><br><em>(<strong>ходит</strong> — правильный ответ. Означает умение, способность передвигаться на ногах.)</em></p>',
+        'correct': 'ходит',
+        'choices': ['идёт', 'идёшь', 'ходит', 'хожу']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Дождь ___. (идти/ходить)</strong></p>',
+        'explanation': '<blockquote><mark>Идти: Ob-havo hodisalari</mark></blockquote><p><strong>идёт</strong> to\'g\'ri javob. Yomg\'ir, qor kabi tabiat hodisalari uchun faqat "идёт" ishlatiladi. <br><br><em>(<strong>идёт</strong> — правильный ответ. Для осадков (дождь, снег) используется только глагол «идти».)</em></p>',
+        'correct': 'идёт',
+        'choices': ['ходит', 'идут', 'идёт', 'ходят']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Время ___ очень быстро. (идти/ходить)</strong></p>',
+        'explanation': '<blockquote><mark>Идти: Ko\'chma ma\'no</mark></blockquote><p><strong>идёт</strong> to\'g\'ri javob. "Vaqt o\'tyapti" ma\'nosida "время идёт" deyiladi. <br><br><em>(<strong>идёт</strong> — правильный ответ. Переносное значение: время проходит.)</em></p>',
+        'correct': 'идёт',
+        'choices': ['ходит', 'идёт', 'идут', 'ходят']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Завтра мы ___ в театр. (идти/ходить - reja)</strong></p>',
+        'explanation': '<blockquote><mark>Идти: Kelajakdagi aniq reja</mark></blockquote><p><strong>идём</strong> to\'g\'ri javob. Rejalashtirilgan bir martalik kelajak harakati uchun hozirgi zamon "идти" ishlatilishi mumkin. <br><br><em>(<strong>идём</strong> — правильный ответ. Запланированное однократное действие в ближайшем будущем.)</em></p>',
+        'correct': 'идём',
+        'choices': ['ходим', 'идём', 'идёте', 'ходили']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Этот цвет тебе ___. (идти/ходить)</strong></p>',
+        'explanation': '<blockquote><mark>Идти: Ko\'chma ma\'no (yarashmoq)</mark></blockquote><p><strong>идёт</strong> to\'g\'ri javob. "Senga yarashadi" ma\'nosida ishlatiladi. <br><br><em>(<strong>идёт</strong> — правильный ответ. Переносное значение «быть к лицу, подходить».)</em></p>',
+        'correct': 'идёт',
+        'choices': ['ходит', 'идут', 'идёт', 'ходят']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Вчера ___ сильный снег. (идти/ходить)</strong></p>',
+        'explanation': '<blockquote><mark>Идти: Ob-havo hodisalari</mark></blockquote><p><strong>шёл</strong> to\'g\'ri javob. O\'tgan zamonda qor ("снег" - m.r.) yoqqanligi. <br><br><em>(<strong>шёл</strong> — правильный ответ. Осадки в прошедшем времени, мужской род.)</em></p>',
+        'correct': 'шёл',
+        'choices': ['ходил', 'шла', 'шли', 'шёл']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ по улице и думал о коде. (идти/ходить - jarayon)</strong></p>',
+        'explanation': '<blockquote><mark>Идти: Jarayon</mark></blockquote><p><strong>шёл</strong> to\'g\'ri javob. Erkak kishi yo\'lda ketyotgan jarayonini tasvirlamoqda. <br><br><em>(<strong>шёл</strong> — правильный ответ. Процесс движения мужского рода в прошлом.)</em></p>',
+        'correct': 'шёл',
+        'choices': ['ходил', 'шёл', 'шла', 'ходила']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Она ___ домой очень медленно. (идти/ходить - o\'tgan zamon)</strong></p>',
+        'explanation': '<blockquote><mark>Идти: Jarayon</mark></blockquote><p><strong>шла</strong> to\'g\'ri javob. Ayol kishining uyi tomon yo\'nalgan jarayoni. <br><br><em>(<strong>шла</strong> — правильный ответ. Процесс движения в одном направлении в женском роде.)</em></p>',
+        'correct': 'шла',
+        'choices': ['ходила', 'шёл', 'ходил', 'шла']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>В детстве я часто ___ в эту библиотеку. (идти/ходить)</strong></p>',
+        'explanation': '<blockquote><mark>Ходить: Takrorlanuvchi harakat</mark></blockquote><p><strong>ходил</strong> to\'g\'ri javob. O\'tgan zamondagi doimiy takrorlangan odat. <br><br><em>(<strong>ходил</strong> — правильный ответ. Регулярное действие в прошлом.)</em></p>',
+        'correct': 'ходил',
+        'choices': ['шёл', 'ходил', 'ходили', 'шла']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Они ___ на курсы английского каждый вторник. (идти/ходить)</strong></p>',
+        'explanation': '<blockquote><mark>Ходить: Doimiy harakat</mark></blockquote><p><strong>ходят</strong> to\'g\'ri javob. Har seshanba sodir bo\'ladigan muntazam ish. <br><br><em>(<strong>ходят</strong> — правильный ответ. Регулярное действие, повторяющееся каждую неделю.)</em></p>',
+        'correct': 'ходят',
+        'choices': ['идут', 'ходят', 'идём', 'ходим']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Куда вы сейчас ___? (идти/ходить)</strong></p>',
+        'explanation': '<blockquote><mark>Идти: Aynan hozirgi harakat</mark></blockquote><p><strong>идёте</strong> to\'g\'ri javob. Ko\'plikda (yoki hurmat ma\'nosida) hozirgi yo\'nalish so\'ralmoqda. <br><br><em>(<strong>идёте</strong> — правильный ответ. Направление движения в данный момент, форма «вы».)</em></p>',
+        'correct': 'идёте',
+        'choices': ['ходите', 'идёте', 'идут', 'ходим']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Девушка, вы ___ не в ту сторону! (идти/ходить)</strong></p>',
+        'explanation': '<blockquote><mark>Идти: Bir yo\'nalishli harakat</mark></blockquote><p><strong>идёте</strong> to\'g\'ri javob. Aynan shu paytda noto\'g\'ri tomonga qadam tashlamoqda. <br><br><em>(<strong>идёте</strong> — правильный ответ. Движение, наблюдаемое говорящим прямо сейчас.)</em></p>',
+        'correct': 'идёте',
+        'choices': ['ходите', 'идёт', 'идёшь', 'идёте']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ к тебе на помощь! (идти/ходить)</strong></p>',
+        'explanation': '<blockquote><mark>Идти: Bir yo\'nalishli harakat</mark></blockquote><p><strong>иду</strong> to\'g\'ri javob. So\'zlovchi aynan hozir yordam berish maqsadida kelmoqda. <br><br><em>(<strong>иду</strong> — правильный ответ. Движение в сторону собеседника в данный момент.)</em></p>',
+        'correct': 'иду',
+        'choices': ['хожу', 'идёшь', 'иду', 'идёт']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мои часы ___ неправильно. (идти/ходить)</strong></p>',
+        'explanation': '<blockquote><mark>Идти: Mexanizmlar uchun</mark></blockquote><p><strong>идут</strong> to\'g\'ri javob. Soat mexanizmlarining ishlashini tasvirlash uchun "идти" ishlatiladi. <br><br><em>(<strong>идут</strong> — правильный ответ. Для работы часового механизма используется глагол «идти».)</em></p>',
+        'correct': 'идут',
+        'choices': ['ходят', 'идут', 'идет', 'ходим']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>По выходным мы ___ в горы. (идти/ходить)</strong></p>',
+        'explanation': '<blockquote><mark>Ходить: Takrorlanuvchi harakat</mark></blockquote><p><strong>ходим</strong> to\'g\'ri javob. Dam olish kunlaridagi muntazam odat. <br><br><em>(<strong>ходим</strong> — правильный ответ. Регулярная привычка по выходным.)</em></p>',
+        'correct': 'ходим',
+        'choices': ['идём', 'ходим', 'идут', 'ходят']
+    }
+]
+
+QUESTIONS_chast_35 = [
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ на работу на машине каждый день. (ехать/ездить)</strong></p>',
+        'explanation': '<blockquote><mark>Ездить: Transportda doimiy harakat</mark></blockquote><p><strong>езжу</strong> to\'g\'ri javob. Har kuni takrorlanadigan transportdagi harakat. <br><br><em>(<strong>езжу</strong> — правильный ответ. Регулярная поездка на транспорте каждый день.)</em></p>',
+        'correct': 'езжу',
+        'choices': ['еду', 'езжу', 'едешь', 'ездит']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Сейчас я ___ в такси, перезвоню позже. (ехать/ездить)</strong></p>',
+        'explanation': '<blockquote><mark>Ехать: Transportda bir yo\'nalishli harakat</mark></blockquote><p><strong>еду</strong> to\'g\'ri javob. Aynan hozir taksida ketyapti. <br><br><em>(<strong>еду</strong> — правильный ответ. Движение в транспорте происходит прямо сейчас.)</em></p>',
+        'correct': 'еду',
+        'choices': ['езжу', 'едешь', 'еду', 'ездит']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Куда ты ___ этим летом? (ехать/ездить - reja)</strong></p>',
+        'explanation': '<blockquote><mark>Ехать: Kelajakdagi reja</mark></blockquote><p><strong>едешь</strong> to\'g\'ri javob. Yozda qayerga safar qilishi haqida so\'ralmoqda. <br><br><em>(<strong>едешь</strong> — правильный ответ. Вопрос о запланированной поездке в будущем.)</em></p>',
+        'correct': 'едешь',
+        'choices': ['ездишь', 'едешь', 'едет', 'езжу']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Она часто ___ в командировки. (ехать/ездить)</strong></p>',
+        'explanation': '<blockquote><mark>Ездить: Takrorlanuvchi harakat</mark></blockquote><p><strong>ездит</strong> to\'g\'ri javob. Xizmat safarlariga muntazam borib turadi. <br><br><em>(<strong>ездит</strong> — правильный ответ. Регулярные поездки в командировки.)</em></p>',
+        'correct': 'ездит',
+        'choices': ['едет', 'ездит', 'едут', 'ездят']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Смотри, наш автобус ___! (ехать/ездить)</strong></p>',
+        'explanation': '<blockquote><mark>Ехать: Aynan hozirgi harakat</mark></blockquote><p><strong>едет</strong> to\'g\'ri javob. Avtobus aynan hozir yaqinlashib kelmoqda. <br><br><em>(<strong>едет</strong> — правильный ответ. Транспорт движется прямо сейчас в поле зрения.)</em></p>',
+        'correct': 'едет',
+        'choices': ['ездит', 'едут', 'едет', 'езжу']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ в метро каждый день. (ехать/ездить)</strong></p>',
+        'explanation': '<blockquote><mark>Ездить: Doimiy harakat</mark></blockquote><p><strong>ездим</strong> to\'g\'ri javob. Metrodan har kuni foydalanish odati. <br><br><em>(<strong>ездим</strong> — правильный ответ. Повседневная привычка пользоваться метро.)</em></p>',
+        'correct': 'ездим',
+        'choices': ['едем', 'ездим', 'едут', 'ездят']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Извините, мы ___ в аэропорт. Мы опаздываем! (ехать/ездить)</strong></p>',
+        'explanation': '<blockquote><mark>Ехать: Hozirgi jarayon</mark></blockquote><p><strong>едем</strong> to\'g\'ri javob. Ular hozir aeroportga qarab ketishmoqda. <br><br><em>(<strong>едем</strong> — правильный ответ. Процесс поездки к конкретной цели прямо сейчас.)</em></p>',
+        'correct': 'едем',
+        'choices': ['ездим', 'едем', 'едете', 'ездят']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Как часто вы ___ к родителям? (ехать/ездить)</strong></p>',
+        'explanation': '<blockquote><mark>Ездить: Takrorlanishni so\'rash</mark></blockquote><p><strong>ездите</strong> to\'g\'ri javob. Ota-onani qanchalik tez-tez borib ko\'rish so\'ralmoqda. <br><br><em>(<strong>ездите</strong> — правильный ответ. Вопрос о регулярности поездок.)</em></p>',
+        'correct': 'ездите',
+        'choices': ['едете', 'ездите', 'едут', 'ездят']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Осторожно, машины ___ очень быстро! (ехать/ездить - hozir)</strong></p>',
+        'explanation': '<blockquote><mark>Ехать: Hozirgi harakat</mark></blockquote><p><strong>едут</strong> to\'g\'ri javob. Mashinalar aynan hozir ko\'chada tez harakatlanmoqda. <br><br><em>(<strong>едут</strong> — правильный ответ. Транспорт движется прямо сейчас.)</em></p>',
+        'correct': 'едут',
+        'choices': ['ездят', 'едут', 'едет', 'ездим']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мои друзья часто ___ за границу. (ехать/ездить)</strong></p>',
+        'explanation': '<blockquote><mark>Ездить: Doimiy harakat</mark></blockquote><p><strong>ездят</strong> to\'g\'ri javob. Chet elga ko\'p marta safar qilishadi. <br><br><em>(<strong>ездят</strong> — правильный ответ. Многократные, регулярные поездки.)</em></p>',
+        'correct': 'ездят',
+        'choices': ['едут', 'ездят', 'ездим', 'едем']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Вчера я ___ в главный офис банка. (ехать/ездить - borib kelish)</strong></p>',
+        'explanation': '<blockquote><mark>Ездить: O\'tgan zamonda borib kelish</mark></blockquote><p><strong>ездил</strong> to\'g\'ri javob. Erkak kishi bankka borib, so\'ng qaytib kelgan. <br><br><em>(<strong>ездил</strong> — правильный ответ. Поездка туда и обратно в прошлом.)</em></p>',
+        'correct': 'ездил',
+        'choices': ['ехал', 'ездил', 'ехала', 'ездила']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Когда я ___ в поезде, я читал книгу. (ехать/ездить - jarayon)</strong></p>',
+        'explanation': '<blockquote><mark>Ехать: O\'tgan zamondagi jarayon</mark></blockquote><p><strong>ехал</strong> to\'g\'ri javob. Poyezdda ketayotgan paytda (jarayonda) kitob o\'qigan. <br><br><em>(<strong>ехал</strong> — правильный ответ. Процесс движения в транспорте в прошлом.)</em></p>',
+        'correct': 'ехал',
+        'choices': ['ездил', 'ехал', 'ехала', 'ездила']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Моя сестра ___ в Москву на прошлой неделе. (ехать/ездить - borib keldi)</strong></p>',
+        'explanation': '<blockquote><mark>Ездить: Borib kelish (ayol kishi)</mark></blockquote><p><strong>ездила</strong> to\'g\'ri javob. Opasi Moskvaga borib, yana qaytib kelgan. <br><br><em>(<strong>ездила</strong> — правильный ответ. Поездка женщины туда и обратно.)</em></p>',
+        'correct': 'ездила',
+        'choices': ['ехала', 'ездил', 'ездила', 'ехал']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Она ___ в такси и слушала музыку. (ехать/ездить - jarayon)</strong></p>',
+        'explanation': '<blockquote><mark>Ехать: O\'tgan zamondagi jarayon</mark></blockquote><p><strong>ехала</strong> to\'g\'ri javob. Taksida ketish jarayonida musiqa tinglagan. <br><br><em>(<strong>ехала</strong> — правильный ответ. Процесс поездки женщины в прошлом.)</em></p>',
+        'correct': 'ехала',
+        'choices': ['ездила', 'ехала', 'ехал', 'ездил']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ на машине целый день! (ехать/ездить - jarayon)</strong></p>',
+        'explanation': '<blockquote><mark>Ехать: Davomli jarayon</mark></blockquote><p><strong>ехали</strong> to\'g\'ri javob. Kun bo\'yi mashinada yo\'lda bo\'lishgan. <br><br><em>(<strong>ехали</strong> — правильный ответ. Длительный процесс поездки группы людей.)</em></p>',
+        'correct': 'ехали',
+        'choices': ['ездили', 'ехали', 'ездил', 'ехал']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>В прошлом году мы ___ в Японию. (ехать/ездить - borib kelish)</strong></p>',
+        'explanation': '<blockquote><mark>Ездить: O\'tgan zamonda borib kelish</mark></blockquote><p><strong>ездили</strong> to\'g\'ri javob. Yaponiyaga borib, uyga qaytib kelishgan. <br><br><em>(<strong>ездили</strong> — правильный ответ. Совершенная поездка группы туда и обратно.)</em></p>',
+        'correct': 'ездили',
+        'choices': ['ехали', 'ездили', 'ехал', 'ездил']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Ты умеешь ___ на велосипеде? (ехать/ездить)</strong></p>',
+        'explanation': '<blockquote><mark>Ездить: Qobiliyat/Malaka</mark></blockquote><p><strong>ездить</strong> to\'g\'ri javob. Transportni boshqarish qobiliyati haqida so\'ralganda doim "ездить" ishlatiladi. <br><br><em>(<strong>ездить</strong> — правильный ответ. Навык и умение управлять транспортом.)</em></p>',
+        'correct': 'ездить',
+        'choices': ['ехать', 'ездить', 'идти', 'ходить']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я не люблю ___ на автобусе. (ехать/ездить - umuman)</strong></p>',
+        'explanation': '<blockquote><mark>Ездить: Umumiy munosabat</mark></blockquote><p><strong>ездить</strong> to\'g\'ri javob. Umuman avtobusda yurish yoqmasligi ifodalanmoqda. <br><br><em>(<strong>ездить</strong> — правильный ответ. Отношение к регулярному способу передвижения.)</em></p>',
+        'correct': 'ездить',
+        'choices': ['ехать', 'ездить', 'иду', 'еду']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Завтра утром я ___ в командировку. (ехать/ездить - reja)</strong></p>',
+        'explanation': '<blockquote><mark>Ехать: Kelajakdagi aniq reja</mark></blockquote><p><strong>еду</strong> to\'g\'ri javob. Ertangi aniq, bir martalik safar. <br><br><em>(<strong>еду</strong> — правильный ответ. Запланированная однократная поездка.)</em></p>',
+        'correct': 'еду',
+        'choices': ['езжу', 'еду', 'едешь', 'ездит']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Куда вы сейчас ___? (ехать/ездить)</strong></p>',
+        'explanation': '<blockquote><mark>Ехать: Hozirgi harakat</mark></blockquote><p><strong>едете</strong> to\'g\'ri javob. Transportda aynan hozir qayerga ketayotgani so\'ralmoqda. <br><br><em>(<strong>едете</strong> — правильный ответ. Направление движения в данный момент.)</em></p>',
+        'correct': 'едете',
+        'choices': ['ездите', 'едете', 'едут', 'ездят']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Раньше я ___ на работу на метро, а теперь на машине. (ехать/ездить)</strong></p>',
+        'explanation': '<blockquote><mark>Ездить: O\'tgan zamondagi odat</mark></blockquote><p><strong>ездил</strong> to\'g\'ri javob. O\'tmishdagi doimiy takrorlangan odat. <br><br><em>(<strong>ездил</strong> — правильный ответ. Регулярная привычка в прошлом.)</em></p>',
+        'correct': 'ездил',
+        'choices': ['ехал', 'ездил', 'ехала', 'ездила']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Поезд ___ очень медленно. (ехать/ездить - hozir)</strong></p>',
+        'explanation': '<blockquote><mark>Ехать: Hozirgi jarayon</mark></blockquote><p><strong>едет</strong> to\'g\'ri javob. Poyezdning hozirgi tezligi va harakati tasvirlanmoqda. <br><br><em>(<strong>едет</strong> — правильный ответ. Процесс движения транспорта в данный момент.)</em></p>',
+        'correct': 'едет',
+        'choices': ['ездит', 'едут', 'едет', 'езжу']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы часто ___ в этот торговый центр на выходных. (ехать/ездить)</strong></p>',
+        'explanation': '<blockquote><mark>Ездить: Takrorlanuvchi harakat</mark></blockquote><p><strong>ездим</strong> to\'g\'ri javob. Dam olish kunlaridagi muntazam transport safari. <br><br><em>(<strong>ездим</strong> — правильный ответ. Регулярная поездка по выходным.)</em></p>',
+        'correct': 'ездим',
+        'choices': ['едем', 'ездим', 'едут', 'ездят']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Почему ты так быстро ___? Сбавь скорость! (ехать/ездить)</strong></p>',
+        'explanation': '<blockquote><mark>Ехать: Hozirgi holat</mark></blockquote><p><strong>едешь</strong> to\'g\'ri javob. Haydovchining aynan hozirgi tezligiga etiroz bildirilmoqda. <br><br><em>(<strong>едешь</strong> — правильный ответ. Наблюдение за скоростью в данный момент.)</em></p>',
+        'correct': 'едешь',
+        'choices': ['ездишь', 'едешь', 'едет', 'езжу']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Они ___ в отпуск каждый год. (ехать/ездить)</strong></p>',
+        'explanation': '<blockquote><mark>Ездить: Har yillik odat</mark></blockquote><p><strong>ездят</strong> to\'g\'ri javob. Har yili takrorlanadigan tatil safari. <br><br><em>(<strong>ездят</strong> — правильный ответ. Ежегодная повторяющаяся поездка.)</em></p>',
+        'correct': 'ездят',
+        'choices': ['едут', 'ездят', 'едем', 'ездим']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ домой и слушал подкаст. (ехать/ездить - o\'tgan zamon jarayon)</strong></p>',
+        'explanation': '<blockquote><mark>Ехать: O\'tgan zamondagi jarayon</mark></blockquote><p><strong>ехал</strong> to\'g\'ri javob. Uyga ketish jarayonida podkast tinglangan. <br><br><em>(<strong>ехал</strong> — правильный ответ. Процесс поездки в одном направлении в прошлом.)</em></p>',
+        'correct': 'ехал',
+        'choices': ['ездил', 'ехал', 'ехала', 'ездила']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Ты ___ в офис на прошлой неделе? (ехать/ездить - borib kelishni so\'rash)</strong></p>',
+        'explanation': '<blockquote><mark>Ездить: Borib kelish</mark></blockquote><p><strong>ездил</strong> to\'g\'ri javob. O\'tgan haftada ofisga borib-kelganligi so\'ralmoqda. <br><br><em>(<strong>ездил</strong> — правильный ответ. Вопрос о совершенной поездке туда и обратно.)</em></p>',
+        'correct': 'ездил',
+        'choices': ['ехал', 'ездил', 'ехала', 'ездила']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мой коллега сейчас ___ на встречу с клиентом. (ехать/ездить)</strong></p>',
+        'explanation': '<blockquote><mark>Ехать: Hozirgi harakat</mark></blockquote><p><strong>едет</strong> to\'g\'ri javob. Hamkasb aynan hozir uchrashuvga yo\'l olgan. <br><br><em>(<strong>едет</strong> — правильный ответ. Однонаправленное движение прямо сейчас.)</em></p>',
+        'correct': 'едет',
+        'choices': ['ездит', 'едут', 'едет', 'езжу']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я никогда не ___ на мотоцикле. (ехать/ездить - tajriba)</strong></p>',
+        'explanation': '<blockquote><mark>Ездить: Hayotiy tajriba</mark></blockquote><p><strong>ездил</strong> to\'g\'ri javob. Mototsikl haydash tajribasi umuman yo\'qligi bildirilmoqda. <br><br><em>(<strong>ездил</strong> — правильный ответ. Отрицание жизненного опыта поездок/вождения.)</em></p>',
+        'correct': 'ездил',
+        'choices': ['ехал', 'ездил', 'ехала', 'ездила']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Давай ___ на такси, я устал. (ехать/ездить)</strong></p>',
+        'explanation': '<blockquote><mark>Ехать: Reja / Taklif</mark></blockquote><p><strong>поедем</strong> to\'g\'ri javob. (Yokida "поедем", lekin savolda faqat negiz fellar bo\'lsa, kelasi zamon manosida). "Поедем" taklifni bildiradi. <br><br><em>(<strong>поедем</strong> — правильный ответ. Предложение совершить однократную поездку.)</em></p>',
+        'correct': 'поедем',
+        'choices': ['поедем', 'поездим', 'ездим', 'едем']
+    }
+]
+
+QUESTIONS_chast_36 = [
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я езжу на работу на ___. (bus)</strong></p>',
+        'explanation': '<blockquote><mark>Транспорт: На чем?</mark></blockquote><p><strong>автобусе</strong> to\'g\'ri javob. "На" predlogi bilan o\'rin-payt kelishigida ishlatiladi. <br><br><em>(<strong>автобусе</strong> — правильный ответ. Предложный падеж транспорта.)</em></p>',
+        'correct': 'автобусе',
+        'choices': ['автобус', 'автобусу', 'автобусом', 'автобусе']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Здесь есть станция ___? (metro)</strong></p>',
+        'explanation': '<blockquote><mark>Транспорт: Метро</mark></blockquote><p><strong>метро</strong> to\'g\'ri javob. "Метро" so\'zi o\'zgarmasdir (sklonyat qilinmaydi). <br><br><em>(<strong>метро</strong> — правильный ответ. Слово не склоняется.)</em></p>',
+        'correct': 'метро',
+        'choices': ['метре', 'метро', 'метром', 'метра']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Где находится автобусная ___? (stop)</strong></p>',
+        'explanation': '<blockquote><mark>Транспорт: Остановка</mark></blockquote><p><strong>остановка</strong> to\'g\'ri javob. Jamoat transporti to\'xtaydigan joy. <br><br><em>(<strong>остановка</strong> — правильный ответ. Место ожидания автобуса.)</em></p>',
+        'correct': 'остановка',
+        'choices': ['станция', 'остановка', 'вокзал', 'парковка']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мне нужно вызвать ___, мы опаздываем. (taxi)</strong></p>',
+        'explanation': '<blockquote><mark>Транспорт: Такси</mark></blockquote><p><strong>такси</strong> to\'g\'ri javob. "Такси" ham o\'zgarmas so\'z hisoblanadi. <br><br><em>(<strong>такси</strong> — правильный ответ. Слово не склоняется, винительный падеж.)</em></p>',
+        'correct': 'такси',
+        'choices': ['такси', 'таксю', 'таксе', 'таксим']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Сколько стоит ___ на поезд? (ticket)</strong></p>',
+        'explanation': '<blockquote><mark>Транспорт: Билет</mark></blockquote><p><strong>билет</strong> to\'g\'ri javob. Safar qilish uchun ruxsatnoma qog\'ozi. <br><br><em>(<strong>билет</strong> — правильный ответ. Документ для проезда.)</em></p>',
+        'correct': 'билет',
+        'choices': ['билет', 'проездной', 'документ', 'паспорт']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Идите ___, никуда не поворачивайте. (straight)</strong></p>',
+        'explanation': '<blockquote><mark>Направления: Прямо</mark></blockquote><p><strong>прямо</strong> to\'g\'ri javob. Hech qayoqqa burilmasdan harakatlanish. <br><br><em>(<strong>прямо</strong> — правильный ответ. Движение вперед без поворотов.)</em></p>',
+        'correct': 'прямо',
+        'choices': ['налево', 'направо', 'прямо', 'назад']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Поверните ___ на светофоре. (right)</strong></p>',
+        'explanation': '<blockquote><mark>Направления: Направо</mark></blockquote><p><strong>направо</strong> to\'g\'ri javob. O\'ng tomonga burilish. <br><br><em>(<strong>направо</strong> — правильный ответ. Поворот в правую сторону.)</em></p>',
+        'correct': 'направо',
+        'choices': ['налево', 'направо', 'прямо', 'назад']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Поверните ___ после банка. (left)</strong></p>',
+        'explanation': '<blockquote><mark>Направления: Налево</mark></blockquote><p><strong>налево</strong> to\'g\'ri javob. Chap tomonga burilish. <br><br><em>(<strong>налево</strong> — правильный ответ. Поворот в левую сторону.)</em></p>',
+        'correct': 'налево',
+        'choices': ['налево', 'направо', 'прямо', 'вверх']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Банк находится ___, через дорогу. (opposite/across)</strong></p>',
+        'explanation': '<blockquote><mark>Направления: Напротив</mark></blockquote><p><strong>напротив</strong> to\'g\'ri javob. Yo\'lning narigi betida, yuzma-yuz. <br><br><em>(<strong>напротив</strong> — правильный ответ. Расположение через дорогу, лицом к лицу.)</em></p>',
+        'correct': 'напротив',
+        'choices': ['рядом', 'напротив', 'далеко', 'позади']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Метро совсем ___, 5 минут пешком. (close/nearby)</strong></p>',
+        'explanation': '<blockquote><mark>Направления: Близко/Рядом</mark></blockquote><p><strong>близко</strong> to\'g\'ri javob. Qisqa masofada joylashganini bildiradi. <br><br><em>(<strong>близко</strong> — правильный ответ. Обозначает небольшое расстояние.)</em></p>',
+        'correct': 'близко',
+        'choices': ['далеко', 'близко', 'напротив', 'прямо']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Аэропорт находится очень ___. (far)</strong></p>',
+        'explanation': '<blockquote><mark>Направления: Далеко</mark></blockquote><p><strong>далеко</strong> to\'g\'ri javob. Uzoq masofada joylashgan. <br><br><em>(<strong>далеко</strong> — правильный ответ. Большое расстояние от текущего места.)</em></p>',
+        'correct': 'далеко',
+        'choices': ['близко', 'рядом', 'далеко', 'прямо']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Извините, как ___ до станции? (to get to - on foot)</strong></p>',
+        'explanation': '<blockquote><mark>Направления: Дойти</mark></blockquote><p><strong>дойти</strong> to\'g\'ri javob. Piyoda borish yo\'lini so\'rash. <br><br><em>(<strong>дойти</strong> — правильный ответ. Вопрос о маршруте пешком.)</em></p>',
+        'correct': 'дойти',
+        'choices': ['доехать', 'дойти', 'пойти', 'прийти']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Как ___ до аэропорта на машине? (to get to - by transport)</strong></p>',
+        'explanation': '<blockquote><mark>Направления: Доехать</mark></blockquote><p><strong>доехать</strong> to\'g\'ri javob. Transportda yetib borish yo\'lini so\'rash. <br><br><em>(<strong>доехать</strong> — правильный ответ. Вопрос о маршруте на транспорте.)</em></p>',
+        'correct': 'доехать',
+        'choices': ['дойти', 'доехать', 'приехать', 'поехать']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Какая это ___? (stop)</strong></p>',
+        'explanation': '<blockquote><mark>Транспорт: Остановка</mark></blockquote><p><strong>остановка</strong> to\'g\'ri javob. Avtobus yoki tramvay to\'xtash joyi nomi so\'ralmoqda. <br><br><em>(<strong>остановка</strong> — правильный ответ. Вопрос о названии текущей или следующей остановки.)</em></p>',
+        'correct': 'остановка',
+        'choices': ['станция', 'улица', 'остановка', 'дорога']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я выхожу на следующей ___. (stop/station)</strong></p>',
+        'explanation': '<blockquote><mark>Транспорт: На остановке</mark></blockquote><p><strong>остановке</strong> to\'g\'ri javob. O\'rin-payt kelishigi (Предложный падеж). <br><br><em>(<strong>остановке</strong> — правильный ответ. Предложный падеж от слова «остановка».)</em></p>',
+        'correct': 'остановке',
+        'choices': ['остановка', 'остановку', 'остановкой', 'остановке']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Где здесь ___ переход? (pedestrian crossing)</strong></p>',
+        'explanation': '<blockquote><mark>Город: Пешеходный переход</mark></blockquote><p><strong>пешеходный</strong> to\'g\'ri javob. Piyodalar yo\'lni kesib o\'tish joyi ("зебра"). <br><br><em>(<strong>пешеходный</strong> — правильный ответ. Место для безопасного перехода дороги.)</em></p>',
+        'correct': 'пешеходный',
+        'choices': ['машинный', 'пешеходный', 'дорожный', 'быстрый']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Дождитесь зеленого сигнала ___. (traffic light)</strong></p>',
+        'explanation': '<blockquote><mark>Город: Светофор</mark></blockquote><p><strong>светофора</strong> to\'g\'ri javob. Yo\'l harakatini tartibga soluvchi qurilma (Roditelniy padej). <br><br><em>(<strong>светофора</strong> — правильный ответ. Устройство для регулирования движения, родительный падеж.)</em></p>',
+        'correct': 'светофора',
+        'choices': ['светофор', 'светофору', 'светофором', 'светофора']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я заблудился. Вы не подскажете ___. (way/route)</strong></p>',
+        'explanation': '<blockquote><mark>Направления: Дорога/Путь</mark></blockquote><p><strong>дорогу</strong> to\'g\'ri javob. Adashib qolganda yo\'lni so\'rash. <br><br><em>(<strong>дорогу</strong> — правильный ответ. Просьба подсказать правильный путь, винительный падеж.)</em></p>',
+        'correct': 'дорогу',
+        'choices': ['дорога', 'дороги', 'дорогу', 'дорогой']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Купите ___ на месяц, это дешевле. (travel pass)</strong></p>',
+        'explanation': '<blockquote><mark>Транспорт: Проездной</mark></blockquote><p><strong>проездной</strong> to\'g\'ri javob. Bir oylik transport kartasi. <br><br><em>(<strong>проездной</strong> — правильный ответ. Месячный билет для проезда в транспорте.)</em></p>',
+        'correct': 'проездной',
+        'choices': ['билет', 'проездной', 'чек', 'документ']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Поезда отправляются с ___. (railway station)</strong></p>',
+        'explanation': '<blockquote><mark>Транспорт: Вокзал</mark></blockquote><p><strong>вокзала</strong> to\'g\'ri javob. Poyezdlar jo\'nab ketadigan asosiy bino. <br><br><em>(<strong>вокзала</strong> — правильный ответ. Место отправления поездов, родительный падеж с предлогом «с».)</em></p>',
+        'correct': 'вокзала',
+        'choices': ['станция', 'вокзал', 'вокзалу', 'вокзала']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Машина стоит на ___. (parking)</strong></p>',
+        'explanation': '<blockquote><mark>Транспорт: Парковка</mark></blockquote><p><strong>парковке</strong> to\'g\'ri javob. Avtomobillarni saqlash joyi (Predlojniy padej). <br><br><em>(<strong>парковке</strong> — правильный ответ. Место для стоянки машин, предложный падеж.)</em></p>',
+        'correct': 'парковке',
+        'choices': ['парковка', 'парковку', 'парковке', 'парковкой']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Какая это ___ метро? (station)</strong></p>',
+        'explanation': '<blockquote><mark>Транспорт: Станция</mark></blockquote><p><strong>станция</strong> to\'g\'ri javob. Metro to\'xtash joyi. <br><br><em>(<strong>станция</strong> — правильный ответ. Название остановки метрополитена.)</em></p>',
+        'correct': 'станция',
+        'choices': ['остановка', 'вокзал', 'станция', 'парковка']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Вам нужно сделать ___. (transfer/change trains)</strong></p>',
+        'explanation': '<blockquote><mark>Транспорт: Пересадка</mark></blockquote><p><strong>пересадку</strong> to\'g\'ri javob. Bir transportdan boshqasiga o\'tish. <br><br><em>(<strong>пересадку</strong> — правильный ответ. Смена одного транспорта на другой, винительный падеж.)</em></p>',
+        'correct': 'пересадку',
+        'choices': ['пересадка', 'пересадку', 'пересадки', 'остановка']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Этот автобус идёт в ___? (center)</strong></p>',
+        'explanation': '<blockquote><mark>Город: Центр</mark></blockquote><p><strong>центр</strong> to\'g\'ri javob. Shaharning markaziy qismiga yo\'nalish. <br><br><em>(<strong>центр</strong> — правильный ответ. Направление в центральную часть города, винительный падеж.)</em></p>',
+        'correct': 'центр',
+        'choices': ['центр', 'центра', 'центре', 'центру']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Офис находится на ___ улице. (main)</strong></p>',
+        'explanation': '<blockquote><mark>Город: Главная улица</mark></blockquote><p><strong>главной</strong> to\'g\'ri javob. Asosiy ko\'cha (Predlojniy padej). <br><br><em>(<strong>главной</strong> — правильный ответ. Прилагательное в предложном падеже женского рода.)</em></p>',
+        'correct': 'главной',
+        'choices': ['главная', 'главную', 'главной', 'главный']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Водитель, остановите ___. (here)</strong></p>',
+        'explanation': '<blockquote><mark>Направления: Здесь</mark></blockquote><p><strong>здесь</strong> to\'g\'ri javob. Taksini aynan shu joyda to\'xtatishni so\'rash. <br><br><em>(<strong>здесь</strong> — правильный ответ. Просьба остановить транспорт в текущем месте.)</em></p>',
+        'correct': 'здесь',
+        'choices': ['там', 'здесь', 'прямо', 'направо']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Аптека находится за ___. (corner)</strong></p>',
+        'explanation': '<blockquote><mark>Направления: Угол</mark></blockquote><p><strong>углом</strong> to\'g\'ri javob. Binoning burchagidan o\'tgach. (Tvoritelniy padej). <br><br><em>(<strong>углом</strong> — правильный ответ. Расположение за поворотом здания, творительный падеж.)</em></p>',
+        'correct': 'углом',
+        'choices': ['угол', 'угла', 'углу', 'углом']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Идите прямо до ___. (intersection)</strong></p>',
+        'explanation': '<blockquote><mark>Направления: Перекрёсток</mark></blockquote><p><strong>перекрёстка</strong> to\'g\'ri javob. Yo\'llar kesishmasigacha borish. (Roditelniy padej). <br><br><em>(<strong>перекрёстка</strong> — правильный ответ. Место пересечения дорог, родительный падеж с предлогом «до».)</em></p>',
+        'correct': 'перекрёстка',
+        'choices': ['перекрёсток', 'перекрёстку', 'перекрёстка', 'перекрёстком']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Можно я сяду у ___? (window)</strong></p>',
+        'explanation': '<blockquote><mark>Транспорт: Окно</mark></blockquote><p><strong>окна</strong> to\'g\'ri javob. Deraza yonidan joy so\'rash. (Roditelniy padej). <br><br><em>(<strong>окна</strong> — правильный ответ. Место рядом с окном, родительный падеж с предлогом «у».)</em></p>',
+        'correct': 'окна',
+        'choices': ['окно', 'окну', 'окна', 'окном']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы застряли в ___. (traffic jam)</strong></p>',
+        'explanation': '<blockquote><mark>Транспорт: Пробка</mark></blockquote><p><strong>пробке</strong> to\'g\'ri javob. Yo\'ldagi tirbandlikda qolib ketish. (Predlojniy padej). <br><br><em>(<strong>пробке</strong> — правильный ответ. Дорожный затор, предложный падеж.)</em></p>',
+        'correct': 'пробке',
+        'choices': ['пробка', 'пробку', 'пробке', 'пробкой']
+    }
+]
+
+QUESTIONS_chast_37 = [
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>___ клиент ждёт в переговорной. (This)</strong></p>',
+        'explanation': '<p><strong>Этот</strong> is correct. "Клиент" is masculine, so it takes the masculine demonstrative pronoun "Этот". <br><br><em>(<strong>Этот</strong> — правильный ответ. Указательное местоимение мужского рода.)</em></p>',
+        'correct': 'Этот',
+        'choices': ['Эта', 'Этот', 'Эти', 'Это']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Пожалуйста, введите ___ пароль ещё раз. (this)</strong></p>',
+        'explanation': '<p><strong>этот</strong> is correct. "Пароль" is masculine. <br><br><em>(<strong>этот</strong> — правильный ответ. Мужской род, винительный падеж неодушевленного предмета совпадает с именительным.)</em></p>',
+        'correct': 'этот',
+        'choices': ['эту', 'эти', 'этот', 'это']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы перезагрузили ___ сервер. (this)</strong></p>',
+        'explanation': '<p><strong>этот</strong> is correct. "Сервер" is masculine. <br><br><em>(<strong>этот</strong> — правильный ответ. Согласуется с существительным мужского рода.)</em></p>',
+        'correct': 'этот',
+        'choices': ['этот', 'это', 'эта', 'эти']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>___ банк предлагает лучшие условия. (This)</strong></p>',
+        'explanation': '<p><strong>Этот</strong> is correct. "Банк" is masculine. <br><br><em>(<strong>Этот</strong> — правильный ответ. Указательное местоимение мужского рода.)</em></p>',
+        'correct': 'Этот',
+        'choices': ['Это', 'Этот', 'Эти', 'Эта']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я сам написал ___ код. (this)</strong></p>',
+        'explanation': '<p><strong>этот</strong> is correct. "Код" is masculine. <br><br><em>(<strong>этот</strong> — правильный ответ. Мужской род.)</em></p>',
+        'correct': 'этот',
+        'choices': ['эта', 'эти', 'это', 'этот']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>___ программа работает очень медленно. (This)</strong></p>',
+        'explanation': '<p><strong>Эта</strong> is correct. "Программа" is feminine. <br><br><em>(<strong>Эта</strong> — правильный ответ. Указательное местоимение женского рода.)</em></p>',
+        'correct': 'Эта',
+        'choices': ['Этот', 'Эта', 'Это', 'Эти']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>___ задача слишком сложная для меня. (This)</strong></p>',
+        'explanation': '<p><strong>Эта</strong> is correct. "Задача" is feminine. <br><br><em>(<strong>Эта</strong> — правильный ответ. Женский род.)</em></p>',
+        'correct': 'Эта',
+        'choices': ['Это', 'Эти', 'Эта', 'Этот']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы быстро исправили ___ ошибку. (this)</strong></p>',
+        'explanation': '<p><strong>эту</strong> is correct. "Ошибка" is feminine, and it is in the Accusative case (эту ошибку). <br><br><em>(<strong>эту</strong> — правильный ответ. Женский род в винительном падеже меняет «эта» на «эту».)</em></p>',
+        'correct': 'эту',
+        'choices': ['эту', 'этот', 'этой', 'эти']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>___ база данных нам не подходит. (This)</strong></p>',
+        'explanation': '<p><strong>Эта</strong> is correct. "База" is feminine. <br><br><em>(<strong>Эта</strong> — правильный ответ. Согласуется с существительным женского рода.)</em></p>',
+        'correct': 'Эта',
+        'choices': ['Эти', 'Это', 'Этот', 'Эта']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я потерял ___ карту. (this)</strong></p>',
+        'explanation': '<p><strong>эту</strong> is correct. Accusative case of "эта" for the feminine noun "карта". <br><br><em>(<strong>эту</strong> — правильный ответ. Винительный падеж женского рода.)</em></p>',
+        'correct': 'эту',
+        'choices': ['эту', 'этот', 'эти', 'этой']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>___ приложение очень популярно. (This)</strong></p>',
+        'explanation': '<p><strong>Это</strong> is correct. "Приложение" is neuter. <br><br><em>(<strong>Это</strong> — правильный ответ. Указательное местоимение среднего рода.)</em></p>',
+        'correct': 'Это',
+        'choices': ['Этот', 'Эта', 'Это', 'Эти']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Прочитай ___ письмо от инвесторов. (this)</strong></p>',
+        'explanation': '<p><strong>это</strong> is correct. "Письмо" is neuter. <br><br><em>(<strong>это</strong> — правильный ответ. Средний род.)</em></p>',
+        'correct': 'это',
+        'choices': ['эти', 'это', 'этот', 'эта']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы не ожидали ___ решения. (this)</strong></p>',
+        'explanation': '<p><strong>этого</strong> is correct. "Решения" is Genitive neuter. "Это" -> "этого". <br><br><em>(<strong>этого</strong> — правильный ответ. Средний род в родительном падеже.)</em></p>',
+        'correct': 'этого',
+        'choices': ['это', 'эти', 'этого', 'этом']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Закрой ___ окно, мне холодно. (this)</strong></p>',
+        'explanation': '<p><strong>это</strong> is correct. "Окно" is neuter. <br><br><em>(<strong>это</strong> — правильный ответ. Средний род, винительный падеж.)</em></p>',
+        'correct': 'это',
+        'choices': ['эту', 'этот', 'эта', 'это']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Извините, ___ место занято? (this)</strong></p>',
+        'explanation': '<p><strong>это</strong> is correct. "Место" is neuter. <br><br><em>(<strong>это</strong> — правильный ответ. Согласуется с существительным среднего рода.)</em></p>',
+        'correct': 'это',
+        'choices': ['этот', 'это', 'эти', 'эта']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>___ данные нужно удалить. (These)</strong></p>',
+        'explanation': '<p><strong>Эти</strong> is correct. "Данные" is plural. <br><br><em>(<strong>Эти</strong> — правильный ответ. Указательное местоимение множественного числа.)</em></p>',
+        'correct': 'Эти',
+        'choices': ['Этот', 'Эти', 'Это', 'Эта']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Положи ___ документы на стол. (these)</strong></p>',
+        'explanation': '<p><strong>эти</strong> is correct. "Документы" is plural. <br><br><em>(<strong>эти</strong> — правильный ответ. Множественное число.)</em></p>',
+        'correct': 'эти',
+        'choices': ['эти', 'это', 'этот', 'эту']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Кто ___ люди? (these)</strong></p>',
+        'explanation': '<p><strong>эти</strong> is correct. "Люди" is plural. <br><br><em>(<strong>эти</strong> — правильный ответ. Согласуется со множественным числом.)</em></p>',
+        'correct': 'эти',
+        'choices': ['эти', 'этот', 'эта', 'это']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я не могу найти ___ деньги. (these)</strong></p>',
+        'explanation': '<p><strong>эти</strong> is correct. "Деньги" is plural. <br><br><em>(<strong>эти</strong> — правильный ответ. Множественное число.)</em></p>',
+        'correct': 'эти',
+        'choices': ['эта', 'этот', 'эти', 'это']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Скопируй ___ файлы на флешку. (these)</strong></p>',
+        'explanation': '<p><strong>эти</strong> is correct. "Файлы" is plural. <br><br><em>(<strong>эти</strong> — правильный ответ. Множественное число.)</em></p>',
+        'correct': 'эти',
+        'choices': ['этот', 'эти', 'эту', 'это']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я помню ___ день, как сейчас. (that)</strong></p>',
+        'explanation': '<p><strong>тот</strong> is correct. "День" is masculine, and "тот" means "that". <br><br><em>(<strong>тот</strong> — правильный ответ. Указательное местоимение для отдаленного объекта, мужской род.)</em></p>',
+        'correct': 'тот',
+        'choices': ['то', 'те', 'тот', 'та']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы закрыли ___ проект в прошлом году. (that)</strong></p>',
+        'explanation': '<p><strong>тот</strong> is correct. "Проект" is masculine. <br><br><em>(<strong>тот</strong> — правильный ответ. Мужской род.)</em></p>',
+        'correct': 'тот',
+        'choices': ['тот', 'та', 'то', 'те']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Кто ___ человек в синем костюме? (that)</strong></p>',
+        'explanation': '<p><strong>тот</strong> is correct. "Человек" is masculine. <br><br><em>(<strong>тот</strong> — правильный ответ. Согласуется с существительным мужского рода.)</em></p>',
+        'correct': 'тот',
+        'choices': ['то', 'тот', 'та', 'те']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>___ неделя была очень сложной. (That)</strong></p>',
+        'explanation': '<p><strong>Та</strong> is correct. "Неделя" is feminine. <br><br><em>(<strong>Та</strong> — правильный ответ. Женский род.)</em></p>',
+        'correct': 'Та',
+        'choices': ['Тот', 'То', 'Те', 'Та']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я не хочу работать в ___ компании. (that)</strong></p>',
+        'explanation': '<p><strong>той</strong> is correct. "Компании" is in the Prepositional case. "Та" -> "той". <br><br><em>(<strong>той</strong> — правильный ответ. Предложный падеж женского рода.)</em></p>',
+        'correct': 'той',
+        'choices': ['той', 'ту', 'та', 'том']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>___ время прошло. (That)</strong></p>',
+        'explanation': '<p><strong>То</strong> is correct. "Время" is neuter. <br><br><em>(<strong>То</strong> — правильный ответ. Указательное местоимение среднего рода.)</em></p>',
+        'correct': 'То',
+        'choices': ['Тот', 'Те', 'То', 'Та']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Сделай ___ задание, а не это. (that)</strong></p>',
+        'explanation': '<p><strong>то</strong> is correct. "Задание" is neuter. <br><br><em>(<strong>то</strong> — правильный ответ. Средний род, винительный падеж.)</em></p>',
+        'correct': 'то',
+        'choices': ['тот', 'та', 'то', 'те']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>___ серверы уже старые. (Those)</strong></p>',
+        'explanation': '<p><strong>Те</strong> is correct. "Серверы" is plural. <br><br><em>(<strong>Те</strong> — правильный ответ. Множественное число.)</em></p>',
+        'correct': 'Те',
+        'choices': ['Те', 'То', 'Тот', 'Та']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Напиши письмо ___ клиентам. (those)</strong></p>',
+        'explanation': '<p><strong>тем</strong> is correct. "Клиентам" is in the Dative plural. "Те" -> "тем". <br><br><em>(<strong>тем</strong> — правильный ответ. Дательный падеж множественного числа.)</em></p>',
+        'correct': 'тем',
+        'choices': ['те', 'тем', 'тех', 'теми']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы исправили ___ ошибки ещё вчера. (those)</strong></p>',
+        'explanation': '<p><strong>те</strong> is correct. "Ошибки" is plural. <br><br><em>(<strong>те</strong> — правильный ответ. Множественное число, винительный падеж.)</em></p>',
+        'correct': 'те',
+        'choices': ['эти', 'те', 'то', 'та']
+    }
+]
+
+QUESTIONS_chast_38 = [
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Этот код работает ___, чем старый. (better)</strong></p>',
+        'explanation': '<p><strong>лучше</strong> is correct. Comparative form of "хорошо/хороший". <br><br><em>(<strong>лучше</strong> — правильный ответ. Сравнительная степень от слова «хороший/хорошо».)</em></p>',
+        'correct': 'лучше',
+        'choices': ['хороший', 'лучше', 'более лучше', 'хороше']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Ситуация на рынке стала ___. (worse)</strong></p>',
+        'explanation': '<p><strong>хуже</strong> is correct. Comparative form of "плохо/плохой". <br><br><em>(<strong>хуже</strong> — правильный ответ. Сравнительная степень от слова «плохой/плохо».)</em></p>',
+        'correct': 'хуже',
+        'choices': ['хуже', 'плохее', 'более плохо', 'плохо']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Новый монитор ___, чем мой старый. (bigger)</strong></p>',
+        'explanation': '<p><strong>больше</strong> is correct. Comparative form of "большой". <br><br><em>(<strong>больше</strong> — правильный ответ. Сравнительная степень от слова «большой».)</em></p>',
+        'correct': 'больше',
+        'choices': ['больший', 'больше', 'более большой', 'крупнее']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Этот телефон ___, но удобнее. (smaller)</strong></p>',
+        'explanation': '<p><strong>меньше</strong> is correct. Comparative form of "маленький". <br><br><em>(<strong>меньше</strong> — правильный ответ. Сравнительная степень от слова «маленький».)</em></p>',
+        'correct': 'меньше',
+        'choices': ['маленький', 'меньше', 'менее', 'мелче']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>MacBook стоит ___, чем Windows ноутбук. (more expensive)</strong></p>',
+        'explanation': '<p><strong>дороже</strong> is correct. Comparative form of "дорогой/дорого". <br><br><em>(<strong>дороже</strong> — правильный ответ. Сравнительная степень от слова «дорогой».)</em></p>',
+        'correct': 'дороже',
+        'choices': ['дорогой', 'более дорого', 'дороже', 'дорого']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы нашли сервер ___. (cheaper)</strong></p>',
+        'explanation': '<p><strong>дешевле</strong> is correct. Comparative form of "дешевый". <br><br><em>(<strong>дешевле</strong> — правильный ответ. Сравнительная степень от слова «дешевый».)</em></p>',
+        'correct': 'дешевле',
+        'choices': ['дешевле', 'дешевее', 'более дешево', 'дешевый']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Новый алгоритм работает ___. (faster)</strong></p>',
+        'explanation': '<p><strong>быстрее</strong> is correct. Comparative form of "быстрый/быстро". <br><br><em>(<strong>быстрее</strong> — правильный ответ. Сравнительная степень от слова «быстро».)</em></p>',
+        'correct': 'быстрее',
+        'choices': ['быстрый', 'скорее', 'быстрее', 'более быстро']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мой интернет работает ___, чем вчера. (slower)</strong></p>',
+        'explanation': '<p><strong>медленнее</strong> is correct. Comparative form of "медленно/медленный". <br><br><em>(<strong>медленнее</strong> — правильный ответ. Сравнительная степень от слова «медленно».)</em></p>',
+        'correct': 'медленнее',
+        'choices': ['медленнее', 'медленей', 'более медленно', 'медленно']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Эта задача ___, чем мы думали. (harder/more complex)</strong></p>',
+        'explanation': '<p><strong>сложнее</strong> is correct. Comparative form of "сложный". <br><br><em>(<strong>сложнее</strong> — правильный ответ. Сравнительная степень от слова «сложный».)</em></p>',
+        'correct': 'сложнее',
+        'choices': ['сложный', 'сложнее', 'трудный', 'более сложно']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Настроить PWA ___ на Vercel. (simpler/easier)</strong></p>',
+        'explanation': '<p><strong>проще</strong> is correct. Comparative form of "простой/просто". <br><br><em>(<strong>проще</strong> — правильный ответ. Сравнительная степень от слова «простой».)</em></p>',
+        'correct': 'проще',
+        'choices': ['просто', 'простее', 'проще', 'более просто']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Его зарплата ___, чем моя. (higher)</strong></p>',
+        'explanation': '<p><strong>выше</strong> is correct. Comparative form of "высокий/высоко". <br><br><em>(<strong>выше</strong> — правильный ответ. Сравнительная степень от слова «высокий».)</em></p>',
+        'correct': 'выше',
+        'choices': ['высокая', 'вышее', 'выше', 'более высоко']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Цены в этом магазине ___. (lower)</strong></p>',
+        'explanation': '<p><strong>ниже</strong> is correct. Comparative form of "низкий/низко". <br><br><em>(<strong>ниже</strong> — правильный ответ. Сравнительная степень от слова «низкий».)</em></p>',
+        'correct': 'ниже',
+        'choices': ['низее', 'ниже', 'низкие', 'более низко']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мой брат ___ меня на три года. (older)</strong></p>',
+        'explanation': '<p><strong>старше</strong> is correct. Comparative form of "старый" when referring to age. <br><br><em>(<strong>старше</strong> — правильный ответ. Применяется для сравнения возраста.)</em></p>',
+        'correct': 'старше',
+        'choices': ['старее', 'старше', 'более старый', 'взрослее']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Моя сестра ___ меня. (younger)</strong></p>',
+        'explanation': '<p><strong>младше</strong> is correct. Comparative form of "молодой/младший" for age. <br><br><em>(<strong>младше</strong> — правильный ответ. Сравнительная степень для возраста.)</em></p>',
+        'correct': 'младше',
+        'choices': ['моложе', 'младше', 'более молодая', 'маленькая']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я стараюсь коммитить код ___. (more often)</strong></p>',
+        'explanation': '<p><strong>чаще</strong> is correct. Comparative form of "часто". <br><br><em>(<strong>чаще</strong> — правильный ответ. Сравнительная степень наречия «часто».)</em></p>',
+        'correct': 'чаще',
+        'choices': ['часто', 'более часто', 'частее', 'чаще']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Он стал ___ появляться в офисе. (less often)</strong></p>',
+        'explanation': '<p><strong>реже</strong> is correct. Comparative form of "редко". <br><br><em>(<strong>реже</strong> — правильный ответ. Сравнительная степень наречия «редко».)</em></p>',
+        'correct': 'реже',
+        'choices': ['редче', 'реже', 'более редко', 'редко']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Приходи завтра ___. (earlier)</strong></p>',
+        'explanation': '<p><strong>раньше</strong> is correct. Comparative form of "рано". <br><br><em>(<strong>раньше</strong> — правильный ответ. Сравнительная степень наречия «рано».)</em></p>',
+        'correct': 'раньше',
+        'choices': ['рано', 'раньше', 'более рано', 'ранее']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я перезвоню тебе ___. (later)</strong></p>',
+        'explanation': '<p><strong>позже</strong> is correct. Comparative form of "поздно". <br><br><em>(<strong>позже</strong> — правильный ответ. Сравнительная степень наречия «поздно».)</em></p>',
+        'correct': 'позже',
+        'choices': ['позднее', 'позже', 'более поздно', 'поздно']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Новый дизайн выглядит ___. (better)</strong></p>',
+        'explanation': '<p><strong>лучше</strong> is correct. <br><br><em>(<strong>лучше</strong> — правильный ответ. Форма сравнительной степени.)</em></p>',
+        'correct': 'лучше',
+        'choices': ['лучше', 'хорошо', 'красивее', 'хороший']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Этот вариант ___, мы его не берём. (worse)</strong></p>',
+        'explanation': '<p><strong>хуже</strong> is correct. <br><br><em>(<strong>хуже</strong> — правильный ответ. Форма сравнительной степени.)</em></p>',
+        'correct': 'хуже',
+        'choices': ['плохой', 'хуже', 'более плохой', 'плохо']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Junior-разработчик получает ___, чем Senior. (less - earns)</strong></p>',
+        'explanation': '<p><strong>меньше</strong> is correct. Comparative form of "мало". <br><br><em>(<strong>меньше</strong> — правильный ответ. Сравнительная степень наречия «мало».)</em></p>',
+        'correct': 'меньше',
+        'choices': ['менее', 'мало', 'меньше', 'мелче']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Senior-разработчик получает ___. (more)</strong></p>',
+        'explanation': '<p><strong>больше</strong> is correct. Comparative form of "много". <br><br><em>(<strong>больше</strong> — правильный ответ. Сравнительная степень наречия «много».)</em></p>',
+        'correct': 'больше',
+        'choices': ['много', 'более', 'больше', 'крупнее']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>С SSD сайт загружается ___. (faster)</strong></p>',
+        'explanation': '<p><strong>быстрее</strong> is correct. <br><br><em>(<strong>быстрее</strong> — правильный ответ. Сравнительная степень наречия «быстро».)</em></p>',
+        'correct': 'быстрее',
+        'choices': ['быстрее', 'более быстрый', 'быстро', 'скоро']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Без кеширования приложение работает ___. (slower)</strong></p>',
+        'explanation': '<p><strong>медленнее</strong> is correct. <br><br><em>(<strong>медленнее</strong> — правильный ответ. Сравнительная степень наречия «медленно».)</em></p>',
+        'correct': 'медленнее',
+        'choices': ['медленнее', 'медленей', 'медленно', 'более медленный']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Писать тесты ___, чем кажется. (harder/more complex)</strong></p>',
+        'explanation': '<p><strong>сложнее</strong> is correct. <br><br><em>(<strong>сложнее</strong> — правильный ответ. Сравнительная степень слова «сложно».)</em></p>',
+        'correct': 'сложнее',
+        'choices': ['сложный', 'сложнее', 'более сложно', 'трудно']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Использовать библиотеку ___, чем писать с нуля. (simpler/easier)</strong></p>',
+        'explanation': '<p><strong>проще</strong> is correct. <br><br><em>(<strong>проще</strong> — правильный ответ. Сравнительная степень слова «просто».)</em></p>',
+        'correct': 'проще',
+        'choices': ['просто', 'простее', 'проще', 'легкий']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Этот проект ___, чем предыдущий. (more interesting)</strong></p>',
+        'explanation': '<p><strong>интереснее</strong> is correct. Comparative form of "интересный". <br><br><em>(<strong>интереснее</strong> — правильный ответ. Сравнительная степень слова «интересный».)</em></p>',
+        'correct': 'интереснее',
+        'choices': ['интереснее', 'интереснейший', 'более интересный', 'интересно']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Безопасность данных — это ___ всего. (more important)</strong></p>',
+        'explanation': '<p><strong>важнее</strong> is correct. "Важнее всего" translates to "most importantly / more important than anything". <br><br><em>(<strong>важнее</strong> — правильный ответ. Сравнительная степень слова «важный».)</em></p>',
+        'correct': 'важнее',
+        'choices': ['важный', 'важнее', 'важно', 'более важный']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Работать за двумя мониторами ___. (more comfortable/convenient)</strong></p>',
+        'explanation': '<p><strong>удобнее</strong> is correct. Comparative form of "удобно". <br><br><em>(<strong>удобнее</strong> — правильный ответ. Сравнительная степень наречия «удобно».)</em></p>',
+        'correct': 'удобнее',
+        'choices': ['удобно', 'удобнее', 'более удобно', 'комфортно']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Python иногда ___, чем другие языки для анализа данных. (more efficient)</strong></p>',
+        'explanation': '<p><strong>эффективнее</strong> is correct. Comparative form of "эффективный". <br><br><em>(<strong>эффективнее</strong> — правильный ответ. Сравнительная степень слова «эффективный».)</em></p>',
+        'correct': 'эффективнее',
+        'choices': ['эффективнее', 'эффективный', 'более эффективно', 'эффективно']
+    }
+]
+
+QUESTIONS_chast_39 = [
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Это ___ программист в нашей команде. (the best)</strong></p>',
+        'explanation': '<p><strong>самый лучший</strong> is correct. "Самый" + adjective forms the superlative. "Лучший" is already a comparative/superlative form, and "самый лучший" is highly common. <br><br><em>(<strong>самый лучший</strong> — правильный ответ. Превосходная степень.)</em></p>',
+        'correct': 'самый лучший',
+        'choices': ['самый хороший', 'самый лучший', 'лучший самый', 'наилучший']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Это ___ идея из всех! (the best - fem)</strong></p>',
+        'explanation': '<p><strong>самая лучшая</strong> is correct. Feminine superlative. <br><br><em>(<strong>самая лучшая</strong> — правильный ответ. Превосходная степень женского рода.)</em></p>',
+        'correct': 'самая лучшая',
+        'choices': ['самая хорошая', 'самое лучшее', 'самая лучшая', 'самые лучшие']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы выбрали ___ решение. (the best - neuter)</strong></p>',
+        'explanation': '<p><strong>самое лучшее</strong> is correct. Neuter superlative. <br><br><em>(<strong>самое лучшее</strong> — правильный ответ. Превосходная степень среднего рода.)</em></p>',
+        'correct': 'самое лучшее',
+        'choices': ['самое хорошее', 'самое лучшее', 'самый лучший', 'самая лучшая']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Это ___ специалисты в компании. (the best - plural)</strong></p>',
+        'explanation': '<p><strong>самые лучшие</strong> is correct. Plural superlative. <br><br><em>(<strong>самые лучшие</strong> — правильный ответ. Превосходная степень множественного числа.)</em></p>',
+        'correct': 'самые лучшие',
+        'choices': ['самые хорошие', 'самая лучшая', 'самый лучший', 'самые лучшие']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Это ___ код, который я видел. (the worst)</strong></p>',
+        'explanation': '<p><strong>самый плохой</strong> is correct. "Худший" or "самый плохой" are valid. <br><br><em>(<strong>самый плохой</strong> — правильный ответ. Превосходная степень от слова «плохой».)</em></p>',
+        'correct': 'самый плохой',
+        'choices': ['самый худший', 'самый плохой', 'самая плохая', 'плохой самый']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Какой алгоритм ___? (the fastest)</strong></p>',
+        'explanation': '<p><strong>самый быстрый</strong> is correct. Masculine superlative. <br><br><em>(<strong>самый быстрый</strong> — правильный ответ. Превосходная степень мужского рода.)</em></p>',
+        'correct': 'самый быстрый',
+        'choices': ['самая быстрая', 'самый быстрый', 'быстрее', 'самое быстрое']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Эта машина ___. (the fastest - fem)</strong></p>',
+        'explanation': '<p><strong>самая быстрая</strong> is correct. Feminine superlative. <br><br><em>(<strong>самая быстрая</strong> — правильный ответ. Женский род.)</em></p>',
+        'correct': 'самая быстрая',
+        'choices': ['самый быстрый', 'самая быстрая', 'самое быстрое', 'самые быстрые']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Это ___ соединение. (the fastest - neuter)</strong></p>',
+        'explanation': '<p><strong>самое быстрое</strong> is correct. Neuter superlative. <br><br><em>(<strong>самое быстрое</strong> — правильный ответ. Средний род.)</em></p>',
+        'correct': 'самое быстрое',
+        'choices': ['самая быстрая', 'самый быстрый', 'самое быстрое', 'самые быстрые']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>У нас ___ серверы. (the fastest - plural)</strong></p>',
+        'explanation': '<p><strong>самые быстрые</strong> is correct. Plural superlative. <br><br><em>(<strong>самые быстрые</strong> — правильный ответ. Множественное число.)</em></p>',
+        'correct': 'самые быстрые',
+        'choices': ['самый быстрый', 'самая быстрая', 'самое быстрое', 'самые быстрые']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Это ___ проект года. (the hardest/most complex)</strong></p>',
+        'explanation': '<p><strong>самый сложный</strong> is correct. Masculine superlative. <br><br><em>(<strong>самый сложный</strong> — правильный ответ. Мужской род.)</em></p>',
+        'correct': 'самый сложный',
+        'choices': ['самая сложная', 'самый сложный', 'самое сложное', 'самые сложные']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Это ___ часть работы. (the hardest - fem)</strong></p>',
+        'explanation': '<p><strong>самая сложная</strong> is correct. Feminine superlative. <br><br><em>(<strong>самая сложная</strong> — правильный ответ. Женский род.)</em></p>',
+        'correct': 'самая сложная',
+        'choices': ['самый сложный', 'самая сложная', 'самое сложное', 'самые сложные']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Это ___ задание на экзамене. (the hardest - neuter)</strong></p>',
+        'explanation': '<p><strong>самое сложное</strong> is correct. Neuter superlative. <br><br><em>(<strong>самое сложное</strong> — правильный ответ. Средний род.)</em></p>',
+        'correct': 'самое сложное',
+        'choices': ['самый сложный', 'самая сложная', 'самое сложное', 'самые сложные']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Здесь описаны ___ кейсы. (the hardest - plural)</strong></p>',
+        'explanation': '<p><strong>самые сложные</strong> is correct. Plural superlative. <br><br><em>(<strong>самые сложные</strong> — правильный ответ. Множественное число.)</em></p>',
+        'correct': 'самые сложные',
+        'choices': ['самый сложный', 'самая сложная', 'самое сложное', 'самые сложные']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Какой фреймворк ___ для новичков? (the simplest)</strong></p>',
+        'explanation': '<p><strong>самый простой</strong> is correct. Masculine superlative. <br><br><em>(<strong>самый простой</strong> — правильный ответ. Мужской род.)</em></p>',
+        'correct': 'самый простой',
+        'choices': ['самая простая', 'самый простой', 'самое простое', 'самые простые']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>MacBook Pro — это ___ ноутбук в магазине. (the most expensive)</strong></p>',
+        'explanation': '<p><strong>самый дорогой</strong> is correct. Masculine superlative. <br><br><em>(<strong>самый дорогой</strong> — правильный ответ. Мужской род.)</em></p>',
+        'correct': 'самый дорогой',
+        'choices': ['самая дорогая', 'самый дорогой', 'самое дорогое', 'самые дорогие']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Это ___ модель. (the most expensive - fem)</strong></p>',
+        'explanation': '<p><strong>самая дорогая</strong> is correct. Feminine superlative. <br><br><em>(<strong>самая дорогая</strong> — правильный ответ. Женский род.)</em></p>',
+        'correct': 'самая дорогая',
+        'choices': ['самый дорогой', 'самая дорогая', 'самое дорогое', 'самые дорогие']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Это ___ оборудование. (the most expensive - neuter)</strong></p>',
+        'explanation': '<p><strong>самое дорогое</strong> is correct. Neuter superlative. <br><br><em>(<strong>самое дорогое</strong> — правильный ответ. Средний род.)</em></p>',
+        'correct': 'самое дорогое',
+        'choices': ['самый дорогой', 'самая дорогая', 'самое дорогое', 'самые дорогие']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Это ___ телефоны на рынке. (the most expensive - plural)</strong></p>',
+        'explanation': '<p><strong>самые дорогие</strong> is correct. Plural superlative. <br><br><em>(<strong>самые дорогие</strong> — правильный ответ. Множественное число.)</em></p>',
+        'correct': 'самые дорогие',
+        'choices': ['самый дорогой', 'самая дорогая', 'самое дорогое', 'самые дорогие']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Это ___ тарифный план. (the cheapest)</strong></p>',
+        'explanation': '<p><strong>самый дешевый</strong> is correct. Masculine superlative. <br><br><em>(<strong>самый дешевый</strong> — правильный ответ. Мужской род.)</em></p>',
+        'correct': 'самый дешевый',
+        'choices': ['самая дешевая', 'самое дешевое', 'самые дешевые', 'самый дешевый']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Это ___ клиент банка. (the most important)</strong></p>',
+        'explanation': '<p><strong>самый важный</strong> is correct. Masculine superlative. <br><br><em>(<strong>самый важный</strong> — правильный ответ. Мужской род.)</em></p>',
+        'correct': 'самый важный',
+        'choices': ['самая важная', 'самый важный', 'самое важное', 'самые важные']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Безопасность — ___ часть системы. (the most important - fem)</strong></p>',
+        'explanation': '<p><strong>самая важная</strong> is correct. Feminine superlative. <br><br><em>(<strong>самая важная</strong> — правильный ответ. Женский род.)</em></p>',
+        'correct': 'самая важная',
+        'choices': ['самый важный', 'самая важная', 'самое важное', 'самые важные']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Это ___ правило в компании. (the most important - neuter)</strong></p>',
+        'explanation': '<p><strong>самое важное</strong> is correct. Neuter superlative. <br><br><em>(<strong>самое важное</strong> — правильный ответ. Средний род.)</em></p>',
+        'correct': 'самое важное',
+        'choices': ['самая важная', 'самый важный', 'самое важное', 'самые важные']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Это ___ документы. (the most important - plural)</strong></p>',
+        'explanation': '<p><strong>самые важные</strong> is correct. Plural superlative. <br><br><em>(<strong>самые важные</strong> — правильный ответ. Множественное число.)</em></p>',
+        'correct': 'самые важные',
+        'choices': ['самая важная', 'самый важный', 'самое важное', 'самые важные']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Это ___ айфон. (the newest)</strong></p>',
+        'explanation': '<p><strong>самый новый</strong> is correct. Masculine superlative. <br><br><em>(<strong>самый новый</strong> — правильный ответ. Мужской род.)</em></p>',
+        'correct': 'самый новый',
+        'choices': ['самая новая', 'самый новый', 'самое новое', 'самые новые']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Это ___ версия программы. (the newest - fem)</strong></p>',
+        'explanation': '<p><strong>самая новая</strong> is correct. Feminine superlative. <br><br><em>(<strong>самая новая</strong> — правильный ответ. Женский род.)</em></p>',
+        'correct': 'самая новая',
+        'choices': ['самый новый', 'самая новая', 'самое новое', 'самые новые']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Он ___ студент на курсе. (the smartest)</strong></p>',
+        'explanation': '<p><strong>самый умный</strong> is correct. Masculine superlative. <br><br><em>(<strong>самый умный</strong> — правильный ответ. Мужской род.)</em></p>',
+        'correct': 'самый умный',
+        'choices': ['самая умная', 'самый умный', 'самое умное', 'самые умные']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ менеджер этого проекта. (the main/chief)</strong></p>',
+        'explanation': '<p><strong>самый главный</strong> is correct. Masculine superlative. <br><br><em>(<strong>самый главный</strong> — правильный ответ. Мужской род.)</em></p>',
+        'correct': 'самый главный',
+        'choices': ['самая главная', 'самый главный', 'самое главное', 'самые главные']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Это ___ банк в стране. (largest - single word superlative)</strong></p>',
+        'explanation': '<p><strong>крупнейший</strong> is correct. Suffix "-ейш-" forms a single-word superlative. <br><br><em>(<strong>крупнейший</strong> — правильный ответ. Простая превосходная степень с помощью суффикса -ейш-.)</em></p>',
+        'correct': 'крупнейший',
+        'choices': ['самый крупный', 'крупнейший', 'более крупный', 'крупный']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Это ___ путь до офиса. (shortest - single word superlative)</strong></p>',
+        'explanation': '<p><strong>кратчайший</strong> is correct. Suffix "-айш-" forms a single-word superlative. <br><br><em>(<strong>кратчайший</strong> — правильный ответ. Простая превосходная степень с помощью суффикса -айш-.)</em></p>',
+        'correct': 'кратчайший',
+        'choices': ['короткий', 'кратчайший', 'более короткий', 'самый короткий']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы используем ___ технологии. (newest - single word superlative)</strong></p>',
+        'explanation': '<p><strong>новейшие</strong> is correct. Suffix "-ейш-" forms a single-word superlative for plural nouns. <br><br><em>(<strong>новейшие</strong> — правильный ответ. Простая превосходная степень множественного числа.)</em></p>',
+        'correct': 'новейшие',
+        'choices': ['новые', 'новейшие', 'более новые', 'самые новые']
+    }
+]
+
+QUESTIONS_chast_40 = [
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>В декабре, январе и феврале идёт ___. (winter)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Времена года</mark></blockquote><p><strong>зима</strong> is correct. The season of December, January, and February is winter. <br><br><em>(<strong>зима</strong> — правильный ответ. Время года с декабря по февраль.)</em></p>',
+        'correct': 'зима',
+        'choices': ['весна', 'лето', 'зима', 'осень']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>В марте, апреле и мае — это ___. (spring)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Времена года</mark></blockquote><p><strong>весна</strong> is correct. The season of March, April, and May is spring. <br><br><em>(<strong>весна</strong> — правильный ответ. Время года с марта по май.)</em></p>',
+        'correct': 'весна',
+        'choices': ['зима', 'осень', 'весна', 'лето']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>В июне, июле и августе мы любим ___. (summer)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Времена года</mark></blockquote><p><strong>лето</strong> is correct. The season of June, July, and August is summer. <br><br><em>(<strong>лето</strong> — правильный ответ. Время года с июня по август.)</em></p>',
+        'correct': 'лето',
+        'choices': ['осень', 'лето', 'зима', 'весна']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>В сентябре, октябре и ноябре наступает ___. (autumn)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Времена года</mark></blockquote><p><strong>осень</strong> is correct. The season of September, October, and November is autumn/fall. <br><br><em>(<strong>осень</strong> — правильный ответ. Время года с сентября по ноябрь.)</em></p>',
+        'correct': 'осень',
+        'choices': ['зима', 'осень', 'лето', 'весна']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>На улице минус 20, очень ___. (cold)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Погода (Состояние)</mark></blockquote><p><strong>холодно</strong> is correct. "Холодно" means cold. <br><br><em>(<strong>холодно</strong> — правильный ответ. Обозначает низкую температуру.)</em></p>',
+        'correct': 'холодно',
+        'choices': ['жарко', 'тепло', 'холодно', 'прохладно']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Летом в офисе без кондиционера очень ___. (hot)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Погода (Состояние)</mark></blockquote><p><strong>жарко</strong> is correct. "Жарко" means hot. <br><br><em>(<strong>жарко</strong> — правильный ответ. Обозначает очень высокую температуру.)</em></p>',
+        'correct': 'жарко',
+        'choices': ['холодно', 'жарко', 'прохладно', 'тепло']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Весной на улице ___, плюс 15. (warm)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Погода (Состояние)</mark></blockquote><p><strong>тепло</strong> is correct. "Тепло" means warm. <br><br><em>(<strong>тепло</strong> — правильный ответ. Обозначает комфортную плюсовую температуру.)</em></p>',
+        'correct': 'тепло',
+        'choices': ['жарко', 'мороз', 'холодно', 'тепло']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Осенью часто бывает ___, нужен свитер. (cool)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Погода (Состояние)</mark></blockquote><p><strong>прохладно</strong> is correct. "Прохладно" means cool/chilly. <br><br><em>(<strong>прохладно</strong> — правильный ответ. Обозначает легкий холод.)</em></p>',
+        'correct': 'прохладно',
+        'choices': ['прохладно', 'жарко', 'тепло', 'мороз']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Зимой на улице сильный ___. (frost)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Погодные явления</mark></blockquote><p><strong>мороз</strong> is correct. "Мороз" means frost or freezing weather. <br><br><em>(<strong>мороз</strong> — правильный ответ. Очень холодная погода зимой.)</em></p>',
+        'correct': 'мороз',
+        'choices': ['дождь', 'жара', 'мороз', 'солнце']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Сегодня на небе нет облаков, светит ___. (sun)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Погодные явления</mark></blockquote><p><strong>солнце</strong> is correct. "Солнце" means the sun. <br><br><em>(<strong>солнце</strong> — правильный ответ. Ясная погода без облаков.)</em></p>',
+        'correct': 'солнце',
+        'choices': ['ветер', 'дождь', 'солнце', 'снег']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Возьми ___, на улице идёт дождь. (umbrella)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Предметы погоды</mark></blockquote><p><strong>зонт</strong> is correct. "Зонт" means umbrella. <br><br><em>(<strong>зонт</strong> — правильный ответ. Предмет защиты от дождя.)</em></p>',
+        'correct': 'зонт',
+        'choices': ['шапку', 'зонт', 'очки', 'шарф']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Посмотри ___ погоды в приложении. (forecast)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Прогноз</mark></blockquote><p><strong>прогноз</strong> is correct. "Прогноз" means forecast. <br><br><em>(<strong>прогноз</strong> — правильный ответ. Предсказание погоды.)</em></p>',
+        'correct': 'прогноз',
+        'choices': ['климат', 'прогноз', 'градус', 'ветер']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Завтра ___ опустится до нуля. (temperature)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Термины</mark></blockquote><p><strong>температура</strong> is correct. "Температура" means temperature. <br><br><em>(<strong>температура</strong> — правильный ответ. Физическая величина, измеряющая тепло или холод.)</em></p>',
+        'correct': 'температура',
+        'choices': ['температура', 'погода', 'климат', 'ветер']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Сегодня плюс 25 ___. (degrees)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Термины</mark></blockquote><p><strong>градусов</strong> is correct. "Градусов" is the Genitive plural of "градус" (degrees). <br><br><em>(<strong>градусов</strong> — правильный ответ. Единица измерения температуры.)</em></p>',
+        'correct': 'градусов',
+        'choices': ['градус', 'градуса', 'градусы', 'градусов']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Из-за ___ наш рейс задержали. (fog)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Погодные явления</mark></blockquote><p><strong>тумана</strong> is correct. "Туман" means fog. Genitive case "тумана" after "из-за". <br><br><em>(<strong>тумана</strong> — правильный ответ. Густой пар у поверхности земли.)</em></p>',
+        'correct': 'тумана',
+        'choices': ['солнца', 'тумана', 'жары', 'тепла']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Дует сильный ___, закрой окно. (wind)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Погодные явления</mark></blockquote><p><strong>ветер</strong> is correct. "Ветер" means wind. <br><br><em>(<strong>ветер</strong> — правильный ответ. Поток воздуха.)</em></p>',
+        'correct': 'ветер',
+        'choices': ['дождь', 'снег', 'ветер', 'туман']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Вчера была страшная ___, сверкала молния. (thunderstorm)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Погодные явления</mark></blockquote><p><strong>гроза</strong> is correct. "Гроза" means thunderstorm. <br><br><em>(<strong>гроза</strong> — правильный ответ. Атмосферное явление с громом и молнией.)</em></p>',
+        'correct': 'гроза',
+        'choices': ['гроза', 'жара', 'осень', 'радуга']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Зимой часто идёт ___. (snow)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Погодные явления</mark></blockquote><p><strong>снег</strong> is correct. "Снег" means snow. <br><br><em>(<strong>снег</strong> — правильный ответ. Осадки в виде ледяных кристаллов.)</em></p>',
+        'correct': 'снег',
+        'choices': ['дождь', 'снег', 'ветер', 'град']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Осенью в Лондоне постоянно идёт ___. (rain)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Погодные явления</mark></blockquote><p><strong>дождь</strong> is correct. "Дождь" means rain. <br><br><em>(<strong>дождь</strong> — правильный ответ. Осадки в виде капель воды.)</em></p>',
+        'correct': 'дождь',
+        'choices': ['снег', 'дождь', 'солнце', 'туман']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Солнца не видно, сегодня ___. (cloudy)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Погода (Состояние)</mark></blockquote><p><strong>облачно</strong> is correct. "Облачно" means cloudy. <br><br><em>(<strong>облачно</strong> — правильный ответ. Небо покрыто облаками.)</em></p>',
+        'correct': 'облачно',
+        'choices': ['ясно', 'солнечно', 'облачно', 'жарко']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>На небе ни облачка, погода ___. (clear)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Погода (Состояние)</mark></blockquote><p><strong>ясная</strong> is correct. "Ясная" means clear. Matches feminine "погода". <br><br><em>(<strong>ясная</strong> — правильный ответ. Безоблачная погода, женский род.)</em></p>',
+        'correct': 'ясная',
+        'choices': ['облачная', 'пасмурная', 'ясная', 'дождливая']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>У нас в стране резко континентальный ___. (climate)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Термины</mark></blockquote><p><strong>климат</strong> is correct. "Климат" means climate. <br><br><em>(<strong>климат</strong> — правильный ответ. Многолетний режим погоды.)</em></p>',
+        'correct': 'климат',
+        'choices': ['прогноз', 'климат', 'воздух', 'градус']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Воздух после дождя очень ___. (fresh)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Описание погоды</mark></blockquote><p><strong>свежий</strong> is correct. "Свежий" means fresh. <br><br><em>(<strong>свежий</strong> — правильный ответ. Чистый, прохладный воздух.)</em></p>',
+        'correct': 'свежий',
+        'choices': ['грязный', 'жаркий', 'сухой', 'свежий']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Летом в пустыне очень ___, нет дождей. (dry)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Описание погоды</mark></blockquote><p><strong>сухо</strong> is correct. "Сухо" means dry. <br><br><em>(<strong>сухо</strong> — правильный ответ. Отсутствие влаги и дождей.)</em></p>',
+        'correct': 'сухо',
+        'choices': ['сухо', 'влажно', 'мокро', 'холодно']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>В тропиках климат ___, много дождей. (humid/wet)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Описание погоды</mark></blockquote><p><strong>влажный</strong> is correct. "Влажный" means humid or wet. <br><br><em>(<strong>влажный</strong> — правильный ответ. Климат с большим количеством осадков.)</em></p>',
+        'correct': 'влажный',
+        'choices': ['влажный', 'сухой', 'морозный', 'ясный']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Ночью был ___, машины покрылись льдом. (freezing rain/ice)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Погодные явления</mark></blockquote><p><strong>гололёд</strong> is correct. "Гололёд" means ice/black ice on the roads. <br><br><em>(<strong>гололёд</strong> — правильный ответ. Лед на поверхности земли.)</em></p>',
+        'correct': 'гололёд',
+        'choices': ['туман', 'гололёд', 'ветер', 'гром']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>После грозы на небе появилась ___. (rainbow)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Погодные явления</mark></blockquote><p><strong>радуга</strong> is correct. "Радуга" means rainbow. <br><br><em>(<strong>радуга</strong> — правильный ответ. Оптическое явление в виде разноцветной дуги.)</em></p>',
+        'correct': 'радуга',
+        'choices': ['радуга', 'луна', 'звезда', 'гроза']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Сегодня на небе тёмные ___, будет дождь. (clouds)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Погодные явления</mark></blockquote><p><strong>тучи</strong> is correct. "Тучи" means dark rain clouds (plural). <br><br><em>(<strong>тучи</strong> — правильный ответ. Темные, дождевые облака.)</em></p>',
+        'correct': 'тучи',
+        'choices': ['тучи', 'солнце', 'радуги', 'звёзды']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Небо было ясным, светила полная ___. (moon)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Небесные тела</mark></blockquote><p><strong>луна</strong> is correct. "Луна" means moon. <br><br><em>(<strong>луна</strong> — правильный ответ. Естественный спутник Земли.)</em></p>',
+        'correct': 'луна',
+        'choices': ['звезда', 'луна', 'радуга', 'молния']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Какая сегодня ___ на улице? (weather)</strong></p>',
+        'explanation': '<blockquote><mark>Лексика: Термины</mark></blockquote><p><strong>погода</strong> is correct. "Погода" means weather. <br><br><em>(<strong>погода</strong> — правильный ответ. Состояние атмосферы в данный момент.)</em></p>',
+        'correct': 'погода',
+        'choices': ['природа', 'погода', 'температура', 'климат']
+    }
+]
+
+QUESTIONS_chast_41 = [
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ на программиста в университете. (учиться - I study)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: 1 лицо, ед.ч.</mark></blockquote><p><strong>учусь</strong> is correct. The suffix is "-усь" for "я" if the verb stem ends in a consonant/soft sign in present tense. <br><br><em>(<strong>учусь</strong> — правильный ответ. Форма глагола для местоимения «я».)</em></p>',
+        'correct': 'учусь',
+        'choices': ['учишься', 'учится', 'учусь', 'учимся']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Каждое утро я ___ в 7:00. (просыпаться - I wake up)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: 1 лицо, ед.ч.</mark></blockquote><p><strong>просыпаюсь</strong> is correct. Suffix "-юсь" for "я" when the stem ends in a vowel. <br><br><em>(<strong>просыпаюсь</strong> — правильный ответ. После гласной в 1-м лице пишется -юсь.)</em></p>',
+        'correct': 'просыпаюсь',
+        'choices': ['просыпается', 'просыпаюсь', 'просыпаемся', 'просыпаешься']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я тепло ___, потому что на улице мороз. (одеваться - I dress myself)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: 1 лицо, ед.ч.</mark></blockquote><p><strong>одеваюсь</strong> is correct. "Я одеваюсь" means I dress myself. <br><br><em>(<strong>одеваюсь</strong> — правильный ответ. Форма глагола для местоимения «я».)</em></p>',
+        'correct': 'одеваюсь',
+        'choices': ['одевается', 'одеваются', 'одеваюсь', 'одеваешься']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ с клиентом в 14:00. (встречаться - I am meeting)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: 1 лицо, ед.ч.</mark></blockquote><p><strong>встречаюсь</strong> is correct. "Я встречаюсь" implies a mutual meeting. <br><br><em>(<strong>встречаюсь</strong> — правильный ответ. Форма глагола для местоимения «я».)</em></p>',
+        'correct': 'встречаюсь',
+        'choices': ['встречаюсь', 'встречаешься', 'встречаемся', 'встречаются']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я не ___, это плохая идея. (соглашаться - I don\'t agree)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: 1 лицо, ед.ч.</mark></blockquote><p><strong>соглашаюсь</strong> is correct. "Я соглашаюсь" means I agree. <br><br><em>(<strong>соглашаюсь</strong> — правильный ответ. Форма глагола для местоимения «я».)</em></p>',
+        'correct': 'соглашаюсь',
+        'choices': ['соглашается', 'соглашаешься', 'соглашаются', 'соглашаюсь']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Где ты ___? (учиться - where do you study)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: 2 лицо, ед.ч.</mark></blockquote><p><strong>учишься</strong> is correct. Suffix "-шься" for "ты". <br><br><em>(<strong>учишься</strong> — правильный ответ. Форма глагола для местоимения «ты».)</em></p>',
+        'correct': 'учишься',
+        'choices': ['учусь', 'учится', 'учишься', 'учитесь']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Почему ты так долго ___? (собираться - why are you getting ready so long)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: 2 лицо, ед.ч.</mark></blockquote><p><strong>собираешься</strong> is correct. "Ты собираешься". <br><br><em>(<strong>собираешься</strong> — правильный ответ. Обращение на «ты».)</em></p>',
+        'correct': 'собираешься',
+        'choices': ['собираюсь', 'собираешься', 'собирается', 'собираются']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Во сколько вы ___? (просыпаться - when do you wake up)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: 2 лицо, мн.ч. / Вежливая форма</mark></blockquote><p><strong>просыпаетесь</strong> is correct. "Вы просыпаетесь". <br><br><em>(<strong>просыпаетесь</strong> — правильный ответ. Форма для местоимения «вы».)</em></p>',
+        'correct': 'просыпаетесь',
+        'choices': ['просыпаются', 'просыпается', 'просыпаешься', 'просыпаетесь']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Как вы ___ с коллегами? Хорошо? (общаться - how do you communicate)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: 2 лицо, мн.ч. / Вежливая форма</mark></blockquote><p><strong>общаетесь</strong> is correct. "Вы общаетесь". <br><br><em>(<strong>общаетесь</strong> — правильный ответ. Обращение на «вы».)</em></p>',
+        'correct': 'общаетесь',
+        'choices': ['общаюсь', 'общается', 'общаетесь', 'общаются']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Ты ___ с этими условиями? (соглашаться - do you agree)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: 2 лицо, ед.ч.</mark></blockquote><p><strong>соглашаешься</strong> is correct. "Ты соглашаешься". <br><br><em>(<strong>соглашаешься</strong> — правильный ответ. Местоимение «ты» требует окончания -ешься.)</em></p>',
+        'correct': 'соглашаешься',
+        'choices': ['соглашаюсь', 'соглашаешься', 'соглашается', 'соглашаются']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Собрание ___ в 10:00. (начинаться - the meeting starts)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: 3 лицо, ед.ч.</mark></blockquote><p><strong>начинается</strong> is correct. "Собрание" is it (оно), taking "-тся" (without soft sign!). <br><br><em>(<strong>начинается</strong> — правильный ответ. В 3-м лице пишется -тся без мягкого знака, так как отвечает на вопрос «что делает?».)</em></p>',
+        'correct': 'начинается',
+        'choices': ['начинаться', 'начинаются', 'начинается', 'начинаюсь']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мой рабочий день ___ в 18:00. (заканчиваться - workday ends)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: 3 лицо, ед.ч.</mark></blockquote><p><strong>заканчивается</strong> is correct. "День" (he/он) takes "-тся". <br><br><em>(<strong>заканчивается</strong> — правильный ответ. 3-е лицо, единственное число.)</em></p>',
+        'correct': 'заканчивается',
+        'choices': ['заканчиваться', 'заканчиваются', 'заканчиваюсь', 'заканчивается']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Сервер ___ после обновления. (перезагружаться - server reboots)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: 3 лицо, ед.ч.</mark></blockquote><p><strong>перезагружается</strong> is correct. "Сервер" is masculine. <br><br><em>(<strong>перезагружается</strong> — правильный ответ. 3-е лицо, без мягкого знака.)</em></p>',
+        'correct': 'перезагружается',
+        'choices': ['перезагружаются', 'перезагружаться', 'перезагружается', 'перезагружаюсь']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Эти файлы не ___. (открываться - files don\'t open)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: 3 лицо, мн.ч.</mark></blockquote><p><strong>открываются</strong> is correct. "Файлы" is plural (they/они), taking "-ются". <br><br><em>(<strong>открываются</strong> — правильный ответ. Множественное число, 3-е лицо.)</em></p>',
+        'correct': 'открываются',
+        'choices': ['открывается', 'открываться', 'открываются', 'открываемся']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Почему они не ___? (соглашаться - why don\'t they agree)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: 3 лицо, мн.ч.</mark></blockquote><p><strong>соглашаются</strong> is correct. "Они соглашаются". <br><br><em>(<strong>соглашаются</strong> — правильный ответ. Множественное число для местоимения «они».)</em></p>',
+        'correct': 'соглашаются',
+        'choices': ['соглашается', 'соглашаемся', 'соглашаются', 'соглашаюсь']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы часто ___ в кафе после работы. (встречаться - we meet)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: 1 лицо, мн.ч.</mark></blockquote><p><strong>встречаемся</strong> is correct. "Мы" takes "-мся". <br><br><em>(<strong>встречаемся</strong> — правильный ответ. Форма глагола для местоимения «мы».)</em></p>',
+        'correct': 'встречаемся',
+        'choices': ['встречаются', 'встречается', 'встречаемся', 'встречаюсь']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы с командой ___ к релизу. (готовиться - we are getting ready)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: 1 лицо, мн.ч.</mark></blockquote><p><strong>готовимся</strong> is correct. "Мы готовимся". <br><br><em>(<strong>готовимся</strong> — правильный ответ. Форма для 1-го лица множественного числа.)</em></p>',
+        'correct': 'готовимся',
+        'choices': ['готовится', 'готовишься', 'готовимся', 'готовятся']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Вчера я ___ с директором. (встречаться - I met (male))</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: Прошедшее время, муж. род</mark></blockquote><p><strong>встретился</strong> is correct. Past tense reflexive for masculine singular ends in "-лся". <br><br><em>(<strong>встретился</strong> — правильный ответ. Прошедшее время, мужской род.)</em></p>',
+        'correct': 'встретился',
+        'choices': ['встречаюсь', 'встретились', 'встретился', 'встретилась']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Анна ___ в лучшем университете. (учиться - Anna studied)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: Прошедшее время, жен. род</mark></blockquote><p><strong>училась</strong> is correct. Past tense reflexive for feminine singular ends in "-лась". <br><br><em>(<strong>училась</strong> — правильный ответ. Прошедшее время, женский род.)</em></p>',
+        'correct': 'училась',
+        'choices': ['учился', 'учились', 'учиться', 'училась']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Наше совещание ___ вовремя. (начаться - meeting started)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: Прошедшее время, ср. род</mark></blockquote><p><strong>началось</strong> is correct. "Совещание" is neuter, past tense ends in "-лось". <br><br><em>(<strong>началось</strong> — правильный ответ. Прошедшее время, средний род.)</em></p>',
+        'correct': 'началось',
+        'choices': ['начался', 'началась', 'начались', 'началось']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Наши клиенты ___ с предложением. (согласиться - clients agreed)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: Прошедшее время, мн.ч.</mark></blockquote><p><strong>согласились</strong> is correct. "Клиенты" is plural, past tense ends in "-лись". <br><br><em>(<strong>согласились</strong> — правильный ответ. Прошедшее время, множественное число.)</em></p>',
+        'correct': 'согласились',
+        'choices': ['согласился', 'согласились', 'согласилось', 'согласилась']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Вчера они ___ в офисе допоздна. (оставаться - they stayed)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: Прошедшее время, мн.ч.</mark></blockquote><p><strong>остались</strong> is correct. "Они остались" (they stayed). <br><br><em>(<strong>остались</strong> — правильный ответ. Множественное число прошедшего времени.)</em></p>',
+        'correct': 'остались',
+        'choices': ['остались', 'остался', 'осталась', 'осталось']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мне нужно ___, я устал. (умыться/помыться - to wash up)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: Инфинитив</mark></blockquote><p><strong>умыться</strong> is correct. After "нужно" we use the infinitive which ends in "-ться" (with a soft sign). <br><br><em>(<strong>умыться</strong> — правильный ответ. Инфинитив пишется с мягким знаком: что сделать?)</em></p>',
+        'correct': 'умыться',
+        'choices': ['умыться', 'умываться', 'умывается', 'умываюсь']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы должны ___, чтобы успеть на поезд. (торопиться - to hurry)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: Инфинитив</mark></blockquote><p><strong>торопиться</strong> is correct. After "должны" we use the infinitive. <br><br><em>(<strong>торопиться</strong> — правильный ответ. Инфинитив с мягким знаком.)</em></p>',
+        'correct': 'торопиться',
+        'choices': ['торопимся', 'торопится', 'торопиться', 'торопятся']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Скрипт должен ___ каждый час. (запускаться - to run/start)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: Инфинитив</mark></blockquote><p><strong>запускаться</strong> is correct. Infinitive form after "должен". <br><br><em>(<strong>запускаться</strong> — правильный ответ. Глагол в начальной форме (инфинитив) пишется с мягким знаком.)</em></p>',
+        'correct': 'запускаться',
+        'choices': ['запускается', 'запускаться', 'запускаются', 'запускаюсь']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я хочу ___ новому фреймворку. (научиться - to learn)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: Инфинитив</mark></blockquote><p><strong>научиться</strong> is correct. After "хочу" we use the infinitive. <br><br><em>(<strong>научиться</strong> — правильный ответ. Инфинитив после глагола «хотеть».)</em></p>',
+        'correct': 'научиться',
+        'choices': ['научусь', 'научиться', 'научится', 'научимся']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Она не любит ___ рано. (просыпаться - to wake up)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: Инфинитив</mark></blockquote><p><strong>просыпаться</strong> is correct. After "не любит" we use the infinitive. <br><br><em>(<strong>просыпаться</strong> — правильный ответ. Инфинитив пишется с мягким знаком.)</em></p>',
+        'correct': 'просыпаться',
+        'choices': ['просыпается', 'просыпаюсь', 'просыпаться', 'просыпаются']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мальчик ___: он упал. (плакать - to cry / расплакаться)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: Прошедшее время</mark></blockquote><p><strong>расплакался</strong> is correct. Perfective past tense reflexive. <br><br><em>(<strong>расплакался</strong> — правильный ответ. Мужской род, прошедшее время.)</em></p>',
+        'correct': 'расплакался',
+        'choices': ['расплакался', 'расплакалась', 'расплакались', 'расплакаться']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Сервер ___ сам, без нашей помощи. (восстановиться - recovered)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: Прошедшее время</mark></blockquote><p><strong>восстановился</strong> is correct. Masculine singular past tense. <br><br><em>(<strong>восстановился</strong> — правильный ответ. Мужской род, прошедшее время.)</em></p>',
+        'correct': 'восстановился',
+        'choices': ['восстановилась', 'восстановилось', 'восстановились', 'восстановился']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ на ваш канал в YouTube. (подписаться - I subscribed)</strong></p>',
+        'explanation': '<blockquote><mark>Возвратные глаголы: Прошедшее время, 1 лицо</mark></blockquote><p><strong>подписался</strong> is correct (assuming a male speaker). <br><br><em>(<strong>подписался</strong> — правильный ответ. Завершенное действие в прошлом, мужской род.)</em></p>',
+        'correct': 'подписался',
+        'choices': ['подписалась', 'подписались', 'подписался', 'подписаться']
+    }
+]
+
+QUESTIONS_chast_42 = [
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я (мужчина) ___ начать презентацию. (ready)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Готов</mark></blockquote><p><strong>готов</strong> is correct. Short form masculine of "готовый". <br><br><em>(<strong>готов</strong> — правильный ответ. Краткое прилагательное мужского рода.)</em></p>',
+        'correct': 'готов',
+        'choices': ['готовый', 'готова', 'готов', 'готовы']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Анна, ты ___ отправить отчёт? (ready)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Готов</mark></blockquote><p><strong>готова</strong> is correct. Short form feminine. <br><br><em>(<strong>готова</strong> — правильный ответ. Краткое прилагательное женского рода.)</em></p>',
+        'correct': 'готова',
+        'choices': ['готов', 'готовы', 'готова', 'готово']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Приложение ___ к запуску. (ready)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Готов</mark></blockquote><p><strong>готово</strong> is correct. Short form neuter (приложение). <br><br><em>(<strong>готово</strong> — правильный ответ. Средний род.)</em></p>',
+        'correct': 'готово',
+        'choices': ['готов', 'готова', 'готово', 'готовы']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Коллеги, вы ___? (ready)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Готов</mark></blockquote><p><strong>готовы</strong> is correct. Short form plural. <br><br><em>(<strong>готовы</strong> — правильный ответ. Множественное число или вежливая форма.)</em></p>',
+        'correct': 'готовы',
+        'choices': ['готов', 'готовы', 'готова', 'готово']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Извините, директор сейчас ___, позвоните позже. (busy)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Занят</mark></blockquote><p><strong>занят</strong> is correct. Short form masculine of "занятый". <br><br><em>(<strong>занят</strong> — правильный ответ. Мужской род.)</em></p>',
+        'correct': 'занят',
+        'choices': ['занята', 'занято', 'занят', 'заняты']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я не могу говорить, я ___. (busy - female speaker)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Занят</mark></blockquote><p><strong>занята</strong> is correct. Short form feminine. <br><br><em>(<strong>занята</strong> — правильный ответ. Женский род.)</em></p>',
+        'correct': 'занята',
+        'choices': ['занят', 'занята', 'занято', 'заняты']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Это место ___? (busy/taken)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Занят</mark></blockquote><p><strong>занято</strong> is correct. Short form neuter (место). <br><br><em>(<strong>занято</strong> — правильный ответ. Средний род.)</em></p>',
+        'correct': 'занято',
+        'choices': ['занят', 'занята', 'заняты', 'занято']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Все линии сейчас ___, ожидайте. (busy)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Занят</mark></blockquote><p><strong>заняты</strong> is correct. Short form plural (линии). <br><br><em>(<strong>заняты</strong> — правильный ответ. Множественное число.)</em></p>',
+        'correct': 'заняты',
+        'choices': ['заняты', 'занят', 'занята', 'занято']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Ты ___ сегодня вечером? Пойдем в кино? (free/available - to a man)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Свободен</mark></blockquote><p><strong>свободен</strong> is correct. Short form masculine of "свободный". <br><br><em>(<strong>свободен</strong> — правильный ответ. Мужской род.)</em></p>',
+        'correct': 'свободен',
+        'choices': ['свободна', 'свободно', 'свободны', 'свободен']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Касса ___, подходите! (free/available)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Свободен</mark></blockquote><p><strong>свободна</strong> is correct. Short form feminine (касса). <br><br><em>(<strong>свободна</strong> — правильный ответ. Женский род.)</em></p>',
+        'correct': 'свободна',
+        'choices': ['свободен', 'свободна', 'свободно', 'свободны']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Такси свободно? Да, ___. (free)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Свободен</mark></blockquote><p><strong>свободно</strong> is correct. Short form neuter (такси is neuter/indeclinable). <br><br><em>(<strong>свободно</strong> — правильный ответ. Средний род.)</em></p>',
+        'correct': 'свободно',
+        'choices': ['свободен', 'свободна', 'свободно', 'свободны']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>В пятницу вечером мы ___. (free/available)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Свободен</mark></blockquote><p><strong>свободны</strong> is correct. Short form plural. <br><br><em>(<strong>свободны</strong> — правильный ответ. Множественное число.)</em></p>',
+        'correct': 'свободны',
+        'choices': ['свободен', 'свободны', 'свободна', 'свободно']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я абсолютно ___ в этом. (sure - male speaker)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Уверен</mark></blockquote><p><strong>уверен</strong> is correct. Short form masculine of "уверенный". <br><br><em>(<strong>уверен</strong> — правильный ответ. Мужской род.)</em></p>',
+        'correct': 'уверен',
+        'choices': ['уверена', 'уверено', 'уверены', 'уверен']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Она не ___ в своём коде. (sure)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Уверен</mark></blockquote><p><strong>уверена</strong> is correct. Short form feminine. <br><br><em>(<strong>уверена</strong> — правильный ответ. Женский род.)</em></p>',
+        'correct': 'уверена',
+        'choices': ['уверен', 'уверена', 'уверено', 'уверены']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Вы ___, что хотите удалить эту базу? (sure - formal/plural)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Уверен</mark></blockquote><p><strong>уверены</strong> is correct. Short form plural. <br><br><em>(<strong>уверены</strong> — правильный ответ. Множественное число или вежливая форма.)</em></p>',
+        'correct': 'уверены',
+        'choices': ['уверен', 'уверена', 'уверено', 'уверены']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ закончить эту работу до пятницы. (must/obliged - male speaker)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Должен</mark></blockquote><p><strong>должен</strong> is correct. Represents obligation (masculine). <br><br><em>(<strong>должен</strong> — правильный ответ. Мужской род, значение долженствования.)</em></p>',
+        'correct': 'должен',
+        'choices': ['должна', 'должно', 'должны', 'должен']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Она ___ прислать отчёт утром. (must)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Должен</mark></blockquote><p><strong>должна</strong> is correct. Represents obligation (feminine). <br><br><em>(<strong>должна</strong> — правильный ответ. Женский род.)</em></p>',
+        'correct': 'должна',
+        'choices': ['должен', 'должна', 'должно', 'должны']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Приложение ___ работать без ошибок. (must)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Должен</mark></blockquote><p><strong>должно</strong> is correct. Represents obligation (neuter for "приложение"). <br><br><em>(<strong>должно</strong> — правильный ответ. Средний род.)</em></p>',
+        'correct': 'должно',
+        'choices': ['должен', 'должна', 'должно', 'должны']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___ встретиться с клиентом. (must)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Должен</mark></blockquote><p><strong>должны</strong> is correct. Represents obligation (plural). <br><br><em>(<strong>должны</strong> — правильный ответ. Множественное число.)</em></p>',
+        'correct': 'должны',
+        'choices': ['должен', 'должна', 'должно', 'должны']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Ты был ___, это был баг в библиотеке. (right/correct - to a man)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Прав</mark></blockquote><p><strong>прав</strong> is correct. Short form meaning "right/correct" (masculine). <br><br><em>(<strong>прав</strong> — правильный ответ. Мужской род, значение «быть правым».)</em></p>',
+        'correct': 'прав',
+        'choices': ['права', 'правы', 'право', 'прав']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Анна, ты была ___, мы выбрали не тот сервер. (right)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Прав</mark></blockquote><p><strong>права</strong> is correct. Feminine form. <br><br><em>(<strong>права</strong> — правильный ответ. Женский род.)</em></p>',
+        'correct': 'права',
+        'choices': ['прав', 'права', 'правы', 'право']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Инвесторы были ___, проект успешен. (right)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Прав</mark></blockquote><p><strong>правы</strong> is correct. Plural form. <br><br><em>(<strong>правы</strong> — правильный ответ. Множественное число.)</em></p>',
+        'correct': 'правы',
+        'choices': ['прав', 'права', 'право', 'правы']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я очень ___, что мы встретились. (glad - male speaker)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Рад</mark></blockquote><p><strong>рад</strong> is correct. Short form meaning "glad" (masculine). "Рад" only exists in short form. <br><br><em>(<strong>рад</strong> — правильный ответ. Мужской род. Слово не имеет полной формы.)</em></p>',
+        'correct': 'рад',
+        'choices': ['рада', 'рады', 'радо', 'рад']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___, что вы пользуетесь нашим сервисом. (glad)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Рад</mark></blockquote><p><strong>рады</strong> is correct. Plural form meaning "glad". <br><br><em>(<strong>рады</strong> — правильный ответ. Множественное число.)</em></p>',
+        'correct': 'рады',
+        'choices': ['рад', 'рада', 'рады', 'радо']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Программист не пришел, он ___. (sick)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Болен</mark></blockquote><p><strong>болен</strong> is correct. Short form of "больной" (sick) for masculine. <br><br><em>(<strong>болен</strong> — правильный ответ. Обозначает временное состояние болезни, мужской род.)</em></p>',
+        'correct': 'болен',
+        'choices': ['больна', 'больны', 'болен', 'больно']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Директор ___, она будет завтра. (sick)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Болен</mark></blockquote><p><strong>больна</strong> is correct. Short form feminine. <br><br><em>(<strong>больна</strong> — правильный ответ. Женский род.)</em></p>',
+        'correct': 'больна',
+        'choices': ['болен', 'больна', 'больны', 'больно']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Ты ___ с этими условиями договора? (agree - to a man)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Согласен</mark></blockquote><p><strong>согласен</strong> is correct. Short form masculine of "согласный" (agree). <br><br><em>(<strong>согласен</strong> — правильный ответ. Выражает согласие, мужской род.)</em></p>',
+        'correct': 'согласен',
+        'choices': ['согласна', 'согласны', 'согласно', 'согласен']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Она не ___ с таким графиком работы. (agree)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Согласен</mark></blockquote><p><strong>согласна</strong> is correct. Short form feminine. <br><br><em>(<strong>согласна</strong> — правильный ответ. Женский род.)</em></p>',
+        'correct': 'согласна',
+        'choices': ['согласен', 'согласна', 'согласны', 'согласно']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Да, мы ___ подписать контракт. (agree)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Согласен</mark></blockquote><p><strong>согласны</strong> is correct. Short form plural. <br><br><em>(<strong>согласны</strong> — правильный ответ. Множественное число.)</em></p>',
+        'correct': 'согласны',
+        'choices': ['согласен', 'согласна', 'согласно', 'согласны']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Он сейчас ___? Нет, он умер в прошлом году. (alive)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Жив</mark></blockquote><p><strong>жив</strong> is correct. Short form masculine of "живой" (alive). <br><br><em>(<strong>жив</strong> — правильный ответ. Мужской род, означает состояние жизни.)</em></p>',
+        'correct': 'жив',
+        'choices': ['жива', 'живы', 'живо', 'жив']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Главное, что все здоровы и ___. (alive - plural)</strong></p>',
+        'explanation': '<blockquote><mark>Краткие прилагательные: Жив</mark></blockquote><p><strong>живы</strong> is correct. Short form plural. <br><br><em>(<strong>живы</strong> — правильный ответ. Множественное число, часто используется в паре со словом «здоровы».)</em></p>',
+        'correct': 'живы',
+        'choices': ['жив', 'жива', 'живо', 'живы']
+    }
+]
+QUESTIONS_mixed_parts_31_42 = [
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я каждый день ___ сложные задачи на Python. (решать/решить)</strong></p>',
+        'explanation': '<p><strong>решаю</strong> is correct. "Каждый день" indicates a regular, repeating action (Imperfective). <br><br><em>(<strong>решаю</strong> — правильный ответ. Регулярное действие требует несовершенного вида.)</em></p>',
+        'correct': 'решаю',
+        'choices': ['решу', 'решаю', 'решил', 'решаем']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Отлично! Вчера я наконец-то ___ этот баг. (исправлять/исправить)</strong></p>',
+        'explanation': '<p><strong>исправил</strong> is correct. A successfully completed action with a result in the past (Perfective). <br><br><em>(<strong>исправил</strong> — правильный ответ. Успешно завершенное действие в прошлом.)</em></p>',
+        'correct': 'исправил',
+        'choices': ['исправлял', 'исправляю', 'исправил', 'исправит']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Завтра мы весь день ___ новую систему. (тестировать/протестировать)</strong></p>',
+        'explanation': '<p><strong>будем тестировать</strong> is correct. "Весь день" points to a duration of time in the future (Imperfective future). <br><br><em>(<strong>будем тестировать</strong> — правильный ответ. Длительный процесс в будущем.)</em></p>',
+        'correct': 'будем тестировать',
+        'choices': ['протестируем', 'тестировали', 'тестируем', 'будем тестировать']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Куда ты сейчас ___? На митинг? (идти/ходить)</strong></p>',
+        'explanation': '<p><strong>идёшь</strong> is correct. A one-directional movement happening right now. <br><br><em>(<strong>идёшь</strong> — правильный ответ. Движение в одном направлении прямо сейчас.)</em></p>',
+        'correct': 'идёшь',
+        'choices': ['идёшь', 'ходишь', 'идёт', 'иду']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Обычно я ___ в офис пешком. (идти/ходить)</strong></p>',
+        'explanation': '<p><strong>хожу</strong> is correct. "Обычно" indicates a regular, repeated habit. <br><br><em>(<strong>хожу</strong> — правильный ответ. Регулярное, повторяющееся действие.)</em></p>',
+        'correct': 'хожу',
+        'choices': ['иду', 'идёт', 'ходишь', 'хожу']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Извини, не могу говорить, я сейчас ___ в такси. (ехать/ездить)</strong></p>',
+        'explanation': '<p><strong>еду</strong> is correct. Ongoing one-directional movement in transport right now. <br><br><em>(<strong>еду</strong> — правильный ответ. Процесс движения в транспорте в данный момент.)</em></p>',
+        'correct': 'еду',
+        'choices': ['езжу', 'едешь', 'ездит', 'еду']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>В прошлом году мы ___ в Москву на конференцию. (ехать/ездить)</strong></p>',
+        'explanation': '<p><strong>ездили</strong> is correct. A completed round trip in the past (went and came back). <br><br><em>(<strong>ездили</strong> — правильный ответ. Завершенная поездка туда и обратно в прошлом.)</em></p>',
+        'correct': 'ездили',
+        'choices': ['ехали', 'ездили', 'ездил', 'ехал']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Наш офис находится на ___ улице города. (main)</strong></p>',
+        'explanation': '<p><strong>главной</strong> is correct. Feminine adjective in the Prepositional case. <br><br><em>(<strong>главной</strong> — правильный ответ. Предложный падеж женского рода.)</em></p>',
+        'correct': 'главной',
+        'choices': ['главную', 'главной', 'главная', 'главный']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Поверните ___ сразу после банка. (right)</strong></p>',
+        'explanation': '<p><strong>направо</strong> is correct. Direction "to the right". <br><br><em>(<strong>направо</strong> — правильный ответ. Направление движения в правую сторону.)</em></p>',
+        'correct': 'направо',
+        'choices': ['прямо', 'налево', 'назад', 'направо']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>___ сервер работает слишком медленно. (This)</strong></p>',
+        'explanation': '<p><strong>Этот</strong> is correct. Masculine demonstrative pronoun for "сервер". <br><br><em>(<strong>Этот</strong> — правильный ответ. Указательное местоимение мужского рода.)</em></p>',
+        'correct': 'Этот',
+        'choices': ['Эта', 'Эти', 'Это', 'Этот']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы исправили ___ ошибку ещё вчера. (this)</strong></p>',
+        'explanation': '<p><strong>эту</strong> is correct. Feminine demonstrative pronoun in the Accusative case. <br><br><em>(<strong>эту</strong> — правильный ответ. Винительный падеж женского рода.)</em></p>',
+        'correct': 'эту',
+        'choices': ['эту', 'этот', 'этой', 'эти']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Кто ___ люди в переговорной? (these)</strong></p>',
+        'explanation': '<p><strong>эти</strong> is correct. Plural demonstrative pronoun for "люди". <br><br><em>(<strong>эти</strong> — правильный ответ. Указательное местоимение множественного числа.)</em></p>',
+        'correct': 'эти',
+        'choices': ['это', 'этот', 'эта', 'эти']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Новый алгоритм работает ___, чем старый. (better)</strong></p>',
+        'explanation': '<p><strong>лучше</strong> is correct. Comparative form of "хорошо". <br><br><em>(<strong>лучше</strong> — правильный ответ. Сравнительная степень от слова «хорошо/хороший».)</em></p>',
+        'correct': 'лучше',
+        'choices': ['хороший', 'лучше', 'более лучше', 'хорошо']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Настроить базу данных ___, чем кажется. (more complex/harder)</strong></p>',
+        'explanation': '<p><strong>сложнее</strong> is correct. Comparative form of "сложно". <br><br><em>(<strong>сложнее</strong> — правильный ответ. Сравнительная степень слова «сложно».)</em></p>',
+        'correct': 'сложнее',
+        'choices': ['сложный', 'трудный', 'сложнее', 'более сложно']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мой новый ноутбук ___, чем твой. (more expensive)</strong></p>',
+        'explanation': '<p><strong>дороже</strong> is correct. Comparative form of "дорогой". <br><br><em>(<strong>дороже</strong> — правильный ответ. Сравнительная степень от слова «дорогой».)</em></p>',
+        'correct': 'дороже',
+        'choices': ['дорогой', 'дороже', 'более дорого', 'дорого']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Это ___ разработчик в нашей команде. (the best)</strong></p>',
+        'explanation': '<p><strong>самый лучший</strong> is correct. Superlative form using "самый". <br><br><em>(<strong>самый лучший</strong> — правильный ответ. Превосходная степень мужского рода.)</em></p>',
+        'correct': 'самый лучший',
+        'choices': ['самый хороший', 'наилучший', 'самый лучший', 'лучший самый']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Это ___ задача из всех. (the hardest/most complex)</strong></p>',
+        'explanation': '<p><strong>самая сложная</strong> is correct. Feminine superlative form. <br><br><em>(<strong>самая сложная</strong> — правильный ответ. Превосходная степень женского рода.)</em></p>',
+        'correct': 'самая сложная',
+        'choices': ['самая сложная', 'самый сложный', 'самое сложное', 'самые сложные']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы используем ___ технологии для PWA. (the newest)</strong></p>',
+        'explanation': '<p><strong>новейшие</strong> is correct. Single-word superlative using the suffix -ейш-. <br><br><em>(<strong>новейшие</strong> — правильный ответ. Простая превосходная степень множественного числа.)</em></p>',
+        'correct': 'новейшие',
+        'choices': ['новые', 'более новые', 'самые новые', 'новейшие']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Зимой на улице сильный ___. (frost)</strong></p>',
+        'explanation': '<p><strong>мороз</strong> is correct. "Мороз" means freezing weather or frost. <br><br><em>(<strong>мороз</strong> — правильный ответ. Обозначает сильный холод зимой.)</em></p>',
+        'correct': 'мороз',
+        'choices': ['дождь', 'солнце', 'мороз', 'жара']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Из-за густого ___ наш рейс задержали. (fog)</strong></p>',
+        'explanation': '<p><strong>тумана</strong> is correct. Genitive case of "туман" after "из-за". <br><br><em>(<strong>тумана</strong> — правильный ответ. Родительный падеж слова «туман».)</em></p>',
+        'correct': 'тумана',
+        'choices': ['тумана', 'солнца', 'тепла', 'дождя']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Сегодня на небе нет облаков, погода ___. (clear)</strong></p>',
+        'explanation': '<p><strong>ясная</strong> is correct. "Ясная" matches the feminine noun "погода". <br><br><em>(<strong>ясная</strong> — правильный ответ. Безоблачная погода, женский род.)</em></p>',
+        'correct': 'ясная',
+        'choices': ['облачная', 'дождливая', 'пасмурная', 'ясная']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Я ___ на курсах программирования по вечерам. (study)</strong></p>',
+        'explanation': '<p><strong>учусь</strong> is correct. Reflexive verb in 1st person singular. <br><br><em>(<strong>учусь</strong> — правильный ответ. Форма возвратного глагола для местоимения «я».)</em></p>',
+        'correct': 'учусь',
+        'choices': ['учится', 'учишься', 'учусь', 'учимся']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Собрание директоров ___ ровно в 10:00. (starts)</strong></p>',
+        'explanation': '<p><strong>начинается</strong> is correct. Reflexive verb in 3rd person singular (no soft sign). <br><br><em>(<strong>начинается</strong> — правильный ответ. 3-е лицо, отвечает на вопрос «что делает?» без мягкого знака.)</em></p>',
+        'correct': 'начинается',
+        'choices': ['начинаться', 'начинаются', 'начинаюсь', 'начинается']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Вчера мы ___ с клиентом в ресторане. (met)</strong></p>',
+        'explanation': '<p><strong>встретились</strong> is correct. Plural past tense reflexive verb. <br><br><em>(<strong>встретились</strong> — правильный ответ. Прошедшее время, множественное число.)</em></p>',
+        'correct': 'встретились',
+        'choices': ['встретилась', 'встретился', 'встретились', 'встречаемся']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мне нужно ___ к завтрашнему релизу. (get ready/prepare)</strong></p>',
+        'explanation': '<p><strong>готовиться</strong> is correct. Infinitive form after "нужно" (with soft sign). <br><br><em>(<strong>готовиться</strong> — правильный ответ. Инфинитив пишется с мягким знаком.)</em></p>',
+        'correct': 'готовиться',
+        'choices': ['готовимся', 'готовится', 'готовятся', 'готовиться']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Всё проверено. Проект ___ к запуску. (ready)</strong></p>',
+        'explanation': '<p><strong>готов</strong> is correct. Short adjective form, masculine (проект). <br><br><em>(<strong>готов</strong> — правильный ответ. Краткое прилагательное мужского рода.)</em></p>',
+        'correct': 'готов',
+        'choices': ['готово', 'готов', 'готовы', 'готова']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Извините, я сейчас ___, перезвоните позже. (busy - male speaker)</strong></p>',
+        'explanation': '<p><strong>занят</strong> is correct. Short adjective form, masculine. <br><br><em>(<strong>занят</strong> — правильный ответ. Краткое прилагательное, мужской род.)</em></p>',
+        'correct': 'занят',
+        'choices': ['занято', 'занята', 'заняты', 'занят']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Вы ___, что хотите удалить эту базу данных? (sure - plural/formal)</strong></p>',
+        'explanation': '<p><strong>уверены</strong> is correct. Short adjective form, plural. <br><br><em>(<strong>уверены</strong> — правильный ответ. Множественное число или вежливая форма.)</em></p>',
+        'correct': 'уверены',
+        'choices': ['уверена', 'уверен', 'уверены', 'уверено']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Ты был ___, это действительно баг в библиотеке. (right - to a man)</strong></p>',
+        'explanation': '<p><strong>прав</strong> is correct. Short adjective form meaning "right/correct" (masculine). <br><br><em>(<strong>прав</strong> — правильный ответ. Краткая форма мужского рода со значением «быть правым».)</em></p>',
+        'correct': 'прав',
+        'choices': ['права', 'правы', 'прав', 'право']
+    },
+    {
+        'text': '<p>Выберите правильный вариант.</p><p><strong>Мы ___, что вы используете наше приложение. (glad)</strong></p>',
+        'explanation': '<p><strong>рады</strong> is correct. Plural form of the short adjective "рад" (glad). <br><br><em>(<strong>рады</strong> — правильный ответ. Множественное число от слова «рад».)</em></p>',
+        'correct': 'рады',
+        'choices': ['рада', 'рады', 'рад', 'радо']
     }
 ]
