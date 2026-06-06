@@ -106,6 +106,17 @@ def number_guess(request):
             session['guess_last'] = None
             return redirect('number_guess')
 
+        if action == 'reset':
+            # Clear the active game and return to the start screen so the
+            # player can choose a different range. The last range is kept in
+            # 'guess_max' so the setup form can pre-fill it.
+            session['guess_target'] = None
+            session['guess_attempts'] = 0
+            session['guess_result'] = None
+            session['guess_won'] = False
+            session['guess_last'] = None
+            return redirect('number_guess')
+
         if action == 'guess':
             target = session.get('guess_target')
             if target is None:
@@ -1472,6 +1483,16 @@ def target_number(request):
                 'tn_attempts':   0,
                 'tn_solved':     False,
             })
+            return redirect('target_number')
+
+        if action == 'reset':
+            # Clear the active game and return to the start screen so the
+            # player can choose a different difficulty. The last difficulty is
+            # kept in 'tn_difficulty' so the setup form can pre-select it.
+            request.session['tn_numbers'] = None
+            request.session.pop('tn_target', None)
+            request.session['tn_attempts'] = 0
+            request.session['tn_solved'] = False
             return redirect('target_number')
 
     context = {

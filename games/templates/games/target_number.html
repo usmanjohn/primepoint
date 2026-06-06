@@ -99,23 +99,25 @@
                     <label class="form-label fw-semibold" style="color:var(--text);">{% trans "Difficulty" %}</label>
                     <div class="d-flex gap-2 flex-wrap">
                         <label class="tn-diff-label" style="cursor:pointer;">
-                            <input type="radio" name="difficulty" value="easy" checked class="visually-hidden tn-diff-radio">
+                            <input type="radio" name="difficulty" value="easy" {% if difficulty == 'easy' %}checked{% endif %} class="visually-hidden tn-diff-radio">
                             <span class="btn btn-sm tn-diff-btn" data-value="easy"
                                   style="background:#d1fae5; color:#065f46; border:2px solid #d1fae5;">{% trans "Easy" %}</span>
                         </label>
                         <label class="tn-diff-label" style="cursor:pointer;">
-                            <input type="radio" name="difficulty" value="medium" class="visually-hidden tn-diff-radio">
+                            <input type="radio" name="difficulty" value="medium" {% if difficulty == 'medium' %}checked{% endif %} class="visually-hidden tn-diff-radio">
                             <span class="btn btn-sm tn-diff-btn" data-value="medium"
                                   style="background:#fef3c7; color:#92400e; border:2px solid #fef3c7;">{% trans "Medium" %}</span>
                         </label>
                         <label class="tn-diff-label" style="cursor:pointer;">
-                            <input type="radio" name="difficulty" value="hard" class="visually-hidden tn-diff-radio">
+                            <input type="radio" name="difficulty" value="hard" {% if difficulty == 'hard' %}checked{% endif %} class="visually-hidden tn-diff-radio">
                             <span class="btn btn-sm tn-diff-btn" data-value="hard"
                                   style="background:#fee2e2; color:#991b1b; border:2px solid #fee2e2;">{% trans "Hard" %}</span>
                         </label>
                     </div>
                     <div class="mt-2" style="font-size:0.82rem; color:var(--text-muted);" id="tn-diff-desc">
-                        {% trans "4 numbers (1–9), target 10–50" %}
+                        {% if difficulty == 'medium' %}{% trans "4 numbers (1–15) + 2 special, target 50–200" %}
+                        {% elif difficulty == 'hard' %}{% trans "4 numbers (1–9) + 2 special, target 100–999" %}
+                        {% else %}{% trans "4 numbers (1–9), target 10–50" %}{% endif %}
                     </div>
                 </div>
                 <button type="submit" class="btn btn-lg w-100 fw-semibold"
@@ -151,6 +153,13 @@
                 <input type="hidden" name="difficulty" value="{{ difficulty }}">
                 <button type="submit" class="btn btn-success btn-lg fw-semibold px-5">
                     {% trans "Play Again" %}
+                </button>
+            </form>
+            <form method="post" class="mt-2">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="reset">
+                <button type="submit" class="btn btn-link" style="color:var(--text-muted);">
+                    {% trans "Change difficulty" %}
                 </button>
             </form>
         </div>
@@ -234,15 +243,25 @@
             = {% trans "Check" %}
         </button>
     </div>
-    <form method="post" id="tn-new-form">
-        {% csrf_token %}
-        <input type="hidden" name="action" value="new">
-        <input type="hidden" name="difficulty" value="{{ difficulty }}">
-        <button type="submit" class="btn btn-outline-secondary w-100"
-                style="color:var(--text-muted); border-color:var(--border);">
-            {% trans "New Game" %}
-        </button>
-    </form>
+    <div class="d-flex gap-2">
+        <form method="post" id="tn-new-form" class="flex-grow-1">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="new">
+            <input type="hidden" name="difficulty" value="{{ difficulty }}">
+            <button type="submit" class="btn btn-outline-secondary w-100"
+                    style="color:var(--text-muted); border-color:var(--border);">
+                {% trans "New Game" %}
+            </button>
+        </form>
+        <form method="post" class="flex-grow-1">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="reset">
+            <button type="submit" class="btn btn-outline-secondary w-100"
+                    style="color:var(--text-muted); border-color:var(--border);">
+                {% trans "Change difficulty" %}
+            </button>
+        </form>
+    </div>
     {% endif %}
 
 </div>
