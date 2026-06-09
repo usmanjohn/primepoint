@@ -12,6 +12,10 @@ class Subject(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
     color = models.CharField(max_length=7, default='#6366f1', help_text='Hex color for card accent, e.g. #6366f1')
+    icon = models.CharField(
+        max_length=50, default='bi-journal-bookmark-fill',
+        help_text='Bootstrap Icon class, e.g. bi-calculator, bi-translate, bi-flask',
+    )
 
     class Meta:
         ordering = ['name']

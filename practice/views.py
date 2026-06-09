@@ -49,7 +49,9 @@ def practice_list(request):
     ).order_by('-created_at')
 
     subject_id = request.GET.get('subject')
-    if subject_id:
+    if subject_id == 'none':
+        practices = practices.filter(subject__isnull=True)
+    elif subject_id:
         practices = practices.filter(subject_id=subject_id)
 
     level = request.GET.get('level')
@@ -70,11 +72,27 @@ def practice_list(request):
             Q(title__icontains=query) | Q(description__icontains=query)
         )
 
-    subjects = list(Subject.objects.all())
+    subjects = list(
+        Subject.objects.annotate(
+            practice_count=Count('practice', filter=Q(practice__is_published=True), distinct=True)
+        ).order_by('name')
+    )
     subject_color_map = {
         s.pk: SUBJECT_PALETTE[i % len(SUBJECT_PALETTE)]
         for i, s in enumerate(subjects)
     }
+    # Attach palette color to each subject for the browse cards
+    for s in subjects:
+        s.card_color = subject_color_map[s.pk]
+
+    # Practices with no subject assigned — shown as an "Uncategorized" bucket
+    uncategorized_count = Practice.objects.filter(
+        is_published=True, subject__isnull=True
+    ).count()
+
+    # Landing view: show subject cards when the user hasn't filtered/searched yet
+    browse_subjects = not any([subject_id, level, master_id, query, is_free == '1'])
+
     masters = Master.objects.filter(practices__is_published=True).select_related(
         'profile__user'
     ).distinct()
@@ -105,6 +123,8 @@ def practice_list(request):
         'query': query or '',
         'is_approved_master': is_approved_master,
         'subject_color_map': subject_color_map,
+        'browse_subjects': browse_subjects,
+        'uncategorized_count': uncategorized_count,
     }
     return render(request, 'practice/practice_list.html', context)
 
