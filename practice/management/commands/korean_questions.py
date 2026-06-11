@@ -731,7 +731,9 @@ topic_4 = [
         'explanation': "<p><strong>입니다</strong>: <strong>매일</strong> (har kuni) minadigan <u>편리한</u> (qulay) velosiped ekanligini aytish uchun '-입니다'.</p>",
         'correct': "입니다",
         'choices': ["입니까", "탑니다", "입니다", "옵니다"]
-    },
+    }]
+
+topic_5 = [
 
     # --- TOPIC 5: 조사 1: 은/는 (주제), 이/가 (주어) ---
     {
@@ -1465,7 +1467,9 @@ topic_8 = [
         'explanation': "<p><strong>맛있어요</strong>: '맛있다' (mazali bo'lmoq). '있다' fe'li '-어요' qabul qiladi. <strong>아주</strong> (juda) mazali.</p>",
         'correct': "맛있어요",
         'choices': ["맛있아요", "맛있워요", "맛있어요", "맛있해요"]
-    },
+    }]
+
+topic_9 = [
 
     # --- TOPIC 9: 동사/형용사 + ㅂ니다/습니다 (격식 존댓말 현재형) ---
     {
@@ -2199,9 +2203,8 @@ topic_12 = [
         'explanation': "<p><strong>못했어요</strong>: '입다' (kiymoq) + '-지 못하다'. Vaziyat tufayli kiya olmadi.</p>",
         'correct': "못했어요",
         'choices': ["않았어요", "못했어요", "없었어요", "안했어요"]
-    },
-
-    # --- TOPIC 13: 한국어 숫자와 단위 명사 ---
+    }]
+topic_13 = [
     {
         'text': "<p><strong>A: 식탁 <strong>위에</strong> <u>빨간</u> 사과가 <em>몇 개</em> 있어요?<br>B: 사과가 <strong>딱</strong> ________ 개 있어요. (1)</strong></p>",
         'explanation': "<p><strong>한</strong>: '개' (dona/ta) sanash so'zi bilan Native Korean (고유어 숫자) ishlatiladi. '하나' (1) sanash so'zi oldida '한' ga o'zgaradi. <strong>딱</strong> (roppa-rosa) bitta.</p>",
@@ -2565,7 +2568,9 @@ topic_14 = [
         'explanation': "<p><strong>목</strong>: Bugun Juma (금요일) bo'lsa, kecha Payshanba (목요일) bo'lgan. <strong>드디어</strong> (nihoyat).</p>",
         'correct': "목",
         'choices': ["수", "목", "토", "일"]
-    },
+    }]
+
+topic_15 = [
 
     # --- TOPIC 15: 의문사 (누구, 무엇, 어디, 언제, 왜, 어떻게) ---
     {
@@ -2931,7 +2936,9 @@ topic_16 = [
         'explanation': "<p><strong>기뻐요</strong>: '기쁘다' (xursand bo'lmoq). '으' tushib, '기' dagi 'ㅣ' sababli '-어요' qo'shiladi. <strong>오랫동안</strong> (uzoq vaqt) tayyorlangani uchun xursand.</p>",
         'correct': "기뻐요",
         'choices': ["기쁘어요", "기빠요", "기뻐요", "기쁘아요"]
-    },
+    }]
+
+topic_17 = [
 
     # --- TOPIC 17: 동사 + (으)ㄹ 거예요 (미래 및 추측) ---
     {
