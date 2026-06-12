@@ -6,7 +6,7 @@ from practice.models import Subject, Practice, PracticeQuestion, PracticeChoice
 from .korean_questions import (
     topic_21, topic_22, topic_23, topic_24, topic_25, topic_26, topic_27, topic_28, topic_29, topic_30, topic_31, topic_32, topic_33, topic_34, topic_35, topic_36, topic_37, topic_38, topic_39, topic_40)
 
-PRACTICES_PART_2 = [
+PRACTICES = [
     {
         'title': '수업 21: 동사 + 아/어 주다 (요청 및 도움)',
         'description': '다른 사람에게 도움을 요청하거나, 다른 사람을 위해 어떤 행동을 해 줄 때 사용하는 표현을 배웁니다.',
