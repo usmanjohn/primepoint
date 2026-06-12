@@ -4,114 +4,74 @@ from masters.models import Master
 from practice.models import Subject, Practice, PracticeQuestion, PracticeChoice
 
 from .korean_questions import (
-    topic_41, topic_42, topic_43, topic_44, topic_45,
-    topic_46, topic_47, topic_48, topic_49, topic_50,
-    topic_51, topic_52, topic_53, topic_54, topic_55, topic_56, topic_57, topic_58, topic_59, topic_60
+    topic_61, topic_62, topic_63, topic_64, topic_65, topic_66, topic_67, topic_68, topic_69, topic_70, topic_71, topic_72
 )
+
 PRACTICES = [
     {
-        'title': '수업 41: 동사 + 기로 하다 (결정과 약속)',
-        'description': '어떤 일을 하기로 스스로 결심하거나, 다른 사람과 약속할 때 사용하는 표현을 배웁니다.',
-        'questions': topic_41,
+        'title': '수업 61: 부정적 원인과 핑계: 동사 + 는 바람에, (으)ㄴ/는 탓에, 느라고',
+        'description': '예상치 못한 일이나 부정적인 원인 때문에 원하지 않는 결과가 생겼을 때 변명이나 핑계를 대는 표현을 배웁니다.',
+        'questions': topic_61,
     },
     {
-        'title': '수업 42: 동사/형용사 + 잖아요 (확인 및 강조)',
-        'description': '말하는 사람과 듣는 사람이 모두 이미 알고 있는 사실을 다시 확인하거나 강조할 때 사용하는 표현을 익힙니다.',
-        'questions': topic_42,
+        'title': '수업 62: 후회와 아쉬움: 동사 + (으)ㄹ걸 (그랬다), 았/었어야 했다',
+        'description': '과거의 행동이나 하지 않은 일에 대해 후회하고 아쉬움을 나타내는 표현을 배웁니다.',
+        'questions': topic_62,
     },
     {
-        'title': '수업 43: 피동 표현 (-이/히/리/기-, 아/어지다)',
-        'description': '주어가 스스로 행동하는 것이 아니라, 다른 사람이나 사물에 의해 어떤 행동을 당하게 되는 피동 문법을 배웁니다.',
-        'questions': topic_43,
+        'title': '수업 63: 목적과 의도의 심화: 동사 + (으)ㄹ 겸, 고자',
+        'description': '두 가지 이상의 목적을 동시에 가지거나 격식 있는 상황에서 어떤 행동의 뚜렷한 의도를 나타낼 때 사용하는 표현을 익힙니다.',
+        'questions': topic_63,
     },
     {
-        'title': '수업 44: 사동 표현 (-이/히/리/기/우/구/추-, 게 하다)',
-        'description': '주어가 직접 행동하지 않고, 다른 사람이나 동물에게 어떤 행동을 하도록 시키거나 만드는 사동 문법을 배웁니다.',
-        'questions': topic_44,
+        'title': '수업 64: 당연함과 필연성: 동사/형용사 + 기 마련이다, (으)ㄴ/는 법이다',
+        'description': '세상의 이치나 자연스러운 현상처럼 어떤 일이 일어나는 것이 당연하고 필연적임을 나타내는 표현을 배웁니다.',
+        'questions': topic_64,
     },
     {
-        'title': '수업 45: 동사 + 아/어 버리다 (행동의 완료와 감정적 결과)',
-        'description': '어떤 행동이 완전히 끝나서 남은 것이 없음을 나타내며, 그에 따른 아쉬움이나 후련함 등의 감정을 표현합니다.',
-        'questions': topic_45,
+        'title': '수업 65: 상태의 지속과 유지: 동사 + 아/어 놓다, 아/어 두다',
+        'description': '어떤 행동을 끝낸 후 그 결과나 상태가 계속해서 유지되거나 미래를 위해 미리 준비해 놓음을 나타내는 표현을 배웁니다.',
+        'questions': topic_65,
     },
     {
-        'title': '수업 46: 간접 화법 1: 평서문 (-다고 하다), 의문문 (-냐고 하다)',
-        'description': '다른 사람이 한 평서문(설명)이나 의문문(질문)의 말을 제3자에게 전달할 때 사용하는 간접 화법을 익힙니다.',
-        'questions': topic_46,
+        'title': '수업 66: 강한 추측과 가능성: 동사/형용사 + (으)ㄹ지도 모르다, 기 십상이다',
+        'description': '어떤 일이 일어날 가능성이 있음을 강하게 추측하거나, 특히 부정적인 상황이 발생하기 매우 쉬움을 경고하는 표현을 배웁니다.',
+        'questions': topic_66,
     },
     {
-        'title': '수업 47: 간접 화법 2: 명령문 (-라고 하다), 청유문 (-자고 하다)',
-        'description': '다른 사람이 한 명령문(지시)이나 청유문(제안)의 말을 제3자에게 전달할 때 사용하는 간접 화법을 익힙니다.',
-        'questions': topic_47,
+        'title': '수업 67: 즉각적인 연속: 동사 + 자마자 / 동사 + 기가 무섭게',
+        'description': '앞의 행동이나 사건이 끝나자마자 시간적 간격 없이 뒤의 행동이 곧바로 일어남을 강조하여 나타내는 표현을 배웁니다.',
+        'questions': topic_67,
     },
     {
-        'title': '수업 48: 동사 + (으)ㄹ 뻔하다 (과거의 위기 모면)',
-        'description': '과거에 어떤 위험하거나 나쁜 일이 일어날 가능성이 있었지만, 다행히 일어나지 않았음을 나타낼 때 사용합니다.',
-        'questions': topic_48,
+        'title': '수업 68: 기회와 도중: 동사 + 는 길에 / 는 김에',
+        'description': '어떤 목적지로 이동하는 도중이거나, 어떤 일을 하는 기회를 이용하여 다른 일도 함께 함을 나타내는 표현을 배웁니다.',
+        'questions': topic_68,
     },
     {
-        'title': '수업 49: 동사 + (으)ㄹ 테니까 (화자의 의지 및 추측에 따른 이유)',
-        'description': '말하는 사람의 강한 의지나 추측을 이유나 조건으로 삼아, 듣는 사람에게 제안이나 부탁을 할 때 사용하는 표현입니다.',
-        'questions': topic_49,
+        'title': '수업 69: 행동의 완료 후 새로운 사실: 동사 + 고 나서 / (으)ㄴ 채로',
+        'description': '한 행동이 완전히 끝난 후 다음 행동을 하거나, 앞선 행동의 상태가 그대로 유지된 상태에서 다른 행동을 함을 배웁니다.',
+        'questions': topic_69,
     },
     {
-        'title': '수업 50: 동사/형용사 + (으)ㄹ수록 (정도의 심화)',
-        'description': '앞의 상황이나 행동의 정도가 더해질수록 뒤의 결과나 상태도 비례해서 심해지거나 달라짐을 나타냅니다.',
-        'questions': topic_50,
+        'title': '수업 70: 과거에 대한 반대 가정: 동사/형용사 + 았/었더라면',
+        'description': '과거에 일어났던 사실과 반대되는 상황을 가정하여 후회, 아쉬움, 또는 다행임을 나타내는 표현을 배웁니다.',
+        'questions': topic_70,
     },
     {
-        'title': '수업 51: 명사 + (이)나 다름없다 / 동사 + (으)ㄴ/는 셈이다 (결과적 동일)',
-        'description': '실제로는 완전히 같지 않지만, 결과적으로 보았을 때 그것과 같거나 마찬가지임을 나타내는 표현을 배웁니다.',
-        'questions': topic_51,
+        'title': '수업 71: 부정적 결과의 경고: 동사/형용사 + 다가는',
+        'description': '앞의 행동이나 상태가 계속 반복되거나 지속되면 결국 부정적인 결과가 생길 것임을 경고할 때 사용하는 표현을 배웁니다.',
+        'questions': topic_71,
     },
     {
-        'title': '수업 52: 동사/형용사 + (으)ㄴ/는 반면에 (상반된 사실)',
-        'description': '앞의 내용과 뒤의 내용이 서로 반대되거나, 한 가지 대상의 긍정적인 면과 부정적인 면을 대조할 때 사용합니다.',
-        'questions': topic_52,
-    },
-    {
-        'title': '수업 53: 동사/형용사 + (으)ㄹ 뿐만 아니라 (점층과 추가)',
-        'description': '앞의 사실에 더하여 뒤의 사실까지 긍정적 또는 부정적인 특징이나 상황이 추가됨을 나타내는 표현입니다.',
-        'questions': topic_53,
-    },
-    {
-        'title': '수업 54: 동사/형용사 + (으)ㄴ/는 데다가 (상황의 가중)',
-        'description': '이미 있는 어떤 상황이나 상태에 더하여, 같은 성격(긍정 또는 부정)의 상황이 한층 더 심해짐을 나타냅니다.',
-        'questions': topic_54,
-    },
-    {
-        'title': '수업 55: 동사 + 다가 보면 (행동의 지속과 새로운 결과 발견)',
-        'description': '어떤 행동을 중간에 멈추지 않고 계속 반복하거나 지속할 때, 새로운 사실을 알게 되거나 결과가 생김을 나타냅니다.',
-        'questions': topic_55,
-    },
-    {
-        'title': '수업 56: 동사/형용사 + (으)ㅁ으로써 (수단과 방법의 명사화)',
-        'description': '어떤 행동이 뒤에 오는 일의 수단, 방법, 또는 원인이 됨을 격식 있게 표현하는 방법을 배웁니다.',
-        'questions': topic_56,
-    },
-    {
-        'title': '수업 57: 동사/형용사 + (으)ㄹ 지경이다 (극단적 상태나 한계)',
-        'description': '어떤 상태나 상황이 감당하기 힘들 정도로 아주 극단적인 한계에 이르렀음을 과장하여 나타내는 표현입니다.',
-        'questions': topic_57,
-    },
-    {
-        'title': '수업 58: 동사/형용사 + (으)ㄹ 리가 없다 / (으)ㄹ 턱이 없다 (강한 의심과 부정)',
-        'description': '어떤 일이 일어날 가능성이나 이유가 전혀 없음을 강하게 확신하며 의심하고 부정할 때 사용하는 표현입니다.',
-        'questions': topic_58,
-    },
-    {
-        'title': '수업 59: 명사 + 에 달려 있다 (조건에 따른 결과)',
-        'description': '어떤 일의 성공이나 결과가 앞서 말한 조건, 행동, 또는 대상에 따라 결정됨을 나타내는 표현을 배웁니다.',
-        'questions': topic_59,
-    },
-    {
-        'title': '수업 60: 동사 + (으)려던 참이다 (막 하려던 의도와 우연의 일치)',
-        'description': '말하는 사람이 막 어떤 행동을 하려고 마음먹고 있던 짧은 순간에, 우연히 외부 상황이 맞아떨어졌을 때 사용합니다.',
-        'questions': topic_60,
+        'title': '수업 72: 노력의 소용없음: 동사/형용사 + 아/어 봤자',
+        'description': '아무리 노력하거나 어떤 행동을 해 보아도 기대하는 결과가 나오지 않거나 아무 소용이 없음을 나타내는 표현을 배웁니다.',
+        'questions': topic_72,
     }
 ]
+
 class Command(BaseCommand):
-    help = 'Create Korean grammar particle practice tests (lessons 5–9)'
+    help = 'Create Korean grammar particle practice tests (lessons 61–72)'
 
     def add_arguments(self, parser):
         parser.add_argument('--master', required=True, help='Username of the master to assign practices to')
