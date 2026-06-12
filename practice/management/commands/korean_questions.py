@@ -1,3674 +1,3514 @@
-topic_21 = [
-    # --- TOPIC 21: 동사 + 아/어 주다 (요청 및 도움) ---
+topic_41 = [
+    # --- TOPIC 41: 동사 + 기로 하다 (결정과 약속) ---
     {
-        'text': "<p><strong>A: <strong>오늘</strong> <strong>너무</strong> <u>바쁜데</u> 이 <u>복잡한</u> 서류를 <strong>대신</strong> 복사해 <em>줄래요</em>?<br>B: 네, 제가 <strong>금방</strong> <strong>깨끗하게</strong> 복사해 ________.</strong></p>",
-        'explanation': "<p><strong>줄게요</strong>: '복사해 주다' (nusxa ko'chirib bermoq). Boshqa odam uchun yordam berishga va'da qilganda '-어 줄게요' (qilib beraman) ishlatiladi. <strong>금방</strong> (tezda), <strong>대신</strong> (o'rniga).</p>",
-        'correct': "줄게요",
-        'choices': ["줄게요", "주세요", "줬어요", "주지 마세요"]
+        'text': "<p>A: <strong>이번</strong> 주말에 <strong>어디에</strong> <em>갈 거예요</em>?<br>B: 친구들과 <strong>다 같이</strong> 제주도로 <em>가________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '가다' (bormoq) + '-기로 하다' (qilishga qaror qilmoq/kelishmoq). Odatda qaror qabul qilib bo'lingani uchun o'tgan zamonda (-기로 했어요) ishlatiladi. <strong>다 같이</strong> (hamma birgalikda).</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "지 않기로 했어요", "고 했어요", "기로 해요"]
     },
     {
-        'text': "<p><strong>A: <u>무거운</u> 짐을 <strong>혼자서</strong> 들기 <u>힘든데</u> <strong>같이</strong> 좀 들어 ________?<br>B: 네, 제가 <strong>얼른</strong> <strong>안전하게</strong> 도와줄게요.</strong></p>",
-        'explanation': "<p><strong>주시겠어요</strong>: '들어 주다' (ko'tarishib yubormoq). <u>무거운</u> (og'ir) yukni ko'tarishga <strong>같이</strong> (birga) yordam so'rash uchun hurmat bilan '-어 주시겠어요?' (qilib berasizmi?) deyiladi.</p>",
-        'correct': "주시겠어요",
-        'choices': ["줄게요", "주지 않아요", "주시겠어요", "줬어요"]
+        'text': "<p>A: <strong>오늘</strong> 저녁에 삼겹살 <em>먹을래요</em>?<br>B: <strong>미안해요</strong>. <strong>오늘은</strong> 다이어트를 <strong>위해</strong> 샐러드를 <em>먹________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '먹다' (yemoq) + '-기로 하다'. <strong>오늘은</strong> (bugun) salat yeyishga qaror qilgan.</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "지 않기로 했어요", "기로 해요", "고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>방금</strong> 하신 말씀이 <strong>너무</strong> <u>어려운데</u> <strong>다시 한번</strong> <strong>자세히</strong> 설명해 ________.<br>B: 네, <strong>천천히</strong> <strong>다시</strong> 알려드릴게요.</strong></p>",
-        'explanation': "<p><strong>주세요</strong>: '설명해 주다' (tushuntirib bermoq). <strong>다시 한번</strong> (yana bir marta) <strong>자세히</strong> (batafsil) tushuntirishni iltimos qilish uchun '-어 주세요' (qilib bering) ishlatiladi.</p>",
-        'correct': "주세요",
-        'choices': ["줬어요", "주세요", "줄게요", "주지 마세요"]
+        'text': "<p>A: <strong>새해</strong> 계획이 <em>뭐예요</em>?<br>B: 건강을 위해서 <strong>매일</strong> <strong>아침마다</strong> <strong>꾸준히</strong> 운동을 <em>하________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '하다' (qilmoq) + '-기로 하다'. <strong>매일 아침마다</strong> (har kuni ertalab) <strong>꾸준히</strong> (muntazam) mashq qilishga qaror qildi.</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "기로 해요", "고 했어요", "지 않기로 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>갑자기</strong> 비가 오는데 <strong>혹시</strong> 남는 우산을 <strong>잠깐</strong> 빌려 <em>줄 수 있어요</em>?<br>B: 네, <strong>마침</strong> 두 개가 있으니까 <strong>흔쾌히</strong> 빌려 ________.</strong></p>",
-        'explanation': "<p><strong>줄게요</strong>: '빌려 주다' (qarzga/vaqtinchalik berib turmoq). <strong>잠깐</strong> (biroz/vaqtinchalik) berib turishini tasdiqlab, '빌려 줄게요' (berib turaman) deydi.</p>",
-        'correct': "줄게요",
-        'choices': ["주세요", "줄게요", "줬어요", "주지 않아요"]
+        'text': "<p>A: 두 사람이 <strong>언제</strong> <em>만날 거예요</em>?<br>B: <strong>내일</strong> 오후 세 시에 카페에서 <em>만나________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '만나다' (uchrashmoq) + '-기로 하다'. <strong>내일</strong> (ertaga) uchrashishga kelishib olishdi.</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "지 않기로 했어요", "기로 해요", "고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>어제</strong> <u>모르는</u> 길을 <strong>어떻게</strong> <strong>무사히</strong> <em>찾았어요</em>?<br>B: <u>친절한</u> 경찰관이 <strong>직접</strong> <strong>자세하게</strong> 길을 안내해 ________.</strong></p>",
-        'explanation': "<p><strong>줬어요</strong>: '안내해 주다' (kuzatib/ko'rsatib qo'ymoq). O'tgan zamonda yordam qabul qilinganini bildirish uchun '-어 줬어요' (qilib berdi) ishlatiladi. <strong>무사히</strong> (sog'-omon/bexatar).</p>",
-        'correct': "줬어요",
-        'choices': ["주세요", "줄게요", "줬어요", "주실래요"]
+        'text': "<p>A: 담배를 <strong>아직도</strong> <em>피워요</em>?<br>B: 아니요, <strong>어제부터</strong> <strong>완전히</strong> <em>끊________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '끊다' (tashlamoq/to'xtatmoq) + '-기로 하다'. <strong>완전히</strong> (butunlay) tashlashga qaror qildi.</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "지 않기로 했어요", "기로 해요", "고 했어요"]
     },
     {
-        'text': "<p><strong>A: 방이 <strong>너무</strong> <u>어두운데</u> <strong>저기 있는</strong> 불을 <strong>조금만</strong> 밝게 켜 ________?<br>B: 네, <strong>지금 당장</strong> 켜 드릴게요.</strong></p>",
-        'explanation': "<p><strong>줄래요</strong>: '켜 주다' (yoqib bermoq). Yaqin do'st yoki tengdoshdan <strong>조금만</strong> (ozgina) yordam so'rash uchun '-어 줄래요?' (qilib berasanmi/berasizmi) ishlatiladi.</p>",
-        'correct': "줄래요",
-        'choices': ["줬어요", "줄래요", "줄게요", "주지 마세요"]
+        'text': "<p>A: <strong>이번</strong> 방학에 <strong>고향에</strong> <em>돌아갈 거예요</em>?<br>B: 아니요, <strong>한국에 남아서</strong> 한국어를 <strong>더</strong> <strong>열심히</strong> <em>공부하________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '공부하다' (o'qimoq) + '-기로 하다'. <strong>한국에 남아서</strong> (Koreyada qolib) o'qishga qaror qildi.</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "지 않기로 했어요", "기로 해요", "고 했어요"]
     },
     {
-        'text': "<p><strong>A: 창문이 <strong>너무</strong> <u>뻑뻑한데</u> <strong>활짝</strong> 닫아 <em>주실래요</em>?<br>B: 네, 바람이 <strong>많이</strong> 부니까 <strong>단단히</strong> 닫아 ________.</strong></p>",
-        'explanation': "<p><strong>줄게요</strong>: '닫아 주다' (yopib bermoq). Iltimosni bajarishni va'da qilib '-아 줄게요' deyiladi. <strong>활짝</strong> (keng), <strong>단단히</strong> (mahkam/qattiq).</p>",
-        'correct': "줄게요",
-        'choices': ["주세요", "줬어요", "주지 않아요", "줄게요"]
+        'text': "<p>A: 그 <u>비싼</u> 가방을 <strong>결국</strong> <em>샀어요</em>?<br>B: 아니요, 돈을 <strong>더</strong> <em>모으기 위해</em> <strong>지금은</strong> <em>사지</em> <em>않________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '사지 않다' (sotib olmaslik) + '-기로 하다' (sotib olmaslikka qaror qildim). Inkor shakli '-지 않기로 하다'.</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "기로 해요", "고 했어요", "지 않기로 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>혼자서</strong> 한국어를 <strong>열심히</strong> <em>공부했어요</em>?<br>B: 아니요, <u>똑똑한</u> 친구가 <strong>매일</strong> <strong>친절하게</strong> 가르쳐 ________.</strong></p>",
-        'explanation': "<p><strong>줬어요</strong>: '가르쳐 주다' (o'rgatib qo'ymoq/o'rgatmoq). O'tgan zamonda birovning yordami ifodalangan. <strong>매일</strong> (har kuni) o'rgatib berdi.</p>",
-        'correct': "줬어요",
-        'choices': ["주세요", "줄게요", "줬어요", "주겠어요"]
+        'text': "<p>A: <strong>앞으로</strong> 약속 시간에 <strong>또</strong> <em>늦을 거예요</em>?<br>B: <strong>절대</strong> 아닙니다. <strong>앞으로는</strong> <strong>절대</strong> <em>늦지</em> <em>않________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '늦지 않다' (kechikmaslik) + '-기로 하다'. <strong>앞으로는</strong> (bundan keyin) <strong>절대</strong> (aslo) kechikmaslikka va'da berdi.</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "기로 해요", "고 했어요", "지 않기로 했어요"]
     },
     {
-        'text': "<p><strong>A: 사진이 <strong>정말</strong> <u>예쁘게</u> 나왔네요. <strong>누가</strong> <em>찍었어요</em>?<br>B: <strong>여행 가서</strong> <u>모르는</u> 사람이 <strong>우연히</strong> <strong>잘</strong> 찍어 ________.</strong></p>",
-        'explanation': "<p><strong>줬어요</strong>: '찍어 주다' (rasmga olib bermoq). O'tgan zamonda <strong>우연히</strong> (tasodifan) rasmga olib berganligini bildiradi.</p>",
-        'correct': "줬어요",
-        'choices': ["주세요", "줄게요", "줬어요", "주실래요"]
+        'text': "<p>A: <strong>졸업 후에</strong> <em>어떤</em> 회사에 <em>취직할 거예요</em>?<br>B: <strong>전공을 살려서</strong> IT 기업에 <em>들어가________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '들어가다' (kirmoq) + '-기로 하다'. <strong>전공을 살려서</strong> (mutaxassisligidan foydalanib) ishga kirishga qaror qildi.</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "지 않기로 했어요", "기로 해요", "고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>오늘</strong> <strong>아침에</strong> <strong>늦게</strong> <em>일어났어요</em>?<br>B: 네, <strong>다행히</strong> 엄마가 <strong>일찍</strong> <strong>큰 소리로</strong> 깨워 ________ 지각을 안 했어요.</strong></p>",
-        'explanation': "<p><strong>주셔서</strong>: '깨워 주다' (uyg'otib qo'ymoq). Onasi (hurmat shakli) <strong>일찍</strong> (vaqtli) uyg'otib qo'ygani uchun. (주시다 -> 주셔서).</p>",
-        'correct': "주셔서",
-        'choices': ["주면서", "줄게요", "주셔서", "주니까"]
+        'text': "<p>A: <strong>오늘</strong> 저녁 식사 당번은 <em>누구예요</em>?<br>B: <strong>제가</strong> <strong>요리하고</strong> 동생이 설거지를 <em>하________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '하다' (qilmoq) + '-기로 하다'. Ukasi idish yuvishga kelishdi (vazifa taqsimoti).</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "지 않기로 했어요", "기로 해요", "고 했어요"]
     },
     {
-        'text': "<p><strong>A: 컴퓨터가 <strong>갑자기</strong> <u>이상한데</u> <strong>이따가</strong> <strong>잠깐</strong> <strong>꼭</strong> 봐 ________?<br>B: 네, <strong>퇴근하기 전에</strong> <strong>반드시</strong> 고쳐 줄게요.</strong></p>",
-        'explanation': "<p><strong>주실래요</strong>: '봐 주다' (ko'rib bermoq). <strong>이따가</strong> (keyinroq) <strong>꼭</strong> (albatta) qarab berishini so'ramoqda.</p>",
-        'correct': "주실래요",
-        'choices': ["줬어요", "주실래요", "줄게요", "주지 마세요"]
+        'text': "<p>A: 영화 <strong>다음에</strong> <em>무엇을</em> <em>할 거예요</em>?<br>B: 영화를 <em>보고 나서</em> <strong>근처</strong> 카페에서 <strong>오래</strong> <em>이야기하________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '이야기하다' (suhbatlashmoq) + '-기로 하다'. <strong>오래</strong> (uzoq vaqt) suhbatlashishga kelishishdi.</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "지 않기로 했어요", "기로 해요", "고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>주말에</strong> <strong>혼자서</strong> <strong>외롭게</strong> <em>이사했어요</em>?<br>B: 아니요, 친구들이 <strong>다 같이</strong> 와서 <strong>정말</strong> <strong>열심히</strong> 도와________.</strong></p>",
-        'explanation': "<p><strong>줬어요</strong>: '도와주다' (yordam bermoq). <strong>다 같이</strong> (hamma birgalikda) yordam berishdi (o'tgan zamon).</p>",
-        'correct': "줬어요",
-        'choices': ["주세요", "줄게요", "줬어요", "주실래요"]
+        'text': "<p>A: <strong>이번</strong> 시험에서 1등을 <em>할 수 있을까요</em>?<br>B: 네, <strong>매일</strong> <strong>도서관에서</strong> <strong>밤늦게까지</strong> <em>공부하________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '공부하다' (o'qimoq) + '-기로 하다'. <strong>밤늦게까지</strong> (tunda kechkacha) o'qishga qaror qildi.</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "지 않기로 했어요", "기로 해요", "고 했어요"]
     },
     {
-        'text': "<p><strong>A: 이 <u>비싼</u> 원피스를 <strong>어떻게</strong> <em>샀어요</em>?<br>B: 생일이라서 언니가 <strong>특별히</strong> <strong>기분 좋게</strong> 사 ________.</strong></p>",
-        'explanation': "<p><strong>줬어요</strong>: '사 주다' (sotib olib bermoq). Opasi <strong>특별히</strong> (maxsus) sotib olib berdi.</p>",
-        'correct': "줬어요",
-        'choices': ["주세요", "줄게요", "줬어요", "주시겠어요"]
+        'text': "<p>A: 머리가 <strong>많이</strong> <u>긴데</u> 미용실에 <em>안 가요</em>?<br>B: <strong>올해는</strong> 머리를 <strong>자르지 않고</strong> <strong>계속</strong> <em>기르________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '기르다' (o'stirmoq) + '-기로 하다'. <strong>자르지 않고</strong> (kesmasdan) o'stirishga qaror qildi.</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "지 않기로 했어요", "기로 해요", "고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>지금</strong> <strong>많이</strong> <u>바빠요</u>? 제 이야기를 <strong>잠깐만</strong> 들어 ________.<br>B: 네, <strong>하던 일을 멈추고</strong> <strong>조용히</strong> 들어 줄게요.</strong></p>",
-        'explanation': "<p><strong>주세요</strong>: '들어 주다' (eshitib bermoq/tinglamoq). <strong>잠깐만</strong> (bir zum/biroz) eshitishni iltimos qilmoqda.</p>",
-        'correct': "주세요",
-        'choices': ["줬어요", "주세요", "줄게요", "주지 마세요"]
+        'text': "<p>A: 돈을 <strong>많이</strong> <em>모았어요</em>?<br>B: 네, <u>비싼</u> 커피를 <em>마시지 않________</em> 저축을 <strong>많이</strong> <em>했어요</em>.</p>",
+        'explanation': "<p><strong>기로 하고</strong>: '않기로 하다' (ichmaslikka qaror qilib). Qaror qilib (하고) pul yig'di. <strong>비싼</strong> (qimmat).</p>",
+        'correct': "기로 하고",
+        'choices': ["기로 했어요", "기로 하고", "기로 해서", "기로 하면"]
     },
     {
-        'text': "<p><strong>A: <u>맛있는</u> 식당을 <strong>아직</strong> <em>못 찾았어요</em>?<br>B: 네, <strong>혹시</strong> <strong>근처에</strong> <u>괜찮은</u> 식당을 <strong>하나만</strong> 추천해 ________?</strong></p>",
-        'explanation': "<p><strong>주시겠어요</strong>: '추천해 주다' (tavsiya qilib bermoq). <strong>하나만</strong> (bitta bo'lsa ham) tavsiya qilishni hurmat bilan so'ramoqda.</p>",
-        'correct': "주시겠어요",
-        'choices': ["줄게요", "주지 않아요", "주시겠어요", "줬어요"]
+        'text': "<p>A: <strong>왜</strong> 그 옷을 환불 <em>안 했어요</em>?<br>B: <strong>디자인이 마음에 들어서</strong> <strong>그냥</strong> <em>입________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '입다' (kiymoq) + '-기로 하다'. <strong>그냥</strong> (shunchaki/o'zgarishsiz) kiyishga qaror qildi.</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "지 않기로 했어요", "기로 해요", "고 했어요"]
     },
     {
-        'text': "<p><strong>A: 이메일 주소를 <strong>여기에</strong> <strong>어떻게</strong> <em>써야 해요</em>?<br>B: 저에게 펜을 주시면 제가 <strong>직접</strong> <strong>크게</strong> 써 ________.</strong></p>",
-        'explanation': "<p><strong>줄게요</strong>: '써 주다' (yozib bermoq). <strong>직접</strong> (o'zi) yozib berishni va'da qilmoqda.</p>",
-        'correct': "줄게요",
-        'choices': ["주세요", "줄게요", "줬어요", "주시겠어요"]
+        'text': "<p>A: 친구들과 <strong>여행지에서</strong> <strong>어디서</strong> <em>자기루</em> 했어요?<br>B: 호텔이 <strong>너무</strong> <u>비싸서</u> <u>저렴한</u> 게스트하우스에서 <em>머물________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '머물다' (qolmoq/tunamoq) + '-기로 하다'. <u>저렴한</u> (arzon) joyda qolishga qaror qilishdi.</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "지 않기로 했어요", "기로 해요", "고 했어요"]
     },
     {
-        'text': "<p><strong>A: 옷이 <strong>너무</strong> <u>크면</u> <strong>나중에</strong> <strong>다른 사이즈로</strong> 교환해 <em>주나요</em>?<br>B: 네, <strong>영수증을 가져오시면</strong> <strong>언제든지</strong> <strong>바로</strong> 바꿔 ________.</strong></p>",
-        'explanation': "<p><strong>줄게요</strong>: '바꿔 주다' (almashtirib bermoq). <strong>언제든지</strong> (qachon bo'lmasin) <strong>바로</strong> (darhol) almashtirib berishini aytmoqda.</p>",
-        'correct': "줄게요",
-        'choices': ["주세요", "줬어요", "주지 마세요", "줄게요"]
+        'text': "<p>A: <strong>오늘</strong> 회의는 <em>몇 시에</em> <em>시작할까요</em>?<br>B: <strong>모두의 의견에 따라</strong> 오후 2시에 <em>시작하________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '시작하다' (boshlamoq) + '-기로 하다'. <strong>모두의 의견에 따라</strong> (barchaning fikriga ko'ra) kelishildi.</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "지 않기로 했어요", "기로 해요", "고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>너무</strong> <u>졸린데</u> <strong>따뜻한</strong> 커피 한 잔 타 <em>주실래요</em>?<br>B: 네, <strong>잠이 깨도록</strong> <strong>진하게</strong> 타 ________.</strong></p>",
-        'explanation': "<p><strong>줄게요</strong>: '타 주다' (kofe/choy tayyorlab bermoq). <strong>진하게</strong> (quyuq/kuchli qilib) tayyorlab berishini tasdiqlamoqda.</p>",
-        'correct': "줄게요",
-        'choices': ["주세요", "줄게요", "줬어요", "주지 않아요"]
+        'text': "<p>A: <strong>주말에</strong> <strong>등산하기로 한</strong> 약속은 <em>어떻게</em> <em>되었어요</em>?<br>B: 비가 <strong>너무 많이</strong> <em>와서</em> <strong>다음 주로</strong> <em>미루________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '미루다' (kechiktirmoq/qoldirmoq) + '-기로 하다'. <strong>다음 주로</strong> (keyingi haftaga) qoldirishga kelishishdi.</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "지 않기로 했어요", "기로 해요", "고 했어요"]
     },
     {
-        'text': "<p><strong>A: 글씨가 <strong>너무</strong> <u>작아서</u> <strong>전혀</strong> <em>안 보여요</em>.<br>B: <strong>이리 주세요</strong>. 제가 <strong>대신</strong> <strong>크게</strong> 읽어 ________.</strong></p>",
-        'explanation': "<p><strong>줄게요</strong>: '읽어 주다' (o'qib bermoq). <strong>대신</strong> (uning o'rniga) o'qib berishni taklif qilmoqda.</p>",
-        'correct': "줄게요",
-        'choices': ["주세요", "줬어요", "줄게요", "주시겠어요"]
+        'text': "<p>A: <strong>술을</strong> <strong>자주</strong> <em>마셔요</em>?<br>B: 건강검진 결과가 <u>나빠서</u> <strong>이제부터는</strong> 술을 <em>마시지</em> <em>않________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '마시지 않다' (ichmaslik) + '-기로 하다'. <strong>이제부터는</strong> (bundan buyon) ichmaslikka qaror qildi.</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "지 않기로 했어요", "기로 해요", "고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>어제</strong> 파티 <strong>준비를</strong> <strong>혼자서</strong> <em>다 했어요</em>?<br>B: 아니요, 동생이 <strong>일찍</strong> 와서 방을 <strong>깨끗하게</strong> <em>다</em> 치워 ________.</strong></p>",
-        'explanation': "<p><strong>줬어요</strong>: '치워 주다' (tozalab/yig'ishtirib bermoq). O'tgan zamonda <strong>깨끗하게</strong> (toza qilib) yig'ishtirib berdi.</p>",
-        'correct': "줬어요",
-        'choices': ["주세요", "줄게요", "줬어요", "주실래요"]
+        'text': "<p>A: <strong>컴퓨터 게임을</strong> <strong>또</strong> <em>하고 있어요</em>?<br>B: <strong>하루에</strong> <strong>한 시간만</strong> <em>하________</em> <strong>약속을 잊었어요?</strong></p>",
+        'explanation': "<p><strong>기로 했잖아요</strong>: '하기로 하다' (qilishga kelishmoq) + '-잖아요' (kelishgandik-ku). <strong>하루에</strong> (kunda) bir soat o'ynashga kelishishgan edi.</p>",
+        'correct': "기로 했잖아요",
+        'choices': ["기로 했잖아요", "기로 했어요", "지 않기로 했어요", "고 했잖아요"]
     },
     {
-        'text': "<p><strong>A: 음악 소리가 <strong>너무</strong> <u>작은데</u> <strong>조금만</strong> <strong>더</strong> <strong>크게</strong> 틀어 ________.<br>B: 네, <strong>가장</strong> <strong>크게</strong> <strong>바로</strong> 틀어 줄게요.</strong></p>",
-        'explanation': "<p><strong>주세요</strong>: '틀어 주다' (yoqib/qo'yib bermoq). <strong>조금만</strong> <strong>더</strong> (yana biroz) balandroq qilib berishni iltimos qilmoqda.</p>",
-        'correct': "주세요",
-        'choices': ["줬어요", "주세요", "줄게요", "주지 마세요"]
+        'text': "<p>A: <strong>방학에</strong> <strong>같이</strong> <strong>아르바이트를</strong> <em>할까요</em>?<br>B: <strong>좋아요</strong>. <strong>그럼</strong> <strong>내일부터</strong> <strong>같이</strong> <strong>일자리를</strong> <em>찾아보________</em>.</p>",
+        'explanation': "<p><strong>기로 해요</strong>: '찾아보다' (qidirib ko'rmoq) + '-기로 하다'. Bu yerda kelajakdagi kelishuvni taklif qilmoqda (qidirishga kelishamiz/qaror qilamiz). <strong>내일부터</strong> (ertadan).</p>",
+        'correct': "기로 해요",
+        'choices': ["기로 했어요", "기로 해요", "지 않기로 했어요", "고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>이따가</strong> 공항에 <strong>저를</strong> <strong>마중</strong> 나와 <em>줄 수 있어요</em>?<br>B: 네, <strong>도착하는 시간에 맞춰서</strong> <strong>미리</strong> 마중 나가 ________.</strong></p>",
-        'explanation': "<p><strong>줄게요</strong>: '마중 나가 주다' (kutib olishga chiqib bermoq). <strong>미리</strong> (oldindan/vaqtliroq) chiqishini aytib va'da bermoqda.</p>",
-        'correct': "줄게요",
-        'choices': ["주세요", "줄게요", "줬어요", "주지 않아요"]
+        'text': "<p>A: <strong>오늘</strong> <strong>야근</strong> <em>해야 해요</em>?<br>B: 아니요, <strong>오늘은</strong> 팀원들이 <strong>모두</strong> <strong>일찍</strong> <em>퇴근하________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '퇴근하다' (ishdan qaytmoq) + '-기로 하다'. <strong>일찍</strong> (vaqtli) ketishga kelishishdi.</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "지 않기로 했어요", "기로 해요", "고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>어제</strong> 지갑을 <strong>어떻게</strong> <strong>다시</strong> <em>찾았어요</em>?<br>B: <u>착한</u> 학생이 <strong>주워서</strong> <strong>경찰서에</strong> 가져다 ________ <strong>무사히</strong> 찾았어요.</strong></p>",
-        'explanation': "<p><strong>줘서</strong>: '가져다주다' (olib borib bermoq). <strong>주워서</strong> (terib olib) politsiyaga olib borib bergani uchun (줘서).</p>",
-        'correct': "줘서",
-        'choices': ["주면서", "줄게요", "줘서", "주니까"]
+        'text': "<p>A: <strong>내일</strong> <strong>소풍 갈 때</strong> 도시락은 <strong>어떻게</strong> <em>할까요</em>?<br>B: 제가 김밥을 <strong>맛있게</strong> <em>싸________</em>.</p>",
+        'explanation': "<p><strong>오기로 했어요</strong>: '싸 오다' (o'rab/tayyorlab kelmoq) + '-기로 하다'. Kimbap tayyorlab kelishga qaror qildi.</p>",
+        'correct': "오기로 했어요",
+        'choices': ["오기로 했어요", "오지 않기로 했어요", "오기로 해요", "오고 했어요"]
     },
     {
-        'text': "<p><strong>A: 이 <u>예쁜</u> 포장지는 <strong>어디서</strong> <em>샀어요</em>?<br>B: 가게 직원이 <strong>무료로</strong> <strong>정성껏</strong> 포장해 ________ 그냥 받았어요.</strong></p>",
-        'explanation': "<p><strong>줘서</strong>: '포장해 주다' (o'rab/upakovka qilib bermoq). <strong>무료로</strong> (tekinga) o'rab bergani uchun shunchaki oldi.</p>",
-        'correct': "줘서",
-        'choices': ["줘서", "주면서", "줄게요", "주니까"]
+        'text': "<p>A: 휴대폰을 <strong>왜</strong> <strong>안</strong> <em>바꿔요</em>?<br>B: 고장 <em>날 때까지</em> <strong>계속</strong> <em>쓰________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '쓰다' (ishlatmoq/foydalanmoq) + '-기로 하다'. <strong>계속</strong> (tinmay/davomli) ishlatishga qaror qildi.</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "지 않기로 했어요", "기로 해요", "고 했어요"]
     },
     {
-        'text': "<p><strong>A: 고기가 <strong>너무</strong> <u>두꺼운데</u> <strong>직접</strong> <strong>가위로</strong> <em>잘라야 해요</em>?<br>B: 가만히 계세요. 제가 <strong>먹기 좋게</strong> <strong>작게</strong> 잘라 ________.</strong></p>",
-        'explanation': "<p><strong>줄게요</strong>: '잘라 주다' (kesib bermoq). <strong>먹기 좋게</strong> (yeyishga qulay qilib) kesib berishni va'da qilmoqda.</p>",
-        'correct': "줄게요",
-        'choices': ["주세요", "줬어요", "주지 마세요", "줄게요"]
+        'text': "<p>A: <strong>어제</strong> <em>산</em> 구두를 <strong>결국</strong> <em>반품했어요</em>?<br>B: 네, 발이 <strong>너무</strong> <u>아파서</u> <strong>그냥</strong> 환불 <em>받________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '받다' (olmoq) + '-기로 하다'. <strong>그냥</strong> (shunchaki) pulni qaytarib olishga qaror qildi.</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "지 않기로 했어요", "기로 해요", "고 했어요"]
     },
     {
-        'text': "<p><strong>A: 가격이 <strong>생각보다</strong> <strong>너무</strong> <u>비싼데</u> <strong>조금만</strong> <strong>더</strong> 깎아 ________.<br>B: <strong>이미</strong> 세일 중이라서 <strong>더 이상은</strong> 깎아 줄 수 없어요.</strong></p>",
-        'explanation': "<p><strong>주세요</strong>: '깎아 주다' (narxni tushirib/chegirma qilib bermoq). <strong>조금만</strong> (ozgina) tushirib berishni iltimos qilmoqda.</p>",
-        'correct': "주세요",
-        'choices': ["줬어요", "주세요", "줄게요", "주시겠어요"]
+        'text': "<p>A: <strong>이번</strong> 명절에는 <strong>어디서</strong> <em>모여요</em>?<br>B: <strong>부모님 댁에</strong> <strong>다 같이</strong> <em>모이________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '모이다' (yig'ilmoq) + '-기로 하다'. <strong>다 같이</strong> (hamma birgalikda) yig'ilishga kelishishdi.</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "지 않기로 했어요", "기로 해요", "고 했어요"]
     },
     {
-        'text': "<p><strong>A: 제가 <strong>지금</strong> <strong>손에</strong> <strong>물이 묻어서</strong> 그런데, 문 좀 열어 ________?<br>B: 네, <strong>기다리세요</strong>. <strong>얼른</strong> 열어 줄게요.</strong></p>",
-        'explanation': "<p><strong>주실래요</strong>: '열어 주다' (ochib bermoq). <strong>손에 물이 묻어서</strong> (qo'li ho'l bo'lgani uchun) eshikni ochib berishni iltimos qilmoqda.</p>",
-        'correct': "주실래요",
-        'choices': ["줬어요", "주실래요", "줄게요", "주지 않아요"]
+        'text': "<p>A: 그 <u>비밀은</u> <strong>아무에게도</strong> <em>말하지 않았죠</em>?<br>B: <strong>당연하죠</strong>. <strong>우리끼리만</strong> <em>알________</em> <strong>약속했잖아요</strong>.</p>",
+        'explanation': "<p><strong>기로</strong>: '알다' (bilmoq) + '-기로 하다'. <strong>우리끼리만</strong> (faqat o'zimiz) bilishga kelishgandik.</p>",
+        'correct': "기로",
+        'choices': ["기로", "지 않기로", "고", "아서"]
     },
     {
-        'text': "<p><strong>A: <strong>오늘따라</strong> 일이 <strong>너무</strong> <u>많은데</u> <strong>누가</strong> <strong>좀</strong> 도와줬으면 좋겠어요.<br>B: 제가 <strong>시간이 조금 남으니까</strong> <strong>옆에서</strong> <strong>빨리</strong> 도와________.</strong></p>",
-        'explanation': "<p><strong>줄게요</strong>: '도와주다' (yordam bermoq). <strong>빨리</strong> (tez) yordam berishni xohlab taklif bildirmoqda.</p>",
-        'correct': "줄게요",
-        'choices': ["주세요", "줄게요", "줬어요", "주시겠어요"]
+        'text': "<p>A: 차가 <strong>너무</strong> <u>막히는데</u> 지하철을 <em>탈까요</em>?<br>B: <strong>이미</strong> 택시를 <em>부르기로 했으니까</em> <strong>그냥</strong> <em>기다리________</em>.</p>",
+        'explanation': "<p><strong>기로 해요</strong>: '기다리다' (kutmoq) + '-기로 하다'. <strong>그냥</strong> (shunchaki) kutishga qaror qilaylik (taklif/kelishuv).</p>",
+        'correct': "기로 해요",
+        'choices': ["기로 했어요", "기로 해요", "지 않기로 해요", "고 해요"]
     },
     {
-        'text': "<p><strong>A: <strong>작년에</strong> 한국에 <strong>처음</strong> 왔을 때 <strong>정말</strong> <u>외로웠죠</u>?<br>B: 네, 하지만 <u>좋은</u> 이웃들이 <strong>따뜻하게</strong> <strong>항상</strong> 챙겨 ________ <strong>금방</strong> 적응했어요.</strong></p>",
-        'explanation': "<p><strong>줘서</strong>: '챙겨 주다' (g'amxo'rlik qilib bermoq). <strong>항상</strong> (har doim) g'amxo'rlik qilib berishgani uchun (줘서).</p>",
-        'correct': "줘서",
-        'choices': ["줘서", "주면서", "줄게요", "주니까"]
+        'text': "<p>A: 그 사람과 <strong>화해했어요</strong>?<br>B: 아니요, <strong>서로</strong> <strong>상처를 받아서</strong> <strong>앞으로는</strong> <em>보지</em> <em>않________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '보지 않다' (ko'rishmaslik) + '-기로 하다'. <strong>앞으로는</strong> (bundan keyin) ko'rishmaslikka qaror qilishdi.</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "지 않기로 했어요", "기로 해요", "고 했어요"]
     },
     {
-        'text': "<p><strong>A: 호텔 예약이 <strong>다</strong> <u>찼는데</u> <strong>어떻게</strong> 방을 <em>구했어요</em>?<br>B: <strong>다행히</strong> 여행사 직원이 <strong>특별히</strong> <strong>어렵게</strong> 예약해 ________ 방을 구했어요.</strong></p>",
-        'explanation': "<p><strong>줘서</strong>: '예약해 주다' (band qilib bermoq). <strong>특별히</strong> (maxsus) band qilib bergani uchun (줘서).</p>",
-        'correct': "줘서",
-        'choices': ["줘서", "주면서", "줄게요", "주니까"]
-    }
-]
-
-topic_22 = [
-    # --- TOPIC 22: 연결 어미 1: 동사/형용사 + 고 (나열 및 순서) ---
-    {
-        'text': "<p><strong>A: <strong>새로</strong> 이사한 집은 <strong>전체적으로</strong> <em>어때요</em>?<br>B: 거실이 <strong>아주</strong> <u>넓________</u> 방은 <strong>정말</strong> <u>깨끗해요</u>.</strong></p>",
-        'explanation': "<p><strong>넓고</strong>: '넓다' (keng bo'lmoq) + '-고' (va). Ikki sifatni ulash uchun ishlatiladi. <strong>아주</strong> (juda) keng va toza.</p>",
-        'correct': "넓고",
-        'choices': ["넓고", "넓지만", "넓어서", "넓으면"]
-    },
-    {
-        'text': "<p><strong>A: 그 식당의 불고기는 <strong>다른 곳과 비교해서</strong> <em>어때요</em>?<br>B: 가격이 <strong>생각보다</strong> <u>싸________</u> 고기가 <strong>정말</strong> <u>맛있어요</u>.</strong></p>",
-        'explanation': "<p><strong>싸고</strong>: '싸다' (arzon bo'lmoq) + '-고' (va). Narxi <strong>생각보다</strong> (o'ylagandan ko'ra) arzon va mazali.</p>",
-        'correct': "싸고",
-        'choices': ["싸지만", "싸고", "싸서", "싸면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>어제</strong> 만난 <strong>새로운</strong> 선생님은 <em>어때요</em>?<br>B: 설명이 <strong>매우</strong> <u>친절하________</u> 수업이 <strong>계속</strong> <u>재미있어요</u>.</strong></p>",
-        'explanation': "<p><strong>친절하고</strong>: '친절하다' (mehribon bo'lmoq) + '-고' (va). <strong>매우</strong> (juda) mehribon va qiziqarli.</p>",
-        'correct': "친절하고",
-        'choices': ["친절하지만", "친절해서", "친절하고", "친절하면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>오늘</strong> 저녁에 <strong>퇴근하고</strong> <em>뭐 할 거예요</em>?<br>B: 집에 가서 <strong>깨끗하게</strong> <u>씻________</u> <strong>바로</strong> <u>잘 거예요</u>.</strong></p>",
-        'explanation': "<p><strong>씻고</strong>: '씻다' (yuvinmoq) + '-고'. Harakatlar ketma-ketligini (yuvinib, keyin uxlash) bildiradi. <strong>바로</strong> (darhol).</p>",
-        'correct': "씻고",
-        'choices': ["씻지만", "씻고", "씻어서", "씻으면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>밖에</strong> <strong>엄청</strong> <u>추운데</u> <strong>그냥</strong> <em>나갈 거예요</em>?<br>B: 아니요, <u>두꺼운</u> 코트를 <strong>단단히</strong> <u>입________</u> <u>나갈 거예요</u>.</strong></p>",
-        'explanation': "<p><strong>입고</strong>: '입다' (kiymoq) + '-고'. Harakat ketma-ketligi (kiyib, keyin chiqish). <strong>단단히</strong> (yaxshilab/mahkam).</p>",
-        'correct': "입고",
-        'choices': ["입고", "입지만", "입어서", "입으면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>지금</strong> 제주도 날씨가 <strong>보통</strong> <em>어때요</em>?<br>B: 하늘이 <strong>구름 없이</strong> <u>맑________</u> 햇살이 <strong>아주</strong> <u>따뜻해요</u>.</strong></p>",
-        'explanation': "<p><strong>맑고</strong>: '맑다' (ochiq/musaffo bo'lmoq) + '-고'. <strong>구름 없이</strong> (bulutsiz) ochiq va issiq.</p>",
-        'correct': "맑고",
-        'choices': ["맑지만", "맑아서", "맑고", "맑으면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>아침에</strong> <strong>바빠서</strong> 밥을 <strong>못</strong> <em>먹었어요</em>?<br>B: 아니요, <strong>일찍 일어나서</strong> 밥을 <strong>든든하게</strong> <u>먹________</u> <u>왔어요</u>.</strong></p>",
-        'explanation': "<p><strong>먹고</strong>: '먹다' (yemoq) + '-고'. Harakatlar ketma-ketligi (yeb, keyin keldi). <strong>든든하게</strong> (to'yimli qilib).</p>",
-        'correct': "먹고",
-        'choices': ["먹고", "먹지만", "먹어서", "먹으면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>어제</strong> <strong>도서관에서</strong> <em>뭐 했어요</em>?<br>B: <strong>오랫동안</strong> <u>어려운</u> 책을 <u>읽________</u> 일기를 <u>썼어요</u>.</strong></p>",
-        'explanation': "<p><strong>읽고</strong>: '읽다' (o'qimoq) + '-고'. Harakatlar ketma-ketligi yoki sanab o'tish (o'qib va yozdi). <strong>오랫동안</strong> (uzoq vaqt).</p>",
-        'correct': "읽고",
-        'choices': ["읽지만", "읽고", "읽어서", "읽으면"]
-    },
-    {
-        'text': "<p><strong>A: 그 카페는 <strong>공부하기에</strong> 분위기가 <em>어때요</em>?<br>B: 음악 소리가 <strong>거의 없이</strong> <u>조용하________</u> 테이블이 <u>깨끗해요</u>.</strong></p>",
-        'explanation': "<p><strong>조용하고</strong>: '조용하다' (jim/tinch bo'lmoq) + '-고'. <strong>거의 없이</strong> (deyarli yo'q bo'lib) tinch va toza.</p>",
-        'correct': "조용하고",
-        'choices': ["조용하지만", "조용해서", "조용하고", "조용하면"]
-    },
-    {
-        'text': "<p><strong>A: 저기 보이는 <strong>저</strong> 빌딩은 <em>어때요</em>?<br>B: 층수가 <strong>구름에 닿을 듯이</strong> <u>높________</u> 외관이 <strong>정말</strong> <u>멋있어요</u>.</strong></p>",
-        'explanation': "<p><strong>높고</strong>: '높다' (baland bo'lmoq) + '-고'. <strong>구름에 닿을 듯이</strong> (bulutga tegayotgandek) baland va ajoyib.</p>",
-        'correct': "높고",
-        'choices': ["높고", "높지만", "높아서", "높으면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>오늘</strong> 일정이 <strong>평소보다</strong> <em>어땠어요</em>?<br>B: 아침부터 <strong>쉴 틈 없이</strong> <u>바쁘________</u> <strong>지금은</strong> <strong>너무</strong> <u>피곤해요</u>.</strong></p>",
-        'explanation': "<p><strong>바쁘고</strong>: '바쁘다' (band bo'lmoq) + '-고'. <strong>쉴 틈 없이</strong> (dam olishga vaqt bo'lmay) band va charchagan.</p>",
-        'correct': "바쁘고",
-        'choices': ["바쁘지만", "바빠서", "바쁘고", "바쁘면"]
-    },
-    {
-        'text': "<p><strong>A: 김치찌개 맛이 <strong>외국인에게</strong> <em>어때요</em>?<br>B: 고추장이 들어가서 <strong>아주</strong> <u>맵________</u> 간이 <strong>조금</strong> <u>짜요</u>.</strong></p>",
-        'explanation': "<p><strong>맵고</strong>: '맵다' (achchiq bo'lmoq) + '-고'. 'ㅂ' noto'g'ri sifati '-고' oldida o'zgarmaydi. <strong>아주</strong> (juda) achchiq va sho'r.</p>",
-        'correct': "맵고",
-        'choices': ["맵고", "맵지만", "매워서", "매우면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>고향 집까지</strong> 가는 길이 <em>편해요</em>?<br>B: 아니요, 거리가 <strong>생각보다</strong> <u>멀________</u> 산길이라 <strong>매우</strong> <u>험해요</u>.</strong></p>",
-        'explanation': "<p><strong>멀고</strong>: '멀다' (uzoq bo'lmoq) + '-고'. 'ㄹ' bilan tugagan sifat '-고' oldida o'zgarmaydi. <strong>생각보다</strong> (o'ylagandan ko'ra) uzoq va xavfli.</p>",
-        'correct': "멀고",
-        'choices': ["멀지만", "멀어서", "멀고", "멀면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>이번</strong> 방학에 <strong>가장</strong> <em>하고 싶은</em> 일이 <em>뭐예요</em>?<br>B: <u>새로운</u> 노트북을 <u>사________</u> 바다로 <strong>빨리</strong> 여행 <u>가고 싶어요</u>.</strong></p>",
-        'explanation': "<p><strong>사고</strong>: '사다' (sotib olmoq) + '-고'. Harakatlarni sanab o'tish (sotib olish va sayohatga borish). <strong>빨리</strong> (tez).</p>",
-        'correct': "사고",
-        'choices': ["사고", "사지만", "사서", "사면"]
-    },
-    {
-        'text': "<p><strong>A: 그 강아지는 <strong>성격이나</strong> 외모가 <em>어때요</em>?<br>B: 눈이 <strong>크고</strong> <strong>정말</strong> <u>예쁘________</u> 행동이 <strong>아주</strong> <u>귀여워요</u>.</strong></p>",
-        'explanation': "<p><strong>예쁘고</strong>: '예쁘다' (chiroyli bo'lmoq) + '-고'. Ikki sifatni ulash (chiroyli va yoqimtoy). <strong>정말</strong> (rosttdan).</p>",
-        'correct': "예쁘고",
-        'choices': ["예쁘지만", "예뻐서", "예쁘고", "예쁘면"]
-    },
-    {
-        'text': "<p><strong>A: 한국어의 <u>어려운</u> 문법은 <strong>공부하기에</strong> <em>어때요</em>?<br>B: 문장이 <strong>너무</strong> <u>길________</u> 구조가 <strong>많이</strong> <u>어려워요</u>.</strong></p>",
-        'explanation': "<p><strong>길고</strong>: '길다' (uzun bo'lmoq) + '-고'. 'ㄹ' tushib qolmaydi. <strong>너무</strong> (juda) uzun va qiyin.</p>",
-        'correct': "길고",
-        'choices': ["길고", "길지만", "길어서", "길면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>매일</strong> 아침 어학원에서 <strong>어떻게</strong> <em>공부해요</em>?<br>B: <strong>먼저</strong> <strong>집중해서</strong> <u>듣________</u> 선생님을 <strong>따라</strong> <u>말해요</u>.</strong></p>",
-        'explanation': "<p><strong>듣고</strong>: '듣다' (eshitmoq) + '-고'. 'ㄷ' noto'g'ri fe'li '-고' oldida o'zgarmaydi. <strong>먼저</strong> (birinchi) eshitib, keyin gapiradi.</p>",
-        'correct': "듣고",
-        'choices': ["듣지만", "들어서", "듣고", "들으면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>보통</strong> 출근할 때 버스와 지하철을 <strong>어떻게</strong> <em>이용해요</em>?<br>B: 버스에서 <strong>일찍</strong> <u>내리________</u> <strong>바로</strong> 지하철로 <strong>빨리</strong> <u>갈아타요</u>.</strong></p>",
-        'explanation': "<p><strong>내리고</strong>: '내리다' (tushmoq) + '-고'. Harakatlar ketma-ketligi (tushib, keyin metroni kutish). <strong>일찍</strong> (vaqtli).</p>",
-        'correct': "내리고",
-        'choices': ["내리고", "내리지만", "내려서", "내리면"]
-    },
-    {
-        'text': "<p><strong>A: 출퇴근 시간에 지하철역은 <strong>분위기가</strong> <em>어때요</em>?<br>B: 사람들이 <strong>발 디딜 틈 없이</strong> <u>많________</u> <strong>항상</strong> <u>복잡해요</u>.</strong></p>",
-        'explanation': "<p><strong>많고</strong>: '많다' (ko'p bo'lmoq) + '-고'. <strong>발 디딜 틈 없이</strong> (oyoq qo'yishga joy yo'q darajada) ko'p va tirband.</p>",
-        'correct': "많고",
-        'choices': ["많지만", "많아서", "많고", "많으면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>작년</strong> 한국의 겨울 날씨는 <strong>전반적으로</strong> <em>어땠어요</em>?<br>B: 기온이 <strong>영하로 떨어져서</strong> <strong>매우</strong> <u>춥________</u> 눈이 <strong>자주</strong> <u>왔어요</u>.</strong></p>",
-        'explanation': "<p><strong>춥고</strong>: '춥다' (sovuq bo'lmoq) + '-고'. 'ㅂ' o'zgarmaydi. <strong>매우</strong> (juda) sovuq va qor ko'p yog'di.</p>",
-        'correct': "춥고",
-        'choices': ["춥고", "춥지만", "추워서", "추우면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>시골의</strong> 밤길은 <strong>혼자</strong> <strong>걸어가기에</strong> <em>어때요</em>?<br>B: 가로등이 없어서 <strong>너무</strong> <u>어둡________</u> <strong>조금</strong> <u>무서워요</u>.</strong></p>",
-        'explanation': "<p><strong>어둡고</strong>: '어둡다' (qorong'i bo'lmoq) + '-고'. 'ㅂ' o'zgarmaydi. <strong>너무</strong> (juda) qorong'i va qo'rqinchli.</p>",
-        'correct': "어둡고",
-        'choices': ["어둡고", "어둡지만", "어두워서", "어두우면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>매일</strong> 아침에 일어나면 <strong>가장</strong> <strong>먼저</strong> <em>뭐 해요</em>?<br>B: 창문을 <strong>활짝</strong> <u>열________</u> 방 안을 <strong>깨끗하게</strong> <u>환기해요</u>.</strong></p>",
-        'explanation': "<p><strong>열고</strong>: '열다' (ochmoq) + '-고'. 'ㄹ' tushib qolmaydi. <strong>활짝</strong> (keng) ochib shamollatadi.</p>",
-        'correct': "열고",
-        'choices': ["열고", "열지만", "열어서", "열으면"]
-    },
-    {
-        'text': "<p><strong>A: 방에서 <strong>외출할</strong> 때 <strong>항상</strong> 전등을 <em>어떻게 해요</em>?<br>B: <strong>전기를 아끼려고</strong> <strong>반드시</strong> 불을 <u>끄________</u> <strong>바로</strong> <u>나가요</u>.</strong></p>",
-        'explanation': "<p><strong>끄고</strong>: '끄다' (o'chirmoq) + '-고'. '으' o'zgarmaydi. <strong>반드시</strong> (albatta) o'chirib chiqib ketadi.</p>",
-        'correct': "끄고",
-        'choices': ["끄고", "끄지만", "꺼서", "끄면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>여행지에서</strong> <u>멋진</u> 풍경을 보면 <strong>주로</strong> <em>어떻게 해요</em>?<br>B: 스마트폰으로 사진을 <strong>여러 장</strong> <u>찍________</u> 가족들에게 <strong>바로</strong> <u>보내요</u>.</strong></p>",
-        'explanation': "<p><strong>찍고</strong>: '찍다' (rasmga olmoq) + '-고'. Rasmga olib, keyin jo'natadi. <strong>여러 장</strong> (bir necha dona).</p>",
-        'correct': "찍고",
-        'choices': ["찍지만", "찍고", "찍어서", "찍으면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>오늘</strong> 산 그 운동화는 <strong>신어보니까</strong> <em>어때요</em>?<br>B: 무게가 <strong>거의 안 느껴질 만큼</strong> <u>가볍________</u> 발이 <strong>아주</strong> <u>편해요</u>.</strong></p>",
-        'explanation': "<p><strong>가볍고</strong>: '가볍다' (yengil bo'lmoq) + '-고'. 'ㅂ' o'zgarmaydi. <strong>거의 안 느껴질 만큼</strong> (deyarli sezilmaydigan darajada) yengil va qulay.</p>",
-        'correct': "가볍고",
-        'choices': ["가볍고", "가볍지만", "가벼워서", "가벼우면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>아침마다</strong> 공원에서 <strong>매일</strong> <strong>어떻게</strong> <em>운동해요</em>?<br>B: <u>가벼운</u> 운동화를 <strong>꽉</strong> <u>신________</u> <strong>30분 동안</strong> <strong>열심히</strong> <u>달려요</u>.</strong></p>",
-        'explanation': "<p><strong>신고</strong>: '신다' (poyabzal kiymoq) + '-고'. <strong>꽉</strong> (mahkam) kiyib olib yuguradi.</p>",
-        'correct': "신고",
-        'choices': ["신고", "신지만", "신어서", "신으면"]
-    },
-    {
-        'text': "<p><strong>A: 청소할 때 책상을 <strong>항상</strong> <em>어떻게</em> <em>정리해요</em>?<br>B: 걸레로 <strong>먼지를</strong> <strong>깨끗하게</strong> <u>닦________</u> 책을 <strong>가지런히</strong> <u>정리해요</u>.</strong></p>",
-        'explanation': "<p><strong>닦고</strong>: '닦다' (artmoq) + '-고'. <strong>깨끗하게</strong> (toza qilib) artib va tartibga soladi.</p>",
-        'correct': "닦고",
-        'choices': ["닦고", "닦지만", "닦아서", "닦으면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>새로</strong> 지은 도서관의 열람실은 <strong>분위기가</strong> <em>어때요</em>?<br>B: 공간이 <strong>운동장처럼</strong> <u>넓________</u> 조명이 <strong>아주</strong> <u>밝아요</u>.</strong></p>",
-        'explanation': "<p><strong>넓고</strong>: '넓다' (keng bo'lmoq) + '-고'. <strong>운동장처럼</strong> (sport maydonidek) keng va yorug'.</p>",
-        'correct': "넓고",
-        'choices': ["넓지만", "넓어서", "넓고", "넓으면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>보통</strong> 주말 <strong>오전에</strong> <strong>집에서</strong> <em>뭐 해요</em>?<br>B: <strong>평소처럼</strong> <strong>일찍</strong> <u>일어나________</u> <strong>가볍게</strong> 스트레칭 <u>운동을 해요</u>.</strong></p>",
-        'explanation': "<p><strong>일어나고</strong>: '일어나다' (turmoq/uyg'onmoq) + '-고'. <strong>일찍</strong> (vaqtli) turib, mashq qiladi (ketma-ketlik).</p>",
-        'correct': "일어나고",
-        'choices': ["일어나고", "일어나지만", "일어나서", "일어나면"]
-    },
-    {
-        'text': "<p><strong>A: 식당에서 밥을 <strong>다</strong> 먹은 <strong>후에는</strong> <em>어떻게 해요</em>?<br>B: 카운터에서 <strong>바로</strong> 카드로 계산을 <u>하________</u> <strong>밖으로</strong> <u>나가요</u>.</strong></p>",
-        'explanation': "<p><strong>하고</strong>: '계산하다' (hisob-kitob qilmoq/to'lamoq) + '-고'. <strong>바로</strong> (darhol) hisobni to'lab chiqib ketadi.</p>",
-        'correct': "하고",
-        'choices': ["하고", "하지만", "해서", "하면"]
-    }
-]
-
-topic_23 = [
-    # --- TOPIC 23: 연결 어미 2: 동사/형용사 + 지만 (대조) ---
-    {
-        'text': "<p><strong>A: 한국어 문법이 <strong>공부하기에</strong> <em>어때요</em>?<br>B: <strong>처음에는</strong> <strong>너무</strong> <u>어렵________</u> <strong>계속하면</strong> <strong>정말</strong> <u>재미있어요</u>.</strong></p>",
-        'explanation': "<p><strong>어렵지만</strong>: '어렵다' (qiyin bo'lmoq) + '-지만' (boshiga/qaramay). Qiyinligiga qaramay qiziqarli (ziddiyat). <strong>처음에는</strong> (boshida).</p>",
-        'correct': "어렵지만",
-        'choices': ["어렵고", "어려워서", "어렵지만", "어려우면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>새로</strong> 산 이 옷이 마음에 <strong>쏙</strong> <em>들어요</em>?<br>B: 네, 가격은 <strong>매우</strong> <u>비싸________</u> 디자인이 <strong>아주</strong> <u>예뻐요</u>.</strong></p>",
-        'explanation': "<p><strong>비싸지만</strong>: '비싸다' (qimmat bo'lmoq) + '-지만'. <strong>매우</strong> (juda) qimmat, lekin <strong>아주</strong> (juda) chiroyli.</p>",
-        'correct': "비싸지만",
-        'choices': ["비싸지만", "비싸고", "비싸서", "비싸면"]
-    },
-    {
-        'text': "<p><strong>A: 그 <u>작은</u> 식당 음식이 <strong>진짜</strong> <u>맛있어요</u>?<br>B: 식당이 <strong>조금</strong> <u>작________</u> 음식은 <strong>항상</strong> <u>훌륭해요</u>.</strong></p>",
-        'explanation': "<p><strong>작지만</strong>: '작다' (kichik bo'lmoq) + '-지만'. Joyi kichik bo'lishiga qaramay, ovqati zo'r. <strong>항상</strong> (har doim).</p>",
-        'correct': "작지만",
-        'choices': ["작아서", "작지만", "작고", "작으면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>오늘</strong> 밖에 바람이 <strong>많이</strong> 부는데 날씨가 <em>어때요</em>?<br>B: 바람이 불어서 <u>춥________</u> 하늘은 <strong>구름 없이</strong> <u>맑아요</u>.</strong></p>",
-        'explanation': "<p><strong>춥지만</strong>: '춥다' (sovuq bo'lmoq) + '-지만'. Sovuq, ammo osmon ochiq. <strong>구름 없이</strong> (bulutsiz).</p>",
-        'correct': "춥지만",
-        'choices': ["춥고", "추워서", "추우면", "춥지만"]
-    },
-    {
-        'text': "<p><strong>A: 이 <u>두꺼운</u> 책을 <strong>끝까지</strong> <em>다 읽었어요</em>?<br>B: 책이 <strong>너무</strong> <u>두껍________</u> 내용이 <u>재미있어서</u> <strong>금방</strong> 읽었어요.</strong></p>",
-        'explanation': "<p><strong>두껍지만</strong>: '두껍다' (qalin bo'lmoq) + '-지만'. <strong>너무</strong> (juda) qalin bo'lishiga qaramay, <strong>금방</strong> (tezda) o'qidi.</p>",
-        'correct': "두껍지만",
-        'choices': ["두꺼워서", "두껍지만", "두껍고", "두꺼우면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>어제</strong> 김치찌개를 <strong>직접</strong> <em>먹어 봤어요</em>?<br>B: 네, 맛이 <strong>아주</strong> <u>맵________</u> <strong>계속</strong> <u>먹고 싶어요</u>.</strong></p>",
-        'explanation': "<p><strong>맵지만</strong>: '맵다' (achchiq bo'lmoq) + '-지만'. <strong>아주</strong> (juda) achchiqligiga qaramay, yegisi kelyapti.</p>",
-        'correct': "맵지만",
-        'choices': ["맵고", "매워서", "맵지만", "매우면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>새로</strong> 이사한 집에서 회사까지 <strong>출퇴근하기</strong> <em>어때요</em>?<br>B: 거리가 <strong>조금</strong> <u>멀________</u> 지하철이 있어서 <strong>매우</strong> <u>편해요</u>.</strong></p>",
-        'explanation': "<p><strong>멀지만</strong>: '멀다' (uzoq bo'lmoq) + '-지만'. <strong>조금</strong> (biroz) uzoq, ammo qulay.</p>",
-        'correct': "멀지만",
-        'choices': ["멀지만", "멀고", "멀어서", "멀면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>어제</strong> <strong>늦게까지</strong> <strong>정말</strong> <strong>열심히</strong> <em>공부했어요</em>?<br>B: 네, <strong>열심히</strong> 공부<u>했________</u> 시험이 <strong>너무</strong> <u>어려웠어요</u>.</strong></p>",
-        'explanation': "<p><strong>했지만</strong>: '공부하다' o'tgan zamonda '공부했다' + '-지만'. <strong>열심히</strong> (tirishib) o'qiganiga qaramay, qiyin edi.</p>",
-        'correct': "했지만",
-        'choices': ["하고", "해서", "했지만", "하면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>아침에</strong> 밥을 <strong>많이</strong> <em>먹었어요</em>?<br>B: 네, 밥을 <strong>잔뜩</strong> <u>먹었________</u> <strong>벌써</strong> 배가 <u>고파요</u>.</strong></p>",
-        'explanation': "<p><strong>먹었지만</strong>: '먹다' o'tgan zamonda '먹었다' + '-지만'. <strong>잔뜩</strong> (to'yib/ko'p) yegan bo'lsa ham, qorni och.</p>",
-        'correct': "먹었지만",
-        'choices': ["먹었지만", "먹었고", "먹어서", "먹으면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>주말에</strong> 극장에서 그 <u>유명한</u> 영화를 <em>봤어요</em>?<br>B: 네, <u>봤________</u> <strong>기대보다</strong> <strong>전혀</strong> <u>재미없었어요</u>.</strong></p>",
-        'explanation': "<p><strong>봤지만</strong>: '보다' o'tgan zamonda '봤다' + '-지만'. Ko'rganiga qaramay, <strong>기대보다</strong> (kutgandan ko'ra) qiziqarli emasdi.</p>",
-        'correct': "봤지만",
-        'choices': ["보고", "봐서", "보면", "봤지만"]
-    },
-    {
-        'text': "<p><strong>A: <strong>밖에서</strong> 눈이 <strong>펑펑</strong> 오는데 <strong>지금</strong> <em>외출할 거예요</em>?<br>B: 날씨가 <strong>매우</strong> <u>나쁘________</u> <u>중요한</u> 약속이라서 가야 해요.</strong></p>",
-        'explanation': "<p><strong>나쁘지만</strong>: '나쁘다' (yomon bo'lmoq) + '-지만'. <strong>매우</strong> (juda) yomon bo'lishiga qaramay, chiqishi kerak.</p>",
-        'correct': "나쁘지만",
-        'choices': ["나쁘고", "나빠서", "나쁘지만", "나쁘면"]
-    },
-    {
-        'text': "<p><strong>A: 그 사람은 <strong>항상</strong> 표정이 <u>차가워</u> 보여요.<br>B: 겉모습은 <strong>조금</strong> <u>무뚝뚝하________</u> 마음은 <strong>정말</strong> <u>따뜻해요</u>.</strong></p>",
-        'explanation': "<p><strong>무뚝뚝하지만</strong>: '무뚝뚝하다' (sovuqqon/jiddiy bo'lmoq) + '-지만'. <strong>정말</strong> (rosttdan) ko'ngli ochiq.</p>",
-        'correct': "무뚝뚝하지만",
-        'choices': ["무뚝뚝하고", "무뚝뚝하지만", "무뚝뚝해서", "무뚝뚝하면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>어릴 때부터</strong> 피아노를 <strong>오래</strong> <em>배웠어요</em>?<br>B: 네, 10년 동안 <u>배웠________</u> <strong>아직도</strong> <strong>잘</strong> <u>못 쳐요</u>.</strong></p>",
-        'explanation': "<p><strong>배웠지만</strong>: '배우다' o'tgan zamonda '배웠다' + '-지만'. 10 yil o'rganganiga qaramay, <strong>아직도</strong> (hali ham) yaxshi chalmaydi.</p>",
-        'correct': "배웠지만",
-        'choices': ["배우고", "배워서", "배웠지만", "배우면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>어제</strong> 저녁에 <strong>일찍</strong> 침대에 <em>누웠어요</em>?<br>B: <strong>일찍</strong> <u>누웠________</u> <strong>생각이 많아서</strong> <strong>늦게</strong> 잤어요.</strong></p>",
-        'explanation': "<p><strong>누웠지만</strong>: '눕다' (yotmoq) o'tgan zamonda '누웠다' + '-지만'. <strong>일찍</strong> (vaqtli) yotganiga qaramay, <strong>늦게</strong> (kech) uxladi.</p>",
-        'correct': "누웠지만",
-        'choices': ["누웠지만", "눕고", "누워서", "누우면"]
-    },
-    {
-        'text': "<p><strong>A: 이 <u>가벼운</u> 신발이 <strong>발에</strong> <strong>잘</strong> <em>맞아요</em>?<br>B: 신발은 <strong>아주</strong> <u>예쁘________</u> 발이 <strong>조금</strong> <u>아파요</u>.</strong></p>",
-        'explanation': "<p><strong>예쁘지만</strong>: '예쁘다' (chiroyli bo'lmoq) + '-지만'. <strong>아주</strong> (juda) chiroyli, ammo oyog'i og'riyapti.</p>",
-        'correct': "예쁘지만",
-        'choices': ["예쁘고", "예뻐서", "예쁘면", "예쁘지만"]
-    },
-    {
-        'text': "<p><strong>A: <strong>오늘</strong> 일정이 <strong>너무</strong> <u>바빠서</u> <strong>힘들지</strong> <em>않아요</em>?<br>B: 몸은 <strong>많이</strong> <u>힘들________</u> 마음은 <strong>정말</strong> <u>기뻐요</u>.</strong></p>",
-        'explanation': "<p><strong>힘들지만</strong>: '힘들다' (qiyin/mashaqqatli bo'lmoq) + '-지만'. <strong>많이</strong> (ko'p) qiynalganiga qaramay, xursand.</p>",
-        'correct': "힘들지만",
-        'choices': ["힘들지만", "힘들고", "힘들어서", "힘들면"]
-    },
-    {
-        'text': "<p><strong>A: 방이 <strong>생각보다</strong> <u>작은데</u> <strong>생활하기</strong> <em>어때요</em>?<br>B: 공간은 <u>좁________</u> <strong>혼자 살기에는</strong> <strong>딱</strong> <u>좋아요</u>.</strong></p>",
-        'explanation': "<p><strong>좁지만</strong>: '좁다' (tor bo'lmoq) + '-지만'. <strong>혼자 살기에는</strong> (yolg'iz yashashga) yaxshi.</p>",
-        'correct': "좁지만",
-        'choices': ["좁고", "좁아서", "좁지만", "좁으면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>어제</strong> 백화점에서 <u>비싼</u> 가방을 <strong>결국</strong> <em>샀어요</em>?<br>B: <strong>사고 싶었________</strong> 돈이 <u>없어서</u> <strong>그냥</strong> 왔어요.</strong></p>",
-        'explanation': "<p><strong>사고 싶었지만</strong>: '사고 싶다' (sotib olishni xohlamoq) o'tgan zamonda '싶었다' + '-지만'. Xohlagan bo'lsa ham, ololmadi.</p>",
-        'correct': "사고 싶었지만",
-        'choices': ["사고 싶었고", "사고 싶었지만", "사고 싶어서", "사고 싶으면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>이번</strong> 달에 월급을 <strong>많이</strong> <em>받았어요</em>?<br>B: 돈을 <strong>많이</strong> <u>벌었________</u> <strong>생활비로</strong> <strong>다</strong> 써버렸어요.</strong></p>",
-        'explanation': "<p><strong>벌었지만</strong>: '벌다' (pul topmoq) o'tgan zamonda '벌었다' + '-지만'. <strong>많이</strong> (ko'p) topganiga qaramay, hammasini ishlatib yubordi.</p>",
-        'correct': "벌었지만",
-        'choices': ["벌고", "벌어서", "벌면", "벌었지만"]
-    },
-    {
-        'text': "<p><strong>A: <strong>매일</strong> 아침 공원에서 <strong>꾸준히</strong> <em>운동해요</em>?<br>B: <strong>매일</strong> <u>운동하________</u> 살이 <strong>전혀</strong> <u>안 빠져요</u>.</strong></p>",
-        'explanation': "<p><strong>운동하지만</strong>: '운동하다' (sport bilan shug'ullanmoq) + '-지만'. <strong>전혀</strong> (umuman) vazn yo'qotmayapti.</p>",
-        'correct': "운동하지만",
-        'choices': ["운동하고", "운동해서", "운동하지만", "운동하면"]
-    },
-    {
-        'text': "<p><strong>A: 저기 식당은 <strong>손님이 항상</strong> <em>많아요</em>?<br>B: <strong>손님은</strong> <u>많________</u> 음식 나오는 속도가 <strong>너무</strong> <u>느려요</u>.</strong></p>",
-        'explanation': "<p><strong>많지만</strong>: '많다' (ko'p bo'lmoq) + '-지만'. Mijozlar ko'pligiga qaramay, <strong>너무</strong> (juda) sekin chiqadi.</p>",
-        'correct': "많지만",
-        'choices': ["많고", "많아서", "많으면", "많지만"]
-    },
-    {
-        'text': "<p><strong>A: 한국 노래를 <strong>혼자서</strong> <strong>자주</strong> <em>들어요</em>?<br>B: 가사를 <strong>다</strong> <u>모르________</u> 멜로디가 <u>좋아서</u> <strong>자주</strong> 들어요.</strong></p>",
-        'explanation': "<p><strong>모르지만</strong>: '모르다' (bilmaslik) + '-지만'. <strong>다</strong> (hammasini) bilmasa ham, eshitadi.</p>",
-        'correct': "모르지만",
-        'choices': ["모르지만", "모르고", "몰라서", "모르면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>오랜만에</strong> 만난 친구와 <strong>오래</strong> <em>이야기했어요</em>?<br>B: <strong>이야기하고 싶었________</strong> 시간이 <u>없어서</u> <strong>일찍</strong> 헤어졌어요.</strong></p>",
-        'explanation': "<p><strong>이야기하고 싶었지만</strong>: '이야기하고 싶었다' + '-지만'. Suhbatlashishni xohlaganiga qaramay.</p>",
-        'correct': "이야기하고 싶었지만",
-        'choices': ["이야기하고", "이야기해서", "이야기하고 싶었지만", "이야기하면"]
-    },
-    {
-        'text': "<p><strong>A: 약을 먹었는데 <strong>아직도</strong> 열이 <u>심해요</u>?<br>B: 약을 <u>먹었________</u> <strong>전혀</strong> <u>나아지지</u> <u>않아요</u>.</strong></p>",
-        'explanation': "<p><strong>먹었지만</strong>: '먹다' o'tgan zamonda '먹었다' + '-지만'. <strong>전혀</strong> (umuman) yaxshilanmayapti.</p>",
-        'correct': "먹었지만",
-        'choices': ["먹고", "먹어서", "먹었지만", "먹으면"]
-    },
-    {
-        'text': "<p><strong>A: 이 청바지는 <strong>정말</strong> <u>비싸</u> <em>보여요</em>.<br>B: 디자인은 <u>예쁘________</u> <strong>막상</strong> 입어보면 <strong>너무</strong> <u>불편해요</u>.</strong></p>",
-        'explanation': "<p><strong>예쁘지만</strong>: '예쁘다' (chiroyli bo'lmoq) + '-지만'. <strong>막상</strong> (amalda/kiyganda) juda noqulay.</p>",
-        'correct': "예쁘지만",
-        'choices': ["예뻐서", "예쁘고", "예쁘면", "예쁘지만"]
-    },
-    {
-        'text': "<p><strong>A: 겨울에 강원도로 여행을 <em>가고 싶어요</em>?<br>B: 날씨가 <strong>매우</strong> <u>춥________</u> <strong>꼭</strong> <strong>한번</strong> 가보고 싶어요.</strong></p>",
-        'explanation': "<p><strong>춥지만</strong>: '춥다' (sovuq bo'lmoq) + '-지만'. <strong>매우</strong> (juda) sovuq bo'lishiga qaramay.</p>",
-        'correct': "춥지만",
-        'choices': ["춥지만", "춥고", "추워서", "추우면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>어제</strong> 공원에 사람이 <strong>많이</strong> <em>있었어요</em>?<br>B: 주말이<u>었________</u> <strong>비가 와서</strong> 사람이 <strong>거의</strong> <u>없었어요</u>.</strong></p>",
-        'explanation': "<p><strong>이었지만</strong>: '주말이다' o'tgan zamonda '주말이었다' + '-지만'. Dam olish kuni bo'lganiga qaramay.</p>",
-        'correct': "이었지만",
-        'choices': ["이었고", "이어서", "이었지만", "이면"]
-    },
-    {
-        'text': "<p><strong>A: 한국 생활이 <strong>이제는</strong> <strong>많이</strong> <em>익숙해졌어요</em>?<br>B: <strong>대부분</strong> <u>익숙해졌________</u> <strong>아직도</strong> 언어는 <strong>조금</strong> <u>어려워요</u>.</strong></p>",
-        'explanation': "<p><strong>익숙해졌지만</strong>: '익숙해지다' o'tgan zamonda '익숙해졌다' + '-지만'. <strong>대부분</strong> (ko'p qismi) ko'nikkan bo'lsa ham.</p>",
-        'correct': "익숙해졌지만",
-        'choices': ["익숙해지고", "익숙해져서", "익숙해지면", "익숙해졌지만"]
-    },
-    {
-        'text': "<p><strong>A: <strong>매일</strong> 지하철로 <strong>출퇴근하기</strong> <em>힘들지 않아요</em>?<br>B: <strong>사람이 많아서</strong> <u>복잡하________</u> <strong>시간이 정확해서</strong> <u>좋아요</u>.</strong></p>",
-        'explanation': "<p><strong>복잡하지만</strong>: '복잡하다' (tirband bo'lmoq) + '-지만'. Tirband bo'lishiga qaramay, vaqti aniq.</p>",
-        'correct': "복잡하지만",
-        'choices': ["복잡하고", "복잡해서", "복잡하지만", "복잡하면"]
-    },
-    {
-        'text': "<p><strong>A: 방이 <strong>너무</strong> <u>지저분한데</u> 청소 <strong>안</strong> <em>해요</em>?<br>B: 청소를 <u>하________</u> 금방 <strong>다시</strong> <u>더러워져요</u>.</strong></p>",
-        'explanation': "<p><strong>하지만</strong>: '하다' (qilmoq) + '-지만'. Tozalashiga qaramay, <strong>금방</strong> (darhol/tez) yana kirlashadi.</p>",
-        'correct': "하지만",
-        'choices': ["하고", "해서", "하지만", "하면"]
+        'text': "<p>A: 강아지 이름은 <em>무엇으로</em> <em>정했어요</em>?<br>B: 털이 <strong>하얗고</strong> <u>예뻐서</u> '구름이'라고 <em>지으________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '짓다' (ism qo'ymoq). 'ㅅ' tushib qolmaydi chunki '-기' undosh bilan boshlanadi (짓기로 했어요 - The rule: 'ㅅ' irregular drops before vowels. Here '기' is a consonant, so 짓기로). But wait! The answer uses 지으기로? No, it's 짓기로. Let me correct the choices and explanation.</p>\n<p>B: 털이 <strong>하얗고</strong> <u>예뻐서</u> '구름이'라고 <em>짓________</em>.</p>",
+        'explanation': "<p><strong>기로 했어요</strong>: '짓다' (ism qo'ymoq). '-기' undosh bilan boshlangani uchun 'ㅅ' tushib qolmaydi (짓기로 했어요). 'Bulutcham' deb ism qo'yishga qaror qildi.</p>",
+        'correct': "기로 했어요",
+        'choices': ["기로 했어요", "지 않기로 했어요", "기로 해요", "고 했어요"]
     }]
 
-topic_24 = [
+topic_42 = [
+    # --- TOPIC 42: 동사/형용사 + 잖아요 (확인 및 강조) ---
+    {
+        'text': "<p>A: <strong>오늘</strong> <strong>왜</strong> <strong>이렇게</strong> 차가 <em>막힐까요</em>?<br>B: <strong>오늘은</strong> 금요일 저녁이<em>________</em>. <strong>원래</strong> <strong>복잡해요</strong>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '금요일 저녁이다' (juma oqshomidir) + '-잖아요' (juma oqshomi-ku / axir juma oqshomi). Boshqa odam ham biladigan faktni tasdiqlash uchun. <strong>원래</strong> (aslida).</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "이잖아요", "았잖아요", "겠잖아요"]
+    },
+    {
+        'text': "<p>A: 마디나 씨가 <strong>오늘</strong> 파티에 <em>올까요</em>?<br>B: <strong>당연하죠</strong>. 마디나 씨가 <strong>어제</strong> <strong>분명히</strong> <em>온다고 했________</em>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '했다' (aytdi/dedi - o'tgan zamon) + '-잖아요' (aytgandi-ku). <strong>분명히</strong> (aniq/shubhasiz).</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: 밖이 <strong>너무</strong> <u>추운데</u> 외투를 <strong>안</strong> <em>입어요</em>?<br>B: 저는 <strong>원래</strong> <u>추운</u> 것을 <strong>잘</strong> <em>참________</em>. <u>괜찮아요</u>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '참다' (chidamok) + '-잖아요' (chidayman-ku). O'zining xususiyatini tushuntiryapti. <strong>원래</strong> (aslida).</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: 그 식당은 <strong>왜</strong> <strong>항상</strong> 손님이 <u>없어요</u>?<br>B: 거기는 음식 값이 <strong>너무</strong> <u>비싸________</u>. <strong>그래서</strong> <strong>안 가요</strong>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '비싸다' (qimmat bo'lmoq) + '-잖아요' (qimmat-ku). <strong>너무</strong> (juda).</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: <strong>지금</strong> <strong>당장</strong> 백화점에 <em>갈까요</em>?<br>B: <strong>벌써</strong> 밤 10시가 <em>넘었________</em>. 문을 <em>닫았을 거예요</em>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '넘었다' (o'tdi - o'tgan zamon) + '-잖아요' (soat 10 dan o'tdi-ku). <strong>벌써</strong> (allaqachon).</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: 이 책을 <strong>언제</strong> <strong>다</strong> <em>읽었어요</em>?<br>B: <strong>지난주에</strong> <strong>벌써</strong> <strong>다</strong> <em>읽었________</em>. <strong>기억 안 나요?</strong></p>",
+        'explanation': "<p><strong>잖아요</strong>: '읽었다' (o'qidi) + '-잖아요' (o'qigandim-ku). <strong>벌써</strong> (allaqachon) o'qiganini eslatmoqda.</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: <strong>왜</strong> <strong>그렇게</strong> <strong>급하게</strong> <em>뛰어가요</em>?<br>B: <strong>곧</strong> <strong>마지막</strong> 기차가 <em>출발하________</em>. <strong>빨리</strong> <em>가야 해요</em>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '출발하다' (jo'namoq) + '-잖아요' (jo'naydi-ku). <strong>곧</strong> (tez orada).</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: 한국어 발음이 <strong>정말</strong> <u>좋으시네요</u>.<br>B: 제가 한국에서 3년 동안 <em>살았________</em>. <strong>당연하지요</strong>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '살았다' (yashadi) + '-잖아요' (yashaganman-ku). <strong>당연하지요</strong> (albatta-da).</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: 이 바지가 <strong>저에게</strong> <u>어울릴까요</u>?<br>B: 네, <strong>색깔도</strong> <u>예쁘고</u> 디자인도 <u>세련됐________</u>. <strong>꼭</strong> <em>사세요</em>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '세련됐다' (zamonaviy/nafis bo'lmoq) + '-잖아요' (zamonaviy-ku). <strong>꼭</strong> (albatta).</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: <strong>왜</strong> 제 전화를 <strong>안</strong> <em>받았어요</em>?<br>B: 제가 <strong>아까</strong> 회의 <strong>중이라고</strong> <em>말했________</em>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '말했다' (aytdi) + '-잖아요' (aytgandim-ku). <strong>아까</strong> (boya) majlisdaman deganini eslatmoqda.</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: <strong>오늘</strong> 공원에 사람이 <strong>왜 이렇게</strong> <u>많아요</u>?<br>B: <strong>오늘은</strong> <strong>날씨가</strong> <strong>아주</strong> <u>화창하________</u>. <strong>다들</strong> <em>나온 거예요</em>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '화창하다' (ochiq/quyoshli bo'lmoq) + '-잖아요' (ochiq-ku). <strong>아주</strong> (juda) ochiq havo sababli.</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: <strong>주말에</strong> <strong>같이</strong> 등산 <em>갈래요</em>?<br>B: <strong>이번</strong> 주말에는 <strong>가족 모임이</strong> <em>있________</em>. <strong>다음 주에</strong> 가요.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '있다' (bor bo'lmoq) + '-잖아요' (uchrashuvim bor-ku). <strong>이번 주말에는</strong> (bu dam olish kunida).</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: 그 식당에서 <strong>밥을</strong> <em>먹을까요</em>?<br>B: 거기는 <strong>항상</strong> <strong>줄이 너무</strong> <u>길________</u>. <strong>다른 데로</strong> <em>가요</em>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '길다' (uzun bo'lmoq) + '-잖아요' (uzun-ku). <strong>항상</strong> (har doim) navbat uzunligini ta'kidlayapti.</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: 이 <u>새로운</u> 게임을 <strong>어떻게</strong> <em>하는 거예요</em>?<br>B: 제가 <strong>아까</strong> <strong>자세히</strong> <em>설명해 줬________</em>. <strong>또</strong> <em>잊어버렸어요</em>?</p>",
+        'explanation': "<p><strong>잖아요</strong>: '해 줬다' (qilib berdi) + '-잖아요' (tushuntirib bergandim-ku). <strong>아까</strong> (boya) <strong>자세히</strong> (batafsil).</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: 수박이 <strong>벌써</strong> <em>나왔네요</em>. 하나 <em>살까요</em>?<br>B: <strong>아직은</strong> 수박이 <strong>너무</strong> <u>비싸________</u>. <strong>나중에</strong> <em>사요</em>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '비싸다' (qimmat bo'lmoq) + '-잖아요' (qimmat-ku). <strong>아직은</strong> (hali) <strong>너무</strong> (juda).</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: <strong>왜</strong> 우산을 <em>안 가져왔어요</em>?<br>B: <strong>일기예보에서</strong> <strong>오늘</strong> 비가 <strong>안</strong> <em>온다고 했________</em>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '했다' (aytdi) + '-잖아요' (aytgandi-ku). Yomg'ir yog'maydi deb aytishganini eslatmoqda.</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: 지민 씨는 <strong>매일</strong> <strong>일찍</strong> <em>출근하네요</em>.<br>B: 집이 <strong>회사에서</strong> <strong>많이</strong> <u>멀________</u>. <strong>일찍</strong> <em>나와야 해요</em>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '멀다' (uzoq bo'lmoq) + '-잖아요' (uzoq-ku). <strong>많이</strong> (juda) uzoqligi hammaga ma'lum.</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: <strong>저녁을</strong> <strong>안</strong> <em>먹었어요</em>? <strong>왜</strong> <strong>이렇게</strong> <strong>많이</strong> <em>먹어요</em>?<br>B: <strong>오늘</strong> <strong>점심도</strong> <strong>거의</strong> <em>못 먹었________</em>. <strong>너무</strong> 배가 <u>고파요</u>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '먹었다' + '-잖아요' (yeyolmadim-ku). <strong>거의</strong> (deyarli) yeyolmaganini ta'kidlayapti.</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: 옷차림이 <strong>너무</strong> <u>얇은 것 아니에요</u>?<br>B: <strong>이제</strong> <strong>봄이________</strong>. <strong>하나도</strong> <u>안 추워요</u>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '봄이다' (bahordir) + '-잖아요' (bahor-ku). <strong>이제</strong> (endi) bahor kelganini tasdiqlamoqda. <strong>하나도</strong> (zarracha ham).</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "이잖아요", "았잖아요", "겠잖아요"]
+    },
+    {
+        'text': "<p>A: <strong>왜</strong> <strong>아까부터</strong> <strong>계속</strong> <em>웃어요</em>?<br>B: 이 영화 <strong>정말</strong> <u>재미있________</u>. <strong>그래서</strong> <em>웃죠</em>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '재미있다' (qiziqarli bo'lmoq) + '-잖아요' (qiziqarli-ku). <strong>계속</strong> (tinmay) kulish sababini ta'kidlayapti.</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: <strong>어제</strong> <em>배운</em> 문법을 <strong>다시</strong> <em>설명해 주세요</em>.<br>B: <strong>선생님이</strong> <strong>아까</strong> <strong>또</strong> <em>설명해 주셨________</em>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '주셨다' (berdilar) + '-잖아요' (tushuntirib berdilar-ku). <strong>아까</strong> (boya) <strong>또</strong> (yana) tushuntirganini eslatmoqda.</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: <strong>늦게까지</strong> <strong>잠을</strong> <em>안 자요</em>?<br>B: <strong>내일이</strong> <strong>주말이________</strong>. <strong>일찍</strong> <em>잘 필요가 없어요</em>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '주말이다' (dam olish kunidir) + '-잖아요' (dam olish kuni-ku). '주말' undosh bilan tugagani uchun '이잖아요' ulanadi.</p>",
+        'correct': "잖아요",
+        'choices': ["이잖아요", "잖아요", "았잖아요", "겠잖아요"]
+    },
+    {
+        'text': "<p>A: 그 구두를 <strong>결국</strong> <strong>또</strong> <em>샀어요</em>?<br>B: 디자인이 <strong>너무</strong> <u>예쁘________</u>. <strong>참을 수가 없었어요</strong>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '예쁘다' (chiroyli bo'lmoq) + '-잖아요' (chiroyli-ku). <strong>너무</strong> (juda) chiroyli ekanligini ta'kidlayapti.</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: <strong>왜</strong> 커피를 <strong>안</strong> <em>마셔요</em>?<br>B: 저는 <strong>밤에</strong> 커피를 <em>마시면</em> 잠을 <strong>못</strong> <em>잔다고 했________</em>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '했다' (aytdi) + '-잖아요' (aytgandim-ku). Uxlay olmasligini oldin aytganini eslatmoqda.</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: 이 빵이 <strong>맛있을까요</strong>?<br>B: 저기 사람들이 <strong>길게</strong> <strong>줄을 서</strong> <em>있________</em>. <strong>당연히</strong> <u>맛있겠죠</u>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '있다' (bor/turibdi) + '-잖아요' (turishibdi-ku). Navbatda turganlarni ko'rsatib faktni tasdiqlamoqda. <strong>길게</strong> (uzun).</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: <strong>오늘따라</strong> 일이 <strong>손에</strong> <em>안 잡혀요</em>.<br>B: <strong>날씨가 너무</strong> <u>좋________</u>. <strong>놀러 가고 싶어서</strong> <em>그래요</em>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '좋다' (yaxshi bo'lmoq) + '-잖아요' (yaxshi-ku). <strong>너무</strong> (juda) yaxshi ob-havoni ta'kidlayapti.</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: <strong>지하철에</strong> 사람이 <strong>왜</strong> <strong>이렇게</strong> <u>많아요</u>?<br>B: <strong>지금이</strong> <strong>딱</strong> <strong>퇴근 시간이________</strong>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '시간이다' (vaqtidir) + '-잖아요'. Undosh bilan tugagani uchun '이잖아요' ulanadi (qaytish vaqti-ku). <strong>딱</strong> (aynan).</p>",
+        'correct': "잖아요",
+        'choices': ["이잖아요", "잖아요", "았잖아요", "겠잖아요"]
+    },
+    {
+        'text': "<p>A: 그 사람은 <strong>거짓말을</strong> <em>안 하겠죠</em>?<br>B: <strong>원래</strong> <strong>아주</strong> <u>정직한</u> 사람이라는 걸 <strong>잘</strong> <em>알________</em>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '알다' (bilmoq) + '-잖아요' (bilasiz-ku). <strong>원래</strong> (aslida), <strong>아주</strong> (juda) halol ekanligini ta'kidlayapti.</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: 한국 노래를 <strong>자주</strong> <em>들어요</em>?<br>B: 네, 가사는 <strong>다</strong> <em>몰라도</em> <strong>멜로디가 너무</strong> <u>신나________</u>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '신나다' (zavqli bo'lmoq) + '-잖아요' (zavqli-ku). <strong>너무</strong> (juda) zavqli ohangini ta'kidlayapti.</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    },
+    {
+        'text': "<p>A: <strong>비가 오는데</strong> <strong>우산을</strong> <strong>안</strong> <em>가져왔어요</em>?<br>B: <strong>아침에는</strong> <strong>날씨가 아주</strong> <u>맑았________</u>. 비가 <em>올 줄 몰랐어요</em>.</p>",
+        'explanation': "<p><strong>잖아요</strong>: '맑았다' (ochiq edi) + '-잖아요' (ochiq edi-ku). <strong>아침에는 아주</strong> (ertalab juda) ochiq bo'lganini eslatmoqda.</p>",
+        'correct': "잖아요",
+        'choices': ["잖아요", "았잖아요", "겠잖아요", "이잖아요"]
+    }
+]
 
-    # --- TOPIC 24: 연결 어미 3: 동사/형용사 + 아/어서 (이유 및 시간적 순서) ---
+
+topic_43 = [
+    # --- TOPIC 43: 피동 표현 (-이/히/리/기-, 아/어지다 - Passive Voice) ---
     {
-        'text': "<p><strong>A: <strong>오늘</strong> 아침에 <strong>왜</strong> <strong>그렇게</strong> <strong>늦게</strong> <em>왔어요</em>?<br>B: <strong>늦잠을 자서</strong> 차를 <u>놓치________</u> <strong>결국</strong> <strong>늦었어요</strong>.</strong></p>",
-        'explanation': "<p><strong>놓쳐서</strong>: '놓치다' (o'tkazib yubormoq). Sabab (이유) ni bildirish uchun '-어서' ulanadi. <strong>결국</strong> (oxir-oqibat) kechikdi.</p>",
-        'correct': "놓쳐서",
-        'choices': ["놓치고", "놓치지만", "놓쳐서", "놓치면"]
+        'text': "<p>A: 창문 밖으로 바다가 <strong>잘</strong> <em>보여요</em>?<br>B: 네, 날씨가 <u>맑아서</u> <strong>아주</strong> <u>선명하게</u> <em>보여________</em>.</p>",
+        'explanation': "<p><strong>보여요</strong>: '보이다' (ko'rinmoq) - '보다' (ko'rmoq) fe'lining majhul (passive) shakli. <strong>아주</strong> (juda) <u>선명하게</u> (aniq/tiniq) ko'rinadi.</p>",
+        'correct': "보여요",
+        'choices': ["보여요", "보아져요", "봅니다", "보요"]
     },
     {
-        'text': "<p><strong>A: <strong>지금</strong> 공원에 <strong>같이</strong> 산책하러 <em>갈래요</em>?<br>B: <strong>미안해요</strong>. <strong>오늘</strong> <strong>너무</strong> <u>피곤하________</u> 집에서 <strong>그냥</strong> <u>쉴래요</u>.</strong></p>",
-        'explanation': "<p><strong>피곤해서</strong>: '피곤하다' (charchamoq). Sabab (charchagani uchun) '-아서/어서' ulanadi. <strong>그냥</strong> (shunchaki) dam oladi.</p>",
-        'correct': "피곤해서",
-        'choices': ["피곤하지만", "피곤하고", "피곤해서", "피곤하면"]
+        'text': "<p>A: 제 목소리가 <strong>뒤에까지</strong> <strong>크게</strong> <em>들려요</em>?<br>B: 아니요, <strong>너무</strong> <u>작아서</u> <strong>잘</strong> <em>안</em> <em>들려________</em>.</p>",
+        'explanation': "<p><strong>들려요</strong>: '들리다' (eshitilmoq) - '듣다' (eshitmoq) fe'lining majhul shakli. <strong>너무</strong> (juda) kichik bo'lgani uchun eshitilmayapti.</p>",
+        'correct': "들려요",
+        'choices': ["들려요", "듣어요", "들어요", "들러요"]
     },
     {
-        'text': "<p><strong>A: 백화점에서 그 <u>예쁜</u> 가방을 <strong>왜</strong> <strong>안</strong> <em>샀어요</em>?<br>B: 디자인은 <u>예쁘지만</u> 가격이 <strong>너무</strong> <u>비싸________</u> <strong>못</strong> 샀어요.</strong></p>",
-        'explanation': "<p><strong>비싸서</strong>: '비싸다' (qimmat bo'lmoq). Sababni (qimmatligi uchun) bildirish uchun '-아서' ulanadi.</p>",
-        'correct': "비싸서",
-        'choices': ["비싸서", "비싸고", "비싸지만", "비싸면"]
+        'text': "<p>A: 닫힌 문이 <strong>갑자기</strong> <strong>왜</strong> <em>열렸어요</em>?<br>B: <strong>세찬</strong> 바람 <strong>때문에</strong> <strong>저절로</strong> <em>열렸________</em>.</p>",
+        'explanation': "<p><strong>열렸어요</strong>: '열리다' (ochilmoq) - '열다' (ochmoq) fe'lining majhul shakli. <strong>저절로</strong> (o'z-o'zidan) ochildi.</p>",
+        'correct': "열렸어요",
+        'choices': ["열렸어요", "열었어요", "여졌어요", "열아졌어요"]
     },
     {
-        'text': "<p><strong>A: <strong>어제</strong> 저녁에 친구를 <strong>어디서</strong> <em>만났어요</em>?<br>B: 시내에서 친구를 <u>만나________</u> <strong>같이</strong> <u>맛있는</u> 저녁을 <strong>먹었어요</strong>.</strong></p>",
-        'explanation': "<p><strong>만나서</strong>: '만나다' (uchrashmoq). Harakatlar ketma-ketligi (시간적 순서). Uchrashib, so'ngra ovqatlangan.</p>",
-        'correct': "만나서",
-        'choices': ["만나고", "만나지만", "만나면", "만나서"]
+        'text': "<p>A: 열어 둔 창문이 <strong>어떻게</strong> <em>되었어요</em>?<br>B: 바람이 <strong>강하게</strong> <em>불어서</em> <strong>쾅</strong> 하고 <em>닫혔________</em>.</p>",
+        'explanation': "<p><strong>닫혔어요</strong>: '닫히다' (yopilmoq) - '닫다' (yopmoq) fe'lining majhul shakli. <strong>강하게</strong> (kuchli) shamol esib yopildi.</p>",
+        'correct': "닫혔어요",
+        'choices': ["닫혔어요", "닫았어요", "닫아졌어요", "달렸어요"]
     },
     {
-        'text': "<p><strong>A: 식당에서 밥을 <strong>다</strong> <em>먹은 후</em>에 <strong>뭐</strong> <em>했어요</em>?<br>B: 계산을 <strong>먼저</strong> <u>하________</u> 식당 밖으로 <strong>조용히</strong> <u>나왔어요</u>.</strong></p>",
-        'explanation': "<p><strong>해서</strong>: '하다' (qilmoq). Harakatlar ketma-ketligi. Hisobni to'lab, tashqariga chiqdi (해서 나가다).</p>",
+        'text': "<p>A: <strong>요즘</strong> 이 책이 <strong>서점에서</strong> <strong>많이</strong> <em>팔려요</em>?<br>B: 네, <strong>가장</strong> <strong>잘</strong> <em>팔리________</em> <u>유명한</u> 책이에요.</p>",
+        'explanation': "<p><strong>팔리는</strong>: '팔리다' (sotilmoq) - '팔다' (sotmoq) fe'lining majhul shakli. <strong>가장</strong> (eng) yaxshi sotilayotgan kitob.</p>",
+        'correct': "팔리는",
+        'choices': ["팔리는", "파는", "팔아지는", "팔히는"]
+    },
+    {
+        'text': "<p>A: <strong>따뜻한</strong> 차를 <em>마시니까</em> <strong>몸이</strong> <em>어때요</em>?<br>B: <strong>딱딱하게</strong> <em>굳었던</em> 몸이 <strong>스르르</strong> <em>풀렸________</em>.</p>",
+        'explanation': "<p><strong>풀렸어요</strong>: '풀리다' (yechilmoq/yozilmoq) - '풀다' (yechmoq) fe'lining majhul shakli. <strong>스르르</strong> (ohista/sekin-asta) yozildi.</p>",
+        'correct': "풀렸어요",
+        'choices': ["풀렸어요", "풀었어요", "푸어졌어요", "풀아졌어요"]
+    },
+    {
+        'text': "<p>A: <strong>칠판에</strong> <em>쓴</em> <u>작은</u> 글씨가 <strong>잘</strong> <em>읽혀요</em>?<br>B: 아니요, <strong>너무</strong> <u>작아서</u> <strong>전혀</strong> <em>안 읽혀________</em>.</p>",
+        'explanation': "<p><strong>읽혀요</strong>: '읽히다' (o'qilmoq) - '읽다' (o'qimoq) fe'lining majhul shakli. <strong>전혀</strong> (umuman) o'qilmayapti.</p>",
+        'correct': "읽혀요",
+        'choices': ["읽혀요", "읽어요", "일려요", "읽아져요"]
+    },
+    {
+        'text': "<p>A: <strong>도망치던</strong> 도둑이 <strong>경찰에게</strong> <em>잡혔어요</em>?<br>B: 네, <strong>끈질긴</strong> 추격 <strong>끝에</strong> <strong>결국</strong> <em>잡혔________</em>.</p>",
+        'explanation': "<p><strong>잡혔어요</strong>: '잡히다' (ushlanmoq) - '잡다' (ushlamoq) fe'lining majhul shakli. <strong>결국</strong> (oxir-oqibat) ushlandi.</p>",
+        'correct': "잡혔어요",
+        'choices': ["잡혔어요", "잡았어요", "자펴요", "잡아졌어요"]
+    },
+    {
+        'text': "<p>A: <strong>우는</strong> 아기가 <strong>엄마 품에</strong> <em>어떻게</em> <em>되었어요</em>?<br>B: 엄마 품에 <strong>따뜻하게</strong> <em>안겼________</em>.</p>",
+        'explanation': "<p><strong>안겼어요</strong>: '안기다' (quchoqlanmoq/bag'riga bosilmoq) - '안다' (quchoqlamoq). <strong>따뜻하게</strong> (iliq/mehribonlik bilan).</p>",
+        'correct': "안겼어요",
+        'choices': ["안겼어요", "안았어요", "안아졌어요", "안히어요"]
+    },
+    {
+        'text': "<p>A: 영화에서 <strong>주인공이</strong> <strong>악당에게</strong> <em>계속</em> <em>쫓겨요</em>?<br>B: 네, <strong>쉬지 않고</strong> <em>쫓기________</em> <strong>너무</strong> <u>불쌍해요</u>.</p>",
+        'explanation': "<p><strong>쫓겨서</strong>: '쫓기다' (quvlanmoq/ta'qib qilinmoq) - '쫓다' (quvmoq). <strong>쉬지 않고</strong> (tinmay) quvlangani uchun.</p>",
+        'correct': "쫓겨서",
+        'choices': ["쫓겨서", "쫓아서", "쫓아져서", "쫓히어서"]
+    },
+    {
+        'text': "<p>A: <strong>통화 중에</strong> 전화가 <strong>갑자기</strong> <em>끊겼어요</em>?<br>B: 네, <strong>터널에 들어가자마자</strong> <strong>툭</strong> <em>끊겼________</em>.</p>",
+        'explanation': "<p><strong>끊겼어요</strong>: '끊기다' (uzilmoq) - '끊다' (uzmoq) fe'lining majhul shakli. <strong>갑자기</strong> (to'satdan) uzildi.</p>",
+        'correct': "끊겼어요",
+        'choices': ["끊겼어요", "끊었어요", "끊아졌어요", "끊히어요"]
+    },
+    {
+        'text': "<p>A: <strong>출근 시간에</strong> 도로가 <strong>많이</strong> <em>막혀요</em>?<br>B: 네, 사고가 <em>나서</em> <strong>평소보다</strong> <strong>더</strong> <em>막혀________</em>.</p>",
+        'explanation': "<p><strong>막혀요</strong>: '막히다' (to'silmoq/tirband bo'lmoq) - '막다' (to'smoq). <strong>평소보다 더</strong> (odatdagidan ko'proq) tirband.</p>",
+        'correct': "막혀요",
+        'choices': ["막혀요", "막아요", "마겨요", "막아져요"]
+    },
+    {
+        'text': "<p>A: <strong>야생동물 다큐멘터리에서</strong> <strong>약한</strong> 동물이 <em>먹혔어요</em>?<br>B: 네, 사자에게 <strong>결국</strong> <em>먹혔________</em>.</p>",
+        'explanation': "<p><strong>먹혔어요</strong>: '먹히다' (yeyilmoq/yem bo'lmoq) - '먹다' (yemoq). <strong>결국</strong> (oxir-oqibat) yem bo'ldi.</p>",
+        'correct': "먹혔어요",
+        'choices': ["먹혔어요", "먹었어요", "머겼어요", "먹아졌어요"]
+    },
+    {
+        'text': "<p>A: <strong>지하철에서</strong> <strong>실수로</strong> 발이 <em>밟혔어요</em>?<br>B: 네, <strong>사람이 많아서</strong> <strong>세게</strong> <em>밟혔________</em> <u>아파요</u>.</p>",
+        'explanation': "<p><strong>밟혔어요</strong>: '밟히다' (bosilmoq/tepkilanmoq) - '밟다' (bosmoq/tepkilamoq). <strong>세게</strong> (qattiq/kuchli) bosildi.</p>",
+        'correct': "밟혔어요",
+        'choices': ["밟혔어요", "밟았어요", "발펴요", "밟아졌어요"]
+    },
+    {
+        'text': "<p>A: <strong>산길을 걷다가</strong> 옷이 <strong>나뭇가지에</strong> <em>찢겼어요</em>?<br>B: 네, <strong>날카로운</strong> 가지에 <strong>길게</strong> <em>찢겼________</em>.</p>",
+        'explanation': "<p><strong>찢겼어요</strong>: '찢기다' (yirtilmoq) - '찢다' (yirtmoq) fe'lining majhul shakli. <strong>길게</strong> (uzun qilib) yirtildi.</p>",
+        'correct': "찢겼어요",
+        'choices': ["찢겼어요", "찢었어요", "찌겨요", "찢아졌어요"]
+    },
+    {
+        'text': "<p>A: 이 <u>아름다운</u> 도자기는 <strong>어떻게</strong> <em>만들어졌어요</em>?<br>B: 장인이 <strong>손으로</strong> <strong>직접</strong> <em>빚어서</em> <em>만들어졌________</em>.</p>",
+        'explanation': "<p><strong>만들어졌어요</strong>: '만들어지다' (yasalmoq). '만들다' (yasamoq/tayyorlamoq) fe'liga '-아/어지다' qo'shilib majhul nisbat yasalgan. <strong>직접</strong> (o'zi).</p>",
+        'correct': "만들어졌어요",
+        'choices': ["만들어졌어요", "만들었어요", "만들혔어요", "만들기었어요"]
+    },
+    {
+        'text': "<p>A: <strong>만년필로</strong> 쓰니까 글씨가 <strong>예쁘게</strong> <em>써져요</em>?<br>B: 네, <strong>부드러워서</strong> <strong>아주</strong> <strong>잘</strong> <em>써져________</em>.</p>",
+        'explanation': "<p><strong>써져요</strong>: '써지다' (yozilmoq). '쓰다' (yozmoq) + '-어지다'. <strong>아주 잘</strong> (juda yaxshi) yoziladi.</p>",
+        'correct': "써져요",
+        'choices': ["써져요", "써요", "쓰여져요", "쓰히어요"]
+    },
+    {
+        'text': "<p>A: 옷에 <em>묻은</em> <strong>커피 얼룩이</strong> <strong>잘</strong> <em>지워졌어요</em>?<br>B: 네, <strong>비누로 빠니까</strong> <strong>깨끗하게</strong> <em>지워졌________</em>.</p>",
+        'explanation': "<p><strong>지워졌어요</strong>: '지워지다' (o'chirilmoq/ketkazilmoq). '지우다' (o'chirmoq) + '-어지다'. <strong>깨끗하게</strong> (toza qilib).</p>",
+        'correct': "지워졌어요",
+        'choices': ["지워졌어요", "지웠어요", "지우혔어요", "지우기었어요"]
+    },
+    {
+        'text': "<p>A: <strong>실수로</strong> 떨어뜨린 컵이 <em>깨졌어요</em>?<br>B: 네, <strong>바닥에 부딪히며</strong> <strong>산산조각으로</strong> <em>깨졌________</em>.</p>",
+        'explanation': "<p><strong>깨졌어요</strong>: '깨지다' (sinmoq). '깨다' (sindirmoq) + '-어지다'. <strong>산산조각으로</strong> (chil-parchin bo'lib).</p>",
+        'correct': "깨졌어요",
+        'choices': ["깨졌어요", "깼어요", "깨아졌어요", "깨히어요"]
+    },
+    {
+        'text': "<p>A: <strong>무거운</strong> 짐을 <em>매단</em> 끈이 <em>끊어졌어요</em>?<br>B: 네, 무게를 <em>못 견디고</em> <strong>툭</strong> <em>끊어졌________</em>.</p>",
+        'explanation': "<p><strong>끊어졌어요</strong>: '끊어지다' (uzilmoq). '끊다' (uzmoq) + '-어지다'. <strong>툭</strong> (uzilish ovozi).</p>",
+        'correct': "끊어졌어요",
+        'choices': ["끊어졌어요", "끊었어요", "끊히었어요", "끊기었어요"]
+    },
+    {
+        'text': "<p>A: 대회 <strong>우승자에게는</strong> <em>어떤</em> <strong>기회가</strong> <em>주어져요</em>?<br>B: <strong>해외 유학이라는</strong> <u>큰</u> 기회가 <em>주어져________</em>.</p>",
+        'explanation': "<p><strong>주어져요</strong>: '주어지다' (berilmoq). '주다' (bermoq) + '-어지다'. <u>큰</u> (katta) imkoniyat beriladi.</p>",
+        'correct': "주어져요",
+        'choices': ["주어져요", "주어요", "주히어요", "주기어요"]
+    },
+    {
+        'text': "<p>A: <strong>다음 주</strong> 회의 날짜가 <strong>드디어</strong> <em>정해졌어요</em>?<br>B: 네, <strong>모두의 동의를 얻어</strong> <strong>금요일로</strong> <em>정해졌________</em>.</p>",
+        'explanation': "<p><strong>정해졌어요</strong>: '정해지다' (belgilanmoq/hal qilinmoq). '정하다' (belgilamoq) + '-아/어지다'. <strong>드디어</strong> (nihoyat).</p>",
+        'correct': "정해졌어요",
+        'choices': ["정해졌어요", "정했어요", "정히었어요", "정기었어요"]
+    },
+    {
+        'text': "<p>A: <strong>오랜</strong> 당신의 꿈이 <strong>마침내</strong> <em>이루어졌어요</em>?<br>B: 네, <strong>포기하지 않아서</strong> <strong>결국</strong> <em>이루어졌________</em>.</p>",
+        'explanation': "<p><strong>이루어졌어요</strong>: '이루어지다' (amalga oshmoq). '이루다' (amalga oshirmoq) + '-어지다'. <strong>마침내</strong> (oxir-oqibat/nihoyat).</p>",
+        'correct': "이루어졌어요",
+        'choices': ["이루어졌어요", "이루었어요", "이루히었어요", "이루기었어요"]
+    },
+    {
+        'text': "<p>A: 사건의 <u>숨겨진</u> 진실이 <strong>결국</strong> <em>밝혀졌어요</em>?<br>B: 네, <strong>조사 끝에</strong> <strong>명백하게</strong> <em>밝혀졌________</em>.</p>",
+        'explanation': "<p><strong>밝혀졌어요</strong>: '밝혀지다' (oydinlashmoq/oshkor bo'lmoq). '밝히다' (oshkor qilmoq) + '-어지다'. <strong>명백하게</strong> (aniq-ravshan).</p>",
+        'correct': "밝혀졌어요",
+        'choices': ["밝혀졌어요", "밝혔어요", "밝히어졌어요", "밝기었어요"]
+    },
+    {
+        'text': "<p>A: 두 사람이 <em>한</em> <strong>약속이</strong> <strong>잘</strong> <em>지켜졌어요</em>?<br>B: 네, <strong>서로</strong> <strong>양보하면서</strong> <strong>끝까지</strong> <em>지켜졌________</em>.</p>",
+        'explanation': "<p><strong>지켜졌어요</strong>: '지켜지다' (bajarilmoq/saqlanmoq). '지키다' (bajarmoq) + '-어지다'. <strong>끝까지</strong> (oxirigacha) bajarildi.</p>",
+        'correct': "지켜졌어요",
+        'choices': ["지켜졌어요", "지켰어요", "지키어졌어요", "지키기었어요"]
+    },
+    {
+        'text': "<p>A: 이 <u>오래된</u> 단어가 <strong>현대에도</strong> <strong>자주</strong> <em>쓰여요</em>?<br>B: 아니요, <strong>요즘은</strong> <strong>거의</strong> <em>안 쓰여________</em>.</p>",
+        'explanation': "<p><strong>쓰여요</strong>: '쓰이다' (yozilmoq/ishlatilmoq) - '쓰다' (yozmoq/ishlatmoq) + '-이-'. <strong>거의</strong> (deyarli) ishlatilmaydi.</p>",
+        'correct': "쓰여요",
+        'choices': ["쓰여요", "써요", "쓰히어요", "쓰기어요"]
+    },
+    {
+        'text': "<p>A: <strong>벽에</strong> <u>예쁜</u> 시계가 <em>걸려 있어요</em>?<br>B: 네, <strong>정중앙에</strong> <strong>반듯하게</strong> <em>걸려________</em>.</p>",
+        'explanation': "<p><strong>걸려요</strong> yoki '걸려 있어요': '걸리다' (ilinmoq/osilmoq) - '걸다' (ilmoq) fe'lining majhul shakli. <strong>반듯하게</strong> (to'g'ri qilib) ilingan.</p>",
+        'correct': "걸려요",
+        'choices': ["걸려요", "걸아요", "걷여요", "걸히어요"]
+    },
+    {
+        'text': "<p>A: <strong>갑자기</strong> <strong>행사 계획이</strong> <em>바뀌었어요</em>?<br>B: 네, <strong>비가 오는 바람에</strong> <strong>실내 행사로</strong> <em>바뀌었________</em>.</p>",
+        'explanation': "<p><strong>바뀌었어요</strong>: '바뀌다' (o'zgarmoq) - '바꾸다' (o'zgartirmoq) ning majhul shakli. <strong>갑자기</strong> (to'satdan) o'zgardi.</p>",
+        'correct': "바뀌었어요",
+        'choices': ["바뀌었어요", "바꿨어요", "바꾸히었어요", "바꾸기었어요"]
+    },
+    {
+        'text': "<p>A: <strong>노란색과</strong> <strong>파란색이</strong> <strong>잘</strong> <em>섞였어요</em>?<br>B: 네, <strong>아름답게</strong> <em>섞여서</em> <strong>초록색이</strong> <em>되었어요</em>.</p>",
+        'explanation': "<p><strong>섞였어요</strong>: '섞이다' (aralashmoq) - '섞다' (aralashtirmoq) ning majhul shakli. <strong>아름답게</strong> (chiroyli bo'lib) aralashdi.</p>",
+        'correct': "섞였어요",
+        'choices': ["섞였어요", "섞었어요", "섞히었어요", "섞기었어요"]
+    },
+    {
+        'text': "<p>A: <strong>신문 기사에</strong> <strong>그의 이름이</strong> <em>실렸어요</em>?<br>B: 네, <strong>대서특필로</strong> <strong>가장 크게</strong> <em>실렸________</em>.</p>",
+        'explanation': "<p><strong>실렸어요</strong>: '실리다' (bosilmoq/nashr qilinmoq) - '싣다' (yuklamoq/bosmoq) ning majhul shakli. <strong>가장 크게</strong> (eng katta qilib).</p>",
+        'correct': "실렸어요",
+        'choices': ["실렸어요", "실렸어요", "싣히었어요", "실기었어요"]
+    },
+
+    # --- TOPIC 44: 사동 표현 (-이/히/리/기/우/구/추-, 게 하다 - Causative Voice) ---
+    {
+        'text': "<p>A: <strong>아기가</strong> 밥을 <strong>안 먹으려고 하는데</strong> <em>어떻게 해요</em>?<br>B: 엄마가 <strong>장난감을 주면서</strong> <strong>겨우</strong> 밥을 <em>먹여________</em>.</p>",
+        'explanation': "<p><strong>먹여요</strong>: '먹이다' (yedirmoq) - '먹다' (yemoq) fe'lining orttirma (causative) nisbati. <strong>겨우</strong> (amallab/zo'rg'a) yediryapti.</p>",
+        'correct': "먹여요",
+        'choices': ["먹여요", "먹어요", "먹혀요", "먹려요"]
+    },
+    {
+        'text': "<p>A: <strong>방 안에</strong> <em>있는</em> 모기를 <strong>다</strong> <em>잡았어요</em>?<br>B: 네, <strong>약을 뿌려서</strong> <strong>전부</strong> <em>죽였________</em>.</p>",
+        'explanation': "<p><strong>죽였어요</strong>: '죽이다' (o'ldirmoq) - '죽다' (o'lmoq) ning orttirma nisbati. <strong>전부</strong> (barchasini).</p>",
+        'correct': "죽였어요",
+        'choices': ["죽였어요", "죽었어요", "죽혔어요", "죽렸어요"]
+    },
+    {
+        'text': "<p>A: 친구가 <strong>깜짝 카메라로</strong> 저를 <strong>감쪽같이</strong> <em>속였어요</em>.<br>B: <strong>정말</strong> <strong>눈치채지 못하게</strong> <strong>완벽히</strong> <em>속였________</em>네요.</p>",
+        'explanation': "<p><strong>속였어요</strong>: '속이다' (aldamoq) - '속다' (aldanmoq) ning orttirma nisbati. <strong>감쪽같이</strong> (bildirmasdan/aktёрdek).</p>",
+        'correct': "속였어요",
+        'choices': ["속였어요", "속았어요", "속혔어요", "속렸어요"]
+    },
+    {
+        'text': "<p>A: <strong>냉동실에서</strong> <em>꺼낸</em> 고기를 <strong>어떻게</strong> <em>요리해요</em>?<br>B: <strong>전자레인지에 넣어서</strong> <strong>빨리</strong> <em>녹여________</em>.</p>",
+        'explanation': "<p><strong>녹여요</strong>: '녹이다' (eritmoq) - '녹다' (erimoq). <strong>빨리</strong> (tez) eritib, pishiriladi.</p>",
+        'correct': "녹여요",
+        'choices': ["녹여요", "녹아요", "녹혀요", "녹려요"]
+    },
+    {
+        'text': "<p>A: 라면을 <em>먹으려고</em> <strong>물을</strong> <em>올렸어요</em>?<br>B: 네, <strong>가스레인지에서</strong> 물을 <strong>팔팔</strong> <em>끓여________</em>.</p>",
+        'explanation': "<p><strong>끓여요</strong>: '끓이다' (qaynatmoq) - '끓다' (qaynamoq). <strong>팔팔</strong> (qaynab chiqish ovozi/holati).</p>",
+        'correct': "끓여요",
+        'choices': ["끓여요", "끓어요", "끓혀요", "끓려요"]
+    },
+    {
+        'text': "<p>A: <strong>날씨가</strong> <u>추운데</u> 아이에게 <strong>외투를</strong> <em>입혔어요</em>?<br>B: 네, 감기에 안 걸리게 <u>따뜻한</u> 코트를 <em>입혀________</em>.</p>",
+        'explanation': "<p><strong>입혔어요</strong>: '입히다' (kiydirmoq) - '입다' (kiymoq). <u>따뜻한</u> (issiq) palto kiydirdi.</p>",
+        'correct': "입혔어요",
+        'choices': ["입혔어요", "입었어요", "입였어요", "입렸어요"]
+    },
+    {
+        'text': "<p>A: <strong>손님이 오시면</strong> <strong>어디에</strong> <em>모실까요</em>?<br>B: <strong>거실에 있는</strong> <u>편안한</u> <strong>소파에</strong> <em>앉혀________</em>.</p>",
+        'explanation': "<p><strong>앉혀요</strong>: '앉히다' (o'tqazmoq) - '앉다' (o'tirmoq). <strong>편안한</strong> (qulay) divanga o'tqazing.</p>",
+        'correct': "앉혀요",
+        'choices': ["앉혀요", "앉아요", "앉여요", "앉려요"]
+    },
+    {
+        'text': "<p>A: <strong>길이</strong> <strong>너무</strong> <u>좁아서</u> 차가 <em>못 지나가요</em>.<br>B: <strong>그래서</strong> <strong>공사를 해서</strong> 길을 <strong>더</strong> <em>넓혔________</em>.</p>",
+        'explanation': "<p><strong>넓혔어요</strong>: '넓히다' (kengaytirmoq) - '넓다' (keng bo'lmoq). <strong>더</strong> (yanada) kengaytirdi.</p>",
+        'correct': "넓혔어요",
+        'choices': ["넓혔어요", "넓었어요", "넓였어요", "넓렸어요"]
+    },
+    {
+        'text': "<p>A: 두 사람 <strong>사이가</strong> <strong>너무</strong> <u>멀어요</u>.<br>B: <strong>서로</strong> <strong>대화를 통해</strong> 간격을 <strong>조금씩</strong> <em>좁혀________</em>.</p>",
+        'explanation': "<p><strong>좁혀요</strong>: '좁히다' (toraytirmoq/yaqinlashtirmoq) - '좁다' (tor bo'lmoq). <strong>조금씩</strong> (asta-sekin/oz-ozdan) yaqinlashtiring.</p>",
+        'correct': "좁혀요",
+        'choices': ["좁혀요", "좁아요", "좁여요", "좁려요"]
+    },
+    {
+        'text': "<p>A: 돼지고기는 <strong>어떻게</strong> <em>구워야 해요</em>?<br>B: <strong>기생충이 있을 수 있으니</strong> <strong>바싹</strong> <em>익혀________</em> <em>드세요</em>.</p>",
+        'explanation': "<p><strong>익혀서</strong>: '익히다' (pishirmoq) - '익다' (pishmoq). <strong>바싹</strong> (yaxshilab/qizartirib) pishirib yeng.</p>",
+        'correct': "익혀서",
+        'choices': ["익혀서", "익어서", "익여서", "익려서"]
+    },
+    {
+        'text': "<p>A: <strong>이 기쁜 소식을</strong> <strong>다른 사람들에게도</strong> <em>말했어요</em>?<br>B: 네, <strong>친구들과 가족들에게</strong> <strong>모두</strong> <em>알렸________</em>.</p>",
+        'explanation': "<p><strong>알렸어요</strong>: '알리다' (bildirmoq/ma'lum qilmoq) - '알다' (bilmoq). <strong>모두</strong> (barchaga) bildirdi.</p>",
+        'correct': "알렸어요",
+        'choices': ["알렸어요", "알았어요", "알였어요", "알혔어요"]
+    },
+    {
+        'text': "<p>A: <strong>물에 빠진</strong> 사람을 <strong>누가</strong> <em>구했어요</em>?<br>B: <strong>용감한</strong> 시민이 <strong>물에 뛰어들어</strong> <strong>극적으로</strong> <em>살렸________</em>.</p>",
+        'explanation': "<p><strong>살렸어요</strong>: '살리다' (qutqarmoq/hayotini saqlab qolmoq) - '살다' (yashamoq/tirik qolmoq). <strong>극적으로</strong> (dramatik tarzda/mo'jizaviy).</p>",
+        'correct': "살렸어요",
+        'choices': ["살렸어요", "살았어요", "살였어요", "살혔어요"]
+    },
+    {
+        'text': "<p>A: <strong>그 배우의</strong> 연기가 <strong>관객들을</strong> <em>감동시켰어요</em>?<br>B: 네, <strong>뛰어난 연기력으로</strong> <strong>수많은 사람을</strong> <em>울렸________</em>.</p>",
+        'explanation': "<p><strong>울렸어요</strong>: '울리다' (yig'latmoq) - '울다' (yig'lamoq). <strong>수많은 사람을</strong> (ko'plab odamlarni) yig'latdi.</p>",
+        'correct': "울렸어요",
+        'choices': ["울렸어요", "울었어요", "울였어요", "울혔어요"]
+    },
+    {
+        'text': "<p>A: 아이가 <strong>장난감을</strong> <strong>어떻게</strong> <em>가지고 놀아요</em>?<br>B: <strong>팽이를</strong> <strong>바닥에서</strong> <strong>빙글빙글</strong> <em>돌려________</em>.</p>",
+        'explanation': "<p><strong>돌려요</strong>: '돌리다' (aylantirmoq) - '돌다' (aylanmoq). <strong>빙글빙글</strong> (chir aylanib).</p>",
+        'correct': "돌려요",
+        'choices': ["돌려요", "돌아요", "돌여요", "돌혀요"]
+    },
+    {
+        'text': "<p>A: <strong>그 친구는</strong> <strong>항상</strong> <strong>주변 사람들을</strong> <strong>즐겁게</strong> <em>해 줘요</em>.<br>B: 맞아요. <strong>재미있는 농담으로</strong> 저를 <strong>많이</strong> <em>웃겼________</em>.</p>",
+        'explanation': "<p><strong>웃겼어요</strong>: '웃기다' (kuldirtirmoq) - '웃다' (kulmoq). <strong>많이</strong> (ko'p) kuldirdi.</p>",
+        'correct': "웃겼어요",
+        'choices': ["웃겼어요", "웃었어요", "웃였어요", "웃혔어요"]
+    },
+    {
+        'text': "<p>A: <u>무거운</u> 가방을 <strong>어디에</strong> <em>둘까요</em>?<br>B: <strong>짐 보관소에</strong> <strong>안전하게</strong> <em>맡기________</em>.</p>",
+        'explanation': "<p><strong>맡기세요</strong>: '맡기다' (topshirmoq/saqlashga bermoq) - '맡다' (o'z zimmasiga olmoq). <strong>안전하게</strong> (xavfsiz).</p>",
+        'correct': "맡기세요",
+        'choices': ["맡기세요", "맡으세요", "맡이세요", "맡히세요"]
+    },
+    {
+        'text': "<p>A: <strong>강아지가</strong> <strong>산책을 다녀와서</strong> <u>더러워졌어요</u>.<br>B: <strong>그럼</strong> <strong>화장실에서</strong> <strong>따뜻한 물로</strong> <strong>깨끗하게</strong> <em>씻기________</em>.</p>",
+        'explanation': "<p><strong>씻기세요</strong>: '씻기다' (yuvintirmoq) - '씻다' (yuvmoq). <strong>깨끗하게</strong> (toza qilib) yuvintiring.</p>",
+        'correct': "씻기세요",
+        'choices': ["씻기세요", "씻으세요", "씻이세요", "씻히세요"]
+    },
+    {
+        'text': "<p>A: <strong>밖에</strong> 비가 <em>와서</em> <strong>아이 옷이</strong> <strong>다</strong> <em>젖었어요</em>.<br>B: 감기에 <em>걸리지 않게</em> 젖은 옷을 <strong>빨리</strong> <em>벗기________</em>.</p>",
+        'explanation': "<p><strong>벗기세요</strong>: '벗기다' (yechintirmoq) - '벗다' (yechmoq). <strong>빨리</strong> (tez) yechintiring.</p>",
+        'correct': "벗기세요",
+        'choices': ["벗기세요", "벗으세요", "벗이세요", "벗히세요"]
+    },
+    {
+        'text': "<p>A: <strong>아침에</strong> <strong>혼자서</strong> <em>일어났어요</em>?<br>B: 아니요, <strong>알람을 못 들어서</strong> <strong>엄마가</strong> <strong>흔들어</strong> <em>깨웠________</em>.</p>",
+        'explanation': "<p><strong>깨웠어요</strong>: '깨우다' (uyg'otmoq) - '깨다' (uyg'onmoq). <strong>흔들어</strong> (silkitib) uyg'otdi.</p>",
+        'correct': "깨웠어요",
+        'choices': ["깨웠어요", "깼어요", "깨였어요", "깨혔어요"]
+    },
+    {
+        'text': "<p>A: <strong>쓰레기통이</strong> <strong>가득</strong> <em>찼는데</em> <em>어떻게 할까요</em>?<br>B: <strong>냄새가 나니까</strong> <strong>밖에 나가서</strong> <strong>깨끗이</strong> <em>비워________</em>.</p>",
+        'explanation': "<p><strong>비워요</strong>: '비우다' (bo'shatmoq) - '비다' (bo'shamoq). <strong>깨끗이</strong> (toza qilib) bo'shating.</p>",
+        'correct': "비워요",
+        'choices': ["비워요", "비어요", "비여요", "비혀요"]
+    },
+    {
+        'text': "<p>A: <strong>자동차 기름이</strong> <strong>부족한데</strong> <strong>주유소에 갈까요</strong>?<br>B: 네, <strong>장거리 여행을 가야 하니까</strong> 기름을 <strong>가득</strong> <em>채워________</em>.</p>",
+        'explanation': "<p><strong>채워요</strong>: '채우다' (to'ldirmoq) - '차다' (to'lmoq). <strong>가득</strong> (to'liq/liqa) to'ldiring.</p>",
+        'correct': "채워요",
+        'choices': ["채워요", "차요", "채여요", "채혀요"]
+    },
+    {
+        'text': "<p>A: <strong>음악 소리가</strong> <strong>너무</strong> <u>큰데</u> <strong>소리를</strong> <strong>조금만</strong> <em>줄여 주실래요</em>?<br>B: 네, <strong>다른 사람들에게 방해되지 않게</strong> 볼륨을 <em>낮춰________</em>.</p>",
+        'explanation': "<p><strong>낮출게요</strong>: '낮추다' (pasaytirmoq) - '낮다' (past bo'lmoq). <strong>조금만</strong> (ozgina) pasaytiraman.</p>",
+        'correct': "낮출게요",
+        'choices': ["낮출게요", "낮을게요", "낮일게요", "낮힐게요"]
+    },
+    {
+        'text': "<p>A: <strong>회의 일정이</strong> <strong>내일인데</strong> <strong>준비가</strong> <em>덜 끝났어요</em>.<br>B: <strong>그럼</strong> <strong>사장님께 말씀드려</strong> 일정을 <strong>하루만</strong> <em>늦춰________</em>.</p>",
+        'explanation': "<p><strong>늦춰요</strong>: '늦추다' (kechiktirmoq) - '늦다' (kechikmoq). <strong>하루만</strong> (bir kungagina) kechiktiring.</p>",
+        'correct': "늦춰요",
+        'choices': ["늦춰요", "늦어요", "늦여요", "늦혀요"]
+    },
+    {
+        'text': "<p>A: <strong>방 안이</strong> <strong>너무</strong> <u>추운 것 같아요</u>.<br>B: <strong>보일러 온도를</strong> <strong>조금 더</strong> <em>높여________</em>.</p>",
+        'explanation': "<p><strong>높이세요</strong>: '높이다' (ko'tarmoq/balandlatmoq) - '높다' (baland bo'lmoq). <strong>조금 더</strong> (yana biroz) ko'taring.</p>",
+        'correct': "높이세요",
+        'choices': ["높이세요", "높으세요", "높히세요", "높추세요"]
+    },
+    {
+        'text': "<p>A: 아이가 <strong>밤늦게까지</strong> <strong>게임을</strong> <em>하려고 해요</em>.<br>B: <strong>내일 학교에 가야 하니까</strong> <strong>컴퓨터를 끄고</strong> <strong>일찍</strong> <em>자게</em> <em>했________</em>.</p>",
+        'explanation': "<p><strong>했어요</strong>: '자게 하다' (uxlashga majbur qilmoq/uxlatmoq). '-게 하다' yordamida qildirtirish. <strong>일찍</strong> (vaqtli) uxlatdi.</p>",
+        'correct': "했어요",
+        'choices': ["했어요", "줬어요", "샀어요", "봤어요"]
+    },
+    {
+        'text': "<p>A: <strong>선생님이</strong> <strong>학생들에게</strong> <strong>숙제로</strong> <em>무엇을 시켰어요</em>?<br>B: <strong>역사책을</strong> <strong>한 권씩</strong> <em>읽게</em> <em>하셨________</em>.</p>",
+        'explanation': "<p><strong>하셨어요</strong>: '읽게 하시다' (o'qittirmoq/o'qishga topshiriq bermoq). <strong>한 권씩</strong> (bittadan).</p>",
+        'correct': "하셨어요",
+        'choices': ["하셨어요", "주셨어요", "사셨어요", "보셨어요"]
+    },
+    {
+        'text': "<p>A: <strong>약속 시간에</strong> <strong>제가</strong> <strong>많이</strong> <em>늦었죠</em>?<br>B: 네, <strong>밖에서</strong> <strong>오래</strong> <em>기다리게</em> <em>해________</em> <strong>정말</strong> <strong>미안해요</strong>.</p>",
+        'explanation': "<p><strong>해서</strong>: '기다리게 하다' (kuttirib qo'ymoq). <strong>오래</strong> (uzoq vaqt) kuttirib qo'ygani uchun (해서).</p>",
         'correct': "해서",
-        'choices': ["하고", "하지만", "하면", "해서"]
+        'choices': ["해서", "줘서", "사서", "봐서"]
     },
     {
-        'text': "<p><strong>A: 약을 먹었는데 <strong>왜</strong> <strong>계속</strong> <em>기침을 해요</em>?<br>B: 감기가 <strong>너무</strong> <u>심하________</u> 약을 <strong>먹어도</strong> <strong>빨리</strong> <u>안 나아요</u>.</strong></p>",
-        'explanation': "<p><strong>심해서</strong>: '심하다' (og'ir/jiddiy bo'lmoq). Sababni (og'irligi sababli) bildirish uchun '-아서/어서' ulanadi.</p>",
-        'correct': "심해서",
-        'choices': ["심해서", "심하고", "심하지만", "심하면"]
+        'text': "<p>A: <strong>아이가</strong> <strong>쓴 약을</strong> <strong>안</strong> <em>먹으려고 떼를 써요</em>.<br>B: <strong>그래도</strong> <strong>사탕을 주면서</strong> <strong>억지로라도</strong> <em>먹게</em> <em>해________</em>.</p>",
+        'explanation': "<p><strong>야 해요</strong>: '먹게 하다' + '야 해요' (yedirmoq kerak). <strong>억지로라도</strong> (majburlab bo'lsa ham).</p>",
+        'correct': "야 해요",
+        'choices': ["야 해요", "면 돼요", "고 싶어요", "도 돼요"]
     },
     {
-        'text': "<p><strong>A: <strong>내일</strong> 파티에 <strong>꼭</strong> <em>올 수 있어요</em>?<br>B: <strong>갑자기</strong> <u>중요한</u> 일이 <u>생기________</u> <strong>아마</strong> <strong>못</strong> <u>갈 것 같아요</u>.</strong></p>",
-        'explanation': "<p><strong>생겨서</strong>: '생기다' (paydo bo'lmoq/chiqib qolmoq). Sabab (ish chiqib qolgani uchun) '-어서' ulanadi.</p>",
-        'correct': "생겨서",
-        'choices': ["생기고", "생기지만", "생겨서", "생기면"]
+        'text': "<p>A: <strong>아이들이</strong> <strong>집 안에서</strong> <strong>너무</strong> <strong>시끄럽게</strong> <em>뛰어놀아요</em>.<br>B: <strong>날씨가 좋으니까</strong> <strong>위험하지 않게</strong> <strong>밖에서</strong> <em>놀게</em> <em>하________</em>.</p>",
+        'explanation': "<p><strong>세요</strong>: '놀게 하다' + '-세요' (o'ynashga ruxsat bering/o'ynating). <strong>밖에서</strong> (tashqarida).</p>",
+        'correct': "세요",
+        'choices': ["세요", "주세요", "사세요", "보세요"]
     },
     {
-        'text': "<p><strong>A: <strong>어제</strong> 공원에서 <strong>오래</strong> <em>산책했어요</em>?<br>B: 아니요, 바람이 <strong>세게</strong> 불고 날씨가 <u>추워________</u> <strong>금방</strong> <u>들어왔어요</u>.</strong></p>",
-        'explanation': "<p><strong>추워서</strong>: '춥다' (sovuq bo'lmoq). Sabab (sovuq bo'lgani uchun) 'ㅂ' 불규칙 + '어서'. <strong>금방</strong> (darhol/tez) qaytdi.</p>",
-        'correct': "추워서",
-        'choices': ["춥고", "춥지만", "추우면", "추워서"]
-    },
-    {
-        'text': "<p><strong>A: 카페에서 커피를 <strong>어떻게</strong> <em>마셨어요</em>?<br>B: <strong>창가</strong> 자리에 <strong>편하게</strong> <u>앉아________</u> <strong>조용히</strong> <u>마셨어요</u>.</strong></p>",
-        'explanation': "<p><strong>앉아서</strong>: '앉다' (o'tirmoq). Harakatlar ketma-ketligi (o'tirgan holatda ichdi). <strong>편하게</strong> (qulay).</p>",
-        'correct': "앉아서",
-        'choices': ["앉고", "앉지만", "앉아서", "앉으면"]
-    },
-    {
-        'text': "<p><strong>A: 시장에서 <u>신선한</u> 사과를 <strong>사서</strong> <em>어떻게 했어요</em>?<br>B: 사과를 <strong>깨끗하게</strong> <u>씻어________</u> <strong>맛있게</strong> <u>먹었어요</u>.</strong></p>",
-        'explanation': "<p><strong>씻어서</strong>: '씻다' (yuvmoq). Harakatlar ketma-ketligi (yuvib, keyin yedi).</p>",
-        'correct': "씻어서",
-        'choices': ["씻고", "씻지만", "씻어서", "씻으면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>이번</strong> 주말에 등산을 <strong>같이</strong> <em>갈래요</em>?<br>B: 저는 다리를 <strong>조금</strong> <u>다쳐________</u> <strong>아무래도</strong> <strong>못</strong> 갈 것 같아요.</strong></p>",
-        'explanation': "<p><strong>다쳐서</strong>: '다치다' (jarohatlanmoq). Sabab (jarohatlangani uchun) '-어서' ulanadi. <strong>아무래도</strong> (har qalay).</p>",
-        'correct': "다쳐서",
-        'choices': ["다치고", "다치지만", "다쳐서", "다치면"]
-    },
-    {
-        'text': "<p><strong>A: 지하철에 <strong>자리가 많은데</strong> <strong>왜</strong> <strong>계속</strong> <em>서 있었어요</em>?<br>B: <strong>금방</strong> <u>내려야 하________</u> <strong>그냥</strong> <u>서서</u> 왔어요.</strong></p>",
-        'explanation': "<p><strong>해야 해서</strong>: '해야 하다' (qilish kerak bo'lmoq). Sabab (tushishi kerak bo'lgani uchun). <strong>금방</strong> (tezda).</p>",
-        'correct': "해야 해서",
-        'choices': ["해야 하고", "해야 하지만", "해야 해서", "해야 하면"]
-    },
-    {
-        'text': "<p><strong>A: 친구에게 <strong>줄</strong> 선물을 <strong>어디서</strong> <em>포장했어요</em>?<br>B: <u>예쁜</u> 포장지를 <strong>직접</strong> <u>사________</u> 집에서 <strong>정성껏</strong> <u>포장했어요</u>.</strong></p>",
-        'explanation': "<p><strong>사서</strong>: '사다' (sotib olmoq). Harakatlar ketma-ketligi (sotib olib, keyin o'radi). <strong>정성껏</strong> (mehr bilan).</p>",
-        'correct': "사서",
-        'choices': ["사고", "사지만", "사면", "사서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>아침에</strong> <strong>일찍</strong> <em>일어나서</em> <strong>제일</strong> <strong>먼저</strong> <em>뭐 했어요</em>?<br>B: 침대에서 <strong>벌떡</strong> <u>일어나________</u> <strong>바로</strong> 화장실로 <u>갔어요</u>.</strong></p>",
-        'explanation': "<p><strong>일어나서</strong>: '일어나다' (turmoq). Harakatlar ketma-ketligi (turib, keyin bordi). <strong>벌떡</strong> (sakrab/chaqqon).</p>",
-        'correct': "일어나서",
-        'choices': ["일어나고", "일어나지만", "일어나면", "일어나서"]
-    },
-    {
-        'text': "<p><strong>A: 방이 <strong>너무</strong> <u>더러운데</u> <strong>왜</strong> 청소를 <strong>안</strong> <em>해요</em>?<br>B: <strong>요즘</strong> 일이 <strong>너무</strong> <u>바빠________</u> 청소할 시간이 <strong>전혀</strong> 없어요.</strong></p>",
-        'explanation': "<p><strong>바빠서</strong>: '바쁘다' (band bo'lmoq). Sabab (band bo'lganligi uchun). <strong>전혀</strong> (umuman).</p>",
-        'correct': "바빠서",
-        'choices': ["바쁘고", "바쁘지만", "바빠서", "바쁘면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>왜</strong> <strong>그렇게</strong> <strong>빨리</strong> <strong>급하게</strong> <em>뛰어왔어요</em>?<br>B: 기차 시간이 <strong>거의 다</strong> <u>되어________</u> <strong>놓칠까 봐</strong> <u>뛰어왔어요</u>.</strong></p>",
-        'explanation': "<p><strong>되어서</strong>: '되다' (bo'lmoq). Sabab (vaqti bo'lib qolgani uchun). <strong>급하게</strong> (shoshilinch).</p>",
-        'correct': "되어서",
-        'choices': ["되고", "되지만", "되면", "되어서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>어제</strong> 저녁에 <u>무서운</u> 공포 영화를 <em>봤어요</em>?<br>B: 네, 불을 <strong>다</strong> <u>끄________</u> <strong>혼자서</strong> <strong>조용히</strong> <u>봤어요</u>.</strong></p>",
-        'explanation': "<p><strong>끄고 / 꺼서</strong>: Bu yerda harakat holati/usuli. '끄다' (o'chirmoq). O'chirib, o'sha holatda ko'rdi (꺼서) yoki (끄고). Ammo o'zbek/koreys o'rganuvchilari uchun 시간적 순서/상태 유지: 불을 끄고/꺼서. Aslida '꺼서' to'g'ri bog'liqlikni yaratadi.</p>",
-        'correct': "꺼서",
-        'choices': ["끄고", "끄지만", "끄면", "꺼서"]
-    },
-    {
-        'text': "<p><strong>A: 이 <u>무거운</u> 책상을 <strong>같이</strong> <strong>저쪽으로</strong> <em>옮겨 줄래요</em>?<br>B: <strong>허리가 조금</strong> <u>아파________</u> <strong>무거운 것은</strong> <strong>못</strong> <u>들어요</u>.</strong></p>",
-        'explanation': "<p><strong>아파서</strong>: '아프다' (og'rimoq). Sabab (beli og'riganligi uchun) '-아서' ulanadi.</p>",
-        'correct': "아파서",
-        'choices': ["아프고", "아프지만", "아파서", "아프면"]
-    },
-    {
-        'text': "<p><strong>A: 아침 밥을 <strong>직접</strong> <strong>집에서</strong> <em>만들었어요</em>?<br>B: <strong>늦잠을 자서</strong> 빵을 <u>구워________</u> <strong>간단하게</strong> <u>먹고</u> <u>나왔어요</u>.</strong></p>",
-        'explanation': "<p><strong>구워서</strong>: '굽다' (qovurmoq/pishirmoq). Harakatlar ketma-ketligi (non pishirib, keyin yedi).</p>",
-        'correct': "구워서",
-        'choices': ["굽고", "굽지만", "구우면", "구워서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>어제</strong> 파티에 사람들이 <strong>정말</strong> <strong>많이</strong> <em>왔어요</em>?<br>B: 네, 사람이 <strong>너무</strong> <u>많아________</u> <strong>발 디딜 틈조차</strong> <u>없었어요</u>.</strong></p>",
-        'explanation': "<p><strong>많아서</strong>: '많다' (ko'p bo'lmoq). Sabab (ko'p bo'lganligi uchun). <strong>발 디딜 틈조차</strong> (oyoq bosishga joy ham).</p>",
-        'correct': "많아서",
-        'choices': ["많고", "많지만", "많아서", "많으면"]
-    },
-    {
-        'text': "<p><strong>A: 밖에 비가 <strong>많이</strong> 오는데 <strong>어떻게</strong> <strong>무사히</strong> <em>왔어요</em>?<br>B: <u>친절한</u> 친구가 <strong>차로</strong> <u>태워다 주어________</u> <strong>편하게</strong> <u>왔어요</u>.</strong></p>",
-        'explanation': "<p><strong>주어서</strong>: '태워다 주다' (tashlab qo'ymoq). Sabab (tashlab qo'ygani uchun). <strong>무사히</strong> (sog'-omon).</p>",
-        'correct': "주어서",
-        'choices': ["주고", "주지만", "주면", "주어서"]
-    },
-    {
-        'text': "<p><strong>A: 한국어가 <strong>처음에는</strong> <strong>많이</strong> <u>어려웠어요</u>?<br>B: 네, <strong>발음이 너무</strong> <u>어려워________</u> <strong>고생을</strong> <strong>많이</strong> <u>했어요</u>.</strong></p>",
-        'explanation': "<p><strong>어려워서</strong>: '어렵다' (qiyin bo'lmoq). Sabab (talaffuzi qiyin bo'lgani uchun). <strong>고생을 많이 했어요</strong> (ko'p qiynaldi).</p>",
-        'correct': "어려워서",
-        'choices': ["어렵고", "어렵지만", "어려워서", "어려우면"]
-    },
-    {
-        'text': "<p><strong>A: 친구와 <strong>싸웠는데</strong> <strong>어떻게</strong> <strong>다시</strong> <em>화해했어요</em>?<br>B: 제가 <strong>먼저</strong> <strong>용기 내서</strong> <u>사과하________</u> <strong>바로</strong> <u>화해했어요</u>.</strong></p>",
-        'explanation': "<p><strong>사과해서</strong>: '사과하다' (uzr so'ramoq). Harakatlar ketma-ketligi va sabab (uzr so'rab, yarashdik). <strong>먼저</strong> (birinchi bo'lib).</p>",
-        'correct': "사과해서",
-        'choices': ["사과하고", "사과하지만", "사과하면", "사과해서"]
-    },
-    {
-        'text': "<p><strong>A: 약속 시간에 <strong>왜</strong> <strong>이렇게</strong> <strong>늦게</strong> <em>도착했어요</em>?<br>B: <strong>길을 잘못</strong> <u>들어________</u> <strong>오랫동안</strong> <strong>헤매다가</strong> <u>왔어요</u>.</strong></p>",
-        'explanation': "<p><strong>들어서</strong>: '들다' (kirmoq/adashib kirmoq). Sabab va ketma-ketlik. <strong>오랫동안</strong> (uzoq vaqt).</p>",
-        'correct': "들어서",
-        'choices': ["들고", "들지만", "들면", "들어서"]
-    },
-    {
-        'text': "<p><strong>A: 옷이 <strong>너무</strong> <u>큰데</u> <strong>어떻게</strong> <em>할 거예요</em>?<br>B: <strong>영수증을 챙겨서</strong> <strong>내일</strong> 백화점에 <u>가________</u> <strong>다른 사이즈로</strong> <u>바꿀 거예요</u>.</strong></p>",
-        'explanation': "<p><strong>가서</strong>: '가다' (bormoq). Harakatlar ketma-ketligi (do'konga borib, keyin almashtiradi). <strong>내일</strong> (ertaga).</p>",
-        'correct': "가서",
-        'choices': ["가고", "가지만", "가면", "가서"]
-    },
-    {
-        'text': "<p><strong>A: 도서관에서 책을 <strong>빌려서</strong> <strong>어떻게</strong> <em>읽었어요</em>?<br>B: <strong>조용한 열람실에</strong> <u>앉아________</u> <strong>집중해서</strong> <u>읽었어요</u>.</strong></p>",
-        'explanation': "<p><strong>앉아서</strong>: '앉다' (o'tirmoq). Harakatning holatini/davomiyligini (o'tirib) ko'rsatish uchun '-아서' ulanadi. <strong>집중해서</strong> (diqqat qilib).</p>",
-        'correct': "앉아서",
-        'choices': ["앉고", "앉지만", "앉아서", "앉으면"]
-    },
-    {
-        'text': "<p><strong>A: <strong>오늘</strong> 기분이 <strong>정말</strong> <u>좋아</u> <em>보여요</em>.<br>B: 네, 시험에 <strong>드디어</strong> <u>합격하________</u> <strong>날아갈 것 같이</strong> <u>기뻐요</u>.</strong></p>",
-        'explanation': "<p><strong>합격해서</strong>: '합격하다' (o'tmoq). Sabab (o'tgani uchun). <strong>날아갈 것 같이</strong> (uchib ketgudek).</p>",
-        'correct': "합격해서",
-        'choices': ["합격하고", "합격하지만", "합격해서", "합격하면"]
-    },
-    {
-        'text': "<p><strong>A: 이 <u>비싼</u> 컴퓨터를 <strong>혼자서</strong> <strong>직접</strong> <em>고쳤어요</em>?<br>B: 아니요, <strong>너무</strong> <u>어려워________</u> <strong>서비스 센터에</strong> <u>맡겼어요</u>.</strong></p>",
-        'explanation': "<p><strong>어려워서</strong>: '어렵다' (qiyin bo'lmoq). Sabab (qiyin bo'lgani uchun). <strong>직접</strong> (o'zi).</p>",
-        'correct': "어려워서",
-        'choices': ["어렵고", "어렵지만", "어려워서", "어려우면"]
-    },
-    {
-        'text': "<p><strong>A: 고향에 있는 가족들이 <strong>자주</strong> <em>생각나요</em>?<br>B: 네, 가족들이 <strong>매일</strong> <strong>너무</strong> <u>보고 싶어________</u> <strong>가끔</strong> <u>울어요</u>.</strong></p>",
-        'explanation': "<p><strong>보고 싶어서</strong>: '보고 싶다' (sog'inmoq). Sabab (juda sog'ingani uchun). <strong>가끔</strong> (ba'zan/vaqti-vaqti bilan).</p>",
-        'correct': "보고 싶어서",
-        'choices': ["보고 싶고", "보고 싶지만", "보고 싶으면", "보고 싶어서"]
+        'text': "<p>A: <strong>강아지가</strong> <strong>문밖에서</strong> <strong>계속</strong> <em>기다리고 있어요</em>.<br>B: <strong>추우니까</strong> <strong>빨리</strong> <strong>방 안으로</strong> <em>들어오게</em> <em>하________</em>.</p>",
+        'explanation': "<p><strong>세요</strong>: '들어오게 하다' (kirgizmoq/kirishga ruxsat bermoq) + '-세요'. <strong>빨리</strong> (tez) kirgizing.</p>",
+        'correct': "세요",
+        'choices': ["세요", "주세요", "사세요", "보세요"]
     }
 ]
 
-topic_25 = [
-    # --- TOPIC 25: 동사/형용사 + (으)면 (조건과 가정) ---
+topic_45 = [
+    # --- TOPIC 45: 동사 + 아/어 버리다 (행동의 완료와 감정적 결과) ---
     {
-        'text': "<p><strong>A: <strong>내일</strong> 비가 <em>오면</em> <strong>어떻게</strong> <em>할 거예요</em>?<br>B: 비가 <u>많이</u> ________ <strong>그냥</strong> 집에서 <strong>푹</strong> 쉴 거예요.</strong></p>",
-        'explanation': "<p><strong>오면</strong>: '오다' (kelmoq) unli bilan tugagani uchun '-면' (agar/sa) qo'shiladi. <strong>그냥</strong> (shunchaki) <strong>푹</strong> (yaxshilab) dam oladi.</p>",
-        'correct': "오면",
-        'choices': ["오면", "오으면", "오고", "와서"]
+        'text': "<p>A: <strong>남은</strong> 피자를 <strong>다</strong> <em>먹었어요</em>?<br>B: 네, <strong>너무</strong> <u>배고파서</u> <strong>혼자</strong> <strong>다</strong> <em>먹어________</em>.</p>",
+        'explanation': "<p><strong>버렸어요</strong>: '먹어 버리다' (yeb qo'ymoq). '아/어 버리다' harakatning to'liq tugaganini (완료) va ba'zan yengillik yoki afsuslanish hissini bildiradi. <strong>혼자 다</strong> (o'zi hammasini) yeb qo'ydi.</p>",
+        'correct': "버렸어요",
+        'choices': ["버렸어요", "보았어요", "버릴 거예요", "버려요"]
     },
     {
-        'text': "<p><strong>A: <strong>주말에</strong> 시간이 <em>있으면</em> <strong>같이</strong> 영화 <em>볼래요</em>?<br>B: 네, 시간이 <strong>충분히</strong> ________ <strong>꼭</strong> <strong>같이</strong> 봐요.</strong></p>",
-        'explanation': "<p><strong>있으면</strong>: '있다' (bor bo'lmoq) undosh bilan tugagani uchun '-으면' ulanadi. <strong>충분히</strong> (yetarlicha) <strong>꼭</strong> (albatta).</p>",
-        'correct': "있으면",
-        'choices': ["있면", "있고", "있으면", "있어서"]
+        'text': "<p>A: 지민 씨가 <strong>아직</strong> <strong>안</strong> <em>왔어요</em>?<br>B: <strong>기다리다가</strong> <strong>벌써</strong> <strong>일찍</strong> 집으로 <em>가________</em>.</p>",
+        'explanation': "<p><strong>버렸어요</strong>: '가 버리다' (ketib qolmoq). <strong>벌써</strong> (allaqachon) va <strong>일찍</strong> (vaqtli) ketib qolganidan afsuslanish yoki vaziyat tugaganini bildiradi.</p>",
+        'correct': "버렸어요",
+        'choices': ["보았어요", "버렸어요", "봤어요", "버려요"]
     },
     {
-        'text': "<p><strong>A: <strong>요즘</strong> 일이 <strong>많아서</strong> <u>피곤해요</u>?<br>B: 네, <strong>너무</strong> <u>피곤하________</u> <strong>일찍</strong> 주무세요.</strong></p>",
-        'explanation': "<p><strong>피곤하면</strong>: '피곤하다' (charchamoq). '하다' unli bilan tugagani uchun '-면' ulanadi. <strong>일찍</strong> (vaqtli) uxlashni maslahat bermoqda.</p>",
-        'correct': "피곤하면",
-        'choices': ["피곤하면", "피곤하으면", "피곤하고", "피곤해서"]
+        'text': "<p>A: 제 생일을 <strong>벌써</strong> <em>잊었어요</em>?<br>B: <strong>정말</strong> <strong>미안해요</strong>. 일이 <u>바빠서</u> <strong>완전히</strong> <em>잊어________</em>.</p>",
+        'explanation': "<p><strong>버렸어요</strong>: '잊어 버리다' (unutib yubormoq). <strong>완전히</strong> (butunlay/tamoman) esdan chiqib qolganini bildiradi.</p>",
+        'correct': "버렸어요",
+        'choices': ["버렸어요", "보았어요", "주었어요", "버려요"]
     },
     {
-        'text': "<p><strong>A: <strong>만약</strong> 복권에 <em>당첨되면</em> <strong>제일 먼저</strong> <em>뭐 할 거예요</em>?<br>B: 돈이 <strong>많이</strong> <u>생기________</u> <u>큰</u> 집을 <strong>먼저</strong> 살 거예요.</strong></p>",
-        'explanation': "<p><strong>생기면</strong>: '생기다' (paydo bo'lmoq/chiqmoq) unli bilan tugagani uchun '-면' qo'shiladi. <strong>제일 먼저</strong> (eng birinchi).</p>",
-        'correct': "생기면",
-        'choices': ["생기으면", "생기면", "생기고", "생겨서"]
+        'text': "<p>A: 콘서트 표가 <strong>아직</strong> <em>남았어요</em>?<br>B: 아니요, <strong>순식간에</strong> <strong>모두</strong> <em>팔려________</em>.</p>",
+        'explanation': "<p><strong>버렸어요</strong>: '팔려 버리다' (sotilib ketmoq). <strong>순식간에</strong> (ko'z ochib yumguncha) <strong>모두</strong> (barchasi) sotilib ketdi.</p>",
+        'correct': "버렸어요",
+        'choices': ["주었어요", "버렸어요", "버려요", "보았어요"]
     },
     {
-        'text': "<p><strong>A: 이 식당 음식이 <strong>입에</strong> <strong>잘</strong> <em>맞아요</em>?<br>B: 네, <strong>아주</strong> <u>맛있________</u> <strong>다음에</strong> <strong>다시</strong> 올 거예요.</strong></p>",
-        'explanation': "<p><strong>맛있으면</strong>: '맛있다' (mazali bo'lmoq) undosh bilan tugagani uchun '-으면' ulanadi. <strong>다음에 다시</strong> (keyingi safar yana).</p>",
-        'correct': "맛있으면",
-        'choices': ["맛있면", "맛있고", "맛있으면", "맛있어서"]
+        'text': "<p>A: 핸드폰을 <strong>왜</strong> <strong>새로</strong> <em>샀어요</em>?<br>B: <strong>어제</strong> 물에 <em>빠져서</em> <strong>갑자기</strong> <em>고장 나________</em>.</p>",
+        'explanation': "<p><strong>버렸어요</strong>: '고장 나 버리다' (buzilib qolmoq). <strong>갑자기</strong> (to'satdan) buzilib qolganidan kelib chiqqan muammo.</p>",
+        'correct': "버렸어요",
+        'choices': ["버렸어요", "보았어요", "버릴게요", "버려요"]
     },
     {
-        'text': "<p><strong>A: <strong>밖에</strong> 날씨가 <strong>많이</strong> <u>더워요</u>?<br>B: 네, <strong>너무</strong> <u>더우________</u> 에어컨을 <strong>시원하게</strong> 켜세요.</strong></p>",
-        'explanation': "<p><strong>더우면</strong>: '덥다' (issiq bo'lmoq). 'ㅂ' noto'g'ri sifati '우' ga aylanib '-면' qo'shiladi. <strong>시원하게</strong> (salqin/muzdek qilib).</p>",
-        'correct': "더우면",
-        'choices': ["덥으면", "더우면", "더오면", "덥고"]
+        'text': "<p>A: <strong>왜</strong> <strong>이렇게</strong> <strong>늦게</strong> <em>왔어요</em>?<br>B: 침대에 <em>누웠다가</em> <strong>깜빡</strong> 잠이 <em>들어________</em>.</p>",
+        'explanation': "<p><strong>버렸어요</strong>: '잠이 들어 버리다' (uxlab qolmoq). <strong>깜빡</strong> (beixtiyor/ko'zi ilinib) uxlab qoldi.</p>",
+        'correct': "버렸어요",
+        'choices': ["보았어요", "주었어요", "버렸어요", "버려요"]
     },
     {
-        'text': "<p><strong>A: 겨울에 강원도로 여행을 가기에 <em>어때요</em>?<br>B: 눈이 와서 <strong>조금</strong> <u>추우________</u> 경치가 <strong>정말</strong> <u>아름다워요</u>.</strong></p>",
-        'explanation': "<p><strong>추우면</strong>: '춥다' (sovuq bo'lmoq). 'ㅂ' -> '우' + '-면'. <strong>조금</strong> (biroz) sovuq bo'lsa ham.</p>",
-        'correct': "추우면",
-        'choices': ["춥으면", "추우면", "추오면", "춥고"]
+        'text': "<p>A: 지갑을 <strong>어디에</strong> <em>두었어요</em>?<br>B: <strong>아무리</strong> <em>찾아도</em> <u>없어요</u>. <strong>결국</strong> <em>잃어________</em>.</p>",
+        'explanation': "<p><strong>버렸어요</strong>: '잃어 버리다' (yo'qotib qo'ymoq). <strong>아무리</strong> (qancha) qidirsa ham, <strong>결국</strong> (oxir-oqibat) yo'qotdi.</p>",
+        'correct': "버렸어요",
+        'choices': ["버렸어요", "보았어요", "버렸지만", "버려요"]
     },
     {
-        'text': "<p><strong>A: 한국어를 <strong>혼자서</strong> <strong>열심히</strong> <em>공부해요</em>?<br>B: 네, 공부하다가 <strong>잘</strong> <u>모르________</u> 선생님께 <strong>항상</strong> 물어봐요.</strong></p>",
-        'explanation': "<p><strong>모르면</strong>: '모르다' (bilmaslik). Unli bilan tugagani uchun '-면' ulanadi. <strong>항상</strong> (har doim).</p>",
-        'correct': "모르면",
-        'choices': ["모르면", "모르으면", "모르고", "몰라서"]
+        'text': "<p>A: <u>아끼던</u> 컵이 <em>어떻게</em> <em>되었어요</em>?<br>B: <strong>실수로</strong> <em>떨어뜨려서</em> <strong>산산조각으로</strong> <em>깨져________</em>.</p>",
+        'explanation': "<p><strong>버렸어요</strong>: '깨져 버리다' (sinib ketmoq/chil-parchin bo'lmoq). <strong>실수로</strong> (xato qilib/yanglishib).</p>",
+        'correct': "버렸어요",
+        'choices': ["주었어요", "버렸어요", "보았어요", "버려요"]
     },
     {
-        'text': "<p><strong>A: <strong>아침에</strong> <strong>늦게</strong> <em>일어나면</em> <strong>보통</strong> <em>어떻게 해요</em>?<br>B: 시간이 <u>늦________</u> 아침밥을 <strong>안</strong> 먹고 <strong>빨리</strong> 나가요.</strong></p>",
-        'explanation': "<p><strong>늦으면</strong>: '늦다' (kechikmoq) undosh bilan tugagani uchun '-으면' ulanadi. <strong>빨리</strong> (tez) chiqib ketadi.</p>",
-        'correct': "늦으면",
-        'choices': ["늦면", "늦으면", "늦고", "늦어서"]
+        'text': "<p>A: <strong>밖에</strong> <strong>아직도</strong> 눈이 <em>있어요</em>?<br>B: 날씨가 <u>따뜻해져서</u> <strong>벌써</strong> <strong>다</strong> <em>녹아________</em>.</p>",
+        'explanation': "<p><strong>버렸어요</strong>: '녹아 버리다' (erib ketmoq). <strong>벌써 다</strong> (allaqachon hammasi) erib tugadi.</p>",
+        'correct': "버렸어요",
+        'choices': ["버렸어요", "보았어요", "주었어요", "버려요"]
     },
     {
-        'text': "<p><strong>A: 수업 내용을 <strong>잘</strong> <em>들었어요</em>?<br>B: 아니요, <strong>잘</strong> <u>들으________</u> 소리가 <strong>너무</strong> <u>작아서</u> 이해하기 힘들어요.</strong></p>",
-        'explanation': "<p><strong>들으면</strong>: '듣다' (eshitmoq). 'ㄷ' noto'g'ri fe'li 'ㄹ' ga aylanib '-으면' ulanadi. <strong>잘</strong> (yaxshi) eshitsam ham.</p>",
-        'correct': "들으면",
-        'choices': ["듣으면", "들으면", "듣면", "들고"]
+        'text': "<p>A: 기차를 <strong>무사히</strong> <em>탔어요</em>?<br>B: 아니요, <strong>간발의 차이로</strong> 기차가 <em>떠나________</em>.</p>",
+        'explanation': "<p><strong>버렸어요</strong>: '떠나 버리다' (jo'nab ketmoq/ketib qolmoq). <strong>간발의 차이로</strong> (ozgina farq bilan/sal qolganda).</p>",
+        'correct': "버렸어요",
+        'choices': ["주었어요", "보았어요", "버렸어요", "버려요"]
     },
     {
-        'text': "<p><strong>A: <strong>매일</strong> 공원에서 <strong>얼마나</strong> <em>걸어요</em>?<br>B: <strong>한 시간 정도</strong> <u>걸으________</u> 기분이 <strong>정말</strong> <u>상쾌해져요</u>.</strong></p>",
-        'explanation': "<p><strong>걸으면</strong>: '걷다' (yurmoq). 'ㄷ' -> 'ㄹ' + '-으면'. <strong>한 시간 정도</strong> (bir soat atrofida).</p>",
-        'correct': "걸으면",
-        'choices': ["걷으면", "걸으면", "걷면", "걸고"]
+        'text': "<p>A: 약속 시간에 <strong>왜</strong> <strong>안</strong> <em>나왔어요</em>?<br>B: <strong>너무</strong> <u>바빠서</u> <strong>까맣게</strong> <em>잊어________</em>.</p>",
+        'explanation': "<p><strong>버렸어요</strong>: '잊어 버리다' (esdan chiqarmoq). <strong>까맣게</strong> (butunlay/yoddan) unutib yubordi.</p>",
+        'correct': "버렸어요",
+        'choices': ["버렸어요", "보았어요", "주었어요", "버려요"]
     },
     {
-        'text': "<p><strong>A: 머리가 <strong>많이</strong> <u>길어요</u>?<br>B: 네, 머리가 <strong>너무</strong> <u>길________</u> <strong>미용실에</strong> <strong>빨리</strong> 가서 자를 거예요.</strong></p>",
-        'explanation': "<p><strong>길면</strong>: '길다' (uzun bo'lmoq). 'ㄹ' bilan tugagan so'zlarga to'g'ridan-to'g'ri '-면' qo'shiladi (길 + 면 = 길면).</p>",
-        'correct': "길면",
-        'choices': ["길으면", "길면", "길고", "길어서"]
+        'text': "<p>A: 서류를 <strong>잘</strong> <em>가져왔어요</em>?<br>B: 앗, 책상 <strong>위에</strong> <strong>그냥</strong> <em>두고 와________</em>.</p>",
+        'explanation': "<p><strong>버렸어요</strong>: '두고 와 버리다' (qoldirib kelmoq). <strong>그냥</strong> (shunchaki) tashlab kelib qoldi.</p>",
+        'correct': "버렸어요",
+        'choices': ["보았어요", "버렸어요", "주었어요", "버려요"]
     },
     {
-        'text': "<p><strong>A: 집에서 지하철역까지 <strong>많이</strong> <u>멀어요</u>?<br>B: 네, <strong>생각보다</strong> <u>멀________</u> <strong>보통</strong> 버스를 타고 가요.</strong></p>",
-        'explanation': "<p><strong>멀면</strong>: '멀다' (uzoq bo'lmoq). 'ㄹ' bilan tugagani uchun '-면' qo'shiladi. <strong>생각보다</strong> (o'ylagandan ko'ra).</p>",
-        'correct': "멀면",
-        'choices': ["멀으면", "멀면", "멀고", "멀어서"]
+        'text': "<p>A: 머리를 <strong>왜</strong> <strong>그렇게</strong> <strong>짧게</strong> <em>잘랐어요</em>?<br>B: <strong>너무</strong> <u>더워서</u> <strong>시원하게</strong> <strong>다</strong> <em>잘라________</em>.</p>",
+        'explanation': "<p><strong>버렸어요</strong>: '잘라 버리다' (kesib tashlamoq). <strong>시원하게 다</strong> (salqinlatib hammasini) kesib yubordi.</p>",
+        'correct': "버렸어요",
+        'choices': ["버렸어요", "보았어요", "주었어요", "버려요"]
     },
     {
-        'text': "<p><strong>A: 백화점 옷이 <strong>마음에 들면</strong> <strong>바로</strong> <em>살 거예요</em>?<br>B: 아니요, 가격이 <strong>너무</strong> <u>비싸________</u> <strong>절대</strong> <strong>못</strong> 사요.</strong></p>",
-        'explanation': "<p><strong>비싸면</strong>: '비싸다' (qimmat bo'lmoq). Unli bilan tugagani uchun '-면' ulanadi. <strong>절대</strong> (aslo/umuman) ololmaydi.</p>",
-        'correct': "비싸면",
-        'choices': ["비싸면", "비싸으면", "비싸고", "비싸서"]
+        'text': "<p>A: 그 <u>비밀을</u> <strong>결국</strong> <em>말했어요</em>?<br>B: 네, <strong>실수로</strong> <strong>그만</strong> <em>말해________</em>.</p>",
+        'explanation': "<p><strong>버렸어요</strong>: '말해 버리다' (aytib qo'ymoq). <strong>실수로 그만</strong> (xatoga yo'l qo'yib/beixtiyor) aytib qo'ydi.</p>",
+        'correct': "버렸어요",
+        'choices': ["주었어요", "보았어요", "버렸어요", "버려요"]
     },
     {
-        'text': "<p><strong>A: <strong>시장 물건이</strong> 백화점보다 <u>싸요</u>?<br>B: 네, 값이 <u>싸________</u> <strong>자주</strong> 가서 <strong>많이</strong> 사요.</strong></p>",
-        'explanation': "<p><strong>싸면</strong>: '싸다' (arzon bo'lmoq) + '-면'. <strong>자주</strong> (tez-tez) borib turadi.</p>",
-        'correct': "싸면",
-        'choices': ["싸면", "싸으면", "싸고", "싸서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>이번</strong> 주말 날씨가 <em>어떨까요</em>?<br>B: 날씨가 <strong>아주</strong> <u>좋________</u> 가족들과 <strong>함께</strong> 소풍을 갈 거예요.</strong></p>",
-        'explanation': "<p><strong>좋으면</strong>: '좋다' (yaxshi bo'lmoq) undosh bilan tugagani uchun '-으면' ulanadi. <strong>아주</strong> (juda) yaxshi bo'lsa.</p>",
-        'correct': "좋으면",
-        'choices': ["좋면", "좋으면", "좋고", "좋아서"]
-    },
-    {
-        'text': "<p><strong>A: 회의에 참석할 사람이 <strong>아직</strong> <strong>안</strong> 왔어요?<br>B: 네, 사람이 <strong>다</strong> <u>오________</u> <strong>바로</strong> 회의를 시작합시다.</strong></p>",
-        'explanation': "<p><strong>오면</strong>: '오다' (kelmoq) + '-면'. Hamma kelganda <strong>바로</strong> (darhol) boshlanadi.</p>",
-        'correct': "오면",
-        'choices': ["오면", "오으면", "오고", "와서"]
-    },
-    {
-        'text': "<p><strong>A: 파티에 음식이 <u>부족할까요</u>?<br>B: 음식이 <strong>너무</strong> <u>적________</u> <strong>근처 식당에서</strong> <strong>더</strong> 주문할게요.</strong></p>",
-        'explanation': "<p><strong>적으면</strong>: '적다' (kam bo'lmoq) + '-으면'. <strong>근처 식당에서</strong> (yaqindagi restorandan) buyurtma qiladi.</p>",
-        'correct': "적으면",
-        'choices': ["적면", "적으면", "적고", "적어서"]
-    },
-    {
-        'text': "<p><strong>A: 신발이 <strong>발에</strong> <strong>안</strong> 맞아요?<br>B: 네, 신발이 <strong>조금</strong> <u>크________</u> <strong>가게에서</strong> 교환할 수 있어요.</strong></p>",
-        'explanation': "<p><strong>크면</strong>: '크다' (katta bo'lmoq) unli bilan tugagani uchun '-면' ulanadi. <strong>조금</strong> (biroz) katta bo'lsa.</p>",
-        'correct': "크면",
-        'choices': ["크면", "크으면", "크고", "커서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>요즘</strong> 얼굴이 <strong>많이</strong> <u>안 좋아요</u>. <strong>어디</strong> <u>아파요</u>?<br>B: <strong>몸이</strong> <u>아프________</u> <strong>참지 말고</strong> <strong>빨리</strong> 병원에 가세요.</strong></p>",
-        'explanation': "<p><strong>아프면</strong>: '아프다' (og'rimoq/kasal bo'lmoq) + '-면'. <strong>참지 말고</strong> (chidamay) kasalxonaga borish maslahat berilmoqda.</p>",
-        'correct': "아프면",
-        'choices': ["아프면", "아프으면", "아프고", "아파서"]
-    },
-    {
-        'text': "<p><strong>A: 식당이 <strong>너무</strong> <u>복잡한데</u> <strong>어떻게</strong> 할까요?<br>B: 사람이 <strong>너무</strong> <u>많________</u> <strong>다른 식당으로</strong> <strong>조용히</strong> 갑시다.</strong></p>",
-        'explanation': "<p><strong>많으면</strong>: '많다' (ko'p bo'lmoq) undosh bilan tugagani uchun '-으면' ulanadi. <strong>다른 식당으로</strong> (boshqa restoranga) borishadi.</p>",
-        'correct': "많으면",
-        'choices': ["많면", "많으면", "많고", "많아서"]
-    },
-    {
-        'text': "<p><strong>A: 책을 <strong>읽다가</strong> <strong>갑자기</strong> <u>어려우면</u> <em>어떻게 해요</em>?<br>B: 내용이 <u>어려우________</u> <strong>사전을 찾아서</strong> <strong>자세히</strong> 보세요.</strong></p>",
-        'explanation': "<p><strong>어려우면</strong>: '어렵다' (qiyin bo'lmoq). 'ㅂ' -> '우' + '-면'. <strong>자세히</strong> (batafsil) qarab chiqish.</p>",
-        'correct': "어려우면",
-        'choices': ["어렵으면", "어려우면", "어렵면", "어려워서"]
-    },
-    {
-        'text': "<p><strong>A: 거실이 <strong>너무</strong> <u>더러운데</u> <strong>같이</strong> 청소<em>할래요</em>?<br>B: 방이 <u>깨끗하________</u> <strong>기분이 정말</strong> <u>상쾌할 거예요</u>.</strong></p>",
-        'explanation': "<p><strong>깨끗하면</strong>: '깨끗하다' (toza bo'lmoq) + '-면'. <strong>기분이 정말</strong> (kayfiyati haqiqatan) yaxshi bo'ladi.</p>",
-        'correct': "깨끗하면",
-        'choices': ["깨끗하면", "깨끗하으면", "깨끗하고", "깨끗해서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>공부할 때</strong> 주위가 <u>시끄러워요</u>?<br>B: 네, <strong>주변이</strong> <u>조용하________</u> <strong>집중이 훨씬 잘 돼요</strong>.</strong></p>",
-        'explanation': "<p><strong>조용하면</strong>: '조용하다' (jim/tinch bo'lmoq) + '-면'. <strong>집중이 훨씬</strong> (diqqat ancha) yaxshi qilinadi.</p>",
-        'correct': "조용하면",
-        'choices': ["조용하면", "조용하으면", "조용하고", "조용해서"]
-    },
-    {
-        'text': "<p><strong>A: 지하철에 사람이 <strong>항상</strong> <u>많아요</u>?<br>B: 네, 출퇴근 시간에 <strong>너무</strong> <u>복잡하________</u> <strong>숨쉬기도 힘들어요</strong>.</strong></p>",
-        'explanation': "<p><strong>복잡하면</strong>: '복잡하다' (tirband bo'lmoq) + '-면'. <strong>숨쉬기도 힘들어요</strong> (nafas olish ham qiyin).</p>",
-        'correct': "복잡하면",
-        'choices': ["복잡하면", "복잡하으면", "복잡하고", "복잡해서"]
-    },
-    {
-        'text': "<p><strong>A: 김치볶음밥이 <strong>많이</strong> <u>매워요</u>?<br>B: <strong>혹시</strong> <strong>입맛에</strong> <u>매우________</u> <strong>물을 많이</strong> 드세요.</strong></p>",
-        'explanation': "<p><strong>매우면</strong>: '맵다' (achchiq bo'lmoq). 'ㅂ' -> '우' + '-면'. <strong>입맛에</strong> (ta'bga) achchiq bo'lsa.</p>",
-        'correct': "매우면",
-        'choices': ["맵으면", "매우면", "맵면", "매워서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>방학에</strong> <strong>집에만 있어서</strong> <u>심심해요</u>?<br>B: <strong>만약</strong> <u>심심하________</u> <strong>언제든지</strong> <strong>저에게</strong> 전화하세요.</strong></p>",
-        'explanation': "<p><strong>심심하면</strong>: '심심하다' (zerikmoq) + '-면'. <strong>언제든지</strong> (qachon bo'lsa ham) qo'ng'iroq qilishni so'rayapti.</p>",
-        'correct': "심심하면",
-        'choices': ["심심하면", "심심하으면", "심심하고", "심심해서"]
-    },
-    {
-        'text': "<p><strong>A: 이 모자가 저에게 <strong>잘</strong> <u>어울려요</u>?<br>B: <strong>색깔만 조금 더</strong> <u>예쁘________</u> <strong>당장</strong> 살 텐데요.</strong></p>",
-        'explanation': "<p><strong>예쁘면</strong>: '예쁘다' (chiroyli bo'lmoq) + '-면'. <strong>당장</strong> (hoziroq) sotib olgan bo'lar edi.</p>",
-        'correct': "예쁘면",
-        'choices': ["예쁘면", "예쁘으면", "예쁘고", "예뻐서"]
-    },
-    {
-        'text': "<p><strong>A: 점심시간에 배가 <strong>많이</strong> <u>고파요</u>?<br>B: <strong>수업 중에</strong> 배가 <u>고프________</u> <strong>가방에 있는</strong> 과자를 <strong>몰래</strong> 드세요.</strong></p>",
-        'explanation': "<p><strong>고프면</strong>: '고프다' (och bo'lmoq) + '-면'. <strong>몰래</strong> (bildirmasdan/yashirincha) yeyishni maslahat beryapti.</p>",
-        'correct': "고프면",
-        'choices': ["고프면", "고프으면", "고프고", "고파서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>나중에</strong> 커서 <strong>어떤 사람이</strong> <em>되고 싶어요</em>?<br>B: <strong>어른이</strong> <u>되________</u> <strong>세계를</strong> <strong>자유롭게</strong> 여행하고 싶어요.</strong></p>",
-        'explanation': "<p><strong>되면</strong>: '되다' (bo'lmoq) + '-면'. <strong>자유롭게</strong> (erkin/erkinlik bilan) sayohat qilmoqchi.</p>",
-        'correct': "되면",
-        'choices': ["되면", "되으면", "되고", "되어서"]
+        'text': "<p>A: <u>어려운</u> 숙제를 <strong>드디어</strong> <strong>다</strong> <em>했어요</em>?<br>B: 네, <strong>밤을 새워서</strong> <strong>모두</strong> <em>끝내________</em>.</p>",
+        'explanation': "<p><strong>버렸어요</strong>: '끝내 버리다' (tugatib tashlamoq). <strong>밤을 새워서</strong> (tunni bedor o'tkazib) tugatib yubordi (yengillik).</p>",
+        'correct': "버렸어요",
+        'choices': ["버렸어요", "보았어요", "주었어요", "버려요"]
     }
 ]
 
-topic_26 = [
-    # --- TOPIC 26: 비교 표현: 명사 + 보다 (더/덜) ---
+topic_46 = [
+    # --- TOPIC 46: 간접 화법 1 (평서문 -다고 하다, 의문문 -냐고 하다) ---
     {
-        'text': "<p><strong>A: 여름에 수박과 사과 중에서 <em>무엇이</em> <strong>더</strong> <u>맛있어요</u>?<br>B: 저는 수박________ 사과가 <strong>훨씬</strong> <strong>더</strong> <u>달고</u> <u>맛있어요</u>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '수박' ga '-보다' (dan ko'ra) qo'shilib qiyoslash yasaladi (Tarvuzdan ko'ra olma). <strong>훨씬</strong> (ancha).</p>",
-        'correct': "보다",
-        'choices': ["은", "가", "보다", "부터"]
+        'text': "<p>A: 친구가 <strong>내일</strong> <strong>어디에</strong> <em>간다고 했어요</em>?<br>B: <strong>내일</strong> 도서관에 <em>간________</em>.</p>",
+        'explanation': "<p><strong>다고 했어요</strong>: '가다' (bormoq). Hozirgi zamon darak gapining (평서문) o'zlashtirma gap shakli (간다고 하다). Kutubxonaga borishini aytdi.</p>",
+        'correct': "다고 했어요",
+        'choices': ["다고 했어요", "냐고 물었어요", "라고 했어요", "자고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>출퇴근 시간에</strong> 버스와 지하철 중 <em>무엇이</em> <strong>더</strong> <u>빨라요</u>?<br>B: 버스________ 지하철이 <strong>항상</strong> <strong>더</strong> <u>빠릅니다</u>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '버스' (avtobus) bilan qiyoslanmoqda (Avtobusdan ko'ra metro). <strong>항상</strong> (har doim).</p>",
-        'correct': "보다",
-        'choices': ["를", "보다", "에", "에서"]
+        'text': "<p>A: 동생이 <strong>요즘</strong> <em>어떻게</em> <em>지내요</em>?<br>B: 일이 <strong>너무</strong> <u>많아서</u> <strong>매일</strong> <u>바쁘________</u>.</p>",
+        'explanation': "<p><strong>다고 했어요</strong>: '바쁘다' (band bo'lmoq) sifat. Sifatlar bilan '-다고 하다' to'g'ridan-to'g'ri ulanadi. <strong>매일</strong> (har kuni) band ekanligini aytdi.</p>",
+        'correct': "다고 했어요",
+        'choices': ["냐고 물었어요", "다고 했어요", "라고 했어요", "자고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>오늘</strong> 날씨가 <strong>어제와 비교해서</strong> <em>어때요</em>?<br>B: 어제________ 오늘이 <strong>바람도 불고</strong> <strong>더</strong> <u>쌀쌀해요</u>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '어제' (kecha) ga qiyoslanyapti (Kechagidan ko'ra bugun). <strong>더</strong> (yana/ko'proq) <u>쌀쌀해요</u> (salqin/sovuqroq).</p>",
-        'correct': "보다",
-        'choices': ["보다", "는", "가", "부터"]
+        'text': "<p>A: 지민 씨도 <strong>이번</strong> 모임에 <em>참석해요</em>?<br>B: 아니요, 시간이 <u>없어서</u> <strong>안</strong> <em>간________</em>.</p>",
+        'explanation': "<p><strong>다고 했어요</strong>: '안 가다' (bormaslik) fe'l. '-ㄴ다고 하다' ulanadi (안 간다고 했어요). <strong>안</strong> (inkor) bormasligini aytdi.</p>",
+        'correct': "다고 했어요",
+        'choices': ["다고 했어요", "냐고 물었어요", "라고 했어요", "자고 했어요"]
     },
     {
-        'text': "<p><strong>A: 형과 동생 중에서 <strong>누가</strong> 키가 <strong>더</strong> <u>커요</u>?<br>B: 형________ 동생이 <strong>갑자기</strong> <strong>더</strong> <u>커졌어요</u>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '형' (aka) dan ko'ra uka bo'yi balandroq ekanligini bildiradi. <strong>갑자기</strong> (to'satdan).</p>",
-        'correct': "보다",
-        'choices': ["이", "보다", "은", "를"]
+        'text': "<p>A: 어머니가 <em>만드신</em> 요리가 <em>어때요</em>?<br>B: 친구들이 <strong>모두</strong> <strong>정말</strong> <u>맛있________</u>.</p>",
+        'explanation': "<p><strong>다고 했어요</strong>: '맛있다' (mazali bo'lmoq). '있다/없다' so'zlari bilan '-다고 하다' ishlatiladi. <strong>모두 정말</strong> (barchasi rosttdan) mazali deb aytishdi.</p>",
+        'correct': "다고 했어요",
+        'choices': ["냐고 물었어요", "라고 했어요", "다고 했어요", "자고 했어요"]
     },
     {
-        'text': "<p><strong>A: 한국어와 영어 중에서 <strong>어느 것이</strong> <strong>더</strong> <u>어려워요</u>?<br>B: 한국어________ 영어가 <strong>문법이</strong> <strong>덜</strong> <u>복잡해요</u>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '한국어' dan ko'ra ingliz tili <strong>덜</strong> (kamtari/ozroq) <u>복잡해요</u> (murakkab) deyilmoqda.</p>",
-        'correct': "보다",
-        'choices': ["가", "를", "은", "보다"]
+        'text': "<p>A: 선생님이 <strong>아까</strong> <em>무엇을</em> <em>질문하셨어요</em>?<br>B: 저에게 점심을 <em>먹었________</em>.</p>",
+        'explanation': "<p><strong>냐고 물으셨어요</strong>: '먹었다' (yedi) + '-냐고 묻다' (so'roq gapning o'zlashtirma shakli). Tushlik yegan-yemaganligimni so'radilar.</p>",
+        'correct': "냐고 물으셨어요",
+        'choices': ["다고 했어요", "냐고 물으셨어요", "라고 했어요", "자고 했어요"]
     },
     {
-        'text': "<p><strong>A: 여름과 겨울 중에서 <em>어느 계절을</em> <strong>더</strong> <em>좋아해요</em>?<br>B: 저는 여름________ 겨울을 <strong>개인적으로</strong> <strong>더</strong> 좋아해요.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '여름' (yoz) fasliga qaraganda qishni ko'proq yoqtiradi. <strong>개인적으로</strong> (shaxsan/o'zim).</p>",
-        'correct': "보다",
-        'choices': ["보다", "가", "은", "에"]
+        'text': "<p>A: 친구가 전화로 <em>무엇을</em> <em>물어봤어요</em>?<br>B: <strong>오늘</strong> <strong>몇 시에</strong> <em>도착하________</em>.</p>",
+        'explanation': "<p><strong>냐고 물었어요</strong>: '도착하다' (yetib kelmoq) + '-냐고 묻다'. <strong>몇 시에</strong> (soat nechada) yetib kelishimni so'radi.</p>",
+        'correct': "냐고 물었어요",
+        'choices': ["다고 했어요", "라고 했어요", "자고 했어요", "냐고 물었어요"]
     },
     {
-        'text': "<p><strong>A: <strong>휴가 때</strong> 산과 바다 중 <strong>어디로</strong> <em>가고 싶어요</em>?<br>B: 산________ 바다로 가서 <strong>시원하게</strong> <strong>수영하고 싶어요</strong>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '산' (tog') ga qaraganda dengizni afzal ko'rmoqda. <strong>시원하게</strong> (salqin/muzdek).</p>",
-        'correct': "보다",
-        'choices': ["은", "보다", "를", "부터"]
+        'text': "<p>A: 길에서 <em>만난</em> 사람이 <em>무엇을</em> <em>물어봤어요</em>?<br>B: 이 근처에 지하철역이 <strong>어디에</strong> <em>있________</em>.</p>",
+        'explanation': "<p><strong>냐고 물었어요</strong>: '있다' (bor bo'lmoq/joylashmoq) + '-냐고 묻다'. Metro stansiyasi <strong>어디에</strong> (qayerda) joylashganini so'radi.</p>",
+        'correct': "냐고 물었어요",
+        'choices': ["냐고 물었어요", "다고 했어요", "라고 했어요", "자고 했어요"]
     },
     {
-        'text': "<p><strong>A: 커피와 녹차 중에서 <strong>어떤 음료가</strong> 건강에 <strong>더</strong> <u>좋아요</u>?<br>B: 커피________ 녹차가 <strong>몸에</strong> <strong>훨씬</strong> <strong>더</strong> <u>이로워요</u>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '커피' (kofe) ga qaraganda ko'k choy sog'liqqa yaxshiroq. <strong>훨씬</strong> (ancha).</p>",
-        'correct': "보다",
-        'choices': ["보다", "가", "는", "에"]
+        'text': "<p>A: 마디나 씨가 <strong>지금</strong> <strong>어디로</strong> <em>간대요</em>?<br>B: <strong>급하게</strong> 우체국에 <em>간________</em>.</p>",
+        'explanation': "<p><strong>다고 했어요</strong>: '가다' (bormoq) + '-ㄴ다고 하다'. <strong>급하게</strong> (shoshilinch) pochtaga ketayotganini aytdi.</p>",
+        'correct': "다고 했어요",
+        'choices': ["냐고 물었어요", "다고 했어요", "라고 했어요", "자고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>외출할 때</strong> 치마와 바지 중 <em>무엇을</em> <strong>자주</strong> <em>입어요</em>?<br>B: 치마________ 바지가 <strong>움직이기에</strong> <strong>더</strong> <u>편해서</u> 바지를 입어요.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '치마' (yubka) dan ko'ra shim kiyish <strong>더</strong> (ko'proq) <u>편해서</u> (qulay bo'lgani uchun).</p>",
-        'correct': "보다",
-        'choices': ["는", "를", "보다", "에서"]
+        'text': "<p>A: 그 남자의 직업이 <em>뭐예요</em>?<br>B: 대학교에서 <em>공부하는</em> 학생<em>이________</em>.</p>",
+        'explanation': "<p><strong>라고 했어요</strong>: '학생이다' (talabadir). Ot + '이다' (undosh bilan tugasa) -> '-이라고 하다'. Talaba ekanligini aytdi.</p>",
+        'correct': "라고 했어요",
+        'choices': ["다고 했어요", "냐고 물었어요", "라고 했어요", "자고 했어요"]
     },
     {
-        'text': "<p><strong>A: 개와 고양이 중에서 <strong>어떤 동물을</strong> <strong>더</strong> <em>키우고 싶어요</em>?<br>B: 개________ 고양이를 <strong>조용해서</strong> <strong>더</strong> 키우고 싶어요.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '개' (kuchuk) dan ko'ra mushukni afzal ko'rmoqda. <strong>조용해서</strong> (tinch/jim bo'lgani uchun).</p>",
-        'correct': "보다",
-        'choices': ["은", "가", "보다", "부터"]
+        'text': "<p>A: <strong>어제</strong> <em>본</em> 시험이 <em>어땠어요</em>?<br>B: 반 친구들이 <strong>모두</strong> <strong>너무</strong> <u>어렵________</u>.</p>",
+        'explanation': "<p><strong>다고 했어요</strong>: '어렵다' (qiyin bo'lmoq - sifat) + '-다고 하다'. <strong>모두 너무</strong> (barchasi juda) qiyin bo'lganini aytishdi.</p>",
+        'correct': "다고 했어요",
+        'choices': ["냐고 물었어요", "라고 했어요", "자고 했어요", "다고 했어요"]
     },
     {
-        'text': "<p><strong>A: 비행기와 기차 중에서 <em>무엇이</em> <strong>더</strong> <u>비싸요</u>?<br>B: 기차________ 비행기가 <strong>가격이</strong> <strong>더</strong> <u>비싸요</u>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '기차' (poyezd) ga qaraganda samolyot qimmatroq. <strong>가격이</strong> (narxi).</p>",
-        'correct': "보다",
-        'choices': ["보다", "를", "가", "에"]
+        'text': "<p>A: 일기예보에서 <strong>내일</strong> 날씨가 <em>어떻대요</em>?<br>B: <strong>오후부터</strong> 비가 <strong>많이</strong> <em>온________</em>.</p>",
+        'explanation': "<p><strong>다고 했어요</strong>: '오다' (kelmoq - fe'l) + '-ㄴ다고 하다'. <strong>오후부터 많이</strong> (tushdan keyin ko'p) yog'ishini aytdi.</p>",
+        'correct': "다고 했어요",
+        'choices': ["다고 했어요", "냐고 물었어요", "라고 했어요", "자고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>아침에</strong> 밥과 빵 중에서 <em>무엇을</em> <strong>주로</strong> <em>먹어요</em>?<br>B: 밥________ 빵을 <strong>간단하게</strong> 먹는 것을 <strong>더</strong> <em>좋아해요</em>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '밥' (guruch/ovqat) dan ko'ra nonni <strong>간단하게</strong> (oddiy/osongina) yeyishni xohlaydi.</p>",
-        'correct': "보다",
-        'choices': ["은", "가", "보다", "부터"]
+        'text': "<p>A: 제가 <em>부탁한</em> 일을 친구가 <em>도와준대요</em>?<br>B: 네, <strong>흔쾌히</strong> <em>알았________</em>.</p>",
+        'explanation': "<p><strong>다고 했어요</strong>: '알았다' (tushundi/rozi bo'ldi) + '-다고 하다'. <strong>흔쾌히</strong> (jon deb/mamnuniyat bilan) rozi bo'lganini aytdi.</p>",
+        'correct': "다고 했어요",
+        'choices': ["냐고 물었어요", "다고 했어요", "라고 했어요", "자고 했어요"]
     },
     {
-        'text': "<p><strong>A: 공부가 <strong>밤에</strong> <strong>더</strong> <strong>잘 돼요</strong>, <strong>아니면</strong> <strong>아침에</strong> <strong>더</strong> <strong>잘 돼요</strong>?<br>B: 밤________ <strong>아침 일찍</strong> 공부하는 것이 <strong>훨씬</strong> <strong>잘 돼요</strong>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '밤' (tunda) ga qaraganda <strong>아침 일찍</strong> (ertalab vaqtli) o'qish yaxshiroq.</p>",
-        'correct': "보다",
-        'choices': ["보다", "에", "은", "를"]
+        'text': "<p>A: 손님이 식당에서 <em>무엇을</em> <em>물어봤어요</em>?<br>B: 이 비빔밥이 <strong>얼마________</strong>.</p>",
+        'explanation': "<p><strong>냐고 물었어요</strong>: '얼마이다' (qancha turadi). Ot + '이다' (unli bilan) -> '-냐고 묻다'. Qancha ekanligini so'radi.</p>",
+        'correct': "냐고 물었어요",
+        'choices': ["다고 했어요", "라고 했어요", "자고 했어요", "냐고 물었어요"]
     },
     {
-        'text': "<p><strong>A: <strong>식사할 때</strong> 고기와 채소 중 <em>어느 것을</em> <strong>더 많이</strong> <em>먹어요</em>?<br>B: 고기________ 채소를 <strong>건강을 위해</strong> <strong>일부러</strong> <strong>더 많이</strong> 먹어요.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '고기' (go'sht) dan ko'ra sabzavotlarni ko'proq yeydi. <strong>일부러</strong> (ataylab/qasddan).</p>",
-        'correct': "보다",
-        'choices': ["가", "보다", "는", "에서"]
+        'text': "<p>A: 아버지가 <strong>퇴근 후에</strong> <em>뭐라고 하셨어요</em>?<br>B: <strong>오늘</strong> 일이 <u>많아서</u> <strong>많이</strong> <u>피곤하________</u>.</p>",
+        'explanation': "<p><strong>다고 하셨어요</strong>: '피곤하다' (charchamoq - sifat) + '-다고 하시다' (hurmat). <strong>많이</strong> (ko'p) charchaganliklarini aytdilar.</p>",
+        'correct': "다고 하셨어요",
+        'choices': ["냐고 하셨어요", "라고 하셨어요", "다고 하셨어요", "자고 하셨어요"]
     },
     {
-        'text': "<p><strong>A: 백화점과 시장 중에서 <strong>어디가</strong> <strong>물건이</strong> <strong>더</strong> <u>저렴해요</u>?<br>B: 백화점________ 시장이 <strong>인심도 좋고</strong> <strong>훨씬</strong> <u>싸요</u>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '백화점' (univermag) dan ko'ra bozor arzonroq. <strong>훨씬</strong> (ancha) <u>싸요</u> (arzon).</p>",
-        'correct': "보다",
-        'choices': ["은", "를", "보다", "부터"]
-    },
-    {
-        'text': "<p><strong>A: 영화와 드라마 중 <strong>어떤 것을</strong> <strong>자주</strong> <em>봐요</em>?<br>B: 영화________ 드라마가 <strong>내용이 길어서</strong> <strong>더 자주</strong> 봐요.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '영화' (kino) dan ko'ra drama seriallarni ko'proq ko'radi. <strong>내용이 길어서</strong> (mazmuni/hikoyasi uzun bo'lgani uchun).</p>",
-        'correct': "보다",
-        'choices': ["보다", "는", "를", "가"]
-    },
-    {
-        'text': "<p><strong>A: 수영과 달리기 중 <strong>운동 효과가</strong> <em>뭐가</em> <strong>더</strong> <u>크다고 생각해요</u>?<br>B: 수영________ 달리기가 <strong>땀이 많이 나서</strong> <strong>더</strong> <u>힘들어요</u>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '수영' (suzish) dan ko'ra yugurish <strong>더</strong> (ko'proq) <u>힘들어요</u> (mashaqqatli).</p>",
-        'correct': "보다",
-        'choices': ["은", "가", "보다", "부터"]
-    },
-    {
-        'text': "<p><strong>A: 집에서 엄마와 아빠 중 <strong>누가</strong> <strong>요리를</strong> <strong>더</strong> <em>잘해요</em>?<br>B: 엄마________ 아빠가 <strong>주말마다</strong> <strong>맛있게</strong> 요리를 <strong>잘하세요</strong>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '엄마' (ona) dan ko'ra otasi yaxshiroq ovqat pishiradi. <strong>주말마다</strong> (har dam olish kuni).</p>",
-        'correct': "보다",
-        'choices': ["를", "보다", "는", "에서"]
-    },
-    {
-        'text': "<p><strong>A: 피자와 치킨 중에서 <strong>야식으로</strong> <em>무엇을</em> <strong>더</strong> <em>좋아해요</em>?<br>B: 피자________ 치킨을 <strong>바삭해서</strong> <strong>훨씬</strong> <strong>더</strong> 좋아해요.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '피자' dan ko'ra tovuq qalamchalarini (chicken) yaxshi ko'radi. <strong>훨씬</strong> (ancha).</p>",
-        'correct': "보다",
-        'choices': ["보다", "가", "은", "부터"]
-    },
-    {
-        'text': "<p><strong>A: 서울과 제주도 중 <strong>어디가</strong> <strong>관광객이</strong> <strong>더</strong> <u>많아요</u>?<br>B: 서울________ 제주도가 <strong>자연이 예뻐서</strong> <strong>외국인이</strong> <strong>더</strong> <u>많아요</u>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '서울' dan ko'ra Jeju orolida sayyohlar ko'proq. <strong>자연이 예뻐서</strong> (tabiati chiroyli bo'lgani uchun).</p>",
-        'correct': "보다",
-        'choices': ["은", "를", "보다", "에서"]
-    },
-    {
-        'text': "<p><strong>A: 주말과 평일 중 <strong>언제</strong> <strong>거리가</strong> <strong>더</strong> <u>한산해요</u>?<br>B: 주말________ 평일에 <strong>사람들이 출근해서</strong> <strong>훨씬</strong> <u>한산해요</u>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '주말' (dam olish kuni) dan ko'ra ish kunlari ko'chalar <strong>훨씬</strong> <u>한산해요</u> (ancha tinch/bo'sh).</p>",
-        'correct': "보다",
-        'choices': ["보다", "는", "가", "를"]
-    },
-    {
-        'text': "<p><strong>A: 전철과 택시 중 <strong>출근할 때</strong> <em>무엇이</em> <strong>더</strong> <u>편해요</u>?<br>B: 택시________ 전철이 <strong>시간이 정확해서</strong> <strong>더</strong> <u>편해요</u>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '택시' dan ko'ra metro qulayroq. <strong>시간이 정확해서</strong> (vaqti aniq bo'lgani uchun).</p>",
-        'correct': "보다",
-        'choices': ["은", "보다", "를", "부터"]
-    },
-    {
-        'text': "<p><strong>A: 동생과 본인 중 <strong>누가</strong> <strong>노래를</strong> <strong>더</strong> <em>잘 불러요</em>?<br>B: 동생________ 제가 <strong>조금</strong> <strong>더</strong> <strong>음정이</strong> <u>정확해요</u>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '동생' (uka/singil) dan ko'ra o'zining ovozi/musiqa balandligi <strong>조금 더</strong> (biroz ko'proq) <u>정확해요</u> (aniq).</p>",
-        'correct': "보다",
-        'choices': ["보다", "은", "를", "가"]
-    },
-    {
-        'text': "<p><strong>A: 소설과 만화책 중 <strong>어떤 것을</strong> <strong>자주</strong> <em>읽어요</em>?<br>B: 소설________ 만화책이 <strong>그림이 있어서</strong> <strong>더 빨리</strong> <em>읽혀요</em>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '소설' (roman) dan ko'ra komikslarni tez o'qiydi. <strong>더 빨리</strong> (tezroq).</p>",
-        'correct': "보다",
-        'choices': ["는", "가", "보다", "부터"]
-    },
-    {
-        'text': "<p><strong>A: 겨울과 가을 중 <strong>언제</strong> <strong>여행하기</strong> <strong>더</strong> <u>좋아요</u>?<br>B: 겨울________ 가날이 <strong>날씨가 시원해서</strong> <strong>훨씬</strong> <u>좋아요</u>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '겨울' (qish) dan ko'ra kuz fasli sayohat uchun yaxshiroq. <strong>훨씬</strong> (ancha).</p>",
-        'correct': "보다",
-        'choices': ["보다", "은", "를", "에서"]
-    },
-    {
-        'text': "<p><strong>A: 물과 주스 중 <strong>목마를 때</strong> <em>무엇이</em> <strong>더</strong> <u>시원해요</u>?<br>B: 주스________ 물이 <strong>갈증 해소에</strong> <strong>훨씬</strong> <strong>더</strong> <u>좋아요</u>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '주스' dan ko'ra suv chanqoqni bosishga yaxshiroq. <strong>갈증 해소에</strong> (chanqoqni qondirishda).</p>",
-        'correct': "보다",
-        'choices': ["가", "보다", "은", "부터"]
-    },
-    {
-        'text': "<p><strong>A: 딸기와 포도 중 <strong>어느 과일이</strong> <strong>더</strong> <u>달콤해요</u>?<br>B: 딸기________ 포도가 <strong>제 입맛에는</strong> <strong>더</strong> <u>달콤해요</u>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '딸기' (qulupnay) dan ko'ra uzum shirinroq. <strong>제 입맛에는</strong> (mening ta'bimga ko'ra).</p>",
-        'correct': "보다",
-        'choices': ["보다", "를", "가", "는"]
-    },
-    {
-        'text': "<p><strong>A: 노래와 춤 중에서 <strong>무엇을</strong> <strong>배우는 게</strong> <strong>더</strong> <u>재미있어요</u>?<br>B: 노래________ 춤을 <strong>활동적이라서</strong> <strong>더 즐겁게</strong> <em>배워요</em>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '노래' (qo'shiq) dan ko'ra raqsni o'rganishni afzal ko'radi. <strong>활동적이라서</strong> (harakatchan/faol bo'lgani uchun).</p>",
-        'correct': "보다",
-        'choices': ["은", "가", "보다", "부터"]
-    },
-    {
-        'text': "<p><strong>A: 편지와 이메일 중 <strong>어느 것이</strong> <strong>연락하기에</strong> <strong>더</strong> <u>편해요</u>?<br>B: 편지________ 이메일이 <strong>바로 도착하니까</strong> <strong>훨씬</strong> <u>빠르고</u> <u>편해요</u>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '편지' (xat) dan ko'ra elektron pochta tez va qulay. <strong>바로 도착하니까</strong> (darhol yetib borgani uchun).</p>",
-        'correct': "보다",
-        'choices': ["보다", "는", "를", "가"]
-    },
-    {
-        'text': "<p><strong>A: <strong>작년과</strong> 올해 중 <strong>언제가</strong> <strong>눈이</strong> <strong>더 많이</strong> <em>왔어요</em>?<br>B: 작년________ 올해가 <strong>눈이</strong> <strong>엄청나게</strong> <strong>더 많이</strong> <em>왔어요</em>.</strong></p>",
-        'explanation': "<p><strong>보다</strong>: '작년' (o'tgan yil) dan ko'ra bu yil qor ko'p yog'di. <strong>엄청나게</strong> (kutilmaganda/juda ham).</p>",
-        'correct': "보다",
-        'choices': ["가", "은", "보다", "부터"]
+        'text': "<p>A: 회사에서 집까지 거리가 <u>가까워요</u>?<br>B: 아니요, 동료가 <strong>생각보다</strong> <strong>많이</strong> <u>멀________</u>.</p>",
+        'explanation': "<p><strong>다고 했어요</strong>: '멀다' (uzoq bo'lmoq - sifat) + '-다고 하다'. <strong>생각보다 많이</strong> (o'ylagandan ko'ra ancha) uzoq ekanligini aytdi.</p>",
+        'correct': "다고 했어요",
+        'choices': ["다고 했어요", "냐고 물었어요", "라고 했어요", "자고 했어요"]
     }
 ]
 
-topic_27 = [
-    # --- TOPIC 27: 동사 + 기 전에 / (으)ㄴ 후에 (시간적 선후 관계) ---
+topic_47 = [
+    # --- TOPIC 47: 간접 화법 2: 명령문 (-라고 하다), 청유문 (-자고 하다) ---
     {
-        'text': "<p><strong>A: <strong>보통</strong> 식사를 <em>어떻게</em> 해요?<br>B: 저는 밥을 먹________ <strong>항상</strong> <strong>먼저</strong> <u>깨끗하게</u> 손을 씻어요.</strong></p>",
-        'explanation': "<p><strong>기 전에</strong>: '먹다' (yemoq) + '-기 전에' (dan oldin). Ovqatlanishdan <strong>먼저</strong> (oldin) qilinadigan harakat. <strong>항상</strong> (har doim).</p>",
-        'correct': "기 전에",
-        'choices': ["기 전에", "은 후에", "고 나서", "면서"]
+        'text': "<p>A: 선생님이 <strong>아까</strong> <em>무엇을</em> <em>지시하셨어요</em>?<br>B: 책을 <strong>빨리</strong> <em>읽________</em>.</p>",
+        'explanation': "<p><strong>으라고 하셨어요</strong>: '읽다' (o'qimoq) + '-으라고 하다'. Buyruq (명령문) gapning o'zlashtirma shakli. <strong>빨리</strong> (tez) o'qishni buyurdilar.</p>",
+        'correct': "으라고 하셨어요",
+        'choices': ["으라고 하셨어요", "자고 하셨어요", "냐고 하셨어요", "다고 하셨어요"]
     },
     {
-        'text': "<p><strong>A: <strong>어제</strong> 저녁을 <strong>다</strong> <em>먹었어요</em>?<br>B: 네, 밥을 <strong>다</strong> 먹________ <strong>바로</strong> <u>달콤한</u> 과일을 먹었어요.</strong></p>",
-        'explanation': "<p><strong>은 후에</strong>: '먹다' (yemoq) undosh bilan tugagani uchun '-은 후에' (dan keyin/so'ng) qo'shiladi. <strong>바로</strong> (darhol).</p>",
-        'correct': "은 후에",
-        'choices': ["기 전에", "은 후에", "는 동안", "면서"]
+        'text': "<p>A: 친구가 <strong>전화로</strong> <em>뭐라고</em> <em>했어요</em>?<br>B: <strong>내일</strong> <strong>같이</strong> 영화를 <em>보________</em>.</p>",
+        'explanation': "<p><strong>자고 했어요</strong>: '보다' (ko'rmoq) + '-자고 하다'. Taklif/Maslahat (청유문) gapning o'zlashtirma shakli. <strong>같이</strong> (birga) ko'raylik dedi.</p>",
+        'correct': "자고 했어요",
+        'choices': ["라고 했어요", "자고 했어요", "냐고 했어요", "다고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>밤에</strong> 잠을 <em>잘 자요</em>?<br>B: 네, 자________ <strong>따뜻한</strong> 우유를 <strong>천천히</strong> 마시고 자요.</strong></p>",
-        'explanation': "<p><strong>기 전에</strong>: '자다' (uxlamoq) + '-기 전에'. Uxlashdan oldin <strong>천천히</strong> (sekin) sut ichadi.</p>",
-        'correct': "기 전에",
-        'choices': ["은 후에", "기 전에", "ㄴ 후에", "면서"]
+        'text': "<p>A: 밖이 <strong>너무</strong> <u>시끄러운데</u> <em>어떻게 할까요</em>?<br>B: 어머니가 창문을 <strong>꼭</strong> <em>닫________</em>.</p>",
+        'explanation': "<p><strong>으라고 하셨어요</strong>: '닫다' (yopmoq) + '-으라고 하다'. <strong>꼭</strong> (albatta/mahkam) yopishni buyurdilar.</p>",
+        'correct': "으라고 하셨어요",
+        'choices': ["자고 하셨어요", "냐고 하셨어요", "으라고 하셨어요", "다고 하셨어요"]
     },
     {
-        'text': "<p><strong>A: <strong>아침에</strong> <strong>일찍</strong> <em>일어나요</em>?<br>B: 네, 일어난 ________ <strong>제일 먼저</strong> <u>시원한</u> 물을 마셔요.</strong></p>",
-        'explanation': "<p><strong>후에</strong>: '일어나다' (turmoq/uyg'onmoq) unli bilan tugagani uchun '-ㄴ 후에'. Uyg'ongandan so'ng <strong>제일 먼저</strong> (eng birinchi) suv ichadi.</p>",
-        'correct': "후에",
-        'choices': ["전에", "후에", "동안", "면서"]
+        'text': "<p>A: <strong>주말에</strong> 친구들과 <strong>어디에</strong> <em>가기로 했어요</em>?<br>B: <strong>다 같이</strong> 산에 <em>가________</em>.</p>",
+        'explanation': "<p><strong>자고 했어요</strong>: '가다' (bormoq) + '-자고 하다'. <strong>다 같이</strong> (hamma birgalikda) boraylik deb taklif qildi.</p>",
+        'correct': "자고 했어요",
+        'choices': ["라고 했어요", "자고 했어요", "냐고 했어요", "다고 했어요"]
     },
     {
-        'text': "<p><strong>A: <u>비싼</u> 옷을 살 때 <strong>어떻게</strong> <em>결정해요</em>?<br>B: 옷을 사________ <strong>반드시</strong> <strong>직접</strong> 입어봐요.</strong></p>",
-        'explanation': "<p><strong>기 전에</strong>: '사다' (sotib olmoq) + '-기 전에'. Sotib olishdan oldin <strong>반드시</strong> (albatta) kiyib ko'radi.</p>",
-        'correct': "기 전에",
-        'choices': ["ㄴ 후에", "기 전에", "은 후에", "고 나서"]
+        'text': "<p>A: 그 서류를 <strong>어떻게</strong> <em>할까요</em>?<br>B: 사장님이 그 서류를 <strong>비서에게</strong> <em>주________</em>.</p>",
+        'explanation': "<p><strong>라고 하셨어요</strong>: '주다' (bermoq) + '-라고 하다'. Boshqa uchinchi shaxsga (kotibaga) berishni buyurganda '주라고 하다' ishlatiladi.</p>",
+        'correct': "라고 하셨어요",
+        'choices': ["자고 하셨어요", "라고 하셨어요", "냐고 하셨어요", "다고 하셨어요"]
     },
     {
-        'text': "<p><strong>A: <strong>방금</strong> 그 책을 <strong>다</strong> <em>샀어요</em>?<br>B: 네, 책을 산 ________ <strong>곧바로</strong> <u>조용한</u> 카페에서 읽었어요.</strong></p>",
-        'explanation': "<p><strong>후에</strong>: '사다' (sotib olmoq) unli bilan tugagani uchun '-ㄴ 후에'. Sotib olgandan so'ng <strong>곧바로</strong> (darhol).</p>",
-        'correct': "후에",
-        'choices': ["전에", "후에", "동안", "면서"]
+        'text': "<p>A: 동생이 <strong>갑자기</strong> <strong>왜</strong> <em>전화했어요</em>?<br>B: 용돈이 <u>부족하다며</u> 돈을 <strong>조금만</strong> <em>달________</em>.</p>",
+        'explanation': "<p><strong>라고 했어요</strong>: '달다' (bermoq - o'ziga). O'ziga berishni so'raganda '주라고' emas, '달라고 하다' ishlatiladi. <strong>조금만</strong> (ozgina).</p>",
+        'correct': "라고 했어요",
+        'choices': ["주라고 했어요", "자고 했어요", "라고 했어요", "냐고 했어요"]
     },
     {
-        'text': "<p><strong>A: 영화를 <em>볼까요</em>?<br>B: 영화를 보________ <strong>먼저</strong> <u>맛있는</u> 팝콘을 <strong>잔뜩</strong> 삽시다.</strong></p>",
-        'explanation': "<p><strong>기 전에</strong>: '보다' (ko'rmoq) + '-기 전에'. Ko'rishdan oldin <strong>잔뜩</strong> (to'la/ko'p) popkorn sotib olishadi.</p>",
-        'correct': "기 전에",
-        'choices': ["기 전에", "ㄴ 후에", "은 후에", "면서"]
+        'text': "<p>A: <strong>오늘</strong> 일이 <strong>너무</strong> <u>많아서</u> <u>피곤해요</u>.<br>B: <strong>그럼</strong> 반장님이 <strong>일찍</strong> 집에 가서 <em>쉬________</em>.</p>",
+        'explanation': "<p><strong>라고 하셨어요</strong>: '쉬다' (dam olmoq) + '-라고 하다'. <strong>일찍</strong> (vaqtli) dam olishni buyurdilar.</p>",
+        'correct': "라고 하셨어요",
+        'choices': ["자고 하셨어요", "냐고 하셨어요", "다고 하셨어요", "라고 하셨어요"]
     },
     {
-        'text': "<p><strong>A: 그 <u>재미있는</u> 영화를 <strong>다</strong> <em>봤어요</em>?<br>B: 네, 영화를 본 ________ 친구들과 <strong>오랫동안</strong> <strong>열심히</strong> 토론했어요.</strong></p>",
-        'explanation': "<p><strong>후에</strong>: '보다' + '-ㄴ 후에'. Ko'rib bo'lgandan so'ng <strong>오랫동안</strong> (uzoq vaqt) muhokama qilishdi.</p>",
-        'correct': "후에",
-        'choices': ["전에", "후에", "동안", "면서"]
+        'text': "<p>A: <strong>점심시간인데</strong> <em>뭐 먹을까요</em>?<br>B: 동료가 <strong>근처</strong> 식당에서 <strong>같이</strong> 비빔밥을 <em>먹________</em>.</p>",
+        'explanation': "<p><strong>자고 했어요</strong>: '먹다' (yemoq) + '-자고 하다'. <strong>같이</strong> (birga) yeylik deb taklif qildi.</p>",
+        'correct': "자고 했어요",
+        'choices': ["으라고 했어요", "자고 했어요", "냐고 했어요", "다고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>지금</strong> <strong>당장</strong> 여행을 <em>출발할까요</em>?<br>B: 아니요, 출발하________ <strong>다시 한번</strong> 짐을 <strong>꼼꼼히</strong> 확인하세요.</strong></p>",
-        'explanation': "<p><strong>기 전에</strong>: '출발하다' (jo'nab ketmoq) + '-기 전에'. Jo'nashdan oldin <strong>꼼꼼히</strong> (batafsil/e'tibor bilan) tekshiring.</p>",
-        'correct': "기 전에",
-        'choices': ["ㄴ 후에", "기 전에", "은 후에", "고 나서"]
+        'text': "<p>A: <strong>이따가</strong> 회의실에서 <em>어떻게 할까요</em>?<br>B: <strong>조용히</strong> <em>기다리________</em>.</p>",
+        'explanation': "<p><strong>라고 했어요</strong>: '기다리다' (kutmoq) + '-라고 하다'. <strong>조용히</strong> (tinchgina) kutishni buyurdi.</p>",
+        'correct': "라고 했어요",
+        'choices': ["자고 했어요", "라고 했어요", "냐고 했어요", "다고 했어요"]
     },
     {
-        'text': "<p><strong>A: 한국에 <strong>처음</strong> <em>도착했어요</em>?<br>B: 네, 한국에 도착한 ________ <strong>가장 먼저</strong> <u>매운</u> 김치를 먹었어요.</strong></p>",
-        'explanation': "<p><strong>후에</strong>: '도착하다' (yetib kelmoq) + '-ㄴ 후에'. Yetib kelgandan so'ng <strong>가장 먼저</strong> (eng birinchi) yegan.</p>",
-        'correct': "후에",
-        'choices': ["전에", "후에", "동안", "고 나서"]
+        'text': "<p>A: 친구가 <strong>문자로</strong> <em>뭐라고</em> <em>보냈어요</em>?<br>B: <strong>오늘</strong> <strong>저녁에</strong> <strong>시내에서</strong> <em>만나________</em>.</p>",
+        'explanation': "<p><strong>자고 했어요</strong>: '만나다' (uchrashmoq) + '-자고 하다'. <strong>저녁에</strong> (kechqurun) uchrashaylik dedi.</p>",
+        'correct': "자고 했어요",
+        'choices': ["라고 했어요", "자고 했어요", "냐고 했어요", "다고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>언제</strong> <strong>화장을</strong> <em>지워요</em>?<br>B: <strong>밤에</strong> 씻________ <strong>반드시</strong> 화장을 <strong>깨끗하게</strong> 지워요.</strong></p>",
-        'explanation': "<p><strong>기 전에</strong>: '씻다' (yuvinmoq) + '-기 전에'. Yuvinishdan oldin <strong>반드시</strong> (albatta) pardozni o'chiradi.</p>",
-        'correct': "기 전에",
-        'choices': ["기 전에", "은 후에", "ㄴ 후에", "면서"]
+        'text': "<p>A: 경찰이 <strong>아까</strong> <em>뭐라고</em> <em>경고했어요</em>?<br>B: <strong>여기에</strong> 차를 <em>세우지 말________</em>.</p>",
+        'explanation': "<p><strong>라고 했어요</strong>: '말다' (qilmaslik) + '-라고 하다' (말라고 하다). Mashina qo'ymaslikni buyurdi.</p>",
+        'correct': "라고 했어요",
+        'choices': ["자고 했어요", "라고 했어요", "냐고 했어요", "다고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>아까</strong> <strong>샤워를</strong> <em>다 했어요</em>?<br>B: 네, 씻________ <strong>바로</strong> <u>편안한</u> 옷으로 <strong>빨리</strong> 갈아입었어요.</strong></p>",
-        'explanation': "<p><strong>은 후에</strong>: '씻다' undosh bilan tugagani uchun '-은 후에'. Yuvinib bo'lgandan so'ng <strong>바로</strong> (darhol) kiyim almashtirdi.</p>",
-        'correct': "은 후에",
-        'choices': ["기 전에", "은 후에", "ㄴ 후에", "면서"]
+        'text': "<p>A: <strong>주말에</strong> <strong>계속</strong> <strong>집에만</strong> <em>있을 거예요</em>?<br>B: 친구가 <strong>날씨가 좋으니까</strong> <strong>등산을</strong> <em>가________</em>.</p>",
+        'explanation': "<p><strong>자고 했어요</strong>: '가다' (bormoq) + '-자고 하다'. Tog'ga chiqaylik deb taklif qildi.</p>",
+        'correct': "자고 했어요",
+        'choices': ["라고 했어요", "자고 했어요", "냐고 했어요", "다고 했어요"]
     },
     {
-        'text': "<p><strong>A: 계약서에 <strong>무조건</strong> 사인을 <em>해야 해요</em>?<br>B: 아니요, 서명하________ <strong>끝까지</strong> <strong>자세히</strong> 읽어보세요.</strong></p>",
-        'explanation': "<p><strong>기 전에</strong>: '서명하다' (imzo chekmoq) + '-기 전에'. Imzo chekishdan oldin <strong>자세히</strong> (batafsil) o'qing.</p>",
-        'correct': "기 전에",
-        'choices': ["ㄴ 후에", "기 전에", "은 후에", "면서"]
+        'text': "<p>A: 의사 선생님이 <strong>어떻게</strong> <em>하라고</em> <em>하셨어요</em>?<br>B: <strong>매일</strong> <strong>규칙적으로</strong> <strong>약을</strong> <em>먹________</em>.</p>",
+        'explanation': "<p><strong>으라고 하셨어요</strong>: '먹다' (ichmoq/yemoq) + '-으라고 하다'. <strong>규칙적으로</strong> (muntazam) ichishni buyurdilar.</p>",
+        'correct': "으라고 하셨어요",
+        'choices': ["자고 하셨어요", "으라고 하셨어요", "냐고 하셨어요", "다고 하셨어요"]
     },
     {
-        'text': "<p><strong>A: 이 <u>두꺼운</u> 책을 <strong>다</strong> <em>읽었어요</em>?<br>B: 네, 책을 다 읽________ <strong>마음이</strong> <strong>정말</strong> <u>뿌듯했어요</u>.</strong></p>",
-        'explanation': "<p><strong>은 후에</strong>: '읽다' (o'qimoq) + '-은 후에'. O'qib bo'lgandan keyin <strong>마음이 정말</strong> (ko'ngli haqiqatan) faxrga to'ldi.</p>",
-        'correct': "은 후에",
-        'choices': ["기 전에", "은 후에", "ㄴ 후에", "면서"]
+        'text': "<p>A: <strong>이번</strong> 휴가 때 <em>어디로</em> <em>갈까요</em>?<br>B: 아내가 <strong>이번에는</strong> 제주도로 <em>가________</em>.</p>",
+        'explanation': "<p><strong>자고 했어요</strong>: '가다' (bormoq) + '-자고 하다'. Jeju oroliga boraylik deb taklif qildi.</p>",
+        'correct': "자고 했어요",
+        'choices': ["라고 했어요", "자고 했어요", "냐고 했어요", "다고 했어요"]
     },
     {
-        'text': "<p><strong>A: 친구를 <strong>오랜만에</strong> <em>만나요</em>?<br>B: 네, 만나________ <strong>미리</strong> 선물을 <strong>몰래</strong> 준비할 거예요.</strong></p>",
-        'explanation': "<p><strong>기 전에</strong>: '만나다' (uchrashmoq) + '-기 전에'. Uchrashishdan oldin <strong>미리</strong> (oldindan) sovg'a tayyorlaydi.</p>",
-        'correct': "기 전에",
-        'choices': ["ㄴ 후에", "은 후에", "기 전에", "면서"]
+        'text': "<p>A: 선생님이 <strong>칠판에</strong> <strong>있는</strong> 글을 <em>어떻게 하라고 하셨어요</em>?<br>B: 공책에 <strong>그대로</strong> <em>쓰________</em>.</p>",
+        'explanation': "<p><strong>라고 하셨어요</strong>: '쓰다' (yozmoq) + '-라고 하다'. <strong>그대로</strong> (o'zgarishsiz) yozishni buyurdilar.</p>",
+        'correct': "라고 하셨어요",
+        'choices': ["자고 하셨어요", "라고 하셨어요", "냐고 하셨어요", "다고 하셨어요"]
     },
     {
-        'text': "<p><strong>A: <strong>어제</strong> 그 친구를 <strong>드디어</strong> <em>만났어요</em>?<br>B: 네, 만난 ________ <strong>다 함께</strong> <u>즐겁게</u> 식사했어요.</strong></p>",
-        'explanation': "<p><strong>후에</strong>: '만나다' + '-ㄴ 후에'. Uchrashgandan keyin <strong>다 함께</strong> (hamma birga) ovqatlanishdi.</p>",
-        'correct': "후에",
-        'choices': ["전에", "후에", "동안", "면서"]
+        'text': "<p>A: 친구들이 <strong>운동장에</strong> <strong>왜</strong> <em>모였어요</em>?<br>B: <strong>다 같이</strong> 축구를 <em>하________</em>.</p>",
+        'explanation': "<p><strong>자고 했어요</strong>: '하다' (qilmoq) + '-자고 하다'. <strong>다 같이</strong> (birgalikda) o'ynaylik deyishdi.</p>",
+        'correct': "자고 했어요",
+        'choices': ["라고 했어요", "자고 했어요", "냐고 했어요", "다고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>직접</strong> 케이크를 <em>만들 거예요</em>?<br>B: 네, 만들________ <strong>신선한</strong> 재료를 <strong>가득</strong> 사야 해요.</strong></p>",
-        'explanation': "<p><strong>기 전에</strong>: '만들다' (tayyorlamoq) + '-기 전에'. Tayyorlashdan oldin <strong>가득</strong> (to'la/ko'p) masalliq olish kerak.</p>",
-        'correct': "기 전에",
-        'choices': ["기 전에", "은 후에", "ㄴ 후에", "면서"]
+        'text': "<p>A: 어머니가 <strong>전화로</strong> <em>뭐라고</em> <em>하셨어요</em>?<br>B: <strong>날씨가 추우니까</strong> <u>따뜻한</u> 옷을 <em>입________</em>.</p>",
+        'explanation': "<p><strong>으라고 하셨어요</strong>: '입다' (kiymoq) + '-으라고 하다'. <u>따뜻한</u> (issiq) kiyim kiyishni buyurdilar.</p>",
+        'correct': "으라고 하셨어요",
+        'choices': ["자고 하셨어요", "으라고 하셨어요", "냐고 하셨어요", "다고 하셨어요"]
     },
     {
-        'text': "<p><strong>A: <strong>방금</strong> 그 <u>맛있는</u> 요리를 <strong>다</strong> <em>만들었어요</em>?<br>B: 네, 만든 ________ <strong>예쁜</strong> 접시에 <strong>조심스럽게</strong> 담았어요.</strong></p>",
-        'explanation': "<p><strong>후에</strong>: '만들다' (tayyorlamoq). 'ㄹ' noto'g'ri fe'li '-ㄴ 후에' bilan kelganda 'ㄹ' tushib qoladi (만든 후에). Tayyorlagandan so'ng.</p>",
-        'correct': "후에",
-        'choices': ["전에", "후에", "동안", "면서"]
+        'text': "<p>A: 동생이 <strong>백화점에서</strong> <em>뭐라고</em> <em>했어요</em>?<br>B: 자기도 그 <u>예쁜</u> 가방을 <em>사________</em>.</p>",
+        'explanation': "<p><strong>달라고 했어요</strong>: O'ziga olib berishni so'raganda '사 달라고 하다' (olib berishni so'radi) ishlatiladi.</p>",
+        'correct': "달라고 했어요",
+        'choices': ["주라고 했어요", "자고 했어요", "달라고 했어요", "냐고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>수영장에</strong> <strong>바로</strong> <em>들어가도 돼요</em>?<br>B: 아니요, 수영하________ <strong>반드시</strong> <strong>가볍게</strong> 준비운동을 하세요.</strong></p>",
-        'explanation': "<p><strong>기 전에</strong>: '수영하다' (suzmoq) + '-기 전에'. Suzishdan oldin <strong>반드시</strong> (albatta) mashq qiling.</p>",
-        'correct': "기 전에",
-        'choices': ["ㄴ 후에", "은 후에", "기 전에", "면서"]
+        'text': "<p>A: 반장님이 <strong>쉬는 시간에</strong> <em>뭐라고</em> <em>했어요</em>?<br>B: <strong>다음 주에</strong> <strong>다 같이</strong> 회식을 <em>하________</em>.</p>",
+        'explanation': "<p><strong>자고 했어요</strong>: '하다' (qilmoq) + '-자고 하다'. <strong>다 같이</strong> (hamma) ziyofat qilaylik dedi.</p>",
+        'correct': "자고 했어요",
+        'choices': ["라고 했어요", "자고 했어요", "냐고 했어요", "다고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>매일</strong> 운동을 <strong>오래</strong> <em>해요</em>?<br>B: 네, 운동한 ________ <strong>시원한</strong> 물을 <strong>벌컥벌컥</strong> 마셔요.</strong></p>",
-        'explanation': "<p><strong>후에</strong>: '운동하다' (sport bilan shug'ullanmoq) + '-ㄴ 후에'. Mashqdan so'ng suvni <strong>벌컥벌컥</strong> (qultillatib) ichadi.</p>",
-        'correct': "후에",
-        'choices': ["전에", "후에", "동안", "면서"]
+        'text': "<p>A: 안내원이 <strong>박물관 안에서</strong> <em>어떻게 하라고</em> <em>했어요</em>?<br>B: <strong>절대</strong> 사진을 <em>찍지 말________</em>.</p>",
+        'explanation': "<p><strong>라고 했어요</strong>: '말다' (qilmaslik) + '-라고 하다'. <strong>절대</strong> (aslo) rasmga olmaslikni buyurdi.</p>",
+        'correct': "라고 했어요",
+        'choices': ["자고 했어요", "라고 했어요", "냐고 했어요", "다고 했어요"]
     },
     {
-        'text': "<p><strong>A: 이 <u>비싼</u> 계약서를 <strong>그냥</strong> <em>서명해요</em>?<br>B: 아니요, <strong>꼭</strong> 설명을 듣________ <strong>신중하게</strong> 서명하세요.</strong></p>",
-        'explanation': "<p><strong>기 전에</strong>: '듣다' (eshitmoq) + '-기 전에'. Eshitishdan oldin (bu yerda 듣기 전에 bo'lsa mantiqan xato: '듣기 전에 서명하세요'). To'g'risi: <strong>서명하기 전에 설명을 꼭 들으세요</strong>. But the blank is on 듣. Ah, wait. Let's fix the context.</p>\n<p><strong>A: 수업 내용을 <strong>다</strong> <em>이해했어요</em>?<br>B: 아니요, 수업을 듣________ <strong>미리</strong> 예습을 <strong>조금</strong> 해야 해요.</strong></p>",
-        'explanation': "<p><strong>기 전에</strong>: '듣다' + '-기 전에'. Darsni eshitishdan oldin <strong>미리</strong> (oldindan) tayyorgarlik ko'rish kerak.</p>",
-        'correct': "기 전에",
-        'choices': ["기 전에", "은 후에", "ㄴ 후에", "면서"]
+        'text': "<p>A: 선배가 <strong>도서관에서</strong> <em>뭐라고</em> <em>했어요</em>?<br>B: <strong>기말고사를 위해</strong> <strong>같이</strong> <strong>밤새워</strong> <em>공부하________</em>.</p>",
+        'explanation': "<p><strong>자고 했어요</strong>: '공부하다' (o'qimoq) + '-자고 하다'. <strong>밤새워</strong> (tun bo'yi) birga o'qiylik dedi.</p>",
+        'correct': "자고 했어요",
+        'choices': ["라고 했어요", "자고 했어요", "냐고 했어요", "다고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>방금</strong> 그 뉴스를 <strong>자세히</strong> <em>들었어요</em>?<br>B: 네, 뉴스를 들________ <strong>기분이</strong> <strong>너무</strong> <u>우울해졌어요</u>.</strong></p>",
-        'explanation': "<p><strong>은 후에</strong>: '듣다' (eshitmoq). 'ㄷ' -> 'ㄹ' ga o'zgarib '-은 후에' qo'shiladi (들은 후에). Eshitgandan so'ng <strong>우울해졌어요</strong> (tushkunlikka tushdi).</p>",
-        'correct': "은 후에",
-        'choices': ["기 전에", "은 후에", "ㄴ 후에", "면서"]
+        'text': "<p>A: 할머니가 <strong>손자에게</strong> <em>뭐라고</em> <em>말씀하셨어요</em>?<br>B: <strong>위험하니까</strong> 차를 <strong>조심하________</em>.</p>",
+        'explanation': "<p><strong>라고 하셨어요</strong>: '조심하다' (ehtiyot bo'lmoq) + '-라고 하다'. <strong>위험하니까</strong> (xavfli bo'lgani uchun) ehtiyot bo'lishni buyurdilar.</p>",
+        'correct': "라고 하셨어요",
+        'choices': ["자고 하셨어요", "라고 하셨어요", "냐고 하셨어요", "다고 하셨어요"]
     },
     {
-        'text': "<p><strong>A: <strong>이따가</strong> 편지를 <strong>다</strong> <em>쓸 거예요</em>?<br>B: 네, 편지를 쓰________ <strong>먼저</strong> <strong>예쁜</strong> 편지지를 <strong>빨리</strong> 골라야 해요.</strong></p>",
-        'explanation': "<p><strong>기 전에</strong>: '쓰다' (yozmoq) + '-기 전에'. Yozishdan oldin qog'oz tanlash kerak. <strong>빨리</strong> (tez).</p>",
-        'correct': "기 전에",
-        'choices': ["ㄴ 후에", "은 후에", "기 전에", "면서"]
+        'text': "<p>A: 친구가 <strong>비가 오는데</strong> <em>뭐라고 했어요</em>?<br>B: <strong>비가 그칠 때까지</strong> 카페에서 <strong>잠깐</strong> <em>기다리________</em>.</p>",
+        'explanation': "<p><strong>자고 했어요</strong>: '기다리다' (kutmoq) + '-자고 하다'. <strong>잠깐</strong> (biroz) kutib turaylik dedi.</p>",
+        'correct': "자고 했어요",
+        'choices': ["라고 했어요", "자고 했어요", "냐고 했어요", "다고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>어제</strong> 일기를 <strong>길게</strong> <em>썼어요</em>?<br>B: 네, 일기를 쓴 ________ <strong>불을 끄고</strong> <strong>바로</strong> <u>잠들었어요</u>.</strong></p>",
-        'explanation': "<p><strong>후에</strong>: '쓰다' (yozmoq) + '-ㄴ 후에' (쓴 후에). Yozgandan keyin <strong>바로</strong> (darhol) uxladi.</p>",
-        'correct': "후에",
-        'choices': ["전에", "후에", "동안", "면서"]
+        'text': "<p>A: 간호사가 <strong>대기실에서</strong> <em>뭐라고</em> <em>안내했어요</em>?<br>B: 이름을 <em>부를 때까지</em> 자리에 <em>앉아 있으________</em>.</p>",
+        'explanation': "<p><strong>라고 했어요</strong>: '있으라' + '고 하다'. <strong>앉아 있으라고 했어요</strong> (o'tirib turishni buyurdi).</p>",
+        'correct': "라고 했어요",
+        'choices': ["자고 했어요", "라고 했어요", "냐고 했어요", "다고 했어요"]
     },
     {
-        'text': "<p><strong>A: 비행기를 <strong>언제</strong> <em>타요</em>?<br>B: 비행기를 타________ <strong>면세점에서</strong> <strong>잠깐</strong> <strong>빨리</strong> 쇼핑을 할 거예요.</strong></p>",
-        'explanation': "<p><strong>기 전에</strong>: '타다' (minmoq/chiqmoq) + '-기 전에'. Samolyotga chiqishdan oldin <strong>잠깐</strong> (biroz) xarid qiladi.</p>",
-        'correct': "기 전에",
-        'choices': ["ㄴ 후에", "은 후에", "기 전에", "면서"]
+        'text': "<p>A: 동생이 <strong>밤에</strong> <strong>자꾸</strong> <em>뭐라고</em> <em>졸랐어요</em>?<br>B: <strong>배고프다며</strong> <strong>야식을</strong> <em>먹________</em>.</p>",
+        'explanation': "<p><strong>자고 했어요</strong>: '먹다' (yemoq) + '-자고 하다'. Tungi ovqatni yeylik deb taklif qildi.</p>",
+        'correct': "자고 했어요",
+        'choices': ["으라고 했어요", "자고 했어요", "냐고 했어요", "다고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>아까</strong> 버스를 <strong>무사히</strong> <em>탔어요</em>?<br>B: 네, 버스를 탄 ________ <strong>빈자리에</strong> <strong>편하게</strong> 앉았어요.</strong></p>",
-        'explanation': "<p><strong>후에</strong>: '타다' + '-ㄴ 후에'. Chiqgandan so'ng <strong>편하게</strong> (qulay qilib) o'tirdi.</p>",
-        'correct': "후에",
-        'choices': ["전에", "후에", "동안", "면서"]
+        'text': "<p>A: <strong>라디오에서</strong> <strong>건강을 위해</strong> <em>어떻게 하라고 했어요</em>?<br>B: <strong>매일</strong> <strong>충분히</strong> <strong>물을</strong> <em>마시________</em>.</p>",
+        'explanation': "<p><strong>라고 했어요</strong>: '마시다' (ichmoq) + '-라고 하다'. <strong>충분히</strong> (yetarlicha) ichishni maslahat/buyruq berdi.</p>",
+        'correct': "라고 했어요",
+        'choices': ["자고 했어요", "라고 했어요", "냐고 했어요", "다고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>이번</strong> 주말 여행지를 <strong>벌써</strong> <em>결정했어요</em>?<br>B: 아니요, 결정하________ <strong>가족들과</strong> <strong>오래</strong> <strong>충분히</strong> 상의해야 해요.</strong></p>",
-        'explanation': "<p><strong>기 전에</strong>: '결정하다' (qaror qilmoq) + '-기 전에'. Qaror qilishdan oldin <strong>충분히</strong> (yetarlicha) maslahatlashish kerak.</p>",
-        'correct': "기 전에",
-        'choices': ["ㄴ 후에", "은 후에", "기 전에", "면서"]
+        'text': "<p>A: 직장 동료가 <strong>퇴근 후에</strong> <em>뭐라고</em> <em>했어요</em>?<br>B: <strong>스트레스도 풀 겸</strong> <strong>노래방에</strong> <em>가________</em>.</p>",
+        'explanation': "<p><strong>자고 했어요</strong>: '가다' (bormoq) + '-자고 하다'. Karaoke ga boraylik dedi.</p>",
+        'correct': "자고 했어요",
+        'choices': ["라고 했어요", "자고 했어요", "냐고 했어요", "다고 했어요"]
     },
     {
-        'text': "<p><strong>A: <strong>드디어</strong> 여행 날짜를 <em>결정했어요</em>?<br>B: 네, 날짜를 결정한 ________ <strong>바로</strong> 비행기 표를 <strong>급하게</strong> 예약했어요.</strong></p>",
-        'explanation': "<p><strong>후에</strong>: '결정하다' + '-ㄴ 후에'. Qaror qilingandan so'ng <strong>바로</strong> (darhol) band qildi.</p>",
-        'correct': "후에",
-        'choices': ["전에", "후에", "동안", "고 나서"]
+        'text': "<p>A: 사장님이 <strong>직원들에게</strong> <em>무엇을</em> <em>부탁하셨어요</em>?<br>B: <strong>모두</strong> <strong>힘을 합쳐서</strong> 프로젝트를 <strong>성공적으로</strong> <em>끝내________</em>.</p>",
+        'explanation': "<p><strong>자고 하셨어요</strong>: '끝내다' (tugatmoq) + '-자고 하다' (tugataylik dedilar). Barchani birlashishga chaqirdi.</p>",
+        'correct': "자고 하셨어요",
+        'choices': ["라고 하셨어요", "자고 하셨어요", "냐고 하셨어요", "다고 하셨어요"]
     },
     {
-        'text': "<p><strong>A: 한국어를 <strong>언제부터</strong> <em>배웠어요</em>?<br>B: 한국에 오________ <strong>기초부터</strong> <strong>차근차근</strong> 배우기 시작했어요.</strong></p>",
-        'explanation': "<p><strong>기 전에</strong>: '오다' (kelmoq) + '-기 전에'. Koreyaga kelishdan oldin <strong>차근차근</strong> (sekin-asta/bosqichma-bosqich) boshladi.</p>",
-        'correct': "기 전에",
-        'choices': ["기 전에", "ㄴ 후에", "은 후에", "면서"]
+        'text': "<p>A: 선생님이 <strong>교실에서</strong> <em>뭐라고</em> <em>하셨어요</em>?<br>B: <strong>서로</strong> <strong>싸우지 말고</strong> <strong>사이좋게</strong> <em>지내________</em>.</p>",
+        'explanation': "<p><strong>라고 하셨어요</strong>: '지내다' (hayot kechirmoq/yashamoq) + '-라고 하다'. <strong>사이좋게</strong> (inoq bo'lib) yashashni buyurdilar.</p>",
+        'correct': "라고 하셨어요",
+        'choices': ["자고 하셨어요", "라고 하셨어요", "냐고 하셨어요", "다고 하셨어요"]
     },
     {
-        'text': "<p><strong>A: <strong>어제</strong> 친구와 <strong>크게</strong> 싸우고 <strong>어떻게</strong> 했어요?<br>B: <strong>화가 많이 난</strong> ________ <strong>먼저</strong> <strong>진심으로</strong> <u>사과했어요</u>.</strong></p>",
-        'explanation': "<p><strong>후에</strong>: '화가 나다' (jahli chiqmoq) + '-ㄴ 후에'. Jahli chiqqandan so'ng, lekin '먼저 사과했어요' doesn't fit perfectly. Let's adjust to: '싸운 후에'.</p>\n<p><strong>A: <strong>어제</strong> 친구와 싸우고 <em>어떻게 했어요</em>?<br>B: 크게 싸운 ________ 제가 <strong>먼저</strong> <strong>진심으로</strong> <u>사과했어요</u>.</strong></p>",
-        'explanation': "<p><strong>후에</strong>: '싸우다' (urushmoq) + '-ㄴ 후에'. Urushgandan so'ng <strong>먼저</strong> (birinchi bo'lib) <strong>진심으로</strong> (chin dildan) uzr so'radi.</p>",
-        'correct': "후에",
-        'choices': ["전에", "후에", "동안", "면서"]
-    }
-]
-
-topic_28 = [
-    # --- TOPIC 28: 동사 + (으)면서 (동시 동작) ---
-    {
-        'text': "<p><strong>A: <strong>보통</strong> 저녁을 <em>어떻게</em> 먹어요?<br>B: 저는 <strong>항상</strong> 텔레비전을 보________ 밥을 <strong>맛있게</strong> 먹어요.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '보다' (ko'rmoq) unli bilan tugagani uchun '-면서' (shular bilan birga/baravariga) qo'shiladi. <strong>항상</strong> (har doim) TV ko'rib ovqatlanadi.</p>",
-        'correct': "면서",
-        'choices': ["면서", "으면서", "고", "지만"]
-    },
-    {
-        'text': "<p><strong>A: <strong>공부할 때</strong> 음악을 <strong>자주</strong> 들어요?<br>B: 네, <u>조용한</u> 음악을 들________ <strong>집중해서</strong> 공부해요.</strong></p>",
-        'explanation': "<p><strong>으면서</strong>: '듣다' (eshitmoq). 'ㄷ' -> 'ㄹ' ga aylanib '-으면서' qo'shiladi (들으면서). <strong>집중해서</strong> (diqqat qilib) o'qiydi.</p>",
-        'correct': "으면서",
-        'choices': ["면서", "으면서", "고", "서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>아침에</strong> 학교에 <em>어떻게</em> 가요?<br>B: <u>상쾌한</u> 공기를 마시며 <strong>천천히</strong> 걸________ 가요.</strong></p>",
-        'explanation': "<p><strong>으면서</strong>: '걷다' (yurmoq). 'ㄷ' -> 'ㄹ' + '-으면서' (걸으면서). <strong>천천히</strong> (sekin) piyoda yurib boradi.</p>",
-        'correct': "으면서",
-        'choices': ["으면서", "면서", "고", "지만"]
-    },
-    {
-        'text': "<p><strong>A: <strong>어제</strong> 카페에서 친구와 <em>뭐 했어요</em>?<br>B: 커피를 마시________ <strong>오랫동안</strong> <strong>즐겁게</strong> 이야기했어요.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '마시다' (ichmoq) unli bilan tugagani uchun '-면서'. Qahva ichib <strong>오랫동안</strong> (uzoq vaqt) suhbatlashdi.</p>",
-        'correct': "면서",
-        'choices': ["면서", "으면서", "고", "서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>혼자서</strong> 버스를 <em>기다렸어요</em>?<br>B: 네, <strong>스마트폰을</strong> 보며 <strong>가만히</strong> 기다리________ <strong>시간을</strong> 보냈어요.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '기다리다' (kutmoq) unli bilan tugagani uchun '-면서'. <strong>가만히</strong> (jim/qimir etmay) kutib vaqt o'tkazdi.</p>",
-        'correct': "면서",
-        'choices': ["면서", "으면서", "고", "지만"]
-    },
-    {
-        'text': "<p><strong>A: 친구가 <strong>왜</strong> <strong>갑자기</strong> 웃었어요?<br>B: 제 <u>웃긴</u> 농담을 듣고 <strong>크게</strong> 웃________ <strong>박수를</strong> 쳤어요.</strong></p>",
-        'explanation': "<p><strong>으면서</strong>: '웃다' (kulmoq) undosh bilan tugagani uchun '-으면서'. <strong>크게</strong> (baland ovozda) kulib qarsak chaldi.</p>",
-        'correct': "으면서",
-        'choices': ["면서", "으면서", "고", "서"]
-    },
-    {
-        'text': "<p><strong>A: 그 슬픈 영화를 보고 <strong>진짜</strong> 울었어요?<br>B: 네, 주인공이 죽을 때 <strong>소리 없이</strong> 울________ <strong>계속</strong> 화면을 봤어요.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '울다' (yig'lamoq) 'ㄹ' bilan tugagani uchun to'g'ridan-to'g'ri '-면서' ulanadi (울면서). <strong>소리 없이</strong> (ovozsiz).</p>",
-        'correct': "면서",
-        'choices': ["으면서", "면서", "고", "지만"]
-    },
-    {
-        'text': "<p><strong>A: <strong>요즘</strong> 아르바이트를 <strong>매일</strong> 해요?<br>B: 네, 학교에서 <strong>열심히</strong> 공부하________ <strong>주말에</strong> <strong>따로</strong> 일도 해요.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '공부하다' (o'qimoq) + '-면서'. <strong>열심히</strong> (tirishib) o'qish bilan birga ishlaydi ham.</p>",
-        'correct': "면서",
-        'choices': ["면서", "으면서", "고", "서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>운전할 때</strong> <strong>절대</strong> 하면 <strong>안 되는 일이</strong> <em>뭐예요</em>?<br>B: <strong>위험하니까</strong> <strong>절대로</strong> 운전하________ <strong>전화를</strong> 받으면 안 돼요.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '운전하다' (mashina haydamoq) + '-면서'. <strong>절대로</strong> (aslo/mutlaqo) haydayotganda telefonlashmaslik kerak.</p>",
-        'correct': "면서",
-        'choices': ["면서", "으면서", "고", "지만"]
-    },
-    {
-        'text': "<p><strong>A: <strong>집에서</strong> 밥을 <strong>직접</strong> 요리해요?<br>B: 네, 유튜브 영상을 <strong>자세히</strong> 보________ <strong>천천히</strong> 만들어요.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '보다' (ko'rmoq) + '-면서'. Videoni <strong>자세히</strong> (batafsil) ko'rib, ovqat qiladi.</p>",
-        'correct': "면서",
-        'choices': ["면서", "으면서", "고", "서"]
-    },
-    {
-        'text': "<p><strong>A: 아이들이 <strong>놀이터에서</strong> <strong>잘</strong> 놀아요?<br>B: 네, <strong>친구들과 함께</strong> <strong>신나게</strong> 뛰어놀________ <strong>아주</strong> 즐거워해요.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '뛰어놀다' (yugurib o'ynamoq) 'ㄹ' bilan tugagani uchun '-면서' ulanadi. <strong>신나게</strong> (zavqlanib).</p>",
-        'correct': "면서",
-        'choices': ["으면서", "면서", "고", "지만"]
-    },
-    {
-        'text': "<p><strong>A: 한국에서 <strong>가장</strong> <u>힘든 점이</u> <em>뭐예요</em>?<br>B: 한국에 살________ <strong>가족들이 너무 보고 싶을 때</strong> <strong>제일</strong> <u>힘들어요</u>.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '살다' (yashamoq) 'ㄹ' bilan tugagani uchun '-면서'. <strong>제일</strong> (eng) qiyin payt.</p>",
-        'correct': "면서",
-        'choices': ["으면서", "면서", "고", "서"]
-    },
-    {
-        'text': "<p><strong>A: 글을 쓸 때 <strong>보통</strong> <em>어떻게</em> 해요?<br>B: <strong>머릿속으로</strong> <strong>깊이</strong> 생각하________ <strong>천천히</strong> <strong>한 자씩</strong> 적어요.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '생각하다' (o'ylamoq) + '-면서'. <strong>깊이</strong> (chuqur) o'ylab yozadi.</p>",
-        'correct': "면서",
-        'choices': ["면서", "으면서", "고", "지만"]
-    },
-    {
-        'text': "<p><strong>A: <strong>매일</strong> 책을 <strong>조용히</strong> 읽어요?<br>B: 네, <u>따뜻한</u> 차를 한 잔 마시________ <strong>여유롭게</strong> 읽어요.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '마시다' (ichmoq) + '-면서'. <strong>여유롭게</strong> (baxotirjam) o'qiydi.</p>",
-        'correct': "면서",
-        'choices': ["면서", "으면서", "고", "서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>수업 시간에</strong> 필기를 <strong>꼼꼼히</strong> 해요?<br>B: 네, 선생님 말씀을 <strong>주의 깊게</strong> 들________ <strong>빠르게</strong> 필기해요.</strong></p>",
-        'explanation': "<p><strong>으면서</strong>: '듣다' (eshitmoq). 'ㄷ' -> 'ㄹ' + '-으면서'. <strong>주의 깊게</strong> (diqqat bilan) eshitib yozadi.</p>",
-        'correct': "으면서",
-        'choices': ["면서", "으면서", "고", "지만"]
-    },
-    {
-        'text': "<p><strong>A: 도서관에서 <strong>모르는 단어를</strong> <em>어떻게</em> 해요?<br>B: 사전을 <strong>바로바로</strong> 찾________ <strong>정확하게</strong> 번역해요.</strong></p>",
-        'explanation': "<p><strong>으면서</strong>: '찾다' (qidirmoq) undosh bilan tugagani uchun '-으면서'. <strong>바로바로</strong> (darhol) qidirib tarjima qiladi.</p>",
-        'correct': "으면서",
-        'choices': ["면서", "으면서", "고", "서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>주말에</strong> <strong>집에서</strong> <strong>오래</strong> 쉬어요?<br>B: 네, <strong>소파에 누워서</strong> <strong>편하게</strong> 쉬________ <strong>밀린</strong> 영화를 봐요.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '쉬다' (dam olmoq) unli bilan tugagani uchun '-면서'. <strong>편하게</strong> (qulay/baxotirjam) dam olib kino ko'radi.</p>",
-        'correct': "면서",
-        'choices': ["면서", "으면서", "고", "지만"]
-    },
-    {
-        'text': "<p><strong>A: <strong>혼자서</strong> 요리하는 것을 좋아해요?<br>B: 네, <strong>주방에서</strong> 요리하________ <strong>크게</strong> 노래 부르는 것을 <strong>진짜</strong> 좋아해요.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '요리하다' (ovqat pishirmoq) + '-면서'. <strong>크게</strong> (baland qilib) qo'shiq aytadi.</p>",
-        'correct': "면서",
-        'choices': ["면서", "으면서", "고", "서"]
-    },
-    {
-        'text': "<p><strong>A: 주말에 방 청소를 <strong>자주</strong> 해요?<br>B: 네, 창문을 열어 환기하________ <strong>구석구석</strong> <strong>깨끗하게</strong> 청소해요.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '환기하다' (havoni almashtirmoq) + '-면서'. <strong>구석구석</strong> (har bir burchagini) tozalaydi.</p>",
-        'correct': "면서",
-        'choices': ["면서", "으면서", "고", "지만"]
-    },
-    {
-        'text': "<p><strong>A: 파티에서 <strong>다들</strong> <strong>즐겁게</strong> 놀았어요?<br>B: 네, <strong>신나는 음악에 맞춰서</strong> 춤추________ <strong>다 함께</strong> <strong>신나게</strong> 놀았어요.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '춤추다' (raqsga tushmoq) unli bilan tugagani uchun '-면서'. <strong>다 함께</strong> (hamma birgalikda) raqs tushdi.</p>",
-        'correct': "면서",
-        'choices': ["면서", "으면서", "고", "서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>어제</strong> 수업 시간에 <strong>너무</strong> <u>피곤해서</u> 졸았어요?<br>B: 네, <strong>꾸벅꾸벅</strong> 졸________ <strong>어렵게</strong> 수업을 들었어요.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '졸다' (mudramoq) 'ㄹ' bilan tugagani uchun '-면서'. <strong>꾸벅꾸벅</strong> (boshni tebratib mudrash holati).</p>",
-        'correct': "면서",
-        'choices': ["으면서", "면서", "고", "지만"]
-    },
-    {
-        'text': "<p><strong>A: 한국어를 <strong>어떻게</strong> <strong>그렇게</strong> <strong>빨리</strong> <em>배웠어요</em>?<br>B: <strong>한국 친구들과</strong> <strong>직접</strong> 대화하________ <strong>자연스럽게</strong> 배웠어요.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '대화하다' (suhbatlashmoq) + '-면서'. <strong>자연스럽게</strong> (tabiiy ravishda) o'rgandi.</p>",
-        'correct': "면서",
-        'choices': ["면서", "으면서", "고", "서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>아르바이트로</strong> 학생들을 <strong>직접</strong> 가르쳐요?<br>B: 네, 제가 <strong>직접</strong> 가르치________ <strong>오히려</strong> 제가 <strong>더 많이</strong> 배워요.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '가르치다' (o'rgatmoq) unli bilan tugagani uchun '-면서'. <strong>오히려</strong> (aksincha) o'zi ko'proq o'rganadi.</p>",
-        'correct': "면서",
-        'choices': ["면서", "으면서", "고", "지만"]
-    },
-    {
-        'text': "<p><strong>A: <strong>아침에</strong> 샤워를 <strong>오래</strong> <em>해요</em>?<br>B: 네, <u>따뜻한</u> 물로 샤워하________ <strong>오늘 할 일을</strong> 생각해요.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '샤워하다' (dush qabul qilmoq) + '-면서'. Dush qabul qilib, qiladigan ishlarni o'ylaydi.</p>",
-        'correct': "면서",
-        'choices': ["면서", "으면서", "고", "서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>외국에서</strong> <strong>오래</strong> 살면 <em>어때요</em>?<br>B: <strong>처음에는</strong> <strong>너무</strong> 외로웠지만, <strong>조금씩</strong> 적응하________ <strong>점점</strong> <u>괜찮아져요</u>.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '적응하다' (ko'nikmoq/moslashmoq) + '-면서'. <strong>조금씩</strong> (asta-sekin) moslashib bormoqda.</p>",
-        'correct': "면서",
-        'choices': ["면서", "으면서", "고", "지만"]
-    },
-    {
-        'text': "<p><strong>A: <strong>주말에</strong> 친구와 <strong>오래</strong> 통화했어요?<br>B: 네, <strong>서로</strong> <strong>크게</strong> 웃________ <strong>두 시간이나</strong> <strong>길게</strong> 통화했어요.</strong></p>",
-        'explanation': "<p><strong>으면서</strong>: '웃다' (kulmoq) undosh bilan tugagani uchun '-으면서'. <strong>서로</strong> (bir-biri bilan) kulishib.</p>",
-        'correct': "으면서",
-        'choices': ["면서", "으면서", "고", "서"]
-    },
-    {
-        'text': "<p><strong>A: 길을 <strong>걸을 때</strong> <strong>무슨 생각을</strong> 해요?<br>B: <strong>아름다운 경치를</strong> <strong>천천히</strong> 보________ <strong>아무 생각 없이</strong> 걸어요.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '보다' (ko'rmoq) + '-면서'. <strong>아무 생각 없이</strong> (hech narsa o'ylamasdan) manzarani ko'rib yuradi.</p>",
-        'correct': "면서",
-        'choices': ["면서", "으면서", "고", "지만"]
-    },
-    {
-        'text': "<p><strong>A: <strong>회사에서</strong> <strong>일할 때</strong> <strong>간식을</strong> 자주 먹어요?<br>B: 네, <strong>바쁘게</strong> 일하________ <strong>가끔</strong> <u>달콤한</u> 초콜릿을 먹어요.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '일하다' (ishlamoq) + '-면서'. <strong>바쁘게</strong> (band bo'lib) ishlab, shokolad yeydi.</p>",
-        'correct': "면서",
-        'choices': ["면서", "으면서", "고", "서"]
-    },
-    {
-        'text': "<p><strong>A: 노래방에서 <strong>보통</strong> 노래를 <em>어떻게</em> 불러요?<br>B: <strong>마이크를 꽉 잡고</strong> <strong>신나게</strong> 부르________ <strong>열심히</strong> 춤도 춰요.</strong></p>",
-        'explanation': "<p><strong>면서</strong>: '부르다' (kuylamoq) + '-면서'. <strong>신나게</strong> (zavqlanib) kuylab raqsga tushadi.</p>",
-        'correct': "면서",
-        'choices': ["면서", "으면서", "고", "지만"]
-    },
-    {
-        'text': "<p><strong>A: <strong>어제</strong> 지하철에서 <strong>혹시</strong> 제 문자를 못 <em>봤어요</em>?<br>B: <strong>음악을 크게</strong> <u>들으________</u> 눈을 감고 있어서 <strong>전혀</strong> 못 봤어요.</strong></p>",
-        'explanation': "<p><strong>으면서</strong>: '듣다' (eshitmoq). 'ㄷ' -> 'ㄹ' + '-으면서'. Musiqa eshitib, ko'zini yumib olgandi. <strong>전혀</strong> (umuman).</p>",
-        'correct': "으면서",
-        'choices': ["면서", "으면서", "고", "서"]
-    }
-]
-
-topic_29 = [
-    # --- TOPIC 29: 동사 + (으)려고 하다 (의도와 계획) ---
-    {
-        'text': "<p><strong>A: <strong>이번</strong> 주말에 <strong>집에서</strong> <em>뭐 할 거예요</em>?<br>B: <strong>밀린</strong> 잠을 <strong>푹</strong> <u>자________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>자려고</strong>: '자다' (uxlamoq) unli bilan tugagani uchun '-려고 하다' ulanadi. <strong>푹</strong> (yaxshilab/to'yib) uxlashni rejalashtirmoqda.</p>",
-        'correct': "자려고",
-        'choices': ["자려고", "자으려고", "자고", "자서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>내일</strong> 저녁에 <strong>어떤</strong> 음식을 <em>만들 거예요</em>?<br>B: <strong>오랜만에</strong> <u>맛있는</u> 불고기를 <u>만들________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>만들려고</strong>: '만들다' (tayyorlamoq). 'ㄹ' bilan tugagan fe'llar to'g'ridan-to'g'ri '-려고 하다' qabul qiladi. <strong>오랜만에</strong> (anchadan so'ng).</p>",
-        'correct': "만들려고",
-        'choices': ["만들으려고", "만드려고", "만들려고", "만들고"]
-    },
-    {
-        'text': "<p><strong>A: <strong>나중에</strong> 대학교를 졸업하고 <strong>어디서</strong> <em>살 거예요</em>?<br>B: <strong>계속</strong> <strong>한국에서</strong> <u>살________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>살려고</strong>: '살다' (yashamoq). 'ㄹ' bilan tugagani uchun '-려고 하다' ulanadi. <strong>계속</strong> (davomli/tinmay) yashash niyati bor.</p>",
-        'correct': "살려고",
-        'choices': ["살으려고", "살려고", "사려고", "살고"]
-    },
-    {
-        'text': "<p><strong>A: <strong>오늘</strong> 도서관에서 <u>어려운</u> 책을 <em>다 읽을 거예요</em>?<br>B: 네, <strong>밤이 늦어도</strong> <strong>끝까지</strong> <u>읽________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>읽으려고</strong>: '읽다' (o'qimoq) undosh bilan tugagani uchun '-으려고 하다' ulanadi. <strong>끝까지</strong> (oxirigacha) o'qish niyati bor.</p>",
-        'correct': "읽으려고",
-        'choices': ["읽려고", "읽고", "읽으려고", "읽어서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>백화점에</strong> <strong>왜</strong> <strong>그렇게</strong> <strong>급하게</strong> <em>가요</em>?<br>B: 친구 생일 선물을 <strong>빨리</strong> <u>사________</u> 가요.</strong></p>",
-        'explanation': "<p><strong>사려고</strong>: '사다' (sotib olmoq) unli bilan tugagani uchun '-려고' qo'shiladi. <strong>빨리</strong> (tez) sotib olish maqsadi bor.</p>",
-        'correct': "사려고",
-        'choices': ["사으려고", "사고", "사서", "사려고"]
-    },
-    {
-        'text': "<p><strong>A: <strong>지금</strong> <strong>옷을 입고</strong> <strong>어디로</strong> <em>나가요</em>?<br>B: 친구를 <strong>잠깐</strong> <u>만나________</u> 시내에 나가요.</strong></p>",
-        'explanation': "<p><strong>만나려고</strong>: '만나다' (uchrashmoq) unli bilan tugagani uchun '-려고'. <strong>잠깐</strong> (biroz) uchrashish niyatida.</p>",
-        'correct': "만나려고",
-        'choices': ["만나으려고", "만나려고", "만나고", "만나서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>점심때</strong> <u>매콤한</u> 떡볶이를 <em>먹을 거예요</em>?<br>B: 네, 친구들과 <strong>다 같이</strong> <strong>맛있게</strong> <u>먹________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>먹으려고</strong>: '먹다' (yemoq) undosh bilan tugagani uchun '-으려고 하다' qo'shiladi. <strong>다 같이</strong> (hamma birga) yeyishni rejalashtirmoqda.</p>",
-        'correct': "먹으려고",
-        'choices': ["먹으려고", "먹려고", "먹고", "먹어서"]
-    },
-    {
-        'text': "<p><strong>A: 컴퓨터를 <strong>새로</strong> <em>샀어요</em>?<br>B: 아니요, <strong>아직</strong> <strong>안</strong> 샀는데 <strong>내일</strong> <u>사________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>사려고</strong>: '사다' (sotib olmoq). Unli bilan tugagani uchun '-려고 하다'. <strong>내일</strong> (ertaga) olish niyatida.</p>",
-        'correct': "사려고",
-        'choices': ["사려고", "사으려고", "사고", "사서"]
-    },
-    {
-        'text': "<p><strong>A: 한국어를 <strong>언제까지</strong> <em>배울 거예요</em>?<br>B: <strong>가능하면</strong> <strong>한국 대학교에 갈 때까지</strong> <u>배우________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>배우려고</strong>: '배우다' (o'rganmoq). Unli bilan tugagani uchun '-려고 하다'. <strong>가능하면</strong> (imkoni bo'lsa) o'rganishda davom etmoqchi.</p>",
-        'correct': "배우려고",
-        'choices': ["배우으려고", "배우고", "배우려고", "배워서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>음악을 켜고</strong> <em>뭐 할 거예요</em>?<br>B: <u>조용한</u> 클래식 음악을 <strong>편안하게</strong> <u>들________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>들으려고</strong>: '듣다' (eshitmoq). 'ㄷ' noto'g'ri fe'li 'ㄹ' ga aylanadi va '-으려고 하다' qo'shiladi (들으려고). <strong>편안하게</strong> (qulay).</p>",
-        'correct': "들으려고",
-        'choices': ["듣으려고", "들으려고", "듣려고", "들고"]
-    },
-    {
-        'text': "<p><strong>A: <strong>날씨가 좋은데</strong> <strong>공원에서</strong> <em>산책할 거예요</em>?<br>B: 네, <strong>건강을 위해서</strong> <strong>한 시간 동안</strong> <u>걸________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>걸으려고</strong>: '걷다' (yurmoq). 'ㄷ' -> 'ㄹ' + '-으려고 하다' (걸으려고). <strong>건강을 위해서</strong> (sog'liq uchun) yurmoqchi.</p>",
-        'correct': "걸으려고",
-        'choices': ["걷으려고", "걷려고", "걸으려고", "걷고"]
-    },
-    {
-        'text': "<p><strong>A: 친구가 이사하는데 <strong>가서</strong> <em>도와줄 거예요</em>?<br>B: 네, <u>무거운</u> 짐을 <strong>열심히</strong> <u>도우________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>도우려고</strong>: '돕다' (yordam bermoq). 'ㅂ' noto'g'ri fe'li '우' ga aylanib '-려고 하다' ulanadi (도우려고). <strong>열심히</strong> (tirishib).</p>",
-        'correct': "도우려고",
-        'choices': ["돕으려고", "도우려고", "도올려고", "돕고"]
-    },
-    {
-        'text': "<p><strong>A: 삼겹살을 <strong>직접</strong> <strong>집에서</strong> <em>구울 거예요</em>?<br>B: 네, <strong>마당에서</strong> <strong>맛있게</strong> <u>구우________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>구우려고</strong>: '굽다' (pishirmoq/qovurmoq). 'ㅂ' -> '우' + '-려고 하다' (구우려고). <strong>맛있게</strong> (mazali qilib).</p>",
-        'correct': "구우려고",
-        'choices': ["굽으려고", "구우려고", "구올려고", "굽고"]
-    },
-    {
-        'text': "<p><strong>A: <strong>주말에</strong> 친구들과 <strong>하루 종일</strong> <em>놀 거예요</em>?<br>B: 네, <strong>오랜만에</strong> 만나서 <strong>신나게</strong> <u>놀________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>놀려고</strong>: '놀다' (o'ynamoq). 'ㄹ' bilan tugagani uchun '-려고 하다' to'g'ridan-to'g'ri ulanadi. <strong>신나게</strong> (zavqlanib).</p>",
-        'correct': "놀려고",
-        'choices': ["놀으려고", "노려고", "놀고", "놀려고"]
-    },
-    {
-        'text': "<p><strong>A: <strong>안 쓰는</strong> 물건을 <strong>인터넷에</strong> <em>팔 거예요</em>?<br>B: 네, <strong>필요 없는</strong> 것들은 <strong>전부</strong> <u>팔________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>팔려고</strong>: '팔다' (sotmoq). 'ㄹ' bilan tugagani uchun '-려고 하다' qo'shiladi. <strong>전부</strong> (barchasini) sotish niyatida.</p>",
-        'correct': "팔려고",
-        'choices': ["팔으려고", "파려고", "팔려고", "팔고"]
-    },
-    {
-        'text': "<p><strong>A: 잃어버린 지갑을 <strong>어떻게</strong> <em>할 거예요</em>?<br>B: 경찰서에 가서 <strong>꼭</strong> <strong>다시</strong> <u>찾________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>찾으려고</strong>: '찾다' (qidirmoq/topmoq) undosh bilan tugagani uchun '-으려고 하다'. <strong>꼭</strong> (albatta) topish niyatida.</p>",
-        'correct': "찾으려고",
-        'choices': ["찾려고", "찾으려고", "찾고", "찾아서"]
-    },
-    {
-        'text': "<p><strong>A: 파티에 <strong>어떤</strong> 옷을 <em>입고 갈 거예요</em>?<br>B: <strong>새로 산</strong> <u>예쁜</u> 원피스를 <u>입________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>입으려고</strong>: '입다' (kiymoq) undosh bilan tugagani uchun '-으려고 하다'. <strong>새로 산</strong> (yangi olingan) ko'ylakni kiymoqchi.</p>",
-        'correct': "입으려고",
-        'choices': ["입려고", "입고", "입으려고", "입어서"]
-    },
-    {
-        'text': "<p><strong>A: 부모님께 편지를 <strong>자주</strong> <em>쓰세요</em>?<br>B: <strong>자주 못 써서</strong> <strong>오늘은</strong> <strong>길게</strong> <u>쓰________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>쓰려고</strong>: '쓰다' (yozmoq) unli bilan tugagani uchun '-려고 하다'. <strong>길게</strong> (uzun qilib) yozishni rejalashtirmoqda.</p>",
-        'correct': "쓰려고",
-        'choices': ["쓰려고", "쓰으려고", "쓰고", "써서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>학교까지</strong> <strong>매일</strong> 버스를 <em>타고 다녀요</em>?<br>B: 네, <strong>거리가 멀어서</strong> <strong>항상</strong> 버스를 <u>타________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>타려고</strong>: '타다' (minmoq) unli bilan tugagani uchun '-려고 하다'. <strong>항상</strong> (har doim) avtobusda yurishni reja qiladi.</p>",
-        'correct': "타려고",
-        'choices': ["타으려고", "타려고", "타고", "타서"]
-    },
-    {
-        'text': "<p><strong>A: 노래방에서 <strong>어떤</strong> 노래를 <em>부를 거예요</em>?<br>B: 제가 <strong>가장 좋아하는</strong> 한국 노래를 <u>부르________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>부르려고</strong>: '부르다' (kuylamoq/chaqirmoq) unli bilan tugagani uchun '-려고 하다'. <strong>가장 좋아하는</strong> (eng yoqtirgan) qo'shig'ini aytmoqchi.</p>",
-        'correct': "부르려고",
-        'choices': ["부르려고", "부르으려고", "부르고", "불러서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>제주도에서</strong> 풍경 사진을 <strong>많이</strong> <em>찍을 거예요</em>?<br>B: 네, <strong>아름다운</strong> 경치를 <strong>잔뜩</strong> <u>찍________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>찍으려고</strong>: '찍다' (rasmga olmoq) undosh bilan tugagani uchun '-으려고 하다'. <strong>잔뜩</strong> (ko'p/to'yib) rasmga olish niyati bor.</p>",
-        'correct': "찍으려고",
-        'choices': ["찍려고", "찍으려고", "찍고", "찍어서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>운동을 마친 후에</strong> <strong>바로</strong> <em>씻을 거예요</em>?<br>B: 네, 땀이 <strong>많이</strong> 나서 <strong>깨끗하게</strong> <u>씻________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>씻으려고</strong>: '씻다' (yuvinmoq) undosh bilan tugagani uchun '-으려고 하다'. <strong>깨끗하게</strong> (toza qilib) yuvinmoqchi.</p>",
-        'correct': "씻으려고",
-        'choices': ["씻려고", "씻고", "씻으려고", "씻어서"]
-    },
-    {
-        'text': "<p><strong>A: 모르는 단어의 뜻을 <strong>어떻게</strong> <em>알 수 있어요</em>?<br>B: 사전을 <strong>자세히 찾아보면서</strong> <u>알________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>알려고</strong>: '알다' (bilmoq) 'ㄹ' bilan tugagani uchun '-려고 하다'. <strong>자세히</strong> (batafsil) qidirib bilmoqchi.</p>",
-        'correct': "알려고",
-        'choices': ["알으려고", "아려고", "알고", "알려고"]
-    },
-    {
-        'text': "<p><strong>A: 방이 <strong>너무</strong> <u>더워서</u> 창문을 <em>열 거예요</em>?<br>B: 네, <strong>시원한</strong> 바람이 <strong>들어오게</strong> <u>열________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>열려고</strong>: '열다' (ochmoq) 'ㄹ' bilan tugagani uchun '-려고 하다' to'g'ridan-to'g'ri ulanadi.</p>",
-        'correct': "열려고",
-        'choices': ["열으려고", "여려고", "열려고", "열고"]
-    },
-    {
-        'text': "<p><strong>A: 밖이 <strong>너무</strong> <u>시끄러운데</u> 문을 <em>닫을까요</em>?<br>B: 네, 소음이 <strong>안 들어오게</strong> <strong>단단히</strong> <u>닫________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>닫으려고</strong>: '닫다' (yopmoq). Regular fe'l, undosh bilan tugagani uchun '-으려고 하다'. <strong>단단히</strong> (mahkam) yopmoqchi.</p>",
-        'correct': "닫으려고",
-        'choices': ["닫려고", "닫고", "닫으려고", "달으려고"]
-    },
-    {
-        'text': "<p><strong>A: 소포를 <strong>오늘</strong> 우체국에서 <em>보낼 거예요</em>?<br>B: 네, <strong>오전 중에</strong> <strong>빨리</strong> <u>보내________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>보내려고</strong>: '보내다' (jo'natmoq) unli bilan tugagani uchun '-려고 하다'. <strong>빨리</strong> (tez) jo'natish maqsadi bor.</p>",
-        'correct': "보내려고",
-        'choices': ["보내으려고", "보내려고", "보내고", "보내서"]
-    },
-    {
-        'text': "<p><strong>A: 일이 <strong>너무</strong> <u>어려워서</u> <strong>중간에</strong> <em>포기할 거예요</em>?<br>B: 아니요, <strong>절대</strong> <u>포기하________</u> <strong>않을 거예요</strong>. <strong>끝까지</strong> 할게요.</strong></p>",
-        'explanation': "<p><strong>포기하려고</strong>: '포기하다' (taslim bo'lmoq/voz kechmoq). <strong>절대</strong> (aslo) voz kechish niyati yo'qligini bildiradi (포기하려고 하지 않다).</p>",
-        'correct': "포기하려고",
-        'choices': ["포기하으려고", "포기하고", "포기하려고", "포기해서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>이번</strong> 휴가에 <strong>집에서만</strong> <em>쉴 거예요</em>?<br>B: 네, <strong>아무 데도 안 가고</strong> <strong>편하게</strong> <u>쉬________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>쉬려고</strong>: '쉬다' (dam olmoq) unli bilan tugagani uchun '-려고 하다'. <strong>편하게</strong> (qulay) dam olmoqchi.</p>",
-        'correct': "쉬려고",
-        'choices': ["쉬으려고", "쉬려고", "쉬고", "쉬어서"]
-    },
-    {
-        'text': "<p><strong>A: 부모님께 <strong>이번 달에</strong> 용돈을 <em>드릴 거예요</em>?<br>B: 네, <strong>감사한 마음으로</strong> <strong>조금이라도</strong> <u>드리________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>드리려고</strong>: '드리다' (bermoq/hurmat shakli) unli bilan tugagani uchun '-려고 하다'. <strong>조금이라도</strong> (ozgina bo'lsa ham) berish niyati bor.</p>",
-        'correct': "드리려고",
-        'choices': ["드리려고", "드리으려고", "드리고", "드려서"]
-    },
-    {
-        'text': "<p><strong>A: <strong>방금</strong> <strong>급하게</strong> 자리에서 <em>일어났어요</em>?<br>B: 네, <strong>중요한</strong> 전화가 <strong>와서</strong> <strong>잠깐</strong> <strong>나가서</strong> <u>받________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>받으려고</strong>: '받다' (qabul qilmoq/olmoq) undosh bilan tugagani uchun '-으려고 하다'. <strong>잠깐</strong> (biroz) chiqib telefonni olmoqchi.</p>",
-        'correct': "받으려고",
-        'choices': ["받려고", "받으려고", "받고", "받아서"]
-    }]
-topic_30 = [
-
-    # --- TOPIC 30: 동사 + 아/어 보다 (경험과 시도) ---
-    {
-        'text': "<p><strong>A: <strong>나중에</strong> 한국 제주도에 <em>가 볼 거예요</em>?<br>B: 네, <strong>시간이 나면</strong> <strong>꼭</strong> 한 번 <u>가________</u>.</strong></p>",
-        'explanation': "<p><strong>가 볼게요</strong>: '가다' (bormoq) + '-아 보다'. <strong>꼭 한 번</strong> (albatta bir marta) borib ko'rmoqchi (sinab ko'rish).</p>",
-        'correct': "가 볼게요",
-        'choices': ["가 볼게요", "가 볼까요", "가 보지 마세요", "갈게요"]
-    },
-    {
-        'text': "<p><strong>A: <strong>처음 보는</strong> 이 <u>매운</u> 음식을 <em>먹어 볼래요</em>?<br>B: 네, <strong>조금 맵지만</strong> <strong>용기 내서</strong> <u>먹어________</u>.</strong></p>",
-        'explanation': "<p><strong>먹어 볼게요</strong>: '먹다' (yemoq) + '-어 보다'. <strong>용기 내서</strong> (jasorat qilib) yeb ko'radi.</p>",
-        'correct': "먹어 볼게요",
-        'choices': ["먹어 볼게요", "먹아 볼게요", "먹볼게요", "먹지 볼게요"]
-    },
-    {
-        'text': "<p><strong>A: 이 <u>예쁜</u> 원피스가 <strong>저에게</strong> <strong>잘</strong> <em>맞을까요</em>?<br>B: <strong>탈의실에서</strong> <strong>직접</strong> <strong>한번</strong> <u>입어________</u>.</strong></p>",
-        'explanation': "<p><strong>입어 보세요</strong>: '입다' (kiymoq) + '-어 보세요' (kiyib ko'ring). <strong>직접</strong> (o'zingiz) kiyib ko'rishni maslahat bermoqda.</p>",
-        'correct': "입어 보세요",
-        'choices': ["입아 보세요", "입어 보세요", "입어 봤어요", "입볼게요"]
-    },
-    {
-        'text': "<p><strong>A: 이 운동화가 <strong>발에</strong> <strong>편한지</strong> <em>어떻게 알아요</em>?<br>B: 신발은 <strong>사기 전에</strong> <strong>반드시</strong> <u>신어________</u> 해요.</strong></p>",
-        'explanation': "<p><strong>신어 봐야</strong>: '신다' (poyabzal kiymoq) + '-어 보다' + '-야 하다'. <strong>반드시</strong> (albatta) kiyib ko'rish kerak.</p>",
-        'correct': "신어 봐야",
-        'choices': ["신아 봐야", "신어 봐야", "신볼게요", "신지 봐야"]
-    },
-    {
-        'text': "<p><strong>A: 그 <u>두꺼운</u> 소설책이 <strong>정말</strong> <u>재미있어요</u>?<br>B: 네, <strong>시간 날 때</strong> <strong>끝까지</strong> <strong>한번</strong> <u>읽어________</u>.</strong></p>",
-        'explanation': "<p><strong>읽어 보세요</strong>: '읽다' (o'qimoq) + '-어 보세요'. <strong>시간 날 때</strong> (vaqt bo'lganda) o'qib ko'rishni tavsiya qilmoqda.</p>",
-        'correct': "읽어 보세요",
-        'choices': ["읽아 보세요", "읽어 보세요", "읽어 봤어요", "읽보세요"]
-    },
-    {
-        'text': "<p><strong>A: 스노보드를 <strong>태어나서</strong> <strong>처음으로</strong> <em>타 봐요</em>?<br>B: 네, <strong>무섭지만</strong> <strong>오늘</strong> <strong>재미있게</strong> <u>타________</u>.</strong></p>",
-        'explanation': "<p><strong>타 볼게요</strong>: '타다' (minmoq/uchmoq) + '-아 보다'. <strong>무섭지만</strong> (qo'rqinchli bo'lsa ham) uchib ko'rmoqchi.</p>",
-        'correct': "타 볼게요",
-        'choices': ["타 볼게요", "타어 볼게요", "탈게요", "타고 볼게요"]
-    },
-    {
-        'text': "<p><strong>A: <strong>인터넷에서</strong> <u>유명한</u> 이 빵을 <strong>벌써</strong> <em>사 봤어요</em>?<br>B: 아니요, <strong>아직</strong> 안 사봤는데 <strong>내일</strong> <u>사________</u>.</strong></p>",
-        'explanation': "<p><strong>사 볼게요</strong>: '사다' (sotib olmoq) + '-아 보다'. <strong>내일</strong> (ertaga) sotib olib ko'radi.</p>",
-        'correct': "사 볼게요",
-        'choices': ["사 볼게요", "사어 볼게요", "살게요", "사고 볼게요"]
-    },
-    {
-        'text': "<p><strong>A: <strong>새로 나온</strong> 이 노래를 <strong>이미</strong> <em>들어 봤어요</em>?<br>B: 네, <strong>어제</strong> <strong>우연히</strong> <u>들어________</u> <strong>정말</strong> <u>좋았어요</u>.</strong></p>",
-        'explanation': "<p><strong>들어 봤는데</strong>: '듣다' (eshitmoq). 'ㄷ' -> 'ㄹ' + '-어 보다' (들어 보다). O'tgan zamondagi tajriba: eshitib ko'rgandim, yaxshi ekan.</p>",
-        'correct': "들어 봤는데",
-        'choices': ["듣어 봤는데", "들어 봤는데", "들오 봤는데", "듣아 봤는데"]
-    },
-    {
-        'text': "<p><strong>A: <strong>길을 모를 때는</strong> <em>어떻게</em> 해요?<br>B: <strong>혼자</strong> <strong>고민하지 말고</strong> 경찰에게 <strong>직접</strong> <u>물어________</u>.</strong></p>",
-        'explanation': "<p><strong>물어보세요</strong>: '묻다' (so'ramoq). 'ㄷ' -> 'ㄹ' + '-어 보다' (물어보다). <strong>직접</strong> (o'zi) so'rab ko'rishni maslahat bermoqda.</p>",
-        'correct': "물어보세요",
-        'choices': ["묻어보세요", "물어보세요", "묻아보세요", "물오보세요"]
-    },
-    {
-        'text': "<p><strong>A: <strong>다리가 아프지만</strong> <strong>끝까지</strong> <em>걸어 볼까요</em>?<br>B: 네, <strong>조금만 더 가면 되니까</strong> <strong>포기하지 말고</strong> <u>걸어________</u>.</strong></p>",
-        'explanation': "<p><strong>걸어 봅시다</strong>: '걷다' (yurmoq). 'ㄷ' -> 'ㄹ' + '-어 보다' + '-ㅂ시다'. <strong>포기하지 말고</strong> (taslim bo'lmay) yurib ko'rishni taklif qilyapti.</p>",
-        'correct': "걸어 봅시다",
-        'choices': ["걷어 봅시다", "걸어 봅시다", "걷아 봅시다", "걸오 봅시다"]
-    },
-    {
-        'text': "<p><strong>A: 한국 유명 배우를 <strong>직접</strong> <em>만나 봤어요</em>?<br>B: 네, <strong>작년</strong> 팬미팅에서 <strong>우연히</strong> <u>만나________</u> <strong>진짜</strong> <u>멋있었어요</u>.</strong></p>",
-        'explanation': "<p><strong>만나 봤는데</strong>: '만나다' (uchrashmoq) + '-아 보다'. O'tgan zamondagi tajribasi (uchrashib ko'rgandim). <strong>진짜</strong> (rosttdan).</p>",
-        'correct': "만나 봤는데",
-        'choices': ["만나어 봤는데", "만나 봤는데", "만날 봤는데", "만나고 봤는데"]
-    },
-    {
-        'text': "<p><strong>A: 한국어로 편지를 <strong>혼자서</strong> <em>써 봤어요</em>?<br>B: 아니요, <strong>아직</strong> 안 써봤는데 <strong>오늘</strong> <strong>처음으로</strong> <u>써________</u>.</strong></p>",
-        'explanation': "<p><strong>써 볼게요</strong>: '쓰다' (yozmoq). '으' tushib '-어 보다' (써 보다). <strong>오늘 처음으로</strong> (bugun birinchi marta) yozib ko'rmoqchi.</p>",
-        'correct': "써 볼게요",
-        'choices': ["쓰어 볼게요", "써 볼게요", "쓰아 볼게요", "쏠게요"]
-    },
-    {
-        'text': "<p><strong>A: 한국어를 <strong>어학당에서</strong> <em>배워 봤어요</em>?<br>B: 네, <strong>6개월 동안</strong> <strong>꾸준히</strong> <u>배워________</u> <strong>정말</strong> <u>유익했어요</u>.</strong></p>",
-        'explanation': "<p><strong>배워 봤는데</strong>: '배우다' (o'rganmoq) + '-어 보다'. O'rganib ko'rgandi, foydali bo'ldi. <strong>꾸준히</strong> (muntazam).</p>",
-        'correct': "배워 봤는데",
-        'choices': ["배우아 봤는데", "배워 봤는데", "배오 봤는데", "배우고 봤는데"]
-    },
-    {
-        'text': "<p><strong>A: <strong>외국에서</strong> <strong>혼자</strong> <em>살아 봤어요</em>?<br>B: 네, <strong>대학생 때</strong> 1년 동안 <strong>호주에서</strong> <u>살아________</u>.</strong></p>",
-        'explanation': "<p><strong>살아 봤어요</strong>: '살다' (yashamoq) + '-아 보다'. O'tgan zamondagi yashab ko'rish tajribasi.</p>",
-        'correct': "살아 봤어요",
-        'choices': ["살어 봤어요", "살아 봤어요", "살고 봤어요", "살해 봤어요"]
-    },
-    {
-        'text': "<p><strong>A: 이 <u>복잡한</u> 요리를 <strong>직접</strong> <em>만들어 봤어요</em>?<br>B: 아니요, <strong>아직</strong> 안 해봤지만 <strong>주말에</strong> <strong>꼭</strong> <u>만들어________</u>.</strong></p>",
-        'explanation': "<p><strong>만들어 볼게요</strong>: '만들다' (tayyorlamoq) + '-어 보다'. <strong>주말에 꼭</strong> (dam olish kunida albatta) tayyorlab ko'radi.</p>",
-        'correct': "만들어 볼게요",
-        'choices': ["만들아 볼게요", "만들어 볼게요", "만들고 볼게요", "만들 볼게요"]
-    },
-    {
-        'text': "<p><strong>A: 삼겹살을 <strong>혼자서</strong> <strong>직접</strong> <em>구워 봤어요</em>?<br>B: 네, <strong>캠핑 가서</strong> <strong>여러 번</strong> <u>구워________</u> <strong>아주</strong> <strong>잘해요</strong>.</strong></p>",
-        'explanation': "<p><strong>구워 봤어요</strong>: '굽다' (pishirmoq). 'ㅂ' -> '우' + '-어 보다' (구워 보다). <strong>여러 번</strong> (bir necha marta) pishirib ko'rgan (tajriba).</p>",
-        'correct': "구워 봤어요",
-        'choices': ["굽어 봤어요", "구워 봤어요", "구오 봤어요", "굽아 봤어요"]
-    },
-    {
-        'text': "<p><strong>A: 길을 잃은 사람을 <strong>우연히</strong> <em>도와줘 봤어요</em>?<br>B: 네, <strong>친절하게</strong> <strong>길을 안내하며</strong> <u>도와________</u>.</strong></p>",
-        'explanation': "<p><strong>도와줘 봤어요</strong>: '도와주다' (yordam bermoq) + '-어 보다'. <strong>친절하게</strong> (mehribonlik bilan) yordam berib ko'rgan.</p>",
-        'correct': "도와줘 봤어요",
-        'choices': ["도와주어 봤어요", "도와줘 봤어요", "도와지 봤어요", "도와고 봤어요"]
-    },
-    {
-        'text': "<p><strong>A: 한국 전통 놀이를 <strong>명절에</strong> <em>해 봤어요</em>?<br>B: 네, <strong>친구들과 다 같이</strong> <strong>신나게</strong> <u>놀아________</u> <strong>정말</strong> <u>재미있었어요</u>.</strong></p>",
-        'explanation': "<p><strong>놀아 봤는데</strong>: '놀다' (o'ynamoq) + '-아 보다'. <strong>신나게</strong> (zavqlanib) o'ynab ko'rgan edi (tajriba).</p>",
-        'correct': "놀아 봤는데",
-        'choices': ["놀어 봤는데", "놀아 봤는데", "놀고 봤는데", "놀해 봤는데"]
-    },
-    {
-        'text': "<p><strong>A: <strong>전통 찻집에서</strong> <strong>바닥에</strong> <em>앉아 봤어요</em>?<br>B: 네, <strong>방석을 깔고</strong> <strong>편안하게</strong> <u>앉아________</u>.</strong></p>",
-        'explanation': "<p><strong>앉아 봤어요</strong>: '앉다' (o'tirmoq) + '-아 보다'. <strong>편안하게</strong> (qulay) o'tirib ko'rgan.</p>",
-        'correct': "앉아 봤어요",
-        'choices': ["앉어 봤어요", "앉아 봤어요", "앉고 봤어요", "앉해 봤어요"]
-    },
-    {
-        'text': "<p><strong>A: <strong>제주도에서</strong> <strong>예쁜</strong> 경치를 <strong>사진으로</strong> <em>찍어 봤어요</em>?<br>B: 네, <strong>카메라로</strong> <strong>수십 장을</strong> <u>찍어________</u> <strong>다</strong> <u>멋있었어요</u>.</strong></p>",
-        'explanation': "<p><strong>찍어 봤는데</strong>: '찍다' (rasmga olmoq) + '-어 보다'. <strong>수십 장을</strong> (o'nlab varaqlarni) tushirib ko'rdi.</p>",
-        'correct': "찍어 봤는데",
-        'choices': ["찍아 봤는데", "찍어 봤는데", "찍고 봤는데", "찍해 봤는데"]
-    },
-    {
-        'text': "<p><strong>A: 이 <u>굳게</u> 닫힌 병뚜껑을 <strong>직접</strong> <em>열어 봤어요</em>?<br>B: 네, <strong>힘을 꽉 주고</strong> <u>열어________</u> <strong>결국</strong> 열렸어요.</strong></p>",
-        'explanation': "<p><strong>열어 봤는데</strong>: '열다' (ochmoq) + '-어 보다'. <strong>힘을 꽉 주고</strong> (bor kuchni berib) ochib ko'rdi.</p>",
-        'correct': "열어 봤는데",
-        'choices': ["열아 봤는데", "열어 봤는데", "열고 봤는데", "열해 봤는데"]
-    },
-    {
-        'text': "<p><strong>A: 잃어버린 지갑을 <strong>경찰서에서</strong> <em>찾아 봤어요</em>?<br>B: 네, <strong>여기저기</strong> <strong>다</strong> <u>찾아________</u> <strong>결국</strong> 못 찾았어요.</strong></p>",
-        'explanation': "<p><strong>찾아 봤지만</strong>: '찾다' (qidirmoq) + '-아 보다' + '-지만'. <strong>여기저기</strong> (u yerdan-bu yerdan) qidirib ko'rganiga qaramay.</p>",
-        'correct': "찾아 봤지만",
-        'choices': ["찾어 봤지만", "찾아 봤지만", "찾고 봤지만", "찾해 봤지만"]
-    },
-    {
-        'text': "<p><strong>A: K-pop 노래를 <strong>노래방에서</strong> <strong>신나게</strong> <em>불러 봤어요</em>?<br>B: 네, <strong>친구들과 함께</strong> <strong>큰 소리로</strong> <u>불러________</u> <strong>스트레스가 다 풀렸어요</strong>.</strong></p>",
-        'explanation': "<p><strong>불러 봤는데</strong>: '부르다' (kuylamoq) '르' noto'g'ri fe'li '-어 보다' bilan '불러 보다' ga aylanadi. <strong>큰 소리로</strong> (baland ovozda) kuylab ko'rdi.</p>",
-        'correct': "불러 봤는데",
-        'choices': ["부르어 봤는데", "불러 봤는데", "부라 봤는데", "부르고 봤는데"]
-    },
-    {
-        'text': "<p><strong>A: 미용실에서 앞머리를 <strong>짧게</strong> <em>잘라 봤어요</em>?<br>B: 네, <strong>여름이라서</strong> <strong>시원하게</strong> <u>잘라________</u> <strong>아주</strong> 마음에 들어요.</strong></p>",
-        'explanation': "<p><strong>잘라 봤는데</strong>: '자르다' (kesmoq) '르' noto'g'ri fe'li '-아 보다' bilan '잘라 보다' ga aylanadi. <strong>시원하게</strong> (salqin qilib) kesib ko'rgan.</p>",
-        'correct': "잘라 봤는데",
-        'choices': ["자르아 봤는데", "잘라 봤는데", "잘러 봤는데", "자르고 봤는데"]
-    },
-    {
-        'text': "<p><strong>A: <strong>새로 나온</strong> 이 콜라를 <strong>이미</strong> <em>마셔 봤어요</em>?<br>B: 아니요, <strong>아직</strong> 안 마셔봤는데 <strong>지금</strong> <strong>당장</strong> <u>마셔________</u>.</strong></p>",
-        'explanation': "<p><strong>마셔 볼게요</strong>: '마시다' (ichmoq) + '-어 보다'. <strong>지금 당장</strong> (hoziroq) ichib ko'rmoqchi.</p>",
-        'correct': "마셔 볼게요",
-        'choices': ["마시아 볼게요", "마셔 볼게요", "마시고 볼게요", "마시해 볼게요"]
-    },
-    {
-        'text': "<p><strong>A: 해외에 있는 친구에게 <strong>소포를</strong> <em>보내 봤어요</em>?<br>B: 네, <strong>우체국에서</strong> <strong>비싸게</strong> <u>보내________</u> <strong>한 달이나</strong> 걸렸어요.</strong></p>",
-        'explanation': "<p><strong>보내 봤는데</strong>: '보내다' (jo'natmoq) + '-어 보다'. <strong>비싸게</strong> (qimmatga) jo'natib ko'rdi, lekin 1 oy vaqt ketdi.</p>",
-        'correct': "보내 봤는데",
-        'choices': ["보내아 봤는데", "보내 봤는데", "보내고 봤는데", "보내해 봤는데"]
-    },
-    {
-        'text': "<p><strong>A: 그 <u>유명한</u> 책을 <strong>끝까지</strong> <strong>다</strong> <em>읽어 봤어요</em>?<br>B: 네, <strong>주말 내내</strong> <strong>밤을 새워서</strong> <u>읽어________</u> <strong>정말</strong> <u>감동적이었어요</u>.</strong></p>",
-        'explanation': "<p><strong>읽어 봤는데</strong>: '읽다' (o'qimoq) + '-어 보다'. <strong>밤을 새워서</strong> (tunni bedor o'tkazib) o'qib ko'rdi.</p>",
-        'correct': "읽어 봤는데",
-        'choices': ["읽아 봤는데", "읽어 봤는데", "읽고 봤는데", "읽해 봤는데"]
-    },
-    {
-        'text': "<p><strong>A: <strong>너무</strong> <u>피곤할 때</u> <strong>안마 의자에서</strong> <em>쉬어 봤어요</em>?<br>B: 네, <strong>한 시간 동안</strong> <strong>편하게</strong> <u>쉬어________</u> <strong>피로가 다 풀렸어요</strong>.</strong></p>",
-        'explanation': "<p><strong>쉬어 봤는데</strong>: '쉬다' (dam olmoq) + '-어 보다'. <strong>편하게</strong> (qulay) dam olib ko'rdi.</p>",
-        'correct': "쉬어 봤는데",
-        'choices': ["쉬아 봤는데", "쉬어 봤는데", "쉬고 봤는데", "쉬해 봤는데"]
-    },
-    {
-        'text': "<p><strong>A: 모르는 사람에게 <strong>한국어로</strong> <strong>먼저</strong> <em>말을 걸어 봤어요</em>?<br>B: 네, <strong>용기 내서</strong> <strong>길을 물어보려고</strong> <u>말을 걸어________</u>.</strong></p>",
-        'explanation': "<p><strong>봤어요</strong>: '말을 걸어 보다' (gap qotib/gapirib ko'rmoq). <strong>용기 내서</strong> (jasorat qilib) gapirib ko'rdi.</p>",
-        'correct': "봤어요",
-        'choices': ["봤어요", "보았어요", "볼게요", "봤습니다"]
-    },
-    {
-        'text': "<p><strong>A: 이 <u>새로운</u> 게임을 <strong>스마트폰으로</strong> <em>해 봤어요</em>?<br>B: 아니요, <strong>아직</strong> <strong>전혀</strong> <u>안 해________</u> <strong>이따가</strong> <strong>한번</strong> 해 볼게요.</strong></p>",
-        'explanation': "<p><strong>봤는데</strong>: '하다' (qilmoq) + '-어 보다' (해 보다). <strong>전혀</strong> (umuman) qilib ko'rmagan.</p>",
-        'correct': "봤는데",
-        'choices': ["봤는데", "보았는데", "볼 건데", "보는데"]
-    }
-]
-
-topic_31 = [
-    # --- TOPIC 31: 관형사형 어미 1: 동사 + 는 (현재) ---
-    {
-        'text': "<p><strong>A: <strong>지금</strong> <strong>맛있게</strong> <em>먹다</em> 음식이 <em>뭐예요</em>?<br>B: 이것은 제가 <strong>가장</strong> <u>좋아하는</u> 비빔밥이에요.</strong></p>",
-        'explanation': "<p><strong>먹는</strong>: '먹다' (yemoq). Hozirgi zamonda fe'ldan sifatdosh yasash uchun '-는' qo'shiladi (yeyayotgan). <strong>지금</strong> (hozir) <strong>맛있게</strong> (mazali qilib).</p>",
-        'correct': "먹는",
-        'choices': ["먹은", "먹는", "먹을", "먹던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>매일</strong> <strong>아침마다</strong> <em>가다</em> 학교가 <strong>어디에</strong> <em>있어요</em>?<br>B: 저기 <u>큰</u> 길 <strong>건너편에</strong> 있어요.</strong></p>",
-        'explanation': "<p><strong>가는</strong>: '가다' (bormoq) + '-는' (boradigan/borayotgan). <strong>매일</strong> (har kuni) qatnaydigan maktab.</p>",
-        'correct': "가는",
-        'choices': ["간", "가는", "갈", "가던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>주말에</strong> <strong>자주</strong> <em>보다</em> 영화 장르가 <em>뭐예요</em>?<br>B: 저는 <strong>주로</strong> <u>무서운</u> 공포 영화를 봐요.</strong></p>",
-        'explanation': "<p><strong>보는</strong>: '보다' (ko'rmoq) + '-는' (ko'radigan). <strong>자주</strong> (tez-tez) ko'radigan kino.</p>",
-        'correct': "보는",
-        'choices': ["본", "보는", "볼", "보던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>요즘</strong> <strong>열심히</strong> <em>배우다</em> 언어가 <em>무엇입니까</em>?<br>B: <strong>매일</strong> 한국어를 <strong>재미있게</strong> 배우고 있어요.</strong></p>",
-        'explanation': "<p><strong>배우는</strong>: '배우다' (o'rganmoq) + '-는' (o'rganayotgan). <strong>열심히</strong> (tirishib) o'rganayotgan til.</p>",
-        'correct': "배우는",
-        'choices': ["배운", "배우는", "배울", "배우던"]
-    },
-    {
-        'text': "<p><strong>A: 저기 침대에서 <strong>곤히</strong> <em>자다</em> 아기가 <em>누구예요</em>?<br>B: 제 <u>귀여운</u> 조카예요.</strong></p>",
-        'explanation': "<p><strong>자는</strong>: '자다' (uxlamoq) + '-는' (uxlayotgan). <strong>곤히</strong> (qattiq/chuqur) uxlayotgan chaqaloq.</p>",
-        'correct': "자는",
-        'choices': ["잔", "자는", "잘", "자던"]
-    },
-    {
-        'text': "<p><strong>A: 마디나 씨가 <strong>항상</strong> 손에 <strong>들고</strong> <em>다니다</em> 책은 <em>무슨</em> 책이에요?<br>B: 한국어 문법 책이에요.</strong></p>",
-        'explanation': "<p><strong>다니는</strong>: '다니다' (qatnamoq/yurmoq) + '-는'. <strong>항상</strong> (har doim) olib yuradigan kitob.</p>",
-        'correct': "다니는",
-        'choices': ["다닌", "다니는", "다닐", "다니던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>매일</strong> <strong>밤에</strong> <strong>조용히</strong> <em>쓰다</em> 일기는 <strong>어디에</strong> 보관해요?<br>B: 책상 서랍 <strong>깊숙이</strong> 넣어요.</strong></p>",
-        'explanation': "<p><strong>쓰는</strong>: '쓰다' (yozmoq) + '-는' (yozadigan). <strong>조용히</strong> (jim/tinch) yozadigan kundalik.</p>",
-        'correct': "쓰는",
-        'choices': ["쓴", "쓰는", "쓸", "쓰던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>주말마다</strong> <strong>자주</strong> <em>만나다</em> 친구는 <em>어떤</em> 사람이에요?<br>B: <strong>정말</strong> <u>친절하고</u> <u>재미있는</u> 친구예요.</strong></p>",
-        'explanation': "<p><strong>만나는</strong>: '만나다' (uchrashmoq) + '-는' (uchrashadigan). <strong>자주</strong> (tez-tez) ko'rishadigan do'st.</p>",
-        'correct': "만나는",
-        'choices': ["만난", "만나는", "만날", "만나던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>운동할 때</strong> <strong>즐겨</strong> <em>듣다</em> 음악이 <em>뭐예요</em>?<br>B: <u>신나는</u> K-pop을 <strong>주로</strong> 들어요.</strong></p>",
-        'explanation': "<p><strong>듣는</strong>: '듣다' (eshitmoq) + '-는'. 'ㄷ' noto'g'ri fe'li '-는' oldida o'zgarmaydi (듣는). <strong>즐겨</strong> (zavqlanib/xohlab) eshitadigan musiqa.</p>",
-        'correct': "듣는",
-        'choices': ["들은", "듣는", "들을", "듣던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>요즘</strong> 부모님이 <em>살다</em> 곳이 <strong>어디예요</strong>?<br>B: <strong>공기가 맑은</strong> <u>조용한</u> 시골이에요.</strong></p>",
-        'explanation': "<p><strong>사는</strong>: '살다' (yashamoq). 'ㄹ' bilan tugagan fe'lga '-는' qo'shilganda 'ㄹ' tushib qoladi (사는). <strong>요즘</strong> (shu kunlarda) yashayotgan joy.</p>",
-        'correct': "사는",
-        'choices': ["산", "살는", "사는", "살던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>매일</strong> 아침 <strong>직접</strong> <em>만들다</em> 빵의 이름이 <em>뭐예요</em>?<br>B: <u>건강에 좋은</u> 호밀빵이에요.</strong></p>",
-        'explanation': "<p><strong>만드는</strong>: '만들다' (tayyorlamoq). 'ㄹ' tushib qoladi va '-는' ulanadi (만드는). <strong>직접</strong> (o'zi) tayyorlaydigan non.</p>",
-        'correct': "만드는",
-        'choices': ["만든", "만들는", "만드는", "만들던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>놀이터에서</strong> 아이들과 <strong>같이</strong> <em>놀다</em> 사람이 <em>누구예요</em>?<br>B: 아이들의 <u>친절한</u> 유치원 선생님이에요.</strong></p>",
-        'explanation': "<p><strong>노는</strong>: '놀다' (o'ynamoq). 'ㄹ' tushadi + '-는' (노는). <strong>같이</strong> (birga) o'ynayotgan odam.</p>",
-        'correct': "노는",
-        'choices': ["논", "놀는", "노는", "놀던"]
-    },
-    {
-        'text': "<p><strong>A: 출근할 때 <strong>항상</strong> <em>타다</em> 버스는 <em>몇 번</em>이에요?<br>B: <strong>항상</strong> 105번 버스를 타요.</strong></p>",
-        'explanation': "<p><strong>타는</strong>: '타다' (minmoq/chiqmoq) + '-는' (chiqadigan). <strong>항상</strong> (har doim) chiqadigan avtobus.</p>",
-        'correct': "타는",
-        'choices': ["탄", "타는", "탈", "타던"]
-    },
-    {
-        'text': "<p><strong>A: 저기서 <strong>가장</strong> <strong>크게</strong> <em>웃다</em> 사람이 <em>누구예요</em>?<br>B: 제 <u>제일</u> <u>친한</u> 친구예요.</strong></p>",
-        'explanation': "<p><strong>웃는</strong>: '웃다' (kulmoq) + '-는' (kulayotgan). <strong>크게</strong> (baland qilib) kulayotgan shaxs.</p>",
-        'correct': "웃는",
-        'choices': ["웃은", "웃는", "웃을", "웃던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>매일</strong> 저녁 <strong>천천히</strong> <em>걷다</em> 길이 <strong>어디예요</strong>?<br>B: 집 근처 <u>아름다운</u> 공원 길이에요.</strong></p>",
-        'explanation': "<p><strong>걷는</strong>: '걷다' (yurmoq). 'ㄷ' qoidasi '-는' oldida o'zgarmaydi (걷는). <strong>천천히</strong> (sekin) yuradigan yo'l.</p>",
-        'correct': "걷는",
-        'choices': ["걸은", "걷는", "걸을", "걷던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>아침마다</strong> <strong>자주</strong> <em>마시다</em> 차가 <em>무엇입니까</em>?<br>B: <u>따뜻한</u> 녹차를 <strong>주로</strong> 마셔요.</strong></p>",
-        'explanation': "<p><strong>마시는</strong>: '마시다' (ichmoq) + '-는' (ichadigan). <strong>자주</strong> (tez-tez) ichadigan choy.</p>",
-        'correct': "마시는",
-        'choices': ["마신", "마시는", "마실", "마시던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>요즘</strong> 젊은 사람들이 <strong>즐겨</strong> <em>입다</em> 옷 브랜드가 <em>뭐예요</em>?<br>B: <u>편안한</u> 스포츠 브랜드가 <strong>인기가 많아요</strong>.</strong></p>",
-        'explanation': "<p><strong>입는</strong>: '입다' (kiymoq) + '-는' (kiyadigan). <strong>즐겨</strong> (xohlab/zavq bilan) kiyadigan kiyim.</p>",
-        'correct': "입는",
-        'choices': ["입은", "입는", "입을", "입던"]
-    },
-    {
-        'text': "<p><strong>A: 저기 구석에서 <strong>슬프게</strong> <em>울다</em> 아이는 <strong>왜</strong> 그래요?<br>B: 장난감을 <strong>잃어버려서</strong> 그래요.</strong></p>",
-        'explanation': "<p><strong>우는</strong>: '울다' (yig'lamoq). 'ㄹ' tushib qoladi (우는). <strong>슬프게</strong> (qayg'uli) yig'layotgan bola.</p>",
-        'correct': "우는",
-        'choices': ["운", "울는", "우는", "울던"]
-    },
-    {
-        'text': "<p><strong>A: 이 빵집에서 <strong>가장</strong> <strong>많이</strong> <em>팔다</em> 빵은 <em>뭐예요</em>?<br>B: <u>달콤한</u> 단팥빵이 <strong>제일</strong> 잘 나가요.</strong></p>",
-        'explanation': "<p><strong>파는</strong>: '팔다' (sotmoq). 'ㄹ' tushib qoladi (파는). <strong>가장 많이</strong> (eng ko'p) sotadigan non.</p>",
-        'correct': "파는",
-        'choices': ["판", "팔는", "파는", "팔던"]
-    },
-    {
-        'text': "<p><strong>A: 한국 역사를 <strong>깊이</strong> <em>알다</em> 사람을 <em>소개해 줄래요</em>?<br>B: 네, 대학교에 계신 <u>유명한</u> 교수님을 소개할게요.</strong></p>",
-        'explanation': "<p><strong>아는</strong>: '알다' (bilmoq). 'ㄹ' tushib qoladi (아는). <strong>깊이</strong> (chuqur) biladigan odam.</p>",
-        'correct': "아는",
-        'choices': ["안", "알는", "아는", "알던"]
-    },
-    {
-        'text': "<p><strong>A: 사람들이 <strong>매일</strong> 모여서 <em>운동하다</em> 장소가 <strong>어디예요</strong>?<br>B: 저기 산 아래 <u>넓은</u> 공터예요.</strong></p>",
-        'explanation': "<p><strong>운동하는</strong>: '운동하다' (sport bilan shug'ullanmoq) + '-는'. <strong>매일</strong> (har kuni) mashq qiladigan joy.</p>",
-        'correct': "운동하는",
-        'choices': ["운동한", "운동하는", "운동할", "운동하던"]
-    },
-    {
-        'text': "<p><strong>A: 마디나 씨가 <strong>요즘</strong> <strong>열심히</strong> <em>일하다</em> 회사는 <strong>어때요</strong>?<br>B: <strong>분위기가 좋고</strong> 동료들이 <u>친절해요</u>.</strong></p>",
-        'explanation': "<p><strong>일하는</strong>: '일하다' (ishlamoq) + '-는'. <strong>열심히</strong> (tirishib) ishlayotgan kompaniya.</p>",
-        'correct': "일하는",
-        'choices': ["일한", "일하는", "일할", "일하던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>매주 일요일에</strong> <strong>깨끗하게</strong> <em>청소하다</em> 방은 <em>누구</em> 방이에요?<br>B: 제 여동생의 방이에요.</strong></p>",
-        'explanation': "<p><strong>청소하는</strong>: '청소하다' (tozalamoq) + '-는'. <strong>깨끗하게</strong> (toza qilib) tozalaydigan xona.</p>",
-        'correct': "청소하는",
-        'choices': ["청소한", "청소하는", "청소할", "청소하던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>밤마다</strong> <strong>오래</strong> <em>전화하다</em> 친구는 <strong>어디에</strong> 살아요?<br>B: 우즈베키스탄 타슈켄트에 살아요.</strong></p>",
-        'explanation': "<p><strong>전화하는</strong>: '전화하다' (qo'ng'iroq qilmoq) + '-는'. <strong>오래</strong> (uzoq vaqt) gaplashadigan do'st.</p>",
-        'correct': "전화하는",
-        'choices': ["전화한", "전화하는", "전화할", "전화하던"]
-    },
-    {
-        'text': "<p><strong>A: 엄마가 <strong>가족을 위해</strong> <strong>정성껏</strong> <em>요리하다</em> 음식 중에 <em>뭐가</em> <strong>제일</strong> <u>맛있어요</u>?<br>B: <u>매콤한</u> 김치찌개가 <strong>최고예요</strong>.</strong></p>",
-        'explanation': "<p><strong>요리하는</strong>: '요리하다' (ovqat pishirmoq) + '-는'. <strong>정성껏</strong> (mehr bilan) tayyorlaydigan ovqat.</p>",
-        'correct': "요리하는",
-        'choices': ["요리한", "요리하는", "요리할", "요리하던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>지금</strong> 정류장에서 <strong>가만히</strong> <em>기다리다</em> 버스는 <em>몇 번</em>이에요?<br>B: 시내로 가는 200번 버스예요.</strong></p>",
-        'explanation': "<p><strong>기다리는</strong>: '기다리다' (kutmoq) + '-는'. <strong>가만히</strong> (jim/qimir etmay) kutayotgan avtobus.</p>",
-        'correct': "기다리는",
-        'choices': ["기다린", "기다리는", "기다릴", "기다리던"]
-    },
-    {
-        'text': "<p><strong>A: <u>어려운</u> 이웃을 <strong>항상</strong> <strong>기꺼이</strong> <em>도와주다</em> 사람은 <em>누구예요</em>?<br>B: 우리 동네 <u>따뜻한</u> 아저씨예요.</strong></p>",
-        'explanation': "<p><strong>도와주는</strong>: '도와주다' (yordam bermoq) + '-는'. <strong>항상</strong> (har doim) yordam beradigan odam.</p>",
-        'correct': "도와주는",
-        'choices': ["도와준", "도와주는", "도와줄", "도와주던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>학교에서</strong> 영어를 <strong>쉽게</strong> <em>가르치다</em> 선생님 성함이 <em>뭐예요</em>?<br>B: 제임스 선생님이에요.</strong></p>",
-        'explanation': "<p><strong>가르치는</strong>: '가르치다' (o'rgatmoq) + '-는'. <strong>쉽게</strong> (oson) o'rgatadigan o'qituvchi.</p>",
-        'correct': "가르치는",
-        'choices': ["가르친", "가르치는", "가르칠", "가르치던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>아침에</strong> 환기를 위해 <strong>제일 먼저</strong> <em>열다</em> 창문은 <strong>어느 쪽이에요</strong>?<br>B: 동쪽을 향한 창문이에요.</strong></p>",
-        'explanation': "<p><strong>여는</strong>: '열다' (ochmoq). 'ㄹ' tushib qoladi (여는). <strong>제일 먼저</strong> (eng birinchi) ochadigan deraza.</p>",
-        'correct': "여는",
-        'choices': ["연", "열는", "여는", "열던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>비가 올 때</strong> <strong>급하게</strong> <em>닫다</em> 문이 <strong>어디에</strong> 있어요?<br>B: 베란다 쪽에 있는 <u>큰</u> 문이에요.</strong></p>",
-        'explanation': "<p><strong>닫는</strong>: '닫다' (yopmoq). Undosh bilan tugagani uchun '-는' o'zgarmaydi (닫는). <strong>급하게</strong> (shoshilinch) yopadigan eshik.</p>",
-        'correct': "닫는",
-        'choices': ["닫은", "닫는", "닫을", "닫던"]
-    }
-]
-
-topic_32 = [
-    # --- TOPIC 32: 관형사형 어미 2: 동사 + (으)ㄴ (과거), (으)ㄹ (미래) ---
-    {
-        'text': "<p><strong>A: <strong>어제</strong> 저녁에 <strong>맛있게</strong> <em>먹다</em> 음식이 <em>뭐였어요</em>?<br>B: <u>매콤한</u> 떡볶이였어요.</strong></p>",
-        'explanation': "<p><strong>먹은</strong>: '먹다' (yemoq). O'tgan zamonda otni aniqlash uchun '-은' qo'shiladi (yegan ovqat). <strong>어제</strong> (kecha).</p>",
-        'correct': "먹은",
-        'choices': ["먹은", "먹는", "먹을", "먹던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>내일</strong> 파티에서 <strong>다 같이</strong> <em>먹다</em> 음식은 <strong>누가</strong> 준비해요?<br>B: 제가 <strong>미리</strong> 준비할게요.</strong></p>",
-        'explanation': "<p><strong>먹을</strong>: '먹다' (yemoq). Kelasi zamonda otni aniqlash uchun '-을' qo'shiladi (yeydigan ovqat). <strong>내일</strong> (ertaga).</p>",
-        'correct': "먹을",
-        'choices': ["먹은", "먹는", "먹을", "먹던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>방금</strong> 교실 밖으로 <strong>급하게</strong> <em>가다</em> 사람이 <em>누구예요</em>?<br>B: <u>새로운</u> 전학생이에요.</strong></p>",
-        'explanation': "<p><strong>간</strong>: '가다' (bormoq) unli bilan tugagani uchun o'tgan zamonda '-ㄴ' ulanadi (ketgan odam). <strong>방금</strong> (hozirgina).</p>",
-        'correct': "간",
-        'choices': ["간", "가는", "갈", "가던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>이번</strong> <strong>주말에</strong> 가족들과 <strong>함께</strong> <em>가다</em> 곳은 <strong>어디예요</strong>?<br>B: <u>시원한</u> 계곡이에요.</strong></p>",
-        'explanation': "<p><strong>갈</strong>: '가다' (bormoq). Kelasi zamonda '-ㄹ' ulanadi (boradigan joy). <strong>주말에</strong> (dam olish kunida).</p>",
-        'correct': "갈",
-        'choices': ["간", "가는", "갈", "가던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>지난주에</strong> 극장에서 <strong>혼자</strong> <em>보다</em> 영화 제목이 <em>뭐예요</em>?<br>B: '기생충'이라는 영화였어요.</strong></p>",
-        'explanation': "<p><strong>본</strong>: '보다' (ko'rmoq) o'tgan zamonda '-ㄴ' ulanadi (ko'rgan kino). <strong>지난주에</strong> (o'tgan haftada).</p>",
-        'correct': "본",
-        'choices': ["본", "보는", "볼", "보던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>내일</strong> <strong>저녁에</strong> 친구와 <strong>같이</strong> <em>보다</em> 영화는 <em>무슨</em> 장르예요?<br>B: <u>무서운</u> 스릴러예요.</strong></p>",
-        'explanation': "<p><strong>볼</strong>: '보다' (ko'rmoq) kelasi zamonda '-ㄹ' ulanadi (ko'radigan kino). <strong>내일</strong> (ertaga).</p>",
-        'correct': "볼",
-        'choices': ["본", "보는", "볼", "보던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>어제</strong> 도서관에서 <strong>끝까지</strong> <em>다 읽다</em> 책은 <strong>어디에</strong> 있어요?<br>B: 책상 <strong>위에</strong> <strong>그대로</strong> 있어요.</strong></p>",
-        'explanation': "<p><strong>읽은</strong>: '읽다' (o'qimoq) undosh bilan tugagani uchun o'tgan zamonda '-은' ulanadi (o'qigan kitob). <strong>끝까지</strong> (oxirigacha).</p>",
-        'correct': "읽은",
-        'choices': ["읽은", "읽는", "읽을", "읽던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>이번</strong> <strong>휴가 때</strong> <strong>해변에서</strong> <em>읽다</em> 책을 <strong>미리</strong> 샀어요?<br>B: 네, <u>재미있는</u> 소설책을 샀어요.</strong></p>",
-        'explanation': "<p><strong>읽을</strong>: '읽다' (o'qimoq). Kelasi zamonda '-을' ulanadi (o'qiydigan kitob). <strong>휴가 때</strong> (ta'til paytida).</p>",
-        'correct': "읽을",
-        'choices': ["읽은", "읽는", "읽을", "읽던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>어제</strong> 카페에서 <strong>오랜만에</strong> <em>만나다</em> 친구가 <em>누구예요</em>?<br>B: 중학교 때 <u>친했던</u> 동창이에요.</strong></p>",
-        'explanation': "<p><strong>만난</strong>: '만나다' (uchrashmoq) o'tgan zamonda '-ㄴ' ulanadi (uchrashgan do'st). <strong>오랜만에</strong> (anchadan so'ng).</p>",
-        'correct': "만난",
-        'choices': ["만난", "만나는", "만날", "만나던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>내일</strong> 서울역에서 <strong>새로</strong> <em>만나다</em> 친구 이름이 <em>뭐예요</em>?<br>B: 우즈베키스탄에서 오는 마디나예요.</strong></p>",
-        'explanation': "<p><strong>만날</strong>: '만나다' (uchrashmoq). Kelasi zamonda '-ㄹ' ulanadi (uchrashadigan do'st). <strong>새로</strong> (yangi).</p>",
-        'correct': "만날",
-        'choices': ["만난", "만나는", "만날", "만나던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>예전에</strong> 한국에서 <strong>오래</strong> <em>살다</em> 곳이 <strong>어디였어요</strong>?<br>B: <u>번화한</u> 서울 강남이었어요.</strong></p>",
-        'explanation': "<p><strong>산</strong>: '살다' (yashamoq). 'ㄹ' tushib qoladi va o'tgan zamonda '-ㄴ' ulanadi (yashagan joy). <strong>예전에</strong> (oldinlari).</p>",
-        'correct': "산",
-        'choices': ["산", "사는", "살", "살던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>나중에</strong> 결혼하고 <strong>평생</strong> <em>살다</em> 곳을 <strong>벌써</strong> 정했어요?<br>B: 네, <u>조용한</u> 외곽에 집을 지을 거예요.</strong></p>",
-        'explanation': "<p><strong>살</strong>: '살다' (yashamoq). 'ㄹ' bilan tugagan so'zlarga kelasi zamonda to'g'ridan-to'g'ri ot yoziladi yoki 'ㄹ' qoladi (yashaydigan joy). <strong>평생</strong> (bir umr).</p>",
-        'correct': "살",
-        'choices': ["산", "사는", "살", "살던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>아까</strong> 부엌에서 <strong>직접</strong> <em>만들다</em> 빵을 <strong>좀</strong> 먹어봐도 돼요?<br>B: 네, <strong>따뜻할 때</strong> <strong>빨리</strong> 드세요.</strong></p>",
-        'explanation': "<p><strong>만든</strong>: '만들다' (tayyorlamoq). 'ㄹ' tushib '-ㄴ' ulanadi (tayyorlagan non). <strong>아까</strong> (boya/birmuncha oldin).</p>",
-        'correct': "만든",
-        'choices': ["만든", "만드는", "만들", "만들던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>이따가</strong> 손님들을 위해 <strong>맛있게</strong> <em>만들다</em> 요리가 <em>뭐예요</em>?<br>B: <u>매콤한</u> 닭갈비예요.</strong></p>",
-        'explanation': "<p><strong>만들</strong>: '만들다' (tayyorlamoq). Kelasi zamon uchun 'ㄹ' saqlanadi (tayyorlaydigan ovqat). <strong>이따가</strong> (keyinroq).</p>",
-        'correct': "만들",
-        'choices': ["만든", "만드는", "만들", "만들던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>어제</strong> 백화점에서 <strong>비싸게</strong> <em>사다</em> 옷을 <strong>벌써</strong> 입었어요?<br>B: 네, <strong>오늘</strong> <strong>출근할 때</strong> 입고 왔어요.</strong></p>",
-        'explanation': "<p><strong>산</strong>: '사다' (sotib olmoq) o'tgan zamonda '-ㄴ' ulanadi (sotib olingan kiyim). <strong>비싸게</strong> (qimmatga).</p>",
-        'correct': "산",
-        'choices': ["산", "사는", "살", "사던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>내일</strong> 어머니 생신에 <strong>정성껏</strong> <em>사다</em> 선물이 <em>뭐예요</em>?<br>B: <u>예쁜</u> 스카프를 살 거예요.</strong></p>",
-        'explanation': "<p><strong>살</strong>: '사다' (sotib olmoq). Kelasi zamonda '-ㄹ' ulanadi (sotib olinadigan sovg'a). <strong>정성껏</strong> (mehr bilan).</p>",
-        'correct': "살",
-        'choices': ["산", "사는", "살", "사던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>방금</strong> 라디오에서 <strong>우연히</strong> <em>듣다</em> 음악 제목을 <em>알아요</em>?<br>B: 아니요, <strong>처음 듣는</strong> <u>낯선</u> 곡이었어요.</strong></p>",
-        'explanation': "<p><strong>들은</strong>: '듣다' (eshitmoq). 'ㄷ' -> 'ㄹ' + o'tgan zamon '-은' (eshitgan musiqa). <strong>우연히</strong> (tasodifan).</p>",
-        'correct': "들은",
-        'choices': ["듣은", "듣는", "들을", "들은"]
-    },
-    {
-        'text': "<p><strong>A: <strong>이따가</strong> <strong>드라이브하면서</strong> <strong>신나게</strong> <em>듣다</em> 음악을 <strong>다</strong> 골랐어요?<br>B: 네, 아이돌 노래로 <strong>가득</strong> 채웠어요.</strong></p>",
-        'explanation': "<p><strong>들을</strong>: '듣다' (eshitmoq). 'ㄷ' -> 'ㄹ' + kelasi zamon '-을' (eshitadigan musiqa). <strong>이따가</strong> (keyinroq).</p>",
-        'correct': "들을",
-        'choices': ["들은", "듣는", "들을", "듣을"]
-    },
-    {
-        'text': "<p><strong>A: <strong>어제</strong> 공원에서 <strong>오래</strong> <em>걷다</em> 길을 <strong>다시</strong> 가볼래요?<br>B: 네, 경치가 <strong>정말</strong> <u>아름다웠어요</u>.</strong></p>",
-        'explanation': "<p><strong>걸은</strong>: '걷다' (yurmoq). 'ㄷ' -> 'ㄹ' + o'tgan zamon '-은' (yurgan yo'l). <strong>오래</strong> (uzoq vaqt).</p>",
-        'correct': "걸은",
-        'choices': ["걷은", "걷는", "걸을", "걸은"]
-    },
-    {
-        'text': "<p><strong>A: <strong>내일</strong> 아침에 <strong>조용히</strong> <em>걷다</em> 공원 길이 <strong>어디예요</strong>?<br>B: 숙소 뒤에 있는 <u>작은</u> 오솔길이에요.</strong></p>",
-        'explanation': "<p><strong>걸을</strong>: '걷다' (yurmoq). 'ㄷ' -> 'ㄹ' + kelasi zamon '-을' (yuradigan yo'l). <strong>조용히</strong> (tinch).</p>",
-        'correct': "걸을",
-        'choices': ["걸은", "걷는", "걸을", "걷을"]
-    },
-    {
-        'text': "<p><strong>A: <strong>아까</strong> 카페에서 <strong>시원하게</strong> <em>마시다</em> 차가 <em>무엇이었어요</em>?<br>B: 복숭아 아이스티였어요.</strong></p>",
-        'explanation': "<p><strong>마신</strong>: '마시다' (ichmoq) o'tgan zamonda '-ㄴ' ulanadi (ichgan choy). <strong>시원하게</strong> (salqin/muzdek qilib).</p>",
-        'correct': "마신",
-        'choices': ["마신", "마시는", "마실", "마시던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>이따가</strong> <strong>저녁 식사 후에</strong> <em>마시다</em> 차를 <strong>미리</strong> 준비할까요?<br>B: 네, <u>따뜻한</u> 녹차로 <strong>미리</strong> 끓여 주세요.</strong></p>",
-        'explanation': "<p><strong>마실</strong>: '마시다' (ichmoq). Kelasi zamonda '-ㄹ' ulanadi (ichadigan choy). <strong>미리</strong> (oldindan).</p>",
-        'correct': "마실",
-        'choices': ["마신", "마시는", "마실", "마시던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>어제</strong> 면접에 <strong>단정하게</strong> <em>입다</em> 옷을 <strong>내일도</strong> 입을 거예요?<br>B: 아니요, <strong>내일은</strong> <strong>다른 옷으로</strong> 입을 거예요.</strong></p>",
-        'explanation': "<p><strong>입은</strong>: '입다' (kiymoq) o'tgan zamonda '-은' ulanadi (kiygan kiyim). <strong>단정하게</strong> (ozoda/tartibli).</p>",
-        'correct': "입은",
-        'choices': ["입은", "입는", "입을", "입던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>내일</strong> 파티에서 <strong>화려하게</strong> <em>입다</em> 옷을 <strong>미리</strong> <strong>다</strong> 다렸어요?<br>B: 네, <strong>가장</strong> <u>예쁜</u> 드레스를 <strong>잘</strong> 준비했어요.</strong></p>",
-        'explanation': "<p><strong>입을</strong>: '입다' (kiymoq). Kelasi zamonda '-을' ulanadi (kiyadigan kiyim). <strong>화려하게</strong> (hashamatli qilib).</p>",
-        'correct': "입을",
-        'choices': ["입은", "입는", "입을", "입던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>방금</strong> 역에 <strong>무사히</strong> <em>도착하다</em> 기차가 <strong>어디서</strong> 왔어요?<br>B: 부산에서 출발한 <u>빠른</u> 기차예요.</strong></p>",
-        'explanation': "<p><strong>도착한</strong>: '도착하다' (yetib kelmoq) o'tgan zamonda '-ㄴ' ulanadi (yetib kelgan poyezd). <strong>무사히</strong> (sog'-omon).</p>",
-        'correct': "도착한",
-        'choices': ["도착한", "도착하는", "도착할", "도착하던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>곧</strong> 3번 플랫폼에서 <strong>빨리</strong> <em>출발하다</em> 기차가 <strong>우리가 탈</strong> 기차예요?<br>B: 네, <strong>서둘러서</strong> <strong>빨리</strong> 타야 해요.</strong></p>",
-        'explanation': "<p><strong>출발할</strong>: '출발하다' (jo'nab ketmoq). Kelasi zamonda '-ㄹ' ulanadi (jo'nab ketadigan poyezd). <strong>곧</strong> (tez orada).</p>",
-        'correct': "출발할",
-        'choices': ["출발한", "출발하는", "출발할", "출발하던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>어제</strong> 이삿짐을 <strong>힘들게</strong> <em>도와주다</em> 친구들에게 <strong>밥을</strong> 샀어요?<br>B: 네, <strong>고마워서</strong> <u>맛있는</u> 고기를 <strong>잔뜩</strong> 사줬어요.</strong></p>",
-        'explanation': "<p><strong>도와준</strong>: '도와주다' (yordam bermoq) o'tgan zamonda '-ㄴ' ulanadi (yordam bergan do'stlar). <strong>힘들게</strong> (qiyinchilik bilan/mashaqqatli).</p>",
-        'correct': "도와준",
-        'choices': ["도와준", "도와주는", "도와줄", "도와주던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>내일</strong> 프로젝트를 <strong>가장</strong> <strong>크게</strong> <em>도와주다</em> 사람이 <em>누구예요</em>?<br>B: <u>똑똑한</u> 선배님이 <strong>직접</strong> 도와주실 거예요.</strong></p>",
-        'explanation': "<p><strong>도와줄</strong>: '도와주다' (yordam bermoq). Kelasi zamonda '-ㄹ' ulanadi (yordam beradigan odam). <strong>크게</strong> (katta / sezilarli darajada).</p>",
-        'correct': "도와줄",
-        'choices': ["도와준", "도와주는", "도와줄", "도와주던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>예전에</strong> 한국에서 <strong>친하게</strong> <em>알다</em> 사람들과 <strong>아직도</strong> 연락해요?<br>B: 네, <strong>SNS로</strong> <strong>종종</strong> 안부를 물어요.</strong></p>",
-        'explanation': "<p><strong>안</strong>: '알다' (bilmoq/tanish bo'lmoq). 'ㄹ' tushadi va o'tgan zamonda '-ㄴ' ulanadi (tanishgan/bilgan odam). <strong>친하게</strong> (yaqin/do'stona).</p>",
-        'correct': "안",
-        'choices': ["안", "아는", "알", "알던"]
-    },
-    {
-        'text': "<p><strong>A: <strong>나중에</strong> 대학교에 가서 <strong>새롭게</strong> <em>알다</em> 친구들은 <em>어떤</em> 사람일까요?<br>B: <strong>아마</strong> <strong>모두</strong> <u>친절하고</u> <u>좋은</u> 사람일 거예요.</strong></p>",
-        'explanation': "<p><strong>알</strong>: '알다' (bilmoq/tanishmoq). Kelasi zamonda 'ㄹ' saqlanadi (tanishadigan do'stlar). <strong>새롭게</strong> (yangi/yangidan).</p>",
-        'correct': "알",
-        'choices': ["안", "아는", "알", "알던"]
-    }
-]
-
-topic_33 = [
-    # --- TOPIC 33: 관형사형 어미 3: 형용사 + (으)ㄴ ---
-    {
-        'text': "<p>A: <strong>저기</strong> <em>있는</em> 학생이 <em>누구예요</em>?<br>B: 키가 <u>크________</u> 학생은 제 동생이에요.</p>",
-        'explanation': "<p><strong>큰</strong>: '크다' (katta/baland bo'lmoq) unli bilan tugagan sifat. Sifatdan aniqlovchi yasash uchun '-ㄴ' qo'shiladi (큰 - baland). <strong>저기</strong> (anavi yerda).</p>",
-        'correct': "큰",
-        'choices': ["크은", "큰", "크는", "클"]
-    },
-    {
-        'text': "<p>A: <strong>어떤</strong> 구두를 <em>찾으세요</em>?<br>B: 발이 <u>편하________</u> 구두를 <em>보여 주세요</em>.</p>",
-        'explanation': "<p><strong>편한</strong>: '편하다' (qulay bo'lmoq). '하다' bilan tugagan sifatlarga '-ㄴ' ulanib '편한' (qulay) bo'ladi.</p>",
-        'correct': "편한",
-        'choices': ["편하은", "편하는", "편할", "편한"]
-    },
-    {
-        'text': "<p>A: <strong>오늘</strong> <strong>새로</strong> <em>산</em> 가방이 <em>어때요</em>?<br>B: 크기가 <u>작________</u> 가방이라서 <strong>아주</strong> <u>가벼워요</u>.</p>",
-        'explanation': "<p><strong>작은</strong>: '작다' (kichik bo'lmoq) undosh bilan tugagani uchun '-은' ulanadi (작은 - kichik). <strong>새로</strong> (yangi), <strong>아주</strong> (juda).</p>",
-        'correct': "작은",
-        'choices': ["작은", "작는", "작을", "작간"]
-    },
-    {
-        'text': "<p>A: <strong>주말에</strong> <strong>보통</strong> <em>어디에</em> <em>가요</em>?<br>B: 저는 <strong>항상</strong> <u>조용하________</u> 카페에 <em>가요</em>.</p>",
-        'explanation': "<p><strong>조용한</strong>: '조용하다' (tinch/jim bo'lmoq) + '-ㄴ'. <strong>항상</strong> (har doim) <strong>보통</strong> (odatda) boradigan tinch kafe.</p>",
-        'correct': "조용한",
-        'choices': ["조용할", "조용하은", "조용한", "조용하는"]
-    },
-    {
-        'text': "<p>A: <strong>방금</strong> <em>먹은</em> 음식이 <em>어땠어요</em>?<br>B: <strong>너무</strong> <u>맵________</u> 음식이라서 물을 <strong>많이</strong> <em>마셨어요</em>.</p>",
-        'explanation': "<p><strong>매운</strong>: '맵다' (achchiq bo'lmoq). 'ㅂ' noto'g'ri sifati '우' ga aylanib '-ㄴ' qo'shiladi (매운 - achchiq). <strong>방금</strong> (hozirgina), <strong>많이</strong> (ko'p).</p>",
-        'correct': "매운",
-        'choices': ["맵은", "매운", "맵는", "매울"]
-    },
-    {
-        'text': "<p>A: <strong>요즘</strong> <strong>가장</strong> <em>읽고 싶은</em> 책이 <em>뭐예요</em>?<br>B: 내용이 <u>쉬우________</u> 책을 <em>읽고 싶어요</em>.</p>",
-        'explanation': "<p><strong>쉬운</strong>: '쉽다' (oson bo'lmoq). 'ㅂ' -> '우' + '-ㄴ' (쉬운 - oson). <strong>요즘</strong> (shu kunlarda), <strong>가장</strong> (eng).</p>",
-        'correct': "쉬운",
-        'choices': ["쉽은", "쉬울", "쉽는", "쉬운"]
-    },
-    {
-        'text': "<p>A: <strong>어제</strong> <em>만난</em> 친구는 <em>어떤</em> 사람이에요?<br>B: 마음이 <strong>정말</strong> <u>따뜻하________</u> 사람이에요.</p>",
-        'explanation': "<p><strong>따뜻한</strong>: '따뜻하다' (mehribon/iliq bo'lmoq) + '-ㄴ'. <strong>어제</strong> (kecha), <strong>정말</strong> (rosttdan).</p>",
-        'correct': "따뜻한",
-        'choices': ["따뜻한", "따뜻하는", "따뜻하은", "따뜻할"]
-    },
-    {
-        'text': "<p>A: <strong>겨울에</strong> <strong>어떤</strong> 옷을 <strong>주로</strong> <em>입어요</em>?<br>B: <strong>항상</strong> <u>두껍________</u> 코트를 <em>입어요</em>.</p>",
-        'explanation': "<p><strong>두꺼운</strong>: '두껍다' (qalin bo'lmoq). 'ㅂ' -> '우' + '-ㄴ' (두꺼운 - qalin). <strong>주로</strong> (asosan), <strong>항상</strong> (har doim).</p>",
-        'correct': "두꺼운",
-        'choices': ["두껍은", "두꺼운", "두껍는", "두꺼울"]
-    },
-    {
-        'text': "<p>A: <strong>아침마다</strong> <em>마시는</em> 주스가 <em>있어요</em>?<br>B: 네, <strong>매일</strong> <u>달________</u> 딸기 주스를 <em>마셔요</em>.</p>",
-        'explanation': "<p><strong>단</strong>: '달다' (shirin bo'lmoq). 'ㄹ' bilan tugagan sifatlarga '-ㄴ' qo'shilganda 'ㄹ' tushib qoladi (단 - shirin). <strong>매일</strong> (har kuni).</p>",
-        'correct': "단",
-        'choices': ["달은", "달는", "단", "달"]
-    },
-    {
-        'text': "<p>A: 머리가 <u>기________</u> 여자가 <em>누구예요</em>?<br>B: 제 <u>친한</u> 여동생이에요.</p>",
-        'explanation': "<p><strong>긴</strong>: '길다' (uzun bo'lmoq). 'ㄹ' tushib qoladi va '-ㄴ' qo'shiladi (긴 - uzun).</p>",
-        'correct': "긴",
-        'choices': ["길은", "긴", "길는", "길"]
-    },
-    {
-        'text': "<p>A: <strong>여름휴가 때</strong> <strong>어디에</strong> <em>가고 싶어요</em>?<br>B: 거리가 <u>머________</u> 바다로 <em>떠나고 싶어요</em>.</p>",
-        'explanation': "<p><strong>먼</strong>: '멀다' (uzoq bo'lmoq). 'ㄹ' tushadi + '-ㄴ' (먼 - uzoq). <strong>여름휴가 때</strong> (yozgi ta'til paytida).</p>",
-        'correct': "먼",
-        'choices': ["먼", "멀은", "멀는", "머을"]
-    },
-    {
-        'text': "<p>A: <strong>오늘</strong> 기분이 <strong>어때</strong> <em>보여요</em>?<br>B: <strong>좋은 일이 생겨서</strong> <strong>아주</strong> <u>기쁘________</u> 표정이에요.</p>",
-        'explanation': "<p><strong>기쁜</strong>: '기쁘다' (xursand bo'lmoq) unli bilan tugagani uchun '-ㄴ' ulanadi (기쁜 - xursand). <strong>아주</strong> (juda).</p>",
-        'correct': "기쁜",
-        'choices': ["기쁘은", "기쁜", "기쁘는", "기쁠"]
-    },
-    {
-        'text': "<p>A: <strong>항상</strong> <em>도와주는</em> 그분은 <em>어때요</em>?<br>B: <strong>정말</strong> <u>친절하________</u> 분이라서 <strong>인기가</strong> <em>많아요</em>.</p>",
-        'explanation': "<p><strong>친절한</strong>: '친절하다' (mehribon bo'lmoq) + '-ㄴ' (친절한 - mehribon). <strong>항상</strong> (har doim), <strong>정말</strong> (rosttdan).</p>",
-        'correct': "친절한",
-        'choices': ["친절하는", "친절하은", "친절할", "친절한"]
-    },
-    {
-        'text': "<p>A: <strong>식당에</strong> 사람이 <strong>왜</strong> <strong>이렇게</strong> <em>많아요</em>?<br>B: <strong>여기가</strong> <strong>이 동네에서</strong> <strong>가장</strong> <u>유명하________</u> 식당이거든요.</p>",
-        'explanation': "<p><strong>유명한</strong>: '유명하다' (mashhur bo'lmoq) + '-ㄴ'. <strong>가장</strong> (eng) mashhur oshxona.</p>",
-        'correct': "유명한",
-        'choices': ["유명하은", "유명하는", "유명한", "유명할"]
-    },
-    {
-        'text': "<p>A: <strong>방금</strong> <em>본</em> 드라마 <strong>내용이</strong> <em>어땠어요</em>?<br>B: 주인공이 <em>우는</em> <u>슬프________</u> 이야기였어요.</p>",
-        'explanation': "<p><strong>슬픈</strong>: '슬프다' (qayg'uli/xafa bo'lmoq) + '-ㄴ' (슬픈 - qayg'uli). <strong>방금</strong> (hozirgina).</p>",
-        'correct': "슬픈",
-        'choices': ["슬프은", "슬픈", "슬프는", "슬플"]
-    },
-    {
-        'text': "<p>A: <strong>점심에</strong> <em>어떤</em> 음식을 <em>먹을까요</em>?<br>B: <strong>날씨가 더우니까</strong> <u>시원하________</u> 냉면을 <em>먹어요</em>.</p>",
-        'explanation': "<p><strong>시원한</strong>: '시원하다' (salqin/muzdek bo'lmoq) + '-ㄴ'. <strong>날씨가 더우니까</strong> (hawo issiq bo'lgani uchun).</p>",
-        'correct': "시원한",
-        'choices': ["시원하는", "시원하은", "시원할", "시원한"]
-    },
-    {
-        'text': "<p>A: <strong>주말에</strong> <strong>명동에</strong> <em>가 봤어요</em>?<br>B: 네, 사람이 <u>많________</u> <strong>정말</strong> <u>복잡하더라고요</u>.</p>",
-        'explanation': "<p><strong>많은</strong>: '많다' (ko'p bo'lmoq) undosh bilan tugagani uchun '-은' ulanadi (많은 - ko'p). <strong>정말</strong> (rosttdan).</p>",
-        'correct': "많은",
-        'choices': ["많은", "많는", "많을", "많잔"]
-    },
-    {
-        'text': "<p>A: <strong>어제</strong> 시험이 <strong>많이</strong> <u>어려웠어요</u>?<br>B: 네, <strong>생각보다</strong> <u>어려우________</u> 문제가 <strong>많았어요</strong>.</p>",
-        'explanation': "<p><strong>어려운</strong>: '어렵다' (qiyin bo'lmoq). 'ㅂ' -> '우' + '-ㄴ' (어려운 - qiyin). <strong>생각보다</strong> (o'ylagandan ko'ra).</p>",
-        'correct': "어려운",
-        'choices': ["어렵은", "어려운", "어렵는", "어려울"]
-    },
-    {
-        'text': "<p>A: <strong>집에 갈 때</strong> 짐이 <strong>너무</strong> <u>무거워요</u>?<br>B: 네, <u>무거우________</u> 짐은 <strong>택배로</strong> <em>보낼 거예요</em>.</p>",
-        'explanation': "<p><strong>무거운</strong>: '무겁다' (og'ir bo'lmoq). 'ㅂ' -> '우' + '-ㄴ' (무거운 - og'ir). <strong>너무</strong> (juda).</p>",
-        'correct': "무거운",
-        'choices': ["무겁은", "무거운", "무겁는", "무거울"]
-    },
-    {
-        'text': "<p>A: 이 식당은 <strong>반찬이</strong> <em>어때요</em>?<br>B: 반찬이 <u>적________</u> 대신 메인 요리가 <strong>아주</strong> <u>맛있어요</u>.</p>",
-        'explanation': "<p><strong>적은</strong>: '적다' (kam bo'lmoq) undosh bilan tugagani uchun '-은' ulanadi (적은 - kam). <strong>아주</strong> (juda).</p>",
-        'correct': "적은",
-        'choices': ["적는", "적을", "적은", "적잔"]
-    },
-    {
-        'text': "<p>A: <strong>요즘</strong> 생활이 <strong>많이</strong> <u>바빠요</u>?<br>B: 네, <u>바쁘________</u> 일정 <strong>때문에</strong> <strong>잠을 못 잤어요</strong>.</p>",
-        'explanation': "<p><strong>바쁜</strong>: '바쁘다' (band bo'lmoq) unli bilan tugagani uchun '-ㄴ' ulanadi (바쁜 - band). <strong>요즘</strong> (shu kunlarda).</p>",
-        'correct': "바쁜",
-        'choices': ["바쁘은", "바쁜", "바쁘는", "바쁠"]
-    },
-    {
-        'text': "<p>A: <strong>어젯밤에</strong> <em>본</em> 영화가 <em>어땠어요</em>?<br>B: <strong>정말</strong> <u>재미있________</u> 영화였어요.</p>",
-        'explanation': "<p><strong>있는</strong>: '재미있다' (qiziqarli bo'lmoq). '있다/없다' bilan tugagan sifatlar '-는' qabul qiladi (재미있는 - qiziqarli). <strong>어젯밤에</strong> (kecha tunda).</p>",
-        'correct': "있는",
-        'choices': ["있은", "있는", "있을", "있던"]
-    },
-    {
-        'text': "<p>A: <strong>지금</strong> <em>마시는</em> 커피가 <em>맛있어요</em>?<br>B: 아니요, <strong>아무 맛이 안 나는</strong> <u>맛없________</u> 커피예요.</p>",
-        'explanation': "<p><strong>없는</strong>: '맛없다' (bemaza bo'lmoq). '없다' bilan tugagan sifatlar '-는' qabul qiladi (맛없는 - bemaza). <strong>지금</strong> (hozir).</p>",
-        'correct': "없는",
-        'choices': ["없은", "없는", "없을", "없던"]
-    },
-    {
-        'text': "<p>A: 한국에서 <strong>가장</strong> <em>인기 있는</em> 가수가 <em>누구예요</em>?<br>B: 춤을 <strong>잘</strong> <em>추는</em> <u>멋있________</u> 가수예요.</p>",
-        'explanation': "<p><strong>있는</strong>: '멋있다' (chiroyli/ko'rkam bo'lmoq). '있다' sifatdoshda '-는' qabul qiladi (멋있는 - ko'rkam). <strong>가장</strong> (eng).</p>",
-        'correct': "있는",
-        'choices': ["있은", "있는", "있을", "있던"]
-    },
-    {
-        'text': "<p>A: <strong>도서관에서</strong> <strong>오래</strong> 공부하기 <em>어때요</em>?<br>B: 에어컨이 <strong>빵빵해서</strong> <u>추우________</u> 정도예요.</p>",
-        'explanation': "<p><strong>추운</strong>: '춥다' (sovuq bo'lmoq). 'ㅂ' -> '우' + '-ㄴ' (추운 - sovuq). <strong>오래</strong> (uzoq vaqt).</p>",
-        'correct': "추운",
-        'choices': ["춥은", "추운", "춥는", "추울"]
-    },
-    {
-        'text': "<p>A: <strong>요즘</strong> 거리가 <strong>많이</strong> <u>복잡해요</u>?<br>B: 네, 차가 <strong>많아서</strong> <u>복잡하________</u> 길이 <strong>정말</strong> 싫어요.</p>",
-        'explanation': "<p><strong>복잡한</strong>: '복잡하다' (tirband bo'lmoq) + '-ㄴ' (복잡한 - tirband). <strong>정말</strong> (rosttdan/juda).</p>",
-        'correct': "복잡한",
-        'choices': ["복잡하은", "복잡하는", "복잡할", "복잡한"]
-    },
-    {
-        'text': "<p>A: <strong>항상</strong> <em>만나는</em> 친구들은 <em>어때요</em>?<br>B: 저를 <strong>잘</strong> <em>이해해 주는</em> <u>착하________</u> 친구들이에요.</p>",
-        'explanation': "<p><strong>착한</strong>: '착하다' (yaxshi/ko'ngilchang bo'lmoq) + '-ㄴ' (착한 - ko'ngilchang). <strong>항상</strong> (har doim).</p>",
-        'correct': "착한",
-        'choices': ["착하은", "착하는", "착할", "착한"]
-    },
-    {
-        'text': "<p>A: 밤에 <strong>혼자</strong> <em>걸어가면</em> <strong>어때요</strong>?<br>B: 골목이 <strong>너무</strong> <u>어두우________</u> 길이라서 <u>무서워요</u>.</p>",
-        'explanation': "<p><strong>어두운</strong>: '어둡다' (qorong'i bo'lmoq). 'ㅂ' -> '우' + '-ㄴ' (어두운 - qorong'i). <strong>혼자</strong> (yolg'iz).</p>",
-        'correct': "어두운",
-        'choices': ["어둡은", "어두운", "어둡는", "어두울"]
-    },
-    {
-        'text': "<p>A: 방 청소를 <strong>자주</strong> <em>해요</em>?<br>B: 네, <strong>항상</strong> <u>깨끗하________</u> 방을 <em>유지하고 싶어요</em>.</p>",
-        'explanation': "<p><strong>깨끗한</strong>: '깨끗하다' (toza bo'lmoq) + '-ㄴ' (깨끗한 - toza). <strong>자주</strong> (tez-tez), <strong>항상</strong> (har doim).</p>",
-        'correct': "깨끗한",
-        'choices': ["깨끗하은", "깨끗하는", "깨끗한", "깨끗할"]
-    },
-    {
-        'text': "<p>A: <strong>나중에</strong> <strong>어떤</strong> 아파트에서 <em>살고 싶어요</em>?<br>B: 창문이 <u>넓________</u> <strong>시원한</strong> 아파트에서 <em>살고 싶어요</em>.</p>",
-        'explanation': "<p><strong>넓은</strong>: '넓다' (keng bo'lmoq) undosh bilan tugagani uchun '-은' ulanadi (넓은 - keng). <strong>나중에</strong> (keyinroq/kelajakda).</p>",
-        'correct': "넓은",
-        'choices': ["넓은", "넓는", "넓을", "넓잔"]
-    }
-]
-
-topic_34 = [
-    # --- TOPIC 34: 명사화 표현: 동사 + 는 것, 동사 + 기 ---
-    {
-        'text': "<p>A: <strong>주말에</strong> <strong>보통</strong> <em>하는</em> <u>즐거운</u> 취미가 <em>뭐예요</em>?<br>B: 제 취미는 <strong>집에서</strong> <strong>조용히</strong> 책을 <em>읽________</em> 입니다.</p>",
-        'explanation': "<p><strong>읽는 것</strong>: '읽다' (o'qimoq). Fe'lni otga aylantirish uchun '-는 것' (o'qish) qo'shiladi. <strong>보통</strong> (odatda), <strong>조용히</strong> (tinch/jim).</p>",
-        'correct': "읽는 것",
-        'choices': ["읽는 것", "읽기 것", "읽은 것", "읽을 것"]
-    },
-    {
-        'text': "<p>A: 한국어를 <em>배우________</em> <strong>많이</strong> <u>어려워요</u>?<br>B: 아니요, <strong>생각보다</strong> 문법이 <strong>규칙적이라서</strong> <u>쉬워요</u>.</p>",
-        'explanation': "<p><strong>배우기</strong>: '배우다' (o'rganmoq). Fe'lni otlash uchun '-기' (o'rganish) qo'shiladi. <strong>많이</strong> (ko'p).</p>",
-        'correct': "배우기",
-        'choices': ["배우는", "배우기", "배운", "배울"]
-    },
-    {
-        'text': "<p>A: 스트레스를 <strong>받을 때</strong> <strong>어떻게</strong> <em>풀어요</em>?<br>B: 저는 <strong>크게</strong> <u>신나는</u> 노래를 <em>부르________</em> <strong>가장</strong> <em>좋아해요</em>.</p>",
-        'explanation': "<p><strong>부르는 것</strong>: '부르다' (kuylamoq/chaqirmoq) + '-는 것' (kuylashni). <strong>크게</strong> (baland qilib), <strong>가장</strong> (eng).</p>",
-        'correct': "부르는 것",
-        'choices': ["부르기 것", "부른 것", "부르는 것", "부를 것"]
-    },
-    {
-        'text': "<p>A: <strong>매일</strong> <strong>아침에</strong> <strong>일찍</strong> <em>일어나________</em> <u>힘들지 않아요</u>?<br>B: <strong>처음에는</strong> <u>힘들었지만</u> <strong>지금은</strong> <u>괜찮아요</u>.</p>",
-        'explanation': "<p><strong>일어나기</strong>: '일어나다' (turmoq/uyg'onmoq) + '-기' (turish). <strong>매일</strong> (har kuni), <strong>일찍</strong> (vaqtli).</p>",
-        'correct': "일어나기",
-        'choices': ["일어나는", "일어난", "일어날", "일어나기"]
-    },
-    {
-        'text': "<p>A: <strong>요즘</strong> 건강을 위해서 <strong>특별히</strong> <em>하는</em> 일이 <em>있어요</em>?<br>B: 네, <strong>매일 저녁</strong> 공원을 <strong>한 시간씩</strong> <em>걷________</em> 입니다.</p>",
-        'explanation': "<p><strong>걷는 것</strong>: '걷다' (yurmoq). 'ㄷ' qoidasi bu yerda o'zgarmaydi, '-는 것' ulanadi (걷는 것 - yurish). <strong>매일 저녁</strong> (har oqshom).</p>",
-        'correct': "걷는 것",
-        'choices': ["걷는 것", "걸기 것", "걸은 것", "걸을 것"]
-    },
-    {
-        'text': "<p>A: 혼자서 <strong>처음</strong> <strong>해외여행을</strong> <em>가________</em> <u>무섭지 않아요</u>?<br>B: <strong>조금</strong> <u>긴장되지만</u> <strong>정말</strong> <u>설레요</u>.</p>",
-        'explanation': "<p><strong>가기</strong>: '가다' (bormoq) + '-기' (borish). <strong>처음</strong> (birinchi marta), <strong>조금</strong> (biroz).</p>",
-        'correct': "가기",
-        'choices': ["가기", "가는", "간", "갈"]
-    },
-    {
-        'text': "<p>A: <strong>주말마다</strong> <strong>가족들과</strong> <strong>같이</strong> <em>만들________</em> <strong>정말</strong> <u>즐거워요</u>?<br>B: 네, 요리하는 시간이 <strong>가장</strong> <u>행복해요</u>.</p>",
-        'explanation': "<p><strong>만들기</strong>: '만들다' (tayyorlamoq) + '-기' (tayyorlash). <strong>정말</strong> (rosttdan).</p>",
-        'correct': "만들기",
-        'choices': ["만드는", "만들기", "만든", "만들"]
-    },
-    {
-        'text': "<p>A: 마디나 씨의 꿈은 <strong>나중에</strong> <em>무엇이</em> <em>되는________</em>?<br>B: 제 꿈은 <u>훌륭한</u> 선생님이 <em>되는 것</em>이에요.</p>",
-        'explanation': "<p><strong>것입니까</strong>: '되는' + '것' + '입니까?' (bo'lishmi?). <strong>나중에</strong> (kelajakda).</p>",
-        'correct': "것입니까",
-        'choices': ["것입니까", "기입니까", "은입니까", "을입니까"]
-    },
-    {
-        'text': "<p>A: <strong>오랜만에</strong> 고향 친구를 <em>만나________</em> <strong>많이</strong> <u>어려웠어요</u>?<br>B: 네, <strong>서로</strong> <strong>너무</strong> <u>바빠서</u> 시간 맞추기가 <u>힘들었어요</u>.</p>",
-        'explanation': "<p><strong>기</strong>: '만나다' (uchrashmoq) + '-기' (uchrashish). <strong>오랜만에</strong> (anchadan so'ng).</p>",
-        'correct': "기",
-        'choices': ["는", "기", "은", "을"]
-    },
-    {
-        'text': "<p>A: 제가 <strong>가장</strong> <em>싫어하는</em> <strong>집안일은</strong> 설거지를 <em>하________</em> 이에요.<br>B: 저도 설거지하는 것을 <strong>제일</strong> <em>싫어해요</em>.</p>",
-        'explanation': "<p><strong>는 것</strong>: '하다' (qilmoq) + '-는 것' (qilish). <strong>가장</strong> (eng), <strong>제일</strong> (eng).</p>",
-        'correct': "는 것",
-        'choices': ["기 것", "은 것", "는 것", "을 것"]
-    },
-    {
-        'text': "<p>A: <strong>모르는</strong> 단어를 <strong>매일</strong> 사전에 <em>찾________</em> <u>귀찮지 않아요</u>?<br>B: <strong>처음에는</strong> <u>불편했는데</u> <strong>이제는</strong> <u>익숙해요</u>.</p>",
-        'explanation': "<p><strong>기</strong>: '찾다' (qidirmoq) + '-기' (qidirish). <strong>매일</strong> (har kuni), <strong>처음에는</strong> (boshida).</p>",
-        'correct': "기",
-        'choices': ["기", "는", "은", "을"]
-    },
-    {
-        'text': "<p>A: 한국어를 <strong>유창하게</strong> <em>말하________</em> <strong>위해</strong> <strong>어떻게</strong> <em>해야 해요</em>?<br>B: <strong>한국 친구들과</strong> <strong>자주</strong> 대화해 보세요.</p>",
-        'explanation': "<p><strong>기</strong>: '말하다' (gapirmoq) + '-기'. '-기 위해' (uchun) maqsadni bildiradi (gapirish uchun). <strong>유창하게</strong> (ravon), <strong>자주</strong> (tez-tez).</p>",
-        'correct': "기",
-        'choices': ["기", "는", "은", "을"]
-    },
-    {
-        'text': "<p>A: <strong>방금</strong> <em>들은</em> <u>좋은</u> 소식을 친구에게 <em>전하________</em> <strong>너무</strong> <u>기뻐요</u>.<br>B: <strong>빨리</strong> 전화해서 <em>알려 주세요</em>.</p>",
-        'explanation': "<p><strong>기</strong>: '전하다' (yetkazmoq) + '-기'. Yoki '전하는 것' (yetkazish). Bu yerda '전하는 것이 기뻐요' yoki '전하기가 기뻐요'. The structure '전하기가 기뻐요' is a bit awkward, usually '전해서 기뻐요'. Let's adjust the blank: '전하________이 너무 기뻐요' -> 전하는 것. Let's use '전하는 것'.</p>\n<p>A: <strong>방금</strong> <em>들은</em> <u>좋은</u> 소식을 친구에게 <em>전하________</em> <strong>정말</strong> <u>즐거워요</u>.</p>",
-        'explanation': "<p><strong>는 것</strong>: '전하다' (yetkazmoq) + '-는 것' (yetkazish). <strong>정말</strong> (rosttdan).</p>",
-        'correct': "는 것",
-        'choices': ["기 것", "는 것", "은 것", "을 것"]
-    },
-    {
-        'text': "<p>A: 이 <u>무거운</u> 소포를 <strong>우체국까지</strong> <em>들고</em> <em>가________</em> <strong>많이</strong> <u>힘들어요</u>?<br>B: 네, <strong>생각보다</strong> <strong>너무</strong> <u>무거워요</u>.</p>",
-        'explanation': "<p><strong>기</strong>: '가다' (bormoq) + '-기' (borish/tashish). <strong>많이</strong> (ko'p), <strong>너무</strong> (juda).</p>",
-        'correct': "기",
-        'choices': ["기", "는", "은", "을"]
-    },
-    {
-        'text': "<p>A: <strong>여름휴가 때</strong> <strong>바다에서</strong> <em>수영하________</em> <strong>정말</strong> <em>좋아해요</em>.<br>B: 저도 <u>시원한</u> 바다를 <strong>가장</strong> <em>좋아해요</em>.</p>",
-        'explanation': "<p><strong>는 것</strong>: '수영하다' (suzmoq) + '-는 것' (suzishni). <strong>정말</strong> (haqiqatan ham), <strong>가장</strong> (eng).</p>",
-        'correct': "는 것",
-        'choices': ["는 것", "기 것", "은 것", "을 것"]
-    },
-    {
-        'text': "<p>A: 이 책은 <strong>글씨가 너무 작아서</strong> <em>읽________</em> <u>불편해요</u>.<br>B: 돋보기를 빌려 <em>드릴까요</em>?</p>",
-        'explanation': "<p><strong>기</strong>: '읽다' (o'qimoq) + '-기' (o'qish). <strong>너무</strong> (juda), <strong>불편해요</strong> (noqulay).</p>",
-        'correct': "기",
-        'choices': ["는", "기", "은", "을"]
-    },
-    {
-        'text': "<p>A: <strong>주말에</strong> <strong>가장</strong> <em>기다려지는</em> 시간은 <em>언제예요</em>?<br>B: <strong>늦게까지</strong> <strong>침대에서</strong> <em>자________</em> 이에요.</p>",
-        'explanation': "<p><strong>는 것</strong>: '자다' (uxlamoq) + '-는 것' (uxlash). <strong>가장</strong> (eng), <strong>늦게까지</strong> (kechkacha).</p>",
-        'correct': "는 것",
-        'choices': ["는 것", "기 것", "은 것", "을 것"]
-    },
-    {
-        'text': "<p>A: <strong>매일</strong> 지하철로 <em>출퇴근하________</em> <u>지치지 않아요</u>?<br>B: <strong>사람이 많아서</strong> <strong>가끔</strong> <u>피곤해요</u>.</p>",
-        'explanation': "<p><strong>기</strong>: '출퇴근하다' (ishga qatnamoq) + '-기' (qatnash). <strong>매일</strong> (har kuni), <strong>가끔</strong> (ba'zan).</p>",
-        'correct': "기",
-        'choices': ["는", "기", "은", "을"]
-    },
-    {
-        'text': "<p>A: <strong>외국어로</strong> <strong>일기를</strong> <em>쓰________</em> <u>어렵지만</u> <u>도움이 돼요</u>.<br>B: 네, 쓰기 연습에 <strong>아주</strong> <u>좋아요</u>.</p>",
-        'explanation': "<p><strong>기</strong>: '쓰다' (yozmoq) + '-기' (yozish). <strong>아주</strong> (juda).</p>",
-        'correct': "기",
-        'choices': ["기", "는", "은", "을"]
-    },
-    {
-        'text': "<p>A: 제 <u>작은</u> 소원은 <strong>세계 일주를</strong> <em>하________</em> 입니다.<br>B: <strong>정말</strong> <u>멋진</u> 꿈이네요!</p>",
-        'explanation': "<p><strong>는 것</strong>: '하다' (qilmoq) + '-는 것' (qilish). <strong>정말</strong> (rosttdan).</p>",
-        'correct': "는 것",
-        'choices': ["는 것", "기 것", "은 것", "을 것"]
-    },
-    {
-        'text': "<p>A: <strong>처음 만난</strong> 사람과 <em>대화하________</em> <strong>조금</strong> <u>어색해요</u>.<br>B: 저도 <strong>처음에는</strong> <strong>항상</strong> <u>긴장돼요</u>.</p>",
-        'explanation': "<p><strong>기</strong>: '대화하다' (suhbatlashmoq) + '-기' (suhbatlashish). <strong>조금</strong> (biroz), <strong>처음에는</strong> (boshida).</p>",
-        'correct': "기",
-        'choices': ["기", "는", "은", "을"]
-    },
-    {
-        'text': "<p>A: 제가 <strong>가장</strong> <em>잘하는</em> 스포츠는 <strong>빠르게</strong> <em>달리________</em> 이에요.<br>B: 우와, 체력이 <strong>정말</strong> <u>좋으시네요</u>.</p>",
-        'explanation': "<p><strong>는 것</strong>: '달리다' (yugurmoq) + '-는 것' (yugurish). <strong>빠르게</strong> (tez), <strong>가장</strong> (eng).</p>",
-        'correct': "는 것",
-        'choices': ["기 것", "는 것", "은 것", "을 것"]
-    },
-    {
-        'text': "<p>A: 친구들과 <strong>밤새도록</strong> <em>놀________</em> <strong>너무</strong> <u>피곤해요</u>.<br>B: <strong>오늘은</strong> <strong>집에서</strong> <strong>푹</strong> <em>쉬세요</em>.</p>",
-        'explanation': "<p><strong>기</strong>: '놀다' (o'ynamoq) + '-기' (o'ynash). <strong>밤새도록</strong> (tun bo'yi), <strong>너무</strong> (juda).</p>",
-        'correct': "기",
-        'choices': ["는", "은", "기", "을"]
-    },
-    {
-        'text': "<p>A: 이 <u>비싼</u> 옷을 <strong>직접</strong> <strong>세탁기에</strong> <em>빨________</em> <u>걱정돼요</u>.<br>B: <strong>그럼</strong> 세탁소에 <em>맡기세요</em>.</p>",
-        'explanation': "<p><strong>기</strong>: '빨다' (yuvmoq) + '-기' (yuvish). <strong>직접</strong> (o'zi).</p>",
-        'correct': "기",
-        'choices': ["기", "는", "은", "을"]
-    },
-    {
-        'text': "<p>A: 저는 <u>조용한</u> 음악을 <em>들으면서</em> <strong>책을</strong> <em>읽________</em> <em>좋아해요</em>.<br>B: 저도 그 시간을 <strong>가장</strong> <em>사랑해요</em>.</p>",
-        'explanation': "<p><strong>는 것</strong>: '읽다' (o'qimoq) + '-는 것' (o'qishni). <strong>가장</strong> (eng).</p>",
-        'correct': "는 것",
-        'choices': ["는 것", "기 것", "은 것", "을 것"]
-    },
-    {
-        'text': "<p>A: <strong>매일</strong> <strong>아침마다</strong> <strong>방을</strong> <em>청소하________</em> <u>귀찮아요</u>.<br>B: 그래도 <strong>깨끗하게</strong> <em>유지하면</em> 기분이 <u>좋아요</u>.</p>",
-        'explanation': "<p><strong>기</strong>: '청소하다' (tozalamoq) + '-기' (tozalash). <strong>매일</strong> (har kuni), <strong>깨끗하게</strong> (toza qilib).</p>",
-        'correct': "기",
-        'choices': ["는", "기", "은", "을"]
-    },
-    {
-        'text': "<p>A: <strong>요즘</strong> <strong>스트레스가 많아서</strong> <strong>매콤한</strong> 음식을 <em>먹________</em> <em>원해요</em>.<br>B: <strong>그럼</strong> <strong>오늘</strong> 저녁에 떡볶이를 <em>먹을까요</em>?</p>",
-        'explanation': "<p><strong>는 것</strong>: '먹다' (yemoq) + '-는 것' (yeyishni). <strong>요즘</strong> (shu kunlarda).</p>",
-        'correct': "는 것",
-        'choices': ["기 것", "은 것", "는 것", "을 것"]
-    },
-    {
-        'text': "<p>A: <strong>비가 오는 날에</strong> <strong>집에</strong> <strong>가만히</strong> <em>있________</em> <u>최고예요</u>.<br>B: 맞아요, <strong>따뜻한</strong> 이불 속이 <strong>제일</strong> <u>좋아요</u>.</p>",
-        'explanation': "<p><strong>기</strong>: '있다' (bor bo'lmoq/turmoq) + '-기' (turish). <strong>가만히</strong> (jim/qimir etmay), <strong>제일</strong> (eng).</p>",
-        'correct': "기",
-        'choices': ["기", "는", "은", "을"]
-    },
-    {
-        'text': "<p>A: 저의 <u>가장 큰</u> 행복은 <strong>가족들과</strong> <strong>오순도순</strong> 밥을 <em>먹________</em> 입니다.<br>B: <strong>정말</strong> <u>따뜻한</u> 가족이네요.</p>",
-        'explanation': "<p><strong>는 것</strong>: '먹다' (yemoq) + '-는 것' (yeyish). <strong>오순도순</strong> (inoq/ahil bo'lib), <strong>정말</strong> (rosttdan).</p>",
-        'correct': "는 것",
-        'choices': ["는 것", "기 것", "은 것", "을 것"]
-    },
-    {
-        'text': "<p>A: <strong>어릴 때부터</strong> 피아노를 <em>치________</em> <strong>꾸준히</strong> <em>배웠어요</em>.<br>B: <strong>그래서</strong> 피아노를 <strong>그렇게</strong> <strong>잘</strong> <em>치시는군요</em>!</p>",
-        'explanation': "<p><strong>기</strong>: '치다' (chalmoq) + '-기' (chalishni). <strong>어릴 때부터</strong> (yoshlikdan beri), <strong>꾸준히</strong> (muntazam).</p>",
-        'correct': "기",
-        'choices': ["기", "는", "은", "을"]
-    }
-]
-
-topic_35 = [
-    # --- TOPIC 35: 불규칙 용언 2 ('르', 'ㅅ', 'ㅎ' 불규칙) ---
-    {
-        'text': "<p>A: <strong>왜</strong> <strong>그렇게</strong> <strong>빨리</strong> <em>걸어요</em>?<br>B: 기차 시간이 <strong>거의</strong> <em>다 되어서</em> 마음이 <u>급해________</u> <strong>빨리</strong> <em>가야 해요</em>.</p>",
-        'explanation': "<p><strong>급해서</strong>: '급하다' (shoshilinch bo'lmoq). Bu yerda '르' qoidasiga misol: '빠르다' -> <strong>빨라요</strong>. Keling, '빠르다' (tez bo'lmoq) so'zini sinaymiz.<br>A: 지하철이 버스보다 <strong>더</strong> <u>빠르지요</u>?<br>B: 네, 지하철이 <strong>훨씬</strong> <u>빨라________</u> <strong>자주</strong> <em>타요</em>.</p>",
-        'correct': "빨라서",
-        'choices': ["빠르어서", "빨라서", "빠라서", "빨러서"]
-    },
-    {
-        'text': "<p>A: 노래방에서 <strong>보통</strong> <em>어떤</em> 노래를 <em>불러요</em>?<br>B: 저는 <strong>주로</strong> <u>신나는</u> 노래를 <strong>크게</strong> <em>불러________</em>.</p>",
-        'explanation': "<p><strong>불러요</strong>: '부르다' (kuylamoq/chaqirmoq). '르' noto'g'ri fe'li unli bilan kelganda 'ㄹㄹ' ga aylanadi (부르 + 어요 = 불러요). <strong>크게</strong> (baland qilib).</p>",
-        'correct': "불러요",
-        'choices': ["부르어요", "불라요", "불러요", "부라요"]
-    },
-    {
-        'text': "<p>A: <strong>매일</strong> 물을 <strong>얼마나</strong> <em>마셔요</em>?<br>B: <strong>자주</strong> 목이 <u>말라________</u> <strong>하루에</strong> 여덟 잔을 <em>마셔요</em>.</p>",
-        'explanation': "<p><strong>말라서</strong>: '마르다' (chanqamoq/qurimoq). '르' -> 'ㄹㄹ' + '-아서' (말라서). <strong>자주</strong> (tez-tez) chanqagani uchun.</p>",
-        'correct': "말라서",
-        'choices': ["마르아서", "말러서", "말라서", "마라서"]
-    },
-    {
-        'text': "<p>A: 메뉴가 <strong>너무</strong> <u>많은데</u> <strong>어떤 것을</strong> <em>고를까요</em>?<br>B: <strong>가장</strong> <u>맛있는</u> 것으로 <strong>빨리</strong> <em>골라________</em>.</p>",
-        'explanation': "<p><strong>골라요</strong>: '고르다' (tanlamoq). '르' -> 'ㄹㄹ' + '-아요' (골라요). <strong>빨리</strong> (tez) tanlashni so'ramoqda.</p>",
-        'correct': "골라요",
-        'choices': ["고르아요", "골러요", "골라요", "고라요"]
-    },
-    {
-        'text': "<p>A: 머리가 <strong>너무</strong> <u>긴데</u> <strong>조금</strong> <em>자를까요</em>?<br>B: 네, <strong>시원하게</strong> <strong>짧게</strong> <em>잘라________</em>.</p>",
-        'explanation': "<p><strong>잘라요</strong>: '자르다' (kesmoq). '르' -> 'ㄹㄹ' + '-아요' (잘라요). <strong>시원하게</strong> (salqin qilib/yangilab).</p>",
-        'correct': "잘라요",
-        'choices': ["자르아요", "잘러요", "자라요", "잘라요"]
-    },
-    {
-        'text': "<p>A: 이 <u>어려운</u> 수학 문제를 <strong>혹시</strong> <em>알아요</em>?<br>B: 아니요, <strong>전혀</strong> <em>몰라________</em> 선생님께 <em>물어볼게요</em>.</p>",
-        'explanation': "<p><strong>몰라서</strong>: '모르다' (bilmaslik). '르' -> 'ㄹㄹ' + '-아서' (몰라서). <strong>전혀</strong> (umuman) bilmagani uchun.</p>",
-        'correct': "몰라서",
-        'choices': ["모르아서", "몰러서", "몰라서", "모라서"]
-    },
-    {
-        'text': "<p>A: 강물이 <strong>어떻게</strong> <em>흘러요</em>?<br>B: <strong>비가 많이 와서</strong> <strong>아주</strong> <strong>세차게</strong> <em>흘러________</em>.</p>",
-        'explanation': "<p><strong>흘러요</strong>: '흐르다' (oqqmoq). '르' -> 'ㄹㄹ' + '-어요' (흘러요). <strong>세차게</strong> (kuchli/shiddat bilan) oqmoqda.</p>",
-        'correct': "흘러요",
-        'choices': ["흐르어요", "흘라요", "흘러요", "흐라요"]
-    },
-    {
-        'text': "<p>A: 쌍둥이인데 성격이 <strong>서로</strong> <em>비슷해요</em>?<br>B: 아니요, <strong>완전히</strong> <u>달라________</u> <strong>가끔</strong> <em>놀라요</em>.</p>",
-        'explanation': "<p><strong>달라서</strong>: '다르다' (farq qilmoq/boshqacha bo'lmoq). '르' -> 'ㄹㄹ' + '-아서' (달라서). <strong>완전히</strong> (butunlay) farq qilgani uchun.</p>",
-        'correct': "달라서",
-        'choices': ["다르아서", "달러서", "다라서", "달라서"]
-    },
-    {
-        'text': "<p>A: 감기는 <strong>이제</strong> <strong>다</strong> <em>나았어요</em>?<br>B: 네, <strong>약을 먹고</strong> <strong>푹</strong> <em>쉬었더니</em> <strong>금방</strong> <em>나아________</em>.</p>",
-        'explanation': "<p><strong>나았어요</strong>: '낫다' (tuzalmoq/tuzalish). 'ㅅ' noto'g'ri fe'li unli bilan kelganda 'ㅅ' tushib qoladi (나 + 았어요 = 나았어요). <strong>금방</strong> (darhol/tez).</p>",
-        'correct': "나았어요",
-        'choices': ["낫았어요", "나았어요", "났어요", "나었어요"]
-    },
-    {
-        'text': "<p>A: 집을 <strong>직접</strong> <em>지을 거예요</em>?<br>B: 네, <strong>아름다운</strong> 산속에 <u>예쁜</u> 집을 <em>지어________</em>.</p>",
-        'explanation': "<p><strong>지어요</strong>: '짓다' (qurmoq). 'ㅅ' tushib qoladi va '-어요' qo'shiladi (지어요). <strong>아름다운</strong> (go'zal) tog' ichida.</p>",
-        'correct': "지어요",
-        'choices': ["짓어요", "지아요", "지어요", "젔어요"]
-    },
-    {
-        'text': "<p>A: 커피에 설탕을 <em>넣고</em> <strong>어떻게</strong> <em>해요</em>?<br>B: <strong>숟가락으로</strong> <strong>잘</strong> <em>저어________</em> <em>드세요</em>.</p>",
-        'explanation': "<p><strong>저어서</strong>: '젓다' (aralashtirmoq/kavlamoq). 'ㅅ' tushadi va '-어서' ulanadi (저어서). <strong>잘</strong> (yaxshilab) aralashtirib.</p>",
-        'correct': "저어서",
-        'choices': ["젓어서", "저아서", "저어서", "젓아서"]
-    },
-    {
-        'text': "<p>A: <strong>아침에</strong> <strong>일어나니까</strong> 얼굴이 <strong>많이</strong> <em>부었어요</em>?<br>B: 네, <strong>어젯밤에</strong> 라면을 <em>먹어서</em> <strong>잔뜩</strong> <em>부어________</em>.</p>",
-        'explanation': "<p><strong>부었어요</strong>: '붓다' (ishmoq/shishmoq). 'ㅅ' tushib '-었어요' ulanadi (부었어요). <strong>잔뜩</strong> (rosa/ko'p) shishib ketdi.</p>",
-        'correct': "부었어요",
-        'choices': ["붓었어요", "부았어요", "부었어요", "붰어요"]
-    },
-    {
-        'text': "<p>A: 두 선을 <strong>펜으로</strong> <strong>곧게</strong> <em>이을까요</em>?<br>B: 네, <strong>자를 대고</strong> <strong>반듯하게</strong> <em>이어________</em>.</p>",
-        'explanation': "<p><strong>이어요</strong>: '잇다' (ulamoq/tutashtirmoq). 'ㅅ' tushadi va '-어요' qo'shiladi (이어요). <strong>반듯하게</strong> (to'g'ri qilib).</p>",
-        'correct': "이어요",
-        'choices': ["잇어요", "이아요", "이어요", "이었어요"]
-    },
-    {
-        'text': "<p>A: <strong>여기에</strong> 밑줄을 <strong>살짝</strong> <em>그을까요</em>?<br>B: 네, <strong>중요한</strong> 단어 <strong>아래에</strong> <strong>빨간색으로</strong> <em>그어________</em>.</p>",
-        'explanation': "<p><strong>그어요</strong>: '긋다' (chizmoq). 'ㅅ' tushadi va '-어요' ulanadi (그어요). <strong>살짝</strong> (yengil/biroz) chizing.</p>",
-        'correct': "그어요",
-        'choices': ["긋어요", "그아요", "그어요", "긌어요"]
-    },
-    {
-        'text': "<p>A: <strong>어제보다</strong> <strong>오늘</strong> 날씨가 <strong>더</strong> <u>추워요</u>?<br>B: 아니요, <strong>오늘이</strong> <strong>어제보다</strong> <strong>훨씬</strong> <u>나아________</u>.</p>",
-        'explanation': "<p><strong>나아요</strong>: '낫다' (yaxshiroq bo'lmoq). 'ㅅ' tushadi + '-아요' (나아요). <strong>훨씬</strong> (ancha) yaxshi.</p>",
-        'correct': "나아요",
-        'choices': ["낫아요", "나아요", "나어요", "낫어요"]
-    },
-    {
-        'text': "<p>A: <strong>왜</strong> <strong>그렇게</strong> <strong>기분 좋게</strong> <em>미소 지어요</em>?<br>B: <strong>합격 소식을</strong> <em>듣고</em> <strong>저도 모르게</strong> 웃음을 <em>지어________</em>.</p>",
-        'explanation': "<p><strong>지어요</strong>: '짓다' (tabassum qilmoq - 미소 짓다). 'ㅅ' tushadi + '-어요'. <strong>저도 모르게</strong> (o'zim ham bilmagan holda).</p>",
-        'correct': "지어요",
-        'choices': ["짓어요", "지아요", "지어요", "짔어요"]
-    },
-    {
-        'text': "<p>A: <strong>이따가</strong> <strong>어떤</strong> 색깔 옷을 <em>입을 거예요</em>?<br>B: 저는 <strong>가장</strong> 좋아하는 <u>파래________</u> 셔츠를 <em>입을 거예요</em>.</p>",
-        'explanation': "<p><strong>파란</strong>: '파랗다' (ko'k bo'lmoq). 'ㅎ' tushadi va '-ㄴ' qo'shiladi. (파랗 + ㄴ = 파란). Keling, 'ㅎ' ni fe'l/sifat oxirida o'zgarishini ko'ramiz (파래요).<br>A: 하늘이 <strong>오늘</strong> <strong>정말</strong> <u>파랗네요</u>.<br>B: 네, <strong>구름 한 점 없이</strong> <strong>아주</strong> <u>파래________</u>.</p>",
-        'correct': "파래요",
-        'choices': ["파랗아요", "파래요", "파라요", "파랗어요"]
-    },
-    {
-        'text': "<p>A: <strong>가을이 되면</strong> 나뭇잎 색깔이 <em>어떻게</em> <em>변해요</em>?<br>B: <strong>아름답게</strong> <u>빨개________</u> <strong>정말</strong> 보기 <u>좋아요</u>.</p>",
-        'explanation': "<p><strong>빨개요</strong>: '빨갛다' (qizil bo'lmoq). 'ㅎ' tushib qoladi va 'ㅏ' -> 'ㅐ' ga aylanadi (빨개요). <strong>아름답게</strong> (go'zal bo'lib).</p>",
-        'correct': "빨개요",
-        'choices': ["빨갛아요", "빨가요", "빨개요", "빨갛어요"]
-    },
-    {
-        'text': "<p>A: <strong>바나나가</strong> 익으면 <strong>무슨</strong> 색이 <em>돼요</em>?<br>B: <strong>완전히</strong> 익으면 <strong>아주</strong> <u>노래________</u> <strong>먹음직스러워요</strong>.</p>",
-        'explanation': "<p><strong>노래요</strong>: '노랗다' (sariq bo'lmoq). 'ㅎ' tushadi va 'ㅏ' -> 'ㅐ' ga o'zgaradi (노래요). <strong>완전히</strong> (butunlay).</p>",
-        'correct': "노래요",
-        'choices': ["노랗아요", "노라요", "노래요", "노랗어요"]
-    },
-    {
-        'text': "<p>A: 눈이 <em>오니까</em> 온 세상이 <em>어때요</em>?<br>B: <strong>온통</strong> 눈으로 덮여서 <strong>정말</strong> <u>하얘________</u>.</p>",
-        'explanation': "<p><strong>하얘요</strong>: '하얗다' (oq bo'lmoq). 'ㅎ' tushadi va 'ㅑ' -> 'ㅒ' ga o'zgaradi (하얘요). <strong>온통</strong> (butunlay/hamma joy).</p>",
-        'correct': "하얘요",
-        'choices': ["하얗아요", "하야요", "하얘요", "하양해요"]
-    },
-    {
-        'text': "<p>A: <strong>밤하늘이</strong> <strong>오늘따라</strong> <strong>더</strong> <u>어두워요</u>.<br>B: 네, 별도 <em>없고</em> <strong>완전히</strong> <u>까매________</u> <strong>조금</strong> <u>무서워요</u>.</p>",
-        'explanation': "<p><strong>까매요</strong>: '까맣다' (qora bo'lmoq). 'ㅎ' tushadi va 'ㅏ' -> 'ㅐ' ga o'zgaradi (까매요). <strong>완전히</strong> (büsbütün).</p>",
-        'correct': "까매요",
-        'choices': ["까맣아요", "까마요", "까매요", "까만해요"]
-    },
-    {
-        'text': "<p>A: 이 <u>동그란</u> 안경이 저한테 <strong>잘</strong> <em>어울려요</em>?<br>B: 네, 얼굴이 <u>동그래________</u> <strong>너무</strong> <u>귀여워요</u>.</p>",
-        'explanation': "<p><strong>동그래요</strong>: '동그랗다' (dumaloq bo'lmoq). 'ㅎ' tushadi va 'ㅏ' -> 'ㅐ' ga o'zgaradi (동그래요). <strong>너무</strong> (juda).</p>",
-        'correct': "동그래요",
-        'choices': ["동그랗아요", "동그라요", "동그래요", "동그런해요"]
-    },
-    {
-        'text': "<p>A: <strong>새로</strong> <em>만든</em> 명함 모양이 <strong>어때요</strong>?<br>B: 모서리가 <strong>각지지 않고</strong> <strong>부드럽게</strong> <u>동그래________</u> <strong>마음에 들어요</strong>.</p>",
-        'explanation': "<p><strong>동그래요</strong>: '동그랗다' (dumaloq bo'lmoq). 'ㅎ' qoidasi (동그래요). <strong>부드럽게</strong> (yumshoq/silliq).</p>",
-        'correct': "동그래요",
-        'choices': ["동그랗어요", "동그라요", "동그래요", "동그레요"]
-    },
-    {
-        'text': "<p>A: 제 <strong>의견에 대해</strong> <em>어떻게</em> <em>생각해요</em>?<br>B: 저도 <strong>정확히</strong> <strong>그렇게</strong> <em>생각해요</em>. <strong>제 마음도</strong> <u>그래________</u>.</p>",
-        'explanation': "<p><strong>그래요</strong>: '그렇다' (shunday bo'lmoq). 'ㅎ' tushadi va 'ㅓ' -> 'ㅐ' ga o'zgaradi (그래요). <strong>정확히</strong> (aniq).</p>",
-        'correct': "그래요",
-        'choices': ["그렇어요", "그러요", "그래요", "그레요"]
-    },
-    {
-        'text': "<p>A: 일이 <strong>갑자기</strong> <strong>왜</strong> <strong>이렇게</strong> <em>되었어요</em>?<br>B: <strong>저도 잘 모르겠어요</strong>. 상황이 <strong>자꾸만</strong> <u>이래________</u> <u>답답해요</u>.</p>",
-        'explanation': "<p><strong>이래요</strong>: '이렇다' (bunday bo'lmoq). 'ㅎ' tushadi va 'ㅓ' -> 'ㅐ' ga o'zgaradi (이래요). <strong>자꾸만</strong> (tez-tez/tinmay).</p>",
-        'correct': "이래요",
-        'choices': ["이렇어요", "이러요", "이래요", "이레요"]
-    },
-    {
-        'text': "<p>A: <strong>오늘</strong> 기분이 <strong>어때요</strong>?<br>B: <strong>시험을 망쳐서</strong> <strong>하루 종일</strong> 기분이 <u>저래________</u>.</p>",
-        'explanation': "<p><strong>저래요</strong>: '저렇다' (shunday/unday bo'lmoq - uzoqdagi holat). 'ㅎ' tushadi va 'ㅓ' -> 'ㅐ' ga o'zgaradi. <strong>하루 종일</strong> (kun bo'yi).</p>",
-        'correct': "저래요",
-        'choices': ["저렇어요", "저러요", "저래요", "저레요"]
-    },
-    {
-        'text': "<p>A: <strong>요즘</strong> 생활이 <strong>어때요</strong>?<br>B: <strong>일이 너무 많아서</strong> <strong>매일</strong> <strong>어떻게</strong> <em>해야 할지</em> <u>어때________</u> <em>모르겠어요</em>.</p>",
-        'explanation': "<p><strong>어때요</strong>: '어떻다' (qanday bo'lmoq). 'ㅎ' tushib, 'ㅓ' -> 'ㅐ' (어때요). *Gapning mazmuniga ko'ra:* <strong>내일 날씨가</strong> <u>어때요</u>? (Ertaga ob-havo qanday?).</p>",
-        'correct': "어때요",
-        'choices': ["어떻어요", "어떠요", "어때요", "어떼요"]
-    },
-    {
-        'text': "<p>A: 감기에 <em>걸려서</em> 목이 <strong>자꾸</strong> <em>부어요</em>?<br>B: 네, <strong>따뜻한</strong> 물을 <em>마셔도</em> <strong>계속</strong> <em>부어________</em> <u>아파요</u>.</p>",
-        'explanation': "<p><strong>부어서</strong>: '붓다' (ishmoq). 'ㅅ' tushadi va '-어서' ulanadi. <strong>계속</strong> (tinmay) ishib ketgani uchun og'riyapti.</p>",
-        'correct': "부어서",
-        'choices': ["붓어서", "부아서", "부어서", "붰어서"]
-    },
-    {
-        'text': "<p>A: <strong>새로 산</strong> 구두가 <strong>발에</strong> <strong>잘</strong> <em>맞아요</em>?<br>B: 아니요, <strong>너무</strong> <u>작아서</u> <strong>물집이 생기고</strong> <strong>발이</strong> <em>부어________</em> <em>못 걷겠어요</em>.</p>",
-        'explanation': "<p><strong>부어서</strong>: '붓다' (ishmoq/shishmoq) + '-어서'. Oyoq shishib ketgani uchun yurolmayapti. <strong>너무</strong> (juda).</p>",
-        'correct': "부어서",
-        'choices': ["붓어서", "부아서", "부어서", "부워서"]
-    },
-    {
-        'text': "<p>A: <strong>이따가</strong> <strong>저녁에</strong> <strong>시간</strong> <em>어때요</em>?<br>B: <strong>오늘 저녁은</strong> <u>괜찮은데</u> <strong>내일은</strong> <strong>조금</strong> <u>바빠요</u>.</p>",
-        'explanation': "<p><strong>어때요</strong>: '어떻다' (qanday bo'lmoq). 'ㅎ' tushib 'ㅐ' ga o'zgaradi. <strong>이따가</strong> (keyinroq) vaqtingiz qanday?</p>",
-        'correct': "어때요",
-        'choices': ["어떻어요", "어떠요", "어때요", "어뗴요"]
+        'text': "<p>A: 친구가 <strong>오랜만에</strong> <strong>만나서</strong> <em>뭐라고</em> <em>했어요</em>?<br>B: <strong>앞으로는</strong> <strong>자주</strong> <strong>연락하고</strong> <em>지내________</em>.</p>",
+        'explanation': "<p><strong>자고 했어요</strong>: '지내다' + '-자고 하다'. <strong>자주</strong> (tez-tez) xabar olib turaylik dedi.</p>",
+        'correct': "자고 했어요",
+        'choices': ["라고 했어요", "자고 했어요", "냐고 했어요", "다고 했어요"]
     }]
 
-topic_36 = [
-    # --- TOPIC 36: 연결 어미 4: 동사/형용사 + (으)니까 (주관적 이유와 발견) ---
+topic_48 = [
+
+    # --- TOPIC 48: 동사 + (으)ㄹ 뻔하다 (과거의 위기 모면) ---
     {
-        'text': "<p>A: <strong>오늘</strong> <strong>왜</strong> <strong>이렇게</strong> <strong>빨리</strong> 집에 <em>가요</em>?<br>B: <strong>내일</strong> <u>중요한</u> 시험이 <em>있으________</em> <strong>오늘은</strong> <strong>일찍</strong> <em>가야 해요</em>.</p>",
-        'explanation': "<p><strong>있으니까</strong>: '있다' (bor bo'lmoq) undosh bilan tugagani uchun '-으니까' (uchun/sababli) ulanadi. Subyektiv sabab. <strong>일찍</strong> (vaqtli).</p>",
-        'correct': "있으니까",
-        'choices': ["있니까", "있고", "있으니까", "있어서"]
+        'text': "<p>A: <strong>아까</strong> <strong>계단에서</strong> <em>조심했어요</em>?<br>B: <strong>하마터면</strong> <strong>크게</strong> <em>넘어질</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '넘어지다' (yiqilmoq) + '-ㄹ 뻔하다'. <strong>하마터면</strong> (sal qolganda) <strong>크게</strong> (yomon) yiqilishiga oz qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["뻔했어요", "것 같아요", "줄 알았어요", "수 있었어요"]
     },
     {
-        'text': "<p>A: <strong>비가 오는데</strong> 창문을 <em>열어 둘까요</em>?<br>B: 아니요, 비가 <em>오________</em> 창문을 <strong>빨리</strong> <em>닫으세요</em>.</p>",
-        'explanation': "<p><strong>오니까</strong>: '오다' (kelmoq) unli bilan tugagani uchun '-니까' ulanadi. Buyruq/maslahat (닫으세요) oldidan sababni bildiradi. <strong>빨리</strong> (tez).</p>",
-        'correct': "오니까",
-        'choices': ["오니까", "오으니까", "오고", "오서"]
+        'text': "<p>A: <strong>오늘</strong> 기차를 <strong>무사히</strong> <em>탔어요</em>?<br>B: <strong>늦게 일어나는 바람에</strong> <strong>하마터면</strong> 기차를 <em>놓칠</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '놓치다' (o'tkazib yubormoq) + '-ㄹ 뻔하다'. <strong>늦게</strong> (kech) turgani sababli o'tkazib yuborishiga sal qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["뻔했어요", "것 같아요", "줄 알았어요", "수 없었어요"]
     },
     {
-        'text': "<p>A: 이 식당 음식이 <strong>어때요</strong>?<br>B: <strong>정말</strong> <u>맛있으________</u> <strong>다음에</strong> <strong>같이</strong> <strong>꼭</strong> <em>가 봅시다</em>.</p>",
-        'explanation': "<p><strong>맛있으니까</strong>: '맛있다' (mazali bo'lmoq) + '-으니까'. Taklif (가 봅시다) oldidan sababni ko'rsatadi. <strong>정말</strong> (rosttdan).</p>",
-        'correct': "맛있으니까",
-        'choices': ["맛있니까", "맛있으니까", "맛있고", "맛있어서"]
+        'text': "<p>A: 지갑을 <strong>잘</strong> <em>챙겼어요</em>?<br>B: 네, <strong>깜빡하고</strong> <strong>식당에</strong> <em>두고 올</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '두고 오다' (qoldirib kelmoq) + '-ㄹ 뻔하다'. <strong>깜빡하고</strong> (esdan chiqarib) qoldirib kelishiga sal qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["것 같아요", "뻔했어요", "줄 몰랐어요", "수 있었어요"]
     },
     {
-        'text': "<p>A: <strong>지금</strong> <strong>당장</strong> <em>출발할까요</em>?<br>B: 네, 시간이 <u>늦었으________</u> <strong>서둘러서</strong> <em>출발합시다</em>.</p>",
-        'explanation': "<p><strong>늦었으니까</strong>: '늦었다' (kechikdi - o'tgan zamon) + '-으니까'. Vaqt kech bo'lgani uchun (sabab). <strong>서둘러서</strong> (shoshilib).</p>",
-        'correct': "늦었으니까",
-        'choices': ["늦었니까", "늦었으니까", "늦었고", "늦었서"]
+        'text': "<p>A: <strong>방금</strong> <strong>뜨거운</strong> 국물에 <em>다치지 않았어요</em>?<br>B: 네, <strong>조심하지 않아서</strong> <strong>손을</strong> <em>데일</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '데이다' (kuymoq) + '-ㄹ 뻔하다'. <strong>조심하지 않아서</strong> (ehtiyot bo'lmay) kuydirib olishiga oz qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["뻔했어요", "것 같아요", "줄 알았어요", "수 없었어요"]
     },
     {
-        'text': "<p>A: <strong>주말에</strong> <strong>도서관에</strong> 사람이 <em>많을까요</em>?<br>B: 시험 기간이<em>________</em> <strong>아마</strong> <strong>자리 잡기가</strong> <u>힘들 거예요</u>.</p>",
-        'explanation': "<p><strong>니까</strong>: '기간이다' (davridir). Ot + '-이다' unli bilan tugasa '-니까' (기간이니까) ulanadi. <strong>아마</strong> (ehtimol).</p>",
-        'correct': "니까",
-        'choices': ["니까", "이니까", "고", "라서"]
+        'text': "<p>A: <strong>어제</strong> 시험을 <strong>잘</strong> <em>봤어요</em>?<br>B: <strong>시간이 부족해서</strong> <strong>마지막 문제는</strong> <em>못 풀</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '못 풀다' (yecha olmaslik) + '-ㄹ 뻔하다'. Vaqt yetishmay qolib yecha olmay qolishiga sal qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["줄 알았어요", "것 같아요", "뻔했어요", "수 있었어요"]
     },
     {
-        'text': "<p>A: 밖이 <strong>많이</strong> <u>추워요</u>?<br>B: 네, <strong>매우</strong> <u>추우________</u> <u>따뜻한</u> 코트를 <strong>꼭</strong> <em>입으세요</em>.</p>",
-        'explanation': "<p><strong>추우니까</strong>: '춥다' (sovuq bo'lmoq). 'ㅂ' -> '우' + '-니까'. Buyruq (입으세요) oldidan sabab. <strong>매우</strong> (juda).</p>",
-        'correct': "추우니까",
-        'choices': ["춥으니까", "추우니까", "춥고", "추워서"]
+        'text': "<p>A: <strong>길을 걷다가</strong> <strong>갑자기</strong> <em>왜 놀랐어요</em>?<br>B: <strong>골목에서 나오는</strong> 자전거와 <strong>세게</strong> <em>부딪힐</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '부딪히다' (to'qnashmoq) + '-ㄹ 뻔하다'. <strong>세게</strong> (qattiq) to'qnashib ketishiga oz qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["뻔했어요", "것 같아요", "줄 알았어요", "수 없었어요"]
     },
     {
-        'text': "<p>A: <strong>여기에</strong> <strong>차를</strong> <em>세워도 돼요</em>?<br>B: 아니요, <strong>여기는</strong> <u>주차 금지 구역이________</u> <strong>다른 곳에</strong> <em>세우세요</em>.</p>",
-        'explanation': "<p><strong>니까</strong>: '구역이다' (hududidir). Ot + '이다' (undosh bilan tugasa) -> '-이니까'. <strong>다른 곳에</strong> (boshqa joyga).</p>",
-        'correct': "이니까",
-        'choices': ["니까", "이니까", "고", "이라서"]
+        'text': "<p>A: 핸드폰을 <strong>물에</strong> <em>빠뜨렸어요</em>?<br>B: 아니요, <strong>화장실에서</strong> <strong>하마터면</strong> 변기에 <em>빠뜨릴</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '빠뜨리다' (tushirib yubormoq) + '-ㄹ 뻔하다'. <strong>하마터면</strong> (sal qolganda) tushirib yuborishiga oz qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["것 같아요", "뻔했어요", "줄 몰랐어요", "수 있었어요"]
     },
     {
-        'text': "<p>A: 이 책을 <strong>언제</strong> <em>다 읽을 수 있어요</em>?<br>B: 내용이 <u>어려우________</u> <strong>시간이 조금 더</strong> <em>필요할 것 같아요</em>.</p>",
-        'explanation': "<p><strong>어로우니까</strong>: '어렵다' (qiyin bo'lmoq). 'ㅂ' -> '우' + '-니까' (어려우니까). <strong>시간이 조금 더</strong> (vaqt yana biroz).</p>",
-        'correct': "어려우니까",
-        'choices': ["어렵으니까", "어려우니까", "어렵고", "어려워서"]
+        'text': "<p>A: <strong>어제</strong> 공포 영화 <em>보면서</em> <em>어땠어요</em>?<br>B: <strong>너무</strong> <u>무서워서</u> <strong>가슴이 철렁해서</strong> <em>기절할</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '기절하다' (hushdan ketmoq) + '-ㄹ 뻔하다'. <strong>너무</strong> (juda) qo'rqib hushdan ketishiga oz qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["뻔했어요", "것 같아요", "줄 알았어요", "수 없었어요"]
     },
     {
-        'text': "<p>A: <strong>길이 많이</strong> <u>막혀요</u>?<br>B: 네, <strong>퇴근 시간이________</strong> 지하철을 <em>타는 게 좋겠어요</em>.</p>",
-        'explanation': "<p><strong>이니까</strong>: '시간이다' (vaqtidir). Undosh bilan tugagani uchun '이니까' (vaqti bo'lganligi sababli). <strong>퇴근</strong> (ishdan qaytish).</p>",
-        'correct': "이니까",
-        'choices': ["니까", "이니까", "고", "이라서"]
+        'text': "<p>A: <strong>얼음길에서</strong> <strong>조심해서</strong> <em>걸었어요</em>?<br>B: 네, <strong>아까</strong> <strong>미끄러워서</strong> <strong>뒤로</strong> <em>넘어질</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '넘어지다' (yiqilmoq) + '-ㄹ 뻔하다'. <strong>미끄러워서</strong> (sirpanchiq bo'lgani uchun) yiqilishiga sal qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["줄 알았어요", "것 같아요", "뻔했어요", "수 있었어요"]
     },
     {
-        'text': "<p>A: <strong>오늘따라</strong> <strong>왜 이렇게</strong> <u>피곤해요</u>?<br>B: <strong>어제</strong> <strong>늦게까지</strong> <em>일했으________</em> <strong>당연히</strong> <u>피곤하죠</u>.</p>",
-        'explanation': "<p><strong>일했으니까</strong>: '일했다' (ishladi) + '-으니까'. O'tgan zamonda sababni bildiradi. <strong>당연히</strong> (albatta/tabiiyki).</p>",
-        'correct': "일했으니까",
-        'choices': ["일했니까", "일했으니까", "일했고", "일했서"]
+        'text': "<p>A: <strong>아침에</strong> <strong>늦잠을 잤다면서요</strong>?<br>B: 네, <strong>알람을 못 들어서</strong> <strong>회사에</strong> <em>지각할</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '지각하다' (kechikmoq) + '-ㄹ 뻔하다'. <strong>알람을 못 들어서</strong> (budilnikni eshitmay) kechikishiga sal qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["뻔했어요", "것 같아요", "줄 알았어요", "수 없었어요"]
     },
     {
-        'text': "<p>A: <strong>내일</strong> 등산 <em>갈 수 있어요</em>?<br>B: <strong>비가 올 거라고</strong> <em>했으________</em> <strong>다음에</strong> <em>가는 게 어때요</em>?</p>",
-        'explanation': "<p><strong>했으니까</strong>: '했다' (qildi/aytdi) + '-으니까'. Sabab (yomg'ir yog'adi deyishgani uchun). <strong>다음에</strong> (keyingi safar).</p>",
-        'correct': "했으니까",
-        'choices': ["했니까", "했으니까", "했고", "했서"]
+        'text': "<p>A: <strong>유리잔을</strong> <em>안 깼어요</em>?<br>B: <strong>손이 미끄러워서</strong> <strong>바닥에</strong> <em>떨어뜨릴</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '떨어뜨리다' (tushirib yubormoq) + '-ㄹ 뻔하다'. <strong>손이 미끄러워서</strong> (qo'li sirpanib) tushirib yuborishiga oz qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["것 같아요", "뻔했어요", "줄 몰랐어요", "수 있었어요"]
     },
     {
-        'text': "<p>A: <strong>지금</strong> 커피 한 잔 <em>마실래요</em>?<br>B: <strong>방금</strong> <em>마셨으________</em> <strong>이번에는</strong> <u>시원한</u> 주스를 <em>마실게요</em>.</p>",
-        'explanation': "<p><strong>마셨으니까</strong>: '마셨다' (ichdi) + '-으니까'. <strong>방금</strong> (hozirgina) ichgani uchun.</p>",
-        'correct': "마셨으니까",
-        'choices': ["마셨니까", "마셨으니까", "마셨고", "마셨서"]
+        'text': "<p>A: <strong>비밀을</strong> <strong>친구에게</strong> <em>말했어요</em>?<br>B: 아니요, <strong>술에 취해서</strong> <strong>나도 모르게</strong> <em>말할</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '말하다' (aytmoq) + '-ㄹ 뻔하다'. <strong>나도 모르게</strong> (o'zim ham bilmay/beixtiyor) aytib qo'yishga sal qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["뻔했어요", "것 같아요", "줄 알았어요", "수 없었어요"]
     },
     {
-        'text': "<p>A: <strong>길을 모르면</strong> <em>어떻게 할까요</em>?<br>B: <strong>제가 지도를 잘</strong> <em>아________</em> <strong>저만</strong> <strong>믿고</strong> <em>따라오세요</em>.</p>",
-        'explanation': "<p><strong>아니까</strong>: '알다' (bilmoq). 'ㄹ' tushib '-니까' ulanadi (아니까 - bilganim uchun). <strong>저만 믿고</strong> (faqat menga ishonib).</p>",
-        'correct': "아니까",
-        'choices': ["아니까", "알으니까", "알고", "알아서"]
+        'text': "<p>A: <strong>감동적인</strong> 영화였어요?<br>B: 네, <strong>마지막 장면에서</strong> <strong>진짜로</strong> 눈물이 <em>나올</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '나오다' (chiqmoq) + '-ㄹ 뻔하다'. <strong>진짜로</strong> (rosttdan) yig'lab yuborishiga oz qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["줄 알았어요", "것 같아요", "뻔했어요", "수 있었어요"]
     },
     {
-        'text': "<p>A: 이 식당은 <strong>왜</strong> <strong>항상</strong> <strong>줄을 서서</strong> <em>기다려요</em>?<br>B: 음식이 <strong>싸고</strong> <u>맛있으________</u> <strong>항상</strong> 손님이 <em>많아요</em>.</p>",
-        'explanation': "<p><strong>맛있으니까</strong>: '맛있다' (mazali bo'lmoq) + '-으니까'. Sabab (arzon va mazali bo'lgani uchun). <strong>항상</strong> (har doim).</p>",
-        'correct': "맛있으니까",
-        'choices': ["맛있니까", "맛있으니까", "맛있고", "맛있어서"]
+        'text': "<p>A: 칼을 <strong>사용할 때</strong> <em>다치지 않았어요</em>?<br>B: <strong>하마터면</strong> <strong>날카로운</strong> 칼에 손을 <em>베일</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '베이다' (kesib olmoq) + '-ㄹ 뻔하다'. <strong>하마터면</strong> (sal qolganda) kesib olishiga oz qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["뻔했어요", "것 같아요", "줄 알았어요", "수 없었어요"]
     },
     {
-        'text': "<p>A: <strong>집에 도착해서</strong> 창문을 <em>열어 보니까</em> <em>어땠어요</em>?<br>B: 창문을 <em>열________</em> <strong>밖에</strong> <strong>하얀</strong> 눈이 <strong>예쁘게</strong> <em>내리고 있었어요</em>.</p>",
-        'explanation': "<p><strong>여니까</strong>: '열다' (ochmoq). 'ㄹ' tushadi + '-니까' (여니까). Bu yerda '발견' (kashfiyot/holatni anglash) - ochib qarasam, qor yog'ayotgan ekan. <strong>예쁘게</strong> (chiroyli bo'lib).</p>",
-        'correct': "여니까",
-        'choices': ["여니까", "열으니까", "열고", "열어서"]
+        'text': "<p>A: <strong>어제</strong> <strong>운전할 때</strong> <strong>사고가 났어요</strong>?<br>B: 아니요, <strong>앞차가 갑자기 멈춰서</strong> <strong>크게</strong> <em>추돌할</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '추돌하다' (to'qnashmoq/orqadan urmoq) + '-ㄹ 뻔하다'. <strong>갑자기 멈춰서</strong> (to'satdan to'xtab) urib olishiga sal qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["것 같아요", "뻔했어요", "줄 몰랐어요", "수 있었어요"]
     },
     {
-        'text': "<p>A: <strong>아침에</strong> <strong>일어나서</strong> 시계를 <em>보니까</em> <em>몇 시였어요</em>?<br>B: 시계를 <em>보________</em> <strong>벌써</strong> <strong>아침 9시</strong>였어요.</p>",
-        'explanation': "<p><strong>보니까</strong>: '보다' (ko'rmoq) + '-니까'. Holatni anglash (발견) - qarab ko'rsam, soat 9 bo'libdi. <strong>벌써</strong> (allaqachon).</p>",
-        'correct': "보니까",
-        'choices': ["보니까", "보으니까", "보고", "봐서"]
+        'text': "<p>A: 그 사람의 <strong>거짓말에</strong> <em>속았어요</em>?<br>B: <strong>말을 너무 잘해서</strong> <strong>정말로</strong> <em>속을</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '속다' (aldanmoq) + '-을 뻔하다'. <strong>너무 잘해서</strong> (juda yaxshi gapirgani uchun) aldanib qolishiga oz qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["뻔했어요", "것 같아요", "줄 알았어요", "수 없었어요"]
     },
     {
-        'text': "<p>A: <strong>오랜만에</strong> 고향 친구를 <em>만나니까</em> <em>기분이 어땠어요</em>?<br>B: 친구를 <em>만나________</em> <strong>어릴 때</strong> <strong>추억이</strong> <strong>많이</strong> <em>떠올랐어요</em>.</p>",
-        'explanation': "<p><strong>만나니까</strong>: '만나다' (uchrashmoq) + '-니까'. Uchrashib shuni his qildimki (발견/tuyg'u). <strong>많이</strong> (ko'p).</p>",
-        'correct': "만나니까",
-        'choices': ["만나니까", "만나으니까", "만나고", "만나서"]
+        'text': "<p>A: 커피를 <strong>컴퓨터에</strong> <em>쏟았어요</em>?<br>B: 아니요, <strong>손으로 쳐서</strong> <strong>하마터면</strong> <em>쏟을</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '쏟다' (to'kmoq) + '-을 뻔하다'. <strong>손으로 쳐서</strong> (qo'li tegib ketib) to'kib yuborishiga sal qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["줄 알았어요", "것 같아요", "뻔했어요", "수 있었어요"]
     },
     {
-        'text': "<p>A: 한국 음식을 <strong>처음</strong> <em>먹어 보니까</em> <em>어땠어요</em>?<br>B: <strong>직접</strong> <em>먹어 보________</em> <strong>생각보다</strong> <strong>많이</strong> <u>맵지 않고</u> <u>맛있었어요</u>.</p>",
-        'explanation': "<p><strong>보니까</strong>: '보다' + '-니까'. Yeb ko'rib shuni bildimki (발견). <strong>직접</strong> (o'zim/shaxsan).</p>",
-        'correct': "보니까",
-        'choices': ["보니까", "보으니까", "보고", "봐서"]
+        'text': "<p>A: 친구와 <strong>크게</strong> <em>싸웠어요</em>?<br>B: 오해가 <strong>있어서</strong> <strong>말로</strong> <strong>심하게</strong> <em>싸울</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '싸우다' (urushmoq) + '-ㄹ 뻔하다'. <strong>심하게</strong> (yomon/qattiq) urushib ketishlariga oz qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["뻔했어요", "것 같아요", "줄 알았어요", "수 없었어요"]
     },
     {
-        'text': "<p>A: 지하철역에 <em>도착하니까</em> 기차가 <em>어떻게 되었어요</em>?<br>B: 역에 <em>도착하________</em> 기차가 <strong>막</strong> <em>떠나고 있었어요</em>.</p>",
-        'explanation': "<p><strong>도착하니까</strong>: '도착하다' (yetib kelmoq) + '-니까'. Yetib kelib ko'rsamki (발견). <strong>막</strong> (hozirgina/ayni paytda).</p>",
-        'correct': "도착하니까",
-        'choices': ["도착하니까", "도착하으니까", "도착하고", "도착해서"]
+        'text': "<p>A: 가스레인지 불을 <strong>안</strong> <em>끄고 나왔어요</em>?<br>B: <strong>다행히 다시 들어가서 껐지만</strong>, <strong>불이 날</strong> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '나다' (chiqmoq - yong'in) + '-ㄹ 뻔하다'. Yong'in chiqishiga sal qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["것 같아요", "뻔했어요", "줄 몰랐어요", "수 있었어요"]
     },
     {
-        'text': "<p>A: <strong>아침에</strong> <strong>집을 나서니까</strong> <strong>날씨가</strong> <em>어땠어요</em>?<br>B: <strong>밖으로</strong> <em>나가________</em> <strong>갑자기</strong> <strong>차가운</strong> 바람이 <strong>불었어요</strong>.</p>",
-        'explanation': "<p><strong>나가니까</strong>: '나가다' (chiqmoq) + '-니까'. Chiqib qarasamki (발견). <strong>갑자기</strong> (to'satdan).</p>",
-        'correct': "나가니까",
-        'choices': ["나가니까", "나가으니까", "나가고", "나가서"]
+        'text': "<p>A: 비행기 티켓을 <strong>예약했어요</strong>?<br>B: <strong>매진될까 봐 조마조마했는데</strong> <strong>하마터면</strong> <em>못 살</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '못 사다' (sotib ololmaslik) + '-ㄹ 뻔하다'. <strong>하마터면</strong> (sal qolganda) ololmay qolishiga oz qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["뻔했어요", "것 같아요", "줄 알았어요", "수 없었어요"]
     },
     {
-        'text': "<p>A: <strong>지갑을 잃어버려서</strong> <strong>가방을</strong> <em>찾아보니까</em> <em>있었어요</em>?<br>B: 가방을 <strong>다</strong> <em>뒤져보________</em> 지갑이 <strong>전혀</strong> <u>없었어요</u>.</p>",
-        'explanation': "<p><strong>보니까</strong>: '보다' + '-니까'. Qidirib ko'rsamki (발견). <strong>전혀</strong> (umuman).</p>",
-        'correct': "보니까",
-        'choices': ["보니까", "보으니까", "보고", "봐서"]
+        'text': "<p>A: <strong>추운</strong> 밖에서 <strong>오래</strong> <em>기다렸어요</em>?<br>B: 네, <strong>바람이 너무 차가워서</strong> <strong>진짜</strong> <em>얼어 죽을</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '죽다' (o'lmoq) + '-을 뻔하다'. <strong>바람이 너무 차가워서</strong> (shamol juda sovuq bo'lgani uchun) muzlab o'lishiga sal qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["줄 알았어요", "것 같아요", "뻔했어요", "수 있었어요"]
     },
     {
-        'text': "<p>A: <strong>어제</strong> 그 영화를 <strong>끝까지</strong> <em>보니까</em> <em>내용이 어땠어요</em>?<br>B: <strong>끝까지</strong> <em>보________</em> <strong>주인공의 선택이</strong> <strong>조금</strong> <u>이해되었어요</u>.</p>",
-        'explanation': "<p><strong>보니까</strong>: '보다' + '-니까'. Oxirigacha ko'rib shuni angladimki (발견). <strong>조금</strong> (biroz).</p>",
-        'correct': "보니까",
-        'choices': ["보니까", "보으니까", "보고", "봐서"]
+        'text': "<p>A: <strong>무거운</strong> 상자를 <strong>혼자서</strong> <em>들었어요</em>?<br>B: <strong>무리해서 들다가</strong> <strong>허리를</strong> <em>다칠</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '다치다' (jarohatlanmoq) + '-ㄹ 뻔하다'. <strong>무리해서</strong> (zo'riqib) belini jarohatlashiga oz qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["뻔했어요", "것 같아요", "줄 알았어요", "수 없었어요"]
     },
     {
-        'text': "<p>A: <strong>한국에서</strong> 1년 동안 <em>살아 보니까</em> <em>어때요</em>?<br>B: <strong>직접</strong> <em>살아 보________</em> <strong>교통이 정말</strong> <u>편리하다는</u> 것을 <em>알았어요</em>.</p>",
-        'explanation': "<p><strong>보니까</strong>: '살아 보다' + '-니까'. Yashab ko'rib shuni kashf qildimki. <strong>정말</strong> (rosttdan).</p>",
-        'correct': "보니까",
-        'choices': ["보니까", "보으니까", "보고", "봐서"]
+        'text': "<p>A: 이 <u>매운</u> 음식을 <strong>다</strong> <em>먹었어요</em>?<br>B: <strong>너무</strong> <u>매워서</u> <strong>목이 막혀</strong> <em>숨질</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '숨지다' (bo'g'ilmoq/jon bermoq) + '-ㄹ 뻔하다'. <strong>너무</strong> (juda) achchiqligidan bo'g'ilib qolishiga sal qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["것 같아요", "뻔했어요", "줄 몰랐어요", "수 있었어요"]
     },
     {
-        'text': "<p>A: 산 <strong>정상에</strong> <em>올라가니까</em> <strong>기분이</strong> <em>어땠어요</em>?<br>B: <strong>정상에</strong> <em>도착하________</em> <strong>가슴이 뻥 뚫리는 것</strong> <em>같았어요</em>.</p>",
-        'explanation': "<p><strong>도착하니까</strong>: '도착하다' (yetib kelmoq) + '-니까'. Yetib kelib ko'rsamki (발견). <strong>뻥 뚫리는 것</strong> (ko'ksim ochilib ketgandek).</p>",
-        'correct': "도착하니까",
-        'choices': ["도착하니까", "도착하으니까", "도착하고", "도착해서"]
+        'text': "<p>A: <strong>지하철에서</strong> 가방이 <strong>문에</strong> <em>끼었어요</em>?<br>B: <strong>빨리 빼서 다행이지만</strong> <strong>가방이</strong> <em>찢어질</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '찢어지다' (yirtilmoq) + '-ㄹ 뻔하다'. <strong>빨리 빼서</strong> (tez tortib olgani uchun) yirtilishiga oz qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["뻔했어요", "것 같아요", "줄 알았어요", "수 없었어요"]
     },
     {
-        'text': "<p>A: <strong>부모님께</strong> <strong>오랜만에</strong> 전화를 <em>거니까</em> <em>어떻게 하셨어요</em>?<br>B: 전화를 <em>거________</em> <strong>목소리만 듣고도</strong> <strong>반가워하셨어요</strong>.</p>",
-        'explanation': "<p><strong>거니까</strong>: '걸다' (qo'ng'iroq qilmoq). 'ㄹ' tushadi + '-니까'. Qo'ng'iroq qilib qarasamki (발견). <strong>오랜만에</strong> (anchadan so'ng).</p>",
-        'correct': "거니까",
-        'choices': ["거니까", "걸으니까", "걸고", "걸어서"]
+        'text': "<p>A: <strong>회의 시간에</strong> <em>졸았어요</em>?<br>B: <strong>눈이 자꾸 감겨서</strong> <strong>하마터면</strong> <strong>깊이</strong> <em>잠들</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '잠들다' (uxlab qolmoq) + '-ㄹ 뻔하다'. <strong>깊이</strong> (chuqur) uxlab qolishiga sal qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["줄 알았어요", "것 같아요", "뻔했어요", "수 있었어요"]
     },
     {
-        'text': "<p>A: <strong>열심히</strong> <strong>준비한 요리를</strong> 친구들이 <em>먹어 보니까</em> <em>반응이 어땠어요</em>?<br>B: 친구들이 <em>먹어 보________</em> <strong>모두들</strong> <strong>아주</strong> <u>맛있다고</u> <em>칭찬했어요</em>.</p>",
-        'explanation': "<p><strong>보니까</strong>: '먹어 보다' + '-니까'. Yeb ko'rishib shunday qilishdiki (발견). <strong>모두들 아주</strong> (barchasi juda).</p>",
-        'correct': "보니까",
-        'choices': ["보니까", "보으니까", "보고", "봐서"]
+        'text': "<p>A: <strong>자전거를 타고</strong> <strong>내리막길을</strong> <em>내려갈 때</em> <strong>위험했어요</strong>?<br>B: <strong>브레이크가 잘 안 들어서</strong> <strong>크게</strong> <em>사고 날</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '나다' (sodir bo'lmoq) + '-ㄹ 뻔하다'. <strong>크게</strong> (katta) avtohalokat bo'lishiga oz qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["뻔했어요", "것 같아요", "줄 알았어요", "수 없었어요"]
     },
     {
-        'text': "<p>A: <strong>오랫동안</strong> <strong>안 입던 옷을</strong> <strong>다시</strong> <em>입어 보니까</em> <em>맞아요</em>?<br>B: <strong>다시</strong> <em>입어 보________</em> 살이 <strong>많이</strong> <em>빠져서</em> <strong>너무</strong> <u>커요</u>.</p>",
-        'explanation': "<p><strong>보니까</strong>: '입어 보다' + '-니까'. Kiyib ko'rsamki (발견). <strong>너무</strong> (juda).</p>",
-        'correct': "보니까",
-        'choices': ["보니까", "보으니까", "보고", "봐서"]
+        'text': "<p>A: <strong>어릴 때</strong> <strong>바다에서</strong> <em>위험했어요</em>?<br>B: <strong>파도가 높아서</strong> <strong>물에</strong> <em>빠져 죽을</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '죽다' (o'lmoq) + '-을 뻔하다'. <strong>파도가 높아서</strong> (to'lqin baland bo'lib) cho'kib o'lishiga sal qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["것 같아요", "뻔했어요", "줄 몰랐어요", "수 있었어요"]
     },
     {
-        'text': "<p>A: <strong>밤새워</strong> <strong>숙제를</strong> <strong>다</strong> <em>끝내니까</em> <em>기분이 어때요</em>?<br>B: <strong>드디어</strong> <em>끝내________</em> <strong>정말</strong> <u>홀가분하고</u> <u>졸려요</u>.</p>",
-        'explanation': "<p><strong>끝내니까</strong>: '끝내다' (tugatmoq) + '-니까'. Tugatib qarasamki (발견/holat). <strong>정말</strong> (haqiqatan ham).</p>",
-        'correct': "끝내니까",
-        'choices': ["끝내니까", "끝내으니까", "끝내고", "끝내서"]
+        'text': "<p>A: <strong>가스 불에</strong> <strong>냄비를</strong> <em>올려두고</em> <em>나갔어요</em>?<br>B: 네, <strong>하마터면</strong> <strong>집을 다</strong> <em>태울</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '태우다' (yoqib yubormoq) + '-ㄹ 뻔하다'. <strong>하마터면</strong> (sal qolganda) uyni yoqib yuborishiga oz qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["뻔했어요", "것 같아요", "줄 알았어요", "수 없었어요"]
     },
     {
-        'text': "<p>A: <strong>설명서를</strong> <strong>자세히</strong> <em>읽어 보니까</em> <strong>조립하기가</strong> <em>쉬워요</em>?<br>B: 네, <em>읽어 보________</em> <strong>생각보다</strong> <strong>훨씬</strong> <u>간단했어요</u>.</p>",
-        'explanation': "<p><strong>보니까</strong>: '읽어 보다' + '-니까'. O'qib ko'rsamki (발견). <strong>자세히</strong> (batafsil), <strong>훨씬</strong> (ancha).</p>",
-        'correct': "보니까",
-        'choices': ["보니까", "보으니까", "보고", "봐서"]
+        'text': "<p>A: <strong>엘리베이터가</strong> <strong>갑자기</strong> <em>멈췄어요</em>?<br>B: 네, <strong>안에 혼자 있었는데</strong> <strong>갇힐</strong> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '갇히다' (qamalib qolmoq) + '-ㄹ 뻔하다'. <strong>갑자기</strong> (to'satdan) to'xtab qamalib qolishiga sal qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["줄 알았어요", "것 같아요", "뻔했어요", "수 있었어요"]
     },
     {
-        'text': "<p>A: <strong>새로 생긴</strong> <strong>공원에</strong> <em>가 보니까</em> <em>어땠어요</em>?<br>B: <strong>직접</strong> <em>가 보________</em> <strong>꽃이 가득해서</strong> <strong>정말</strong> <u>아름다웠어요</u>.</p>",
-        'explanation': "<p><strong>보니까</strong>: '가 보다' + '-니까'. Borib ko'rsamki (발견). <strong>가득해서</strong> (to'la bo'lgani uchun).</p>",
-        'correct': "보니까",
-        'choices': ["보니까", "보으니까", "보고", "봐서"]
+        'text': "<p>A: <strong>어제</strong> <strong>운동장에서</strong> <strong>공에</strong> <em>맞았어요</em>?<br>B: <strong>피해서 다행이지</strong> <strong>머리에</strong> <strong>정통으로</strong> <em>맞을</em> <em>________</em>.</p>",
+        'explanation': "<p><strong>뻔했어요</strong>: '맞다' (tegmoq) + '-을 뻔하다'. <strong>정통으로</strong> (to'g'ridan-to'g'ri/qoq markaziga) tegishiga oz qoldi.</p>",
+        'correct': "뻔했어요",
+        'choices': ["뻔했어요", "것 같아요", "줄 알았어요", "수 없었어요"]
     }
 ]
 
-topic_37 = [
-    # --- TOPIC 37: 동사/형용사 + 기 때문에, 명사 + 때문에 (객관적 원인) ---
+topic_49 = [
+    # --- TOPIC 49: 동사/형용사 + (으)ㄹ 테니까 (화자의 의지 및 추측에 따른 이유) ---
     {
-        'text': "<p>A: <strong>오늘</strong> <strong>아침에</strong> <strong>왜</strong> <strong>이렇게</strong> <em>늦었어요</em>?<br>B: 출근 시간에 차가 <strong>너무</strong> <u>많기</u> ________ <strong>길이</strong> <strong>많이</strong> <em>막혔어요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '많다' (ko'p bo'lmoq) + '-기 때문에' (ko'p bo'lganligi sababli). Obyektiv sababni ko'rsatish uchun ishlatiladi. <strong>너무</strong> (juda).</p>",
-        'correct': "때문에",
-        'choices': ["때문에", "위해서", "보니까", "후에"]
+        'text': "<p>A: <strong>오늘</strong> <strong>누가</strong> 청소를 <em>할래요</em>?<br>B: 제가 방을 <em>청소할</em> <em>________</em> 마디나 씨가 설거지를 <em>해 주세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '청소하다' (tozalamoq) + '-ㄹ 테니까'. So'zlovchining irodasi (men tozalayman, shuning uchun...). <strong>오늘</strong> (bugun).</p>",
+        'correct': "테니까",
+        'choices': ["테니까", "수 없으니까", "줄 아니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>요즘</strong> 다이어트를 <em>하고 있어요</em>?<br>B: 네, 건강이 <u>나빠졌기</u> ________ <strong>열심히</strong> 운동을 <em>해야 해요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '나빠지다' o'tgan zamonda '나빠졌다' + '-기 때문에'. Sog'lig'i yomonlashgani uchun (sabab). <strong>열심히</strong> (tirishib).</p>",
-        'correct': "때문에",
-        'choices': ["전에", "때문에", "위해서", "니까"]
+        'text': "<p>A: <strong>내일</strong> 날씨가 <u>추울까요</u>?<br>B: 네, <strong>아마</strong> <strong>많이</strong> <u>추울</u> <em>________</em> 옷을 <u>따뜻하게</u> <em>입으세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '춥다' (sovuq bo'lmoq) + '-을 테니까'. Taxmin (sovuq bo'lsa kerak, shuning uchun...). <strong>아마</strong> (ehtimol/balki), <strong>많이</strong> (ko'p).</p>",
+        'correct': "테니까",
+        'choices': ["테니까", "수 있으니까", "줄 모르니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>어제</strong> 소풍을 <strong>잘</strong> <em>다녀왔어요</em>?<br>B: 아니요, <strong>갑자기</strong> <em>내린</em> 비 ________ <strong>결국</strong> <em>취소했어요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '비' (yomg'ir) ot bo'lgani uchun to'g'ridan-to'g'ri '때문에' (sababli/tufayli) qo'shiladi. <strong>갑자기</strong> (to'satdan).</p>",
-        'correct': "때문에",
-        'choices': ["때문에", "기 때문에", "니까", "라서"]
+        'text': "<p>A: 이 짐이 <strong>너무</strong> <u>무거운데</u> <strong>어떻게</strong> <em>하죠</em>?<br>B: 제가 <strong>같이</strong> <em>들어 줄</em> <em>________</em> <strong>너무</strong> <em>걱정하지 마세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '들어 주다' (ko'tarishib yubormoq) + '-ㄹ 테니까'. Iroda/Yordam (men ko'tarishaman, shuning uchun). <strong>같이</strong> (birga).</p>",
+        'correct': "테니까",
+        'choices': ["테니까", "줄 아니까", "수 없으니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>왜</strong> <strong>그렇게</strong> 한국어를 <strong>열심히</strong> <em>공부해요</em>?<br>B: <strong>내년에</strong> 한국 대학교에 <em>입학하고 싶기</em> ________ <strong>매일</strong> <em>해요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '입학하고 싶다' + '-기 때문에'. O'qishga kirishni xohlagani uchun. <strong>열심히</strong> (qunt bilan).</p>",
-        'correct': "때문에",
-        'choices': ["위해서", "때문에", "보니까", "면서"]
+        'text': "<p>A: <strong>지금</strong> <strong>출발하면</strong> <em>늦지 않을까요</em>?<br>B: 길이 <strong>많이</strong> <em>막힐</em> <em>________</em> <strong>서둘러서</strong> <em>가세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '막히다' (to'silmoq/tirband bo'lmoq) + '-ㄹ 테니까'. Taxmin (yo'l tirband bo'lsa kerak, shuning uchun). <strong>서둘러서</strong> (shoshilib).</p>",
+        'correct': "테니까",
+        'choices': ["수 있으니까", "테니까", "줄 아니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>이번</strong> 주말에 <strong>같이</strong> 등산을 <em>갈래요</em>?<br>B: <strong>미안해요</strong>. <strong>주말에</strong> 약속이 <em>있기</em> ________ <em>못 가요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '있다' (bor bo'lmoq) + '-기 때문에'. Uchrashuvi borligi sababli (obyektiv sabab).</p>",
-        'correct': "때문에",
-        'choices': ["니까", "어서", "때문에", "후에"]
+        'text': "<p>A: 회의 <strong>준비는</strong> <strong>다</strong> <em>되었어요</em>?<br>B: 제가 자료를 <strong>다</strong> <em>준비할</em> <em>________</em> <strong>먼저</strong> 회의실로 <em>가세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '준비하다' (tayyorlamoq) + '-ㄹ 테니까'. Iroda (men tayyorlayman, shuning uchun siz...). <strong>먼저</strong> (oldin/birinchi).</p>",
+        'correct': "테니까",
+        'choices': ["뻔하니까", "줄 모르니까", "테니까", "수 없으니까"]
     },
     {
-        'text': "<p>A: <strong>왜</strong> <strong>항상</strong> 이 식당에서 밥을 <em>먹어요</em>?<br>B: <strong>다른 곳보다</strong> 값이 <u>싸기</u> ________ <strong>자주</strong> <em>옵니다</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '싸다' (arzon bo'lmoq) + '-기 때문에'. Narxi arzon bo'lgani uchun. <strong>항상</strong> (har doim).</p>",
-        'correct': "때문에",
-        'choices': ["때문에", "위해서", "니까", "고"]
+        'text': "<p>A: <strong>나중에</strong> <strong>어디서</strong> <em>만날까요</em>?<br>B: 제가 식당을 <em>예약할</em> <em>________</em> <strong>이따가</strong> <strong>거기로</strong> <em>오세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '예약하다' (band qilmoq) + '-ㄹ 테니까'. Iroda (men band qilaman, shuning uchun). <strong>이따가</strong> (keyinroq).</p>",
+        'correct': "테니까",
+        'choices': ["테니까", "수 있으니까", "줄 아니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>어제</strong> 밤에 <strong>일찍</strong> <em>잤어요</em>?<br>B: 아니요, <strong>갑자기</strong> <em>생긴</em> <u>급한</u> 회사 일 ________ <strong>밤을</strong> <em>새웠어요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '일' (ish) ot bo'lgani uchun '때문에' ulanadi. <u>급한</u> (shoshilinch) ish tufayli.</p>",
-        'correct': "때문에",
-        'choices': ["기 때문에", "때문에", "이라서", "니까"]
+        'text': "<p>A: <strong>내일</strong> 시험이 <u>어려울까요</u>?<br>B: 시험 문제가 <u>어려울</u> <em>________</em> <strong>미리</strong> <strong>열심히</strong> <em>공부하세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '어렵다' (qiyin bo'lmoq) + '-을 테니까'. Taxmin (qiyin bo'lsa kerak). <strong>미리</strong> (oldindan), <strong>열심히</strong> (tirishib).</p>",
+        'correct': "테니까",
+        'choices': ["수 없으니까", "테니까", "줄 모르니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>오늘</strong> 비행기가 <strong>왜</strong> <strong>지연되었어요</strong>?<br>B: <strong>아침부터</strong> <u>심하게</u> <em>낀</em> 안개 ________ <strong>출발하지</strong> <em>못했어요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '안개' (tuman) ot bo'lgani uchun '때문에' ulanadi. <u>심하게</u> (qattiq/qalin) tuman sababli.</p>",
-        'correct': "때문에",
-        'choices': ["때문에", "기 때문에", "라서", "보니까"]
+        'text': "<p>A: <strong>아침에</strong> <strong>일찍</strong> <em>일어날 수 있어요</em>?<br>B: 제가 <strong>아침에</strong> 전화로 <em>깨워 줄</em> <em>________</em> <strong>편하게</strong> <em>주무세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '깨워 주다' (uyg'otib qo'ymoq) + '-ㄹ 테니까'. Iroda (uyg'otaman, shuning uchun). <strong>편하게</strong> (baxotirjam).</p>",
+        'correct': "테니까",
+        'choices': ["뻔하니까", "줄 아니까", "수 있으니까", "테니까"]
     },
     {
-        'text': "<p>A: 이 커피숍은 <strong>항상</strong> 사람이 <u>많네요</u>.<br>B: 커피가 <strong>정말</strong> <u>맛있기</u> ________ <strong>언제나</strong> <strong>인기가</strong> <em>많아요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '맛있다' (mazali bo'lmoq) + '-기 때문에'. Kofe mazali bo'lgani uchun. <strong>언제나</strong> (har doim).</p>",
-        'correct': "때문에",
-        'choices': ["위해서", "니까", "때문에", "어서"]
+        'text': "<p>A: 비행기 표가 <strong>비쌀까요</strong>?<br>B: 주말이라서 표가 <u>비쌀</u> <em>________</em> <strong>미리</strong> <em>예매하세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '비싸다' (qimmat bo'lmoq) + '-ㄹ 테니까'. Taxmin (qimmat bo'lsa kerak). <strong>미리</strong> (oldindan).</p>",
+        'correct': "테니까",
+        'choices': ["테니까", "수 없으니까", "줄 모르니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>왜</strong> <strong>그렇게</strong> <strong>빨리</strong> <em>걸어가요</em>?<br>B: 기차 출발 시간이 <strong>거의</strong> <em>다 되었기</em> ________ <strong>조금</strong> <strong>서둘러야</strong> <em>해요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '다 되다' o'tgan zamonda '다 되었다' + '-기 때문에'. Vaqt bo'lib qolgani sababli. <strong>빨리</strong> (tez).</p>",
-        'correct': "때문에",
-        'choices': ["때문에", "니까", "어서", "면서"]
+        'text': "<p>A: <strong>오늘</strong> 저녁 밥값은 <strong>누가</strong> <em>낼까요</em>?<br>B: <strong>오늘은</strong> 제가 <em>살</em> <em>________</em> <strong>맛있게</strong> <em>드세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '사다' (sotib olmoq/ovqat olib bermoq) + '-ㄹ 테니까'. Iroda (men to'layman/olib beraman). <strong>맛있게</strong> (mazali qilib).</p>",
+        'correct': "테니까",
+        'choices': ["수 있으니까", "테니까", "줄 아니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: 감기는 <strong>이제</strong> <strong>다</strong> <em>나았어요</em>?<br>B: 아니요, <u>심한</u> 감기 ________ <strong>아직도</strong> <strong>계속</strong> 약을 <em>먹어요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '감기' (shamollash) ot bo'lgani uchun to'g'ridan-to'g'ri '때문에' qo'shiladi. <strong>계속</strong> (tinmay).</p>",
-        'correct': "때문에",
-        'choices': ["기 때문에", "때문에", "이니까", "위해서"]
+        'text': "<p>A: 약속 시간에 <em>늦지 않을까요</em>?<br>B: 택시를 <em>타면</em> <strong>금방</strong> <em>도착할</em> <em>________</em> 걱정 <em>마세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '도착하다' (yetib kelmoq) + '-ㄹ 테니까'. Taxmin (tez yetib borsak kerak). <strong>금방</strong> (darhol/tez).</p>",
+        'correct': "테니까",
+        'choices': ["뻔하니까", "줄 모르니까", "테니까", "수 없으니까"]
     },
     {
-        'text': "<p>A: <strong>요즘</strong> 눈이 <strong>너무</strong> <u>아파요</u>.<br>B: <strong>스마트폰을</strong> <strong>너무</strong> <strong>오래</strong> <em>보기</em> ________ <em>그래요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '보다' (ko'rmoq) + '-기 때문에'. <strong>너무</strong> <strong>오래</strong> (juda uzoq vaqt) ko'rgani sababli.</p>",
-        'correct': "때문에",
-        'choices': ["위해서", "니까", "때문에", "어서"]
+        'text': "<p>A: 커피를 <strong>어떻게</strong> <em>할까요</em>?<br>B: 제가 커피를 <em>타 올</em> <em>________</em> <strong>여기서</strong> <strong>잠깐만</strong> <em>기다리세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '타 오다' (kofe damlab kelmoq) + '-ㄹ 테니까'. Iroda (men damlab kelaman). <strong>잠깐만</strong> (biroz/bir zum).</p>",
+        'correct': "테니까",
+        'choices': ["테니까", "수 있으니까", "줄 아니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>오늘</strong> 백화점에 <em>갈 수 있어요</em>?<br>B: <strong>미안해요</strong>. <strong>오늘</strong> <strong>갑자기</strong> <em>잡힌</em> 회의 ________ <em>못 가요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '회의' (majlis) ot bo'lgani uchun '때문에' ulanadi. <strong>갑자기</strong> (to'satdan) majlis sababli.</p>",
-        'correct': "때문에",
-        'choices': ["기 때문에", "때문에", "이니까", "보니까"]
+        'text': "<p>A: <strong>밖에서</strong> <strong>오래</strong> <em>기다릴까요</em>?<br>B: 바람이 불어서 <u>추울</u> <em>________</em> <strong>안으로</strong> <em>들어오세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '춥다' (sovuq bo'lmoq) + '-을 테니까'. Taxmin (sovuq bo'lsa kerak). <strong>오래</strong> (uzoq vaqt).</p>",
+        'correct': "테니까",
+        'choices': ["수 없으니까", "테니까", "줄 모르니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>주말마다</strong> <strong>왜</strong> <strong>도서관에</strong> <em>가요</em>?<br>B: <strong>집은</strong> <strong>너무</strong> <u>시끄럽기</u> ________ <strong>조용한</strong> 도서관에서 <em>공부해요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '시끄럽다' (shovqinli bo'lmoq) + '-기 때문에'. Uy shovqinli bo'lgani uchun. <strong>너무</strong> (juda).</p>",
-        'correct': "때문에",
-        'choices': ["때문에", "위해서", "보니까", "니까"]
+        'text': "<p>A: <strong>도서관에</strong> <strong>혼자</strong> <em>갈래요</em>?<br>B: 제가 <strong>이따가</strong> <strong>같이</strong> <em>갈</em> <em>________</em> <strong>조금만</strong> <em>기다려 주세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '가다' (bormoq) + '-ㄹ 테니까'. Iroda (men birga boraman). <strong>이따가</strong> (keyinroq), <strong>조금만</strong> (ozgina).</p>",
+        'correct': "테니까",
+        'choices': ["뻔하니까", "줄 아니까", "수 있으니까", "테니까"]
     },
     {
-        'text': "<p>A: <strong>외국에서</strong> <strong>혼자</strong> <em>살면</em> <u>힘들지 않아요</u>?<br>B: <strong>가끔</strong> <u>외롭기</u> ________ <strong>가족이</strong> <strong>많이</strong> <em>보고 싶어요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '외롭다' (yolg'iz/g'arib bo'lmoq) + '-기 때문에'. Yolg'izlik sababli. <strong>가끔</strong> (ba'zan).</p>",
-        'correct': "때문에",
-        'choices': ["위해서", "때문에", "니까", "면서"]
+        'text': "<p>A: 반찬이 <strong>부족하지 않을까요</strong>?<br>B: 고기가 <strong>많으니까</strong> <strong>충분할</strong> <em>________</em> 걱정 <em>마세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '충분하다' (yetarli bo'lmoq) + '-ㄹ 테니까'. Taxmin (yetarli bo'lsa kerak).</p>",
+        'correct': "테니까",
+        'choices': ["테니까", "수 없으니까", "줄 모르니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: 이 제품이 <strong>왜</strong> <strong>가장</strong> <strong>인기가</strong> <em>많아요</em>?<br>B: 품질이 <strong>아주</strong> <u>좋기</u> ________ <strong>사람들이</strong> <strong>많이</strong> <em>찾아요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '좋다' (yaxshi bo'lmoq) + '-기 때문에'. Sifati yaxshi bo'lganligi sababli. <strong>아주</strong> (juda).</p>",
-        'correct': "때문에",
-        'choices': ["때문에", "위해서", "니까", "고"]
+        'text': "<p>A: <strong>저녁에</strong> 파티를 <em>준비해야 하는데</em> <em>도와줄래요</em>?<br>B: 제가 음료수를 <em>사 올</em> <em>________</em> 케이크를 <em>부탁해요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '사 오다' (sotib olib kelmoq) + '-ㄹ 테니까'. Iroda (men ichimlik olib kelaman). <strong>저녁에</strong> (kechqurun).</p>",
+        'correct': "테니까",
+        'choices': ["수 있으니까", "테니까", "줄 아니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>어제</strong> <strong>일찍</strong> <em>퇴근했어요</em>?<br>B: 아니요, <u>복잡한</u> 업무 ________ <strong>야근을</strong> <em>했어요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '업무' (ish/vazifa) ot bo'lgani uchun '때문에' ulanadi. <u>복잡한</u> (murakkab) ish sababli.</p>",
-        'correct': "때문에",
-        'choices': ["기 때문에", "때문에", "이니까", "라서"]
+        'text': "<p>A: 그 영화가 <u>재미있을까요</u>?<br>B: <strong>인기가 많아서</strong> <u>재미있을</u> <em>________</em> <strong>같이</strong> <em>보러 가요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '재미있다' (qiziqarli bo'lmoq) + '-을 테니까'. Taxmin (qiziqarli bo'lsa kerak). <strong>같이</strong> (birgalikda).</p>",
+        'correct': "테니까",
+        'choices': ["뻔하니까", "줄 모르니까", "테니까", "수 없으니까"]
     },
     {
-        'text': "<p>A: 옷을 <strong>왜</strong> <strong>그렇게</strong> <u>따뜻하게</u> <em>입었어요</em>?<br>B: <strong>오늘</strong> 날씨가 <strong>매우</strong> <u>춥기</u> ________ <u>두껍게</u> <em>입었어요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '춥다' (sovuq bo'lmoq) + '-기 때문에'. <strong>매우</strong> (juda) sovuq bo'lgani sababli.</p>",
-        'correct': "때문에",
-        'choices': ["위해서", "니까", "때문에", "어서"]
+        'text': "<p>A: <strong>방금</strong> <em>만든</em> 케이크 <em>먹어 볼래요</em>?<br>B: 제가 <strong>맛있게</strong> <em>먹을</em> <em>________</em> <strong>얼른</strong> <em>잘라 주세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '먹다' (yemoq) + '-을 테니까'. Iroda (men yeyman, shuning uchun). <strong>얼른</strong> (tezda/darhol).</p>",
+        'correct': "테니까",
+        'choices': ["테니까", "수 있으니까", "줄 아니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: 도로에 <strong>왜</strong> 차가 <strong>이렇게</strong> <em>없어요</em>?<br>B: <strong>오늘은</strong> <u>공휴일이기</u> ________ 차가 <strong>거의</strong> <em>안 다녀요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '공휴일이다' (dam olish kunidir) + '-기 때문에' (공휴일이기 때문에). Dam olish kuni bo'lgani sababli.</p>",
-        'correct': "때문에",
-        'choices': ["때문에", "위해서", "보니까", "면서"]
+        'text': "<p>A: 이 짐들을 <strong>다</strong> <em>어떻게 하죠</em>?<br>B: 제가 <strong>차로</strong> <em>옮겨 줄</em> <em>________</em> <strong>그냥</strong> <em>두세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '옮겨 주다' (tashib bermoq) + '-ㄹ 테니까'. Iroda (men tashib beraman). <strong>그냥</strong> (shundayligicha).</p>",
+        'correct': "테니까",
+        'choices': ["수 없으니까", "테니까", "줄 모르니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>어제</strong> 파티에 <strong>왜</strong> <strong>안</strong> <em>왔어요</em>?<br>B: <strong>갑자기</strong> <u>아팠기</u> ________ <strong>어쩔 수 없이</strong> <em>못 갔어요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '아프다' o'tgan zamonda '아팠다' + '-기 때문에'. <strong>갑자기</strong> (to'satdan) kasal bo'lgani uchun.</p>",
-        'correct': "때문에",
-        'choices': ["때문에", "니까", "어서", "면서"]
+        'text': "<p>A: 사장님이 <strong>요즘</strong> <u>바쁘실까요</u>?<br>B: <strong>연말이라</strong> <strong>많이</strong> <u>바쁘실</u> <em>________</em> <strong>나중에</strong> 연락을 <em>해 보세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '바쁘시다' (band bo'lmoq/hurmat) + '-ㄹ 테니까'. Taxmin (band bo'lsalar kerak). <strong>나중에</strong> (keyinroq).</p>",
+        'correct': "테니까",
+        'choices': ["뻔하니까", "줄 아니까", "수 있으니까", "테니까"]
     },
     {
-        'text': "<p>A: 스트레스 <strong>해소를 위해</strong> <em>무엇을</em> <em>해요</em>?<br>B: 음악이 <strong>마음을</strong> <u>편안하게 해 주기</u> ________ 음악을 <em>들어요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '해 주다' (qilib bermoq) + '-기 때문에'. Xotirjam qilgani sababli. <strong>편안하게</strong> (qulay/xotirjam).</p>",
-        'correct': "때문에",
-        'choices': ["위해서", "때문에", "보니까", "니까"]
+        'text': "<p>A: 식당에 자리가 <em>있을까요</em>?<br>B: <strong>점심시간이라서</strong> 사람이 <u>많을</u> <em>________</em> <strong>미리</strong> <em>예약하세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '많다' (ko'p bo'lmoq) + '-을 테니까'. Taxmin (odam ko'p bo'lsa kerak). <strong>미리</strong> (oldindan).</p>",
+        'correct': "테니까",
+        'choices': ["테니까", "수 없으니까", "줄 모르니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>왜</strong> 이사하기로 <em>결정했어요</em>?<br>B: 회사에서 집이 <strong>너무</strong> <u>멀기</u> ________ <u>가까운</u> 곳으로 <em>가려고요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '멀다' (uzoq bo'lmoq) + '-기 때문에'. <strong>너무</strong> (juda) uzoq bo'lgani uchun.</p>",
-        'correct': "때문에",
-        'choices': ["때문에", "위해서", "니까", "고"]
+        'text': "<p>A: 제가 <strong>사진을</strong> <em>찍어 드릴까요</em>?<br>B: 네, 제가 <strong>여기</strong> <em>설</em> <em>________</em> <strong>예쁘게</strong> <em>찍어 주세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '서다' (turmoq) + '-ㄹ 테니까'. Iroda (men turaman). <strong>예쁘게</strong> (chiroyli qilib).</p>",
+        'correct': "테니까",
+        'choices': ["수 있으니까", "테니까", "줄 아니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>요즘</strong> <strong>왜</strong> <strong>그렇게</strong> <u>바빠요</u>?<br>B: <strong>다음 주에</strong> <em>있을</em> 시험 ________ <strong>하루 종일</strong> <em>공부해요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '시험' (imtihon) ot bo'lgani uchun '때문에' ulanadi. <strong>하루 종일</strong> (kun bo'yi).</p>",
-        'correct': "때문에",
-        'choices': ["기 때문에", "때문에", "이니까", "라서"]
+        'text': "<p>A: 이따 비가 <em>올까요</em>?<br>B: <strong>오후에</strong> 비가 <em>올</em> <em>________</em> 우산을 <strong>꼭</strong> <em>가져가세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '오다' (kelmoq) + '-ㄹ 테니까'. Taxmin (yomg'ir yog'sa kerak). <strong>꼭</strong> (albatta).</p>",
+        'correct': "테니까",
+        'choices': ["뻔하니까", "줄 모르니까", "테니까", "수 없으니까"]
     },
     {
-        'text': "<p>A: <strong>컴퓨터를</strong> <strong>새로</strong> <em>샀어요</em>?<br>B: 네, <strong>예전</strong> 컴퓨터가 <strong>너무</strong> <u>느렸기</u> ________ <strong>새로</strong> <em>샀어요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '느리다' o'tgan zamonda '느렸다' + '-기 때문에'. <strong>너무</strong> (juda) sekin bo'lgani uchun.</p>",
-        'correct': "때문에",
-        'choices': ["때문에", "니까", "어서", "위해서"]
+        'text': "<p>A: <strong>무거운</strong> 박스를 <em>들어 드릴까요</em>?<br>B: 제가 <em>들</em> <em>________</em> 문 좀 <em>열어 주세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '들다' (ko'tarmoq) 'ㄹ' tushib ketmaydi, '들' + '을 테니까' = '들 테니까'. Iroda (men ko'taraman).</p>",
+        'correct': "테니까",
+        'choices': ["테니까", "수 있으니까", "줄 아니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>왜</strong> 이 신발을 <strong>안</strong> <em>신어요</em>?<br>B: 신발이 <strong>발에</strong> <u>작기</u> ________ <em>신으면</em> <strong>너무</strong> <u>아파요</u>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '작다' (kichik bo'lmoq) + '-기 때문에'. Poyabzal kichik bo'lgani uchun.</p>",
-        'correct': "때문에",
-        'choices': ["위해서", "니까", "때문에", "어서"]
+        'text': "<p>A: 김치찌개가 <u>매울까요</u>?<br>B: <strong>아마</strong> <strong>조금</strong> <u>매울</u> <em>________</em> 물을 <strong>많이</strong> <em>드세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '맵다' (achchiq bo'lmoq). 'ㅂ' -> '우' + '-ㄹ 테니까'. Taxmin (achchiq bo'lsa kerak). <strong>조금</strong> (biroz).</p>",
+        'correct': "테니까",
+        'choices': ["수 없으니까", "테니까", "줄 모르니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>어제</strong> <strong>일찍</strong> <em>출발했는데</em> <strong>왜</strong> <em>지각했어요</em>?<br>B: <strong>갑작스러운</strong> 교통사고 ________ <strong>도로가</strong> <strong>완전히</strong> <em>막혔어요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '교통사고' (avtohalokat) ot bo'lgani uchun '때문에' ulanadi. <strong>완전히</strong> (butunlay).</p>",
-        'correct': "때문에",
-        'choices': ["기 때문에", "때문에", "보니까", "라서"]
+        'text': "<p>A: 비밀을 <em>지켜 줄 수 있어요</em>?<br>B: 제가 <strong>절대</strong> <em>말하지 않을</em> <em>________</em> 걱정 말고 <em>말해 보세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '말하지 않다' (aytmaslik) + '-을 테니까'. Iroda (men aytmayman, xavotir olma). <strong>절대</strong> (aslo).</p>",
+        'correct': "테니까",
+        'choices': ["뻔하니까", "줄 아니까", "수 있으니까", "테니까"]
     },
     {
-        'text': "<p>A: <strong>건강을 위해서</strong> <strong>어떻게</strong> <em>해야 해요</em>?<br>B: <strong>담배는</strong> <strong>몸에</strong> <u>나쁘기</u> ________ <strong>반드시</strong> <em>끊어야 해요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '나쁘다' (yomon bo'lmoq) + '-기 때문에'. <strong>반드시</strong> (albatta) tashlash kerak.</p>",
-        'correct': "때문에",
-        'choices': ["때문에", "위해서", "니까", "고"]
+        'text': "<p>A: 선생님이 <strong>지금</strong> 교실에 <em>계실까요</em>?<br>B: <strong>수업 중이실</strong> <em>________</em> <strong>나중에</strong> <em>찾아가세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '중이시다' (band bo'lmoq) + '-ㄹ 테니까'. Taxmin (dars o'tayotgan bo'lsalar kerak). <strong>나중에</strong> (keyinroq).</p>",
+        'correct': "테니까",
+        'choices': ["테니까", "수 없으니까", "줄 모르니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>오늘은</strong> <strong>왜</strong> 기분이 <u>안 좋아요</u>?<br>B: <strong>아침에</strong> <em>일어난</em> <strong>사소한</strong> 말다툼 ________ <strong>계속</strong> <u>우울해요</u>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '말다툼' (janjal/tortishuv) ot bo'lgani uchun '때문에'. <strong>계속</strong> (tinmay) tushkun kayfiyatda.</p>",
-        'correct': "때문에",
-        'choices': ["기 때문에", "때문에", "이니까", "보니까"]
+        'text': "<p>A: 이 서류를 <strong>팩스로</strong> <em>보낼까요</em>?<br>B: 제가 <strong>우체국에</strong> <em>가서</em> <em>보낼</em> <em>________</em> <strong>그냥</strong> <em>두세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '보내다' (jo'natmoq) + '-ㄹ 테니까'. Iroda (men borib jo'nataman). <strong>그냥</strong> (shunday qoldiring).</p>",
+        'correct': "테니까",
+        'choices': ["수 있으니까", "테니까", "줄 아니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: 이 <u>무거운</u> 소포를 <strong>집까지</strong> <em>가져갈 수 있어요</em>?<br>B: 아니요, <strong>너무</strong> <u>무겁기</u> ________ <strong>택배로</strong> <em>보낼 거예요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '무겁다' (og'ir bo'lmoq) + '-기 때문에'. <strong>너무</strong> (juda) og'irligi sababli.</p>",
-        'correct': "때문에",
-        'choices': ["위해서", "때문에", "니까", "면서"]
+        'text': "<p>A: 이 빵 <em>먹어도 돼요</em>?<br>B: 아이가 <em>먹을</em> <em>________</em> <strong>다</strong> <em>먹지 마세요</em>.</p>",
+        'explanation': "<p><strong>테니까</strong>: '먹다' (yemoq) + '-을 테니까'. Taxmin/Niyat (bola yeyishi kerak/yeydi). <strong>다</strong> (hammasini).</p>",
+        'correct': "테니까",
+        'choices': ["뻔하니까", "줄 모르니까", "테니까", "수 없으니까"]
     },
     {
-        'text': "<p>A: 친구와 <strong>왜</strong> <strong>연락을</strong> <em>안 해요</em>?<br>B: 친구가 <strong>요즘</strong> <strong>많이</strong> <u>바쁘기</u> ________ <strong>방해하고 싶지</strong> <em>않아요</em>.</p>",
-        'explanation': "<p><strong>때문에</strong>: '바쁘다' (band bo'lmoq) + '-기 때문에'. <strong>많이</strong> (ko'p) band bo'lgani uchun xalaqit bermoqchi emas.</p>",
-        'correct': "때문에",
-        'choices': ["때문에", "위해서", "보니까", "니까"]
+        'text': "<p>A: 제가 <strong>이따가</strong> <em>연락할까요</em>?<br>B: 제가 <strong>먼저</strong> <em>도착해서</em> <em>연락할</em> <em>________</em> 기다리세요.</p>",
+        'explanation': "<p><strong>테니까</strong>: '연락하다' (aloqaga chiqmoq) + '-ㄹ 테니까'. Iroda (men yetib borib qo'ng'iroq qilaman). <strong>먼저</strong> (birinchi bo'lib).</p>",
+        'correct': "테니까",
+        'choices': ["테니까", "수 있으니까", "줄 아니까", "뻔하니까"]
     }]
 
-topic_38 = [
-
-    # --- TOPIC 38: 동사 + 아/어야 하다/되다 (의무와 필요) ---
+topic_50 = [
+    # --- TOPIC 50: 동사/형용사 + (으)ㄹ수록 (정도의 심화) ---
     {
-        'text': "<p>A: <strong>내일</strong> <strong>아침 일찍</strong> 공항에 <em>가야 해요</em>?<br>B: 네, 비행기 시간이 <u>이르니까</u> <strong>새벽에</strong> <em>일어나________</em>.</p>",
-        'explanation': "<p><strong>야 해요</strong>: '일어나다' (turmoq/uyg'onmoq) + '-아야 하다' (일어나야 해요). Majburiyatni bildiradi. <strong>새벽에</strong> (tong saharda) turishi kerak.</p>",
-        'correct': "야 해요",
-        'choices': ["면 돼요", "야 해요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 한국어가 <strong>공부하기에</strong> <em>어때요</em>?<br>B: 한국어는 <em>공부할________</em> <strong>점점 더</strong> <u>어려워지는 것 같아요</u>.</p>",
+        'explanation': "<p><strong>수록</strong>: '공부하다' (o'qimoq) + '-ㄹ수록'. Qancha o'qisangiz, shuncha qiyinlashadi. <strong>점점 더</strong> (borgan sari ko'proq).</p>",
+        'correct': "수록",
+        'choices': ["수록", "테니까", "줄 알아요", "뻔했어요"]
     },
     {
-        'text': "<p>A: 이 약은 <strong>언제</strong> <em>먹어요</em>?<br>B: 식사를 <em>마친</em> <strong>후에</strong> <strong>반드시</strong> <em>먹어________</em>.</p>",
-        'explanation': "<p><strong>야 해요</strong>: '먹다' (yemoq) + '-어야 하다' (먹어야 해요). <strong>반드시</strong> (albatta) ichish kerak.</p>",
-        'correct': "야 해요",
-        'choices': ["야 해요", "면 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 이 노래 멜로디가 <em>어때요</em>?<br>B: <em>들으면</em> <em>들을________</em> <strong>정말</strong> <u>아름답고</u> <u>좋네요</u>.</p>",
+        'explanation': "<p><strong>수록</strong>: '듣다' (eshitmoq). 'ㄷ' -> 'ㄹ' + '-을수록'. Qancha eshitsangiz, shuncha chiroyli. <strong>정말</strong> (rosttdan).</p>",
+        'correct': "수록",
+        'choices': ["테니까", "수록", "줄 몰라요", "기 때문에"]
     },
     {
-        'text': "<p>A: 한국어를 <strong>잘하려면</strong> <strong>어떻게</strong> <em>해야 돼요</em>?<br>B: 한국 사람들과 <strong>자주</strong> <em>대화해________</em>.</p>",
-        'explanation': "<p><strong>야 돼요</strong>: '대화하다' (suhbatlashmoq) + '-아야 되다' (대화해야 돼요). <strong>자주</strong> (tez-tez) gaplashish kerak.</p>",
-        'correct': "야 돼요",
-        'choices': ["야 돼요", "면 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 저 친구와 <strong>친해졌어요</strong>?<br>B: 네, <em>만나면</em> <em>만날________</em> <strong>참</strong> <u>좋은</u> 사람인 것 같아요.</p>",
+        'explanation': "<p><strong>수록</strong>: '만나다' (uchrashmoq) + '-ㄹ수록'. Qancha ko'p uchrashsam, shuncha yaxshi odam ekanligini bilyapman. <strong>참</strong> (haqiqatan).</p>",
+        'correct': "수록",
+        'choices': ["수록", "테니까", "기 전에", "면서"]
     },
     {
-        'text': "<p>A: <strong>지금</strong> <strong>바로</strong> 집에 <em>갈 거예요</em>?<br>B: 아니요, <strong>오늘까지</strong> <strong>이 숙제를</strong> <strong>다</strong> <em>끝내________</em>.</p>",
-        'explanation': "<p><strong>야 해요</strong>: '끝내다' (tugatmoq) + '-어야 하다' (끝내야 해요). <strong>다</strong> (hammasini) tugatishi shart.</p>",
-        'correct': "야 해요",
-        'choices': ["면 돼요", "야 해요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: <strong>외국어는</strong> <strong>언제</strong> <em>배우는</em> 것이 <u>좋을까요</u>?<br>B: 나이가 <u>어릴________</u> <strong>훨씬</strong> <strong>빨리</strong> <em>배우는 것 같아요</em>.</p>",
+        'explanation': "<p><strong>수록</strong>: '어리다' (yosh bo'lmoq) + '-ㄹ수록'. Qancha yosh bo'lsa, shuncha tez o'rganadi. <strong>훨씬 빨리</strong> (ancha tez).</p>",
+        'correct': "수록",
+        'choices': ["테니까", "줄 아니까", "수록", "뻔하니까"]
     },
     {
-        'text': "<p>A: 도서관에서 <strong>책을 읽을 때</strong> <strong>어떻게</strong> <em>해야 해요</em>?<br>B: <strong>다른 사람을 위해</strong> <strong>조용히</strong> <em>해________</em>.</p>",
-        'explanation': "<p><strong>야 돼요</strong>: '하다' (qilmoq) -> '해야 돼요' (jim bo'lish kerak). <strong>조용히</strong> (tinch/jim).</p>",
-        'correct': "야 돼요",
-        'choices': ["야 돼요", "면 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 딸기가 <strong>크기가</strong> <u>커요</u>?<br>B: 네, 딸기는 <u>클________</u> <strong>더</strong> <u>달고</u> <u>맛있어요</u>.</p>",
+        'explanation': "<p><strong>수록</strong>: '크다' (katta bo'lmoq) + '-ㄹ수록'. Qancha katta bo'lsa, shuncha shirin. <strong>더</strong> (yana/ko'proq).</p>",
+        'correct': "수록",
+        'choices': ["수록", "테니까", "줄 모르니까", "기 때문에"]
     },
     {
-        'text': "<p>A: 비자를 <em>연장하려면</em> <strong>어디로</strong> <em>가야 해요</em>?<br>B: <strong>출입국관리사무소에</strong> <strong>직접</strong> <em>가________</em>.</p>",
-        'explanation': "<p><strong>야 해요</strong>: '가다' (bormoq) + '-아야 하다' (가야 해요). <strong>직접</strong> (shaxsan/o'zi) borishi kerak.</p>",
-        'correct': "야 해요",
-        'choices': ["면 돼요", "야 해요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 이 책 내용이 <u>어렵지 않아요</u>?<br>B: 아니요, <em>읽으면</em> <em>읽을________</em> <strong>더</strong> <u>흥미로워요</u>.</p>",
+        'explanation': "<p><strong>수록</strong>: '읽다' (o'qimoq) undosh bilan tugagani uchun '-을수록'. Qancha o'qisa, shuncha qiziqarli.</p>",
+        'correct': "수록",
+        'choices': ["수 있으니까", "수록", "줄 아니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>외출할 때</strong> 창문을 <em>어떻게</em> <em>해야 돼요</em>?<br>B: 비가 <em>올지도 모르니까</em> <strong>꼭</strong> <em>닫아________</em>.</p>",
-        'explanation': "<p><strong>야 해요</strong>: '닫다' (yopmoq) + '-아야 하다' (닫아야 해요). <strong>꼭</strong> (albatta) yopish kerak.</p>",
-        'correct': "야 해요",
-        'choices': ["야 해요", "면 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 사람이 <u>많을까요</u>?<br>B: 네, 파티에는 사람이 <u>많을________</u> <strong>더</strong> <u>재미있어요</u>.</p>",
+        'explanation': "<p><strong>수록</strong>: '많다' (ko'p bo'lmoq) + '-을수록'. Odam qancha ko'p bo'lsa, shuncha qiziqarli bo'ladi.</p>",
+        'correct': "수록",
+        'choices': ["뻔하니까", "줄 모르니까", "수록", "수 없으니까"]
     },
     {
-        'text': "<p>A: 감기에 <em>걸렸는데</em> <strong>어떻게</strong> <em>해야 해요</em>?<br>B: <strong>약을 먹고</strong> <strong>집에서</strong> <strong>푹</strong> <em>쉬어________</em>.</p>",
-        'explanation': "<p><strong>야 해요</strong>: '쉬다' (dam olmoq) + '-어야 하다' (쉬어야 해요). <strong>푹</strong> (yaxshilab) dam olishi kerak.</p>",
-        'correct': "야 해요",
-        'choices': ["면 돼요", "야 해요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 김치가 <strong>많이</strong> <u>매워요</u>?<br>B: 네, <strong>하지만</strong> <u>매우면</u> <u>매울________</u> <strong>자꾸</strong> <em>먹고 싶어져요</em>.</p>",
+        'explanation': "<p><strong>수록</strong>: '맵다' (achchiq bo'lmoq). 'ㅂ' -> '우' + '-ㄹ수록'. Qancha achchiq bo'lsa, shuncha yegisi keladi. <strong>자꾸</strong> (tinmay/tez-tez).</p>",
+        'correct': "수록",
+        'choices': ["수록", "테니까", "줄 아니까", "면서"]
     },
     {
-        'text': "<p>A: <strong>운전할 때</strong> <strong>가장</strong> <u>중요한</u> 것이 <em>뭐예요</em>?<br>B: <strong>안전벨트를</strong> <strong>반드시</strong> <em>매________</em>.</p>",
-        'explanation': "<p><strong>야 돼요</strong>: '매다' (taqmoq/bog'lamoq) + '-어야 되다' (매야 돼요). <strong>반드시</strong> (albatta) xavfsizlik kamarini taqish kerak.</p>",
-        'correct': "야 돼요",
-        'choices': ["야 돼요", "면 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 돈은 <strong>얼마나</strong> <em>버는</em> 것이 <u>좋아요</u>?<br>B: 돈은 <strong>당연히</strong> <em>벌면</em> <em>벌________</em> <u>좋지요</u>.</p>",
+        'explanation': "<p><strong>수록</strong>: '벌다' (pul topmoq). 'ㄹ' bilan tugagani uchun to'g'ridan-to'g'ri '수록' ulanadi. <strong>당연히</strong> (albatta).</p>",
+        'correct': "수록",
+        'choices': ["수록", "수 없으니까", "줄 모르니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>시험을 보기 전에</strong> <strong>무엇을</strong> <em>준비해야 해요</em>?<br>B: <strong>신분증과</strong> <strong>수험표를</strong> <strong>미리</strong> <em>챙겨________</em>.</p>",
-        'explanation': "<p><strong>야 해요</strong>: '챙기다' (tayyorlab qo'ymoq) + '-어야 하다' (챙겨야 해요). <strong>미리</strong> (oldindan) tayyorlash shart.</p>",
-        'correct': "야 해요",
-        'choices': ["면 돼요", "야 해요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 신발은 <strong>어떤</strong> 것이 <u>좋아요</u>?<br>B: 발은 <u>편하면</u> <u>편할________</u> 건강에 <u>좋습니다</u>.</p>",
+        'explanation': "<p><strong>수록</strong>: '편하다' (qulay bo'lmoq) + '-ㄹ수록'. Qancha qulay bo'lsa, shuncha yaxshi.</p>",
+        'correct': "수록",
+        'choices': ["수 있으니까", "수록", "줄 아니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: 회사에 <strong>매일</strong> <strong>몇 시까지</strong> <em>출근해야 돼요</em>?<br>B: <strong>늦어도</strong> <strong>아침 9시까지는</strong> <em>도착해________</em>.</p>",
-        'explanation': "<p><strong>야 돼요</strong>: '도착하다' (yetib kelmoq) -> '도착해야 돼요'. <strong>늦어도</strong> (eng kechi bilan) 9 gacha yetib kelishi kerak.</p>",
-        'correct': "야 돼요",
-        'choices': ["야 돼요", "면 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 저 배우 <strong>정말</strong> <u>멋있지 않아요</u>?<br>B: 맞아요. <em>보면</em> <em>볼________</em> <strong>점점</strong> <strong>더</strong> <u>멋있어지는 것 같아요</u>.</p>",
+        'explanation': "<p><strong>수록</strong>: '보다' (ko'rmoq) + '-ㄹ수록'. Qancha ko'rsangiz, shuncha kelishkan bo'lib ketyapti. <strong>점점 더</strong> (borgan sari ko'proq).</p>",
+        'correct': "수록",
+        'choices': ["뻔하니까", "줄 모르니까", "수록", "테니까"]
     },
     {
-        'text': "<p>A: <strong>오늘</strong> <strong>약속 시간에</strong> <em>늦을 것 같아요</em>?<br>B: 네, 차가 <strong>너무</strong> <u>막혀서</u> 친구한테 <strong>미리</strong> <em>연락해________</em>.</p>",
-        'explanation': "<p><strong>야 해요</strong>: '연락하다' (aloqaga chiqmoq) -> '연락해야 해요'. <strong>미리</strong> (oldindan) xabar berish kerak.</p>",
-        'correct': "야 해요",
-        'choices': ["면 돼요", "야 해요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 커피는 <strong>어떻게</strong> <em>마시는</em> 것이 <u>좋아요</u>?<br>B: 저는 커피가 <u>쓰면</u> <u>쓸________</u> <strong>더</strong> <u>맛있는 것 같아요</u>.</p>",
+        'explanation': "<p><strong>수록</strong>: '쓰다' (achchiq/taxir bo'lmoq). Unli bilan tugagani uchun '-ㄹ수록'. Qancha taxir bo'lsa, shuncha mazali.</p>",
+        'correct': "수록",
+        'choices': ["수록", "테니까", "줄 아니까", "면서"]
     },
     {
-        'text': "<p>A: 길을 <em>건널 때</em> <strong>어떻게</strong> <em>해야 돼요</em>?<br>B: <strong>좌우를</strong> <strong>잘</strong> <em>살피고</em> <strong>초록불에</strong> <em>건너________</em>.</p>",
-        'explanation': "<p><strong>야 돼요</strong>: '건너다' (kesib o'tmoq) + '-아야 되다' (건너야 돼요). <strong>잘</strong> (yaxshilab) qarab, o'tish kerak.</p>",
-        'correct': "야 돼요",
-        'choices': ["야 돼요", "면 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: <strong>날씨가</strong> <strong>자꾸</strong> <u>추워지네요</u>.<br>B: 네, <u>추워질________</u> <strong>따뜻한</strong> 국물이 <em>생각나요</em>.</p>",
+        'explanation': "<p><strong>수록</strong>: '추워지다' (sovuq bo'lib bormoq) + '-ㄹ수록'. Qancha sovuq bo'lsa, shuncha issiq ovqat esga tushadi. <strong>자꾸</strong> (tinmay).</p>",
+        'correct': "수록",
+        'choices': ["테니까", "수록", "줄 모르니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>어른에게</strong> <strong>물건을</strong> <em>드릴 때</em> <strong>어떻게</strong> <em>해야 해요</em>?<br>B: <strong>반드시</strong> <strong>두 손으로</strong> <em>드려________</em>.</p>",
-        'explanation': "<p><strong>야 해요</strong>: '드리다' (bermoq/hurmat shakli) + '-어야 하다' (드려야 해요). <strong>두 손으로</strong> (ikki qo'llab) berish kerak.</p>",
-        'correct': "야 해요",
-        'choices': ["면 돼요", "야 해요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 지식은 <strong>얼마나</strong> <u>중요해요</u>?<br>B: <em>알면</em> <em>알________</em> <strong>더</strong> <strong>겸손해져야 해요</strong>.</p>",
+        'explanation': "<p><strong>수록</strong>: '알다' (bilmoq). 'ㄹ' bilan tugagani uchun to'g'ridan-to'g'ri '수록' ulanadi. Qancha ko'p bilsa, shuncha kamtar bo'lish kerak.</p>",
+        'correct': "수록",
+        'choices': ["뻔하니까", "줄 아니까", "테니까", "수록"]
     },
     {
-        'text': "<p>A: <strong>이번</strong> 달 <strong>휴대전화 요금을</strong> <em>언제까지</em> <em>내야 해요</em>?<br>B: <strong>이번 주 금요일까지는</strong> <strong>꼭</strong> <em>내________</em>.</p>",
-        'explanation': "<p><strong>야 돼요</strong>: '내다' (to'lamoq) + '-어야 되다' (내야 돼요). <strong>꼭</strong> (albatta) to'lash kerak.</p>",
-        'correct': "야 돼요",
-        'choices': ["야 돼요", "면 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 옷을 <strong>어떻게</strong> <em>입을까요</em>?<br>B: 면접 갈 때는 <strong>옷차림이</strong> <u>깔끔할________</u> <u>좋은</u> 인상을 <em>줍니다</em>.</p>",
+        'explanation': "<p><strong>수록</strong>: '깔끔하다' (ozoda bo'lmoq) + '-ㄹ수록'. Qancha ozoda bo'lsa, shuncha yaxshi taassurot qoldiradi.</p>",
+        'correct': "수록",
+        'choices': ["수록", "수 없으니까", "줄 모르니까", "테니까"]
     },
     {
-        'text': "<p>A: 지하철에서 <strong>어르신을 보면</strong> <strong>어떻게</strong> <em>해야 돼요</em>?<br>B: <strong>당연히</strong> <strong>자리를</strong> <em>양보해________</em>.</p>",
-        'explanation': "<p><strong>야 돼요</strong>: '양보하다' (joy bo'shatmoq) -> '양보해야 돼요'. <strong>당연히</strong> (albatta/tabiiyki) joy berish kerak.</p>",
-        'correct': "야 돼요",
-        'choices': ["면 돼요", "야 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 여행 가방이 <strong>많이</strong> <u>무거워요</u>.<br>B: 여행 갈 때는 짐이 <u>가벼울________</u> <em>이동하기</em> <u>편해요</u>.</p>",
+        'explanation': "<p><strong>수록</strong>: '가볍다' (yengil bo'lmoq). 'ㅂ' -> '우' + '-ㄹ수록'. Qancha yengil bo'lsa, shuncha qulay.</p>",
+        'correct': "수록",
+        'choices': ["수 있으니까", "테니까", "줄 아니까", "수록"]
     },
     {
-        'text': "<p>A: <strong>극장 안에서</strong> <strong>전화벨이 울리면</strong> <em>안 되죠</em>?<br>B: 네, <strong>영화를 보기 전에</strong> <strong>휴대폰을</strong> <em>꺼________</em>.</p>",
-        'explanation': "<p><strong>야 해요</strong>: '끄다' (o'chirmoq). '으' tushib '-어야 하다' ulanadi (꺼야 해요). O'chirib qo'yish kerak.</p>",
-        'correct': "야 해요",
-        'choices': ["야 해요", "면 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 그 사람과 <strong>오래</strong> <em>사귀었어요</em>?<br>B: 네, <strong>서로</strong> <strong>깊이</strong> <em>사랑할________</em> <strong>단점도</strong> <strong>잘</strong> <em>이해하게 돼요</em>.</p>",
+        'explanation': "<p><strong>수록</strong>: '사랑하다' (sevmoq) + '-ㄹ수록'. Qancha chuqur sevsa, shuncha yaxshi tushunadi. <strong>깊이</strong> (chuqur).</p>",
+        'correct': "수록",
+        'choices': ["뻔하니까", "줄 모르니까", "수록", "수 없으니까"]
     },
     {
-        'text': "<p>A: 이 <u>무거운</u> 상자를 <strong>혼자서</strong> <em>옮길 수 있어요</em>?<br>B: 아니요, <strong>힘이 부족해서</strong> <strong>다른 사람과</strong> <strong>같이</strong> <em>들어________</em>.</p>",
-        'explanation': "<p><strong>야 돼요</strong>: '들다' (ko'tarmoq) + '-어야 되다' (들어야 돼요). <strong>같이</strong> (birgalikda) ko'tarish kerak.</p>",
-        'correct': "야 돼요",
-        'choices': ["면 돼요", "야 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 운동은 <strong>매일</strong> <em>하는</em> 것이 <u>좋아요</u>?<br>B: 네, <strong>꾸준히</strong> <em>할________</em> <strong>몸이</strong> <strong>점점</strong> <u>건강해져요</u>.</p>",
+        'explanation': "<p><strong>수록</strong>: '하다' (qilmoq) + '-ㄹ수록'. Qancha muntazam qilsa, shuncha sog'lomlashadi. <strong>꾸준히</strong> (muntazam).</p>",
+        'correct': "수록",
+        'choices': ["수록", "테니까", "줄 아니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>요리하기 전에</strong> <strong>가장</strong> <strong>먼저</strong> <em>무엇을</em> <em>해야 해요</em>?<br>B: <strong>위생을 위해</strong> 손을 <strong>깨끗하게</strong> <em>씻어________</em>.</p>",
-        'explanation': "<p><strong>야 해요</strong>: '씻다' (yuvinmoq) + '-어야 하다' (씻어야 해요). <strong>깨끗하게</strong> (toza qilib) yuvish kerak.</p>",
-        'correct': "야 해요",
-        'choices': ["야 해요", "면 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 이 음식은 <strong>어떻게</strong> <em>만들어요</em>?<br>B: 요리법이 <u>간단할________</u> <strong>따라 하기</strong> <u>쉬워요</u>.</p>",
+        'explanation': "<p><strong>수록</strong>: '간단하다' (oddiy bo'lmoq) + '-ㄹ수록'. Qancha oddiy bo'lsa, shuncha oson.</p>",
+        'correct': "수록",
+        'choices': ["테니까", "수 없으니까", "줄 모르니까", "수록"]
     },
     {
-        'text': "<p>A: 기숙사 <strong>규칙을</strong> <strong>잘</strong> <em>지키고 있어요</em>?<br>B: 네, <strong>밤 10시 전에는</strong> <strong>무조건</strong> <em>들어와________</em>.</p>",
-        'explanation': "<p><strong>야 돼요</strong>: '들어오다' (kirib kelmoq) + '-아야 되다' (들어와야 돼요). <strong>무조건</strong> (so'zsiz/albatta) kirishi kerak.</p>",
-        'correct': "야 돼요",
-        'choices': ["면 돼요", "야 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 집이 <strong>회사에서</strong> <u>가까울까요</u>?<br>B: <strong>당연하죠</strong>. 회사는 <u>가까울________</u> <strong>출퇴근이</strong> <u>편리해요</u>.</p>",
+        'explanation': "<p><strong>수록</strong>: '가깝다' (yaqin bo'lmoq). 'ㅂ' -> '우' + '-ㄹ수록'. Qancha yaqin bo'lsa, qatnash shuncha qulay. <strong>당연하죠</strong> (albatta).</p>",
+        'correct': "수록",
+        'choices': ["뻔하니까", "줄 아니까", "수 있으니까", "수록"]
     },
     {
-        'text': "<p>A: 이 책을 <strong>언제까지</strong> 도서관에 <em>반납해야 해요</em>?<br>B: <strong>다음 주 수요일까지는</strong> <strong>반드시</strong> <em>가져다주어________</em>.</p>",
-        'explanation': "<p><strong>야 해요</strong>: '가져다주다' (olib borib bermoq) -> '가져다주어야 해요' (가져다줘야 해요). <strong>반드시</strong> (albatta) qaytarish shart.</p>",
-        'correct': "야 해요",
-        'choices': ["야 해요", "면 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 과일은 <strong>어떤</strong> 것이 <u>좋아요</u>?<br>B: 과일은 <u>신선할________</u> <strong>비타민이</strong> <strong>풍부해요</strong>.</p>",
+        'explanation': "<p><strong>수록</strong>: '신선하다' (yangi/tarovatli bo'lmoq) + '-ㄹ수록'. Qancha yangi bo'lsa, shuncha vitaminli.</p>",
+        'correct': "수록",
+        'choices': ["수록", "테니까", "줄 모르니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>여름휴가를</strong> <em>가려면</em> <strong>어떻게</strong> <em>해야 돼요</em>?<br>B: <strong>한 달 전에는</strong> <strong>미리</strong> 휴가서를 <em>제출해________</em>.</p>",
-        'explanation': "<p><strong>야 돼요</strong>: '제출하다' (topshirmoq) -> '제출해야 돼요'. <strong>미리</strong> (oldindan) arizani topshirish kerak.</p>",
-        'correct': "야 돼요",
-        'choices': ["면 돼요", "야 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 밤하늘의 별이 <strong>잘</strong> <em>안 보여요</em>.<br>B: <strong>주변이</strong> <u>어두울________</u> <strong>별이</strong> <strong>더</strong> <strong>잘</strong> <em>보여요</em>.</p>",
+        'explanation': "<p><strong>수록</strong>: '어둡다' (qorong'i bo'lmoq). 'ㅂ' -> '우' + '-ㄹ수록'. Qancha qorong'i bo'lsa, shuncha yaxshi ko'rinadi. <strong>더 잘</strong> (yanada yaxshiroq).</p>",
+        'correct': "수록",
+        'choices': ["수 없으니까", "수록", "줄 아니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: 쓰레기를 <strong>버릴 때</strong> <strong>아무 봉투에나</strong> <em>버려도 돼요</em>?<br>B: 아니요, <strong>지정된</strong> <strong>쓰레기봉투를</strong> <em>사서</em> <em>버려________</em>.</p>",
-        'explanation': "<p><strong>야 해요</strong>: '버리다' (tashlamoq) + '-어야 하다' (버려야 해요). <strong>지정된</strong> (belgilangan) xaltaga tashlash kerak.</p>",
-        'correct': "야 해요",
-        'choices': ["야 해요", "면 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 잠을 <strong>자면 잘수록</strong> <strong>더</strong> <u>졸려요</u>.<br>B: 맞아요. 잠은 <strong>이상하게도</strong> <em>잘________</em> <strong>더</strong> <em>자고 싶어져요</em>.</p>",
+        'explanation': "<p><strong>수록</strong>: '자다' (uxlamoq) + '-ㄹ수록'. Qancha uxlasa, shuncha uyqu keladi. <strong>이상하게도</strong> (g'alati tarzda).</p>",
+        'correct': "수록",
+        'choices': ["테니까", "수 있으니까", "줄 모르니까", "수록"]
     },
     {
-        'text': "<p>A: <strong>외국에</strong> <em>나갈 때</em> <strong>반드시</strong> <u>필요한</u> 것이 <em>뭐예요</em>?<br>B: <strong>여권을</strong> <strong>꼭</strong> <em>챙겨________</em>.</p>",
-        'explanation': "<p><strong>야 돼요</strong>: '챙기다' (tayyorlab/olib qo'ymoq) + '-어야 되다' (챙겨야 돼요). <strong>꼭</strong> (albatta) olish kerak.</p>",
-        'correct': "야 돼요",
-        'choices': ["면 돼요", "야 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 가방에 물건을 <strong>다</strong> <em>넣었어요</em>?<br>B: 네, 가방은 <u>넓을________</u> <strong>물건이</strong> <strong>많이</strong> <em>들어가서</em> <u>좋아요</u>.</p>",
+        'explanation': "<p><strong>수록</strong>: '넓다' (keng bo'lmoq) undosh bilan tugagani uchun '-을수록'. Qancha keng bo'lsa, shuncha ko'p narsa sig'adi.</p>",
+        'correct': "수록",
+        'choices': ["뻔하니까", "줄 아니까", "수록", "테니까"]
     },
     {
-        'text': "<p>A: <strong>지하철에서</strong> <strong>내릴 때</strong> <strong>교통카드를</strong> <strong>다시</strong> <em>찍어야 해요</em>?<br>B: 네, <strong>내릴 때도</strong> <strong>카드를</strong> <em>찍어________</em> 요금이 <strong>정상적으로</strong> <em>계산돼요</em>.</p>",
-        'explanation': "<p><strong>야 해요</strong>: '찍다' (tegizmoq/shtamplamoq) + '-어야 하다' (찍어야 해요). <strong>정상적으로</strong> (normal/to'g'ri) hisoblanishi uchun tegizish kerak.</p>",
-        'correct': "야 해요",
-        'choices': ["야 해요", "면 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 그 작가의 글은 <em>어때요</em>?<br>B: <strong>문장이</strong> <u>짧을________</u> <strong>메시지가</strong> <strong>더</strong> <strong>강하게</strong> <em>전달돼요</em>.</p>",
+        'explanation': "<p><strong>수록</strong>: '짧다' (qisqa bo'lmoq) + '-을수록'. Qancha qisqa bo'lsa, shuncha kuchli yetib boradi. <strong>강하게</strong> (kuchli qilib).</p>",
+        'correct': "수록",
+        'choices': ["수록", "테니까", "줄 모르니까", "기 때문에"]
     },
     {
-        'text': "<p>A: <strong>자전거를 탈 때</strong> <strong>안전모를</strong> <em>써야 돼요</em>?<br>B: 네, <strong>안전을 위해서</strong> <strong>반드시</strong> <em>써________</em>.</p>",
-        'explanation': "<p><strong>야 돼요</strong>: '쓰다' (kiymoq/taqmoq - boshga). '으' tushib '-어야 되다' (써야 돼요). <strong>안전을 위해서</strong> (xavfsizlik uchun) taqish kerak.</p>",
-        'correct': "야 돼요",
-        'choices': ["면 돼요", "야 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: <strong>나이가</strong> <em>들면 들수록</em> <strong>시간이</strong> <strong>빨리</strong> <em>가는 것 같아요</em>.<br>B: 네, 저도 <strong>나이가</strong> <em>들________</em> <strong>그 말을</strong> <strong>실감해요</strong>.</p>",
+        'explanation': "<p><strong>수록</strong>: '들다' (yosh/vaqt o'tmoq). 'ㄹ' bilan tugagani uchun '수록'. Qancha yosh o'tsa, shuncha his qilyapti. <strong>빨리</strong> (tez).</p>",
+        'correct': "수록",
+        'choices': ["테니까", "수록", "줄 아니까", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>오늘</strong> <strong>친구 생일 파티에</strong> <em>가야 해요</em>?<br>B: 네, <strong>친한 친구라서</strong> <strong>꼭</strong> <em>참석해________</em>.</p>",
-        'explanation': "<p><strong>야 해요</strong>: '참석하다' (ishtirok etmoq) -> '참석해야 해요'. <strong>꼭</strong> (albatta) qatnashish shart.</p>",
-        'correct': "야 해요",
-        'choices': ["야 해요", "면 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: <strong>매일</strong> <strong>일찍</strong> <em>일어나요</em>?<br>B: 네, <strong>아침에</strong> <strong>일찍</strong> <em>일어날________</em> <strong>하루가</strong> <strong>길어져서</strong> <u>좋아요</u>.</p>",
+        'explanation': "<p><strong>수록</strong>: '일어나다' (turmoq/uyg'onmoq) + '-ㄹ수록'. Qancha erta tursa, kun shuncha uzoq bo'ladi. <strong>일찍</strong> (vaqtli).</p>",
+        'correct': "수록",
+        'choices': ["뻔하니까", "수 없으니까", "테니까", "수록"]
     },
     {
-        'text': "<p>A: 이메일을 <em>보내기 전에</em> <strong>무엇을</strong> <em>확인해야 돼요</em>?<br>B: <strong>받는 사람의</strong> <strong>주소를</strong> <strong>다시 한번</strong> <em>확인해________</em>.</p>",
-        'explanation': "<p><strong>야 돼요</strong>: '확인하다' (tekshirmoq) -> '확인해야 돼요'. <strong>다시 한번</strong> (yana bir marta) tekshirib ko'rish kerak.</p>",
-        'correct': "야 돼요",
-        'choices': ["면 돼요", "야 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: <strong>스트레스가 쌓일 때</strong> <strong>어떻게</strong> <em>해요</em>?<br>B: <strong>저는</strong> <u>바쁠________</u> <strong>오히려</strong> <strong>스트레스가</strong> <em>풀려요</em>.</p>",
+        'explanation': "<p><strong>수록</strong>: '바쁘다' (band bo'lmoq) + '-ㄹ수록'. Qancha band bo'lsa, shuncha stressi yoziladi. <strong>오히려</strong> (aksincha).</p>",
+        'correct': "수록",
+        'choices': ["수록", "수 있으니까", "줄 모르니까", "테니까"]
     },
     {
-        'text': "<p>A: 옷을 <em>교환하려면</em> <strong>며칠 안에</strong> <em>가야 해요</em>?<br>B: <strong>구입한 지</strong> 일주일 안에 <strong>영수증을 가지고</strong> <em>가________</em>.</p>",
-        'explanation': "<p><strong>야 해요</strong>: '가다' (bormoq) + '-아야 하다' (가야 해요). <strong>구입한 지</strong> (sotib olingandan so'ng) bir hafta ichida borish kerak.</p>",
-        'correct': "야 해요",
-        'choices': ["야 해요", "면 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 친구들과 <strong>자주</strong> <em>연락해요</em>?<br>B: 네, <strong>자주</strong> <em>연락할________</em> <strong>사이가</strong> <strong>더</strong> <u>돈독해져요</u>.</p>",
+        'explanation': "<p><strong>수록</strong>: '연락하다' (aloqaga chiqmoq) + '-ㄹ수록'. Qancha tez-tez bog'lansa, shuncha yaqinlashadi. <strong>자주</strong> (tez-tez).</p>",
+        'correct': "수록",
+        'choices': ["테니까", "줄 아니까", "수록", "뻔하니까"]
     },
     {
-        'text': "<p>A: <strong>건강하게</strong> <em>살려면</em> <strong>매일</strong> <strong>어떻게</strong> <em>해야 돼요</em>?<br>B: <strong>규칙적으로</strong> 식사하고 운동을 <strong>열심히</strong> <em>해________</em>.</p>",
-        'explanation': "<p><strong>야 돼요</strong>: '하다' (qilmoq) -> '해야 돼요'. <strong>규칙적으로</strong> (muntazam ravishda) ovqatlanish va mashq qilish kerak.</p>",
-        'correct': "야 돼요",
-        'choices': ["면 돼요", "야 돼요", "고 싶어요", "도 돼요"]
+        'text': "<p>A: 이 <u>새로운</u> 핸드폰 <strong>사용법이</strong> <u>복잡해요</u>?<br>B: 아니요, <em>사용하면</em> <em>사용할________</em> <strong>기능이</strong> <strong>정말</strong> <u>편리해요</u>.</p>",
+        'explanation': "<p><strong>수록</strong>: '사용하다' (foydalanmoq) + '-ㄹ수록'. Qancha foydalansa, shuncha qulay. <strong>정말</strong> (rosttdan).</p>",
+        'correct': "수록",
+        'choices': ["뻔하니까", "수 없으니까", "테니까", "수록"]
     }
 ]
 
-topic_39 = [
-    # --- TOPIC 39: 동사/형용사 + (으)ㄴ/는/(으)ㄹ 것 같다 (추측) ---
+topic_51 = [
+    # --- TOPIC 51: 명사 + (이)나 다름없다 / 동사 + (으)ㄴ/는 셈이다 (결과적 동일) ---
     {
-        'text': "<p>A: <strong>지금</strong> 밖에 비가 <em>오고 있어요</em>?<br>B: 하늘이 <strong>아주</strong> <u>어두운</u> 것을 <em>보니까</em> 비가 <em>오________</em>.</p>",
-        'explanation': "<p><strong>는 것 같아요</strong>: '오다' (kelmoq) + '-는 것 같다' (hozirgi zamon taxmini). <strong>지금</strong> (hozir) bulutli bo'lgani uchun yomg'ir yog'ayotganga o'xshaydi.</p>",
-        'correct': "는 것 같아요",
-        'choices': ["는 것 같아요", "은 것 같아요", "을 것 같아요", "던 것 같아요"]
+        'text': "<p>A: <strong>거의</strong> <strong>매일</strong> 이 식당에서 밥을 <em>먹네요</em>.<br>B: 네, <strong>자주</strong> <em>와서</em> <strong>여기가</strong> 제 단골 식당________.</p>",
+        'explanation': "<p><strong>이나 다름없어요</strong>: '식당' (oshxona). Ot undosh bilan tugagani uchun '-(이)나 다름없다' (bilan bir xil/farqi yo'q) ulanadi. <strong>거의</strong> (deyarli) har kuni kelgani uchun.</p>",
+        'correct': "이나 다름없어요",
+        'choices': ["이나 다름없어요", "나 다름없어요", "은 셈이에요", "는 셈이에요"]
     },
     {
-        'text': "<p>A: <strong>내일</strong> 날씨가 <strong>많이</strong> <u>추울까요</u>?<br>B: 일기예보를 <em>들으니까</em> <strong>매우</strong> <u>추울</u> ________.</p>",
-        'explanation': "<p><strong>것 같아요</strong>: '춥다' (sovuq bo'lmoq). Kelasi zamon taxmini '추울 것 같다' (sovuq bo'ladiganga o'xshaydi). <strong>매우</strong> (juda).</p>",
-        'correct': "것 같아요",
-        'choices': ["것 같아요", "줄 알아요", "수 없어요", "기 때문에"]
+        'text': "<p>A: 이 스마트폰을 <strong>얼마에</strong> <em>샀어요</em>?<br>B: 친구가 <strong>그냥</strong> <em>줘서</em> <strong>무료로</strong> <em>얻________</em>.</p>",
+        'explanation': "<p><strong>은 셈이에요</strong>: '얻다' (olmoq/erishmoq). O'tgan zamonda '-은 셈이다' (olgan hisobman/olgan bilan bir xil). <strong>무료로</strong> (tekinga).</p>",
+        'correct': "은 셈이에요",
+        'choices': ["는 셈이에요", "은 셈이에요", "이나 다름없어요", "나 다름없어요"]
     },
     {
-        'text': "<p>A: 저 식당에 손님이 <strong>항상</strong> <u>많아요</u>?<br>B: 사람들이 <strong>길게</strong> 줄을 <em>선</em> 것을 <em>보면</em> 음식이 <strong>정말</strong> <u>맛있________</u>.</p>",
-        'explanation': "<p><strong>은 것 같아요</strong>: '맛있다' (mazali bo'lmoq). '있다/없다' bilan '-는' ishlatiladi, lekin bu yerda '맛있는 것 같아요' bo'lishi kerak. Uzr, '맛있다' uchun '-는 것 같다' to'g'ri. (맛있는 것 같아요). <br>Keling, '많다' bilan sinaymiz: 손님이 <u>많________</u> (많은 것 같아요).</p>",
-        'correct': "은 것 같아요",
-        'choices': ["은 것 같아요", "는 것 같아요", "을 것 같아요", "던 것 같아요"]
+        'text': "<p>A: <strong>요즘</strong> <strong>계속</strong> <strong>집에만</strong> <em>있네요</em>.<br>B: 네, 방학이라서 <strong>하루 종일</strong> <em>자니까</em> 백수________.</p>",
+        'explanation': "<p><strong>나 다름없어요</strong>: '백수' (ishsiz odam). Ot unli bilan tugagani uchun '-나 다름없다' (ishsizdan farqi yo'q). <strong>하루 종일</strong> (kun bo'yi).</p>",
+        'correct': "나 다름없어요",
+        'choices': ["이나 다름없어요", "나 다름없어요", "은 셈이에요", "는 셈이에요"]
     },
     {
-        'text': "<p>A: 이 식당 음식이 <strong>진짜</strong> <u>맛있어요</u>?<br>B: 네, 사람들이 <strong>자주</strong> <em>오는</em> 것을 <em>보니까</em> <strong>아주</strong> <u>맛있________</u>.</p>",
-        'explanation': "<p><strong>는 것 같아요</strong>: '맛있다' (mazali bo'lmoq) + '-는 것 같다'. <strong>자주</strong> (tez-tez) kelishlaridan mazaliga o'xshaydi.</p>",
-        'correct': "는 것 같아요",
-        'choices': ["은 것 같아요", "는 것 같아요", "을 것 같아요", "던 것 같아요"]
+        'text': "<p>A: 한국에서 <strong>오래</strong> <em>살았어요</em>?<br>B: 네, 10년 동안 <em>살아서</em> <strong>사실상</strong> 한국이 제 고향________.</p>",
+        'explanation': "<p><strong>이나 다름없어요</strong>: '고향' (vatan/ona shahar). Ot undosh bilan tugagani uchun '-(이)나 다름없다'. <strong>사실상</strong> (amalda/aslida).</p>",
+        'correct': "이나 다름없어요",
+        'choices': ["나 다름없어요", "이나 다름없어요", "은 셈이에요", "는 셈이에요"]
     },
     {
-        'text': "<p>A: 마디나 씨가 <strong>어제</strong> 파티에 <em>왔어요</em>?<br>B: 가방이 <strong>여기에</strong> <em>있는</em> 것을 <em>보니까</em> 파티에 <em>온</em> ________.</p>",
-        'explanation': "<p><strong>것 같아요</strong>: '오다' (kelmoq) o'tgan zamonda '온 것 같다' (kelganga o'xshaydi). <strong>어제</strong> (kecha) kelgani haqida taxmin.</p>",
-        'correct': "것 같아요",
-        'choices': ["줄 알아요", "것 같아요", "지 않아요", "기 마련이에요"]
+        'text': "<p>A: 프로젝트가 <strong>다</strong> <em>끝났어요</em>?<br>B: <strong>마지막</strong> 검토만 <em>남았으니까</em> <strong>거의</strong> 다 <em>끝________</em>.</p>",
+        'explanation': "<p><strong>난 셈이에요</strong>: '끝나다' (tugamoq) + '-ㄴ 셈이다' (tugagan hisob). <strong>거의</strong> (deyarli) hammasi tugagan.</p>",
+        'correct': "난 셈이에요",
+        'choices': ["나는 셈이에요", "난 셈이에요", "나 다름없어요", "이나 다름없어요"]
     },
     {
-        'text': "<p>A: 두 사람이 <strong>서로</strong> <u>친해요</u>?<br>B: <strong>항상</strong> <strong>같이</strong> <em>다니는</em> 것을 <em>보니까</em> <strong>많이</strong> <u>친하________</u>.</p>",
-        'explanation': "<p><strong>ㄴ 것 같아요</strong>: '친하다' (yaqin/qalin bo'lmoq) sifat. Sifatlar bilan '-ㄴ/은 것 같다' ishlatiladi (친한 것 같아요). <strong>항상</strong> (har doim).</p>",
-        'correct': "ㄴ 것 같아요",
-        'choices': ["는 것 같아요", "ㄴ 것 같아요", "ㄹ 것 같아요", "던 것 같아요"]
+        'text': "<p>A: 그 사람과 <strong>아주</strong> <u>친해요</u>?<br>B: 네, <strong>매일</strong> <strong>같이</strong> 밥을 <em>먹어서</em> 가족________.</p>",
+        'explanation': "<p><strong>이나 다름없어요</strong>: '가족' (oila) undosh bilan tugagani uchun '-(이)나 다름없다' (oilam bilan bir xil). <strong>매일 같이</strong> (har kuni birga).</p>",
+        'correct': "이나 다름없어요",
+        'choices': ["나 다름없어요", "이나 다름없어요", "은 셈이에요", "는 셈이에요"]
     },
     {
-        'text': "<p>A: <strong>이따가</strong> <strong>오후에</strong> 비가 <em>올까요</em>?<br>B: 하늘에 먹구름이 <u>가득한</u> 것을 <em>보니까</em> <strong>곧</strong> 비가 <em>오________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 것 같아요</strong>: '오다' (kelmoq). Kelasi zamon taxmini uchun '-ㄹ 것 같다' (olga o'xshaydi / yog'adiganga o'xshaydi). <strong>곧</strong> (tez orada).</p>",
-        'correct': "ㄹ 것 같아요",
-        'choices': ["ㄴ 것 같아요", "는 것 같아요", "ㄹ 것 같아요", "은 것 같아요"]
+        'text': "<p>A: 휴가인데 <strong>왜</strong> <em>쉬지 못해요</em>?<br>B: 집에서 <strong>계속</strong> <em>일하니까</em> <strong>아직</strong> <em>일하________</em>.</p>",
+        'explanation': "<p><strong>는 셈이에요</strong>: '일하다' (ishlamoq). Hozirgi zamonda '-는 셈이다' (ishlayotgan hisobman). <strong>계속</strong> (tinmay).</p>",
+        'correct': "는 셈이에요",
+        'choices': ["는 셈이에요", "ㄴ 셈이에요", "나 다름없어요", "이나 다름없어요"]
     },
     {
-        'text': "<p>A: <strong>방금</strong> <em>지나간</em> 사람이 <em>누구예요</em>?<br>B: 옷을 <strong>단정하게</strong> <em>입은</em> 것을 <em>보니까</em> <strong>새로 온</strong> 선생님<em>이________</em>.</p>",
-        'explanation': "<p><strong>ㄴ 것 같아요</strong>: Ot + '이다'. '선생님' (ot) + '인 것 같아요' (o'qituvchiga o'xshaydi). <strong>단정하게</strong> (ozoda/tartibli).</p>",
-        'correct': "ㄴ 것 같아요",
-        'choices': ["ㄴ 것 같아요", "는 것 같아요", "ㄹ 것 같아요", "던 것 같아요"]
+        'text': "<p>A: <strong>오늘</strong> 회의에 사람이 <strong>다</strong> <em>왔어요</em>?<br>B: 한 명만 <em>빠졌으니까</em> <strong>전부</strong> 다 <em>________</em>.</p>",
+        'explanation': "<p><strong>온 셈이에요</strong>: '오다' (kelmoq) + '-ㄴ 셈이다'. <strong>전부 다</strong> (barchasi) kelgan hisob.</p>",
+        'correct': "온 셈이에요",
+        'choices': ["오는 셈이에요", "온 셈이에요", "나 다름없어요", "이나 다름없어요"]
     },
     {
-        'text': "<p>A: <strong>어젯밤에</strong> 눈이 <strong>많이</strong> <em>내렸어요</em>?<br>B: <strong>길이</strong> <strong>하얗게</strong> <em>변한</em> 것을 <em>보니까</em> 눈이 <strong>많이</strong> <em>내리________</em>.</p>",
-        'explanation': "<p><strong>ㄴ 것 같아요</strong>: '내리다' (yog'moq). O'tgan zamonda '-ㄴ/은 것 같다' ishlatiladi (내린 것 같아요). <strong>하얗게</strong> (oppoq bo'lib).</p>",
-        'correct': "ㄴ 것 같아요",
-        'choices': ["는 것 같아요", "ㄴ 것 같아요", "ㄹ 것 같아요", "던 것 같아요"]
+        'text': "<p>A: 옷을 <strong>엄청</strong> <strong>싸게</strong> <em>샀네요</em>.<br>B: 네, 90% 할인을 <em>받아서</em> <strong>거져</strong> <em>________</em>.</p>",
+        'explanation': "<p><strong>얻은 셈이에요</strong>: '얻다' (olmoq/erishmoq) + '-은 셈이다' (tekinga olgan hisobman). <strong>거져</strong> (tekinga/arzimagan pulga).</p>",
+        'correct': "얻은 셈이에요",
+        'choices': ["얻는 셈이에요", "얻은 셈이에요", "얻나 다름없어요", "얻이나 다름없어요"]
     },
     {
-        'text': "<p>A: <strong>지금</strong> 회의실에 사람이 <em>있어요</em>?<br>B: 불이 <strong>환하게</strong> <em>켜져 있는</em> 것을 <em>보니까</em> 사람이 <em>있________</em>.</p>",
-        'explanation': "<p><strong>는 것 같아요</strong>: '있다' (bor bo'lmoq) + '-는 것 같다' (있는 것 같아요). <strong>환하게</strong> (yorug' bo'lib).</p>",
-        'correct': "는 것 같아요",
-        'choices': ["은 것 같아요", "는 것 같아요", "을 것 같아요", "던 것 같아요"]
+        'text': "<p>A: 그 두 사람은 <strong>자주</strong> <em>싸워요</em>?<br>B: <strong>매일</strong> <em>싸워서</em> 원수________.</p>",
+        'explanation': "<p><strong>나 다름없어요</strong>: '원수' (dushman). Unli bilan tugagani uchun '-나 다름없다'. Dushmandan farqi yo'q. <strong>매일</strong> (har kuni).</p>",
+        'correct': "나 다름없어요",
+        'choices': ["이나 다름없어요", "나 다름없어요", "은 셈이에요", "는 셈이에요"]
     },
     {
-        'text': "<p>A: 이 <u>무거운</u> 책상을 <strong>혼자서</strong> <em>옮길 수 있어요</em>?<br>B: <strong>너무</strong> <u>무거워서</u> <strong>혼자서는</strong> <em>못 옮기________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 것 같아요</strong>: '옮기다' (tashimoq) kelasi zamon taxmini '-ㄹ 것 같다' (tashiya olmasam kerak). <strong>너무</strong> (juda).</p>",
-        'correct': "ㄹ 것 같아요",
-        'choices': ["ㄴ 것 같아요", "는 것 같아요", "ㄹ 것 같아요", "은 것 같아요"]
+        'text': "<p>A: <strong>벌써</strong> 12월이 <em>다 지나가네요</em>.<br>B: 네, <strong>이제</strong> 며칠 <em>안 남아서</em> <strong>올해도</strong> 다 <em>지나________</em>.</p>",
+        'explanation': "<p><strong>간 셈이에요</strong>: '지나가다' (o'tib ketmoq) + '-ㄴ 셈이다'. Bu yil ham o'tib ketgan hisob.</p>",
+        'correct': "간 셈이에요",
+        'choices': ["간 셈이에요", "가는 셈이에요", "가나 다름없어요", "가이나 다름없어요"]
     },
     {
-        'text': "<p>A: 동생이 <strong>요즘</strong> <strong>매일</strong> <strong>밤늦게까지</strong> <em>공부해요</em>?<br>B: 네, 얼굴이 <u>초췌한</u> 것을 <em>보니까</em> <strong>많이</strong> <u>피곤하________</u>.</p>",
-        'explanation': "<p><strong>ㄴ 것 같아요</strong>: '피곤하다' (charchamoq) sifat bo'lgani uchun '-ㄴ 것 같다' ulanadi (피곤한 것 같아요). <strong>매일</strong> (har kuni).</p>",
-        'correct': "ㄴ 것 같아요",
-        'choices': ["는 것 같아요", "ㄴ 것 같아요", "ㄹ 것 같아요", "던 것 같아요"]
+        'text': "<p>A: 그 차를 <strong>거의</strong> <strong>안</strong> <em>탔어요</em>?<br>B: 네, <strong>한 번만</strong> <em>탔으니까</em> 새 차________.</p>",
+        'explanation': "<p><strong>나 다름없어요</strong>: '차' (mashina). Unli bilan tugagani uchun '-나 다름없다' (yangi mashina bilan bir xil). <strong>거의</strong> (deyarli).</p>",
+        'correct': "나 다름없어요",
+        'choices': ["이나 다름없어요", "나 다름없어요", "은 셈이에요", "는 셈이에요"]
     },
     {
-        'text': "<p>A: 그 영화가 <strong>정말</strong> <u>재미있어요</u>?<br>B: 예매율이 <strong>가장</strong> <u>높은</u> 것을 <em>보니까</em> <strong>아주</strong> <u>재미있________</u>.</p>",
-        'explanation': "<p><strong>는 것 같아요</strong>: '재미있다' + '-는 것 같다' (재미있는 것 같아요). <strong>가장</strong> (eng).</p>",
-        'correct': "는 것 같아요",
-        'choices': ["은 것 같아요", "는 것 같아요", "을 것 같아요", "던 것 같아요"]
+        'text': "<p>A: <strong>매일</strong> <strong>야근해서</strong> <u>힘들지 않아요</u>?<br>B: <strong>주말에도</strong> <em>출근하니까</em> <strong>쉬는 날이</strong> <em>없________</em>.</p>",
+        'explanation': "<p><strong>는 셈이에요</strong>: '없다' (yo'q bo'lmoq) + '-는 셈이다' (dam olish kuni yo'q hisob). <strong>매일</strong> (har kuni).</p>",
+        'correct': "는 셈이에요",
+        'choices': ["는 셈이에요", "은 셈이에요", "나 다름없어요", "이나 다름없어요"]
     },
     {
-        'text': "<p>A: <strong>아까</strong> 식당에서 밥을 <strong>많이</strong> <em>먹었어요</em>?<br>B: <strong>벌써</strong> 배가 <u>고픈</u> 것을 <em>보니까</em> <strong>조금</strong> <em>먹________</em>.</p>",
-        'explanation': "<p><strong>은 것 같아요</strong>: '먹다' (yemoq) o'tgan zamonda '-은 것 같다' (먹은 것 같아요 - kam yeganga o'xshayman). <strong>벌써</strong> (allaqachon).</p>",
-        'correct': "은 것 같아요",
-        'choices': ["은 것 같아요", "는 것 같아요", "을 것 같아요", "던 것 같아요"]
+        'text': "<p>A: <strong>어제</strong> 저녁을 <strong>안</strong> <em>먹었어요</em>?<br>B: 우유 한 잔만 <em>마셨으니까</em> <strong>안</strong> <em>먹________</em>.</p>",
+        'explanation': "<p><strong>은 셈이에요</strong>: '먹다' (yemoq) o'tgan zamonda '-은 셈이다' (yemagan hisobman). <strong>안</strong> (inkor).</p>",
+        'correct': "은 셈이에요",
+        'choices': ["는 셈이에요", "은 셈이에요", "나 다름없어요", "이나 다름없어요"]
     },
     {
-        'text': "<p>A: 시험 문제가 <strong>많이</strong> <u>어려웠어요</u>?<br>B: 학생들이 <strong>모두</strong> <strong>일찍</strong> <em>나가는</em> 것을 <em>보니까</em> <u>쉬우________</u>.</p>",
-        'explanation': "<p><strong>ㄴ 것 같아요</strong>: '쉽다' (oson bo'lmoq). 'ㅂ' -> '우' + '-ㄴ' (쉬운 것 같아요). <strong>일찍</strong> (vaqtli) chiqib ketishganidan oson bo'lganga o'xshaydi.</p>",
-        'correct': "ㄴ 것 같아요",
-        'choices': ["는 것 같아요", "ㄴ 것 같아요", "ㄹ 것 같아요", "던 것 같아요"]
+        'text': "<p>A: <strong>시험 준비는</strong> <strong>충분히</strong> <em>했어요</em>?<br>B: <strong>기출문제를</strong> <strong>다</strong> <em>풀었으니까</em> <strong>거의</strong> 다 <em>준비________</em>.</p>",
+        'explanation': "<p><strong>한 셈이에요</strong>: '준비하다' (tayyorlamoq) o'tgan zamonda '-ㄴ 셈이다' (tayyorlagan hisobman). <strong>거의 다</strong> (deyarli hammasi).</p>",
+        'correct': "한 셈이에요",
+        'choices': ["하는 셈이에요", "한 셈이에요", "하나 다름없어요", "하이 다름없어요"]
     },
     {
-        'text': "<p>A: <strong>주말에</strong> 여행을 <em>갈 수 있어요</em>?<br>B: 일이 <strong>아직</strong> <em>안 끝나서</em> <strong>아무래도</strong> <em>못 가________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 것 같아요</strong>: '가다' (bormoq) kelasi zamon taxmini '-ㄹ 것 같다' (bora olmasam kerak). <strong>아무래도</strong> (har qalay).</p>",
-        'correct': "ㄹ 것 같아요",
-        'choices': ["ㄴ 것 같아요", "는 것 같아요", "ㄹ 것 같아요", "은 것 같아요"]
+        'text': "<p>A: <strong>이 노트북이</strong> <strong>많이</strong> <u>싸네요</u>.<br>B: <strong>네, 중고 가격으로</strong> <em>팔고 있으니</em> <strong>반값에</strong> <em>사________</em>.</p>",
+        'explanation': "<p><strong>는 셈이에요</strong>: '사다' (sotib olmoq) hozirgi zamonda '-는 셈이다' (sotib olayotgan hisobsiz/bilan bir xil).</p>",
+        'correct': "는 셈이에요",
+        'choices': ["는 셈이에요", "ㄴ 셈이에요", "나 다름없어요", "이나 다름없어요"]
     },
     {
-        'text': "<p>A: 한국어 발음이 <strong>정말</strong> <u>자연스러워요</u>.<br>B: 네, <strong>매일</strong> <strong>열심히</strong> <em>연습하는</em> 것을 <em>보니까</em> 한국에서 <strong>오래</strong> <em>살________</em>.</p>",
-        'explanation': "<p><strong>은 것 같아요</strong>: '살다' (yashamoq). O'tgan zamon taxmini. 'ㄹ' tushib '-은' qo'shiladi (산 것 같아요). <strong>오래</strong> (uzoq vaqt).</p>",
-        'correct': "은 것 같아요",
-        'choices': ["은 것 같아요", "는 것 같아요", "을 것 같아요", "던 것 같아요"]
+        'text': "<p>A: 강아지가 <strong>주인 말을</strong> <strong>잘</strong> <em>알아들어요</em>?<br>B: 네, <strong>너무 똑똑해서</strong> <strong>사실상</strong> 사람________.</p>",
+        'explanation': "<p><strong>이나 다름없어요</strong>: '사람' (odam). Undosh bilan tugagani uchun '-(이)나 다름없다' (odamdan farqi yo'q). <strong>너무</strong> (juda).</p>",
+        'correct': "이나 다름없어요",
+        'choices': ["나 다름없어요", "이나 다름없어요", "은 셈이에요", "는 셈이에요"]
     },
     {
-        'text': "<p>A: <strong>저기</strong> <em>우는</em> 아이는 <strong>왜</strong> <em>그래요</em>?<br>B: <strong>주변을</strong> <strong>계속</strong> <em>살피는</em> 것을 <em>보니까</em> 길을 <em>잃________</em>.</p>",
-        'explanation': "<p><strong>은 것 같아요</strong>: '잃다' (yo'qotmoq) o'tgan zamonda '-은 것 같다' (잃은 것 같아요 - adashib qolganga o'xshaydi). <strong>계속</strong> (tinmay).</p>",
-        'correct': "은 것 같아요",
-        'choices': ["은 것 같아요", "는 것 같아요", "을 것 같아요", "던 것 같아요"]
+        'text': "<p>A: <strong>아침에</strong> <strong>일찍</strong> <em>일어났어요</em>?<br>B: <strong>새벽 5시에</strong> <em>일어났으니</em> <strong>밤을</strong> <em>새________</em>.</p>",
+        'explanation': "<p><strong>운 셈이에요</strong>: '새우다' (bedor o'tkazmoq) o'tgan zamonda '-ㄴ 셈이다'. Tunni bedor o'tkazgan hisob. <strong>일찍</strong> (vaqtli).</p>",
+        'correct': "운 셈이에요",
+        'choices': ["우는 셈이에요", "운 셈이에요", "우나 다름없어요", "우이나 다름없어요"]
     },
     {
-        'text': "<p>A: <strong>오늘</strong> 회의가 <strong>언제</strong> <em>끝날까요</em>?<br>B: 안건이 <u>많은</u> 것을 <em>보니까</em> <strong>늦게</strong> <em>끝나________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 것 같아요</strong>: '끝나다' (tugamoq) kelasi zamon taxmini '-ㄹ 것 같다' (끝날 것 같아요). <strong>늦게</strong> (kech) tugaydigan ko'rinadi.</p>",
-        'correct': "ㄹ 것 같아요",
-        'choices': ["ㄴ 것 같아요", "는 것 같아요", "ㄹ 것 같아요", "은 것 같아요"]
+        'text': "<p>A: <strong>지금</strong> 하는 일이 <strong>많이</strong> <u>힘들어요</u>?<br>B: <strong>혼자서</strong> <strong>모든 일을 다</strong> <em>하니까</em> <strong>사장</strong>________.</p>",
+        'explanation': "<p><strong>이나 다름없어요</strong>: '사장' (boshliq/direktor) + '-(이)나 다름없다'. Boshliqdan farqi yo'q. <strong>혼자서</strong> (yolg'iz o'zi).</p>",
+        'correct': "이나 다름없어요",
+        'choices': ["나 다름없어요", "이나 다름없어요", "은 셈이에요", "는 셈이에요"]
     },
     {
-        'text': "<p>A: 그 책을 <strong>벌써</strong> <strong>다</strong> <em>읽었어요</em>?<br>B: <strong>아직</strong> <strong>다</strong> <em>못 읽었지만</em> <strong>조금만</strong> <em>더 읽으면</em> <strong>다</strong> <em>읽________</em>.</p>",
-        'explanation': "<p><strong>을 것 같아요</strong>: '읽다' (o'qimoq) kelasi zamon taxmini '-을 것 같다' (읽을 것 같아요). <strong>조금만 더</strong> (yana biroz).</p>",
-        'correct': "을 것 같아요",
-        'choices': ["은 것 같아요", "는 것 같아요", "을 것 같아요", "던 것 같아요"]
+        'text': "<p>A: 한국어를 <strong>얼마나</strong> <em>배웠어요</em>?<br>B: <strong>기초만</strong> <strong>조금</strong> <em>배워서</em> <strong>전혀</strong> <em>모르________</em>.</p>",
+        'explanation': "<p><strong>는 셈이에요</strong>: '모르다' (bilmaslik) + '-는 셈이다'. <strong>전혀</strong> (umuman) bilmagan hisobman. <strong>조금</strong> (biroz).</p>",
+        'correct': "는 셈이에요",
+        'choices': ["는 셈이에요", "ㄴ 셈이에요", "나 다름없어요", "이나 다름없어요"]
     },
     {
-        'text': "<p>A: 두 사람이 <strong>언제</strong> <em>만났어요</em>?<br>B: <strong>서로</strong> <strong>아주</strong> <strong>편하게</strong> <em>대하는</em> 것을 <em>보니까</em> <strong>오래전에</strong> <em>만나________</em>.</p>",
-        'explanation': "<p><strong>ㄴ 것 같아요</strong>: '만나다' (uchrashmoq) o'tgan zamonda '-ㄴ 것 같다' (만난 것 같아요). <strong>오래전에</strong> (uzoq vaqt oldin) uchrashganga o'xshashadi.</p>",
-        'correct': "ㄴ 것 같아요",
-        'choices': ["는 것 같아요", "ㄴ 것 같아요", "ㄹ 것 같아요", "던 것 같아요"]
+        'text': "<p>A: <strong>두 달 동안</strong> 여행을 <em>가요</em>?<br>B: 네, <strong>외국에서</strong> <strong>오래 머무니까</strong> <strong>잠깐</strong> <em>이민 가________</em>.</p>",
+        'explanation': "<p><strong>는 셈이에요</strong>: '가다' (bormoq) + '-는 셈이다'. <strong>잠깐</strong> (biroz) ko'chib ketayotgan hisobman.</p>",
+        'correct': "는 셈이에요",
+        'choices': ["는 셈이에요", "ㄴ 셈이에요", "나 다름없어요", "이나 다름없어요"]
     },
     {
-        'text': "<p>A: 옷이 <strong>조금</strong> <u>큰데</u> <strong>어떻게</strong> <em>할까요</em>?<br>B: 소매가 <strong>너무</strong> <u>길어서</u> <strong>한 사이즈</strong> <u>작은</u> 것으로 <em>바꿔야 하________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 것 같아요</strong>: '하다' (qilmoq) kelasi zamonda '해야 할 것 같아요' (almashtirish kerak bo'ladiganga o'xshaydi). <strong>너무</strong> (juda).</p>",
-        'correct': "ㄹ 것 같아요",
-        'choices': ["ㄴ 것 같아요", "는 것 같아요", "ㄹ 것 같아요", "은 것 같아요"]
+        'text': "<p>A: <strong>이웃집 사람들과</strong> <strong>잘</strong> <em>지내요</em>?<br>B: 네, <strong>명절마다</strong> <strong>음식을</strong> <em>나눠 먹으니</em> 친척________.</p>",
+        'explanation': "<p><strong>이나 다름없어요</strong>: '친척' (qarindosh) + '-(이)나 다름없다'. Qarindosh bilan bir xil. <strong>명절마다</strong> (har bayramda).</p>",
+        'correct': "이나 다름없어요",
+        'choices': ["나 다름없어요", "이나 다름없어요", "은 셈이에요", "는 셈이에요"]
     },
     {
-        'text': "<p>A: <strong>지금</strong> 은행에 <em>가면</em> <em>문이 열려 있을까요</em>?<br>B: <strong>벌써</strong> <strong>오후</strong> 5시가 <em>넘었으니까</em> 문을 <em>닫________</em>.</p>",
-        'explanation': "<p><strong>은 것 같아요</strong>: '닫다' (yopmoq) o'tgan zamonda '-은 것 같다' (닫은 것 같아요). <strong>벌써</strong> (allaqachon) yopilgandek.</p>",
-        'correct': "은 것 같아요",
-        'choices': ["은 것 같아요", "는 것 같아요", "을 것 같아요", "던 것 같아요"]
+        'text': "<p>A: <strong>요즘</strong> 다이어트 <em>잘 돼요</em>?<br>B: 운동을 <em>하다가</em> <em>말다가</em> <em>해서</em> <strong>안</strong> <em>하________</em>.</p>",
+        'explanation': "<p><strong>는 셈이에요</strong>: '하다' (qilmoq) + '-는 셈이다'. <strong>안 하는 셈이에요</strong> (qilmayotgan hisobman).</p>",
+        'correct': "는 셈이에요",
+        'choices': ["는 셈이에요", "ㄴ 셈이에요", "나 다름없어요", "이나 다름없어요"]
     },
     {
-        'text': "<p>A: 이 커피는 <strong>맛이</strong> <em>어때요</em>?<br>B: 색깔이 <strong>아주</strong> <u>연한</u> 것을 <em>보니까</em> <strong>물이</strong> <strong>많이</strong> <em>들어가________</em>.</p>",
-        'explanation': "<p><strong>ㄴ 것 같아요</strong>: '들어가다' (kiritilmoq) o'tgan zamonda '들어간 것 같아요' (suv ko'p qo'shilgan ko'rinadi). <strong>아주</strong> (juda).</p>",
-        'correct': "ㄴ 것 같아요",
-        'choices': ["는 것 같아요", "ㄴ 것 같아요", "ㄹ 것 같아요", "던 것 같아요"]
+        'text': "<p>A: 책을 <strong>다</strong> <em>읽었어요</em>?<br>B: <strong>마지막 한 장만</strong> <em>남았으니</em> <strong>다</strong> <em>읽________</em>.</p>",
+        'explanation': "<p><strong>은 셈이에요</strong>: '읽다' (o'qimoq) + '-은 셈이다'. <strong>다</strong> (hammasini) o'qigan hisobman. <strong>마지막</strong> (oxirgi).</p>",
+        'correct': "은 셈이에요",
+        'choices': ["는 셈이에요", "은 셈이에요", "나 다름없어요", "이나 다름없어요"]
     },
     {
-        'text': "<p>A: <strong>방금</strong> <em>지나간</em> 버스를 <em>탈 수 있을까요</em>?<br>B: <strong>저렇게</strong> <strong>빨리</strong> <em>달리니까</em> <strong>아마</strong> <em>못 타________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 것 같아요</strong>: '타다' (chiqmoq) kelasi zamon '-ㄹ 것 같다' (탈 것 같아요). O'sha yerda '못 탈 것 같아요' (chiqa olmasak kerak). <strong>아마</strong> (ehtimol).</p>",
-        'correct': "ㄹ 것 같아요",
-        'choices': ["ㄴ 것 같아요", "는 것 같아요", "ㄹ 것 같아요", "은 것 같아요"]
+        'text': "<p>A: 그 친구와 <strong>연락을</strong> <em>자주 해요</em>?<br>B: 아니요, <strong>1년 동안</strong> <strong>한 번도</strong> <strong>연락</strong> <em>안 했으니</em> 인연을 <em>끊________</em>.</p>",
+        'explanation': "<p><strong>은 셈이에요</strong>: '끊다' (uzmoq/to'xtatmoq) + '-은 셈이다'. Aloqani uzgan hisobmiz. <strong>한 번도</strong> (bir marta ham).</p>",
+        'correct': "은 셈이에요",
+        'choices': ["는 셈이에요", "은 셈이에요", "나 다름없어요", "이나 다름없어요"]
     },
     {
-        'text': "<p>A: 이 빵이 <strong>맛있어</strong> <em>보여요</em>.<br>B: <strong>방금</strong> <em>구워서</em> <strong>따뜻한</strong> 것을 <em>보니까</em> <strong>정말</strong> <u>맛있________</u>.</p>",
-        'explanation': "<p><strong>을 것 같아요</strong>: '맛있다' (mazali bo'lmoq). Hozir tatib ko'rmagan bo'lsa ham, kelajak taxmini sifatida '맛있을 것 같아요' (mazali bo'lsa kerak) deyiladi. <strong>방금</strong> (hozirgina).</p>",
-        'correct': "을 것 같아요",
-        'choices': ["은 것 같아요", "는 것 같아요", "을 것 같아요", "던 것 같아요"]
+        'text': "<p>A: <strong>집이</strong> <strong>회사에서</strong> <strong>많이</strong> <u>가까워요</u>?<br>B: 네, 걸어서 5분 <em>걸리니까</em> <strong>회사 코앞이</strong>________.</p>",
+        'explanation': "<p><strong>나 다름없어요</strong>: '코앞' (burun osti / juda yaqin). Ot undosh bilan tugagani uchun '이나 다름없다'. <strong>많이</strong> (juda).</p>",
+        'correct': "이나 다름없어요",
+        'choices': ["나 다름없어요", "이나 다름없어요", "은 셈이에요", "는 셈이에요"]
     },
     {
-        'text': "<p>A: 한국어를 <strong>정말</strong> <em>잘하시네요</em>. 한국에서 <strong>오래</strong> <em>살았어요</em>?<br>B: 아니요, 하지만 <strong>매일</strong> <strong>꾸준히</strong> <em>공부하________</em>.</p>",
-        'explanation': "<p><strong>ㄴ 것 같아요</strong>: '공부하다' o'tgan zamonda '-ㄴ 것 같다' ulanadi (공부한 것 같아요). <strong>꾸준히</strong> (muntazam/tinmay).</p>",
-        'correct': "ㄴ 것 같아요",
-        'choices': ["는 것 같아요", "ㄴ 것 같아요", "ㄹ 것 같아요", "던 것 같아요"]
+        'text': "<p>A: <strong>오늘</strong> <strong>참석자가</strong> <strong>얼마나</strong> <em>돼요</em>?<br>B: <strong>반 이상</strong> <em>왔으니</em> <strong>성공</strong>________.</p>",
+        'explanation': "<p><strong>이나 다름없어요</strong>: '성공' (muvaffaqiyat) + '-(이)나 다름없다'. Muvaffaqiyat bilan bir xil. <strong>반 이상</strong> (yarmidan ko'p).</p>",
+        'correct': "이나 다름없어요",
+        'choices': ["나 다름없어요", "이나 다름없어요", "은 셈이에요", "는 셈이에요"]
     },
     {
-        'text': "<p>A: 그 식당은 <strong>예약을</strong> <em>해야 해요</em>?<br>B: <strong>주말에는</strong> <strong>항상</strong> 손님이 <u>많으니까</u> <strong>미리</strong> <em>예약하________</em>.</p>",
-        'explanation': "<p><strong>는 게 좋을 것 같아요</strong>: '예약하다' (band qilmoq). '예약하는 게 좋을 것 같아요' (band qilgan yaxshi bo'lsa kerak). <strong>미리</strong> (oldindan).</p>",
-        'correct': "는 게 좋을 것 같아요",
-        'choices': ["는 게 좋을 것 같아요", "ㄴ 것 같아요", "ㄹ 것 같아요", "은 것 같아요"]
+        'text': "<p>A: <strong>이 일을</strong> <strong>혼자서</strong> <strong>다</strong> <em>했어요</em>?<br>B: 동료가 <strong>조금</strong> <em>도와줬지만</em> <strong>거의</strong> 제가 다 <em>________</em>.</p>",
+        'explanation': "<p><strong>한 셈이에요</strong>: '하다' (qilmoq) + '-ㄴ 셈이다'. <strong>거의</strong> (deyarli) hammasini men qilgan hisobman.</p>",
+        'correct': "한 셈이에요",
+        'choices': ["하는 셈이에요", "한 셈이에요", "하나 다름없어요", "하이 다름없어요"]
     },
     {
-        'text': "<p>A: <strong>오늘따라</strong> 거리가 <strong>왜 이렇게</strong> <u>조용해요</u>?<br>B: <strong>명절이라서</strong> <strong>모두들</strong> 고향에 <em>내려가________</em>.</p>",
-        'explanation': "<p><strong>ㄴ 것 같아요</strong>: '내려가다' (tushmoq/jo'namoq) o'tgan zamonda '내려간 것 같아요' (ketganga o'xshaydilar). <strong>오늘따라</strong> (aynan bugun).</p>",
-        'correct': "ㄴ 것 같아요",
-        'choices': ["는 것 같아요", "ㄴ 것 같아요", "ㄹ 것 같아요", "던 것 같아요"]
+        'text': "<p>A: <strong>주말에</strong> <strong>계속</strong> <em>아팠어요</em>?<br>B: 네, <strong>이틀 내내</strong> <strong>누워만</strong> <em>있었으니</em> <strong>주말을</strong> <em>버리________</em>.</p>",
+        'explanation': "<p><strong>는 셈이에요</strong> yoki '버린 셈이에요'. O'tgan zamon bo'lgani uchun '버린 셈이에요' (tashlab yuborgan/yo'qotgan hisobman). <strong>계속</strong> (tinmay).</p>",
+        'correct': "ㄴ 셈이에요",
+        'choices': ["는 셈이에요", "ㄴ 셈이에요", "나 다름없어요", "이나 다름없어요"]
     },
     {
-        'text': "<p>A: 이 가방이 저한테 <strong>잘</strong> <em>어울려요</em>?<br>B: 네, 디자인이 <u>예뻐서</u> <strong>매일</strong> <em>들고 다니________</em>.</p>",
-        'explanation': "<p><strong>기에 좋을 것 같아요</strong>: '다니기 좋을 것 같아요' (olib yurishga yaxshi bo'lsa kerak). Yoki '다닐 것 같아요' (olib yursangiz kerak). Kelasi zamon taxmini. <strong>매일</strong> (har kuni).</p>",
-        'correct': "기에 좋을 것 같아요",
-        'choices': ["기에 좋을 것 같아요", "ㄴ 것 같아요", "는 것 같아요", "은 것 같아요"]
+        'text': "<p>A: 한국 노래를 <strong>자주</strong> <em>들어요</em>?<br>B: <strong>매일</strong> <strong>아침부터 저녁까지</strong> <em>들으니까</em> <strong>음악과</strong> <strong>함께</strong> <em>사________</em>.</p>",
+        'explanation': "<p><strong>는 셈이에요</strong>: '살다' (yashamoq) + '-는 셈이다'. 'ㄹ' tushadi (사는 셈이에요). <strong>매일</strong> (har kuni) birga yashayotgan hisobman.</p>",
+        'correct': "는 셈이에요",
+        'choices': ["는 셈이에요", "ㄴ 셈이에요", "나 다름없어요", "이나 다름없어요"]
     }]
 
-topic_40 = [
+topic_52 = [
 
-    # --- TOPIC 40: 동사 + (으)ㄹ 줄 알다/모르다 (방법과 능력) ---
+    # --- TOPIC 52: 동사/형용사 + (으)ㄴ/는 반면에 (상반된 사실) ---
     {
-        'text': "<p>A: <strong>혹시</strong> <strong>수영을</strong> <em>할 줄 알아요</em>?<br>B: 네, 저는 <strong>어릴 때부터</strong> 배워서 <strong>아주</strong> <strong>잘</strong> <em>하________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 알아요</strong>: '하다' (qilmoq) + '-ㄹ 줄 알다' (qilishni bilmoq). <strong>어릴 때부터</strong> (yoshlikdan), <strong>잘</strong> (yaxshi) qila oladi.</p>",
-        'correct': "ㄹ 줄 알아요",
-        'choices': ["ㄹ 줄 알아요", "ㄹ 줄 몰라요", "을 줄 알아요", "을 줄 몰라요"]
+        'text': "<p>A: <strong>이 휴대전화는</strong> <strong>어때요</strong>?<br>B: <strong>디자인이</strong> <u>예________</u> <strong>반면에</strong> <strong>가격이</strong> <strong>너무</strong> <u>비싸요</u>.</p>",
+        'explanation': "<p><strong>쁜</strong>: '예쁘다' (chiroyli bo'lmoq) + '-(으)ㄴ 반면에'. Sifat bo'lgani uchun '-ㄴ 반면에' ulanadi (예쁜 반면에). Chiroyli bo'lgani bilan qimmat. <strong>너무</strong> (juda).</p>",
+        'correct': "쁜",
+        'choices': ["쁜", "쁘는", "쁠", "쁘은"]
     },
     {
-        'text': "<p>A: 이 <u>복잡한</u> 한국 요리를 <strong>직접</strong> <em>만들 수 있어요</em>?<br>B: 아니요, 저는 <strong>한국 음식을</strong> <strong>전혀</strong> <em>만드________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 몰라요</strong>: '만들다' (tayyorlamoq). 'ㄹ' bilan tugagani uchun to'g'ridan-to'g'ri '-ㄹ 줄 모르다' ulanadi. <strong>전혀</strong> (umuman) tayyorlashni bilmaydi.</p>",
-        'correct': "ㄹ 줄 몰라요",
-        'choices': ["을 줄 몰라요", "ㄹ 줄 알아요", "ㄹ 줄 몰라요", "을 줄 알아요"]
+        'text': "<p>A: <strong>형과 동생은</strong> 성격이 <em>비슷해요</em>?<br>B: 형은 <strong>말이</strong> <u>많________</u> <strong>반면에</strong> 동생은 <strong>아주</strong> <u>조용해요</u>.</p>",
+        'explanation': "<p><strong>은</strong>: '많다' (ko'p bo'lmoq) + '-(으)ㄴ 반면에'. Undosh bilan tugagani uchun '은 반면에' ulanadi. <strong>아주</strong> (juda).</p>",
+        'correct': "은",
+        'choices': ["은", "는", "을", "잔"]
     },
     {
-        'text': "<p>A: <strong>자전거를</strong> <em>탈 줄 알아요</em>?<br>B: 네, <strong>혼자서도</strong> <strong>균형을 잡고</strong> <strong>잘</strong> <em>타________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 알아요</strong>: '타다' (minmoq) unli bilan tugagani uchun '-ㄹ 줄 알다' (minishni bilmoq). <strong>혼자서도</strong> (yolg'iz o'zi ham).</p>",
-        'correct': "ㄹ 줄 알아요",
-        'choices': ["ㄹ 줄 몰라요", "ㄹ 줄 알아요", "을 줄 몰라요", "을 줄 알아요"]
+        'text': "<p>A: <strong>이 식당은</strong> <strong>어때요</strong>?<br>B: <strong>음식 맛은</strong> <u>좋________</u> <strong>반면에</strong> <strong>서비스가</strong> <u>나빠요</u>.</p>",
+        'explanation': "<p><strong>은</strong>: '좋다' (yaxshi bo'lmoq) + '-(으)ㄴ 반면에' (좋은 반면에). Yaxshi bo'lganiga qarama-qarshi o'laroq, xizmat yomon.</p>",
+        'correct': "은",
+        'choices': ["은", "는", "을", "던"]
     },
     {
-        'text': "<p>A: <strong>피아노를</strong> <strong>멋지게</strong> <em>칠 줄 알아요</em>?<br>B: 아니요, <strong>악기를</strong> <strong>전혀</strong> <em>배우지 않아서</em> <em>치________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 몰라요</strong>: '치다' (chalmoq) unli bilan tugagani uchun '-ㄹ 줄 모르다'. <strong>전혀</strong> (umuman) chalishni bilmaydi.</p>",
-        'correct': "ㄹ 줄 몰라요",
-        'choices': ["ㄹ 줄 알아요", "을 줄 몰라요", "ㄹ 줄 몰라요", "을 줄 알아요"]
+        'text': "<p>A: <strong>서울은</strong> <strong>살기</strong> <em>어때요</em>?<br>B: <strong>교통이</strong> <u>편리하________</u> <strong>반면에</strong> <strong>물가가</strong> <u>비싸요</u>.</p>",
+        'explanation': "<p><strong>ㄴ</strong>: '편리하다' (qulay bo'lmoq) + '-(으)ㄴ 반면에' (편리한 반면에). Qulay bo'lgani bilan narx-navo qimmat.</p>",
+        'correct': "ㄴ",
+        'choices': ["는", "ㄴ", "ㄹ", "은"]
     },
     {
-        'text': "<p>A: <strong>한자를</strong> <strong>읽고</strong> <em>쓸 줄 알아요</em>?<br>B: <strong>기본적인</strong> 것은 <strong>조금</strong> <em>읽________</em> <strong>쓰는 것은</strong> <em>못해요</em>.</p>",
-        'explanation': "<p><strong>을 줄 알지만</strong>: '읽다' (o'qimoq) undosh bilan tugagani uchun '-을 줄 알다' (o'qishni bilmoq). <strong>조금</strong> (biroz) o'qishni bilsa ham (알지만).</p>",
-        'correct': "을 줄 알지만",
-        'choices': ["ㄹ 줄 알지만", "을 줄 알지만", "을 줄 모르지만", "ㄹ 줄 모르지만"]
+        'text': "<p>A: 그 일은 <strong>수입이</strong> <u>많아요</u>?<br>B: 돈을 <strong>많이</strong> <em>버________</em> <strong>반면에</strong> <strong>개인 시간이</strong> <u>부족해요</u>.</p>",
+        'explanation': "<p><strong>는</strong>: '벌다' (pul topmoq) fe'l bo'lgani uchun '-는 반면에' ulanadi. 'ㄹ' tushib qoladi (버는 반면에). <strong>많이</strong> (ko'p) topgani bilan vaqt yo'q.</p>",
+        'correct': "는",
+        'choices': ["는", "ㄴ", "은", "을"]
     },
     {
-        'text': "<p>A: 스마트폰으로 <strong>비행기 표를</strong> <em>예매할 줄 알아요</em>?<br>B: 네, 앱을 사용해서 <strong>아주</strong> <strong>쉽게</strong> <em>예매하________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 알아요</strong>: '예매하다' (band qilmoq) + '-ㄹ 줄 알다'. <strong>쉽게</strong> (oson/osongina) band qilishni biladi.</p>",
-        'correct': "ㄹ 줄 알아요",
-        'choices': ["을 줄 알아요", "ㄹ 줄 몰라요", "ㄹ 줄 알아요", "을 줄 몰라요"]
+        'text': "<p>A: <strong>요즘</strong> <strong>날씨가</strong> <em>어때요</em>?<br>B: <strong>낮에는</strong> <u>따뜻하________</u> <strong>반면에</strong> <strong>밤에는</strong> <strong>많이</strong> <u>추워요</u>.</p>",
+        'explanation': "<p><strong>ㄴ</strong>: '따뜻하다' (iliq/issiq bo'lmoq) sifat. '따뜻한 반면에' (iliq bo'lganiga qarama-qarshi o'laroq). <strong>많이</strong> (ko'p).</p>",
+        'correct': "ㄴ",
+        'choices': ["는", "ㄴ", "ㄹ", "은"]
     },
     {
-        'text': "<p>A: <strong>컴퓨터가 고장 났는데</strong> <strong>직접</strong> <em>고칠 줄 알아요</em>?<br>B: 아니요, 기계는 <strong>잘</strong> <em>몰라서</em> <strong>전혀</strong> <em>고치________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 몰라요</strong>: '고치다' (tuzatmoq/ta'mirlamoq) + '-ㄹ 줄 모르다'. <strong>전혀</strong> (umuman) tuzatishni bilmaydi.</p>",
-        'correct': "ㄹ 줄 몰라요",
-        'choices': ["ㄹ 줄 알아요", "을 줄 몰라요", "ㄹ 줄 몰라요", "을 줄 알아요"]
+        'text': "<p>A: <strong>이 아파트는</strong> <em>살기</em> <u>좋아요</u>?<br>B: <strong>방이</strong> <u>넓________</u> <strong>반면에</strong> <strong>역에서</strong> <strong>너무</strong> <u>멀어요</u>.</p>",
+        'explanation': "<p><strong>은</strong>: '넓다' (keng bo'lmoq) + '-(으)ㄴ 반면에'. Undosh bilan tugagani uchun '넓은 반면에' ulanadi. <strong>너무</strong> (juda).</p>",
+        'correct': "은",
+        'choices': ["은", "는", "을", "잔"]
     },
     {
-        'text': "<p>A: 외국인 친구와 <strong>영어로</strong> <em>대화할 줄 알아요</em>?<br>B: 네, <strong>매일</strong> 연습해서 <strong>자연스럽게</strong> <em>대화하________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 알아요</strong>: '대화하다' (suhbatlashmoq) + '-ㄹ 줄 알다'. <strong>자연스럽게</strong> (tabiiy ravishda) gaplasha oladi.</p>",
-        'correct': "ㄹ 줄 알아요",
-        'choices': ["을 줄 알아요", "ㄹ 줄 알아요", "ㄹ 줄 몰라요", "을 줄 몰라요"]
+        'text': "<p>A: <strong>지하철과 버스 중</strong> <em>뭐가</em> <u>좋아요</u>?<br>B: 지하철은 <u>빠르________</u> <strong>반면에</strong> <strong>출퇴근 시간에</strong> <strong>너무</strong> <u>복잡해요</u>.</p>",
+        'explanation': "<p><strong>ㄴ</strong>: '빠르다' (tez bo'lmoq) sifat. '빠른 반면에' (tez bo'lgani bilan). <strong>너무</strong> (juda).</p>",
+        'correct': "ㄴ",
+        'choices': ["는", "ㄴ", "은", "ㄹ"]
     },
     {
-        'text': "<p>A: <strong>한국 노래를</strong> <strong>신나게</strong> <em>부를 줄 알아요</em>?<br>B: 네, <strong>가장</strong> 좋아하는 K-pop 노래는 <strong>다</strong> <em>부르________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 알아요</strong>: '부르다' (kuylamoq/chaqirmoq) + '-ㄹ 줄 알다'. <strong>다</strong> (hammasini) kuylashni biladi.</p>",
-        'correct': "ㄹ 줄 알아요",
-        'choices': ["을 줄 알아요", "ㄹ 줄 몰라요", "ㄹ 줄 알아요", "을 줄 몰라요"]
+        'text': "<p>A: <strong>저 두 사람은</strong> <strong>친해요</strong>?<br>B: 지민은 <strong>성격이</strong> <u>외향적이________</u> <strong>반면에</strong> 수미는 <u>내성적이에요</u>.</p>",
+        'explanation': "<p><strong>ㄴ</strong>: '외향적이다' (ochiq ko'ngil bo'lmoq) + '-(으)ㄴ 반면에' (외향적인 반면에). <strong>성격이</strong> (xarakteri).</p>",
+        'correct': "ㄴ",
+        'choices': ["는", "ㄴ", "은", "ㄹ"]
     },
     {
-        'text': "<p>A: <strong>매운</strong> 김치를 <strong>맛있게</strong> <em>담글 줄 알아요</em>?<br>B: 아니요, <strong>먹을 줄만 알고</strong> <strong>직접</strong> <em>담그________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 몰라요</strong>: '담그다' (tayyorlamoq/tuzlamoq) + '-ㄹ 줄 모르다'. <strong>직접</strong> (o'zi/shaxsan) tayyorlashni bilmaydi.</p>",
-        'correct': "ㄹ 줄 몰라요",
-        'choices': ["을 줄 몰라요", "ㄹ 줄 알아요", "ㄹ 줄 몰라요", "을 줄 알아요"]
+        'text': "<p>A: <strong>이 책은</strong> <em>어때요</em>?<br>B: <strong>그림이 많아서</strong> <strong>보기</strong> <u>쉬우________</u> <strong>반면에</strong> <strong>내용이</strong> <u>가벼워요</u>.</p>",
+        'explanation': "<p><strong>ㄴ</strong>: '쉽다' (oson bo'lmoq). 'ㅂ' -> '우' + '-ㄴ 반면에' (쉬운 반면에). <strong>보기</strong> (ko'rishga/o'qishga) oson, lekin mazmuni sayoz.</p>",
+        'correct': "ㄴ",
+        'choices': ["은", "ㄴ", "는", "ㄹ"]
     },
     {
-        'text': "<p>A: <strong>스노보드를</strong> <em>탈 줄 알아요</em>?<br>B: <strong>스키는</strong> <em>탈 줄 알지만</em> <strong>스노보드는</strong> <strong>아직</strong> <em>타________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 몰라요</strong>: '타다' (uchmoq/minmoq) + '-ㄹ 줄 모르다'. <strong>아직</strong> (hali) uchishni bilmaydi.</p>",
-        'correct': "ㄹ 줄 몰라요",
-        'choices': ["ㄹ 줄 알아요", "을 줄 몰라요", "ㄹ 줄 몰라요", "을 줄 알아요"]
+        'text': "<p>A: 그 사람은 <strong>일을</strong> <strong>잘</strong> <em>해요</em>?<br>B: <strong>일은</strong> <strong>잘</strong> <em>하________</em> <strong>반면에</strong> <strong>성격이</strong> <strong>조금</strong> <u>급해요</u>.</p>",
+        'explanation': "<p><strong>는</strong>: '하다' (qilmoq) fe'l bo'lgani uchun '-는 반면에' ulanadi (하는 반면에). <strong>잘</strong> (yaxshi) qilgani bilan, xarakteri shoshqaloq. <strong>조금</strong> (biroz).</p>",
+        'correct': "는",
+        'choices': ["는", "ㄴ", "은", "ㄹ"]
     },
     {
-        'text': "<p>A: 인터넷으로 <strong>물건을</strong> <strong>안전하게</strong> <em>주문할 줄 알아요</em>?<br>B: 네, <strong>결제부터 배송까지</strong> <strong>다</strong> <em>하________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 알아요</strong>: '하다' (qilmoq) + '-ㄹ 줄 알다'. <strong>다</strong> (hammasini) qilishni biladi.</p>",
-        'correct': "ㄹ 줄 알아요",
-        'choices': ["을 줄 알아요", "ㄹ 줄 몰라요", "ㄹ 줄 알아요", "을 줄 몰라요"]
+        'text': "<p>A: <strong>온라인 쇼핑이</strong> <u>좋아요</u>?<br>B: <strong>시간을</strong> <em>절약하________</em> <strong>반면에</strong> <strong>물건을</strong> <strong>직접</strong> <em>볼 수 없어요</em>.</p>",
+        'explanation': "<p><strong>는</strong>: '절약하다' (tejamoq) fe'l bo'lgani uchun '-는 반면에' (절약하는 반면에). <strong>직접</strong> (o'zi) ko'ra olmaydi.</p>",
+        'correct': "는",
+        'choices': ["는", "ㄴ", "은", "ㄹ"]
     },
     {
-        'text': "<p>A: <strong>넥타이를</strong> <strong>단정하게</strong> <em>맬 줄 알아요</em>?<br>B: 아니요, <strong>항상</strong> 아빠가 <em>매주셔서</em> 저는 <strong>혼자서</strong> <em>매________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 몰라요</strong>: '매다' (bog'lamoq) + '-ㄹ 줄 모르다'. <strong>혼자서</strong> (yolg'iz o'zi) bog'lashni bilmaydi.</p>",
-        'correct': "ㄹ 줄 몰라요",
-        'choices': ["을 줄 몰라요", "ㄹ 줄 알아요", "ㄹ 줄 몰라요", "을 줄 알아요"]
+        'text': "<p>A: <strong>아침에 일찍</strong> <em>일어나면</em> <em>어때요</em>?<br>B: <strong>여유 시간이</strong> <u>많________</u> <strong>반면에</strong> <strong>오후에는</strong> <strong>많이</strong> <u>피곤해요</u>.</p>",
+        'explanation': "<p><strong>은</strong>: '많다' (ko'p bo'lmoq) sifat. Undosh bilan tugagani uchun '많은 반면에' ulanadi. <strong>많이</strong> (ko'p).</p>",
+        'correct': "은",
+        'choices': ["은", "는", "ㄴ", "을"]
     },
     {
-        'text': "<p>A: <strong>어려운</strong> 종이접기를 <strong>예쁘게</strong> <em>접을 줄 알아요</em>?<br>B: 네, 어렸을 때 <strong>많이</strong> 해봐서 <strong>종이학을</strong> <em>접________</em>.</p>",
-        'explanation': "<p><strong>을 줄 알아요</strong>: '접다' (taxlamoq) undosh bilan tugagani uchun '-을 줄 알다'. <strong>많이</strong> (ko'p) taxlagani uchun biladi.</p>",
-        'correct': "을 줄 알아요",
-        'choices': ["ㄹ 줄 알아요", "을 줄 알아요", "ㄹ 줄 몰라요", "을 줄 몰라요"]
+        'text': "<p>A: 그 컴퓨터 <strong>성능이</strong> <u>좋아요</u>?<br>B: <strong>성능은</strong> <u>뛰어나________</u> <strong>반면에</strong> <strong>무게가</strong> <strong>너무</strong> <u>무거워요</u>.</p>",
+        'explanation': "<p><strong>ㄴ</strong>: '뛰어나다' (ajoyib/zo'r bo'lmoq) sifat. '뛰어난 반면에' (zo'r bo'lgani bilan). <strong>너무</strong> (juda).</p>",
+        'correct': "ㄴ",
+        'choices': ["는", "ㄴ", "은", "ㄹ"]
     },
     {
-        'text': "<p>A: <strong>젓가락을</strong> <strong>바르게</strong> <em>사용할 줄 알아요</em>?<br>B: 네, 한국에 <strong>처음</strong> 왔을 때 <strong>열심히</strong> 배워서 <strong>잘</strong> <em>쓰________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 알아요</strong>: '쓰다' (foydalanmoq) + '-ㄹ 줄 알다'. <strong>열심히</strong> (tirishib) o'rgangan va yaxshi foydalana oladi.</p>",
-        'correct': "ㄹ 줄 알아요",
-        'choices': ["을 줄 알아요", "ㄹ 줄 몰라요", "ㄹ 줄 알아요", "을 줄 몰라요"]
+        'text': "<p>A: <strong>기숙사 생활은</strong> <em>어때요</em>?<br>B: <strong>비용이</strong> <u>저렴하________</u> <strong>반면에</strong> <strong>사생활이</strong> <u>없어요</u>.</p>",
+        'explanation': "<p><strong>ㄴ</strong>: '저렴하다' (arzon bo'lmoq) sifat. '저렴한 반면에'. Arzon bo'lgani bilan shaxsiy hayot yo'q.</p>",
+        'correct': "ㄴ",
+        'choices': ["는", "ㄴ", "은", "ㄹ"]
     },
     {
-        'text': "<p>A: <strong>자동차 타이어를</strong> <strong>직접</strong> <em>교체할 줄 알아요</em>?<br>B: 아니요, 차에 대해서는 <strong>전혀</strong> <em>몰라서</em> <strong>혼자서는</strong> <em>바꾸________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 몰라요</strong>: '바꾸다' (almashtirmoq) + '-ㄹ 줄 모르다'. <strong>전혀</strong> (umuman) almashtirishni bilmaydi.</p>",
-        'correct': "ㄹ 줄 몰라요",
-        'choices': ["을 줄 몰라요", "ㄹ 줄 알아요", "ㄹ 줄 몰라요", "을 줄 알아요"]
+        'text': "<p>A: 한국 음식은 <strong>대체로</strong> <em>어때요</em>?<br>B: <u>건강에</u> <u>좋________</u> <strong>반면에</strong> <u>매운</u> 음식이 <u>많아요</u>.</p>",
+        'explanation': "<p><strong>은</strong>: '좋다' (yaxshi bo'lmoq) sifat. '좋은 반면에' (yaxshi bo'lgani bilan). <strong>대체로</strong> (umuman olganda/asosan).</p>",
+        'correct': "은",
+        'choices': ["은", "는", "ㄴ", "을"]
     },
     {
-        'text': "<p>A: 기타를 <strong>아름답게</strong> <em>칠 줄 알아요</em>?<br>B: 기타는 <em>치________</em> 피아노는 <strong>조금</strong> <em>칠 줄 알아요</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 모르지만</strong>: '치다' (chalmoq) + '-ㄹ 줄 모르다' + '-지만' (bilmayman, lekin). <strong>조금</strong> (biroz) pianino chalishni biladi.</p>",
-        'correct': "ㄹ 줄 모르지만",
-        'choices': ["을 줄 모르지만", "ㄹ 줄 모르지만", "ㄹ 줄 알지만", "을 줄 알지만"]
+        'text': "<p>A: 그 사람은 <strong>어떤</strong> 사람이에요?<br>B: <strong>실력이</strong> <u>우수하________</u> <strong>반면에</strong> <strong>겸손하지는</strong> <u>않아요</u>.</p>",
+        'explanation': "<p><strong>ㄴ</strong>: '우수하다' (mukammal bo'lmoq) sifat. '우수한 반면에'. Qobiliyati yaxshi bo'lgani bilan kamtar emas.</p>",
+        'correct': "ㄴ",
+        'choices': ["는", "ㄴ", "은", "ㄹ"]
     },
     {
-        'text': "<p>A: <strong>지하철 노선도를</strong> <strong>보고</strong> 길을 <em>찾을 줄 알아요</em>?<br>B: 네, <strong>복잡해 보여도</strong> <strong>이제는</strong> <strong>쉽게</strong> <em>찾________</em>.</p>",
-        'explanation': "<p><strong>을 줄 알아요</strong>: '찾다' (qidirmoq/topmoq) undosh bilan tugagani uchun '-을 줄 알다'. <strong>쉽게</strong> (osongina) topishni biladi.</p>",
-        'correct': "을 줄 알아요",
-        'choices': ["ㄹ 줄 알아요", "을 줄 알아요", "ㄹ 줄 몰라요", "을 줄 몰라요"]
+        'text': "<p>A: <strong>운동을</strong> <strong>많이</strong> <em>하면</em> <em>어때요</em>?<br>B: <strong>몸이</strong> <u>건강해지________</u> <strong>반면에</strong> <strong>시간을</strong> <strong>많이</strong> <em>써야 해요</em>.</p>",
+        'explanation': "<p><strong>는</strong>: '건강해지다' (sog'lomlashmoq) fe'l (아/어지다). Fe'l bo'lgani uchun '-는 반면에'. <strong>많이</strong> (ko'p).</p>",
+        'correct': "는",
+        'choices': ["는", "ㄴ", "은", "ㄹ"]
     },
     {
-        'text': "<p>A: <strong>무거운</strong> 텐트를 <strong>캠핑장에서</strong> <em>칠 줄 알아요</em>?<br>B: 네, 친구가 <strong>친절하게</strong> <em>가르쳐 줘서</em> <strong>혼자서도</strong> <em>치________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 알아요</strong>: '치다' (qurmoq/o'rnatmoq) + '-ㄹ 줄 알다'. <strong>혼자서도</strong> (yolg'iz o'zi ham) qura oladi.</p>",
-        'correct': "ㄹ 줄 알아요",
-        'choices': ["을 줄 알아요", "ㄹ 줄 몰라요", "ㄹ 줄 알아요", "을 줄 몰라요"]
+        'text': "<p>A: <strong>이 약은</strong> <strong>효과가</strong> <em>있어요</em>?<br>B: <strong>효과가</strong> <strong>빨리</strong> <em>나타나________</em> <strong>반면에</strong> <strong>부작용이</strong> <em>있어요</em>.</p>",
+        'explanation': "<p><strong>는</strong>: '나타나다' (paydo bo'lmoq/ta'sir qilmoq) fe'l. '나타나는 반면에' (paydo bo'lishi bilan birga). <strong>빨리</strong> (tez).</p>",
+        'correct': "는",
+        'choices': ["는", "ㄴ", "은", "ㄹ"]
     },
     {
-        'text': "<p>A: <strong>사진기를</strong> <strong>전문적으로</strong> <em>다룰 줄 알아요</em>?<br>B: 아니요, <strong>그냥</strong> <em>찍을 줄만 알고</em> <strong>자세한 설정은</strong> <em>하________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 몰라요</strong>: '하다' (qilmoq) + '-ㄹ 줄 모르다'. Sozlamalarni qilishni bilmaydi.</p>",
-        'correct': "ㄹ 줄 몰라요",
-        'choices': ["을 줄 몰라요", "ㄹ 줄 알아요", "ㄹ 줄 몰라요", "을 줄 알아요"]
+        'text': "<p>A: <strong>여름휴가는</strong> <strong>어디가</strong> <u>좋아요</u>?<br>B: 바다는 <u>시원하________</u> <strong>반면에</strong> 사람이 <strong>너무</strong> <u>많아요</u>.</p>",
+        'explanation': "<p><strong>ㄴ</strong>: '시원하다' (salqin bo'lmoq) sifat. '시원한 반면에'. Salqin bo'lgani bilan odam <strong>너무</strong> (juda) ko'p.</p>",
+        'correct': "ㄴ",
+        'choices': ["는", "ㄴ", "은", "ㄹ"]
     },
     {
-        'text': "<p>A: 스마트폰으로 <strong>문서를</strong> <em>편집할 줄 알아요</em>?<br>B: <strong>간단한 글은</strong> <em>쓰________</em> <strong>복잡한 편집은</strong> <em>못해요</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 알지만</strong>: '쓰다' (yozmoq) + '-ㄹ 줄 알다' + '-지만' (yozishni bilaman, lekin). <strong>간단한 글은</strong> (oddiy matnni).</p>",
-        'correct': "ㄹ 줄 알지만",
-        'choices': ["을 줄 알지만", "ㄹ 줄 알지만", "ㄹ 줄 모르지만", "을 줄 모르지만"]
+        'text': "<p>A: 외국어 공부가 <em>어때요</em>?<br>B: <strong>새로운 문화를</strong> <em>배우________</em> <strong>반면에</strong> <strong>단어 외우기가</strong> <u>힘들어요</u>.</p>",
+        'explanation': "<p><strong>는</strong>: '배우다' (o'rganmoq) fe'l. '배우는 반면에'. O'rganishga qarama-qarshi o'laroq, yodlash qiyin.</p>",
+        'correct': "는",
+        'choices': ["는", "ㄴ", "은", "ㄹ"]
     },
     {
-        'text': "<p>A: <strong>선물 포장을</strong> <strong>예쁘게</strong> <em>할 줄 알아요</em>?<br>B: 아니요, 제 손이 <u>서툴러서</u> <strong>포장할 줄을</strong> <strong>전혀</strong> <em>모르________</em>.</p>",
-        'explanation': "<p><strong>모르겠어요</strong> yoki '몰라요' (bilmayman). '모르다' (bilmaslik). <strong>전혀</strong> (umuman) o'rashni bilmaydi.</p>",
-        'correct': "몰라요",
-        'choices': ["알아요", "몰라요", "알겠어요", "아는데요"]
+        'text': "<p>A: <strong>어릴 때</strong> <em>어땠어요</em>?<br>B: <strong>걱정이</strong> <u>없었________</u> <strong>반면에</strong> <strong>자유도</strong> <u>없었어요</u>.</p>",
+        'explanation': "<p><strong>던</strong>: '없었다' (yo'q edi - o'tgan zamon). O'tgan zamonda '-던 반면에' (yo'q bo'lganiga qarama-qarshi) ishlatilishi mumkin, lekin bu yerda '-은/는' darsi. '없은 반면에' or '없는 반면에'. '있다/없다' sifatlari uchun '-는' ishlatiladi -> '없었는 반면에' -> '없었던 반면에' is better. Let's use '없는' for present: 걱정이 없________ 반면에... </p>\n<p>Correct prompt: A: <strong>아이들은</strong> <em>어때요</em>?<br>B: <strong>걱정이</strong> <u>없________</u> <strong>반면에</strong> <strong>자유도</strong> <u>없어요</u>.</p>",
+        'explanation': "<p><strong>는</strong>: '없다' (yo'q bo'lmoq). '있다/없다' so'zlariga doim '-는 반면에' (없는 반면에) ulanadi.</p>",
+        'correct': "는",
+        'choices': ["은", "는", "ㄴ", "을"]
     },
     {
-        'text': "<p>A: 이 기계를 <strong>안전하게</strong> <em>작동시킬 줄 알아요</em>?<br>B: <strong>설명서를</strong> <strong>열심히</strong> <em>읽어봐서</em> <strong>이제는</strong> <em>작동시키________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 알아요</strong>: '작동시키다' (ishga tushirmoq) + '-ㄹ 줄 알다'. <strong>열심히</strong> (qunt bilan) o'qib bilib olgan.</p>",
-        'correct': "ㄹ 줄 알아요",
-        'choices': ["을 줄 알아요", "ㄹ 줄 몰라요", "ㄹ 줄 알아요", "을 줄 몰라요"]
+        'text': "<p>A: 그 사람은 <strong>어때요</strong>?<br>B: <strong>말을</strong> <strong>잘</strong> <em>하________</em> <strong>반면에</strong> <strong>행동이</strong> <u>느려요</u>.</p>",
+        'explanation': "<p><strong>는</strong>: '하다' (qilmoq) fe'l. '하는 반면에'. <strong>잘</strong> (yaxshi) gapirgani bilan harakati sekin.</p>",
+        'correct': "는",
+        'choices': ["는", "ㄴ", "은", "ㄹ"]
     },
     {
-        'text': "<p>A: 아기가 <strong>벌써</strong> <strong>두 발로</strong> <em>걸을 줄 알아요</em>?<br>B: 네, <strong>어제부터</strong> <strong>갑자기</strong> <strong>혼자서</strong> <em>걷________</em>.</p>",
-        'explanation': "<p><strong>기 시작했어요</strong> (boshladi) yoki '걸을 줄 알아요' (yurishni biladi). '걷다' (yurmoq) + '-을 줄 알다'. 'ㄷ' -> 'ㄹ' + '-을 줄 알아요' (걸을 줄 알아요). <strong>갑자기</strong> (to'satdan) yurishni boshladi.</p>",
-        'correct': "걸을 줄 알아요",
-        'choices': ["걷을 줄 알아요", "걸을 줄 알아요", "걸을 줄 몰라요", "걷을 줄 몰라요"]
+        'text': "<p>A: 겨울은 <strong>어때요</strong>?<br>B: <strong>눈이 와서</strong> <u>예쁘________</u> <strong>반면에</strong> <strong>길이</strong> <strong>많이</strong> <u>미끄러워요</u>.</p>",
+        'explanation': "<p><strong>ㄴ</strong>: '예쁘다' (chiroyli bo'lmoq) sifat. '예쁜 반면에'. <strong>많이</strong> (juda) sirpanchiq.</p>",
+        'correct': "ㄴ",
+        'choices': ["는", "ㄴ", "은", "ㄹ"]
     },
     {
-        'text': "<p>A: <strong>프랑스어로</strong> <strong>간단하게</strong> <em>인사할 줄 알아요</em>?<br>B: <strong>어릴 때</strong> <strong>조금</strong> <em>배워서</em> <strong>인사 정도는</strong> <em>하________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 알아요</strong>: '하다' (qilmoq) + '-ㄹ 줄 알다'. <strong>조금</strong> (biroz) salomlashishni biladi.</p>",
-        'correct': "ㄹ 줄 알아요",
-        'choices': ["을 줄 알아요", "ㄹ 줄 몰라요", "ㄹ 줄 알아요", "을 줄 몰라요"]
+        'text': "<p>A: <strong>전통 시장은</strong> <em>어때요</em>?<br>B: <strong>인정이</strong> <u>넘치________</u> <strong>반면에</strong> <strong>주차하기가</strong> <u>불편해요</u>.</p>",
+        'explanation': "<p><strong>는</strong>: '넘치다' (toshib to'kilmoq) fe'l. '넘치는 반면에' (toshib to'kilishiga qaramay).</p>",
+        'correct': "는",
+        'choices': ["는", "ㄴ", "은", "ㄹ"]
     },
     {
-        'text': "<p>A: <strong>고장 난 시계를</strong> <strong>직접</strong> <em>수리할 줄 알아요</em>?<br>B: 아니요, <strong>정밀한 부품은</strong> <strong>어려워서</strong> <em>만지________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 몰라요</strong>: '만지다' (tegmoq) + '-ㄹ 줄 모르다'. Qismlarga tegishni bilmaydi.</p>",
-        'correct': "ㄹ 줄 몰라요",
-        'choices': ["을 줄 몰라요", "ㄹ 줄 알아요", "ㄹ 줄 몰라요", "을 줄 알아요"]
+        'text': "<p>A: <strong>외동딸은</strong> <em>어때요</em>?<br>B: <strong>사랑을 혼자</strong> <em>받________</em> <strong>반면에</strong> <strong>가끔</strong> <u>외로워요</u>.</p>",
+        'explanation': "<p><strong>는</strong>: '받다' (olmoq/qabul qilmoq) fe'l. '받는 반면에'. <strong>가끔</strong> (ba'zan/vaqti-vaqti bilan).</p>",
+        'correct': "는",
+        'choices': ["는", "ㄴ", "은", "ㄹ"]
     },
     {
-        'text': "<p>A: <strong>집에서</strong> <strong>키우는 식물에</strong> <strong>물을</strong> <strong>어떻게</strong> <em>줄 줄 알아요</em>?<br>B: 네, <strong>일주일에 한 번씩</strong> <strong>적당히</strong> <em>주________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 알아요</strong>: '주다' (bermoq) + '-ㄹ 줄 알다'. <strong>적당히</strong> (me'yorida) suv berishni biladi.</p>",
-        'correct': "ㄹ 줄 알아요",
-        'choices': ["을 줄 알아요", "ㄹ 줄 몰라요", "ㄹ 줄 알아요", "을 줄 몰라요"]
+        'text': "<p>A: 그 영화 <em>어땠어요</em>?<br>B: <strong>스토리는</strong> <u>단순하________</u> <strong>반면에</strong> <strong>영상미가</strong> <u>뛰어났어요</u>.</p>",
+        'explanation': "<p><strong>ㄴ</strong>: '단순하다' (oddiy/jo'n bo'lmoq) sifat. '단순한 반면에'. Hikoyasi oddiy bo'lgani bilan tasviri ajoyib edi.</p>",
+        'correct': "ㄴ",
+        'choices': ["는", "ㄴ", "은", "ㄹ"]
     },
     {
-        'text': "<p>A: 이 <u>무거운</u> 피아노를 <strong>안전하게</strong> <em>옮길 줄 알아요</em>?<br>B: 아니요, <strong>전문가가 아니라서</strong> <strong>어떻게</strong> <em>옮겨야 할지</em> <em>옮기________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 몰라요</strong>: '옮기다' (tashimoq/ko'chirmoq) + '-ㄹ 줄 모르다'. Qanday tashishni bilmaydi.</p>",
-        'correct': "ㄹ 줄 몰라요",
-        'choices': ["을 줄 몰라요", "ㄹ 줄 알아요", "ㄹ 줄 몰라요", "을 줄 알아요"]
+        'text': "<p>A: <strong>혼자</strong> <em>살면</em> <em>어때요</em>?<br>B: <strong>자유롭________</strong> <strong>반면에</strong> <strong>모든 일을</strong> <strong>스스로</strong> <em>해야 해요</em>.</p>",
+        'explanation': "<p><strong>은</strong>: '자유롭다' (erkin bo'lmoq) sifat. 'ㅂ' -> '우' + 'ㄴ' -> '자유로운 반면에'. Erkin bo'lgani bilan <strong>스스로</strong> (o'zi) qilishi kerak.</p>",
+        'correct': "운",
+        'choices': ["운", "은", "는", "ㄴ"]
     },
     {
-        'text': "<p>A: <strong>김치찌개를</strong> <strong>맛있게</strong> <em>끓일 줄 알아요</em>?<br>B: 네, 엄마한테 <strong>자세히</strong> 배워서 <strong>아주</strong> <strong>잘</strong> <em>끓이________</em>.</p>",
-        'explanation': "<p><strong>ㄹ 줄 알아요</strong>: '끓이다' (qaynatmoq/pishirmoq) + '-ㄹ 줄 알다'. <strong>자세히</strong> (batafsil) o'rgangani uchun yaxshi pishirishni biladi.</p>",
-        'correct': "ㄹ 줄 알아요",
-        'choices': ["을 줄 알아요", "ㄹ 줄 몰라요", "ㄹ 줄 알아요", "을 줄 몰라요"]
+        'text': "<p>A: <strong>스마트폰은</strong> <strong>우리에게</strong> <em>어때요</em>?<br>B: <strong>생활을</strong> <u>편리하게</u> <em>해 주________</em> <strong>반면에</strong> <strong>대화가</strong> <em>줄어들게 해요</em>.</p>",
+        'explanation': "<p><strong>는</strong>: '해 주다' (qilib bermoq) fe'l. '해 주는 반면에'. <u>편리하게</u> (qulay qilib) bergani bilan suhbat kamayadi.</p>",
+        'correct': "는",
+        'choices': ["는", "ㄴ", "은", "ㄹ"]
     },
     {
-        'text': "<p>A: <strong>머리를</strong> <strong>예쁘게</strong> <em>묶을 줄 알아요</em>?<br>B: 네, <strong>거울을 안 보고도</strong> <strong>혼자서</strong> <strong>예쁘게</strong> <em>묶________</em>.</p>",
-        'explanation': "<p><strong>을 줄 알아요</strong>: '묶다' (bog'lamoq) undosh bilan tugagani uchun '-을 줄 알다'. <strong>혼자서</strong> (o'zi) chiroyli qilib bog'lashni biladi.</p>",
-        'correct': "을 줄 알아요",
-        'choices': ["ㄹ 줄 알아요", "을 줄 알아요", "ㄹ 줄 몰라요", "을 줄 몰라요"]
+        'text': "<p>A: 그 회사는 <strong>조건이</strong> <em>어때요</em>?<br>B: <strong>월급은</strong> <u>적________</u> <strong>반면에</strong> <strong>복지 혜택이</strong> <u>좋아요</u>.</p>",
+        'explanation': "<p><strong>은</strong>: '적다' (kam bo'lmoq) sifat. Undosh bilan tugagani uchun '적은 반면에'. Maoshi kamligiga qaramay imtiyozlari yaxshi.</p>",
+        'correct': "은",
+        'choices': ["은", "는", "ㄴ", "을"]
+    }
+]
+
+# =====================================================================
+# Topic 53: 동사/형용사 + (으)ㄹ 뿐만 아니라 (Nafaqat ... balki ...)
+# =====================================================================
+topic_53 = [
+    {
+        'text': "<p>A: 이 식당은 인기가 <u>정말</u> <strong>많네요</strong>.<br>B: 네, 음식이 <u>항상</u> <strong>맛있을</strong> ________ 가격도 <u>매우</u> <strong>쌉니다</strong>.</p>",
+        'explanation': "<p><strong>맛있을 뿐만 아니라</strong>: '맛있다' (mazali bo'lmoq) sifatiga qo'shilib, nafaqat mazali, balki narxi ham arzon ekanligini (qo'shimcha ijobiy holat) bildiradi.</p>",
+        'correct': "맛있을 뿐만 아니라",
+        'choices': ["맛있는 데다가", "맛있을 뿐만 아니라", "맛있다가 보면", "맛있을 정도로"]
+    },
+    {
+        'text': "<p>A: 그 사람은 <u>매일</u> <strong>운동해요</strong>?<br>B: 네, <u>열심히</u> <strong>운동할</strong> ________ 식단도 <u>철저하게</u> <strong>지켜요</strong>.</p>",
+        'explanation': "<p><strong>운동할 뿐만 아니라</strong>: '운동하다' (sport bilan shug'ullanmoq) fe'liga qo'shilib, nafaqat mashq qilishi, balki parhez ham qilishini bildiradi.</p>",
+        'correct': "운동할 뿐만 아니라",
+        'choices': ["운동하는 데다가", "운동하다가 보면", "운동할 뿐만 아니라", "운동할 지경이다"]
+    },
+    {
+        'text': "<p>A: 안나 씨는 <u>정말</u> <strong>똑똑해요</strong>.<br>B: 맞아요. 한국어를 <u>잘할</u> ________ 영어도 <u>유창하게</u> <strong>말해요</strong>.</p>",
+        'explanation': "<p><strong>잘할 뿐만 아니라</strong>: '잘하다' (yaxshi bilmoq/bajarmoq) fe'li bilan kelib, bir qobiliyat ustiga yana boshqa qobiliyat ham borligini ifodalaydi.</p>",
+        'correct': "잘할 뿐만 아니라",
+        'choices': ["잘할 뿐만 아니라", "잘하는 반면에", "잘하기 무섭게", "잘하는 척해요"]
+    },
+    {
+        'text': "<p>A: 오늘 날씨가 <u>너무</u> <strong>나빠요</strong>.<br>B: 네, 비가 <u>많이</u> <strong>올</strong> ________ 바람도 <u>세게</u> <strong>불어요</strong>.</p>",
+        'explanation': "<p><strong>올 뿐만 아니라</strong>: '오다' fe'liga qo'shilib, yomg'ir yog'ishi ustiga shamol ham kuchli esayotganini ko'rsatadi.</p>",
+        'correct': "올 뿐만 아니라",
+        'choices': ["오는 통에", "올 뿐만 아니라", "오다가 보면", "올 정도로"]
+    },
+    {
+        'text': "<p>A: 이 노트북은 <u>꽤</u> <strong>가벼워요</strong>.<br>B: 네, <u>가벼울</u> ________ 속도도 <u>엄청</u> <strong>빨라서</strong> <u>자주</u> <strong>써요</strong>.</p>",
+        'explanation': "<p><strong>가벼울 뿐만 아니라</strong>: '가볍다' (yengil bo'lmoq) sifatiga qo'shilib, nafaqat yengil, balki tezligini ham ta'kidlaydi.</p>",
+        'correct': "가벼울 뿐만 아니라",
+        'choices': ["가벼울 지라도", "가벼운 셈이다", "가벼울 뿐만 아니라", "가볍다가 보면"]
+    },
+    {
+        'text': "<p>A: 수미 씨는 <u>늘</u> <strong>바빠</strong> <strong>보여요</strong>.<br>B: 학교에 <u>다닐</u> ________ <u>밤 늦게</u> 아르바이트도 <strong>하거든요</strong>.</p>",
+        'explanation': "<p><strong>다닐 뿐만 아니라</strong>: '다니다' (qatnamoq) fe'liga qo'shilib, o'qish bilan birga ish ham qilishini bildiradi.</p>",
+        'correct': "다닐 뿐만 아니라",
+        'choices': ["다닐 겸", "다니다가 보면", "다니는 탓에", "다닐 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 이 방은 <u>전혀</u> <strong>안</strong> <strong>좋아요</strong>.<br>B: 맞아요. <u>너무</u> <strong>좁을</strong> ________ <u>항상</u> <strong>시끄러워요</strong>.</p>",
+        'explanation': "<p><strong>좁을 뿐만 아니라</strong>: '좁다' (tor bo'lmoq) sifatiga qo'shilib, bitta salbiy xususiyat ustiga yana bittasini qo'shadi.</p>",
+        'correct': "좁을 뿐만 아니라",
+        'choices': ["좁을 뿐만 아니라", "좁은 데다가", "좁다가는", "좁을 지경이다"]
+    },
+    {
+        'text': "<p>A: 그 배우는 <u>정말</u> 인기가 <strong>많네요</strong>.<br>B: 얼굴이 <strong>잘생겼을</strong> ________ 연기도 <u>아주</u> <strong>뛰어나거든요</strong>.</p>",
+        'explanation': "<p><strong>잘생겼을 뿐만 아니라</strong>: '잘생기다' (kelishgan bo'lmoq) so'ziga qo'shilib, tashqi ko'rinishi va mahorati birga ekanligini bildiradi.</p>",
+        'correct': "잘생겼을 뿐만 아니라",
+        'choices': ["잘생긴 데다가", "잘생겼을 뿐만 아니라", "잘생긴 척해요", "잘생겼더라면"]
+    },
+    {
+        'text': "<p>A: 이 책은 <u>어때요</u>?<br>B: 내용이 <u>매우</u> <strong>유익할</strong> ________ 그림도 <u>많아서</u> <strong>이해하기</strong> <strong>쉬워요</strong>.</p>",
+        'explanation': "<p><strong>유익할 뿐만 아니라</strong>: '유익하다' (foydali bo'lmoq) sifatiga qo'shilib, kitobning ikki xil ijobiy tomonini tasvirlaydi.</p>",
+        'correct': "유익할 뿐만 아니라",
+        'choices': ["유익할 리가 없다", "유익할 뿐만 아니라", "유익하다가 보면", "유익할 정도로"]
+    },
+    {
+        'text': "<p>A: 민호 씨는 봉사활동을 <u>자주</u> <strong>해요</strong>?<br>B: 네, 기부를 <u>많이</u> <strong>할</strong> ________ <u>주말마다</u> 고아원에 <strong>가요</strong>.</p>",
+        'explanation': "<p><strong>할 뿐만 아니라</strong>: '하다' (qilmoq) fe'liga qo'shilib, xayriya ham qilib, ham shaxsan borishini ko'rsatadi.</p>",
+        'correct': "할 뿐만 아니라",
+        'choices': ["하는 바람에", "할 뿐만 아니라", "하는 김에", "하는 척해요"]
+    },
+    {
+        'text': "<p>A: 새로 산 차는 <u>어때요</u>?<br>B: 디자인이 <u>정말</u> <strong>예쁠</strong> ________ 연비도 <u>아주</u> <strong>좋아요</strong>.</p>",
+        'explanation': "<p><strong>예쁠 뿐만 아니라</strong>: '예쁘다' (chiroyli bo'lmoq) sifatiga qo'shilib, avtomobilning bir necha ijobiy tomonini bildiradi.</p>",
+        'correct': "예쁠 뿐만 아니라",
+        'choices': ["예쁘다가 보면", "예쁜 바람에", "예쁠 뿐만 아니라", "예쁠 지경이다"]
+    },
+    {
+        'text': "<p>A: 그 백화점은 <u>어때요</u>?<br>B: 물건이 <u>너무</u> <strong>비쌀</strong> ________ 직원들도 <u>전혀</u> <strong>안</strong> <strong>친절해요</strong>.</p>",
+        'explanation': "<p><strong>비쌀 뿐만 아니라</strong>: '비싸다' (qimmat bo'lmoq) sifatiga qo'shilib, salbiy holatlarni ketma-ket sanab o'tadi.</p>",
+        'correct': "비쌀 뿐만 아니라",
+        'choices': ["비싼 대신에", "비쌀 지라도", "비쌀 뿐만 아니라", "비싸기 무섭게"]
+    },
+    {
+        'text': "<p>A: 이 약은 <u>빨리</u> 효과가 <strong>있어요</strong>?<br>B: 네, 효과가 <u>빠를</u> ________ 부작용도 <u>거의</u> <strong>없어요</strong>.</p>",
+        'explanation': "<p><strong>빠를 뿐만 아니라</strong>: '빠르다' (tez bo'lmoq) sifatiga qo'shilib, dorining ham tez ta'sir qilishi, ham xavfsizligini bildiradi.</p>",
+        'correct': "빠를 뿐만 아니라",
+        'choices': ["빠르다가 보면", "빠를 뿐만 아니라", "빠르느라고", "빠른 척해요"]
+    },
+    {
+        'text': "<p>A: 요즘 물가가 <u>계속</u> <strong>올라요</strong>.<br>B: 과일 값이 <u>오를</u> ________ 채소 값도 <u>너무</u> <strong>비싸졌어요</strong>.</p>",
+        'explanation': "<p><strong>오를 뿐만 아니라</strong>: '오르다' (ko'tarilmoq) fe'li orqali ham meva, ham sabzavot narxi oshganini ko'rsatadi.</p>",
+        'correct': "오를 뿐만 아니라",
+        'choices': ["오를 뿐만 아니라", "오르는 탓에", "오르자마자", "오르기 짝이 없다"]
+    },
+    {
+        'text': "<p>A: 이 호텔을 <u>추천하는</u> 이유가 <strong>있어요</strong>?<br>B: 전망이 <u>아주</u> <strong>훌륭할</strong> ________ 서비스도 <u>정말</u> <strong>완벽해요</strong>.</p>",
+        'explanation': "<p><strong>훌륭할 뿐만 아니라</strong>: '훌륭하다' (ajoyib bo'lmoq) sifatiga qo'shilib, mehmonxonaning ijobiy jihatlarini ta'kidlaydi.</p>",
+        'correct': "훌륭할 뿐만 아니라",
+        'choices': ["훌륭할 뿐만 아니라", "훌륭한 반면에", "훌륭할 지경이다", "훌륭한 셈이다"]
+    },
+    {
+        'text': "<p>A: 수잔 씨는 <u>항상</u> 성적이 <strong>좋아요</strong>.<br>B: <u>매일</u> <u>열심히</u> <strong>공부할</strong> ________ 수업 시간에도 <u>절대</u> <strong>안</strong> <strong>자요</strong>.</p>",
+        'explanation': "<p><strong>공부할 뿐만 아니라</strong>: '공부하다' fe'liga qo'shilib, o'qishda ham, darsda ham tirishqoq ekanligini ko'rsatadi.</p>",
+        'correct': "공부할 뿐만 아니라",
+        'choices': ["공부할 수록", "공부할 겸", "공부할 뿐만 아니라", "공부하다가 보면"]
+    },
+    {
+        'text': "<p>A: 요즘 그 노래가 <u>자주</u> <strong>들려요</strong>.<br>B: 네, 멜로디가 <strong>아름다울</strong> ________ 가사도 <u>정말</u> <strong>감동적이에요</strong>.</p>",
+        'explanation': "<p><strong>아름다울 뿐만 아니라</strong>: '아름답다' (chiroyli bo'lmoq) sifatiga qo'shilib, qo'shiqning ikki yoqimli jihatini bildiradi.</p>",
+        'correct': "아름다울 뿐만 아니라",
+        'choices': ["아름다운 탓에", "아름다울 뿐만 아니라", "아름다운 차라리", "아름다울 지경이다"]
+    },
+    {
+        'text': "<p>A: 감기에 <strong>걸렸어요</strong>?<br>B: 네, <u>갑자기</u> 열이 <strong>날</strong> ________ 기침도 <u>심하게</u> <strong>나요</strong>.</p>",
+        'explanation': "<p><strong>날 뿐만 아니라</strong>: '나다' (chiqmoq) fe'li bilan isitma va yo'tal birga kelganini ifodalaydi.</p>",
+        'correct': "날 뿐만 아니라",
+        'choices': ["날 뿐만 아니라", "나는 데다가", "나다가 보면", "나는 척해요"]
+    },
+    {
+        'text': "<p>A: 한국의 지하철은 <u>어때요</u>?<br>B: <u>매우</u> <strong>깨끗할</strong> ________ <u>항상</u> 시간에 <u>정확하게</u> <strong>도착해요</strong>.</p>",
+        'explanation': "<p><strong>깨끗할 뿐만 아니라</strong>: '깨끗하다' (toza bo'lmoq) sifatiga qo'shilib, metro tizimining afzalliklarini bildiradi.</p>",
+        'correct': "깨끗할 뿐만 아니라",
+        'choices': ["깨끗하기 무섭게", "깨끗할 뿐만 아니라", "깨끗할 리가 없다", "깨끗하다가는"]
+    },
+    {
+        'text': "<p>A: 이 회사에 <strong>지원하고</strong> <strong>싶어요</strong>?<br>B: 네, 월급이 <strong>많을</strong> ________ 복지 혜택도 <u>아주</u> <strong>좋거든요</strong>.</p>",
+        'explanation': "<p><strong>많을 뿐만 아니라</strong>: '많다' (ko'p bo'lmoq) sifatiga qo'shilib, oylik va sharoitlar yaxshi ekanligini ko'rsatadi.</p>",
+        'correct': "많을 뿐만 아니라",
+        'choices': ["많은 데다가", "많을 뿐만 아니라", "많다가 보면", "많을 정도로"]
+    },
+    {
+        'text': "<p>A: 제이슨 씨는 한국 문화를 <u>잘</u> <strong>알아요</strong>.<br>B: 한국 역사를 <u>깊이</u> <strong>이해할</strong> ________ 전통 악기도 <u>잘</u> <strong>연주해요</strong>.</p>",
+        'explanation': "<p><strong>이해할 뿐만 아니라</strong>: '이해하다' (tushunmoq) fe'liga qo'shilib, nafaqat tushunadi, balki amalda ham qila olishini bildiradi.</p>",
+        'correct': "이해할 뿐만 아니라",
+        'choices': ["이해할 뿐만 아니라", "이해하는 반면에", "이해하다가 보면", "이해할 지라도"]
+    },
+    {
+        'text': "<p>A: 겨울에는 제주도에 <u>자주</u> <strong>가요</strong>?<br>B: 경치가 <strong>아름다울</strong> ________ 맛있는 해산물도 <u>많이</u> <strong>먹을</strong> 수 <strong>있거든요</strong>.</p>",
+        'explanation': "<p><strong>아름다울 뿐만 아니라</strong>: '아름답다' (go'zal bo'lmoq) sifatiga qo'shilib, tabiat va taomlarning qulayligini bildiradi.</p>",
+        'correct': "아름다울 뿐만 아니라",
+        'choices': ["아름다운 탓에", "아름다울 뿐만 아니라", "아름다운 차라리", "아름답기 십상이다"]
+    },
+    {
+        'text': "<p>A: 이 카페는 <u>항상</u> 손님이 <strong>많아요</strong>.<br>B: 커피가 <strong>저렴할</strong> ________ 분위기도 <u>정말</u> <strong>아늑해서</strong> 그래요.</p>",
+        'explanation': "<p><strong>저렴할 뿐만 아니라</strong>: '저렴하다' (arzon bo'lmoq) sifatiga qo'shilib, arzon va shinamligini bildiradi.</p>",
+        'correct': "저렴할 뿐만 아니라",
+        'choices': ["저렴한 데다가", "저렴할 뿐만 아니라", "저렴하다가 보면", "저렴할 리가 없다"]
+    },
+    {
+        'text': "<p>A: 스마트폰을 <u>새로</u> <strong>바꿨어요</strong>?<br>B: 네, 화면이 <strong>넓을</strong> ________ 배터리도 <u>오래</u> <strong>가요</strong>.</p>",
+        'explanation': "<p><strong>넓을 뿐만 아니라</strong>: '넓다' (keng bo'lmoq) sifatiga qo'shilib, nafaqat keng ekranli, balki batareyasi ham yaxshi ekanligini ta'kidlaydi.</p>",
+        'correct': "넓을 뿐만 아니라",
+        'choices': ["넓을 뿐만 아니라", "넓은 탓에", "넓다가 보면", "넓을 지라도"]
+    },
+    {
+        'text': "<p>A: 저 식당은 <u>다시는</u> <strong>안</strong> <strong>가고</strong> <strong>싶어요</strong>.<br>B: 맞아요. 음식이 <u>너무</u> <strong>짤</strong> ________ <u>너무</u> <strong>매워요</strong>.</p>",
+        'explanation': "<p><strong>짤 뿐만 아니라</strong>: '짜다' (sho'r bo'lmoq) sifatiga qo'shilib, ham sho'r, ham achchiq ekanini (salbiy qo'shimcha) ifodalaydi.</p>",
+        'correct': "짤 뿐만 아니라",
+        'choices': ["짜다가 보면", "짤 뿐만 아니라", "짠 반면에", "짠 척해요"]
+    },
+    {
+        'text': "<p>A: 이 가방을 <u>왜</u> <strong>샀어요</strong>?<br>B: 디자인이 <u>세련될</u> ________ 수납 공간도 <u>아주</u> <strong>넉넉하거든요</strong>.</p>",
+        'explanation': "<p><strong>세련될 뿐만 아니라</strong>: '세련되다' (zamonaviy bo'lmoq) sifatiga qo'shilib, ko'rinishi va sig'imi yaxshi ekanini bildiradi.</p>",
+        'correct': "세련될 뿐만 아니라",
+        'choices': ["세련될 뿐만 아니라", "세련된 데다가", "세련되다가 보면", "세련될 정도로"]
+    },
+    {
+        'text': "<p>A: 그 동네는 <strong>살기</strong> <strong>어때요</strong>?<br>B: 공원이 <u>가까울</u> ________ 교통도 <u>매우</u> <strong>편리해요</strong>.</p>",
+        'explanation': "<p><strong>가까울 뿐만 아니라</strong>: '가깝다' (yaqin bo'lmoq) sifatiga qo'shilib, qulayliklar ko'pligini sanab o'tadi.</p>",
+        'correct': "가까울 뿐만 아니라",
+        'choices': ["가까울 지경이다", "가까울 뿐만 아니라", "가까운 반면에", "가깝기 무섭게"]
+    },
+    {
+        'text': "<p>A: 김 대리님은 <u>항상</u> 일을 <u>빨리</u> <strong>끝내요</strong>.<br>B: 일을 <u>빨리</u> <strong>처리할</strong> ________ 실수도 <u>전혀</u> <strong>없어요</strong>.</p>",
+        'explanation': "<p><strong>처리할 뿐만 아니라</strong>: '처리하다' (hal qilmoq) fe'liga qo'shilib, nafaqat tez, balki bexato ishlashini ta'kidlaydi.</p>",
+        'correct': "처리할 뿐만 아니라",
+        'choices': ["처리할 뿐만 아니라", "처리하는 데다가", "처리하다가 보면", "처리하려니 하다"]
+    },
+    {
+        'text': "<p>A: 어제 본 영화가 <u>그렇게</u> <strong>무서웠어요</strong>?<br>B: 네, 소리가 <u>계속</u> <strong>무서울</strong> ________ 장면도 <u>갑자기</u> <strong>잔인해졌어요</strong>.</p>",
+        'explanation': "<p><strong>무서울 뿐만 아니라</strong>: '무섭다' (qo'rqinchli bo'lmoq) sifatiga qo'shilib, qo'rqinchli holatlar qo'shilganini bildiradi.</p>",
+        'correct': "무서울 뿐만 아니라",
+        'choices': ["무서운 바람에", "무서울 뿐만 아니라", "무섭다가 보면", "무서운 척해요"]
+    },
+    {
+        'text': "<p>A: 이 의자는 <u>정말</u> <strong>비싸네요</strong>.<br>B: 하지만 <u>매우</u> <strong>편안할</strong> ________ 허리도 <u>확실히</u> <strong>보호해</strong> <strong>줍니다</strong>.</p>",
+        'explanation': "<p><strong>편안할 뿐만 아니라</strong>: '편안하다' (qulay bo'lmoq) sifatiga qo'shilib, mebelning bir necha ijobiy funksiyasini tushuntiradi.</p>",
+        'correct': "편안할 뿐만 아니라",
+        'choices': ["편안할 뿐만 아니라", "편안한 데다가", "편안하다가 보면", "편안할 턱이 없다"]
+    }
+]
+
+# =====================================================================
+# Topic 54: 동사/형용사 + (으)ㄴ/는 데다가 (... ustiga, qo'shimcha ravishda)
+# =====================================================================
+topic_54 = [
+    {
+        'text': "<p>A: 오늘 출근길이 <u>너무</u> <strong>힘들었어요</strong>.<br>B: 비가 <u>많이</u> <strong>오는</strong> ________ 차도 <u>심하게</u> <strong>막혔거든요</strong>.</p>",
+        'explanation': "<p><strong>오는 데다가</strong>: '오다' fe'liga qo'shilib, yomg'ir yog'ishi ustiga tirbandlik ham bo'lganini (vaziyat yomonlashganini) bildiradi.</p>",
+        'correct': "오는 데다가",
+        'choices': ["오는 데다가", "올 뿐만 아니라", "오다가 보면", "오는 셈이다"]
+    },
+    {
+        'text': "<p>A: 감기는 <u>좀</u> <strong>나았어요</strong>?<br>B: 아니요, 머리가 <strong>아픈</strong> ________ 기침도 <u>계속</u> <strong>나요</strong>.</p>",
+        'explanation': "<p><strong>아픈 데다가</strong>: '아프다' (og'rimoq) sifatiga qo'shilib, bosh og'rig'i ustiga yo'tal ham borligini bildiradi.</p>",
+        'correct': "아픈 데다가",
+        'choices': ["아플 지라도", "아픈 데다가", "아프다가 보면", "아픈 탓에"]
+    },
+    {
+        'text': "<p>A: 이 식당은 <u>왜</u> 손님이 <strong>없을까요</strong>?<br>B: 가격이 <u>너무</u> <strong>비싼</strong> ________ 맛도 <u>전혀</u> <strong>없거든요</strong>.</p>",
+        'explanation': "<p><strong>비싼 데다가</strong>: '비싸다' sifatiga qo'shilib, qimmatligi ustiga ta'msizligini ko'rsatadi.</p>",
+        'correct': "비싼 데다가",
+        'choices': ["비싼 데다가", "비쌀 뿐만 아니라", "비싸다가 보면", "비싸기 짝이 없다"]
+    },
+    {
+        'text': "<p>A: 요즘 많이 <strong>피곤해</strong> <strong>보여요</strong>.<br>B: 야근을 <u>자주</u> <strong>하는</strong> ________ 잠도 <u>충분히</u> <strong>못</strong> <strong>잤어요</strong>.</p>",
+        'explanation': "<p><strong>하는 데다가</strong>: '하다' fe'liga qo'shilib, tungi ishlar ustiga uyqusizlik ham qo'shilganini bildiradi.</p>",
+        'correct': "하는 데다가",
+        'choices': ["하는 데다가", "할 뿐만 아니라", "하다가 보면", "하는 길에"]
+    },
+    {
+        'text': "<p>A: 저 집으로 <strong>이사할</strong> 거예요?<br>B: 아니요, 방이 <u>너무</u> <strong>좁은</strong> ________ 월세도 <u>엄청</u> <strong>비싸요</strong>.</p>",
+        'explanation': "<p><strong>좁은 데다가</strong>: '좁다' sifatiga qo'shilib, torligi ustiga qimmatligini ta'kidlaydi.</p>",
+        'correct': "좁은 데다가",
+        'choices': ["좁은 데다가", "좁을 뿐만 아니라", "좁다가 보면", "좁을 지경이다"]
+    },
+    {
+        'text': "<p>A: 길을 <u>완전히</u> <strong>잃어버렸어요</strong>.<br>B: 날씨가 <u>갑자기</u> <strong>어두워진</strong> ________ 휴대폰 배터리도 <strong>꺼졌어요</strong>.</p>",
+        'explanation': "<p><strong>어두워진 데다가</strong>: '어두워지다' (qorong'ilashmoq) fe'lining o'tgan zamoniga qo'shilib, qorong'ilik ustiga telefon o'chganini bildiradi.</p>",
+        'correct': "어두워진 데다가",
+        'choices': ["어두워진 데다가", "어두워질 뿐만 아니라", "어두워지다가 보면", "어두워지려니 하다"]
+    },
+    {
+        'text': "<p>A: 수미 씨는 <u>요즘</u> <u>어떻게</u> <strong>지내요</strong>?<br>B: 시험에 <strong>떨어진</strong> ________ 남자친구와도 <u>최근에</u> <strong>헤어졌어요</strong>.</p>",
+        'explanation': "<p><strong>떨어진 데다가</strong>: '떨어지다' (yiqilmoq) fe'liga qo'shilib, imtihondan yiqilgani ustiga ajrashganini ifodalaydi.</p>",
+        'correct': "떨어진 데다가",
+        'choices': ["떨어질 뿐만 아니라", "떨어진 데다가", "떨어지다가 보면", "떨어질 턱이 없다"]
+    },
+    {
+        'text': "<p>A: 이 호텔 방은 <u>정말</u> <strong>최악이에요</strong>.<br>B: 침대가 <u>너무</u> <strong>불편한</strong> ________ 에어컨도 <u>갑자기</u> <strong>고장났어요</strong>.</p>",
+        'explanation': "<p><strong>불편한 데다가</strong>: '불편하다' (noqulay bo'lmoq) sifatiga qo'shilib, noqulayligi ustiga buzuqligini bildiradi.</p>",
+        'correct': "불편한 데다가",
+        'choices': ["불편한 데다가", "불편할 뿐만 아니라", "불편하다가 보면", "불편하기 무섭게"]
+    },
+    {
+        'text': "<p>A: 그 사람과는 <u>절대</u> 같이 <strong>일하기</strong> <strong>싫어요</strong>.<br>B: 맞아요. 성격이 <u>매우</u> <strong>급한</strong> ________ 다른 사람 말을 <u>전혀</u> <strong>안</strong> <strong>들어요</strong>.</p>",
+        'explanation': "<p><strong>급한 데다가</strong>: '급하다' (shoshqaloq bo'lmoq) sifatiga qo'shilib, fe'l-atvorining salbiy tomonlarini sanaydi.</p>",
+        'correct': "급한 데다가",
+        'choices': ["급한 바람에", "급한 데다가", "급하다가 보면", "급할 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 그 회사 제품은 <u>왜</u> <u>안</u> <strong>팔릴까요</strong>?<br>B: 품질이 <u>점점</u> <strong>나빠지는</strong> ________ 디자인도 <u>너무</u> <strong>촌스러워요</strong>.</p>",
+        'explanation': "<p><strong>나빠지는 데다가</strong>: '나빠지다' (yomonlashmoq) fe'liga qo'shilib, sifat tushishi ustiga xunukligini bildiradi.</p>",
+        'correct': "나빠지는 데다가",
+        'choices': ["나빠지는 데다가", "나빠질 뿐만 아니라", "나빠지다가 보면", "나빠질 겸"]
+    },
+    {
+        'text': "<p>A: 오늘 마라톤 <strong>참가했어요</strong>?<br>B: 포기했어요. 다리를 <u>심하게</u> <strong>다친</strong> ________ 날씨도 <u>너무</u> <strong>더웠거든요</strong>.</p>",
+        'explanation': "<p><strong>다친 데다가</strong>: '다치다' (jarohat olmoq) fe'liga qo'shilib, jarohat ustiga issiq ob-havo xalaqit qilganini bildiradi.</p>",
+        'correct': "다친 데다가",
+        'choices': ["다친 데다가", "다칠 뿐만 아니라", "다치다가 보면", "다칠 지라도"]
+    },
+    {
+        'text': "<p>A: 이 영화 <u>어때요</u>?<br>B: 내용이 <u>전혀</u> <strong>이해 안 되는</strong> ________ 상영 시간도 <u>너무</u> <strong>길어요</strong>.</p>",
+        'explanation': "<p><strong>이해 안 되는 데다가</strong>: Tushunarsizligi ustiga, juda uzun ekanligini ko'rsatadi.</p>",
+        'correct': "이해 안 되는 데다가",
+        'choices': ["이해 안 되는 데다가", "이해 안 될 뿐만 아니라", "이해 안 되다가 보면", "이해 안 될 지경이다"]
+    },
+    {
+        'text': "<p>A: 왜 <u>그렇게</u> <strong>짜증이</strong> <strong>났어요</strong>?<br>B: 일이 <u>갑자기</u> <strong>많아진</strong> ________ 컴퓨터마저 <u>자꾸</u> <strong>다운돼요</strong>.</p>",
+        'explanation': "<p><strong>많아진 데다가</strong>: '많아지다' (ko'paymoq) fe'liga qo'shilib, ish ko'payishi ustiga kompyuter buzilayotganini bildiradi.</p>",
+        'correct': "많아진 데다가",
+        'choices': ["많아질 뿐만 아니라", "많아진 데다가", "많아지다가 보면", "많아지려니 하다"]
+    },
+    {
+        'text': "<p>A: 그 동네는 <strong>살기</strong> <u>정말</u> <strong>힘들어요</strong>.<br>B: 네, 교통이 <u>아주</u> <strong>불편한</strong> ________ 치안도 <u>꽤</u> <strong>위험해요</strong>.</p>",
+        'explanation': "<p><strong>불편한 데다가</strong>: '불편하다' sifatiga qo'shilib, transport noqulayligi ustiga xavfliligini bildiradi.</p>",
+        'correct': "불편한 데다가",
+        'choices': ["불편한 데다가", "불편할 뿐만 아니라", "불편하다가 보면", "불편할 셈이다"]
+    },
+    {
+        'text': "<p>A: 오늘 쇼핑 <strong>어땠어요</strong>?<br>B: 사람도 <u>너무</u> <strong>많은</strong> ________ 세일도 <u>전혀</u> <strong>안</strong> <strong>해서</strong> <u>그냥</u> <strong>왔어요</strong>.</p>",
+        'explanation': "<p><strong>많은 데다가</strong>: '많다' sifatiga qo'shilib, odam ko'pligi ustiga chegirma ham yo'qligini ko'rsatadi.</p>",
+        'correct': "많은 데다가",
+        'choices': ["많은 데다가", "많을 뿐만 아니라", "많다가 보면", "많으려니 하다"]
+    },
+    {
+        'text': "<p>A: 민수 씨는 <u>요즘</u> <u>자주</u> <strong>지각해요</strong>.<br>B: <u>매일</u> <u>늦게</u> <strong>일어나는</strong> ________ 집도 <u>엄청</u> <strong>멀거든요</strong>.</p>",
+        'explanation': "<p><strong>일어나는 데다가</strong>: '일어나다' fe'liga qo'shilib, kech turishi ustiga uyi ham uzoqligini bildiradi.</p>",
+        'correct': "일어나는 데다가",
+        'choices': ["일어나는 데다가", "일어날 뿐만 아니라", "일어나다가 보면", "일어나기 짝이 없다"]
+    },
+    {
+        'text': "<p>A: 이 식당 국수는 <u>어때요</u>?<br>B: 국물이 <u>너무</u> <strong>매운</strong> ________ 면도 <u>완전히</u> <strong>불어</strong> <strong>터졌어요</strong>.</p>",
+        'explanation': "<p><strong>매운 데다가</strong>: '맵다' sifatiga qo'shilib, achchiqligi ustiga xamiri ezilib ketganini bildiradi.</p>",
+        'correct': "매운 데다가",
+        'choices': ["매운 데다가", "매울 뿐만 아니라", "맵다가 보면", "맵다가는"]
+    },
+    {
+        'text': "<p>A: 짐이 <u>너무</u> <strong>무거워</strong> <strong>보여요</strong>.<br>B: 네, 가방이 <u>엄청</u> <strong>무거운</strong> ________ 양손에 쇼핑백도 <u>가득</u> <strong>들었어요</strong>.</p>",
+        'explanation': "<p><strong>무거운 데다가</strong>: '무겁다' sifatiga qo'shilib, yuk og'irligi ustiga yana sumkalar ham borligini bildiradi.</p>",
+        'correct': "무거운 데다가",
+        'choices': ["무거운 데다가", "무거울 뿐만 아니라", "무겁다가 보면", "무거울 리가 없다"]
+    },
+    {
+        'text': "<p>A: 파티 준비는 <u>다</u> <strong>됐어요</strong>?<br>B: 아니요. 시간이 <u>전혀</u> <strong>부족한</strong> ________ 도와줄 사람도 <u>아직</u> <strong>없어요</strong>.</p>",
+        'explanation': "<p><strong>부족한 데다가</strong>: '부족하다' (yetishmaslik) sifatiga qo'shilib, vaqt yo'qligi ustiga yordamchi ham yo'qligini bildiradi.</p>",
+        'correct': "부족한 데다가",
+        'choices': ["부족한 데다가", "부족할 뿐만 아니라", "부족하다가 보면", "부족하기 십상이다"]
+    },
+    {
+        'text': "<p>A: 그 아이돌 그룹은 <u>왜</u> <u>갑자기</u> <strong>해체했을까요</strong>?<br>B: 멤버들끼리 <u>계속</u> <strong>싸운</strong> ________ 소속사 문제도 <u>엄청</u> <strong>심각했대요</strong>.</p>",
+        'explanation': "<p><strong>싸운 데다가</strong>: '싸우다' (urushmoq) fe'li o'tgan zamoniga qo'shilib, janjallar ustiga agentlik muammolari ham bo'lganini bildiradi.</p>",
+        'correct': "싸운 데다가",
+        'choices': ["싸운 데다가", "싸울 뿐만 아니라", "싸우다가 보면", "싸우려던 참이다"]
+    },
+    {
+        'text': "<p>A: 오늘 회의는 <u>어땠어요</u>?<br>B: 주제가 <u>너무</u> <strong>지루한</strong> ________ 발표 시간도 <u>예상보다</u> <u>길게</u> <strong>끌었어요</strong>.</p>",
+        'explanation': "<p><strong>지루한 데다가</strong>: '지루하다' (zerikarli bo'lmoq) sifatiga qo'shilib, zerikarliligi ustiga cho'zilib ketganini bildiradi.</p>",
+        'correct': "지루한 데다가",
+        'choices': ["지루한 데다가", "지루할 뿐만 아니라", "지루하다가 보면", "지루하기 무섭게"]
+    },
+    {
+        'text': "<p>A: 이 동네는 집값이 <u>왜</u> <u>계속</u> <strong>떨어질까요</strong>?<br>B: 소음이 <u>항상</u> <strong>심한</strong> ________ 쓰레기장도 <u>바로</u> <u>옆에</u> <strong>생겼거든요</strong>.</p>",
+        'explanation': "<p><strong>심한 데다가</strong>: '심하다' sifatiga qo'shilib, shovqin ustiga axlatxona qurilganini ko'rsatadi.</p>",
+        'correct': "심한 데다가",
+        'choices': ["심한 데다가", "심할 뿐만 아니라", "심하다가 보면", "심한 탓에"]
+    },
+    {
+        'text': "<p>A: 오늘 등산은 <u>어땠어요</u>?<br>B: 길이 <u>너무</u> <strong>미끄러운</strong> ________ 비까지 <u>갑자기</u> <strong>내려서</strong> <u>정말</u> <strong>고생했어요</strong>.</p>",
+        'explanation': "<p><strong>미끄러운 데다가</strong>: '미끄럽다' (sirpanchiq bo'lmoq) sifatiga qo'shilib, sirpanchiq ustiga yomg'ir ham yog'ganini bildiradi.</p>",
+        'correct': "미끄러운 데다가",
+        'choices': ["미끄러운 데다가", "미끄러울 뿐만 아니라", "미끄럽다가 보면", "미끄러울 지경이다"]
+    },
+    {
+        'text': "<p>A: 이 차는 <u>왜</u> <u>이렇게</u> 수리비가 <strong>많이</strong> <strong>나와요</strong>?<br>B: 엔진이 <u>완전히</u> <strong>망가진</strong> ________ 타이어도 <u>모두</u> <strong>교체해야</strong> <strong>하거든요</strong>.</p>",
+        'explanation': "<p><strong>망가진 데다가</strong>: '망가지다' fe'liga qo'shilib, motor buzilgani ustiga shinalar ham almashishini ko'rsatadi.</p>",
+        'correct': "망가진 데다가",
+        'choices': ["망가진 데다가", "망가질 뿐만 아니라", "망가지다가 보면", "망가지는 척해요"]
+    },
+    {
+        'text': "<p>A: 요즘 스트레스가 <u>매우</u> <strong>많아</strong> <strong>보여요</strong>.<br>B: 네, 일이 <u>산더미처럼</u> <strong>쌓인</strong> ________ 상사도 <u>계속</u> <strong>화를</strong> <strong>내요</strong>.</p>",
+        'explanation': "<p><strong>쌓인 데다가</strong>: '쌓이다' (to'planmoq) fe'liga qo'shilib, ish ko'pligi ustiga boshliq ham jahl qilayotganini bildiradi.</p>",
+        'correct': "쌓인 데다가",
+        'choices': ["쌓인 데다가", "쌓일 뿐만 아니라", "쌓이다가 보면", "쌓이느라고"]
+    },
+    {
+        'text': "<p>A: 이 옷은 <u>절대</u> <strong>안</strong> <strong>살</strong> 거예요.<br>B: 맞아요. 색깔이 <u>너무</u> <strong>어두운</strong> ________ 사이즈도 <u>전혀</u> <strong>안</strong> <strong>맞아요</strong>.</p>",
+        'explanation': "<p><strong>어두운 데다가</strong>: '어둡다' sifatiga qo'shilib, rangi qorong'iligi ustiga o'lchami to'g'ri kelmasligini bildiradi.</p>",
+        'correct': "어두운 데다가",
+        'choices': ["어두운 데다가", "어두울 뿐만 아니라", "어둡다가 보면", "어두운 셈이다"]
+    },
+    {
+        'text': "<p>A: 여행에서 <u>왜</u> <u>일찍</u> <strong>돌아왔어요</strong>?<br>B: 돈을 <u>다</u> <strong>써버린</strong> ________ 배탈까지 <u>심하게</u> <strong>났거든요</strong>.</p>",
+        'explanation': "<p><strong>써버린 데다가</strong>: '써버리다' (ishlatib yubormoq) fe'liga qo'shilib, pulsiz qolgani ustiga kasal ham bo'lganini bildiradi.</p>",
+        'correct': "써버린 데다가",
+        'choices': ["써버린 데다가", "써버릴 뿐만 아니라", "써버리다가 보면", "써버리는 바람에"]
+    },
+    {
+        'text': "<p>A: 그 식당 서비스는 <u>어때요</u>?<br>B: 음식이 <u>엄청</u> <u>늦게</u> <strong>나오는</strong> ________ 직원이 <u>전혀</u> 사과도 <strong>안</strong> <strong>해요</strong>.</p>",
+        'explanation': "<p><strong>나오는 데다가</strong>: '나오다' fe'liga qo'shilib, taom kech kelishi ustiga xodim uzr ham so'ramasligini bildiradi.</p>",
+        'correct': "나오는 데다가",
+        'choices': ["나오는 데다가", "나올 뿐만 아니라", "나오다가 보면", "나오는 탓에"]
+    },
+    {
+        'text': "<p>A: 이 아파트는 <u>왜</u> 인기가 <strong>없어요</strong>?<br>B: 햇빛이 <u>전혀</u> <strong>안</strong> <strong>드는</strong> ________ 겨울에 <u>너무</u> <strong>추워요</strong>.</p>",
+        'explanation': "<p><strong>드는 데다가</strong>: '들다' (kirmoq) fe'li inkor shaklida kelib, quyosh tushmasligi ustiga sovuqligini bildiradi.</p>",
+        'correct': "안 드는 데다가",
+        'choices': ["안 드는 데다가", "안 들 뿐만 아니라", "안 들다가 보면", "안 드느라고"]
+    },
+    {
+        'text': "<p>A: 어제 데이트는 <strong>망쳤어요</strong>?<br>B: 네, 약속 시간에 <u>늦은</u> ________ 지갑도 <u>아예</u> 집에 <strong>두고</strong> <strong>왔어요</strong>.</p>",
+        'explanation': "<p><strong>늦은 데다가</strong>: '늦다' (kech qolmoq) sifat/fe'liga qo'shilib, kechikkani ustiga hamyonini ham unutganini bildiradi.</p>",
+        'correct': "늦은 데다가",
+        'choices': ["늦은 데다가", "늦을 뿐만 아니라", "늦다가 보면", "늦으려니 하다"]
+    }
+]
+
+# =====================================================================
+# Topic 55: 동사 + 다가 보면 (... qilaversa / davom ettirsa)
+# =====================================================================
+topic_55 = [
+    {
+        'text': "<p>A: 한국어 발음이 <u>너무</u> <strong>어려워요</strong>.<br>B: <u>매일</u> <u>꾸준히</u> <strong>연습하</strong>________ <u>자연스럽게</u> <strong>될</strong> 거예요.</p>",
+        'explanation': "<p><strong>연습하다가 보면</strong>: '연습하다' (mashq qilmoq) fe'liga qo'shilib, mashqni davom ettirsa, natijada yaxshilanishini bildiradi.</p>",
+        'correct': "연습하다가 보면",
+        'choices': ["연습하다가 보면", "연습할 뿐만 아니라", "연습하는 데다가", "연습할 정도로"]
+    },
+    {
+        'text': "<p>A: 이 동네 길이 <u>너무</u> <strong>복잡해요</strong>.<br>B: 걱정 마세요. <u>자주</u> <strong>다니</strong>________ <u>금방</u> <u>익숙해질</u> 거예요.</p>",
+        'explanation': "<p><strong>다니다가 보면</strong>: '다니다' (qatnamoq) fe'liga qo'shilib, qatnayversa ko'nikib ketishini bildiradi.</p>",
+        'correct': "다니다가 보면",
+        'choices': ["다니다가 보면", "다닐 뿐만 아니라", "다니는 데다가", "다닐 지경이다"]
+    },
+    {
+        'text': "<p>A: 처음 하는 일이라서 <u>실수를</u> <u>자주</u> <strong>해요</strong>.<br>B: 괜찮아요. <u>계속</u> <strong>일하</strong>________ 요령이 <strong>생길</strong> 거예요.</p>",
+        'explanation': "<p><strong>일하다가 보면</strong>: '일하다' fe'liga qo'shilib, ishlayversa tajriba ortishini ifodalaydi.</p>",
+        'correct': "일하다가 보면",
+        'choices': ["일하다가 보면", "일할 뿐만 아니라", "일하는 데다가", "일하기 십상이다"]
+    },
+    {
+        'text': "<p>A: 다이어트가 <u>너무</u> <strong>힘들어요</strong>.<br>B: <u>조금씩</u> <u>꾸준히</u> 운동을 <strong>하</strong>________ <u>어느새</u> 살이 <strong>빠져</strong> <strong>있을</strong> 거예요.</p>",
+        'explanation': "<p><strong>하다가 보면</strong>: '하다' fe'liga qo'shilib, davomiy harakat natijasini bildiradi.</p>",
+        'correct': "하다가 보면",
+        'choices': ["하다가 보면", "할 뿐만 아니라", "하는 데다가", "하느라고"]
+    },
+    {
+        'text': "<p>A: 한국 음식은 <u>너무</u> <strong>매워요</strong>.<br>B: 처음에는 <strong>맵지만</strong> <u>자주</u> <strong>먹</strong>________ 그 맛을 <u>점점</u> <strong>좋아하게</strong> <strong>될</strong> 거예요.</p>",
+        'explanation': "<p><strong>먹다가 보면</strong>: '먹다' (yemoq) fe'liga qo'shilib, yeyaverish natijasida o'rganib qolishini ko'rsatadi.</p>",
+        'correct': "먹다가 보면",
+        'choices': ["먹다가 보면", "먹을 뿐만 아니라", "먹는 데다가", "먹기 마련이다"]
+    },
+    {
+        'text': "<p>A: 단어를 <strong>외워도</strong> <u>자꾸</u> <strong>잊어버려요</strong>.<br>B: <u>포기하지 말고</u> <u>매일</u> <strong>읽</strong>________ <u>머릿속에</u> <u>오래</u> <strong>남을</strong> 거예요.</p>",
+        'explanation': "<p><strong>읽다가 보면</strong>: '읽다' (o'qimoq) fe'liga qo'shilib, o'qiyversa esda qolishini bildiradi.</p>",
+        'correct': "읽다가 보면",
+        'choices': ["읽다가 보면", "읽을 뿐만 아니라", "읽는 데다가", "읽는 바람에"]
+    },
+    {
+        'text': "<p>A: 외국 생활이 <u>가끔</u> <u>너무</u> <strong>외로워요</strong>.<br>B: <u>여러</u> 사람들을 <strong>만나</strong>________ <u>좋은</u> 친구가 <strong>생길</strong> 거예요.</p>",
+        'explanation': "<p><strong>만나다가 보면</strong>: '만나다' (uchrashmoq) fe'liga qo'shilib, odamlar bilan uchrashaverish orqali do'st orttirishni bildiradi.</p>",
+        'correct': "만나다가 보면",
+        'choices': ["만나다가 보면", "만날 뿐만 아니라", "만나는 데다가", "만나느니 차라리"]
+    },
+    {
+        'text': "<p>A: 기타 치는 게 <u>생각보다</u> <strong>어렵네요</strong>.<br>B: 손가락이 <strong>아파도</strong> <u>계속</u> <strong>치</strong>________ <u>나중에는</u> <u>정말</u> <strong>잘하게</strong> <strong>될</strong> 거예요.</p>",
+        'explanation': "<p><strong>치다가 보면</strong>: '치다' (chalmoq) fe'liga qo'shilib, chalaversa mahorat oshishini ko'rsatadi.</p>",
+        'correct': "치다가 보면",
+        'choices': ["치다가 보면", "칠 뿐만 아니라", "치는 데다가", "치는 반면에"]
+    },
+    {
+        'text': "<p>A: 피아노 곡이 <u>너무</u> <strong>길어서</strong> <u>다</u> <strong>못</strong> <strong>외우겠어요</strong>.<br>B: <u>천천히</u> <u>반복해서</u> <strong>연주하</strong>________ <u>저절로</u> <strong>외워질</strong> 거예요.</p>",
+        'explanation': "<p><strong>연주하다가 보면</strong>: '연주하다' (kuy chalmoq) fe'liga qo'shilib, takrorlash natijasida yod olinishini bildiradi.</p>",
+        'correct': "연주하다가 보면",
+        'choices': ["연주하다가 보면", "연주할 뿐만 아니라", "연주하는 데다가", "연주할 지라도"]
+    },
+    {
+        'text': "<p>A: 그림 <strong>그리는</strong> 게 <u>맘처럼</u> <u>잘</u> <strong>안 돼요</strong>.<br>B: <u>매일</u> 스케치를 <strong>하</strong>________ 실력이 <u>확실히</u> <strong>늘</strong> 거예요.</p>",
+        'explanation': "<p><strong>하다가 보면</strong>: '하다' fe'liga qo'shilib, chizaversa malaka oshishini bildiradi.</p>",
+        'correct': "하다가 보면",
+        'choices': ["하다가 보면", "할 뿐만 아니라", "하는 데다가", "하는 탓에"]
+    },
+    {
+        'text': "<p>A: 그 소설은 <u>초반이</u> <u>조금</u> <strong>지루해요</strong>.<br>B: <u>그래도</u> <u>참고</u> <u>계속</u> <strong>읽</strong>________ <u>점점</u> <strong>빠져들게</strong> <strong>될</strong> 거예요.</p>",
+        'explanation': "<p><strong>읽다가 보면</strong>: '읽다' fe'liga qo'shilib, o'qishni davom ettirsa qiziqib ketishini bildiradi.</p>",
+        'correct': "읽다가 보면",
+        'choices': ["읽다가 보면", "읽을 뿐만 아니라", "읽는 데다가", "읽으려니 하다"]
+    },
+    {
+        'text': "<p>A: 아이를 <strong>키우는</strong> 게 <u>정말</u> <strong>힘들어요</strong>.<br>B: <u>힘들어도</u> <u>정성껏</u> <strong>키우</strong>________ 아이가 <strong>웃는</strong> 모습에 <u>큰</u> 행복을 <strong>느낄</strong> 거예요.</p>",
+        'explanation': "<p><strong>키우다가 보면</strong>: '키우다' (katta qilmoq) fe'liga qo'shilib, tarbiyalayversa baxt his qilishni bildiradi.</p>",
+        'correct': "키우다가 보면",
+        'choices': ["키우다가 보면", "키울 뿐만 아니라", "키우는 데다가", "키울 지경이다"]
+    },
+    {
+        'text': "<p>A: 수영을 <strong>배우는데</strong> <u>자꾸</u> 물을 <strong>먹어요</strong>.<br>B: <u>꾸준히</u> 물에 <strong>들어가</strong>________ <u>어느새</u> <u>물에</u> <strong>뜨게</strong> <strong>될</strong> 거예요.</p>",
+        'explanation': "<p><strong>들어가다가 보면</strong>: '들어가다' fe'liga qo'shilib, suvga kiraversa suzishni o'rganishni bildiradi.</p>",
+        'correct': "들어가다가 보면",
+        'choices': ["들어가다가 보면", "들어갈 뿐만 아니라", "들어가는 데다가", "들어가려던 참이다"]
+    },
+    {
+        'text': "<p>A: 저 친구와는 성격이 <u>안</u> <strong>맞아요</strong>.<br>B: <u>자주</u> <u>이야기를</u> <strong>나누</strong>________ 서로를 <u>더</u> <u>잘</u> <strong>이해하게</strong> <strong>될</strong> 거예요.</p>",
+        'explanation': "<p><strong>나누다가 보면</strong>: '나누다' (bo'lishmoq/suhbatlashmoq) fe'liga qo'shilib, gaplashaversa tushunishib ketishini bildiradi.</p>",
+        'correct': "나누다가 보면",
+        'choices': ["나누다가 보면", "나눌 뿐만 아니라", "나누는 데다가", "나누는 바람에"]
+    },
+    {
+        'text': "<p>A: 새로운 회사에 <strong>적응하기</strong> <u>어려워요</u>.<br>B: 선배들에게 <u>자주</u> <strong>물어보</strong>________ <u>자연스럽게</u> 업무를 <strong>파악하게</strong> <strong>될</strong> 거예요.</p>",
+        'explanation': "<p><strong>물어보다가 보면</strong>: '물어보다' (so'rab ko'rmoq) fe'liga qo'shilib, so'rayversa ishni o'rganib olishni bildiradi.</p>",
+        'correct': "물어보다가 보면",
+        'choices': ["물어보다가 보면", "물어볼 뿐만 아니라", "물어보는 데다가", "물어보나 마나"]
+    },
+    {
+        'text': "<p>A: 저 산 <strong>정상까지</strong> <u>너무</u> <strong>멀어요</strong>.<br>B: <u>쉬지 않고</u> <u>천천히</u> <strong>걷</strong>________ <u>결국</u> 정상에 <strong>도착할</strong> 거예요.</p>",
+        'explanation': "<p><strong>걷다가 보면</strong>: '걷다' (yurmoq) fe'liga qo'shilib, yuraversa manzilga yetishni bildiradi.</p>",
+        'correct': "걷다가 보면",
+        'choices': ["걷다가 보면", "걸을 뿐만 아니라", "걷는 데다가", "걷자마자"]
+    },
+    {
+        'text': "<p>A: 이번 프로젝트는 <u>도저히</u> <strong>못</strong> <strong>끝낼</strong> <u>것</u> <strong>같아요</strong>.<br>B: <u>조금씩</u> 문제를 <strong>해결하</strong>________ <u>어느덧</u> <strong>완성되어</strong> <strong>있을</strong> 거예요.</p>",
+        'explanation': "<p><strong>해결하다가 보면</strong>: '해결하다' (hal qilmoq) fe'liga qo'shilib, muammolarni yechaversa loyiha bitishini bildiradi.</p>",
+        'correct': "해결하다가 보면",
+        'choices': ["해결하다가 보면", "해결할 뿐만 아니라", "해결하는 데다가", "해결할 겸"]
+    },
+    {
+        'text': "<p>A: 요즘 드라마가 <u>별로</u> <strong>재미없어요</strong>.<br>B: <u>그래도</u> <u>계속</u> <strong>보</strong>________ <u>나중에는</u> <u>다음</u> 내용이 <strong>궁금해질</strong> 거예요.</p>",
+        'explanation': "<p><strong>보다가 보면</strong>: '보다' (ko'rmoq) fe'liga qo'shilib, ko'raversa qiziqib qolishni ko'rsatadi.</p>",
+        'correct': "보다가 보면",
+        'choices': ["보다가 보면", "볼 뿐만 아니라", "보는 데다가", "보려니 하다"]
+    },
+    {
+        'text': "<p>A: 운전 <strong>면허</strong> 따기가 <u>너무</u> <strong>어렵네요</strong>.<br>B: <u>포기하지 말고</u> 주행 연습을 <strong>하</strong>________ <u>자신감이</u> <strong>생길</strong> 거예요.</p>",
+        'explanation': "<p><strong>하다가 보면</strong>: '하다' fe'liga qo'shilib, amaliyot qilaversa o'ziga ishonch paydo bo'lishini bildiradi.</p>",
+        'correct': "하다가 보면",
+        'choices': ["하다가 보면", "할 뿐만 아니라", "하는 데다가", "하기 짝이 없다"]
+    },
+    {
+        'text': "<p>A: 한국 역사는 <u>너무</u> <strong>복잡해요</strong>.<br>B: 역사책을 <u>자주</u> <strong>읽</strong>________ 흐름을 <u>쉽게</u> <strong>이해할</strong> <u>수</u> <strong>있을</strong> 거예요.</p>",
+        'explanation': "<p><strong>읽다가 보면</strong>: '읽다' fe'liga qo'shilib, o'qiyaversa tarixni tushunib olishni bildiradi.</p>",
+        'correct': "읽다가 보면",
+        'choices': ["읽다가 보면", "읽을 뿐만 아니라", "읽는 데다가", "읽은 채로"]
+    },
+    {
+        'text': "<p>A: 저 강아지는 저를 <u>자꾸</u> <strong>피해요</strong>.<br>B: 간식을 <u>주면서</u> <u>자주</u> <strong>놀아주</strong>________ <u>곧</u> <strong>친해질</strong> 거예요.</p>",
+        'explanation': "<p><strong>놀아주다가 보면</strong>: '놀아주다' (birga o'ynamoq) fe'liga qo'shilib, o'ynayversa o'rganib qolishini bildiradi.</p>",
+        'correct': "놀아주다가 보면",
+        'choices': ["놀아주다가 보면", "놀아줄 뿐만 아니라", "놀아주는 데다가", "놀아줄 리가 없다"]
+    },
+    {
+        'text': "<p>A: 청소하기가 <u>너무</u> <strong>귀찮아요</strong>.<br>B: 음악을 <u>들으면서</u> <u>하나씩</u> <strong>정리하</strong>________ <u>금방</u> 방이 <strong>깨끗해질</strong> 거예요.</p>",
+        'explanation': "<p><strong>정리하다가 보면</strong>: '정리하다' (yig'ishtirmoq) fe'liga qo'shilib, tozalayversa tezda bitishini ko'rsatadi.</p>",
+        'correct': "정리하다가 보면",
+        'choices': ["정리하다가 보면", "정리할 뿐만 아니라", "정리하는 데다가", "정리할 정도로"]
+    },
+    {
+        'text': "<p>A: 이 기계는 <u>어떻게</u> <strong>쓰는지</strong> <strong>모르겠어요</strong>.<br>B: 설명서를 <u>읽으면서</u> <u>직접</u> <strong>만져보</strong>________ <u>금방</u> 사용법을 <strong>알게</strong> <strong>될</strong> 거예요.</p>",
+        'explanation': "<p><strong>만져보다가 보면</strong>: '만져보다' (ushlab/ishlatib ko'rmoq) fe'liga qo'shilib, ishlataversa o'rganib olishni bildiradi.</p>",
+        'correct': "만져보다가 보면",
+        'choices': ["만져보다가 보면", "만져볼 뿐만 아니라", "만져보는 데다가", "만져봤자"]
+    },
+    {
+        'text': "<p>A: 서울 <strong>지리가</strong> <u>아직도</u> <strong>어두워요</strong>.<br>B: 대중교통을 <u>이용해서</u> <u>여기저기</u> <strong>다니</strong>________ 길을 <u>다</u> <strong>외울</strong> 거예요.</p>",
+        'explanation': "<p><strong>다니다가 보면</strong>: '다니다' (qatnamoq) fe'liga qo'shilib, yuraversa yo'llarni yodlab olishni bildiradi.</p>",
+        'correct': "다니다가 보면",
+        'choices': ["다니다가 보면", "다닐 뿐만 아니라", "다니는 데다가", "다닐 지경이다"]
+    },
+    {
+        'text': "<p>A: 일기가 <u>매일</u> <u>똑같아서</u> <strong>쓰기</strong> <strong>싫어요</strong>.<br>B: <u>그래도</u> <u>매일</u> <u>조금씩</u> <strong>쓰</strong>________ 글쓰기 실력이 <u>많이</u> <strong>늘어날</strong> 거예요.</p>",
+        'explanation': "<p><strong>쓰다가 보면</strong>: '쓰다' (yozmoq) fe'liga qo'shilib, yozaversa mahorat ortishini bildiradi.</p>",
+        'correct': "쓰다가 보면",
+        'choices': ["쓰다가 보면", "쓸 뿐만 아니라", "쓰는 데다가", "쓰기 무섭게"]
+    },
+    {
+        'text': "<p>A: 발표 <strong>준비가</strong> <u>막막해요</u>.<br>B: 자료를 <u>하나씩</u> <strong>찾</strong>________ <u>어느새</u> <u>좋은</u> 아이디어가 <strong>떠오를</strong> 거예요.</p>",
+        'explanation': "<p><strong>찾다가 보면</strong>: '찾다' (qidirmoq) fe'liga qo'shilib, izlayversa g'oyalar kelishini bildiradi.</p>",
+        'correct': "찾다가 보면",
+        'choices': ["찾다가 보면", "찾을 뿐만 아니라", "찾는 데다가", "찾으려던 참이다"]
+    },
+    {
+        'text': "<p>A: 식물 <strong>키우는</strong> <u>재미를</u> <strong>모르겠어요</strong>.<br>B: <u>매일</u> 물을 <u>주고</u> <strong>가꾸</strong>________ 꽃이 <strong>피는</strong> 모습에 <u>감동할</u> 거예요.</p>",
+        'explanation': "<p><strong>가꾸다가 보면</strong>: '가꾸다' (parvarish qilmoq) fe'liga qo'shilib, qarayversa o'simlikning ochilishi xursand qilishini bildiradi.</p>",
+        'correct': "가꾸다가 보면",
+        'choices': ["가꾸다가 보면", "가꿀 뿐만 아니라", "가꾸는 데다가", "가꾸는 반면에"]
+    },
+    {
+        'text': "<p>A: 김치찌개를 <u>맛있게</u> <strong>끓이기가</strong> <strong>어려워요</strong>.<br>B: 레시피대로 <u>여러 번</u> <strong>만들</strong>________ <u>자신만의</u> 비법이 <strong>생길</strong> 거예요.</p>",
+        'explanation': "<p><strong>만들다가 보면</strong>: '만들다' (tayyorlamoq) fe'liga qo'shilib, pishiraversa o'z uslubi paydo bo'lishini bildiradi.</p>",
+        'correct': "만들다가 보면",
+        'choices': ["만들다가 보면", "만들 뿐만 아니라", "만드는 데다가", "만드는 바람에"]
+    },
+    {
+        'text': "<p>A: 부모님의 마음을 <u>다</u> <strong>이해하지</strong> <strong>못하겠어요</strong>.<br>B: <u>나중에</u> <u>직접</u> 부모가 <strong>되어</strong>________ 그 마음을 <u>깊이</u> <strong>깨닫게</strong> <strong>될</strong> 거예요.</p>",
+        'explanation': "<p><strong>되어보다가 보면</strong>: '되어보다' (bo'lib ko'rmoq) fe'liga qo'shilib, o'sha holatda yashayversa tushunib yetishni bildiradi.</p>",
+        'correct': "되어보다가 보면",
+        'choices': ["되어보다가 보면", "되어볼 뿐만 아니라", "되어보는 데다가", "되어볼 리가 없다"]
+    },
+    {
+        'text': "<p>A: 새로운 언어를 <strong>배우는</strong> 게 <u>너무</u> <strong>더뎌요</strong>.<br>B: <u>매일</u> <u>조금이라도</u> <strong>듣고</strong> <strong>말하</strong>________ <u>어느 순간</u> 귀가 <strong>열릴</strong> 거예요.</p>",
+        'explanation': "<p><strong>말하다가 보면</strong>: '말하다' (gapirmoq) fe'liga qo'shilib, gapiraversa til tezroq o'rganilishini ko'rsatadi.</p>",
+        'correct': "말하다가 보면",
+        'choices': ["말하다가 보면", "말할 뿐만 아니라", "말하는 데다가", "말할 지경이다"]
+    }
+]
+
+# =====================================================================
+# Topic 56: 동사/형용사 + (으)ㅁ으로써 (Vosita va usul: ... qilish orqali)
+# =====================================================================
+topic_56 = [
+    {
+        'text': "<p>A: <u>어떻게</u> 건강을 <strong>유지해요</strong>?<br>B: <u>매일</u> <u>꾸준히</u> <strong>운동함</strong>________ 건강을 <strong>지키고</strong> <strong>있어요</strong>.</p>",
+        'explanation': "<p><strong>운동함으로써</strong>: '운동하다' (sport bilan shug'ullanmoq) fe'liga qo'shilib, sport orqali (vosita) sog'liqni saqlashni bildiradi.</p>",
+        'correct': "운동함으로써",
+        'choices': ["운동함으로써", "운동할 지경이다", "운동할 리가 없다", "운동하는 데다가"]
+    },
+    {
+        'text': "<p>A: 스트레스는 <u>어떻게</u> <strong>풀어요</strong>?<br>B: <u>주말마다</u> <u>충분히</u> <strong>잠</strong>________ 피로를 <strong>풀어요</strong>.</p>",
+        'explanation': "<p><strong>잠으로써</strong>: '자다' (uxlamoq) fe'liga qo'shilib, uxlash orqali charchoqni chiqarishni ifodalaydi.</p>",
+        'correct': "잠으로써",
+        'choices': ["자는 반면에", "잠으로써", "자다가 보면", "잘 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 이 문제는 <u>어떻게</u> <strong>해결할까요</strong>?<br>B: 서로 <u>솔직하게</u> <strong>대화함</strong>________ 오해를 <strong>풀</strong> <u>수</u> <strong>있어요</strong>.</p>",
+        'explanation': "<p><strong>대화함으로써</strong>: '대화하다' (suhbatlashmoq) fe'liga qo'shilib, suhbat orqali muammoni hal qilishni bildiradi.</p>",
+        'correct': "대화함으로써",
+        'choices': ["대화할 지경이다", "대화함으로써", "대화하는 탓에", "대화하려니 하다"]
+    },
+    {
+        'text': "<p>A: 환경을 <strong>보호하려면</strong> <u>어떻게</u> 해야 <strong>해요</strong>?<br>B: 일회용품 사용을 <strong>줄임</strong>________ 자연을 <strong>살릴</strong> <u>수</u> <strong>있습니다</strong>.</p>",
+        'explanation': "<p><strong>줄임으로써</strong>: '줄이다' (kamaytirmoq) fe'liga qo'shilib, kamaytirish orqali tabiatni asrashni bildiradi.</p>",
+        'correct': "줄임으로써",
+        'choices': ["줄이는 통에", "줄일 리가 없다", "줄임으로써", "줄일 지라도"]
+    },
+    {
+        'text': "<p>A: 한국어 실력을 <u>빨리</u> <strong>늘리고</strong> <strong>싶어요</strong>.<br>B: <u>매일</u> 한국 뉴스를 <strong>들음</strong>________ 듣기 실력을 <strong>향상시킬</strong> <u>수</u> <strong>있어요</strong>.</p>",
+        'explanation': "<p><strong>들음으로써</strong>: '듣다' (eshitmoq) fe'liga qo'shilib, eshitish vositasida malakani oshirishni bildiradi.</p>",
+        'correct': "들음으로써",
+        'choices': ["들음으로써", "들을 뿐만 아니라", "듣는 데다가", "듣다가 보면"]
+    },
+    {
+        'text': "<p>A: 돈을 <u>어떻게</u> <strong>모았어요</strong>?<br>B: 외식비를 <u>크게</u> <strong>절약함</strong>________ 저축을 <u>많이</u> <strong>할</strong> <u>수</u> <strong>있었어요</strong>.</p>",
+        'explanation': "<p><strong>절약함으로써</strong>: '절약하다' (tejamoq) fe'liga qo'shilib, tejash orqali pul yig'ishni ko'rsatadi.</p>",
+        'correct': "절약함으로써",
+        'choices': ["절약하는 바람에", "절약함으로써", "절약할 리가 없다", "절약하기 무섭게"]
+    },
+    {
+        'text': "<p>A: <u>좋은</u> 성적을 <strong>받은</strong> 비결이 <strong>뭐예요</strong>?<br>B: <u>매일</u> <u>복습을</u> <strong>함</strong>________ 배운 것을 <u>확실히</u> <strong>이해했어요</strong>.</p>",
+        'explanation': "<p><strong>함으로써</strong>: '하다' (qilmoq) fe'liga qo'shilib, takrorlash orqali tushunishga erishganini bildiradi.</p>",
+        'correct': "함으로써",
+        'choices': ["하는 탓에", "할 지경이다", "함으로써", "할 턱이 없다"]
+    },
+    {
+        'text': "<p>A: 회사 매출이 <u>갑자기</u> <strong>올랐네요</strong>.<br>B: <u>새로운</u> 마케팅을 <strong>도입함</strong>________ 고객을 <u>더</u> <u>많이</u> <strong>유치했습니다</strong>.</p>",
+        'explanation': "<p><strong>도입함으로써</strong>: '도입하다' (joriy qilmoq) fe'liga qo'shilib, yangi tizim orqali mijoz jalb qilinganini ko'rsatadi.</p>",
+        'correct': "도입함으로써",
+        'choices': ["도입함으로써", "도입하는 김에", "도입할 뿐만 아니라", "도입할 지경이다"]
+    },
+    {
+        'text': "<p>A: 책을 <u>자주</u> <strong>읽으시네요</strong>.<br>B: 네, <u>다양한</u> 책을 <strong>읽음</strong>________ <u>넓은</u> 세상을 <strong>경험해요</strong>.</p>",
+        'explanation': "<p><strong>읽음으로써</strong>: '읽다' (o'qimoq) fe'liga qo'shilib, kitob o'qish orqali tajriba orttirishni bildiradi.</p>",
+        'correct': "읽음으로써",
+        'choices': ["읽을 리가 없다", "읽는 데다가", "읽음으로써", "읽다가 보면"]
+    },
+    {
+        'text': "<p>A: 규칙을 <strong>지키는</strong> 것이 <u>왜</u> <strong>중요해요</strong>?<br>B: 법을 <u>철저히</u> <strong>준수함</strong>________ 사회의 안전을 <strong>유지할</strong> <u>수</u> <strong>있거든요</strong>.</p>",
+        'explanation': "<p><strong>준수함으로써</strong>: '준수하다' (amal qilmoq) fe'liga qo'shilib, qonunga amal qilish orqali xavfsizlikni ta'minlashni ko'rsatadi.</p>",
+        'correct': "준수함으로써",
+        'choices': ["준수할 지경이다", "준수함으로써", "준수하는 데다가", "준수할 리가 없다"]
+    },
+    {
+        'text': "<p>A: 이번 협상은 <u>성공적으로</u> <strong>끝났나요</strong>?<br>B: 네, 조건을 <u>조금씩</u> <strong>양보함</strong>________ <u>서로</u> 합의에 <strong>도달했습니다</strong>.</p>",
+        'explanation': "<p><strong>양보함으로써</strong>: '양보하다' (yon bermoq) fe'liga qo'shilib, yon berish orqali kelishuvga erishilganini bildiradi.</p>",
+        'correct': "양보함으로써",
+        'choices': ["양보하는 통에", "양보할 리가 없다", "양보함으로써", "양보할 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 봉사활동을 <u>왜</u> <strong>시작했어요</strong>?<br>B: <u>어려운</u> 이웃을 <strong>도움</strong>________ <u>제</u> 삶도 <u>더</u> <strong>행복해지거든요</strong>.</p>",
+        'explanation': "<p><strong>도움으로써</strong>: '돕다' (yordam bermoq) fe'liga qo'shilib, yordam berish orqali baxtni his qilishni ko'rsatadi.</p>",
+        'correct': "도움으로써",
+        'choices': ["도울 지경이다", "돕는 데다가", "도움으로써", "도울 리가 없다"]
+    },
+    {
+        'text': "<p>A: <u>어떻게</u> 그 상을 <strong>받게</strong> <strong>되었어요</strong>?<br>B: <u>매일</u> <u>밤낮없이</u> <strong>연구함</strong>________ <u>새로운</u> 기술을 <strong>개발했거든요</strong>.</p>",
+        'explanation': "<p><strong>연구함으로써</strong>: '연구하다' (tadqiq qilmoq) fe'liga qo'shilib, tadqiqot orqali kashfiyot qilinganini bildiradi.</p>",
+        'correct': "연구함으로써",
+        'choices': ["연구함으로써", "연구할 지경이다", "연구하는 바람에", "연구하려니 하다"]
+    },
+    {
+        'text': "<p>A: 팀워크가 <u>정말</u> <strong>좋네요</strong>.<br>B: 서로 <u>자주</u> <strong>소통함</strong>________ 신뢰를 <strong>쌓았기</strong> 때문입니다.</p>",
+        'explanation': "<p><strong>소통함으로써</strong>: '소통하다' (aloqa qilmoq) fe'liga qo'shilib, muloqot vositasida ishonch qurilganini ko'rsatadi.</p>",
+        'correct': "소통함으로써",
+        'choices': ["소통할 턱이 없다", "소통함으로써", "소통하는 김에", "소통할 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 회사를 <u>어떻게</u> <strong>발전시킬</strong> 계획인가요?<br>B: <u>새로운</u> 직원을 <strong>채용함</strong>________ 조직에 <u>활력을</u> <strong>불어넣을</strong> 것입니다.</p>",
+        'explanation': "<p><strong>채용함으로써</strong>: '채용하다' (ishga olmoq) fe'liga qo'shilib, ishga qabul qilish orqali rivojlanishni bildiradi.</p>",
+        'correct': "채용함으로써",
+        'choices': ["채용함으로써", "채용할 지경이다", "채용하는 데다가", "채용할 리가 없다"]
+    },
+    {
+        'text': "<p>A: 건강 검진은 <u>왜</u> <u>자주</u> <strong>받아야</strong> <strong>해요</strong>?<br>B: 질병을 <u>조기에</u> <strong>발견함</strong>________ <u>더</u> <u>쉽게</u> <strong>치료할</strong> <u>수</u> <strong>있으니까요</strong>.</p>",
+        'explanation': "<p><strong>발견함으로써</strong>: '발견하다' (kashf/aniqlamoq) fe'liga qo'shilib, kasallikni erta aniqlash orqali davolashni bildiradi.</p>",
+        'correct': "발견함으로써",
+        'choices': ["발견할 지경이다", "발견함으로써", "발견하는 반면에", "발견할 턱이 없다"]
+    },
+    {
+        'text': "<p>A: 자신감을 <u>어떻게</u> <strong>되찾았어요</strong>?<br>B: <u>작은</u> 목표부터 <u>하나씩</u> <strong>달성함</strong>________ <u>스스로를</u> <strong>믿게</strong> <strong>되었습니다</strong>.</p>",
+        'explanation': "<p><strong>달성함으로써</strong>: '달성하다' (erishmoq) fe'liga qo'shilib, maqsadga erishish orqali ishonch paydo bo'lganini ko'rsatadi.</p>",
+        'correct': "달성함으로써",
+        'choices': ["달성하는 탓에", "달성할 리가 없다", "달성함으로써", "달성할 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 역사 공부가 <u>왜</u> <strong>필요합니까</strong>?<br>B: 과거를 <strong>돌아봄</strong>________ <u>미래의</u> 실수를 <strong>예방할</strong> <u>수</u> <strong>있습니다</strong>.</p>",
+        'explanation': "<p><strong>돌아봄으로써</strong>: '돌아보다' (ortga qaramoq) fe'liga qo'shilib, o'tmishga nazar tashlash orqali xatoni oldini olishni bildiradi.</p>",
+        'correct': "돌아봄으로써",
+        'choices': ["돌아볼 지경이다", "돌아봄으로써", "돌아보는 데다가", "돌아볼 리가 없다"]
+    },
+    {
+        'text': "<p>A: <u>어떻게</u> <u>좋은</u> 습관을 <strong>만들었어요</strong>?<br>B: <u>매일</u> 알람을 <strong>맞춤</strong>________ <u>일찍</u> <strong>일어나는</strong> 연습을 <strong>했어요</strong>.</p>",
+        'explanation': "<p><strong>맞춤으로써</strong>: '맞추다' (sozlamoq) fe'liga qo'shilib, budilnik qo'yish orqali erta turishga erishganini ko'rsatadi.</p>",
+        'correct': "맞춤으로써",
+        'choices': ["맞춤으로써", "맞출 뿐만 아니라", "맞추는 데다가", "맞출 지경이다"]
+    },
+    {
+        'text': "<p>A: 이 기부금은 <u>어디에</u> <strong>쓰이나요</strong>?<br>B: 학생들에게 장학금을 <strong>지급함</strong>________ 교육의 기회를 <strong>제공합니다</strong>.</p>",
+        'explanation': "<p><strong>지급함으로써</strong>: '지급하다' (to'lamoq) fe'liga qo'shilib, pul to'lash orqali ta'lim imkoniyati berilishini bildiradi.</p>",
+        'correct': "지급함으로써",
+        'choices': ["지급할 리가 없다", "지급함으로써", "지급하는 탓에", "지급할 턱이 없다"]
+    },
+    {
+        'text': "<p>A: <u>요즘</u> 식물을 <strong>키우시네요</strong>?<br>B: 네, 식물을 <strong>가꿈</strong>________ 마음의 안정을 <strong>찾고</strong> <strong>있어요</strong>.</p>",
+        'explanation': "<p><strong>가꿈으로써</strong>: '가꾸다' (parvarish qilmoq) fe'liga qo'shilib, gul parvarishi orqali xotirjamlik topishini bildiradi.</p>",
+        'correct': "가꿈으로써",
+        'choices': ["가꿀 지경이다", "가꿀 리가 없다", "가꿈으로써", "가꾸는 데다가"]
+    },
+    {
+        'text': "<p>A: 전통 문화를 <u>어떻게</u> <strong>지켜야</strong> <strong>할까요</strong>?<br>B: 전통 놀이를 <u>자주</u> <strong>체험함</strong>________ 그 가치를 <strong>보존할</strong> <u>수</u> <strong>있습니다</strong>.</p>",
+        'explanation': "<p><strong>체험함으로써</strong>: '체험하다' (his qilib ko'rmoq) fe'liga qo'shilib, tajriba orqali madaniyatni saqlab qolishni bildiradi.</p>",
+        'correct': "체험함으로써",
+        'choices': ["체험함으로써", "체험할 지경이다", "체험할 리가 없다", "체험하는 반면에"]
+    },
+    {
+        'text': "<p>A: <u>어떻게</u> 에너지를 <strong>절약할까요</strong>?<br>B: <u>안</u> <strong>쓰는</strong> 플러그를 <strong>뽑음</strong>________ 전기를 <strong>아낄</strong> <u>수</u> <strong>있습니다</strong>.</p>",
+        'explanation': "<p><strong>뽑음으로써</strong>: '뽑다' (sug'urmoq) fe'liga qo'shilib, vilkani sug'urish orqali tokni tejashni ko'rsatadi.</p>",
+        'correct': "뽑음으로써",
+        'choices': ["뽑음으로써", "뽑을 뿐만 아니라", "뽑는 데다가", "뽑을 리가 없다"]
+    },
+    {
+        'text': "<p>A: 회의 시간을 <u>어떻게</u> <strong>단축시켰어요</strong>?<br>B: 안건을 <u>미리</u> <strong>공유함</strong>________ <u>불필요한</u> 설명을 <strong>줄였습니다</strong>.</p>",
+        'explanation': "<p><strong>공유함으로써</strong>: '공유하다' (ulashmoq) fe'liga qo'shilib, mavzuni oldindan ulashish orqali vaqt tejaganini bildiradi.</p>",
+        'correct': "공유함으로써",
+        'choices': ["공유할 지경이다", "공유함으로써", "공유하는 통에", "공유하느니 차라리"]
+    },
+    {
+        'text': "<p>A: 친구와 <u>어떻게</u> <u>다시</u> <strong>친해졌어요</strong>?<br>B: <u>먼저</u> 사과 편지를 <strong>보냄</strong>________ 용서를 <strong>구했어요</strong>.</p>",
+        'explanation': "<p><strong>보냄으로써</strong>: '보내다' (yubormoq) fe'liga qo'shilib, xat yuborish vositasida kechirim so'raganini ko'rsatadi.</p>",
+        'correct': "보냄으로써",
+        'choices': ["보냄으로써", "보낼 지경이다", "보낼 리가 없다", "보내는 데다가"]
+    },
+    {
+        'text': "<p>A: 컴퓨터 속도가 <u>어떻게</u> <strong>빨라졌어요</strong>?<br>B: <u>불필요한</u> 파일을 <strong>삭제함</strong>________ 저장 공간을 <strong>확보했어요</strong>.</p>",
+        'explanation': "<p><strong>삭제함으로써</strong>: '삭제하다' (o'chirmoq) fe'liga qo'shilib, fayllarni o'chirish orqali joy ochganini bildiradi.</p>",
+        'correct': "삭제함으로써",
+        'choices': ["삭제하는 바람에", "삭제할 턱이 없다", "삭제함으로써", "삭제할 지경이다"]
+    },
+    {
+        'text': "<p>A: 교통사고를 <u>어떻게</u> <strong>줄일까요</strong>?<br>B: 안전속도를 <strong>유지함</strong>________ 사고를 <u>크게</u> <strong>예방할</strong> <u>수</u> <strong>있습니다</strong>.</p>",
+        'explanation': "<p><strong>유지함으로써</strong>: '유지하다' (saqlamoq) fe'liga qo'shilib, tezlikni saqlash orqali avariyaning oldini olishni bildiradi.</p>",
+        'correct': "유지함으로써",
+        'choices': ["유지함으로써", "유지할 뿐만 아니라", "유지하는 반면에", "유지할 리가 없다"]
+    },
+    {
+        'text': "<p>A: 지역 경제를 <u>어떻게</u> <strong>살릴까요</strong>?<br>B: 지역 농산물을 <strong>소비함</strong>________ 농가에 도움을 <strong>줄</strong> <u>수</u> <strong>있습니다</strong>.</p>",
+        'explanation': "<p><strong>소비함으로써</strong>: '소비하다' (iste'mol qilmoq) fe'liga qo'shilib, mahalliylar mahsulotini olish orqali yordam berishni ko'rsatadi.</p>",
+        'correct': "소비함으로써",
+        'choices': ["소비할 지경이다", "소비함으로써", "소비하는 탓에", "소비할 리가 없다"]
+    },
+    {
+        'text': "<p>A: <u>좋은</u> 관계는 <u>어떻게</u> <strong>만들어질까요</strong>?<br>B: 상대방의 의견을 <strong>존중함</strong>________ <u>깊은</u> 유대감을 <strong>형성합니다</strong>.</p>",
+        'explanation': "<p><strong>존중함으로써</strong>: '존중하다' (hurmat qilmoq) fe'liga qo'shilib, hurmat orqali rishta o'rnatishni bildiradi.</p>",
+        'correct': "존중함으로써",
+        'choices': ["존중할 지경이다", "존중함으로써", "존중하는 데다가", "존중할 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 영어 실력을 <u>어떻게</u> <strong>유지하세요</strong>?<br>B: 외국 친구와 <u>자주</u> <strong>통화함</strong>________ <u>감각을</u> <strong>잃지</strong> <strong>않고</strong> <strong>있어요</strong>.</p>",
+        'explanation': "<p><strong>통화함으로써</strong>: '통화하다' (telefonda gaplashmoq) fe'liga qo'shilib, gaplashish orqali tilni unutmaslikni bildiradi.</p>",
+        'correct': "통화함으로써",
+        'choices': ["통화함으로써", "통화할 지경이다", "통화할 턱이 없다", "통화하는 김에"]
+    }
+]
+
+# =====================================================================
+# Topic 57: 동사/형용사 + (으)ㄹ 지경이다 (Haddan tashqari holat: ... darajasida/qilay deb qolmoq)
+# =====================================================================
+topic_57 = [
+    {
+        'text': "<p>A: 오늘 <u>정말</u> 많이 <strong>걸었네요</strong>.<br>B: 네, 다리가 <u>너무</u> <strong>아파서</strong> <strong>쓰러질</strong> ________.</p>",
+        'explanation': "<p><strong>쓰러질 지경이다</strong>: '쓰러지다' (yiqilmoq) fe'liga qo'shilib, oyoq og'rig'i tufayli yiqilay deb qolganlikni (eng yuqori holatni) bildiradi.</p>",
+        'correct': "쓰러질 지경이다",
+        'choices': ["쓰러짐으로써", "쓰러질 지경이다", "쓰러질 리가 없다", "쓰러질 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: <u>요즘</u> 회사 일이 <strong>어때요</strong>?<br>B: 일이 <u>산더미처럼</u> <strong>많아서</strong> <u>정말</u> <strong>미칠</strong> ________.</p>",
+        'explanation': "<p><strong>미칠 지경이다</strong>: '미치다' (jinni bo'lmoq) fe'liga qo'shilib, ish ko'pligidan aqldan ozayozganini bildiradi.</p>",
+        'correct': "미칠 지경이다",
+        'choices': ["미칠 리가 없다", "미칠 지경이다", "미치는 데다가", "미침으로써"]
+    },
+    {
+        'text': "<p>A: 밥은 <strong>먹었어요</strong>?<br>B: 아니요, <u>아침부터</u> <u>아무것도</u> <strong>못</strong> <strong>먹어서</strong> 배가 <strong>고파</strong> <strong>죽을</strong> ________.</p>",
+        'explanation': "<p><strong>죽을 지경이다</strong>: '죽다' (o'lmoq) fe'liga qo'shilib, ochlikdan o'layotgan darajada ekanini ko'rsatadi.</p>",
+        'correct': "죽을 지경이다",
+        'choices': ["죽을 지경이다", "죽을 리가 없다", "죽는 데다가", "죽음으로써"]
+    },
+    {
+        'text': "<p>A: 감기는 <u>좀</u> <strong>괜찮아졌어요</strong>?<br>B: 아니요, 기침이 <u>계속</u> <strong>나서</strong> 목이 <strong>터질</strong> ________.</p>",
+        'explanation': "<p><strong>터질 지경이다</strong>: '터지다' (yorilmoq) fe'liga qo'shilib, yo'taldan tomoq yorilib ketguday bo'layotganini ifodalaydi.</p>",
+        'correct': "터질 지경이다",
+        'choices': ["터질 턱이 없다", "터짐으로써", "터질 지경이다", "터질 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 시험이 <u>얼마</u> <strong>안</strong> <strong>남았네요</strong>.<br>B: 네, <strong>외울</strong> 게 <u>너무</u> <strong>많아서</strong> 포기하고 <strong>싶을</strong> ________.</p>",
+        'explanation': "<p><strong>싶을 지경이다</strong>: '싶다' (xohlamoq) ga qo'shilib, taslim bo'lishni xohlayotgan darajaga kelganini bildiradi.</p>",
+        'correct': "싶을 지경이다",
+        'choices': ["싶을 지경이다", "싶을 리가 없다", "싶음으로써", "싶을 지라도"]
+    },
+    {
+        'text': "<p>A: 밖이 <u>그렇게</u> <strong>추워요</strong>?<br>B: 네, 바람이 <u>너무</u> <u>세게</u> <strong>불어서</strong> 손이 <strong>얼어붙을</strong> ________.</p>",
+        'explanation': "<p><strong>얼어붙을 지경이다</strong>: '얼어붙다' (muzlamoq) fe'liga qo'shilib, sovuqdan qo'llar muzlab qolish darajasida ekanini bildiradi.</p>",
+        'correct': "얼어붙을 지경이다",
+        'choices': ["얼어붙을 리가 없다", "얼어붙음으로써", "얼어붙을 지경이다", "얼어붙는 통에"]
+    },
+    {
+        'text': "<p>A: 영화가 <u>정말</u> <strong>슬펐나</strong> <strong>봐요</strong>.<br>B: 네, 주인공이 <strong>죽을</strong> <u>때</u> 눈물이 <strong>나서</strong> <u>펑펑</u> <strong>울</strong> ________.</p>",
+        'explanation': "<p><strong>울 지경이다</strong>: '울다' (yig'lamoq) fe'liga qo'shilib, yig'lab yuborish darajasida bo'lganini ko'rsatadi.</p>",
+        'correct': "울 지경이다",
+        'choices': ["울 지경이다", "울 리가 없다", "우는 데다가", "움으로써"]
+    },
+    {
+        'text': "<p>A: 이 식당은 <u>왜</u> <u>이렇게</u> <strong>시끄러워요</strong>?<br>B: <u>너무</u> <strong>시끄러워서</strong> 머리가 <u>다</u> <strong>아플</strong> ________.</p>",
+        'explanation': "<p><strong>아플 지경이다</strong>: '아프다' (og'rimoq) sifatiga qo'shilib, shovqindan bosh og'rib ketish darajasini bildiradi.</p>",
+        'correct': "아플 지경이다",
+        'choices': ["아플 지경이다", "아픔으로써", "아플 턱이 없다", "아플 지라도"]
+    },
+    {
+        'text': "<p>A: 지하철에 사람이 <strong>많았어요</strong>?<br>B: 네, 사람이 <u>꽉</u> <strong>차서</strong> 숨이 <strong>막힐</strong> ________.</p>",
+        'explanation': "<p><strong>막힐 지경이다</strong>: '막히다' (tiqilmoq) fe'liga qo'shilib, odam ko'pligidan nafas qisib qolish holatini ko'rsatadi.</p>",
+        'correct': "막힐 지경이다",
+        'choices': ["막히는 바람에", "막힐 지경이다", "막힘으로써", "막힐 리가 없다"]
+    },
+    {
+        'text': "<p>A: 그 노래를 <u>자주</u> <strong>들어요</strong>?<br>B: 아니요, <u>어릴 때</u> <u>너무</u> 많이 <strong>들어서</strong> <u>이제는</u> <strong>지겨울</strong> ________.</p>",
+        'explanation': "<p><strong>지겨울 지경이다</strong>: '지겹다' (zerikarli bo'lmoq/jonga tegmoq) sifatiga qo'shilib, eshitaverib jonga tekkan darajani bildiradi.</p>",
+        'correct': "지겨울 지경이다",
+        'choices': ["지겨울 리가 없다", "지겨울 지경이다", "지겨움으로써", "지겨울 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 방이 <u>너무</u> <strong>지저분해요</strong>.<br>B: 청소를 <u>한 달째</u> <strong>안</strong> <strong>해서</strong> 냄새가 <strong>날</strong> ________.</p>",
+        'explanation': "<p><strong>날 지경이다</strong>: '나다' (chiqmoq) fe'liga qo'shilib, tozalanmagani uchun hid chiqib ketish arafasida ekanini bildiradi.</p>",
+        'correct': "날 지경이다",
+        'choices': ["날 지경이다", "날 리가 없다", "남으로써", "나는 데다가"]
+    },
+    {
+        'text': "<p>A: 오늘 날씨가 <u>정말</u> <strong>덥네요</strong>.<br>B: 땀을 <u>너무</u> 많이 <strong>흘려서</strong> <strong>탈수할</strong> ________.</p>",
+        'explanation': "<p><strong>탈수할 지경이다</strong>: '탈수하다' (suvsizlanmoq) fe'liga qo'shilib, issiqdan suvsizlanib qolish darajasini bildiradi.</p>",
+        'correct': "탈수할 지경이다",
+        'choices': ["탈수할 턱이 없다", "탈수할 지경이다", "탈수함으로써", "탈수할 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 그 영화 <strong>재미있어요</strong>?<br>B: 아니요, 내용이 <u>너무</u> <strong>지루해서</strong> <strong>졸음이</strong> <strong>올</strong> ________.</p>",
+        'explanation': "<p><strong>올 지경이다</strong>: '오다' fe'liga qo'shilib, zerikarliligidan uyqu kelayotganini ko'rsatadi.</p>",
+        'correct': "올 지경이다",
+        'choices': ["오는 데다가", "옴으로써", "올 지경이다", "올 리가 없다"]
+    },
+    {
+        'text': "<p>A: 매운 음식 <u>잘</u> <strong>먹어요</strong>?<br>B: <u>조금</u> <strong>먹었는데</strong> 입이 <strong>불타오를</strong> ________.</p>",
+        'explanation': "<p><strong>불타오를 지경이다</strong>: '불타오르다' (yonmoq) fe'liga qo'shilib, achchiqlikdan og'zi yonib ketayotgan darajani bildiradi.</p>",
+        'correct': "불타오를 지경이다",
+        'choices': ["불타오를 지경이다", "불타오름으로써", "불타오를 턱이 없다", "불타오르는 반면에"]
+    },
+    {
+        'text': "<p>A: 컴퓨터가 <u>또</u> <strong>고장</strong> <strong>났어요</strong>?<br>B: 네, <u>하루에</u> <u>열 번씩</u> <strong>꺼져서</strong> <strong>화가</strong> <strong>날</strong> ________.</p>",
+        'explanation': "<p><strong>날 지경이다</strong>: '나다' fe'liga qo'shilib, buzuqlikdan g'azablanish darajasiga yetganini ko'rsatadi.</p>",
+        'correct': "날 지경이다",
+        'choices': ["날 리가 없다", "남으로써", "날 지경이다", "날 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 짐이 <u>많이</u> <strong>무거워요</strong>?<br>B: 네, 가방이 <u>너무</u> <strong>무거워서</strong> 어깨가 <strong>빠질</strong> ________.</p>",
+        'explanation': "<p><strong>빠질 지경이다</strong>: '빠지다' (chiqib ketmoq) fe'liga qo'shilib, og'irlikdan yelka chiqib ketguday darajani bildiradi.</p>",
+        'correct': "빠질 지경이다",
+        'choices': ["빠짐으로써", "빠질 지경이다", "빠질 리가 없다", "빠질 턱이 없다"]
+    },
+    {
+        'text': "<p>A: 기다리는 게 <u>많이</u> <strong>지루해요</strong>?<br>B: <u>벌써</u> <u>두 시간이나</u> <strong>기다려서</strong> 목이 <strong>빠질</strong> ________.</p>",
+        'explanation': "<p><strong>빠질 지경이다</strong>: '목이 빠지다' (bo'yni uzilib tushmoq - uzoq kutmoq ma'nosida) iborasiga qo'shilib, juda uzoq kutib toliqqanini bildiradi.</p>",
+        'correct': "빠질 지경이다",
+        'choices': ["빠질 지경이다", "빠질 리가 없다", "빠짐으로써", "빠지는 통에"]
+    },
+    {
+        'text': "<p>A: 이 가수의 인기가 <u>대단하네요</u>.<br>B: 네, 콘서트 표를 <strong>구하기가</strong> 하늘의 별 <strong>따기일</strong> ________.</p>",
+        'explanation': "<p><strong>따기일 지경이다</strong>: '따기이다' ga qo'shilib, bilet topish yulduz sanashdek qiyinlashib ketgan darajani ko'rsatadi.</p>",
+        'correct': "따기일 지경이다",
+        'choices': ["따기일 리가 없다", "따기일 지경이다", "따기임으로써", "따기일 턱이 없다"]
+    },
+    {
+        'text': "<p>A: <u>갑자기</u> <u>왜</u> <u>그렇게</u> <strong>놀랐어요</strong>?<br>B: <u>갑자기</u> 개가 <strong>튀어나와서</strong> 심장이 <strong>멎을</strong> ________.</p>",
+        'explanation': "<p><strong>멎을 지경이다</strong>: '멎다' (to'xtamoq) fe'liga qo'shilib, qo'rquvdan yurak to'xtab qolguday bo'lganini bildiradi.</p>",
+        'correct': "멎을 지경이다",
+        'choices': ["멎을 지경이다", "멎을 리가 없다", "멎음으로써", "멎을 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 친구가 약속을 <u>또</u> <strong>취소했어요</strong>?<br>B: 네, <u>매번</u> <u>이렇게</u> <strong>취소하니까</strong> <u>이제는</u> <strong>포기할</strong> ________.</p>",
+        'explanation': "<p><strong>포기할 지경이다</strong>: '포기하다' (voz kechmoq) fe'liga qo'shilib, ko'p bekor qilingani uchun umid uzish darajasiga yetganini bildiradi.</p>",
+        'correct': "포기할 지경이다",
+        'choices': ["포기할 리가 없다", "포기함으로써", "포기할 지경이다", "포기하는 데다가"]
+    },
+    {
+        'text': "<p>A: 월급이 <u>벌써</u> <u>다</u> <strong>떨어졌어요</strong>?<br>B: 네, 물가가 <u>너무</u> <strong>비싸서</strong> 밥도 <strong>굶을</strong> ________.</p>",
+        'explanation': "<p><strong>굶을 지경이다</strong>: '굶다' (och qolmoq) fe'liga qo'shilib, qimmatlik tufayli och qolish holatiga kelganini bildiradi.</p>",
+        'correct': "굶을 지경이다",
+        'choices': ["굶음으로써", "굶을 지경이다", "굶을 리가 없다", "굶을 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 그 아이는 <u>정말</u> <strong>말을</strong> <strong>안</strong> <strong>듣네요</strong>.<br>B: 네, <u>하루 종일</u> <strong>사고를</strong> <strong>쳐서</strong> <strong>폭발할</strong> ________.</p>",
+        'explanation': "<p><strong>폭발할 지경이다</strong>: '폭발하다' (portlamoq) fe'liga qo'shilib, g'azabdan portlab ketguday bo'layotganini ko'rsatadi.</p>",
+        'correct': "폭발할 지경이다",
+        'choices': ["폭발할 지경이다", "폭발할 리가 없다", "폭발함으로써", "폭발하는 바람에"]
+    },
+    {
+        'text': "<p>A: 마라톤은 <u>다</u> <strong>뛰었어요</strong>?<br>B: 네, 하지만 <u>너무</u> <strong>지쳐서</strong> <u>당장이라도</u> <strong>기절할</strong> ________.</p>",
+        'explanation': "<p><strong>기절할 지경이다</strong>: '기절하다' (hushdan ketmoq) fe'liga qo'shilib, charchoqdan yiqilish darajasini bildiradi.</p>",
+        'correct': "기절할 지경이다",
+        'choices': ["기절할 지경이다", "기절할 리가 없다", "기절함으로써", "기절할 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 윗집이 <u>많이</u> <strong>시끄러워요</strong>?<br>B: <u>매일</u> <u>밤마다</u> 쿵쿵<strong>거려서</strong> <u>정말</u> 노이로제에 <strong>걸릴</strong> ________.</p>",
+        'explanation': "<p><strong>걸릴 지경이다</strong>: '걸리다' (chalinmoq) fe'liga qo'shilib, asabiylikdan kasal bo'lish darajasiga yetganini bildiradi.</p>",
+        'correct': "걸릴 지경이다",
+        'choices': ["걸릴 리가 없다", "걸림으로써", "걸릴 지경이다", "걸리는 탓에"]
+    },
+    {
+        'text': "<p>A: 이 가방 <u>왜</u> <u>이렇게</u> <strong>비싸요</strong>?<br>B: <u>유명한</u> 디자이너가 <strong>만들어서</strong> 눈알이 <strong>튀어나올</strong> ________.</p>",
+        'explanation': "<p><strong>튀어나올 지경이다</strong>: '튀어나오다' (otilib chiqmoq) fe'liga qo'shilib, narxi qimmatligidan hayratda qolishning yuqori darajasini ko'rsatadi.</p>",
+        'correct': "튀어나올 지경이다",
+        'choices': ["튀어나올 리가 없다", "튀어나옴으로써", "튀어나올 지경이다", "튀어나오는 반면에"]
+    },
+    {
+        'text': "<p>A: 어제 회식에서 술을 <u>많이</u> <strong>마셨어요</strong>?<br>B: <u>너무</u> 많이 <strong>마셔서</strong> <u>오늘</u> <u>아침에</u> <strong>토할</strong> ________.</p>",
+        'explanation': "<p><strong>토할 지경이다</strong>: '토하다' (qayt qilmoq) fe'liga qo'shilib, ko'p ichgandan ayniydigan darajaga kelganini bildiradi.</p>",
+        'correct': "토할 지경이다",
+        'choices': ["토할 지경이다", "토할 리가 없다", "토함으로써", "토할 지라도"]
+    },
+    {
+        'text': "<p>A: 이 수학 문제 <strong>풀었어요</strong>?<br>B: <u>아무리</u> <strong>생각해도</strong> <strong>모르겠어서</strong> 머리가 <strong>터질</strong> ________.</p>",
+        'explanation': "<p><strong>터질 지경이다</strong>: '터지다' fe'liga qo'shilib, o'ylayverib bosh yorilgudek bo'lgan darajani bildiradi.</p>",
+        'correct': "터질 지경이다",
+        'choices': ["터질 리가 없다", "터짐으로써", "터질 지경이다", "터질 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 방이 <u>왜</u> <u>이렇게</u> <strong>건조해요</strong>?<br>B: 겨울이라서 <strong>건조한데</strong> 입술이 <u>다</u> <strong>갈라질</strong> ________.</p>",
+        'explanation': "<p><strong>갈라질 지경이다</strong>: '갈라지다' (yorilmoq) fe'liga qo'shilib, quruqlikdan lablar yorilib ketadigan darajada ekanini ko'rsatadi.</p>",
+        'correct': "갈라질 지경이다",
+        'choices': ["갈라질 턱이 없다", "갈라짐으로써", "갈라질 지경이다", "갈라질 리가 없다"]
+    },
+    {
+        'text': "<p>A: 옷이 <u>너무</u> <strong>꽉</strong> <strong>끼지</strong> <strong>않아요</strong>?<br>B: 네, 살이 <strong>쪄서</strong> 단추가 <strong>터져나갈</strong> ________.</p>",
+        'explanation': "<p><strong>터져나갈 지경이다</strong>: '터져나가다' (uzilib tushmoq) fe'liga qo'shilib, torlikdan tugma uzilay deb turgan holatni bildiradi.</p>",
+        'correct': "터져나갈 지경이다",
+        'choices': ["터져나갈 지경이다", "터져나갈 리가 없다", "터져나감으로써", "터져나갈 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 발표 <u>할 때</u> <u>많이</u> <strong>떨렸어요</strong>?<br>B: <u>사람들이</u> <u>다</u> <strong>쳐다봐서</strong> 부끄러워 <strong>죽을</strong> ________.</p>",
+        'explanation': "<p><strong>죽을 지경이다</strong>: '죽다' fe'liga qo'shilib, uyatdan o'layotgan darajada bo'lganini bildiradi.</p>",
+        'correct': "죽을 지경이다",
+        'choices': ["죽음으로써", "죽을 지경이다", "죽을 리가 없다", "죽는 탓에"]
+    }
+]
+
+# =====================================================================
+# Topic 58: 동사/형용사 + (으)ㄹ 리가 없다 / 턱이 없다 (Kuchli shubha va inkor: ... bo'lishi mumkin emas)
+# =====================================================================
+topic_58 = [
+    {
+        'text': "<p>A: 수미 씨가 <u>아직도</u> <strong>안</strong> <strong>왔어요</strong>. 늦잠을 <strong>잤을까요</strong>?<br>B: <u>항상</u> <u>일찍</u> <strong>일어나는</strong> 사람이 늦잠을 <strong>잤을</strong> ________.</p>",
+        'explanation': "<p><strong>잤을 리가 없다</strong>: '자다' (uxlamoq) fe'lining o'tgan zamoniga qo'shilib, doim erta turadigan odamning uxlab qolishi mumkin emasligini (kuchli inkor) bildiradi.</p>",
+        'correct': "잤을 리가 없다",
+        'choices': ["잤음으로써", "잤을 지경이다", "잤을 리가 없다", "잤을 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 이 시계가 <u>만원이라고요</u>?<br>B: <u>진짜</u> 금으로 <strong>만들었는데</strong> <u>그렇게</u> <strong>쌀</strong> ________.</p>",
+        'explanation': "<p><strong>쌀 리가 없다</strong>: '싸다' (arzon bo'lmoq) sifatiga qo'shilib, tilla soatning arzon bo'lishi umuman mumkin emasligini ko'rsatadi.</p>",
+        'correct': "쌀 리가 없다",
+        'choices': ["쌀 지경이다", "쌀 리가 없다", "쌈으로써", "쌀 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 민수 씨가 우리 비밀을 <strong>말했을까요</strong>?<br>B: 입이 <u>무거운</u> 친구라서 <u>절대</u> 다른 사람에게 <strong>말할</strong> ________.</p>",
+        'explanation': "<p><strong>말할 리가 없다</strong>: '말하다' fe'liga qo'shilib, sir saqlaydigan insonning gapirishiga shubha yo'qligini (imkonsiz) bildiradi.</p>",
+        'correct': "말할 리가 없다",
+        'choices': ["말할 리가 없다", "말할 지경이다", "말함으로써", "말하는 데다가"]
+    },
+    {
+        'text': "<p>A: 오늘 <u>눈이</u> <strong>올까요</strong>?<br>B: <u>이렇게</u> 날씨가 <strong>따뜻한데</strong> 눈이 <strong>올</strong> ________.</p>",
+        'explanation': "<p><strong>올 턱이 없다</strong>: '오다' fe'liga qo'shilib, issiq havoda qor yog'ishi mumkin emasligini bildiradi ('리가 없다' bilan bir xil ma'noda).</p>",
+        'correct': "올 턱이 없다",
+        'choices': ["올 지경이다", "올 턱이 없다", "옴으로써", "올 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 그 식당이 <u>벌써</u> 문을 <strong>닫았을까요</strong>?<br>B: <u>아직</u> <u>저녁 7시밖에</u> <strong>안</strong> <strong>됐는데</strong> <strong>닫았을</strong> ________.</p>",
+        'explanation': "<p><strong>닫았을 리가 없다</strong>: '닫다' (yopmoq) fe'liga qo'shilib, hali erta bo'lgani uchun yopilishi mumkin emasligini bildiradi.</p>",
+        'correct': "닫았을 리가 없다",
+        'choices': ["닫았을 지경이다", "닫았을 리가 없다", "닫았음으로써", "닫았을 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 지갑을 집에 <strong>두고</strong> <strong>온</strong> <u>것</u> <strong>같아요</strong>.<br>B: <u>아까</u> 계산할 <u>때</u> <strong>봤는데</strong> 집에 <strong>있을</strong> ________.</p>",
+        'explanation': "<p><strong>있을 리가 없다</strong>: '있다' (bor bo'lmoq) fe'liga qo'shilib, sal oldin ko'rilgan hamyonning uyda bo'lishi imkonsizligini ko'rsatadi.</p>",
+        'correct': "있을 리가 없다",
+        'choices': ["있음으로써", "있을 지경이다", "있을 리가 없다", "있을 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 제임스 씨가 한국어를 <u>다</u> <strong>잊어버렸을까요</strong>?<br>B: 한국에서 <u>10년이나</u> <strong>살았는데</strong> <strong>잊었을</strong> ________.</p>",
+        'explanation': "<p><strong>잊었을 턱이 없다</strong>: '잊다' (unutmoq) fe'liga qo'shilib, 10 yil yashagan odamning tilni unutishi qiyinligini (imkonsizligini) bildiradi.</p>",
+        'correct': "잊었을 턱이 없다",
+        'choices': ["잊었을 지경이다", "잊었을 턱이 없다", "잊었음으로써", "잊었을 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 이 강아지가 저를 <strong>물까요</strong>?<br>B: <u>너무</u> <strong>순해서</strong> 사람을 <strong>물</strong> ________.</p>",
+        'explanation': "<p><strong>물 리가 없다</strong>: '물다' (tishlamoq) fe'liga qo'shilib, yuvosh itning tishlashi mumkin emasligini ko'rsatadi.</p>",
+        'correct': "물 리가 없다",
+        'choices': ["물 지경이다", "물 리가 없다", "뭄으로써", "물 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 선생님이 화를 <strong>내실까요</strong>?<br>B: <u>항상</u> <strong>친절하신</strong> <u>분이</u> <u>갑자기</u> 화를 <strong>내실</strong> ________.</p>",
+        'explanation': "<p><strong>내실 리가 없다</strong>: '내시다' (chiqarmoq/jahl qilmoq hurmat shakli) fe'liga qo'shilib, muloyim ustozning jahl qilishi mumkin emasligini bildiradi.</p>",
+        'correct': "내실 리가 없다",
+        'choices': ["내실 리가 없다", "내실 지경이다", "내심으로써", "내시는 바람에"]
+    },
+    {
+        'text': "<p>A: 마크 씨가 시험에 <strong>떨어졌대요</strong>.<br>B: <u>매일</u> <u>밤새도록</u> <strong>공부했는데</strong> <strong>떨어졌을</strong> ________.</p>",
+        'explanation': "<p><strong>떨어졌을 리가 없다</strong>: '떨어지다' fe'liga qo'shilib, ko'p o'qigan odamning yiqilishi mumkin emasligini ko'rsatadi.</p>",
+        'correct': "떨어졌을 리가 없다",
+        'choices': ["떨어졌을 지경이다", "떨어졌을 리가 없다", "떨어졌음으로써", "떨어졌을 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 그 사람이 범인일 <u>수도</u> <strong>있잖아요</strong>.<br>B: <u>그 시간에</u> 저와 <u>같이</u> <strong>있었기</strong> 때문에 범인<strong>일</strong> ________.</p>",
+        'explanation': "<p><strong>범인일 리가 없다</strong>: '이다' (bo'lmoq) qo'shimchasiga qo'shilib, birga bo'lgani uchun jinoyatchi bo'lishi imkonsizligini bildiradi.</p>",
+        'correct': "범인일 리가 없다",
+        'choices': ["범인일 리가 없다", "범인일 지경이다", "범인임으로써", "범인일 셈이다"]
+    },
+    {
+        'text': "<p>A: 이 약을 <strong>먹으면</strong> <u>바로</u> <strong>나을까요</strong>?<br>B: <u>한 번</u> <strong>먹었다고</strong> <u>바로</u> 병이 <strong>나을</strong> ________.</p>",
+        'explanation': "<p><strong>나을 턱이 없다</strong>: '낫다' (tuzalmoq) fe'liga qo'shilib, bir marta ichganda tuzalib qolish umuman mumkin emasligini bildiradi.</p>",
+        'correct': "나을 턱이 없다",
+        'choices': ["나을 지경이다", "나을 턱이 없다", "나음으로써", "나을 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 이 차를 <strong>고칠</strong> <u>수</u> <strong>있을까요</strong>?<br>B: 부품이 <u>아예</u> <strong>단종되었는데</strong> <strong>고칠</strong> <u>수</u> <strong>있을</strong> ________.</p>",
+        'explanation': "<p><strong>있을 리가 없다</strong>: '있다' fe'liga qo'shilib, ehtiyot qismlari yo'qligi sabab tuzatib bo'lmasligini ko'rsatadi.</p>",
+        'correct': "있을 리가 없다",
+        'choices': ["있을 지경이다", "있을 리가 없다", "있음으로써", "있을 지라도"]
+    },
+    {
+        'text': "<p>A: 수지 씨가 <u>벌써</u> <strong>도착했을까요</strong>?<br>B: <u>방금</u> <strong>출발했다고</strong> <strong>했는데</strong> <u>벌써</u> <strong>도착했을</strong> ________.</p>",
+        'explanation': "<p><strong>도착했을 리가 없다</strong>: '도착하다' fe'lining o'tgan zamoniga qo'shilib, hozirgina chiqqan odamning yetib kelishi imkonsizligini bildiradi.</p>",
+        'correct': "도착했을 리가 없다",
+        'choices': ["도착했을 지경이다", "도착했을 리가 없다", "도착했음으로써", "도착했을 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 그 영화가 <u>별로</u> <strong>재미없대요</strong>.<br>B: 천만 관객이 <strong>봤는데</strong> <strong>재미없을</strong> ________.</p>",
+        'explanation': "<p><strong>재미없을 리가 없다</strong>: '재미없다' (zerikarli bo'lmoq) sifatiga qo'shilib, ko'p odam ko'rgan filmni zerikarli bo'lishi mumkin emasligini ko'rsatadi.</p>",
+        'correct': "재미없을 리가 없다",
+        'choices': ["재미없을 리가 없다", "재미없을 지경이다", "재미없음으로써", "재미없을 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 이 케이크를 <u>다</u> <strong>먹을</strong> <u>수</u> <strong>있을까요</strong>?<br>B: <u>이렇게</u> <strong>큰데</strong> 혼자서 <u>다</u> <strong>먹을</strong> ________.</p>",
+        'explanation': "<p><strong>먹을 리가 없다</strong>: '먹다' fe'liga qo'shilib, katta tortni yolg'iz yeyishi mumkin emasligini bildiradi.</p>",
+        'correct': "먹을 리가 없다",
+        'choices': ["먹을 지경이다", "먹음으로써", "먹을 리가 없다", "먹을 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 컴퓨터를 <u>안</u> <strong>껐나</strong> <strong>봐요</strong>.<br>B: <u>아까</u> 제가 <u>분명히</u> <strong>끄는</strong> <u>것을</u> <strong>봤는데</strong> <strong>안</strong> <strong>꺼졌을</strong> ________.</p>",
+        'explanation': "<p><strong>꺼졌을 턱이 없다</strong>: '꺼지다' (o'chmoq) fe'liga inkor qo'shilib, o'chirgani ko'rilgan narsaning o'chmagan bo'lishi imkonsizligini ko'rsatadi.</p>",
+        'correct': "꺼졌을 턱이 없다",
+        'choices': ["꺼졌을 턱이 없다", "꺼졌을 지경이다", "꺼졌음으로써", "꺼졌을 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 안나 씨가 김치를 <strong>먹을까요</strong>?<br>B: 매운 음식을 <u>전혀</u> <strong>못</strong> <strong>먹는데</strong> 김치를 <strong>먹을</strong> ________.</p>",
+        'explanation': "<p><strong>먹을 리가 없다</strong>: '먹다' fe'liga qo'shilib, achchiq yemaydigan odam kimchini yeyishi mumkin emasligini bildiradi.</p>",
+        'correct': "먹을 리가 없다",
+        'choices': ["먹을 지경이다", "먹을 리가 없다", "먹음으로써", "먹을 지라도"]
+    },
+    {
+        'text': "<p>A: 그 가게가 <u>오늘</u> <strong>쉬는</strong> <strong>날일까요</strong>?<br>B: <u>주말에는</u> <u>항상</u> <strong>열기</strong> 때문에 <u>오늘</u> <strong>쉴</strong> ________.</p>",
+        'explanation': "<p><strong>쉴 리가 없다</strong>: '쉬다' (dam olmoq) fe'liga qo'shilib, dam olish kuni ishlaydigan joyning yopiq bo'lishi mumkin emasligini ko'rsatadi.</p>",
+        'correct': "쉴 리가 없다",
+        'choices': ["쉴 리가 없다", "쉴 지경이다", "쉼으로써", "쉬는 반면에"]
+    },
+    {
+        'text': "<p>A: 제이슨이 약속을 <strong>잊어버렸을까요</strong>?<br>B: 메모까지 <u>꼼꼼하게</u> <strong>해</strong> <strong>두었는데</strong> <strong>잊었을</strong> ________.</p>",
+        'explanation': "<p><strong>잊었을 리가 없다</strong>: '잊다' (unutmoq) fe'lining o'tgan zamoniga qo'shilib, yozib qo'ygan odamning unutishi imkonsizligini bildiradi.</p>",
+        'correct': "잊었을 리가 없다",
+        'choices': ["잊었을 지경이다", "잊었을 리가 없다", "잊었음으로써", "잊었을 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 이 일을 <u>오늘</u> <u>안에</u> <strong>끝낼</strong> <u>수</u> <strong>있을까요</strong>?<br>B: 일이 <u>이렇게</u> <strong>많은데</strong> <u>하루 만에</u> <strong>끝낼</strong> ________.</p>",
+        'explanation': "<p><strong>끝낼 턱이 없다</strong>: '끝내다' (tugatmoq) fe'liga qo'shilib, ko'p ishni bir kunda tugatish mumkin emasligini ko'rsatadi.</p>",
+        'correct': "끝낼 턱이 없다",
+        'choices': ["끝낼 지경이다", "끝낼 턱이 없다", "끝냄으로써", "끝낼 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 저 사람이 우리를 <strong>도와줄까요</strong>?<br>B: <u>자기</u> 일도 <strong>바쁜데</strong> 우리를 <strong>도와줄</strong> ________.</p>",
+        'explanation': "<p><strong>도와줄 리가 없다</strong>: '도와주다' fe'liga qo'shilib, o'zi band odamning yordam berishi dargumonligini bildiradi.</p>",
+        'correct': "도와줄 리가 없다",
+        'choices': ["도와줄 리가 없다", "도와줄 지경이다", "도와줌으로써", "도와줄 셈이다"]
+    },
+    {
+        'text': "<p>A: 영수 씨가 거짓말을 <strong>한</strong> <u>것</u> <strong>아닐까요</strong>?<br>B: <u>그렇게</u> <strong>정직한</strong> 사람이 거짓말을 <strong>할</strong> ________.</p>",
+        'explanation': "<p><strong>할 리가 없다</strong>: '하다' (qilmoq) fe'liga qo'shilib, halol insonning yolg'on gapirishi mumkin emasligini ko'rsatadi.</p>",
+        'correct': "할 리가 없다",
+        'choices': ["할 지경이다", "할 리가 없다", "함으로써", "할 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 이 옷이 저한테 <strong>작을까요</strong>?<br>B: <u>가장</u> <u>큰</u> 사이즈로 <strong>샀는데</strong> <strong>작을</strong> ________.</p>",
+        'explanation': "<p><strong>작을 리가 없다</strong>: '작다' (kichik bo'lmoq) sifatiga qo'shilib, eng katta o'lchamning kichik kelishi imkonsizligini bildiradi.</p>",
+        'correct': "작을 리가 없다",
+        'choices': ["작을 리가 없다", "작을 지경이다", "작음으로써", "작을 턱이 없다"]
+    },
+    {
+        'text': "<p>A: 길을 <strong>잘못</strong> <strong>든</strong> <u>것</u> <strong>같아요</strong>.<br>B: 내비게이션을 <u>보고</u> <strong>왔는데</strong> <strong>틀렸을</strong> ________.</p>",
+        'explanation': "<p><strong>틀렸을 리가 없다</strong>: '틀리다' (xato bo'lmoq) fe'lining o'tgan zamoniga qo'shilib, GPS bilan adashish mumkin emasligini ko'rsatadi.</p>",
+        'correct': "틀렸을 리가 없다",
+        'choices': ["틀렸을 지경이다", "틀렸음으로써", "틀렸을 리가 없다", "틀리는 데다가"]
+    },
+    {
+        'text': "<p>A: 고장난 핸드폰을 <u>혼자서</u> <strong>고쳤대요</strong>.<br>B: 전문가도 <strong>어려워하는</strong> <u>것을</u> <u>혼자서</u> <strong>고쳤을</strong> ________.</p>",
+        'explanation': "<p><strong>고쳤을 턱이 없다</strong>: '고치다' (tuzatmoq) fe'liga qo'shilib, qiyin ishni o'zi uddalashi mumkin emasligini bildiradi.</p>",
+        'correct': "고쳤을 턱이 없다",
+        'choices': ["고쳤을 지경이다", "고쳤을 턱이 없다", "고쳤음으로써", "고쳤을 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 지민 씨가 <u>정말</u> 우리를 <strong>싫어할까요</strong>?<br>B: 우리에게 <u>얼마나</u> <u>잘해</u> <strong>주는데</strong> <strong>싫어할</strong> ________.</p>",
+        'explanation': "<p><strong>싫어할 리가 없다</strong>: '싫어하다' (yomon ko'rmoq) fe'liga qo'shilib, yaxshilik qiladigan insonning yomon ko'rishi mumkin emasligini ko'rsatadi.</p>",
+        'correct': "싫어할 리가 없다",
+        'choices': ["싫어할 지경이다", "싫어할 리가 없다", "싫어함으로써", "싫어할 턱이 없다"]
+    },
+    {
+        'text': "<p>A: 이 소문이 <strong>사실일까요</strong>?<br>B: <u>아무런</u> 증거도 <strong>없는데</strong> <strong>사실일</strong> ________.</p>",
+        'explanation': "<p><strong>사실일 리가 없다</strong>: '사실이다' (haqiqat bo'lmoq) ga qo'shilib, dalil bo'lmasa uning rost bo'lishi mumkin emasligini bildiradi.</p>",
+        'correct': "사실일 리가 없다",
+        'choices': ["사실일 지경이다", "사실일 리가 없다", "사실임으로써", "사실일 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 복권에 <strong>당첨되었대요</strong>.<br>B: 복권을 <u>사지도</u> <strong>않았는데</strong> <strong>당첨되었을</strong> ________.</p>",
+        'explanation': "<p><strong>당첨되었을 리가 없다</strong>: '당첨되다' (yutuq chiqmoq) fe'liga qo'shilib, sotib olmagan narsasidan yutuq chiqishi imkonsizligini ko'rsatadi.</p>",
+        'correct': "당첨되었을 리가 없다",
+        'choices': ["당첨되었을 리가 없다", "당첨되었을 지경이다", "당첨되었음으로써", "당첨되었을 따름이다"]
+    },
+    {
+        'text': "<p>A: 내일 회의가 <strong>취소될까요</strong>?<br>B: <u>가장</u> <strong>중요한</strong> 회의인데 <u>갑자기</u> <strong>취소될</strong> ________.</p>",
+        'explanation': "<p><strong>취소될 리가 없다</strong>: '취소되다' (bekor qilinmoq) fe'liga qo'shilib, muhim majlisning bekor bo'lishi mumkin emasligini bildiradi.</p>",
+        'correct': "취소될 리가 없다",
+        'choices': ["취소될 지경이다", "취소됨으로써", "취소될 리가 없다", "취소될 뿐만 아니라"]
+    }
+]
+
+# =====================================================================
+# Topic 59: 명사 + 에 달려 있다 (Shart va natija: ... ga bog'liq)
+# =====================================================================
+topic_59 = [
+    {
+        'text': "<p>A: 이번 시합에서 우리가 <strong>이길</strong> <u>수</u> <strong>있을까요</strong>?<br>B: 그건 선수들의 <u>팀워크</u>________.</p>",
+        'explanation': "<p><strong>팀워크에 달려 있다</strong>: '팀워크' (jamoaviy ish) otiga qo'shilib, g'alaba qozonish shaxsan jamoaning qanday ishlashiga bog'liqligini bildiradi.</p>",
+        'correct': "팀워크에 달려 있다",
+        'choices': ["팀워크일 뿐이다", "팀워크에 달려 있다", "팀워크에 불과하다", "팀워크일 리가 없다"]
+    },
+    {
+        'text': "<p>A: 내일 소풍 <strong>갈</strong> <u>수</u> <strong>있어요</strong>?<br>B: 내일 <u>날씨</u>________.</p>",
+        'explanation': "<p><strong>날씨에 달려 있다</strong>: '날씨' (ob-havo) otiga qo'shilib, borish-bormaslik havo qanday bo'lishiga bog'liqligini ko'rsatadi.</p>",
+        'correct': "날씨에 달려 있다",
+        'choices': ["날씨일 턱이 없다", "날씨에 불과하다", "날씨에 달려 있다", "날씨일 지경이다"]
+    },
+    {
+        'text': "<p>A: 제가 한국어를 <u>잘할</u> <u>수</u> <strong>있을까요</strong>?<br>B: <u>모두</u> 본인의 <u>노력</u>________.</p>",
+        'explanation': "<p><strong>노력에 달려 있다</strong>: '노력' (harakat) otiga qo'shilib, tilni o'rganish o'zining harakatiga bog'liqligini bildiradi.</p>",
+        'correct': "노력에 달려 있다",
+        'choices': ["노력에 달려 있다", "노력이기 십상이다", "노력일 따름이다", "노력일 리가 없다"]
+    },
+    {
+        'text': "<p>A: 이 프로젝트가 <strong>성공할까요</strong>?<br>B: 네, 우리가 <u>어떻게</u> <strong>준비하느냐</strong>________.</p>",
+        'explanation': "<p><strong>준비하느냐에 달려 있다</strong>: '준비하느냐' (qanday tayyorlanish) so'rog'iga qo'shilib, muvaffaqiyat tayyorgarlikka bog'liqligini ko'rsatadi.</p>",
+        'correct': "준비하느냐에 달려 있다",
+        'choices': ["준비할 리가 없다", "준비하느냐에 달려 있다", "준비할 뿐만 아니라", "준비할 지경이다"]
+    },
+    {
+        'text': "<p>A: 회의 시간을 <strong>바꿀</strong> <u>수</u> <strong>있어요</strong>?<br>B: 그건 <u>사장님의</u> <u>결정</u>________.</p>",
+        'explanation': "<p><strong>결정에 달려 있다</strong>: '결정' (qaror) otiga qo'shilib, vaqtni o'zgartirish rahbarning qaroriga bog'liqligini bildiradi.</p>",
+        'correct': "결정에 달려 있다",
+        'choices': ["결정일 턱이 없다", "결정일 뿐이다", "결정에 불과하다", "결정에 달려 있다"]
+    },
+    {
+        'text': "<p>A: 이 병이 <u>빨리</u> <strong>나을까요</strong>?<br>B: 환자의 <u>의지</u>________ <u>빨리</u> <strong>회복될</strong> <u>수도</u> <strong>있습니다</strong>.</p>",
+        'explanation': "<p><strong>의지에 달려 있다</strong>: '의지' (iroda) otiga qo'shilib, tuzalish bemorning irodasiga bog'liqligini ko'rsatadi.</p>",
+        'correct': "의지에 달려 있다",
+        'choices': ["의지에 달려 있다", "의지일 지경이다", "의지일 리가 없다", "의지임에 틀림없다"]
+    },
+    {
+        'text': "<p>A: 행복은 <u>어디에서</u> <strong>올까요</strong>?<br>B: 행복은 <u>마음먹기</u>________.</p>",
+        'explanation': "<p><strong>마음먹기에 달려 있다</strong>: '마음먹기' (niyat qilish / ko'ngilga tugish) so'ziga qo'shilib, baxt insonning niyatiga bog'liqligini bildiradi.</p>",
+        'correct': "마음먹기에 달려 있다",
+        'choices': ["마음먹기일 지경이다", "마음먹기일 뿐이다", "마음먹기에 달려 있다", "마음먹기일 리가 없다"]
+    },
+    {
+        'text': "<p>A: 면접에서 <strong>합격할까요</strong>?<br>B: <u>당연히</u> 당신의 <u>실력</u>________.</p>",
+        'explanation': "<p><strong>실력에 달려 있다</strong>: '실력' (qobiliyat / malaka) otiga qo'shilib, o'tish-o'tmaslik bilimga bog'liqligini ko'rsatadi.</p>",
+        'correct': "실력에 달려 있다",
+        'choices': ["실력에 달려 있다", "실력에 불과하다", "실력일 턱이 없다", "실력일 지경이다"]
+    },
+    {
+        'text': "<p>A: 아이들의 성격은 <u>어떻게</u> <strong>형성되나요</strong>?<br>B: 부모의 <u>교육 방식</u>________.</p>",
+        'explanation': "<p><strong>교육 방식에 달려 있다</strong>: '교육 방식' (tarbiya usuli) otiga qo'shilib, xarakter tarbiyaga bog'liqligini bildiradi.</p>",
+        'correct': "교육 방식에 달려 있다",
+        'choices': ["교육 방식일 따름이다", "교육 방식에 달려 있다", "교육 방식일 리가 없다", "교육 방식일 셈이다"]
+    },
+    {
+        'text': "<p>A: 식당의 성공 비결이 <strong>뭐예요</strong>?<br>B: <u>결국</u> 음식의 <u>맛</u>________.</p>",
+        'explanation': "<p><strong>맛에 달려 있다</strong>: '맛' (ta'm) otiga qo'shilib, muvaffaqiyat ta'mga bog'liqligini ko'rsatadi.</p>",
+        'correct': "맛에 달려 있다",
+        'choices': ["맛일 지경이다", "맛일 뿐만 아니라", "맛에 달려 있다", "맛일 턱이 없다"]
+    },
+    {
+        'text': "<p>A: 이번 협상이 <strong>잘</strong> <strong>끝날까요</strong>?<br>B: <u>상대방의</u> <u>태도</u>________.</p>",
+        'explanation': "<p><strong>태도에 달려 있다</strong>: '태도' (munosabat) otiga qo'shilib, kelishuv boshqalarning munosabatiga bog'liqligini bildiradi.</p>",
+        'correct': "태도에 달려 있다",
+        'choices': ["태도일 리가 없다", "태도에 불과하다", "태도에 달려 있다", "태도일 셈이다"]
+    },
+    {
+        'text': "<p>A: 이 일이 <u>빨리</u> <strong>끝날까요</strong>?<br>B: 우리가 <u>얼마나</u> <u>집중하느냐</u>________.</p>",
+        'explanation': "<p><strong>집중하느냐에 달려 있다</strong>: '집중하느냐' (qanchalik e'tibor berish) so'ziga qo'shilib, tez bitishi diqqatga bog'liqligini ko'rsatadi.</p>",
+        'correct': "집중하느냐에 달려 있다",
+        'choices': ["집중할 지경이다", "집중하느냐에 달려 있다", "집중할 리가 없다", "집중할 따름이다"]
+    },
+    {
+        'text': "<p>A: 사람들의 <u>신뢰를</u> <strong>얻으려면</strong> <u>어떻게</u> <strong>해야</strong> <strong>돼요</strong>?<br>B: <u>평소</u> <u>행동</u>________.</p>",
+        'explanation': "<p><strong>행동에 달려 있다</strong>: '행동' (harakat/fe'l-atvor) otiga qo'shilib, ishonch qozonish odatlarga bog'liqligini bildiradi.</p>",
+        'correct': "행동에 달려 있다",
+        'choices': ["행동에 달려 있다", "행동일 지경이다", "행동일 턱이 없다", "행동일 뿐이다"]
+    },
+    {
+        'text': "<p>A: 그 영화가 <u>재미있을까요</u>?<br>B: 그건 개인의 <u>취향</u>________.</p>",
+        'explanation': "<p><strong>취향에 달려 있다</strong>: '취향' (didingiz) otiga qo'shilib, qiziqarliligi didga bog'liqligini ko'rsatadi.</p>",
+        'correct': "취향에 달려 있다",
+        'choices': ["취향일 뿐만 아니라", "취향에 불과하다", "취향일 리가 없다", "취향에 달려 있다"]
+    },
+    {
+        'text': "<p>A: 지구의 <u>미래는</u> <u>어떻게</u> <strong>될까요</strong>?<br>B: 우리가 환경을 <u>어떻게</u> <u>보호하느냐</u>________.</p>",
+        'explanation': "<p><strong>보호하느냐에 달려 있다</strong>: '보호하느냐' (qanday himoya qilish) so'ziga qo'shilib, kelajak atrof-muhitni asrashimizga bog'liqligini bildiradi.</p>",
+        'correct': "보호하느냐에 달려 있다",
+        'choices': ["보호할 리가 없다", "보호하느냐에 달려 있다", "보호할 지경이다", "보호할 따름이다"]
+    },
+    {
+        'text': "<p>A: 이 물건이 <u>잘</u> <strong>팔릴까요</strong>?<br>B: <u>어떻게</u> <u>홍보하느냐</u>________.</p>",
+        'explanation': "<p><strong>홍보하느냐에 달려 있다</strong>: '홍보하느냐' (qanday reklama qilish) so'ziga qo'shilib, savdo reklamaga bog'liqligini ko'rsatadi.</p>",
+        'correct': "홍보하느냐에 달려 있다",
+        'choices': ["홍보하느냐에 달려 있다", "홍보할 뿐만 아니라", "홍보할 턱이 없다", "홍보할 지경이다"]
+    },
+    {
+        'text': "<p>A: 다이어트에 <strong>성공할</strong> <u>수</u> <strong>있을까요</strong>?<br>B: <u>매일</u> <u>꾸준히</u> <u>운동하기</u>________.</p>",
+        'explanation': "<p><strong>운동하기에 달려 있다</strong>: '운동하기' (sport bilan shug'ullanish) so'ziga qo'shilib, ozish sportga bog'liqligini bildiradi.</p>",
+        'correct': "운동하기에 달려 있다",
+        'choices': ["운동하기일 따름이다", "운동하기에 달려 있다", "운동하기일 리가 없다", "운동하기에 불과하다"]
+    },
+    {
+        'text': "<p>A: 주식 <u>투자로</u> 돈을 <strong>벌</strong> <u>수</u> <strong>있을까요</strong>?<br>B: <u>운</u>________.</p>",
+        'explanation': "<p><strong>운에 달려 있다</strong>: '운' (omad) otiga qo'shilib, foyda ko'rish omadga bog'liqligini ko'rsatadi.</p>",
+        'correct': "운에 달려 있다",
+        'choices': ["운일 턱이 없다", "운에 불과하다", "운에 달려 있다", "운일 지경이다"]
+    },
+    {
+        'text': "<p>A: 문제가 <u>복잡한데</u> <strong>해결할</strong> <u>수</u> <strong>있을까요</strong>?<br>B: 우리가 <u>얼마나</u> <u>협력하느냐</u>________.</p>",
+        'explanation': "<p><strong>협력하느냐에 달려 있다</strong>: '협력하느냐' (qanchalik hamkorlik qilish) so'ziga qo'shilib, yechim hamjihatlikka bog'liqligini bildiradi.</p>",
+        'correct': "협력하느냐에 달려 있다",
+        'choices': ["협력할 따름이다", "협력할 리가 없다", "협력하느냐에 달려 있다", "협력할 뿐이다"]
+    },
+    {
+        'text': "<p>A: 두 사람의 관계가 <u>다시</u> <strong>좋아질까요</strong>?<br>B: <u>서로</u> <u>이해하기</u>________.</p>",
+        'explanation': "<p><strong>이해하기에 달려 있다</strong>: '이해하기' (tushunish) so'ziga qo'shilib, munosabatlar bir-birini tushunishga bog'liqligini ko'rsatadi.</p>",
+        'correct': "이해하기에 달려 있다",
+        'choices': ["이해하기에 달려 있다", "이해하기일 지경이다", "이해하기일 턱이 없다", "이해하기일 뿐이다"]
+    },
+    {
+        'text': "<p>A: 오늘 일찍 <strong>퇴근할</strong> <u>수</u> <strong>있어요</strong>?<br>B: 일을 <u>얼마나</u> <u>빨리</u> <u>끝내느냐</u>________.</p>",
+        'explanation': "<p><strong>끝내느냐에 달려 있다</strong>: '끝내느냐' (qanchalik tez tugatish) so'ziga qo'shilib, erta ketish ishni tugatishga bog'liqligini bildiradi.</p>",
+        'correct': "끝내느냐에 달려 있다",
+        'choices': ["끝낼 따름이다", "끝내느냐에 달려 있다", "끝낼 리가 없다", "끝낼 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 이 식물이 <u>잘</u> <strong>자랄까요</strong>?<br>B: 물을 <u>얼마나</u> <u>잘</u> <u>주느냐</u>________.</p>",
+        'explanation': "<p><strong>주느냐에 달려 있다</strong>: '주느냐' (qanday suv berish) so'ziga qo'shilib, o'simlikning o'sishi suv quyishga bog'liqligini ko'rsatadi.</p>",
+        'correct': "주느냐에 달려 있다",
+        'choices': ["주느냐에 달려 있다", "줄 리가 없다", "줄 지경이다", "주는 셈이다"]
+    },
+    {
+        'text': "<p>A: 회사의 <u>수익은</u> <u>어디에</u> 영향을 <strong>받나요</strong>?<br>B: 세계 <u>경제 상황</u>________.</p>",
+        'explanation': "<p><strong>경제 상황에 달려 있다</strong>: '경제 상황' (iqtisodiy holat) otiga qo'shilib, foyda iqtisodiy vaziyatga bog'liqligini bildiradi.</p>",
+        'correct': "경제 상황에 달려 있다",
+        'choices': ["경제 상황일 뿐이다", "경제 상황일 리가 없다", "경제 상황에 달려 있다", "경제 상황에 불과하다"]
+    },
+    {
+        'text': "<p>A: 새로운 법안이 <strong>통과될까요</strong>?<br>B: <u>국회의원들의</u> <u>투표 결과</u>________.</p>",
+        'explanation': "<p><strong>투표 결과에 달려 있다</strong>: '투표 결과' (ovoz berish natijasi) otiga qo'shilib, qonun o'tishi natijalarga bog'liqligini ko'rsatadi.</p>",
+        'correct': "투표 결과에 달려 있다",
+        'choices': ["투표 결과일 지경이다", "투표 결과일 턱이 없다", "투표 결과에 불과하다", "투표 결과에 달려 있다"]
+    },
+    {
+        'text': "<p>A: 휴가 날짜를 <strong>정할</strong> <u>수</u> <strong>있나요</strong>?<br>B: <u>부장님의</u> <u>승인</u>________.</p>",
+        'explanation': "<p><strong>승인에 달려 있다</strong>: '승인' (tasdiqlash) otiga qo'shilib, ta'til kunini belgilash boshliqning tasdig'iga bog'liqligini bildiradi.</p>",
+        'correct': "승인에 달려 있다",
+        'choices': ["승인에 달려 있다", "승인일 리가 없다", "승인일 뿐이다", "승인일 지경이다"]
+    },
+    {
+        'text': "<p>A: 인생에서 <strong>성공하는</strong> <u>비결이</u> <strong>뭐예요</strong>?<br>B: 기회를 <u>어떻게</u> <u>잡느냐</u>________.</p>",
+        'explanation': "<p><strong>잡느냐에 달려 있다</strong>: '잡느냐' (qanday ushlash) so'ziga qo'shilib, muvaffaqiyat imkoniyatdan foydalanishga bog'liqligini ko'rsatadi.</p>",
+        'correct': "잡느냐에 달려 있다",
+        'choices': ["잡을 따름이다", "잡느냐에 달려 있다", "잡을 지경이다", "잡을 뿐만 아니라"]
+    },
+    {
+        'text': "<p>A: 우리가 <u>제시간에</u> <strong>도착할</strong> <u>수</u> <strong>있을까요</strong>?<br>B: 도로의 <u>교통 상황</u>________.</p>",
+        'explanation': "<p><strong>교통 상황에 달려 있다</strong>: '교통 상황' (yo'l holati) otiga qo'shilib, vaqtida yetib borish tirbandlikka bog'liqligini bildiradi.</p>",
+        'correct': "교통 상황에 달려 있다",
+        'choices': ["교통 상황에 불과하다", "교통 상황에 달려 있다", "교통 상황일 리가 없다", "교통 상황일 뿐이다"]
+    },
+    {
+        'text': "<p>A: 이 책이 <u>베스트셀러가</u> <strong>될까요</strong>?<br>B: 독자들의 <u>평가</u>________.</p>",
+        'explanation': "<p><strong>평가에 달려 있다</strong>: '평가' (baho/sharh) otiga qo'shilib, mashhur bo'lish o'quvchilarning bahosiga bog'liqligini ko'rsatadi.</p>",
+        'correct': "평가에 달려 있다",
+        'choices': ["평가에 달려 있다", "평가일 지경이다", "평가일 턱이 없다", "평가일 뿐이다"]
+    },
+    {
+        'text': "<p>A: 수술이 <u>안전하게</u> <strong>끝날까요</strong>?<br>B: <u>의사 선생님의</u> <u>경험</u>________.</p>",
+        'explanation': "<p><strong>경험에 달려 있다</strong>: '경험' (tajriba) otiga qo'shilib, operatsiyaning muvaffaqiyati shifokor tajribasiga bog'liqligini bildiradi.</p>",
+        'correct': "경험에 달려 있다",
+        'choices': ["경험일 리가 없다", "경험에 불과하다", "경험에 달려 있다", "경험일 셈이다"]
+    },
+    {
+        'text': "<p>A: 내일 경기는 <u>누가</u> <strong>이길까요</strong>?<br>B: <u>당일의</u> <u>컨디션</u>________.</p>",
+        'explanation': "<p><strong>컨디션에 달려 있다</strong>: '컨디션' (holat/tayyorgarlik) otiga qo'shilib, g'alaba o'sha kungi jismoniy holatga bog'liqligini ko'rsatadi.</p>",
+        'correct': "컨디션에 달려 있다",
+        'choices': ["컨디션일 턱이 없다", "컨디션일 지경이다", "컨디션에 불과하다", "컨디션에 달려 있다"]
+    }
+]
+
+# =====================================================================
+# Topic 60: 동사 + (으)려던 참이다 (Endigina ... qilmoqchi bo'lib turgandim)
+# =====================================================================
+topic_60 = [
+    {
+        'text': "<p>A: <u>지금</u> 밥 <strong>먹으러</strong> <strong>갈래요</strong>?<br>B: 네, <u>마침</u> <u>저도</u> 밥을 <strong>먹</strong>________.</p>",
+        'explanation': "<p><strong>먹으려던 참이에요</strong>: '먹다' (yemoq) fe'liga qo'shilib, aynan hozir ovqatlanmoqchi bo'lib turganida, boshqa odam ham shuni taklif qilganini bildiradi.</p>",
+        'correct': "먹으려던 참이에요",
+        'choices': ["먹으려던 참이에요", "먹을 지경이에요", "먹을 리가 없어요", "먹을 뿐만 아니에요"]
+    },
+    {
+        'text': "<p>A: <u>혹시</u> 수미 씨한테 연락 <strong>해</strong> <strong>봤어요</strong>?<br>B: <u>아니요</u>, <u>방금</u> <strong>전화하</strong>________.</p>",
+        'explanation': "<p><strong>전화하려던 참이에요</strong>: '전화하다' (qo'ng'iroq qilmoq) fe'liga qo'shilib, qo'ng'iroq qilmoqchi bo'lib turganda so'rab qolinganini ko'rsatadi.</p>",
+        'correct': "전화하려던 참이에요",
+        'choices': ["전화할 리가 없어요", "전화하려던 참이에요", "전화할 지경이에요", "전화하는 데다가"]
+    },
+    {
+        'text': "<p>A: <u>이제</u> 출발 <strong>할까요</strong>?<br>B: 네, 저도 <u>가방을</u> <strong>챙기고</strong> <strong>나가</strong>________.</p>",
+        'explanation': "<p><strong>나가려던 참이었어요</strong>: '나가다' (chiqmoq) fe'liga qo'shilib, endigina chiqib ketmoqchi bo'lib turganini bildiradi.</p>",
+        'correct': "나가려던 참이었어요",
+        'choices': ["나갈 턱이 없어요", "나갈 뿐만 아니에요", "나가려던 참이었어요", "나갈 지경이었어요"]
+    },
+    {
+        'text': "<p>A: 이 보고서 복사 <u>좀</u> <strong>해</strong> <strong>주실래요</strong>?<br>B: <u>마침</u> 복사기에 <strong>가</strong>________. 제 것과 <u>같이</u> <strong>할게요</strong>.</p>",
+        'explanation': "<p><strong>가려던 참이었어요</strong>: '가다' (bormoq) fe'liga qo'shilib, kserokopiyaga endi bormoqchi bo'lib turganini ko'rsatadi.</p>",
+        'correct': "가려던 참이었어요",
+        'choices': ["가려던 참이었어요", "갈 지경이었어요", "갈 리가 없어요", "갈 따름이었어요"]
+    },
+    {
+        'text': "<p>A: 커피 <u>한 잔</u> <strong>마실래요</strong>?<br>B: <u>좋아요</u>. 저도 <u>너무</u> <strong>졸려서</strong> 커피를 <strong>사</strong>________.</p>",
+        'explanation': "<p><strong>사려던 참이었어요</strong>: '사다' (sotib olmoq) fe'liga qo'shilib, qahva sotib olmoqchi bo'lib turganda kofe taklif qilinganini bildiradi.</p>",
+        'correct': "사려던 참이었어요",
+        'choices': ["살 지경이었어요", "살 리가 없어요", "사려던 참이었어요", "사느니 차라리"]
+    },
+    {
+        'text': "<p>A: 방 청소 <u>다</u> <strong>했어요</strong>?<br>B: <u>아니요</u>, <u>안 그래도</u> <u>지금</u> <u>청소기를</u> <strong>돌리</strong>________.</p>",
+        'explanation': "<p><strong>돌리려던 참이었어요</strong>: '돌리다' (aylantirmoq/yurgizmoq) fe'liga qo'shilib, changyutgichni endi yoqmoqchi bo'lib turganini ko'rsatadi.</p>",
+        'correct': "돌리려던 참이었어요",
+        'choices': ["돌릴 턱이 없어요", "돌리려던 참이었어요", "돌릴 지경이었어요", "돌릴 뿐만 아니에요"]
+    },
+    {
+        'text': "<p>A: 민수 씨, <u>잠깐</u> 이야기 <u>좀</u> <strong>할까요</strong>?<br>B: 네, <u>마침</u> 저도 민수 씨에게 <strong>여쭤보</strong>________.</p>",
+        'explanation': "<p><strong>여쭤보려던 참이었어요</strong>: '여쭤보다' (so'ramoq - hurmat) fe'liga qo'shilib, nimanidir endi so'ramoqchi bo'lib turganini bildiradi.</p>",
+        'correct': "여쭤보려던 참이었어요",
+        'choices': ["여쭤볼 리가 없어요", "여쭤볼 지경이었어요", "여쭤보려던 참이었어요", "여쭤볼 셈이었어요"]
+    },
+    {
+        'text': "<p>A: 창문 <u>좀</u> <strong>닫아도</strong> <strong>돼요</strong>?<br>B: 네, 저도 <u>추워서</u> <strong>닫</strong>________.</p>",
+        'explanation': "<p><strong>닫으려던 참이었어요</strong>: '닫다' (yopmoq) fe'liga qo'shilib, derazani aynan shu paytda yopmoqchi bo'lganini ko'rsatadi.</p>",
+        'correct': "닫으려던 참이었어요",
+        'choices': ["닫을 지경이었어요", "닫으려던 참이었어요", "닫을 리가 없어요", "닫을 뿐만 아니에요"]
+    },
+    {
+        'text': "<p>A: <u>오늘</u> 저녁에 영화 <strong>볼래</strong>?<br>B: <u>진짜</u>? 나도 <u>그</u> 영화를 <strong>예매하</strong>________.</p>",
+        'explanation': "<p><strong>예매하려던 참이었어</strong>: '예매하다' (bron qilmoq) fe'liga qo'shilib, o'zi ham o'sha kinoga bilet olmoqchi bo'lib turganini bildiradi.</p>",
+        'correct': "예매하려던 참이었어",
+        'choices': ["예매할 리가 없어", "예매할 지경이어", "예매하려던 참이었어", "예매할 턱이 없어"]
+    },
+    {
+        'text': "<p>A: 저녁 <u>메뉴로</u> 피자 <strong>어때요</strong>?<br>B: <u>와</u>, 통했네요! 저도 피자 <strong>시키</strong>________.</p>",
+        'explanation': "<p><strong>시키려던 참이었어요</strong>: '시키다' (buyurtma bermoq) fe'liga qo'shilib, pitsa chaqirtirmoqchi bo'lib turganida ayni taklif tushganini ko'rsatadi.</p>",
+        'correct': "시키려던 참이었어요",
+        'choices': ["시킬 턱이 없어요", "시키려던 참이었어요", "시킬 뿐만 아니에요", "시킬 지경이었어요"]
+    },
+    {
+        'text': "<p>A: <u>아직도</u> <strong>안</strong> <strong>잤어요</strong>?<br>B: <u>방금</u> 컴퓨터 <strong>끄고</strong> <strong>자</strong>________.</p>",
+        'explanation': "<p><strong>자려던 참이었어요</strong>: '자다' (uxlamoq) fe'liga qo'shilib, kompyuterni o'chirib endigina uxlamoqchi bo'lib turganini bildiradi.</p>",
+        'correct': "자려던 참이었어요",
+        'choices': ["자려던 참이었어요", "잘 지경이었어요", "잘 리가 없어요", "잘 셈이었어요"]
+    },
+    {
+        'text': "<p>A: 회의 자료 <u>다</u> <strong>만들었어요</strong>?<br>B: 네, <u>지금</u> <u>막</u> 부장님께 <strong>보내</strong>________.</p>",
+        'explanation': "<p><strong>보내려던 참이었어요</strong>: '보내다' (yubormoq) fe'liga qo'shilib, hujjatni endigina jo'natmoqchi bo'lib turganini ko'rsatadi.</p>",
+        'correct': "보내려던 참이었어요",
+        'choices': ["보낼 턱이 없어요", "보낼 뿐만 아니에요", "보내려던 참이었어요", "보낼 지경이었어요"]
+    },
+    {
+        'text': "<p>A: 비 <strong>오는데</strong> 우산 <strong>있어요</strong>?<br>B: <u>아니요</u>, <u>마침</u> <u>편의점에서</u> <u>하나</u> <strong>사</strong>________.</p>",
+        'explanation': "<p><strong>사려던 참이었어요</strong>: '사다' (sotib olmoq) fe'liga qo'shilib, yomg'ir boshlangani uchun zontik olmoqchi bo'lib turganini bildiradi.</p>",
+        'correct': "사려던 참이었어요",
+        'choices': ["살 리가 없어요", "사려던 참이었어요", "살 지경이었어요", "사는 바람에"]
+    },
+    {
+        'text': "<p>A: 컴퓨터 <u>전원</u> <u>좀</u> <strong>켜</strong> <strong>주세요</strong>.<br>B: 네, 저도 제 컴퓨터 <strong>켜</strong>________.</p>",
+        'explanation': "<p><strong>켜려던 참이었어요</strong>: '켜다' (yoqmoq) fe'liga qo'shilib, o'z kompyuterini yoqmoqchi bo'lib turganda iltimos qilinganini ko'rsatadi.</p>",
+        'correct': "켜려던 참이었어요",
+        'choices': ["켜려던 참이었어요", "켤 리가 없어요", "켤 지경이었어요", "켤 뿐만 아니에요"]
+    },
+    {
+        'text': "<p>A: 쓰레기 <u>좀</u> <strong>버려</strong> <strong>줄래요</strong>?<br>B: 네, <u>안 그래도</u> <u>밖에</u> <strong>나가</strong>________.</p>",
+        'explanation': "<p><strong>나가려던 참이었어요</strong>: '나가다' (chiqmoq) fe'liga qo'shilib, tashqariga chiqmoqchi bo'lib turganda axlat tashlash so'ralganini bildiradi.</p>",
+        'correct': "나가려던 참이었어요",
+        'choices': ["나갈 턱이 없어요", "나갈 뿐만 아니에요", "나가려던 참이었어요", "나갈 지경이었어요"]
+    },
+    {
+        'text': "<p>A: <u>이따가</u> 마트에 <strong>갈</strong> 거예요?<br>B: <u>마침</u> <u>지금</u> <strong>가</strong>________. <u>같이</u> <strong>갈래요</strong>?</p>",
+        'explanation': "<p><strong>가려던 참이에요</strong>: '가다' fe'liga qo'shilib, aynan hozir do'konga bormoqchi bo'lib turganini ko'rsatadi.</p>",
+        'correct': "가려던 참이에요",
+        'choices': ["갈 리가 없어요", "가려던 참이에요", "갈 지경이에요", "가는 셈이에요"]
+    },
+    {
+        'text': "<p>A: <u>이</u> 문제 <u>어떻게</u> <strong>푸는지</strong> <strong>아세요</strong>?<br>B: <u>아니요</u>, 저도 <u>모르겠어서</u> 선생님께 <strong>질문하</strong>________.</p>",
+        'explanation': "<p><strong>질문하려던 참이었어요</strong>: '질문하다' (savol bermoq) fe'liga qo'shilib, o'zi ham o'qituvchidan so'ramoqchi bo'lib turganini bildiradi.</p>",
+        'correct': "질문하려던 참이었어요",
+        'choices': ["질문할 지경이었어요", "질문할 리가 없어요", "질문하려던 참이었어요", "질문할 뿐만 아니에요"]
+    },
+    {
+        'text': "<p>A: <u>너무</u> <strong>피곤한데</strong> <u>잠깐</u> <strong>쉴까요</strong>?<br>B: 네, 저도 눈이 <strong>아파서</strong> <strong>쉬</strong>________.</p>",
+        'explanation': "<p><strong>쉬려던 참이었어요</strong>: '쉬다' (dam olmoq) fe'liga qo'shilib, ko'zi og'rib dam olmoqchi bo'lib turganida taklif tushganini ko'rsatadi.</p>",
+        'correct': "쉬려던 참이었어요",
+        'choices': ["쉬려던 참이었어요", "쉴 턱이 없어요", "쉴 지경이었어요", "쉬는 셈이었어요"]
+    },
+    {
+        'text': "<p>A: 김치찌개에 두부 <u>좀</u> <strong>넣어주세요</strong>.<br>B: 네, <u>막</u> <strong>썰어서</strong> <strong>넣</strong>________.</p>",
+        'explanation': "<p><strong>넣으려던 참이었어요</strong>: '넣다' (solmoq) fe'liga qo'shilib, tofuni kesib endigina qozonga solmoqchi bo'lib turganini bildiradi.</p>",
+        'correct': "넣으려던 참이었어요",
+        'choices': ["넣을 리가 없어요", "넣으려던 참이었어요", "넣을 지경이었어요", "넣을 뿐만 아니에요"]
+    },
+    {
+        'text': "<p>A: 택시 <strong>부를까요</strong>?<br>B: <u>마침</u> <u>제가</u> 어플로 택시를 <strong>부르</strong>________.</p>",
+        'explanation': "<p><strong>부르려던 참이었어요</strong>: '부르다' (chaqirmoq) fe'liga qo'shilib, o'zi ham telefonda taksi chaqirmoqchi bo'lib turganini ko'rsatadi.</p>",
+        'correct': "부르려던 참이었어요",
+        'choices': ["부를 지경이었어요", "부를 턱이 없어요", "부르려던 참이었어요", "부르는 반면에"]
+    },
+    {
+        'text': "<p>A: <u>이</u> 바지 <u>한번</u> <strong>입어볼래요</strong>?<br>B: <u>마침</u> <u>사이즈가</u> <strong>맞는지</strong> <strong>입어보</strong>________.</p>",
+        'explanation': "<p><strong>입어보려던 참이었어요</strong>: '입어보다' (kiyib ko'rmoq) fe'liga qo'shilib, o'lchami to'g'ri keladimi deb kiyib ko'rmoqchi bo'lib turganini bildiradi.</p>",
+        'correct': "입어보려던 참이었어요",
+        'choices': ["입어볼 리가 없어요", "입어볼 뿐만 아니에요", "입어보려던 참이었어요", "입어볼 지경이었어요"]
+    },
+    {
+        'text': "<p>A: <u>여기</u> 물결 <u>좀</u> <strong>닦아줄래요</strong>?<br>B: <u>네</u>, <u>수건을</u> <strong>가져와서</strong> <strong>닦</strong>________.</p>",
+        'explanation': "<p><strong>닦으려던 참이었어요</strong>: '닦다' (artmoq) fe'liga qo'shilib, sochiq olib kelib artmoqchi bo'lib turganini ko'rsatadi.</p>",
+        'correct': "닦으려던 참이었어요",
+        'choices': ["닦으려던 참이었어요", "닦을 지경이었어요", "닦을 턱이 없어요", "닦을 뿐만 아니에요"]
+    },
+    {
+        'text': "<p>A: <u>저기요</u>, 길 <u>좀</u> <strong>물어봐도</strong> <strong>될까요</strong>?<br>B: <u>아</u>, <u>마침</u> <u>저도</u> 길을 <strong>잃어서</strong> <u>다른</u> 사람에게 <strong>물어보</strong>________.</p>",
+        'explanation': "<p><strong>물어보려던 참이었어요</strong>: '물어보다' (so'ramoq) fe'liga qo'shilib, o'zi ham yo'l so'ramoqchi bo'lib turganini bildiradi.</p>",
+        'correct': "물어보려던 참이었어요",
+        'choices': ["물어볼 리가 없어요", "물어보려던 참이었어요", "물어볼 지경이었어요", "물어보는 데다가"]
+    },
+    {
+        'text': "<p>A: <u>오늘</u> 회의 시간 <u>좀</u> <strong>당길</strong> <u>수</u> <strong>있어요</strong>?<br>B: <u>안 그래도</u> <u>일찍</u> <strong>시작하자고</strong> <strong>말씀드리</strong>________.</p>",
+        'explanation': "<p><strong>말씀드리려던 참이었어요</strong>: '말씀드리다' (aytmoq - hurmat) fe'liga qo'shilib, majlisni erta boshlashni o'zi ham aytmoqchi bo'lib turganini ko'rsatadi.</p>",
+        'correct': "말씀드리려던 참이었어요",
+        'choices': ["말씀드릴 리가 없어요", "말씀드릴 뿐만 아니에요", "말씀드릴 지경이었어요", "말씀드리려던 참이었어요"]
+    },
+    {
+        'text': "<p>A: 불 <u>좀</u> <strong>끄고</strong> <strong>잘게요</strong>.<br>B: 네, 저도 책 <u>다</u> <strong>읽고</strong> <strong>끄</strong>________.</p>",
+        'explanation': "<p><strong>끄려던 참이었어요</strong>: '끄다' (o'chirmoq) fe'liga qo'shilib, kitob o'qib bo'lib yorug'likni o'chirmoqchi bo'lganini bildiradi.</p>",
+        'correct': "끄려던 참이었어요",
+        'choices': ["끄려던 참이었어요", "끌 지경이었어요", "끌 턱이 없어요", "끌 뿐만 아니에요"]
+    },
+    {
+        'text': "<p>A: <u>이</u> 신발 <strong>환불할</strong> 거예요?<br>B: 네, <u>사이즈가</u> <strong>작아서</strong> <u>지금</u> <strong>환불하</strong>________.</p>",
+        'explanation': "<p><strong>환불하려던 참이에요</strong>: '환불하다' (pulini qaytarib olmoq) fe'liga qo'shilib, aynan hozir qaytarmoqchi bo'lib turganini ko'rsatadi.</p>",
+        'correct': "환불하려던 참이에요",
+        'choices': ["환불할 지경이에요", "환불할 리가 없어요", "환불하려던 참이에요", "환불할 따름이에요"]
+    },
+    {
+        'text': "<p>A: 우리 <u>사진</u> <u>한 장</u> <strong>찍을까요</strong>?<br>B: <u>좋아요</u>! 저도 카메라를 <strong>꺼내</strong>________.</p>",
+        'explanation': "<p><strong>꺼내려던 참이었어요</strong>: '꺼내다' (chiqarmoq) fe'liga qo'shilib, rasmga tushish uchun apparatni olmoqchi bo'lib turganini bildiradi.</p>",
+        'correct': "꺼내려던 참이었어요",
+        'choices': ["꺼낼 턱이 없어요", "꺼낼 뿐만 아니에요", "꺼내려던 참이었어요", "꺼낼 지경이었어요"]
+    },
+    {
+        'text': "<p>A: <u>오늘</u> 회식 <strong>어디로</strong> <strong>가요</strong>?<br>B: 고기 <strong>구워</strong> <strong>먹으러</strong> <u>식당을</u> <strong>예약하</strong>________.</p>",
+        'explanation': "<p><strong>예약하려던 참이었어요</strong>: '예약하다' (bron qilmoq) fe'liga qo'shilib, restoranni endigina band qilmoqchi bo'lib turganini ko'rsatadi.</p>",
+        'correct': "예약하려던 참이었어요",
+        'choices': ["예약하려던 참이었어요", "예약할 리가 없어요", "예약할 지경이었어요", "예약할 셈이었어요"]
+    },
+    {
+        'text': "<p>A: 비밀번호를 <u>자주</u> <strong>바꿔야</strong> <strong>해요</strong>.<br>B: <u>안 그래도</u> <u>너무</u> <u>오래돼서</u> <u>새로</u> <strong>변경하</strong>________.</p>",
+        'explanation': "<p><strong>변경하려던 참이었어요</strong>: '변경하다' (o'zgartirmoq) fe'liga qo'shilib, parolni o'zi ham yangilamoqchi bo'lib turganini bildiradi.</p>",
+        'correct': "변경하려던 참이었어요",
+        'choices': ["변경할 리가 없어요", "변경할 지경이었어요", "변경하려던 참이었어요", "변경할 뿐만 아니에요"]
+    },
+    {
+        'text': "<p>A: <u>그</u> 책 <u>다</u> <strong>읽었어요</strong>?<br>B: 네, <u>다</u> <strong>읽고</strong> <u>도서관에</u> <strong>반납하</strong>________.</p>",
+        'explanation': "<p><strong>반납하려던 참이었어요</strong>: '반납하다' (qaytarib bermoq) fe'liga qo'shilib, kitobni o'qib bo'lib, kutubxonaga qaytarmoqchi bo'lib turganini ko'rsatadi.</p>",
+        'correct': "반납하려던 참이었어요",
+        'choices': ["반납할 턱이 없어요", "반납하려던 참이었어요", "반납할 지경이었어요", "반납할 뿐만 아니에요"]
     }
 ]
