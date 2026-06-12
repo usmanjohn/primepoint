@@ -548,7 +548,8 @@ topic_43 = [
         'explanation': "<p><strong>실렸어요</strong>: '실리다' (bosilmoq/nashr qilinmoq) - '싣다' (yuklamoq/bosmoq) ning majhul shakli. <strong>가장 크게</strong> (eng katta qilib).</p>",
         'correct': "실렸어요",
         'choices': ["실렸어요", "실렸어요", "싣히었어요", "실기었어요"]
-    },
+    }]
+topic_44 = [
 
     # --- TOPIC 44: 사동 표현 (-이/히/리/기/우/구/추-, 게 하다 - Causative Voice) ---
     {
