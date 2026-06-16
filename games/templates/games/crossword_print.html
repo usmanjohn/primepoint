@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+{% load i18n %}
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ puzzle.title }} — {% trans "Print" %}</title>
+<style>
+    :root { --accent: {{ accent }}; --ink: #1e293b; --line: #334155; }
+
+    * { box-sizing: border-box; }
+    html, body {
+        margin: 0;
+        padding: 0;
+        background: #f1f5f9;
+        font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", Roboto, sans-serif;
+        color: var(--ink);
+    }
+
+    /* ── Screen-only toolbar ─────────────────────────────── */
+    .toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem 1rem;
+        background: #fff;
+        border-bottom: 1px solid #e2e8f0;
+        box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+    .toolbar a, .toolbar button {
+        font: inherit;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        border: 1px solid #cbd5e1;
+        background: #fff;
+        color: var(--ink);
+    }
+    .toolbar .btn-print { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .toolbar .btn-toggle.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    /* ── The printable sheet ─────────────────────────────── */
+    .sheet {
+        background: #fff;
+        width: 210mm;
+        min-height: 297mm;
+        margin: 1rem auto;
+        padding: 12mm;
+        box-shadow: 0 4px 20px rgba(0,0,0,.12);
+    }
+
+    .sheet-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 4mm;
+        margin-bottom: 5mm;
+        gap: 8mm;
+    }
+    .sheet-title { font-size: 18pt; font-weight: 800; margin: 0; }
+    .sheet-meta  { font-size: 9pt; color: #64748b; white-space: nowrap; }
+    .answer-tag {
+        font-size: 9pt; font-weight: 700; color: var(--accent);
+        border: 1px solid var(--accent); border-radius: 4px; padding: 1mm 2mm;
+    }
+
+    /* ── Grid ─────────────────────────────────────────────── */
+    .grid-wrap { display: flex; justify-content: center; margin-bottom: 6mm; }
+    table.cw { border-collapse: collapse; }
+    table.cw td {
+        width: {{ cell_mm }}mm;
+        height: {{ cell_mm }}mm;
+        padding: 0;
+        position: relative;
+        border: 0.35mm solid var(--line);
+        vertical-align: middle;
+        text-align: center;
+    }
+    td.blk { background: var(--ink); border-color: var(--ink); }
+    td.cell { background: #fff; }
+
+    .cw-num {
+        position: absolute;
+        top: 0.2mm; left: 0.5mm;
+        font-size: {{ num_mm }}mm;
+        line-height: 1;
+        font-weight: 700;
+        color: var(--accent);
+    }
+    /* direction arrows on the start cell */
+    .arr {
+        position: absolute;
+        font-size: {{ arrow_mm }}mm;
+        line-height: 1;
+        font-weight: 700;
+        color: var(--accent);
+    }
+    .arr-across { top: 0.2mm;  right: 0.5mm; }
+    .arr-down   { bottom: 0.2mm; left: 0.5mm; }
+
+    .cw-letter {
+        font-size: {{ letter_mm }}mm;
+        font-weight: 700;
+        color: var(--ink);
+    }
+
+    /* ── Clues ────────────────────────────────────────────── */
+    .clues { columns: 2; column-gap: 8mm; }
+    .clue-block { break-inside: avoid; margin-bottom: 4mm; }
+    .clue-head {
+        font-size: 11pt; font-weight: 800; color: var(--accent);
+        text-transform: uppercase; letter-spacing: .04em;
+        border-bottom: 1px solid #cbd5e1; padding-bottom: 1mm; margin-bottom: 2mm;
+    }
+    .clue-row { display: flex; gap: 2mm; font-size: 9.5pt; line-height: 1.35; margin-bottom: 1.6mm; break-inside: avoid; }
+    .clue-n   { font-weight: 700; min-width: 6mm; }
+    .clue-txt { flex: 1; }
+    .clue-sec { color: #64748b; font-size: 8.5pt; }
+    .clue-len { color: #94a3b8; font-size: 8pt; }
+
+    .empty-note { padding: 20mm; text-align: center; color: #b45309; }
+
+    /* ── Print rules ──────────────────────────────────────── */
+    @page { size: A4 portrait; margin: 0; }
+    @media print {
+        html, body { background: #fff; }
+        .toolbar { display: none !important; }
+        .sheet {
+            width: auto;
+            min-height: auto;
+            margin: 0;
+            padding: 10mm 12mm;
+            box-shadow: none;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+    <a href="{% url back_url puzzle.pk %}">&#x2190; {% trans "Back" %}</a>
+    {% if show_answers %}
+    <a class="btn-toggle on" href="{% url print_url puzzle.pk %}">{% trans "Answers: ON" %}</a>
+    {% else %}
+    <a class="btn-toggle" href="{% url print_url puzzle.pk %}?answers=1">{% trans "Show answer key" %}</a>
+    {% endif %}
+    <button class="btn-print" onclick="window.print()">&#x1F5A8; {% trans "Print / Save as PDF" %}</button>
+</div>
+
+<div class="sheet">
+
+    <div class="sheet-head">
+        <h1 class="sheet-title">&#x1F9E9; {{ puzzle.title }}</h1>
+        <div class="sheet-meta">
+            {% if show_answers %}<span class="answer-tag">{% trans "ANSWER KEY" %}</span>{% endif %}
+            <div>{% trans "Name:" %} ____________________</div>
+        </div>
+    </div>
+
+    {% if not has_grid %}
+    <div class="empty-note">{% trans "This puzzle has no grid yet." %}</div>
+    {% else %}
+
+    <div class="grid-wrap">
+        <table class="cw">
+            <tbody>
+            {% for row in grid_rows %}
+            <tr>
+                {% for cell in row %}
+                {% if cell.is_black %}
+                <td class="blk"></td>
+                {% else %}
+                <td class="cell">
+                    {% if cell.number %}<span class="cw-num">{{ cell.number }}</span>{% endif %}
+                    {% if cell.across %}<span class="arr arr-across">&#x2192;</span>{% endif %}
+                    {% if cell.down %}<span class="arr arr-down">&#x2193;</span>{% endif %}
+                    {% if cell.letter %}<span class="cw-letter">{{ cell.letter }}</span>{% endif %}
+                </td>
+                {% endif %}
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="clues">
+        <div class="clue-block">
+            <div class="clue-head">{% trans "Across" %} &#x2192;</div>
+            {% for c in across_clues %}
+            <div class="clue-row">
+                <span class="clue-n">{{ c.number }}</span>
+                <span class="clue-txt">
+                    {{ c.primary }} <span class="clue-len">({{ c.length }})</span>
+                    {% if c.secondary %}<br><span class="clue-sec">{{ c.secondary }}</span>{% endif %}
+                </span>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="clue-block">
+            <div class="clue-head">{% trans "Down" %} &#x2193;</div>
+            {% for c in down_clues %}
+            <div class="clue-row">
+                <span class="clue-n">{{ c.number }}</span>
+                <span class="clue-txt">
+                    {{ c.primary }} <span class="clue-len">({{ c.length }})</span>
+                    {% if c.secondary %}<br><span class="clue-sec">{{ c.secondary }}</span>{% endif %}
+                </span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% endif %}
+
+</div>
+</body>
+</html>

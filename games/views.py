@@ -80,6 +80,86 @@ def _generate_cb_expression(target, difficulty, used_exprs):
     return f"{a} + {target - a}"
 
 
+# ---------------------------------------------------------------------------
+# Shared helpers
+# ---------------------------------------------------------------------------
+
+def _can_manage_games(user):
+    """Only staff/admins and masters (teachers) may print/download puzzles."""
+    if user.is_staff:
+        return True
+    return hasattr(user, 'profile') and user.profile.is_master
+
+
+def _build_print_context(puzzle, primary_field, secondary_field, show_answers):
+    """Assemble an A4-friendly print context for a crossword puzzle.
+
+    `primary_field`/`secondary_field` are the per-word clue keys in grid_data
+    (e.g. 'clue_korean'/'clue_uzbek' or 'clue_english'/'clue_uzbek').
+    """
+    grid_data = puzzle.grid_data or {}
+    words = grid_data.get('words', [])
+    cells = grid_data.get('cells', [])
+    rows  = grid_data.get('rows', 0)
+    cols  = grid_data.get('cols', 0)
+
+    # Which directions start at each cell, plus the clue number.
+    start_map = {}
+    for w in words:
+        key = (w['row'], w['col'])
+        entry = start_map.setdefault(key, {'number': w['number'], 'across': False, 'down': False})
+        entry[w['direction']] = True
+
+    grid_rows = []
+    for r in range(rows):
+        row_cells = []
+        for c in range(cols):
+            cell_val = cells[r][c] if cells else None
+            if cell_val is None:
+                row_cells.append({'is_black': True})
+            else:
+                s = start_map.get((r, c))
+                row_cells.append({
+                    'is_black': False,
+                    'letter':   cell_val if show_answers else '',
+                    'number':   s['number'] if s else None,
+                    'across':   s['across'] if s else False,
+                    'down':     s['down'] if s else False,
+                })
+        grid_rows.append(row_cells)
+
+    def clue_list(direction):
+        items = sorted((w for w in words if w['direction'] == direction),
+                       key=lambda x: x['number'])
+        return [{
+            'number':    w['number'],
+            'length':    w['length'],
+            'primary':   w.get(primary_field, ''),
+            'secondary': w.get(secondary_field, ''),
+        } for w in items]
+
+    # Size each cell so the whole grid fits one A4 page (≈186mm usable width,
+    # leaving room below for the clue lists). Clamp to a readable range.
+    if cols and rows:
+        cell_mm = min(11.0, 182.0 / cols, 150.0 / rows)
+    else:
+        cell_mm = 10.0
+    cell_mm = round(max(cell_mm, 5.5), 2)
+
+    return {
+        'puzzle':       puzzle,
+        'grid_rows':    grid_rows,
+        'across_clues': clue_list('across'),
+        'down_clues':   clue_list('down'),
+        'has_grid':     bool(grid_rows),
+        'show_answers': show_answers,
+        'cell_mm':      cell_mm,
+        'num_mm':       round(max(2.2, cell_mm * 0.30), 2),
+        'arrow_mm':     round(max(2.6, cell_mm * 0.38), 2),
+        'letter_mm':    round(max(3.0, cell_mm * 0.52), 2),
+    }
+
+
 @login_required
 def games_home(request):
     return render(request, 'games/games_home.html')
@@ -247,6 +327,7 @@ def crossword_play(request, pk):
         'checked':      checked,
         'all_correct':  all_correct,
         'words_json':   json.dumps(words),
+        'can_manage':   _can_manage_games(request.user),
     }
     return render(request, 'games/crossword_play.html', context)
 
@@ -271,6 +352,21 @@ def crossword_edit(request, pk):
             return JsonResponse({'ok': False, 'error': str(e)}, status=400)
 
     return render(request, 'games/crossword_edit.html', {'puzzle': puzzle})
+
+
+@login_required
+def crossword_print(request, pk):
+    if not _can_manage_games(request.user):
+        raise PermissionDenied
+    puzzle = get_object_or_404(CrosswordPuzzle, pk=pk)
+    show_answers = request.GET.get('answers') == '1'
+    context = _build_print_context(puzzle, 'clue_korean', 'clue_uzbek', show_answers)
+    context.update({
+        'accent':     '#7c3aed',
+        'back_url':   'crossword_play',
+        'print_url':  'crossword_print',
+    })
+    return render(request, 'games/crossword_print.html', context)
 
 
 # ---------------------------------------------------------------------------
@@ -1299,6 +1395,7 @@ def english_crossword_play(request, pk):
         'checked':      checked,
         'all_correct':  all_correct,
         'words_json':   json.dumps(words),
+        'can_manage':   _can_manage_games(request.user),
     }
     return render(request, 'games/english_crossword_play.html', context)
 
@@ -1323,6 +1420,21 @@ def english_crossword_edit(request, pk):
             return JsonResponse({'ok': False, 'error': str(e)}, status=400)
 
     return render(request, 'games/english_crossword_edit.html', {'puzzle': puzzle})
+
+
+@login_required
+def english_crossword_print(request, pk):
+    if not _can_manage_games(request.user):
+        raise PermissionDenied
+    puzzle = get_object_or_404(EnglishCrossword, pk=pk)
+    show_answers = request.GET.get('answers') == '1'
+    context = _build_print_context(puzzle, 'clue_english', 'clue_uzbek', show_answers)
+    context.update({
+        'accent':     '#2563eb',
+        'back_url':   'english_crossword_play',
+        'print_url':  'english_crossword_print',
+    })
+    return render(request, 'games/crossword_print.html', context)
 
 
 # ---------------------------------------------------------------------------

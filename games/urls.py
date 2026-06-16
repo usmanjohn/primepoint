@@ -7,6 +7,7 @@ urlpatterns = [
     path('crossword/', views.crossword_list, name='crossword_list'),
     path('crossword/<int:pk>/', views.crossword_play, name='crossword_play'),
     path('crossword/<int:pk>/edit/', views.crossword_edit, name='crossword_edit'),
+    path('crossword/<int:pk>/print/', views.crossword_print, name='crossword_print'),
     # Code Breaker
     path('codebreaker/', views.codebreaker_list, name='codebreaker_list'),
     path('codebreaker/create/', views.codebreaker_create, name='codebreaker_create'),
@@ -35,6 +36,7 @@ urlpatterns = [
     path('english-crossword/', views.english_crossword_list, name='english_crossword_list'),
     path('english-crossword/<int:pk>/', views.english_crossword_play, name='english_crossword_play'),
     path('english-crossword/<int:pk>/edit/', views.english_crossword_edit, name='english_crossword_edit'),
+    path('english-crossword/<int:pk>/print/', views.english_crossword_print, name='english_crossword_print'),
     # Word Order Chaos
     path('wordorder/', views.wordorder_list, name='wordorder_list'),
     path('wordorder/create/', views.wordorder_create, name='wordorder_create'),
