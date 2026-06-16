@@ -5,10 +5,40 @@
 
 {% block extra_css %}
 {{ form.media.css }}
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)'], ['$', '$']],
+            displayMath: [['\\[', '\\]'], ['$$', '$$']],
+            processEscapes: true,
+            tags: 'ams',
+        },
+        options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] },
+        startup: { typeset: false },
+    };
+</script>
+<script id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <style>
     /* Make CKEditor fill the container cleanly */
     .ck-editor__editable_inline { min-height: 420px; }
     @media (min-width: 992px) { .ck-editor__editable_inline { min-height: 520px; } }
+
+    /* Math scratchpad */
+    .math-pad-input {
+        width: 100%; min-height: 80px; resize: vertical;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 0.82rem; line-height: 1.5;
+        background: var(--surface-2); color: var(--text);
+        border: 1px solid var(--border); border-radius: 9px; padding: 10px;
+    }
+    .math-pad-input:focus { outline: none; border-color: var(--accent); }
+    .math-pad-output {
+        min-height: 48px; margin-top: 10px; padding: 12px;
+        background: #fff; color: #0d1b2a;
+        border: 1px solid var(--border); border-radius: 9px;
+        overflow-x: auto; font-size: 0.95rem;
+    }
 </style>
 {% endblock %}
 
@@ -202,7 +232,25 @@
                         <strong style="color:var(--text);">{% trans "Square root:" %}</strong><br>
                         <code style="font-size:0.78rem;">\sqrt{x^2 + 1}</code>
                     </div>
+                    <div class="mt-2" style="font-size:0.74rem;">
+                        <i class="bi bi-info-circle me-1" style="color:var(--accent);"></i>
+                        {% trans "Pasting from an AI tool works too — superscripts/subscripts are converted automatically." %}
+                    </div>
                 </div>
+            </div>
+
+            <!-- Live Math Scratchpad -->
+            <div class="card p-4 mb-3">
+                <h6 class="form-section-label mb-2">
+                    <i class="bi bi-eyeglasses" style="color:var(--accent);"></i>
+                    {% trans "Math Preview" %}
+                </h6>
+                <p style="font-size:0.78rem;color:var(--text-muted);" class="mb-2">
+                    {% trans "Type or paste LaTeX here to check how it will look, then copy it into your content." %}
+                </p>
+                <textarea id="math-pad" class="math-pad-input"
+                          spellcheck="false">When $x = 3$, then $$x^2 + 2x + 9 = 24$$</textarea>
+                <div class="math-pad-output" id="math-pad-out" aria-live="polite"></div>
             </div>
 
             <!-- Formatting Tips -->
@@ -242,4 +290,37 @@
 
 {% block extra_js %}
 {{ form.media.js }}
+<script>
+(function () {
+    var pad = document.getElementById('math-pad');
+    var out = document.getElementById('math-pad-out');
+    if (!pad || !out) return;
+
+    function escapeHtml(s) {
+        return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    var timer = null;
+    function renderPad() {
+        // Escape HTML, keep line breaks, let MathJax handle $...$ / $$...$$
+        out.innerHTML = escapeHtml(pad.value).replace(/\n/g, '<br>');
+        if (window.MathJax && MathJax.typesetPromise) {
+            MathJax.typesetClear && MathJax.typesetClear([out]);
+            MathJax.typesetPromise([out]).catch(function () {});
+        }
+    }
+    function schedule() { clearTimeout(timer); timer = setTimeout(renderPad, 250); }
+
+    pad.addEventListener('input', schedule);
+
+    function start() {
+        if (window.MathJax && MathJax.startup && MathJax.startup.promise) {
+            MathJax.startup.promise.then(renderPad);
+        } else {
+            setTimeout(start, 200);
+        }
+    }
+    start();
+})();
+</script>
 {% endblock %}

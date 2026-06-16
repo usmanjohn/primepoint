@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n static %}
+{% load i18n static math_extras %}
 {% block nav_tutorials %}active{% endblock %}
 {% block page_name %}{{ tutorial.title }}{% endblock %}
 {% block meta_description %}{{ tutorial.summary|default:tutorial.title }}{% endblock %}
@@ -114,7 +114,7 @@
 
             <!-- Content -->
             <div class="tut-prose p-4 p-md-5" id="tut-content">
-                {{ tutorial.content|safe }}
+                {{ tutorial.content|render_math }}
             </div>
 
             <!-- ── Reaction Bar ──────────────────────────────── -->
