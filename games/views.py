@@ -105,10 +105,20 @@ def _build_print_context(puzzle, primary_field, secondary_field, show_answers):
 
     # Which directions start at each cell, plus the clue number.
     start_map = {}
+    # Which directions END at each cell (last letter of a word). Used on the
+    # printout to mark where a word stops, since adjacent white cells from
+    # crossing words can otherwise make a word's length ambiguous on paper.
+    end_map = {}
     for w in words:
         key = (w['row'], w['col'])
         entry = start_map.setdefault(key, {'number': w['number'], 'across': False, 'down': False})
         entry[w['direction']] = True
+
+        last = w['length'] - 1
+        er = w['row'] + (last if w['direction'] == 'down'   else 0)
+        ec = w['col'] + (last if w['direction'] == 'across' else 0)
+        ed = end_map.setdefault((er, ec), {'across': False, 'down': False})
+        ed[w['direction']] = True
 
     grid_rows = []
     for r in range(rows):
@@ -119,12 +129,15 @@ def _build_print_context(puzzle, primary_field, secondary_field, show_answers):
                 row_cells.append({'is_black': True})
             else:
                 s = start_map.get((r, c))
+                e = end_map.get((r, c))
                 row_cells.append({
-                    'is_black': False,
-                    'letter':   cell_val if show_answers else '',
-                    'number':   s['number'] if s else None,
-                    'across':   s['across'] if s else False,
-                    'down':     s['down'] if s else False,
+                    'is_black':   False,
+                    'letter':     cell_val if show_answers else '',
+                    'number':     s['number'] if s else None,
+                    'across':     s['across'] if s else False,
+                    'down':       s['down'] if s else False,
+                    'end_across': e['across'] if e else False,
+                    'end_down':   e['down'] if e else False,
                 })
         grid_rows.append(row_cells)
 

@@ -9,6 +9,11 @@
     :root { --accent: {{ accent }}; --ink: #1e293b; --line: #334155; }
 
     * { box-sizing: border-box; }
+    /* ensure black cells and red end-bars actually print in colour */
+    html, body, .cw, .cw td, .cw td::before, .cw td::after {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
     html, body {
         margin: 0;
         padding: 0;
@@ -113,6 +118,25 @@
         color: var(--ink);
     }
 
+    /* word-end markers: a coloured wall on the side where a word stops */
+    td.cell { --end: #dc2626; }
+    td.end-across::after {
+        content: "";
+        position: absolute;
+        top: 0; right: 0;
+        width: 0.9mm; height: 100%;
+        background: var(--end);
+        z-index: 2;
+    }
+    td.end-down::before {
+        content: "";
+        position: absolute;
+        left: 0; bottom: 0;
+        height: 0.9mm; width: 100%;
+        background: var(--end);
+        z-index: 2;
+    }
+
     /* ── Clues ────────────────────────────────────────────── */
     .clues { columns: 2; column-gap: 8mm; }
     .clue-block { break-inside: avoid; margin-bottom: 4mm; }
@@ -126,6 +150,17 @@
     .clue-txt { flex: 1; }
     .clue-sec { color: #64748b; font-size: 8.5pt; }
     .clue-len { color: #94a3b8; font-size: 8pt; }
+
+    /* legend */
+    .legend {
+        display: flex; flex-wrap: wrap; justify-content: center;
+        gap: 6mm; margin: 0 0 5mm;
+        font-size: 8.5pt; color: #475569;
+    }
+    .legend span { display: inline-flex; align-items: center; gap: 1.5mm; }
+    .lg-num   { font-weight: 700; color: var(--accent); }
+    .lg-arr   { font-weight: 700; color: var(--accent); }
+    .lg-end   { display: inline-block; width: 3mm; height: 3mm; background: #dc2626; border-radius: 0.5mm; }
 
     .empty-note { padding: 20mm; text-align: center; color: #b45309; }
 
@@ -179,7 +214,7 @@
                 {% if cell.is_black %}
                 <td class="blk"></td>
                 {% else %}
-                <td class="cell">
+                <td class="cell{% if cell.end_across %} end-across{% endif %}{% if cell.end_down %} end-down{% endif %}">
                     {% if cell.number %}<span class="cw-num">{{ cell.number }}</span>{% endif %}
                     {% if cell.across %}<span class="arr arr-across">&#x2192;</span>{% endif %}
                     {% if cell.down %}<span class="arr arr-down">&#x2193;</span>{% endif %}
@@ -191,6 +226,12 @@
             {% endfor %}
             </tbody>
         </table>
+    </div>
+
+    <div class="legend">
+        <span><span class="lg-num">1</span> {% trans "word start" %}</span>
+        <span><span class="lg-arr">&#x2192;</span>/<span class="lg-arr">&#x2193;</span> {% trans "direction" %}</span>
+        <span><span class="lg-end"></span> {% trans "word end" %}</span>
     </div>
 
     <div class="clues">
