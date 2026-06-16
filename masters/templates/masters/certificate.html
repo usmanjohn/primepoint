@@ -71,6 +71,7 @@
     --cert-header:    #0a1628;
     --cert-body-bg:   #fdfcf5;
     --cert-text:      #0d1b2a;
+    --cert-muted:     #475569;
 
     width: 297mm; height: 210mm;
     background: var(--cert-body-bg);
@@ -116,9 +117,9 @@
 .cert-watermark {
     position: absolute; top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: 140px; height: 140px;
+    width: 200px; height: 200px;
     border-radius: 50%; overflow: hidden;
-    opacity: 0.04; pointer-events: none; z-index: 1;
+    opacity: 0.05; pointer-events: none; z-index: 1;
 }
 .cert-watermark img { width: 100%; height: 100%; object-fit: contain; }
 
@@ -149,19 +150,19 @@
 }
 
 /* Brand block (logo + name) */
-.cert-brand { display: flex; align-items: center; gap: 15px; z-index: 3; }
+.cert-brand { display: flex; align-items: center; gap: 18px; z-index: 3; }
 .cert-logo {
-    width: 80px; height: 80px;
+    width: 116px; height: 116px;
     border-radius: 50%; object-fit: contain;
-    background: #fff; padding: 5px;
-    border: 2.5px solid color-mix(in srgb, var(--cert-accent) 60%, transparent);
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--cert-accent) 18%, transparent),
-                0 4px 16px rgba(0,0,0,.35);
+    background: #fff; padding: 7px;
+    border: 3px solid color-mix(in srgb, var(--cert-accent) 65%, transparent);
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--cert-accent) 20%, transparent),
+                0 6px 22px rgba(0,0,0,.4);
     flex-shrink: 0;
 }
-.cert-brand-text { display: flex; flex-direction: column; gap: 4px; }
+.cert-brand-text { display: flex; flex-direction: column; gap: 5px; }
 .cert-brand-name {
-    font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800;
+    font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800;
     color: #fff; letter-spacing: .18em; line-height: 1;
 }
 .cert-brand-tagline {
@@ -214,9 +215,10 @@
 
 /* Certify label */
 .cert-certify-text {
-    font-size: 9px; color: #64748b; letter-spacing: .28em;
+    font-size: 9px; color: var(--cert-muted); letter-spacing: .28em;
     text-transform: uppercase; margin: 2.5mm 0 0.5mm;
 }
+.cert-certify-text:focus { outline: none; background: color-mix(in srgb, var(--cert-accent) 6%, transparent); border-radius: 4px; padding: 0 4px; }
 
 /* Main title */
 .cert-title {
@@ -238,7 +240,7 @@
 
 /* Achievement description */
 .cert-achieve {
-    font-size: 11px; color: #475569; letter-spacing: .1em;
+    font-size: 11px; color: var(--cert-muted); letter-spacing: .1em;
     margin: 2mm 0 1.5mm; cursor: text;
 }
 .cert-achieve:focus { outline: none; background: color-mix(in srgb, var(--cert-accent) 6%, transparent); border-radius: 4px; padding: 0 4px; }
@@ -301,9 +303,15 @@
 .cert-seal-word { font-size: 5px; color: color-mix(in srgb, var(--cert-accent) 70%, white); letter-spacing: .25em; text-transform: uppercase; }
 .cert-slogan { font-size: 7px; color: color-mix(in srgb, var(--cert-accent) 65%, white); letter-spacing: .08em; font-style: italic; text-align: center; max-width: 60mm; }
 
-/* ── Editable hover ──────────────────────────────────────── */
+/* ── Editable hover / focus (applies to every editable field) ─ */
+[contenteditable="true"] { cursor: text; }
 [contenteditable="true"]:hover:not(:focus) {
     box-shadow: 0 0 0 2px color-mix(in srgb, var(--cert-accent) 40%, transparent);
+    border-radius: 4px;
+}
+.cert [contenteditable="true"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--cert-accent) 60%, transparent);
     border-radius: 4px;
 }
 
@@ -349,9 +357,10 @@
 
         <!-- Quick-focus buttons -->
         <span class="cg-bar-label d-none d-sm-inline">{% trans "Edit" %}</span>
+        <button class="cg-btn" onclick="focus_('cert-title')"><i class="bi bi-type-h1"></i><span class="d-none d-md-inline">{% trans "Title" %}</span></button>
         <button class="cg-btn" onclick="focus_('cert-name')"><i class="bi bi-person-fill"></i><span class="d-none d-md-inline">{% trans "Name" %}</span></button>
         <button class="cg-btn" onclick="focus_('cert-course')"><i class="bi bi-journal-text"></i><span class="d-none d-md-inline">{% trans "Course" %}</span></button>
-        <button class="cg-btn" onclick="focus_('cert-achieve')"><i class="bi bi-chat-quote"></i><span class="d-none d-md-inline">{% trans "Text" %}</span></button>
+        <button class="cg-btn" onclick="focus_('cert-achieve')"><i class="bi bi-chat-quote"></i><span class="d-none d-md-inline">{% trans "Body" %}</span></button>
         <button class="cg-btn" onclick="focus_('cert-date')"><i class="bi bi-calendar3"></i><span class="d-none d-md-inline">{% trans "Date" %}</span></button>
         <button class="cg-btn" onclick="focus_('cert-instructor')"><i class="bi bi-person-check-fill"></i><span class="d-none d-md-inline">{% trans "Instructor" %}</span></button>
 
@@ -371,6 +380,14 @@
                 <label>{% trans "Background" %}</label>
                 <input type="color" id="pick-bg" value="#fdfcf5" oninput="setCertColor('--cert-body-bg', this.value)" title="{% trans 'Certificate background' %}">
             </div>
+            <div class="cg-color-item">
+                <label>{% trans "Text" %}</label>
+                <input type="color" id="pick-text" value="#0d1b2a" oninput="setCertColor('--cert-text', this.value)" title="{% trans 'Title & name color' %}">
+            </div>
+            <div class="cg-color-item">
+                <label>{% trans "Subtext" %}</label>
+                <input type="color" id="pick-muted" value="#475569" oninput="setCertColor('--cert-muted', this.value)" title="{% trans 'Secondary text color' %}">
+            </div>
         </div>
 
         <div class="cg-bar-sep"></div>
@@ -384,7 +401,7 @@
 
     <p class="cg-hint mb-0">
         <i class="bi bi-pencil-fill"></i>
-        {% trans "Click any text on the certificate to edit it. Use the color swatches above to change the design." %}
+        {% trans "Click ANY text on the certificate — title, headings, name, labels, slogan, even the seal — to rewrite it. Use the color swatches to recolor the design, then Download PDF." %}
     </p>
 
     <!-- ── Certificate stage ────────────────────────────────────── -->
@@ -408,12 +425,18 @@
                     <div class="cert-brand">
                         <img src="{% static 'images/logo.jpg' %}" alt="Prime Point" class="cert-logo">
                         <div class="cert-brand-text">
-                            <span class="cert-brand-name">PRIME POINT</span>
-                            <span class="cert-brand-tagline">Education &amp; Excellence</span>
+                            <span class="cert-brand-name" id="cert-brand-name"
+                                  contenteditable="true" spellcheck="false"
+                                  data-default="PRIME POINT">PRIME POINT</span>
+                            <span class="cert-brand-tagline" id="cert-tagline"
+                                  contenteditable="true" spellcheck="false"
+                                  data-default="Education &amp; Excellence">Education &amp; Excellence</span>
                         </div>
                     </div>
                     <div class="cert-head-type">
-                        <span class="cert-head-type-label">Certificate</span>
+                        <span class="cert-head-type-label" id="cert-head-label"
+                              contenteditable="true" spellcheck="false"
+                              data-default="Certificate">Certificate</span>
                         <div class="cert-head-type-dots">
                             <div class="cert-head-type-dot on"></div>
                             <div class="cert-head-type-dot on"></div>
@@ -435,7 +458,9 @@
                         <div class="cert-orn-line cert-orn-line-r"></div>
                     </div>
 
-                    <div class="cert-title">Certificate of Achievement</div>
+                    <div class="cert-title" id="cert-title"
+                         contenteditable="true" spellcheck="false"
+                         data-default="Certificate of Achievement">Certificate of Achievement</div>
 
                     <div class="cert-ornament">
                         <div class="cert-orn-line"></div>
@@ -445,7 +470,9 @@
                         <div class="cert-orn-line cert-orn-line-r"></div>
                     </div>
 
-                    <div class="cert-certify-text">— &nbsp;This is to certify that&nbsp; —</div>
+                    <div class="cert-certify-text" id="cert-certify"
+                         contenteditable="true" spellcheck="false"
+                         data-default="— &nbsp;This is to certify that&nbsp; —">— &nbsp;This is to certify that&nbsp; —</div>
 
                     <div class="cert-name-wrap">
                         <span class="cert-name" id="cert-name"
@@ -473,20 +500,30 @@
                         <div class="cert-foot-val" id="cert-date"
                              contenteditable="true" spellcheck="false"
                              data-default="{{ today|date:'F j, Y' }}">{{ today|date:"F j, Y" }}</div>
-                        <div class="cert-foot-label">Date Issued</div>
+                        <div class="cert-foot-label" id="cert-date-label"
+                             contenteditable="true" spellcheck="false"
+                             data-default="Date Issued">Date Issued</div>
                     </div>
                     <div class="cert-seal-col">
                         <div class="cert-seal">
-                            <span class="cert-seal-pp">PP</span>
-                            <span class="cert-seal-word">Certified</span>
+                            <span class="cert-seal-pp" id="cert-seal-pp"
+                                  contenteditable="true" spellcheck="false"
+                                  data-default="PP">PP</span>
+                            <span class="cert-seal-word" id="cert-seal-word"
+                                  contenteditable="true" spellcheck="false"
+                                  data-default="Certified">Certified</span>
                         </div>
-                        <div class="cert-slogan">"Strong mind bends the line"</div>
+                        <div class="cert-slogan" id="cert-slogan"
+                             contenteditable="true" spellcheck="false"
+                             data-default="&quot;Strong mind bends the line&quot;">"Strong mind bends the line"</div>
                     </div>
                     <div class="cert-foot-col">
                         <div class="cert-foot-val" id="cert-instructor"
                              contenteditable="true" spellcheck="false"
                              data-default="{% if master %}{{ master.name }}{% else %}Instructor Name{% endif %}">{% if master %}{{ master.name }}{% else %}Instructor Name{% endif %}</div>
-                        <div class="cert-foot-label">Instructor / Master</div>
+                        <div class="cert-foot-label" id="cert-instructor-label"
+                             contenteditable="true" spellcheck="false"
+                             data-default="Instructor / Master">Instructor / Master</div>
                     </div>
                 </footer>
 
@@ -537,23 +574,34 @@
     };
 
     window.resetCert = function () {
+        /* data-default may contain HTML entities (&amp;, &quot;…) so decode it */
+        var dec = document.createElement('textarea');
         document.querySelectorAll('[data-default]').forEach(function (el) {
-            el.textContent = el.dataset.default;
+            dec.innerHTML = el.dataset.default;
+            el.textContent = dec.value;
         });
         var pick = document.getElementById('student-pick');
         if (pick) pick.value = '';
         /* Reset colors to defaults */
-        document.getElementById('pick-header').value = '#0a1628';
-        document.getElementById('pick-accent').value = '#c4922a';
-        document.getElementById('pick-bg').value    = '#fdfcf5';
+        var defaults = {
+            'pick-header': ['#0a1628', '--cert-header'],
+            'pick-accent': ['#c4922a', '--cert-accent'],
+            'pick-bg':     ['#fdfcf5', '--cert-body-bg'],
+            'pick-text':   ['#0d1b2a', '--cert-text'],
+            'pick-muted':  ['#475569', '--cert-muted'],
+        };
         var cert = document.getElementById('cert');
-        cert.style.removeProperty('--cert-header');
-        cert.style.removeProperty('--cert-accent');
-        cert.style.removeProperty('--cert-body-bg');
+        Object.keys(defaults).forEach(function (id) {
+            var el = document.getElementById(id);
+            if (el) el.value = defaults[id][0];
+            cert.style.removeProperty(defaults[id][1]);
+        });
     };
 
     /* Prevent Enter in single-line fields */
-    ['cert-name','cert-course','cert-date','cert-instructor'].forEach(function (id) {
+    ['cert-title','cert-name','cert-course','cert-date','cert-instructor',
+     'cert-brand-name','cert-tagline','cert-head-label','cert-certify',
+     'cert-date-label','cert-instructor-label','cert-seal-pp','cert-seal-word'].forEach(function (id) {
         var el = document.getElementById(id);
         if (!el) return;
         el.addEventListener('keydown', function (e) {
