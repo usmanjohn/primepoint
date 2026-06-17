@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ puzzle.title }} — Powerty{% endblock %}
+{% block page_name %}{{ puzzle.title }}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+.ms-grid-outer { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.ms-grid { border-collapse:separate; border-spacing:2px; margin:0 auto; }
+.ms-grid td {
+    width:46px; height:46px; padding:0; text-align:center; vertical-align:middle;
+}
+@media (max-width:600px) { .ms-grid td { width:38px; height:38px; } }
+@media (max-width:380px) { .ms-grid td { width:32px; height:32px; } }
+
+.ms-num {
+    border:2px solid #0d9488; border-radius:8px; background:#fff;
+    width:100%; height:100%; display:flex; align-items:center; justify-content:center;
+    font-size:1.05rem; font-weight:700; color:#134e4a;
+}
+.ms-given { background:#ccfbf1; }
+.ms-input {
+    width:100%; height:100%; border:2px solid #94a3b8; border-radius:8px;
+    background:#fff; text-align:center; font-size:1.05rem; font-weight:700;
+    color:#0f172a; outline:none; padding:0;
+}
+.ms-input:focus { border-color:#0d9488; box-shadow:0 0 0 2px rgba(13,148,136,.2); }
+.ms-input.correct { background:#dcfce7 !important; border-color:#4ade80 !important; }
+.ms-input.wrong   { background:#fee2e2 !important; border-color:#f87171 !important; }
+.ms-num.correct   { background:#dcfce7; border-color:#4ade80; }
+.ms-num.wrong     { background:#fee2e2; border-color:#f87171; }
+.ms-op  { font-size:1.1rem; font-weight:700; color:#475569; }
+.ms-eq  { font-size:1.1rem; font-weight:800; color:#0d9488; }
+
+.ms-legend {
+    font-size:0.8rem; color:var(--text-muted); margin-top:1rem;
+    background:var(--surface); border-radius:10px; padding:0.75rem 1rem;
+}
+.ms-legend b { color:var(--text); }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-3" style="max-width:720px;">
+
+    <a href="{% url 'mathsquare_list' %}" class="text-decoration-none d-inline-flex align-items-center gap-1 mb-3"
+       style="color:var(--text-muted); font-size:0.85rem;">
+        <i class="bi bi-arrow-left"></i> {% trans "Math Square" %}
+    </a>
+
+    <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+        <h1 class="fs-5 fw-bold mb-0" style="color:var(--text);">&#x1F9EE; {{ puzzle.title }}</h1>
+        <div class="d-flex gap-2">
+            {% if can_manage %}
+            <a href="{% url 'mathsquare_print' puzzle.pk %}" target="_blank"
+               class="btn btn-sm" style="font-size:0.82rem; border:1px solid #0d9488; color:#0d9488;">
+                <i class="bi bi-printer"></i> {% trans "Print / PDF" %}
+            </a>
+            {% endif %}
+            {% if checked %}
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="reset">
+                <button type="submit" class="btn btn-sm btn-outline-secondary" style="font-size:0.82rem;">
+                    <i class="bi bi-arrow-counterclockwise"></i> {% trans "Try Again" %}
+                </button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if all_correct %}
+    <div class="card border-0 shadow-sm text-center mb-4" style="border-radius:14px; overflow:hidden;">
+        <div style="background:linear-gradient(135deg,#16a34a 0%,#166534 100%); padding:1.5rem;">
+            <div style="font-size:2.5rem;">&#x1F389;</div>
+            <h2 class="fs-5 fw-bold mt-2 mb-0" style="color:#fff;">{% trans "Solved! Every equation is correct." %}</h2>
+        </div>
+        <div class="card-body" style="background:var(--surface);">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="reset">
+                <button type="submit" class="btn btn-success fw-semibold px-4">{% trans "Play Again" %}</button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if not grid_rows %}
+    <div class="alert alert-warning rounded-3">{% trans "This puzzle has no grid yet." %}</div>
+    {% else %}
+
+    <div class="ms-grid-outer">
+        <form method="post" id="ms-form">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="check">
+            <table class="ms-grid">
+                <tbody>
+                {% for row in grid_rows %}
+                <tr>
+                    {% for cell in row %}
+                        {% if cell.t == 'num' and cell.given %}
+                        <td><div class="ms-num ms-given">{{ cell.value }}</div></td>
+                        {% elif cell.t == 'num' %}
+                        <td>
+                            {% if checked %}
+                            <div class="ms-num {% if cell.correct %}correct{% else %}wrong{% endif %}">{{ cell.answer }}</div>
+                            {% else %}
+                            <input class="ms-input" type="text" inputmode="numeric" pattern="-?[0-9]*"
+                                   autocomplete="off" name="cell_{{ cell.r }}_{{ cell.c }}" value="{{ cell.answer }}"
+                                   maxlength="4" aria-label="{% trans 'Empty square' %}">
+                            {% endif %}
+                        </td>
+                        {% elif cell.t == 'op' %}
+                        <td><span class="ms-op">{{ cell.glyph }}</span></td>
+                        {% elif cell.t == 'eq' %}
+                        <td><span class="ms-eq">=</span></td>
+                        {% else %}
+                        <td></td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            {% if not checked %}
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-lg fw-semibold px-5"
+                        style="background:#0d9488; border-color:#0d9488; color:#fff;">
+                    <i class="bi bi-check2-circle"></i> {% trans "Check Answers" %}
+                </button>
+            </div>
+            {% endif %}
+        </form>
+    </div>
+
+    <div class="ms-legend">
+        {% trans "Fill the empty squares so every row and column equation is true." %}
+        <br><b>{% trans "Order of operations:" %}</b> {% trans "work out × and ÷ before + and −." %}
+    </div>
+
+    {% endif %}
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function () {
+    // Move to the next empty square with Enter / arrow keys for quick entry.
+    const inputs = Array.from(document.querySelectorAll('.ms-input'));
+    inputs.forEach((el, i) => {
+        el.addEventListener('keydown', e => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const next = inputs[i + 1];
+                if (next) next.focus(); else document.getElementById('ms-form').requestSubmit();
+            }
+        });
+    });
+    if (inputs[0]) inputs[0].focus();
+})();
+</script>
+{% endblock %}

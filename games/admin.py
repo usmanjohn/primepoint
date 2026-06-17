@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.urls import reverse
 from django.utils.html import format_html
-from .models import CrosswordPuzzle, EnglishCrossword, WordSearchPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion
+from .models import CrosswordPuzzle, EnglishCrossword, WordSearchPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion, MathSquarePuzzle
 from .views import generate_word_search
 from .views import _pc_correct_numbers
+from .generator import generate_math_square
 
 
 @admin.register(CrosswordPuzzle)
@@ -215,3 +216,54 @@ class WordOrderChallengeAdmin(admin.ModelAdmin):
     def word_count(self, obj):
         return obj.word_count()
     word_count.short_description = 'Words'
+
+
+def regenerate_math_squares(modeladmin, request, queryset):
+    count = 0
+    for puzzle in queryset:
+        grid = generate_math_square(puzzle.difficulty)
+        if grid:
+            puzzle.grid_data    = grid
+            puzzle.size         = grid['n']
+            puzzle.is_published = True
+            puzzle.save()
+            count += 1
+    modeladmin.message_user(request, f'Regenerated {count} puzzle(s).')
+regenerate_math_squares.short_description = 'Regenerate grid (auto)'
+
+
+@admin.register(MathSquarePuzzle)
+class MathSquarePuzzleAdmin(admin.ModelAdmin):
+    list_display    = ('title', 'difficulty', 'size', 'is_published', 'created_by', 'grid_status', 'editor_link', 'created_at')
+    list_filter     = ('difficulty', 'is_published')
+    search_fields   = ('title',)
+    actions         = [regenerate_math_squares]
+    readonly_fields = ('editor_button',)
+    fields          = ('title', 'difficulty', 'size', 'is_published', 'created_by', 'editor_button')
+
+    def grid_status(self, obj):
+        if not obj.grid_data:
+            return '— empty'
+        blanks = sum(
+            1 for row in obj.grid_data.get('cells', []) for cell in row
+            if cell.get('t') == 'num' and not cell.get('given')
+        )
+        return f'✓ {blanks} blanks'
+    grid_status.short_description = 'Grid'
+
+    def editor_button(self, obj):
+        if not obj.pk:
+            return 'Save the puzzle first, then open the grid editor.'
+        url = reverse('mathsquare_edit', args=[obj.pk])
+        return format_html(
+            '<a class="button" href="{}" style="padding:8px 18px; background:#0d9488; color:#fff; '
+            'border-radius:6px; text-decoration:none; font-weight:600;">&#9998; Open Grid Editor</a>',
+            url,
+        )
+    editor_button.short_description = 'Grid editor'
+
+    def editor_link(self, obj):
+        if not obj.pk:
+            return '—'
+        return format_html('<a href="{}">Edit grid</a>', reverse('mathsquare_edit', args=[obj.pk]))
+    editor_link.short_description = 'Editor'

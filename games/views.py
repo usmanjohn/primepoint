@@ -8,8 +8,10 @@ from django.core.exceptions import PermissionDenied
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.utils.translation import gettext as _
 import string
-from .models import CrosswordPuzzle, EnglishCrossword, WordSearchPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion
+from .models import CrosswordPuzzle, EnglishCrossword, WordSearchPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion, MathSquarePuzzle
+from .generator import generate_math_square, empty_math_square, eval_line
 
 
 # ---------------------------------------------------------------------------
@@ -1695,3 +1697,265 @@ def target_number_check(request):
         'attempts': attempts,
         'elapsed':  elapsed,
     })
+
+
+# ---------------------------------------------------------------------------
+# Math Square (Cross-Math) views
+# ---------------------------------------------------------------------------
+
+_MS_SIZE_FOR = {'easy': 2, 'medium': 3, 'hard': 4}
+
+
+def _ms_fmt(values, ops):
+    """Render 'a + b × c' for an equation line (for validation messages)."""
+    out = str(values[0])
+    for op, v in zip(ops, values[1:]):
+        out += f' {op} {v}'
+    return out
+
+
+def _ms_validate(grid):
+    """Return a list of human-readable errors for any row/column whose
+    equation is not true under BODMAS. Empty list ⇒ the grid is valid."""
+    n     = grid.get('n', 0)
+    cells = grid.get('cells', [])
+    errors = []
+
+    def num(r, c):
+        cell = cells[r][c]
+        return cell.get('v')
+
+    msg_fill   = _('fill every number')
+    msg_divide = _('division is not exact')
+
+    def line(values, ops, res, label):
+        if any(v is None for v in values) or res is None:
+            errors.append(f'{label}: {msg_fill}.')
+            return
+        r = eval_line(values, ops)
+        if r is None:
+            errors.append(f'{label}: {msg_divide}.')
+        elif r != res:
+            errors.append(f'{label}: {_ms_fmt(values, ops)} = {r} ≠ {res}.')
+
+    for i in range(n):
+        line([num(2 * i, 2 * j) for j in range(n)],
+             [cells[2 * i][2 * j + 1].get('v') for j in range(n - 1)],
+             num(2 * i, 2 * n), f'{_("Row")} {i + 1}')
+    for j in range(n):
+        line([num(2 * i, 2 * j) for i in range(n)],
+             [cells[2 * i + 1][2 * j].get('v') for i in range(n - 1)],
+             num(2 * n, 2 * j), f'{_("Column")} {j + 1}')
+    return errors
+
+
+@login_required
+def mathsquare_list(request):
+    can_manage = _can_manage_games(request.user)
+    puzzles = MathSquarePuzzle.objects.filter(is_published=True)
+    if can_manage:
+        own = MathSquarePuzzle.objects.filter(created_by=request.user)
+        puzzles = (puzzles | own).distinct()
+    return render(request, 'games/mathsquare_list.html',
+                  {'puzzles': puzzles, 'can_manage': can_manage})
+
+
+@login_required
+def mathsquare_create(request):
+    if not _can_manage_games(request.user):
+        raise PermissionDenied
+
+    errors = []
+    if request.method == 'POST':
+        title      = request.POST.get('title', '').strip()
+        difficulty = request.POST.get('difficulty', MathSquarePuzzle.DIFFICULTY_EASY)
+        method     = request.POST.get('method', 'generate')
+
+        if not title:
+            errors.append(_('Title is required.'))
+        if difficulty not in _MS_SIZE_FOR:
+            errors.append(_('Invalid difficulty.'))
+
+        grid = None
+        if not errors:
+            if method == 'manual':
+                grid = empty_math_square(_MS_SIZE_FOR[difficulty])
+            else:
+                grid = generate_math_square(difficulty)
+                if grid is None:
+                    errors.append(_('Could not generate a puzzle. Please try again.'))
+
+        if not errors:
+            puzzle = MathSquarePuzzle.objects.create(
+                title=title,
+                difficulty=difficulty,
+                size=grid['n'],
+                grid_data=grid,
+                created_by=request.user,
+                is_published=(method == 'generate'),
+            )
+            return redirect('mathsquare_edit', pk=puzzle.pk)
+
+    context = {
+        'errors':       errors,
+        'difficulties': MathSquarePuzzle.DIFFICULTY_CHOICES,
+        'post':         request.POST if request.method == 'POST' else {},
+    }
+    return render(request, 'games/mathsquare_create.html', context)
+
+
+@login_required
+def mathsquare_edit(request, pk):
+    if not _can_manage_games(request.user):
+        raise PermissionDenied
+    puzzle = get_object_or_404(MathSquarePuzzle, pk=pk)
+
+    if request.method == 'POST':
+        try:
+            data  = json.loads(request.body)
+            n     = puzzle.size
+            cells = data.get('cells', [])
+            grid  = {'rows': 2 * n + 1, 'cols': 2 * n + 1, 'n': n,
+                     'eval': 'bodmas', 'difficulty': puzzle.difficulty, 'cells': cells}
+            errors = _ms_validate(grid)
+            puzzle.grid_data    = grid
+            puzzle.is_published = (len(errors) == 0)
+            puzzle.save()
+            return JsonResponse({'ok': True, 'errors': errors,
+                                 'published': puzzle.is_published})
+        except Exception as e:
+            return JsonResponse({'ok': False, 'error': str(e)}, status=400)
+
+    return render(request, 'games/mathsquare_edit.html', {
+        'puzzle':    puzzle,
+        'grid_json': json.dumps(puzzle.grid_data or {}),
+    })
+
+
+@login_required
+def mathsquare_play(request, pk):
+    puzzle = get_object_or_404(MathSquarePuzzle, pk=pk, is_published=True)
+    grid   = puzzle.grid_data or {}
+    cells  = grid.get('cells', [])
+    rows   = grid.get('rows', 0)
+    cols   = grid.get('cols', 0)
+
+    answers_key = f'mathsquare_{pk}_answers'
+    check_key   = f'mathsquare_{pk}_checked'
+
+    if request.method == 'POST':
+        action = request.POST.get('action')
+        if action == 'reset':
+            request.session.pop(answers_key, None)
+            request.session.pop(check_key, None)
+            return redirect('mathsquare_play', pk=pk)
+        if action == 'check':
+            answers = {}
+            for r in range(rows):
+                for c in range(cols):
+                    cell = cells[r][c]
+                    if cell.get('t') == 'num' and not cell.get('given'):
+                        val = request.POST.get(f'cell_{r}_{c}', '').strip()
+                        if val:
+                            answers[f'{r}_{c}'] = val
+            request.session[answers_key] = answers
+            request.session[check_key]   = True
+            return redirect('mathsquare_play', pk=pk)
+
+    saved   = request.session.get(answers_key, {})
+    checked = request.session.get(check_key, False)
+
+    grid_rows = []
+    total = correct_count = 0
+    for r in range(rows):
+        row = []
+        for c in range(cols):
+            cell = cells[r][c] if cells else {'t': 'blank'}
+            t = cell.get('t', 'blank')
+            if t == 'num' and cell.get('given'):
+                row.append({'t': 'num', 'given': True, 'value': cell.get('v')})
+            elif t == 'num':
+                total += 1
+                ans = saved.get(f'{r}_{c}', '')
+                is_corr = None
+                if checked:
+                    is_corr = (ans != '' and str(cell.get('v')) == ans)
+                    if is_corr:
+                        correct_count += 1
+                row.append({'t': 'num', 'given': False, 'r': r, 'c': c,
+                            'answer': ans, 'correct': is_corr})
+            elif t == 'op':
+                row.append({'t': 'op', 'glyph': cell.get('v')})
+            elif t == 'eq':
+                row.append({'t': 'eq'})
+            else:
+                row.append({'t': 'blank'})
+        grid_rows.append(row)
+
+    all_correct = checked and total > 0 and correct_count == total
+
+    context = {
+        'puzzle':       puzzle,
+        'grid_rows':    grid_rows,
+        'checked':      checked,
+        'all_correct':  all_correct,
+        'can_manage':   _can_manage_games(request.user),
+    }
+    return render(request, 'games/mathsquare_play.html', context)
+
+
+def _build_mathsquare_print_context(puzzle, show_answers):
+    """A4-friendly print context for a math square (mirrors _build_print_context)."""
+    grid  = puzzle.grid_data or {}
+    cells = grid.get('cells', [])
+    rows  = grid.get('rows', 0)
+    cols  = grid.get('cols', 0)
+
+    grid_rows = []
+    for r in range(rows):
+        row = []
+        for c in range(cols):
+            cell = cells[r][c] if cells else {'t': 'blank'}
+            t = cell.get('t', 'blank')
+            if t == 'num':
+                given = cell.get('given', True)
+                row.append({
+                    't':        'num',
+                    'is_blank': not given,
+                    'text':     cell.get('v') if (given or show_answers) else '',
+                })
+            elif t == 'op':
+                row.append({'t': 'op', 'text': cell.get('v')})
+            elif t == 'eq':
+                row.append({'t': 'eq', 'text': '='})
+            else:
+                row.append({'t': 'blank'})
+        grid_rows.append(row)
+
+    # Fewer cells than a crossword, so make them larger; clamp to a sane range.
+    if cols and rows:
+        cell_mm = min(16.0, 182.0 / cols, 210.0 / rows)
+    else:
+        cell_mm = 14.0
+    cell_mm = round(max(cell_mm, 8.0), 2)
+
+    return {
+        'puzzle':       puzzle,
+        'grid_rows':    grid_rows,
+        'has_grid':     bool(grid_rows),
+        'show_answers': show_answers,
+        'cell_mm':      cell_mm,
+        'num_mm':       round(max(4.0, cell_mm * 0.42), 2),
+        'op_mm':        round(max(3.4, cell_mm * 0.34), 2),
+    }
+
+
+@login_required
+def mathsquare_print(request, pk):
+    if not _can_manage_games(request.user):
+        raise PermissionDenied
+    puzzle = get_object_or_404(MathSquarePuzzle, pk=pk)
+    show_answers = request.GET.get('answers') == '1'
+    context = _build_mathsquare_print_context(puzzle, show_answers)
+    context.update({'accent': '#0d9488'})
+    return render(request, 'games/mathsquare_print.html', context)

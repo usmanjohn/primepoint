@@ -261,3 +261,244 @@ def generate_crossword(word_objects, grid_size=None, max_attempts=300):
         'cells': cropped,
         'words': words_data,
     }
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# Math Square (Cross-Math) — evaluator + generator
+#
+# A math square of size N renders on a (2N+1)×(2N+1) grid. Even indices hold
+# numbers; the N×N interior numbers are shared between a row equation and a
+# column equation. The "=" sign sits at index 2N-1 and the result at index 2N.
+# grid_data schema (one dict per cell):
+#   {"t":"num","v":<int>,"given":<bool>}   number (given=False ⇒ solver fills it)
+#   {"t":"op","v":"+|-|×|÷"}               operator
+#   {"t":"eq"}                              equals sign
+#   {"t":"blank"}                           spacer / corner
+# ═══════════════════════════════════════════════════════════════════════════
+
+MS_OPS = ('+', '-', '×', '÷')
+
+
+def eval_line(values, ops):
+    """Evaluate ``a op b op c …`` under BODMAS (× ÷ before + −, left to right).
+
+    Returns the integer result, or ``None`` if a division isn't exact (so the
+    same routine is the single source of truth for "is this equation valid").
+    """
+    if not values:
+        return None
+    # First pass: resolve × and ÷ left-to-right, collapsing into running terms.
+    terms = [values[0]]
+    add_ops = []
+    for op, v in zip(ops, values[1:]):
+        if op == '×':
+            terms[-1] = terms[-1] * v
+        elif op == '÷':
+            if v == 0 or terms[-1] % v != 0:
+                return None
+            terms[-1] = terms[-1] // v
+        else:
+            add_ops.append(op)
+            terms.append(v)
+    # Second pass: + and −.
+    result = terms[0]
+    for op, v in zip(add_ops, terms[1:]):
+        result = result + v if op == '+' else result - v
+    return result
+
+
+def _ms_params(difficulty):
+    if difficulty == 'hard':
+        return {'n': 4, 'ops': ['+', '-', '×', '÷'], 'lo': 1, 'hi': 15,
+                'blanks': 9, 'allow_result_blank': True}
+    if difficulty == 'medium':
+        return {'n': 3, 'ops': ['+', '-', '×'], 'lo': 1, 'hi': 12,
+                'blanks': 5, 'allow_result_blank': False}
+    return {'n': 2, 'ops': ['+', '-'], 'lo': 1, 'hi': 9,
+            'blanks': 2, 'allow_result_blank': False}
+
+
+def _ms_build_solution(p, attempts=4000):
+    """Pick random interior numbers + operators; keep only grids whose every
+    row and column evaluates to a non-negative integer. Returns the solution
+    tuple or ``None`` if no valid grid turned up within ``attempts``."""
+    n = p['n']
+    for _ in range(attempts):
+        interior = [[random.randint(p['lo'], p['hi']) for _ in range(n)] for _ in range(n)]
+        row_ops  = [[random.choice(p['ops']) for _ in range(n - 1)] for _ in range(n)]
+        col_ops  = [[random.choice(p['ops']) for _ in range(n)] for _ in range(n - 1)]
+
+        row_res, ok = [], True
+        for i in range(n):
+            r = eval_line(interior[i], row_ops[i])
+            if r is None or r < 0:
+                ok = False
+                break
+            row_res.append(r)
+        if not ok:
+            continue
+
+        col_res = []
+        for j in range(n):
+            r = eval_line([interior[i][j] for i in range(n)],
+                          [col_ops[i][j] for i in range(n - 1)])
+            if r is None or r < 0:
+                ok = False
+                break
+            col_res.append(r)
+        if not ok:
+            continue
+
+        return interior, row_ops, col_ops, row_res, col_res
+    return None
+
+
+def _ms_equations(n, interior, row_ops, col_ops, row_res, col_res):
+    """Build (equations, value_map) keyed by (r, c) grid coordinates."""
+    value_map = {}
+    equations = []
+    for i in range(n):
+        for j in range(n):
+            value_map[(2 * i, 2 * j)] = interior[i][j]
+    for i in range(n):
+        value_map[(2 * i, 2 * n)] = row_res[i]
+        equations.append({
+            'cells': [(2 * i, 2 * j) for j in range(n)],
+            'ops':   list(row_ops[i]),
+            'res':   (2 * i, 2 * n),
+        })
+    for j in range(n):
+        value_map[(2 * n, 2 * j)] = col_res[j]
+        equations.append({
+            'cells': [(2 * i, 2 * j) for i in range(n)],
+            'ops':   [col_ops[i][j] for i in range(n - 1)],
+            'res':   (2 * n, 2 * j),
+        })
+    return equations, value_map
+
+
+def _ms_solvable(equations, value_map, blanks, p):
+    """True if every blanked cell can be recovered uniquely by constraint
+    propagation (repeatedly solving an equation that has a single unknown).
+    Guarantees the puzzle has a unique, human-deducible solution."""
+    known   = {c: v for c, v in value_map.items() if c not in blanks}
+    unknown = set(blanks)
+    progress = True
+    while unknown and progress:
+        progress = False
+        for eq in equations:
+            members = eq['cells'] + [eq['res']]
+            unk = [m for m in members if m in unknown]
+            if len(unk) != 1:
+                continue
+            u = unk[0]
+            if u == eq['res']:
+                r = eval_line([known[c] for c in eq['cells']], eq['ops'])
+                if r is None:
+                    continue
+                known[u] = r
+                unknown.discard(u)
+                progress = True
+            else:
+                target = known[eq['res']]
+                cand = []
+                for v in range(p['lo'], p['hi'] + 1):
+                    vals = [known[c] if c != u else v for c in eq['cells']]
+                    if eval_line(vals, eq['ops']) == target:
+                        cand.append(v)
+                        if len(cand) > 1:
+                            break
+                if len(cand) == 1:
+                    known[u] = cand[0]
+                    unknown.discard(u)
+                    progress = True
+    return not unknown
+
+
+def _ms_choose_blanks(equations, value_map, p):
+    """Greedily blank cells (interior first, then results on hard) while the
+    puzzle stays uniquely solvable by deduction."""
+    n = p['n']
+    interior = [(2 * i, 2 * j) for i in range(n) for j in range(n)]
+    random.shuffle(interior)
+    candidates = list(interior)
+    if p['allow_result_blank']:
+        results = [(2 * i, 2 * n) for i in range(n)] + [(2 * n, 2 * j) for j in range(n)]
+        random.shuffle(results)
+        candidates += results
+
+    blanks = set()
+    for cell in candidates:
+        if len(blanks) >= p['blanks']:
+            break
+        trial = blanks | {cell}
+        if _ms_solvable(equations, value_map, trial, p):
+            blanks = trial
+    return blanks
+
+
+def _ms_to_cells(n, interior, row_ops, col_ops, row_res, col_res, blanks):
+    D = 2 * n + 1
+    cells = [[{'t': 'blank'} for _ in range(D)] for _ in range(D)]
+
+    def put_num(r, c, v):
+        cells[r][c] = {'t': 'num', 'v': v, 'given': (r, c) not in blanks}
+
+    for i in range(n):
+        for j in range(n):
+            put_num(2 * i, 2 * j, interior[i][j])
+    for i in range(n):
+        for j in range(n - 1):
+            cells[2 * i][2 * j + 1] = {'t': 'op', 'v': row_ops[i][j]}
+        cells[2 * i][2 * n - 1] = {'t': 'eq'}
+        put_num(2 * i, 2 * n, row_res[i])
+    for j in range(n):
+        for i in range(n - 1):
+            cells[2 * i + 1][2 * j] = {'t': 'op', 'v': col_ops[i][j]}
+        cells[2 * n - 1][2 * j] = {'t': 'eq'}
+        put_num(2 * n, 2 * j, col_res[j])
+    return cells
+
+
+def generate_math_square(difficulty):
+    """Return a ready-to-save grid_data dict for a crossed math square, or
+    ``None`` if generation failed."""
+    p = _ms_params(difficulty)
+    sol = _ms_build_solution(p)
+    if sol is None and '÷' in p['ops']:
+        # ÷ makes exact-integer grids rare; fall back to + − × so creation
+        # always succeeds (hard stays hard via the larger grid + more blanks).
+        p = {**p, 'ops': ['+', '-', '×']}
+        sol = _ms_build_solution(p)
+    if sol is None:
+        return None
+
+    interior, row_ops, col_ops, row_res, col_res = sol
+    n = p['n']
+    equations, value_map = _ms_equations(n, interior, row_ops, col_ops, row_res, col_res)
+    blanks = _ms_choose_blanks(equations, value_map, p)
+    cells = _ms_to_cells(n, interior, row_ops, col_ops, row_res, col_res, blanks)
+    return {'rows': 2 * n + 1, 'cols': 2 * n + 1, 'n': n,
+            'eval': 'bodmas', 'difficulty': difficulty, 'cells': cells}
+
+
+def empty_math_square(n):
+    """Build a blank grid_data of size N for the manual editor (all numbers 0
+    and given, all operators '+'); the creator fills in real values."""
+    D = 2 * n + 1
+    cells = [[{'t': 'blank'} for _ in range(D)] for _ in range(D)]
+    for i in range(n):
+        for j in range(n):
+            cells[2 * i][2 * j] = {'t': 'num', 'v': 0, 'given': True}
+    for i in range(n):
+        for j in range(n - 1):
+            cells[2 * i][2 * j + 1] = {'t': 'op', 'v': '+'}
+        cells[2 * i][2 * n - 1] = {'t': 'eq'}
+        cells[2 * i][2 * n] = {'t': 'num', 'v': 0, 'given': True}
+    for j in range(n):
+        for i in range(n - 1):
+            cells[2 * i + 1][2 * j] = {'t': 'op', 'v': '+'}
+        cells[2 * n - 1][2 * j] = {'t': 'eq'}
+        cells[2 * n][2 * j] = {'t': 'num', 'v': 0, 'given': True}
+    return {'rows': D, 'cols': D, 'n': n, 'eval': 'bodmas',
+            'difficulty': 'easy', 'cells': cells}

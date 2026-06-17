@@ -227,3 +227,32 @@ class PrimeClimbChallenge(models.Model):
 
     class Meta:
         ordering = ['-created_at']
+
+
+class MathSquarePuzzle(models.Model):
+    """A crossed math square: every row and every column forms an arithmetic
+    equation, and the solver fills the empty number cells so all equations are
+    true. The full grid (cell types, operators, solution values, which numbers
+    are blank) is stored in ``grid_data`` — see games/views.py for the schema."""
+    DIFFICULTY_EASY   = 'easy'
+    DIFFICULTY_MEDIUM = 'medium'
+    DIFFICULTY_HARD   = 'hard'
+    DIFFICULTY_CHOICES = [
+        (DIFFICULTY_EASY,   'Easy'),
+        (DIFFICULTY_MEDIUM, 'Medium'),
+        (DIFFICULTY_HARD,   'Hard'),
+    ]
+
+    title        = models.CharField(max_length=200)
+    difficulty   = models.CharField(max_length=10, choices=DIFFICULTY_CHOICES, default=DIFFICULTY_EASY)
+    size         = models.IntegerField(default=2, help_text='Numbers per row/column (N): 2–4.')
+    grid_data    = models.JSONField(null=True, blank=True)
+    created_by   = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mathsquare_puzzles')
+    is_published = models.BooleanField(default=False)
+    created_at   = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.title} ({self.get_difficulty_display()})'
+
+    class Meta:
+        ordering = ['-created_at']

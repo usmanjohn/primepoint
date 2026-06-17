@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Prime Point\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-22 10:36+0000\n"
+"POT-Creation-Date: 2026-06-17 06:52+0000\n"
 "PO-Revision-Date: 2026-04-29 15:20+0000\n"
 "Last-Translator: Prime Point\n"
 "Language-Team: Uzbek\n"
@@ -28,11 +28,12 @@ msgstr "Platforma statistikasi"
 
 #: analytics/templates/analytics/home.html:133
 #: classroom/templates/classroom/classroom_detail.html:176
-#: masters/templates/masters/master_detail.html:391
-#: masters/templates/masters/master_detail.html:497
+#: masters/templates/masters/master_detail.html:394
+#: masters/templates/masters/master_detail.html:500
 #: masters/templates/masters/master_list.html:185
-#: people/templates/people/profile.html:250
-#: prime/templates/prime/index.html:254 prime/templates/prime/index.html:387
+#: masters/templates/masters/my_students.html:198
+#: people/templates/people/profile.html:257
+#: prime/templates/prime/index.html:254 prime/templates/prime/index.html:403
 msgid "Students"
 msgstr "O'quvchilar"
 
@@ -41,32 +42,35 @@ msgstr "O'quvchilar"
 #: masters/templates/masters/master_list.html:5
 #: prime/templates/prime/index.html:222 prime/templates/prime/index.html:225
 #: prime/templates/prime/search_results.html:41 templates/base.html:87
-#: templates/base.html:308
+#: templates/base.html:318
 msgid "Masters"
 msgstr "Ustodlar"
 
 #: analytics/templates/analytics/home.html:143
-#: classroom/templates/classroom/lesson_detail.html:258
-#: masters/templates/masters/master_detail.html:386
-#: masters/templates/masters/master_detail.html:438
+#: classroom/templates/classroom/lesson_detail.html:291
+#: masters/templates/masters/master_detail.html:389
+#: masters/templates/masters/master_detail.html:441
 #: masters/templates/masters/master_list.html:181
-#: people/templates/people/profile.html:264
-#: people/templates/people/profile.html:388
+#: people/templates/people/profile.html:271
+#: people/templates/people/profile.html:395
 #: prime/templates/prime/about.html:494 prime/templates/prime/index.html:238
-#: prime/templates/prime/index.html:391
+#: prime/templates/prime/index.html:407
 msgid "Practices"
 msgstr "Mashqlar"
 
 #: analytics/templates/analytics/home.html:148
-#: masters/templates/masters/master_detail.html:401
-#: prime/templates/prime/index.html:353
+#: masters/templates/masters/master_detail.html:404
+#: masters/templates/masters/my_students.html:245
+#: prime/templates/prime/index.html:369
 msgid "Avg Score"
 msgstr "O'rt. ball"
 
 #: analytics/templates/analytics/home.html:153
-#: masters/templates/masters/master_detail.html:406
+#: exam/templates/exam/take_section.html:437
+#: games/templates/games/oddoneout_manage.html:105
+#: masters/templates/masters/master_detail.html:409
 #: practice/templates/practice/practice_detail.html:35
-#: practice/templates/practice/practice_list.html:494
+#: practice/templates/practice/practice_list.html:611
 #: prime/templates/prime/help.html:580
 msgid "Questions"
 msgstr "Savollar"
@@ -77,8 +81,8 @@ msgid "Discussions"
 msgstr "Muhokamalar"
 
 #: analytics/templates/analytics/home.html:163
-#: classroom/templates/classroom/lesson_detail.html:237
-#: masters/templates/masters/master_detail.html:537
+#: classroom/templates/classroom/lesson_detail.html:270
+#: masters/templates/masters/master_detail.html:540
 #: prime/templates/prime/index.html:305 templates/base.html:118
 #: tutorial/templates/tutorial/playlist_detail.html:14
 #: tutorial/templates/tutorial/playlist_list.html:89
@@ -149,12 +153,13 @@ msgstr "Ha, o'chirish"
 #: classroom/templates/classroom/classroom_form.html:146
 #: classroom/templates/classroom/discussion_form.html:82
 #: classroom/templates/classroom/lesson_confirm_delete.html:30
-#: classroom/templates/classroom/lesson_form.html:175
-#: classroom/templates/classroom/lesson_form.html:177
+#: classroom/templates/classroom/lesson_form.html:181
+#: classroom/templates/classroom/lesson_form.html:183
+#: exam/templates/exam/take_section.html:466
 #: tutorial/templates/tutorial/playlist_confirm_delete.html:23
 #: tutorial/templates/tutorial/playlist_form.html:24
 #: tutorial/templates/tutorial/tutorial_confirm_delete.html:29
-#: tutorial/templates/tutorial/tutorial_form.html:33
+#: tutorial/templates/tutorial/tutorial_form.html:63
 msgid "Cancel"
 msgstr "Bekor qilish"
 
@@ -213,30 +218,32 @@ msgid "Add Lesson"
 msgstr "Dars"
 
 #: classroom/templates/classroom/classroom_detail.html:149
-#: classroom/templates/classroom/lesson_detail.html:143
+#: classroom/templates/classroom/lesson_detail.html:160
 msgid "Not Yet"
 msgstr ""
 
 #: classroom/templates/classroom/classroom_detail.html:150
-#: classroom/templates/classroom/lesson_detail.html:147
+#: classroom/templates/classroom/lesson_detail.html:164
 #: prime/templates/prime/help.html:667
 msgid "Ongoing"
 msgstr "Davom etmoqda"
 
 #: classroom/templates/classroom/classroom_detail.html:151
-#: classroom/templates/classroom/lesson_detail.html:151
+#: classroom/templates/classroom/lesson_detail.html:168
 #: prime/templates/prime/help.html:662
 msgid "Finished"
 msgstr "Tugallangan"
 
 #: classroom/templates/classroom/classroom_detail.html:155
-#: classroom/templates/classroom/lesson_detail.html:158
-#: masters/templates/masters/master_detail.html:458
+#: classroom/templates/classroom/lesson_detail.html:175
+#: examprep/templates/examprep/_playlist.html:12
+#: games/templates/games/mathsquare_list.html:51
+#: masters/templates/masters/master_detail.html:461
 msgid "Draft"
-msgstr ""
+msgstr "Qoralama"
 
 #: classroom/templates/classroom/classroom_detail.html:159
-#: practice/templates/practice/practice_list.html:533
+#: practice/templates/practice/practice_list.html:650
 msgid "Open"
 msgstr "Ochiq"
 
@@ -251,17 +258,19 @@ msgid "No lessons published yet."
 msgstr "Hali nashr etilgan mashqlar yo'q."
 
 #: classroom/templates/classroom/classroom_detail.html:178
-#: people/templates/people/profile.html:390
+#: games/templates/games/oddoneout_manage.html:4
+#: people/templates/people/profile.html:397
+#: people/templates/people/profile.html:417
 msgid "Manage"
 msgstr "Boshqarish"
 
 #: classroom/templates/classroom/classroom_detail.html:189
-#: masters/templates/masters/master_detail.html:475
 #: masters/templates/masters/master_detail.html:478
-#: masters/templates/masters/master_detail.html:522
+#: masters/templates/masters/master_detail.html:481
 #: masters/templates/masters/master_detail.html:525
-#: masters/templates/masters/master_detail.html:567
+#: masters/templates/masters/master_detail.html:528
 #: masters/templates/masters/master_detail.html:570
+#: masters/templates/masters/master_detail.html:573
 msgid "more"
 msgstr ""
 
@@ -273,10 +282,13 @@ msgstr "Sinf xonasi"
 
 #: classroom/templates/classroom/classroom_form.html:105
 #: classroom/templates/classroom/classroom_form.html:109
+#: games/templates/games/crossword_print.html:185
+#: games/templates/games/mathsquare_print.html:88
 msgid "Back"
 msgstr ""
 
 #: classroom/templates/classroom/classroom_form.html:141
+#: games/templates/games/mathsquare_edit.html:68
 msgid "Save"
 msgstr ""
 
@@ -284,9 +296,8 @@ msgstr ""
 #: classroom/templates/classroom/classroom_list.html:4
 #: classroom/templates/classroom/classroom_list.html:183
 #: classroom/templates/classroom/discussion_thread.html:95
-#: classroom/templates/classroom/lesson_detail.html:128
+#: classroom/templates/classroom/lesson_detail.html:145
 #: prime/templates/prime/index.html:321 templates/base.html:124
-#: templates/base.html:311
 #, fuzzy
 #| msgid "Classroom"
 msgid "Classrooms"
@@ -349,8 +360,9 @@ msgid "Enter"
 msgstr ""
 
 #: classroom/templates/classroom/classroom_list.html:240
-#: masters/templates/masters/master_detail.html:669
+#: masters/templates/masters/master_detail.html:672
 #: masters/templates/masters/master_list.html:191
+#: people/templates/people/profile.html:647
 msgid "View"
 msgstr "Ko'rish"
 
@@ -449,14 +461,17 @@ msgid "Start a Discussion"
 msgstr "Muhokama"
 
 #: classroom/templates/classroom/discussion_form.html:68
-#: classroom/templates/classroom/lesson_detail.html:218
+#: classroom/templates/classroom/lesson_detail.html:251
+#: classroom/templates/classroom/lesson_detail.html:339
 #: classroom/templates/classroom/lesson_form.html:100
+#: masters/templates/masters/certificate.html:360
 #: tutorial/templates/tutorial/playlist_form.html:38
-#: tutorial/templates/tutorial/tutorial_form.html:49
+#: tutorial/templates/tutorial/tutorial_form.html:79
 msgid "Title"
 msgstr "Sarlavha"
 
 #: classroom/templates/classroom/discussion_form.html:73
+#: masters/templates/masters/certificate.html:363
 msgid "Body"
 msgstr ""
 
@@ -492,8 +507,9 @@ msgid "Delete this discussion?"
 msgstr "Ushbu darslikni o'chirish"
 
 #: classroom/templates/classroom/discussion_list.html:112
-#: classroom/templates/classroom/lesson_detail.html:170
-#: masters/templates/masters/master_detail.html:372
+#: classroom/templates/classroom/lesson_detail.html:187
+#: masters/templates/masters/master_detail.html:375
+#: masters/templates/masters/student_detail.html:404
 msgid "Delete"
 msgstr "O'chirish"
 
@@ -554,228 +570,1010 @@ msgid ""
 "        "
 msgstr ""
 
-#: classroom/templates/classroom/lesson_detail.html:156
+#: classroom/templates/classroom/lesson_detail.html:173
 msgid "Live"
 msgstr ""
 
-#: classroom/templates/classroom/lesson_detail.html:161 people/models.py:18
+#: classroom/templates/classroom/lesson_detail.html:178 people/models.py:18
 msgid "Lesson"
 msgstr "Dars"
 
-#: classroom/templates/classroom/lesson_detail.html:167
+#: classroom/templates/classroom/lesson_detail.html:184
+#: games/templates/games/mathsquare_list.html:58
+#: games/templates/games/oddoneout_list.html:62
 #: homework/templates/homework/homework_detail.html:76
-#: masters/templates/masters/certificate.html:525
-#: masters/templates/masters/master_detail.html:365
-#: masters/templates/masters/master_detail.html:672
+#: masters/templates/masters/certificate.html:359
+#: masters/templates/masters/master_detail.html:368
+#: masters/templates/masters/master_detail.html:675
 #: tutorial/templates/tutorial/playlist_detail.html:53
 #: tutorial/templates/tutorial/tutorial_detail.html:67
 msgid "Edit"
 msgstr "Tahrirlash"
 
-#: classroom/templates/classroom/lesson_detail.html:181
+#: classroom/templates/classroom/lesson_detail.html:199
+msgid "Video"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:214
+#: masters/templates/masters/student_detail.html:352
+#: masters/templates/masters/student_detail.html:374
 msgid "Notes"
 msgstr ""
 
-#: classroom/templates/classroom/lesson_detail.html:192
+#: classroom/templates/classroom/lesson_detail.html:225
 #, fuzzy
 #| msgid "Download PDF"
 msgid "Download"
 msgstr "PDF yuklab olish"
 
-#: classroom/templates/classroom/lesson_detail.html:198
+#: classroom/templates/classroom/lesson_detail.html:231
 #, fuzzy
 #| msgid "Delete"
 msgid "Delete note"
 msgstr "O'chirish"
 
-#: classroom/templates/classroom/lesson_detail.html:199
+#: classroom/templates/classroom/lesson_detail.html:232
 #, fuzzy
 #| msgid "Delete this tutorial"
 msgid "Delete this note?"
 msgstr "Ushbu darslikni o'chirish"
 
-#: classroom/templates/classroom/lesson_detail.html:207
+#: classroom/templates/classroom/lesson_detail.html:240
 #, fuzzy
 #| msgid "No role assigned yet"
 msgid "No notes uploaded yet."
 msgstr "Hali rol tayinlanmagan"
 
-#: classroom/templates/classroom/lesson_detail.html:213
+#: classroom/templates/classroom/lesson_detail.html:246
 msgid "Upload PDF Note"
 msgstr ""
 
-#: classroom/templates/classroom/lesson_detail.html:222
+#: classroom/templates/classroom/lesson_detail.html:255
 msgid "File (PDF)"
 msgstr ""
 
-#: classroom/templates/classroom/lesson_detail.html:226
+#: classroom/templates/classroom/lesson_detail.html:259
 msgid "Upload"
 msgstr ""
 
-#: classroom/templates/classroom/lesson_detail.html:246
+#: classroom/templates/classroom/lesson_detail.html:279
 msgid "min read"
 msgstr ""
 
-#: classroom/templates/classroom/lesson_detail.html:280
-#: masters/templates/masters/master_detail.html:630
+#: classroom/templates/classroom/lesson_detail.html:312
+#: masters/templates/masters/master_detail.html:633
 msgid "Homeworks"
 msgstr "Uy vazifalari"
 
-#: classroom/templates/classroom/lesson_detail.html:289
+#: classroom/templates/classroom/lesson_detail.html:323
 #: homework/templates/homework/homework_detail.html:67
-#: people/templates/people/profile.html:420
-#: people/templates/people/profile.html:616
+#: masters/templates/masters/student_detail.html:372
+#: people/templates/people/profile.html:447
+#: people/templates/people/profile.html:672
 msgid "Due"
 msgstr "Muddat"
 
-#: classroom/templates/classroom/lesson_detail.html:289
+#: classroom/templates/classroom/lesson_detail.html:323
 #, fuzzy
 #| msgid "Due date"
 msgid "No due date"
 msgstr "Topshirish muddati"
 
-#: classroom/templates/classroom/lesson_detail.html:304
+#: classroom/templates/classroom/lesson_detail.html:329
+#: people/templates/people/profile.html:703
+msgid "No homework assigned yet."
+msgstr "Hali uy vazifasi berilmagan."
+
+#: classroom/templates/classroom/lesson_detail.html:334
+#, fuzzy
+#| msgid "Create Homework"
+msgid "Create & Attach Homework"
+msgstr "Uy vazifasi yaratish"
+
+#: classroom/templates/classroom/lesson_detail.html:343 people/models.py:16
+#: practice/templates/practice/practice_list.html:451
+#: prime/templates/prime/index.html:241 templates/base.html:91
+#: templates/base.html:95 templates/base.html:324
+#: tutorial/templates/tutorial/tutorial_detail.html:301
+msgid "Practice"
+msgstr "Mashqlar"
+
+#: classroom/templates/classroom/lesson_detail.html:347
+#: masters/templates/masters/student_detail.html:344
+#, fuzzy
+#| msgid "Due date"
+msgid "Due Date"
+msgstr "Topshirish muddati"
+
+#: classroom/templates/classroom/lesson_detail.html:352
+#, fuzzy
+#| msgid "Instructor"
+msgid "Instructions"
+msgstr "O'qituvchi"
+
+#: classroom/templates/classroom/lesson_detail.html:356
+#: people/templates/people/profile.html:458
+msgid "Create Homework"
+msgstr "Uy vazifasi yaratish"
+
+#: classroom/templates/classroom/lesson_detail.html:370
 msgid "Content coming soon."
 msgstr ""
 
 #: classroom/templates/classroom/lesson_form.html:106
+#: games/templates/games/oddoneout_create.html:39
 #: tutorial/templates/tutorial/playlist_form.html:47
 #, fuzzy
 #| msgid "Questions"
 msgid "Description"
 msgstr "Savollar"
 
-#: classroom/templates/classroom/lesson_form.html:112
+#: classroom/templates/classroom/lesson_form.html:111
+msgid "YouTube Video URL"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_form.html:111
+#: games/templates/games/codebreaker_create.html:61
+#: games/templates/games/oddoneout_create.html:39
+#: games/templates/games/primeclimb_create.html:82
+#: games/templates/games/sortingrace_create.html:68
+#: games/templates/games/wordorder_create.html:58
+#: tutorial/templates/tutorial/playlist_form.html:48
+#: tutorial/templates/tutorial/playlist_form.html:97
+#: tutorial/templates/tutorial/tutorial_form.html:123
+#: tutorial/templates/tutorial/tutorial_form.html:135
+msgid "optional"
+msgstr "ixtiyoriy"
+
+#: classroom/templates/classroom/lesson_form.html:118
 msgid "Order"
 msgstr ""
 
-#: classroom/templates/classroom/lesson_form.html:116
+#: classroom/templates/classroom/lesson_form.html:122
 #: homework/templates/homework/homework_detail.html:124
 #: homework/templates/homework/homework_detail.html:193
+#: masters/templates/masters/student_detail.html:266
+#: masters/templates/masters/student_detail.html:334
+#: masters/templates/masters/student_detail.html:371
 msgid "Status"
 msgstr "Holat"
 
-#: classroom/templates/classroom/lesson_form.html:122
+#: classroom/templates/classroom/lesson_form.html:128
 #: tutorial/templates/tutorial/playlist_form.html:114
-#: tutorial/templates/tutorial/tutorial_form.html:122
+#: tutorial/templates/tutorial/tutorial_form.html:152
 msgid "Published"
 msgstr "Nashr etilgan"
 
-#: classroom/templates/classroom/lesson_form.html:130
+#: classroom/templates/classroom/lesson_form.html:136
 #, fuzzy
 #| msgid "Practices"
 msgid "Link Practices"
 msgstr "Mashqlar"
 
-#: classroom/templates/classroom/lesson_form.html:135
+#: classroom/templates/classroom/lesson_form.html:141
 #, fuzzy
 #| msgid "No published practices yet."
 msgid "No published practices available."
 msgstr "Hali nashr etilgan mashqlar yo'q."
 
-#: classroom/templates/classroom/lesson_form.html:145
+#: classroom/templates/classroom/lesson_form.html:151
 #, fuzzy
 #| msgid "Homeworks"
 msgid "Link Homeworks"
 msgstr "Uy vazifalari"
 
-#: classroom/templates/classroom/lesson_form.html:150
+#: classroom/templates/classroom/lesson_form.html:156
 #, fuzzy
 #| msgid "No homework created yet."
 msgid "No homeworks created yet."
 msgstr "Hali uy vazifasi yaratilmagan."
 
-#: classroom/templates/classroom/lesson_form.html:159
+#: classroom/templates/classroom/lesson_form.html:165
 #, fuzzy
 #| msgid "Tutorials"
 msgid "Link Tutorials"
 msgstr "Darsliklar"
 
-#: classroom/templates/classroom/lesson_form.html:164
+#: classroom/templates/classroom/lesson_form.html:170
 #, fuzzy
 #| msgid "No published practices yet."
 msgid "No published tutorials available."
 msgstr "Hali nashr etilgan mashqlar yo'q."
 
-#: classroom/templates/classroom/lesson_form.html:172
+#: classroom/templates/classroom/lesson_form.html:178
 #, fuzzy
 #| msgid "Lesson"
 msgid "Save Lesson"
 msgstr "Dars"
 
+#: exam/templates/exam/exam_detail.html:49
+#: exam/templates/exam/exam_result.html:86
+#: exam/templates/exam/exam_result.html:245
+#, fuzzy
+#| msgid "Run Classrooms"
+msgid "All Exams"
+msgstr "Darsxonalarni yuritish"
+
+#: exam/templates/exam/exam_detail.html:60
+#, fuzzy
+#| msgid "Listening"
+msgid "Listening Qs"
+msgstr "Tinglash"
+
+#: exam/templates/exam/exam_detail.html:61
+#, fuzzy
+#| msgid "Reading"
+msgid "Reading Qs"
+msgstr "O'qish"
+
+#: exam/templates/exam/exam_detail.html:62
+#, fuzzy
+#| msgid "Writing"
+msgid "Writing Qs"
+msgstr "Yozish"
+
+#: exam/templates/exam/exam_detail.html:63
+#, fuzzy
+#| msgid "Total Points"
+msgid "Total Min"
+msgstr "Jami ballar"
+
+#: exam/templates/exam/exam_detail.html:64
+msgid "Yes"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:64
+#: exam/templates/exam/take_section.html:497
+msgid "Audio"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:69
+msgid "EXAM SECTIONS"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:73
+#: exam/templates/exam/exam_detail.html:113
+#: exam/templates/exam/exam_list.html:151
+#: exam/templates/exam/exam_result.html:99
+#: exam/templates/exam/exam_result.html:137
+#: exam/templates/exam/take_section.html:477 examprep/models.py:11
+msgid "Listening"
+msgstr "Tinglash"
+
+#: exam/templates/exam/exam_detail.html:74
+#: exam/templates/exam/exam_detail.html:82
+#: exam/templates/exam/exam_detail.html:90
+#: exam/templates/exam/exam_result.html:138
+#: exam/templates/exam/exam_result.html:177
+#: games/templates/games/oddoneout_list.html:49
+#: games/templates/games/oddoneout_manage.html:20
+#, fuzzy
+#| msgid "Questions"
+msgid "questions"
+msgstr "Savollar"
+
+#: exam/templates/exam/exam_detail.html:76
+#: exam/templates/exam/exam_detail.html:84
+#: exam/templates/exam/exam_detail.html:92
+#: exam/templates/exam/exam_list.html:151
+#: exam/templates/exam/exam_list.html:152
+#: exam/templates/exam/exam_list.html:153 prime/templates/prime/help.html:577
+#: prime/templates/prime/help.html:633
+#: tutorial/templates/tutorial/tutorial_detail.html:99
+msgid "min"
+msgstr "daqiqa"
+
+#: exam/templates/exam/exam_detail.html:81
+#: exam/templates/exam/exam_detail.html:114
+#: exam/templates/exam/exam_list.html:152
+#: exam/templates/exam/exam_result.html:110
+#: exam/templates/exam/exam_result.html:176
+#: exam/templates/exam/take_section.html:479 examprep/models.py:9
+msgid "Reading"
+msgstr "O'qish"
+
+#: exam/templates/exam/exam_detail.html:89
+#: exam/templates/exam/exam_detail.html:115
+#: exam/templates/exam/exam_list.html:153
+#: exam/templates/exam/exam_result.html:121
+#: exam/templates/exam/exam_result.html:215
+#: exam/templates/exam/take_section.html:481 examprep/models.py:10
+msgid "Writing"
+msgstr "Yozish"
+
+#: exam/templates/exam/exam_detail.html:98
+msgid "RULES"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:100
+msgid "Sections are completed in order: Listening → Reading → Writing"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:101
+msgid "Timer runs continuously and cannot be paused."
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:102
+msgid "Listening and Reading are auto-scored. Writing is graded by a teacher."
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:103
+msgid "Scroll freely through all questions in a section — answer in any order."
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:112
+#, fuzzy
+#| msgid "Previous"
+msgid "Previous Attempt"
+msgstr "Oldingi"
+
+#: exam/templates/exam/exam_detail.html:115
+#: homework/templates/homework/homework_detail.html:93
+#: homework/templates/homework/homework_detail.html:141
+#: homework/templates/homework/homework_detail.html:211
+#: people/templates/people/profile.html:676 prime/templates/prime/help.html:451
+#: prime/templates/prime/help.html:598
+msgid "Pending"
+msgstr "Kutilmoqda"
+
+#: exam/templates/exam/exam_detail.html:118
+msgid "Continue Exam"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:123
+#: exam/templates/exam/exam_list.html:163
+#, fuzzy
+#| msgid "View Detailed Result"
+msgid "View Result"
+msgstr "Batafsil natijani ko'rish"
+
+#: exam/templates/exam/exam_detail.html:131
+#: exam/templates/exam/exam_result.html:244
+msgid "Retake Exam"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:131
+#: exam/templates/exam/exam_list.html:171
+#, fuzzy
+#| msgid "Start Game"
+msgid "Start Exam"
+msgstr "O'yinni boshlash"
+
+#: exam/templates/exam/exam_detail.html:135
+#, fuzzy
+#| msgid "Total Attempts"
+msgid "Total time:"
+msgstr "Jami urinishlar"
+
+#: exam/templates/exam/exam_detail.html:135
+msgid "minutes"
+msgstr ""
+
+#: exam/templates/exam/exam_list.html:4 exam/templates/exam/exam_list.html:5
+#: prime/templates/prime/index.html:334 prime/templates/prime/index.html:337
+#: templates/base.html:135 templates/base.html:321
+msgid "Exams"
+msgstr ""
+
+#: exam/templates/exam/exam_list.html:129
+msgid "Full Exams"
+msgstr ""
+
+#: exam/templates/exam/exam_list.html:130
+msgid "Complete timed exams — Listening → Reading → Writing in sequence."
+msgstr ""
+
+#: exam/templates/exam/exam_list.html:143
+#, fuzzy
+#| msgid "Exam Prep"
+msgid "Exam"
+msgstr "Imtihonga tayyorgarlik"
+
+#: exam/templates/exam/exam_list.html:145
+#: exam/templates/exam/exam_result.html:92
+#: tutorial/templates/tutorial/tutorial_detail.html:289
+msgid "Completed"
+msgstr ""
+
+#: exam/templates/exam/exam_list.html:147
+#, fuzzy
+#| msgid "Rating Progress"
+msgid "In progress"
+msgstr "Reyting jarayoni"
+
+#: exam/templates/exam/exam_list.html:156
+msgid "min total"
+msgstr ""
+
+#: exam/templates/exam/exam_list.html:157
+msgid "Audio included"
+msgstr ""
+
+#: exam/templates/exam/exam_list.html:165
+msgid "Retake"
+msgstr ""
+
+#: exam/templates/exam/exam_list.html:170
+#, fuzzy
+#| msgid "Content"
+msgid "Continue"
+msgstr "Mazmun"
+
+#: exam/templates/exam/exam_list.html:184
+#, fuzzy
+#| msgid "No published practices yet."
+msgid "No exams published yet."
+msgstr "Hali nashr etilgan mashqlar yo'q."
+
+#: exam/templates/exam/exam_result.html:4
+#: games/templates/games/target_number.html:438
+msgid "Result"
+msgstr "Natija"
+
+#: exam/templates/exam/exam_result.html:90
+msgid "EXAM RESULT"
+msgstr ""
+
+#: exam/templates/exam/exam_result.html:103
+#: exam/templates/exam/exam_result.html:114
+#, fuzzy
+#| msgid "Questions"
+msgid "No questions"
+msgstr "Savollar"
+
+#: exam/templates/exam/exam_result.html:125
+#, fuzzy
+#| msgid "Pending admin review"
+msgid "Pending review"
+msgstr "Admin ko'rib chiqmoqda"
+
+#: exam/templates/exam/exam_result.html:141
+#: exam/templates/exam/exam_result.html:180
+#: exam/templates/exam/exam_result.html:219
+#, fuzzy
+#| msgid "Check Answers"
+msgid "Show / Hide Answers"
+msgstr "Javoblarni tekshirish"
+
+#: exam/templates/exam/exam_result.html:159
+#: exam/templates/exam/exam_result.html:198
+#: exam/templates/exam/exam_result.html:232
+#, fuzzy
+#| msgid "No answer selected."
+msgid "Not answered"
+msgstr "Javob tanlanmadi."
+
+#: exam/templates/exam/exam_result.html:216
+msgid "Graded by teacher"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:450
+#: exam/templates/exam/take_section.html:531
+msgid "Answered"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:453
+msgid "Unanswered"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:462
+#, fuzzy
+#| msgid "Submit Your Application"
+msgid "Submit Section?"
+msgstr "Arizangizni yuboring"
+
+#: exam/templates/exam/take_section.html:463
+msgid "Are you sure you want to submit and move to the next section?"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:467
+#, fuzzy
+#| msgid "Submitted"
+msgid "Yes, Submit"
+msgstr "Topshirilgan"
+
+#: exam/templates/exam/take_section.html:483
+#, fuzzy
+#| msgid "Questions"
+msgid "Section"
+msgstr "Savollar"
+
+#: exam/templates/exam/take_section.html:519
+#, fuzzy
+#| msgid "replies"
+msgid "Replay"
+msgstr "javob"
+
+#: exam/templates/exam/take_section.html:536
+msgid "Navigate"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:552
+#, fuzzy
+#| msgid "Lesson image"
+msgid "Passage image"
+msgstr "Dars rasmi"
+
+#: exam/templates/exam/take_section.html:556
+#: games/templates/games/oddoneout_play.html:187
+#, fuzzy
+#| msgid "Questions"
+msgid "Question"
+msgstr "Savollar"
+
+#: exam/templates/exam/take_section.html:563
+#, fuzzy
+#| msgid "Lesson image"
+msgid "Question image"
+msgstr "Dars rasmi"
+
+#: exam/templates/exam/take_section.html:570
+msgid "Write your answer here..."
+msgstr ""
+
+#: exam/templates/exam/take_section.html:594
+#, fuzzy
+#| msgid "No tutorials in this category yet."
+msgid "No questions in this section yet."
+msgstr "Bu kategoriyada hali darslik yo'q."
+
+#: exam/templates/exam/take_section.html:604
+#: exam/templates/exam/take_section.html:731
+#: exam/templates/exam/take_section.html:735
+msgid "Auto-save on"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:608
+msgid "Finish & Continue"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:610
+#, fuzzy
+#| msgid "Submitted"
+msgid "Submit Exam"
+msgstr "Topshirilgan"
+
+#: exam/templates/exam/take_section.html:720
+msgid "Saving..."
+msgstr ""
+
+#: exam/templates/exam/take_section.html:728
+msgid "Saved"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:747
+msgid "Submit Exam?"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:747
+#, fuzzy
+#| msgid "Finished"
+msgid "Finish Section?"
+msgstr "Tugallangan"
+
+#: exam/templates/exam/take_section.html:749
+msgid "This will complete and score your exam."
+msgstr ""
+
+#: exam/templates/exam/take_section.html:750
+msgid "You cannot go back to this section once you continue."
+msgstr ""
+
+#: exam/templates/exam/take_section.html:754
+msgid "question(s) not answered"
+msgstr ""
+
+#: examprep/models.py:12
+msgid "Speaking"
+msgstr "Gapirish"
+
+#: examprep/models.py:13
+msgid "Vocabulary"
+msgstr "Lug'at"
+
+#: examprep/models.py:14
+msgid "Strategy"
+msgstr "Strategiya"
+
+#: examprep/templates/examprep/_block.html:11
+msgid "Lesson image"
+msgstr "Dars rasmi"
+
+#: examprep/templates/examprep/_block.html:50
+#: games/templates/games/wordorder_play.html:275
+msgid "Correct!"
+msgstr "To'g'ri!"
+
+#: examprep/templates/examprep/_block.html:52
+msgid "Not quite."
+msgstr "Unchalik emas."
+
+#: examprep/templates/examprep/_block.html:54
+msgid "No answer selected."
+msgstr "Javob tanlanmadi."
+
+#: examprep/templates/examprep/home.html:5
+#: examprep/templates/examprep/home.html:6
+#: examprep/templates/examprep/home.html:11
+#: examprep/templates/examprep/lesson_detail.html:6
+#: examprep/templates/examprep/lesson_detail.html:12
+#: examprep/templates/examprep/track_detail.html:6
+#: examprep/templates/examprep/track_detail.html:12 templates/base.html:140
+msgid "Exam Prep"
+msgstr "Imtihonga tayyorgarlik"
+
+#: examprep/templates/examprep/home.html:13
+msgid "Learn how to approach IELTS, TOPIK, GMAT, SAT and more — step by step."
+msgstr ""
+"IELTS, TOPIK, GMAT, SAT va boshqa imtihonlarni qanday yechishni bosqichma-"
+"bosqich o'rganing."
+
+#: examprep/templates/examprep/home.html:37
+#: examprep/templates/examprep/track_detail.html:44
+#, python-format
+msgid "%(counter)s lesson"
+msgid_plural "%(counter)s lessons"
+msgstr[0] "%(counter)s dars"
+
+#: examprep/templates/examprep/home.html:47
+msgid "No exam tracks are available yet. Check back soon."
+msgstr "Hozircha imtihon yo'nalishlari yo'q. Tez orada qayta tekshiring."
+
+#: examprep/templates/examprep/lesson_detail.html:37
+#, python-format
+msgid "Lesson %(current_no)s of %(total_no)s"
+msgstr "%(current_no)s-dars, jami %(total_no)s"
+
+#: examprep/templates/examprep/lesson_detail.html:43
+msgid "Answers checked. Correct answers and explanations are shown below."
+msgstr "Javoblar tekshirildi. To'g'ri javoblar va izohlar quyida ko'rsatilgan."
+
+#: examprep/templates/examprep/lesson_detail.html:56
+msgid "Check answers"
+msgstr "Javoblarni tekshirish"
+
+#: examprep/templates/examprep/lesson_detail.html:67
+msgid "Previous"
+msgstr "Oldingi"
+
+#: examprep/templates/examprep/lesson_detail.html:74
+#: games/templates/games/oddoneout_play.html:265
+#: games/templates/games/oddoneout_play.html:372
+#: games/templates/games/wordorder_play.html:186
+#: games/templates/games/wordorder_play.html:191
+#: games/templates/games/wordorder_play.html:291
+#: tutorial/templates/tutorial/tutorial_detail.html:284
+msgid "Next"
+msgstr "Keyingi"
+
+#: examprep/templates/examprep/lesson_detail.html:78
+msgid "Finish"
+msgstr "Yakunlash"
+
+#: examprep/templates/examprep/track_detail.html:28
+msgid "Choose a section to start working through its lessons in order."
+msgstr "Darslarni tartib bilan boshlash uchun bo'limni tanlang."
+
+#: examprep/templates/examprep/track_detail.html:56
+msgid "No lessons here yet."
+msgstr "Bu yerda hali darslar yo'q."
+
+#: games/templates/games/codebreaker_create.html:4
+msgid "New Code Breaker Puzzle"
+msgstr ""
+
+#: games/templates/games/codebreaker_create.html:5
+#: games/templates/games/codebreaker_create.html:13
+#: games/templates/games/codebreaker_list.html:4
+#: games/templates/games/codebreaker_list.html:5
+#: games/templates/games/codebreaker_list.html:18
+#: games/templates/games/codebreaker_play.html:4
+#: games/templates/games/codebreaker_play.html:5
+#: games/templates/games/codebreaker_play.html:163
+#: games/templates/games/games_home.html:96
+msgid "Code Breaker"
+msgstr ""
+
+#: games/templates/games/codebreaker_create.html:16
+#: games/templates/games/codebreaker_list.html:26
+#: games/templates/games/mathsquare_create.html:16
+#: games/templates/games/mathsquare_list.html:26
+msgid "New Puzzle"
+msgstr "Yangi boshqotirma"
+
+#: games/templates/games/codebreaker_create.html:18
+msgid "Math clues are auto-generated from the secret word based on difficulty."
+msgstr ""
+
+#: games/templates/games/codebreaker_create.html:35
+#: games/templates/games/mathsquare_create.html:35
+msgid "Puzzle Title"
+msgstr "Boshqotirma sarlavhasi"
+
+#: games/templates/games/codebreaker_create.html:46
+msgid "Secret Word / Phrase"
+msgstr ""
+
+#: games/templates/games/codebreaker_create.html:54
+msgid "Each letter gets one math clue. Spaces are shown as gaps."
+msgstr ""
+
+#: games/templates/games/codebreaker_create.html:61
+#: games/templates/games/primeclimb_create.html:82
+#: games/templates/games/sortingrace_create.html:68
+#: games/templates/games/wordorder_create.html:58
+msgid "Hint"
+msgstr ""
+
+#: games/templates/games/codebreaker_create.html:72
+#: games/templates/games/mathsquare_create.html:46
+#: games/templates/games/sortingrace_create.html:44
+#: games/templates/games/target_number.html:99
+#, fuzzy
+#| msgid "Difficulty Levels"
+msgid "Difficulty"
+msgstr "Qiyinlik darajasi"
+
+#: games/templates/games/codebreaker_create.html:96
+#, fuzzy
+#| msgid "Create Practices"
+msgid "Generate & Play"
+msgstr "Mashqlar yaratish"
+
+#: games/templates/games/codebreaker_create.html:110
+msgid "Addition and subtraction with numbers under 20."
+msgstr ""
+
+#: games/templates/games/codebreaker_create.html:111
+msgid "Multiplication, squares, and mixed operations under 100."
+msgstr ""
+
+#: games/templates/games/codebreaker_create.html:112
+msgid "Mixed operations, negative numbers, and simple algebra (find x)."
+msgstr ""
+
+#: games/templates/games/codebreaker_list.html:13
+#: games/templates/games/crossword_list.html:13
+#: games/templates/games/english_crossword_list.html:13
+#: games/templates/games/games_home.html:4
+#: games/templates/games/games_home.html:5
+#: games/templates/games/games_home.html:12
+#: games/templates/games/mathsquare_list.html:13
+#: games/templates/games/number_guess.html:12
+#: games/templates/games/oddoneout_list.html:13
+#: games/templates/games/primeclimb_list.html:13
+#: games/templates/games/sortingrace_list.html:13
+#: games/templates/games/target_number.html:78
+#: games/templates/games/wordorder_list.html:13
+#: games/templates/games/wordsearch_list.html:13 templates/base.html:130
+msgid "Games"
+msgstr "O'yinlar"
+
+#: games/templates/games/codebreaker_list.html:20
+msgid "Solve math problems to decode the secret word."
+msgstr ""
+
+#: games/templates/games/codebreaker_list.html:55
+msgid "letters"
+msgstr ""
+
+#: games/templates/games/codebreaker_list.html:67
+#, fuzzy
+#| msgid "No puzzles published yet. Check back soon!"
+msgid "No puzzles yet. Check back soon!"
+msgstr "Hali nashr etilgan krossvordlar yo'q. Tez orada tekshiring!"
+
+#: games/templates/games/codebreaker_play.html:187
+#: games/templates/games/primeclimb_play.html:132
+#: games/templates/games/wordsearch_play.html:104
+msgid "Reset"
+msgstr ""
+
+#: games/templates/games/codebreaker_play.html:198
+msgid "letters decoded"
+msgstr ""
+
+#: games/templates/games/codebreaker_play.html:227
+#: games/templates/games/sortingrace_play.html:235
+msgid "Reference"
+msgstr ""
+
+#: games/templates/games/codebreaker_play.html:243
+#, fuzzy
+#| msgid "You reached the target!"
+msgid "You decoded the secret word!"
+msgstr "Maqsadga yetdingiz!"
+
+#: games/templates/games/codebreaker_play.html:248
+msgid "More Puzzles"
+msgstr ""
+
+#: games/templates/games/codebreaker_play.html:275
+#: games/templates/games/target_number.html:177
+#: games/templates/games/target_number.html:427
+msgid "Time"
+msgstr ""
+
 #: games/templates/games/crossword_list.html:4
 #: games/templates/games/crossword_list.html:5
-#: games/templates/games/crossword_list.html:16
+#: games/templates/games/crossword_list.html:17
 #: games/templates/games/games_home.html:42
 msgid "Korean Crossword"
 msgstr "Koreys krossvord"
 
-#: games/templates/games/crossword_list.html:12
-#: games/templates/games/games_home.html:4
-#: games/templates/games/games_home.html:5
-#: games/templates/games/games_home.html:12
-#: games/templates/games/number_guess.html:12 templates/base.html:130
-msgid "Games"
-msgstr "O'yinlar"
-
-#: games/templates/games/crossword_list.html:17
+#: games/templates/games/crossword_list.html:18
 msgid "Read the clue and fill in the Korean syllable blocks."
 msgstr "Izohni o'qing va koreys bo'g'inlarini to'ldiring."
 
-#: games/templates/games/crossword_list.html:33
+#: games/templates/games/crossword_list.html:45
+#: games/templates/games/english_crossword_list.html:44
+#: games/templates/games/wordorder_create.html:79
+#: games/templates/games/wordorder_list.html:108
+#: games/templates/games/wordsearch_list.html:36
 msgid "words"
 msgstr "so'z"
 
-#: games/templates/games/crossword_list.html:36
+#: games/templates/games/crossword_list.html:48
 #: games/templates/games/games_home.html:48
 msgid "Korean"
 msgstr "Koreys"
 
-#: games/templates/games/crossword_list.html:46
+#: games/templates/games/crossword_list.html:59
+#: games/templates/games/english_crossword_list.html:58
+#: games/templates/games/wordsearch_list.html:52
 msgid "No puzzles published yet. Check back soon!"
 msgstr "Hali nashr etilgan krossvordlar yo'q. Tez orada tekshiring!"
 
-#: games/templates/games/crossword_play.html:121
+#: games/templates/games/crossword_play.html:105
 msgid "Crossword"
 msgstr "Krossvord"
 
-#: games/templates/games/crossword_play.html:132
+#: games/templates/games/crossword_play.html:115
+#: games/templates/games/english_crossword_play.html:117
+#: games/templates/games/mathsquare_play.html:59
+msgid "Print / PDF"
+msgstr "Chop etish / PDF"
+
+#: games/templates/games/crossword_play.html:123
+#: games/templates/games/english_crossword_play.html:125
+#: games/templates/games/mathsquare_play.html:67
+#: games/templates/games/primeclimb_play.html:171
 #: practice/templates/practice/practice_detail.html:76
 msgid "Try Again"
 msgstr "Yana urinib ko'rish"
 
-#: games/templates/games/crossword_play.html:142
+#: games/templates/games/crossword_play.html:134
+#: games/templates/games/english_crossword_play.html:136
 msgid "Excellent! All correct!"
 msgstr "Ajoyib! Hammasi to'g'ri!"
 
-#: games/templates/games/crossword_play.html:148
+#: games/templates/games/crossword_play.html:140
+#: games/templates/games/english_crossword_play.html:142
+#: games/templates/games/mathsquare_play.html:84
 #: games/templates/games/number_guess.html:61
+#: games/templates/games/oddoneout_play.html:219
+#: games/templates/games/target_number.html:155
+#: games/templates/games/target_number.html:279
+#: games/templates/games/wordorder_play.html:286
 msgid "Play Again"
 msgstr "Qayta o'ynash"
 
-#: games/templates/games/crossword_play.html:155
+#: games/templates/games/crossword_play.html:147
+#: games/templates/games/english_crossword_play.html:149
 msgid "This puzzle has no grid yet. Ask an admin to generate it."
 msgstr "Bu krossvord hali yaratilmagan. Admin bilan bog'laning."
 
-#: games/templates/games/crossword_play.html:175
+#: games/templates/games/crossword_play.html:158
+#: games/templates/games/english_crossword_play.html:160
 msgid "Crossword grid"
 msgstr "Krossvord to'ri"
 
-#: games/templates/games/crossword_play.html:203
+#: games/templates/games/crossword_play.html:186
+#: games/templates/games/english_crossword_play.html:188
 msgid "Cell"
 msgstr "Katak"
 
-#: games/templates/games/crossword_play.html:217
+#: games/templates/games/crossword_play.html:200
+#: games/templates/games/english_crossword_play.html:202
+#: games/templates/games/mathsquare_play.html:132
+#: games/templates/games/primeclimb_play.html:156
 msgid "Check Answers"
 msgstr "Javoblarni tekshirish"
 
-#: games/templates/games/crossword_play.html:228
+#: games/templates/games/crossword_play.html:211
+#: games/templates/games/crossword_print.html:239
+#: games/templates/games/english_crossword_play.html:213
 msgid "Across"
 msgstr "Gorizontal"
 
-#: games/templates/games/crossword_play.html:246
+#: games/templates/games/crossword_play.html:229
+#: games/templates/games/crossword_print.html:252
+#: games/templates/games/english_crossword_play.html:231
 msgid "Down"
 msgstr "Vertikal"
+
+#: games/templates/games/crossword_print.html:7
+#: games/templates/games/mathsquare_edit.html:73
+#: games/templates/games/mathsquare_list.html:62
+#: games/templates/games/mathsquare_print.html:7
+msgid "Print"
+msgstr ""
+
+#: games/templates/games/crossword_print.html:187
+#: games/templates/games/mathsquare_print.html:90
+msgid "Answers: ON"
+msgstr ""
+
+#: games/templates/games/crossword_print.html:189
+#: games/templates/games/mathsquare_print.html:92
+msgid "Show answer key"
+msgstr ""
+
+#: games/templates/games/crossword_print.html:191
+#: games/templates/games/mathsquare_print.html:94
+msgid "Print / Save as PDF"
+msgstr ""
+
+#: games/templates/games/crossword_print.html:199
+#: games/templates/games/mathsquare_print.html:102
+msgid "ANSWER KEY"
+msgstr ""
+
+#: games/templates/games/crossword_print.html:200
+#: games/templates/games/mathsquare_print.html:103
+#, fuzzy
+#| msgid "Name"
+msgid "Name:"
+msgstr "Ism"
+
+#: games/templates/games/crossword_print.html:205
+#: games/templates/games/mathsquare_play.html:91
+#: games/templates/games/mathsquare_print.html:108
+#: games/templates/games/wordsearch_play.html:118
+#, fuzzy
+#| msgid "This puzzle has no grid yet. Ask an admin to generate it."
+msgid "This puzzle has no grid yet."
+msgstr "Bu krossvord hali yaratilmagan. Admin bilan bog'laning."
+
+#: games/templates/games/crossword_print.html:232
+#, fuzzy
+#| msgid "words"
+msgid "word start"
+msgstr "so'z"
+
+#: games/templates/games/crossword_print.html:233
+#, fuzzy
+#| msgid "Director"
+msgid "direction"
+msgstr "Direktor"
+
+#: games/templates/games/crossword_print.html:234
+#, fuzzy
+#| msgid "words"
+msgid "word end"
+msgstr "so'z"
+
+#: games/templates/games/english_crossword_list.html:4
+#: games/templates/games/english_crossword_list.html:5
+#: games/templates/games/english_crossword_list.html:17
+#: games/templates/games/english_crossword_play.html:107
+#: games/templates/games/games_home.html:78
+#, fuzzy
+#| msgid "Crossword"
+msgid "English Crossword"
+msgstr "Krossvord"
+
+#: games/templates/games/english_crossword_list.html:18
+#, fuzzy
+#| msgid "Read the clue and fill in the Korean syllable blocks."
+msgid "Read the clue and fill in the English letters."
+msgstr "Izohni o'qing va koreys bo'g'inlarini to'ldiring."
+
+#: games/templates/games/english_crossword_list.html:47
+#: games/templates/games/games_home.html:66
+#: games/templates/games/games_home.html:84 point/settings.py:216
+msgid "English"
+msgstr "Inglizcha"
 
 #: games/templates/games/games_home.html:13
 msgid "Play educational mini-games to sharpen your skills."
@@ -794,6 +1592,10 @@ msgid ""
 msgstr "Tizim yashirin son tanlaydi. Uni imkon qadar kam urinishda toping!"
 
 #: games/templates/games/games_home.html:30
+#: games/templates/games/games_home.html:102
+#: games/templates/games/games_home.html:120
+#: games/templates/games/games_home.html:138
+#: games/templates/games/games_home.html:209
 msgid "Math"
 msgstr "Matematika"
 
@@ -801,13 +1603,312 @@ msgstr "Matematika"
 msgid ""
 "Read the clue and fill in the Korean syllable blocks. Both Uzbek and Korean "
 "clues included!"
-msgstr "Izohni o'qing va koreys bo'g'inlarini to'ldiring. O'zbek va koreys izohlar bor!"
+msgstr ""
+"Izohni o'qing va koreys bo'g'inlarini to'ldiring. O'zbek va koreys izohlar "
+"bor!"
+
+#: games/templates/games/games_home.html:60
+#: games/templates/games/wordsearch_list.html:4
+#: games/templates/games/wordsearch_list.html:5
+#: games/templates/games/wordsearch_list.html:17
+#: games/templates/games/wordsearch_play.html:98
+#, fuzzy
+#| msgid "Search"
+msgid "Word Search"
+msgstr "Qidirish"
+
+#: games/templates/games/games_home.html:64
+msgid "Find hidden words across, down, and diagonally in the letter grid!"
+msgstr ""
+
+#: games/templates/games/games_home.html:82
+#, fuzzy
+#| msgid "Read the clue and fill in the Korean syllable blocks."
+msgid ""
+"Read the clue and fill in the English letters. Clues in English and Uzbek!"
+msgstr "Izohni o'qing va koreys bo'g'inlarini to'ldiring."
+
+#: games/templates/games/games_home.html:100
+msgid "Solve math problems to decode the secret word letter by letter!"
+msgstr ""
+
+#: games/templates/games/games_home.html:114
+#: games/templates/games/mathsquare_create.html:5
+#: games/templates/games/mathsquare_create.html:13
+#: games/templates/games/mathsquare_edit.html:43
+#: games/templates/games/mathsquare_list.html:4
+#: games/templates/games/mathsquare_list.html:5
+#: games/templates/games/mathsquare_list.html:18
+#: games/templates/games/mathsquare_play.html:50
+msgid "Math Square"
+msgstr "Matematik kvadrat"
+
+#: games/templates/games/games_home.html:118
+msgid ""
+"Fill the empty squares so every row and column adds up to a true equation!"
+msgstr ""
+
+#: games/templates/games/games_home.html:132
+#: games/templates/games/primeclimb_create.html:5
+#: games/templates/games/primeclimb_create.html:13
+#: games/templates/games/primeclimb_list.html:4
+#: games/templates/games/primeclimb_list.html:5
+#: games/templates/games/primeclimb_list.html:18
+#: games/templates/games/primeclimb_play.html:5
+#: games/templates/games/primeclimb_play.html:106
+msgid "Prime Climb Grid"
+msgstr ""
+
+#: games/templates/games/games_home.html:136
+msgid ""
+"Find primes, squares, or multiples on the 1–100 grid. Learn number theory "
+"visually!"
+msgstr ""
+
+#: games/templates/games/games_home.html:150
+#: games/templates/games/oddoneout_create.html:5
+#: games/templates/games/oddoneout_create.html:13
+#: games/templates/games/oddoneout_list.html:4
+#: games/templates/games/oddoneout_list.html:5
+#: games/templates/games/oddoneout_list.html:18
+#: games/templates/games/oddoneout_manage.html:5
+#: games/templates/games/oddoneout_manage.html:13
+#: games/templates/games/oddoneout_play.html:4
+#: games/templates/games/oddoneout_play.html:5
+#: games/templates/games/oddoneout_play.html:133
+msgid "Odd One Out"
+msgstr ""
+
+#: games/templates/games/games_home.html:154
+msgid "Three words belong together — one does not. Spot the odd one out!"
+msgstr ""
+
+#: games/templates/games/games_home.html:156
+msgid "Grammar"
+msgstr ""
+
+#: games/templates/games/games_home.html:168
+#: games/templates/games/wordorder_create.html:5
+#: games/templates/games/wordorder_create.html:13
+#: games/templates/games/wordorder_list.html:4
+#: games/templates/games/wordorder_list.html:5
+#: games/templates/games/wordorder_list.html:18
+#: games/templates/games/wordorder_play.html:4
+#: games/templates/games/wordorder_play.html:5
+#: games/templates/games/wordorder_play.html:159
+msgid "Word Order Chaos"
+msgstr ""
+
+#: games/templates/games/games_home.html:172
+msgid "Drag and drop shuffled word tiles to rebuild the correct sentence!"
+msgstr ""
+
+#: games/templates/games/games_home.html:174
+#: games/templates/games/oddoneout_create.html:47
+#, fuzzy
+#| msgid "Switch language"
+msgid "Language"
+msgstr "Tilni almashtirish"
+
+#: games/templates/games/games_home.html:186
+#: games/templates/games/sortingrace_create.html:5
+#: games/templates/games/sortingrace_create.html:13
+#: games/templates/games/sortingrace_list.html:4
+#: games/templates/games/sortingrace_list.html:5
+#: games/templates/games/sortingrace_list.html:18
+#: games/templates/games/sortingrace_play.html:4
+#: games/templates/games/sortingrace_play.html:5
+#: games/templates/games/sortingrace_play.html:155
+msgid "Sorting Race"
+msgstr ""
+
+#: games/templates/games/games_home.html:190
+msgid ""
+"Swap elements to sort a tricky mix of fractions, roots, and negatives — "
+"smallest to largest!"
+msgstr ""
+
+#: games/templates/games/games_home.html:192
+msgid "Algorithms"
+msgstr ""
+
+#: games/templates/games/games_home.html:203
+#: games/templates/games/target_number.html:4
+#: games/templates/games/target_number.html:5
+#: games/templates/games/target_number.html:82
+msgid "Target Number"
+msgstr "Maqsad Raqam"
+
+#: games/templates/games/games_home.html:207
+msgid ""
+"Combine 6 numbers with +, −, ×, ÷ to hit the target. Three difficulty levels!"
+msgstr ""
+"6 raqamni +, −, ×, ÷ yordamida birlashtiring va maqsadga yeting. Uch "
+"qiyinchilik darajasi!"
+
+#: games/templates/games/mathsquare_create.html:4
+msgid "New Math Square"
+msgstr "Yangi matematik kvadrat"
+
+#: games/templates/games/mathsquare_create.html:18
+msgid ""
+"Auto-generate a ready-to-solve puzzle, or build one by hand. You can fine-"
+"tune it afterwards in the grid editor."
+msgstr ""
+
+#: games/templates/games/mathsquare_create.html:71
+msgid "How to build it"
+msgstr "Qanday tuzish kerak"
+
+#: games/templates/games/mathsquare_create.html:80
+msgid "Auto-generate"
+msgstr "Avtomatik yaratish"
+
+#: games/templates/games/mathsquare_create.html:81
+msgid "Pick difficulty and we build a valid, uniquely-solvable puzzle for you."
+msgstr ""
+"Murakkablikni tanlang — biz siz uchun yagona yechimga ega to'g'ri "
+"boshqotirma tuzamiz."
+
+#: games/templates/games/mathsquare_create.html:90
+msgid "Build manually"
+msgstr "Qo'lda tuzish"
+
+#: games/templates/games/mathsquare_create.html:91
+msgid "Start from an empty grid and type every number and operator yourself."
+msgstr "Bo'sh katakdan boshlang va har bir son va amalni o'zingiz kiriting."
+
+#: games/templates/games/mathsquare_create.html:99
+msgid "Create & Open Editor"
+msgstr "Yaratish va muharrirni ochish"
+
+#: games/templates/games/mathsquare_create.html:112
+msgid "2×2 numbers, + and −, numbers 1–9. A quick single-step puzzle."
+msgstr "2×2 sonlar, + va −, 1–9 sonlar. Tez, bir bosqichli boshqotirma."
+
+#: games/templates/games/mathsquare_create.html:113
+msgid "3×3 numbers, +, − and ×, numbers up to 12. Some cross-deduction."
+msgstr "3×3 sonlar, +, − va ×, 12 gacha sonlar. Ozgina o'zaro mulohaza."
+
+#: games/templates/games/mathsquare_create.html:114
+msgid ""
+"4×4 numbers, all four operations, more blanks. Chain rows and columns to "
+"solve."
+msgstr ""
+
+#: games/templates/games/mathsquare_edit.html:4
+#: games/templates/games/mathsquare_edit.html:5
+#, fuzzy
+#| msgid "Edit Master Profile"
+msgid "Edit Math Square"
+msgstr "Ustod profilini tahrirlash"
+
+#: games/templates/games/mathsquare_edit.html:48
+msgid ""
+"Type the numbers and operators. Tap the dot on a number to switch it between "
+"a clue (shown) and a blank the student fills."
+msgstr ""
+
+#: games/templates/games/mathsquare_edit.html:49
+msgid "× and ÷ are done before + and −."
+msgstr "× va ÷ amallari + va − dan oldin bajariladi."
+
+#: games/templates/games/mathsquare_edit.html:53
+msgid "Clue (shown)"
+msgstr "Ko'rsatilgan (yordam)"
+
+#: games/templates/games/mathsquare_edit.html:54
+msgid "Blank (student fills)"
+msgstr "Bo'sh (o'quvchi to'ldiradi)"
+
+#: games/templates/games/mathsquare_edit.html:71
+#, fuzzy
+#| msgid "Review"
+msgid "Preview"
+msgstr "Ko'rib chiqish"
+
+#: games/templates/games/mathsquare_edit.html:92
+msgid "Row"
+msgstr "Satr"
+
+#: games/templates/games/mathsquare_edit.html:92
+msgid "Column"
+msgstr "Ustun"
+
+#: games/templates/games/mathsquare_edit.html:93
+msgid "All equations are correct — this puzzle is ready and published."
+msgstr "Barcha tenglamalar to'g'ri — boshqotirma tayyor va e'lon qilindi."
+
+#: games/templates/games/mathsquare_edit.html:94
+msgid ""
+"Fix the equations below before students can play (puzzle stays a draft):"
+msgstr ""
+
+#: games/templates/games/mathsquare_edit.html:95 games/views.py:1729
+msgid "division is not exact"
+msgstr "bo'lish butun chiqmaydi"
+
+#: games/templates/games/mathsquare_edit.html:96
+msgid "Saved."
+msgstr "Saqlandi."
+
+#: games/templates/games/mathsquare_edit.html:96
+msgid "Save failed."
+msgstr "Saqlashda xatolik."
+
+#: games/templates/games/mathsquare_edit.html:150
+msgid "Clue / blank"
+msgstr "Yordam / bo'sh"
+
+#: games/templates/games/mathsquare_list.html:20
+#: games/templates/games/mathsquare_play.html:140
+msgid "Fill the empty squares so every row and column equation is true."
+msgstr ""
+"Har bir satr va ustun tenglamasi to'g'ri bo'lishi uchun bo'sh kataklarni "
+"to'ldiring."
+
+#: games/templates/games/mathsquare_list.html:75
+#, fuzzy
+#| msgid "No published practices yet."
+msgid "No puzzles yet."
+msgstr "Hali nashr etilgan mashqlar yo'q."
+
+#: games/templates/games/mathsquare_list.html:79
+#, fuzzy
+#| msgid "Create one now"
+msgid "Create the first one"
+msgstr "Hozir ro'yxatdan o'ting"
+
+#: games/templates/games/mathsquare_play.html:78
+msgid "Solved! Every equation is correct."
+msgstr "Yechildi! Har bir tenglama to'g'ri."
+
+#: games/templates/games/mathsquare_play.html:112
+msgid "Empty square"
+msgstr "Bo'sh katak"
+
+#: games/templates/games/mathsquare_play.html:141
+#: games/templates/games/mathsquare_print.html:135
+msgid "Order of operations:"
+msgstr "Amallar tartibi:"
+
+#: games/templates/games/mathsquare_play.html:141
+#: games/templates/games/mathsquare_print.html:135
+msgid "work out × and ÷ before + and −."
+msgstr "× va ÷ ni + va − dan oldin bajaring."
+
+#: games/templates/games/mathsquare_print.html:134
+msgid ""
+"Fill each empty white square with a number so that every row (left → right) "
+"and every column (top → bottom) is a correct equation."
+msgstr ""
 
 #: games/templates/games/number_guess.html:17
 msgid "Guess the secret number the system has chosen."
 msgstr "Tizim tanlagan yashirin sonni toping."
 
 #: games/templates/games/number_guess.html:24
+#: games/templates/games/target_number.html:92
 msgid "Start a New Game"
 msgstr "Yangi o'yin boshlash"
 
@@ -820,6 +1921,7 @@ msgid "The system will pick a number between 1 and this value."
 msgstr "Tizim 1 dan ushbu qiymatgacha bo'lgan sonni tanlaydi."
 
 #: games/templates/games/number_guess.html:37
+#: games/templates/games/target_number.html:125
 msgid "Start Game"
 msgstr "O'yinni boshlash"
 
@@ -837,54 +1939,643 @@ msgstr "Yashirin son <strong>%(num)s</strong> edi."
 msgid "You found it in <strong>%(n)s</strong> attempt(s)."
 msgstr "Siz uni <strong>%(n)s</strong> ta urinishda topdingiz."
 
-#: games/templates/games/number_guess.html:74
-#: people/templates/people/profile.html:294
-#: prime/templates/prime/index.html:349
+#: games/templates/games/number_guess.html:66
+#: games/templates/games/number_guess.html:150
+msgid "Change range"
+msgstr ""
+
+#: games/templates/games/number_guess.html:79
+#: games/templates/games/target_number.html:183
+#: games/templates/games/target_number.html:428
+#: people/templates/people/profile.html:301
+#: prime/templates/prime/index.html:365
 msgid "Attempts"
 msgstr "Urinishlar"
 
-#: games/templates/games/number_guess.html:79
+#: games/templates/games/number_guess.html:84
 msgid "Range"
 msgstr "Oraliq"
 
-#: games/templates/games/number_guess.html:89
+#: games/templates/games/number_guess.html:94
 msgid "Too low!"
 msgstr "Juda kichik!"
 
-#: games/templates/games/number_guess.html:90
+#: games/templates/games/number_guess.html:95
 #, python-format
 msgid "<strong>%(n)s</strong> is too small — try a higher number."
 msgstr "<strong>%(n)s</strong> juda kichik — kattaroq son kiriting."
 
-#: games/templates/games/number_guess.html:97
+#: games/templates/games/number_guess.html:102
 msgid "Too high!"
 msgstr "Juda katta!"
 
-#: games/templates/games/number_guess.html:98
+#: games/templates/games/number_guess.html:103
 #, python-format
 msgid "<strong>%(n)s</strong> is too big — try a lower number."
 msgstr "<strong>%(n)s</strong> juda katta — kichikroq son kiriting."
 
-#: games/templates/games/number_guess.html:102
+#: games/templates/games/number_guess.html:107
 msgid "Please enter a valid number."
 msgstr "Iltimos, to'g'ri son kiriting."
 
-#: games/templates/games/number_guess.html:105
+#: games/templates/games/number_guess.html:110
 #, python-format
 msgid "Enter a number between 1 and %(max)s."
 msgstr "1 dan %(max)s gacha bo'lgan son kiriting."
 
-#: games/templates/games/number_guess.html:112
+#: games/templates/games/number_guess.html:117
 msgid "What is your guess?"
 msgstr "Taxminingiz nima?"
 
-#: games/templates/games/number_guess.html:124
+#: games/templates/games/number_guess.html:129
 msgid "Guess"
 msgstr "Taxmin"
 
-#: games/templates/games/number_guess.html:137
-msgid "Give up & start new game"
-msgstr "Taslim bo'lish va yangi o'yin boshlash"
+#: games/templates/games/number_guess.html:143
+#, fuzzy
+#| msgid "New Game"
+msgid "New game"
+msgstr "Yangi O'yin"
+
+#: games/templates/games/oddoneout_create.html:4
+msgid "New Odd One Out Pack"
+msgstr ""
+
+#: games/templates/games/oddoneout_create.html:16
+#: games/templates/games/oddoneout_list.html:26
+#, fuzzy
+#| msgid "New Game"
+msgid "New Pack"
+msgstr "Yangi O'yin"
+
+#: games/templates/games/oddoneout_create.html:18
+msgid "Create a pack, then add questions to it on the next page."
+msgstr ""
+
+#: games/templates/games/oddoneout_create.html:31
+#, fuzzy
+#| msgid "Title"
+msgid "Pack Title"
+msgstr "Sarlavha"
+
+#: games/templates/games/oddoneout_create.html:34
+msgid "e.g. Irregular Verbs"
+msgstr ""
+
+#: games/templates/games/oddoneout_create.html:43
+msgid "e.g. Find the word that is NOT an irregular verb"
+msgstr ""
+
+#: games/templates/games/oddoneout_create.html:66
+#, fuzzy
+#| msgid "Frequently Asked Questions"
+msgid "Create & Add Questions"
+msgstr "Ko'p so'raladigan savollar"
+
+#: games/templates/games/oddoneout_list.html:20
+msgid "Three words belong together — one does not. Find the odd one out!"
+msgstr ""
+
+#: games/templates/games/oddoneout_list.html:74
+#, fuzzy
+#| msgid "No puzzles published yet. Check back soon!"
+msgid "No packs yet. Check back soon!"
+msgstr "Hali nashr etilgan krossvordlar yo'q. Tez orada tekshiring!"
+
+#: games/templates/games/oddoneout_manage.html:25
+msgid "Play"
+msgstr ""
+
+#: games/templates/games/oddoneout_manage.html:38
+#, fuzzy
+#| msgid "Questions"
+msgid "Add a Question"
+msgstr "Savollar"
+
+#: games/templates/games/oddoneout_manage.html:46
+#: games/templates/games/oddoneout_manage.html:51
+#: games/templates/games/oddoneout_manage.html:56
+#: games/templates/games/oddoneout_manage.html:61
+#: games/templates/games/oddoneout_manage.html:81
+#: games/templates/games/oddoneout_manage.html:162
+msgid "Word"
+msgstr ""
+
+#: games/templates/games/oddoneout_manage.html:68
+msgid "Which word is the odd one out?"
+msgstr ""
+
+#: games/templates/games/oddoneout_manage.html:90
+msgid ""
+"Explanation (optional) — e.g. «went» is irregular, the others are regular"
+msgstr ""
+
+#: games/templates/games/oddoneout_manage.html:97
+#, fuzzy
+#| msgid "Questions"
+msgid "Add Question"
+msgstr "Savollar"
+
+#: games/templates/games/oddoneout_manage.html:143
+msgid "No questions yet — add the first one above."
+msgstr ""
+
+#: games/templates/games/oddoneout_play.html:139
+msgid "This pack has no questions yet."
+msgstr ""
+
+#: games/templates/games/oddoneout_play.html:143
+#, fuzzy
+#| msgid "Questions"
+msgid "Add Questions"
+msgstr "Savollar"
+
+#: games/templates/games/oddoneout_play.html:166
+msgid "Restart"
+msgstr ""
+
+#: games/templates/games/oddoneout_play.html:202
+msgid "Perfect score!"
+msgstr ""
+
+#: games/templates/games/oddoneout_play.html:204
+msgid "Almost perfect — great work!"
+msgstr ""
+
+#: games/templates/games/oddoneout_play.html:206
+msgid "Good try — play again to improve!"
+msgstr ""
+
+#: games/templates/games/oddoneout_play.html:224
+#, fuzzy
+#| msgid "All Masters"
+msgid "All Packs"
+msgstr "Barcha ustodlar"
+
+#: games/templates/games/oddoneout_play.html:237
+msgid "Tap the word that does NOT belong with the others."
+msgstr ""
+
+#: games/templates/games/primeclimb_create.html:4
+msgid "New Prime Climb Challenge"
+msgstr ""
+
+#: games/templates/games/primeclimb_create.html:16
+#: games/templates/games/primeclimb_list.html:26
+#: games/templates/games/sortingrace_create.html:16
+#: games/templates/games/sortingrace_list.html:26
+#: games/templates/games/wordorder_create.html:16
+#: games/templates/games/wordorder_list.html:26
+#, fuzzy
+#| msgid "Save Changes"
+msgid "New Challenge"
+msgstr "O'zgarishlarni saqlash"
+
+#: games/templates/games/primeclimb_create.html:18
+msgid ""
+"Students will select numbers on the 1–100 grid that match your chosen "
+"category."
+msgstr ""
+
+#: games/templates/games/primeclimb_create.html:35
+#: games/templates/games/sortingrace_create.html:34
+#: games/templates/games/wordorder_create.html:34
+msgid "Challenge Title"
+msgstr ""
+
+#: games/templates/games/primeclimb_create.html:46
+msgid "Challenge Type"
+msgstr ""
+
+#: games/templates/games/primeclimb_create.html:70
+msgid "Multiples of N — enter N"
+msgstr ""
+
+#: games/templates/games/primeclimb_create.html:92
+#: games/templates/games/sortingrace_create.html:78
+#: games/templates/games/wordorder_create.html:68
+#, fuzzy
+#| msgid "Create one now"
+msgid "Create Challenge"
+msgstr "Hozir ro'yxatdan o'ting"
+
+#: games/templates/games/primeclimb_create.html:127
+#, fuzzy
+#| msgid "Your numbers"
+msgid "numbers"
+msgstr "Sizning raqamlaringiz"
+
+#: games/templates/games/primeclimb_list.html:20
+msgid "Select numbers on the 1–100 grid to solve each challenge."
+msgstr ""
+
+#: games/templates/games/primeclimb_list.html:64
+#: games/templates/games/sortingrace_list.html:62
+#, fuzzy
+#| msgid "No puzzles published yet. Check back soon!"
+msgid "No challenges yet. Check back soon!"
+msgstr "Hali nashr etilgan krossvordlar yo'q. Tez orada tekshiring!"
+
+#: games/templates/games/primeclimb_play.html:4
+msgid "Prime Climb"
+msgstr ""
+
+#: games/templates/games/primeclimb_play.html:140
+#: games/templates/games/primeclimb_play.html:218
+#, fuzzy
+#| msgid "select student"
+msgid "selected"
+msgstr "talabani tanlang"
+
+#: games/templates/games/primeclimb_play.html:175
+#: games/templates/games/sortingrace_play.html:227
+#: games/templates/games/sortingrace_play.html:260
+#: games/templates/games/wordorder_play.html:264
+#: games/templates/games/wordorder_play.html:296
+#, fuzzy
+#| msgid "Save Changes"
+msgid "All Challenges"
+msgstr "O'zgarishlarni saqlash"
+
+#: games/templates/games/primeclimb_play.html:186
+msgid "Selected"
+msgstr ""
+
+#: games/templates/games/primeclimb_play.html:189
+#, fuzzy
+#| msgid "Correct!"
+msgid "Correct"
+msgstr "To'g'ri!"
+
+#: games/templates/games/primeclimb_play.html:192
+msgid "Wrong"
+msgstr ""
+
+#: games/templates/games/primeclimb_play.html:195
+msgid "Missed"
+msgstr ""
+
+#: games/templates/games/primeclimb_play.html:243
+msgid "numbers found"
+msgstr ""
+
+#: games/templates/games/primeclimb_play.html:247
+#, fuzzy
+#| msgid "Correct!"
+msgid "correct"
+msgstr "To'g'ri!"
+
+#: games/templates/games/primeclimb_play.html:248
+msgid "wrong"
+msgstr ""
+
+#: games/templates/games/primeclimb_play.html:249
+msgid "missed"
+msgstr ""
+
+#: games/templates/games/sortingrace_create.html:4
+msgid "New Sorting Race Challenge"
+msgstr ""
+
+#: games/templates/games/sortingrace_create.html:18
+msgid "Students will swap elements to sort the array from smallest to largest."
+msgstr ""
+
+#: games/templates/games/sortingrace_create.html:39
+msgid "e.g. Sort the Chaos"
+msgstr ""
+
+#: games/templates/games/sortingrace_create.html:73
+msgid "e.g. Remember: √3 ≈ 1.73, π/2 ≈ 1.57"
+msgstr ""
+
+#: games/templates/games/sortingrace_create.html:90
+msgid "7 integers (positive and negative)"
+msgstr ""
+
+#: games/templates/games/sortingrace_create.html:91
+msgid "8 items: integers, fractions, and decimals"
+msgstr ""
+
+#: games/templates/games/sortingrace_create.html:92
+msgid ""
+"9 items: fractions, √2, √3, π/2 and their negatives — very close values!"
+msgstr ""
+
+#: games/templates/games/sortingrace_list.html:20
+msgid ""
+"Swap elements to sort a tricky array — fractions, roots, negatives and more."
+msgstr ""
+
+#: games/templates/games/sortingrace_play.html:180
+#: games/templates/games/sortingrace_play.html:256
+msgid "New Array"
+msgstr ""
+
+#: games/templates/games/sortingrace_play.html:191
+msgid ""
+"Click a card to select it, then click another card to swap. Sort smallest → "
+"largest."
+msgstr ""
+
+#: games/templates/games/sortingrace_play.html:197
+msgid "Moves"
+msgstr ""
+
+#: games/templates/games/sortingrace_play.html:199
+#: games/templates/games/sortingrace_play.html:245
+msgid "Sorted!"
+msgstr ""
+
+#: games/templates/games/sortingrace_play.html:214
+msgid "Almost there — just one more swap!"
+msgstr ""
+
+#: games/templates/games/sortingrace_play.html:222
+#, fuzzy
+#| msgid "Check Answers"
+msgid "Check Order"
+msgstr "Javoblarni tekshirish"
+
+#: games/templates/games/sortingrace_play.html:247
+msgid "Array is in perfect ascending order."
+msgstr ""
+
+#: games/templates/games/sortingrace_play.html:250
+msgid "moves"
+msgstr ""
+
+#: games/templates/games/target_number.html:84
+msgid "Combine the numbers using +, −, ×, ÷ to reach the target!"
+msgstr "Raqamlarni +, −, ×, ÷ yordamida birlashtiring va maqsadga yeting!"
+
+#: games/templates/games/target_number.html:104
+#: games/templates/games/target_number.html:188
+#: practice/templates/practice/practice_list.html:504
+msgid "Easy"
+msgstr "Oson"
+
+#: games/templates/games/target_number.html:109
+#: games/templates/games/target_number.html:189
+#: practice/templates/practice/practice_list.html:505
+#: prime/templates/prime/help.html:576
+msgid "Medium"
+msgstr "O'rta"
+
+#: games/templates/games/target_number.html:114
+#: games/templates/games/target_number.html:190
+#: practice/templates/practice/practice_list.html:506
+msgid "Hard"
+msgstr "Qiyin"
+
+#: games/templates/games/target_number.html:118
+#: games/templates/games/target_number.html:297
+msgid "4 numbers (1–15) + 2 special, target 50–200"
+msgstr "4 raqam (1–15) + 2 maxsus, maqsad 50–200"
+
+#: games/templates/games/target_number.html:119
+#: games/templates/games/target_number.html:298
+msgid "4 numbers (1–9) + 2 special, target 100–999"
+msgstr "4 raqam (1–9) + 2 maxsus, maqsad 100–999"
+
+#: games/templates/games/target_number.html:120
+#: games/templates/games/target_number.html:296
+msgid "4 numbers (1–9), target 10–50"
+msgstr "4 raqam (1–9), maqsad 10–50"
+
+#: games/templates/games/target_number.html:136
+msgid "Target reached!"
+msgstr "Maqsadga yetildi!"
+
+#: games/templates/games/target_number.html:140
+#, python-format
+msgid "You hit <strong>%(t)s</strong>!"
+msgstr "<strong>%(t)s</strong> ga yetdingiz!"
+
+#: games/templates/games/target_number.html:143
+#, python-format
+msgid "Solved in <strong>%(n)s</strong> attempt(s)."
+msgstr "<strong>%(n)s</strong> ta urinishda hal qildingiz."
+
+#: games/templates/games/target_number.html:147
+#, python-format
+msgid "Personal best: <strong>%(b)s</strong> attempt(s)."
+msgstr "Shaxsiy rekord: <strong>%(b)s</strong> ta urinish."
+
+#: games/templates/games/target_number.html:162
+#: games/templates/games/target_number.html:261
+msgid "Change difficulty"
+msgstr ""
+
+#: games/templates/games/target_number.html:192
+#: prime/templates/prime/help.html:576
+msgid "Level"
+msgstr "Daraja"
+
+#: games/templates/games/target_number.html:200
+msgid "Target"
+msgstr "Maqsad"
+
+#: games/templates/games/target_number.html:208
+msgid "Your numbers"
+msgstr "Sizning raqamlaringiz"
+
+#: games/templates/games/target_number.html:226
+#: practice/templates/practice/practice_list.html:521
+msgid "Clear"
+msgstr "Tozalash"
+
+#: games/templates/games/target_number.html:232
+msgid "Click numbers and operators above…"
+msgstr "Yuqoridagi raqam va amallarni bosing…"
+
+#: games/templates/games/target_number.html:243
+msgid "Check"
+msgstr "Tekshirish"
+
+#: games/templates/games/target_number.html:253
+msgid "New Game"
+msgstr "Yangi O'yin"
+
+#: games/templates/games/target_number.html:274
+msgid "You reached the target!"
+msgstr "Maqsadga yetdingiz!"
+
+#: games/templates/games/target_number.html:424
+msgid "Exactly right!"
+msgstr "Aynan to'g'ri!"
+
+#: games/templates/games/target_number.html:433
+msgid "Invalid expression"
+msgstr ""
+
+#: games/templates/games/target_number.html:439
+msgid "Distance from target"
+msgstr "Maqsaddan farq"
+
+#: games/templates/games/target_number.html:444
+msgid "Network error — try again."
+msgstr "Tarmoq xatosi — qayta urinib ko'ring."
+
+#: games/templates/games/wordorder_create.html:4
+msgid "New Word Order Challenge"
+msgstr ""
+
+#: games/templates/games/wordorder_create.html:18
+msgid "Students will unscramble the sentence one word tile at a time."
+msgstr ""
+
+#: games/templates/games/wordorder_create.html:39
+msgid "e.g. Present Simple Sentence"
+msgstr ""
+
+#: games/templates/games/wordorder_create.html:44
+msgid "Correct Sentence"
+msgstr ""
+
+#: games/templates/games/wordorder_create.html:45
+msgid "3–20 words, split by spaces"
+msgstr ""
+
+#: games/templates/games/wordorder_create.html:50
+msgid "e.g. The cat sat on the mat"
+msgstr ""
+
+#: games/templates/games/wordorder_create.html:52
+#, fuzzy
+#| msgid "words"
+msgid "0 words"
+msgstr "so'z"
+
+#: games/templates/games/wordorder_create.html:63
+msgid "e.g. This is a present simple sentence"
+msgstr ""
+
+#: games/templates/games/wordorder_create.html:78
+#, fuzzy
+#| msgid "words"
+msgid "word"
+msgstr "so'z"
+
+#: games/templates/games/wordorder_list.html:20
+msgid "Drag tiles into the correct order to rebuild the sentence."
+msgstr ""
+
+#: games/templates/games/wordorder_list.html:33
+#, fuzzy
+#| msgid "Ready to get started?"
+msgid "Choose a language to get started:"
+msgstr "Boshlashga tayyormisiz?"
+
+#: games/templates/games/wordorder_list.html:56
+msgid "sentences"
+msgstr ""
+
+#: games/templates/games/wordorder_list.html:133
+msgid "No challenges found for this language."
+msgstr ""
+
+#: games/templates/games/wordorder_play.html:167
+#: games/templates/games/wordorder_play.html:172
+#: tutorial/templates/tutorial/tutorial_detail.html:278
+msgid "Prev"
+msgstr ""
+
+#: games/templates/games/wordorder_play.html:212
+#, fuzzy
+#| msgid "Play Again"
+msgid "Shuffle Again"
+msgstr "Qayta o'ynash"
+
+#: games/templates/games/wordorder_play.html:220
+#: games/templates/games/wordorder_play.html:329
+msgid "placed"
+msgstr ""
+
+#: games/templates/games/wordorder_play.html:228
+msgid "Tap a word to move it. Drag to place it at a specific position."
+msgstr ""
+
+#: games/templates/games/wordorder_play.html:235
+#, fuzzy
+#| msgid "Your numbers"
+msgid "Your Answer"
+msgstr "Sizning raqamlaringiz"
+
+#: games/templates/games/wordorder_play.html:238
+msgid "Tap or drag words here"
+msgstr ""
+
+#: games/templates/games/wordorder_play.html:248
+msgid "Word Bank"
+msgstr ""
+
+#: games/templates/games/wordorder_play.html:259
+#, fuzzy
+#| msgid "Check Answers"
+msgid "Check Answer"
+msgstr "Javoblarni tekshirish"
+
+#: games/templates/games/wordorder_play.html:277
+msgid "You rebuilt the sentence perfectly."
+msgstr ""
+
+#: games/templates/games/wordorder_play.html:582
+#: games/templates/games/wordorder_play.html:594
+msgid "Place all words in the answer row first."
+msgstr ""
+
+#: games/templates/games/wordorder_play.html:608
+msgid "Not quite right — keep trying!"
+msgstr ""
+
+#: games/templates/games/wordsearch_list.html:18
+msgid "Find hidden words in the letter grid — across, down, and diagonal!"
+msgstr ""
+
+#: games/templates/games/wordsearch_play.html:111
+#, fuzzy
+#| msgid "words"
+msgid "words found"
+msgstr "so'z"
+
+#: games/templates/games/wordsearch_play.html:113
+#, fuzzy
+#| msgid "found"
+msgid "All found!"
+msgstr "topildi"
+
+#: games/templates/games/wordsearch_play.html:133
+msgid "Find these words"
+msgstr ""
+
+#: games/templates/games/wordsearch_play.html:138
+msgid "Tap a letter to start, tap the last letter to select."
+msgstr ""
+
+#: games/templates/games/wordsearch_play.html:244
+#, fuzzy
+#| msgid "Network error — try again."
+msgid "Not a word — try again"
+msgstr "Tarmoq xatosi — qayta urinib ko'ring."
+
+#: games/views.py:1728
+msgid "fill every number"
+msgstr "har bir sonni to'ldiring"
+
+#: games/views.py:1775
+#, fuzzy
+#| msgid "Login required"
+msgid "Title is required."
+msgstr "Kirish talab etiladi"
+
+#: games/views.py:1777
+msgid "Invalid difficulty."
+msgstr "Noto'g'ri murakkablik."
+
+#: games/views.py:1786
+msgid "Could not generate a puzzle. Please try again."
+msgstr "Boshqotirma yaratib bo'lmadi. Qayta urinib ko'ring."
 
 #: homework/templates/homework/homework_detail.html:4
 msgid "Homework Detail"
@@ -897,14 +2588,6 @@ msgstr "Barcha uy vazifalari"
 #: homework/templates/homework/homework_detail.html:73
 msgid "Assign More"
 msgstr "Yana tayinlash"
-
-#: homework/templates/homework/homework_detail.html:93
-#: homework/templates/homework/homework_detail.html:141
-#: homework/templates/homework/homework_detail.html:211
-#: people/templates/people/profile.html:620 prime/templates/prime/help.html:451
-#: prime/templates/prime/help.html:598
-msgid "Pending"
-msgstr "Kutilmoqda"
 
 #: homework/templates/homework/homework_detail.html:96
 #: homework/templates/homework/homework_detail.html:125
@@ -932,7 +2615,8 @@ msgstr "o'quvchi"
 
 #: homework/templates/homework/homework_detail.html:123
 #: homework/templates/homework/homework_detail.html:192
-#: masters/templates/masters/certificate.html:512
+#: masters/templates/masters/certificate.html:346
+#: masters/templates/masters/my_students.html:240
 #: people/templates/people/profile.html:108
 #: people/templates/people/profile.html:122
 msgid "Student"
@@ -974,49 +2658,102 @@ msgstr "Ushbu uy vazifasini o'quvchilarga tayinlash uchun tahrirlang."
 msgid "Certificate Generator"
 msgstr "Sertifikat generatori"
 
-#: masters/templates/masters/certificate.html:514
-msgid "select student"
+#: masters/templates/masters/certificate.html:348
+#, fuzzy
+#| msgid "select student"
+msgid "select"
 msgstr "talabani tanlang"
 
-#: masters/templates/masters/certificate.html:527
+#: masters/templates/masters/certificate.html:361
 msgid "Name"
 msgstr "Ism"
 
-#: masters/templates/masters/certificate.html:530
+#: masters/templates/masters/certificate.html:362
 msgid "Course"
 msgstr "Kurs"
 
-#: masters/templates/masters/certificate.html:533
-msgid "Text"
-msgstr "Matn"
-
-#: masters/templates/masters/certificate.html:536
+#: masters/templates/masters/certificate.html:364
+#: masters/templates/masters/student_detail.html:262
 msgid "Date"
 msgstr "Sana"
 
-#: masters/templates/masters/certificate.html:539
+#: masters/templates/masters/certificate.html:365
 msgid "Instructor"
 msgstr "O'qituvchi"
 
-#: masters/templates/masters/certificate.html:543
-msgid "Reset to defaults"
-msgstr "Boshlang'ich holatga qaytarish"
+#: masters/templates/masters/certificate.html:372
+#: masters/templates/masters/certificate_view.html:231
+msgid "Header"
+msgstr ""
 
-#: masters/templates/masters/certificate.html:549
+#: masters/templates/masters/certificate.html:373
+msgid "Header & footer color"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:376
+#: masters/templates/masters/certificate_view.html:235
+msgid "Accent"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:377
+msgid "Accent / gold color"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:380
+#: masters/templates/masters/certificate_view.html:239
+msgid "Background"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:381
+#, fuzzy
+#| msgid "Certificate"
+msgid "Certificate background"
+msgstr "Sertifikat"
+
+#: masters/templates/masters/certificate.html:384
+msgid "Text"
+msgstr "Matn"
+
+#: masters/templates/masters/certificate.html:385
+msgid "Title & name color"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:388
+msgid "Subtext"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:389
+msgid "Secondary text color"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:394
+#, fuzzy
+#| msgid "See all"
+msgid "Reset all"
+msgstr "Barchasini ko'rish"
+
+#: masters/templates/masters/certificate.html:398
+#: masters/templates/masters/certificate_view.html:247
 msgid "Download PDF"
 msgstr "PDF yuklab olish"
 
-#: masters/templates/masters/certificate.html:556
+#: masters/templates/masters/certificate.html:404
 msgid ""
-"Click any text directly on the certificate to edit it. Select a student from "
-"the dropdown to auto-fill their name."
+"Click ANY text on the certificate — title, headings, name, labels, slogan, "
+"even the seal — to rewrite it. Use the color swatches to recolor the design, "
+"then Download PDF."
 msgstr ""
-"Sertifikatdagi istalgan matnni bevosita bosib tahrirlang. Ismni avtomatik "
-"to'ldirish uchun talabani tanlang."
+
+#: masters/templates/masters/certificate_view.html:4
+#: masters/templates/masters/certificate_view.html:5
+#: masters/templates/masters/master_detail.html:365
+#: masters/templates/masters/master_detail.html:717
+msgid "Certificate"
+msgstr "Sertifikat"
 
 #: masters/templates/masters/master_detail.html:5
 #: people/templates/people/profile.html:121
-#: prime/templates/prime/index.html:382
+#: prime/templates/prime/index.html:398
 msgid "Master"
 msgstr "Ustod"
 
@@ -1025,155 +2762,166 @@ msgid "All Masters"
 msgstr "Barcha ustodlar"
 
 #: masters/templates/masters/master_detail.html:362
-#: masters/templates/masters/master_detail.html:710
-msgid "Certificate"
-msgstr "Sertifikat"
+#: masters/templates/masters/master_detail.html:697
+#: masters/templates/masters/my_students.html:4
+#: masters/templates/masters/my_students.html:5
+#: masters/templates/masters/my_students.html:178
+#: masters/templates/masters/student_detail.html:187
+#: people/templates/people/profile.html:415
+#, fuzzy
+#| msgid "Students"
+msgid "My Students"
+msgstr "O'quvchilar"
 
-#: masters/templates/masters/master_detail.html:371
+#: masters/templates/masters/master_detail.html:374
 msgid "Delete your Master profile? This cannot be undone."
 msgstr "O'chirmoqchimisiz? Bu amalni qaytarib bo'lmaydi."
 
-#: masters/templates/masters/master_detail.html:396
-#: people/templates/people/profile.html:257
-#: prime/templates/prime/index.html:395
+#: masters/templates/masters/master_detail.html:399
+#: masters/templates/masters/my_students.html:213
+#: people/templates/people/profile.html:264
+#: prime/templates/prime/index.html:411
 msgid "Avg Rating"
 msgstr "O'rt. reyting"
 
-#: masters/templates/masters/master_detail.html:413
+#: masters/templates/masters/master_detail.html:416
 msgid "Yrs Active"
 msgstr "Yil tajriba"
 
-#: masters/templates/masters/master_detail.html:423
+#: masters/templates/masters/master_detail.html:426
 #: people/templates/people/profile.html:147 prime/templates/prime/about.html:4
-#: prime/templates/prime/about.html:5 templates/base.html:137
+#: prime/templates/prime/about.html:5 templates/base.html:147
 msgid "About"
 msgstr "Haqida"
 
-#: masters/templates/masters/master_detail.html:442
-#: people/templates/people/profile.html:365
-#: people/templates/people/profile.html:410
+#: masters/templates/masters/master_detail.html:445
+#: people/templates/people/profile.html:372
+#: people/templates/people/profile.html:437
 msgid "Manage all"
 msgstr "Barchasini boshqarish"
 
-#: masters/templates/masters/master_detail.html:453
-#: people/templates/people/profile.html:376
+#: masters/templates/masters/master_detail.html:456
+#: people/templates/people/profile.html:383
 #: practice/templates/practice/practice_detail.html:21
-#: practice/templates/practice/practice_list.html:489
+#: practice/templates/practice/practice_list.html:606
 msgid "Free"
 msgstr "Bepul"
 
-#: masters/templates/masters/master_detail.html:455
-#: people/templates/people/profile.html:376
+#: masters/templates/masters/master_detail.html:458
+#: masters/templates/masters/student_detail.html:336
+#: people/templates/people/profile.html:383
 #: practice/templates/practice/practice_detail.html:21
-#: practice/templates/practice/practice_list.html:489
+#: practice/templates/practice/practice_list.html:606
 msgid "Paid"
 msgstr "Pullik"
 
-#: masters/templates/masters/master_detail.html:468
-#: people/templates/people/profile.html:497
+#: masters/templates/masters/master_detail.html:471
+#: masters/templates/masters/student_detail.html:222
+#: people/templates/people/profile.html:524
 msgid "Avg score"
 msgstr "O'rt. ball"
 
-#: masters/templates/masters/master_detail.html:475
 #: masters/templates/masters/master_detail.html:478
-#: masters/templates/masters/master_detail.html:522
+#: masters/templates/masters/master_detail.html:481
 #: masters/templates/masters/master_detail.html:525
-#: masters/templates/masters/master_detail.html:567
+#: masters/templates/masters/master_detail.html:528
 #: masters/templates/masters/master_detail.html:570
+#: masters/templates/masters/master_detail.html:573
 #, fuzzy
 #| msgid "Show all"
 msgid "Show"
 msgstr "Hammasini ko'rish"
 
-#: masters/templates/masters/master_detail.html:476
-#: masters/templates/masters/master_detail.html:523
-#: masters/templates/masters/master_detail.html:568
+#: masters/templates/masters/master_detail.html:479
+#: masters/templates/masters/master_detail.html:526
+#: masters/templates/masters/master_detail.html:571
 #, fuzzy
 #| msgid "Show all"
 msgid "Show less"
 msgstr "Hammasini ko'rish"
 
-#: masters/templates/masters/master_detail.html:484
+#: masters/templates/masters/master_detail.html:487
 #, fuzzy
 #| msgid "No published practices yet."
 msgid "No practices yet."
 msgstr "Hali nashr etilgan mashqlar yo'q."
 
-#: masters/templates/masters/master_detail.html:485
+#: masters/templates/masters/master_detail.html:488
 #, fuzzy
 #| msgid "Create one now"
 msgid "Create one"
 msgstr "Hozir ro'yxatdan o'ting"
 
-#: masters/templates/masters/master_detail.html:512
+#: masters/templates/masters/master_detail.html:515
+#: masters/templates/masters/my_students.html:313
 #, fuzzy
 #| msgid "select student"
 msgid "Remove student"
 msgstr "talabani tanlang"
 
-#: masters/templates/masters/master_detail.html:541
-#: masters/templates/masters/master_detail.html:592
-#: masters/templates/masters/master_detail.html:633
+#: masters/templates/masters/master_detail.html:544
+#: masters/templates/masters/master_detail.html:595
+#: masters/templates/masters/master_detail.html:636
 msgid "New"
 msgstr "Yangi"
 
-#: masters/templates/masters/master_detail.html:551
+#: masters/templates/masters/master_detail.html:554
 #, fuzzy
 #| msgid "Edit Tutorial"
 msgid "Edit tutorial"
 msgstr "Darslikni tahrirlash"
 
-#: masters/templates/masters/master_detail.html:559
+#: masters/templates/masters/master_detail.html:562
 #, fuzzy
 #| msgid "Threads"
 msgid "read"
 msgstr "Mavzular"
 
-#: masters/templates/masters/master_detail.html:576
+#: masters/templates/masters/master_detail.html:579
 #, fuzzy
 #| msgid "No tutorials in this category yet."
 msgid "No tutorials published yet."
 msgstr "Bu kategoriyada hali darslik yo'q."
 
-#: masters/templates/masters/master_detail.html:577
+#: masters/templates/masters/master_detail.html:580
 #, fuzzy
 #| msgid "Create one now"
 msgid "Write one"
 msgstr "Hozir ro'yxatdan o'ting"
 
-#: masters/templates/masters/master_detail.html:589
+#: masters/templates/masters/master_detail.html:592
 msgid "Groups"
 msgstr "Guruhlar"
 
-#: masters/templates/masters/master_detail.html:605
+#: masters/templates/masters/master_detail.html:608
 #, fuzzy
 #| msgid "Edit Profile"
 msgid "Edit group"
 msgstr "Profilni tahrirlash"
 
-#: masters/templates/masters/master_detail.html:608
+#: masters/templates/masters/master_detail.html:611
 #, fuzzy
 #| msgid "Delete"
 msgid "Delete group"
 msgstr "O'chirish"
 
-#: masters/templates/masters/master_detail.html:694
-#: people/templates/people/profile.html:210
-#: prime/templates/prime/index.html:403
+#: masters/templates/masters/master_detail.html:701
+#: people/templates/people/profile.html:217
+#: prime/templates/prime/index.html:419
 msgid "Manage Practices"
 msgstr "Mashqlarni boshqarish"
 
-#: masters/templates/masters/master_detail.html:698
+#: masters/templates/masters/master_detail.html:705
 msgid "Manage Homeworks"
 msgstr "Uy vazifalarini boshqarish"
 
-#: masters/templates/masters/master_detail.html:702
+#: masters/templates/masters/master_detail.html:709
 msgid "Manage Groups"
 msgstr "Guruhlarni boshqarish"
 
-#: masters/templates/masters/master_detail.html:706
+#: masters/templates/masters/master_detail.html:713
 #: tutorial/templates/tutorial/tutorial_form.html:4
-#: tutorial/templates/tutorial/tutorial_form.html:21
+#: tutorial/templates/tutorial/tutorial_form.html:51
 #: tutorial/templates/tutorial/tutorial_list.html:20
 msgid "New Tutorial"
 msgstr "Yangi darslik"
@@ -1193,7 +2941,7 @@ msgstr "Siz uchun amaliyot sessiyalari yaratuvchi mutaxassislar."
 
 #: masters/templates/masters/master_list.html:154
 #: masters/templates/masters/master_list.html:201
-#: people/templates/people/profile.html:222
+#: people/templates/people/profile.html:229
 msgid "Become a Master"
 msgstr "Ustod bo'lish"
 
@@ -1206,7 +2954,7 @@ msgid "Login to Join"
 msgstr "Kirish"
 
 #: masters/templates/masters/master_list.html:189
-#: people/templates/people/profile.html:287
+#: people/templates/people/profile.html:294
 msgid "Rating"
 msgstr "Reyting"
 
@@ -1218,17 +2966,272 @@ msgstr "Hali ustodlar yo'q"
 msgid "Be the first to create a Master profile and share your knowledge."
 msgstr "Birinchi bo'lib Ustod profili yarating va bilimlaringizni ulashing."
 
+#: masters/templates/masters/my_students.html:179
+#, fuzzy
+#| msgid "Student Profile"
+msgid "student(s) enrolled"
+msgstr "Talaba profili"
+
+#: masters/templates/masters/my_students.html:183
+#: masters/templates/masters/student_detail.html:237
+#: masters/templates/masters/student_detail.html:430
+#: people/templates/people/profile.html:631
+#, fuzzy
+#| msgid "Certificate"
+msgid "Certificates"
+msgstr "Sertifikat"
+
+#: masters/templates/masters/my_students.html:186
+#, fuzzy
+#| msgid "View public page"
+msgid "Public Page"
+msgstr "Ochiq sahifani ko'rish"
+
+#: masters/templates/masters/my_students.html:208
+msgid "Total"
+msgstr ""
+
+#: masters/templates/masters/my_students.html:223
+msgid "Add Student by Username"
+msgstr ""
+
+#: masters/templates/masters/my_students.html:226
+msgid "Enter username..."
+msgstr ""
+
+#: masters/templates/masters/my_students.html:230
+msgid "Add"
+msgstr ""
+
+#: masters/templates/masters/my_students.html:241
+#: people/templates/people/profile.html:287
+msgid "Rank"
+msgstr "Daraja"
+
+#: masters/templates/masters/my_students.html:242
+#: masters/templates/masters/student_detail.html:203
+#: people/templates/people/profile.html:177
+msgid "Joined"
+msgstr "Qo'shilgan"
+
+#: masters/templates/masters/my_students.html:243
+msgid "Payment"
+msgstr ""
+
+#: masters/templates/masters/my_students.html:244
+#: masters/templates/masters/student_detail.html:248
+msgid "Attendance"
+msgstr ""
+
+#: masters/templates/masters/my_students.html:246
+#, fuzzy
+#| msgid "Quick Actions"
+msgid "Actions"
+msgstr "Tezkor amallar"
+
+#: masters/templates/masters/my_students.html:283
+msgid "No records"
+msgstr ""
+
+#: masters/templates/masters/my_students.html:307
+#, fuzzy
+#| msgid "Profile details"
+msgid "View details"
+msgstr "Profil ma'lumotlari"
+
+#: masters/templates/masters/my_students.html:311
+#, fuzzy
+#| msgid "select student"
+msgid "Remove this student?"
+msgstr "talabani tanlang"
+
+#: masters/templates/masters/my_students.html:328
+#, fuzzy
+#| msgid "No masters yet"
+msgid "No students yet"
+msgstr "Hali ustodlar yo'q"
+
+#: masters/templates/masters/my_students.html:329
+msgid ""
+"Add students using their username above, or students can choose you as their "
+"master from their profile."
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:4
+#: masters/templates/masters/student_detail.html:5
+#, fuzzy
+#| msgid "Student Profile"
+msgid "Student Detail"
+msgstr "Talaba profili"
+
+#: masters/templates/masters/student_detail.html:208
+#: people/templates/people/profile.html:4
+#: people/templates/people/profile.html:5 templates/base.html:328
+msgid "Profile"
+msgstr "Profil"
+
+#: masters/templates/masters/student_detail.html:217
+#: people/templates/people/profile.html:515
+msgid "Tests taken"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:227
+#: masters/templates/masters/student_detail.html:268
+msgid "Present"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:232
+msgid "Absent/Late"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:251
+msgid "present"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:269
+msgid "Absent"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:270
+msgid "Late"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:274
+#, fuzzy
+#| msgid "optional"
+msgid "Notes (optional)"
+msgstr "ixtiyoriy"
+
+#: masters/templates/masters/student_detail.html:275
+msgid "e.g. Left early"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:280
+msgid "Mark Attendance"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:304
+msgid "No attendance records yet. Mark the first one above."
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:317
+msgid "Payments"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:326
+#: masters/templates/masters/student_detail.html:369
+msgid "Period"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:327
+msgid "e.g. June 2026"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:330
+#: masters/templates/masters/student_detail.html:370
+msgid "Amount"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:337
+msgid "Unpaid"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:338
+#, fuzzy
+#| msgid "Partners"
+msgid "Partial"
+msgstr "Hamkorlar"
+
+#: masters/templates/masters/student_detail.html:348
+msgid "Payment Date"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:353
+msgid "Optional note..."
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:358
+msgid "Add Payment Record"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:373
+#, fuzzy
+#| msgid "Paid"
+msgid "Paid on"
+msgstr "Pullik"
+
+#: masters/templates/masters/student_detail.html:402
+#, fuzzy
+#| msgid "Delete this tutorial"
+msgid "Delete this payment record?"
+msgstr "Ushbu darslikni o'chirish"
+
+#: masters/templates/masters/student_detail.html:417
+msgid "No payment records yet. Add the first one above."
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:433
+msgid "PDF generator"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:441
+#, fuzzy
+#| msgid "Certificate"
+msgid "Certificate Title"
+msgstr "Sertifikat"
+
+#: masters/templates/masters/student_detail.html:442
+msgid "e.g. English B2 Completion Certificate"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:445
+#, fuzzy
+#| msgid "Questions"
+msgid "Description (optional)"
+msgstr "Savollar"
+
+#: masters/templates/masters/student_detail.html:447
+msgid "e.g. Awarded for completing the Advanced English course..."
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:451
+#, fuzzy
+#| msgid "Certificate"
+msgid "Issue Certificate"
+msgstr "Sertifikat"
+
+#: masters/templates/masters/student_detail.html:467
+#, fuzzy
+#| msgid "Student Profile"
+msgid "hidden on profile"
+msgstr "Talaba profili"
+
+#: masters/templates/masters/student_detail.html:474
+#, fuzzy
+#| msgid "Certificate"
+msgid "View certificate"
+msgstr "Sertifikat"
+
+#: masters/templates/masters/student_detail.html:478
+#, fuzzy
+#| msgid "Generate Certificates"
+msgid "Revoke this certificate?"
+msgstr "Sertifikatlar yaratish"
+
+#: masters/templates/masters/student_detail.html:480
+msgid "Revoke"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:490
+msgid ""
+"No certificates issued yet. Issue the first one above — it will appear on "
+"the student's profile."
+msgstr ""
+
 #: people/models.py:15 prime/templates/prime/index.html:273
-#: prime/templates/prime/index.html:365 templates/base.html:107
+#: prime/templates/prime/index.html:381 templates/base.html:107
 msgid "Homework"
 msgstr "Uy vazifasi"
-
-#: people/models.py:16 practice/templates/practice/practice_list.html:378
-#: prime/templates/prime/index.html:241 templates/base.html:91
-#: templates/base.html:95 templates/base.html:314
-#: tutorial/templates/tutorial/tutorial_detail.html:301
-msgid "Practice"
-msgstr "Mashqlar"
 
 #: people/models.py:17
 msgid "Tutorial"
@@ -1292,8 +3295,8 @@ msgstr "%(master)s %(classroom)s sinfxonasida yangi muhokama boshladi."
 msgid "Log In — Powerty"
 msgstr "Kirish — Powerty"
 
-#: people/templates/people/login.html:5 templates/base.html:278
-#: templates/base.html:322
+#: people/templates/people/login.html:5 templates/base.html:288
+#: templates/base.html:332
 msgid "Login"
 msgstr "Kirish"
 
@@ -1310,7 +3313,7 @@ msgid "Forgot password?"
 msgstr "Parolni unutdingizmi?"
 
 #: people/templates/people/login.html:52 prime/templates/prime/index.html:185
-#: templates/base.html:276
+#: templates/base.html:286
 msgid "Log in"
 msgstr "Kirish"
 
@@ -1323,7 +3326,7 @@ msgid "Create one now"
 msgstr "Hozir ro'yxatdan o'ting"
 
 #: people/templates/people/notifications.html:4
-#: people/templates/people/notifications.html:66 templates/base.html:223
+#: people/templates/people/notifications.html:66 templates/base.html:233
 msgid "Notifications"
 msgstr "Bildirishnomalar"
 
@@ -1338,11 +3341,6 @@ msgstr "avval"
 #: people/templates/people/notifications.html:88
 msgid "You have no notifications yet."
 msgstr "Hali bildirishnomalar yo'q."
-
-#: people/templates/people/profile.html:4
-#: people/templates/people/profile.html:5 templates/base.html:318
-msgid "Profile"
-msgstr "Profil"
 
 #: people/templates/people/profile.html:119
 msgid "Director"
@@ -1365,10 +3363,6 @@ msgstr "Profilni tahrirlash"
 msgid "No biography yet."
 msgstr "Hali tarjimai hol yo'q."
 
-#: people/templates/people/profile.html:177
-msgid "Joined"
-msgstr "Qo'shilgan"
-
 #: people/templates/people/profile.html:188
 msgid "Quick Actions"
 msgstr "Tezkor amallar"
@@ -1378,184 +3372,186 @@ msgid "Change Password"
 msgstr "Parolni o'zgartirish"
 
 #: people/templates/people/profile.html:204
+#, fuzzy
+#| msgid "Admin"
+msgid "Admin Panel"
+msgstr "Admin"
+
+#: people/templates/people/profile.html:211
 msgid "Edit Master Profile"
 msgstr "Ustod profilini tahrirlash"
 
-#: people/templates/people/profile.html:216
+#: people/templates/people/profile.html:223
 #, fuzzy
 #| msgid "Await Admin Approval"
 msgid "Pending Admin Approval"
 msgstr "Admin tasdiqlashini kuting"
 
-#: people/templates/people/profile.html:230
+#: people/templates/people/profile.html:237
 msgid "Sign Out"
 msgstr "Chiqish"
 
-#: people/templates/people/profile.html:271
+#: people/templates/people/profile.html:278
 msgid "Since"
 msgstr "Dan beri"
 
-#: people/templates/people/profile.html:280
-msgid "Rank"
-msgstr "Daraja"
-
-#: people/templates/people/profile.html:301
+#: people/templates/people/profile.html:308
 msgid "Purpose"
 msgstr "Maqsad"
 
-#: people/templates/people/profile.html:310
-#: prime/templates/prime/index.html:413
+#: people/templates/people/profile.html:317
+#: prime/templates/prime/index.html:429
 msgid "No role assigned yet"
 msgstr "Hali rol tayinlanmagan"
 
-#: people/templates/people/profile.html:312
+#: people/templates/people/profile.html:319
 msgid "Apply to become a Master or join as a Student to unlock features."
 msgstr ""
 "Xususiyatlarni ochish uchun Ustod yoki Talaba sifatida ro'yxatdan o'ting."
 
-#: people/templates/people/profile.html:313
-#: prime/templates/prime/index.html:416
+#: people/templates/people/profile.html:320
+#: prime/templates/prime/index.html:432
 msgid "Apply as Master"
 msgstr "Ustod sifatida ariza"
 
-#: people/templates/people/profile.html:315
+#: people/templates/people/profile.html:322
 msgid "This user hasn't taken on a role yet."
 msgstr "Bu foydalanuvchi hali rol tanlamagan."
 
-#: people/templates/people/profile.html:329
+#: people/templates/people/profile.html:336
 msgid "Master Profile"
 msgstr "Ustod profili"
 
-#: people/templates/people/profile.html:331
+#: people/templates/people/profile.html:338
 #, fuzzy
 #| msgid "Await Admin Approval"
 msgid "Pending Approval"
 msgstr "Admin tasdiqlashini kuting"
 
-#: people/templates/people/profile.html:335
+#: people/templates/people/profile.html:342
 msgid "View public page"
 msgstr "Ochiq sahifani ko'rish"
 
-#: people/templates/people/profile.html:342
+#: people/templates/people/profile.html:349
 msgid ""
 "Your Master application is awaiting admin approval. You will be able to "
 "create practices and tutorials once approved."
 msgstr ""
 
-#: people/templates/people/profile.html:362
+#: people/templates/people/profile.html:369
 msgid "Published Practices"
 msgstr "Nashr etilgan mashqlar"
 
-#: people/templates/people/profile.html:393
+#: people/templates/people/profile.html:400
 msgid "No published practices yet."
 msgstr "Hali nashr etilgan mashqlar yo'q."
 
-#: people/templates/people/profile.html:395
+#: people/templates/people/profile.html:402
 msgid "Create Practice"
 msgstr "Mashq yaratish"
 
-#: people/templates/people/profile.html:408
+#: people/templates/people/profile.html:421
+#, fuzzy
+#| msgid "Student Profile"
+msgid "students enrolled"
+msgstr "Talaba profili"
+
+#: people/templates/people/profile.html:423
+#, fuzzy
+#| msgid "CORE Dashboard"
+msgid "Open Student Dashboard"
+msgstr "Boshqaruv paneli"
+
+#: people/templates/people/profile.html:435
 msgid "My Homework (as Master)"
 msgstr "Uy vazifalaram (Ustod)"
 
-#: people/templates/people/profile.html:419
+#: people/templates/people/profile.html:446
 msgid "pending"
 msgstr "kutilmoqda"
 
-#: people/templates/people/profile.html:419
+#: people/templates/people/profile.html:446
 msgid "submitted"
 msgstr "topshirilgan"
 
-#: people/templates/people/profile.html:429
+#: people/templates/people/profile.html:456
 msgid "No homework created yet."
 msgstr "Hali uy vazifasi yaratilmagan."
 
-#: people/templates/people/profile.html:431
-msgid "Create Homework"
-msgstr "Uy vazifasi yaratish"
-
-#: people/templates/people/profile.html:444
+#: people/templates/people/profile.html:471
 msgid "Student Profile"
 msgstr "Talaba profili"
 
-#: people/templates/people/profile.html:446
+#: people/templates/people/profile.html:473
 #, fuzzy
 #| msgid "Dashboard"
 msgid "Leaderboard"
 msgstr "Bosh sahifa"
 
-#: people/templates/people/profile.html:488
-msgid "Tests taken"
-msgstr ""
-
-#: people/templates/people/profile.html:506
+#: people/templates/people/profile.html:533
 #, fuzzy
 #| msgid "How are points earned?"
 msgid "How points are earned"
 msgstr "Ballar qanday to'planadi?"
 
-#: people/templates/people/profile.html:507
+#: people/templates/people/profile.html:534
 #, python-format
 msgid "Easy test 100%% = 12 pts"
 msgstr ""
 
-#: people/templates/people/profile.html:508
+#: people/templates/people/profile.html:535
 #, python-format
 msgid "Medium test 100%% = 17 pts"
 msgstr ""
 
-#: people/templates/people/profile.html:509
+#: people/templates/people/profile.html:536
 #, python-format
 msgid "Hard test 100%% = 22 pts"
 msgstr ""
 
-#: people/templates/people/profile.html:510
+#: people/templates/people/profile.html:537
 msgid "pts for every completed test"
 msgstr ""
 
-#: people/templates/people/profile.html:517
+#: people/templates/people/profile.html:544
 msgid "My Masters"
 msgstr "Mening ustodlarim"
 
-#: people/templates/people/profile.html:532
+#: people/templates/people/profile.html:559
 msgid "Choose your masters"
 msgstr "Ustodlarni tanlang"
 
-#: people/templates/people/profile.html:546
+#: people/templates/people/profile.html:573
 msgid "Save Masters"
 msgstr "Ustodlarni saqlash"
 
-#: people/templates/people/profile.html:559
-#: people/templates/people/profile.html:588
+#: people/templates/people/profile.html:586
+#: people/templates/people/profile.html:615
 msgid "Recent Practice Attempts"
 msgstr "So'nggi amaliyot urinishlari"
 
-#: people/templates/people/profile.html:591
+#: people/templates/people/profile.html:618
 msgid "No completed attempts yet."
 msgstr "Hali tugatilgan urinishlar yo'q."
 
-#: people/templates/people/profile.html:593
-#: prime/templates/prime/index.html:171 prime/templates/prime/index.html:373
+#: people/templates/people/profile.html:620
+#: prime/templates/prime/index.html:171 prime/templates/prime/index.html:389
 msgid "Browse Practices"
 msgstr "Mashqlarni ko'rish"
 
-#: people/templates/people/profile.html:604
+#: people/templates/people/profile.html:660
 msgid "My Homework"
 msgstr "Mening uy vazifalaram"
 
-#: people/templates/people/profile.html:607
+#: people/templates/people/profile.html:663
 msgid "See all"
 msgstr "Barchasini ko'rish"
-
-#: people/templates/people/profile.html:647
-msgid "No homework assigned yet."
-msgstr "Hali uy vazifasi berilmagan."
 
 #: people/templates/people/register.html:4
 msgid "Create Account — Powerty"
 msgstr "Ro'yxatdan o'tish — Powerty"
 
-#: people/templates/people/register.html:5 templates/base.html:277
+#: people/templates/people/register.html:5 templates/base.html:287
 msgid "Register"
 msgstr "Ro'yxat"
 
@@ -1595,11 +3591,7 @@ msgstr "Hisobingiz bormi?"
 msgid "Log in instead"
 msgstr "Kirish"
 
-#: point/settings.py:211
-msgid "English"
-msgstr "Inglizcha"
-
-#: point/settings.py:212
+#: point/settings.py:217
 msgid "Uzbek"
 msgstr "O'zbekcha"
 
@@ -1676,20 +3668,20 @@ msgstr "Ushbu mashq uchun urinishlar soni maksimal darajaga yetdi."
 
 #: practice/templates/practice/practice_list.html:4
 #: practice/templates/practice/practice_list.html:5
-#: practice/templates/practice/practice_list.html:374
+#: practice/templates/practice/practice_list.html:447
 #: prime/templates/prime/about.html:564
 msgid "Practice Hub"
 msgstr "Mashqlar markazi"
 
-#: practice/templates/practice/practice_list.html:375
+#: practice/templates/practice/practice_list.html:448
 msgid "Sharpen your skills,"
 msgstr "Ko'nikmalaringizni charxlang,"
 
-#: practice/templates/practice/practice_list.html:375
+#: practice/templates/practice/practice_list.html:448
 msgid "one session at a time."
 msgstr "har bir mashg'ulotda."
 
-#: practice/templates/practice/practice_list.html:376
+#: practice/templates/practice/practice_list.html:449
 msgid ""
 "Pick a topic, challenge yourself, and track your progress across every "
 "session."
@@ -1697,97 +3689,107 @@ msgstr ""
 "Mavzu tanlang, o'zingizni sinang va har bir mashg'ulotdagi natijangizni "
 "kuzatib boring."
 
-#: practice/templates/practice/practice_list.html:378
+#: practice/templates/practice/practice_list.html:451
 msgid "available"
 msgstr "mavjud"
 
-#: practice/templates/practice/practice_list.html:379
+#: practice/templates/practice/practice_list.html:452
 msgid "Subject"
 msgstr "Fan"
 
-#: practice/templates/practice/practice_list.html:380
+#: practice/templates/practice/practice_list.html:453
 msgid "Free & Paid sessions"
 msgstr "Bepul va pullik mashg'ulotlar"
 
-#: practice/templates/practice/practice_list.html:388
+#: practice/templates/practice/practice_list.html:461
 #, fuzzy
 #| msgid "Practice"
 msgid "Add Practice"
 msgstr "Mashqlar"
 
-#: practice/templates/practice/practice_list.html:396
+#: practice/templates/practice/practice_list.html:469
 #, fuzzy
 #| msgid "Support"
 msgid "Export"
 msgstr "Yordam"
 
-#: practice/templates/practice/practice_list.html:399
-#: practice/templates/practice/practice_list.html:421
+#: practice/templates/practice/practice_list.html:472
+#: practice/templates/practice/practice_list.html:494
 msgid "All Subjects"
 msgstr "Barcha fanlar"
 
-#: practice/templates/practice/practice_list.html:405
+#: practice/templates/practice/practice_list.html:478
 #, fuzzy
 #| msgid "Download PDF"
 msgid "Download Excel"
 msgstr "PDF yuklab olish"
 
-#: practice/templates/practice/practice_list.html:413
+#: practice/templates/practice/practice_list.html:486
 msgid "Filter"
 msgstr "Filtr"
 
-#: practice/templates/practice/practice_list.html:417
+#: practice/templates/practice/practice_list.html:490
 msgid "Search practices…"
 msgstr "Mashqlarni qidirish..."
 
-#: practice/templates/practice/practice_list.html:430
+#: practice/templates/practice/practice_list.html:503
 msgid "Any Level"
 msgstr "Istalgan daraja"
 
-#: practice/templates/practice/practice_list.html:431
-msgid "Easy"
-msgstr "Oson"
-
-#: practice/templates/practice/practice_list.html:432
-#: prime/templates/prime/help.html:576
-msgid "Medium"
-msgstr "O'rta"
-
-#: practice/templates/practice/practice_list.html:433
-msgid "Hard"
-msgstr "Qiyin"
-
-#: practice/templates/practice/practice_list.html:437
+#: practice/templates/practice/practice_list.html:510
 msgid "Any Master"
 msgstr "Istalgan ustoz"
 
-#: practice/templates/practice/practice_list.html:445
-#: prime/templates/prime/search_results.html:26 templates/base.html:202
-#: templates/base.html:206
+#: practice/templates/practice/practice_list.html:518
+#: prime/templates/prime/search_results.html:26 templates/base.html:212
+#: templates/base.html:216
 msgid "Search"
 msgstr "Qidirish"
 
-#: practice/templates/practice/practice_list.html:448
-msgid "Clear"
-msgstr "Tozalash"
-
-#: practice/templates/practice/practice_list.html:469
+#: practice/templates/practice/practice_list.html:542
 msgid "result"
 msgstr "natija"
 
-#: practice/templates/practice/practice_list.html:469
+#: practice/templates/practice/practice_list.html:542
 msgid "found"
 msgstr "topildi"
 
-#: practice/templates/practice/practice_list.html:504
+#: practice/templates/practice/practice_list.html:556
+#: practice/templates/practice/practice_list.html:568
+#, fuzzy
+#| msgid "Practice"
+msgid "practice"
+msgstr "Mashqlar"
+
+#: practice/templates/practice/practice_list.html:567
+msgid "Uncategorized"
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:577
+#, fuzzy
+#| msgid "No masters yet"
+msgid "No subjects yet"
+msgstr "Hali ustodlar yo'q"
+
+#: practice/templates/practice/practice_list.html:578
+msgid "Published practices will appear here grouped by subject."
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:587
+#, fuzzy
+#| msgid "All Subjects"
+msgid "All subjects"
+msgstr "Barcha fanlar"
+
+#: practice/templates/practice/practice_list.html:621
 msgid "No description provided."
 msgstr "Tavsif berilmagan."
 
-#: practice/templates/practice/practice_list.html:548
+#: practice/templates/practice/practice_list.html:665
 msgid "No practices found"
 msgstr "Mashqlar topilmadi"
 
-#: practice/templates/practice/practice_list.html:549
+#: practice/templates/practice/practice_list.html:666
 msgid "Try different keywords or remove some filters."
 msgstr "Boshqa kalit so'zlarni sinab ko'ring yoki filtrlarni olib tashlang."
 
@@ -2101,7 +4103,7 @@ msgid "Go to Practices"
 msgstr "Mashqlarga o'tish"
 
 #: prime/templates/prime/about.html:784 prime/templates/prime/index.html:174
-#: prime/templates/prime/index.html:370 templates/base.html:254
+#: prime/templates/prime/index.html:386 templates/base.html:264
 msgid "My Profile"
 msgstr "Mening profilim"
 
@@ -2113,7 +4115,7 @@ msgstr "Bepul qo'shiling"
 msgid "Sign In"
 msgstr "Kirish"
 
-#: prime/templates/prime/help.html:4 templates/base.html:142
+#: prime/templates/prime/help.html:4 templates/base.html:152
 msgid "Help"
 msgstr "Yordam"
 
@@ -2499,15 +4501,6 @@ msgstr ""
 msgid "Practice Metadata"
 msgstr "Mashq ma'lumotlari"
 
-#: prime/templates/prime/help.html:576
-msgid "Level"
-msgstr "Daraja"
-
-#: prime/templates/prime/help.html:577 prime/templates/prime/help.html:633
-#: tutorial/templates/tutorial/tutorial_detail.html:99
-msgid "min"
-msgstr "daqiqa"
-
 #: prime/templates/prime/help.html:579
 msgid "Max Attempts"
 msgstr "Maks. urinishlar"
@@ -2620,7 +4613,7 @@ msgstr "Darslik kartasi"
 
 #: prime/templates/prime/help.html:632
 #: tutorial/templates/tutorial/playlist_form.html:88
-#: tutorial/templates/tutorial/tutorial_form.html:83
+#: tutorial/templates/tutorial/tutorial_form.html:113
 msgid "Category"
 msgstr "Kategoriya"
 
@@ -3039,23 +5032,27 @@ msgstr ""
 msgid "Private rooms where masters teach enrolled students."
 msgstr ""
 
-#: prime/templates/prime/index.html:330
+#: prime/templates/prime/index.html:338
+msgid "Full timed exams — Listening, Reading and Writing."
+msgstr ""
+
+#: prime/templates/prime/index.html:346
 msgid "My Stats"
 msgstr "Mening statistikam"
 
-#: prime/templates/prime/index.html:357
+#: prime/templates/prime/index.html:373
 msgid "Best"
 msgstr "Eng yuqori"
 
-#: prime/templates/prime/index.html:361
+#: prime/templates/prime/index.html:377
 msgid "Pass Rate"
 msgstr "O'tish darajasi"
 
-#: prime/templates/prime/index.html:400
+#: prime/templates/prime/index.html:416
 msgid "My Master Page"
 msgstr "Ustod sahifam"
 
-#: prime/templates/prime/index.html:414
+#: prime/templates/prime/index.html:430
 msgid "Become a master or get enrolled as a student to see your stats here."
 msgstr ""
 "Statistikangizni ko'rish uchun ustod bo'ling yoki talaba sifatida ro'yxatdan "
@@ -3111,48 +5108,48 @@ msgstr "Asosiy"
 msgid "Index"
 msgstr "Bosh sahifa"
 
-#: templates/base.html:133
+#: templates/base.html:143
 msgid "Support"
 msgstr "Yordam"
 
-#: templates/base.html:166
+#: templates/base.html:176
 msgid "Admin"
 msgstr "Admin"
 
-#: templates/base.html:166
+#: templates/base.html:176
 msgid "Member"
 msgstr "A'zo"
 
-#: templates/base.html:169
+#: templates/base.html:179
 msgid "Online"
 msgstr "Onlayn"
 
-#: templates/base.html:175
+#: templates/base.html:185
 msgid "Guest"
 msgstr "Mehmon"
 
-#: templates/base.html:189
+#: templates/base.html:199
 msgid "Open sidebar"
 msgstr "Yon panelni ochish"
 
-#: templates/base.html:202
+#: templates/base.html:212
 msgid "Search..."
 msgstr "Qidirish..."
 
-#: templates/base.html:237
+#: templates/base.html:247
 msgid "User menu"
 msgstr "Foydalanuvchi menyusi"
 
-#: templates/base.html:259 tutorial/templates/tutorial/playlist_form.html:85
-#: tutorial/templates/tutorial/tutorial_form.html:79
+#: templates/base.html:269 tutorial/templates/tutorial/playlist_form.html:85
+#: tutorial/templates/tutorial/tutorial_form.html:109
 msgid "Settings"
 msgstr "Sozlamalar"
 
-#: templates/base.html:267
+#: templates/base.html:277
 msgid "Sign out"
 msgstr "Chiqish"
 
-#: templates/base.html:305
+#: templates/base.html:315
 msgid "Home"
 msgstr "Asosiy"
 
@@ -3238,13 +5235,6 @@ msgstr ""
 msgid "Group tutorials into an ordered learning path."
 msgstr ""
 
-#: tutorial/templates/tutorial/playlist_form.html:48
-#: tutorial/templates/tutorial/playlist_form.html:97
-#: tutorial/templates/tutorial/tutorial_form.html:93
-#: tutorial/templates/tutorial/tutorial_form.html:105
-msgid "optional"
-msgstr "ixtiyoriy"
-
 #: tutorial/templates/tutorial/playlist_form.html:51
 #, fuzzy
 #| msgid "Shown on the listing page. Max 300 chars."
@@ -3273,17 +5263,17 @@ msgid ""
 msgstr ""
 
 #: tutorial/templates/tutorial/playlist_form.html:96
-#: tutorial/templates/tutorial/tutorial_form.html:104
+#: tutorial/templates/tutorial/tutorial_form.html:134
 msgid "Cover Image"
 msgstr "Muqova rasmi"
 
 #: tutorial/templates/tutorial/playlist_form.html:115
-#: tutorial/templates/tutorial/tutorial_form.html:123
+#: tutorial/templates/tutorial/tutorial_form.html:153
 msgid "Visible to all users"
 msgstr "Barcha foydalanuvchlarga ko'rinadi"
 
 #: tutorial/templates/tutorial/playlist_form.html:123
-#: tutorial/templates/tutorial/tutorial_form.html:226
+#: tutorial/templates/tutorial/tutorial_form.html:274
 msgid "Save Changes"
 msgstr "O'zgarishlarni saqlash"
 
@@ -3390,8 +5380,8 @@ msgid "Read"
 msgstr "O'qildi"
 
 #: tutorial/templates/tutorial/tutorial_detail.html:256
-#: tutorial/templates/tutorial/tutorial_form.html:134
-#: tutorial/templates/tutorial/tutorial_form.html:140
+#: tutorial/templates/tutorial/tutorial_form.html:164
+#: tutorial/templates/tutorial/tutorial_form.html:170
 msgid "Playlist"
 msgstr ""
 
@@ -3405,126 +5395,130 @@ msgstr "Hamkorlar"
 msgid "of"
 msgstr ""
 
-#: tutorial/templates/tutorial/tutorial_detail.html:278
-msgid "Prev"
-msgstr ""
-
-#: tutorial/templates/tutorial/tutorial_detail.html:284
-msgid "Next"
-msgstr "Keyingi"
-
-#: tutorial/templates/tutorial/tutorial_detail.html:289
-msgid "Completed"
-msgstr ""
-
 #: tutorial/templates/tutorial/tutorial_detail.html:321
 msgid "Related"
 msgstr "O'xshash darsliklar"
 
 #: tutorial/templates/tutorial/tutorial_form.html:4
-#: tutorial/templates/tutorial/tutorial_form.html:21
+#: tutorial/templates/tutorial/tutorial_form.html:51
 msgid "Edit Tutorial"
 msgstr "Darslikni tahrirlash"
 
-#: tutorial/templates/tutorial/tutorial_form.html:25
+#: tutorial/templates/tutorial/tutorial_form.html:55
 msgid "Update your tutorial content and settings."
 msgstr "Darslik mazmuni va sozlamalarini yangilang."
 
-#: tutorial/templates/tutorial/tutorial_form.html:27
+#: tutorial/templates/tutorial/tutorial_form.html:57
 msgid "Share your knowledge — use the full editor below."
 msgstr "Bilimlaringizni ulashing — quyidagi muharrir orqali yozing."
 
-#: tutorial/templates/tutorial/tutorial_form.html:61
+#: tutorial/templates/tutorial/tutorial_form.html:91
 msgid "Content"
 msgstr "Mazmun"
 
-#: tutorial/templates/tutorial/tutorial_form.html:62
+#: tutorial/templates/tutorial/tutorial_form.html:92
 msgid "Use"
 msgstr "Foydalaning"
 
-#: tutorial/templates/tutorial/tutorial_form.html:62
+#: tutorial/templates/tutorial/tutorial_form.html:92
 msgid "for math formulas"
 msgstr "matematik formulalar uchun"
 
-#: tutorial/templates/tutorial/tutorial_form.html:92
+#: tutorial/templates/tutorial/tutorial_form.html:122
 msgid "Summary"
 msgstr "Qisqacha ma'lumot"
 
-#: tutorial/templates/tutorial/tutorial_form.html:96
+#: tutorial/templates/tutorial/tutorial_form.html:126
 msgid "Shown on the listing page. Max 300 chars."
 msgstr "Ro'yxat sahifasida ko'rsatiladi. Maksimal 300 belgi."
 
-#: tutorial/templates/tutorial/tutorial_form.html:137
+#: tutorial/templates/tutorial/tutorial_form.html:167
 msgid "Add this tutorial to one of your playlists."
 msgstr ""
 
-#: tutorial/templates/tutorial/tutorial_form.html:147
+#: tutorial/templates/tutorial/tutorial_form.html:177
 msgid "Order in Playlist"
 msgstr ""
 
-#: tutorial/templates/tutorial/tutorial_form.html:149
+#: tutorial/templates/tutorial/tutorial_form.html:179
 msgid "Lower number = earlier in the playlist (e.g. 1, 2, 3…)"
 msgstr ""
 
-#: tutorial/templates/tutorial/tutorial_form.html:162
+#: tutorial/templates/tutorial/tutorial_form.html:192
 #, fuzzy
 #| msgid "Manage Practices"
 msgid "Linked Practices"
 msgstr "Mashqlarni boshqarish"
 
-#: tutorial/templates/tutorial/tutorial_form.html:165
+#: tutorial/templates/tutorial/tutorial_form.html:195
 msgid "Students will see buttons to these practices on the tutorial page."
 msgstr ""
 
-#: tutorial/templates/tutorial/tutorial_form.html:186
+#: tutorial/templates/tutorial/tutorial_form.html:216
 msgid "Math Formulas (LaTeX)"
 msgstr "Matematik formulalar (LaTeX)"
 
-#: tutorial/templates/tutorial/tutorial_form.html:190
+#: tutorial/templates/tutorial/tutorial_form.html:220
 msgid "Inline formula:"
 msgstr "Satr ichidagi formula:"
 
-#: tutorial/templates/tutorial/tutorial_form.html:194
+#: tutorial/templates/tutorial/tutorial_form.html:224
 msgid "Block formula:"
 msgstr "Blok formula:"
 
-#: tutorial/templates/tutorial/tutorial_form.html:198
+#: tutorial/templates/tutorial/tutorial_form.html:228
 msgid "Fraction:"
 msgstr "Kasr:"
 
-#: tutorial/templates/tutorial/tutorial_form.html:202
+#: tutorial/templates/tutorial/tutorial_form.html:232
 msgid "Square root:"
 msgstr "Kvadrat ildiz:"
 
-#: tutorial/templates/tutorial/tutorial_form.html:212
+#: tutorial/templates/tutorial/tutorial_form.html:237
+msgid ""
+"Pasting from an AI tool works too — superscripts/subscripts are converted "
+"automatically."
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:246
+msgid "Math Preview"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:249
+msgid ""
+"Type or paste LaTeX here to check how it will look, then copy it into your "
+"content."
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:260
 msgid "Editor Shortcuts"
 msgstr "Muharrir yorliqlari"
 
-#: tutorial/templates/tutorial/tutorial_form.html:215
+#: tutorial/templates/tutorial/tutorial_form.html:263
 msgid "Bold"
 msgstr "Qalin"
 
-#: tutorial/templates/tutorial/tutorial_form.html:216
+#: tutorial/templates/tutorial/tutorial_form.html:264
 msgid "Italic"
 msgstr "Kursiv"
 
-#: tutorial/templates/tutorial/tutorial_form.html:217
+#: tutorial/templates/tutorial/tutorial_form.html:265
 msgid "Link"
 msgstr "Havola"
 
-#: tutorial/templates/tutorial/tutorial_form.html:218
+#: tutorial/templates/tutorial/tutorial_form.html:266
 msgid "Undo"
 msgstr "Bekor qilish"
 
-#: tutorial/templates/tutorial/tutorial_form.html:219
+#: tutorial/templates/tutorial/tutorial_form.html:267
 msgid "Source"
 msgstr "Manba"
 
-#: tutorial/templates/tutorial/tutorial_form.html:226
+#: tutorial/templates/tutorial/tutorial_form.html:274
 msgid "Publish Tutorial"
 msgstr "Darslikni nashr qilish"
 
-#: tutorial/templates/tutorial/tutorial_form.html:233
+#: tutorial/templates/tutorial/tutorial_form.html:281
 msgid "Delete this tutorial"
 msgstr "Ushbu darslikni o'chirish"
 
@@ -3548,17 +5542,24 @@ msgstr "Birinchi bo'lib jamoaga bilim ulashing."
 msgid "Create Tutorial"
 msgstr "Darslik yaratish"
 
+#~ msgid "Give up & start new game"
+#~ msgstr "Taslim bo'lish va yangi o'yin boshlash"
+
+#~ msgid "Reset to defaults"
+#~ msgstr "Boshlang'ich holatga qaytarish"
+
+#~ msgid ""
+#~ "Click any text directly on the certificate to edit it. Select a student "
+#~ "from the dropdown to auto-fill their name."
+#~ msgstr ""
+#~ "Sertifikatdagi istalgan matnni bevosita bosib tahrirlang. Ismni avtomatik "
+#~ "to'ldirish uchun talabani tanlang."
+
 #~ msgid "Free vs Paid"
 #~ msgstr "Bepul / Pullik"
 
-#~ msgid "Rating Progress"
-#~ msgstr "Reyting jarayoni"
-
 #~ msgid "pts"
 #~ msgstr "ball"
-
-#~ msgid "Switch language"
-#~ msgstr "Tilni almashtirish"
 
 #~ msgid "Chat"
 #~ msgstr "Chat"
@@ -3581,17 +5582,11 @@ msgstr "Darslik yaratish"
 #~ msgid "Student Avg Score"
 #~ msgstr "O'quvchi o'rt. ball"
 
-#~ msgid "Total Attempts"
-#~ msgstr "Jami urinishlar"
-
 #~ msgid "No personal data yet"
 #~ msgstr "Hali ma'lumot yo'q"
 
 #~ msgid "Complete a practice to see your personal analytics."
 #~ msgstr "Statistika ko'rish uchun biror mashqni bajaring."
-
-#~ msgid "Login required"
-#~ msgstr "Kirish talab etiladi"
 
 #~ msgid "Log in to view your personal stats and charts."
 #~ msgstr "Shaxsiy statistika ko'rish uchun tizimga kiring."
@@ -3610,175 +5605,3 @@ msgstr "Darslik yaratish"
 
 #~ msgid "Data analysis lessons and tasks."
 #~ msgstr "Ma'lumotlar tahlili bo'yicha darslar."
-
-#: games/templates/games/target_number.html games/templates/games/games_home.html
-msgid "Target Number"
-msgstr "Maqsad Raqam"
-
-#: games/templates/games/games_home.html
-msgid "Combine 6 numbers with +, −, ×, ÷ to hit the target. Three difficulty levels!"
-msgstr "6 raqamni +, −, ×, ÷ yordamida birlashtiring va maqsadga yeting. Uch qiyinchilik darajasi!"
-
-#: games/templates/games/target_number.html
-msgid "Combine the numbers using +, −, ×, ÷ to reach the target!"
-msgstr "Raqamlarni +, −, ×, ÷ yordamida birlashtiring va maqsadga yeting!"
-
-#: games/templates/games/target_number.html
-msgid "4 numbers (1–9), target 10–50"
-msgstr "4 raqam (1–9), maqsad 10–50"
-
-#: games/templates/games/target_number.html
-msgid "4 numbers (1–15) + 2 special, target 50–200"
-msgstr "4 raqam (1–15) + 2 maxsus, maqsad 50–200"
-
-#: games/templates/games/target_number.html
-msgid "4 numbers (1–9) + 2 special, target 100–999"
-msgstr "4 raqam (1–9) + 2 maxsus, maqsad 100–999"
-
-#: games/templates/games/target_number.html
-msgid "Target reached!"
-msgstr "Maqsadga yetildi!"
-
-#: games/templates/games/target_number.html
-#, python-format
-msgid "You hit <strong>%(t)s</strong>!"
-msgstr "<strong>%(t)s</strong> ga yetdingiz!"
-
-#: games/templates/games/target_number.html
-#, python-format
-msgid "Solved in <strong>%(n)s</strong> attempt(s)."
-msgstr "<strong>%(n)s</strong> ta urinishda hal qildingiz."
-
-#: games/templates/games/target_number.html
-#, python-format
-msgid "Personal best: <strong>%(b)s</strong> attempt(s)."
-msgstr "Shaxsiy rekord: <strong>%(b)s</strong> ta urinish."
-
-#: games/templates/games/target_number.html
-msgid "Target"
-msgstr "Maqsad"
-
-#: games/templates/games/target_number.html
-msgid "Your numbers"
-msgstr "Sizning raqamlaringiz"
-
-#: games/templates/games/target_number.html
-msgid "Click numbers and operators above…"
-msgstr "Yuqoridagi raqam va amallarni bosing…"
-
-#: games/templates/games/target_number.html
-msgid "Check"
-msgstr "Tekshirish"
-
-#: games/templates/games/target_number.html
-msgid "New Game"
-msgstr "Yangi O'yin"
-
-#: games/templates/games/target_number.html
-msgid "You reached the target!"
-msgstr "Maqsadga yetdingiz!"
-
-#: games/templates/games/target_number.html
-msgid "Exactly right!"
-msgstr "Aynan to'g'ri!"
-
-#: games/templates/games/target_number.html
-msgid "Result"
-msgstr "Natija"
-
-#: games/templates/games/target_number.html
-msgid "Distance from target"
-msgstr "Maqsaddan farq"
-
-#: games/templates/games/target_number.html
-msgid "Network error — try again."
-msgstr "Tarmoq xatosi — qayta urinib ko'ring."
-
-#: examprep/templates/examprep/home.html templates/base.html
-msgid "Exam Prep"
-msgstr "Imtihonga tayyorgarlik"
-
-#: examprep/templates/examprep/home.html
-msgid "Learn how to approach IELTS, TOPIK, GMAT, SAT and more — step by step."
-msgstr ""
-"IELTS, TOPIK, GMAT, SAT va boshqa imtihonlarni qanday yechishni "
-"bosqichma-bosqich o'rganing."
-
-#: examprep/templates/examprep/home.html
-#, python-format
-msgid "%(counter)s lesson"
-msgid_plural "%(counter)s lessons"
-msgstr[0] "%(counter)s dars"
-
-#: examprep/templates/examprep/home.html
-msgid "No exam tracks are available yet. Check back soon."
-msgstr "Hozircha imtihon yo'nalishlari yo'q. Tez orada qayta tekshiring."
-
-#: examprep/templates/examprep/track_detail.html
-msgid "No lessons here yet."
-msgstr "Bu yerda hali darslar yo'q."
-
-#: examprep/templates/examprep/lesson_detail.html
-msgid "Answers checked. Correct answers and explanations are shown below."
-msgstr "Javoblar tekshirildi. To'g'ri javoblar va izohlar quyida ko'rsatilgan."
-
-#: examprep/templates/examprep/lesson_detail.html
-msgid "Check answers"
-msgstr "Javoblarni tekshirish"
-
-#: examprep/templates/examprep/_block_mcq.html
-msgid "Correct!"
-msgstr "To'g'ri!"
-
-#: examprep/templates/examprep/_block_mcq.html
-msgid "Not quite."
-msgstr "Unchalik emas."
-
-#: examprep/templates/examprep/_block_mcq.html
-msgid "No answer selected."
-msgstr "Javob tanlanmadi."
-
-#: examprep/templates/examprep/_block.html
-msgid "Lesson image"
-msgstr "Dars rasmi"
-
-#: examprep/models.py
-msgid "Reading"
-msgstr "O'qish"
-
-#: examprep/models.py
-msgid "Writing"
-msgstr "Yozish"
-
-#: examprep/models.py
-msgid "Listening"
-msgstr "Tinglash"
-
-#: examprep/models.py
-msgid "Speaking"
-msgstr "Gapirish"
-
-#: examprep/models.py
-msgid "Vocabulary"
-msgstr "Lug'at"
-
-#: examprep/models.py
-msgid "Strategy"
-msgstr "Strategiya"
-
-#: examprep/templates/examprep/track_detail.html
-msgid "Choose a section to start working through its lessons in order."
-msgstr "Darslarni tartib bilan boshlash uchun bo'limni tanlang."
-
-#: examprep/templates/examprep/lesson_detail.html
-msgid "Lesson %(current_no)s of %(total_no)s"
-msgstr "%(current_no)s-dars, jami %(total_no)s"
-
-#: examprep/templates/examprep/lesson_detail.html
-msgid "Previous"
-msgstr "Oldingi"
-
-#: examprep/templates/examprep/lesson_detail.html
-msgid "Finish"
-msgstr "Yakunlash"
-

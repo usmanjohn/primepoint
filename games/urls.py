@@ -45,4 +45,10 @@ urlpatterns = [
     # Target Number
     path('target-number/', views.target_number, name='target_number'),
     path('target-number/check/', views.target_number_check, name='target_number_check'),
+    # Math Square (Cross-Math)
+    path('math-square/', views.mathsquare_list, name='mathsquare_list'),
+    path('math-square/create/', views.mathsquare_create, name='mathsquare_create'),
+    path('math-square/<int:pk>/', views.mathsquare_play, name='mathsquare_play'),
+    path('math-square/<int:pk>/edit/', views.mathsquare_edit, name='mathsquare_edit'),
+    path('math-square/<int:pk>/print/', views.mathsquare_print, name='mathsquare_print'),
 ]

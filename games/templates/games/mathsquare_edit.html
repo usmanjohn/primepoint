@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Edit Math Square" %} — Powerty{% endblock %}
+{% block page_name %}{% trans "Edit Math Square" %}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block extra_css %}
+<style>
+.me-grid { border-collapse:separate; border-spacing:3px; margin:0 auto; }
+.me-grid td { width:58px; height:58px; padding:0; text-align:center; vertical-align:middle; }
+@media (max-width:600px){ .me-grid td { width:48px; height:48px; } }
+
+.me-numbox { position:relative; width:100%; height:100%; border-radius:8px; border:2px solid #0d9488; background:#f0fdfa; }
+.me-numbox.blank { border-style:dashed; border-color:#d97706; background:#fffbeb; }
+.me-numinput {
+    width:100%; height:100%; border:none; background:transparent; text-align:center;
+    font-size:1.05rem; font-weight:700; color:#134e4a; outline:none; padding:0; border-radius:8px;
+}
+.me-toggle {
+    position:absolute; top:-7px; right:-7px; width:18px; height:18px; border-radius:50%;
+    border:none; cursor:pointer; font-size:10px; line-height:18px; color:#fff; padding:0;
+    background:#0d9488;
+}
+.me-numbox.blank .me-toggle { background:#d97706; }
+.me-opsel {
+    width:100%; height:100%; border:1px solid #cbd5e1; border-radius:6px; background:#fff;
+    font-size:1rem; font-weight:700; color:#475569; text-align:center; text-align-last:center;
+}
+.me-eq { font-size:1.1rem; font-weight:800; color:#0d9488; }
+
+.me-status { font-size:0.85rem; }
+.me-status .ok  { color:#16a34a; }
+.me-status .bad { color:#dc2626; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4" style="max-width:760px;">
+
+    <a href="{% url 'mathsquare_list' %}" class="text-decoration-none d-inline-flex align-items-center gap-1 mb-3"
+       style="color:var(--text-muted); font-size:0.85rem;">
+        <i class="bi bi-arrow-left"></i> {% trans "Math Square" %}
+    </a>
+
+    <h1 class="fs-5 fw-bold mb-1" style="color:var(--text);">&#x270E; {{ puzzle.title }}</h1>
+    <p style="color:var(--text-muted); font-size:0.85rem; margin:0 0 1rem;">
+        {% trans "Type the numbers and operators. Tap the dot on a number to switch it between a clue (shown) and a blank the student fills." %}
+        <b>{% trans "× and ÷ are done before + and −." %}</b>
+    </p>
+
+    <div class="d-flex gap-3 mb-3" style="font-size:0.78rem; color:var(--text-muted);">
+        <span><span style="display:inline-block;width:12px;height:12px;border:2px solid #0d9488;background:#f0fdfa;border-radius:3px;vertical-align:middle;"></span> {% trans "Clue (shown)" %}</span>
+        <span><span style="display:inline-block;width:12px;height:12px;border:2px dashed #d97706;background:#fffbeb;border-radius:3px;vertical-align:middle;"></span> {% trans "Blank (student fills)" %}</span>
+    </div>
+
+    <div style="overflow-x:auto;">
+        <table class="me-grid" id="me-grid"><tbody></tbody></table>
+    </div>
+
+    <div class="card border-0 shadow-sm mt-4 p-3" style="background:var(--surface); border-radius:12px;">
+        <div id="me-status" class="me-status"></div>
+    </div>
+
+    <div class="d-flex gap-2 mt-3 align-items-center">
+        <button id="me-save" class="btn fw-bold"
+                style="background:#0d9488; color:#fff; border:none; border-radius:10px; padding:.55rem 1.4rem;">
+            <i class="bi bi-save"></i> {% trans "Save" %}
+        </button>
+        <a href="{% url 'mathsquare_play' puzzle.pk %}" target="_blank" class="btn btn-sm"
+           style="border:1px solid #0d9488; color:#0d9488;">{% trans "Preview" %}</a>
+        <a href="{% url 'mathsquare_print' puzzle.pk %}" target="_blank" class="btn btn-sm"
+           style="border:1px solid #0d9488; color:#0d9488;"><i class="bi bi-printer"></i> {% trans "Print" %}</a>
+        <span id="me-saved" style="font-size:0.82rem; color:#16a34a;"></span>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function () {
+'use strict';
+
+const SAVE_URL = "{% url 'mathsquare_edit' puzzle.pk %}";
+const grid = {{ grid_json|safe }};
+const n = grid.n;
+const D = grid.rows;
+let cells = grid.cells;
+
+const T = {
+    row: "{% trans 'Row' %}", col: "{% trans 'Column' %}",
+    valid: "{% trans 'All equations are correct — this puzzle is ready and published.' %}",
+    fix: "{% trans 'Fix the equations below before students can play (puzzle stays a draft):' %}",
+    notExact: "{% trans 'division is not exact' %}",
+    saved: "{% trans 'Saved.' %}", saveErr: "{% trans 'Save failed.' %}",
+};
+
+function csrf() {
+    const m = document.cookie.match(/csrftoken=([^;]+)/);
+    return m ? m[1] : '';
+}
+
+function evalLine(values, ops) {
+    if (!values.length) return null;
+    if (values.some(v => v === null || isNaN(v))) return undefined; // incomplete
+    let terms = [values[0]], addOps = [];
+    for (let i = 0; i < ops.length; i++) {
+        const op = ops[i], v = values[i + 1];
+        if (op === '×') terms[terms.length - 1] *= v;
+        else if (op === '÷') {
+            if (v === 0 || terms[terms.length - 1] % v !== 0) return null;
+            terms[terms.length - 1] = terms[terms.length - 1] / v;
+        } else { addOps.push(op); terms.push(v); }
+    }
+    let res = terms[0];
+    for (let i = 0; i < addOps.length; i++)
+        res = addOps[i] === '+' ? res + terms[i + 1] : res - terms[i + 1];
+    return res;
+}
+
+function fmt(values, ops) {
+    let s = String(values[0]);
+    for (let i = 0; i < ops.length; i++) s += ' ' + ops[i] + ' ' + values[i + 1];
+    return s;
+}
+
+// ── Build the grid DOM ───────────────────────────────────────────────
+const tbody = document.querySelector('#me-grid tbody');
+for (let r = 0; r < D; r++) {
+    const tr = document.createElement('tr');
+    for (let c = 0; c < D; c++) {
+        const td = document.createElement('td');
+        const cell = cells[r][c];
+        if (cell.t === 'num') {
+            const box = document.createElement('div');
+            box.className = 'me-numbox' + (cell.given ? '' : ' blank');
+            box.dataset.r = r; box.dataset.c = c;
+            const inp = document.createElement('input');
+            inp.className = 'me-numinput'; inp.type = 'text'; inp.inputMode = 'numeric';
+            inp.value = (cell.v === null || cell.v === undefined) ? '' : cell.v;
+            inp.addEventListener('input', () => {
+                const v = parseInt(inp.value, 10);
+                cell.v = isNaN(v) ? null : v;
+                validate();
+            });
+            const tog = document.createElement('button');
+            tog.className = 'me-toggle'; tog.type = 'button';
+            tog.textContent = cell.given ? '●' : '○';
+            tog.title = "{% trans 'Clue / blank' %}";
+            tog.addEventListener('click', () => {
+                cell.given = !cell.given;
+                box.classList.toggle('blank', !cell.given);
+                tog.textContent = cell.given ? '●' : '○';
+            });
+            box.appendChild(inp); box.appendChild(tog);
+            td.appendChild(box);
+        } else if (cell.t === 'op') {
+            const sel = document.createElement('select');
+            sel.className = 'me-opsel';
+            ['+', '-', '×', '÷'].forEach(o => {
+                const opt = document.createElement('option');
+                opt.value = o; opt.textContent = o;
+                if (o === cell.v) opt.selected = true;
+                sel.appendChild(opt);
+            });
+            sel.addEventListener('change', () => { cell.v = sel.value; validate(); });
+            td.appendChild(sel);
+        } else if (cell.t === 'eq') {
+            const s = document.createElement('span'); s.className = 'me-eq'; s.textContent = '=';
+            td.appendChild(s);
+        }
+        tr.appendChild(td);
+    }
+    tbody.appendChild(tr);
+}
+
+// ── Validate every row + column ──────────────────────────────────────
+function validate() {
+    const lines = [];
+    for (let i = 0; i < n; i++) {
+        const vals = []; const ops = [];
+        for (let j = 0; j < n; j++) vals.push(cells[2 * i][2 * j].v);
+        for (let j = 0; j < n - 1; j++) ops.push(cells[2 * i][2 * j + 1].v);
+        lines.push({ label: T.row + ' ' + (i + 1), vals, ops, res: cells[2 * i][2 * n].v });
+    }
+    for (let j = 0; j < n; j++) {
+        const vals = []; const ops = [];
+        for (let i = 0; i < n; i++) vals.push(cells[2 * i][2 * j].v);
+        for (let i = 0; i < n - 1; i++) ops.push(cells[2 * i + 1][2 * j].v);
+        lines.push({ label: T.col + ' ' + (j + 1), vals, ops, res: cells[2 * n][2 * j].v });
+    }
+
+    const bad = [];
+    lines.forEach(L => {
+        const r = evalLine(L.vals, L.ops);
+        if (r === undefined || L.res === null || L.res === undefined) {
+            bad.push(L.label + ': …');
+        } else if (r === null) {
+            bad.push(L.label + ': ' + T.notExact);
+        } else if (r !== L.res) {
+            bad.push(L.label + ': ' + fmt(L.vals, L.ops) + ' = ' + r + ' ≠ ' + L.res);
+        }
+    });
+
+    const box = document.getElementById('me-status');
+    if (bad.length === 0) {
+        box.innerHTML = '<span class="ok"><i class="bi bi-check-circle-fill"></i> ' + T.valid + '</span>';
+    } else {
+        box.innerHTML = '<div class="bad mb-1"><i class="bi bi-exclamation-triangle-fill"></i> ' + T.fix + '</div>' +
+            '<ul class="mb-0 ps-3 bad">' + bad.map(b => '<li>' + b + '</li>').join('') + '</ul>';
+    }
+    return bad.length === 0;
+}
+
+// ── Save ─────────────────────────────────────────────────────────────
+document.getElementById('me-save').addEventListener('click', () => {
+    fetch(SAVE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrf() },
+        body: JSON.stringify({ cells }),
+    }).then(r => r.json()).then(data => {
+        const note = document.getElementById('me-saved');
+        if (data.ok) {
+            note.style.color = data.published ? '#16a34a' : '#d97706';
+            note.textContent = T.saved + (data.published ? '' : ' (' + (data.errors.length) + ')');
+            validate();
+        } else {
+            note.style.color = '#dc2626'; note.textContent = T.saveErr;
+        }
+        setTimeout(() => { note.textContent = ''; }, 4000);
+    }).catch(() => {
+        const note = document.getElementById('me-saved');
+        note.style.color = '#dc2626'; note.textContent = T.saveErr;
+    });
+});
+
+validate();
+})();
+</script>
+{% endblock %}
