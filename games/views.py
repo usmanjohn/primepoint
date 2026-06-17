@@ -1826,9 +1826,15 @@ def mathsquare_edit(request, pk):
         except Exception as e:
             return JsonResponse({'ok': False, 'error': str(e)}, status=400)
 
+    # Fall back to an empty grid of the puzzle's size when no grid exists yet
+    # (e.g. the puzzle was created from the Django admin, which doesn't build
+    # one). Without this the editor would render nothing.
+    grid_data = puzzle.grid_data
+    if not grid_data or not grid_data.get('cells'):
+        grid_data = empty_math_square(puzzle.size or 2)
     return render(request, 'games/mathsquare_edit.html', {
         'puzzle':    puzzle,
-        'grid_json': json.dumps(puzzle.grid_data or {}),
+        'grid_json': json.dumps(grid_data),
     })
 
 
