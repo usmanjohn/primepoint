@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load i18n %}
+{% load static i18n %}
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -60,18 +60,36 @@
         margin: 1rem auto;
         padding: 12mm;
         box-shadow: 0 4px 20px rgba(0,0,0,.12);
+        display: flex;
+        flex-direction: column;
     }
+    .sheet-main { flex: 1 1 auto; }
 
     .sheet-head {
         display: flex;
-        align-items: baseline;
+        align-items: center;
         justify-content: space-between;
         border-bottom: 2px solid var(--accent);
         padding-bottom: 4mm;
         margin-bottom: 5mm;
         gap: 8mm;
     }
+    .sheet-brand { display: flex; align-items: center; gap: 3mm; }
+    .sheet-brand img { width: 13mm; height: 13mm; border-radius: 50%; object-fit: cover; flex: none; }
     .sheet-title { font-size: 18pt; font-weight: 800; margin: 0; }
+
+    /* ── Brand footer (always prints, marks the sheet as ours) ─ */
+    .sheet-foot {
+        margin-top: 8mm; padding-top: 3mm; border-top: 1px solid #cbd5e1;
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 6mm; font-size: 8.5pt; color: #64748b;
+    }
+    .sheet-foot .fb-brand { display: flex; align-items: center; gap: 2.5mm; }
+    .sheet-foot .fb-brand img { width: 9mm; height: 9mm; border-radius: 50%; object-fit: cover; flex: none; }
+    .sheet-foot .fb-name { font-weight: 800; color: var(--ink); font-size: 9.5pt; line-height: 1.1; }
+    .sheet-foot .fb-tag  { color: #94a3b8; font-size: 7.5pt; }
+    .sheet-foot .fb-url  { font-weight: 800; color: var(--accent); font-size: 10pt; text-decoration: none; }
+    .sheet-foot .fb-copy { font-size: 7.5pt; color: #94a3b8; text-align: right; }
     .sheet-meta  { font-size: 9pt; color: #64748b; white-space: nowrap; }
     .answer-tag {
         font-size: 9pt; font-weight: 700; color: var(--accent);
@@ -193,8 +211,13 @@
 
 <div class="sheet">
 
+  <div class="sheet-main">
+
     <div class="sheet-head">
-        <h1 class="sheet-title">&#x1F9E9; {{ puzzle.title }}</h1>
+        <div class="sheet-brand">
+            <img src="{% static 'images/logo.jpg' %}" alt="Prime Point">
+            <h1 class="sheet-title">{{ puzzle.title }}</h1>
+        </div>
         <div class="sheet-meta">
             {% if show_answers %}<span class="answer-tag">{% trans "ANSWER KEY" %}</span>{% endif %}
             <div>{% trans "Name:" %} ____________________</div>
@@ -263,6 +286,20 @@
     </div>
 
     {% endif %}
+
+  </div><!-- /sheet-main -->
+
+    <div class="sheet-foot">
+        <div class="fb-brand">
+            <img src="{% static 'images/logo.jpg' %}" alt="Prime Point">
+            <div>
+                <div class="fb-name">Powerty</div>
+                <div class="fb-tag">{% trans "by Prime Point" %}</div>
+            </div>
+        </div>
+        <a class="fb-url" href="https://powerty.uz">powerty.uz</a>
+        <div class="fb-copy">&copy; {% now "Y" %} Prime Point.<br>{% trans "All rights reserved." %}</div>
+    </div>
 
 </div>
 </body>

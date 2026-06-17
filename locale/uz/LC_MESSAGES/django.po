@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Prime Point\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-17 06:52+0000\n"
+"POT-Creation-Date: 2026-06-17 07:40+0000\n"
 "PO-Revision-Date: 2026-04-29 15:20+0000\n"
 "Last-Translator: Prime Point\n"
 "Language-Team: Uzbek\n"
@@ -282,8 +282,8 @@ msgstr "Sinf xonasi"
 
 #: classroom/templates/classroom/classroom_form.html:105
 #: classroom/templates/classroom/classroom_form.html:109
-#: games/templates/games/crossword_print.html:185
-#: games/templates/games/mathsquare_print.html:88
+#: games/templates/games/crossword_print.html:203
+#: games/templates/games/mathsquare_print.html:105
 msgid "Back"
 msgstr ""
 
@@ -1481,13 +1481,13 @@ msgid "Check Answers"
 msgstr "Javoblarni tekshirish"
 
 #: games/templates/games/crossword_play.html:211
-#: games/templates/games/crossword_print.html:239
+#: games/templates/games/crossword_print.html:262
 #: games/templates/games/english_crossword_play.html:213
 msgid "Across"
 msgstr "Gorizontal"
 
 #: games/templates/games/crossword_play.html:229
-#: games/templates/games/crossword_print.html:252
+#: games/templates/games/crossword_print.html:275
 #: games/templates/games/english_crossword_play.html:231
 msgid "Down"
 msgstr "Vertikal"
@@ -1499,59 +1499,69 @@ msgstr "Vertikal"
 msgid "Print"
 msgstr ""
 
-#: games/templates/games/crossword_print.html:187
-#: games/templates/games/mathsquare_print.html:90
+#: games/templates/games/crossword_print.html:205
+#: games/templates/games/mathsquare_print.html:107
 msgid "Answers: ON"
 msgstr ""
 
-#: games/templates/games/crossword_print.html:189
-#: games/templates/games/mathsquare_print.html:92
+#: games/templates/games/crossword_print.html:207
+#: games/templates/games/mathsquare_print.html:109
 msgid "Show answer key"
 msgstr ""
 
-#: games/templates/games/crossword_print.html:191
-#: games/templates/games/mathsquare_print.html:94
+#: games/templates/games/crossword_print.html:209
+#: games/templates/games/mathsquare_print.html:111
 msgid "Print / Save as PDF"
 msgstr ""
 
-#: games/templates/games/crossword_print.html:199
-#: games/templates/games/mathsquare_print.html:102
+#: games/templates/games/crossword_print.html:222
+#: games/templates/games/mathsquare_print.html:124
 msgid "ANSWER KEY"
 msgstr ""
 
-#: games/templates/games/crossword_print.html:200
-#: games/templates/games/mathsquare_print.html:103
+#: games/templates/games/crossword_print.html:223
+#: games/templates/games/mathsquare_print.html:125
 #, fuzzy
 #| msgid "Name"
 msgid "Name:"
 msgstr "Ism"
 
-#: games/templates/games/crossword_print.html:205
+#: games/templates/games/crossword_print.html:228
 #: games/templates/games/mathsquare_play.html:91
-#: games/templates/games/mathsquare_print.html:108
+#: games/templates/games/mathsquare_print.html:130
 #: games/templates/games/wordsearch_play.html:118
 #, fuzzy
 #| msgid "This puzzle has no grid yet. Ask an admin to generate it."
 msgid "This puzzle has no grid yet."
 msgstr "Bu krossvord hali yaratilmagan. Admin bilan bog'laning."
 
-#: games/templates/games/crossword_print.html:232
+#: games/templates/games/crossword_print.html:255
 #, fuzzy
 #| msgid "words"
 msgid "word start"
 msgstr "so'z"
 
-#: games/templates/games/crossword_print.html:233
+#: games/templates/games/crossword_print.html:256
 #, fuzzy
 #| msgid "Director"
 msgid "direction"
 msgstr "Direktor"
 
-#: games/templates/games/crossword_print.html:234
+#: games/templates/games/crossword_print.html:257
 #, fuzzy
 #| msgid "words"
 msgid "word end"
 msgstr "so'z"
+
+#: games/templates/games/crossword_print.html:297
+#: games/templates/games/mathsquare_print.html:169
+msgid "by Prime Point"
+msgstr "Prime Point tomonidan"
+
+#: games/templates/games/crossword_print.html:301
+#: games/templates/games/mathsquare_print.html:173
+msgid "All rights reserved."
+msgstr "Barcha huquqlar himoyalangan."
 
 #: games/templates/games/english_crossword_list.html:4
 #: games/templates/games/english_crossword_list.html:5
@@ -1888,16 +1898,16 @@ msgid "Empty square"
 msgstr "Bo'sh katak"
 
 #: games/templates/games/mathsquare_play.html:141
-#: games/templates/games/mathsquare_print.html:135
+#: games/templates/games/mathsquare_print.html:157
 msgid "Order of operations:"
 msgstr "Amallar tartibi:"
 
 #: games/templates/games/mathsquare_play.html:141
-#: games/templates/games/mathsquare_print.html:135
+#: games/templates/games/mathsquare_print.html:157
 msgid "work out × and ÷ before + and −."
 msgstr "× va ÷ ni + va − dan oldin bajaring."
 
-#: games/templates/games/mathsquare_print.html:134
+#: games/templates/games/mathsquare_print.html:156
 msgid ""
 "Fill each empty white square with a number so that every row (left → right) "
 "and every column (top → bottom) is a correct equation."
