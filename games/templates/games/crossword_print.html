@@ -10,7 +10,7 @@
 
     * { box-sizing: border-box; }
     /* ensure black cells and red end-bars actually print in colour */
-    html, body, .cw, .cw td, .cw td::before, .cw td::after {
+    html, body, .cw, .cw td, .cw td::before, .cw td::after, .watermark {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
     }
@@ -62,7 +62,15 @@
         box-shadow: 0 4px 20px rgba(0,0,0,.12);
         display: flex;
         flex-direction: column;
+        position: relative;
     }
+    /* faint centred logo watermark behind the puzzle */
+    .watermark {
+        position: absolute; top: 46%; left: 50%; transform: translate(-50%, -50%);
+        width: 130mm; height: 130mm; border-radius: 50%; object-fit: cover;
+        opacity: 0.07; filter: grayscale(100%); z-index: 0; pointer-events: none;
+    }
+    .sheet-main, .sheet-foot { position: relative; z-index: 1; }
     .sheet-main { flex: 1 1 auto; }
 
     .sheet-head {
@@ -210,6 +218,8 @@
 </div>
 
 <div class="sheet">
+
+  <img class="watermark" src="{% static 'icons/icon-192.png' %}" alt="" aria-hidden="true">
 
   <div class="sheet-main">
 
