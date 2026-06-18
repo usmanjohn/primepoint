@@ -714,7 +714,24 @@ _SR_MEDIUM_POOL = [
     {"display": "-5/3", "value": -5/3},
     {"display": "0.28", "value":  0.28},
     {"display": "1.5",  "value":  1.5},
-    {"display": "-2.5", "value": -2.5},
+    {"display": "-5.4", "value": -5.4},
+    {"display": "-5.5", "value": -5.5},
+    {"display": "-10.2", "value": -10.2},
+    {"display": "-10.3", "value": -10.3},
+    {"display": "-0.25", "value": -0.25},
+    {"display": "-22/6", "value": -22/6},
+    {"display": "-15/4", "value": -15/4},
+    {"display": "-13/6", "value": -13/6},
+    {"display": "-14.5", "value": -14/5},
+    {"display": "-19/3", "value": -19/3},
+    {"display": "-39/6", "value": -39/6},
+    {"display": "-5/7", "value": -5/7},
+    {"display": "-6/7", "value": -6/7},
+    {"display": "-7/3", "value": -7/3},
+    {"display": "3.209", "value": 3.209},
+    {"display": "3.21", "value": 3.21},
+
+
 ]
 
 _SR_HARD_POOL = [

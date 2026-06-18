@@ -3,69 +3,64 @@ from django.contrib.auth.models import User
 from masters.models import Master
 from practice.models import Subject, Practice, PracticeQuestion, PracticeChoice
 
-from .sat_questions import (questions_sat_math_1, questions_sat_math_2, questions_sat_math_3, questions_sat_math_4, questions_sat_math_5, questions_sat_math_6, questions_sat_math_7, questions_sat_math_8, questions_sat_math_9, questions_sat_math_10, questions_sat_math_11, questions_sat_math_12)
+from .sat_questions import (
+    questions_sat_math_13,
+    questions_sat_math_14,
+    questions_sat_math_15,
+    questions_sat_math_16,
+    questions_sat_math_17,
+    questions_sat_math_18,
+    questions_sat_math_19,
+    questions_sat_math_20,
+    questions_sat_math_21
+)
 PRACTICES = [
     {
-        'title': 'Class 1: Linear Equations & Distribution Basics',
-        'description': 'Mastering basic linear equations, distributing coefficients, and isolating variables efficiently.',
-        'questions': questions_sat_math_1,
+        'title': 'Class 13: Solving Multi-Step Linear Inequalities',
+        'description': 'Mastering inequality properties, variable isolation, and the essential rule of flipping signs when multiplying or dividing by negative numbers.',
+        'questions': questions_sat_math_13,
     },
     {
-        'title': 'Class 2: Combining Like Terms & Simplifying Expressions',
-        'description': 'Grouping variables and constants to simplify multi-step algebraic expressions rapidly.',
-        'questions': questions_sat_math_2,
+        'title': 'Class 14: Graphing Linear Inequalities on the Coordinate Plane',
+        'description': 'Visualizing inequalities using dashed vs. solid boundary lines and identifying correct shading directions (above vs. below).',
+        'questions': questions_sat_math_14,
     },
     {
-        'title': 'Class 3: Multi-Step Variable Isolation',
-        'description': 'Solving complex linear equations requiring operations on both sides of the equals sign.',
-        'questions': questions_sat_math_3,
+        'title': 'Class 15: Modeling Real-World Scenarios with Inequalities',
+        'description': 'Translating critical contextual limit keywords like "at most," "at least," and "no more than" into algebraic expressions.',
+        'questions': questions_sat_math_15,
     },
     {
-        'title': 'Class 4: Rational Equations & Cross-Multiplication',
-        'description': 'Clearing fractions and solving rational linear algebraic setups systematically.',
-        'questions': questions_sat_math_4,
+        'title': 'Class 16: Systems of Linear Equations: Substitution Method',
+        'description': 'Developing speed and precision using algebraic substitution when variables are easily isolated.',
+        'questions': questions_sat_math_16,
     },
     {
-        'title': 'Class 5: Checking Solutions & Identities',
-        'description': 'Distinguishing between equations with one solution, no solution, or infinitely many solutions.',
-        'questions': questions_sat_math_5,
+        'title': 'Class 17: Systems of Linear Equations: Elimination Method',
+        'description': 'Using row operations to eliminate variables quickly in standard system configurations.',
+        'questions': questions_sat_math_17,
     },
     {
-        'title': 'Class 6: Harder Linear Equations & Fractional Steps',
-        'description': 'Advanced isolated variable mechanics featuring dense fractional and decimal coefficients.',
-        'questions': questions_sat_math_6,
+        'title': 'Class 18: Word Problems Involving Systems of Linear Equations',
+        'description': 'Deconstructing situational real-world prompts (value vs. quantity) into fully operational multi-variable systems.',
+        'questions': questions_sat_math_18,
     },
     {
-        'title': 'Class 7: Slope-Intercept Form (y = mx + b) in Depth',
-        'description': 'Decoding, manipulating, and identifying slopes and y-intercepts across varied representations.',
-        'questions': questions_sat_math_7,
+        'title': 'Class 19: Systems with Infinite Solutions (Identical Lines)',
+        'description': 'Recognizing and solving special system cases where graphs perfectly overlap, leading to infinitely many solutions.',
+        'questions': questions_sat_math_19,
     },
     {
-        'title': 'Class 8: Standard Form (Ax + By = C) & Intercept Tracking',
-        'description': 'Finding x-intercepts, y-intercepts, and slope values quickly directly from standard linear forms.',
-        'questions': questions_sat_math_8,
+        'title': 'Class 20: Systems with No Solution (Parallel Lines)',
+        'description': 'Mastering parallel line systems that share identical variable slopes but feature different constants.',
+        'questions': questions_sat_math_20,
     },
     {
-        'title': 'Class 9: Modeling Word Problems with Linear Equations',
-        'description': 'Translating real-world descriptive paragraphs into working slope-intercept equations.',
-        'questions': questions_sat_math_9,
-    },
-    {
-        'title': 'Class 10: Interpreting Slopes & Intercepts in Context',
-        'description': 'Decoding word problems to explain exactly what variable coefficients and constants represent in practice.',
-        'questions': questions_sat_math_10,
-    },
-    {
-        'title': 'Class 11: Parallel Lines & Equal Slopes',
-        'description': 'Identifying parallel systems and matching identical slopes across various coordinate equations.',
-        'questions': questions_sat_math_11,
-    },
-    {
-        'title': 'Class 12: Perpendicular Lines & Negative Reciprocals',
-        'description': 'Calculating perpendicular trajectories using negative reciprocal slope relationships.',
-        'questions': questions_sat_math_12,
-    }
-]
+        'title': 'Class 21: Systems of Linear Inequalities and Bounded Regions',
+        'description': 'Verifying coordinate solutions inside complex, multi-layered overlapping shaded regions on a grid.',
+        'questions': questions_sat_math_21}]
+
+
 class Command(BaseCommand):
     help = 'Create SAT math practice tests'
 
@@ -95,7 +90,7 @@ class Command(BaseCommand):
                 defaults={
                     'description': practice_data['description'],
                     'subject': subject,
-                    'level': 'medium',
+                    'level': 'easy',
                     'is_free': True,
                     'is_published': True,
                     'is_available_for_all': True,
