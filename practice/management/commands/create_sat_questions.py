@@ -4,62 +4,64 @@ from masters.models import Master
 from practice.models import Subject, Practice, PracticeQuestion, PracticeChoice
 
 from .sat_questions import (
-    questions_sat_math_13,
-    questions_sat_math_14,
-    questions_sat_math_15,
-    questions_sat_math_16,
-    questions_sat_math_17,
-    questions_sat_math_18,
-    questions_sat_math_19,
-    questions_sat_math_20,
-    questions_sat_math_21
+    questions_sat_math_22,
+    questions_sat_math_23,
+    questions_sat_math_24,
+    questions_sat_math_25,
+    questions_sat_math_26,
+    questions_sat_math_27,
+    questions_sat_math_28,
+    questions_sat_math_29,
+    questions_sat_math_30,
 )
+
 PRACTICES = [
     {
-        'title': 'Class 13: Solving Multi-Step Linear Inequalities',
-        'description': 'Mastering inequality properties, variable isolation, and the essential rule of flipping signs when multiplying or dividing by negative numbers.',
-        'questions': questions_sat_math_13,
+        'title': 'Class 22: Absolute Value Inequalities on the Number Line',
+        'description': 'Mastering bounded sandwich ranges and diverging outward intervals for complex absolute value inequalities.',
+        'questions': questions_sat_math_22,
     },
     {
-        'title': 'Class 14: Graphing Linear Inequalities on the Coordinate Plane',
-        'description': 'Visualizing inequalities using dashed vs. solid boundary lines and identifying correct shading directions (above vs. below).',
-        'questions': questions_sat_math_14,
+        'title': 'Class 23: Laws of Exponents: Core Operations',
+        'description': 'Applying product, quotient, and power-to-power exponent rules to simplify advanced algebraic systems.',
+        'questions': questions_sat_math_23,
     },
     {
-        'title': 'Class 15: Modeling Real-World Scenarios with Inequalities',
-        'description': 'Translating critical contextual limit keywords like "at most," "at least," and "no more than" into algebraic expressions.',
-        'questions': questions_sat_math_15,
+        'title': 'Class 24: Negative and Fractional Exponents',
+        'description': 'Demystifying radical indices, reciprocal inverting, and non-standard fractional powers.',
+        'questions': questions_sat_math_24,
     },
     {
-        'title': 'Class 16: Systems of Linear Equations: Substitution Method',
-        'description': 'Developing speed and precision using algebraic substitution when variables are easily isolated.',
-        'questions': questions_sat_math_16,
+        'title': 'Class 25: Simplifying Radical Expressions',
+        'description': 'Extracting perfect square multiples and simplifying variable parameters from square and cube roots.',
+        'questions': questions_sat_math_25,
     },
     {
-        'title': 'Class 17: Systems of Linear Equations: Elimination Method',
-        'description': 'Using row operations to eliminate variables quickly in standard system configurations.',
-        'questions': questions_sat_math_17,
+        'title': 'Class 26: Rationalizing Denominators',
+        'description': 'Eliminating irrational square roots from fractions using simple root matching and conjugate products.',
+        'questions': questions_sat_math_26,
     },
     {
-        'title': 'Class 18: Word Problems Involving Systems of Linear Equations',
-        'description': 'Deconstructing situational real-world prompts (value vs. quantity) into fully operational multi-variable systems.',
-        'questions': questions_sat_math_18,
+        'title': 'Class 27: Introduction to Polynomials: Adding and Subtracting',
+        'description': 'Grouping algebraic terms by exponent magnitude while avoiding negative distribution sign traps.',
+        'questions': questions_sat_math_27,
     },
     {
-        'title': 'Class 19: Systems with Infinite Solutions (Identical Lines)',
-        'description': 'Recognizing and solving special system cases where graphs perfectly overlap, leading to infinitely many solutions.',
-        'questions': questions_sat_math_19,
+        'title': 'Class 28: Multiplying Polynomials (FOIL and beyond)',
+        'description': 'Expanding binomial and trinomial combinations systematically without missing middle terms.',
+        'questions': questions_sat_math_28,
     },
     {
-        'title': 'Class 20: Systems with No Solution (Parallel Lines)',
-        'description': 'Mastering parallel line systems that share identical variable slopes but feature different constants.',
-        'questions': questions_sat_math_20,
+        'title': 'Class 29: Factoring: Greatest Common Factor (GCF) and Grouping',
+        'description': 'Extracting numerical and variable common factors and executing four-term grouping splits.',
+        'questions': questions_sat_math_29,
     },
     {
-        'title': 'Class 21: Systems of Linear Inequalities and Bounded Regions',
-        'description': 'Verifying coordinate solutions inside complex, multi-layered overlapping shaded regions on a grid.',
-        'questions': questions_sat_math_21}]
-
+        'title': 'Class 30: Factoring: Special Polynomial Patterns',
+        'description': 'Instantly recognizing and collapsing difference of squares and perfect square trinomial architectures.',
+        'questions': questions_sat_math_30,
+    }
+]
 
 class Command(BaseCommand):
     help = 'Create SAT math practice tests'
