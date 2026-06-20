@@ -112,6 +112,7 @@ const DIFF_DESC = {
     easy:   "{% trans '2×2 numbers, + and −, numbers 1–9. A quick single-step puzzle.' %}",
     medium: "{% trans '3×3 numbers, +, − and ×, numbers up to 12. Some cross-deduction.' %}",
     hard:   "{% trans '4×4 numbers, all four operations, more blanks. Chain rows and columns to solve.' %}",
+    ultra:  "{% trans '5×5 numbers, all four operations, numbers up to 20. Cannot be read straight off the grid — you must guess and backtrack to the one unique answer.' %}",
 };
 function updateDiff() {
     const c = document.querySelector('.ms-diff-radio:checked');

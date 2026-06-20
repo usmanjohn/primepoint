@@ -308,14 +308,21 @@ def eval_line(values, ops):
 
 
 def _ms_params(difficulty):
+    if difficulty == 'ultra':
+        # 5×5, all four operators, wide number range and many blanks. Unlike
+        # the lower levels the result cells get blanked too and the puzzle is
+        # required to NOT be solvable by single-step deduction — the solver
+        # has to branch (guess) and backtrack to a unique answer.
+        return {'n': 5, 'ops': ['+', '-', '×', '÷'], 'lo': 1, 'hi': 20,
+                'blanks': 22, 'allow_result_blank': True, 'require_guess': True}
     if difficulty == 'hard':
         return {'n': 4, 'ops': ['+', '-', '×', '÷'], 'lo': 1, 'hi': 15,
-                'blanks': 9, 'allow_result_blank': True}
+                'blanks': 9, 'allow_result_blank': True, 'require_guess': False}
     if difficulty == 'medium':
         return {'n': 3, 'ops': ['+', '-', '×'], 'lo': 1, 'hi': 12,
-                'blanks': 5, 'allow_result_blank': False}
+                'blanks': 5, 'allow_result_blank': False, 'require_guess': False}
     return {'n': 2, 'ops': ['+', '-'], 'lo': 1, 'hi': 9,
-            'blanks': 2, 'allow_result_blank': False}
+            'blanks': 2, 'allow_result_blank': False, 'require_guess': False}
 
 
 def _ms_build_solution(p, attempts=4000):
@@ -415,10 +422,125 @@ def _ms_solvable(equations, value_map, blanks, p):
     return not unknown
 
 
+def _ms_count_solutions(equations, value_map, blanks, p, limit=2, node_cap=8000):
+    """Count how many distinct assignments of the blanked cells satisfy every
+    equation, capped at ``limit``. Combines single-unknown deduction with
+    backtracking, so it stays correct even when the puzzle CANNOT be solved by
+    deduction alone (the case that makes ultra-hard require guessing).
+
+    Returns the solution count (0, 1, ... up to ``limit``), or ``None`` if the
+    search blew past ``node_cap`` nodes (treat as "not safely unique").
+    """
+    lo, hi = p['lo'], p['hi']
+    result_cells = {eq['res'] for eq in equations}
+    base_known = {c: v for c, v in value_map.items() if c not in blanks}
+    budget = [node_cap]
+
+    def propagate(known, unknown):
+        """Fill every cell forced by a single-unknown equation. Returns the
+        updated (known, unknown) or None on a contradiction."""
+        known, unknown = dict(known), set(unknown)
+        progress = True
+        while unknown and progress:
+            progress = False
+            for eq in equations:
+                members = eq['cells'] + [eq['res']]
+                unk = [m for m in members if m in unknown]
+                if len(unk) == 0:
+                    # Fully known equation: verify it holds.
+                    if eval_line([known[c] for c in eq['cells']], eq['ops']) != known[eq['res']]:
+                        return None
+                    continue
+                if len(unk) != 1:
+                    continue
+                u = unk[0]
+                if u == eq['res']:
+                    r = eval_line([known[c] for c in eq['cells']], eq['ops'])
+                    if r is None:
+                        return None
+                    known[u] = r
+                else:
+                    target = known[eq['res']]
+                    cand = []
+                    for v in range(lo, hi + 1):
+                        vals = [known[c] if c != u else v for c in eq['cells']]
+                        if eval_line(vals, eq['ops']) == target:
+                            cand.append(v)
+                            if len(cand) > 1:
+                                break
+                    if not cand:
+                        return None
+                    if len(cand) > 1:
+                        continue  # ambiguous: leave for branching
+                    known[u] = cand[0]
+                unknown.discard(u)
+                progress = True
+        return known, unknown
+
+    count = 0
+
+    def solve(known, unknown):
+        nonlocal count
+        if count >= limit:
+            return
+        budget[0] -= 1
+        if budget[0] < 0:
+            count = None
+            return
+        res = propagate(known, unknown)
+        if res is None:
+            return
+        known, unknown = res
+        if not unknown:
+            count += 1
+            return
+        # Branch on the interior unknown sitting in the equation with the
+        # fewest unknowns (minimum-remaining-values heuristic). Fixing such a
+        # cell tends to leave a single-unknown equation, so propagation
+        # cascades on the next step instead of the tree fanning out — this is
+        # what keeps the heavily-blanked ultra grids generatable in real time.
+        best, best_score = None, None
+        for eq in equations:
+            unk = [m for m in eq['cells'] if m in unknown]  # interior unknowns
+            if not unk:
+                continue
+            if best_score is None or len(unk) < best_score:
+                best, best_score = unk[0], len(unk)
+                if best_score == 1:
+                    break
+        branch = best if best is not None else next(
+            (c for c in unknown if c not in result_cells), None)
+        if branch is None:
+            return
+        for v in range(lo, hi + 1):
+            nk = dict(known)
+            nk[branch] = v
+            solve(nk, unknown - {branch})
+            if count is None or count >= limit:
+                return
+
+    solve(base_known, set(blanks))
+    return count
+
+
+def _ms_unique(equations, value_map, blanks, p):
+    """True iff the blanks have exactly one valid completion."""
+    return _ms_count_solutions(equations, value_map, blanks, p, limit=2) == 1
+
+
 def _ms_choose_blanks(equations, value_map, p):
-    """Greedily blank cells (interior first, then results on hard) while the
-    puzzle stays uniquely solvable by deduction."""
+    """Greedily blank cells (interior first, then results when allowed) while
+    the puzzle stays solvable.
+
+    For the lower levels "solvable" means uniquely solvable by single-step
+    deduction. For ultra-hard it means uniquely solvable at all (verified by
+    backtracking) — which lets us blank far more cells and produces puzzles
+    that genuinely require guessing instead of being read straight off the
+    grid."""
     n = p['n']
+    require_guess = p.get('require_guess', False)
+    keep_solvable = _ms_unique if require_guess else _ms_solvable
+
     interior = [(2 * i, 2 * j) for i in range(n) for j in range(n)]
     random.shuffle(interior)
     candidates = list(interior)
@@ -432,7 +554,7 @@ def _ms_choose_blanks(equations, value_map, p):
         if len(blanks) >= p['blanks']:
             break
         trial = blanks | {cell}
-        if _ms_solvable(equations, value_map, trial, p):
+        if keep_solvable(equations, value_map, trial, p):
             blanks = trial
     return blanks
 
@@ -460,23 +582,53 @@ def _ms_to_cells(n, interior, row_ops, col_ops, row_res, col_res, blanks):
     return cells
 
 
-def generate_math_square(difficulty):
-    """Return a ready-to-save grid_data dict for a crossed math square, or
-    ``None`` if generation failed."""
-    p = _ms_params(difficulty)
+def _ms_build_puzzle(p):
+    """Build one (interior, ops, results, blanks) puzzle for the given params,
+    or ``None`` if a valid full grid could not be found."""
     sol = _ms_build_solution(p)
     if sol is None and '÷' in p['ops']:
         # ÷ makes exact-integer grids rare; fall back to + − × so creation
-        # always succeeds (hard stays hard via the larger grid + more blanks).
+        # always succeeds (the level stays hard via grid size + blanks).
         p = {**p, 'ops': ['+', '-', '×']}
         sol = _ms_build_solution(p)
     if sol is None:
         return None
-
     interior, row_ops, col_ops, row_res, col_res = sol
-    n = p['n']
-    equations, value_map = _ms_equations(n, interior, row_ops, col_ops, row_res, col_res)
+    equations, value_map = _ms_equations(p['n'], interior, row_ops, col_ops, row_res, col_res)
     blanks = _ms_choose_blanks(equations, value_map, p)
+    return sol, equations, value_map, blanks
+
+
+def generate_math_square(difficulty):
+    """Return a ready-to-save grid_data dict for a crossed math square, or
+    ``None`` if generation failed."""
+    p = _ms_params(difficulty)
+
+    built = None
+    if p.get('require_guess'):
+        # Keep trying until we get a puzzle that is uniquely solvable but NOT
+        # reachable by single-step deduction — i.e. one that truly forces the
+        # player to branch and backtrack. Fall back to the best unique puzzle
+        # found if none of the attempts cross that bar.
+        fallback = None
+        for _ in range(12):
+            cand = _ms_build_puzzle(p)
+            if cand is None:
+                continue
+            _, equations, value_map, blanks = cand
+            fallback = cand
+            if not _ms_solvable(equations, value_map, blanks, p):
+                built = cand
+                break
+        built = built or fallback
+    else:
+        built = _ms_build_puzzle(p)
+
+    if built is None:
+        return None
+
+    (interior, row_ops, col_ops, row_res, col_res), _eq, _vm, blanks = built
+    n = p['n']
     cells = _ms_to_cells(n, interior, row_ops, col_ops, row_res, col_res, blanks)
     return {'rows': 2 * n + 1, 'cols': 2 * n + 1, 'n': n,
             'eval': 'bodmas', 'difficulty': difficulty, 'cells': cells}

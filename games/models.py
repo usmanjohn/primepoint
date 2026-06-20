@@ -237,15 +237,17 @@ class MathSquarePuzzle(models.Model):
     DIFFICULTY_EASY   = 'easy'
     DIFFICULTY_MEDIUM = 'medium'
     DIFFICULTY_HARD   = 'hard'
+    DIFFICULTY_ULTRA  = 'ultra'
     DIFFICULTY_CHOICES = [
         (DIFFICULTY_EASY,   'Easy'),
         (DIFFICULTY_MEDIUM, 'Medium'),
         (DIFFICULTY_HARD,   'Hard'),
+        (DIFFICULTY_ULTRA,  'Ultra-hard'),
     ]
 
     title        = models.CharField(max_length=200)
     difficulty   = models.CharField(max_length=10, choices=DIFFICULTY_CHOICES, default=DIFFICULTY_EASY)
-    size         = models.IntegerField(default=2, help_text='Numbers per row/column (N): 2–4.')
+    size         = models.IntegerField(default=2, help_text='Numbers per row/column (N): 2–5.')
     grid_data    = models.JSONField(null=True, blank=True)
     created_by   = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mathsquare_puzzles')
     is_published = models.BooleanField(default=False)

@@ -1,4 +1,5 @@
 [build]
+builder = "NIXPACKS"
 buildCommand = "python manage.py collectstatic --noinput"
 
 [deploy]

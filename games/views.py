@@ -1720,7 +1720,7 @@ def target_number_check(request):
 # Math Square (Cross-Math) views
 # ---------------------------------------------------------------------------
 
-_MS_SIZE_FOR = {'easy': 2, 'medium': 3, 'hard': 4}
+_MS_SIZE_FOR = {'easy': 2, 'medium': 3, 'hard': 4, 'ultra': 5}
 
 
 def _ms_fmt(values, ops):
