@@ -191,10 +191,10 @@
     .empty-note { padding: 20mm; text-align: center; color: #b45309; }
 
     /* ── Print rules ──────────────────────────────────────── */
-    /* Top/bottom margin lives on @page so it applies to EVERY printed page —
-       including the continuation page where the clues begin. Side margin here
-       keeps the grid clear of the printer's unprintable edge. */
-    @page { size: A4 portrait; margin: 12mm 13mm; }
+    /* A narrow margin on ALL sides of EVERY printed page (including the
+       continuation page where the clues begin). Keep the browser's print
+       dialog "Margins" set to "Default" for this to be honoured. */
+    @page { size: A4 portrait; margin: 9mm; }
     @media print {
         html, body { background: #fff; }
         .toolbar { display: none !important; }
