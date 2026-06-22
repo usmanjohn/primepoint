@@ -58,7 +58,7 @@
         width: 210mm;
         min-height: 297mm;
         margin: 1rem auto;
-        padding: 12mm;
+        padding: 12mm 13mm;
         box-shadow: 0 4px 20px rgba(0,0,0,.12);
         display: flex;
         flex-direction: column;
@@ -108,8 +108,8 @@
     .grid-wrap { display: flex; justify-content: center; margin-bottom: 6mm; }
     table.cw { border-collapse: collapse; }
     table.cw td {
-        width: {{ cell_mm }}mm;
-        height: {{ cell_mm }}mm;
+        width: {{ cell_w_mm }}mm;
+        height: {{ cell_h_mm }}mm;
         padding: 0;
         position: relative;
         border: 0.35mm solid var(--line);
@@ -199,7 +199,7 @@
             width: auto;
             min-height: auto;
             margin: 0;
-            padding: 10mm 12mm;
+            padding: 10mm 13mm;
             box-shadow: none;
         }
     }
@@ -208,12 +208,23 @@
 <body>
 
 <div class="toolbar">
+    {% url print_url puzzle.pk as base_url %}
     <a href="{% url back_url puzzle.pk %}">&#x2190; {% trans "Back" %}</a>
+
+    {# Answer-key toggle — keeps the current Uzbek-clue state #}
     {% if show_answers %}
-    <a class="btn-toggle on" href="{% url print_url puzzle.pk %}">{% trans "Answers: ON" %}</a>
+    <a class="btn-toggle on" href="{{ base_url }}?answers=0{% if not show_secondary %}&uz=0{% endif %}">{% trans "Answers: ON" %}</a>
     {% else %}
-    <a class="btn-toggle" href="{% url print_url puzzle.pk %}?answers=1">{% trans "Show answer key" %}</a>
+    <a class="btn-toggle" href="{{ base_url }}?answers=1{% if not show_secondary %}&uz=0{% endif %}">{% trans "Show answer key" %}</a>
     {% endif %}
+
+    {# Uzbek-clue toggle — keeps the current answer-key state #}
+    {% if show_secondary %}
+    <a class="btn-toggle on" href="{{ base_url }}?uz=0{% if show_answers %}&answers=1{% endif %}">{% trans "Uzbek clues: ON" %}</a>
+    {% else %}
+    <a class="btn-toggle" href="{{ base_url }}?uz=1{% if show_answers %}&answers=1{% endif %}">{% trans "Show Uzbek clues" %}</a>
+    {% endif %}
+
     <button class="btn-print" onclick="window.print()">&#x1F5A8; {% trans "Print / Save as PDF" %}</button>
 </div>
 
@@ -275,7 +286,7 @@
                 <span class="clue-n">{{ c.number }}</span>
                 <span class="clue-txt">
                     {{ c.primary }} <span class="clue-len">({{ c.length }})</span>
-                    {% if c.secondary %}<br><span class="clue-sec">{{ c.secondary }}</span>{% endif %}
+                    {% if show_secondary and c.secondary %}<br><span class="clue-sec">{{ c.secondary }}</span>{% endif %}
                 </span>
             </div>
             {% endfor %}
@@ -288,7 +299,7 @@
                 <span class="clue-n">{{ c.number }}</span>
                 <span class="clue-txt">
                     {{ c.primary }} <span class="clue-len">({{ c.length }})</span>
-                    {% if c.secondary %}<br><span class="clue-sec">{{ c.secondary }}</span>{% endif %}
+                    {% if show_secondary and c.secondary %}<br><span class="clue-sec">{{ c.secondary }}</span>{% endif %}
                 </span>
             </div>
             {% endfor %}

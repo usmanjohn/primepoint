@@ -93,11 +93,15 @@ def _can_manage_games(user):
     return hasattr(user, 'profile') and user.profile.is_master
 
 
-def _build_print_context(puzzle, primary_field, secondary_field, show_answers):
+def _build_print_context(puzzle, primary_field, secondary_field, show_answers,
+                         show_secondary=True):
     """Assemble an A4-friendly print context for a crossword puzzle.
 
     `primary_field`/`secondary_field` are the per-word clue keys in grid_data
     (e.g. 'clue_korean'/'clue_uzbek' or 'clue_english'/'clue_uzbek').
+
+    `show_secondary` controls whether the secondary (Uzbek) clue line is shown
+    on the printout — teachers can hide it for stronger students.
     """
     grid_data = puzzle.grid_data or {}
     words = grid_data.get('words', [])
@@ -153,25 +157,39 @@ def _build_print_context(puzzle, primary_field, secondary_field, show_answers):
             'secondary': w.get(secondary_field, ''),
         } for w in items]
 
-    # Size each cell so the whole grid fits one A4 page (≈186mm usable width,
-    # leaving room below for the clue lists). Clamp to a readable range.
+    # Size the cells to fill the page rather than leaving big margins. Cells are
+    # allowed to be rectangular: width fills the usable A4 width and height fills
+    # the usable height, so a grid that lives on its own page is printed as large
+    # as it can be. Each dimension is capped (so small grids don't become huge)
+    # and the two are kept from getting too lopsided relative to each other.
+    USABLE_W = 184.0   # A4 width  (210mm) minus ~13mm side padding each side
+    USABLE_H = 232.0   # vertical room for the grid above the clue lists
+    MAX_CELL = 20.0    # don't let a tiny grid blow up to silly cell sizes
     if cols and rows:
-        cell_mm = min(11.0, 182.0 / cols, 150.0 / rows)
+        cell_w = min(USABLE_W / cols, MAX_CELL)
+        cell_h = min(USABLE_H / rows, MAX_CELL)
+        # keep cells from getting too lopsided (≤ ~1.7:1 either way)
+        cell_w = min(cell_w, cell_h * 1.7)
+        cell_h = min(cell_h, cell_w * 1.7)
+        cell_w = round(max(cell_w, 5.5), 2)
+        cell_h = round(max(cell_h, 5.5), 2)
     else:
-        cell_mm = 10.0
-    cell_mm = round(max(cell_mm, 5.5), 2)
+        cell_w = cell_h = 10.0
+    base_mm = min(cell_w, cell_h)   # scale glyphs off the smaller dimension
 
     return {
-        'puzzle':       puzzle,
-        'grid_rows':    grid_rows,
-        'across_clues': clue_list('across'),
-        'down_clues':   clue_list('down'),
-        'has_grid':     bool(grid_rows),
-        'show_answers': show_answers,
-        'cell_mm':      cell_mm,
-        'num_mm':       round(max(2.2, cell_mm * 0.30), 2),
-        'arrow_mm':     round(max(2.6, cell_mm * 0.38), 2),
-        'letter_mm':    round(max(3.0, cell_mm * 0.52), 2),
+        'puzzle':         puzzle,
+        'grid_rows':      grid_rows,
+        'across_clues':   clue_list('across'),
+        'down_clues':     clue_list('down'),
+        'has_grid':       bool(grid_rows),
+        'show_answers':   show_answers,
+        'show_secondary': show_secondary,
+        'cell_w_mm':      cell_w,
+        'cell_h_mm':      cell_h,
+        'num_mm':         round(max(2.2, base_mm * 0.30), 2),
+        'arrow_mm':       round(max(2.6, base_mm * 0.38), 2),
+        'letter_mm':      round(max(3.0, base_mm * 0.52), 2),
     }
 
 
@@ -374,8 +392,10 @@ def crossword_print(request, pk):
     if not _can_manage_games(request.user):
         raise PermissionDenied
     puzzle = get_object_or_404(CrosswordPuzzle, pk=pk)
-    show_answers = request.GET.get('answers') == '1'
-    context = _build_print_context(puzzle, 'clue_korean', 'clue_uzbek', show_answers)
+    show_answers   = request.GET.get('answers') == '1'
+    show_secondary = request.GET.get('uz') != '0'
+    context = _build_print_context(puzzle, 'clue_korean', 'clue_uzbek',
+                                   show_answers, show_secondary)
     context.update({
         'accent':     '#7c3aed',
         'back_url':   'crossword_play',
@@ -1459,8 +1479,10 @@ def english_crossword_print(request, pk):
     if not _can_manage_games(request.user):
         raise PermissionDenied
     puzzle = get_object_or_404(EnglishCrossword, pk=pk)
-    show_answers = request.GET.get('answers') == '1'
-    context = _build_print_context(puzzle, 'clue_english', 'clue_uzbek', show_answers)
+    show_answers   = request.GET.get('answers') == '1'
+    show_secondary = request.GET.get('uz') != '0'
+    context = _build_print_context(puzzle, 'clue_english', 'clue_uzbek',
+                                   show_answers, show_secondary)
     context.update({
         'accent':     '#2563eb',
         'back_url':   'english_crossword_play',
