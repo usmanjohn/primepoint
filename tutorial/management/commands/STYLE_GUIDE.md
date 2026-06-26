@@ -31,6 +31,22 @@ Write in this order, every time:
 3. **Body** — explain the concept clearly, step by step, from easy to harder.
 4. **Summary** — ALWAYS end with a `<h3>Summary</h3>` and the key points as a list.
 
+### Depth & length (minimum bar — do NOT write thin lessons)
+
+Each tutorial must be **detailed and thorough**, not a quick summary. Concretely, every tutorial's
+`content` must have:
+
+- **At least ~600 words** of real explanation (aim 600–900). Explain the *why*, not just the *how*;
+  add a "common mistakes" or "why this works" note where it helps.
+- **At least 3 fully worked examples**, going from easy → medium → harder (an SAT-style one).
+  Show every step, not just the answer.
+- **At least 2 practice questions**, each in its own `<details><summary>Show answer</summary>…</details>`
+  with the full reasoning revealed (not just the final number).
+- The 3–4 Uzbek explanations and the glossary from section 5 (these are on top of the above).
+
+Prefer more, smaller `<h3>` sections (concept → method → examples → common mistakes → practice) so
+the lesson is easy to follow. When in doubt, explain more, not less.
+
 ## 3. Tools to make it high quality (use a mix, not all at once)
 
 - **Highlights** for key terms: `<mark>important idea</mark>`
