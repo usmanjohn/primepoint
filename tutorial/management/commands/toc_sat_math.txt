@@ -1,7 +1,8 @@
 # ── Subject metadata (read by Claude) ────────────────────────────────
 PREFIX:   SAT
 CATEGORY: math
-AUTHOR:   prime
+AUTHOR:   powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
 # Writing rules live in STYLE_GUIDE.md. This file is ONLY the ordered topic list.
 # ─────────────────────────────────────────────────────────────────────
 

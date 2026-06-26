@@ -14,6 +14,7 @@ Now the front coefficient <em>a</em> is not 1 (for example 2x<sup>2</sup> + 7x +
 teaches the <mark>AC method</mark> — a step-by-step trick that always works.</p>
 
 <h3>The AC Method (split the middle)</h3>
+<p><em>(Oʻzbekcha: AC usuli — bosh koeffitsiyent 1 ga teng boʻlmagan kvadrat ifodalarni koʻpaytuvchilarga ajratishning ishonchli yoʻli.)</em></p>
 <p>For a quadratic <strong>ax<sup>2</sup> + bx + c</strong>:</p>
 <ol>
   <li>Multiply <strong>a × c</strong>.</li>
@@ -34,10 +35,12 @@ teaches the <mark>AC method</mark> — a step-by-step trick that always works.</
   <li>Factor out (x + 3): <strong>(2x + 1)(x + 3)</strong></li>
 </ul>
 <p>Check by FOIL: (2x + 1)(x + 3) = 2x<sup>2</sup> + 7x + 3. ✓</p>
+<p><em>(Oʻzbekcha: oʻrta hadni (7x) ikkita hadga ajratamiz, soʻng guruhlab umumiy koʻpaytuvchini chiqaramiz.)</em></p>
 
 <h3>Watch the signs</h3>
 <p>If c is negative, the two numbers have <em>opposite</em> signs. If b is negative but c is
 positive, both numbers are negative.</p>
+<p><em>(Oʻzbekcha: agar c manfiy boʻlsa, sonlar har xil ishorada boʻladi; ishoralarga juda eʼtibor bering.)</em></p>
 
 <h3>Practice</h3>
 <p>Factor 3x<sup>2</sup> − 10x + 8.</p>
@@ -46,6 +49,20 @@ positive, both numbers are negative.</p>
   <p>a·c = 3 × 8 = 24. Need product 24, sum −10 → −6 and −4.</p>
   <p>3x<sup>2</sup> − 6x − 4x + 8 = 3x(x − 2) − 4(x − 2) = <strong>(3x − 4)(x − 2)</strong>.</p>
 </details>
+
+<h3>Key words — Kalit soʻzlar</h3>
+<ul>
+  <li><strong>Factor</strong> — koʻpaytuvchilarga ajratish</li>
+  <li><strong>Quadratic</strong> — kvadrat ifoda / tenglama</li>
+  <li><strong>Coefficient</strong> — koeffitsiyent</li>
+  <li><strong>Leading coefficient</strong> — bosh koeffitsiyent</li>
+  <li><strong>Term</strong> — had</li>
+  <li><strong>Middle term</strong> — oʻrta had</li>
+  <li><strong>Grouping</strong> — guruhlash</li>
+  <li><strong>Product</strong> — koʻpaytma</li>
+  <li><strong>Sum</strong> — yigʻindi</li>
+  <li><strong>Sign</strong> — ishora</li>
+</ul>
 
 <h3>Summary</h3>
 <ul>
@@ -77,9 +94,11 @@ on the SAT.</p>
 <h3>The Discriminant</h3>
 <p>The part under the square root, <strong>b<sup>2</sup> − 4ac</strong>, is called the
 <mark>discriminant</mark>. You will use it constantly in SAT-34.</p>
+<p><em>(Oʻzbekcha: ildiz ostidagi qism — b<sup>2</sup> − 4ac — diskriminant deyiladi.)</em></p>
 
 <h3>Worked Example</h3>
 <p>Solve 2x<sup>2</sup> + 3x − 5 = 0. Here a = 2, b = 3, c = −5.</p>
+<p><em>(Oʻzbekcha: avval a, b, c larni ishoralari bilan toʻgʻri yozib oling, keyin formulaga qoʻying.)</em></p>
 <ul>
   <li>Discriminant: b<sup>2</sup> − 4ac = 3<sup>2</sup> − 4(2)(−5) = 9 + 40 = 49.</li>
   <li>x = ( −3 ± √49 ) / (2·2) = ( −3 ± 7 ) / 4</li>
@@ -96,6 +115,19 @@ A wrong sign is the most common mistake here.</blockquote>
   <p>a = 1, b = −4, c = 1. Discriminant = 16 − 4 = 12.</p>
   <p>x = (4 ± √12) / 2 = (4 ± 2√3) / 2 = <strong>2 ± √3</strong>.</p>
 </details>
+
+<h3>Key words — Kalit soʻzlar</h3>
+<ul>
+  <li><strong>Quadratic formula</strong> — kvadrat tenglama formulasi</li>
+  <li><strong>Discriminant</strong> — diskriminant</li>
+  <li><strong>Root / Solution</strong> — ildiz / yechim</li>
+  <li><strong>Square root</strong> — kvadrat ildiz</li>
+  <li><strong>Coefficient</strong> — koeffitsiyent</li>
+  <li><strong>Plus-minus (±)</strong> — qoʻshish-ayirish belgisi</li>
+  <li><strong>Substitute / Plug in</strong> — (formulaga) qoʻyish</li>
+  <li><strong>Real number</strong> — haqiqiy son</li>
+  <li><strong>Factor</strong> — koʻpaytuvchilarga ajratish</li>
+</ul>
 
 <h3>Summary</h3>
 <ul>
@@ -119,6 +151,7 @@ not what they are. The <mark>discriminant</mark> (b<sup>2</sup> − 4ac) answers
 you do not waste time solving.</p>
 
 <h3>The Three Cases</h3>
+<p><em>(Oʻzbekcha: diskriminantning ishorasi tenglama nechta haqiqiy yechimga ega ekanini koʻrsatadi.)</em></p>
 <ul>
   <li><strong>b<sup>2</sup> − 4ac &gt; 0</strong> → <mark>two</mark> different real solutions
       (graph crosses the x-axis twice).</li>
@@ -144,6 +177,7 @@ you do not waste time solving.</p>
   <li>One solution means discriminant = 0: k<sup>2</sup> − 4(1)(16) = 0.</li>
   <li>k<sup>2</sup> = 64 → k = <strong>±8</strong>.</li>
 </ul>
+<p><em>(Oʻzbekcha: "aniq bitta yechim" deganda diskriminantni 0 ga tenglab, nomaʼlumni topamiz.)</em></p>
 
 <h3>Practice</h3>
 <p>Does 2x<sup>2</sup> − 3x + 5 = 0 have real solutions?</p>
@@ -151,6 +185,20 @@ you do not waste time solving.</p>
   <summary>Show answer</summary>
   <p>Discriminant = (−3)<sup>2</sup> − 4(2)(5) = 9 − 40 = −31 &lt; 0 → <strong>no real solutions</strong>.</p>
 </details>
+
+<h3>Key words — Kalit soʻzlar</h3>
+<ul>
+  <li><strong>Discriminant</strong> — diskriminant</li>
+  <li><strong>Real solution</strong> — haqiqiy yechim</li>
+  <li><strong>Root</strong> — ildiz</li>
+  <li><strong>x-axis</strong> — x oʻqi</li>
+  <li><strong>Graph</strong> — grafik</li>
+  <li><strong>Parabola</strong> — parabola</li>
+  <li><strong>Touch (the axis)</strong> — (oʻqqa) tegish</li>
+  <li><strong>Cross (the axis)</strong> — (oʻqni) kesib oʻtish</li>
+  <li><strong>Constant</strong> — oʻzgarmas (konstanta)</li>
+  <li><strong>Exactly one</strong> — aniq bitta</li>
+</ul>
 
 <h3>Summary</h3>
 <ul>
@@ -173,6 +221,7 @@ you do not waste time solving.</p>
 
 <h3>The Form</h3>
 <blockquote><strong>y = a(x − h)<sup>2</sup> + k</strong>, where the vertex is the point <strong>(h, k)</strong>.</blockquote>
+<p><em>(Oʻzbekcha: uch koʻrinishida parabolaning uchi (choʻqqisi) (h, k) nuqtasi boʻladi.)</em></p>
 <p><strong>Watch the sign of h carefully.</strong> The form has (x − h), so:</p>
 <ul>
   <li>y = (x − 3)<sup>2</sup> + 2 → h = 3, k = 2 → vertex <strong>(3, 2)</strong>.</li>
@@ -185,6 +234,7 @@ you do not waste time solving.</p>
   <li>a &gt; 0 → parabola opens <strong>up</strong> → vertex is the <mark>lowest</mark> point (minimum).</li>
   <li>a &lt; 0 → parabola opens <strong>down</strong> → vertex is the <mark>highest</mark> point (maximum).</li>
 </ul>
+<p><em>(Oʻzbekcha: a &gt; 0 boʻlsa parabola yuqoriga ochiladi (eng kichik nuqta), a &lt; 0 boʻlsa pastga ochiladi (eng katta nuqta).)</em></p>
 
 <h3>Vertex form vs standard form</h3>
 <ul>
@@ -199,6 +249,20 @@ you do not waste time solving.</p>
   <p>Vertex = <strong>(5, 7)</strong>. Since a = −2 &lt; 0, the parabola opens down, so (5, 7) is a
   <strong>maximum</strong>.</p>
 </details>
+
+<h3>Key words — Kalit soʻzlar</h3>
+<ul>
+  <li><strong>Vertex</strong> — uch (choʻqqi)</li>
+  <li><strong>Vertex form</strong> — uch koʻrinishi</li>
+  <li><strong>Parabola</strong> — parabola</li>
+  <li><strong>Turning point</strong> — burilish nuqtasi</li>
+  <li><strong>Minimum</strong> — eng kichik qiymat</li>
+  <li><strong>Maximum</strong> — eng katta qiymat</li>
+  <li><strong>Opens up</strong> — yuqoriga ochiladi</li>
+  <li><strong>Opens down</strong> — pastga ochiladi</li>
+  <li><strong>Standard form</strong> — standart koʻrinish</li>
+  <li><strong>y-intercept</strong> — y oʻqini kesish nuqtasi</li>
+</ul>
 
 <h3>Summary</h3>
 <ul>
@@ -224,6 +288,7 @@ parabola. This lesson shows how to find it from any form.</p>
 <blockquote>The max or min value of a quadratic happens at the <strong>vertex</strong>.
 The vertex's <strong>x = h</strong> tells you <em>where</em>; the <strong>y = k</strong> tells you the
 max/min <em>value</em> itself.</blockquote>
+<p><em>(Oʻzbekcha: kvadrat funksiyaning eng katta yoki eng kichik qiymati doim uchida (vertex) boʻladi.)</em></p>
 
 <h3>Method 1 — from vertex form</h3>
 <p>If y = a(x − h)<sup>2</sup> + k, the max/min value is simply <strong>k</strong> (review SAT-35).</p>
@@ -242,6 +307,7 @@ max/min <em>value</em> itself.</blockquote>
 </ul>
 <blockquote>Tip: a &lt; 0 means it opens down, so the vertex is a <strong>maximum</strong> — exactly what a
 "maximum height" problem needs.</blockquote>
+<p><em>(Oʻzbekcha: "maksimal balandlik" masalalarida a manfiy boʻlganligi uchun uch eng katta qiymatni beradi.)</em></p>
 
 <h3>Practice</h3>
 <p>Find the minimum value of y = x<sup>2</sup> − 6x + 5.</p>
@@ -250,6 +316,19 @@ max/min <em>value</em> itself.</blockquote>
   <p>x = −b/(2a) = −(−6)/(2·1) = 3. Then y = 3<sup>2</sup> − 6(3) + 5 = 9 − 18 + 5 = <strong>−4</strong>.</p>
   <p>So the minimum value is −4 (at x = 3).</p>
 </details>
+
+<h3>Key words — Kalit soʻzlar</h3>
+<ul>
+  <li><strong>Maximum</strong> — eng katta qiymat</li>
+  <li><strong>Minimum</strong> — eng kichik qiymat</li>
+  <li><strong>Vertex</strong> — uch (choʻqqi)</li>
+  <li><strong>Profit</strong> — foyda</li>
+  <li><strong>Cost</strong> — xarajat</li>
+  <li><strong>Height</strong> — balandlik</li>
+  <li><strong>Standard form</strong> — standart koʻrinish</li>
+  <li><strong>Substitute / Plug in</strong> — (qiymatni) qoʻyish</li>
+  <li><strong>Coordinate</strong> — koordinata</li>
+</ul>
 
 <h3>Summary</h3>
 <ul>

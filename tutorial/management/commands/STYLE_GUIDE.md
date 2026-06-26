@@ -59,10 +59,22 @@ or `x^2` — it would show as ugly literal text. Write math as clean HTML instea
 
 ## 5. Uzbek
 
-Add short Uzbek explanations **only on the key/hard parts**, not everywhere. Keep English
-as the main language. Example:
+Keep English as the **main** language, but every tutorial must include real Uzbek support:
 
-`<p>The slope tells you steepness. <em>(Oʻzbekcha: nishablik chiziqning qiyaligini bildiradi.)</em></p>`
+1. **At least 3–4 short Uzbek explanations** spread across the key/hard parts (not everywhere).
+   Put them inline right after the English idea, in italics:
+   `<p>The slope tells you steepness. <em>(Oʻzbekcha: nishablik chiziqning qiyaligini bildiradi.)</em></p>`
+2. **A "Key words — Kalit soʻzlar" glossary** near the end (just before the Summary) with
+   **at least 8–9 key English terms translated to Uzbek**. Use this format:
+   ```
+   <h3>Key words — Kalit soʻzlar</h3>
+   <ul>
+     <li><strong>Coefficient</strong> — koeffitsiyent</li>
+     <li><strong>Quadratic</strong> — kvadrat tenglama</li>
+     ...
+   </ul>
+   ```
+   Pick the terms that actually appear in that lesson so the glossary is useful.
 
 ## 6. Tables
 
