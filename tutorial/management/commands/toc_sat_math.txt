@@ -1,0 +1,119 @@
+# ── Subject metadata (read by Claude) ────────────────────────────────
+PREFIX:   SAT
+CATEGORY: math
+AUTHOR:   prime
+# Writing rules live in STYLE_GUIDE.md. This file is ONLY the ordered topic list.
+# ─────────────────────────────────────────────────────────────────────
+
+## Part 1: Core Content Mastery (80 Lessons)
+
+### Block A: The Heart of Algebra (Lessons 1–22)
+1. Introduction to the Variable and Combining Like Terms
+2. Solving Single-Variable Linear Equations
+3. Setting Up Linear Equations from Word Problems
+4. Understanding Absolute Value Equations
+5. The Concept of Slope: Steepness and Direction
+6. Calculating Slope from Two Points
+7. Slope-Intercept Form (y = mx + b) in Depth
+8. Point-Slope Form and Standard Form
+9. Graphing Linear Equations Quickly
+10. Interpreting the Meaning of Slopes and Intercepts in Real-World Contexts
+11. Parallel Lines and Equal Slopes
+12. Perpendicular Lines and Negative Reciprocal Slopes
+13. Solving Multi-Step Linear Inequalities
+14. Graphing Linear Inequalities on the Coordinate Plane
+15. Modeling Real-World Scenarios with Inequalities
+16. Systems of Linear Equations: Solving by Substitution
+17. Systems of Linear Equations: Solving by Elimination
+18. Word Problems Involving Systems of Linear Equations
+19. Systems with Infinite Solutions (Identical Lines)
+20. Systems with No Solution (Parallel Lines)
+21. Systems of Linear Inequalities and Bounded Regions
+22. Absolute Value Inequalities on the Number Line
+
+### Block B: Advanced Math (Lessons 23–48)
+23. Laws of Exponents: Multiplication, Division, and Power-to-Power
+24. Negative and Fractional Exponents
+25. Simplifying Radical Expressions
+26. Rationalizing Denominators
+27. Introduction to Polynomials: Adding and Subtracting
+28. Multiplying Polynomials (FOIL and beyond)
+29. Factoring: Greatest Common Factor (GCF) and Grouping
+30. Factoring: Difference of Squares and Perfect Square Trinomials
+31. Factoring Standard Quadratics (x² + bx + c)
+32. Factoring Advanced Quadratics (ax² + bx + c)
+33. The Quadratic Formula and the Discriminant
+34. Determining Number and Type of Roots using the Discriminant
+35. Vertex Form of a Quadratic
+36. Finding Maximum and Minimum Values of a Quadratic
+37. Graphing Parabolas: Intercepts, Vertices, and Symmetric Properties
+38. Systems of Non-Linear Equations (Linear-Quadratic Systems)
+39. Radical Equations and Checking for Extraneous Solutions
+40. Rational Equations and Domain Restrictions
+41. Simplifying Rational Expressions (Polynomial Division)
+42. The Remainder Theorem and Factor Theorem
+43. Graphs of Higher-Degree Polynomials: End Behavior and Multiplicity
+44. Exponential vs. Linear Growth Models
+45. Writing Exponential Functions (y = ab^x) from Word Problems
+46. Percent Increase and Decrease in Exponential Contexts (Compound Interest)
+47. Concept of Functions: Domain, Range, and Evaluation
+48. Function Transformations (Vertical/Horizontal Shifts and Reflections)
+
+### Block C: Problem Solving and Data Analysis (Lessons 49–65)
+49. Ratios, Rates, and Proportions
+50. Unit Conversions and Dimensional Analysis
+51. Percentages: Part, Whole, and Base Changes
+52. Percent Change: Increase, Decrease, and Successive Percent Changes
+53. Interpreting Tables, Graphs, and Bar Charts
+54. Scatterplots: Lines of Best Fit and Trend Analysis
+55. Calculating Descriptive Statistics: Mean and Median
+56. Understanding Mode, Range, and Outliers
+57. Standard Deviation: Visualizing Data Spread
+58. Probability: Simple Events and Independent Events
+59. Conditional Probability from Two-Way Tables
+60. Elements of Statistical Sample Surveys: Random Sampling
+61. Selection Bias and Generalizing Results to Populations
+62. Experimental Design: Random Assignment and Cause-and-Effect
+63. Margin of Error and Confidence Intervals
+64. Comparing Data Sets: Boxplots and Histograms
+65. Linear vs. Exponential Data Modeling
+
+### Block D: Geometry and Trigonometry (Lessons 66–80)
+66. Lines and Angles: Vertical, Supplementary, and Complementary Angles
+67. Parallel Lines Cut by a Transversal (Alternate Interior, Corresponding Angles)
+68. Triangles: Interior Angles Theorem and Exterior Angles Theorem
+69. Isosceles and Equilateral Triangles: Properties and Theorems
+70. Pythagorean Theorem and Distance Formula on the Coordinate Plane
+71. Special Right Triangles: 45-45-90 Mechanics
+72. Special Right Triangles: 30-60-90 Mechanics
+73. Triangle Inequality Theorem and Similarity Criteria (AA, SAS)
+74. Congruent Triangles and Perimeter/Area Scaling of Similar Figures
+75. Right Triangle Trigonometry: Defining Sine, Cosine, and Tangent
+76. Trigonometric Identities: sin(x) = cos(90° − x)
+77. Radians vs. Degrees: Conversions and Arclength Calculations
+78. Area of Sector Calculations in Circles
+79. Circle Equations in the Coordinate Plane: Standard Form
+80. Completing the Square to Find a Circle's Center and Radius
+
+## Part 2: Math Tactics & Test Strategy (20 Lessons)
+
+81. The "Plugging In Numbers" Tactic
+82. Backsolving (Working from the Options)
+83. Mastering Desmos I: Graphing lines, curves, and finding intersections
+84. Mastering Desmos II: Using sliders to solve equations with unknown constants
+85. Mastering Desmos III: Systems of inequalities and bounded regions
+86. The "Eyeballing" Strategy for geometry diagrams
+87. The Art of Estimation
+88. Strategic Guessing and Time Management
+89. Avoiding the "Trap Answers"
+90. The Grid-In Blueprint (Student-Produced Responses)
+91. Translating English into Math (key terms dictionary)
+92. Recognizing Structure (treating a grouped expression as one variable)
+93. The Extreme Plug-In Technique (0, 1, negatives)
+94. The Direct Translation Method for Word Problems
+95. Using the Scratchpad Effectively
+96. The "Testing the Boundaries" Tactic (domain and range)
+97. Data Table Extraction
+98. The Formula Sheet Hack
+99. Pacing for Module 2 (Hard vs. Easy, adaptive test)
+100. The Final Review Protocol (30-second double-check)
