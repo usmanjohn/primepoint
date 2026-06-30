@@ -138,6 +138,19 @@ tavsiyalardan **ustun turadi** — uning soʻzlari, urgʻusi va usullariga mosla
 - **Muhim:** bu jumlalarni **kitob oʻqib** oʻrganish eng yaxshisi — eski javoblardan
   shunchaki koʻchirib emas. Kitobdan olingan jumlalar tabiiy va xilma-xil boʻladi.
 
+### 읽기 (Reading) — "Koʻp oʻqing, kam tarjima qiling" (soʻz oʻrganish metodi)
+- **Koʻp oʻqing, kam tarjima qiling.** Soʻzni **koʻrganda tushunish** uni yozib yodlashdan
+  muhimroq — *koʻzni mashq qildiring, qoʻlni emas* (imtihonda soʻzni koʻrib tushunish kerak).
+- **Tarjima qilsangiz ham**, soʻzning oʻzini qogʻozga koʻchirib yodlamang. Buning oʻrniga
+  **bir-ikki kundan keyin butun matnni qayta oʻqing** — oʻrgangan soʻzlar matn ichida qayta
+  uchragani sayin xotirada mustahkamlanadi (soʻz roʻyxati tez unutiladi).
+- **Qaysi soʻzlar:** otdan (명사) koʻra **sifat (형용사), ravish (부사), feʼl (동사)** ni
+  koʻproq oʻrganing — javoblarni asosan shular hal qiladi.
+- **읽기 → 쓰기 koʻprigi:** oʻqiyotganda **ajoyib jumla** (soʻz yoki paragraf emas — aynan
+  jumla) uchratsangiz, uni yozib qoʻying va keyin Yozish (쓰기) inshosida tayanch fikr qiling.
+  Namuna: <em>합리적 소비를 하면 자연스럽게 사회 활동에도 동참할 수 있다.</em> Darslarda
+  **koʻplab eslab qolish oson, koʻp mavzuga mos jumlalar** bering.
+
 _(Foydalanuvchi keyin boshqa maslahatlarini ham qoʻshadi — shu yerga yoz.)_
 
 ---
