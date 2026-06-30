@@ -1,0 +1,23 @@
+# ── Track metadata (read by Claude) ──────────────────────────────────
+TRACK:  TOPIK
+SKILL:  reading
+AUTHOR: powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_TOPIK.md. This file is ONLY the ordered lesson list.
+# The number = the lesson's `order` within TOPIK + reading.
+# ─────────────────────────────────────────────────────────────────────
+
+## TOPIK II — Reading / 읽기
+
+1. How TOPIK Reading Works: Sections, Timing, and Strategy
+2. Skimming for the Main Idea (중심 생각 찾기)
+3. Reading the Question Before the Passage
+4. Vocabulary in Context: Guessing Unknown Words
+5. Connectors and Signal Words (그러나, 그래서, 그런데 …)
+6. Finding the Order of Sentences (문장 배열)
+7. Filling the Blank: Grammar and Meaning Clues (빈칸 채우기)
+8. Matching Topic to Advertisement / Notice
+9. Identifying the Writer's Attitude and Tone
+10. True / False Detail Questions (일치하는 내용 고르기)
+11. Reading Graphs and Statistics Passages
+12. Long Passage Strategy: Time Management on 21–50

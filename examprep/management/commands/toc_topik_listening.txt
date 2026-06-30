@@ -1,0 +1,24 @@
+# ── Track metadata (read by Claude) ──────────────────────────────────
+TRACK:  TOPIK
+SKILL:  listening
+AUTHOR: powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_TOPIK.md. This file is ONLY the ordered lesson list.
+# The number = the lesson's `order` within TOPIK + listening.
+# Real audio lives in the `exam` test simulator; these lessons teach strategy + scripts.
+# ─────────────────────────────────────────────────────────────────────
+
+## TOPIK II — Listening / 듣기
+
+1. How TOPIK Listening Works: Sections, Timing, and One-Play Rule
+2. Predicting from the Question and Choices Before Audio
+3. Catching the Main Idea on the First Listen
+4. Conversation Patterns: Who Says What (남자 / 여자)
+5. Matching the Following Action (이어질 행동 고르기)
+6. Note-Taking: What to Write and What to Ignore
+7. Inference: The Speaker's Intention and Attitude
+8. Lectures and Interviews: Following a Longer Talk
+9. Signal Words You Hear (그러니까, 반면에, 결국 …)
+10. Numbers, Dates, and Times by Ear
+11. Common Traps: Paraphrase vs Exact Words
+12. Endgame Strategy: Staying Focused on 31–50

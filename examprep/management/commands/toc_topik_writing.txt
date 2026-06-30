@@ -1,0 +1,23 @@
+# ── Track metadata (read by Claude) ──────────────────────────────────
+TRACK:  TOPIK
+SKILL:  writing
+AUTHOR: powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_TOPIK.md. This file is ONLY the ordered lesson list.
+# The number = the lesson's `order` within TOPIK + writing.
+# ─────────────────────────────────────────────────────────────────────
+
+## TOPIK II — Writing / 쓰기
+
+1. How TOPIK Writing Works: Questions 51–54 and Scoring
+2. Question 51: Filling Blanks in a Short Text / Notice
+3. Question 52: Completing Sentences in an Explanatory Text
+4. Formal vs Informal Endings: Choosing the Right Register (-ㅂ니다 / -다)
+5. Question 53: Describing a Chart or Graph — Structure
+6. Question 53: Useful Expressions for Trends and Comparison
+7. Question 54: Planning the 600–700 Character Essay
+8. Question 54: Introduction, Body, Conclusion Templates
+9. Linking Ideas: Advanced Connectors for Essays
+10. Common Grammar Mistakes That Lose Points
+11. Spacing, Punctuation, and the Answer Sheet (원고지)
+12. Self-Editing Checklist Under Time Pressure
