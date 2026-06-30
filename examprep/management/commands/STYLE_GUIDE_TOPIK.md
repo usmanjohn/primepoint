@@ -151,6 +151,18 @@ tavsiyalardan **ustun turadi** — uning soʻzlari, urgʻusi va usullariga mosla
   Namuna: <em>합리적 소비를 하면 자연스럽게 사회 활동에도 동참할 수 있다.</em> Darslarda
   **koʻplab eslab qolish oson, koʻp mavzuga mos jumlalar** bering.
 
+### 듣기 (Listening) — Podkast metodi
+- **Eng yaxshi tinglash mashqi — podkast.** Musiqa/drama emas (koʻp vaqt oladi, TOPIK dialog
+  turiga mos kelmaydi). Tavsiya seriyasi: **빅데이터로 보는 세상** — mavzulari imtihonga mos
+  (뉴스 va murakkabroq savollar) hamda 쓰기 uchun ham foydali.
+- **Foyda:** bir vaqtda tinglash + mantiq + koreyscha tafakkur + Yozish uchun gʻoyalar.
+- **Qoidalar:** skript yozmang (받아쓰기 yoʻq), tarjima qilmang; boʻsh vaqtni atayin sarflamang —
+  **yurganda/ovqat pishirganda/ishlaganda** tinglang; tartib muhim emas; tushunmasangiz ham
+  tinglayvering; eshitgan gʻoyalarni 쓰기 (54) uchun eslab qoling.
+- **Mashq nisbati:** 60% podkast, 30% kitob, 10% mock (모의고사).
+- Darslarda podkastga **havola tugmasi** boʻladi (foydalanuvchi URL beradi; data faylda
+  `__PODCAST_URL__` placeholderini almashtiring).
+
 _(Foydalanuvchi keyin boshqa maslahatlarini ham qoʻshadi — shu yerga yoz.)_
 
 ---
