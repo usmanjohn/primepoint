@@ -1,0 +1,12 @@
+# ── Track metadata (read by Claude) ──────────────────────────────────
+TRACK:  TOPIK
+SKILL:  strategy
+AUTHOR: powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_TOPIK.md. This file is ONLY the ordered lesson list.
+# The number = the lesson's `order` within TOPIK + strategy.
+# ─────────────────────────────────────────────────────────────────────
+
+## TOPIK II — Strategy / 전략
+
+1. One Template, Mastered: Don't Learn All 200+; Read First, Write in the Final Month

@@ -163,6 +163,15 @@ tavsiyalardan **ustun turadi** — uning soʻzlari, urgʻusi va usullariga mosla
 - Darslarda podkastga **havola tugmasi** boʻladi (foydalanuvchi URL beradi; data faylda
   `__PODCAST_URL__` placeholderini almashtiring).
 
+### 전략 (Strategy) — "Bittani mukammal oʻrganing" + vaqt rejasi
+- Darslarda **200+ shablon** bor, lekin hammasini oʻrganmang. Har bir qism uchun **faqat
+  bitta shablonni** tanlab **mukammal** egallang — bitta ishonchli shablon imtihonda
+  avtomatik, xatosiz va tez ishlaydi (hammasini yuzaki bilish = chalkashlik).
+- Bitta shablon [주제] ni almashtirib har mavzuga yetadi (namuna:
+  <em>현대 사회에서 [주제]은/는 점점 더 중요한 문제가 되고 있다</em> → 환경/교육/과학...).
+- **Vaqt rejasi:** imtihongacha faqat **oʻqing va oʻrganing (input)**; imtihondan
+  **~1 oy oldin** 1–2 savolga **yozib javob bering (output)**. Yozishni erta boshlash shart emas.
+
 _(Foydalanuvchi keyin boshqa maslahatlarini ham qoʻshadi — shu yerga yoz.)_
 
 ---

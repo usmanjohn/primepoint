@@ -10,7 +10,7 @@ AUTHOR: powerty
 ## TOPIK II — Writing / 쓰기
 
 1. How TOPIK Writing Works: Questions 51–54 and Scoring
-2. Question 51: Filling Blanks in a Short Text / Notice
+2. Question 51: Filling Blanks in a Short Text / Notice  (practice parts — data-driven from material_51.json via _lessons_topik_writing_51.py)
 3. Question 52: Completing Sentences in an Explanatory Text
 4. Formal vs Informal Endings: Choosing the Right Register (-ㅂ니다 / -다)
 5. Question 53: Describing a Chart or Graph — Structure
