@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block nav_examprep %}active{% endblock %}
+{% block page_name %}{% trans "Edit lesson" %}{% endblock %}
+{% block title %}{% trans "Edit" %} — {{ lesson.title }}{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb small mb-0">
+        <li class="breadcrumb-item"><a href="{% url 'examprep_home' %}">{% trans "Exam Prep" %}</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'examprep_track' lesson.track.slug %}">{{ lesson.track.name }}</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'examprep_lesson' lesson.track.slug skill lesson.slug %}">{{ lesson.title }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{% trans "Edit" %}</li>
+    </ol>
+</nav>
+
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-9">
+
+    <h1 class="page-title mb-1">{% trans "Edit lesson" %}</h1>
+    <p class="text-secondary small mb-4">
+        {% trans "Edit the text below (HTML is allowed) and save. To remove a block, tick “Delete”." %}
+    </p>
+
+    <form method="post">
+      {% csrf_token %}
+
+      <!-- Lesson meta -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label fw-semibold">{% trans "Title" %}</label>
+            <input type="text" name="title" class="form-control" value="{{ lesson.title }}" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">{% trans "Summary (card blurb)" %}</label>
+            <input type="text" name="summary" class="form-control" maxlength="300" value="{{ lesson.summary }}">
+          </div>
+          <div class="row g-3 align-items-center">
+            <div class="col-auto">
+              <label class="form-label fw-semibold mb-0">{% trans "Order" %}</label>
+              <input type="number" name="order" class="form-control" style="width:6rem" value="{{ lesson.order }}">
+            </div>
+            <div class="col-auto form-check mt-4">
+              <input class="form-check-input" type="checkbox" name="is_published" id="pub" {% if lesson.is_published %}checked{% endif %}>
+              <label class="form-check-label" for="pub">{% trans "Published" %}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blocks -->
+      <h2 class="h5 mb-3">{% trans "Content blocks" %}</h2>
+      {% for b in blocks %}
+      <div class="card mb-3">
+        <div class="card-header d-flex align-items-center justify-content-between py-2">
+          <span class="small text-secondary">
+            {% trans "Block" %} #{{ b.order }}
+            {% if b.is_question %}· <span class="badge text-bg-warning">{% trans "Question" %}</span>{% endif %}
+            {% if b.image %}· <span class="badge text-bg-info">{% trans "Image" %}</span>{% endif %}
+          </span>
+          <div class="d-flex align-items-center gap-3">
+            <div class="d-flex align-items-center gap-1">
+              <label class="small text-secondary mb-0">{% trans "Order" %}</label>
+              <input type="number" name="order_{{ b.id }}" value="{{ b.order }}" class="form-control form-control-sm" style="width:4.5rem">
+            </div>
+            <div class="form-check text-danger mb-0">
+              <input class="form-check-input" type="checkbox" name="delete_{{ b.id }}" id="del{{ b.id }}">
+              <label class="form-check-label small" for="del{{ b.id }}">{% trans "Delete" %}</label>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <label class="form-label small fw-semibold">{% trans "Content (HTML)" %}</label>
+          <textarea name="rich_text_{{ b.id }}" class="form-control font-monospace" rows="8"
+                    style="font-size:.85rem">{{ b.rich_text|default:'' }}</textarea>
+
+          {% if b.is_question %}
+          <label class="form-label small fw-semibold mt-3">{% trans "Explanation (shown after answering)" %}</label>
+          <textarea name="explanation_{{ b.id }}" class="form-control font-monospace" rows="4"
+                    style="font-size:.85rem">{{ b.explanation|default:'' }}</textarea>
+          <p class="small text-secondary mt-2 mb-0">
+            <i class="bi bi-info-circle me-1"></i>{% trans "MCQ options are edited in the admin panel." %}
+          </p>
+          {% endif %}
+
+          {% if b.image %}
+          <label class="form-label small fw-semibold mt-3">{% trans "Image caption" %}</label>
+          <input type="text" name="caption_{{ b.id }}" class="form-control" value="{{ b.caption }}">
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+
+      <!-- Add a new block -->
+      <div class="card mb-4 border-success-subtle">
+        <div class="card-header py-2 small text-success fw-semibold">
+          <i class="bi bi-plus-circle me-1"></i>{% trans "Add a new block (optional)" %}
+        </div>
+        <div class="card-body">
+          <textarea name="new_rich_text" class="form-control font-monospace" rows="4"
+                    style="font-size:.85rem" placeholder="&lt;h3&gt;...&lt;/h3&gt;&lt;p&gt;...&lt;/p&gt;"></textarea>
+          <p class="small text-secondary mt-2 mb-0">{% trans "Leave empty if not adding a block. It is added at the end." %}</p>
+        </div>
+      </div>
+
+      <div class="d-flex gap-2 mb-5">
+        <button type="submit" class="btn btn-primary">
+          <i class="bi bi-check2 me-1"></i>{% trans "Save" %}
+        </button>
+        <a href="{% url 'examprep_lesson' lesson.track.slug skill lesson.slug %}" class="btn btn-outline-secondary">
+          {% trans "Cancel" %}
+        </a>
+      </div>
+    </form>
+
+  </div>
+</div>
+{% endblock %}

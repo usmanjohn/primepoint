@@ -1,5 +1,5 @@
-# TOPIK II Yozish (쓰기) 51 — Naqshlar va iboralar (templates). Manba: material_51_patterns.json
-# (51_done.pptx dan ajratilgan grammatik naqsh slaydlari). Til: O'zbekcha + Koreyscha, styling bilan.
+# TOPIK II Yozish (쓰기) 51 — Templates (grammatik shakllar). Manba: material_51_patterns.json
+# (51_done.pptx dan ajratilgan grammatik shakl (template) slaydlari). Til: O'zbekcha + Koreyscha, styling bilan.
 # Import: python manage.py import_examprep examprep/management/commands/_lessons_topik_writing_51_patterns.py --author=prime
 # (--republish bilan yangilanadi).
 
@@ -65,29 +65,29 @@ def _pattern_card(slide, uz_label, border):
 
 
 _INTRO = """
-<h2>TOPIK Writing 51: Naqshlar va iboralar (templates)</h2>
+<h2>TOPIK Writing 51: Templates (grammatik shakllar)</h2>
 <p><span style="background:#3b82f6;color:#fff;padding:2px 10px;border-radius:999px;font-size:0.85em;">쓰기 51</span>
-&nbsp;<span style="background:#a855f7;color:#fff;padding:2px 10px;border-radius:999px;font-size:0.85em;">naqshlar / templates</span></p>
-<p>쓰기 51 javoblari bir nechta <strong>funksional naqsh</strong> (reja aytish, iltimos qilish,
-uzr so'rash...) atrofida quriladi. Quyida real javoblardan ajratilgan naqshlar va foydali
+&nbsp;<span style="background:#a855f7;color:#fff;padding:2px 10px;border-radius:999px;font-size:0.85em;">templates</span></p>
+<p>쓰기 51 javoblari bir nechta <strong>funksional template</strong> (reja aytish, iltimos qilish,
+uzr so'rash...) atrofida quriladi. Quyida real javoblardan ajratilgan template'lar va foydali
 leksika bor.</p>
 <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:12px 16px;border-radius:8px;margin:16px 0;">
-  <strong>📌 Qanday ishlatish:</strong> har bir funksiya uchun <strong>bitta</strong> naqshni
-  tanlab yodlang (전략 darsi!). Keyin <em>Amaliy namunalar</em> qismlarida shu naqshlarni
+  <strong>📌 Qanday ishlatish:</strong> har bir funksiya uchun <strong>bitta</strong> template'ni
+  tanlab yodlang (전략 darsi!). Keyin <em>Amaliy namunalar</em> qismlarida shu template'larni
   amalda ko'rasiz. <span style="color:#475569;">Qalin — grammatik shakl; kulrang — misol.</span>
 </div>
 """
 
 _CLOSING = """
 <div style="background:#ecfdf5;border-left:4px solid #10b981;padding:12px 16px;border-radius:8px;margin:16px 0;">
-  <strong>💡 Maslahat:</strong> hammasini emas — har funksiyadan bittadan naqshni mukammal
+  <strong>💡 Maslahat:</strong> hammasini emas — har funksiyadan bittadan template'ni mukammal
   egallang. Shunda 쓰기 51 da har qanday mavzuga tez va xatosiz javob yozasiz.
 </div>
 """
 
 _blocks = [{"rich_text": _INTRO}]
 
-_blocks.append({"rich_text": '<h3>1) 기능 표현 — Funksional naqshlar</h3>'})
+_blocks.append({"rich_text": "<h3>1) 기능 표현 — Funksional template'lar</h3>"})
 for _s in sorted(_GRAMMAR):
     _blocks.append({"rich_text": _pattern_card(_s, _GRAMMAR[_s], "#a855f7")})
 
@@ -100,8 +100,8 @@ _blocks.append({"rich_text": _CLOSING})
 LESSONS = [
     {
         "skill":   "writing",
-        "title":   "TOPIK Writing 51: Naqshlar va iboralar (templates)",
-        "summary": "쓰기 51 uchun funksional grammatik naqshlar (reja, iltimos, uzr...) va "
+        "title":   "TOPIK Writing 51: Templates (grammatik shakllar)",
+        "summary": "쓰기 51 uchun funksional grammatik template'lar (reja, iltimos, uzr...) va "
                    "foydali leksika — real javoblardan ajratilgan.",
         "order":   2,
         "blocks":  _blocks,

@@ -1,8 +1,18 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.db.models import F, Count, Q
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.core.exceptions import PermissionDenied
+from django.db.models import F, Count, Q, Max
 from django.http import Http404
 
-from .models import ExamTrack, Lesson, SKILL_CHOICES, SKILL_ICONS
+from .models import ExamTrack, Lesson, LessonBlock, SKILL_CHOICES, SKILL_ICONS
+
+
+def _can_edit(user, lesson):
+    """Staff, or the lesson's own author, may edit on-page."""
+    if not user.is_authenticated:
+        return False
+    return user.is_staff or (lesson.author_id and lesson.author_id == user.id)
 
 
 def _published_filter(user):
@@ -106,4 +116,56 @@ def lesson_detail(request, track_slug, skill, slug):
         'next_lesson':  next_lesson,
         'has_question': has_question,
         'submitted':    submitted,
+        'can_edit':     _can_edit(request.user, lesson),
+    })
+
+
+@login_required
+def lesson_edit(request, track_slug, skill, slug):
+    """On-page editor for a lesson and its content blocks (author/staff only)."""
+    lesson = get_object_or_404(
+        Lesson.objects.select_related('track'),
+        track__slug=track_slug, skill=skill, slug=slug,
+    )
+    if not _can_edit(request.user, lesson):
+        raise PermissionDenied
+
+    blocks = list(lesson.blocks.all())
+
+    if request.method == 'POST':
+        lesson.title = (request.POST.get('title') or lesson.title).strip()
+        lesson.summary = (request.POST.get('summary') or '')[:300]
+        lesson.is_published = bool(request.POST.get('is_published'))
+        try:
+            lesson.order = int(request.POST.get('order', lesson.order))
+        except (TypeError, ValueError):
+            pass
+        lesson.save()
+
+        for b in blocks:
+            if request.POST.get(f'delete_{b.id}'):
+                b.delete()
+                continue
+            b.rich_text = (request.POST.get(f'rich_text_{b.id}') or '') or None
+            b.explanation = (request.POST.get(f'explanation_{b.id}') or '') or None
+            b.caption = (request.POST.get(f'caption_{b.id}') or '')[:300]
+            try:
+                b.order = int(request.POST.get(f'order_{b.id}', b.order))
+            except (TypeError, ValueError):
+                pass
+            b.save()
+
+        new_html = (request.POST.get('new_rich_text') or '').strip()
+        if new_html:
+            nxt = (lesson.blocks.aggregate(m=Max('order'))['m'] or 0) + 1
+            LessonBlock.objects.create(lesson=lesson, order=nxt, rich_text=new_html)
+
+        messages.success(request, 'Saqlandi / Saved.')
+        return redirect('examprep_lesson', track_slug=lesson.track.slug,
+                        skill=skill, slug=lesson.slug)
+
+    return render(request, 'examprep/lesson_edit.html', {
+        'lesson': lesson,
+        'skill':  skill,
+        'blocks': blocks,
     })

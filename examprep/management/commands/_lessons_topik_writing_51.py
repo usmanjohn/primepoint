@@ -67,7 +67,7 @@ mos jumla bilan to'ldirasiz. Quyida ko'plab real namunalar bor.</p>
 <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:12px 16px;border-radius:8px;margin:16px 0;">
   <strong>📌 Qanday ishlatish:</strong> avval bo'sh joylarni <strong>o'zingiz</strong>
   to'ldirishga urinib ko'ring, keyin <strong>“Namunaviy javoblar”</strong>ni bosib solishtiring.
-  Javobni yoddan aytmang — <mark>naqshini (naqsh = pattern)</mark> tushuning.
+  Javobni yoddan aytmang — <mark>uning template'ini</mark> tushuning.
 </div>
 """
     return f"""
@@ -80,7 +80,7 @@ solishtiring.</p>
 _CLOSING = """
 <div style="background:#ecfdf5;border-left:4px solid #10b981;padding:12px 16px;border-radius:8px;margin:16px 0;">
   <strong>💡 Maslahat:</strong> yoqqan jumlalarni daftaringizga yozib qo'ying va
-  <strong>bitta ishonchli naqshni</strong> mukammal egallang — ko'p emas, bittasini.
+  <strong>bitta ishonchli template'ni</strong> mukammal egallang — ko'p emas, bittasini.
   (전략 darsiga qarang.)
 </div>
 """
