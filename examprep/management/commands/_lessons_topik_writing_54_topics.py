@@ -30,6 +30,10 @@ def _parse_topics(path):
 
 _TOPICS = _parse_topics(os.path.join(_DIR, "material_54.txt"))
 
+
+def _norm(s):
+    return re.sub(r"\s+", " ", s).strip()
+
 TRACK = {
     "name":    "TOPIK",
     "summary": "TOPIK II Koreys tili imtihoniga bosqichma-bosqich tayyorgarlik — "
@@ -125,6 +129,249 @@ TRANSLATIONS = {
             "Bolalar, keksalar, ayollar kabi himoyaga muhtojlarga qarshi jinoyat ortayotgan bir paytda, kuzatuv kamerasi ularning xavotirini kamaytira olishi kabi afzalligi bor.",
         ],
     },
+    "외모지상주의": {
+        "uz": "Tashqi ko'rinish kultusi",
+        "s": [
+            "Masalan, suhbatda (intervyuda) qobiliyat emas, tashqi ko'rinish qabul qilinish-qilinmaslikka hal qiluvchi ta'sir ko'rsatishi mumkin.",
+            "Boylik va muvaffaqiyatga intiladiganlar ko'paygani sari, faqat ko'zga ko'rinadigan narsani qadrlash tamoyili bu hodisani yanada kuchaytirmoqda.",
+            "Ommaviy madaniyat ko'rsatadigan tashqi go'zallikni mezon qilib olsangiz, o'zingizdagi o'ziga xoslikni namoyon qila olmay qolasiz.",
+        ],
+    },
+    "진정한 배움": {
+        "uz": "Haqiqiy o'rganish",
+        "s": [
+            "Bilim qanchalik ko'p bo'lmasin, tez o'zgarayotgan dunyoga moslashish uchun yangidan o'rganish kerak bo'lgan narsa bo'ladi.",
+            "O'rgangan sari o'rganish kerak bo'lgan narsa yanada ko'proq ko'rinadi.",
+            "Ota-onaning xohishiga ko'ra chet tili o'rganish yoki bitirish uchun imtihonga tayyorlanish — haqiqiy o'rganish emas, balki ehtiyoj yuzasidan qilingan vositadan boshqa narsa emas.",
+            "Muntazam biror narsa o'rgansangiz, o'z kamchiliklaringizni to'ldirib, yanada rivojlanib borishingiz mumkin.",
+        ],
+    },
+    "진정한 친구": {
+        "uz": "Haqiqiy do'st",
+        "s": [
+            "Hayotda yolg'iz qoladigan paytlar ham, qiyin paytlar ham ko'p bo'ladi, va har safar do'st yoningda turib madad bo'ladi.",
+            "Tez-tez uchrashib, suhbatlashib, hamdardlik qobiliyatini oshirasan va g'amxo'rlik qilishni o'rganasan.",
+            "Muloqot yaxshi bo'lmasa, dardni bo'lishish ham qiyin, suhbat zavqini his qilish ham qiyin bo'lib, munosabat chuqurlasha olmaydi.",
+        ],
+    },
+    "기업의 역할": {
+        "uz": "Korxonaning (biznesning) roli",
+        "s": [
+            "Korxonalar texnologiya rivoji orqali yangi mahsulot va xizmatlarni taqdim etadi.",
+            "Ko'plab korxonalar shaxs o'zi yarata olmaydigan yoki juda zarur mahsulotlarni ishlab chiqarib taqdim etish orqali hayotni qulay qiladi.",
+            "Kambag'al talabalarga stipendiya beradigan yoki turmushi og'ir qo'shnilarga xayriya qiladigan korxonalar ko'paymoqda, ba'zi korxonalar atrof-muhit harakatlarida ham ishtirok etadi.",
+            "Korxona jamiyat taraqqiyoti uchun nima qilish kerakligini o'ylab, amalga oshirishi kerak.",
+        ],
+    },
+    "인간관계": {
+        "uz": "Insoniy munosabatlar",
+        "s": [
+            "Ish joyida hamkasblar bilan yaxshi munosabat o'rnata olmasangiz, stressga tushasiz va ishlash qiyinlashishi mumkin.",
+            "Xarakter va qadriyatlardagi farq tufayli har bir insonning turmush tarzi har xil bo'ladi.",
+            "Biror manfaat olish uchun munosabat o'rnatmoqchi bo'lsangiz yoki har uchrashganda o'zini o'ylab ish tutsangiz, suhbatdoshga zarar yetkazasiz yoki qalbini yaralaysiz.",
+        ],
+    },
+    "건강 유지": {
+        "uz": "Sog'liqni saqlash",
+        "s": [
+            "Ifloslangan muhit va kuchli stress ichida yashaganimiz sababli, sog'lom yashash yanada muhim bo'lib qoldi.",
+            "Sog'lig'imizni yo'qotsak, iqtisodiy va ruhiy jihatdan qiyinchilikka duch kelamiz.",
+            "Tungi ovqat va ortiqcha ovqatdan qochib, sabzavot va meva kabilarni tez-tez iste'mol qilish sog'liqni saqlashda yordam beradi.",
+        ],
+    },
+    "협업 능력": {
+        "uz": "Hamkorlik qobiliyati",
+        "s": [
+            "Har kimning qobiliyati har xil bo'lgani uchun, har kim o'zi uddalaydigan sohani olib, ishni bo'lib bajarish yanada samaraliroq.",
+            "Samarali hamkorlik qilish aslo oson emas.",
+            "Albatta, har kimning fikri har xil bo'lgani uchun, fikr farqi paydo bo'lmasligi mumkin emas.",
+            "Ishni boshqaga ag'darish yoki muddatni bajarmaslik orqali butun jamoaga zarar yetkazmaslikka ehtiyot bo'lish kerak.",
+        ],
+    },
+    "토론의 역할": {
+        "uz": "Munozaraning roli",
+        "s": [
+            "Munozara orqali biz bir-birimizning fikrimizni eshitib, farqni aniqlash bilan yaxshiroq yo'l topa olamiz.",
+            "Munozara orqali yetarlicha muloqot qilgandan so'ng, uning natijasini qabul qilgan ma'qul.",
+            "Munozara paytida suhbatdoshning gapini diqqat bilan tinglash har narsadan muhim.",
+        ],
+    },
+    "여행의 역할": {
+        "uz": "Sayohatning roli",
+        "s": [
+            "Sayohat qilsangiz, stressni bartaraf etib, ko'ngil xotirjamligini topa olasiz.",
+            "Sayohat qilganda xavfsizlik va sog'liqqa e'tibor berish kerak.",
+            "Sayohatga qiziqish bo'lmasa, yangi tajriba va fikrga ega bo'lish imkoniyatini boy berishingiz mumkin.",
+            "Mahalliy aholining turmush tarzi va madaniyatini bor holicha qabul qilish kayfiyati kerak.",
+        ],
+    },
+    "창의적인 사고 능력": {
+        "uz": "Ijodiy fikrlash qobiliyati",
+        "s": [
+            "Korxonalar ijodiy fikr orqali yangi mahsulot va xizmat taqdim eta olmasa, iste'molchilarni qoniqtira olmay, raqobatda orqada qolishi mumkin.",
+            "Ijodiy fikrlash qobiliyati muammoni samarali hal qilishda ham yordam beradi.",
+            "Ijodiy fikrlash uchun avvalo qotib qolgan qarashlarni (stereotiplarni) buzish muhim.",
+        ],
+    },
+    "잘못 후 사과": {
+        "uz": "Xatodan keyin uzr so'rash",
+        "s": [
+            "Xatosini tan olib uzr so'raydigan odam ham, mag'rurligi tufayli uzr so'ramaydigan odam ham bor.",
+            "Uzr so'rash — bunday salbiy ehtimolni ijobiyga aylantira oladigan yaxshi imkoniyatdir.",
+            "Uzr so'raganda, avvalo bahona qilmasdan, o'z xatosini tan olish munosabati muhim.",
+        ],
+    },
+    "신조어의 장단점": {
+        "uz": "Yangi so'zlar (neologizm)ning afzallik va kamchiliklari",
+        "s": [
+            "Yangi so'zlardan foydalansangiz, oson va tez muloqot qila olasiz.",
+            "Jamiyatda yangi so'z ishlatish odatiy holga aylangani sari, vaqti va joyiga mos kelmagan holda yangi so'z ishlatadiganlarning ko'payishi ham muammo.",
+            "Biz yangi so'zlarni o'ylamasdan (nazoratsiz) ishlatmaslikka harakat qilishimiz kerak.",
+            "Odob talab qilinadigan joylarda yangi so'z ishlatishdan qochish kerak.",
+        ],
+    },
+    "조기 외국어 교육": {
+        "uz": "Erta chet tili ta'limi",
+        "s": [
+            "Ota-onalar chet tili ta'limini erta boshlasa, bola tilni yanada ravon gapira oladigan bo'ladi deb o'ylaydi.",
+            "Erta chet tili ta'limi aksincha bolaning til qobiliyatini pasaytirishi mumkin.",
+            "Muhimi vaqt emas, harakat, shuning uchun rag'bat paydo bo'lganda bola o'zi mustaqil o'qisa ham, aslo kech emas.",
+        ],
+    },
+    "대중문화의 발달": {
+        "uz": "Ommaviy madaniyatning rivoji",
+        "s": [
+            "Smartfon bo'lsa bas, internet orqali istalgan vaqt va joyda kino ko'rish, musiqa tinglash, hatto kontent yaratishda bevosita ishtirok etish ham mumkin.",
+            "Ommaviy madaniyatda zo'ravonlik va shahvoniy mazmun ko'p bo'lishi mumkin, bu esa o'sib kelayotgan bolalarga ayniqsa yomon ta'sir qiladi.",
+            "Ommaviy madaniyatning afzalligini saqlab, kamchiligini kamaytirmoqchi bo'lsangiz, uni tanqidiy qabul qila bilish kerak.",
+        ],
+    },
+    "관광 산업의 장단점": {
+        "uz": "Turizm sanoatining afzallik va kamchiliklari",
+        "s": [
+            "Sayyohlar ko'paysa, tegishli ish o'rinlari ortadi va mahalliy aholi daromadi ham oshadi.",
+            "Shovqin yoki chiqindi muammosi — turizm sanoatining eng tipik muammosi.",
+            "Turizm sanoatining salbiy oqibatlarini oldini olish uchun avvalo mahalliy aholi bilan yetarli muloqot bo'lishi kerak.",
+        ],
+    },
+    "성형수술": {
+        "uz": "Plastik jarrohlik",
+        "s": [
+            "Plastik jarrohlik bilan har kim xohlaganidek tashqi ko'rinishini o'zgartira oladigan bo'ldi.",
+            "Plastik jarrohlik qoniqish va o'ziga ishonch olishda yordam beradi.",
+            "Plastik jarrohlik qildiradiganlar ko'paysa, jamiyatda tashqi ko'rinishni qadrlash kayfiyati keng tarqalishi mumkin.",
+            "Tashqi ko'rinishi tufayli o'ziga ishonchi yo'q yoki ijtimoiy hayotda tez-tez ziyon ko'radigan odam uchun plastik jarrohlik shu muammoni hal qila oladigan yo'l bo'lishi mumkin.",
+        ],
+    },
+    "경쟁의 치열": {
+        "uz": "Raqobatning keskinligi",
+        "s": [
+            "Globallashuv ta'sirida raqobat maydoni yanada kengaymoqda.",
+            "Shaxsmi yoki korxonami, jahon bozorida faoliyat yuritishi kerak bo'lgani uchun, taqqoslanadigan raqiblar ko'payib, raqobat yanada keskinlashdi.",
+            "Suhbatdoshni hamkorlik obyekti emas, faqat raqobat obyekti sifatida ko'rib, unga ishona olmay qolishadi.",
+            "Jarayondan ko'ra faqat natijani qadrlaydigan jamiyatga aylanishi mumkinligi muammo.",
+        ],
+    },
+    "지구 온난화": {
+        "uz": "Global isish",
+        "s": [
+            "Global isish butun dunyo bo'ylab noodatiy iqlim hodisalarini keltirib chiqarmoqda.",
+            "Noodatiy iqlim hodisalari davom etsa, yangi kasalliklar paydo bo'libgina qolmay, kelajakda yo'q bo'lib ketadigan hayvonlar ham ko'payadi.",
+            "Global isishning oldini olish uchun kundalik hayotda amalga oshirsa bo'ladigan yo'l — energiyani tejash va resurslarni isrof qilmaslik.",
+            "Hukumat esa ekologik toza energiya ishlab chiqishga sarmoya kiritishi kerak.",
+        ],
+    },
+    "황금만능주의": {
+        "uz": "Pulparastlik (pulni hamma narsadan ustun qo'yish)",
+        "s": [
+            "Pulparastlikka berilgan odamlar pulni turmush qulayligi uchun vosita emas, maqsad deb biladi.",
+            "Eng avvalo ma'naviy qadriyatlarning muhimligini anglab, ichki go'zallikni ko'ra bilishga harakat qilish kerak.",
+            "Ommaviy axborot vositalari rivoji tufayli odamlar kuniga son-sanoqsiz reklamaga duch keladi va istalgan vaqtda osongina serial ko'ra oladigan bo'ldi; bunday reklama va seriallar turli yangi mahsulotlarni ko'rsatib, e'tibor tortadi.",
+        ],
+    },
+    "세대 갈등": {
+        "uz": "Avlodlar ziddiyati",
+        "s": [
+            "Yosh avlod keksalarni hurmat qilmaydi, keksalar esa yosh avlodni hurmat qilmaydi.",
+            "Siyosiy vaziyat o'zgarib, madaniy did o'zgargani sari, fikrlarda katta farq paydo bo'lmoqda.",
+            "Avlodlar ziddiyatini hal qilish uchun bir-birini hurmat qilish kayfiyati bilan muloqot qilishga harakat kerak.",
+        ],
+    },
+    "차별": {
+        "uz": "Kamsitish (diskriminatsiya)",
+        "s": [
+            "Kamsitish qandaydir noto'g'ri qarash (xurofot) bilan odamni baholaganda osongina yuzaga kelishi mumkin.",
+            "Asosan jins, ma'lumot kabi jihatlardan biroz ustunroq odam boshqalarni kamsitgani sari, noqulay ahvoldagi odamning ahvoli yanada og'irlashadi.",
+            "Kamsitish muammosini yengish uchun xurofotni tashlab, boshqacha bo'lishni (farqni) hurmat qila bilish kerak.",
+            "Kamsitishni taqiqlaydigan qonun chiqarish ham yaxshi.",
+        ],
+    },
+    "바람직한 소비": {
+        "uz": "Ma'qul (to'g'ri) iste'mol",
+        "s": [
+            "Ma'qul iste'mol deganda shunchaki narxni emas, balki o'z iste'moli jamiyatga qanday ta'sir qilishini ham hisobga olishni tushunish mumkin.",
+            "Oqilona iste'mol qilsangiz, tabiiy ravishda ijtimoiy faoliyatda ham qatnasha olasiz.",
+            "Ma'qul iste'mol qilish uchun o'zingiz nimani eng qadrli deb bilishingizni anglashingiz kerak.",
+        ],
+    },
+    "직업 선택": {
+        "uz": "Kasb tanlash",
+        "s": [
+            "Kasb bo'lsagina pul topib, tirikchilikni ta'minlash mumkin.",
+            "Kasbni yaxshi tanlash uchun, birinchidan, moyillikni (qobiliyatni) o'ylash kerak.",
+            "O'zi xohlagan kasb talab qiladigan qobiliyat nimaligini aniqlab, oldindan tayyorgarlik ko'rish kerak.",
+        ],
+    },
+    "신문의 역할": {
+        "uz": "Gazetaning roli",
+        "s": [
+            "Gazeta odamlarning fikrini to'plash va yo'naltirish rolini bajaradi.",
+            "Gazeta xato ishlarni topib, xabar berish va tanqid qilish rolini ham bajaradi.",
+            "Biz gazeta to'g'ri ishlashi uchun uni nazorat qilish rolini bajarishimiz kerak.",
+            "Agar gazeta biror masala haqida so'zsiz maqtasa yoki faqat yomon qilib xabar bersa, odamlarning ishonchini yo'qotadi.",
+        ],
+    },
+    "노후 생활": {
+        "uz": "Keksalikdagi (nafaqadagi) hayot",
+        "s": [
+            "Zamonaviy jamiyatda tibbiyot rivoji tufayli o'rtacha umr uzaygani sari, ilgariga nisbatan qarilik davri uzaydi.",
+            "Baxtli keksalik hayoti uchun oldindan tayyorgarlik ko'rish zarur.",
+            "Sog'liqni yo'qotish — hamma narsani yo'qotish bilan barobar.",
+            "Iqtisodiy farovonlik uchun ko'proq jamg'arma qilish kerak.",
+        ],
+    },
+    "교육자의 역할": {
+        "uz": "O'qituvchining (tarbiyachining) roli",
+        "s": [
+            "O'qituvchi bilim va ijtimoiy me'yorlarni yetkazish rolini bajaradi.",
+            "O'qituvchi o'quvchilarning qadriyatlari shakllanishiga ta'sir qilgani uchun, to'g'ri so'z va xatti-harakat bilan namuna bo'lishi kerak.",
+            "Inson bir kunda o'zgarmaydi, shuning uchun ularga yordam bera olish uchun sabr-toqat shart.",
+        ],
+    },
+    "영화의 장단점": {
+        "uz": "Kinoning afzallik va kamchiliklari",
+        "s": [
+            "Odamlar zerikkanda, stress to'planganda, uchrashuvga chiqqanda ko'rgisi kelgan kinoni ko'radi.",
+            "Qiziqarli, lekin ta'sirli bo'lmagan kinolar ham ko'p, va bunday kinoni ko'rgach, vaqtga achinadigan paytlar ham bo'ladi.",
+            "Biz ishga kirgach, deyarli doim o'xshash muhitda yashaganimiz uchun tajriba cheklanib qolishi oson, kino esa buni to'ldirib beradi.",
+        ],
+    },
+    "CCTV 설치": {
+        "uz": "CCTV (kuzatuv kamerasi) o'rnatish",
+        "s": [
+            "CCTV o'rnatilishidan o'zini xavfsiz his qiladigan odam ham, shaxsiy hayotga tajovuz qiladi degan sabab bilan qarshi chiqadigan odam ham bor.",
+            "Faqat xavfsizlik uchun degan sabab bilan shaxsiy hayot qurbon bo'lmasligi kerak.",
+            "Albatta, CCTV kamerasi tufayli jinoyat hal bo'ladigan holatlar bor, lekin umumiy nisbatda olsak, ko'p emas.",
+        ],
+    },
+    "자국어의 중요함": {
+        "uz": "Ona tilining muhimligi",
+        "s": [
+            "Til o'sha mamlakat madaniyati, tarixi, xalqning hissiyoti kabilarning barchasini o'z ichiga oladi.",
+            "Ona tili shunchaki muloqot vositasi emas, o'sha mamlakat odamlariga muhim ta'sir ko'rsatadi.",
+            "Biz ona tili orqali o'sha xalq vakili sifatida o'zligimiz (identiteti) va millat ruhini o'rgana olamiz.",
+        ],
+    },
 }
 
 PER_PART = 5
@@ -133,7 +380,7 @@ _BADGE = ('<span style="background:#3b82f6;color:#fff;padding:2px 10px;border-ra
 
 
 def _topic_card(topic):
-    tr = TRANSLATIONS[topic["title"]]
+    tr = _TR[_norm(topic["title"])]
     ko_title = html.escape(topic["title"])
     uz_title = html.escape(tr["uz"])
     items = ""
@@ -175,7 +422,8 @@ _CLOSING = """
 """
 
 # Faqat tarjima qilingan mavzular, fayldagi tartibda.
-_ready = [t for t in _TOPICS if t["title"] in TRANSLATIONS]
+_TR = {_norm(k): v for k, v in TRANSLATIONS.items()}
+_ready = [t for t in _TOPICS if _norm(t["title"]) in _TR]
 
 LESSONS = []
 for _pi, _start in enumerate(range(0, len(_ready), PER_PART), start=1):
