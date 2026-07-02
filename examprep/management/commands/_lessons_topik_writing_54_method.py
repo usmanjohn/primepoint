@@ -18,7 +18,7 @@ LESSONS = [
         "title":   "TOPIK Writing 54: Jumla yodlash metodi (54-savol)",
         "summary": "54-savol uchun maxsus mavzular bo'yicha tayyor jumlalarni yodlash metodi "
                    "va 서론·본론·결론 uchun ko'plab koreyscha namunalar.",
-        "order":   8,
+        "order":   30,
         "blocks": [
             # ── 1. Kirish ────────────────────────────────────────────────
             {
