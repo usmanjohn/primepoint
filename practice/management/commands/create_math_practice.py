@@ -3,138 +3,249 @@ from django.contrib.auth.models import User
 from masters.models import Master
 from practice.models import Subject, Practice, PracticeQuestion, PracticeChoice
 
-QUESTIONS = [
-    {
-        'text': '<p>Hisoblang:</p><p><strong>42 va 60 sonlarining eng katta umumiy boʻluvchisini (EKUB) toping.</strong></p>',
-        'explanation': '<p><strong>6</strong> toʻgʻri javob. Sonlarni tub koʻpaytuvchilarga ajratamiz: 42 = 2 * 3 * 7 va 60 = 2 * 2 * 3 * 5. Umumiy tub koʻpaytuvchilarning eng kichik darajalari koʻpaytmasi EKUBni beradi: 2 * 3 = 6.</p>',
-        'correct': '6',
-        'choices': ['6', '12', '2', '420']
-    },
-    {
-        'text': '<p>Hisoblang:</p><p><strong>12 va 15 sonlarining eng kichik umumiy karralisini (EKUK) toping.</strong></p>',
-        'explanation': '<p><strong>60</strong> toʻgʻri javob. Sonlarni tub koʻpaytuvchilarga ajratamiz: 12 = 2^2 * 3 va 15 = 3 * 5. EKUKni topish uchun barcha tub koʻpaytuvchilarning eng katta darajalarini koʻpaytiramiz: 2^2 * 3 * 5 = 4 * 3 * 5 = 60.</p>',
-        'correct': '60',
-        'choices': ['30', '45', '60', '180']
-    },
-    {
-        'text': '<p>Masalani yeching:</p><p><strong>72 sonining nechta natural boʻluvchisi bor?</strong></p>',
-        'explanation': '<p><strong>12</strong> toʻgʻri javob. 72 sonini tub koʻpaytuvchilarga ajratamiz: 72 = 2^3 * 3^2. Natural boʻluvchilar sonini topish uchun darajaga 1 qoʻshib koʻpaytiramiz: (3 + 1) * (2 + 1) = 4 * 3 = 12.</p>',
-        'correct': '12',
-        'choices': ['8', '10', '12', '6']
-    },
-    {
-        'text': '<p>Boʻlinish alomatlari:</p><p><strong>Quyidagi sonlardan qaysi biri ham 3 ga, ham 5 ga qoldiqsiz boʻlinadi?</strong></p>',
-        'explanation': '<p><strong>135</strong> toʻgʻri javob. 5 ga boʻlinishi uchun oxirgi raqam 0 yoki 5 boʻlishi kerak. 3 ga boʻlinishi uchun raqamlar yigʻindisi 3 ga boʻlinishi kerak. 135 sonining raqamlar yigʻindisi 1+3+5=9 (3 ga boʻlinadi) va oxiri 5 bilan tugaydi.</p>',
-        'correct': '135',
-        'choices': ['125', '135', '230', '303']
-    },
-    {
-        'text': '<p>Boʻlinish alomatlari:</p><p><strong>Berilgan sonlardan qaysi biri 4 ga qoldiqsiz boʻlinadi?</strong></p>',
-        'explanation': '<p><strong>724</strong> toʻgʻri javob. Sonning oxirgi ikkita raqamidan tashkil topgan son 4 ga boʻlinsa, u son 4 ga qoldiqsiz boʻlinadi. 24 soni 4 ga boʻlingani uchun 724 ham 4 ga boʻlinadi.</p>',
-        'correct': '724',
-        'choices': ['514', '622', '724', '809']
-    },
-    {
-        'text': '<p>Harakatga doir masala:</p><p><strong>Tezligi 15 km/sh boʻlgan velosipedchi 3 soatda qancha masofani (km) bosib oʻtadi?</strong></p>',
-        'explanation': '<p><strong>45</strong> toʻgʻri javob. Masofani topish formulasi: S = v * t. Bu yerda tezlik (v) = 15 km/sh, vaqt (t) = 3 soat. Masofa: 15 * 3 = 45 km.</p>',
-        'correct': '45',
-        'choices': ['5', '18', '30', '45']
-    },
-    {
-        'text': '<p>Harakatga doir masala:</p><p><strong>Avtomobil 240 km masofani 4 soatda bosib oʻtdi. Avtomobilning tezligini toping.</strong></p>',
-        'explanation': '<p><strong>60</strong> toʻgʻri javob. Tezlikni topish formulasi: v = S / t. Masofa (S) = 240 km, vaqt (t) = 4 soat. Tezlik: 240 / 4 = 60 km/sh.</p>',
-        'correct': '60',
-        'choices': ['50', '60', '70', '80']
-    },
-    {
-        'text': '<p>Oddiy kasrlar ustida amallar:</p><p><strong>Yigʻindini hisoblang: 2/7 + 3/7</strong></p>',
-        'explanation': '<p><strong>5/7</strong> toʻgʻri javob. Maxrajlari bir xil boʻlgan kasrlarni qoʻshganda, ularning suratlari qoʻshiladi va maxraj oʻzi qoldiriladi: (2 + 3) / 7 = 5/7.</p>',
-        'correct': '5/7',
-        'choices': ['5/14', '5/7', '6/7', '1/7']
-    },
-    {
-        'text': '<p>Oddiy kasrlar ustida amallar:</p><p><strong>Ayirmani hisoblang: 4/5 - 1/2</strong></p>',
-        'explanation': '<p><strong>3/10</strong> toʻgʻri javob. Kasrlarga umumiy maxraj beramiz. Umumiy maxraj 10 boʻladi. Birinchi kasrni 2 ga, ikkinchisini 5 ga koʻpaytiramiz: 8/10 - 5/10 = 3/10.</p>',
-        'correct': '3/10',
-        'choices': ['3/5', '3/10', '5/10', '1/3']
-    },
-    {
-        'text': '<p>Boʻlinish alomatlari:</p><p><strong>Quyidagi sonlardan qaysi biri 9 ga qoldiqsiz boʻlinadi?</strong></p>',
-        'explanation': '<p><strong>459</strong> toʻgʻri javob. Sonning raqamlar yigʻindisi 9 ga boʻlinsa, u son 9 ga qoldiqsiz boʻlinadi. 459 sonida: 4 + 5 + 9 = 18. 18 soni 9 ga boʻlinadi.</p>',
-        'correct': '459',
-        'choices': ['123', '236', '459', '555']
-    },
-    {
-        'text': '<p>Harakatga doir murakkab masala:</p><p><strong>Avtomobil 4 soatda maʼlum masofani oʻtishi kerak edi. U 3 soat davomida belgilangan 80 km/sh tezlikda yurdi. Qolgan masofani 30 minutda bosib oʻtishi uchun tezligini necha km/sh ga oshirishi kerak?</strong></p>',
-        'explanation': '<p><strong>16</strong> toʻgʻri javob. Umumiy vaqt 4 soat boʻlishi kerak edi. Jami masofa: 80 * 4 = 320 km. Avtomobil 3 soatda 80 * 3 = 240 km yurdi. Qolgan masofa: 320 - 240 = 80 km. Uni 30 minutda (0.5 soatda) oʻtishi uchun kerakli tezlik: 80 / 0.5 = 160 km/sh. Tezlikni 160 - 80 = 80 km/sh ga oshirish kerak.</p>',
-        'correct': '80',
-        'choices': ['40', '60', '80', '100']
-    },
-    {
-        'text': '<p>Mantiqiy-harakat masalasi:</p><p><strong>Poyezd reja boʻyicha 6 soatda 480 km yoʻl yurishi kerak edi. Yoʻlning yarmida u 1 soat toʻxtab qoldi. Poyezd manzilga oʻz vaqtida yetib borishi uchun qolgan yoʻlda tezligini qanchaga oshirishi kerak?</strong></p>',
-        'explanation': '<p><strong>20</strong> toʻgʻri javob. Asl tezlik 480 / 6 = 80 km/sh. Yarim yoʻl 240 km, unga 3 soat ketadi. 1 soat toʻxtab qolganidan keyin qolgan 240 km masofa uchun 3 - 1 = 2 soat vaqt qoladi. Demak, yangi tezlik 240 / 2 = 120 km/sh boʻlishi kerak. Tezlikni oshirish miqdori: 120 - 80 = 40 km/sh.</p>',
-        'correct': '40',
-        'choices': ['20', '30', '40', '50']
-    },
-    {
-        'text': '<p>Hisoblang:</p><p><strong>24, 36 va 48 sonlarining eng katta umumiy boʻluvchisini (EKUB) toping.</strong></p>',
-        'explanation': '<p><strong>12</strong> toʻgʻri javob. 24 = 2^3 * 3, 36 = 2^2 * 3^2, 48 = 2^4 * 3. Umumiy koʻpaytuvchilarning kichik darajalari: 2^2 * 3 = 4 * 3 = 12.</p>',
-        'correct': '12',
-        'choices': ['6', '12', '24', '144']
-    },
-    {
-        'text': '<p>Hisoblang:</p><p><strong>8, 12 va 18 sonlarining eng kichik umumiy karralisini (EKUK) toping.</strong></p>',
-        'explanation': '<p><strong>72</strong> toʻgʻri javob. 8 = 2^3, 12 = 2^2 * 3, 18 = 2 * 3^2. EKUK uchun eng katta darajalar olinadi: 2^3 * 3^2 = 8 * 9 = 72.</p>',
-        'correct': '72',
-        'choices': ['36', '48', '72', '144']
-    },
-    {
-        'text': '<p>Masalani yeching:</p><p><strong>120 sonining nechta tub boʻluvchisi bor?</strong></p>',
-        'explanation': '<p><strong>3</strong> toʻgʻri javob. 120 sonini tub koʻpaytuvchilarga ajratamiz: 120 = 2^3 * 3 * 5. Tub boʻluvchilari faqat tub sonlarning oʻzi, yaʼni 2, 3 va 5. Jami 3 ta.</p>',
-        'correct': '3',
-        'choices': ['3', '5', '16', '8']
-    },
-    {
-        'text': '<p>Masalani yeching:</p><p><strong>100 sonining barcha natural boʻluvchilari yigʻindisini toping.</strong></p>',
-        'explanation': '<p><strong>217</strong> toʻgʻri javob. 100 = 2^2 * 5^2. Boʻluvchilar yigʻindisi formulasi: (2^0+2^1+2^2)*(5^0+5^1+5^2) = (1+2+4)*(1+5+25) = 7 * 31 = 217.</p>',
-        'correct': '217',
-        'choices': ['117', '200', '217', '242']
-    },
-    {
-        'text': '<p>Boʻlinish alomatlari:</p><p><strong>34X2 toʻrt xonali son X ning qanday qiymatida 6 ga qoldiqsiz boʻlinadi?</strong></p>',
-        'explanation': '<p><strong>3</strong> toʻgʻri javob. Son 6 ga boʻlinishi uchun u ham 2 ga, ham 3 ga boʻlinishi shart. Son juft (oxiri 2), demak 2 ga boʻlinadi. 3 ga boʻlinishi uchun raqamlar yigʻindisi (3+4+X+2 = 9+X) 3 ga boʻlinishi kerak. Berilgan variantlar orasidan faqat 3 (9+3=12) bu shartni qanoatlantiradi.</p>',
-        'correct': '3',
-        'choices': ['1', '2', '3', '5']
-    },
-    {
-        'text': '<p>Boʻlinish alomatlari:</p><p><strong>Quyidagi sonlardan qaysi biri 8 ga qoldiqsiz boʻlinadi?</strong></p>',
-        'explanation': '<p><strong>3128</strong> toʻgʻri javob. Agar sonning oxirgi uchta raqamidan tashkil topgan son 8 ga boʻlinsa, u son 8 ga boʻlinadi. 128 / 8 = 16 (qoldiqsiz), demak 3128 soni 8 ga boʻlinadi.</p>',
-        'correct': '3128',
-        'choices': ['2118', '3128', '4204', '5062']
-    },
-    {
-        'text': '<p>Boʻlinish alomatlari:</p><p><strong>5A74 toʻrt xonali son A ning qanday qiymatlarida 9 ga qoldiqsiz boʻlinadi?</strong></p>',
-        'explanation': '<p><strong>2</strong> toʻgʻri javob. 9 ga boʻlinish qoidasiga koʻra raqamlar yigʻindisi 9 ga boʻlinishi kerak: 5 + A + 7 + 4 = 16 + A. 16 ga faqat 2 qoʻshilsa 18 boʻladi va 9 ga boʻlinadi.</p>',
-        'correct': '2',
-        'choices': ['1', '2', '5', '7']
-    },
-    {
-        'text': '<p>Boʻlinish alomatlari:</p><p><strong>Quyidagi sonlardan qaysi biri 12 ga qoldiqsiz boʻlinadi?</strong></p>',
-        'explanation': '<p><strong>432</strong> toʻgʻri javob. 12 ga boʻlinadigan son ham 3 ga, ham 4 ga boʻlinishi kerak. 432 sonining oxirgi ikki raqami (32) 4 ga boʻlinadi. Raqamlar yigʻindisi (4+3+2=9) 3 ga boʻlinadi.</p>',
-        'correct': '432',
-        'choices': ['412', '422', '432', '442']
-    },
-    {
-        'text': '<p>Harakatga doir masala:</p><p><strong>Ikki shahar oʻrtasidagi masofa 360 km. Avtomobil bu masofani 90 km/sh tezlik bilan bosib oʻtdi va orqaga 60 km/sh tezlik bilan qaytdi. Avtomobil butun yoʻlga necha soat vaqt sarflagan?</strong></p>',
-        'explanation': '<p><strong>10</strong> toʻgʻri javob. Borishga ketgan vaqt: 360 / 90 = 4 soat. Qaytishga ketgan vaqt: 360 / 60 = 6 soat. Jami vaqt: 4 + 6 = 10 soat.</p>',
-        'correct': '10',
-        'choices': ['8', '9', '10', '12']
-    },
-    {
-        'text': '<p>Harakatga doir masala:</p><p><strong>Tezligi 70 km/sh boʻlgan yuk mashinasi yoʻlga chiqdi. 2 soatdan keyin uning ortidan tezligi 90 km/sh boʻlgan yengil avtomobil yoʻlga chiqdi. Yengil avtomobil yuk mashinasini necha soatda quvib yetadi?</strong></p>',
-        'explanation': '7 toʻgʻri javob. Yuk mashinasi 2 soatda 70 * 2 = 140 km oldinga ketadi. Yaqinlashish tezligi: 90 - 70 = 20 km/sh. Quvib yetish vaqti: 140 / 20 = 7 soat.','correct': '7','choices': ['5', '6', '7', '8']},
-        {'text': 'Kasrlar ustida amallar:Amalni bajaring: 5/6 - 1/4 + 1/3','explanation': '11/12 toʻgʻri javob. Umumiy maxraj topamiz, u 12 ga teng. Kasrlarni kengaytiramiz: (10/12) - (3/12) + (4/12) = 11/12.','correct': '11/12','choices': ['7/12', '9/12', '11/12', '5/6']},{'text': 'Kasrlar ustida amallar:Koʻpaytirishni bajaring: (3/4) * (8/9)','explanation': '2/3 toʻgʻri javob. Suratlari va maxrajlarini oʻzaro qisqartiramiz. 3 va 9 qisqarib maxrajda 3 qoladi, 4 va 8 qisqarib suratda 2 qoladi. Natija: 2/3.','correct': '2/3','choices': ['5/12', '2/3', '6/7', '24/36']},{'text': 'Kasrlar ustida amallar:Boʻlishni bajaring: (5/8) / (15/16)','explanation': '2/3 toʻgʻri javob. Birinchi kasrni ikkinchi kasrning teskarisiga koʻpaytiramiz: (5/8) * (16/15). 5 bilan 15 qisqarib 3 qoladi, 8 bilan 16 qisqarib 2 qoladi. Natija: 2/3.','correct': '2/3','choices': ['1/2', '2/3', '3/4', '5/6']},{'text': 'Mantiqiy masala:Sinfdagi oʻquvchilar soni 3 ga ham, 4 ga ham qoldiqsiz boʻlinadi. Agar oʻquvchilar soni 20 va 30 ning orasida boʻlsa, sinfda nechta oʻquvchi bor?','explanation': '24 toʻgʻri javob. Son 3 va 4 ga boʻlingani uchun ularning EKUKiga, yaʼni 12 ga ham boʻlinishi kerak. 20 va 30 orasidagi 12 ga karrali yagona son bu 24 dir.','correct': '24','choices': ['21', '24', '28', '36']},{'text': 'Kasr masalalari:Kitobning 3/5 qismi oʻqildi. Agar oʻqilmagan 24 sahifa qolgan boʻlsa, kitob jami necha sahifadan iborat?','explanation': '60 toʻgʻri javob. Kitobning qolgan qismi: 1 - 3/5 = 2/5 qism. Demak, kitobning 2/5 qismi 24 sahifaga teng. Jami sahifalar soni: 24 / 2 * 5 = 60.','correct': '60','choices': ['40', '50', '60', '80']},{'text': 'Mantiqiy-harakat masalasi:Chiroq har 4 minutda, ikkinchi chiroq esa har 6 minutda yonib-ochadi. Ular soat 12:00 da birga yongan boʻlsa, keyingi safar soat nechada yana birga yonadi?','explanation': '12:12 toʻgʻri javob. Ular qayta birga yonishi uchun ketadigan vaqt 4 va 6 sonlarining EKUKiga teng boʻladi. EKUK(4, 6) = 12 minut. Demak, 12:00 dan keyin 12:12 da yana birga yonadi.','correct': '12:12','choices': ['12:06', '12:10', '12:12', '12:24']},{'text': 'Kasrlar ustida amallar:1 sonidan 3/8 va 1/4 ning yigʻindisini ayiring.','explanation': '3/8 toʻgʻri javob. Avval yigʻindini hisoblaymiz: 3/8 + 1/4 = 3/8 + 2/8 = 5/8. Keyin 1 dan ayiramiz: 1 - 5/8 = 3/8.','correct': '3/8','choices': ['1/8', '3/8', '5/8', '7/8']},{'text': 'Harakatga doir masala:Velosipedchi 2 soat davomida 12 km/sh tezlikda yurdi. Keyingi 1 soatda esa tezligini 15 km/sh ga oshirdi (yangi tezligi 15 km/sh boʻldi). U jami necha kilometr masofani bosib oʻtdi?','explanation': '39 toʻgʻri javob. Dastlabki 2 soatda: 12 * 2 = 24 km. Keyingi 1 soatda: 15 * 1 = 15 km. Jami masofa: 24 + 15 = 39 km.','correct': '39','choices': ['27', '36', '39', '42']},{'text': 'Boʻlinish alomatlari:Quyidagi sonlardan qaysi biri 10 ga boʻlinganda 3 qoldiq qoladi?','explanation': '253 toʻgʻri javob. Son 10 ga boʻlinganda oxirgi raqami qoldiq boʻlib qoladi. 253 sonining oxirgi raqami 3 boʻlgani uchun qoldiq ham 3 boʻladi.','correct': '253','choices': ['230', '253', '300', '350']},{'text': 'Kasr masalalari:Savatdagi olmalarning 1/3 qismi qizil, 2/5 qismi koʻk va qolganlari yashil. Yashil olmalar savatdagi barcha olmalarning qaysi qismini tashkil qiladi?','explanation': '4/15 toʻgʻri javob. Qizil va koʻk olmalarning qismini qoʻshamiz: 1/3 + 2/5 = 5/15 + 6/15 = 11/15. Yashil olmalarni topish uchun butundan (1 dan) ayiramiz: 1 - 11/15 = 4/15.','correct': '4/15','choices': ['3/15', '4/15', '7/15', '11/15']},{'text': 'Masalani yeching:A va B sonlarining EKUBi 6 ga, EKUKi esa 72 ga teng. Agar A soni 18 ga teng boʻlsa, B sonini toping.','explanation': '24 toʻgʻri javob. Matematik qoidaga koʻra: A * B = EKUB(A, B) * EKUK(A, B). Shundan kelib chiqib, 18 * B = 6 * 72. 18 * B = 432. B = 432 / 18 = 24.','correct': '24','choices': ['12', '24', '36', '48']},{'text': 'Harakatga doir masala:Katerning turgʻun suvdagi tezligi 20 km/sh, daryo oqimining tezligi esa 3 km/sh. Kater oqimga qarshi 2 soatda qancha masofani bosib oʻtadi?','explanation': '34 toʻgʻri javob. Oqimga qarshi tezlik: 20 - 3 = 17 km/sh. 2 soatda bosib oʻtilgan masofa: 17 * 2 = 34 km.','correct': '34','choices': ['34', '40', '43', '46']},{'text': 'Mantiqiy-kasr masalasi:Idishning 3/4 qismi suv bilan toʻla. Idishga yana 5 litr suv quyilsa, u butunlay toʻladi. Idish jami necha litr suv sigʻdiradi?','explanation': '20 toʻgʻri javob. Idishning boʻsh qismi: 1 - 3/4 = 1/4 qism. Demak, 1/4 qism 5 litrga teng. Idishning umumiy hajmi: 5 * 4 = 20 litr.','correct': '20','choices': ['15', '20', '25', '30']}]
 
+QUESTIONS = [
+{
+'text': 'Mantiqiy masala (EKUB):Sinf rahbari 48 ta shokolad va 72 ta konfetdan oʻquvchilar uchun bir xil sovgʻalar tayyorlamoqchi. Har bir sovgʻada shokolad va konfetlar soni mos ravishda teng boʻlishi kerak. Eng koʻpi bilan nechta bir xil sovgʻa tayyorlash mumkin?',
+'explanation': '24 toʻgʻri javob. Sovgʻalar soni eng koʻp boʻlishi uchun 48 va 72 sonlarining eng katta umumiy boʻluvchisini (EKUB) topishimiz kerak. 48 va 72 ning EKUBi 24 ga teng. Demak, 24 ta sovgʻa tayyorlash mumkin (har birida 2 ta shokolad va 3 ta konfet).',
+'correct': '24',
+'choices': ['12', '24', '48', '6']
+},
+{
+'text': 'Mantiqiy masala (EKUK):Ikki avtobus yoʻnalish boshidan bir vaqtda yoʻlga chiqdi. Birinchi avtobus har 12 minutda, ikkinchisi esa har 18 minutda shu bekatga qaytib keladi. Ular yoʻlga chiqqandan keyin eng kamida necha minutdan soʻng yana ushbu bekatda uchrashadilar?',
+'explanation': '36 toʻgʻri javob. Avtobuslarning bekatda qayta uchrashish vaqti 12 va 18 sonlarining eng kichik umumiy karralisi (EKUK) boʻladi. EKUK(12, 18) = 36. Demak, ular 36 minutdan keyin yana uchrashadilar.',
+'correct': '36',
+'choices': ['24', '36', '48', '72']
+},
+{
+'text': 'Mantiqiy masala (EKUB):Duradgorda uzunligi 90 sm va 120 sm boʻlgan ikkita taxta bor. U taxtalarni hech qanday ortiqchasiz, eng katta va teng uzunlikdagi boʻlaklarga kesmoqchi. Har bir boʻlakning uzunligi necha sm boʻladi?',
+'explanation': '30 toʻgʻri javob. Har bir boʻlakning uzunligi maksimal boʻlishi uchun 90 va 120 sonlarining EKUBini topamiz. 90 = 30 * 3 va 120 = 30 * 4. EKUB(90, 120) = 30 sm.',
+'correct': '30',
+'choices': ['15', '20', '30', '10']
+},
+{
+'text': 'Mantiqiy masala (EKUK):Maydondagi ikkita chiroqdan biri har 8 sekundda, ikkinchisi esa har 14 sekundda yonib-oʻchadi. Ular bir vaqtda yongandan keyin, eng kamida necha sekunddan soʻng yana bir vaqtda yonadi?',
+'explanation': '56 toʻgʻri javob. Chiroqlarning bir vaqtda yonish vaqti 8 va 14 sonlarining EKUKiga teng. 8 = 2^3 va 14 = 2 * 7. EKUK(8, 14) = 2^3 * 7 = 8 * 7 = 56 sekund.',
+'correct': '56',
+'choices': ['28', '42', '56', '112']
+},
+{
+'text': 'Mantiqiy masala (EKUK):Kutubxonadagi kitoblarni 6 tadan qilib ham, 8 tadan qilib ham taxlaganda hech qaysi guruhda kitob ortib qolmadi. Kutubxonada eng kamida nechta kitob boʻlishi mumkin?',
+'explanation': '24 toʻgʻri javob. Kitoblar soni 6 ga ham, 8 ga ham qoldiqsiz boʻlinishi kerak. Buning uchun ularning EKUKini topamiz: EKUK(6, 8) = 24.',
+'correct': '24',
+'choices': ['14', '24', '48', '16']
+},
+{
+'text': 'Mantiqiy masala (EKUB):Doʻkonga 60 litr olma sharbati va 84 litr gilos sharbati olib kelindi. Ularni aralashtirmasdan, bir xil sigʻimdagi eng katta idishlarga toʻldirib chiqish uchun idishning sigʻimi necha litr boʻlishi kerak?',
+'explanation': '12 toʻgʻri javob. Idish sigʻimi maksimal boʻlishi uchun 60 va 84 ning EKUBini topamiz. 60 = 12 * 5 va 84 = 12 * 7. EKUB(60, 84) = 12 litr.',
+'correct': '12',
+'choices': ['6', '12', '4', '24']
+},
+{
+'text': 'Natural boʻluvchilar soni:120 sonining nechta natural boʻluvchisi bor?',
+'explanation': '16 toʻgʻri javob. 120 sonini tub koʻpaytuvchilarga ajratamiz: 120 = 2^3 * 3^1 * 5^1. Natural boʻluvchilar sonini topish uchun daraja koʻrsatkichlariga 1 qoʻshib koʻpaytiramiz: (3+1) * (1+1) * (1+1) = 4 * 2 * 2 = 16.',
+'correct': '16',
+'choices': ['12', '14', '16', '20']
+},
+{
+'text': 'Natural boʻluvchilar soni:100 sonining nechta natural boʻluvchisi bor?',
+'explanation': '9 toʻgʻri javob. 100 sonini tub koʻpaytuvchilarga ajratamiz: 100 = 2^2 * 5^2. Boʻluvchilar soni formulasi boʻyicha: (2+1) * (2+1) = 3 * 3 = 9.',
+'correct': '9',
+'choices': ['6', '8', '9', '10']
+},
+{
+'text': 'Boʻlinish alomatlari:Besh xonali 432X0 soni 9 ga qoldiqsiz boʻlinishi uchun X raqamining oʻrniga qaysi raqam qoʻyilishi kerak?',
+'explanation': '9 toʻgʻri javob. Son 9 ga boʻlinishi uchun uning raqamlari yigʻindisi 9 ga boʻlinishi shart. Raqamlar yigʻindisi: 4+3+2+X+0 = 9 + X. Bu yigʻindi 9 ga boʻlinishi uchun X raqami 0 yoki 9 boʻlishi mumkin. Variantlar ichida 9 bor.',
+'correct': '9',
+'choices': ['3', '6', '8', '9']
+},
+{
+'text': 'Tub sonlar va koʻpaytuvchilar:210 sonining nechta turli tub koʻpaytuvchisi bor?',
+'explanation': '4 toʻgʻri javob. 210 sonini tub koʻpaytuvchilarga ajratamiz: 210 = 2 * 3 * 5 * 7. Demak, uning 4 ta turli tub koʻpaytuvchisi bor: 2, 3, 5 va 7.',
+'correct': '4',
+'choices': ['3', '4', '5', '6']
+},
+{
+'text': 'Boʻlinish alomatlari:Toʻrt xonali 57X4 soni 4 ga qoldiqsiz boʻlinadi. X raqami qabul qilishi mumkin boʻlgan barcha raqamlarning yigʻindisini toping.',
+'explanation': '20 toʻgʻri javob. Son 4 ga boʻlinishi uchun uning oxirgi ikkita raqamidan tuzilgan son 4 ga boʻlinishi kerak. X4 koʻrinishidagi sonlar: 04, 24, 44, 64, 84. Demak, X oʻrniga 0, 2, 4, 6, 8 qoʻyish mumkin. Ularning yigʻindisi: 0+2+4+6+8 = 20.',
+'correct': '20',
+'choices': ['15', '18', '20', '24']
+},
+{
+'text': 'Mantiqiy boʻluvchilar:Faqatgina 3 ta natural boʻluvchiga ega boʻlgan sonlar qanday sonlar hisoblanadi?',
+'explanation': 'Tub sonlarning kvadratlari toʻgʻri javob. Masalan, 4 sonining boʻluvchilari (1, 2, 4) - 3 ta; 9 sonining boʻluvchilari (1, 3, 9) - 3 ta; 25 sonining boʻluvchilari (1, 5, 25) - 3 ta. Bular tub sonlarning kvadratlaridir.',
+'correct': 'Tub sonlarning kvadratlari',
+'choices': ['Barcha tub sonlar', 'Juft sonlar', 'Tub sonlarning kvadratlari', 'Toq sonlar']
+},
+{
+'text': 'Natural boʻluvchilar soni:60 sonining nechta natural boʻluvchisi bor?',
+'explanation': '12 toʻgʻri javob. 60 = 2^2 * 3^1 * 5^1. Formula yordamida: (2+1) * (1+1) * (1+1) = 3 * 2 * 2 = 12 ta boʻluvchisi bor.',
+'correct': '12',
+'choices': ['8', '10', '12', '16']
+},
+{
+'text': 'Qoldiqli boʻlish mantigʻi:Nomaʼlum sonni 7 ga boʻlganda qoldiq 4 ga teng chiqdi. Shu nomaʼlum sonni 2 barobar oshirib, keyin 7 ga boʻlinsa, qoldiq nechaga teng boʻladi?',
+'explanation': '1 toʻgʻri javob. Sonni 2 barobar oshirganda, uning qoldigʻi ham 2 barobar oshadi: 4 * 2 = 8. Qoldiq boʻluvchidan (7 dan) katta boʻlishi mumkin emas, shuning uchun 8 ni 7 ga boʻlamiz va yakuniy qoldiq 1 ekanini topamiz.',
+'correct': '1',
+'choices': ['1', '2', '4', '0']
+},
+{
+'text': 'Harakatga doir masala (Qarama-qarshi harakat):A va B shaharlar orasidagi masofa 450 km. Bir vaqtning oʻzida ikki avtomobil bir-biriga qarab yoʻlga chiqdi. Birinchisining tezligi 70 km/sh, ikkinchisining tezligi 80 km/sh. Ular necha soatdan keyin uchrashadilar?',
+'explanation': '3 toʻgʻri javob. Avtomobillar bir-biriga qarab harakatlanayotganligi sababli yaqinlashish tezligi topiladi: 70 + 80 = 150 km/sh. Uchrashish vaqti: t = S / v = 450 / 150 = 3 soat.',
+'correct': '3',
+'choices': ['2', '3', '4', '5']
+},
+{
+'text': 'Harakatga doir masala (Uzoqlashish):Ikki velosipedchi bir nuqtadan qarama-qarshi yoʻnalishda harakatni boshladi. Birinchisining tezligi 12 km/sh, ikkinchisining tezligi 15 km/sh. 4 soatdan keyin ular orasidagi masofa necha km boʻladi?',
+'explanation': '108 toʻgʻri javob. Qarama-qarshi yoʻnalishda uzoqlashish tezligi: 12 + 15 = 27 km/sh. 4 soatdagi masofa: 27 * 4 = 108 km.',
+'correct': '108',
+'choices': ['96', '100', '108', '120']
+},
+{
+'text': 'Harakatga doir masala (Oqim boʻylab):Katerning turgʻun suvdagi tezligi 18 km/sh, daryo oqimining tezligi esa 3 km/sh. Kater daryo oqimi boʻylab 3 soatda qancha masofani (km) bosib oʻtadi?',
+'explanation': '63 toʻgʻri javob. Oqim boʻylab harakatlanganda kater tezligiga oqim tezligi qoʻshiladi: 18 + 3 = 21 km/sh. 3 soatda bosib oʻtilgan masofa: 21 * 3 = 63 km.',
+'correct': '63',
+'choices': ['45', '54', '60', '63']
+},
+{
+'text': 'Harakatga doir masala (Oqimga qarshi):Kema daryo oqimiga qarshi suzmoqda. Kemaning xususiy tezligi 20 km/sh, daryo oqimining tezligi esa 4 km/sh. Kema daryo oqimiga qarshi 48 km masofani necha soatda bosib oʻtadi?',
+'explanation': '3 toʻgʻri javob. Oqimga qarshi harakat tezligi: 20 - 4 = 16 km/sh. Vaqtni topish formulasi: t = S / v = 48 / 16 = 3 soat.',
+'correct': '3',
+'choices': ['2', '3', '4', '6']
+},
+{
+'text': 'Harakatga doir masala (Quvib yetish):Tezligi 5 km/sh boʻlgan piyoda yoʻlga chiqqanidan soʻng, xuddi shu nuqtadan va shu yoʻnalishda tezligi 15 km/sh boʻlgan velosipedchi harakatni boshladi. Agar piyoda velosipedchidan 20 km oldinda boʻlsa, velosipedchi piyodani necha soatda quvib yetadi?',
+'explanation': '2 toʻgʻri javob. Quvib yetish tezligi (tezliklar ayirmasi): 15 - 5 = 10 km/sh. Quvib yetish vaqti: t = S / v = 20 / 10 = 2 soat.',
+'correct': '2',
+'choices': ['1.5', '2', '3', '4']
+},
+{
+'text': 'Harakatga doir masala (Oʻrtacha tezlik):Avtomobil yoʻlning birinchi 2 soatida 60 km/sh tezlik bilan, keyingi 3 soatida esa 80 km/sh tezlik bilan yurdi. Avtomobilning butun yoʻldagi oʻrtacha tezligini (km/sh) toping.',
+'explanation': '72 toʻgʻri javob. Umumiy masofa: (2 * 60) + (3 * 80) = 120 + 240 = 360 km. Umumiy vaqt: 2 + 3 = 5 soat. Oʻrtacha tezlik: V_oʻrta = 360 / 5 = 72 km/sh.',
+'correct': '72',
+'choices': ['70', '72', '74', '75']
+},
+{
+'text': 'Harakatga doir masala:Poyezd reja boʻyicha maʼlum masofani 60 km/sh tezlik bilan 4 soatda bosib oʻtishi kerak edi. Agar u shu masofani 3 soatda bosib oʻtishi kerak boʻlsa, tezligini necha km/sh ga oshirishi kerak?',
+'explanation': '20 toʻgʻri javob. Jami masofa: 60 * 4 = 240 km. Masofani 3 soatda oʻtish uchun kerakli tezlik: 240 / 3 = 80 km/sh. Tezlikni oshirish miqdori: 80 - 60 = 20 km/sh.',
+'correct': '20',
+'choices': ['15', '20', '25', '80']
+},
+{
+'text': 'Tezlik birliklari:Yuguruvchi 200 metr masofani 25 sekundda bosib oʻtdi. Uning tezligini m/s da aniqlang.',
+'explanation': '8 toʻgʻri javob. Tezlikni topish uchun masofa vaqtga boʻlinadi: v = 200 / 25 = 8 m/s.',
+'correct': '8',
+'choices': ['6', '8', '10', '12']
+},
+{
+'text': 'Kasrlar (Notoʻgʻri kasrni aralash songa aylantirish):37/5 notoʻgʻri kasrni aralash son koʻrinishida ifodalang.',
+'explanation': '7 butun 2/5 toʻgʻri javob. 37 sonini 5 ga boʻlamiz: toʻliqsiz boʻlinma 7 (butun qism) va qoldiq 2 (surat) boʻladi. Maxraj oʻzgarmaydi. Natija: 7 butun 2/5.',
+'correct': '7 butun 2/5',
+'choices': ['6 butun 2/5', '7 butun 2/5', '7 butun 1/5', '5 butun 7/5']
+},
+{
+'text': 'Kasrlar (Aralash sonni notoʻgʻri kasrga aylantirish):5 butun 4/7 aralash sonini notoʻgʻri kasr koʻrinishida yozing.',
+'explanation': '39/7 toʻgʻri javob. Aralash sonni notoʻgʻri kasrga aylantirish uchun butun qism maxrajga koʻpaytirilib, surat qoʻshiladi: 5 * 7 + 4 = 35 + 4 = 39. Bu surat boʻladi, maxraj esa oʻzgarishsiz qoladi: 39/7.',
+'correct': '39/7',
+'choices': ['35/7', '39/7', '43/7', '29/7']
+},
+{
+'text': 'Kasrlar mantigʻi:Bir kasrning surati maxrajidan 5 ga kam. Agar surat va maxrajning yigʻindisi 23 ga teng boʻlsa, ushbu kasrni toping.',
+'explanation': '9/14 toʻgʻri javob. Maxrajni X deb olsak, surat X - 5 boʻladi. Ularning yigʻindisi: X + X - 5 = 23 -> 2X = 28 -> X = 14 (maxraj). Surat: 14 - 5 = 9. Kasr 9/14 ga teng.',
+'correct': '9/14',
+'choices': ['7/16', '9/14', '8/15', '10/13']
+},
+{
+'text': 'Kasrlarni taqqoslash:Quyidagi kasrlardan qaysi biri eng katta?',
+'explanation': '3/4 toʻgʻri javob. Kasrlarni taqqoslash uchun umumiy maxrajga keltiramiz yoki oʻzaro solishtiramiz. 3/4 = 0.75; 5/7 ≈ 0.714; 1/2 = 0.5; 5/8 = 0.625. Koʻrinib turibdiki, 3/4 eng kattasi.',
+'correct': '3/4',
+'choices': ['1/2', '5/7', '3/4', '5/8']
+},
+{
+'text': 'Kasrlar ustida amallar:Hisoblang: 11/15 - 4/15 + 2/15 ifodaning qiymatini toping.',
+'explanation': '3/5 toʻgʻri javob. Maxrajlar bir xil boʻlgani uchun suratlar ustida amallar bajariladi: (11 - 4 + 2) / 15 = 9/15. Bu kasrni 3 ga qisqartirsak, 3/5 hosil boʻladi.',
+'correct': '3/5',
+'choices': ['9/15', '3/5', '7/15', '1/3']
+},
+{
+'text': 'Aralash sonlarni qoʻshish:Amalni bajaring: 3 butun 2/9 + 4 butun 5/9',
+'explanation': '7 butun 7/9 toʻgʻri javob. Aralash sonlarni qoʻshishda butun qismlar alohida, kasr qismlar alohida qoʻshiladi: (3 + 4) + (2/9 + 5/9) = 7 + 7/9 = 7 butun 7/9.',
+'correct': '7 butun 7/9',
+'choices': ['7 butun 7/9', '8 butun 7/9', '7 butun 2/9', '12 butun 7/9']
+},
+{
+'text': 'Aralash sonlarni ayirish (qarz olish):Amalni bajaring: 5 butun 1/6 - 2 butun 5/6',
+'explanation': '2 butun 2/6 toʻgʻri javob. 1/6 dan 5/6 ni ayirib boʻlmagani uchun butun qismdan 1 qarz olamiz: 5 butun 1/6 = 4 butun 7/6. Endi ayiramiz: 4 butun 7/6 - 2 butun 5/6 = 2 butun 2/6 (yoki qisqartirilganda 2 butun 1/3).',
+'correct': '2 butun 2/6',
+'choices': ['3 butun 4/6', '2 butun 2/6', '2 butun 4/6', '3 butun 2/6']
+},
+{
+'text': 'Sonning kasrini topish:Sinfdagi 42 ta oʻquvchining 3/7 qismi matematika toʻgaragiga qatnashadi. Nechta oʻquvchi matematika toʻgaragiga qatnashadi?',
+'explanation': '18 toʻgʻri javob. Sonning kasrini topish uchun sonni kasrning maxrajiga boʻlib, suratiga koʻpaytiramiz: 42 / 7 * 3 = 6 * 3 = 18.',
+'correct': '18',
+'choices': ['12', '16', '18', '24']
+},
+{
+'text': 'Kasriga koʻra sonni topish:Kitobning 4/9 qismi oʻqilganda 36 sahifa boʻldi. Kitob jami necha sahifadan iborat?',
+'explanation': '81 toʻgʻri javob. Kasriga koʻra sonni topish uchun berilgan qiymatni suratga boʻlib, maxrajga koʻpaytiramiz: 36 / 4 * 9 = 9 * 9 = 81 sahifa.',
+'correct': '81',
+'choices': ['72', '81', '90', '64']
+},
+{
+'text': 'Kasrlar bilan bogʻliq mantiqiy masala:Hovuzning 3/8 qismi suv bilan toʻldirilgan. Agar hovuzga yana 15 litr suv quyilsa, hovuz toʻladi. Hovuzning jami sigʻimi necha litr?',
+'explanation': '24 toʻgʻri javob. Hovuzning boʻsh qismi kasr koʻrinishida: 1 - 3/8 = 5/8 qism. Demak, hovuzning 5/8 qismi 15 litrga teng. Jami sigʻimni topish uchun: 15 / 5 * 8 = 3 * 8 = 24 litr.',
+'correct': '24',
+'choices': ['24', '32', '40', '48']
+},
+{
+'text': 'Geometrik mantiqiy masala:Toʻgʻri toʻrtburchakning perimetri 30 sm ga teng. Agar uning boʻyi 9 sm boʻlsa, ushbu toʻgʻri toʻrtburchakning yuzini (sm²) toping.',
+'explanation': '54 toʻgʻri javob. Perimetr formulasi: P = 2 * (a + b). 30 = 2 * (9 + b) -> 9 + b = 15 -> b = 6 sm (eni). Yuzi: S = a * b = 9 * 6 = 54 sm².',
+'correct': '54',
+'choices': ['45', '54', '60', '63']
+},
+{
+'text': 'Yoshga doir mantiqiy masala:Ota 36 yoshda, oʻgʻil esa 8 yoshda. Necha yildan keyin ota oʻgʻlidan 3 barobar katta boʻladi?',
+'explanation': '6 toʻgʻri javob. X yildan keyin otaning yoshi 36 + X, oʻgʻilning yoshi 8 + X boʻladi. Tenglama tuzamiz: 36 + X = 3 * (8 + X) -> 36 + X = 24 + 3X -> 2X = 12 -> X = 6 yil.',
+'correct': '6',
+'choices': ['4', '5', '6', '7']
+},
+{
+'text': 'Mantiqiy masala (Yigʻindi va ayirma):Ikki sonning yigʻindisi 84 ga, ularning ayirmasi esa 16 ga teng. Shu sonlardan kattasini toping.',
+'explanation': '50 toʻgʻri javob. Katta sonni topish uchun yigʻindi va ayirma qoʻshilib 2 ga boʻlinadi: (84 + 16) / 2 = 100 / 2 = 50. (Kichik son 34 boʻladi).',
+'correct': '50',
+'choices': ['45', '48', '50', '52']
+},
+{
+'text': 'Tenglama yechish:Tenglamani yeching: 5x - 12 = 38',
+'explanation': '10 toʻgʻri javob. 5x = 38 + 12 -> 5x = 50 -> x = 50 / 5 -> x = 10.',
+'correct': '10',
+'choices': ['8', '9', '10', '12']
+},
+{
+'text': 'Mantiqiy masala (Teskari proporsiya):3 ta ishchi maʼlum bir ishni 6 kunda bajarib tugatadi. Agar ishchilar soni 9 ta boʻlsa, shu ishni necha kunda bajarishadi?',
+'explanation': '2 toʻgʻri javob. Ishchilar soni koʻpaysa, ishga ketadigan vaqt kamayadi (teskari proporsiya). Jami ish hajmi: 3 * 6 = 18 odam-kun. 9 ta ishchi uchun: 18 / 9 = 2 kun kerak boʻladi.',
+'correct': '2',
+'choices': ['2', '3', '4', '18']
+},
+{
+'text': 'Mantiqiy ketma-ketlik:Quyidagi qonuniyatga qarab boʻsh oʻringa mos sonni toping: 2, 5, 11, 23, ...',
+'explanation': '47 toʻgʻri javob. Ketma-ketlikdagi har bir son oʻzidan oldingi sonni 2 ga koʻpaytirib, 1 qoʻshish orqali hosil boʻlyapti: 2*2+1=5; 5*2+1=11; 11*2+1=23. Keyingi son: 23*2+1 = 47.',
+'correct': '47',
+'choices': ['35', '45', '46', '47']
+},
+{
+'text': 'Dirixle prinsipi / Mantiqiy masala:Qutida 6 ta qizil va 8 ta koʻk shar bor. Qutiga qaramasdan, eng kamida nechta shar olganda ularning ichida albatta kamida bitta qizil shar boʻlishi kafolatlanadi?',
+'explanation': '9 toʻgʻri javob. Eng yomon holatni tasavvur qilamiz: ketma-ket olgan dastlabki 8 ta sharimizning barchasi koʻk boʻlib chiqdi. Shundan keyin olinadigan 9-shar albatta qizil boʻladi. Demak, 9 ta shar olish kerak.',
+'correct': '9',
+'choices': ['7', '8', '9', '14']
+},
+{
+'text': 'Toʻplamlar mantiqi:25 ta oʻquvchisi bor sinfda 15 ta oʻquvchi matematika toʻgaragiga, 12 tasi esa ingliz tili toʻgaragiga qatnashadi. 5 ta oʻquvchi har ikkala toʻgarakka qatnashsa, sinfda nechta oʻquvchi umuman toʻgaraklarga qatnashmaydi?',
+'explanation': '3 toʻgʻri javob. Kamida bitta toʻgarakka qatnashadigan oʻquvchilar sonini topamiz: 15 + 12 - 5 = 22 ta oʻquvchi. Toʻgaraklarga qatnashmaydiganlar oʻquvchilar: 25 - 22 = 3 ta.',
+'correct': '3',
+'choices': ['2', '3', '5', '8']
+}
+]
 
 
 class Command(BaseCommand):
@@ -160,7 +271,7 @@ class Command(BaseCommand):
         )
 
         practice, created = Practice.objects.get_or_create(
-            title='Takrorlash 2.',  # --- IGNORE ---
+            title='Takrorlash 3, 라고, 다, 자고 하다',  # --- IGNORE ---
             master=master,
             defaults={
                 'description': 'Let\'s practice some math problems to improve your skills.',  # --- IGNORE ---
