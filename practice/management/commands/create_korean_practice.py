@@ -212,7 +212,7 @@ class Command(BaseCommand):
             title='Takrorlash 3, 라고, 다, 자고 하다',  # --- IGNORE ---
             master=master,
             defaults={
-                'description': 'Tarixdan o\'rganamiz',
+                'description': 'Takrorlash 3, 라고, 다, 자고 하다',
                 'subject': subject,
                 'level': 'medium',
                 'is_free': True,

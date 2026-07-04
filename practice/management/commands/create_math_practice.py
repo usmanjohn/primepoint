@@ -249,7 +249,7 @@ QUESTIONS = [
 
 
 class Command(BaseCommand):
-    help = 'Create a Korean grammar particle practice test'
+    help = 'Create a math practice test'
 
     def add_arguments(self, parser):
         parser.add_argument('--master', required=True, help='Username of the master to assign this practice to')
@@ -271,7 +271,7 @@ class Command(BaseCommand):
         )
 
         practice, created = Practice.objects.get_or_create(
-            title='Takrorlash 3, 라고, 다, 자고 하다',  # --- IGNORE ---
+            title='math 5th grade all',  # --- IGNORE ---
             master=master,
             defaults={
                 'description': 'Let\'s practice some math problems to improve your skills.',  # --- IGNORE ---
