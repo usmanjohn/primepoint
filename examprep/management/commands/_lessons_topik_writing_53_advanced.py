@@ -143,6 +143,20 @@ for _t in _D["templates"]:
 _blocks.append({"rich_text": "<h3>2) 연습 — Amaliy namunalar (pie · kombinatsiya)</h3>"})
 for _i, _q in enumerate(_D["questions"], start=1):
     _blocks.append({"rich_text": _question_block(_i, _q)})
+_blocks.append({"rich_text": """
+<h3>Solishtirish iboralari — tezkor takror 🔁</h3>
+<p class="text-secondary small">Ikki grafikli savolda eng kerakli iboralar. Kartani bosib ag'daring.</p>
+<div class="pp-flashcards" data-pp-flashcards>
+  <div class="pp-card"><div class="pp-card-front">반면(에)</div><div class="pp-card-back">aksincha / bunga qarama-qarshi</div></div>
+  <div class="pp-card"><div class="pp-card-front">이에 비해</div><div class="pp-card-back">bunga nisbatan</div></div>
+  <div class="pp-card"><div class="pp-card-front">절반</div><div class="pp-card-back">yarmi (50%)</div></div>
+  <div class="pp-card"><div class="pp-card-front">대부분</div><div class="pp-card-back">aksariyati, ko'pchiligi</div></div>
+  <div class="pp-card"><div class="pp-card-front">~(으)로 나타났다</div><div class="pp-card-back">... bo'lib chiqdi (natija)</div></div>
+  <div class="pp-card"><div class="pp-card-front">~을/를 차지했다</div><div class="pp-card-back">...ni (ulushni) egalladi</div></div>
+  <div class="pp-card"><div class="pp-card-front">~ㄹ 전망이다</div><div class="pp-card-back">... kutilmoqda (kelajak)</div></div>
+  <div class="pp-card"><div class="pp-card-front">이를 통해</div><div class="pp-card-back">shu orqali / bundan</div></div>
+</div>
+"""})
 _blocks.append({"rich_text": _CLOSING})
 
 LESSONS = [

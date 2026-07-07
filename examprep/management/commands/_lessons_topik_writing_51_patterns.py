@@ -85,6 +85,32 @@ _CLOSING = """
 </div>
 """
 
+
+def _form_of(slide):
+    """Slayd satrlaridan asosiy grammatik shaklni (qalin chiziladigan satrni) olish."""
+    for line in _PATTERNS[slide]["lines"]:
+        if ("→" in line) or any(t in line for t in ("V-", "N-", "A-", "A/V", "-(으)")):
+            return line
+    return _PATTERNS[slide]["lines"][0] if _PATTERNS[slide]["lines"] else ""
+
+
+def _flash_block():
+    """Tezkor takror: old tomon — funksiya (o'zbekcha), orqa tomon — grammatik shakl."""
+    cards = ""
+    for s in sorted(_GRAMMAR):
+        form = _form_of(s)
+        if not form:
+            continue
+        cards += (f'<div class="pp-card"><div class="pp-card-front">{html.escape(_GRAMMAR[s])}</div>'
+                  f'<div class="pp-card-back">{html.escape(form)}</div></div>')
+    return {"rich_text": f"""
+<h3>3) Tezkor takror — funksiya → shakl 🔁</h3>
+<p class="text-secondary small">Old tomonda funksiya nomi. Unga mos <strong>grammatik shaklni</strong>
+eslashga urining, keyin kartani bosib tekshiring.</p>
+<div class="pp-flashcards" data-pp-flashcards>{cards}</div>
+"""}
+
+
 _blocks = [{"rich_text": _INTRO}]
 
 _blocks.append({"rich_text": "<h3>1) 기능 표현 — Funksional template'lar</h3>"})
@@ -95,6 +121,7 @@ _blocks.append({"rich_text": '<h3>2) 어휘 — Foydali leksika</h3>'})
 for _s in sorted(_VOCAB):
     _blocks.append({"rich_text": _pattern_card(_s, _VOCAB[_s], "#10b981")})
 
+_blocks.append(_flash_block())
 _blocks.append({"rich_text": _CLOSING})
 
 LESSONS = [

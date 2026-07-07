@@ -144,13 +144,73 @@ _CLOSING = """
 </div>
 """
 
+# Ishlangan misol: template'lardan javob qadam-baqadam quriladi.
+_WORKED = """
+<h3>Ishlangan misol — javob qanday quriladi 🔍</h3>
+<p>Kichik so'rov ma'lumotidan to'liq javobgacha. Har qadamni ochib boring:</p>
+<div class="pp-steps" data-pp-steps data-pp-more="Keyingi qadam ▸">
+  <div class="pp-step">
+    <p><strong>Ma'lumot:</strong> 인주시 (Inju shahri) 성인 남녀 1,000명 (1000 nafar katta yoshli)
+    o'rtasida <strong>여가 활동</strong> (bo'sh vaqt mashg'uloti) so'rovi: 운동 45% · 여행 30% · 독서 25%.</p>
+  </div>
+  <div class="pp-step">
+    <p><strong>1-qadam — kirish:</strong> kim, kimni, nima haqida so'radi (kirish template'i):</p>
+    <div style="background:#f1f5f9;border-radius:10px;padding:12px 14px;margin:8px 0 0;">
+      <p style="margin:0 0 4px;"><strong>인주시에서 성인 남녀 1,000명을 대상으로 여가 활동에 대해 조사하였다.</strong></p>
+      <p style="color:#475569;margin:0;"><em>Inju shahrida 1000 nafar katta yoshli erkak-ayol o'rtasida
+      bo'sh vaqt mashg'uloti haqida so'rov o'tkazildi.</em></p>
+    </div>
+  </div>
+  <div class="pp-step">
+    <p><strong>2-qadam — tartib va foiz:</strong> eng kattadan boshlab (tartib template'i):</p>
+    <div style="background:#f1f5f9;border-radius:10px;padding:12px 14px;margin:8px 0 0;">
+      <p style="margin:0 0 4px;"><strong>그 결과 운동이 45%로 가장 높게 나타났다. 다음으로 여행이 30%,
+      독서가 25%로 뒤를 이었다.</strong></p>
+      <p style="color:#475569;margin:0;"><em>Natijada sport 45% bilan eng yuqori chiqdi. Undan keyin
+      sayohat 30%, kitob o'qish 25% bilan davom etdi.</em></p>
+    </div>
+  </div>
+  <div class="pp-step">
+    <p><strong>3-qadam — yakun</strong> va tayyor javob (hammasi birga):</p>
+    <div style="background:#faf5ff;border-left:4px solid #a855f7;padding:12px 16px;border-radius:8px;margin:8px 0 0;">
+      <p style="margin:0 0 4px;"><strong>인주시에서 성인 남녀 1,000명을 대상으로 여가 활동에 대해
+      조사하였다. 그 결과 운동이 45%로 가장 높게 나타났다. 다음으로 여행이 30%, 독서가 25%로 뒤를
+      이었다. 이를 통해 성인들은 여가 시간에 주로 운동을 즐긴다는 것을 알 수 있다.</strong></p>
+      <p style="color:#475569;margin:0;"><em>...Bundan katta yoshlilar bo'sh vaqtida asosan sport bilan
+      shug'ullanishini bilish mumkin.</em></p>
+    </div>
+    <p style="margin:8px 0 0;">Formula: <mark>kirish (조사하였다)</mark> +
+    <mark style="background:#dbeafe;">tartib (가장 높게 나타났다 · 뒤를 이었다)</mark> +
+    <mark style="background:#dcfce7;">yakun (이를 통해 ~ 알 수 있다)</mark>.</p>
+  </div>
+</div>
+"""
+
+# 53 uchun eng muhim iboralar — flashcards.
+_FLASH = """
+<h3>53-savol iboralari — tezkor takror 🔁</h3>
+<p class="text-secondary small">Grafik tasvirlashda eng ko'p ishlatiladigan iboralar. Kartani bosib ag'daring.</p>
+<div class="pp-flashcards" data-pp-flashcards>
+  <div class="pp-card"><div class="pp-card-front">~을/를 대상으로 조사하다</div><div class="pp-card-back">... o'rtasida so'rov o'tkazmoq</div></div>
+  <div class="pp-card"><div class="pp-card-front">가장 높게 나타나다</div><div class="pp-card-back">eng yuqori chiqmoq</div></div>
+  <div class="pp-card"><div class="pp-card-front">뒤를 잇다</div><div class="pp-card-back">undan keyin turmoq (2-, 3-o'rin)</div></div>
+  <div class="pp-card"><div class="pp-card-front">차지하다</div><div class="pp-card-back">(ulushni) egallamoq</div></div>
+  <div class="pp-card"><div class="pp-card-front">증가하다</div><div class="pp-card-back">ortmoq, ko'paymoq</div></div>
+  <div class="pp-card"><div class="pp-card-front">감소하다</div><div class="pp-card-back">kamaymoq</div></div>
+  <div class="pp-card"><div class="pp-card-front">~에 따르면</div><div class="pp-card-back">...ga ko'ra</div></div>
+  <div class="pp-card"><div class="pp-card-front">이를 통해 ~ 알 수 있다</div><div class="pp-card-back">bundan ...ni bilish mumkin</div></div>
+</div>
+"""
+
 _blocks = [{"rich_text": _INTRO}]
 _blocks.append({"rich_text": "<h3>1) 문형 — Tasvirlash template'lari</h3>"})
 for _t in _templates:
     _blocks.append({"rich_text": _template_card(_t)})
+_blocks.append({"rich_text": _WORKED})
 _blocks.append({"rich_text": "<h3>2) 연습 — Amaliy namunalar (grafik + javob)</h3>"})
 for _i, _q in enumerate(_questions, start=1):
     _blocks.append({"rich_text": _question_block(_i, _q)})
+_blocks.append({"rich_text": _FLASH})
 _blocks.append({"rich_text": _CLOSING})
 
 LESSONS = [

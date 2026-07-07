@@ -114,12 +114,32 @@ def _question_block(n, q):
 """
 
 
-def _build(items, intro_html, closing_html):
+def _build(items, intro_html, closing_html, extra_html=None):
     blocks = [{"rich_text": intro_html}]
     for i, q in enumerate(items, start=1):
         blocks.append({"rich_text": _question_block(i, q)})
+    if extra_html:
+        blocks.append({"rich_text": extra_html})
     blocks.append({"rich_text": closing_html})
     return blocks
+
+
+# "Grafik + qo'shimcha ma'lumot" darsida kerak bo'ladigan iboralar — flashcards.
+_A_FLASH = """
+<h3>원인·대책·전망 iboralari — tezkor takror 🔁</h3>
+<p class="text-secondary small">Qo'shimcha ma'lumotni matnга bog'lashda ishlatiladigan iboralar.
+Kartani bosib ag'daring.</p>
+<div class="pp-flashcards" data-pp-flashcards>
+  <div class="pp-card"><div class="pp-card-front">원인</div><div class="pp-card-back">sabab</div></div>
+  <div class="pp-card"><div class="pp-card-front">대책</div><div class="pp-card-back">chora, yechim</div></div>
+  <div class="pp-card"><div class="pp-card-front">전망</div><div class="pp-card-back">istiqbol, prognoz</div></div>
+  <div class="pp-card"><div class="pp-card-front">~(으)로 인해</div><div class="pp-card-back">... tufayli, ... sababli</div></div>
+  <div class="pp-card"><div class="pp-card-front">~ㄹ 것으로 보인다</div><div class="pp-card-back">... deb ko'rinadi (taxmin)</div></div>
+  <div class="pp-card"><div class="pp-card-front">해결 방안</div><div class="pp-card-back">yechim yo'li</div></div>
+  <div class="pp-card"><div class="pp-card-front">늘어나다</div><div class="pp-card-back">ko'paymoq, o'smoq</div></div>
+  <div class="pp-card"><div class="pp-card-front">줄어들다</div><div class="pp-card-back">kamaymoq, qisqarmoq</div></div>
+</div>
+"""
 
 
 _A_INTRO = """
@@ -166,7 +186,7 @@ LESSONS = [
         "summary": "쓰기 53 — bitta grafik va matnli qo'shimcha ma'lumotni (원인/전망) birlashtirib "
                    "200–300 자 yozish; belgi soni ko'rsatilgan namunalar.",
         "order":   22,
-        "blocks":  _build(_D["single"], _A_INTRO, _A_CLOSING),
+        "blocks":  _build(_D["single"], _A_INTRO, _A_CLOSING, extra_html=_A_FLASH),
     },
     {
         "skill":   "writing",

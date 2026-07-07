@@ -421,6 +421,23 @@ _CLOSING = """
 </div>
 """
 
+
+def _flash_block(chunk):
+    """Qism mavzularidan tezkor takror: har mavzuning 1-jumlasi — karta."""
+    cards = ""
+    for t in chunk:
+        tr = _TR[_norm(t["title"])]
+        ko = t["sents"][0] if t["sents"] else t["title"]
+        uz = tr["s"][0] if tr["s"] else tr["uz"]
+        cards += (f'<div class="pp-card"><div class="pp-card-front">{html.escape(ko)}</div>'
+                  f'<div class="pp-card-back">{html.escape(uz)}</div></div>')
+    return {"rich_text": f"""
+<h3>Tezkor takror — o'zingizni sinang 🔁</h3>
+<p class="text-secondary small">Har mavzudan bittadan jumla. Koreyscha jumlani <strong>ko'rib</strong>
+ma'nosini eslashga urining, keyin kartani bosib tekshiring.</p>
+<div class="pp-flashcards" data-pp-flashcards>{cards}</div>
+"""}
+
 # Faqat tarjima qilingan mavzular, fayldagi tartibda.
 _TR = {_norm(k): v for k, v in TRANSLATIONS.items()}
 _ready = [t for t in _TOPICS if _norm(t["title"]) in _TR]
@@ -431,6 +448,7 @@ for _pi, _start in enumerate(range(0, len(_ready), PER_PART), start=1):
     _blocks = [{"rich_text": _intro(_pi, _start + 1, _start + len(_chunk))}]
     for _t in _chunk:
         _blocks.append({"rich_text": _topic_card(_t)})
+    _blocks.append(_flash_block(_chunk))
     _blocks.append({"rich_text": _CLOSING})
     LESSONS.append({
         "skill":   "writing",

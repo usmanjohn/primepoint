@@ -177,30 +177,51 @@ berilgan. Ularni 서론 (kirish), 본론 (asosiy qism) va 결론 (xulosa) bo'yic
 </div>
 """,
             },
-            # ── 7. Kalit so'zlar + Xulosa ────────────────────────────────
+            # ── 7. Yodlangan jumladan tayyor abzasgacha (step-reveal) ────
             {
                 "rich_text": """
-<h3>Kalit so'zlar — 핵심 단어</h3>
-<ul>
-  <li><strong>서론</strong> — kirish</li>
-  <li><strong>본론</strong> — asosiy qism</li>
-  <li><strong>결론</strong> — xulosa</li>
-  <li><strong>따라서</strong> — shuning uchun</li>
-  <li><strong>반면에</strong> — aksincha</li>
-  <li><strong>예를 들어</strong> — masalan</li>
-  <li><strong>점점 더</strong> — tobora ko'proq</li>
-  <li><strong>중요하다</strong> — muhim bo'lmoq</li>
-</ul>
-
-<div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:12px 16px;border-radius:8px;margin:16px 0;">
-  <strong>📌 Xulosa</strong>
-  <ul style="margin:8px 0 0;">
-    <li>So'z emas, namunaviy javob ham emas — <strong>jumlalarni</strong> yodlang.</li>
-    <li>Har jumlani kuniga 3 marta, 3 kun; kuniga 3 ta jumla.</li>
-    <li>Jumlalarni <strong>kitobdan</strong> oling, eski javoblardan ko'chirmang.</li>
-    <li>서론·본론·결론 uchun tayyor jumlalar — xatosiz, oson, tez.</li>
-  </ul>
+<h3>Yodlangan jumladan tayyor abzasgacha</h3>
+<p>Bitta yodlangan jumla imtihonda qanday qilib butun <strong>본론</strong> abzasiga
+aylanadi? Har qadamni birma-bir ochib, abzas qanday o'sishini ko'ring:</p>
+<div class="pp-steps" data-pp-steps data-pp-more="Keyingi qadam ▸">
+  <div class="pp-step">
+    <p><strong>1-qadam — yodlangan jumla</strong> (tayanch fikr, tayyor va xatosiz):</p>
+    <div style="background:#f1f5f9;border-radius:10px;padding:12px 14px;margin:8px 0 0;">
+      <p style="margin:0 0 4px;"><strong>환경 오염은 우리가 시급히 해결해야 할 문제이다.</strong></p>
+      <p style="color:#475569;margin:0;"><em>Atrof-muhit ifloslanishi — biz zudlik bilan hal
+      qilishimiz kerak bo'lgan muammo.</em></p>
+    </div>
+  </div>
+  <div class="pp-step">
+    <p><strong>2-qadam — sabab qo'shamiz</strong> (<mark style="background:#dbeafe;">-기 때문이다</mark>):</p>
+    <div style="background:#f1f5f9;border-radius:10px;padding:12px 14px;margin:8px 0 0;">
+      <p style="margin:0 0 4px;"><strong>오염된 환경은 우리의 건강에 직접적인 영향을 미치기 때문이다.</strong></p>
+      <p style="color:#475569;margin:0;"><em>Chunki ifloslangan muhit sog'lig'imizga bevosita
+      ta'sir qiladi.</em></p>
+    </div>
+  </div>
+  <div class="pp-step">
+    <p><strong>3-qadam — misol qo'shamiz</strong> (<mark style="background:#dcfce7;">예를 들어</mark> — masalan):</p>
+    <div style="background:#f1f5f9;border-radius:10px;padding:12px 14px;margin:8px 0 0;">
+      <p style="margin:0 0 4px;"><strong>예를 들어, 미세먼지가 심한 날에는 호흡기 질환 환자가 늘어난다.</strong></p>
+      <p style="color:#475569;margin:0;"><em>Masalan, chang (mayda zarra) kuchli kunlarda nafas
+      yo'llari kasalliklari bilan og'riganlar ko'payadi.</em></p>
+    </div>
+  </div>
+  <div class="pp-step">
+    <p><strong>Tayyor abzas</strong> — uch gap birga:</p>
+    <div style="background:#faf5ff;border-left:4px solid #a855f7;padding:12px 16px;border-radius:8px;margin:8px 0 0;">
+      <p style="margin:0 0 4px;"><strong>환경 오염은 우리가 시급히 해결해야 할 문제이다. 오염된 환경은
+      우리의 건강에 직접적인 영향을 미치기 때문이다. 예를 들어, 미세먼지가 심한 날에는 호흡기 질환
+      환자가 늘어난다.</strong></p>
+      <p style="color:#475569;margin:0;"><em>Atrof-muhit ifloslanishi — zudlik bilan hal qilinishi
+      kerak bo'lgan muammo. Chunki ifloslangan muhit sog'lig'imizga bevosita ta'sir qiladi.
+      Masalan, chang kuchli kunlarda nafas yo'llari kasalliklari bilan og'riganlar ko'payadi.</em></p>
+    </div>
+  </div>
 </div>
+<p>Formula: <mark>1 yodlangan jumla</mark> + <mark style="background:#dbeafe;">1 sabab
+(-기 때문이다)</mark> + <mark style="background:#dcfce7;">1 misol (예를 들어)</mark> = tayyor abzas.</p>
 """,
             },
             # ── 8. Amaliyot savoli 1 ─────────────────────────────────────
@@ -230,6 +251,33 @@ berilgan. Ularni 서론 (kirish), 본론 (asosiy qism) va 결론 (xulosa) bo'yic
                 "explanation": "<p>To'g'ri javob — <strong>“이상에서 살펴본 바와 같이…”</strong> "
                                "(Yuqorida ko'rib chiqilganidek…). Bu ibora insho oxirida, "
                                "xulosa qismida ishlatiladi. Qolganlari 서론 yoki 본론 jumlalaridir.</p>",
+            },
+            # ── 10. Kalit so'zlar (flashcards) + Xulosa ──────────────────
+            {
+                "rich_text": """
+<h3>Kalit so'zlar — 핵심 단어</h3>
+<p class="text-secondary small">Kartani bosib ag'daring — koreyscha so'zni ko'rib, ma'nosini eslang.</p>
+<div class="pp-flashcards" data-pp-flashcards>
+  <div class="pp-card"><div class="pp-card-front">서론</div><div class="pp-card-back">kirish</div></div>
+  <div class="pp-card"><div class="pp-card-front">본론</div><div class="pp-card-back">asosiy qism</div></div>
+  <div class="pp-card"><div class="pp-card-front">결론</div><div class="pp-card-back">xulosa</div></div>
+  <div class="pp-card"><div class="pp-card-front">따라서</div><div class="pp-card-back">shuning uchun</div></div>
+  <div class="pp-card"><div class="pp-card-front">반면에</div><div class="pp-card-back">aksincha</div></div>
+  <div class="pp-card"><div class="pp-card-front">예를 들어</div><div class="pp-card-back">masalan</div></div>
+  <div class="pp-card"><div class="pp-card-front">점점 더</div><div class="pp-card-back">tobora ko'proq</div></div>
+  <div class="pp-card"><div class="pp-card-front">중요하다</div><div class="pp-card-back">muhim bo'lmoq</div></div>
+</div>
+
+<div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:12px 16px;border-radius:8px;margin:16px 0;">
+  <strong>📌 Xulosa</strong>
+  <ul style="margin:8px 0 0;">
+    <li>So'z emas, namunaviy javob ham emas — <strong>jumlalarni</strong> yodlang.</li>
+    <li>Har jumlani kuniga 3 marta, 3 kun; kuniga 3 ta jumla.</li>
+    <li>Jumlalarni <strong>kitobdan</strong> oling, eski javoblardan ko'chirmang.</li>
+    <li>서론·본론·결론 uchun tayyor jumlalar — xatosiz, oson, tez.</li>
+  </ul>
+</div>
+""",
             },
         ],
     },

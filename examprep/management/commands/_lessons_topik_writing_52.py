@@ -82,10 +82,71 @@ _L1_CLOSING = """
 </div>
 """
 
+# Ishlangan misol (qadam-baqadam): signal so'z orqali ㉠ va ㉡ ni topish.
+_L1_WORKED = """
+<h3>Ishlangan misol — signal so'z qanday ishlaydi 🔍</h3>
+<p>Bitta qisqa matnni birga yechamiz. Har qadamni ochib boring:</p>
+<div class="pp-steps" data-pp-steps data-pp-more="Keyingi qadam ▸">
+  <div class="pp-step">
+    <p><strong>1-qadam — butun matnni o'qing</strong> (mavzu: kofe va kofein):</p>
+    <div style="background:#fff;border:1px solid #cbd5e1;border-radius:10px;padding:14px 16px;line-height:2.0;">
+      사람들은 보통 잠을 깨기 위해 아침에 커피를 마신다. 커피에 들어 있는 카페인이 피로를 풀어 주기
+      때문이다. <mark style="background:#dbeafe;">그러나</mark> 커피를 너무 많이
+      <mark style="background:#fef3c7;border-bottom:2px solid #f59e0b;">( ㉠ )</mark>.
+      카페인을 지나치게 섭취하면 밤에 잠을 자기 어렵기 때문이다.
+      <mark style="background:#dcfce7;">그러므로</mark> 커피는 하루에 두 잔 이하로
+      <mark style="background:#fef3c7;border-bottom:2px solid #f59e0b;">( ㉡ )</mark>.
+    </div>
+  </div>
+  <div class="pp-step">
+    <p><strong>2-qadam — ㉠:</strong> oldida <mark style="background:#dbeafe;">그러나</mark> (lekin)
+    turibdi — demak oldingi ijobiy gapga <strong>qarama-qarshi</strong> fikr kerak:</p>
+    <div style="background:#f1f5f9;border-radius:10px;padding:12px 14px;margin:8px 0 0;">
+      <p style="margin:0 0 4px;"><strong>마시면 안 된다 / 마시는 것은 좋지 않다</strong></p>
+      <p style="color:#475569;margin:0;"><em>ichish yaramaydi / ichish yaxshi emas</em></p>
+    </div>
+  </div>
+  <div class="pp-step">
+    <p><strong>3-qadam — ㉡:</strong> oldida <mark style="background:#dcfce7;">그러므로</mark>
+    (shuning uchun) turibdi — demak <strong>xulosa/tavsiya</strong> kerak:</p>
+    <div style="background:#f1f5f9;border-radius:10px;padding:12px 14px;margin:8px 0 0;">
+      <p style="margin:0 0 4px;"><strong>마시는 것이 좋다</strong></p>
+      <p style="color:#475569;margin:0;"><em>ichish ma'qul (kuniga ikki stakandan oshirmaslik kerak)</em></p>
+    </div>
+  </div>
+  <div class="pp-step">
+    <p><strong>Xulosa qadam</strong> — formulani eslab qoling:</p>
+    <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:12px 16px;border-radius:8px;margin:8px 0 0;">
+      <strong>signal so'z</strong> → mantiq turi (qarama-qarshilik / sabab / xulosa) →
+      mos <strong>grammatik tugatma</strong>. Uslub doim rasmiy (-ㄴ다/-는 것이 좋다).
+    </div>
+  </div>
+</div>
+"""
+
+
+def _signal_flash_block():
+    """Signal so'zlar flashcards: old — signal, orqa — mantiq/tugatma (jadvaldan)."""
+    cards = ""
+    for t in _D["templates"]:
+        if not t.get("signals") or t["signals"] == "—":
+            continue
+        cards += (f'<div class="pp-card"><div class="pp-card-front">{html.escape(t["signals"])}</div>'
+                  f'<div class="pp-card-back">{html.escape(t["uz"])}</div></div>')
+    return {"rich_text": f"""
+<h3>Signal so'zlar — tezkor takror 🔁</h3>
+<p class="text-secondary small">Old tomonda signal so'z. Qanday mantiq va tugatma kerakligini
+eslashga urining, keyin kartani bosib tekshiring.</p>
+<div class="pp-flashcards" data-pp-flashcards>{cards}</div>
+"""}
+
+
 _l1_blocks = [{"rich_text": _L1_INTRO},
               {"rich_text": "<h3>신호 → 정답 — Signal bo'yicha to'ldirish jadvali</h3>"}]
 for _t in _D["templates"]:
     _l1_blocks.append({"rich_text": _template_card(_t)})
+_l1_blocks.append({"rich_text": _L1_WORKED})
+_l1_blocks.append(_signal_flash_block())
 _l1_blocks.append({"rich_text": _L1_CLOSING})
 
 
