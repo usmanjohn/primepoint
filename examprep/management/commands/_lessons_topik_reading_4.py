@@ -78,6 +78,20 @@ Demak, mashq ham shunga mos bo'lishi kerak.</p>
   </div>
 </div>
 <p><em>Nega? Chunki sifat, ravish va fe'llar gapning ma'nosini va savol javobini ko'proq belgilaydi.</em></p>
+<h4>Ko'zni hoziroq mashq qildiring 👀</h4>
+<p class="text-secondary small">Metodning o'zini sinang: kartadagi so'zni <strong>ko'rib</strong>
+ma'nosini eslashga urining, keyin bosib tekshiring.</p>
+<div class="pp-flashcards" data-pp-flashcards>
+  <div class="pp-card"><div class="pp-card-front">합리적이다</div><div class="pp-card-back">oqilona (sifat)</div></div>
+  <div class="pp-card"><div class="pp-card-front">효율적이다</div><div class="pp-card-back">samarali (sifat)</div></div>
+  <div class="pp-card"><div class="pp-card-front">자연스럽다</div><div class="pp-card-back">tabiiy (sifat)</div></div>
+  <div class="pp-card"><div class="pp-card-front">자연스럽게</div><div class="pp-card-back">tabiiy ravishda (ravish)</div></div>
+  <div class="pp-card"><div class="pp-card-front">꾸준히</div><div class="pp-card-back">muntazam (ravish)</div></div>
+  <div class="pp-card"><div class="pp-card-front">효율적으로</div><div class="pp-card-back">samarali tarzda (ravish)</div></div>
+  <div class="pp-card"><div class="pp-card-front">동참하다</div><div class="pp-card-back">qatnashmoq (fe'l)</div></div>
+  <div class="pp-card"><div class="pp-card-front">이루다</div><div class="pp-card-back">erishmoq (fe'l)</div></div>
+  <div class="pp-card"><div class="pp-card-front">존중하다</div><div class="pp-card-back">hurmat qilmoq (fe'l)</div></div>
+</div>
 """,
             },
             # ── 5. Jumlalarni yig'ing (ko'prik 쓰기 ga) ──────────────────
@@ -132,47 +146,49 @@ Demak, mashq ham shunga mos bo'lishi kerak.</p>
                 "rich_text": """
 <h3>Yozishda qanday ishlatamiz? (쓰기 use case)</h3>
 <p>Yig'ilgan jumlani 쓰기 54 inshosida <strong>tayanch fikr</strong> qilib oling, atrofini
-o'zingiz to'ldiring. Misol:</p>
-<div style="background:#faf5ff;border-left:4px solid #a855f7;padding:12px 16px;border-radius:8px;margin:16px 0;">
-  <strong>📝 Namuna — bitta jumladan abzas:</strong>
-  <div style="background:#f1f5f9;border-radius:10px;padding:12px 14px;margin:10px 0 0;">
-    <p style="margin:0 0 4px;"><strong>합리적 소비를 하면 자연스럽게 사회 활동에도 동참할 수 있다.</strong>
-    예를 들어, 필요한 물건만 사는 사람은 돈과 자원을 아낄 수 있다. 따라서 합리적 소비는 개인과 사회 모두에게 도움이 된다.</p>
-    <p style="color:#475569;margin:0;"><em>Oqilona iste'mol qilsangiz, tabiiy ravishda ijtimoiy
-    faoliyatda ham qatnasha olasiz. Masalan, faqat kerakli narsani sotib oladigan inson pul va
-    resurslarni tejaydi. Shuning uchun oqilona iste'mol ham shaxsga, ham jamiyatga foyda keltiradi.</em></p>
+o'zingiz to'ldirasiz. Abzas uch qadamda quriladi — har qadamni ochib, qanday o'sishini ko'ring:</p>
+<div class="pp-steps" data-pp-steps data-pp-more="Keyingi qadam ▸">
+  <div class="pp-step">
+    <p><strong>1-qadam — yig'ilgan jumla</strong> (tayanch fikr, tayyor va xatosiz):</p>
+    <div style="background:#f1f5f9;border-radius:10px;padding:12px 14px;margin:8px 0 0;">
+      <p style="margin:0 0 4px;"><strong>합리적 소비를 하면 자연스럽게 사회 활동에도 동참할 수 있다.</strong></p>
+      <p style="color:#475569;margin:0;"><em>Oqilona iste'mol qilsangiz, tabiiy ravishda ijtimoiy
+      faoliyatda ham qatnasha olasiz.</em></p>
+    </div>
+  </div>
+  <div class="pp-step">
+    <p><strong>2-qadam — misol qo'shamiz</strong> (<mark style="background:#dbeafe;">예를 들어</mark> — masalan):</p>
+    <div style="background:#f1f5f9;border-radius:10px;padding:12px 14px;margin:8px 0 0;">
+      <p style="margin:0 0 4px;"><strong>예를 들어, 필요한 물건만 사는 사람은 돈과 자원을 아낄 수 있다.</strong></p>
+      <p style="color:#475569;margin:0;"><em>Masalan, faqat kerakli narsani sotib oladigan inson
+      pul va resurslarni tejaydi.</em></p>
+    </div>
+  </div>
+  <div class="pp-step">
+    <p><strong>3-qadam — xulosa qo'shamiz</strong> (<mark style="background:#dcfce7;">따라서</mark> — shuning uchun):</p>
+    <div style="background:#f1f5f9;border-radius:10px;padding:12px 14px;margin:8px 0 0;">
+      <p style="margin:0 0 4px;"><strong>따라서 합리적 소비는 개인과 사회 모두에게 도움이 된다.</strong></p>
+      <p style="color:#475569;margin:0;"><em>Shuning uchun oqilona iste'mol ham shaxsga, ham
+      jamiyatga foyda keltiradi.</em></p>
+    </div>
+  </div>
+  <div class="pp-step">
+    <p><strong>Tayyor abzas</strong> — uch gap birga:</p>
+    <div style="background:#faf5ff;border-left:4px solid #a855f7;padding:12px 16px;border-radius:8px;margin:8px 0 0;">
+      <p style="margin:0 0 4px;"><strong>합리적 소비를 하면 자연스럽게 사회 활동에도 동참할 수 있다.
+      예를 들어, 필요한 물건만 사는 사람은 돈과 자원을 아낄 수 있다. 따라서 합리적 소비는 개인과 사회 모두에게 도움이 된다.</strong></p>
+      <p style="color:#475569;margin:0;"><em>Oqilona iste'mol qilsangiz, tabiiy ravishda ijtimoiy
+      faoliyatda ham qatnasha olasiz. Masalan, faqat kerakli narsani sotib oladigan inson pul va
+      resurslarni tejaydi. Shuning uchun oqilona iste'mol ham shaxsga, ham jamiyatga foyda keltiradi.</em></p>
+    </div>
   </div>
 </div>
-<p>Ko'rib turganingizdek: <mark>1 yig'ilgan jumla</mark> + <mark style="background:#dbeafe;">1 misol</mark>
-+ <mark style="background:#dcfce7;">1 xulosa</mark> = tayyor abzas. Vaqt tejaladi, xato kamayadi.</p>
+<p>Formulani eslab qoling: <mark>1 yig'ilgan jumla</mark> + <mark style="background:#dbeafe;">1 misol
+(예를 들어)</mark> + <mark style="background:#dcfce7;">1 xulosa (따라서)</mark> = tayyor abzas.
+Vaqt tejaladi, xato kamayadi.</p>
 """,
             },
-            # ── 8. Kalit so'zlar + Xulosa ────────────────────────────────
-            {
-                "rich_text": """
-<h3>Kalit so'zlar — 핵심 단어</h3>
-<ul>
-  <li><strong>어휘</strong> — so'z boyligi (leksika)</li>
-  <li><strong>형용사</strong> — sifat</li>
-  <li><strong>부사</strong> — ravish</li>
-  <li><strong>동사</strong> — fe'l</li>
-  <li><strong>명사</strong> — ot</li>
-  <li><strong>합리적이다</strong> — oqilona</li>
-  <li><strong>자연스럽게</strong> — tabiiy ravishda</li>
-  <li><strong>동참하다</strong> — qatnashmoq</li>
-</ul>
-<div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:12px 16px;border-radius:8px;margin:16px 0;">
-  <strong>📌 Xulosa</strong>
-  <ul style="margin:8px 0 0;">
-    <li>Ko'p o'qing, kam tarjima qiling — ko'zni mashq qildiring, qo'lni emas.</li>
-    <li>Tarjima qilsangiz ham, matnni bir-ikki kundan keyin qayta o'qing.</li>
-    <li>Sifat, ravish, fe'llarni otdan ko'ra ko'proq o'rganing.</li>
-    <li>Ajoyib jumlalarni yozib boring va 쓰기 da tayanch fikr qiling.</li>
-  </ul>
-</div>
-""",
-            },
-            # ── 9. Amaliyot 1 ────────────────────────────────────────────
+            # ── 8. Amaliyot 1 ────────────────────────────────────────────
             {
                 "rich_text": "<p><strong>Amaliyot 1.</strong> Metodga ko'ra, javoblarni "
                              "ko'proq hal qiladigan, shuning uchun birinchi o'rganiladigan "
@@ -200,6 +216,32 @@ o'zingiz to'ldiring. Misol:</p>
                 "explanation": "<p>To'g'ri javob — <strong>jumlani yozib qo'yish</strong>. So'z yoki "
                                "butun paragraf emas, aynan ajoyib jumlalar yig'iladi; ular keyin "
                                "Yozish (쓰기) inshosida tayyor tayanch fikr bo'lib xizmat qiladi.</p>",
+            },
+            # ── 10. Kalit so'zlar + Xulosa ───────────────────────────────
+            {
+                "rich_text": """
+<h3>Kalit so'zlar — 핵심 단어</h3>
+<p class="text-secondary small">Kartani bosib ag'daring — koreyscha so'zni ko'rib, ma'nosini eslang.</p>
+<div class="pp-flashcards" data-pp-flashcards>
+  <div class="pp-card"><div class="pp-card-front">어휘</div><div class="pp-card-back">so'z boyligi (leksika)</div></div>
+  <div class="pp-card"><div class="pp-card-front">형용사</div><div class="pp-card-back">sifat</div></div>
+  <div class="pp-card"><div class="pp-card-front">부사</div><div class="pp-card-back">ravish</div></div>
+  <div class="pp-card"><div class="pp-card-front">동사</div><div class="pp-card-back">fe'l</div></div>
+  <div class="pp-card"><div class="pp-card-front">명사</div><div class="pp-card-back">ot</div></div>
+  <div class="pp-card"><div class="pp-card-front">문장</div><div class="pp-card-back">jumla / gap</div></div>
+  <div class="pp-card"><div class="pp-card-front">암기하다</div><div class="pp-card-back">yod olmoq</div></div>
+  <div class="pp-card"><div class="pp-card-front">다시 읽다</div><div class="pp-card-back">qayta o'qimoq</div></div>
+</div>
+<div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:12px 16px;border-radius:8px;margin:16px 0;">
+  <strong>📌 Xulosa</strong>
+  <ul style="margin:8px 0 0;">
+    <li>Ko'p o'qing, kam tarjima qiling — ko'zni mashq qildiring, qo'lni emas.</li>
+    <li>Tarjima qilsangiz ham, matnni bir-ikki kundan keyin qayta o'qing.</li>
+    <li>Sifat, ravish, fe'llarni otdan ko'ra ko'proq o'rganing.</li>
+    <li>Ajoyib jumlalarni yozib boring va 쓰기 da tayanch fikr qiling.</li>
+  </ul>
+</div>
+""",
             },
         ],
     },
