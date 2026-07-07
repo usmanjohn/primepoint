@@ -20,14 +20,16 @@
     {% endif %}
 
     {% if block.is_question %}
-    <div class="d-grid gap-2">
+    <div class="d-grid gap-2 examprep-mcq" data-pp-mcq>
         {% for choice in block.choices.all %}
-        {% comment %} After submit: green = correct answer, red = wrongly picked. {% endcomment %}
+        {% comment %} After submit: green = correct answer, red = wrongly picked.
+        data-pp-correct lets the JS kit grade instantly (practice, not a scored exam). {% endcomment %}
         <label class="examprep-choice border rounded p-2 px-3 d-flex align-items-center gap-2
             {% if submitted %}
                 {% if choice.is_correct %}border-success bg-success-subtle
                 {% elif choice.was_selected %}border-danger bg-danger-subtle{% endif %}
-            {% endif %}">
+            {% endif %}"
+            data-pp-choice{% if choice.is_correct %} data-pp-correct{% endif %}>
             <input type="radio" class="form-check-input mt-0 flex-shrink-0"
                    name="mcq_{{ block.id }}" value="{{ choice.id }}"
                    {% if choice.was_selected %}checked{% endif %}>
@@ -42,6 +44,10 @@
         </label>
         {% endfor %}
     </div>
+
+    {% comment %} Inert data for the JS kit: cloned into the feedback box on answer.
+    Ignored entirely when JS is off (the server path below runs instead). {% endcomment %}
+    <template data-pp-explain>{{ block.explanation|safe }}</template>
 
     {% if submitted %}
     <div class="mt-3">

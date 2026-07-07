@@ -117,6 +117,52 @@ Aim for at least 2 per lesson; varied — vocabulary, grammar, "find the 결론 
 
 ---
 
+## 5b. Interaktiv komponentlar — Interactive components (kit)
+
+Darslar endi **interaktiv**. Bir statik CSS/JS to'plami (`examprep-kit.css` / `examprep-kit.js`)
+har bir dars sahifasida ishlaydi. Komponentlar **progressive enhancement** — JavaScript
+o'chiq bo'lsa ham sahifa to'liq o'qiladi. Ularni HTML ichida **class + `data-` atribut**
+orqali chaqirasiz. **Har darsda hammasini ishlatmang** — faqat pedagogik jihatdan foydali
+joyda. Ko'p `<div style="...">` qutilar o'rniga shu komponentlarni ishlating.
+
+### (a) MCQ — hech qanday markup shart emas
+Oddiy `choices` bloki (4-bo'lim) endi **avtomatik** interaktiv: talaba variantni bosishi
+bilan darhol yashil/qizil bo'ladi va `explanation` ochiladi (sahifa qayta yuklanmaydi).
+Hech narsa o'zgartirmang — shunchaki `choices` + `explanation` yozing.
+
+### (b) Flashcards (so'z kartalari) — `data-pp-flashcards`
+"Kalit so'zlar" glossariysi (`<ul>`) o'rniga **ayni shu ma'lumotni** kartaga aylantiring —
+old tomon koreyscha, orqa tomon o'zbekcha. Bosib ag'dariladi, ←/→ bilan aylantiriladi.
+```html
+<h3>Kalit so'zlar — 핵심 단어</h3>
+<div class="pp-flashcards" data-pp-flashcards>
+  <div class="pp-card"><div class="pp-card-front">읽기</div><div class="pp-card-back">o'qish</div></div>
+  <div class="pp-card"><div class="pp-card-front">지문</div><div class="pp-card-back">matn / parcha</div></div>
+  <!-- kamida 6–8 ta -->
+</div>
+```
+
+### (c) Step reveal (qadam-baqadam) — `data-pp-steps`
+Uzun tushuntirish yoki ishlangan misolni **bo'lib** bering — talaba "Keyingi qadam" tugmasi
+bilan birma-bir ochadi (birdan skanerlamaydi). Har bosqich — bitta `.pp-step`.
+```html
+<div class="pp-steps" data-pp-steps data-pp-more="Keyingi qadam ▸">
+  <div class="pp-step"><p>Birinchi qadam...</p></div>
+  <div class="pp-step"><p>Ikkinchi qadam...</p></div>
+</div>
+```
+
+### Qaysi ko'nikma uchun nima (controlled variety)
+- **읽기 Reading:** step-reveal (strategiya/misol) + inline MCQ + flashcards (glossary).
+- **쓰기 Writing (51–54):** step-reveal (namuna javobni bo'lib ko'rsatish) + flashcards (naqsh/ibora).
+- **듣기 Listening:** rasm/audio bloki + MCQ.
+- **전략 Strategy:** step-reveal + MCQ.
+
+> ⚠️ MCQ **amaliyot** uchun (baholanmaydigan). To'g'ri javob HTML manbada ko'rinadi — bu normal.
+> Baholanadigan, xronometrajli test — alohida `exam` ilovasi.
+
+---
+
 ## 6. Foydalanuvchining TOPIK maslahatlari (user's own tips)
 
 Foydalanuvchi TOPIK'ga oʻzi tayyorlangan va metodlarini ulashmoqda. Bu maslahatlar umumiy

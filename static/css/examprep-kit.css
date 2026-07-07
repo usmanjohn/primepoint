@@ -1,0 +1,155 @@
+/* ============================================================================
+   Exam-prep interactive component kit
+   Self-contained, no external assets. Loaded only on examprep lesson pages.
+
+   Progressive enhancement: interactive styles are scoped under `.pp-ready`,
+   which examprep-kit.js adds to <html> once it wires the components up. With
+   JavaScript off, the `.pp-ready` rules never apply, so flashcards and step
+   blocks fall back to plain, fully readable content.
+   ============================================================================ */
+
+:root {
+    --pp-accent:        #3b82f6;
+    --pp-accent-soft:   #eff6ff;
+    --pp-correct:       #16a34a;
+    --pp-correct-soft:  #ecfdf5;
+    --pp-wrong:         #dc2626;
+    --pp-wrong-soft:    #fef2f2;
+    --pp-border:        #e5e7eb;
+    --pp-muted:         #6b7280;
+}
+
+/* ── Instant-feedback MCQ ─────────────────────────────────────────────────
+   The choices themselves keep their existing Bootstrap look; the kit only
+   adds result state after the student picks an answer. */
+.pp-ready .examprep-mcq .examprep-choice {
+    cursor: pointer;
+    transition: background-color .15s ease, border-color .15s ease;
+}
+.pp-ready .examprep-mcq.pp-answered .examprep-choice {
+    cursor: default;
+}
+.pp-ready .examprep-choice.pp-correct {
+    border-color: var(--pp-correct) !important;
+    background: var(--pp-correct-soft);
+}
+.pp-ready .examprep-choice.pp-wrong {
+    border-color: var(--pp-wrong) !important;
+    background: var(--pp-wrong-soft);
+}
+.pp-ready .examprep-choice .pp-mark {
+    margin-left: auto;
+    flex-shrink: 0;
+    font-weight: 700;
+    line-height: 1;
+}
+.pp-ready .examprep-choice.pp-correct .pp-mark { color: var(--pp-correct); }
+.pp-ready .examprep-choice.pp-wrong   .pp-mark { color: var(--pp-wrong); }
+
+.pp-feedback {
+    margin-top: .75rem;
+    padding: .75rem 1rem;
+    border-radius: .5rem;
+    border-left: 4px solid var(--pp-border);
+    background: #f9fafb;
+    animation: pp-fade .2s ease;
+}
+.pp-feedback.pp-is-correct { border-left-color: var(--pp-correct); background: var(--pp-correct-soft); }
+.pp-feedback.pp-is-wrong   { border-left-color: var(--pp-wrong);   background: var(--pp-wrong-soft); }
+.pp-feedback-verdict { font-weight: 600; margin: 0 0 .35rem; }
+.pp-feedback.pp-is-correct .pp-feedback-verdict { color: var(--pp-correct); }
+.pp-feedback.pp-is-wrong   .pp-feedback-verdict { color: var(--pp-wrong); }
+.pp-feedback-explain > :last-child { margin-bottom: 0; }
+
+/* Running score chip shown once every question is answered. */
+.pp-score {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .4rem .9rem;
+    border-radius: 999px;
+    font-weight: 600;
+    background: var(--pp-accent-soft);
+    color: var(--pp-accent);
+    animation: pp-fade .2s ease;
+}
+
+/* ── Step reveal ──────────────────────────────────────────────────────────
+   <div class="pp-steps" data-pp-steps> with .pp-step children. */
+.pp-ready .pp-steps .pp-step {
+    display: none;
+    animation: pp-fade .2s ease;
+}
+.pp-ready .pp-steps .pp-step.pp-shown { display: block; }
+.pp-steps .pp-step + .pp-step { margin-top: .75rem; }
+.pp-steps-more {
+    margin-top: .85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+}
+.pp-steps-progress {
+    font-size: .85rem;
+    color: var(--pp-muted);
+    margin-left: .6rem;
+}
+
+/* ── Flashcards ───────────────────────────────────────────────────────────
+   <div class="pp-flashcards" data-pp-flashcards> with .pp-card (front/back). */
+.pp-ready .pp-flashcards { max-width: 34rem; }
+.pp-ready .pp-flashcards .pp-card {
+    display: none;
+    position: relative;
+    min-height: 9rem;
+    border: 1px solid var(--pp-border);
+    border-radius: .75rem;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    cursor: pointer;
+    user-select: none;
+}
+.pp-ready .pp-flashcards .pp-card.pp-active { display: block; }
+.pp-ready .pp-flashcards .pp-card-front,
+.pp-ready .pp-flashcards .pp-card-back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.5rem;
+    min-height: 9rem;
+    font-size: 1.35rem;
+    font-weight: 600;
+}
+.pp-ready .pp-flashcards .pp-card-back { display: none; color: var(--pp-accent); }
+.pp-ready .pp-flashcards .pp-card.pp-flipped .pp-card-front { display: none; }
+.pp-ready .pp-flashcards .pp-card.pp-flipped .pp-card-back  { display: flex; }
+.pp-ready .pp-flashcards .pp-card::after {
+    content: "↻";
+    position: absolute;
+    top: .5rem;
+    right: .75rem;
+    color: var(--pp-muted);
+    font-size: 1rem;
+}
+.pp-flashcards-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+    margin-top: .75rem;
+}
+.pp-flashcards-count { font-size: .85rem; color: var(--pp-muted); }
+
+@keyframes pp-fade { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
+
+/* Dark-mode courtesy: only if the site sets a dark theme flag. Kept minimal. */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --pp-accent-soft: #1e293b;
+        --pp-correct-soft: #052e1c;
+        --pp-wrong-soft: #3b0d0d;
+        --pp-border: #374151;
+    }
+    .pp-ready .pp-flashcards .pp-card { background: #111827; }
+    .pp-feedback { background: #1f2937; }
+}

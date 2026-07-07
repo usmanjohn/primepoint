@@ -50,7 +50,10 @@
         </div>
         {% endif %}
 
-        <form method="post" class="examprep-lesson">
+        <form method="post" class="examprep-lesson" data-pp-lesson
+              data-pp-correct-text="{% trans 'Correct!' %}"
+              data-pp-wrong-text="{% trans 'Not quite.' %}"
+              data-pp-score-text="{% trans 'Score' %}">
             {% csrf_token %}
             {% for block in blocks %}
             <div class="mb-4">{% include 'examprep/_block.html' with block=block submitted=submitted %}</div>
@@ -58,7 +61,9 @@
 
             {% if has_question %}
             <div class="d-grid d-sm-block mb-4">
-                <button type="submit" class="btn btn-primary">
+                {% comment %} The kit hides this button and grades each question inline;
+                without JS it stays visible and posts back for server-side grading. {% endcomment %}
+                <button type="submit" class="btn btn-primary" data-pp-submit>
                     <i class="bi bi-check2-square me-1"></i>{% trans "Check answers" %}
                 </button>
             </div>
@@ -99,3 +104,6 @@
 </div>
 
 {% endblock %}
+
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/examprep-kit.css' %}">{% endblock %}
+{% block extra_js %}<script src="{% static 'js/examprep-kit.js' %}"></script>{% endblock %}
