@@ -105,6 +105,7 @@
             <a href="{% url 'my_homework' %}" class="nav-link {% block nav_homework %}{% endblock %}">
                 <i class="bi bi-journal-bookmark-fill"></i>
                 <span class="nav-label">{% trans "Homework" %}</span>
+                {% if nav_homework_count %}<span class="nav-badge">{{ nav_homework_count }}</span>{% endif %}
             </a>
 
             <a href="{% url 'discussion_home' %}" class="nav-link {% block nav_discussion %}{% endblock %}">
@@ -128,16 +129,19 @@
             <a href="{% url 'games_home' %}" class="nav-link {% block nav_games %}{% endblock %}">
                 <i class="bi bi-controller"></i>
                 <span class="nav-label">{% trans "Games" %}</span>
+                {% if nav_games_count %}<span class="nav-badge">{{ nav_games_count }}</span>{% endif %}
             </a>
 
             <a href="{% url 'exam_list' %}" class="nav-link {% block nav_exam %}{% endblock %}">
                 <i class="bi bi-journal-check"></i>
                 <span class="nav-label">{% trans "Exams" %}</span>
+                {% if nav_exams_count %}<span class="nav-badge">{{ nav_exams_count }}</span>{% endif %}
             </a>
 
             <a href="{% url 'examprep_home' %}" class="nav-link {% block nav_examprep %}{% endblock %}">
                 <i class="bi bi-journal-bookmark"></i>
                 <span class="nav-label">{% trans "Exam Prep" %}</span>
+                {% if nav_examprep_count %}<span class="nav-badge">{{ nav_examprep_count }}</span>{% endif %}
             </a>
 
             <span class="nav-section">{% trans "Support" %}</span>
@@ -314,8 +318,8 @@
         <a href="{% url 'index' %}" class="mob-nav-item {% block mob_nav_index %}{% endblock %}">
             <i class="bi bi-grid-1x2-fill"></i><span>{% trans "Home" %}</span>
         </a>
-        <a href="{% url 'masters-home' %}" class="mob-nav-item {% block mob_nav_masters %}{% endblock %}">
-            <i class="bi bi-person-workspace"></i><span>{% trans "Masters" %}</span>
+        <a href="{% url 'tutorial_list' %}" class="mob-nav-item {% block mob_nav_tutorials %}{% endblock %}">
+            <i class="bi bi-journal-text"></i><span>{% trans "Tutorials" %}</span>
         </a>
         <a href="{% url 'exam_list' %}" class="mob-nav-item {% block mob_nav_exam %}{% endblock %}">
             <i class="bi bi-journal-check"></i><span>{% trans "Exams" %}</span>

@@ -193,6 +193,11 @@ def _build_print_context(puzzle, primary_field, secondary_field, show_answers,
     }
 
 
+# Number of game types offered on the games home page — keep in sync with
+# the cards in templates/games/games_home.html.
+GAME_COUNT = 11
+
+
 @login_required
 def games_home(request):
     return render(request, 'games/games_home.html')

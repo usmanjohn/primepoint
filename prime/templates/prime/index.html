@@ -8,61 +8,160 @@
 <style>
 /* ── Hero ──────────────────────────────────────────────────── */
 .hero-wrap {
-  background: linear-gradient(135deg, var(--surface) 0%, rgba(56,189,248,0.06) 100%);
+  background:
+    radial-gradient(circle at 88% -20%, rgba(56,189,248,0.16), transparent 45%),
+    radial-gradient(circle at 8% 120%, rgba(139,92,246,0.10), transparent 45%),
+    linear-gradient(135deg, var(--surface) 0%, rgba(56,189,248,0.05) 100%);
   border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 2rem 2.5rem;
-  margin-bottom: 2rem;
+  border-radius: 22px;
+  padding: 2.2rem 2.4rem;
+  margin-bottom: 2.2rem;
   position: relative;
   overflow: hidden;
 }
 .hero-wrap::before {
   content: '';
   position: absolute;
-  top: -70px; right: -70px;
-  width: 220px; height: 220px;
-  background: radial-gradient(circle, rgba(56,189,248,0.13), transparent 70%);
+  inset: 0;
+  background-image: radial-gradient(rgba(56,189,248,0.14) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(115deg, transparent 55%, rgba(0,0,0,0.9));
+  -webkit-mask-image: linear-gradient(115deg, transparent 55%, rgba(0,0,0,0.9));
   pointer-events: none;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(56,189,248,0.1);
+  border: 1px solid rgba(56,189,248,0.25);
+  border-radius: 999px;
+  padding: 4px 12px;
+  margin-bottom: 0.9rem;
 }
 .hero-greeting {
   font-family: 'Syne', sans-serif;
-  font-size: 1.55rem;
+  font-size: clamp(1.45rem, 3.2vw, 2rem);
   font-weight: 800;
   color: var(--text);
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.35rem;
+  line-height: 1.2;
 }
-.hero-sub { color: var(--text-muted); font-size: 0.88rem; margin: 0; }
-.hero-actions { margin-top: 1.2rem; display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.hero-greeting .hl {
+  background: linear-gradient(90deg, #0ea5e9, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-sub { color: var(--text-muted); font-size: 0.92rem; margin: 0; max-width: 560px; }
+.hero-actions { margin-top: 1.3rem; display: flex; gap: 0.75rem; flex-wrap: wrap; }
 
-/* ── Section label ───────────────────────────────────────── */
+/* Hero stat strip */
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 1.6rem;
+  border-top: 1px dashed var(--border);
+  padding-top: 1.1rem;
+  position: relative;
+}
+.hero-stat {
+  padding: 0 1.4rem;
+  border-left: 1px solid var(--border);
+  min-width: 110px;
+}
+.hero-stat:first-child { padding-left: 0; border-left: 0; }
+.hero-stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.1;
+}
+.hero-stat-lbl {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+@media (max-width: 575px) {
+  .hero-wrap { padding: 1.5rem 1.25rem; }
+  .hero-stat { padding: 0 0.9rem; min-width: 46%; margin-bottom: 0.6rem; }
+  .hero-stat:nth-child(odd) { padding-left: 0; border-left: 0; }
+}
+
+/* ── Section header ──────────────────────────────────────── */
+.idx-section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  margin: 0 0 1rem;
+}
 .idx-label {
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   font-weight: 800;
   letter-spacing: 1.8px;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 0.85rem;
+  margin: 0;
+  white-space: nowrap;
+}
+.idx-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+.idx-section-head::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  align-self: center;
 }
 
 /* ── Feature cards ───────────────────────────────────────── */
 .feat-card {
+  --c: var(--accent);
+  --c-bg: rgba(56,189,248,0.12);
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 1.2rem;
+  padding: 1.15rem 1.2rem;
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
   transition: border-color .18s, transform .18s, box-shadow .18s;
   text-decoration: none;
   height: 100%;
 }
+.feat-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--c);
+  opacity: 0;
+  transition: opacity .18s;
+}
 .feat-card:hover {
-  border-color: var(--accent);
+  border-color: var(--c);
   transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(56,189,248,0.09);
+  box-shadow: 0 10px 30px var(--c-bg);
   text-decoration: none;
 }
+.feat-card:hover::after { opacity: 1; }
 .feat-card-top {
   display: flex;
   align-items: flex-start;
@@ -75,11 +174,13 @@
   display: flex; align-items: center; justify-content: center;
   font-size: 1.25rem;
   flex-shrink: 0;
+  background: var(--c-bg);
+  color: var(--c);
 }
 .feat-count { text-align: right; }
 .feat-count-num {
   font-family: 'Syne', sans-serif;
-  font-size: 1.55rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: var(--text);
   line-height: 1;
@@ -98,7 +199,19 @@
   font-weight: 700;
   color: var(--text);
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
+.feat-title .feat-arrow {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--c);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity .18s, transform .18s;
+}
+.feat-card:hover .feat-arrow { opacity: 1; transform: translateX(0); }
 .feat-desc { font-size: 0.77rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
 
 /* ── My Stats section ────────────────────────────────────── */
@@ -115,7 +228,7 @@
   margin: 1rem 0;
 }
 .my-stat-pill {
-  background: var(--chrome);
+  background: var(--surface-2);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 0.85rem 0.75rem;
@@ -156,27 +269,43 @@
   align-items: center;
   gap: 0.3rem;
 }
+.hw-progress {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--border);
+  overflow: hidden;
+  margin: 0.2rem 0 1rem;
+}
+.hw-progress-bar {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #0ea5e9, #22c55e);
+}
 </style>
 {% endblock %}
 
 {% block content %}
 
 <!-- ── Hero banner ──────────────────────────────────────────── -->
-<div class="hero-wrap mb-4">
+<div class="hero-wrap">
+  <span class="hero-eyebrow"><i class="bi bi-lightning-charge-fill"></i> Powerty</span>
   {% if user.is_authenticated %}
-    <p class="hero-greeting">{% trans "Welcome back" %}, {{ user.get_full_name|default:user.username }} ✦</p>
+    <p class="hero-greeting">{% trans "Welcome back" %}, <span class="hl">{{ user.get_full_name|default:user.username }}</span> ✦</p>
     <p class="hero-sub">{% trans "Your platform is ready — keep learning, keep growing." %}</p>
     <div class="hero-actions">
       <a href="{% url 'practice_list' %}" class="btn-core-primary text-decoration-none">
         <i class="bi bi-book-half"></i> {% trans "Browse Practices" %}
+      </a>
+      <a href="{% url 'examprep_home' %}" class="btn-core-outline text-decoration-none">
+        <i class="bi bi-journal-bookmark"></i> {% trans "Exam Prep" %}
       </a>
       <a href="{% url 'profile' %}" class="btn-core-outline text-decoration-none">
         <i class="bi bi-person"></i> {% trans "My Profile" %}
       </a>
     </div>
   {% else %}
-    <p class="hero-greeting">{% trans "Welcome to Powerty" %} ✦</p>
-    <p class="hero-sub">{% trans "Your all-in-one learning platform. Join students mastering new skills every day." %}</p>
+    <p class="hero-greeting">{% trans "Learn smarter with" %} <span class="hl">Powerty</span> ✦</p>
+    <p class="hero-sub">{% trans "Your all-in-one learning platform — practices, tutorials, exams, games and live classrooms. Join students mastering new skills every day." %}</p>
     <div class="hero-actions">
       <a href="{% url 'register' %}" class="btn-core-primary text-decoration-none">
         <i class="bi bi-person-plus"></i> {% trans "Get Started — It's Free" %}
@@ -186,171 +315,224 @@
       </a>
     </div>
   {% endif %}
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">{{ stats.students }}</div>
+      <div class="hero-stat-lbl">{% trans "Students" %}</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">{{ stats.masters }}</div>
+      <div class="hero-stat-lbl">{% trans "Masters" %}</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">{{ stats.resources }}</div>
+      <div class="hero-stat-lbl">{% trans "Learning resources" %}</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">{{ stats.games }}</div>
+      <div class="hero-stat-lbl">{% trans "Games" %}</div>
+    </div>
+  </div>
 </div>
 
-<!-- ── Platform sections ─────────────────────────────────────── -->
-<p class="idx-label">{% trans "Platform" %}</p>
+<!-- ── Study section ─────────────────────────────────────────── -->
+<div class="idx-section-head">
+  <p class="idx-label">{% trans "Study" %}</p>
+  <p class="idx-title">{% trans "Learn & practice" %}</p>
+</div>
 
-<div class="row g-3 mb-5">
+<div class="row g-3 mb-4">
 
-  {% if user.is_staff %}
-  <div class="col-12 col-sm-6 col-lg-4">
-    <a href="{% url 'analytics-home' %}" class="feat-card">
+  <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
+    <a href="{% url 'practice_list' %}" class="feat-card" style="--c:#22c55e; --c-bg:rgba(34,197,94,0.12);">
       <div class="feat-card-top">
-        <div class="feat-icon" style="background:rgba(56,189,248,0.13); color:#38bdf8;">
-          <i class="bi bi-bar-chart-line-fill"></i>
-        </div>
-        <div class="feat-count">
-          <div class="feat-count-num">{{ stats.students }}</div>
-          <div class="feat-count-lbl">{% trans "Users" %}</div>
-        </div>
-      </div>
-      <p class="feat-title">{% trans "Analytics" %}</p>
-      <p class="feat-desc">{% trans "Platform insights, charts, and performance data." %}</p>
-    </a>
-  </div>
-  {% endif %}
-
-  <div class="col-12 col-sm-6 col-lg-4">
-    <a href="{% url 'masters-home' %}" class="feat-card">
-      <div class="feat-card-top">
-        <div class="feat-icon" style="background:rgba(245,158,11,0.13); color:#f59e0b;">
-          <i class="bi bi-person-workspace"></i>
-        </div>
-        <div class="feat-count">
-          <div class="feat-count-num">{{ stats.masters }}</div>
-          <div class="feat-count-lbl">{% trans "Masters" %}</div>
-        </div>
-      </div>
-      <p class="feat-title">{% trans "Masters" %}</p>
-      <p class="feat-desc">{% trans "Learn from experienced instructors." %}</p>
-    </a>
-  </div>
-
-  <div class="col-12 col-sm-6 col-lg-4">
-    <a href="{% url 'practice_list' %}" class="feat-card">
-      <div class="feat-card-top">
-        <div class="feat-icon" style="background:rgba(34,197,94,0.13); color:#22c55e;">
-          <i class="bi bi-book-half"></i>
-        </div>
+        <div class="feat-icon"><i class="bi bi-book-half"></i></div>
         <div class="feat-count">
           <div class="feat-count-num">{{ stats.practices }}</div>
           <div class="feat-count-lbl">{% trans "Practices" %}</div>
         </div>
       </div>
-      <p class="feat-title">{% trans "Practice" %}</p>
+      <p class="feat-title">{% trans "Practice" %} <i class="bi bi-arrow-right feat-arrow"></i></p>
       <p class="feat-desc">{% trans "Exercises to reinforce your knowledge." %}</p>
     </a>
   </div>
 
-  <div class="col-12 col-sm-6 col-lg-4">
-    <a href="{% url 'panda-home' %}" class="feat-card">
+  <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
+    <a href="{% url 'tutorial_list' %}" class="feat-card" style="--c:#fbbf24; --c-bg:rgba(251,191,36,0.13);">
       <div class="feat-card-top">
-        <div class="feat-icon" style="background:rgba(14,165,233,0.13); color:#0ea5e9;">
-          <i class="bi bi-mortarboard-fill"></i>
-        </div>
-        <div class="feat-count">
-          <div class="feat-count-num">{{ stats.students }}</div>
-          <div class="feat-count-lbl">{% trans "Students" %}</div>
-        </div>
-      </div>
-      <p class="feat-title">{% trans "Pandas" %}</p>
-      <p class="feat-desc">{% trans "Browse student profiles and progress." %}</p>
-    </a>
-  </div>
-
-  <div class="col-12 col-sm-6 col-lg-4">
-    <a href="{% url 'my_homework' %}" class="feat-card">
-      <div class="feat-card-top">
-        <div class="feat-icon" style="background:rgba(239,68,68,0.13); color:#ef4444;">
-          <i class="bi bi-journal-bookmark-fill"></i>
-        </div>
-        <div class="feat-count">
-          <div class="feat-count-num">{{ stats.homework }}</div>
-          <div class="feat-count-lbl">{% trans "Tasks" %}</div>
-        </div>
-      </div>
-      <p class="feat-title">{% trans "Homework" %}</p>
-      <p class="feat-desc">{% trans "Submitted and pending assignments." %}</p>
-    </a>
-  </div>
-
-  <div class="col-12 col-sm-6 col-lg-4">
-    <a href="{% url 'discussion_home' %}" class="feat-card">
-      <div class="feat-card-top">
-        <div class="feat-icon" style="background:rgba(168,85,247,0.13); color:#a855f7;">
-          <i class="bi bi-chat-square-dots-fill"></i>
-        </div>
-        <div class="feat-count">
-          <div class="feat-count-num">{{ stats.threads }}</div>
-          <div class="feat-count-lbl">{% trans "Threads" %}</div>
-        </div>
-      </div>
-      <p class="feat-title">{% trans "Discussion" %}</p>
-      <p class="feat-desc">{% trans "Ask questions and share ideas." %}</p>
-    </a>
-  </div>
-
-  <div class="col-12 col-sm-6 col-lg-4">
-    <a href="{% url 'tutorial_list' %}" class="feat-card">
-      <div class="feat-card-top">
-        <div class="feat-icon" style="background:rgba(251,191,36,0.13); color:#fbbf24;">
-          <i class="bi bi-journal-text"></i>
-        </div>
+        <div class="feat-icon"><i class="bi bi-journal-text"></i></div>
         <div class="feat-count">
           <div class="feat-count-num">{{ stats.tutorials }}</div>
           <div class="feat-count-lbl">{% trans "Guides" %}</div>
         </div>
       </div>
-      <p class="feat-title">{% trans "Tutorials" %}</p>
+      <p class="feat-title">{% trans "Tutorials" %} <i class="bi bi-arrow-right feat-arrow"></i></p>
       <p class="feat-desc">{% trans "In-depth guides with text, images and formulas." %}</p>
     </a>
   </div>
 
-  <div class="col-12 col-sm-6 col-lg-4">
-    <a href="{% url 'classroom:list' %}" class="feat-card">
+  <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
+    <a href="{% url 'examprep_home' %}" class="feat-card" style="--c:#ec4899; --c-bg:rgba(236,72,153,0.12);">
       <div class="feat-card-top">
-        <div class="feat-icon" style="background:rgba(56,189,248,0.13); color:#38bdf8;">
-          <i class="bi bi-easel-fill"></i>
-        </div>
+        <div class="feat-icon"><i class="bi bi-journal-bookmark"></i></div>
         <div class="feat-count">
-          <div class="feat-count-num">{{ stats.classrooms }}</div>
-          <div class="feat-count-lbl">{% trans "Rooms" %}</div>
+          <div class="feat-count-num">{{ stats.examprep_lessons }}</div>
+          <div class="feat-count-lbl">{% trans "Lessons" %}</div>
         </div>
       </div>
-      <p class="feat-title">{% trans "Classrooms" %}</p>
-      <p class="feat-desc">{% trans "Private rooms where masters teach enrolled students." %}</p>
+      <p class="feat-title">{% trans "Exam Prep" %} <i class="bi bi-arrow-right feat-arrow"></i></p>
+      <p class="feat-desc">{% trans "Skill-by-skill preparation for TOPIK, IELTS and more." %}</p>
     </a>
   </div>
 
-  <div class="col-12 col-sm-6 col-lg-4">
-    <a href="{% url 'exam_list' %}" class="feat-card">
+  <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
+    <a href="{% url 'exam_list' %}" class="feat-card" style="--c:#6366f1; --c-bg:rgba(99,102,241,0.12);">
       <div class="feat-card-top">
-        <div class="feat-icon" style="background:rgba(99,102,241,0.13); color:#6366f1;">
-          <i class="bi bi-journal-text"></i>
-        </div>
+        <div class="feat-icon"><i class="bi bi-journal-check"></i></div>
         <div class="feat-count">
           <div class="feat-count-num">{{ stats.exams }}</div>
           <div class="feat-count-lbl">{% trans "Exams" %}</div>
         </div>
       </div>
-      <p class="feat-title">{% trans "Exams" %}</p>
+      <p class="feat-title">{% trans "Exams" %} <i class="bi bi-arrow-right feat-arrow"></i></p>
       <p class="feat-desc">{% trans "Full timed exams — Listening, Reading and Writing." %}</p>
+    </a>
+  </div>
+
+  <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
+    <a href="{% url 'games_home' %}" class="feat-card" style="--c:#14b8a6; --c-bg:rgba(20,184,166,0.12);">
+      <div class="feat-card-top">
+        <div class="feat-icon"><i class="bi bi-controller"></i></div>
+        <div class="feat-count">
+          <div class="feat-count-num">{{ stats.games }}</div>
+          <div class="feat-count-lbl">{% trans "Games" %}</div>
+        </div>
+      </div>
+      <p class="feat-title">{% trans "Games" %} <i class="bi bi-arrow-right feat-arrow"></i></p>
+      <p class="feat-desc">{% trans "Crosswords, puzzles and brain games — learn by playing." %}</p>
+    </a>
+  </div>
+
+  <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
+    <a href="{% url 'my_homework' %}" class="feat-card" style="--c:#ef4444; --c-bg:rgba(239,68,68,0.12);">
+      <div class="feat-card-top">
+        <div class="feat-icon"><i class="bi bi-journal-bookmark-fill"></i></div>
+        <div class="feat-count">
+          <div class="feat-count-num">{{ stats.homework }}</div>
+          <div class="feat-count-lbl">{% trans "Tasks" %}</div>
+        </div>
+      </div>
+      <p class="feat-title">{% trans "Homework" %} <i class="bi bi-arrow-right feat-arrow"></i></p>
+      <p class="feat-desc">{% trans "Submitted and pending assignments." %}</p>
     </a>
   </div>
 
 </div>
 
+<!-- ── Community section ─────────────────────────────────────── -->
+<div class="idx-section-head">
+  <p class="idx-label">{% trans "Community" %}</p>
+  <p class="idx-title">{% trans "People & classrooms" %}</p>
+</div>
+
+<div class="row g-3 mb-4">
+
+  <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
+    <a href="{% url 'masters-home' %}" class="feat-card" style="--c:#f59e0b; --c-bg:rgba(245,158,11,0.13);">
+      <div class="feat-card-top">
+        <div class="feat-icon"><i class="bi bi-person-workspace"></i></div>
+        <div class="feat-count">
+          <div class="feat-count-num">{{ stats.masters }}</div>
+          <div class="feat-count-lbl">{% trans "Masters" %}</div>
+        </div>
+      </div>
+      <p class="feat-title">{% trans "Masters" %} <i class="bi bi-arrow-right feat-arrow"></i></p>
+      <p class="feat-desc">{% trans "Learn from experienced instructors." %}</p>
+    </a>
+  </div>
+
+  <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
+    <a href="{% url 'panda-home' %}" class="feat-card" style="--c:#0ea5e9; --c-bg:rgba(14,165,233,0.12);">
+      <div class="feat-card-top">
+        <div class="feat-icon"><i class="bi bi-mortarboard-fill"></i></div>
+        <div class="feat-count">
+          <div class="feat-count-num">{{ stats.students }}</div>
+          <div class="feat-count-lbl">{% trans "Students" %}</div>
+        </div>
+      </div>
+      <p class="feat-title">{% trans "Pandas" %} <i class="bi bi-arrow-right feat-arrow"></i></p>
+      <p class="feat-desc">{% trans "Browse student profiles and progress." %}</p>
+    </a>
+  </div>
+
+  <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
+    <a href="{% url 'classroom:list' %}" class="feat-card" style="--c:#06b6d4; --c-bg:rgba(6,182,212,0.12);">
+      <div class="feat-card-top">
+        <div class="feat-icon"><i class="bi bi-easel-fill"></i></div>
+        <div class="feat-count">
+          <div class="feat-count-num">{{ stats.classrooms }}</div>
+          <div class="feat-count-lbl">{% trans "Rooms" %}</div>
+        </div>
+      </div>
+      <p class="feat-title">{% trans "Classrooms" %} <i class="bi bi-arrow-right feat-arrow"></i></p>
+      <p class="feat-desc">{% trans "Private rooms where masters teach enrolled students." %}</p>
+    </a>
+  </div>
+
+  <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
+    <a href="{% url 'discussion_home' %}" class="feat-card" style="--c:#a855f7; --c-bg:rgba(168,85,247,0.12);">
+      <div class="feat-card-top">
+        <div class="feat-icon"><i class="bi bi-chat-square-dots-fill"></i></div>
+        <div class="feat-count">
+          <div class="feat-count-num">{{ stats.threads }}</div>
+          <div class="feat-count-lbl">{% trans "Threads" %}</div>
+        </div>
+      </div>
+      <p class="feat-title">{% trans "Discussion" %} <i class="bi bi-arrow-right feat-arrow"></i></p>
+      <p class="feat-desc">{% trans "Ask questions and share ideas." %}</p>
+    </a>
+  </div>
+
+</div>
+
+{% if user.is_staff %}
+<!-- ── Admin section (staff only) ────────────────────────────── -->
+<div class="idx-section-head">
+  <p class="idx-label">{% trans "Manage" %}</p>
+  <p class="idx-title">{% trans "Administration" %}</p>
+</div>
+
+<div class="row g-3 mb-4">
+  <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
+    <a href="{% url 'analytics-home' %}" class="feat-card" style="--c:#38bdf8; --c-bg:rgba(56,189,248,0.12);">
+      <div class="feat-card-top">
+        <div class="feat-icon"><i class="bi bi-bar-chart-line-fill"></i></div>
+        <div class="feat-count">
+          <div class="feat-count-num">{{ stats.students }}</div>
+          <div class="feat-count-lbl">{% trans "Users" %}</div>
+        </div>
+      </div>
+      <p class="feat-title">{% trans "Analytics" %} <i class="bi bi-arrow-right feat-arrow"></i></p>
+      <p class="feat-desc">{% trans "Platform insights, charts, and performance data." %}</p>
+    </a>
+  </div>
+</div>
+{% endif %}
+
 <!-- ── My Stats (authenticated users only) ──────────────────── -->
 {% if user.is_authenticated %}
-<p class="idx-label">{% trans "My Stats" %}</p>
+<div class="idx-section-head mt-4">
+  <p class="idx-label">{% trans "My Stats" %}</p>
+  <p class="idx-title">{% trans "Your progress" %}</p>
+</div>
 
 {% if my_stats %}
-<div class="my-stats-card">
+<div class="my-stats-card mb-4">
 
   {% if my_stats.type == 'student' %}
   <div class="my-stats-head">
-    <div class="feat-icon" style="background:rgba(14,165,233,0.13); color:#0ea5e9; width:36px; height:36px; font-size:1rem;">
+    <div class="feat-icon" style="--c:#0ea5e9; --c-bg:rgba(14,165,233,0.12); width:36px; height:36px; font-size:1rem;">
       <i class="bi bi-mortarboard-fill"></i>
     </div>
     <span class="my-stats-head-title">{{ my_stats.panda.rank }} — {{ user.get_full_name|default:user.username }}</span>
@@ -381,6 +563,15 @@
       <div class="my-stat-lbl">{% trans "Homework" %}</div>
     </div>
   </div>
+  {% if my_stats.hw_total %}
+  <div class="d-flex justify-content-between align-items-center" style="font-size:0.72rem; color:var(--text-muted);">
+    <span>{% trans "Homework completion" %}</span>
+    <span>{{ my_stats.hw_done }}/{{ my_stats.hw_total }}</span>
+  </div>
+  <div class="hw-progress">
+    <div class="hw-progress-bar" style="width:{% widthratio my_stats.hw_done my_stats.hw_total 100 %}%;"></div>
+  </div>
+  {% endif %}
   <div class="d-flex gap-2 flex-wrap">
     <a href="{% url 'profile' %}" class="btn-core-outline text-decoration-none" style="font-size:0.8rem;">
       <i class="bi bi-person"></i> {% trans "My Profile" %}
@@ -388,11 +579,14 @@
     <a href="{% url 'practice_list' %}" class="btn-core-outline text-decoration-none" style="font-size:0.8rem;">
       <i class="bi bi-book"></i> {% trans "Browse Practices" %}
     </a>
+    <a href="{% url 'my_homework' %}" class="btn-core-outline text-decoration-none" style="font-size:0.8rem;">
+      <i class="bi bi-journal-bookmark"></i> {% trans "My Homework" %}
+    </a>
   </div>
 
   {% elif my_stats.type == 'master' %}
   <div class="my-stats-head">
-    <div class="feat-icon" style="background:rgba(245,158,11,0.13); color:#f59e0b; width:36px; height:36px; font-size:1rem;">
+    <div class="feat-icon" style="--c:#f59e0b; --c-bg:rgba(245,158,11,0.13); width:36px; height:36px; font-size:1rem;">
       <i class="bi bi-person-workspace"></i>
     </div>
     <span class="my-stats-head-title">{% trans "Master" %} — {{ my_stats.master.name }}</span>
@@ -424,7 +618,7 @@
 </div>
 
 {% else %}
-<div class="my-stats-card text-center py-4">
+<div class="my-stats-card text-center py-4 mb-4">
   <i class="bi bi-person-circle" style="font-size:2.5rem; color:var(--border);"></i>
   <h6 class="mt-3 mb-1 fw-bold">{% trans "No role assigned yet" %}</h6>
   <p class="text-muted small mb-3">{% trans "Become a master or get enrolled as a student to see your stats here." %}</p>

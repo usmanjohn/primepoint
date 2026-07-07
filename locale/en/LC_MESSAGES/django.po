@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-25 14:56+0000\n"
+"POT-Creation-Date: 2026-07-07 14:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,8 @@ msgstr ""
 
 #: analytics/templates/analytics/home.html:4
 #: analytics/templates/analytics/home.html:5
-#: prime/templates/prime/index.html:24 templates/base.html:72
+#: prime/templates/prime/about.html:589 prime/templates/prime/index.html:516
+#: templates/base.html:81
 msgid "Analytics"
 msgstr ""
 
@@ -29,40 +30,52 @@ msgid "Platform Overview"
 msgstr ""
 
 #: analytics/templates/analytics/home.html:133
-#: analytics/templates/analytics/home.html:317
-#: masters/templates/masters/master_detail.html:285
-#: masters/templates/masters/master_detail.html:374
+#: classroom/templates/classroom/classroom_detail.html:176
+#: masters/templates/masters/master_detail.html:394
+#: masters/templates/masters/master_detail.html:500
 #: masters/templates/masters/master_list.html:185
-#: people/templates/people/profile.html:154
+#: masters/templates/masters/my_students.html:198
+#: people/templates/people/profile.html:257
+#: prime/templates/prime/index.html:322 prime/templates/prime/index.html:461
+#: prime/templates/prime/index.html:597
 msgid "Students"
 msgstr ""
 
 #: analytics/templates/analytics/home.html:138
 #: masters/templates/masters/master_list.html:4
 #: masters/templates/masters/master_list.html:5
-#: prime/templates/prime/index.html:38
-#: prime/templates/prime/search_results.html:41 templates/base.html:77
+#: prime/templates/prime/index.html:326 prime/templates/prime/index.html:447
+#: prime/templates/prime/index.html:450
+#: prime/templates/prime/search_results.html:41 templates/base.html:87
 msgid "Masters"
 msgstr ""
 
 #: analytics/templates/analytics/home.html:143
-#: analytics/templates/analytics/home.html:321
-#: masters/templates/masters/master_detail.html:280
-#: masters/templates/masters/master_detail.html:332
+#: classroom/templates/classroom/lesson_detail.html:291
+#: masters/templates/masters/master_detail.html:389
+#: masters/templates/masters/master_detail.html:441
 #: masters/templates/masters/master_list.html:181
-#: people/templates/people/profile.html:168
-#: people/templates/people/profile.html:281
+#: people/templates/people/profile.html:271
+#: people/templates/people/profile.html:395
+#: prime/templates/prime/about.html:494 prime/templates/prime/index.html:353
+#: prime/templates/prime/index.html:601
 msgid "Practices"
 msgstr ""
 
 #: analytics/templates/analytics/home.html:148
-#: analytics/templates/analytics/home.html:245
-#: masters/templates/masters/master_detail.html:295
+#: masters/templates/masters/master_detail.html:404
+#: masters/templates/masters/my_students.html:245
+#: prime/templates/prime/index.html:551
 msgid "Avg Score"
 msgstr ""
 
 #: analytics/templates/analytics/home.html:153
-#: masters/templates/masters/master_detail.html:300
+#: exam/templates/exam/take_section.html:437
+#: games/templates/games/oddoneout_manage.html:105
+#: masters/templates/masters/master_detail.html:409
+#: practice/templates/practice/practice_detail.html:35
+#: practice/templates/practice/practice_list.html:611
+#: prime/templates/prime/help.html:580
 msgid "Questions"
 msgstr ""
 
@@ -72,9 +85,15 @@ msgid "Discussions"
 msgstr ""
 
 #: analytics/templates/analytics/home.html:163
-#: analytics/templates/analytics/home.html:257
-#: prime/templates/prime/index.html:80 templates/base.html:95
-msgid "Homework"
+#: classroom/templates/classroom/lesson_detail.html:270
+#: masters/templates/masters/master_detail.html:540
+#: prime/templates/prime/index.html:370 templates/base.html:119
+#: templates/base.html:322 tutorial/templates/tutorial/playlist_detail.html:15
+#: tutorial/templates/tutorial/playlist_list.html:90
+#: tutorial/templates/tutorial/tutorial_detail.html:37
+#: tutorial/templates/tutorial/tutorial_list.html:5
+#: tutorial/templates/tutorial/tutorial_list.html:13
+msgid "Tutorials"
 msgstr ""
 
 #: analytics/templates/analytics/home.html:171
@@ -94,161 +113,2629 @@ msgid "Student Ranks"
 msgstr ""
 
 #: analytics/templates/analytics/home.html:207
-msgid "Free vs Paid"
+msgid "By Subject"
 msgstr ""
 
 #: analytics/templates/analytics/home.html:219
 msgid "Top Masters by Students"
 msgstr ""
 
-#: analytics/templates/analytics/home.html:232
-#: analytics/templates/analytics/home.html:349
-#: analytics/templates/analytics/home.html:361
-msgid "My Analytics"
+#: classroom/templates/classroom/classroom_confirm_delete.html:3
+#: classroom/templates/classroom/classroom_confirm_delete.html:4
+msgid "Confirm Delete"
 msgstr ""
 
-#: analytics/templates/analytics/home.html:241
-#: people/templates/people/profile.html:198
-msgid "Attempts"
+#: classroom/templates/classroom/classroom_confirm_delete.html:15
+msgid "Delete permanently?"
 msgstr ""
 
-#: analytics/templates/analytics/home.html:249
-msgid "Best Score"
+#: classroom/templates/classroom/classroom_confirm_delete.html:18
+#, python-format
+msgid ""
+"\n"
+"          \"%(name)s\" will be permanently deleted and cannot be recovered.\n"
+"        "
 msgstr ""
 
-#: analytics/templates/analytics/home.html:253
-msgid "Pass Rate"
+#: classroom/templates/classroom/classroom_confirm_delete.html:27
+#: classroom/templates/classroom/lesson_confirm_delete.html:27
+#: tutorial/templates/tutorial/playlist_confirm_delete.html:30
+msgid "Yes, delete"
 msgstr ""
 
-#: analytics/templates/analytics/home.html:261
-#: masters/templates/masters/master_list.html:189
-#: people/templates/people/profile.html:191
-msgid "Rating"
+#: classroom/templates/classroom/classroom_confirm_delete.html:31
+#: classroom/templates/classroom/classroom_confirm_delete.html:33
+#: classroom/templates/classroom/classroom_form.html:144
+#: classroom/templates/classroom/classroom_form.html:146
+#: classroom/templates/classroom/discussion_form.html:82
+#: classroom/templates/classroom/lesson_confirm_delete.html:30
+#: classroom/templates/classroom/lesson_form.html:181
+#: classroom/templates/classroom/lesson_form.html:183
+#: exam/templates/exam/take_section.html:466
+#: examprep/templates/examprep/lesson_edit.html:112
+#: tutorial/templates/tutorial/playlist_confirm_delete.html:24
+#: tutorial/templates/tutorial/playlist_form.html:25
+#: tutorial/templates/tutorial/tutorial_confirm_delete.html:30
+#: tutorial/templates/tutorial/tutorial_form.html:64
+msgid "Cancel"
 msgstr ""
 
-#: analytics/templates/analytics/home.html:270
-msgid "My Recent Scores"
+#: classroom/templates/classroom/classroom_detail.html:107
+msgid "Private Classroom"
 msgstr ""
 
-#: analytics/templates/analytics/home.html:282
-msgid "My Score by Level"
+#: classroom/templates/classroom/classroom_detail.html:112
+#: classroom/templates/classroom/classroom_list.html:221
+msgid "lessons"
 msgstr ""
 
-#: analytics/templates/analytics/home.html:292
-msgid "Homework Status"
+#: classroom/templates/classroom/classroom_detail.html:113
+#: classroom/templates/classroom/classroom_list.html:222
+msgid "members"
 msgstr ""
 
-#: analytics/templates/analytics/home.html:309
-msgid "My Master Stats"
+#: classroom/templates/classroom/classroom_detail.html:117
+#: classroom/templates/classroom/discussion_form.html:54
+#: classroom/templates/classroom/discussion_list.html:3
+#: classroom/templates/classroom/discussion_list.html:4
+#: classroom/templates/classroom/discussion_list.html:78
+#: classroom/templates/classroom/discussion_thread.html:99 people/models.py:20
+#: prime/templates/prime/index.html:492 templates/base.html:113
+msgid "Discussion"
 msgstr ""
 
-#: analytics/templates/analytics/home.html:325
-#: masters/templates/masters/master_detail.html:290
-#: people/templates/people/profile.html:161
-msgid "Avg Rating"
+#: classroom/templates/classroom/classroom_detail.html:121
+msgid "Edit Classroom"
 msgstr ""
 
-#: analytics/templates/analytics/home.html:329
-msgid "Student Avg Score"
+#: classroom/templates/classroom/classroom_detail.html:124
+msgid "Members"
 msgstr ""
 
-#: analytics/templates/analytics/home.html:333
-msgid "Total Attempts"
+#: classroom/templates/classroom/classroom_detail.html:132
+#: prime/templates/prime/index.html:381
+msgid "Lessons"
 msgstr ""
 
-#: analytics/templates/analytics/home.html:339
-msgid "My Master Page"
+#: classroom/templates/classroom/classroom_detail.html:135
+msgid "Add Lesson"
 msgstr ""
 
-#: analytics/templates/analytics/home.html:342
-#: people/templates/people/profile.html:120
-msgid "Manage Practices"
+#: classroom/templates/classroom/classroom_detail.html:149
+#: classroom/templates/classroom/lesson_detail.html:160
+msgid "Not Yet"
 msgstr ""
 
-#: analytics/templates/analytics/home.html:353
-msgid "No personal data yet"
+#: classroom/templates/classroom/classroom_detail.html:150
+#: classroom/templates/classroom/lesson_detail.html:164
+#: prime/templates/prime/help.html:667
+msgid "Ongoing"
 msgstr ""
 
-#: analytics/templates/analytics/home.html:354
-msgid "Complete a practice to see your personal analytics."
+#: classroom/templates/classroom/classroom_detail.html:151
+#: classroom/templates/classroom/lesson_detail.html:168
+#: prime/templates/prime/help.html:662
+msgid "Finished"
 msgstr ""
 
-#: analytics/templates/analytics/home.html:356
-#: people/templates/people/profile.html:437
-msgid "Browse Practices"
+#: classroom/templates/classroom/classroom_detail.html:155
+#: classroom/templates/classroom/lesson_detail.html:175
+#: examprep/templates/examprep/_playlist.html:12
+#: games/templates/games/mathsquare_list.html:51
+#: masters/templates/masters/master_detail.html:461
+msgid "Draft"
 msgstr ""
 
-#: analytics/templates/analytics/home.html:365
-msgid "Login required"
+#: classroom/templates/classroom/classroom_detail.html:159
+#: practice/templates/practice/practice_list.html:650
+msgid "Open"
 msgstr ""
 
-#: analytics/templates/analytics/home.html:366
-msgid "Log in to view your personal stats and charts."
+#: classroom/templates/classroom/classroom_detail.html:166
+msgid "No lessons yet. Add your first lesson above."
 msgstr ""
 
-#: analytics/templates/analytics/home.html:368 templates/base.html:228
-msgid "Log in"
+#: classroom/templates/classroom/classroom_detail.html:167
+msgid "No lessons published yet."
 msgstr ""
 
-#: masters/templates/masters/master_detail.html:5
-#: people/templates/people/profile.html:32
-msgid "Master"
+#: classroom/templates/classroom/classroom_detail.html:178
+#: games/templates/games/oddoneout_manage.html:4
+#: people/templates/people/profile.html:397
+#: people/templates/people/profile.html:417
+#: prime/templates/prime/index.html:502
+msgid "Manage"
 msgstr ""
 
-#: masters/templates/masters/master_detail.html:231
-msgid "All Masters"
+#: classroom/templates/classroom/classroom_detail.html:189
+#: masters/templates/masters/master_detail.html:478
+#: masters/templates/masters/master_detail.html:481
+#: masters/templates/masters/master_detail.html:525
+#: masters/templates/masters/master_detail.html:528
+#: masters/templates/masters/master_detail.html:570
+#: masters/templates/masters/master_detail.html:573
+msgid "more"
 msgstr ""
 
-#: masters/templates/masters/master_detail.html:259
-msgid "Edit"
+#: classroom/templates/classroom/classroom_detail.html:197
+msgid "Delete Classroom"
 msgstr ""
 
-#: masters/templates/masters/master_detail.html:265
-msgid "Delete your Master profile? This cannot be undone."
+#: classroom/templates/classroom/classroom_form.html:105
+#: classroom/templates/classroom/classroom_form.html:109
+#: games/templates/games/crossword_print.html:215
+#: games/templates/games/mathsquare_print.html:112
+msgid "Back"
 msgstr ""
 
-#: masters/templates/masters/master_detail.html:266
+#: classroom/templates/classroom/classroom_form.html:141
+#: examprep/templates/examprep/lesson_edit.html:109
+#: games/templates/games/mathsquare_edit.html:68
+msgid "Save"
+msgstr ""
+
+#: classroom/templates/classroom/classroom_list.html:3
+#: classroom/templates/classroom/classroom_list.html:4
+#: classroom/templates/classroom/classroom_list.html:183
+#: classroom/templates/classroom/discussion_thread.html:95
+#: classroom/templates/classroom/lesson_detail.html:145
+#: prime/templates/prime/index.html:478 templates/base.html:125
+msgid "Classrooms"
+msgstr ""
+
+#: classroom/templates/classroom/classroom_list.html:182
+msgid "Learning"
+msgstr ""
+
+#: classroom/templates/classroom/classroom_list.html:186
+msgid "Your private teaching spaces."
+msgstr ""
+
+#: classroom/templates/classroom/classroom_list.html:188
+msgid "Your enrolled classrooms."
+msgstr ""
+
+#: classroom/templates/classroom/classroom_list.html:194
+msgid "New Classroom"
+msgstr ""
+
+#: classroom/templates/classroom/classroom_list.html:202
+msgid "Log in to see which classrooms you're enrolled in."
+msgstr ""
+
+#: classroom/templates/classroom/classroom_list.html:203
+msgid "Sign in"
+msgstr ""
+
+#: classroom/templates/classroom/classroom_list.html:228
+msgid "Active"
+msgstr ""
+
+#: classroom/templates/classroom/classroom_list.html:228
+msgid "Inactive"
+msgstr ""
+
+#: classroom/templates/classroom/classroom_list.html:232
+msgid "Enrolled"
+msgstr ""
+
+#: classroom/templates/classroom/classroom_list.html:236
+msgid "Private"
+msgstr ""
+
+#: classroom/templates/classroom/classroom_list.html:240
+msgid "Enter"
+msgstr ""
+
+#: classroom/templates/classroom/classroom_list.html:240
+#: masters/templates/masters/master_detail.html:672
+#: masters/templates/masters/master_list.html:191
+#: people/templates/people/profile.html:647
+msgid "View"
+msgstr ""
+
+#: classroom/templates/classroom/classroom_list.html:248
+msgid "No classrooms yet"
+msgstr ""
+
+#: classroom/templates/classroom/classroom_list.html:251
+msgid "Create your first classroom and start teaching."
+msgstr ""
+
+#: classroom/templates/classroom/classroom_list.html:253
+msgid "No classrooms have been created yet."
+msgstr ""
+
+#: classroom/templates/classroom/classroom_list.html:258
+msgid "Create Classroom"
+msgstr ""
+
+#: classroom/templates/classroom/classroom_locked.html:68
+msgid ""
+"This classroom is private. You need to be enrolled by the master to access "
+"its lessons and discussions."
+msgstr ""
+
+#: classroom/templates/classroom/classroom_locked.html:77
+msgid "Contact this master to request access to the classroom."
+msgstr ""
+
+#: classroom/templates/classroom/classroom_locked.html:84
+msgid "Visit Master Profile"
+msgstr ""
+
+#: classroom/templates/classroom/classroom_locked.html:87
+msgid "All Classrooms"
+msgstr ""
+
+#: classroom/templates/classroom/classroom_manage.html:3
+#: classroom/templates/classroom/classroom_manage.html:4
+msgid "Manage Members"
+msgstr ""
+
+#: classroom/templates/classroom/classroom_manage.html:93
+msgid "Attach Groups"
+msgstr ""
+
+#: classroom/templates/classroom/classroom_manage.html:105
+msgid "No groups found. Create groups in the Homework section first."
+msgstr ""
+
+#: classroom/templates/classroom/classroom_manage.html:115
+msgid "Add Individual Students"
+msgstr ""
+
+#: classroom/templates/classroom/classroom_manage.html:127
+msgid "No students connected to you yet."
+msgstr ""
+
+#: classroom/templates/classroom/classroom_manage.html:134
+msgid "Update Members"
+msgstr ""
+
+#: classroom/templates/classroom/classroom_manage.html:143
+msgid "Current Members"
+msgstr ""
+
+#: classroom/templates/classroom/discussion_form.html:3
+#: classroom/templates/classroom/discussion_form.html:4
+msgid "New Discussion"
+msgstr ""
+
+#: classroom/templates/classroom/discussion_form.html:60
+msgid "Start a Discussion"
+msgstr ""
+
+#: classroom/templates/classroom/discussion_form.html:68
+#: classroom/templates/classroom/lesson_detail.html:251
+#: classroom/templates/classroom/lesson_detail.html:339
+#: classroom/templates/classroom/lesson_form.html:100
+#: examprep/templates/examprep/lesson_edit.html:32
+#: masters/templates/masters/certificate.html:360
+#: tutorial/templates/tutorial/playlist_form.html:39
+#: tutorial/templates/tutorial/tutorial_form.html:80
+msgid "Title"
+msgstr ""
+
+#: classroom/templates/classroom/discussion_form.html:73
+#: masters/templates/masters/certificate.html:363
+msgid "Body"
+msgstr ""
+
+#: classroom/templates/classroom/discussion_form.html:80
+msgid "Post"
+msgstr ""
+
+#: classroom/templates/classroom/discussion_list.html:82
+msgid "Back to Classroom"
+msgstr ""
+
+#: classroom/templates/classroom/discussion_list.html:85
+msgid "New Post"
+msgstr ""
+
+#: classroom/templates/classroom/discussion_list.html:98
+#: classroom/templates/classroom/discussion_thread.html:114
+msgid "Pinned"
+msgstr ""
+
+#: classroom/templates/classroom/discussion_list.html:102
+#: classroom/templates/classroom/discussion_thread.html:124
+#: prime/templates/prime/help.html:698
+msgid "replies"
+msgstr ""
+
+#: classroom/templates/classroom/discussion_list.html:110
+msgid "Delete this discussion?"
+msgstr ""
+
+#: classroom/templates/classroom/discussion_list.html:112
+#: classroom/templates/classroom/lesson_detail.html:187
+#: examprep/templates/examprep/lesson_edit.html:69
+#: masters/templates/masters/master_detail.html:375
+#: masters/templates/masters/student_detail.html:404
 msgid "Delete"
 msgstr ""
 
-#: masters/templates/masters/master_detail.html:307
+#: classroom/templates/classroom/discussion_list.html:121
+msgid "No discussions yet"
+msgstr ""
+
+#: classroom/templates/classroom/discussion_list.html:122
+msgid "Start a conversation with your classmates."
+msgstr ""
+
+#: classroom/templates/classroom/discussion_list.html:124
+msgid "Start Discussion"
+msgstr ""
+
+#: classroom/templates/classroom/discussion_thread.html:123
+msgid "views"
+msgstr ""
+
+#: classroom/templates/classroom/discussion_thread.html:131
+msgid "Replies"
+msgstr ""
+
+#: classroom/templates/classroom/discussion_thread.html:155
+msgid "Leave a Reply"
+msgstr ""
+
+#: classroom/templates/classroom/discussion_thread.html:169
+msgid "Post Reply"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_confirm_delete.html:3
+#: classroom/templates/classroom/lesson_confirm_delete.html:4
+msgid "Delete Lesson"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_confirm_delete.html:15
+msgid "Delete lesson?"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_confirm_delete.html:18
+#, python-format
+msgid ""
+"\n"
+"          \"%(name)s\" and all its notes will be permanently deleted.\n"
+"        "
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:173
+msgid "Live"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:178 people/models.py:18
+msgid "Lesson"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:184
+#: examprep/templates/examprep/lesson_detail.html:37
+#: examprep/templates/examprep/lesson_edit.html:5
+#: examprep/templates/examprep/lesson_edit.html:13
+#: games/templates/games/mathsquare_list.html:58
+#: games/templates/games/oddoneout_list.html:62
+#: homework/templates/homework/homework_detail.html:76
+#: masters/templates/masters/certificate.html:359
+#: masters/templates/masters/master_detail.html:368
+#: masters/templates/masters/master_detail.html:675
+#: tutorial/templates/tutorial/playlist_detail.html:54
+#: tutorial/templates/tutorial/tutorial_detail.html:68
+msgid "Edit"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:199
+msgid "Video"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:214
+#: masters/templates/masters/student_detail.html:352
+#: masters/templates/masters/student_detail.html:374
+msgid "Notes"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:225
+msgid "Download"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:231
+msgid "Delete note"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:232
+msgid "Delete this note?"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:240
+msgid "No notes uploaded yet."
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:246
+msgid "Upload PDF Note"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:255
+msgid "File (PDF)"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:259
+msgid "Upload"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:279
+msgid "min read"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:312
+#: masters/templates/masters/master_detail.html:633
+msgid "Homeworks"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:323
+#: homework/templates/homework/homework_detail.html:67
+#: masters/templates/masters/student_detail.html:372
+#: people/templates/people/profile.html:447
+#: people/templates/people/profile.html:672
+msgid "Due"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:323
+msgid "No due date"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:329
+#: people/templates/people/profile.html:703
+msgid "No homework assigned yet."
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:334
+msgid "Create & Attach Homework"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:343 people/models.py:16
+#: practice/templates/practice/practice_list.html:451
+#: prime/templates/prime/index.html:356 templates/base.html:91
+#: templates/base.html:95 templates/base.html:328
+#: tutorial/templates/tutorial/tutorial_detail.html:302
+msgid "Practice"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:347
+#: masters/templates/masters/student_detail.html:344
+msgid "Due Date"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:352
+msgid "Instructions"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:356
+#: people/templates/people/profile.html:458
+msgid "Create Homework"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_detail.html:370
+msgid "Content coming soon."
+msgstr ""
+
+#: classroom/templates/classroom/lesson_form.html:106
+#: games/templates/games/oddoneout_create.html:39
+#: tutorial/templates/tutorial/playlist_form.html:48
+msgid "Description"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_form.html:111
+msgid "YouTube Video URL"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_form.html:111
+#: games/templates/games/codebreaker_create.html:61
+#: games/templates/games/oddoneout_create.html:39
+#: games/templates/games/primeclimb_create.html:82
+#: games/templates/games/sortingrace_create.html:68
+#: games/templates/games/wordorder_create.html:58
+#: tutorial/templates/tutorial/playlist_form.html:49
+#: tutorial/templates/tutorial/playlist_form.html:98
+#: tutorial/templates/tutorial/tutorial_form.html:124
+#: tutorial/templates/tutorial/tutorial_form.html:136
+msgid "optional"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_form.html:118
+#: examprep/templates/examprep/lesson_edit.html:41
+#: examprep/templates/examprep/lesson_edit.html:64
+msgid "Order"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_form.html:122
+#: homework/templates/homework/homework_detail.html:124
+#: homework/templates/homework/homework_detail.html:193
+#: masters/templates/masters/student_detail.html:266
+#: masters/templates/masters/student_detail.html:334
+#: masters/templates/masters/student_detail.html:371
+msgid "Status"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_form.html:128
+#: examprep/templates/examprep/lesson_edit.html:46
+#: tutorial/templates/tutorial/playlist_form.html:115
+#: tutorial/templates/tutorial/tutorial_form.html:153
+msgid "Published"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_form.html:136
+msgid "Link Practices"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_form.html:141
+msgid "No published practices available."
+msgstr ""
+
+#: classroom/templates/classroom/lesson_form.html:151
+msgid "Link Homeworks"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_form.html:156
+msgid "No homeworks created yet."
+msgstr ""
+
+#: classroom/templates/classroom/lesson_form.html:165
+msgid "Link Tutorials"
+msgstr ""
+
+#: classroom/templates/classroom/lesson_form.html:170
+msgid "No published tutorials available."
+msgstr ""
+
+#: classroom/templates/classroom/lesson_form.html:178
+msgid "Save Lesson"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:49
+#: exam/templates/exam/exam_result.html:86
+#: exam/templates/exam/exam_result.html:245
+msgid "All Exams"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:60
+msgid "Listening Qs"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:61
+msgid "Reading Qs"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:62
+msgid "Writing Qs"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:63
+msgid "Total Min"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:64
+msgid "Yes"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:64
+#: exam/templates/exam/take_section.html:497
+msgid "Audio"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:69
+msgid "EXAM SECTIONS"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:73
+#: exam/templates/exam/exam_detail.html:113
+#: exam/templates/exam/exam_list.html:151
+#: exam/templates/exam/exam_result.html:99
+#: exam/templates/exam/exam_result.html:137
+#: exam/templates/exam/take_section.html:477 examprep/models.py:11
+msgid "Listening"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:74
+#: exam/templates/exam/exam_detail.html:82
+#: exam/templates/exam/exam_detail.html:90
+#: exam/templates/exam/exam_result.html:138
+#: exam/templates/exam/exam_result.html:177
+#: games/templates/games/oddoneout_list.html:49
+#: games/templates/games/oddoneout_manage.html:20
+msgid "questions"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:76
+#: exam/templates/exam/exam_detail.html:84
+#: exam/templates/exam/exam_detail.html:92
+#: exam/templates/exam/exam_list.html:151
+#: exam/templates/exam/exam_list.html:152
+#: exam/templates/exam/exam_list.html:153 prime/templates/prime/help.html:577
+#: prime/templates/prime/help.html:633
+#: tutorial/templates/tutorial/tutorial_detail.html:100
+msgid "min"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:81
+#: exam/templates/exam/exam_detail.html:114
+#: exam/templates/exam/exam_list.html:152
+#: exam/templates/exam/exam_result.html:110
+#: exam/templates/exam/exam_result.html:176
+#: exam/templates/exam/take_section.html:479 examprep/models.py:9
+msgid "Reading"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:89
+#: exam/templates/exam/exam_detail.html:115
+#: exam/templates/exam/exam_list.html:153
+#: exam/templates/exam/exam_result.html:121
+#: exam/templates/exam/exam_result.html:215
+#: exam/templates/exam/take_section.html:481 examprep/models.py:10
+msgid "Writing"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:98
+msgid "RULES"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:100
+msgid "Sections are completed in order: Listening → Reading → Writing"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:101
+msgid "Timer runs continuously and cannot be paused."
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:102
+msgid "Listening and Reading are auto-scored. Writing is graded by a teacher."
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:103
+msgid "Scroll freely through all questions in a section — answer in any order."
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:112
+msgid "Previous Attempt"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:115
+#: homework/templates/homework/homework_detail.html:93
+#: homework/templates/homework/homework_detail.html:141
+#: homework/templates/homework/homework_detail.html:211
+#: people/templates/people/profile.html:676 prime/templates/prime/help.html:451
+#: prime/templates/prime/help.html:598
+msgid "Pending"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:118
+msgid "Continue Exam"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:123
+#: exam/templates/exam/exam_list.html:163
+msgid "View Result"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:131
+#: exam/templates/exam/exam_result.html:244
+msgid "Retake Exam"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:131
+#: exam/templates/exam/exam_list.html:171
+msgid "Start Exam"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:135
+msgid "Total time:"
+msgstr ""
+
+#: exam/templates/exam/exam_detail.html:135
+msgid "minutes"
+msgstr ""
+
+#: exam/templates/exam/exam_list.html:4 exam/templates/exam/exam_list.html:5
+#: prime/templates/prime/index.html:395 prime/templates/prime/index.html:398
+#: templates/base.html:137 templates/base.html:325
+msgid "Exams"
+msgstr ""
+
+#: exam/templates/exam/exam_list.html:129
+msgid "Full Exams"
+msgstr ""
+
+#: exam/templates/exam/exam_list.html:130
+msgid "Complete timed exams — Listening → Reading → Writing in sequence."
+msgstr ""
+
+#: exam/templates/exam/exam_list.html:143
+msgid "Exam"
+msgstr ""
+
+#: exam/templates/exam/exam_list.html:145
+#: exam/templates/exam/exam_result.html:92
+#: tutorial/templates/tutorial/tutorial_detail.html:290
+msgid "Completed"
+msgstr ""
+
+#: exam/templates/exam/exam_list.html:147
+msgid "In progress"
+msgstr ""
+
+#: exam/templates/exam/exam_list.html:156
+msgid "min total"
+msgstr ""
+
+#: exam/templates/exam/exam_list.html:157
+msgid "Audio included"
+msgstr ""
+
+#: exam/templates/exam/exam_list.html:165
+msgid "Retake"
+msgstr ""
+
+#: exam/templates/exam/exam_list.html:170
+msgid "Continue"
+msgstr ""
+
+#: exam/templates/exam/exam_list.html:184
+msgid "No exams published yet."
+msgstr ""
+
+#: exam/templates/exam/exam_result.html:4
+#: games/templates/games/target_number.html:438
+msgid "Result"
+msgstr ""
+
+#: exam/templates/exam/exam_result.html:90
+msgid "EXAM RESULT"
+msgstr ""
+
+#: exam/templates/exam/exam_result.html:103
+#: exam/templates/exam/exam_result.html:114
+msgid "No questions"
+msgstr ""
+
+#: exam/templates/exam/exam_result.html:125
+msgid "Pending review"
+msgstr ""
+
+#: exam/templates/exam/exam_result.html:141
+#: exam/templates/exam/exam_result.html:180
+#: exam/templates/exam/exam_result.html:219
+msgid "Show / Hide Answers"
+msgstr ""
+
+#: exam/templates/exam/exam_result.html:159
+#: exam/templates/exam/exam_result.html:198
+#: exam/templates/exam/exam_result.html:232
+msgid "Not answered"
+msgstr ""
+
+#: exam/templates/exam/exam_result.html:216
+msgid "Graded by teacher"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:450
+#: exam/templates/exam/take_section.html:531
+msgid "Answered"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:453
+msgid "Unanswered"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:462
+msgid "Submit Section?"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:463
+msgid "Are you sure you want to submit and move to the next section?"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:467
+msgid "Yes, Submit"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:483
+msgid "Section"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:519
+msgid "Replay"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:536
+msgid "Navigate"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:552
+msgid "Passage image"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:556
+#: examprep/templates/examprep/lesson_edit.html:59
+#: games/templates/games/oddoneout_play.html:187
+msgid "Question"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:563
+msgid "Question image"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:570
+msgid "Write your answer here..."
+msgstr ""
+
+#: exam/templates/exam/take_section.html:594
+msgid "No questions in this section yet."
+msgstr ""
+
+#: exam/templates/exam/take_section.html:604
+#: exam/templates/exam/take_section.html:731
+#: exam/templates/exam/take_section.html:735
+msgid "Auto-save on"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:608
+msgid "Finish & Continue"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:610
+msgid "Submit Exam"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:720
+msgid "Saving..."
+msgstr ""
+
+#: exam/templates/exam/take_section.html:728
+msgid "Saved"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:747
+msgid "Submit Exam?"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:747
+msgid "Finish Section?"
+msgstr ""
+
+#: exam/templates/exam/take_section.html:749
+msgid "This will complete and score your exam."
+msgstr ""
+
+#: exam/templates/exam/take_section.html:750
+msgid "You cannot go back to this section once you continue."
+msgstr ""
+
+#: exam/templates/exam/take_section.html:754
+msgid "question(s) not answered"
+msgstr ""
+
+#: examprep/models.py:12
+msgid "Speaking"
+msgstr ""
+
+#: examprep/models.py:13
+msgid "Vocabulary"
+msgstr ""
+
+#: examprep/models.py:14
+msgid "Strategy"
+msgstr ""
+
+#: examprep/templates/examprep/_block.html:11
+msgid "Lesson image"
+msgstr ""
+
+#: examprep/templates/examprep/_block.html:57
+#: examprep/templates/examprep/lesson_detail.html:54
+#: games/templates/games/wordorder_play.html:275
+msgid "Correct!"
+msgstr ""
+
+#: examprep/templates/examprep/_block.html:59
+#: examprep/templates/examprep/lesson_detail.html:55
+msgid "Not quite."
+msgstr ""
+
+#: examprep/templates/examprep/_block.html:61
+msgid "No answer selected."
+msgstr ""
+
+#: examprep/templates/examprep/home.html:5
+#: examprep/templates/examprep/home.html:6
+#: examprep/templates/examprep/home.html:11
+#: examprep/templates/examprep/lesson_detail.html:6
+#: examprep/templates/examprep/lesson_detail.html:12
+#: examprep/templates/examprep/lesson_edit.html:10
+#: examprep/templates/examprep/track_detail.html:6
+#: examprep/templates/examprep/track_detail.html:12
+#: prime/templates/prime/index.html:300 prime/templates/prime/index.html:384
+#: templates/base.html:143
+msgid "Exam Prep"
+msgstr ""
+
+#: examprep/templates/examprep/home.html:13
+msgid "Learn how to approach IELTS, TOPIK, GMAT, SAT and more — step by step."
+msgstr ""
+
+#: examprep/templates/examprep/home.html:37
+#: examprep/templates/examprep/track_detail.html:44
+#, python-format
+msgid "%(counter)s lesson"
+msgid_plural "%(counter)s lessons"
+msgstr[0] ""
+msgstr[1] ""
+
+#: examprep/templates/examprep/home.html:47
+msgid "No exam tracks are available yet. Check back soon."
+msgstr ""
+
+#: examprep/templates/examprep/lesson_detail.html:43
+#, python-format
+msgid "Lesson %(current_no)s of %(total_no)s"
+msgstr ""
+
+#: examprep/templates/examprep/lesson_detail.html:49
+msgid "Answers checked. Correct answers and explanations are shown below."
+msgstr ""
+
+#: examprep/templates/examprep/lesson_detail.html:56
+#: homework/templates/homework/homework_detail.html:126
+#: homework/templates/homework/homework_detail.html:195
+msgid "Score"
+msgstr ""
+
+#: examprep/templates/examprep/lesson_detail.html:68
+msgid "Check answers"
+msgstr ""
+
+#: examprep/templates/examprep/lesson_detail.html:79
+msgid "Previous"
+msgstr ""
+
+#: examprep/templates/examprep/lesson_detail.html:86
+#: games/templates/games/oddoneout_play.html:265
+#: games/templates/games/oddoneout_play.html:372
+#: games/templates/games/wordorder_play.html:186
+#: games/templates/games/wordorder_play.html:191
+#: games/templates/games/wordorder_play.html:291
+#: tutorial/templates/tutorial/tutorial_detail.html:285
+msgid "Next"
+msgstr ""
+
+#: examprep/templates/examprep/lesson_detail.html:90
+msgid "Finish"
+msgstr ""
+
+#: examprep/templates/examprep/lesson_edit.html:4
+#: examprep/templates/examprep/lesson_edit.html:20
+msgid "Edit lesson"
+msgstr ""
+
+#: examprep/templates/examprep/lesson_edit.html:22
+msgid ""
+"Edit the text below (HTML is allowed) and save. To remove a block, tick "
+"“Delete”."
+msgstr ""
+
+#: examprep/templates/examprep/lesson_edit.html:36
+msgid "Summary (card blurb)"
+msgstr ""
+
+#: examprep/templates/examprep/lesson_edit.html:53
+msgid "Content blocks"
+msgstr ""
+
+#: examprep/templates/examprep/lesson_edit.html:58
+msgid "Block"
+msgstr ""
+
+#: examprep/templates/examprep/lesson_edit.html:60
+msgid "Image"
+msgstr ""
+
+#: examprep/templates/examprep/lesson_edit.html:74
+msgid "Content (HTML)"
+msgstr ""
+
+#: examprep/templates/examprep/lesson_edit.html:79
+msgid "Explanation (shown after answering)"
+msgstr ""
+
+#: examprep/templates/examprep/lesson_edit.html:83
+msgid "MCQ options are edited in the admin panel."
+msgstr ""
+
+#: examprep/templates/examprep/lesson_edit.html:88
+msgid "Image caption"
+msgstr ""
+
+#: examprep/templates/examprep/lesson_edit.html:98
+msgid "Add a new block (optional)"
+msgstr ""
+
+#: examprep/templates/examprep/lesson_edit.html:103
+msgid "Leave empty if not adding a block. It is added at the end."
+msgstr ""
+
+#: examprep/templates/examprep/track_detail.html:28
+msgid "Choose a section to start working through its lessons in order."
+msgstr ""
+
+#: examprep/templates/examprep/track_detail.html:56
+msgid "No lessons here yet."
+msgstr ""
+
+#: games/templates/games/codebreaker_create.html:4
+msgid "New Code Breaker Puzzle"
+msgstr ""
+
+#: games/templates/games/codebreaker_create.html:5
+#: games/templates/games/codebreaker_create.html:13
+#: games/templates/games/codebreaker_list.html:4
+#: games/templates/games/codebreaker_list.html:5
+#: games/templates/games/codebreaker_list.html:18
+#: games/templates/games/codebreaker_play.html:4
+#: games/templates/games/codebreaker_play.html:5
+#: games/templates/games/codebreaker_play.html:163
+#: games/templates/games/games_home.html:96
+msgid "Code Breaker"
+msgstr ""
+
+#: games/templates/games/codebreaker_create.html:16
+#: games/templates/games/codebreaker_list.html:26
+#: games/templates/games/mathsquare_create.html:16
+#: games/templates/games/mathsquare_list.html:26
+msgid "New Puzzle"
+msgstr ""
+
+#: games/templates/games/codebreaker_create.html:18
+msgid "Math clues are auto-generated from the secret word based on difficulty."
+msgstr ""
+
+#: games/templates/games/codebreaker_create.html:35
+#: games/templates/games/mathsquare_create.html:35
+msgid "Puzzle Title"
+msgstr ""
+
+#: games/templates/games/codebreaker_create.html:46
+msgid "Secret Word / Phrase"
+msgstr ""
+
+#: games/templates/games/codebreaker_create.html:54
+msgid "Each letter gets one math clue. Spaces are shown as gaps."
+msgstr ""
+
+#: games/templates/games/codebreaker_create.html:61
+#: games/templates/games/primeclimb_create.html:82
+#: games/templates/games/sortingrace_create.html:68
+#: games/templates/games/wordorder_create.html:58
+msgid "Hint"
+msgstr ""
+
+#: games/templates/games/codebreaker_create.html:72
+#: games/templates/games/mathsquare_create.html:46
+#: games/templates/games/sortingrace_create.html:44
+#: games/templates/games/target_number.html:99
+msgid "Difficulty"
+msgstr ""
+
+#: games/templates/games/codebreaker_create.html:96
+msgid "Generate & Play"
+msgstr ""
+
+#: games/templates/games/codebreaker_create.html:110
+msgid "Addition and subtraction with numbers under 20."
+msgstr ""
+
+#: games/templates/games/codebreaker_create.html:111
+msgid "Multiplication, squares, and mixed operations under 100."
+msgstr ""
+
+#: games/templates/games/codebreaker_create.html:112
+msgid "Mixed operations, negative numbers, and simple algebra (find x)."
+msgstr ""
+
+#: games/templates/games/codebreaker_list.html:13
+#: games/templates/games/crossword_list.html:13
+#: games/templates/games/english_crossword_list.html:13
+#: games/templates/games/games_home.html:4
+#: games/templates/games/games_home.html:5
+#: games/templates/games/games_home.html:12
+#: games/templates/games/mathsquare_list.html:13
+#: games/templates/games/number_guess.html:12
+#: games/templates/games/oddoneout_list.html:13
+#: games/templates/games/primeclimb_list.html:13
+#: games/templates/games/sortingrace_list.html:13
+#: games/templates/games/target_number.html:78
+#: games/templates/games/wordorder_list.html:13
+#: games/templates/games/wordsearch_list.html:13
+#: prime/templates/prime/index.html:334 prime/templates/prime/index.html:409
+#: prime/templates/prime/index.html:412 templates/base.html:131
+msgid "Games"
+msgstr ""
+
+#: games/templates/games/codebreaker_list.html:20
+msgid "Solve math problems to decode the secret word."
+msgstr ""
+
+#: games/templates/games/codebreaker_list.html:55
+msgid "letters"
+msgstr ""
+
+#: games/templates/games/codebreaker_list.html:67
+msgid "No puzzles yet. Check back soon!"
+msgstr ""
+
+#: games/templates/games/codebreaker_play.html:187
+#: games/templates/games/primeclimb_play.html:132
+#: games/templates/games/wordsearch_play.html:104
+msgid "Reset"
+msgstr ""
+
+#: games/templates/games/codebreaker_play.html:198
+msgid "letters decoded"
+msgstr ""
+
+#: games/templates/games/codebreaker_play.html:227
+#: games/templates/games/sortingrace_play.html:235
+msgid "Reference"
+msgstr ""
+
+#: games/templates/games/codebreaker_play.html:243
+msgid "You decoded the secret word!"
+msgstr ""
+
+#: games/templates/games/codebreaker_play.html:248
+msgid "More Puzzles"
+msgstr ""
+
+#: games/templates/games/codebreaker_play.html:275
+#: games/templates/games/target_number.html:177
+#: games/templates/games/target_number.html:427
+msgid "Time"
+msgstr ""
+
+#: games/templates/games/crossword_list.html:4
+#: games/templates/games/crossword_list.html:5
+#: games/templates/games/crossword_list.html:17
+#: games/templates/games/games_home.html:42
+msgid "Korean Crossword"
+msgstr ""
+
+#: games/templates/games/crossword_list.html:18
+msgid "Read the clue and fill in the Korean syllable blocks."
+msgstr ""
+
+#: games/templates/games/crossword_list.html:45
+#: games/templates/games/english_crossword_list.html:44
+#: games/templates/games/wordorder_create.html:79
+#: games/templates/games/wordorder_list.html:108
+#: games/templates/games/wordsearch_list.html:36
+msgid "words"
+msgstr ""
+
+#: games/templates/games/crossword_list.html:48
+#: games/templates/games/games_home.html:48
+msgid "Korean"
+msgstr ""
+
+#: games/templates/games/crossword_list.html:59
+#: games/templates/games/english_crossword_list.html:58
+#: games/templates/games/wordsearch_list.html:52
+msgid "No puzzles published yet. Check back soon!"
+msgstr ""
+
+#: games/templates/games/crossword_play.html:105
+msgid "Crossword"
+msgstr ""
+
+#: games/templates/games/crossword_play.html:115
+#: games/templates/games/english_crossword_play.html:117
+#: games/templates/games/mathsquare_play.html:59
+msgid "Print / PDF"
+msgstr ""
+
+#: games/templates/games/crossword_play.html:123
+#: games/templates/games/english_crossword_play.html:125
+#: games/templates/games/mathsquare_play.html:67
+#: games/templates/games/primeclimb_play.html:171
+#: practice/templates/practice/practice_detail.html:76
+msgid "Try Again"
+msgstr ""
+
+#: games/templates/games/crossword_play.html:134
+#: games/templates/games/english_crossword_play.html:136
+msgid "Excellent! All correct!"
+msgstr ""
+
+#: games/templates/games/crossword_play.html:140
+#: games/templates/games/english_crossword_play.html:142
+#: games/templates/games/mathsquare_play.html:84
+#: games/templates/games/number_guess.html:61
+#: games/templates/games/oddoneout_play.html:219
+#: games/templates/games/target_number.html:155
+#: games/templates/games/target_number.html:279
+#: games/templates/games/wordorder_play.html:286
+msgid "Play Again"
+msgstr ""
+
+#: games/templates/games/crossword_play.html:147
+#: games/templates/games/english_crossword_play.html:149
+msgid "This puzzle has no grid yet. Ask an admin to generate it."
+msgstr ""
+
+#: games/templates/games/crossword_play.html:158
+#: games/templates/games/english_crossword_play.html:160
+msgid "Crossword grid"
+msgstr ""
+
+#: games/templates/games/crossword_play.html:186
+#: games/templates/games/english_crossword_play.html:188
+msgid "Cell"
+msgstr ""
+
+#: games/templates/games/crossword_play.html:200
+#: games/templates/games/english_crossword_play.html:202
+#: games/templates/games/mathsquare_play.html:132
+#: games/templates/games/primeclimb_play.html:156
+msgid "Check Answers"
+msgstr ""
+
+#: games/templates/games/crossword_play.html:211
+#: games/templates/games/crossword_print.html:286
+#: games/templates/games/english_crossword_play.html:213
+msgid "Across"
+msgstr ""
+
+#: games/templates/games/crossword_play.html:229
+#: games/templates/games/crossword_print.html:299
+#: games/templates/games/english_crossword_play.html:231
+msgid "Down"
+msgstr ""
+
+#: games/templates/games/crossword_print.html:7
+#: games/templates/games/mathsquare_edit.html:73
+#: games/templates/games/mathsquare_list.html:62
+#: games/templates/games/mathsquare_print.html:7
+msgid "Print"
+msgstr ""
+
+#: games/templates/games/crossword_print.html:219
+#: games/templates/games/mathsquare_print.html:114
+msgid "Answers: ON"
+msgstr ""
+
+#: games/templates/games/crossword_print.html:221
+#: games/templates/games/mathsquare_print.html:116
+msgid "Show answer key"
+msgstr ""
+
+#: games/templates/games/crossword_print.html:226
+msgid "Uzbek clues: ON"
+msgstr ""
+
+#: games/templates/games/crossword_print.html:228
+msgid "Show Uzbek clues"
+msgstr ""
+
+#: games/templates/games/crossword_print.html:231
+#: games/templates/games/mathsquare_print.html:118
+msgid "Print / Save as PDF"
+msgstr ""
+
+#: games/templates/games/crossword_print.html:246
+#: games/templates/games/mathsquare_print.html:133
+msgid "ANSWER KEY"
+msgstr ""
+
+#: games/templates/games/crossword_print.html:247
+#: games/templates/games/mathsquare_print.html:134
+msgid "Name:"
+msgstr ""
+
+#: games/templates/games/crossword_print.html:252
+#: games/templates/games/mathsquare_play.html:91
+#: games/templates/games/mathsquare_print.html:139
+#: games/templates/games/wordsearch_play.html:118
+msgid "This puzzle has no grid yet."
+msgstr ""
+
+#: games/templates/games/crossword_print.html:279
+msgid "word start"
+msgstr ""
+
+#: games/templates/games/crossword_print.html:280
+msgid "direction"
+msgstr ""
+
+#: games/templates/games/crossword_print.html:281
+msgid "word end"
+msgstr ""
+
+#: games/templates/games/crossword_print.html:321
+#: games/templates/games/mathsquare_print.html:178
+msgid "by Prime Point"
+msgstr ""
+
+#: games/templates/games/crossword_print.html:325
+#: games/templates/games/mathsquare_print.html:182
+msgid "All rights reserved."
+msgstr ""
+
+#: games/templates/games/english_crossword_list.html:4
+#: games/templates/games/english_crossword_list.html:5
+#: games/templates/games/english_crossword_list.html:17
+#: games/templates/games/english_crossword_play.html:107
+#: games/templates/games/games_home.html:78
+msgid "English Crossword"
+msgstr ""
+
+#: games/templates/games/english_crossword_list.html:18
+msgid "Read the clue and fill in the English letters."
+msgstr ""
+
+#: games/templates/games/english_crossword_list.html:47
+#: games/templates/games/games_home.html:66
+#: games/templates/games/games_home.html:84 point/settings.py:216
+msgid "English"
+msgstr ""
+
+#: games/templates/games/games_home.html:13
+msgid "Play educational mini-games to sharpen your skills."
+msgstr ""
+
+#: games/templates/games/games_home.html:24
+#: games/templates/games/number_guess.html:4
+#: games/templates/games/number_guess.html:5
+#: games/templates/games/number_guess.html:16
+msgid "Number Guess"
+msgstr ""
+
+#: games/templates/games/games_home.html:28
+msgid ""
+"The system picks a secret number. Guess it with as few tries as possible!"
+msgstr ""
+
+#: games/templates/games/games_home.html:30
+#: games/templates/games/games_home.html:102
+#: games/templates/games/games_home.html:120
+#: games/templates/games/games_home.html:138
+#: games/templates/games/games_home.html:209
+msgid "Math"
+msgstr ""
+
+#: games/templates/games/games_home.html:46
+msgid ""
+"Read the clue and fill in the Korean syllable blocks. Both Uzbek and Korean "
+"clues included!"
+msgstr ""
+
+#: games/templates/games/games_home.html:60
+#: games/templates/games/wordsearch_list.html:4
+#: games/templates/games/wordsearch_list.html:5
+#: games/templates/games/wordsearch_list.html:17
+#: games/templates/games/wordsearch_play.html:98
+msgid "Word Search"
+msgstr ""
+
+#: games/templates/games/games_home.html:64
+msgid "Find hidden words across, down, and diagonally in the letter grid!"
+msgstr ""
+
+#: games/templates/games/games_home.html:82
+msgid ""
+"Read the clue and fill in the English letters. Clues in English and Uzbek!"
+msgstr ""
+
+#: games/templates/games/games_home.html:100
+msgid "Solve math problems to decode the secret word letter by letter!"
+msgstr ""
+
+#: games/templates/games/games_home.html:114
+#: games/templates/games/mathsquare_create.html:5
+#: games/templates/games/mathsquare_create.html:13
+#: games/templates/games/mathsquare_edit.html:43
+#: games/templates/games/mathsquare_list.html:4
+#: games/templates/games/mathsquare_list.html:5
+#: games/templates/games/mathsquare_list.html:18
+#: games/templates/games/mathsquare_play.html:50
+msgid "Math Square"
+msgstr ""
+
+#: games/templates/games/games_home.html:118
+msgid ""
+"Fill the empty squares so every row and column adds up to a true equation!"
+msgstr ""
+
+#: games/templates/games/games_home.html:132
+#: games/templates/games/primeclimb_create.html:5
+#: games/templates/games/primeclimb_create.html:13
+#: games/templates/games/primeclimb_list.html:4
+#: games/templates/games/primeclimb_list.html:5
+#: games/templates/games/primeclimb_list.html:18
+#: games/templates/games/primeclimb_play.html:5
+#: games/templates/games/primeclimb_play.html:106
+msgid "Prime Climb Grid"
+msgstr ""
+
+#: games/templates/games/games_home.html:136
+msgid ""
+"Find primes, squares, or multiples on the 1–100 grid. Learn number theory "
+"visually!"
+msgstr ""
+
+#: games/templates/games/games_home.html:150
+#: games/templates/games/oddoneout_create.html:5
+#: games/templates/games/oddoneout_create.html:13
+#: games/templates/games/oddoneout_list.html:4
+#: games/templates/games/oddoneout_list.html:5
+#: games/templates/games/oddoneout_list.html:18
+#: games/templates/games/oddoneout_manage.html:5
+#: games/templates/games/oddoneout_manage.html:13
+#: games/templates/games/oddoneout_play.html:4
+#: games/templates/games/oddoneout_play.html:5
+#: games/templates/games/oddoneout_play.html:133
+msgid "Odd One Out"
+msgstr ""
+
+#: games/templates/games/games_home.html:154
+msgid "Three words belong together — one does not. Spot the odd one out!"
+msgstr ""
+
+#: games/templates/games/games_home.html:156
+msgid "Grammar"
+msgstr ""
+
+#: games/templates/games/games_home.html:168
+#: games/templates/games/wordorder_create.html:5
+#: games/templates/games/wordorder_create.html:13
+#: games/templates/games/wordorder_list.html:4
+#: games/templates/games/wordorder_list.html:5
+#: games/templates/games/wordorder_list.html:18
+#: games/templates/games/wordorder_play.html:4
+#: games/templates/games/wordorder_play.html:5
+#: games/templates/games/wordorder_play.html:159
+msgid "Word Order Chaos"
+msgstr ""
+
+#: games/templates/games/games_home.html:172
+msgid "Drag and drop shuffled word tiles to rebuild the correct sentence!"
+msgstr ""
+
+#: games/templates/games/games_home.html:174
+#: games/templates/games/oddoneout_create.html:47
+msgid "Language"
+msgstr ""
+
+#: games/templates/games/games_home.html:186
+#: games/templates/games/sortingrace_create.html:5
+#: games/templates/games/sortingrace_create.html:13
+#: games/templates/games/sortingrace_list.html:4
+#: games/templates/games/sortingrace_list.html:5
+#: games/templates/games/sortingrace_list.html:18
+#: games/templates/games/sortingrace_play.html:4
+#: games/templates/games/sortingrace_play.html:5
+#: games/templates/games/sortingrace_play.html:155
+msgid "Sorting Race"
+msgstr ""
+
+#: games/templates/games/games_home.html:190
+msgid ""
+"Swap elements to sort a tricky mix of fractions, roots, and negatives — "
+"smallest to largest!"
+msgstr ""
+
+#: games/templates/games/games_home.html:192
+msgid "Algorithms"
+msgstr ""
+
+#: games/templates/games/games_home.html:203
+#: games/templates/games/target_number.html:4
+#: games/templates/games/target_number.html:5
+#: games/templates/games/target_number.html:82
+msgid "Target Number"
+msgstr ""
+
+#: games/templates/games/games_home.html:207
+msgid ""
+"Combine 6 numbers with +, −, ×, ÷ to hit the target. Three difficulty levels!"
+msgstr ""
+
+#: games/templates/games/mathsquare_create.html:4
+msgid "New Math Square"
+msgstr ""
+
+#: games/templates/games/mathsquare_create.html:18
+msgid ""
+"Auto-generate a ready-to-solve puzzle, or build one by hand. You can fine-"
+"tune it afterwards in the grid editor."
+msgstr ""
+
+#: games/templates/games/mathsquare_create.html:71
+msgid "How to build it"
+msgstr ""
+
+#: games/templates/games/mathsquare_create.html:80
+msgid "Auto-generate"
+msgstr ""
+
+#: games/templates/games/mathsquare_create.html:81
+msgid "Pick difficulty and we build a valid, uniquely-solvable puzzle for you."
+msgstr ""
+
+#: games/templates/games/mathsquare_create.html:90
+msgid "Build manually"
+msgstr ""
+
+#: games/templates/games/mathsquare_create.html:91
+msgid "Start from an empty grid and type every number and operator yourself."
+msgstr ""
+
+#: games/templates/games/mathsquare_create.html:99
+msgid "Create & Open Editor"
+msgstr ""
+
+#: games/templates/games/mathsquare_create.html:112
+msgid "2×2 numbers, + and −, numbers 1–9. A quick single-step puzzle."
+msgstr ""
+
+#: games/templates/games/mathsquare_create.html:113
+msgid "3×3 numbers, +, − and ×, numbers up to 12. Some cross-deduction."
+msgstr ""
+
+#: games/templates/games/mathsquare_create.html:114
+msgid ""
+"4×4 numbers, all four operations, more blanks. Chain rows and columns to "
+"solve."
+msgstr ""
+
+#: games/templates/games/mathsquare_create.html:115
+msgid ""
+"5×5 numbers, all four operations, numbers up to 20. Cannot be read straight "
+"off the grid — you must guess and backtrack to the one unique answer."
+msgstr ""
+
+#: games/templates/games/mathsquare_edit.html:4
+#: games/templates/games/mathsquare_edit.html:5
+msgid "Edit Math Square"
+msgstr ""
+
+#: games/templates/games/mathsquare_edit.html:48
+msgid ""
+"Type the numbers and operators. Tap the dot on a number to switch it between "
+"a clue (shown) and a blank the student fills."
+msgstr ""
+
+#: games/templates/games/mathsquare_edit.html:49
+msgid "× and ÷ are done before + and −."
+msgstr ""
+
+#: games/templates/games/mathsquare_edit.html:53
+msgid "Clue (shown)"
+msgstr ""
+
+#: games/templates/games/mathsquare_edit.html:54
+msgid "Blank (student fills)"
+msgstr ""
+
+#: games/templates/games/mathsquare_edit.html:71
+msgid "Preview"
+msgstr ""
+
+#: games/templates/games/mathsquare_edit.html:92
+msgid "Row"
+msgstr ""
+
+#: games/templates/games/mathsquare_edit.html:92
+msgid "Column"
+msgstr ""
+
+#: games/templates/games/mathsquare_edit.html:93
+msgid "All equations are correct — this puzzle is ready and published."
+msgstr ""
+
+#: games/templates/games/mathsquare_edit.html:94
+msgid ""
+"Fix the equations below before students can play (puzzle stays a draft):"
+msgstr ""
+
+#: games/templates/games/mathsquare_edit.html:95 games/views.py:1773
+msgid "division is not exact"
+msgstr ""
+
+#: games/templates/games/mathsquare_edit.html:96
+msgid "Saved."
+msgstr ""
+
+#: games/templates/games/mathsquare_edit.html:96
+msgid "Save failed."
+msgstr ""
+
+#: games/templates/games/mathsquare_edit.html:150
+msgid "Clue / blank"
+msgstr ""
+
+#: games/templates/games/mathsquare_list.html:20
+#: games/templates/games/mathsquare_play.html:140
+msgid "Fill the empty squares so every row and column equation is true."
+msgstr ""
+
+#: games/templates/games/mathsquare_list.html:75
+msgid "No puzzles yet."
+msgstr ""
+
+#: games/templates/games/mathsquare_list.html:79
+msgid "Create the first one"
+msgstr ""
+
+#: games/templates/games/mathsquare_play.html:78
+msgid "Solved! Every equation is correct."
+msgstr ""
+
+#: games/templates/games/mathsquare_play.html:112
+msgid "Empty square"
+msgstr ""
+
+#: games/templates/games/mathsquare_play.html:141
+#: games/templates/games/mathsquare_print.html:166
+msgid "Order of operations:"
+msgstr ""
+
+#: games/templates/games/mathsquare_play.html:141
+#: games/templates/games/mathsquare_print.html:166
+msgid "work out × and ÷ before + and −."
+msgstr ""
+
+#: games/templates/games/mathsquare_print.html:165
+msgid ""
+"Fill each empty white square with a number so that every row (left → right) "
+"and every column (top → bottom) is a correct equation."
+msgstr ""
+
+#: games/templates/games/number_guess.html:17
+msgid "Guess the secret number the system has chosen."
+msgstr ""
+
+#: games/templates/games/number_guess.html:24
+#: games/templates/games/target_number.html:92
+msgid "Start a New Game"
+msgstr ""
+
+#: games/templates/games/number_guess.html:31
+msgid "Maximum number"
+msgstr ""
+
+#: games/templates/games/number_guess.html:34
+msgid "The system will pick a number between 1 and this value."
+msgstr ""
+
+#: games/templates/games/number_guess.html:37
+#: games/templates/games/target_number.html:125
+msgid "Start Game"
+msgstr ""
+
+#: games/templates/games/number_guess.html:48
+msgid "You got it!"
+msgstr ""
+
+#: games/templates/games/number_guess.html:52
+#, python-format
+msgid "The secret number was <strong>%(num)s</strong>."
+msgstr ""
+
+#: games/templates/games/number_guess.html:55
+#, python-format
+msgid "You found it in <strong>%(n)s</strong> attempt(s)."
+msgstr ""
+
+#: games/templates/games/number_guess.html:66
+#: games/templates/games/number_guess.html:150
+msgid "Change range"
+msgstr ""
+
+#: games/templates/games/number_guess.html:79
+#: games/templates/games/target_number.html:183
+#: games/templates/games/target_number.html:428
+#: people/templates/people/profile.html:301
+#: prime/templates/prime/index.html:547
+msgid "Attempts"
+msgstr ""
+
+#: games/templates/games/number_guess.html:84
+msgid "Range"
+msgstr ""
+
+#: games/templates/games/number_guess.html:94
+msgid "Too low!"
+msgstr ""
+
+#: games/templates/games/number_guess.html:95
+#, python-format
+msgid "<strong>%(n)s</strong> is too small — try a higher number."
+msgstr ""
+
+#: games/templates/games/number_guess.html:102
+msgid "Too high!"
+msgstr ""
+
+#: games/templates/games/number_guess.html:103
+#, python-format
+msgid "<strong>%(n)s</strong> is too big — try a lower number."
+msgstr ""
+
+#: games/templates/games/number_guess.html:107
+msgid "Please enter a valid number."
+msgstr ""
+
+#: games/templates/games/number_guess.html:110
+#, python-format
+msgid "Enter a number between 1 and %(max)s."
+msgstr ""
+
+#: games/templates/games/number_guess.html:117
+msgid "What is your guess?"
+msgstr ""
+
+#: games/templates/games/number_guess.html:129
+msgid "Guess"
+msgstr ""
+
+#: games/templates/games/number_guess.html:143
+msgid "New game"
+msgstr ""
+
+#: games/templates/games/oddoneout_create.html:4
+msgid "New Odd One Out Pack"
+msgstr ""
+
+#: games/templates/games/oddoneout_create.html:16
+#: games/templates/games/oddoneout_list.html:26
+msgid "New Pack"
+msgstr ""
+
+#: games/templates/games/oddoneout_create.html:18
+msgid "Create a pack, then add questions to it on the next page."
+msgstr ""
+
+#: games/templates/games/oddoneout_create.html:31
+msgid "Pack Title"
+msgstr ""
+
+#: games/templates/games/oddoneout_create.html:34
+msgid "e.g. Irregular Verbs"
+msgstr ""
+
+#: games/templates/games/oddoneout_create.html:43
+msgid "e.g. Find the word that is NOT an irregular verb"
+msgstr ""
+
+#: games/templates/games/oddoneout_create.html:66
+msgid "Create & Add Questions"
+msgstr ""
+
+#: games/templates/games/oddoneout_list.html:20
+msgid "Three words belong together — one does not. Find the odd one out!"
+msgstr ""
+
+#: games/templates/games/oddoneout_list.html:74
+msgid "No packs yet. Check back soon!"
+msgstr ""
+
+#: games/templates/games/oddoneout_manage.html:25
+msgid "Play"
+msgstr ""
+
+#: games/templates/games/oddoneout_manage.html:38
+msgid "Add a Question"
+msgstr ""
+
+#: games/templates/games/oddoneout_manage.html:46
+#: games/templates/games/oddoneout_manage.html:51
+#: games/templates/games/oddoneout_manage.html:56
+#: games/templates/games/oddoneout_manage.html:61
+#: games/templates/games/oddoneout_manage.html:81
+#: games/templates/games/oddoneout_manage.html:162
+msgid "Word"
+msgstr ""
+
+#: games/templates/games/oddoneout_manage.html:68
+msgid "Which word is the odd one out?"
+msgstr ""
+
+#: games/templates/games/oddoneout_manage.html:90
+msgid ""
+"Explanation (optional) — e.g. «went» is irregular, the others are regular"
+msgstr ""
+
+#: games/templates/games/oddoneout_manage.html:97
+msgid "Add Question"
+msgstr ""
+
+#: games/templates/games/oddoneout_manage.html:143
+msgid "No questions yet — add the first one above."
+msgstr ""
+
+#: games/templates/games/oddoneout_play.html:139
+msgid "This pack has no questions yet."
+msgstr ""
+
+#: games/templates/games/oddoneout_play.html:143
+msgid "Add Questions"
+msgstr ""
+
+#: games/templates/games/oddoneout_play.html:166
+msgid "Restart"
+msgstr ""
+
+#: games/templates/games/oddoneout_play.html:202
+msgid "Perfect score!"
+msgstr ""
+
+#: games/templates/games/oddoneout_play.html:204
+msgid "Almost perfect — great work!"
+msgstr ""
+
+#: games/templates/games/oddoneout_play.html:206
+msgid "Good try — play again to improve!"
+msgstr ""
+
+#: games/templates/games/oddoneout_play.html:224
+msgid "All Packs"
+msgstr ""
+
+#: games/templates/games/oddoneout_play.html:237
+msgid "Tap the word that does NOT belong with the others."
+msgstr ""
+
+#: games/templates/games/primeclimb_create.html:4
+msgid "New Prime Climb Challenge"
+msgstr ""
+
+#: games/templates/games/primeclimb_create.html:16
+#: games/templates/games/primeclimb_list.html:26
+#: games/templates/games/sortingrace_create.html:16
+#: games/templates/games/sortingrace_list.html:26
+#: games/templates/games/wordorder_create.html:16
+#: games/templates/games/wordorder_list.html:26
+msgid "New Challenge"
+msgstr ""
+
+#: games/templates/games/primeclimb_create.html:18
+msgid ""
+"Students will select numbers on the 1–100 grid that match your chosen "
+"category."
+msgstr ""
+
+#: games/templates/games/primeclimb_create.html:35
+#: games/templates/games/sortingrace_create.html:34
+#: games/templates/games/wordorder_create.html:34
+msgid "Challenge Title"
+msgstr ""
+
+#: games/templates/games/primeclimb_create.html:46
+msgid "Challenge Type"
+msgstr ""
+
+#: games/templates/games/primeclimb_create.html:70
+msgid "Multiples of N — enter N"
+msgstr ""
+
+#: games/templates/games/primeclimb_create.html:92
+#: games/templates/games/sortingrace_create.html:78
+#: games/templates/games/wordorder_create.html:68
+msgid "Create Challenge"
+msgstr ""
+
+#: games/templates/games/primeclimb_create.html:127
+msgid "numbers"
+msgstr ""
+
+#: games/templates/games/primeclimb_list.html:20
+msgid "Select numbers on the 1–100 grid to solve each challenge."
+msgstr ""
+
+#: games/templates/games/primeclimb_list.html:64
+#: games/templates/games/sortingrace_list.html:62
+msgid "No challenges yet. Check back soon!"
+msgstr ""
+
+#: games/templates/games/primeclimb_play.html:4
+msgid "Prime Climb"
+msgstr ""
+
+#: games/templates/games/primeclimb_play.html:140
+#: games/templates/games/primeclimb_play.html:218
+msgid "selected"
+msgstr ""
+
+#: games/templates/games/primeclimb_play.html:175
+#: games/templates/games/sortingrace_play.html:227
+#: games/templates/games/sortingrace_play.html:260
+#: games/templates/games/wordorder_play.html:264
+#: games/templates/games/wordorder_play.html:296
+msgid "All Challenges"
+msgstr ""
+
+#: games/templates/games/primeclimb_play.html:186
+msgid "Selected"
+msgstr ""
+
+#: games/templates/games/primeclimb_play.html:189
+msgid "Correct"
+msgstr ""
+
+#: games/templates/games/primeclimb_play.html:192
+msgid "Wrong"
+msgstr ""
+
+#: games/templates/games/primeclimb_play.html:195
+msgid "Missed"
+msgstr ""
+
+#: games/templates/games/primeclimb_play.html:243
+msgid "numbers found"
+msgstr ""
+
+#: games/templates/games/primeclimb_play.html:247
+msgid "correct"
+msgstr ""
+
+#: games/templates/games/primeclimb_play.html:248
+msgid "wrong"
+msgstr ""
+
+#: games/templates/games/primeclimb_play.html:249
+msgid "missed"
+msgstr ""
+
+#: games/templates/games/sortingrace_create.html:4
+msgid "New Sorting Race Challenge"
+msgstr ""
+
+#: games/templates/games/sortingrace_create.html:18
+msgid "Students will swap elements to sort the array from smallest to largest."
+msgstr ""
+
+#: games/templates/games/sortingrace_create.html:39
+msgid "e.g. Sort the Chaos"
+msgstr ""
+
+#: games/templates/games/sortingrace_create.html:73
+msgid "e.g. Remember: √3 ≈ 1.73, π/2 ≈ 1.57"
+msgstr ""
+
+#: games/templates/games/sortingrace_create.html:90
+msgid "7 integers (positive and negative)"
+msgstr ""
+
+#: games/templates/games/sortingrace_create.html:91
+msgid "8 items: integers, fractions, and decimals"
+msgstr ""
+
+#: games/templates/games/sortingrace_create.html:92
+msgid ""
+"9 items: fractions, √2, √3, π/2 and their negatives — very close values!"
+msgstr ""
+
+#: games/templates/games/sortingrace_list.html:20
+msgid ""
+"Swap elements to sort a tricky array — fractions, roots, negatives and more."
+msgstr ""
+
+#: games/templates/games/sortingrace_play.html:180
+#: games/templates/games/sortingrace_play.html:256
+msgid "New Array"
+msgstr ""
+
+#: games/templates/games/sortingrace_play.html:191
+msgid ""
+"Click a card to select it, then click another card to swap. Sort smallest → "
+"largest."
+msgstr ""
+
+#: games/templates/games/sortingrace_play.html:197
+msgid "Moves"
+msgstr ""
+
+#: games/templates/games/sortingrace_play.html:199
+#: games/templates/games/sortingrace_play.html:245
+msgid "Sorted!"
+msgstr ""
+
+#: games/templates/games/sortingrace_play.html:214
+msgid "Almost there — just one more swap!"
+msgstr ""
+
+#: games/templates/games/sortingrace_play.html:222
+msgid "Check Order"
+msgstr ""
+
+#: games/templates/games/sortingrace_play.html:247
+msgid "Array is in perfect ascending order."
+msgstr ""
+
+#: games/templates/games/sortingrace_play.html:250
+msgid "moves"
+msgstr ""
+
+#: games/templates/games/target_number.html:84
+msgid "Combine the numbers using +, −, ×, ÷ to reach the target!"
+msgstr ""
+
+#: games/templates/games/target_number.html:104
+#: games/templates/games/target_number.html:188
+#: practice/templates/practice/practice_list.html:504
+msgid "Easy"
+msgstr ""
+
+#: games/templates/games/target_number.html:109
+#: games/templates/games/target_number.html:189
+#: practice/templates/practice/practice_list.html:505
+#: prime/templates/prime/help.html:576
+msgid "Medium"
+msgstr ""
+
+#: games/templates/games/target_number.html:114
+#: games/templates/games/target_number.html:190
+#: practice/templates/practice/practice_list.html:506
+msgid "Hard"
+msgstr ""
+
+#: games/templates/games/target_number.html:118
+#: games/templates/games/target_number.html:297
+msgid "4 numbers (1–15) + 2 special, target 50–200"
+msgstr ""
+
+#: games/templates/games/target_number.html:119
+#: games/templates/games/target_number.html:298
+msgid "4 numbers (1–9) + 2 special, target 100–999"
+msgstr ""
+
+#: games/templates/games/target_number.html:120
+#: games/templates/games/target_number.html:296
+msgid "4 numbers (1–9), target 10–50"
+msgstr ""
+
+#: games/templates/games/target_number.html:136
+msgid "Target reached!"
+msgstr ""
+
+#: games/templates/games/target_number.html:140
+#, python-format
+msgid "You hit <strong>%(t)s</strong>!"
+msgstr ""
+
+#: games/templates/games/target_number.html:143
+#, python-format
+msgid "Solved in <strong>%(n)s</strong> attempt(s)."
+msgstr ""
+
+#: games/templates/games/target_number.html:147
+#, python-format
+msgid "Personal best: <strong>%(b)s</strong> attempt(s)."
+msgstr ""
+
+#: games/templates/games/target_number.html:162
+#: games/templates/games/target_number.html:261
+msgid "Change difficulty"
+msgstr ""
+
+#: games/templates/games/target_number.html:192
+#: prime/templates/prime/help.html:576
+msgid "Level"
+msgstr ""
+
+#: games/templates/games/target_number.html:200
+msgid "Target"
+msgstr ""
+
+#: games/templates/games/target_number.html:208
+msgid "Your numbers"
+msgstr ""
+
+#: games/templates/games/target_number.html:226
+#: practice/templates/practice/practice_list.html:521
+msgid "Clear"
+msgstr ""
+
+#: games/templates/games/target_number.html:232
+msgid "Click numbers and operators above…"
+msgstr ""
+
+#: games/templates/games/target_number.html:243
+msgid "Check"
+msgstr ""
+
+#: games/templates/games/target_number.html:253
+msgid "New Game"
+msgstr ""
+
+#: games/templates/games/target_number.html:274
+msgid "You reached the target!"
+msgstr ""
+
+#: games/templates/games/target_number.html:424
+msgid "Exactly right!"
+msgstr ""
+
+#: games/templates/games/target_number.html:433
+msgid "Invalid expression"
+msgstr ""
+
+#: games/templates/games/target_number.html:439
+msgid "Distance from target"
+msgstr ""
+
+#: games/templates/games/target_number.html:444
+msgid "Network error — try again."
+msgstr ""
+
+#: games/templates/games/wordorder_create.html:4
+msgid "New Word Order Challenge"
+msgstr ""
+
+#: games/templates/games/wordorder_create.html:18
+msgid "Students will unscramble the sentence one word tile at a time."
+msgstr ""
+
+#: games/templates/games/wordorder_create.html:39
+msgid "e.g. Present Simple Sentence"
+msgstr ""
+
+#: games/templates/games/wordorder_create.html:44
+msgid "Correct Sentence"
+msgstr ""
+
+#: games/templates/games/wordorder_create.html:45
+msgid "3–20 words, split by spaces"
+msgstr ""
+
+#: games/templates/games/wordorder_create.html:50
+msgid "e.g. The cat sat on the mat"
+msgstr ""
+
+#: games/templates/games/wordorder_create.html:52
+msgid "0 words"
+msgstr ""
+
+#: games/templates/games/wordorder_create.html:63
+msgid "e.g. This is a present simple sentence"
+msgstr ""
+
+#: games/templates/games/wordorder_create.html:78
+msgid "word"
+msgstr ""
+
+#: games/templates/games/wordorder_list.html:20
+msgid "Drag tiles into the correct order to rebuild the sentence."
+msgstr ""
+
+#: games/templates/games/wordorder_list.html:33
+msgid "Choose a language to get started:"
+msgstr ""
+
+#: games/templates/games/wordorder_list.html:56
+msgid "sentences"
+msgstr ""
+
+#: games/templates/games/wordorder_list.html:133
+msgid "No challenges found for this language."
+msgstr ""
+
+#: games/templates/games/wordorder_play.html:167
+#: games/templates/games/wordorder_play.html:172
+#: tutorial/templates/tutorial/tutorial_detail.html:279
+msgid "Prev"
+msgstr ""
+
+#: games/templates/games/wordorder_play.html:212
+msgid "Shuffle Again"
+msgstr ""
+
+#: games/templates/games/wordorder_play.html:220
+#: games/templates/games/wordorder_play.html:329
+msgid "placed"
+msgstr ""
+
+#: games/templates/games/wordorder_play.html:228
+msgid "Tap a word to move it. Drag to place it at a specific position."
+msgstr ""
+
+#: games/templates/games/wordorder_play.html:235
+msgid "Your Answer"
+msgstr ""
+
+#: games/templates/games/wordorder_play.html:238
+msgid "Tap or drag words here"
+msgstr ""
+
+#: games/templates/games/wordorder_play.html:248
+msgid "Word Bank"
+msgstr ""
+
+#: games/templates/games/wordorder_play.html:259
+msgid "Check Answer"
+msgstr ""
+
+#: games/templates/games/wordorder_play.html:277
+msgid "You rebuilt the sentence perfectly."
+msgstr ""
+
+#: games/templates/games/wordorder_play.html:582
+#: games/templates/games/wordorder_play.html:594
+msgid "Place all words in the answer row first."
+msgstr ""
+
+#: games/templates/games/wordorder_play.html:608
+msgid "Not quite right — keep trying!"
+msgstr ""
+
+#: games/templates/games/wordsearch_list.html:18
+msgid "Find hidden words in the letter grid — across, down, and diagonal!"
+msgstr ""
+
+#: games/templates/games/wordsearch_play.html:111
+msgid "words found"
+msgstr ""
+
+#: games/templates/games/wordsearch_play.html:113
+msgid "All found!"
+msgstr ""
+
+#: games/templates/games/wordsearch_play.html:133
+msgid "Find these words"
+msgstr ""
+
+#: games/templates/games/wordsearch_play.html:138
+msgid "Tap a letter to start, tap the last letter to select."
+msgstr ""
+
+#: games/templates/games/wordsearch_play.html:244
+msgid "Not a word — try again"
+msgstr ""
+
+#: games/views.py:1772
+msgid "fill every number"
+msgstr ""
+
+#: games/views.py:1819
+msgid "Title is required."
+msgstr ""
+
+#: games/views.py:1821
+msgid "Invalid difficulty."
+msgstr ""
+
+#: games/views.py:1830
+msgid "Could not generate a puzzle. Please try again."
+msgstr ""
+
+#: homework/templates/homework/homework_detail.html:4
+msgid "Homework Detail"
+msgstr ""
+
+#: homework/templates/homework/homework_detail.html:57
+msgid "All Homework"
+msgstr ""
+
+#: homework/templates/homework/homework_detail.html:73
+msgid "Assign More"
+msgstr ""
+
+#: homework/templates/homework/homework_detail.html:96
+#: homework/templates/homework/homework_detail.html:125
+#: homework/templates/homework/homework_detail.html:143
+#: homework/templates/homework/homework_detail.html:194
+#: homework/templates/homework/homework_detail.html:213
+#: prime/templates/prime/help.html:600 prime/templates/prime/help.html:611
+msgid "Submitted"
+msgstr ""
+
+#: homework/templates/homework/homework_detail.html:99
+#: homework/templates/homework/homework_detail.html:145
+#: homework/templates/homework/homework_detail.html:215
+#: prime/templates/prime/help.html:602
+msgid "Graded"
+msgstr ""
+
+#: homework/templates/homework/homework_detail.html:108
+msgid "Results by Group"
+msgstr ""
+
+#: homework/templates/homework/homework_detail.html:116
+msgid "student"
+msgstr ""
+
+#: homework/templates/homework/homework_detail.html:123
+#: homework/templates/homework/homework_detail.html:192
+#: masters/templates/masters/certificate.html:346
+#: masters/templates/masters/my_students.html:240
+#: people/templates/people/profile.html:108
+#: people/templates/people/profile.html:122
+msgid "Student"
+msgstr ""
+
+#: homework/templates/homework/homework_detail.html:127
+#: homework/templates/homework/homework_detail.html:197
+msgid "Review"
+msgstr ""
+
+#: homework/templates/homework/homework_detail.html:166
+#: homework/templates/homework/homework_detail.html:243
+msgid "Review answers"
+msgstr ""
+
+#: homework/templates/homework/homework_detail.html:185
+msgid "All Students"
+msgstr ""
+
+#: homework/templates/homework/homework_detail.html:196
+msgid "Feedback"
+msgstr ""
+
+#: homework/templates/homework/homework_detail.html:260
+msgid "No students assigned"
+msgstr ""
+
+#: homework/templates/homework/homework_detail.html:261
+msgid "Edit this homework to assign it to students."
+msgstr ""
+
+#: masters/templates/masters/certificate.html:5
+#: masters/templates/masters/certificate.html:6
+msgid "Certificate Generator"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:348
+msgid "select"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:361
+msgid "Name"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:362
+msgid "Course"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:364
+#: masters/templates/masters/student_detail.html:262
+msgid "Date"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:365
+msgid "Instructor"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:372
+#: masters/templates/masters/certificate_view.html:231
+msgid "Header"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:373
+msgid "Header & footer color"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:376
+#: masters/templates/masters/certificate_view.html:235
+msgid "Accent"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:377
+msgid "Accent / gold color"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:380
+#: masters/templates/masters/certificate_view.html:239
+msgid "Background"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:381
+msgid "Certificate background"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:384
+msgid "Text"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:385
+msgid "Title & name color"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:388
+msgid "Subtext"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:389
+msgid "Secondary text color"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:394
+msgid "Reset all"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:398
+#: masters/templates/masters/certificate_view.html:247
+msgid "Download PDF"
+msgstr ""
+
+#: masters/templates/masters/certificate.html:404
+msgid ""
+"Click ANY text on the certificate — title, headings, name, labels, slogan, "
+"even the seal — to rewrite it. Use the color swatches to recolor the design, "
+"then Download PDF."
+msgstr ""
+
+#: masters/templates/masters/certificate_view.html:4
+#: masters/templates/masters/certificate_view.html:5
+#: masters/templates/masters/master_detail.html:365
+#: masters/templates/masters/master_detail.html:717
+msgid "Certificate"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:5
+#: people/templates/people/profile.html:121
+#: prime/templates/prime/index.html:592
+msgid "Master"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:334
+msgid "All Masters"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:362
+#: masters/templates/masters/master_detail.html:697
+#: masters/templates/masters/my_students.html:4
+#: masters/templates/masters/my_students.html:5
+#: masters/templates/masters/my_students.html:178
+#: masters/templates/masters/student_detail.html:187
+#: people/templates/people/profile.html:415
+msgid "My Students"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:374
+msgid "Delete your Master profile? This cannot be undone."
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:399
+#: masters/templates/masters/my_students.html:213
+#: people/templates/people/profile.html:264
+#: prime/templates/prime/index.html:605
+msgid "Avg Rating"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:416
 msgid "Yrs Active"
 msgstr ""
 
-#: masters/templates/masters/master_detail.html:317
-#: people/templates/people/profile.html:58 templates/base.html:107
+#: masters/templates/masters/master_detail.html:426
+#: people/templates/people/profile.html:147 prime/templates/prime/about.html:4
+#: prime/templates/prime/about.html:5 templates/base.html:151
 msgid "About"
 msgstr ""
 
-#: masters/templates/masters/master_detail.html:336
-#: people/templates/people/profile.html:258
-#: people/templates/people/profile.html:303
+#: masters/templates/masters/master_detail.html:445
+#: people/templates/people/profile.html:372
+#: people/templates/people/profile.html:437
 msgid "Manage all"
 msgstr ""
 
-#: masters/templates/masters/master_detail.html:346
-#: people/templates/people/profile.html:269
+#: masters/templates/masters/master_detail.html:456
+#: people/templates/people/profile.html:383
+#: practice/templates/practice/practice_detail.html:21
+#: practice/templates/practice/practice_list.html:606
 msgid "Free"
 msgstr ""
 
-#: masters/templates/masters/master_detail.html:348
-#: people/templates/people/profile.html:269
+#: masters/templates/masters/master_detail.html:458
+#: masters/templates/masters/student_detail.html:336
+#: people/templates/people/profile.html:383
+#: practice/templates/practice/practice_detail.html:21
+#: practice/templates/practice/practice_list.html:606
 msgid "Paid"
 msgstr ""
 
-#: masters/templates/masters/master_detail.html:359
+#: masters/templates/masters/master_detail.html:471
+#: masters/templates/masters/student_detail.html:222
+#: people/templates/people/profile.html:524
 msgid "Avg score"
 msgstr ""
 
-#: masters/templates/masters/master_detail.html:394
-msgid "Manage My Practices"
+#: masters/templates/masters/master_detail.html:478
+#: masters/templates/masters/master_detail.html:481
+#: masters/templates/masters/master_detail.html:525
+#: masters/templates/masters/master_detail.html:528
+#: masters/templates/masters/master_detail.html:570
+#: masters/templates/masters/master_detail.html:573
+msgid "Show"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:479
+#: masters/templates/masters/master_detail.html:526
+#: masters/templates/masters/master_detail.html:571
+msgid "Show less"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:487
+msgid "No practices yet."
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:488
+msgid "Create one"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:515
+#: masters/templates/masters/my_students.html:313
+msgid "Remove student"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:544
+#: masters/templates/masters/master_detail.html:595
+#: masters/templates/masters/master_detail.html:636
+msgid "New"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:554
+msgid "Edit tutorial"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:562
+msgid "read"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:579
+msgid "No tutorials published yet."
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:580
+msgid "Write one"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:592
+msgid "Groups"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:608
+msgid "Edit group"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:611
+msgid "Delete group"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:701
+#: people/templates/people/profile.html:217
+#: prime/templates/prime/index.html:613
+msgid "Manage Practices"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:705
+msgid "Manage Homeworks"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:709
+msgid "Manage Groups"
+msgstr ""
+
+#: masters/templates/masters/master_detail.html:713
+#: tutorial/templates/tutorial/tutorial_form.html:5
+#: tutorial/templates/tutorial/tutorial_form.html:52
+#: tutorial/templates/tutorial/tutorial_list.html:21
+msgid "New Tutorial"
 msgstr ""
 
 #: masters/templates/masters/master_list.html:147
+#: prime/templates/prime/index.html:435
 msgid "Community"
 msgstr ""
 
 #: masters/templates/masters/master_list.html:148
+#: prime/templates/prime/about.html:485
 msgid "Meet the Masters"
 msgstr ""
 
@@ -258,7 +2745,7 @@ msgstr ""
 
 #: masters/templates/masters/master_list.html:154
 #: masters/templates/masters/master_list.html:201
-#: people/templates/people/profile.html:126
+#: people/templates/people/profile.html:229
 msgid "Become a Master"
 msgstr ""
 
@@ -270,8 +2757,9 @@ msgstr ""
 msgid "Login to Join"
 msgstr ""
 
-#: masters/templates/masters/master_list.html:191
-msgid "View"
+#: masters/templates/masters/master_list.html:189
+#: people/templates/people/profile.html:294
+msgid "Rating"
 msgstr ""
 
 #: masters/templates/masters/master_list.html:197
@@ -282,258 +2770,1895 @@ msgstr ""
 msgid "Be the first to create a Master profile and share your knowledge."
 msgstr ""
 
-#: people/templates/people/profile.html:4
-#: people/templates/people/profile.html:5
-msgid "Profile"
+#: masters/templates/masters/my_students.html:179
+msgid "student(s) enrolled"
 msgstr ""
 
-#: people/templates/people/profile.html:19
-#: people/templates/people/profile.html:33
-msgid "Student"
+#: masters/templates/masters/my_students.html:183
+#: masters/templates/masters/student_detail.html:237
+#: masters/templates/masters/student_detail.html:430
+#: people/templates/people/profile.html:631
+msgid "Certificates"
 msgstr ""
 
-#: people/templates/people/profile.html:30
-msgid "Director"
+#: masters/templates/masters/my_students.html:186
+msgid "Public Page"
 msgstr ""
 
-#: people/templates/people/profile.html:31
-msgid "Co-founder"
+#: masters/templates/masters/my_students.html:208
+msgid "Total"
 msgstr ""
 
-#: people/templates/people/profile.html:34
-msgid "Assistant"
+#: masters/templates/masters/my_students.html:223
+msgid "Add Student by Username"
 msgstr ""
 
-#: people/templates/people/profile.html:41
-#: people/templates/people/profile.html:104
-msgid "Edit Profile"
+#: masters/templates/masters/my_students.html:226
+msgid "Enter username..."
 msgstr ""
 
-#: people/templates/people/profile.html:64
-msgid "No biography yet."
+#: masters/templates/masters/my_students.html:230
+msgid "Add"
 msgstr ""
 
-#: people/templates/people/profile.html:88
-msgid "Joined"
-msgstr ""
-
-#: people/templates/people/profile.html:99
-msgid "Quick Actions"
-msgstr ""
-
-#: people/templates/people/profile.html:109
-msgid "Change Password"
-msgstr ""
-
-#: people/templates/people/profile.html:115
-msgid "Edit Master Profile"
-msgstr ""
-
-#: people/templates/people/profile.html:134
-msgid "Sign Out"
-msgstr ""
-
-#: people/templates/people/profile.html:175
-msgid "Since"
-msgstr ""
-
-#: people/templates/people/profile.html:184
+#: masters/templates/masters/my_students.html:241
+#: people/templates/people/profile.html:287
 msgid "Rank"
 msgstr ""
 
-#: people/templates/people/profile.html:205
+#: masters/templates/masters/my_students.html:242
+#: masters/templates/masters/student_detail.html:203
+#: people/templates/people/profile.html:177
+msgid "Joined"
+msgstr ""
+
+#: masters/templates/masters/my_students.html:243
+msgid "Payment"
+msgstr ""
+
+#: masters/templates/masters/my_students.html:244
+#: masters/templates/masters/student_detail.html:248
+msgid "Attendance"
+msgstr ""
+
+#: masters/templates/masters/my_students.html:246
+msgid "Actions"
+msgstr ""
+
+#: masters/templates/masters/my_students.html:283
+msgid "No records"
+msgstr ""
+
+#: masters/templates/masters/my_students.html:307
+msgid "View details"
+msgstr ""
+
+#: masters/templates/masters/my_students.html:311
+msgid "Remove this student?"
+msgstr ""
+
+#: masters/templates/masters/my_students.html:328
+msgid "No students yet"
+msgstr ""
+
+#: masters/templates/masters/my_students.html:329
+msgid ""
+"Add students using their username above, or students can choose you as their "
+"master from their profile."
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:4
+#: masters/templates/masters/student_detail.html:5
+msgid "Student Detail"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:208
+#: people/templates/people/profile.html:4
+#: people/templates/people/profile.html:5 templates/base.html:332
+msgid "Profile"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:217
+#: people/templates/people/profile.html:515
+msgid "Tests taken"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:227
+#: masters/templates/masters/student_detail.html:268
+msgid "Present"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:232
+msgid "Absent/Late"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:251
+msgid "present"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:269
+msgid "Absent"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:270
+msgid "Late"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:274
+msgid "Notes (optional)"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:275
+msgid "e.g. Left early"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:280
+msgid "Mark Attendance"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:304
+msgid "No attendance records yet. Mark the first one above."
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:317
+msgid "Payments"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:326
+#: masters/templates/masters/student_detail.html:369
+msgid "Period"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:327
+msgid "e.g. June 2026"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:330
+#: masters/templates/masters/student_detail.html:370
+msgid "Amount"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:337
+msgid "Unpaid"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:338
+msgid "Partial"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:348
+msgid "Payment Date"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:353
+msgid "Optional note..."
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:358
+msgid "Add Payment Record"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:373
+msgid "Paid on"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:402
+msgid "Delete this payment record?"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:417
+msgid "No payment records yet. Add the first one above."
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:433
+msgid "PDF generator"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:441
+msgid "Certificate Title"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:442
+msgid "e.g. English B2 Completion Certificate"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:445
+msgid "Description (optional)"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:447
+msgid "e.g. Awarded for completing the Advanced English course..."
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:451
+msgid "Issue Certificate"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:467
+msgid "hidden on profile"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:474
+msgid "View certificate"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:478
+msgid "Revoke this certificate?"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:480
+msgid "Revoke"
+msgstr ""
+
+#: masters/templates/masters/student_detail.html:490
+msgid ""
+"No certificates issued yet. Issue the first one above — it will appear on "
+"the student's profile."
+msgstr ""
+
+#: people/models.py:15 prime/templates/prime/index.html:426
+#: prime/templates/prime/index.html:563 templates/base.html:107
+msgid "Homework"
+msgstr ""
+
+#: people/models.py:17
+msgid "Tutorial"
+msgstr ""
+
+#: people/models.py:19
+msgid "Classroom"
+msgstr ""
+
+#: people/signals.py:44
+#, python-format
+msgid "New Homework: %(title)s"
+msgstr ""
+
+#: people/signals.py:45
+#, python-format
+msgid "%(master)s assigned you new homework."
+msgstr ""
+
+#: people/signals.py:73
+#, python-format
+msgid "New Practice: %(title)s"
+msgstr ""
+
+#: people/signals.py:74
+#, python-format
+msgid "%(master)s published a new practice."
+msgstr ""
+
+#: people/signals.py:105
+#, python-format
+msgid "New Tutorial: %(title)s"
+msgstr ""
+
+#: people/signals.py:106
+#, python-format
+msgid "%(master)s published a new tutorial."
+msgstr ""
+
+#: people/signals.py:136
+#, python-format
+msgid "New Lesson: %(lesson)s"
+msgstr ""
+
+#: people/signals.py:137
+#, python-format
+msgid "A new lesson was published in %(classroom)s."
+msgstr ""
+
+#: people/signals.py:158
+#, python-format
+msgid "New Discussion: %(title)s"
+msgstr ""
+
+#: people/signals.py:159
+#, python-format
+msgid "%(master)s started a new discussion in %(classroom)s."
+msgstr ""
+
+#: people/templates/people/login.html:4
+msgid "Log In — Powerty"
+msgstr ""
+
+#: people/templates/people/login.html:5 templates/base.html:292
+#: templates/base.html:336
+msgid "Login"
+msgstr ""
+
+#: people/templates/people/login.html:15 prime/templates/prime/index.html:293
+msgid "Welcome back"
+msgstr ""
+
+#: people/templates/people/login.html:16
+msgid "Log in to your Powerty account."
+msgstr ""
+
+#: people/templates/people/login.html:33
+msgid "Forgot password?"
+msgstr ""
+
+#: people/templates/people/login.html:52 prime/templates/prime/index.html:314
+#: templates/base.html:290
+msgid "Log in"
+msgstr ""
+
+#: people/templates/people/login.html:60
+msgid "Don't have an account?"
+msgstr ""
+
+#: people/templates/people/login.html:60
+msgid "Create one now"
+msgstr ""
+
+#: people/templates/people/notifications.html:4
+#: people/templates/people/notifications.html:66 templates/base.html:237
+msgid "Notifications"
+msgstr ""
+
+#: people/templates/people/notifications.html:65
+msgid "Inbox"
+msgstr ""
+
+#: people/templates/people/notifications.html:79
+msgid "ago"
+msgstr ""
+
+#: people/templates/people/notifications.html:88
+msgid "You have no notifications yet."
+msgstr ""
+
+#: people/templates/people/profile.html:119
+msgid "Director"
+msgstr ""
+
+#: people/templates/people/profile.html:120
+msgid "Co-founder"
+msgstr ""
+
+#: people/templates/people/profile.html:123
+msgid "Assistant"
+msgstr ""
+
+#: people/templates/people/profile.html:130
+#: people/templates/people/profile.html:193
+msgid "Edit Profile"
+msgstr ""
+
+#: people/templates/people/profile.html:153
+msgid "No biography yet."
+msgstr ""
+
+#: people/templates/people/profile.html:188
+msgid "Quick Actions"
+msgstr ""
+
+#: people/templates/people/profile.html:198
+msgid "Change Password"
+msgstr ""
+
+#: people/templates/people/profile.html:204
+msgid "Admin Panel"
+msgstr ""
+
+#: people/templates/people/profile.html:211
+msgid "Edit Master Profile"
+msgstr ""
+
+#: people/templates/people/profile.html:223
+msgid "Pending Admin Approval"
+msgstr ""
+
+#: people/templates/people/profile.html:237
+msgid "Sign Out"
+msgstr ""
+
+#: people/templates/people/profile.html:278
+msgid "Since"
+msgstr ""
+
+#: people/templates/people/profile.html:308
 msgid "Purpose"
 msgstr ""
 
-#: people/templates/people/profile.html:214
+#: people/templates/people/profile.html:317
+#: prime/templates/prime/index.html:623
 msgid "No role assigned yet"
 msgstr ""
 
-#: people/templates/people/profile.html:216
+#: people/templates/people/profile.html:319
 msgid "Apply to become a Master or join as a Student to unlock features."
 msgstr ""
 
-#: people/templates/people/profile.html:217
+#: people/templates/people/profile.html:320
+#: prime/templates/prime/index.html:626
 msgid "Apply as Master"
 msgstr ""
 
-#: people/templates/people/profile.html:219
+#: people/templates/people/profile.html:322
 msgid "This user hasn't taken on a role yet."
 msgstr ""
 
-#: people/templates/people/profile.html:233
+#: people/templates/people/profile.html:336
 msgid "Master Profile"
 msgstr ""
 
-#: people/templates/people/profile.html:235
+#: people/templates/people/profile.html:338
+msgid "Pending Approval"
+msgstr ""
+
+#: people/templates/people/profile.html:342
 msgid "View public page"
 msgstr ""
 
-#: people/templates/people/profile.html:255
+#: people/templates/people/profile.html:349
+msgid ""
+"Your Master application is awaiting admin approval. You will be able to "
+"create practices and tutorials once approved."
+msgstr ""
+
+#: people/templates/people/profile.html:369
 msgid "Published Practices"
 msgstr ""
 
-#: people/templates/people/profile.html:283
-msgid "Manage"
-msgstr ""
-
-#: people/templates/people/profile.html:286
+#: people/templates/people/profile.html:400
 msgid "No published practices yet."
 msgstr ""
 
-#: people/templates/people/profile.html:288
+#: people/templates/people/profile.html:402
 msgid "Create Practice"
 msgstr ""
 
-#: people/templates/people/profile.html:301
-msgid "My Homework (as Master)"
+#: people/templates/people/profile.html:421
+msgid "students enrolled"
 msgstr ""
 
-#: people/templates/people/profile.html:312
-msgid "pending"
-msgstr ""
-
-#: people/templates/people/profile.html:312
-msgid "submitted"
-msgstr ""
-
-#: people/templates/people/profile.html:313
-#: people/templates/people/profile.html:460
-msgid "Due"
-msgstr ""
-
-#: people/templates/people/profile.html:322
-msgid "No homework created yet."
-msgstr ""
-
-#: people/templates/people/profile.html:324
-msgid "Create Homework"
-msgstr ""
-
-#: people/templates/people/profile.html:336
-msgid "Student Profile"
-msgstr ""
-
-#: people/templates/people/profile.html:346
-msgid "Rating Progress"
-msgstr ""
-
-#: people/templates/people/profile.html:347
-msgid "pts"
-msgstr ""
-
-#: people/templates/people/profile.html:355
-msgid "Novice"
-msgstr ""
-
-#: people/templates/people/profile.html:356
-msgid "Scholar"
-msgstr ""
-
-#: people/templates/people/profile.html:357
-msgid "Expert"
-msgstr ""
-
-#: people/templates/people/profile.html:358
-msgid "Grandmaster"
-msgstr ""
-
-#: people/templates/people/profile.html:367
-msgid "My Masters"
-msgstr ""
-
-#: people/templates/people/profile.html:382
-msgid "Choose your masters"
-msgstr ""
-
-#: people/templates/people/profile.html:396
-msgid "Save Masters"
-msgstr ""
-
-#: people/templates/people/profile.html:409
-#: people/templates/people/profile.html:432
-msgid "Recent Practice Attempts"
+#: people/templates/people/profile.html:423
+msgid "Open Student Dashboard"
 msgstr ""
 
 #: people/templates/people/profile.html:435
+msgid "My Homework (as Master)"
+msgstr ""
+
+#: people/templates/people/profile.html:446
+msgid "pending"
+msgstr ""
+
+#: people/templates/people/profile.html:446
+msgid "submitted"
+msgstr ""
+
+#: people/templates/people/profile.html:456
+msgid "No homework created yet."
+msgstr ""
+
+#: people/templates/people/profile.html:471
+msgid "Student Profile"
+msgstr ""
+
+#: people/templates/people/profile.html:473
+msgid "Leaderboard"
+msgstr ""
+
+#: people/templates/people/profile.html:533
+msgid "How points are earned"
+msgstr ""
+
+#: people/templates/people/profile.html:534
+#, python-format
+msgid "Easy test 100%% = 12 pts"
+msgstr ""
+
+#: people/templates/people/profile.html:535
+#, python-format
+msgid "Medium test 100%% = 17 pts"
+msgstr ""
+
+#: people/templates/people/profile.html:536
+#, python-format
+msgid "Hard test 100%% = 22 pts"
+msgstr ""
+
+#: people/templates/people/profile.html:537
+msgid "pts for every completed test"
+msgstr ""
+
+#: people/templates/people/profile.html:544
+msgid "My Masters"
+msgstr ""
+
+#: people/templates/people/profile.html:559
+msgid "Choose your masters"
+msgstr ""
+
+#: people/templates/people/profile.html:573
+msgid "Save Masters"
+msgstr ""
+
+#: people/templates/people/profile.html:586
+#: people/templates/people/profile.html:615
+msgid "Recent Practice Attempts"
+msgstr ""
+
+#: people/templates/people/profile.html:618
 msgid "No completed attempts yet."
 msgstr ""
 
-#: people/templates/people/profile.html:448
+#: people/templates/people/profile.html:620
+#: prime/templates/prime/index.html:297 prime/templates/prime/index.html:580
+msgid "Browse Practices"
+msgstr ""
+
+#: people/templates/people/profile.html:660
+#: prime/templates/prime/index.html:583
 msgid "My Homework"
 msgstr ""
 
-#: people/templates/people/profile.html:451
+#: people/templates/people/profile.html:663
 msgid "See all"
 msgstr ""
 
-#: people/templates/people/profile.html:464
-msgid "Pending"
+#: people/templates/people/register.html:4
+msgid "Create Account — Powerty"
 msgstr ""
 
-#: people/templates/people/profile.html:491
-msgid "No homework assigned yet."
+#: people/templates/people/register.html:5 templates/base.html:291
+msgid "Register"
 msgstr ""
 
-#: point/settings.py:149
-msgid "English"
+#: people/templates/people/register.html:15
+msgid "Create an account"
 msgstr ""
 
-#: point/settings.py:150
+#: people/templates/people/register.html:16
+msgid "Fill in your details below to get started."
+msgstr ""
+
+#: people/templates/people/register.html:22
+msgid "Please fix the errors below"
+msgstr ""
+
+#: people/templates/people/register.html:22
+msgid "before continuing."
+msgstr ""
+
+#: people/templates/people/register.html:29
+msgid "Account credentials"
+msgstr ""
+
+#: people/templates/people/register.html:49
+msgid "Profile details"
+msgstr ""
+
+#: people/templates/people/register.html:66
+msgid "Create my account"
+msgstr ""
+
+#: people/templates/people/register.html:74
+msgid "Already have an account?"
+msgstr ""
+
+#: people/templates/people/register.html:74
+msgid "Log in instead"
+msgstr ""
+
+#: point/settings.py:217
 msgid "Uzbek"
 msgstr ""
 
-#: prime/templates/prime/index.html:4
+#: practice/templates/practice/practice_detail.html:10
+msgid "Back to Practices"
+msgstr ""
+
+#: practice/templates/practice/practice_detail.html:36
+msgid "Total Points"
+msgstr ""
+
+#: practice/templates/practice/practice_detail.html:37
+#: prime/templates/prime/help.html:578
+msgid "Pass Score"
+msgstr ""
+
+#: practice/templates/practice/practice_detail.html:38
+#: prime/templates/prime/help.html:577
+msgid "Time Limit"
+msgstr ""
+
+#: practice/templates/practice/practice_detail.html:38
+msgid "No limit"
+msgstr ""
+
+#: practice/templates/practice/practice_detail.html:43
+msgid "PRACTICE RULES"
+msgstr ""
+
+#: practice/templates/practice/practice_detail.html:49
+msgid "Detailed answers <strong>revealed</strong> at the end"
+msgstr ""
+
+#: practice/templates/practice/practice_detail.html:51
+msgid "Detailed answers <strong>hidden</strong> at the end"
+msgstr ""
+
+#: practice/templates/practice/practice_detail.html:63
+msgid "Your Last Score"
+msgstr ""
+
+#: practice/templates/practice/practice_detail.html:70
+msgid "View Detailed Result"
+msgstr ""
+
+#: practice/templates/practice/practice_detail.html:76
+msgid "Start Practice"
+msgstr ""
+
+#: practice/templates/practice/practice_detail.html:82
+msgid "Unlimited attempts available."
+msgstr ""
+
+#: practice/templates/practice/practice_detail.html:84
+#, python-format
+msgid ""
+"\n"
+"                                You have used <strong>%(current)s</strong> "
+"of <strong>%(max)s</strong> attempts.\n"
+"                            "
+msgstr ""
+
+#: practice/templates/practice/practice_detail.html:90
+msgid "Start Now"
+msgstr ""
+
+#: practice/templates/practice/practice_detail.html:95
+msgid "Maximum attempts reached for this practice."
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:4
+#: practice/templates/practice/practice_list.html:5
+#: practice/templates/practice/practice_list.html:447
+#: prime/templates/prime/about.html:564
+msgid "Practice Hub"
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:448
+msgid "Sharpen your skills,"
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:448
+msgid "one session at a time."
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:449
+msgid ""
+"Pick a topic, challenge yourself, and track your progress across every "
+"session."
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:451
+msgid "available"
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:452
+msgid "Subject"
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:453
+msgid "Free & Paid sessions"
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:461
+msgid "Add Practice"
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:469
+msgid "Export"
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:472
+#: practice/templates/practice/practice_list.html:494
+msgid "All Subjects"
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:478
+msgid "Download Excel"
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:486
+msgid "Filter"
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:490
+msgid "Search practices…"
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:503
+msgid "Any Level"
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:510
+msgid "Any Master"
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:518
+#: prime/templates/prime/search_results.html:26 templates/base.html:216
+#: templates/base.html:220
+msgid "Search"
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:542
+msgid "result"
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:542
+msgid "found"
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:556
+#: practice/templates/practice/practice_list.html:568
+msgid "practice"
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:567
+msgid "Uncategorized"
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:577
+msgid "No subjects yet"
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:578
+msgid "Published practices will appear here grouped by subject."
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:587
+msgid "All subjects"
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:621
+msgid "No description provided."
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:665
+msgid "No practices found"
+msgstr ""
+
+#: practice/templates/practice/practice_list.html:666
+msgid "Try different keywords or remove some filters."
+msgstr ""
+
+#: prime/templates/prime/about.html:476
+msgid "Strong mind bends the line."
+msgstr ""
+
+#: prime/templates/prime/about.html:478
+msgid ""
+"A learning platform built for curious minds — where students grow through "
+"structured practice, mentorship from expert masters, and a community that "
+"pushes boundaries together."
+msgstr ""
+
+#: prime/templates/prime/about.html:482 prime/templates/prime/help.html:363
+#: prime/templates/prime/help.html:883
+msgid "Start Practicing"
+msgstr ""
+
+#: prime/templates/prime/about.html:498
+msgid "Free to Start"
+msgstr ""
+
+#: prime/templates/prime/about.html:502
+msgid "Clear Goal"
+msgstr ""
+
+#: prime/templates/prime/about.html:506
+msgid "Every Learner"
+msgstr ""
+
+#: prime/templates/prime/about.html:513
+msgid "Our Mission"
+msgstr ""
+
+#: prime/templates/prime/about.html:514
+msgid "Sharpening minds,"
+msgstr ""
+
+#: prime/templates/prime/about.html:514
+msgid "one question at a time."
+msgstr ""
+
+#: prime/templates/prime/about.html:517
+msgid ""
+"Prime Point was founded on a simple belief: the best way to build a strong "
+"mind is through deliberate, structured practice. We connect passionate "
+"learners with expert masters and give them the tools to grow — at their own "
+"pace, on their own terms."
+msgstr ""
+
+#: prime/templates/prime/about.html:520
+msgid ""
+"We are not just a quiz app. We are a full learning ecosystem — from homework "
+"assignments to live discussion, from beginner practices to expert-level "
+"challenges."
+msgstr ""
+
+#: prime/templates/prime/about.html:527
+msgid "Deliberate Practice"
+msgstr ""
+
+#: prime/templates/prime/about.html:528
+msgid "Targeted, measurable improvement every session"
+msgstr ""
+
+#: prime/templates/prime/about.html:534
+msgid "Expert Mentorship"
+msgstr ""
+
+#: prime/templates/prime/about.html:535
+msgid "Learn directly from masters in their field"
+msgstr ""
+
+#: prime/templates/prime/about.html:541
+msgid "Visible Progress"
+msgstr ""
+
+#: prime/templates/prime/about.html:542
+msgid "Track your rank from Novice to Grandmaster"
+msgstr ""
+
+#: prime/templates/prime/about.html:548
+msgid "Community Learning"
+msgstr ""
+
+#: prime/templates/prime/about.html:549
+msgid "Discuss, debate, and grow alongside peers"
+msgstr ""
+
+#: prime/templates/prime/about.html:557
+msgid "What We Offer"
+msgstr ""
+
+#: prime/templates/prime/about.html:558
+msgid "Everything you need to level up."
+msgstr ""
+
+#: prime/templates/prime/about.html:565
+msgid ""
+"Hundreds of curated practice sessions across subjects and difficulty levels. "
+"Filter by topic, master, or level — and track your score every attempt."
+msgstr ""
+
+#: prime/templates/prime/about.html:569 prime/templates/prime/help.html:588
+msgid "Homework System"
+msgstr ""
+
+#: prime/templates/prime/about.html:570
+msgid ""
+"Masters assign targeted practice as homework to individual students or "
+"groups. Deadlines, auto-grading, and submission tracking built in."
+msgstr ""
+
+#: prime/templates/prime/about.html:574
+msgid "Master Profiles"
+msgstr ""
+
+#: prime/templates/prime/about.html:575
+msgid ""
+"Follow experts in your field. Each master curates their own practice library "
+"and can guide their students through structured learning paths."
+msgstr ""
+
+#: prime/templates/prime/about.html:579 prime/templates/prime/help.html:681
+msgid "Discussion Forum"
+msgstr ""
+
+#: prime/templates/prime/about.html:580
+msgid ""
+"Engage with the community — ask questions, share insights, vote on answers, "
+"and learn from conversations that go beyond the practice sheet."
+msgstr ""
+
+#: prime/templates/prime/about.html:584 prime/templates/prime/help.html:711
+msgid "Rank System"
+msgstr ""
+
+#: prime/templates/prime/about.html:585
+msgid ""
+"Earn points through practice and climb from Novice to Grandmaster. Your rank "
+"reflects your dedication — and motivates you to keep going."
+msgstr ""
+
+#: prime/templates/prime/about.html:590
+msgid ""
+"Masters see exactly where each student struggles — question by question, "
+"choice by choice. Targeted feedback becomes effortless."
+msgstr ""
+
+#: prime/templates/prime/about.html:596
+msgid "How It Works"
+msgstr ""
+
+#: prime/templates/prime/about.html:597
+msgid "Simple steps. Real results."
+msgstr ""
+
+#: prime/templates/prime/about.html:603
+msgid "Create your account"
+msgstr ""
+
+#: prime/templates/prime/about.html:604
+msgid ""
+"Sign up free in seconds. Build your student profile and choose your learning "
+"goals."
+msgstr ""
+
+#: prime/templates/prime/about.html:608 prime/templates/prime/help.html:385
+msgid "Follow a Master"
+msgstr ""
+
+#: prime/templates/prime/about.html:609
+msgid ""
+"Browse expert masters and follow the ones whose subjects align with your "
+"goals."
+msgstr ""
+
+#: prime/templates/prime/about.html:613
+msgid "Practice & Submit"
+msgstr ""
+
+#: prime/templates/prime/about.html:614
+msgid ""
+"Take timed or open-ended practice sessions. Submit homework assigned by your "
+"masters."
+msgstr ""
+
+#: prime/templates/prime/about.html:618
+msgid "Review & Grow"
+msgstr ""
+
+#: prime/templates/prime/about.html:619
+msgid ""
+"See detailed feedback on every answer. Improve your weak points. Rise "
+"through the ranks."
+msgstr ""
+
+#: prime/templates/prime/about.html:625
+msgid "The Team"
+msgstr ""
+
+#: prime/templates/prime/about.html:626
+msgid "Built by people who care about learning."
+msgstr ""
+
+#: prime/templates/prime/about.html:706 prime/templates/prime/about.html:713
+msgid "Partners"
+msgstr ""
+
+#: prime/templates/prime/about.html:706 prime/templates/prime/about.html:744
+msgid "Investors"
+msgstr ""
+
+#: prime/templates/prime/about.html:707
+msgid "Backed by believers."
+msgstr ""
+
+#: prime/templates/prime/about.html:710
+msgid ""
+"We are actively building partnerships with educational institutions, EdTech "
+"investors, and technology companies that share our vision of accessible, "
+"quality learning."
+msgstr ""
+
+#: prime/templates/prime/about.html:721
+msgid "Social Initiative"
+msgstr ""
+
+#: prime/templates/prime/about.html:730
+msgid "Government Agency"
+msgstr ""
+
+#: prime/templates/prime/about.html:739
+msgid "Local Government"
+msgstr ""
+
+#: prime/templates/prime/about.html:749
+msgid "Seed Investor"
+msgstr ""
+
+#: prime/templates/prime/about.html:750
+msgid "EdTech — Incoming"
+msgstr ""
+
+#: prime/templates/prime/about.html:756
+msgid "Angel Investor"
+msgstr ""
+
+#: prime/templates/prime/about.html:757
+msgid "Venture — Incoming"
+msgstr ""
+
+#: prime/templates/prime/about.html:765
+msgid "Interested in partnering or investing?"
+msgstr ""
+
+#: prime/templates/prime/about.html:766
+msgid "Reach out at"
+msgstr ""
+
+#: prime/templates/prime/about.html:776
+msgid "Ready to bend the line?"
+msgstr ""
+
+#: prime/templates/prime/about.html:777
+msgid ""
+"Join Prime Point today — free, fast, and built for minds that want more."
+msgstr ""
+
+#: prime/templates/prime/about.html:781
+msgid "Go to Practices"
+msgstr ""
+
+#: prime/templates/prime/about.html:784 prime/templates/prime/index.html:303
+#: prime/templates/prime/index.html:577 templates/base.html:268
+msgid "My Profile"
+msgstr ""
+
+#: prime/templates/prime/about.html:788
+msgid "Join Free"
+msgstr ""
+
+#: prime/templates/prime/about.html:791
+msgid "Sign In"
+msgstr ""
+
+#: prime/templates/prime/help.html:4 templates/base.html:156
+msgid "Help"
+msgstr ""
+
+#: prime/templates/prime/help.html:5 prime/templates/prime/help.html:357
+msgid "Help Center"
+msgstr ""
+
+#: prime/templates/prime/help.html:359
+msgid ""
+"Everything you need to know about using Prime Point — whether you are a "
+"student looking to grow, a master building your classroom, or an educational "
+"center onboarding your team."
+msgstr ""
+
+#: prime/templates/prime/help.html:366 prime/templates/prime/help.html:886
+msgid "Browse Masters"
+msgstr ""
+
+#: prime/templates/prime/help.html:373
+msgid "Quick Start"
+msgstr ""
+
+#: prime/templates/prime/help.html:374
+msgid "Up and running in four steps"
+msgstr ""
+
+#: prime/templates/prime/help.html:380
+msgid "Create an Account"
+msgstr ""
+
+#: prime/templates/prime/help.html:381
+msgid "Register for free. No payment required — just a username and password."
+msgstr ""
+
+#: prime/templates/prime/help.html:386
+msgid ""
+"Go to your Profile and use the Masters selector to choose the educators you "
+"want to follow."
+msgstr ""
+
+#: prime/templates/prime/help.html:390
+msgid "Take a Practice"
+msgstr ""
+
+#: prime/templates/prime/help.html:391
+msgid ""
+"Choose a timed or open-ended practice set and submit your answers to earn "
+"points."
+msgstr ""
+
+#: prime/templates/prime/help.html:395
+msgid "Rise in Rank"
+msgstr ""
+
+#: prime/templates/prime/help.html:396
+msgid "Accumulate points and climb from Novice all the way to Grandmaster."
+msgstr ""
+
+#: prime/templates/prime/help.html:403
+msgid "For Educators"
+msgstr ""
+
+#: prime/templates/prime/help.html:404
+msgid "Becoming a Master"
+msgstr ""
+
+#: prime/templates/prime/help.html:407
+msgid ""
+"Masters are approved educators who create content, manage students, and run "
+"classrooms. Becoming a Master is a straightforward three-step process."
+msgstr ""
+
+#: prime/templates/prime/help.html:416
+msgid "Submit Your Application"
+msgstr ""
+
+#: prime/templates/prime/help.html:417
+msgid ""
+"Visit the Masters page and click 'Become a Master'. Fill in your name, "
+"subject, and a short description."
+msgstr ""
+
+#: prime/templates/prime/help.html:423
+msgid "Await Admin Approval"
+msgstr ""
+
+#: prime/templates/prime/help.html:424
+msgid ""
+"An admin reviews your profile. Your dashboard will show a pending badge "
+"while the review is in progress."
+msgstr ""
+
+#: prime/templates/prime/help.html:430
+msgid "Unlock Full Master Tools"
+msgstr ""
+
+#: prime/templates/prime/help.html:431
+msgid ""
+"Once approved, you can create practices, assign homework, publish tutorials, "
+"and run private classrooms."
+msgstr ""
+
+#: prime/templates/prime/help.html:437
+msgid "Apply Now"
+msgstr ""
+
+#: prime/templates/prime/help.html:443
+msgid "Application Flow"
+msgstr ""
+
+#: prime/templates/prime/help.html:446
+msgid "Fill in the Master application form"
+msgstr ""
+
+#: prime/templates/prime/help.html:450
+msgid "Pending admin review"
+msgstr ""
+
+#: prime/templates/prime/help.html:455
+msgid "Approved — all tools unlocked"
+msgstr ""
+
+#: prime/templates/prime/help.html:456
+msgid "Approved"
+msgstr ""
+
+#: prime/templates/prime/help.html:464
+msgid "Master Capabilities"
+msgstr ""
+
+#: prime/templates/prime/help.html:465
+msgid "What Masters Can Do"
+msgstr ""
+
+#: prime/templates/prime/help.html:468
+msgid ""
+"Approved Masters have a full suite of teaching and management tools at their "
+"disposal."
+msgstr ""
+
+#: prime/templates/prime/help.html:474
+msgid "Create Practices"
+msgstr ""
+
+#: prime/templates/prime/help.html:475
+msgid ""
+"Build multiple-choice question sets with difficulty levels (easy / medium / "
+"hard), time limits, pass scores, and max attempt caps."
+msgstr ""
+
+#: prime/templates/prime/help.html:479
+msgid "Manage Students"
+msgstr ""
+
+#: prime/templates/prime/help.html:480
+msgid ""
+"View everyone who follows you. Remove students from your roster and organise "
+"them into named groups for bulk operations."
+msgstr ""
+
+#: prime/templates/prime/help.html:484
+msgid "Create Groups"
+msgstr ""
+
+#: prime/templates/prime/help.html:485
+msgid ""
+"Group students by class, level, or any criteria. Assign homework to a whole "
+"group with a single action instead of individually."
+msgstr ""
+
+#: prime/templates/prime/help.html:489
+msgid "Assign Homework"
+msgstr ""
+
+#: prime/templates/prime/help.html:490
+msgid ""
+"Link any practice to individual students or groups, add notes, and set an "
+"optional deadline. Track status — Pending, Submitted, or Graded."
+msgstr ""
+
+#: prime/templates/prime/help.html:494
+msgid "Write Tutorials"
+msgstr ""
+
+#: prime/templates/prime/help.html:495
+msgid ""
+"Publish rich-text articles with a category, thumbnail, and linked practices. "
+"Students can like or dislike your tutorials."
+msgstr ""
+
+#: prime/templates/prime/help.html:499
+msgid "Run Classrooms"
+msgstr ""
+
+#: prime/templates/prime/help.html:500
+msgid ""
+"Create private classrooms with structured lessons. Attach practices, "
+"homework, and tutorials to each lesson. Host a classroom-level discussion."
+msgstr ""
+
+#: prime/templates/prime/help.html:504
+msgid "Generate Certificates"
+msgstr ""
+
+#: prime/templates/prime/help.html:505
+msgid ""
+"Issue printable certificates to your students directly from your Master "
+"profile page — no third-party tool needed."
+msgstr ""
+
+#: prime/templates/prime/help.html:512
+msgid "For Students"
+msgstr ""
+
+#: prime/templates/prime/help.html:513
+msgid "Student Guide"
+msgstr ""
+
+#: prime/templates/prime/help.html:519
+msgid "How to Choose and Follow a Master"
+msgstr ""
+
+#: prime/templates/prime/help.html:520
+msgid ""
+"Browse the Masters list to see all approved educators. Click any master to "
+"view their profile, subject, average student score, and the practices they "
+"have published."
+msgstr ""
+
+#: prime/templates/prime/help.html:522
+msgid "Go to your Profile page after logging in."
+msgstr ""
+
+#: prime/templates/prime/help.html:523
+msgid ""
+"Scroll to the Masters section and use the selector to add the masters you "
+"want to follow."
+msgstr ""
+
+#: prime/templates/prime/help.html:524
+msgid ""
+"Save your profile. The master's practices and homework will now be "
+"accessible to you."
+msgstr ""
+
+#: prime/templates/prime/help.html:525
+msgid "You can follow multiple masters at the same time."
+msgstr ""
+
+#: prime/templates/prime/help.html:526
+msgid "Remove a master from your selector at any time to unfollow."
+msgstr ""
+
+#: prime/templates/prime/help.html:531
+msgid "How it looks"
+msgstr ""
+
+#: prime/templates/prime/help.html:534
+msgid "Browse Masters page"
+msgstr ""
+
+#: prime/templates/prime/help.html:538
+msgid "View master profile & practices"
+msgstr ""
+
+#: prime/templates/prime/help.html:542
+msgid "Open your Profile → Masters selector"
+msgstr ""
+
+#: prime/templates/prime/help.html:546
+msgid "Save — now enrolled as a student"
+msgstr ""
+
+#: prime/templates/prime/help.html:547
+msgid "Done"
+msgstr ""
+
+#: prime/templates/prime/help.html:555
+msgid "Feature Guide"
+msgstr ""
+
+#: prime/templates/prime/help.html:556
+msgid "Platform Features"
+msgstr ""
+
+#: prime/templates/prime/help.html:562
+msgid "Practice System"
+msgstr ""
+
+#: prime/templates/prime/help.html:563
+msgid ""
+"Practices are the core of Prime Point. Each practice is a set of multiple-"
+"choice questions created by a master. Masters configure exactly how students "
+"experience each practice."
+msgstr ""
+
+#: prime/templates/prime/help.html:565
+msgid "Three difficulty levels: Easy, Medium, Hard."
+msgstr ""
+
+#: prime/templates/prime/help.html:566
+msgid ""
+"Optional time limit — the timer counts down and auto-submits when it expires."
+msgstr ""
+
+#: prime/templates/prime/help.html:567
+msgid "Pass score threshold — you must reach this percentage to pass."
+msgstr ""
+
+#: prime/templates/prime/help.html:568
+msgid ""
+"Max attempts cap — masters can limit how many times a student can retry."
+msgstr ""
+
+#: prime/templates/prime/help.html:569
+msgid ""
+"Show-answers-after option — correct answers are revealed once the attempt is "
+"completed."
+msgstr ""
+
+#: prime/templates/prime/help.html:570
+msgid ""
+"Free and available-for-all flags — masters can open a practice to the entire "
+"platform."
+msgstr ""
+
+#: prime/templates/prime/help.html:575
+msgid "Practice Metadata"
+msgstr ""
+
+#: prime/templates/prime/help.html:579
+msgid "Max Attempts"
+msgstr ""
+
+#: prime/templates/prime/help.html:589
+msgid ""
+"Masters link a practice to a homework assignment and push it directly to "
+"students or groups. Students complete the linked practice to submit the "
+"homework."
+msgstr ""
+
+#: prime/templates/prime/help.html:591
+msgid ""
+"Create homework: give it a title, optional notes, a linked practice, and an "
+"optional due date."
+msgstr ""
+
+#: prime/templates/prime/help.html:592
+msgid "Assign to individual students or to an entire group in one step."
+msgstr ""
+
+#: prime/templates/prime/help.html:593
+msgid ""
+"Student completes the practice → homework status moves to Submitted "
+"automatically."
+msgstr ""
+
+#: prime/templates/prime/help.html:594
+msgid "Master grades the submission and can leave written feedback."
+msgstr ""
+
+#: prime/templates/prime/help.html:595
+msgid "Track per-student status from the homework detail view."
+msgstr ""
+
+#: prime/templates/prime/help.html:607
+msgid "Assignment Overview"
+msgstr ""
+
+#: prime/templates/prime/help.html:608
+msgid "Group: Advanced Class"
+msgstr ""
+
+#: prime/templates/prime/help.html:608
+msgid "students"
+msgstr ""
+
+#: prime/templates/prime/help.html:609
+msgid "Practice: Grammar Test 3"
+msgstr ""
+
+#: prime/templates/prime/help.html:610
+msgid "Due date"
+msgstr ""
+
+#: prime/templates/prime/help.html:619
+msgid "Tutorial System"
+msgstr ""
+
+#: prime/templates/prime/help.html:620
+msgid ""
+"Tutorials are long-form rich-text articles written by masters. They can "
+"include images, formatted text, and links to related practices — turning a "
+"lesson into an interactive experience."
+msgstr ""
+
+#: prime/templates/prime/help.html:622
+msgid "Categories: Mathematics, Korean, Programming, English, Other."
+msgstr ""
+
+#: prime/templates/prime/help.html:623
+msgid "Read time is estimated automatically from the word count."
+msgstr ""
+
+#: prime/templates/prime/help.html:624
+msgid "Students can like or dislike a tutorial to give the author feedback."
+msgstr ""
+
+#: prime/templates/prime/help.html:625
+msgid ""
+"Link any number of practices to a tutorial so students can test themselves "
+"immediately."
+msgstr ""
+
+#: prime/templates/prime/help.html:626
+msgid ""
+"View count is tracked so masters can see which tutorials are most popular."
+msgstr ""
+
+#: prime/templates/prime/help.html:631
+msgid "Tutorial Card"
+msgstr ""
+
+#: prime/templates/prime/help.html:632
+#: tutorial/templates/tutorial/playlist_form.html:89
+#: tutorial/templates/tutorial/tutorial_form.html:114
+msgid "Category"
+msgstr ""
+
+#: prime/templates/prime/help.html:632
+msgid "Programming"
+msgstr ""
+
+#: prime/templates/prime/help.html:633
+#: tutorial/templates/tutorial/tutorial_list.html:91
+msgid "Read time"
+msgstr ""
+
+#: prime/templates/prime/help.html:634
+#: tutorial/templates/tutorial/tutorial_detail.html:226
+#: tutorial/templates/tutorial/tutorial_list.html:88
+msgid "Views"
+msgstr ""
+
+#: prime/templates/prime/help.html:646
+msgid "Classroom System"
+msgstr ""
+
+#: prime/templates/prime/help.html:647
+msgid ""
+"Classrooms are private learning spaces managed by a master. They contain "
+"structured lessons, and only enrolled students can access the content."
+msgstr ""
+
+#: prime/templates/prime/help.html:649
+msgid "Add students individually or import a whole group at once."
+msgstr ""
+
+#: prime/templates/prime/help.html:650
+msgid ""
+"Each classroom has ordered lessons with a status: Not Started, Ongoing, or "
+"Finished."
+msgstr ""
+
+#: prime/templates/prime/help.html:651
+msgid "Attach practices, homework assignments, and tutorials to any lesson."
+msgstr ""
+
+#: prime/templates/prime/help.html:652
+msgid ""
+"Upload lesson notes (PDFs, slides) that students can download per lesson."
+msgstr ""
+
+#: prime/templates/prime/help.html:653
+msgid ""
+"Each classroom has its own discussion board for class-specific questions."
+msgstr ""
+
+#: prime/templates/prime/help.html:658
+msgid "Lesson Structure"
+msgstr ""
+
+#: prime/templates/prime/help.html:661
+msgid "Lesson 1: Introduction"
+msgstr ""
+
+#: prime/templates/prime/help.html:666
+msgid "Lesson 2: Core Concepts"
+msgstr ""
+
+#: prime/templates/prime/help.html:671
+msgid "Lesson 3: Practice Session"
+msgstr ""
+
+#: prime/templates/prime/help.html:672
+msgid "Not Started"
+msgstr ""
+
+#: prime/templates/prime/help.html:682
+msgid ""
+"The platform-wide discussion forum lets anyone ask questions, share "
+"insights, or start a conversation. The best answers rise to the top through "
+"community voting."
+msgstr ""
+
+#: prime/templates/prime/help.html:684
+msgid "Threads are organised by category — find the right section quickly."
+msgstr ""
+
+#: prime/templates/prime/help.html:685
+msgid "Announcements and pinned threads stay at the top of their category."
+msgstr ""
+
+#: prime/templates/prime/help.html:686
+msgid "Upvote helpful threads and replies — downvote off-topic ones."
+msgstr ""
+
+#: prime/templates/prime/help.html:687
+msgid "Thread authors can mark one reply as the accepted answer."
+msgstr ""
+
+#: prime/templates/prime/help.html:688
+msgid "Sort by Latest, Most Votes, Recent Activity, or Unanswered."
+msgstr ""
+
+#: prime/templates/prime/help.html:693
+msgid "Thread Example"
+msgstr ""
+
+#: prime/templates/prime/help.html:694
+msgid "How do I improve my score?"
+msgstr ""
+
+#: prime/templates/prime/help.html:702
+msgid "Best answer accepted"
+msgstr ""
+
+#: prime/templates/prime/help.html:710
+msgid "Progression"
+msgstr ""
+
+#: prime/templates/prime/help.html:714
+msgid ""
+"Your rank is calculated from the total points earned across all completed "
+"practices. The higher your score on each attempt, the more points you "
+"receive."
+msgstr ""
+
+#: prime/templates/prime/help.html:720
+msgid "Novice"
+msgstr ""
+
+#: prime/templates/prime/help.html:721
+msgid "Points: 0 – 49"
+msgstr ""
+
+#: prime/templates/prime/help.html:722
+msgid "Just getting started. Every journey begins here."
+msgstr ""
+
+#: prime/templates/prime/help.html:726
+msgid "Scholar"
+msgstr ""
+
+#: prime/templates/prime/help.html:727
+msgid "Points: 50 – 149"
+msgstr ""
+
+#: prime/templates/prime/help.html:728
+msgid "Building knowledge and consistent study habits."
+msgstr ""
+
+#: prime/templates/prime/help.html:732
+msgid "Expert"
+msgstr ""
+
+#: prime/templates/prime/help.html:733
+msgid "Points: 150 – 299"
+msgstr ""
+
+#: prime/templates/prime/help.html:734
+msgid "Deep understanding across multiple subjects."
+msgstr ""
+
+#: prime/templates/prime/help.html:738
+msgid "Grandmaster"
+msgstr ""
+
+#: prime/templates/prime/help.html:739
+msgid "Points: 300+"
+msgstr ""
+
+#: prime/templates/prime/help.html:740
+msgid "The highest rank. Mastery of the platform's hardest challenges."
+msgstr ""
+
+#: prime/templates/prime/help.html:747
+msgid "FAQ"
+msgstr ""
+
+#: prime/templates/prime/help.html:748
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#: prime/templates/prime/help.html:758
+msgid "Is Prime Point free?"
+msgstr ""
+
+#: prime/templates/prime/help.html:763
+msgid ""
+"Yes. Creating an account, following masters, taking practices, and "
+"participating in discussions is completely free. Some practices may be "
+"marked as free by the master; others may be restricted to enrolled students "
+"only."
+msgstr ""
+
+#: prime/templates/prime/help.html:773
+msgid "How do I become a Master?"
+msgstr ""
+
+#: prime/templates/prime/help.html:778
+msgid ""
+"Visit the Masters page and click 'Become a Master'. Complete the short "
+"application form with your name, subject area, and a brief description. An "
+"administrator will review and approve your application. Once approved, all "
+"master tools are unlocked immediately."
+msgstr ""
+
+#: prime/templates/prime/help.html:788
+msgid "How do I follow a Master?"
+msgstr ""
+
+#: prime/templates/prime/help.html:793
+msgid ""
+"Go to your Profile page and scroll to the Masters section. Use the multi-"
+"select to add any masters you want to follow, then save your profile. You "
+"can add or remove masters at any time the same way."
+msgstr ""
+
+#: prime/templates/prime/help.html:803
+msgid "How are points earned?"
+msgstr ""
+
+#: prime/templates/prime/help.html:808
+msgid ""
+"Each time you complete a practice, points are added to your student profile "
+"based on your score. Higher scores give more points. Points accumulate "
+"across all practices and determine your rank on the platform."
+msgstr ""
+
+#: prime/templates/prime/help.html:818
+msgid "What happens if I exceed the maximum attempts on a practice?"
+msgstr ""
+
+#: prime/templates/prime/help.html:823
+msgid ""
+"Once you reach the maximum attempts set by the master, the Start button is "
+"disabled and you will see a message indicating you have used all your "
+"attempts. Contact your master if you need an additional attempt."
+msgstr ""
+
+#: prime/templates/prime/help.html:833
+msgid "Can I enroll in multiple classrooms?"
+msgstr ""
+
+#: prime/templates/prime/help.html:838
+msgid ""
+"Yes. A master can add you to as many classrooms as they manage. Each "
+"classroom is independent with its own lessons, content, and discussion board."
+msgstr ""
+
+#: prime/templates/prime/help.html:848
+msgid "Can a master see my homework submissions and scores?"
+msgstr ""
+
+#: prime/templates/prime/help.html:853
+msgid ""
+"Yes. When a master assigns homework, they can view each student's submission "
+"status, score, and any written feedback they leave. This lets masters track "
+"progress and provide personalised guidance."
+msgstr ""
+
+#: prime/templates/prime/help.html:863
+msgid "What tutorial categories are available?"
+msgstr ""
+
+#: prime/templates/prime/help.html:868
+msgid ""
+"Tutorials are organised into five categories: Mathematics, Korean, "
+"Programming, English, and Other. Masters choose the best matching category "
+"when publishing a tutorial."
+msgstr ""
+
+#: prime/templates/prime/help.html:878
+msgid "Ready to get started?"
+msgstr ""
+
+#: prime/templates/prime/help.html:879
+msgid "Join Prime Point today — it is free for students and educators alike."
+msgstr ""
+
+#: prime/templates/prime/help.html:890
+msgid "Create Free Account"
+msgstr ""
+
+#: prime/templates/prime/help.html:893
+msgid "Log In"
+msgstr ""
+
+#: prime/templates/prime/index.html:5
 msgid "Dashboard"
 msgstr ""
 
-#: prime/templates/prime/index.html:10
-msgid "Welcome!"
+#: prime/templates/prime/index.html:294
+msgid "Your platform is ready — keep learning, keep growing."
 msgstr ""
 
-#: prime/templates/prime/index.html:13
-msgid "Powerty — your learning and practice platform. Choose a section below."
+#: prime/templates/prime/index.html:307
+msgid "Learn smarter with"
 msgstr ""
 
-#: prime/templates/prime/index.html:27
-msgid "Track your progress and learning stats."
+#: prime/templates/prime/index.html:308
+msgid ""
+"Your all-in-one learning platform — practices, tutorials, exams, games and "
+"live classrooms. Join students mastering new skills every day."
 msgstr ""
 
-#: prime/templates/prime/index.html:41
-msgid "Learn from experienced instructors."
+#: prime/templates/prime/index.html:311
+msgid "Get Started — It's Free"
 msgstr ""
 
-#: prime/templates/prime/index.html:52 templates/base.html:81
-#: templates/base.html:85
-msgid "Practice"
+#: prime/templates/prime/index.html:330
+msgid "Learning resources"
 msgstr ""
 
-#: prime/templates/prime/index.html:55
+#: prime/templates/prime/index.html:341
+msgid "Study"
+msgstr ""
+
+#: prime/templates/prime/index.html:342
+msgid "Learn & practice"
+msgstr ""
+
+#: prime/templates/prime/index.html:357
 msgid "Exercises to reinforce your knowledge."
 msgstr ""
 
-#: prime/templates/prime/index.html:66 templates/base.html:90
-msgid "Pandas"
+#: prime/templates/prime/index.html:367
+msgid "Guides"
 msgstr ""
 
-#: prime/templates/prime/index.html:69
-msgid "Data analysis lessons and tasks."
+#: prime/templates/prime/index.html:371
+msgid "In-depth guides with text, images and formulas."
 msgstr ""
 
-#: prime/templates/prime/index.html:83
+#: prime/templates/prime/index.html:385
+msgid "Skill-by-skill preparation for TOPIK, IELTS and more."
+msgstr ""
+
+#: prime/templates/prime/index.html:399
+msgid "Full timed exams — Listening, Reading and Writing."
+msgstr ""
+
+#: prime/templates/prime/index.html:413
+msgid "Crosswords, puzzles and brain games — learn by playing."
+msgstr ""
+
+#: prime/templates/prime/index.html:423
+msgid "Tasks"
+msgstr ""
+
+#: prime/templates/prime/index.html:427
 msgid "Submitted and pending assignments."
 msgstr ""
 
-#: prime/templates/prime/index.html:94 templates/base.html:100
-msgid "Discussion"
+#: prime/templates/prime/index.html:436
+msgid "People & classrooms"
 msgstr ""
 
-#: prime/templates/prime/index.html:97
+#: prime/templates/prime/index.html:451
+msgid "Learn from experienced instructors."
+msgstr ""
+
+#: prime/templates/prime/index.html:464 templates/base.html:101
+msgid "Pandas"
+msgstr ""
+
+#: prime/templates/prime/index.html:465
+msgid "Browse student profiles and progress."
+msgstr ""
+
+#: prime/templates/prime/index.html:475
+msgid "Rooms"
+msgstr ""
+
+#: prime/templates/prime/index.html:479
+msgid "Private rooms where masters teach enrolled students."
+msgstr ""
+
+#: prime/templates/prime/index.html:489
+msgid "Threads"
+msgstr ""
+
+#: prime/templates/prime/index.html:493
 msgid "Ask questions and share ideas."
 msgstr ""
 
-#: prime/templates/prime/search_results.html:26
-msgid "Search"
+#: prime/templates/prime/index.html:503
+msgid "Administration"
+msgstr ""
+
+#: prime/templates/prime/index.html:513
+msgid "Users"
+msgstr ""
+
+#: prime/templates/prime/index.html:517
+msgid "Platform insights, charts, and performance data."
+msgstr ""
+
+#: prime/templates/prime/index.html:526
+msgid "My Stats"
+msgstr ""
+
+#: prime/templates/prime/index.html:527
+msgid "Your progress"
+msgstr ""
+
+#: prime/templates/prime/index.html:555
+msgid "Best"
+msgstr ""
+
+#: prime/templates/prime/index.html:559
+msgid "Pass Rate"
+msgstr ""
+
+#: prime/templates/prime/index.html:568
+msgid "Homework completion"
+msgstr ""
+
+#: prime/templates/prime/index.html:610
+msgid "My Master Page"
+msgstr ""
+
+#: prime/templates/prime/index.html:624
+msgid "Become a master or get enrolled as a student to see your stats here."
 msgstr ""
 
 #: prime/templates/prime/search_results.html:33
@@ -555,141 +4680,438 @@ msgstr ""
 msgid "Type something to search across masters, practices, and discussions."
 msgstr ""
 
-#: templates/base.html:64
+#: templates/base.html:11
+msgid "CORE Dashboard"
+msgstr ""
+
+#: templates/base.html:49
+msgid "Close navigation"
+msgstr ""
+
+#: templates/base.html:52
+msgid "Main navigation"
+msgstr ""
+
+#: templates/base.html:56
+msgid "CORE home"
+msgstr ""
+
+#: templates/base.html:61
+msgid "Toggle sidebar"
+msgstr ""
+
+#: templates/base.html:65
+msgid "Close sidebar"
+msgstr ""
+
+#: templates/base.html:72
 msgid "Main"
 msgstr ""
 
-#: templates/base.html:68
+#: templates/base.html:76
 msgid "Index"
 msgstr ""
 
-#: templates/base.html:103
+#: templates/base.html:147
 msgid "Support"
 msgstr ""
 
-#: templates/base.html:112
-msgid "Help"
+#: templates/base.html:180
+msgid "Admin"
 msgstr ""
 
-#: templates/base.html:124
+#: templates/base.html:180
 msgid "Member"
 msgstr ""
 
-#: templates/base.html:206
-msgid "My Profile"
+#: templates/base.html:183
+msgid "Online"
 msgstr ""
 
-#: templates/base.html:211
+#: templates/base.html:189
+msgid "Guest"
+msgstr ""
+
+#: templates/base.html:203
+msgid "Open sidebar"
+msgstr ""
+
+#: templates/base.html:216
+msgid "Search..."
+msgstr ""
+
+#: templates/base.html:251
+msgid "User menu"
+msgstr ""
+
+#: templates/base.html:273 tutorial/templates/tutorial/playlist_form.html:86
+#: tutorial/templates/tutorial/tutorial_form.html:110
 msgid "Settings"
 msgstr ""
 
-#: templates/base.html:219
+#: templates/base.html:281
 msgid "Sign out"
 msgstr ""
 
-#: templates/base.html:229
-msgid "Register"
+#: templates/base.html:319
+msgid "Home"
 msgstr ""
 
-#: games/templates/games/target_number.html games/templates/games/games_home.html
-msgid "Target Number"
+#: tutorial/templates/tutorial/playlist_confirm_delete.html:5
+msgid "Delete Playlist"
 msgstr ""
 
-#: games/templates/games/games_home.html
-msgid "Combine 6 numbers with +, −, ×, ÷ to hit the target. Three difficulty levels!"
+#: tutorial/templates/tutorial/playlist_confirm_delete.html:14
+msgid "Delete Playlist?"
 msgstr ""
 
-#: games/templates/games/target_number.html
-msgid "Combine the numbers using +, −, ×, ÷ to reach the target!"
+#: tutorial/templates/tutorial/playlist_confirm_delete.html:16
+msgid "You are about to permanently delete:"
 msgstr ""
 
-#: games/templates/games/target_number.html
-msgid "Start a New Game"
+#: tutorial/templates/tutorial/playlist_confirm_delete.html:20
+msgid ""
+"The playlist will be removed but the tutorials inside will not be deleted."
 msgstr ""
 
-#: games/templates/games/target_number.html
-msgid "4 numbers (1–9), target 10–50"
+#: tutorial/templates/tutorial/playlist_detail.html:20
+#: tutorial/templates/tutorial/playlist_list.html:5
+#: tutorial/templates/tutorial/playlist_list.html:13
+#: tutorial/templates/tutorial/tutorial_list.html:40
+msgid "Playlists"
 msgstr ""
 
-#: games/templates/games/target_number.html
-msgid "4 numbers (1–15) + 2 special, target 50–200"
+#: tutorial/templates/tutorial/playlist_detail.html:48
+msgid "tutorials"
 msgstr ""
 
-#: games/templates/games/target_number.html
-msgid "4 numbers (1–9) + 2 special, target 100–999"
+#: tutorial/templates/tutorial/playlist_detail.html:92
+msgid "Tutorials in this playlist"
 msgstr ""
 
-#: games/templates/games/target_number.html
-msgid "Start Game"
+#: tutorial/templates/tutorial/playlist_detail.html:146
+msgid "No tutorials in this playlist yet"
 msgstr ""
 
-#: games/templates/games/target_number.html
-msgid "Target reached!"
+#: tutorial/templates/tutorial/playlist_detail.html:149
+msgid "Edit a tutorial and assign it to this playlist."
 msgstr ""
 
-#: games/templates/games/target_number.html
-#, python-format
-msgid "You hit <strong>%(t)s</strong>!"
+#: tutorial/templates/tutorial/playlist_detail.html:159
+msgid "Start Playlist"
 msgstr ""
 
-#: games/templates/games/target_number.html
-#, python-format
-msgid "Solved in <strong>%(n)s</strong> attempt(s)."
+#: tutorial/templates/tutorial/playlist_detail.html:162
+#: tutorial/templates/tutorial/playlist_detail.html:167
+msgid "All Playlists"
 msgstr ""
 
-#: games/templates/games/target_number.html
-#, python-format
-msgid "Personal best: <strong>%(b)s</strong> attempt(s)."
+#: tutorial/templates/tutorial/playlist_form.html:5
+#: tutorial/templates/tutorial/playlist_form.html:13
+msgid "Edit Playlist"
 msgstr ""
 
-#: games/templates/games/target_number.html
-msgid "Play Again"
+#: tutorial/templates/tutorial/playlist_form.html:5
+#: tutorial/templates/tutorial/playlist_form.html:13
+#: tutorial/templates/tutorial/playlist_list.html:25
+msgid "New Playlist"
 msgstr ""
 
-#: games/templates/games/target_number.html
-msgid "Target"
+#: tutorial/templates/tutorial/playlist_form.html:17
+msgid "Update this playlist's details."
 msgstr ""
 
-#: games/templates/games/target_number.html
-msgid "Your numbers"
+#: tutorial/templates/tutorial/playlist_form.html:19
+msgid "Group tutorials into an ordered learning path."
 msgstr ""
 
-#: games/templates/games/target_number.html
-msgid "Clear"
+#: tutorial/templates/tutorial/playlist_form.html:52
+msgid "Shown on the playlist card. Max 300 chars."
 msgstr ""
 
-#: games/templates/games/target_number.html
-msgid "Click numbers and operators above…"
+#: tutorial/templates/tutorial/playlist_form.html:63
+msgid "How playlists work"
 msgstr ""
 
-#: games/templates/games/target_number.html
-msgid "Check"
+#: tutorial/templates/tutorial/playlist_form.html:68
+msgid "Create this playlist first."
 msgstr ""
 
-#: games/templates/games/target_number.html
-msgid "New Game"
+#: tutorial/templates/tutorial/playlist_form.html:72
+msgid ""
+"Then open any tutorial → Edit → choose this playlist and set an order number."
 msgstr ""
 
-#: games/templates/games/target_number.html
-msgid "You reached the target!"
+#: tutorial/templates/tutorial/playlist_form.html:76
+msgid ""
+"Students see Prev / Next navigation when reading a tutorial inside a "
+"playlist."
 msgstr ""
 
-#: games/templates/games/target_number.html
-msgid "Exactly right!"
+#: tutorial/templates/tutorial/playlist_form.html:97
+#: tutorial/templates/tutorial/tutorial_form.html:135
+msgid "Cover Image"
 msgstr ""
 
-#: games/templates/games/target_number.html
-msgid "Result"
+#: tutorial/templates/tutorial/playlist_form.html:116
+#: tutorial/templates/tutorial/tutorial_form.html:154
+msgid "Visible to all users"
 msgstr ""
 
-#: games/templates/games/target_number.html
-msgid "Distance from target"
+#: tutorial/templates/tutorial/playlist_form.html:124
+#: tutorial/templates/tutorial/tutorial_form.html:275
+msgid "Save Changes"
 msgstr ""
 
-#: games/templates/games/target_number.html
-msgid "Network error — try again."
+#: tutorial/templates/tutorial/playlist_form.html:124
+#: tutorial/templates/tutorial/playlist_list.html:152
+msgid "Create Playlist"
 msgstr ""
 
-#: games/templates/games/target_number.html
-msgid "Math"
+#: tutorial/templates/tutorial/playlist_form.html:131
+msgid "Delete this playlist"
+msgstr ""
+
+#: tutorial/templates/tutorial/playlist_list.html:16
+msgid "learning paths"
+msgstr ""
+
+#: tutorial/templates/tutorial/playlist_list.html:21
+#: tutorial/templates/tutorial/tutorial_detail.html:173
+msgid "All Tutorials"
+msgstr ""
+
+#: tutorial/templates/tutorial/playlist_list.html:36
+#: tutorial/templates/tutorial/tutorial_list.html:31
+msgid "All"
+msgstr ""
+
+#: tutorial/templates/tutorial/playlist_list.html:70
+msgid "parts"
+msgstr ""
+
+#: tutorial/templates/tutorial/playlist_list.html:138
+msgid "No playlists found"
+msgstr ""
+
+#: tutorial/templates/tutorial/playlist_list.html:141
+msgid "No playlists in this category yet."
+msgstr ""
+
+#: tutorial/templates/tutorial/playlist_list.html:143
+msgid "Playlists group tutorials into structured learning paths."
+msgstr ""
+
+#: tutorial/templates/tutorial/playlist_list.html:148
+#: tutorial/templates/tutorial/tutorial_list.html:150
+msgid "Show all"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_confirm_delete.html:5
+msgid "Delete Tutorial"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_confirm_delete.html:16
+msgid "Delete Tutorial?"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_confirm_delete.html:18
+msgid "This action cannot be undone. The tutorial"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_confirm_delete.html:20
+msgid "will be permanently removed."
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_confirm_delete.html:26
+msgid "Yes, delete it"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_detail.html:123
+msgid "Helpful?"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_detail.html:135
+#: tutorial/templates/tutorial/tutorial_detail.html:156
+msgid "Like"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_detail.html:148
+#: tutorial/templates/tutorial/tutorial_detail.html:160
+msgid "Dislike"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_detail.html:164
+msgid "Log in to react"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_detail.html:196
+msgid "Author"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_detail.html:236
+msgid "Likes"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_detail.html:246
+msgid "Read"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_detail.html:257
+#: tutorial/templates/tutorial/tutorial_form.html:165
+#: tutorial/templates/tutorial/tutorial_form.html:171
+msgid "Playlist"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_detail.html:265
+msgid "Part"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_detail.html:265
+msgid "of"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_detail.html:322
+msgid "Related"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:5
+#: tutorial/templates/tutorial/tutorial_form.html:52
+msgid "Edit Tutorial"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:56
+msgid "Update your tutorial content and settings."
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:58
+msgid "Share your knowledge — use the full editor below."
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:92
+msgid "Content"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:93
+msgid "Use"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:93
+msgid "for math formulas"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:123
+msgid "Summary"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:127
+msgid "Shown on the listing page. Max 300 chars."
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:168
+msgid "Add this tutorial to one of your playlists."
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:178
+msgid "Order in Playlist"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:180
+msgid "Lower number = earlier in the playlist (e.g. 1, 2, 3…)"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:193
+msgid "Linked Practices"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:196
+msgid "Students will see buttons to these practices on the tutorial page."
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:217
+msgid "Math Formulas (LaTeX)"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:221
+msgid "Inline formula:"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:225
+msgid "Block formula:"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:229
+msgid "Fraction:"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:233
+msgid "Square root:"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:238
+msgid ""
+"Pasting from an AI tool works too — superscripts/subscripts are converted "
+"automatically."
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:247
+msgid "Math Preview"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:250
+msgid ""
+"Type or paste LaTeX here to check how it will look, then copy it into your "
+"content."
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:261
+msgid "Editor Shortcuts"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:264
+msgid "Bold"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:265
+msgid "Italic"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:266
+msgid "Link"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:267
+msgid "Undo"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:268
+msgid "Source"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:275
+msgid "Publish Tutorial"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_form.html:282
+msgid "Delete this tutorial"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_list.html:16
+msgid "in-depth guides"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_list.html:140
+msgid "No tutorials found"
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_list.html:143
+msgid "No tutorials in this category yet."
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_list.html:145
+msgid "Be the first to share knowledge with the community."
+msgstr ""
+
+#: tutorial/templates/tutorial/tutorial_list.html:154
+msgid "Create Tutorial"
 msgstr ""
