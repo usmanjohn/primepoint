@@ -49,22 +49,29 @@ savol, qancha vaqt va qiyinlik qanday oshadi. Buni bilish — birinchi haqiqiy s
             {
                 "rich_text": """
 <h3>Vaqtni qanday taqsimlash kerak</h3>
-<p>Oddiy nazorat nuqtalari sizni xavfsiz saqlaydi: 20-daqiqada ~20-savol atrofida,
-45-daqiqada ~35-savol atrofida bo'ling.</p>
-<div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:12px 16px;border-radius:8px;margin:16px 0;">
-  <strong>⚠️ Diqqat:</strong> Agar orqada qolsangiz — <strong>taxmin qiling va keyingisiga
-  o'ting.</strong> Bo'sh qoldirilgan javob ham, xato javob ham bir xil — lekin bo'sh javob
-  hech qachon to'g'ri bo'lolmaydi.
+<div class="pp-steps" data-pp-steps data-pp-more="Keyingi qadam ▸">
+  <div class="pp-step">
+    <p>Oddiy nazorat nuqtalari sizni xavfsiz saqlaydi: 20-daqiqada ~20-savol atrofida,
+    45-daqiqada ~35-savol atrofida bo'ling.</p>
+  </div>
+  <div class="pp-step">
+    <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:12px 16px;border-radius:8px;margin:0;">
+      <strong>⚠️ Diqqat:</strong> Agar orqada qolsangiz — <strong>taxmin qiling va keyingisiga
+      o'ting.</strong> Bo'sh qoldirilgan javob ham, xato javob ham bir xil — lekin bo'sh javob
+      hech qachon to'g'ri bo'lolmaydi.
+    </div>
+  </div>
 </div>
 <h3>Kalit so'zlar — 핵심 단어</h3>
-<ul>
-  <li><strong>읽기</strong> — o'qish</li>
-  <li><strong>지문</strong> — matn / parcha</li>
-  <li><strong>문제</strong> — savol</li>
-  <li><strong>정답</strong> — to'g'ri javob</li>
-  <li><strong>시간 배분</strong> — vaqtni taqsimlash</li>
-  <li><strong>추측하다</strong> — taxmin qilmoq</li>
-</ul>
+<p class="text-secondary small">Kartani bosib ag'daring — koreyscha so'zni ko'rib, ma'nosini eslang.</p>
+<div class="pp-flashcards" data-pp-flashcards>
+  <div class="pp-card"><div class="pp-card-front">읽기</div><div class="pp-card-back">o'qish</div></div>
+  <div class="pp-card"><div class="pp-card-front">지문</div><div class="pp-card-back">matn / parcha</div></div>
+  <div class="pp-card"><div class="pp-card-front">문제</div><div class="pp-card-back">savol</div></div>
+  <div class="pp-card"><div class="pp-card-front">정답</div><div class="pp-card-back">to'g'ri javob</div></div>
+  <div class="pp-card"><div class="pp-card-front">시간 배분</div><div class="pp-card-back">vaqtni taqsimlash</div></div>
+  <div class="pp-card"><div class="pp-card-front">추측하다</div><div class="pp-card-back">taxmin qilmoq</div></div>
+</div>
 <div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:12px 16px;border-radius:8px;margin:16px 0;">
   <strong>📌 Xulosa</strong>
   <ul style="margin:8px 0 0;">
@@ -123,7 +130,7 @@ tez o'qib, abzasni tushunsa bo'ladi.</p>
             },
             {
                 "rich_text": """
-<h3>Ishlangan namuna</h3>
+<h3>Ishlangan namuna — qadam-baqadam</h3>
 <div style="background:#f1f5f9;border-radius:10px;padding:14px 16px;margin:10px 0;">
   <p style="margin:0 0 6px;">요즘 사람들은 시간이 없다는 이유로 아침을 거르는 경우가 많다.
   그러나 아침 식사는 하루의 활동에 필요한 에너지를 준다.
@@ -132,31 +139,58 @@ tez o'qib, abzasni tushunsa bo'ladi.</p>
   nonushtani o'tkazib yuboradi. Lekin nonushta kun davomidagi faoliyat uchun energiya beradi.
   Shuning uchun band bo'lsa ham, nonushta qilish yaxshi.</em></p>
 </div>
-<p>Tez o'qing: birinchi gap odatni aytadi (nonushtani tashlash), o'rtasi sabab beradi,
-oxirgi gap esa — <strong>따라서</strong> bilan — asosiy fikrni beradi:
-<mark style="background:#dcfce7;">band bo'lsa ham nonushta qilish kerak.</mark></p>
+<p>Endi shu matnni imtihondagidek, qadam-baqadam tahlil qilamiz:</p>
+<div class="pp-steps" data-pp-steps data-pp-more="Keyingi qadam ▸">
+  <div class="pp-step">
+    <p><strong>1-qadam — birinchi gap.</strong> 요즘 사람들은... 아침을 거르는 경우가 많다 —
+    bu <em>holat</em> (odamlar nonushtani o'tkazib yuboradi). Hali muallif fikri emas —
+    belgilab, davom etamiz.</p>
+  </div>
+  <div class="pp-step">
+    <p><strong>2-qadam — o'rtadagi gap.</strong> 그러나 (lekin) bilan boshlanadi va
+    <em>sabab</em> beradi: nonushta energiya beradi. Bu — <mark style="background:#fee2e2;">tafsilot</mark>,
+    asosiy fikr emas. O'rtani tez o'qib o'tamiz.</p>
+  </div>
+  <div class="pp-step">
+    <p><strong>3-qadam — oxirgi gap.</strong> <mark style="background:#dbeafe;">따라서</mark>
+    (shuning uchun) — fikr signali! Muallifning xulosasi shu yerda:
+    <mark style="background:#dcfce7;">band bo'lsa ham nonushta qilish kerak.</mark>
+    Javob shu gapdan chiqadi.</p>
+  </div>
+</div>
 <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:12px 16px;border-radius:8px;margin:16px 0;">
   <strong>⚠️ Tez-tez uchraydigan xato:</strong> o'rtadagi <em>to'g'ri lekin asosiy bo'lmagan</em>
   tafsilotga aldanmang. Variant <strong>to'g'ri bo'lishi mumkin, ammo asosiy fikr emas.</strong>
 </div>
-<h3>Kalit so'zlar — 핵심 단어</h3>
-<ul>
-  <li><strong>중심 생각</strong> — asosiy fikr</li>
-  <li><strong>훑어 읽기</strong> — tez ko'zdan kechirib o'qish</li>
-  <li><strong>따라서</strong> — shuning uchun</li>
-  <li><strong>그러나</strong> — lekin</li>
-  <li><strong>세부 내용</strong> — tafsilot</li>
-  <li><strong>아침 식사</strong> — nonushta</li>
-</ul>
-<div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:12px 16px;border-radius:8px;margin:16px 0;">
-  <strong>📌 Xulosa</strong>
-  <ul style="margin:8px 0 0;">
-    <li>Har so'zni tarjima qilmang — asosiy fikr uchun tez o'qing.</li>
-    <li>Fikr odatda birinchi yoki oxirgi gapda.</li>
-    <li>To'g'ri tafsilot har doim ham asosiy fikr emas.</li>
-  </ul>
-</div>
 """,
+            },
+            {
+                "rich_text": """
+<h3>Yana bir namuna — endi o'zingiz</h3>
+<p>Quyidagi qisqa matnni <mark>tez o'qing</mark> — chetki gaplarga diqqat, o'rtasiga
+ko'z yugurtiring. Keyin savolga javob bering.</p>
+<div style="background:#f1f5f9;border-radius:10px;padding:14px 16px;margin:10px 0;">
+  <p style="margin:0 0 6px;">휴대폰은 우리 생활을 편리하게 만들었다.
+  그러나 잠들기 전에 휴대폰을 오래 보면 잠을 잘 자기 어렵다.
+  <strong>그러므로 자기 전에는 휴대폰 사용을 줄여야 한다.</strong></p>
+  <p style="color:#475569;margin:0;"><em>Telefon hayotimizni qulay qildi. Lekin uxlashdan
+  oldin telefonni uzoq ko'rsangiz, yaxshi uxlash qiyin bo'ladi. Shuning uchun uxlashdan
+  oldin telefon ishlatishni kamaytirish kerak.</em></p>
+</div>
+<p><strong>Amaliyot.</strong> Bu matnning asosiy fikri (중심 생각) qaysi?</p>
+""",
+                "choices": [
+                    {"text": "Telefon hayotni qulay qildi.", "is_correct": False},
+                    {"text": "Uxlashdan oldin telefon ishlatishni kamaytirish kerak.", "is_correct": True},
+                    {"text": "Telefonni uzoq ko'rish ko'zga zarar.", "is_correct": False},
+                    {"text": "Kechasi telefon ko'rish uyquni yaxshilaydi.", "is_correct": False},
+                ],
+                "explanation": "<p>Oxirgi gap <strong>그러므로</strong> (shuning uchun) bilan boshlanadi — "
+                               "fikr signali: <em>자기 전에는 휴대폰 사용을 줄여야 한다</em> = uxlashdan oldin "
+                               "telefon ishlatishni kamaytirish kerak. Bunda <strong>-아야/어야 한다</strong> "
+                               "(kerak) qo'shimchasi ham muallif fikrini bildiradi. 1-variant to'g'ri fakt, "
+                               "lekin bu kirish gap — asosiy fikr emas; 3-variant matnda umuman yo'q; "
+                               "4-variant matnga zid.</p>",
             },
             {
                 "rich_text": "<p><strong>Amaliyot.</strong> Abzas shu gap bilan tugaydi: "
@@ -172,6 +206,30 @@ oxirgi gap esa — <strong>따라서</strong> bilan — asosiy fikrni beradi:
                                "boshlanib, muallif fikrini to'g'ridan-to'g'ri aytadi: muntazam "
                                "mashq sog'liq uchun eng muhim. Boshqa variantlar — tafsilot yoki "
                                "chalg'ituvchi, asosiy fikr emas.</p>",
+            },
+            {
+                "rich_text": """
+<h3>Kalit so'zlar — 핵심 단어</h3>
+<p class="text-secondary small">Kartani bosib ag'daring — koreyscha so'zni ko'rib, ma'nosini eslang.</p>
+<div class="pp-flashcards" data-pp-flashcards>
+  <div class="pp-card"><div class="pp-card-front">중심 생각</div><div class="pp-card-back">asosiy fikr</div></div>
+  <div class="pp-card"><div class="pp-card-front">훑어 읽기</div><div class="pp-card-back">tez ko'zdan kechirib o'qish</div></div>
+  <div class="pp-card"><div class="pp-card-front">따라서</div><div class="pp-card-back">shuning uchun</div></div>
+  <div class="pp-card"><div class="pp-card-front">그러므로</div><div class="pp-card-back">shuning uchun (rasmiyroq)</div></div>
+  <div class="pp-card"><div class="pp-card-front">그러나</div><div class="pp-card-back">lekin</div></div>
+  <div class="pp-card"><div class="pp-card-front">세부 내용</div><div class="pp-card-back">tafsilot</div></div>
+  <div class="pp-card"><div class="pp-card-front">-아야/어야 한다</div><div class="pp-card-back">... kerak (fikr signali)</div></div>
+  <div class="pp-card"><div class="pp-card-front">중요하다</div><div class="pp-card-back">muhim bo'lmoq</div></div>
+</div>
+<div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:12px 16px;border-radius:8px;margin:16px 0;">
+  <strong>📌 Xulosa</strong>
+  <ul style="margin:8px 0 0;">
+    <li>Har so'zni tarjima qilmang — asosiy fikr uchun tez o'qing.</li>
+    <li>Fikr odatda birinchi yoki oxirgi gapda; 따라서/그러므로/-아야 한다 — signallar.</li>
+    <li>To'g'ri tafsilot har doim ham asosiy fikr emas.</li>
+  </ul>
+</div>
+""",
             },
         ],
     },
@@ -214,35 +272,64 @@ bo'ladi — kerakli gapga yetganda darrov sezasiz.</p>
             },
             {
                 "rich_text": """
-<h3>Odatning namunasi</h3>
-<p>Aytaylik, savol “이 글의 내용과 같은 것을 고르십시오” (matnga mos kelganini tanlang) va
-variantlardan birida <strong>할인 (chegirma)</strong> bor. Butun e'lonni o'qishdan oldin
-siz allaqachon <mark style="background:#dbeafe;">chegirma haqidagi gapni</mark> qidirishni
-bilasiz. Topasiz, variant bilan solishtirasiz va javob berasiz — qolganini qayta o'qimasdan.</p>
+<h3>Odatni jonli ko'ramiz — qadam-baqadam</h3>
+<p>Savol: <strong>“이 글의 내용과 같은 것을 고르십시오.”</strong> <em>(Matn mazmuniga mos
+kelganini tanlang.)</em> Matn — oddiy e'lon:</p>
+<div style="background:#f1f5f9;border-radius:10px;padding:14px 16px;margin:10px 0;">
+  <p style="margin:0 0 6px;"><strong>도서관 이용 안내</strong><br>
+  평일에는 밤 10시까지 이용할 수 있습니다.<br>
+  주말에는 오후 6시에 문을 닫습니다.<br>
+  시험 기간에는 24시간 열려 있습니다.</p>
+  <p style="color:#475569;margin:0;"><em>Kutubxonadan foydalanish haqida ma'lumot:
+  ish kunlari kechki 10 gacha foydalanish mumkin. Dam olish kunlari 18:00 da yopiladi.
+  Imtihon davrida 24 soat ochiq.</em></p>
+</div>
+<div class="pp-steps" data-pp-steps data-pp-more="Keyingi qadam ▸">
+  <div class="pp-step">
+    <p><strong>1-qadam — savol turini aniqlang.</strong> 일치하는 내용 — demak, variantlardagi
+    <em>faktlarni</em> matn bilan solishtirish kerak. Fikr izlamaymiz, fakt izlaymiz.</p>
+  </div>
+  <div class="pp-step">
+    <p><strong>2-qadam — variantlardan kalit so'zlarni belgilang.</strong> Variantlarda
+    <mark style="background:#dbeafe;">평일</mark> (ish kunlari),
+    <mark style="background:#dbeafe;">주말</mark> (dam olish kunlari),
+    <mark style="background:#dbeafe;">시험 기간</mark> (imtihon davri) va soatlar bor —
+    demak, qidiruv nishonimiz: <em>qaysi kun → qaysi soat</em>.</p>
+  </div>
+  <div class="pp-step">
+    <p><strong>3-qadam — matnni nishon bilan o'qing.</strong> Har bir gap — bitta fakt:
+    평일 → 밤 10시, 주말 → 오후 6시, 시험 기간 → 24시간. Uch juftlikni belgilab oldik —
+    endi variantlarni birma-bir tekshirish oson.</p>
+  </div>
+  <div class="pp-step">
+    <p><strong>4-qadam — har variantni matndan tasdiqlang.</strong> “Deyarli to'g'ri”
+    variantlar aynan shu yerda tuzoq qo'yadi: kun bilan soatni <em>almashtirib</em> beradi
+    (masalan, dam olish kuniga ish kunining soatini yozadi). Juftlikni aniq solishtiring.</p>
+  </div>
+</div>
 <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:12px 16px;border-radius:8px;margin:16px 0;">
   <strong>⚠️ Diqqat:</strong> Variantlarni oldin o'qish — faqat ulardan taxmin qilish
   degani <strong>emas</strong>. Variantlar — sizning <strong>qidiruv ro'yxatingiz</strong>,
   lekin javobni baribir matndan <mark style="background:#dcfce7;">tasdiqlang.</mark>
   TOPIK <em>deyarli</em> to'g'ri variantlarni yaxshi ko'radi.
 </div>
-<h3>Kalit so'zlar — 핵심 단어</h3>
-<ul>
-  <li><strong>일치하는 내용</strong> — mos keladigan mazmun</li>
-  <li><strong>빈칸</strong> — bo'sh joy</li>
-  <li><strong>고르다</strong> — tanlamoq</li>
-  <li><strong>핵심어 (kalit so'z)</strong> — kalit so'z</li>
-  <li><strong>할인</strong> — chegirma</li>
-  <li><strong>확인하다</strong> — tasdiqlamoq</li>
-</ul>
-<div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:12px 16px;border-radius:8px;margin:16px 0;">
-  <strong>📌 Xulosa</strong>
-  <ul style="margin:8px 0 0;">
-    <li>Avval savol va variantlarni, keyin matnni o'qing.</li>
-    <li>Kalit so'zni belgilab, uni qidiring.</li>
-    <li>Javobni har doim matndan tasdiqlang — “deyarli to'g'ri” variantdan ehtiyot bo'ling.</li>
-  </ul>
-</div>
 """,
+            },
+            {
+                "rich_text": "<p><strong>Amaliyot.</strong> Yuqoridagi kutubxona e'loni bo'yicha: "
+                             "matn mazmuniga mos kelgan variantni tanlang (이 글의 내용과 같은 것).</p>",
+                "choices": [
+                    {"text": "Dam olish kunlari kutubxona kechki 10 gacha ochiq.", "is_correct": False},
+                    {"text": "Imtihon davrida kutubxona tunda ham ochiq.", "is_correct": True},
+                    {"text": "Ish kunlari kutubxona 18:00 da yopiladi.", "is_correct": False},
+                    {"text": "Kutubxona har doim 24 soat ishlaydi.", "is_correct": False},
+                ],
+                "explanation": "<p>Matnda: <em>시험 기간에는 24시간 열려 있습니다</em> — imtihon davrida "
+                               "24 soat ochiq, demak tunda ham ochiq. ✓</p>"
+                               "<p>1- va 3-variantlar — klassik tuzoq: kun va soat <strong>almashtirilgan</strong> "
+                               "(kechki 10 — bu 평일, ish kunlari; 18:00 esa 주말, dam olish kunlari). "
+                               "4-variant esa faktni kengaytirib yuboradi: 24 soat faqat 시험 기간, "
+                               "imtihon davrida.</p>",
             },
             {
                 "rich_text": "<p><strong>Amaliyot.</strong> Matndan oldin 4 ta variantni "
@@ -257,6 +344,30 @@ bilasiz. Topasiz, variant bilan solishtirasiz va javob berasiz — qolganini qay
                                "so'z va faktlarni qidirishni aytadi, shunda matnni ikki marta "
                                "o'qimasdan, aniq nishon bilan o'qiysiz. Javobni baribir matndan "
                                "tasdiqlaysiz.</p>",
+            },
+            {
+                "rich_text": """
+<h3>Kalit so'zlar — 핵심 단어</h3>
+<p class="text-secondary small">Kartani bosib ag'daring — koreyscha so'zni ko'rib, ma'nosini eslang.</p>
+<div class="pp-flashcards" data-pp-flashcards>
+  <div class="pp-card"><div class="pp-card-front">일치하는 내용</div><div class="pp-card-back">mos keladigan mazmun</div></div>
+  <div class="pp-card"><div class="pp-card-front">빈칸</div><div class="pp-card-back">bo'sh joy</div></div>
+  <div class="pp-card"><div class="pp-card-front">고르다</div><div class="pp-card-back">tanlamoq</div></div>
+  <div class="pp-card"><div class="pp-card-front">핵심어</div><div class="pp-card-back">kalit so'z</div></div>
+  <div class="pp-card"><div class="pp-card-front">확인하다</div><div class="pp-card-back">tasdiqlamoq</div></div>
+  <div class="pp-card"><div class="pp-card-front">안내</div><div class="pp-card-back">e'lon / ma'lumot</div></div>
+  <div class="pp-card"><div class="pp-card-front">평일</div><div class="pp-card-back">ish kunlari</div></div>
+  <div class="pp-card"><div class="pp-card-front">주말</div><div class="pp-card-back">dam olish kunlari</div></div>
+</div>
+<div style="background:#eff6ff;border-left:4px solid #3b82f6;padding:12px 16px;border-radius:8px;margin:16px 0;">
+  <strong>📌 Xulosa</strong>
+  <ul style="margin:8px 0 0;">
+    <li>Avval savol va variantlarni, keyin matnni o'qing.</li>
+    <li>Kalit so'zni belgilab, uni qidiring.</li>
+    <li>Javobni har doim matndan tasdiqlang — “deyarli to'g'ri” variantdan ehtiyot bo'ling.</li>
+  </ul>
+</div>
+""",
             },
         ],
     },
