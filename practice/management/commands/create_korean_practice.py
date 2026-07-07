@@ -186,6 +186,7 @@ questions = [
     }
 ]
 
+
 class Command(BaseCommand):
     help = 'Create a Korean grammar particle practice test'
 
@@ -209,12 +210,12 @@ class Command(BaseCommand):
         )
 
         practice, created = Practice.objects.get_or_create(
-            title='Takrorlash 3, 라고, 다, 자고 하다',  # --- IGNORE ---
+            title='반면에, 데다가, 뿐만 아니라',  # --- IGNORE ---
             master=master,
             defaults={
-                'description': 'Takrorlash 3, 라고, 다, 자고 하다',
+                'description': '이 연습문제는 한국어 문법에서 자주 사용되는 연결어미와 표현들을 연습하는 데 도움이 됩니다. 각 문제를 통해 문맥에 맞는 표현을 선택하고, 그 의미와 용법을 이해할 수 있습니다.',
                 'subject': subject,
-                'level': 'medium',
+                'level': 'hard',
                 'is_free': True,
                 'is_published': True,
                 'is_available_for_all': True,
