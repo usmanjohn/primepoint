@@ -144,6 +144,12 @@
                 {% if nav_examprep_count %}<span class="nav-badge">{{ nav_examprep_count }}</span>{% endif %}
             </a>
 
+            <a href="{% url 'corner_home' %}" class="nav-link {% block nav_corner %}{% endblock %}">
+                <i class="bi bi-stars"></i>
+                <span class="nav-label">{% trans "Corner" %}</span>
+                {% if nav_corner_count %}<span class="nav-badge">{{ nav_corner_count }}</span>{% endif %}
+            </a>
+
             <span class="nav-section">{% trans "Support" %}</span>
 
             <a href="{% url 'about' %}" class="nav-link {% block nav_about %}{% endblock %}">

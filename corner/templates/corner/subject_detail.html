@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+{% block nav_corner %}active{% endblock %}
+{% block page_name %}{{ subject.name }}{% endblock %}
+{% block title %}{{ subject.name }} — {% trans "Corner" %}{% endblock %}
+
+{% block content %}
+
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb small mb-0">
+        <li class="breadcrumb-item"><a href="{% url 'corner_home' %}">{% trans "Corner" %}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ subject.name }}</li>
+    </ol>
+</nav>
+
+<div class="d-flex align-items-center gap-3 mb-4">
+    <span class="d-inline-flex align-items-center justify-content-center rounded-3 flex-shrink-0"
+          style="width:56px;height:56px;background:{{ subject.color }}1a;color:{{ subject.color }};">
+        <i class="bi {{ subject.icon }} fs-3"></i>
+    </span>
+    <div>
+        <h1 class="page-title mb-0">{{ subject.name }}</h1>
+        {% if subject.summary %}<p class="page-subtitle mb-0">{{ subject.summary }}</p>{% endif %}
+    </div>
+</div>
+
+{% if collections %}
+<h2 class="h5 mb-3"><i class="bi bi-collection me-1"></i>{% trans "Reading collections" %}</h2>
+<div class="row g-3 g-md-4 mb-4">
+    {% for collection in collections %}
+    <div class="col-12 col-sm-6 col-lg-4">
+        <a href="{% url 'corner_collection' subject.slug collection.slug %}"
+           class="card cn-card h-100 text-decoration-none border-0 shadow-sm">
+            {% if collection.cover %}
+            <img src="{{ collection.cover.url }}" class="card-img-top cn-cover" alt="{{ collection.title }}">
+            {% endif %}
+            <div class="card-body d-flex flex-column">
+                <h3 class="h6 mb-1">
+                    {{ collection.title }}
+                    {% if not collection.is_published %}<span class="badge text-bg-warning ms-1">{% trans "Draft" %}</span>{% endif %}
+                </h3>
+                {% if collection.description %}
+                <p class="text-secondary small mb-3">{{ collection.description }}</p>
+                {% endif %}
+                <div class="mt-auto">
+                    <span class="badge rounded-pill text-bg-light mb-2">
+                        <i class="bi bi-book me-1"></i>
+                        {% blocktrans count counter=collection.story_count %}{{ counter }} story{% plural %}{{ counter }} stories{% endblocktrans %}
+                    </span>
+                    {% if user.is_authenticated and collection.story_count %}
+                    <div class="cn-progress" role="progressbar" aria-valuenow="{{ collection.percent }}"
+                         aria-valuemin="0" aria-valuemax="100">
+                        <div class="cn-progress-bar" style="width:{{ collection.percent }}%;background:{{ subject.color }};"></div>
+                    </div>
+                    <span class="small text-secondary">{{ collection.finished_count }}/{{ collection.story_count }} · {{ collection.percent }}%</span>
+                    {% endif %}
+                </div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if templates %}
+<h2 class="h5 mb-3"><i class="bi bi-file-earmark-text me-1"></i>{% trans "Writing templates" %}</h2>
+<div class="row g-3 g-md-4">
+    {% for t in templates %}
+    <div class="col-12 col-sm-6 col-lg-4">
+        {% include 'corner/_template_card.html' with t=t %}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if not collections and not templates %}
+<div class="text-center text-secondary py-5">
+    <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+    <p class="mb-0">{% trans "Nothing here yet. Check back soon." %}</p>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/corner.css' %}">{% endblock %}

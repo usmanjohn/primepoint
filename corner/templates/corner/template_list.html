@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+{% block nav_corner %}active{% endblock %}
+{% block page_name %}{% trans "Writing templates" %}{% endblock %}
+{% block title %}{% trans "Writing templates" %} — {% trans "Corner" %}{% endblock %}
+
+{% block content %}
+
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb small mb-0">
+        <li class="breadcrumb-item"><a href="{% url 'corner_home' %}">{% trans "Corner" %}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{% trans "Writing templates" %}</li>
+    </ol>
+</nav>
+
+<div class="mb-4">
+    <h1 class="page-title mb-1"><i class="bi bi-file-earmark-text me-2"></i>{% trans "Writing templates" %}</h1>
+    <p class="page-subtitle mb-0">
+        {% trans "Printable templates with space to write — download, print and practise." %}
+    </p>
+</div>
+
+{% if templates %}
+{% regroup templates by subject as subject_groups %}
+{% for group in subject_groups %}
+<h2 class="h5 mb-3 {% if not forloop.first %}mt-4{% endif %}">
+    <i class="bi {{ group.grouper.icon }} me-1" style="color:{{ group.grouper.color }};"></i>{{ group.grouper.name }}
+</h2>
+<div class="row g-3 g-md-4">
+    {% for t in group.list %}
+    <div class="col-12 col-sm-6 col-lg-4">
+        {% include 'corner/_template_card.html' with t=t %}
+    </div>
+    {% endfor %}
+</div>
+{% endfor %}
+{% else %}
+<div class="text-center text-secondary py-5">
+    <i class="bi bi-file-earmark-text fs-1 d-block mb-2"></i>
+    <p class="mb-0">{% trans "No templates uploaded yet. Check back soon." %}</p>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/corner.css' %}">{% endblock %}

@@ -1,0 +1,36 @@
+# ── Collection metadata (read by Claude) ─────────────────────────────
+SUBJECT:    Korean            (icon: bi-translate, color: #d97706)
+COLLECTION: Keimyung Korean Readings
+AUTHOR:     powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_CORNER.md. This file is ONLY the ordered story list.
+# The number = the story's `order` within the collection.
+# Level: intermediate (TOPIK II) reading passages; Uzbek vocab marks.
+# Source texts: keimyung_21_story.txt (user-provided, numbered, no titles —
+# the titles below were added by us). All 21 imported via
+# _stories_keimyung_1_7.py / _8_14.py / _15_21.py.
+# ─────────────────────────────────────────────────────────────────────
+
+## Keimyung Korean Readings — 한국어 읽기
+
+1. 케이팝이 바꾼 내 인생 (K-pop hayotimni oʻzgartirdi)
+2. 어휘 속에 숨은 한국 문화 (Soʻzlarda yashiringan koreys madaniyati)
+3. 야구장에서 즐기는 여가 (Beysbol maydonidagi dam olish)
+4. 버릴 것은 없다: 리폼 이야기 (Tashlanadigan narsa yoʻq: riform)
+5. 늙어가는 한국: 저출산과 고령화 (Qarayotgan Koreya)
+6. 대나무의 고장, 담양 여행 (Bambuk yurti Damyang sayohati)
+7. 마음을 움직이는 공익 광고 (Qalbni uygʻotadigan ijtimoiy reklama)
+8. 낙엽을 태우면서 (Xazon yoqar ekanman — lirik esse)
+9. 한국인과 함께해 온 떡 (Koreyslar hayotidagi ttok)
+10. 선배들이 알려 주는 A+ 비결 (A+ olish sirlari)
+11. 한석봉과 어머니 (Han Sokbong va onasi)
+12. 건강한 밥상 차리기 (Sogʻlom dasturxon)
+13. 달라진 젊은 세대의 직업관 (Yoshlarning yangi kasb qarashlari)
+14. 마트에 숨어 있는 판매 전략 (Marketdagi yashirin savdo usullari)
+15. 살아 움직이는 언어 (Tirik til — tilning tarixiyligi)
+16. 점심시간을 디자인하는 런치투어족 (Tushlikni loyihalaydiganlar)
+17. 생활 속에 숨은 과학의 원리 (Turmushdagi yashirin ilm)
+18. 즐기면서 나누는 기부 문화 (Zavq bilan xayriya qilish)
+19. 김홍도와 신윤복 (Kim Hongdo va Shin Yunbok)
+20. 창문과 옷장: 인식의 힘 (Deraza va shkaf: idrok kuchi)
+21. 원효 대사와 해골 물 (Wonhyo va bosh chanogʻidagi suv)

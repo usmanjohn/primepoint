@@ -300,11 +300,8 @@ def finish_practice(request, attempt_id):
         attempt.save()
         _auto_link_homework(attempt)
 
-        # Recalculate panda's total rating from all completed attempts
-        panda = attempt.panda
-        all_pts = list(panda.attempts.filter(status='completed').values_list('rating_points', flat=True))
-        panda.rating = round(sum(all_pts))
-        panda.save(update_fields=['rating'])
+        # Recalculate panda's total rating (practice + corner points)
+        attempt.panda.recalc_rating()
 
     return redirect('practice_result', attempt_id=attempt.id)
 

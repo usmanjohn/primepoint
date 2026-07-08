@@ -1,0 +1,175 @@
+/* ─────────────────────────────────────────────────────────────────────
+   Corner — resource library styles.
+   Warm "paper reading" identity: serif body, amber accents.
+   Progressive enhancement: tap-to-translate styles are scoped under
+   `.cn-ready` (added by corner.js); with JavaScript off the vocabulary
+   stays highlighted and the popover rules never apply.
+   ───────────────────────────────────────────────────────────────────── */
+
+:root {
+    --cn-paper:  #fdf8ef;
+    --cn-ink:    #3d3229;
+    --cn-accent: #d97706;
+    --cn-hl:     #fef3c7;
+    --cn-border: #ede4d3;
+}
+
+/* ── Cards ─────────────────────────────────────────────────────────── */
+.cn-card {
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+.cn-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 .5rem 1rem rgba(61, 50, 41, .12) !important;
+}
+.cn-cover {
+    height: 140px;
+    object-fit: cover;
+}
+.cn-cover-placeholder {
+    background: var(--cn-hl);
+    color: var(--cn-accent);
+}
+
+/* Banner link to writing templates on the Corner home page. */
+.cn-banner {
+    background: var(--cn-paper);
+    border: 1px solid var(--cn-border);
+    border-radius: 1rem;
+    padding: 1rem 1.25rem;
+    color: var(--cn-ink);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+.cn-banner:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 .4rem .9rem rgba(61, 50, 41, .12);
+    color: var(--cn-ink);
+}
+.cn-banner-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: .8rem;
+    background: var(--cn-hl);
+    color: var(--cn-accent);
+    flex-shrink: 0;
+}
+
+/* ── Reading progress bar ──────────────────────────────────────────── */
+.cn-progress {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--cn-border);
+    overflow: hidden;
+}
+.cn-progress-bar {
+    height: 100%;
+    border-radius: 3px;
+    background: var(--cn-accent);
+    transition: width .3s ease;
+}
+
+/* ── Collection story list ─────────────────────────────────────────── */
+.cn-story-list {
+    border-radius: .75rem;
+    overflow: hidden;
+}
+.cn-story-no {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--cn-hl);
+    color: var(--cn-subject, var(--cn-accent));
+    font-weight: 600;
+    flex-shrink: 0;
+}
+.cn-story-no.cn-done {
+    background: var(--cn-subject, var(--cn-accent));
+    color: #fff;
+}
+
+/* ── The reader ("paper" page) ─────────────────────────────────────── */
+.cn-reader {
+    background: var(--cn-paper);
+    color: var(--cn-ink);
+    border: 1px solid var(--cn-border);
+    border-radius: 1rem;
+    box-shadow: 0 .25rem .75rem rgba(61, 50, 41, .08);
+    padding: 2rem 1.5rem;
+    font-family: Georgia, 'Noto Serif', 'Noto Serif KR', serif;
+    font-size: 1.08rem;
+    line-height: 1.9;
+}
+@media (min-width: 768px) {
+    .cn-reader { padding: 2.5rem 3rem; }
+}
+.cn-reader p { margin-bottom: 1.1rem; }
+
+/* Highlighted vocabulary — readable with zero JS. */
+.cn-word {
+    background: var(--cn-hl);
+    border-bottom: 2px dotted var(--cn-accent);
+    border-radius: .2rem;
+    padding: 0 .15rem;
+}
+.cn-ready .cn-word { cursor: pointer; }
+.cn-ready .cn-word.cn-open {
+    background: var(--cn-accent);
+    color: #fff;
+}
+
+/* Translation popover (created by corner.js). */
+.cn-pop {
+    position: absolute;
+    z-index: 1080;
+    max-width: 16rem;
+    background: var(--cn-ink);
+    color: var(--cn-paper);
+    font-family: var(--bs-body-font-family, sans-serif);
+    font-size: .9rem;
+    line-height: 1.4;
+    padding: .4rem .7rem;
+    border-radius: .5rem;
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .25);
+    pointer-events: none;
+}
+.cn-pop::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--cn-ink);
+}
+
+/* Finish bar */
+.cn-finish {
+    background: var(--cn-paper);
+    border: 1px dashed var(--cn-border);
+    border-radius: 1rem;
+}
+
+/* ── Dark mode ─────────────────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --cn-paper:  #1c1917;
+        --cn-ink:    #e7e5e4;
+        --cn-accent: #f59e0b;
+        --cn-hl:     #78350f;
+        --cn-border: #44403c;
+    }
+    .cn-card:hover,
+    .cn-banner:hover { box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .5) !important; }
+    .cn-word { color: var(--cn-ink); }
+    .cn-pop {
+        background: var(--cn-hl);
+        color: var(--cn-ink);
+    }
+    .cn-pop::after { border-top-color: var(--cn-hl); }
+}

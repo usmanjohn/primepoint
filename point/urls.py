@@ -31,5 +31,6 @@ urlpatterns = [
     path('games/', include('games.urls')),
     path('exam/', include('exam.urls')),
     path('examprep/', include('examprep.urls')),
+    path('corner/', include('corner.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

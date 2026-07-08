@@ -1,0 +1,26 @@
+{% load i18n %}
+<a href="{% url 'corner_template_detail' t.pk %}"
+   class="card cn-card h-100 text-decoration-none border-0 shadow-sm">
+    {% if t.preview %}
+    <img src="{{ t.preview.url }}" class="card-img-top cn-cover" alt="{{ t.title }}">
+    {% else %}
+    <div class="cn-cover cn-cover-placeholder d-flex align-items-center justify-content-center">
+        <i class="bi bi-file-earmark-pdf display-4"></i>
+    </div>
+    {% endif %}
+    <div class="card-body d-flex flex-column">
+        <h3 class="h6 mb-1">
+            {{ t.title }}
+            {% if not t.is_published %}<span class="badge text-bg-warning ms-1">{% trans "Draft" %}</span>{% endif %}
+        </h3>
+        {% if t.description %}<p class="text-secondary small mb-3">{{ t.description }}</p>{% endif %}
+        <div class="mt-auto d-flex flex-wrap gap-2">
+            <span class="badge rounded-pill text-bg-light">
+                <i class="bi {{ t.subject.icon }} me-1"></i>{{ t.subject.name }}
+            </span>
+            <span class="badge rounded-pill text-bg-light">
+                <i class="bi bi-download me-1"></i>{{ t.downloads }}
+            </span>
+        </div>
+    </div>
+</a>

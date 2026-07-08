@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Prime Point\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-07 14:06+0000\n"
+"POT-Creation-Date: 2026-07-08 11:41+0000\n"
 "PO-Revision-Date: 2026-04-29 15:20+0000\n"
 "Last-Translator: Prime Point\n"
 "Language-Team: Uzbek\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #: analytics/templates/analytics/home.html:4
 #: analytics/templates/analytics/home.html:5
-#: prime/templates/prime/about.html:589 prime/templates/prime/index.html:516
+#: prime/templates/prime/about.html:589 prime/templates/prime/index.html:530
 #: templates/base.html:81
 msgid "Analytics"
 msgstr "Tahlil"
@@ -33,16 +33,16 @@ msgstr "Platforma statistikasi"
 #: masters/templates/masters/master_list.html:185
 #: masters/templates/masters/my_students.html:198
 #: people/templates/people/profile.html:257
-#: prime/templates/prime/index.html:322 prime/templates/prime/index.html:461
-#: prime/templates/prime/index.html:597
+#: prime/templates/prime/index.html:322 prime/templates/prime/index.html:475
+#: prime/templates/prime/index.html:611
 msgid "Students"
 msgstr "O'quvchilar"
 
 #: analytics/templates/analytics/home.html:138
 #: masters/templates/masters/master_list.html:4
 #: masters/templates/masters/master_list.html:5
-#: prime/templates/prime/index.html:326 prime/templates/prime/index.html:447
-#: prime/templates/prime/index.html:450
+#: prime/templates/prime/index.html:326 prime/templates/prime/index.html:461
+#: prime/templates/prime/index.html:464
 #: prime/templates/prime/search_results.html:41 templates/base.html:87
 msgid "Masters"
 msgstr "Ustodlar"
@@ -55,14 +55,14 @@ msgstr "Ustodlar"
 #: people/templates/people/profile.html:271
 #: people/templates/people/profile.html:395
 #: prime/templates/prime/about.html:494 prime/templates/prime/index.html:353
-#: prime/templates/prime/index.html:601
+#: prime/templates/prime/index.html:615
 msgid "Practices"
 msgstr "Mashqlar"
 
 #: analytics/templates/analytics/home.html:148
 #: masters/templates/masters/master_detail.html:404
 #: masters/templates/masters/my_students.html:245
-#: prime/templates/prime/index.html:551
+#: prime/templates/prime/index.html:565
 msgid "Avg Score"
 msgstr "O'rt. ball"
 
@@ -85,7 +85,7 @@ msgstr "Muhokamalar"
 #: classroom/templates/classroom/lesson_detail.html:270
 #: masters/templates/masters/master_detail.html:540
 #: prime/templates/prime/index.html:370 templates/base.html:119
-#: templates/base.html:322 tutorial/templates/tutorial/playlist_detail.html:15
+#: templates/base.html:328 tutorial/templates/tutorial/playlist_detail.html:15
 #: tutorial/templates/tutorial/playlist_list.html:90
 #: tutorial/templates/tutorial/tutorial_detail.html:37
 #: tutorial/templates/tutorial/tutorial_list.html:5
@@ -156,6 +156,7 @@ msgstr "Ha, o'chirish"
 #: classroom/templates/classroom/lesson_confirm_delete.html:30
 #: classroom/templates/classroom/lesson_form.html:181
 #: classroom/templates/classroom/lesson_form.html:183
+#: corner/templates/corner/story_edit.html:68
 #: exam/templates/exam/take_section.html:466
 #: examprep/templates/examprep/lesson_edit.html:112
 #: tutorial/templates/tutorial/playlist_confirm_delete.html:24
@@ -191,7 +192,7 @@ msgstr "A'zo"
 #: classroom/templates/classroom/discussion_list.html:4
 #: classroom/templates/classroom/discussion_list.html:78
 #: classroom/templates/classroom/discussion_thread.html:99 people/models.py:20
-#: prime/templates/prime/index.html:492 templates/base.html:113
+#: prime/templates/prime/index.html:506 templates/base.html:113
 msgid "Discussion"
 msgstr "Muhokama"
 
@@ -233,12 +234,19 @@ msgstr "Davom etmoqda"
 
 #: classroom/templates/classroom/classroom_detail.html:151
 #: classroom/templates/classroom/lesson_detail.html:168
+#: corner/templates/corner/story_detail.html:71
 #: prime/templates/prime/help.html:662
 msgid "Finished"
 msgstr "Tugallangan"
 
 #: classroom/templates/classroom/classroom_detail.html:155
 #: classroom/templates/classroom/lesson_detail.html:175
+#: corner/templates/corner/_template_card.html:14
+#: corner/templates/corner/collection_detail.html:20
+#: corner/templates/corner/collection_detail.html:45
+#: corner/templates/corner/story_detail.html:23
+#: corner/templates/corner/subject_detail.html:40
+#: corner/templates/corner/template_detail.html:27
 #: examprep/templates/examprep/_playlist.html:12
 #: games/templates/games/mathsquare_list.html:51
 #: masters/templates/masters/master_detail.html:461
@@ -264,7 +272,7 @@ msgstr "Hali nashr etilgan mashqlar yo'q."
 #: games/templates/games/oddoneout_manage.html:4
 #: people/templates/people/profile.html:397
 #: people/templates/people/profile.html:417
-#: prime/templates/prime/index.html:502
+#: prime/templates/prime/index.html:516
 msgid "Manage"
 msgstr "Boshqarish"
 
@@ -292,17 +300,18 @@ msgid "Back"
 msgstr ""
 
 #: classroom/templates/classroom/classroom_form.html:141
+#: corner/templates/corner/story_edit.html:65
 #: examprep/templates/examprep/lesson_edit.html:109
 #: games/templates/games/mathsquare_edit.html:68
 msgid "Save"
-msgstr ""
+msgstr "Saqlash"
 
 #: classroom/templates/classroom/classroom_list.html:3
 #: classroom/templates/classroom/classroom_list.html:4
 #: classroom/templates/classroom/classroom_list.html:183
 #: classroom/templates/classroom/discussion_thread.html:95
 #: classroom/templates/classroom/lesson_detail.html:145
-#: prime/templates/prime/index.html:478 templates/base.html:125
+#: prime/templates/prime/index.html:492 templates/base.html:125
 #, fuzzy
 #| msgid "Classroom"
 msgid "Classrooms"
@@ -469,6 +478,7 @@ msgstr "Muhokama"
 #: classroom/templates/classroom/lesson_detail.html:251
 #: classroom/templates/classroom/lesson_detail.html:339
 #: classroom/templates/classroom/lesson_form.html:100
+#: corner/templates/corner/story_edit.html:33
 #: examprep/templates/examprep/lesson_edit.html:32
 #: masters/templates/masters/certificate.html:360
 #: tutorial/templates/tutorial/playlist_form.html:39
@@ -586,6 +596,9 @@ msgid "Lesson"
 msgstr "Dars"
 
 #: classroom/templates/classroom/lesson_detail.html:184
+#: corner/templates/corner/story_detail.html:28
+#: corner/templates/corner/story_edit.html:5
+#: corner/templates/corner/story_edit.html:13
 #: examprep/templates/examprep/lesson_detail.html:37
 #: examprep/templates/examprep/lesson_edit.html:5
 #: examprep/templates/examprep/lesson_edit.html:13
@@ -611,6 +624,7 @@ msgid "Notes"
 msgstr ""
 
 #: classroom/templates/classroom/lesson_detail.html:225
+#: corner/templates/corner/template_detail.html:40
 #, fuzzy
 #| msgid "Download PDF"
 msgid "Download"
@@ -683,7 +697,7 @@ msgstr "Uy vazifasi yaratish"
 #: classroom/templates/classroom/lesson_detail.html:343 people/models.py:16
 #: practice/templates/practice/practice_list.html:451
 #: prime/templates/prime/index.html:356 templates/base.html:91
-#: templates/base.html:95 templates/base.html:328
+#: templates/base.html:95 templates/base.html:334
 #: tutorial/templates/tutorial/tutorial_detail.html:302
 msgid "Practice"
 msgstr "Mashqlar"
@@ -736,10 +750,11 @@ msgid "optional"
 msgstr "ixtiyoriy"
 
 #: classroom/templates/classroom/lesson_form.html:118
+#: corner/templates/corner/story_edit.html:42
 #: examprep/templates/examprep/lesson_edit.html:41
 #: examprep/templates/examprep/lesson_edit.html:64
 msgid "Order"
-msgstr ""
+msgstr "Tartib"
 
 #: classroom/templates/classroom/lesson_form.html:122
 #: homework/templates/homework/homework_detail.html:124
@@ -751,6 +766,7 @@ msgid "Status"
 msgstr "Holat"
 
 #: classroom/templates/classroom/lesson_form.html:128
+#: corner/templates/corner/story_edit.html:47
 #: examprep/templates/examprep/lesson_edit.html:46
 #: tutorial/templates/tutorial/playlist_form.html:115
 #: tutorial/templates/tutorial/tutorial_form.html:153
@@ -798,6 +814,174 @@ msgstr "Hali nashr etilgan mashqlar yo'q."
 #| msgid "Lesson"
 msgid "Save Lesson"
 msgstr "Dars"
+
+#: corner/templates/corner/collection_detail.html:5
+#: corner/templates/corner/collection_detail.html:11
+#: corner/templates/corner/home.html:4 corner/templates/corner/home.html:5
+#: corner/templates/corner/home.html:10
+#: corner/templates/corner/story_detail.html:5
+#: corner/templates/corner/story_detail.html:11
+#: corner/templates/corner/story_edit.html:10
+#: corner/templates/corner/subject_detail.html:5
+#: corner/templates/corner/subject_detail.html:11
+#: corner/templates/corner/template_detail.html:5
+#: corner/templates/corner/template_detail.html:11
+#: corner/templates/corner/template_list.html:5
+#: corner/templates/corner/template_list.html:11
+#: prime/templates/prime/index.html:398 templates/base.html:149
+msgid "Corner"
+msgstr "Burchak"
+
+#: corner/templates/corner/collection_detail.html:56
+msgid "No stories in this collection yet."
+msgstr "Bu to'plamda hali hikoyalar yo'q."
+
+#: corner/templates/corner/home.html:12
+msgid ""
+"A cozy shelf of stories, templates and resources — pick a subject and dive "
+"in."
+msgstr "Hikoyalar, shablonlar va resurslar javoni — fanni tanlang va o'qishni boshlang."
+
+#: corner/templates/corner/home.html:20
+#: corner/templates/corner/subject_detail.html:66
+#: corner/templates/corner/template_detail.html:12
+#: corner/templates/corner/template_list.html:4
+#: corner/templates/corner/template_list.html:5
+#: corner/templates/corner/template_list.html:12
+#: corner/templates/corner/template_list.html:17
+msgid "Writing templates"
+msgstr "Yozish shablonlari"
+
+#: corner/templates/corner/home.html:22
+#, python-format
+msgid "%(counter)s printable template ready to download"
+msgid_plural "%(counter)s printable templates ready to download"
+msgstr[0] "%(counter)s ta chop etiladigan shablon yuklab olishga tayyor"
+
+#: corner/templates/corner/home.html:50
+#: corner/templates/corner/subject_detail.html:48
+#, python-format
+msgid "%(counter)s story"
+msgid_plural "%(counter)s stories"
+msgstr[0] "%(counter)s ta hikoya"
+
+#: corner/templates/corner/home.html:55
+#, python-format
+msgid "%(counter)s template"
+msgid_plural "%(counter)s templates"
+msgstr[0] "%(counter)s ta shablon"
+
+#: corner/templates/corner/home.html:67
+msgid "The Corner is still being furnished. Check back soon."
+msgstr "Burchak hali jihozlanmoqda. Tez orada qaytib keling!"
+
+#: corner/templates/corner/story_detail.html:35
+#, python-format
+msgid "Story %(current_no)s of %(total_no)s"
+msgstr "%(current_no)s-hikoya, jami %(total_no)s ta"
+
+#: corner/templates/corner/story_detail.html:36
+msgid "finished"
+msgstr "tugallangan"
+
+#: corner/templates/corner/story_detail.html:45
+msgid "Highlighted words are key vocabulary — tap one to see its translation."
+msgstr "Belgilangan so'zlar — asosiy lug'at. Tarjimasini ko'rish uchun so'z ustiga bosing."
+
+#: corner/templates/corner/story_detail.html:55
+msgid "Vocabulary from this story"
+msgstr "Bu hikoyadagi lug'at"
+
+#: corner/templates/corner/story_detail.html:56
+msgid "Tap a card to flip it."
+msgstr "Kartochkani ag'darish uchun ustiga bosing."
+
+#: corner/templates/corner/story_detail.html:78
+#, python-format
+msgid "Mark as finished (+%(points)s points)"
+msgstr "Tugatdim deb belgilash (+%(points)s ball)"
+
+#: corner/templates/corner/story_detail.html:83
+msgid "Log in to track your reading"
+msgstr "O'qish jarayonini kuzatish uchun hisobingizga kiring"
+
+#: corner/templates/corner/story_detail.html:92
+#: examprep/templates/examprep/lesson_detail.html:79
+msgid "Previous"
+msgstr "Oldingi"
+
+#: corner/templates/corner/story_detail.html:99
+#: examprep/templates/examprep/lesson_detail.html:86
+#: games/templates/games/oddoneout_play.html:265
+#: games/templates/games/oddoneout_play.html:372
+#: games/templates/games/wordorder_play.html:186
+#: games/templates/games/wordorder_play.html:191
+#: games/templates/games/wordorder_play.html:291
+#: tutorial/templates/tutorial/tutorial_detail.html:285
+msgid "Next"
+msgstr "Keyingi"
+
+#: corner/templates/corner/story_detail.html:103
+msgid "Back to collection"
+msgstr "To'plamga qaytish"
+
+#: corner/templates/corner/story_edit.html:4
+#: corner/templates/corner/story_edit.html:20
+msgid "Edit story"
+msgstr "Hikoyani tahrirlash"
+
+#: corner/templates/corner/story_edit.html:22
+msgid "Edit the story HTML below. Mark vocabulary as"
+msgstr "Quyida hikoyaning HTML matnini tahrirlang. Lug'at so'zlarini shunday belgilang:"
+
+#: corner/templates/corner/story_edit.html:24
+msgid ""
+"the word list and flashcards are rebuilt from those spans when you save."
+msgstr "saqlaganingizda so'zlar ro'yxati va kartochkalar shu belgilardan qayta tuziladi."
+
+#: corner/templates/corner/story_edit.html:37
+#: examprep/templates/examprep/lesson_edit.html:36
+msgid "Summary (card blurb)"
+msgstr "Qisqacha tavsif (kartochka matni)"
+
+#: corner/templates/corner/story_edit.html:55
+msgid "Story body (HTML)"
+msgstr "Hikoya matni (HTML)"
+
+#: corner/templates/corner/subject_detail.html:28
+msgid "Reading collections"
+msgstr "O'qish to'plamlari"
+
+#: corner/templates/corner/subject_detail.html:79
+msgid "Nothing here yet. Check back soon."
+msgstr "Bu yerda hali hech narsa yo'q. Tez orada tekshiring!"
+
+#: corner/templates/corner/template_detail.html:33
+#, python-format
+msgid "%(counter)s download"
+msgid_plural "%(counter)s downloads"
+msgstr[0] "%(counter)s marta yuklab olingan"
+
+#: corner/templates/corner/template_list.html:19
+msgid "Printable templates with space to write — download, print and practise."
+msgstr "Yozish uchun joy qoldirilgan chop etiladigan shablonlar — yuklab oling, chop eting va mashq qiling."
+
+#: corner/templates/corner/template_list.html:40
+msgid "No templates uploaded yet. Check back soon."
+msgstr "Hali shablonlar yuklanmagan. Tez orada tekshiring!"
+
+#: corner/views.py:157
+#, python-format
+msgid "Story finished! +%(points)d points"
+msgstr "Hikoya tugallandi! +%(points)d ball"
+
+#: corner/views.py:159
+msgid "Story finished!"
+msgstr "Hikoya tugallandi!"
+
+#: corner/views.py:161
+msgid "You already finished this story."
+msgstr "Siz bu hikoyani allaqachon tugatgansiz."
 
 #: exam/templates/exam/exam_detail.html:49
 #: exam/templates/exam/exam_result.html:86
@@ -963,8 +1147,8 @@ msgid "minutes"
 msgstr ""
 
 #: exam/templates/exam/exam_list.html:4 exam/templates/exam/exam_list.html:5
-#: prime/templates/prime/index.html:395 prime/templates/prime/index.html:398
-#: templates/base.html:137 templates/base.html:325
+#: prime/templates/prime/index.html:409 prime/templates/prime/index.html:412
+#: templates/base.html:137 templates/base.html:331
 msgid "Exams"
 msgstr ""
 
@@ -1257,20 +1441,6 @@ msgstr "Ball"
 msgid "Check answers"
 msgstr "Javoblarni tekshirish"
 
-#: examprep/templates/examprep/lesson_detail.html:79
-msgid "Previous"
-msgstr "Oldingi"
-
-#: examprep/templates/examprep/lesson_detail.html:86
-#: games/templates/games/oddoneout_play.html:265
-#: games/templates/games/oddoneout_play.html:372
-#: games/templates/games/wordorder_play.html:186
-#: games/templates/games/wordorder_play.html:191
-#: games/templates/games/wordorder_play.html:291
-#: tutorial/templates/tutorial/tutorial_detail.html:285
-msgid "Next"
-msgstr "Keyingi"
-
 #: examprep/templates/examprep/lesson_detail.html:90
 msgid "Finish"
 msgstr "Yakunlash"
@@ -1286,10 +1456,6 @@ msgstr "Sinf xonasi"
 msgid ""
 "Edit the text below (HTML is allowed) and save. To remove a block, tick "
 "“Delete”."
-msgstr ""
-
-#: examprep/templates/examprep/lesson_edit.html:36
-msgid "Summary (card blurb)"
 msgstr ""
 
 #: examprep/templates/examprep/lesson_edit.html:53
@@ -1432,8 +1598,8 @@ msgstr ""
 #: games/templates/games/target_number.html:78
 #: games/templates/games/wordorder_list.html:13
 #: games/templates/games/wordsearch_list.html:13
-#: prime/templates/prime/index.html:334 prime/templates/prime/index.html:409
-#: prime/templates/prime/index.html:412 templates/base.html:131
+#: prime/templates/prime/index.html:334 prime/templates/prime/index.html:423
+#: prime/templates/prime/index.html:426 templates/base.html:131
 msgid "Games"
 msgstr "O'yinlar"
 
@@ -1679,7 +1845,7 @@ msgstr "Izohni o'qing va koreys bo'g'inlarini to'ldiring."
 
 #: games/templates/games/english_crossword_list.html:47
 #: games/templates/games/games_home.html:66
-#: games/templates/games/games_home.html:84 point/settings.py:216
+#: games/templates/games/games_home.html:84 point/settings.py:217
 msgid "English"
 msgstr "Inglizcha"
 
@@ -2062,7 +2228,7 @@ msgstr ""
 #: games/templates/games/target_number.html:183
 #: games/templates/games/target_number.html:428
 #: people/templates/people/profile.html:301
-#: prime/templates/prime/index.html:547
+#: prime/templates/prime/index.html:561
 msgid "Attempts"
 msgstr "Urinishlar"
 
@@ -2862,7 +3028,7 @@ msgstr "Sertifikat"
 
 #: masters/templates/masters/master_detail.html:5
 #: people/templates/people/profile.html:121
-#: prime/templates/prime/index.html:592
+#: prime/templates/prime/index.html:606
 msgid "Master"
 msgstr "Ustod"
 
@@ -2889,7 +3055,7 @@ msgstr "O'chirmoqchimisiz? Bu amalni qaytarib bo'lmaydi."
 #: masters/templates/masters/master_detail.html:399
 #: masters/templates/masters/my_students.html:213
 #: people/templates/people/profile.html:264
-#: prime/templates/prime/index.html:605
+#: prime/templates/prime/index.html:619
 msgid "Avg Rating"
 msgstr "O'rt. reyting"
 
@@ -2899,7 +3065,7 @@ msgstr "Yil tajriba"
 
 #: masters/templates/masters/master_detail.html:426
 #: people/templates/people/profile.html:147 prime/templates/prime/about.html:4
-#: prime/templates/prime/about.html:5 templates/base.html:151
+#: prime/templates/prime/about.html:5 templates/base.html:157
 msgid "About"
 msgstr "Haqida"
 
@@ -3016,7 +3182,7 @@ msgstr "O'chirish"
 
 #: masters/templates/masters/master_detail.html:701
 #: people/templates/people/profile.html:217
-#: prime/templates/prime/index.html:613
+#: prime/templates/prime/index.html:627
 msgid "Manage Practices"
 msgstr "Mashqlarni boshqarish"
 
@@ -3036,7 +3202,7 @@ msgid "New Tutorial"
 msgstr "Yangi darslik"
 
 #: masters/templates/masters/master_list.html:147
-#: prime/templates/prime/index.html:435
+#: prime/templates/prime/index.html:449
 msgid "Community"
 msgstr "Jamiyat"
 
@@ -3176,7 +3342,7 @@ msgstr "Talaba profili"
 
 #: masters/templates/masters/student_detail.html:208
 #: people/templates/people/profile.html:4
-#: people/templates/people/profile.html:5 templates/base.html:332
+#: people/templates/people/profile.html:5 templates/base.html:338
 msgid "Profile"
 msgstr "Profil"
 
@@ -3338,8 +3504,8 @@ msgid ""
 "the student's profile."
 msgstr ""
 
-#: people/models.py:15 prime/templates/prime/index.html:426
-#: prime/templates/prime/index.html:563 templates/base.html:107
+#: people/models.py:15 prime/templates/prime/index.html:440
+#: prime/templates/prime/index.html:577 templates/base.html:107
 msgid "Homework"
 msgstr "Uy vazifasi"
 
@@ -3405,8 +3571,8 @@ msgstr "%(master)s %(classroom)s sinfxonasida yangi muhokama boshladi."
 msgid "Log In — Powerty"
 msgstr "Kirish — Powerty"
 
-#: people/templates/people/login.html:5 templates/base.html:292
-#: templates/base.html:336
+#: people/templates/people/login.html:5 templates/base.html:298
+#: templates/base.html:342
 msgid "Login"
 msgstr "Kirish"
 
@@ -3423,7 +3589,7 @@ msgid "Forgot password?"
 msgstr "Parolni unutdingizmi?"
 
 #: people/templates/people/login.html:52 prime/templates/prime/index.html:314
-#: templates/base.html:290
+#: templates/base.html:296
 msgid "Log in"
 msgstr "Kirish"
 
@@ -3436,7 +3602,7 @@ msgid "Create one now"
 msgstr "Hozir ro'yxatdan o'ting"
 
 #: people/templates/people/notifications.html:4
-#: people/templates/people/notifications.html:66 templates/base.html:237
+#: people/templates/people/notifications.html:66 templates/base.html:243
 msgid "Notifications"
 msgstr "Bildirishnomalar"
 
@@ -3510,7 +3676,7 @@ msgid "Purpose"
 msgstr "Maqsad"
 
 #: people/templates/people/profile.html:317
-#: prime/templates/prime/index.html:623
+#: prime/templates/prime/index.html:637
 msgid "No role assigned yet"
 msgstr "Hali rol tayinlanmagan"
 
@@ -3520,7 +3686,7 @@ msgstr ""
 "Xususiyatlarni ochish uchun Ustod yoki Talaba sifatida ro'yxatdan o'ting."
 
 #: people/templates/people/profile.html:320
-#: prime/templates/prime/index.html:626
+#: prime/templates/prime/index.html:640
 msgid "Apply as Master"
 msgstr "Ustod sifatida ariza"
 
@@ -3645,12 +3811,12 @@ msgid "No completed attempts yet."
 msgstr "Hali tugatilgan urinishlar yo'q."
 
 #: people/templates/people/profile.html:620
-#: prime/templates/prime/index.html:297 prime/templates/prime/index.html:580
+#: prime/templates/prime/index.html:297 prime/templates/prime/index.html:594
 msgid "Browse Practices"
 msgstr "Mashqlarni ko'rish"
 
 #: people/templates/people/profile.html:660
-#: prime/templates/prime/index.html:583
+#: prime/templates/prime/index.html:597
 msgid "My Homework"
 msgstr "Mening uy vazifalarim"
 
@@ -3662,7 +3828,7 @@ msgstr "Barchasini ko'rish"
 msgid "Create Account — Powerty"
 msgstr "Ro'yxatdan o'tish — Powerty"
 
-#: people/templates/people/register.html:5 templates/base.html:291
+#: people/templates/people/register.html:5 templates/base.html:297
 msgid "Register"
 msgstr "Ro'yxat"
 
@@ -3702,7 +3868,7 @@ msgstr "Hisobingiz bormi?"
 msgid "Log in instead"
 msgstr "Kirish"
 
-#: point/settings.py:217
+#: point/settings.py:218
 msgid "Uzbek"
 msgstr "O'zbekcha"
 
@@ -3852,8 +4018,8 @@ msgid "Any Master"
 msgstr "Istalgan ustoz"
 
 #: practice/templates/practice/practice_list.html:518
-#: prime/templates/prime/search_results.html:26 templates/base.html:216
-#: templates/base.html:220
+#: prime/templates/prime/search_results.html:26 templates/base.html:222
+#: templates/base.html:226
 msgid "Search"
 msgstr "Qidirish"
 
@@ -4214,7 +4380,7 @@ msgid "Go to Practices"
 msgstr "Mashqlarga o'tish"
 
 #: prime/templates/prime/about.html:784 prime/templates/prime/index.html:303
-#: prime/templates/prime/index.html:577 templates/base.html:268
+#: prime/templates/prime/index.html:591 templates/base.html:274
 msgid "My Profile"
 msgstr "Mening profilim"
 
@@ -4226,7 +4392,7 @@ msgstr "Bepul qo'shiling"
 msgid "Sign In"
 msgstr "Kirish"
 
-#: prime/templates/prime/help.html:4 templates/base.html:156
+#: prime/templates/prime/help.html:4 templates/base.html:162
 msgid "Help"
 msgstr "Yordam"
 
@@ -5079,8 +5245,8 @@ msgid ""
 msgstr ""
 "Hammasi bir joyda bo‘lgan ta’lim platformasi — mashqlar, darsliklar, "
 "imtihonlar, o‘yinlar va jonli sinfxonalar. Har kuni yangi ko‘nikmalarni "
-"egallayotgan o‘quvchilarga qo‘shiling."
-"Har kuni yangi ko'nikmalar o'rganayotgan o'quvchilar jamoasiga qo'shiling."
+"egallayotgan o‘quvchilarga qo‘shiling.Har kuni yangi ko'nikmalar "
+"o'rganayotgan o'quvchilar jamoasiga qo'shiling."
 
 #: prime/templates/prime/index.html:311
 msgid "Get Started — It's Free"
@@ -5114,91 +5280,99 @@ msgstr "Matn, rasm va formulalar bilan to'liq qo'llanmalar."
 msgid "Skill-by-skill preparation for TOPIK, IELTS and more."
 msgstr "TOPIK, IELTS va boshqa imtihonlarga ko‘nikma bo‘yicha tayyorgarlik."
 
+#: prime/templates/prime/index.html:395
+msgid "Stories"
+msgstr "Hikoyalar"
+
 #: prime/templates/prime/index.html:399
+msgid "Stories to read, vocabulary to learn and templates to print."
+msgstr "O'qish uchun hikoyalar, o'rganish uchun lug'at va chop etish uchun shablonlar."
+
+#: prime/templates/prime/index.html:413
 msgid "Full timed exams — Listening, Reading and Writing."
 msgstr ""
 
-#: prime/templates/prime/index.html:413
+#: prime/templates/prime/index.html:427
 msgid "Crosswords, puzzles and brain games — learn by playing."
 msgstr "Krossvordlar, boshqotirmalar va aqliy o‘yinlar — o‘ynab o‘rganing."
 
-#: prime/templates/prime/index.html:423
+#: prime/templates/prime/index.html:437
 msgid "Tasks"
 msgstr "Vazifalar"
 
-#: prime/templates/prime/index.html:427
+#: prime/templates/prime/index.html:441
 msgid "Submitted and pending assignments."
 msgstr "Topshirilgan va bajarilishi kerak bo'lgan ishlar."
 
-#: prime/templates/prime/index.html:436
+#: prime/templates/prime/index.html:450
 msgid "People & classrooms"
 msgstr "Odamlar va sinfxonalar"
 
-#: prime/templates/prime/index.html:451
+#: prime/templates/prime/index.html:465
 msgid "Learn from experienced instructors."
 msgstr "Tajribali o'qituvchilar bilan ishlang."
 
-#: prime/templates/prime/index.html:464 templates/base.html:101
+#: prime/templates/prime/index.html:478 templates/base.html:101
 msgid "Pandas"
 msgstr "Pandalar"
 
-#: prime/templates/prime/index.html:465
+#: prime/templates/prime/index.html:479
 msgid "Browse student profiles and progress."
 msgstr "O'quvchi profillari va natijalarini ko'ring."
 
-#: prime/templates/prime/index.html:475
+#: prime/templates/prime/index.html:489
 msgid "Rooms"
 msgstr ""
 
-#: prime/templates/prime/index.html:479
+#: prime/templates/prime/index.html:493
 msgid "Private rooms where masters teach enrolled students."
 msgstr ""
 
-#: prime/templates/prime/index.html:489
+#: prime/templates/prime/index.html:503
 msgid "Threads"
 msgstr "Mavzular"
 
-#: prime/templates/prime/index.html:493
+#: prime/templates/prime/index.html:507
 msgid "Ask questions and share ideas."
 msgstr "Savollar va fikr almashish maydoni."
 
-#: prime/templates/prime/index.html:503
+#: prime/templates/prime/index.html:517
 msgid "Administration"
 msgstr "Boshqaruv"
 
-#: prime/templates/prime/index.html:513
+#: prime/templates/prime/index.html:527
 msgid "Users"
 msgstr "Foydalanuvchilar"
 
-#: prime/templates/prime/index.html:517
+#: prime/templates/prime/index.html:531
 msgid "Platform insights, charts, and performance data."
 msgstr "Platforma tahlillari, grafiklar va ko'rsatkichlar."
 
-#: prime/templates/prime/index.html:526
+#: prime/templates/prime/index.html:540
 msgid "My Stats"
 msgstr "Mening statistikam"
 
-#: prime/templates/prime/index.html:527
+#: prime/templates/prime/index.html:541
 msgid "Your progress"
 msgstr "Sizning natijalaringiz"
 
-#: prime/templates/prime/index.html:555
+#: prime/templates/prime/index.html:569
 msgid "Best"
 msgstr "Eng yuqori"
 
-#: prime/templates/prime/index.html:559
+#: prime/templates/prime/index.html:573
 msgid "Pass Rate"
 msgstr "O'tish darajasi"
 
-#: prime/templates/prime/index.html:568
+#: prime/templates/prime/index.html:582
 msgid "Homework completion"
 msgstr "Uy vazifalarining bajarilishi"
 
-#: prime/templates/prime/index.html:610
+#: prime/templates/prime/index.html:624
 msgid "My Master Page"
 msgstr "Ustod sahifam"
 
-#: prime/templates/prime/index.html:624
+#: prime/templates/prime/index.html:638
 msgid "Become a master or get enrolled as a student to see your stats here."
 msgstr ""
 "Statistikangizni ko'rish uchun ustod bo'ling yoki talaba sifatida ro'yxatdan "
@@ -5254,48 +5428,48 @@ msgstr "Asosiy"
 msgid "Index"
 msgstr "Bosh sahifa"
 
-#: templates/base.html:147
+#: templates/base.html:153
 msgid "Support"
 msgstr "Yordam"
 
-#: templates/base.html:180
+#: templates/base.html:186
 msgid "Admin"
 msgstr "Admin"
 
-#: templates/base.html:180
+#: templates/base.html:186
 msgid "Member"
 msgstr "A'zo"
 
-#: templates/base.html:183
+#: templates/base.html:189
 msgid "Online"
 msgstr "Onlayn"
 
-#: templates/base.html:189
+#: templates/base.html:195
 msgid "Guest"
 msgstr "Mehmon"
 
-#: templates/base.html:203
+#: templates/base.html:209
 msgid "Open sidebar"
 msgstr "Yon panelni ochish"
 
-#: templates/base.html:216
+#: templates/base.html:222
 msgid "Search..."
 msgstr "Qidirish..."
 
-#: templates/base.html:251
+#: templates/base.html:257
 msgid "User menu"
 msgstr "Foydalanuvchi menyusi"
 
-#: templates/base.html:273 tutorial/templates/tutorial/playlist_form.html:86
+#: templates/base.html:279 tutorial/templates/tutorial/playlist_form.html:86
 #: tutorial/templates/tutorial/tutorial_form.html:110
 msgid "Settings"
 msgstr "Sozlamalar"
 
-#: templates/base.html:281
+#: templates/base.html:287
 msgid "Sign out"
 msgstr "Chiqish"
 
-#: templates/base.html:319
+#: templates/base.html:325
 msgid "Home"
 msgstr "Asosiy"
 

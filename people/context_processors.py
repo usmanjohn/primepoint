@@ -8,7 +8,7 @@ def notification_context(request):
 
 def nav_counts(request):
     from django.core.cache import cache
-    counts = cache.get('nav_counts_v2')
+    counts = cache.get('nav_counts_v3')
     if counts is None:
         from masters.models import Master
         from practice.models import Practice
@@ -19,6 +19,7 @@ def nav_counts(request):
         from homework.models import Homework
         from exam.models import Exam
         from examprep.models import Lesson
+        from corner.models import Story
         from games.views import GAME_COUNT
         counts = {
             'nav_masters_count': Master.objects.count(),
@@ -31,6 +32,11 @@ def nav_counts(request):
             'nav_exams_count': Exam.objects.filter(is_published=True).count(),
             'nav_examprep_count': Lesson.objects.filter(is_published=True, track__is_published=True).count(),
             'nav_games_count': GAME_COUNT,
+            'nav_corner_count': Story.objects.filter(
+                is_published=True,
+                collection__is_published=True,
+                collection__subject__is_published=True,
+            ).count(),
         }
-        cache.set('nav_counts_v2', counts, 300)
+        cache.set('nav_counts_v3', counts, 300)
     return counts

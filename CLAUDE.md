@@ -49,3 +49,22 @@ reading/writing/listening prep. When the user asks (e.g. "make the next 5 TOPIK 
    (add `--republish` to overwrite existing ones — it rebuilds each lesson's blocks).
 Other exams/skills: add a new `toc_<exam>_<skill>.txt` with its own TRACK/SKILL; same workflow.
 Note: `exam` (the timed, scored test simulator) is separate — keep mock-test questions there.
+
+## Creating Corner stories (bulk)
+`corner` is the resource library at `/corner/` (`Subject` → `Collection` → `Story`, plus
+`WritingTemplate` files uploaded via admin). Story vocabulary is marked inline as
+`<span class="cn-word" data-tr="uzbekcha tarjima">한국어</span>` — tappable highlights and
+the end-of-story flashcards are auto-generated from those spans on save.
+When the user asks (e.g. "make the next 5 Keimyung stories"):
+1. Read `corner/management/commands/STYLE_GUIDE_CORNER.md` (how to write — section 6 holds
+   the user's own tips once they share them; their tips override the generic advice).
+2. Read the collection's table of contents, e.g. `corner/management/commands/toc_keimyung_korean.txt`
+   (header gives SUBJECT, COLLECTION, AUTHOR; body is the ordered story list).
+3. Find where to continue: query the DB for the highest existing `order` in that collection, e.g.
+   `Story.objects.filter(collection__title='Keimyung Korean Readings').order_by('-order').first()`.
+4. Write the next batch into `corner/management/commands/_stories_<collection>_<range>.py`
+   as `SUBJECT = {...}` + `COLLECTION = {...}` dicts + a `STORIES = [...]` list
+   (story text in the target language, translations/summaries in Uzbek per the style guide).
+5. Import: `python manage.py import_corner <that file> --author=<AUTHOR from toc>`
+   (add `--republish` to overwrite existing ones — it rebuilds each story's word list).
+Other collections: add a new `toc_<collection>.txt` with its own SUBJECT/COLLECTION; same workflow.

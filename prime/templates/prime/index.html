@@ -387,6 +387,20 @@
   </div>
 
   <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
+    <a href="{% url 'corner_home' %}" class="feat-card" style="--c:#d97706; --c-bg:rgba(217,119,6,0.12);">
+      <div class="feat-card-top">
+        <div class="feat-icon"><i class="bi bi-stars"></i></div>
+        <div class="feat-count">
+          <div class="feat-count-num">{{ stats.corner_stories }}</div>
+          <div class="feat-count-lbl">{% trans "Stories" %}</div>
+        </div>
+      </div>
+      <p class="feat-title">{% trans "Corner" %} <i class="bi bi-arrow-right feat-arrow"></i></p>
+      <p class="feat-desc">{% trans "Stories to read, vocabulary to learn and templates to print." %}</p>
+    </a>
+  </div>
+
+  <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
     <a href="{% url 'exam_list' %}" class="feat-card" style="--c:#6366f1; --c-bg:rgba(99,102,241,0.12);">
       <div class="feat-card-top">
         <div class="feat-icon"><i class="bi bi-journal-check"></i></div>

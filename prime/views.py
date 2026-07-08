@@ -16,6 +16,7 @@ from homework.models import Homework, HomeworkAssignment
 from classroom.models import Classroom
 from exam.models import Exam
 from examprep.models import Lesson
+from corner.models import Story
 from games.views import GAME_COUNT
 
 
@@ -25,7 +26,7 @@ def service_worker(request):
 
 
 def index(request):
-    stats = cache.get('index_stats_v2')
+    stats = cache.get('index_stats_v3')
     if stats is None:
         stats = {
             'masters': Master.objects.count(),
@@ -38,11 +39,17 @@ def index(request):
             'exams': Exam.objects.filter(is_published=True).count(),
             'examprep_lessons': Lesson.objects.filter(is_published=True, track__is_published=True).count(),
             'games': GAME_COUNT,
+            'corner_stories': Story.objects.filter(
+                is_published=True,
+                collection__is_published=True,
+                collection__subject__is_published=True,
+            ).count(),
         }
         stats['resources'] = (
-            stats['practices'] + stats['tutorials'] + stats['exams'] + stats['examprep_lessons']
+            stats['practices'] + stats['tutorials'] + stats['exams']
+            + stats['examprep_lessons'] + stats['corner_stories']
         )
-        cache.set('index_stats_v2', stats, 300)
+        cache.set('index_stats_v3', stats, 300)
 
     my_stats = None
     if request.user.is_authenticated:

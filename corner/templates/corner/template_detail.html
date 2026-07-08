@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+{% block nav_corner %}active{% endblock %}
+{% block page_name %}{{ template.title }}{% endblock %}
+{% block title %}{{ template.title }} — {% trans "Corner" %}{% endblock %}
+
+{% block content %}
+
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb small mb-0">
+        <li class="breadcrumb-item"><a href="{% url 'corner_home' %}">{% trans "Corner" %}</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'corner_templates' %}">{% trans "Writing templates" %}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ template.title }}</li>
+    </ol>
+</nav>
+
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-8">
+
+    <div class="card cn-card border-0 shadow-sm">
+        {% if template.preview %}
+        <img src="{{ template.preview.url }}" class="card-img-top" alt="{{ template.title }}">
+        {% endif %}
+        <div class="card-body">
+            <h1 class="h4 mb-1">
+                {{ template.title }}
+                {% if not template.is_published %}<span class="badge text-bg-warning">{% trans "Draft" %}</span>{% endif %}
+            </h1>
+            <p class="small text-secondary mb-3">
+                <i class="bi {{ template.subject.icon }} me-1" style="color:{{ template.subject.color }};"></i>
+                <a href="{% url 'corner_subject' template.subject.slug %}" class="text-decoration-none">{{ template.subject.name }}</a>
+                · <i class="bi bi-download me-1"></i>
+                {% blocktrans count counter=template.downloads %}{{ counter }} download{% plural %}{{ counter }} downloads{% endblocktrans %}
+            </p>
+            {% if template.description %}
+            <p class="mb-4">{{ template.description }}</p>
+            {% endif %}
+            <div class="d-grid d-sm-block">
+                <a href="{% url 'corner_template_download' template.pk %}" class="btn btn-primary btn-lg">
+                    <i class="bi bi-download me-1"></i>{% trans "Download" %}
+                </a>
+            </div>
+        </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/corner.css' %}">{% endblock %}

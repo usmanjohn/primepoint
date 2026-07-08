@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+{% block nav_corner %}active{% endblock %}
+{% block page_name %}{% trans "Corner" %}{% endblock %}
+{% block title %}{% trans "Corner" %}{% endblock %}
+
+{% block content %}
+
+<div class="cn-hero mb-4">
+    <h1 class="page-title mb-1"><i class="bi bi-stars me-2"></i>{% trans "Corner" %}</h1>
+    <p class="page-subtitle mb-0">
+        {% trans "A cozy shelf of stories, templates and resources — pick a subject and dive in." %}
+    </p>
+</div>
+
+{% if template_total %}
+<a href="{% url 'corner_templates' %}" class="cn-banner d-flex align-items-center gap-3 text-decoration-none mb-4">
+    <span class="cn-banner-icon"><i class="bi bi-file-earmark-text fs-3"></i></span>
+    <span class="flex-grow-1">
+        <span class="d-block fw-semibold">{% trans "Writing templates" %}</span>
+        <span class="d-block small text-secondary">
+            {% blocktrans count counter=template_total %}{{ counter }} printable template ready to download{% plural %}{{ counter }} printable templates ready to download{% endblocktrans %}
+        </span>
+    </span>
+    <i class="bi bi-arrow-right fs-5"></i>
+</a>
+{% endif %}
+
+{% if subjects %}
+<div class="row g-3 g-md-4">
+    {% for subject in subjects %}
+    <div class="col-12 col-sm-6 col-lg-4">
+        <a href="{% url 'corner_subject' subject.slug %}"
+           class="card cn-card h-100 text-decoration-none border-0 shadow-sm"
+           style="border-top:4px solid {{ subject.color }} !important;">
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                    <span class="d-inline-flex align-items-center justify-content-center rounded-3 flex-shrink-0"
+                          style="width:48px;height:48px;background:{{ subject.color }}1a;color:{{ subject.color }};">
+                        <i class="bi {{ subject.icon }} fs-4"></i>
+                    </span>
+                    <h2 class="h5 mb-0">{{ subject.name }}</h2>
+                </div>
+                {% if subject.summary %}
+                <p class="text-secondary small mb-3">{{ subject.summary }}</p>
+                {% endif %}
+                <div class="mt-auto d-flex flex-wrap gap-2">
+                    <span class="badge rounded-pill text-bg-light">
+                        <i class="bi bi-book me-1"></i>
+                        {% blocktrans count counter=subject.story_count %}{{ counter }} story{% plural %}{{ counter }} stories{% endblocktrans %}
+                    </span>
+                    {% if subject.template_count %}
+                    <span class="badge rounded-pill text-bg-light">
+                        <i class="bi bi-file-earmark-text me-1"></i>
+                        {% blocktrans count counter=subject.template_count %}{{ counter }} template{% plural %}{{ counter }} templates{% endblocktrans %}
+                    </span>
+                    {% endif %}
+                </div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="text-center text-secondary py-5">
+    <i class="bi bi-stars fs-1 d-block mb-2"></i>
+    <p class="mb-0">{% trans "The Corner is still being furnished. Check back soon." %}</p>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/corner.css' %}">{% endblock %}
