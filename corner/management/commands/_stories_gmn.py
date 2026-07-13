@@ -750,6 +750,93 @@ STORIES = [
             },
         ],
     },
+    
+    # ── 18 ───────────────────────────────────────────────────────────────
+    {
+        "title":   "동물행동학",
+        "summary": "Hayvonlar olamidagi altruistik (boshqalar uchun fidokorona) harakatlar va buning biologik sabablari.",
+        "order":   18,
+        "body": '''<p>자연계의 생물들은 흔히 자신의 생존과 이익만을 위해 치열하게 경쟁하는 것으로 <span class="cn-word" data-pos="adv" data-tr="asosan, odatda">일반적으로</span> <strong>여겨지곤 합니다</strong>. 적자생존의 법칙이 <span class="cn-word" data-pos="adv" data-tr="shafqatsizlarcha, qatʼiy">철저히</span> 지배하는 대자연 속에서 이기적인 행동이야말로 유전자를 퍼뜨리는 가장 확실한 방법이기 때문입니다. 그러나 놀랍게도 동물 세계에서는 자신의 위험을 <span class="cn-word" data-pos="adv" data-tr="sodiqlik bilan, tayyor holda">기꺼이</span> 감수하면서까지 동료를 구하려는 '이타적 행동'이 <span class="cn-word" data-pos="adv" data-tr="tez-tez, juda koʻp">심심치 않게</span> 목격됩니다. 예를 들어 개미나 벌 같은 사회성 곤충들은 집단을 위해 자신의 번식 기회를 <span class="cn-word" data-pos="adv" data-tr="butkul, butunlay">완전히</span> 포기한 채 평생 노동에만 전념합니다.</p>
+<p>또한 포식자가 나타났을 때 자신의 목숨이 <span class="cn-word" data-pos="adj" data-tr="xavfli, qaltis">위태로운</span> 상황임에도 불구하고 <span class="cn-word" data-pos="adv" data-tr="baland ovozda, ochiqchasiga">커다란</span> 경고음을 내어 동료들을 대피시키는 새들이나 원숭이들도 <strong>존재하기 마련입니다</strong>. 진화생물학자들은 이러한 이타적 행위가 단순한 자선이 아니라, 자신과 유전자를 공유하는 혈연 집단의 생존율을 <span class="cn-word" data-pos="adv" data-tr="ulkan darajada, sezilarli">획기적으로</span> 높임으로써 결과적으로 자신의 유전자를 후세에 더 많이 남기려는 고도의 진화적 전략임을 밝혀냈습니다. 결국 개체의 희생은 종족 전체의 번영을 담보하는 거대한 원동력이 되는 셈입니다.</p>''',
+        "grammar": [
+            {
+                "pattern":  "-어/아지곤 하다",
+                "meaning":  "Oʻtmishda yoki odatda maʼlum bir holat yuz berib turishini bildiradi: ...-ib turardi/turadi.",
+                "examples": ["자신의 이익을 위해 경쟁하는 것으로 여겨지곤 합니다.", "어릴 때 그 공원에서 놀곤 했어요."],
+            },
+            {
+                "pattern":  "-기 마련이다",
+                "meaning":  "Tabiiy qonuniyat yoki muqarrarlikni bildiradi: ... boʻlishi tabiiy/aniq.",
+                "examples": ["위태로운 상황을 경고하는 동물이 존재하기 마련입니다.", "겨울이 가면 봄이 오기 마련이다."],
+            },
+        ],
+        "questions": [
+            {
+                "text": "동물 세계에서 발견되는 '이타적 행동'의 구체적인 사례로 언급되지 않은 것은 무엇입니까?",
+                "choices": [
+                    "개미나 벌이 집단을 위해 자신의 번식 기회를 포기하고 일하는 것",
+                    "포식자가 나타났을 때 경고음을 내어 동료들을 대피시키는 것",
+                    "먹이가 부족할 때 타 집단의 영역을 무단으로 침범하는 것",
+                ],
+                "answer": 2,
+                "explanation": "Boshqa toʻdalarning hududiga bostirib kirish altruistik (fidoiy) harakat emas, balki agressiv/bellashuv harakatidir va matnda tilga olingan emas.",
+            },
+            {
+                "text": "진화생물학자들이 밝혀낸 동물들의 이타적 행동의 진짜 목적은 무엇입니까?",
+                "choices": [
+                    "인간에게 영리함을 칭찬받기 위해",
+                    "자신과 유전자를 공유하는 혈연 집단의 생존율을 높이기 위해",
+                    "이기적인 개체들을 집단에서 완전히 추방하기 위해",
+                    "포식자와 친구가 되어 평화로운 생태계를 만들기 위해",
+                ],
+                "answer": 1,
+                "explanation": "Ikkinchi xatboshida aytilishicha, bu harakatlar nasldoshlar guruhining omon qolish darajasini (혈연 집단의 생존율) oshirish va geni koʻproq qolishini taʼminlash uchun evolyutsion strategiyadir.",
+            },
+        ],
+    },
+    # ── 19 ───────────────────────────────────────────────────────────────
+    {
+        "title":   "건축과 인간",
+        "summary": "Inson ruhiyatiga va samaradorligiga taʼsir qiluvchi meʼmorchilik — 'Fazoviy psixologiya' (Space Psychology).",
+        "order":   19,
+        "body": '''<p>우리가 매일 거주하는 건축 공간은 단순히 비바람을 막아주는 물리적 장벽에 <strong>그치는 것이 아닙니다</strong>. 그 공간의 형태와 구조는 인간의 심리와 행동에 <span class="cn-word" data-pos="adv" data-tr="gʻoyatda, favqulodda">굉장히</span> 깊은 영향을 미칩니다. 이를 연구하는 학문을 '공간 심리학'이라고 부르며, 현대 건축가들은 건물을 설계할 때 거주자의 정서적 안정과 업무 효율성을 높이기 위해 이 원리를 <span class="cn-word" data-pos="adv" data-tr="faol ravishda, keng miqyosda">적극적으로</span> 활용하고 있습니다. 가령 층고(천장의 높이)가 <span class="cn-word" data-pos="adj" data-tr="baland, yuksak">높은</span> 공간에서 생활하는 사람들은 천장이 <span class="cn-word" data-pos="adj" data-tr="past, pasaygan">낮은</span> 곳에 있을 때보다 창의적인 아이디어를 더 <span class="cn-word" data-pos="adv" data-tr="osonlik bilan, bemalol">자유롭게</span> 도출해내는 경향이 있습니다.</p>
+<p>반면 천장이 낮은 공간은 집중력을 고도로 요구하는 세밀한 작업에 훨씬 더 <span class="cn-word" data-pos="adj" data-tr="mos, qulay">적합한</span> 환경을 제공합니다. 또한, 창문을 통해 들어오는 자연 채광의 양과 실내에 배치된 벽면의 색상 역시 사람의 스트레스 수치를 <span class="cn-word" data-pos="adv" data-tr="sezilarli darajada, ancha">상당히</span> 낮추거나 높일 수 있습니다. 이처럼 건축은 인간의 삶을 담는 그릇이자, 마음을 치료하는 보이지 않는 도구이기도 합니다. 무분별한 효율성만을 쫓아 <span class="cn-word" data-pos="adj" data-tr="quruq, zerikarli">딱딱한</span> 콘크리트 상자 같은 건물만을 양산하기보다, 인간의 내면을 <span class="cn-word" data-pos="adj" data-tr="boy, sermazmun">풍요롭게</span> <strong>만들어 줄 수 있는</strong> 생태적 설계가 필요한 이유가 여기에 있습니다.</p>''',
+        "grammar": [
+            {
+                "pattern":  "-는 것에 그치지 않다",
+                "meaning":  "Faqat shu narsa bilan cheklanib qolmay, undan ham koʻproq ekanini bildiradi: ... bilan cheklanib qolmay.",
+                "examples": ["물리적 장벽에 그치는 것이 아니라 심리에도 영향을 줍니다.", "기부하는 것에 그치지 않고 봉사도 해요."],
+            },
+            {
+                "pattern":  "-어/아 줄 수 있다",
+                "meaning":  "Boshqalar uchun biror yordam yoki harakatni amalga oshirish imkoniyatini bildiradi: ... qilib bera olmoq.",
+                "examples": ["인간의 내면을 풍요롭게 만들어 줄 수 있는 설계가 필요합니다.", "친구의 숙제를 도와 줄 수 있어요."],
+            },
+        ],
+        "questions": [
+            {
+                "text": "공간 심리학의 연구 내용에 근거할 때, 천장의 높이(층고)가 높은 공간의 장점은 무엇입니까?",
+                "choices": [
+                    "세밀하고 정밀한 연산 작업의 집중력을 극대화한다.",
+                    "창의적인 아이디어를 자유롭게 도출하는 데 도움을 준다.",
+                    "실내 난방 비용을 획기적으로 절감시켜 준다.",
+                ],
+                "answer": 1,
+                "explanation": "Matnning birinchi qismida shift baland boʻlgan joylar ijodiy gʻoyalar (창의적인 아이디어) ishlab chiqarishga ijobiy taʼsir koʻrsatishi taʼkidlangan.",
+            },
+            {
+                "text": "본문의 내용과 일치하지 않는 것을 고르십시오.",
+                "choices": [
+                    "창문을 통해 들어오는 자연 채광은 스트레스 수치와 무관하다.",
+                    "천장이 낮은 공간은 고도의 집중력이 필요한 작업에 적합하다.",
+                    "현대 건축에서 공간 심리학은 정서적 안정 유지를 위해 활용된다.",
+                    "무조건적인 효율성만을 강조한 건축은 인간의 내면을 삭막하게 만들 수 있다.",
+                ],
+                "answer": 0,
+                "explanation": "Ikkinchi xatboshida tabiiy yorugʻlik (자연 채광) miqdori ham insonning stress darajasini sezilarli darajada tushirishi yoki oshirishi mumkinligi aytilgan, shuning uchun daxli yoʻq degan variant notoʻgʻri.",
+            },
+        ],
+    },
     # ── 20 ───────────────────────────────────────────────────────────────
     {
         "title":   "철학과 사회",
