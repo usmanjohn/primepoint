@@ -252,6 +252,25 @@
 .cn-feedback-explain { color: var(--cn-ink); }
 .cn-feedback-explain :last-child { margin-bottom: 0; }
 
+/* ── Story audio player ────────────────────────────────────────────── */
+.cn-audio {
+    background: var(--cn-paper);
+    border: 1px solid var(--cn-border);
+    border-radius: 1rem;
+    padding: 1rem 1.25rem;
+}
+.cn-audio-label {
+    display: block;
+    font-weight: 600;
+    color: var(--cn-ink);
+    margin-bottom: .6rem;
+    font-family: var(--bs-body-font-family, sans-serif);
+}
+.cn-audio audio {
+    width: 100%;
+    display: block;
+}
+
 /* ── Grammar points ────────────────────────────────────────────────── */
 .cn-grammar {
     background: var(--cn-paper);

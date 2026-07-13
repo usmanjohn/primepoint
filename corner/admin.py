@@ -63,6 +63,21 @@ class StoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     readonly_fields     = ['views', 'created_at', 'updated_at']
     inlines             = [StoryWordInline, StoryGrammarInline, StoryQuestionInline]
+    fieldsets = (
+        (None, {
+            'fields': ('collection', 'title', 'slug', 'summary', 'body', 'author',
+                       'order', 'is_published'),
+        }),
+        ('Audio', {
+            'description': 'Optional narration — upload an MP3/M4A, or leave empty. '
+                           'For bulk uploads use the import_corner_audio command.',
+            'fields': ('audio',),
+        }),
+        ('Meta', {
+            'classes': ('collapse',),
+            'fields': ('views', 'created_at', 'updated_at'),
+        }),
+    )
 
 
 @admin.register(WritingTemplate)

@@ -101,6 +101,9 @@ class Story(models.Model):
     summary      = models.CharField(max_length=300, blank=True,
                                     help_text='Short description shown on listing cards.')
     body         = CKEditor5Field(config_name='tutorial')
+    audio        = models.FileField(upload_to='corner/audio/', blank=True, null=True,
+                                    help_text='Optional narration of the story (MP3/M4A). '
+                                              'Leave empty if there is no audio.')
     author       = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True,
                                      related_name='corner_stories')
     order        = models.PositiveIntegerField(default=0)
