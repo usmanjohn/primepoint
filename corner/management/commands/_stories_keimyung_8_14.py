@@ -19,6 +19,28 @@ STORIES = [
         "title":   "낙엽을 태우면서",
         "summary": "Kuz hovlisida xazon yoqish hidi hayotga yangi ishtiyoq uygʻotadi — lirik esse.",
         "order":   8,
+        "grammar": [
+            {
+                "pattern":  "-지 않으면 안 되다",
+                "meaning":  "...masdan boʻlmaydi = albatta ...ish kerak (majburiyat).",
+                "examples": ["매일 낙엽을 긁어 모으지 않으면 안 된다.", "약속은 지키지 않으면 안 돼요."],
+            },
+            {
+                "pattern":  "-나 보다",
+                "meaning":  "...shekilli, ...ga oʻxshaydi (taxmin).",
+                "examples": ["낙엽이 사람 수보다 많은가 보다.", "밖에 비가 오나 봐요."],
+            },
+            {
+                "pattern":  "-건마는(건만)",
+                "meaning":  "...boʻlsa-da, shunga qaramay (adabiy qarama-qarshilik).",
+                "examples": ["날마다 하는 일이건마는 낙엽은 또 쌓인다.", "노력했건만 결과가 좋지 않았다."],
+            },
+            {
+                "pattern":  "-(으)면서도",
+                "meaning":  "...boʻla turib, shunga zid ravishda (garchi ...boʻlsa-da).",
+                "examples": ["별일 없으면서도 쉴 새 없이 끙끙댄다.", "잘 알면서도 모르는 척했어요."],
+            },
+        ],
         "body": '''<p>가을이 <span class="cn-word" data-pos="verb" data-tr="avjiga chiqsa, chuqurlashsa">깊어지면</span>, 나는 거의 매일 <span class="cn-word" data-tr="hovli">뜰</span>의 <span class="cn-word" data-tr="xazon, toʻkilgan barg">낙엽</span>을 <span class="cn-word" data-pos="verb" data-tr="tirnab yigʻmoq">긁어 모으지</span> 않으면 안 된다. 날마다 하는 일이건마는 낙엽은 <span class="cn-word" data-pos="adv" data-tr="sezdirmay, allaqachon">어느새</span> 날아 떨어져서, <span class="cn-word" data-pos="adv" data-tr="yana, qaytadan">또다시</span> <span class="cn-word" data-pos="verb" data-tr="toʻplanadigan, uyiladigan">쌓이는</span> 것이다. 낙엽이란 <span class="cn-word" data-pos="adv" data-tr="haqiqatan, rostdan">참으로</span> 이 세상 사람의 수보다도 많은가 보다.</p>
 <p>벚나무 아래 긁어 모은 낙엽의 <span class="cn-word" data-tr="uyum, tepa">산더미</span>에 불을 <span class="cn-word" data-pos="verb" data-tr="yoqsang, oʻt qoʻysang">붙이면</span>, 속의 것부터 푸슥푸슥 타기 시작해서 가는 연기가 <span class="cn-word" data-pos="verb" data-tr="koʻtarilib chiqib">피어오르고</span>, 바람이 없는 날이면 어느새 뜰 안은 연기로 <span class="cn-word" data-pos="verb" data-tr="toʻlib ketadi">가득해진다</span>. 낙엽 타는 냄새 같이 좋은 것이 있을까? 갓 볶아 낸 커피의 냄새가 난다. <span class="cn-word" data-tr="xaskash">갈퀴</span>를 손에 들고 연기 속에 서서, 타서 <span class="cn-word" data-pos="verb" data-tr="tarqaladigan, sochiladigan">흩어지는</span> 낙엽의 산더미를 바라보며 <span class="cn-word" data-pos="adj" data-tr="xushbuy, muattar">향기로운</span> 냄새를 맡고 있노라면 <span class="cn-word" data-pos="adv" data-tr="toʻsatdan">별안간</span> <span class="cn-word" data-pos="adj" data-tr="kuchli">강한</span> 생활의 <span class="cn-word" data-tr="ishtiyoq, gʻayrat">의욕</span>을 느끼게 된다. 연기는 몸에 배서 어느새 옷과 손등에서도 냄새가 나게 된다. 나는 그 냄새를 <span class="cn-word" data-pos="adv" data-tr="cheksiz, behad">한없이</span> 사랑하면서 즐거운 생활감에 빠져서는 새삼스럽게 생활을 <span class="cn-word" data-pos="adj" data-tr="qadrli, qimmatli">귀중한</span> 것으로 생각하게 된다.</p>
 <p>가을이다! 가을은 생활의 계절이다. 나는 화단의 뒷자리를 <span class="cn-word" data-pos="adv" data-tr="chuqur qilib">깊게</span> <span class="cn-word" data-pos="verb" data-tr="kavlab, qazib">파고</span> 다 타버린 낙엽의 <span class="cn-word" data-tr="kul">재</span>를 죽어 버린 꿈의 시체를-땅속 깊이 <span class="cn-word" data-pos="verb" data-tr="koʻmib">파묻고</span>, <span class="cn-word" data-pos="adj" data-tr="matonatli, qatʼiy">꿋꿋한</span> 생활의 자세로 <span class="cn-word" data-pos="verb" data-tr="yuz burmoq, qaytmoq">돌아서지</span> 않으면 안 된다. 이야기 속의 소년 같이 <span class="cn-word" data-pos="verb" data-tr="jasur boʻlmoq">용감해지지</span> 않으면 안 된다.</p>
@@ -61,6 +83,28 @@ STORIES = [
         "title":   "한국인과 함께해 온 떡",
         "summary": "Tugʻilgan kundan bayramlargacha: koreyslarning ttok (guruch noni) bilan bogʻliq anʼanalari.",
         "order":   9,
+        "grammar": [
+            {
+                "pattern":  "-았/었으면 하는 마음으로",
+                "meaning":  "...sa edi degan niyat/tilak bilan.",
+                "examples": ["아기가 오래 살았으면 하는 마음으로 백설기를 나눈다.", "합격했으면 하는 마음으로 기도했어요."],
+            },
+            {
+                "pattern":  "-(으)ㄹ 겸 (해서)",
+                "meaning":  "...ni ham koʻzlab, bir yoʻla ikki maqsadda.",
+                "examples": ["이웃과 나누어 먹을 겸 해서 떡을 많이 했다.", "바람도 쐴 겸 산책을 나갔어요."],
+            },
+            {
+                "pattern":  "-는 만큼",
+                "meaning":  "...gani sababli / ...gan darajada (mutanosiblik).",
+                "examples": ["떡을 사랑하는 만큼 관련 속담도 많다.", "노력한 만큼 좋은 결과를 얻었어요."],
+            },
+            {
+                "pattern":  "-(으)ㄴ지 알 수 없다",
+                "meaning":  "...ganini bilib boʻlmaydi (nomaʼlumlik).",
+                "examples": ["언제 처음 먹기 시작했는지 알 수 없다.", "그가 왜 떠났는지 알 수 없어요."],
+            },
+        ],
         "body": '''<p>'밥 먹는 배 다르고, 떡 먹는 배 다르다'라는 말이 있을 정도로 떡은 한국 사람들이 가장 좋아하는 음식 중의 하나이다. 한국에서 떡을 언제 처음 먹기 시작했는지 알 수 없지만 <span class="cn-word" data-pos="adv" data-tr="qadimdan">옛날부터</span> <span class="cn-word" data-tr="milliy bayram">명절</span>이나 중요한 행사가 있을 때 <span class="cn-word" data-pos="verb" data-tr="tushib qolmaydigan">빠지지</span> 않는 음식이었다.</p>
 <p><span class="cn-word" data-pos="verb" data-tr="tugʻilgan">태어난</span> 아기가 <span class="cn-word" data-tr="chaqaloqning 100 kunligi">백일</span>이나 <span class="cn-word" data-tr="bir yoshlik toʻyi">돌</span>이 되면 백설기와 수수경단을 먹었다. 백설기는 아기가 건강하게 오래 살았으면 하는 마음으로 백 사람과 <span class="cn-word" data-pos="verb" data-tr="boʻlishib, ulashib">나눠</span> 먹었으며 수수경단은 팥의 붉은색이 <span class="cn-word" data-tr="yovuz ruh, ins-jins">귀신</span>을 <span class="cn-word" data-pos="verb" data-tr="toʻsmoq, himoya qilmoq">막아</span> 준다고 생각했기 때문에 아기에게 먹였다. <span class="cn-word" data-tr="nikoh marosimi">혼례</span> 때는 두 사람의 행복을 <span class="cn-word" data-pos="verb" data-tr="tilaydigan">기원하는</span> 의미로 보름달처럼 생긴 달떡과 여러 색깔의 색편을 먹었고, <span class="cn-word" data-tr="60 yoshlik yubiley">회갑</span> 때는 각종 떡을 같은 크기의 직사각형 모양으로 <span class="cn-word" data-pos="verb" data-tr="toʻgʻrab, kesib">썰어</span> <span class="cn-word" data-pos="adv" data-tr="baland qilib">높이</span> <span class="cn-word" data-pos="verb" data-tr="uyib, taxlab">쌓은</span> 후 상에 올렸다. <span class="cn-word" data-tr="ajdodlarni xotirlash marosimi">제사</span> 때도 지방마다 다른 여러 가지 떡을 중요한 제물로 올렸다.</p>
 <p>명절에 먹는 <span class="cn-word" data-pos="adj" data-tr="eng mashhur, namunaviy">대표적인</span> 떡으로는 가래떡과 송편이 있다. 설날에 먹는 가래떡은 옛날 <span class="cn-word" data-tr="pul">화폐</span>를 <span class="cn-word" data-pos="verb" data-tr="andoza olib, oʻxshatib">본떠서</span> <span class="cn-word" data-pos="adj" data-tr="yumaloq">둥글고</span> 길게 빼는데 이것은 재산이 <span class="cn-word" data-pos="adv" data-tr="jadal, tez">쑥쑥</span> 늘어나라는 의미를 가지고 있다. 이렇게 만든 가래떡을 <span class="cn-word" data-pos="adv" data-tr="yupqa qilib">얇게</span> 썰어서 고깃국물에 <span class="cn-word" data-pos="verb" data-tr="qaynatmoq">끓이면</span> 떡국이 된다. 옛날에는 설날에 떡국 한 그릇을 먹어야 나이를 한 살 더 먹는 것이라고 생각했기 때문에 아이들은 떡국을 많이 먹으려고 떼를 쓰기도 했다. 추석에 먹는 송편은 한 해의 <span class="cn-word" data-tr="hosil">수확</span>을 감사하며 <span class="cn-word" data-tr="ajdodlar">조상</span>의 차례상에 올리는 음식이었는데 요즘은 계절에 관계없이 <span class="cn-word" data-pos="adv" data-tr="sevib, xushlab">즐겨</span> 먹는다.</p>
@@ -103,6 +147,28 @@ STORIES = [
         "title":   "선배들이 알려 주는 A+ 비결",
         "summary": "Stipendiya va A+ olishning yoʻllari: fan tanlash, davomat va oʻqish usullari.",
         "order":   10,
+        "grammar": [
+            {
+                "pattern":  "-다가는",
+                "meaning":  "Shu zaylda davom etsa (yomon oqibat kelib chiqadi).",
+                "examples": ["즐기기만 하다가는 좋은 학점은 그림의 떡이 된다.", "이렇게 놀다가는 시험에 떨어져요."],
+            },
+            {
+                "pattern":  "-기 십상이다",
+                "meaning":  "Osongina ...boʻlib qoladi, ...ishi tayin (koʻpincha salbiy).",
+                "examples": ["지각이 반복되면 나쁜 인상을 주기 십상이다.", "서두르면 실수하기 십상이에요."],
+            },
+            {
+                "pattern":  "-는 법이다",
+                "meaning":  "Qonuniyat: odatda tabiiy ravishda shunday boʻladi.",
+                "examples": ["어려운 수업은 재수강자가 많은 법이다.", "노력하면 좋은 결과가 오는 법이에요."],
+            },
+            {
+                "pattern":  "-더라도",
+                "meaning":  "...boʻlsa ham (kuchli yon berish).",
+                "examples": ["다른 것이 아무리 완벽하더라도 공부가 먼저다.", "힘들더라도 포기하지 마세요."],
+            },
+        ],
         "body": '''<p>대학에 첫발을 <span class="cn-word" data-pos="verb" data-tr="qadam qoʻyadigan">내딛는</span> <span class="cn-word" data-tr="birinchi kurs talabasi">새내기</span>들이 <span class="cn-word" data-pos="verb" data-tr="tanlagan, saralagan">뽑은</span> '대학생이 되어 가장 해 보고 싶은 것' 다섯 가지 안에 빠지지 않고 들어가는 것이 <span class="cn-word" data-tr="stipendiya">장학금</span> 받기와 A+ 받기라고 한다. 그러나 준비하지 않고, 최선을 다하지 않고, 캠퍼스의 <span class="cn-word" data-tr="romantika">낭만</span>을 <span class="cn-word" data-pos="adv" data-tr="shunchaki, cheksiz">마냥</span> 즐기기만 하다가는 장학금과 A 학점은 <span class="cn-word" data-tr="yeb boʻlmas holva (faqat orzu)">그림의 떡</span>이 되고 말 것이다. 그렇다면 어떻게 해야 좋은 점수를 받을 수 있을까? 신입생들에게 <span class="cn-word" data-pos="verb" data-tr="aytib beradigan">들려주는</span> 선배들의 <span class="cn-word" data-tr="tajriba sirlari">노하우</span>에 귀를 <span class="cn-word" data-pos="verb" data-tr="qaratmoq (quloq solmoq)">기울여</span> 보자.</p>
 <p><span class="cn-word" data-pos="verb" data-tr="tuzilgan">짜여진</span> 시간표대로 수업을 듣는 중 고등학생 때와 달리 대학생이 되면 자신이 <span class="cn-word" data-pos="adv" data-tr="bevosita, oʻzi">직접</span> 시간표를 <span class="cn-word" data-pos="verb" data-tr="tuzmoq">짜야</span> 한다.</p>
 <p>어떤 과목을 <span class="cn-word" data-pos="verb" data-tr="tanlash">선택하느냐</span>에 따라 한 학기의 공부 방향과 그 결과가 <span class="cn-word" data-pos="verb" data-tr="belgilanadigani uchun">결정되기에</span> 좋은 학점을 받기 위해서는 <span class="cn-word" data-pos="adv" data-tr="avval, birinchi">먼저</span> <span class="cn-word" data-tr="fanlarga yozilish">수강 신청</span>이라는 '첫 단추'를 잘 끼워야 한다. 시간표를 짤 때 필수 전공 과목을 <span class="cn-word" data-pos="verb" data-tr="hisobga olmagan, chiqarib tashlagan">제외한</span> 나머지는 자신이 수강하고 싶은 과목보다는 자신이 잘할 수 있는 과목을 선택하는 것이 좋다. 또한 과목명만 보고 신청하지 말고 사전에 <span class="cn-word" data-tr="fan rejasi (sillabus)">강의 계획서</span>를 <span class="cn-word" data-pos="adv" data-tr="sinchkovlik bilan, puxta">꼼꼼히</span> 읽어 보거나 이미 그 수업을 들었던 선배들과 동기들의 충고를 <span class="cn-word" data-pos="adv" data-tr="imkon qadar">최대한</span> <span class="cn-word" data-pos="verb" data-tr="eʼtiborga olib, oʻrganib">참고해서</span> 신청해야 한다. 마지막으로, 학점을 짜게 주는 교수님의 수업이나 어려운 수업은 <span class="cn-word" data-tr="fanni qayta oʻqiydigan talaba">재수강자</span>가 많은 법이니 수강하려는 과목에 재수강자가 많지는 않는지 <span class="cn-word" data-pos="verb" data-tr="koʻrib chiqmoq, tekshirmoq">살펴보는</span> 것도 잊지 말도록 하자.</p>
@@ -146,6 +212,28 @@ STORIES = [
         "title":   "한석봉과 어머니",
         "summary": "Qorongʻida ona ttok kesadi, oʻgʻil xat yozadi — mashhur xattot Han Sokbong hikoyasi.",
         "order":   11,
+        "grammar": [
+            {
+                "pattern":  "-(으)로 하여금 -게 하다",
+                "meaning":  "...ni ...ishga majbur/sabab qilmoq (rasmiy orttirma).",
+                "examples": ["왕은 석봉으로 하여금 문서를 작성하게 했다.", "그 일이 나로 하여금 다시 생각하게 했다."],
+            },
+            {
+                "pattern":  "-은/는 고사하고",
+                "meaning":  "... u yoqda tursin, hatto ...ham (yoʻq/mumkin emas).",
+                "examples": ["서당은 고사하고 종이도 살 수 없었다.", "여행은 고사하고 쉴 시간도 없어요."],
+            },
+            {
+                "pattern":  "-다 못해",
+                "meaning":  "...ning chidamiga chidamay, uddasidan chiqolmay.",
+                "examples": ["어머니가 보고 싶어 참다 못해 집으로 달려갔다.", "배가 고파 참다 못해 라면을 끓였어요."],
+            },
+            {
+                "pattern":  "-(으)ㄹ 턱이 없다",
+                "meaning":  "...ishi aslo mumkin emas (kuchli inkor).",
+                "examples": ["십 년 공부로 어머니를 이길 턱이 없었다.", "준비도 안 했는데 잘될 턱이 없어요."],
+            },
+        ],
         "body": '''<p>'글씨'라고 하면 조선 시대 한석봉을 최고로 <span class="cn-word" data-pos="verb" data-tr="sanaydigan, hisoblaydigan">꼽는</span> 사람들이 많다. 25세의 나이에 <span class="cn-word" data-tr="davlat mansab imtihoni (qadimgi)">과거 시험</span>에 <span class="cn-word" data-pos="verb" data-tr="imtihondan oʻtib">합격하여</span> <span class="cn-word" data-tr="mansab, lavozim">관직</span>에 올랐고, 중국에 <span class="cn-word" data-tr="elchi">사신</span>으로 왕래하면서 <span class="cn-word" data-tr="mashhur xattot">명필가</span>로 이름을 <span class="cn-word" data-pos="verb" data-tr="taratdi, mashhur boʻldi">떨쳤다</span>. 왕은 벽에 <span class="cn-word" data-pos="adv" data-tr="doim">항상</span> 석봉의 글씨를 걸어 두고 감상할 정도로 좋아했으며, 석봉으로 하여금 나라의 주요 문서를 <span class="cn-word" data-pos="verb" data-tr="oʻz zimmasiga olib">도맡아</span> 작성하게 했다. 『석봉천자문』이라는 책을 <span class="cn-word" data-pos="verb" data-tr="qoldirib">남겨</span> 오늘날까지 한자를 처음 배우는 사람들에게 <span class="cn-word" data-tr="namuna darslik">교본</span>이 되게 한 그의 명필 뒤에는 다음과 같은 이야기가 있다.</p>
 <p>석봉은 세 살 때 아버지를 <span class="cn-word" data-pos="verb" data-tr="yetim qolib (ota-onadan ayrilib)">여의고</span> 떡 장사로 <span class="cn-word" data-pos="adv" data-tr="zoʻrgʻa, arang">겨우</span> 살림을 <span class="cn-word" data-pos="verb" data-tr="davom ettiradigan">이어가는</span> 어머니와 함께 살았다. <span class="cn-word" data-tr="eski maktab (xususiy)">서당</span>은 고사하고 종이와 먹을 살 수도 없을 정도로 <span class="cn-word" data-pos="adj" data-tr="kambagʻal boʻlgan">가난했던</span> 석봉은 물을 <span class="cn-word" data-pos="verb" data-tr="botirib, tekkizib">찍어서</span> <span class="cn-word" data-tr="xum">항아리</span>나 돌 위에 글씨 쓰는 연습을 하였다. 이런 아들의 성공을 위해 어머니는 석봉을 유명한 절로 보내 공부를 시켰다.</p>
 <p>절에 들어가 공부를 한 지 10년 쯤 지났을 무렵 석봉은 어머니가 매우 보고 싶었다. <span class="cn-word" data-pos="verb" data-tr="chidayolmay, toqat qilolmay">참다 못해</span> 밤에 <span class="cn-word" data-pos="adv" data-tr="yashirincha">몰래</span> 절에서 빠져 나온 그는 집으로 달려갔다. <span class="cn-word" data-pos="adv" data-tr="toʻsatdan, birdan">갑자기</span> 나타난 아들을 보고 <span class="cn-word" data-pos="verb" data-tr="hayron boʻlgan, choʻchigan">놀라는</span> 어머니에게 석봉은 말했다.</p>
@@ -192,6 +280,28 @@ STORIES = [
         "title":   "건강한 밥상 차리기",
         "summary": "Mavsumiy mahsulotlar, don-sabzavot va quvvatbaxsh taomlar — sogʻlom ovqatlanish sirlari.",
         "order":   12,
+        "grammar": [
+            {
+                "pattern":  "-(으)ㄴ/는 데 반해",
+                "meaning":  "...ligiga qaramay, aksincha (qarama-qarshilik).",
+                "examples": ["과거에는 수단으로만 여겨졌던 데 반해 지금은 건강의 열쇠로 본다.", "형은 조용한 데 반해 동생은 활발해요."],
+            },
+            {
+                "pattern":  "-(으)ㄴ 바 있다",
+                "meaning":  "...gan holat/tajriba bor (rasmiy uslub).",
+                "examples": ["실험에서 곡채식의 효능이 입증된 바 있다.", "저도 그곳에 가 본 바 있습니다."],
+            },
+            {
+                "pattern":  "-(ㄴ/는)다손 치더라도",
+                "meaning":  "Faraz qilaylik, ...ganda ham (baribir).",
+                "examples": ["균형을 고려해 먹는다손 치더라도 부족한 영양소가 생긴다.", "돈이 많다손 치더라도 건강이 없으면 소용없어요."],
+            },
+            {
+                "pattern":  "-(으)ㄹ수록",
+                "meaning":  "...gani sari, ...gani sayin (mutanosib oʻzgarish).",
+                "examples": ["육류 섭취량이 많을수록 질병률이 높았다.", "보면 볼수록 정이 들어요."],
+            },
+        ],
         "body": '''<p>우리의 건강을 <span class="cn-word" data-pos="verb" data-tr="saqlab turadigan">유지하는</span> 데 가장 중요한 역할을 하는 것은 바로 <span class="cn-word" data-tr="ovqatlanish tarzi">식생활</span>이다. 인간의 생명을 유지하고 발전시켜 나가는 것은 다름 아닌 음식이라고 할 수 있다. 이러한 음식이 과거에는 <span class="cn-word" data-pos="adv" data-tr="faqat, shunchaki">단지</span> 생명을 이어나가기 위한 수단으로만 <span class="cn-word" data-pos="verb" data-tr="hisoblangan, sanalgan">여겨졌던</span> 데 반해 요즘은 건강하고 <span class="cn-word" data-pos="adj" data-tr="farovon, moʻl">풍요로운</span> 삶의 열쇠라는 인식이 <span class="cn-word" data-pos="verb" data-tr="qaror topib, oʻrnashib">자리잡고</span> 있다. <span class="cn-word" data-pos="adv" data-tr="aslida, amalda">실제로</span> 건강에 좋다는 <span class="cn-word" data-tr="organik">유기농</span> 식품을 비롯해 특정 질병의 <span class="cn-word" data-tr="oldini olish">예방</span>과 치료에 효과가 있다는 식품을 <span class="cn-word" data-pos="verb" data-tr="gʻamlab, eʼtibor berib">챙겨</span> 먹는 데에 적지 않은 돈과 시간을 투자하는 사람들을 주변에서 <span class="cn-word" data-pos="adv" data-tr="oson">쉽게</span> 볼 수 있다. 하지만 큰돈과 많은 시간을 들이지 않고도 얼마든지 건강한 식생활을 할 수 있다. 그렇다면 어떤 음식들로 건강한 밥상을 <span class="cn-word" data-pos="verb" data-tr="tayyorlash, tuzash">차려야</span> 할까?</p>
 <p>첫째, <span class="cn-word" data-tr="mavsumiy mahsulot">제철 식품</span>이 좋다. 제철 식품이란 계절에 따라 많이 나오는 식품으로, <span class="cn-word" data-tr="yetishtirish">재배</span>에 <span class="cn-word" data-pos="adj" data-tr="maxsus, alohida">특별한</span> 시설이 필요하지 않아 값이 쌀 뿐만 아니라 맛과 향이 좋다. 또한 <span class="cn-word" data-pos="adj" data-tr="boy, serob">풍부한</span> <span class="cn-word" data-tr="oziq moddalar">영양소</span>를 담고 있는데, <span class="cn-word" data-pos="adj" data-tr="yorqin, tirik">생생한</span> 태양 에너지를 받고 자란 제철 식품은 우리 몸속으로 에너지를 <span class="cn-word" data-pos="adv" data-tr="tez, shiddat bilan">쏙쏙</span> 넣어 주는 역할을 한다. 요즘은 제철 식품이 따로 없다고 하지만 비닐하우스에서 짧은 기간 재배한 과일이나 채소는 햇빛을 <span class="cn-word" data-pos="adv" data-tr="yetarlicha">충분히</span> 받지 못해 영양소의 <span class="cn-word" data-tr="miqdori">함량</span>이 <span class="cn-word" data-pos="adj" data-tr="yetishmaydi, kam">부족하다</span>. 그러므로 제때에 생산되는 식품을 <span class="cn-word" data-pos="adj" data-tr="yangi, tetik">신선한</span> 상태로 먹는 것이 가장 좋다.</p>
 <p>둘째, 곡채식 위주의 식사가 좋다. 현대인의 <span class="cn-word" data-tr="turmush tarzi kasalliklari">성인병</span>은 <span class="cn-word" data-pos="adv" data-tr="koʻpincha, aksariyat">대부분</span> <span class="cn-word" data-tr="goʻsht mahsulotlari">육류</span> 위주의 식습관에서 <span class="cn-word" data-pos="verb" data-tr="kelib chiqqan">비롯되었으며</span>, 또한 이러한 질병을 곡식과 채식만으로 치료했다는 보도들을 쉽게 접할 수 있다. 실제로 쥐를 대상으로 한 실험에서도 곡채식의 효능이 <span class="cn-word" data-pos="verb" data-tr="isbotlangan">입증된</span> 바 있다. 곡채식 사료를 준 그룹, 곡채식과 육류를 <span class="cn-word" data-pos="verb" data-tr="aralashtirib">섞어</span> 준 그룹, 육류만을 준 그룹의 쥐들을 해부한 결과, 곡채식 사료를 <span class="cn-word" data-pos="verb" data-tr="isteʼmol qilgan">섭취한</span> 그룹에서는 질병이 <span class="cn-word" data-pos="verb" data-tr="aniqlanmagan, topilmagan">발견되지</span> 않은 데 반해 육류 섭취량이 많을수록 높은 질병률을 보인 것으로 <span class="cn-word" data-pos="verb" data-tr="maʼlum boʻldi, koʻrindi">나타났다</span>. 이는 곡채식이 얼마나 중요한지를 보여 주는 예이다.</p>
@@ -234,6 +344,28 @@ STORIES = [
         "title":   "달라진 젊은 세대의 직업관",
         "summary": "Pul emas — boʻsh vaqt, moyillik va maqsad: yoshlarning yangi kasb qarashlari.",
         "order":   13,
+        "grammar": [
+            {
+                "pattern":  "-는 대신(에)",
+                "meaning":  "... oʻrniga (almashtirish yoki muqobil).",
+                "examples": ["생계 수단으로서의 의미가 약해지는 대신 자아실현의 의미가 커진다.", "밥을 먹는 대신 빵을 먹었어요."],
+            },
+            {
+                "pattern":  "-다고 해도 과언이 아니다",
+                "meaning":  "...desa ham mubolagʻa boʻlmaydi (taʼkid).",
+                "examples": ["잘 쉬기 위해 일한다고 해도 과언이 아니다.", "그가 최고라고 해도 과언이 아니에요."],
+            },
+            {
+                "pattern":  "-에 의하면",
+                "meaning":  "...ga koʻra, ...ga asosan (manbaga tayanish).",
+                "examples": ["설문 조사 결과에 의하면 적성을 중시하는 사람이 많았다.", "뉴스에 의하면 내일 눈이 온대요."],
+            },
+            {
+                "pattern":  "-고자 하다",
+                "meaning":  "...ishni koʻzlamoq, ...moqchi boʻlmoq (rasmiy niyat).",
+                "examples": ["전문 기술을 배워 기술자가 되고자 한다.", "저는 의사가 되고자 합니다."],
+            },
+        ],
         "body": '''<p>현대 사회에서는 <span class="cn-word" data-tr="tirikchilik">생계유지</span>를 위한 수단으로서의 직업 또는 사회적 위상으로서의 직업은 그 의미가 <span class="cn-word" data-pos="adv" data-tr="asta-sekin, tobora">점점</span> <span class="cn-word" data-pos="verb" data-tr="susayadigan, zaiflashadigan">약해지는</span> 대신 <span class="cn-word" data-tr="oʻzini roʻyobga chiqarish">자아실현</span>의 장으로서의 직업의 의미가 <span class="cn-word" data-pos="verb" data-tr="birinchi oʻringa chiqmoqda">부각되고</span> 있다. 여기에는 여러 가지 사회 경제적 요인이 <span class="cn-word" data-pos="verb" data-tr="taʼsir qiladi">작용한다</span>. 기성세대에 비해 생활이 <span class="cn-word" data-pos="adj" data-tr="farovonlashgan">풍족해진</span> 것, 직업의 종류가 <span class="cn-word" data-pos="verb" data-tr="xilma-xil boʻlgan">다양해진</span> 것, '평생 직장' 대신 '평생 직업'의 개념이 <span class="cn-word" data-pos="verb" data-tr="qaror topgan, oʻrnashgan">자리 잡은</span> 것이 그 요인이다. 요즘 젊은 세대들은 아버지 세대와 다른 직업관을 가지고 있는데, 그것은 다음과 같은 특징을 보인다.</p>
 <p>첫째, 요즘 젊은이들은 개인의 <span class="cn-word" data-tr="boʻsh vaqt, hordiq">여가</span> 활동을 <span class="cn-word" data-pos="verb" data-tr="muhim sanaydi">중시한다</span>. 이들은 직장을 선택할 때 월급이 좀 <span class="cn-word" data-pos="adj" data-tr="kam boʻlsa ham">적더라도</span> 가족과 함께 보내거나 <span class="cn-word" data-tr="oʻz ustida ishlash">자기 계발</span>, 취미 활동 등을 할 수 있는 시간이 <span class="cn-word" data-pos="adj" data-tr="yetarlimi">충분한가</span>를 중요하게 <span class="cn-word" data-pos="verb" data-tr="hisoblaydi, sanaydi">여긴다</span>. 부모님 세대가 먹고 살기 위해 쉬는 날 없이 일을 했다면 이들은 잘 쉬기 위해서 일을 한다고 해도 과언이 아니다.</p>
 <p>둘째, 이들도 윤리적인 만족감을 <span class="cn-word" data-pos="verb" data-tr="intiladi, koʻzlaydi">추구한다</span>. 다시 말해 자신이 하고 있는 일이 다른 직업에 비해 수입이 적고 사회적 지위가 <span class="cn-word" data-pos="adj" data-tr="past boʻlsa ham">낮다고</span> 하더라도 자신의 직업에 <span class="cn-word" data-tr="faxr, gʻurur">긍지</span>를 가지고 <span class="cn-word" data-pos="adv" data-tr="halol, vijdonan">성실하게</span> 일한다. 사회 복지사가 저소득층이나 장애인들을 위해 <span class="cn-word" data-pos="verb" data-tr="fidoyilarcha xizmat qiladigan">헌신하는</span> 것이라든가 소방관이 목숨을 걸고 사람을 구하는 것, 공무원이 봉사의 정신으로 공직생활을 하는 것 등이 모두 여기에 <span class="cn-word" data-pos="verb" data-tr="tegishli, kiradi">속한다</span>고 할 수 있다.</p>
@@ -277,6 +409,28 @@ STORIES = [
         "title":   "마트에 숨어 있는 판매 전략",
         "summary": "Nega marketdan doim ortiqcha narsa sotib olamiz? Yashirin savdo usullari.",
         "order":   14,
+        "grammar": [
+            {
+                "pattern":  "-(으)ㄹ 겸",
+                "meaning":  "Bir yoʻla ...ni ham koʻzlab (ikki maqsad).",
+                "examples": ["사은품도 챙길 겸 지갑을 열었다.", "운동도 할 겸 걸어서 왔어요."],
+            },
+            {
+                "pattern":  "-는가 하면",
+                "meaning":  "Baʼzan shunday, baʼzan esa boshqacha (qiyoslash).",
+                "examples": ["판매율을 높이는가 하면 구매를 유도하기도 한다.", "웃는가 하면 갑자기 울기도 해요."],
+            },
+            {
+                "pattern":  "-(으)ㄹ 때마다",
+                "meaning":  "Har gal ...ganda (takror).",
+                "examples": ["식품 매장에 들어설 때마다 상품이 많아 보인다.", "그를 볼 때마다 기분이 좋아져요."],
+            },
+            {
+                "pattern":  "-도록",
+                "meaning":  "... boʻlishi uchun, ...adigan qilib (maqsad).",
+                "examples": ["쇼핑에 몰입하도록 창문과 시계를 두지 않는다.", "늦지 않도록 일찍 출발했어요."],
+            },
+        ],
         "body": '''<p>쇼핑하러 대형 마트에 갔다가 계획에도 없던 물건을 구입한 경험, 누구나 한 두 번은 있을 것이다. 꼭 필요한 물건은 아니었지만 <span class="cn-word" data-tr="qoʻshimcha sovgʻa (xariddan)">사은품</span>도 <span class="cn-word" data-pos="verb" data-tr="olmoq, gʻamlamoq">챙길</span> 겸 지갑을 열었다면 당신은 마트의 '판매 <span class="cn-word" data-tr="strategiya">전략</span>'에 <span class="cn-word" data-pos="adv" data-tr="roppa-rosa, aynan">딱</span> <span class="cn-word" data-pos="verb" data-tr="tuzoqqa tushdi, ilindi">걸려들었다</span>고 할 수 있다. 물건을 고르는 동안 <span class="cn-word" data-pos="adv" data-tr="beixtiyor">무심코</span> <span class="cn-word" data-pos="verb" data-tr="oʻtib ketadigan">지나치게</span> 되는 매장의 내부, 알고 보면 그곳에는 소비자의 지갑을 열기 위한 <span class="cn-word" data-pos="adj" data-tr="puxta oʻylangan">치밀한</span> 전략이 <span class="cn-word" data-pos="adv" data-tr="har yerda, joy-joyda">곳곳에</span> <span class="cn-word" data-pos="verb" data-tr="yashiringan">숨어</span> 있다.</p>
 <p>방배동에 사는 김미화 씨(30세, 주부)는 OO마트의 식품 매장에 들어설 때마다 다른 매장보다 더 많은 종류의 상품이 있는 것 같은 느낌을 받는다. 과일도 종류가 다른 곳보다 더 많고 가격도 <span class="cn-word" data-pos="adv" data-tr="ancha, bir muncha">훨씬</span> <span class="cn-word" data-pos="adv" data-tr="arzon">저렴하게</span> 느껴진다. <span class="cn-word" data-pos="adv" data-tr="aslida, aslini olganda">막상</span> 따져보면 1~2개 정도 차이인데 이처럼 느끼는 이유는 바로 상품의 <span class="cn-word" data-tr="terib qoʻyish, vitrina">진열</span> 방식 때문이다. 과일 매장의 경우 상품의 저렴함을 <span class="cn-word" data-pos="verb" data-tr="taʼkidlab">강조하고</span> <span class="cn-word" data-pos="adv" data-tr="moʻl-koʻl">풍성하게</span> 보이도록 하기 위해 여러 과일을 <span class="cn-word" data-pos="verb" data-tr="uyib, taxlab">쌓아</span> 두고 판매한다. 또한 앞쪽에 비싼 상품을 진열해 뒤쪽 상품이 <span class="cn-word" data-pos="adv" data-tr="nisbatan">상대적으로</span> 저렴하게 느껴지게 해서 판매율을 더 높이는가 하면 사람의 시선이 <span class="cn-word" data-pos="adv" data-tr="instinktiv, tabiiy ravishda">본능적으로</span> 좌우를 살피는 특징이 있다는 사실을 이용해서 같은 종류의 상품은 수직으로 진열해 구매를 <span class="cn-word" data-pos="verb" data-tr="undaydi, yoʻnaltiradi">유도한다</span>.</p>
 <p>또 다른 판매 전략으로 매장의 구조를 이용하는 방법이 있다. 위층으로 손님들을 <span class="cn-word" data-pos="verb" data-tr="koʻchirish, harakatlantirish">이동시키기</span> 위해 1층에는 화장실을 두지 않고, <span class="cn-word" data-pos="adj" data-tr="shoshmasdan, xotirjam">느긋한</span> 마음으로 쇼핑에 <span class="cn-word" data-pos="verb" data-tr="berilib ketishi uchun">몰입하도록</span> 하기 위해 창문과 시계를 <span class="cn-word" data-pos="verb" data-tr="oʻrnatmaslik">설치하지</span> 않는다. 매장 곳곳에 <span class="cn-word" data-pos="verb" data-tr="oʻrnatilgan">설치된</span> 유리나 거울은 소비자들의 발걸음을 <span class="cn-word" data-pos="verb" data-tr="sekinlashtiradigan">늦추는</span> 효과가 있다. 엘리베이터는 구석에, 에스컬레이터는 중앙에 설치한다. 엘리베이터로 <span class="cn-word" data-pos="adv" data-tr="bir zumda, biratoʻla">단번에</span> 목적지까지 가는 것보다 에스컬레이터를 타고 다양한 매장을 <span class="cn-word" data-pos="verb" data-tr="oʻtib, kesib">거쳐</span> 가게 하는 것이 구매를 유도할 수 있는 방법이기 때문이다.</p>
