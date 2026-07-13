@@ -8,11 +8,25 @@ from django_ckeditor_5.fields import CKEditor5Field
 
 STORY_POINTS = 5
 
-# Inline vocab convention: <span class="cn-word" data-tr="uzbek translation">한국어</span>
-WORD_RE = re.compile(
-    r'<span[^>]*class="[^"]*cn-word[^"]*"[^>]*data-tr="([^"]*)"[^>]*>(.*?)</span>',
+# Inline vocab convention:
+#   <span class="cn-word" data-pos="verb" data-tr="uzbek translation">한국어</span>
+# data-pos is optional and one of: verb, adj, adv (anything else / missing =
+# neutral). We match the whole cn-word span, then pull data-tr / data-pos out of
+# its attribute string so the two attributes may appear in any order.
+CN_SPAN_RE = re.compile(
+    r'<span\b([^>]*class="[^"]*cn-word[^"]*"[^>]*)>(.*?)</span>',
     re.DOTALL,
 )
+_TR_RE  = re.compile(r'data-tr="([^"]*)"')
+_POS_RE = re.compile(r'data-pos="([^"]*)"')
+
+# Parts of speech we colour-code (matches the CSS in static/css/corner.css).
+POS_CHOICES = [
+    ('verb', 'Verb'),        # 동사   — green
+    ('adj',  'Adjective'),   # 형용사 — blue
+    ('adv',  'Adverb'),      # 부사   — purple
+]
+VALID_POS = {code for code, _label in POS_CHOICES}
 
 
 class Subject(models.Model):
@@ -114,18 +128,48 @@ class Story(models.Model):
     def _sync_words(self):
         """Rebuild StoryWord rows from cn-word spans in the body."""
         seen, words = set(), []
-        for translation, word_html in WORD_RE.findall(self.body or ''):
+        for attrs, word_html in CN_SPAN_RE.findall(self.body or ''):
+            tr_m = _TR_RE.search(attrs)
+            if not tr_m:
+                continue
+            translation = tr_m.group(1).strip()
             word = re.sub(r'<[^>]+>', '', word_html).strip()
-            translation = translation.strip()
             if not word or not translation or word in seen:
                 continue
+            pos_m = _POS_RE.search(attrs)
+            pos = pos_m.group(1).strip() if pos_m else ''
+            if pos not in VALID_POS:
+                pos = ''
             seen.add(word)
-            words.append((word, translation))
+            words.append((word, translation, pos))
         self.words.all().delete()
         StoryWord.objects.bulk_create([
-            StoryWord(story=self, word=w, translation=t, order=i)
-            for i, (w, t) in enumerate(words)
+            StoryWord(story=self, word=w, translation=t, pos=p, order=i)
+            for i, (w, t, p) in enumerate(words)
         ])
+
+    def sync_questions(self, questions):
+        """Replace this story's comprehension questions with `questions`, a list
+        of dicts: {text, choices=[...], answer=<int>, explanation}. Silently
+        drops malformed entries so a bad question can't break an import."""
+        self.questions.all().delete()
+        rows, order = [], 0
+        for q in questions or []:
+            text = (q.get('text') or '').strip()
+            choices = [str(c).strip() for c in (q.get('choices') or []) if str(c).strip()]
+            if not text or len(choices) < 2:
+                continue
+            try:
+                answer = int(q.get('answer', 0))
+            except (TypeError, ValueError):
+                answer = 0
+            answer = max(0, min(answer, len(choices) - 1))
+            rows.append(StoryQuestion(
+                story=self, text=text, choices=choices, answer=answer,
+                explanation=(q.get('explanation') or '').strip(), order=order,
+            ))
+            order += 1
+        StoryQuestion.objects.bulk_create(rows)
 
     def __str__(self):
         return f'{self.collection.title} — {self.title}'
@@ -136,6 +180,8 @@ class StoryWord(models.Model):
     story       = models.ForeignKey(Story, on_delete=models.CASCADE, related_name='words')
     word        = models.CharField(max_length=100)
     translation = models.CharField(max_length=200)
+    pos         = models.CharField(max_length=10, blank=True, choices=POS_CHOICES,
+                                   help_text='Part of speech (colour tag); blank = neutral.')
     order       = models.PositiveIntegerField(default=0)
 
     class Meta:
@@ -143,6 +189,25 @@ class StoryWord(models.Model):
 
     def __str__(self):
         return f'{self.word} — {self.translation}'
+
+
+class StoryQuestion(models.Model):
+    """An inference / comprehension MCQ shown at the end of a story. Authored in
+    the story data file (not derived from the body) and rebuilt on import."""
+    story       = models.ForeignKey(Story, on_delete=models.CASCADE, related_name='questions')
+    text        = models.TextField(help_text='The question, in the target language.')
+    choices     = models.JSONField(default=list, help_text='List of answer choices (strings).')
+    answer      = models.PositiveSmallIntegerField(default=0,
+                                                   help_text='0-based index of the correct choice.')
+    explanation = models.TextField(blank=True,
+                                   help_text='Why the answer is right — in Uzbek.')
+    order       = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['order', 'id']
+
+    def __str__(self):
+        return f'{self.story.title} — Q{self.order + 1}'
 
 
 class StoryProgress(models.Model):

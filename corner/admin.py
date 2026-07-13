@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from .models import Subject, Collection, Story, StoryWord, WritingTemplate
+from .models import (Subject, Collection, Story, StoryWord, StoryQuestion,
+                     WritingTemplate)
 
 
 @admin.register(Subject)
@@ -33,10 +34,17 @@ class StoryWordInline(admin.TabularInline):
     model = StoryWord
     extra = 0
     can_delete = False
-    readonly_fields = ['order', 'word', 'translation']
+    readonly_fields = ['order', 'word', 'translation', 'pos']
 
     def has_add_permission(self, request, obj=None):
         return False
+
+
+class StoryQuestionInline(admin.TabularInline):
+    """Comprehension MCQs — rebuilt on import, editable here if needed."""
+    model = StoryQuestion
+    extra = 0
+    fields = ['order', 'text', 'choices', 'answer', 'explanation']
 
 
 @admin.register(Story)
@@ -47,7 +55,7 @@ class StoryAdmin(admin.ModelAdmin):
     search_fields       = ['title', 'summary', 'collection__title']
     prepopulated_fields = {'slug': ('title',)}
     readonly_fields     = ['views', 'created_at', 'updated_at']
-    inlines             = [StoryWordInline]
+    inlines             = [StoryWordInline, StoryQuestionInline]
 
 
 @admin.register(WritingTemplate)

@@ -41,9 +41,15 @@
     </div>
 
     {% if words %}
-    <p class="small text-secondary mb-3">
-        <i class="bi bi-lightbulb me-1"></i>{% trans "Highlighted words are key vocabulary — tap one to see its translation." %}
+    <p class="small text-secondary mb-2">
+        <i class="bi bi-lightbulb me-1"></i>{% trans "Highlighted words are key vocabulary — tap one to see its translation. Colors show the part of speech:" %}
     </p>
+    <div class="cn-legend mb-3">
+        <span class="cn-legend-item cn-pos-verb">{% trans "Verb" %}</span>
+        <span class="cn-legend-item cn-pos-adj">{% trans "Adjective" %}</span>
+        <span class="cn-legend-item cn-pos-adv">{% trans "Adverb" %}</span>
+        <span class="cn-legend-item cn-pos-none">{% trans "Expression" %}</span>
+    </div>
     {% endif %}
 
     <article class="cn-reader ck-content mb-4">
@@ -56,12 +62,38 @@
         <p class="small text-secondary mb-3">{% trans "Tap a card to flip it." %}</p>
         <div class="pp-flashcards" data-pp-flashcards>
             {% for w in words %}
-            <div class="pp-card">
-                <div class="pp-card-front">{{ w.word }}</div>
+            <div class="pp-card cn-fc-pos-{% if w.pos %}{{ w.pos }}{% else %}none{% endif %}">
+                <div class="pp-card-front">
+                    {% if w.pos %}<span class="cn-pos-dot cn-pos-{{ w.pos }}"></span>{% endif %}{{ w.word }}
+                </div>
                 <div class="pp-card-back">{{ w.translation }}</div>
             </div>
             {% endfor %}
         </div>
+    </section>
+    {% endif %}
+
+    {% if questions %}
+    <section class="cn-quiz mb-4" data-cn-quiz>
+        <h2 class="h5 mb-1"><i class="bi bi-patch-question me-1"></i>{% trans "Check your understanding" %}</h2>
+        <p class="small text-secondary mb-3">{% trans "Read the story, then choose the best answer. Tap a choice to check it." %}</p>
+        {% for q in questions %}
+        <div class="cn-q" data-answer="{{ q.answer }}">
+            <p class="cn-q-text">{{ forloop.counter }}. {{ q.text }}</p>
+            <div class="cn-opts">
+                {% for choice in q.choices %}
+                <button type="button" class="cn-opt" data-i="{{ forloop.counter0 }}">
+                    <span class="cn-opt-letter">{{ forloop.counter0|add:65|stringformat:"c" }}</span>
+                    <span class="cn-opt-text">{{ choice }}</span>
+                    <span class="cn-opt-mark" aria-hidden="true"></span>
+                </button>
+                {% endfor %}
+            </div>
+            {% if q.explanation %}
+            <template class="cn-q-explain">{{ q.explanation }}</template>
+            {% endif %}
+        </div>
+        {% endfor %}
     </section>
     {% endif %}
 

@@ -20,20 +20,84 @@ STORIES = [
         "summary": "Fransiyalik qiz K-pop va doramalar tufayli Koreyaga kelib, koreys tilini oʻrganishga bel bogʻlaydi.",
         "order":   1,
         "body": '''<p>"다 거짓말이야 몰랐어 이제야 알았어 네가 필요해・・・・・・알았어"</p>
-<p>이것은 제가 제일 좋아하는 한국 가수 빅뱅의 노래입니다. 제가 처음 이 노래를 들었을 때는 무슨 뜻인지조차 몰랐습니다. 그저 <span class="cn-word" data-tr="qoʻshiq matni">가사</span>와 멜로디가 따라 부르기 쉽고, 단체로 나와서 추는 춤도 멋지길래 친구들과 같이 따라 부르기 시작했습니다.</p>
-<p>그러다가 빅뱅 뿐만 아니라 샤이니, 슈퍼주니어, 소녀시대와 같은 다른 한국 가수들의 노래에도 <span class="cn-word" data-tr="qiziqish, eʼtibor">관심</span>을 가지게 되었고 마침내 제 고향 프랑스에서 열린 케이팝 콘서트에도 가게 되었습니다. 거기에서 저는 한손에는 <span class="cn-word" data-tr="Koreya bayrogʻi">태극기</span>, 다른 손에는 한글이 적힌 <span class="cn-word" data-tr="plakat">플래카드</span>를 들고 신나게 노래를 따라 불렀습니다. 그날 이후 멋진 <span class="cn-word" data-tr="tashqi koʻrinish">외모</span>에 뛰어난 <span class="cn-word" data-tr="qoʻshiq aytish mahorati">가창력</span>, 춤 실력까지 두루 갖춘 한국 가수들의 <span class="cn-word" data-tr="jozibasi, maftunkorlik">매력</span>에 그만 푹 빠져 버렸고 지금까지 빠져나오지 못하고 있습니다.</p>
-<p>지금 유럽에서는 한국 드라마도 한국 가요 못지않게 많은 인기를 얻고 있습니다. 제가 SNS를 통해서 처음 본 한국 드라마는 '풀하우스'인데 가수 비와 여배우 송혜교가 한 집에 살면서 티격태격하다가 결국 사랑하게 된다는 내용입니다. <span class="cn-word" data-tr="syujet, mazmun">줄거리</span>도 물론 재미있었지만 나오는 배우들이 어찌나 예쁘고 잘생겼는지 저는 한국에 오기 전까지 한국 사람들은 모두 다 드라마에 나오는 주인공들처럼 생긴 줄 알았습니다.</p>
-<p>한국 가요와 드라마가 좋아서 한국에 관심을 가지게 된 저는 6개월 전에 한국에 왔습니다. 처음 왔을 때는 <span class="cn-word" data-tr="notanish, begona">낯설게</span>만 느껴지던 한국말과 한국 음식에 이젠 제법 <span class="cn-word" data-tr="koʻnikib qoldim">익숙해졌습니다</span>. 그리고 한국 사람들처럼 옷을 입고 이야기하고 화장하는 법까지 배우면서 한국 문화에 더 가까이 다가갈 수 있었습니다. 이런 저를 프랑스에 있는 친구들은 아주 <span class="cn-word" data-tr="havas qiladi">부러워합니다</span>. 자기가 좋아하는 한국 노래가 무슨 뜻인지 가르쳐 달라고 하고, 한국 가수의 시디를 사서 고향으로 보내 달라는 친구도 있습니다. 어떤 친구는 한국 화장품을 부탁하기도 합니다. 제가 친구들에게 이렇게 인기를 얻을 줄 알았더라면 진작 한국어를 배울 걸 그랬다는 <span class="cn-word" data-tr="afsus, pushaymon">후회</span>도 생깁니다.</p>
-<p>저는 한국에 관심이 많은 제 친구들에게 한국어를 가르쳐 주고 싶습니다. 그래서 한국어를 더 열심히 공부해야 합니다. 한국어 <span class="cn-word" data-tr="mahorat, saviya">실력</span>이 늘면 친구들을 가르쳐줄 수 있을 뿐만 아니라 제가 좋아하는 한국 노래와 드라마를 더 잘 이해할 수 있을 테니까요. 그리고 한국 친구도 많이 사귀고 한국의 이곳저곳을 여행하고 싶습니다. 여행 사진을 SNS에 올리면 아마 많은 친구들이 배 아파할 거예요. 제 친구들에게도 한국에 올 수 있는 <span class="cn-word" data-tr="imkoniyat">기회</span>가 생겼으면 좋겠습니다.</p>''',
+<p>이것은 제가 제일 좋아하는 한국 가수 빅뱅의 노래입니다. 제가 처음 이 노래를 들었을 때는 무슨 뜻인지조차 <span class="cn-word" data-pos="verb" data-tr="bilmadim">몰랐습니다</span>. <span class="cn-word" data-pos="adv" data-tr="shunchaki">그저</span> <span class="cn-word" data-tr="qoʻshiq matni">가사</span>와 멜로디가 따라 부르기 <span class="cn-word" data-pos="adj" data-tr="oson">쉽고</span>, 단체로 나와서 추는 춤도 <span class="cn-word" data-pos="adj" data-tr="zoʻr, ajoyib">멋지길래</span> 친구들과 같이 따라 부르기 <span class="cn-word" data-pos="verb" data-tr="boshladim">시작했습니다</span>.</p>
+<p>그러다가 빅뱅 뿐만 아니라 샤이니, 슈퍼주니어, 소녀시대와 같은 다른 한국 가수들의 노래에도 <span class="cn-word" data-tr="qiziqish">관심</span>을 가지게 되었고 <span class="cn-word" data-pos="adv" data-tr="nihoyat">마침내</span> 제 고향 프랑스에서 <span class="cn-word" data-pos="verb" data-tr="oʻtkazilgan">열린</span> 케이팝 콘서트에도 가게 되었습니다. 거기에서 저는 한손에는 태극기, 다른 손에는 한글이 적힌 플래카드를 들고 <span class="cn-word" data-pos="adv" data-tr="zavq bilan, quvnoq">신나게</span> 노래를 따라 불렀습니다. 그날 이후 멋진 외모에 <span class="cn-word" data-pos="adj" data-tr="ajoyib, yetuk">뛰어난</span> 가창력, 춤 실력까지 <span class="cn-word" data-pos="adv" data-tr="har tomonlama">두루</span> <span class="cn-word" data-pos="verb" data-tr="ega boʻlgan">갖춘</span> 한국 가수들의 <span class="cn-word" data-tr="joziba, maftunkorlik">매력</span>에 <span class="cn-word" data-pos="adv" data-tr="beixtiyor">그만</span> <span class="cn-word" data-pos="adv" data-tr="butunlay berilib">푹</span> <span class="cn-word" data-pos="verb" data-tr="mahliyo boʻldim">빠져</span> 버렸고 지금까지 빠져나오지 못하고 있습니다.</p>
+<p>지금 유럽에서는 한국 드라마도 한국 가요 <span class="cn-word" data-pos="adv" data-tr="kam boʻlmagan holda">못지않게</span> 많은 인기를 <span class="cn-word" data-pos="verb" data-tr="qozonmoq, erishmoq">얻고</span> 있습니다. 제가 SNS를 통해서 처음 본 한국 드라마는 '풀하우스'인데 가수 비와 여배우 송혜교가 한 집에 살면서 티격태격하다가 <span class="cn-word" data-pos="adv" data-tr="oxir-oqibat">결국</span> 사랑하게 된다는 내용입니다. <span class="cn-word" data-tr="syujet, mazmun">줄거리</span>도 <span class="cn-word" data-pos="adv" data-tr="albatta">물론</span> 재미있었지만 나오는 배우들이 <span class="cn-word" data-pos="adv" data-tr="shu qadar">어찌나</span> <span class="cn-word" data-pos="adj" data-tr="chiroyli">예쁘고</span> <span class="cn-word" data-pos="adj" data-tr="kelishgan">잘생겼는지</span> 저는 한국에 오기 전까지 한국 사람들은 모두 다 드라마에 나오는 주인공들처럼 생긴 줄 알았습니다.</p>
+<p>한국 가요와 드라마가 좋아서 한국에 관심을 가지게 된 저는 6개월 전에 한국에 왔습니다. 처음 왔을 때는 <span class="cn-word" data-pos="adj" data-tr="notanish, begona">낯설게</span>만 느껴지던 한국말과 한국 음식에 이젠 <span class="cn-word" data-pos="adv" data-tr="ancha, anchagina">제법</span> <span class="cn-word" data-pos="verb" data-tr="koʻnikib qoldim">익숙해졌습니다</span>. 그리고 한국 사람들처럼 옷을 입고 이야기하고 화장하는 법까지 배우면서 한국 문화에 더 <span class="cn-word" data-pos="adv" data-tr="yaqinroq">가까이</span> <span class="cn-word" data-pos="verb" data-tr="yaqinlashmoq">다가갈</span> 수 있었습니다. 이런 저를 프랑스에 있는 친구들은 <span class="cn-word" data-pos="adv" data-tr="juda">아주</span> <span class="cn-word" data-pos="verb" data-tr="havas qiladi">부러워합니다</span>. 자기가 좋아하는 한국 노래가 무슨 뜻인지 가르쳐 달라고 하고, 한국 가수의 시디를 사서 고향으로 보내 달라는 친구도 있습니다. 어떤 친구는 한국 화장품을 부탁하기도 합니다. 제가 친구들에게 이렇게 인기를 얻을 줄 알았더라면 <span class="cn-word" data-pos="adv" data-tr="avvalroq, oldinroq">진작</span> 한국어를 배울 걸 그랬다는 <span class="cn-word" data-tr="afsus, pushaymon">후회</span>도 생깁니다.</p>
+<p>저는 한국에 관심이 많은 제 친구들에게 한국어를 가르쳐 주고 싶습니다. 그래서 한국어를 더 <span class="cn-word" data-pos="adv" data-tr="tirishib, astoydil">열심히</span> 공부해야 합니다. 한국어 <span class="cn-word" data-tr="mahorat, saviya">실력</span>이 <span class="cn-word" data-pos="verb" data-tr="oshsa, yaxshilansa">늘면</span> 친구들을 가르쳐줄 수 있을 뿐만 아니라 제가 좋아하는 한국 노래와 드라마를 더 잘 <span class="cn-word" data-pos="verb" data-tr="tushunmoq">이해할</span> 수 있을 테니까요. 그리고 한국 친구도 많이 <span class="cn-word" data-pos="verb" data-tr="doʻst orttirmoq">사귀고</span> 한국의 이곳저곳을 여행하고 싶습니다. 여행 사진을 SNS에 올리면 <span class="cn-word" data-pos="adv" data-tr="ehtimol">아마</span> 많은 친구들이 배 아파할 거예요. 제 친구들에게도 한국에 올 수 있는 <span class="cn-word" data-tr="imkoniyat">기회</span>가 생겼으면 좋겠습니다.</p>''',
+        "questions": [
+            {
+                "text": "이 글을 쓴 사람에 대한 설명으로 알맞은 것은 무엇입니까?",
+                "choices": [
+                    "한국에서 태어나 프랑스로 유학을 갔다.",
+                    "케이팝과 드라마를 좋아하다가 한국에 오게 되었다.",
+                    "한국 친구의 소개로 한국어를 배우기 시작했다.",
+                ],
+                "answer": 1,
+                "explanation": "Muallif — fransiyalik qiz. U avval K-pop qoʻshiqlari va dramalarni yoqtirgan, keyin \"한국에 관심을 가지게 된 저는 6개월 전에 한국에 왔습니다\" deb yozadi. Demak Koreyaga qiziqishi tufayli kelgan; Koreyada tugʻilmagan va doʻst tanishtirgani ham aytilmagan.",
+            },
+            {
+                "text": "프랑스에 있는 친구들이 글쓴이를 부러워하는 이유로 가장 알맞은 것은 무엇입니까?",
+                "choices": [
+                    "글쓴이가 한국 문화를 가까이에서 즐기고 있기 때문에",
+                    "글쓴이가 한국에서 가수로 데뷔했기 때문에",
+                    "글쓴이가 한국어 시험에서 일 등을 했기 때문에",
+                ],
+                "answer": 0,
+                "explanation": "Doʻstlar undan qoʻshiq maʼnosini soʻrashadi, CD va kosmetika yuborishini iltimos qilishadi — yaʼni u koreys madaniyatidan bevosita bahramand boʻlayotgani uchun havas qilishadi. Qoʻshiqchi boʻlgani yoki imtihon haqida matnda hech narsa yoʻq.",
+            },
+            {
+                "text": "글쓴이가 한국어를 더 열심히 공부하려는 까닭은 무엇입니까?",
+                "choices": [
+                    "한국 회사에 취직하기 위해서",
+                    "친구들을 가르치고 노래와 드라마를 더 잘 이해하기 위해서",
+                    "한국 국적을 얻기 위해서",
+                ],
+                "answer": 1,
+                "explanation": "Oxirgi xatboshida u \"실력이 늘면 친구들을 가르쳐줄 수 있고, 좋아하는 노래와 드라마를 더 잘 이해할 수 있다\" deydi. Ishga kirish yoki fuqarolik haqida gap yoʻq.",
+            },
+        ],
     },
     {
         "title":   "어휘 속에 숨은 한국 문화",
         "summary": "Machjangu, komushinni teskari kiyish, ttengttengi — soʻzlar ortida yashiringan koreys madaniyati.",
         "order":   2,
-        "body": '''<p>한 언어의 <span class="cn-word" data-tr="soʻz boyligi">어휘</span>에는 그 언어 사회의 문화가 담겨 있다. 어휘를 통해 그 사회의 문화를 알 수 있고, 문화는 어휘를 통해 나타나게 마련이다. 한국어 어휘에도 한국 문화가 잘 반영되어 있는데 예를 들어 '남의말에 <span class="cn-word" data-tr="rozi boʻlmoq">동의하다</span>'는 뜻을 가진 '맞장구치다'는 한국 <span class="cn-word" data-tr="anʼana">전통</span> 음악인 풍물놀이에서 <span class="cn-word" data-tr="kelib chiqqan">유래되었다</span>. 풍물놀이를 할 때 둘이 마주서서 치는 장구를 맞장구라고 하는데, 맞장구를 칠 때는 서로 마음이 잘 맞아야 한다. 남의 의견에 동의하는 것도 서로 마음이 맞아야 하므로 '맞장구치다'가 '동의하다'라는 뜻을 가지게 되는데, 맞장구칠 때에는 "맞아", "그럼" 등과 같은 표현이 사용된다. 이것 외에도 한국어 어휘 속에는 다양한 한국문화가 숨어 있으니 지금부터 함께 찾아보도록 하자.</p>
-<p><strong>고무신을 거꾸로 신다</strong> "너, 고무신 거꾸로 신으면 안 돼." 이게 무슨 말일까? 이것은 <span class="cn-word" data-tr="armiya">군대</span> 가는 남자가 여자 친구에게 자신이 군대에 가 있는 동안 자신을 버리고 다른 남자를 사귀지 말라는 뜻으로 하는 말이다. 그런데 왜 하필 고무신일까? 그것은 이 말이 생겼을 당시, 한국을 대표하는 신발이 고무신이었기 때문이다. 그때 군대 간 남자를 버리고 다른 남자에게 가는 여자들이 있었을 것이다. 다른 남자를 만나다가 휴가 나온 애인에게 <span class="cn-word" data-tr="qoʻlga tushganda">들켰을 때</span> 여자는 마음이 너무 급한 탓에 고무신을 거꾸로 신고 <span class="cn-word" data-tr="qochib ketmoq">도망가는</span> 일도 있었다고 한다. 그래서 '고무신을 거꾸로 신다'는 '여자가 사귀던 남자와 <span class="cn-word" data-tr="bir tomonlama">일방적으로</span> 헤어지다'라는 뜻을 가지게 되었다. 요즘은 반대로 군대 가는 남자에게 여자가 "군화 거꾸로 신지 마."라고 하기도 한다.</p>
-<p><strong>땡땡이치다</strong> "나 오늘 수업 땡땡이쳤어." 이 말은 수업에 가지 않고 다른 일을 했다는 뜻이다. 땡땡이는 '<span class="cn-word" data-tr="qoʻngʻiroq">종</span>'을 가리키는 말인데, 예전에는 수업이 시작되고 끝나는 시간을 종을 쳐서 알렸다. 여기에서는 수업이 끝날 때 치는 종을 말한다. 그래서 '땡땡이를 치다'라는 말은 '수업이 끝나다'라는 뜻이며, '공부를 잠시 쉬다'라는 의미도 포함되어 있다. 여기에서 의미가 더 변화해 '<span class="cn-word" data-tr="ayyorlik qilib">꾀를 부려서</span> 일이나 공부를 열심히 하지 않거나 빠지다'라는 뜻을 가지게 된 것이다.</p>
-<p><strong>쏘다</strong> "돈 걱정 말고 많이들 먹어. 오늘 밥값은 내가 쏠게." 여기에서 '쏘다'는 '돈을 쓰다'를 <span class="cn-word" data-tr="taʼkidlagan, kuchaytirilgan">강조한</span> 표현이다. 한국에서는 식당 <span class="cn-word" data-tr="kassa">계산대</span>에서 돈을 먼저 내겠다고 몸싸움을 하는 장면을 흔히 볼 수 있다. 식사가 끝나고 일행이 일어설 준비를 하거나 신발을 신는 사이에 한 사람이 일어나 재빨리 계산대로 가면 나머지 사람들은 구두를 제대로 신지도 못한 채 뒤뚱거리며 달려 나간다. 서로 먼저 <span class="cn-word" data-tr="hamyon">지갑</span>을 꺼내려는 상황이 마치 총을 꺼내려는 장면처럼 보이는데 마침내 몸싸움에서 이긴 사람이 밥값을 총처럼 '쏘'게 되는 것이다. 뒷주머니에서 지갑을 꺼내 돈을 내는 행동이 허리에 찬 <span class="cn-word" data-tr="toʻpponcha">권총</span>을 꺼내 쏘는 것처럼 보여 '돈을 내다'를 '쏘다'로 표현하게 되었다고 한다.</p>''',
+        "body": '''<p>한 언어의 <span class="cn-word" data-tr="soʻz boyligi">어휘</span>에는 그 언어 사회의 문화가 <span class="cn-word" data-pos="verb" data-tr="mujassam boʻlgan">담겨</span> 있다. 어휘를 통해 그 사회의 문화를 알 수 있고, 문화는 어휘를 통해 <span class="cn-word" data-pos="verb" data-tr="namoyon boʻladi">나타나게</span> 마련이다. 한국어 어휘에도 한국 문화가 잘 <span class="cn-word" data-pos="verb" data-tr="aks etgan">반영되어</span> 있는데 예를 들어 '남의 말에 <span class="cn-word" data-pos="verb" data-tr="rozi boʻlmoq">동의하다</span>'는 뜻을 가진 '맞장구치다'는 한국 <span class="cn-word" data-tr="anʼana">전통</span> 음악인 풍물놀이에서 <span class="cn-word" data-pos="verb" data-tr="kelib chiqqan">유래되었다</span>. 풍물놀이를 할 때 둘이 <span class="cn-word" data-pos="verb" data-tr="yuzma-yuz turib">마주서서</span> 치는 장구를 맞장구라고 하는데, 맞장구를 칠 때는 서로 마음이 잘 맞아야 한다. 남의 의견에 동의하는 것도 서로 마음이 맞아야 하므로 '맞장구치다'가 '동의하다'라는 뜻을 가지게 되는데, 맞장구칠 때에는 "맞아", "그럼" 등과 같은 표현이 사용된다. 이것 외에도 한국어 어휘 속에는 <span class="cn-word" data-pos="adj" data-tr="turli-tuman">다양한</span> 한국 문화가 <span class="cn-word" data-pos="verb" data-tr="yashiringan">숨어</span> 있으니 지금부터 함께 찾아보도록 하자.</p>
+<p><strong>고무신을 거꾸로 신다</strong> "너, 고무신 <span class="cn-word" data-pos="adv" data-tr="teskari">거꾸로</span> 신으면 안 돼." 이게 무슨 말일까? 이것은 <span class="cn-word" data-tr="armiya">군대</span> 가는 남자가 여자 친구에게 자신이 군대에 가 있는 동안 자신을 <span class="cn-word" data-pos="verb" data-tr="tashlab, voz kechib">버리고</span> 다른 남자를 사귀지 말라는 뜻으로 하는 말이다. 그런데 왜 <span class="cn-word" data-pos="adv" data-tr="nega aynan">하필</span> 고무신일까? 그것은 이 말이 생겼을 당시, 한국을 <span class="cn-word" data-pos="verb" data-tr="ramzi boʻlgan">대표하는</span> 신발이 고무신이었기 때문이다. 그때 군대 간 남자를 버리고 다른 남자에게 가는 여자들이 있었을 것이다. 다른 남자를 만나다가 휴가 나온 애인에게 <span class="cn-word" data-pos="verb" data-tr="qoʻlga tushganda">들켰을 때</span> 여자는 마음이 너무 <span class="cn-word" data-pos="adj" data-tr="shoshqin, shoshilinch">급한</span> 탓에 고무신을 거꾸로 신고 <span class="cn-word" data-pos="verb" data-tr="qochib ketmoq">도망가는</span> 일도 있었다고 한다. 그래서 '고무신을 거꾸로 신다'는 '여자가 사귀던 남자와 <span class="cn-word" data-pos="adv" data-tr="bir tomonlama">일방적으로</span> 헤어지다'라는 뜻을 가지게 되었다. 요즘은 <span class="cn-word" data-pos="adv" data-tr="aksincha">반대로</span> 군대 가는 남자에게 여자가 "군화 거꾸로 신지 마."라고 하기도 한다.</p>
+<p><strong>땡땡이치다</strong> "나 오늘 수업 땡땡이쳤어." 이 말은 수업에 가지 않고 다른 일을 했다는 뜻이다. 땡땡이는 '<span class="cn-word" data-tr="qoʻngʻiroq">종</span>'을 <span class="cn-word" data-pos="verb" data-tr="bildiruvchi, ishora qiluvchi">가리키는</span> 말인데, <span class="cn-word" data-pos="adv" data-tr="ilgari, avvallari">예전에는</span> 수업이 시작되고 끝나는 시간을 종을 쳐서 <span class="cn-word" data-pos="verb" data-tr="bildirar edi, xabar berardi">알렸다</span>. 여기에서는 수업이 끝날 때 치는 종을 말한다. 그래서 '땡땡이를 치다'라는 말은 '수업이 끝나다'라는 뜻이며, '공부를 <span class="cn-word" data-pos="adv" data-tr="birpas, qisqa vaqt">잠시</span> 쉬다'라는 의미도 <span class="cn-word" data-pos="verb" data-tr="oʻz ichiga oladi">포함되어</span> 있다. 여기에서 의미가 더 <span class="cn-word" data-pos="verb" data-tr="oʻzgarib">변화해</span> '<span class="cn-word" data-pos="verb" data-tr="ayyorlik qilib">꾀를 부려서</span> 일이나 공부를 열심히 하지 않거나 빠지다'라는 뜻을 가지게 된 것이다.</p>
+<p><strong>쏘다</strong> "돈 걱정 말고 많이들 먹어. 오늘 밥값은 내가 쏠게." 여기에서 '쏘다'는 '돈을 쓰다'를 <span class="cn-word" data-pos="verb" data-tr="taʼkidlagan">강조한</span> 표현이다. 한국에서는 식당 <span class="cn-word" data-tr="kassa">계산대</span>에서 돈을 먼저 내겠다고 몸싸움을 하는 장면을 <span class="cn-word" data-pos="adv" data-tr="koʻpincha, tez-tez">흔히</span> 볼 수 있다. 식사가 끝나고 일행이 일어설 준비를 하거나 신발을 신는 사이에 한 사람이 일어나 <span class="cn-word" data-pos="adv" data-tr="tez, chaqqonlik bilan">재빨리</span> 계산대로 가면 나머지 사람들은 구두를 <span class="cn-word" data-pos="adv" data-tr="tuzukroq, joyida">제대로</span> 신지도 못한 채 뒤뚱거리며 달려 나간다. 서로 먼저 <span class="cn-word" data-tr="hamyon">지갑</span>을 <span class="cn-word" data-pos="verb" data-tr="chiqarmoqchi boʻlgan">꺼내려는</span> 상황이 <span class="cn-word" data-pos="adv" data-tr="xuddi, goʻyo">마치</span> 총을 꺼내려는 장면처럼 보이는데 마침내 몸싸움에서 <span class="cn-word" data-pos="verb" data-tr="gʻolib chiqqan, yutgan">이긴</span> 사람이 밥값을 총처럼 '쏘'게 되는 것이다. 뒷주머니에서 지갑을 꺼내 돈을 내는 행동이 허리에 찬 <span class="cn-word" data-tr="toʻpponcha">권총</span>을 꺼내 쏘는 것처럼 보여 '돈을 내다'를 '쏘다'로 표현하게 되었다고 한다.</p>''',
+        "questions": [
+            {
+                "text": "이 글에서 글쓴이가 가장 말하고 싶은 것은 무엇입니까?",
+                "choices": [
+                    "한국의 전통 음악은 배우기 어렵다.",
+                    "한국어 어휘 속에는 한국의 문화가 담겨 있다.",
+                    "외국인은 한국의 관용 표현을 쓰면 안 된다.",
+                ],
+                "answer": 1,
+                "explanation": "Kirish qismida \"어휘에는 문화가 담겨 있다\" (soʻz boyligida madaniyat mujassam) deyilgan, soʻng shu fikr misollar bilan isbotlanadi. Bu — matnning asosiy gʻoyasi; qolgan variantlar matnda umuman aytilmagan.",
+            },
+            {
+                "text": "'고무신을 거꾸로 신다'라는 표현의 뜻으로 알맞은 것은 무엇입니까?",
+                "choices": [
+                    "신발을 잘못 신어서 넘어지다",
+                    "여자가 사귀던 남자와 일방적으로 헤어지다",
+                    "군대에 가기 싫어서 도망가다",
+                ],
+                "answer": 1,
+                "explanation": "Matnda aynan shu ibora \"여자가 사귀던 남자와 일방적으로 헤어지다\" maʼnosini bildirishi yozilgan. Boshqa variantlar iboraning kelib chiqishidagi detallar bilan chalgʻitadi, lekin maʼnosi emas.",
+            },
+            {
+                "text": "이 글의 내용과 같은 것은 무엇입니까?",
+                "choices": [
+                    "'쏘다'는 원래 총을 쏘는 모습에서 나온 표현이다.",
+                    "'맞장구치다'는 서양 음악에서 유래되었다.",
+                    "'땡땡이'는 원래 시험을 뜻하는 말이었다.",
+                ],
+                "answer": 0,
+                "explanation": "Matnda \"지갑을 꺼내 돈을 내는 행동이 권총을 꺼내 쏘는 것처럼 보여\" deyilgan — yaʼni 쏘다 toʻpponcha otish obrazidan kelgan. 맞장구 koreys anʼanaviy musiqasidan (풍물놀이), 땡땡이 esa qoʻngʻiroqdan kelgan, imtihondan emas.",
+            },
+        ],
     },
     {
         "title":   "야구장에서 즐기는 여가",

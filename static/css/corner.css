@@ -12,6 +12,15 @@
     --cn-accent: #d97706;
     --cn-hl:     #fef3c7;
     --cn-border: #ede4d3;
+
+    /* Part-of-speech colour coding (verb / adjective / adverb). */
+    --cn-verb:      #16a34a;  --cn-verb-hl: #dcfce7;
+    --cn-adj:       #2563eb;  --cn-adj-hl:  #dbeafe;
+    --cn-adv:       #7c3aed;  --cn-adv-hl:  #ede9fe;
+
+    /* Quiz feedback. */
+    --cn-right:      #16a34a;  --cn-right-soft: #ecfdf5;
+    --cn-wrong:      #dc2626;  --cn-wrong-soft: #fef2f2;
 }
 
 /* ── Cards ─────────────────────────────────────────────────────────── */
@@ -119,9 +128,129 @@
 }
 .cn-ready .cn-word { cursor: pointer; }
 .cn-ready .cn-word.cn-open {
-    background: var(--cn-accent);
-    color: #fff;
+    background: var(--cn-ink);
+    color: var(--cn-paper);
+    border-bottom-color: var(--cn-ink);
 }
+
+/* Colour highlights by part of speech (verb / adjective / adverb).
+   Words with no data-pos keep the neutral amber highlight above. */
+.cn-word[data-pos="verb"] { background: var(--cn-verb-hl); border-bottom-color: var(--cn-verb); }
+.cn-word[data-pos="adj"]  { background: var(--cn-adj-hl);  border-bottom-color: var(--cn-adj);  }
+.cn-word[data-pos="adv"]  { background: var(--cn-adv-hl);  border-bottom-color: var(--cn-adv);  }
+
+/* Part-of-speech legend under the intro line. */
+.cn-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+}
+.cn-legend-item {
+    font-size: .78rem;
+    font-weight: 600;
+    padding: .1rem .55rem;
+    border-radius: 1rem;
+    border-bottom: 2px solid transparent;
+}
+.cn-legend-item.cn-pos-verb { background: var(--cn-verb-hl); border-bottom-color: var(--cn-verb); }
+.cn-legend-item.cn-pos-adj  { background: var(--cn-adj-hl);  border-bottom-color: var(--cn-adj);  }
+.cn-legend-item.cn-pos-adv  { background: var(--cn-adv-hl);  border-bottom-color: var(--cn-adv);  }
+.cn-legend-item.cn-pos-none { background: var(--cn-hl);      border-bottom-color: var(--cn-accent); }
+
+/* Coloured dot on flashcard fronts, matching the word's POS. */
+.cn-pos-dot {
+    display: inline-block;
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+    margin-right: .35rem;
+    vertical-align: middle;
+}
+.cn-pos-dot.cn-pos-verb { background: var(--cn-verb); }
+.cn-pos-dot.cn-pos-adj  { background: var(--cn-adj);  }
+.cn-pos-dot.cn-pos-adv  { background: var(--cn-adv);  }
+
+/* ── End-of-story comprehension quiz ───────────────────────────────── */
+.cn-quiz {
+    background: var(--cn-paper);
+    border: 1px solid var(--cn-border);
+    border-radius: 1rem;
+    padding: 1.25rem 1.25rem .5rem;
+}
+.cn-q { margin-bottom: 1.25rem; }
+.cn-q:last-child { margin-bottom: .75rem; }
+.cn-q-text {
+    font-weight: 600;
+    color: var(--cn-ink);
+    margin-bottom: .6rem;
+    line-height: 1.6;
+}
+.cn-opts { display: grid; gap: .5rem; }
+.cn-opt {
+    display: flex;
+    align-items: flex-start;
+    gap: .6rem;
+    width: 100%;
+    text-align: left;
+    background: #fff;
+    color: var(--cn-ink);
+    border: 1.5px solid var(--cn-border);
+    border-radius: .6rem;
+    padding: .6rem .8rem;
+    font: inherit;
+    line-height: 1.5;
+    cursor: pointer;
+    transition: border-color .12s ease, background .12s ease;
+}
+.cn-opt:hover:not(:disabled) { border-color: var(--cn-accent); }
+.cn-opt:disabled { cursor: default; }
+.cn-opt-letter {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--cn-hl);
+    color: var(--cn-accent);
+    border-radius: 50%;
+    font-size: .8rem;
+    font-weight: 700;
+}
+.cn-opt-text { flex: 1; }
+.cn-opt-mark { flex-shrink: 0; font-weight: 700; }
+
+.cn-opt.cn-correct {
+    border-color: var(--cn-right);
+    background: var(--cn-right-soft);
+}
+.cn-opt.cn-correct .cn-opt-letter { background: var(--cn-right); color: #fff; }
+.cn-opt.cn-correct .cn-opt-mark::after { content: '✓'; color: var(--cn-right); }
+.cn-opt.cn-wrong {
+    border-color: var(--cn-wrong);
+    background: var(--cn-wrong-soft);
+}
+.cn-opt.cn-wrong .cn-opt-letter { background: var(--cn-wrong); color: #fff; }
+.cn-opt.cn-wrong .cn-opt-mark::after { content: '✗'; color: var(--cn-wrong); }
+
+.cn-feedback {
+    margin-top: .6rem;
+    padding: .6rem .8rem;
+    border-left: 4px solid var(--cn-right);
+    background: var(--cn-right-soft);
+    border-radius: .5rem;
+    font-size: .92rem;
+    line-height: 1.6;
+    font-family: var(--bs-body-font-family, sans-serif);
+}
+.cn-feedback.cn-is-wrong {
+    border-left-color: var(--cn-wrong);
+    background: var(--cn-wrong-soft);
+}
+.cn-feedback-verdict { font-weight: 700; margin: 0 0 .2rem; color: var(--cn-right); }
+.cn-feedback.cn-is-wrong .cn-feedback-verdict { color: var(--cn-wrong); }
+.cn-feedback-explain { color: var(--cn-ink); }
+.cn-feedback-explain :last-child { margin-bottom: 0; }
 
 /* Translation popover (created by corner.js). */
 .cn-pop {
@@ -163,6 +292,14 @@
         --cn-accent: #f59e0b;
         --cn-hl:     #78350f;
         --cn-border: #44403c;
+
+        /* Deeper, translucent POS highlights so Hangul stays legible on paper. */
+        --cn-verb:      #4ade80;  --cn-verb-hl: #14532d;
+        --cn-adj:       #60a5fa;  --cn-adj-hl:  #1e3a8a;
+        --cn-adv:       #c4b5fd;  --cn-adv-hl:  #4c1d95;
+
+        --cn-right:      #4ade80;  --cn-right-soft: #052e1c;
+        --cn-wrong:      #f87171;  --cn-wrong-soft: #3b0d0d;
     }
     .cn-card:hover,
     .cn-banner:hover { box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .5) !important; }
@@ -172,4 +309,7 @@
         color: var(--cn-ink);
     }
     .cn-pop::after { border-top-color: var(--cn-hl); }
+
+    .cn-opt { background: #292524; }
+    .cn-legend-item { color: var(--cn-ink); }
 }

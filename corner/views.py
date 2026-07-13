@@ -126,6 +126,7 @@ def corner_story(request, subject_slug, collection_slug, slug):
         'collection': collection,
         'story': story,
         'words': list(story.words.all()),
+        'questions': list(story.questions.all()),
         'current_no': index + 1,
         'total_no': len(siblings),
         'prev_story': prev_story,

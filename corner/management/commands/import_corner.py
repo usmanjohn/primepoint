@@ -22,14 +22,24 @@ The data file must expose ``SUBJECT`` and ``COLLECTION`` dicts and a
             "title":   "첫 만남",
             "summary": "Short card blurb in Uzbek (optional, <=300 chars).",
             "order":   1,
-            "body":    '<p>... <span class="cn-word" data-tr="doʻst">친구</span> ...</p>',
+            "body":    '<p>... <span class="cn-word" data-pos="verb" data-tr="uchrashmoq">만나다</span> ...</p>',
+            "questions": [                       # optional — 0-3 inference MCQs
+                {
+                    "text":        "이 글의 중심 생각은 무엇입니까?",
+                    "choices":     ["...", "...", "..."],
+                    "answer":      1,            # 0-based index of the correct choice
+                    "explanation": "Nega toʻgʻri — oʻzbekcha izoh.",
+                },
+            ],
         },
         ...
     ]
 
 Vocabulary is marked inline in the body as
-``<span class="cn-word" data-tr="uzbek translation">한국어</span>`` — the
-word list and flashcards are rebuilt from those spans on every save.
+``<span class="cn-word" data-pos="verb" data-tr="uzbek translation">한국어</span>``
+(``data-pos`` is optional: verb / adj / adv, else neutral) — the word list and
+flashcards are rebuilt from those spans on every save. Comprehension questions
+come from the optional ``questions`` list and are rebuilt on every import.
 
 Usage::
 
@@ -202,8 +212,10 @@ class Command(BaseCommand):
                 )
 
                 if was_created:
+                    story.sync_questions(data.get("questions"))
                     created += 1
-                    self.stdout.write(self.style.SUCCESS(f"[{i}] created: {title}"))
+                    nq = story.questions.count()
+                    self.stdout.write(self.style.SUCCESS(f"[{i}] created: {title} ({nq} questions)"))
                 elif republish:
                     story.summary = summary
                     story.body = body
@@ -211,8 +223,10 @@ class Command(BaseCommand):
                     story.author = author
                     story.is_published = True
                     story.save()   # save() re-syncs StoryWord rows from the body
+                    story.sync_questions(data.get("questions"))
                     updated += 1
-                    self.stdout.write(self.style.SUCCESS(f"[{i}] updated: {title}"))
+                    nq = story.questions.count()
+                    self.stdout.write(self.style.SUCCESS(f"[{i}] updated: {title} ({nq} questions)"))
                 else:
                     skipped += 1
                     self.stdout.write(self.style.WARNING(
