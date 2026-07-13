@@ -1,0 +1,25 @@
+# ── Collection metadata (read by Claude) ─────────────────────────────
+SUBJECT:    Korean            (icon: bi-translate, color: #d97706)
+COLLECTION: 세상의 신기한 이야기
+AUTHOR:     powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_CORNER.md. This file is ONLY the ordered story list.
+# The number = the story's `order` within the collection.
+# Level: intermediate (TOPIK 3-4), but the GOAL IS ENJOYMENT — fun "wow-fact" reads about
+# space, nature and the world (NOT exam/TOPIK topics). Short passages: ~10-12 vocab marks,
+# 2 grammar points, 2-3 inference questions each (STYLE_GUIDE_CORNER.md §6).
+# Claude-authored (not from a source text). Imported via _stories_wonders_1_10.py.
+# ─────────────────────────────────────────────────────────────────────
+
+## 세상의 신기한 이야기 — Amazing stories of the world
+
+1. 우주의 냄새 (Koinotning hidi)
+2. 우리는 별의 먼지 (Biz yulduz changidanmiz)
+3. 점점 길어지는 하루 (Kun asta-sekin uzaymoqda)
+4. 세상에서 가장 조용한 방 (Dunyodagi eng jimjit xona)
+5. 심장이 셋인 동물, 문어 (Uch yurakli jonzot — sakkizoyoq)
+6. 왜 우리는 꿈을 잊을까? (Nega tushlarni unutamiz?)
+7. 초록빛 사하라 (Yashil Sahara)
+8. 목성에는 다이아몬드 비가 내린다 (Yupiterda olmos yomgʻiri)
+9. 꿀은 절대 상하지 않는다 (Asal hech qachon buzilmaydi)
+10. 세상에서 가장 깊은 곳 (Dunyodagi eng chuqur joy)

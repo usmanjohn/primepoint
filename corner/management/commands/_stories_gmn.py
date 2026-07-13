@@ -535,4 +535,262 @@ STORIES = [
             },
         ],
     },
+    # ── 13 ───────────────────────────────────────────────────────────────
+    {
+        "title":   "예술과 사회",
+        "summary": "Koʻcha sanʼati (Graffiti) ning shahar koʻrkini buzuvchi vandalizmdan jamoat sanʼatiga aylanishi.",
+        "order":   13,
+        "body": '''<p>과거에 도시의 건물 벽이나 지하철에 <span class="cn-word" data-pos="adv" data-tr="yashirincha, ruxsatsiz">몰래</span> 그림을 그리는 '그라피티(Graffiti)'는 도시의 미관을 해치는 범죄 행위로 <span class="cn-word" data-pos="adv" data-tr="shafqatsizlarcha, qattiq">철저히</span> 외면받았습니다. 공공 기물을 파괴하는 반사회적 행동이라는 인식이 <strong>강했기 때문입니다</strong>. 그러나 최근에는 그라피티를 단순한 낙서가 아니라 사회적 메시지를 전달하는 현대 미술의 한 장르이자 '공공 미술'로 바라보는 긍정적인 시각이 <span class="cn-word" data-pos="adv" data-tr="sezilarli darajada, sezilarli">현저히</span> 늘어나는 중입니다.</p>
+<p>어둡고 <span class="cn-word" data-pos="adj" data-tr="tushkun, gʻamgin">음산했던</span> 구도심의 골목길에 화려한 그라피티 벽화를 조성하자, 거리가 <span class="cn-word" data-pos="adv" data-tr="jonli tarzda, jonlanib">활기차게</span> 변하고 전 세계 관광객들이 <span class="cn-word" data-pos="adv" data-tr="tinimsiz ravishda, ketma-ket">끊임없이</span> 찾아오는 명소로 탈바꿈하기도 합니다. 이처럼 예술의 경계는 고정되어 있지 않고 시대의 흐름과 대중의 수용 방식에 따라 <strong>변하기 마련입니다</strong>. 쓰레기장 같던 공간을 예술로 승화시키는 이러한 시도는 낙후된 지역을 재생하고 도시의 문화적 가치를 <span class="cn-word" data-pos="adj" data-tr="gʻoyatda ulkan, yuksak">막대하게</span> 높이는 훌륭한 계기가 되고 있습니다.</p>''',
+        "grammar": [
+            {
+                "pattern":  "-기 때문이다",
+                "meaning":  "Sabab yoki asosni bildiradi: ... boʻlganligi sabablidir, ... uchun.",
+                "examples": ["공공 기물을 파괴하는 행동이라는 인식이 강했기 때문입니다.", "날씨가 춥기 때문에 옷을 입었습니다."],
+            },
+            {
+                "pattern":  "-기 마련이다",
+                "meaning":  "Tabiiy qonuniyat yoki muqarrarlikni bildiradi: ... boʻlishi tabiiy/aniq.",
+                "examples": ["시대의 흐름에 따라 변하기 마련입니다.", "시간이 지나면 상처는 아물기 마련이에요."],
+            },
+        ],
+        "questions": [
+            {
+                "text": "과거와 비교하여 오늘날 '그라피티'에 대한 인식이 어떻게 변화했습니까?",
+                "choices": [
+                    "과거보다 더 엄격한 범죄로 처벌받고 있다.",
+                    "도시 미관을 해치는 주범으로 낙인찍혔다.",
+                    "사회적 메시지를 전달하는 공공 미술로 인정받고 있다.",
+                ],
+                "answer": 2,
+                "explanation": "Matnda graffitining oddiy qoralashdan ijtimoy xabarlarni yetkazuvchi jamoat sanʼati (공공 미술) darajasiga koʻtarilgani aytilgan.",
+            },
+            {
+                "text": "본문의 내용과 일치하지 않는 것을 고르십시오.",
+                "choices": [
+                    "그라피티 벽화는 낙후된 구도심 지역을 재생하는 데 기여할 수 있다.",
+                    "예술의 경계는 시대가 변해도 절대 바뀌지 않고 고정되어 있다.",
+                    "음산했던 골목길이 그라피티를 통해 관광 명소로 변하기도 한다.",
+                    "과거에는 그라피티를 반사회적 행위로 보는 시각이 지배적이었다.",
+                ],
+                "answer": 1,
+                "explanation": "Ikkinchi xatboshida sanʼat chegaralari qotib qolmagan, aksincha vaqt oʻtishi bilan oʻzgarishi tabiiy (변하기 마련) deb yozilgan.",
+            },
+        ],
+    },
+    # ── 14 ───────────────────────────────────────────────────────────────
+    {
+        "title":   "의학과 보건",
+        "summary": "Zamonaviy dunyoda smartfon va kompyuterlar tufayli koʻpayayotgan Raqamli Koʻz Charchogʻi (Digital Eye Strain) muammosi.",
+        "order":   14,
+        "body": '''<p>컴퓨터와 스마트폰 스크린을 <span class="cn-word" data-pos="adv" data-tr="uzoq vaqt davomida, uzoq">장시간</span> 들여다보는 현대인들이 늘어나면서 '디지털 시각 증후군'을 호소하는 환자들이 <span class="cn-word" data-pos="adv" data-tr="keskin ravishda, shiddat bilan">급격히</span> 증가하고 있습니다. 화면에 집중하다 보면 나도 모르게 눈을 깜빡이는 횟수가 <span class="cn-word" data-pos="adv" data-tr="keskin, yaqqol">현저히</span> 줄어들게 되는데, 이는 안구 표면을 <span class="cn-word" data-pos="adj" data-tr="quruq, suvsiz">건조하게</span> 만들어 통증과 피로감을 <strong>유발하곤 합니다</strong>. 단순히 눈이 <span class="cn-word" data-pos="adj" data-tr="gʻira-shira, xira">침침해지는</span> 증상을 넘어 두통이나 목의 통증으로까지 이어지는 경우가 <span class="cn-word" data-pos="adv" data-tr="tez-tez, koʻp holatda">허다합니다</span>.</p>
+<p>의학 전문가들은 이 증후군을 예방하기 위해 '20-20-20 규칙'을 실천할 것을 <span class="cn-word" data-pos="adv" data-tr="faol ravishda, qatʼiy">적극적으로</span> 권장합니다. 20분 동안 화면을 보았다면, 20초 동안은 20피트(약 6미터) 떨어진 <span class="cn-word" data-pos="adj" data-tr="uzoqdagi, olisdagi">먼</span> 곳을 바라보며 눈의 근육을 <span class="cn-word" data-pos="adv" data-tr="shoshilmasdan, bemalol">느긋하게</span> 이완시켜 주어야 한다는 원리입니다. 디지털 기기를 <strong>사용하지 않을 수는 없지만</strong>, 일상 속에서 이러한 사소한 예방 수칙을 정기적으로 수행하는 습관이야말로 오랫동안 신체 건강을 지키는 가장 확실한 지름길입니다.</p>''',
+        "grammar": [
+            {
+                "pattern":  "-곤 하다",
+                "meaning":  "Harakat yoki holatning odatda takrorlanib turishini bildiradi: ...-ib turmoq.",
+                "examples": ["안구 표면을 건조하게 만들어 통증을 유발하곤 합니다.", "스트레스를 받으면 매운 음식을 먹곤 해요."],
+            },
+            {
+                "pattern":  "-(으)ㄴ/ㄹ 수는 없다",
+                "meaning":  "Imkoniyatning mutlaqo yoʻqligini yoki rad etib boʻlmasligini bildiradi: ...maslikning iloji yoʻq.",
+                "examples": ["디지털 기기를 사용하지 않을 수는 없지만 줄여야 합니다.", "시험이 내일이라 공부를 안 할 수는 없어요."],
+            },
+        ],
+        "questions": [
+            {
+                "text": "디지털 시각 증후군이 발생하는 주요 원인은 무엇입니까?",
+                "choices": [
+                    "화면을 볼 때 눈을 깜빡이는 횟수가 급격히 감소하기 때문에",
+                    "어두운 곳에서 스마트폰의 전원을 완전히 끄기 때문에",
+                    "주기적으로 먼 곳을 바라보는 습관이 너무 과도하기 때문에",
+                ],
+                "answer": 0,
+                "explanation": "Matnda yozilishicha, ekranga tikilganda koʻz pirpiratish sonining keskin kamayishi (깜빡이는 횟수가 현저히 줄어듦) quruqlik va ogʻriqqa sabab boʻladi.",
+            },
+            {
+                "text": "본문에서 추천한 '20-20-20 규칙'의 핵심 내용으로 알맞은 것은 무엇입니까?",
+                "choices": [
+                    "20분마다 화면을 끄고 최소 20분 동안 눈을 감고 잠을 잔다.",
+                    "하루에 총 20번 스마트폰 화면의 밝기를 조절한다.",
+                    "20분 동안 스마트폰을 사용한 후, 20초간 먼 곳을 바라본다.",
+                    "매일 20시 20분에 안약을 눈에 정기적으로 넣어 준다.",
+                ],
+                "answer": 2,
+                "explanation": "Ikkinchi xatboshida '20-20-20 qoidasi' har 20 daqiqada, 20 soniya davomida 20 fut uzoqlikka qarab koʻz mushaklarini boʻshashtirish ekanligi tushuntirilgan.",
+            },
+        ],
+    },
+    # ── 15 ───────────────────────────────────────────────────────────────
+    {
+        "title":   "식반문화와 과학",
+        "summary": "Achitilgan ovqatlar (Fermented Food) ning biologik foydalari va uzoq saqlanish sirlari.",
+        "order":   15,
+        "body": '''<p>한국의 김치나 요구르트 같은 발효 식품은 전 세계적으로 건강에 <span class="cn-word" data-pos="adj" data-tr="ajoyib, aʼlo darajadagi">탁월한</span> 효과가 입증된 영양의 <span class="cn-word" data-pos="adj" data-tr="ulugʻvor, ajoyib">훌륭한</span> 보고입니다. 발효란 미생물이 유기물을 분해하여 인간에게 <span class="cn-word" data-pos="adj" data-tr="foydali, manfaatsiz boʻlmagan">유익한</span> 물질을 만들어내는 과정을 <span class="cn-word" data-pos="adv" data-tr="aniq, ravshan">명확히</span> 뜻합니다. 음식을 그냥 두면 부패하여 상하게 되지만, 특정 유익균이 <span class="cn-word" data-pos="adv" data-tr="ustun darajada, faol">우세하게</span> 증식하면 유해균의 침입을 <span class="cn-word" data-pos="adv" data-tr="mukammal tarzda, butkul">완벽히</span> 차단하면서 오랫동안 저장할 수 있는 상태가 <strong>되기도 합니다</strong>.</p>
+<p>발효 과정을 거친 식품은 원래의 재료에 없던 새로운 영양소가 <span class="cn-word" data-pos="adv" data-tr="moʻl-koʻl, boy tarzda">풍부하게</span> 생성됩니다. 유익한 유산균이 장내 환경을 <span class="cn-word" data-pos="adj" data-tr="sogʻlom, yaxshi">건강하게</span> 만들어 면역력을 증진하는 데 기여하며, 소화 흡수율 또한 <span class="cn-word" data-pos="adv" data-tr="sezilarli darajada, ancha">상당히</span> 높아집니다. 과학적 보존 장치가 없었던 과거에 유익균의 생명 활동을 활용하여 식품의 유통기한을 늘리고 맛을 <strong>깊게 만들었던</strong> 조상들의 지혜는 현대 생명공학의 관점에서도 매우 <span class="cn-word" data-pos="adj" data-tr="hayratlanarli, ajoyib">놀라운</span> 성과입니다.</p>''',
+        "grammar": [
+            {
+                "pattern":  "-기도 하다",
+                "meaning":  "Baʼzan shunday holat ham sodir boʻlishini bildiradi: ... ham boʻlib turadi, ... ham qiladi.",
+                "examples": ["오랫동안 저장할 수 있는 상태가 되기도 합니다.", "주말에는 친구를 만나기도 해요."],
+            },
+            {
+                "pattern":  "-게 만들기",
+                "meaning":  "Natija yoki holatga olib kelish, majburlash: ... holatga keltirmoq.",
+                "examples": ["유통기한을 늘리고 맛을 깊게 만들었습니다.", "선생님은 학생들을 열심히 공부하게 만들었어요."],
+            },
+        ],
+        "questions": [
+            {
+                "text": "본문에서 설명한 '발효'와 '부패'의 차이점은 무엇입니까?",
+                "choices": [
+                    "발효는 유해균이 증식하는 것이고, 부패는 유익균이 증식하는 것이다.",
+                    "발효는 인간에게 이로운 유익균이, 부패는 해로운 유해균이 우세한 현상이다.",
+                    "발효와 부패는 과학적으로 완전히 동일하며 아무런 차이가 없다.",
+                ],
+                "answer": 1,
+                "explanation": "Matnning birinchi qismida achish (발효) inson uchun foydali bakteriyalar koʻpayishi, chirish (부패) esa zararli bakteriyalar sababli ovqatning buzilishi ekanligi bayon etilgan.",
+            },
+            {
+                "text": "발효 식품이 인체에 주는 긍정적인 영향으로 언급된 것은 무엇입니까?",
+                "choices": [
+                    "장내 환경을 건강하게 개선하여 면역력을 높여 준다.",
+                    "신체의 소화 기능을 일시적으로 중단시켜 준다.",
+                    "인위적인 보존제 성분을 몸속에 다량 생성한다.",
+                    "원래 재료가 가진 영양소를 완벽하게 소멸시킨다.",
+                ],
+                "answer": 0,
+                "explanation": "Ikkinchi xatboshida achitilgan mahsulotlar ichak muhitini yaxshilab, immunitetni oshirishi (면역력을 증진) taʼkidlangan.",
+            },
+        ],
+    },
+    # ── 16 ───────────────────────────────────────────────────────────────
+    {
+        "title":   "도시생태학",
+        "summary": "Asfalt va betonlar tufayli shahar markazining chekka hududlarga qaraganda issiqroq boʻlishi — 'Issiqlik oroli' (Heat Island) effekti.",
+        "order":   16,
+        "body": '''<p>여름철 대도시의 중심부는 주변 교외 지역에 비해 기온이 <span class="cn-word" data-pos="adv" data-tr="gʻayritabiiy ravishda, noodatiy">유난히</span> 높게 나타나는 현상을 보입니다. 이를 기상학에서는 '도시 열섬 현상(Urban Heat Island)'이라고 <strong>부르는데</strong>, 빽빽한 빌딩 숲과 아스팔트 도로가 태양열을 <span class="cn-word" data-pos="adv" data-tr="shiddat bilan, koʻplab">다량으로</span> 흡수했다가 야간에 <span class="cn-word" data-pos="adv" data-tr="sekin-asta, asta">서서히</span> 방출하기 때문에 발생합니다. 숲과 녹지가 <span class="cn-word" data-pos="adj" data-tr="kam, yetarsiz">부족한</span> 도시 중심부는 열을 식히기가 <span class="cn-word" data-pos="adj" data-tr="juda qiyin, nihoyatda ogʻir">매우 어려우며</span>, 에어컨 가동과 자동차 배기가스에서 나오는 인공열이 이 현상을 더욱 <span class="cn-word" data-pos="adv" data-tr="ogʻir darajada, chuqur">심각하게</span> 부채질합니다.</p>
+<p>열섬 현상은 단순한 불쾌감을 넘어, 밤에도 기온이 내려가지 않는 열대야를 유발하여 시민들의 숙면을 방해하고 건강을 <span class="cn-word" data-pos="adv" data-tr="toʻgʻridan-toʻgʻri, bevosita">직접적으로</span> 위협합니다. 이 문제를 해결하기 <strong>위해서는</strong> 도심 내에 바람길을 열어주고, 건물의 옥상에 식물을 심는 '옥상 녹화 사업'을 <span class="cn-word" data-pos="adv" data-tr="keng miqyosda, yalpi">대대적으로</span> 전개해야 합니다. 아스팔트 대신 물이 통하는 친환경 보도블록을 설치하는 등 도시 유산 구조를 생태적으로 재설계하려는 과감한 노력이 필요한 때입니다.</p>''',
+        "grammar": [
+            {
+                "pattern":  "-는데/ㄴ데",
+                "meaning":  "Gapni davom ettirishdan oldin zamin yoki kirish qismini yaratadi: ...-gan boʻlsa, ...-gan holatda.",
+                "examples": ["도시 열섬 현상이라고 부르는데, 아스팔트 때문에 발생합니다.", "친구가 한국에 오는데 마중을 가야 해요."],
+            },
+            {
+                "pattern":  "-(으)marketing 위해",
+                "meaning":  "Maqsadni bildiradi: ... qilish uchun, ... maqsadida.",
+                "examples": ["이 문제를 해결하기 위해서 옥상 녹화를 해야 합니다.", "대학에 합격하기 위해 열심히 공부합니다."],
+            },
+        ],
+        "questions": [
+            {
+                "text": "도시 열섬 현상이 발생하는 주된 원인이 아닌 것은 무엇입니까?",
+                "choices": [
+                    "아스팔트와 빌딩이 낮 동안 태양열을 많이 흡수하기 때문에",
+                    "도심 속 에어컨 실외기와 자동차가 인공열을 배출하기 때문에",
+                    "주변 교외 지역에 나무와 녹지가 너무 빽빽하게 늘어났기 때문에",
+                ],
+                "answer": 2,
+                "explanation": "Atrof chekka hududlarda daraxtlarning koʻpligi shaharni isitmaydi, aksincha shahar markazida yashillik yetishmasligi muammoni keltirib chiqaradi.",
+            },
+            {
+                "text": "본문에서 제시한 열섬 현상의 해결책으로 알맞은 것을 고르십시오.",
+                "choices": [
+                    "에어컨 사용량을 대폭 늘려 도시 전체의 온도를 낮춘다.",
+                    "건물 옥상에 식물을 심는 녹화 사업과 바람길을 조성한다.",
+                    "도심의 아스팔트 도로를 지금보다 더 두껍게 포장한다.",
+                    "야간에 차량 통행을 전면 금지하여 배기가스를 차단한다.",
+                ],
+                "answer": 1,
+                "explanation": "Ikkinchi xatboshida yechim sifatida bino tomlariga oʻsimlik ekish (옥상 녹화 사업) va shamol yoʻllarini ochish kerakligi aniq yozilgan.",
+            },
+        ],
+    },
+    # ── 17 ───────────────────────────────────────────────────────────────
+    {
+        "title":   "경제와 사회학",
+        "summary": "Eski va tashlab qoʻyilgan mahsulotlarni shunchaki qayta ishlamay, dizayn qoʻshib qiymatini oshirish — 'Upcycling' trendi.",
+        "order":   17,
+        "body": '''<p>재활용을 뜻하는 '리사이클링(Recycling)'을 넘어, 최근에는 버려지는 물건에 디자인과 실용성을 더해 완전히 새로운 가치를 지닌 상품으로 재탄생시키는 '업사이클링(Upcycling)'이 <span class="cn-word" data-pos="adv" data-tr="katta miqyosda, juda">크게</span> 주목받고 있습니다. 기존의 재활용이 폐기물을 수거하여 단순히 원료 상태로 <strong>돌리는 것에 그쳤다면</strong>, 업사이클링은 창의적인 아이디어를 <span class="cn-word" data-pos="adv" data-tr="shunqorona, qoʻshimcha ravishda">결합하여</span> 기존 제품보다 훨씬 <span class="cn-word" data-pos="adj" data-tr="yuqori, sifatli">고부가가치의</span> 제품을 만들어내는 고도의 문화적 활동입니다.</p>
+<p>예를 들어 소방관들이 사용했던 <span class="cn-word" data-pos="adj" data-tr="eski, eskirgan">낡은</span> 소방 호스를 깨끗이 세척하여 <span class="cn-word" data-pos="adj" data-tr="bardoshli, mustahkam">튼튼한</span> 가방이나 지갑으로 만들거나, 공사장의 천막을 이용해 세상에 단 하나뿐인 패션 잡화를 <strong>제작하기도 합니다</strong>. 이러한 제품들은 환경 오염을 <span class="cn-word" data-pos="adv" data-tr="samorali tarzda, sezilarli">효과적으로</span> 줄일 뿐만 아니라, 상품마다 고유한 스토리를 담고 있어 개성을 중시하는 젊은 소비자들에게 <span class="cn-word" data-pos="adv" data-tr="gʻoyatda, favqulodda">굉장히</span> 깊은 인상을 심어줍니다. 쓰레기를 줄이면서 정서적 만족까지 선사하는 업사이클링은 지속 가능한 순환 경제의 핵심 모델로 자리 잡고 있습니다.</p>''',
+        "grammar": [
+            {
+                "pattern":  "-는 것에 그치다",
+                "meaning":  "Muayyan darajadan oʻta olmay, faqat oʻsha harakat bilan cheklanishni bildiradi: ... bilan cheklanmoq.",
+                "examples": ["단순히 원료 상태로 돌리는 것에 그쳤다면 업사이클링은 다릅니다.", "말만 하고 행동하지 않는 것에 그치면 안 됩니다."],
+            },
+            {
+                "pattern":  "-기도 하다",
+                "meaning":  "Baʼzan shunday holat ham sodir boʻlishini bildiradi: ... ham boʻlib turadi, ... ham qiladi.",
+                "examples": ["세상에 단 하나뿐인 패션 잡화를 제작하기도 합니다.", "바쁠 때는 점심을 굶기도 해요."],
+            },
+        ],
+        "questions": [
+            {
+                "text": "본문에서 설명하는 '업사이클링'과 일반 '리사이클링'의 가장 큰 차이점은 무엇입니까?",
+                "choices": [
+                    "업사이클링은 물건을 파괴하여 완전히 원료 상태로만 되돌리는 것이다.",
+                    "업사이클링은 버려지는 물건에 디자인과 창의성을 더해 가치를 높이는 것이다.",
+                    "리사이클링은 제품의 가격을 기존보다 훨씬 더 비싸게 만드는 기술이다.",
+                ],
+                "answer": 1,
+                "explanation": "Birinchi xatboshida aytilishicha, upcycling oddiy qayta ishlashdan farqli ravishda tashlab yuboriladigan buyumlarga dizayn va amaliylik qoʻshib, yangi qiymat yaratishdir.",
+            },
+            {
+                "text": "업사이클링 제품이 젊은 소비자들에게 인기를 끄는 요인으로 언급된 것은 무엇입니까?",
+                "choices": [
+                    "대량 생산이 가능하여 전 세계 어디서나 흔하게 구할 수 있어서",
+                    "국가에서 무료로 나누어 주는 사은품이기 때문에",
+                    "제품마다 고유한 이야기가 담겨 있어 개성을 나타낼 수 있어서",
+                    "전통적인 소방 기구의 형태를 그대로 유지하고 있어서",
+                ],
+                "answer": 2,
+                "explanation": "Ikkinchi xatboshida upcycling mahsulotlari ekologiyaga foydali boʻlishidan tashqari, oʻziga xos tarixga (고유한 스토리) ega boʻlgani bois yoshlar individualigini ifodalashga yordam berishi keltirilgan.",
+            },
+        ],
+    },
+    # ── 20 ───────────────────────────────────────────────────────────────
+    {
+        "title":   "철학과 사회",
+        "summary": "Zamonaviy jamiyatdagi tezkorlik madaniyati va unga muqobil ravishda paydo boʻlgan 'Sekinlik harakati' (Slow Movement) falsafasi.",
+        "order":   20,
+        "body": '''<p>현대 지식 기반 사회는 초고속 인터넷과 자동화 기술을 바탕으로 모든 분야에서 '빠름'을 <span class="cn-word" data-pos="adv" data-tr="mutloq, soʻzsiz">절대적인</span> 미덕으로 <strong>삼아왔습니다</strong>. 속도가 곧 경쟁력이 되는 시대에 남들보다 빠르게 정보를 처리하고 결과를 내는 것만이 생존의 유일한 길이라고 <span class="cn-word" data-pos="adv" data-tr="shubhasiz, muqarrar">으레</span> 여겨졌기 때문입니다. 그러나 이러한 극단적인 속도 경쟁은 현대인들에게 <span class="cn-word" data-pos="adj" data-tr="shafqatsiz, qattiq">극심한</span> 만성 피로와 정신적 공허감을 안겨주었으며, 사회 전반을 <span class="cn-word" data-pos="adv" data-tr="shoshilinch ravishda, betoqatlik bilan">조급하게</span> 만드는 부작용을 낳았습니다.</p>
+<p>이러한 반성에서 출발하여 최근에는 삶의 속도를 의도적으로 줄이고 본질적인 가치를 회복하자는 '느림의 미학(Slow Movement)'이 <span class="cn-word" data-pos="adv" data-tr="keng miqyosda, chuqur">폭넓게</span> 확산되는 추세입니다. 패스트푸드 대신 제철 식재료로 정성껏 요리하는 '슬로푸드', 혹은 앞만 보고 달리기보다 주변의 풍경을 <span class="cn-word" data-pos="adv" data-tr="shoshilmasdan, xotirjam">느긋하게</span> 감상하며 걷는 '슬로 시티' 투어 등이 대표적인 예입니다. 속도를 <strong>줄인다는 것은</strong> 단순히 게으름을 피우는 것이 아니라, 효율성이라는 감옥에서 벗어나 나 자신과 소중한 이들을 <span class="cn-word" data-pos="adv" data-tr="batafsil, chuqur">자세히</span> 돌아볼 수 있는 여유를 선물하는 주체적인 결단입니다.</p>''',
+        "grammar": [
+            {
+                "pattern":  "-어/아 오다",
+                "meaning":  "Harakat yoki holatning oʻtmishdan hozirgacha davom etib kelganini bildiradi: ...-ib kelmoq.",
+                "examples": ["'빠름'을 절대적인 미덕으로 삼아왔습니다.", "우리는 이 기술을 오랫동안 개발해 왔습니다."],
+            },
+            {
+                "pattern":  "-ㄴ다는 것은",
+                "meaning":  "Muayyan harakat yoki tushunchaning maʼnosini taʼkidlab, taʼriflashda ishlatiladi: ... degani ...",
+                "examples": ["속도를 줄인다는 것은 여유를 선물하는 것입니다.", "외국어를 배운다는 것은 새로운 세계를 여는 것이다."],
+            },
+        ],
+        "questions": [
+            {
+                "text": "본문에서 지적한 현대 사회의 '속도 경쟁'이 가져온 부작용은 무엇입니까?",
+                "choices": [
+                    "인터넷의 처리 속도가 과거보다 현저히 느려지게 되었다.",
+                    "현대인들에게 극심한 피로감과 정서적 공허감을 유발했다.",
+                    "사회의 전반적인 생산성과 효율성을 완전히 소멸시켰다.",
+                ],
+                "answer": 1,
+                "explanation": "Matnning birinchi xatboshisida tezkorlik poygasi zamonaviy insonlarga surunkali charchoq (만성 피로) va ruhiy boʻshliq (정신적 공허감) keltirgani yozilgan.",
+            },
+            {
+                "text": "글쓴이가 말하는 '느림의 미학(Slow Movement)'의 진정한 가치는 무엇입니까?",
+                "choices": [
+                    "모든 직장과 사회적 활동을 완전히 중단하고 집에서 쉬는 것",
+                    "패스트푸드의 생산 가동률을 지금보다 배로 높이는 것",
+                    "효율성 위주에서 벗어나 자신과 주변을 돌아볼 여유를 갖는 것",
+                    "정보기술의 발달을 막아 과거의 아날로그 시대로 되돌아가는 것",
+                ],
+                "answer": 2,
+                "explanation": "Oxirgi gapda tezlikni kamaytirish yalqovlik emas, balki samoradorlik qafasidan chiqib, oʻzini va yaqinlarini chuqurroq koʻzdan kechirishga imkon beruvchi qaror (여유를 선물하는 결단) ekanligi taʼkidlangan.",
+            },
+        ],
+    },
 ]
