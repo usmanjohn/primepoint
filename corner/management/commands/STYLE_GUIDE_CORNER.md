@@ -56,6 +56,10 @@ and the same words become colour-tagged flip-flashcards under the story.
 - End with **2–3 comprehension questions** — but author these as structured data in the
   `questions` list (section 5b), NOT as text in the body. They render as interactive,
   self-grading MCQs under the story.
+- Also give each story a short **grammar** list (section 5c) — the intermediate/advanced
+  patterns that actually appear in the text. Like vocab and questions, this is structured
+  data, never body text; it renders as its own styled section between the flashcards and
+  the quiz.
 
 ## 3. Allowed HTML palette
 
@@ -91,7 +95,8 @@ Write batches into `corner/management/commands/_stories_<collection>_<range>.py`
 ```python
 SUBJECT    = {...}   # copy from the toc header / previous batch
 COLLECTION = {...}   # copy from the toc header / previous batch
-STORIES    = [{"title": ..., "summary": ..., "order": N, "body": ..., "questions": [...]}, ...]
+STORIES    = [{"title": ..., "summary": ..., "order": N, "body": ...,
+               "grammar": [...], "questions": [...]}, ...]
 ```
 
 `order` = the story's number in the toc file.
@@ -122,6 +127,36 @@ Rules:
   the tempting wrong ones fail.
 - The whole `questions` list is rebuilt on every `--republish`, so it is safe to edit.
 
+### 5c. The `grammar` list (grammar points)
+
+Each story carries a short list of the grammar patterns that appear in its text. Each is a dict:
+
+```python
+"grammar": [
+    {
+        "pattern":  "-길래",                                  # the grammar form
+        "meaning":  "sabab/asos: bir narsani koʻrib/eshitib, shunga asoslanib ish qildim.",
+        "examples": [
+            "날씨가 좋길래 산책을 나갔다.",                     # Korean example
+            "친구가 맛있다고 하길래 저도 시켰어요.",
+        ],
+    },
+    ...
+]
+```
+
+Rules:
+- **Pick real patterns from THIS text** — the grammar a reader actually meets in the passage,
+  not a generic list. Write the `pattern` in Korean (dictionary form of the ending/expression,
+  with a leading `-` for verb/adjective endings: `-는 바람에`, `-을 뿐만 아니라`, `-더라도`).
+- **Level: intermediate/advanced only (TOPIK II).** Skip beginner grammar (`-아요/어요`, `-고
+  싶다`, `-았/었-`). Choose the ones that are genuinely worth a note.
+- `meaning` = a **short Uzbek** explanation (1–2 sentences: what it means + when it's used).
+- `examples` = **1–2 short Korean example sentences** that show the pattern in use (fresh
+  sentences are fine; they don't have to be lifted verbatim from the story).
+- **How many:** longer readings → **3–4** grammar points; short passages → **1–2**.
+- The whole `grammar` list is rebuilt on every `--republish`, so it is safe to edit.
+
 Import with:
 
 ```
@@ -132,5 +167,13 @@ python manage.py import_corner corner/management/commands/_stories_<...>.py --au
 
 ## 6. The user's own tips
 
-(Once the user shares preferences for stories — level, themes, vocab count — record them
-here. Their tips override the generic advice above.)
+(These override the generic advice above.)
+
+- **Grammar section is expected.** Every story should surface the not-beginner grammar the
+  reader meets in the text, with a **short Uzbek explanation and 1–2 examples** each — see 5c.
+- **Vocab & grammar counts depend on length:**
+  - *Full readings* (the long Keimyung passages): the usual ~30–40 vocab marks, and
+    **3–4 grammar** points.
+  - *Short passages* (the `keimyung_short_story.txt` collection — a few sentences each):
+    keep it light — **5–10 vocab marks** and **1–2 grammar** points. Don't over-mark a
+    short text.

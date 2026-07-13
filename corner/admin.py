@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import (Subject, Collection, Story, StoryWord, StoryQuestion,
-                     WritingTemplate)
+                     StoryGrammar, WritingTemplate)
 
 
 @admin.register(Subject)
@@ -40,6 +40,13 @@ class StoryWordInline(admin.TabularInline):
         return False
 
 
+class StoryGrammarInline(admin.TabularInline):
+    """Grammar points — rebuilt on import, editable here if needed."""
+    model = StoryGrammar
+    extra = 0
+    fields = ['order', 'pattern', 'meaning', 'examples']
+
+
 class StoryQuestionInline(admin.TabularInline):
     """Comprehension MCQs — rebuilt on import, editable here if needed."""
     model = StoryQuestion
@@ -55,7 +62,7 @@ class StoryAdmin(admin.ModelAdmin):
     search_fields       = ['title', 'summary', 'collection__title']
     prepopulated_fields = {'slug': ('title',)}
     readonly_fields     = ['views', 'created_at', 'updated_at']
-    inlines             = [StoryWordInline, StoryQuestionInline]
+    inlines             = [StoryWordInline, StoryGrammarInline, StoryQuestionInline]
 
 
 @admin.register(WritingTemplate)

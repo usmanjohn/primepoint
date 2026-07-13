@@ -73,6 +73,24 @@
     </section>
     {% endif %}
 
+    {% if grammar %}
+    <section class="cn-grammar mb-4">
+        <h2 class="h5 mb-1"><i class="bi bi-mortarboard me-1"></i>{% trans "Grammar from this story" %}</h2>
+        <p class="small text-secondary mb-3">{% trans "Key patterns that appeared in the text." %}</p>
+        {% for g in grammar %}
+        <div class="cn-gram">
+            <p class="cn-gram-pattern">{{ g.pattern }}</p>
+            <p class="cn-gram-meaning">{{ g.meaning }}</p>
+            {% if g.examples %}
+            <ul class="cn-gram-ex">
+                {% for ex in g.examples %}<li>{{ ex }}</li>{% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </section>
+    {% endif %}
+
     {% if questions %}
     <section class="cn-quiz mb-4" data-cn-quiz>
         <h2 class="h5 mb-1"><i class="bi bi-patch-question me-1"></i>{% trans "Check your understanding" %}</h2>

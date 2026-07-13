@@ -1,0 +1,29 @@
+# ── Collection metadata (read by Claude) ─────────────────────────────
+SUBJECT:    Korean            (icon: bi-translate, color: #d97706)
+COLLECTION: Keimyung Short Readings
+AUTHOR:     powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_CORNER.md. This file is ONLY the ordered story list.
+# The number = the story's `order` within the collection.
+# Level: intermediate (TOPIK II) but SHORT — a few sentences to a couple of paragraphs each.
+# Because they are short: keep vocab light (5–10 marks) and grammar to 1–2 points per story
+# (style guide section 6). Source text: keimyung_short_story.txt (user-provided, numbered,
+# titles are the Korean headings already in that file). Imported via _stories_keimyung_short_1_14.py.
+# ─────────────────────────────────────────────────────────────────────
+
+## Keimyung Short Readings — 짧은 한국어 읽기
+
+1. 음식 (Jjimjilbang va koreys taomlari)
+2. 시치미를 떼다 (Idioma: bilib turib bilmaganga olmoq)
+3. 아무것도 사지 않은 날 (Hech narsa sotib olmaslik kuni)
+4. 떡 (Ttok — koreys guruch keksi)
+5. 한국말도 못하는데 영어 교육? (Erta ingliz tili taʼlimi)
+6. '펭귄 아빠' vs '독수리 아빠' (Erta chet el taʼlimi va otalar)
+7. 아이들이 진학하면 엄마들은 알바 뛴다 (Taʼlim xarajati va onalar)
+8. 삼계탕 (Samgyetang — yozgi quvvat taomi)
+9. 새로운 직업 (Yangi kasb — kaskadyor)
+10. 미스터리 쇼퍼 (Sirli xaridor)
+11. 남성 패션과 미용 (Erkaklar moda va parvarishi)
+12. 광장의 변신 (Maydonning oʻzgarishi)
+13. 기부한 사실, 주위에 알릴까 말까? (Xayriyani oshkor qilishmi?)
+14. 춤을 추는 아이 (Raqs tushayotgan bola — rasm sharhi)

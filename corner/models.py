@@ -148,6 +148,25 @@ class Story(models.Model):
             for i, (w, t, p) in enumerate(words)
         ])
 
+    def sync_grammar(self, grammar):
+        """Replace this story's grammar points with `grammar`, a list of dicts:
+        {pattern, meaning, examples=[...]}. Silently drops malformed entries so a
+        bad grammar point can't break an import."""
+        self.grammar.all().delete()
+        rows, order = [], 0
+        for g in grammar or []:
+            pattern = (g.get('pattern') or '').strip()
+            meaning = (g.get('meaning') or '').strip()
+            if not pattern or not meaning:
+                continue
+            examples = [str(e).strip() for e in (g.get('examples') or []) if str(e).strip()]
+            rows.append(StoryGrammar(
+                story=self, pattern=pattern, meaning=meaning,
+                examples=examples, order=order,
+            ))
+            order += 1
+        StoryGrammar.objects.bulk_create(rows)
+
     def sync_questions(self, questions):
         """Replace this story's comprehension questions with `questions`, a list
         of dicts: {text, choices=[...], answer=<int>, explanation}. Silently
@@ -208,6 +227,25 @@ class StoryQuestion(models.Model):
 
     def __str__(self):
         return f'{self.story.title} — Q{self.order + 1}'
+
+
+class StoryGrammar(models.Model):
+    """A grammar point drawn from the story, shown after the vocabulary. Authored
+    in the story data file (not derived from the body) and rebuilt on import.
+    Intermediate/advanced patterns only — the ones a reader meets in the text."""
+    story    = models.ForeignKey(Story, on_delete=models.CASCADE, related_name='grammar')
+    pattern  = models.CharField(max_length=100,
+                                help_text='The grammar form, e.g. -는 바람에.')
+    meaning  = models.TextField(help_text='Short explanation in Uzbek.')
+    examples = models.JSONField(default=list,
+                                help_text='List of Korean example sentences (strings).')
+    order    = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['order', 'id']
+
+    def __str__(self):
+        return f'{self.story.title} — {self.pattern}'
 
 
 class StoryProgress(models.Model):

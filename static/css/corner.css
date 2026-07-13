@@ -252,6 +252,46 @@
 .cn-feedback-explain { color: var(--cn-ink); }
 .cn-feedback-explain :last-child { margin-bottom: 0; }
 
+/* ── Grammar points ────────────────────────────────────────────────── */
+.cn-grammar {
+    background: var(--cn-paper);
+    border: 1px solid var(--cn-border);
+    border-radius: 1rem;
+    padding: 1.25rem 1.25rem .5rem;
+}
+.cn-gram {
+    border-left: 4px solid var(--cn-accent);
+    background: var(--cn-hl);
+    border-radius: .6rem;
+    padding: .75rem 1rem;
+    margin-bottom: 1rem;
+}
+.cn-gram:last-child { margin-bottom: .5rem; }
+.cn-gram-pattern {
+    font-weight: 700;
+    color: var(--cn-accent);
+    font-size: 1.05rem;
+    margin: 0 0 .25rem;
+    font-family: var(--bs-body-font-family, sans-serif);
+}
+.cn-gram-meaning {
+    color: var(--cn-ink);
+    margin: 0 0 .5rem;
+    line-height: 1.6;
+    font-family: var(--bs-body-font-family, sans-serif);
+}
+.cn-gram-meaning:last-child { margin-bottom: 0; }
+.cn-gram-ex {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: var(--cn-ink);
+}
+.cn-gram-ex li {
+    margin-bottom: .25rem;
+    line-height: 1.6;
+}
+.cn-gram-ex li:last-child { margin-bottom: 0; }
+
 /* Translation popover (created by corner.js). */
 .cn-pop {
     position: absolute;

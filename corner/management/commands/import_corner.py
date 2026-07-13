@@ -23,6 +23,13 @@ The data file must expose ``SUBJECT`` and ``COLLECTION`` dicts and a
             "summary": "Short card blurb in Uzbek (optional, <=300 chars).",
             "order":   1,
             "body":    '<p>... <span class="cn-word" data-pos="verb" data-tr="uchrashmoq">만나다</span> ...</p>',
+            "grammar": [                         # optional — grammar points from the text
+                {
+                    "pattern":  "-는 바람에",
+                    "meaning":  "kutilmagan sabab: ... tufayli (salbiy natija).",
+                    "examples": ["비가 오는 바람에 소풍이 취소됐다."],
+                },
+            ],
             "questions": [                       # optional — 0-3 inference MCQs
                 {
                     "text":        "이 글의 중심 생각은 무엇입니까?",
@@ -212,10 +219,12 @@ class Command(BaseCommand):
                 )
 
                 if was_created:
+                    story.sync_grammar(data.get("grammar"))
                     story.sync_questions(data.get("questions"))
                     created += 1
                     nq = story.questions.count()
-                    self.stdout.write(self.style.SUCCESS(f"[{i}] created: {title} ({nq} questions)"))
+                    ng = story.grammar.count()
+                    self.stdout.write(self.style.SUCCESS(f"[{i}] created: {title} ({ng} grammar, {nq} questions)"))
                 elif republish:
                     story.summary = summary
                     story.body = body
@@ -223,10 +232,12 @@ class Command(BaseCommand):
                     story.author = author
                     story.is_published = True
                     story.save()   # save() re-syncs StoryWord rows from the body
+                    story.sync_grammar(data.get("grammar"))
                     story.sync_questions(data.get("questions"))
                     updated += 1
                     nq = story.questions.count()
-                    self.stdout.write(self.style.SUCCESS(f"[{i}] updated: {title} ({nq} questions)"))
+                    ng = story.grammar.count()
+                    self.stdout.write(self.style.SUCCESS(f"[{i}] updated: {title} ({ng} grammar, {nq} questions)"))
                 else:
                     skipped += 1
                     self.stdout.write(self.style.WARNING(
