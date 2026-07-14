@@ -155,6 +155,12 @@ Rules:
 - `examples` = **1–2 short Korean example sentences** that show the pattern in use (fresh
   sentences are fine; they don't have to be lifted verbatim from the story).
 - **How many:** longer readings → **3–4** grammar points; short passages → **1–2**.
+- **Bold the pattern in the body.** Wrap the grammar phrase where it appears in the story in
+  `<strong>…</strong>` so the reader can find it easily and connect it to this list (e.g. a
+  story whose grammar is `whereas (contrast)` has `…a woody trunk, <strong>whereas</strong>
+  the banana plant…` in its body). Keep the `<strong>` on the *structural* words of the
+  pattern, and **do not vocab-mark those same words** — a `cn-word` span and a `<strong>` must
+  not overlap (never nest tags inside a `cn-word` span). Mark vocab on *other* words.
 - The whole `grammar` list is rebuilt on every `--republish`, so it is safe to edit.
 
 Import with:
