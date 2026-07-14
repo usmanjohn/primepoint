@@ -1,0 +1,23 @@
+# ── Writing-practice metadata (read by Claude) ───────────────────────
+SUBJECT: Korean            (icon: bi-translate, color: #d97706)
+QTYPE:   53                (TOPIK II 쓰기 53 — 도표 분석, 200~300자)
+AUTHOR:  powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_WRITING.md. This file is ONLY the ordered list.
+# The number = the drill's `order`. Titles are "53-N: 주제".
+# Vary the figure across drills: line (증가), line (감소), single bars, paired
+# bars (남/여), bars by age group — so students meet every chart type.
+# ─────────────────────────────────────────────────────────────────────
+
+## TOPIK II 쓰기 53 — 도표 분석 연습
+
+1. 53-1: 1인 가구 증가 (line chart, 증가 + 원인 + 전망)
+2. 53-2: 대학생이 선호하는 여가 활동 (paired bars 남/여, 순위 비교)
+3. 53-3: 외국인 관광객 수 변화 (line chart, 증가 + 원인 + 전망)
+4. 53-4: 종이책 독서량 감소 (line chart, 감소 + 원인 + 전망)
+5. 53-5: 연령대별 온라인 쇼핑 이용률 (single bars, 연령 비교 + 원인)
+6. 53-6: 스마트폰 과의존 실태 (line chart, 증가 + 원인 + 전망)
+7. 53-7: 직장인의 스트레스 해소 방법 (single bars, 순위 + 남녀 차이 언급)
+8. 53-8: 청소년 아침 식사 결식률 (line chart, 증가 + 원인 + 전망)
+9. 53-9: 반려동물 양육 가구 변화 (line chart, 증가 + 원인 + 전망)
+10. 53-10: 대중교통 이용률 변화 (paired bars 버스/지하철, 비교 + 원인)

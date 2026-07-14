@@ -343,6 +343,243 @@
     border-radius: 1rem;
 }
 
+/* ── Writing practice (wp-) — interactive exam-writing drills ──────── */
+:root {
+    /* Chart series colors, validated for CVD + contrast on the paper
+       surfaces (light: #d97706/#2563eb, dark override below). */
+    --wp-s1: #d97706;
+    --wp-s2: #2563eb;
+}
+
+/* Numbered step headers. */
+.wp-step {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+.wp-step-no {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    background: var(--cn-accent);
+    color: #fff;
+    font-size: .85rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+.wp-step-title {
+    font-weight: 700;
+    color: var(--cn-ink);
+}
+
+/* The exam-paper question box. */
+.wp-exam {
+    background: var(--cn-paper);
+    border: 2px solid var(--cn-ink);
+    border-radius: .5rem;
+    padding: 1rem 1.1rem;
+    color: var(--cn-ink);
+}
+.wp-exam-head {
+    display: flex;
+    align-items: flex-start;
+    gap: .7rem;
+}
+.wp-exam-no {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.1rem;
+    height: 2.1rem;
+    border: 2px solid var(--cn-ink);
+    border-radius: .4rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+.wp-exam-prompt { line-height: 1.7; }
+.wp-exam-prompt p { margin-bottom: .4rem; }
+.wp-exam-prompt p:last-child { margin-bottom: 0; }
+
+/* ── Charts inside the exam box (pure HTML/SVG, no JS) ─────────────── */
+.wp-chart {
+    margin-top: 1rem;
+    border: 1px solid var(--cn-border);
+    border-radius: .5rem;
+    padding: .9rem .9rem .6rem;
+    overflow-x: auto;
+}
+.wp-chart-title {
+    text-align: center;
+    font-weight: 700;
+    margin: 0 0 .6rem;
+    font-size: .95rem;
+}
+.wp-chart svg { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+.wp-chart svg text {
+    fill: var(--cn-ink);
+    font-family: var(--bs-body-font-family, sans-serif);
+}
+.wp-chart svg .wp-axis  { stroke: var(--cn-border); stroke-width: 1; }
+.wp-chart svg .wp-line  { stroke: var(--wp-s1); stroke-width: 2; fill: none; }
+.wp-chart svg .wp-dot   { fill: var(--wp-s1); stroke: var(--cn-paper); stroke-width: 2; }
+.wp-chart svg .wp-val   { font-size: 13px; font-weight: 700; text-anchor: middle; }
+.wp-chart svg .wp-tick  { font-size: 12px; text-anchor: middle; }
+
+/* Horizontal bar rows (single or paired series). */
+.wp-bars { display: grid; gap: .45rem; }
+.wp-bar-row {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr 3.2rem;
+    align-items: center;
+    gap: .5rem;
+    font-size: .9rem;
+}
+.wp-bar-label { text-align: right; color: var(--cn-ink); }
+.wp-bar-track {
+    background: var(--cn-hl);
+    border-radius: 4px;
+    height: 14px;
+    overflow: hidden;
+}
+.wp-bar {
+    display: block;
+    height: 100%;
+    border-radius: 0 4px 4px 0;
+    background: var(--wp-s1);
+}
+.wp-bar.wp-b2 { background: var(--wp-s2); }
+.wp-bar-val { font-weight: 700; color: var(--cn-ink); font-size: .85rem; }
+.wp-bar-row.wp-row-sub { margin-top: -.25rem; }
+.wp-legend {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: .82rem;
+    color: var(--cn-ink);
+    margin-bottom: .5rem;
+}
+.wp-legend-chip {
+    display: inline-block;
+    width: .75rem;
+    height: .75rem;
+    border-radius: .2rem;
+    background: var(--wp-s1);
+    margin-right: .3rem;
+    vertical-align: -1px;
+}
+.wp-legend-chip.wp-b2 { background: var(--wp-s2); }
+
+/* Extra info boxes under the graph (원인 / 전망), exam style. */
+.wp-facts {
+    margin-top: .8rem;
+    display: grid;
+    gap: .5rem;
+}
+.wp-fact {
+    display: flex;
+    gap: .6rem;
+    align-items: flex-start;
+    border: 1px solid var(--cn-border);
+    border-radius: .5rem;
+    padding: .5rem .7rem;
+    font-size: .92rem;
+}
+.wp-fact-tag {
+    flex-shrink: 0;
+    font-weight: 700;
+    background: var(--cn-hl);
+    color: var(--cn-accent);
+    border-radius: .35rem;
+    padding: .05rem .5rem;
+    font-size: .85rem;
+}
+.wp-fact ul { margin: 0; padding-left: 1.1rem; }
+.wp-fact li { line-height: 1.6; }
+
+/* ── The fill-in scaffold ──────────────────────────────────────────── */
+.wp-paper { font-size: 1.05rem; }
+
+/* A gap the student fills. With JS off it stays a dashed slot; corner.js
+   swaps in an <input> and grades it. */
+.wp-blank {
+    display: inline-block;
+    min-width: 5.5rem;
+    border-bottom: 2px dashed var(--cn-accent);
+    text-align: center;
+    line-height: 1.3;
+}
+.wp-blank-input {
+    border: none;
+    border-bottom: 2px dashed var(--cn-accent);
+    background: var(--cn-hl);
+    border-radius: .3rem .3rem 0 0;
+    text-align: center;
+    font: inherit;
+    color: var(--cn-ink);
+    padding: 0 .3rem;
+    max-width: 12rem;
+}
+.wp-blank-input:focus {
+    outline: none;
+    border-bottom-style: solid;
+}
+.wp-blank-input.wp-right {
+    background: var(--cn-right-soft);
+    border-bottom: 2px solid var(--cn-right);
+    color: var(--cn-right);
+    font-weight: 700;
+}
+.wp-blank-input.wp-wrong {
+    background: var(--cn-wrong-soft);
+    border-bottom: 2px solid var(--cn-wrong);
+    color: var(--cn-wrong);
+}
+
+/* Check / reveal buttons only make sense with JS on. */
+.wp-actions {
+    display: none;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .5rem;
+}
+.cn-ready .wp-actions { display: flex; }
+.wp-score { font-weight: 700; color: var(--cn-ink); }
+
+/* ── Model-answer reveal ───────────────────────────────────────────── */
+.wp-reveal > summary {
+    list-style: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    background: var(--cn-hl);
+    color: var(--cn-accent);
+    border: 1px solid var(--cn-border);
+    border-radius: .6rem;
+    padding: .55rem 1rem;
+    font-weight: 700;
+    transition: transform .12s ease;
+}
+.wp-reveal > summary::-webkit-details-marker { display: none; }
+.wp-reveal > summary:hover { transform: translateY(-1px); }
+.wp-reveal[open] > summary { border-radius: .6rem .6rem 0 0; }
+
+.wp-tips {
+    background: var(--cn-hl);
+    border-left: 4px solid var(--cn-accent);
+    border-radius: .6rem;
+    padding: .75rem 1rem;
+    color: var(--cn-ink);
+    line-height: 1.65;
+}
+.wp-tips-title { font-weight: 700; color: var(--cn-accent); }
+.wp-tips ul { margin: 0; padding-left: 1.1rem; }
+.wp-tips li { margin-bottom: .25rem; }
+.wp-tips li:last-child { margin-bottom: 0; }
+.wp-tips p:last-child { margin-bottom: 0; }
+
 /* ── Dark mode ─────────────────────────────────────────────────────── */
 @media (prefers-color-scheme: dark) {
     :root {
@@ -371,4 +608,12 @@
 
     .cn-opt { background: #292524; }
     .cn-legend-item { color: var(--cn-ink); }
+
+    :root {
+        /* Dark-surface chart series (validated: L band 0.48–0.67, ≥3:1). */
+        --wp-s1: #d97706;
+        --wp-s2: #3b82f6;
+    }
+    .wp-exam { border-color: var(--cn-border); }
+    .wp-exam-no { border-color: var(--cn-ink); }
 }

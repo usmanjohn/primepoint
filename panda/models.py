@@ -31,7 +31,10 @@ class Panda(models.Model):
         corner_pts = (
             self.profile.user.corner_progress.aggregate(s=Sum('points_awarded'))['s'] or 0
         )
-        self.rating = round(practice_pts) + corner_pts
+        writing_pts = (
+            self.profile.user.corner_writing_progress.aggregate(s=Sum('points_awarded'))['s'] or 0
+        )
+        self.rating = round(practice_pts) + corner_pts + writing_pts
         self.save(update_fields=['rating'])
 
     def __str__(self):

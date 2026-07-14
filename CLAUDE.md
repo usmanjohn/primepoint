@@ -68,3 +68,20 @@ When the user asks (e.g. "make the next 5 Keimyung stories"):
 5. Import: `python manage.py import_corner <that file> --author=<AUTHOR from toc>`
    (add `--republish` to overwrite existing ones — it rebuilds each story's word list).
 Other collections: add a new `toc_<collection>.txt` with its own SUBJECT/COLLECTION; same workflow.
+
+## Creating Corner writing drills (bulk) — TOPIK 쓰기 53 etc.
+`corner`'s `WritingPractice` is the interactive exam-writing trainer at `/corner/writing/`
+(exam question + HTML/SVG chart → fill-in scaffold with `wp-blank` gaps → model answer
+reveal → auto flashcards from `cn-word` spans). When the user asks (e.g. "make the next
+5 TOPIK 53 writing drills"):
+1. Read `corner/management/commands/STYLE_GUIDE_WRITING.md` (how to write — chart markup,
+   blank/expression conventions; section 8 holds the user's own tips once they share them).
+2. Read the question type's toc, e.g. `corner/management/commands/toc_topik_writing_53.txt`
+   (header gives SUBJECT, QTYPE, AUTHOR; body is the ordered drill list).
+3. Find where to continue: query the DB for the highest existing `order`, e.g.
+   `WritingPractice.objects.filter(qtype='53').order_by('-order').first()`.
+4. Write the next batch into `corner/management/commands/_writing_<exam><qtype>_<range>.py`
+   as `SUBJECT = {...}` + `PRACTICES = [...]` (Korean exam text, Uzbek translations/tips).
+5. Import: `python manage.py import_writing <that file> --author=<AUTHOR from toc>`
+   (add `--republish` to overwrite existing ones — it rebuilds each drill's word list).
+Question types 51/52/54: add a new `toc_topik_writing_<qtype>.txt`; same workflow.

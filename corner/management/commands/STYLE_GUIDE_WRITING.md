@@ -1,0 +1,180 @@
+# Corner Writing-Practice Guide (for Claude)
+
+This guide tells Claude HOW to write **Corner writing drills** (`/corner/writing/` —
+the `WritingPractice` model). Each exam/question-type has its own toc file (e.g.
+`toc_topik_writing_53.txt`) listing the drills in order. **Always follow that order.**
+
+> ⚠️ **Korean exam content in Korean (한글); every translation, summary and tip in
+> UZBEK — never English.** The audience is Uzbek students preparing for TOPIK II.
+
+A drill has four parts the student walks through in order:
+
+1. **`prompt` + `chart`** — the question exactly as it would look on the exam paper.
+2. **`template_body`** — a scaffold answer: ready-made exam expressions are marked
+   (tappable translations), and the *data* is blanked out — the student completes it
+   by reading the chart.
+3. **`model_answer`** — the full answer, revealed on tap.
+4. **`tips`** — short strategy notes in Uzbek.
+
+Flashcards are generated automatically from the marked expressions — never write a
+separate word list.
+
+---
+
+## 1. Marking expressions and blanks (MOST IMPORTANT)
+
+**Template-ready expressions** use the same span stories use:
+
+```html
+<span class="cn-word" data-pos="verb" data-tr="oshmoq, koʻpaymoq">증가하다</span>
+```
+
+- Mark the *reusable exam phrases* — the ones that fit ANY chart question:
+  `조사를 실시하였다`, `~에 따르면`, `~(으)로 나타났다`, `차지하다`, `뒤를 이었다`,
+  `증가하다 / 감소하다`, `~에 비해`, `~(으)ㄹ 것으로 전망된다` …
+- `data-tr` = short **Uzbek** translation. `data-pos` = verb/adj/adv or omit.
+- Mark each expression only the FIRST time it appears across
+  `template_body` + `model_answer` (the word list is built from both, duplicates
+  are dropped automatically). **8–15 expressions per drill.**
+- Never nest tags inside a `cn-word` span; no double quotes in `data-tr`.
+
+**Blanks** (only in `template_body`):
+
+```html
+<span class="wp-blank" data-answer="30%" data-alt="30퍼센트|삼십 퍼센트"></span>
+```
+
+- The span is **empty** — JS turns it into a typing box sized to the answer.
+- `data-answer` = the expected text; `data-alt` = accepted alternatives, `|`-separated
+  (checking ignores all spacing, so don't list spacing variants).
+- **Blank the data, not the grammar**: numbers, years, subjects, the survey org,
+  and the trend verb (증가/감소) — everything the student must *read off the chart*.
+  Keep the connective expressions visible: they are what we're teaching.
+- **6–12 blanks** per drill. Never put a blank inside a `cn-word` span.
+
+## 2. The `prompt` (exam instruction)
+
+Exam wording, in Korean, e.g. for 53:
+
+```html
+<p>다음을 참고하여 '1인 가구 현황'에 대한 글을 200~300자로 쓰시오.
+단, 글의 제목을 쓰지 마시오. <strong>(30점)</strong></p>
+```
+
+## 3. The `chart` (pure HTML/SVG — no JS, no images)
+
+Wrap nothing — the page already puts it in a bordered `wp-chart` box. Start with a
+title line, then one figure, then optional fact boxes:
+
+```html
+<p class="wp-chart-title">1인 가구 비율</p>
+```
+
+**Line chart (연도별 변화)** — inline SVG, 3–4 points. Geometry: viewBox
+`0 0 480 230`, baseline `y=190`, x at `90/240/390` (3 pts) or `70/183/297/410`
+(4 pts), `y = 190 − value/max × 150`. Every point carries its value (the student
+must transcribe it):
+
+```html
+<svg viewBox="0 0 480 230" role="img" aria-label="1인 가구 비율: 2000년 15%, 2010년 24%, 2020년 32%">
+  <line class="wp-axis" x1="40" y1="190" x2="440" y2="190"/>
+  <polyline class="wp-line" points="90,120 240,78 390,40"/>
+  <circle class="wp-dot" cx="90" cy="120" r="4.5"/>
+  <circle class="wp-dot" cx="240" cy="78" r="4.5"/>
+  <circle class="wp-dot" cx="390" cy="40" r="4.5"/>
+  <text class="wp-val" x="90" y="104">15%</text>
+  <text class="wp-val" x="240" y="62">24%</text>
+  <text class="wp-val" x="390" y="24">32%</text>
+  <text class="wp-tick" x="90" y="212">2000년</text>
+  <text class="wp-tick" x="240" y="212">2010년</text>
+  <text class="wp-tick" x="390" y="212">2020년</text>
+</svg>
+```
+
+**Bar chart (순위/비교)** — HTML rows; width = value ÷ max × 100%:
+
+```html
+<div class="wp-bars">
+  <div class="wp-bar-row"><span class="wp-bar-label">운동</span><span class="wp-bar-track"><span class="wp-bar" style="width:100%"></span></span><span class="wp-bar-val">35%</span></div>
+  <div class="wp-bar-row"><span class="wp-bar-label">음악 감상</span><span class="wp-bar-track"><span class="wp-bar" style="width:71%"></span></span><span class="wp-bar-val">25%</span></div>
+</div>
+```
+
+Two groups (남/여 …): add a legend and pair the rows — second bar gets `wp-b2`,
+its row gets `wp-row-sub` and an empty label:
+
+```html
+<div class="wp-legend"><span><span class="wp-legend-chip"></span>남자</span><span><span class="wp-legend-chip wp-b2"></span>여자</span></div>
+<div class="wp-bars">
+  <div class="wp-bar-row"><span class="wp-bar-label">드라마</span><span class="wp-bar-track"><span class="wp-bar" style="width:90%"></span></span><span class="wp-bar-val">45%</span></div>
+  <div class="wp-bar-row wp-row-sub"><span class="wp-bar-label"></span><span class="wp-bar-track"><span class="wp-bar wp-b2" style="width:100%"></span></span><span class="wp-bar-val">50%</span></div>
+  ...
+</div>
+```
+
+**Fact boxes** (the 원인 / 전망 hints 53 usually provides):
+
+```html
+<div class="wp-facts">
+  <div class="wp-fact"><span class="wp-fact-tag">원인</span><ul><li>결혼에 대한 인식 변화</li><li>고령 인구 증가</li></ul></div>
+  <div class="wp-fact"><span class="wp-fact-tag">전망</span><ul><li>2030년 40%에 이를 것</li></ul></div>
+</div>
+```
+
+Colors are handled by CSS (`--wp-s1`/`--wp-s2`, validated for both light and dark
+mode) — never hard-code fills or use other colors.
+
+## 4. `template_body` and `model_answer`
+
+TOPIK 53 answers follow a fixed skeleton — teach it every time:
+
+1. **조사 개요** — 기관이 대상으로 무엇을 조사했는지 (`…을/를 대상으로 …에 대한 조사를 실시하였다`).
+2. **결과** — the numbers/trend (`그 결과 …이/가 …%로 가장 많았으며, …이/가 뒤를 이었다`
+   or `…에서 …(으)로 증가하였다`).
+3. **원인** — from the fact box (`이러한 변화가 나타난 원인으로는 … 등을 들 수 있다`).
+4. **마무리/전망** — (`…(으)ㄹ 것으로 전망된다`).
+
+- `template_body` = that skeleton as `<p>` paragraphs with the data blanked out.
+- `model_answer` = the same text complete, natural, **200~300자** (문어체:
+  `-(느)ㄴ다/-였다` style, never `-아요/어요`). End it with a character-count note:
+  `<p class="small text-secondary">(약 XXX자)</p>`.
+- The two must tell the same story — a student who filled the blanks correctly has
+  effectively *written* the model answer.
+
+## 5. `tips` (Uzbek, short)
+
+3–5 `<li>` bullets: what the grader wants, which pattern to reuse, common mistakes
+(spoken style, missing 전망, copying the prompt). HTML `<ul>` only.
+
+## 6. Data file shape
+
+Write batches into `corner/management/commands/_writing_<exam><qtype>_<range>.py`:
+
+```python
+SUBJECT   = {...}   # copy from the toc header / previous batch
+PRACTICES = [{"qtype": "53", "title": "53-1: ...", "summary": ..., "order": N,
+              "prompt": ..., "chart": ..., "template_body": ...,
+              "model_answer": ..., "tips": ...}, ...]
+```
+
+`order` = the drill's number in the toc file. Import with:
+
+```
+python manage.py import_writing corner/management/commands/_writing_<...>.py --author=<AUTHOR>
+```
+
+(`--republish` overwrites existing drills and rebuilds their expression lists.)
+
+## 7. Other question types (51 / 52 / 54)
+
+Same model, same flow — only the middle changes:
+
+- **51/52** (빈칸 채우기): no `chart`; the `prompt` box contains the text with `( ㄱ )` /
+  `( ㄴ )`; `template_body` gives sentence frames with blanks for the missing clauses.
+- **54** (600~700자 essay): `chart` empty or an outline `wp-facts` box; `template_body`
+  is the 서론/본론/결론 skeleton with connective expressions marked and content blanked.
+
+## 8. The user's own tips
+
+(These override the generic advice above. Empty so far — add them here when the
+user shares their TOPIK writing advice.)

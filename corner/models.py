@@ -7,6 +7,7 @@ from django_ckeditor_5.fields import CKEditor5Field
 
 
 STORY_POINTS = 5
+WRITING_POINTS = 8
 
 # Inline vocab convention:
 #   <span class="cn-word" data-pos="verb" data-tr="uzbek translation">한국어</span>
@@ -263,6 +264,112 @@ class StoryProgress(models.Model):
 
     def __str__(self):
         return f'{self.user.username} finished {self.story.title}'
+
+
+class WritingPractice(models.Model):
+    """An interactive exam-writing drill (e.g. TOPIK 쓰기 53): an exam-style
+    question with a chart/graph, a scaffold text the student completes by
+    reading the chart, and a model answer revealed at the end.
+
+    Blanks are marked inline in `template_body` as
+        <span class="wp-blank" data-answer="증가하였다" data-alt="증가했다|늘었다"></span>
+    (data-alt = accepted alternatives, |-separated). Template-ready expressions
+    are marked with the same cn-word spans stories use; WritingPracticeWord rows
+    are rebuilt from the spans in `template_body` + `model_answer` on save."""
+    QTYPE_CHOICES = [
+        ('51', '51 — 실용문 빈칸'),
+        ('52', '52 — 설명문 빈칸'),
+        ('53', '53 — 도표 분석 (200~300자)'),
+        ('54', '54 — 주제 글쓰기 (600~700자)'),
+    ]
+    subject       = models.ForeignKey(Subject, on_delete=models.CASCADE,
+                                      related_name='writing_practices')
+    qtype         = models.CharField(max_length=2, choices=QTYPE_CHOICES, default='53')
+    title         = models.CharField(max_length=200)
+    summary       = models.CharField(max_length=300, blank=True,
+                                     help_text='Short card blurb in Uzbek.')
+    prompt        = models.TextField(help_text='The exam question, HTML — instruction text as it '
+                                               'would appear on the test paper.')
+    chart         = models.TextField(blank=True,
+                                     help_text='The graph/table as inline HTML/SVG (wp-chart markup).')
+    template_body = models.TextField(blank=True,
+                                     help_text='Scaffold text with wp-blank gaps and cn-word marks.')
+    model_answer  = models.TextField(help_text='Full model answer, HTML, with cn-word marks.')
+    tips          = models.TextField(blank=True,
+                                     help_text='Strategy notes in Uzbek, HTML (shown under the answer).')
+    author        = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True,
+                                      related_name='corner_writing_practices')
+    order         = models.PositiveIntegerField(default=0)
+    is_published  = models.BooleanField(default=True)
+    views         = models.PositiveIntegerField(default=0)
+    created_at    = models.DateTimeField(auto_now_add=True)
+    updated_at    = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['qtype', 'order', 'id']
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        self._sync_words()
+
+    def _sync_words(self):
+        """Rebuild word rows from cn-word spans in the scaffold + model answer."""
+        seen, words = set(), []
+        source = f'{self.template_body or ""} {self.model_answer or ""}'
+        for attrs, word_html in CN_SPAN_RE.findall(source):
+            tr_m = _TR_RE.search(attrs)
+            if not tr_m:
+                continue
+            translation = tr_m.group(1).strip()
+            word = re.sub(r'<[^>]+>', '', word_html).strip()
+            if not word or not translation or word in seen:
+                continue
+            pos_m = _POS_RE.search(attrs)
+            pos = pos_m.group(1).strip() if pos_m else ''
+            if pos not in VALID_POS:
+                pos = ''
+            seen.add(word)
+            words.append((word, translation, pos))
+        self.words.all().delete()
+        WritingPracticeWord.objects.bulk_create([
+            WritingPracticeWord(practice=self, word=w, translation=t, pos=p, order=i)
+            for i, (w, t, p) in enumerate(words)
+        ])
+
+    def __str__(self):
+        return f'{self.get_qtype_display()} — {self.title}'
+
+
+class WritingPracticeWord(models.Model):
+    """A vocab entry extracted from a writing practice (derived — never hand-edited)."""
+    practice    = models.ForeignKey(WritingPractice, on_delete=models.CASCADE, related_name='words')
+    word        = models.CharField(max_length=100)
+    translation = models.CharField(max_length=200)
+    pos         = models.CharField(max_length=10, blank=True, choices=POS_CHOICES)
+    order       = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['order', 'id']
+
+    def __str__(self):
+        return f'{self.word} — {self.translation}'
+
+
+class WritingPracticeProgress(models.Model):
+    """A student finished a writing drill; unique per user+practice so points
+    are awarded once."""
+    user           = models.ForeignKey(User, on_delete=models.CASCADE,
+                                       related_name='corner_writing_progress')
+    practice       = models.ForeignKey(WritingPractice, on_delete=models.CASCADE,
+                                       related_name='progress')
+    points_awarded = models.PositiveSmallIntegerField(default=WRITING_POINTS)
+    finished_at    = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ['user', 'practice']
+
+    def __str__(self):
+        return f'{self.user.username} finished {self.practice.title}'
 
 
 class WritingTemplate(models.Model):

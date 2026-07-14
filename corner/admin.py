@@ -1,7 +1,8 @@
 from django.contrib import admin
 
 from .models import (Subject, Collection, Story, StoryWord, StoryQuestion,
-                     StoryGrammar, WritingTemplate)
+                     StoryGrammar, WritingTemplate, WritingPractice,
+                     WritingPracticeWord)
 
 
 @admin.register(Subject)
@@ -78,6 +79,27 @@ class StoryAdmin(admin.ModelAdmin):
             'fields': ('views', 'created_at', 'updated_at'),
         }),
     )
+
+
+class WritingPracticeWordInline(admin.TabularInline):
+    """Derived from cn-word spans in the scaffold + model answer — read-only."""
+    model = WritingPracticeWord
+    extra = 0
+    can_delete = False
+    readonly_fields = ['order', 'word', 'translation', 'pos']
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+
+@admin.register(WritingPractice)
+class WritingPracticeAdmin(admin.ModelAdmin):
+    list_display    = ['title', 'qtype', 'subject', 'order', 'is_published', 'views', 'created_at']
+    list_filter     = ['qtype', 'subject', 'is_published']
+    list_editable   = ['order', 'is_published']
+    search_fields   = ['title', 'summary', 'prompt']
+    readonly_fields = ['views', 'created_at', 'updated_at']
+    inlines         = [WritingPracticeWordInline]
 
 
 @admin.register(WritingTemplate)

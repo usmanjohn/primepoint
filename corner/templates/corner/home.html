@@ -13,6 +13,19 @@
     </p>
 </div>
 
+{% if writing_total %}
+<a href="{% url 'corner_writing_list' %}" class="cn-banner d-flex align-items-center gap-3 text-decoration-none mb-4">
+    <span class="cn-banner-icon"><i class="bi bi-vector-pen fs-3"></i></span>
+    <span class="flex-grow-1">
+        <span class="d-block fw-semibold">{% trans "Writing practice" %} · {% trans "Yozish mashqi" %}</span>
+        <span class="d-block small text-secondary">
+            {% blocktrans count counter=writing_total %}{{ counter }} interactive exam-writing drill{% plural %}{{ counter }} interactive exam-writing drills{% endblocktrans %}
+        </span>
+    </span>
+    <i class="bi bi-arrow-right fs-5"></i>
+</a>
+{% endif %}
+
 {% if template_total %}
 <a href="{% url 'corner_templates' %}" class="cn-banner d-flex align-items-center gap-3 text-decoration-none mb-4">
     <span class="cn-banner-icon"><i class="bi bi-file-earmark-text fs-3"></i></span>

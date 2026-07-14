@@ -20,6 +20,15 @@
     </p>
 </div>
 
+<a href="{% url 'corner_writing_list' %}" class="cn-banner d-flex align-items-center gap-3 text-decoration-none mb-4">
+    <span class="cn-banner-icon"><i class="bi bi-vector-pen fs-3"></i></span>
+    <span class="flex-grow-1">
+        <span class="d-block fw-semibold">{% trans "Prefer to practise online?" %} · {% trans "Onlayn mashq qilasizmi?" %}</span>
+        <span class="d-block small text-secondary">{% trans "Try the interactive writing drills — fill the template and compare with a model answer." %}</span>
+    </span>
+    <i class="bi bi-arrow-right fs-5"></i>
+</a>
+
 {% if templates %}
 {% regroup templates by subject as subject_groups %}
 {% for group in subject_groups %}

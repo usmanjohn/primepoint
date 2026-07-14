@@ -7,7 +7,8 @@ from django.utils.translation import gettext as _
 from django.views.decorators.http import require_POST
 
 from .models import (Subject, Collection, Story, StoryProgress,
-                     WritingTemplate, STORY_POINTS)
+                     WritingTemplate, WritingPractice, WritingPracticeProgress,
+                     STORY_POINTS, WRITING_POINTS)
 
 
 def _can_edit(user, story):
@@ -47,9 +48,11 @@ def corner_home(request):
         )
     )
     template_total = WritingTemplate.objects.filter(is_published=True).count()
+    writing_total = WritingPractice.objects.filter(is_published=True).count()
     return render(request, 'corner/home.html', {
         'subjects': subjects,
         'template_total': template_total,
+        'writing_total': writing_total,
     })
 
 
@@ -197,6 +200,82 @@ def corner_story_edit(request, subject_slug, collection_slug, slug):
         'collection': story.collection,
         'story': story,
     })
+
+
+def corner_writing_list(request):
+    """Interactive writing drills grouped by exam question type (51–54)."""
+    pub = _published_filter(request.user)
+    practices = list(WritingPractice.objects.filter(**pub).select_related('subject'))
+
+    finished_ids = set()
+    if request.user.is_authenticated:
+        finished_ids = set(WritingPracticeProgress.objects
+                           .filter(user=request.user)
+                           .values_list('practice_id', flat=True))
+    groups = {}
+    for p in practices:
+        p.is_finished = p.id in finished_ids
+        groups.setdefault(p.get_qtype_display(), []).append(p)
+
+    return render(request, 'corner/writing_list.html', {
+        'groups': groups,
+        'finished_count': len(finished_ids),
+        'total_count': len(practices),
+    })
+
+
+def corner_writing_detail(request, pk):
+    """One drill: exam question + chart, key expressions, fill-in scaffold,
+    model answer behind a reveal, flashcards, finish button."""
+    practice = get_object_or_404(
+        WritingPractice.objects.select_related('subject'),
+        pk=pk, **_published_filter(request.user),
+    )
+    siblings = list(WritingPractice.objects
+                    .filter(qtype=practice.qtype, **_published_filter(request.user)))
+    index = siblings.index(practice)
+    prev_p = siblings[index - 1] if index > 0 else None
+    next_p = siblings[index + 1] if index < len(siblings) - 1 else None
+
+    is_finished = (request.user.is_authenticated and
+                   WritingPracticeProgress.objects
+                   .filter(user=request.user, practice=practice).exists())
+
+    WritingPractice.objects.filter(pk=practice.pk).update(views=F('views') + 1)
+
+    return render(request, 'corner/writing_detail.html', {
+        'practice': practice,
+        'subject': practice.subject,
+        'words': list(practice.words.all()),
+        'current_no': index + 1,
+        'total_no': len(siblings),
+        'prev_p': prev_p,
+        'next_p': next_p,
+        'is_finished': is_finished,
+        'writing_points': WRITING_POINTS,
+    })
+
+
+@login_required
+@require_POST
+def corner_writing_finish(request, pk):
+    """Mark a writing drill finished; award points to the panda once."""
+    practice = get_object_or_404(
+        WritingPractice, pk=pk, **_published_filter(request.user),
+    )
+    progress, created = WritingPracticeProgress.objects.get_or_create(
+        user=request.user, practice=practice,
+        defaults={'points_awarded': WRITING_POINTS},
+    )
+    if created:
+        try:
+            request.user.profile.panda.recalc_rating()
+            messages.success(request, _('Practice finished! +%(points)d points') % {'points': WRITING_POINTS})
+        except Exception:
+            messages.success(request, _('Practice finished!'))
+    else:
+        messages.info(request, _('You already finished this practice.'))
+    return redirect('corner_writing_detail', pk=pk)
 
 
 def corner_templates(request):

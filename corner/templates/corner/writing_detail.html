@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+{% block nav_corner %}active{% endblock %}
+{% block page_name %}{{ practice.title }}{% endblock %}
+{% block title %}{{ practice.title }} — {% trans "Corner" %}{% endblock %}
+
+{% block content %}
+
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb small mb-0">
+        <li class="breadcrumb-item"><a href="{% url 'corner_home' %}">{% trans "Corner" %}</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'corner_writing_list' %}">{% trans "Writing practice" %}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ practice.title }}</li>
+    </ol>
+</nav>
+
+<div class="mx-auto" style="max-width:48rem;">
+
+    <h1 class="page-title mb-1">
+        {{ practice.title }}
+        {% if not practice.is_published %}<span class="badge text-bg-warning">{% trans "Draft" %}</span>{% endif %}
+    </h1>
+    <p class="page-subtitle mb-4">
+        <i class="bi bi-pencil-square me-1"></i>{{ practice.get_qtype_display }}
+        · {% blocktrans %}Task {{ current_no }} of {{ total_no }}{% endblocktrans %}
+    </p>
+
+    {# ── Step 1 · the exam question ─────────────────────────────────── #}
+    <div class="wp-step mb-2">
+        <span class="wp-step-no">1</span>
+        <span class="wp-step-title">{% trans "Read the question" %} · {% trans "Savolni oʻqing" %}</span>
+    </div>
+    <div class="wp-exam mb-4">
+        <div class="wp-exam-head">
+            <span class="wp-exam-no">{{ practice.qtype }}</span>
+            <div class="wp-exam-prompt">{{ practice.prompt|safe }}</div>
+        </div>
+        {% if practice.chart %}
+        <div class="wp-chart">{{ practice.chart|safe }}</div>
+        {% endif %}
+    </div>
+
+    {% if practice.template_body %}
+    {# ── Step 2 · fill the template ─────────────────────────────────── #}
+    <div class="wp-step mb-2">
+        <span class="wp-step-no">2</span>
+        <span class="wp-step-title">{% trans "Fill the template" %} · {% trans "Shablonni toʻldiring" %}</span>
+    </div>
+    <p class="small text-secondary mb-2">
+        <i class="bi bi-lightbulb me-1"></i>{% trans "The highlighted expressions are ready-made exam phrases — tap one to see its Uzbek translation. Fill each gap by reading the chart above." %}
+    </p>
+    <div class="cn-reader wp-paper mb-2" data-wp-template>
+        {{ practice.template_body|safe }}
+    </div>
+    <div class="wp-actions mb-4">
+        <button type="button" class="btn btn-primary" data-wp-check>
+            <i class="bi bi-check2-square me-1"></i>{% trans "Check my answers" %}
+        </button>
+        <button type="button" class="btn btn-outline-secondary" data-wp-solve>
+            <i class="bi bi-eye me-1"></i>{% trans "Show the answers" %}
+        </button>
+        <span class="wp-score small" data-wp-score aria-live="polite"></span>
+    </div>
+    {% endif %}
+
+    {# ── Step 3 · model answer ──────────────────────────────────────── #}
+    <div class="wp-step mb-2">
+        <span class="wp-step-no">3</span>
+        <span class="wp-step-title">{% trans "Compare with the model answer" %} · {% trans "Namuna bilan solishtiring" %}</span>
+    </div>
+    <details class="wp-reveal mb-4">
+        <summary><i class="bi bi-journal-check me-1"></i>{% trans "Show the model answer" %} · {% trans "Namuna javobni koʻrish" %}</summary>
+        <div class="cn-reader wp-paper mt-2">
+            {{ practice.model_answer|safe }}
+        </div>
+        {% if practice.tips %}
+        <div class="wp-tips mt-2">
+            <p class="wp-tips-title mb-1"><i class="bi bi-stars me-1"></i>Maslahatlar</p>
+            {{ practice.tips|safe }}
+        </div>
+        {% endif %}
+    </details>
+
+    {# ── Vocabulary flashcards (auto from cn-word spans) ────────────── #}
+    {% if words %}
+    <section class="mb-4">
+        <h2 class="h5 mb-1"><i class="bi bi-translate me-1"></i>{% trans "Template expressions" %} · {% trans "Shablon iboralari" %}</h2>
+        <p class="small text-secondary mb-3">{% trans "Tap a card to flip it. Learn these by heart — they fit almost any chart question." %}</p>
+        <div class="pp-flashcards" data-pp-flashcards>
+            {% for w in words %}
+            <div class="pp-card cn-fc-pos-{% if w.pos %}{{ w.pos }}{% else %}none{% endif %}">
+                <div class="pp-card-front">
+                    {% if w.pos %}<span class="cn-pos-dot cn-pos-{{ w.pos }}"></span>{% endif %}{{ w.word }}
+                </div>
+                <div class="pp-card-back">{{ w.translation }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <div class="cn-finish text-center py-3 mb-4">
+        {% if is_finished %}
+        <span class="badge rounded-pill text-bg-success fs-6 px-3 py-2">
+            <i class="bi bi-check2-circle me-1"></i>{% trans "Finished" %}
+        </span>
+        {% elif user.is_authenticated %}
+        <form method="post" action="{% url 'corner_writing_finish' practice.pk %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success btn-lg">
+                <i class="bi bi-check2-circle me-1"></i>
+                {% blocktrans with points=writing_points %}Mark as finished (+{{ points }} points){% endblocktrans %}
+            </button>
+        </form>
+        {% else %}
+        <a href="{% url 'login' %}" class="btn btn-outline-success">
+            <i class="bi bi-box-arrow-in-right me-1"></i>{% trans "Log in to track your progress" %}
+        </a>
+        {% endif %}
+    </div>
+
+    <div class="d-flex justify-content-between gap-2 border-top pt-3">
+        {% if prev_p %}
+        <a href="{% url 'corner_writing_detail' prev_p.pk %}" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left me-1"></i>{% trans "Previous" %}
+        </a>
+        {% else %}<span></span>{% endif %}
+
+        {% if next_p %}
+        <a href="{% url 'corner_writing_detail' next_p.pk %}" class="btn btn-primary ms-auto">
+            {% trans "Next" %}<i class="bi bi-arrow-right ms-1"></i>
+        </a>
+        {% else %}
+        <a href="{% url 'corner_writing_list' %}" class="btn btn-success ms-auto">
+            <i class="bi bi-check2-all me-1"></i>{% trans "Back to the list" %}
+        </a>
+        {% endif %}
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/examprep-kit.css' %}">
+<link rel="stylesheet" href="{% static 'css/corner.css' %}">
+{% endblock %}
+{% block extra_js %}
+<script src="{% static 'js/examprep-kit.js' %}"></script>
+<script src="{% static 'js/corner.js' %}"></script>
+{% endblock %}
