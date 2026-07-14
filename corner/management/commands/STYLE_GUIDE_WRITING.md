@@ -208,10 +208,33 @@ the gaps written as `( <span class="wp-slot">㉠</span> )` / `( <span class="wp-
 - Vocabulary marks live in `template_body` + `model_answer` only (the passage in
   `chart` is never synced) — **5–10 expressions** per drill.
 
-## 7b. Question type 54 (600~700자 essay)
+## 7b. Question type 54 (600~700자 essay, 50점)
 
-`chart` empty or an outline `wp-facts` box; `template_body` is the 서론/본론/결론
-skeleton with connective expressions marked and content blanked.
+The hardest question — the drill teaches a **reusable essay skeleton**, not just one
+answer. Rotate the essay type across drills (중요성+방법 / 가치 / 찬반·장단점 /
+문제-원인-해결 / 조건형) so students collect a frame for each.
+
+- `prompt`: `<p>다음을 주제로 하여 자신의 생각을 600~700자로 글을 쓰시오. 단, 문제를
+  그대로 옮겨 쓰지 마시오. <strong>(50점)</strong></p>`
+- `chart` = the exam topic box: a `wp-passage` with the 2–3-sentence topic paragraph
+  ending in `...에 대해 아래의 내용을 중심으로 자신의 생각을 쓰라.` plus a `<ul>` of
+  the 과제 questions. No title.
+- `template_body` = the full essay as **four labelled paragraphs** — each opens with
+  `<p class="wp-part">서론</p>` / `본론 1` / `본론 2` / `결론`. Mark the frame
+  expressions (`-는 데 중요한 역할을 한다`, `그렇다면 ~은 왜 …가?`, `왜냐하면 …기
+  때문이다`, `예를 들어`, `이처럼`, `지금까지 ~에 대해 살펴보았다`, `-아/어야 할
+  것이다` …) with `cn-word` spans. **What to blank (8–12):** (a) the topic's key
+  words where they must be copied from the question box, and (b) structural glue on
+  its *second* exposure — show the pattern once marked, blank it when the parallel
+  slot recurs (먼저 → blank 다음으로; 서론's 때문이다 → blank 본론's). Answers stay
+  1–4 words; never blank a whole clause.
+- `model_answer` = the same essay complete, **600~700자** (count the tag-stripped
+  text, excluding the `wp-part` labels and the final note), written style, with the
+  same `wp-part` labels and `cn-word` marks; end with
+  `<p class="small text-secondary">(약 NNN자)</p>`.
+- `tips` (Uzbek, 4–6 bullets): the skeleton for THIS essay type, paragraph
+  proportions (서론 ~20% / 본론 ~60% / 결론 ~20%), the "don't copy the prompt
+  sentence" penalty, 문어체 only, and time advice (~25–30 min, outline first).
 
 ## 8. The user's own tips
 

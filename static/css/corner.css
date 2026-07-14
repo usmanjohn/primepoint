@@ -561,6 +561,19 @@
     white-space: nowrap;
 }
 
+/* 54 essay-part labels (서론 / 본론 / 결론) in the scaffold + model answer. */
+.wp-part {
+    display: inline-block;
+    background: var(--cn-hl);
+    color: var(--cn-accent);
+    font-weight: 700;
+    font-size: .8rem;
+    border-radius: 1rem;
+    padding: .1rem .75rem;
+    margin: .4rem 0 .3rem;
+    font-family: var(--bs-body-font-family, sans-serif);
+}
+
 /* ㉠ / ㉡ labels on the step-2 sentence frames and the model answer. */
 .wp-frame-label {
     display: inline-flex;

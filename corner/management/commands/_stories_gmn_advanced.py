@@ -227,4 +227,220 @@ STORIES = [
             },
         ],
     },
+
+    # ── 46 ───────────────────────────────────────────────────────────────
+    {
+        "title":   "역사학과 디지털 아카이브",
+        "summary": "Madaniy meroslarni raqamli shaklga o'tkazish (Digital Archiving) orqali ularni abadiy saqlash va ommalashtirish haqida.",
+        "order":   46,
+        "body": '''<p>전쟁이나 자연재해로 인해 한 번 <span class="cn-word" data-pos="adv" data-tr="shafqatsizlarcha, butkul">손실된</span> 인류의 역사적 유물은 두 번 다시 원래의 상태로 <strong>복구하기가 불가능합니다</strong>. 이러한 아쉬움을 <span class="cn-word" data-pos="adv" data-tr="samorali tarzda, sezilarli">혁신적으로</span> 보완하기 위해 최근 역사학계에서는 3D 스캔 기술을 활용해 문화재를 가상 세계에 영구히 기록하는 '디지털 아카이브(Digital Archive)' 구축에 <span class="cn-word" data-pos="adv" data-tr="faol ravishda, jadal">박차를 가하고 있습니다</span>. 이 작업은 유물의 물리적 파손을 <span class="cn-word" data-pos="adv" data-tr="mukammal tarzda, butkul">완벽히</span> 방지할 수 있는 <span class="cn-word" data-pos="adj" data-tr="ajoyib, mukammal">탁월한</span> 방안으로 꼽힙니다.</p>
+<p>또한 디지털 데이터로 변환된 문화유산은 시공간의 제약을 넘어 전 세계의 학자들과 대중에게 <span class="cn-word" data-pos="adv" data-tr="osonlik bilan, bemalol">실시간으로</span> <span class="cn-word" data-pos="adv" data-tr="keng miqyosda, bemalol">공유될 수 있습니다</span>. 박물관 유리창 너머로만 바라보던 귀한 서책이나 조각상을 입체적으로 <span class="cn-word" data-pos="adv" data-tr="sinchkovlik bilan, batafsil">정밀하게</span> 관찰하고 간접 체험하는 일이 <strong>가능해진 것입니다</strong>. 이처럼 아날로그식 보존 방식에만 머무르지 않고 디지털 첨단 기술을 <span class="cn-word" data-pos="adv" data-tr="uyg'un tarzda, qo'shib">접목하는</span> 역동적인 시도는 인류의 공통 자산을 영원히 보존하고 그 가치를 <span class="cn-word" data-pos="adj" data-tr="g'oyatda ulkan, yuksak">막대하게</span> 증폭시키는 진화적 통로입니다.</p>''',
+        "grammar": [
+            {
+                "pattern":  "-기(가) 불가능하다/어렵다",
+                "meaning":  "Muayyan harakatni amalga oshirish mutlaqo imkonsiz yoki juda qiyinligini bildiradi.",
+                "examples": ["원래의 상태로 복구하기가 불가능합니다.", "외국어 단어를 하루 만에 다 외우기는 불가능해요."],
+            },
+            {
+                "pattern":  "-어/아지다 (가능해지다)",
+                "meaning":  "Holatning o'zgarib borishi yoki yangi imkoniyat paydo bo'lishini ko'rsatadi: ...adigan bo'lib qolmoq.",
+                "examples": ["유물을 세밀하게 관찰하는 일이 가능해진 것입니다.", "날씨가 점차 따뜻해지고 있네요."],
+            },
+        ],
+        "questions": [
+            {
+                "text": "본문에서 설명하는 '디지털 아카이브'의 가장 핵심적인 의의는 무엇입니까?",
+                "choices": [
+                    "유물을 가상 공간에 기록하여 물리적 훼손 위험을 방지하고 전 세계와 공유하는 것",
+                    "파손된 실제 유물을 화학적 약품을 사용하여 과거와 똑같은 새것으로 교체하는 것",
+                    "박물관의 관람료를 올려 유물 복구를 위한 국가적 자금을 마련하는 것",
+                ],
+                "answer": 0,
+                "explanation": "첫 번째 문단에서 물리적 파손을 막고 가상 세계에 유물을 영구히 기록하여 누구나 쉽게 실시간으로 관찰할 수 있도록 만든다고 서술되어 있습니다.",
+            },
+            {
+                "text": "이 글의 내용과 일치하지 않는 것을 고르십시오.",
+                "choices": [
+                    "한 번 파괴된 유물은 아날로그적 방법만으로는 예전 모습 그대로 살리기 매우 힘들다.",
+                    "3D 스캔 기술로 만들어진 문화재 데이터는 인터넷을 통해 실시간 공유가 가능하다.",
+                    "디지털 아카이브가 활성화되면 박물관을 직접 방문하는 행위의 질적 한계가 넓어진다.",
+                    "디지털로 박제된 데이터는 해킹 위험이 매우 크기 때문에 유물의 현장 관람만을 고집해야 한다.",
+                ],
+                "answer": 3,
+                "explanation": "작가는 디지털 아카이브 기술을 인류의 소중한 자산을 영원히 지키고 가치를 넓히는 유용한 도구로 적극 칭찬하고 있으며, 전면 거부를 권유하지 않습니다.",
+            },
+        ],
+    },
+    # ── 47 ───────────────────────────────────────────────────────────────
+    {
+        "title":   "심리학과 인지 편향",
+        "summary": "Insonlarning o'z qobiliyatlarini haddan tashqari yuqori baholashi va bilimsizlarning o'ziga ishonishi — 'Danning-Kryuger effekti' (Dunning-Kruger Effect).",
+        "order":   47,
+        "body": '''<p>지식을 아주 <span class="cn-word" data-pos="adv" data-tr="yuzaki, sayoz">얕게</span> 배운 사람이 깊은 학식을 가진 전문가보다 더 큰 자신감을 보이는 <span class="cn-word" data-pos="adj" data-tr="g'alati, noodatiy">이상한</span> 현상이 사회에서 <span class="cn-word" data-pos="adv" data-tr="tez-tez, doimo">종종</span> 관찰됩니다. 심리학에서는 이를 자신의 실제 능력보다 아는 것이 적을수록 오히려 스스로의 실력을 과대평가한다는 의미의 '더닝 크루거 효과(Dunning-Kruger Effect)'라고 <strong>부르곤 합니다</strong>. 지식의 양이 <span class="cn-word" data-pos="adj" data-tr="kam, yetarsiz">부족할 때는</span> 자신이 무엇을 모르는지조차 인지하지 못해 <span class="cn-word" data-pos="adv" data-tr="o'rinsiz ravishda, asossiz">터무니없이</span> 용감해지기 <strong>쉽기 때문입니다</strong>.</p>
+<p>그러나 깊이 있는 공부를 시작하여 앎의 지평이 넓어질수록, 자신이 가진 지식의 한계를 <span class="cn-word" data-pos="adv" data-tr="shubhasiz, yaqqol">비로소</span> 깨닫게 되며 사람의 태도는 <span class="cn-word" data-pos="adv" data-tr="tobora, kundan-kunga">점차</span> 겸손하게 바뀝니다. 진짜 전문가는 세상의 복잡성을 이해하기 때문에 함부로 확답하지 않고 신중하게 접근합니다. 자신의 무지를 솔직하게 인정하는 메타인지적 태도야말로 더닝 크루거의 함정에서 벗어나 타인과의 <span class="cn-word" data-pos="adj" data-tr="samimiy, iliq">지성적인</span> 소통을 가능하게 만드는 핵심 열쇠입니다.</p>''',
+        "grammar": [
+            {
+                "pattern":  "-곤 하다",
+                "meaning":  "Tez-tez takrorlanib turadigan odatiy ish-harakatni bildiradi: ...-ib turadi.",
+                "examples": ["스스로의 실력을 과대평가한다고 부르곤 합니다.", "기분이 우울할 때는 클래식 음악을 듣곤 해요."],
+            },
+            {
+                "pattern":  "-기 쉽기 때문이다",
+                "meaning":  "Biror holatga moyillik yoki imkoniyat yuqoriligining sababini tushuntiradi: ... bo'lishi oson bo'lganligi uchundir.",
+                "examples": ["자신이 무엇을 모르는지 몰라 터무니없이 용감해지기 쉽기 때문입니다.", "옷을 얇게 입으면 감기에 걸리기 쉽기 때문이지요."],
+            },
+        ],
+        "questions": [
+            {
+                "text": "더닝 크루거 효과가 일어나는 심리적 원인으로 가장 알맞은 것은 무엇입니까?",
+                "choices": [
+                    "아는 것이 적은 사람은 자신이 모른다는 사실조차 인지하지 못해 지나친 자신감을 가지기 때문에",
+                    "이미 세상의 복잡한 논리를 완벽히 파악하여 아무런 두려움이 남아 있지 않기 때문에",
+                    "과거에 뇌 손상을 입어 순간적인 인지 판단 장애를 앓고 있기 때문에",
+                ],
+                "answer": 0,
+                "explanation": "첫 번째 단락에서 얕은 지식을 지닌 상태에서는 자신이 무엇을 놓치고 있는지 알지 못해 근거 없는 용감함을 갖기 쉽다고 설명했습니다.",
+            },
+            {
+                "text": "본문의 전문가(진짜 지식인)가 취하는 태도로 올바른 것은 무엇입니까?",
+                "choices": [
+                    "자신이 세상의 모든 지식을 완벽하게 알고 있다고 자부하며 대중을 훈계한다.",
+                    "앎의 한계를 자각하여 함부로 확언하지 않고 겸손하게 사실에 접근한다.",
+                    "질문을 받았을 때 모르는 척 연기하며 타인과의 소통을 완전히 거부한다.",
+                    "지식을 타인에게 빼앗기지 않기 위해 비밀 장소에 가두고 혼자 연구한다.",
+                ],
+                "answer": 1,
+                "explanation": "두 번째 문단에서 공부가 깊어질수록 지식의 한계를 자각하고 점차 겸손한 태도를 취하며 사실에 신중히 다가간다고 서술되어 있습니다.",
+            },
+        ],
+    },
+    # ── 48 ───────────────────────────────────────────────────────────────
+    {
+        "title":   "생태학과 우주과학",
+        "summary": "Yer sirtidagi mikroorganizmlarning ekstremal sharoitlarda omon qolishi va koinotda hayot izlash (Astrobiologiya) dagi o'rni.",
+        "order":   48,
+        "body": '''<p>남극의 <span class="cn-word" data-pos="adj" data-tr="ayozli, g'oyat sovuq">매서운</span> 빙하 속이나 수온이 100도에 달하는 깊은 바닷속 열수구처럼 생명체가 살기에 <span class="cn-word" data-pos="adj" data-tr="o'ta noqulay, o'ta og'ir">극도로 척박한</span> 환경에서도 <span class="cn-word" data-pos="adv" data-tr="ajoyib tarzda, muvaffaqiyatli">끈질기게</span> 생명을 이어가는 미생물들이 있습니다. 학계에서는 이들을 '극한 생물(Extremophile)'이라고 <strong>부르고 있습니다</strong>. 인간의 상식으로는 도저히 생존할 수 없을 것 같은 고열, 고압, 그리고 강한 방사선 구역에서도 유전자를 보존하고 번식하는 이들의 생명력은 전 세계 과학자들을 <span class="cn-word" data-pos="adv" data-tr="chuqur, hayratda">깊이</span> 매료시켰습니다.</p>
+<p>이 극한 생물의 존재는 우주 생명체를 탐색하는 '외계 생물학' 연구에 <span class="cn-word" data-pos="adj" data-tr="g'oyatda ulkan, juda katta">결정적인</span> 영감을 제공합니다. 태양계 내의 화성이나 목성의 위성인 유로파처럼 환경이 <span class="cn-word" data-pos="adj" data-tr="og'ir, sovuq">가혹한</span> 행성이라도 지구의 극한 생물과 유사한 미생물이 존재할 수 있다는 가정이 <span class="cn-word" data-pos="adv" data-tr="ilmiy jihatdan, aniq">과학적으로</span> 성립하기 때문입니다. 지구 안의 작은 미생물을 연구하는 일이 결국 우주 저편의 생명 기원을 밝혀내는 <span class="cn-word" data-pos="adj" data-tr="ajoyib, ulug'vor">위대한</span> 출발점이 <strong>되는 셈입니다</strong>.</p>''',
+        "grammar": [
+            {
+                "pattern":  "-고 있다/부르고 있다",
+                "meaning":  "Harakat yoki holatning davom etayotganini ko'rsatadi.",
+                "examples": ["이들을 극한 생물이라고 부르고 있습니다.", "우리는 인류의 미래를 위해 친환경 에너지를 개발하고 있어요."],
+            },
+            {
+                "pattern":  "-는 셈이다 (되는 셈이다)",
+                "meaning":  "Xulosa qilishda yoki baholashda ishlatiladi: ...gan hisoblanadi, deyarli ... bilan barobar.",
+                "examples": ["우주 저편의 생명 기원을 밝혀내는 출발점이 되는 셈입니다.", "시험을 다 풀었으니 이번 학기 공부는 끝난 셈이에요."],
+            },
+        ],
+        "questions": [
+            {
+                "text": "본문의 '극한 생물(Extremophile)'이 우리 인간에게 시사하는 생물학적 가치는 무엇입니까?",
+                "choices": [
+                    "인간보다 똑똑한 두뇌를 개발할 수 있는 유전 공학 기술의 토대가 된다.",
+                    "우리가 살기 척박하다고 여기는 고온, 방사선 등 극한 조건 속에서도 생명이 번식할 수 있음을 입증하는 것",
+                    "남극과 온천의 관광 상품 가격을 획기적으로 낮추는 생태적 자원",
+                ],
+                "answer": 1,
+                "explanation": "인간 상식 밖의 극심한 환경(고온, 남극 빙하, 방사선)에서도 미생물이 왕성히 번식하고 유전자를 지켜낼 수 있음을 보여주어 생명의 영속성을 보여줍니다.",
+            },
+            {
+                "text": "지구 안의 극한 생물 연구가 '외계 생물학' 발전에 기여하는 이치로 알맞은 것은 무엇입니까?",
+                "choices": [
+                    "외계인들이 이미 지구의 극한 미생물을 불법적으로 복제해 갔기 때문에",
+                    "화성이나 유로파같이 기후가 몹시 가혹한 우주 환경에도 미생물이 살 수 있다는 근거가 되기 때문에",
+                    "지구의 미생물을 우주로 쏘아 보내 우주 기지를 무료로 단시간에 건설할 수 있어서",
+                    "지구 온난화 현상을 완벽히 통제할 수 있는 우주용 거대 필터를 만들어 주기 때문에",
+                ],
+                "answer": 1,
+                "explanation": "두 번째 문단에서 환경이 몹시 가혹한 타 행성에서도 지구의 극한 미생물과 비슷한 생명체가 능히 살 수 있다는 과학적 타당성을 제공하기 때문이라고 설명했습니다.",
+            },
+        ],
+    },
+    # ── 49 ───────────────────────────────────────────────────────────────
+    {
+        "title":   "철학과 수사학",
+        "summary": "Qadimgi Yunoniston faylasufi Sokratning 'Sokratik muloqot' (Socratic Dialogue) orqali o'z bilimsizligini anglatish usuli.",
+        "order":   49,
+        "body": '''<p>고대 그리스의 철학자 소크라테스는 제자들에게 어떠한 지식을 <span class="cn-word" data-pos="adv" data-tr="bir tomonlama, majburlab">일방적으로</span> 주입하지 않고, 사소한 대화를 통해 상대방 스스로가 진리를 <span class="cn-word" data-pos="adv" data-tr="osongina, oxir-oqibat">발견할 수 있도록</span> 유도했습니다. 이러한 대화법을 '산파술(Socratic Method)' 혹은 '소크라테스적 대화법'이라고 <strong>부르곤 합니다</strong>. 그는 대화 상대가 당연하게 믿어왔던 도덕이나 철학적 관념에 대해 <span class="cn-word" data-pos="adv" data-tr="muntazam ravishda, tinimsiz">끊임없이</span> 질문을 던짐으로써, 스스로가 진정으로 알고 있던 것이 아무것도 없음을 깨닫게 <strong>만드는 데 집중했습니다</strong>.</p>
+<p>그는 진정한 배움과 깨달음은 자기 자신의 무지를 <span class="cn-word" data-pos="adv" data-tr="chin dildan, samimiy">솔직하게</span> 인정하는 순간 시작된다고 믿었습니다. 이러한 교육적 유도는 상대방의 자존심을 <span class="cn-word" data-pos="adv" data-tr="shafqatsizlarcha, mutloq">여지없이</span> 무너뜨리기도 하지만, 편견에 갇힌 좁은 우물 안에서 벗어나 스스로 사유하는 주체적인 지성으로 성장시키는 <span class="cn-word" data-pos="adj" data-tr="g'oyatda samarali, yuksak">막강한</span> 추진력이 되었습니다. 참된 지식은 주입식 강의가 아니라, 의심과 성찰 속에서 <span class="cn-word" data-pos="adv" data-tr="sekin-asta, shoshilmasdan">스스로</span> 탄생시켜야 하는 영혼의 결과물입니다.</p>''',
+        "grammar": [
+            {
+                "pattern":  "-곤 하다",
+                "meaning":  "Tez-tez takrorlanadigan odatiy ish-harakatni bildiradi: ...-ib turadi.",
+                "examples": ["소크라테스적 대화법이라고 부르곤 합니다.", "어려운 일이 생기면 밤늦게 일기를 쓰며 사색하곤 했어요."],
+            },
+            {
+                "pattern":  "-는 데 집중하다",
+                "meaning":  "Diqqatni faqat ma'lum bir harakatga yoki maqsadga qaratishni bildiradi: ...ishga diqqat qaratmoq.",
+                "examples": ["아무것도 없음을 깨닫게 만드는 데 집중했습니다.", "저는 한국어 TOPIK 쓰기 점수를 높이는 데 집중하는 중입니다."],
+            },
+        ],
+        "questions": [
+            {
+                "text": "소크라테스가 대화 속에서 상대방에게 무수한 질문을 지속적으로 던진 진짜 의도는 무엇입니까?",
+                "choices": [
+                    "지적으로 상대방의 기를 꺾어 경쟁에서 완벽히 이기고 굴복시키기 위해",
+                    "상대방이 고정관념을 돌아보고 자신의 무지를 자각하여 스스로 질문과 답을 찾도록 돕기 위해",
+                    "아테네 광장에 모인 수많은 대중들 앞에서 철학적 연설 기회를 대거 독점하기 위해",
+                ],
+                "answer": 1,
+                "explanation": "주입식 방식이 아니라, 질문을 주고받는 과정을 통해 상대방이 신봉하던 고정관념의 오류와 무지를 스스로 확인하고 주체적으로 생각하도록 유도하기 위함입니다.",
+            },
+            {
+                "text": "본문에 기재된 참된 지식에 도달하는 올바른 조건은 무엇입니까?",
+                "choices": [
+                    "풍부한 암기 자료와 주입식 강의를 아무런 의심 없이 맹목적으로 받아들이는 것",
+                    "타인의 주장은 철저히 배격하고 오직 자신의 신념만이 참되다고 선언하는 것",
+                    "편견을 깨부수고 스스로의 무지를 자각하는 성찰과 의심의 과정을 거치는 것",
+                    "철학적 의문을 아예 가지지 않고 복잡한 사유 과정을 단호히 거부하는 것",
+                ],
+                "answer": 2,
+                "explanation": "마지막 두 줄에서 참된 지식은 주입식이 아닌 의심과 성찰 속에서 영혼 스스로 낳는 결과물이어야 하며, 자신의 무지를 고백할 때 교육과 사유가 시작된다고 했습니다.",
+            },
+        ],
+    },
+    # ── 50 ───────────────────────────────────────────────────────────────
+    {
+        "title":   "인류학과 음식 문화",
+        "summary": "Madaniyatlarni o'z me'yorlari bilan emas, balki joylashgan muhiti nuqtai nazaridan tushunish — 'Madaniy nisbiylik' (Cultural Relativism) haqida.",
+        "order":   50,
+        "body": '''<p>어느 특정 부족이 곤충을 즐겨 먹는 행위를 볼 때, 현대적 가치관에 익숙한 이들은 <span class="cn-word" data-pos="adv" data-tr="osongina, tezda">흔히</span> 미개하거나 불결하다고 <span class="cn-word" data-pos="adv" data-tr="shoshilinch ravishda, osonlikcha">경솔하게</span> <strong>판단하곤 합니다</strong>. 하지만 인류학적 도구인 '문화 상대주의(Cultural Relativism)'적 관점에서 들여다보면, 이는 해당 지역의 지리적 여건이나 기후 환경에 <span class="cn-word" data-pos="adv" data-tr="mukammal tarzda, butkul">완벽히</span> 적응하기 위한 생존의 지혜입니다. 사막이나 열대 우림처럼 목축이 <span class="cn-word" data-pos="adj" data-tr="juda qiyin, og'ir">매우 어려운</span> 환경에서는 곤충이야말로 소중한 단백질을 <span class="cn-word" data-pos="adv" data-tr="samorali, yetarlicha">공급받을 수 있는</span> <span class="cn-word" data-pos="adj" data-tr="ajoyib, bebahor">최선의</span> 자원이었기 때문입니다.</p>
+<p>이처럼 문화 상대주의는 모든 사회적 규범과 음식을 자기 기준대로 함부로 평가하지 않고, 그 문화가 탄생한 맥락 안에서 이해하려는 균형 잡힌 시각을 <strong>의미합니다</strong>. 나와 다른 타 문화권을 무작정 지양하고 야만시하기보다, 왜 그러한 독특한 관습이 생겼는지 열린 마음으로 추적하는 포용적인 역량이 지구촌 시대를 살아가는 현대 지식인들에게 꼭 필요한 덕목입니다. 결국 서로 다름을 인정할 때, 다양성이 빛나는 진정한 조화가 실현될 수 있습니다.</p>''',
+        "grammar": [
+            {
+                "pattern":  "-곤 하다",
+                "meaning":  "O'tmishda yoki hozirda tez-tez takrorlanib turadigan odatiy harakatni bildiradi: ...-ib turadi.",
+                "examples": ["미개하다고 경솔하게 판단하곤 합니다.", "쉬는 날에는 도서관에서 책을 읽곤 해요."],
+            },
+            {
+                "pattern":  "-을/를 의미하다",
+                "meaning":  "Muayyan tushuncha yoki so'zning ma'nosini ochib berishda ishlatiladi: ...ni anglatadi.",
+                "examples": ["문화가 탄생한 맥락 안에서 이해하려는 시각을 의미합니다.", "이 마크는 친환경 제품임을 의미해요."],
+            },
+        ],
+        "questions": [
+            {
+                "text": "본문의 '문화 상대주의(Cultural Relativism)'가 가진 근본적인 교훈은 무엇입니까?",
+                "choices": [
+                    "인간의 문명 발달 속도가 오직 서구 문화를 모방할 때만 빨라질 수 있다는 믿음",
+                    "모든 외계 문화와 과학적 상식을 무조건 거부하는 폐쇄적인 사상",
+                    "타 문화권을 자신의 가치관으로 재단하지 않고, 그들이 처한 지리적·사회적 맥락에 맞춰 존중하고 이해하는 태도",
+                ],
+                "answer": 2,
+                "explanation": "모든 규범이나 풍습을 외부 관찰자의 기준이 아닌, 고유한 환경적 생존 지혜와 탄생 맥락 안에서 올바로 보듬고 평등하게 대하는 것이 문화 상대주의의 가치입니다.",
+            },
+            {
+                "text": "특정 지역 부족이 곤충을 음식 자원으로 삼아야 했던 현실적 원인은 무엇입니까?",
+                "choices": [
+                    "농사와 가축 방목(목축)이 불가능하거나 극도로 척박한 지리적 여건에 처했기 때문에",
+                    "단순히 곤충을 활용해 기이한 축제를 열고 관광 수익을 올리기 위해서",
+                    "현대식 단백질 보충 가공 식품의 생산 기술이 너무 과도하게 발달했기 때문에",
+                    "소나 돼지 같은 대형 가축의 울음소리가 부족의 안전을 늘 위협했기 때문에",
+                ],
+                "answer": 0,
+                "explanation": "첫 번째 단락에서 사막이나 대우림처럼 가축을 방목하여 키우기 힘든 열악한 조건에서 생존을 위해 필수적인 단백질 공급원(곤충)을 선택할 수밖에 없었다고 설명했습니다.",
+            },
+        ],
+    },
 ]
