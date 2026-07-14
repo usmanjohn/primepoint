@@ -1,0 +1,23 @@
+# ── Writing-practice metadata (read by Claude) ───────────────────────
+SUBJECT: Korean            (icon: bi-translate, color: #d97706)
+QTYPE:   51                (TOPIK II 쓰기 51 — 실용문 ㉠/㉡ 빈칸, 10점)
+AUTHOR:  powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_WRITING.md §7. This file is ONLY the ordered list.
+# The number = the drill's `order`. Titles are "51-N: 글의 종류 — 주제".
+# Vary the text type so students meet every 실용문 format the exam uses:
+# 초대장/이메일, 문자 메시지, 인터넷 게시판, 공지/안내문, 부탁하는 이메일.
+# ─────────────────────────────────────────────────────────────────────
+
+## TOPIK II 쓰기 51 — 실용문 빈칸 연습
+
+1. 51-1: 초대장 — 집들이에 초대합니다 (email/invitation header)
+2. 51-2: 문자 메시지 — 약속 시간 변경 (chat bubbles)
+3. 51-3: 인터넷 게시판 — 책상을 팝니다 (bulletin post)
+4. 51-4: 이메일 — 교수님께 과제 기한 문의 (formal email)
+5. 51-5: 안내문 — 요리 동아리 회원 모집 (notice with title)
+6. 51-6: 문자 메시지 — 물건을 놓고 내렸어요 (lost & found)
+7. 51-7: 이메일 — 아르바이트 지원 문의
+8. 51-8: 게시판 — 룸메이트를 구합니다
+9. 51-9: 초대장 — 졸업 전시회에 초대합니다
+10. 51-10: 안내문 — 엘리베이터 수리 안내

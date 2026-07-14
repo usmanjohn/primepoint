@@ -47,7 +47,7 @@
         <span class="wp-step-title">{% trans "Fill the template" %} · {% trans "Shablonni toʻldiring" %}</span>
     </div>
     <p class="small text-secondary mb-2">
-        <i class="bi bi-lightbulb me-1"></i>{% trans "The highlighted expressions are ready-made exam phrases — tap one to see its Uzbek translation. Fill each gap by reading the chart above." %}
+        <i class="bi bi-lightbulb me-1"></i>{% trans "The highlighted expressions are ready-made exam phrases — tap one to see its Uzbek translation. Fill each gap using the question above." %}
     </p>
     <div class="cn-reader wp-paper mb-2" data-wp-template>
         {{ practice.template_body|safe }}
@@ -85,7 +85,7 @@
     {% if words %}
     <section class="mb-4">
         <h2 class="h5 mb-1"><i class="bi bi-translate me-1"></i>{% trans "Template expressions" %} · {% trans "Shablon iboralari" %}</h2>
-        <p class="small text-secondary mb-3">{% trans "Tap a card to flip it. Learn these by heart — they fit almost any chart question." %}</p>
+        <p class="small text-secondary mb-3">{% trans "Tap a card to flip it. Learn these by heart — they fit almost any exam task." %}</p>
         <div class="pp-flashcards" data-pp-flashcards>
             {% for w in words %}
             <div class="pp-card cn-fc-pos-{% if w.pos %}{{ w.pos }}{% else %}none{% endif %}">

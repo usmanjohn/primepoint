@@ -499,6 +499,91 @@
 .wp-fact ul { margin: 0; padding-left: 1.1rem; }
 .wp-fact li { line-height: 1.6; }
 
+/* ── 51/52 passages — the boxed text as printed on the exam paper ──── */
+.wp-passage {
+    border: 1px solid var(--cn-border);
+    border-radius: .5rem;
+    padding: .9rem 1rem;
+    line-height: 1.9;
+}
+.wp-passage p { margin-bottom: .6rem; }
+.wp-passage p:last-child { margin-bottom: 0; }
+.wp-passage-title { text-align: center; font-weight: 700; margin: 0 0 .6rem; }
+
+/* Email / invitation header rows (제목 · 보낸 사람 …). */
+.wp-mail {
+    border: 1px solid var(--cn-border);
+    border-bottom: none;
+    border-radius: .5rem .5rem 0 0;
+    font-size: .92rem;
+    overflow: hidden;
+}
+.wp-mail-row { display: flex; border-bottom: 1px solid var(--cn-border); }
+.wp-mail-row > span:first-child {
+    flex: 0 0 6.5rem;
+    background: var(--cn-hl);
+    font-weight: 700;
+    padding: .35rem .7rem;
+}
+.wp-mail-row > span:last-child { flex: 1; padding: .35rem .7rem; }
+.wp-mail + .wp-passage { border-radius: 0 0 .5rem .5rem; }
+
+/* Messenger bubbles for 문자 메시지 questions. */
+.wp-chat { display: grid; gap: .45rem; max-width: 30rem; margin: 0 auto; }
+.wp-chat-name {
+    font-size: .78rem;
+    color: var(--cn-ink);
+    opacity: .65;
+    margin: 0;
+}
+.wp-chat-name.wp-me { text-align: right; }
+.wp-bubble {
+    border: 1px solid var(--cn-border);
+    border-radius: 1rem 1rem 1rem .25rem;
+    padding: .55rem .85rem;
+    justify-self: start;
+    max-width: 88%;
+    line-height: 1.7;
+}
+.wp-bubble.wp-me {
+    border-radius: 1rem 1rem .25rem 1rem;
+    justify-self: end;
+    background: var(--cn-hl);
+}
+
+/* The ( ㉠ ) gap inside a passage. */
+.wp-slot {
+    background: var(--cn-hl);
+    color: var(--cn-accent);
+    font-weight: 700;
+    border-radius: .3rem;
+    padding: 0 .45rem;
+    white-space: nowrap;
+}
+
+/* ㉠ / ㉡ labels on the step-2 sentence frames and the model answer. */
+.wp-frame-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    border: 2px solid var(--cn-accent);
+    color: var(--cn-accent);
+    font-weight: 700;
+    font-size: .85rem;
+    margin-right: .35rem;
+    vertical-align: -4px;
+}
+.wp-alt {
+    font-size: .88rem;
+    color: var(--cn-ink);
+    opacity: .75;
+    margin: -.5rem 0 1rem 2rem;
+    font-family: var(--bs-body-font-family, sans-serif);
+}
+
 /* ── The fill-in scaffold ──────────────────────────────────────────── */
 .wp-paper { font-size: 1.05rem; }
 

@@ -227,4 +227,220 @@ STORIES = [
             },
         ],
     },
+
+    # ── 36 ───────────────────────────────────────────────────────────────
+    {
+        "title":   "소비 심리와 마케팅",
+        "summary": "Mijozlarni jalb qilish uchun do'konlar ichida yoqimli hidlardan foydalanish — 'Is marketingi' (Scent Marketing) haqida.",
+        "order":   36,
+        "body": '''<p>우리가 대형 쇼핑몰이나 은은한 빵집 앞을 지날 때 <span class="cn-word" data-pos="adj" data-tr="yoqimli, xushbo'y">향기로운</span> 냄새에 이끌려 나도 모르게 매장 안으로 들어갔던 경험이 한 번쯤 있을 것입니다. 이처럼 사람의 후각을 자극하여 소비자의 감성을 흔들고 구매를 <span class="cn-word" data-pos="adv" data-tr="faol ravishda, jadal">적극적으로</span> 유도하는 판촉 기법을 '향기 마케팅'이라고 <strong>부르곤 합니다</strong>. 시각이나 청각에 비해 후각은 인간의 뇌에 가장 <span class="cn-word" data-pos="adv" data-tr="to'g'ridan-to'g'ri, bevosita">직접적으로</span> 전달되는 감각이기 때문에, 특정 향기는 소비자의 기억 속에 <span class="cn-word" data-pos="adv" data-tr="ajoyib darajada, chuqur">굉장히</span> 오랫동안 강렬하게 남는 특성을 가집니다.</p>
+<p>실제로 매장 내부에 <span class="cn-word" data-pos="adj" data-tr="shirin, yoqimli">아늑한</span> 향기를 채워두면 고객들이 매장에 <span class="cn-word" data-pos="adv" data-tr="uzoq vaqt, uzoq">머무는</span> 시간이 평소보다 <span class="cn-word" data-pos="adv" data-tr="sezilarli darajada, ancha">상당히</span> 길어집니다. 머무는 시간이 늘어남에 따라 자연스럽게 제품을 소비할 확률도 <span class="cn-word" data-pos="adv" data-tr="asta-sekin, tobora">점차</span> 높아지게 됩니다. 기술이 발달한 현대 사회에서 제품의 스펙만을 강조하는 단순한 광고보다, 사람들의 <span class="cn-word" data-pos="adj" data-tr="nozik, mayda">미묘한</span> 감정을 자극하는 향기 마케팅이 소비자의 지갑을 열기에 훨씬 더 <span class="cn-word" data-pos="adj" data-tr="samorali, foydali">효과적인</span> 대안으로 <strong>자리 잡아가고 있습니다</strong>.</p>''',
+        "grammar": [
+            {
+                "pattern":  "-곤 하다",
+                "meaning":  "Harakat yoki holatning odatda takrorlanib turishini bildiradi: ...-ib turmoq.",
+                "examples": ["구매를 유도하는 기법을 향기 마케팅이라고 부르곤 합니다.", "주말에는 가족들과 공원에 가곤 해요."],
+            },
+            {
+                "pattern":  "-아/어 가다",
+                "meaning":  "Harakat yoki holatning kelajak sari davom etib borishini bildiradi: ...-ib bormoq.",
+                "examples": ["향기 마케팅이 효과적인 대안으로 자리 잡아가고 있습니다.", "한국어 실력이 날마다 늘어갑니다."],
+            },
+        ],
+        "questions": [
+            {
+                "text": "본문에서 설명하는 '향기 마케팅'이 인간에게 미치는 영향으로 알맞은 것은 무엇입니까?",
+                "choices": [
+                    "시각과 청각의 기능을 일시적으로 마비시킨다.",
+                    "인간의 뇌에 직접 도달하는 후각을 자극하여 기억에 오래 남는다.",
+                    "대형 쇼핑몰의 청소 비용을 획기적으로 낮춘다.",
+                ],
+                "answer": 1,
+                "explanation": "첫 번째 문단에서 후각은 시각이나 청각보다 인간의 뇌에 직접 전달되어 오랫동안 기억에 남는다고 설명했습니다.",
+            },
+            {
+                "text": "본문의 내용과 일치하지 않는 것을 고르십시오.",
+                "choices": [
+                    "매장 안에 좋은 향기가 나면 손님이 머무는 시간이 길어진다.",
+                    "고객이 매장에 오래 머물수록 물건을 살 확률이 점차 높아진다.",
+                    "스펙만을 내세우는 광고보다 감정을 자극하는 향기가 더 효과적이다.",
+                    "향기 마케팅은 대중화된 지 얼마 되지 않아 효과가 전혀 증명되지 않았다.",
+                ],
+                "answer": 3,
+                "explanation": "향기 마케팅은 소비자의 체류 시간을 늘리고 구매 확률을 높여 효과적인 마케팅 대안으로 이미 자리 잡아가고 있습니다.",
+            },
+        ],
+    },
+    # ── 37 ───────────────────────────────────────────────────────────────
+    {
+        "title":   "재난 대처와 소방 안전",
+        "summary": "Favqulodda vaziyatlarda o't o'chiruvchilarning tezkor harakat qilishi uchun yo'l berish — 'Oltin vaqt' (Golden Time) ning muhimligi.",
+        "order":   37,
+        "body": '''<p>화재나 심정지 같은 <span class="cn-word" data-pos="adj" data-tr="shoshilinch, favqulodda">긴급한</span> 재난 상황이 발생했을 때, 사람의 생명을 구할 수 있는 초기 시간을 '골든타임'이라고 부릅니다. 소방차가 화재 현장에 도착하기 <strong>위해 필요한</strong> 최소한의 골든타임은 단 5분입니다. 이 골든타임 이내에 진압을 시작해야 불길이 <span class="cn-word" data-pos="adv" data-tr="keng miqyosda, yalpi">대대적으로</span> 확산되는 것을 막고 이웃의 소중한 생명과 재산을 <span class="cn-word" data-pos="adv" data-tr="xavfsiz, mukammal">안전하게</span> <strong>보호해 줄 수 있습니다</strong>.</p>
+<p>하지만 좁은 골목길에 불법으로 주차된 차량이나, 소방차가 사이렌을 울리며 달려갈 때 길을 비켜주지 않는 이기적인 행동은 이 골든타임을 <span class="cn-word" data-pos="adv" data-tr="shafqatsizlarcha, ayanchli">여지없이</span> <span class="cn-word" data-pos="adv" data-tr="orqaga, kechga">늦추는</span> 장애물이 됩니다. 사이렌 소리가 들릴 때 양옆으로 차를 <span class="cn-word" data-pos="adv" data-tr="shoshilmasdan, ehtiyotkorlik bilan">신속하게</span> 이동하여 길을 비켜주는 작은 배려는 타인의 생명을 살리는 데 <span class="cn-word" data-pos="adv" data-tr="ulkan darajada, g'oyatda">막대하게</span> 기여하는 사회적 책임입니다. 우리가 도로 위에서 지키는 양보 하나가 소방관들에게는 <span class="cn-word" data-pos="adj" data-tr="g'oyatda muhim, beqiyos">절대적인</span> 구원의 빛이 될 수 있습니다.</p>''',
+        "grammar": [
+            {
+                "pattern":  "-(으)ㄴ/기 위해",
+                "meaning":  "Maqsadni bildiradi: ... qilish uchun.",
+                "examples": ["화재 현장에 도착하기 위해 필요한 시간은 5분입니다.", "시험에 합격하기 위해 매일 도서관에 갑니다."],
+            },
+            {
+                "pattern":  "-어/아 줄 수 있다",
+                "meaning":  "Boshqalar uchun biror yordam yoki foydali harakatni amalga oshirish imkoniyati: ... qilib bera olmoq.",
+                "examples": ["소중한 재산을 안전하게 보호해 줄 수 있습니다.", "제가 한국어 숙제를 도와 줄 수 있어요."],
+            },
+        ],
+        "questions": [
+            {
+                "text": "본문에서 설명하는 화재 진압의 '골든타임'은 몇 분입니까?",
+                "choices": [
+                    "소방서가 위치한 지점에서 반경 50분 이내",
+                    "불길이 완전히 꺼질 때까지 걸리는 30분 이내",
+                    "소방차가 화재 현장에 도착하기 위한 최소한의 시간인 5분 이내",
+                ],
+                "answer": 2,
+                "explanation": "첫 번째 문단에서 소방차가 화재 현장에 도착하기 위해 필요한 골든타임은 단 5분이라고 명시했습니다.",
+            },
+            {
+                "text": "골든타임을 확보하는 데 방해가 되는 행동으로 옳은 것은 무엇입니까?",
+                "choices": [
+                    "소방차가 다가올 때 도로의 양옆으로 차를 빠르게 비켜주는 것",
+                    "도로변의 좁은 골목길에 불법으로 차량을 무단 주차하는 것",
+                    "소방 대피 훈련에 정기적으로 성실하게 동참하는 것",
+                    "재난 상황이 발생했을 때 신속하게 119에 신고를 마치는 것",
+                ],
+                "answer": 1,
+                "explanation": "두 번째 문단에서 좁은 골목길에 불법 주차된 차량은 소방관들의 신속한 출동과 골든타임 확보를 방해한다고 지적했습니다.",
+            },
+        ],
+    },
+    # ── 38 ───────────────────────────────────────────────────────────────
+    {
+        "title":   "청소년과 교육",
+        "summary": "Maktab o'quvchilarining darsdan tashqari sport mashg'ulotlarida qatnashishi miya faolligi va ijtimoiy ko'nikmalarini oshirishi.",
+        "order":   38,
+        "body": '''<p>많은 부모들은 자녀들의 학업 성적을 올리기 위해 체육 활동 시간을 줄이고 국어나 수학 같은 주요 과목 공부에만 집중하게 <strong>만들곤 합니다</strong>. 그러나 최근 교육 전문가들의 연구에 따르면, 이러한 교육 방식은 아이들의 창의성 발달과 학업 스트레스 해소에 오히려 <span class="cn-word" data-pos="adj" data-tr="salbiy, yomon">부정적인</span> 영향을 미칩니다. 운동장을 달리며 땀을 흘리는 신체 활동은 학생들의 뇌세포를 <span class="cn-word" data-pos="adv" data-tr="faol ravishda, jadal">활발하게</span> <span class="cn-word" data-pos="adv" data-tr="to'g'ridan-to'g'ri, bevosita">자극하여</span> 암기력과 집중력을 <span class="cn-word" data-pos="adv" data-tr="ajoyib tarzda, ancha">현저히</span> 향상시키기 때문입니다.</p>
+<p>또한, 축구나 농구처럼 동료들과 함께 협력해야 하는 단체 스포츠 활동은 청소년들이 사회성을 배우는 <span class="cn-word" data-pos="adj" data-tr="ajoyib, a'lo darajadagi">탁월한</span> 훈련장이 됩니다. 타인과의 경쟁에서 오는 패배를 <span class="cn-word" data-pos="adv" data-tr="oqilona, mardlarcha">의연하게</span> 받아들이고, 공동의 목표를 달성하는 과정에서 협동심과 양보의 가치를 자연스럽게 <strong>배우게 됩니다</strong>. 공부도 중요하지만 일상 속에 신체 운동을 꾸준히 배치하여 아이들이 몸과 마음을 <span class="cn-word" data-pos="adj" data-tr="sog'lom, baquvvat">튼튼하게</span> 유지하도록 돕는 균형적인 시선이 절실히 요구됩니다.</p>''',
+        "grammar": [
+            {
+                "pattern":  "-게 만들곤 하다",
+                "meaning":  "Tez-tez ma'lum bir holatga keltirib qo'yish: ...ishga sabab bo'lib turmoq.",
+                "examples": ["공부에만 집중하게 만들곤 합니다.", "선생님은 우리를 항상 웃게 만들곤 해요."],
+            },
+            {
+                "pattern":  "-게 되다",
+                "meaning":  "Natijada ma'lum bir ko'nikmaga yoki holatga kelmoq: ...adigan bo'lmoq.",
+                "examples": ["협동심과 양보의 가치를 배우게 됩니다.", "한국 생활을 오래 하면서 한국 문화를 잘 이해하게 되었어요."],
+            },
+        ],
+        "questions": [
+            {
+                "text": "체육 활동이 학생들의 공부(학업)에 미치는 긍정적인 영향은 무엇입니까?",
+                "choices": [
+                    "기억할 수 있는 한계를 축소시켜 피로도를 대폭 높인다.",
+                    "운동을 통해 암기력과 집중력이 향상되어 학업 효율이 올라간다.",
+                    "주요 과목을 전혀 공부하지 않게 방치하는 계기가 된다.",
+                ],
+                "answer": 1,
+                "explanation": "신체 활동이 뇌세포를 자극하여 학생들의 암기력과 집중력을 현저히 향상시킨다고 설명했습니다.",
+            },
+            {
+                "text": "단체 스포츠(축구, 농구 등)를 통해 배울 수 있는 가치로 알맞은 것은 무엇입니까?",
+                "choices": [
+                    "타인을 무조건 이겨야만 한다는 독단적이고 극단적인 이기심",
+                    "학업 스트레스를 해소하기 위해 타인과의 대화를 거부하는 태도",
+                    "공동의 목표 달성을 위해 소통하는 협동심과 양보의 미덕",
+                    "교실을 벗어나 아무런 규율 없이 자유롭게 노는 고독감",
+                ],
+                "answer": 2,
+                "explanation": "단체 스포츠는 공동의 목표 달성 과정에서 협동심과 양보의 가치를 깨닫게 하여 청소년들의 사회성 발달에 기여합니다.",
+            },
+        ],
+    },
+    # ── 39 ───────────────────────────────────────────────────────────────
+    {
+        "title":   "심리학과 대인관계",
+        "summary": "Insonlar bilan muloqot qilganda o'z xatolarini birinchi bo'lib tan olish ijobiy aloqalarni mustahkamlashi haqida.",
+        "order":   39,
+        "body": '''<p>우리는 누구나 친구나 직장 동료와의 관계에서 크고 작은 실수를 <strong>저지르기도 합니다</strong>. 이때 자신의 잘못을 <span class="cn-word" data-pos="adv" data-tr="darhol, tezda">즉시</span> 인정하고 <span class="cn-word" data-pos="adv" data-tr="samimiy tarzda, dildan">진심으로</span> 사과하는 태도는 관계 회복에 <span class="cn-word" data-pos="adj" data-tr="juda katta, ulkan">결정적인</span> 열쇠가 됩니다. 하지만 많은 사람들이 자신의 자존심을 <span class="cn-word" data-pos="adv" data-tr="qat'iy, qattiq">굳건히</span> 지키기 위해 변명을 먼저 <span class="cn-word" data-pos="adv" data-tr="ko'p holatlarda, tez-tez">늘어놓거나</span> 잘못을 상대방에게 <span class="cn-word" data-pos="adv" data-tr="ayyorona, yashirincha">교묘하게</span> 미루는 이기적인 실수를 범하고 맙니다.</p>
+<p>심리학 연구에 따르면, 잘못을 <span class="cn-word" data-pos="adv" data-tr="ochiqchasiga, mardona">솔직하게</span> 고백하는 행위는 상대방으로 하여금 '이 사람은 믿을 만하다'는 깊은 인뢰감을 느끼게 만듭니다. 반대로 사과의 타이밍을 놓치고 잘못을 숨기려고 <strong>애쓰다 보면</strong> 작은 트러블이 돌이킬 수 없는 커다란 싸움으로 <span class="cn-word" data-pos="adv" data-tr="shubhasiz, mutloq">번지기 마련입니다</span>. 사과는 패배의 선언이 아니라, 상대방을 <span class="cn-word" data-pos="adv" data-tr="qadrli, hurmatli">소중하게</span> 생각한다는 존중의 뜻을 품은 아름다운 다리입니다.</p>''',
+        "grammar": [
+            {
+                "pattern":  "-기도 하다",
+                "meaning":  "Ba'zan shunday holat ham yuz berishi mumkinligini bildiradi: ... ham qiladi.",
+                "examples": ["동료와의 관계에서 크고 작은 실수를 저지르기도 합니다.", "스트레스가 심할 때는 머리가 아프기도 해요."],
+            },
+            {
+                "pattern":  "-으려고 애쓰다",
+                "meaning":  "Biror maqsadga erishish uchun tinmay harakat qilish: ...ishga tirishmoq/urinmoq.",
+                "examples": ["잘못을 숨기려고 애쓰다 보면 큰 오해가 생깁니다.", "한국어를 유창하게 하려고 애쓰는 중입니다."],
+            },
+        ],
+        "questions": [
+            {
+                "text": "잘못을 즉시 솔직하게 인정했을 때 대인 관계에서 발생하는 긍정적인 변화는 무엇입니까?",
+                "choices": [
+                    "자존심이 심각하게 파괴되어 주변 사람들이 무시한다.",
+                    "상대방으로 하여금 더 깊은 신뢰와 안전함을 느끼게 해 준다.",
+                    "자신의 의견을 남들에게 두 번 다시 전달할 수 없게 된다.",
+                ],
+                "answer": 1,
+                "explanation": "두 번째 문단에서 잘못을 솔직하게 고백하는 행위는 상대방이 믿을 만한 사람이라고 느낄 수 있도록 신뢰감을 형성한다고 말했습니다.",
+            },
+            {
+                "text": "본문을 통해 필자가 궁극적으로 독자에게 전하고자 하는 교훈은 무엇입니까?",
+                "choices": [
+                    "대인 관계를 부드럽게 만들기 위해 상대방의 거짓말도 무조건 눈감아 주어라.",
+                    "실수를 한 상황에서는 최대한 침묵하여 상대방이 잊어버리도록 유도하라.",
+                    "실수를 인정하고 진솔하게 사과하는 행동은 진정한 존중이자 신뢰의 기반이다.",
+                    "자신의 자존심을 유지하기 위해 절대로 타인에게 사과를 먼저 건네지 말아라.",
+                ],
+                "answer": 2,
+                "explanation": "마지막 단락에서 사과는 지는 것이 아니라 상대방을 아낀다는 존중의 뜻을 내포하고 있으므로 즉시 사과해야 갈등 확산을 막는다고 권고합니다.",
+            },
+        ],
+    },
+    # ── 40 ───────────────────────────────────────────────────────────────
+    {
+        "title":   "동물보호와 사회적 책임",
+        "summary": "Ko'chalarda qarovsiz qolgan hayvonlar (유기동물) muammosi va ularni asrab olishning insoniy mas'uliyati.",
+        "order":   40,
+        "body": '''<p>반려동물을 키우는 인구가 급증하는 반면, 여러 사정으로 인해 길거리에 <span class="cn-word" data-pos="adv" data-tr="shafqatsizlarcha, ayanchli">버려지는</span> '유기동물'의 숫자 또한 해마다 <span class="cn-word" data-pos="adv" data-tr="keskin ravishda, jadal">폭발적으로</span> 늘어나 사회적 문제가 되고 있습니다. 동물을 입양할 때의 뜨거운 책임감은 사라지고, 병원 치료비가 <span class="cn-word" data-pos="adv" data-tr="hadisiz, haddan tashqari">지나치게</span> 많이 들거나 이사를 가게 되었다는 이유로 반려동물을 <span class="cn-word" data-pos="adv" data-tr="osongina, mas'uliyatsizlarcha">가볍게</span> 포기하는 사람들이 적지 <strong>않기 때문입니다</strong>. 길에 방치된 동물들은 굶주림과 두려움 속에 차량 사고의 위험에 <span class="cn-word" data-pos="adv" data-tr="har doim, doimiy">늘</span> <strong>노출되어 있습니다</strong>.</p>
+<p>이러한 아픔을 예방하기 위해서는 법적 처벌을 <span class="cn-word" data-pos="adv" data-tr="qat'iy, qattiq">강력히</span> 높여 동물을 버리지 못하게 하는 제도가 요구됩니다. 동시에, 새 펫을 유료로 구매하기보다 보호소에서 가족을 기다리는 유기동물을 무료로 입양하는 따뜻한 문화가 <span class="cn-word" data-pos="adv" data-tr="tezda, tez">속히</span> 확산되어야 합니다. 동물은 일회용 장난감이 아니라 고통을 고스란히 느끼는 우리의 소중한 생명이라는 인식을 <span class="cn-word" data-pos="adv" data-tr="chuqur, mahkam">마음 깊이</span> 새겨야 할 것입니다.</p>''',
+        "grammar": [
+            {
+                "pattern":  "-기 때문이다",
+                "meaning":  "Sabab yoki asosni bildiradi: ... bo'lganligi sabablidir, ... uchun.",
+                "examples": ["반려동물을 가볍게 포기하는 사람이 많기 때문입니다.", "길이 막히는 것은 눈이 오기 때문이에요."],
+            },
+            {
+                "pattern":  "-어/아 놓여 있다",
+                "meaning":  "Harakat bajarilib, uning natijasi ma'lum holatda saqlanib turganini bildiradi: ... holatida turmoq.",
+                "examples": ["동물들은 차량 사고의 위험에 늘 노출되어 있습니다.", "책상 위에 중요한 서류가 놓여 있네요."],
+            },
+        ],
+        "questions": [
+            {
+                "text": "오늘날 길거리에 버려지는 '유기동물'이 급증하는 주된 원인은 무엇입니까?",
+                "choices": [
+                    "동물 보호소의 수용 공간이 너무 과도하게 늘어났기 때문에",
+                    "병원비 부담이나 이사 등을 핑계로 반려동물을 쉽게 방치하기 때문에",
+                    "길거리에서 야생 상태로 출생하는 동물이 다수를 차지해서",
+                ],
+                "answer": 1,
+                "explanation": "첫 번째 단락에서 반려동물을 입양할 때의 책임감을 지키지 못하고 비용 부담이나 이사를 핑계로 쉽게 버리는 사람들이 원인이라고 언급했습니다.",
+            },
+            {
+                "text": "작가가 제안하는 유기동물 문제의 궁극적인 해결책이 아닌 것은 무엇입니까?",
+                "choices": [
+                    "반려동물을 유기하는 사람에 대한 법적인 처벌 강화",
+                    "동물병원에서 반려동물을 저렴하게 지속적으로 구매할 수 있는 마트 개설",
+                    "유기동물 보호소에 있는 동물을 가족으로 입양하는 문화 장려",
+                    "동물이 고통을 느끼는 소중한 생명이라는 시민 사회의 인식 전환",
+                ],
+                "answer": 1,
+                "explanation": "작가는 동물을 유료로 구매(분양)하는 것보다 유기동물 보호소에서 상처 입은 동물을 입양하는 비상업적인 문화가 확산되어야 한다고 촉구하고 있습니다.",
+            },
+        ],
+    },
 ]

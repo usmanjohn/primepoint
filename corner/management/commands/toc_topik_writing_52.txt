@@ -1,0 +1,23 @@
+# ── Writing-practice metadata (read by Claude) ───────────────────────
+SUBJECT: Korean            (icon: bi-translate, color: #d97706)
+QTYPE:   52                (TOPIK II 쓰기 52 — 설명문 ㉠/㉡ 빈칸, 10점)
+AUTHOR:  powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_WRITING.md §7. This file is ONLY the ordered list.
+# The number = the drill's `order`. Titles are "52-N: 주제".
+# Written style (-(느)ㄴ다) passages; rotate the key sentence patterns:
+# -는 것이 좋다, -기 때문이다, -(으)ㄹ 수 있다, -게 된다, 오히려/따라서/그러므로.
+# ─────────────────────────────────────────────────────────────────────
+
+## TOPIK II 쓰기 52 — 설명문 빈칸 연습
+
+1. 52-1: 물 마시기의 효과 (-는 것이 좋다 / 오히려 -(으)ㄹ 수 있다)
+2. 52-2: 메모하는 습관 (-는 것이 좋다 / -도록)
+3. 52-3: 칭찬의 두 얼굴 (-게 된다 / 결과보다 과정)
+4. 52-4: 웃음과 건강 (높아진다 / 연구에 따르면 -다고 한다)
+5. 52-5: 새해 계획과 실천 (많지 않다 / 작은 목표부터)
+6. 52-6: 잠과 기억력
+7. 52-7: 걷기 운동의 장점
+8. 52-8: 식사 속도와 건강
+9. 52-9: 실수와 배움
+10. 52-10: 스마트폰과 대화

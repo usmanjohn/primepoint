@@ -165,14 +165,53 @@ python manage.py import_writing corner/management/commands/_writing_<...>.py --a
 
 (`--republish` overwrites existing drills and rebuilds their expression lists.)
 
-## 7. Other question types (51 / 52 / 54)
+## 7. Question types 51 / 52 (㉠/㉡ 빈칸 채우기)
 
-Same model, same flow — only the middle changes:
+Same model, same flow. `chart` holds the **passage** (styled like the exam paper),
+the gaps written as `( <span class="wp-slot">㉠</span> )` / `( <span class="wp-slot">㉡</span> )`.
 
-- **51/52** (빈칸 채우기): no `chart`; the `prompt` box contains the text with `( ㄱ )` /
-  `( ㄴ )`; `template_body` gives sentence frames with blanks for the missing clauses.
-- **54** (600~700자 essay): `chart` empty or an outline `wp-facts` box; `template_body`
-  is the 서론/본론/결론 skeleton with connective expressions marked and content blanked.
+**51** = a real-life text (10점). Reproduce the exam design:
+
+```html
+<!-- email / invitation: header rows + passage -->
+<div class="wp-mail">
+  <div class="wp-mail-row"><span>제목</span><span>집들이에 초대합니다</span></div>
+  <div class="wp-mail-row"><span>보낸 사람</span><span>왕밍</span></div>
+</div>
+<div class="wp-passage"><p>안녕하세요? ... ( <span class="wp-slot">㉠</span> ). ...</p></div>
+
+<!-- text messages: bubbles (wp-me = the right-hand speaker) -->
+<div class="wp-chat">
+  <p class="wp-chat-name">지영</p><div class="wp-bubble"><p>...( <span class="wp-slot">㉠</span> )?</p></div>
+  <p class="wp-chat-name wp-me">민수</p><div class="wp-bubble wp-me"><p>...</p></div>
+</div>
+
+<!-- notice / bulletin post: just the passage box, optionally with a centred title -->
+<div class="wp-passage"><p class="wp-passage-title">회원 모집</p><p>...</p></div>
+```
+
+**52** = a short explanatory text (10점) — a plain `wp-passage` box, written style
+(`-(느)ㄴ다`), no title.
+
+- `template_body` = one **sentence frame per gap**: repeat the passage sentence that
+  contains the gap, with the answer chunk as a `wp-blank`; prefix each frame with
+  `<span class="wp-frame-label">㉠</span>`. Give generous `data-alt` — graders accept
+  several endings (checking ignores spacing).
+- `model_answer` = per gap: the frame label, the full answer sentence (with `cn-word`
+  marks on the reusable grammar chunks), then accepted variants on a
+  `<p class="wp-alt">(또는: ... / ...)</p>` line.
+- What to teach: **the clues** — the connective before/after the gap (그래서/그런데/
+  하지만/따라서), the sentence-final patterns (51: `-(으)려고 합니다`, `-아/어 주시기
+  바랍니다`, `-(으)ㄹ까요?`; 52: `-는 것이 좋다`, `-기 때문이다`, `-(으)ㄹ 수 있다`),
+  and speech level: 51 = polite `-습니다/-아요` matching the text, 52 = plain written
+  `-(느)ㄴ다`. Put this reasoning in the Uzbek `tips`.
+- Vocabulary marks live in `template_body` + `model_answer` only (the passage in
+  `chart` is never synced) — **5–10 expressions** per drill.
+
+## 7b. Question type 54 (600~700자 essay)
+
+`chart` empty or an outline `wp-facts` box; `template_body` is the 서론/본론/결론
+skeleton with connective expressions marked and content blanked.
 
 ## 8. The user's own tips
 
