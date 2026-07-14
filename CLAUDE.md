@@ -33,8 +33,9 @@ When the user asks to create/continue tutorials (e.g. "make the next 5 SAT tutor
 Other subjects: add a new `toc_<subject>.txt` with its own PREFIX/CATEGORY; same workflow.
 
 ## Creating examprep lessons (bulk) — TOPIK etc.
-`examprep` holds detailed, by-skill exam prep (`ExamTrack` → `Lesson` per skill → ordered
-`LessonBlock`s with rich text + optional inline MCQ). Use this — not `tutorial` — for TOPIK
+`examprep` holds detailed, by-skill exam prep (`ExamTrack` → skill → `Topic` (question-type
+card, e.g. Reading → "Reklama va e'lonlar (광고)") → `Lesson` → ordered `LessonBlock`s with
+rich text + optional inline MCQ). Use this — not `tutorial` — for TOPIK
 reading/writing/listening prep. When the user asks (e.g. "make the next 5 TOPIK reading lessons"):
 1. Read `examprep/management/commands/STYLE_GUIDE_TOPIK.md` (how to write — section 7 holds
    the user's own TOPIK tips once they share them; their tips override the generic advice).
@@ -43,8 +44,9 @@ reading/writing/listening prep. When the user asks (e.g. "make the next 5 TOPIK 
 3. Find where to continue: query the DB for the highest existing `order` in that track+skill, e.g.
    `Lesson.objects.filter(track__name='TOPIK', skill='reading').order_by('-order').first()`.
 4. Write the next batch into `examprep/management/commands/_lessons_topik_<skill>_<range>.py`
-   as a `TRACK = {...}` dict + `LESSONS = [...]` list (each lesson is a list of `blocks`;
-   Korean as Hangul, with inline Uzbek per the style guide).
+   as a `TRACK = {...}` dict + `TOPIC = {...}` dict + `LESSONS = [...]` list (each lesson
+   carries `"topic": TOPIC` and is a list of `blocks`; Korean as Hangul, with inline Uzbek
+   per the style guide). The toc's `## TOPIC:` headers say which topic each lesson is in.
 5. Import: `python manage.py import_examprep <that file> --author=<AUTHOR from toc>`
    (add `--republish` to overwrite existing ones — it rebuilds each lesson's blocks).
 Other exams/skills: add a new `toc_<exam>_<skill>.txt` with its own TRACK/SKILL; same workflow.

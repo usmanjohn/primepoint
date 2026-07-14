@@ -55,10 +55,48 @@ class ExamTrack(models.Model):
         return self.name
 
 
+class Topic(models.Model):
+    """A question type / theme inside a track + skill — e.g. TOPIK Reading →
+    'Advertisements (광고)'. Lessons hang off a topic so the skill page can show
+    tidy cards instead of one long lesson list."""
+    track        = models.ForeignKey(ExamTrack, on_delete=models.CASCADE, related_name='topics')
+    skill        = models.CharField(max_length=20, choices=SKILL_CHOICES, default='reading')
+    title        = models.CharField(max_length=200)
+    slug         = models.SlugField(max_length=220, blank=True)
+    summary      = models.CharField(max_length=300, blank=True,
+                                    help_text='Short description shown on the topic card.')
+    icon         = models.CharField(max_length=50, default='bi-collection',
+                                    help_text='Bootstrap-icons class, e.g. bi-megaphone.')
+    order        = models.PositiveIntegerField(default=0)
+    is_published = models.BooleanField(default=True)
+    created_at   = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', 'id']
+        unique_together = ['track', 'skill', 'slug']
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base = slugify(self.title) or 'topic'
+            slug, n = base, 1
+            while Topic.objects.filter(track=self.track, skill=self.skill,
+                                       slug=slug).exclude(pk=self.pk).exists():
+                slug = f'{base}-{n}'
+                n += 1
+            self.slug = slug
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'{self.track.name} / {self.get_skill_display()} — {self.title}'
+
+
 class Lesson(models.Model):
     """A single interactive lesson made of ordered content blocks."""
     track        = models.ForeignKey(ExamTrack, on_delete=models.CASCADE, related_name='lessons')
     skill        = models.CharField(max_length=20, choices=SKILL_CHOICES, default='reading')
+    topic        = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True, blank=True,
+                                     related_name='lessons',
+                                     help_text='Optional question-type group inside the skill.')
     title        = models.CharField(max_length=200)
     slug         = models.SlugField(max_length=220, blank=True)
     summary      = models.CharField(max_length=300, blank=True,

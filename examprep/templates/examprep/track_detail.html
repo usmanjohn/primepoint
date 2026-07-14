@@ -15,9 +15,9 @@
 </nav>
 
 <div class="d-flex align-items-center gap-3 mb-4">
-    <span class="d-inline-flex align-items-center justify-content-center rounded-3 flex-shrink-0"
-          style="width:48px;height:48px;background:{{ track.color }}1a;color:{{ track.color }};">
-        <i class="bi {{ track.icon }} fs-4"></i>
+    <span class="ep-icon ep-icon-lg"
+          style="background:{{ track.color }}1a;color:{{ track.color }};">
+        <i class="bi {{ track.icon }} fs-3"></i>
     </span>
     <div>
         <h1 class="page-title mb-0">{{ track.name }}</h1>
@@ -25,22 +25,26 @@
     </div>
 </div>
 
-<p class="text-secondary mb-3">{% trans "Choose a section to start working through its lessons in order." %}</p>
+<p class="text-secondary mb-3">{% trans "Choose a section to see its question types and lessons." %}</p>
 
 {% if groups %}
 <div class="row g-3" style="max-width:760px;">
     {% for group in groups %}
     <div class="col-12 col-sm-6">
-        <a href="{% url 'examprep_lesson' track.slug group.value group.first.slug %}"
-           class="card h-100 text-decoration-none border-0 shadow-sm">
+        <a href="{% url 'examprep_skill' track.slug group.value %}"
+           class="card ep-card h-100 text-decoration-none border-0 shadow-sm">
             <div class="card-body d-flex align-items-center gap-3">
-                <span class="d-inline-flex align-items-center justify-content-center rounded-3 flex-shrink-0"
-                      style="width:44px;height:44px;background:{{ track.color }}1a;color:{{ track.color }};">
+                <span class="ep-icon ep-icon-md"
+                      style="background:{{ track.color }}1a;color:{{ track.color }};">
                     <i class="bi {{ group.icon }} fs-5"></i>
                 </span>
                 <div class="flex-grow-1">
                     <h2 class="h6 mb-0">{{ group.label }}</h2>
                     <span class="text-secondary small">
+                        {% if group.topic_count %}
+                        {% blocktrans count counter=group.topic_count %}{{ counter }} question type{% plural %}{{ counter }} question types{% endblocktrans %}
+                        ·
+                        {% endif %}
                         {% blocktrans count counter=group.count %}{{ counter }} lesson{% plural %}{{ counter }} lessons{% endblocktrans %}
                     </span>
                 </div>
@@ -58,3 +62,5 @@
 {% endif %}
 
 {% endblock %}
+
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/examprep.css' %}">{% endblock %}

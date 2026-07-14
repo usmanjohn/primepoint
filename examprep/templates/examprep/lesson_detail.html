@@ -12,6 +12,9 @@
         <li class="breadcrumb-item"><a href="{% url 'examprep_home' %}">{% trans "Exam Prep" %}</a></li>
         <li class="breadcrumb-item"><a href="{% url 'examprep_track' lesson.track.slug %}">{{ lesson.track.name }}</a></li>
         <li class="breadcrumb-item"><a href="{% url 'examprep_skill' lesson.track.slug skill %}">{{ skill_label }}</a></li>
+        {% if topic %}
+        <li class="breadcrumb-item"><a href="{% url 'examprep_skill' lesson.track.slug skill %}">{{ topic.title }}</a></li>
+        {% endif %}
         <li class="breadcrumb-item active" aria-current="page">{{ lesson.title }}</li>
     </ol>
 </nav>
@@ -23,7 +26,7 @@
         <!-- Mobile playlist (native, no JS) -->
         <details class="d-lg-none mb-3 border rounded p-2 px-3">
             <summary class="fw-semibold">
-                <i class="bi {{ skill_icon }} me-1"></i>{{ skill_label }}
+                <i class="bi {% if topic %}{{ topic.icon }}{% else %}{{ skill_icon }}{% endif %} me-1"></i>{% if topic %}{{ topic.title }}{% else %}{{ skill_label }}{% endif %}
                 <span class="text-secondary">· {{ current_no }}/{{ total_no }}</span>
             </summary>
             {% include 'examprep/_playlist.html' %}
@@ -40,6 +43,7 @@
         </div>
         <p class="page-subtitle mb-4">
             <i class="bi {{ skill_icon }} me-1"></i>{{ skill_label }}
+            {% if topic %}· <i class="bi {{ topic.icon }} me-1"></i>{{ topic.title }}{% endif %}
             · {% blocktrans %}Lesson {{ current_no }} of {{ total_no }}{% endblocktrans %}
         </p>
 
@@ -85,7 +89,7 @@
                 {% trans "Next" %}<i class="bi bi-arrow-right ms-1"></i>
             </a>
             {% else %}
-            <a href="{% url 'examprep_track' lesson.track.slug %}" class="btn btn-success ms-auto">
+            <a href="{% url 'examprep_skill' lesson.track.slug skill %}" class="btn btn-success ms-auto">
                 <i class="bi bi-check2-all me-1"></i>{% trans "Finish" %}
             </a>
             {% endif %}
@@ -96,7 +100,7 @@
     <div class="col-lg-4 order-lg-2 d-none d-lg-block">
         <div class="card border-0 shadow-sm" style="position:sticky;top:1rem;">
             <div class="card-header bg-transparent fw-semibold">
-                <i class="bi {{ skill_icon }} me-1"></i>{{ skill_label }}
+                <i class="bi {% if topic %}{{ topic.icon }}{% else %}{{ skill_icon }}{% endif %} me-1"></i>{% if topic %}{{ topic.title }}{% else %}{{ skill_label }}{% endif %}
             </div>
             {% include 'examprep/_playlist.html' %}
         </div>

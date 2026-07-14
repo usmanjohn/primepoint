@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import ExamTrack, Lesson, LessonBlock, BlockChoice
+from .models import ExamTrack, Topic, Lesson, LessonBlock, BlockChoice
 
 
 @admin.register(ExamTrack)
@@ -9,6 +9,19 @@ class ExamTrackAdmin(admin.ModelAdmin):
     list_editable       = ['order', 'is_published']
     search_fields       = ['name', 'summary']
     prepopulated_fields = {'slug': ('name',)}
+
+    def lesson_count(self, obj):
+        return obj.lessons.count()
+    lesson_count.short_description = 'Lessons'
+
+
+@admin.register(Topic)
+class TopicAdmin(admin.ModelAdmin):
+    list_display        = ['title', 'track', 'skill', 'order', 'is_published', 'lesson_count']
+    list_filter         = ['track', 'skill', 'is_published']
+    list_editable       = ['order', 'is_published']
+    search_fields       = ['title', 'summary', 'track__name']
+    prepopulated_fields = {'slug': ('title',)}
 
     def lesson_count(self, obj):
         return obj.lessons.count()
@@ -24,8 +37,8 @@ class LessonBlockInline(admin.StackedInline):
 
 @admin.register(Lesson)
 class LessonAdmin(admin.ModelAdmin):
-    list_display        = ['title', 'track', 'skill', 'order', 'is_published', 'views', 'created_at']
-    list_filter         = ['track', 'skill', 'is_published']
+    list_display        = ['title', 'track', 'skill', 'topic', 'order', 'is_published', 'views', 'created_at']
+    list_filter         = ['track', 'skill', 'topic', 'is_published']
     list_editable       = ['order', 'is_published']
     search_fields       = ['title', 'summary', 'track__name']
     prepopulated_fields = {'slug': ('title',)}

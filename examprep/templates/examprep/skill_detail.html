@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+{% block nav_examprep %}active{% endblock %}
+{% block mob_nav_examprep %}active{% endblock %}
+{% block page_name %}{{ skill_label }}{% endblock %}
+{% block title %}{{ skill_label }} — {{ track.name }} — {% trans "Exam Prep" %}{% endblock %}
+
+{% block content %}
+
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb small mb-0">
+        <li class="breadcrumb-item"><a href="{% url 'examprep_home' %}">{% trans "Exam Prep" %}</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'examprep_track' track.slug %}">{{ track.name }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ skill_label }}</li>
+    </ol>
+</nav>
+
+<div class="d-flex align-items-center gap-3 mb-4">
+    <span class="ep-icon ep-icon-lg"
+          style="background:{{ track.color }}1a;color:{{ track.color }};">
+        <i class="bi {{ skill_icon }} fs-3"></i>
+    </span>
+    <div>
+        <h1 class="page-title mb-0">{{ track.name }} · {{ skill_label }}</h1>
+        <p class="page-subtitle mb-0">
+            {% blocktrans count counter=lesson_count %}{{ counter }} lesson{% plural %}{{ counter }} lessons{% endblocktrans %}{% if groups %}
+            · {% blocktrans count counter=groups|length %}{{ counter }} question type{% plural %}{{ counter }} question types{% endblocktrans %}{% endif %}
+        </p>
+    </div>
+</div>
+
+<div class="row g-3 g-md-4">
+    {% for group in groups %}
+    <div class="col-12 col-md-6 col-xl-4 d-flex">
+        <div class="card ep-card border-0 shadow-sm w-100"
+             style="border-top:4px solid {{ track.color }} !important;">
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex align-items-center gap-2 mb-1">
+                    <span class="ep-icon ep-icon-sm"
+                          style="background:{{ track.color }}1a;color:{{ track.color }};">
+                        <i class="bi {{ group.topic.icon }}"></i>
+                    </span>
+                    <h2 class="h6 mb-0 flex-grow-1">
+                        {{ group.topic.title }}
+                        {% if not group.topic.is_published %}<span class="badge text-bg-warning ms-1">{% trans "Draft" %}</span>{% endif %}
+                    </h2>
+                    <span class="badge rounded-pill text-bg-light flex-shrink-0">{{ group.lessons|length }}</span>
+                </div>
+                {% if group.topic.summary %}
+                <p class="text-secondary small mb-2">{{ group.topic.summary }}</p>
+                {% endif %}
+                <ol class="ep-topic-list mb-3">
+                    {% for l in group.lessons %}
+                    <li>
+                        <a href="{% url 'examprep_lesson' track.slug skill l.slug %}">
+                            <span class="flex-grow-1">{{ l.title }}</span>
+                            {% if not l.is_published %}<span class="badge text-bg-warning flex-shrink-0">{% trans "Draft" %}</span>{% endif %}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ol>
+                <a href="{% url 'examprep_lesson' track.slug skill group.lessons.0.slug %}"
+                   class="btn btn-sm mt-auto align-self-start"
+                   style="background:{{ track.color }}1a;color:{{ track.color }};font-weight:600;">
+                    <i class="bi bi-play-fill me-1"></i>{% trans "Start" %}
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% if loose_lessons %}
+    <div class="col-12 col-md-6 col-xl-4 d-flex">
+        <div class="card ep-card border-0 shadow-sm w-100">
+            <div class="card-body d-flex flex-column">
+                <div class="d-flex align-items-center gap-2 mb-1">
+                    <span class="ep-icon ep-icon-sm bg-light text-secondary">
+                        <i class="bi bi-journal-text"></i>
+                    </span>
+                    <h2 class="h6 mb-0 flex-grow-1">{% trans "General lessons" %}</h2>
+                    <span class="badge rounded-pill text-bg-light flex-shrink-0">{{ loose_lessons|length }}</span>
+                </div>
+                <ol class="ep-topic-list mb-3">
+                    {% for l in loose_lessons %}
+                    <li>
+                        <a href="{% url 'examprep_lesson' track.slug skill l.slug %}">
+                            <span class="flex-grow-1">{{ l.title }}</span>
+                            {% if not l.is_published %}<span class="badge text-bg-warning flex-shrink-0">{% trans "Draft" %}</span>{% endif %}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ol>
+                <a href="{% url 'examprep_lesson' track.slug skill loose_lessons.0.slug %}"
+                   class="btn btn-sm btn-light mt-auto align-self-start fw-semibold">
+                    <i class="bi bi-play-fill me-1"></i>{% trans "Start" %}
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/examprep.css' %}">{% endblock %}

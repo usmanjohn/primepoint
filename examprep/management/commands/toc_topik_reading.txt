@@ -5,19 +5,32 @@ AUTHOR: powerty
 # (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
 # Writing rules live in STYLE_GUIDE_TOPIK.md. This file is ONLY the ordered lesson list.
 # The number = the lesson's `order` within TOPIK + reading.
+# Lessons are grouped into TOPICs (question-type cards on the skill page); each
+# `## TOPIC:` header names the group — pass it as the lesson's "topic" on import.
 # ─────────────────────────────────────────────────────────────────────
 
 ## TOPIK II — Reading / 읽기
 
+## TOPIC: Strategiya va metod (읽기 전략)   [icon bi-compass, topic order 1]
 1. How TOPIK Reading Works: Sections, Timing, and Strategy
 2. Skimming for the Main Idea (중심 생각 찾기)
 3. Reading the Question Before the Passage
 4. Read More, Translate Less — Vocabulary Method (train eyes not hands; collect sentences for Writing)
-5. Connectors and Signal Words (그러나, 그래서, 그런데 …)
-6. Finding the Order of Sentences (문장 배열)
-7. Filling the Blank: Grammar and Meaning Clues (빈칸 채우기)
-8. Matching Topic to Advertisement / Notice
-9. Identifying the Writer's Attitude and Tone
-10. True / False Detail Questions (일치하는 내용 고르기)
-11. Reading Graphs and Statistics Passages
-12. Long Passage Strategy: Time Management on 21–50
+
+## TOPIC: Reklama va e'lonlar (광고·안내문)   [icon bi-megaphone, topic order 2]
+10. Intro to Questions 5–8: How Advertisement Questions Work
+11. Product Advertisements (상품 광고) — signature keywords
+12. Place & Service Advertisements (업소 광고)
+13. Public-Service Advertisements (공익 광고)
+14. Notices & Instructions (안내문) + Mixed Practice
+
+## TOPIC: (future) Grammatika va bog'lovchilar   [suggested next]
+20. Connectors and Signal Words (그러나, 그래서, 그런데 …)
+21. Finding the Order of Sentences (문장 배열)
+22. Filling the Blank: Grammar and Meaning Clues (빈칸 채우기)
+
+## TOPIC: (future) Uzun matnlar strategiyasi
+30. Identifying the Writer's Attitude and Tone
+31. True / False Detail Questions (일치하는 내용 고르기)
+32. Reading Graphs and Statistics Passages
+33. Long Passage Strategy: Time Management on 21–50

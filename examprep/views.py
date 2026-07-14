@@ -5,7 +5,7 @@ from django.core.exceptions import PermissionDenied
 from django.db.models import F, Count, Q, Max
 from django.http import Http404
 
-from .models import ExamTrack, Lesson, LessonBlock, SKILL_CHOICES, SKILL_ICONS
+from .models import ExamTrack, Topic, Lesson, LessonBlock, SKILL_CHOICES, SKILL_ICONS
 
 
 def _can_edit(user, lesson):
@@ -21,33 +21,43 @@ def _published_filter(user):
 
 
 def examprep_home(request):
-    """List published exam tracks as cards."""
-    tracks = (
+    """List published exam tracks as cards, each with its skill chips."""
+    tracks = list(
         ExamTrack.objects
         .filter(is_published=True)
         .annotate(lesson_count=Count('lessons', filter=Q(lessons__is_published=True)))
     )
+    skill_labels = dict(SKILL_CHOICES)
+    for track in tracks:
+        skills = (track.lessons.filter(is_published=True)
+                  .values_list('skill', flat=True).distinct())
+        track.skill_chips = [
+            {'value': value, 'label': skill_labels[value],
+             'icon': SKILL_ICONS.get(value, 'bi-journal-text')}
+            for value, _ in SKILL_CHOICES if value in skills
+        ]
     return render(request, 'examprep/home.html', {'tracks': tracks})
 
 
 def track_detail(request, track_slug):
-    """One track; its skills (Reading, Writing, ...) shown as a playlist menu."""
+    """One track; its skills (Reading, Writing, ...) shown as cards."""
     pub = _published_filter(request.user)
     track = get_object_or_404(ExamTrack, slug=track_slug, **pub)
 
     lessons = list(track.lessons.filter(**pub))
+    topics = list(track.topics.filter(**pub))
 
-    # Group by skill, preserving SKILL_CHOICES order; link each to its first lesson.
+    # Group by skill, preserving SKILL_CHOICES order.
     groups = []
     for value, label in SKILL_CHOICES:
         skill_lessons = [l for l in lessons if l.skill == value]
         if skill_lessons:
             groups.append({
-                'value':   value,
-                'label':   label,
-                'icon':    SKILL_ICONS.get(value, 'bi-journal-text'),
-                'count':   len(skill_lessons),
-                'first':   skill_lessons[0],
+                'value':       value,
+                'label':       label,
+                'icon':        SKILL_ICONS.get(value, 'bi-journal-text'),
+                'count':       len(skill_lessons),
+                'topic_count': sum(1 for t in topics if t.skill == value),
             })
 
     return render(request, 'examprep/track_detail.html', {
@@ -56,26 +66,56 @@ def track_detail(request, track_slug):
     })
 
 
-def skill_redirect(request, track_slug, skill):
-    """Jump straight to the first lesson of a skill within a track."""
+def skill_detail(request, track_slug, skill):
+    """One skill inside a track: its question-type topics as cards, each card
+    listing that topic's lessons. Lessons without a topic form a final group."""
+    skill_label = dict(SKILL_CHOICES).get(skill)
+    if skill_label is None:
+        raise Http404('Unknown section.')
+
     pub = _published_filter(request.user)
     track = get_object_or_404(ExamTrack, slug=track_slug, **pub)
-    first = track.lessons.filter(skill=skill, **pub).first()
-    if not first:
+
+    lessons = list(track.lessons.filter(skill=skill, **pub))
+    if not lessons:
         raise Http404('No lessons in this section yet.')
-    return redirect('examprep_lesson', track_slug=track.slug, skill=skill, slug=first.slug)
+
+    groups = []
+    for topic in track.topics.filter(skill=skill, **pub):
+        topic_lessons = [l for l in lessons if l.topic_id == topic.id]
+        if topic_lessons:
+            groups.append({'topic': topic, 'lessons': topic_lessons})
+
+    grouped_ids = {l.id for g in groups for l in g['lessons']}
+    loose_lessons = [l for l in lessons if l.id not in grouped_ids]
+
+    return render(request, 'examprep/skill_detail.html', {
+        'track':         track,
+        'skill':         skill,
+        'skill_label':   skill_label,
+        'skill_icon':    SKILL_ICONS.get(skill, 'bi-journal-text'),
+        'groups':        groups,
+        'loose_lessons': loose_lessons,
+        'lesson_count':  len(lessons),
+    })
 
 
 def lesson_detail(request, track_slug, skill, slug):
     """A lesson 'player': its blocks, plus prev/next + a jump list for the skill."""
     pub = _published_filter(request.user)
     lesson = get_object_or_404(
-        Lesson.objects.select_related('track'),
+        Lesson.objects.select_related('track', 'topic'),
         track__slug=track_slug, skill=skill, slug=slug, **pub,
     )
 
-    # Ordered siblings in the same track + skill drive the playlist navigation.
-    siblings = list(lesson.track.lessons.filter(skill=skill, **pub))
+    # Ordered siblings drive the playlist: lessons of the same topic when the
+    # lesson belongs to one, otherwise the skill's remaining ungrouped lessons.
+    siblings_qs = lesson.track.lessons.filter(skill=skill, **pub)
+    if lesson.topic_id:
+        siblings_qs = siblings_qs.filter(topic_id=lesson.topic_id)
+    else:
+        siblings_qs = siblings_qs.filter(topic__isnull=True)
+    siblings = list(siblings_qs)
     index = siblings.index(lesson)
     prev_lesson = siblings[index - 1] if index > 0 else None
     next_lesson = siblings[index + 1] if index < len(siblings) - 1 else None
@@ -105,6 +145,7 @@ def lesson_detail(request, track_slug, skill, slug):
     skill_label = dict(SKILL_CHOICES).get(skill, skill)
     return render(request, 'examprep/lesson_detail.html', {
         'lesson':       lesson,
+        'topic':        lesson.topic,
         'skill':        skill,
         'skill_label':  skill_label,
         'skill_icon':   SKILL_ICONS.get(skill, 'bi-journal-text'),

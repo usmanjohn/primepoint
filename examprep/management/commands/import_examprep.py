@@ -13,6 +13,12 @@ The data file must expose a ``TRACK`` dict and a ``LESSONS`` list, e.g.::
     LESSONS = [
         {
             "skill":   "reading",                # one of SKILL_CHOICES
+            "topic": {                           # optional question-type group (card on the skill page)
+                "title":   "Reklama va e'lonlar (광고)",
+                "summary": "5–8-savollar: reklama va e'lon matnlari.",
+                "icon":    "bi-megaphone",       # Bootstrap-icons class
+                "order":   2,                    # card position within track+skill
+            },                                   # (or just a title string: "topic": "...")
             "title":   "TOPIK Reading 1: Skimming for the Main Idea",
             "summary": "Short card blurb (optional, <=300 chars).",
             "order":   1,                        # position within track+skill
@@ -51,6 +57,7 @@ from django.db import transaction
 from masters.models import Master
 from examprep.models import (
     ExamTrack,
+    Topic,
     Lesson,
     LessonBlock,
     BlockChoice,
@@ -151,6 +158,38 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS(f"Track {verb}: {obj.name}"))
         return obj
 
+    def _upsert_topic(self, track, skill, topic):
+        """Get or create the Topic for a lesson; refresh its card metadata.
+
+        ``topic`` may be a plain title string or a dict with title/summary/icon/order.
+        Returns None when the lesson declares no topic.
+        """
+        if not topic:
+            return None
+        if isinstance(topic, str):
+            topic = {"title": topic}
+        title = (topic.get("title") or "").strip()
+        if not title:
+            return None
+
+        obj, created = Topic.objects.get_or_create(
+            track=track,
+            skill=skill,
+            title=title,
+            defaults={
+                "summary": topic.get("summary", ""),
+                "icon":    topic.get("icon", "bi-collection"),
+                "order":   topic.get("order", 0),
+                "is_published": True,
+            },
+        )
+        if not created:
+            for field in ("summary", "icon", "order"):
+                if field in topic:
+                    setattr(obj, field, topic[field])
+            obj.save()
+        return obj
+
     def _build_blocks(self, lesson, blocks):
         """Create LessonBlock + BlockChoice rows for a lesson, in order."""
         for b_order, block in enumerate(blocks, start=1):
@@ -201,11 +240,14 @@ class Command(BaseCommand):
             order = data.get("order", 0)
 
             with transaction.atomic():
+                topic = self._upsert_topic(track, skill, data.get("topic"))
+
                 lesson, was_created = Lesson.objects.get_or_create(
                     track=track,
                     skill=skill,
                     title=title,
                     defaults={
+                        "topic": topic,
                         "summary": summary,
                         "order": order,
                         "author": author,
@@ -218,6 +260,7 @@ class Command(BaseCommand):
                     created += 1
                     self.stdout.write(self.style.SUCCESS(f"[{i}] created: {title}"))
                 elif republish:
+                    lesson.topic = topic
                     lesson.summary = summary
                     lesson.order = order
                     lesson.author = author

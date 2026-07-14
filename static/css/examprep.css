@@ -1,0 +1,71 @@
+/* ─── Exam Prep listing pages (home / track / skill cards) ─────────── */
+
+.ep-card {
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+.ep-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 .5rem 1rem rgba(30, 41, 59, .12) !important;
+}
+
+/* Colored icon badge used across every level */
+.ep-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .75rem;
+    flex-shrink: 0;
+}
+.ep-icon-lg { width: 56px; height: 56px; }
+.ep-icon-md { width: 44px; height: 44px; }
+.ep-icon-sm { width: 34px; height: 34px; border-radius: .5rem; }
+
+/* Skill chips on the track cards */
+.ep-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    background: #f1f5f9;
+    color: #475569;
+    border-radius: 999px;
+    padding: .15rem .6rem;
+    font-size: .78rem;
+}
+
+/* Topic card: numbered lesson list inside the card */
+.ep-topic-list {
+    list-style: none;
+    counter-reset: ep-lesson;
+    margin: 0;
+    padding: 0;
+}
+.ep-topic-list li {
+    counter-increment: ep-lesson;
+    border-top: 1px solid #f1f5f9;
+}
+.ep-topic-list li:first-child { border-top: 0; }
+.ep-topic-list a {
+    display: flex;
+    align-items: baseline;
+    gap: .55rem;
+    padding: .5rem .25rem;
+    color: #334155;
+    text-decoration: none;
+    border-radius: .375rem;
+}
+.ep-topic-list a:hover { background: #f8fafc; color: #0f172a; }
+.ep-topic-list a::before {
+    content: counter(ep-lesson);
+    flex-shrink: 0;
+    width: 1.45rem;
+    height: 1.45rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    border-radius: 50%;
+    background: #f1f5f9;
+    color: #64748b;
+    font-size: .75rem;
+    font-weight: 600;
+}

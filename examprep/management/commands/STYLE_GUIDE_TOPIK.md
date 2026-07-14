@@ -12,6 +12,14 @@ The data model: a lesson is a list of **blocks**. The player renders each block 
 **image (+caption) → rich text → MCQ choices → explanation (after submit)**. Compose a
 lesson from several blocks rather than one giant field.
 
+**Topics (question-type cards).** Lessons are grouped by a `topic` — a question type inside
+the skill (e.g. Reading → "Reklama va e'lonlar (광고·안내문)"). The skill page shows one card
+per topic, and the lesson player's playlist is scoped to the topic. Every lesson in a data
+file should carry a shared `TOPIC = {"title", "summary", "icon", "order"}` dict passed as
+`"topic": TOPIC`. Topic titles are Uzbek + Korean in parentheses; the toc file's
+`## TOPIC:` headers say which lessons belong to which topic. Give each topic its own
+lesson-`order` decade (10–19, 20–29, …) so groups never collide.
+
 ---
 
 ## 1. Til siyosati — Language policy (MOST IMPORTANT)
