@@ -66,33 +66,35 @@ AUTHOR: powerty
 71. Body-part idiom map (손·발·눈·귀·입·머리·어깨 + 미역국/바가지/시치미 bonus set)
 72. Main-Thought Method (-아야 한다 / 그러므로 / A가 아니라 B) + two full exam passages
 
-## TOPIC: 23–24-savollar: His-tuyg'u va tafsilotlar (심정·내용 일치)   [icon bi-emoji-smile, topic order 10]  [next]
-80. Intro to Q23–24: personal narratives; emotion vocabulary (서운하다, 뿌듯하다, 당황스럽다 …)
-81. Reading Feelings from Actions + practice
-82. Details on narrative passages + Mixed Practice
+## TOPIC: 23–24-savollar: His-tuyg'u va tafsilotlar (심정·내용 일치)   [icon bi-emoji-smile, topic order 10]  [done]
+80. Intro to Q23–24: feelings shown through actions (잠이 오지 않다 → 불안) + 3-step method
+81. Emotion dictionary in 4 groups + nuance formulas (서운/아쉽/안타깝/억울 …)
+82. Full Exam Practice — two narratives (birthday surprise, bakery), feelings + content questions
 
-## TOPIC: 25–27-savollar: Gazeta sarlavhalari (신문 기사 제목)   [icon bi-newspaper, topic order 11]  [next]
-90. Intro to Q25–27: headline language — compression, symbols, wordplay
-91. Economy & Society headlines + practice
-92. Weather, Culture & Sports headlines + practice
+## TOPIC: 25–27-savollar: Gazeta sarlavhalari (신문 기사 제목)   [icon bi-newspaper, topic order 11]  [done]
+90. Intro to Q25–27: the 4 compression rules (dropped particles, comma, 껑충/뚝, metaphors)
+91. Economy & Society metaphor dictionary (빨간불/청신호, 한파/훈풍, 기지개, 날개 돋친 듯)
+92. Weather, Culture & Sports headlines (마비, 발길, 꺾다, 역전승) + Mixed Practice
 
-## TOPIC: 28–31-savollar: Murakkab bo'sh joy (빈칸 고급)   [icon bi-input-cursor-text, topic order 12]  [next]
-100. Intro to Q28–31: harder blanks — abstract nouns, longer logic chains
-101. Practice I (science & psychology passages)
-102. Practice II (society & economy passages)
+## TOPIC: 28–31-savollar: Murakkab bo'sh joy (빈칸 고급)   [icon bi-input-cursor-text, topic order 12]  [done]
+100. Intro to Q28–31: answer hides in the text (paraphrase) + parallelism (A라면 B)
+101. Science & Psychology passages (definition/experiment/mechanism patterns, 즉 signal)
+102. Society & Economy passages + the three advanced-blank traps
 
-## TOPIC: 32–34-savollar: Murakkab mazmun (내용 일치 고급)   [icon bi-ui-checks, topic order 13]  [next]
-110. Intro to Q32–34: dense informational passages, no field labels
-111. Practice (history, science, biography passages)
+## TOPIC: 32–34-savollar: Murakkab mazmun (내용 일치 고급)   [icon bi-ui-checks, topic order 13]  [done]
+110. Intro to Q32–34: anchor-word method + quantifier traps (모두/일부/항상/절대/만)
+111. Science & Nature passages (subject-swap and absolute-word traps, 다만 exceptions)
+112. History & Biography passages (ordinals, term functions, 당시↔오늘날) + Mixed
 
-## TOPIC: 35–38-savollar: Matn mavzusi (주제 찾기)   [icon bi-bullseye, topic order 14]  [next]
-120. Intro to Q35–38: theme vs detail — how the right answer generalizes
-121. Practice I + trap: too-narrow / too-broad answers
-122. Practice II (opinion passages)
+## TOPIC: 35–38-savollar: Matn mavzusi (주제 찾기)   [icon bi-bullseye, topic order 14]  [done]
+120. Intro to Q35–38: the umbrella test + where themes live (이처럼/그러므로/하지만-turn)
+121. Wrong-answer lab: narrow / broad / opposite / absent (with "A가 아니라 B" rule)
+122. Opinion passages (주장문): demand endings (-아야 한다, -ㄹ 필요가 있다) + Mixed
 
-## TOPIC: 39–41-savollar: Gap joylashtirish (문장 넣기)   [icon bi-box-arrow-in-down, topic order 15]  [next]
-130. Intro to Q39–41: insert the <보기> sentence at ㉠㉡㉢㉣
-131. Practice — pronoun/connector anchors in the <보기> sentence
+## TOPIC: 39–41-savollar: Gap joylashtirish (문장 넣기)   [icon bi-box-arrow-in-down, topic order 15]  [done]
+130. Intro to Q39–41: start from the <보기> — anchors + two-sided check
+131. Three anchor types: connector (그러나), pronoun (이 성분), continuation (심하면)
+132. Hard cases: question-anchor (그렇다면), orphaned-이렇게 in text, evidence 실제로 + Mixed
 
 ## TOPIC: 42–43-savollar: Adabiy matn (소설·심정)   [icon bi-book-half, topic order 16]  [next]
 140. Intro to Q42–43: fiction excerpts; character feelings in context
