@@ -26,11 +26,11 @@ AUTHOR: powerty
 43. Condition, Purpose & Guessing family (-려면, -려고, -도록, -을까 봐, -나 보다)
 44. Contrast family + Mixed Review (-지만, -는데도, -아도, -거나, 아무리~어도)
 
-## TOPIC: 3–4-savollar: Ma'nodosh iboralar (의미가 비슷한 것)   [icon bi-arrow-left-right, topic order 3]  [next]
-50. Intro to Q3–4: Underlined Expression → Closest Meaning
-51. High-frequency equivalent pairs I (-기 마련이다, -는 법이다, -을 수밖에 없다 …)
-52. High-frequency equivalent pairs II (-는 척하다, -기 일쑤이다, -곤 하다 …)
-53. Mixed Practice with elimination
+## TOPIC: 3–4-savollar: Ma'nodosh iboralar (의미가 비슷한 것)   [icon bi-arrow-left-right, topic order 3]  [done]
+50. Intro to Q3–4: Underlined Expression → Closest Meaning (-기 마련이다, -을 수밖에 없다)
+51. Cause & Time pairs (-는 바람에 ⇄ -는 탓에, -자마자 ⇄ -기가 무섭게, -은 채로)
+52. Habit & Almost pairs (-곤 하다, -기 일쑤이다, -을 뻔하다, -는 척하다)
+53. Remaining pairs + Mixed Practice (-는 김에, -기 나름이다, -을 리가 없다, -아 봤자)
 
 ## TOPIC: 5–8-savollar: Reklama va e'lonlar (광고·안내문)   [icon bi-megaphone, topic order 4]  [done]
 10. Intro to Questions 5–8: How Advertisement Questions Work
@@ -56,14 +56,15 @@ AUTHOR: powerty
 34. Fill-the-Blank Practice + Mixed Review (오히려 traps)
 35. (reserved: more practice if needed)
 
-## TOPIC: 19–20-savollar: Ravish + mazmun (부사·내용 일치)   [icon bi-braces-asterisk, topic order 8]  [next]
-60. Intro to Q19–20: one passage, two questions; key adverbs (과연, 만약, 물론, 오히려 …)
-61. Adverb Blank Practice + matching statements on the same passage
+## TOPIC: 19–20-savollar: Ravish + mazmun (부사·내용 일치)   [icon bi-braces-asterisk, topic order 8]  [done]
+60. Intro to Q19–20: one passage two questions + the Partner Rule (만약→면, 마치→처럼, 도저히→neg)
+61. The Adverb Arsenal by function (오히려, 차라리, 어차피, 결국, 게다가, 심지어, 과연, 다만, 굳이)
+62. Full Exam Practice — two passages, each with adverb blank + content/main-idea question
 
-## TOPIC: 21–22-savollar: Iboralar va asosiy fikr (관용 표현·중심 생각)   [icon bi-chat-quote, topic order 9]  [next]
-70. Intro to Q21–22: idioms in the blank (손을 잡다, 발 벗고 나서다 …)
-71. Top TOPIK idioms with stories + practice
-72. Finding the Main Thought (중심 생각) on the same passage
+## TOPIC: 21–22-savollar: Iboralar va asosiy fikr (관용 표현·중심 생각)   [icon bi-chat-quote, topic order 9]  [done]
+70. Intro to Q21–22: what idioms are + meaning-gap method (손을 잡다, 귀를 기울이다)
+71. Body-part idiom map (손·발·눈·귀·입·머리·어깨 + 미역국/바가지/시치미 bonus set)
+72. Main-Thought Method (-아야 한다 / 그러므로 / A가 아니라 B) + two full exam passages
 
 ## TOPIC: 23–24-savollar: His-tuyg'u va tafsilotlar (심정·내용 일치)   [icon bi-emoji-smile, topic order 10]  [next]
 80. Intro to Q23–24: personal narratives; emotion vocabulary (서운하다, 뿌듯하다, 당황스럽다 …)
