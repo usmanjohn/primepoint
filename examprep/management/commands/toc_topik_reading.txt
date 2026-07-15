@@ -96,19 +96,19 @@ AUTHOR: powerty
 131. Three anchor types: connector (그러나), pronoun (이 성분), continuation (심하면)
 132. Hard cases: question-anchor (그렇다면), orphaned-이렇게 in text, evidence 실제로 + Mixed
 
-## TOPIC: 42–43-savollar: Adabiy matn (소설·심정)   [icon bi-book-half, topic order 16]  [next]
+## TOPIC: 42–43-savollar: Adabiy matn (소설·심정)   [icon bi-book-half, topic order 16]  [done]
 140. Intro to Q42–43: fiction excerpts; character feelings in context
 141. Practice — feelings + content matching on literary passages
 
-## TOPIC: 44–45-savollar: Bo'sh joy + mavzu (빈칸·주제)   [icon bi-diagram-2, topic order 17]  [next]
+## TOPIC: 44–45-savollar: Bo'sh joy + mavzu (빈칸·주제)   [icon bi-diagram-2, topic order 17]  [done]
 150. Intro to Q44–45: one hard passage, blank + theme together
 151. Practice (culture & science passages)
 
-## TOPIC: 46–47-savollar: Muallif munosabati (필자의 태도)   [icon bi-person-lines-fill, topic order 18]  [next]
+## TOPIC: 46–47-savollar: Muallif munosabati (필자의 태도)   [icon bi-person-lines-fill, topic order 18]  [done]
 160. Intro to Q46–47: attitude verbs (우려하다, 강조하다, 비판하다, 기대하다 …)
 161. Practice — attitude + content matching
 
-## TOPIC: 48–50-savollar: Yozish maqsadi (글의 목적)   [icon bi-flag-fill, topic order 19]  [next]
+## TOPIC: 48–50-savollar: Yozish maqsadi (글의 목적)   [icon bi-flag-fill, topic order 19]  [done]
 170. Intro to Q48–50: purpose verbs (주장하려고, 설명하려고, 제안하려고 …)
 171. Practice — purpose + blank + attitude, full final set
 172. Grand Mixed Review: a mini reading section under time
