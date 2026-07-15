@@ -163,8 +163,59 @@ bilan birma-bir ochadi (birdan skanerlamaydi). Har bosqich — bitta `.pp-step`.
 ### Qaysi ko'nikma uchun nima (controlled variety)
 - **읽기 Reading:** step-reveal (strategiya/misol) + inline MCQ + flashcards (glossary).
 - **쓰기 Writing (51–54):** step-reveal (namuna javobni bo'lib ko'rsatish) + flashcards (naqsh/ibora).
-- **듣기 Listening:** rasm/audio bloki + MCQ.
+- **듣기 Listening:** audio blok + MCQ + skript dropdown (5c-bo'limga qarang) + flashcards.
 - **전략 Strategy:** step-reveal + MCQ.
+
+---
+
+## 5c. 듣기 (Listening) darslari — audio bloklar
+
+Listening darslari **haqiqiy audio** bilan keladi. Audio biz o'zimiz yozgan original
+TOPIK-uslub skriptlardan lokal ravishda sintez qilinadi (edge-tts: 남자 = InJoon,
+여자 = SunHi, 해설 = InJoon) — rasmiy imtihon audiosi ishlatilmaydi (mualliflik huquqi;
+rasmiy mock audio `exam` simulyatoriga tegishli).
+
+**Audio blok formati** (data faylda):
+```python
+{
+    "audio":        "topik_l_010_1.mp3",   # fayl nomi: topik_l_<lesson order 3 xonali>_<blok n>.mp3
+    "audio_script": [                        # faqat authoring uchun — gen_examprep_audio o'qiydi
+        ("남자", "주말에 등산 갈래요?"),
+        ("여자", "좋아요. 몇 시에 만날까요?"),
+    ],
+    "rich_text":    "<p><strong>Amaliyot 1.</strong> 들은 내용과 같은 것을 고르십시오.</p>",
+    "choices":      [...],
+    "explanation":  "... + skript dropdown (pastga qarang)",
+}
+```
+
+**Skript (transkript) qoidasi — "avval eshiting":**
+- MCQ (amaliyot) blokida to'liq skript + o'zbekcha tarjima **`explanation` ichida**
+  `<details>` dropdown bo'lib turadi — talaba javob berganidan KEYIN ochiladi:
+```html
+<details style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px 14px;margin:12px 0;">
+  <summary style="cursor:pointer;font-weight:600;">📜 Skript va tarjima — bosing</summary>
+  <div style="margin-top:10px;">
+    <p><strong>남자:</strong> 주말에 등산 갈래요?<br>
+    <em style="color:#475569;">Dam olish kuni toqqa chiqamizmi?</em></p>
+    ...
+  </div>
+</details>
+```
+- Tushuntirish (o'rgatish) blokidagi namuna-audio uchun skript dropdown `rich_text`ning
+  o'zida, audio ostida turadi ("⚠️ Avval eshiting, keyin skriptni oching!" eslatmasi bilan).
+- `explanation`da javobni beruvchi **skript qatorini** iqtibos qilib ko'rsating.
+
+**Ishlab chiqarish tartibi (har partiya):**
+1. `_lessons_topik_listening_<topic>_<range>.py` yozish (audio_script bilan).
+2. `python manage.py gen_examprep_audio <fayl> --out examprep/management/commands/audio/<topic>/`
+3. mp3lar repoga commit qilinadi (production import ham o'sha papkadan oladi).
+4. `python manage.py import_examprep <fayl> --author=<user> --audio-dir=<o'sha papka>`
+
+**Skript yozish maslahatlari:** haqiqiy TOPIK 듣기 kabi — qisqa aniq jumlalar, 남자/여자
+navbatlashadi; oson savollarda (1–12) 2–4 replika, o'rta (13–30) 4–6, qiyin (31–50)
+uzunroq monolog/intervyu. Raqamlar, vaqt va joy nomlarini aniq talaffuz uchun to'liq
+yozing (예: "세 시 반" — "3:30" emas).
 
 > ⚠️ MCQ **amaliyot** uchun (baholanmaydigan). To'g'ri javob HTML manbada ko'rinadi — bu normal.
 > Baholanadigan, xronometrajli test — alohida `exam` ilovasi.

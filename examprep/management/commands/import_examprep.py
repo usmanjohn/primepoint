@@ -27,6 +27,15 @@ The data file must expose a ``TRACK`` dict and a ``LESSONS`` list, e.g.::
                 {"rich_text": "<h2>...</h2><p>...</p>"},
                 # An image block (image path is relative to MEDIA_ROOT):
                 {"image": "examprep/blocks/passage1.png", "caption": "Sample passage"},
+                # A listening block ("audio" = a filename inside --audio-dir; the file's
+                # bytes are uploaded through the configured storage. "audio_script" is
+                # authoring-only — consumed by gen_examprep_audio, ignored here):
+                {
+                    "audio":        "listening_010_1.mp3",
+                    "audio_script": [("남자", "..."), ("여자", "...")],
+                    "rich_text":    "<p>들은 내용과 같은 것을 고르십시오.</p>",
+                    "choices":      [...],
+                },
                 # An inline practice question (rich_text = prompt, choices => MCQ):
                 {
                     "rich_text":   "<p>What is the main idea?</p>",
@@ -45,11 +54,14 @@ Usage::
 
     python manage.py import_examprep path/to/_lessons_topik_reading.py --author=<username>
     python manage.py import_examprep path/to/_lessons_topik_reading.py --author=<username> --republish
+    python manage.py import_examprep path/to/_lessons_topik_listening_pics_1_3.py \
+        --author=<username> --audio-dir=examprep/management/commands/audio/pics
 """
 
 import importlib.util
 import os
 
+from django.core.files import File
 from django.core.management.base import BaseCommand, CommandError
 from django.contrib.auth.models import User
 from django.db import transaction
@@ -85,6 +97,12 @@ class Command(BaseCommand):
             action="store_true",
             help="Update lessons that already exist, rebuilding their blocks "
                  "(default: skip them).",
+        )
+        parser.add_argument(
+            "--audio-dir",
+            default=None,
+            help="Folder holding the audio files referenced by blocks' 'audio' keys "
+                 "(their bytes are uploaded through the configured storage).",
         )
 
     # ── helpers ─────────────────────────────────────────────────────────────
@@ -190,8 +208,13 @@ class Command(BaseCommand):
             obj.save()
         return obj
 
-    def _build_blocks(self, lesson, blocks):
-        """Create LessonBlock + BlockChoice rows for a lesson, in order."""
+    def _build_blocks(self, lesson, blocks, audio_dir=None):
+        """Create LessonBlock + BlockChoice rows for a lesson, in order.
+
+        A block's "audio" key names a file inside ``audio_dir``; its bytes are
+        uploaded via the configured storage (local media in dev, bucket in prod).
+        The "audio_script" key is authoring-only (used by gen_examprep_audio).
+        """
         for b_order, block in enumerate(blocks, start=1):
             lb = LessonBlock.objects.create(
                 lesson=lesson,
@@ -201,6 +224,17 @@ class Command(BaseCommand):
                 rich_text=block.get("rich_text") or None,
                 explanation=block.get("explanation") or None,
             )
+            audio_name = block.get("audio")
+            if audio_name:
+                path = os.path.join(audio_dir, audio_name) if audio_dir else None
+                if path and os.path.isfile(path):
+                    with open(path, "rb") as fh:
+                        lb.audio.save(audio_name, File(fh), save=True)
+                else:
+                    self.stdout.write(self.style.WARNING(
+                        f"    audio missing, block imported without it: {audio_name}"
+                        + ("" if audio_dir else " (no --audio-dir given)")
+                    ))
             for c_order, choice in enumerate(block.get("choices", []), start=1):
                 BlockChoice.objects.create(
                     block=lb,
@@ -215,6 +249,9 @@ class Command(BaseCommand):
         author = self._resolve_author(options["author"])
         track_data, lessons = self._load_module(options["datafile"])
         republish = options["republish"]
+        audio_dir = options["audio_dir"]
+        if audio_dir and not os.path.isdir(audio_dir):
+            raise CommandError(f"Audio folder not found: {audio_dir}")
 
         track = self._upsert_track(track_data)
 
@@ -256,7 +293,7 @@ class Command(BaseCommand):
                 )
 
                 if was_created:
-                    self._build_blocks(lesson, blocks)
+                    self._build_blocks(lesson, blocks, audio_dir)
                     created += 1
                     self.stdout.write(self.style.SUCCESS(f"[{i}] created: {title}"))
                 elif republish:
@@ -267,7 +304,7 @@ class Command(BaseCommand):
                     lesson.is_published = True
                     lesson.save()
                     lesson.blocks.all().delete()   # rebuild ordered children cleanly
-                    self._build_blocks(lesson, blocks)
+                    self._build_blocks(lesson, blocks, audio_dir)
                     updated += 1
                     self.stdout.write(self.style.SUCCESS(f"[{i}] updated: {title}"))
                 else:

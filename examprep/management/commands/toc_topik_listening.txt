@@ -3,22 +3,79 @@ TRACK:  TOPIK
 SKILL:  listening
 AUTHOR: powerty
 # (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
-# Writing rules live in STYLE_GUIDE_TOPIK.md. This file is ONLY the ordered lesson list.
+# Writing rules live in STYLE_GUIDE_TOPIK.md (section 5c = listening audio blocks).
 # The number = the lesson's `order` within TOPIK + listening.
-# Real audio lives in the `exam` test simulator; these lessons teach strategy + scripts.
+# Lessons are grouped into TOPICs = the REAL exam question groups of TOPIK II 듣기
+# (Q1–50). Each `## TOPIC:` header names the group — pass it as the lesson's "topic"
+# on import. Topic order = exam order. Each topic owns a lesson-order decade.
+# Audio: every practice block carries "audio" + "audio_script"; clips are generated
+# with gen_examprep_audio (edge-tts, 남자=InJoon / 여자=SunHi) into
+# examprep/management/commands/audio/<topic>/ (committed), then imported with
+# --audio-dir. Official past-paper audio belongs in the `exam` simulator, not here.
+# Status: [done] = imported; [next] = not written yet.
 # ─────────────────────────────────────────────────────────────────────
 
-## TOPIK II — Listening / 듣기
+## TOPIK II — Listening / 듣기 (savol guruhlari bo'yicha)
 
-1. Why Podcasts Are the Best Listening Practice (recommend 빅데이터로 보는 세상; podcast method)
-2. How to Listen to Podcasts (cautions: don't transcribe/translate; listen while busy; 60/30/10 ratio)
-3. Catching the Main Idea on the First Listen
-4. Conversation Patterns: Who Says What (남자 / 여자)
-5. Matching the Following Action (이어질 행동 고르기)
-6. Note-Taking: What to Write and What to Ignore
-7. Inference: The Speaker's Intention and Attitude
-8. Lectures and Interviews: Following a Longer Talk
-9. Signal Words You Hear (그러니까, 반면에, 결국 …)
-10. Numbers, Dates, and Times by Ear
-11. Common Traps: Paraphrase vs Exact Words
-12. Endgame Strategy: Staying Focused on 31–50
+## TOPIC: Metod va strategiya (듣기 전략)   [icon bi-compass, topic order 1]  [partial: 1–2 done]
+1. Why Podcasts Are the Best Listening Practice (빅데이터로 보는 세상; podcast method)  [done]
+2. How to Listen to Podcasts (don't transcribe/translate; 60/30/10 ratio)  [done]
+3. How TOPIK 듣기 Works: structure Q1–50, one-play audio, reading choices ahead  [next]
+
+## TOPIC: 1–3-savollar: Mos rasm va grafik (그림·그래프)   [icon bi-image, topic order 2]  [done]
+10. Intro to Q1–3: place, action, situation — hearing the scene in two lines
+11. Graphs by Ear (Q3): rise/fall/half/double language (늘다, 줄다, 절반, 두 배)
+12. Full Practice — dialogues + graph, exam format
+
+## TOPIC: 4–8-savollar: Keyingi replika (이어질 말)   [icon bi-chat-dots, topic order 3]  [next]
+20. Intro to Q4–8: question→answer logic; the reply matches the LAST line
+21. Reply patterns: agreeing, refusing politely, suggesting, checking (그럼요, 아쉽네요 …)
+22. Full Practice — five mini-dialogues under exam conditions
+
+## TOPIC: 9–12-savollar: Keyingi harakat (이어질 행동)   [icon bi-person-walking, topic order 4]  [next]
+30. Intro to Q9–12: instruction/request verbs at the end (좀 ~아 줄래요?, 제가 ~할게요)
+31. Who Does What: subject-tracking traps (여자가 할 일 vs 남자가 할 일)
+32. Full Practice — four dialogues, exam format
+
+## TOPIC: 13–16-savollar: Mazmun mosligi (내용 일치)   [icon bi-check2-square, topic order 5]  [next]
+40. Intro to Q13–16: 소거법 by ear; the four sources (대화·안내방송·인터뷰·뉴스)
+41. Announcement & News Language (안내 방송, 일기 예보, 보도)
+42. Full Practice — one of each source type
+
+## TOPIC: 17–20-savollar: Asosiy fikr (중심 생각)   [icon bi-bullseye, topic order 6]  [next]
+50. Intro to Q17–20: the man's opinion patterns (-는 게 좋다, -아야 한다, 제 생각에는)
+51. Opinion vs Example: the umbrella test by ear
+52. Full Practice — four dialogues, exam format
+
+## TOPIC: 21–24-savollar: Juft savollar I (중심 생각·하는 일 + 내용)   [icon bi-collection, topic order 7]  [next]
+60. Intro to Q21–24: one dialogue, two questions; note-taking split
+61. What Is He Doing? (하는 일) — workplace/service dialogues
+62. Full Practice — two paired sets
+
+## TOPIC: 25–30-savollar: Intervyu bloki (인터뷰: 의도·직업)   [icon bi-mic, topic order 8]  [next]
+70. Intro to Q25–30: interview format; intention verbs by ear (권하다, 알리다, 소개하다)
+71. Guessing the Job & the Intention (직업 찾기, 화자의 의도)
+72. Full Practice — three interviews, six questions
+
+## TOPIC: 31–36-savollar: Munozara va rasmiy nutq (토론·공식 말하기)   [icon bi-people, topic order 9]  [next]
+80. Intro to Q31–36: debate format — position + attitude (찬성/반대, 강하게/조심스럽게)
+81. Formal Speech Settings (회의, 발표, 축사) — what is the speaker doing?
+82. Full Practice — debate + formal speech sets
+
+## TOPIC: 37–42-savollar: Ko'rsatuv va ma'ruza (교양 프로그램·강연)   [icon bi-tv, topic order 10]  [next]
+90. Intro to Q37–42: longer talks; catching the theme sentence
+91. Lecture Signal Words by Ear (그러니까, 반면에, 결국, 예를 들면)
+92. Full Practice — program + lecture sets
+
+## TOPIC: 43–46-savollar: Hujjatli film va ma'ruza (다큐멘터리·강연)   [icon bi-film, topic order 11]  [next]
+100. Intro to Q43–46: documentary narration; "reason/central idea" questions
+101. Science & Nature Narrations — following an explanation chain
+102. Full Practice — documentary + lecture sets
+
+## TOPIC: 47–50-savollar: Eng qiyin juftliklar (대담·강연: 태도)   [icon bi-award, topic order 12]  [next]
+110. Intro to Q47–50: expert talks; attitude by tone (우려, 낙관, 비판, 촉구) by ear
+111. Hard Paraphrase Traps: exact words vs meaning (마지막 함정)
+112. Full Practice — final expert sets
+
+## TOPIC: Yakuniy takror (총정리)   [icon bi-trophy, topic order 13]  [next]
+120. Grand Mixed Review: a mini listening section under time (one question per group)

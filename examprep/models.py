@@ -147,6 +147,8 @@ class LessonBlock(models.Model):
                                     help_text='Optional image / book screenshot, shown at the top of the block.')
     caption     = models.CharField(max_length=300, blank=True,
                                    help_text='Optional caption under the image.')
+    audio       = models.FileField(upload_to='examprep/audio/', blank=True, null=True,
+                                   help_text='Optional audio clip (listening lessons), played above the text.')
     rich_text   = CKEditor5Field(config_name='tutorial', blank=True, null=True,
                                  help_text='Explanation text, or the question prompt if this block has choices.')
     explanation = CKEditor5Field(blank=True, null=True,

@@ -16,12 +16,20 @@ TRACK = {
     "order":   1,
 }
 
+TOPIC = {
+    "title":   "Metod va strategiya (듣기 전략)",
+    "summary": "Tinglashni qanday rivojlantirish: podkast metodi, imtihon tuzilishi va umumiy taktika.",
+    "icon":    "bi-compass",
+    "order":   1,
+}
+
 LESSONS = [
     # ══════════════════════════════════════════════════════════════════════
     # 1-DARS — Nega podkast?
     # ══════════════════════════════════════════════════════════════════════
     {
         "skill":   "listening",
+        "topic":   TOPIC,
         "title":   "TOPIK Listening 1: Nega podkast eng yaxshi mashq",
         "summary": "Tinglashni musiqa yoki drama emas, podkast orqali rivojlantiring — "
                    "tavsiya: 빅데이터로 보는 세상.",
@@ -126,6 +134,7 @@ nega ekanini ko'ramiz.</p>
     # ══════════════════════════════════════════════════════════════════════
     {
         "skill":   "listening",
+        "topic":   TOPIC,
         "title":   "TOPIK Listening 2: Podkastni qanday tinglash kerak",
         "summary": "Podkast tinglash qoidalari — yozmang, tarjima qilmang, yurib-ishlab tinglang — "
                    "va 60/30/10 mashq nisbati.",

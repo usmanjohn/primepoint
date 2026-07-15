@@ -1,7 +1,7 @@
 {% load i18n %}
 {% comment %}
   Renders whatever the block contains, in order:
-  image (+caption) → rich text → question choices → explanation (after submit).
+  image (+caption) → audio → rich text → question choices → explanation (after submit).
 {% endcomment %}
 <div class="examprep-block">
 
@@ -13,6 +13,12 @@
         <figcaption class="text-secondary small mt-2">{{ block.caption }}</figcaption>
         {% endif %}
     </figure>
+    {% endif %}
+
+    {% if block.audio %}
+    <audio controls preload="none" class="w-100 mb-3" src="{{ block.audio.url }}">
+        {% trans "Your browser does not support the audio element." %}
+    </audio>
     {% endif %}
 
     {% if block.rich_text %}
