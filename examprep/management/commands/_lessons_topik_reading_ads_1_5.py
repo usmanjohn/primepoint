@@ -9,10 +9,10 @@ TRACK = {
 }
 
 TOPIC = {
-    "title":   "Reklama va e'lonlar (광고·안내문)",
-    "summary": "5–8-savollar: qisqa reklama, shior va e'lon matnlarining mavzusini topish.",
+    "title":   "5–8-savollar: Reklama va e'lonlar (광고·안내문)",
+    "summary": "Qisqa reklama, shior va e'lon matnlarining mavzusini topish.",
     "icon":    "bi-megaphone",
-    "order":   2,
+    "order":   4,
 }
 
 LESSONS = [
