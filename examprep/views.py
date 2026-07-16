@@ -1,3 +1,5 @@
+import re
+
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -122,6 +124,17 @@ def lesson_detail(request, track_slug, skill, slug):
 
     blocks = list(lesson.blocks.prefetch_related('choices').all())
     has_question = any(b.choices.exists() for b in blocks)
+
+    # Older lessons open with an <h2> repeating the lesson title, which stacks
+    # a third copy under the breadcrumb and page <h1>. Hide that one heading at
+    # render time (display only — nothing is saved).
+    if blocks and blocks[0].rich_text:
+        m = re.match(r'\s*<h2[^>]*>(.*?)</h2>', blocks[0].rich_text, re.S | re.I)
+        if m:
+            heading = re.sub(r'<[^>]+>', '', m.group(1))
+            norm = lambda s: re.sub(r'\s+', ' ', s).strip().casefold()
+            if norm(heading) == norm(lesson.title):
+                blocks[0].rich_text = blocks[0].rich_text[m.end():]
 
     submitted = request.method == 'POST'
     if submitted:

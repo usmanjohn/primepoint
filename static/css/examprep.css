@@ -69,3 +69,157 @@
     font-size: .75rem;
     font-weight: 600;
 }
+
+/* ─── Lesson player: hero header ───────────────────────────────────── */
+
+.ep-hero {
+    --ep-accent: #3b82f6;
+    background: linear-gradient(135deg, #fff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid var(--ep-accent);
+    border-radius: .75rem;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 1px 3px rgba(30, 41, 59, .06);
+}
+.ep-hero-icon {
+    background: #eff6ff;
+    background: color-mix(in srgb, var(--ep-accent) 12%, #fff);
+    color: var(--ep-accent);
+}
+.ep-hero-title {
+    font-size: 1.45rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #0f172a;
+}
+@media (max-width: 575.98px) {
+    .ep-hero { padding: .85rem 1rem; }
+    .ep-hero-title { font-size: 1.15rem; }
+}
+.ep-chip-accent {
+    background: #eff6ff;
+    background: color-mix(in srgb, var(--ep-accent, #3b82f6) 12%, #fff);
+    color: var(--ep-accent, #3b82f6);
+    font-weight: 600;
+}
+.min-w-0 { min-width: 0; }
+
+/* Thin topic progress bar (hero + playlist header) */
+.ep-progress {
+    height: 5px;
+    border-radius: 999px;
+    background: #e2e8f0;
+    overflow: hidden;
+}
+.ep-progress-bar {
+    height: 100%;
+    border-radius: 999px;
+    background: var(--ep-accent, #3b82f6);
+    transition: width .3s ease;
+}
+
+/* ─── Lesson player: playlist ──────────────────────────────────────── */
+
+.ep-playlist {
+    list-style: none;
+    margin: 0;
+    padding: .25rem 0;
+}
+.ep-playlist-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    padding: .55rem 1rem;
+    border-top: 1px solid #f1f5f9;
+}
+.ep-playlist-item:first-child { border-top: 0; }
+.ep-playlist-item:hover:not(.is-current) { background: #f8fafc; }
+.ep-playlist-no {
+    flex-shrink: 0;
+    width: 1.55rem;
+    height: 1.55rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #f1f5f9;
+    color: #64748b;
+    font-size: .75rem;
+    font-weight: 600;
+}
+.ep-playlist-title {
+    flex-grow: 1;
+    min-width: 0;
+    font-size: .875rem;
+    line-height: 1.35;
+    color: #334155;
+    text-decoration: none;
+}
+a.ep-playlist-title:hover { color: #0f172a; }
+.ep-playlist-item.is-done .ep-playlist-no { background: #dcfce7; color: #16a34a; }
+.ep-playlist-item.is-done .ep-playlist-title { color: #64748b; }
+.ep-playlist-item.is-current {
+    background: #eff6ff;
+    box-shadow: inset 3px 0 0 #3b82f6;
+}
+.ep-playlist-item.is-current .ep-playlist-no { background: #3b82f6; color: #fff; }
+.ep-playlist-item.is-current .ep-playlist-title { font-weight: 600; color: #1e3a8a; }
+
+/* Mobile playlist dropdown */
+.ep-playlist-mobile {
+    border: 1px solid #e2e8f0;
+    border-radius: .75rem;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(30, 41, 59, .06);
+}
+.ep-playlist-mobile > summary {
+    cursor: pointer;
+    padding: .7rem 1rem;
+    list-style: none;
+}
+.ep-playlist-mobile > summary::-webkit-details-marker { display: none; }
+.ep-playlist-mobile > summary::after {
+    content: "▾";
+    float: right;
+    color: #94a3b8;
+    transition: transform .15s ease;
+}
+.ep-playlist-mobile[open] > summary::after { transform: rotate(180deg); }
+.ep-playlist-mobile[open] > summary { border-bottom: 1px solid #f1f5f9; }
+
+/* ─── Lesson player: prev / next cards ─────────────────────────────── */
+
+.ep-nav-link {
+    display: block;
+    height: 100%;
+    padding: .6rem .85rem;
+    border: 1px solid #e2e8f0;
+    border-radius: .6rem;
+    text-decoration: none;
+    background: #fff;
+    transition: border-color .15s ease, background .15s ease;
+}
+.ep-nav-link:hover { border-color: #3b82f6; background: #f8fafc; }
+.ep-nav-next { text-align: right; }
+.ep-nav-label {
+    display: block;
+    font-size: .75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    color: #3b82f6;
+    margin-bottom: .15rem;
+}
+.ep-nav-title {
+    display: block;
+    font-size: .85rem;
+    color: #475569;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.ep-nav-finish .ep-nav-label { color: #16a34a; }
+.ep-nav-finish:hover { border-color: #16a34a; }

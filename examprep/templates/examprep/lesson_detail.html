@@ -7,15 +7,14 @@
 
 {% block content %}
 
-<nav aria-label="breadcrumb" class="mb-3">
+<nav aria-label="breadcrumb" class="mb-2">
     <ol class="breadcrumb small mb-0">
         <li class="breadcrumb-item"><a href="{% url 'examprep_home' %}">{% trans "Exam Prep" %}</a></li>
         <li class="breadcrumb-item"><a href="{% url 'examprep_track' lesson.track.slug %}">{{ lesson.track.name }}</a></li>
         <li class="breadcrumb-item"><a href="{% url 'examprep_skill' lesson.track.slug skill %}">{{ skill_label }}</a></li>
         {% if topic %}
-        <li class="breadcrumb-item"><a href="{% url 'examprep_skill' lesson.track.slug skill %}">{{ topic.title }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ topic.title }}</li>
         {% endif %}
-        <li class="breadcrumb-item active" aria-current="page">{{ lesson.title }}</li>
     </ol>
 </nav>
 
@@ -23,29 +22,41 @@
     <!-- ── Main content ─────────────────────────────────────────── -->
     <div class="col-12 col-lg-8 order-lg-1">
 
+        <!-- ── Lesson hero header ───────────────────────────────── -->
+        <div class="ep-hero mb-4" style="--ep-accent: {{ lesson.track.color|default:'#3b82f6' }};">
+            <div class="d-flex align-items-start gap-3">
+                <span class="ep-icon ep-icon-md ep-hero-icon d-none d-sm-inline-flex">
+                    <i class="bi {% if topic %}{{ topic.icon }}{% else %}{{ skill_icon }}{% endif %} fs-5"></i>
+                </span>
+                <div class="flex-grow-1 min-w-0">
+                    <h1 class="ep-hero-title mb-1">{{ lesson.title }}</h1>
+                    <div class="d-flex flex-wrap align-items-center gap-2">
+                        <span class="ep-chip"><i class="bi {{ skill_icon }}"></i>{{ skill_label }}</span>
+                        {% if topic %}<span class="ep-chip d-none d-md-inline-flex"><i class="bi {{ topic.icon }}"></i>{{ topic.title }}</span>{% endif %}
+                        <span class="ep-chip ep-chip-accent"><i class="bi bi-collection-play"></i>{% blocktrans %}Lesson {{ current_no }} of {{ total_no }}{% endblocktrans %}</span>
+                    </div>
+                </div>
+                {% if can_edit %}
+                <a href="{% url 'examprep_lesson_edit' lesson.track.slug skill lesson.slug %}"
+                   class="btn btn-sm btn-outline-primary flex-shrink-0">
+                    <i class="bi bi-pencil-square me-1"></i>{% trans "Edit" %}
+                </a>
+                {% endif %}
+            </div>
+            <div class="ep-progress mt-3" role="progressbar" aria-label="{% trans 'Topic progress' %}"
+                 aria-valuenow="{{ current_no }}" aria-valuemin="0" aria-valuemax="{{ total_no }}">
+                <div class="ep-progress-bar" style="width: {% widthratio current_no total_no 100 %}%;"></div>
+            </div>
+        </div>
+
         <!-- Mobile playlist (native, no JS) -->
-        <details class="d-lg-none mb-3 border rounded p-2 px-3">
+        <details class="ep-playlist-mobile d-lg-none mb-4">
             <summary class="fw-semibold">
-                <i class="bi {% if topic %}{{ topic.icon }}{% else %}{{ skill_icon }}{% endif %} me-1"></i>{% if topic %}{{ topic.title }}{% else %}{{ skill_label }}{% endif %}
-                <span class="text-secondary">· {{ current_no }}/{{ total_no }}</span>
+                <i class="bi bi-list-ol me-1"></i>{% trans "Lessons in this topic" %}
+                <span class="text-secondary fw-normal">· {{ current_no }}/{{ total_no }}</span>
             </summary>
             {% include 'examprep/_playlist.html' %}
         </details>
-
-        <div class="d-flex align-items-baseline justify-content-between mb-1">
-            <h1 class="page-title mb-0">{{ lesson.title }}</h1>
-            {% if can_edit %}
-            <a href="{% url 'examprep_lesson_edit' lesson.track.slug skill lesson.slug %}"
-               class="btn btn-sm btn-outline-primary flex-shrink-0 ms-2">
-                <i class="bi bi-pencil-square me-1"></i>{% trans "Edit" %}
-            </a>
-            {% endif %}
-        </div>
-        <p class="page-subtitle mb-4">
-            <i class="bi {{ skill_icon }} me-1"></i>{{ skill_label }}
-            {% if topic %}· <i class="bi {{ topic.icon }} me-1"></i>{{ topic.title }}{% endif %}
-            · {% blocktrans %}Lesson {{ current_no }} of {{ total_no }}{% endblocktrans %}
-        </p>
 
         {% if submitted %}
         <div class="alert alert-info d-flex align-items-center gap-2" role="alert">
@@ -75,32 +86,41 @@
         </form>
 
         <!-- ── Prev / Next navigation ───────────────────────────── -->
-        <div class="d-flex justify-content-between gap-2 border-top pt-3">
-            {% if prev_lesson %}
-            <a href="{% url 'examprep_lesson' lesson.track.slug skill prev_lesson.slug %}"
-               class="btn btn-outline-secondary">
-                <i class="bi bi-arrow-left me-1"></i>{% trans "Previous" %}
-            </a>
-            {% else %}<span></span>{% endif %}
-
-            {% if next_lesson %}
-            <a href="{% url 'examprep_lesson' lesson.track.slug skill next_lesson.slug %}"
-               class="btn btn-primary ms-auto">
-                {% trans "Next" %}<i class="bi bi-arrow-right ms-1"></i>
-            </a>
-            {% else %}
-            <a href="{% url 'examprep_skill' lesson.track.slug skill %}" class="btn btn-success ms-auto">
-                <i class="bi bi-check2-all me-1"></i>{% trans "Finish" %}
-            </a>
-            {% endif %}
+        <div class="row g-2 border-top pt-3">
+            <div class="col-6">
+                {% if prev_lesson %}
+                <a href="{% url 'examprep_lesson' lesson.track.slug skill prev_lesson.slug %}" class="ep-nav-link">
+                    <span class="ep-nav-label"><i class="bi bi-arrow-left me-1"></i>{% trans "Previous" %}</span>
+                    <span class="ep-nav-title">{{ prev_lesson.title }}</span>
+                </a>
+                {% endif %}
+            </div>
+            <div class="col-6">
+                {% if next_lesson %}
+                <a href="{% url 'examprep_lesson' lesson.track.slug skill next_lesson.slug %}" class="ep-nav-link ep-nav-next">
+                    <span class="ep-nav-label">{% trans "Next" %}<i class="bi bi-arrow-right ms-1"></i></span>
+                    <span class="ep-nav-title">{{ next_lesson.title }}</span>
+                </a>
+                {% else %}
+                <a href="{% url 'examprep_skill' lesson.track.slug skill %}" class="ep-nav-link ep-nav-next ep-nav-finish">
+                    <span class="ep-nav-label">{% trans "Finish" %}<i class="bi bi-check2-all ms-1"></i></span>
+                    <span class="ep-nav-title">{% trans "Back to all topics" %}</span>
+                </a>
+                {% endif %}
+            </div>
         </div>
     </div>
 
     <!-- ── Desktop playlist sidebar ─────────────────────────────── -->
     <div class="col-lg-4 order-lg-2 d-none d-lg-block">
-        <div class="card border-0 shadow-sm" style="position:sticky;top:1rem;">
-            <div class="card-header bg-transparent fw-semibold">
-                <i class="bi {% if topic %}{{ topic.icon }}{% else %}{{ skill_icon }}{% endif %} me-1"></i>{% if topic %}{{ topic.title }}{% else %}{{ skill_label }}{% endif %}
+        <div class="card border-0 shadow-sm overflow-hidden" style="position:sticky;top:1rem;">
+            <div class="card-header bg-transparent pt-3 pb-2 border-0">
+                <div class="fw-semibold mb-2">
+                    <i class="bi {% if topic %}{{ topic.icon }}{% else %}{{ skill_icon }}{% endif %} me-1 text-primary"></i>{% if topic %}{{ topic.title }}{% else %}{{ skill_label }}{% endif %}
+                </div>
+                <div class="ep-progress">
+                    <div class="ep-progress-bar" style="width: {% widthratio current_no total_no 100 %}%;"></div>
+                </div>
             </div>
             {% include 'examprep/_playlist.html' %}
         </div>
@@ -109,5 +129,8 @@
 
 {% endblock %}
 
-{% block extra_css %}<link rel="stylesheet" href="{% static 'css/examprep-kit.css' %}">{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/examprep.css' %}">
+<link rel="stylesheet" href="{% static 'css/examprep-kit.css' %}">
+{% endblock %}
 {% block extra_js %}<script src="{% static 'js/examprep-kit.js' %}"></script>{% endblock %}

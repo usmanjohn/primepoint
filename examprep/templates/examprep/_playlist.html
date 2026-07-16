@@ -1,16 +1,20 @@
 {% load i18n %}
-<ol class="list-group list-group-flush list-group-numbered mb-0">
+<ol class="ep-playlist mb-0">
     {% for item in siblings %}
-    <li class="list-group-item d-flex align-items-center gap-2
-               {% if item.id == lesson.id %}active{% endif %}">
+    <li class="ep-playlist-item
+               {% if item.id == lesson.id %}is-current{% elif forloop.counter < current_no %}is-done{% endif %}">
+        <span class="ep-playlist-no">
+            {% if item.id == lesson.id %}<i class="bi bi-play-fill"></i>
+            {% elif forloop.counter < current_no %}<i class="bi bi-check"></i>
+            {% else %}{{ forloop.counter }}{% endif %}
+        </span>
         {% if item.id == lesson.id %}
-        <span class="flex-grow-1">{{ item.title }}</span>
-        <i class="bi bi-play-fill flex-shrink-0"></i>
+        <span class="ep-playlist-title">{{ item.title }}</span>
         {% else %}
         <a href="{% url 'examprep_lesson' item.track.slug item.skill item.slug %}"
-           class="flex-grow-1 text-decoration-none stretched-link">{{ item.title }}</a>
-        {% if not item.is_published %}<span class="badge text-bg-warning flex-shrink-0">{% trans "Draft" %}</span>{% endif %}
+           class="ep-playlist-title stretched-link">{{ item.title }}</a>
         {% endif %}
+        {% if not item.is_published %}<span class="badge text-bg-warning flex-shrink-0">{% trans "Draft" %}</span>{% endif %}
     </li>
     {% endfor %}
 </ol>
