@@ -37,20 +37,20 @@ AUTHOR: powerty
 31. Story skeletons: time markers, character feelings, endings
 32. Full Practice — two picture stories
 
-## TOPIC: 4-savol: Dialogni yakunlash (대화 완성하기)   [icon bi-chat-dots, topic order 5]  [next]
+## TOPIC: 4-savol: Dialogni yakunlash (대화 완성하기)   [icon bi-chat-dots, topic order 5]  [done]
 40. Intro to Q4: listen + continue with your opinion; agree/disagree politely
 41. Opinion softeners: 제 생각에는, -는 게 어떨까요, 그럴 수도 있지만
 42. Full Practice — two dialogues
 
-## TOPIC: 5-savol: Grafik tahlili (자료 해석하기)   [icon bi-bar-chart, topic order 6]  [next]
+## TOPIC: 5-savol: Grafik tahlili (자료 해석하기)   [icon bi-bar-chart, topic order 6]  [done]
 50. Intro to Q5: spoken 쓰기 53 — the same chart language, out loud (늘다/줄다/절반)
 51. Structure: 자료 소개 → 변화 설명 → 원인/전망 (reuse writing templates!)
 52. Full Practice — two charts
 
-## TOPIC: 6-savol: Fikr bildirish (의견 제시하기)   [icon bi-megaphone, topic order 7]  [next]
+## TOPIC: 6-savol: Fikr bildirish (의견 제시하기)   [icon bi-megaphone, topic order 7]  [done]
 60. Intro to Q6: spoken 쓰기 54 — one perfected template, [주제] swapping method
 61. Argument skeleton: 서론 → 근거 2개 → 결론; memorized sentences in action
 62. Full Practice — two social topics
 
-## TOPIC: Yakuniy takror (총정리)   [icon bi-trophy, topic order 8]  [next]
+## TOPIC: Yakuniy takror (총정리)   [icon bi-trophy, topic order 8]  [done]
 70. Grand Mixed Review: all six tasks back-to-back, exam pacing
