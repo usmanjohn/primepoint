@@ -217,6 +217,34 @@ navbatlashadi; oson savollarda (1–12) 2–4 replika, o'rta (13–30) 4–6, qi
 uzunroq monolog/intervyu. Raqamlar, vaqt va joy nomlarini aniq talaffuz uchun to'liq
 yozing (예: "세 시 반" — "3:30" emas).
 
+---
+
+## 5d. 말하기 (Speaking) darslari — savol + namunaviy javob audiolari
+
+TOPIK 말하기 평가 (IBT, 2022 yildan): 6 topshiriq, ~30 daqiqa, 0–200 ball → 1–6 daraja.
+Baholash: mazmun/topshiriqni bajarish + til boyligi/aniqligi + yetkazish (발음·속도·유창성).
+Har savol turi — alohida topic (toc_topik_speaking.txt). **Aniq soniyalarni yangi darsga
+yozishdan oldin topik.go.kr da tekshiring.**
+
+**Audio bloklar ikki xil:**
+1. **Savol audiosi** — imtihondagi kompyuter ovozi kabi: `("여자", "질문. 취미가 뭐예요? ...")`.
+2. **Namunaviy javob audiosi** — talaba SOYA QILIB (shadowing) takrorlaydi: `("남자", "제 취미는...")`.
+   Javob transkripti + o'zbekcha tarjima `<details>` dropdownda ("Avval o'zingiz aytib
+   ko'ring, keyin oching!").
+
+**Dars tuzilishi:** kirish (topshiriq formati) → javob formulasi (step-reveal) → savol
+audiosi + tayyorgarlik maslahatlari → namunaviy javob audiosi + skript → shadowing
+ko'rsatmasi (3 kun × 3 marta — foydalanuvchi metodi!) → MCQ (qaysi javob to'g'ri
+tuzilgan? qaysi ibora mos? tartib savollari) → flashcards (javob qoliplari).
+
+**Foydalanuvchi metodlari shu yerda ham ustuvor (§6):** butun jumlalarni yodlash (kuniga
+3 ta, 3 kun takror), bitta shablonni mukammal egallash ([주제] almashtirish), 읽기→쓰기
+ko'prigi endi 말하기ga ham: 5-topshiriq = og'zaki 쓰기 53, 6-topshiriq = og'zaki 쓰기 54 —
+yozish darslaridagi shablonlarni qayta ishlating.
+
+Audio nomlash: `topik_s_<order 3 xonali>_<blok n>.mp3`; papka:
+`examprep/management/commands/audio/speaking_<topic>/`.
+
 > ⚠️ MCQ **amaliyot** uchun (baholanmaydigan). To'g'ri javob HTML manbada ko'rinadi — bu normal.
 > Baholanadigan, xronometrajli test — alohida `exam` ilovasi.
 

@@ -1,0 +1,56 @@
+# ── Track metadata (read by Claude) ──────────────────────────────────
+TRACK:  TOPIK
+SKILL:  speaking
+AUTHOR: powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules: STYLE_GUIDE_TOPIK.md (section 5d = speaking lesson conventions).
+# The number = the lesson's `order` within TOPIK + speaking.
+# TOPIK 말하기 평가 (IBT, since 2022): 6 tasks, ~30 min, score 0–200 → levels 1–6.
+# Tasks: 1 질문에 대답하기(초급) · 2 그림 보고 역할 수행하기(초급) · 3 그림 보고
+# 이야기하기(중급) · 4 대화 완성하기(중급) · 5 자료 해석하기(고급, spoken 쓰기53) ·
+# 6 의견 제시하기(고급, spoken 쓰기54). NOTE: verify current timings on topik.go.kr
+# before stating exact seconds in new lessons.
+# Audio: question prompt (여자 = exam announcer voice) + MODEL ANSWER for shadowing
+# (남자) via gen_examprep_audio into examprep/management/commands/audio/speaking_<topic>/.
+# Naming: topik_s_<order 3-digit>_<block n>.mp3.
+# Status: [done] = imported; [next] = not written yet.
+# ─────────────────────────────────────────────────────────────────────
+
+## TOPIK 말하기 — Speaking (savol turlari bo'yicha)
+
+## TOPIC: Metod va strategiya (말하기 전략)   [icon bi-compass, topic order 1]  [done]
+1. How the Speaking Test Works: 6 tasks, IBT format, how it's graded
+2. The Shadowing + 3-Day Sentence Method (user's memorization method, spoken form)
+
+## TOPIC: 1-savol: Savolga javob (질문에 대답하기)   [icon bi-chat-left-text, topic order 2]  [done]
+10. Intro to Q1: personal questions; the 3-sentence answer formula (javob+sabab+misol)
+11. Topic bank: daily life, hobbies, weekend, family — model answers to shadow
+12. Full Practice — three questions under exam timing
+
+## TOPIC: 2-savol: Rol o'ynash (그림 보고 역할 수행하기)   [icon bi-person-badge, topic order 3]  [done]
+20. Intro to Q2: situation pictures; polite request/question patterns by scene
+21. Scene bank: shop, restaurant, office, phone calls — model dialogues
+22. Full Practice — three role plays
+
+## TOPIC: 3-savol: Rasm hikoyasi (그림 보고 이야기하기)   [icon bi-images, topic order 4]  [done]
+30. Intro to Q3: 4-picture narration; past tense + connectors (그런데, 그래서, 결국)
+31. Story skeletons: time markers, character feelings, endings
+32. Full Practice — two picture stories
+
+## TOPIC: 4-savol: Dialogni yakunlash (대화 완성하기)   [icon bi-chat-dots, topic order 5]  [next]
+40. Intro to Q4: listen + continue with your opinion; agree/disagree politely
+41. Opinion softeners: 제 생각에는, -는 게 어떨까요, 그럴 수도 있지만
+42. Full Practice — two dialogues
+
+## TOPIC: 5-savol: Grafik tahlili (자료 해석하기)   [icon bi-bar-chart, topic order 6]  [next]
+50. Intro to Q5: spoken 쓰기 53 — the same chart language, out loud (늘다/줄다/절반)
+51. Structure: 자료 소개 → 변화 설명 → 원인/전망 (reuse writing templates!)
+52. Full Practice — two charts
+
+## TOPIC: 6-savol: Fikr bildirish (의견 제시하기)   [icon bi-megaphone, topic order 7]  [next]
+60. Intro to Q6: spoken 쓰기 54 — one perfected template, [주제] swapping method
+61. Argument skeleton: 서론 → 근거 2개 → 결론; memorized sentences in action
+62. Full Practice — two social topics
+
+## TOPIC: Yakuniy takror (총정리)   [icon bi-trophy, topic order 8]  [next]
+70. Grand Mixed Review: all six tasks back-to-back, exam pacing
