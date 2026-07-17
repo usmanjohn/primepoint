@@ -69,6 +69,12 @@ class StoryAdmin(admin.ModelAdmin):
             'fields': ('collection', 'title', 'slug', 'summary', 'body', 'author',
                        'order', 'is_published'),
         }),
+        ('Image', {
+            'description': 'Optional illustration shown at the top of the story (e.g. a picture '
+                           'explaining a proverb). For bulk uploads use the import_corner_images '
+                           'command (files named by story order).',
+            'fields': ('image',),
+        }),
         ('Audio', {
             'description': 'Optional narration — upload an MP3/M4A, or leave empty. '
                            'For bulk uploads use the import_corner_audio command.',

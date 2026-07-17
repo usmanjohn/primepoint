@@ -102,6 +102,9 @@ class Story(models.Model):
     summary      = models.CharField(max_length=300, blank=True,
                                     help_text='Short description shown on listing cards.')
     body         = CKEditor5Field(config_name='tutorial')
+    image        = models.ImageField(upload_to='corner/images/', blank=True, null=True,
+                                     help_text='Optional illustration shown at the top of the story '
+                                               '(e.g. a picture explaining a proverb).')
     audio        = models.FileField(upload_to='corner/audio/', blank=True, null=True,
                                     help_text='Optional narration of the story (MP3/M4A). '
                                               'Leave empty if there is no audio.')

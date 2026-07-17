@@ -171,6 +171,39 @@ python manage.py import_corner corner/management/commands/_stories_<...>.py --au
 
 (`--republish` overwrites existing stories and rebuilds their word lists.)
 
+## 5d. Proverb stories (속담 collections)
+
+The `속담 이야기 (Koreys maqollari)` collection: **one story = one proverb**, title = the
+proverb itself. Body structure (all Korean, Uzbek glosses via cn-word as usual):
+
+1. **Emoji banner** — the visual placeholder until a real image is uploaded. First element
+   of the body; 2–4 emoji that "draw" the proverb:
+   ```html
+   <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:14px;text-align:center;font-size:2.2em;letter-spacing:.15em;margin:0 0 16px;">🐒 🌳 💥</div>
+   ```
+2. **The proverb + literal meaning** — quote it in a `<p>`, explain word-for-word what it
+   paints.
+3. **뜻 (real meaning)** — when Koreans actually say it.
+4. **유래 / 이야기** — the origin story if it has an accessible one (우물 안 개구리 → 장자);
+   otherwise a short everyday mini-story showing the situation. This is the heart — tell it
+   warmly, like the other corner stories.
+5. **Dialogue** — 2–4 lines of natural usage.
+6. **Uzbek-equivalent callout** — the standard amber box, giving the closest Uzbek proverb:
+   ```html
+   <div style="background:#fffbeb;border-left:4px solid #f59e0b;padding:12px 16px;border-radius:8px;margin:16px 0;">
+     <strong>💡 Oʻzbekchada:</strong> «Otning toʻrt oyogʻi ham qoqiladi» — ...
+   </div>
+   ```
+
+Counts: ~200–350 Korean words → **12–18 vocab marks**, **2 grammar points**, **2–3 questions**
+(meaning / when-to-use / origin inference).
+
+**Images.** `Story.image` (added July 2026) renders above the body in the reader. Two ways
+to attach: per-story in the admin (Image section), or in bulk with
+`python manage.py import_corner_images <folder> --collection="<exact title>"` where files
+are named by story order (`1.png`, `2.jpg`, `3_원숭이.webp`). The emoji banner stays as
+decoration either way — remove it from the body only if it clashes with the image.
+
 ## 6. The user's own tips
 
 (These override the generic advice above.)

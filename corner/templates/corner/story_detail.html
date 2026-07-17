@@ -40,6 +40,12 @@
         <div class="cn-progress-bar" style="width:{{ percent }}%;background:{{ subject.color }};"></div>
     </div>
 
+    {% if story.image %}
+    <figure class="cn-illustration mb-4">
+        <img src="{{ story.image.url }}" alt="{{ story.title }}" loading="lazy">
+    </figure>
+    {% endif %}
+
     {% if story.audio %}
     <div class="cn-audio mb-4">
         <span class="cn-audio-label"><i class="bi bi-headphones me-1"></i>{% trans "Listen to this story" %}</span>
