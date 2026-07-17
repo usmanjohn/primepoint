@@ -25,6 +25,8 @@ class Command(BaseCommand):
         parser.add_argument('mp3_path', help='Path to the MP3 file in the repo')
         parser.add_argument('--language', default='korean',
                             help='Exam language (default: korean)')
+        parser.add_argument('--force', action='store_true',
+                            help='Re-copy even if the attached file already exists')
 
     def handle(self, **options):
         path = options['mp3_path']
@@ -37,6 +39,12 @@ class Command(BaseCommand):
             raise CommandError(
                 f'No exam with exam_number={options["exam_number"]} '
                 f'language={options["language"]} — run load_mock first.')
+
+        if (exam.listening_audio and not options['force']
+                and os.path.isfile(exam.listening_audio.path)):
+            self.stdout.write(f'Audio already in place ({exam.listening_audio.name}) — skipping. '
+                              f'Use --force to re-copy.')
+            return
 
         filename = os.path.basename(path)
         with open(path, 'rb') as fh:

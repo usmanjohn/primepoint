@@ -3,4 +3,4 @@ builder = "NIXPACKS"
 buildCommand = "python manage.py collectstatic --noinput"
 
 [deploy]
-startCommand = "python manage.py migrate --noinput && gunicorn point.wsgi --workers 3 --timeout 120 --preload --bind 0.0.0.0:$PORT"
+startCommand = "python manage.py migrate --noinput && (python manage.py attach_exam_audio 101 exam/data/audio/mock1_listening.mp3 || true) && gunicorn point.wsgi --workers 3 --timeout 120 --preload --bind 0.0.0.0:$PORT"
