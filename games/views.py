@@ -10,8 +10,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import gettext as _
 import string
-from .models import CrosswordPuzzle, EnglishCrossword, WordSearchPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion, MathSquarePuzzle
+from .models import CrosswordPuzzle, EnglishCrossword, WordSearchPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion, MathSquarePuzzle, MathChampResult
 from .generator import generate_math_square, empty_math_square, eval_line
+from . import mathchamp
 
 
 # ---------------------------------------------------------------------------
@@ -195,7 +196,7 @@ def _build_print_context(puzzle, primary_field, secondary_field, show_answers,
 
 # Number of game types offered on the games home page — keep in sync with
 # the cards in templates/games/games_home.html.
-GAME_COUNT = 11
+GAME_COUNT = 12
 
 
 @login_required
@@ -2009,3 +2010,180 @@ def mathsquare_print(request, pk):
     context = _build_mathsquare_print_context(puzzle, show_answers)
     context.update({'accent': '#0d9488'})
     return render(request, 'games/mathsquare_print.html', context)
+
+
+# ---------------------------------------------------------------------------
+# Math Championship (Matematika Chempionati) views
+# ---------------------------------------------------------------------------
+
+MC_STAGES = 12
+MC_HEARTS = 3
+MC_SESSION_KEY = 'mc_state'
+
+# Kid-facing labels are in Uzbek on purpose: the audience is Uzbek pupils.
+MC_ROUND_NAMES = {1: 'Saralash', 2: 'Yarim final', 3: 'Final'}
+MC_MEDAL_BY_HEARTS = {3: MathChampResult.MEDAL_GOLD,
+                      2: MathChampResult.MEDAL_SILVER,
+                      1: MathChampResult.MEDAL_BRONZE}
+
+
+def _mc_points(stage):
+    """Base points for a stage: 10 in round 1, 20 in round 2, 30 in the final."""
+    return 10 * mathchamp.stage_tier(stage)
+
+
+def _mc_save_result(user, state):
+    MathChampResult.objects.create(
+        user=user,
+        grade=state['grade'],
+        score=state['score'],
+        stage_reached=MC_STAGES if state.get('finished') else state['stage'],
+        finished=state.get('finished', False),
+        hearts_left=state['hearts'],
+        best_streak=state.get('best_streak', 0),
+        elapsed=state.get('elapsed', 0),
+        medal=state.get('medal', ''),
+    )
+
+
+@login_required
+def mathchamp_home(request):
+    if request.method == 'POST' and request.POST.get('action') == 'start':
+        try:
+            grade = int(request.POST.get('grade', 5))
+        except (ValueError, TypeError):
+            grade = 5
+        if grade not in (5, 6, 7):
+            grade = 5
+        request.session[MC_SESSION_KEY] = {
+            'grade':       grade,
+            'stage':       1,
+            'hearts':      MC_HEARTS,
+            'score':       0,
+            'streak':      0,
+            'best_streak': 0,
+            'start':       int(time.time()),
+            'q':           mathchamp.generate_question(grade, 1),
+            'feedback':    None,
+            'done':        False,
+            'finished':    False,
+        }
+        return redirect('mathchamp_play')
+
+    boards = []
+    for g in (5, 6, 7):
+        top = list(MathChampResult.objects.filter(grade=g)
+                   .select_related('user')
+                   .order_by('-score', 'elapsed')[:5])
+        boards.append({'grade': g, 'top': top})
+
+    my_best = (MathChampResult.objects.filter(user=request.user)
+               .order_by('-score', 'elapsed').first())
+    state = request.session.get(MC_SESSION_KEY)
+    has_active = bool(state) and not state.get('done')
+
+    return render(request, 'games/mathchamp_home.html', {
+        'boards':     boards,
+        'my_best':    my_best,
+        'has_active': has_active,
+    })
+
+
+@login_required
+def mathchamp_play(request):
+    state = request.session.get(MC_SESSION_KEY)
+    if not state:
+        return redirect('mathchamp_home')
+
+    if request.method == 'POST':
+        action = request.POST.get('action')
+
+        if action == 'quit':
+            request.session.pop(MC_SESSION_KEY, None)
+            return redirect('mathchamp_home')
+
+        if action == 'answer' and not state.get('done'):
+            try:
+                choice = int(request.POST.get('choice', -1))
+            except (ValueError, TypeError):
+                choice = -1
+            q = state['q']
+            if 0 <= choice < len(q['choices']):
+                if choice == q['correct']:
+                    state['streak'] += 1
+                    state['best_streak'] = max(state['best_streak'], state['streak'])
+                    pts = _mc_points(state['stage'])
+                    bonus = 5 if state['streak'] >= 3 else 0
+                    state['score'] += pts + bonus
+                    state['feedback'] = {
+                        'correct':     True,
+                        'points':      pts,
+                        'bonus':       bonus,
+                        'answer':      q['choices'][q['correct']],
+                        'explanation': q['explanation'],
+                    }
+                    if state['stage'] >= MC_STAGES:
+                        state['done'] = True
+                        state['finished'] = True
+                        state['elapsed'] = int(time.time()) - state['start']
+                        state['medal'] = MC_MEDAL_BY_HEARTS.get(state['hearts'],
+                                                                MathChampResult.MEDAL_BRONZE)
+                        _mc_save_result(request.user, state)
+                    else:
+                        state['stage'] += 1
+                        state['q'] = mathchamp.generate_question(
+                            state['grade'], state['stage'], q['topic'])
+                else:
+                    state['hearts'] -= 1
+                    state['streak'] = 0
+                    state['feedback'] = {
+                        'correct':     False,
+                        'chosen':      q['choices'][choice],
+                        'answer':      q['choices'][q['correct']],
+                        'question':    q['text'],
+                        'explanation': q['explanation'],
+                    }
+                    if state['hearts'] <= 0:
+                        state['done'] = True
+                        state['elapsed'] = int(time.time()) - state['start']
+                        state['medal'] = ''
+                        _mc_save_result(request.user, state)
+                    else:
+                        # Same stage, but a fresh question — no second try on
+                        # the one they just saw.
+                        state['q'] = mathchamp.generate_question(
+                            state['grade'], state['stage'], q['topic'])
+                request.session[MC_SESSION_KEY] = state
+            return redirect('mathchamp_play')
+
+        return redirect('mathchamp_play')
+
+    tier = mathchamp.stage_tier(state['stage'])
+    progress = []
+    for s in range(1, MC_STAGES + 1):
+        if state.get('finished') or s < state['stage']:
+            cls = 'done'
+        elif s == state['stage'] and not state.get('done'):
+            cls = 'current'
+        else:
+            cls = 'todo'
+        progress.append({'stage': s, 'cls': cls,
+                         'new_round': s in (5, 9)})
+
+    elapsed = state.get('elapsed', 0)
+    context = {
+        'state':        state,
+        'q':            state['q'],
+        'feedback':     state.get('feedback'),
+        'hearts_full':  range(state['hearts']),
+        'hearts_lost':  range(MC_HEARTS - state['hearts']),
+        'progress':     progress,
+        'round_no':     tier,
+        'round_name':   MC_ROUND_NAMES[tier],
+        'stage_points': _mc_points(state['stage']),
+        'letters':      ['A', 'B', 'C', 'D'],
+        'elapsed_min':  elapsed // 60,
+        'elapsed_sec':  f"{elapsed % 60:02d}",
+        'medal':        state.get('medal', ''),
+    }
+    return render(request, 'games/mathchamp_play.html', context)

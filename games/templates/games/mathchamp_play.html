@@ -1,0 +1,217 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Math Championship" %} — Powerty{% endblock %}
+{% block page_name %}{% trans "Math Championship" %}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4" style="max-width:640px;">
+
+    {% if state.done and state.finished %}
+    <!-- ══════════ CHAMPION ══════════ -->
+    <div class="card border-0 shadow-sm text-center" style="border-radius:16px; overflow:hidden;">
+        <div style="background:linear-gradient(135deg,#f59e0b 0%,#b45309 100%); padding:2.5rem 1.5rem;">
+            <div style="font-size:4rem; line-height:1;">
+                {% if medal == 'gold' %}&#x1F947;{% elif medal == 'silver' %}&#x1F948;{% else %}&#x1F949;{% endif %}
+            </div>
+            <h1 class="fs-3 fw-bold mt-2 mb-1" style="color:#fff;">Tabriklaymiz, Chempion!</h1>
+            <p class="mb-0" style="color:rgba(255,255,255,0.9); font-size:0.95rem;">
+                Sen {{ state.grade }}-sinf chempionatining finalini yakunlading!
+            </p>
+        </div>
+        <div class="card-body p-4" style="background:var(--surface);">
+            <div class="row g-2 mb-4 text-center">
+                <div class="col-4">
+                    <div class="p-3 rounded-3" style="background:var(--surface-2);">
+                        <div class="fw-bold" style="font-size:1.5rem; color:#f59e0b;">{{ state.score }}</div>
+                        <div style="font-size:0.72rem; color:var(--text-muted); text-transform:uppercase;">Ball</div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="p-3 rounded-3" style="background:var(--surface-2);">
+                        <div class="fw-bold" style="font-size:1.5rem; color:#dc2626;">
+                            {% for h in hearts_full %}&#x2764;&#xFE0F;{% endfor %}{% if state.hearts == 0 %}&mdash;{% endif %}
+                        </div>
+                        <div style="font-size:0.72rem; color:var(--text-muted); text-transform:uppercase;">Jonlar</div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="p-3 rounded-3" style="background:var(--surface-2);">
+                        <div class="fw-bold" style="font-size:1.5rem; color:#2563eb;">{{ elapsed_min }}:{{ elapsed_sec }}</div>
+                        <div style="font-size:0.72rem; color:var(--text-muted); text-transform:uppercase;">Vaqt</div>
+                    </div>
+                </div>
+            </div>
+            {% if state.best_streak >= 3 %}
+            <p style="color:var(--text-muted); font-size:0.88rem;" class="mb-4">&#x1F525; Eng uzun seriya: <strong>{{ state.best_streak }}</strong> ta ketma-ket to'g'ri javob!</p>
+            {% endif %}
+            <form method="post" action="{% url 'mathchamp_home' %}" class="mb-2">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="start">
+                <input type="hidden" name="grade" value="{{ state.grade }}">
+                <button type="submit" class="btn btn-warning btn-lg fw-semibold px-5">&#x1F3C6; Yana o'ynash</button>
+            </form>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="quit">
+                <button type="submit" class="btn btn-link" style="color:var(--text-muted);">Chempionlar jadvaliga qaytish</button>
+            </form>
+        </div>
+    </div>
+
+    {% elif state.done %}
+    <!-- ══════════ ELIMINATED ══════════ -->
+    <div class="card border-0 shadow-sm text-center" style="border-radius:16px; overflow:hidden;">
+        <div style="background:linear-gradient(135deg,#64748b 0%,#334155 100%); padding:2.5rem 1.5rem;">
+            <div style="font-size:4rem; line-height:1;">&#x1F494;</div>
+            <h1 class="fs-3 fw-bold mt-2 mb-1" style="color:#fff;">Jonlar tugadi!</h1>
+            <p class="mb-0" style="color:rgba(255,255,255,0.85); font-size:0.95rem;">
+                Sen {{ state.stage }}-savolgacha yetib kelding. Keyingi safar albatta uddalaysan!
+            </p>
+        </div>
+        <div class="card-body p-4" style="background:var(--surface);">
+            {% if feedback and not feedback.correct %}
+            <div class="text-start mb-4 p-3 rounded-3" style="background:#fef2f2; border:1.5px solid #fca5a5;">
+                <div class="fw-semibold mb-1" style="color:#991b1b; font-size:0.9rem;">Oxirgi savol:</div>
+                <div style="color:#7f1d1d; font-size:0.88rem;" class="mb-2">{{ feedback.question }}</div>
+                <div style="color:#7f1d1d; font-size:0.88rem;">To'g'ri javob: <strong>{{ feedback.answer }}</strong></div>
+                <div class="mt-2 pt-2" style="border-top:1px dashed #fca5a5; color:#7f1d1d; font-size:0.85rem;">&#x1F4A1; {{ feedback.explanation }}</div>
+            </div>
+            {% endif %}
+            <div class="row g-2 mb-4 text-center">
+                <div class="col-6">
+                    <div class="p-3 rounded-3" style="background:var(--surface-2);">
+                        <div class="fw-bold" style="font-size:1.5rem; color:#f59e0b;">{{ state.score }}</div>
+                        <div style="font-size:0.72rem; color:var(--text-muted); text-transform:uppercase;">Ball</div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="p-3 rounded-3" style="background:var(--surface-2);">
+                        <div class="fw-bold" style="font-size:1.5rem; color:#2563eb;">{{ state.stage }} / 12</div>
+                        <div style="font-size:0.72rem; color:var(--text-muted); text-transform:uppercase;">Bosqich</div>
+                    </div>
+                </div>
+            </div>
+            <form method="post" action="{% url 'mathchamp_home' %}" class="mb-2">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="start">
+                <input type="hidden" name="grade" value="{{ state.grade }}">
+                <button type="submit" class="btn btn-primary btn-lg fw-semibold px-5">&#x1F504; Qaytadan urinish</button>
+            </form>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="quit">
+                <button type="submit" class="btn btn-link" style="color:var(--text-muted);">Bosh sahifaga qaytish</button>
+            </form>
+        </div>
+    </div>
+
+    {% else %}
+    <!-- ══════════ ACTIVE GAME ══════════ -->
+
+    <!-- Status bar -->
+    <div class="card border-0 shadow-sm mb-3" style="border-radius:12px; background:linear-gradient(135deg,#f59e0b 0%,#b45309 100%);">
+        <div class="card-body py-2 px-3 d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center gap-1" style="font-size:1.1rem;">
+                {% for h in hearts_full %}<span>&#x2764;&#xFE0F;</span>{% endfor %}{% for h in hearts_lost %}<span style="opacity:0.35;">&#x1F5A4;</span>{% endfor %}
+            </div>
+            <div class="text-center">
+                <div class="fw-bold" style="color:#fff; font-size:1.05rem; line-height:1.1;">{{ round_no }}-bosqich: {{ round_name }}</div>
+                <div style="font-size:0.7rem; color:rgba(255,255,255,0.75);">{{ state.stage }} / 12-savol &middot; {{ stage_points }} ball</div>
+            </div>
+            <div class="text-end">
+                <div class="fw-bold" style="color:#fff; font-size:1.2rem; line-height:1;">{{ state.score }}</div>
+                <div style="font-size:0.68rem; color:rgba(255,255,255,0.75); text-transform:uppercase;">ball{% if state.streak >= 2 %} &middot; &#x1F525;{{ state.streak }}{% endif %}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress ladder -->
+    <div class="d-flex align-items-center justify-content-center flex-wrap mb-3" style="gap:4px;">
+        {% for p in progress %}
+            {% if p.new_round %}<span style="width:10px;"></span>{% endif %}
+            <span class="d-inline-flex align-items-center justify-content-center fw-semibold" style="width:26px; height:26px; border-radius:50%; font-size:0.72rem;
+                {% if p.cls == 'done' %}background:#22c55e; color:#fff;
+                {% elif p.cls == 'current' %}background:#f59e0b; color:#fff; box-shadow:0 0 0 3px rgba(245,158,11,0.3);
+                {% else %}background:var(--surface-2); color:var(--text-muted); border:1.5px solid var(--border);{% endif %}">
+                {% if p.cls == 'done' %}&#x2713;{% else %}{{ p.stage }}{% endif %}
+            </span>
+        {% endfor %}
+    </div>
+
+    <!-- Feedback -->
+    {% if feedback %}
+        {% if feedback.correct %}
+        <div class="mb-3 p-3 rounded-3" style="background:#dcfce7; border:1.5px solid #4ade80;">
+            <div class="d-flex align-items-center gap-2">
+                <span style="font-size:1.4rem;">&#x1F389;</span>
+                <div class="fw-semibold" style="color:#166534;">
+                    To'g'ri! +{{ feedback.points }} ball{% if feedback.bonus %} <span style="color:#b45309;">+{{ feedback.bonus }} seriya bonusi &#x1F525;</span>{% endif %}
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="mb-3 p-3 rounded-3" style="background:#fef2f2; border:1.5px solid #fca5a5;">
+            <div class="d-flex align-items-center gap-2 mb-1">
+                <span style="font-size:1.4rem;">&#x1F494;</span>
+                <div class="fw-semibold" style="color:#991b1b;">Afsus, noto'g'ri! Bitta jon kuydi.</div>
+            </div>
+            <div style="color:#7f1d1d; font-size:0.86rem;" class="mb-1">
+                Sening javobing: <strong>{{ feedback.chosen }}</strong> &middot; To'g'ri javob: <strong>{{ feedback.answer }}</strong>
+            </div>
+            <div class="pt-2" style="border-top:1px dashed #fca5a5; color:#7f1d1d; font-size:0.85rem;">
+                &#x1F4A1; {{ feedback.explanation }}
+            </div>
+            <div class="mt-2" style="color:#991b1b; font-size:0.82rem; font-style:italic;">
+                Quyida shu bosqich uchun yangi savol &#x2B07;&#xFE0F;
+            </div>
+        </div>
+        {% endif %}
+    {% endif %}
+
+    <!-- Question card -->
+    <div class="card border-0 shadow-sm mb-3" style="border-radius:14px; overflow:hidden;">
+        <div class="d-flex align-items-center justify-content-between" style="background:#fffbeb; border-bottom:1.5px solid #fde68a; padding:0.6rem 1.25rem;">
+            <span class="badge" style="background:#f59e0b; color:#fff; font-size:0.75rem;">{{ q.topic }}</span>
+            <span style="color:#92400e; font-size:0.78rem; font-weight:600;">{{ state.stage }}-savol</span>
+        </div>
+        <div class="card-body p-4" style="background:var(--surface);">
+            <p class="mb-0 fw-semibold" style="color:var(--text); font-size:1.08rem; line-height:1.6;">{{ q.text }}</p>
+        </div>
+    </div>
+
+    <!-- Answer cards -->
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="answer">
+        <div class="row g-2 mb-3">
+            {% for choice in q.choices %}
+            <div class="col-6">
+                <button type="submit" name="choice" value="{{ forloop.counter0 }}"
+                        class="btn w-100 h-100 text-start d-flex align-items-center gap-2 shadow-sm"
+                        style="background:var(--surface); border:2px solid var(--border); border-radius:12px; padding:0.85rem 0.9rem; color:var(--text);">
+                    <span class="d-inline-flex align-items-center justify-content-center fw-bold flex-shrink-0"
+                          style="width:28px; height:28px; border-radius:50%; background:#fef3c7; color:#b45309; font-size:0.85rem;">
+                        {% cycle 'A' 'B' 'C' 'D' %}
+                    </span>
+                    <span class="fw-semibold" style="font-size:0.98rem; word-break:break-word;">{{ choice }}</span>
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+    </form>
+
+    <!-- Quit -->
+    <form method="post" class="text-center">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="quit">
+        <button type="submit" class="btn btn-link" style="color:var(--text-muted); font-size:0.85rem;"
+                onclick="return confirm('Chempionatni tark etasanmi? Natija saqlanmaydi.');">
+            O'yindan chiqish
+        </button>
+    </form>
+    {% endif %}
+
+</div>
+{% endblock %}

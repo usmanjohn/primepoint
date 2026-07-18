@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Math Championship" %} — Powerty{% endblock %}
+{% block page_name %}{% trans "Math Championship" %}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4" style="max-width:860px;">
+
+    <a href="{% url 'games_home' %}" class="text-decoration-none d-inline-flex align-items-center gap-1 mb-3" style="color:var(--text-muted); font-size:0.85rem;">
+        <i class="bi bi-arrow-left"></i> {% trans "Games" %}
+    </a>
+
+    <!-- Hero -->
+    <div class="card border-0 shadow-sm mb-4 text-center" style="border-radius:16px; overflow:hidden;">
+        <div style="background:linear-gradient(135deg,#f59e0b 0%,#b45309 100%); padding:2rem 1.5rem;">
+            <div style="font-size:3.2rem; line-height:1;">&#x1F3C6;</div>
+            <h1 class="fs-3 fw-bold mt-2 mb-1" style="color:#fff;">Matematika Chempionati</h1>
+            <p class="mb-0" style="color:rgba(255,255,255,0.85); font-size:0.92rem;">
+                12 ta savol &middot; 3 ta bosqich &middot; 3 ta jon &mdash; finalgacha yetib bora olasanmi?
+            </p>
+        </div>
+    </div>
+
+    {% if has_active %}
+    <div class="d-flex align-items-center justify-content-between gap-3 mb-4 p-3 rounded-3" style="background:#fef3c7; border:1.5px solid #fbbf24;">
+        <div style="color:#92400e;">
+            <span class="fw-semibold">&#x23F3; Sizda tugallanmagan o'yin bor.</span>
+        </div>
+        <a href="{% url 'mathchamp_play' %}" class="btn btn-warning fw-semibold" style="white-space:nowrap;">Davom etish</a>
+    </div>
+    {% endif %}
+
+    <!-- Grade selection -->
+    <h2 class="fs-5 fw-bold mb-3" style="color:var(--text);">&#x1F393; Sinfingni tanla</h2>
+    <div class="row g-3 mb-4">
+        <div class="col-12 col-md-4">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="start">
+                <input type="hidden" name="grade" value="5">
+                <button type="submit" class="w-100 border-0 p-0 bg-transparent" style="cursor:pointer;">
+                    <span class="card border-0 shadow-sm d-block" style="border-radius:14px; overflow:hidden;">
+                        <span class="d-block text-center" style="background:linear-gradient(135deg,#22c55e 0%,#15803d 100%); padding:1.4rem 1rem;">
+                            <span class="d-block" style="font-size:2.2rem; line-height:1;">&#x1F331;</span>
+                            <span class="d-block fs-5 fw-bold mt-2" style="color:#fff;">5-sinf</span>
+                            <span class="d-block mt-1" style="color:rgba(255,255,255,0.85); font-size:0.8rem;">Yosh chempionlar ligasi</span>
+                        </span>
+                    </span>
+                </button>
+            </form>
+        </div>
+        <div class="col-12 col-md-4">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="start">
+                <input type="hidden" name="grade" value="6">
+                <button type="submit" class="w-100 border-0 p-0 bg-transparent" style="cursor:pointer;">
+                    <span class="card border-0 shadow-sm d-block" style="border-radius:14px; overflow:hidden;">
+                        <span class="d-block text-center" style="background:linear-gradient(135deg,#3b82f6 0%,#1d4ed8 100%); padding:1.4rem 1rem;">
+                            <span class="d-block" style="font-size:2.2rem; line-height:1;">&#x2B50;</span>
+                            <span class="d-block fs-5 fw-bold mt-2" style="color:#fff;">6-sinf</span>
+                            <span class="d-block mt-1" style="color:rgba(255,255,255,0.85); font-size:0.8rem;">Kuchli o'rta liga</span>
+                        </span>
+                    </span>
+                </button>
+            </form>
+        </div>
+        <div class="col-12 col-md-4">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="start">
+                <input type="hidden" name="grade" value="7">
+                <button type="submit" class="w-100 border-0 p-0 bg-transparent" style="cursor:pointer;">
+                    <span class="card border-0 shadow-sm d-block" style="border-radius:14px; overflow:hidden;">
+                        <span class="d-block text-center" style="background:linear-gradient(135deg,#a855f7 0%,#7e22ce 100%); padding:1.4rem 1rem;">
+                            <span class="d-block" style="font-size:2.2rem; line-height:1;">&#x1F525;</span>
+                            <span class="d-block fs-5 fw-bold mt-2" style="color:#fff;">7-sinf</span>
+                            <span class="d-block mt-1" style="color:rgba(255,255,255,0.85); font-size:0.8rem;">Ustalar ligasi</span>
+                        </span>
+                    </span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Rules -->
+    <div class="card border-0 shadow-sm mb-4" style="border-radius:14px; overflow:hidden;">
+        <div style="background:#fffbeb; border-bottom:1.5px solid #fde68a; padding:0.75rem 1.25rem;">
+            <span class="fw-semibold" style="color:#92400e; font-size:0.9rem;">&#x1F4CB; Qoidalar</span>
+        </div>
+        <div class="card-body p-3" style="background:var(--surface);">
+            <div class="row g-3">
+                <div class="col-12 col-md-6">
+                    <div class="d-flex gap-2 mb-2"><span>&#x1F3AF;</span><span style="color:var(--text); font-size:0.88rem;"><strong>12 ta savol, 3 ta bosqich:</strong> Saralash (1&ndash;4), Yarim final (5&ndash;8) va Final (9&ndash;12). Har bosqichda savollar qiyinlashadi.</span></div>
+                    <div class="d-flex gap-2 mb-2"><span>&#x2764;&#xFE0F;</span><span style="color:var(--text); font-size:0.88rem;"><strong>3 ta jon:</strong> har bir xato javob bitta jonni olib ketadi. Jonlar tugasa &mdash; chempionatdan chiqasan!</span></div>
+                    <div class="d-flex gap-2"><span>&#x27A1;&#xFE0F;</span><span style="color:var(--text); font-size:0.88rem;"><strong>Faqat to'g'ri javob</strong> keyingi savolga o'tkazadi. Xato qilsang &mdash; shu bosqichda yangi savol olasan.</span></div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="d-flex gap-2 mb-2"><span>&#x1F4AF;</span><span style="color:var(--text); font-size:0.88rem;"><strong>Ballar:</strong> Saralashda 10, Yarim finalda 20, Finalda 30 ball. 3 ta ketma-ket to'g'ri javob uchun +5 bonus &#x1F525;</span></div>
+                    <div class="d-flex gap-2 mb-2"><span>&#x1F947;</span><span style="color:var(--text); font-size:0.88rem;"><strong>Medallar:</strong> finalni 3 jon bilan tugatsang &mdash; oltin &#x1F947;, 2 jon &mdash; kumush &#x1F948;, 1 jon &mdash; bronza &#x1F949;.</span></div>
+                    <div class="d-flex gap-2"><span>&#x1F4DA;</span><span style="color:var(--text); font-size:0.88rem;"><strong>Mavzular:</strong> bo'linish belgilari, EKUB va EKUK, tub sonlar, bo'luvchilar, tezlik-masofa-vaqt va matnli masalalar.</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if my_best %}
+    <!-- Personal best -->
+    <div class="d-flex align-items-center gap-3 mb-4 p-3 rounded-3" style="background:#eff6ff; border:1.5px solid #93c5fd;">
+        <div style="font-size:1.6rem;">&#x1F4C8;</div>
+        <div style="color:#1e40af; font-size:0.9rem;">
+            <strong>Sening rekording:</strong> {{ my_best.score }} ball
+            ({{ my_best.grade }}-sinf{% if my_best.medal %}, {{ my_best.medal_emoji }}{% endif %},
+            vaqt: {{ my_best.elapsed_display }})
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Leaderboards -->
+    <h2 class="fs-5 fw-bold mb-3" style="color:var(--text);">&#x1F3C5; Chempionlar jadvali</h2>
+    <div class="row g-3">
+        {% for board in boards %}
+        <div class="col-12 col-md-4">
+            <div class="card border-0 shadow-sm h-100" style="border-radius:14px; overflow:hidden;">
+                <div class="text-center" style="background:var(--surface-2); border-bottom:1.5px solid var(--border); padding:0.6rem;">
+                    <span class="fw-bold" style="color:var(--text); font-size:0.92rem;">{{ board.grade }}-sinf</span>
+                </div>
+                <div class="card-body p-2" style="background:var(--surface);">
+                    {% if board.top %}
+                    <table class="table table-sm mb-0" style="font-size:0.84rem;">
+                        <tbody>
+                            {% for entry in board.top %}
+                            <tr>
+                                <td style="width:1.6rem; color:var(--text-muted); background:transparent;">{{ forloop.counter }}.</td>
+                                <td style="color:var(--text); background:transparent;">
+                                    {{ entry.user.get_full_name|default:entry.user.username }}
+                                    {% if entry.medal %}{{ entry.medal_emoji }}{% endif %}
+                                </td>
+                                <td class="text-end fw-semibold" style="color:var(--text); background:transparent;">{{ entry.score }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <p class="text-center my-3" style="color:var(--text-muted); font-size:0.84rem;">
+                        Hali natijalar yo'q &mdash; birinchi chempion bo'l! &#x1F680;
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

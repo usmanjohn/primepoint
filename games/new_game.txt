@@ -1,0 +1,6 @@
+Hello my bro, as you know, I am also teaching math to young pupils whose grade is 5, 6, 7 class. It
+  would be great if we can make a game for them, which is like test, but the choices are in four
+  cards, and only solving right will let to go to next question, and it is like championship you know.
+  It will include various questions, ranging from the division rules, EKUB EKUK, Text questions,
+  Distance vs speed vs time questions, the sum of divisors, prime divisors, the number of divisors,
+  etc, Divisors etc of two or more numbers, more text questions etc. Questions will be in uzbek,

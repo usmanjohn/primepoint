@@ -229,6 +229,47 @@ class PrimeClimbChallenge(models.Model):
         ordering = ['-created_at']
 
 
+class MathChampResult(models.Model):
+    """One finished (or eliminated) run of the Math Championship quiz."""
+    GRADE_CHOICES = [(5, '5-sinf'), (6, '6-sinf'), (7, '7-sinf')]
+    MEDAL_GOLD   = 'gold'
+    MEDAL_SILVER = 'silver'
+    MEDAL_BRONZE = 'bronze'
+    MEDAL_CHOICES = [
+        (MEDAL_GOLD,   'Gold'),
+        (MEDAL_SILVER, 'Silver'),
+        (MEDAL_BRONZE, 'Bronze'),
+        ('',           'None'),
+    ]
+
+    user          = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mathchamp_results')
+    grade         = models.PositiveSmallIntegerField(choices=GRADE_CHOICES, default=5)
+    score         = models.IntegerField(default=0)
+    stage_reached = models.PositiveSmallIntegerField(default=1)
+    finished      = models.BooleanField(default=False)
+    hearts_left   = models.PositiveSmallIntegerField(default=0)
+    best_streak   = models.PositiveSmallIntegerField(default=0)
+    elapsed       = models.PositiveIntegerField(default=0, help_text='Seconds from start to finish.')
+    medal         = models.CharField(max_length=10, choices=MEDAL_CHOICES, blank=True, default='')
+    created_at    = models.DateTimeField(auto_now_add=True)
+
+    MEDAL_EMOJI = {MEDAL_GOLD: '🥇', MEDAL_SILVER: '🥈', MEDAL_BRONZE: '🥉'}
+
+    @property
+    def medal_emoji(self):
+        return self.MEDAL_EMOJI.get(self.medal, '')
+
+    @property
+    def elapsed_display(self):
+        return f'{self.elapsed // 60}:{self.elapsed % 60:02d}'
+
+    def __str__(self):
+        return f'{self.user.username} — {self.grade}-sinf, {self.score} ball'
+
+    class Meta:
+        ordering = ['-score', 'elapsed']
+
+
 class MathSquarePuzzle(models.Model):
     """A crossed math square: every row and every column forms an arithmetic
     equation, and the solver fills the empty number cells so all equations are

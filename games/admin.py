@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import reverse
 from django.utils.html import format_html
-from .models import CrosswordPuzzle, EnglishCrossword, WordSearchPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion, MathSquarePuzzle
+from .models import CrosswordPuzzle, EnglishCrossword, WordSearchPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion, MathSquarePuzzle, MathChampResult
 from .views import generate_word_search
 from .views import _pc_correct_numbers
 from .generator import generate_math_square
@@ -267,3 +267,15 @@ class MathSquarePuzzleAdmin(admin.ModelAdmin):
             return '—'
         return format_html('<a href="{}">Edit grid</a>', reverse('mathsquare_edit', args=[obj.pk]))
     editor_link.short_description = 'Editor'
+
+
+@admin.register(MathChampResult)
+class MathChampResultAdmin(admin.ModelAdmin):
+    list_display  = ('user', 'grade', 'score', 'stage_reached', 'finished',
+                     'hearts_left', 'medal', 'elapsed_display', 'created_at')
+    list_filter   = ('grade', 'finished', 'medal')
+    search_fields = ('user__username',)
+
+    def elapsed_display(self, obj):
+        return obj.elapsed_display
+    elapsed_display.short_description = 'Time'

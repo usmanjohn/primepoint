@@ -45,6 +45,9 @@ urlpatterns = [
     # Target Number
     path('target-number/', views.target_number, name='target_number'),
     path('target-number/check/', views.target_number_check, name='target_number_check'),
+    # Math Championship
+    path('championship/', views.mathchamp_home, name='mathchamp_home'),
+    path('championship/play/', views.mathchamp_play, name='mathchamp_play'),
     # Math Square (Cross-Math)
     path('math-square/', views.mathsquare_list, name='mathsquare_list'),
     path('math-square/create/', views.mathsquare_create, name='mathsquare_create'),
