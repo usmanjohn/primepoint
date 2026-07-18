@@ -2016,7 +2016,7 @@ def mathsquare_print(request, pk):
 # Math Championship (Matematika Chempionati) views
 # ---------------------------------------------------------------------------
 
-MC_STAGES = 12
+MC_STAGES = 15
 MC_HEARTS = 3
 MC_SESSION_KEY = 'mc_state'
 
@@ -2168,7 +2168,7 @@ def mathchamp_play(request):
         else:
             cls = 'todo'
         progress.append({'stage': s, 'cls': cls,
-                         'new_round': s in (5, 9)})
+                         'new_round': s in (6, 11)})
 
     elapsed = state.get('elapsed', 0)
     context = {

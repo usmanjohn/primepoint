@@ -91,17 +91,18 @@ def _names(k=1):
 # ---------------------------------------------------------------------------
 
 def _pad_wrongs(correct, wrongs, lo=1):
-    """Return exactly 3 unique wrong values ≠ correct (all ≥ lo)."""
+    """Return exactly 3 unique wrong values ≠ correct (all ≥ lo; lo=None
+    allows negatives)."""
     out = []
     for w in wrongs:
-        if w != correct and w not in out and w >= lo:
+        if w != correct and w not in out and (lo is None or w >= lo):
             out.append(w)
         if len(out) == 3:
             return out
     delta = 1
     while len(out) < 3:
         for cand in (correct + delta, correct - delta):
-            if cand != correct and cand not in out and cand >= lo:
+            if cand != correct and cand not in out and (lo is None or cand >= lo):
                 out.append(cand)
                 if len(out) == 3:
                     break
@@ -532,6 +533,351 @@ def q_word_hard(grade, tier):
 
 
 # ---------------------------------------------------------------------------
+# Kasrlar (fractions)
+# ---------------------------------------------------------------------------
+
+def _simplify(n, d):
+    g = gcd(n, d)
+    return n // g, d // g
+
+
+def _uniq_str_wrongs(correct, cands, fallback):
+    """3 unique wrong strings ≠ correct; `fallback(i)` fills any gap."""
+    out = []
+    for c in cands:
+        if c != correct and c not in out:
+            out.append(c)
+    i = 0
+    while len(out) < 3 and i < 50:
+        f = fallback(i)
+        if f != correct and f not in out:
+            out.append(f)
+        i += 1
+    return out[:3]
+
+
+def q_fraction_of(grade, tier):
+    """Fraction of a number: '48 ning 3/4 qismi'."""
+    d = random.choice((2, 3, 4, 5, 6, 8, 10))
+    n = random.randint(1, d - 1)
+    n, d = _simplify(n, d)
+    base = d * random.randint(3, 12 if tier == 1 else 25)
+    ans = base // d * n
+    expl = f"Avval {d} dan bir qismini topamiz: {base} ÷ {d} = {base // d}."
+    if n > 1:
+        expl += f" So'ngra {n} ga ko'paytiramiz: {base // d} × {n} = {ans}."
+    return _q("Kasrlar",
+              f"{base} sonining {n}/{d} qismini toping.",
+              ans, [base // d, base - ans, ans + base // d, ans - base // d], expl)
+
+
+_FRAC_DEN_PAIRS = [(2, 3), (3, 4), (2, 5), (3, 5), (4, 6), (2, 7), (4, 5), (6, 8), (3, 8)]
+
+
+def q_fraction_add(grade, tier):
+    """Add/subtract fractions. Grade 5 keeps a common denominator; grades 6–7
+    get unlike denominators — with the classic 'add tops and bottoms' trap."""
+    sub = random.random() < 0.4
+    if grade <= 5:
+        d = random.choice((5, 7, 8, 9, 10, 12))
+        n1 = random.randint(2, d - 2)
+        n2 = random.randint(1, (n1 - 1) if sub else (d - n1 - 1) or 1)
+        raw = n1 - n2 if sub else n1 + n2
+        rn, rd = _simplify(raw, d)
+        op = '−' if sub else '+'
+        correct = f"{rn}/{rd}"
+        cands = [f"{raw}/{d * 2}", f"{raw + 1}/{d}", f"{n1 * n2}/{d}"]
+        if (rn, rd) != (raw, d):
+            cands.insert(0, f"{raw + 2}/{d}")
+        expl = (f"Maxrajlar bir xil, suratlarni {'ayiramiz' if sub else 'qoʻshamiz'}: "
+                f"{n1} {op} {n2} = {raw}. Javob: {raw}/{d}"
+                + (f" = {rn}/{rd} (qisqartirdik)." if (rn, rd) != (raw, d) else "."))
+        wrongs = _uniq_str_wrongs(correct, cands, lambda i: f"{rn + i + 1}/{rd}")
+        return _q("Kasrlar", f"Hisoblang: {n1}/{d} {op} {n2}/{d}",
+                  correct, wrongs, expl, pad=False)
+
+    d1, d2 = random.choice(_FRAC_DEN_PAIRS)
+    L = _lcm(d1, d2)
+    n1 = random.randint(1, d1 - 1)
+    n2 = random.randint(1, d2 - 1)
+    a, b = n1 * L // d1, n2 * L // d2
+    if sub and a <= b:
+        sub = False
+    raw = a - b if sub else a + b
+    rn, rd = _simplify(raw, L)
+    op = '−' if sub else '+'
+    correct = f"{rn}/{rd}"
+    trap_num = n1 - n2 if sub else n1 + n2               # classic error:
+    if trap_num <= 0:                                    # tops/bottoms combined
+        trap_num = n1 + n2
+    trap = f"{trap_num}/{d1 + d2}"
+    cands = [trap, f"{raw}/{L}" if (rn, rd) != (raw, L) else f"{raw + 1}/{L}",
+             f"{n1 + n2}/{L}"]
+    expl = (f"Umumiy maxraj: EKUK({d1}; {d2}) = {L}. "
+            f"{n1}/{d1} = {a}/{L}, {n2}/{d2} = {b}/{L}. "
+            f"{a}/{L} {op} {b}/{L} = {raw}/{L}"
+            + (f" = {rn}/{rd}." if (rn, rd) != (raw, L) else ".")
+            + " (Maxrajlarni qo'shib bo'lmaydi!)")
+    wrongs = _uniq_str_wrongs(correct, cands, lambda i: f"{rn + i + 1}/{rd}")
+    return _q("Kasrlar", f"Hisoblang: {n1}/{d1} {op} {n2}/{d2}",
+              correct, wrongs, expl, pad=False)
+
+
+_CMP_FRACTIONS = [(1, 2), (1, 3), (2, 3), (1, 4), (3, 4), (1, 6), (5, 6),
+                  (1, 8), (3, 8), (5, 8), (7, 8), (5, 12), (7, 12), (11, 12)]
+
+
+def q_fraction_compare(grade, tier):
+    picks = random.sample(_CMP_FRACTIONS, 4)
+    biggest = random.random() < 0.6
+    key = max if biggest else min
+    target = key(picks, key=lambda f: f[0] / f[1])
+    L = 24
+    conv = ", ".join(f"{n}/{d} = {n * L // d}/{L}" for n, d in picks)
+    word = "kattasi" if biggest else "kichigi"
+    expl = (f"Umumiy maxraj {L} ga keltiramiz: {conv}. Eng {word}: "
+            f"{target[0]}/{target[1]} = {target[0] * L // target[1]}/{L}.")
+    correct = f"{target[0]}/{target[1]}"
+    wrongs = [f"{n}/{d}" for n, d in picks if (n, d) != target]
+    return _q("Kasrlar", f"Qaysi kasr eng {word}?", correct, wrongs, expl, pad=False)
+
+
+# ---------------------------------------------------------------------------
+# Tenglamalar (equations with x)
+# ---------------------------------------------------------------------------
+
+def _sgn(b):
+    return f"+ {b}" if b >= 0 else f"− {-b}"
+
+
+def _cx(a):
+    return "x" if a == 1 else f"{a}x"
+
+
+def q_equation(grade, tier):
+    x0 = random.randint(2, 12)
+    if grade <= 5:
+        form = 'one'
+    elif grade == 6:
+        form = 'two' if tier <= 2 else random.choice(('two', 'both', 'both'))
+    else:
+        form = 'both' if tier <= 2 else random.choice(('both', 'bracket'))
+
+    if form == 'one':
+        if random.random() < 0.5:
+            b = random.randint(5, 40)
+            eq = f"x + {b} = {x0 + b}"
+            expl = f"x = {x0 + b} − {b} = {x0}."
+        else:
+            a = random.randint(3, 9)
+            eq = f"{a}x = {a * x0}"
+            expl = f"x = {a * x0} ÷ {a} = {x0}."
+    elif form == 'two':
+        a = random.randint(2, 7)
+        b = random.randint(-15, 15) or 5
+        c = a * x0 + b
+        eq = f"{_cx(a)} {_sgn(b)} = {c}"
+        move = f"{c} − {b}" if b >= 0 else f"{c} + {-b}"
+        expl = f"{a}x = {move} = {a * x0}, demak x = {a * x0} ÷ {a} = {x0}."
+    elif form == 'both':
+        a2 = random.randint(1, 4)
+        da = random.randint(1, 3)
+        a1 = a2 + da
+        b1 = random.choice([b for b in range(-9, 10) if b != 0 and b != -da * x0])
+        b2 = b1 + da * x0
+        eq = f"{_cx(a1)} {_sgn(b1)} = {_cx(a2)} {_sgn(b2)}"
+        b1s = f"({b1})" if b1 < 0 else f"{b1}"
+        expl = (f"x larni bir tomonga o'tkazamiz: {a1}x − {a2}x = {b2} − {b1s}, "
+                f"ya'ni {_cx(da)} = {da * x0}, demak x = {x0}.")
+    else:  # bracket
+        a = random.randint(2, 6)
+        b = random.choice([b for b in range(1 - x0, 9) if b != 0])
+        c = a * (x0 + b)
+        eq = f"{a}(x {_sgn(b)}) = {c}"
+        inner = f"{c} ÷ {a} = {x0 + b}"
+        back = f"{x0 + b} − {b}" if b >= 0 else f"{x0 + b} + {-b}"
+        expl = f"x {_sgn(b)} = {inner}, demak x = {back} = {x0}."
+
+    return _q("Tenglamalar", f"Tenglamani yeching: {eq}",
+              x0, [x0 + 1, x0 - 1, x0 + 2, x0 * 2], expl, lo=None)
+
+
+# ---------------------------------------------------------------------------
+# Oqim va shamol (boat with/against current, plane with/against wind)
+# ---------------------------------------------------------------------------
+
+def q_boat_wind(grade, tier):
+    if random.random() < 0.6:
+        subj, medium = "Qayiqning turg'un suvdagi", "daryo oqimining"
+        with_txt, against_txt = "oqim bo'ylab", "oqimga qarshi"
+        verb = "suzadi"
+        v = random.randint(12, 20)
+        c = random.randint(2, 4)
+    else:
+        subj, medium = "Samolyotning o'z", "shamolning"
+        with_txt, against_txt = "shamol yo'nalishida", "shamolga qarshi"
+        verb = "uchadi"
+        v = random.randint(20, 30) * 10
+        c = random.randint(2, 5) * 10
+    t = random.randint(2, 4)
+    downstream = random.random() < 0.5
+    eff = v + c if downstream else v - c
+    direction = with_txt if downstream else against_txt
+    op = '+' if downstream else '−'
+
+    if random.random() < 0.5:
+        s = eff * t
+        expl = (f"{direction.capitalize()} tezlik: {v} {op} {c} = {eff} km/soat. "
+                f"Masofa: {eff} × {t} = {s} km.")
+        return _q("Oqim va shamol",
+                  f"{subj} tezligi {v} km/soat, {medium} tezligi {c} km/soat. "
+                  f"{direction.capitalize()} {t} soatda qancha masofa {verb}?",
+                  s, [(v - c if downstream else v + c) * t, v * t, eff * (t + 1)],
+                  expl, unit="km")
+    s = eff * t
+    other_t = s // (v + c) if not downstream and s % (v + c) == 0 else t + 1
+    expl = (f"{direction.capitalize()} tezlik: {v} {op} {c} = {eff} km/soat. "
+            f"Vaqt: {s} ÷ {eff} = {t} soat.")
+    return _q("Oqim va shamol",
+              f"{subj} tezligi {v} km/soat, {medium} tezligi {c} km/soat. "
+              f"{direction.capitalize()} {s} km masofani necha soatda bosib o'tadi?",
+              t, [other_t, t - 1, t + 2], expl, unit="soat")
+
+
+# ---------------------------------------------------------------------------
+# Ayniyatlar (7th grade: a² − b² and (a+b)² shortcuts)
+# ---------------------------------------------------------------------------
+
+_SUP = {2: '²', 3: '³', 4: '⁴', 5: '⁵', 6: '⁶'}
+
+
+def q_square_diff(grade, tier):
+    roll = random.random()
+    if roll < 0.4:
+        # Clever computation: a² − b² where a+b and a−b are friendly.
+        s = random.choice((20, 40, 50, 60, 100))
+        m = random.choice((2, 4, 6, 10))
+        a, b = (s + m) // 2, (s - m) // 2
+        ans = m * s
+        expl = (f"a² − b² = (a − b)(a + b) ayniyatidan: "
+                f"({a} − {b})({a} + {b}) = {m} × {s} = {ans}.")
+        return _q("Ayniyatlar",
+                  f"Qulay usul bilan hisoblang: {a}² − {b}²",
+                  ans, [m * m, s, ans + s, ans - m], expl)
+    if roll < 0.75:
+        # Given a+b and a−b, find a² − b².
+        s = random.randint(6, 15)
+        m = random.randint(1, 5)
+        ans = s * m
+        expl = (f"a² − b² = (a + b)(a − b) = {s} × {m} = {ans}. "
+                f"a va b ni alohida topish shart emas!")
+        return _q("Ayniyatlar",
+                  f"Agar a + b = {s} va a − b = {m} bo'lsa, a² − b² nechaga teng?",
+                  ans, [s + m, s * s, ans * 2, s - m], expl)
+    # (a+b)² shortcut: 41² = (40+1)².
+    base = random.choice((21, 31, 41, 51, 61, 29, 39, 49))
+    t, u = (base // 10) * 10, base % 10
+    if u > 5:
+        t, u = t + 10, u - 10   # 29 = 30 − 1
+    ans = base * base
+    op = '+' if u >= 0 else '−'
+    expl = (f"{base}² = ({t} {op} {abs(u)})² = {t}² {op} 2·{t}·{abs(u)} + {abs(u)}² = "
+            f"{t * t} {op} {2 * t * abs(u)} + {u * u} = {ans}.")
+    return _q("Ayniyatlar",
+              f"Qulay usul bilan hisoblang: {base}²",
+              ans, [ans - 2 * t * abs(u) if u > 0 else ans + 2 * t * abs(u),
+                    ans + 10, ans - 1], expl)
+
+
+# ---------------------------------------------------------------------------
+# Foizlar (percentages)
+# ---------------------------------------------------------------------------
+
+def q_percent(grade, tier):
+    p = random.choice((10, 20, 25, 50))
+    if tier >= 3 and random.random() < 0.5:
+        name = _names()
+        price = random.randint(8, 40) * 1000
+        up = random.random() < 0.4
+        ans = price * (100 + p) // 100 if up else price * (100 - p) // 100
+        change = "qimmatlashdi" if up else "arzonlashdi"
+        op = '+' if up else '−'
+        delta = price * p // 100
+        expl = (f"{p}% = {_fmt_money(delta)} so'm. Yangi narx: "
+                f"{_fmt_money(price)} {op} {_fmt_money(delta)} = {_fmt_money(ans)} so'm.")
+        return _q("Foizlar",
+                  f"{name} olmoqchi bo'lgan kitob {_fmt_money(price)} so'm edi. "
+                  f"Narx {p}% ga {change}. Kitobning yangi narxi qancha?",
+                  ans, [delta, price * (100 + (p if not up else -p)) // 100,
+                        price - p, ans + 1000],
+                  expl, lo=100, fmt=lambda v: f"{_fmt_money(v)} so'm")
+    n = (100 // p) * random.randint(2, 12)
+    ans = n * p // 100
+    expl = f"{p}% — bu {p}/100 qism. {n} × {p} ÷ 100 = {ans}."
+    return _q("Foizlar", f"{n} sonining {p}% ini toping.",
+              ans, [n * p // 10, ans * 2, ans // 2, n - ans], expl)
+
+
+# ---------------------------------------------------------------------------
+# Butun sonlar (operations with negative numbers)
+# ---------------------------------------------------------------------------
+
+def q_integers(grade, tier):
+    a = random.randint(2, 12)
+    b = random.randint(2, 12)
+    form = random.choice(('add', 'sub_neg', 'mul_neg', 'mul_both'))
+    if form == 'add':
+        big = max(a, b) + random.randint(1, 6)
+        ans = -big + a
+        expl = (f"(−{big}) + {a}: ishoralar har xil, kattasidan kichigini "
+                f"ayiramiz: {big} − {a} = {big - a}, ishora kattanikidan — javob {ans}.")
+        text = f"Hisoblang: (−{big}) + {a}"
+    elif form == 'sub_neg':
+        ans = a + b
+        expl = f"Manfiy sonni ayirish — qo'shish bilan bir xil: {a} − (−{b}) = {a} + {b} = {ans}."
+        text = f"Hisoblang: {a} − (−{b})"
+    elif form == 'mul_neg':
+        ans = -(a * b)
+        expl = f"Musbat × manfiy = manfiy: {a} × {b} = {a * b}, javob {ans}."
+        text = f"Hisoblang: {a} × (−{b})"
+    else:
+        ans = a * b
+        expl = f"Manfiy × manfiy = musbat: {a} × {b} = {ans}."
+        text = f"Hisoblang: (−{a}) × (−{b})"
+    return _q("Butun sonlar", text, ans, [-ans, ans + 2, ans - 2, abs(ans) + 1],
+              expl, lo=None)
+
+
+# ---------------------------------------------------------------------------
+# Darajalar (powers)
+# ---------------------------------------------------------------------------
+
+def q_power(grade, tier):
+    if tier >= 2 and random.random() < 0.4:
+        base = random.choice((2, 3, 5, 7, 10))
+        e1 = random.randint(2, 4)
+        e2 = random.randint(2, 6 - e1)          # keep e1+e2 ≤ 6 (superscript map)
+        correct = f"{base}{_SUP[e1 + e2]}"
+        expl = (f"Bir xil asosli darajalarni ko'paytirganda ko'rsatkichlar "
+                f"qo'shiladi: {base}{_SUP[e1]} × {base}{_SUP[e2]} = "
+                f"{base}{_SUP[e1 + e2]}. (Ko'rsatkichlar ko'paytirilmaydi!)")
+        wrongs = _uniq_str_wrongs(
+            correct,
+            [f"{base}{_SUP[min(e1 * e2, 6)]}", f"{base * base}{_SUP[e1 + e2]}",
+             f"{base}{_SUP[2]}"],
+            lambda i: f"{base + i + 1}{_SUP[e1 + e2]}")
+        return _q("Darajalar",
+                  f"Natijani daraja ko'rinishida yozing: {base}{_SUP[e1]} × {base}{_SUP[e2]}",
+                  correct, wrongs, expl, pad=False)
+    base, e = random.choice(((2, 4), (2, 5), (2, 6), (3, 3), (3, 4), (4, 3), (5, 3), (10, 3)))
+    ans = base ** e
+    expl = (f"{base}{_SUP[e]} = {' × '.join([str(base)] * e)} = {ans}. "
+            f"({base} × {e} = {base * e} emas!)")
+    return _q("Darajalar", f"Hisoblang: {base}{_SUP[e]}",
+              ans, [base * e, base ** (e - 1), ans * base, ans - base], expl)
+
+
+# ---------------------------------------------------------------------------
 # Ikki bosqichli masalalar (two-step reasoning problems)
 # ---------------------------------------------------------------------------
 
@@ -658,6 +1004,7 @@ def q_work_compare(grade, tier):
 # Topic registry — which generators play in which round (tier)
 # ---------------------------------------------------------------------------
 
+# Shared base pool for every grade…
 _TIER_GENERATORS = {
     1: [q_divisibility, q_prime_pick, q_remainder, q_word_easy, q_speed_basic,
         q_num_divisors],
@@ -669,18 +1016,41 @@ _TIER_GENERATORS = {
         q_divisibility, q_ekuk_meeting, q_ekub_sharing, q_work_compare],
 }
 
+# …plus grade-exclusive topics, so 6th genuinely plays harder than 5th and
+# 7th harder than 6th. Signature topics appear twice for extra weight.
+_GRADE_EXTRAS = {
+    5: {
+        2: [q_fraction_of],
+        3: [q_fraction_of, q_fraction_add, q_equation],
+    },
+    6: {
+        1: [q_integers, q_fraction_of],
+        2: [q_equation, q_equation, q_fraction_add, q_percent, q_fraction_compare],
+        3: [q_equation, q_equation, q_boat_wind, q_boat_wind, q_fraction_add,
+            q_percent],
+    },
+    7: {
+        1: [q_integers, q_fraction_of, q_power],
+        2: [q_equation, q_square_diff, q_percent, q_fraction_add, q_boat_wind,
+            q_power],
+        3: [q_square_diff, q_square_diff, q_equation, q_equation, q_boat_wind,
+            q_fraction_compare, q_percent],
+    },
+}
+
 
 def stage_tier(stage):
-    """Championship round (1–3) for a 1-based stage number (1–12)."""
-    return min(3, (stage - 1) // 4 + 1)
+    """Championship round (1–3) for a 1-based stage number (1–15)."""
+    return min(3, (stage - 1) // 5 + 1)
 
 
 def generate_question(grade, stage, last_topic=None):
     """Generate a fresh question for this grade + stage, avoiding an
     immediate topic repeat when possible."""
     tier = stage_tier(stage)
+    pool = _TIER_GENERATORS[tier] + _GRADE_EXTRAS.get(grade, {}).get(tier, [])
     for _ in range(10):
-        gen = random.choice(_TIER_GENERATORS[tier])
+        gen = random.choice(pool)
         q = gen(grade, tier)
         if q['topic'] != last_topic:
             return q
