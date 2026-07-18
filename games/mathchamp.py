@@ -67,6 +67,25 @@ def _fmt_money(v):
     return f"{v:,}".replace(",", " ")
 
 
+def _lcm(a, b):
+    return a * b // gcd(a, b)
+
+
+# ---------------------------------------------------------------------------
+# Pupil names — the teacher's real students star in the word problems
+# ---------------------------------------------------------------------------
+
+_PUPILS = ['Jasur', 'Sherbek', 'Davron', 'Samandar', 'Kamron', 'Javohir',
+           'Firdavs', "Ilg'or", 'Afsona', 'Madina', 'Charos']
+_TEACHERS = ['Usman aka', 'Inom aka']
+
+
+def _names(k=1):
+    """k distinct pupil names (a single str for k=1, else a list)."""
+    picked = random.sample(_PUPILS, k)
+    return picked[0] if k == 1 else picked
+
+
 # ---------------------------------------------------------------------------
 # Choice assembly
 # ---------------------------------------------------------------------------
@@ -90,15 +109,16 @@ def _pad_wrongs(correct, wrongs, lo=1):
     return out[:3]
 
 
-def _q(topic, text, correct, wrongs, explanation, unit='', lo=1, pad=True):
+def _q(topic, text, correct, wrongs, explanation, unit='', lo=1, pad=True, fmt=None):
     """Build the final question dict from a correct value + wrong values."""
     if pad:
         wrongs = _pad_wrongs(correct, wrongs, lo=lo)
     else:
         wrongs = [w for w in dict.fromkeys(wrongs) if w != correct][:3]
 
-    def fmt(v):
-        return f"{v} {unit}".strip() if unit else str(v)
+    if fmt is None:
+        def fmt(v):
+            return f"{v} {unit}".strip() if unit else str(v)
 
     options = [(fmt(correct), True)] + [(fmt(w), False) for w in wrongs]
     random.shuffle(options)
@@ -308,62 +328,70 @@ def q_remainder(grade, tier):
 # Tezlik · Masofa · Vaqt
 # ---------------------------------------------------------------------------
 
+# (subject phrase, personal?, min speed, max speed) — personal subjects get a
+# pupil's name in front: "Madina velosipedda …".
 _VEHICLES = [
-    ("Piyoda", 4, 6),
-    ("Velosipedchi", 10, 18),
-    ("Avtobus", 40, 60),
-    ("Avtomobil", 60, 90),
-    ("Poyezd", 50, 80),
-    ("Motorli qayiq", 15, 25),
+    ("piyoda", True, 4, 6),
+    ("velosipedda", True, 10, 18),
+    ("Avtobus", False, 40, 60),
+    ("Avtomobil", False, 60, 90),
+    ("Poyezd", False, 50, 80),
+    ("Motorli qayiq", False, 15, 25),
 ]
 
 
 def _pick_vehicle(tier):
-    name, lo, hi = random.choice(_VEHICLES)
+    phrase, personal, lo, hi = random.choice(_VEHICLES)
     v = random.randint(lo, hi)
     if v > 20:
         v = round(v / 5) * 5
     t = random.randint(2, 4 if tier == 1 else 6)
-    return name, v, t
+    subj = f"{_names()} {phrase}" if personal else phrase
+    return subj, v, t
 
 
 def q_speed_basic(grade, tier):
-    name, v, t = _pick_vehicle(tier)
+    subj, v, t = _pick_vehicle(tier)
     s = v * t
     kind = random.choice(('dist', 'speed', 'time'))
     if kind == 'dist':
         expl = f"Masofa = tezlik × vaqt = {v} × {t} = {s} km."
         return _q("Tezlik va masofa",
-                  f"{name} {v} km/soat tezlik bilan {t} soat yurdi. "
-                  f"U qancha masofa bosib o'tgan?",
+                  f"{subj} {v} km/soat tezlik bilan {t} soat yurdi. "
+                  f"Qancha masofa bosib o'tilgan?",
                   s, [v * (t + 1), v * (t - 1), s + v // 2 or s + 1, v + t], expl, unit="km")
     if kind == 'speed':
         expl = f"Tezlik = masofa ÷ vaqt = {s} ÷ {t} = {v} km/soat."
         return _q("Tezlik va masofa",
-                  f"{name} {s} km masofani {t} soatda bosib o'tdi. "
-                  f"Uning tezligini toping.",
+                  f"{subj} {s} km masofani {t} soatda bosib o'tdi. "
+                  f"Tezlikni toping.",
                   v, [v + 5, v - 5, v + 10, s - t], expl, unit="km/soat")
     expl = f"Vaqt = masofa ÷ tezlik = {s} ÷ {v} = {t} soat."
     return _q("Tezlik va masofa",
-              f"{name} {s} km masofani {v} km/soat tezlik bilan bosib o'tdi. "
+              f"{subj} {s} km masofani {v} km/soat tezlik bilan bosib o'tdi. "
               f"Bunga qancha vaqt ketgan?",
               t, [t + 1, t - 1, t + 2], expl, unit="soat")
 
 
 def q_speed_hard(grade, tier):
+    n1, n2 = _names(2)
     if random.random() < 0.5:
-        # Two vehicles moving towards each other.
-        v1 = random.randint(9, 18) * 5
-        v2 = random.randint(6, 12) * 5
+        # Two pupils moving towards each other.
+        if random.random() < 0.5:
+            ride, v1, v2 = "velosipedlarida", random.randint(12, 20), random.randint(8, 14)
+            place = "Ikki qishloq"
+        else:
+            ride, v1, v2 = "avtomobillarda", random.randint(9, 18) * 5, random.randint(6, 12) * 5
+            place = "Ikki shahar"
         t = random.randint(2, 4)
         s = (v1 + v2) * t
         expl = (f"Yaqinlashish tezligi: {v1} + {v2} = {v1 + v2} km/soat. "
                 f"Vaqt = {s} ÷ {v1 + v2} = {t} soat.")
         return _q("Tezlik va masofa",
-                  f"Ikki shahar orasidagi masofa {s} km. Ikki avtomobil bir "
-                  f"vaqtda bir-biriga qarab yo'lga chiqdi. Ularning tezliklari "
-                  f"{v1} km/soat va {v2} km/soat. Ular necha soatdan keyin "
-                  f"uchrashadi?",
+                  f"{place} orasidagi masofa {s} km. {n1} va {n2} bir vaqtda "
+                  f"{ride} bir-biriga qarab yo'lga chiqishdi. {n1}ning tezligi "
+                  f"{v1} km/soat, {n2}ning tezligi {v2} km/soat. Ular necha "
+                  f"soatdan keyin uchrashadi?",
                   t, [t + 1, t - 1, t + 2], expl, unit="soat")
     # Catch-up problem.
     v1 = random.randint(2, 5) * 5
@@ -373,10 +401,10 @@ def q_speed_hard(grade, tier):
     expl = (f"Tezliklar farqi: {v2} − {v1} = {v2 - v1} km/soat. "
             f"Quvib yetish vaqti = {gap} ÷ {v2 - v1} = {t} soat.")
     return _q("Tezlik va masofa",
-              f"Velosipedchi {v1} km/soat tezlik bilan yo'lga chiqdi. Undan "
-              f"{gap} km orqada turgan avtomobil {v2} km/soat tezlik bilan "
-              f"uni quvib ketdi. Avtomobil velosipedchini necha soatda quvib "
-              f"yetadi?",
+              f"{n1} velosipedda {v1} km/soat tezlik bilan yo'lga chiqdi. "
+              f"Undan {gap} km orqada bo'lgan {n2} mopedda {v2} km/soat "
+              f"tezlik bilan uni quvib ketdi. {n2} {n1}ni necha soatda "
+              f"quvib yetadi?",
               t, [t + 1, t - 1, t + 2], expl, unit="soat")
 
 
@@ -397,13 +425,14 @@ def q_word_easy(grade, tier):
                   f"bolalardan {d} nafar ko'p. Sinfda jami nechta o'quvchi bor?",
                   total, [b + d, total - d, total + d, 2 * b], expl)
     if kind == 'age':
+        name = _names()
         a = random.randint(6, 12)
         k = random.choice((3, 4, 5))
         father = k * a
-        expl = f"Otaning yoshi: {a} × {k} = {father} yosh."
+        expl = f"Dadasining yoshi: {a} × {k} = {father} yosh."
         return _q("Matnli masala",
-                  f"Otaning yoshi o'g'lining yoshidan {k} marta katta. O'g'li "
-                  f"{a} yoshda bo'lsa, ota necha yoshda?",
+                  f"{name} {a} yoshda. Uning dadasi {name}dan {k} marta "
+                  f"katta. Dadasi necha yoshda?",
                   father, [father + a, father - a, a + k, father + k], expl, unit="yoshda")
     if kind == 'rect':
         a = random.randint(6, 15)
@@ -421,19 +450,21 @@ def q_word_easy(grade, tier):
                   f"To'g'ri to'rtburchakning bo'yi {a} sm, eni {b} sm. "
                   f"Uning yuzini toping.",
                   yuza, [2 * (a + b), a + b, yuza + a], expl, unit="sm²")
+    name = _names()
     per = random.randint(3, 9)
     k = random.randint(4, 8)
     n = per * k
-    expl = f"Har bir bolaga: {n} ÷ {k} = {per} tadan konfet tegadi."
+    expl = f"Har bir do'stiga: {n} ÷ {k} = {per} tadan konfet tegadi."
     return _q("Matnli masala",
-              f"{n} ta konfet {k} nafar bolaga teng bo'lib tarqatildi. Har "
-              f"bir bolaga nechtadan konfet tegdi?",
+              f"{name} {n} ta konfetni {k} nafar do'stiga teng bo'lib "
+              f"tarqatdi. Har bir do'stiga nechtadan konfet tegdi?",
               per, [per + 1, per - 1, per + 2], expl)
 
 
 def q_word_mid(grade, tier):
-    if random.random() < 0.5:
-        # Sum & difference.
+    roll = random.random()
+    if roll < 0.35:
+        # Sum & difference (abstract).
         small = random.randint(8, 30)
         diff = random.randint(2, 12) * 2
         big = small + diff
@@ -444,7 +475,22 @@ def q_word_mid(grade, tier):
                   f"Ikki sonning yig'indisi {s}, ayirmasi esa {diff} ga teng. "
                   f"Katta sonni toping.",
                   big, [small, s // 2, big + 1, big - diff], expl)
+    if roll < 0.7:
+        # Sum & difference (story: two pupils fishing).
+        n1, n2 = _names(2)
+        small = random.randint(4, 15)
+        diff = random.randint(1, 5) * 2
+        big = small + diff
+        s = big + small
+        expl = (f"{n1} = (jami + farq) ÷ 2 = ({s} + {diff}) ÷ 2 = {big}. "
+                f"Tekshiruv: {n2}: {small} ta, {big} + {small} = {s}.")
+        return _q("Matnli masala",
+                  f"{n1} va {n2} birgalikda {s} ta baliq tutishdi. {n1} "
+                  f"{n2}dan {diff} ta ko'p baliq tutdi. {n1} nechta baliq "
+                  f"tutgan?",
+                  big, [small, s // 2, big + 1, big - diff], expl)
     # Shopping.
+    name = _names()
     p = random.choice((2000, 2500, 3000, 3500, 4000))
     q = random.choice((1000, 1500, 2000, 2500))
     n = random.randint(2, 5)
@@ -453,20 +499,12 @@ def q_word_mid(grade, tier):
     expl = (f"Daftarlar: {n} × {_fmt_money(p)} = {_fmt_money(n * p)} so'm. "
             f"Ruchkalar: {m} × {_fmt_money(q)} = {_fmt_money(m * q)} so'm. "
             f"Jami: {_fmt_money(total)} so'm.")
-    wrongs = [total + q, total - q, total + p, n * p + q]
-    wrongs = _pad_wrongs(total, wrongs, lo=500)
-    options = [(f"{_fmt_money(total)} so'm", True)] + \
-              [(f"{_fmt_money(w)} so'm", False) for w in wrongs]
-    random.shuffle(options)
-    return {
-        'topic': "Matnli masala",
-        'text': (f"Bitta daftar {_fmt_money(p)} so'm, bitta ruchka "
-                 f"{_fmt_money(q)} so'm turadi. {n} ta daftar va {m} ta "
-                 f"ruchka uchun qancha pul to'lash kerak?"),
-        'choices': [o[0] for o in options],
-        'correct': next(i for i, o in enumerate(options) if o[1]),
-        'explanation': expl,
-    }
+    return _q("Matnli masala",
+              f"{name} {n} ta daftar va {m} ta ruchka sotib oldi. Bitta "
+              f"daftar {_fmt_money(p)} so'm, bitta ruchka {_fmt_money(q)} "
+              f"so'm turadi. {name} qancha pul to'lagan?",
+              total, [total + q, total - q, total + p, n * p + q], expl,
+              lo=500, fmt=lambda v: f"{_fmt_money(v)} so'm")
 
 
 def q_word_hard(grade, tier):
@@ -494,6 +532,129 @@ def q_word_hard(grade, tier):
 
 
 # ---------------------------------------------------------------------------
+# Ikki bosqichli masalalar (two-step reasoning problems)
+# ---------------------------------------------------------------------------
+
+_MEETING_PAIRS = {2: [(2, 3), (3, 4), (4, 6), (3, 5), (4, 5), (6, 8), (2, 5)],
+                  3: [(4, 6), (6, 8), (6, 9), (5, 7), (8, 12), (10, 15), (9, 12), (12, 18)]}
+_MEETING_TRIPLES = [(2, 3, 4), (3, 4, 6), (4, 6, 8), (2, 5, 6), (3, 5, 6), (2, 4, 5)]
+_MEETING_PLACES = ["kutubxonaga", "sport zaliga", "shaxmat to'garagiga",
+                   "suzish mashg'ulotiga", "matematika to'garagiga"]
+
+
+def _multiples_str(a, upto):
+    return ", ".join(str(m) for m in range(a, upto + 1, a))
+
+
+def q_ekuk_meeting(grade, tier):
+    """The classic 'one goes every a days, the other every b days' problem —
+    spotting that it's an EKUK question is the first step."""
+    place = random.choice(_MEETING_PLACES)
+    if tier == 3 and random.random() < 0.4:
+        a, b, c = random.choice(_MEETING_TRIPLES)
+        l = _lcm(_lcm(a, b), c)
+        n1, n2, n3 = _names(3)
+        expl = (f"Uchalasi EKUK({a}; {b}; {c}) kundan keyin yana birga "
+                f"boradi. EKUK({a}; {b}; {c}) = {l}.")
+        return _q("EKUK",
+                  f"{n1} {place} har {a} kunda, {n2} har {b} kunda, {n3} esa "
+                  f"har {c} kunda boradi. Bugun uchalasi birga bordi. Ular "
+                  f"yana necha kundan keyin birga boradilar?",
+                  l, [l * 2, l // 2, a * b * c, a + b + c], expl, unit="kun")
+    a, b = random.choice(_MEETING_PAIRS[min(tier, 3) if tier >= 2 else 2])
+    l = _lcm(a, b)
+    n1, n2 = _names(2)
+    expl = (f"Bu — EKUK masalasi. {n1}ning kunlari: {_multiples_str(a, l)}; "
+            f"{n2}ning kunlari: {_multiples_str(b, l)}. Birinchi umumiy kun: "
+            f"EKUK({a}; {b}) = {l}.")
+    return _q("EKUK",
+              f"{n1} {place} har {a} kunda, {n2} esa har {b} kunda boradi. "
+              f"Bugun ular u yerda uchrashishdi. Ular yana necha kundan "
+              f"keyin uchrashadilar?",
+              l, [a * b, a + b, l * 2, l // 2], expl, unit="kun")
+
+
+_SHARE_ITEMS = [("daftar", "ruchka"), ("olma", "nok"), ("konfet", "pechene")]
+
+
+def q_ekub_sharing(grade, tier):
+    """Fair-sharing problem: the number of pupils must divide both amounts,
+    so the answer is the EKUB — a two-step 'spot it, then compute' task."""
+    g = random.choice({2: [6, 8, 9, 12], 3: [12, 15, 16, 18, 24]}.get(tier, [6, 8, 12]))
+    m1, m2 = random.choice(_COPRIME_PAIRS)
+    a, b = g * m1, g * m2
+    i1, i2 = random.choice(_SHARE_ITEMS)
+    teacher = random.choice(_TEACHERS)
+    expl = (f"O'quvchilar soni ham {a} ni, ham {b} ni qoldiqsiz bo'lishi "
+            f"kerak — demak bu EKUB masalasi. EKUB({a}; {b}) = {g}. Har bir "
+            f"o'quvchiga {m1} ta {i1} va {m2} ta {i2} tegadi.")
+    return _q("EKUB",
+              f"{teacher} {a} ta {i1} va {b} ta {i2}ni o'quvchilarga teng "
+              f"taqsimlamoqchi: har biriga bir xil miqdorda tegishi va hech "
+              f"narsa ortib qolmasligi kerak. Eng ko'pi bilan nechta "
+              f"o'quvchiga taqsimlash mumkin?",
+              g, [_lcm(a, b) // g, m1 + m2, g * 2, g // 2], expl)
+
+
+def q_money_compare(grade, tier):
+    """Comparison money problem: first find the second amount, then combine."""
+    n1, n2 = _names(2)
+    x = random.randint(4, 20) * 500
+    if random.random() < 0.5:
+        k = random.choice((2, 3, 4))
+        other, total = k * x, x + k * x
+        cmp_txt = f"{n2}da esa undan {k} marta ko'p pul bor"
+        step1 = f"{n2}da: {k} × {_fmt_money(x)} = {_fmt_money(other)} so'm."
+    else:
+        d = random.randint(1, x // 1000) * 500
+        other, total = x - d, x + (x - d)
+        cmp_txt = f"{n2}da esa undan {_fmt_money(d)} so'm kam pul bor"
+        step1 = f"{n2}da: {_fmt_money(x)} − {_fmt_money(d)} = {_fmt_money(other)} so'm."
+    expl = (f"{step1} Jami: {_fmt_money(x)} + {_fmt_money(other)} = "
+            f"{_fmt_money(total)} so'm.")
+    return _q("Matnli masala",
+              f"{n1}da {_fmt_money(x)} so'm bor, {cmp_txt}. Ikkalasida "
+              f"birgalikda qancha pul bor?",
+              total, [other, total + x, total - x // 2, x * 2], expl,
+              lo=500, fmt=lambda v: f"{_fmt_money(v)} so'm")
+
+
+def q_work_compare(grade, tier):
+    """Rates: either 'who finishes their book first?' (compare two divisions)
+    or 'how long working together?' (combine two rates)."""
+    n1, n2 = _names(2)
+    if random.random() < 0.5:
+        # Reading race — answer cards name the winner AND the day count.
+        r1, r2 = random.sample((6, 8, 9, 10, 12, 15), 2)
+        d1, d2 = random.sample(range(4, 10), 2)
+        p1, p2 = r1 * d1, r2 * d2
+        winner, wd, loser, ld = (n1, d1, n2, d2) if d1 < d2 else (n2, d2, n1, d1)
+        expl = (f"{n1}: {p1} ÷ {r1} = {d1} kun. {n2}: {p2} ÷ {r2} = {d2} kun. "
+                f"{wd} < {ld}, demak {winner} oldinroq tugatadi.")
+        return _q("Matnli masala",
+                  f"{n1} {p1} betlik kitobni har kuni {r1} betdan o'qiydi. "
+                  f"{n2} esa {p2} betlik kitobni har kuni {r2} betdan "
+                  f"o'qiydi. Qaysi biri kitobini oldinroq tugatadi?",
+                  f"{winner} ({wd} kunda)",
+                  [f"{loser} ({ld} kunda)", f"{winner} ({ld} kunda)",
+                   f"{loser} ({wd} kunda)"],
+                  expl, pad=False)
+    # Working together.
+    r1 = random.randint(3, 8)
+    r2 = random.randint(3, 8)
+    while r2 == r1:
+        r2 = random.randint(3, 8)
+    t = random.randint(2, 5)
+    total = (r1 + r2) * t
+    expl = (f"Birgalikda bir soatda: {r1} + {r2} = {r1 + r2} ta masala. "
+            f"Vaqt: {total} ÷ {r1 + r2} = {t} soat.")
+    return _q("Matnli masala",
+              f"{n1} bir soatda {r1} ta, {n2} esa {r2} ta masala yechadi. "
+              f"Ular birgalikda {total} ta masalani necha soatda yechishadi?",
+              t, [t + 1, t - 1, t + 2], expl, unit="soat")
+
+
+# ---------------------------------------------------------------------------
 # Topic registry — which generators play in which round (tier)
 # ---------------------------------------------------------------------------
 
@@ -501,10 +662,11 @@ _TIER_GENERATORS = {
     1: [q_divisibility, q_prime_pick, q_remainder, q_word_easy, q_speed_basic,
         q_num_divisors],
     2: [q_divisibility, q_ekub, q_ekuk, q_num_divisors, q_sum_divisors,
-        q_common_divisors, q_speed_basic, q_word_mid, q_remainder],
+        q_common_divisors, q_speed_basic, q_word_mid, q_remainder,
+        q_ekuk_meeting, q_ekub_sharing, q_money_compare],
     3: [q_ekub, q_ekuk, q_num_divisors, q_sum_divisors, q_largest_prime,
         q_prime_pick, q_speed_hard, q_word_hard, q_common_divisors,
-        q_divisibility],
+        q_divisibility, q_ekuk_meeting, q_ekub_sharing, q_work_compare],
 }
 
 
