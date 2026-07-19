@@ -5861,3 +5861,11 @@ msgstr "Birinchi bo'lib jamoaga bilim ulashing."
 #: tutorial/templates/tutorial/tutorial_list.html:154
 msgid "Create Tutorial"
 msgstr "Darslik yaratish"
+
+#: corner/templates/corner/story_detail.html:51
+msgid "Listen to this story"
+msgstr "Hikoyani tinglang"
+
+#: corner/templates/corner/collection_detail.html:45
+msgid "Audio available"
+msgstr "Audio mavjud"

@@ -42,6 +42,7 @@
         <span class="flex-grow-1">
             <span class="d-block fw-semibold">
                 {{ story.title }}
+                {% if story.audio %}<i class="bi bi-headphones text-secondary ms-1" title="{% trans 'Audio available' %}"></i>{% endif %}
                 {% if not story.is_published %}<span class="badge text-bg-warning ms-1">{% trans "Draft" %}</span>{% endif %}
             </span>
             {% if story.summary %}<span class="d-block small text-secondary">{{ story.summary }}</span>{% endif %}
