@@ -1038,7 +1038,6 @@ _GRADE_EXTRAS = {
     },
 }
 
-
 def stage_tier(stage):
     """Championship round (1–3) for a 1-based stage number (1–15)."""
     return min(3, (stage - 1) // 5 + 1)
