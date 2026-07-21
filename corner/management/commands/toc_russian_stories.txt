@@ -10,9 +10,9 @@ AUTHOR:     powerty
 # family, travel, small surprises. Each carries vocab (cn-word spans), 3-4 grammar points
 # (intermediate/advanced Russian patterns actually used in the text, bolded in body),
 # 3 inference comprehension questions, and narration audio (ru-RU voice via gen_corner_audio).
-# Imported via _stories_russian_1_5.py, _stories_russian_6_10.py.
+# Imported via _stories_russian_1_5.py, _stories_russian_6_10.py, _stories_russian_11_15.py.
 # Narration voice alternates by story (see gen_corner_audio --voice per --only <order>):
-# ru-RU-SvetlanaNeural (female, default) for 1-5, 7, 9; ru-RU-DmitryNeural (male) for 6, 8, 10.
+# ru-RU-SvetlanaNeural (female, default) for 1-5, 7, 9, 11, 13, 15; ru-RU-DmitryNeural (male) for 6, 8, 10, 12, 14.
 # ─────────────────────────────────────────────────────────────────────
 
 ## Zamonaviy rus hikoyalari — Modern Russian Stories
@@ -27,3 +27,8 @@ AUTHOR:     powerty
 8. Сосед по общежитию (Yotoqxonadagi qoʻshni — kutilmagan doʻstlik)
 9. Утренняя пробежка (Ertalabki yugurish — taslim boʻlmaslik saboqi)
 10. Старый велосипед (Eski velosiped — ota-oʻgʻil orasidagi mehr)
+11. Ночная смена (Tungi navbatchilik — hamshira va yolgʻiz bemor)
+12. Письмо в бутылке (Butilkadagi xat — bolalik orzusini eslatgan topilma)
+13. Потерянный ключ (Yoʻqolgan kalit — qoʻshnining mehribonligi)
+14. Мастерская отца (Otaning ustaxonasi — hunar va xotira qadri)
+15. Последний рейс автобуса (Avtobusning oxirgi reysi — nafaqaga chiqish arafasidagi kun)

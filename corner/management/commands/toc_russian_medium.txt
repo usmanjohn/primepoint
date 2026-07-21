@@ -26,3 +26,8 @@ AUTHOR:     powerty
 8. Бабушкин секрет (Buvining siri — eski xat orqali oila tarixi ochiladi)
 9. Финал турнира (Turnir finali — kutilmagan gʻalaba, jamoaviy oʻyin saboqi)
 10. Потерянное письмо (Yoʻqolgan xat — yigirma yildan keyin yetib kelgan taʼsirli xabar)
+11. Кулинарный конкурс (Kulinariya tanlovi — kuygan tort kutilmagan gʻalabaga aylanadi)
+12. Потерявшийся кот (Yoʻqolgan mushuk — mahalla birlashib qidiradi)
+13. Опоздание на самолёт (Samolyotga kechikish — begonalar yordami tufayli ulgurish)
+14. Старая гитара (Eski gitara — bozordan topilgan sirli asbob va uni qaytarish)
+15. Встреча выпускников (Bitiruvchilar uchrashuvi — oʻzini boshqalar bilan solishtirishni toʻxtatish saboqi)

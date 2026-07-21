@@ -25,3 +25,8 @@ AUTHOR:     powerty
 8. Погода и планы (Ob-havo va rejalar — dam olish kunlari haqida suhbat)
 9. В автобусе (Avtobusda — chipta va bekat soʻrash)
 10. День рождения (Tugʻilgan kun — bayramga taklif va sovgʻa)
+11. В библиотеке (Kutubxonada — kitobni kechiktirib qaytarish tashvishi)
+12. На почте (Pochtada — posilka joʻnatishdagi kichik adashuv)
+13. Урок плавания (Suzish darsi — suvdan qoʻrqishni yengish)
+14. Новый телефон (Yangi telefon — doʻkondagi tanlov qiynovi)
+15. Пикник у реки (Daryo boʻyida piknik — baliq tutish sarguzashti)
