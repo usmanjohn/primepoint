@@ -1,6 +1,6 @@
 # ── Collection metadata (read by Claude) ─────────────────────────────
 SUBJECT:    Russian            (icon: bi-translate, color: #b91c1c)
-COLLECTION: Oʻrta rus hikoyalari
+COLLECTION: Orta rus hikoyalari
 AUTHOR:     powerty
 # (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
 # Writing rules live in STYLE_GUIDE_CORNER.md. This file is ONLY the ordered story list.
@@ -14,10 +14,15 @@ AUTHOR:     powerty
 # Claude-authored. Imported via _stories_russian_medium_1_5.py.
 # ─────────────────────────────────────────────────────────────────────
 
-## Oʻrta rus hikoyalari — Intermediate Russian Stories
+## Orta rus hikoyalari — Intermediate Russian Stories
 
 1. Потерянный кошелёк (Yoʻqolgan hamyon — halollik sinovi)
 2. Собеседование (Suhbat — ish uchun intervyu tashvishi)
 3. Сюрприз для мамы (Onaga sюрприз — Onalar kuni tayyorgarligi)
 4. Заблудились в лесу (Oʻrmonda adashib qolish — doʻstlar sarguzashti)
 5. Соседи сверху (Ustidagi qoʻshnilar — shovqin muammosidan doʻstlikka)
+6. Первый день на работе (Birinchi ish kuni — yangi hamkasblar bilan tanishuv chalkashligi)
+7. Ночной поезд (Tungi poyezd — begona hamroh bilan hayotiy suhbat)
+8. Бабушкин секрет (Buvining siri — eski xat orqali oila tarixi ochiladi)
+9. Финал турнира (Turnir finali — kutilmagan gʻalaba, jamoaviy oʻyin saboqi)
+10. Потерянное письмо (Yoʻqolgan xat — yigirma yildan keyin yetib kelgan taʼsirli xabar)

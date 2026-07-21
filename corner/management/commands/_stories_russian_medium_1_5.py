@@ -1,4 +1,4 @@
-# Oʻrta rus hikoyalari — stories 1-5 (Claude-authored, pre-intermediate/intermediate B1 level).
+# Orta rus hikoyalari — stories 1-5 (Claude-authored, pre-intermediate/intermediate B1 level).
 # Import: python manage.py import_corner corner/management/commands/_stories_russian_medium_1_5.py --author=<AUTHOR>
 
 SUBJECT = {
@@ -9,8 +9,8 @@ SUBJECT = {
 }
 
 COLLECTION = {
-    "title":       "Oʻrta rus hikoyalari",
-    "description": "Oʻrta daraja (B1) — kengroq lugʻat va grammatika bilan qiziqarli hikoyalar, oson va zamonaviy toʻplamlar orasidagi bosqich.",
+    "title":       "Orta rus hikoyalari",
+    "description": "Orta daraja (B1) — kengroq lugʻat va grammatika bilan qiziqarli hikoyalar, oson va zamonaviy toʻplamlar orasidagi bosqich.",
     "order":       2,
 }
 
