@@ -1,0 +1,29 @@
+# ── Collection metadata (read by Claude) ─────────────────────────────
+SUBJECT:    Russian            (icon: bi-translate, color: #b91c1c)
+COLLECTION: Zamonaviy rus hikoyalari
+AUTHOR:     powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_CORNER.md. This file is ONLY the ordered story list.
+# The number = the story's `order` within the collection.
+# Level: intermediate-advanced reading passages; Uzbek vocab marks (data-tr), never English.
+# Claude-authored modern short stories (not textbook facts) — daily life, friendship,
+# family, travel, small surprises. Each carries vocab (cn-word spans), 3-4 grammar points
+# (intermediate/advanced Russian patterns actually used in the text, bolded in body),
+# 3 inference comprehension questions, and narration audio (ru-RU voice via gen_corner_audio).
+# Imported via _stories_russian_1_5.py, _stories_russian_6_10.py.
+# Narration voice alternates by story (see gen_corner_audio --voice per --only <order>):
+# ru-RU-SvetlanaNeural (female, default) for 1-5, 7, 9; ru-RU-DmitryNeural (male) for 6, 8, 10.
+# ─────────────────────────────────────────────────────────────────────
+
+## Zamonaviy rus hikoyalari — Modern Russian Stories
+
+1. Кофе на набережной (Sohilbo'yidagi qahva — tasodifiy uchrashuv)
+2. Опоздавший поезд (Kechikkan poyezd — taqdirning hazili)
+3. Бабушкины блины (Buvijonning bliniari — oila anʼanasi)
+4. Новый сосед (Yangi qoʻshni — mushukcha doʻstlashtiradi)
+5. Фотография из детства (Bolalikdagi surat — eski doʻstni topish)
+6. Дождь в чужом городе (Notanish shahardagi yomgʻir — mehribon doʻkonchi ayol)
+7. Экзамен по вождению (Haydovchilik imtihoni — oʻziga ishonishni oʻrganish)
+8. Сосед по общежитию (Yotoqxonadagi qoʻshni — kutilmagan doʻstlik)
+9. Утренняя пробежка (Ertalabki yugurish — taslim boʻlmaslik saboqi)
+10. Старый велосипед (Eski velosiped — ota-oʻgʻil orasidagi mehr)

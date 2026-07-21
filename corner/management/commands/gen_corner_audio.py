@@ -45,6 +45,7 @@ from corner.models import Collection
 SUBJECT_VOICES = {
     'Korean':  'ko-KR-SunHiNeural',
     'English': 'en-US-JennyNeural',
+    'Russian': 'ru-RU-SvetlanaNeural',
 }
 DEFAULT_VOICE = 'ko-KR-SunHiNeural'
 
