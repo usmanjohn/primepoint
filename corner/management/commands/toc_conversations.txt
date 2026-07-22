@@ -21,9 +21,18 @@ AUTHOR:     powerty
 # Then one `import_corner_audio` pass over the whole output folder attaches them all.
 # Voices used so far (mix genders/pairs for variety — see edge-tts --list-voices for
 # more en-US options): story 1 Jenny/Guy, 2 Ava/Christopher, 3 Jenny/Eric,
-# 4 Aria/Roger, 5 Jenny/Aria (two female friends), 6 Guy/Christopher (two male friends).
+# 4 Aria/Roger, 5 Jenny/Aria (two female friends), 6 Guy/Christopher (two male friends),
+# 7 Emma/Brian, 8 Michelle/Andrew, 9 Steffan/Eric (two male teammates), 10 Ava/Roger,
+# 11 Christopher/Jenny, 12 Aria/Emma (mother-daughter, two female).
 #
-# Imported via _stories_conversations_1_6.py.
+# Keep grammar patterns FRESH across stories too — don't repeat one already used.
+# Used so far: I didn't mean to, It's okay to, Have you ever, Why don't we, used to,
+# It's okay to feel, should, What if, I wish, Even though, don't have to,
+# It's okay not to, as...as, stop+-ing, should have+pp, be supposed to, even if,
+# no matter what, not as...as before, it's hard to see+someone+-ing, instead of+-ing,
+# from now on, be proud of, at first...but now.
+#
+# Imported via _stories_conversations_1_6.py (1-6), _stories_conversations_7_12.py (7-12).
 # ─────────────────────────────────────────────────────────────────────
 
 ## Everyday Conversations
@@ -34,3 +43,9 @@ AUTHOR:     powerty
 4. You Can Do This (Mom & Leo — imtihon oldidan xavotir va tasalli)
 5. I Miss You Already (Grace & Sophie — masofadagi doʻstlik)
 6. It's Okay to Not Be Okay (Ben & Alex — qiynalayotganini tan olish)
+7. You Don't Have to Be Perfect (Emma & Liam — ijtimoiy tarmoqda solishtirish)
+8. I Saw What Happened (Priya & Marcus — zoʻravonlikka qarshi ovoz koʻtarish)
+9. It Wasn't Fair, But... (Jordan & Casey — sportda mag'lubiyat va sabr)
+10. Grandpa's Not the Same (Yuki & Kenji — bobo xotirasi zaiflashishi)
+11. I Didn't Study, I Lied (Diego & Mom — yolgʻon va halollik)
+12. New Country, New Words (Aisha & Mom — yangi tilni oʻrganish, faxr)
