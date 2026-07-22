@@ -1,0 +1,39 @@
+# ── Collection metadata (read by Claude) ─────────────────────────────
+SUBJECT:    English           (icon: bi-globe2, color: #2563eb)
+COLLECTION: Life Stories
+AUTHOR:     powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_CORNER.md. This file is ONLY the ordered story list.
+# The number = the story's `order` within the collection.
+# Level: upper-intermediate/advanced (B2-C1). NARRATIVE style, like the Keimyung Korean
+# readings (esp. #20 "창문과 옷장") — first-person/close human-interest stories with a
+# quiet twist or life lesson, NOT the short "wow-fact" style of Easy/Medium/Advanced Reads.
+# Full readings: ~18-27 vocab marks (Uzbek), 3-4 grammar points (real English structures,
+# in English with Uzbek meaning), 3 inference questions. Claude-authored (no source text).
+# Keep grammar patterns FRESH across stories — don't repeat a pattern already used earlier
+# in the collection (batch 1 used: without+-ing, not X but Y, once+pp, for as long as,
+# as though+past, rather than+-ing, adj+enough to, by the time, what-cleft, happen to,
+# willing to, watch+bare infinitive, the way+clause, not because...but because, whenever,
+# it was only later that, just because, more than a little, before+could, adj+enough that,
+# 3rd conditional, turn out to be; batch 2 added: little did I know, were it not for,
+# so+adj+that, not until+did, used to, despite, no matter how, so as to, such a+noun+that,
+# as long as, let alone, the moment, not that, neither...nor, much as, given that,
+# hardly had...when, provided that, far from+-ing, not only...but also, unless, albeit,
+# the fact that, so that).
+# Imported via _stories_life_1_6.py (1-6), _stories_life_7_12.py (7-12).
+# ─────────────────────────────────────────────────────────────────────
+
+## Life Stories
+
+1. The Umbrella at Gate 14 (Soyabon — kichik yaxshilikning davomi)
+2. The Silent Piano (Jim pianino — buzuq emas, kutayotgan edi)
+3. The Wrong Building (Notoʻgʻri bino — xato orqali topilgan ish)
+4. The Last Bus Home (Oxirgi avtobus — notanish odamning yordami)
+5. My Neighbor's Garden (Qoʻshnimning bogʻi — idrok va hukm haqida)
+6. Two Left Gloves (Ikkita chap qoʻlqop — xato orqali topilgan doʻstlar)
+7. The Photograph in the Wallet (Hamyondagi fotosurat — ajralgan opa-uka)
+8. The Bicycle Doctor (Velosiped doʻxtiri — yoʻqotish va mehr-shafqat)
+9. The Recipe with No Name (Nomsiz retsept — sabr va vaqt haqida)
+10. The Wrong Number (Xato raqam — anonim doʻstlik)
+11. The Last Lecture (Oxirgi maʼruza — sovuq professor, iliq qalb)
+12. The Empty Chair (Boʻsh stol — doʻstga bagʻishlangan marosim)

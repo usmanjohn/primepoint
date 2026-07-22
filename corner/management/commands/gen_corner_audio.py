@@ -24,7 +24,9 @@ Output files are named ``<order>.mp3`` — exactly the naming that
 Options: ``--only <order>`` regenerates a single story; ``--overwrite``
 regenerates files that already exist in the output folder; ``--gap`` changes
 the pause between paragraphs (seconds); ``--rate`` adjusts speaking speed
-(e.g. "-10%").
+(e.g. "-10%"); ``--voices "en-US-JennyNeural,en-US-GuyNeural"`` cycles through
+several narrator voices across the collection's stories (e.g. alternating
+female/male), overriding the single ``--voice``/subject default.
 """
 
 import asyncio
@@ -81,6 +83,9 @@ class Command(BaseCommand):
                             help='Speaking rate for edge-tts, e.g. "-10%%" (default "-5%%").')
         parser.add_argument('--voice', default=None,
                             help='Override the narrator voice (default: by subject).')
+        parser.add_argument('--voices', default=None,
+                            help='Comma-separated voices to cycle through across stories, '
+                                 'e.g. alternating male/female narrators (overrides --voice).')
 
     # ── text extraction ─────────────────────────────────────────────────────
 
@@ -156,8 +161,10 @@ class Command(BaseCommand):
         except Collection.DoesNotExist:
             raise CommandError(f"Collection '{options['collection']}' not found.")
 
-        voice = options['voice'] or SUBJECT_VOICES.get(collection.subject.name, DEFAULT_VOICE)
-        korean = voice.startswith('ko-')
+        if options['voices']:
+            voices = [v.strip() for v in options['voices'].split(',') if v.strip()]
+        else:
+            voices = [options['voice'] or SUBJECT_VOICES.get(collection.subject.name, DEFAULT_VOICE)]
 
         out_dir = options['out'] or os.path.join(
             'corner', 'management', 'commands', 'audio', collection.slug)
@@ -172,7 +179,9 @@ class Command(BaseCommand):
 
         done = skipped = 0
         total = stories.count()
-        for story in stories:
+        for i, story in enumerate(stories):
+            voice = voices[i % len(voices)]
+            korean = voice.startswith('ko-')
             out_path = os.path.join(out_dir, f'{story.order:02d}.mp3')
             if os.path.exists(out_path) and not options['overwrite']:
                 skipped += 1
@@ -192,8 +201,8 @@ class Command(BaseCommand):
             done += 1
             self.stdout.write(self.style.SUCCESS(
                 f'[{done}/{total}] {os.path.basename(out_path)}  '
-                f'({len(chunks)} paragraphs, {size_kb} KB)  {story.title}'))
+                f'({len(chunks)} paragraphs, {size_kb} KB, voice: {voice})  {story.title}'))
 
         self.stdout.write(self.style.SUCCESS(
             f'\nDone. {done} generated, {skipped} skipped '
-            f'(voice: {voice}, out: {out_dir}).'))
+            f'(voices: {", ".join(voices)}, out: {out_dir}).'))
