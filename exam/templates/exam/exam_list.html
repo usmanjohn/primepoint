@@ -130,6 +130,8 @@
   <p class="exam-hero-sub">{% trans "Complete timed exams — Listening → Reading → Writing in sequence." %}</p>
 </div>
 
+{% include "includes/guest_cta.html" %}
+
 {% if exams %}
   {% regroup exams by get_language_display as lang_groups %}
   {% for group in lang_groups %}

@@ -46,6 +46,11 @@
             {% if state.best_streak >= 3 %}
             <p style="color:var(--text-muted); font-size:0.88rem;" class="mb-4">&#x1F525; Eng uzun seriya: <strong>{{ state.best_streak }}</strong> ta ketma-ket to'g'ri javob!</p>
             {% endif %}
+            {% if not user.is_authenticated %}
+            <p class="mb-4 p-2 rounded-3" style="background:#eff6ff; color:#1e40af; font-size:0.85rem;">
+                &#x1F43C; Bu natija saqlanmadi — <a href="{% url 'register' %}" style="color:#1d4ed8;">ro'yxatdan o'tsang</a>, chempionlar jadvaliga tushasan!
+            </p>
+            {% endif %}
             <form method="post" action="{% url 'mathchamp_home' %}" class="mb-2">
                 {% csrf_token %}
                 <input type="hidden" name="action" value="start">
@@ -93,6 +98,11 @@
                     </div>
                 </div>
             </div>
+            {% if not user.is_authenticated %}
+            <p class="mb-4 p-2 rounded-3" style="background:#eff6ff; color:#1e40af; font-size:0.85rem;">
+                &#x1F43C; Bu natija saqlanmadi — <a href="{% url 'register' %}" style="color:#1d4ed8;">ro'yxatdan o'tsang</a>, natijalaring saqlanadi!
+            </p>
+            {% endif %}
             <form method="post" action="{% url 'mathchamp_home' %}" class="mb-2">
                 {% csrf_token %}
                 <input type="hidden" name="action" value="start">

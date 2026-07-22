@@ -5869,3 +5869,31 @@ msgstr "Hikoyani tinglang"
 #: corner/templates/corner/collection_detail.html:45
 msgid "Audio available"
 msgstr "Audio mavjud"
+
+#: templates/includes/guest_cta.html:7
+msgid "You're browsing as a guest."
+msgstr "Siz mehmon sifatida ko'ryapsiz."
+
+#: templates/includes/guest_cta.html:8
+msgid ""
+"Everything here is free to try — sign up to save your progress, earn points "
+"and get homework from teachers."
+msgstr ""
+"Bu yerda hamma narsani bepul sinab ko'rish mumkin — ro'yxatdan o'tsangiz, "
+"natijalaringiz saqlanadi, ball to'playsiz va ustozlardan uy vazifasi olasiz."
+
+#: templates/includes/guest_cta.html:12
+msgid "Sign up free"
+msgstr "Bepul ro'yxatdan o'tish"
+
+#: exam/templates/exam/exam_detail.html
+msgid "Log in to start the exam"
+msgstr "Imtihonni boshlash uchun kiring"
+
+#: exam/templates/exam/exam_detail.html practice/templates/practice/practice_detail.html
+msgid "A free account keeps your scores and progress."
+msgstr "Bepul hisob natijalaringiz va progressingizni saqlaydi."
+
+#: practice/templates/practice/practice_detail.html
+msgid "Log in to start"
+msgstr "Boshlash uchun kiring"

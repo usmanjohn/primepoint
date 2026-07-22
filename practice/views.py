@@ -40,7 +40,6 @@ def _auto_link_homework(attempt):
 # ─────────────────────────────────────────────
 # 1. PRACTICE LIST — Browse & filter practices
 # ─────────────────────────────────────────────
-@login_required
 def practice_list(request):
     practices = Practice.objects.filter(is_published=True).select_related(
         'subject', 'master__profile__user'
@@ -132,25 +131,28 @@ def practice_list(request):
 # ─────────────────────────────────────────────
 # 2. PRACTICE DETAIL — Info page before starting
 # ─────────────────────────────────────────────
-@login_required
 def practice_detail(request, pk):
     practice = get_object_or_404(Practice, pk=pk, is_published=True)
 
     question_count = practice.questions.count()
     total_points = sum(q.points for q in practice.questions.all())
 
-    # How many attempts has this panda already made?
-    panda, _ = Panda.objects.get_or_create(profile=request.user.profile)
-    attempt_count = PracticeAttempt.objects.filter(panda=panda, practice=practice).count()
-    can_attempt = practice.max_attempts == 0 or attempt_count < practice.max_attempts
+    # How many attempts has this panda already made? (guests can browse but not start)
+    attempt_count = 0
+    can_attempt = True
+    last_attempt = None
+    if request.user.is_authenticated:
+        panda, _ = Panda.objects.get_or_create(profile=request.user.profile)
+        attempt_count = PracticeAttempt.objects.filter(panda=panda, practice=practice).count()
+        can_attempt = practice.max_attempts == 0 or attempt_count < practice.max_attempts
 
-    # Last completed attempt (for showing previous score)
-    last_attempt = (
-        PracticeAttempt.objects
-        .filter(panda=panda, practice=practice, status='completed')
-        .order_by('-completed_at')
-        .first()
-    )
+        # Last completed attempt (for showing previous score)
+        last_attempt = (
+            PracticeAttempt.objects
+            .filter(panda=panda, practice=practice, status='completed')
+            .order_by('-completed_at')
+            .first()
+        )
 
     context = {
         'practice': practice,

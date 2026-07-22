@@ -59,14 +59,15 @@ def _calculate_mcq_score(attempt, section):
 # ─────────────────────────────────────────────
 # 1. EXAM LIST
 # ─────────────────────────────────────────────
-@login_required
 def exam_list(request):
     exams = Exam.objects.filter(is_published=True)
-    panda = _get_panda(request)
-    attempts_by_exam = {
-        a.exam_id: a
-        for a in ExamAttempt.objects.filter(panda=panda).order_by('-start_time')
-    }
+    attempts_by_exam = {}
+    if request.user.is_authenticated:
+        panda = _get_panda(request)
+        attempts_by_exam = {
+            a.exam_id: a
+            for a in ExamAttempt.objects.filter(panda=panda).order_by('-start_time')
+        }
     context = {
         'exams': exams,
         'attempts_by_exam': attempts_by_exam,
@@ -77,11 +78,12 @@ def exam_list(request):
 # ─────────────────────────────────────────────
 # 2. EXAM DETAIL
 # ─────────────────────────────────────────────
-@login_required
 def exam_detail(request, pk):
     exam = get_object_or_404(Exam, pk=pk, is_published=True)
-    panda = _get_panda(request)
-    last_attempt = ExamAttempt.objects.filter(panda=panda, exam=exam).first()
+    last_attempt = None
+    if request.user.is_authenticated:
+        panda = _get_panda(request)
+        last_attempt = ExamAttempt.objects.filter(panda=panda, exam=exam).first()
     listening_count = exam.questions.filter(section='listening').count()
     reading_count = exam.questions.filter(section='reading').count()
     writing_count = exam.questions.filter(section='writing').count()

@@ -76,7 +76,14 @@
                     {% if last_attempt %}{% trans "Try Again" %}{% else %}{% trans "Start Practice" %}{% endif %}
                 </h6>
 
-                {% if can_attempt %}
+                {% if not user.is_authenticated %}
+                    <a href="{% url 'login' %}?next={{ request.path|urlencode }}" class="btn-auth-primary w-100 text-center py-3 fs-6 text-decoration-none d-block">
+                        {% trans "Log in to start" %}
+                    </a>
+                    <p class="small text-muted text-center mt-3 mb-0">
+                        {% trans "A free account keeps your scores and progress." %}
+                    </p>
+                {% elif can_attempt %}
                     <p class="small text-muted mb-4">
                         {% if practice.max_attempts == 0 %}
                             {% trans "Unlimited attempts available." %}

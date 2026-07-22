@@ -23,6 +23,19 @@
         </div>
     </div>
 
+    {% if not user.is_authenticated %}
+    <div class="d-flex flex-column flex-sm-row align-items-sm-center gap-2 gap-sm-3 mb-4 p-3 rounded-3" style="background:#eff6ff; border:1.5px dashed #93c5fd;">
+        <div style="font-size:1.5rem; line-height:1;">&#x1F43C;</div>
+        <div class="flex-grow-1" style="color:#1e40af; font-size:0.88rem;">
+            <strong>Mehmon sifatida o'ynayapsan.</strong> Bemalol sinab ko'r — lekin natijang saqlanmaydi va chempionlar jadvaliga tushmaydi.
+        </div>
+        <div class="d-flex gap-2 flex-shrink-0">
+            <a href="{% url 'login' %}?next={{ request.path|urlencode }}" class="btn-auth-outline">Kirish</a>
+            <a href="{% url 'register' %}" class="btn-auth-primary">Ro'yxatdan o'tish</a>
+        </div>
+    </div>
+    {% endif %}
+
     {% if has_active %}
     <div class="d-flex align-items-center justify-content-between gap-3 mb-4 p-3 rounded-3" style="background:#fef3c7; border:1.5px solid #fbbf24;">
         <div style="color:#92400e;">

@@ -199,12 +199,10 @@ def _build_print_context(puzzle, primary_field, secondary_field, show_answers,
 GAME_COUNT = 12
 
 
-@login_required
 def games_home(request):
     return render(request, 'games/games_home.html')
 
 
-@login_required
 def number_guess(request):
     session = request.session
 
@@ -278,13 +276,11 @@ def number_guess(request):
     return render(request, 'games/number_guess.html', context)
 
 
-@login_required
 def crossword_list(request):
     puzzles = CrosswordPuzzle.objects.filter(is_published=True)
     return render(request, 'games/crossword_list.html', {'puzzles': puzzles})
 
 
-@login_required
 def crossword_play(request, pk):
     puzzle    = get_object_or_404(CrosswordPuzzle, pk=pk, is_published=True)
     grid_data = puzzle.grid_data or {}
@@ -414,13 +410,11 @@ def crossword_print(request, pk):
 # Code Breaker views
 # ---------------------------------------------------------------------------
 
-@login_required
 def codebreaker_list(request):
     puzzles = CodeBreakerPuzzle.objects.filter(is_active=True)
     return render(request, 'games/codebreaker_list.html', {'puzzles': puzzles})
 
 
-@login_required
 def codebreaker_play(request, pk):
     puzzle = get_object_or_404(CodeBreakerPuzzle, pk=pk, is_active=True)
     clues  = list(puzzle.clues.order_by('letter_index'))
@@ -467,7 +461,6 @@ def codebreaker_play(request, pk):
     return render(request, 'games/codebreaker_play.html', context)
 
 
-@login_required
 def codebreaker_check(request, pk):
     if request.method != 'POST':
         return JsonResponse({'error': 'POST only'}, status=405)
@@ -597,13 +590,11 @@ def _pc_correct_numbers(mode, target=None):
     return []
 
 
-@login_required
 def primeclimb_list(request):
     challenges = PrimeClimbChallenge.objects.filter(is_active=True)
     return render(request, 'games/primeclimb_list.html', {'challenges': challenges})
 
 
-@login_required
 def primeclimb_play(request, pk):
     challenge = get_object_or_404(PrimeClimbChallenge, pk=pk, is_active=True)
 
@@ -636,7 +627,6 @@ def primeclimb_play(request, pk):
     return render(request, 'games/primeclimb_play.html', context)
 
 
-@login_required
 def primeclimb_check(request, pk):
     if request.method != 'POST':
         return JsonResponse({'error': 'POST only'}, status=405)
@@ -808,13 +798,11 @@ def _sr_generate_array(difficulty):
 # Sorting Race views
 # ---------------------------------------------------------------------------
 
-@login_required
 def sortingrace_list(request):
     challenges = SortingRaceChallenge.objects.filter(is_active=True)
     return render(request, 'games/sortingrace_list.html', {'challenges': challenges})
 
 
-@login_required
 def sortingrace_play(request, pk):
     challenge = get_object_or_404(SortingRaceChallenge, pk=pk, is_active=True)
 
@@ -865,7 +853,6 @@ def sortingrace_play(request, pk):
     return render(request, 'games/sortingrace_play.html', context)
 
 
-@login_required
 def sortingrace_check(request, pk):
     if request.method != 'POST':
         return JsonResponse({'error': 'POST only'}, status=405)
@@ -958,7 +945,6 @@ def sortingrace_create(request):
 # Word Order Chaos views
 # ---------------------------------------------------------------------------
 
-@login_required
 def wordorder_list(request):
     active_lang = request.GET.get('lang', '')
 
@@ -1000,7 +986,6 @@ def wordorder_list(request):
     })
 
 
-@login_required
 def wordorder_play(request, pk):
     challenge = get_object_or_404(WordOrderChallenge, pk=pk, is_active=True)
 
@@ -1061,7 +1046,6 @@ def wordorder_play(request, pk):
     return render(request, 'games/wordorder_play.html', context)
 
 
-@login_required
 def wordorder_check(request, pk):
     if request.method != 'POST':
         return JsonResponse({'error': 'POST only'}, status=405)
@@ -1144,7 +1128,6 @@ def wordorder_create(request):
 # Odd One Out views
 # ---------------------------------------------------------------------------
 
-@login_required
 def oddoneout_list(request):
     packs = OddOneOutPack.objects.filter(is_active=True)
     return render(request, 'games/oddoneout_list.html', {'packs': packs})
@@ -1240,7 +1223,6 @@ def oddoneout_manage(request, pk):
     return render(request, 'games/oddoneout_manage.html', context)
 
 
-@login_required
 def oddoneout_play(request, pk):
     pack = get_object_or_404(OddOneOutPack, pk=pk, is_active=True)
     questions = list(pack.questions.all())
@@ -1313,7 +1295,6 @@ def oddoneout_play(request, pk):
     return render(request, 'games/oddoneout_play.html', context)
 
 
-@login_required
 def oddoneout_check(request, pk):
     if request.method != 'POST':
         return JsonResponse({'error': 'POST only'}, status=405)
@@ -1365,13 +1346,11 @@ def oddoneout_check(request, pk):
 # English Crossword views
 # ---------------------------------------------------------------------------
 
-@login_required
 def english_crossword_list(request):
     puzzles = EnglishCrossword.objects.filter(is_published=True)
     return render(request, 'games/english_crossword_list.html', {'puzzles': puzzles})
 
 
-@login_required
 def english_crossword_play(request, pk):
     puzzle    = get_object_or_404(EnglishCrossword, pk=pk, is_published=True)
     grid_data = puzzle.grid_data or {}
@@ -1543,13 +1522,11 @@ def generate_word_search(words, size=15):
     return grid, placed
 
 
-@login_required
 def wordsearch_list(request):
     puzzles = WordSearchPuzzle.objects.filter(is_published=True)
     return render(request, 'games/wordsearch_list.html', {'puzzles': puzzles})
 
 
-@login_required
 def wordsearch_play(request, pk):
     puzzle    = get_object_or_404(WordSearchPuzzle, pk=pk, is_published=True)
     grid_data = puzzle.grid_data or {}
@@ -1638,7 +1615,6 @@ def _tn_generate(difficulty):
     return nums, target
 
 
-@login_required
 def target_number(request):
     if request.method == 'POST':
         action = request.POST.get('action')
@@ -1680,7 +1656,6 @@ def target_number(request):
     return render(request, 'games/target_number.html', context)
 
 
-@login_required
 def target_number_check(request):
     if request.method != 'POST':
         return JsonResponse({'error': 'POST only'}, status=405)
@@ -1794,7 +1769,6 @@ def _ms_validate(grid):
     return errors
 
 
-@login_required
 def mathsquare_list(request):
     can_manage = _can_manage_games(request.user)
     puzzles = MathSquarePuzzle.objects.filter(is_published=True)
@@ -1883,7 +1857,6 @@ def mathsquare_edit(request, pk):
     })
 
 
-@login_required
 def mathsquare_play(request, pk):
     puzzle = get_object_or_404(MathSquarePuzzle, pk=pk, is_published=True)
     grid   = puzzle.grid_data or {}
@@ -2046,7 +2019,6 @@ def _mc_save_result(user, state):
     )
 
 
-@login_required
 def mathchamp_home(request):
     if request.method == 'POST' and request.POST.get('action') == 'start':
         try:
@@ -2077,8 +2049,10 @@ def mathchamp_home(request):
                    .order_by('-score', 'elapsed')[:5])
         boards.append({'grade': g, 'top': top})
 
-    my_best = (MathChampResult.objects.filter(user=request.user)
-               .order_by('-score', 'elapsed').first())
+    my_best = None
+    if request.user.is_authenticated:
+        my_best = (MathChampResult.objects.filter(user=request.user)
+                   .order_by('-score', 'elapsed').first())
     state = request.session.get(MC_SESSION_KEY)
     has_active = bool(state) and not state.get('done')
 
@@ -2089,7 +2063,6 @@ def mathchamp_home(request):
     })
 
 
-@login_required
 def mathchamp_play(request):
     state = request.session.get(MC_SESSION_KEY)
     if not state:
@@ -2128,7 +2101,8 @@ def mathchamp_play(request):
                         state['elapsed'] = int(time.time()) - state['start']
                         state['medal'] = MC_MEDAL_BY_HEARTS.get(state['hearts'],
                                                                 MathChampResult.MEDAL_BRONZE)
-                        _mc_save_result(request.user, state)
+                        if request.user.is_authenticated:
+                            _mc_save_result(request.user, state)
                     else:
                         state['stage'] += 1
                         state['q'] = mathchamp.generate_question(
@@ -2147,7 +2121,8 @@ def mathchamp_play(request):
                         state['done'] = True
                         state['elapsed'] = int(time.time()) - state['start']
                         state['medal'] = ''
-                        _mc_save_result(request.user, state)
+                        if request.user.is_authenticated:
+                            _mc_save_result(request.user, state)
                     else:
                         # Same stage, but a fresh question — no second try on
                         # the one they just saw.

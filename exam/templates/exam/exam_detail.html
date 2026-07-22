@@ -125,12 +125,21 @@
         {% endif %}
       {% endif %}
 
+      {% if user.is_authenticated %}
       <form method="post" action="{% url 'start_exam' exam.id %}">
         {% csrf_token %}
         <button type="submit" class="btn-auth w-100">
           {% if last_attempt %}{% trans "Retake Exam" %}{% else %}{% trans "Start Exam" %}{% endif %}
         </button>
       </form>
+      {% else %}
+      <a href="{% url 'login' %}?next={{ request.path|urlencode }}" class="btn-auth w-100 text-center text-decoration-none d-block">
+        {% trans "Log in to start the exam" %}
+      </a>
+      <p class="text-muted text-center mt-2 mb-0" style="font-size:0.75rem;">
+        {% trans "A free account keeps your scores and progress." %}
+      </p>
+      {% endif %}
       <p class="text-muted text-center mt-3" style="font-size:0.75rem;">
         {% trans "Total time:" %} {{ exam.listening_minutes|add:exam.reading_minutes|add:exam.writing_minutes }} {% trans "minutes" %}
       </p>
