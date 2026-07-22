@@ -10,9 +10,10 @@ Scans a ``_lessons_*.py`` data file for blocks that carry BOTH keys::
         ...
     }
 
-and synthesizes each clip with edge-tts (Microsoft neural voices):
-남자/해설 -> ko-KR-InJoonNeural (male), 여자 -> ko-KR-SunHiNeural (female),
-joining the lines with a short silence gap via ffmpeg.
+and synthesizes each clip with edge-tts (Microsoft neural voices). Speaker label ->
+voice mapping lives in VOICES below: 남자/해설 -> ko-KR-InJoonNeural (male), 여자 ->
+ko-KR-SunHiNeural (female) for TOPIK; Man/Woman/Man2/Woman2 -> English GB/US/AU
+neural voices for IELTS. Lines are joined with a short silence gap via ffmpeg.
 
 Requires (dev machine only — NOT in requirements.txt): ``pip install edge-tts``
 and ``ffmpeg`` on PATH. Internet is needed while generating; the resulting mp3s
@@ -35,9 +36,15 @@ import tempfile
 from django.core.management.base import BaseCommand, CommandError
 
 VOICES = {
+    # Korean (TOPIK)
     "남자": "ko-KR-InJoonNeural",
     "여자": "ko-KR-SunHiNeural",
     "해설": "ko-KR-InJoonNeural",
+    # English (IELTS) — see STYLE_GUIDE_IELTS.md §5c/5d for which labels to use per section
+    "Man":     "en-GB-RyanNeural",
+    "Woman":   "en-GB-SoniaNeural",
+    "Man2":    "en-US-GuyNeural",
+    "Woman2":  "en-AU-NatashaNeural",
 }
 DEFAULT_VOICE = "ko-KR-InJoonNeural"
 

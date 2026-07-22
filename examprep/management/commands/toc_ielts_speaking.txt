@@ -1,0 +1,45 @@
+# ── Track metadata (read by Claude) ──────────────────────────────────
+TRACK:  IELTS
+SKILL:  speaking
+AUTHOR: powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules: STYLE_GUIDE_IELTS.md (section 5d = speaking lesson conventions).
+# The number = the lesson's `order` within IELTS + speaking.
+# IELTS Speaking: face-to-face (or video), ~11–14 min, 3 parts, band 0–9. Scored on
+# Fluency & Coherence, Lexical Resource, Grammatical Range & Accuracy, Pronunciation
+# (equal weight). Audio: question voice ("Woman" = examiner) + model-answer voice
+# ("Man" = candidate, for shadowing) via gen_examprep_audio into
+# examprep/management/commands/audio/speaking_<topic>/. Naming:
+# ielts_s_<order 3-digit>_<block n>.mp3.
+# Status: [done] = imported; [next] = not written yet.
+# ─────────────────────────────────────────────────────────────────────
+
+## IELTS — Speaking (qism va mavzu bo'yicha)
+
+## TOPIC: Strategiya va baholash (Overview & Scoring)   [icon bi-compass, topic order 1]  [next]
+1. How IELTS Speaking Is Scored: The Four Criteria Explained
+2. Fillers and Fluency Tricks That Don't Sound Memorized
+
+## TOPIC: 1-qism: Tanish mavzular (Part 1 — Introduction & Interview)   [icon bi-person-lines-fill, topic order 2]  [next]
+10. Part 1 Format: Short, Direct Answers With One Extra Detail
+11. Home, Family, and Daily Routine — Sample Answers
+12. Work/Study and Hobbies — Sample Answers
+
+## TOPIC: 2-qism: Kartochka bo'yicha gapirish (Part 2 — Cue Card / Long Turn)   [icon bi-card-text, topic order 3]  [next]
+20. Part 2 Format: 1-Minute Notes, 2-Minute Talk — the Note-Taking Method
+21. Describing a Person or Place — Structure and Sample Answer
+22. Describing an Event or Experience — Structure and Sample Answer
+23. Describing an Object or Achievement — Structure and Sample Answer
+
+## TOPIC: 3-qism: Chuqur muhokama (Part 3 — Discussion)   [icon bi-chat-dots, topic order 4]  [next]
+30. Part 3 Format: Extending Answers With Reasons and Examples
+31. Comparing Past and Present — Sample Answers
+32. Giving Opinions on Abstract/Society Questions — Sample Answers
+
+## TOPIC: Talaffuz va ravonlik (Pronunciation & Fluency Techniques)   [icon bi-soundwave, topic order 5]  [next]
+40. Sentence Stress and Intonation for Natural-Sounding Answers
+41. Linking Sounds and Connected Speech Basics
+
+## TOPIC: Kartochka mavzular banki (Common Cue Card Topics Bank)   [icon bi-collection, topic order 6]  [next]
+50. High-Frequency Cue Card Topics — Rapid-Fire Practice Round 1
+51. High-Frequency Cue Card Topics — Rapid-Fire Practice Round 2

@@ -1,0 +1,64 @@
+# ── Track metadata (read by Claude) ──────────────────────────────────
+TRACK:  IELTS
+SKILL:  reading
+AUTHOR: powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_IELTS.md. This file is ONLY the ordered lesson list.
+# The number = the lesson's `order` within IELTS + reading.
+# Lessons are grouped into TOPICs = the REAL IELTS Reading question types (Academic
+# module; General Training shares the same question types on easier texts — call that
+# out inside the lesson rather than a separate topic). Each `## TOPIC:` header names the
+# type — pass it as the lesson's "topic" on import. Each topic owns a lesson-order decade.
+# Status: [done] = imported; [next] = not written yet.
+# ─────────────────────────────────────────────────────────────────────
+
+## IELTS — Reading (savol turlari bo'yicha)
+
+## TOPIC: Strategiya va format (Overview & Strategy)   [icon bi-compass, topic order 1]  [next]
+1. How IELTS Reading Works: 3 Passages, 60 Minutes, 40 Questions
+2. Skimming vs Scanning: When to Use Which
+3. Managing Time Across Three Passages (the 20-minute rule)
+4. Academic vs General Training: What Actually Differs
+
+## TOPIC: Haqiqat / Yolg'on / Berilmagan (True / False / Not Given)   [icon bi-check2-square, topic order 2]  [next]
+10. Intro: Statements Based on Facts — the TRUE/FALSE/NOT GIVEN Method
+11. Locating the Matching Sentence (keyword + synonym scanning)
+12. FALSE vs NOT GIVEN: The Trap That Loses the Most Points
+13. Full Passage Practice — Mixed Review
+
+## TOPIC: Ha / Yo'q / Berilmagan (Yes / No / Not Given)   [icon bi-chat-square-text, topic order 3]  [next]
+20. Intro: Writer's Claims/Opinions vs Facts — how YES/NO/NOT GIVEN differs from T/F/NG
+21. Spotting the Writer's Stance (hedging language: may, could, arguably, tend to)
+22. Full Passage Practice — Mixed Review
+
+## TOPIC: Sarlavhalarni moslashtirish (Matching Headings)   [icon bi-list-ol, topic order 4]  [next]
+30. Intro: One Heading per Paragraph — Reading for Gist, Not Detail
+31. Eliminating Distractor Headings (too narrow / too broad / wrong focus)
+32. Topic Sentences and Paragraph Function Words (however, in contrast, therefore)
+33. Full Passage Practice — Mixed Review
+
+## TOPIC: Ma'lumotni moslashtirish (Matching Information / Features / Sentence Endings)   [icon bi-diagram-3, topic order 5]  [next]
+40. Matching Information: Locating Specific Details Across Paragraphs
+41. Matching Features: Names, Dates, and Categories to Statements
+42. Matching Sentence Endings: Grammar as a Filter (only one ending fits grammatically)
+43. Full Passage Practice — Mixed Review
+
+## TOPIC: Ko'p variantli savollar (Multiple Choice)   [icon bi-ui-checks-grid, topic order 6]  [next]
+50. Single-Answer Multiple Choice: Paraphrase Recognition
+51. Multiple-Answer Multiple Choice (choose TWO/THREE letters) — the checklist method
+52. Full Passage Practice — Mixed Review
+
+## TOPIC: Bo'sh joyni to'ldirish (Sentence / Summary / Note / Table / Flow-Chart Completion)   [icon bi-input-cursor-text, topic order 7]  [next]
+60. Sentence Completion: Word-Limit Rules (NO MORE THAN THREE WORDS)
+61. Summary Completion: Predicting Word Type Before You Scan
+62. Note, Table, and Flow-Chart Completion: Following Non-Linear Layouts
+63. Full Passage Practice — Mixed Review
+
+## TOPIC: Diagramma yorlig'ini to'ldirish (Diagram Label Completion)   [icon bi-diagram-2, topic order 8]  [next]
+70. Reading Process/Mechanism Diagrams and Labelling from the Text
+
+## TOPIC: Qisqa javobli savollar (Short-Answer Questions)   [icon bi-question-circle, topic order 9]  [next]
+80. Short-Answer Questions: Finding the Exact Word Limit Answer
+
+## TOPIC: Yakuniy tayyorgarlik (Full Mixed Practice)   [icon bi-flag-fill, topic order 10]  [next]
+90. Grand Mixed Review: a Full Reading Passage Under Time

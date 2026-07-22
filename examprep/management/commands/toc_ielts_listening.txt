@@ -1,0 +1,43 @@
+# ── Track metadata (read by Claude) ──────────────────────────────────
+TRACK:  IELTS
+SKILL:  listening
+AUTHOR: powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules: STYLE_GUIDE_IELTS.md (section 5c = listening lesson conventions,
+# incl. which speaker labels/voices to use per section).
+# The number = the lesson's `order` within IELTS + listening.
+# IELTS Listening: 4 sections, ~30 min + 10 min transfer, 40 questions, difficulty rises
+# section to section. Topics here are grouped by section since that's how the real exam
+# is structured (each section has its own typical question types).
+# Status: [done] = imported; [next] = not written yet.
+# ─────────────────────────────────────────────────────────────────────
+
+## IELTS — Listening (bo'lim va savol turlari bo'yicha)
+
+## TOPIC: Strategiya va format (Overview & Strategy)   [icon bi-compass, topic order 1]  [next]
+1. How IELTS Listening Works: 4 Sections, One Listen, Answer Transfer
+2. Predicting Answers Before Audio Starts (reading ahead)
+3. Spelling, Numbers, Dates, and Common Traps (paraphrase + correction moments)
+
+## TOPIC: 1-bo'lim: Forma/eslatma to'ldirish (Section 1 — Form/Note Completion)   [icon bi-card-checklist, topic order 2]  [next]
+10. Intro to Section 1: Everyday Conversation, Two Speakers (booking/enquiry)
+11. Form Completion Practice — Names, Addresses, Reference Numbers
+12. Note Completion Practice — Mixed Review
+
+## TOPIC: 2-bo'lim: Ko'p variantli va joy belgilash (Section 2 — Multiple Choice & Map/Plan Labelling)   [icon bi-map, topic order 3]  [next]
+20. Intro to Section 2: Monologue, Everyday Context (facilities, tours, announcements)
+21. Multiple Choice Practice — Distractor Patterns (said then corrected)
+22. Map/Plan Labelling Practice — Following Directions in Real Time
+
+## TOPIC: 3-bo'lim: Moslashtirish va munozara (Section 3 — Matching & Discussion Multiple Choice)   [icon bi-people, topic order 4]  [next]
+30. Intro to Section 3: Educational Discussion, Up to 4 Speakers
+31. Tracking Who Says What (opinion vs agreement vs disagreement)
+32. Matching Practice — Assigning Opinions/Tasks to Speakers
+
+## TOPIC: 4-bo'lim: Ma'ruza va xulosa to'ldirish (Section 4 — Academic Lecture, Summary/Note Completion)   [icon bi-mortarboard, topic order 5]  [next]
+40. Intro to Section 4: Academic Monologue, No Pause Between Questions
+41. Following Lecture Structure (signposting language: firstly, in addition, however)
+42. Summary/Note Completion Practice — Dense Academic Vocabulary
+
+## TOPIC: Yakuniy tayyorgarlik (Full Mixed Practice)   [icon bi-flag-fill, topic order 6]  [next]
+50. Grand Mixed Review: One Question From Each Section Type Under Time

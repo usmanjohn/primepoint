@@ -1,0 +1,56 @@
+# ── Track metadata (read by Claude) ──────────────────────────────────
+TRACK:  IELTS
+SKILL:  writing
+AUTHOR: powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_IELTS.md. This file is ONLY the ordered lesson list.
+# The number = the lesson's `order` within IELTS + writing.
+# IELTS Writing: Task 1 (20 min, 150+ words: Academic = describe a graph/chart/diagram;
+# General Training = a letter) + Task 2 (40 min, 250+ words: essay, both modules).
+# Scoring: Task Achievement/Response, Coherence & Cohesion, Lexical Resource, Grammatical
+# Range & Accuracy (equal weight).
+# Status: [done] = imported; [next] = not written yet.
+# ─────────────────────────────────────────────────────────────────────
+
+## IELTS — Writing
+
+## TOPIC: Strategiya va baholash (Overview & Scoring)   [icon bi-compass, topic order 1]  [next]
+1. How IELTS Writing Is Scored: The Four Criteria Explained
+2. Task 1 vs Task 2: Time and Word-Count Budgeting
+
+## TOPIC: 1-topshiriq (Academic): Grafik va diagrammalar (Task 1 Academic — Graphs & Charts)   [icon bi-bar-chart, topic order 2]  [next]
+10. Task 1 Academic Structure: Overview + Key Features (no opinions, no predictions)
+11. Describing Line Graphs and Bar Charts — Trend Vocabulary
+12. Describing Pie Charts and Tables — Comparison Vocabulary
+13. Mixed/Multiple Graphs: Selecting What to Report
+
+## TOPIC: 1-topshiriq (Academic): Jarayon va xarita (Task 1 Academic — Process & Maps)   [icon bi-diagram-3, topic order 3]  [next]
+20. Describing a Process Diagram — Sequencing Language (passive voice focus)
+21. Describing Maps — Before/After Change Language
+
+## TOPIC: 1-topshiriq (General): Xat yozish (Task 1 General Training — Letters)   [icon bi-envelope, topic order 4]  [next]
+30. Formal, Semi-Formal, and Informal Letters: Choosing the Right Tone
+31. Complaint and Request Letters — Structure and Set Phrases
+32. Personal/Social Letters — Structure and Set Phrases
+
+## TOPIC: 2-topshiriq: Fikr bildirish insholari (Task 2 — Opinion Essays)   [icon bi-chat-square-quote, topic order 5]  [next]
+40. Task 2 Structure: Introduction, Body Paragraphs, Conclusion
+41. Agree/Disagree Essays — One-Sided vs Balanced Approach
+42. Thesis Statements That Directly Answer the Question
+
+## TOPIC: 2-topshiriq: Munozara va yechim insholari (Task 2 — Discussion & Problem-Solution Essays)   [icon bi-arrow-left-right, topic order 6]  [next]
+50. Discuss Both Views Essays — Giving Equal Weight
+51. Problem-Solution Essays — Cause and Remedy Structure
+
+## TOPIC: 2-topshiriq: Afzallik/kamchilik va ikki qismli savol (Task 2 — Advantage/Disadvantage & Two-Part Question Essays)   [icon bi-clipboard2-check, topic order 7]  [next]
+60. Advantages/Disadvantages Essays — Weighing Up Structure
+61. Two-Part Question Essays — Answering Both Parts Fully
+
+## TOPIC: Lug'at va bog'lovchilar (Vocabulary & Cohesion for Band 7+)   [icon bi-translate, topic order 8]  [next]
+70. Linking Words That Don't Sound Repetitive (beyond "firstly/moreover")
+71. Topic Vocabulary Bank: Education, Environment, Technology, Health
+72. Paraphrasing the Question in Your Introduction Without Copying
+
+## TOPIC: Grammatika va o'z-o'zini tekshirish (Common Mistakes & Self-Editing)   [icon bi-pencil-square, topic order 9]  [next]
+80. Common Grammar Mistakes That Cap Your Band Score
+81. Self-Editing Checklist Under Time Pressure
