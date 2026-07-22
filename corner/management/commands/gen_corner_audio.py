@@ -27,6 +27,16 @@ the pause between paragraphs (seconds); ``--rate`` adjusts speaking speed
 (e.g. "-10%"); ``--voices "en-US-JennyNeural,en-US-GuyNeural"`` cycles through
 several narrator voices across the collection's stories (e.g. alternating
 female/male), overriding the single ``--voice``/subject default.
+
+For DIALOGUE stories (each ``<p>`` is one speaker's turn, strictly
+alternating), use ``--speaker-voices "voiceA,voiceB"`` instead: it assigns a
+distinct voice to each paragraph in turn (title + odd paragraphs -> voiceA,
+even paragraphs -> voiceB), so the two characters are read in two different
+voices in one clip. Since each dialogue story usually has its own two named
+characters, run it once per story with ``--only``, e.g.::
+
+    python manage.py gen_corner_audio --collection="Everyday Conversations" \
+        --only 1 --speaker-voices "en-US-JennyNeural,en-US-GuyNeural"
 """
 
 import asyncio
@@ -86,6 +96,13 @@ class Command(BaseCommand):
         parser.add_argument('--voices', default=None,
                             help='Comma-separated voices to cycle through across stories, '
                                  'e.g. alternating male/female narrators (overrides --voice).')
+        parser.add_argument('--speaker-voices', default=None,
+                            help='Comma-separated pair of voices to alternate PER PARAGRAPH '
+                                 'within each story (e.g. "en-US-JennyNeural,en-US-GuyNeural") '
+                                 '— for two-speaker dialogue stories where every <p> is one '
+                                 "speaker's turn, strictly alternating. Overrides --voice/--voices. "
+                                 'Best combined with --only, since each dialogue story usually '
+                                 'needs its own voice pair matching its two characters.')
 
     # ── text extraction ─────────────────────────────────────────────────────
 
@@ -105,7 +122,7 @@ class Command(BaseCommand):
 
     # ── synthesis ───────────────────────────────────────────────────────────
 
-    def _make_clip(self, chunks, voice, gap, rate, out_path, workdir):
+    def _make_clip(self, chunks, chunk_voices, gap, rate, out_path, workdir):
         import edge_tts
 
         silence = os.path.join(workdir, 'silence.mp3')
@@ -116,7 +133,7 @@ class Command(BaseCommand):
             check=True)
 
         parts = []
-        for i, text in enumerate(chunks):
+        for i, (text, voice) in enumerate(zip(chunks, chunk_voices)):
             part = os.path.join(workdir, f'chunk{i}.mp3')
             # The TTS service call rides the network — retry transient failures
             # (DNS blips, dropped connections) instead of losing the whole run.
@@ -161,7 +178,13 @@ class Command(BaseCommand):
         except Collection.DoesNotExist:
             raise CommandError(f"Collection '{options['collection']}' not found.")
 
-        if options['voices']:
+        speaker_voices = None
+        if options['speaker_voices']:
+            speaker_voices = [v.strip() for v in options['speaker_voices'].split(',') if v.strip()]
+            if len(speaker_voices) != 2:
+                raise CommandError('--speaker-voices needs exactly two comma-separated voices.')
+            voices = speaker_voices  # only used for the summary line / korean detection
+        elif options['voices']:
             voices = [v.strip() for v in options['voices'].split(',') if v.strip()]
         else:
             voices = [options['voice'] or SUBJECT_VOICES.get(collection.subject.name, DEFAULT_VOICE)]
@@ -194,14 +217,26 @@ class Command(BaseCommand):
                 skipped += 1
                 continue
 
+            if speaker_voices:
+                # chunk 0 = title (speaker A's voice); chunks[1:] alternate A/B per
+                # paragraph, so a strictly-alternating two-speaker dialogue (each <p>
+                # one turn) gets each speaker read in a consistent, distinct voice.
+                chunk_voices = [speaker_voices[0]] + [
+                    speaker_voices[(j - 1) % 2] for j in range(1, len(chunks))
+                ]
+                voice_label = f'{speaker_voices[0]} / {speaker_voices[1]} (alternating)'
+            else:
+                chunk_voices = [voice] * len(chunks)
+                voice_label = voice
+
             with tempfile.TemporaryDirectory() as workdir:
-                self._make_clip(chunks, voice, options['gap'], options['rate'],
+                self._make_clip(chunks, chunk_voices, options['gap'], options['rate'],
                                 out_path, workdir)
             size_kb = os.path.getsize(out_path) // 1024
             done += 1
             self.stdout.write(self.style.SUCCESS(
                 f'[{done}/{total}] {os.path.basename(out_path)}  '
-                f'({len(chunks)} paragraphs, {size_kb} KB, voice: {voice})  {story.title}'))
+                f'({len(chunks)} paragraphs, {size_kb} KB, voice: {voice_label})  {story.title}'))
 
         self.stdout.write(self.style.SUCCESS(
             f'\nDone. {done} generated, {skipped} skipped '

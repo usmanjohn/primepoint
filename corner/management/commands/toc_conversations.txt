@@ -1,0 +1,36 @@
+# ── Collection metadata (read by Claude) ─────────────────────────────
+SUBJECT:    English           (icon: bi-globe2, color: #2563eb)
+COLLECTION: Everyday Conversations
+AUTHOR:     powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_CORNER.md. This file is ONLY the ordered story list.
+# The number = the story's `order` within the collection.
+# Level: easy/elementary (A2-B1) — a NEW FORMAT for English: two-character DIALOGUES,
+# strictly alternating turns (one <p> per turn, no narration lines — needed for
+# gen_corner_audio's --speaker-voices to work, which voices each speaker differently).
+# Topics have real emotional substance (apology, grief, encouragement, distance, mental
+# health) — deliberately NOT shallow "what's your name / where do you study" textbook
+# small talk. ~10-14 vocab marks, 2 grammar points (basic/elementary structures used
+# naturally in the dialogue — modals, question forms, present perfect, wishes, etc.,
+# fresh per story), 3 inference questions. Claude-authored (no source text).
+#
+# AUDIO: generate + attach per story (not per collection) so each dialogue's two
+# characters get two distinct, character-matched voices:
+#   python manage.py gen_corner_audio --collection="Everyday Conversations" --only <N> \
+#       --speaker-voices "<voiceForSpeaker1>,<voiceForSpeaker2>"
+# Then one `import_corner_audio` pass over the whole output folder attaches them all.
+# Voices used so far (mix genders/pairs for variety — see edge-tts --list-voices for
+# more en-US options): story 1 Jenny/Guy, 2 Ava/Christopher, 3 Jenny/Eric,
+# 4 Aria/Roger, 5 Jenny/Aria (two female friends), 6 Guy/Christopher (two male friends).
+#
+# Imported via _stories_conversations_1_6.py.
+# ─────────────────────────────────────────────────────────────────────
+
+## Everyday Conversations
+
+1. I'm Sorry I Said That (Mia & Jake — uzr soʻrash va kechirish)
+2. The New Kid (Zoe & Noah — yangi oʻquvchiga doʻstona yordam)
+3. We Lost Max (Ella & Sam — uy hayvonini yoʻqotish, birga qayg'urish)
+4. You Can Do This (Mom & Leo — imtihon oldidan xavotir va tasalli)
+5. I Miss You Already (Grace & Sophie — masofadagi doʻstlik)
+6. It's Okay to Not Be Okay (Ben & Alex — qiynalayotganini tan olish)

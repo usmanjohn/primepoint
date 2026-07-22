@@ -17,7 +17,24 @@
 - Migrations: `python manage.py makemigrations && python manage.py migrate`
 
 ## Deployment
-- Deployed on railways through github repo.
+- Deployed on railways through github repo. Railway's own deploy step (`railway.toml`
+  startCommand) only runs `migrate` + a couple of `attach_exam_audio` calls — it does
+  **NOT** run any bulk-content import command. Pushing to GitHub alone never gets new
+  tutorials/lessons/stories/drills into the live DB.
+- **Whenever a bulk-content task finishes (tutorials, examprep lessons, Corner stories,
+  Corner writing drills, or anything else added via a `python manage.py import_*`
+  management command) — ALWAYS give the matching `railway run python manage.py ...`
+  command(s) at the end, without being asked.** The user runs these himself after he
+  pushes to GitHub. Use `--author=powerty` (the production admin — local dev uses
+  `prime` instead, see each toc file's AUTHOR header). One line per file imported, in
+  the order the files must be applied (e.g. story data file(s) before an audio-attach
+  step, since the collection/lesson must exist first). Example shape:
+  ```
+  railway run python manage.py import_corner corner/management/commands/_stories_<x>.py --author=powerty
+  railway run python manage.py import_corner_audio corner/management/commands/audio/<slug> --collection="<title>"
+  ```
+  Swap in `import_tutorials` / `import_examprep` / `import_writing` / etc. as appropriate
+  for whichever app the task touched.
 
 ## Creating Tutorials (bulk)
 When the user asks to create/continue tutorials (e.g. "make the next 5 SAT tutorials"):
@@ -30,6 +47,8 @@ When the user asks to create/continue tutorials (e.g. "make the next 5 SAT tutor
    as a `TUTORIALS = [...]` list (titles like `SAT-7: ...`, math as HTML never LaTeX).
 5. Import: `python manage.py import_tutorials <that file> --author=<AUTHOR from toc>`
    (add `--republish` to overwrite existing ones).
+6. Give the `railway run python manage.py import_tutorials ...` command for production
+   (see Deployment section) — automatically, every time.
 Other subjects: add a new `toc_<subject>.txt` with its own PREFIX/CATEGORY; same workflow.
 
 ## Creating examprep lessons (bulk) — TOPIK etc.
@@ -49,6 +68,8 @@ reading/writing/listening prep. When the user asks (e.g. "make the next 5 TOPIK 
    per the style guide). The toc's `## TOPIC:` headers say which topic each lesson is in.
 5. Import: `python manage.py import_examprep <that file> --author=<AUTHOR from toc>`
    (add `--republish` to overwrite existing ones — it rebuilds each lesson's blocks).
+6. Give the `railway run python manage.py import_examprep ...` command for production
+   (see Deployment section) — automatically, every time.
 Other exams/skills: add a new `toc_<exam>_<skill>.txt` with its own TRACK/SKILL; same workflow.
 Note: `exam` (the timed, scored test simulator) is separate — keep mock-test questions there.
 
@@ -69,6 +90,9 @@ When the user asks (e.g. "make the next 5 Keimyung stories"):
    (story text in the target language, translations/summaries in Uzbek per the style guide).
 5. Import: `python manage.py import_corner <that file> --author=<AUTHOR from toc>`
    (add `--republish` to overwrite existing ones — it rebuilds each story's word list).
+6. Give the `railway run python manage.py import_corner ...` command for production (and
+   the matching `import_corner_audio` one if audio was generated too) — see Deployment
+   section — automatically, every time.
 Other collections: add a new `toc_<collection>.txt` with its own SUBJECT/COLLECTION; same workflow.
 
 ## Creating Corner writing drills (bulk) — TOPIK 쓰기 53 etc.
@@ -86,4 +110,6 @@ reveal → auto flashcards from `cn-word` spans). When the user asks (e.g. "make
    as `SUBJECT = {...}` + `PRACTICES = [...]` (Korean exam text, Uzbek translations/tips).
 5. Import: `python manage.py import_writing <that file> --author=<AUTHOR from toc>`
    (add `--republish` to overwrite existing ones — it rebuilds each drill's word list).
+6. Give the `railway run python manage.py import_writing ...` command for production
+   (see Deployment section) — automatically, every time.
 Question types 51/52/54: add a new `toc_topik_writing_<qtype>.txt`; same workflow.

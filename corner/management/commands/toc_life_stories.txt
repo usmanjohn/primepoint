@@ -8,19 +8,28 @@ AUTHOR:     powerty
 # Level: upper-intermediate/advanced (B2-C1). NARRATIVE style, like the Keimyung Korean
 # readings (esp. #20 "창문과 옷장") — first-person/close human-interest stories with a
 # quiet twist or life lesson, NOT the short "wow-fact" style of Easy/Medium/Advanced Reads.
-# Full readings: ~18-27 vocab marks (Uzbek), 3-4 grammar points (real English structures,
+# Full readings: ~17-27 vocab marks (Uzbek), 3-4 grammar points (real English structures,
 # in English with Uzbek meaning), 3 inference questions. Claude-authored (no source text).
 # Keep grammar patterns FRESH across stories — don't repeat a pattern already used earlier
-# in the collection (batch 1 used: without+-ing, not X but Y, once+pp, for as long as,
-# as though+past, rather than+-ing, adj+enough to, by the time, what-cleft, happen to,
-# willing to, watch+bare infinitive, the way+clause, not because...but because, whenever,
-# it was only later that, just because, more than a little, before+could, adj+enough that,
-# 3rd conditional, turn out to be; batch 2 added: little did I know, were it not for,
-# so+adj+that, not until+did, used to, despite, no matter how, so as to, such a+noun+that,
-# as long as, let alone, the moment, not that, neither...nor, much as, given that,
-# hardly had...when, provided that, far from+-ing, not only...but also, unless, albeit,
-# the fact that, so that).
-# Imported via _stories_life_1_6.py (1-6), _stories_life_7_12.py (7-12).
+# in the collection. Patterns used so far:
+#   batch 1: without+-ing, not X but Y, once+pp, for as long as, as though+past,
+#     rather than+-ing, adj+enough to, by the time, what-cleft, happen to, willing to,
+#     watch+bare infinitive, the way+clause, not because...but because, whenever,
+#     it was only later that, just because, more than a little, before+could,
+#     adj+enough that, 3rd conditional, turn out to be
+#   batch 2: little did I know, were it not for, so+adj+that, not until+did, used to,
+#     despite, no matter how, so as to, such a+noun+that, as long as, let alone,
+#     the moment, not that, neither...nor, much as, given that, hardly had...when,
+#     provided that, far from+-ing, not only...but also, unless, albeit,
+#     the fact that, so that
+#   batch 3: on the verge of+-ing, before long, if only+past perfect, had I known
+#     (inversion), little by little, as good as, not to mention, come to think of it,
+#     all but+verb, so much so that, for the sake of, under no circumstances (inversion),
+#     on+-ing, for fear of/that, next to impossible, to this day, as far as+clause,
+#     in case+clause, no sooner had...than (inversion), if anything, otherwise,
+#     as luck would have it, in no time, no longer
+# Imported via _stories_life_1_6.py (1-6), _stories_life_7_12.py (7-12),
+# _stories_life_13_18.py (13-18).
 # ─────────────────────────────────────────────────────────────────────
 
 ## Life Stories
@@ -37,3 +46,9 @@ AUTHOR:     powerty
 10. The Wrong Number (Xato raqam — anonim doʻstlik)
 11. The Last Lecture (Oxirgi maʼruza — sovuq professor, iliq qalb)
 12. The Empty Chair (Boʻsh stol — doʻstga bagʻishlangan marosim)
+13. The Substitute (Oʻrinbosar oʻqituvchi — hayotni oʻzgartirgan bir kun)
+14. The Music Box (Musiqa qutisi — uch avlodlik alla)
+15. The Rooftop Garden (Tomdagi bogʻ — sezdirmasdan yordam)
+16. The Voicemail I Never Deleted (Oʻchirmagan ovozli xabar — otaning ovozi)
+17. The Interpreter Who Couldn't Translate Everything (Tarjimon — soʻzsiz tushunish)
+18. The Spare Key (Zaxira kalit — yillik ishonchning mevasi)
