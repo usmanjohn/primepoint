@@ -26,12 +26,12 @@ AUTHOR: powerty
 12. FALSE vs NOT GIVEN: The Trap That Loses the Most Points
 13. Full Passage Practice — Mixed Review
 
-## TOPIC: Ha / Yo'q / Berilmagan (Yes / No / Not Given)   [icon bi-chat-square-text, topic order 3]  [20-21 done; 22 next]
+## TOPIC: Ha / Yo'q / Berilmagan (Yes / No / Not Given)   [icon bi-chat-square-text, topic order 3]  [done]
 20. Intro: Writer's Claims/Opinions vs Facts — how YES/NO/NOT GIVEN differs from T/F/NG
 21. Spotting the Writer's Stance (hedging language: may, could, arguably, tend to)
 22. Full Passage Practice — Mixed Review
 
-## TOPIC: Sarlavhalarni moslashtirish (Matching Headings)   [icon bi-list-ol, topic order 4]  [next]
+## TOPIC: Sarlavhalarni moslashtirish (Matching Headings)   [icon bi-list-ol, topic order 4]  [done]
 30. Intro: One Heading per Paragraph — Reading for Gist, Not Detail
 31. Eliminating Distractor Headings (too narrow / too broad / wrong focus)
 32. Topic Sentences and Paragraph Function Words (however, in contrast, therefore)
