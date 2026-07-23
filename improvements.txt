@@ -9,3 +9,7 @@ that can not be divided by subjects, maybe if so we will show them always, not s
 trying my broest! Or may be we will show them what do you want to learn with cards with all of our subjects and when they choose one 
 or some of them or all we will say here you go, not sure. The latter way may work for even not logged in users, I mean guests,       
 whenever they come to our platform. Not sure my broest! Help me, improvise, and the mic is yours! 
+
+python manage.py import_examprep examprep/management/commands/_lessons_ielts_reading_40_43.py --author=powerty
+python manage.py import_examprep examprep/management/commands/_lessons_ielts_reading_50_52.py --author=powerty
+python manage.py import_examprep examprep/management/commands/_lessons_ielts_reading_70.py --author=powerty
