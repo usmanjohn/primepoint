@@ -20,13 +20,13 @@ AUTHOR: powerty
 3. Managing Time Across Three Passages (the 20-minute rule)
 4. Academic vs General Training: What Actually Differs
 
-## TOPIC: Haqiqat / Yolg'on / Berilmagan (True / False / Not Given)   [icon bi-check2-square, topic order 2]  [next]
+## TOPIC: Haqiqat / Yolg'on / Berilmagan (True / False / Not Given)   [icon bi-check2-square, topic order 2]  [done]
 10. Intro: Statements Based on Facts — the TRUE/FALSE/NOT GIVEN Method
 11. Locating the Matching Sentence (keyword + synonym scanning)
 12. FALSE vs NOT GIVEN: The Trap That Loses the Most Points
 13. Full Passage Practice — Mixed Review
 
-## TOPIC: Ha / Yo'q / Berilmagan (Yes / No / Not Given)   [icon bi-chat-square-text, topic order 3]  [next]
+## TOPIC: Ha / Yo'q / Berilmagan (Yes / No / Not Given)   [icon bi-chat-square-text, topic order 3]  [20-21 done; 22 next]
 20. Intro: Writer's Claims/Opinions vs Facts — how YES/NO/NOT GIVEN differs from T/F/NG
 21. Spotting the Writer's Stance (hedging language: may, could, arguably, tend to)
 22. Full Passage Practice — Mixed Review
