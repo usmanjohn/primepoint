@@ -6,6 +6,12 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
 from django.contrib.auth.models import User
+from django.utils.translation import gettext as _
+
+from prime.subjects import (
+    SUBJECT_MAP, SUBJECT_SLUGS, SESSION_KEY,
+    get_study_subjects, has_chosen_subjects,
+)
 
 from masters.models import Master
 from practice.models import Practice, PracticeAttempt
@@ -99,7 +105,42 @@ def index(request):
                     'avg_rating': float(master.avg_rating),
                 }
 
-    return render(request, 'prime/index.html', {'stats': stats, 'my_stats': my_stats})
+    slugs = get_study_subjects(request)
+    show_picker = not has_chosen_subjects(request) or request.GET.get('choose')
+    study_apps = None
+    if slugs:
+        study_apps = {
+            'practice': any(SUBJECT_MAP[s]['practice_names'] for s in slugs),
+            'tutorial': any(SUBJECT_MAP[s]['tutorial_categories'] for s in slugs),
+            'examprep': any(SUBJECT_MAP[s]['examprep_tracks'] for s in slugs),
+            'corner': any(SUBJECT_MAP[s]['corner_subjects'] for s in slugs),
+            'exam': any(SUBJECT_MAP[s]['exam_languages'] for s in slugs),
+        }
+
+    return render(request, 'prime/index.html', {
+        'stats': stats,
+        'my_stats': my_stats,
+        'show_picker': show_picker,
+        'study_apps': study_apps,
+    })
+
+
+def set_study_subjects(request):
+    if request.method != 'POST':
+        return redirect('index')
+    if request.POST.get('everything'):
+        raw = 'all'
+    else:
+        picked = [s for s in request.POST.getlist('subjects') if s in SUBJECT_SLUGS]
+        raw = ','.join(picked) if picked and len(picked) < len(SUBJECT_SLUGS) else 'all'
+    if request.user.is_authenticated:
+        profile = request.user.profile
+        profile.study_subjects = raw
+        profile.save(update_fields=['study_subjects'])
+    else:
+        request.session[SESSION_KEY] = raw
+    messages.success(request, _('Your study subjects have been saved.'))
+    return redirect('profile' if request.POST.get('next') == 'profile' else 'index')
 
 
 def about(request):

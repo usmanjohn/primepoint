@@ -240,6 +240,33 @@
                 </form>
             </div>
         </div>
+
+        <!-- Study Subjects (own profile only) -->
+        <div class="card profile-card mt-4">
+            <div class="card-header d-flex align-items-center gap-2">
+                <i class="bi bi-bookmark-star text-accent"></i>
+                {% trans "Study Subjects" %}
+            </div>
+            <div class="card-body">
+                <span class="small text-muted d-block mb-2">{% trans "Choose what you want to learn — the site will show those subjects first." %}</span>
+                <form method="post" action="{% url 'set_study_subjects' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="profile">
+                    <div class="d-flex flex-column gap-1 mb-3">
+                        {% for s in all_study_subjects %}
+                        <label class="d-flex align-items-center gap-2" style="font-size:0.85rem; cursor:pointer; padding:0.4rem 0.6rem; border:1px solid var(--border); border-radius:8px;">
+                            <input type="checkbox" name="subjects" value="{{ s.slug }}"
+                                {% if not study_subject_slugs or s.slug in study_subject_slugs %}checked{% endif %}
+                                style="accent-color:var(--accent);">
+                            <i class="bi {{ s.icon }}" style="color:{{ s.color }};"></i>
+                            <span class="fw-semibold">{{ s.name }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                    <button type="submit" class="btn-core-outline w-100" style="font-size:0.82rem;">{% trans "Save Subjects" %}</button>
+                </form>
+            </div>
+        </div>
         {% endif %}
 
     </div>

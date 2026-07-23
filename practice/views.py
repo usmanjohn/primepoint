@@ -13,6 +13,7 @@ _ILLEGAL_CHARS_RE = re.compile(r'[\x00-\x08\x0b\x0c\x0e-\x1f]')
 
 from .models import Practice, PracticeQuestion, PracticeChoice, PracticeAttempt, UserAnswer, Subject
 from .forms import PracticeForm, PracticeQuestionForm
+from prime.subjects import get_study_subjects, value_visible
 
 SUBJECT_PALETTE = [
     '#38bdf8',  # sky blue
@@ -92,6 +93,20 @@ def practice_list(request):
     # Landing view: show subject cards when the user hasn't filtered/searched yet
     browse_subjects = not any([subject_id, level, master_id, query, is_free == '1'])
 
+    # Study-subject preference: applies only without an explicit filter or ?all=1
+    personalized = False
+    study_slugs = get_study_subjects(request)
+    if study_slugs and not subject_id and not request.GET.get('all'):
+        allowed_ids = [
+            s.pk for s in subjects
+            if value_visible(s.name, study_slugs, 'practice_names', normalize=True)
+        ]
+        practices = practices.filter(
+            Q(subject__isnull=True) | Q(subject_id__in=allowed_ids)
+        )
+        subjects = [s for s in subjects if s.pk in allowed_ids]
+        personalized = True
+
     masters = Master.objects.filter(practices__is_published=True).select_related(
         'profile__user'
     ).distinct()
@@ -124,6 +139,7 @@ def practice_list(request):
         'subject_color_map': subject_color_map,
         'browse_subjects': browse_subjects,
         'uncategorized_count': uncategorized_count,
+        'personalized': personalized,
     }
     return render(request, 'practice/practice_list.html', context)
 

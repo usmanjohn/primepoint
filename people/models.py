@@ -55,7 +55,10 @@ class Profile(models.Model):
     biography = models.TextField(blank=True)
     image = models.ImageField(upload_to='profile_images/', blank=True, null=True)
     link = models.URLField(blank=True)
-    
+    # Comma-separated study subject slugs (see prime/subjects.py).
+    # '' = never chosen, 'all' = everything, else e.g. 'english,korean'.
+    study_subjects = models.CharField(max_length=120, blank=True, default='')
+
     is_admin = models.BooleanField(default=False)
     is_director = models.BooleanField(default=False)
     is_cofounder = models.BooleanField(default=False)

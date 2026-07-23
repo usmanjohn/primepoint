@@ -9,6 +9,7 @@ from django.views.decorators.http import require_POST
 from .models import (Subject, Collection, Story, StoryProgress,
                      WritingTemplate, WritingPractice, WritingPracticeProgress,
                      STORY_POINTS, WRITING_POINTS)
+from prime.subjects import get_study_subjects, value_visible
 
 
 def _can_edit(user, story):
@@ -47,12 +48,20 @@ def corner_home(request):
                                  distinct=True),
         )
     )
+    # Study-subject preference: applies unless the visitor asked for ?all=1
+    personalized = False
+    slugs = get_study_subjects(request)
+    if slugs and not request.GET.get('all'):
+        subjects = [s for s in subjects
+                    if value_visible(s.slug, slugs, 'corner_subjects')]
+        personalized = True
     template_total = WritingTemplate.objects.filter(is_published=True).count()
     writing_total = WritingPractice.objects.filter(is_published=True).count()
     return render(request, 'corner/home.html', {
         'subjects': subjects,
         'template_total': template_total,
         'writing_total': writing_total,
+        'personalized': personalized,
     })
 
 

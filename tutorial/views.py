@@ -8,6 +8,7 @@ from django.http import JsonResponse
 
 from .models import Tutorial, TutorialReaction, TutorialPlaylist, PlaylistTutorial, CATEGORY_CHOICES
 from .forms import TutorialForm, TutorialPlaylistForm
+from prime.subjects import get_study_subjects, allowed_values, mapped_values
 
 
 def _save_playlist_assignment(tutorial, form):
@@ -42,6 +43,15 @@ def tutorial_list(request):
     if category:
         qs = qs.filter(category=category)
 
+    # Study-subject preference: applies only without an explicit filter or ?all=1
+    personalized = False
+    slugs = get_study_subjects(request)
+    if slugs and not category and not request.GET.get('all'):
+        chosen = allowed_values(slugs, 'tutorial_categories')
+        unmapped = {c for c, _ in CATEGORY_CHOICES} - mapped_values('tutorial_categories')
+        qs = qs.filter(category__in=chosen | unmapped)
+        personalized = True
+
     paginator = Paginator(qs, 12)
     tutorials  = paginator.get_page(request.GET.get('page'))
 
@@ -51,6 +61,7 @@ def tutorial_list(request):
         'categories':      CATEGORY_CHOICES,
         'can_create':      _can_create(request.user),
         'total_count':     Tutorial.objects.filter(is_published=True).count(),
+        'personalized':    personalized,
     })
 
 

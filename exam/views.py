@@ -8,6 +8,7 @@ from django.utils import timezone
 
 from panda.models import Panda
 from .models import Exam, ExamPassage, ExamQuestion, ExamChoice, ExamAttempt, ExamAnswer
+from prime.subjects import get_study_subjects, allowed_values, mapped_values
 
 SECTION_ORDER = ['listening', 'reading', 'writing']
 SECTION_LABELS = {
@@ -61,6 +62,14 @@ def _calculate_mcq_score(attempt, section):
 # ─────────────────────────────────────────────
 def exam_list(request):
     exams = Exam.objects.filter(is_published=True)
+    # Study-subject preference: applies unless the visitor asked for ?all=1
+    personalized = False
+    slugs = get_study_subjects(request)
+    if slugs and not request.GET.get('all'):
+        chosen = allowed_values(slugs, 'exam_languages')
+        unmapped = {c for c, _ in Exam.LANGUAGE_CHOICES} - mapped_values('exam_languages')
+        exams = exams.filter(language__in=chosen | unmapped)
+        personalized = True
     attempts_by_exam = {}
     if request.user.is_authenticated:
         panda = _get_panda(request)
@@ -71,6 +80,7 @@ def exam_list(request):
     context = {
         'exams': exams,
         'attempts_by_exam': attempts_by_exam,
+        'personalized': personalized,
     }
     return render(request, 'exam/exam_list.html', context)
 

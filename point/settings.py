@@ -82,6 +82,7 @@ _template_options = {
         'django.template.context_processors.i18n',
         'people.context_processors.notification_context',
         'people.context_processors.nav_counts',
+        'prime.context_processors.study_subjects',
     ],
 }
 # In production, wrap loaders with the cached loader so templates are compiled once per worker.

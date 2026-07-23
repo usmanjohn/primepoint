@@ -903,6 +903,17 @@ h1, h2, h3, h4, h5, h6, .font-display {
     color: white; font-size: 12px;
     position: absolute; left: 3px; top: -1px;
 }
+/* No-JS selected state: mirror .selected whenever the wrapped input is checked */
+.choice-card:has(input:checked) {
+    border-color: var(--accent);
+    background: var(--accent-glow);
+}
+.choice-card:has(input:checked) .choice-check { background: var(--accent); border-color: var(--accent); }
+.choice-card:has(input:checked) .choice-check::after {
+    content: '\F26E'; font-family: "bootstrap-icons";
+    color: white; font-size: 12px;
+    position: absolute; left: 3px; top: -1px;
+}
 
 .q-hint-card {
     background: #fff9db; /* Light warning yellow */

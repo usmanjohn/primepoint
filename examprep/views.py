@@ -8,6 +8,7 @@ from django.db.models import F, Count, Q, Max
 from django.http import Http404
 
 from .models import ExamTrack, Topic, Lesson, LessonBlock, SKILL_CHOICES, SKILL_ICONS
+from prime.subjects import get_study_subjects, value_visible
 
 
 def _can_edit(user, lesson):
@@ -29,6 +30,13 @@ def examprep_home(request):
         .filter(is_published=True)
         .annotate(lesson_count=Count('lessons', filter=Q(lessons__is_published=True)))
     )
+    # Study-subject preference: applies unless the visitor asked for ?all=1
+    personalized = False
+    slugs = get_study_subjects(request)
+    if slugs and not request.GET.get('all'):
+        tracks = [t for t in tracks
+                  if value_visible(t.slug, slugs, 'examprep_tracks')]
+        personalized = True
     skill_labels = dict(SKILL_CHOICES)
     for track in tracks:
         skills = (track.lessons.filter(is_published=True)
@@ -38,7 +46,10 @@ def examprep_home(request):
              'icon': SKILL_ICONS.get(value, 'bi-journal-text')}
             for value, _ in SKILL_CHOICES if value in skills
         ]
-    return render(request, 'examprep/home.html', {'tracks': tracks})
+    return render(request, 'examprep/home.html', {
+        'tracks': tracks,
+        'personalized': personalized,
+    })
 
 
 def track_detail(request, track_slug):

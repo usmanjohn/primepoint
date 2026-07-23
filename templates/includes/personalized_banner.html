@@ -1,0 +1,10 @@
+{% load i18n %}
+{% if personalized %}
+<div class="d-flex align-items-center gap-2 flex-wrap small mb-3" style="color: var(--text-muted);">
+  <i class="bi bi-funnel-fill" style="color: var(--accent);"></i>
+  <span>{% trans "Filtered to your study subjects." %}</span>
+  <a href="?all=1" class="text-decoration-none" style="color: var(--accent);">{% trans "Show all" %}</a>
+  <span aria-hidden="true">·</span>
+  <a href="{% url 'index' %}?choose=1" class="text-decoration-none" style="color: var(--accent);">{% trans "Change subjects" %}</a>
+</div>
+{% endif %}

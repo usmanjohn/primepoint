@@ -1,5 +1,6 @@
 from django.db.models.signals import post_save, pre_save
 from django.contrib.auth.models import User
+from django.contrib.auth.signals import user_logged_in
 from django.dispatch import receiver
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
@@ -17,6 +18,16 @@ def create_person(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_person(sender, instance, **kwargs):
     instance.profile.save()
+
+
+# ── Study subjects: migrate a guest's session choice to their profile ────────
+
+@receiver(user_logged_in)
+def migrate_study_subjects(sender, request, user, **kwargs):
+    raw = request.session.pop('study_subjects', None)
+    if raw and not user.profile.study_subjects:
+        user.profile.study_subjects = raw
+        user.profile.save(update_fields=['study_subjects'])
 
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
