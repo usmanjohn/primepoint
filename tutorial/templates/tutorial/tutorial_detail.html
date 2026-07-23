@@ -3,7 +3,10 @@
 {% block nav_tutorials %}active{% endblock %}
 {% block mob_nav_tutorials %}active{% endblock %}
 {% block page_name %}{{ tutorial.title }}{% endblock %}
+{% block title %}{{ tutorial.title }} — Powerty{% endblock %}
+{% block og_title %}{{ tutorial.title }}{% endblock %}
 {% block meta_description %}{{ tutorial.summary|default:tutorial.title }}{% endblock %}
+{% block og_description %}{{ tutorial.summary|default:tutorial.title }}{% endblock %}
 
 {% block extra_css %}
 <script>

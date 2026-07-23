@@ -4,6 +4,9 @@
 {% block mob_nav_examprep %}active{% endblock %}
 {% block page_name %}{{ lesson.title }}{% endblock %}
 {% block title %}{{ lesson.title }} — {% trans "Exam Prep" %}{% endblock %}
+{% block og_title %}{{ lesson.title }}{% endblock %}
+{% block meta_description %}{{ lesson.summary|default:lesson.title }}{% endblock %}
+{% block og_description %}{{ lesson.summary|default:lesson.title }}{% endblock %}
 
 {% block content %}
 

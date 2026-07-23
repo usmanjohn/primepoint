@@ -3,13 +3,27 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
-from point.sitemaps import StaticViewSitemap, MasterSitemap, PracticeSitemap, ThreadSitemap
+from point.sitemaps import (
+    StaticViewSitemap, MasterSitemap, PracticeSitemap, ThreadSitemap,
+    TutorialSitemap, TutorialPlaylistSitemap, ExamTrackSitemap,
+    ExamprepLessonSitemap, CornerSubjectSitemap, CornerCollectionSitemap,
+    CornerStorySitemap, CornerWritingSitemap, ExamSitemap,
+)
 
 sitemaps = {
     'static': StaticViewSitemap,
     'masters': MasterSitemap,
     'practice': PracticeSitemap,
     'threads': ThreadSitemap,
+    'tutorials': TutorialSitemap,
+    'playlists': TutorialPlaylistSitemap,
+    'examprep_tracks': ExamTrackSitemap,
+    'examprep_lessons': ExamprepLessonSitemap,
+    'corner_subjects': CornerSubjectSitemap,
+    'corner_collections': CornerCollectionSitemap,
+    'corner_stories': CornerStorySitemap,
+    'corner_writing': CornerWritingSitemap,
+    'exams': ExamSitemap,
 }
 
 urlpatterns = [

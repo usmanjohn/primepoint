@@ -31,6 +31,21 @@ def service_worker(request):
     return HttpResponse(sw_path.read_text(), content_type='application/javascript; charset=utf-8')
 
 
+def robots_txt(request):
+    lines = [
+        'User-agent: *',
+        'Disallow: /admin/',
+        'Disallow: /people/',
+        'Disallow: /analytics/',
+        'Disallow: /i18n/',
+        'Disallow: /study-subjects/',
+        'Allow: /',
+        '',
+        f'Sitemap: {request.scheme}://{request.get_host()}/sitemap.xml',
+    ]
+    return HttpResponse('\n'.join(lines) + '\n', content_type='text/plain')
+
+
 def index(request):
     stats = cache.get('index_stats_v3')
     if stats is None:

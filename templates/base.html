@@ -8,7 +8,17 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="CORE">
-    <meta name="description" content="{% block meta_description %}{% trans "CORE Dashboard" %}{% endblock %}">
+    <meta name="description" content="{% block meta_description %}{% trans "Powerty — free learning platform: Korean (TOPIK), English (IELTS), SAT Math and Russian. Tutorials, practices, exam prep, stories, writing drills and games." %}{% endblock %}">
+
+    <!-- SEO: canonical + social cards -->
+    <link rel="canonical" href="{% block canonical %}{{ request.scheme }}://{{ request.get_host }}{{ request.path }}{% endblock %}">
+    <meta property="og:site_name" content="Powerty">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{% block og_title %}Powerty{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{% trans "Free learning platform: Korean (TOPIK), English (IELTS), SAT Math and Russian." %}{% endblock %}">
+    <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'icons/icon-512.png' %}">
+    <meta name="twitter:card" content="summary">
 
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
