@@ -190,6 +190,14 @@ audiosi ishlatilmaydi (mualliflik huquqi; rasmiy mock audio `exam` simulyatoriga
 `Man2` → en-US-GuyNeural. Use exactly these labels in `audio_script` (case-sensitive) —
 anything else silently falls back to the wrong (Korean) default voice.
 
+> ⚠️ **Never put the speaker's name inside the spoken line.** The label (tuple's 1st
+> element) only *chooses the voice*; it is not read aloud. Write `("Woman", "Hello,
+> how can I help?")` — **NOT** `("Woman", "Sarah: Hello, how can I help?")`. Otherwise
+> the narrator literally says "Sarah: hello". (The generator now strips a leading
+> `Name:` as a safety net, but keep the text clean anyway.) Give characters names in
+> the *rich_text* around the audio (form labels, the transcript dropdown), not in the
+> `audio_script` text itself. The same rule applies to Corner dialogue narration.
+
 **Which labels per Listening section (real IELTS structure — 4 sections, difficulty rises):**
 - **Section 1** — everyday conversation, 2 speakers (e.g. booking/enquiry): `Woman` + `Man`.
 - **Section 2** — monologue, everyday context (e.g. facilities talk): one voice, either

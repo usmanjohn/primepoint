@@ -14,12 +14,12 @@ AUTHOR: powerty
 
 ## IELTS — Listening (bo'lim va savol turlari bo'yicha)
 
-## TOPIC: Strategiya va format (Overview & Strategy)   [icon bi-compass, topic order 1]  [next]
+## TOPIC: Strategiya va format (Overview & Strategy)   [icon bi-compass, topic order 1]  [done]
 1. How IELTS Listening Works: 4 Sections, One Listen, Answer Transfer
 2. Predicting Answers Before Audio Starts (reading ahead)
 3. Spelling, Numbers, Dates, and Common Traps (paraphrase + correction moments)
 
-## TOPIC: 1-bo'lim: Forma/eslatma to'ldirish (Section 1 — Form/Note Completion)   [icon bi-card-checklist, topic order 2]  [next]
+## TOPIC: 1-bo'lim: Forma/eslatma to'ldirish (Section 1 — Form/Note Completion)   [icon bi-card-checklist, topic order 2]  [done]
 10. Intro to Section 1: Everyday Conversation, Two Speakers (booking/enquiry)
 11. Form Completion Practice — Names, Addresses, Reference Numbers
 12. Note Completion Practice — Mixed Review

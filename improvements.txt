@@ -1,15 +1,2 @@
-/plan My broest, did you take a rest well? TOday we have very important thing to do. You know when people come to our platform,    
-their purpose almost clear, such as learning english, math, or korean, or other thing. But you know we have everything in one place  
-and therefore it might be confusing, or somehow messy. Is there any way to organize them in a better way? I am not sure, you might   
-know the best possible ways. The only thing that came to my tinyh mind, which is not useful much, is set a selection at the home     
-page maybe, like choose what you want to sudy, and all the content will be shown only by their selection? Maybe they can select      
-multiple, or all, or one, or default (and it is all:) ), may be they can adjust the selection on their profile page, or maybe we     
-don't touch home page and anyone who logged in can adjust what they see in their profile page, not sure. We have some common stuff   
-that can not be divided by subjects, maybe if so we will show them always, not sure. Please do not think I am fool, at least i am    
-trying my broest! Or may be we will show them what do you want to learn with cards with all of our subjects and when they choose one 
-or some of them or all we will say here you go, not sure. The latter way may work for even not logged in users, I mean guests,       
-whenever they come to our platform. Not sure my broest! Help me, improvise, and the mic is yours! 
+No need to do anything here, it is just my notes.
 
-python manage.py import_examprep examprep/management/commands/_lessons_ielts_reading_40_43.py --author=powerty
-python manage.py import_examprep examprep/management/commands/_lessons_ielts_reading_50_52.py --author=powerty
-python manage.py import_examprep examprep/management/commands/_lessons_ielts_reading_70.py --author=powerty

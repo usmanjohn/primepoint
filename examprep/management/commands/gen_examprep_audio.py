@@ -15,6 +15,13 @@ voice mapping lives in VOICES below: 남자/해설 -> ko-KR-InJoonNeural (male),
 ko-KR-SunHiNeural (female) for TOPIK; Man/Woman/Man2/Woman2 -> English GB/US/AU
 neural voices for IELTS. Lines are joined with a short silence gap via ffmpeg.
 
+IMPORTANT (speaker names): the speaker is the tuple's FIRST element and only chooses
+the voice — it is NOT spoken. Write the LINE ONLY as the text, e.g.
+``("Woman", "Good morning, how can I help?")`` — never ``("Woman", "Sarah: Good
+morning...")``. As a safety net, ``strip_speaker_prefix`` removes a leading "Name: "
+from the text so the narrator can never read a speaker name aloud (a bug the user
+reported hearing in older dialogue audio).
+
 Requires (dev machine only — NOT in requirements.txt): ``pip install edge-tts``
 and ``ffmpeg`` on PATH. Internet is needed while generating; the resulting mp3s
 are plain files, imported afterwards with::
@@ -29,11 +36,24 @@ pause between lines (seconds); ``--rate`` adjusts speaking speed (e.g. "-10%").
 import asyncio
 import importlib.util
 import os
+import re
 import shutil
 import subprocess
 import tempfile
 
 from django.core.management.base import BaseCommand, CommandError
+
+# A leading "Speaker: " tag inside a line's TEXT must never be read aloud — the
+# speaker is already the tuple's first element (it only picks the voice). Authors
+# sometimes accidentally write the name into the text too ("Woman", "Mike: Hello");
+# this strips a single name-like token (no spaces) directly before a colon, so real
+# sentences that merely contain a colon ("The answer is: forty") are left intact.
+SPEAKER_PREFIX_RE = re.compile(r"^\s*[A-Za-z][\w'.\-]{0,18}\s*:\s+")
+
+
+def strip_speaker_prefix(text):
+    """Drop a leading 'Name: ' tag so the TTS voice never speaks the speaker name."""
+    return SPEAKER_PREFIX_RE.sub("", text, count=1)
 
 VOICES = {
     # Korean (TOPIK)
@@ -114,6 +134,8 @@ class Command(BaseCommand):
         parts = []
         for i, (speaker, text) in enumerate(script):
             voice = VOICES.get(speaker, DEFAULT_VOICE)
+            # The speaker label already chose the voice — never voice the name itself.
+            text = strip_speaker_prefix(text)
             line_path = os.path.join(workdir, f"line{i}.mp3")
             self._synthesize_line(text, voice, rate, line_path)
             if i:

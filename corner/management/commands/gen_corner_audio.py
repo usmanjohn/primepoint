@@ -65,6 +65,12 @@ HANGUL_RE = re.compile(r'[가-힣]')
 # Block-level tags whose end marks a narration chunk boundary.
 BLOCK_END_RE = re.compile(r'</p>|</h[1-6]>|</li>|</blockquote>|<br\s*/?>', re.I)
 TAG_RE = re.compile(r'<[^>]+>')
+# A dialogue paragraph often starts with a speaker tag ("Mike: Hello there") — the
+# name must NOT be read aloud. Strip a single name-like token (no spaces) directly
+# before a colon; ordinary sentences that contain a colon ("In the end: ...", which
+# has a space before the colon) are left untouched. (User reported hearing "Mike:"
+# spoken in older dialogue narration — this removes it.)
+SPEAKER_PREFIX_RE = re.compile(r"^\s*[A-Za-z][\w'.\-]{0,18}\s*:\s+")
 # Emoji / pictographs / dingbats — TTS should never see them.
 EMOJI_RE = re.compile(
     '[\U0001F000-\U0001FAFF\U00002600-\U000027BF\U0001F1E6-\U0001F1FF'
@@ -117,6 +123,7 @@ class Command(BaseCommand):
                 continue
             if korean and not HANGUL_RE.search(text):
                 continue  # Uzbek note / decoration — not for the Korean narrator
+            text = SPEAKER_PREFIX_RE.sub('', text, count=1)  # never voice a "Mike:" tag
             chunks.append(text)
         return chunks
 

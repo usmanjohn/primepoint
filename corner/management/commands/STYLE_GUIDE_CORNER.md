@@ -53,6 +53,11 @@ and the same words become colour-tagged flip-flashcards under the story.
 - Start the body directly with the first `<p>` — do NOT repeat the title as a heading
   (the page already shows it).
 - Dialogue is welcome: keep each speaker's line in its own `<p>` (or use `<br>`).
+  If you prefix a line with the speaker's name (`<p>Mike: Hello there.</p>`), note that
+  the audio narrator (`gen_corner_audio`) now **strips a leading `Name:` before
+  synthesis** so it is never read aloud — the user reported hearing "Mike:" spoken in
+  older dialogue clips. So the on-screen name stays, but the voice reads only the line.
+  (For two-voice dialogue clips use `--speaker-voices "voiceA,voiceB"`.)
 - End with **2–3 comprehension questions** — but author these as structured data in the
   `questions` list (section 5b), NOT as text in the body. They render as interactive,
   self-grading MCQs under the story.
