@@ -38,19 +38,19 @@ AUTHOR: powerty
 41. Agree/Disagree Essays — One-Sided vs Balanced Approach
 42. Thesis Statements That Directly Answer the Question
 
-## TOPIC: 2-topshiriq: Munozara va yechim insholari (Task 2 — Discussion & Problem-Solution Essays)   [icon bi-arrow-left-right, topic order 6]  [next]
+## TOPIC: 2-topshiriq: Munozara va yechim insholari (Task 2 — Discussion & Problem-Solution Essays)   [icon bi-arrow-left-right, topic order 6]  [done]
 50. Discuss Both Views Essays — Giving Equal Weight
 51. Problem-Solution Essays — Cause and Remedy Structure
 
-## TOPIC: 2-topshiriq: Afzallik/kamchilik va ikki qismli savol (Task 2 — Advantage/Disadvantage & Two-Part Question Essays)   [icon bi-clipboard2-check, topic order 7]  [next]
+## TOPIC: 2-topshiriq: Afzallik/kamchilik va ikki qismli savol (Task 2 — Advantage/Disadvantage & Two-Part Question Essays)   [icon bi-clipboard2-check, topic order 7]  [done]
 60. Advantages/Disadvantages Essays — Weighing Up Structure
 61. Two-Part Question Essays — Answering Both Parts Fully
 
-## TOPIC: Lug'at va bog'lovchilar (Vocabulary & Cohesion for Band 7+)   [icon bi-translate, topic order 8]  [next]
+## TOPIC: Lug'at va bog'lovchilar (Vocabulary & Cohesion for Band 7+)   [icon bi-translate, topic order 8]  [done]
 70. Linking Words That Don't Sound Repetitive (beyond "firstly/moreover")
 71. Topic Vocabulary Bank: Education, Environment, Technology, Health
 72. Paraphrasing the Question in Your Introduction Without Copying
 
-## TOPIC: Grammatika va o'z-o'zini tekshirish (Common Mistakes & Self-Editing)   [icon bi-pencil-square, topic order 9]  [next]
+## TOPIC: Grammatika va o'z-o'zini tekshirish (Common Mistakes & Self-Editing)   [icon bi-pencil-square, topic order 9]  [done]
 80. Common Grammar Mistakes That Cap Your Band Score
 81. Self-Editing Checklist Under Time Pressure
