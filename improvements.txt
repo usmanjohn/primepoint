@@ -1,1 +1,5 @@
 No need to do anything here, it is just my notes.
+
+python manage.py import_examprep examprep/management/commands/_lessons_ielts_writing_strategy_1_2.py --author=powerty
+python manage.py import_examprep examprep/management/commands/_lessons_ielts_writing_task1_graphs_10_13.py --author=powerty
+python manage.py import_examprep examprep/management/commands/_lessons_ielts_writing_task2_opinion_40_42.py --author=powerty
