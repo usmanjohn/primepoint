@@ -24,20 +24,20 @@ AUTHOR: powerty
 11. Form Completion Practice — Names, Addresses, Reference Numbers
 12. Note Completion Practice — Mixed Review
 
-## TOPIC: 2-bo'lim: Ko'p variantli va joy belgilash (Section 2 — Multiple Choice & Map/Plan Labelling)   [icon bi-map, topic order 3]  [next]
+## TOPIC: 2-bo'lim: Ko'p variantli va joy belgilash (Section 2 — Multiple Choice & Map/Plan Labelling)   [icon bi-map, topic order 3]  [done]
 20. Intro to Section 2: Monologue, Everyday Context (facilities, tours, announcements)
 21. Multiple Choice Practice — Distractor Patterns (said then corrected)
 22. Map/Plan Labelling Practice — Following Directions in Real Time
 
-## TOPIC: 3-bo'lim: Moslashtirish va munozara (Section 3 — Matching & Discussion Multiple Choice)   [icon bi-people, topic order 4]  [next]
+## TOPIC: 3-bo'lim: Moslashtirish va munozara (Section 3 — Matching & Discussion Multiple Choice)   [icon bi-people, topic order 4]  [done]
 30. Intro to Section 3: Educational Discussion, Up to 4 Speakers
 31. Tracking Who Says What (opinion vs agreement vs disagreement)
 32. Matching Practice — Assigning Opinions/Tasks to Speakers
 
-## TOPIC: 4-bo'lim: Ma'ruza va xulosa to'ldirish (Section 4 — Academic Lecture, Summary/Note Completion)   [icon bi-mortarboard, topic order 5]  [next]
+## TOPIC: 4-bo'lim: Ma'ruza va xulosa to'ldirish (Section 4 — Academic Lecture, Summary/Note Completion)   [icon bi-mortarboard, topic order 5]  [done]
 40. Intro to Section 4: Academic Monologue, No Pause Between Questions
 41. Following Lecture Structure (signposting language: firstly, in addition, however)
 42. Summary/Note Completion Practice — Dense Academic Vocabulary
 
-## TOPIC: Yakuniy tayyorgarlik (Full Mixed Practice)   [icon bi-flag-fill, topic order 6]  [next]
+## TOPIC: Yakuniy tayyorgarlik (Full Mixed Practice)   [icon bi-flag-fill, topic order 6]  [done]
 50. Grand Mixed Review: One Question From Each Section Type Under Time
