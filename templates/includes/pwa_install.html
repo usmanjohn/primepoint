@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load i18n static %}
 {# Install-app button. Stays hidden until the browser reports the app is       #}
 {# installable, and never appears once Powerty is already installed.           #}
 
@@ -16,7 +16,7 @@
                 aria-label="{% trans "Close" %}"><i class="bi bi-x-lg"></i></button>
 
         <div class="pwa-sheet-head">
-            <div class="pwa-sheet-icon"><i class="bi bi-lightning-charge-fill"></i></div>
+            <div class="pwa-sheet-icon"><img src="{% static 'favicon/favicon-96x96.png' %}" alt=""></div>
             <div>
                 <h2 id="pwa-ios-title">{% trans "Install Powerty" %}</h2>
                 <p>{% trans "Add it to your Home Screen — it opens full-screen, like a real app." %}</p>

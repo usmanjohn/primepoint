@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n %}
+{% load i18n static %}
 {% block nav_index %}active{% endblock %}
 {% block mob_nav_index %}active{% endblock %}
 {% block page_name %}{% trans "Dashboard" %}{% endblock %}
@@ -41,8 +41,14 @@
   background: rgba(56,189,248,0.1);
   border: 1px solid rgba(56,189,248,0.25);
   border-radius: 999px;
-  padding: 4px 12px;
+  padding: 4px 12px 4px 5px;
   margin-bottom: 0.9rem;
+}
+
+.hero-eyebrow-logo {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  display: block;
 }
 .hero-greeting {
   font-family: 'Syne', sans-serif;
@@ -288,7 +294,7 @@
 
 <!-- ── Hero banner ──────────────────────────────────────────── -->
 <div class="hero-wrap">
-  <span class="hero-eyebrow"><i class="bi bi-lightning-charge-fill"></i> Powerty</span>
+  <span class="hero-eyebrow"><img src="{% static 'favicon/favicon-32x32.png' %}" alt="" class="hero-eyebrow-logo"> Powerty</span>
   {% if user.is_authenticated %}
     <p class="hero-greeting">{% trans "Welcome back" %}, <span class="hl">{{ user.get_full_name|default:user.username }}</span> ✦</p>
     <p class="hero-sub">{% trans "Your platform is ready — keep learning, keep growing." %}</p>
