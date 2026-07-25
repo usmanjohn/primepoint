@@ -109,7 +109,46 @@ def analytics(request):
         'colors': subj_colors,
     })
 
+    # ── Library coverage ──────────────────────────────────────────
+    # Read from prime.progress so this table can never disagree with what
+    # students see on their own progress page.
+    from prime.progress import platform_totals
+    from panda.models import Panda as _Panda
+
+    libraries = platform_totals()
+    library_total = sum(l['total'] for l in libraries)
+    library_done = sum(l['completions'] for l in libraries)
+
+    # ── Reach: how much of the platform is actually being used ────
+    points_total = sum(_Panda.objects.values_list('rating', flat=True))
+    active_students = _Panda.objects.filter(rating__gt=0).count()
+
+    # ── The rest of the platform, which this page used to ignore ──
+    from classroom.models import Classroom
+    from corner.models import Story, WritingPractice
+    from exam.models import Exam
+    from examprep.models import Lesson as _Lesson
+    from games.catalog import GAME_COUNT
+    from homework.models import Homework
+
+    other_counts = {
+        'examprep': _Lesson.objects.filter(
+            is_published=True, track__is_published=True).count(),
+        'stories': Story.objects.filter(is_published=True).count(),
+        'writing': WritingPractice.objects.filter(is_published=True).count(),
+        'exams': Exam.objects.filter(is_published=True).count(),
+        'games': GAME_COUNT,
+        'classrooms': Classroom.objects.filter(is_active=True).count(),
+        'homework': Homework.objects.count(),
+    }
+
     ctx = {
+        'libraries':       libraries,
+        'library_total':   library_total,
+        'library_done':    library_done,
+        'points_total':    points_total,
+        'active_students': active_students,
+        'other':           other_counts,
         'total_students':  total_students,
         'total_masters':   total_masters,
         'total_practices': total_practices,

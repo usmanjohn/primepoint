@@ -6,6 +6,7 @@ urlpatterns = [
     path('create/',          views.tutorial_create, name='tutorial_create'),
     path('<int:pk>/',        views.tutorial_detail, name='tutorial_detail'),
     path('<int:pk>/react/',  views.tutorial_react,  name='tutorial_react'),
+    path('<int:pk>/finish/', views.tutorial_finish, name='tutorial_finish'),
     path('<int:pk>/edit/',   views.tutorial_edit,   name='tutorial_edit'),
     path('<int:pk>/delete/', views.tutorial_delete, name='tutorial_delete'),
 

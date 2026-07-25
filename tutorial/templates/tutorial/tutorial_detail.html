@@ -121,6 +121,27 @@
                 {{ tutorial.content|render_math }}
             </div>
 
+            <!-- ── Mark as finished ──────────────────────────── -->
+            <div class="text-center py-3">
+                {% if is_finished %}
+                <span class="badge rounded-pill text-bg-success fs-6 px-3 py-2">
+                    <i class="bi bi-check2-circle me-1"></i>{% trans "Finished" %}
+                </span>
+                {% elif user.is_authenticated %}
+                <form method="post" action="{% url 'tutorial_finish' tutorial.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success btn-lg">
+                        <i class="bi bi-check2-circle me-1"></i>
+                        {% blocktrans with points=tutorial_points %}Mark as finished (+{{ points }} points){% endblocktrans %}
+                    </button>
+                </form>
+                {% else %}
+                <a href="{% url 'login' %}" class="btn btn-outline-success">
+                    <i class="bi bi-box-arrow-in-right me-1"></i>{% trans "Log in to track your progress" %}
+                </a>
+                {% endif %}
+            </div>
+
             <!-- ── Reaction Bar ──────────────────────────────── -->
             <div class="tut-react-bar">
                 <span class="tut-react-label">{% trans "Helpful?" %}</span>

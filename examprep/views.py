@@ -6,8 +6,11 @@ from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.db.models import F, Count, Q, Max
 from django.http import Http404
+from django.utils.translation import gettext as _
+from django.views.decorators.http import require_POST
 
-from .models import ExamTrack, Topic, Lesson, LessonBlock, SKILL_CHOICES, SKILL_ICONS
+from .models import (ExamTrack, Topic, Lesson, LessonBlock, LessonProgress,
+                     LESSON_POINTS, SKILL_CHOICES, SKILL_ICONS)
 from prime.subjects import get_study_subjects, value_visible
 
 
@@ -166,8 +169,15 @@ def lesson_detail(request, track_slug, skill, slug):
         # Count a view only on plain reads, not on answer submissions.
         Lesson.objects.filter(pk=lesson.pk).update(views=F('views') + 1)
 
+    is_finished = (
+        request.user.is_authenticated
+        and LessonProgress.objects.filter(user=request.user, lesson=lesson).exists()
+    )
+
     skill_label = dict(SKILL_CHOICES).get(skill, skill)
     return render(request, 'examprep/lesson_detail.html', {
+        'is_finished':  is_finished,
+        'lesson_points': LESSON_POINTS,
         'lesson':       lesson,
         'topic':        lesson.topic,
         'skill':        skill,
@@ -234,3 +244,28 @@ def lesson_edit(request, track_slug, skill, slug):
         'skill':  skill,
         'blocks': blocks,
     })
+
+
+@login_required
+@require_POST
+def lesson_finish(request, track_slug, skill, slug):
+    """Mark a lesson finished; award points to the panda once."""
+    lesson = get_object_or_404(
+        Lesson.objects.select_related('track'),
+        track__slug=track_slug, skill=skill, slug=slug,
+        **_published_filter(request.user),
+    )
+    progress, created = LessonProgress.objects.get_or_create(
+        user=request.user, lesson=lesson,
+        defaults={'points_awarded': LESSON_POINTS},
+    )
+    if created:
+        try:
+            request.user.profile.panda.recalc_rating()
+            messages.success(request, _('Lesson finished! +%(points)d points')
+                             % {'points': LESSON_POINTS})
+        except Exception:
+            messages.success(request, _('Lesson finished!'))
+    else:
+        messages.info(request, _('You already finished this lesson.'))
+    return redirect('examprep_lesson', track_slug=track_slug, skill=skill, slug=slug)

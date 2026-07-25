@@ -6,7 +6,11 @@ from django.core.paginator import Paginator
 from django.db.models import F, Count, Q
 from django.http import JsonResponse
 
-from .models import Tutorial, TutorialReaction, TutorialPlaylist, PlaylistTutorial, CATEGORY_CHOICES
+from django.utils.translation import gettext as _
+from django.views.decorators.http import require_POST
+
+from .models import (Tutorial, TutorialReaction, TutorialPlaylist, PlaylistTutorial,
+                     TutorialProgress, TUTORIAL_POINTS, CATEGORY_CHOICES)
 from .forms import TutorialForm, TutorialPlaylistForm
 from prime.subjects import get_study_subjects, allowed_values, mapped_values
 
@@ -80,9 +84,12 @@ def tutorial_detail(request, pk):
     like_count    = tutorial.reactions.filter(reaction='like').count()
     dislike_count = tutorial.reactions.filter(reaction='dislike').count()
     user_reaction = None
+    is_finished   = False
     if request.user.is_authenticated:
         r = tutorial.reactions.filter(user=request.user).first()
         user_reaction = r.reaction if r else None
+        is_finished = TutorialProgress.objects.filter(
+            user=request.user, tutorial=tutorial).exists()
 
     # Playlist navigation context
     playlist_context = None
@@ -106,6 +113,8 @@ def tutorial_detail(request, pk):
         'like_count':       like_count,
         'dislike_count':    dislike_count,
         'user_reaction':    user_reaction,
+        'is_finished':      is_finished,
+        'tutorial_points':  TUTORIAL_POINTS,
         'linked_practices': tutorial.practices.filter(is_published=True),
         'playlist_context': playlist_context,
     })
@@ -295,3 +304,24 @@ def playlist_delete(request, pk):
     return render(request, 'tutorial/playlist_confirm_delete.html', {
         'playlist': playlist,
     })
+
+
+@login_required
+@require_POST
+def tutorial_finish(request, pk):
+    """Mark a tutorial read; award points to the panda once."""
+    tutorial = get_object_or_404(Tutorial, pk=pk, is_published=True)
+    progress, created = TutorialProgress.objects.get_or_create(
+        user=request.user, tutorial=tutorial,
+        defaults={'points_awarded': TUTORIAL_POINTS},
+    )
+    if created:
+        try:
+            request.user.profile.panda.recalc_rating()
+            messages.success(request, _('Tutorial finished! +%(points)d points')
+                             % {'points': TUTORIAL_POINTS})
+        except Exception:
+            messages.success(request, _('Tutorial finished!'))
+    else:
+        messages.info(request, _('You already finished this tutorial.'))
+    return redirect('tutorial_detail', pk=pk)

@@ -133,3 +133,24 @@ class TutorialReaction(models.Model):
 
     def __str__(self):
         return f'{self.user} {self.reaction}s "{self.tutorial}"'
+
+
+# Points for reading one tutorial — the lightest unit of study on the platform.
+TUTORIAL_POINTS = 4
+
+
+class TutorialProgress(models.Model):
+    """A student finished reading a tutorial; unique per user+tutorial so
+    points are awarded once. Mirrors corner.StoryProgress."""
+    user           = models.ForeignKey(User, on_delete=models.CASCADE,
+                                       related_name='tutorial_progress')
+    tutorial       = models.ForeignKey(Tutorial, on_delete=models.CASCADE,
+                                       related_name='progress')
+    points_awarded = models.PositiveSmallIntegerField(default=TUTORIAL_POINTS)
+    finished_at    = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ['user', 'tutorial']
+
+    def __str__(self):
+        return f'{self.user.username} finished {self.tutorial.title}'

@@ -88,6 +88,27 @@
             {% endif %}
         </form>
 
+        <!-- ── Mark as finished ─────────────────────────────────── -->
+        <div class="text-center py-3 mb-2">
+            {% if is_finished %}
+            <span class="badge rounded-pill text-bg-success fs-6 px-3 py-2">
+                <i class="bi bi-check2-circle me-1"></i>{% trans "Finished" %}
+            </span>
+            {% elif user.is_authenticated %}
+            <form method="post" action="{% url 'examprep_lesson_finish' lesson.track.slug skill lesson.slug %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-success btn-lg">
+                    <i class="bi bi-check2-circle me-1"></i>
+                    {% blocktrans with points=lesson_points %}Mark as finished (+{{ points }} points){% endblocktrans %}
+                </button>
+            </form>
+            {% else %}
+            <a href="{% url 'login' %}" class="btn btn-outline-success">
+                <i class="bi bi-box-arrow-in-right me-1"></i>{% trans "Log in to track your progress" %}
+            </a>
+            {% endif %}
+        </div>
+
         <!-- ── Prev / Next navigation ───────────────────────────── -->
         <div class="row g-2 border-top pt-3">
             <div class="col-6">

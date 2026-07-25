@@ -19,22 +19,17 @@ class Panda(models.Model):
         return "Grandmaster"
 
     def recalc_rating(self):
-        """Rating = practice attempt points + corner reading points.
+        """Rating = every point this student has earned, from every library.
 
-        Every app that awards points must call this instead of writing
-        `rating` directly, so one source never wipes out another's points.
+        The sources live in `prime.progress.SOURCES`, which the progress page
+        and analytics read too — so a library can never be worth points on one
+        screen and invisible on another. Add a library there, not here.
+
+        Every app that awards points must call this instead of writing `rating`
+        directly, so one source never wipes out another's points.
         """
-        from django.db.models import Sum
-        practice_pts = sum(
-            self.attempts.filter(status='completed').values_list('rating_points', flat=True)
-        )
-        corner_pts = (
-            self.profile.user.corner_progress.aggregate(s=Sum('points_awarded'))['s'] or 0
-        )
-        writing_pts = (
-            self.profile.user.corner_writing_progress.aggregate(s=Sum('points_awarded'))['s'] or 0
-        )
-        self.rating = round(practice_pts) + corner_pts + writing_pts
+        from prime.progress import total_points
+        self.rating = round(total_points(self.profile.user))
         self.save(update_fields=['rating'])
 
     def __str__(self):

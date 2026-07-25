@@ -177,3 +177,27 @@ class BlockChoice(models.Model):
 
     def __str__(self):
         return self.text[:60]
+
+
+# Points for finishing one exam-prep lesson. Sits between a Corner story (5)
+# and a writing drill (8): a lesson is longer than a story but less work than
+# producing a full written answer.
+LESSON_POINTS = 6
+
+
+class LessonProgress(models.Model):
+    """A student finished a lesson; unique per user+lesson so points are
+    awarded once. Mirrors corner.StoryProgress deliberately — the whole points
+    system reads these tables the same way."""
+    user           = models.ForeignKey(User, on_delete=models.CASCADE,
+                                       related_name='examprep_progress')
+    lesson         = models.ForeignKey(Lesson, on_delete=models.CASCADE,
+                                       related_name='progress')
+    points_awarded = models.PositiveSmallIntegerField(default=LESSON_POINTS)
+    finished_at    = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ['user', 'lesson']
+
+    def __str__(self):
+        return f'{self.user.username} finished {self.lesson.title}'

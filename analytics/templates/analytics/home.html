@@ -22,8 +22,36 @@
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--text);
-  margin: 0 0 1.1rem;
+  margin: 0 0 .25rem;
 }
+
+/* Plain-language explanation under each heading — the charts alone don't say
+   what they mean or what to do about it. */
+.an-note {
+  font-size: .78rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+}
+
+.an-intro {
+  font-size: .85rem;
+  color: var(--text-muted);
+  margin: -.4rem 0 1.25rem;
+  max-width: 70ch;
+}
+
+/* ── Library coverage ───────────────────────────────────────── */
+.an-lib { display: flex; align-items: center; gap: .85rem; padding: .7rem 0; border-bottom: 1px solid var(--border); }
+.an-lib:last-child { border-bottom: 0; }
+.an-lib-icon { width: 34px; height: 34px; flex-shrink: 0; display: grid; place-items: center;
+               border-radius: 9px; background: var(--accent-glow); color: var(--accent); }
+.an-lib-body { flex: 1; min-width: 0; }
+.an-lib-top { display: flex; justify-content: space-between; gap: .6rem; font-size: .85rem; margin-bottom: .3rem; }
+.an-lib-name { font-weight: 600; color: var(--text); }
+.an-lib-num { color: var(--text-muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.an-lib-bar { height: 5px; background: var(--surface-2); border-radius: 99px; overflow: hidden; }
+.an-lib-fill { height: 100%; background: var(--accent); border-radius: 99px; }
 
 /* ── KPI cards ──────────────────────────────────────────────── */
 .an-kpi-grid {
@@ -124,6 +152,9 @@
 
 <!-- ── PLATFORM ANALYTICS ────────────────────────────────────── -->
 <p class="an-section-title">{% trans "Platform Overview" %}</p>
+<p class="an-intro">
+  {% trans "Staff only — students and masters never see this page. Numbers are live: they are read straight from the database each time you load, so there is nothing to refresh or export first." %}
+</p>
 
 <!-- KPI row -->
 <div class="an-kpi-grid">
@@ -169,6 +200,7 @@
   <div class="col-lg-8">
     <div class="an-card h-100">
       <p class="an-heading">{% trans "Attempts — Last 30 Days" %}</p>
+      <p class="an-note">{% trans "Completed practice attempts per day. Gaps mean nobody finished a practice that day — a flat line here is the earliest sign that engagement has stalled." %}</p>
       <div class="an-chart-wrap" style="height:220px;">
         <canvas id="attemptsLine"></canvas>
       </div>
@@ -177,6 +209,7 @@
   <div class="col-lg-4">
     <div class="an-card h-100">
       <p class="an-heading">{% trans "Difficulty Levels" %}</p>
+      <p class="an-note">{% trans "How the published practices split across easy, medium and hard. Hard practices are worth double rating points, so a library with no hard sets caps how fast students can climb." %}</p>
       <div class="an-chart-wrap" style="height:220px;">
         <canvas id="levelDonut"></canvas>
       </div>
@@ -189,6 +222,7 @@
   <div class="col-lg-6">
     <div class="an-card h-100">
       <p class="an-heading">{% trans "Score Distribution" %}</p>
+      <p class="an-note">{% trans "How many attempts landed in each 10% band. A pile-up at the low end usually means the questions are unclear rather than that the students are weak." %}</p>
       <div class="an-chart-wrap" style="height:210px;">
         <canvas id="scoreBar"></canvas>
       </div>
@@ -197,6 +231,7 @@
   <div class="col-lg-3">
     <div class="an-card h-100">
       <p class="an-heading">{% trans "Student Ranks" %}</p>
+      <p class="an-note">{% trans "Novice under 50 points, Scholar under 150, Expert under 300, then Grandmaster. Points come from every library — see the coverage section below." %}</p>
       <div class="an-chart-wrap" style="height:210px;">
         <canvas id="rankDonut"></canvas>
       </div>
@@ -205,6 +240,7 @@
   <div class="col-lg-3">
     <div class="an-card h-100">
       <p class="an-heading">{% trans "By Subject" %}</p>
+      <p class="an-note">{% trans "Published practices per subject. Subjects with no practices still appear elsewhere on the platform, so a small slice here does not mean a small library." %}</p>
       <div class="an-chart-wrap" style="height:210px;">
         <canvas id="subjectDonut"></canvas>
       </div>
@@ -217,6 +253,7 @@
   <div class="col-12">
     <div class="an-card">
       <p class="an-heading">{% trans "Top Masters by Students" %}</p>
+      <p class="an-note">{% trans "Masters ranked by how many students have selected them. Students pick their own masters from their profile, so this reflects choice, not assignment." %}</p>
       <div class="an-chart-wrap" style="height:180px;">
         <canvas id="topMastersBar"></canvas>
       </div>
@@ -224,6 +261,105 @@
   </div>
 </div>
 
+<!-- ── LIBRARY COVERAGE ──────────────────────────────────────── -->
+<p class="an-section-title">{% trans "Library coverage" %}</p>
+<p class="an-intro">
+  {% blocktrans with total=library_total done=library_done %}The platform publishes {{ total }} study items in total, and students have completed them {{ done }} times. Completions count every student separately, so this number can pass the library size — two students finishing the same story is two completions of one item.{% endblocktrans %}
+</p>
+
+<div class="row g-3 mb-3">
+  <div class="col-lg-7">
+    <div class="an-card h-100">
+      <p class="an-heading">{% trans "Every library, and how much has been finished" %}</p>
+      <p class="an-note">
+        {% trans "The bar shows completions against library size. This is the same data students see on their own progress page, so the two can never disagree." %}
+      </p>
+      {% for lib in libraries %}
+      <div class="an-lib">
+        <div class="an-lib-icon"><i class="bi {{ lib.icon }}"></i></div>
+        <div class="an-lib-body">
+          <div class="an-lib-top">
+            <span class="an-lib-name">{{ lib.label }}</span>
+            <span class="an-lib-num">{{ lib.completions }} / {{ lib.total }}</span>
+          </div>
+          <div class="an-lib-bar">
+            {% widthratio lib.completions lib.total 100 as pct %}
+            <div class="an-lib-fill" style="width:{% if pct > 100 %}100{% else %}{{ pct }}{% endif %}%"></div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="col-lg-5">
+    <div class="an-card h-100">
+      <p class="an-heading">{% trans "Reach" %}</p>
+      <p class="an-note">
+        {% trans "Points are the single measure of student effort — every finished item adds to them, and the leaderboard is sorted by nothing else." %}
+      </p>
+      <div class="an-kpi-grid" style="margin-bottom:1rem;">
+        <div class="an-kpi">
+          <div class="an-kpi-icon"><i class="bi bi-trophy-fill"></i></div>
+          <div class="an-kpi-num">{{ points_total }}</div>
+          <div class="an-kpi-lbl">{% trans "Points earned" %}</div>
+        </div>
+        <div class="an-kpi">
+          <div class="an-kpi-icon"><i class="bi bi-person-check-fill"></i></div>
+          <div class="an-kpi-num">{{ active_students }}</div>
+          <div class="an-kpi-lbl">{% trans "Students with points" %}</div>
+        </div>
+      </div>
+      <p class="an-note mb-0">
+        {% blocktrans with active=active_students total=total_students %}{{ active }} of {{ total }} students have earned at least one point. The rest have registered but not finished anything yet — they are the group worth chasing.{% endblocktrans %}
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ── REST OF THE PLATFORM ──────────────────────────────────── -->
+<p class="an-section-title">{% trans "Rest of the platform" %}</p>
+<p class="an-intro">
+  {% trans "Content this dashboard used to leave out entirely. These are published totals, not student activity." %}
+</p>
+
+<div class="an-kpi-grid mb-4">
+  <div class="an-kpi">
+    <div class="an-kpi-icon"><i class="bi bi-journal-bookmark"></i></div>
+    <div class="an-kpi-num">{{ other.examprep }}</div>
+    <div class="an-kpi-lbl">{% trans "Exam Prep" %}</div>
+  </div>
+  <div class="an-kpi">
+    <div class="an-kpi-icon"><i class="bi bi-stars"></i></div>
+    <div class="an-kpi-num">{{ other.stories }}</div>
+    <div class="an-kpi-lbl">{% trans "Corner Stories" %}</div>
+  </div>
+  <div class="an-kpi">
+    <div class="an-kpi-icon"><i class="bi bi-pencil-square"></i></div>
+    <div class="an-kpi-num">{{ other.writing }}</div>
+    <div class="an-kpi-lbl">{% trans "Writing Drills" %}</div>
+  </div>
+  <div class="an-kpi">
+    <div class="an-kpi-icon"><i class="bi bi-journal-check"></i></div>
+    <div class="an-kpi-num">{{ other.exams }}</div>
+    <div class="an-kpi-lbl">{% trans "Exams" %}</div>
+  </div>
+  <div class="an-kpi">
+    <div class="an-kpi-icon"><i class="bi bi-controller"></i></div>
+    <div class="an-kpi-num">{{ other.games }}</div>
+    <div class="an-kpi-lbl">{% trans "Games" %}</div>
+  </div>
+  <div class="an-kpi">
+    <div class="an-kpi-icon"><i class="bi bi-easel-fill"></i></div>
+    <div class="an-kpi-num">{{ other.classrooms }}</div>
+    <div class="an-kpi-lbl">{% trans "Classrooms" %}</div>
+  </div>
+  <div class="an-kpi">
+    <div class="an-kpi-icon"><i class="bi bi-journal-bookmark-fill"></i></div>
+    <div class="an-kpi-num">{{ other.homework }}</div>
+    <div class="an-kpi-lbl">{% trans "Homework" %}</div>
+  </div>
+</div>
 
 {% endblock %}
 

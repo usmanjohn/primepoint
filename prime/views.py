@@ -13,6 +13,7 @@ from prime.subjects import (
     get_study_subjects, has_chosen_subjects,
 )
 from prime.search import search_platform
+from prime.progress import student_progress, master_progress
 
 from masters.models import Master
 from practice.models import Practice, PracticeAttempt
@@ -174,4 +175,23 @@ def search(request):
         'query': query,
         'groups': groups,
         'total': total,
+    })
+
+
+@login_required
+def progress(request):
+    """How far this person has got, and what it earned them.
+
+    Learners see their own coverage of every library; masters additionally see
+    the same summary for each of their students. Someone who is both gets both
+    sections, which is why neither is an early return.
+    """
+    profile = request.user.profile
+    master = getattr(profile, 'master', None)
+    panda = getattr(profile, 'panda', None)
+
+    return render(request, 'prime/progress.html', {
+        'summary': student_progress(request.user) if panda else None,
+        'master': master,
+        'students': master_progress(master) if master else None,
     })
