@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
-{% block title %}Discussion — Powerty{% endblock %}
-{% block page_name %}Discussion{% endblock %}
+{% block title %}{% trans "Discussion" %} — Powerty{% endblock %}
+{% block page_name %}{% trans "Discussion" %}{% endblock %}
 {% block nav_discussion %}active{% endblock %}
 
 {% block extra_css %}
@@ -186,14 +186,14 @@
     <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
         <div>
             <h4 class="fw-bold mb-0" style="font-family:'Syne',sans-serif;">
-                <i class="bi bi-chat-square-dots-fill me-2" style="color:#6366f1;"></i>Discussion
+                <i class="bi bi-chat-square-dots-fill me-2" style="color:#6366f1;"></i>{% trans "Discussion" %}
             </h4>
-            <p style="color:#64748b;font-size:.85rem;margin:0;">Ask questions, share ideas, and help each other grow.</p>
+            <p style="color:#64748b;font-size:.85rem;margin:0;">{% trans "Ask questions, share ideas, and help each other grow." %}</p>
         </div>
         {% if user.is_authenticated %}
         <a href="{% url 'create_thread' %}" class="btn btn-sm px-3 py-2"
            style="background:#6366f1;color:#fff;border-radius:10px;font-weight:600;">
-            <i class="bi bi-plus-lg me-1"></i>New Thread
+            <i class="bi bi-plus-lg me-1"></i>{% trans "New Thread" %}
         </a>
         {% endif %}
     </div>
@@ -206,22 +206,22 @@
             <form method="get" class="disc-topbar">
                 <div class="disc-search">
                     <i class="bi bi-search"></i>
-                    <input name="q" value="{{ search }}" placeholder="Search threads…" autocomplete="off">
+                    <input name="q" value="{{ search }}" placeholder="{% trans "Search threads…" %}" autocomplete="off">
                     {% if active_category %}<input type="hidden" name="category" value="{{ active_category.slug }}">{% endif %}
                 </div>
                 <div class="disc-sort">
                     <a href="?sort=latest{% if active_category %}&category={{ active_category.slug }}{% endif %}{% if search %}&q={{ search }}{% endif %}"
                        class="sort-pill {% if sort == 'latest' %}active{% endif %}">
-                       <i class="bi bi-clock me-1"></i>Latest</a>
+                       <i class="bi bi-clock me-1"></i>{% trans "Latest" %}</a>
                     <a href="?sort=votes{% if active_category %}&category={{ active_category.slug }}{% endif %}{% if search %}&q={{ search }}{% endif %}"
                        class="sort-pill {% if sort == 'votes' %}active{% endif %}">
                        <i class="bi bi-arrow-up-circle me-1"></i>Top</a>
                     <a href="?sort=activity{% if active_category %}&category={{ active_category.slug }}{% endif %}{% if search %}&q={{ search }}{% endif %}"
                        class="sort-pill {% if sort == 'activity' %}active{% endif %}">
-                       <i class="bi bi-activity me-1"></i>Active</a>
+                       <i class="bi bi-activity me-1"></i>{% trans "Active" %}</a>
                     <a href="?sort=unanswered{% if active_category %}&category={{ active_category.slug }}{% endif %}{% if search %}&q={{ search }}{% endif %}"
                        class="sort-pill {% if sort == 'unanswered' %}active{% endif %}">
-                       <i class="bi bi-question-circle me-1"></i>Unanswered</a>
+                       <i class="bi bi-question-circle me-1"></i>{% trans "Unanswered" %}</a>
                 </div>
             </form>
 
@@ -242,10 +242,10 @@
                         <span class="tag tag-cat">
                             <i class="bi {{ thread.category.icon }} me-1"></i>{{ thread.category.name }}
                         </span>
-                        {% if thread.is_pinned %}<span class="tag tag-pin"><i class="bi bi-pin-fill me-1"></i>Pinned</span>{% endif %}
-                        {% if thread.is_announcement %}<span class="tag tag-ann"><i class="bi bi-megaphone-fill me-1"></i>Announcement</span>{% endif %}
-                        {% if thread.is_closed %}<span class="tag tag-closed"><i class="bi bi-lock-fill me-1"></i>Closed</span>{% endif %}
-                        {% if thread.has_accepted_answer %}<span class="tag tag-solved"><i class="bi bi-check-circle-fill me-1"></i>Solved</span>{% endif %}
+                        {% if thread.is_pinned %}<span class="tag tag-pin"><i class="bi bi-pin-fill me-1"></i>{% trans "Pinned" %}</span>{% endif %}
+                        {% if thread.is_announcement %}<span class="tag tag-ann"><i class="bi bi-megaphone-fill me-1"></i>{% trans "Announcement" %}</span>{% endif %}
+                        {% if thread.is_closed %}<span class="tag tag-closed"><i class="bi bi-lock-fill me-1"></i>{% trans "Closed" %}</span>{% endif %}
+                        {% if thread.has_accepted_answer %}<span class="tag tag-solved"><i class="bi bi-check-circle-fill me-1"></i>{% trans "Solved" %}</span>{% endif %}
                     </div>
 
                     <a href="{% url 'thread_detail' thread.pk %}" class="thread-title">{{ thread.title }}</a>
@@ -269,12 +269,12 @@
             {% empty %}
             <div class="empty-disc">
                 <i class="bi bi-chat-square"></i>
-                <h6 class="mt-3 mb-1" style="color:#e2e8f0;">No threads yet</h6>
-                <p>{% if search %}No results for "{{ search }}".{% else %}Be the first to start a discussion!{% endif %}</p>
+                <h6 class="mt-3 mb-1" style="color:#e2e8f0;">{% trans "No threads yet" %}</h6>
+                <p>{% if search %}{% blocktrans with q=search %}No results for "{{ q }}".{% endblocktrans %}{% else %}{% trans "Be the first to start a discussion!" %}{% endif %}</p>
                 {% if user.is_authenticated %}
                 <a href="{% url 'create_thread' %}" class="btn btn-sm mt-2"
                    style="background:#6366f1;color:#fff;border-radius:8px;">
-                    <i class="bi bi-plus-lg me-1"></i>Start a Thread
+                    <i class="bi bi-plus-lg me-1"></i>{% trans "Start a Thread" %}
                 </a>
                 {% endif %}
             </div>
@@ -285,25 +285,25 @@
         <aside>
             {% if user.is_authenticated %}
             <div class="cta-box">
-                <p>Have a question or something to share?</p>
+                <p>{% trans "Have a question or something to share?" %}</p>
                 <a href="{% url 'create_thread' %}" class="btn-accent">
-                    <i class="bi bi-plus-lg me-1"></i>New Thread
+                    <i class="bi bi-plus-lg me-1"></i>{% trans "New Thread" %}
                 </a>
             </div>
             {% else %}
             <div class="cta-box">
-                <p>Join the conversation — log in to post.</p>
-                <a href="{% url 'login' %}" class="btn-accent">Log in</a>
-                <a href="{% url 'register' %}" class="btn-ghost">Register</a>
+                <p>{% trans "Join the conversation — log in to post." %}</p>
+                <a href="{% url 'login' %}" class="btn-accent">{% trans "Log in" %}</a>
+                <a href="{% url 'register' %}" class="btn-ghost">{% trans "Register" %}</a>
             </div>
             {% endif %}
 
             <!-- Categories -->
             <div class="sidebar-card">
-                <h6>Categories</h6>
+                <h6>{% trans "Categories" %}</h6>
                 <a href="{% url 'discussion_home' %}{% if sort != 'latest' %}?sort={{ sort }}{% endif %}"
                    class="cat-item {% if not active_category %}active{% endif %}">
-                    <span><i class="bi bi-grid"></i>All Topics</span>
+                    <span><i class="bi bi-grid"></i>{% trans "All Topics" %}</span>
                     <span class="cat-count">{{ threads.count }}</span>
                 </a>
                 {% for cat in categories %}
@@ -317,13 +317,13 @@
 
             <!-- Guidelines -->
             <div class="sidebar-card">
-                <h6>Community Guidelines</h6>
+                <h6>{% trans "Community Guidelines" %}</h6>
                 <ul class="list-unstyled mb-0" style="font-size:.82rem;color:var(--dmuted);line-height:1.8;">
-                    <li><i class="bi bi-check2 me-1" style="color:#22c55e;"></i>Be respectful and kind</li>
-                    <li><i class="bi bi-check2 me-1" style="color:#22c55e;"></i>Search before posting</li>
-                    <li><i class="bi bi-check2 me-1" style="color:#22c55e;"></i>Give clear, detailed questions</li>
-                    <li><i class="bi bi-check2 me-1" style="color:#22c55e;"></i>Upvote helpful answers</li>
-                    <li><i class="bi bi-check2 me-1" style="color:#22c55e;"></i>Mark the best answer ✓</li>
+                    <li><i class="bi bi-check2 me-1" style="color:#22c55e;"></i>{% trans "Be respectful and kind" %}</li>
+                    <li><i class="bi bi-check2 me-1" style="color:#22c55e;"></i>{% trans "Search before posting" %}</li>
+                    <li><i class="bi bi-check2 me-1" style="color:#22c55e;"></i>{% trans "Give clear, detailed questions" %}</li>
+                    <li><i class="bi bi-check2 me-1" style="color:#22c55e;"></i>{% trans "Upvote helpful answers" %}</li>
+                    <li><i class="bi bi-check2 me-1" style="color:#22c55e;"></i>{% trans "Mark the best answer" %} ✓</li>
                 </ul>
             </div>
         </aside>

@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
-{% block title %}Students — CORE{% endblock %}
+{% block title %}{% trans "Pandas" %} — Powerty{% endblock %}
+{% block page_name %}{% trans "Pandas" %}{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -218,17 +219,17 @@
   <!-- HERO -->
   <div class="pd-hero d-flex justify-content-between align-items-end flex-wrap gap-3">
     <div>
-      <p class="pd-eyebrow">Leaderboard</p>
-      <h1>Our Students</h1>
-      <p class="pd-hero-sub">Ranked by rating — earned through practice and results.</p>
+      <p class="pd-eyebrow">{% trans "Leaderboard" %}</p>
+      <h1>{% trans "Our Students" %}</h1>
+      <p class="pd-hero-sub">{% trans "Ranked by rating — earned through practice and results." %}</p>
     </div>
     {% if user.is_authenticated %}
       <a href="{% url 'profile' %}" class="btn-auth-outline text-decoration-none py-2 px-4">
-        <i class="bi bi-person me-2"></i>My Profile
+        <i class="bi bi-person me-2"></i>{% trans "My Profile" %}
       </a>
     {% else %}
       <a href="{% url 'register' %}" class="btn-auth-primary text-decoration-none py-2 px-4">
-        <i class="bi bi-person-plus me-2"></i>Join Now
+        <i class="bi bi-person-plus me-2"></i>{% trans "Join Now" %}
       </a>
     {% endif %}
   </div>
@@ -270,15 +271,15 @@
 
         {% if panda.avg_score is not None %}
           <span class="avg-chip {% if panda.avg_score >= 75 %}avg-chip-high{% elif panda.avg_score >= 50 %}avg-chip-mid{% else %}avg-chip-low{% endif %}">
-            <i class="bi bi-graph-up"></i> Avg {{ panda.avg_score|floatformat:0 }}%
+            <i class="bi bi-graph-up"></i> {% trans "Avg" %} {{ panda.avg_score|floatformat:0 }}%
           </span>
         {% endif %}
 
         <!-- Rating progress bar -->
         <div class="pd-rating-wrap">
           <div class="pd-rating-row">
-            <span>Rating</span>
-            <span class="pd-rating-val">{{ panda.rating }} pts</span>
+            <span>{% trans "Rating" %}</span>
+            <span class="pd-rating-val">{% blocktrans with n=panda.rating %}{{ n }} pts{% endblocktrans %}</span>
           </div>
           <div class="pd-progress">
             {% widthratio panda.rating 300 100 as rating_pct %}
@@ -297,16 +298,16 @@
       <div class="pd-card-footer">
         <div class="pd-stat">
           <div class="pd-stat-num">{{ panda.attempt_count }}</div>
-          <div class="pd-stat-lbl">Tests</div>
+          <div class="pd-stat-lbl">{% trans "Tests" %}</div>
         </div>
         <div class="pd-divider"></div>
         <div class="pd-stat">
           <div class="pd-stat-num">{{ panda.masters_count }}</div>
-          <div class="pd-stat-lbl">Masters</div>
+          <div class="pd-stat-lbl">{% trans "Masters" %}</div>
         </div>
         <div class="pd-divider"></div>
         <a href="{% url 'user_profile' panda.profile.user.username %}" class="pd-profile-btn">
-          View <i class="bi bi-arrow-right"></i>
+          {% trans "View" %} <i class="bi bi-arrow-right"></i>
         </a>
       </div>
     </div>
@@ -315,11 +316,11 @@
     {% empty %}
     <div class="pd-empty">
       <i class="bi bi-people"></i>
-      <h3>No students yet</h3>
-      <p>Be the first to join and start your learning journey.</p>
+      <h3>{% trans "No students yet" %}</h3>
+      <p>{% trans "Be the first to join and start your learning journey." %}</p>
       {% if not user.is_authenticated %}
         <a href="{% url 'register' %}" class="btn-auth-primary text-decoration-none py-2 px-4 mt-3 d-inline-block">
-          Join Now
+          {% trans "Join Now" %}
         </a>
       {% endif %}
     </div>

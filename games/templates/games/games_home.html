@@ -69,7 +69,7 @@
     {% if active_subject %}
     <p class="text-center mt-4 mb-0" style="color:var(--text-muted); font-size:0.85rem;">
         <a href="{% url 'games_home' %}?all=1" style="color:var(--accent);">
-            {% blocktrans count counter=total_count %}Show the only game{% plural %}Show all {{ counter }} games{% endblocktrans %}
+            {% blocktrans with n=total_count %}Show all {{ n }} games{% endblocktrans %}
         </a>
     </p>
     {% endif %}
