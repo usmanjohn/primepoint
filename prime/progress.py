@@ -24,8 +24,8 @@ from django.utils.translation import gettext_lazy as _
 
 # Points per completed item. Practice and exam attempts are scored, so their
 # points are stored per attempt instead of being a flat rate.
-from corner.models import STORY_POINTS, WRITING_POINTS  # noqa: F401 — re-exported
-from examprep.models import LESSON_POINTS  # noqa: F401
+from corner.models import STORY_POINTS  # noqa: F401 — re-exported
+from examprep.models import LESSON_POINTS, WRITING_DRILL_POINTS  # noqa: F401
 from tutorial.models import TUTORIAL_POINTS  # noqa: F401
 
 # A completed exam is the single biggest piece of work on the platform: three
@@ -36,8 +36,8 @@ EXAM_SCORE_POINTS = 20
 
 def _published_counts():
     """Total published items per source. Cached per request by the callers."""
-    from corner.models import Story, WritingPractice
-    from examprep.models import Lesson
+    from corner.models import Story
+    from examprep.models import Lesson, WritingDrill
     from exam.models import Exam
     from practice.models import Practice
     from tutorial.models import Tutorial
@@ -51,7 +51,7 @@ def _published_counts():
             is_published=True,
             collection__is_published=True,
             collection__subject__is_published=True).count(),
-        'writing': WritingPractice.objects.filter(is_published=True).count(),
+        'writing': WritingDrill.objects.filter(is_published=True).count(),
         'exams': Exam.objects.filter(is_published=True).count(),
     }
 
@@ -100,7 +100,7 @@ def _stories(user, panda):
 
 
 def _writing(user, panda):
-    agg = user.corner_writing_progress.aggregate(
+    agg = user.examprep_writing_progress.aggregate(
         done=Count('id'), points=Sum('points_awarded'))
     return agg['done'] or 0, agg['points'] or 0
 
@@ -123,7 +123,7 @@ SOURCES = [
     {'key': 'stories', 'label': _('Corner Stories'), 'icon': 'bi-stars',
      'url': 'corner_home', 'reader': _stories},
     {'key': 'writing', 'label': _('Writing Drills'), 'icon': 'bi-pencil-square',
-     'url': 'corner_writing_list', 'reader': _writing},
+     'url': 'examprep_home', 'reader': _writing},
     {'key': 'exams', 'label': _('Exams'), 'icon': 'bi-journal-check',
      'url': 'exam_list', 'reader': _exams},
 ]
@@ -203,8 +203,8 @@ def platform_totals():
     Completion is counted across every learner, so `done` can exceed `total` —
     two students finishing the same story is two completions of one item.
     """
-    from corner.models import StoryProgress, WritingPracticeProgress
-    from examprep.models import LessonProgress
+    from corner.models import StoryProgress
+    from examprep.models import LessonProgress, WritingDrillProgress
     from exam.models import ExamAttempt
     from practice.models import PracticeAttempt
     from tutorial.models import TutorialProgress
@@ -215,7 +215,7 @@ def platform_totals():
         'examprep': LessonProgress.objects.count(),
         'tutorials': TutorialProgress.objects.count(),
         'stories': StoryProgress.objects.count(),
-        'writing': WritingPracticeProgress.objects.count(),
+        'writing': WritingDrillProgress.objects.count(),
         'exams': ExamAttempt.objects.filter(current_section='completed').count(),
     }
     return [{

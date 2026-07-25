@@ -1,11 +1,12 @@
 # TOPIK II 쓰기 53 — drills 1–5 (see toc_topik_writing_53.txt).
-# Import: python manage.py import_writing corner/management/commands/_writing_topik53_1_5.py --author=<AUTHOR>
+# Import: python manage.py import_writing examprep/management/commands/_writing_topik53_1_5.py --author=<AUTHOR>
 
-SUBJECT = {
-    "name":    "Korean",
-    "summary": "Koreys tili resurslari.",
-    "icon":    "bi-translate",
-    "color":   "#d97706",
+TRACK = {
+    "name":    "TOPIK",
+    "summary": "TOPIK II Koreys tili imtihoniga bosqichma-bosqich tayyorgarlik.",
+    "icon":    "bi-flag",
+    "color":   "#3b82f6",
+    "order":   1,
 }
 
 PRACTICES = [

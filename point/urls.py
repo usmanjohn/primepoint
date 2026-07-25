@@ -7,7 +7,7 @@ from point.sitemaps import (
     StaticViewSitemap, MasterSitemap, PracticeSitemap, ThreadSitemap,
     TutorialSitemap, TutorialPlaylistSitemap, ExamTrackSitemap,
     ExamprepLessonSitemap, CornerSubjectSitemap, CornerCollectionSitemap,
-    CornerStorySitemap, CornerWritingSitemap, ExamSitemap,
+    CornerStorySitemap, WritingDrillSitemap, ExamSitemap,
 )
 
 sitemaps = {
@@ -22,7 +22,7 @@ sitemaps = {
     'corner_subjects': CornerSubjectSitemap,
     'corner_collections': CornerCollectionSitemap,
     'corner_stories': CornerStorySitemap,
-    'corner_writing': CornerWritingSitemap,
+    'corner_writing': WritingDrillSitemap,
     'exams': ExamSitemap,
 }
 

@@ -125,7 +125,8 @@ def analytics(request):
 
     # ── The rest of the platform, which this page used to ignore ──
     from classroom.models import Classroom
-    from corner.models import Story, WritingPractice
+    from corner.models import Story
+    from examprep.models import WritingDrill
     from exam.models import Exam
     from examprep.models import Lesson as _Lesson
     from games.catalog import GAME_COUNT
@@ -135,7 +136,7 @@ def analytics(request):
         'examprep': _Lesson.objects.filter(
             is_published=True, track__is_published=True).count(),
         'stories': Story.objects.filter(is_published=True).count(),
-        'writing': WritingPractice.objects.filter(is_published=True).count(),
+        'writing': WritingDrill.objects.filter(is_published=True).count(),
         'exams': Exam.objects.filter(is_published=True).count(),
         'games': GAME_COUNT,
         'classrooms': Classroom.objects.filter(is_active=True).count(),

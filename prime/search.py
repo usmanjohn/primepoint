@@ -113,15 +113,15 @@ def _stories(q):
 
 
 def _writing(q):
-    from corner.models import WritingPractice
+    from examprep.models import WritingDrill
 
-    qs = WritingPractice.objects.filter(is_published=True).filter(
+    qs = WritingDrill.objects.filter(is_published=True).select_related('track').filter(
         Q(title__icontains=q) | Q(summary__icontains=q) | Q(prompt__icontains=q)
     ).order_by('qtype', 'order')
     items = [{
         'title': w.title,
         'meta': _join(w.get_qtype_display() if w.qtype else None, w.summary),
-        'url': reverse('corner_writing_detail', args=[w.pk]),
+        'url': reverse('examprep_drill', kwargs={'track_slug': w.track.slug, 'pk': w.pk}),
     } for w in qs[:PER_GROUP]]
     return _group('writing', _('Writing Drills'), 'bi-pencil-square', items, qs.count())
 

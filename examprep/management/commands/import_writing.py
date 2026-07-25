@@ -1,10 +1,10 @@
 """
 Bulk-import Corner writing-practice drills from a Python data file.
 
-The data file must expose a ``SUBJECT`` dict and a ``PRACTICES`` list, e.g.::
+The data file must expose a ``TRACK`` dict and a ``PRACTICES`` list, e.g.::
 
-    SUBJECT = {
-        "name":    "Korean",                 # Subject identity (matched by name)
+    TRACK = {
+        "name":    "TOPIK",                  # ExamTrack identity (matched by name)
         "summary": "Koreys tili resurslari.",
         "icon":    "bi-translate",
         "color":   "#d97706",
@@ -45,18 +45,18 @@ from django.contrib.auth.models import User
 from django.db import transaction
 
 from masters.models import Master
-from corner.models import Subject, WritingPractice
+from examprep.models import ExamTrack, WritingDrill, QTYPE_CHOICES
 
-VALID_QTYPES = {code for code, _label in WritingPractice.QTYPE_CHOICES}
+VALID_QTYPES = {code for code, _label in QTYPE_CHOICES}
 
 
 class Command(BaseCommand):
-    help = "Bulk-create Corner writing-practice drills from a Python data file exposing SUBJECT + PRACTICES."
+    help = "Bulk-create exam-prep writing drills from a Python data file exposing TRACK + PRACTICES."
 
     def add_arguments(self, parser):
         parser.add_argument(
             "datafile",
-            help="Path to a Python file exposing a SUBJECT dict and a PRACTICES list.",
+            help="Path to a Python file exposing a TRACK dict and a PRACTICES list.",
         )
         parser.add_argument(
             "--author",
@@ -105,10 +105,10 @@ class Command(BaseCommand):
         except Exception as exc:  # noqa: BLE001 - surface the real error to the user
             raise CommandError(f"Failed to import '{datafile}': {exc}")
 
-        subject = getattr(module, "SUBJECT", None)
-        if not isinstance(subject, dict) or not subject.get("name"):
+        track = getattr(module, "TRACK", None)
+        if not isinstance(track, dict) or not track.get("name"):
             raise CommandError(
-                f"'{datafile}' must define a SUBJECT dict with at least a 'name'."
+                f"'{datafile}' must define a TRACK dict with at least a 'name'."
             )
 
         practices = getattr(module, "PRACTICES", None)
@@ -117,37 +117,37 @@ class Command(BaseCommand):
                 f"'{datafile}' must define a PRACTICES list "
                 f"(found {type(practices).__name__})."
             )
-        return subject, practices
+        return track, practices
 
-    def _upsert_subject(self, subject):
-        """Get or create the Subject, refreshing its presentation metadata."""
-        obj, created = Subject.objects.get_or_create(
-            name=subject["name"],
+    def _upsert_track(self, track):
+        """Get or create the ExamTrack, refreshing its presentation metadata."""
+        obj, created = ExamTrack.objects.get_or_create(
+            name=track["name"],
             defaults={
-                "summary": subject.get("summary", ""),
-                "icon":    subject.get("icon", "bi-stars"),
-                "color":   subject.get("color", "#d97706"),
-                "order":   subject.get("order", 0),
+                "summary": track.get("summary", ""),
+                "icon":    track.get("icon", "bi-journal-bookmark"),
+                "color":   track.get("color", "#3b82f6"),
+                "order":   track.get("order", 0),
                 "is_published": True,
             },
         )
         if not created:
             for field in ("summary", "icon", "color", "order"):
-                if field in subject:
-                    setattr(obj, field, subject[field])
+                if field in track:
+                    setattr(obj, field, track[field])
             obj.save()
         verb = "created" if created else "exists"
-        self.stdout.write(self.style.SUCCESS(f"Subject {verb}: {obj.name}"))
+        self.stdout.write(self.style.SUCCESS(f"Track {verb}: {obj.name}"))
         return obj
 
     # ── main ────────────────────────────────────────────────────────────────
 
     def handle(self, *args, **options):
         author = self._resolve_author(options["author"])
-        subject_data, practices = self._load_module(options["datafile"])
+        track_data, practices = self._load_module(options["datafile"])
         republish = options["republish"]
 
-        subject = self._upsert_subject(subject_data)
+        track = self._upsert_track(track_data)
 
         created = updated = skipped = 0
 
@@ -182,8 +182,8 @@ class Command(BaseCommand):
             }
 
             with transaction.atomic():
-                practice, was_created = WritingPractice.objects.get_or_create(
-                    subject=subject, title=title, defaults=fields,
+                practice, was_created = WritingDrill.objects.get_or_create(
+                    track=track, title=title, defaults=fields,
                 )
                 if was_created:
                     created += 1
@@ -204,5 +204,5 @@ class Command(BaseCommand):
 
         self.stdout.write(self.style.SUCCESS(
             f"\nDone. {created} created, {updated} updated, {skipped} skipped "
-            f"(subject: {subject.name}, author: {author.username})."
+            f"(track: {track.name}, author: {author.username})."
         ))

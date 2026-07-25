@@ -1,11 +1,12 @@
 # TOPIK II 쓰기 54 — drills 1–5 (see toc_topik_writing_54.txt).
-# Import: python manage.py import_writing corner/management/commands/_writing_topik54_1_5.py --author=<AUTHOR>
+# Import: python manage.py import_writing examprep/management/commands/_writing_topik54_1_5.py --author=<AUTHOR>
 
-SUBJECT = {
-    "name":    "Korean",
-    "summary": "Koreys tili resurslari.",
-    "icon":    "bi-translate",
-    "color":   "#d97706",
+TRACK = {
+    "name":    "TOPIK",
+    "summary": "TOPIK II Koreys tili imtihoniga bosqichma-bosqich tayyorgarlik.",
+    "icon":    "bi-flag",
+    "color":   "#3b82f6",
+    "order":   1,
 }
 
 PROMPT_54 = '''<p>다음을 주제로 하여 자신의 생각을 600~700자로 글을 쓰시오. 단, 문제를 그대로 옮겨 쓰지 마시오. <strong>(50점)</strong></p>'''

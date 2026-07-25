@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Prime Point\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-25 15:17+0000\n"
+"POT-Creation-Date: 2026-07-25 15:51+0000\n"
 "PO-Revision-Date: 2026-04-29 15:20+0000\n"
 "Last-Translator: Prime Point\n"
 "Language-Team: Uzbek\n"
@@ -223,6 +223,10 @@ msgid ""
 msgstr ""
 
 #: analytics/templates/analytics/home.html:330
+#: examprep/templates/examprep/drill_detail.html:5
+#: examprep/templates/examprep/drill_detail.html:11
+#: examprep/templates/examprep/drill_list.html:5
+#: examprep/templates/examprep/drill_list.html:11
 #: examprep/templates/examprep/home.html:5
 #: examprep/templates/examprep/home.html:6
 #: examprep/templates/examprep/home.html:11
@@ -243,7 +247,10 @@ msgstr "Tayyorgarlik"
 msgid "Corner Stories"
 msgstr "Burchak hikoyalari"
 
-#: analytics/templates/analytics/home.html:340 prime/progress.py:125
+#: analytics/templates/analytics/home.html:340
+#: examprep/templates/examprep/drill_detail.html:13
+#: examprep/templates/examprep/drill_list.html:13
+#: examprep/templates/examprep/track_detail.html:67 prime/progress.py:125
 #: prime/search.py:126
 msgid "Writing Drills"
 msgstr "Yozish mashqlari"
@@ -404,7 +411,7 @@ msgstr "Davom etmoqda"
 #: classroom/templates/classroom/classroom_detail.html:151
 #: classroom/templates/classroom/lesson_detail.html:168
 #: corner/templates/corner/story_detail.html:137
-#: corner/templates/corner/writing_detail.html:105
+#: examprep/templates/examprep/drill_detail.html:106
 #: examprep/templates/examprep/lesson_detail.html:96
 #: prime/templates/prime/help.html:662 prime/templates/prime/progress.html:63
 #: tutorial/templates/tutorial/tutorial_detail.html:128
@@ -419,9 +426,9 @@ msgstr "Tugallangan"
 #: corner/templates/corner/story_detail.html:26
 #: corner/templates/corner/subject_detail.html:40
 #: corner/templates/corner/template_detail.html:27
-#: corner/templates/corner/writing_detail.html:21
-#: corner/templates/corner/writing_list.html:47
 #: examprep/templates/examprep/_playlist.html:17
+#: examprep/templates/examprep/drill_detail.html:22
+#: examprep/templates/examprep/drill_list.html:48
 #: examprep/templates/examprep/skill_detail.html:45
 #: examprep/templates/examprep/skill_detail.html:57
 #: examprep/templates/examprep/skill_detail.html:88
@@ -972,10 +979,6 @@ msgstr "Dars"
 #: corner/templates/corner/template_detail.html:11
 #: corner/templates/corner/template_list.html:5
 #: corner/templates/corner/template_list.html:11
-#: corner/templates/corner/writing_detail.html:5
-#: corner/templates/corner/writing_detail.html:11
-#: corner/templates/corner/writing_list.html:5
-#: corner/templates/corner/writing_list.html:11
 #: prime/templates/prime/index.html:466 templates/base.html:171
 msgid "Corner"
 msgstr "Burchak"
@@ -989,34 +992,17 @@ msgid "No stories in this collection yet."
 msgstr "Bu to'plamda hali hikoyalar yo'q."
 
 #: corner/templates/corner/home.html:12
+#, fuzzy
+#| msgid ""
+#| "A cozy shelf of stories, templates and resources — pick a subject and "
+#| "dive in."
 msgid ""
-"A cozy shelf of stories, templates and resources — pick a subject and dive "
-"in."
+"A cozy shelf of stories and reading resources — pick a subject and dive in."
 msgstr ""
 "Hikoyalar, shablonlar va resurslar javoni — fanni tanlang va o'qishni "
 "boshlang."
 
-#: corner/templates/corner/home.html:22
-#: corner/templates/corner/writing_detail.html:12
-#: corner/templates/corner/writing_list.html:4
-#: corner/templates/corner/writing_list.html:5
-#: corner/templates/corner/writing_list.html:12
-#: corner/templates/corner/writing_list.html:17
-msgid "Writing practice"
-msgstr "Yozish mashqi"
-
-#: corner/templates/corner/home.html:22
-#: corner/templates/corner/writing_list.html:17
-msgid "Yozish mashqi"
-msgstr ""
-
-#: corner/templates/corner/home.html:24
-#, python-format
-msgid "%(counter)s interactive exam-writing drill"
-msgid_plural "%(counter)s interactive exam-writing drills"
-msgstr[0] ""
-
-#: corner/templates/corner/home.html:35
+#: corner/templates/corner/home.html:23
 #: corner/templates/corner/subject_detail.html:66
 #: corner/templates/corner/template_detail.html:12
 #: corner/templates/corner/template_list.html:4
@@ -1026,26 +1012,26 @@ msgstr[0] ""
 msgid "Writing templates"
 msgstr "Yozish shablonlari"
 
-#: corner/templates/corner/home.html:37
+#: corner/templates/corner/home.html:25
 #, python-format
 msgid "%(counter)s printable template ready to download"
 msgid_plural "%(counter)s printable templates ready to download"
 msgstr[0] "%(counter)s ta chop etiladigan shablon yuklab olishga tayyor"
 
-#: corner/templates/corner/home.html:65
+#: corner/templates/corner/home.html:53
 #: corner/templates/corner/subject_detail.html:48
 #, python-format
 msgid "%(counter)s story"
 msgid_plural "%(counter)s stories"
 msgstr[0] "%(counter)s ta hikoya"
 
-#: corner/templates/corner/home.html:70
+#: corner/templates/corner/home.html:58
 #, python-format
 msgid "%(counter)s template"
 msgid_plural "%(counter)s templates"
 msgstr[0] "%(counter)s ta shablon"
 
-#: corner/templates/corner/home.html:82
+#: corner/templates/corner/home.html:70
 msgid "The Corner is still being furnished. Check back soon."
 msgstr "Burchak hali jihozlanmoqda. Tez orada qaytib keling!"
 
@@ -1055,7 +1041,7 @@ msgid "Story %(current_no)s of %(total_no)s"
 msgstr "%(current_no)s-hikoya, jami %(total_no)s ta"
 
 #: corner/templates/corner/story_detail.html:39
-#: corner/templates/corner/writing_list.html:23
+#: examprep/templates/examprep/drill_list.html:24
 #: prime/templates/prime/progress.html:136
 msgid "finished"
 msgstr "tugallangan"
@@ -1122,7 +1108,7 @@ msgid "Read the story, then choose the best answer. Tap a choice to check it."
 msgstr ""
 
 #: corner/templates/corner/story_detail.html:144
-#: corner/templates/corner/writing_detail.html:112
+#: examprep/templates/examprep/drill_detail.html:113
 #: examprep/templates/examprep/lesson_detail.html:103
 #: tutorial/templates/tutorial/tutorial_detail.html:135
 #, python-format
@@ -1134,13 +1120,13 @@ msgid "Log in to track your reading"
 msgstr "O'qish jarayonini kuzatish uchun hisobingizga kiring"
 
 #: corner/templates/corner/story_detail.html:158
-#: corner/templates/corner/writing_detail.html:125
+#: examprep/templates/examprep/drill_detail.html:126
 #: examprep/templates/examprep/lesson_detail.html:118
 msgid "Previous"
 msgstr "Oldingi"
 
 #: corner/templates/corner/story_detail.html:165
-#: corner/templates/corner/writing_detail.html:131
+#: examprep/templates/examprep/drill_detail.html:132
 #: examprep/templates/examprep/lesson_detail.html:126
 #: games/templates/games/oddoneout_play.html:265
 #: games/templates/games/oddoneout_play.html:372
@@ -1220,143 +1206,17 @@ msgstr ""
 msgid "No templates uploaded yet. Check back soon."
 msgstr "Hali shablonlar yuklanmagan. Tez orada tekshiring!"
 
-#: corner/templates/corner/writing_detail.html:25
-#, fuzzy, python-format
-#| msgid "Lesson %(current_no)s of %(total_no)s"
-msgid "Task %(current_no)s of %(total_no)s"
-msgstr "%(current_no)s-dars, jami %(total_no)s"
-
-#: corner/templates/corner/writing_detail.html:31
-#, fuzzy
-#| msgid "Questions"
-msgid "Read the question"
-msgstr "Savollar"
-
-#: corner/templates/corner/writing_detail.html:31
-msgid "Savolni oʻqing"
-msgstr ""
-
-#: corner/templates/corner/writing_detail.html:47
-#, fuzzy
-#| msgid "Writing templates"
-msgid "Fill the template"
-msgstr "Yozish shablonlari"
-
-#: corner/templates/corner/writing_detail.html:47
-msgid "Shablonni toʻldiring"
-msgstr ""
-
-#: corner/templates/corner/writing_detail.html:50
-msgid ""
-"The highlighted expressions are ready-made exam phrases — tap one to see its "
-"Uzbek translation. Fill each gap using the question above."
-msgstr ""
-
-#: corner/templates/corner/writing_detail.html:57
-#, fuzzy
-#| msgid "Check answers"
-msgid "Check my answers"
-msgstr "Javoblarni tekshirish"
-
-#: corner/templates/corner/writing_detail.html:60
-#, fuzzy
-#| msgid "Check Answers"
-msgid "Show the answers"
-msgstr "Javoblarni tekshirish"
-
-#: corner/templates/corner/writing_detail.html:69
-msgid "Compare with the model answer"
-msgstr ""
-
-#: corner/templates/corner/writing_detail.html:69
-msgid "Namuna bilan solishtiring"
-msgstr ""
-
-#: corner/templates/corner/writing_detail.html:72
-#, fuzzy
-#| msgid "Check Answers"
-msgid "Show the model answer"
-msgstr "Javoblarni tekshirish"
-
-#: corner/templates/corner/writing_detail.html:72
-msgid "Namuna javobni koʻrish"
-msgstr ""
-
-#: corner/templates/corner/writing_detail.html:87
-msgid "Template expressions"
-msgstr ""
-
-#: corner/templates/corner/writing_detail.html:87
-msgid "Shablon iboralari"
-msgstr ""
-
-#: corner/templates/corner/writing_detail.html:88
-msgid ""
-"Tap a card to flip it. Learn these by heart — they fit almost any exam task."
-msgstr ""
-
-#: corner/templates/corner/writing_detail.html:117
-#: examprep/templates/examprep/lesson_detail.html:108
-#: tutorial/templates/tutorial/tutorial_detail.html:140
-msgid "Log in to track your progress"
-msgstr "Rivojlanishni kuzatish uchun kiring"
-
-#: corner/templates/corner/writing_detail.html:135
-#, fuzzy
-#| msgid "Back to Practices"
-msgid "Back to the list"
-msgstr "Mashqlarga qaytish"
-
-#: corner/templates/corner/writing_list.html:19
-msgid ""
-"Exam-style writing drills: study the question, fill the template with ready-"
-"made expressions, then compare with the model answer."
-msgstr ""
-
-#: corner/templates/corner/writing_list.html:58
-#: exam/templates/exam/take_section.html:556
-#: examprep/templates/examprep/lesson_edit.html:59
-#: games/templates/games/oddoneout_play.html:187
-#, fuzzy
-#| msgid "Questions"
-msgid "Question"
-msgstr "Savollar"
-
-#: corner/templates/corner/writing_list.html:70
-#, fuzzy
-#| msgid "Nothing here yet. Check back soon."
-msgid "No writing drills yet. Check back soon."
-msgstr "Bu yerda hali hech narsa yo'q. Tez orada tekshiring!"
-
-#: corner/views.py:171
+#: corner/views.py:169
 #, python-format
 msgid "Story finished! +%(points)d points"
 msgstr "Hikoya tugallandi! +%(points)d ball"
 
-#: corner/views.py:173
+#: corner/views.py:171
 msgid "Story finished!"
 msgstr "Hikoya tugallandi!"
 
-#: corner/views.py:175
+#: corner/views.py:173
 msgid "You already finished this story."
-msgstr "Siz bu hikoyani allaqachon tugatgansiz."
-
-#: corner/views.py:282
-#, fuzzy, python-format
-#| msgid "Story finished! +%(points)d points"
-msgid "Practice finished! +%(points)d points"
-msgstr "Hikoya tugallandi! +%(points)d ball"
-
-#: corner/views.py:284
-#, fuzzy
-#| msgid "Story finished!"
-msgid "Practice finished!"
-msgstr "Hikoya tugallandi!"
-
-#: corner/views.py:286
-#, fuzzy
-#| msgid "You already finished this story."
-msgid "You already finished this practice."
 msgstr "Siz bu hikoyani allaqachon tugatgansiz."
 
 #: discussion/templates/discussion/home.html:191
@@ -1511,7 +1371,7 @@ msgstr ""
 #: exam/templates/exam/exam_list.html:155
 #: exam/templates/exam/exam_result.html:99
 #: exam/templates/exam/exam_result.html:137
-#: exam/templates/exam/take_section.html:477 examprep/models.py:11
+#: exam/templates/exam/take_section.html:477 examprep/models.py:13
 msgid "Listening"
 msgstr "Tinglash"
 
@@ -1543,7 +1403,7 @@ msgstr "daqiqa"
 #: exam/templates/exam/exam_list.html:156
 #: exam/templates/exam/exam_result.html:110
 #: exam/templates/exam/exam_result.html:176
-#: exam/templates/exam/take_section.html:479 examprep/models.py:9
+#: exam/templates/exam/take_section.html:479 examprep/models.py:11
 msgid "Reading"
 msgstr "O'qish"
 
@@ -1552,7 +1412,7 @@ msgstr "O'qish"
 #: exam/templates/exam/exam_list.html:157
 #: exam/templates/exam/exam_result.html:121
 #: exam/templates/exam/exam_result.html:215
-#: exam/templates/exam/take_section.html:481 examprep/models.py:10
+#: exam/templates/exam/take_section.html:481 examprep/models.py:12
 msgid "Writing"
 msgstr "Yozish"
 
@@ -1756,6 +1616,13 @@ msgstr ""
 msgid "Passage image"
 msgstr "Dars rasmi"
 
+#: exam/templates/exam/take_section.html:556
+#: examprep/templates/examprep/drill_list.html:59
+#: examprep/templates/examprep/lesson_edit.html:59
+#: games/templates/games/oddoneout_play.html:187
+msgid "Question"
+msgstr "Savol"
+
 #: exam/templates/exam/take_section.html:563
 #, fuzzy
 #| msgid "Lesson image"
@@ -1818,15 +1685,15 @@ msgstr ""
 msgid "question(s) not answered"
 msgstr ""
 
-#: examprep/models.py:12
+#: examprep/models.py:14
 msgid "Speaking"
 msgstr "Gapirish"
 
-#: examprep/models.py:13
+#: examprep/models.py:15
 msgid "Vocabulary"
 msgstr "Lug'at"
 
-#: examprep/models.py:14
+#: examprep/models.py:16
 msgid "Strategy"
 msgstr "Strategiya"
 
@@ -1852,6 +1719,100 @@ msgstr "Unchalik emas."
 #: examprep/templates/examprep/_block.html:67
 msgid "No answer selected."
 msgstr "Javob tanlanmadi."
+
+#: examprep/templates/examprep/drill_detail.html:26
+#, python-format
+msgid "Task %(current_no)s of %(total_no)s"
+msgstr "%(current_no)s-mashq, jami %(total_no)s"
+
+#: examprep/templates/examprep/drill_detail.html:32
+msgid "Read the question"
+msgstr "Savolni o'qing"
+
+#: examprep/templates/examprep/drill_detail.html:32
+msgid "Savolni oʻqing"
+msgstr ""
+
+#: examprep/templates/examprep/drill_detail.html:48
+msgid "Fill the template"
+msgstr "Shablonni to'ldiring"
+
+#: examprep/templates/examprep/drill_detail.html:48
+msgid "Shablonni toʻldiring"
+msgstr ""
+
+#: examprep/templates/examprep/drill_detail.html:51
+msgid ""
+"The highlighted expressions are ready-made exam phrases — tap one to see its "
+"Uzbek translation. Fill each gap using the question above."
+msgstr ""
+
+#: examprep/templates/examprep/drill_detail.html:58
+msgid "Check my answers"
+msgstr "Javoblarimni tekshirish"
+
+#: examprep/templates/examprep/drill_detail.html:61
+msgid "Show the answers"
+msgstr "Javoblarni ko'rsatish"
+
+#: examprep/templates/examprep/drill_detail.html:70
+msgid "Compare with the model answer"
+msgstr "Namuna javob bilan solishtiring"
+
+#: examprep/templates/examprep/drill_detail.html:70
+msgid "Namuna bilan solishtiring"
+msgstr ""
+
+#: examprep/templates/examprep/drill_detail.html:73
+msgid "Show the model answer"
+msgstr "Namuna javobni ko'rish"
+
+#: examprep/templates/examprep/drill_detail.html:73
+msgid "Namuna javobni koʻrish"
+msgstr ""
+
+#: examprep/templates/examprep/drill_detail.html:88
+msgid "Template expressions"
+msgstr "Shablon iboralari"
+
+#: examprep/templates/examprep/drill_detail.html:88
+msgid "Shablon iboralari"
+msgstr ""
+
+#: examprep/templates/examprep/drill_detail.html:89
+msgid ""
+"Tap a card to flip it. Learn these by heart — they fit almost any exam task."
+msgstr ""
+
+#: examprep/templates/examprep/drill_detail.html:118
+#: examprep/templates/examprep/lesson_detail.html:108
+#: tutorial/templates/tutorial/tutorial_detail.html:140
+msgid "Log in to track your progress"
+msgstr "Rivojlanishni kuzatish uchun kiring"
+
+#: examprep/templates/examprep/drill_detail.html:136
+msgid "Back to the list"
+msgstr "Ro'yxatga qaytish"
+
+#: examprep/templates/examprep/drill_list.html:4
+#: examprep/templates/examprep/drill_list.html:5
+#: examprep/templates/examprep/drill_list.html:18
+msgid "Writing practice"
+msgstr "Yozish mashqi"
+
+#: examprep/templates/examprep/drill_list.html:18
+msgid "Yozish mashqi"
+msgstr ""
+
+#: examprep/templates/examprep/drill_list.html:20
+msgid ""
+"Exam-style writing drills: study the question, fill the template with ready-"
+"made expressions, then compare with the model answer."
+msgstr ""
+
+#: examprep/templates/examprep/drill_list.html:71
+msgid "No writing drills yet. Check back soon."
+msgstr "Hali yozish mashqi yo'q. Tez orada qo'shiladi."
 
 #: examprep/templates/examprep/home.html:13
 msgid "Learn how to approach IELTS, TOPIK, GMAT, SAT and more — step by step."
@@ -1965,12 +1926,10 @@ msgstr ""
 
 #: examprep/templates/examprep/skill_detail.html:27
 #: examprep/templates/examprep/track_detail.html:45
-#, fuzzy, python-format
-#| msgid "%(counter)s story"
-#| msgid_plural "%(counter)s stories"
+#, python-format
 msgid "%(counter)s question type"
 msgid_plural "%(counter)s question types"
-msgstr[0] "%(counter)s ta hikoya"
+msgstr[0] "%(counter)s ta savol turi"
 
 #: examprep/templates/examprep/skill_detail.html:65
 #: examprep/templates/examprep/skill_detail.html:95
@@ -1986,27 +1945,44 @@ msgid "General lessons"
 msgstr "Dars"
 
 #: examprep/templates/examprep/track_detail.html:28
-#, fuzzy
-#| msgid "Choose a section to start working through its lessons in order."
 msgid "Choose a section to see its question types and lessons."
-msgstr "Darslarni tartib bilan boshlash uchun bo'limni tanlang."
+msgstr "Savol turlari va darslarni ko'rish uchun bo'limni tanlang."
 
-#: examprep/templates/examprep/track_detail.html:60
+#: examprep/templates/examprep/track_detail.html:69
+#, python-format
+msgid "%(counter)s interactive drill"
+msgid_plural "%(counter)s interactive drills"
+msgstr[0] "%(counter)s ta interaktiv mashq"
+
+#: examprep/templates/examprep/track_detail.html:81
 msgid "No lessons here yet."
 msgstr "Bu yerda hali darslar yo'q."
 
-#: examprep/views.py:265
+#: examprep/views.py:267
 #, python-format
 msgid "Lesson finished! +%(points)d points"
 msgstr "Dars tugallandi! +%(points)d ball"
 
-#: examprep/views.py:268
+#: examprep/views.py:270
 msgid "Lesson finished!"
 msgstr "Dars tugallandi!"
 
-#: examprep/views.py:270
+#: examprep/views.py:272
 msgid "You already finished this lesson."
 msgstr "Siz bu darsni allaqachon tugatgansiz."
+
+#: examprep/views.py:352
+#, python-format
+msgid "Drill finished! +%(points)d points"
+msgstr "Mashq tugallandi! +%(points)d ball"
+
+#: examprep/views.py:355
+msgid "Drill finished!"
+msgstr "Mashq tugallandi!"
+
+#: examprep/views.py:357
+msgid "You already finished this drill."
+msgstr "Siz bu mashqni allaqachon tugatgansiz."
 
 #: games/catalog.py:21 games/templates/games/mathchamp_home.html:4
 #: games/templates/games/mathchamp_home.html:5
@@ -5940,7 +5916,8 @@ msgstr "Ustoz sahifam"
 
 #: prime/templates/prime/index.html:709 prime/templates/prime/progress.html:156
 msgid "Become a master or get enrolled as a student to see your stats here."
-msgstr "Statistikani ko'rish uchun ustoz bo'ling yoki o'quvchi sifatida yoziling."
+msgstr ""
+"Statistikani ko'rish uchun ustoz bo'ling yoki o'quvchi sifatida yoziling."
 "Statistikani ko'rish uchun ustoz bo'ling yoki o'quvchi sifatida yoziling."
 "Statistikangizni ko'rish uchun ustoz bo'ling yoki talaba sifatida ro'yxatdan "
 "o'ting."
@@ -5954,7 +5931,9 @@ msgstr "Rivojlanish"
 msgid ""
 "Everything you finish counts once — and every point on the leaderboard comes "
 "from this page."
-msgstr "Tugatgan har bir ishingiz bir marta hisoblanadi — reytingdagi barcha ball shu yerdan keladi."
+msgstr ""
+"Tugatgan har bir ishingiz bir marta hisoblanadi — reytingdagi barcha ball "
+"shu yerdan keladi."
 
 #: prime/templates/prime/progress.html:59
 msgid "Points"

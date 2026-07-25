@@ -1,27 +1,28 @@
 {% extends 'base.html' %}
 {% load i18n static %}
-{% block nav_corner %}active{% endblock %}
-{% block page_name %}{{ practice.title }}{% endblock %}
-{% block title %}{{ practice.title }} — {% trans "Corner" %}{% endblock %}
+{% block nav_examprep %}active{% endblock %}
+{% block page_name %}{{ drill.title }}{% endblock %}
+{% block title %}{{ drill.title }} — {% trans "Exam Prep" %}{% endblock %}
 
 {% block content %}
 
 <nav aria-label="breadcrumb" class="mb-3">
     <ol class="breadcrumb small mb-0">
-        <li class="breadcrumb-item"><a href="{% url 'corner_home' %}">{% trans "Corner" %}</a></li>
-        <li class="breadcrumb-item"><a href="{% url 'corner_writing_list' %}">{% trans "Writing practice" %}</a></li>
-        <li class="breadcrumb-item active" aria-current="page">{{ practice.title }}</li>
+        <li class="breadcrumb-item"><a href="{% url 'examprep_home' %}">{% trans "Exam Prep" %}</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'examprep_track' track.slug %}">{{ track.name }}</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'examprep_drills' track.slug %}">{% trans "Writing Drills" %}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ drill.title }}</li>
     </ol>
 </nav>
 
 <div class="mx-auto" style="max-width:48rem;">
 
     <h1 class="page-title mb-1">
-        {{ practice.title }}
-        {% if not practice.is_published %}<span class="badge text-bg-warning">{% trans "Draft" %}</span>{% endif %}
+        {{ drill.title }}
+        {% if not drill.is_published %}<span class="badge text-bg-warning">{% trans "Draft" %}</span>{% endif %}
     </h1>
     <p class="page-subtitle mb-4">
-        <i class="bi bi-pencil-square me-1"></i>{{ practice.get_qtype_display }}
+        <i class="bi bi-pencil-square me-1"></i>{{ drill.get_qtype_display }}
         · {% blocktrans %}Task {{ current_no }} of {{ total_no }}{% endblocktrans %}
     </p>
 
@@ -32,15 +33,15 @@
     </div>
     <div class="wp-exam mb-4">
         <div class="wp-exam-head">
-            <span class="wp-exam-no">{{ practice.qtype }}</span>
-            <div class="wp-exam-prompt">{{ practice.prompt|safe }}</div>
+            <span class="wp-exam-no">{{ drill.qtype }}</span>
+            <div class="wp-exam-prompt">{{ drill.prompt|safe }}</div>
         </div>
-        {% if practice.chart %}
-        <div class="wp-chart">{{ practice.chart|safe }}</div>
+        {% if drill.chart %}
+        <div class="wp-chart">{{ drill.chart|safe }}</div>
         {% endif %}
     </div>
 
-    {% if practice.template_body %}
+    {% if drill.template_body %}
     {# ── Step 2 · fill the template ─────────────────────────────────── #}
     <div class="wp-step mb-2">
         <span class="wp-step-no">2</span>
@@ -50,7 +51,7 @@
         <i class="bi bi-lightbulb me-1"></i>{% trans "The highlighted expressions are ready-made exam phrases — tap one to see its Uzbek translation. Fill each gap using the question above." %}
     </p>
     <div class="cn-reader wp-paper mb-2" data-wp-template>
-        {{ practice.template_body|safe }}
+        {{ drill.template_body|safe }}
     </div>
     <div class="wp-actions mb-4">
         <button type="button" class="btn btn-primary" data-wp-check>
@@ -71,12 +72,12 @@
     <details class="wp-reveal mb-4">
         <summary><i class="bi bi-journal-check me-1"></i>{% trans "Show the model answer" %} · {% trans "Namuna javobni koʻrish" %}</summary>
         <div class="cn-reader wp-paper mt-2">
-            {{ practice.model_answer|safe }}
+            {{ drill.model_answer|safe }}
         </div>
-        {% if practice.tips %}
+        {% if drill.tips %}
         <div class="wp-tips mt-2">
             <p class="wp-tips-title mb-1"><i class="bi bi-stars me-1"></i>Maslahatlar</p>
-            {{ practice.tips|safe }}
+            {{ drill.tips|safe }}
         </div>
         {% endif %}
     </details>
@@ -105,11 +106,11 @@
             <i class="bi bi-check2-circle me-1"></i>{% trans "Finished" %}
         </span>
         {% elif user.is_authenticated %}
-        <form method="post" action="{% url 'corner_writing_finish' practice.pk %}">
+        <form method="post" action="{% url 'examprep_drill_finish' track.slug drill.pk %}">
             {% csrf_token %}
             <button type="submit" class="btn btn-success btn-lg">
                 <i class="bi bi-check2-circle me-1"></i>
-                {% blocktrans with points=writing_points %}Mark as finished (+{{ points }} points){% endblocktrans %}
+                {% blocktrans with points=drill_points %}Mark as finished (+{{ points }} points){% endblocktrans %}
             </button>
         </form>
         {% else %}
@@ -120,18 +121,18 @@
     </div>
 
     <div class="d-flex justify-content-between gap-2 border-top pt-3">
-        {% if prev_p %}
-        <a href="{% url 'corner_writing_detail' prev_p.pk %}" class="btn btn-outline-secondary">
+        {% if prev_d %}
+        <a href="{% url 'examprep_drill' track.slug prev_d.pk %}" class="btn btn-outline-secondary">
             <i class="bi bi-arrow-left me-1"></i>{% trans "Previous" %}
         </a>
         {% else %}<span></span>{% endif %}
 
-        {% if next_p %}
-        <a href="{% url 'corner_writing_detail' next_p.pk %}" class="btn btn-primary ms-auto">
+        {% if next_d %}
+        <a href="{% url 'examprep_drill' track.slug next_d.pk %}" class="btn btn-primary ms-auto">
             {% trans "Next" %}<i class="bi bi-arrow-right ms-1"></i>
         </a>
         {% else %}
-        <a href="{% url 'corner_writing_list' %}" class="btn btn-success ms-auto">
+        <a href="{% url 'examprep_drills' track.slug %}" class="btn btn-success ms-auto">
             <i class="bi bi-check2-all me-1"></i>{% trans "Back to the list" %}
         </a>
         {% endif %}

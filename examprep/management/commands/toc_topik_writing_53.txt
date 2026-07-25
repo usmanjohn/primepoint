@@ -1,5 +1,5 @@
 # ── Writing-practice metadata (read by Claude) ───────────────────────
-SUBJECT: Korean            (icon: bi-translate, color: #d97706)
+TRACK:   TOPIK             (ExamTrack, matched by name)
 QTYPE:   53                (TOPIK II 쓰기 53 — 도표 분석, 200~300자)
 AUTHOR:  powerty
 # (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)

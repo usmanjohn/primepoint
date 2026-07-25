@@ -1,11 +1,12 @@
 # TOPIK II 쓰기 51 — drills 1–5 (see toc_topik_writing_51.txt).
-# Import: python manage.py import_writing corner/management/commands/_writing_topik51_1_5.py --author=<AUTHOR>
+# Import: python manage.py import_writing examprep/management/commands/_writing_topik51_1_5.py --author=<AUTHOR>
 
-SUBJECT = {
-    "name":    "Korean",
-    "summary": "Koreys tili resurslari.",
-    "icon":    "bi-translate",
-    "color":   "#d97706",
+TRACK = {
+    "name":    "TOPIK",
+    "summary": "TOPIK II Koreys tili imtihoniga bosqichma-bosqich tayyorgarlik.",
+    "icon":    "bi-flag",
+    "color":   "#3b82f6",
+    "order":   1,
 }
 
 PROMPT_51 = '''<p>다음 글의 ㉠과 ㉡에 들어갈 말을 각각 한 문장으로 쓰시오. <strong>(10점)</strong></p>'''

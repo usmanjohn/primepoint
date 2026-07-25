@@ -10,6 +10,7 @@ from django.utils.translation import gettext as _
 from django.views.decorators.http import require_POST
 
 from .models import (ExamTrack, Topic, Lesson, LessonBlock, LessonProgress,
+                     WritingDrill, WritingDrillProgress, WRITING_DRILL_POINTS,
                      LESSON_POINTS, SKILL_CHOICES, SKILL_ICONS)
 from prime.subjects import get_study_subjects, value_visible
 
@@ -77,8 +78,9 @@ def track_detail(request, track_slug):
             })
 
     return render(request, 'examprep/track_detail.html', {
-        'track':  track,
-        'groups': groups,
+        'track':       track,
+        'groups':      groups,
+        'drill_count': track.writing_drills.filter(**pub).count(),
     })
 
 
@@ -269,3 +271,88 @@ def lesson_finish(request, track_slug, skill, slug):
     else:
         messages.info(request, _('You already finished this lesson.'))
     return redirect('examprep_lesson', track_slug=track_slug, skill=skill, slug=slug)
+
+
+# ── Writing drills ─────────────────────────────────────────────────────────
+
+def drill_list(request, track_slug):
+    """A track's interactive writing drills, grouped by exam question type."""
+    pub = _published_filter(request.user)
+    track = get_object_or_404(ExamTrack, slug=track_slug, **pub)
+    drills = list(track.writing_drills.filter(**pub))
+
+    finished_ids = set()
+    if request.user.is_authenticated:
+        finished_ids = set(WritingDrillProgress.objects
+                           .filter(user=request.user, drill__track=track)
+                           .values_list('drill_id', flat=True))
+
+    # Group in QTYPE_CHOICES order, keeping only the types this track uses —
+    # so IELTS never shows TOPIK's 51-54 numbering, or vice versa.
+    groups = {}
+    for drill in drills:
+        drill.is_finished = drill.id in finished_ids
+        groups.setdefault(drill.get_qtype_display(), []).append(drill)
+
+    return render(request, 'examprep/drill_list.html', {
+        'track': track,
+        'groups': groups,
+        'finished_count': len(finished_ids),
+        'total_count': len(drills),
+    })
+
+
+def drill_detail(request, track_slug, pk):
+    """One drill: exam question + chart, key expressions, fill-in scaffold,
+    model answer behind a reveal, flashcards, finish button."""
+    pub = _published_filter(request.user)
+    track = get_object_or_404(ExamTrack, slug=track_slug, **pub)
+    drill = get_object_or_404(
+        WritingDrill.objects.select_related('track'), pk=pk, track=track, **pub,
+    )
+
+    siblings = list(track.writing_drills.filter(qtype=drill.qtype, **pub))
+    index = siblings.index(drill)
+    prev_d = siblings[index - 1] if index > 0 else None
+    next_d = siblings[index + 1] if index < len(siblings) - 1 else None
+
+    is_finished = (request.user.is_authenticated and
+                   WritingDrillProgress.objects
+                   .filter(user=request.user, drill=drill).exists())
+
+    WritingDrill.objects.filter(pk=drill.pk).update(views=F('views') + 1)
+
+    return render(request, 'examprep/drill_detail.html', {
+        'track': track,
+        'drill': drill,
+        'words': list(drill.words.all()),
+        'current_no': index + 1,
+        'total_no': len(siblings),
+        'prev_d': prev_d,
+        'next_d': next_d,
+        'is_finished': is_finished,
+        'drill_points': WRITING_DRILL_POINTS,
+    })
+
+
+@login_required
+@require_POST
+def drill_finish(request, track_slug, pk):
+    """Mark a drill finished; award points to the panda once."""
+    drill = get_object_or_404(
+        WritingDrill, pk=pk, track__slug=track_slug, **_published_filter(request.user),
+    )
+    progress, created = WritingDrillProgress.objects.get_or_create(
+        user=request.user, drill=drill,
+        defaults={'points_awarded': WRITING_DRILL_POINTS},
+    )
+    if created:
+        try:
+            request.user.profile.panda.recalc_rating()
+            messages.success(request, _('Drill finished! +%(points)d points')
+                             % {'points': WRITING_DRILL_POINTS})
+        except Exception:
+            messages.success(request, _('Drill finished!'))
+    else:
+        messages.info(request, _('You already finished this drill.'))
+    return redirect('examprep_drill', track_slug=track_slug, pk=pk)

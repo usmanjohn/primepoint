@@ -6,7 +6,7 @@ from practice.models import Practice
 from discussion.models import Thread
 from tutorial.models import Tutorial, TutorialPlaylist
 from examprep.models import ExamTrack, Lesson
-from corner.models import Subject, Collection, Story, WritingPractice
+from corner.models import Subject, Collection, Story
 from exam.models import Exam
 
 
@@ -19,7 +19,7 @@ class StaticViewSitemap(Sitemap):
             'index', 'about', 'masters-home', 'practice_list', 'panda-home',
             'discussion_home', 'tutorial_list', 'playlist_list',
             'examprep_home', 'corner_home', 'corner_templates',
-            'corner_writing_list', 'exam_list', 'games_home',
+            'exam_list', 'games_home', 'progress',
         ]
 
     def location(self, item):
@@ -169,15 +169,17 @@ class CornerStorySitemap(Sitemap):
         return obj.updated_at
 
 
-class CornerWritingSitemap(Sitemap):
+class WritingDrillSitemap(Sitemap):
     changefreq = 'weekly'
     priority = 0.6
 
     def items(self):
-        return WritingPractice.objects.filter(is_published=True)
+        from examprep.models import WritingDrill
+        return WritingDrill.objects.filter(is_published=True).select_related('track')
 
     def location(self, obj):
-        return reverse('corner_writing_detail', kwargs={'pk': obj.pk})
+        return reverse('examprep_drill',
+                       kwargs={'track_slug': obj.track.slug, 'pk': obj.pk})
 
     def lastmod(self, obj):
         return obj.updated_at

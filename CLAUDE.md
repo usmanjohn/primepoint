@@ -22,7 +22,7 @@
   **NOT** run any bulk-content import command. Pushing to GitHub alone never gets new
   tutorials/lessons/stories/drills into the live DB.
 - **Whenever a bulk-content task finishes (tutorials, examprep lessons, Corner stories,
-  Corner writing drills, or anything else added via a `python manage.py import_*`
+  examprep writing drills, or anything else added via a `python manage.py import_*`
   management command) — ALWAYS give the matching `railway run python manage.py ...`
   command(s) at the end, without being asked.** The user runs these himself after he
   pushes to GitHub. Use `--author=powerty` (the production admin — local dev uses
@@ -74,8 +74,9 @@ Other exams/skills: add a new `toc_<exam>_<skill>.txt` with its own TRACK/SKILL;
 Note: `exam` (the timed, scored test simulator) is separate — keep mock-test questions there.
 
 ## Creating Corner stories (bulk)
-`corner` is the resource library at `/corner/` (`Subject` → `Collection` → `Story`, plus
-`WritingTemplate` files uploaded via admin). Story vocabulary is marked inline as
+`corner` is the reading library at `/corner/` (`Subject` → `Collection` → `Story`, plus
+`WritingTemplate` files uploaded via admin). Writing drills are **not** here — they live in
+`examprep`; see the writing-drills section below. Story vocabulary is marked inline as
 `<span class="cn-word" data-tr="uzbekcha tarjima">한국어</span>` — tappable highlights and
 the end-of-story flashcards are auto-generated from those spans on save.
 When the user asks (e.g. "make the next 5 Keimyung stories"):
@@ -95,21 +96,27 @@ When the user asks (e.g. "make the next 5 Keimyung stories"):
    section — automatically, every time.
 Other collections: add a new `toc_<collection>.txt` with its own SUBJECT/COLLECTION; same workflow.
 
-## Creating Corner writing drills (bulk) — TOPIK 쓰기 53 etc.
-`corner`'s `WritingPractice` is the interactive exam-writing trainer at `/corner/writing/`
-(exam question + HTML/SVG chart → fill-in scaffold with `wp-blank` gaps → model answer
-reveal → auto flashcards from `cn-word` spans). When the user asks (e.g. "make the next
-5 TOPIK 53 writing drills"):
-1. Read `corner/management/commands/STYLE_GUIDE_WRITING.md` (how to write — chart markup,
+## Creating exam-prep writing drills (bulk) — TOPIK 쓰기 53 etc.
+`examprep`'s `WritingDrill` is the interactive exam-writing trainer at
+`/examprep/<track>/drills/` (exam question + HTML/SVG chart → fill-in scaffold with
+`wp-blank` gaps → model answer reveal → auto flashcards from `cn-word` spans). It lives
+under the exam track it belongs to — TOPIK drills at `/examprep/topik/drills/`, IELTS at
+`/examprep/ielts/drills/`. (Moved out of `corner` in July 2026: Corner is the reading
+library. Old `/corner/writing/...` URLs 301-redirect here.) When the user asks (e.g. "make
+the next 5 TOPIK 53 writing drills"):
+1. Read `examprep/management/commands/STYLE_GUIDE_WRITING.md` (how to write — chart markup,
    blank/expression conventions; section 8 holds the user's own tips once they share them).
-2. Read the question type's toc, e.g. `corner/management/commands/toc_topik_writing_53.txt`
-   (header gives SUBJECT, QTYPE, AUTHOR; body is the ordered drill list).
+2. Read the question type's toc, e.g. `examprep/management/commands/toc_topik_writing_53.txt`
+   (header gives TRACK, QTYPE, AUTHOR; body is the ordered drill list).
 3. Find where to continue: query the DB for the highest existing `order`, e.g.
-   `WritingPractice.objects.filter(qtype='53').order_by('-order').first()`.
-4. Write the next batch into `corner/management/commands/_writing_<exam><qtype>_<range>.py`
-   as `SUBJECT = {...}` + `PRACTICES = [...]` (Korean exam text, Uzbek translations/tips).
+   `WritingDrill.objects.filter(qtype='53').order_by('-order').first()`.
+4. Write the next batch into `examprep/management/commands/_writing_<exam><qtype>_<range>.py`
+   as `TRACK = {...}` + `PRACTICES = [...]` (Korean exam text, Uzbek translations/tips).
+   `TRACK` is the ExamTrack (matched by name, e.g. "TOPIK") — not a Corner subject.
 5. Import: `python manage.py import_writing <that file> --author=<AUTHOR from toc>`
    (add `--republish` to overwrite existing ones — it rebuilds each drill's word list).
 6. Give the `railway run python manage.py import_writing ...` command for production
    (see Deployment section) — automatically, every time.
 Question types 51/52/54: add a new `toc_topik_writing_<qtype>.txt`; same workflow.
+Adding drills for another exam: add its `qtype` codes to `QTYPE_CHOICES` in
+`examprep/models.py` (IELTS `t1`/`t2` are already there) and point `TRACK` at that exam.
