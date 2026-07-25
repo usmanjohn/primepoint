@@ -8,6 +8,8 @@
 {% block content %}
 <div class="container-fluid px-3 py-4">
 
+    {% include "includes/personalized_banner.html" %}
+
     <div class="mb-4">
         <h1 class="fs-4 fw-bold mb-1" style="color:var(--text);">&#x1F3AE; {% trans "Games" %}</h1>
         <p style="color:var(--text-muted); font-size:0.9rem; margin:0;">{% trans "Play educational mini-games to sharpen your skills." %}</p>
@@ -15,223 +17,61 @@
 
     {% include "includes/guest_cta.html" %}
 
-    <div class="row g-3">
-
-        <!-- Math Championship -->
-        <div class="col-12 col-sm-6 col-lg-4">
-            <a href="{% url 'mathchamp_home' %}" class="text-decoration-none d-block h-100">
-                <div class="card border-0 shadow-sm h-100" style="border-radius:14px; overflow:hidden;">
-                    <div style="background:linear-gradient(135deg,#f59e0b 0%,#b45309 100%); padding:1.25rem 1.5rem;">
-                        <div style="font-size:2.4rem; line-height:1; margin-bottom:0.5rem;">&#x1F3C6;</div>
-                        <h2 class="fs-5 fw-bold mb-0" style="color:#fff;">{% trans "Math Championship" %}</h2>
-                    </div>
-                    <div class="card-body p-3" style="background:var(--surface);">
-                        <p style="color:var(--text-muted); font-size:0.84rem; margin:0;">
-                            {% trans "15 questions, 3 rounds, 3 lives — climb from qualification to the final and win a medal!" %}
-                        </p>
-                        <span class="badge mt-2 d-inline-block" style="background:#fef3c7; color:#b45309; font-size:0.78rem;">{% trans "Math" %}</span>
-                    </div>
-                </div>
+    <!-- ── Subject Filter ───────────────────────────────────────────── -->
+    <div class="tut-filter-scroll mb-4">
+        <div class="tut-filter-pills">
+            <a href="{% url 'games_home' %}?all=1"
+               class="tut-pill {% if not active_subject %}tut-pill--active{% endif %}">
+                <i class="bi bi-grid-2x2-fill"></i><span>{% trans "All" %}</span>
             </a>
-        </div>
-
-        <!-- Number Guess -->
-        <div class="col-12 col-sm-6 col-lg-4">
-            <a href="{% url 'number_guess' %}" class="text-decoration-none d-block h-100">
-                <div class="card border-0 shadow-sm h-100" style="border-radius:14px; overflow:hidden;">
-                    <div style="background:linear-gradient(135deg,#3b82f6 0%,#1d4ed8 100%); padding:1.25rem 1.5rem;">
-                        <div style="font-size:2.4rem; line-height:1; margin-bottom:0.5rem;">&#x1F522;</div>
-                        <h2 class="fs-5 fw-bold mb-0" style="color:#fff;">{% trans "Number Guess" %}</h2>
-                    </div>
-                    <div class="card-body p-3" style="background:var(--surface);">
-                        <p style="color:var(--text-muted); font-size:0.84rem; margin:0;">
-                            {% trans "The system picks a secret number. Guess it with as few tries as possible!" %}
-                        </p>
-                        <span class="badge mt-2 d-inline-block" style="background:#dbeafe; color:#1d4ed8; font-size:0.78rem;">{% trans "Math" %}</span>
-                    </div>
-                </div>
+            {% for facet in facets %}
+            <a href="?subject={{ facet.slug }}"
+               class="tut-pill {% if active_subject == facet.slug %}tut-pill--active{% endif %}">
+                <i class="bi {{ facet.icon }}"></i><span>{{ facet.name }}</span>
             </a>
+            {% endfor %}
         </div>
-
-        <!-- Korean Crossword -->
-        <div class="col-12 col-sm-6 col-lg-4">
-            <a href="{% url 'crossword_list' %}" class="text-decoration-none d-block h-100">
-                <div class="card border-0 shadow-sm h-100" style="border-radius:14px; overflow:hidden;">
-                    <div style="background:linear-gradient(135deg,#7c3aed 0%,#4f46e5 100%); padding:1.25rem 1.5rem;">
-                        <div style="font-size:2.4rem; line-height:1; margin-bottom:0.5rem;">&#x1F9E9;</div>
-                        <h2 class="fs-5 fw-bold mb-0" style="color:#fff;">{% trans "Korean Crossword" %}</h2>
-                    </div>
-                    <div class="card-body p-3" style="background:var(--surface);">
-                        <p style="color:var(--text-muted); font-size:0.84rem; margin:0;">
-                            {% trans "Read the clue and fill in the Korean syllable blocks. Both Uzbek and Korean clues included!" %}
-                        </p>
-                        <span class="badge mt-2 d-inline-block" style="background:#ede9fe; color:#6d28d9; font-size:0.78rem;">{% trans "Korean" %}</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <!-- Word Search -->
-        <div class="col-12 col-sm-6 col-lg-4">
-            <a href="{% url 'wordsearch_list' %}" class="text-decoration-none d-block h-100">
-                <div class="card border-0 shadow-sm h-100" style="border-radius:14px; overflow:hidden;">
-                    <div style="background:linear-gradient(135deg,#059669 0%,#047857 100%); padding:1.25rem 1.5rem;">
-                        <div style="font-size:2.4rem; line-height:1; margin-bottom:0.5rem;">&#x1F50D;</div>
-                        <h2 class="fs-5 fw-bold mb-0" style="color:#fff;">{% trans "Word Search" %}</h2>
-                    </div>
-                    <div class="card-body p-3" style="background:var(--surface);">
-                        <p style="color:var(--text-muted); font-size:0.84rem; margin:0;">
-                            {% trans "Find hidden words across, down, and diagonally in the letter grid!" %}
-                        </p>
-                        <span class="badge mt-2 d-inline-block" style="background:#d1fae5; color:#065f46; font-size:0.78rem;">{% trans "English" %}</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <!-- English Crossword -->
-        <div class="col-12 col-sm-6 col-lg-4">
-            <a href="{% url 'english_crossword_list' %}" class="text-decoration-none d-block h-100">
-                <div class="card border-0 shadow-sm h-100" style="border-radius:14px; overflow:hidden;">
-                    <div style="background:linear-gradient(135deg,#0369a1 0%,#0284c7 100%); padding:1.25rem 1.5rem;">
-                        <div style="font-size:2.4rem; line-height:1; margin-bottom:0.5rem;">&#x1F9E9;</div>
-                        <h2 class="fs-5 fw-bold mb-0" style="color:#fff;">{% trans "English Crossword" %}</h2>
-                    </div>
-                    <div class="card-body p-3" style="background:var(--surface);">
-                        <p style="color:var(--text-muted); font-size:0.84rem; margin:0;">
-                            {% trans "Read the clue and fill in the English letters. Clues in English and Uzbek!" %}
-                        </p>
-                        <span class="badge mt-2 d-inline-block" style="background:#e0f2fe; color:#0369a1; font-size:0.78rem;">{% trans "English" %}</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <!-- Code Breaker -->
-        <div class="col-12 col-sm-6 col-lg-4">
-            <a href="{% url 'codebreaker_list' %}" class="text-decoration-none d-block h-100">
-                <div class="card border-0 shadow-sm h-100" style="border-radius:14px; overflow:hidden;">
-                    <div style="background:linear-gradient(135deg,#1f6feb 0%,#0d419d 100%); padding:1.25rem 1.5rem;">
-                        <div style="font-size:2.4rem; line-height:1; margin-bottom:0.5rem;">&#x1F510;</div>
-                        <h2 class="fs-5 fw-bold mb-0" style="color:#fff;">{% trans "Code Breaker" %}</h2>
-                    </div>
-                    <div class="card-body p-3" style="background:var(--surface);">
-                        <p style="color:var(--text-muted); font-size:0.84rem; margin:0;">
-                            {% trans "Solve math problems to decode the secret word letter by letter!" %}
-                        </p>
-                        <span class="badge mt-2 d-inline-block" style="background:#dbeafe; color:#1d4ed8; font-size:0.78rem;">{% trans "Math" %}</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <!-- Math Square -->
-        <div class="col-12 col-sm-6 col-lg-4">
-            <a href="{% url 'mathsquare_list' %}" class="text-decoration-none d-block h-100">
-                <div class="card border-0 shadow-sm h-100" style="border-radius:14px; overflow:hidden;">
-                    <div style="background:linear-gradient(135deg,#0d9488 0%,#0f766e 100%); padding:1.25rem 1.5rem;">
-                        <div style="font-size:2.4rem; line-height:1; margin-bottom:0.5rem;">&#x1F9EE;</div>
-                        <h2 class="fs-5 fw-bold mb-0" style="color:#fff;">{% trans "Math Square" %}</h2>
-                    </div>
-                    <div class="card-body p-3" style="background:var(--surface);">
-                        <p style="color:var(--text-muted); font-size:0.84rem; margin:0;">
-                            {% trans "Fill the empty squares so every row and column adds up to a true equation!" %}
-                        </p>
-                        <span class="badge mt-2 d-inline-block" style="background:#ccfbf1; color:#0f766e; font-size:0.78rem;">{% trans "Math" %}</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <!-- Prime Climb Grid -->
-        <div class="col-12 col-sm-6 col-lg-4">
-            <a href="{% url 'primeclimb_list' %}" class="text-decoration-none d-block h-100">
-                <div class="card border-0 shadow-sm h-100" style="border-radius:14px; overflow:hidden;">
-                    <div style="background:linear-gradient(135deg,#2ea043 0%,#196c2e 100%); padding:1.25rem 1.5rem;">
-                        <div style="font-size:2.4rem; line-height:1; margin-bottom:0.5rem;">&#x1F522;</div>
-                        <h2 class="fs-5 fw-bold mb-0" style="color:#fff;">{% trans "Prime Climb Grid" %}</h2>
-                    </div>
-                    <div class="card-body p-3" style="background:var(--surface);">
-                        <p style="color:var(--text-muted); font-size:0.84rem; margin:0;">
-                            {% trans "Find primes, squares, or multiples on the 1–100 grid. Learn number theory visually!" %}
-                        </p>
-                        <span class="badge mt-2 d-inline-block" style="background:#d1fae5; color:#065f46; font-size:0.78rem;">{% trans "Math" %}</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <!-- Odd One Out -->
-        <div class="col-12 col-sm-6 col-lg-4">
-            <a href="{% url 'oddoneout_list' %}" class="text-decoration-none d-block h-100">
-                <div class="card border-0 shadow-sm h-100" style="border-radius:14px; overflow:hidden;">
-                    <div style="background:linear-gradient(135deg,#0891b2 0%,#0e7490 100%); padding:1.25rem 1.5rem;">
-                        <div style="font-size:2.4rem; line-height:1; margin-bottom:0.5rem;">&#x1F9E0;</div>
-                        <h2 class="fs-5 fw-bold mb-0" style="color:#fff;">{% trans "Odd One Out" %}</h2>
-                    </div>
-                    <div class="card-body p-3" style="background:var(--surface);">
-                        <p style="color:var(--text-muted); font-size:0.84rem; margin:0;">
-                            {% trans "Three words belong together — one does not. Spot the odd one out!" %}
-                        </p>
-                        <span class="badge mt-2 d-inline-block" style="background:#cffafe; color:#0e7490; font-size:0.78rem;">{% trans "Grammar" %}</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <!-- Word Order Chaos -->
-        <div class="col-12 col-sm-6 col-lg-4">
-            <a href="{% url 'wordorder_list' %}" class="text-decoration-none d-block h-100">
-                <div class="card border-0 shadow-sm h-100" style="border-radius:14px; overflow:hidden;">
-                    <div style="background:linear-gradient(135deg,#7c3aed 0%,#4f46e5 100%); padding:1.25rem 1.5rem;">
-                        <div style="font-size:2.4rem; line-height:1; margin-bottom:0.5rem;">&#x1F4DD;</div>
-                        <h2 class="fs-5 fw-bold mb-0" style="color:#fff;">{% trans "Word Order Chaos" %}</h2>
-                    </div>
-                    <div class="card-body p-3" style="background:var(--surface);">
-                        <p style="color:var(--text-muted); font-size:0.84rem; margin:0;">
-                            {% trans "Drag and drop shuffled word tiles to rebuild the correct sentence!" %}
-                        </p>
-                        <span class="badge mt-2 d-inline-block" style="background:#ede9fe; color:#6d28d9; font-size:0.78rem;">{% trans "Language" %}</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <!-- Sorting Race -->
-        <div class="col-12 col-sm-6 col-lg-4">
-            <a href="{% url 'sortingrace_list' %}" class="text-decoration-none d-block h-100">
-                <div class="card border-0 shadow-sm h-100" style="border-radius:14px; overflow:hidden;">
-                    <div style="background:linear-gradient(135deg,#f97316 0%,#c2410c 100%); padding:1.25rem 1.5rem;">
-                        <div style="font-size:2.4rem; line-height:1; margin-bottom:0.5rem;">&#x1F500;</div>
-                        <h2 class="fs-5 fw-bold mb-0" style="color:#fff;">{% trans "Sorting Race" %}</h2>
-                    </div>
-                    <div class="card-body p-3" style="background:var(--surface);">
-                        <p style="color:var(--text-muted); font-size:0.84rem; margin:0;">
-                            {% trans "Swap elements to sort a tricky mix of fractions, roots, and negatives — smallest to largest!" %}
-                        </p>
-                        <span class="badge mt-2 d-inline-block" style="background:#ffedd5; color:#c2410c; font-size:0.78rem;">{% trans "Algorithms" %}</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-12 col-sm-6 col-lg-4">
-            <a href="{% url 'target_number' %}" class="text-decoration-none d-block h-100">
-                <div class="card border-0 shadow-sm h-100" style="border-radius:14px; overflow:hidden;">
-                    <div style="background:linear-gradient(135deg,#d97706 0%,#92400e 100%); padding:1.25rem 1.5rem;">
-                        <div style="font-size:2.4rem; line-height:1; margin-bottom:0.5rem;">&#x1F3AF;</div>
-                        <h2 class="fs-5 fw-bold mb-0" style="color:#fff;">{% trans "Target Number" %}</h2>
-                    </div>
-                    <div class="card-body p-3" style="background:var(--surface);">
-                        <p style="color:var(--text-muted); font-size:0.84rem; margin:0;">
-                            {% trans "Combine 6 numbers with +, −, ×, ÷ to hit the target. Three difficulty levels!" %}
-                        </p>
-                        <span class="badge mt-2 d-inline-block" style="background:#fef3c7; color:#92400e; font-size:0.78rem;">{% trans "Math" %}</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-
     </div>
+
+    <!-- ── Game Grid ────────────────────────────────────────────────── -->
+    <div class="row g-3">
+        {% for game in games %}
+        <div class="col-12 col-sm-6 col-lg-4">
+            <a href="{% url game.url %}" class="text-decoration-none d-block h-100">
+                <div class="card border-0 shadow-sm h-100" style="border-radius:14px; overflow:hidden;">
+                    <div style="background:linear-gradient(135deg,{{ game.gradient.0 }} 0%,{{ game.gradient.1 }} 100%); padding:1.25rem 1.5rem;">
+                        <div style="font-size:2.4rem; line-height:1; margin-bottom:0.5rem;">{{ game.emoji }}</div>
+                        <h2 class="fs-5 fw-bold mb-0" style="color:#fff;">{{ game.name }}</h2>
+                    </div>
+                    <div class="card-body p-3" style="background:var(--surface);">
+                        <p style="color:var(--text-muted); font-size:0.84rem; margin:0;">
+                            {{ game.description }}
+                        </p>
+                        <span class="badge mt-2 d-inline-block"
+                              style="background:{{ game.badge.0 }}; color:{{ game.badge.1 }}; font-size:0.78rem;">{{ game.tag }}</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="text-center py-5" style="color:var(--text-muted);">
+                <div style="font-size:2.5rem; line-height:1;">&#x1F3AE;</div>
+                <p class="mt-2 mb-3">{% trans "No games in this category yet." %}</p>
+                <a href="{% url 'games_home' %}?all=1" class="btn-auth-outline text-decoration-none py-2 px-4">
+                    {% trans "Show all games" %}
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if active_subject %}
+    <p class="text-center mt-4 mb-0" style="color:var(--text-muted); font-size:0.85rem;">
+        <a href="{% url 'games_home' %}?all=1" style="color:var(--accent);">
+            {% blocktrans count counter=total_count %}Show the only game{% plural %}Show all {{ counter }} games{% endblocktrans %}
+        </a>
+    </p>
+    {% endif %}
 </div>
 {% endblock %}

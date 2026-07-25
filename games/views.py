@@ -12,6 +12,8 @@ from django.utils.translation import gettext as _
 import string
 from .models import CrosswordPuzzle, EnglishCrossword, WordSearchPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion, MathSquarePuzzle, MathChampResult
 from .generator import generate_math_square, empty_math_square, eval_line
+from .catalog import GAME_COUNT, filter_games, subject_facets  # noqa: F401 — GAME_COUNT re-exported for the nav badge
+from prime.subjects import get_study_subjects
 from . import mathchamp
 
 
@@ -194,13 +196,30 @@ def _build_print_context(puzzle, primary_field, secondary_field, show_answers,
     }
 
 
-# Number of game types offered on the games home page — keep in sync with
-# the cards in templates/games/games_home.html.
-GAME_COUNT = 12
-
-
 def games_home(request):
-    return render(request, 'games/games_home.html')
+    subject = request.GET.get('subject', '')
+    facets = subject_facets()
+    if subject not in {f['slug'] for f in facets}:
+        subject = ''
+
+    # Study-subject preference applies only when the visitor hasn't picked a
+    # category themselves and hasn't asked for everything — same rule as the
+    # tutorial and exam libraries.
+    personalized = False
+    slugs = get_study_subjects(request)
+    if slugs and not subject and not request.GET.get('all'):
+        games = filter_games(slugs=slugs)
+        personalized = len(games) < GAME_COUNT
+    else:
+        games = filter_games(subject=subject)
+
+    return render(request, 'games/games_home.html', {
+        'games': games,
+        'facets': facets,
+        'active_subject': subject,
+        'personalized': personalized,
+        'total_count': GAME_COUNT,
+    })
 
 
 def number_guess(request):

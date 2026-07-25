@@ -12,6 +12,7 @@ from prime.subjects import (
     SUBJECT_MAP, SUBJECT_SLUGS, SESSION_KEY,
     get_study_subjects, has_chosen_subjects,
 )
+from prime.search import search_platform
 
 from masters.models import Master
 from practice.models import Practice, PracticeAttempt
@@ -168,31 +169,9 @@ def help_page(request):
 
 def search(request):
     query = request.GET.get('q', '').strip()
-    masters = Practice.objects.none()
-    practices = Practice.objects.none()
-    threads = Thread.objects.none()
-
-    if query:
-        masters = Master.objects.filter(
-            Q(name__icontains=query) |
-            Q(subject__icontains=query) |
-            Q(description__icontains=query) |
-            Q(category__icontains=query)
-        )
-        practices = Practice.objects.filter(is_published=True).filter(
-            Q(title__icontains=query) |
-            Q(description__icontains=query)
-        )
-        threads = Thread.objects.filter(
-            Q(title__icontains=query) |
-            Q(body__icontains=query)
-        )
-
-    total = masters.count() + practices.count() + threads.count()
+    groups, total = search_platform(query)
     return render(request, 'prime/search_results.html', {
         'query': query,
-        'masters': masters,
-        'practices': practices,
-        'threads': threads,
+        'groups': groups,
         'total': total,
     })
