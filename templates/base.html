@@ -20,15 +20,18 @@
     <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'icons/icon-512.png' %}">
     <meta name="twitter:card" content="summary">
 
-    <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <!-- Favicons — largest first so browsers pick the best fit for their slot -->
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'favicon/favicon-96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="48x48" href="{% static 'favicon/favicon-48x48.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
-    <link rel="apple-touch-icon" href="{% static 'favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon/favicon.ico' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="{% static 'manifest.json' %}">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Powerty">
 
 
 
@@ -238,6 +241,9 @@
             </a>
 
             <div class="topbar-right">
+                <!-- Install as app (shows only when installable & not installed) -->
+                {% include "includes/pwa_install.html" %}
+
                 <!-- Language switcher -->
                 <form method="post" action="{% url 'set_language' %}" class="lang-switcher">
                     {% csrf_token %}

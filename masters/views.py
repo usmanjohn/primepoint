@@ -12,7 +12,6 @@ from homework.models import PandaGroup, Homework
 from tutorial.models import Tutorial
 
 
-@login_required
 def master_list(request):
     masters = Master.objects.all().annotate(
         practice_count=Count('practices', distinct=True),
@@ -21,10 +20,9 @@ def master_list(request):
     return render(request, 'masters/master_list.html', {'masters': masters})
 
 
-@login_required
 def master_detail(request, master_id):
     master = get_object_or_404(Master, id=master_id)
-    is_owner = (request.user == master.profile.user)
+    is_owner = (request.user.is_authenticated and request.user == master.profile.user)
 
     practice_qs = master.practices if is_owner else master.practices.filter(is_published=True)
     practices = practice_qs.annotate(

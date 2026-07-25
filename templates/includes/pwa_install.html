@@ -1,0 +1,122 @@
+{% load i18n %}
+{# Install-app button. Stays hidden until the browser reports the app is       #}
+{# installable, and never appears once Powerty is already installed.           #}
+
+<button type="button" id="pwa-install" class="pwa-install-btn" hidden
+        aria-label="{% trans "Install the Powerty app" %}">
+    <i class="bi bi-download"></i>
+    <span class="pwa-install-label">{% trans "Install" %}</span>
+</button>
+
+{# iOS/iPadOS Safari has no install API, so we show the manual steps instead. #}
+<div id="pwa-ios-sheet" class="pwa-sheet" hidden role="dialog" aria-modal="true"
+     aria-labelledby="pwa-ios-title">
+    <div class="pwa-sheet-card">
+        <button type="button" class="pwa-sheet-close" id="pwa-ios-close"
+                aria-label="{% trans "Close" %}"><i class="bi bi-x-lg"></i></button>
+
+        <div class="pwa-sheet-head">
+            <div class="pwa-sheet-icon"><i class="bi bi-lightning-charge-fill"></i></div>
+            <div>
+                <h2 id="pwa-ios-title">{% trans "Install Powerty" %}</h2>
+                <p>{% trans "Add it to your Home Screen — it opens full-screen, like a real app." %}</p>
+            </div>
+        </div>
+
+        <ol class="pwa-sheet-steps">
+            <li>
+                <span class="pwa-step-n">1</span>
+                <span>{% trans "Tap the Share button" %}
+                    <i class="bi bi-box-arrow-up pwa-step-icon"></i>
+                    {% trans "in the Safari toolbar." %}</span>
+            </li>
+            <li>
+                <span class="pwa-step-n">2</span>
+                <span>{% trans "Scroll down and choose" %}
+                    <b>{% trans "Add to Home Screen" %}</b>
+                    <i class="bi bi-plus-square pwa-step-icon"></i>.</span>
+            </li>
+            <li>
+                <span class="pwa-step-n">3</span>
+                <span>{% trans "Tap" %} <b>{% trans "Add" %}</b> —
+                    {% trans "Powerty now sits with your other apps." %}</span>
+            </li>
+        </ol>
+
+        <button type="button" class="pwa-sheet-later" id="pwa-ios-later">
+            {% trans "Maybe later" %}
+        </button>
+    </div>
+</div>
+
+<script>
+(function () {
+    var btn = document.getElementById('pwa-install');
+    if (!btn) return;
+
+    var sheet = document.getElementById('pwa-ios-sheet');
+    var KEY = 'powerty-install-dismissed';
+
+    // Already running as an installed app? Then there is nothing to offer.
+    var installed = window.matchMedia('(display-mode: standalone)').matches ||
+                    window.matchMedia('(display-mode: minimal-ui)').matches ||
+                    window.navigator.standalone === true;
+    var dismissed = false;
+    try { dismissed = localStorage.getItem(KEY) === '1'; } catch (e) {}
+    if (installed || dismissed) return;
+
+    var deferred = null;
+
+    // Chrome / Edge / Samsung: fires only when the app is installable
+    // and not yet installed — exactly when we want the button.
+    window.addEventListener('beforeinstallprompt', function (e) {
+        e.preventDefault();
+        deferred = e;
+        btn.hidden = false;
+    });
+
+    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if (isIOS && sheet) btn.hidden = false;
+
+    function remember() {
+        try { localStorage.setItem(KEY, '1'); } catch (e) {}
+    }
+
+    btn.addEventListener('click', function () {
+        if (deferred) {
+            deferred.prompt();
+            deferred.userChoice.then(function (choice) {
+                if (choice.outcome === 'dismissed') remember();
+                deferred = null;
+                btn.hidden = true;
+            });
+        } else if (sheet) {
+            sheet.hidden = false;
+        }
+    });
+
+    if (sheet) {
+        document.getElementById('pwa-ios-close').addEventListener('click', function () {
+            sheet.hidden = true;
+        });
+        document.getElementById('pwa-ios-later').addEventListener('click', function () {
+            sheet.hidden = true;
+            btn.hidden = true;
+            remember();
+        });
+        sheet.addEventListener('click', function (e) {
+            if (e.target === sheet) sheet.hidden = true;
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && !sheet.hidden) sheet.hidden = true;
+        });
+    }
+
+    window.addEventListener('appinstalled', function () {
+        btn.hidden = true;
+        if (sheet) sheet.hidden = true;
+        remember();
+    });
+})();
+</script>

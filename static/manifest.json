@@ -1,15 +1,42 @@
 {
-  "name": "Powerty Dashboard",
+  "id": "/",
+  "name": "Powerty — Learning Platform",
   "short_name": "Powerty",
-  "description": "Powerty — your learning and practice platform",
-  "start_url": "/",
+  "description": "Free learning platform: Korean (TOPIK), English (IELTS), SAT Math and Russian — tutorials, exam prep, stories, writing drills and games.",
+  "start_url": "/?source=pwa",
+  "scope": "/",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
   "orientation": "any",
   "background_color": "#0d1117",
   "theme_color": "#0d1117",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["education", "productivity"],
   "icons": [
-    { "src": "/static/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/static/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+    { "src": "/static/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/static/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/static/icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/static/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ],
-  "categories": ["education", "productivity"]
+  "shortcuts": [
+    {
+      "name": "Practice",
+      "short_name": "Practice",
+      "url": "/practice/",
+      "icons": [{ "src": "/static/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Exam Prep",
+      "short_name": "Exam Prep",
+      "url": "/examprep/",
+      "icons": [{ "src": "/static/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Corner",
+      "short_name": "Corner",
+      "url": "/corner/",
+      "icons": [{ "src": "/static/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ]
 }
