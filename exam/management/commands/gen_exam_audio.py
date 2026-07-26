@@ -116,9 +116,11 @@ class Command(BaseCommand):
                 return script_parts
 
             total = len(plan)
+            # Opening announcement: normal spacing between lines, then a longer
+            # breath before the first question set starts.
             for i, (speaker, text) in enumerate(intro):
                 parts.append(synth(speaker, text))
-                parts.append(line_gap)
+                parts.append(line_gap if i < len(intro) - 1 else gap_file(3))
 
             for idx, seg in enumerate(plan, start=1):
                 if 'announce' in seg:

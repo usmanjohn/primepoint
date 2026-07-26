@@ -40,8 +40,10 @@ class Command(BaseCommand):
                 f'No exam with exam_number={options["exam_number"]} '
                 f'language={options["language"]} — run load_mock first.')
 
+        # storage.exists()/.size work on every backend; .path only on local disk
+        # (S3 raises NotImplementedError), so never touch .path here.
         if (exam.listening_audio and not options['force']
-                and os.path.isfile(exam.listening_audio.path)):
+                and exam.listening_audio.storage.exists(exam.listening_audio.name)):
             self.stdout.write(f'Audio already in place ({exam.listening_audio.name}) — skipping. '
                               f'Use --force to re-copy.')
             return
@@ -50,6 +52,6 @@ class Command(BaseCommand):
         with open(path, 'rb') as fh:
             exam.listening_audio.save(filename, File(fh), save=True)
 
-        size_mb = os.path.getsize(exam.listening_audio.path) / (1024 * 1024)
+        size_mb = os.path.getsize(path) / (1024 * 1024)
         self.stdout.write(self.style.SUCCESS(
             f'Attached {exam.listening_audio.name} ({size_mb:.1f} MB) to "{exam}" (id={exam.id})'))
