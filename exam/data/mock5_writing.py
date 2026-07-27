@@ -46,9 +46,9 @@ QUESTIONS = [
     {'section': S, 'number': 52, 'is_writing': True,
      'question_text': (
          f'<div style="{_BOX}">'
-         '물은 우리 몸의 약 70퍼센트를 차지한다. 그래서 물을 충분히 마시지 않으면 몸에 여러 가지 '
-         '(&nbsp;&nbsp;&nbsp;㉠&nbsp;&nbsp;&nbsp;). 그런데 목이 마르다고 해서 한 번에 많은 양의 물을 '
-         '마시는 것은 오히려 몸에 좋지 않다. 그러므로 물은 한꺼번에 마시지 말고 하루 동안 조금씩 '
+         '아침 식사는 하루를 시작하는 데 중요한 역할을 한다. 그런데 시간이 없다는 이유로 아침을 '
+         '(&nbsp;&nbsp;&nbsp;㉠&nbsp;&nbsp;&nbsp;). 아침을 거르면 점심에 과식을 하게 되어 오히려 몸에 '
+         '더 좋지 않다. 그러므로 아무리 바쁘더라도 간단하게라도 '
          '(&nbsp;&nbsp;&nbsp;㉡&nbsp;&nbsp;&nbsp;).'
          '</div>'
          '<p style="margin-top:0.6rem;">㉠과 ㉡에 들어갈 문장을 아래에 각각 쓰십시오.<br>'
