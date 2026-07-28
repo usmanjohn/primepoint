@@ -1,7 +1,8 @@
 from django.contrib import admin
 
 from .models import (ExamTrack, Topic, Lesson, LessonBlock, BlockChoice,
-                     GrammarPoint, GrammarExample, GrammarSynonym)
+                     GrammarPoint, GrammarExample, GrammarSynonym,
+                     VocabRoot, VocabEntry, VocabExample, VocabRelation)
 
 
 @admin.register(ExamTrack)
@@ -84,3 +85,41 @@ class GrammarPointAdmin(admin.ModelAdmin):
     search_fields = ['pattern', 'meaning', 'note', 'attach']
     inlines       = [GrammarExampleInline, GrammarSynonymInline]
     readonly_fields = ['created_at', 'updated_at']
+
+
+class VocabExampleInline(admin.TabularInline):
+    model  = VocabExample
+    extra  = 2
+    fields = ['order', 'korean', 'uz']
+
+
+class VocabRelationInline(admin.TabularInline):
+    model  = VocabRelation
+    fk_name = 'entry'
+    extra  = 2
+    fields = ['order', 'kind', 'word', 'note', 'related']
+    raw_id_fields = ['related']
+
+
+@admin.register(VocabRoot)
+class VocabRootAdmin(admin.ModelAdmin):
+    list_display  = ['label', 'meaning', 'entry_count', 'order', 'is_published']
+    list_filter   = ['track', 'is_published']
+    list_editable = ['order', 'is_published']
+    search_fields = ['syllable', 'hanja', 'meaning']
+
+    def entry_count(self, obj):
+        return obj.entries.count()
+    entry_count.short_description = 'Words'
+
+
+@admin.register(VocabEntry)
+class VocabEntryAdmin(admin.ModelAdmin):
+    list_display     = ['word', 'hanja', 'meaning', 'level', 'pos', 'topic',
+                        'freq', 'order', 'is_published']
+    list_filter      = ['track', 'level', 'pos', 'topic', 'is_published']
+    list_editable    = ['order', 'is_published']
+    search_fields    = ['word', 'hanja', 'meaning', 'collocation']
+    filter_horizontal = ['roots']
+    inlines          = [VocabExampleInline, VocabRelationInline]
+    readonly_fields  = ['created_at', 'updated_at']

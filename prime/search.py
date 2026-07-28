@@ -141,6 +141,22 @@ def _grammar(q):
     return _group('grammar', _('Grammar'), 'bi-table', items, qs.count())
 
 
+def _vocab(q):
+    from examprep.models import VocabEntry
+
+    qs = VocabEntry.objects.filter(is_published=True).select_related('track').filter(
+        Q(word__icontains=q) | Q(meaning__icontains=q) | Q(hanja__icontains=q) |
+        Q(collocation__icontains=q)
+    ).order_by('order')
+    items = [{
+        'title': f'{v.word} ({v.hanja})' if v.hanja else v.word,
+        'meta': _join(f'TOPIK {v.level}', v.get_topic_display(), v.meaning),
+        'url': reverse('examprep_vocab_word',
+                       kwargs={'track_slug': v.track.slug, 'slug': v.slug}),
+    } for v in qs[:PER_GROUP]]
+    return _group('vocab', _('Vocabulary'), 'bi-translate', items, qs.count())
+
+
 def _games(q):
     from games.catalog import search_games
 
@@ -217,7 +233,7 @@ def _classrooms(q):
 # Learning material first — that is what people type into a search box — then
 # people, then community spaces.
 SOURCES = [
-    _tutorials, _practices, _examprep, _grammar, _exams, _stories, _writing,
+    _tutorials, _practices, _examprep, _grammar, _vocab, _exams, _stories, _writing,
     _games, _masters, _pandas, _threads, _classrooms,
 ]
 

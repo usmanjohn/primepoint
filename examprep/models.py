@@ -504,3 +504,188 @@ class GrammarSynonym(models.Model):
 
     def __str__(self):
         return f'{self.point.pattern} ≈ {self.pattern}'
+
+
+# ── Vocabulary bank ────────────────────────────────────────────────────────
+# Sibling of the grammar bank, same shape: a filterable, printable reference
+# rather than a lesson. Its own idea is the ROOT FAMILY — most TOPIK II
+# vocabulary is Sino-Korean, so 출구 / 출근 / 출발 / 출석 all share 출(出) =
+# "chiqmoq". Learning the root turns dozens of unseen words into guessable
+# ones, which is exactly the skill the reading paper rewards. Words therefore
+# hang off VocabRoot as well as sitting in the flat table.
+
+VOCAB_POS_CHOICES = [
+    ('noun',   '명사 — Ot'),
+    ('verb',   '동사 — Fe’l'),
+    ('adj',    '형용사 — Sifat'),
+    ('adv',    '부사 — Ravish'),
+    ('phrase', '표현 — Ibora'),
+    ('count',  '수사·단위 — Son va o‘lchov'),
+]
+
+# Theme the word belongs to — drives the topical filter and the print sheet's
+# sections. Chosen to match the subject areas TOPIK actually draws on.
+VOCAB_TOPIC_CHOICES = [
+    ('daily',       'Kundalik hayot — 일상생활'),
+    ('person',      'Odamlar va munosabat — 사람·관계'),
+    ('emotion',     'His-tuyg‘u va fe’l-atvor — 감정·성격'),
+    ('body',        'Tana va sog‘liq — 신체·건강'),
+    ('food',        'Ovqat — 음식'),
+    ('home',        'Uy va turar joy — 집·주거'),
+    ('shopping',    'Xarid va pul — 쇼핑·경제생활'),
+    ('transport',   'Transport va harakat — 교통·이동'),
+    ('work',        'Ish va kasb — 직장·업무'),
+    ('school',      'Ta’lim — 학교·교육'),
+    ('society',     'Jamiyat — 사회'),
+    ('economy',     'Iqtisod — 경제'),
+    ('environment', 'Tabiat va ekologiya — 환경·자연'),
+    ('science',     'Fan va texnologiya — 과학·기술'),
+    ('culture',     'Madaniyat va san’at — 문화·예술'),
+    ('media',       'Axborot va OAV — 언론·정보'),
+    ('time',        'Vaqt — 시간·날짜'),
+    ('place',       'Joy va yo‘nalish — 장소·위치'),
+    ('abstract',    'Mavhum tushunchalar — 추상 개념'),
+]
+
+
+class VocabRoot(models.Model):
+    """A shared morpheme and its meaning — 출(出) 'chiqmoq', 학(學) 'ilm'.
+
+    This is the reason the vocab bank exists in this shape. A student who
+    knows 출 = chiqish can read 출구, 출근, 출발, 제출 and 수출 without ever
+    having met four of them.
+    """
+    track      = models.ForeignKey(ExamTrack, on_delete=models.CASCADE,
+                                   related_name='vocab_roots')
+    syllable   = models.CharField(max_length=10,
+                                  help_text='The shared syllable, e.g. 출.')
+    hanja      = models.CharField(max_length=10, blank=True,
+                                  help_text='Its Hanja, e.g. 出. Blank for native-Korean roots.')
+    slug       = models.SlugField(max_length=120, blank=True, allow_unicode=True)
+    meaning    = models.CharField(max_length=200,
+                                  help_text='Uzbek gloss, e.g. "chiqmoq — chiqish, tashqariga".')
+    note       = models.TextField(blank=True,
+                                  help_text='How the root behaves / what to watch for, Uzbek HTML.')
+    order      = models.PositiveIntegerField(default=0)
+    is_published = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['order', 'id']
+        unique_together = ['track', 'slug']
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base = slugify(self.syllable, allow_unicode=True).strip('-') or 'root'
+            slug, n = base, 1
+            while VocabRoot.objects.filter(track=self.track,
+                                           slug=slug).exclude(pk=self.pk).exists():
+                slug = f'{base}-{n}'
+                n += 1
+            self.slug = slug[:120]
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        label = f'{self.syllable}({self.hanja})' if self.hanja else self.syllable
+        return f'{label} — {self.meaning}'
+
+    @property
+    def label(self):
+        return f'{self.syllable}({self.hanja})' if self.hanja else self.syllable
+
+
+class VocabEntry(models.Model):
+    """One word — a row in the vocabulary table."""
+    track        = models.ForeignKey(ExamTrack, on_delete=models.CASCADE,
+                                     related_name='vocab_entries')
+    word         = models.CharField(max_length=100)
+    slug         = models.SlugField(max_length=140, blank=True, allow_unicode=True)
+    hanja        = models.CharField(max_length=40, blank=True,
+                                    help_text='Hanja spelling, e.g. 出口. Blank for native words.')
+    roots        = models.ManyToManyField(VocabRoot, blank=True, related_name='entries',
+                                          help_text='Root morphemes this word is built from.')
+    pos          = models.CharField(max_length=10, choices=VOCAB_POS_CHOICES, default='noun')
+    topic        = models.CharField(max_length=20, choices=VOCAB_TOPIC_CHOICES, default='daily')
+    level        = models.PositiveSmallIntegerField(default=3,
+                                                    help_text='TOPIK level 1–6.')
+    meaning      = models.CharField(max_length=200,
+                                    help_text='Short Uzbek gloss shown in the table.')
+    note         = models.TextField(blank=True,
+                                    help_text='Usage note in Uzbek, HTML allowed.')
+    collocation  = models.CharField(max_length=300, blank=True,
+                                    help_text='Typical partners, e.g. "출근하다 · 출근길 · 출근 시간".')
+    freq         = models.PositiveSmallIntegerField(default=2,
+                                                    help_text='How often it shows up in TOPIK: 1–3 stars.')
+    order        = models.PositiveIntegerField(default=0)
+    is_published = models.BooleanField(default=True)
+    created_at   = models.DateTimeField(auto_now_add=True)
+    updated_at   = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['order', 'id']
+        unique_together = ['track', 'slug']
+        verbose_name_plural = 'Vocab entries'
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base = slugify(self.word, allow_unicode=True).strip('-') or 'word'
+            slug, n = base, 1
+            while VocabEntry.objects.filter(track=self.track,
+                                            slug=slug).exclude(pk=self.pk).exists():
+                slug = f'{base}-{n}'
+                n += 1
+            self.slug = slug[:140]
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'{self.word} — {self.meaning}'
+
+    @property
+    def stars(self):
+        n = max(0, min(3, self.freq))
+        return '★' * n + '☆' * (3 - n)
+
+    @property
+    def first_example(self):
+        return self.examples.first()
+
+
+class VocabExample(models.Model):
+    """A Korean example sentence with its Uzbek translation."""
+    entry  = models.ForeignKey(VocabEntry, on_delete=models.CASCADE, related_name='examples')
+    korean = models.CharField(max_length=400)
+    uz     = models.CharField(max_length=400, blank=True)
+    order  = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['order', 'id']
+
+    def __str__(self):
+        return self.korean[:60]
+
+
+# What a related word is to the entry. Antonyms matter as much as synonyms for
+# TOPIK: 수출/수입 and 증가/감소 are routinely the answer pair.
+VOCAB_RELATION_CHOICES = [
+    ('syn', '유의어 — Sinonim'),
+    ('ant', '반의어 — Antonim'),
+    ('rel', '관련어 — Bog‘liq so‘z'),
+]
+
+
+class VocabRelation(models.Model):
+    """A synonym / antonym / related word, cross-linked at import time."""
+    entry   = models.ForeignKey(VocabEntry, on_delete=models.CASCADE, related_name='relations')
+    kind    = models.CharField(max_length=3, choices=VOCAB_RELATION_CHOICES, default='syn')
+    word    = models.CharField(max_length=100)
+    note    = models.CharField(max_length=300, blank=True,
+                               help_text='Farqi — how it differs, in Uzbek.')
+    related = models.ForeignKey(VocabEntry, on_delete=models.SET_NULL, null=True, blank=True,
+                                related_name='related_from')
+    order   = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['kind', 'order', 'id']
+
+    def __str__(self):
+        return f'{self.entry.word} [{self.kind}] {self.word}'

@@ -101,6 +101,31 @@ TOPIK conjunctive adverbs to the grammar table"):
    (see Deployment section) — automatically, every time.
 Another exam: add a `toc_<exam>_grammar.txt` with its own TRACK; same workflow.
 
+## Creating vocab-bank entries (bulk) — TOPIK lug'at
+`examprep`'s `VocabEntry` is the vocabulary table at `/examprep/<track>/vocab/`, sibling of
+the grammar bank (same access rules: open to read, **staff-only + watermarked** to print or
+download). Its own idea is **root families** (`VocabRoot`) at
+`/examprep/<track>/vocab/roots/` — most TOPIK II vocabulary is Sino-Korean, so 출(出) once
+gives 출구·출근·출발·출석·제출·수출. Words carry `hanja` + `roots` (M2M), plus
+`VocabExample`s and `VocabRelation`s (synonym / antonym / related, cross-linked on import).
+When the user asks (e.g. "add the TOPIK adverbs to the vocab table"):
+1. Read `examprep/management/commands/STYLE_GUIDE_VOCAB.md` (field meanings, the root rule,
+   the "state the DIFFERENCE" rule for relations; section 12 holds the user's own tips).
+2. Read `examprep/management/commands/toc_topik_vocab.txt` (header gives TRACK, AUTHOR and
+   the **required import order**; body is the group list with `order` decades and status).
+3. Find where to continue:
+   `VocabEntry.objects.filter(track__name='TOPIK').order_by('-order').first()` and
+   `VocabRoot.objects.filter(track__name='TOPIK').values_list('syllable', flat=True)`.
+4. Write `_vocab_topik_<group>.py` as `TRACK = {...}` + optional `ROOTS = [...]` + `WORDS = [...]`
+   (Korean words and examples, Uzbek meanings — no English).
+5. Import: `python manage.py import_vocab <that file> --author=<AUTHOR from toc>`
+   (add `--republish` to overwrite — it rebuilds examples, root links and relations).
+   ⚠️ **Each root is defined in exactly one file, and files must be imported in the toc's
+   order** — `import_vocab` errors out on a root it cannot find rather than silently
+   dropping the word from its family. Never copy a root definition into a second file.
+6. Give the `railway run python manage.py import_vocab ...` commands **in that same order**
+   for production (see Deployment section) — automatically, every time.
+
 ## Creating Corner stories (bulk)
 `corner` is the reading library at `/corner/` (`Subject` → `Collection` → `Story`, plus
 `WritingTemplate` files uploaded via admin). Writing drills are **not** here — they live in

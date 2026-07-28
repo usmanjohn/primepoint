@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+{% block nav_examprep %}active{% endblock %}
+{% block mob_nav_examprep %}active{% endblock %}
+{% block page_name %}{{ entry.word }}{% endblock %}
+{% block title %}{{ entry.word }} — {% trans "Vocabulary" %} — {{ track.name }}{% endblock %}
+{% block meta_description %}{{ entry.word }}{% if entry.hanja %} ({{ entry.hanja }}){% endif %} — {{ entry.meaning }}. {{ track.name }} lug‘ati: namunalar, birikmalar, so‘z oilasi va sinonimlar.{% endblock %}
+
+{% block content %}
+
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb small mb-0">
+        <li class="breadcrumb-item"><a href="{% url 'examprep_home' %}">{% trans "Exam Prep" %}</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'examprep_track' track.slug %}">{{ track.name }}</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'examprep_vocab' track.slug %}">{% trans "Vocabulary" %}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ entry.word }}</li>
+    </ol>
+</nav>
+
+<div class="gr-hero vc-hero">
+    <div class="d-flex flex-wrap align-items-start justify-content-between gap-2">
+        <div>
+            <h1 class="gr-hero-pattern vc-hero-word">{{ entry.word }}</h1>
+            {% if entry.hanja %}<p class="vc-hero-hanja">{{ entry.hanja }}</p>{% endif %}
+            <p class="gr-hero-meaning">{{ entry.meaning }}</p>
+        </div>
+        <span class="gr-stars fs-5" title="TOPIK'da uchrash chastotasi">{{ entry.stars }}</span>
+    </div>
+    <div class="d-flex flex-wrap gap-2 mt-3">
+        <span class="gr-level gr-level-{{ entry.level }}">TOPIK {{ entry.level }}</span>
+        <a class="gr-chip" href="{% url 'examprep_vocab' track.slug %}?pos={{ entry.pos }}">{{ entry.get_pos_display }}</a>
+        <a class="gr-chip" href="{% url 'examprep_vocab' track.slug %}?topic={{ entry.topic }}">{{ entry.get_topic_display }}</a>
+    </div>
+</div>
+
+{% if entry.collocation %}
+<div class="gr-panel">
+    <h2>Ko‘p uchraydigan birikmalar — 연어</h2>
+    <p class="vc-colloc-big mb-0">{{ entry.collocation }}</p>
+</div>
+{% endif %}
+
+{% if entry.examples.all %}
+<div class="gr-panel">
+    <h2>Namunalar — 예문</h2>
+    {% for ex in entry.examples.all %}
+    <div class="gr-sentence">
+        <span class="gr-ko">{{ ex.korean }}</span>
+        {% if ex.uz %}<span class="gr-uz">{{ ex.uz }}</span>{% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if entry.note %}
+<div class="gr-panel">
+    <h2>Izoh — qachon ishlatiladi</h2>
+    <div>{{ entry.note|safe }}</div>
+</div>
+{% endif %}
+
+{% if family %}
+<div class="gr-panel vc-family-panel">
+    <h2>So‘z oilasi — 같은 어근</h2>
+    {% for f in family %}
+    <div class="vc-family-inline">
+        <div class="vc-family-inline-head">
+            <span class="vc-family-glyph sm">{{ f.root.hanja|default:f.root.syllable }}</span>
+            <div>
+                <strong>{{ f.root.label }}</strong> — {{ f.root.meaning }}
+            </div>
+            <a class="ms-auto small" href="{% url 'examprep_vocab' track.slug %}?root={{ f.root.slug }}">
+                hammasi <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+        <div class="gr-chips">
+            {% for w in f.words %}
+            <a class="gr-chip" href="{% url 'examprep_vocab_word' track.slug w.slug %}" title="{{ w.meaning }}">
+                {{ w.word }} <span class="gr-chip-n">T{{ w.level }}</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if entry.relations.all or incoming %}
+<div class="gr-panel">
+    <h2>Sinonim, antonim va bog‘liq so‘zlar</h2>
+    <table class="gr-compare">
+        <tbody>
+            {% for r in entry.relations.all %}
+            <tr>
+                <td><span class="vc-relkind vc-rel-{{ r.kind }}">{{ r.get_kind_display }}</span></td>
+                <td class="vc-rel-word">
+                    {% if r.related %}
+                    <a href="{% url 'examprep_vocab_word' track.slug r.related.slug %}">{{ r.word }}</a>
+                    {% else %}{{ r.word }}{% endif %}
+                </td>
+                <td>{{ r.note }}</td>
+            </tr>
+            {% endfor %}
+            {% comment %}
+            Mentions from the other direction: another word named this one.
+            Showing them keeps the pair readable from either side.
+            {% endcomment %}
+            {% for r in incoming %}
+            <tr>
+                <td><span class="vc-relkind vc-rel-{{ r.kind }}">{{ r.get_kind_display }}</span></td>
+                <td class="vc-rel-word">
+                    <a href="{% url 'examprep_vocab_word' track.slug r.entry.slug %}">{{ r.entry.word }}</a>
+                </td>
+                <td class="text-secondary"><em>{{ r.entry.meaning }}</em>{% if r.note %} — {{ r.note }}{% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+
+{% if same_topic %}
+<div class="gr-panel">
+    <h2>Shu mavzudagi boshqa so‘zlar — {{ entry.get_topic_display }}</h2>
+    <div class="gr-chips">
+        {% for w in same_topic %}
+        <a class="gr-chip" href="{% url 'examprep_vocab_word' track.slug w.slug %}" title="{{ w.meaning }}">
+            {{ w.word }} <span class="gr-chip-n">T{{ w.level }}</span>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<a href="{% url 'examprep_vocab' track.slug %}" class="btn btn-outline-secondary btn-sm">
+    <i class="bi bi-arrow-left me-1"></i>Lug‘at jadvaliga qaytish
+</a>
+
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/grammar.css' %}">
+<link rel="stylesheet" href="{% static 'css/vocab.css' %}">
+{% endblock %}

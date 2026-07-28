@@ -1,0 +1,54 @@
+# ── Track metadata (read by Claude) ──────────────────────────────────
+TRACK:  TOPIK
+AUTHOR: powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_VOCAB.md. This file is ONLY the ordered group list.
+# This is the VOCAB BANK — the table at /examprep/topik/vocab/ and the word families at
+# /examprep/topik/vocab/roots/. One data file per group; each owns an `order` decade.
+# The headline feature is ROOT FAMILIES (한자 어근): 출(出) → 출구·출근·출발·제출·수출.
+# Status: [done] = imported; [next] = not written yet.
+#
+# ⚠️ IMPORT ORDER MATTERS. A word may use a root defined in another file (발생 needs
+# 생 from the 'people' file), and import_vocab errors out rather than silently
+# dropping the word from its family. Import in this order, and keep it when you add
+# a group — a new file may reference any root above it, never below:
+#     1. _vocab_topik_roots_people.py    (self-contained)
+#     2. _vocab_topik_roots_motion.py    (needs 생 from 1; defines 감 for 3)
+#     3. _vocab_topik_roots_abstract.py  (needs 입 from 2, 감 from 2)
+#     4. _vocab_topik_daily.py           (needs 불 from 3)
+# Each root is defined in exactly one file — never copy a root definition, or the
+# two copies drift apart.
+# ─────────────────────────────────────────────────────────────────────
+
+## GROUP: 어근 1 — Harakat va joy o'zaklari   [orders 100-199]  [done]
+   file: _vocab_topik_roots_motion.py
+   출(出) 입(入) 발(發) 동(動) 통(通) 장(場) 실(室) 구(口) 소(所) 지(地)
+   — chiqish/kirish, harakat, joy bildiruvchi o'zaklar va ularning so'z oilalari.
+
+## GROUP: 어근 2 — Odam, ta'lim va jamiyat o'zaklari   [orders 200-299]  [done]
+   file: _vocab_topik_roots_people.py
+   인(人) 자(者) 학(學) 생(生) 회(會) 사(社) 국(國) 민(民) 원(員) 가(家)
+   — odam, o'qish, jamiyat, davlat bildiruvchi o'zaklar.
+
+## GROUP: 어근 3 — Mavhum va baho o'zaklari   [orders 300-399]  [done]
+   file: _vocab_topik_roots_abstract.py
+   심(心) 감(感) 력(力) 화(化) 성(性/成) 용(用) 정(定) 관(關) 경(經) 제(制/製)
+   불(不) 대(大) 소(小) 고(高) 신(新) — 쓰기 54 va 읽기 41-50 uchun eng kerakli o'zaklar.
+
+## GROUP: Mavzuli lug'at 1 — Kundalik hayot va odamlar   [orders 500-599]  [done]
+   file: _vocab_topik_daily.py
+   Sifat, ravish va fe'llar (foydalanuvchi metodi: otdan ko'ra shular muhim) —
+   kundalik hayot, his-tuyg'u, fe'l-atvor, sog'liq, ovqat, uy.
+
+## GROUP: Mavzuli lug'at 2 — Ish, iqtisod va jamiyat   [orders 600-699]  [next]
+   file: _vocab_topik_work.py
+   취업, 면접, 임금, 소비, 생산, 정책, 제도, 복지 — 쓰기 53/54 uchun.
+
+## GROUP: Mavzuli lug'at 3 — Ekologiya, fan va madaniyat   [orders 700-799]  [next]
+   file: _vocab_topik_science.py
+   환경 오염, 재활용, 기후, 인공지능, 전통, 예술 — 읽기 41-50 mavzulari.
+
+## GROUP: 부사 — Ravishlar to'plami   [orders 800-899]  [next]
+   file: _vocab_topik_adverbs.py
+   과연, 오히려, 그저, 무려, 비록, 마침내, 결코, 전혀, 아무래도 — javobni hal qiladigan
+   ravishlar (foydalanuvchi ta'kidi: 부사 ni ko'proq o'rganing).

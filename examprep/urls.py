@@ -14,6 +14,12 @@ urlpatterns = [
     path('<slug:track_slug>/grammar/download/',       views.grammar_download, name='examprep_grammar_download'),
     # `str`, not `slug`: grammar slugs are Hangul and `slug` is ASCII-only.
     path('<slug:track_slug>/grammar/<str:slug>/',     views.grammar_detail,   name='examprep_grammar_point'),
+    # Same ordering rule again: the fixed vocab sub-paths before <str:slug>.
+    path('<slug:track_slug>/vocab/',                  views.vocab_list,       name='examprep_vocab'),
+    path('<slug:track_slug>/vocab/roots/',            views.vocab_roots,      name='examprep_vocab_roots'),
+    path('<slug:track_slug>/vocab/print/',            views.vocab_print,      name='examprep_vocab_print'),
+    path('<slug:track_slug>/vocab/download/',         views.vocab_download,   name='examprep_vocab_download'),
+    path('<slug:track_slug>/vocab/<str:slug>/',       views.vocab_detail,     name='examprep_vocab_word'),
     path('<slug:track_slug>/',                        views.track_detail,  name='examprep_track'),
     path('<slug:track_slug>/<slug:skill>/',           views.skill_detail,  name='examprep_skill'),
     path('<slug:track_slug>/<slug:skill>/<slug:slug>/edit/', views.lesson_edit, name='examprep_lesson_edit'),

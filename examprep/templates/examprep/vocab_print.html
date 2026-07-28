@@ -1,0 +1,246 @@
+{% load i18n static %}<!doctype html>
+<!-- Standalone on purpose, same as the grammar sheet: a handout should not
+inherit the site's nav, sidebar or footer. Staff-only view; watermarked. -->
+<html lang="uz">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>{{ track.name }} — Lug‘at{% if by_root %} (so‘z oilalari){% endif %}</title>
+    <link href="{% static 'vendor/bootstrap-icons.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/grammar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vocab.css' %}">
+    <style>
+        body {
+            font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo",
+                         Roboto, sans-serif;
+            color: #0f172a;
+            background: #f1f5f9;
+            margin: 0;
+            padding: 1.5rem 1rem 3rem;
+            line-height: 1.45;
+        }
+        .gr-sheet {
+            background: #fff;
+            padding: 2rem 2.25rem 2.5rem;
+            border-radius: .5rem;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, .12);
+            position: relative;
+        }
+        .gr-watermark {
+            position: absolute; inset: 0; width: 100%; height: 100%;
+            z-index: 0; pointer-events: none; user-select: none;
+        }
+        .gr-watermark text {
+            font-family: "Trebuchet MS", Verdana, sans-serif;
+            font-size: 30px; font-weight: 700; letter-spacing: .18em;
+            fill: #0f172a; fill-opacity: .055;
+        }
+        .gr-watermark .gr-wm-sub {
+            font-size: 17px; font-weight: 400; letter-spacing: .1em; fill-opacity: .045;
+        }
+        .gr-sheet-body { position: relative; z-index: 1; }
+        .gr-sheet-head { display: flex; align-items: center; gap: .85rem; }
+        .gr-sheet-logo { border-radius: .4rem; flex-shrink: 0; }
+        .gr-bar {
+            max-width: 1000px; margin: 0 auto 1rem;
+            display: flex; gap: .5rem; flex-wrap: wrap; align-items: center;
+        }
+        .gr-bar button, .gr-bar a {
+            font: inherit; font-size: .85rem; padding: .35rem .8rem;
+            border-radius: .4rem; border: 1px solid #cbd5e1;
+            background: #fff; color: #334155; text-decoration: none; cursor: pointer;
+        }
+        .gr-bar button.primary { background: #0f766e; border-color: #0f766e; color: #fff; }
+        .gr-bar .gr-bar-note { font-size: .8rem; color: #64748b; margin-left: auto; }
+        .gr-print-section h2 {
+            font-size: .95rem; margin: 1.1rem 0 .35rem;
+            padding-bottom: .2rem; border-bottom: 2px solid #0f172a;
+        }
+        .gr-print-section:first-of-type h2 { margin-top: .4rem; }
+        .gr-legend { font-size: .75rem; color: #475569; margin: 0 0 .8rem; }
+        .gr-section-brand {
+            float: right; font-weight: 400; font-size: .68rem; letter-spacing: .06em;
+            color: #cbd5e1; text-transform: uppercase;
+        }
+        .gr-sheet-foot {
+            font-size: .72rem; color: #94a3b8; margin-top: 1.5rem;
+            border-top: 1px solid #e2e8f0; padding-top: .5rem; line-height: 1.6;
+        }
+        @media print { body { padding: 0; background: #fff; }
+                       .gr-sheet { box-shadow: none; padding: 0; border-radius: 0; } }
+    </style>
+</head>
+<body>
+
+<div class="gr-bar gr-noprint">
+    <button type="button" class="primary" onclick="window.print()">
+        <i class="bi bi-printer"></i> Chop etish / PDF saqlash
+    </button>
+    {% if by_root %}
+    <a href="{{ url_by_topic }}">Mavzu bo‘yicha</a>
+    {% else %}
+    <a href="{{ url_by_root }}">So‘z oilalari bo‘yicha</a>
+    {% endif %}
+    {% if compact %}
+    <a href="{{ url_full }}">To‘liq ko‘rinish</a>
+    {% else %}
+    <a href="{{ url_compact }}">Ixcham ko‘rinish</a>
+    {% endif %}
+    <a href="{% url 'examprep_vocab_download' track.slug %}?fmt=xlsx{% if querystring %}&amp;{{ querystring }}{% endif %}">
+        <i class="bi bi-file-earmark-spreadsheet"></i> Excel
+    </a>
+    <a href="{% url 'examprep_vocab' track.slug %}{% if querystring %}?{{ querystring }}{% endif %}">
+        <i class="bi bi-arrow-left"></i> Orqaga
+    </a>
+    <span class="gr-bar-note">Maslahat: chop etish oynasida “Background graphics” ni yoqing.</span>
+</div>
+
+<div class="gr-sheet">
+
+    {% comment %}
+    Watermark as real SVG geometry, not a CSS background: browsers drop
+    background images unless the reader ticks "Background graphics", and a
+    watermark you can switch off is not a watermark.
+    {% endcomment %}
+    <svg class="gr-watermark" aria-hidden="true" focusable="false">
+        <defs>
+            <pattern id="pp-wm" width="340" height="230" patternUnits="userSpaceOnUse"
+                     patternTransform="rotate(-28)">
+                <text x="0" y="40">POWERTY</text>
+                <text x="0" y="150" class="gr-wm-sub">powerty.uz</text>
+            </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#pp-wm)"></rect>
+    </svg>
+
+    <div class="gr-sheet-body">
+    <div class="gr-sheet-head">
+        <img class="gr-sheet-logo" src="{% static 'favicon/favicon-96x96.png' %}"
+             alt="Powerty" width="40" height="40">
+        <div>
+            <h1>{{ track.name }} — Lug‘at{% if by_root %} · so‘z oilalari{% endif %}</h1>
+            <p class="gr-sheet-sub">
+                {{ entries|length }} ta so‘z
+                {% if by_root %}· 한자 어근 bo‘yicha{% else %}· mavzular bo‘yicha{% endif %}
+                {% if level %}· TOPIK {{ level }}{% endif %}
+                {% if q %}· qidiruv: “{{ q }}”{% endif %}
+                · powerty.uz
+            </p>
+        </div>
+    </div>
+
+    <p class="gr-legend">
+        <strong>Daraja</strong> = TOPIK darajasi (1–6) · <strong>★</strong> = imtihonda uchrash chastotasi
+        {% if not compact %}· <strong>≈</strong> sinonim · <strong>↔</strong> antonim{% endif %}
+    </p>
+
+    {% if by_root %}
+    {# Word-family sheet: the root once, then its words under it. #}
+    {% for f in families %}
+    <section class="gr-print-section vc-print-family">
+        <h2>{{ f.root.syllable }}{% if f.root.hanja %} ({{ f.root.hanja }}){% endif %} — {{ f.root.meaning }}
+            <span style="font-weight:400;color:#64748b;font-size:.8rem;">({{ f.words|length }})</span>
+            <span class="gr-section-brand">powerty.uz</span></h2>
+        <table class="gr-print-table">
+            <thead>
+                <tr>
+                    <th style="width:14%;">So‘z</th>
+                    <th style="width:9%;">Hanja</th>
+                    <th style="width:4%;">Dar.</th>
+                    <th style="width:33%;">Ma’nosi</th>
+                    <th style="width:40%;">Namuna</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for w in f.words %}
+                <tr>
+                    <td class="gr-p-pattern">{{ w.word }}</td>
+                    <td class="vc-p-hanja">{{ w.hanja }}</td>
+                    <td style="text-align:center;">{{ w.level }}</td>
+                    <td>{{ w.meaning }}{% if not compact and w.collocation %}
+                        <div class="gr-p-sub" style="color:#475569;">{{ w.collocation }}</div>{% endif %}</td>
+                    <td>
+                        {% with ex=w.first_example %}
+                        {% if ex %}{{ ex.korean }}
+                        {% if ex.uz %}<br><span class="gr-p-uz">{{ ex.uz }}</span>{% endif %}
+                        {% endif %}
+                        {% endwith %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    {% empty %}
+    <p>Hech narsa topilmadi.</p>
+    {% endfor %}
+
+    {% else %}
+    {# Thematic sheet. #}
+    {% for group in groups %}
+    <section class="gr-print-section">
+        <h2>{{ group.label }} <span style="font-weight:400;color:#64748b;font-size:.8rem;">({{ group.entries|length }})</span>
+            <span class="gr-section-brand">powerty.uz</span></h2>
+        <table class="gr-print-table">
+            <thead>
+                <tr>
+                    <th style="width:13%;">So‘z</th>
+                    <th style="width:8%;">Hanja</th>
+                    <th style="width:4%;">Dar.</th>
+                    <th style="width:{% if compact %}33%{% else %}26%{% endif %};">Ma’nosi</th>
+                    <th style="width:{% if compact %}42%{% else %}32%{% endif %};">Namuna</th>
+                    {% if not compact %}<th style="width:17%;">Sinonim · antonim</th>{% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for e in group.entries %}
+                <tr>
+                    <td class="gr-p-pattern">{{ e.word }}<br>
+                        <span style="color:#f59e0b;font-size:.7rem;">{{ e.stars }}</span></td>
+                    <td class="vc-p-hanja">{{ e.hanja }}</td>
+                    <td style="text-align:center;">{{ e.level }}</td>
+                    <td>{{ e.meaning }}{% if not compact and e.collocation %}
+                        <div class="gr-p-sub" style="color:#475569;">{{ e.collocation }}</div>{% endif %}</td>
+                    <td>
+                        {% for ex in e.examples.all %}
+                            {% if compact and not forloop.first %}{% else %}
+                            <div style="margin-bottom:.2rem;">
+                                {{ ex.korean }}
+                                {% if ex.uz %}<br><span class="gr-p-uz">{{ ex.uz }}</span>{% endif %}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    {% if not compact %}
+                    <td>
+                        {% for r in e.relations.all %}
+                        <div style="margin-bottom:.15rem;">
+                            {% if r.kind == 'ant' %}↔{% elif r.kind == 'syn' %}≈{% else %}·{% endif %}
+                            <strong>{{ r.word }}</strong>{% if r.note %}
+                            <span class="gr-p-uz">— {{ r.note }}</span>{% endif %}
+                        </div>
+                        {% empty %}—
+                        {% endfor %}
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    {% empty %}
+    <p>Hech narsa topilmadi.</p>
+    {% endfor %}
+    {% endif %}
+
+    <p class="gr-sheet-foot">
+        <strong>Powerty</strong> — powerty.uz · {{ track.name }} lug‘at bazasi ·
+        © {% now "Y" %} Powerty. Ruxsatsiz tarqatish taqiqlanadi.<br>
+        Chop etdi: <strong>{{ user.get_username }}</strong> · {% now "d.m.Y H:i" %}
+    </p>
+    </div><!-- /.gr-sheet-body -->
+</div>
+
+</body>
+</html>

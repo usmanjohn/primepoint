@@ -1,0 +1,232 @@
+/* ─── Vocabulary bank — table extras, root families, detail page ───────
+   Loaded alongside grammar.css: the table, chips, filter bar, expandable
+   detail row and print rules are shared, and only what is specific to words
+   (Hanja, root families, synonym/antonym colouring) lives here.         */
+
+:root {
+    --vc-accent: #0f766e;   /* teal — distinguishes vocab from grammar's indigo */
+    --vc-root:   #b45309;   /* amber — the Hanja root colour */
+}
+
+/* ── Word cell ───────────────────────────────────────────────────────── */
+
+.vc-word { color: var(--vc-accent); }
+
+.vc-hanja {
+    font-size: .8rem;
+    color: #94a3b8;
+    letter-spacing: .05em;
+    white-space: nowrap;
+}
+
+.vc-pos {
+    display: block;
+    font-size: .72rem;
+    color: #94a3b8;
+    margin-top: .1rem;
+}
+
+.vc-colloc {
+    display: block;
+    font-size: .78rem;
+    color: #64748b;
+    margin-top: .25rem;
+}
+.vc-colloc-big { font-size: 1.02rem; color: #334155; }
+
+.vc-root-chip {
+    display: inline-block;
+    padding: .08rem .45rem;
+    margin: 0 .2rem .2rem 0;
+    border-radius: .35rem;
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: var(--vc-root);
+    font-size: .78rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+a.vc-root-chip:hover { background: #ffedd5; }
+
+/* Synonym green, antonym red — the pair TOPIK actually tests. */
+.vc-rel-syn { background: #ecfdf5; color: #047857; }
+.vc-rel-ant { background: #fef2f2; color: #b91c1c; }
+.vc-rel-rel { background: #f1f5f9; color: #475569; }
+a.gr-syn.vc-rel-syn:hover { background: #d1fae5; }
+a.gr-syn.vc-rel-ant:hover { background: #fee2e2; }
+
+.vc-relkind {
+    display: inline-block;
+    padding: .05rem .4rem;
+    border-radius: .3rem;
+    font-size: .7rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.vc-rel-word { font-weight: 700; }
+
+.vc-group-head { border-bottom-color: var(--vc-accent); }
+
+/* ── Root-family banner on the table page ────────────────────────────── */
+
+.vc-rootbanner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: linear-gradient(135deg, #f0fdfa 0%, #fff7ed 100%);
+    border: 1px solid #99f6e4;
+    border-radius: .9rem;
+    padding: .9rem 1.1rem;
+    margin-bottom: 1.25rem;
+    color: #134e4a;
+    text-decoration: none;
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+.vc-rootbanner:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 .5rem 1rem rgba(15, 118, 110, .12);
+    color: #134e4a;
+}
+.vc-rootbanner-glyph {
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--vc-root);
+    flex-shrink: 0;
+    font-weight: 700;
+}
+
+/* ── Root families page ──────────────────────────────────────────────── */
+
+.vc-family-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 1rem;
+    align-items: start;
+}
+
+.vc-family {
+    background: #fff;
+    border: 1px solid var(--gr-line, #e2e8f0);
+    border-radius: .9rem;
+    padding: 1rem 1.1rem 1.1rem;
+}
+
+.vc-family-head {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding-bottom: .6rem;
+    border-bottom: 2px solid #f1f5f9;
+    margin-bottom: .6rem;
+}
+
+/* The Hanja itself as the family's mark — big, warm, unmistakable. */
+.vc-family-glyph {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    border-radius: .65rem;
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: var(--vc-root);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+}
+.vc-family-glyph.sm { width: 34px; height: 34px; font-size: 1.1rem; border-radius: .5rem; }
+
+.vc-family-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin: 0;
+    color: var(--vc-accent);
+}
+.vc-family-hanja { font-size: .85rem; color: #94a3b8; font-weight: 500; }
+.vc-family-meaning { font-size: .84rem; color: #475569; margin: 0; }
+
+.vc-family-count {
+    flex-shrink: 0;
+    font-size: .75rem;
+    font-weight: 700;
+    color: #64748b;
+    background: #f1f5f9;
+    border-radius: 999px;
+    padding: .1rem .5rem;
+}
+
+.vc-family-note {
+    font-size: .8rem;
+    color: #475569;
+    background: #f8fafc;
+    border-left: 3px solid var(--vc-root);
+    border-radius: .4rem;
+    padding: .45rem .65rem;
+    margin-bottom: .6rem;
+}
+.vc-family-note p { margin: 0; }
+
+.vc-family-words { list-style: none; margin: 0; padding: 0; }
+.vc-family-words li { border-top: 1px solid #f8fafc; }
+.vc-family-words li:first-child { border-top: 0; }
+.vc-family-words a {
+    display: flex;
+    align-items: baseline;
+    gap: .45rem;
+    padding: .35rem .25rem;
+    border-radius: .35rem;
+    text-decoration: none;
+    color: #334155;
+}
+.vc-family-words a:hover { background: #f0fdfa; }
+.vc-fw-word { font-weight: 700; color: #0f172a; white-space: nowrap; }
+.vc-fw-hanja { font-size: .72rem; color: #cbd5e1; white-space: nowrap; }
+.vc-fw-meaning {
+    flex-grow: 1;
+    font-size: .82rem;
+    color: #64748b;
+    /* Long glosses truncate rather than pushing the level badge off the row. */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.vc-family-all {
+    display: inline-block;
+    margin-top: .6rem;
+    font-size: .8rem;
+    text-decoration: none;
+    color: var(--vc-accent);
+}
+
+/* ── Detail page ─────────────────────────────────────────────────────── */
+
+.vc-hero { background: linear-gradient(135deg, #f0fdfa 0%, #f8fafc 100%); border-color: #99f6e4; }
+.vc-hero-word { color: var(--vc-accent); }
+.vc-hero-hanja {
+    font-size: 1.1rem;
+    color: var(--vc-root);
+    margin: 0 0 .25rem;
+    letter-spacing: .1em;
+}
+
+.vc-family-inline + .vc-family-inline { margin-top: .9rem; padding-top: .9rem; border-top: 1px solid #f1f5f9; }
+.vc-family-inline-head {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    margin-bottom: .5rem;
+    font-size: .88rem;
+}
+
+/* ── Print sheet ─────────────────────────────────────────────────────── */
+
+.vc-p-hanja { color: #64748b; font-size: .74rem; }
+.vc-print-family { page-break-inside: avoid; }
+
+@media print {
+    .vc-rootbanner { display: none !important; }
+}

@@ -5,7 +5,7 @@ from masters.models import Master
 from practice.models import Practice
 from discussion.models import Thread
 from tutorial.models import Tutorial, TutorialPlaylist
-from examprep.models import ExamTrack, Lesson, GrammarPoint
+from examprep.models import ExamTrack, Lesson, GrammarPoint, VocabEntry
 from corner.models import Subject, Collection, Story
 from exam.models import Exam
 
@@ -196,6 +196,23 @@ class GrammarPointSitemap(Sitemap):
 
     def location(self, obj):
         return reverse('examprep_grammar_point',
+                       kwargs={'track_slug': obj.track.slug, 'slug': obj.slug})
+
+    def lastmod(self, obj):
+        return obj.updated_at
+
+
+class VocabEntrySitemap(Sitemap):
+    changefreq = 'monthly'
+    priority = 0.5
+
+    def items(self):
+        return (VocabEntry.objects
+                .filter(is_published=True, track__is_published=True)
+                .select_related('track'))
+
+    def location(self, obj):
+        return reverse('examprep_vocab_word',
                        kwargs={'track_slug': obj.track.slug, 'slug': obj.slug})
 
     def lastmod(self, obj):

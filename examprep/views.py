@@ -20,7 +20,9 @@ from .models import (ExamTrack, Topic, Lesson, LessonBlock, LessonProgress,
                      WritingDrill, WritingDrillProgress, WRITING_DRILL_POINTS,
                      LESSON_POINTS, SKILL_CHOICES, SKILL_ICONS,
                      GrammarPoint, GrammarSynonym,
-                     GRAMMAR_CATEGORY_CHOICES, GRAMMAR_FUNCTION_CHOICES)
+                     GRAMMAR_CATEGORY_CHOICES, GRAMMAR_FUNCTION_CHOICES,
+                     VocabRoot, VocabEntry, VocabRelation,
+                     VOCAB_TOPIC_CHOICES, VOCAB_POS_CHOICES)
 from prime.subjects import get_study_subjects, value_visible
 
 
@@ -102,6 +104,8 @@ def track_detail(request, track_slug):
         'groups':        groups,
         'drill_count':   track.writing_drills.filter(**pub).count(),
         'grammar_count': track.grammar_points.filter(**pub).count(),
+        'vocab_count':   track.vocab_entries.filter(**pub).count(),
+        'root_count':    track.vocab_roots.filter(**pub).count(),
     })
 
 
@@ -385,7 +389,7 @@ def drill_finish(request, track_slug, pk):
 # the page works with JavaScript off, which is also what makes the print and
 # download views trivial: they read the same filters and render the same rows.
 
-def _grammar_qs(request, **overrides):
+def _qs_with(request, **overrides):
     """Current query string with some params replaced — the href for one chip.
 
     Built here rather than in the template because Django templates cannot
@@ -457,19 +461,19 @@ def _grammar_filters(request, track):
         'has_filter':   bool(q or level or category or function),
         'categories':   [{'value': c, 'label': l, 'count': cat_counts.get(c, 0),
                           'on': category == c,
-                          'url': _grammar_qs(request, cat=None if category == c else c)}
+                          'url': _qs_with(request, cat=None if category == c else c)}
                          for c, l in GRAMMAR_CATEGORY_CHOICES if cat_counts.get(c)],
         'functions':    [{'value': f, 'label': l, 'count': fn_counts.get(f, 0),
                           'on': function == f,
-                          'url': _grammar_qs(request, fn=None if function == f else f)}
+                          'url': _qs_with(request, fn=None if function == f else f)}
                          for f, l in GRAMMAR_FUNCTION_CHOICES if fn_counts.get(f)],
         'levels':       [{'value': n, 'count': lvl_counts.get(n, 0),
                           'on': level == str(n),
-                          'url': _grammar_qs(request, level=None if level == str(n) else n)}
+                          'url': _qs_with(request, level=None if level == str(n) else n)}
                          for n in range(1, 7) if lvl_counts.get(n)],
-        'url_clear':     _grammar_qs(request, q=None, level=None, cat=None, fn=None),
-        'url_by_cat':    _grammar_qs(request, by=None),
-        'url_by_fn':     _grammar_qs(request, by='function'),
+        'url_clear':     _qs_with(request, q=None, level=None, cat=None, fn=None),
+        'url_by_cat':    _qs_with(request, by=None),
+        'url_by_fn':     _qs_with(request, by='function'),
         'querystring':   request.GET.urlencode(),
     }
     return points, context
@@ -560,10 +564,10 @@ def grammar_print(request, track_slug):
     points, context = _grammar_filters(request, track)
     context['groups'] = _grammar_groups(points, context['group_by'])
     context['compact'] = request.GET.get('compact') == '1'
-    context['url_compact'] = _grammar_qs(request, compact='1')
-    context['url_full'] = _grammar_qs(request, compact=None)
+    context['url_compact'] = _qs_with(request, compact='1')
+    context['url_full'] = _qs_with(request, compact=None)
     # The download link in the print bar must not carry `compact` through.
-    context['querystring'] = _grammar_qs(request, compact=None).lstrip('?')
+    context['querystring'] = _qs_with(request, compact=None).lstrip('?')
     return render(request, 'examprep/grammar_print.html', context)
 
 
@@ -630,6 +634,293 @@ def grammar_download(request, track_slug):
             cell.alignment = Alignment(vertical='top', wrap_text=True)
     for column, width in zip('ABCDEFGHIJKL',
                              [16, 7, 22, 24, 30, 24, 32, 40, 40, 40, 40, 8]):
+        sheet.column_dimensions[column].width = width
+    sheet.freeze_panes = 'A2'
+    sheet.auto_filter.ref = sheet.dimensions
+
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = f'attachment; filename="{stem}.xlsx"'
+    workbook.save(response)
+    return response
+
+
+# ── Vocabulary bank ────────────────────────────────────────────────────────
+# Mirrors the grammar bank (open to read, staff-only to take away) and adds a
+# root-family view: the same words regrouped under the Sino-Korean morpheme
+# they share, which is where most of the learning leverage is.
+
+def _vocab_filters(request, track):
+    """Read the filter params and build the chip lists. Same contract as
+    _grammar_filters, so the list, roots, print and download views all agree
+    on what "the current selection" is."""
+    pub = _published_filter(request.user)
+    qs = (VocabEntry.objects.filter(track=track, **pub)
+          .prefetch_related('examples', 'relations__related', 'roots'))
+
+    q = (request.GET.get('q') or '').strip()
+    level = (request.GET.get('level') or '').strip()
+    topic = (request.GET.get('topic') or '').strip()
+    pos = (request.GET.get('pos') or '').strip()
+    root = (request.GET.get('root') or '').strip()
+
+    if q:
+        qs = qs.filter(
+            Q(word__icontains=q) | Q(meaning__icontains=q) | Q(hanja__icontains=q) |
+            Q(collocation__icontains=q) | Q(note__icontains=q) |
+            Q(examples__korean__icontains=q) | Q(examples__uz__icontains=q) |
+            Q(roots__syllable__icontains=q) | Q(relations__word__icontains=q)
+        ).distinct()
+    if level.isdigit():
+        qs = qs.filter(level=int(level))
+    if topic in dict(VOCAB_TOPIC_CHOICES):
+        qs = qs.filter(topic=topic)
+    if pos in dict(VOCAB_POS_CHOICES):
+        qs = qs.filter(pos=pos)
+    if root:
+        qs = qs.filter(roots__slug=root).distinct()
+
+    entries = list(qs)
+
+    # Chip counts come from the unfiltered set so a chip never reads "0" just
+    # because another filter is active.
+    all_entries = list(VocabEntry.objects.filter(track=track, **pub)
+                       .values_list('topic', 'pos', 'level'))
+    topic_counts, pos_counts, lvl_counts = {}, {}, {}
+    for t, p, l in all_entries:
+        topic_counts[t] = topic_counts.get(t, 0) + 1
+        pos_counts[p] = pos_counts.get(p, 0) + 1
+        lvl_counts[l] = lvl_counts.get(l, 0) + 1
+
+    active_root = None
+    if root:
+        active_root = VocabRoot.objects.filter(track=track, slug=root, **pub).first()
+
+    context = {
+        'track':       track,
+        'entries':     entries,
+        'total':       len(all_entries),
+        'q':           q,
+        'level':       level,
+        'topic':       topic,
+        'pos':         pos,
+        'root':        root,
+        'active_root': active_root,
+        'has_filter':  bool(q or level or topic or pos or root),
+        'topics':      [{'value': t, 'label': l, 'count': topic_counts.get(t, 0),
+                         'on': topic == t,
+                         'url': _qs_with(request, topic=None if topic == t else t)}
+                        for t, l in VOCAB_TOPIC_CHOICES if topic_counts.get(t)],
+        'poses':       [{'value': p, 'label': l, 'count': pos_counts.get(p, 0),
+                         'on': pos == p,
+                         'url': _qs_with(request, pos=None if pos == p else p)}
+                        for p, l in VOCAB_POS_CHOICES if pos_counts.get(p)],
+        'levels':      [{'value': n, 'count': lvl_counts.get(n, 0),
+                         'on': level == str(n),
+                         'url': _qs_with(request, level=None if level == str(n) else n)}
+                        for n in range(1, 7) if lvl_counts.get(n)],
+        'url_clear':   _qs_with(request, q=None, level=None, topic=None, pos=None, root=None),
+        'querystring': request.GET.urlencode(),
+    }
+    return entries, context
+
+
+def _vocab_groups(entries, active_root=None):
+    """Split rows into topic sections, in VOCAB_TOPIC_CHOICES order.
+
+    When a root filter is active the topics are the wrong axis: a family of
+    eight words scatters into six one-row sections. Show it as a single table
+    named after the root instead — that is what the reader asked for.
+    """
+    if active_root is not None:
+        return [{'value': active_root.slug,
+                 'label': f'{active_root.label} — {active_root.meaning}',
+                 'entries': entries}] if entries else []
+    buckets = {}
+    for e in entries:
+        buckets.setdefault(e.topic, []).append(e)
+    return [{'value': value, 'label': label, 'entries': buckets[value]}
+            for value, label in VOCAB_TOPIC_CHOICES if value in buckets]
+
+
+def vocab_list(request, track_slug):
+    """The vocabulary table: filter chips + rows grouped by theme."""
+    pub = _published_filter(request.user)
+    track = get_object_or_404(ExamTrack, slug=track_slug, **pub)
+    entries, context = _vocab_filters(request, track)
+    if not context['total']:
+        raise Http404('No vocabulary in this track yet.')
+    context['groups'] = _vocab_groups(entries, context['active_root'])
+    context['root_count'] = track.vocab_roots.filter(**pub).count()
+    return render(request, 'examprep/vocab_list.html', context)
+
+
+def vocab_roots(request, track_slug):
+    """Word families: every root with the words built on it.
+
+    The point of the page — 출(出) once, then 출구·출근·출발·출석·제출·수출
+    read as one family instead of six unrelated words.
+    """
+    pub = _published_filter(request.user)
+    track = get_object_or_404(ExamTrack, slug=track_slug, **pub)
+
+    roots = list(track.vocab_roots.filter(**pub).prefetch_related('entries'))
+    if not roots:
+        raise Http404('No word roots in this track yet.')
+
+    q = (request.GET.get('q') or '').strip()
+    if q:
+        roots = [r for r in roots
+                 if q in r.syllable or q in r.hanja or q.casefold() in r.meaning.casefold()
+                 or any(q in e.word for e in r.entries.all())]
+
+    families = []
+    for r in roots:
+        words = [e for e in r.entries.all() if e.is_published or request.user.is_staff]
+        if words:
+            families.append({'root': r, 'words': sorted(words, key=lambda e: (e.level, e.order))})
+
+    return render(request, 'examprep/vocab_roots.html', {
+        'track':       track,
+        'families':    families,
+        'q':           q,
+        'total_roots': len(families),
+        'total_words': sum(len(f['words']) for f in families),
+    })
+
+
+def vocab_detail(request, track_slug, slug):
+    """One word in full: examples, collocations, its roots and the other words
+    built on them, plus synonyms and antonyms."""
+    pub = _published_filter(request.user)
+    track = get_object_or_404(ExamTrack, slug=track_slug, **pub)
+    entry = get_object_or_404(
+        VocabEntry.objects.select_related('track')
+        .prefetch_related('examples', 'relations__related', 'roots__entries'),
+        track=track, slug=slug, **pub,
+    )
+
+    # Siblings from every root this word is built on — the family view, scoped.
+    seen, family = {entry.id}, []
+    for root in entry.roots.all():
+        words = [e for e in root.entries.all()
+                 if e.id not in seen and (e.is_published or request.user.is_staff)]
+        for e in words:
+            seen.add(e.id)
+        if words:
+            family.append({'root': root, 'words': words})
+
+    # Words that name THIS one as a relation without it naming them back.
+    named = {r.related_id for r in entry.relations.all() if r.related_id}
+    incoming = [r for r in VocabRelation.objects
+                .filter(related=entry, entry__track=track)
+                .select_related('entry')
+                if r.entry_id not in named and (r.entry.is_published or request.user.is_staff)]
+
+    return render(request, 'examprep/vocab_detail.html', {
+        'track':    track,
+        'entry':    entry,
+        'family':   family,
+        'incoming': incoming,
+        'same_topic': list(VocabEntry.objects
+                           .filter(track=track, topic=entry.topic, **pub)
+                           .exclude(pk=entry.pk)[:12]),
+    })
+
+
+def vocab_print(request, track_slug):
+    """Watermarked, ink-friendly sheet of the current selection. Staff only."""
+    denied = _require_staff(request)
+    if denied:
+        return denied
+    pub = _published_filter(request.user)
+    track = get_object_or_404(ExamTrack, slug=track_slug, **pub)
+    entries, context = _vocab_filters(request, track)
+
+    # ?by=root prints the word families instead of the thematic table — the
+    # study sheet you actually want to stick on a wall.
+    by_root = request.GET.get('by') == 'root'
+    if by_root:
+        ids = {e.id for e in entries}
+        families = []
+        for r in track.vocab_roots.filter(**pub).prefetch_related('entries'):
+            words = [e for e in r.entries.all() if e.id in ids]
+            if words:
+                families.append({'root': r,
+                                 'words': sorted(words, key=lambda e: (e.level, e.order))})
+        context['families'] = families
+    else:
+        context['groups'] = _vocab_groups(entries, context['active_root'])
+
+    context['by_root'] = by_root
+    context['compact'] = request.GET.get('compact') == '1'
+    context['url_compact'] = _qs_with(request, compact='1')
+    context['url_full'] = _qs_with(request, compact=None)
+    context['url_by_root'] = _qs_with(request, by='root')
+    context['url_by_topic'] = _qs_with(request, by=None)
+    context['querystring'] = _qs_with(request, compact=None).lstrip('?')
+    return render(request, 'examprep/vocab_print.html', context)
+
+
+def vocab_download(request, track_slug):
+    """Export the current selection as .xlsx (default) or .csv. Staff only."""
+    denied = _require_staff(request)
+    if denied:
+        return denied
+    pub = _published_filter(request.user)
+    track = get_object_or_404(ExamTrack, slug=track_slug, **pub)
+    entries, _ctx = _vocab_filters(request, track)
+
+    header = ['So\'z', 'Hanja', 'TOPIK', 'So\'z turkumi', 'Mavzu', 'Ma\'nosi',
+              'O\'zaklar', 'Birikmalar', 'Namuna (한국어)', 'Tarjima',
+              'Sinonim', 'Antonim', 'Izoh', 'Ko\'p uchraydi']
+
+    def row_of(e):
+        examples = list(e.examples.all())
+        rel = lambda kind: '; '.join(
+            f'{r.word} — {r.note}' if r.note else r.word
+            for r in e.relations.all() if r.kind == kind
+        )
+        return [
+            e.word, e.hanja, e.level, e.get_pos_display(), e.get_topic_display(),
+            e.meaning,
+            ' · '.join(r.label for r in e.roots.all()),
+            e.collocation,
+            '\n'.join(x.korean for x in examples),
+            '\n'.join(x.uz for x in examples),
+            rel('syn'), rel('ant'),
+            _strip_tags_plain(e.note),
+            e.stars,
+        ]
+
+    fmt = request.GET.get('fmt', 'xlsx')
+    stem = f'{track.slug}-lugat'
+
+    if fmt == 'csv':
+        response = HttpResponse(content_type='text/csv; charset=utf-8')
+        response['Content-Disposition'] = f'attachment; filename="{stem}.csv"'
+        response.write('﻿')   # BOM so Excel reads the Hangul correctly
+        writer = csv.writer(response)
+        writer.writerow(header)
+        for e in entries:
+            writer.writerow(row_of(e))
+        return response
+
+    workbook = Workbook()
+    sheet = workbook.active
+    sheet.title = 'Lug\'at'
+    sheet.append(header)
+    for cell in sheet[1]:
+        cell.font = Font(bold=True, color='FFFFFF')
+        cell.fill = PatternFill('solid', fgColor='0F766E')
+        cell.alignment = Alignment(vertical='center')
+    for e in entries:
+        sheet.append(row_of(e))
+    for cell_row in sheet.iter_rows(min_row=2):
+        for cell in cell_row:
+            cell.alignment = Alignment(vertical='top', wrap_text=True)
+    for column, width in zip('ABCDEFGHIJKLMN',
+                             [16, 10, 7, 16, 24, 34, 16, 28, 38, 38, 26, 26, 34, 8]):
         sheet.column_dimensions[column].width = width
     sheet.freeze_panes = 'A2'
     sheet.auto_filter.ref = sheet.dimensions

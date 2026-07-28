@@ -1,0 +1,284 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+{% block nav_examprep %}active{% endblock %}
+{% block mob_nav_examprep %}active{% endblock %}
+{% block page_name %}{% trans "Vocabulary" %}{% endblock %}
+{% block title %}{% trans "Vocabulary bank" %} — {{ track.name }}{% endblock %}
+{% block meta_description %}{% blocktrans with name=track.name %}{{ name }} vocabulary: every word with its Hanja, root family, meaning, example and synonyms — filter by level and theme.{% endblocktrans %}{% endblock %}
+
+{% block content %}
+
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb small mb-0">
+        <li class="breadcrumb-item"><a href="{% url 'examprep_home' %}">{% trans "Exam Prep" %}</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'examprep_track' track.slug %}">{{ track.name }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{% trans "Vocabulary" %}</li>
+    </ol>
+</nav>
+
+<div class="d-flex flex-wrap align-items-start justify-content-between gap-3 mb-3">
+    <div>
+        <h1 class="page-title mb-1">
+            <i class="bi bi-translate me-2" style="color:var(--vc-accent);"></i>{% trans "Vocabulary bank" %} · Lug‘at bazasi
+        </h1>
+        <p class="page-subtitle mb-0">
+            {% blocktrans with n=total name=track.name %}{{ n }} words for {{ name }} — meaning, Hanja root, collocations, an example and the synonym/antonym pair.{% endblocktrans %}
+        </p>
+    </div>
+    {# Take-away formats are staff-only, so non-staff never see the buttons. #}
+    {% if user.is_staff %}
+    <div class="d-flex gap-2 flex-shrink-0">
+        <a href="{% url 'examprep_vocab_print' track.slug %}{% if querystring %}?{{ querystring }}{% endif %}"
+           class="btn btn-outline-secondary btn-sm" target="_blank" rel="noopener">
+            <i class="bi bi-printer me-1"></i>{% trans "Print" %}
+        </a>
+        <div class="dropdown">
+            <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-download me-1"></i>{% trans "Download" %}
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="{% url 'examprep_vocab_download' track.slug %}?fmt=xlsx{% if querystring %}&amp;{{ querystring }}{% endif %}">
+                    <i class="bi bi-file-earmark-spreadsheet me-2"></i>Excel (.xlsx)</a></li>
+                <li><a class="dropdown-item" href="{% url 'examprep_vocab_download' track.slug %}?fmt=csv{% if querystring %}&amp;{{ querystring }}{% endif %}">
+                    <i class="bi bi-filetype-csv me-2"></i>CSV</a></li>
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+{# The root families are the headline idea, so they get a banner, not a chip. #}
+{% if root_count %}
+<a href="{% url 'examprep_vocab_roots' track.slug %}" class="vc-rootbanner">
+    <span class="vc-rootbanner-glyph">出</span>
+    <span class="flex-grow-1">
+        <strong>So‘z oilalari — {{ root_count }} ta o‘zak</strong>
+        <span class="d-block small">
+            <b>출</b>(出) = «chiqmoq» ni bilsangiz — <b>출</b>구, <b>출</b>근, <b>출</b>발, <b>출</b>석,
+            제<b>출</b>, 수<b>출</b> ni ham tushunasiz. Bitta o‘zak — o‘nlab so‘z.
+        </span>
+    </span>
+    <i class="bi bi-arrow-right flex-shrink-0"></i>
+</a>
+{% endif %}
+
+{# ── Filter bar ─────────────────────────────────────────────────────── #}
+<div class="gr-toolbar gr-noprint">
+    <form method="get" class="row g-2 align-items-center mb-3">
+        {% if level %}<input type="hidden" name="level" value="{{ level }}">{% endif %}
+        {% if topic %}<input type="hidden" name="topic" value="{{ topic }}">{% endif %}
+        {% if pos %}<input type="hidden" name="pos" value="{{ pos }}">{% endif %}
+        {% if root %}<input type="hidden" name="root" value="{{ root }}">{% endif %}
+        <div class="col">
+            <label for="vc-q" class="visually-hidden">{% trans "Search" %}</label>
+            <div class="input-group input-group-sm">
+                <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                <input type="search" class="form-control" id="vc-q" name="q" value="{{ q }}"
+                       placeholder="Qidirish: 출근, chiqish, 出, ish…">
+                <button class="btn btn-primary" type="submit">{% trans "Search" %}</button>
+            </div>
+        </div>
+    </form>
+
+    {% if active_root %}
+    <div class="mb-2">
+        <div class="gr-filter-label">Tanlangan o‘zak</div>
+        <a href="{{ url_clear }}" class="gr-chip is-on">
+            {{ active_root.label }} — {{ active_root.meaning }} <i class="bi bi-x"></i>
+        </a>
+    </div>
+    {% endif %}
+
+    <div class="mb-2">
+        <div class="gr-filter-label">TOPIK darajasi</div>
+        <div class="gr-chips">
+            {% for l in levels %}
+            <a href="{{ l.url }}" class="gr-chip {% if l.on %}is-on{% endif %}">
+                TOPIK {{ l.value }} <span class="gr-chip-n">{{ l.count }}</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="mb-2">
+        <div class="gr-filter-label">Mavzu</div>
+        <div class="gr-chips">
+            {% for t in topics %}
+            <a href="{{ t.url }}" class="gr-chip {% if t.on %}is-on{% endif %}">
+                {{ t.label }} <span class="gr-chip-n">{{ t.count }}</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div>
+        <div class="gr-filter-label">So‘z turkumi</div>
+        <div class="gr-chips">
+            {% for p in poses %}
+            <a href="{{ p.url }}" class="gr-chip {% if p.on %}is-on{% endif %}">
+                {{ p.label }} <span class="gr-chip-n">{{ p.count }}</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% if has_filter %}
+    <div class="mt-3 pt-2 border-top d-flex align-items-center justify-content-between flex-wrap gap-2">
+        <span class="small text-secondary">
+            <strong>{{ entries|length }}</strong> / {{ total }} {% trans "shown" %}
+        </span>
+        <a href="{{ url_clear }}" class="btn btn-link btn-sm p-0 text-decoration-none">
+            <i class="bi bi-x-circle me-1"></i>Filtrlarni tozalash
+        </a>
+    </div>
+    {% endif %}
+</div>
+
+{# ── The table ──────────────────────────────────────────────────────── #}
+{% for group in groups %}
+<section class="gr-print-section">
+    <div class="gr-group-head vc-group-head">
+        <h2>{{ group.label }}</h2>
+        <span class="gr-group-n">{{ group.entries|length }} ta</span>
+    </div>
+
+    <div class="gr-table-wrap">
+        <table class="gr-table">
+            <thead>
+                <tr>
+                    <th style="width:14%;">So‘z</th>
+                    <th style="width:5%;">Daraja</th>
+                    <th style="width:24%;">Ma’nosi</th>
+                    <th style="width:16%;">O‘zak · birikma</th>
+                    <th style="width:26%;">Namuna</th>
+                    <th style="width:15%;">Sinonim · antonim</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for e in group.entries %}
+                <tr id="w-{{ e.slug }}">
+                    <td class="gr-cell-head">
+                        <a class="gr-pattern vc-word" href="{% url 'examprep_vocab_word' track.slug e.slug %}">{{ e.word }}</a>
+                        {% if e.hanja %}<span class="vc-hanja">{{ e.hanja }}</span>{% endif %}
+                        <span class="gr-stars" title="TOPIK'da uchrash chastotasi">{{ e.stars }}</span>
+                    </td>
+                    <td data-label="Daraja">
+                        <span class="gr-level gr-level-{{ e.level }}">{{ e.level }}</span>
+                    </td>
+                    <td data-label="Ma’nosi">
+                        <span class="gr-meaning">{{ e.meaning }}</span>
+                        <span class="vc-pos">{{ e.get_pos_display }}</span>
+                    </td>
+                    <td data-label="O‘zak · birikma">
+                        {% for r in e.roots.all %}
+                        <a class="vc-root-chip" href="?root={{ r.slug }}" title="{{ r.meaning }}">{{ r.label }}</a>
+                        {% endfor %}
+                        {% if e.collocation %}<span class="vc-colloc">{{ e.collocation }}</span>{% endif %}
+                    </td>
+                    <td data-label="Namuna">
+                        {% with ex=e.first_example %}
+                        {% if ex %}
+                        <span class="gr-ko">{{ ex.korean }}</span>
+                        {% if ex.uz %}<span class="gr-uz">{{ ex.uz }}</span>{% endif %}
+                        {% endif %}
+                        {% endwith %}
+                    </td>
+                    <td data-label="Sinonim · antonim">
+                        {% for r in e.relations.all %}
+                            {% if r.kind != 'rel' %}
+                            {% if r.related %}
+                            <a class="gr-syn vc-rel-{{ r.kind }}" title="{{ r.note }}"
+                               href="{% url 'examprep_vocab_word' track.slug r.related.slug %}">{{ r.word }}</a>
+                            {% else %}
+                            <span class="gr-syn vc-rel-{{ r.kind }}" title="{{ r.note }}">{{ r.word }}</span>
+                            {% endif %}
+                            {% endif %}
+                        {% empty %}
+                        <span class="text-secondary small">—</span>
+                        {% endfor %}
+                    </td>
+                </tr>
+                {% comment %}
+                Same full-width detail row as the grammar table: notes and extra
+                examples do not fit inside the narrow meaning cell.
+                {% endcomment %}
+                <tr class="gr-detail-row">
+                    <td colspan="6">
+                        <details class="gr-more">
+                            <summary>Batafsil — namunalar, izoh, so‘z oilasi</summary>
+                            <div class="gr-more-body">
+                                <div class="gr-more-grid">
+                                    <div>
+                                        {% if e.note %}
+                                        <h4>Izoh</h4>
+                                        <div>{{ e.note|safe }}</div>
+                                        {% endif %}
+                                        {% if e.collocation %}
+                                        <h4>Ko‘p uchraydigan birikmalar</h4>
+                                        <p>{{ e.collocation }}</p>
+                                        {% endif %}
+                                        {% if e.roots.all %}
+                                        <h4>So‘z o‘zagi</h4>
+                                        <ul>
+                                            {% for r in e.roots.all %}
+                                            <li><strong>{{ r.label }}</strong> — {{ r.meaning }}
+                                                <a class="small" href="?root={{ r.slug }}">shu o‘zakli so‘zlar →</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
+                                    </div>
+                                    <div>
+                                        {% if e.examples.all %}
+                                        <h4>Namunalar</h4>
+                                        <ul class="gr-ex-list">
+                                            {% for ex in e.examples.all %}
+                                            <li>
+                                                <span class="gr-ko">{{ ex.korean }}</span>
+                                                {% if ex.uz %}<span class="gr-uz">{{ ex.uz }}</span>{% endif %}
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
+                                        {% if e.relations.all %}
+                                        <h4>Bog‘liq so‘zlar</h4>
+                                        <ul>
+                                            {% for r in e.relations.all %}
+                                            <li>
+                                                <span class="vc-relkind vc-rel-{{ r.kind }}">{{ r.get_kind_display }}</span>
+                                                {% if r.related %}
+                                                <a href="{% url 'examprep_vocab_word' track.slug r.related.slug %}"><strong>{{ r.word }}</strong></a>
+                                                {% else %}<strong>{{ r.word }}</strong>{% endif %}
+                                                {% if r.note %} — {{ r.note }}{% endif %}
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <a class="small" href="{% url 'examprep_vocab_word' track.slug e.slug %}">
+                                    To‘liq sahifasi <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </details>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% empty %}
+<div class="text-center text-secondary py-5">
+    <i class="bi bi-search fs-1 d-block mb-2"></i>
+    <p class="mb-2">Hech narsa topilmadi.</p>
+    <a href="{{ url_clear }}" class="btn btn-sm btn-outline-secondary">Filtrlarni tozalash</a>
+</div>
+{% endfor %}
+
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/grammar.css' %}">
+<link rel="stylesheet" href="{% static 'css/vocab.css' %}">
+{% endblock %}
