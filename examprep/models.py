@@ -329,3 +329,178 @@ class WritingDrillProgress(models.Model):
 
     def __str__(self):
         return f'{self.user.username} finished {self.drill.title}'
+
+
+# ── Grammar bank ───────────────────────────────────────────────────────────
+# A reference table rather than a lesson: every grammar pattern the exam can
+# throw at you, on one filterable, printable page. Lessons teach one thing
+# deeply; this answers "what was -더니 again, and how is it different from
+# -았/었더니?" in five seconds — which is what students actually need while
+# revising. Hangs off the ExamTrack so IELTS could one day get its own bank.
+
+# What kind of thing the pattern is — grammatical shape.
+GRAMMAR_CATEGORY_CHOICES = [
+    ('particle',   '조사 — Qo‘shimchalar (kelishik/yuklama)'),
+    ('ending',     '종결어미 — Tugallovchi qo‘shimchalar'),
+    ('connective', '연결어미 — Bog‘lovchi qo‘shimchalar'),
+    ('tense',      '시제 — Zamon va nisbat'),
+    ('modifier',   '관형형 — Aniqlovchi shakllar'),
+    ('expression', '문형 — Grammatik iboralar'),
+    ('voice',      '피동·사동 — Majhul va orttirma'),
+    ('quotation',  '인용 — Ko‘chirma gap'),
+    ('honorific',  '높임 — Hurmat shakllari'),
+    ('adverb',     '접속부사 — Bog‘lovchi ravishlar'),
+]
+
+# What the pattern MEANS — the meaning group. This is the axis synonyms live
+# on: everything that expresses "sabab" sits together, so a student comparing
+# -아서 / -니까 / -기 때문에 / -느라고 sees all four at once.
+GRAMMAR_FUNCTION_CHOICES = [
+    ('reason',      'Sabab — 이유·원인'),
+    ('contrast',    'Qarama-qarshilik — 대조·반대'),
+    ('condition',   'Shart — 조건·가정'),
+    ('concession',  'Qarshi qo‘yish — 양보'),
+    ('time',        'Vaqt — 시간·순서'),
+    ('purpose',     'Maqsad — 목적'),
+    ('intention',   'Niyat va reja — 의도·계획'),
+    ('guess',       'Taxmin — 추측'),
+    ('ability',     'Imkoniyat va qobiliyat — 가능·능력'),
+    ('obligation',  'Majburiyat va ruxsat — 의무·허락'),
+    ('experience',  'Tajriba va odat — 경험·습관'),
+    ('change',      'O‘zgarish va holat — 변화·상태'),
+    ('comparison',  'Taqqoslash — 비교'),
+    ('listing',     'Sanash va qo‘shish — 나열·첨가'),
+    ('choice',      'Tanlov — 선택'),
+    ('quote',       'Ko‘chirma gap — 인용'),
+    ('feeling',     'His-tuyg‘u va baho — 감정·평가'),
+    ('discovery',   'Bilib qolish — 발견·깨달음'),
+    ('degree',      'Daraja va miqdor — 정도·수량'),
+    ('case',        'Gap bo‘lagi — 문장 성분'),
+    ('politeness',  'Muomala darajasi — 높임·말투'),
+]
+
+# How formal the pattern is. Drives a small chip in the table — students lose
+# marks on 쓰기 for writing 해요체 in an essay, so it is worth showing.
+GRAMMAR_REGISTER_CHOICES = [
+    ('written', 'Yozma / rasmiy — 문어·격식'),
+    ('formal',  'Rasmiy nutq — 하십시오체'),
+    ('polite',  'Muloyim — 해요체'),
+    ('casual',  'Erkin — 반말'),
+    ('both',    'Ikkalasi ham'),
+]
+
+
+class GrammarPoint(models.Model):
+    """One grammar pattern — a row in the summary table.
+
+    The row is deliberately shallow (pattern, meaning, where it attaches, one
+    example) so the table scans fast; everything deeper lives in the expandable
+    detail: all examples, nuance notes, common mistakes and the synonym set.
+    """
+    track        = models.ForeignKey(ExamTrack, on_delete=models.CASCADE,
+                                     related_name='grammar_points')
+    pattern      = models.CharField(max_length=120,
+                                    help_text='The pattern itself, e.g. -(으)니까 or -기 때문에.')
+    # Hangul slug: the pattern IS the name, and transliterating it would make
+    # the URL unreadable to the audience. Needs allow_unicode here and the
+    # `str` URL converter (`slug` only matches ASCII).
+    slug         = models.SlugField(max_length=160, blank=True, allow_unicode=True)
+    reading      = models.CharField(max_length=120, blank=True,
+                                    help_text='Optional romanization, e.g. -(eu)nikka.')
+    category     = models.CharField(max_length=20, choices=GRAMMAR_CATEGORY_CHOICES,
+                                    default='expression')
+    function     = models.CharField(max_length=20, choices=GRAMMAR_FUNCTION_CHOICES,
+                                    default='reason',
+                                    help_text='Meaning group — synonyms are grouped by this.')
+    level        = models.PositiveSmallIntegerField(default=3,
+                                                    help_text='TOPIK level 1–6 where it first appears.')
+    meaning      = models.CharField(max_length=200,
+                                    help_text='Short Uzbek gloss shown in the table, e.g. "sabab — chunki".')
+    attach       = models.CharField(max_length=160, blank=True,
+                                    help_text='Where it attaches, e.g. 동사/형용사 + -(으)니까.')
+    form_rule    = models.TextField(blank=True,
+                                    help_text='Conjugation rule in Uzbek, HTML allowed.')
+    note         = models.TextField(blank=True,
+                                    help_text='Nuance / usage notes in Uzbek, HTML allowed.')
+    mistake      = models.TextField(blank=True,
+                                    help_text='Common mistake in Uzbek, HTML allowed.')
+    register     = models.CharField(max_length=10, choices=GRAMMAR_REGISTER_CHOICES,
+                                    default='both')
+    freq         = models.PositiveSmallIntegerField(default=2,
+                                                    help_text='How often it shows up in TOPIK: 1–3 stars.')
+    order        = models.PositiveIntegerField(default=0)
+    is_published = models.BooleanField(default=True)
+    created_at   = models.DateTimeField(auto_now_add=True)
+    updated_at   = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['order', 'id']
+        unique_together = ['track', 'slug']
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            # Hangul slugifies to an empty string with allow_unicode off, so
+            # fall back to a transliteration-free stem plus a counter.
+            base = slugify(self.pattern, allow_unicode=True).strip('-') or 'grammar'
+            slug, n = base, 1
+            while GrammarPoint.objects.filter(track=self.track,
+                                              slug=slug).exclude(pk=self.pk).exists():
+                slug = f'{base}-{n}'
+                n += 1
+            self.slug = slug[:160]
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'{self.pattern} — {self.meaning}'
+
+    @property
+    def stars(self):
+        """'★★☆' for the frequency column."""
+        n = max(0, min(3, self.freq))
+        return '★' * n + '☆' * (3 - n)
+
+    @property
+    def level_label(self):
+        return f'TOPIK {self.level}'
+
+    @property
+    def first_example(self):
+        return self.examples.first()
+
+
+class GrammarExample(models.Model):
+    """A Korean example sentence with its Uzbek translation."""
+    point   = models.ForeignKey(GrammarPoint, on_delete=models.CASCADE,
+                                related_name='examples')
+    korean  = models.CharField(max_length=400)
+    uz      = models.CharField(max_length=400, blank=True)
+    order   = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['order', 'id']
+
+    def __str__(self):
+        return self.korean[:60]
+
+
+class GrammarSynonym(models.Model):
+    """A near-synonym of a grammar point, plus what actually differs.
+
+    `related` is filled in at import time when the named pattern is itself in
+    the bank, which turns the table into a cross-linked web: from -아서/어서 you
+    can jump straight to -(으)니까 and read the difference from either side.
+    """
+    point   = models.ForeignKey(GrammarPoint, on_delete=models.CASCADE,
+                                related_name='synonyms')
+    pattern = models.CharField(max_length=120)
+    note    = models.CharField(max_length=400, blank=True,
+                               help_text='Farqi — how it differs, in Uzbek.')
+    related = models.ForeignKey(GrammarPoint, on_delete=models.SET_NULL,
+                                null=True, blank=True, related_name='synonym_of')
+    order   = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['order', 'id']
+
+    def __str__(self):
+        return f'{self.point.pattern} ≈ {self.pattern}'

@@ -1,0 +1,166 @@
+{% load i18n static %}<!doctype html>
+<!-- Standalone on purpose: a handout should not inherit the site's nav,
+sidebar or footer, and print CSS that has to hide all of it is fragile. This
+page is only ever opened to be printed or saved as PDF. -->
+<html lang="uz">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>{{ track.name }} — Grammatika jadvali</title>
+    <link href="{% static 'vendor/bootstrap-icons.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/grammar.css' %}">
+    <style>
+        body {
+            font-family: -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo",
+                         Roboto, sans-serif;
+            color: #0f172a;
+            background: #f1f5f9;
+            margin: 0;
+            padding: 1.5rem 1rem 3rem;
+            line-height: 1.45;
+        }
+        .gr-sheet {
+            background: #fff;
+            padding: 2rem 2.25rem 2.5rem;
+            border-radius: .5rem;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, .12);
+        }
+        .gr-bar {
+            max-width: 1000px;
+            margin: 0 auto 1rem;
+            display: flex;
+            gap: .5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .gr-bar button, .gr-bar a {
+            font: inherit;
+            font-size: .85rem;
+            padding: .35rem .8rem;
+            border-radius: .4rem;
+            border: 1px solid #cbd5e1;
+            background: #fff;
+            color: #334155;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .gr-bar button.primary { background: #4f46e5; border-color: #4f46e5; color: #fff; }
+        .gr-bar .gr-bar-note { font-size: .8rem; color: #64748b; margin-left: auto; }
+        .gr-print-section h2 {
+            font-size: .95rem;
+            margin: 1.1rem 0 .35rem;
+            padding-bottom: .2rem;
+            border-bottom: 2px solid #0f172a;
+        }
+        .gr-print-section:first-of-type h2 { margin-top: .4rem; }
+        .gr-legend { font-size: .75rem; color: #475569; margin: 0 0 .8rem; }
+        @media print { body { padding: 0; background: #fff; }
+                       .gr-sheet { box-shadow: none; padding: 0; border-radius: 0; } }
+    </style>
+</head>
+<body>
+
+<div class="gr-bar gr-noprint">
+    <button type="button" class="primary" onclick="window.print()">
+        <i class="bi bi-printer"></i> Chop etish / PDF saqlash
+    </button>
+    {% if compact %}
+    <a href="{{ url_full }}">To‘liq ko‘rinish</a>
+    {% else %}
+    <a href="{{ url_compact }}">Ixcham ko‘rinish</a>
+    {% endif %}
+    <a href="{% url 'examprep_grammar_download' track.slug %}?fmt=xlsx{% if querystring %}&amp;{{ querystring }}{% endif %}">
+        <i class="bi bi-file-earmark-spreadsheet"></i> Excel
+    </a>
+    <a href="{% url 'examprep_grammar' track.slug %}{% if querystring %}?{{ querystring }}{% endif %}">
+        <i class="bi bi-arrow-left"></i> Orqaga
+    </a>
+    <span class="gr-bar-note">Maslahat: chop etish oynasida “Background graphics” ni yoqing.</span>
+</div>
+
+<div class="gr-sheet">
+    <div class="gr-sheet-head">
+        <h1>{{ track.name }} — Grammatika jadvali</h1>
+        <p class="gr-sheet-sub">
+            {{ points|length }} ta grammatika
+            {% if group_by == 'function' %}· ma’no guruhlari bo‘yicha{% else %}· grammatik turi bo‘yicha{% endif %}
+            {% if level %}· TOPIK {{ level }}{% endif %}
+            {% if q %}· qidiruv: “{{ q }}”{% endif %}
+            · powerty.uz
+        </p>
+    </div>
+
+    <p class="gr-legend">
+        <strong>Daraja</strong> = TOPIK darajasi (1–6) · <strong>★</strong> = imtihonda uchrash chastotasi
+        {% if not compact %}· <strong>≈</strong> = o‘xshash shakllar va ulardan farqi{% endif %}
+    </p>
+
+    {% for group in groups %}
+    <section class="gr-print-section">
+        <h2>{{ group.label }} <span style="font-weight:400;color:#64748b;font-size:.8rem;">({{ group.points|length }})</span></h2>
+
+        <table class="gr-print-table">
+            <thead>
+                <tr>
+                    <th style="width:12%;">Grammatika</th>
+                    <th style="width:4%;">Dar.</th>
+                    <th style="width:{% if compact %}30%{% else %}22%{% endif %};">Ma’nosi</th>
+                    <th style="width:{% if compact %}22%{% else %}16%{% endif %};">Qo‘shilishi</th>
+                    <th style="width:{% if compact %}32%{% else %}26%{% endif %};">Namuna</th>
+                    {% if not compact %}<th style="width:20%;">O‘xshashlari · farqi</th>{% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in group.points %}
+                <tr>
+                    <td class="gr-p-pattern">{{ p.pattern }}<br>
+                        <span style="color:#f59e0b;font-size:.7rem;">{{ p.stars }}</span></td>
+                    <td style="text-align:center;">{{ p.level }}</td>
+                    <td>
+                        {{ p.meaning }}
+                        {% if not compact and p.mistake %}
+                        {# The notes already open with ❌, so no extra warning glyph. #}
+                        <div class="gr-p-sub" style="color:#b91c1c;">{{ p.mistake|safe }}</div>
+                        {% endif %}
+                    </td>
+                    <td>{{ p.attach }}{% if not compact and p.form_rule %}
+                        <div class="gr-p-sub" style="color:#475569;">{{ p.form_rule|safe }}</div>
+                        {% endif %}</td>
+                    <td>
+                        {% for ex in p.examples.all %}
+                            {% if compact and not forloop.first %}{% else %}
+                            <div style="margin-bottom:.2rem;">
+                                {{ ex.korean }}
+                                {% if ex.uz %}<br><span class="gr-p-uz">{{ ex.uz }}</span>{% endif %}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    {% if not compact %}
+                    <td>
+                        {% for s in p.synonyms.all %}
+                        <div style="margin-bottom:.15rem;">
+                            <strong>{{ s.pattern }}</strong>{% if s.note %}
+                            <span class="gr-p-uz">— {{ s.note }}</span>{% endif %}
+                        </div>
+                        {% empty %}—
+                        {% endfor %}
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    {% empty %}
+    <p>Hech narsa topilmadi.</p>
+    {% endfor %}
+
+    <p style="font-size:.72rem;color:#94a3b8;margin-top:1.5rem;border-top:1px solid #e2e8f0;padding-top:.5rem;">
+        Powerty — powerty.uz · {{ track.name }} grammatika bazasi
+    </p>
+</div>
+
+</body>
+</html>

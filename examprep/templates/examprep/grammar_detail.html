@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+{% block nav_examprep %}active{% endblock %}
+{% block mob_nav_examprep %}active{% endblock %}
+{% block page_name %}{{ point.pattern }}{% endblock %}
+{% block title %}{{ point.pattern }} — {% trans "Grammar" %} — {{ track.name }}{% endblock %}
+{% block meta_description %}{{ point.pattern }} — {{ point.meaning }}. {{ track.name }} grammatikasi: qo‘shilishi, namunalar va o‘xshash shakllardan farqi.{% endblock %}
+
+{% block content %}
+
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb small mb-0">
+        <li class="breadcrumb-item"><a href="{% url 'examprep_home' %}">{% trans "Exam Prep" %}</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'examprep_track' track.slug %}">{{ track.name }}</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'examprep_grammar' track.slug %}">{% trans "Grammar" %}</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ point.pattern }}</li>
+    </ol>
+</nav>
+
+<div class="gr-hero">
+    <div class="d-flex flex-wrap align-items-start justify-content-between gap-2">
+        <div>
+            <h1 class="gr-hero-pattern">{{ point.pattern }}</h1>
+            <p class="gr-hero-meaning">{{ point.meaning }}</p>
+        </div>
+        <span class="gr-stars fs-5" title="TOPIK'da uchrash chastotasi">{{ point.stars }}</span>
+    </div>
+    <div class="d-flex flex-wrap gap-2 mt-3">
+        <span class="gr-level gr-level-{{ point.level }}">TOPIK {{ point.level }}</span>
+        <a class="gr-chip" href="{% url 'examprep_grammar' track.slug %}?cat={{ point.category }}">
+            {{ point.get_category_display }}
+        </a>
+        <a class="gr-chip" href="{% url 'examprep_grammar' track.slug %}?fn={{ point.function }}&amp;by=function">
+            {{ point.get_function_display }}
+        </a>
+        <span class="gr-chip">{{ point.get_register_display }}</span>
+    </div>
+</div>
+
+{% if point.attach or point.form_rule %}
+<div class="gr-panel">
+    <h2>Qanday yasaladi</h2>
+    {% if point.attach %}
+    <p class="mb-2" style="font-size:1.05rem;"><strong>{{ point.attach }}</strong></p>
+    {% endif %}
+    {% if point.form_rule %}<div>{{ point.form_rule|safe }}</div>{% endif %}
+</div>
+{% endif %}
+
+{% if point.examples.all %}
+<div class="gr-panel">
+    <h2>Namunalar — 예문</h2>
+    {% for ex in point.examples.all %}
+    <div class="gr-sentence">
+        <span class="gr-ko">{{ ex.korean }}</span>
+        {% if ex.uz %}<span class="gr-uz">{{ ex.uz }}</span>{% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if point.note %}
+<div class="gr-panel">
+    <h2>Izoh — qachon ishlatiladi</h2>
+    <div>{{ point.note|safe }}</div>
+</div>
+{% endif %}
+
+{% if point.mistake %}
+<div class="gr-panel" style="border-left:4px solid #ef4444;">
+    <h2 style="color:#b91c1c;">⚠️ Tez-tez qilinadigan xato</h2>
+    <div>{{ point.mistake|safe }}</div>
+</div>
+{% endif %}
+
+{% if point.synonyms.all or incoming %}
+<div class="gr-panel">
+    <h2>O‘xshash shakllar va farqi</h2>
+    <table class="gr-compare">
+        <tbody>
+            {% for s in point.synonyms.all %}
+            <tr>
+                <td>
+                    {% if s.related %}
+                    <a href="{% url 'examprep_grammar_point' track.slug s.related.slug %}">{{ s.pattern }}</a>
+                    {% else %}{{ s.pattern }}{% endif %}
+                </td>
+                <td>{{ s.note }}</td>
+            </tr>
+            {% endfor %}
+            {% comment %}
+            Mentions from the other direction: another point named this one as
+            its synonym. Showing them makes the comparison symmetric.
+            {% endcomment %}
+            {% for s in incoming %}
+            <tr>
+                <td><a href="{% url 'examprep_grammar_point' track.slug s.point.slug %}">{{ s.point.pattern }}</a></td>
+                <td class="text-secondary"><em>{{ s.point.meaning }}</em>{% if s.note %} — {{ s.note }}{% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+
+{% if siblings %}
+<div class="gr-panel">
+    <h2>Shu ma’nodagi boshqa grammatikalar — {{ point.get_function_display }}</h2>
+    <div class="gr-chips">
+        {% for s in siblings %}
+        <a class="gr-chip" href="{% url 'examprep_grammar_point' track.slug s.slug %}" title="{{ s.meaning }}">
+            {{ s.pattern }} <span class="gr-chip-n">T{{ s.level }}</span>
+        </a>
+        {% endfor %}
+    </div>
+    <a class="small d-inline-block mt-2"
+       href="{% url 'examprep_grammar' track.slug %}?fn={{ point.function }}&amp;by=function">
+        Hammasini jadvalda solishtirish <i class="bi bi-arrow-right"></i>
+    </a>
+</div>
+{% endif %}
+
+<a href="{% url 'examprep_grammar' track.slug %}" class="btn btn-outline-secondary btn-sm">
+    <i class="bi bi-arrow-left me-1"></i>Grammatika jadvaliga qaytish
+</a>
+
+{% endblock %}
+
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/grammar.css' %}">{% endblock %}

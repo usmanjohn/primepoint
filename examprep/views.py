@@ -1,3 +1,5 @@
+import csv
+import html
 import re
 
 from django.shortcuts import render, get_object_or_404, redirect
@@ -5,14 +7,31 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.db.models import F, Count, Q, Max
-from django.http import Http404
+from django.http import Http404, HttpResponse
+from django.utils.html import strip_tags
 from django.utils.translation import gettext as _
 from django.views.decorators.http import require_POST
 
+from openpyxl import Workbook
+from openpyxl.styles import Alignment, Font, PatternFill
+
 from .models import (ExamTrack, Topic, Lesson, LessonBlock, LessonProgress,
                      WritingDrill, WritingDrillProgress, WRITING_DRILL_POINTS,
-                     LESSON_POINTS, SKILL_CHOICES, SKILL_ICONS)
+                     LESSON_POINTS, SKILL_CHOICES, SKILL_ICONS,
+                     GrammarPoint, GrammarSynonym,
+                     GRAMMAR_CATEGORY_CHOICES, GRAMMAR_FUNCTION_CHOICES)
 from prime.subjects import get_study_subjects, value_visible
+
+
+def _strip_tags_plain(value):
+    """HTML note → plain text for the spreadsheet export.
+
+    strip_tags alone leaves entities behind (&nbsp;, &rarr;), which look like
+    noise in a cell, so unescape after stripping and collapse the whitespace
+    the removed block tags leave.
+    """
+    text = html.unescape(strip_tags(value or ''))
+    return re.sub(r'[ \t]*\n\s*', '\n', re.sub(r'[ \t]+', ' ', text)).strip()
 
 
 def _can_edit(user, lesson):
@@ -78,9 +97,10 @@ def track_detail(request, track_slug):
             })
 
     return render(request, 'examprep/track_detail.html', {
-        'track':       track,
-        'groups':      groups,
-        'drill_count': track.writing_drills.filter(**pub).count(),
+        'track':         track,
+        'groups':        groups,
+        'drill_count':   track.writing_drills.filter(**pub).count(),
+        'grammar_count': track.grammar_points.filter(**pub).count(),
     })
 
 
@@ -356,3 +376,241 @@ def drill_finish(request, track_slug, pk):
     else:
         messages.info(request, _('You already finished this drill.'))
     return redirect('examprep_drill', track_slug=track_slug, pk=pk)
+
+
+# ── Grammar bank ───────────────────────────────────────────────────────────
+# One filterable table of every grammar pattern in a track, plus a print sheet
+# and a spreadsheet export. Filtering is entirely server-side (GET params) so
+# the page works with JavaScript off, which is also what makes the print and
+# download views trivial: they read the same filters and render the same rows.
+
+def _grammar_qs(request, **overrides):
+    """Current query string with some params replaced — the href for one chip.
+
+    Built here rather than in the template because Django templates cannot
+    manipulate a QueryDict; a value of None drops the param (that is how a chip
+    toggles itself off).
+    """
+    params = request.GET.copy()
+    for key, value in overrides.items():
+        if value is None:
+            params.pop(key, None)
+        else:
+            params[key] = value
+    encoded = params.urlencode()
+    return f'?{encoded}' if encoded else '?'
+
+
+def _grammar_filters(request, track):
+    """Read the filter params, and build the chip lists the template renders.
+
+    Returns (queryset, context) — shared by the list, print and download views
+    so all three always agree on what "the current selection" means.
+    """
+    pub = _published_filter(request.user)
+    qs = (GrammarPoint.objects.filter(track=track, **pub)
+          .prefetch_related('examples', 'synonyms__related'))
+
+    q = (request.GET.get('q') or '').strip()
+    level = (request.GET.get('level') or '').strip()
+    category = (request.GET.get('cat') or '').strip()
+    function = (request.GET.get('fn') or '').strip()
+    group_by = 'function' if request.GET.get('by') == 'function' else 'category'
+
+    if q:
+        qs = qs.filter(
+            Q(pattern__icontains=q) | Q(meaning__icontains=q) |
+            Q(attach__icontains=q) | Q(note__icontains=q) |
+            Q(examples__korean__icontains=q) | Q(examples__uz__icontains=q) |
+            Q(synonyms__pattern__icontains=q)
+        ).distinct()
+    if level.isdigit():
+        qs = qs.filter(level=int(level))
+    if category in dict(GRAMMAR_CATEGORY_CHOICES):
+        qs = qs.filter(category=category)
+    if function in dict(GRAMMAR_FUNCTION_CHOICES):
+        qs = qs.filter(function=function)
+
+    points = list(qs)
+
+    # Chip counts come from the unfiltered set, so a chip never reads "0" just
+    # because another filter is active — the student can always see what else
+    # is in the bank and switch to it in one tap.
+    all_points = list(GrammarPoint.objects.filter(track=track, **pub)
+                      .values_list('category', 'function', 'level'))
+    cat_counts, fn_counts, lvl_counts = {}, {}, {}
+    for c, f, l in all_points:
+        cat_counts[c] = cat_counts.get(c, 0) + 1
+        fn_counts[f] = fn_counts.get(f, 0) + 1
+        lvl_counts[l] = lvl_counts.get(l, 0) + 1
+
+    context = {
+        'track':        track,
+        'points':       points,
+        'total':        len(all_points),
+        'q':            q,
+        'level':        level,
+        'category':     category,
+        'function':     function,
+        'group_by':     group_by,
+        'has_filter':   bool(q or level or category or function),
+        'categories':   [{'value': c, 'label': l, 'count': cat_counts.get(c, 0),
+                          'on': category == c,
+                          'url': _grammar_qs(request, cat=None if category == c else c)}
+                         for c, l in GRAMMAR_CATEGORY_CHOICES if cat_counts.get(c)],
+        'functions':    [{'value': f, 'label': l, 'count': fn_counts.get(f, 0),
+                          'on': function == f,
+                          'url': _grammar_qs(request, fn=None if function == f else f)}
+                         for f, l in GRAMMAR_FUNCTION_CHOICES if fn_counts.get(f)],
+        'levels':       [{'value': n, 'count': lvl_counts.get(n, 0),
+                          'on': level == str(n),
+                          'url': _grammar_qs(request, level=None if level == str(n) else n)}
+                         for n in range(1, 7) if lvl_counts.get(n)],
+        'url_clear':     _grammar_qs(request, q=None, level=None, cat=None, fn=None),
+        'url_by_cat':    _grammar_qs(request, by=None),
+        'url_by_fn':     _grammar_qs(request, by='function'),
+        'querystring':   request.GET.urlencode(),
+    }
+    return points, context
+
+
+def _grammar_groups(points, group_by):
+    """Split the rows into the sections the page shows, in choices order."""
+    choices = (GRAMMAR_FUNCTION_CHOICES if group_by == 'function'
+               else GRAMMAR_CATEGORY_CHOICES)
+    buckets = {}
+    for p in points:
+        buckets.setdefault(getattr(p, group_by), []).append(p)
+    return [{'value': value, 'label': label, 'points': buckets[value]}
+            for value, label in choices if value in buckets]
+
+
+def grammar_list(request, track_slug):
+    """The grammar summary table: filter chips + grouped rows, each expandable."""
+    pub = _published_filter(request.user)
+    track = get_object_or_404(ExamTrack, slug=track_slug, **pub)
+    points, context = _grammar_filters(request, track)
+    if not context['total']:
+        raise Http404('No grammar entries in this track yet.')
+    context['groups'] = _grammar_groups(points, context['group_by'])
+    return render(request, 'examprep/grammar_list.html', context)
+
+
+def grammar_detail(request, track_slug, slug):
+    """One pattern in full: every example, the nuance notes, and its synonym
+    set — plus the other patterns that share its meaning group."""
+    pub = _published_filter(request.user)
+    track = get_object_or_404(ExamTrack, slug=track_slug, **pub)
+    point = get_object_or_404(
+        GrammarPoint.objects.select_related('track')
+        .prefetch_related('examples', 'synonyms__related'),
+        track=track, slug=slug, **pub,
+    )
+
+    # "Shu ma'nodagi boshqalar" — siblings in the same meaning group. This is
+    # the whole reason `function` exists: comparing -아서 with -니까 is the
+    # question students actually have.
+    siblings = list(GrammarPoint.objects
+                    .filter(track=track, function=point.function, **pub)
+                    .exclude(pk=point.pk)[:12])
+
+    # Patterns that name THIS one as their synonym, but that it does not name
+    # back — otherwise the comparison only works in one direction.
+    named_ids = {s.related_id for s in point.synonyms.all() if s.related_id}
+    incoming = [s for s in GrammarSynonym.objects
+                .filter(related=point, point__track=track, **{f'point__{k}': v
+                                                              for k, v in pub.items()})
+                .select_related('point')
+                if s.point_id not in named_ids]
+
+    return render(request, 'examprep/grammar_detail.html', {
+        'track':    track,
+        'point':    point,
+        'siblings': siblings,
+        'incoming': incoming,
+    })
+
+
+def grammar_print(request, track_slug):
+    """A dense, ink-friendly sheet of the current selection — Ctrl+P → PDF."""
+    pub = _published_filter(request.user)
+    track = get_object_or_404(ExamTrack, slug=track_slug, **pub)
+    points, context = _grammar_filters(request, track)
+    context['groups'] = _grammar_groups(points, context['group_by'])
+    context['compact'] = request.GET.get('compact') == '1'
+    context['url_compact'] = _grammar_qs(request, compact='1')
+    context['url_full'] = _grammar_qs(request, compact=None)
+    # The download link in the print bar must not carry `compact` through.
+    context['querystring'] = _grammar_qs(request, compact=None).lstrip('?')
+    return render(request, 'examprep/grammar_print.html', context)
+
+
+def grammar_download(request, track_slug):
+    """Export the current selection as .xlsx (default) or .csv."""
+    pub = _published_filter(request.user)
+    track = get_object_or_404(ExamTrack, slug=track_slug, **pub)
+    points, _ctx = _grammar_filters(request, track)
+
+    header = ['Pattern', 'TOPIK', 'Turi', 'Ma\'nosi (guruh)', 'Ma\'nosi',
+              'Qo\'shilishi', 'Shakl qoidasi', 'Namuna (한국어)', 'Tarjima',
+              'Sinonimlar', 'Izoh', 'Ko\'p uchraydi']
+
+    def row_of(p):
+        examples = list(p.examples.all())
+        synonyms = '; '.join(
+            f'{s.pattern} — {s.note}' if s.note else s.pattern
+            for s in p.synonyms.all()
+        )
+        return [
+            p.pattern,
+            p.level,
+            p.get_category_display(),
+            p.get_function_display(),
+            p.meaning,
+            p.attach,
+            _strip_tags_plain(p.form_rule),
+            '\n'.join(e.korean for e in examples),
+            '\n'.join(e.uz for e in examples),
+            synonyms,
+            _strip_tags_plain(p.note),
+            p.stars,
+        ]
+
+    fmt = request.GET.get('fmt', 'xlsx')
+    stem = f'{track.slug}-grammatika'
+
+    if fmt == 'csv':
+        response = HttpResponse(content_type='text/csv; charset=utf-8')
+        response['Content-Disposition'] = f'attachment; filename="{stem}.csv"'
+        # BOM so Excel opens the Hangul correctly instead of showing mojibake.
+        response.write('﻿')
+        writer = csv.writer(response)
+        writer.writerow(header)
+        for p in points:
+            writer.writerow(row_of(p))
+        return response
+
+    workbook = Workbook()
+    sheet = workbook.active
+    sheet.title = 'Grammatika'
+    sheet.append(header)
+    for cell in sheet[1]:
+        cell.font = Font(bold=True, color='FFFFFF')
+        cell.fill = PatternFill('solid', fgColor='4F46E5')
+        cell.alignment = Alignment(vertical='center')
+    for p in points:
+        sheet.append(row_of(p))
+    for cell_row in sheet.iter_rows(min_row=2):
+        for cell in cell_row:
+            cell.alignment = Alignment(vertical='top', wrap_text=True)
+    for column, width in zip('ABCDEFGHIJKL',
+                             [16, 7, 22, 24, 30, 24, 32, 40, 40, 40, 40, 8]):
+        sheet.column_dimensions[column].width = width
+    sheet.freeze_panes = 'A2'
+    sheet.auto_filter.ref = sheet.dimensions
+
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = f'attachment; filename="{stem}.xlsx"'
+    workbook.save(response)
+    return response

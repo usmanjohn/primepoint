@@ -73,6 +73,30 @@ reading/writing/listening prep. When the user asks (e.g. "make the next 5 TOPIK 
 Other exams/skills: add a new `toc_<exam>_<skill>.txt` with its own TRACK/SKILL; same workflow.
 Note: `exam` (the timed, scored test simulator) is separate — keep mock-test questions there.
 
+## Creating grammar-bank entries (bulk) — TOPIK grammatika jadvali
+`examprep`'s `GrammarPoint` is the grammar summary table at `/examprep/<track>/grammar/`
+— a filterable, printable, downloadable (xlsx/csv) reference of every grammar pattern,
+grouped either by grammatical type (`category`) or by MEANING (`function`), which is what
+puts near-synonyms side by side. Each row expands to examples, nuance, common mistakes and
+`GrammarSynonym` rows whose notes say how the similar patterns DIFFER; the importer
+cross-links those into clickable pairs. This is a **reference**, not lessons — teaching a
+pattern in depth still belongs in an `examprep` Lesson. When the user asks (e.g. "add the
+TOPIK conjunctive adverbs to the grammar table"):
+1. Read `examprep/management/commands/STYLE_GUIDE_GRAMMAR.md` (how to write — field
+   meanings, the synonym rule, section 12 holds the user's own tips once they share them).
+2. Read `examprep/management/commands/toc_topik_grammar.txt` (header gives TRACK, AUTHOR;
+   body is the group list with each group's `order` decade and `[done]`/`[next]` status).
+3. Find where to continue:
+   `GrammarPoint.objects.filter(track__name='TOPIK').order_by('-order').first()`
+4. Write `_grammar_topik_<group>.py` as `TRACK = {...}` + `POINTS = [...]` (Korean patterns
+   and examples, Uzbek meanings/notes — no English).
+5. Import: `python manage.py import_grammar <that file> --author=<AUTHOR from toc>`
+   (add `--republish` to overwrite — it rebuilds examples + synonyms and re-resolves every
+   cross-link across the whole track).
+6. Give the `railway run python manage.py import_grammar ...` command for production
+   (see Deployment section) — automatically, every time.
+Another exam: add a `toc_<exam>_grammar.txt` with its own TRACK; same workflow.
+
 ## Creating Corner stories (bulk)
 `corner` is the reading library at `/corner/` (`Subject` → `Collection` → `Story`, plus
 `WritingTemplate` files uploaded via admin). Writing drills are **not** here — they live in

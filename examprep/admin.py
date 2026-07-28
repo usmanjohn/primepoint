@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from .models import ExamTrack, Topic, Lesson, LessonBlock, BlockChoice
+from .models import (ExamTrack, Topic, Lesson, LessonBlock, BlockChoice,
+                     GrammarPoint, GrammarExample, GrammarSynonym)
 
 
 @admin.register(ExamTrack)
@@ -58,3 +59,28 @@ class LessonBlockAdmin(admin.ModelAdmin):
     list_filter   = ['lesson__track', 'lesson__skill']
     search_fields = ['lesson__title', 'caption']
     inlines       = [BlockChoiceInline]
+
+
+class GrammarExampleInline(admin.TabularInline):
+    model  = GrammarExample
+    extra  = 2
+    fields = ['order', 'korean', 'uz']
+
+
+class GrammarSynonymInline(admin.TabularInline):
+    model  = GrammarSynonym
+    fk_name = 'point'
+    extra  = 2
+    fields = ['order', 'pattern', 'note', 'related']
+    raw_id_fields = ['related']
+
+
+@admin.register(GrammarPoint)
+class GrammarPointAdmin(admin.ModelAdmin):
+    list_display  = ['pattern', 'meaning', 'level', 'category', 'function',
+                     'freq', 'order', 'is_published']
+    list_filter   = ['track', 'level', 'category', 'function', 'register', 'is_published']
+    list_editable = ['order', 'is_published']
+    search_fields = ['pattern', 'meaning', 'note', 'attach']
+    inlines       = [GrammarExampleInline, GrammarSynonymInline]
+    readonly_fields = ['created_at', 'updated_at']

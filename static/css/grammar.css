@@ -1,0 +1,419 @@
+/* ─── Grammar bank — summary table, detail page, print sheet ───────────
+   The table is the point of this page, so it gets a real table on desktop
+   (dense, scannable, aligned) and collapses to stacked cards on phones —
+   same markup, driven by data-label attributes. Everything else here is
+   chrome around that: the filter bar, the expandable detail row, and the
+   print rules that turn the page into a handout.                        */
+
+:root {
+    --gr-accent:  #4f46e5;
+    --gr-line:    #e2e8f0;
+    --gr-ink:     #0f172a;
+    --gr-muted:   #64748b;
+    --gr-surface: #f8fafc;
+}
+
+/* ── Filter bar ──────────────────────────────────────────────────────── */
+
+.gr-toolbar {
+    background: #fff;
+    border: 1px solid var(--gr-line);
+    border-radius: .9rem;
+    padding: .85rem 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.gr-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+}
+
+.gr-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    padding: .28rem .7rem;
+    border-radius: 999px;
+    border: 1px solid var(--gr-line);
+    background: #fff;
+    color: #475569;
+    font-size: .82rem;
+    line-height: 1.35;
+    text-decoration: none;
+    transition: background .12s ease, color .12s ease, border-color .12s ease;
+}
+.gr-chip:hover { background: var(--gr-surface); color: var(--gr-ink); }
+.gr-chip .gr-chip-n {
+    font-size: .72rem;
+    color: #94a3b8;
+    font-variant-numeric: tabular-nums;
+}
+.gr-chip.is-on {
+    background: var(--gr-accent);
+    border-color: var(--gr-accent);
+    color: #fff;
+}
+.gr-chip.is-on .gr-chip-n { color: rgba(255, 255, 255, .75); }
+
+.gr-filter-label {
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: #94a3b8;
+    margin-bottom: .3rem;
+}
+
+/* ── Section heading per category / meaning group ────────────────────── */
+
+.gr-group-head {
+    display: flex;
+    align-items: baseline;
+    gap: .6rem;
+    margin: 1.75rem 0 .6rem;
+    padding-bottom: .4rem;
+    border-bottom: 2px solid var(--gr-accent);
+}
+.gr-group-head h2 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--gr-ink);
+}
+.gr-group-head .gr-group-n {
+    font-size: .8rem;
+    color: var(--gr-muted);
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+/* ── The table ───────────────────────────────────────────────────────── */
+
+.gr-table-wrap {
+    border: 1px solid var(--gr-line);
+    border-radius: .75rem;
+    /* Scroll the table, never the page: at tablet widths six columns of Korean
+       don't fit, and `hidden` here would clip the synonym column away. */
+    overflow-x: auto;
+    background: #fff;
+}
+
+.gr-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .9rem;
+}
+.gr-table th {
+    background: var(--gr-surface);
+    color: var(--gr-muted);
+    font-size: .72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    text-align: left;
+    padding: .55rem .75rem;
+    border-bottom: 1px solid var(--gr-line);
+    white-space: nowrap;
+}
+.gr-table td {
+    padding: .6rem .75rem;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: top;
+}
+.gr-table tbody tr:last-child td { border-bottom: 0; }
+.gr-table tbody tr:hover { background: #fcfdff; }
+
+.gr-pattern {
+    font-weight: 700;
+    color: var(--gr-accent);
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: .96rem;
+}
+.gr-pattern:hover { text-decoration: underline; }
+
+.gr-meaning { color: #334155; }
+.gr-attach {
+    color: var(--gr-muted);
+    font-size: .82rem;
+    white-space: nowrap;
+}
+
+.gr-ko {
+    color: var(--gr-ink);
+    display: block;
+    line-height: 1.45;
+}
+.gr-uz {
+    color: var(--gr-muted);
+    font-size: .82rem;
+    font-style: italic;
+    display: block;
+}
+
+.gr-stars {
+    color: #f59e0b;
+    letter-spacing: -.05em;
+    white-space: nowrap;
+    font-size: .8rem;
+}
+
+.gr-level {
+    display: inline-block;
+    min-width: 1.6rem;
+    text-align: center;
+    padding: .1rem .4rem;
+    border-radius: .4rem;
+    font-size: .74rem;
+    font-weight: 700;
+    background: #eef2ff;
+    color: #4338ca;
+}
+/* Level tint doubles as a difficulty read: cool = beginner, warm = advanced. */
+.gr-level-1, .gr-level-2 { background: #dcfce7; color: #15803d; }
+.gr-level-3, .gr-level-4 { background: #dbeafe; color: #1d4ed8; }
+.gr-level-5, .gr-level-6 { background: #fee2e2; color: #b91c1c; }
+
+.gr-syn {
+    display: inline-block;
+    padding: .1rem .45rem;
+    margin: 0 .2rem .2rem 0;
+    border-radius: .35rem;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: .78rem;
+    text-decoration: none;
+    white-space: nowrap;
+}
+a.gr-syn:hover { background: #e0e7ff; color: #4338ca; }
+
+/* ── Expandable detail row (no JS — plain <details>) ─────────────────── */
+
+/* Detail row: reads as a continuation of the row above it, so it drops the
+   top padding and the separator the main row already drew. */
+.gr-detail-row > td {
+    padding-top: 0;
+    padding-bottom: .5rem;
+}
+.gr-table tbody tr.gr-detail-row:hover { background: transparent; }
+
+.gr-more { margin: 0; }
+.gr-more > summary {
+    cursor: pointer;
+    list-style: none;
+    color: var(--gr-accent);
+    font-size: .78rem;
+    font-weight: 600;
+    padding: .1rem 0;
+    white-space: nowrap;
+}
+.gr-more > summary::-webkit-details-marker { display: none; }
+.gr-more > summary::after { content: " ▾"; }
+.gr-more[open] > summary::after { content: " ▴"; }
+
+.gr-more-body {
+    margin-top: .5rem;
+    padding: .7rem .85rem;
+    background: var(--gr-surface);
+    border-radius: .5rem;
+    border-left: 3px solid var(--gr-accent);
+    font-size: .86rem;
+    color: #334155;
+}
+.gr-more-body h4 {
+    font-size: .74rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--gr-muted);
+    margin: .7rem 0 .25rem;
+}
+.gr-more-body h4:first-child { margin-top: 0; }
+.gr-more-body p { margin: 0 0 .35rem; }
+.gr-more-body ul { margin: 0 0 .35rem; padding-left: 1.1rem; }
+
+/* Two columns on wide screens: rules/notes on the left, examples and the
+   synonym differences on the right — the two things you compare. */
+.gr-more-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+}
+@media (max-width: 991.98px) {
+    .gr-more-grid { grid-template-columns: 1fr; gap: 0; }
+}
+
+.gr-ex-list { list-style: none; margin: 0; padding: 0; }
+.gr-ex-list li { margin-bottom: .45rem; }
+
+/* ── Mobile: the table becomes stacked cards ─────────────────────────── */
+
+@media (max-width: 767.98px) {
+    .gr-table-wrap { border: 0; border-radius: 0; background: transparent; }
+    .gr-table, .gr-table tbody, .gr-table tr, .gr-table td { display: block; width: 100%; }
+    .gr-table thead { display: none; }
+    .gr-table tr {
+        background: #fff;
+        border: 1px solid var(--gr-line);
+        border-radius: .75rem;
+        margin-bottom: .7rem;
+        padding: .7rem .85rem;
+    }
+    .gr-table td {
+        border: 0;
+        padding: .18rem 0;
+    }
+    /* The label the hidden <th> would have carried, restored inline. */
+    .gr-table td[data-label]::before {
+        content: attr(data-label);
+        display: block;
+        font-size: .68rem;
+        text-transform: uppercase;
+        letter-spacing: .04em;
+        color: #94a3b8;
+        margin-top: .3rem;
+    }
+    /* Row + its detail row are one card: the top half rounds only at the top,
+       the detail half only at the bottom, and the seam between them is gone. */
+    .gr-table tr:not(.gr-detail-row) {
+        border-radius: .75rem .75rem 0 0;
+        border-bottom: 0;
+        margin-bottom: 0;
+    }
+    .gr-table tr.gr-detail-row {
+        border-radius: 0 0 .75rem .75rem;
+        border-top: 0;
+        padding-top: 0;
+    }
+    .gr-table td.gr-cell-head::before { content: none; }
+    .gr-cell-head {
+        display: flex !important;
+        align-items: center;
+        gap: .5rem;
+        flex-wrap: wrap;
+        margin-bottom: .2rem;
+    }
+    .gr-attach { white-space: normal; }
+}
+
+/* ── Detail page ─────────────────────────────────────────────────────── */
+
+.gr-hero {
+    background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 100%);
+    border: 1px solid var(--gr-line);
+    border-radius: 1rem;
+    padding: 1.25rem 1.4rem;
+    margin-bottom: 1.25rem;
+}
+.gr-hero-pattern {
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: var(--gr-accent);
+    margin: 0 0 .2rem;
+    line-height: 1.2;
+    word-break: break-word;
+}
+.gr-hero-meaning {
+    font-size: 1.02rem;
+    color: #334155;
+    margin: 0;
+}
+
+.gr-panel {
+    background: #fff;
+    border: 1px solid var(--gr-line);
+    border-radius: .85rem;
+    padding: 1rem 1.15rem;
+    margin-bottom: 1rem;
+}
+.gr-panel > h2 {
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--gr-muted);
+    margin: 0 0 .65rem;
+}
+
+.gr-sentence {
+    background: var(--gr-surface);
+    border-radius: .6rem;
+    padding: .6rem .8rem;
+    margin-bottom: .5rem;
+}
+.gr-sentence .gr-ko { font-size: 1.04rem; font-weight: 600; margin-bottom: .15rem; }
+
+.gr-compare {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .9rem;
+}
+.gr-compare td {
+    padding: .55rem .6rem;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: top;
+}
+.gr-compare tr:last-child td { border-bottom: 0; }
+.gr-compare td:first-child { white-space: nowrap; font-weight: 700; width: 1%; }
+
+/* ── Print / PDF sheet ───────────────────────────────────────────────── */
+
+.gr-sheet { max-width: 1000px; margin: 0 auto; }
+.gr-sheet-head {
+    border-bottom: 3px solid var(--gr-ink);
+    padding-bottom: .5rem;
+    margin-bottom: 1rem;
+}
+.gr-sheet h1 { font-size: 1.4rem; margin: 0 0 .15rem; }
+.gr-sheet .gr-sheet-sub { color: var(--gr-muted); font-size: .85rem; margin: 0; }
+
+.gr-print-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .8rem;
+    margin-bottom: 1rem;
+}
+.gr-print-table th,
+.gr-print-table td {
+    border: 1px solid #cbd5e1;
+    padding: .3rem .45rem;
+    vertical-align: top;
+    text-align: left;
+}
+.gr-print-table th { background: #f1f5f9; font-size: .72rem; }
+.gr-print-table .gr-p-pattern { font-weight: 700; white-space: nowrap; }
+.gr-print-table .gr-p-uz { color: #475569; font-style: italic; font-size: .74rem; }
+
+/* Notes keep their authored HTML (bold, ❌/✅, line breaks) rather than being
+   flattened — striptags would run adjacent blocks together. Margins are
+   compacted so the paragraphs fit a small table cell. */
+.gr-print-table .gr-p-sub { font-size: .72rem; margin-top: .2rem; }
+.gr-print-table .gr-p-sub p,
+.gr-print-table .gr-p-sub ul { margin: 0 0 .2rem; }
+.gr-print-table .gr-p-sub ul { padding-left: .9rem; }
+.gr-print-table .gr-p-sub p:last-child { margin-bottom: 0; }
+
+@media print {
+    /* Everything that is navigation on screen is noise on paper. */
+    header, footer, nav, .navbar, .gr-noprint,
+    .app-header, .app-footer, .mobile-nav, .bottom-nav { display: none !important; }
+
+    body {
+        background: #fff !important;
+        font-size: 10pt;
+        color: #000;
+    }
+    main, .container, .container-fluid,
+    .gr-sheet { max-width: none !important; width: 100% !important;
+                margin: 0 !important; padding: 0 !important; }
+
+    a { color: #000 !important; text-decoration: none !important; }
+
+    .gr-print-table { font-size: 8.5pt; }
+    .gr-print-table th { background: #eee !important; -webkit-print-color-adjust: exact; }
+    /* Never split a grammar point across a page break. */
+    .gr-print-table tr { page-break-inside: avoid; }
+    .gr-print-section { page-break-inside: auto; }
+    .gr-print-section h2 { page-break-after: avoid; }
+    thead { display: table-header-group; }
+
+    @page { margin: 12mm 10mm; }
+}

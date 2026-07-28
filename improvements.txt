@@ -1,0 +1,5 @@
+
+python manage.py load_mock exam/data/mock10_listening.py
+python manage.py load_mock exam/data/mock10_reading.py
+python manage.py load_mock exam/data/mock10_writing.py
+python manage.py attach_exam_audio 110 exam/data/audio/mock10_listening.mp3

@@ -1,0 +1,56 @@
+# ── Track metadata (read by Claude) ──────────────────────────────────
+TRACK:  TOPIK
+AUTHOR: powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_GRAMMAR.md. This file is ONLY the ordered group list.
+# This is the GRAMMAR BANK — the summary table at /examprep/topik/grammar/, not a lesson
+# series. One data file per group; each group owns an `order` decade so the table's
+# sections never interleave.
+# Status: [done] = imported; [next] = not written yet.
+# ─────────────────────────────────────────────────────────────────────
+
+## GROUP: 조사 — Qo'shimchalar (kelishik va yuklama)   [orders 100-199]  [done]
+   file: _grammar_topik_particles.py
+   Kelishik qo'shimchalari (이/가, 은/는, 을/를, 의, 에, 에서, 에게/한테, (으)로, 과/와),
+   yuklamalar (도, 만, 부터, 까지, 마다, 밖에, 이나, 조차, 마저, 커녕, 뿐), va
+   TOPIK II da uchraydigan qo'shma shakllar (에다가, 로서/로써, 만큼, 처럼, 보다).
+
+## GROUP: 종결어미 — Tugallovchi qo'shimchalar   [orders 200-299]  [done]
+   file: _grammar_topik_endings.py
+   Nutq darajalari (하십시오체 / 해요체 / 해체 / 한다체), so'roq va taklif shakllari
+   (-(으)ㄹ까요?, -(으)ㅂ시다, -(으)세요), his-tuyg'u va yangilik shakllari
+   (-네요, -군요, -더라, -잖아요, -거든요, -지요).
+
+## GROUP: 연결어미 — Bog'lovchi qo'shimchalar   [orders 300-399]  [done]
+   file: _grammar_topik_connectives.py
+   Sabab (-아서/어서, -(으)니까, -느라고, -는 바람에, -기에, -길래),
+   qarama-qarshilik (-지만, -는데, -(으)나),
+   shart (-(으)면, -아야/어야, -거든), qarshi qo'yish (-아도/어도, -더라도, -(으)ㄹ지라도),
+   vaqt (-고 나서, -(으)ㄴ 후에, -자마자, -는 동안, -(으)면서, -다가),
+   maqsad (-(으)러, -(으)려고, -도록), sanash va tanlov (-고, -(으)며, -거나).
+
+## GROUP: 시제·관형형 — Zamon va aniqlovchi shakllar   [orders 400-499]  [done]
+   file: _grammar_topik_tense.py
+   O'tgan/hozirgi/kelasi zamon (-았/었-, -는-, -겠-, -(으)ㄹ 것이다, -았었-),
+   관형형 (-(으)ㄴ, -는, -(으)ㄹ, -던, -았/었던),
+   majhul va orttirma nisbat (-이/히/리/기-, -아/어지다, -게 하다, -시키다),
+   hurmat shakllari ((으)시, 께서, 드리다, 계시다) va ko'chirma gap (-다고 하다 oilasi).
+
+## GROUP: 문형 — Grammatik iboralar (TOPIK I-II asosiy)   [orders 500-599]  [done]
+   file: _grammar_topik_expressions.py
+   Eng ko'p ishlatiladigan turg'un iboralar: -기 때문에, -(으)ㄹ 수 있다/없다,
+   -아야 하다, -(으)면 안 되다, -(으)ㄴ 적이 있다, -(으)ㄹ 줄 알다, -고 싶다, -기로 하다,
+   -는 것 같다, -(으)ㄹ 뻔하다, -아 보다, -아 주다, -고 있다, -아 있다, -게 되다,
+   -(으)ㄴ/는 편이다, -(으)ㄹ 만하다, -기 위해서, -(으)ㄴ/는 대신에, -(으)ㄹ 테니까.
+
+## GROUP: 고급 문형 — Yuqori daraja (TOPIK 5-6)   [orders 600-699]  [done]
+   file: _grammar_topik_advanced.py
+   Rasmiy va yozma uslub: -(으)ㅁ에 따라, -(으)로 인해, -기 마련이다, -(으)ㄹ 뿐만 아니라,
+   -기는커녕, -(으)ㄴ/는 셈이다, -더니 / -았더니, -(으)ㄹ 법하다, -(으)ㄴ 채로,
+   -(으)ㄹ 지경이다, -(으)ㄹ 따름이다, -고자, -(으)ㄹ 바에야, -(으)ㅁ에도 불구하고 —
+   asosan 읽기 41-50 va 쓰기 53-54 uchun.
+
+## GROUP: 접속부사 — Bog'lovchi ravishlar   [orders 700-799]  [next]
+   file: _grammar_topik_adverbs.py
+   그러나, 하지만, 그런데, 따라서, 그러므로, 즉, 또한, 게다가, 반면에, 오히려, 결국 —
+   쓰기 54 inshosi uchun eng kerakli bog'lovchilar.

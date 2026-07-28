@@ -126,6 +126,21 @@ def _writing(q):
     return _group('writing', _('Writing Drills'), 'bi-pencil-square', items, qs.count())
 
 
+def _grammar(q):
+    from examprep.models import GrammarPoint
+
+    qs = GrammarPoint.objects.filter(is_published=True).select_related('track').filter(
+        Q(pattern__icontains=q) | Q(meaning__icontains=q) | Q(attach__icontains=q)
+    ).order_by('order')
+    items = [{
+        'title': g.pattern,
+        'meta': _join(g.level_label, g.get_function_display(), g.meaning),
+        'url': reverse('examprep_grammar_point',
+                       kwargs={'track_slug': g.track.slug, 'slug': g.slug}),
+    } for g in qs[:PER_GROUP]]
+    return _group('grammar', _('Grammar'), 'bi-table', items, qs.count())
+
+
 def _games(q):
     from games.catalog import search_games
 
@@ -202,7 +217,7 @@ def _classrooms(q):
 # Learning material first — that is what people type into a search box — then
 # people, then community spaces.
 SOURCES = [
-    _tutorials, _practices, _examprep, _exams, _stories, _writing,
+    _tutorials, _practices, _examprep, _grammar, _exams, _stories, _writing,
     _games, _masters, _pandas, _threads, _classrooms,
 ]
 
