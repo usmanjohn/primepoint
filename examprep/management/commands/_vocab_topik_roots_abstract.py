@@ -255,7 +255,7 @@ WORDS = [
         ],
     },
     {
-        "word": "결정", "hanja": "決定", "roots": ["정"],
+        "word": "결정", "hanja": "決定", "roots": ["정(定)"],
         "pos": "noun", "topic": "abstract", "level": 3, "freq": 3, "order": 330,
         "meaning": "qaror qilish",
         "collocation": "결정하다 · 결정을 내리다 · 최종 결정",
@@ -264,7 +264,7 @@ WORDS = [
         ],
     },
     {
-        "word": "안정", "hanja": "安定", "roots": ["정"],
+        "word": "안정", "hanja": "安定", "roots": ["정(定)"],
         "pos": "noun", "topic": "society", "level": 5, "freq": 2, "order": 331,
         "meaning": "barqarorlik — «xotirjam + belgilangan»",
         "collocation": "안정되다 · 안정적이다 · 경제 안정",
@@ -285,7 +285,7 @@ WORDS = [
         ],
     },
     {
-        "word": "경제", "hanja": "經濟", "roots": ["경"],
+        "word": "경제", "hanja": "經濟", "roots": ["경(經)"],
         "pos": "noun", "topic": "economy", "level": 4, "freq": 3, "order": 340,
         "meaning": "iqtisod",
         "collocation": "경제 성장 · 경제적이다 · 경제 위기",
@@ -294,7 +294,7 @@ WORDS = [
         ],
     },
     {
-        "word": "경험", "hanja": "經驗", "roots": ["경"],
+        "word": "경험", "hanja": "經驗", "roots": ["경(經)"],
         "pos": "noun", "topic": "abstract", "level": 3, "freq": 3, "order": 341,
         "meaning": "tajriba — «o‘tmoq + sinamoq»",
         "collocation": "경험하다 · 경험이 많다 · 사회 경험",

@@ -20,7 +20,7 @@ list, e.g.::
         {
             "word":        "출구",
             "hanja":       "出口",
-            "roots":       ["출"],          # matched on VocabRoot.syllable
+            "roots":       ["출"],          # by syllable; "경(境)" when ambiguous
             "pos":         "noun",          # see VOCAB_POS_CHOICES
             "topic":       "place",         # see VOCAB_TOPIC_CHOICES
             "level":       2,
@@ -36,7 +36,9 @@ list, e.g.::
     ]
 
 ``roots`` names are matched against ``ROOTS`` in the same file **or** roots already
-in the database, so a later file can hang new words off an existing family.
+in the database, so a later file can hang new words off an existing family. Where two
+roots share a syllable (경(經) "iqtisod" vs 경(境) "chegara"), name the one you mean as
+``"경(境)"`` — the bare syllable is rejected as ambiguous rather than guessed at.
 ``synonyms`` / ``antonyms`` / ``related`` are ``(word, note)`` tuples; a note that
 names a word which is itself in the bank is cross-linked automatically, in a second
 pass over the whole track (so file A can point at a word imported later in file B).
@@ -112,7 +114,12 @@ class Command(BaseCommand):
         return track
 
     def _sync_roots(self, track, roots_spec, republish):
-        """Create or update the file's roots; return {syllable: VocabRoot}."""
+        """Create or update the file's roots.
+
+        Returns ``(index, ambiguous)`` — a lookup of every root in the track by
+        syllable and by "syllable(hanja)", plus the set of syllables claimed by
+        more than one root.
+        """
         created_n = updated_n = 0
         for i, data in enumerate(roots_spec or []):
             syllable = (data.get("syllable") or "").strip()
@@ -142,7 +149,20 @@ class Command(BaseCommand):
 
         # Index every root in the track, not just this file's — a later file
         # can attach words to a family defined in an earlier one.
-        return {r.syllable: r for r in track.vocab_roots.all()}
+        #
+        # Homophone roots are the reason this is not a plain {syllable: root}
+        # dict: 경(經) "iqtisod" and 경(境) "chegara" are different families
+        # that share a syllable, and so are 소(所)/소(消) and 정(定)/정(政).
+        # A word may therefore name a root either as "경" (only when that is
+        # unambiguous) or as "경(境)".
+        index, ambiguous = {}, set()
+        for root in track.vocab_roots.all():
+            if root.hanja:
+                index[f'{root.syllable}({root.hanja})'] = root
+            if root.syllable in index:
+                ambiguous.add(root.syllable)
+            index[root.syllable] = root
+        return index, ambiguous
 
     def _validate(self, data, index):
         where = f"WORDS[{index}] ({data.get('word', '?')})"
@@ -162,7 +182,7 @@ class Command(BaseCommand):
             raise CommandError(f"{where}: level must be 1–6, got {level}.")
         return pos, topic, level
 
-    def _write_children(self, entry, data, roots_by_syllable, index):
+    def _write_children(self, entry, data, root_index, ambiguous, index):
         """Rebuild examples, root links and relations — all derived from the file."""
         entry.examples.all().delete()
         VocabExample.objects.bulk_create([
@@ -171,13 +191,21 @@ class Command(BaseCommand):
         ])
 
         roots = []
-        for syllable in data.get("roots", []):
-            root = roots_by_syllable.get(syllable)
-            if root is None:
-                # Loud, not silent: a typo'd root would quietly drop the word
-                # out of the family view, which is the whole point of the page.
+        for name in data.get("roots", []):
+            # Loud, not silent: a typo'd or ambiguous root would quietly drop
+            # the word out of the family view, which is the point of the page.
+            if name in ambiguous:
+                candidates = ', '.join(
+                    f"'{key}'" for key in sorted(root_index)
+                    if key.startswith(f'{name}(')
+                )
                 raise CommandError(
-                    f"WORDS[{index}] ({data['word']}): root '{syllable}' is not defined "
+                    f"WORDS[{index}] ({data['word']}): root '{name}' is ambiguous — "
+                    f"several roots share that syllable. Name one of: {candidates}.")
+            root = root_index.get(name)
+            if root is None:
+                raise CommandError(
+                    f"WORDS[{index}] ({data['word']}): root '{name}' is not defined "
                     f"in ROOTS or in the database.")
             roots.append(root)
         entry.roots.set(roots)
@@ -225,7 +253,7 @@ class Command(BaseCommand):
             raise CommandError(f"User '{author}' not found.")
 
         track = self._get_track(module.TRACK)
-        roots_by_syllable = self._sync_roots(track, getattr(module, "ROOTS", []), republish)
+        root_index, ambiguous = self._sync_roots(track, getattr(module, "ROOTS", []), republish)
 
         self.stdout.write(f"Importing {len(module.WORDS)} words into '{track.name}'…")
         created_n = updated_n = skipped_n = 0
@@ -249,13 +277,13 @@ class Command(BaseCommand):
             entry = VocabEntry.objects.filter(track=track, word=word).first()
             if entry is None:
                 entry = VocabEntry.objects.create(track=track, word=word, **fields)
-                self._write_children(entry, data, roots_by_syllable, i)
+                self._write_children(entry, data, root_index, ambiguous, i)
                 created_n += 1
             elif republish:
                 for key, value in fields.items():
                     setattr(entry, key, value)
                 entry.save()
-                self._write_children(entry, data, roots_by_syllable, i)
+                self._write_children(entry, data, root_index, ambiguous, i)
                 updated_n += 1
             else:
                 skipped_n += 1

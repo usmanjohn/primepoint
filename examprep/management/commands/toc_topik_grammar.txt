@@ -50,7 +50,7 @@ AUTHOR: powerty
    -(으)ㄹ 지경이다, -(으)ㄹ 따름이다, -고자, -(으)ㄹ 바에야, -(으)ㅁ에도 불구하고 —
    asosan 읽기 41-50 va 쓰기 53-54 uchun.
 
-## GROUP: 접속부사 — Bog'lovchi ravishlar   [orders 700-799]  [next]
+## GROUP: 접속부사 — Bog'lovchi ravishlar   [orders 700-799]  [done]
    file: _grammar_topik_adverbs.py
    그러나, 하지만, 그런데, 따라서, 그러므로, 즉, 또한, 게다가, 반면에, 오히려, 결국 —
    쓰기 54 inshosi uchun eng kerakli bog'lovchilar.

@@ -16,8 +16,17 @@ AUTHOR: powerty
 #     2. _vocab_topik_roots_motion.py    (needs 생 from 1; defines 감 for 3)
 #     3. _vocab_topik_roots_abstract.py  (needs 입 from 2, 감 from 2)
 #     4. _vocab_topik_daily.py           (needs 불 from 3)
+#     5. _vocab_topik_work.py            (needs 소(所) 장 동 출 인 대 from 1-2)
+#     6. _vocab_topik_science.py         (needs 비 from 5; 용 인 대 from 1-3)
+#     7. _vocab_topik_adverbs.py         (no roots)
 # Each root is defined in exactly one file — never copy a root definition, or the
 # two copies drift apart.
+#
+# ⚠️ HOMOPHONE ROOTS. Several syllables carry more than one root: 소(所)/소(消),
+# 정(定)/정(政)/정(情), 경(經)/경(境), 자(者)/자(資). Name those as "소(所)" in a word's
+# `roots` list — import_vocab rejects the bare syllable as ambiguous rather than
+# guessing. Adding a new homophone root means fixing every earlier file that used
+# the bare syllable, so grep for it before you add one.
 # ─────────────────────────────────────────────────────────────────────
 
 ## GROUP: 어근 1 — Harakat va joy o'zaklari   [orders 100-199]  [done]
@@ -40,15 +49,15 @@ AUTHOR: powerty
    Sifat, ravish va fe'llar (foydalanuvchi metodi: otdan ko'ra shular muhim) —
    kundalik hayot, his-tuyg'u, fe'l-atvor, sog'liq, ovqat, uy.
 
-## GROUP: Mavzuli lug'at 2 — Ish, iqtisod va jamiyat   [orders 600-699]  [next]
+## GROUP: Mavzuli lug'at 2 — Ish, iqtisod va jamiyat   [orders 600-699]  [done]
    file: _vocab_topik_work.py
    취업, 면접, 임금, 소비, 생산, 정책, 제도, 복지 — 쓰기 53/54 uchun.
 
-## GROUP: Mavzuli lug'at 3 — Ekologiya, fan va madaniyat   [orders 700-799]  [next]
+## GROUP: Mavzuli lug'at 3 — Ekologiya, fan va madaniyat   [orders 700-799]  [done]
    file: _vocab_topik_science.py
    환경 오염, 재활용, 기후, 인공지능, 전통, 예술 — 읽기 41-50 mavzulari.
 
-## GROUP: 부사 — Ravishlar to'plami   [orders 800-899]  [next]
+## GROUP: 부사 — Ravishlar to'plami   [orders 800-899]  [done]
    file: _vocab_topik_adverbs.py
    과연, 오히려, 그저, 무려, 비록, 마침내, 결코, 전혀, 아무래도 — javobni hal qiladigan
    ravishlar (foydalanuvchi ta'kidi: 부사 ni ko'proq o'rganing).

@@ -391,7 +391,7 @@ WORDS = [
         ],
     },
     {
-        "word": "주소", "hanja": "住所", "roots": ["소"],
+        "word": "주소", "hanja": "住所", "roots": ["소(所)"],
         "pos": "noun", "topic": "home", "level": 1, "freq": 2, "order": 180,
         "meaning": "manzil — «yashash + joy»",
         "collocation": "주소를 쓰다 · 이메일 주소",
@@ -400,7 +400,7 @@ WORDS = [
         ],
     },
     {
-        "word": "연구소", "hanja": "硏究所", "roots": ["소"],
+        "word": "연구소", "hanja": "硏究所", "roots": ["소(所)"],
         "pos": "noun", "topic": "science", "level": 4, "freq": 2, "order": 181,
         "meaning": "ilmiy-tadqiqot instituti",
         "collocation": "연구소에서 근무하다 · 국립 연구소",

@@ -122,7 +122,7 @@ WORDS = [
 
     # ── 자(者) ─────────────────────────────────────────────────────────────
     {
-        "word": "소비자", "hanja": "消費者", "roots": ["자"],
+        "word": "소비자", "hanja": "消費者", "roots": ["자(者)"],
         "pos": "noun", "topic": "economy", "level": 4, "freq": 3, "order": 210,
         "meaning": "iste’molchi — «sarflovchi kishi»",
         "collocation": "소비자 물가 · 소비자 보호 · 소비자의 선택",
@@ -133,7 +133,7 @@ WORDS = [
         "antonyms": [("생산자", "ishlab chiqaruvchi")],
     },
     {
-        "word": "기자", "hanja": "記者", "roots": ["자"],
+        "word": "기자", "hanja": "記者", "roots": ["자(者)"],
         "pos": "noun", "topic": "media", "level": 3, "freq": 2, "order": 211,
         "meaning": "jurnalist — «yozuvchi kishi»",
         "collocation": "기자 회견 · 신문 기자",
@@ -142,7 +142,7 @@ WORDS = [
         ],
     },
     {
-        "word": "환자", "hanja": "患者", "roots": ["자"],
+        "word": "환자", "hanja": "患者", "roots": ["자(者)"],
         "pos": "noun", "topic": "body", "level": 3, "freq": 2, "order": 212,
         "meaning": "bemor — «kasal kishi»",
         "collocation": "환자를 치료하다 · 입원 환자",
@@ -151,7 +151,7 @@ WORDS = [
         ],
     },
     {
-        "word": "학자", "hanja": "學者", "roots": ["자", "학"],
+        "word": "학자", "hanja": "學者", "roots": ["자(者)", "학"],
         "pos": "noun", "topic": "science", "level": 4, "freq": 2, "order": 213,
         "meaning": "olim — «ilm kishisi»",
         "collocation": "학자들의 연구 · 유명한 학자",

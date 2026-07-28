@@ -20,6 +20,13 @@ its `roots`.
 A word may have two roots — 출입구 is 출(出) + 입(入) + 구(口). List all of the ones the bank
 defines; the word then appears in each family.
 
+**Homophone roots.** Several syllables carry more than one root: 소(所) "joy" vs 소(消)
+"sarflash", 정(定)/정(政)/정(情), 경(經)/경(境), 자(者)/자(資), 기(技)/기(氣)/기(機). Those get
+one `ROOTS` row each, and a word must name the one it means as `"소(所)"` — `import_vocab`
+rejects the bare `"소"` as ambiguous rather than guessing. Before adding a new homophone
+root, grep the earlier files for the bare syllable: adding it makes those references
+ambiguous, and they all need the disambiguated form.
+
 Native-Korean words (먹다, 예쁘다, 빨리) have no Hanja — leave `hanja` blank and `roots` empty.
 They still belong in the bank, just under their theme.
 

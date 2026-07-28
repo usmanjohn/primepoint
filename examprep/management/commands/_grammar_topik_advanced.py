@@ -424,29 +424,4 @@ POINTS = [
         ],
         "order": 618,
     },
-    {
-        "pattern":   "-(으)ㄹ 뿐(만) 아니라 vs 물론",
-        "category":  "adverb",
-        "function":  "listing",
-        "level":     4,
-        "freq":      2,
-        "meaning":   "쓰기 uchun bog'lovchi ravishlar to'plami",
-        "attach":    "문장 앞 (jumla boshida)",
-        "form_rule": "<b>또한</b> (shuningdek) · <b>게다가</b> (ustiga-ustak) · <b>더구나</b> (bundan tashqari) · "
-                     "<b>반면에</b> (aksincha) · <b>오히려</b> (aksincha, kutilmaganda) · "
-                     "<b>따라서</b> (shunday ekan) · <b>그러므로</b> (shu sababli) · <b>즉</b> (ya'ni) · "
-                     "<b>결국</b> (oqibatda)",
-        "note":      "<p>쓰기 54 inshosida <b>har paragraf boshida bittadan</b> ishlating — "
-                     "matn tuzilgan ko'rinadi va ball qo'shadi.</p>"
-                     "<p>Foydalanuvchi metodi: <b>bitta bog'lovchini mukammal egallang</b>, "
-                     "hammasini yuzaki bilgandan ko'ra yaxshiroq.</p>",
-        "examples": [
-            ("이 정책은 효과적이다. 또한 비용도 적게 든다.", "Bu siyosat samarali. Shuningdek, xarajati ham kam."),
-            ("여러 노력이 있었다. 그러나 결과는 달라지지 않았다.", "Ko'p harakat qilindi. Biroq natija o'zgarmadi."),
-        ],
-        "synonyms": [
-            ("-(으)ㄹ 뿐만 아니라", "gap ICHIDA bog'laydi; 또한/게다가 = yangi jumla boshlaydi"),
-        ],
-        "order": 619,
-    },
 ]
