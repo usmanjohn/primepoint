@@ -80,7 +80,11 @@ grouped either by grammatical type (`category`) or by MEANING (`function`), whic
 puts near-synonyms side by side. Each row expands to examples, nuance, common mistakes and
 `GrammarSynonym` rows whose notes say how the similar patterns DIFFER; the importer
 cross-links those into clickable pairs. This is a **reference**, not lessons — teaching a
-pattern in depth still belongs in an `examprep` Lesson. When the user asks (e.g. "add the
+pattern in depth still belongs in an `examprep` Lesson.
+**Access:** reading the table is open to everyone, but the **print sheet and the
+xlsx/csv download are staff-only** (`_require_staff` in `examprep/views.py`; the buttons
+are hidden from non-staff). The print sheet is watermarked. Keep this split for any
+similar take-away reference added later. When the user asks (e.g. "add the
 TOPIK conjunctive adverbs to the grammar table"):
 1. Read `examprep/management/commands/STYLE_GUIDE_GRAMMAR.md` (how to write — field
    meanings, the synonym rule, section 12 holds the user's own tips once they share them).

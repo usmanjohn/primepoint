@@ -4,6 +4,7 @@ import re
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import redirect_to_login
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.db.models import F, Count, Q, Max
@@ -531,8 +532,29 @@ def grammar_detail(request, track_slug, slug):
     })
 
 
+def _require_staff(request):
+    """Gate for the take-away formats (print sheet, spreadsheet export).
+
+    Reading the bank on-site is open to everyone; walking away with a
+    distributable copy of it is not. Anonymous visitors are sent to log in
+    (they may simply not be signed in yet); a signed-in non-staff user gets a
+    403, because for them it is a permission answer, not a login prompt.
+    """
+    if not request.user.is_authenticated:
+        return redirect_to_login(request.get_full_path())
+    if not request.user.is_staff:
+        raise PermissionDenied
+    return None
+
+
 def grammar_print(request, track_slug):
-    """A dense, ink-friendly sheet of the current selection — Ctrl+P → PDF."""
+    """A dense, ink-friendly sheet of the current selection — Ctrl+P → PDF.
+
+    Staff only — see _require_staff.
+    """
+    denied = _require_staff(request)
+    if denied:
+        return denied
     pub = _published_filter(request.user)
     track = get_object_or_404(ExamTrack, slug=track_slug, **pub)
     points, context = _grammar_filters(request, track)
@@ -546,7 +568,10 @@ def grammar_print(request, track_slug):
 
 
 def grammar_download(request, track_slug):
-    """Export the current selection as .xlsx (default) or .csv."""
+    """Export the current selection as .xlsx (default) or .csv. Staff only."""
+    denied = _require_staff(request)
+    if denied:
+        return denied
     pub = _published_filter(request.user)
     track = get_object_or_404(ExamTrack, slug=track_slug, **pub)
     points, _ctx = _grammar_filters(request, track)

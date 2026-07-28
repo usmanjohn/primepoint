@@ -25,6 +25,55 @@ page is only ever opened to be printed or saved as PDF. -->
             padding: 2rem 2.25rem 2.5rem;
             border-radius: .5rem;
             box-shadow: 0 1px 3px rgba(15, 23, 42, .12);
+            position: relative;   /* anchors the watermark layer */
+        }
+
+        /* Watermark: sits behind the content, spans the whole sheet, and is
+           never clickable or selectable. */
+        .gr-watermark {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+        }
+        .gr-watermark text {
+            font-family: "Trebuchet MS", Verdana, sans-serif;
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: .18em;
+            fill: #0f172a;
+            fill-opacity: .055;
+        }
+        .gr-watermark .gr-wm-sub {
+            font-size: 17px;
+            font-weight: 400;
+            letter-spacing: .1em;
+            fill-opacity: .045;
+        }
+        .gr-sheet-body { position: relative; z-index: 1; }
+
+        .gr-sheet-head { display: flex; align-items: center; gap: .85rem; }
+        .gr-sheet-logo { border-radius: .4rem; flex-shrink: 0; }
+
+        .gr-section-brand {
+            float: right;
+            font-weight: 400;
+            font-size: .68rem;
+            letter-spacing: .06em;
+            color: #cbd5e1;
+            text-transform: uppercase;
+        }
+
+        .gr-sheet-foot {
+            font-size: .72rem;
+            color: #94a3b8;
+            margin-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+            padding-top: .5rem;
+            line-height: 1.6;
         }
         .gr-bar {
             max-width: 1000px;
@@ -80,15 +129,38 @@ page is only ever opened to be printed or saved as PDF. -->
 </div>
 
 <div class="gr-sheet">
+
+    {% comment %}
+    Watermark as real SVG geometry, not a CSS background: browsers drop
+    background images unless the reader ticks "Background graphics", and a
+    watermark you can switch off is not a watermark. A <rect> filled with a
+    <pattern> is foreground content, so it always prints.
+    {% endcomment %}
+    <svg class="gr-watermark" aria-hidden="true" focusable="false">
+        <defs>
+            <pattern id="pp-wm" width="340" height="230" patternUnits="userSpaceOnUse"
+                     patternTransform="rotate(-28)">
+                <text x="0" y="40">POWERTY</text>
+                <text x="0" y="150" class="gr-wm-sub">powerty.uz</text>
+            </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#pp-wm)"></rect>
+    </svg>
+
+    <div class="gr-sheet-body">
     <div class="gr-sheet-head">
-        <h1>{{ track.name }} — Grammatika jadvali</h1>
-        <p class="gr-sheet-sub">
-            {{ points|length }} ta grammatika
-            {% if group_by == 'function' %}· ma’no guruhlari bo‘yicha{% else %}· grammatik turi bo‘yicha{% endif %}
-            {% if level %}· TOPIK {{ level }}{% endif %}
-            {% if q %}· qidiruv: “{{ q }}”{% endif %}
-            · powerty.uz
-        </p>
+        <img class="gr-sheet-logo" src="{% static 'favicon/favicon-96x96.png' %}"
+             alt="Powerty" width="40" height="40">
+        <div>
+            <h1>{{ track.name }} — Grammatika jadvali</h1>
+            <p class="gr-sheet-sub">
+                {{ points|length }} ta grammatika
+                {% if group_by == 'function' %}· ma’no guruhlari bo‘yicha{% else %}· grammatik turi bo‘yicha{% endif %}
+                {% if level %}· TOPIK {{ level }}{% endif %}
+                {% if q %}· qidiruv: “{{ q }}”{% endif %}
+                · powerty.uz
+            </p>
+        </div>
     </div>
 
     <p class="gr-legend">
@@ -98,7 +170,12 @@ page is only ever opened to be printed or saved as PDF. -->
 
     {% for group in groups %}
     <section class="gr-print-section">
-        <h2>{{ group.label }} <span style="font-weight:400;color:#64748b;font-size:.8rem;">({{ group.points|length }})</span></h2>
+        {% comment %}
+        Brand mark repeats per section so every printed page carries one, even
+        if the tiled layer is clipped at a page break.
+        {% endcomment %}
+        <h2>{{ group.label }} <span style="font-weight:400;color:#64748b;font-size:.8rem;">({{ group.points|length }})</span>
+            <span class="gr-section-brand">powerty.uz</span></h2>
 
         <table class="gr-print-table">
             <thead>
@@ -157,9 +234,12 @@ page is only ever opened to be printed or saved as PDF. -->
     <p>Hech narsa topilmadi.</p>
     {% endfor %}
 
-    <p style="font-size:.72rem;color:#94a3b8;margin-top:1.5rem;border-top:1px solid #e2e8f0;padding-top:.5rem;">
-        Powerty — powerty.uz · {{ track.name }} grammatika bazasi
+    <p class="gr-sheet-foot">
+        <strong>Powerty</strong> — powerty.uz · {{ track.name }} grammatika bazasi ·
+        © {% now "Y" %} Powerty. Ruxsatsiz tarqatish taqiqlanadi.<br>
+        Chop etdi: <strong>{{ user.get_username }}</strong> · {% now "d.m.Y H:i" %}
     </p>
+    </div><!-- /.gr-sheet-body -->
 </div>
 
 </body>

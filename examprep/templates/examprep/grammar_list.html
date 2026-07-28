@@ -25,6 +25,8 @@
             {% blocktrans with n=total name=track.name %}{{ n }} grammar patterns for {{ name }} — meaning, where it attaches, examples and the near-synonyms you keep mixing up.{% endblocktrans %}
         </p>
     </div>
+    {# Take-away formats are staff-only, so non-staff never see the buttons. #}
+    {% if user.is_staff %}
     <div class="d-flex gap-2 flex-shrink-0">
         <a href="{% url 'examprep_grammar_print' track.slug %}{% if querystring %}?{{ querystring }}{% endif %}"
            class="btn btn-outline-secondary btn-sm" target="_blank" rel="noopener">
@@ -43,6 +45,7 @@
             </ul>
         </div>
     </div>
+    {% endif %}
 </div>
 
 <div class="alert alert-light border small d-flex gap-2 mb-3" role="note">
