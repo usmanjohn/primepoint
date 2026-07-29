@@ -14,7 +14,7 @@ PLAYLIST: Prime English
 # 100 lessons. Every lesson stands alone, but the order builds a full course:
 # a pupil who reads PE-1 → PE-100 has covered the whole English grammar system.
 
-### Block A: Foundations — The Building Blocks (1–18)  [done: 1–10]
+### Block A: Foundations — The Building Blocks (1–18)  [done — COMPLETE]
 1. What Is a Sentence? Subject + Verb
 2. Nouns: Countable and Uncountable
 3. Plural Nouns: Regular and Irregular
@@ -34,7 +34,7 @@ PLAYLIST: Prime English
 17. Prepositions of Time: in, on, at
 18. Question Words: who, what, where, when, why, how
 
-### Block B: The Past and the Future (19–31)
+### Block B: The Past and the Future (19–31)  [done: 19–20]
 19. Past Simple of "to be": was / were
 20. Past Simple: Regular Verbs and the -ed Ending
 21. Past Simple: Irregular Verbs
