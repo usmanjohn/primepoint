@@ -122,8 +122,8 @@ inherit the site's nav, sidebar or footer. Staff-only view; watermarked. -->
             <h1>{{ track.name }} — Lug‘at{% if by_root %} · so‘z oilalari{% endif %}</h1>
             <p class="gr-sheet-sub">
                 {{ entries|length }} ta so‘z
-                {% if by_root %}· 한자 어근 bo‘yicha{% else %}· mavzular bo‘yicha{% endif %}
-                {% if level %}· TOPIK {{ level }}{% endif %}
+                {% if by_root %}· {{ terms.root_kind }} bo‘yicha{% else %}· mavzular bo‘yicha{% endif %}
+                {% if level %}· {{ level_label }}{% endif %}
                 {% if q %}· qidiruv: “{{ q }}”{% endif %}
                 · powerty.uz
             </p>
@@ -131,7 +131,7 @@ inherit the site's nav, sidebar or footer. Staff-only view; watermarked. -->
     </div>
 
     <p class="gr-legend">
-        <strong>Daraja</strong> = TOPIK darajasi (1–6) · <strong>★</strong> = imtihonda uchrash chastotasi
+        <strong>Daraja</strong> = {{ terms.level_hint }} · <strong>★</strong> = imtihonda uchrash chastotasi
         {% if not compact %}· <strong>≈</strong> sinonim · <strong>↔</strong> antonim{% endif %}
     </p>
 
@@ -146,7 +146,7 @@ inherit the site's nav, sidebar or footer. Staff-only view; watermarked. -->
             <thead>
                 <tr>
                     <th style="width:14%;">So‘z</th>
-                    <th style="width:9%;">Hanja</th>
+                    <th style="width:9%;">{{ terms.origin_label }}</th>
                     <th style="width:4%;">Dar.</th>
                     <th style="width:33%;">Ma’nosi</th>
                     <th style="width:40%;">Namuna</th>
@@ -186,7 +186,7 @@ inherit the site's nav, sidebar or footer. Staff-only view; watermarked. -->
             <thead>
                 <tr>
                     <th style="width:13%;">So‘z</th>
-                    <th style="width:8%;">Hanja</th>
+                    <th style="width:8%;">{{ terms.origin_label }}</th>
                     <th style="width:4%;">Dar.</th>
                     <th style="width:{% if compact %}33%{% else %}26%{% endif %};">Ma’nosi</th>
                     <th style="width:{% if compact %}42%{% else %}32%{% endif %};">Namuna</th>

@@ -4,7 +4,7 @@
 {% block mob_nav_examprep %}active{% endblock %}
 {% block page_name %}{% trans "Word families" %}{% endblock %}
 {% block title %}{% trans "Word families" %} — {{ track.name }}{% endblock %}
-{% block meta_description %}Koreys tili so‘z oilalari: 출(出) — 출구, 출근, 출발, 제출, 수출. Bitta Hanja o‘zakni o‘rganib, o‘nlab TOPIK so‘zini taniysiz.{% endblock %}
+{% block meta_description %}{{ terms.roots_meta }}{% endblock %}
 
 {% block content %}
 
@@ -20,7 +20,7 @@
 <div class="d-flex flex-wrap align-items-start justify-content-between gap-3 mb-3">
     <div>
         <h1 class="page-title mb-1">
-            <i class="bi bi-diagram-2 me-2" style="color:var(--vc-accent);"></i>So‘z oilalari · 한자 어근
+            <i class="bi bi-diagram-2 me-2" style="color:var(--vc-accent);"></i>{{ terms.roots_title }}
         </h1>
         <p class="page-subtitle mb-0">
             {{ total_roots }} ta o‘zak · {{ total_words }} ta so‘z — bitta o‘zakni o‘rganing, butun oilani taniysiz.
@@ -37,13 +37,7 @@
 <div class="alert alert-light border small d-flex gap-2 mb-3" role="note">
     <i class="bi bi-lightbulb flex-shrink-0" style="color:#f59e0b;"></i>
     <div>
-        <strong>Nega bu ishlaydi:</strong> TOPIK II lug‘atining katta qismi <em>xitoycha ildizli</em>
-        (한자어). Har bir bo‘g‘in o‘z ma’nosini olib yuradi, shuning uchun
-        <b>출</b>(出) = «chiqmoq» ni bir marta o‘rgansangiz —
-        <b>출</b>구 (chiqish joyi), <b>출</b>근 (ishga chiqish), <b>출</b>발 (jo‘nash),
-        제<b>출</b> (topshirish, «oldinga chiqarish»), 수<b>출</b> (eksport) —
-        hammasi mantiqiy bo‘lib qoladi. Imtihonda <u>notanish</u> so‘z uchrasa,
-        o‘zagidan ma’nosini taxmin qila olasiz — bu 읽기 da eng foydali ko‘nikma.
+        <strong>Nega bu ishlaydi:</strong> {{ terms.roots_why|safe }}
     </div>
 </div>
 
@@ -52,7 +46,7 @@
     <div class="input-group input-group-sm">
         <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
         <input type="search" class="form-control" id="vc-rq" name="q" value="{{ q }}"
-               placeholder="O‘zak yoki so‘z: 출, 出, chiqmoq, 출근…">
+               placeholder="{{ terms.roots_search_hint }}">
         <button class="btn btn-primary" type="submit">{% trans "Search" %}</button>
         {% if q %}<a class="btn btn-outline-secondary" href="{% url 'examprep_vocab_roots' track.slug %}">
             <i class="bi bi-x"></i></a>{% endif %}
@@ -63,7 +57,7 @@
     {% for f in families %}
     <section class="vc-family" id="root-{{ f.root.slug }}">
         <header class="vc-family-head">
-            <span class="vc-family-glyph">{{ f.root.hanja|default:f.root.syllable }}</span>
+            <span class="vc-family-glyph">{{ f.root.glyph }}</span>
             <div class="flex-grow-1">
                 <h2 class="vc-family-title">
                     {{ f.root.syllable }}{% if f.root.hanja %} <span class="vc-family-hanja">{{ f.root.hanja }}</span>{% endif %}

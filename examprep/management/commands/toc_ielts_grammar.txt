@@ -1,0 +1,98 @@
+# ── Track metadata (read by Claude) ──────────────────────────────────
+TRACK:  IELTS
+AUTHOR: powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_GRAMMAR_IELTS.md. This file is ONLY the ordered
+# group list.
+# This is the GRAMMAR BANK — the summary table at /examprep/ielts/grammar/, not a lesson
+# series. One data file per group; each group owns an `order` decade so the table's
+# sections never interleave.
+# Language: patterns and examples in English, every explanation in Uzbek.
+# Levels are BANDS here (level 1 = Band 5 … level 6 = Band 7.5+), not TOPIK levels.
+# Status: [done] = imported; [next] = not written yet.
+# ─────────────────────────────────────────────────────────────────────
+
+## GROUP: Tenses & aspect — Zamonlar   [orders 100-199]  [done]
+   file: _grammar_ielts_tense.py
+   category: en_tense
+   Present simple/continuous, past simple, present perfect (va uning past simple bilan
+   farqi), past perfect, future forms (will / going to / present continuous), future
+   perfect, used to / would, "the historic present" — Task 1 ning zamon tanlovi
+   (grafik yili o‘tganmi yoki bashoratmi) va Speaking Part 1-3 aniqligi.
+
+## GROUP: Modals & hedging — Modal fe'llar   [orders 200-299]  [done]
+   file: _grammar_ielts_modal.py
+   category: en_modal
+   must / have to / should / ought to, can / could / be able to, may / might / could
+   (ehtimollik), be likely to, tend to, will vs would, "it may well be that",
+   would rather / had better. Band 7 ning asosiy ko‘nikmasi — HEDGING: fikrni
+   ehtiyotkor bayon qilish (`function: hedging`).
+
+## GROUP: Clauses — Ergash gaplar   [orders 300-399]  [done]
+   file: _grammar_ielts_clause.py
+   category: en_clause
+   Relative clauses (defining / non-defining, which vs that, whose, where/when,
+   preposition + which), noun clauses (that-clause, wh-clause, "the fact that"),
+   adverbial clauses (although, while, whereas, since, as, so that, in order that),
+   reduced relative clauses — murakkab gap tuzilishining asosi.
+
+## GROUP: Conditionals & unreal past — Shart gaplar   [orders 400-499]  [done]
+   file: _grammar_ielts_condition.py
+   category: en_condition
+   Zero / first / second / third / mixed conditional, unless, provided that, as long as,
+   in case, if it were not for, I wish / if only, it's time + past — Task 2 tahlili va
+   Speaking Part 3 ning farazlari.
+
+## GROUP: Passive, causative & nominalisation — Majhul nisbat   [orders 500-599]  [done]
+   file: _grammar_ielts_passive.py
+   category: en_passive
+   Passive (barcha zamonlarda), passive + modal, "it is said that / X is thought to",
+   have/get something done, causative make/let/have, nominalisation
+   (govments decided → the decision of the government) — akademik uslubning o‘zagi.
+
+## GROUP: Articles, determiners & countability   [orders 600-699]  [done]
+   file: _grammar_ielts_article.py
+   category: en_article
+   a/an, the, zero article, umumlashtirish shakllari (cars / the car / a car),
+   sanaladigan-sanalmaydigan otlar, much/many/a lot of, few/a few, little/a little,
+   most vs most of vs the most, all/every/each, both/either/neither.
+   ⚠️ O‘zbek tilida artikl yo‘q — bu bo‘lim eng ko‘p xato qilinadigan joy.
+
+## GROUP: Prepositions & data language — Predloglar   [orders 700-799]  [done]
+   file: _grammar_ielts_prep.py
+   category: en_prep
+   Task 1 predloglari (increase BY / increase TO / from … to …, between … and …,
+   at ~% , in 2010 / on Monday / at 8), joy va vaqt predloglari, fe'l + predlog
+   (result in / result from, depend on, consist of), sifat + predlog
+   (responsible for, aware of), ot + predlog (an increase in, the impact on).
+
+## GROUP: Comparison & degree — Qiyoslash   [orders 800-899]  [done]
+   file: _grammar_ielts_compare.py
+   category: en_compare
+   -er / more, the most, as … as, not as … as, twice as many as, the same … as,
+   compared with / in comparison with, by far, significantly/slightly + comparative,
+   the more … the more, double/triple/threefold — Task 1 ning solishtirish jumlalari.
+
+## GROUP: Gerunds, infinitives & verb patterns — Fe'l qoliplari   [orders 900-999]  [done]
+   file: _grammar_ielts_verbpat.py
+   category: en_verbpat
+   verb + -ing (avoid, suggest, involve), verb + to-infinitive (aim, tend, fail),
+   ma'no o‘zgaradigan juftlar (stop doing / stop to do, remember, regret),
+   preposition + -ing (instead of building), "there is no point in -ing",
+   it takes/it is + adjective + to-infinitive, subject + -ing as subject.
+
+## GROUP: Linking & cohesion — Bog'lash vositalari   [orders 1000-1099]  [done]
+   file: _grammar_ielts_cohesion.py
+   category: en_cohesion
+   however / nevertheless / on the other hand, therefore / consequently / as a result,
+   moreover / furthermore / in addition, for instance / such as, in conclusion / overall,
+   despite / in spite of / although, referencing (this trend, such measures, the former /
+   the latter, doing so), substitution (one, do so) — Coherence & Cohesion ballari.
+
+## GROUP: Advanced structures — Murakkab tuzilmalar   [orders 1100-1199]  [done]
+   file: _grammar_ielts_advanced.py
+   category: en_advanced
+   Inversion (Not only … but also, Rarely has, Only when), cleft sentences (It is X that /
+   What matters is), participle clauses (Having considered …, Given that …),
+   subjunctive (It is essential that he BE), fronting, emphatic do, "far from being" —
+   Band 7.5+ ga chiqaradigan, lekin ehtiyotkor ishlatiladigan shakllar.

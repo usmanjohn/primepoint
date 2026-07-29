@@ -350,6 +350,20 @@ GRAMMAR_CATEGORY_CHOICES = [
     ('quotation',  '인용 — Ko‘chirma gap'),
     ('honorific',  '높임 — Hurmat shakllari'),
     ('adverb',     '접속부사 — Bog‘lovchi ravishlar'),
+    # English-grammar sections — IELTS and any other English track. Prefixed
+    # `en_` because they name English structures, not universal ones: a Korean
+    # "tense" section and an English one do not hold the same kind of thing.
+    ('en_tense',     'Zamonlar — Tenses & aspect'),
+    ('en_modal',     'Modal fe’llar — Modals'),
+    ('en_clause',    'Ergash gaplar — Clauses'),
+    ('en_condition', 'Shart gaplar — Conditionals'),
+    ('en_passive',   'Majhul nisbat va nominalizatsiya — Passive'),
+    ('en_article',   'Artikl va aniqlovchilar — Articles & determiners'),
+    ('en_prep',      'Predloglar — Prepositions'),
+    ('en_compare',   'Qiyoslash shakllari — Comparison'),
+    ('en_verbpat',   'Fe’l qoliplari — Gerunds & infinitives'),
+    ('en_cohesion',  'Bog‘lash vositalari — Linking & cohesion'),
+    ('en_advanced',  'Murakkab tuzilmalar — Advanced structures'),
 ]
 
 # What the pattern MEANS — the meaning group. This is the axis synonyms live
@@ -377,6 +391,15 @@ GRAMMAR_FUNCTION_CHOICES = [
     ('degree',      'Daraja va miqdor — 정도·수량'),
     ('case',        'Gap bo‘lagi — 문장 성분'),
     ('politeness',  'Muomala darajasi — 높임·말투'),
+    # Meaning groups the essay-marked exams need and Korean does not lean on.
+    # Hedging in particular is a band-7 skill: "may contribute to" instead of
+    # "causes" is what separates a careful claim from an overstated one.
+    ('result',      'Natija — 결과'),
+    ('hedging',     'Ehtiyotkor fikr — Hedging'),
+    ('emphasis',    'Ta’kid — Emphasis'),
+    ('example',     'Misol keltirish — Exemplification'),
+    ('summary',     'Umumlashtirish — Summarising'),
+    ('reference',   'Ishora va o‘rin bosish — Reference'),
 ]
 
 # How formal the pattern is. Drives a small chip in the table — students lose
@@ -459,9 +482,29 @@ class GrammarPoint(models.Model):
         n = max(0, min(3, self.freq))
         return '★' * n + '☆' * (3 - n)
 
+    # The four labels below are the track's wording, not the field's: the same
+    # `category` value renders as a Korean part of speech in TOPIK and as an
+    # English structure in IELTS. See banklabels.py. Imported lazily because
+    # banklabels imports the choice lists from this module.
     @property
     def level_label(self):
-        return f'TOPIK {self.level}'
+        from . import banklabels
+        return banklabels.level_label(self.track, self.level)
+
+    @property
+    def category_label(self):
+        from . import banklabels
+        return banklabels.grammar_category_label(self.track, self.category)
+
+    @property
+    def function_label(self):
+        from . import banklabels
+        return banklabels.grammar_function_label(self.track, self.function)
+
+    @property
+    def register_label(self):
+        from . import banklabels
+        return banklabels.grammar_register_label(self.track, self.register)
 
     @property
     def first_example(self):
@@ -469,7 +512,12 @@ class GrammarPoint(models.Model):
 
 
 class GrammarExample(models.Model):
-    """A Korean example sentence with its Uzbek translation."""
+    """An example sentence in the exam's language, with its Uzbek translation.
+
+    The column is called `korean` for the same reason the app is called
+    examprep and not topikprep: it was born Korean-only. It holds English for
+    the IELTS track — renaming it would churn every data file for nothing.
+    """
     point   = models.ForeignKey(GrammarPoint, on_delete=models.CASCADE,
                                 related_name='examples')
     korean  = models.CharField(max_length=400)
@@ -545,22 +593,35 @@ VOCAB_TOPIC_CHOICES = [
     ('time',        'Vaqt — 시간·날짜'),
     ('place',       'Joy va yo‘nalish — 장소·위치'),
     ('abstract',    'Mavhum tushunchalar — 추상 개념'),
+    # Themes the essay exams draw on. `data` is IELTS-specific and earns its
+    # place: Task 1 is written almost entirely out of trend vocabulary.
+    ('academic',    'Akademik til — Academic language'),
+    ('data',        'Grafik va raqamlar — Data & trends'),
+    ('health',      'Sog‘liq — Health'),
+    ('crime',       'Jinoyat va qonun — Crime & law'),
+    ('government',  'Hukumat va siyosat — Government & politics'),
+    ('tourism',     'Sayohat va turizm — Travel & tourism'),
 ]
 
 
 class VocabRoot(models.Model):
-    """A shared morpheme and its meaning — 출(出) 'chiqmoq', 학(學) 'ilm'.
+    """A shared morpheme and its meaning — 출(出) 'chiqmoq', 학(學) 'ilm',
+    or, on an English track, spect 'qaramoq' and bene 'yaxshi'.
 
     This is the reason the vocab bank exists in this shape. A student who
     knows 출 = chiqish can read 출구, 출근, 출발, 제출 and 수출 without ever
-    having met four of them.
+    having met four of them — and the same trick works on English: spect gives
+    inspect, spectator, perspective, prospect and spectacular at once.
     """
     track      = models.ForeignKey(ExamTrack, on_delete=models.CASCADE,
                                    related_name='vocab_roots')
-    syllable   = models.CharField(max_length=10,
-                                  help_text='The shared syllable, e.g. 출.')
-    hanja      = models.CharField(max_length=10, blank=True,
-                                  help_text='Its Hanja, e.g. 出. Blank for native-Korean roots.')
+    syllable   = models.CharField(max_length=20,
+                                  help_text='The shared morpheme, e.g. 출 or spect.')
+    # Where the root comes from: the Hanja on a Korean track, the Latin/Greek
+    # source on an English one ("specere (lat.)") — hence the roomier column.
+    hanja      = models.CharField(max_length=60, blank=True,
+                                  help_text='Origin: Hanja (出) or Latin/Greek source '
+                                            '("specere, lat."). Blank for native roots.')
     slug       = models.SlugField(max_length=120, blank=True, allow_unicode=True)
     meaning    = models.CharField(max_length=200,
                                   help_text='Uzbek gloss, e.g. "chiqmoq — chiqish, tashqariga".')
@@ -593,6 +654,19 @@ class VocabRoot(models.Model):
     def label(self):
         return f'{self.syllable}({self.hanja})' if self.hanja else self.syllable
 
+    @property
+    def glyph(self):
+        """What goes in the big family badge.
+
+        A single Hanja character fills it beautifully; "specere, lat." does
+        not. So Korean tracks badge the origin and English tracks badge the
+        root itself — see banklabels.TERMS['…']['root_glyph_source'].
+        """
+        from . import banklabels
+        if banklabels.terms(self.track)['root_glyph_source'] == 'hanja':
+            return self.hanja or self.syllable
+        return self.syllable
+
 
 class VocabEntry(models.Model):
     """One word — a row in the vocabulary table."""
@@ -600,14 +674,16 @@ class VocabEntry(models.Model):
                                      related_name='vocab_entries')
     word         = models.CharField(max_length=100)
     slug         = models.SlugField(max_length=140, blank=True, allow_unicode=True)
-    hanja        = models.CharField(max_length=40, blank=True,
-                                    help_text='Hanja spelling, e.g. 出口. Blank for native words.')
+    hanja        = models.CharField(max_length=60, blank=True,
+                                    help_text='Origin: Hanja (出口) or the English word’s '
+                                              'build ("in + spect"). Blank for native words.')
     roots        = models.ManyToManyField(VocabRoot, blank=True, related_name='entries',
                                           help_text='Root morphemes this word is built from.')
     pos          = models.CharField(max_length=10, choices=VOCAB_POS_CHOICES, default='noun')
     topic        = models.CharField(max_length=20, choices=VOCAB_TOPIC_CHOICES, default='daily')
     level        = models.PositiveSmallIntegerField(default=3,
-                                                    help_text='TOPIK level 1–6.')
+                                                    help_text='1–6 — TOPIK level or IELTS band, '
+                                                              'per the track (see banklabels).')
     meaning      = models.CharField(max_length=200,
                                     help_text='Short Uzbek gloss shown in the table.')
     note         = models.TextField(blank=True,
@@ -645,13 +721,32 @@ class VocabEntry(models.Model):
         n = max(0, min(3, self.freq))
         return '★' * n + '☆' * (3 - n)
 
+    # Track's wording, as on GrammarPoint — see banklabels.py.
+    @property
+    def level_label(self):
+        from . import banklabels
+        return banklabels.level_label(self.track, self.level)
+
+    @property
+    def pos_label(self):
+        from . import banklabels
+        return banklabels.vocab_pos_label(self.track, self.pos)
+
+    @property
+    def topic_label(self):
+        from . import banklabels
+        return banklabels.vocab_topic_label(self.track, self.topic)
+
     @property
     def first_example(self):
         return self.examples.first()
 
 
 class VocabExample(models.Model):
-    """A Korean example sentence with its Uzbek translation."""
+    """An example sentence in the exam's language, with its Uzbek translation.
+
+    `korean` holds English on the IELTS track — see GrammarExample.
+    """
     entry  = models.ForeignKey(VocabEntry, on_delete=models.CASCADE, related_name='examples')
     korean = models.CharField(max_length=400)
     uz     = models.CharField(max_length=400, blank=True)
@@ -689,3 +784,13 @@ class VocabRelation(models.Model):
 
     def __str__(self):
         return f'{self.entry.word} [{self.kind}] {self.word}'
+
+    @property
+    def kind_label(self):
+        """'유의어 — Sinonim' or 'Sinonim — Synonym', per the track.
+
+        Reaches through `entry` for the track, so the views that render
+        relations prefetch them with `select_related('entry__track')`.
+        """
+        from . import banklabels
+        return banklabels.vocab_relation_label(self.entry.track, self.kind)

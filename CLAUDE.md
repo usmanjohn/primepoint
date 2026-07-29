@@ -101,6 +101,18 @@ TOPIK conjunctive adverbs to the grammar table"):
    (see Deployment section) — automatically, every time.
 Another exam: add a `toc_<exam>_grammar.txt` with its own TRACK; same workflow.
 
+**IELTS has its own grammar bank** at `/examprep/ielts/grammar/` (116 patterns, 11 groups —
+tenses, modals/hedging, clauses, conditionals, passive, articles, prepositions, comparison,
+verb patterns, cohesion, advanced). Same models and importer, different wording:
+- write with `STYLE_GUIDE_GRAMMAR_IELTS.md` + `toc_ielts_grammar.txt` (NOT the TOPIK ones);
+- patterns and examples in **English**, every explanation in **Uzbek**;
+- `category` uses the `en_*` values (`en_tense`, `en_clause`…), never TOPIK's;
+- `level` 1-6 renders as **Band 5 … Band 7.5+**, not TOPIK levels.
+The per-track labels live in `examprep/banklabels.py` — that module decides which choice
+values a track shows, what they are called, and the page wording (Band vs TOPIK, root
+origin vs Hanja, "English" vs 한국어). **Adding a track means adding a block there, not
+forking the models or templates.**
+
 ## Creating vocab-bank entries (bulk) — TOPIK lug'at
 `examprep`'s `VocabEntry` is the vocabulary table at `/examprep/<track>/vocab/`, sibling of
 the grammar bank (same access rules: open to read, **staff-only + watermarked** to print or
@@ -125,6 +137,19 @@ When the user asks (e.g. "add the TOPIK adverbs to the vocab table"):
    dropping the word from its family. Never copy a root definition into a second file.
 6. Give the `railway run python manage.py import_vocab ...` commands **in that same order**
    for production (see Deployment section) — automatically, every time.
+
+**IELTS has its own vocab bank** at `/examprep/ielts/vocab/` (167 words, 31 root families,
+7 groups). The root-family idea carries over from Hanja to **Latin/Greek roots**: `spect`
+once gives inspect · spectator · perspective · prospect. Same models and importer:
+- write with `STYLE_GUIDE_VOCAB_IELTS.md` + `toc_ielts_vocab.txt` (NOT the TOPIK ones),
+  and follow that toc's import order — roots files 1-3 before the thematic files 4-7;
+- words and examples in **English**, meanings and notes in **Uzbek**;
+- `syllable` holds the root (`spect`, `re-`, `-ion`), `hanja` holds the **origin**
+  (`specere (lat.) — qaramoq`) on roots and the **build** (`in- + spect`) on words;
+- prefixes and suffixes count as roots on this track;
+- `topic` adds `academic` and `data` (Task 1 trend language); `level` renders as a Band.
+Each data file ends with a loop stamping its `order` decade onto `WORDS` — keep it, and
+give a new file an unused decade.
 
 ## Creating Corner stories (bulk)
 `corner` is the reading library at `/corner/` (`Subject` → `Collection` → `Story`, plus

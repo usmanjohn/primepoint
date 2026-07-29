@@ -24,25 +24,25 @@
             {% if entry.hanja %}<p class="vc-hero-hanja">{{ entry.hanja }}</p>{% endif %}
             <p class="gr-hero-meaning">{{ entry.meaning }}</p>
         </div>
-        <span class="gr-stars fs-5" title="TOPIK'da uchrash chastotasi">{{ entry.stars }}</span>
+        <span class="gr-stars fs-5" title="{{ terms.freq_title }}">{{ entry.stars }}</span>
     </div>
     <div class="d-flex flex-wrap gap-2 mt-3">
-        <span class="gr-level gr-level-{{ entry.level }}">TOPIK {{ entry.level }}</span>
-        <a class="gr-chip" href="{% url 'examprep_vocab' track.slug %}?pos={{ entry.pos }}">{{ entry.get_pos_display }}</a>
-        <a class="gr-chip" href="{% url 'examprep_vocab' track.slug %}?topic={{ entry.topic }}">{{ entry.get_topic_display }}</a>
+        <span class="gr-level gr-level-{{ entry.level }}">{{ entry.level_label }}</span>
+        <a class="gr-chip" href="{% url 'examprep_vocab' track.slug %}?pos={{ entry.pos }}">{{ entry.pos_label }}</a>
+        <a class="gr-chip" href="{% url 'examprep_vocab' track.slug %}?topic={{ entry.topic }}">{{ entry.topic_label }}</a>
     </div>
 </div>
 
 {% if entry.collocation %}
 <div class="gr-panel">
-    <h2>Ko‘p uchraydigan birikmalar — 연어</h2>
+    <h2>{{ terms.collocations_title }}</h2>
     <p class="vc-colloc-big mb-0">{{ entry.collocation }}</p>
 </div>
 {% endif %}
 
 {% if entry.examples.all %}
 <div class="gr-panel">
-    <h2>Namunalar — 예문</h2>
+    <h2>{{ terms.examples_title }}</h2>
     {% for ex in entry.examples.all %}
     <div class="gr-sentence">
         <span class="gr-ko">{{ ex.korean }}</span>
@@ -61,11 +61,11 @@
 
 {% if family %}
 <div class="gr-panel vc-family-panel">
-    <h2>So‘z oilasi — 같은 어근</h2>
+    <h2>{{ terms.root_family }}</h2>
     {% for f in family %}
     <div class="vc-family-inline">
         <div class="vc-family-inline-head">
-            <span class="vc-family-glyph sm">{{ f.root.hanja|default:f.root.syllable }}</span>
+            <span class="vc-family-glyph sm">{{ f.root.glyph }}</span>
             <div>
                 <strong>{{ f.root.label }}</strong> — {{ f.root.meaning }}
             </div>
@@ -92,7 +92,7 @@
         <tbody>
             {% for r in entry.relations.all %}
             <tr>
-                <td><span class="vc-relkind vc-rel-{{ r.kind }}">{{ r.get_kind_display }}</span></td>
+                <td><span class="vc-relkind vc-rel-{{ r.kind }}">{{ r.kind_label }}</span></td>
                 <td class="vc-rel-word">
                     {% if r.related %}
                     <a href="{% url 'examprep_vocab_word' track.slug r.related.slug %}">{{ r.word }}</a>
@@ -107,7 +107,7 @@
             {% endcomment %}
             {% for r in incoming %}
             <tr>
-                <td><span class="vc-relkind vc-rel-{{ r.kind }}">{{ r.get_kind_display }}</span></td>
+                <td><span class="vc-relkind vc-rel-{{ r.kind }}">{{ r.kind_label }}</span></td>
                 <td class="vc-rel-word">
                     <a href="{% url 'examprep_vocab_word' track.slug r.entry.slug %}">{{ r.entry.word }}</a>
                 </td>
@@ -121,7 +121,7 @@
 
 {% if same_topic %}
 <div class="gr-panel">
-    <h2>Shu mavzudagi boshqa so‘zlar — {{ entry.get_topic_display }}</h2>
+    <h2>Shu mavzudagi boshqa so‘zlar — {{ entry.topic_label }}</h2>
     <div class="gr-chips">
         {% for w in same_topic %}
         <a class="gr-chip" href="{% url 'examprep_vocab_word' track.slug w.slug %}" title="{{ w.meaning }}">

@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import redirect_to_login
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
-from django.db.models import F, Count, Q, Max
+from django.db.models import F, Count, Q, Max, Prefetch
 from django.http import Http404, HttpResponse
 from django.utils.html import strip_tags
 from django.utils.translation import gettext as _
@@ -23,6 +23,7 @@ from .models import (ExamTrack, Topic, Lesson, LessonBlock, LessonProgress,
                      GRAMMAR_CATEGORY_CHOICES, GRAMMAR_FUNCTION_CHOICES,
                      VocabRoot, VocabEntry, VocabRelation,
                      VOCAB_TOPIC_CHOICES, VOCAB_POS_CHOICES)
+from . import banklabels
 from prime.subjects import get_study_subjects, value_visible
 
 
@@ -413,8 +414,13 @@ def _grammar_filters(request, track):
     so all three always agree on what "the current selection" means.
     """
     pub = _published_filter(request.user)
+    # select_related('track'): every row asks its track how to label itself
+    # (level_label, category_label), so without this the table is N+1 queries.
     qs = (GrammarPoint.objects.filter(track=track, **pub)
+          .select_related('track')
           .prefetch_related('examples', 'synonyms__related'))
+    categories = banklabels.grammar_categories(track)
+    functions = banklabels.grammar_functions(track)
 
     q = (request.GET.get('q') or '').strip()
     level = (request.GET.get('level') or '').strip()
@@ -431,9 +437,9 @@ def _grammar_filters(request, track):
         ).distinct()
     if level.isdigit():
         qs = qs.filter(level=int(level))
-    if category in dict(GRAMMAR_CATEGORY_CHOICES):
+    if category in dict(categories):
         qs = qs.filter(category=category)
-    if function in dict(GRAMMAR_FUNCTION_CHOICES):
+    if function in dict(functions):
         qs = qs.filter(function=function)
 
     points = list(qs)
@@ -455,22 +461,25 @@ def _grammar_filters(request, track):
         'total':        len(all_points),
         'q':            q,
         'level':        level,
+        'level_label':  (banklabels.level_label(track, int(level))
+                         if level.isdigit() else ''),
         'category':     category,
         'function':     function,
         'group_by':     group_by,
         'has_filter':   bool(q or level or category or function),
+        'terms':        banklabels.terms(track),
         'categories':   [{'value': c, 'label': l, 'count': cat_counts.get(c, 0),
                           'on': category == c,
                           'url': _qs_with(request, cat=None if category == c else c)}
-                         for c, l in GRAMMAR_CATEGORY_CHOICES if cat_counts.get(c)],
+                         for c, l in categories if cat_counts.get(c)],
         'functions':    [{'value': f, 'label': l, 'count': fn_counts.get(f, 0),
                           'on': function == f,
                           'url': _qs_with(request, fn=None if function == f else f)}
-                         for f, l in GRAMMAR_FUNCTION_CHOICES if fn_counts.get(f)],
-        'levels':       [{'value': n, 'count': lvl_counts.get(n, 0),
+                         for f, l in functions if fn_counts.get(f)],
+        'levels':       [{'value': n, 'label': l, 'count': lvl_counts.get(n, 0),
                           'on': level == str(n),
                           'url': _qs_with(request, level=None if level == str(n) else n)}
-                         for n in range(1, 7) if lvl_counts.get(n)],
+                         for n, l in banklabels.level_choices(track) if lvl_counts.get(n)],
         'url_clear':     _qs_with(request, q=None, level=None, cat=None, fn=None),
         'url_by_cat':    _qs_with(request, by=None),
         'url_by_fn':     _qs_with(request, by='function'),
@@ -479,10 +488,10 @@ def _grammar_filters(request, track):
     return points, context
 
 
-def _grammar_groups(points, group_by):
-    """Split the rows into the sections the page shows, in choices order."""
-    choices = (GRAMMAR_FUNCTION_CHOICES if group_by == 'function'
-               else GRAMMAR_CATEGORY_CHOICES)
+def _grammar_groups(points, group_by, track):
+    """Split the rows into the sections the page shows, in the track's order."""
+    choices = (banklabels.grammar_functions(track) if group_by == 'function'
+               else banklabels.grammar_categories(track))
     buckets = {}
     for p in points:
         buckets.setdefault(getattr(p, group_by), []).append(p)
@@ -497,7 +506,7 @@ def grammar_list(request, track_slug):
     points, context = _grammar_filters(request, track)
     if not context['total']:
         raise Http404('No grammar entries in this track yet.')
-    context['groups'] = _grammar_groups(points, context['group_by'])
+    context['groups'] = _grammar_groups(points, context['group_by'], track)
     return render(request, 'examprep/grammar_list.html', context)
 
 
@@ -533,6 +542,7 @@ def grammar_detail(request, track_slug, slug):
         'point':    point,
         'siblings': siblings,
         'incoming': incoming,
+        'terms':    banklabels.terms(track),
     })
 
 
@@ -562,7 +572,7 @@ def grammar_print(request, track_slug):
     pub = _published_filter(request.user)
     track = get_object_or_404(ExamTrack, slug=track_slug, **pub)
     points, context = _grammar_filters(request, track)
-    context['groups'] = _grammar_groups(points, context['group_by'])
+    context['groups'] = _grammar_groups(points, context['group_by'], track)
     context['compact'] = request.GET.get('compact') == '1'
     context['url_compact'] = _qs_with(request, compact='1')
     context['url_full'] = _qs_with(request, compact=None)
@@ -580,9 +590,10 @@ def grammar_download(request, track_slug):
     track = get_object_or_404(ExamTrack, slug=track_slug, **pub)
     points, _ctx = _grammar_filters(request, track)
 
-    header = ['Pattern', 'TOPIK', 'Turi', 'Ma\'nosi (guruh)', 'Ma\'nosi',
-              'Qo\'shilishi', 'Shakl qoidasi', 'Namuna (한국어)', 'Tarjima',
-              'Sinonimlar', 'Izoh', 'Ko\'p uchraydi']
+    terms = banklabels.terms(track)
+    header = ['Pattern', 'Daraja', 'Turi', 'Ma\'nosi (guruh)', 'Ma\'nosi',
+              'Qo\'shilishi', 'Shakl qoidasi', f'Namuna ({terms["example_lang"]})',
+              'Tarjima', 'Sinonimlar', 'Izoh', 'Ko\'p uchraydi']
 
     def row_of(p):
         examples = list(p.examples.all())
@@ -592,9 +603,9 @@ def grammar_download(request, track_slug):
         )
         return [
             p.pattern,
-            p.level,
-            p.get_category_display(),
-            p.get_function_display(),
+            p.level_label,
+            p.category_label,
+            p.function_label,
             p.meaning,
             p.attach,
             _strip_tags_plain(p.form_rule),
@@ -655,8 +666,15 @@ def _vocab_filters(request, track):
     _grammar_filters, so the list, roots, print and download views all agree
     on what "the current selection" is."""
     pub = _published_filter(request.user)
+    # select_related('track') for the same reason as the grammar bank: each row
+    # asks its track what to call its level, part of speech and theme.
     qs = (VocabEntry.objects.filter(track=track, **pub)
-          .prefetch_related('examples', 'relations__related', 'roots'))
+          .select_related('track')
+          .prefetch_related('examples', 'roots',
+                            Prefetch('relations', queryset=VocabRelation.objects
+                            .select_related('entry__track', 'related'))))
+    topics = banklabels.vocab_topics(track)
+    poses = banklabels.vocab_poses(track)
 
     q = (request.GET.get('q') or '').strip()
     level = (request.GET.get('level') or '').strip()
@@ -673,9 +691,9 @@ def _vocab_filters(request, track):
         ).distinct()
     if level.isdigit():
         qs = qs.filter(level=int(level))
-    if topic in dict(VOCAB_TOPIC_CHOICES):
+    if topic in dict(topics):
         qs = qs.filter(topic=topic)
-    if pos in dict(VOCAB_POS_CHOICES):
+    if pos in dict(poses):
         qs = qs.filter(pos=pos)
     if root:
         qs = qs.filter(roots__slug=root).distinct()
@@ -702,30 +720,33 @@ def _vocab_filters(request, track):
         'total':       len(all_entries),
         'q':           q,
         'level':       level,
+        'level_label': (banklabels.level_label(track, int(level))
+                        if level.isdigit() else ''),
         'topic':       topic,
         'pos':         pos,
         'root':        root,
         'active_root': active_root,
         'has_filter':  bool(q or level or topic or pos or root),
+        'terms':       banklabels.terms(track),
         'topics':      [{'value': t, 'label': l, 'count': topic_counts.get(t, 0),
                          'on': topic == t,
                          'url': _qs_with(request, topic=None if topic == t else t)}
-                        for t, l in VOCAB_TOPIC_CHOICES if topic_counts.get(t)],
+                        for t, l in topics if topic_counts.get(t)],
         'poses':       [{'value': p, 'label': l, 'count': pos_counts.get(p, 0),
                          'on': pos == p,
                          'url': _qs_with(request, pos=None if pos == p else p)}
-                        for p, l in VOCAB_POS_CHOICES if pos_counts.get(p)],
-        'levels':      [{'value': n, 'count': lvl_counts.get(n, 0),
+                        for p, l in poses if pos_counts.get(p)],
+        'levels':      [{'value': n, 'label': l, 'count': lvl_counts.get(n, 0),
                          'on': level == str(n),
                          'url': _qs_with(request, level=None if level == str(n) else n)}
-                        for n in range(1, 7) if lvl_counts.get(n)],
+                        for n, l in banklabels.level_choices(track) if lvl_counts.get(n)],
         'url_clear':   _qs_with(request, q=None, level=None, topic=None, pos=None, root=None),
         'querystring': request.GET.urlencode(),
     }
     return entries, context
 
 
-def _vocab_groups(entries, active_root=None):
+def _vocab_groups(entries, active_root=None, track=None):
     """Split rows into topic sections, in VOCAB_TOPIC_CHOICES order.
 
     When a root filter is active the topics are the wrong axis: a family of
@@ -739,8 +760,9 @@ def _vocab_groups(entries, active_root=None):
     buckets = {}
     for e in entries:
         buckets.setdefault(e.topic, []).append(e)
+    choices = banklabels.vocab_topics(track) if track else VOCAB_TOPIC_CHOICES
     return [{'value': value, 'label': label, 'entries': buckets[value]}
-            for value, label in VOCAB_TOPIC_CHOICES if value in buckets]
+            for value, label in choices if value in buckets]
 
 
 def vocab_list(request, track_slug):
@@ -750,7 +772,7 @@ def vocab_list(request, track_slug):
     entries, context = _vocab_filters(request, track)
     if not context['total']:
         raise Http404('No vocabulary in this track yet.')
-    context['groups'] = _vocab_groups(entries, context['active_root'])
+    context['groups'] = _vocab_groups(entries, context['active_root'], track)
     context['root_count'] = track.vocab_roots.filter(**pub).count()
     return render(request, 'examprep/vocab_list.html', context)
 
@@ -783,6 +805,7 @@ def vocab_roots(request, track_slug):
     return render(request, 'examprep/vocab_roots.html', {
         'track':       track,
         'families':    families,
+        'terms':       banklabels.terms(track),
         'q':           q,
         'total_roots': len(families),
         'total_words': sum(len(f['words']) for f in families),
@@ -796,7 +819,9 @@ def vocab_detail(request, track_slug, slug):
     track = get_object_or_404(ExamTrack, slug=track_slug, **pub)
     entry = get_object_or_404(
         VocabEntry.objects.select_related('track')
-        .prefetch_related('examples', 'relations__related', 'roots__entries'),
+        .prefetch_related('examples', 'roots__entries',
+                          Prefetch('relations', queryset=VocabRelation.objects
+                            .select_related('entry__track', 'related'))),
         track=track, slug=slug, **pub,
     )
 
@@ -822,6 +847,7 @@ def vocab_detail(request, track_slug, slug):
         'entry':    entry,
         'family':   family,
         'incoming': incoming,
+        'terms':    banklabels.terms(track),
         'same_topic': list(VocabEntry.objects
                            .filter(track=track, topic=entry.topic, **pub)
                            .exclude(pk=entry.pk)[:12]),
@@ -850,7 +876,7 @@ def vocab_print(request, track_slug):
                                  'words': sorted(words, key=lambda e: (e.level, e.order))})
         context['families'] = families
     else:
-        context['groups'] = _vocab_groups(entries, context['active_root'])
+        context['groups'] = _vocab_groups(entries, context['active_root'], track)
 
     context['by_root'] = by_root
     context['compact'] = request.GET.get('compact') == '1'
@@ -871,8 +897,10 @@ def vocab_download(request, track_slug):
     track = get_object_or_404(ExamTrack, slug=track_slug, **pub)
     entries, _ctx = _vocab_filters(request, track)
 
-    header = ['So\'z', 'Hanja', 'TOPIK', 'So\'z turkumi', 'Mavzu', 'Ma\'nosi',
-              'O\'zaklar', 'Birikmalar', 'Namuna (한국어)', 'Tarjima',
+    terms = banklabels.terms(track)
+    header = ['So\'z', terms['origin_label'], 'Daraja', 'So\'z turkumi', 'Mavzu',
+              'Ma\'nosi', terms['root_word'] + 'lar', 'Birikmalar',
+              f'Namuna ({terms["example_lang"]})', 'Tarjima',
               'Sinonim', 'Antonim', 'Izoh', 'Ko\'p uchraydi']
 
     def row_of(e):
@@ -882,7 +910,7 @@ def vocab_download(request, track_slug):
             for r in e.relations.all() if r.kind == kind
         )
         return [
-            e.word, e.hanja, e.level, e.get_pos_display(), e.get_topic_display(),
+            e.word, e.hanja, e.level_label, e.pos_label, e.topic_label,
             e.meaning,
             ' · '.join(r.label for r in e.roots.all()),
             e.collocation,

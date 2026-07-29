@@ -23,17 +23,17 @@
             <h1 class="gr-hero-pattern">{{ point.pattern }}</h1>
             <p class="gr-hero-meaning">{{ point.meaning }}</p>
         </div>
-        <span class="gr-stars fs-5" title="TOPIK'da uchrash chastotasi">{{ point.stars }}</span>
+        <span class="gr-stars fs-5" title="{{ terms.freq_title }}">{{ point.stars }}</span>
     </div>
     <div class="d-flex flex-wrap gap-2 mt-3">
-        <span class="gr-level gr-level-{{ point.level }}">TOPIK {{ point.level }}</span>
+        <span class="gr-level gr-level-{{ point.level }}">{{ point.level_label }}</span>
         <a class="gr-chip" href="{% url 'examprep_grammar' track.slug %}?cat={{ point.category }}">
-            {{ point.get_category_display }}
+            {{ point.category_label }}
         </a>
         <a class="gr-chip" href="{% url 'examprep_grammar' track.slug %}?fn={{ point.function }}&amp;by=function">
-            {{ point.get_function_display }}
+            {{ point.function_label }}
         </a>
-        <span class="gr-chip">{{ point.get_register_display }}</span>
+        <span class="gr-chip">{{ point.register_label }}</span>
     </div>
 </div>
 
@@ -49,7 +49,7 @@
 
 {% if point.examples.all %}
 <div class="gr-panel">
-    <h2>Namunalar — 예문</h2>
+    <h2>{{ terms.examples_title }}</h2>
     {% for ex in point.examples.all %}
     <div class="gr-sentence">
         <span class="gr-ko">{{ ex.korean }}</span>
@@ -105,7 +105,7 @@
 
 {% if siblings %}
 <div class="gr-panel">
-    <h2>Shu ma’nodagi boshqa grammatikalar — {{ point.get_function_display }}</h2>
+    <h2>Shu ma’nodagi boshqa grammatikalar — {{ point.function_label }}</h2>
     <div class="gr-chips">
         {% for s in siblings %}
         <a class="gr-chip" href="{% url 'examprep_grammar_point' track.slug s.slug %}" title="{{ s.meaning }}">

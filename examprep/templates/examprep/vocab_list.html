@@ -4,7 +4,7 @@
 {% block mob_nav_examprep %}active{% endblock %}
 {% block page_name %}{% trans "Vocabulary" %}{% endblock %}
 {% block title %}{% trans "Vocabulary bank" %} — {{ track.name }}{% endblock %}
-{% block meta_description %}{% blocktrans with name=track.name %}{{ name }} vocabulary: every word with its Hanja, root family, meaning, example and synonyms — filter by level and theme.{% endblocktrans %}{% endblock %}
+{% block meta_description %}{% blocktrans with name=track.name %}{{ name }} vocabulary: every word with its root family, meaning, example and synonyms — filter by level and theme.{% endblocktrans %}{% endblock %}
 
 {% block content %}
 
@@ -22,7 +22,7 @@
             <i class="bi bi-translate me-2" style="color:var(--vc-accent);"></i>{% trans "Vocabulary bank" %} · Lug‘at bazasi
         </h1>
         <p class="page-subtitle mb-0">
-            {% blocktrans with n=total name=track.name %}{{ n }} words for {{ name }} — meaning, Hanja root, collocations, an example and the synonym/antonym pair.{% endblocktrans %}
+            {% blocktrans with n=total name=track.name %}{{ n }} words for {{ name }} — meaning, root family, collocations, an example and the synonym/antonym pair.{% endblocktrans %}
         </p>
     </div>
     {# Take-away formats are staff-only, so non-staff never see the buttons. #}
@@ -51,13 +51,10 @@
 {# The root families are the headline idea, so they get a banner, not a chip. #}
 {% if root_count %}
 <a href="{% url 'examprep_vocab_roots' track.slug %}" class="vc-rootbanner">
-    <span class="vc-rootbanner-glyph">出</span>
+    <span class="vc-rootbanner-glyph">{{ terms.root_banner_glyph }}</span>
     <span class="flex-grow-1">
-        <strong>So‘z oilalari — {{ root_count }} ta o‘zak</strong>
-        <span class="d-block small">
-            <b>출</b>(出) = «chiqmoq» ni bilsangiz — <b>출</b>구, <b>출</b>근, <b>출</b>발, <b>출</b>석,
-            제<b>출</b>, 수<b>출</b> ni ham tushunasiz. Bitta o‘zak — o‘nlab so‘z.
-        </span>
+        <strong>So‘z oilalari — {{ root_count }} ta {{ terms.root_word|lower }}</strong>
+        <span class="d-block small">{{ terms.root_banner_text|safe }}</span>
     </span>
     <i class="bi bi-arrow-right flex-shrink-0"></i>
 </a>
@@ -75,7 +72,7 @@
             <div class="input-group input-group-sm">
                 <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
                 <input type="search" class="form-control" id="vc-q" name="q" value="{{ q }}"
-                       placeholder="Qidirish: 출근, chiqish, 出, ish…">
+                       placeholder="{{ terms.vocab_search_hint }}">
                 <button class="btn btn-primary" type="submit">{% trans "Search" %}</button>
             </div>
         </div>
@@ -91,11 +88,11 @@
     {% endif %}
 
     <div class="mb-2">
-        <div class="gr-filter-label">TOPIK darajasi</div>
+        <div class="gr-filter-label">{{ terms.level_filter }}</div>
         <div class="gr-chips">
             {% for l in levels %}
             <a href="{{ l.url }}" class="gr-chip {% if l.on %}is-on{% endif %}">
-                TOPIK {{ l.value }} <span class="gr-chip-n">{{ l.count }}</span>
+                {{ l.label }} <span class="gr-chip-n">{{ l.count }}</span>
             </a>
             {% endfor %}
         </div>
@@ -161,14 +158,14 @@
                     <td class="gr-cell-head">
                         <a class="gr-pattern vc-word" href="{% url 'examprep_vocab_word' track.slug e.slug %}">{{ e.word }}</a>
                         {% if e.hanja %}<span class="vc-hanja">{{ e.hanja }}</span>{% endif %}
-                        <span class="gr-stars" title="TOPIK'da uchrash chastotasi">{{ e.stars }}</span>
+                        <span class="gr-stars" title="{{ terms.freq_title }}">{{ e.stars }}</span>
                     </td>
                     <td data-label="Daraja">
                         <span class="gr-level gr-level-{{ e.level }}">{{ e.level }}</span>
                     </td>
                     <td data-label="Ma’nosi">
                         <span class="gr-meaning">{{ e.meaning }}</span>
-                        <span class="vc-pos">{{ e.get_pos_display }}</span>
+                        <span class="vc-pos">{{ e.pos_label }}</span>
                     </td>
                     <td data-label="O‘zak · birikma">
                         {% for r in e.roots.all %}
@@ -245,7 +242,7 @@
                                         <ul>
                                             {% for r in e.relations.all %}
                                             <li>
-                                                <span class="vc-relkind vc-rel-{{ r.kind }}">{{ r.get_kind_display }}</span>
+                                                <span class="vc-relkind vc-rel-{{ r.kind }}">{{ r.kind_label }}</span>
                                                 {% if r.related %}
                                                 <a href="{% url 'examprep_vocab_word' track.slug r.related.slug %}"><strong>{{ r.word }}</strong></a>
                                                 {% else %}<strong>{{ r.word }}</strong>{% endif %}

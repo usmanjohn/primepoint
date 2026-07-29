@@ -156,7 +156,7 @@ page is only ever opened to be printed or saved as PDF. -->
             <p class="gr-sheet-sub">
                 {{ points|length }} ta grammatika
                 {% if group_by == 'function' %}· ma’no guruhlari bo‘yicha{% else %}· grammatik turi bo‘yicha{% endif %}
-                {% if level %}· TOPIK {{ level }}{% endif %}
+                {% if level %}· {{ level_label }}{% endif %}
                 {% if q %}· qidiruv: “{{ q }}”{% endif %}
                 · powerty.uz
             </p>
@@ -164,7 +164,7 @@ page is only ever opened to be printed or saved as PDF. -->
     </div>
 
     <p class="gr-legend">
-        <strong>Daraja</strong> = TOPIK darajasi (1–6) · <strong>★</strong> = imtihonda uchrash chastotasi
+        <strong>Daraja</strong> = {{ terms.level_hint }} · <strong>★</strong> = imtihonda uchrash chastotasi
         {% if not compact %}· <strong>≈</strong> = o‘xshash shakllar va ulardan farqi{% endif %}
     </p>
 

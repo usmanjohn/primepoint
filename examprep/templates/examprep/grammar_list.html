@@ -72,7 +72,7 @@
             <div class="input-group input-group-sm">
                 <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
                 <input type="search" class="form-control" id="gr-q" name="q" value="{{ q }}"
-                       placeholder="Qidirish: -(으)니까, sabab, 때문에, 하숙집…">
+                       placeholder="{{ terms.grammar_search_hint }}">
                 <button class="btn btn-primary" type="submit">{% trans "Search" %}</button>
             </div>
         </div>
@@ -91,11 +91,11 @@
     </div>
 
     <div class="mb-2">
-        <div class="gr-filter-label">TOPIK darajasi</div>
+        <div class="gr-filter-label">{{ terms.level_filter }}</div>
         <div class="gr-chips">
             {% for l in levels %}
             <a href="{{ l.url }}" class="gr-chip {% if l.on %}is-on{% endif %}">
-                TOPIK {{ l.value }} <span class="gr-chip-n">{{ l.count }}</span>
+                {{ l.label }} <span class="gr-chip-n">{{ l.count }}</span>
             </a>
             {% endfor %}
         </div>
@@ -160,7 +160,7 @@
                 <tr id="g-{{ p.slug }}">
                     <td class="gr-cell-head">
                         <a class="gr-pattern" href="{% url 'examprep_grammar_point' track.slug p.slug %}">{{ p.pattern }}</a>
-                        <span class="gr-stars" title="TOPIK'da uchrash chastotasi">{{ p.stars }}</span>
+                        <span class="gr-stars" title="{{ terms.freq_title }}">{{ p.stars }}</span>
                     </td>
                     <td data-label="Daraja">
                         <span class="gr-level gr-level-{{ p.level }}">{{ p.level }}</span>
