@@ -11,11 +11,22 @@ The data file must expose a ``TUTORIALS`` list of dicts, e.g.::
             "content":  "<h2>...</h2><p>...</p>",   # full HTML body
             # optional:
             # "practices": ["Practice title", 12],  # titles or ids
-            # "playlist":  "My Playlist",           # must already exist for the author
-            # "order":     1,
+            # "playlist":  "My Playlist",           # overrides the file-level PLAYLIST
+            # "order":     1,                       # position inside the playlist
         },
         ...
     ]
+
+The file may ALSO expose an optional ``PLAYLIST`` dict.  When present, the
+playlist is created for the author if it does not exist yet, and every tutorial
+in the file is added to it (at its ``order``), so a fresh database — e.g.
+production on Railway — ends up with the same playlist as local dev::
+
+    PLAYLIST = {
+        "title":       "Prime English",
+        "category":    "english",
+        "description": "Short blurb for the playlist card.",
+    }
 
 Usage::
 
@@ -101,7 +112,35 @@ class Command(BaseCommand):
             raise CommandError(
                 f"'{datafile}' must define a TUTORIALS list (found {type(tutorials).__name__})."
             )
-        return tutorials
+
+        playlist_meta = getattr(module, "PLAYLIST", None)
+        if playlist_meta is not None and not isinstance(playlist_meta, dict):
+            raise CommandError(
+                f"'{datafile}' defines PLAYLIST but it is not a dict "
+                f"(found {type(playlist_meta).__name__})."
+            )
+        return tutorials, playlist_meta
+
+    def _ensure_playlist(self, meta, author):
+        """Create (or refresh) the file-level playlist. Returns its title or None."""
+        title = (meta.get("title") or "").strip()
+        if not title:
+            raise CommandError("PLAYLIST is missing a 'title'.")
+
+        playlist, was_created = TutorialPlaylist.objects.get_or_create(
+            title=title,
+            author=author,
+            defaults={
+                "category":    meta.get("category", "other"),
+                "description": (meta.get("description") or "")[:300],
+                "is_published": True,
+            },
+        )
+        if was_created:
+            self.stdout.write(self.style.SUCCESS(f"playlist created: {title}"))
+        else:
+            self.stdout.write(f"playlist exists: {title}")
+        return playlist.title
 
     def _link_practices(self, tut, refs, author):
         """Attach practices by title or id. Unknown refs are warned about, not fatal."""
@@ -132,8 +171,12 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         author = self._resolve_author(options["author"])
-        tutorials = self._load_tutorials(options["datafile"])
+        tutorials, playlist_meta = self._load_tutorials(options["datafile"])
         republish = options["republish"]
+
+        default_playlist = None
+        if playlist_meta:
+            default_playlist = self._ensure_playlist(playlist_meta, author)
 
         created = updated = skipped = 0
 
@@ -183,12 +226,15 @@ class Command(BaseCommand):
                     self.stdout.write(self.style.WARNING(
                         f"[{i}] exists, skipped (use --republish to update): {title}"
                     ))
-                    continue
 
-                if data.get("practices"):
+                if (was_created or republish) and data.get("practices"):
                     self._link_practices(tut, data["practices"], author)
-                if data.get("playlist"):
-                    self._assign_playlist(tut, data["playlist"], data.get("order"), author)
+
+                # Playlist membership is re-applied even for skipped tutorials, so a
+                # re-run always leaves the playlist complete and correctly ordered.
+                playlist_title = data.get("playlist") or default_playlist
+                if playlist_title:
+                    self._assign_playlist(tut, playlist_title, data.get("order"), author)
 
         self.stdout.write(self.style.SUCCESS(
             f"\nDone. {created} created, {updated} updated, {skipped} skipped "

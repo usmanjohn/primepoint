@@ -51,6 +51,31 @@ When the user asks to create/continue tutorials (e.g. "make the next 5 SAT tutor
    (see Deployment section) — automatically, every time.
 Other subjects: add a new `toc_<subject>.txt` with its own PREFIX/CATEGORY; same workflow.
 
+## Creating Prime English tutorials (bulk) — English grammar
+**Prime English** is the 100-lesson English-grammar course in `tutorial`, held together by a
+`TutorialPlaylist` called "Prime English" (so lessons get Prev/Next and a progress bar).
+Titles are `PE-1: …` It has its **own** style guide and its own CSS component kit — do NOT
+write these like the SAT tutorials. When the user asks (e.g. "make the next 5 Prime English
+tutorials"):
+1. Read `tutorial/management/commands/STYLE_GUIDE_PRIME_ENGLISH.md` (how to write + the full
+   `pe-*` component reference; section 6 holds the user's own tips once they share them).
+2. Read `tutorial/management/commands/toc_prime_english.txt` (header gives PREFIX, CATEGORY,
+   AUTHOR, PLAYLIST; body is the ordered 100-lesson list with `[done]` markers).
+3. Find where to continue: `Tutorial.objects.filter(title__startswith='PE-')`.
+4. Write the next batch into `tutorial/management/commands/_tutorials_prime_english_<range>.py`
+   as `PLAYLIST = {...}` + `TUTORIALS = [...]` (copy the `PLAYLIST` dict unchanged from the
+   previous batch file; each lesson carries `"order": <lesson number>`).
+5. Import: `python manage.py import_tutorials <that file> --author=prime` (add `--republish`
+   to overwrite). The importer **creates the playlist itself** from the `PLAYLIST` dict, so
+   production needs no manual admin step.
+6. Mark the range `[done]` in the toc, then give the `railway run python manage.py
+   import_tutorials ...` command for production — automatically, every time.
+The lessons' visual kit (`pe-formula` pattern strips, `pe-ex` colour-coded examples,
+`pe-timeline`, `pe-uz` callouts, `pe-reveal` tap-to-see answers…) lives in the
+**PRIME ENGLISH** section at the bottom of `static/css/style.css`. It is pure CSS — never add
+JavaScript to a lesson, and never invent a `pe-*` class without adding it to that section and
+to the style guide first.
+
 ## Creating examprep lessons (bulk) — TOPIK etc.
 `examprep` holds detailed, by-skill exam prep (`ExamTrack` → skill → `Topic` (question-type
 card, e.g. Reading → "Reklama va e'lonlar (광고)") → `Lesson` → ordered `LessonBlock`s with

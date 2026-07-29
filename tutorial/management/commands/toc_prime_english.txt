@@ -1,0 +1,131 @@
+# ── Subject metadata (read by Claude) ────────────────────────────────
+PREFIX:   PE
+CATEGORY: english
+AUTHOR:   powerty
+PLAYLIST: Prime English
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_PRIME_ENGLISH.md — NOT the generic STYLE_GUIDE.md.
+# The playlist is created automatically by import_tutorials from the PLAYLIST dict
+# inside each _tutorials_prime_english_*.py file.
+# This file is ONLY the ordered lesson list. Mark finished blocks with [done].
+# ─────────────────────────────────────────────────────────────────────
+
+# Prime English — English Grammar from Zero to Fluent
+# 100 lessons. Every lesson stands alone, but the order builds a full course:
+# a pupil who reads PE-1 → PE-100 has covered the whole English grammar system.
+
+### Block A: Foundations — The Building Blocks (1–18)  [done: 1–10]
+1. What Is a Sentence? Subject + Verb
+2. Nouns: Countable and Uncountable
+3. Plural Nouns: Regular and Irregular
+4. Articles: a, an, the and the Zero Article
+5. Pronouns: Subject, Object and Possessive
+6. The Verb "to be": am / is / are
+7. There is / There are
+8. This, That, These, Those
+9. Present Simple: Habits, Facts and Timetables
+10. Present Simple: Negatives and Questions
+11. Adverbs of Frequency: always, usually, never
+12. Present Continuous: Happening Right Now
+13. Present Simple vs Present Continuous
+14. have / have got: Talking About Possession
+15. Adjectives: Meaning, Position and Order
+16. Prepositions of Place: in, on, at
+17. Prepositions of Time: in, on, at
+18. Question Words: who, what, where, when, why, how
+
+### Block B: The Past and the Future (19–31)
+19. Past Simple of "to be": was / were
+20. Past Simple: Regular Verbs and the -ed Ending
+21. Past Simple: Irregular Verbs
+22. Past Simple: Negatives and Questions
+23. Past Continuous: The Interrupted Moment
+24. Past Simple vs Past Continuous: when and while
+25. used to and would: Past Habits
+26. Future with "will": Decisions, Promises, Predictions
+27. Future with "be going to": Plans and Evidence
+28. Present Continuous for Future Arrangements
+29. will vs going to vs Present Continuous
+30. Future Continuous: What You Will Be Doing
+31. Time Expressions: ago, for, since, by, until, already
+
+### Block C: The Perfect Tenses (32–41)
+32. Present Perfect: Form and the Idea of "It Matters Now"
+33. Present Perfect with for and since
+34. Present Perfect with already, yet, just, still, ever, never
+35. Present Perfect vs Past Simple — The Big Decision
+36. Present Perfect Continuous
+37. Present Perfect Simple vs Continuous
+38. Past Perfect: The Past Before the Past
+39. Past Perfect Continuous
+40. Future Perfect and Future Perfect Continuous
+41. The 12 Tenses: The Complete Map
+
+### Block D: Modal Verbs (42–51)
+42. can, could, be able to: Ability
+43. may, might, could: Possibility
+44. must, have to, need to: Obligation
+45. mustn't vs don't have to: The Dangerous Pair
+46. should, ought to, had better: Advice
+47. Modals of Deduction: must be, can't be, might be
+48. Modals in the Past: must have, should have, could have
+49. Polite Requests, Offers and Permission
+50. shall, will, would: Willingness and Habit
+51. Modal Verbs: The Full Strength Scale
+
+### Block E: Building Bigger Sentences (52–66)
+52. Conjunctions: and, but, or, so, because
+53. Zero and First Conditional
+54. Second Conditional: The Imaginary Present
+55. Third Conditional: Regretting the Past
+56. Mixed Conditionals
+57. wish and if only
+58. Relative Clauses: who, which, that
+59. Defining vs Non-Defining Relative Clauses
+60. Passive Voice: Present and Past
+61. Passive Voice in All Tenses, and the by-agent
+62. Reported Speech: Statements and Backshift
+63. Reported Speech: Questions, Commands and Reporting Verbs
+64. Gerunds and Infinitives: The Basics
+65. Verbs That Change Meaning: stop doing vs stop to do
+66. The Causative: have / get something done
+
+### Block F: Precision — Saying Exactly What You Mean (67–82)
+67. Comparatives and Superlatives
+68. as ... as, too, enough
+69. Quantifiers: some, any, much, many, a lot of
+70. few vs a few, little vs a little
+71. Determiners: each, every, both, either, neither, all
+72. Word Order in English: SVOMPT
+73. Question Tags
+74. Subject–Verb Agreement
+75. Possession: 's, s' and of
+76. Adjective + Preposition, Verb + Preposition (Dependent Prepositions)
+77. Phrasal Verbs: How They Actually Work
+78. 40 Everyday Phrasal Verbs by Topic
+79. Countable and Uncountable Revisited: Expressions of Quantity
+80. Articles: The Advanced Cases
+81. Punctuation: Comma, Apostrophe, Colon, Semicolon
+82. Capital Letters and Spelling Rules
+
+### Block G: Advanced and Stylish English (83–92)
+83. Emphasis with do, does, did
+84. Inversion: Never have I seen ...
+85. Cleft Sentences: It was ... / What I need is ...
+86. Participle Clauses
+87. The Unreal Past: It's time, would rather, as if
+88. Linking Words for Writing: however, therefore, although
+89. Word Formation: Prefixes and Suffixes
+90. Collocations: Words That Live Together
+91. Formal vs Informal English
+92. The 20 Mistakes Uzbek Speakers Make Most
+
+### Block H: Grammar at Work — Putting It Together (93–100)
+93. Writing an Email: Grammar That Sounds Polite
+94. Telling a Story: Narrative Tenses in Action
+95. Giving Your Opinion and Disagreeing Politely
+96. Describing People, Places and Things
+97. Describing Charts, Trends and Numbers
+98. Making Excuses, Apologising and Explaining
+99. Small Talk and Everyday Conversation Grammar
+100. Your Grammar Toolkit: The One-Page Review of Everything

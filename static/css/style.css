@@ -2634,3 +2634,468 @@ h1, h2, h3, h4, h5, h6, .font-display {
 }
 
 .pwa-sheet-later:hover { background: var(--surface-2); color: var(--text); }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   PRIME ENGLISH — grammar-lesson component kit
+   Used inside .tut-prose by the "Prime English" tutorials (PE-1 …).
+   Pure CSS: every interaction is <details>/:hover, no JavaScript.
+   Docs: tutorial/management/commands/STYLE_GUIDE_PRIME_ENGLISH.md
+   ══════════════════════════════════════════════════════════════════ */
+
+.tut-prose {
+    --pe-s:    #2563eb;   /* subject      */
+    --pe-v:    #16a34a;   /* main verb    */
+    --pe-o:    #d97706;   /* object       */
+    --pe-aux:  #8b5cf6;   /* auxiliary    */
+    --pe-neg:  #e11d48;   /* negative     */
+    --pe-adv:  #0891b2;   /* adverbial    */
+    --pe-warn: #dc2626;
+    --pe-ok:   #16a34a;
+    --pe-tip:  #ca8a04;
+}
+
+/* ── Lesson goals card ─────────────────────────────────────────── */
+.pe-goal {
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--accent);
+    background: linear-gradient(180deg, rgba(56,189,248,.07), transparent);
+    border-radius: 0 14px 14px 0;
+    padding: 1rem 1.2rem 0.6rem;
+    margin: 1.2rem 0 1.6rem;
+}
+.pe-goal__title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--accent);
+    margin: 0 0 .5rem;
+}
+.pe-goal ul { margin: 0 0 .6rem; padding-left: 1.1rem; list-style: none; }
+.pe-goal li { position: relative; padding-left: 1.4rem; margin-bottom: .3rem; }
+.pe-goal li::before {
+    content: '✓';
+    position: absolute; left: 0; top: 0;
+    color: var(--online); font-weight: 700;
+}
+
+/* ── Pattern strip: Subject + Verb + Object ────────────────────── */
+.pe-formula {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: .45rem;
+    background: var(--surface-2);
+    border: 1px dashed var(--border);
+    border-radius: 14px;
+    padding: 1rem .9rem;
+    margin: 1.3rem 0;
+    text-align: center;
+}
+.pe-formula__label {
+    width: 100%;
+    font-size: .68rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--text-muted);
+    margin-bottom: .2rem;
+}
+.pe-chip {
+    display: inline-block;
+    padding: .35rem .8rem;
+    border-radius: 9px;
+    font-weight: 700;
+    font-size: .88rem;
+    line-height: 1.35;
+    color: #fff;
+    background: var(--text-muted);
+    box-shadow: 0 2px 6px rgba(15,23,42,.12);
+}
+.pe-chip--s   { background: var(--pe-s); }
+.pe-chip--v   { background: var(--pe-v); }
+.pe-chip--o   { background: var(--pe-o); }
+.pe-chip--aux { background: var(--pe-aux); }
+.pe-chip--neg { background: var(--pe-neg); }
+.pe-chip--adv { background: var(--pe-adv); }
+.pe-chip--opt {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px dashed var(--border);
+    font-weight: 600;
+}
+.pe-op {
+    font-weight: 700;
+    color: var(--text-muted);
+    font-size: 1rem;
+    padding: 0 .1rem;
+}
+
+/* ── Example sentences with colour-coded parts ─────────────────── */
+.pe-ex {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+    padding: .9rem 1.1rem;
+    margin: 1.1rem 0;
+}
+.pe-ex + .pe-ex { margin-top: -.4rem; }
+.pe-ex__en { font-size: 1.02rem; margin: 0 0 .25rem; color: var(--text); }
+.pe-ex__uz { font-size: .85rem; color: var(--text-muted); font-style: italic; margin: 0; }
+.pe-ex__why {
+    margin: .45rem 0 0;
+    font-size: .82rem;
+    color: var(--text-muted);
+    border-top: 1px dashed var(--border);
+    padding-top: .45rem;
+}
+.pe-hl { font-weight: 700; border-bottom: 2px solid currentColor; padding-bottom: 1px; }
+.pe-hl--s   { color: var(--pe-s); }
+.pe-hl--v   { color: var(--pe-v); }
+.pe-hl--o   { color: var(--pe-o); }
+.pe-hl--aux { color: var(--pe-aux); }
+.pe-hl--neg { color: var(--pe-neg); }
+.pe-hl--adv { color: var(--pe-adv); }
+
+/* Colour legend */
+.pe-legend {
+    display: flex; flex-wrap: wrap; gap: .4rem .9rem;
+    font-size: .74rem; color: var(--text-muted);
+    margin: .6rem 0 1.2rem;
+}
+.pe-legend span { display: inline-flex; align-items: center; gap: .35rem; }
+.pe-legend i {
+    width: 10px; height: 10px; border-radius: 3px; display: inline-block;
+    font-style: normal;
+}
+
+/* ── Callouts: Uzbek note, tip, warning ────────────────────────── */
+.pe-call {
+    position: relative;
+    border-radius: 14px;
+    padding: .85rem 1.1rem .85rem 3rem;
+    margin: 1.2rem 0;
+    font-size: .93rem;
+    line-height: 1.7;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+}
+.pe-call::before {
+    position: absolute;
+    left: 1rem; top: .8rem;
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+.pe-call p:last-child { margin-bottom: 0; }
+.pe-call__t {
+    display: block;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    margin-bottom: .2rem;
+}
+
+.pe-uz   { background: rgba(34,197,94,.07);  border-color: rgba(34,197,94,.35); }
+.pe-uz::before   { content: '🇺🇿'; }
+.pe-uz .pe-call__t   { color: var(--online); }
+
+.pe-tip  { background: rgba(202,138,4,.08);  border-color: rgba(202,138,4,.35); }
+.pe-tip::before  { content: '💡'; }
+.pe-tip .pe-call__t  { color: var(--pe-tip); }
+
+.pe-warn { background: rgba(220,38,38,.06);  border-color: rgba(220,38,38,.3); }
+.pe-warn::before { content: '⚠️'; }
+.pe-warn .pe-call__t { color: var(--pe-warn); }
+
+.pe-rule { background: rgba(56,189,248,.07); border-color: rgba(56,189,248,.35); }
+.pe-rule::before { content: '📌'; }
+.pe-rule .pe-call__t { color: var(--accent); }
+
+/* ── Wrong ✗ / Right ✓ pairs ───────────────────────────────────── */
+.pe-fix { margin: 1rem 0; display: flex; flex-direction: column; gap: .4rem; }
+.pe-bad, .pe-good {
+    display: flex; align-items: flex-start; gap: .55rem;
+    padding: .5rem .8rem;
+    border-radius: 10px;
+    font-size: .95rem;
+}
+.pe-bad  { background: rgba(220,38,38,.07); color: var(--text); }
+.pe-good { background: rgba(22,163,74,.08);  color: var(--text); }
+.pe-bad::before  { content: '✗'; color: var(--pe-warn); font-weight: 800; }
+.pe-good::before { content: '✓'; color: var(--pe-ok);   font-weight: 800; }
+.pe-bad s { text-decoration-color: var(--pe-warn); }
+
+/* ── Tense timeline ────────────────────────────────────────────── */
+.pe-timeline {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2.4rem 1.2rem 1rem;
+    margin: 1.4rem 0;
+}
+.pe-tl-track {
+    position: relative;
+    height: 4px;
+    background: var(--border);
+    border-radius: 99px;
+}
+.pe-tl-track::after {
+    content: '';
+    position: absolute; right: -6px; top: 50%;
+    transform: translateY(-50%);
+    border-left: 9px solid var(--border);
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+}
+.pe-tl-now {
+    position: absolute; top: -16px; bottom: -16px;
+    width: 2px; background: var(--danger);
+}
+.pe-tl-now::after {
+    content: 'NOW';
+    position: absolute; top: -18px; left: 50%;
+    transform: translateX(-50%);
+    font-size: .62rem; font-weight: 800; letter-spacing: .1em;
+    color: var(--danger);
+    /* the parent is a 2px-wide line — without this the label breaks one letter per row */
+    white-space: nowrap;
+}
+.pe-tl-band {
+    position: absolute; top: -5px; height: 14px;
+    background: var(--accent-glow);
+    border: 1.5px solid var(--accent);
+    border-radius: 99px;
+}
+.pe-tl-dot {
+    position: absolute; top: 50%;
+    width: 14px; height: 14px; margin-left: -7px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid var(--surface);
+    box-shadow: 0 0 0 2px var(--accent);
+}
+.pe-tl-dot--x { background: var(--danger); box-shadow: 0 0 0 2px var(--danger); }
+.pe-tl-tag {
+    position: absolute; top: -30px;
+    transform: translateX(-50%);
+    font-size: .72rem; font-weight: 600; color: var(--text);
+    white-space: nowrap;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 1px 7px;
+}
+.pe-tl-foot {
+    display: flex; justify-content: space-between;
+    margin-top: .9rem;
+    font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+/* ── Two-column comparison ─────────────────────────────────────── */
+.pe-vs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: .8rem;
+    margin: 1.3rem 0;
+}
+.pe-vs__card {
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--accent);
+    border-radius: 14px;
+    background: var(--surface);
+    padding: .9rem 1rem;
+}
+.pe-vs__card--alt { border-top-color: var(--pe-o); }
+.pe-vs__h {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: .95rem;
+    margin: 0 0 .5rem; color: var(--text);
+}
+.pe-vs__card p, .pe-vs__card li { font-size: .9rem; }
+.pe-vs__card ul { padding-left: 1.1rem; margin-bottom: 0; }
+
+/* ── Mini-card grid (uses of a tense, verb lists, …) ───────────── */
+.pe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: .75rem;
+    margin: 1.2rem 0;
+}
+.pe-card {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface-2);
+    padding: .8rem .95rem;
+    transition: .18s;
+}
+.pe-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.pe-card__h {
+    display: flex; align-items: center; gap: .4rem;
+    font-weight: 700; font-size: .88rem; color: var(--text);
+    margin-bottom: .3rem;
+}
+.pe-card__n {
+    flex: 0 0 22px; height: 22px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    background: var(--accent-glow); color: var(--accent);
+    font-size: .72rem; font-weight: 800;
+}
+.pe-card p { font-size: .85rem; margin: 0; color: var(--text-muted); line-height: 1.6; }
+.pe-card em { color: var(--text); font-style: normal; font-weight: 600; }
+
+/* ── Numbered steps ────────────────────────────────────────────── */
+.pe-steps { list-style: none; padding: 0; margin: 1.2rem 0; counter-reset: pe-step; }
+.pe-steps > li {
+    position: relative;
+    counter-increment: pe-step;
+    padding: .1rem 0 .9rem 2.6rem;
+    border-left: 2px dashed var(--border);
+    margin-left: .85rem;
+}
+.pe-steps > li:last-child { border-left-color: transparent; padding-bottom: 0; }
+.pe-steps > li::before {
+    content: counter(pe-step);
+    position: absolute; left: -.9rem; top: -.15rem;
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    background: var(--accent); color: #fff;
+    font-size: .8rem; font-weight: 800;
+    box-shadow: 0 0 0 4px var(--surface);
+}
+
+/* ── Practice / quiz with tap-to-reveal answer ─────────────────── */
+.pe-quiz {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface-2);
+    padding: .9rem 1.1rem;
+    margin: .8rem 0;
+}
+.pe-quiz__q { margin: 0 0 .6rem; font-weight: 600; color: var(--text); }
+.pe-quiz__n {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 22px; height: 22px; margin-right: .45rem;
+    border-radius: 50%;
+    background: var(--accent); color: #fff;
+    font-size: .72rem; font-weight: 800;
+}
+
+.pe-reveal { margin: 0; }
+.pe-reveal > summary {
+    display: inline-flex; align-items: center; gap: .4rem;
+    list-style: none; cursor: pointer;
+    padding: .3rem .85rem;
+    border-radius: 99px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    background: transparent;
+    font-size: .78rem; font-weight: 700;
+    transition: .18s;
+    -webkit-tap-highlight-color: transparent;
+}
+.pe-reveal > summary::-webkit-details-marker { display: none; }
+.pe-reveal > summary::before { content: '👁'; font-size: .85rem; }
+.pe-reveal > summary:hover { background: var(--accent); color: #fff; }
+.pe-reveal[open] > summary { background: var(--accent); color: #fff; margin-bottom: .6rem; }
+.pe-reveal[open] > summary::before { content: '✓'; }
+.pe-reveal__a {
+    border-left: 3px solid var(--online);
+    background: rgba(34,197,94,.06);
+    border-radius: 0 10px 10px 0;
+    padding: .7rem 1rem;
+    font-size: .9rem;
+}
+.pe-reveal__a p:last-child { margin-bottom: 0; }
+.pe-reveal__a strong { color: var(--online); }
+
+/* Inline reveal inside a sentence */
+.pe-peek { display: inline-block; }
+.pe-peek > summary {
+    display: inline; list-style: none; cursor: pointer;
+    border-bottom: 2px dashed var(--accent);
+    color: var(--accent); font-weight: 600;
+}
+.pe-peek > summary::-webkit-details-marker { display: none; }
+.pe-peek[open] > summary { display: none; }
+.pe-peek__a { color: var(--online); font-weight: 700; }
+
+/* Gap-fill blank */
+.pe-blank {
+    display: inline-block;
+    min-width: 62px;
+    border-bottom: 2px solid var(--accent);
+    text-align: center;
+    color: var(--text-muted);
+}
+
+/* ── Key words glossary ────────────────────────────────────────── */
+.pe-gloss {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+    gap: .4rem;
+    margin: 1.1rem 0;
+    padding: 0;
+    list-style: none;
+}
+.pe-gloss li {
+    display: flex; align-items: baseline; gap: .5rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: .45rem .7rem;
+    font-size: .87rem;
+    margin: 0;
+}
+.pe-gloss b { color: var(--text); font-weight: 700; }
+.pe-gloss span { color: var(--text-muted); margin-left: auto; text-align: right; }
+
+/* ── Recap card ────────────────────────────────────────────────── */
+.pe-recap {
+    border: 1px solid var(--accent);
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(56,189,248,.09), transparent 70%);
+    padding: 1.1rem 1.3rem .6rem;
+    margin: 1.6rem 0 1rem;
+}
+.pe-recap__t {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1rem;
+    color: var(--text); margin: 0 0 .6rem;
+    display: flex; align-items: center; gap: .45rem;
+}
+.pe-recap ul { padding-left: 1.2rem; margin-bottom: .6rem; }
+.pe-recap li { margin-bottom: .35rem; }
+
+/* ── Table wrapper (mobile scroll) ─────────────────────────────── */
+.pe-table-wrap { overflow-x: auto; margin: 1.2rem 0; -webkit-overflow-scrolling: touch; }
+.pe-table-wrap table { margin: 0; min-width: 380px; }
+
+/* ── Level badge ───────────────────────────────────────────────── */
+.pe-badge {
+    display: inline-block;
+    padding: .18rem .6rem;
+    border-radius: 99px;
+    font-size: .68rem; font-weight: 800;
+    letter-spacing: .06em; text-transform: uppercase;
+    background: var(--accent-glow); color: var(--accent);
+    border: 1px solid rgba(56,189,248,.4);
+}
+
+/* ── Mobile ────────────────────────────────────────────────────── */
+@media (max-width: 575.98px) {
+    .pe-formula { padding: .85rem .6rem; gap: .35rem; }
+    .pe-chip { font-size: .8rem; padding: .3rem .6rem; }
+    .pe-call { padding: .75rem .9rem .75rem 2.7rem; font-size: .89rem; }
+    .pe-timeline { padding: 2.2rem .8rem .9rem; }
+    .pe-tl-tag { font-size: .65rem; }
+    .pe-goal { padding: .85rem 1rem .5rem; }
+    .pe-gloss { grid-template-columns: 1fr; }
+    .pe-steps > li { padding-left: 2.3rem; }
+}
