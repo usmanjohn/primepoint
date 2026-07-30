@@ -20,24 +20,24 @@ TUTORIAL: PE-<n>:   (each practice links to its own tutorial)
 3. Plural Nouns: Regular and Irregular                    [done]
 4. Articles: a, an, the and the Zero Article              [done]
 5. Pronouns: Subject, Object and Possessive               [done]
-6. The Verb "to be": am / is / are                        [next]
-7. There is / There are
-8. This, That, These, Those
-9. Present Simple: Habits, Facts and Timetables
-10. Present Simple: Negatives and Questions
-11. Adverbs of Frequency: always, usually, never
-12. Present Continuous: Happening Right Now
-13. Present Simple vs Present Continuous
-14. have / have got: Talking About Possession
-15. Adjectives: Meaning, Position and Order
-16. Prepositions of Place: in, on, at
-17. Prepositions of Time: in, on, at
-18. Question Words: who, what, where, when, why, how
+6. The Verb "to be": am / is / are                        [done]
+7. There is / There are                                 [done]
+8. This, That, These, Those                             [done]
+9. Present Simple: Habits, Facts and Timetables         [done]
+10. Present Simple: Negatives and Questions             [done]
+11. Adverbs of Frequency: always, usually, never        [done]
+12. Present Continuous: Happening Right Now             [done]
+13. Present Simple vs Present Continuous                [done]
+14. have / have got: Talking About Possession           [done]
+15. Adjectives: Meaning, Position and Order             [done]
+16. Prepositions of Place: in, on, at                   [done]
+17. Prepositions of Time: in, on, at                    [done]
+18. Question Words: who, what, where, when, why, how    [done]
 
 ### Block B: The Past and the Future (19–31)   level: easy
-19. Past Simple of "to be": was / were
-20. Past Simple: Regular Verbs and the -ed Ending
-21. Past Simple: Irregular Verbs
+19. Past Simple of "to be": was / were                  [done]
+20. Past Simple: Regular Verbs and the -ed Ending       [done]
+21. Past Simple: Irregular Verbs                        [next]
 22. Past Simple: Negatives and Questions
 23. Past Continuous: The Interrupted Moment
 24. Past Simple vs Past Continuous: when and while
