@@ -63,7 +63,7 @@ Q_PE11 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>She ___ walks to school.</strong></p>",
+                "<p><strong>Charos ___ walks to school.</strong></p>",
         "choices": ["usually", "usual", "usualy", "is usually"],
         "correct": "usually",
         "explanation": "<p><strong>usually</strong> is correct — the adverb form, before the ordinary "
@@ -93,7 +93,7 @@ Q_PE11 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>My little brother ___ tired after school.</strong></p>",
+                "<p><strong>Abdulloh ___ tired after school.</strong></p>",
         "choices": ["is always", "always is", "always", "is always be"],
         "correct": "is always",
         "explanation": "<p><strong>is always</strong> is correct — <em>to be</em> first, adverb second."
@@ -168,14 +168,14 @@ Q_PE11 = [
     {
         "text": "<p>Choose the correct order.</p>"
                 "<p><strong>Which sentence puts the adverb correctly with “to be”?</strong></p>",
-        "choices": ["My teacher is usually very patient.",
-                    "My teacher usually is very patient.",
-                    "My teacher is very patient usually.",
-                    "Usually is my teacher very patient."],
-        "correct": "My teacher is usually very patient.",
-        "explanation": "<p><strong>My teacher is usually very patient.</strong> is correct — the adverb "
+        "choices": ["Rozimurod teacher is usually very patient.",
+                    "Rozimurod teacher usually is very patient.",
+                    "Rozimurod teacher is very patient usually.",
+                    "Usually is Rozimurod teacher very patient."],
+        "correct": "Rozimurod teacher is usually very patient.",
+        "explanation": "<p><strong>Rozimurod teacher is usually very patient.</strong> is correct — the adverb "
                        "goes straight after <em>is</em>.<br><br>"
-                       "<em>(<strong>My teacher is usually very patient.</strong> toʻgʻri — ravish "
+                       "<em>(<strong>Rozimurod teacher is usually very patient.</strong> toʻgʻri — ravish "
                        "<em>is</em> dan keyin darhol keladi.)</em></p>",
     },
     {
@@ -211,17 +211,17 @@ Q_PE11 = [
     },
     {
         "text": "<p>Which sentence is <strong>correct</strong>?</p>",
-        "choices": ["My sister is often late.", "My sister often is late.",
-                    "My sister is late often always.", "Often my sister is being late."],
-        "correct": "My sister is often late.",
-        "explanation": "<p><strong>My sister is often late.</strong> is correct — after <em>is</em>."
-                       "<br><br><em>(<strong>My sister is often late.</strong> toʻgʻri — <em>is</em> dan "
+        "choices": ["Shaxzoda is often late.", "Shaxzoda often is late.",
+                    "Shaxzoda is late often always.", "Often Shaxzoda is being late."],
+        "correct": "Shaxzoda is often late.",
+        "explanation": "<p><strong>Shaxzoda is often late.</strong> is correct — after <em>is</em>."
+                       "<br><br><em>(<strong>Shaxzoda is often late.</strong> toʻgʻri — <em>is</em> dan "
                        "keyin.)</em></p>",
     },
     {
         "text": "<p>Complete the dialogue.</p>"
-                "<p><strong>A:</strong> How often does Sherbek go to the swimming pool?</p>"
-                "<p><strong>B:</strong> ___</p>",
+                "<p><strong>Rozimurod teacher:</strong> How often does Sherbek go to the swimming pool?</p>"
+                "<p><strong>Madina:</strong> ___</p>",
         "choices": ["He usually goes on Saturdays.", "He goes usually on Saturdays.",
                     "He is usually go on Saturdays.", "Usually he is going on Saturdays."],
         "correct": "He usually goes on Saturdays.",
@@ -306,7 +306,7 @@ Q_PE12 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>My mother ___ dinner in the kitchen now.</strong></p>",
+                "<p><strong>Marjona ___ dinner in the kitchen now.</strong></p>",
         "choices": ["is cooking", "cooks", "are cooking", "cooking"],
         "correct": "is cooking",
         "explanation": "<p><strong>is cooking</strong> is correct — one person + <em>now</em>.<br><br>"
@@ -325,7 +325,7 @@ Q_PE12 = [
     },
     {
         "text": "<p>Choose the correct question.</p>"
-                "<p><strong>___ you listening to me?</strong></p>",
+                "<p><strong>___ you listening to Rozimurod teacher?</strong></p>",
         "choices": ["Are", "Do", "Is", "Does"],
         "correct": "Are",
         "explanation": "<p><strong>Are</strong> is correct — the <em>to be</em> part jumps to the front, "
@@ -345,7 +345,7 @@ Q_PE12 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>My father ___ in Kazakhstan this month, but he usually works "
+                "<p><strong>Samandar's father ___ in Kazakhstan this month, but he usually works "
                 "here.</strong></p>",
         "choices": ["is working", "works", "work", "is work"],
         "correct": "is working",
@@ -397,7 +397,7 @@ Q_PE12 = [
     },
     {
         "text": "<p>Complete the short answer.</p>"
-                "<p><strong>Is your brother studying now? — No, ___ .</strong></p>",
+                "<p><strong>Is Firdavs studying now? — No, ___ .</strong></p>",
         "choices": ["he isn't", "he doesn't", "he not", "he isn't studying not"],
         "correct": "he isn't",
         "explanation": "<p><strong>he isn't</strong> is correct — the short answer repeats "
@@ -444,8 +444,8 @@ Q_PE12 = [
     },
     {
         "text": "<p>Complete the dialogue.</p>"
-                "<p><strong>A:</strong> Where's Sherbek?</p>"
-                "<p><strong>B:</strong> ___</p>",
+                "<p><strong>Iroda:</strong> Where's Sherbek?</p>"
+                "<p><strong>Marjona:</strong> ___</p>",
         "choices": ["He's having a shower.", "He has a shower now.",
                     "He is have a shower.", "He having a shower."],
         "correct": "He's having a shower.",
@@ -540,7 +540,7 @@ Q_PE13 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>She ___ with her aunt this month while her parents are abroad.</strong></p>",
+                "<p><strong>Madina ___ with her aunt this month while her parents are abroad.</strong></p>",
         "choices": ["is living", "lives", "live", "is live"],
         "correct": "is living",
         "explanation": "<p><strong>is living</strong> is correct — <em>this month</em> marks it as "
@@ -550,7 +550,7 @@ Q_PE13 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>I ___ what you mean.</strong></p>",
+                "<p><strong>I ___ what Rozimurod teacher means.</strong></p>",
         "choices": ["understand", "am understanding", "understanding", "am understand"],
         "correct": "understand",
         "explanation": "<p><strong>understand</strong> is correct. Stative verbs — <em>understand, know, "
@@ -582,7 +582,7 @@ Q_PE13 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>My mother ___ in a school, but this week she ___ from home.</strong></p>",
+                "<p><strong>Iroda's mother ___ in a school, but this week she ___ from home.</strong></p>",
         "choices": ["works … is working", "is working … works",
                     "works … works", "is working … is working"],
         "correct": "works … is working",
@@ -635,7 +635,7 @@ Q_PE13 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>She ___ a shower at the moment.</strong></p>",
+                "<p><strong>Charos ___ a shower at the moment.</strong></p>",
         "choices": ["is having", "has", "is have", "having"],
         "correct": "is having",
         "explanation": "<p><strong>is having</strong> is correct. <em>Have</em> = possess is stative "
@@ -657,20 +657,20 @@ Q_PE13 = [
     },
     {
         "text": "<p>Which sentence is <strong>correct</strong>?</p>",
-        "choices": ["My brother is watching TV at the moment.",
-                    "My brother watches TV at the moment.",
-                    "My brother watch TV at the moment.",
-                    "My brother is watch TV at the moment."],
-        "correct": "My brother is watching TV at the moment.",
-        "explanation": "<p><strong>My brother is watching TV at the moment.</strong> is correct — "
+        "choices": ["Behruz is watching TV at the moment.",
+                    "Behruz watches TV at the moment.",
+                    "Behruz watch TV at the moment.",
+                    "Behruz is watch TV at the moment."],
+        "correct": "Behruz is watching TV at the moment.",
+        "explanation": "<p><strong>Behruz is watching TV at the moment.</strong> is correct — "
                        "<em>at the moment</em> demands the Continuous.<br><br>"
-                       "<em>(<strong>My brother is watching TV at the moment.</strong> toʻgʻri — "
+                       "<em>(<strong>Behruz is watching TV at the moment.</strong> toʻgʻri — "
                        "<em>at the moment</em> Continuous ni talab qiladi.)</em></p>",
     },
     {
         "text": "<p>Complete the dialogue.</p>"
-                "<p><strong>A:</strong> Can you help me with this exercise?</p>"
-                "<p><strong>B:</strong> Sorry, ___ my own homework.</p>",
+                "<p><strong>Davron:</strong> Can you help me with this exercise?</p>"
+                "<p><strong>Elbek:</strong> Sorry, ___ my own homework.</p>",
         "choices": ["I'm doing", "I do", "I am do", "I doing"],
         "correct": "I'm doing",
         "explanation": "<p><strong>I'm doing</strong> is correct — an action in progress that explains "
@@ -712,7 +712,7 @@ Q_PE14 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>My uncle ___ a small shop in the bazaar.</strong></p>",
+                "<p><strong>Javohir's uncle ___ a small shop in the bazaar.</strong></p>",
         "choices": ["has", "have", "haves", "is have"],
         "correct": "has",
         "explanation": "<p><strong>has</strong> is correct — <em>he / she / it</em> takes "
@@ -772,7 +772,7 @@ Q_PE14 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>My grandparents ___ have a computer.</strong></p>",
+                "<p><strong>Elbek's grandparents ___ have a computer.</strong></p>",
         "choices": ["don't", "haven't", "aren't", "doesn't"],
         "correct": "don't",
         "explanation": "<p><strong>don't</strong> is correct — with plain <em>have</em> the negative "
@@ -782,7 +782,7 @@ Q_PE14 = [
     },
     {
         "text": "<p>Complete the short answer.</p>"
-                "<p><strong>Has your sister got a bike? — Yes, ___ .</strong></p>",
+                "<p><strong>Has Iroda got a bike? — Yes, ___ .</strong></p>",
         "choices": ["she has", "she does", "she is", "she got"],
         "correct": "she has",
         "explanation": "<p><strong>she has</strong> is correct — the answer repeats the same word that "
@@ -880,18 +880,18 @@ Q_PE14 = [
     },
     {
         "text": "<p>Which sentence is <strong>correct</strong>?</p>",
-        "choices": ["My friend hasn't got any brothers.", "My friend haven't got any brothers.",
-                    "My friend doesn't got any brothers.", "My friend not has got any brothers."],
-        "correct": "My friend hasn't got any brothers.",
-        "explanation": "<p><strong>My friend hasn't got any brothers.</strong> is correct — one person → "
+        "choices": ["Sirojiddin hasn't got any brothers.", "Sirojiddin haven't got any brothers.",
+                    "Sirojiddin doesn't got any brothers.", "Sirojiddin not has got any brothers."],
+        "correct": "Sirojiddin hasn't got any brothers.",
+        "explanation": "<p><strong>Sirojiddin hasn't got any brothers.</strong> is correct — one person → "
                        "<em>hasn't got</em>.<br><br>"
-                       "<em>(<strong>My friend hasn't got any brothers.</strong> toʻgʻri — bitta shaxs → "
+                       "<em>(<strong>Sirojiddin hasn't got any brothers.</strong> toʻgʻri — bitta shaxs → "
                        "<em>hasn't got</em>.)</em></p>",
     },
     {
         "text": "<p>Complete the dialogue.</p>"
-                "<p><strong>A:</strong> Have you got any homework today?</p>"
-                "<p><strong>B:</strong> ___</p>",
+                "<p><strong>Rozimurod teacher:</strong> Have you got any homework today?</p>"
+                "<p><strong>Charos:</strong> ___</p>",
         "choices": ["Yes, I've got a lot.", "Yes, I do got a lot.",
                     "Yes, I am got a lot.", "Yes, I have got a lots."],
         "correct": "Yes, I've got a lot.",
@@ -902,15 +902,15 @@ Q_PE14 = [
     },
     {
         "text": "<p>Choose the option where <strong>everything</strong> is correct.</p>",
-        "choices": ["My sister has got a laptop, but she doesn't have a printer.",
-                    "My sister have got a laptop, but she hasn't a printer's.",
-                    "My sister has got a laptop, but she doesn't has a printer.",
-                    "My sister does have got a laptop, but she not have a printer."],
-        "correct": "My sister has got a laptop, but she doesn't have a printer.",
-        "explanation": "<p><strong>My sister has got a laptop, but she doesn't have a printer.</strong> "
+        "choices": ["Charos has got a laptop, but she doesn't have a printer.",
+                    "Charos have got a laptop, but she hasn't a printer's.",
+                    "Charos has got a laptop, but she doesn't has a printer.",
+                    "Charos does have got a laptop, but she not have a printer."],
+        "correct": "Charos has got a laptop, but she doesn't have a printer.",
+        "explanation": "<p><strong>Charos has got a laptop, but she doesn't have a printer.</strong> "
                        "is correct — each half stays inside its own system: <em>has got</em> "
                        "and <em>doesn't have</em>.<br><br>"
-                       "<em>(<strong>My sister has got a laptop, but she doesn't have a printer.</strong> "
+                       "<em>(<strong>Charos has got a laptop, but she doesn't have a printer.</strong> "
                        "toʻgʻri — har bir yarmi oʻz tizimida qoladi: <em>has got</em> va "
                        "<em>doesn't have</em>.)</em></p>",
     },
@@ -964,7 +964,7 @@ Q_PE15 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>Your idea ___ very interesting.</strong></p>",
+                "<p><strong>Behruz's idea ___ very interesting.</strong></p>",
         "choices": ["sounds", "sounds like interesting", "is sound", "sound"],
         "correct": "sounds",
         "explanation": "<p><strong>sounds</strong> is correct — a linking verb takes the adjective "
@@ -1044,7 +1044,7 @@ Q_PE15 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>The children were ___ about the trip to the mountains.</strong></p>",
+                "<p><strong>The children were ___ about the trip to the mountains with Rozimurod teacher.</strong></p>",
         "choices": ["excited", "exciting", "excite", "excitement"],
         "correct": "excited",
         "explanation": "<p><strong>excited</strong> is correct — the children feel it.<br><br>"
@@ -1077,7 +1077,7 @@ Q_PE15 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>She has ___ hair.</strong></p>",
+                "<p><strong>Shaxzoda has ___ hair.</strong></p>",
         "choices": ["long black", "black long", "long blacks", "blacks long"],
         "correct": "long black",
         "explanation": "<p><strong>long black</strong> is correct — size/length before colour, and no "
@@ -1097,20 +1097,20 @@ Q_PE15 = [
     },
     {
         "text": "<p>Which sentence is <strong>correct</strong>?</p>",
-        "choices": ["We stayed in a beautiful little hotel.",
-                    "We stayed in a little beautiful hotel.",
-                    "We stayed in a hotel beautiful little.",
-                    "We stayed in a beautiful hotel little."],
-        "correct": "We stayed in a beautiful little hotel.",
-        "explanation": "<p><strong>We stayed in a beautiful little hotel.</strong> is correct — opinion "
+        "choices": ["Iroda stayed in a beautiful little hotel.",
+                    "Iroda stayed in a little beautiful hotel.",
+                    "Iroda stayed in a hotel beautiful little.",
+                    "Iroda stayed in a beautiful hotel little."],
+        "correct": "Iroda stayed in a beautiful little hotel.",
+        "explanation": "<p><strong>Iroda stayed in a beautiful little hotel.</strong> is correct — opinion "
                        "before size.<br><br>"
-                       "<em>(<strong>We stayed in a beautiful little hotel.</strong> toʻgʻri — fikr "
+                       "<em>(<strong>Iroda stayed in a beautiful little hotel.</strong> toʻgʻri — fikr "
                        "oʻlchamdan oldin keladi.)</em></p>",
     },
     {
         "text": "<p>Complete the dialogue.</p>"
-                "<p><strong>A:</strong> What was the concert like?</p>"
-                "<p><strong>B:</strong> ___</p>",
+                "<p><strong>Firdavs:</strong> What was the concert like?</p>"
+                "<p><strong>Shaxzoda:</strong> ___</p>",
         "choices": ["It was amazing! We were all really surprised.",
                     "It was amazed! We were all really surprising.",
                     "It was amazing! We were all really surprising.",
@@ -1125,15 +1125,15 @@ Q_PE15 = [
     },
     {
         "text": "<p>Choose the option where <strong>everything</strong> is correct.</p>",
-        "choices": ["My grandfather has an old wooden chair, and it is very comfortable.",
-                    "My grandfather has a wooden old chair, and it is very comfortables.",
-                    "My grandfather has an old chair wooden, and it is very comfortable.",
-                    "My grandfather has olds wooden chair, and it very comfortable."],
-        "correct": "My grandfather has an old wooden chair, and it is very comfortable.",
-        "explanation": "<p><strong>My grandfather has an old wooden chair, and it is very "
+        "choices": ["Davron's grandfather has an old wooden chair, and it is very comfortable.",
+                    "Davron's grandfather has a wooden old chair, and it is very comfortables.",
+                    "Davron's grandfather has an old chair wooden, and it is very comfortable.",
+                    "Davron's grandfather has olds wooden chair, and it very comfortable."],
+        "correct": "Davron's grandfather has an old wooden chair, and it is very comfortable.",
+        "explanation": "<p><strong>Davron's grandfather has an old wooden chair, and it is very "
                        "comfortable.</strong> is correct — age before material, adjectives in front of "
                        "the noun, no <em>-s</em>, and the linking verb <em>is</em> present.<br><br>"
-                       "<em>(<strong>My grandfather has an old wooden chair, and it is very "
+                       "<em>(<strong>Davron's grandfather has an old wooden chair, and it is very "
                        "comfortable.</strong> toʻgʻri — yosh materialdan oldin, sifatlar otdan oldin, "
                        "<em>-s</em> yoʻq, <em>is</em> bogʻlovchi feʼli esa oʻz oʻrnida.)</em></p>",
     },

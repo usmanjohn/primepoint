@@ -42,7 +42,7 @@ Q_PE16 = [
     },
     {
         "text": "<p>Choose the correct preposition.</p>"
-                "<p><strong>My money is ___ my bag.</strong></p>",
+                "<p><strong>Marjona's money is ___ her bag.</strong></p>",
         "choices": ["in", "on", "at", "by"],
         "correct": "in",
         "explanation": "<p><strong>in</strong> is correct — inside something with walls or edges."
@@ -59,7 +59,7 @@ Q_PE16 = [
     },
     {
         "text": "<p>Choose the correct preposition.</p>"
-                "<p><strong>My cousin lives ___ Samarkand.</strong></p>",
+                "<p><strong>Sirojiddin lives ___ Samarkand.</strong></p>",
         "choices": ["in", "at", "on", "to"],
         "correct": "in",
         "explanation": "<p><strong>in</strong> is correct — cities, regions and countries are spaces you "
@@ -110,7 +110,7 @@ Q_PE16 = [
     },
     {
         "text": "<p>Choose the correct preposition.</p>"
-                "<p><strong>My grandmother is ___ bed — she isn't feeling well.</strong></p>",
+                "<p><strong>Charos's grandmother is ___ bed — she isn't feeling well.</strong></p>",
         "choices": ["in", "on", "at", "into"],
         "correct": "in",
         "explanation": "<p><strong>in</strong> is correct — <em>in bed</em> (fixed phrase, no article) "
@@ -152,7 +152,7 @@ Q_PE16 = [
     },
     {
         "text": "<p>Choose the correct preposition.</p>"
-                "<p><strong>I met my teacher ___ the bus this morning.</strong></p>",
+                "<p><strong>I met Rozimurod teacher ___ the bus this morning.</strong></p>",
         "choices": ["on", "in", "at", "by"],
         "correct": "on",
         "explanation": "<p><strong>on</strong> is correct — buses, trains and planes are big enough to "
@@ -181,7 +181,7 @@ Q_PE16 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>Our school is ___ my house — I only cross the road.</strong></p>",
+                "<p><strong>Davron's school is ___ his house — he only crosses the road.</strong></p>",
         "choices": ["opposite", "in front", "next", "between"],
         "correct": "opposite",
         "explanation": "<p><strong>opposite</strong> is correct — on the other side, facing it. "
@@ -216,8 +216,8 @@ Q_PE16 = [
     },
     {
         "text": "<p>Complete the dialogue.</p>"
-                "<p><strong>A:</strong> Where shall we meet?</p>"
-                "<p><strong>B:</strong> ___</p>",
+                "<p><strong>Behruz:</strong> Where shall we meet?</p>"
+                "<p><strong>Javohir:</strong> ___</p>",
         "choices": ["At the bus stop in front of the school.",
                     "In the bus stop at front of the school.",
                     "On the bus stop in front the school.",
@@ -270,7 +270,7 @@ Q_PE17 = [
     },
     {
         "text": "<p>Choose the correct preposition.</p>"
-                "<p><strong>My brother was born ___ 2010.</strong></p>",
+                "<p><strong>Elbek was born ___ 2010.</strong></p>",
         "choices": ["in", "on", "at", "by"],
         "correct": "in",
         "explanation": "<p><strong>in</strong> is correct — years, months and seasons are long periods."
@@ -288,7 +288,7 @@ Q_PE17 = [
     },
     {
         "text": "<p>Choose the correct preposition.</p>"
-                "<p><strong>My birthday is ___ 12 May.</strong></p>",
+                "<p><strong>Madina's birthday is ___ 12 May.</strong></p>",
         "choices": ["on", "in", "at", "of"],
         "correct": "on",
         "explanation": "<p><strong>on</strong> is correct — a full date names a day, so <em>on</em>."
@@ -381,7 +381,7 @@ Q_PE17 = [
     },
     {
         "text": "<p>Choose the correct pair.</p>"
-                "<p><strong>She was born ___ 2011, ___ a cold winter day.</strong></p>",
+                "<p><strong>Shaxzoda was born ___ 2011, ___ a cold winter day.</strong></p>",
         "choices": ["in … on", "on … in", "at … on", "in … at"],
         "correct": "in … on",
         "explanation": "<p><strong>in … on</strong> is correct — the year is a long period, the day is a "
@@ -420,20 +420,20 @@ Q_PE17 = [
     },
     {
         "text": "<p>Which sentence is <strong>correct</strong>?</p>",
-        "choices": ["My exam is on 5 June at nine o'clock.",
-                    "My exam is in 5 June on nine o'clock.",
-                    "My exam is at 5 June in nine o'clock.",
-                    "My exam is on 5 June in nine o'clock."],
-        "correct": "My exam is on 5 June at nine o'clock.",
-        "explanation": "<p><strong>My exam is on 5 June at nine o'clock.</strong> is correct — date → "
+        "choices": ["Behruz's exam is on 5 June at nine o'clock.",
+                    "Behruz's exam is in 5 June on nine o'clock.",
+                    "Behruz's exam is at 5 June in nine o'clock.",
+                    "Behruz's exam is on 5 June in nine o'clock."],
+        "correct": "Behruz's exam is on 5 June at nine o'clock.",
+        "explanation": "<p><strong>Behruz's exam is on 5 June at nine o'clock.</strong> is correct — date → "
                        "<em>on</em>, clock time → <em>at</em>.<br><br>"
-                       "<em>(<strong>My exam is on 5 June at nine o'clock.</strong> toʻgʻri — sana → "
+                       "<em>(<strong>Behruz's exam is on 5 June at nine o'clock.</strong> toʻgʻri — sana → "
                        "<em>on</em>, soat → <em>at</em>.)</em></p>",
     },
     {
         "text": "<p>Complete the dialogue.</p>"
-                "<p><strong>A:</strong> When does your holiday start?</p>"
-                "<p><strong>B:</strong> ___</p>",
+                "<p><strong>Rozimurod teacher:</strong> When does your holiday start?</p>"
+                "<p><strong>Iroda:</strong> ___</p>",
         "choices": ["On 1 June, so in two weeks.", "In 1 June, so on two weeks.",
                     "At 1 June, so in two weeks.", "On 1 June, so at two weeks."],
         "correct": "On 1 June, so in two weeks.",
@@ -465,7 +465,7 @@ Q_PE17 = [
 Q_PE18 = [
     {
         "text": "<p>Choose the correct question word.</p>"
-                "<p><strong>___ is your English teacher?</strong></p>",
+                "<p><strong>___ is your English teacher? — Rozimurod teacher.</strong></p>",
         "choices": ["Who", "What", "Where", "How"],
         "correct": "Who",
         "explanation": "<p><strong>Who</strong> is correct — it asks about a person (<em>kim</em>)."
@@ -524,7 +524,7 @@ Q_PE18 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>___ old is your sister?</strong></p>",
+                "<p><strong>___ old is Marjona's sister?</strong></p>",
         "choices": ["How", "What", "Which", "Who"],
         "correct": "How",
         "explanation": "<p><strong>How</strong> is correct — <em>how</em> joins an adjective to make a "
@@ -554,7 +554,7 @@ Q_PE18 = [
     },
     {
         "text": "<p>Choose the correct question word.</p>"
-                "<p><strong>___ bag is this? — It's mine.</strong></p>",
+                "<p><strong>___ bag is this? — It's Charos's.</strong></p>",
         "choices": ["Whose", "Who's", "Who", "Which"],
         "correct": "Whose",
         "explanation": "<p><strong>Whose</strong> is correct — it asks about the owner "
@@ -564,7 +564,7 @@ Q_PE18 = [
     },
     {
         "text": "<p>Choose the correct question word.</p>"
-                "<p><strong>___ do you prefer, tea or coffee?</strong></p>",
+                "<p><strong>___ do you prefer, tea or coffee, Behruz?</strong></p>",
         "choices": ["Which", "What", "Who", "How"],
         "correct": "Which",
         "explanation": "<p><strong>Which</strong> is correct — a choice from a small, known group. "
@@ -645,8 +645,8 @@ Q_PE18 = [
     },
     {
         "text": "<p>Complete the dialogue.</p>"
-                "<p><strong>A:</strong> ___</p>"
-                "<p><strong>B:</strong> Because I want to study in Korea.</p>",
+                "<p><strong>Samandar:</strong> ___</p>"
+                "<p><strong>Abdulloh:</strong> Because I want to study in Korea.</p>",
         "choices": ["Why are you learning Korean?", "What are you learning Korean?",
                     "Why you are learning Korean?", "Why do you learning Korean?"],
         "correct": "Why are you learning Korean?",
@@ -690,7 +690,7 @@ Q_PE19 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>My parents ___ at work yesterday.</strong></p>",
+                "<p><strong>Firdavs's parents ___ at work yesterday.</strong></p>",
         "choices": ["were", "was", "are", "is"],
         "correct": "were",
         "explanation": "<p><strong>were</strong> is correct — <em>you, we, they</em> and all plural "
@@ -749,7 +749,7 @@ Q_PE19 = [
     },
     {
         "text": "<p>Choose the correct question form.</p>"
-                "<p><strong>___ you at the stadium last night?</strong></p>",
+                "<p><strong>___ you at the stadium last night, Davron?</strong></p>",
         "choices": ["Were", "Was", "Did", "Are"],
         "correct": "Were",
         "explanation": "<p><strong>Were</strong> is correct — the verb jumps in front of the subject, "
@@ -816,7 +816,7 @@ Q_PE19 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>Where ___ you last Saturday?</strong></p>",
+                "<p><strong>Where ___ you last Saturday, Behruz?</strong></p>",
         "choices": ["were", "was", "did", "are"],
         "correct": "were",
         "explanation": "<p><strong>were</strong> is correct — <em>you</em> + past, and a wh- question "
@@ -826,7 +826,7 @@ Q_PE19 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>My grandfather ___ a teacher for thirty years.</strong></p>",
+                "<p><strong>Javohir's grandfather ___ a teacher for thirty years.</strong></p>",
         "choices": ["was", "were", "is", "did"],
         "correct": "was",
         "explanation": "<p><strong>was</strong> is correct — one person, and the period is finished."
@@ -856,8 +856,8 @@ Q_PE19 = [
     },
     {
         "text": "<p>Complete the dialogue.</p>"
-                "<p><strong>A:</strong> How was your weekend?</p>"
-                "<p><strong>B:</strong> ___</p>",
+                "<p><strong>Rozimurod teacher:</strong> How was your weekend?</p>"
+                "<p><strong>Marjona:</strong> ___</p>",
         "choices": ["It was great! We were in the mountains.",
                     "It were great! We was in the mountains.",
                     "It was great! We did in the mountains.",
@@ -906,7 +906,7 @@ Q_PE20 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>We ___ football in the yard yesterday.</strong></p>",
+                "<p><strong>We ___ football in the yard with Rozimurod teacher yesterday.</strong></p>",
         "choices": ["played", "play", "plays", "playd"],
         "correct": "played",
         "explanation": "<p><strong>played</strong> is correct. Vowel + <em>y</em> → just add "
@@ -957,7 +957,7 @@ Q_PE20 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>My father ___ in a factory in 2015.</strong></p>",
+                "<p><strong>Samandar's father ___ in a factory in 2015.</strong></p>",
         "choices": ["worked", "works", "working", "was work"],
         "correct": "worked",
         "explanation": "<p><strong>worked</strong> is correct — <em>in 2015</em> is a finished past "
@@ -976,7 +976,7 @@ Q_PE20 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>They ___ in Andijan when they were children.</strong></p>",
+                "<p><strong>Ilgʻor and his brother ___ in Andijan when they were children.</strong></p>",
         "choices": ["lived", "live", "lives", "living"],
         "correct": "lived",
         "explanation": "<p><strong>lived</strong> is correct — a finished period of the past.<br><br>"
@@ -1059,33 +1059,33 @@ Q_PE20 = [
     },
     {
         "text": "<p>Which sentence <strong>has a mistake</strong>?</p>",
-        "choices": ["He worked hard and she workeds hard too.",
-                    "He worked hard and she worked hard too.",
+        "choices": ["Abdulloh worked hard and Iroda workeds hard too.",
+                    "Abdulloh worked hard and Iroda worked hard too.",
                     "They worked hard yesterday.",
                     "I worked hard last week."],
-        "correct": "He worked hard and she workeds hard too.",
-        "explanation": "<p><strong>He worked hard and she workeds hard too.</strong> is the mistake — the "
+        "correct": "Abdulloh worked hard and Iroda workeds hard too.",
+        "explanation": "<p><strong>Abdulloh worked hard and Iroda workeds hard too.</strong> is the mistake — the "
                        "Past Simple never takes <em>-s</em>. That worry belongs to the present.<br><br>"
-                       "<em>(<strong>He worked hard and she workeds hard too.</strong> xato — Past "
+                       "<em>(<strong>Abdulloh worked hard and Iroda workeds hard too.</strong> xato — Past "
                        "Simple hech qachon <em>-s</em> olmaydi. Bu tashvish hozirgi zamonga "
                        "tegishli.)</em></p>",
     },
     {
         "text": "<p>Which sentence is <strong>correct</strong>?</p>",
-        "choices": ["She studied English for two hours yesterday.",
-                    "She studyed English for two hours yesterday.",
-                    "She studied English for two hours tomorrow.",
-                    "She study English for two hours yesterday."],
-        "correct": "She studied English for two hours yesterday.",
-        "explanation": "<p><strong>She studied English for two hours yesterday.</strong> is correct — "
+        "choices": ["Charos studied English for two hours yesterday.",
+                    "Charos studyed English for two hours yesterday.",
+                    "Charos studied English for two hours tomorrow.",
+                    "Charos study English for two hours yesterday."],
+        "correct": "Charos studied English for two hours yesterday.",
+        "explanation": "<p><strong>Charos studied English for two hours yesterday.</strong> is correct — "
                        "<em>-ied</em> spelling, and a past time word.<br><br>"
-                       "<em>(<strong>She studied English for two hours yesterday.</strong> toʻgʻri — "
+                       "<em>(<strong>Charos studied English for two hours yesterday.</strong> toʻgʻri — "
                        "<em>-ied</em> imlosi va oʻtgan zamon vaqt soʻzi.)</em></p>",
     },
     {
         "text": "<p>Complete the dialogue.</p>"
-                "<p><strong>A:</strong> What did you do at the weekend?</p>"
-                "<p><strong>B:</strong> ___</p>",
+                "<p><strong>Sirojiddin:</strong> What did you do at the weekend?</p>"
+                "<p><strong>Ilgʻor:</strong> ___</p>",
         "choices": ["I helped my father and watched a film.",
                     "I helped my father and watch a film.",
                     "I help my father and watched a film.",

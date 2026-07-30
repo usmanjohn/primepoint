@@ -20,8 +20,10 @@ lessons lives in `toc_pe_practices.txt`.
   unambiguous.
 - File: `_practice_pe_<from>_<to>.py`, exposing `SUBJECT = {...}` + `DEFAULTS = {...}` +
   `PRACTICES = [...]`. Copy `SUBJECT` and `DEFAULTS` unchanged into every batch file.
-- Import: `python manage.py import_practices <file> --master=prime` (local) /
-  `--master=powerty` (production). Add `--republish` to overwrite + rebuild questions.
+- Import: `python manage.py import_practices <file> --master=prime --expect-questions=20`
+  (local) / `--master=powerty` (production). Add `--republish` to overwrite + rebuild
+  questions. **Always pass `--expect-questions=20`** — it refuses the file if a test has
+  drifted to 19 or 21 questions, which is otherwise easy to miss.
 - Batches of **5 lessons** (100 questions). Mark the range `[done]` in the toc afterwards.
 
 ## 2. The shape of one test — exactly 20 questions
@@ -123,5 +125,25 @@ tutorials do it and how the pupil's teacher says them.
 
 ## 7. The user's own tips
 
-*(Empty for now — when the user gives feedback on these practices, write it here and follow
-it over anything above.)*
+These come from the user directly and **override anything above**.
+
+### Use his real pupils' names (asked 2026-07-30)
+
+Every test must be populated with his own class, not with generic names — the pupils enjoy
+finding themselves in the questions.
+
+**Pupils:** Afsona, Jasur, Sherbek, Davron, Samandar, Iroda, Shaxzoda, Marjona, Madina,
+Charos, Firdavs, Ilgʻor, Javohir, Sirojiddin, Behruz, Elbek, Abdulloh.
+**Teacher:** Rozimurod — refer to him as *Rozimurod teacher*, *our teacher Rozimurod* or
+*Mr Rozimurod*, the way the class does.
+
+- **Spread them out**: aim for 8–12 different names across a 20-question test, and change
+  which names lead from one test to the next. Never lean on the same two or three.
+- **Match the pronouns**: girls — Afsona, Iroda, Shaxzoda, Marjona, Madina, Charos
+  (*she / her*); boys — Jasur, Sherbek, Davron, Samandar, Firdavs, Ilgʻor, Javohir,
+  Sirojiddin, Behruz, Elbek, Abdulloh (*he / his*). A name with the wrong pronoun is worse
+  than a generic name.
+- Keep the ʻ (U+02BB) in **Ilgʻor**.
+- Rozimurod teacher is useful for anything involving school: giving homework, asking
+  questions, praising, being strict about being late.
+- The same list lives as `PUPILS` in `practice/management/commands/math_questions.py`.

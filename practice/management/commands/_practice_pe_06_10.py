@@ -42,7 +42,7 @@ Q_PE6 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>My brother ___ fifteen years old.</strong></p>",
+                "<p><strong>Elbek ___ fifteen years old.</strong></p>",
         "choices": ["is", "am", "are", "be"],
         "correct": "is",
         "explanation": "<p><strong>is</strong> is correct. <em>He / she / it</em> and any single person "
@@ -174,7 +174,7 @@ Q_PE6 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>My sister and my cousin ___ in the same university.</strong></p>",
+                "<p><strong>Iroda and Charos ___ in the same university.</strong></p>",
         "choices": ["are", "is", "am", "be"],
         "correct": "are",
         "explanation": "<p><strong>are</strong> is correct. Two people joined by <em>and</em> make a "
@@ -216,8 +216,8 @@ Q_PE6 = [
     },
     {
         "text": "<p>Complete the dialogue.</p>"
-                "<p><strong>A:</strong> How old is your little brother?</p>"
-                "<p><strong>B:</strong> ___</p>",
+                "<p><strong>Rozimurod teacher:</strong> How old is your little brother?</p>"
+                "<p><strong>Behruz:</strong> ___</p>",
         "choices": ["He's twelve.", "He has twelve.", "He twelve.", "He's twelve years."],
         "correct": "He's twelve.",
         "explanation": "<p><strong>He's twelve.</strong> is correct. English says <em>be + number</em> "
@@ -259,7 +259,7 @@ Q_PE7 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>There ___ thirty pupils in our class.</strong></p>",
+                "<p><strong>There ___ thirty pupils in Rozimurod teacher's class.</strong></p>",
         "choices": ["are", "is", "have", "has"],
         "correct": "are",
         "explanation": "<p><strong>are</strong> is correct — <em>thirty pupils</em> is plural.<br><br>"
@@ -360,7 +360,7 @@ Q_PE7 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>Look at that bike near the gate. ___ my brother's.</strong></p>",
+                "<p><strong>Look at that bike near the gate. ___ Javohir's.</strong></p>",
         "choices": ["It's", "There's", "There are", "Is"],
         "correct": "It's",
         "explanation": "<p><strong>It's</strong> is correct. The bike has already been introduced, so we "
@@ -371,7 +371,7 @@ Q_PE7 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>There ___ a lot of homework today, so I can't play football.</strong></p>",
+                "<p><strong>There ___ a lot of homework today, so Behruz can't play football.</strong></p>",
         "choices": ["is", "are", "aren't", "have"],
         "correct": "is",
         "explanation": "<p><strong>is</strong> is correct — <em>homework</em> is uncountable.<br><br>"
@@ -379,7 +379,7 @@ Q_PE7 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>There ___ some interesting books in our library.</strong></p>",
+                "<p><strong>There ___ some interesting books on Charos's desk.</strong></p>",
         "choices": ["are", "is", "was", "has"],
         "correct": "are",
         "explanation": "<p><strong>are</strong> is correct. <em>Some</em> works with both types, so look "
@@ -428,8 +428,8 @@ Q_PE7 = [
     },
     {
         "text": "<p>Complete the dialogue.</p>"
-                "<p><strong>A:</strong> What's in your school bag?</p>"
-                "<p><strong>B:</strong> ___</p>",
+                "<p><strong>Iroda:</strong> What's in your school bag?</p>"
+                "<p><strong>Firdavs:</strong> ___</p>",
         "choices": ["There are two books and a pen.", "There is two books and a pen.",
                     "It is two books and a pen.", "Have two books and a pen."],
         "correct": "There are two books and a pen.",
@@ -507,7 +507,7 @@ Q_PE8 = [
     },
     {
         "text": "<p>Choose the correct word.</p>"
-                "<p><strong>Are ___ your keys? I found them here on the floor.</strong></p>",
+                "<p><strong>Are ___ your keys, Sirojiddin? I found them here on the floor.</strong></p>",
         "choices": ["these", "this", "that", "those"],
         "correct": "these",
         "explanation": "<p><strong>these</strong> is correct — plural (<em>keys</em>) and here in my "
@@ -527,7 +527,7 @@ Q_PE8 = [
     },
     {
         "text": "<p>Choose the correct word.</p>"
-                "<p><strong>Who is ___ man over there, next to the door?</strong></p>",
+                "<p><strong>Who is ___ man over there, next to Rozimurod teacher?</strong></p>",
         "choices": ["that", "this", "these", "those"],
         "correct": "that",
         "explanation": "<p><strong>that</strong> is correct — one person, at a distance.<br><br>"
@@ -578,7 +578,7 @@ Q_PE8 = [
         "text": "<p>Choose the correct option.</p>"
                 "<p><strong>Which sentence uses “this” <em>with a noun</em>?</strong></p>",
         "choices": ["This shirt is expensive.", "This is expensive.",
-                    "This is my brother.", "This is Afsona speaking."],
+                    "This is Davron.", "This is Afsona speaking."],
         "correct": "This shirt is expensive.",
         "explanation": "<p><strong>This shirt is expensive.</strong> is correct — here <em>this</em> "
                        "stands in front of a noun, like <em>my</em> or <em>the</em>. In the others it "
@@ -641,8 +641,8 @@ Q_PE8 = [
     },
     {
         "text": "<p>Complete the dialogue.</p>"
-                "<p><strong>A:</strong> (on the phone) Hello, who is this?</p>"
-                "<p><strong>B:</strong> ___</p>",
+                "<p><strong>Madina:</strong> (on the phone) Hello, who is this?</p>"
+                "<p><strong>Sherbek:</strong> ___</p>",
         "choices": ["This is Sherbek.", "That is Sherbek.", "It is me Sherbek.", "I am this Sherbek."],
         "correct": "This is Sherbek.",
         "explanation": "<p><strong>This is Sherbek.</strong> is correct — the fixed English phone "
@@ -652,11 +652,11 @@ Q_PE8 = [
     },
     {
         "text": "<p>Choose the option where <strong>every</strong> word is correct.</p>",
-        "choices": ["This is my desk, these are my books and that is the teacher's table.",
-                    "This is my desk, this are my books and those is the teacher's table.",
-                    "These is my desk, these are my books and that are the teacher's table.",
-                    "That is my desk, those are my book and this are the teacher's table."],
-        "correct": "This is my desk, these are my books and that is the teacher's table.",
+        "choices": ["This is my desk, these are my books and that is Rozimurod teacher's table.",
+                    "This is my desk, this are my books and those is Rozimurod teacher's table.",
+                    "These is my desk, these are my books and that are Rozimurod teacher's table.",
+                    "That is my desk, those are my book and this are Rozimurod teacher's table."],
+        "correct": "This is my desk, these are my books and that is Rozimurod teacher's table.",
         "explanation": "<p><strong>This is my desk, these are my books and that is the teacher's "
                        "table.</strong> is correct — near + one, near + many, far + one, each with the "
                        "matching verb.<br><br>"
@@ -674,7 +674,7 @@ Q_PE8 = [
 Q_PE9 = [
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>My brother ___ football every Sunday morning.</strong></p>",
+                "<p><strong>Ilgʻor ___ football every Sunday morning.</strong></p>",
         "choices": ["plays", "play", "playing", "is play"],
         "correct": "plays",
         "explanation": "<p><strong>plays</strong> is correct. In the Present Simple we add "
@@ -724,7 +724,7 @@ Q_PE9 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>My sister ___ the dishes after dinner.</strong></p>",
+                "<p><strong>Shaxzoda ___ the dishes after dinner.</strong></p>",
         "choices": ["washes", "washs", "wash", "washies"],
         "correct": "washes",
         "explanation": "<p><strong>washes</strong> is correct. After a hissing sound "
@@ -746,7 +746,7 @@ Q_PE9 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>My father ___ to the mosque on Fridays.</strong></p>",
+                "<p><strong>Behruz's father ___ to the mosque on Fridays.</strong></p>",
         "choices": ["goes", "gos", "go", "goies"],
         "correct": "goes",
         "explanation": "<p><strong>goes</strong> is correct — <em>go → goes</em>, like "
@@ -756,7 +756,7 @@ Q_PE9 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>My uncle ___ two cars and a small shop.</strong></p>",
+                "<p><strong>Firdavs's uncle ___ two cars and a small shop.</strong></p>",
         "choices": ["has", "have", "haves", "having"],
         "correct": "has",
         "explanation": "<p><strong>has</strong> is correct. <em>Have</em> is irregular in the third "
@@ -775,12 +775,12 @@ Q_PE9 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>My parents ___ in a hospital in the city centre.</strong></p>",
+                "<p><strong>Madina's parents ___ in a hospital in the city centre.</strong></p>",
         "choices": ["work", "works", "working", "is working"],
         "correct": "work",
-        "explanation": "<p><strong>work</strong> is correct. <em>My parents</em> = <em>they</em>, so no "
+        "explanation": "<p><strong>work</strong> is correct. <em>Madina's parents</em> = <em>they</em>, so no "
                        "<em>-s</em>. The <em>-s</em> belongs to one person only.<br><br>"
-                       "<em>(<strong>work</strong> toʻgʻri. <em>My parents</em> = <em>they</em>, shuning "
+                       "<em>(<strong>work</strong> toʻgʻri. <em>Madina's parents</em> = <em>they</em>, shuning "
                        "uchun <em>-s</em> qoʻshilmaydi. <em>-s</em> faqat bitta shaxs uchun.)</em></p>",
     },
     {
@@ -861,8 +861,8 @@ Q_PE9 = [
     },
     {
         "text": "<p>Complete the dialogue.</p>"
-                "<p><strong>A:</strong> What does your father do?</p>"
-                "<p><strong>B:</strong> ___</p>",
+                "<p><strong>Rozimurod teacher:</strong> What does your father do?</p>"
+                "<p><strong>Javohir:</strong> ___</p>",
         "choices": ["He works in a bank.", "He work in a bank.",
                     "He is work in a bank.", "He working in a bank."],
         "correct": "He works in a bank.",
@@ -916,7 +916,7 @@ Q_PE10 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>___ you speak English at home?</strong></p>",
+                "<p><strong>___ you speak English at home, Javohir?</strong></p>",
         "choices": ["Do", "Does", "Are", "Is"],
         "correct": "Do",
         "explanation": "<p><strong>Do</strong> is correct. Every verb except <em>to be</em> needs the "
@@ -926,16 +926,16 @@ Q_PE10 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>___ your sister play the piano?</strong></p>",
+                "<p><strong>___ Marjona play the piano?</strong></p>",
         "choices": ["Does", "Do", "Is", "Are"],
         "correct": "Does",
-        "explanation": "<p><strong>Does</strong> is correct — <em>your sister</em> = <em>she</em>."
+        "explanation": "<p><strong>Does</strong> is correct — <em>Marjona</em> = <em>she</em>."
                        "<br><br><em>(<strong>Does</strong> toʻgʻri — <em>your sister</em> = "
                        "<em>she</em>.)</em></p>",
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>My cousin doesn't ___ meat.</strong></p>",
+                "<p><strong>Sirojiddin doesn't ___ meat.</strong></p>",
         "choices": ["eat", "eats", "eating", "ate"],
         "correct": "eat",
         "explanation": "<p><strong>eat</strong> is correct — the golden rule: once <em>does</em> has "
@@ -1016,7 +1016,7 @@ Q_PE10 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>___ you a pupil at this school?</strong></p>",
+                "<p><strong>___ you a pupil in Rozimurod teacher's class?</strong></p>",
         "choices": ["Are", "Do", "Does", "Have"],
         "correct": "Are",
         "explanation": "<p><strong>Are</strong> is correct. There is no action verb here — only "
@@ -1036,10 +1036,10 @@ Q_PE10 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>My parents ___ speak English, but they understand a little.</strong></p>",
+                "<p><strong>Iroda's parents ___ speak English, but they understand a little.</strong></p>",
         "choices": ["don't", "doesn't", "aren't", "not"],
         "correct": "don't",
-        "explanation": "<p><strong>don't</strong> is correct — <em>my parents</em> = <em>they</em>."
+        "explanation": "<p><strong>don't</strong> is correct — <em>Iroda's parents</em> = <em>they</em>."
                        "<br><br><em>(<strong>don't</strong> toʻgʻri — <em>my parents</em> = "
                        "<em>they</em>.)</em></p>",
     },
@@ -1074,8 +1074,8 @@ Q_PE10 = [
     },
     {
         "text": "<p>Complete the dialogue.</p>"
-                "<p><strong>A:</strong> ___</p>"
-                "<p><strong>B:</strong> No, she doesn't. She works in a school.</p>",
+                "<p><strong>Charos:</strong> ___</p>"
+                "<p><strong>Samandar:</strong> No, she doesn't. She works in a school.</p>",
         "choices": ["Does your mother work in a hospital?",
                     "Do your mother work in a hospital?",
                     "Is your mother work in a hospital?",

@@ -93,6 +93,13 @@ class Command(BaseCommand):
             action="store_true",
             help="Update practices that already exist and rebuild their questions.",
         )
+        parser.add_argument(
+            "--expect-questions",
+            type=int,
+            default=None,
+            help="Refuse the file unless every practice has exactly this many questions "
+                 "(use --expect-questions=20 for the Prime English batches).",
+        )
 
     # ── helpers ─────────────────────────────────────────────────────────────
 
@@ -161,9 +168,14 @@ class Command(BaseCommand):
             ))
         return None
 
-    def _validate(self, practice_title, questions):
+    def _validate(self, practice_title, questions, expected=None):
         if not questions:
             raise CommandError(f"Practice '{practice_title}' has no questions.")
+        if expected and len(questions) != expected:
+            raise CommandError(
+                f"Practice '{practice_title}' has {len(questions)} questions, "
+                f"but {expected} were expected."
+            )
         for n, q in enumerate(questions, start=1):
             where = f"'{practice_title}' Q{n}"
             if not (q.get("text") or "").strip():
@@ -221,7 +233,7 @@ class Command(BaseCommand):
                 raise CommandError(f"Practice #{i} is missing a 'title'.")
 
             questions = data.get("questions") or []
-            self._validate(title, questions)
+            self._validate(title, questions, options.get("expect_questions"))
 
             level = data.get("level", file_defaults.get("level", PRACTICE_DEFAULTS["level"]))
             if level not in VALID_LEVELS:

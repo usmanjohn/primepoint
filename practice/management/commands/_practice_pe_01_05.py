@@ -44,8 +44,8 @@ Q_PE1 = [
     },
     {
         "text": "<p>Which word is the <strong>verb</strong>?</p>"
-                "<p><strong>My brother plays football on Sundays.</strong></p>",
-        "choices": ["My brother", "plays", "football", "Sundays"],
+                "<p><strong>Davron plays football on Sundays.</strong></p>",
+        "choices": ["Davron", "plays", "football", "Sundays"],
         "correct": "plays",
         "explanation": "<p><strong>plays</strong> is correct. The verb is the action — the engine "
                        "of the sentence.<br><br>"
@@ -140,12 +140,12 @@ Q_PE1 = [
     },
     {
         "text": "<p>Which words are the <strong>subject</strong>?</p>"
-                "<p><strong>Every morning my father drinks green tea.</strong></p>",
-        "choices": ["my father", "Every morning", "drinks", "green tea"],
-        "correct": "my father",
-        "explanation": "<p><strong>my father</strong> is correct. <em>Every morning</em> is a time "
+                "<p><strong>Every morning Samandar drinks green tea.</strong></p>",
+        "choices": ["Samandar", "Every morning", "drinks", "green tea"],
+        "correct": "Samandar",
+        "explanation": "<p><strong>Samandar</strong> is correct. <em>Every morning</em> is a time "
                        "expression — it can stand at the front, but it never does the action.<br><br>"
-                       "<em>(<strong>my father</strong> toʻgʻri. <em>Every morning</em> — vaqt "
+                       "<em>(<strong>Samandar</strong> toʻgʻri. <em>Every morning</em> — vaqt "
                        "ifodasi; gap boshida turishi mumkin, lekin harakatni bajarmaydi.)</em></p>",
     },
     {
@@ -172,12 +172,12 @@ Q_PE1 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>In “The teacher asked Jasur”, who receives the action?</strong></p>",
-        "choices": ["Jasur", "The teacher", "asked", "nobody"],
+                "<p><strong>In “Rozimurod teacher asked Jasur”, who receives the action?</strong></p>",
+        "choices": ["Jasur", "Rozimurod teacher", "asked", "nobody"],
         "correct": "Jasur",
-        "explanation": "<p><strong>Jasur</strong> is correct. <em>The teacher</em> does the asking "
+        "explanation": "<p><strong>Jasur</strong> is correct. <em>Rozimurod teacher</em> does the asking "
                        "(subject); <em>Jasur</em> receives it (object).<br><br>"
-                       "<em>(<strong>Jasur</strong> toʻgʻri. <em>The teacher</em> soʻraydi (subject), "
+                       "<em>(<strong>Jasur</strong> toʻgʻri. <em>Rozimurod teacher</em> soʻraydi (subject), "
                        "<em>Jasur</em> esa harakatni qabul qiladi (object).)</em></p>",
     },
     {
@@ -214,7 +214,7 @@ Q_PE1 = [
     {
         "text": "<p>Which sentence <strong>has a mistake</strong>?</p>",
         "choices": ["Reads a book every evening.", "Afsona reads a book every evening.",
-                    "She reads a book every evening.", "My sister reads a book every evening."],
+                    "She reads a book every evening.", "Madina reads a book every evening."],
         "correct": "Reads a book every evening.",
         "explanation": "<p><strong>Reads a book every evening.</strong> is the mistake — the subject is "
                        "missing. English never drops the subject, even when it is obvious.<br><br>"
@@ -223,8 +223,8 @@ Q_PE1 = [
     },
     {
         "text": "<p>Complete the dialogue.</p>"
-                "<p><strong>A:</strong> What does your sister do after school?</p>"
-                "<p><strong>B:</strong> ___</p>",
+                "<p><strong>Rozimurod teacher:</strong> What does your sister do after school?</p>"
+                "<p><strong>Jasur:</strong> ___</p>",
         "choices": ["She helps my mother.", "Helps my mother.",
                     "My mother helps.", "Is helps my mother."],
         "correct": "She helps my mother.",
@@ -386,7 +386,7 @@ Q_PE2 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>My mother bought ___ bread on the way home.</strong></p>",
+                "<p><strong>Firdavs bought ___ bread on the way home.</strong></p>",
         "choices": ["some", "a", "two", "many"],
         "correct": "some",
         "explanation": "<p><strong>some</strong> is correct. <em>Bread</em> is uncountable, so no "
@@ -430,12 +430,12 @@ Q_PE2 = [
     },
     {
         "text": "<p>Which sentence <strong>has a mistake</strong>?</p>",
-        "choices": ["She gave me two advices.", "She gave me some advice.",
-                    "She gave me a piece of advice.", "She gave me a lot of advice."],
-        "correct": "She gave me two advices.",
-        "explanation": "<p><strong>She gave me two advices.</strong> is the mistake. <em>Advice</em> "
+        "choices": ["Charos gave me two advices.", "Charos gave me some advice.",
+                    "Charos gave me a piece of advice.", "Charos gave me a lot of advice."],
+        "correct": "Charos gave me two advices.",
+        "explanation": "<p><strong>Charos gave me two advices.</strong> is the mistake. <em>Advice</em> "
                        "never takes <em>-s</em> — say <em>two pieces of advice</em>.<br><br>"
-                       "<em>(<strong>She gave me two advices.</strong> xato. <em>Advice</em> hech qachon "
+                       "<em>(<strong>Charos gave me two advices.</strong> xato. <em>Advice</em> hech qachon "
                        "<em>-s</em> olmaydi — <em>two pieces of advice</em> deyiladi.)</em></p>",
     },
     {
@@ -451,8 +451,8 @@ Q_PE2 = [
     },
     {
         "text": "<p>Complete the dialogue.</p>"
-                "<p><strong>A:</strong> Would you like some sugar in your tea?</p>"
-                "<p><strong>B:</strong> Yes, please — just ___ .</p>",
+                "<p><strong>Marjona:</strong> Would you like some sugar in your tea?</p>"
+                "<p><strong>Iroda:</strong> Yes, please — just ___ .</p>",
         "choices": ["a little", "a few", "many", "a number of"],
         "correct": "a little",
         "explanation": "<p><strong>a little</strong> is correct — a small amount of an uncountable "
@@ -463,7 +463,7 @@ Q_PE2 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>Our teacher gave us ___ homework, but only ___ exercises were "
+                "<p><strong>Rozimurod teacher gave us ___ homework, but only ___ exercises were "
                 "difficult.</strong></p>",
         "choices": ["a lot of … a few", "many … a little",
                     "a few … much", "much … a little"],
@@ -485,7 +485,7 @@ Q_PE2 = [
 Q_PE3 = [
     {
         "text": "<p>Choose the correct plural form.</p>"
-                "<p><strong>There are three ___ on my desk.</strong></p>",
+                "<p><strong>There are three ___ on Rozimurod teacher's desk.</strong></p>",
         "choices": ["books", "bookes", "bookies", "book"],
         "correct": "books",
         "explanation": "<p><strong>books</strong> is correct. Nine nouns out of ten just add "
@@ -507,7 +507,7 @@ Q_PE3 = [
     },
     {
         "text": "<p>Choose the correct plural form.</p>"
-                "<p><strong>My father repairs ___ .</strong></p>",
+                "<p><strong>Ilgʻor's father repairs ___ .</strong></p>",
         "choices": ["watches", "watchs", "watch", "watchies"],
         "correct": "watches",
         "explanation": "<p><strong>watches</strong> is correct — <em>-ch</em> is a hissing ending, so "
@@ -548,7 +548,7 @@ Q_PE3 = [
     },
     {
         "text": "<p>Choose the correct plural form.</p>"
-                "<p><strong>My mother bought a kilo of ___ .</strong></p>",
+                "<p><strong>Shaxzoda bought a kilo of ___ .</strong></p>",
         "choices": ["tomatoes", "tomatos", "tomatoies", "tomato"],
         "correct": "tomatoes",
         "explanation": "<p><strong>tomatoes</strong> is correct. Most nouns ending in <em>-o</em> take "
@@ -560,7 +560,7 @@ Q_PE3 = [
     },
     {
         "text": "<p>Choose the correct plural form.</p>"
-                "<p><strong>I took a lot of ___ at my sister's wedding.</strong></p>",
+                "<p><strong>Iroda took a lot of ___ at her sister's wedding.</strong></p>",
         "choices": ["photos", "photoes", "photoies", "photo's"],
         "correct": "photos",
         "explanation": "<p><strong>photos</strong> is correct. <em>Photo</em> is a shortened modern "
@@ -580,7 +580,7 @@ Q_PE3 = [
     },
     {
         "text": "<p>Choose the correct plural form.</p>"
-                "<p><strong>My new shoes hurt my ___ .</strong></p>",
+                "<p><strong>Behruz's new shoes hurt his ___ .</strong></p>",
         "choices": ["feet", "foots", "feets", "foot"],
         "correct": "feet",
         "explanation": "<p><strong>feet</strong> is correct. <em>Foot → feet</em>, like "
@@ -609,7 +609,7 @@ Q_PE3 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>My uncle keeps twenty ___ on his farm.</strong></p>",
+                "<p><strong>Sirojiddin's uncle keeps twenty ___ on his farm.</strong></p>",
         "choices": ["sheep", "sheeps", "sheepes", "sheepies"],
         "correct": "sheep",
         "explanation": "<p><strong>sheep</strong> is correct. A few nouns do not change at all: "
@@ -673,8 +673,8 @@ Q_PE3 = [
     },
     {
         "text": "<p>Complete the dialogue.</p>"
-                "<p><strong>A:</strong> What did you buy at the bazaar?</p>"
-                "<p><strong>B:</strong> ___</p>",
+                "<p><strong>Shaxzoda:</strong> What did you buy at the bazaar?</p>"
+                "<p><strong>Madina:</strong> ___</p>",
         "choices": ["Some potatoes and two loaves of bread.",
                     "Some potatos and two breads.",
                     "Some potatoes and two breads.",
@@ -711,7 +711,7 @@ Q_PE3 = [
 Q_PE4 = [
     {
         "text": "<p>Choose the correct article.</p>"
-                "<p><strong>My father is ___ engineer.</strong></p>",
+                "<p><strong>Firdavs's father is ___ engineer.</strong></p>",
         "choices": ["an", "a", "the", "— (no article)"],
         "correct": "an",
         "explanation": "<p><strong>an</strong> is correct. <em>Engineer</em> begins with a vowel "
@@ -721,7 +721,7 @@ Q_PE4 = [
     },
     {
         "text": "<p>Choose the correct article.</p>"
-                "<p><strong>My cousin studies at ___ university in Tashkent.</strong></p>",
+                "<p><strong>Madina studies at ___ university in Tashkent.</strong></p>",
         "choices": ["a", "an", "the", "— (no article)"],
         "correct": "a",
         "explanation": "<p><strong>a</strong> is correct. Listen, don't look: <em>university</em> is "
@@ -806,7 +806,7 @@ Q_PE4 = [
     },
     {
         "text": "<p>Choose the correct article.</p>"
-                "<p><strong>My brother plays ___ football after school.</strong></p>",
+                "<p><strong>Elbek plays ___ football after school.</strong></p>",
         "choices": ["— (no article)", "a", "the", "an"],
         "correct": "— (no article)",
         "explanation": "<p><strong>— (no article)</strong> is correct. Games and sports take no "
@@ -816,7 +816,7 @@ Q_PE4 = [
     },
     {
         "text": "<p>Choose the correct article.</p>"
-                "<p><strong>She is ___ honest girl — everybody trusts her.</strong></p>",
+                "<p><strong>Iroda is ___ honest girl — everybody trusts her.</strong></p>",
         "choices": ["an", "a", "the", "— (no article)"],
         "correct": "an",
         "explanation": "<p><strong>an</strong> is correct. The <em>h</em> in <em>honest</em> is silent, "
@@ -846,7 +846,7 @@ Q_PE4 = [
     },
     {
         "text": "<p>Choose the correct article.</p>"
-                "<p><strong>My mother is ___ best cook in our family.</strong></p>",
+                "<p><strong>Marjona's mother is ___ best cook in their family.</strong></p>",
         "choices": ["the", "a", "an", "— (no article)"],
         "correct": "the",
         "explanation": "<p><strong>the</strong> is correct. A superlative points at one single winner, "
@@ -902,8 +902,8 @@ Q_PE4 = [
     },
     {
         "text": "<p>Complete the dialogue.</p>"
-                "<p><strong>A:</strong> Where is your brother?</p>"
-                "<p><strong>B:</strong> He's at ___ , he finishes at six.</p>",
+                "<p><strong>Rozimurod teacher:</strong> Where is your brother?</p>"
+                "<p><strong>Elbek:</strong> He's at ___ , he finishes at six.</p>",
         "choices": ["work", "a work", "the work", "works"],
         "correct": "work",
         "explanation": "<p><strong>work</strong> is correct. <em>Work</em> in this meaning takes no "
@@ -995,7 +995,7 @@ Q_PE5 = [
     },
     {
         "text": "<p>Choose the correct pronoun.</p>"
-                "<p><strong>My little brother is waiting for ___ at the gate.</strong></p>",
+                "<p><strong>Abdulloh is waiting for ___ at the gate.</strong></p>",
         "choices": ["them", "they", "their", "theirs"],
         "correct": "them",
         "explanation": "<p><strong>them</strong> is correct. After a preposition (<em>for, to, with, "
@@ -1068,7 +1068,7 @@ Q_PE5 = [
     },
     {
         "text": "<p>Choose the correct option.</p>"
-                "<p><strong>The teacher thanked Jasur and ___ .</strong></p>",
+                "<p><strong>Rozimurod teacher thanked Jasur and ___ .</strong></p>",
         "choices": ["me", "I", "my", "mine"],
         "correct": "me",
         "explanation": "<p><strong>me</strong> is correct. Here the pair comes after the verb, so the "
@@ -1125,8 +1125,8 @@ Q_PE5 = [
     },
     {
         "text": "<p>Complete the dialogue.</p>"
-                "<p><strong>A:</strong> Whose jacket is this?</p>"
-                "<p><strong>B:</strong> ___</p>",
+                "<p><strong>Charos:</strong> Whose jacket is this?</p>"
+                "<p><strong>Behruz:</strong> ___</p>",
         "choices": ["It's hers.", "It's her.", "Its hers.", "It's her's."],
         "correct": "It's hers.",
         "explanation": "<p><strong>It's hers.</strong> is correct: <em>it's</em> = <em>it is</em>, and "

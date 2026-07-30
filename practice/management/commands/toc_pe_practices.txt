@@ -37,17 +37,17 @@ TUTORIAL: PE-<n>:   (each practice links to its own tutorial)
 ### Block B: The Past and the Future (19–31)   level: easy
 19. Past Simple of "to be": was / were                  [done]
 20. Past Simple: Regular Verbs and the -ed Ending       [done]
-21. Past Simple: Irregular Verbs                        [next]
-22. Past Simple: Negatives and Questions
-23. Past Continuous: The Interrupted Moment
-24. Past Simple vs Past Continuous: when and while
-25. used to and would: Past Habits
-26. Future with "will": Decisions, Promises, Predictions
-27. Future with "be going to": Plans and Evidence
-28. Present Continuous for Future Arrangements
-29. will vs going to vs Present Continuous
-30. Future Continuous: What You Will Be Doing
-31. Time Expressions: ago, for, since, by, until, already
+21. Past Simple: Irregular Verbs                        [done]
+22. Past Simple: Negatives and Questions                [done]
+23. Past Continuous: The Interrupted Moment             [done]
+24. Past Simple vs Past Continuous: when and while      [done]
+25. used to and would: Past Habits                      [done]
+26. Future with "will": Decisions, Promises, Predictions[done]
+27. Future with "be going to": Plans and Evidence       [done]
+28. Present Continuous for Future Arrangements          [done]
+29. will vs going to vs Present Continuous              [done]
+30. Future Continuous: What You Will Be Doing           [done]
+31. Time Expressions: ago, for, since, by, until, already[next]
 
 ### Block C: The Perfect Tenses (32–41)   level: medium
 32. Present Perfect: Form and the Idea of "It Matters Now"
