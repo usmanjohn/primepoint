@@ -1,0 +1,49 @@
+# ── Subject metadata (read by Claude) ────────────────────────────────
+PREFIX:   PK
+SUBJECT:  한국어
+MASTER:   powerty
+TUTORIAL: PK-<n>:   (each practice links to its own tutorial)
+# (MASTER = production master username. On local dev use 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_PK_PRACTICE.md.
+# Import: python manage.py import_practices <file> --master=prime --expect-questions=<n>
+# EVERYTHING IN UZBEK — Korean only as the material. No English.
+# ─────────────────────────────────────────────────────────────────────
+
+# Prime Korean Mashqlar — one test per lesson
+# Titles: "PK-7 Mashq: Boʻgʻin bloklari va 받침"  (same wording as the tutorial)
+#
+# TWO LENGTHS:
+#   PK-1 … PK-8    12 savol   (Hangul — harf tanish va oʻqish mashqi)
+#   PK-9 … PK-100  20 savol   (grammatika — Prime English ramp)
+#
+# Levels: 1–31 easy · 32–66 medium · 67–100 hard
+# Rhythm: 3 lessons at a time, all three legs (tutorial → practice → reading).
+
+### Block A: Hangul — yozuvni ochish (1–8)   level: easy · 12 savol
+1. Hangul bilan tanishuv — dunyodagi eng mantiqiy alifbo        [done]
+2. Unlilar 1: ㅏ ㅓ ㅗ ㅜ ㅡ ㅣ                                    [done]
+3. Unlilar 2: yotlashgan ㅑ ㅕ ㅛ ㅠ va qoʻshma unlilar            [done]
+4. Undoshlar 1: ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅅ ㅇ                             [done]
+5. Undoshlar 2: ㅈ va nafasli ㅊ ㅋ ㅌ ㅍ ㅎ                       [done]
+6. Undoshlar 3: qattiq ㄲ ㄸ ㅃ ㅆ ㅉ                              [done]
+7. Boʻgʻin bloklari va 받침                                       [done]
+8. Talaffuz qoidalari: 연음화, 격음화, 경음화, 비음화                [done]
+
+### Block B: Birinchi gaplar (9–22)   level: easy · 20 savol
+9. Salomlashish, xayrlashish va oʻzini tanishtirish              [done]
+10. 명사 + 입니다 / 입니까?                                        [done]
+11. Nutq darajalari: 존댓말 va 반말                                [done]
+12. 은/는 va 이/가                                                [next]
+13. 을/를 va 의
+14. 에 va 에서
+15. 도, 만, 부터, 까지, 하고/와/과
+16. 이거/그거/저거 va 여기/거기/저기
+17. 있다 / 없다
+18. Feʼl va sifat + 아/어요
+19. Feʼl va sifat + ㅂ니다/습니다
+20. Oʻtgan zamon: 았/었어요
+21. Inkor 1: 안 + feʼl va 지 않다
+22. Inkor 2: 못 + feʼl va 지 못하다
+
+# Blocks C–G mirror toc_prime_korean.txt one-to-one (23–100).
+# Add each block's lines here as it is reached.

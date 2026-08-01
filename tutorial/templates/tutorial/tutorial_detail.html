@@ -338,6 +338,29 @@
         </div>
         {% endif %}
 
+        <!-- Linked Readings -->
+        {% if linked_stories %}
+        <div class="card p-3 mb-3">
+            <h6 class="form-section-label mb-3">
+                <i class="bi bi-book" style="color:var(--accent);"></i>
+                {% trans "Reading" %}
+            </h6>
+            <div class="d-flex flex-column gap-2">
+                {% for story in linked_stories %}
+                <a href="{% url 'corner_story' story.collection.subject.slug story.collection.slug story.slug %}"
+                   class="btn-core d-flex align-items-center justify-content-between gap-2"
+                   style="font-size:0.85rem;text-decoration:none;">
+                    <span class="text-truncate">{{ story.title }}</span>
+                    {% if story.audio %}
+                    <i class="bi bi-volume-up flex-shrink-0" title="{% trans 'Has audio' %}"></i>
+                    {% endif %}
+                    <i class="bi bi-arrow-right-circle flex-shrink-0"></i>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
         <!-- Related tutorials -->
         {% if related %}
         <div class="card p-3">

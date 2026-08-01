@@ -116,6 +116,8 @@ def tutorial_detail(request, pk):
         'is_finished':      is_finished,
         'tutorial_points':  TUTORIAL_POINTS,
         'linked_practices': tutorial.practices.filter(is_published=True),
+        'linked_stories':   tutorial.stories.filter(is_published=True)
+                                            .select_related('collection'),
         'playlist_context': playlist_context,
     })
 

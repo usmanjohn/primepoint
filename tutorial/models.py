@@ -42,6 +42,13 @@ class Tutorial(models.Model):
         blank=True,
         related_name='tutorials',
     )
+    # Corner stories that read this lesson's grammar back in context — the third
+    # leg of a lesson (tutorial → practice → reading). See Prime Korean.
+    stories      = models.ManyToManyField(
+        'corner.Story',
+        blank=True,
+        related_name='tutorials',
+    )
     is_published = models.BooleanField(default=True)
     views        = models.PositiveIntegerField(default=0)
     created_at   = models.DateTimeField(auto_now_add=True)

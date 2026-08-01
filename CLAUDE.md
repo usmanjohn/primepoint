@@ -76,6 +76,52 @@ The lessons' visual kit (`pe-formula` pattern strips, `pe-ex` colour-coded examp
 JavaScript to a lesson, and never invent a `pe-*` class without adding it to that section and
 to the style guide first.
 
+## Creating Prime Korean tutorials (bulk) — koreys tili grammatikasi
+**Prime Korean** is the 100-lesson Korean course in `tutorial`, held together by a
+`TutorialPlaylist` called "Prime Korean". Titles are `PK-1: …`. It mirrors Prime English's
+machinery but **inverts the language policy**: Prime English teaches *in* English, Prime
+Korean teaches **in Uzbek** (the pupil can't read Hangul in lesson 1) — Korean is only the
+material. **No English anywhere**, same as `examprep` TOPIK. When the user asks (e.g. "make
+the next 5 Prime Korean tutorials"):
+1. Read `tutorial/management/commands/STYLE_GUIDE_PRIME_KOREAN.md`.
+2. Read `tutorial/management/commands/toc_prime_korean.txt` (header gives PREFIX, CATEGORY,
+   AUTHOR, PLAYLIST; body is the ordered 100-lesson list with `[done]`/`[next]` markers).
+3. Find where to continue: `Tutorial.objects.filter(title__startswith='PK-')`.
+4. Write into `tutorial/management/commands/_tutorials_prime_korean_<range>.py` as
+   `PLAYLIST = {...}` + `TUTORIALS = [...]` (copy `PLAYLIST` unchanged from the previous
+   batch; each lesson carries `"order": <lesson number>`, category `korean`).
+5. Import: `python manage.py import_tutorials <that file> --author=prime` (`--republish`
+   to overwrite). The importer creates the playlist itself.
+6. Mark the range `[done]` in the toc, then give the `railway run python manage.py
+   import_tutorials ...` command — automatically, every time.
+**Each Prime Korean lesson has THREE legs, written together in batches of 3 lessons:**
+1. the **tutorial** (`tutorial`, PK-n) — teaches the pattern;
+2. the **practice** (`practice`, 20 questions; shorter and reading-drill style for the
+   Hangul lessons PK-1…PK-8) — drills it;
+3. the **reading** (`corner`, collection "Prime Korean Readings", `order` = lesson number)
+   — shows it living in a text, with `cn-word` tappable vocab, a `grammar` block naming
+   the focus pattern, 2-3 comprehension questions and generated audio.
+So a batch = 3 tutorials + 3 practices + 3 readings + 3 mp3s, all finished together.
+Writing the three side by side keeps the test and the text drilling that lesson's own
+examples. Guides: `practice/management/commands/STYLE_GUIDE_PK_PRACTICE.md` and
+`corner/management/commands/toc_prime_korean_readings.txt` (readings start at PK-9 —
+the Hangul lessons have no grammar to embed; readings are **cumulative**: earlier patterns
+free, later ones forbidden).
+`Tutorial.stories` (M2M to `corner.Story`) links a lesson to its reading, mirroring
+`Tutorial.practices`; `import_tutorials` accepts a `"stories": [...]` key of titles/ids and
+`tutorial_detail.html` renders a **Reading** card beside the Practice one. Import order per
+batch: tutorials → practices → readings → audio → re-run `import_tutorials --republish`
+so the `stories` links resolve (the story must exist first).
+The visual kit **reuses the whole `pe-*` component set** and adds Korean-only pieces
+(`pk-hangul` alphabet cards, `pk-block` syllable diagram, `pk-batchim` 받침 fork,
+`pk-conj` conjugation ladder, `pk-level` speech-level ladder, `pk-say` pronunciation arrow)
+in the **PRIME KOREAN** section at the bottom of `static/css/style.css`. Pure CSS — never add
+JavaScript, and never invent a `pk-*` class without adding it to that section and the style
+guide first.
+Prime Korean is **not** exam prep: `examprep` TOPIK = question types and strategy, the
+grammar/vocab banks = lookup tables, `corner` = reading. Prime Korean = the language itself,
+from zero, in order.
+
 ## Creating examprep lessons (bulk) — TOPIK etc.
 `examprep` holds detailed, by-skill exam prep (`ExamTrack` → skill → `Topic` (question-type
 card, e.g. Reading → "Reklama va e'lonlar (광고)") → `Lesson` → ordered `LessonBlock`s with

@@ -11,6 +11,7 @@ The data file must expose a ``TUTORIALS`` list of dicts, e.g.::
             "content":  "<h2>...</h2><p>...</p>",   # full HTML body
             # optional:
             # "practices": ["Practice title", 12],  # titles or ids
+            # "stories":   ["Story title", 34],     # Corner readings, titles or ids
             # "playlist":  "My Playlist",           # overrides the file-level PLAYLIST
             # "order":     1,                       # position inside the playlist
         },
@@ -41,6 +42,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.contrib.auth.models import User
 from django.db import transaction
 
+from corner.models import Story
 from masters.models import Master
 from practice.models import Practice
 from tutorial.models import (
@@ -157,6 +159,23 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.WARNING(f"    practice not found: {ref!r}"))
         tut.practices.set(matched)
 
+    def _link_stories(self, tut, refs, author):
+        """Attach Corner stories by title or id. Unknown refs are warned about, not
+        fatal — the reading is usually imported after the tutorial, so a first pass
+        may legitimately find nothing."""
+        matched = []
+        for ref in refs:
+            if isinstance(ref, int):
+                qs = Story.objects.filter(pk=ref)
+            else:
+                qs = Story.objects.filter(title=ref)
+            story = qs.first()
+            if story:
+                matched.append(story)
+            else:
+                self.stdout.write(self.style.WARNING(f"    story not found: {ref!r}"))
+        tut.stories.set(matched)
+
     def _assign_playlist(self, tut, title, order, author):
         playlist = TutorialPlaylist.objects.filter(title=title, author=author).first()
         if not playlist:
@@ -229,6 +248,9 @@ class Command(BaseCommand):
 
                 if (was_created or republish) and data.get("practices"):
                     self._link_practices(tut, data["practices"], author)
+
+                if (was_created or republish) and data.get("stories"):
+                    self._link_stories(tut, data["stories"], author)
 
                 # Playlist membership is re-applied even for skipped tutorials, so a
                 # re-run always leaves the playlist complete and correctly ordered.

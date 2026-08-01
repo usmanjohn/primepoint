@@ -1,0 +1,141 @@
+# ── Subject metadata (read by Claude) ────────────────────────────────
+PREFIX:   PK
+CATEGORY: korean
+AUTHOR:   powerty
+PLAYLIST: Prime Korean
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_PRIME_KOREAN.md — NOT STYLE_GUIDE.md and NOT
+# STYLE_GUIDE_PRIME_ENGLISH.md. Prime Korean teaches in UZBEK; Korean is the target.
+# The playlist is created automatically by import_tutorials from the PLAYLIST dict
+# inside each _tutorials_prime_korean_*.py file.
+# This file is ONLY the ordered lesson list. Mark finished blocks with [done].
+# ─────────────────────────────────────────────────────────────────────
+
+# Prime Korean — noldan TOPIK II gacha koreys tili grammatikasi
+# 100 dars. Har bir dars mustaqil, lekin tartib butun kursni quradi:
+# PK-1 dan PK-100 gacha oʻqigan oʻquvchi koreys grammatikasining butun tizimini koʻradi.
+#
+# Prime English'dan farqi: u yerda ingliz tili — oʻqitish tili. Bu yerda oʻquvchi
+# birinchi darsda hatto harflarni ham oʻqiy olmaydi, shuning uchun tushuntirish
+# TOʻLIQ oʻzbekcha, koreyscha esa oʻrgatilayotgan material.
+#
+# Bu kurs TOPIK examprep'dan alohida: examprep = imtihon koʻnikmalari (savol turlari,
+# vaqt, strategiya). Prime Korean = tilning oʻzi, noldan, tartib bilan.
+
+### Block A: Hangul — yozuvni ochish (1–8)
+1. Hangul bilan tanishuv — dunyodagi eng mantiqiy alifbo            [done]
+2. Unlilar 1: ㅏ ㅓ ㅗ ㅜ ㅡ ㅣ                                       [done]
+3. Unlilar 2: yotlashgan ㅑ ㅕ ㅛ ㅠ va qoʻshma unlilar ㅐ ㅔ ㅘ ㅚ ㅢ   [done]
+4. Undoshlar 1: ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅅ ㅇ                                [done]
+5. Undoshlar 2: ㅈ va nafasli ㅊ ㅋ ㅌ ㅍ ㅎ                          [done]
+6. Undoshlar 3: qattiq ㄲ ㄸ ㅃ ㅆ ㅉ                                 [done]
+7. Boʻgʻin bloklari va 받침 (batchim)                              [done]
+8. Talaffuz qoidalari: 연음화, 격음화, 경음화, 비음화                 [done]
+# ↑ Block A COMPLETE — 8 ta dars + 8 ta mashq (12 savoldan).
+#   Bu darslarda grammatika yoʻq, shuning uchun oʻqish matni ham yoʻq.
+#   PK-9 dan boshlab har bir dars uchta boʻlakdan iborat:
+#   dars + mashq (20 savol) + oʻqish matni (audio bilan). Batch = 3 ta dars.
+
+### Block B: Birinchi gaplar (9–22)
+9. Salomlashish, xayrlashish va oʻzini tanishtirish                [done]
+10. 명사 + 입니다 / 입니까? — rasmiy "…dir" va savol                 [done]
+11. Nutq darajalari: 존댓말 va 반말 — kimga qanday gapirasiz         [done]
+12. 은/는 va 이/가 — mavzu va ega orasidagi farq                    [next]
+13. 을/를 va 의 — toʻldiruvchi va egalik
+14. 에 va 에서 — joy va vaqt qoʻshimchalari
+15. 도, 만, 부터, 까지, 하고/와/과 — qolgan asosiy qoʻshimchalar
+16. 이거/그거/저거 va 여기/거기/저기 — koʻrsatish olmoshlari
+17. 있다 / 없다 — bor va yoʻq
+18. Feʼl va sifat + 아/어요 — norasmiy hurmat shakli
+19. Feʼl va sifat + ㅂ니다/습니다 — rasmiy shakl
+20. Oʻtgan zamon: 았/었어요
+21. Inkor 1: 안 + feʼl va 지 않다
+22. Inkor 2: 못 + feʼl va 지 못하다 (imkoniyat yoʻqligi)
+
+### Block C: Kundalik muloqot (23–36)
+23. Sonlar 1: 한자어 sonlar (일, 이, 삼…) va ular nimani sanaydi
+24. Sonlar 2: 고유어 sonlar (하나, 둘…) va sanoq soʻzlari 개 / 명 / 마리
+25. Vaqt, sana va hafta kunlari
+26. Soʻroq soʻzlari: 누구, 뭐, 어디, 언제, 왜, 어떻게
+27. 동사 + (으)ㄹ 거예요 — kelasi zamon va taxmin
+28. 동사 + 고 싶다 — xohish bildirish
+29. 동사 + (으)세요 / 지 마세요 — buyruq va taqiq
+30. 동사 + (으)ㄹ 수 있다/없다 — imkon va imkonsizlik
+31. 동사 + 아/어 주다 — iltimos qilish va yordam berish
+32. Notoʻgʻri feʼllar 1: ㅂ, ㄷ, 으 tuslanishi
+33. 고 — sanash va ketma-ketlik
+34. 지만 — qarama-qarshilik
+35. 아/어서 — sabab va vaqt ketma-ketligi
+36. (으)면 — shart va faraz
+
+### Block D: Oʻrta darajaga sakrash (37–52)
+37. 보다 (더/덜) va 제일 / 가장 — taqqoslash
+38. 기 전에 / (으)ㄴ 후에 — oldin va keyin
+39. (으)면서 — bir vaqtda ikki ish
+40. (으)려고 하다 — niyat va reja
+41. 아/어 보다 — sinab koʻrish va tajriba
+42. 고 있다 va 아/어 있다 — davom etayotgan ish va holat
+43. Aniqlovchi 1: 동사 + 는 (hozirgi zamon)
+44. Aniqlovchi 2: 동사 + (으)ㄴ (oʻtgan), (으)ㄹ (kelasi)
+45. Aniqlovchi 3: 형용사 + (으)ㄴ
+46. Otlashtirish: 는 것, 기, (으)ㅁ
+47. Notoʻgʻri feʼllar 2: 르, ㅅ, ㅎ tuslanishi
+48. (으)니까 — subyektiv sabab va kashfiyot
+49. 기 때문에 / 명사 + 때문에 — obyektiv sabab
+50. 아/어야 하다 / 되다 — majburiyat va zarurat
+51. 아/어도 되다 va (으)면 안 되다 — ruxsat va taqiq
+52. (으)ㄴ/는/(으)ㄹ 것 같다 — taxmin
+
+### Block E: Oʻrta-yuqori (53–68)
+53. (으)ㄹ 줄 알다/모르다 — usulni bilish va bilmaslik
+54. 기로 하다 — qaror va vaʼda
+55. 잖아요 — "axir bilasiz-ku"
+56. Majhul nisbat: -이/히/리/기- va 아/어지다
+57. Orttirma nisbat: -이/히/리/기/우/구/추- va 게 하다
+58. 아/어 버리다 — tugallanish va his-tuygʻu
+59. 아/어 놓다 va 아/어 두다 — holatni saqlash
+60. Koʻchirma gap 1: -다고 하다 (darak), -냐고 하다 (soʻroq)
+61. Koʻchirma gap 2: -라고 하다 (buyruq), -자고 하다 (taklif)
+62. Koʻchirma gapning qisqargan shakllari: -대요, -냬요, -래요, -재요
+63. (으)ㄹ 뻔하다 — "sal boʻlmasa…"
+64. (으)ㄹ 테니까 — soʻzlovchi irodasiga asoslangan sabab
+65. (으)ㄹ수록 — "…gan sari"
+66. (으)ㄴ/는 반면에 — qarama-qarshi tomon
+67. (으)ㄹ 뿐만 아니라 — "faqat emas, balki"
+68. (으)ㄴ/는 데다가 — vaziyatning ogʻirlashuvi
+
+### Block F: Yuqori daraja (69–86)
+69. 는 바람에, (으)ㄴ/는 탓에, 느라고 — salbiy sabab va bahona
+70. (으)ㄹ걸 (그랬다), 았/었어야 했다 — afsus va pushaymonlik
+71. (으)ㄹ 겸, 고자 — maqsad va niyatning kuchli shakli
+72. 기 마련이다, (으)ㄴ/는 법이다 — tabiiy va muqarrar natija
+73. (으)ㄹ지도 모르다, 기 십상이다 — kuchli taxmin va ehtimol
+74. 자마자, 기가 무섭게 — darhol ketma-ketlik
+75. 는 길에, 는 김에 — yoʻl-yoʻlakay va fursatdan foydalanib
+76. 고 나서, (으)ㄴ 채로 — tugagach va shu holicha
+77. 다가, 다가 보면, 다가 보니 — harakat oʻrtasida va yangi natija
+78. 았/었더라면 — oʻtmishga oid teskari faraz
+79. 다가는 — salbiy natijadan ogohlantirish
+80. 아/어 봤자 — behuda urinish
+81. (으)ㄹ지라도, 더라도, (으)ㅁ에도 불구하고 — kuchli yon berish
+82. (으)ㄹ 정도로 / (으)ㄹ 만큼 — daraja va oʻlchov
+83. 에 불과하다, (으)ㄹ 따름이다, (으)ㄹ 뿐이다 — "shunchaki"
+84. 든지 든지, 건 건 — tanlovdan qatʼi nazar
+85. (느)니 차라리, (으)나 마나 — yaxshiroq muqobil va befoyda ish
+86. (으)ㅁ으로써 — vosita va usulning otlashgan shakli
+
+### Block G: Ilgʻor nuance va yozma uslub (87–100)
+87. (으)ㄹ 지경이다 — chidab boʻlmas holat va chegara
+88. (으)ㄹ 리가 없다 / (으)ㄹ 턱이 없다 — kuchli shubha va inkor
+89. 명사 + 에 달려 있다 — "…ga bogʻliq"
+90. (으)려던 참이다 — "aynan shuni qilmoqchi edim"
+91. (이)나 다름없다, (으)ㄴ/는 셈이다 — natijada bir xil
+92. 다면서요, 냐면서요 — eshitilgan gapni tasdiqlash
+93. 다니, 라니 — hayrat va taajjub
+94. (으)려니 하다 — oʻz-oʻzicha taxmin qilish
+95. (이)랍시고, (으)ㄴ/는답시고 — kinoya va taʼna
+96. 기 짝이 없다 — oʻta darajani urgʻulash
+97. (으)로 말미암아, (으)로 인해 — rasmiy yozma sabab
+98. 거늘, 기로서니 — adabiy va rasmiy yon berish
+99. 사자성어 va idiomalar — yozma nutqni bezash
+100. Hammasi birga: TOPIK II darajasidagi matnni grammatik tahlil qilish

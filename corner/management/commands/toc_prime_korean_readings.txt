@@ -1,0 +1,64 @@
+# ── Collection metadata (read by Claude) ─────────────────────────────
+SUBJECT:    Korean            (icon: bi-translate, color: #d97706)
+COLLECTION: Prime Korean Readings
+AUTHOR:     powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_CORNER.md, with the Prime Korean overrides below.
+# ─────────────────────────────────────────────────────────────────────
+
+# Prime Korean Readings — the third leg of each lesson
+#
+# Every reading belongs to ONE Prime Korean tutorial and its `order` IS the lesson
+# number, so PK-24's reading is order 24. Nothing here stands alone: the tutorial
+# teaches the pattern, the practice drills it, the reading shows it living in a text.
+#
+# ── The three rules that make these different from Keimyung stories ──
+#
+# 1. FOCUS. The reading uses the lesson's own pattern at least twice, and lists it in
+#    the story's `grammar` block (StoryGrammar) so it appears under the vocabulary.
+# 2. CUMULATIVE. Anything taught in an EARLIER lesson may be used freely; anything
+#    from a LATER lesson may not. Check the toc before reaching for a pattern.
+#    This is why the early readings are short and the later ones read like real Korean.
+# 3. LINKED. After importing a reading, re-run import_tutorials with --republish so
+#    the tutorial's `"stories": [...]` key attaches it and the Reading card appears
+#    on the lesson page.
+#
+# ── Length curve (guide, not a rule) ──
+#   PK-9  … PK-20   40–70 words    4–7 sentences, present tense, tiny dialogues
+#   PK-21 … PK-45   70–120 words   a small scene with a beginning and an end
+#   PK-46 … PK-70   120–180 words  connected paragraphs, past + quoted speech
+#   PK-71 … PK-100  180–260 words  near-TOPIK II length and register
+#
+# ── Vocabulary ──
+#   Mark new words inline: <span class="cn-word" data-tr="tarjima">단어</span>
+#   6–10 marks in early readings, 10–16 later. data-pos: verb / adj / adv.
+#   Names: the user's pupils (Afsona, Jasur, Sherbek, Dilnoza, Bekzod) alongside
+#   Korean names (민수, 지영, 수진, 하나).
+#
+# ── Questions ──
+#   2–3 `questions` (StoryQuestion MCQs), in Uzbek, at least one testing whether the
+#   reader actually understood the focus grammar rather than just the plot.
+#
+# ── Audio ──
+#   python manage.py gen_corner_audio --collection="Prime Korean Readings" --only <n>
+#   Default voice ko-KR-SunHiNeural is right for these. mp3s land under
+#   corner/management/commands/audio/prime-korean-readings/ and are committed.
+#
+# NOTE: PK-1 … PK-8 are the Hangul lessons — they teach letters, not grammar, so they
+# have NO readings. The list starts at PK-9.
+# Mark finished ranges with [done].
+
+## Prime Korean Readings — 프라임 한국어 읽기
+
+9.  (PK-9 · salomlashish) 안녕하세요                                  [done]
+10. (PK-10 · 입니다/입니까) 저는 학생입니다                             [done]
+11. (PK-11 · 존댓말/반말) 누구한테 어떻게 말해요?                        [done]
+12. (PK-12 · 은/는, 이/가) 제 친구 아프소나                              [next]
+13. (PK-13 · 을/를, 의) 제 가방 안에
+14. (PK-14 · 에, 에서) 학교에서, 집에서
+15. (PK-15 · 도, 만, 부터, 까지) 아침부터 저녁까지
+16. (PK-16 · 이거/여기) 이거 뭐예요?
+17. (PK-17 · 있다/없다) 우리 교실에 있어요
+18. (PK-18 · 아/어요) 저는 매일 공부해요
+19. (PK-19 · ㅂ니다/습니다) 자기소개를 합니다
+20. (PK-20 · 았/었어요) 어제 무엇을 했어요?
