@@ -136,7 +136,7 @@
                 {% if nav_threads_count %}<span class="nav-badge">{{ nav_threads_count }}</span>{% endif %}
             </a>
 
-            <a href="{% url 'tutorial_list' %}" class="nav-link {% block nav_tutorials %}{% endblock %}">
+            <a href="{% url 'playlist_list' %}" class="nav-link {% block nav_tutorials %}{% endblock %}">
                 <i class="bi bi-journal-text"></i>
                 <span class="nav-label">{% trans "Tutorials" %}</span>
                 {% if nav_tutorials_count %}<span class="nav-badge">{{ nav_tutorials_count }}</span>{% endif %}
@@ -349,7 +349,7 @@
         <a href="{% url 'index' %}" class="mob-nav-item {% block mob_nav_index %}{% endblock %}">
             <i class="bi bi-grid-1x2-fill"></i><span>{% trans "Home" %}</span>
         </a>
-        <a href="{% url 'tutorial_list' %}" class="mob-nav-item {% block mob_nav_tutorials %}{% endblock %}">
+        <a href="{% url 'playlist_list' %}" class="mob-nav-item {% block mob_nav_tutorials %}{% endblock %}">
             <i class="bi bi-journal-text"></i><span>{% trans "Tutorials" %}</span>
         </a>
         <a href="{% url 'exam_list' %}" class="mob-nav-item {% block mob_nav_exam %}{% endblock %}">
