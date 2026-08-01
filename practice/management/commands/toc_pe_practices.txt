@@ -105,27 +105,29 @@ TUTORIAL: PE-<n>:   (each practice links to its own tutorial)
 78. 40 Everyday Phrasal Verbs by Topic                  [done]
 79. Countable and Uncountable Revisited: Expressions of Quantity[done]
 80. Articles: The Advanced Cases                        [done]
-81. Punctuation: Comma, Apostrophe, Colon, Semicolon    [next]
-82. Capital Letters and Spelling Rules
+81. Punctuation: Comma, Apostrophe, Colon, Semicolon    [done]
+82. Capital Letters and Spelling Rules                  [done]
 
 ### Block G: Advanced and Stylish English (83–92)   level: hard
-83. Emphasis with do, does, did
-84. Inversion: Never have I seen ...
-85. Cleft Sentences: It was ... / What I need is ...
-86. Participle Clauses
-87. The Unreal Past: It's time, would rather, as if
-88. Linking Words for Writing: however, therefore, although
-89. Word Formation: Prefixes and Suffixes
-90. Collocations: Words That Live Together
-91. Formal vs Informal English
-92. The 20 Mistakes Uzbek Speakers Make Most
+83. Emphasis with do, does, did                         [done]
+84. Inversion: Never have I seen ...                    [done]
+85. Cleft Sentences: It was ... / What I need is ...    [done]
+86. Participle Clauses                                  [done]
+87. The Unreal Past: It's time, would rather, as if     [done]
+88. Linking Words for Writing: however, therefore, although[done]
+89. Word Formation: Prefixes and Suffixes               [done]
+90. Collocations: Words That Live Together              [done]
+91. Formal vs Informal English                          [done]
+92. The 20 Mistakes Uzbek Speakers Make Most            [done]
 
 ### Block H: Grammar at Work — Putting It Together (93–100)   level: hard
-93. Writing an Email: Grammar That Sounds Polite
-94. Telling a Story: Narrative Tenses in Action
-95. Giving Your Opinion and Disagreeing Politely
-96. Describing People, Places and Things
-97. Describing Charts, Trends and Numbers
-98. Making Excuses, Apologising and Explaining
-99. Small Talk and Everyday Conversation Grammar
-100. Your Grammar Toolkit: The One-Page Review of Everything
+93. Writing an Email: Grammar That Sounds Polite        [done]
+94. Telling a Story: Narrative Tenses in Action         [done]
+95. Giving Your Opinion and Disagreeing Politely        [done]
+96. Describing People, Places and Things                [done]
+97. Describing Charts, Trends and Numbers               [done]
+98. Making Excuses, Apologising and Explaining          [done]
+99. Small Talk and Everyday Conversation Grammar        [done]
+100. Your Grammar Toolkit: The One-Page Review of Everything[done]
+
+# ── ALL 100 DONE (2026-08-01) — 100 practices, 2000 questions ──

@@ -228,7 +228,7 @@ body {
   </div>
   <div class="q-text">{{ question.question_text|striptags }}</div>
   <div class="choices-grid">
-    {% for choice in question.choices.all %}
+    {% for choice in question.display_choices %}
     <div class="choice-item {% if show_answers and choice.is_correct %}correct{% endif %}">
       <span class="choice-letter">{% if forloop.counter == 1 %}A{% elif forloop.counter == 2 %}B{% elif forloop.counter == 3 %}C{% else %}D{% endif %}.</span>
       <span>{{ choice.text }}{% if show_answers and choice.is_correct %} &#10003;{% endif %}</span>

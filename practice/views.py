@@ -248,7 +248,7 @@ def take_practice(request, attempt_id):
             return redirect('finish_practice', attempt_id=attempt.id)
         return redirect(f"{request.path}?q={question_index + 1}")
 
-    choices = list(current_question.choices.all())
+    choices = current_question.display_choices()
 
     answered_ids = set(UserAnswer.objects.filter(attempt=attempt).values_list('question_id', flat=True))
 
@@ -370,7 +370,7 @@ def practice_result(request, attempt_id):
 
             question_results.append({
                 'question': question,
-                'choices': question.choices.all(),
+                'choices': question.display_choices(),
                 'selected_ids': selected_ids,
                 'correct_ids': correct_ids,
                 'is_correct': is_correct,
@@ -662,7 +662,7 @@ def review_attempt(request, attempt_id):
 
         question_results.append({
             'question': question,
-            'choices': question.choices.all(),
+            'choices': question.display_choices(),
             'selected_ids': selected_ids,
             'correct_ids': correct_ids,
             'is_correct': is_correct,
@@ -741,7 +741,7 @@ def export_practices(request):
                 practice.time_limit if practice.time_limit is not None else '',
             ]
             if question is not None:
-                choices = list(question.choices.all())
+                choices = question.display_choices()
                 row += [
                     q_num,
                     _clean(strip_tags(question.question_text)),

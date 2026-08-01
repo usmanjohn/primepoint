@@ -1,3 +1,5 @@
+import random
+
 from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
 from django.utils.html import strip_tags
@@ -69,6 +71,19 @@ class PracticeQuestion(models.Model):
     def __str__(self):
         clean_text = strip_tags(self.question_text).strip()
         return f"{clean_text[:40]}... ({self.practice.title[:20]})"
+
+    def display_choices(self):
+        """Choices in a stable, shuffled order — use this everywhere a pupil sees them.
+
+        Choices are stored in the order they were written, and whole imported banks
+        were written with the correct answer first, which lets a pupil score without
+        reading. Seeding the shuffle with the question id keeps the order identical
+        for every pupil and on every page (taking, results, review, print), so it is
+        purely a display fix: no stored data changes and answer ids stay valid.
+        """
+        choices = list(self.choices.all())
+        random.Random(self.id).shuffle(choices)
+        return choices
 
 
 class PracticeChoice(models.Model):
