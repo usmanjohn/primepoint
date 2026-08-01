@@ -65,12 +65,25 @@ HANGUL_RE = re.compile(r'[가-힣]')
 # Block-level tags whose end marks a narration chunk boundary.
 BLOCK_END_RE = re.compile(r'</p>|</h[1-6]>|</li>|</blockquote>|<br\s*/?>', re.I)
 TAG_RE = re.compile(r'<[^>]+>')
-# A dialogue paragraph often starts with a speaker tag ("Mike: Hello there") — the
-# name must NOT be read aloud. Strip a single name-like token (no spaces) directly
-# before a colon; ordinary sentences that contain a colon ("In the end: ...", which
-# has a space before the colon) are left untouched. (User reported hearing "Mike:"
-# spoken in older dialogue narration — this removes it.)
-SPEAKER_PREFIX_RE = re.compile(r"^\s*[A-Za-z][\w'.\-]{0,18}\s*:\s+")
+# A dialogue paragraph often starts with a speaker tag — the name must NOT be read
+# aloud. Two passes, because stories mark speakers two different ways:
+#
+# 1. MARKUP (the reliable one). Prime Korean readings write the speaker as
+#    "<p><strong>벡조드:</strong> 안녕하세요?" — strip the whole leading bold-name-colon
+#    run before tags are removed. Language-agnostic and cannot touch ordinary prose,
+#    since it only fires on a <strong>/<b> that is the first thing in the block and
+#    whose text ends in a colon.
+SPEAKER_TAG_RE = re.compile(
+    r'^\s*<(strong|b)\b[^>]*>\s*[^<]{1,30}?:\s*</\1>\s*', re.I
+)
+# 2. PLAIN TEXT (fallback, for stories that write "Mike: Hello there" with no markup).
+#    Strips one or two name-like tokens directly before a colon. The first character
+#    class covers Latin AND Hangul — it was Latin-only, which is why Korean speaker
+#    names ("벡조드:", "그 사람:") were still being spoken. Ordinary sentences that
+#    contain a colon later in the line are left untouched because this is anchored.
+SPEAKER_PREFIX_RE = re.compile(
+    r"^\s*[A-Za-z가-힣][\w'.\-]{0,18}(?:\s+[\w'.\-]{1,18})?\s*:\s+"
+)
 # Emoji / pictographs / dingbats — TTS should never see them.
 EMOJI_RE = re.compile(
     '[\U0001F000-\U0001FAFF\U00002600-\U000027BF\U0001F1E6-\U0001F1FF'
@@ -116,14 +129,22 @@ class Command(BaseCommand):
         """Title + one clean text chunk per block element of the body."""
         chunks = []
         for raw in [story.title] + BLOCK_END_RE.split(story.body or ''):
-            text = html.unescape(TAG_RE.sub(' ', raw))
+            raw = SPEAKER_TAG_RE.sub('', raw, count=1)   # "<strong>벡조드:</strong> " → ""
+            # Inline tags are removed WITHOUT inserting a space: a cn-word span wraps
+            # the bare word and the particle follows it immediately, so
+            # '<span ...>빵</span>을' must stay '빵을'. Substituting a space gave '빵 을',
+            # which makes the narrator break the 연음화 link the lessons teach.
+            # Block boundaries are already handled by BLOCK_END_RE splitting above.
+            text = html.unescape(TAG_RE.sub('', raw))
             text = EMOJI_RE.sub('', text)
             text = re.sub(r'\s+', ' ', text).strip()
             if not text:
                 continue
             if korean and not HANGUL_RE.search(text):
                 continue  # Uzbek note / decoration — not for the Korean narrator
-            text = SPEAKER_PREFIX_RE.sub('', text, count=1)  # never voice a "Mike:" tag
+            text = SPEAKER_PREFIX_RE.sub('', text, count=1).strip()  # never voice "Mike:"
+            if not text:
+                continue  # the block was nothing but a speaker tag
             chunks.append(text)
         return chunks
 

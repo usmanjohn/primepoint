@@ -33,12 +33,12 @@ TUTORIAL: PK-<n>:   (each practice links to its own tutorial)
 9. Salomlashish, xayrlashish va oʻzini tanishtirish              [done]
 10. 명사 + 입니다 / 입니까?                                        [done]
 11. Nutq darajalari: 존댓말 va 반말                                [done]
-12. 은/는 va 이/가                                                [next]
-13. 을/를 va 의
-14. 에 va 에서
-15. 도, 만, 부터, 까지, 하고/와/과
-16. 이거/그거/저거 va 여기/거기/저기
-17. 있다 / 없다
+12. 은/는 va 이/가                                                [done]
+13. 있다 / 없다                                                   [done]
+14. 에 va 에서                                                    [done]
+15. 이거/그거/저거 va 여기/거기/저기                                [next]
+16. 도, 만, 부터, 까지, 하고/와/과
+17. 을/를 va 의
 18. Feʼl va sifat + 아/어요
 19. Feʼl va sifat + ㅂ니다/습니다
 20. Oʻtgan zamon: 았/었어요

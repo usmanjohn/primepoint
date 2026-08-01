@@ -40,17 +40,23 @@ PLAYLIST: Prime Korean
 9. Salomlashish, xayrlashish va oʻzini tanishtirish                [done]
 10. 명사 + 입니다 / 입니까? — rasmiy "…dir" va savol                 [done]
 11. Nutq darajalari: 존댓말 va 반말 — kimga qanday gapirasiz         [done]
-12. 은/는 va 이/가 — mavzu va ega orasidagi farq                    [next]
-13. 을/를 va 의 — toʻldiruvchi va egalik
-14. 에 va 에서 — joy va vaqt qoʻshimchalari
-15. 도, 만, 부터, 까지, 하고/와/과 — qolgan asosiy qoʻshimchalar
-16. 이거/그거/저거 va 여기/거기/저기 — koʻrsatish olmoshlari
-17. 있다 / 없다 — bor va yoʻq
+12. 은/는 va 이/가 — mavzu va ega orasidagi farq                    [done]
+13. 있다 / 없다 — bor va yoʻq                                      [done]
+14. 에 va 에서 — joy va vaqt qoʻshimchalari                        [done]
+15. 이거/그거/저거 va 여기/거기/저기 — koʻrsatish olmoshlari          [next]
+16. 도, 만, 부터, 까지, 하고/와/과 — qolgan asosiy qoʻshimchalar
+17. 을/를 va 의 — toʻldiruvchi va egalik
 18. Feʼl va sifat + 아/어요 — norasmiy hurmat shakli
 19. Feʼl va sifat + ㅂ니다/습니다 — rasmiy shakl
 20. Oʻtgan zamon: 았/었어요
 21. Inkor 1: 안 + feʼl va 지 않다
 22. Inkor 2: 못 + feʼl va 지 못하다 (imkoniyat yoʻqligi)
+# ↑ Block B tartibi 2026-08-02 da qayta tuzildi. Sabab: 을/를 — oʻtimli feʼl
+#   qoʻshimchasi, feʼl esa PK-18 da keladi, ya'ni 을/를 ni 13-darsda oʻrgatib
+#   boʻlmasdi. Shuning uchun 있다/없다 (avval 17) 13-oʻringa koʻchirildi — u kesim
+#   beradi va 에 qoʻshimchasini ishlatishga imkon yaratadi; 을/를 esa feʼl darsining
+#   oldiga (17) tushirildi. toc_pk_practices.txt va toc_prime_korean_readings.txt
+#   ham shu tartibga moslashtirilgan.
 
 ### Block C: Kundalik muloqot (23–36)
 23. Sonlar 1: 한자어 sonlar (일, 이, 삼…) va ular nimani sanaydi

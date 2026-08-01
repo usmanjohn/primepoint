@@ -19,6 +19,15 @@ AUTHOR:     powerty
 # 2. CUMULATIVE. Anything taught in an EARLIER lesson may be used freely; anything
 #    from a LATER lesson may not. Check the toc before reaching for a pattern.
 #    This is why the early readings are short and the later ones read like real Korean.
+#
+#    ONE EXPLICIT EXCEPTION — the narrative frame. Until verbs arrive (PK-18), a story
+#    needs a way to say who did what between the lines of dialogue. So the NARRATION
+#    may use this small closed list as plain vocabulary, always with a cn-word gloss:
+#        있습니다 · 없습니다 · 갑니다 · 왔습니다 · 만났습니다 · 말했습니다 · 주었습니다
+#    The DIALOGUE lines stay strictly inside what the lessons have taught — that is
+#    where the pupil is meant to recognise the pattern. This is exactly how graded
+#    readers work: the frame carries the story, the dialogue carries the grammar.
+#    (Written down 2026-08-02 after the PK-9 reading did this without saying so.)
 # 3. LINKED. After importing a reading, re-run import_tutorials with --republish so
 #    the tutorial's `"stories": [...]` key attaches it and the Reading card appears
 #    on the lesson page.
@@ -53,12 +62,12 @@ AUTHOR:     powerty
 9.  (PK-9 · salomlashish) 안녕하세요                                  [done]
 10. (PK-10 · 입니다/입니까) 저는 학생입니다                             [done]
 11. (PK-11 · 존댓말/반말) 누구한테 어떻게 말해요?                        [done]
-12. (PK-12 · 은/는, 이/가) 제 친구 아프소나                              [next]
-13. (PK-13 · 을/를, 의) 제 가방 안에
-14. (PK-14 · 에, 에서) 학교에서, 집에서
-15. (PK-15 · 도, 만, 부터, 까지) 아침부터 저녁까지
-16. (PK-16 · 이거/여기) 이거 뭐예요?
-17. (PK-17 · 있다/없다) 우리 교실에 있어요
+12. (PK-12 · 은/는, 이/가) 제 친구 아프소나                              [done]
+13. (PK-13 · 있다/없다) 저는 친구가 있습니다                             [done]
+14. (PK-14 · 에, 에서) 우리 교실에 있습니다                              [done]
+15. (PK-15 · 이거/여기) 이것은 무엇입니까?                               [next]
+16. (PK-16 · 도, 만, 부터, 까지) 아침부터 저녁까지
+17. (PK-17 · 을/를, 의) 제 가방 안에
 18. (PK-18 · 아/어요) 저는 매일 공부해요
 19. (PK-19 · ㅂ니다/습니다) 자기소개를 합니다
 20. (PK-20 · 았/었어요) 어제 무엇을 했어요?
