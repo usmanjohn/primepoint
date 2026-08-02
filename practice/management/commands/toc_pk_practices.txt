@@ -42,8 +42,24 @@ TUTORIAL: PK-<n>:   (each practice links to its own tutorial)
 18. Feʼl va sifat + 아/어요                                        [done]
 19. Feʼl va sifat + ㅂ니다/습니다                                    [done]
 20. Oʻtgan zamon: 았/었어요                                        [done]
-21. Inkor 1: 안 + feʼl va 지 않다                                  [next]
-22. Inkor 2: 못 + feʼl va 지 못하다
+21. Inkor 1: 안 + feʼl va 지 않다                                  [done]
+22. Inkor 2: 못 + feʼl va 지 못하다                                 [done]
 
-# Blocks C–G mirror toc_prime_korean.txt one-to-one (23–100).
+### Block C: Kundalik muloqot (23–36)   level: easy · 20 savol
+23. Sonlar 1: 한자어 sonlar                                        [done]
+24. Sonlar 2: 고유어 sonlar va sanoq soʻzlari                      [done]
+25. Vaqt, sana va hafta kunlari                                   [done]
+26. Soʻroq soʻzlari: 누구, 뭐, 어디, 언제, 왜, 어떻게                  [next]
+27. 동사 + (으)ㄹ 거예요
+28. 동사 + 고 싶다
+29. 동사 + (으)세요 / 지 마세요
+30. 동사 + (으)ㄹ 수 있다/없다
+31. 동사 + 아/어 주다
+32. Notoʻgʻri feʼllar 1
+33. 고 — sanash va ketma-ketlik
+34. 지만 — qarama-qarshilik
+35. 아/어서 — sabab va vaqt
+36. (으)면 — shart va faraz
+
+# Blocks D–G mirror toc_prime_korean.txt one-to-one (37–100).
 # Add each block's lines here as it is reached.

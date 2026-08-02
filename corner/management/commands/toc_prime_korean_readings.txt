@@ -71,5 +71,11 @@ AUTHOR:     powerty
 18. (PK-18 · 아/어요) 저는 매일 공부해요                                 [done]
 19. (PK-19 · ㅂ니다/습니다) 자기소개를 합니다                             [done]
 20. (PK-20 · 았/었어요) 어제 무엇을 했어요?                              [done]
+21. (PK-21 · 안/지 않다) 저는 커피를 안 마셔요                            [done]
+22. (PK-22 · 못/지 못하다) 오늘은 못 가요                                [done]
+23. (PK-23 · 한자어 sonlar) 전화번호가 몇 번이에요?                     [done]
+24. (PK-24 · 고유어 + 단위명사) 학생이 몇 명 있어요?                      [done]
+25. (PK-25 · vaqt/sana) 몇 시에 학교에 가요?                          [done]
+26. (PK-26 · soʻroq soʻzlari) 언제 만나요?                            [next]
 # ↑ PK-18 dan boshlab feʼl tizimi ochildi — bundan keyingi matnlar yuqoridagi
 #   "narrative frame" istisnosiga muhtoj emas.

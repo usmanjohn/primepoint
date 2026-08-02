@@ -49,8 +49,9 @@ PLAYLIST: Prime Korean
 18. Feʼl va sifat + 아/어요 — norasmiy hurmat shakli                [done]
 19. Feʼl va sifat + ㅂ니다/습니다 — rasmiy shakl                     [done]
 20. Oʻtgan zamon: 았/었어요                                        [done]
-21. Inkor 1: 안 + feʼl va 지 않다                                  [next]
-22. Inkor 2: 못 + feʼl va 지 못하다 (imkoniyat yoʻqligi)
+21. Inkor 1: 안 + feʼl va 지 않다                                  [done]
+22. Inkor 2: 못 + feʼl va 지 못하다 (imkoniyat yoʻqligi)             [done]
+# ↑ Block B COMPLETE — PK-9 … PK-22, har biri dars + mashq + oʻqish matni.
 # ↑ Block B tartibi 2026-08-02 da qayta tuzildi. Sabab: 을/를 — oʻtimli feʼl
 #   qoʻshimchasi, feʼl esa PK-18 da keladi, ya'ni 을/를 ni 13-darsda oʻrgatib
 #   boʻlmasdi. Shuning uchun 있다/없다 (avval 17) 13-oʻringa koʻchirildi — u kesim
@@ -59,10 +60,10 @@ PLAYLIST: Prime Korean
 #   ham shu tartibga moslashtirilgan.
 
 ### Block C: Kundalik muloqot (23–36)
-23. Sonlar 1: 한자어 sonlar (일, 이, 삼…) va ular nimani sanaydi
-24. Sonlar 2: 고유어 sonlar (하나, 둘…) va sanoq soʻzlari 개 / 명 / 마리
-25. Vaqt, sana va hafta kunlari
-26. Soʻroq soʻzlari: 누구, 뭐, 어디, 언제, 왜, 어떻게
+23. Sonlar 1: 한자어 sonlar (일, 이, 삼…) va ular nimani sanaydi     [done]
+24. Sonlar 2: 고유어 sonlar (하나, 둘…) va sanoq soʻzlari 개/명/마리   [done]
+25. Vaqt, sana va hafta kunlari                                   [done]
+26. Soʻroq soʻzlari: 누구, 뭐, 어디, 언제, 왜, 어떻게                  [next]
 27. 동사 + (으)ㄹ 거예요 — kelasi zamon va taxmin
 28. 동사 + 고 싶다 — xohish bildirish
 29. 동사 + (으)세요 / 지 마세요 — buyruq va taqiq
