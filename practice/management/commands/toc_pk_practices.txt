@@ -36,13 +36,13 @@ TUTORIAL: PK-<n>:   (each practice links to its own tutorial)
 12. 은/는 va 이/가                                                [done]
 13. 있다 / 없다                                                   [done]
 14. 에 va 에서                                                    [done]
-15. 이거/그거/저거 va 여기/거기/저기                                [next]
-16. 도, 만, 부터, 까지, 하고/와/과
-17. 을/를 va 의
-18. Feʼl va sifat + 아/어요
-19. Feʼl va sifat + ㅂ니다/습니다
-20. Oʻtgan zamon: 았/었어요
-21. Inkor 1: 안 + feʼl va 지 않다
+15. 이거/그거/저거 va 여기/거기/저기                                [done]
+16. 도, 만, 부터, 까지, 하고/와/과                                 [done]
+17. 을/를 va 의                                                   [done]
+18. Feʼl va sifat + 아/어요                                        [done]
+19. Feʼl va sifat + ㅂ니다/습니다                                    [done]
+20. Oʻtgan zamon: 았/었어요                                        [done]
+21. Inkor 1: 안 + feʼl va 지 않다                                  [next]
 22. Inkor 2: 못 + feʼl va 지 못하다
 
 # Blocks C–G mirror toc_prime_korean.txt one-to-one (23–100).
