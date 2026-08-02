@@ -76,6 +76,12 @@ AUTHOR:     powerty
 23. (PK-23 · 한자어 sonlar) 전화번호가 몇 번이에요?                     [done]
 24. (PK-24 · 고유어 + 단위명사) 학생이 몇 명 있어요?                      [done]
 25. (PK-25 · vaqt/sana) 몇 시에 학교에 가요?                          [done]
-26. (PK-26 · soʻroq soʻzlari) 언제 만나요?                            [next]
+26. (PK-26 · soʻroq soʻzlari) 언제 만나요?                            [done]
+27. (PK-27 · (으)ㄹ 거예요) 내일 뭐 할 거예요?                          [done]
+28. (PK-28 · 고 싶다) 저는 한국에 가고 싶어요                            [done]
+29. (PK-29 · (으)세요) 여기 앉으세요                                   [done]
+30. (PK-30 · (으)ㄹ 수 있다) 저는 김치를 먹을 수 있어요                  [done]
+31. (PK-31 · 아/어 주다) 사진 좀 찍어 주세요                            [done]
+32. (PK-32 · notoʻgʻri feʼllar) 날씨가 더워요                          [next]
 # ↑ PK-18 dan boshlab feʼl tizimi ochildi — bundan keyingi matnlar yuqoridagi
 #   "narrative frame" istisnosiga muhtoj emas.
