@@ -82,6 +82,12 @@ AUTHOR:     powerty
 29. (PK-29 · (으)세요) 여기 앉으세요                                   [done]
 30. (PK-30 · (으)ㄹ 수 있다) 저는 김치를 먹을 수 있어요                  [done]
 31. (PK-31 · 아/어 주다) 사진 좀 찍어 주세요                            [done]
-32. (PK-32 · notoʻgʻri feʼllar) 날씨가 더워요                          [next]
+32. (PK-32 · notoʻgʻri feʼllar) 날씨가 더워요                          [done]
+33. (PK-33 · 고) 밥을 먹고 학교에 가요                                 [done]
+34. (PK-34 · 지만) 한국어는 어렵지만 재미있어요                          [done]
+35. (PK-35 · 아/어서) 배가 아파서 학교에 못 갔어요                        [done]
+36. (PK-36 · (으)면) 시간이 있으면 같이 가요                             [done]
+37. (PK-37 · 보다/제일) 우리 반에서 누가 제일 커요?                       [done]
+38. (PK-38 · 기 전에/(으)ㄴ 후에) …                                   [next]
 # ↑ PK-18 dan boshlab feʼl tizimi ochildi — bundan keyingi matnlar yuqoridagi
 #   "narrative frame" istisnosiga muhtoj emas.

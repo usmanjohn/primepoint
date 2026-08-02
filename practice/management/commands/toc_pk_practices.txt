@@ -55,11 +55,17 @@ TUTORIAL: PK-<n>:   (each practice links to its own tutorial)
 29. 동사 + (으)세요 / 지 마세요                                  [done]
 30. 동사 + (으)ㄹ 수 있다/없다                                    [done]
 31. 동사 + 아/어 주다                                           [done]
-32. Notoʻgʻri feʼllar 1                                        [next]
-33. 고 — sanash va ketma-ketlik
-34. 지만 — qarama-qarshilik
-35. 아/어서 — sabab va vaqt
-36. (으)면 — shart va faraz
+32. Notoʻgʻri feʼllar 1                                        [done]
+33. 고 — sanash va ketma-ketlik                                 [done]
+34. 지만 — qarama-qarshilik                                      [done]
+35. 아/어서 — sabab va vaqt                                      [done]
+36. (으)면 — shart va faraz                                      [done]
+
+### Block D: Oʻrta darajaga sakrash (37–52)   level: medium · 20 savol
+37. 보다 (더/덜) va 제일 / 가장 — taqqoslash                       [done]
+38. 기 전에 / (으)ㄴ 후에 — oldin va keyin                         [next]
+39. (으)면서 — bir vaqtda ikki ish
+40. (으)려고 하다 — niyat va reja
 
 # Blocks D–G mirror toc_prime_korean.txt one-to-one (37–100).
 # Add each block's lines here as it is reached.
