@@ -83,9 +83,16 @@ TUTORIAL: PK-<n>:   (each practice links to its own tutorial)
 53. (으)ㄹ 줄 알다/모르다 — usulni bilish va bilmaslik               [done]
 54. 기로 하다 — qaror va vaʼda                                     [done]
 55. 잖아요 — "axir bilasiz-ku"                                     [done]
-56. Majhul nisbat: -이/히/리/기- va 아/어지다                        [next]
-57. Orttirma nisbat: -이/히/리/기/우/구/추- va 게 하다
-58. 아/어 버리다 — tugallanish va his-tuygʻu
+56. Majhul nisbat: -이/히/리/기- va 아/어지다                        [done]
+57. Orttirma nisbat: -이/히/리/기/우/구/추- va 게 하다                [done]
+58. 아/어 버리다 — tugallanish va his-tuygʻu                        [done]
+59. 아/어 놓다 va 아/어 두다 — holatni saqlash                       [done]
+60. Koʻchirma gap 1: -다고 하다 (darak), -냐고 하다 (soʻroq)         [done]
+61. Koʻchirma gap 2: -라고 하다 (buyruq), -자고 하다 (taklif)        [done]
+62. Koʻchirma gapning qisqargan shakllari: -대요, -냬요, -래요, -재요 [done]
+63. (으)ㄹ 뻔하다 — "sal boʻlmasa…"                                 [done]
+64. (으)ㄹ 테니까 — soʻzlovchi irodasiga asoslangan sabab            [done]
+65. (으)ㄹ수록 — "…gan sari"                                       [next]
 
 # Blocks D–G mirror toc_prime_korean.txt one-to-one (37–100).
 # Add each block's lines here as it is reached.

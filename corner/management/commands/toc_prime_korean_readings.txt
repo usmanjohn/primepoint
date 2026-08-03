@@ -38,9 +38,27 @@ AUTHOR:     powerty
 #   PK-46 … PK-70   120–180 words  connected paragraphs, past + quoted speech
 #   PK-71 … PK-100  180–260 words  near-TOPIK II length and register
 #
+# ── STORIES, NOT DIALOGUES (user's rule, 2026-08-03, from PK-59 on) ──
+#   The early readings were mostly 가/나 dialogue because the grammar was tiny.
+#   From PK-59 the grammar is advanced enough to carry real prose, so:
+#     * Write a STORY — narration in past tense, a small arc (something happens,
+#       something changes), a narrator who can describe, not just two people talking.
+#     * Dialogue is seasoning, not the dish. 2-4 quoted lines inside a story is
+#       plenty; a whole reading of 가/나 turns is what we are moving away from.
+#     * Modern and everyday is good: phones, buses, cafés, group chats, part-time
+#       jobs, exams, K-pop, delivery food, sharing a charger. Keep it light.
+#     * VARY the shape between batches — a diary entry, a letter, a folk-tale
+#       retelling, a "what happened at school today", a small mystery. Anything.
+#   The focus pattern does NOT have to appear many times. **2-3 natural uses beats
+#   6 forced ones** — if the pattern fights the story, use it less and let the
+#   story win. A reading nobody enjoys teaches nothing.
+#
 # ── Vocabulary ──
 #   Mark new words inline: <span class="cn-word" data-tr="tarjima">단어</span>
-#   6–10 marks in early readings, 10–16 later. data-pos: verb / adj / adv.
+#   6–10 marks in early readings, 10–16 up to PK-55. From PK-56 the readings are
+#   longer narratives and carry more genuinely new vocabulary — 20–32 marks is
+#   normal there. Mark real new words, not words the pupil already met.
+#   data-pos: verb / adj / adv.
 #   Names: the user's pupils (Afsona, Jasur, Sherbek, Dilnoza, Bekzod) alongside
 #   Korean names (민수, 지영, 수진, 하나).
 #
@@ -106,6 +124,15 @@ AUTHOR:     powerty
 53. (PK-53 · (으)ㄹ 줄 알다) 김치를 만들 줄 알아요?                     [done]
 54. (PK-54 · 기로 하다) 우리 같이 여행하기로 했어요                     [done]
 55. (PK-55 · 잖아요) 제가 어제 말했잖아요                              [done]
-56. (PK-56 · majhul nisbat) …                                     [next]
+56. (PK-56 · majhul nisbat) 문이 안 열려요                          [done]
+57. (PK-57 · orttirma nisbat) 동생을 깨우고 밥을 먹여요              [done]
+58. (PK-58 · 아/어 버리다) 숙제를 다 해 버렸어요                      [done]
+59. (PK-59 · 아/어 놓다/두다) 열어 놓은 창문                         [done]
+60. (PK-60 · 다고/냐고 하다) 소문                                   [done]
+61. (PK-61 · 라고/자고 하다) 산에 가자고 했어요 — 일기                [done]
+62. (PK-62 · -대요/-래요) 아프소나의 편지 (xat)                       [done]
+63. (PK-63 · (으)ㄹ 뻔하다) 어제는 정말 위험했어요                     [done]
+64. (PK-64 · (으)ㄹ 테니까) 학교 축제 준비                            [done]
+65. (PK-65 · (으)ㄹ수록) …                                         [next]
 # ↑ PK-18 dan boshlab feʼl tizimi ochildi — bundan keyingi matnlar yuqoridagi
 #   "narrative frame" istisnosiga muhtoj emas.
