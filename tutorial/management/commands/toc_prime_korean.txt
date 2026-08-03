@@ -106,18 +106,18 @@ PLAYLIST: Prime Korean
 62. Koʻchirma gapning qisqargan shakllari: -대요, -냬요, -래요, -재요   [done]
 63. (으)ㄹ 뻔하다 — "sal boʻlmasa…"                                  [done]
 64. (으)ㄹ 테니까 — soʻzlovchi irodasiga asoslangan sabab             [done]
-65. (으)ㄹ수록 — "…gan sari"                                        [next]
-66. (으)ㄴ/는 반면에 — qarama-qarshi tomon
-67. (으)ㄹ 뿐만 아니라 — "faqat emas, balki"
-68. (으)ㄴ/는 데다가 — vaziyatning ogʻirlashuvi
+65. (으)ㄹ수록 — "…gan sari"                                        [done]
+66. (으)ㄴ/는 반면에 — qarama-qarshi tomon                           [done]
+67. (으)ㄹ 뿐만 아니라 — "faqat emas, balki"                          [done]
+68. (으)ㄴ/는 데다가 — vaziyatning ogʻirlashuvi                      [done]
 
 ### Block F: Yuqori daraja (69–86)
-69. 는 바람에, (으)ㄴ/는 탓에, 느라고 — salbiy sabab va bahona
-70. (으)ㄹ걸 (그랬다), 았/었어야 했다 — afsus va pushaymonlik
-71. (으)ㄹ 겸, 고자 — maqsad va niyatning kuchli shakli
-72. 기 마련이다, (으)ㄴ/는 법이다 — tabiiy va muqarrar natija
-73. (으)ㄹ지도 모르다, 기 십상이다 — kuchli taxmin va ehtimol
-74. 자마자, 기가 무섭게 — darhol ketma-ketlik
+69. 는 바람에, (으)ㄴ/는 탓에, 느라고 — salbiy sabab va bahona        [done]
+70. (으)ㄹ걸 (그랬다), 았/었어야 했다 — afsus va pushaymonlik         [done]
+71. (으)ㄹ 겸, 고자 — maqsad va niyatning kuchli shakli              [done]
+72. 기 마련이다, (으)ㄴ/는 법이다 — tabiiy va muqarrar natija          [done]
+73. (으)ㄹ지도 모르다, 기 십상이다 — kuchli taxmin va ehtimol          [done]
+74. 자마자, 기가 무섭게 — darhol ketma-ketlik                        [next]
 75. 는 길에, 는 김에 — yoʻl-yoʻlakay va fursatdan foydalanib
 76. 고 나서, (으)ㄴ 채로 — tugagach va shu holicha
 77. 다가, 다가 보면, 다가 보니 — harakat oʻrtasida va yangi natija

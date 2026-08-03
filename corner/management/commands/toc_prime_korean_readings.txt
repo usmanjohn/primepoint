@@ -133,6 +133,15 @@ AUTHOR:     powerty
 62. (PK-62 · -대요/-래요) 아프소나의 편지 (xat)                       [done]
 63. (PK-63 · (으)ㄹ 뻔하다) 어제는 정말 위험했어요                     [done]
 64. (PK-64 · (으)ㄹ 테니까) 학교 축제 준비                            [done]
-65. (PK-65 · (으)ㄹ수록) …                                         [next]
+65. (PK-65 · (으)ㄹ수록) 산을 오르는 나무꾼 (xalq ertagi)              [done]
+66. (PK-66 · 반면에) 딜노자의 블로그: 서울과 타슈켄트 (blog)            [done]
+67. (PK-67 · 뿐만 아니라) 누가 도와줬어요? (sirli hikoya)             [done]
+68. (PK-68 · 데다가) 산속 호텔 후기 — 별 두 개 (onlayn sharh)         [done]
+69. (PK-69 · 바람에/탓에/느라고) 지각 대장 베크조드                   [done]
+70. (PK-70 · ㄹ걸 그랬다) 후배들에게 — 졸업생의 조언 (maslahat)       [done]
+71. (PK-71 · (으)ㄹ 겸/고자) 한국 교환학생 지원서 (rasmiy ariza)      [done]
+72. (PK-72 · 마련이다/법이다) 할머니의 세 가지 말                     [done]
+73. (PK-73 · 을지도/십상이다) 한국 여행 팁 여섯 가지 (maslahat)        [done]
+74. (PK-74 · 자마자) …                                           [next]
 # ↑ PK-18 dan boshlab feʼl tizimi ochildi — bundan keyingi matnlar yuqoridagi
 #   "narrative frame" istisnosiga muhtoj emas.
