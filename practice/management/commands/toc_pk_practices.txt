@@ -72,9 +72,20 @@ TUTORIAL: PK-<n>:   (each practice links to its own tutorial)
 44. Aniqlovchi 2: 동사 + (으)ㄴ (oʻtgan), (으)ㄹ (kelasi)          [done]
 45. Aniqlovchi 3: 형용사 + (으)ㄴ                                 [done]
 46. Otlashtirish: 는 것, 기, (으)ㅁ                               [done]
-47. Notoʻgʻri feʼllar 2: 르, ㅅ, ㅎ tuslanishi                    [next]
-48. (으)니까 — subyektiv sabab va kashfiyot
-49. 기 때문에 / 명사 + 때문에 — obyektiv sabab
+47. Notoʻgʻri feʼllar 2: 르, ㅅ, ㅎ tuslanishi                    [done]
+48. (으)니까 — subyektiv sabab va kashfiyot                        [done]
+49. 기 때문에 / 명사 + 때문에 — obyektiv sabab                      [done]
+50. 아/어야 하다 / 되다 — majburiyat va zarurat                     [done]
+51. 아/어도 되다 va (으)면 안 되다 — ruxsat va taqiq                 [done]
+52. (으)ㄴ/는/(으)ㄹ 것 같다 — taxmin                               [done]
+
+### Block E: Oʻrta-yuqori (53–68)   level: medium · 20 savol
+53. (으)ㄹ 줄 알다/모르다 — usulni bilish va bilmaslik               [done]
+54. 기로 하다 — qaror va vaʼda                                     [done]
+55. 잖아요 — "axir bilasiz-ku"                                     [done]
+56. Majhul nisbat: -이/히/리/기- va 아/어지다                        [next]
+57. Orttirma nisbat: -이/히/리/기/우/구/추- va 게 하다
+58. 아/어 버리다 — tugallanish va his-tuygʻu
 
 # Blocks D–G mirror toc_prime_korean.txt one-to-one (37–100).
 # Add each block's lines here as it is reached.

@@ -97,6 +97,15 @@ AUTHOR:     powerty
 44. (PK-44 · (으)ㄴ/(으)ㄹ aniqlovchi) 어제 본 영화                    [done]
 45. (PK-45 · 형용사 + (으)ㄴ) 우리 동네에서 제일 좋은 곳                [done]
 46. (PK-46 · 는 것/기) 한국어 배우는 것이 재미있어요                   [done]
-47. (PK-47 · 르/ㅅ/ㅎ notoʻgʻri feʼllar) …                          [next]
+47. (PK-47 · 르/ㅅ/ㅎ notoʻgʻri feʼllar) 빨간 우산이 어디에 있어요?      [done]
+48. (PK-48 · (으)니까) 비가 오니까 우산을 가져가세요                    [done]
+49. (PK-49 · 기 때문에) 시험 때문에 바빠요                            [done]
+50. (PK-50 · 아/어야 하다) 내일까지 숙제를 내야 해요                     [done]
+51. (PK-51 · 아/어도 되다) 여기에서 사진을 찍어도 돼요?                 [done]
+52. (PK-52 · 것 같다) 비가 올 것 같아요                               [done]
+53. (PK-53 · (으)ㄹ 줄 알다) 김치를 만들 줄 알아요?                     [done]
+54. (PK-54 · 기로 하다) 우리 같이 여행하기로 했어요                     [done]
+55. (PK-55 · 잖아요) 제가 어제 말했잖아요                              [done]
+56. (PK-56 · majhul nisbat) …                                     [next]
 # ↑ PK-18 dan boshlab feʼl tizimi ochildi — bundan keyingi matnlar yuqoridagi
 #   "narrative frame" istisnosiga muhtoj emas.
