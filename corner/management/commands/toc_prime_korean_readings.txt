@@ -88,6 +88,15 @@ AUTHOR:     powerty
 35. (PK-35 · 아/어서) 배가 아파서 학교에 못 갔어요                        [done]
 36. (PK-36 · (으)면) 시간이 있으면 같이 가요                             [done]
 37. (PK-37 · 보다/제일) 우리 반에서 누가 제일 커요?                       [done]
-38. (PK-38 · 기 전에/(으)ㄴ 후에) …                                   [next]
+38. (PK-38 · 기 전에/(으)ㄴ 후에) 자기 전에 무엇을 해요?                [done]
+39. (PK-39 · (으)면서) 음악을 들으면서 공부해요                        [done]
+40. (PK-40 · (으)려고 하다) 방학에 뭐 하려고 해요?                     [done]
+41. (PK-41 · 아/어 보다) 한국 음식을 먹어 보세요                        [done]
+42. (PK-42 · 고 있다/아 있다) 지금 뭐 하고 있어요?                     [done]
+43. (PK-43 · 동사 + 는) 제가 자주 가는 카페                           [done]
+44. (PK-44 · (으)ㄴ/(으)ㄹ aniqlovchi) 어제 본 영화                    [done]
+45. (PK-45 · 형용사 + (으)ㄴ) 우리 동네에서 제일 좋은 곳                [done]
+46. (PK-46 · 는 것/기) 한국어 배우는 것이 재미있어요                   [done]
+47. (PK-47 · 르/ㅅ/ㅎ notoʻgʻri feʼllar) …                          [next]
 # ↑ PK-18 dan boshlab feʼl tizimi ochildi — bundan keyingi matnlar yuqoridagi
 #   "narrative frame" istisnosiga muhtoj emas.

@@ -77,16 +77,16 @@ PLAYLIST: Prime Korean
 
 ### Block D: Oʻrta darajaga sakrash (37–52)
 37. 보다 (더/덜) va 제일 / 가장 — taqqoslash                         [done]
-38. 기 전에 / (으)ㄴ 후에 — oldin va keyin                           [next]
-39. (으)면서 — bir vaqtda ikki ish
-40. (으)려고 하다 — niyat va reja
-41. 아/어 보다 — sinab koʻrish va tajriba
-42. 고 있다 va 아/어 있다 — davom etayotgan ish va holat
-43. Aniqlovchi 1: 동사 + 는 (hozirgi zamon)
-44. Aniqlovchi 2: 동사 + (으)ㄴ (oʻtgan), (으)ㄹ (kelasi)
-45. Aniqlovchi 3: 형용사 + (으)ㄴ
-46. Otlashtirish: 는 것, 기, (으)ㅁ
-47. Notoʻgʻri feʼllar 2: 르, ㅅ, ㅎ tuslanishi
+38. 기 전에 / (으)ㄴ 후에 — oldin va keyin                           [done]
+39. (으)면서 — bir vaqtda ikki ish                                  [done]
+40. (으)려고 하다 — niyat va reja                                   [done]
+41. 아/어 보다 — sinab koʻrish va tajriba                           [done]
+42. 고 있다 va 아/어 있다 — davom etayotgan ish va holat              [done]
+43. Aniqlovchi 1: 동사 + 는 (hozirgi zamon)                        [done]
+44. Aniqlovchi 2: 동사 + (으)ㄴ (oʻtgan), (으)ㄹ (kelasi)            [done]
+45. Aniqlovchi 3: 형용사 + (으)ㄴ                                   [done]
+46. Otlashtirish: 는 것, 기, (으)ㅁ                                 [done]
+47. Notoʻgʻri feʼllar 2: 르, ㅅ, ㅎ tuslanishi                      [next]
 48. (으)니까 — subyektiv sabab va kashfiyot
 49. 기 때문에 / 명사 + 때문에 — obyektiv sabab
 50. 아/어야 하다 / 되다 — majburiyat va zarurat
