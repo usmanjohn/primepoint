@@ -53,6 +53,33 @@ AUTHOR:     powerty
 #   6 forced ones** — if the pattern fights the story, use it less and let the
 #   story win. A reading nobody enjoys teaches nothing.
 #
+# ── FORMAL WRITTEN STYLE — 한다체 (user's rule, 2026-08-04, from PK-74 on) ──
+#   Up to PK-73 the readings narrated in 해요체 (있어요, 했어요). From PK-74 the
+#   grammar being taught (고자, 법이다, 기 십상이다, 다가는, 았더라면 …) is written
+#   grammar — it barely appears in speech, so a 해요체 reading fights its own content.
+#   So from PK-74 the NARRATION is in **문어체 / 한다체**, the style of books,
+#   newspapers, essays and the TOPIK 쓰기 answer:
+#       있다 · 없다 · 하다 · 한다 · 했다 · 이다 · 아니다 · 갔다 · 크다 · 좋다
+#     verb  present  → 간다 / 먹는다        (받침 없다 → ㄴ다, 받침 있다 → 는다)
+#     adjective      → 크다 / 좋다          (plain dictionary form)
+#     past           → 갔다 / 먹었다 / 좋았다
+#     이다           → 학생이다 / 가수다     (NOT 학생이라 in narration)
+#     future/guess   → 갈 것이다 / 좋을 것이다
+#     negative       → 가지 않는다 / 좋지 않다 / 아니다
+#   QUOTED SPEECH keeps its own register — people still say 해요체 or 합니다체 inside
+#   quotation marks. Only the narrator switches. Letters and diaries written *to*
+#   someone may stay 해요체/합니다체 if the shape demands it; say so in the summary.
+#   This also quietly prepares TOPIK II 쓰기 51-54, which must be written in 한다체.
+#
+# ── WHAT TO WRITE ABOUT from PK-74 (same user's rule) ──
+#   Two families, alternating:
+#     * 정보문 — a short informative/explanatory text, the kind 읽기 and 쓰기 use:
+#       how something works, a small survey with numbers, a trend, a comparison,
+#       a piece of science or history, advice grounded in facts.
+#     * 인생 이야기 — a life story: someone's turning point, a failure that taught
+#       something, a person who changed a small town, a grandparent's decision.
+#   Both carry grammar better than a café chat does, and both are what TOPIK reads like.
+#
 # ── Vocabulary ──
 #   Mark new words inline: <span class="cn-word" data-tr="tarjima">단어</span>
 #   6–10 marks in early readings, 10–16 up to PK-55. From PK-56 the readings are
@@ -142,6 +169,21 @@ AUTHOR:     powerty
 71. (PK-71 · (으)ㄹ 겸/고자) 한국 교환학생 지원서 (rasmiy ariza)      [done]
 72. (PK-72 · 마련이다/법이다) 할머니의 세 가지 말                     [done]
 73. (PK-73 · 을지도/십상이다) 한국 여행 팁 여섯 가지 (maslahat)        [done]
-74. (PK-74 · 자마자) …                                           [next]
+74. (PK-74 · 자마자/기가 무섭게) 빨리빨리, 한국 (정보문)              [done]
+75. (PK-75 · 길에/김에) 문 닫은 서점 (인생 이야기)                    [done]
+76. (PK-76 · 고 나서/채로) 잠을 방해하는 다섯 가지 습관 (정보문)      [done]
+77. (PK-77 · 다가/보면/보니) 매일 십 분 (인생 이야기)                [done]
+78. (PK-78 · 았/었더라면) 한글이 없었더라면 (정보문)                  [done]
+79. (PK-79 · 다가는) 코치의 마지막 말 (인생 이야기)                   [done]
+80. (PK-80 · 아/어 봤자) 벼락치기는 통하지 않는다 (정보문)            [done]
+81. (PK-81 · 더라도/지라도/불구하고) 스무 번째 편지 (인생 이야기)     [done]
+82. (PK-82 · 정도로/만큼) 가장 작은 것과 가장 큰 것 (정보문)         [done]
+83. (PK-83 · 뿐/따름/불과) 삼 초 (인생 이야기)                       [done]
+84. (PK-84 · 든지 든지) 어떤 언어를 배우든지 (정보문)                 [done]
+85. (PK-85 · 느니/나 마나) 반대로 간 사람 (인생 이야기)               [done]
+86. (PK-86 · (으)ㅁ으로써) 쓰레기를 줄인 도시 (정보문)                 [done]
+87. (PK-87 · 지경이다) 이사하는 날 (인생 이야기)                      [done]
+88. (PK-88 · 리가 없다) 사람들이 믿지 않았던 것들 (정보문)             [done]
+89. (PK-89 · 에 달려 있다) …                                    [next]
 # ↑ PK-18 dan boshlab feʼl tizimi ochildi — bundan keyingi matnlar yuqoridagi
 #   "narrative frame" istisnosiga muhtoj emas.

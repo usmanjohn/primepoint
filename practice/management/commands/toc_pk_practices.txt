@@ -101,7 +101,22 @@ TUTORIAL: PK-<n>:   (each practice links to its own tutorial)
 71. (으)ㄹ 겸, 고자 — maqsad va niyatning kuchli shakli             [done]
 72. 기 마련이다, (으)ㄴ/는 법이다 — tabiiy va muqarrar natija         [done]
 73. (으)ㄹ지도 모르다, 기 십상이다 — kuchli taxmin va ehtimol         [done]
-74. 자마자, 기가 무섭게 — darhol ketma-ketlik                       [next]
+74. 자마자, 기가 무섭게 — darhol ketma-ketlik                       [done]
+75. 는 길에, 는 김에 — yoʻl-yoʻlakay va fursatdan foydalanib        [done]
+76. 고 나서, (으)ㄴ 채로 — tugagach va shu holicha                   [done]
+77. 다가, 다가 보면, 다가 보니 — harakat oʻrtasida va yangi natija   [done]
+78. 았/었더라면 — oʻtmishga oid teskari faraz                       [done]
+79. 다가는 — salbiy natijadan ogohlantirish                        [done]
+80. 아/어 봤자 — behuda urinish                                     [done]
+81. (으)ㄹ지라도, 더라도, (으)ㅁ에도 불구하고 — kuchli yon berish    [done]
+82. (으)ㄹ 정도로 / (으)ㄹ 만큼 — daraja va oʻlchov                 [done]
+83. 에 불과하다, (으)ㄹ 따름이다, (으)ㄹ 뿐이다 — "shunchaki"       [done]
+84. 든지 든지, 건 건 — tanlovdan qatʼi nazar                       [done]
+85. (느)니 차라리, (으)나 마나 — yaxshiroq muqobil va befoyda ish   [done]
+86. (으)ㅁ으로써 — vosita va usulning otlashgan shakli              [done]
+87. (으)ㄹ 지경이다 — chidab boʻlmas holat va chegara                [done]
+88. (으)ㄹ 리가 없다 / (으)ㄹ 턱이 없다 — kuchli shubha va inkor      [done]
+89. 명사 + 에 달려 있다 — "…ga bogʻliq"                             [next]
 
 # Blocks D–G mirror toc_prime_korean.txt one-to-one (37–100).
 # Add each block's lines here as it is reached.
