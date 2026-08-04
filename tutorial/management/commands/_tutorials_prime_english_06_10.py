@@ -36,6 +36,7 @@ TUTORIALS = [
             "The most used verb in English. Learn am/is/are, their short forms, negatives, "
             "questions — and why Uzbek speakers keep forgetting to say it at all."
         ),
+        "stories": ["We Are the New Team"],
         "content": """
 <h2>PE-6: The Verb "to be": am / is / are</h2>
 
@@ -339,6 +340,7 @@ constantly use <b>it</b> for weather, time and distance:</p>
             "How to say that something exists — the English answer to 'bor' and 'yoʻq', with "
             "the agreement rule, negatives, questions and the there/it difference."
         ),
+        "stories": ["There Is a Cat on the Roof"],
         "content": """
 <h2>PE-7: There is / There are</h2>
 
@@ -606,6 +608,7 @@ literary, and the verb order still cannot be Uzbek order.</p>
             "Four little words that point: near or far, one or many — plus how English uses "
             "them on the phone, in time expressions and when introducing people."
         ),
+        "stories": ["This Is My Desk"],
         "content": """
 <h2>PE-8: This, That, These, Those</h2>
 
@@ -877,6 +880,7 @@ a plural verb.</p>
             "The tense of your everyday life. Learn when to use the Present Simple and master "
             "the one letter that causes more mistakes than any other: the third-person -s."
         ),
+        "stories": ["Every Morning at Six"],
         "content": """
 <h2>PE-9: Present Simple: Habits, Facts and Timetables</h2>
 
@@ -1154,6 +1158,7 @@ tomorrow. If a timetable, a programme or a calendar decides it, use Present Simp
             "Meet do and does — the helper verbs that build every Present Simple negative and "
             "question, and the golden rule that stops 'she doesn't works'."
         ),
+        "stories": ["Does Anyone Know Where the Key Is?"],
         "content": """
 <h2>PE-10: Present Simple: Negatives and Questions</h2>
 

@@ -76,6 +76,39 @@ The lessons' visual kit (`pe-formula` pattern strips, `pe-ex` colour-coded examp
 JavaScript to a lesson, and never invent a `pe-*` class without adding it to that section and
 to the style guide first.
 
+### Prime English readings (the third leg) — "Prime English Readings" in `corner`
+Like Prime Korean, **every PE lesson gets a Corner reading with audio**: the tutorial teaches
+the pattern, the practice drills it, the reading shows it living in a text. Collection
+"Prime English Readings" (subject **English**, `order` 6) — story `order` = the lesson number,
+so PE-24's reading is order 24. When the user asks (e.g. "make the next 5 Prime English
+readings"), batches of 5 matching the tutorial files:
+1. Read `corner/management/commands/STYLE_GUIDE_CORNER.md` **plus the overrides in
+   `corner/management/commands/toc_prime_english_readings.txt`** (that header holds the whole
+   policy: language split, the cumulative rule, the PE-1…PE-8 narrative-frame exception, the
+   length curve, the written-register switch at PE-83, vocab/question counts).
+2. Find where to continue:
+   `Story.objects.filter(collection__title='Prime English Readings').order_by('-order').first()`
+3. Write `corner/management/commands/_stories_prime_english_<range>.py` as `SUBJECT = {...}` +
+   `COLLECTION = {...}` + `STORIES = [...]` (copy SUBJECT/COLLECTION unchanged from the
+   previous batch — `import_corner` overwrites the shelf's fields).
+   **Language policy is the mirror of Prime Korean**: story text, titles and questions in
+   **English**; `summary`, `cn-word data-tr` glosses, `grammar` meanings and question
+   `explanation`s in **Uzbek**. Bold the focus pattern with `<strong>` where it appears
+   (house style of the English collections) and never put a `cn-word` inside a `<strong>`.
+4. Import, generate audio, attach it, then link the readings to the lessons:
+   ```
+   python manage.py import_corner corner/management/commands/_stories_prime_english_<range>.py --author=prime
+   python manage.py gen_corner_audio --collection="Prime English Readings"     # en-US-JennyNeural
+   python manage.py import_corner_audio corner/management/commands/audio/prime-english-readings --collection="Prime English Readings"
+   ```
+   then add `"stories": ["<reading title>"],` to each lesson in
+   `_tutorials_prime_english_<range>.py` (right before `"content"`) and re-run
+   `import_tutorials <that file> --author=prime --republish` so the Reading card appears next
+   to the Practice card. The story must exist first.
+5. Mark the range `[done]` in the readings toc, then give the four
+   `railway run python manage.py ...` commands **in that order** (import_corner →
+   import_corner_audio → import_tutorials --republish) — automatically, every time.
+
 ## Creating Prime Korean tutorials (bulk) — koreys tili grammatikasi
 **Prime Korean** is the 100-lesson Korean course in `tutorial`, held together by a
 `TutorialPlaylist` called "Prime Korean". Titles are `PK-1: …`. It mirrors Prime English's

@@ -36,6 +36,7 @@ TUTORIALS = [
             "The 180 verbs that refuse -ed — and they are the ones you need most. Learn them "
             "in sound families instead of one long alphabetical list."
         ),
+        "stories": ["He Took the Wrong Bus"],
         "content": """
 <h2>PE-21: Past Simple: Irregular Verbs</h2>
 
@@ -341,6 +342,7 @@ the verb goes back to its plain base form.</p>
             "One helper verb — did — handles every person and every verb, regular or "
             "irregular. Plus the rule that stops 'Did you went?' forever."
         ),
+        "stories": ["Nobody Locked the Door"],
         "content": """
 <h2>PE-22: Past Simple: Negatives and Questions</h2>
 
@@ -621,6 +623,7 @@ answer in English.</p>
             "What were you doing at eight o'clock last night? The tense that paints the "
             "background of a story: was/were + verb-ing."
         ),
+        "stories": ["While the Others Were Sleeping"],
         "content": """
 <h2>PE-23: Past Continuous: The Interrupted Moment</h2>
 
@@ -893,6 +896,7 @@ all day yesterday, all morning, while, as, when … was/were, the whole evening<
             "The long action and the short one: how English tells a story with two tenses, and "
             "which of them follows 'when' and which follows 'while'."
         ),
+        "stories": ["The Goal He Did Not See"],
         "content": """
 <h2>PE-24: Past Simple vs Past Continuous: when and while</h2>
 
@@ -1164,6 +1168,7 @@ middle. If the joining word sits in the middle, no comma is needed.</p>
             "How to say what was true then but is not true now — the structure that turns any "
             "sentence into a memory, and the trap of 'be used to'."
         ),
+        "stories": ["My Grandfather Used to Walk to School"],
         "content": """
 <h2>PE-25: used to and would: Past Habits</h2>
 

@@ -36,6 +36,7 @@ TUTORIALS = [
             "The small words that pin a sentence to a moment: how long, since when, by when — "
             "and the for/since pair that decides half the marks in an exam."
         ),
+        "stories": ["Two Years and Eleven Days"],
         "content": """
 <h2>PE-31: Time Expressions: ago, for, since, by, until</h2>
 
@@ -308,6 +309,7 @@ The difference is what happens <b>during</b> the time.</p>
             "The tense Uzbek does not have. Learn have/has + V3 and the one idea behind it: a "
             "past action whose result you can still feel today."
         ),
+        "stories": ["Somebody Has Found It"],
         "content": """
 <h2>PE-32: Present Perfect: Form and the Idea of "It Matters Now"</h2>
 
@@ -603,6 +605,7 @@ PE-21 told you to learn them in threes.</p>
             "How long have you lived here? The structure for something that started in the past "
             "and is STILL true — where Uzbek uses the present and English does not."
         ),
+        "stories": ["The Dog Who Waited at the Station"],
         "content": """
 <h2>PE-33: Present Perfect with for and since</h2>
 
@@ -888,6 +891,7 @@ and <b>since</b> answers <em>Since when?</em></p>
             "Six small words that give the Present Perfect its colour — and the exact position "
             "each one takes in the sentence."
         ),
+        "stories": ["Has the Tortoise Finished Yet?"],
         "content": """
 <h2>PE-34: Present Perfect with already, yet, just, still, ever, never</h2>
 
@@ -1188,6 +1192,7 @@ exchange between two friends.</p>
             "The choice that decides more exam marks than any other in English — with one "
             "reliable test, the signal-word lists, and the news pattern used by every reporter."
         ),
+        "stories": ["The Watch in the Second Drawer"],
         "content": """
 <h2>PE-35: Present Perfect vs Past Simple — The Big Decision</h2>
 

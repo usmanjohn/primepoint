@@ -36,6 +36,7 @@ TUTORIALS = [
             "Three tiny words that Uzbek covers with one ending. Learn the zoom logic — at a "
             "point, on a surface, in a space — and the phrases you must simply know."
         ),
+        "stories": ["The Shop on the Corner"],
         "content": """
 <h2>PE-16: Prepositions of Place: in, on, at</h2>
 
@@ -295,6 +296,7 @@ use <b>on</b>. If you have to sit down and stay there, use <b>in</b>.</p>
             "The same three words, a new logic: at for clock times, on for days and dates, in "
             "for longer periods — and the time words that take no preposition at all."
         ),
+        "stories": ["On Sunday, in April, at Nine"],
         "content": """
 <h2>PE-17: Prepositions of Time: in, on, at</h2>
 
@@ -556,6 +558,7 @@ all</b>. Putting one in is one of the most frequent learner mistakes.</p>
             "Six words that open any conversation, the word order that must follow them, and "
             "the English habit of leaving the preposition at the end."
         ),
+        "stories": ["Twenty Questions"],
         "content": """
 <h2>PE-18: Question Words: who, what, where, when, why, how</h2>
 
@@ -854,6 +857,7 @@ into <s>What means this word?</s> English needs the full structure:</p>
             "Your first step into the past. Only two forms to learn — was and were — plus "
             "there was / there were and the time words that send a sentence backwards."
         ),
+        "stories": ["It Was Only a Photo"],
         "content": """
 <h2>PE-19: Past Simple of "to be": was / were</h2>
 
@@ -1125,6 +1129,7 @@ days</em>.</p>
             "One ending for every person — the past is easier than the present. Includes the "
             "-ed spelling rules and the three sounds that ending can make."
         ),
+        "stories": ["The Day the Bakery Opened"],
         "content": """
 <h2>PE-20: Past Simple: Regular Verbs and the -ed Ending</h2>
 

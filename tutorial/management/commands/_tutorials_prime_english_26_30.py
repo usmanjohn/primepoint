@@ -36,6 +36,7 @@ TUTORIALS = [
             "One word for every person, no endings to remember — and five different jobs, from "
             "deciding on the spot to promising, predicting and offering help."
         ),
+        "stories": ["Afandi and the Emir's Donkey"],
         "content": """
 <h2>PE-26: Future with "will": Decisions, Promises, Predictions</h2>
 
@@ -320,6 +321,7 @@ future. It uses the Present Simple instead.</p>
             "The future you already decided on, and the future you can see coming. Learn "
             "be going to — the closest thing English has to Uzbek's -moqchiman."
         ),
+        "stories": ["The Shepherd Who Read the Sky"],
         "content": """
 <h2>PE-27: Future with "be going to": Plans and Evidence</h2>
 
@@ -592,6 +594,7 @@ a row sound heavy, so English usually drops the second one when a place is menti
             "The tense you thought meant 'now' also talks about tomorrow — when the time and "
             "place are fixed and somebody else is expecting you."
         ),
+        "stories": ["The Last Week in the Village"],
         "content": """
 <h2>PE-28: Present Continuous for Future Arrangements</h2>
 
@@ -874,6 +877,7 @@ who decided: a company and its timetable, or you and another person.</p>
             "Three futures, one decision. A four-question ladder that picks the right one every "
             "time — plus the rule that bans will after when and if."
         ),
+        "stories": ["Three Ways to Say Tomorrow"],
         "content": """
 <h2>PE-29: will vs going to vs Present Continuous</h2>
 
@@ -1139,6 +1143,7 @@ half of the sentence.</p>
             "This time tomorrow, what will you be doing? The tense for an action in progress at "
             "a future moment — and the politest way to ask about someone's plans."
         ),
+        "stories": ["This Time Next Year"],
         "content": """
 <h2>PE-30: Future Continuous: What You Will Be Doing</h2>
 

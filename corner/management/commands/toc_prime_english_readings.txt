@@ -1,0 +1,244 @@
+# ── Collection metadata (read by Claude) ─────────────────────────────
+SUBJECT:    English           (icon: bi-globe2, color: #2563eb, order: 2)
+COLLECTION: Prime English Readings   (order: 6)
+AUTHOR:     powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_CORNER.md, with the Prime English overrides below.
+# ─────────────────────────────────────────────────────────────────────
+
+# Prime English Readings — the third leg of each Prime English lesson
+#
+# The Prime Korean twin of this file is toc_prime_korean_readings.txt, and this
+# collection works exactly the same way: every reading belongs to ONE Prime English
+# tutorial and its `order` IS the lesson number, so PE-24's reading is order 24.
+# The tutorial teaches the pattern, the practice drills it, the reading shows it
+# living in a text.
+#
+# ── LANGUAGE POLICY — the mirror image of Prime Korean ──
+#   Prime Korean is taught IN UZBEK because the pupil cannot read Hangul in lesson 1.
+#   Prime English is taught IN ENGLISH (see STYLE_GUIDE_PRIME_ENGLISH.md), so:
+#     * story `body` and `title`      → English
+#     * `summary`                     → Uzbek (it is a card blurb for the pupil)
+#     * `cn-word` `data-tr` glosses   → Uzbek, always
+#     * `grammar` `pattern`           → English; `meaning` → Uzbek
+#     * `questions` `text`/`choices`  → English; `explanation` → Uzbek
+#   That matches the sibling English collections (Easy/Medium/Advanced Reads) and the
+#   tutorials themselves: English is the teaching language, Uzbek is the safety net.
+#
+# ── The three rules that make these different from Easy/Medium Reads ──
+#
+# 1. FOCUS. The reading uses the lesson's own pattern at least twice, and lists it in
+#    the story's `grammar` block (StoryGrammar) so it appears under the vocabulary.
+#    The pattern is ALSO wrapped in <strong> where it appears in the text — the house
+#    style of the English collections, so the pupil can find it at a glance.
+#    Keep vocab marks OFF the bolded grammar words (never nest a cn-word in a <strong>).
+# 2. CUMULATIVE. Anything taught in an EARLIER lesson may be used freely; anything
+#    from a LATER lesson may not. Check the lesson list below before reaching for a
+#    tense. This is why PE-2's reading is six short sentences and PE-90's reads like
+#    a magazine article.
+#
+#    ONE EXPLICIT EXCEPTION — the narrative frame (PE-1 … PE-8). Before "to be"
+#    (PE-6), plurals (PE-3) and articles (PE-4) are all in place, English cannot make
+#    a readable paragraph at all. So in those first eight readings the NARRATION may
+#    use this small closed list as plain vocabulary:
+#        is · are · a / an / the · and · but · has / have · in / on / at · plural -s
+#    Everything else stays inside what the lessons have taught. This is exactly how
+#    graded readers work: the frame carries the story, the sentences carry the grammar.
+# 3. LINKED. After importing a reading, re-run import_tutorials with --republish so
+#    the tutorial's `"stories": [...]` key attaches it and the Reading card appears
+#    on the lesson page (next to the Practice card).
+#
+# ── Length curve (guide, not a rule) ──
+#   PE-1  … PE-18    70–120 words   present tense, short sentences, tiny dialogue
+#   PE-19 … PE-41   120–180 words   a small scene with a beginning and an end
+#   PE-42 … PE-66   180–240 words   connected paragraphs, reported speech, conditionals
+#   PE-67 … PE-100  240–320 words   near-IELTS length and register
+#
+# ── STORIES, NOT EXERCISES ──
+#   A reading is a text somebody would actually want to read: narration with a small
+#   arc (something happens, something changes), a narrator who can describe. Dialogue
+#   is seasoning, not the dish — 2–4 quoted lines inside a story is plenty.
+#   Modern and everyday is good: phones, buses, cafés, group chats, part-time jobs,
+#   exams, football, delivery food, sharing a charger, a village bakery.
+#   VARY the shape between batches — a diary entry, a letter, an online review, a news
+#   brief, a blog post, a folk-tale retelling, a small mystery, an interview.
+#   The focus pattern does NOT have to appear many times. **2–3 natural uses beats
+#   6 forced ones** — if the pattern fights the story, use it less and let the story
+#   win. A reading nobody enjoys teaches nothing.
+#
+# ── THE USER'S OWN RULE (2026-08-04, from PE-26 on) — MAKE THEM STICK ──
+#   "Please interesting, life stories if possible. Not strictly, can be like any other
+#   story if you can, fairytales etc, attracting and memory caching!"
+#   So from PE-26 the default is no longer a classroom scene. Reach for texts a pupil
+#   would retell to somebody else the same evening:
+#     * LIFE STORIES — a real turning point: a decision that cost something, a failure
+#       that taught something, someone who changed a street or a family. The grammar
+#       rides inside a life, which is why it is remembered.
+#     * FOLK TALES AND FAIRY TALES — Nasreddin Afandi above all (an Uzbek pupil already
+#       knows him, so only the English is new), plus world tales: the fisherman and the
+#       fish, the tortoise and the hare, Aesop, the tales of Samarkand and Bukhara.
+#       A retelling is allowed to be free — keep the shape, change the language.
+#     * ANYTHING WITH A HOOK — a small mystery, a strange true fact, a diary, a letter,
+#       three phone messages, an online review, a court case, an interview, a legend.
+#   Two working rules that come with this:
+#     1. The story must have a TURN — a line where something flips (the promise the
+#        emir cannot refuse, the goal nobody saw, the plants that were not dead).
+#        A text with no turn is a paragraph, not a story, and nobody remembers it.
+#     2. The grammar must sit ON the turn, not beside it. Nasreddin's whole tale IS a
+#        `will` promise; the shepherd's warning IS `going to` evidence. When the pattern
+#        carries the point of the story, the pupil cannot remember one without the other.
+#   The titles listed below are a plan, not a contract: if a better story presents
+#   itself for a lesson, take it and rewrite the title in this file.
+#
+# ── FORMAL WRITTEN REGISTER from PE-83 ──
+#   Blocks A–F are spoken, everyday English. From PE-83 the grammar being taught
+#   (inversion, cleft sentences, participle clauses, the unreal past, linking words)
+#   is *written* grammar — it barely appears in speech, so a chatty reading fights its
+#   own content. So from PE-83 the readings are **written English**: a popular-science
+#   article, an opinion column, a book review, a report with numbers, a formal letter.
+#   Quoted speech inside them keeps its own everyday register; only the narrator
+#   changes. This also quietly prepares IELTS Reading and Writing Task 2.
+#
+# ── Vocabulary ──
+#   Mark new words inline: <span class="cn-word" data-tr="tarjima">word</span>
+#   6–10 marks in the early readings, 10–16 up to PE-66, 16–26 from PE-67 (longer
+#   texts carry more genuinely new vocabulary). Mark real new words, not words the
+#   pupil already met, and mark each word only the first time.
+#   data-pos: verb / adj / adv (omit for nouns and set expressions).
+#   Names: the user's pupils (Afsona, Jasur, Sherbek, Dilnoza, Bekzod) alongside
+#   international names (Mira, Tom, Elena, Omar) once the readings leave the classroom.
+#
+# ── Questions ──
+#   2–3 `questions` (StoryQuestion MCQs) in English, `explanation` in Uzbek, and at
+#   least one of them testing whether the reader understood the FOCUS GRAMMAR rather
+#   than just the plot.
+#
+# ── Audio ──
+#   python manage.py gen_corner_audio --collection="Prime English Readings" --only <n>
+#   The subject default voice en-US-JennyNeural is right for these. mp3s land under
+#   corner/management/commands/audio/prime-english-readings/ and are committed.
+#
+# Batches of 5, matching the _tutorials_prime_english_<from>_<to>.py files.
+# Mark finished ranges with [done].
+
+## Prime English Readings — Prime English oʻqish matnlari
+
+### Block A: Foundations (1–18)  [done — COMPLETE]
+1.  (PE-1 · subject + verb) The First Day                                [done]
+2.  (PE-2 · countable/uncountable) Bread, Water and Two Eggs             [done]
+3.  (PE-3 · plural nouns) Six Children, Three Buses                      [done]
+4.  (PE-4 · a / an / the) A Dog in the Yard                              [done]
+5.  (PE-5 · pronouns) It Is Not Mine                                     [done]
+6.  (PE-6 · to be) We Are the New Team                                   [done]
+7.  (PE-7 · there is / there are) There Is a Cat on the Roof            [done]
+8.  (PE-8 · this/that/these/those) This Is My Desk                      [done]
+9.  (PE-9 · present simple) Every Morning at Six                        [done]
+10. (PE-10 · negatives & questions) Does Anyone Know Where the Key Is?  [done]
+11. (PE-11 · adverbs of frequency) He Never Says No                     [done]
+12. (PE-12 · present continuous) The Rain Is Starting                   [done]
+13. (PE-13 · simple vs continuous) Usually She Walks, Today She Runs    [done]
+14. (PE-14 · have / have got) The Boy Who Has Everything                [done]
+15. (PE-15 · adjectives) A Small Old Blue Bicycle                       [done]
+16. (PE-16 · prepositions of place) The Shop on the Corner              [done]
+17. (PE-17 · prepositions of time) On Sunday, in April, at Nine         [done]
+18. (PE-18 · question words) Twenty Questions                           [done]
+
+### Block B: The Past and the Future (19–31)  [done — COMPLETE]
+19. (PE-19 · was / were) It Was Only a Photo                            [done]
+20. (PE-20 · past simple regular) The Day the Bakery Opened             [done]
+21. (PE-21 · past simple irregular) He Took the Wrong Bus               [done]
+22. (PE-22 · past negatives & questions) Nobody Locked the Door         [done]
+23. (PE-23 · past continuous) While the Others Were Sleeping            [done]
+24. (PE-24 · when and while) The Goal He Did Not See                    [done]
+25. (PE-25 · used to / would) My Grandfather Used to Walk to School     [done]
+26. (PE-26 · will) Afandi and the Emir's Donkey (xalq hikoyasi)                     [done]
+27. (PE-27 · going to) The Shepherd Who Read the Sky (hayot hikoyasi)               [done]
+28. (PE-28 · present continuous for future) The Last Week in the Village (kundalik) [done]
+29. (PE-29 · three futures) Three Ways to Say Tomorrow (uch xabar)                  [done]
+30. (PE-30 · future continuous) This Time Next Year (hayot hikoyasi)                [done]
+31. (PE-31 · ago/for/since/until/by) Two Years and Eleven Days (hayot hikoyasi)     [done]
+
+### Block C: The Perfect Tenses (32–41)  [done: 32–35]
+32. (PE-32 · present perfect) Somebody Has Found It (Orol — yangilik matni)         [done]
+33. (PE-33 · for and since) The Dog Who Waited at the Station (Hachiko + Toshkent)  [done]
+34. (PE-34 · already/yet/just/ever) Has the Tortoise Finished Yet? (masal — jonli sharh)[done]
+35. (PE-35 · perfect vs past simple) The Watch in the Second Drawer (sirli hikoya)  [done]
+36. (PE-36 · present perfect continuous) He Has Been Running for an Hour            [next]
+37. (PE-37 · simple vs continuous perfect) Painted or Painting?
+38. (PE-38 · past perfect) By the Time the Train Came
+39. (PE-39 · past perfect continuous) She Had Been Saving for Months
+40. (PE-40 · future perfect) By the End of the Summer
+41. (PE-41 · the 12 tenses) One Story, Twelve Tenses
+
+### Block D: Modal Verbs (42–51)
+42. (PE-42 · can / could / be able to) The Girl Who Could Not Swim
+43. (PE-43 · may / might / could) It Might Rain in the Mountains
+44. (PE-44 · must / have to) The Rules of the Hostel
+45. (PE-45 · mustn't vs don't have to) You Don't Have to Come — But You Mustn't Lie
+46. (PE-46 · should / had better) Advice from the Older Cousin
+47. (PE-47 · modals of deduction) He Must Be the New Teacher
+48. (PE-48 · past modals) I Should Have Charged My Phone
+49. (PE-49 · polite requests) Could You Say That Again, Please?
+50. (PE-50 · shall / will / would) The Waiter Who Would Not Take a Tip
+51. (PE-51 · the strength scale) From "Maybe" to "Definitely"
+
+### Block E: Building Bigger Sentences (52–66)
+52. (PE-52 · conjunctions) He Was Late, So He Ran
+53. (PE-53 · zero & first conditional) If You Press This Button
+54. (PE-54 · second conditional) If I Had a Thousand Dollars
+55. (PE-55 · third conditional) If She Had Not Missed the Flight
+56. (PE-56 · mixed conditionals) If He Had Studied, He Would Be a Doctor Now
+57. (PE-57 · wish / if only) The Wishing Notebook
+58. (PE-58 · relative clauses) The Man Who Fixed Everything
+59. (PE-59 · defining vs non-defining) My Sister, Who Lives in Almaty
+60. (PE-60 · passive present & past) The Bridge Was Built in 1957
+61. (PE-61 · passive in all tenses) How a Book Is Made
+62. (PE-62 · reported speech) She Said She Was Tired
+63. (PE-63 · reported questions & commands) He Asked Where I Had Been
+64. (PE-64 · gerunds & infinitives) I Enjoy Cooking, I Want to Cook
+65. (PE-65 · stop doing / stop to do) He Stopped to Help
+66. (PE-66 · the causative) I Had My Phone Repaired
+
+### Block F: Precision (67–82)
+67. (PE-67 · comparatives & superlatives) The Longest Bridge in the Region
+68. (PE-68 · as...as / too / enough) Old Enough to Decide
+69. (PE-69 · quantifiers) Too Much Salt, Too Many Cooks
+70. (PE-70 · few / a few / little / a little) A Little Money, A Few Friends
+71. (PE-71 · each / every / both / neither) Both Brothers, Neither Answer
+72. (PE-72 · word order SVOMPT) The Sentence That Sounded Wrong
+73. (PE-73 · question tags) You're Coming, Aren't You?
+74. (PE-74 · subject–verb agreement) The News Is Not Good
+75. (PE-75 · possession) The Teacher's Desk and the Teachers' Room
+76. (PE-76 · dependent prepositions) Afraid of, Good at, Depend on
+77. (PE-77 · phrasal verbs) The Day Everything Broke Down
+78. (PE-78 · phrasal verbs by topic) Getting Up, Getting Along, Getting By
+79. (PE-79 · expressions of quantity) A Slice, a Loaf, a Bottle
+80. (PE-80 · advanced articles) The Moon, a Moon, Moons
+81. (PE-81 · punctuation) The Comma That Changed the Meaning
+82. (PE-82 · capitals & spelling) Uzbekistan, English, Monday
+
+### Block G: Advanced and Stylish English (83–92)  — written register from here
+83. (PE-83 · emphasis with do) I Do Believe It Works
+84. (PE-84 · inversion) Never Have I Seen Anything Like It
+85. (PE-85 · cleft sentences) What This Town Needs Is a Library
+86. (PE-86 · participle clauses) Standing on the Bridge, She Understood
+87. (PE-87 · the unreal past) It's Time We Talked About Water
+88. (PE-88 · linking words) However, Therefore, Although
+89. (PE-89 · prefixes & suffixes) The Word Factory
+90. (PE-90 · collocations) Words That Live Together
+91. (PE-91 · formal vs informal) Two Emails, One Message
+92. (PE-92 · the 20 Uzbek-speaker mistakes) The Mistakes We Keep Making
+
+### Block H: Grammar at Work (93–100)
+93.  (PE-93 · polite email) The Email That Got a Reply
+94.  (PE-94 · narrative tenses) The Night the Power Went Out
+95.  (PE-95 · opinion & disagreement) I See Your Point, But
+96.  (PE-96 · describing) The Room I Grew Up In
+97.  (PE-97 · charts & trends) What the Numbers Said About Reading
+98.  (PE-98 · excuses & apologies) The Apology That Worked
+99.  (PE-99 · small talk) Waiting for the Bus with a Stranger
+100. (PE-100 · the toolkit) The Three Per Cent Who Finish
+
+# ↑ PE-100's reading closes the collection the way PK-100's did — it speaks to the
+#   READER, because someone who has read a hundred English texts in order is already
+#   the person the text is about.

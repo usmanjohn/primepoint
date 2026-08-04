@@ -36,6 +36,7 @@ TUTORIALS = [
             "How often do you do it? Learn the frequency scale from always to never, and the "
             "one position rule that decides where these words go in a sentence."
         ),
+        "stories": ["He Never Says No"],
         "content": """
 <h2>PE-11: Adverbs of Frequency: always, usually, never</h2>
 
@@ -345,6 +346,7 @@ sentence (or, for emphasis, to the very beginning).</p>
             "The tense for this exact moment: am/is/are + verb-ing. Includes the -ing spelling "
             "rules and the three other jobs this tense quietly does."
         ),
+        "stories": ["The Rain Is Starting"],
         "content": """
 <h2>PE-12: Present Continuous: Happening Right Now</h2>
 
@@ -615,6 +617,7 @@ present — <em>Look!</em> and <em>Listen!</em></p>
             "The decision that separates confident speakers from hesitant ones — plus the "
             "stative verbs that refuse to take -ing at all."
         ),
+        "stories": ["Usually She Walks, Today She Runs"],
         "content": """
 <h2>PE-13: Present Simple vs Present Continuous</h2>
 
@@ -915,6 +918,7 @@ different.</p>
             "Two ways to say what you own, and when each one sounds natural — plus the have "
             "that means 'do', as in have breakfast and have a shower."
         ),
+        "stories": ["The Boy Who Has Everything"],
         "content": """
 <h2>PE-14: have / have got: Talking About Possession</h2>
 
@@ -1204,6 +1208,7 @@ fun</em>.</p>
             "Where adjectives go, why they never take -s, the native order of 'a beautiful old "
             "Uzbek silk carpet', and the bored/boring difference that changes what you say."
         ),
+        "stories": ["A Small Old Blue Bicycle"],
         "content": """
 <h2>PE-15: Adjectives: Meaning, Position and Order</h2>
 

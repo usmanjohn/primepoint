@@ -36,6 +36,7 @@ TUTORIALS = [
             "Build correct English sentences from day one: find the subject, find the verb, "
             "and put them in English word order — which is not Uzbek word order."
         ),
+        "stories": ["The First Day"],
         "content": """
 <h2>PE-1: What Is a Sentence? Subject + Verb</h2>
 
@@ -315,6 +316,7 @@ English puts an empty subject <b>it</b> or <b>there</b> in the slot.</p>
             "Why you can say 'three books' but never 'three breads' — how English splits nouns "
             "into countable and uncountable, and the words that go with each."
         ),
+        "stories": ["Bread, Water and Two Eggs"],
         "content": """
 <h2>PE-2: Nouns: Countable and Uncountable</h2>
 
@@ -610,6 +612,7 @@ countable = a type, a portion, or a single item.</p>
             "All the plural rules in one place — the -s and -es endings, y → ies, f → ves, "
             "the irregular family (child → children) and the nouns that never change."
         ),
+        "stories": ["Six Children, Three Buses"],
         "content": """
 <h2>PE-3: Plural Nouns: Regular and Irregular</h2>
 
@@ -903,6 +906,7 @@ automatically once you know the pattern.</p>
             "The hardest small words in English, finally explained: a/an for new things, the "
             "for known things, and nothing at all when you speak in general."
         ),
+        "stories": ["A Dog in the Yard"],
         "content": """
 <h2>PE-4: Articles: a, an, the and the Zero Article</h2>
 
@@ -1204,6 +1208,7 @@ once you have practised it.</p>
             "I or me? My or mine? Its or it's? Master the small words that replace nouns and "
             "stop your sentences from repeating themselves."
         ),
+        "stories": ["It Is Not Mine"],
         "content": """
 <h2>PE-5: Pronouns: Subject, Object and Possessive</h2>
 
