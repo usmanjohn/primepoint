@@ -1,0 +1,34 @@
+{% load i18n static %}<!doctype html>
+{% comment %}
+One tutorial, practice or reading on its own sheet. Same scaffolding as
+bundle.html — only the body differs — so a single sheet and a booklet page
+come out looking identical.
+Context: sheet_title, plus exactly one of tutorial / practice / story.
+{% endcomment %}
+<html lang="{{ LANGUAGE_CODE|default:'uz' }}">
+<head>
+    <title>{{ sheet_title }}</title>
+    {% include "printing/_head.html" %}
+</head>
+<body class="{% if gloss %}pp-gloss{% endif %}">
+
+{% include "printing/_bar.html" %}
+
+<div class="pp-sheet">
+    {% include "printing/_watermark.html" %}
+
+    <div class="pp-body">
+        {% if tutorial %}{% include "printing/_tutorial.html" %}{% endif %}
+        {% if practice %}{% include "printing/_practice.html" %}{% endif %}
+        {% if story %}{% include "printing/_story.html" %}{% endif %}
+
+        <p class="pp-foot">
+            <strong>Powerty</strong> — powerty.uz · {{ sheet_title }} ·
+            © {% now "Y" %} Powerty. {% trans "Redistribution without permission is prohibited." %}<br>
+            {% trans "Printed by" %} <strong>{{ user.get_username }}</strong> · {% now "d.m.Y H:i" %}
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% load i18n print_extras %}
+{% comment %}
+One lesson's tutorial. The stored HTML already opens with its own <h2>
+title, so the head here carries only the part label.
+
+`.tut-prose` is not decoration: it is where the --pe-* / --pk-* colour
+variables are declared (static/css/style.css), so the component kit is
+uncoloured without it.
+
+The pe-reveal boxes at the end of a lesson are its mini-drill, hidden
+behind a tap on screen. On a teacher copy `open_details` unfolds them; on
+a pupil copy they stay closed, so the drill still has to be answered —
+print_sheet.css turns each closed one into a ruled line to write on.
+{% endcomment %}
+<section class="pp-part">
+    <div class="pp-part-head">
+        <span class="pp-part-kind">{% trans "Lesson" %}</span>
+        {% if lesson_no %}<h2>#{{ lesson_no }}</h2>{% endif %}
+        <span class="pp-part-brand">powerty.uz</span>
+    </div>
+    <article class="tut-prose ck-content">
+        {% if answers %}{{ tutorial.content|open_details|safe }}{% else %}{{ tutorial.content|safe }}{% endif %}
+    </article>
+</section>

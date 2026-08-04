@@ -1,0 +1,18 @@
+{% load static %}
+{% comment %}
+The <head> shared by every print sheet. style.css carries the pe-*/pk-*
+lesson kit, corner.css the reading kit; print_sheet.css must come last —
+it re-asserts the light palette over corner.css's dark-mode block.
+{% endcomment %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+<link href="{% static 'vendor/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/bootstrap-icons.min.css' %}" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/corner.css' %}">
+<link rel="stylesheet" href="{% static 'css/print_sheet.css' %}">

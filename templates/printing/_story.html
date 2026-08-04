@@ -1,0 +1,82 @@
+{% load i18n %}
+{% comment %}
+One Corner reading. Context: story, answers (bool).
+
+Three things the screen does with a finger have to become ink here: the
+cn-word tooltips become the vocabulary table below (gloss mode also prints
+each translation inline — see print_sheet.css), the flip-cards become that
+same table, and the JS quiz becomes a static lettered list. The narration
+<audio> is hidden by the print stylesheet.
+{% endcomment %}
+<section class="pp-part">
+    <div class="pp-part-head">
+        <span class="pp-part-kind pp-kind-reading">{% trans "Reading" %}</span>
+        <h2>{{ story.title }}</h2>
+        <span class="pp-part-brand">{{ story.collection.title }}</span>
+    </div>
+
+    {% if story.image %}
+    <p><img src="{{ story.image.url }}" alt="" style="max-width:100%;max-height:80mm;"></p>
+    {% endif %}
+
+    <article class="cn-reader ck-content mb-3">
+        {{ story.body|safe }}
+    </article>
+
+    {% if story.words.all %}
+    <h3 class="h6 mt-3 mb-1"><i class="bi bi-translate me-1"></i>{% trans "Vocabulary" %}</h3>
+    <table class="pp-vocab">
+        <thead>
+            <tr>
+                <th style="width:28%;">{% trans "Word" %}</th>
+                <th style="width:14%;">{% trans "Part of speech" %}</th>
+                <th>{% trans "Translation" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for w in story.words.all %}
+            <tr>
+                <td>{{ w.word }}</td>
+                <td>{% if w.pos %}{{ w.get_pos_display }}{% else %}—{% endif %}</td>
+                <td>{{ w.translation }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+    {% if story.grammar.all %}
+    <h3 class="h6 mt-3 mb-1"><i class="bi bi-mortarboard me-1"></i>{% trans "Grammar in this text" %}</h3>
+    {% for g in story.grammar.all %}
+    <div class="cn-gram">
+        <p class="cn-gram-pattern">{{ g.pattern }}</p>
+        {# meaning / examples / explanations are authored HTML (they use <b> to
+           mark the pattern inside a sentence), so they are rendered, not escaped. #}
+        <p class="cn-gram-meaning">{{ g.meaning|safe }}</p>
+        {% if g.examples %}
+        <ul class="cn-gram-ex">{% for ex in g.examples %}<li>{{ ex|safe }}</li>{% endfor %}</ul>
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    {% if story.questions.all %}
+    <h3 class="h6 mt-3 mb-1"><i class="bi bi-patch-question me-1"></i>{% trans "Check your understanding" %}</h3>
+    {% for q in story.questions.all %}
+    <div class="pp-q">
+        <span class="pp-q-num">{{ forloop.counter }}</span>
+        <span class="pp-q-text">{{ q.text|safe }}</span>
+        <ul class="pp-choices">
+            {% for choice in q.choices %}
+            <li class="pp-choice{% if answers and forloop.counter0 == q.answer %} pp-correct{% endif %}">
+                <span class="pp-choice-letter">{{ forloop.counter0|add:65|stringformat:"c" }}.</span>{{ choice|safe }}{% if answers and forloop.counter0 == q.answer %} ✓{% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        {% if answers and q.explanation %}
+        <div class="pp-explain">{{ q.explanation|safe }}</div>
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% endif %}
+</section>

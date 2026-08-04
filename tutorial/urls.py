@@ -5,6 +5,7 @@ urlpatterns = [
     path('',                 views.tutorial_list,   name='tutorial_list'),
     path('create/',          views.tutorial_create, name='tutorial_create'),
     path('<int:pk>/',        views.tutorial_detail, name='tutorial_detail'),
+    path('<int:pk>/print/',  views.tutorial_print,  name='tutorial_print'),
     path('<int:pk>/react/',  views.tutorial_react,  name='tutorial_react'),
     path('<int:pk>/finish/', views.tutorial_finish, name='tutorial_finish'),
     path('<int:pk>/edit/',   views.tutorial_edit,   name='tutorial_edit'),
@@ -14,6 +15,7 @@ urlpatterns = [
     path('playlists/',                  views.playlist_list,   name='playlist_list'),
     path('playlists/create/',           views.playlist_create, name='playlist_create'),
     path('playlists/<int:pk>/',         views.playlist_detail, name='playlist_detail'),
+    path('playlists/<int:pk>/print/',   views.playlist_print,  name='playlist_print'),
     path('playlists/<int:pk>/edit/',    views.playlist_edit,   name='playlist_edit'),
     path('playlists/<int:pk>/delete/',  views.playlist_delete, name='playlist_delete'),
 ]

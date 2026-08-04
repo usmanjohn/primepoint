@@ -1,0 +1,30 @@
+{% load i18n %}
+{% comment %}
+The on-screen toolbar. Never printed (.pp-noprint). Context it needs:
+back_url, url_answers_on/off, url_gloss_on/off, answers, gloss, show_gloss.
+{% endcomment %}
+<div class="pp-bar pp-noprint">
+    <button type="button" class="primary" onclick="window.print()">
+        <i class="bi bi-printer"></i> {% trans "Print / Save as PDF" %}
+    </button>
+
+    {% if answers %}
+    <a href="{{ url_answers_off }}"><i class="bi bi-eye-slash"></i> {% trans "Pupil copy (no answers)" %}</a>
+    {% else %}
+    <a href="{{ url_answers_on }}"><i class="bi bi-check2-square"></i> {% trans "Teacher copy (with answers)" %}</a>
+    {% endif %}
+
+    {% if show_gloss %}
+        {% if gloss %}
+        <a href="{{ url_gloss_off }}"><i class="bi bi-translate"></i> {% trans "Hide word translations" %}</a>
+        {% else %}
+        <a href="{{ url_gloss_on }}"><i class="bi bi-translate"></i> {% trans "Show word translations" %}</a>
+        {% endif %}
+    {% endif %}
+
+    {% if back_url %}
+    <a href="{{ back_url }}"><i class="bi bi-arrow-left"></i> {% trans "Back" %}</a>
+    {% endif %}
+
+    <span class="pp-bar-note">{% trans "Tip: choose A4 and “Save as PDF” in the print dialog." %}</span>
+</div>

@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.db.models import F, Count, Q
+from django.urls import reverse
 from django.utils.translation import gettext as _
 from django.views.decorators.http import require_POST
 
@@ -10,6 +11,7 @@ from examprep.models import WritingDrill
 from .models import (Subject, Collection, Story, StoryProgress,
                      WritingTemplate, STORY_POINTS)
 from prime.subjects import get_study_subjects, value_visible
+from prime.printing import require_staff, bar_context
 
 
 def _can_edit(user, story):
@@ -147,6 +149,26 @@ def corner_story(request, subject_slug, collection_slug, slug):
         'story_points': STORY_POINTS,
         'can_edit': _can_edit(request.user, story),
     })
+
+
+def corner_story_print(request, subject_slug, collection_slug, slug):
+    """One reading as a print sheet — text, vocabulary table, grammar, quiz.
+
+    Staff only (see prime.printing): the reader is open to everyone, a
+    distributable copy of it is not.
+    """
+    denied = require_staff(request)
+    if denied:
+        return denied
+    story = get_object_or_404(
+        Story.objects.select_related('collection__subject'),
+        collection__subject__slug=subject_slug,
+        collection__slug=collection_slug, slug=slug,
+    )
+    back_url = reverse('corner_story', args=[subject_slug, collection_slug, slug])
+    context = bar_context(request, back_url, show_gloss=True)
+    context.update({'story': story, 'sheet_title': story.title})
+    return render(request, 'printing/single.html', context)
 
 
 @login_required

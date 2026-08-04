@@ -25,6 +25,13 @@
             {{ story.title }}
             {% if not story.is_published %}<span class="badge text-bg-warning">{% trans "Draft" %}</span>{% endif %}
         </h1>
+        {% if user.is_staff %}
+        <a href="{% url 'corner_story_print' subject.slug collection.slug story.slug %}"
+           target="_blank" class="btn btn-sm btn-outline-secondary flex-shrink-0 ms-2"
+           title="{% trans 'Print / Save as PDF' %}">
+            <i class="bi bi-printer"></i>
+        </a>
+        {% endif %}
         {% if can_edit %}
         <a href="{% url 'corner_story_edit' subject.slug collection.slug story.slug %}"
            class="btn btn-sm btn-outline-primary flex-shrink-0 ms-2">

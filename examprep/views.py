@@ -4,7 +4,6 @@ import re
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import redirect_to_login
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.db.models import F, Count, Q, Max, Prefetch
@@ -15,6 +14,8 @@ from django.views.decorators.http import require_POST
 
 from openpyxl import Workbook
 from openpyxl.styles import Alignment, Font, PatternFill
+
+from prime.printing import require_staff
 
 from .models import (ExamTrack, Topic, Lesson, LessonBlock, LessonProgress,
                      WritingDrill, WritingDrillProgress, WRITING_DRILL_POINTS,
@@ -549,16 +550,10 @@ def grammar_detail(request, track_slug, slug):
 def _require_staff(request):
     """Gate for the take-away formats (print sheet, spreadsheet export).
 
-    Reading the bank on-site is open to everyone; walking away with a
-    distributable copy of it is not. Anonymous visitors are sent to log in
-    (they may simply not be signed in yet); a signed-in non-staff user gets a
-    403, because for them it is a permission answer, not a login prompt.
+    Shared with the lesson print sheets — see prime.printing.require_staff for
+    the reasoning; this alias keeps the call sites in this module short.
     """
-    if not request.user.is_authenticated:
-        return redirect_to_login(request.get_full_path())
-    if not request.user.is_staff:
-        raise PermissionDenied
-    return None
+    return require_staff(request)
 
 
 def grammar_print(request, track_slug):

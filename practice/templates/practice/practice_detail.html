@@ -25,6 +25,13 @@
                     {% endif %}
                 </div>
                 <h1 class="page-title">{{ practice.title }}</h1>
+                {% if user.is_staff %}
+                <a href="{% url 'print_practice' practice.pk %}" target="_blank"
+                   class="btn btn-sm btn-outline-secondary mt-2"
+                   title="{% trans 'Print / Save as PDF' %}">
+                    <i class="bi bi-printer me-1"></i>{% trans "Print" %}
+                </a>
+                {% endif %}
                 {% if practice.description %}
                     <p class="page-subtitle mt-2 fs-6">{{ practice.description }}</p>
                 {% endif %}

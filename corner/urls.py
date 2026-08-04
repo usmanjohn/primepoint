@@ -13,6 +13,7 @@ urlpatterns = [
     path('<slug:subject_slug>/',          views.corner_subject,           name='corner_subject'),
     path('<slug:subject_slug>/<slug:collection_slug>/',                      views.corner_collection,   name='corner_collection'),
     path('<slug:subject_slug>/<slug:collection_slug>/<slug:slug>/edit/',     views.corner_story_edit,   name='corner_story_edit'),
+    path('<slug:subject_slug>/<slug:collection_slug>/<slug:slug>/print/',    views.corner_story_print,  name='corner_story_print'),
     path('<slug:subject_slug>/<slug:collection_slug>/<slug:slug>/finish/',   views.corner_story_finish, name='corner_story_finish'),
     path('<slug:subject_slug>/<slug:collection_slug>/<slug:slug>/',          views.corner_story,        name='corner_story'),
 ]

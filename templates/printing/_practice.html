@@ -1,0 +1,51 @@
+{% load i18n %}
+{% comment %}
+One practice as a question sheet. Context: practice, answers (bool).
+
+Choices come from display_choices, the same seeded shuffle the pupil sees
+on screen and in their results, so question 7's option B is the same option
+B everywhere. question_text is rendered as HTML, not stripped: the bank uses
+<strong>, <br> and inline math that |striptags would silently delete.
+{% endcomment %}
+<section class="pp-part">
+    <div class="pp-part-head">
+        <span class="pp-part-kind pp-kind-practice">{% trans "Practice" %}</span>
+        <h2>{{ practice.title }}</h2>
+        <span class="pp-part-brand">
+            {% blocktrans count counter=practice.questions.count %}{{ counter }} question{% plural %}{{ counter }} questions{% endblocktrans %}
+        </span>
+    </div>
+
+    {% if not answers %}
+    <p class="text-secondary" style="font-size:.8rem;">
+        {% trans "Pupil copy — answer key not printed." %}
+    </p>
+    {% endif %}
+
+    {% for question in practice.questions.all %}
+    <div class="pp-q">
+        <span class="pp-q-num">{{ forloop.counter }}</span>
+        <span class="pp-q-text">{{ question.question_text|safe }}</span>
+        {% if question.image %}
+        <div><img src="{{ question.image.url }}" alt="" style="max-width:100%;max-height:60mm;"></div>
+        {% endif %}
+        {% if question.hint %}
+        <p class="pp-explain" style="border-left-color:#fde68a;">{{ question.hint|safe }}</p>
+        {% endif %}
+
+        <ul class="pp-choices">
+            {% for choice in question.display_choices %}
+            <li class="pp-choice{% if answers and choice.is_correct %} pp-correct{% endif %}">
+                <span class="pp-choice-letter">{{ forloop.counter0|add:65|stringformat:"c" }}.</span>{{ choice.text|safe }}{% if answers and choice.is_correct %} ✓{% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+
+        {% if answers and question.explanation %}
+        <div class="pp-explain">{{ question.explanation|safe }}</div>
+        {% endif %}
+    </div>
+    {% empty %}
+    <p class="text-secondary">{% trans "No questions yet." %}</p>
+    {% endfor %}
+</section>

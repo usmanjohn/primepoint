@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from django.db.models import F, Count, Q
 from django.http import JsonResponse
+from django.urls import reverse
 
 from django.utils.translation import gettext as _
 from django.views.decorators.http import require_POST
@@ -13,6 +14,8 @@ from .models import (Tutorial, TutorialReaction, TutorialPlaylist, PlaylistTutor
                      TutorialProgress, TUTORIAL_POINTS, CATEGORY_CHOICES)
 from .forms import TutorialForm, TutorialPlaylistForm
 from prime.subjects import get_study_subjects, allowed_values, mapped_values
+from prime.printing import (require_staff, bar_context,
+                            lesson_range, lesson_rows)
 
 
 def _save_playlist_assignment(tutorial, form):
@@ -246,11 +249,62 @@ def playlist_detail(request, pk):
     can_edit = request.user.is_authenticated and (
         request.user == playlist.author or request.user.is_staff
     )
+    # Quick-pick ranges for the staff print card: 1-10, 11-20, … Built here
+    # because a Django template cannot count in tens.
+    total = len(items)
+    print_ranges = [{'start': s, 'end': min(s + 9, total)}
+                    for s in range(1, total + 1, 10)]
     return render(request, 'tutorial/playlist_detail.html', {
-        'playlist': playlist,
-        'items':    items,
-        'can_edit': can_edit,
+        'playlist':     playlist,
+        'items':        items,
+        'can_edit':     can_edit,
+        'print_ranges': print_ranges,
+        'total_items':  total,
     })
+
+
+def tutorial_print(request, pk):
+    """One tutorial as a print sheet. Staff only — see prime.printing."""
+    denied = require_staff(request)
+    if denied:
+        return denied
+    tutorial = get_object_or_404(Tutorial, pk=pk)
+    context = bar_context(request, reverse('tutorial_detail', args=[pk]))
+    context.update({'tutorial': tutorial, 'sheet_title': tutorial.title})
+    return render(request, 'printing/single.html', context)
+
+
+def playlist_print(request, pk):
+    """A range of a playlist as one booklet — cover, contents, then each
+    lesson with its practice and its reading. Staff only.
+
+    ?from= / ?to=  1-based positions in the playlist (default the first ten,
+                   capped at MAX_BUNDLE_LESSONS unless ?cap=0)
+    ?parts=        subset of tutorial,practice,reading
+    ?answers=0     pupil copy
+    ?gloss=1       print cn-word translations inline
+    """
+    denied = require_staff(request)
+    if denied:
+        return denied
+    playlist = get_object_or_404(TutorialPlaylist, pk=pk)
+
+    total        = playlist.items.count()
+    start, end   = lesson_range(request, total)
+    context      = bar_context(request, reverse('playlist_detail', args=[pk]),
+                                      show_gloss=True)
+    parts        = context['options']['parts']
+    context.update({
+        'playlist':      playlist,
+        'lessons':       lesson_rows(playlist, start, end),
+        'start':         start,
+        'end':           end,
+        'total':         total,
+        'show_tutorial': 'tutorial' in parts,
+        'show_practice': 'practice' in parts,
+        'show_reading':  'reading' in parts,
+    })
+    return render(request, 'printing/bundle.html', context)
 
 
 @login_required

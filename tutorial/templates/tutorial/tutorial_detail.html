@@ -64,8 +64,15 @@
                 <i class="bi {{ tutorial.category_icon }} me-1"></i>
                 {{ tutorial.get_category_display }}
             </span>
+            <div class="d-flex gap-2 ms-auto">
+            {% if user.is_staff %}
+                <a href="{% url 'tutorial_print' tutorial.pk %}" target="_blank"
+                   class="btn-core-outline" style="padding:5px 12px;font-size:0.78rem;"
+                   title="{% trans 'Print / Save as PDF' %}">
+                    <i class="bi bi-printer"></i>
+                </a>
+            {% endif %}
             {% if can_edit %}
-            <div class="d-flex gap-2">
                 <a href="{% url 'tutorial_edit' tutorial.pk %}"
                    class="btn-core-outline" style="padding:5px 12px;font-size:0.78rem;">
                     <i class="bi bi-pencil"></i>{% trans "Edit" %}
@@ -75,8 +82,8 @@
                    style="padding:5px 12px;font-size:0.78rem;border-color:var(--danger);color:var(--danger);">
                     <i class="bi bi-trash"></i>
                 </a>
-            </div>
             {% endif %}
+            </div>
         </div>
 
         <h1 class="tut-detail-title">{{ tutorial.title }}</h1>

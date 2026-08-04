@@ -2,9 +2,11 @@ import re
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.core.exceptions import PermissionDenied
 from django.utils import timezone
 from django.db.models import Q, Count
 from django.http import HttpResponse
+from django.urls import reverse
 from django.utils.html import strip_tags
 from panda.models import Panda
 from masters.models import Master
@@ -14,6 +16,7 @@ _ILLEGAL_CHARS_RE = re.compile(r'[\x00-\x08\x0b\x0c\x0e-\x1f]')
 from .models import Practice, PracticeQuestion, PracticeChoice, PracticeAttempt, UserAnswer, Subject
 from .forms import PracticeForm, PracticeQuestionForm
 from prime.subjects import get_study_subjects, value_visible
+from prime.printing import bar_context
 
 SUBJECT_PALETTE = [
     '#38bdf8',  # sky blue
@@ -784,11 +787,23 @@ def export_practices(request):
 # ─────────────────────────────────────────────
 @login_required
 def print_practice(request, pk):
-    practice = get_object_or_404(Practice, pk=pk, master=request.user.profile.master)
-    questions = practice.questions.prefetch_related('choices').order_by('order')
-    show_answers = request.GET.get('answers', 'show') != 'hide'
-    return render(request, 'practice/print_practice.html', {
-        'practice': practice,
-        'questions': questions,
-        'show_answers': show_answers,
-    })
+    """One practice as a question sheet.
+
+    Open to the master who owns it and to staff — staff print the Prime
+    English / Prime Korean banks, which belong to the content account rather
+    than to the teacher holding the class.
+
+    `?answers=hide` is the old pupil-copy switch and still works; the shared
+    sheets use `?answers=0`, which is what printing/_bar.html links to.
+    """
+    practice = get_object_or_404(Practice, pk=pk)
+    owner = getattr(getattr(request.user, 'profile', None), 'master', None)
+    if not (request.user.is_staff or (owner and practice.master_id == owner.pk)):
+        raise PermissionDenied
+
+    back_url = reverse('practice_detail', args=[pk])
+    context = bar_context(request, back_url)
+    if request.GET.get('answers') == 'hide':
+        context['answers'] = False
+    context.update({'practice': practice, 'sheet_title': practice.title})
+    return render(request, 'printing/single.html', context)

@@ -1,0 +1,86 @@
+{% load i18n static %}<!doctype html>
+{% comment %}
+A range of a playlist as one booklet: cover, contents, then every lesson
+with its practice and its reading.
+
+Standalone on purpose (same reasoning as examprep/grammar_print.html): a
+handout must not inherit the site's nav, sidebar or footer, and print CSS
+that has to hide all of it is fragile. This page exists only to be printed
+or saved as PDF.
+{% endcomment %}
+<html lang="{{ LANGUAGE_CODE|default:'uz' }}">
+<head>
+    <title>{{ playlist.title }} — {{ start }}-{{ end }}</title>
+    {% include "printing/_head.html" %}
+</head>
+<body class="{% if gloss %}pp-gloss{% endif %}">
+
+{% include "printing/_bar.html" %}
+
+<div class="pp-sheet">
+    {% include "printing/_watermark.html" %}
+
+    <div class="pp-body">
+
+        <div class="pp-cover">
+            <img src="{% static 'favicon/favicon-96x96.png' %}" alt="Powerty" width="56" height="56">
+            <h1>{{ playlist.title }}</h1>
+            <p class="pp-cover-sub">
+                {% blocktrans %}Lessons {{ start }}–{{ end }}{% endblocktrans %}
+                {% if playlist.description %}· {{ playlist.description }}{% endif %}
+            </p>
+            <p class="pp-cover-meta">
+                powerty.uz ·
+                {% if answers %}{% trans "Teacher copy" %}{% else %}{% trans "Pupil copy" %}{% endif %} ·
+                {% now "d.m.Y" %}
+            </p>
+
+            <div class="pp-toc">
+                <h2>{% trans "Contents" %}</h2>
+                <ol start="{{ start }}">
+                    {% for row in lessons %}
+                    <li>
+                        {{ row.tutorial.title }}
+                        <span class="pp-toc-legs">
+                            {% if show_practice and row.practices %}· {% trans "practice" %}{% endif %}
+                            {% if show_reading and row.stories %}· {% trans "reading" %}{% endif %}
+                        </span>
+                    </li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+
+        {% for row in lessons %}
+        <div class="pp-lesson">
+            {% if show_tutorial %}
+                {% include "printing/_tutorial.html" with tutorial=row.tutorial lesson_no=row.n %}
+            {% endif %}
+
+            {% if show_practice %}
+                {% for practice in row.practices %}
+                    {% include "printing/_practice.html" with practice=practice answers=answers %}
+                {% endfor %}
+            {% endif %}
+
+            {% if show_reading %}
+                {% for story in row.stories %}
+                    {% include "printing/_story.html" with story=story answers=answers %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        {% empty %}
+        <p>{% trans "This range has no published lessons." %}</p>
+        {% endfor %}
+
+        <p class="pp-foot">
+            <strong>Powerty</strong> — powerty.uz · {{ playlist.title }}
+            ({% blocktrans %}lessons {{ start }}–{{ end }} of {{ total }}{% endblocktrans %}) ·
+            © {% now "Y" %} Powerty. {% trans "Redistribution without permission is prohibited." %}<br>
+            {% trans "Printed by" %} <strong>{{ user.get_username }}</strong> · {% now "d.m.Y H:i" %}
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

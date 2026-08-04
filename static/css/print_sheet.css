@@ -1,0 +1,293 @@
+/* ══════════════════════════════════════════════════════════════════
+   PRINT SHEET — Prime English / Prime Korean lesson handouts
+   Loaded only by templates/printing/*. It sits on top of style.css and
+   corner.css and turns the on-screen lesson into paper:
+     · forces the light palette (a dark-mode laptop must not print black);
+     · forces colour, so the pe-chip / pe-ex kit survives Ctrl+P;
+     · unfolds the pe-reveal answer boxes;
+     · hides everything that only makes sense with a finger on it.
+   Docs: prime/printing.py
+   ══════════════════════════════════════════════════════════════════ */
+
+@page {
+    size: A4;
+    margin: 14mm 12mm;
+}
+
+/* ── 1. Paper, not screen ──────────────────────────────────────────
+   `print-color-adjust: exact` is the whole reason the colour-coded kit
+   works on paper: without it Chrome drops every background unless the
+   reader thinks to tick "Background graphics" in the print dialog. */
+html, body {
+    background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+body {
+    font-family: 'DM Sans', -apple-system, "Segoe UI", "Malgun Gothic",
+                 "Apple SD Gothic Neo", Roboto, sans-serif;
+    color: #1e293b;
+    margin: 0;
+    padding: 1.5rem 1rem 3rem;
+    line-height: 1.5;
+}
+
+/* corner.css flips to a dark reader when the laptop is in dark mode. This
+   file is loaded after it, so re-declaring the light tokens at the same
+   specificity wins on source order — no !important needed. */
+:root {
+    --cn-paper:  #fdf8ef;
+    --cn-ink:    #3d3229;
+    --cn-accent: #d97706;
+    --cn-hl:     #fef3c7;
+    --cn-border: #ede4d3;
+    --cn-verb:   #16a34a;  --cn-verb-hl: #dcfce7;
+    --cn-adj:    #2563eb;  --cn-adj-hl:  #dbeafe;
+    --cn-adv:    #7c3aed;  --cn-adv-hl:  #ede9fe;
+    --cn-right:  #16a34a;  --cn-right-soft: #ecfdf5;
+    --cn-wrong:  #dc2626;  --cn-wrong-soft: #fef2f2;
+}
+
+/* ── 2. The sheet & its watermark ──────────────────────────────────
+   Same construction as the grammar bank's sheet: the watermark is real
+   SVG geometry rather than a CSS background, because a watermark the
+   reader can switch off is not a watermark. */
+.pp-sheet {
+    max-width: 210mm;
+    margin: 0 auto;
+    background: #fff;
+    padding: 2rem 2.25rem 2.5rem;
+    border-radius: .5rem;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, .12);
+    position: relative;
+}
+.pp-watermark {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+}
+.pp-watermark text {
+    font-family: "Trebuchet MS", Verdana, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    fill: #0f172a;
+    fill-opacity: .05;
+}
+.pp-watermark .pp-wm-sub {
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: .1em;
+    fill-opacity: .04;
+}
+.pp-body { position: relative; z-index: 1; }
+
+/* ── 3. Screen-only toolbar ────────────────────────────────────────
+   Copied from the grammar sheet's .gr-bar so both handouts open the same
+   way. */
+.pp-bar {
+    max-width: 210mm;
+    margin: 0 auto 1rem;
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.pp-bar button, .pp-bar a {
+    font: inherit;
+    font-size: .85rem;
+    padding: .35rem .8rem;
+    border-radius: .4rem;
+    border: 1px solid #cbd5e1;
+    background: #fff;
+    color: #334155;
+    text-decoration: none;
+    cursor: pointer;
+}
+.pp-bar button.primary { background: #4f46e5; border-color: #4f46e5; color: #fff; }
+.pp-bar .pp-bar-note { font-size: .8rem; color: #64748b; margin-left: auto; }
+
+/* ── 4. Cover & contents ───────────────────────────────────────────── */
+.pp-cover { text-align: center; padding: 2rem 0 1.5rem; }
+.pp-cover img { border-radius: .6rem; }
+.pp-cover h1 { font-family: 'Syne', sans-serif; font-size: 1.9rem; margin: .8rem 0 .3rem; }
+.pp-cover .pp-cover-sub { color: #64748b; font-size: .95rem; margin: 0; }
+.pp-cover .pp-cover-meta { color: #94a3b8; font-size: .78rem; margin-top: 1.2rem; }
+
+.pp-toc { margin: 1.5rem auto 0; max-width: 32rem; text-align: left; }
+.pp-toc h2 { font-size: 1rem; border-bottom: 2px solid #0f172a; padding-bottom: .25rem; }
+.pp-toc ol { padding-left: 1.4rem; margin: .6rem 0 0; }
+.pp-toc li { margin-bottom: .25rem; font-size: .88rem; }
+.pp-toc .pp-toc-legs { color: #94a3b8; font-size: .75rem; }
+
+/* ── 5. Lesson blocks ──────────────────────────────────────────────
+   Every lesson starts a fresh page, including the first — which leaves the
+   cover and contents alone on page 1, where they belong. */
+.pp-lesson { break-before: page; page-break-before: always; }
+
+.pp-part { margin: 0 0 1.6rem; }
+.pp-part-head {
+    display: flex;
+    align-items: baseline;
+    gap: .6rem;
+    border-bottom: 2px solid #0f172a;
+    padding-bottom: .25rem;
+    margin-bottom: .9rem;
+}
+.pp-part-head h2 { font-size: 1.05rem; margin: 0; font-family: 'Syne', sans-serif; }
+.pp-part-kind {
+    font-size: .68rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+    background: #0f172a;
+    border-radius: .3rem;
+    padding: .1rem .45rem;
+}
+.pp-part-kind.pp-kind-practice { background: #4f46e5; }
+.pp-part-kind.pp-kind-reading  { background: #b45309; }
+.pp-part-brand {
+    margin-left: auto;
+    font-size: .66rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #cbd5e1;
+}
+
+/* ── 6. Practice questions ─────────────────────────────────────────── */
+.pp-q {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: .9rem;
+    padding-bottom: .7rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+.pp-q:last-child { border-bottom: none; }
+.pp-q-num {
+    font-size: .72rem;
+    font-weight: 700;
+    background: #1e293b;
+    color: #fff;
+    border-radius: .25rem;
+    padding: .05rem .4rem;
+    margin-right: .4rem;
+}
+.pp-q-text { display: inline; font-weight: 600; }
+.pp-q-text p { display: inline; margin: 0; }
+.pp-choices {
+    list-style: none;
+    margin: .45rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .25rem .8rem;
+}
+.pp-choice { font-size: .9rem; padding: .1rem .2rem; border-radius: .25rem; }
+.pp-choice-letter { font-weight: 700; color: #64748b; margin-right: .3rem; }
+.pp-choice.pp-correct {
+    background: #dcfce7;
+    color: #14532d;
+    font-weight: 600;
+}
+.pp-choice.pp-correct .pp-choice-letter { color: #15803d; }
+.pp-explain {
+    font-size: .82rem;
+    color: #475569;
+    margin: .4rem 0 0;
+    padding-left: .6rem;
+    border-left: 3px solid #cbd5e1;
+}
+.pp-explain p { margin: 0; }
+
+/* ── 7. Corner reading ─────────────────────────────────────────────── */
+.pp-vocab {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .85rem;
+    margin-top: .5rem;
+}
+.pp-vocab th, .pp-vocab td {
+    border: 1px solid #e2e8f0;
+    padding: .25rem .5rem;
+    text-align: left;
+    vertical-align: top;
+}
+.pp-vocab th { background: #f8fafc; font-size: .74rem; text-transform: uppercase; letter-spacing: .05em; }
+.pp-vocab tr { break-inside: avoid; page-break-inside: avoid; }
+
+/* Gloss mode: a reader holding paper cannot tap a word, so print the
+   translation next to it. */
+.pp-gloss .cn-word::after {
+    content: " (" attr(data-tr) ")";
+    font-size: .8em;
+    color: #64748b;
+    font-style: italic;
+}
+
+/* ── 8. Unfold and calm the lesson kit ─────────────────────────────
+   `open_details` (tutorial/templatetags/print_extras.py) adds the `open`
+   attribute server-side; these rules are the belt to that pair of braces
+   and drop the "tap to reveal" affordance the summary carries on screen. */
+details[open] > *:not(summary) { display: block !important; }
+details[open]::details-content { content-visibility: visible; block-size: auto; }
+.pe-reveal > summary {
+    background: none !important;
+    color: #64748b !important;
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding: 0;
+    cursor: default;
+    list-style: none;
+}
+.pe-reveal > summary::before { content: '' !important; }
+.pe-reveal__a { border: 1px solid #e2e8f0; border-radius: .4rem; padding: .5rem .7rem; }
+
+/* Pupil copy: the reveal stays closed, so leave a ruled line to write the
+   answer on rather than a collapsed strip with nowhere to put it. A real
+   border, not a pseudo-element: Chrome renders ::before/::after on a
+   <details> inside its content slot, which is hidden while it is closed. */
+.pe-reveal:not([open]) {
+    display: block;
+    border-bottom: 1px solid #cbd5e1;
+    padding-bottom: 1.6rem;
+    margin-bottom: .4rem;
+}
+
+/* Components that must not be split down the middle by a page break. */
+.pe-goal, .pe-formula, .pe-card, .pe-vs__card, .pe-call, .pe-fix, .pe-quiz,
+.pe-recap, .pe-ex, .pe-reveal, .pk-hangul, .pk-block, .pk-batchim, .pk-conj,
+.pk-level, .pp-part-head + *, table, figure {
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+/* A heading stranded at the foot of a page reads as a mistake. */
+h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+
+/* The kit scrolls wide tables sideways on a phone; on paper there is
+   nowhere to scroll, so let them wrap instead. */
+.pe-table-wrap, .pp-scroll { overflow: visible !important; }
+
+/* ── 9. Screen-only furniture ──────────────────────────────────────── */
+@media print {
+    body { padding: 0; background: #fff; }
+    .pp-sheet { box-shadow: none; padding: 0; border-radius: 0; max-width: none; }
+    .pp-noprint { display: none !important; }
+    audio, video { display: none !important; }
+    a { color: inherit; text-decoration: none; }
+}
+
+/* ── 10. Footer ────────────────────────────────────────────────────── */
+.pp-foot {
+    font-size: .72rem;
+    color: #94a3b8;
+    margin-top: 1.5rem;
+    border-top: 1px solid #e2e8f0;
+    padding-top: .5rem;
+    line-height: 1.6;
+}
