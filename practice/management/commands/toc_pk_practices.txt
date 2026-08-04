@@ -116,7 +116,22 @@ TUTORIAL: PK-<n>:   (each practice links to its own tutorial)
 86. (으)ㅁ으로써 — vosita va usulning otlashgan shakli              [done]
 87. (으)ㄹ 지경이다 — chidab boʻlmas holat va chegara                [done]
 88. (으)ㄹ 리가 없다 / (으)ㄹ 턱이 없다 — kuchli shubha va inkor      [done]
-89. 명사 + 에 달려 있다 — "…ga bogʻliq"                             [next]
+89. 명사 + 에 달려 있다 — "…ga bogʻliq"                             [done]
+90. (으)려던 참이다 — "aynan shuni qilmoqchi edim"                  [done]
+91. (이)나 다름없다, (으)ㄴ/는 셈이다 — natijada bir xil              [done]
+92. 다면서요, 냐면서요 — eshitilgan gapni tasdiqlash                 [done]
+93. 다니, 라니 — hayrat va taajjub                                 [done]
+94. (으)려니 하다 — oʻz-oʻzicha taxmin qilish                       [done]
+95. (이)랍시고, (으)ㄴ/는답시고 — kinoya va taʼna                    [done]
+96. 기 짝이 없다 — oʻta darajani urgʻulash                         [done]
+97. (으)로 말미암아, (으)로 인해 — rasmiy yozma sabab                [done]
+98. 거늘, 기로서니 — adabiy va rasmiy yon berish                    [done]
+99. 사자성어 va idiomalar — yozma nutqni bezash                    [done]
+100. Yakuniy test: matnni grammatik tahlil qilish                  [done]
+
+# ✅ TUGADI — 2026-08-04. 100 ta mashq, 2000 ta savol.
+#    PK-1 … PK-8 — 12 savoldan (Hangul), PK-9 … PK-100 — 20 savoldan.
+#    Har biri "tutorial" kaliti orqali oʻz darsiga bogʻlangan.
 
 # Blocks D–G mirror toc_prime_korean.txt one-to-one (37–100).
 # Add each block's lines here as it is reached.

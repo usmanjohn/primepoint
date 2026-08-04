@@ -134,15 +134,27 @@ PLAYLIST: Prime Korean
 ### Block G: Ilgʻor nuance va yozma uslub (87–100)
 87. (으)ㄹ 지경이다 — chidab boʻlmas holat va chegara                 [done]
 88. (으)ㄹ 리가 없다 / (으)ㄹ 턱이 없다 — kuchli shubha va inkor       [done]
-89. 명사 + 에 달려 있다 — "…ga bogʻliq"                              [next]
-90. (으)려던 참이다 — "aynan shuni qilmoqchi edim"
-91. (이)나 다름없다, (으)ㄴ/는 셈이다 — natijada bir xil
-92. 다면서요, 냐면서요 — eshitilgan gapni tasdiqlash
-93. 다니, 라니 — hayrat va taajjub
-94. (으)려니 하다 — oʻz-oʻzicha taxmin qilish
-95. (이)랍시고, (으)ㄴ/는답시고 — kinoya va taʼna
-96. 기 짝이 없다 — oʻta darajani urgʻulash
-97. (으)로 말미암아, (으)로 인해 — rasmiy yozma sabab
-98. 거늘, 기로서니 — adabiy va rasmiy yon berish
-99. 사자성어 va idiomalar — yozma nutqni bezash
-100. Hammasi birga: TOPIK II darajasidagi matnni grammatik tahlil qilish
+89. 명사 + 에 달려 있다 — "…ga bogʻliq"                              [done]
+90. (으)려던 참이다 — "aynan shuni qilmoqchi edim"                   [done]
+91. (이)나 다름없다, (으)ㄴ/는 셈이다 — natijada bir xil               [done]
+92. 다면서요, 냐면서요 — eshitilgan gapni tasdiqlash                  [done]
+93. 다니, 라니 — hayrat va taajjub                                  [done]
+94. (으)려니 하다 — oʻz-oʻzicha taxmin qilish                        [done]
+95. (이)랍시고, (으)ㄴ/는답시고 — kinoya va taʼna                     [done]
+96. 기 짝이 없다 — oʻta darajani urgʻulash                          [done]
+97. (으)로 말미암아, (으)로 인해 — rasmiy yozma sabab                 [done]
+98. 거늘, 기로서니 — adabiy va rasmiy yon berish                     [done]
+99. 사자성어 va idiomalar — yozma nutqni bezash                     [done]
+100. Hammasi birga: TOPIK II darajasidagi matnni grammatik tahlil qilish [done]
+
+# ══════════════════════════════════════════════════════════════════════
+# ✅ PRIME KOREAN TUGADI — 2026-08-04.
+#    100 ta dars · 100 ta mashq (2000 savol) · 92 ta oʻqish matni + audio.
+#    Block A (1–8) da oʻqish matni yoʻq — u yerda grammatika yoʻq edi.
+#    Har bir dars uchala oyogʻi bilan tugallangan va bir-biriga bogʻlangan:
+#      Tutorial.practices → mashq · Tutorial.stories → oʻqish matni.
+#    Bundan keyin bu yerda yangi dars yoʻq — faqat tuzatish/qayta yozish
+#    (--republish bilan). Kursning davomi boshqa ilovalarda:
+#      examprep TOPIK = imtihon koʻnikmalari · grammatika/lugʻat banklari =
+#      maʼlumotnoma · corner = qoʻshimcha oʻqish.
+# ══════════════════════════════════════════════════════════════════════

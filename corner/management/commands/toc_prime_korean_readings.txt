@@ -184,6 +184,22 @@ AUTHOR:     powerty
 86. (PK-86 · (으)ㅁ으로써) 쓰레기를 줄인 도시 (정보문)                 [done]
 87. (PK-87 · 지경이다) 이사하는 날 (인생 이야기)                      [done]
 88. (PK-88 · 리가 없다) 사람들이 믿지 않았던 것들 (정보문)             [done]
-89. (PK-89 · 에 달려 있다) …                                    [next]
+89. (PK-89 · 에 달려 있다) 두 번째 오디션 (인생 이야기)              [done]
+90. (PK-90 · 려던 참이다) 안 그래도 전화하려던 참이었어요 (정보문)   [done]
+91. (PK-91 · 다름없다/셈이다) 삼촌의 국숫집 (인생 이야기)            [done]
+92. (PK-92 · 다면서요) 열 사람을 지나면 (정보문)                     [done]
+93. (PK-93 · 다니) 어머니의 공책 (인생 이야기)                       [done]
+94. (PK-94 · 려니 하다) 그러려니 하는 힘 (정보문)                    [done]
+95. (PK-95 · 랍시고) 형이 고쳐 준 자전거 (인생 이야기)                [done]
+96. (PK-96 · 기 짝이 없다) 빛을 마시던 시대 (정보문)                  [done]
+97. (PK-97 · 로 인해) 마지막 졸업생 (인생 이야기)                     [done]
+98. (PK-98 · 거늘/기로서니) 유배지에서 온 편지 (정보문)               [done]
+99. (PK-99 · 사자성어) 할아버지와 말 한 마리 (옛이야기 + 인생 이야기) [done]
+100. (PK-100 · 종합) 끝까지 간 사람들 (정보문 — yakuniy matn)         [done]
+
+# ✅ TUGADI — 2026-08-04. 92 ta matn (PK-9 … PK-100), hammasi audio bilan.
+#    Oxirgi matn ataylab OʻQUVCHINING OʻZIGA murojaat qilib tugaydi —
+#    u tilni oxirigacha oʻrganganlarning uch foizi haqida, va uni koreyschada
+#    oʻqiyotgan odam oʻsha uch foizda.
 # ↑ PK-18 dan boshlab feʼl tizimi ochildi — bundan keyingi matnlar yuqoridagi
 #   "narrative frame" istisnosiga muhtoj emas.
