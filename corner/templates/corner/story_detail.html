@@ -103,8 +103,10 @@
         {% for g in grammar %}
         <div class="cn-gram">
             <p class="cn-gram-pattern">{{ g.pattern }}</p>
-            {# meaning/explanation are authored HTML (<b>/<i> highlight the pattern),
-               staff-only via import_corner or admin — same trust as story.body above. #}
+            {% comment %}
+            meaning and a question's explanation are authored HTML (bold/italic mark the
+            pattern), staff-only via import_corner or admin — same trust as story.body above.
+            {% endcomment %}
             <p class="cn-gram-meaning">{{ g.meaning|safe }}</p>
             {% if g.examples %}
             <ul class="cn-gram-ex">
