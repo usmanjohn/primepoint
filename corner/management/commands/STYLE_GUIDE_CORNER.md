@@ -157,6 +157,11 @@ Rules:
 - **Level: intermediate/advanced only (TOPIK II).** Skip beginner grammar (`-아요/어요`, `-고
   싶다`, `-았/었-`). Choose the ones that are genuinely worth a note.
 - `meaning` = a **short Uzbek** explanation (1–2 sentences: what it means + when it's used).
+  It **renders as HTML**, so `<b>` / `<i>` inside it are real formatting — use them to
+  highlight the pattern itself. (Same for a question's `explanation`, section 5b. Both were
+  being escaped and shown as literal `<b>` text on the page until this was fixed in
+  `corner/templates/corner/story_detail.html` on 2026-08-05 — if raw tags ever reappear
+  there, it is the `|safe` filter that has gone missing, not the data.)
 - `examples` = **1–2 short Korean example sentences** that show the pattern in use (fresh
   sentences are fine; they don't have to be lifted verbatim from the story).
 - **How many:** longer readings → **3–4** grammar points; short passages → **1–2**.

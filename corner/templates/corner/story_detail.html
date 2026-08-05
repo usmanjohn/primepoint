@@ -103,7 +103,9 @@
         {% for g in grammar %}
         <div class="cn-gram">
             <p class="cn-gram-pattern">{{ g.pattern }}</p>
-            <p class="cn-gram-meaning">{{ g.meaning }}</p>
+            {# meaning/explanation are authored HTML (<b>/<i> highlight the pattern),
+               staff-only via import_corner or admin — same trust as story.body above. #}
+            <p class="cn-gram-meaning">{{ g.meaning|safe }}</p>
             {% if g.examples %}
             <ul class="cn-gram-ex">
                 {% for ex in g.examples %}<li>{{ ex }}</li>{% endfor %}
@@ -131,7 +133,7 @@
                 {% endfor %}
             </div>
             {% if q.explanation %}
-            <template class="cn-q-explain">{{ q.explanation }}</template>
+            <template class="cn-q-explain">{{ q.explanation|safe }}</template>
             {% endif %}
         </div>
         {% endfor %}
