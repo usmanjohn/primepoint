@@ -44,15 +44,33 @@ AUTHOR:     powerty
 #        is · are · a / an / the · and · but · has / have · in / on / at · plural -s
 #    Everything else stays inside what the lessons have taught. This is exactly how
 #    graded readers work: the frame carries the story, the sentences carry the grammar.
+#
+#    A SECOND STANDING EXCEPTION — simple relative clauses (added 2026-08-04). Narration
+#    needs "the man who said no", "the dog that waited" from the very first tales; waiting
+#    for PE-58 would mean 57 readings of nothing but short sentences. So a DEFINING clause
+#    with `who` / `that` may be used freely as story-telling glue. What still waits for
+#    PE-58/PE-59 is the taught material: `which`, non-defining clauses between commas,
+#    and whom/whose. If a reading needs more than that, the sentence is too complex for
+#    where the pupil is standing anyway.
+#
+#    A THIRD STANDING EXCEPTION — plain comparison (added 2026-08-04, same reasoning).
+#    "She ran faster than her brothers", "the fastest boy in the city", "older than the
+#    house": the bare `-er than` and `the -est` forms are story vocabulary, not a lesson
+#    to be waited for. What still belongs to PE-67/PE-68 is the taught material —
+#    `as … as`, `too` / `enough`, `much/far + comparative`, `the more … the more`, and
+#    the irregular sets drilled there.
 # 3. LINKED. After importing a reading, re-run import_tutorials with --republish so
 #    the tutorial's `"stories": [...]` key attaches it and the Reading card appears
 #    on the lesson page (next to the Practice card).
 #
 # ── Length curve (guide, not a rule) ──
 #   PE-1  … PE-18    70–120 words   present tense, short sentences, tiny dialogue
-#   PE-19 … PE-41   120–180 words   a small scene with a beginning and an end
-#   PE-42 … PE-66   180–240 words   connected paragraphs, reported speech, conditionals
-#   PE-67 … PE-100  240–320 words   near-IELTS length and register
+#   PE-19 … PE-25   150–190 words   a small scene with a beginning and an end
+#   PE-26 … PE-41   200–260 words   a real story: life stories, tales, news, commentary
+#   PE-42 … PE-66   230–280 words   connected paragraphs, reported speech, conditionals
+#   PE-67 … PE-100  260–330 words   near-IELTS length and register
+#   (Revised 2026-08-04: batch 6 onwards came out at 230–260 and reads better there.
+#   A life story cannot turn in 150 words. Length follows the story, not the table.)
 #
 # ── STORIES, NOT EXERCISES ──
 #   A reading is a text somebody would actually want to read: narration with a small
@@ -113,10 +131,26 @@ AUTHOR:     powerty
 #   least one of them testing whether the reader understood the FOCUS GRAMMAR rather
 #   than just the plot.
 #
-# ── Audio ──
-#   python manage.py gen_corner_audio --collection="Prime English Readings" --only <n>
-#   The subject default voice en-US-JennyNeural is right for these. mp3s land under
+# ── Audio — ALTERNATE MALE AND FEMALE NARRATORS (the user's rule, 2026-08-05) ──
+#   "would be better if the audio is spoken by a man as well sometimes." So the
+#   collection does NOT use one voice: each reading is narrated by the voice that fits
+#   its narrator, and across a batch of five they alternate.
+#       female → en-US-JennyNeural   (the subject default)
+#       male   → en-US-GuyNeural
+#   Pick by the STORY, not by the number: a first-person male narrator, a father/uncle/
+#   coach/master telling it, an Afandi tale or a report-style text takes the male voice;
+#   a girl's diary, a woman's life story, a female narrator takes Jenny. Aim for roughly
+#   half and half in every batch, and write the choice into the data file's docstring so
+#   the mp3 can be regenerated identically later.
+#   Because --voice applies to the whole run, generate ONE story at a time:
+#       python manage.py gen_corner_audio --collection="Prime English Readings" \
+#           --only <n> [--voice en-US-GuyNeural] [--overwrite]
+#   (--speaker-voices also exists, for a story written as strict two-speaker dialogue —
+#   not used in this collection so far.) mp3s land under
 #   corner/management/commands/audio/prime-english-readings/ and are committed.
+#   PE-1…55 were narrated by Jenny; in batch 12 these were re-narrated with the male
+#   voice to balance the earlier half: 21 · 25 · 26 · 36 · 38 · 41 · 44 · 45 · 48 · 50 ·
+#   52 · 53. Attaching a re-generated mp3 needs import_corner_audio --republish.
 #
 # Batches of 5, matching the _tutorials_prime_english_<from>_<to>.py files.
 # Mark finished ranges with [done].
@@ -158,63 +192,63 @@ AUTHOR:     powerty
 30. (PE-30 · future continuous) This Time Next Year (hayot hikoyasi)                [done]
 31. (PE-31 · ago/for/since/until/by) Two Years and Eleven Days (hayot hikoyasi)     [done]
 
-### Block C: The Perfect Tenses (32–41)  [done: 32–35]
+### Block C: The Perfect Tenses (32–41)  [done — COMPLETE]
 32. (PE-32 · present perfect) Somebody Has Found It (Orol — yangilik matni)         [done]
 33. (PE-33 · for and since) The Dog Who Waited at the Station (Hachiko + Toshkent)  [done]
 34. (PE-34 · already/yet/just/ever) Has the Tortoise Finished Yet? (masal — jonli sharh)[done]
 35. (PE-35 · perfect vs past simple) The Watch in the Second Drawer (sirli hikoya)  [done]
-36. (PE-36 · present perfect continuous) He Has Been Running for an Hour            [next]
-37. (PE-37 · simple vs continuous perfect) Painted or Painting?
-38. (PE-38 · past perfect) By the Time the Train Came
-39. (PE-39 · past perfect continuous) She Had Been Saving for Months
-40. (PE-40 · future perfect) By the End of the Summer
-41. (PE-41 · the 12 tenses) One Story, Twelve Tenses
+36. (PE-36 · present perfect continuous) The Man Who Has Been Planting Trees (haqiqiy hayot hikoyasi)[done]
+37. (PE-37 · simple vs continuous perfect) Somebody Has Been Eating My Plov (oshxona siri)        [done]
+38. (PE-38 · past perfect) By the Time the Train Came (hayot hikoyasi, 1961)                      [done]
+39. (PE-39 · past perfect continuous) She Had Been Saving for Eleven Months (hayot hikoyasi)      [done]
+40. (PE-40 · future perfect) The Letters They Will Have Forgotten (vaqt kapsulasi)                [done]
+41. (PE-41 · the 12 tenses) One Oven, Twelve Tenses (PE-20 ning davomi)                           [done]
 
-### Block D: Modal Verbs (42–51)
-42. (PE-42 · can / could / be able to) The Girl Who Could Not Swim
-43. (PE-43 · may / might / could) It Might Rain in the Mountains
-44. (PE-44 · must / have to) The Rules of the Hostel
-45. (PE-45 · mustn't vs don't have to) You Don't Have to Come — But You Mustn't Lie
-46. (PE-46 · should / had better) Advice from the Older Cousin
-47. (PE-47 · modals of deduction) He Must Be the New Teacher
-48. (PE-48 · past modals) I Should Have Charged My Phone
-49. (PE-49 · polite requests) Could You Say That Again, Please?
-50. (PE-50 · shall / will / would) The Waiter Who Would Not Take a Tip
-51. (PE-51 · the strength scale) From "Maybe" to "Definitely"
+### Block D: Modal Verbs (42–51)  [done — COMPLETE]
+42. (PE-42 · can / could / be able to) The Girl Who Could Not Swim (hayot hikoyasi)               [done]
+43. (PE-43 · may / might / could) Something in the Wall (tungi sir)                               [done]
+44. (PE-44 · must / have to / need to) The Rule Nobody Understood (yotoqxona qoidasi)             [done]
+45. (PE-45 · mustn't vs don't have to) You Don't Have to Come (murabbiyning ikki gapi)            [done]
+46. (PE-46 · should / had better) Advice from the Older Cousin (hayot hikoyasi)                   [done]
+47. (PE-47 · modals of deduction) He Must Be the New Teacher (hovlidagi sir)                      [done]
+48. (PE-48 · past modals) I Should Have Charged My Phone (afsus baxtga aylandi)                   [done]
+49. (PE-49 · polite requests) Could You Say That Again, Please? (mehmonxona sinov kuni)           [done]
+50. (PE-50 · shall / will / would) The Waiter Who Would Not Take a Tip (Buxoro choyxonasi)        [done]
+51. (PE-51 · the strength scale) From "Maybe" to "Definitely" (Chimyonda qidiruv)                 [done]
 
-### Block E: Building Bigger Sentences (52–66)
-52. (PE-52 · conjunctions) He Was Late, So He Ran
-53. (PE-53 · zero & first conditional) If You Press This Button
-54. (PE-54 · second conditional) If I Had a Thousand Dollars
-55. (PE-55 · third conditional) If She Had Not Missed the Flight
-56. (PE-56 · mixed conditionals) If He Had Studied, He Would Be a Doctor Now
-57. (PE-57 · wish / if only) The Wishing Notebook
-58. (PE-58 · relative clauses) The Man Who Fixed Everything
-59. (PE-59 · defining vs non-defining) My Sister, Who Lives in Almaty
-60. (PE-60 · passive present & past) The Bridge Was Built in 1957
-61. (PE-61 · passive in all tenses) How a Book Is Made
-62. (PE-62 · reported speech) She Said She Was Tired
-63. (PE-63 · reported questions & commands) He Asked Where I Had Been
-64. (PE-64 · gerunds & infinitives) I Enjoy Cooking, I Want to Cook
-65. (PE-65 · stop doing / stop to do) He Stopped to Help
-66. (PE-66 · the causative) I Had My Phone Repaired
+### Block E: Building Bigger Sentences (52–66)  [done — COMPLETE]
+52. (PE-52 · conjunctions) He Was Late, So He Ran (hayot hikoyasi, 1998)                          [done]
+53. (PE-53 · zero & first conditional) If You Press This Button (usta va shogird)                 [done]
+54. (PE-54 · second conditional) If I Had a Thousand Dollars (2009-yildagi oʻttiz varaq)          [done]
+55. (PE-55 · third conditional) If She Had Not Missed the Flight (toʻqqiz daqiqa, 2011)           [done]
+56. (PE-56 · mixed conditionals) If He Had Studied, He Would Be a Doctor Now (tez yordam haydovchisi)[done]
+57. (PE-57 · wish / if only) The Wishing Notebook (toʻyda oʻqilgan daftar)                          [done]
+58. (PE-58 · relative clauses) The Man Who Fixed Everything (koʻcha va darvoza)                     [done]
+59. (PE-59 · defining vs non-defining) My Sister, Who Lives in Almaty (bitta vergul)                [done]
+60. (PE-60 · passive present & past) The Bridge Was Built in 1957 (Oysha koʻprik)                   [done]
+61. (PE-61 · passive in all tenses) How a Book Is Made (1978-yilgi kitob va muqova)                 [done]
+62. (PE-62 · reported speech) What He Actually Said (1994-yilgi gazeta satri)                       [done]
+63. (PE-63 · reported questions & commands) He Asked Where I Had Been (tunda ayvonda)               [done]
+64. (PE-64 · gerunds & infinitives) I Enjoy Cooking, I Want to Cook (hovlining oshpazi)             [done]
+65. (PE-65 · stop doing / stop to do) He Stopped to Help (yuk mashinasi haydovchisi)                [done]
+66. (PE-66 · the causative) I Had My Phone Repaired (2014-yilgi telefon)                            [done]
 
-### Block F: Precision (67–82)
-67. (PE-67 · comparatives & superlatives) The Longest Bridge in the Region
-68. (PE-68 · as...as / too / enough) Old Enough to Decide
-69. (PE-69 · quantifiers) Too Much Salt, Too Many Cooks
-70. (PE-70 · few / a few / little / a little) A Little Money, A Few Friends
-71. (PE-71 · each / every / both / neither) Both Brothers, Neither Answer
-72. (PE-72 · word order SVOMPT) The Sentence That Sounded Wrong
-73. (PE-73 · question tags) You're Coming, Aren't You?
-74. (PE-74 · subject–verb agreement) The News Is Not Good
-75. (PE-75 · possession) The Teacher's Desk and the Teachers' Room
-76. (PE-76 · dependent prepositions) Afraid of, Good at, Depend on
-77. (PE-77 · phrasal verbs) The Day Everything Broke Down
-78. (PE-78 · phrasal verbs by topic) Getting Up, Getting Along, Getting By
-79. (PE-79 · expressions of quantity) A Slice, a Loaf, a Bottle
-80. (PE-80 · advanced articles) The Moon, a Moon, Moons
-81. (PE-81 · punctuation) The Comma That Changed the Meaning
+### Block F: Precision (67–82)  [done: 67–80]
+67. (PE-67 · comparatives & superlatives) The Longest Bridge in the Region (qirq santimetr)         [done]
+68. (PE-68 · as...as / too / enough) Old Enough to Decide (buvining gapi)                           [done]
+69. (PE-69 · quantifiers) Too Much Salt, Too Many Cooks (toʻydagi qozon)                            [done]
+70. (PE-70 · few / a few / little / a little) A Little Money, A Few Friends (bitta harf)            [done]
+71. (PE-71 · each / every / both / neither) Both Brothers, Neither Answer                           [done]
+72. (PE-72 · word order SVOMPT) The Sentence That Sounded Wrong                                     [done]
+73. (PE-73 · question tags) You're Coming, Aren't You?                                              [done]
+74. (PE-74 · subject–verb agreement) The News Is Not Good                                           [done]
+75. (PE-75 · possession) The Teacher's Desk and the Teachers' Room                                  [done]
+76. (PE-76 · dependent prepositions) Afraid of, Good at, Depend on (nasos uyi, 2016)                [done]
+77. (PE-77 · phrasal verbs) The Day Everything Broke Down (uch yuz non, 2018)                       [done]
+78. (PE-78 · phrasal verbs by topic) Getting Up, Getting Along, Getting By (Seuldan xat)            [done]
+79. (PE-79 · expressions of quantity) A Slice, a Loaf, a Bottle (1993-yilgi roʻyxat)                [done]
+80. (PE-80 · advanced articles) The Moon, a Moon, Moons (maktab tomidagi teleskop, 1998)            [done]
+81. (PE-81 · punctuation) The Comma That Changed the Meaning                                        [next]
 82. (PE-82 · capitals & spelling) Uzbekistan, English, Monday
 
 ### Block G: Advanced and Stylish English (83–92)  — written register from here

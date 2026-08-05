@@ -36,6 +36,7 @@ TUTORIALS = [
             "The tense of visible effort: have been + -ing. For an activity that started in "
             "the past and is still going — or has just stopped and left traces."
         ),
+        "stories": ["The Man Who Has Been Planting Trees"],
         "content": """
 <h2>PE-36: Present Perfect Continuous</h2>
 
@@ -302,6 +303,7 @@ live, play, run, read, look for, try, rain, snow, talk</em>.</p>
             "Finished result or ongoing activity? How many or how long? One question separates "
             "'I've painted the kitchen' from 'I've been painting the kitchen'."
         ),
+        "stories": ["Somebody Has Been Eating My Plov"],
         "content": """
 <h2>PE-37: Present Perfect Simple vs Continuous</h2>
 
@@ -569,6 +571,7 @@ belong, own, have (= own)</em>. They have no Continuous form in any tense.</p>
             "When two things happened in the past, this tense says which one came first — "
             "had + V3, the same for every person."
         ),
+        "stories": ["By the Time the Train Came"],
         "content": """
 <h2>PE-38: Past Perfect: The Past Before the Past</h2>
 
@@ -839,6 +842,7 @@ Past Perfect at all — that would be like stepping backwards for no reason:</p>
             "How long something had been going on before another past moment — had been + -ing, "
             "the tense that explains why things were the way they were."
         ),
+        "stories": ["She Had Been Saving for Eleven Months"],
         "content": """
 <h2>PE-39: Past Perfect Continuous</h2>
 
@@ -1104,6 +1108,7 @@ a situation <b>then</b>. It answers the question "why was it like that?"</p>
             "By this time next year, what will you have done? Standing in the future and "
             "looking back — will have + V3, and will have been + -ing."
         ),
+        "stories": ["The Letters They Will Have Forgotten"],
         "content": """
 <h2>PE-40: Future Perfect and Future Perfect Continuous</h2>
 

@@ -36,6 +36,7 @@ TUTORIALS = [
             "Every modal on one page, arranged by strength — obligation, certainty and "
             "ability — plus how each one moves into the past."
         ),
+        "stories": ['From "Maybe" to "Definitely"'],
         "content": """
 <h2>PE-51: Modal Verbs: The Full Strength Scale</h2>
 
@@ -318,6 +319,7 @@ you want to sound. Keep this lesson open when you write.</p>
             "The words that join ideas into real sentences — and the although/but mistake that "
             "comes straight from Uzbek."
         ),
+        "stories": ['He Was Late, So He Ran'],
         "content": """
 <h2>PE-52: Conjunctions: and, but, or, so, because</h2>
 
@@ -603,6 +605,7 @@ the most recognisable Uzbek-speaker errors in written English.</p>
             "If sentences that are real: what always happens, and what will happen if — plus "
             "the golden rule that there is never a 'will' after 'if'."
         ),
+        "stories": ['If You Press This Button'],
         "content": """
 <h2>PE-53: Zero and First Conditional</h2>
 
@@ -871,6 +874,7 @@ another <b>modal</b>:</p>
             "If I had a million dollars… The conditional for dreams and impossible situations "
             "— and the famous phrase 'If I were you'."
         ),
+        "stories": ['If I Had a Thousand Dollars'],
         "content": """
 <h2>PE-54: Second Conditional: The Imaginary Present</h2>
 
@@ -1142,6 +1146,7 @@ to") or <b>might</b> ("perhaps would") to soften it:</p>
             "The conditional for what never happened — if I had studied, I would have passed. "
             "How English rewrites a past it cannot change."
         ),
+        "stories": ['If She Had Not Missed the Flight'],
         "content": """
 <h2>PE-55: Third Conditional: Regretting the Past</h2>
 

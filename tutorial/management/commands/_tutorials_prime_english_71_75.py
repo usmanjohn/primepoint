@@ -36,6 +36,7 @@ TUTORIALS = [
             "Talking about groups with precision — one by one, two together, one of two, or "
             "none of them. Plus the singular verbs that surprise everybody."
         ),
+        "stories": ['Both Brothers, Neither Answer'],
         "content": """
 <h2>PE-71: Determiners: each, every, both, either, neither, all</h2>
 
@@ -313,6 +314,7 @@ happens to the verb.</p>
             "The master rule of English sentence building: subject, verb, object, then manner, "
             "place and time — in that order, every time."
         ),
+        "stories": ['The Sentence That Sounded Wrong'],
         "content": """
 <h2>PE-72: Word Order in English: SVOMPT</h2>
 
@@ -597,6 +599,7 @@ correct patterns, and the word <b>to</b> decides the order.</p>
             "It's useful, isn't it? The little question at the end of a sentence — how to build "
             "it, and why Uzbek's single tag becomes dozens in English."
         ),
+        "stories": ["You're Coming, Aren't You?"],
         "content": """
 <h2>PE-73: Question Tags</h2>
 
@@ -895,6 +898,7 @@ sound flat or even rude; a tag invites the other person into the conversation.</
             "Finding the real subject when a long phrase gets in the way — plus the nouns that "
             "look plural but aren't, and the ones that look singular but are."
         ),
+        "stories": ['The News Is Not Good'],
         "content": """
 <h2>PE-74: Subject–Verb Agreement</h2>
 
@@ -1165,6 +1169,7 @@ agreeing with the original subject.</p>
             "Where the apostrophe goes, when to use 'of' instead, and the one place you must "
             "never put an apostrophe at all."
         ),
+        "stories": ["The Teacher's Desk and the Teachers' Room"],
         "content": """
 <h2>PE-75: Possession: 's, s' and of</h2>
 

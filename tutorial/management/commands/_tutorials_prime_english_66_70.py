@@ -36,6 +36,7 @@ TUTORIALS = [
             "You didn't do it — somebody did it for you. The structure behind 'I had my hair "
             "cut', which Uzbek expresses with -tirdim."
         ),
+        "stories": ['I Had My Phone Repaired'],
         "content": """
 <h2>PE-66: The Causative: have / get something done</h2>
 
@@ -308,6 +309,7 @@ verb forms differ.</p>
             "Bigger, biggest, more beautiful, the most beautiful — the rules, the spelling, the "
             "irregulars, and the double-comparative mistake."
         ),
+        "stories": ['The Longest Bridge in the Region'],
         "content": """
 <h2>PE-67: Comparatives and Superlatives</h2>
 
@@ -627,6 +629,7 @@ PE-2 comes back one more time.</p>
             "Saying things are equal, excessive or sufficient — and the word-order rule that "
             "makes 'enough' go before nouns but after adjectives."
         ),
+        "stories": ['Old Enough to Decide'],
         "content": """
 <h2>PE-68: as ... as, too, enough</h2>
 
@@ -897,6 +900,7 @@ useful skill for writing:</p>
             "How much and how many — the words for amounts, which sentence types they belong to, "
             "and why 'Would you like some tea?' breaks the rule."
         ),
+        "stories": ['Too Much Salt, Too Many Cooks'],
         "content": """
 <h2>PE-69: Quantifiers: some, any, much, many, a lot of</h2>
 
@@ -1176,6 +1180,7 @@ like".</p>
             "One tiny article changes your whole attitude: 'a few friends' is cheerful, 'few "
             "friends' is sad. Learn the difference and the countable split."
         ),
+        "stories": ['A Little Money, A Few Friends'],
         "content": """
 <h2>PE-70: few vs a few, little vs a little</h2>
 

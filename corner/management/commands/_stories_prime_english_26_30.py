@@ -507,7 +507,7 @@ STORIES = [
 
 <p>A year is three hundred and sixty-five days. Afsona wrote his sentence on a piece of paper and put it above her desk.</p>
 
-<p>From September she worked in the bakery on the corner from six to eleven every morning, carrying trays. In the afternoons she <span class="cn-word" data-pos="verb" data-tr="takrorladi">revised</span>. Her <span class="cn-word" data-tr="budilnik">alarm clock</span> <span class="cn-word" data-pos="verb" data-tr="jiringlardi">rang</span> at half past four.</p>
+<p>From September she worked in the bakery on the corner from six to eleven every morning, carrying <span class="cn-word" data-tr="patnislar">trays</span>. In the afternoons she <span class="cn-word" data-pos="verb" data-tr="takrorladi">revised</span>. Her <span class="cn-word" data-tr="budilnik">alarm clock</span> <span class="cn-word" data-pos="verb" data-tr="jiringlardi">rang</span> at half past four.</p>
 
 <p>In February she wanted to stop. Her little brother found her <span class="cn-word" data-pos="verb" data-tr="yigʻlab oʻtirgan">crying</span> at that desk at midnight, with the paper in her hand.</p>
 

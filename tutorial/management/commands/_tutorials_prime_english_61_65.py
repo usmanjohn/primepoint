@@ -36,6 +36,7 @@ TUTORIALS = [
             "One pattern, twelve tenses: change be, keep V3. Plus passives with modals, two "
             "objects, and when to keep the by-phrase."
         ),
+        "stories": ['How a Book Is Made'],
         "content": """
 <h2>PE-61: Passive Voice in All Tenses, and the by-agent</h2>
 
@@ -309,6 +310,7 @@ only when the doer is genuinely interesting.</p>
             "How to tell somebody what somebody else said — the backshift rule that moves every "
             "verb one step into the past."
         ),
+        "stories": ['What He Actually Said'],
         "content": """
 <h2>PE-62: Reported Speech: Statements and Backshift</h2>
 
@@ -589,6 +591,7 @@ times and places must be adjusted too.</p>
             "A reported question is not a question any more — no inversion, no question mark. "
             "Plus how to report orders, requests and a dozen useful reporting verbs."
         ),
+        "stories": ['He Asked Where I Had Been'],
         "content": """
 <h2>PE-63: Reported Speech: Questions, Commands and Reporting Verbs</h2>
 
@@ -863,6 +866,7 @@ with what follows it.</p>
             "When to say 'I enjoy reading' and when to say 'I want to read' — the two ways a "
             "verb follows another verb, and the preposition rule that never fails."
         ),
+        "stories": ['I Enjoy Cooking, I Want to Cook'],
         "content": """
 <h2>PE-64: Gerunds and Infinitives: The Basics</h2>
 
@@ -1142,6 +1146,7 @@ are correct and mean the same thing:</p>
             "Six verbs where -ing and to + verb mean completely different things — the "
             "difference between stopping smoking and stopping to smoke."
         ),
+        "stories": ['He Stopped to Help'],
         "content": """
 <h2>PE-65: Verbs That Change Meaning: stop doing vs stop to do</h2>
 

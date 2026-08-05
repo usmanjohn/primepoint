@@ -36,6 +36,7 @@ TUTORIALS = [
             "The fixed partners you simply have to know — good at, depend on, listen to — plus "
             "the verbs that need no preposition at all, where Uzbek expects one."
         ),
+        "stories": ['Afraid of, Good at, Depend on'],
         "content": """
 <h2>PE-76: Adjective + Preposition, Verb + Preposition</h2>
 
@@ -330,6 +331,7 @@ small places and <b>in</b> for cities and countries.</p>
             "Why 'get up', 'get on' and 'get over' mean completely different things — the four "
             "types of phrasal verb and the pronoun rule that decides word order."
         ),
+        "stories": ['The Day Everything Broke Down'],
         "content": """
 <h2>PE-77: Phrasal Verbs: How They Actually Work</h2>
 
@@ -608,6 +610,7 @@ understanding.</p>
             "The phrasal verbs you will actually use, grouped by situation — morning routine, "
             "school, friendships, travel, problems and phone calls."
         ),
+        "stories": ['Getting Up, Getting Along, Getting By'],
         "content": """
 <h2>PE-78: 40 Everyday Phrasal Verbs by Topic</h2>
 
@@ -879,6 +882,7 @@ better than learning them alphabetically.</p>
             "The container words that let you count the uncountable — a piece of, a loaf of, a "
             "pair of — plus nouns that change meaning when they change side."
         ),
+        "stories": ['A Slice, a Loaf, a Bottle'],
         "content": """
 <h2>PE-79: Countable and Uncountable Revisited: Expressions of Quantity</h2>
 
@@ -1140,6 +1144,7 @@ and the difference is worth knowing precisely.</p>
             "PE-4 gave you the system; here are the cases that still catch people — the USA, "
             "Lake Aral, the piano, twice a week, and the poor."
         ),
+        "stories": ['The Moon, a Moon, Moons'],
         "content": """
 <h2>PE-80: Articles: The Advanced Cases</h2>
 

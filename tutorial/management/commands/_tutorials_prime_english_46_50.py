@@ -36,6 +36,7 @@ TUTORIALS = [
             "How to tell someone what to do without ordering them — three levels of advice, "
             "from a gentle suggestion to a serious warning."
         ),
+        "stories": ["Advice from the Older Cousin"],
         "content": """
 <h2>PE-46: should, ought to, had better: Advice</h2>
 
@@ -304,6 +305,7 @@ conversation, and using them makes your advice sound natural rather than textboo
             "Thinking like a detective in English: how to say how sure you are about something "
             "you cannot see — and why 'mustn't be' is never the opposite of 'must be'."
         ),
+        "stories": ["He Must Be the New Teacher"],
         "content": """
 <h2>PE-47: Modals of Deduction: must be, can't be, might be</h2>
 
@@ -572,6 +574,7 @@ different. It is <b>can't be</b>.</p>
             "Regret, criticism and detective work about yesterday — modal + have + V3, the "
             "structure that lets you talk about what did or didn't happen."
         ),
+        "stories": ["I Should Have Charged My Phone"],
         "content": """
 <h2>PE-48: Modals in the Past: must have, should have, could have</h2>
 
@@ -844,6 +847,7 @@ a note of "why didn't you?" or of relief that something bad was avoided.</p>
             "The same request at five levels of politeness — how to ask, offer and invite in "
             "English without ever sounding rude by accident."
         ),
+        "stories": ["Could You Say That Again, Please?"],
         "content": """
 <h2>PE-49: Polite Requests, Offers and Permission</h2>
 
@@ -1115,6 +1119,7 @@ wait?</em></p>
             "Three related modals and their less obvious jobs — offering with shall, refusing "
             "with won't, being polite with would, and the 'd that hides two words."
         ),
+        "stories": ["The Waiter Who Would Not Take a Tip"],
         "content": """
 <h2>PE-50: shall, will, would: Willingness and Habit</h2>
 

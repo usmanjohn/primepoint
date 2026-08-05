@@ -36,6 +36,7 @@ TUTORIALS = [
             "Every English tense on one page. Not twelve things to memorise — three times "
             "multiplied by four aspects, and one verb shown through all of them."
         ),
+        "stories": ["One Oven, Twelve Tenses"],
         "content": """
 <h2>PE-41: The 12 Tenses: The Complete Map</h2>
 
@@ -345,6 +346,7 @@ conversation.</p>
             "Your first modal verbs — and the rules that govern all of them. Plus the "
             "difference between 'I could swim' and 'I was able to escape'."
         ),
+        "stories": ["The Girl Who Could Not Swim"],
         "content": """
 <h2>PE-42: can, could, be able to: Ability</h2>
 
@@ -622,6 +624,7 @@ prefers <b>was/were able to</b> or <b>managed to</b>.</p>
             "How sure are you? The modals that sit at 50% — plus the maybe / may be trap that "
             "catches almost every learner."
         ),
+        "stories": ["Something in the Wall"],
         "content": """
 <h2>PE-43: may, might, could: Possibility</h2>
 
@@ -910,6 +913,7 @@ hear it from officials, in announcements, and in polite company.</p>
             "Who says you have to? The difference between the rule inside your head and the "
             "rule on the wall — and why must has no past tense."
         ),
+        "stories": ["The Rule Nobody Understood"],
         "content": """
 <h2>PE-44: must, have to, need to: Obligation</h2>
 
@@ -1175,6 +1179,7 @@ it is about what is <em>necessary</em>, not what is <em>ordered</em>.</p>
             "Two negatives that look like a pair but mean opposite things — one forbids, the "
             "other frees you. In Uzbek: 'mumkin emas' and 'shart emas'."
         ),
+        "stories": ["You Don't Have to Come"],
         "content": """
 <h2>PE-45: mustn't vs don't have to: The Dangerous Pair</h2>
 

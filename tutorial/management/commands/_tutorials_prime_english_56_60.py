@@ -36,6 +36,7 @@ TUTORIALS = [
             "When the two halves live in different times: a past cause with a present result, "
             "or a present cause with a past result."
         ),
+        "stories": ['If He Had Studied, He Would Be a Doctor Now'],
         "content": """
 <h2>PE-56: Mixed Conditionals</h2>
 
@@ -292,6 +293,7 @@ something that happened once in the past.</p>
             "How English says 'koshki edi' — wishing for a different present, a different past, "
             "or for somebody to stop doing something annoying."
         ),
+        "stories": ['The Wishing Notebook'],
         "content": """
 <h2>PE-57: wish and if only</h2>
 
@@ -579,6 +581,7 @@ express a kind hope for them — and here the grammar is completely ordinary.</p
             "How to add information about a noun without starting a new sentence — and why "
             "English puts the description AFTER the noun, unlike Uzbek."
         ),
+        "stories": ['The Man Who Fixed Everything'],
         "content": """
 <h2>PE-58: Relative Clauses: who, which, that</h2>
 
@@ -858,6 +861,7 @@ The relative pronoun <b>is</b> the object — nothing else is needed.</p>
             "Two commas that change what a sentence means — how English separates essential "
             "information from extra information."
         ),
+        "stories": ['My Sister, Who Lives in Almaty'],
         "content": """
 <h2>PE-59: Defining vs Non-Defining Relative Clauses</h2>
 
@@ -1120,6 +1124,7 @@ just one noun. This is very common in good writing.</p>
             "When the doer doesn't matter: be + V3. The structure behind almost all academic "
             "and news English."
         ),
+        "stories": ['The Bridge Was Built in 1957'],
         "content": """
 <h2>PE-60: Passive Voice: Present and Past</h2>
 
