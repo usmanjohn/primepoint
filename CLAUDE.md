@@ -155,6 +155,59 @@ Prime Korean is **not** exam prep: `examprep` TOPIK = question types and strateg
 grammar/vocab banks = lookup tables, `corner` = reading. Prime Korean = the language itself,
 from zero, in order.
 
+## Creating Prime Russian tutorials (bulk) — rus tili grammatikasi
+**Prime Russian** is the 100-lesson Russian course in `tutorial`, held together by a
+`TutorialPlaylist` called "Prime Russian". Titles are `PR-1: …`, category `russian`. It is the
+third course built on the same machinery as Prime English and Prime Korean, and — like
+Prime Korean — it **teaches in Uzbek**; Russian is only the material. **No English anywhere.**
+Its two differences from Prime Korean are worth remembering:
+- the alphabet block is **5 lessons, not 8** (an Uzbek pupil already reads Cyrillic — PR-1
+  sorts out what they know and warns them about the seven false friends В Н Р С У Х Ы);
+- **Uzbek has cases too**, so every падеж is taught beside its Uzbek kelishik
+  (*kitob**ni*** → *кни́г**у***). That mapping is the course's biggest teaching lever.
+When the user asks (e.g. "make the next 3 Prime Russian tutorials"):
+1. Read `tutorial/management/commands/STYLE_GUIDE_PRIME_RUSSIAN.md`.
+2. Read `tutorial/management/commands/toc_prime_russian.txt` (header gives PREFIX, CATEGORY,
+   AUTHOR, PLAYLIST; body is the ordered 100-lesson list with `[done]`/`[next]` markers).
+3. Find where to continue: `Tutorial.objects.filter(title__startswith='PR-')`.
+4. Write into `tutorial/management/commands/_tutorials_prime_russian_<range>.py` as
+   `PLAYLIST = {...}` + `TUTORIALS = [...]` (copy `PLAYLIST` unchanged from the previous
+   batch; each lesson carries `"order": <lesson number>`, category `russian`).
+5. Import: `python manage.py import_tutorials <file> --author=prime` (`--republish` to
+   overwrite). The importer creates the playlist itself.
+6. Mark the range `[done]` in the toc, then give the `railway run python manage.py
+   import_tutorials ...` command — automatically, every time.
+**Each Prime Russian lesson from PR-6 has THREE legs, written together in batches of 3:**
+1. the **tutorial** (`tutorial`, PR-n) — teaches the pattern;
+2. the **practice** (`practice`, 20 questions; 12 for the alphabet lessons PR-1…PR-5) —
+   drills it, subject `Russian`, guide `practice/management/commands/STYLE_GUIDE_PR_PRACTICE.md`;
+3. the **reading** (`corner`, collection "Prime Russian Readings", `order` = lesson number)
+   — shows it living in a text, with `cn-word` tappable vocab, a `grammar` block, 2-3
+   comprehension questions and generated audio. Guide: the overrides in
+   `corner/management/commands/toc_prime_russian_readings.txt`.
+So a batch = 3 tutorials + 3 practices + 3 readings + 3 mp3s, all finished together.
+Import order per batch: tutorials → practices → readings → audio → re-run
+`import_tutorials --republish` so the `stories` links resolve (the story must exist first).
+**Two rules the user set for the readings (2026-08-08), written into that toc's header:**
+**CLARITY** — name characters and keep using the name, chronological order only, one thing
+per sentence, a time/place word whenever the scene moves; if the text cannot be summarised
+in one Uzbek sentence, rewrite it. **VERSATILITY** — rotate the genre (letter, diary, folk
+tale, news item, recipe, review, interview, popular science, biography…) and never run three
+of the same shape in a row; retelling real material is encouraged, and facts must be true.
+**Audio must vary.** edge-tts has only two Russian voices (`ru-RU-SvetlanaNeural` female,
+`ru-RU-DmitryNeural` male), so variety is deliberate: alternate the narrator across readings,
+give dialogue readings BOTH voices in one clip with `--speaker-voices`, and speed the
+narration up as the course advances (`--rate` -15% → -8% → -3%). Each toc entry records the
+exact flags used under an `## Audio:` line.
+The visual kit **reuses the whole `pe-*` component set** and adds Russian-only pieces
+(`pr-cyr` alphabet cards with the same/false-friend/new families, `pr-gender` three-way род
+fork, `pr-case` падеж table, `pr-decl` ladder, `pr-aspect` НСВ/СВ pair, `pr-say`
+pronunciation arrow, `pr-stress`/`pr-pair` for ударение) in the **PRIME RUSSIAN** section at
+the bottom of `static/css/style.css`. Pure CSS — never add JavaScript, and never invent a
+`pr-*` class without adding it to that section and the style guide first.
+Prime Russian's practices are **not** the older `Часть NN: …` Russian drills (written in
+Russian, attached to no lesson) — those stay as they are.
+
 ## Creating examprep lessons (bulk) — TOPIK etc.
 `examprep` holds detailed, by-skill exam prep (`ExamTrack` → skill → `Topic` (question-type
 card, e.g. Reading → "Reklama va e'lonlar (광고)") → `Lesson` → ordered `LessonBlock`s with

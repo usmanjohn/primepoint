@@ -1,0 +1,150 @@
+# ── Subject metadata (read by Claude) ────────────────────────────────
+PREFIX:   PR
+CATEGORY: russian
+AUTHOR:   powerty
+PLAYLIST: Prime Russian
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_PRIME_RUSSIAN.md — NOT STYLE_GUIDE.md, NOT the
+# Prime English one and NOT the Prime Korean one. Prime Russian teaches in UZBEK;
+# Russian is the material.
+# The playlist is created automatically by import_tutorials from the PLAYLIST dict
+# inside each _tutorials_prime_russian_*.py file.
+# This file is ONLY the ordered lesson list. Mark finished blocks with [done].
+# ─────────────────────────────────────────────────────────────────────
+
+# Prime Russian — noldan ishonchli B2 gacha rus tili grammatikasi
+# 100 dars. Har bir dars mustaqil, lekin tartib butun kursni quradi:
+# PR-1 dan PR-100 gacha oʻqigan oʻquvchi rus grammatikasining butun tizimini koʻradi.
+#
+# Prime Korean'dan farqi ikkita:
+#   1. Alifbo bloki qisqa — oʻzbek oʻquvchi kirill harflarini allaqachon biladi.
+#      Shuning uchun 8 emas, 5 ta dars: bilganini tartibga solamiz, farqlarni oʻrgatamiz.
+#   2. Oʻzbek tilida ham kelishik bor. Rus падеж'lari oʻzbek kelishiklariga juda
+#      yaqin — bu kursning eng katta ustunligi. Har bir kelishikni oʻzbekcha
+#      kelishik bilan yonma-yon koʻrsating.
+# Prime English'dan farqi: u yerda ingliz tili — oʻqitish tili. Bu yerda oʻqitish
+# tili — oʻzbekcha, ruscha esa oʻrgatilayotgan material. Inglizcha umuman yoʻq.
+#
+# Har bir dars uchta boʻlakdan iborat (PR-6 dan boshlab):
+#   dars (tutorial) + mashq (practice, 20 savol) + oʻqish matni (corner, audio bilan).
+# Batch = 3 ta dars, uchalasi birga yoziladi.
+
+### Block A: Kirill alifbosi va talaffuz (1–5)
+# Bu darslarda grammatika yoʻq, shuning uchun oʻqish matni ham yoʻq.
+# Mashqlar qisqa: 12 savoldan.
+1. Kirill alifbosi — siz bilgan 33 harf va sizni chalgʻitadigan yettitasi   [done]
+2. Unlilar: а о у э ы va yumshatuvchi juftlar я ё ю е и                     [done]
+3. Undoshlar 1: jarangli va jarangsiz juftliklar (б-п, в-ф, г-к, д-т, з-с, ж-ш) [done]
+4. Undoshlar 2: shivirlovchilar ж ш щ ч ц, й harfi va ikki belgi ъ ь        [done]
+5. Urgʻu (ударение), аканье va soʻz oxiridagi jarangsizlanish               [done]
+# ↑ Block A COMPLETE — 5 ta dars + 5 ta mashq (12 savoldan).
+#   PR-6 dan boshlab har bir dars uchta boʻlakdan iborat.
+
+### Block B: Birinchi gaplar (6–18)
+6. Это — birinchi gapingiz. «Кто это? Что это?»                            [done]
+7. Salomlashish, tanishuv va murojaat: ты yoki вы?                          [done]
+8. Jins (род) — otlarning uch jinsi va uni oxiridan aniqlash                [done]
+9. Koʻplik (множественное число) — -ы, -и, -а va istisnolar                 [next]
+10. Shaxs olmoshlari va egalik: мой, твой, наш, ваш
+11. «Быть» yoʻq gaplar: Я студент. Кофе горячий. Tire qachon qoʻyiladi?
+12. Sifat otga moslashadi — новый, новая, новое, новые
+13. Sonlar 0–100 va «сколько?»
+14. У меня есть — rus tilida egalik
+15. Savol soʻzlari: кто, что, где, когда, почему, как, какой
+16. Bu va anavi: этот, эта, это, эти — va «тот»
+17. Да, нет, не, ни — inkorning toʻrt shakli
+18. Ravishlar va тоже / также / ещё / уже
+
+### Block C: Feʼl va hozirgi zamon (19–28)
+19. Feʼl nima? Infinitiv va ikkita tuslanish (спряжение)
+20. I tuslanish: читать, работать, знать (-ю, -ешь, -ет, -ем, -ете, -ют)
+21. II tuslanish: говорить, смотреть, любить (-ю, -ишь, -ит, -им, -ите, -ят)
+22. Notoʻgʻri feʼllar: хотеть, есть, дать, идти, ехать, жить, писать
+23. Oʻtgan zamon (прошедшее время) — jinsga qarab -л, -ла, -ло, -ли
+24. Kelasi zamon: буду + infinitiv
+25. Qaytim feʼllar -ся / -сь: учиться, находиться, нравиться
+26. Мочь va уметь — «-a olmoq» ning ikki xil turi
+27. Нужно, надо, можно, нельзя, должен — kerak va mumkin
+28. Мне нравится — teskari qurilish va uning mantigʻi
+
+### Block D: Kelishiklar — rus tilining yuragi (29–50)
+29. Kelishik nima? Olti падеж'ning umumiy xaritasi (+ oʻzbekcha bilan solishtirish)
+30. Предложный 1: где? — в школе, на работе, в Ташкенте
+31. Предложный 2: о чём? о ком? — о фильме, о тебе
+32. Винительный 1: кого? что? — jonli va jonsiz farqi
+33. Винительный 2: yoʻnalish — в школу, на работу, куда?
+34. Родительный 1: egalik va yoʻqlik — книга брата, нет времени
+35. Родительный 2: predloglar bilan — из, от, до, у, без, для, около, после
+36. Родительный 3: sonlar va miqdor bilan — два дома, пять домов, много книг
+37. Дательный 1: кому? — дать, сказать, написать, помочь
+38. Дательный 2: мне холодно, ему нравится, по улице, к другу
+39. Творительный 1: чем? — vosita va «с кем?» birgalik
+40. Творительный 2: быть/стать/работать + Т.п., над, под, за, перед, между
+41. Olmoshlarning turlanishi: меня, мне, мной, обо мне
+42. Egalik olmoshlarining turlanishi: моего, моей, моим, о моём
+43. Sifatlarning turlanishi 1 — Родительный va Винительный
+44. Sifatlarning turlanishi 2 — Дательный, Творительный, Предложный
+45. Koʻplik kelishiklari 1 — Именительный va Родительный (eng qiyin joyi)
+46. Koʻplik kelishiklari 2 — Дательный, Винительный, Творительный, Предложный
+47. Soʻroq soʻzlarining kelishiklari: кто, что, какой, чей, сколько
+48. Predlog xaritasi: qaysi predlog qaysi kelishikni talab qiladi
+49. Sonlarning kelishigi va vaqt ifodalari: в понедельник, в мае, в 2026 году
+50. Kelishiklar — umumiy takror va tirik gaplarda mashq
+
+### Block E: Feʼl turi va harakat feʼllari (51–62)
+51. Вид — tugallanmagan va tugallangan feʼl (что делать? / что сделать?)
+52. Vid juftliklarini yasash: prefiks, suffiks va butunlay boshqa oʻzak
+53. Vid uch zamonda: hozirgi zamonda СВ nega yoʻq?
+54. Vidni tanlash: takror, jarayon, natija, bir marta, buyruq
+55. Harakat feʼllari 1: идти va ходить — bir yoʻnalish va koʻp yoʻnalish
+56. Harakat feʼllari 2: ехать/ездить, бежать/бегать, лететь/летать, нести/носить
+57. Harakat feʼllarining prefikslari: при-, у-, вы-, в-, до-, пере-, под-, от-
+58. Prefikslar maʼnoni qanday oʻzgartiradi: по-, за-, про-, раз-, с-, на-
+59. Buyruq mayli: читай! читайте! давай пойдём! не опаздывай!
+60. Шартли maylь — бы: если бы, я хотел бы, на твоём месте я бы…
+61. Majhul nisbat: дом строится / дом построен
+62. -ся feʼlining oltita maʼnosi — bir qoʻshimcha, olti vazifa
+
+### Block F: Murakkab gaplar (63–74)
+63. Который — rus tilining «-gan» sifatdosh gapi
+64. Что va чтобы — bir soʻzga oʻxshaydi, ikki xil gap quradi
+65. Если va когда — shart va vaqt ergash gaplari
+66. Потому что, поэтому, так как, из-за того что — sabab va natija
+67. Хотя, но, зато, однако, тем не менее — qarama-qarshilik
+68. Ли va bilvosita savol: «Не знаю, придёт ли он»
+69. Тот, кто… / то, что… — koʻrsatish va bogʻlash
+70. Причастие 1: действительные — читающий, прочитавший
+71. Причастие 2: страдательные — прочитанный, написан, сделан
+72. Деепричастие: читая, прочитав — bir vaqtda va undan oldin
+73. Sifatning qisqa shakli: красив, готов, должен, рад
+74. Sifat darajalari: больше, самый, лучше, наиболее, чем
+
+### Block G: Nozik grammatika (75–88)
+75. Свой — «oʻz» olmoshi va u nega shunchalik muhim
+76. Себя va сам — oʻziga qaytish va taʼkid
+77. Каждый, все, весь, любой, другой, остальные
+78. Кто-то / кто-нибудь / кое-кто — noaniq olmoshlar
+79. Никто, ничто, никогда — rus tilida ikki inkor qoidasi
+80. Sana, vaqt, yosh va davomiylik: сколько времени? как долго?
+81. Shaxssiz gaplar: холодно, темнеет, мне не спится, говорят
+82. Jamlovchi va tartib sonlar: двое, оба, первый, тридцать первое
+83. Predlog xaritasi 2: по, за, из-за, благодаря, вместо, кроме, несмотря на
+84. Yuklamalar (частицы): же, ведь, ну, вот, разве, неужели, -то
+85. Undov soʻzlar va jonli soʻzlashuv nutqi
+86. Soʻz yasalishi: приставка + корень + суффикс + окончание
+87. Suffikslar xaritasi: -ость, -ение, -тель, -ник, -щик, -ка, -ство
+88. Kichraytiruvchi va erkalash shakllari: домик, сынок, Машенька, водичка
+
+### Block H: Til jonli holda (89–100)
+89. Soʻz tartibi va maʼno urgʻusi — rus tilida nima birinchi keladi
+90. Rasmiy va norasmiy uslub: bir fikrni ikki xil aytish
+91. Xat, ariza va rasmiy hujjat tili
+92. Telefon, elektron pochta va xabar tili
+93. Ish va oʻqish leksikasi: rezyume, suhbat, imtihon
+94. Фразеологизмы — rus iboralarining ichki mantigʻi
+95. Maqollar va matallar, oʻzbekcha muqobillari bilan
+96. Tez-tez adashtiriladigan juftlar: одеть/надеть, тоже/то же, в течение/в течении
+97. Punktuatsiya: vergul qoidalari va tire
+98. Matn qurish: kirish, asosiy qism, xulosa
+99. Rus tili qayerdan kelgan: soʻz boyligining kelib chiqishi
+100. Yakuniy dars: 100 darsdan keyin siz qayerdasiz va endi nima qilasiz

@@ -1,0 +1,270 @@
+# ── Collection metadata (read by Claude) ─────────────────────────────
+SUBJECT:    Russian            (icon: bi-translate, color: #b91c1c)
+COLLECTION: Prime Russian Readings
+AUTHOR:     powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_CORNER.md, with the Prime Russian overrides below.
+# The overrides in THIS header win over the generic guide.
+# ─────────────────────────────────────────────────────────────────────
+
+# Prime Russian Readings — the third leg of each lesson
+#
+# Every reading belongs to ONE Prime Russian tutorial and its `order` IS the lesson
+# number, so PR-24's reading is order 24. Nothing here stands alone: the tutorial
+# teaches the pattern, the practice drills it, the reading shows it living in a text.
+#
+# ── The three structural rules ──
+#
+# 1. FOCUS. The reading uses the lesson's own pattern at least twice, and lists it in
+#    the story's `grammar` block (StoryGrammar) so it appears under the vocabulary.
+#    2-3 natural uses beat 6 forced ones. If the pattern fights the story, use it less
+#    and let the story win — a reading nobody enjoys teaches nothing.
+# 2. CUMULATIVE. Anything taught in an EARLIER lesson may be used freely; anything
+#    from a LATER lesson may not. Check toc_prime_russian.txt before reaching for a
+#    pattern. This is why the early readings are short and the later ones read like
+#    real Russian.
+#
+#    ONE EXPLICIT EXCEPTION — the narrative frame. Verbs only arrive properly at
+#    PR-19. Until then a story still needs a way to say who did what between the
+#    lines of dialogue, so the NARRATION may use this small closed list as plain
+#    vocabulary, always with a cn-word gloss:
+#        есть · нет · зову́т · живёт · рабо́тает · говори́т · сказа́л / сказа́ла ·
+#        пришёл / пришла́ · дал / дала́ · был / была́
+#    The DIALOGUE lines stay strictly inside what the lessons have taught — that is
+#    where the pupil is meant to recognise the pattern. This is exactly how graded
+#    readers work: the frame carries the story, the dialogue carries the grammar.
+#    From PR-24 (kelasi zamon) the verb system is open and the exception is dead.
+# 3. LINKED. After importing a reading, re-run import_tutorials with --republish so
+#    the tutorial's `"stories": [...]` key attaches it and the Reading card appears
+#    on the lesson page.
+#
+# ══════════════════════════════════════════════════════════════════════
+# ── CLARITY IS THE FIRST RULE (user's rule, 2026-08-08) ──
+#
+# The user is learning Russian from these texts himself. A learner reading a
+# foreign language has no spare attention for working out WHO did WHAT. So:
+#
+#   * NAME the character in the first sentence, and keep using the name. Do not
+#     drift into "он" / "она" for six sentences — a beginner loses the thread.
+#     Two characters of the same gender in one paragraph = always use names.
+#   * CHRONOLOGICAL ORDER. Events happen in the order they are written. No
+#     flashbacks, no "but earlier that morning…", no jumping between two places
+#     in one paragraph, before PR-66.
+#   * ONE THING PER SENTENCE. Short sentences. A new action gets a new sentence.
+#   * SAY THE OBVIOUS. Russian drops the subject and the verb "to be" happily;
+#     in these readings, don't. Write Ди́ма пришёл домо́й, not just Пришёл.
+#   * NO UNEXPLAINED JUMPS. If the scene moves, say so: На сле́дующий день…,
+#     Ве́чером…, В шко́ле…  A time/place word at the head of a paragraph is cheap
+#     and it saves the reader every time.
+#   * The ENDING must land. The reader should be able to say in one sentence what
+#     happened and why it mattered. If Claude cannot summarise it in one Uzbek
+#     sentence, rewrite it.
+#   * Test before shipping: read it once as someone who knows 300 Russian words.
+#     Anywhere you would pause and re-read — fix it.
+#
+# ── VERSATILE, AND SOURCE IT FROM ANYWHERE (user's rule, 2026-08-08) ──
+#
+# The stories do NOT all have to be invented. Any of these is welcome, and the
+# genre should ROTATE — never three of the same shape in a row:
+#
+#     kundalik hikoya (everyday scene)      xat (a letter)
+#     kundalik daftar (diary entry)         suhbat (a real dialogue)
+#     rus xalq ertagi (folk tale, retold)   ilmiy-ommabop matn (how X works)
+#     yangilik xabari (short news item)     qoʻllanma / retsept (instructions)
+#     sayohat qaydlari (travel notes)       biografiya (a real person's life)
+#     sirli hikoya (a small mystery)        sharh (a review — film, café, book)
+#     intervyu (Q&A)                        tarix (a historical episode)
+#     hazil / anekdot (light, kind ones)    maktub-javob (letter + reply)
+#
+# Retelling real material is encouraged where it is clearer than invention:
+# Russian folk tales (Репка, Колобок, Маша и медведь…), the life of a real
+# scientist or writer, how the Trans-Siberian was built, why Baikal is deep.
+# Facts must be true. When a text is a retelling, say so in the Uzbek `summary`.
+#
+# Modern and everyday is good: phones, buses, cafés, group chats, part-time jobs,
+# exams, delivery food, sharing a charger. Keep it light and kind.
+# ══════════════════════════════════════════════════════════════════════
+#
+# ── Length curve (guide, not a rule) ──
+#   PR-6  … PR-18   40–70 words     4–7 sentences, tiny scenes and dialogues
+#   PR-19 … PR-40   70–130 words    a small scene with a beginning and an end
+#   PR-41 … PR-65   130–190 words   connected paragraphs, past tense, quoted speech
+#   PR-66 … PR-100  190–280 words   real B1/B2 length and register
+#
+# ── Language policy (mirror of Prime Korean) ──
+#   Story text, title and characters: RUSSIAN.
+#   `summary`, `cn-word data-tr` glosses, `grammar` meanings and question
+#   `explanation`s: UZBEK. Questions themselves: UZBEK.
+#   No English anywhere.
+#
+# ── Stress marks in the body ──
+#   PR-6 … PR-20: mark the stress on every multi-syllable word — the pupil is
+#   still learning to read. PR-21 … PR-50: new and stress-shifting words only.
+#   PR-51 onward: only genuinely hard or ambiguous words. Never on ё.
+#
+# ── Vocabulary ──
+#   Mark new words inline: <span class="cn-word" data-tr="tarjima">сло́во</span>
+#   6–10 marks in early readings, 10–16 up to PR-55, 20–32 from PR-56 where the
+#   texts are long narratives. Mark real new words, not words the pupil has met.
+#   data-pos: verb / adj / adv.
+#   Never put a cn-word inside a <strong>. Bold the focus pattern with <strong>
+#   where it appears — house style of the Prime collections.
+#   Names: the user's pupils (Afsona, Jasur, Sherbek, Dilnoza, Bekzod → Афсона,
+#   Жасур, Шербек, Дилноза, Бекзод) alongside Russian names (Анна, Дмитрий,
+#   Марина, Олег, Катя, Ни́на, Серге́й).
+#
+# ── Questions ──
+#   2–3 `questions` (StoryQuestion MCQs), in Uzbek, at least one testing whether
+#   the reader actually understood the focus grammar rather than just the plot.
+#
+# ══════════════════════════════════════════════════════════════════════
+# ── AUDIO — VARY THE VOICE (user's rule, 2026-08-08) ──
+#
+# edge-tts ships exactly TWO Russian neural voices:
+#     ru-RU-SvetlanaNeural  (female)
+#     ru-RU-DmitryNeural    (male)
+# so variety comes from HOW they are used, and it is deliberate:
+#
+#   1. ALTERNATE the narrator across readings. Odd order → Svetlana,
+#      even order → Dmitry, unless the text has a clear narrator gender
+#      (a diary by Дилноза, a letter from Олег), in which case match it.
+#   2. DIALOGUE readings get BOTH voices in one clip via --speaker-voices,
+#      so the two characters actually sound like two people. This only works
+#      when every <p> is one speaker's turn, strictly alternating — so write
+#      dialogue readings that way on purpose.
+#   3. SPEED UP as the course goes on — the learner gets faster too:
+#          PR-6  … PR-25   --rate="-15%"
+#          PR-26 … PR-55   --rate="-8%"
+#          PR-56 … PR-100  --rate="-3%"
+#
+#   The `## Audio:` line under each entry below records what was actually used,
+#   so a regeneration reproduces the same clip.
+#
+#   Batch commands (one --only per reading, because the voice differs):
+#     python manage.py gen_corner_audio --collection="Prime Russian Readings" \
+#         --only 7 --rate="-15%" --voice ru-RU-DmitryNeural
+#     python manage.py gen_corner_audio --collection="Prime Russian Readings" \
+#         --only 6 --rate="-15%" --speaker-voices "ru-RU-SvetlanaNeural,ru-RU-DmitryNeural"
+#   Then once for the batch:
+#     python manage.py import_corner_audio \
+#         corner/management/commands/audio/prime-russian-readings \
+#         --collection="Prime Russian Readings"
+# ══════════════════════════════════════════════════════════════════════
+#
+# NOTE: PR-1 … PR-5 are the alphabet lessons — they teach letters, not grammar,
+# so they have NO readings. The list starts at PR-6.
+# Mark finished ranges with [done].
+
+## Prime Russian Readings — Прайм Ру́сский: чте́ние
+
+### Block B: Birinchi gaplar (6–18)
+6.  (PR-6 · Это) Кто это? — suhbat, sinfda tanishuv                        [done]
+    ## Audio: --speaker-voices "ru-RU-SvetlanaNeural,ru-RU-DmitryNeural" --rate="-15%"
+7.  (PR-7 · ты/вы) Два разговора — bir kunda ikki xil murojaat             [done]
+    ## Audio: --speaker-voices "ru-RU-DmitryNeural,ru-RU-SvetlanaNeural" --rate="-15%"
+8.  (PR-8 · род) Ко́мната Дилно́зы — xonadagi narsalar va ularning jinsi     [done]
+    ## Audio: --voice ru-RU-SvetlanaNeural --rate="-15%"
+9.  (PR-9 · koʻplik) Ры́нок в суббо́ту — bozorda hamma narsa koʻplikda        [next]
+10. (PR-10 · мой/твой) Чей это телефо́н? — sinfda topilgan buyum
+11. (PR-11 · tire) Мой го́род — Ташке́нт (tanishtiruv matni)
+12. (PR-12 · sifat) Но́вая шко́ла — birinchi kun
+13. (PR-13 · sonlar) Ско́лько сто́ит? — doʻkonda narxlar
+14. (PR-14 · У меня есть) Что у тебя́ в рюкзаке́? — suhbat
+15. (PR-15 · savol soʻzlari) Пи́сьмо от Ба́бушки — savollarga toʻla xat
+16. (PR-16 · этот/тот) В магази́не — «bu emas, anavi»
+17. (PR-17 · inkor) Нет, спаси́бо — muloyim rad javobi
+18. (PR-18 · тоже/уже) Мы то́же! — hamma bir xil narsani xohlaydi
+
+### Block C: Feʼl va hozirgi zamon (19–28)
+19. (PR-19 · infinitiv) Что ты лю́бишь де́лать? — anketa javobi
+20. (PR-20 · I tuslanish) Оди́н день Жасу́ра — kundalik tartib
+21. (PR-21 · II tuslanish) Я говорю́ на трёх языка́х — kichik intervyu
+22. (PR-22 · notoʻgʻri feʼllar) Ку́хня в общежи́тии — kim nima yeydi
+23. (PR-23 · oʻtgan zamon) Вчера́ был дождь — kundalik daftar
+24. (PR-24 · kelasi zamon) За́втра экза́мен — reja va vaʼda
+25. (PR-25 · -ся) Как я учи́лся пла́вать — biografik hikoya
+26. (PR-26 · мочь/уметь) Ба́бушка уме́ет всё — oila portreti
+27. (PR-27 · надо/нельзя) Пра́вила библиоте́ки — qoʻllanma matni
+28. (PR-28 · нравиться) Что тебе́ нра́вится? — ikki doʻstning sharhi
+
+### Block D: Kelishiklar (29–50)
+29. (PR-29 · падежи xaritasi) Одно́ сло́во — шесть форм (ilmiy-ommabop)
+30. (PR-30 · П.п. где?) Где мои́ ключи́? — kichik sirli hikoya
+31. (PR-31 · П.п. о чём?) О чём э́та кни́га? — kitob sharhi
+32. (PR-32 · В.п. кого/что) Кто кого́ ждёт? — vokzalda
+33. (PR-33 · В.п. куда?) Куда́ идёт э́тот авто́бус? — sayohat qaydlari
+34. (PR-34 · Р.п. egalik) Дом моего́ де́да — oila tarixi
+35. (PR-35 · Р.п. predloglar) Письмо́ из Сиби́ри — xat
+36. (PR-36 · Р.п. sonlar) Ско́лько в Москве́ мосто́в? (ilmiy-ommabop)
+37. (PR-37 · Д.п. кому?) Пода́рок учи́телю — sinf birga qaror qiladi
+38. (PR-38 · Д.п. мне холодно) Пе́рвая зима́ — Toshkentlik Sibirda
+39. (PR-39 · Т.п. чем? с кем?) Как де́лают самса́ — retsept
+40. (PR-40 · Т.п. стать) Кем ты хо́чешь стать? — intervyu
+41. (PR-41 · olmoshlar) Она́ мне не позвони́ла — kichik tushunmovchilik
+42. (PR-42 · egalik olmoshlari) В на́шем дворе́ — mahalla portreti
+43. (PR-43 · sifat Р.п./В.п.) Ста́рого моста́ бо́льше нет — yangilik xabari
+44. (PR-44 · sifat Д./Т./П.) В большо́м го́роде — sayohat qaydlari
+45. (PR-45 · koʻplik И./Р.) Пять дней без телефо́на — tajriba
+46. (PR-46 · koʻplik Д./В./Т./П.) Письмо́ всем друзья́м — umumiy xat
+47. (PR-47 · soʻroq soʻzlari) Игра́ «Два́дцать вопро́сов» — oʻyin
+48. (PR-48 · predlog xaritasi) Как я потеря́лся в метро́ — hikoya
+49. (PR-49 · sana va vaqt) Календа́рь Ни́ны — bir yil bir sahifada
+50. (PR-50 · takror) Оди́н день, шесть падеже́й — yakuniy matn
+
+### Block E: Feʼl turi va harakat feʼllari (51–62)
+51. (PR-51 · вид) Чита́л и прочита́л — nima farqi bor? (ilmiy-ommabop)
+52. (PR-52 · vid juftlari) Ремо́нт на ку́хне — tugallangan va tugallanmagan ishlar
+53. (PR-53 · vid va zamon) Три письма́ об одно́м дне
+54. (PR-54 · vid tanlash) Как я гото́вился к экза́мену — biografik
+55. (PR-55 · идти/ходить) Доро́га в шко́лу — kundalik yoʻl
+56. (PR-56 · ехать/ездить) Тра́нссиб: семь дней в по́езде (sayohat qaydlari)
+57. (PR-57 · prefikslar 1) Оди́н глаго́л, де́сять двере́й (ilmiy-ommabop)
+58. (PR-58 · prefikslar 2) Кот, кото́рый ушёл и пришёл — hikoya
+59. (PR-59 · buyruq mayli) Инстру́кция для но́вого сотру́дника
+60. (PR-60 · бы) Е́сли бы я знал ра́ньше — maslahat xati
+61. (PR-61 · majhul nisbat) Как был постро́ен Петербу́рг (tarix)
+62. (PR-62 · -ся) Шесть значе́ний одно́й ча́стицы (ilmiy-ommabop)
+
+### Block F: Murakkab gaplar (63–74)
+63. (PR-63 · который) Челове́к, кото́рый чини́л всё — mahalla portreti
+64. (PR-64 · что/чтобы) Что́бы тебя́ по́няли — muloqot haqida
+65. (PR-65 · если/когда) Когда́ отключи́ли свет — hikoya
+66. (PR-66 · sabab) Почему́ Байка́л тако́й глубо́кий (ilmiy-ommabop)
+67. (PR-67 · хотя/зато) Ма́ленький го́род, больша́я библиоте́ка
+68. (PR-68 · ли) Никто́ не знал, придёт ли он — sirli hikoya
+69. (PR-69 · тот, кто) Тот, кто са́жает дере́вья — hayot hikoyasi
+70. (PR-70 · причастие 1) Лю́ди, живу́щие на Се́вере (ilmiy-ommabop)
+71. (PR-71 · причастие 2) Кни́га, напи́санная в тюрьме́ — biografiya
+72. (PR-72 · деепричастие) Возвраща́ясь домо́й — hikoya
+73. (PR-73 · qisqa sifat) Он был прав — kichik nizo va yarashuv
+74. (PR-74 · darajalar) Са́мая дли́нная река́ (ilmiy-ommabop)
+
+### Block G: Nozik grammatika (75–88)
+75. (PR-75 · свой) Свой дом — biografik hikoya
+76. (PR-76 · себя/сам) Сде́лай сам — usta haqida
+77. (PR-77 · каждый/весь) Ка́ждое у́тро, весь год — odat haqida
+78. (PR-78 · кто-то/кто-нибудь) Кто́-то оста́вил зонт — kichik sir
+79. (PR-79 · ikki inkor) Никто́ ничего́ не сказа́л — hikoya
+80. (PR-80 · vaqt) Ско́лько вре́мени ну́жно, что́бы… (ilmiy-ommabop)
+81. (PR-81 · shaxssiz gaplar) Темне́ет ра́но — qish kundaligi
+82. (PR-82 · sonlar) Тро́е в ло́дке — sayohat hikoyasi
+83. (PR-83 · predloglar 2) Благодаря́ одному́ письму́ — hayot hikoyasi
+84. (PR-84 · частицы) Ну и что же? — jonli suhbat
+85. (PR-85 · soʻzlashuv) Разгово́р в такси́ — dialog
+86. (PR-86 · soʻz yasalishi) Оди́н ко́рень — со́рок слов (ilmiy-ommabop)
+87. (PR-87 · suffikslar) Профе́ссии на -тель и -щик (ilmiy-ommabop)
+88. (PR-88 · kichraytirish) Ба́бушкины слова́ — mehr haqida
+
+### Block H: Til jonli holda (89–100)
+89. (PR-89 · soʻz tartibi) Одно́ предложе́ние, четы́ре смы́сла
+90. (PR-90 · uslub) Два письма́ об одно́м и том же
+91. (PR-91 · rasmiy til) Заявле́ние — namuna va tahlil
+92. (PR-92 · xabar tili) Чат гру́ппы 11-«А»
+93. (PR-93 · ish tili) Пе́рвое собесе́дование — hayot hikoyasi
+94. (PR-94 · frazeologizm) Бить баклу́ши и друзья́ (ilmiy-ommabop)
+95. (PR-95 · maqollar) Семь раз отме́рь — oʻzbekcha muqobillari bilan
+96. (PR-96 · adashtiriladiganlar) Оде́ть и́ли наде́ть? (ilmiy-ommabop)
+97. (PR-97 · punktuatsiya) «Казни́ть нельзя́ поми́ловать» (tarixiy hikoya)
+98. (PR-98 · matn qurish) Как написа́ть сочине́ние — qoʻllanma
+99. (PR-99 · til tarixi) Отку́да пришли́ ру́сские слова́ (ilmiy-ommabop)
+100. (PR-100 · yakun) Сто уро́ков спустя́ — oʻquvchiga murojaat

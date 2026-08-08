@@ -3347,3 +3347,295 @@ h1, h2, h3, h4, h5, h6, .font-display {
     .pk-conj { font-size: .85rem; }
     .pk-conj td, .pk-conj th { padding: .4rem .35rem; }
 }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   PRIME RUSSIAN — Russian-lesson component kit  (pr-*)
+   Used inside .tut-prose by the "Prime Russian" tutorials (PR-1 …).
+   EXTENDS the Prime English kit above — pe-goal, pe-formula, pe-chip,
+   pe-call, pe-fix, pe-quiz, pe-reveal, pe-gloss, pe-recap, pe-grid,
+   pe-vs, pe-steps, pe-timeline and pe-table-wrap are all reused as-is.
+   Only the things Russian needs and English/Korean do not live here.
+
+   Russian forks on THREE axes that no other course on the site has:
+     род      (m / f / n)          -> .pr-gender
+     падеж    (six cases)          -> .pr-case, .pr-decl
+     вид      (НСВ / СВ)           -> .pr-aspect
+   plus ударение, which changes meaning -> .pr-stress, .pr-pair
+   Pure CSS: every interaction is <details>/:hover, no JavaScript.
+   Docs: tutorial/management/commands/STYLE_GUIDE_PRIME_RUSSIAN.md
+   ══════════════════════════════════════════════════════════════════ */
+
+.tut-prose {
+    --pr-ru:   #b91c1c;   /* Russian text accent (matches the Russian shelf) */
+    --pr-stem: #2563eb;   /* oʻzak / основа           */
+    --pr-end:  #16a34a;   /* qoʻshimcha / окончание   */
+    --pr-prep: #0891b2;   /* predlog / предлог        */
+    --pr-m:    #2563eb;   /* мужской род              */
+    --pr-f:    #db2777;   /* женский род              */
+    --pr-n:    #d97706;   /* средний род              */
+    --pr-nsv:  #d97706;   /* НСВ — jarayon            */
+    --pr-sv:   #16a34a;   /* СВ  — natija             */
+}
+
+/* Cyrillic wants a face that actually has it, and a touch more leading. */
+.tut-prose :lang(ru),
+.pr-ru, .pe-ex__ru, .pr-cyr__ch, .pr-decl td:first-child, .pr-case__word {
+    font-family: "PT Sans", "Noto Sans", "Segoe UI", "Helvetica Neue",
+                 var(--font-body, sans-serif);
+}
+
+/* Russian sentence line inside a .pe-ex block (sits where .pe-ex__en does). */
+.pe-ex__ru {
+    font-size: 1.12rem;
+    line-height: 1.75;
+    margin: 0 0 .3rem;
+    color: var(--text);
+}
+/* .pe-ex__rom is reused for the "oʻqilishi" line — [мълако́] — see the pk kit. */
+
+/* Inline Russian chunk with its Uzbek gloss underneath, used mid-sentence. */
+.pr-w {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: baseline;
+    margin: 0 .15rem;
+}
+.pr-w b { font-weight: 700; color: var(--text); line-height: 1.3; }
+.pr-w span { font-size: .68rem; color: var(--text-muted); line-height: 1.2; }
+
+/* ── Alphabet cards — one letter per tile ────────────────────────
+   Three families, because that is exactly how a Cyrillic-literate
+   Uzbek pupil meets the Russian alphabet:
+     --same  the letter looks like Latin AND sounds like it   (А К М О Т)
+     --false FALSE FRIEND: looks Latin, sounds different      (В Н Р С У Х)
+     --new   a brand-new shape                                (Б Г Д Ж З …) */
+.pr-cyr {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    gap: .55rem;
+    margin: 1.2rem 0;
+}
+.pr-cyr__c {
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--pr-ru);
+    border-radius: 12px;
+    background: var(--bg-soft, rgba(127,127,127,.05));
+    padding: .7rem .4rem .55rem;
+    text-align: center;
+    transition: border-color .15s ease, transform .15s ease;
+}
+.pr-cyr__c:hover { border-color: var(--accent); transform: translateY(-2px); }
+.pr-cyr__c--same  { border-top-color: #16a34a; }
+.pr-cyr__c--false { border-top-color: #e11d48; }
+.pr-cyr__c--new   { border-top-color: #2563eb; }
+.pr-cyr__ch {
+    display: block;
+    font-size: 1.85rem;
+    line-height: 1.15;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: .04em;
+}
+.pr-cyr__rom {
+    display: block;
+    font-size: .82rem; font-weight: 700;
+    color: var(--pr-ru);
+    margin-top: .25rem;
+}
+.pr-cyr__uz {
+    display: block;
+    font-size: .72rem;
+    color: var(--text-muted);
+    line-height: 1.35;
+}
+/* Warning triangle on the false friends, so the eye finds them instantly. */
+.pr-cyr__c--false .pr-cyr__rom::before { content: "⚠ "; }
+
+/* ── Gender fork — the Russian equivalent of the 받침 switch ─────
+   Every noun, adjective, past-tense verb and possessive branches here. */
+.pr-gender {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .6rem;
+    margin: 1.2rem 0;
+}
+.pr-gender__side {
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--pr-m);
+    border-radius: 12px;
+    padding: .8rem .9rem;
+    background: var(--bg-soft, rgba(127,127,127,.05));
+}
+.pr-gender__side--f { border-top-color: var(--pr-f); }
+.pr-gender__side--n { border-top-color: var(--pr-n); }
+.pr-gender__h {
+    font-size: .78rem; font-weight: 800;
+    letter-spacing: .03em; text-transform: uppercase;
+    color: var(--pr-m);
+    margin: 0 0 .45rem;
+}
+.pr-gender__side--f .pr-gender__h { color: var(--pr-f); }
+.pr-gender__side--n .pr-gender__h { color: var(--pr-n); }
+.pr-gender__form {
+    font-size: 1.25rem; font-weight: 700;
+    color: var(--text);
+    margin: 0 0 .3rem;
+}
+.pr-gender__side p { font-size: .85rem; color: var(--text-muted); margin: 0 0 .25rem; }
+.pr-gender__side p:last-child { margin-bottom: 0; }
+
+/* ── Case table — the six падежи with their question words ──────── */
+.pr-case {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 1.2rem 0;
+    font-size: .92rem;
+}
+.pr-case th {
+    font-size: .7rem; font-weight: 800;
+    letter-spacing: .05em; text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: left;
+    padding: .4rem .6rem;
+    border-bottom: 1px solid var(--border);
+}
+.pr-case td {
+    padding: .5rem .6rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: top;
+}
+.pr-case tr:last-child td { border-bottom: none; }
+.pr-case__name { font-weight: 700; white-space: nowrap; }
+.pr-case__q    { color: var(--pr-prep); font-weight: 700; white-space: nowrap; }
+.pr-case__word { font-weight: 600; }
+.pr-case__uz   { color: var(--text-muted); font-size: .82rem; font-style: italic; }
+/* Highlight the one case the lesson is actually about. */
+.pr-case tr.pr-case__on td { background: rgba(185,28,28,.07); }
+.pr-case tr.pr-case__on .pr-case__name { color: var(--pr-ru); }
+
+/* ── Declension / conjugation ladder — stem + ending → result ───── */
+.pr-decl {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 1.2rem 0;
+    font-size: .92rem;
+}
+.pr-decl th {
+    font-size: .7rem; font-weight: 800;
+    letter-spacing: .05em; text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: left;
+    padding: .4rem .6rem;
+    border-bottom: 1px solid var(--border);
+}
+.pr-decl td {
+    padding: .5rem .6rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+}
+.pr-decl tr:last-child td { border-bottom: none; }
+.pr-decl .pr-stem { color: var(--pr-stem); font-weight: 700; }
+.pr-decl .pr-end  { color: var(--pr-end);  font-weight: 700; }
+.pr-decl .pr-res  { font-weight: 700; }
+.pr-decl .pr-uz   { color: var(--text-muted); font-size: .82rem; font-style: italic; }
+
+/* Same colours usable inline in running text. */
+.pr-stem { color: var(--pr-stem); font-weight: 700; }
+.pr-end  { color: var(--pr-end);  font-weight: 700; }
+.pr-prep { color: var(--pr-prep); font-weight: 700; }
+
+/* ── Aspect pair — НСВ (jarayon) vs СВ (natija) ─────────────────── */
+.pr-aspect {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .6rem;
+    margin: 1.2rem 0;
+}
+.pr-aspect__side {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--pr-nsv);
+    border-radius: 12px;
+    padding: .8rem .9rem;
+    background: var(--bg-soft, rgba(127,127,127,.05));
+}
+.pr-aspect__side--sv { border-left-color: var(--pr-sv); }
+.pr-aspect__h {
+    font-size: .78rem; font-weight: 800;
+    letter-spacing: .03em; text-transform: uppercase;
+    color: var(--pr-nsv);
+    margin: 0 0 .45rem;
+}
+.pr-aspect__side--sv .pr-aspect__h { color: var(--pr-sv); }
+.pr-aspect__v {
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--text);
+    margin: 0 0 .3rem;
+}
+.pr-aspect__side p { font-size: .85rem; color: var(--text-muted); margin: 0 0 .25rem; }
+.pr-aspect__side p:last-child { margin-bottom: 0; }
+
+/* ── Pronunciation arrow — yozilishi → oʻqilishi ─────────────────
+   Russian needs this constantly: аканье, иканье, оглушение. */
+.pr-say {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin: .8rem 0;
+    padding: .6rem .85rem;
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+    font-size: 1.05rem;
+}
+.pr-say__from  { color: var(--text); font-weight: 600; }
+.pr-say__arrow { color: var(--pr-ru); font-weight: 800; }
+.pr-say__to    { color: var(--pr-ru); font-weight: 700; }
+.pr-say__why   { font-size: .78rem; color: var(--text-muted); font-style: italic; margin-left: auto; }
+
+/* ── Stress — the vowel that carries ударение ───────────────────
+   Inline: за<span class="pr-stress">о</span>мок  (use the ́ mark in text too). */
+.pr-stress {
+    color: var(--pr-ru);
+    font-weight: 800;
+    border-bottom: 2px solid var(--pr-ru);
+}
+/* Minimal pair box — за́мок (qulf) vs замо́к (qasr). */
+.pr-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .6rem;
+    margin: 1.1rem 0;
+}
+.pr-pair__c {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: .75rem .9rem;
+    background: var(--bg-soft, rgba(127,127,127,.05));
+    text-align: center;
+}
+.pr-pair__w {
+    display: block;
+    font-size: 1.4rem; font-weight: 700;
+    color: var(--text);
+    margin-bottom: .2rem;
+}
+.pr-pair__uz { display: block; font-size: .82rem; color: var(--text-muted); }
+
+/* ── Mobile ────────────────────────────────────────────────────── */
+@media (max-width: 575.98px) {
+    .pr-gender { grid-template-columns: 1fr; }
+    .pr-aspect { grid-template-columns: 1fr; }
+    .pr-pair   { grid-template-columns: 1fr; }
+    .pr-cyr { grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: .4rem; }
+    .pr-cyr__ch { font-size: 1.6rem; }
+    .pr-say { font-size: .95rem; }
+    .pr-say__why { margin-left: 0; width: 100%; }
+    .pr-decl, .pr-case { font-size: .85rem; }
+    .pr-decl td, .pr-decl th,
+    .pr-case td, .pr-case th { padding: .4rem .35rem; }
+}
