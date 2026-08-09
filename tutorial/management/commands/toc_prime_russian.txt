@@ -26,8 +26,10 @@ PLAYLIST: Prime Russian
 # tili — oʻzbekcha, ruscha esa oʻrgatilayotgan material. Inglizcha umuman yoʻq.
 #
 # Har bir dars uchta boʻlakdan iborat (PR-6 dan boshlab):
-#   dars (tutorial) + mashq (practice, 20 savol) + oʻqish matni (corner, audio bilan).
+#   dars (tutorial) + mashq (practice, 20 savol) + oʻqish matni (corner).
 # Batch = 3 ta dars, uchalasi birga yoziladi.
+# ⛔ Oʻqish matnlarida AUDIO YOʻQ (2026-08-09) — edge-tts ning ruscha ovozlari
+#   sifatsiz. gen_corner_audio / import_corner_audio bu toʻplamda ishlatilmaydi.
 
 ### Block A: Kirill alifbosi va talaffuz (1–5)
 # Bu darslarda grammatika yoʻq, shuning uchun oʻqish matni ham yoʻq.
@@ -44,21 +46,21 @@ PLAYLIST: Prime Russian
 6. Это — birinchi gapingiz. «Кто это? Что это?»                            [done]
 7. Salomlashish, tanishuv va murojaat: ты yoki вы?                          [done]
 8. Jins (род) — otlarning uch jinsi va uni oxiridan aniqlash                [done]
-9. Koʻplik (множественное число) — -ы, -и, -а va istisnolar                 [next]
-10. Shaxs olmoshlari va egalik: мой, твой, наш, ваш
-11. «Быть» yoʻq gaplar: Я студент. Кофе горячий. Tire qachon qoʻyiladi?
-12. Sifat otga moslashadi — новый, новая, новое, новые
-13. Sonlar 0–100 va «сколько?»
-14. У меня есть — rus tilida egalik
-15. Savol soʻzlari: кто, что, где, когда, почему, как, какой
-16. Bu va anavi: этот, эта, это, эти — va «тот»
-17. Да, нет, не, ни — inkorning toʻrt shakli
-18. Ravishlar va тоже / также / ещё / уже
+9. Koʻplik (множественное число) — -ы, -и, -а va istisnolar                 [done]
+10. Shaxs olmoshlari va egalik: мой, твой, наш, ваш                         [done]
+11. «Быть» yoʻq gaplar: Я студент. Кофе горячий. Tire qachon qoʻyiladi?     [done]
+12. Sifat otga moslashadi — новый, новая, новое, новые                      [done]
+13. Sonlar 0–100 va «сколько?»                                              [done]
+14. У меня есть — rus tilida egalik                                         [done]
+15. Savol soʻzlari: кто, что, где, когда, почему, как, какой                [done]
+16. Bu va anavi: этот, эта, это, эти — va «тот»                             [done]
+17. Да, нет, не, ни — inkorning toʻrt shakli                                [done]
+18. Ravishlar va тоже / также / ещё / уже                                   [done]
 
 ### Block C: Feʼl va hozirgi zamon (19–28)
-19. Feʼl nima? Infinitiv va ikkita tuslanish (спряжение)
-20. I tuslanish: читать, работать, знать (-ю, -ешь, -ет, -ем, -ете, -ют)
-21. II tuslanish: говорить, смотреть, любить (-ю, -ишь, -ит, -им, -ите, -ят)
+19. Feʼl nima? Infinitiv va ikkita tuslanish (спряжение)                    [done]
+20. I tuslanish: читать, работать, знать (-ю, -ешь, -ет, -ем, -ете, -ют)    [done]
+21. II tuslanish: говорить, смотреть, любить (-ю, -ишь, -ит, -им, -ите, -ят)[next]
 22. Notoʻgʻri feʼllar: хотеть, есть, дать, идти, ехать, жить, писать
 23. Oʻtgan zamon (прошедшее время) — jinsga qarab -л, -ла, -ло, -ли
 24. Kelasi zamon: буду + infinitiv

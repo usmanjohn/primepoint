@@ -182,23 +182,23 @@ When the user asks (e.g. "make the next 3 Prime Russian tutorials"):
 2. the **practice** (`practice`, 20 questions; 12 for the alphabet lessons PR-1…PR-5) —
    drills it, subject `Russian`, guide `practice/management/commands/STYLE_GUIDE_PR_PRACTICE.md`;
 3. the **reading** (`corner`, collection "Prime Russian Readings", `order` = lesson number)
-   — shows it living in a text, with `cn-word` tappable vocab, a `grammar` block, 2-3
-   comprehension questions and generated audio. Guide: the overrides in
+   — shows it living in a text, with `cn-word` tappable vocab, a `grammar` block and 2-3
+   comprehension questions. Guide: the overrides in
    `corner/management/commands/toc_prime_russian_readings.txt`.
-So a batch = 3 tutorials + 3 practices + 3 readings + 3 mp3s, all finished together.
-Import order per batch: tutorials → practices → readings → audio → re-run
-`import_tutorials --republish` so the `stories` links resolve (the story must exist first).
+So a batch = 3 tutorials + 3 practices + 3 readings. Import order per batch: tutorials →
+practices → readings → re-run `import_tutorials --republish` so the `stories` links resolve
+(the story must exist first).
+**⛔ NO AUDIO on Prime Russian Readings** (user's decision 2026-08-09, after hearing the
+first three): edge-tts' Russian voices "read very strange". Never run `gen_corner_audio` /
+`import_corner_audio` for this collection and never offer it. Korean and English keep theirs.
+A useful side effect: readings no longer need to be strictly-alternating one-speaker-per-`<p>`
+dialogues, so mix narration and dialogue freely and use as many characters as the story wants.
 **Two rules the user set for the readings (2026-08-08), written into that toc's header:**
 **CLARITY** — name characters and keep using the name, chronological order only, one thing
 per sentence, a time/place word whenever the scene moves; if the text cannot be summarised
 in one Uzbek sentence, rewrite it. **VERSATILITY** — rotate the genre (letter, diary, folk
 tale, news item, recipe, review, interview, popular science, biography…) and never run three
 of the same shape in a row; retelling real material is encouraged, and facts must be true.
-**Audio must vary.** edge-tts has only two Russian voices (`ru-RU-SvetlanaNeural` female,
-`ru-RU-DmitryNeural` male), so variety is deliberate: alternate the narrator across readings,
-give dialogue readings BOTH voices in one clip with `--speaker-voices`, and speed the
-narration up as the course advances (`--rate` -15% → -8% → -3%). Each toc entry records the
-exact flags used under an `## Audio:` line.
 The visual kit **reuses the whole `pe-*` component set** and adds Russian-only pieces
 (`pr-cyr` alphabet cards with the same/false-friend/new families, `pr-gender` three-way род
 fork, `pr-case` падеж table, `pr-decl` ladder, `pr-aspect` НСВ/СВ pair, `pr-say`

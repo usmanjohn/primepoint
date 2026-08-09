@@ -32,21 +32,21 @@ TUTORIAL: PR-<n>:   (each practice links to its own tutorial)
 6. Это — birinchi gapingiz. «Кто это? Что это?»                            [done]
 7. Salomlashish, tanishuv va murojaat: ты yoki вы?                          [done]
 8. Jins (род) — otlarning uch jinsi va uni oxiridan aniqlash                [done]
-9. Koʻplik (множественное число) — -ы, -и, -а va istisnolar                 [next]
-10. Shaxs olmoshlari va egalik: мой, твой, наш, ваш
-11. «Быть» yoʻq gaplar: Я студент. Кофе горячий. Tire qachon qoʻyiladi?
-12. Sifat otga moslashadi — новый, новая, новое, новые
-13. Sonlar 0–100 va «сколько?»
-14. У меня есть — rus tilida egalik
-15. Savol soʻzlari: кто, что, где, когда, почему, как, какой
-16. Bu va anavi: этот, эта, это, эти — va «тот»
-17. Да, нет, не, ни — inkorning toʻrt shakli
-18. Ravishlar va тоже / также / ещё / уже
+9. Koʻplik (множественное число) — -ы, -и, -а va istisnolar                 [done]
+10. Shaxs olmoshlari va egalik: мой, твой, наш, ваш                         [done]
+11. «Быть» yoʻq gaplar: Я студент. Кофе горячий. Tire qachon qoʻyiladi?     [done]
+12. Sifat otga moslashadi — новый, новая, новое, новые                      [done]
+13. Sonlar 0–100 va «сколько?»                                              [done]
+14. У меня есть — rus tilida egalik                                         [done]
+15. Savol soʻzlari: кто, что, где, когда, почему, как, какой                [done]
+16. Bu va anavi: этот, эта, это, эти — va «тот»                             [done]
+17. Да, нет, не, ни — inkorning toʻrt shakli                                [done]
+18. Ravishlar va тоже / также / ещё / уже                                   [done]
 
 ### Block C: Feʼl va hozirgi zamon (19–28)   level: easy · 20 savol
-19. Feʼl nima? Infinitiv va ikkita tuslanish (спряжение)
-20. I tuslanish: читать, работать, знать
-21. II tuslanish: говорить, смотреть, любить
+19. Feʼl nima? Infinitiv va ikkita tuslanish (спряжение)                    [done]
+20. I tuslanish: читать, работать, знать                                    [done]
+21. II tuslanish: говорить, смотреть, любить                                [next]
 22. Notoʻgʻri feʼllar: хотеть, есть, дать, идти, ехать, жить, писать
 23. Oʻtgan zamon — jinsga qarab -л, -ла, -ло, -ли
 24. Kelasi zamon: буду + infinitiv

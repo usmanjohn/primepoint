@@ -33,7 +33,9 @@ AUTHOR:     powerty
 #    The DIALOGUE lines stay strictly inside what the lessons have taught — that is
 #    where the pupil is meant to recognise the pattern. This is exactly how graded
 #    readers work: the frame carries the story, the dialogue carries the grammar.
-#    From PR-24 (kelasi zamon) the verb system is open and the exception is dead.
+#    ✅ ISTISNO TUGADI PR-19 da (2026-08-09): feʼl tizimi ochildi, shuning uchun
+#    PR-19 dan boshlab matnlarda feʼllar oddiy grammatika sifatida keladi.
+#    Faqat oʻsha darsgacha oʻrgatilgan tuslanishdan foydalaning.
 # 3. LINKED. After importing a reading, re-run import_tutorials with --republish so
 #    the tutorial's `"stories": [...]` key attaches it and the Reading card appears
 #    on the lesson page.
@@ -118,37 +120,27 @@ AUTHOR:     powerty
 #   the reader actually understood the focus grammar rather than just the plot.
 #
 # ══════════════════════════════════════════════════════════════════════
-# ── AUDIO — VARY THE VOICE (user's rule, 2026-08-08) ──
+# ── NO AUDIO ON THIS COLLECTION (user's decision, 2026-08-09) ──
 #
-# edge-tts ships exactly TWO Russian neural voices:
-#     ru-RU-SvetlanaNeural  (female)
-#     ru-RU-DmitryNeural    (male)
-# so variety comes from HOW they are used, and it is deliberate:
+# ⛔ Do NOT run gen_corner_audio or import_corner_audio for Prime Russian
+#    Readings. Do not offer it, do not add it back into the batch workflow.
 #
-#   1. ALTERNATE the narrator across readings. Odd order → Svetlana,
-#      even order → Dmitry, unless the text has a clear narrator gender
-#      (a diary by Дилноза, a letter from Олег), in which case match it.
-#   2. DIALOGUE readings get BOTH voices in one clip via --speaker-voices,
-#      so the two characters actually sound like two people. This only works
-#      when every <p> is one speaker's turn, strictly alternating — so write
-#      dialogue readings that way on purpose.
-#   3. SPEED UP as the course goes on — the learner gets faster too:
-#          PR-6  … PR-25   --rate="-15%"
-#          PR-26 … PR-55   --rate="-8%"
-#          PR-56 … PR-100  --rate="-3%"
+# The first three readings (PR-6…PR-8) were generated with edge-tts using both
+# Russian voices (ru-RU-SvetlanaNeural / ru-RU-DmitryNeural, including the
+# two-voice --speaker-voices trick for dialogues). The user listened and
+# rejected them: "it is reading very strange, maybe their tts is not good
+# enough for russian yet." The Korean and English collections keep their audio;
+# Russian gets none until a better Russian voice exists.
 #
-#   The `## Audio:` line under each entry below records what was actually used,
-#   so a regeneration reproduces the same clip.
+# CONSEQUENCE FOR WRITING — this is the useful part:
+# The readings no longer have to be shaped for a narrator. The early entries
+# were written as strictly-alternating one-speaker-per-<p> dialogues purely so
+# --speaker-voices could split them. THAT CONSTRAINT IS GONE. Mix narration and
+# dialogue freely, put a narration line between two quoted turns, use as many
+# characters as the story needs, let a scene breathe. The only rules left are
+# CLARITY and VERSATILITY above — and those are the ones that mattered anyway.
 #
-#   Batch commands (one --only per reading, because the voice differs):
-#     python manage.py gen_corner_audio --collection="Prime Russian Readings" \
-#         --only 7 --rate="-15%" --voice ru-RU-DmitryNeural
-#     python manage.py gen_corner_audio --collection="Prime Russian Readings" \
-#         --only 6 --rate="-15%" --speaker-voices "ru-RU-SvetlanaNeural,ru-RU-DmitryNeural"
-#   Then once for the batch:
-#     python manage.py import_corner_audio \
-#         corner/management/commands/audio/prime-russian-readings \
-#         --collection="Prime Russian Readings"
+# A batch is therefore: 3 tutorials + 3 practices + 3 readings. That is all.
 # ══════════════════════════════════════════════════════════════════════
 #
 # NOTE: PR-1 … PR-5 are the alphabet lessons — they teach letters, not grammar,
@@ -158,27 +150,24 @@ AUTHOR:     powerty
 ## Prime Russian Readings — Прайм Ру́сский: чте́ние
 
 ### Block B: Birinchi gaplar (6–18)
-6.  (PR-6 · Это) Кто это? — suhbat, sinfda tanishuv                        [done]
-    ## Audio: --speaker-voices "ru-RU-SvetlanaNeural,ru-RU-DmitryNeural" --rate="-15%"
-7.  (PR-7 · ты/вы) Два разговора — bir kunda ikki xil murojaat             [done]
-    ## Audio: --speaker-voices "ru-RU-DmitryNeural,ru-RU-SvetlanaNeural" --rate="-15%"
-8.  (PR-8 · род) Ко́мната Дилно́зы — xonadagi narsalar va ularning jinsi     [done]
-    ## Audio: --voice ru-RU-SvetlanaNeural --rate="-15%"
-9.  (PR-9 · koʻplik) Ры́нок в суббо́ту — bozorda hamma narsa koʻplikda        [next]
-10. (PR-10 · мой/твой) Чей это телефо́н? — sinfda topilgan buyum
-11. (PR-11 · tire) Мой го́род — Ташке́нт (tanishtiruv matni)
-12. (PR-12 · sifat) Но́вая шко́ла — birinchi kun
-13. (PR-13 · sonlar) Ско́лько сто́ит? — doʻkonda narxlar
-14. (PR-14 · У меня есть) Что у тебя́ в рюкзаке́? — suhbat
-15. (PR-15 · savol soʻzlari) Пи́сьмо от Ба́бушки — savollarga toʻla xat
-16. (PR-16 · этот/тот) В магази́не — «bu emas, anavi»
-17. (PR-17 · inkor) Нет, спаси́бо — muloyim rad javobi
-18. (PR-18 · тоже/уже) Мы то́же! — hamma bir xil narsani xohlaydi
+6.  (PR-6 · Это) Кто э́то? — sinfda suhbat, fotosurat ustida                        [done]
+7.  (PR-7 · ты/вы) Два разгово́ра — bir yoʻlakda ikki xil murojaat             [done]
+8.  (PR-8 · род) Стол, кни́га и окно́ — uy sahnasi, Bekzod rodni topadi     [done]
+9.  (PR-9 · koʻplik) Ры́нок в суббо́ту — bozorda hamma narsa koʻplikda      [done]
+10. (PR-10 · мой/твой) Чей это телефо́н? — sinfda topilgan buyum            [done]
+11. (PR-11 · tire) Мой го́род — Ташке́нт (tanishtiruv matni)                [done]
+12. (PR-12 · sifat) Но́вая шко́ла — birinchi kun                            [done]
+13. (PR-13 · sonlar) Ско́лько сто́ит? — doʻkonda narxlar                    [done]
+14. (PR-14 · У меня есть) У меня́ есть всё — buvijon sanab chiqadi          [done]
+15. (PR-15 · savol soʻzlari) Кто? Что? Где? — buvijonning savollarga toʻla xati     [done]
+16. (PR-16 · этот/тот) Э́тот и́ли тот? — mushukcha tanlash sahnasi                       [done]
+17. (PR-17 · inkor) Нет, спаси́бо — dasturxon ustida muloyim rad javobi                      [done]
+18. (PR-18 · тоже/уже) Мы то́же! — hamma bir xil narsani xohlaydi           [done]
 
 ### Block C: Feʼl va hozirgi zamon (19–28)
-19. (PR-19 · infinitiv) Что ты лю́бишь де́лать? — anketa javobi
-20. (PR-20 · I tuslanish) Оди́н день Жасу́ра — kundalik tartib
-21. (PR-21 · II tuslanish) Я говорю́ на трёх языка́х — kichik intervyu
+19. (PR-19 · infinitiv) Анке́та — toʻgarakka yozilish varaqasi             [done]
+20. (PR-20 · I tuslanish) Оди́н день Жасу́ра — kundalik tartib              [done]
+21. (PR-21 · II tuslanish) Я говорю́ на трёх языка́х — kichik intervyu      [next]
 22. (PR-22 · notoʻgʻri feʼllar) Ку́хня в общежи́тии — kim nima yeydi
 23. (PR-23 · oʻtgan zamon) Вчера́ был дождь — kundalik daftar
 24. (PR-24 · kelasi zamon) За́втра экза́мен — reja va vaʼda

@@ -76,7 +76,7 @@ def _lcm(a, b):
 # ---------------------------------------------------------------------------
 
 _PUPILS = ['Jasur', 'Sherbek', 'Davron', 'Samandar', 'Kamron', 'Javohir',
-           'Firdavs', "Ilg'or", 'Afsona', 'Madina', 'Charos']
+           'Firdavs', "Ilg'or", 'Afsona', 'Madina', 'Charos', 'Bunyod']
 _TEACHERS = ['Usman aka', 'Inom aka']
 
 
