@@ -93,7 +93,7 @@ AUTHOR:     powerty
 22. Samolyot nega xaritada egri uchadi
 
 ### Kundalik hayotdagi matematika (23–32)
-23. Nega lyuk qopqogʻi dumaloq
+23. Nega lyuk qopqogʻi dumaloq                                                [done]
 24. GPS uchta masofadan joyni qanday topadi
 25. Shtrix-koddagi oxirgi raqam nima uchun kerak
 26. Foiz ustiga foiz: pul qanday oʻsadi

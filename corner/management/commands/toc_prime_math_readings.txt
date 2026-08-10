@@ -136,13 +136,13 @@ AUTHOR:     powerty
 1.  (PM-1 · razryadlar) Narxdagi nollar — Sherbek telefon tanlaydi (hikoya)          [done]
 2.  (PM-2 · qoʻshish/ayirish) Sinf kassasi — daftardagi hisob (kundalik)             [done]
 3.  (PM-3 · koʻpaytirish) Bir qutida nechta? — omborda bir kun (hikoya)              [done]
-4.  (PM-4 · qoldiqli boʻlish) Oʻttiz yetti kishi, oltitadan stol (hikoya)            [next]
-5.  (PM-5 · amallar tartibi) Bitta hisob, ikkita javob (dialog)
-6.  (PM-6 · boʻlinish alomatlari) Guruhlarga boʻlinamiz — mashgʻulotda (sport)
-7.  (PM-7 · tub sonlar) Tub sonlar sirni qanday saqlaydi (ilmiy-ommabop)
-8.  (PM-8 · EKUB/EKUK) Ikki avtobus qachon bir vaqtda keladi (ilmiy-ommabop)
-9.  (PM-9 · manfiy sonlar) Qish kundaligi — noldan pastda (kundalik)
-10. (PM-10 · manfiy qoʻshish) Lift, qavatlar va yerto'la (hikoya)
+4.  (PM-4 · qoldiqli boʻlish) Oʻttiz yetti kishi, oltitadan stol (hikoya)            [done]
+5.  (PM-5 · amallar tartibi) Bitta hisob, ikkita javob (dialog)                      [done]
+6.  (PM-6 · boʻlinish alomatlari) Guruhlarga boʻlinamiz — mashgʻulotda (sport)       [done]
+7.  (PM-7 · tub sonlar) Tub sonlar sirni qanday saqlaydi (ilmiy-ommabop)             [done]
+8.  (PM-8 · EKUB/EKUK) Ikki avtobus qachon bir vaqtda keladi (bekatdagi sahna)       [done]
+9.  (PM-9 · manfiy sonlar) Qish kundaligi — noldan pastda (kundalik)                 [done]
+10. (PM-10 · manfiy qoʻshish) Lift, qavatlar va yerto'la (hikoya)                    [next]
 11. (PM-11 · manfiy koʻpaytirish) Doʻkon daftaridagi qarz (hikoya)
 12. (PM-12 · daraja) Shaxmat taxtasidagi bugʻdoy — qadimiy rivoyat (tarix)
 13. (PM-13 · kvadrat ildiz) Kvadrat maydonning tomoni — usta hisobi (hikoya)

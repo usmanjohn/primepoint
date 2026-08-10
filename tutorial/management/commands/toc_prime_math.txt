@@ -39,13 +39,13 @@ PLAYLIST: Prime Math
 1. Sonlar qayerdan boshlanadi — razryadlar va raqamning oʻrni                [done]
 2. Qoʻshish va ayirish: ustunda va ogʻzaki                                   [done]
 3. Koʻpaytirish — qoʻshishning qisqa yoʻli va jadval mantigʻi                [done]
-4. Boʻlish, qoldiqli boʻlish va javobni tekshirish                           [next]
-5. Amallar tartibi va qavslar
-6. Boʻlinish alomatlari: 2, 3, 4, 5, 6, 9, 10 ga
-7. Tub va murakkab sonlar; tub koʻpaytuvchilarga ajratish
-8. EKUB va EKUK — va ular qayerda kerak boʻladi
-9. Manfiy sonlar va son oʻqi
-10. Manfiy sonlarni qoʻshish va ayirish
+4. Boʻlish, qoldiqli boʻlish va javobni tekshirish                           [done]
+5. Amallar tartibi va qavslar                                                [done]
+6. Boʻlinish alomatlari: 2, 3, 4, 5, 6, 9, 10 ga                             [done]
+7. Tub va murakkab sonlar; tub koʻpaytuvchilarga ajratish                    [done]
+8. EKUB va EKUK — va ular qayerda kerak boʻladi                              [done]
+9. Manfiy sonlar va son oʻqi                                                 [done]
+10. Manfiy sonlarni qoʻshish va ayirish                                      [next]
 11. Manfiy sonlarni koʻpaytirish va boʻlish — ishoralar qoidasi
 12. Daraja: takroriy koʻpaytirishning qisqa yozuvi
 13. Kvadrat ildiz va aniq kvadratlar

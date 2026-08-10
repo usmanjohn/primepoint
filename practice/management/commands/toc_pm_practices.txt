@@ -23,13 +23,13 @@ TUTORIAL: PM-<n>:   (each practice links to its own tutorial)
 1. Razryadlar va raqamning oʻrni                                   [done]
 2. Qoʻshish va ayirish: ustunda va ogʻzaki                          [done]
 3. Koʻpaytirish va jadval mantigʻi                                  [done]
-4. Boʻlish, qoldiqli boʻlish va tekshirish                          [next]
-5. Amallar tartibi va qavslar
-6. Boʻlinish alomatlari
-7. Tub va murakkab sonlar; koʻpaytuvchilarga ajratish
-8. EKUB va EKUK
-9. Manfiy sonlar va son oʻqi
-10. Manfiy sonlarni qoʻshish va ayirish
+4. Boʻlish, qoldiqli boʻlish va tekshirish                          [done]
+5. Amallar tartibi va qavslar                                       [done]
+6. Boʻlinish alomatlari                                             [done]
+7. Tub va murakkab sonlar; koʻpaytuvchilarga ajratish               [done]
+8. EKUB va EKUK                                                     [done]
+9. Manfiy sonlar va son oʻqi                                        [done]
+10. Manfiy sonlarni qoʻshish va ayirish                             [next]
 11. Manfiy sonlarni koʻpaytirish va boʻlish
 12. Daraja
 13. Kvadrat ildiz va aniq kvadratlar
