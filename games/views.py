@@ -10,11 +10,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import gettext as _
 import string
-from .models import CrosswordPuzzle, EnglishCrossword, WordSearchPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion, MathSquarePuzzle, MathChampResult
+from .models import CrosswordPuzzle, EnglishCrossword, WordSearchPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion, MathSquarePuzzle, MathChampResult, EnglishChampResult
 from .generator import generate_math_square, empty_math_square, eval_line
 from .catalog import GAME_COUNT, filter_games, subject_facets  # noqa: F401 — GAME_COUNT re-exported for the nav badge
 from prime.subjects import get_study_subjects
-from . import mathchamp
+from . import mathchamp, englishchamp
 
 
 # ---------------------------------------------------------------------------
@@ -2181,3 +2181,183 @@ def mathchamp_play(request):
         'medal':        state.get('medal', ''),
     }
     return render(request, 'games/mathchamp_play.html', context)
+
+
+# ---------------------------------------------------------------------------
+# English Championship (Ingliz tili Chempionati) views
+# ---------------------------------------------------------------------------
+# The same 15-stage / 3-round / 3-lives shape as the math championship, so the
+# two behave identically for a pupil; only the question source and the three
+# tracks (CEFR levels instead of school grades) differ.
+
+EC_STAGES = 15
+EC_HEARTS = 3
+EC_SESSION_KEY = 'ec_state'
+
+EC_ROUND_NAMES = {1: 'Saralash', 2: 'Yarim final', 3: 'Final'}
+EC_MEDAL_BY_HEARTS = {3: EnglishChampResult.MEDAL_GOLD,
+                      2: EnglishChampResult.MEDAL_SILVER,
+                      1: EnglishChampResult.MEDAL_BRONZE}
+
+
+def _ec_points(stage):
+    """Base points for a stage: 10 in round 1, 20 in round 2, 30 in the final."""
+    return 10 * englishchamp.stage_tier(stage)
+
+
+def _ec_save_result(user, state):
+    EnglishChampResult.objects.create(
+        user=user,
+        level=state['level'],
+        score=state['score'],
+        stage_reached=EC_STAGES if state.get('finished') else state['stage'],
+        finished=state.get('finished', False),
+        hearts_left=state['hearts'],
+        best_streak=state.get('best_streak', 0),
+        elapsed=state.get('elapsed', 0),
+        medal=state.get('medal', ''),
+    )
+
+
+def englishchamp_home(request):
+    if request.method == 'POST' and request.POST.get('action') == 'start':
+        level = request.POST.get('level', 'a1')
+        if level not in englishchamp.LEVELS:
+            level = 'a1'
+        request.session[EC_SESSION_KEY] = {
+            'level':       level,
+            'stage':       1,
+            'hearts':      EC_HEARTS,
+            'score':       0,
+            'streak':      0,
+            'best_streak': 0,
+            'start':       int(time.time()),
+            'q':           englishchamp.generate_question(level, 1),
+            'feedback':    None,
+            'done':        False,
+            'finished':    False,
+        }
+        return redirect('englishchamp_play')
+
+    boards = []
+    for lv in englishchamp.LEVELS:
+        top = list(EnglishChampResult.objects.filter(level=lv)
+                   .select_related('user')
+                   .order_by('-score', 'elapsed')[:5])
+        boards.append({'level': lv,
+                       'label': englishchamp.LEVEL_LABELS[lv],
+                       'top': top})
+
+    my_best = None
+    if request.user.is_authenticated:
+        my_best = (EnglishChampResult.objects.filter(user=request.user)
+                   .order_by('-score', 'elapsed').first())
+    state = request.session.get(EC_SESSION_KEY)
+    has_active = bool(state) and not state.get('done')
+
+    return render(request, 'games/englishchamp_home.html', {
+        'boards':     boards,
+        'my_best':    my_best,
+        'has_active': has_active,
+    })
+
+
+def englishchamp_play(request):
+    state = request.session.get(EC_SESSION_KEY)
+    if not state:
+        return redirect('englishchamp_home')
+
+    if request.method == 'POST':
+        action = request.POST.get('action')
+
+        if action == 'quit':
+            request.session.pop(EC_SESSION_KEY, None)
+            return redirect('englishchamp_home')
+
+        if action == 'answer' and not state.get('done'):
+            try:
+                choice = int(request.POST.get('choice', -1))
+            except (ValueError, TypeError):
+                choice = -1
+            q = state['q']
+            if 0 <= choice < len(q['choices']):
+                if choice == q['correct']:
+                    state['streak'] += 1
+                    state['best_streak'] = max(state['best_streak'], state['streak'])
+                    pts = _ec_points(state['stage'])
+                    bonus = 5 if state['streak'] >= 3 else 0
+                    state['score'] += pts + bonus
+                    state['feedback'] = {
+                        'correct':     True,
+                        'points':      pts,
+                        'bonus':       bonus,
+                        'answer':      q['choices'][q['correct']],
+                        'explanation': q['explanation'],
+                    }
+                    if state['stage'] >= EC_STAGES:
+                        state['done'] = True
+                        state['finished'] = True
+                        state['elapsed'] = int(time.time()) - state['start']
+                        state['medal'] = EC_MEDAL_BY_HEARTS.get(state['hearts'],
+                                                                EnglishChampResult.MEDAL_BRONZE)
+                        if request.user.is_authenticated:
+                            _ec_save_result(request.user, state)
+                    else:
+                        state['stage'] += 1
+                        state['q'] = englishchamp.generate_question(
+                            state['level'], state['stage'], q['topic'])
+                else:
+                    state['hearts'] -= 1
+                    state['streak'] = 0
+                    state['feedback'] = {
+                        'correct':     False,
+                        'chosen':      q['choices'][choice],
+                        'answer':      q['choices'][q['correct']],
+                        'question':    q['text'],
+                        'explanation': q['explanation'],
+                    }
+                    if state['hearts'] <= 0:
+                        state['done'] = True
+                        state['elapsed'] = int(time.time()) - state['start']
+                        state['medal'] = ''
+                        if request.user.is_authenticated:
+                            _ec_save_result(request.user, state)
+                    else:
+                        # Same stage, but a fresh question — no second try on
+                        # the one they just saw.
+                        state['q'] = englishchamp.generate_question(
+                            state['level'], state['stage'], q['topic'])
+                request.session[EC_SESSION_KEY] = state
+            return redirect('englishchamp_play')
+
+        return redirect('englishchamp_play')
+
+    tier = englishchamp.stage_tier(state['stage'])
+    progress = []
+    for s in range(1, EC_STAGES + 1):
+        if state.get('finished') or s < state['stage']:
+            cls = 'done'
+        elif s == state['stage'] and not state.get('done'):
+            cls = 'current'
+        else:
+            cls = 'todo'
+        progress.append({'stage': s, 'cls': cls,
+                         'new_round': s in (6, 11)})
+
+    elapsed = state.get('elapsed', 0)
+    context = {
+        'state':        state,
+        'q':            state['q'],
+        'feedback':     state.get('feedback'),
+        'hearts_full':  range(state['hearts']),
+        'hearts_lost':  range(EC_HEARTS - state['hearts']),
+        'progress':     progress,
+        'round_no':     tier,
+        'round_name':   EC_ROUND_NAMES[tier],
+        'stage_points': _ec_points(state['stage']),
+        'level_label':  englishchamp.LEVEL_LABELS[state['level']],
+        'elapsed_min':  elapsed // 60,
+        'elapsed_sec':  f"{elapsed % 60:02d}",
+        'medal':        state.get('medal', ''),
+    }
+    return render(request, 'games/englishchamp_play.html', context)

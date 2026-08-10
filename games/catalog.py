@@ -27,6 +27,17 @@ GAMES = [
         'tag': _('Math'),
     },
     {
+        'slug': 'english-championship',
+        'url': 'englishchamp_home',
+        'name': _('English Championship'),
+        'description': _('15 questions, 3 rounds, 3 lives — grammar and vocabulary from A1 to B1. Climb to the final and win a medal!'),
+        'emoji': '\U0001F3C5',
+        'gradient': ('#6366f1', '#3730a3'),
+        'badge': ('#e0e7ff', '#3730a3'),
+        'subjects': ['english'],
+        'tag': _('English'),
+    },
+    {
         'slug': 'number-guess',
         'url': 'number_guess',
         'name': _('Number Guess'),

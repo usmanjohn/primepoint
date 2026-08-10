@@ -270,6 +270,56 @@ class MathChampResult(models.Model):
         ordering = ['-score', 'elapsed']
 
 
+class EnglishChampResult(models.Model):
+    """One finished (or eliminated) run of the English Championship quiz.
+    The English twin of MathChampResult — same shape, but the three tracks are
+    CEFR levels instead of school grades."""
+    LEVEL_A1 = 'a1'
+    LEVEL_A2 = 'a2'
+    LEVEL_B1 = 'b1'
+    LEVEL_CHOICES = [
+        (LEVEL_A1, 'A1 — Beginner'),
+        (LEVEL_A2, 'A2 — Elementary'),
+        (LEVEL_B1, 'B1 — Intermediate'),
+    ]
+    MEDAL_GOLD   = 'gold'
+    MEDAL_SILVER = 'silver'
+    MEDAL_BRONZE = 'bronze'
+    MEDAL_CHOICES = [
+        (MEDAL_GOLD,   'Gold'),
+        (MEDAL_SILVER, 'Silver'),
+        (MEDAL_BRONZE, 'Bronze'),
+        ('',           'None'),
+    ]
+
+    user          = models.ForeignKey(User, on_delete=models.CASCADE, related_name='englishchamp_results')
+    level         = models.CharField(max_length=2, choices=LEVEL_CHOICES, default=LEVEL_A1)
+    score         = models.IntegerField(default=0)
+    stage_reached = models.PositiveSmallIntegerField(default=1)
+    finished      = models.BooleanField(default=False)
+    hearts_left   = models.PositiveSmallIntegerField(default=0)
+    best_streak   = models.PositiveSmallIntegerField(default=0)
+    elapsed       = models.PositiveIntegerField(default=0, help_text='Seconds from start to finish.')
+    medal         = models.CharField(max_length=10, choices=MEDAL_CHOICES, blank=True, default='')
+    created_at    = models.DateTimeField(auto_now_add=True)
+
+    MEDAL_EMOJI = {MEDAL_GOLD: '🥇', MEDAL_SILVER: '🥈', MEDAL_BRONZE: '🥉'}
+
+    @property
+    def medal_emoji(self):
+        return self.MEDAL_EMOJI.get(self.medal, '')
+
+    @property
+    def elapsed_display(self):
+        return f'{self.elapsed // 60}:{self.elapsed % 60:02d}'
+
+    def __str__(self):
+        return f'{self.user.username} — {self.get_level_display()}, {self.score} ball'
+
+    class Meta:
+        ordering = ['-score', 'elapsed']
+
+
 class MathSquarePuzzle(models.Model):
     """A crossed math square: every row and every column forms an arithmetic
     equation, and the solver fills the empty number cells so all equations are

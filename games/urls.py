@@ -48,6 +48,9 @@ urlpatterns = [
     # Math Championship
     path('championship/', views.mathchamp_home, name='mathchamp_home'),
     path('championship/play/', views.mathchamp_play, name='mathchamp_play'),
+    # English Championship
+    path('english-championship/', views.englishchamp_home, name='englishchamp_home'),
+    path('english-championship/play/', views.englishchamp_play, name='englishchamp_play'),
     # Math Square (Cross-Math)
     path('math-square/', views.mathsquare_list, name='mathsquare_list'),
     path('math-square/create/', views.mathsquare_create, name='mathsquare_create'),
