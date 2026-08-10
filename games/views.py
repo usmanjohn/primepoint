@@ -2375,6 +2375,20 @@ def _duel_clean_name(raw, fallback):
     return name or fallback
 
 
+def _duel_valid_state(request):
+    """The session's match, or None if it was started on an older build.
+
+    Without this, a game already in progress when the server reloads keeps
+    playing by the plan it was created with — which is exactly how a pupil ends
+    up being asked a subject they never signed up for.
+    """
+    state = request.session.get(DUEL_SESSION_KEY)
+    if state and state.get('v') != duelmod.STATE_VERSION:
+        request.session.pop(DUEL_SESSION_KEY, None)
+        return None
+    return state
+
+
 def _duel_next_question(state):
     """Fill state['q'] for the current stage, avoiding an immediate repeat of
     the same topic within that subject."""
@@ -2398,8 +2412,8 @@ def _duel_save_result(request, state):
         created_by=request.user,
         name_a=state['names'][0],
         name_b=state['names'][1],
-        subject_a=state['subjects'][0] if state['mode'] == duelmod.MODE_TOGETHER else '',
-        subject_b=state['subjects'][1] if state['mode'] == duelmod.MODE_TOGETHER else '',
+        subject_a=state['subjects'][0],
+        subject_b=state['subjects'][1],
         grade=state['grade'],
         level=state['level'],
         limit_math=state.get('limits', {}).get(duelmod.SUBJECT_MATH, 0),
@@ -2434,19 +2448,20 @@ def duel_home(request):
         if mode == duelmod.MODE_DUEL:
             names = [_duel_clean_name(request.POST.get('name_a'), 'Matematika jamoasi'),
                      _duel_clean_name(request.POST.get('name_b'), 'Ingliz tili jamoasi')]
-            subjects = ['', '']
+            fallback = duelmod.SUBJECT_BOTH
         else:
             names = [_duel_clean_name(request.POST.get('name_a'), "1-o'quvchi"),
                      _duel_clean_name(request.POST.get('name_b'), "2-o'quvchi")]
-            subjects = [request.POST.get('subject_a', duelmod.SUBJECT_MATH),
-                        request.POST.get('subject_b', duelmod.SUBJECT_ENGLISH)]
-            subjects = [s if s in duelmod.SUBJECT_PICKS else duelmod.SUBJECT_MATH
-                        for s in subjects]
+            fallback = duelmod.SUBJECT_MATH
+        subjects = [request.POST.get('subject_a', fallback),
+                    request.POST.get('subject_b', fallback)]
+        subjects = [s if s in duelmod.SUBJECT_PICKS else fallback for s in subjects]
 
         limits = {duelmod.SUBJECT_MATH:    duelmod.clean_limit(request.POST.get('limit_math')),
                   duelmod.SUBJECT_ENGLISH: duelmod.clean_limit(request.POST.get('limit_english'))}
 
         state = {
+            'v':          duelmod.STATE_VERSION,
             'mode':       mode,
             'names':      names,
             'subjects':   subjects,
@@ -2475,7 +2490,7 @@ def duel_home(request):
                  .order_by('-created_at')[:8])
     together = list(DuelResult.objects.filter(mode=DuelResult.MODE_TOGETHER)
                     .order_by('-score_a', 'elapsed')[:8])
-    state = request.session.get(DUEL_SESSION_KEY)
+    state = _duel_valid_state(request)
 
     return render(request, 'games/duel_home.html', {
         'duels':      duels,
@@ -2499,7 +2514,7 @@ def _duel_finish(request, state, finished):
 
 
 def duel_play(request):
-    state = request.session.get(DUEL_SESSION_KEY)
+    state = _duel_valid_state(request)
     if not state:
         return redirect('duel_home')
     together = state['mode'] == duelmod.MODE_TOGETHER
@@ -2515,11 +2530,8 @@ def duel_play(request):
             q = state['q']
             limit = state['limits'].get(state['subject'], 0)
             spent = int(time.time()) - state.get('asked_at', int(time.time()))
-            # Either the players pressed "time is up", or the clock ran out
-            # while the question was on screen. The server owns the clock; the
-            # bar on the page is only there to show it.
-            timed_out = (action == 'timeout'
-                         or bool(limit) and spent > limit + duelmod.TIME_GRACE)
+            # The server owns the clock; the bar on the page only shows it.
+            timed_out = bool(limit) and spent > limit + duelmod.TIME_GRACE
 
             choice = -1
             if action == 'answer':
@@ -2529,8 +2541,12 @@ def duel_play(request):
                     choice = -1
                 if not 0 <= choice < len(q['choices']):
                     return redirect('duel_play')
-            elif not limit:
-                return redirect('duel_play')      # no clock, nothing to skip
+            else:
+                # "Vaqt tugadi" — only honoured once the time really is up, so
+                # pressing it early can never cost a heart.
+                if not (limit and spent >= limit):
+                    return redirect('duel_play')
+                timed_out = True
 
             # In together mode both players share slot 0's hearts and score.
             who = 0 if together else state['turn']

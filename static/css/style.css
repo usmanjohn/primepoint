@@ -3687,3 +3687,50 @@ h1, h2, h3, h4, h5, h6, .font-display {
 @media (prefers-reduced-motion: reduce) {
     .duel-timer__bar { animation: none; background: #f59e0b; }
 }
+
+/* When the bar empties, the page has to SAY so — otherwise the players just
+   sit there waiting. No JS: the banner and the "next question" button are in
+   the DOM from the start, invisible and unclickable, and a keyframe reveals
+   them after `animation-delay`, which the template sets to the seconds left.
+   The answer cards fade at the same moment. The server still has the final
+   say on whether an answer was in time. */
+
+.duel-timeup {
+    opacity: 0;
+    pointer-events: none;
+    animation-name: duel-timeup-show;
+    animation-duration: .3s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+/* Already expired when the page was rendered (e.g. after a reload). */
+.duel-timeup--now {
+    opacity: 1;
+    pointer-events: auto;
+    animation: none;
+}
+
+@keyframes duel-timeup-show {
+    from { opacity: 0; transform: translateY(-6px); pointer-events: none; }
+    to   { opacity: 1; transform: none;             pointer-events: auto; }
+}
+
+.duel-answers {
+    animation-name: duel-answers-dim;
+    animation-duration: .3s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+.duel-answers--dim { opacity: .4; animation: none; }
+
+@keyframes duel-answers-dim { to { opacity: .4; } }
+
+@media (prefers-reduced-motion: reduce) {
+    @keyframes duel-timeup-show {
+        from { opacity: 0; pointer-events: none; }
+        to   { opacity: 1; pointer-events: auto; }
+    }
+}

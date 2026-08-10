@@ -233,10 +233,10 @@
 
     {% if time_limit %}
     <!-- Countdown: pure CSS, duration = seconds actually left on this question -->
-    <div class="mb-3">
+    <div class="mb-2">
         <div class="d-flex align-items-center justify-content-between mb-1" style="font-size:0.75rem; color:var(--text-muted);">
             <span>&#x23F1;&#xFE0F; Bu savolga {{ time_limit }} soniya</span>
-            {% if not time_left %}<span class="fw-semibold" style="color:#ef4444;">Vaqt tugadi!</span>{% endif %}
+            <span>Vaqt tugagach javob qabul qilinmaydi</span>
         </div>
         <div class="duel-timer">
             {% if time_left %}
@@ -244,6 +244,22 @@
             {% else %}
             <div class="duel-timer__bar duel-timer__bar--out"></div>
             {% endif %}
+        </div>
+    </div>
+
+    <!-- Revealed by CSS the moment the bar empties — no JavaScript involved -->
+    <div class="duel-timeup{% if not time_left %} duel-timeup--now{% endif %} mb-3"
+         {% if time_left %}style="animation-delay:{{ time_left }}s;"{% endif %}>
+        <div class="p-3 rounded-3 text-center" style="background:#fef2f2; border:1.5px solid #fca5a5;">
+            <div class="fw-bold mb-1" style="color:#991b1b; font-size:1.05rem;">&#x23F1;&#xFE0F; Vaqt tugadi!</div>
+            <div class="mb-2" style="color:#7f1d1d; font-size:0.84rem;">
+                {{ turn_name }} bu savolga ulgurmadi &mdash; bitta jon kuyadi.
+            </div>
+            <form method="post" class="mb-0">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="timeout">
+                <button type="submit" class="btn btn-danger fw-semibold px-4">Keyingi savolga o'tish &#x27A1;&#xFE0F;</button>
+            </form>
         </div>
     </div>
     {% endif %}
@@ -264,7 +280,8 @@
     <form method="post">
         {% csrf_token %}
         <input type="hidden" name="action" value="answer">
-        <div class="row g-2 mb-3">
+        <div class="row g-2 mb-3 {% if time_limit %}duel-answers{% if not time_left %} duel-answers--dim{% endif %}{% endif %}"
+             {% if time_limit and time_left %}style="animation-delay:{{ time_left }}s;"{% endif %}>
             {% for choice in q.choices %}
             <div class="col-12">
                 <button type="submit" name="choice" value="{{ forloop.counter0 }}"
@@ -280,17 +297,6 @@
             {% endfor %}
         </div>
     </form>
-
-    {% if time_limit %}
-    <!-- Escape hatch when the clock runs out and nobody answers -->
-    <form method="post" class="text-center mb-2">
-        {% csrf_token %}
-        <input type="hidden" name="action" value="timeout">
-        <button type="submit" class="btn btn-sm" style="border:1.5px solid var(--border); border-radius:10px; color:var(--text-muted); font-size:0.82rem;">
-            &#x23F1;&#xFE0F; Vaqt tugadi &mdash; keyingi savolga
-        </button>
-    </form>
-    {% endif %}
 
     <!-- Quit -->
     <form method="post" class="text-center">

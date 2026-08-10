@@ -59,6 +59,10 @@ STAGES     = 16          # four rounds of four questions
 ROUND_SIZE = 4
 HEARTS     = 3
 
+# Bumped whenever the shape of the session state changes, so a match started on
+# an older build is dropped instead of being replayed with a stale plan.
+STATE_VERSION = 3
+
 ROUND_NAMES  = {1: 'Saralash', 2: 'Chorak final', 3: 'Yarim final', 4: 'Final'}
 ROUND_TIERS  = {1: 1, 2: 2, 3: 3, 4: 3}      # difficulty fed to the engines
 ROUND_POINTS = {1: 10, 2: 20, 3: 30, 4: 40}
@@ -83,31 +87,29 @@ def stage_points(stage):
 
 def build_plan(mode, subjects):
     """The whole match, decided up front: who answers each question and what
-    subject it is. Returning a plan (instead of deciding as we go) is what makes
-    the two teams provably symmetric."""
-    plan = []
-    if mode == MODE_DUEL:
-        # Position inside the round: A-math, A-english, B-math, B-english.
-        for stage in range(STAGES):
-            pos = stage % ROUND_SIZE
-            plan.append({
-                'turn':    0 if pos < 2 else 1,
-                'subject': SUBJECT_MATH if pos % 2 == 0 else SUBJECT_ENGLISH,
-            })
-        return plan
+    subject it is.
 
-    # Together: the players alternate every question and **each answers the
-    # subject they were signed up for** — a pupil entered as "matematika
-    # o'quvchisi" is never handed an English question. A math pupil next to an
-    # English pupil therefore still produces the math-English-math-English
-    # stream; only a pupil explicitly entered as `both` gets the mix, and then
-    # their own turns alternate between the two subjects.
+    One rule for both modes, because the pupils' mental model is the same in
+    both: **a side answers the subject it signed up for.** Enter Afsona as
+    "matematika" and she is never handed an English question; enter a team as
+    "faqat ingliz tili" and that is all it ever sees. Only a side entered as
+    `both` gets the mix, and then its own turns alternate — with side B starting
+    on the opposite subject, so the match keeps swinging between the two rather
+    than running two of the same in a row.
+
+    Sides take turns question by question, which keeps the two provably
+    symmetric: each gets eight questions, two per round, so the round-based
+    difficulty and points land identically on both.
+    """
+    plan = []
     for stage in range(STAGES):
         turn = stage % 2
-        pick = subjects[turn]
+        pick = subjects[turn] if turn < len(subjects) else SUBJECT_BOTH
         if pick == SUBJECT_BOTH:
-            own_turn = stage // 2          # how many turns this player has had
-            subject = SUBJECT_MATH if own_turn % 2 == 0 else SUBJECT_ENGLISH
+            own_turn = stage // 2          # how many turns this side has had
+            first = SUBJECT_MATH if turn == 0 else SUBJECT_ENGLISH
+            second = SUBJECT_ENGLISH if turn == 0 else SUBJECT_MATH
+            subject = first if own_turn % 2 == 0 else second
         else:
             subject = pick
         plan.append({'turn': turn, 'subject': subject})
