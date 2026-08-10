@@ -1,0 +1,31 @@
+{% load i18n static %}
+{% comment %}
+The back cover — the last page of the volume, on the same full-bleed `cover`
+named page as the front. Blurb, what the three legs are, the slogan, the
+mark, the address. `break-before: verso` puts it on a left-hand page, which
+is where the back of a bound book physically is.
+{% endcomment %}
+<section class="book-back">
+    <div class="book-back-inner">
+        <p class="book-back-series">{{ book.series }} · {% trans "Book" %} {{ vol.roman }} — {{ vol.name }}</p>
+
+        <p class="book-back-blurb">{{ book.blurb }}</p>
+
+        <ul class="book-back-legs">
+            {% for name, text in book.howto %}
+            <li><strong>{{ name }}</strong> — {{ text }}</li>
+            {% endfor %}
+        </ul>
+
+        <p class="book-back-count">
+            {% blocktrans count counter=lessons|length %}{{ counter }} lesson in this volume{% plural %}{{ counter }} lessons in this volume{% endblocktrans %}
+            {% if glossary %}· {% blocktrans count counter=glossary|length %}{{ counter }} word{% plural %}{{ counter }} words{% endblocktrans %}{% endif %}
+        </p>
+    </div>
+
+    <footer class="book-back-foot">
+        <img src="{% static 'images/finlogo.png' %}" alt="" width="48" height="48">
+        <span class="book-back-slogan">“{{ slogan }}”</span>
+        <span class="book-back-site">{{ brand }} · {{ site }}</span>
+    </footer>
+</section>

@@ -140,6 +140,30 @@
     <div class="small text-secondary mt-1">
         {% blocktrans %}At most 25 lessons per sheet — a longer bundle makes the browser's print preview unusable.{% endblocktrans %}
     </div>
+
+    {% if book_volumes %}
+    <!-- ── Bound book (staff only) ───────────────────────────────
+         The sheet above is a stapled handout; this is the same lessons as a
+         real A5 volume — covers, front matter, numbered pages, answer key,
+         glossary. Volumes come from prime/books.py. -->
+    <hr class="my-3">
+    <div class="d-flex align-items-center gap-2 mb-2">
+        <i class="bi bi-book"></i>
+        <strong>{% trans "Bound book (A5)" %}</strong>
+    </div>
+    <div class="d-flex gap-2 flex-wrap">
+        {% for v in book_volumes %}
+        <a href="{% url 'playlist_book' playlist.pk %}?vol={{ v.n }}" target="_blank"
+           class="btn btn-sm btn-outline-secondary">
+            <i class="bi bi-journal-bookmark me-1"></i>{% trans "Book" %} {{ v.roman }} · {{ v.name }}
+            <span class="text-secondary">({{ v.start }}–{{ v.end }})</span>
+        </a>
+        {% endfor %}
+    </div>
+    <div class="small text-secondary mt-2">
+        {% blocktrans %}A volume paginates in the browser and takes a while — wait for “Ready” before printing, then choose A5 and margins “None”.{% endblocktrans %}
+    </div>
+    {% endif %}
 </div>
 {% endif %}
 

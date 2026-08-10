@@ -153,3 +153,76 @@ def lesson_rows(playlist, start, end):
             'stories':   [s for s in tutorial.stories.all() if s.is_published],
         })
     return rows
+
+
+# ── Back matter (books only) ───────────────────────────────────────────
+# A handout prints its answers beside the questions; a book collects them at
+# the end, so one printing serves both the pupil and the teacher.
+
+def _letter(index):
+    """0 → A, 1 → B … the label the question sheets print."""
+    return chr(ord('A') + index)
+
+
+def answer_key(rows):
+    """The whole volume's answers, one entry per lesson.
+
+    The letters MUST come from `display_choices` — the same seeded shuffle the
+    question sheet renders (practice/models.py:75). Reading `choices.all()`
+    here instead would print a key in the stored order, which is not the order
+    on the page, and every letter would be wrong.
+
+    A question with several correct choices prints them joined ("A / C"); one
+    with none prints an em dash rather than silently shifting the numbering.
+    """
+    key = []
+    for row in rows:
+        blocks = []
+        for practice in row['practices']:
+            blocks.append({
+                'kind':  'practice',
+                'title': practice.title,
+                'items': [
+                    {'n': n, 'letter': ' / '.join(
+                        _letter(i) for i, choice in enumerate(question.display_choices())
+                        if choice.is_correct) or '—'}
+                    for n, question in enumerate(practice.questions.all(), start=1)
+                ],
+            })
+        for story in row['stories']:
+            questions = list(story.questions.all())
+            if not questions:
+                continue
+            blocks.append({
+                'kind':  'reading',
+                'title': story.title,
+                'items': [
+                    {'n': n, 'letter': _letter(question.answer)}
+                    for n, question in enumerate(questions, start=1)
+                ],
+            })
+        if blocks:
+            key.append({'n': row['n'], 'title': row['tutorial'].title, 'blocks': blocks})
+    return key
+
+
+def glossary(rows):
+    """Every reading's vocabulary as one alphabetical back-of-book list.
+
+    `StoryWord` rows are themselves derived from the `cn-word` spans in the
+    story body (corner/models.py:203), so this is the volume's whole tappable
+    vocabulary. A word met in two readings is listed once, with both lesson
+    numbers — that cross-reference is the point of a glossary.
+    """
+    seen = {}
+    for row in rows:
+        for story in row['stories']:
+            for word in story.words.all():
+                entry = seen.setdefault(word.word.casefold(), {
+                    'word':        word.word,
+                    'translation': word.translation,
+                    'lessons':     [],
+                })
+                if row['n'] not in entry['lessons']:
+                    entry['lessons'].append(row['n'])
+    return sorted(seen.values(), key=lambda e: e['word'].casefold())

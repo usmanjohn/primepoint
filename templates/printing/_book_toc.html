@@ -1,0 +1,38 @@
+{% load i18n %}
+{% comment %}
+The contents. Each line is an <a href="#lesson-3">, and book.css turns the
+href into the page the target actually landed on with
+
+    content: target-counter(attr(href), page)
+
+which Paged.js resolves after the whole book has been laid out. That is the
+one thing a contents list has to get right and the one thing bare Chrome
+cannot do — see book.html.
+
+The dot leader is drawn with a flex spacer, not CSS `leader()`: Paged.js
+parses leader() but does not render it ("omitted until stabilization").
+{% endcomment %}
+<section class="book-front book-toc{% if recto %} book-recto{% endif %}">
+    <h2>{% trans "Contents" %}</h2>
+
+    <ol class="book-toc-list">
+        {% for row in lessons %}
+        <li>
+            <a href="#lesson-{{ row.n }}">
+                <span class="book-toc-n">{{ row.n }}</span>
+                <span class="book-toc-t">{{ row.tutorial.title }}</span>
+                <span class="book-toc-dots"></span>
+            </a>
+        </li>
+        {% endfor %}
+    </ol>
+
+    <ul class="book-toc-back">
+        {% if answer_key %}
+        <li><a href="#book-key"><span class="book-toc-t">{% trans "Answer key" %}</span><span class="book-toc-dots"></span></a></li>
+        {% endif %}
+        {% if glossary %}
+        <li><a href="#book-glossary"><span class="book-toc-t">{% trans "Glossary" %}</span><span class="book-toc-dots"></span></a></li>
+        {% endif %}
+    </ul>
+</section>

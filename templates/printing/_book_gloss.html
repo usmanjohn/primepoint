@@ -1,0 +1,30 @@
+{% load i18n %}
+{% comment %}
+The glossary — every word glossed in the volume's readings, once,
+alphabetically, with the lessons it appears in. Built in
+prime.printing.glossary from StoryWord rows, which are themselves derived
+from the cn-word spans in each story body, so this is exactly the vocabulary
+a reader could tap on screen.
+
+Set in one column on purpose: Paged.js splits ordinary flow across pages
+cleanly but cannot split a multi-column or grid container, so a two-column
+glossary would jump whole to the next page and leave the current one half
+empty.
+{% endcomment %}
+{% if glossary %}
+<section class="book-end book-gloss{% if recto %} book-recto{% endif %}" id="book-glossary">
+    <h2 class="book-end-title">{% trans "Glossary" %}</h2>
+    <p class="book-end-lead">{% trans "The number is the lesson whose reading the word appears in." %}</p>
+
+    <dl class="book-gloss-list">
+        {% for entry in glossary %}
+        <div class="book-gloss-row">
+            <dt>{{ entry.word }}</dt>
+            <dd>{{ entry.translation }}
+                <span class="book-gloss-refs">{% for n in entry.lessons %}{{ n }}{% if not forloop.last %}, {% endif %}{% endfor %}</span>
+            </dd>
+        </div>
+        {% endfor %}
+    </dl>
+</section>
+{% endif %}

@@ -1,11 +1,17 @@
 {% load i18n %}
 {% comment %}
-One practice as a question sheet. Context: practice, answers (bool).
+One practice as a question sheet. Context: practice, answers (bool),
+key_at_back (bool, books only).
 
 Choices come from display_choices, the same seeded shuffle the pupil sees
 on screen and in their results, so question 7's option B is the same option
 B everywhere. question_text is rendered as HTML, not stripped: the bank uses
 <strong>, <br> and inline math that |striptags would silently delete.
+
+In a book (`key_at_back`) the ✓ and the explanation are held back and
+printed in the key at the end instead — prime.printing.answer_key walks the
+same display_choices() so the letters agree. A handout passes no
+key_at_back, so it keeps answering in place.
 {% endcomment %}
 <section class="pp-part">
     <div class="pp-part-head">
@@ -16,7 +22,7 @@ B everywhere. question_text is rendered as HTML, not stripped: the bank uses
         </span>
     </div>
 
-    {% if not answers %}
+    {% if not answers and not key_at_back %}
     <p class="text-secondary" style="font-size:.8rem;">
         {% trans "Pupil copy — answer key not printed." %}
     </p>
@@ -35,13 +41,13 @@ B everywhere. question_text is rendered as HTML, not stripped: the bank uses
 
         <ul class="pp-choices">
             {% for choice in question.display_choices %}
-            <li class="pp-choice{% if answers and choice.is_correct %} pp-correct{% endif %}">
-                <span class="pp-choice-letter">{{ forloop.counter0|add:65|stringformat:"c" }}.</span>{{ choice.text|safe }}{% if answers and choice.is_correct %} ✓{% endif %}
+            <li class="pp-choice{% if answers and not key_at_back and choice.is_correct %} pp-correct{% endif %}">
+                <span class="pp-choice-letter">{{ forloop.counter0|add:65|stringformat:"c" }}.</span>{{ choice.text|safe }}{% if answers and not key_at_back and choice.is_correct %} ✓{% endif %}
             </li>
             {% endfor %}
         </ul>
 
-        {% if answers and question.explanation %}
+        {% if answers and not key_at_back and question.explanation %}
         <div class="pp-explain">{{ question.explanation|safe }}</div>
         {% endif %}
     </div>

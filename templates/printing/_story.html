@@ -1,6 +1,7 @@
 {% load i18n %}
 {% comment %}
-One Corner reading. Context: story, answers (bool).
+One Corner reading. Context: story, answers (bool), key_at_back (bool,
+books only — the quiz answers move to the key at the end of the volume).
 
 Three things the screen does with a finger have to become ink here: the
 cn-word tooltips become the vocabulary table below (gloss mode also prints
@@ -50,8 +51,14 @@ same table, and the JS quiz becomes a static lettered list. The narration
     {% for g in story.grammar.all %}
     <div class="cn-gram">
         <p class="cn-gram-pattern">{{ g.pattern }}</p>
-        {# meaning / examples / explanations are authored HTML (they use <b> to
-           mark the pattern inside a sentence), so they are rendered, not escaped. #}
+        {% comment %}
+        meaning / examples / explanations are authored HTML (they use bold to
+        mark the pattern inside a sentence), so they are rendered, not escaped.
+
+        {% comment %}, not {# #}: a {# #} comment is single-line only, so a
+        two-line one is not a comment at all — it printed on every story sheet,
+        and the unclosed tag it mentioned swallowed the rest of the page.
+        {% endcomment %}
         <p class="cn-gram-meaning">{{ g.meaning|safe }}</p>
         {% if g.examples %}
         <ul class="cn-gram-ex">{% for ex in g.examples %}<li>{{ ex|safe }}</li>{% endfor %}</ul>
@@ -68,12 +75,12 @@ same table, and the JS quiz becomes a static lettered list. The narration
         <span class="pp-q-text">{{ q.text|safe }}</span>
         <ul class="pp-choices">
             {% for choice in q.choices %}
-            <li class="pp-choice{% if answers and forloop.counter0 == q.answer %} pp-correct{% endif %}">
-                <span class="pp-choice-letter">{{ forloop.counter0|add:65|stringformat:"c" }}.</span>{{ choice|safe }}{% if answers and forloop.counter0 == q.answer %} ✓{% endif %}
+            <li class="pp-choice{% if answers and not key_at_back and forloop.counter0 == q.answer %} pp-correct{% endif %}">
+                <span class="pp-choice-letter">{{ forloop.counter0|add:65|stringformat:"c" }}.</span>{{ choice|safe }}{% if answers and not key_at_back and forloop.counter0 == q.answer %} ✓{% endif %}
             </li>
             {% endfor %}
         </ul>
-        {% if answers and q.explanation %}
+        {% if answers and not key_at_back and q.explanation %}
         <div class="pp-explain">{{ q.explanation|safe }}</div>
         {% endif %}
     </div>

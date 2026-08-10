@@ -1,0 +1,29 @@
+{% load i18n %}
+{% comment %}
+The answer key. Built in prime.printing.answer_key from the SAME
+display_choices() call the question sheets render — the practice banks are
+shuffled with a seed, so a key read off the stored order would be wrong on
+every question. Empty (and skipped) on a pupil copy.
+{% endcomment %}
+{% if answer_key %}
+<section class="book-end book-key{% if recto %} book-recto{% endif %}" id="book-key">
+    <h2 class="book-end-title">{% trans "Answer key" %}</h2>
+    <p class="book-end-lead">{% trans "Check only after you have finished the whole practice." %}</p>
+
+    <div class="book-key-grid">
+        {% for lesson in answer_key %}
+        <div class="book-key-lesson">
+            <h3>{{ lesson.title }}</h3>
+            {% for block in lesson.blocks %}
+            <p class="book-key-block">
+                <span class="book-key-kind {% if block.kind == 'reading' %}is-reading{% endif %}">
+                    {% if block.kind == 'reading' %}{% trans "Reading" %}{% else %}{% trans "Practice" %}{% endif %}
+                </span>
+                {% for item in block.items %}<span class="book-key-a"><b>{{ item.n }}</b>{{ item.letter }}</span>{% endfor %}
+            </p>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}

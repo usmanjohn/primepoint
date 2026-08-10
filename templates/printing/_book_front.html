@@ -1,0 +1,76 @@
+{% load i18n static %}
+{% comment %}
+Front matter: half-title, title page, colophon, "how to use this book".
+
+It sits on the `front` named page, which carries no running head — but it
+does carry page numbers, and deliberately so: the contents list opposite is
+built with target-counter, so the number it prints for a lesson is the
+number printed at the foot of that lesson's page. Roman-then-restart
+numbering would break that agreement, and a contents list that lies is
+worse than one with no front-matter numbers.
+{% endcomment %}
+
+{# ── Half-title: series name alone on a right-hand page ─────────────── #}
+<section class="book-front book-halftitle{% if recto %} book-recto{% endif %}">
+    <p class="book-halftitle-name">{{ book.series }}</p>
+</section>
+
+{# ── Title page ─────────────────────────────────────────────────────── #}
+<section class="book-front book-titlepage{% if recto %} book-recto{% endif %}">
+    <img src="{% static 'images/finlogo.png' %}" alt="" width="56" height="56">
+    <h1>{{ book.series }}</h1>
+    <p class="book-titlepage-sub">{{ book.subtitle }}</p>
+    <p class="book-titlepage-vol">
+        {% trans "Book" %} {{ vol.roman }} — {{ vol.name }}<br>
+        <span>{% blocktrans with a=vol.start b=vol.end %}Lessons {{ a }}–{{ b }}{% endblocktrans %}</span>
+    </p>
+    <p class="book-titlepage-brand">{{ brand }} · {{ site }}</p>
+</section>
+
+{# ── Colophon ───────────────────────────────────────────────────────── #}
+<section class="book-front book-colophon{% if recto %} book-verso{% endif %}">
+    <div class="book-colophon-inner">
+        <p><strong>{{ book.series }}</strong> — {{ book.subtitle }}<br>
+           {% trans "Book" %} {{ vol.roman }}: {{ vol.name }}
+           ({% blocktrans with a=vol.start b=vol.end %}lessons {{ a }}–{{ b }} of {{ total }}{% endblocktrans %})</p>
+
+        <p>{% blocktrans %}Published by {{ brand }}, {{ site }}{% endblocktrans %}<br>
+           © {% now "Y" %} {{ brand }}. {{ rights }}</p>
+
+        <p>{% trans "This volume is generated from the live course. Lessons, practices and readings are the same ones taught online — if a lesson is corrected there, the next printing carries the correction." %}</p>
+
+        <p class="book-colophon-print">
+            {% trans "Printed" %} {% now "d.m.Y" %}{% if user.is_authenticated %} · {{ user.get_username }}{% endif %}
+            {% if not answers %} · {% trans "Pupil copy" %}{% endif %}
+        </p>
+
+        <p class="book-colophon-slogan">“{{ slogan }}”</p>
+    </div>
+</section>
+
+{# ── How to use this book ───────────────────────────────────────────── #}
+<section class="book-front book-howto{% if recto %} book-recto{% endif %}">
+    <h2>{% trans "How to use this book" %}</h2>
+
+    <ol class="book-howto-legs">
+        {% for name, text in book.howto %}
+        <li>
+            <span class="book-howto-name">{{ name }}</span>
+            <span class="book-howto-text">{{ text }}</span>
+        </li>
+        {% endfor %}
+    </ol>
+
+    <p class="book-howto-note">
+        {% if key_at_back and answers %}
+            {% trans "The answers to every practice and every reading question are collected in the answer key at the back — not beside the questions, so the book can be worked through honestly." %}
+        {% elif not answers %}
+            {% trans "This is a pupil copy: it carries no answers at all." %}
+        {% else %}
+            {% trans "The answers are printed beside the questions in this copy." %}
+        {% endif %}
+        {% if glossary %}
+        {% trans "Every word glossed in the readings is listed again in the glossary at the back, with the lesson it first appears in." %}
+        {% endif %}
+    </p>
+</section>

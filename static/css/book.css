@@ -1,0 +1,591 @@
+/* ══════════════════════════════════════════════════════════════════
+   BOOK — a course playlist bound as an A5 volume
+   Loaded only by templates/printing/book.html, on top of print_sheet.css
+   (which already forces the light palette, keeps the colour kit printing
+   and unfolds the pe-reveal drills — none of that is repeated here).
+
+   What this file adds is the *book*: A5 pages with mirrored margins for
+   binding, running heads, page numbers, full-bleed covers, a contents list
+   that prints the page a lesson actually landed on, and back matter.
+
+   Everything below the "PAGED MEDIA" heading is interpreted by Paged.js
+   (static/vendor/paged.polyfill.min.js), not by Chrome. Two rules of that
+   engine shape this file and are easy to trip over:
+
+   1. `break-*` and `page:` declarations are applied by running
+      querySelectorAll(selector) against the BOOK FRAGMENT ALONE. A selector
+      that reaches outside it — `body.book-recto .pp-lesson` — matches
+      nothing and the break silently does not happen. So every break rule
+      here is self-contained, and the toggles come in as classes on the
+      element itself (book.html writes `book-recto` per chapter).
+   2. Later rules win: an element matching both `.book-chapter` and
+      `.book-recto` takes the recto break because that rule is written
+      second, not because it is more specific.
+
+   Docs: prime/books.py · prime/printing.py · templates/printing/book.html
+   ══════════════════════════════════════════════════════════════════ */
+
+/* A5 is a much smaller measure than the A4 handouts, so the whole rem
+   scale the pe-*/pk-* kit is built on comes down with it. One number
+   re-sizes the entire book. */
+:root {
+    font-size: 13.5px;
+    --book-ink:   #0f172a;
+    --book-soft:  #64748b;
+    --book-faint: #cbd5e1;
+}
+
+/* ══ PAGED MEDIA ══════════════════════════════════════════════════ */
+
+@page {
+    size: A5;
+    margin: 15mm 13mm 16mm 13mm;
+}
+
+/* Mirrored margins: the inner edge (right on a verso, left on a recto)
+   is wider, because that is the millimetre the binding eats. */
+@page :left {
+    margin-left:  12mm;
+    margin-right: 17mm;
+    @top-left     { content: string(series);  font-size: 7.5pt; color: #94a3b8;
+                    letter-spacing: .08em; text-transform: uppercase; }
+    @bottom-left  { content: counter(page);   font-size: 8.5pt; color: #64748b; }
+}
+@page :right {
+    margin-left:  17mm;
+    margin-right: 12mm;
+    @top-right    { content: string(lesson);  font-size: 7.5pt; color: #94a3b8; }
+    @bottom-right { content: counter(page);   font-size: 8.5pt; color: #64748b; }
+}
+
+/* A page the binding forced in is not part of the book: nothing on it. */
+@page :blank {
+    @top-left { content: none } @top-right { content: none }
+    @bottom-left { content: none } @bottom-right { content: none }
+}
+
+/* Covers bleed to the trim edge, so they get no margin and no furniture.
+   The :left/:right variants have to be repeated — a named page does not
+   inherit away the margin boxes set on the spread pseudo-classes. */
+@page cover {
+    margin: 0;
+    @top-left { content: none } @top-right { content: none }
+    @bottom-left { content: none } @bottom-right { content: none }
+}
+@page cover:left {
+    margin: 0;
+    @top-left { content: none } @bottom-left { content: none }
+}
+@page cover:right {
+    margin: 0;
+    @top-right { content: none } @bottom-right { content: none }
+}
+
+/* Front matter is numbered — the contents list opposite prints real page
+   numbers, so the numbering has to be continuous or it would lie — but it
+   carries no running head, which would be absurd on a title page. */
+@page front:left  { @top-left  { content: none } }
+@page front:right { @top-right { content: none } }
+
+/* ── Named pages and breaks ──────────────────────────────────────── */
+.book-cover, .book-back            { page: cover; }
+.book-front                        { page: front; break-before: page; }
+.book-chapter, .book-end           { break-before: page; }
+.book-cover                        { break-before: avoid; }
+
+/* Written after the two rules above on purpose — see note 2 at the top.
+   book.html adds these classes only when chapters are set to open on a
+   right-hand page (?recto=1, the default). */
+.book-recto { break-before: recto; }
+.book-verso { break-before: verso; }
+.book-back  { break-before: verso; }
+
+/* Inside a chapter the lesson, its practice and its reading each start
+   fresh — three parts running into one another reads as a handout. */
+.book-chapter .pp-part + .pp-part { break-before: page; }
+
+/* ── Undoing the handout's unbreakable blocks ────────────────────── */
+/* print_sheet.css says `.pp-part-head + *` must not split — on A4 that is a
+   harmless wish about a two-page handout, and Chrome quietly ignores it when
+   it cannot be honoured. Paged.js does not ignore it: it took the rule at its
+   word, tried to keep an entire eight-page lesson on one A5 page, and ended
+   the book with three near-empty pages and the lessons missing.
+
+   So the containers go back to splitting, and only the small components —
+   an example card, a formula strip, a table row — keep the promise. Same
+   reasoning for `table`: a vocabulary table is taller than an A5 text block.
+   Whatever is listed here must be allowed to break; whatever is genuinely
+   short stays in print_sheet.css's list. */
+.tut-prose,
+.cn-reader,
+.ck-content,
+.pp-part,
+.pp-part-head + *,
+table,
+/* …and the component boxes themselves. On A4 a `.pe-recap` or a `.pe-vs`
+   comparison is comfortably shorter than the text block, so asking Chrome to
+   keep it whole costs nothing. The A5 text block is 119mm wide and 179mm
+   tall: several of them are now taller than the page they must fit on, and
+   an unbreakable box that cannot fit is the one thing a paginator cannot
+   resolve — it moved the box to a fresh page, found it still too tall, and
+   went round again, emitting a near-empty page each time. */
+.pe-goal, .pe-formula, .pe-card, .pe-vs, .pe-vs__card, .pe-call, .pe-fix,
+.pe-quiz, .pe-recap, .pe-ex, .pe-reveal, .pe-timeline, .pe-uz,
+.pk-hangul, .pk-block, .pk-batchim, .pk-conj, .pk-level,
+.pr-cyr, .pr-gender, .pr-case, .pr-decl, .pr-aspect,
+figure {
+    break-inside: auto;
+    page-break-inside: auto;
+}
+/* A row, though, is short — never split one across a spread. */
+.pp-vocab tr, .book-gloss-row, .pp-q { break-inside: avoid; }
+
+/* print_sheet.css also asks that no heading be left stranded at the foot of
+   a page (`break-after: avoid`). Chrome treats that as a preference; Paged.js
+   treats it as a contract, and in a lesson built of forty-odd blocks with a
+   heading every few blocks the contracts chain together until nothing can be
+   placed at all — the engine gave each stray span its own page and then
+   stopped, three pages in, with the lesson unprinted. Headings may break. */
+.tut-prose h1, .tut-prose h2, .tut-prose h3, .tut-prose h4,
+.cn-reader h1, .cn-reader h2, .cn-reader h3, .cn-reader h4,
+.ck-content h1, .ck-content h2, .ck-content h3, .ck-content h4 {
+    break-after: auto;
+    page-break-after: auto;
+}
+
+/* ── The running heads ──────────────────────────────────────────── */
+/* `string-set` is taken off headings that are really on the page: the cover
+   title for the series, the lesson's own <h2> for the chapter, the back
+   matter's title for the key and the glossary.
+
+   The obvious alternative — a hidden marker element carrying the text — was
+   tried and is a trap. A zero-height element is still flow content: Paged.js
+   gave it a page of its own, then gave the next small element a page of its
+   own, and stopped three pages in with the lesson unprinted. Nothing invisible
+   goes in the flow of a paginated document. */
+.book-cover-title              { string-set: series content(text); }
+.book-chapter .tut-prose > h2  { string-set: lesson content(text); }
+.book-end-title                { string-set: lesson content(text); }
+
+/* ══ SCREEN PREVIEW ═══════════════════════════════════════════════ */
+/* Paged.js renders the pages into the live document, so what staff scroll
+   through before pressing Ctrl+P is the book itself. Dress it as a stack
+   of sheets; the print stylesheet Paged.js injects strips this out. */
+@media screen {
+    body.book { background: #eef2f7; }
+    .pagedjs_page {
+        margin: 6mm auto;
+        background: #fff;
+        box-shadow: 0 2px 14px rgba(15, 23, 42, .16);
+    }
+    /* The raw, unpaginated source would flash past for as long as the fonts
+       take to load. It is removed the moment Paged.js starts. */
+    body.is-paginating #book-content { visibility: hidden; }
+}
+
+body.book { margin: 0; padding: 0; }
+
+/* Without the paginator the book is one A5-wide column that Chrome breaks
+   into sheets itself. The covers must still reach the paper's edge, so the
+   column carries no padding of its own and every part except a cover gets
+   its own inner margin. */
+body.book:not(.is-paged) #book-content {
+    max-width: 148mm;
+    margin: 0 auto;
+    padding: 0;
+    background: #fff;
+}
+body.book:not(.is-paged) #book-content > *:not(.book-cover):not(.book-back) {
+    padding: 10mm 13mm;
+}
+
+/* ══ COVERS ══════════════════════════════════════════════════════ */
+/* The accent field is painted on the whole page box, so it bleeds to the
+   trim edge however tall the section itself works out to. The hook is the
+   class Paged.js puts on a page belonging to a named @page — `page: cover`
+   gives `.pagedjs_cover_page`.
+
+   NOT `.pagedjs_page:has(.book-cover)`, which is the obvious way to write
+   it and is a trap: :has() is re-evaluated on every DOM mutation inside the
+   subtree, and pagination is tens of thousands of mutations. It turned a
+   40-second book into one that never finished. */
+.pagedjs_cover_page {
+    position: relative;
+    background: linear-gradient(160deg, var(--book-accent) 0%, var(--book-accent2) 100%);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+/* The inner keyline, drawn on the page rather than in the flow — an
+   absolutely positioned box inside paginated content has no reliable
+   containing block. */
+.pagedjs_cover_page::after {
+    content: '';
+    position: absolute;
+    inset: 8mm;
+    border: 1px solid rgba(255, 255, 255, .35);
+    pointer-events: none;
+}
+
+.book-cover, .book-back {
+    box-sizing: border-box;
+    min-height: 178mm;
+    display: flex;
+    flex-direction: column;
+    padding: 16mm 14mm;
+    color: #fff;
+    background: linear-gradient(160deg, var(--book-accent) 0%, var(--book-accent2) 100%);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+/* Once paginated the page carries the field; the section must not paint a
+   second, shorter gradient on top of it. */
+.pagedjs_cover_page .book-cover,
+.pagedjs_cover_page .book-back { background: none; min-height: 194mm; }
+
+/* A page the binder forced in keeps the name of the page before it, so the
+   blank verso after the front cover came out solid blue with a keyline on
+   it. A blank page is blank. */
+.pagedjs_blank_page { background: none; }
+.pagedjs_blank_page::after { content: none; }
+
+.book-cover-top { display: flex; align-items: center; gap: .6rem; }
+.book-cover-top img { border-radius: 50%; }
+.book-cover-brand {
+    font-family: 'Syne', sans-serif;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    font-size: .8rem;
+}
+
+.book-cover-mid { margin-top: auto; }
+.book-cover-kicker {
+    font-size: .78rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .72);
+    margin: 0 0 .5rem;
+}
+.book-cover-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 3.1rem;
+    line-height: 1.02;
+    margin: 0;
+}
+.book-cover-sub {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, .88);
+    margin: .6rem 0 0;
+    max-width: 78%;
+}
+
+.book-cover-vol {
+    margin-top: 1.6rem;
+    padding-top: 1rem;
+    border-top: 2px solid rgba(255, 255, 255, .5);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1rem;
+    align-items: baseline;
+}
+.book-cover-vol-word {
+    grid-row: 1; grid-column: 1;
+    font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
+    color: rgba(255, 255, 255, .7);
+}
+.book-cover-vol-num {
+    grid-row: 2; grid-column: 1;
+    font-family: 'Syne', sans-serif;
+    font-size: 3.4rem;
+    line-height: .9;
+}
+.book-cover-vol-name {
+    grid-row: 2; grid-column: 2;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+.book-cover-vol-range {
+    grid-row: 3; grid-column: 2;
+    font-size: .82rem;
+    color: rgba(255, 255, 255, .78);
+}
+
+.book-cover-foot {
+    margin-top: auto;
+    padding-top: 1.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: .78rem;
+    color: rgba(255, 255, 255, .8);
+}
+.book-cover-slogan { font-style: italic; }
+.book-cover-site   { letter-spacing: .1em; }
+
+/* ── Back cover ─────────────────────────────────────────────────── */
+.book-back-inner { margin-top: 1rem; }
+.book-back-series {
+    font-size: .72rem; letter-spacing: .16em; text-transform: uppercase;
+    color: rgba(255, 255, 255, .72); margin: 0 0 1rem;
+}
+.book-back-blurb { font-size: 1rem; line-height: 1.65; margin: 0 0 1.2rem; }
+.book-back-legs {
+    list-style: none; padding: 0; margin: 0 0 1.2rem;
+    border-top: 1px solid rgba(255, 255, 255, .35);
+}
+.book-back-legs li {
+    padding: .55rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .22);
+    font-size: .84rem;
+    color: rgba(255, 255, 255, .9);
+}
+.book-back-legs strong { font-family: 'Syne', sans-serif; }
+.book-back-count { font-size: .78rem; color: rgba(255, 255, 255, .72); }
+
+.book-back-foot {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .45rem;
+    text-align: center;
+}
+.book-back-foot img { border-radius: 50%; }
+.book-back-slogan { font-style: italic; font-size: .9rem; }
+.book-back-site   { font-size: .74rem; letter-spacing: .12em; color: rgba(255, 255, 255, .75); }
+
+/* ══ FRONT MATTER ════════════════════════════════════════════════ */
+.book-front { color: var(--book-ink); }
+
+.book-halftitle { padding-top: 60mm; text-align: center; }
+.book-halftitle-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--book-soft);
+}
+
+.book-titlepage { padding-top: 40mm; text-align: center; }
+.book-titlepage img { margin-bottom: 1.2rem; }
+.book-titlepage h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.4rem;
+    margin: 0;
+    color: var(--book-accent2);
+}
+.book-titlepage-sub { font-size: 1rem; color: var(--book-soft); margin: .4rem 0 2.4rem; }
+.book-titlepage-vol { font-size: 1.05rem; font-weight: 700; line-height: 1.7; }
+.book-titlepage-vol span { font-weight: 400; font-size: .85rem; color: var(--book-soft); }
+.book-titlepage-brand {
+    margin-top: 3rem;
+    font-size: .78rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--book-soft);
+}
+
+.book-colophon { display: flex; }
+.book-colophon-inner {
+    margin-top: auto;
+    font-size: .76rem;
+    line-height: 1.7;
+    color: var(--book-soft);
+    max-width: 92%;
+}
+.book-colophon-inner p { margin: 0 0 .8rem; }
+.book-colophon-print { color: #94a3b8; }
+.book-colophon-slogan {
+    font-style: italic;
+    color: var(--book-accent);
+    border-top: 1px solid var(--book-faint);
+    padding-top: .8rem;
+}
+
+.book-howto h2, .book-end-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    margin: 0 0 1.2rem;
+    padding-bottom: .5rem;
+    border-bottom: 3px solid var(--book-accent);
+    color: var(--book-ink);
+}
+.book-howto-legs { list-style: none; counter-reset: leg; padding: 0; margin: 0; }
+.book-howto-legs li {
+    counter-increment: leg;
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: .2rem .8rem;
+    margin-bottom: 1.1rem;
+    break-inside: avoid;
+}
+.book-howto-legs li::before {
+    content: counter(leg);
+    grid-row: 1 / span 2;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    color: var(--book-accent);
+    line-height: 1;
+}
+.book-howto-name { font-weight: 700; }
+.book-howto-text { grid-column: 2; font-size: .86rem; color: var(--book-soft); line-height: 1.6; }
+.book-howto-note {
+    margin-top: 1.4rem;
+    padding: .8rem 1rem;
+    background: #f8fafc;
+    border-left: 3px solid var(--book-accent);
+    font-size: .82rem;
+    color: var(--book-soft);
+}
+
+/* ══ CONTENTS ════════════════════════════════════════════════════ */
+.book-toc-list, .book-toc-back { list-style: none; padding: 0; margin: 0; }
+.book-toc-list li, .book-toc-back li { break-inside: avoid; }
+.book-toc a {
+    display: flex;
+    align-items: baseline;
+    text-decoration: none;
+    color: inherit;
+    font-size: .88rem;
+    padding: .18rem 0;
+}
+.book-toc-n {
+    width: 2.4em;
+    color: var(--book-accent);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+.book-toc-t { flex: 0 1 auto; }
+.book-toc-dots {
+    flex: 1 1 auto;
+    min-width: 1.5em;
+    margin: 0 .45em;
+    border-bottom: 1px dotted var(--book-faint);
+    transform: translateY(-.22em);
+}
+/* The whole reason this page needs Paged.js: the number is read off the
+   page the anchor's target actually landed on, after layout. */
+.book-toc a::after {
+    content: target-counter(attr(href), page);
+    font-variant-numeric: tabular-nums;
+    color: var(--book-soft);
+}
+.book-toc-back {
+    margin-top: 1.2rem;
+    padding-top: .6rem;
+    border-top: 1px solid var(--book-faint);
+}
+.book-toc-back a { font-weight: 700; }
+
+/* ══ CHAPTER OPENERS ═════════════════════════════════════════════ */
+/* The handout's part head becomes a chapter head: a rule, the word, the
+   number. The lesson's own <h2> follows immediately underneath. */
+.book-chapter > .pp-part:first-child .pp-part-head {
+    display: block;
+    border: 0;
+    border-top: 3px solid var(--book-accent);
+    padding-top: .6rem;
+    margin-bottom: 1rem;
+}
+.book-chapter > .pp-part:first-child .pp-part-kind {
+    display: block;
+    font-size: .68rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--book-soft);
+}
+.book-chapter > .pp-part:first-child .pp-part-head h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.2rem;
+    line-height: 1;
+    color: var(--book-accent);
+    margin: .1rem 0 0;
+}
+/* powerty.uz on every part head is handout furniture; the book says it on
+   the cover, the title page and the colophon. */
+.book-chapter .pp-part-brand { display: none; }
+
+/* ══ BACK MATTER ═════════════════════════════════════════════════ */
+.book-end-lead {
+    font-size: .82rem;
+    color: var(--book-soft);
+    margin: -.6rem 0 1.4rem;
+}
+
+/* Answer key — deliberately not a grid or a multi-column list: Paged.js
+   cannot split either across a page, so a long key would push whole blocks
+   forward and leave half-empty pages. Plain flow splits cleanly. */
+.book-key-lesson { margin-bottom: 1rem; break-inside: avoid; }
+.book-key-lesson h3 {
+    font-size: .84rem;
+    font-weight: 700;
+    margin: 0 0 .25rem;
+    color: var(--book-ink);
+}
+.book-key-block { margin: 0 0 .3rem; line-height: 1.9; }
+.book-key-kind {
+    display: inline-block;
+    min-width: 5.2em;
+    font-size: .62rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--book-accent);
+    border-radius: .2rem;
+    padding: .05rem .35rem;
+    margin-right: .5rem;
+}
+.book-key-kind.is-reading { background: #7c3aed; }
+.book-key-a {
+    display: inline-block;
+    min-width: 2.9em;
+    font-size: .8rem;
+    font-variant-numeric: tabular-nums;
+}
+.book-key-a b {
+    color: var(--book-soft);
+    font-weight: 400;
+    margin-right: .15em;
+}
+
+/* Glossary — one column for the same splitting reason as the key. */
+.book-gloss-list { margin: 0; }
+.book-gloss-row {
+    display: flex;
+    align-items: baseline;
+    gap: .6rem;
+    padding: .12rem 0;
+    border-bottom: 1px dotted #e2e8f0;
+    break-inside: avoid;
+    font-size: .82rem;
+}
+.book-gloss-row dt { flex: 0 0 34%; font-weight: 700; margin: 0; }
+.book-gloss-row dd { flex: 1; margin: 0; color: var(--book-soft); }
+.book-gloss-refs { color: var(--book-accent); font-size: .72rem; margin-left: .4rem; }
+
+/* ══ THE TOOLBAR ═════════════════════════════════════════════════ */
+.book-bar { position: sticky; top: 0; z-index: 20; }
+.book-vols a {
+    display: inline-block;
+    min-width: 1.8em;
+    text-align: center;
+    padding: .05rem .35rem;
+    border: 1px solid var(--book-faint);
+    border-radius: .25rem;
+    text-decoration: none;
+    margin-left: .15rem;
+}
+.book-vols a.on { background: var(--book-accent); border-color: var(--book-accent); color: #fff; }
+
+/* Printing half a book is worse than waiting for it, so the button is dead
+   until Paged.js has finished. */
+body.is-paginating #book-print {
+    opacity: .45;
+    pointer-events: none;
+}
+body.is-paginating #book-status { color: var(--book-accent); }
+
+/* Nothing on the toolbar belongs on paper — print_sheet.css already hides
+   .pp-noprint, but Paged.js reorders the document, so say it again. */
+@media print {
+    .book-bar { display: none !important; }
+}

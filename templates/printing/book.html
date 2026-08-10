@@ -1,0 +1,112 @@
+{% load i18n static %}<!doctype html>
+{% comment %}
+One volume of a course as a bound book: covers, front matter, contents,
+lessons, answer key, glossary.
+
+Standalone on purpose, like printing/bundle.html — a book must not inherit
+the site's nav or footer. The difference from the bundle is Paged.js: the
+whole of #book-content is handed to it and comes back as real pages, which
+is the only way to get page numbers, running heads, a contents list that
+knows where a lesson landed and blank versos before each chapter. Chrome
+does none of that on its own. ?paged=0 renders the same book unpaginated.
+
+Docs: prime/books.py (the series copy), prime/printing.py (the query),
+static/css/book.css (the page geometry).
+{% endcomment %}
+<html lang="{{ LANGUAGE_CODE|default:'uz' }}">
+<head>
+    <title>{{ book.series }} — {% trans "Book" %} {{ vol.roman }}</title>
+    {% include "printing/_head.html" %}
+    <link rel="stylesheet" href="{% static 'css/book.css' %}">
+    <style>
+        :root {
+            --book-accent:  {{ book.accent }};
+            --book-accent2: {{ book.accent2 }};
+        }
+    </style>
+</head>
+{% comment %}
+`recto` is written onto each chapter, not onto <body>: Paged.js resolves
+break rules by querying the book fragment alone, so a selector that reaches
+up to <body> would match nothing and the break would vanish. See book.css.
+{% endcomment %}
+<body class="book{% if gloss %} pp-gloss{% endif %}{% if paged %} is-paginating{% endif %}">
+
+{% include "printing/_book_bar.html" %}
+
+<div id="book-content">
+
+    {% include "printing/_book_cover.html" %}
+    {% include "printing/_book_front.html" %}
+    {% include "printing/_book_toc.html" %}
+
+    {% for row in lessons %}
+    <div class="pp-lesson book-chapter{% if recto %} book-recto{% endif %}" id="lesson-{{ row.n }}">
+
+        {% include "printing/_tutorial.html" with tutorial=row.tutorial lesson_no=row.n %}
+
+        {% for practice in row.practices %}
+            {% include "printing/_practice.html" with practice=practice answers=answers key_at_back=key_at_back %}
+        {% endfor %}
+
+        {% for story in row.stories %}
+            {% include "printing/_story.html" with story=story answers=answers key_at_back=key_at_back %}
+        {% endfor %}
+    </div>
+    {% empty %}
+    <p>{% trans "This volume has no published lessons yet." %}</p>
+    {% endfor %}
+
+    {% include "printing/_book_key.html" %}
+    {% include "printing/_book_gloss.html" %}
+    {% include "printing/_book_back.html" %}
+
+</div>
+
+{% if paged %}
+<script>
+/* Paged.js reads this before it runs (window.PagedConfig). We hand it the
+   book explicitly instead of letting it swallow <body>, so the toolbar above
+   stays a toolbar instead of becoming page 1 of the book.
+
+   `before` is awaited, which is where the font wait belongs: pagination is
+   measured in glyphs, so starting before Syne and DM Sans have arrived
+   paginates the fallback font and every page number comes out wrong. */
+window.PagedConfig = {
+    auto:    true,
+    content: document.getElementById('book-content'),
+
+    /* Naming the stylesheets is a large speed-up, not a detail. Left to
+       itself Paged.js strips EVERY sheet off the document and re-parses it
+       — Bootstrap and the whole site kit included — before it lays out a
+       single page. Naming these two leaves the rest applying natively and
+       hands the engine only what it actually has to understand: the page
+       geometry in book.css and the break rules in print_sheet.css. */
+    stylesheets: [
+        '{% static "css/print_sheet.css" %}',
+        '{% static "css/book.css" %}'
+    ],
+
+    before:  async function () {
+        if (document.fonts && document.fonts.ready) {
+            try { await document.fonts.ready; } catch (e) { /* keep going */ }
+        }
+        document.getElementById('book-content').remove();
+    },
+    after:   function (flow) {
+        document.body.classList.remove('is-paginating');
+        document.body.classList.add('is-paged');
+        var note = document.getElementById('book-status');
+        if (note && flow) {
+            note.textContent = note.dataset.done
+                .replace('{n}', flow.total)
+                .replace('{s}', Math.round((flow.performance || 0) / 1000));
+        }
+    }
+};
+</script>
+<script src="{% static 'vendor/paged.polyfill.min.js' %}"></script>
+{% endif %}
+
+</body>
+</html>

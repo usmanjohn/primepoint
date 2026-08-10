@@ -4,7 +4,7 @@ from django.core.exceptions import PermissionDenied
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.db.models import F, Count, Q
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404
 from django.urls import reverse
 
 from django.utils.translation import gettext as _
@@ -14,8 +14,9 @@ from .models import (Tutorial, TutorialReaction, TutorialPlaylist, PlaylistTutor
                      TutorialProgress, TUTORIAL_POINTS, CATEGORY_CHOICES)
 from .forms import TutorialForm, TutorialPlaylistForm
 from prime.subjects import get_study_subjects, allowed_values, mapped_values
-from prime.printing import (require_staff, bar_context,
-                            lesson_range, lesson_rows)
+from prime.printing import (require_staff, bar_context, qs_with,
+                            lesson_range, lesson_rows, answer_key, glossary)
+from prime import books as book_registry
 
 
 def _save_playlist_assignment(tutorial, form):
@@ -254,12 +255,18 @@ def playlist_detail(request, pk):
     total = len(items)
     print_ranges = [{'start': s, 'end': min(s + 9, total)}
                     for s in range(1, total + 1, 10)]
+    # Courses that are a printable series (prime/books.py) also offer the
+    # bound-book link; everything else just gets the handout above it.
+    book = book_registry.book_for(playlist)
     return render(request, 'tutorial/playlist_detail.html', {
-        'playlist':     playlist,
-        'items':        items,
-        'can_edit':     can_edit,
-        'print_ranges': print_ranges,
-        'total_items':  total,
+        'playlist':      playlist,
+        'items':         items,
+        'can_edit':      can_edit,
+        'print_ranges':  print_ranges,
+        'total_items':   total,
+        # Volume bounds are positions in the whole playlist, unpublished
+        # lessons included — the same count playlist_book clamps against.
+        'book_volumes':  book_registry.volumes(book, playlist.items.count()) if book else [],
     })
 
 
@@ -305,6 +312,90 @@ def playlist_print(request, pk):
         'show_reading':  'reading' in parts,
     })
     return render(request, 'printing/bundle.html', context)
+
+
+def playlist_book(request, pk):
+    """A volume of a playlist as a bound book — covers, front matter, lessons,
+    answer key, glossary. Staff only.
+
+    The older `playlist_print` gives the same lessons as a stapled handout;
+    this gives them as a printed volume, which is why it needs Paged.js: page
+    numbers, running heads, a contents list that knows what page a lesson is
+    on and blank versos so chapters open on the right are all CSS Paged Media
+    features Chrome does not implement on its own.
+
+    ?vol=2      which volume (from prime/books.py); ignored if ?from=/?to= given
+    ?from=/?to= a custom range, same semantics as playlist_print
+    ?key=inline answers beside the questions instead of in the key at the back
+    ?answers=0  pupil copy (drops the key and the explanations entirely)
+    ?gloss=1    print cn-word translations inline in the readings too
+    ?paged=1    EXPERIMENTAL. Run Paged.js over the book to add page numbers,
+                running heads and a contents list with real page numbers.
+                Off by default because it does not yet survive the lesson
+                bodies: Paged.js cannot split a flex or grid container, and
+                the whole pe-*/pk-*/pr-* component kit is built on them, so it
+                lays out the covers and front matter correctly and then stalls
+                on the first lesson. Everything else on this page — the A5
+                geometry, the covers, the front matter, the chapter breaks,
+                the answer key, the glossary — works without it.
+    """
+    denied = require_staff(request)
+    if denied:
+        return denied
+    playlist = get_object_or_404(TutorialPlaylist, pk=pk)
+    book     = book_registry.book_for(playlist)
+    if not book:
+        raise Http404('This playlist is not a printable book series.')
+
+    total = playlist.items.count()
+    try:
+        vol = book_registry.volume(book, total, int(request.GET.get('vol', 1)))
+    except (TypeError, ValueError):
+        vol = book_registry.volume(book, total, 1)
+
+    # An explicit range wins over the volume, so a teacher can bind lessons
+    # 7-12 for one pupil without the registry knowing about it.
+    if 'from' in request.GET or 'to' in request.GET:
+        start, end = lesson_range(request, total)
+        vol = dict(vol or {}, start=start, end=end, custom=True)
+    if not vol:
+        raise Http404('This playlist has no lessons to bind.')
+
+    rows       = lesson_rows(playlist, vol['start'], vol['end'])
+    context    = bar_context(request, reverse('playlist_detail', args=[pk]),
+                             show_gloss=True)
+    key_at_back = request.GET.get('key') != 'inline'
+    recto       = request.GET.get('recto') != '0'
+    book_url    = reverse('playlist_book', args=[pk])
+    context.update({
+        # The book's own toggles. `vol` clears from/to so the volume picker
+        # escapes a custom range rather than being overruled by it.
+        'url_key_back':   qs_with(request, key=None),
+        'url_key_inline': qs_with(request, key='inline'),
+        'url_recto_on':   qs_with(request, recto=None),
+        'url_recto_off':  qs_with(request, recto=0),
+        'vol_urls': [
+            dict(v, url=book_url + qs_with(request, vol=v['n'], **{'from': None, 'to': None}))
+            for v in book_registry.volumes(book, total)
+        ],
+        'recto': recto,
+    })
+    context.update({
+        'playlist':    playlist,
+        'book':        book,
+        'vol':         vol,
+        'lessons':     rows,
+        'total':       total,
+        'key_at_back': key_at_back,
+        'answer_key':  answer_key(rows) if context['answers'] and key_at_back else [],
+        'glossary':    glossary(rows),
+        'paged':       request.GET.get('paged') == '1',
+        'brand':       book_registry.BRAND,
+        'site':        book_registry.SITE,
+        'slogan':      book_registry.SLOGAN,
+        'rights':      book_registry.RIGHTS,
+    })
+    return render(request, 'printing/book.html', context)
 
 
 @login_required

@@ -1,0 +1,37 @@
+{% load i18n static %}
+{% comment %}
+The front cover. Full-bleed: it sits on the `cover` named page, whose margin
+is 0 and whose margin boxes are switched off, so no page number or running
+head lands on it (book.css).
+
+Everything is drawn in CSS over the course's accent colour — no cover image
+to commission, and it stays right when a new course is added to
+prime/books.py. The mark is the panda logo the site already uses. The
+keyline frame is drawn by book.css on the page itself, not here.
+{% endcomment %}
+<section class="book-cover">
+    <header class="book-cover-top">
+        <img src="{% static 'images/finlogo.png' %}" alt="" width="64" height="64">
+        <span class="book-cover-brand">{{ brand }}</span>
+    </header>
+
+    <div class="book-cover-mid">
+        <p class="book-cover-kicker">{{ book.tagline }}</p>
+        <h1 class="book-cover-title">{{ book.series }}</h1>
+        <p class="book-cover-sub">{{ book.subtitle }}</p>
+    </div>
+
+    <div class="book-cover-vol">
+        <span class="book-cover-vol-word">{% trans "Book" %}</span>
+        <span class="book-cover-vol-num">{{ vol.roman }}</span>
+        <span class="book-cover-vol-name">{{ vol.name }}</span>
+        <span class="book-cover-vol-range">
+            {% blocktrans with a=vol.start b=vol.end %}Lessons {{ a }}–{{ b }}{% endblocktrans %}
+        </span>
+    </div>
+
+    <footer class="book-cover-foot">
+        <span class="book-cover-slogan">{{ slogan }}</span>
+        <span class="book-cover-site">{{ site }}</span>
+    </footer>
+</section>

@@ -1,0 +1,62 @@
+{% load i18n %}
+{% comment %}
+The book's on-screen toolbar. Never printed (.pp-noprint).
+
+Not printing/_bar.html: a book has toggles a handout does not — which volume,
+where the answers live, whether chapters open on a right-hand page — and it
+has a pagination status, because Paged.js needs a while on a 300-page volume
+and a print dialog opened mid-pagination produces a broken PDF.
+
+Context: the whole of prime.printing.bar_context, plus book/vol/vol_urls and
+the url_* toggles built in tutorial.views.playlist_book.
+{% endcomment %}
+<div class="pp-bar book-bar pp-noprint">
+    <button type="button" class="primary" id="book-print" onclick="window.print()">
+        <i class="bi bi-printer"></i> {% trans "Print / Save as PDF" %}
+    </button>
+
+    <span class="book-vols">
+        {% trans "Book" %}:
+        {% for v in vol_urls %}
+        <a href="{{ v.url }}" class="{% if v.n == vol.n and not vol.custom %}on{% endif %}"
+           title="{{ v.name }} · {% blocktrans with a=v.start b=v.end %}lessons {{ a }}–{{ b }}{% endblocktrans %}">{{ v.roman }}</a>
+        {% endfor %}
+    </span>
+
+    {% if answers %}
+    <a href="{{ url_answers_off }}"><i class="bi bi-eye-slash"></i> {% trans "Pupil copy (no answers)" %}</a>
+    {% else %}
+    <a href="{{ url_answers_on }}"><i class="bi bi-check2-square"></i> {% trans "Teacher copy (with answers)" %}</a>
+    {% endif %}
+
+    {% if answers %}
+        {% if key_at_back %}
+        <a href="{{ url_key_inline }}"><i class="bi bi-card-list"></i> {% trans "Answers beside the questions" %}</a>
+        {% else %}
+        <a href="{{ url_key_back }}"><i class="bi bi-journal-bookmark"></i> {% trans "Answer key at the back" %}</a>
+        {% endif %}
+    {% endif %}
+
+    {% if gloss %}
+    <a href="{{ url_gloss_off }}"><i class="bi bi-translate"></i> {% trans "Hide word translations" %}</a>
+    {% else %}
+    <a href="{{ url_gloss_on }}"><i class="bi bi-translate"></i> {% trans "Show word translations" %}</a>
+    {% endif %}
+
+    {% if recto %}
+    <a href="{{ url_recto_off }}"><i class="bi bi-file-earmark"></i> {% trans "Save paper (no blank pages)" %}</a>
+    {% else %}
+    <a href="{{ url_recto_on }}"><i class="bi bi-book"></i> {% trans "Chapters open on the right" %}</a>
+    {% endif %}
+
+    <a href="{{ back_url }}"><i class="bi bi-arrow-left"></i> {% trans "Back" %}</a>
+
+    <span class="pp-bar-note" id="book-status"
+          data-done="{% trans "Ready — {n} pages in {s} s. In the print dialog choose A5, margins “None”, headers and footers off, background graphics on." %}">
+        {% if paged %}
+        {% trans "Paginating (experimental)… keep this tab in front — a background tab freezes the layout engine. Wait for “Ready” before printing." %}
+        {% else %}
+        {% trans "Print at A5 with background graphics on. Page numbers are not printed — add ?paged=1 to try the experimental paginator." %}
+        {% endif %}
+    </span>
+</div>
