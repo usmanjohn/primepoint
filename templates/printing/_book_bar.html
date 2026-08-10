@@ -54,9 +54,9 @@ the url_* toggles built in tutorial.views.playlist_book.
     <span class="pp-bar-note" id="book-status"
           data-done="{% trans "Ready — {n} pages in {s} s. In the print dialog choose A5, margins “None”, headers and footers off, background graphics on." %}">
         {% if paged %}
-        {% trans "Paginating (experimental)… keep this tab in front — a background tab freezes the layout engine. Wait for “Ready” before printing." %}
+        {% trans "Paginating… keep this tab in front — a background tab freezes the layout engine. Wait for “Ready” before printing." %}
         {% else %}
-        {% trans "Print at A5 with background graphics on. Page numbers are not printed — add ?paged=1 to try the experimental paginator." %}
+        {% trans "Unpaginated preview (?paged=0) — no page numbers or running heads." %}
         {% endif %}
     </span>
 </div>

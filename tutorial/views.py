@@ -329,15 +329,11 @@ def playlist_book(request, pk):
     ?key=inline answers beside the questions instead of in the key at the back
     ?answers=0  pupil copy (drops the key and the explanations entirely)
     ?gloss=1    print cn-word translations inline in the readings too
-    ?paged=1    EXPERIMENTAL. Run Paged.js over the book to add page numbers,
-                running heads and a contents list with real page numbers.
-                Off by default because it does not yet survive the lesson
-                bodies: Paged.js cannot split a flex or grid container, and
-                the whole pe-*/pk-*/pr-* component kit is built on them, so it
-                lays out the covers and front matter correctly and then stalls
-                on the first lesson. Everything else on this page — the A5
-                geometry, the covers, the front matter, the chapter breaks,
-                the answer key, the glossary — works without it.
+    ?paged=0    skip Paged.js: no page numbers, no running heads and no
+                contents page numbers, but it renders instantly. Everything
+                else — the A5 geometry, the covers, the front matter, the
+                chapter breaks, the answer key, the glossary — is plain CSS
+                and does not depend on it.
     """
     denied = require_staff(request)
     if denied:
@@ -389,7 +385,7 @@ def playlist_book(request, pk):
         'key_at_back': key_at_back,
         'answer_key':  answer_key(rows) if context['answers'] and key_at_back else [],
         'glossary':    glossary(rows),
-        'paged':       request.GET.get('paged') == '1',
+        'paged':       request.GET.get('paged') != '0',
         'brand':       book_registry.BRAND,
         'site':        book_registry.SITE,
         'slogan':      book_registry.SLOGAN,

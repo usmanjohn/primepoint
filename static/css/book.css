@@ -28,8 +28,12 @@
 /* A5 is a much smaller measure than the A4 handouts, so the whole rem
    scale the pe-*/pk-* kit is built on comes down with it. One number
    re-sizes the entire book. */
+/* The root font-size — the one number that scales the whole book, since the
+   kit is sized in rem — is NOT here. It is in the inline <style> of
+   templates/printing/book.html, because Paged.js's polisher rewrites `html`
+   and `:root` selectors while it processes a stylesheet and silently drops a
+   font-size declared on them. A sheet the polisher never sees keeps it. */
 :root {
-    font-size: 13.5px;
     --book-ink:   #0f172a;
     --book-soft:  #64748b;
     --book-faint: #cbd5e1;
@@ -58,10 +62,13 @@
     @bottom-right { content: counter(page);   font-size: 8.5pt; color: #64748b; }
 }
 
-/* A page the binding forced in is not part of the book: nothing on it. */
+/* A page the binding forced in is not part of the book: nothing on it.
+   The empty boxes say `content: ''`, not `content: none` — Paged.js parses
+   the margin-box content value strictly and a rejected one takes the whole
+   page rule with it, which is how the book lost its page numbers. */
 @page :blank {
-    @top-left { content: none } @top-right { content: none }
-    @bottom-left { content: none } @bottom-right { content: none }
+    @top-left { content: '' } @top-right { content: '' }
+    @bottom-left { content: '' } @bottom-right { content: '' }
 }
 
 /* Covers bleed to the trim edge, so they get no margin and no furniture.
@@ -69,23 +76,23 @@
    inherit away the margin boxes set on the spread pseudo-classes. */
 @page cover {
     margin: 0;
-    @top-left { content: none } @top-right { content: none }
-    @bottom-left { content: none } @bottom-right { content: none }
+    @top-left { content: '' } @top-right { content: '' }
+    @bottom-left { content: '' } @bottom-right { content: '' }
 }
 @page cover:left {
     margin: 0;
-    @top-left { content: none } @bottom-left { content: none }
+    @top-left { content: '' } @bottom-left { content: '' }
 }
 @page cover:right {
     margin: 0;
-    @top-right { content: none } @bottom-right { content: none }
+    @top-right { content: '' } @bottom-right { content: '' }
 }
 
 /* Front matter is numbered — the contents list opposite prints real page
    numbers, so the numbering has to be continuous or it would lie — but it
    carries no running head, which would be absurd on a title page. */
-@page front:left  { @top-left  { content: none } }
-@page front:right { @top-right { content: none } }
+@page front:left  { @top-left  { content: '' } }
+@page front:right { @top-right { content: '' } }
 
 /* ── Named pages and breaks ──────────────────────────────────────── */
 .book-cover, .book-back            { page: cover; }
@@ -137,18 +144,22 @@ figure {
     break-inside: auto;
     page-break-inside: auto;
 }
-/* A row, though, is short — never split one across a spread. */
+/* A row, though, is short — never split one across a spread. The chapter
+   head needs no such protection now that it is a single line, and it must not
+   have it: Paged.js implements breaks with CSS columns, and an unbreakable
+   block at the top of a column pushed everything after it into the next one —
+   the chapter opened on a page holding nothing but "LESSON #1". */
 .pp-vocab tr, .book-gloss-row, .pp-q { break-inside: avoid; }
 
 /* print_sheet.css also asks that no heading be left stranded at the foot of
-   a page (`break-after: avoid`). Chrome treats that as a preference; Paged.js
-   treats it as a contract, and in a lesson built of forty-odd blocks with a
-   heading every few blocks the contracts chain together until nothing can be
-   placed at all — the engine gave each stray span its own page and then
-   stopped, three pages in, with the lesson unprinted. Headings may break. */
-.tut-prose h1, .tut-prose h2, .tut-prose h3, .tut-prose h4,
-.cn-reader h1, .cn-reader h2, .cn-reader h3, .cn-reader h4,
-.ck-content h1, .ck-content h2, .ck-content h3, .ck-content h4 {
+   a page (`break-after: avoid`). Chrome treats that as a preference. Paged.js
+   treats it as a contract — and the heading immediately before a lesson is
+   the chapter number, so the contract read "keep the number and the whole
+   eight-page lesson on one A5 page". It could not, so it placed neither: the
+   book stopped at the chapter opener with the lesson unprinted. This must
+   cover every heading, not only the ones inside .tut-prose — the chapter
+   number lives in .pp-part-head, outside it. */
+h1, h2, h3, h4, h5, h6 {
     break-after: auto;
     page-break-after: auto;
 }
@@ -246,7 +257,7 @@ body.book:not(.is-paged) #book-content > *:not(.book-cover):not(.book-back) {
    blank verso after the front cover came out solid blue with a keyline on
    it. A blank page is blank. */
 .pagedjs_blank_page { background: none; }
-.pagedjs_blank_page::after { content: none; }
+.pagedjs_blank_page::after { content: ''; }
 
 .book-cover-top { display: flex; align-items: center; gap: .6rem; }
 .book-cover-top img { border-radius: 50%; }
@@ -477,29 +488,24 @@ body.book:not(.is-paged) #book-content > *:not(.book-cover):not(.book-back) {
 .book-toc-back a { font-weight: 700; }
 
 /* ══ CHAPTER OPENERS ═════════════════════════════════════════════ */
-/* The handout's part head becomes a chapter head: a rule, the word, the
-   number. The lesson's own <h2> follows immediately underneath. */
-.book-chapter > .pp-part:first-child .pp-part-head {
-    display: block;
-    border: 0;
+/* The handout puts a part head — the word LESSON and the number — above the
+   lesson. In the book it is deleted and the lesson's own <h2> becomes the
+   chapter title: it already reads "PE-1: What Is a Sentence?", so the head
+   was saying the number twice.
+
+   It also had to go for a mechanical reason. As a separate element before the
+   article it always ended the page it was on, whatever we did to it — the
+   chapter opened on a sheet holding two words. With the head gone the article
+   is the first thing in the chapter and the page fills from its first line. */
+.book-chapter > .pp-part:first-child .pp-part-head { display: none; }
+
+.book-chapter .tut-prose > h2:first-child {
     border-top: 3px solid var(--book-accent);
-    padding-top: .6rem;
-    margin-bottom: 1rem;
-}
-.book-chapter > .pp-part:first-child .pp-part-kind {
-    display: block;
-    font-size: .68rem;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: var(--book-soft);
-}
-.book-chapter > .pp-part:first-child .pp-part-head h2 {
-    font-family: 'Syne', sans-serif;
-    font-size: 2.2rem;
-    line-height: 1;
+    padding-top: .45rem;
+    margin-top: 0;
     color: var(--book-accent);
-    margin: .1rem 0 0;
 }
+
 /* powerty.uz on every part head is handout furniture; the book says it on
    the cover, the title page and the colophon. */
 .book-chapter .pp-part-brand { display: none; }
@@ -561,6 +567,102 @@ body.book:not(.is-paged) #book-content > *:not(.book-cover):not(.book-back) {
 .book-gloss-row dt { flex: 0 0 34%; font-weight: 700; margin: 0; }
 .book-gloss-row dd { flex: 1; margin: 0; color: var(--book-soft); }
 .book-gloss-refs { color: var(--book-accent); font-size: .72rem; margin-left: .4rem; }
+
+/* ══ THE LESSON KIT, FLATTENED FOR THE BOOK ══════════════════════
+   On screen and on A4 the pe-*/pk-*/pr- kit lays its pieces out side by
+   side: two-column comparisons, card grids, alphabet tiles, pattern strips
+   in a flex row. That is the right shape for a 1000px screen and the wrong
+   shape twice over for a bound A5 book.
+
+   Wrong for the paginator: Paged.js cannot break a flex or grid container.
+   It has to place one whole or push it to the next page, and a comparison
+   grid at 119mm of measure is often taller than the 179mm text block — an
+   unbreakable box that cannot fit is the one thing a paginator cannot
+   resolve, and it was why the book stopped dead at the first lesson.
+
+   Wrong for the page: two columns inside 119mm gives two columns of about
+   50mm each. Stacked, each card gets the full measure and reads better.
+
+   So every multi-item container becomes ordinary block flow, which splits
+   across pages the way prose does. `gap` does not apply to block layout,
+   so the rhythm is restored with margins. Small pills stay inline-block —
+   they are ornaments inside a line, not layout.
+   ══════════════════════════════════════════════════════════════════ */
+
+.pe-formula, .pe-legend, .pe-fix, .pe-bad, .pe-good, .pe-tl-foot,
+.pe-vs, .pe-grid, .pe-gloss, .pe-gloss li, .pe-card__h, .pe-recap__t,
+.pe-reveal > summary,
+.pk-hangul, .pk-block, .pk-batchim, .pk-level, .pk-level__row, .pk-say,
+.pr-cyr, .pr-gender, .pr-aspect, .pr-pair, .pr-say,
+.pp-part-head, .pp-choices,
+.cn-opts, .cn-opt {
+    display: block;
+}
+
+.pe-vs > * + *, .pe-grid > * + *, .pe-gloss > * + *, .pe-fix > * + *,
+.pk-hangul > * + *, .pk-batchim > * + *, .pk-level > * + *,
+.pr-cyr > * + *, .pr-gender > * + *, .pr-aspect > * + *, .pr-pair > * + *,
+.pp-choices > * + *, .cn-opts > * + * {
+    margin-top: .3rem;
+}
+
+/* Ornaments, not layout: a numbered pill or a colour swatch still wants to
+   sit on the line it belongs to. */
+.pe-card__n, .pe-quiz__n, .pe-legend span, .pe-steps > li::before,
+.pk-w, .pr-w, .cn-opt-letter, .cn-story-no, .cn-banner-icon {
+    display: inline-block;
+}
+
+/* ══ DENSITY ═════════════════════════════════════════════════════
+   The kit's spacing is drawn for a screen — 1.2rem margins between blocks,
+   1rem padding inside every card, 14px radii. On A5 that spends most of the
+   page on air. Halving it, and dropping the type a step, roughly doubles how
+   much of a lesson lands on a sheet. The one number that scales everything
+   is the root font-size at the top of this file.
+   ══════════════════════════════════════════════════════════════════ */
+
+body.book { line-height: 1.4; }
+
+.tut-prose > *, .cn-reader > * { margin-top: .55rem; margin-bottom: .55rem; }
+
+.pe-goal, .pe-formula, .pe-ex, .pe-fix, .pe-quiz, .pe-recap,
+.pe-card, .pe-vs__card, .pe-reveal, .pe-gloss, .pe-timeline,
+.pk-hangul, .pk-block, .pk-batchim, .pk-level, .pk-conj,
+.pr-cyr, .pr-gender, .pr-case, .pr-decl, .pr-aspect,
+.cn-gram {
+    padding: .5rem .7rem;
+    margin-top: .6rem;
+    margin-bottom: .6rem;
+    border-radius: 8px;
+}
+.pe-ex + .pe-ex { margin-top: .35rem; }
+
+/* A callout keeps a wide left gutter: its icon is an absolutely positioned
+   ::before at left: 1rem, so a blanket padding puts the word RULE under the
+   pin. Tighter, but never narrower than the icon. */
+.pe-call {
+    padding: .45rem .7rem .45rem 2.2rem;
+    margin-top: .6rem;
+    margin-bottom: .6rem;
+    border-radius: 8px;
+}
+.pe-call::before { left: .7rem; top: .5rem; font-size: .95rem; }
+
+/* `gap` died with the flex container; the legend needs its spacing back. */
+.pe-legend span { margin-right: .9em; }
+.pe-legend i { margin-right: .25em; }
+
+/* Headings inside a lesson: still a hierarchy, a step quieter. */
+.tut-prose h2 { font-size: 1.45rem; margin: .2rem 0 .5rem; }
+.tut-prose h3 { font-size: 1.08rem; margin: .9rem 0 .35rem; }
+.tut-prose h4 { font-size: .95rem;  margin: .7rem 0 .3rem; }
+
+/* Question sheets: twenty questions to a practice, so every millimetre of
+   leading between them is a page across a volume. */
+.pp-q { margin-bottom: .5rem; }
+.pp-choices { margin: .25rem 0 0; }
+.pp-choice { padding: 0; }
+.pp-vocab td, .pp-vocab th { padding: .12rem .3rem; }
 
 /* ══ THE TOOLBAR ═════════════════════════════════════════════════ */
 .book-bar { position: sticky; top: 0; z-index: 20; }

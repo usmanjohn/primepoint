@@ -19,6 +19,12 @@ static/css/book.css (the page geometry).
     {% include "printing/_head.html" %}
     <link rel="stylesheet" href="{% static 'css/book.css' %}">
     <style>
+        /* Paged.js never processes this block, which is exactly why the root
+           size lives here: the polisher rewrites html/:root selectors in the
+           sheets it does process and the declaration disappears. 11.5px is
+           about 8.6pt, so body copy lands near 9pt — the A5 textbook size.
+           Turn this one number to make the whole book bigger or smaller. */
+        html { font-size: 11.5px; }
         :root {
             --book-accent:  {{ book.accent }};
             --book-accent2: {{ book.accent2 }};
