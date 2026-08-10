@@ -1001,40 +1001,716 @@ def q_work_compare(grade, tier):
 
 
 # ---------------------------------------------------------------------------
+# Foizlar — teskari masalalar (percent: find the number, find the percent)
+# ---------------------------------------------------------------------------
+
+_PCT_EASY = (10, 20, 25, 50)
+_PCT_ALL  = (5, 10, 20, 25, 40, 50, 60, 75, 80)
+
+
+def _pct_number(p, lo=2, hi=14):
+    """A number n such that p% of n is a whole number."""
+    return (100 // gcd(p, 100)) * random.randint(lo, hi)
+
+
+def q_percent_reverse(grade, tier):
+    """The 'if 20% of a number is 40, what is the number?' family — the pupil
+    has to go backwards from the part to the whole."""
+    p = random.choice(_PCT_ALL if tier >= 2 else _PCT_EASY)
+    roll = random.random()
+
+    if roll < 0.35:
+        n = _pct_number(p)
+        val = n * p // 100
+        expl = (f"Noma'lum son x bo'lsin: x ning {p}% i = x × {p} ÷ 100 = {val}. "
+                f"Bundan x = {val} × 100 ÷ {p} = {n}. "
+                f"Tekshiruv: {n} ning {p}% i = {val}.")
+        return _q("Foizlar", f"Sonning {p}% i {val} ga teng. Shu sonni toping.",
+                  n, [val * p, val + p, val * 100, n // 2], expl)
+
+    if roll < 0.65:
+        # Same idea wrapped in a story — a class where only 5% are girls would
+        # be a strange thing to ask about, so the story uses big shares only.
+        p = random.choice((20, 25, 40, 50, 60, 75, 80))
+        step = 100 // gcd(p, 100)
+        total = step * random.randint(max(2, 20 // step), 50 // step)
+        part = total * p // 100
+        expl = (f"Jami o'quvchilar soni x bo'lsa, x ning {p}% i = {part}. "
+                f"x = {part} × 100 ÷ {p} = {total} ta.")
+        return _q("Foizlar",
+                  f"Sinf o'quvchilarining {p}% i, ya'ni {part} nafari qiz bola. "
+                  f"Sinfda jami nechta o'quvchi bor?",
+                  total, [part * p, total - part, part * 2, total + part], expl)
+
+    # Reverse of a discount: the price AFTER the cut is given.
+    name = _names()
+    p = random.choice((10, 20, 25, 40, 50))     # a realistic sale
+    step = 100 // gcd(p, 100)
+    price = step * random.randint(2, 12) * 1000
+    new = price * (100 - p) // 100
+    expl = (f"Chegirmadan keyingi narx avvalgi narxning {100 - p}% ini tashkil "
+            f"qiladi: x × {100 - p} ÷ 100 = {_fmt_money(new)}. Bundan "
+            f"x = {_fmt_money(new)} × 100 ÷ {100 - p} = {_fmt_money(price)} so'm.")
+    return _q("Foizlar",
+              f"{name} sotib olgan krossovka {p}% chegirmadan keyin "
+              f"{_fmt_money(new)} so'm bo'ldi. Chegirmagacha uning narxi "
+              f"qancha edi?",
+              price, [new * (100 + p) // 100, new + p * 100, new * 2,
+                      new + price // 10],
+              expl, lo=500, fmt=lambda v: f"{_fmt_money(v)} so'm")
+
+
+def q_percent_of_what(grade, tier):
+    """'What percent is a of b?' — including percent increase / decrease."""
+    if tier >= 3 and random.random() < 0.45:
+        p = random.choice((10, 20, 25, 50))
+        # The new price must come out whole, or the percentage printed in the
+        # question would no longer match the price printed next to it.
+        old = random.choice([v for v in (20000, 30000, 40000, 50000, 60000,
+                                         80000, 100000, 120000)
+                             if v * (100 + p) % 100 == 0
+                             and v * (100 - p) % 100 == 0])
+        up = random.random() < 0.5
+        new = old * (100 + p) // 100 if up else old * (100 - p) // 100
+        delta = abs(new - old)
+        word = "qimmatlashdi" if up else "arzonlashdi"
+        expl = (f"O'zgarish: {delta} so'm. Foiz HAR DOIM avvalgi narxdan "
+                f"hisoblanadi: {delta} × 100 ÷ {old} = {p}%.")
+        return _q("Foizlar",
+                  f"Tovarning narxi {_fmt_money(old)} so'mdan "
+                  f"{_fmt_money(new)} so'mga o'zgardi. Narx necha foizga "
+                  f"{word}?",
+                  p, [delta * 100 // new, 100 - p, delta, p * 2], expl,
+                  fmt=lambda v: f"{v}%")
+
+    p = random.choice(_PCT_ALL if tier >= 2 else _PCT_EASY)
+    b = _pct_number(p, 2, 10)
+    a = b * p // 100
+    expl = (f"{a} ni {b} ga bo'lib, 100 ga ko'paytiramiz: "
+            f"{a} ÷ {b} × 100 = {p}%.")
+    return _q("Foizlar", f"{a} soni {b} sonining necha foizini tashkil qiladi?",
+              p, [100 - p, b - a, p * 2, a], expl, fmt=lambda v: f"{v}%")
+
+
+# ---------------------------------------------------------------------------
+# Aralashmalar va eritmalar (mixtures: concentration changes)
+# ---------------------------------------------------------------------------
+
+# (mixture, the dissolved part, unit, masses to start from, amounts to add)
+_MIXTURES = [
+    ("tuzli eritma", "tuz",     "g", (200, 250, 300, 400, 500, 600), (50, 100, 150, 200, 250, 300, 400)),
+    ("shakarli suv", "shakar",  "g", (200, 250, 300, 400, 500),      (50, 100, 150, 200, 250, 300)),
+    ("limonad",      "sharbat", "l", (4, 5, 6, 8, 10, 12),           (1, 2, 3, 4, 5, 6, 8, 10)),
+    ("bo'yoq",       "rang",    "l", (4, 5, 6, 8, 10),               (1, 2, 3, 4, 5, 6, 10)),
+]
+
+
+def _mixture_start():
+    """A mixture whose 'p% of M' is a whole amount."""
+    mix, sol, unit, masses, adds = random.choice(_MIXTURES)
+    for _ in range(50):
+        p = random.choice((10, 20, 25, 40, 50, 60, 75, 80))
+        m = random.choice(masses)
+        if m * p % 100 == 0:
+            return mix, sol, unit, adds, m, p, m * p // 100
+    return mix, sol, unit, adds, 200, 20, 40
+
+
+def q_mixture(grade, tier):
+    """Concentration problems: how much of the mixture is the dissolved part,
+    and what happens to the percentage when you pour in more water (the part
+    stays the same, the whole grows) or more of the substance."""
+    mix, sol, unit, adds, m, p, part = _mixture_start()
+    water = "suv"
+
+    if tier == 1 or random.random() < 0.25:
+        expl = (f"{m} {unit} ning {p}% i: {m} × {p} ÷ 100 = {part} {unit}.")
+        return _q("Aralashmalar",
+                  f"{m} {unit} {mix}ning {p}% i {sol}dan iborat. Unda necha "
+                  f"{unit} {sol} bor?",
+                  part, [m - part, part * 2, m * p // 10, part // 2], expl,
+                  unit=unit)
+
+    if random.random() < 0.5:
+        # Pour in more water: the dissolved part does not change.
+        cands = [(w, part * 100 // (m + w)) for w in adds
+                 if part * 100 % (m + w) == 0 and 1 <= part * 100 // (m + w) < p]
+        if cands:
+            w, newp = random.choice(cands)
+            total = m + w
+            expl = (f"{sol.capitalize()} miqdori o'zgarmaydi: {m} × {p} ÷ 100 = {part} "
+                    f"{unit}. Faqat umumiy massa ortadi: {m} + {w} = {total} "
+                    f"{unit}. Yangi foiz: {part} × 100 ÷ {total} = {newp}%.")
+            return _q("Aralashmalar",
+                      f"{m} {unit} {mix}ning {p}% i {sol}. Unga yana {w} "
+                      f"{unit} {water} qo'shildi. Endi {sol} aralashmaning "
+                      f"necha foizini tashkil qiladi?",
+                      newp, [p, p - w, part, newp * 2], expl,
+                      fmt=lambda v: f"{v}%")
+
+    # Pour in more of the substance: both the part and the whole grow.
+    cands = [(s, (part + s) * 100 // (m + s)) for s in adds
+             if (part + s) * 100 % (m + s) == 0 and p < (part + s) * 100 // (m + s) <= 100]
+    if cands:
+        s, newp = random.choice(cands)
+        expl = (f"Yangi {sol} miqdori: {part} + {s} = {part + s} {unit}. "
+                f"Bu safar {sol} ham, umumiy massa ham ortadi. "
+                f"Yangi umumiy massa: {m} + {s} = {m + s} {unit}. "
+                f"Yangi foiz: {part + s} × 100 ÷ {m + s} = {newp}%.")
+        return _q("Aralashmalar",
+                  f"{m} {unit} {mix}ning {p}% i {sol}. Unga yana {s} {unit} "
+                  f"{sol} qo'shildi. Endi {sol} aralashmaning necha foizini "
+                  f"tashkil qiladi?",
+                  newp, [p + s, p, 100 - newp, newp + 10], expl,
+                  fmt=lambda v: f"{v}%")
+
+    expl = f"{m} {unit} ning {p}% i: {m} × {p} ÷ 100 = {part} {unit}."
+    return _q("Aralashmalar",
+              f"{m} {unit} {mix}ning {p}% i {sol}dan iborat. Unda necha "
+              f"{unit} {sol} bor?",
+              part, [m - part, part * 2, m * p // 10, part // 2], expl,
+              unit=unit)
+
+
+def q_percent_chain(grade, tier):
+    """Two percentage changes one after the other — the trap is adding the two
+    percentages together."""
+    price = random.choice((20000, 30000, 40000, 50000, 60000, 80000, 100000))
+    p, d = random.sample((10, 20, 25, 50), 2)
+    mid = price * (100 + p) // 100
+    final = mid * (100 - d) // 100
+    naive = price * (100 + p - d) // 100
+    expl = (f"Avval qimmatlashish: {_fmt_money(price)} × {100 + p} ÷ 100 = "
+            f"{_fmt_money(mid)} so'm. Chegirma esa ESKI emas, YANGI narxdan "
+            f"olinadi: {_fmt_money(mid)} × {100 - d} ÷ 100 = "
+            f"{_fmt_money(final)} so'm. Shuning uchun {p}% va {d}% ni "
+            f"shunchaki ayirib bo'lmaydi.")
+    return _q("Foizlar",
+              f"Tovarning narxi avval {p}% ga qimmatlashdi, keyin yangi "
+              f"narxidan {d}% ga arzonlashdi. Tovarning oxirgi narxi qancha "
+              f"bo'ldi? (Boshlang'ich narx {_fmt_money(price)} so'm)",
+              final, [naive, price, mid, price * (100 - d) // 100], expl,
+              lo=500, fmt=lambda v: f"{_fmt_money(v)} so'm")
+
+
+# ---------------------------------------------------------------------------
+# Tezlik — qiyinroq turlari (speed: average speed, units, trains)
+# ---------------------------------------------------------------------------
+
+# Pairs whose harmonic mean is a whole number — "half the way at v1, half at v2".
+_HARMONIC_PAIRS = [(60, 40, 48), (30, 20, 24), (80, 20, 32), (60, 30, 40),
+                   (20, 5, 8), (12, 4, 6), (10, 15, 12), (24, 8, 12),
+                   (90, 45, 60), (100, 25, 40)]
+
+
+def q_speed_average(grade, tier):
+    """Average speed = total distance ÷ total time, never the average of the
+    two speeds. Both versions here are built to expose that mistake."""
+    if grade >= 7 and tier >= 3 and random.random() < 0.5:
+        v1, v2, avg = random.choice(_HARMONIC_PAIRS)
+        half = _lcm(v1, v2)
+        s = 2 * half
+        t1, t2 = half // v1, half // v2
+        expl = (f"Yo'lning yarmi {half} km bo'lsin. Birinchi yarmi: "
+                f"{half} ÷ {v1} = {t1} soat, ikkinchi yarmi: {half} ÷ {v2} = "
+                f"{t2} soat. O'rtacha tezlik = butun masofa ÷ butun vaqt = "
+                f"{s} ÷ {t1 + t2} = {avg} km/soat — tezliklarning o'rta "
+                f"arifmetigi ({(v1 + v2) // 2}) EMAS!")
+        return _q("O'rtacha tezlik",
+                  f"Avtomobil yo'lning birinchi yarmini {v1} km/soat, "
+                  f"ikkinchi yarmini esa {v2} km/soat tezlik bilan bosib "
+                  f"o'tdi. Butun yo'ldagi o'rtacha tezligi qancha?",
+                  avg, [(v1 + v2) // 2, v1, v2, avg + 5], expl, unit="km/soat")
+
+    for _ in range(200):
+        t1, t2 = random.randint(1, 4), random.randint(1, 4)
+        v1 = random.randrange(20, 91, 10)
+        v2 = random.randrange(20, 91, 10)
+        s = v1 * t1 + v2 * t2
+        if v1 != v2 and s % (t1 + t2) == 0 and (v1 + v2) % 2 == 0:
+            avg = s // (t1 + t2)
+            if avg != (v1 + v2) // 2:
+                break
+    else:
+        v1, v2, t1, t2, s, avg = 60, 40, 1, 3, 180, 45
+
+    name = _names()
+    expl = (f"Butun masofa: {v1} × {t1} + {v2} × {t2} = {s} km. Butun vaqt: "
+            f"{t1} + {t2} = {t1 + t2} soat. O'rtacha tezlik = {s} ÷ "
+            f"{t1 + t2} = {avg} km/soat. Diqqat: bu tezliklarning o'rta "
+            f"arifmetigi ({(v1 + v2) // 2}) emas!")
+    return _q("O'rtacha tezlik",
+              f"{name}ning otasi yo'lning birinchi qismini {v1} km/soat "
+              f"tezlik bilan {t1} soat, qolgan qismini esa {v2} km/soat "
+              f"tezlik bilan {t2} soat bosib o'tdi. Butun yo'ldagi o'rtacha "
+              f"tezlik qancha?",
+              avg, [(v1 + v2) // 2, s, avg + 10, avg - 10], expl, unit="km/soat")
+
+
+def q_speed_units(grade, tier):
+    """km/soat ↔ m/s — one of the most common exam slips."""
+    kmh, ms = random.choice(((18, 5), (36, 10), (54, 15), (72, 20), (90, 25),
+                             (108, 30), (144, 40), (180, 50)))
+    if random.random() < 0.5:
+        expl = (f"1 km/soat = 1000 m ÷ 3600 s, ya'ni km/soat ni m/s ga "
+                f"aylantirish uchun 3,6 ga bo'linadi: {kmh} ÷ 3,6 = {ms} m/s.")
+        return _q("Birliklar",
+                  f"{kmh} km/soat tezlik necha m/s ga teng?",
+                  ms, [kmh // 6, ms * 2, ms + 5, kmh // 2], expl, unit="m/s")
+    expl = (f"m/s ni km/soat ga aylantirish uchun 3,6 ga ko'paytiriladi: "
+            f"{ms} × 3,6 = {kmh} km/soat.")
+    return _q("Birliklar",
+              f"{ms} m/s tezlik necha km/soat ga teng?",
+              kmh, [ms * 6, ms // 2 or 1, kmh + 10, ms * 10], expl, unit="km/soat")
+
+
+def q_train(grade, tier):
+    """A train has its own length — the classic 'bridge / tunnel / pole'
+    problem where forgetting that length is the whole trap."""
+    v = random.choice((10, 15, 20, 25, 30))
+    lengths = [x for x in (100, 120, 150, 180, 200, 250, 300) if x % v == 0]
+    L = random.choice(lengths) if lengths else v * random.randint(6, 12)
+
+    if tier <= 2 and random.random() < 0.4:
+        t = L // v
+        expl = (f"Ustun yonidan o'tish uchun poyezd o'zining butun uzunligicha "
+                f"yo'l bosishi kerak: {L} ÷ {v} = {t} s.")
+        return _q("Poyezd masalasi",
+                  f"Uzunligi {L} m bo'lgan poyezd {v} m/s tezlik bilan "
+                  f"harakatlanmoqda. U yo'l chetidagi ustun yonidan necha "
+                  f"sekundda butunlay o'tadi?",
+                  t, [t + 2, t - 2, t * 2], expl, unit="s")
+
+    obj, objname = random.choice((("ko'prik", "ko'prikdan"), ("tunnel", "tunneldan"),
+                                  ("platforma", "platformadan")))
+    cands = [b for b in range(200, 901, 50) if (L + b) % v == 0]
+    B = random.choice(cands) if cands else v * 20 - L
+    t = (L + B) // v
+    expl = (f"Poyezd {objname} BUTUNLAY o'tishi uchun {obj} uzunligi + o'z "
+            f"uzunligi = {B} + {L} = {B + L} m yo'l bosadi. Vaqt: "
+            f"{B + L} ÷ {v} = {t} s. (Faqat {B} ÷ {v} deb hisoblash — eng "
+            f"ko'p uchraydigan xato.)")
+    return _q("Poyezd masalasi",
+              f"Uzunligi {L} m bo'lgan poyezd {v} m/s tezlik bilan uzunligi "
+              f"{B} m bo'lgan {obj}dan o'tmoqda. U {objname} butunlay o'tishi "
+              f"uchun necha sekund kerak?",
+              t, [B // v, L // v, t + 5, t - 5], expl, unit="s")
+
+
+# ---------------------------------------------------------------------------
+# Nisbat va proporsiya (ratio & proportion)
+# ---------------------------------------------------------------------------
+
+_RATIO_PAIRS = [(2, 3), (3, 4), (2, 5), (3, 5), (4, 5), (1, 3), (2, 7),
+                (3, 7), (5, 6), (1, 4), (5, 7), (3, 8)]
+
+_RATIO_STORIES = [
+    ("konfet", "ta", "ikki bola o'rtasida"),
+    ("olma", "ta", "ikki savatga"),
+    ("so'm", "so'm", "ikki aka-uka o'rtasida"),
+    ("kitob", "ta", "ikki javonga"),
+]
+
+
+def q_ratio(grade, tier):
+    if tier >= 3 and random.random() < 0.35:
+        a, b, c = random.choice([(1, 2, 3), (2, 3, 4), (1, 3, 5), (2, 3, 5),
+                                 (1, 2, 4), (3, 4, 5)])
+        k = random.randint(3, 12)
+        total = (a + b + c) * k
+        big = c * k
+        expl = (f"Jami ulushlar soni: {a} + {b} + {c} = {a + b + c}. "
+                f"Bitta ulush: {total} ÷ {a + b + c} = {k}. "
+                f"Eng katta qism: {c} × {k} = {big}.")
+        return _q("Nisbat",
+                  f"{total} ta konfet uchta bolaga {a} : {b} : {c} nisbatda "
+                  f"taqsimlandi. Eng ko'p konfet olgan bola nechta konfet oldi?",
+                  big, [a * k, b * k, total // 3, big + k], expl)
+
+    a, b = random.choice(_RATIO_PAIRS)
+    k = random.randint(3, 15)
+    total = (a + b) * k
+
+    if random.random() < 0.45:
+        # The small part is given; find the total.
+        small = a * k
+        expl = (f"Nisbatning kichik qismi {a} ulush = {small}, demak bitta "
+                f"ulush = {small} ÷ {a} = {k}. Jami: ({a} + {b}) × {k} = {total}.")
+        return _q("Nisbat",
+                  f"Ikki son {a} : {b} nisbatda. Kichik son {small} ga teng "
+                  f"bo'lsa, bu ikki sonning yig'indisi nechaga teng?",
+                  total, [small + b, b * k, total - small, small * 2], expl)
+
+    big = b * k
+    expl = (f"Jami ulushlar soni: {a} + {b} = {a + b}. Bitta ulush: "
+            f"{total} ÷ {a + b} = {k}. Katta qism: {b} × {k} = {big}.")
+    return _q("Nisbat",
+              f"{total} ta olma ikki savatga {a} : {b} nisbatda solindi. "
+              f"Ko'proq olma solingan savatda nechta olma bor?",
+              big, [a * k, total // 2, big - k, big + k], expl)
+
+
+def q_proportion(grade, tier):
+    """Direct and inverse proportion — and naming which is which is half the
+    lesson."""
+    if random.random() < 0.5:
+        # Direct: more goods, more money.
+        per = random.choice((1500, 2000, 2500, 3000, 4000, 5000))
+        n = random.randint(2, 6)
+        m = n + random.randint(1, 6)
+        cost = n * per
+        ans = m * per
+        expl = (f"Bittasining narxi: {_fmt_money(cost)} ÷ {n} = "
+                f"{_fmt_money(per)} so'm. {m} tasi: {m} × {_fmt_money(per)} = "
+                f"{_fmt_money(ans)} so'm. Miqdor ortsa, narx ham ortadi — "
+                f"to'g'ri proporsionallik.")
+        return _q("Proporsiya",
+                  f"{n} ta daftar {_fmt_money(cost)} so'm turadi. Xuddi "
+                  f"shunday {m} ta daftar qancha turadi?",
+                  ans, [cost + per, ans - per, ans + per, cost * 2], expl,
+                  lo=500, fmt=lambda v: f"{_fmt_money(v)} so'm")
+
+    # Inverse: more workers, fewer days.
+    total_work = random.choice((24, 36, 48, 60, 72, 120))
+    divs = [d for d in _divisors(total_work) if 2 <= d <= 20]
+    w1, w2 = random.sample(divs, 2)
+    d1, d2 = total_work // w1, total_work // w2
+    expl = (f"Butun ish hajmi: {w1} × {d1} = {total_work} ishchi-kun. "
+            f"{w2} ta ishchi uchun: {total_work} ÷ {w2} = {d2} kun. "
+            f"Ishchilar soni ortsa, kunlar soni kamayadi — teskari "
+            f"proporsionallik.")
+    return _q("Proporsiya",
+              f"{w1} ta ishchi bir ishni {d1} kunda bajaradi. Xuddi shu ishni "
+              f"{w2} ta ishchi necha kunda bajaradi?",
+              d2, [d1, d1 + w2, total_work // (w1 + w2) or 1, d2 + 1], expl,
+              unit="kun")
+
+
+# ---------------------------------------------------------------------------
+# O'rta arifmetik (averages)
+# ---------------------------------------------------------------------------
+
+def q_average(grade, tier):
+    roll = random.random()
+
+    if roll < 0.3:
+        n = random.choice((4, 5, 6))
+        m = random.randint(5, 30)
+        s = n * m
+        expl = (f"O'rta arifmetik = yig'indi ÷ sonlar soni. Demak yig'indi = "
+                f"o'rtacha × soni = {m} × {n} = {s}.")
+        return _q("O'rta arifmetik",
+                  f"{n} ta sonning o'rta arifmetigi {m} ga teng. Bu sonlarning "
+                  f"yig'indisi nechaga teng?",
+                  s, [m + n, s // 2, s + m, m * (n - 1)], expl)
+
+    if roll < 0.6:
+        a = random.randint(5, 25)
+        b = random.randint(5, 25)
+        m = random.randint(max(a, b) // 2 + 5, 30)
+        third = 3 * m - a - b
+        if third < 1:
+            third, m = 1, (a + b + 1) // 3 or 1
+        expl = (f"Uchta sonning yig'indisi: {m} × 3 = {3 * m}. Uchinchi son: "
+                f"{3 * m} − {a} − {b} = {third}.")
+        return _q("O'rta arifmetik",
+                  f"Uchta sonning o'rta arifmetigi {m} ga teng. Ulardan "
+                  f"ikkitasi {a} va {b} bo'lsa, uchinchi sonni toping.",
+                  third, [m, 3 * m, third + a, abs(a + b - m)], expl)
+
+    # A new value joins the set and moves the mean. Building x from the new
+    # mean (instead of guessing one) keeps the division exact by construction.
+    name = _names()
+    n = random.choice((3, 4, 5))
+    m = random.randint(6, 20)
+    delta = random.choice((1, 2, 3))
+    newm = m + delta
+    x = newm * (n + 1) - n * m          # = m + delta × (n + 1)
+    expl = (f"Avvalgi {n} ta o'yindagi ballar yig'indisi: {n} × {m} = {n * m}. "
+            f"Oxirgi o'yin bilan: {n * m} + {x} = {n * m + x}. Yangi o'rtacha: "
+            f"{n * m + x} ÷ {n + 1} = {newm}.")
+    return _q("O'rta arifmetik",
+              f"{name} birinchi {n} ta o'yinda o'rtacha {m} tadan ball to'pladi. "
+              f"{n + 1}-o'yinda esa {x} ball to'pladi. Endi uning barcha "
+              f"o'yinlaridagi o'rtacha bali nechaga teng?",
+              newm, [m, x, (m + x) // 2, newm + 1], expl, unit="ball")
+
+
+# ---------------------------------------------------------------------------
+# Sonlar ketma-ketligi (sequences)
+# ---------------------------------------------------------------------------
+
+def q_sequence(grade, tier):
+    kind = random.choice(('arith', 'geom', 'square', 'arith'))
+    if tier >= 3:
+        kind = random.choice(('arith_n', 'geom', 'square', 'rect', 'arith_n'))
+
+    if kind == 'arith':
+        a1 = random.randint(2, 15)
+        d = random.randint(2, 9)
+        seq = [a1 + i * d for i in range(4)]
+        ans = a1 + 4 * d
+        expl = (f"Har bir keyingi son avvalgisidan {d} ta ortib bormoqda "
+                f"(arifmetik ketma-ketlik): {seq[-1]} + {d} = {ans}.")
+    elif kind == 'geom':
+        a1 = random.randint(1, 5)
+        r = random.choice((2, 3))
+        seq = [a1 * r ** i for i in range(4)]
+        ans = a1 * r ** 4
+        expl = (f"Har bir keyingi son avvalgisidan {r} marta katta "
+                f"(geometrik ketma-ketlik): {seq[-1]} × {r} = {ans}.")
+    elif kind == 'square':
+        start = random.randint(1, 5)
+        seq = [(start + i) ** 2 for i in range(4)]
+        ans = (start + 4) ** 2
+        expl = (f"Bular kvadratlar: {start}², {start + 1}², {start + 2}², "
+                f"{start + 3}². Keyingisi {start + 4}² = {ans}.")
+    elif kind == 'rect':
+        start = random.randint(1, 4)
+        seq = [(start + i) * (start + i + 1) for i in range(4)]
+        ans = (start + 4) * (start + 5)
+        expl = (f"Har bir had n × (n + 1) ko'rinishida: {start}×{start + 1}, "
+                f"{start + 1}×{start + 2}, … Keyingisi: {start + 4} × "
+                f"{start + 5} = {ans}.")
+    else:  # arith_n — the n-th term, not the next one
+        a1 = random.randint(2, 12)
+        d = random.randint(2, 8)
+        n = random.choice((10, 12, 15, 20, 25))
+        ans = a1 + (n - 1) * d
+        expl = (f"Arifmetik ketma-ketlikning n-hadi: aₙ = a₁ + (n − 1)·d = "
+                f"{a1} + ({n} − 1) × {d} = {a1} + {(n - 1) * d} = {ans}.")
+        return _q("Ketma-ketlik",
+                  f"Arifmetik ketma-ketlikning birinchi hadi {a1}, ayirmasi "
+                  f"{d} ga teng. Uning {n}-hadini toping.",
+                  ans, [a1 + n * d, a1 * n, ans - d, ans + d], expl)
+
+    shown = ", ".join(str(x) for x in seq)
+    return _q("Ketma-ketlik",
+              f"Ketma-ketlikni davom ettiring: {shown}, ...",
+              ans, [ans + 1, ans - 1, seq[-1] * 2, ans + seq[0]], expl)
+
+
+# ---------------------------------------------------------------------------
+# To'plamlar (two overlapping groups — the classic Venn problem)
+# ---------------------------------------------------------------------------
+
+_VENN_PAIRS = [("futbol", "shaxmat"), ("ingliz tili", "koreys tili"),
+               ("suzish", "yugurish"), ("rasm to'garagi", "musiqa to'garagi")]
+
+
+def q_venn(grade, tier):
+    act1, act2 = random.choice(_VENN_PAIRS)
+    both = random.randint(2, 7)
+    only1 = random.randint(3, 12)
+    only2 = random.randint(3, 12)
+    neither = random.randint(1, 8)
+    a, b = only1 + both, only2 + both
+    n = only1 + only2 + both + neither
+
+    if random.random() < 0.5:
+        expl = (f"Kamida bittasi bilan shug'ullanadiganlar: {a} + {b} − {both} = "
+                f"{a + b - both} ta (ikkalasi bilan shug'ullanadiganlar ikki "
+                f"marta sanalgani uchun ayiriladi). Qolganlari: {n} − "
+                f"{a + b - both} = {neither} ta.")
+        return _q("To'plamlar",
+                  f"Sinfdagi {n} o'quvchidan {a} tasi {act1}ga, {b} tasi "
+                  f"{act2}ga qatnaydi, {both} tasi esa ikkalasiga ham "
+                  f"qatnaydi. Nechta o'quvchi ularning birortasiga ham "
+                  f"qatnamaydi?",
+                  neither, [n - a - b, both, only1, neither + both], expl)
+
+    expl = (f"Faqat {act1}ga qatnaydiganlar = {act1}ga qatnaydiganlarning "
+            f"hammasidan ikkalasiga qatnaydiganlarni ayiramiz: {a} − {both} = "
+            f"{only1} ta.")
+    return _q("To'plamlar",
+              f"Sinfda {a} o'quvchi {act1}ga, {b} o'quvchi {act2}ga qatnaydi. "
+              f"Ulardan {both} tasi ikkala to'garakka ham qatnaydi. Nechta "
+              f"o'quvchi FAQAT {act1}ga qatnaydi?",
+              only1, [a, only2, both, a + both], expl)
+
+
+# ---------------------------------------------------------------------------
+# Geometriya (perimeter, area, volume — beyond the simple rectangle)
+# ---------------------------------------------------------------------------
+
+def q_geometry(grade, tier):
+    roll = random.random()
+
+    if roll < 0.2:
+        side = random.randint(3, 15)
+        p = 4 * side
+        expl = (f"Kvadratning tomoni: {p} ÷ 4 = {side} sm. "
+                f"Yuzi: {side} × {side} = {side * side} sm².")
+        return _q("Geometriya",
+                  f"Kvadratning perimetri {p} sm ga teng. Uning yuzini toping.",
+                  side * side, [p * p, side * 4, p * 2, side * side // 2], expl,
+                  unit="sm²")
+
+    if roll < 0.4:
+        a = random.randint(4, 15)
+        b = random.randint(2, a - 1)
+        s = a * b
+        p = 2 * (a + b)
+        expl = (f"Eni: {s} ÷ {a} = {b} sm. Perimetr: 2 × ({a} + {b}) = {p} sm.")
+        return _q("Geometriya",
+                  f"To'g'ri to'rtburchakning yuzi {s} sm², bo'yi esa {a} sm. "
+                  f"Uning perimetrini toping.",
+                  p, [s + a, a + b, p * 2, s // 2], expl, unit="sm")
+
+    if roll < 0.6:
+        base = random.randint(3, 16)
+        h = random.choice([x for x in range(2, 15) if base * x % 2 == 0])
+        s = base * h // 2
+        expl = (f"Uchburchakning yuzi = asos × balandlik ÷ 2 = {base} × {h} ÷ 2 "
+                f"= {s} sm².")
+        return _q("Geometriya",
+                  f"Uchburchakning asosi {base} sm, shu asosga tushirilgan "
+                  f"balandligi {h} sm. Uchburchakning yuzini toping.",
+                  s, [base * h, base + h, s * 2, s // 2], expl, unit="sm²")
+
+    if roll < 0.8:
+        a = random.randint(2, 9)
+        if random.random() < 0.5:
+            v = a ** 3
+            expl = f"Kubning hajmi = qirra³ = {a} × {a} × {a} = {v} sm³."
+            return _q("Geometriya",
+                      f"Kubning qirrasi {a} sm. Uning hajmini toping.",
+                      v, [6 * a * a, a * a, a * 3, v + a], expl, unit="sm³")
+        s = 6 * a * a
+        expl = (f"Kubning 6 ta bir xil yog'i bor: to'la sirt = 6 × qirra² = "
+                f"6 × {a}² = {s} sm².")
+        return _q("Geometriya",
+                  f"Kubning qirrasi {a} sm. Uning to'la sirtini toping.",
+                  s, [a ** 3, a * a, 4 * a * a, s + a], expl, unit="sm²")
+
+    # Scaling — a favourite 7th-grade trap.
+    k = random.choice((2, 3, 4))
+    expl = (f"Tomoni {k} marta ortsa, yuza {k} × {k} = {k * k} marta ortadi "
+            f"(chunki yuza = tomon × tomon). Yuza {k} marta emas!")
+    return _q("Geometriya",
+              f"Kvadratning tomoni {k} marta uzaytirildi. Uning yuzi necha "
+              f"marta ortadi?",
+              k * k, [k, k * k * k, k + k, k * 2], expl, unit="marta")
+
+
+# ---------------------------------------------------------------------------
+# O'lchov birliklari (unit conversion)
+# ---------------------------------------------------------------------------
+
+def q_units(grade, tier):
+    kind = random.choice(('mass', 'length', 'time', 'area', 'volume'))
+    if kind == 'mass':
+        t, kg = random.randint(2, 9), random.randint(1, 9) * 50
+        ans = t * 1000 + kg
+        expl = f"1 t = 1000 kg. {t} t = {t * 1000} kg, {t * 1000} + {kg} = {ans} kg."
+        return _q("Birliklar", f"{t} t {kg} kg necha kilogrammga teng?",
+                  ans, [t * 100 + kg, t + kg, t * 1000, ans + 100], expl, unit="kg")
+    if kind == 'length':
+        km, m = random.randint(2, 9), random.randint(1, 9) * 50
+        ans = km * 1000 + m
+        expl = f"1 km = 1000 m. {km} km = {km * 1000} m, {km * 1000} + {m} = {ans} m."
+        return _q("Birliklar", f"{km} km {m} m necha metrga teng?",
+                  ans, [km * 100 + m, km + m, km * 1000, ans + 100], expl, unit="m")
+    if kind == 'time':
+        h, mi = random.randint(2, 6), random.choice((5, 10, 15, 20, 25, 40, 45))
+        ans = h * 60 + mi
+        expl = f"1 soat = 60 daqiqa. {h} soat = {h * 60} daqiqa, {h * 60} + {mi} = {ans}."
+        return _q("Birliklar", f"{h} soat {mi} daqiqa necha daqiqaga teng?",
+                  ans, [h * 100 + mi, h + mi, h * 60, ans + 10], expl, unit="daqiqa")
+    if kind == 'area':
+        a = random.randint(2, 9)
+        ans = a * 10000
+        expl = (f"1 m² = 100 sm × 100 sm = 10 000 sm². Demak {a} m² = "
+                f"{a} × 10 000 = {ans} sm². (100 emas — bu eng ko'p "
+                f"uchraydigan xato!)")
+        return _q("Birliklar", f"{a} m² necha sm² ga teng?",
+                  ans, [a * 100, a * 1000, a * 100000, ans // 2], expl, unit="sm²")
+    a = random.randint(2, 9)
+    ans = a * 1000
+    expl = f"1 m³ = 1000 l. Demak {a} m³ = {a} × 1000 = {ans} litr."
+    return _q("Birliklar", f"{a} m³ suv necha litrga teng?",
+              ans, [a * 100, a * 10000, a * 10, ans // 2], expl, unit="l")
+
+
+# ---------------------------------------------------------------------------
+# Raqamlar bilan masalalar (digit puzzles)
+# ---------------------------------------------------------------------------
+
+def q_digits(grade, tier):
+    if random.random() < 0.5:
+        t = random.randint(1, 6)
+        u = t + random.randint(1, min(3, 9 - t))
+        num, rev = 10 * t + u, 10 * u + t
+        s, diff = t + u, rev - num
+        expl = (f"O'nlar raqami t, birlar raqami b bo'lsin. t + b = {s}. "
+                f"O'rni almashganda son 9 × (b − t) ga ortadi: 9 × (b − t) = "
+                f"{diff}, demak b − t = {diff // 9}. Bundan t = {t}, b = {u} — "
+                f"son {num}. Tekshiruv: {rev} − {num} = {diff}.")
+        return _q("Raqamlar",
+                  f"Ikki xonali sonning raqamlari yig'indisi {s} ga teng. "
+                  f"Uning raqamlari o'rni almashtirilsa, hosil bo'lgan son "
+                  f"berilgan sondan {diff} ga katta bo'ladi. Berilgan sonni "
+                  f"toping.",
+                  num, [rev, s * 10, num + 9, u * 10], expl)
+
+    u = random.randint(1, 5)
+    d = random.randint(1, min(4, 9 - u))
+    t = u + d
+    num = 10 * t + u
+    s = t + u
+    expl = (f"O'nlar raqami birlar raqamidan {d} ta katta, yig'indisi {s}. "
+            f"Demak birlar raqami: ({s} − {d}) ÷ 2 = {u}, o'nlar raqami: "
+            f"{u} + {d} = {t}. Son: {num}.")
+    return _q("Raqamlar",
+              f"Ikki xonali sonning o'nlar raqami birlar raqamidan {d} ta "
+              f"katta, raqamlari yig'indisi esa {s} ga teng. Shu sonni toping.",
+              num, [10 * u + t, s * 10, num + d, num - 9], expl)
+
+
+# ---------------------------------------------------------------------------
 # Topic registry — which generators play in which round (tier)
 # ---------------------------------------------------------------------------
 
 # Shared base pool for every grade…
 _TIER_GENERATORS = {
     1: [q_divisibility, q_prime_pick, q_remainder, q_word_easy, q_speed_basic,
-        q_num_divisors],
+        q_num_divisors, q_sequence, q_units, q_average, q_ratio, q_geometry],
     2: [q_divisibility, q_ekub, q_ekuk, q_num_divisors, q_sum_divisors,
         q_common_divisors, q_speed_basic, q_word_mid, q_remainder,
-        q_ekuk_meeting, q_ekub_sharing, q_money_compare],
+        q_ekuk_meeting, q_ekub_sharing, q_money_compare, q_ratio, q_average,
+        q_venn, q_sequence, q_geometry, q_proportion, q_units],
     3: [q_ekub, q_ekuk, q_num_divisors, q_sum_divisors, q_largest_prime,
         q_prime_pick, q_speed_hard, q_word_hard, q_common_divisors,
-        q_divisibility, q_ekuk_meeting, q_ekub_sharing, q_work_compare],
+        q_divisibility, q_ekuk_meeting, q_ekub_sharing, q_work_compare,
+        q_proportion, q_venn, q_sequence, q_geometry, q_average],
 }
 
 # …plus grade-exclusive topics, so 6th genuinely plays harder than 5th and
 # 7th harder than 6th. Signature topics appear twice for extra weight.
 _GRADE_EXTRAS = {
     5: {
-        2: [q_fraction_of],
-        3: [q_fraction_of, q_fraction_add, q_equation],
+        1: [q_sequence],
+        2: [q_fraction_of, q_percent],
+        3: [q_fraction_of, q_fraction_add, q_equation, q_percent_reverse],
     },
     6: {
-        1: [q_integers, q_fraction_of],
-        2: [q_equation, q_equation, q_fraction_add, q_percent, q_fraction_compare],
+        1: [q_integers, q_fraction_of, q_percent],
+        2: [q_equation, q_equation, q_fraction_add, q_percent,
+            q_fraction_compare, q_percent_reverse, q_percent_of_what,
+            q_speed_units],
         3: [q_equation, q_equation, q_boat_wind, q_boat_wind, q_fraction_add,
-            q_percent],
+            q_percent, q_percent_reverse, q_percent_of_what, q_mixture,
+            q_speed_average, q_train, q_digits],
     },
     7: {
-        1: [q_integers, q_fraction_of, q_power],
+        1: [q_integers, q_fraction_of, q_power, q_percent, q_speed_units],
         2: [q_equation, q_square_diff, q_percent, q_fraction_add, q_boat_wind,
-            q_power],
+            q_power, q_percent_reverse, q_percent_of_what, q_mixture,
+            q_speed_average, q_train, q_digits, q_proportion],
         3: [q_square_diff, q_square_diff, q_equation, q_equation, q_boat_wind,
-            q_fraction_compare, q_percent],
+            q_fraction_compare, q_percent, q_percent_reverse, q_mixture,
+            q_mixture, q_percent_chain, q_percent_chain, q_speed_average,
+            q_speed_average, q_train, q_digits, q_percent_of_what, q_sequence],
     },
 }
 

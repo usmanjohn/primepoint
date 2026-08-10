@@ -320,6 +320,63 @@ class EnglishChampResult(models.Model):
         ordering = ['-score', 'elapsed']
 
 
+class DuelResult(models.Model):
+    """One finished Chempionlar Dueli match — either two teams against each
+    other (`duel`) or two pupils playing as one team (`together`)."""
+    MODE_DUEL     = 'duel'
+    MODE_TOGETHER = 'together'
+    MODE_CHOICES  = [(MODE_DUEL, 'Duel'), (MODE_TOGETHER, 'Together')]
+
+    SUBJECT_CHOICES = [('math', 'Matematika'), ('english', 'Ingliz tili')]
+    WINNER_CHOICES  = [('a', 'A'), ('b', 'B'), ('', 'Draw / co-op')]
+
+    mode       = models.CharField(max_length=10, choices=MODE_CHOICES, default=MODE_DUEL)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True,
+                                   related_name='duel_results')
+
+    name_a     = models.CharField(max_length=40)
+    name_b     = models.CharField(max_length=40)
+    subject_a  = models.CharField(max_length=10, choices=SUBJECT_CHOICES, blank=True,
+                                  help_text='Together mode: what this pupil studies.')
+    subject_b  = models.CharField(max_length=10, choices=SUBJECT_CHOICES, blank=True)
+
+    grade      = models.PositiveSmallIntegerField(default=5, help_text='Math difficulty (5-7).')
+    level      = models.CharField(max_length=2, default='a1', help_text='English level (a1/a2/b1).')
+
+    score_a    = models.IntegerField(default=0)
+    score_b    = models.IntegerField(default=0)
+    hearts_a   = models.PositiveSmallIntegerField(default=0)
+    hearts_b   = models.PositiveSmallIntegerField(default=0)
+    stages_done = models.PositiveSmallIntegerField(default=0)
+    finished   = models.BooleanField(default=False)
+    winner     = models.CharField(max_length=1, choices=WINNER_CHOICES, blank=True, default='')
+    elapsed    = models.PositiveIntegerField(default=0, help_text='Seconds from start to finish.')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def total_score(self):
+        """Together mode keeps the shared score in score_a."""
+        return self.score_a if self.mode == self.MODE_TOGETHER else self.score_a + self.score_b
+
+    @property
+    def winner_name(self):
+        if self.mode == self.MODE_TOGETHER:
+            return f'{self.name_a} + {self.name_b}'
+        return {'a': self.name_a, 'b': self.name_b}.get(self.winner, 'Durrang')
+
+    @property
+    def elapsed_display(self):
+        return f'{self.elapsed // 60}:{self.elapsed % 60:02d}'
+
+    def __str__(self):
+        if self.mode == self.MODE_TOGETHER:
+            return f'{self.name_a} + {self.name_b} — {self.score_a} ball'
+        return f'{self.name_a} {self.score_a} : {self.score_b} {self.name_b}'
+
+    class Meta:
+        ordering = ['-created_at']
+
+
 class MathSquarePuzzle(models.Model):
     """A crossed math square: every row and every column forms an arithmetic
     equation, and the solver fills the empty number cells so all equations are

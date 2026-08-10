@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import reverse
 from django.utils.html import format_html
-from .models import CrosswordPuzzle, EnglishCrossword, WordSearchPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion, MathSquarePuzzle, MathChampResult, EnglishChampResult
+from .models import CrosswordPuzzle, EnglishCrossword, WordSearchPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion, MathSquarePuzzle, MathChampResult, EnglishChampResult, DuelResult
 from .views import generate_word_search
 from .views import _pc_correct_numbers
 from .generator import generate_math_square
@@ -275,6 +275,18 @@ class MathChampResultAdmin(admin.ModelAdmin):
                      'hearts_left', 'medal', 'elapsed_display', 'created_at')
     list_filter   = ('grade', 'finished', 'medal')
     search_fields = ('user__username',)
+
+    def elapsed_display(self, obj):
+        return obj.elapsed_display
+    elapsed_display.short_description = 'Time'
+
+
+@admin.register(DuelResult)
+class DuelResultAdmin(admin.ModelAdmin):
+    list_display  = ('__str__', 'mode', 'winner_name', 'grade', 'level',
+                     'stages_done', 'finished', 'elapsed_display', 'created_at')
+    list_filter   = ('mode', 'finished', 'grade', 'level')
+    search_fields = ('name_a', 'name_b', 'created_by__username')
 
     def elapsed_display(self, obj):
         return obj.elapsed_display

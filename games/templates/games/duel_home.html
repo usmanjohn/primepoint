@@ -1,0 +1,243 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Champions' Duel" %} — Powerty{% endblock %}
+{% block page_name %}{% trans "Champions' Duel" %}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4" style="max-width:900px;">
+
+    <a href="{% url 'games_home' %}" class="text-decoration-none d-inline-flex align-items-center gap-1 mb-3" style="color:var(--text-muted); font-size:0.85rem;">
+        <i class="bi bi-arrow-left"></i> {% trans "Games" %}
+    </a>
+
+    <!-- Hero -->
+    <div class="card border-0 shadow-sm mb-4 text-center" style="border-radius:16px; overflow:hidden;">
+        <div style="background:linear-gradient(135deg,#f59e0b 0%,#b45309 45%,#3730a3 55%,#6366f1 100%); padding:2rem 1.5rem;">
+            <div style="font-size:2.6rem; line-height:1;">&#x1F522; &#x2694;&#xFE0F; &#x1F524;</div>
+            <h1 class="fs-3 fw-bold mt-2 mb-1" style="color:#fff;">Chempionlar Dueli</h1>
+            <p class="mb-0" style="color:rgba(255,255,255,0.9); font-size:0.92rem;">
+                Matematika va ingliz tili bitta maydonda &mdash; 16 ta savol, 4 bosqich, 2 o'yinchi!
+            </p>
+        </div>
+    </div>
+
+    {% if not user.is_authenticated %}
+    <div class="d-flex flex-column flex-sm-row align-items-sm-center gap-2 gap-sm-3 mb-4 p-3 rounded-3" style="background:#eff6ff; border:1.5px dashed #93c5fd;">
+        <div style="font-size:1.5rem; line-height:1;">&#x1F43C;</div>
+        <div class="flex-grow-1" style="color:#1e40af; font-size:0.88rem;">
+            <strong>Mehmon sifatida o'ynayapsan.</strong> Bemalol o'yna &mdash; lekin natija saqlanmaydi.
+        </div>
+        <div class="d-flex gap-2 flex-shrink-0">
+            <a href="{% url 'login' %}?next={{ request.path|urlencode }}" class="btn-auth-outline">Kirish</a>
+            <a href="{% url 'register' %}" class="btn-auth-primary">Ro'yxatdan o'tish</a>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if has_active %}
+    <div class="d-flex align-items-center justify-content-between gap-3 mb-4 p-3 rounded-3" style="background:#fef3c7; border:1.5px solid #fbbf24;">
+        <div style="color:#92400e;"><span class="fw-semibold">&#x23F3; Tugallanmagan duel bor.</span></div>
+        <a href="{% url 'duel_play' %}" class="btn btn-warning fw-semibold" style="white-space:nowrap;">Davom etish</a>
+    </div>
+    {% endif %}
+
+    <!-- The teacher's real pupils, offered to every name box -->
+    <datalist id="pupil-names">
+        {% for p in pupils %}<option value="{{ p }}"></option>{% endfor %}
+    </datalist>
+
+    <!-- ═══════════ MODE 1: DUEL ═══════════ -->
+    <div class="card border-0 shadow-sm mb-4" style="border-radius:16px; overflow:hidden;">
+        <div style="background:linear-gradient(135deg,#f59e0b 0%,#6366f1 100%); padding:0.85rem 1.25rem;">
+            <span class="fw-bold" style="color:#fff; font-size:1.05rem;">&#x2694;&#xFE0F; Duel &mdash; ikki jamoa bellashadi</span>
+        </div>
+        <div class="card-body p-3 p-md-4" style="background:var(--surface);">
+            <p style="color:var(--text-muted); font-size:0.88rem;" class="mb-3">
+                Har bosqichda <strong>A jamoasi</strong> bitta matematika va bitta ingliz tili savoliga,
+                so'ng <strong>B jamoasi</strong> ham xuddi shunday javob beradi &mdash; ikkala jamoa bir xil
+                fanlardan, bir xil qiyinlikda savol oladi. Har jamoada 3 tadan jon; jonlari tugagan jamoa
+                yutqazadi, aks holda ko'proq ball to'plagan jamoa g'olib!
+            </p>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="start">
+                <input type="hidden" name="mode" value="duel">
+                <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" style="font-size:0.85rem; color:#b45309;">&#x1F522; A jamoasi nomi</label>
+                        <input type="text" name="name_a" list="pupil-names" maxlength="40"
+                               class="form-control" placeholder="Matematika jamoasi">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" style="font-size:0.85rem; color:#3730a3;">&#x1F524; B jamoasi nomi</label>
+                        <input type="text" name="name_b" list="pupil-names" maxlength="40"
+                               class="form-control" placeholder="Ingliz tili jamoasi">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" style="font-size:0.85rem; color:var(--text);">Matematika darajasi</label>
+                        <select name="grade" class="form-select">
+                            <option value="5">5-sinf</option>
+                            <option value="6" selected>6-sinf</option>
+                            <option value="7">7-sinf</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" style="font-size:0.85rem; color:var(--text);">Ingliz tili darajasi</label>
+                        <select name="level" class="form-select">
+                            {% for value, label in levels %}
+                            <option value="{{ value }}"{% if value == 'a2' %} selected{% endif %}>{{ label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-lg fw-semibold w-100 mt-3"
+                        style="background:linear-gradient(135deg,#f59e0b 0%,#6366f1 100%); color:#fff; border:none; border-radius:12px;">
+                    &#x2694;&#xFE0F; Duelni boshlash
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ═══════════ MODE 2: TOGETHER ═══════════ -->
+    <div class="card border-0 shadow-sm mb-4" style="border-radius:16px; overflow:hidden;">
+        <div style="background:linear-gradient(135deg,#059669 0%,#065f46 100%); padding:0.85rem 1.25rem;">
+            <span class="fw-bold" style="color:#fff; font-size:1.05rem;">&#x1F91D; Birgalikda &mdash; ikkovi bitta jamoa</span>
+        </div>
+        <div class="card-body p-3 p-md-4" style="background:var(--surface);">
+            <p style="color:var(--text-muted); font-size:0.88rem;" class="mb-3">
+                Ikki o'quvchi <strong>bitta jamoa</strong> bo'lib o'ynaydi: ball ham, jonlar ham umumiy,
+                navbat bilan javob berishadi. Savollar juftlikka qarab tanlanadi &mdash;
+                <strong>matematikachi + inglizchi</strong> juftligi ikkala fandan savol oladi,
+                <strong>bir xil fan</strong> tanlansa esa faqat o'sha fandan.
+            </p>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="start">
+                <input type="hidden" name="mode" value="together">
+                <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" style="font-size:0.85rem; color:var(--text);">1-o'quvchi</label>
+                        <input type="text" name="name_a" list="pupil-names" maxlength="40"
+                               class="form-control mb-2" placeholder="Masalan: Jasur">
+                        <select name="subject_a" class="form-select">
+                            <option value="math" selected>&#x1F522; Matematika o'quvchisi</option>
+                            <option value="english">&#x1F524; Ingliz tili o'quvchisi</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" style="font-size:0.85rem; color:var(--text);">2-o'quvchi</label>
+                        <input type="text" name="name_b" list="pupil-names" maxlength="40"
+                               class="form-control mb-2" placeholder="Masalan: Afsona">
+                        <select name="subject_b" class="form-select">
+                            <option value="math">&#x1F522; Matematika o'quvchisi</option>
+                            <option value="english" selected>&#x1F524; Ingliz tili o'quvchisi</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" style="font-size:0.85rem; color:var(--text);">Matematika darajasi</label>
+                        <select name="grade" class="form-select">
+                            <option value="5">5-sinf</option>
+                            <option value="6" selected>6-sinf</option>
+                            <option value="7">7-sinf</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" style="font-size:0.85rem; color:var(--text);">Ingliz tili darajasi</label>
+                        <select name="level" class="form-select">
+                            {% for value, label in levels %}
+                            <option value="{{ value }}"{% if value == 'a2' %} selected{% endif %}>{{ label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-lg fw-semibold w-100 mt-3"
+                        style="background:linear-gradient(135deg,#059669 0%,#065f46 100%); color:#fff; border:none; border-radius:12px;">
+                    &#x1F91D; Birgalikda boshlash
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Rules -->
+    <div class="card border-0 shadow-sm mb-4" style="border-radius:14px; overflow:hidden;">
+        <div style="background:var(--surface-2); border-bottom:1.5px solid var(--border); padding:0.75rem 1.25rem;">
+            <span class="fw-semibold" style="color:var(--text); font-size:0.9rem;">&#x1F4CB; Qoidalar</span>
+        </div>
+        <div class="card-body p-3" style="background:var(--surface);">
+            <div class="row g-3">
+                <div class="col-12 col-md-6">
+                    <div class="d-flex gap-2 mb-2"><span>&#x1F3AF;</span><span style="color:var(--text); font-size:0.88rem;"><strong>16 ta savol, 4 bosqich:</strong> Saralash, Chorak final, Yarim final va Final. Har bosqichda 4 tadan savol.</span></div>
+                    <div class="d-flex gap-2 mb-2"><span>&#x1F504;</span><span style="color:var(--text); font-size:0.88rem;"><strong>Bir matematika, bir ingliz tili</strong> &mdash; savollar navbatma-navbat keladi.</span></div>
+                    <div class="d-flex gap-2"><span>&#x2764;&#xFE0F;</span><span style="color:var(--text); font-size:0.88rem;"><strong>3 ta jon.</strong> Duelda jonlari tugagan jamoa darhol yutqazadi.</span></div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="d-flex gap-2 mb-2"><span>&#x1F4AF;</span><span style="color:var(--text); font-size:0.88rem;"><strong>Ballar bosqichma-bosqich oshadi:</strong> 10 &rarr; 20 &rarr; 30 &rarr; 40. Finalda hammasi hal bo'ladi!</span></div>
+                    <div class="d-flex gap-2 mb-2"><span>&#x1F525;</span><span style="color:var(--text); font-size:0.88rem;">3 ta ketma-ket to'g'ri javob uchun <strong>+5 bonus</strong>.</span></div>
+                    <div class="d-flex gap-2"><span>&#x1F4A1;</span><span style="color:var(--text); font-size:0.88rem;">Har javobdan keyin <strong>izoh</strong> chiqadi &mdash; xato ham o'rgatadi.</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- History -->
+    <div class="row g-3">
+        <div class="col-12 col-md-6">
+            <div class="card border-0 shadow-sm h-100" style="border-radius:14px; overflow:hidden;">
+                <div class="text-center" style="background:var(--surface-2); border-bottom:1.5px solid var(--border); padding:0.6rem;">
+                    <span class="fw-bold" style="color:var(--text); font-size:0.92rem;">&#x2694;&#xFE0F; Oxirgi duellar</span>
+                </div>
+                <div class="card-body p-2" style="background:var(--surface);">
+                    {% if duels %}
+                    <table class="table table-sm mb-0" style="font-size:0.82rem;">
+                        <tbody>
+                            {% for d in duels %}
+                            <tr>
+                                <td style="color:var(--text); background:transparent;">
+                                    <span class="{% if d.winner == 'a' %}fw-bold{% endif %}">{{ d.name_a }}</span>
+                                    <span style="color:var(--text-muted);">vs</span>
+                                    <span class="{% if d.winner == 'b' %}fw-bold{% endif %}">{{ d.name_b }}</span>
+                                </td>
+                                <td class="text-end fw-semibold" style="color:var(--text); background:transparent; white-space:nowrap;">
+                                    {{ d.score_a }} : {{ d.score_b }}
+                                    {% if d.winner %}&#x1F3C6;{% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <p class="text-center my-3" style="color:var(--text-muted); font-size:0.84rem;">Hali duel bo'lmagan &mdash; birinchi bo'l! &#x1F680;</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="card border-0 shadow-sm h-100" style="border-radius:14px; overflow:hidden;">
+                <div class="text-center" style="background:var(--surface-2); border-bottom:1.5px solid var(--border); padding:0.6rem;">
+                    <span class="fw-bold" style="color:var(--text); font-size:0.92rem;">&#x1F91D; Eng kuchli juftliklar</span>
+                </div>
+                <div class="card-body p-2" style="background:var(--surface);">
+                    {% if together %}
+                    <table class="table table-sm mb-0" style="font-size:0.82rem;">
+                        <tbody>
+                            {% for d in together %}
+                            <tr>
+                                <td style="width:1.6rem; color:var(--text-muted); background:transparent;">{{ forloop.counter }}.</td>
+                                <td style="color:var(--text); background:transparent;">{{ d.name_a }} + {{ d.name_b }}</td>
+                                <td class="text-end fw-semibold" style="color:var(--text); background:transparent;">{{ d.score_a }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <p class="text-center my-3" style="color:var(--text-muted); font-size:0.84rem;">Hali juftlik o'ynamagan &mdash; birinchi bo'l! &#x1F680;</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

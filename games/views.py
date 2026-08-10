@@ -10,11 +10,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import gettext as _
 import string
-from .models import CrosswordPuzzle, EnglishCrossword, WordSearchPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion, MathSquarePuzzle, MathChampResult, EnglishChampResult
+from .models import CrosswordPuzzle, EnglishCrossword, WordSearchPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion, MathSquarePuzzle, MathChampResult, EnglishChampResult, DuelResult
 from .generator import generate_math_square, empty_math_square, eval_line
 from .catalog import GAME_COUNT, filter_games, subject_facets  # noqa: F401 — GAME_COUNT re-exported for the nav badge
 from prime.subjects import get_study_subjects
-from . import mathchamp, englishchamp
+from . import mathchamp, englishchamp, duel as duelmod
 
 
 # ---------------------------------------------------------------------------
@@ -2361,3 +2361,260 @@ def englishchamp_play(request):
         'medal':        state.get('medal', ''),
     }
     return render(request, 'games/englishchamp_play.html', context)
+
+
+# ---------------------------------------------------------------------------
+# Chempionlar Dueli — math ⇄ English, two players (views)
+# ---------------------------------------------------------------------------
+
+DUEL_SESSION_KEY = 'duel_state'
+
+
+def _duel_clean_name(raw, fallback):
+    name = (raw or '').strip()[:40]
+    return name or fallback
+
+
+def _duel_next_question(state):
+    """Fill state['q'] for the current stage, avoiding an immediate repeat of
+    the same topic within that subject."""
+    slot = state['plan'][state['stage'] - 1]
+    subject = slot['subject']
+    q = duelmod.make_question(subject, state['grade'], state['level'],
+                              duelmod.stage_tier(state['stage']),
+                              state['last_topic'].get(subject))
+    state['last_topic'][subject] = q['topic']
+    state['q'] = q
+    state['subject'] = subject
+    state['turn'] = slot['turn']
+
+
+def _duel_save_result(request, state):
+    if not request.user.is_authenticated:
+        return
+    DuelResult.objects.create(
+        mode=state['mode'],
+        created_by=request.user,
+        name_a=state['names'][0],
+        name_b=state['names'][1],
+        subject_a=state['subjects'][0] if state['mode'] == duelmod.MODE_TOGETHER else '',
+        subject_b=state['subjects'][1] if state['mode'] == duelmod.MODE_TOGETHER else '',
+        grade=state['grade'],
+        level=state['level'],
+        score_a=state['scores'][0],
+        score_b=state['scores'][1],
+        hearts_a=state['hearts'][0],
+        hearts_b=state['hearts'][1],
+        stages_done=state['stage'],
+        finished=state.get('finished', False),
+        winner=state.get('winner', ''),
+        elapsed=state.get('elapsed', 0),
+    )
+
+
+def duel_home(request):
+    if request.method == 'POST' and request.POST.get('action') == 'start':
+        mode = request.POST.get('mode', duelmod.MODE_DUEL)
+        if mode not in duelmod.MODES:
+            mode = duelmod.MODE_DUEL
+
+        try:
+            grade = int(request.POST.get('grade', 5))
+        except (ValueError, TypeError):
+            grade = 5
+        if grade not in (5, 6, 7):
+            grade = 5
+        level = request.POST.get('level', 'a1')
+        if level not in englishchamp.LEVELS:
+            level = 'a1'
+
+        if mode == duelmod.MODE_DUEL:
+            names = [_duel_clean_name(request.POST.get('name_a'), 'Matematika jamoasi'),
+                     _duel_clean_name(request.POST.get('name_b'), 'Ingliz tili jamoasi')]
+            subjects = ['', '']
+        else:
+            names = [_duel_clean_name(request.POST.get('name_a'), "1-o'quvchi"),
+                     _duel_clean_name(request.POST.get('name_b'), "2-o'quvchi")]
+            subjects = [request.POST.get('subject_a', duelmod.SUBJECT_MATH),
+                        request.POST.get('subject_b', duelmod.SUBJECT_ENGLISH)]
+            subjects = [s if s in duelmod.SUBJECTS else duelmod.SUBJECT_MATH
+                        for s in subjects]
+
+        state = {
+            'mode':       mode,
+            'names':      names,
+            'subjects':   subjects,
+            'grade':      grade,
+            'level':      level,
+            'plan':       duelmod.build_plan(mode, subjects),
+            'stage':      1,
+            'hearts':     [duelmod.HEARTS, duelmod.HEARTS],
+            'scores':     [0, 0],
+            'streaks':    [0, 0],
+            'last_topic': {},
+            # "<player>:<subject>" -> [correct, asked]; JSON-safe string keys.
+            'stats':      {},
+            'start':      int(time.time()),
+            'feedback':   None,
+            'done':       False,
+            'finished':   False,
+            'winner':     '',
+        }
+        _duel_next_question(state)
+        request.session[DUEL_SESSION_KEY] = state
+        return redirect('duel_play')
+
+    duels = list(DuelResult.objects.filter(mode=DuelResult.MODE_DUEL)
+                 .order_by('-created_at')[:8])
+    together = list(DuelResult.objects.filter(mode=DuelResult.MODE_TOGETHER)
+                    .order_by('-score_a', 'elapsed')[:8])
+    state = request.session.get(DUEL_SESSION_KEY)
+
+    return render(request, 'games/duel_home.html', {
+        'duels':      duels,
+        'together':   together,
+        'has_active': bool(state) and not state.get('done'),
+        'pupils':     duelmod.pupil_suggestions(),
+        'levels':     [(lv, englishchamp.LEVEL_LABELS[lv]) for lv in englishchamp.LEVELS],
+    })
+
+
+def _duel_finish(request, state, finished):
+    state['done'] = True
+    state['finished'] = finished
+    state['elapsed'] = int(time.time()) - state['start']
+    if state['mode'] == duelmod.MODE_DUEL:
+        state['winner'] = duelmod.winner_of(state['scores'], state['hearts'])
+    else:
+        state['winner'] = ''
+    _duel_save_result(request, state)
+
+
+def duel_play(request):
+    state = request.session.get(DUEL_SESSION_KEY)
+    if not state:
+        return redirect('duel_home')
+    together = state['mode'] == duelmod.MODE_TOGETHER
+
+    if request.method == 'POST':
+        action = request.POST.get('action')
+
+        if action == 'quit':
+            request.session.pop(DUEL_SESSION_KEY, None)
+            return redirect('duel_home')
+
+        if action == 'answer' and not state.get('done'):
+            try:
+                choice = int(request.POST.get('choice', -1))
+            except (ValueError, TypeError):
+                choice = -1
+            q = state['q']
+            if 0 <= choice < len(q['choices']):
+                # In together mode both players share slot 0's hearts and score.
+                who = 0 if together else state['turn']
+                tally = state['stats'].setdefault(
+                    f"{state['turn']}:{state['subject']}", [0, 0])
+                tally[1] += 1
+                tally[0] += 1 if choice == q['correct'] else 0
+                if choice == q['correct']:
+                    state['streaks'][who] += 1
+                    pts = duelmod.stage_points(state['stage'])
+                    bonus = 5 if state['streaks'][who] >= 3 else 0
+                    state['scores'][who] += pts + bonus
+                    state['feedback'] = {
+                        'correct':     True,
+                        'name':        state['names'][state['turn']],
+                        'points':      pts,
+                        'bonus':       bonus,
+                        'explanation': q['explanation'],
+                    }
+                else:
+                    state['streaks'][who] = 0
+                    state['hearts'][who] -= 1
+                    if together:
+                        state['hearts'][1] = state['hearts'][0]
+                    state['feedback'] = {
+                        'correct':     False,
+                        'name':        state['names'][state['turn']],
+                        'chosen':      q['choices'][choice],
+                        'answer':      q['choices'][q['correct']],
+                        'question':    q['text'],
+                        'explanation': q['explanation'],
+                    }
+
+                if state['hearts'][who] <= 0:
+                    _duel_finish(request, state, False)
+                elif state['stage'] >= duelmod.STAGES:
+                    _duel_finish(request, state, True)
+                else:
+                    state['stage'] += 1
+                    _duel_next_question(state)
+                request.session[DUEL_SESSION_KEY] = state
+            return redirect('duel_play')
+
+        return redirect('duel_play')
+
+    rnd = duelmod.stage_round(state['stage'])
+    progress = []
+    for s in range(1, duelmod.STAGES + 1):
+        if state.get('finished') or s < state['stage']:
+            cls = 'done'
+        elif s == state['stage'] and not state.get('done'):
+            cls = 'current'
+        else:
+            cls = 'todo'
+        slot = state['plan'][s - 1]
+        progress.append({'stage': s, 'cls': cls,
+                         'subject': slot['subject'],
+                         'new_round': s % duelmod.ROUND_SIZE == 1 and s > 1})
+
+    total = state['scores'][0] + state['scores'][1]
+    bar_a = 50 if total == 0 else round(state['scores'][0] * 100 / total)
+    elapsed = state.get('elapsed', int(time.time()) - state['start'])
+
+    # Per-player, per-subject score card — tells the teacher at a glance which
+    # subject each pupil was actually strong in.
+    breakdown = []
+    for i, name in enumerate(state['names']):
+        rows = []
+        for subject in duelmod.SUBJECTS:
+            correct, asked = state['stats'].get(f'{i}:{subject}', [0, 0])
+            if asked:
+                rows.append({'label': duelmod.SUBJECT_LABELS[subject],
+                             'emoji': duelmod.SUBJECT_EMOJI[subject],
+                             'color': duelmod.SUBJECT_COLOR[subject],
+                             'correct': correct, 'asked': asked})
+        if rows:
+            breakdown.append({'name': name, 'rows': rows})
+
+    context = {
+        'state':        state,
+        'together':     together,
+        'q':            state['q'],
+        'feedback':     state.get('feedback'),
+        'subject':      state['subject'],
+        'subject_label': duelmod.SUBJECT_LABELS[state['subject']],
+        'subject_emoji': duelmod.SUBJECT_EMOJI[state['subject']],
+        'subject_color': duelmod.SUBJECT_COLOR[state['subject']],
+        'turn_name':    state['names'][state['turn']],
+        'progress':     progress,
+        'round_no':     rnd,
+        'round_name':   duelmod.ROUND_NAMES[rnd],
+        'rounds_total': len(duelmod.ROUND_NAMES),
+        'stage_points': duelmod.stage_points(state['stage']),
+        'stages_total': duelmod.STAGES,
+        'hearts_a':     range(max(state['hearts'][0], 0)),
+        'lost_a':       range(duelmod.HEARTS - max(state['hearts'][0], 0)),
+        'hearts_b':     range(max(state['hearts'][1], 0)),
+        'lost_b':       range(duelmod.HEARTS - max(state['hearts'][1], 0)),
+        'bar_a':        bar_a,
+        'bar_b':        100 - bar_a,
+        'winner':       state.get('winner', ''),
+        'winner_name':  (state['names'][0] if state.get('winner') == 'a'
+                         else state['names'][1] if state.get('winner') == 'b' else ''),
+        'breakdown':    breakdown,
+        'elapsed_min':  elapsed // 60,
+        'elapsed_sec':  f"{elapsed % 60:02d}",
+        'letters':      ['A', 'B', 'C', 'D'],
+    }
+    return render(request, 'games/duel_play.html', context)

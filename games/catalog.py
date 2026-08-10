@@ -27,6 +27,17 @@ GAMES = [
         'tag': _('Math'),
     },
     {
+        'slug': 'champions-duel',
+        'url': 'duel_home',
+        'name': _("Champions' Duel"),
+        'description': _('Math vs English, two players! One math question, one English question — 16 questions, 4 rounds. Or team up and play together.'),
+        'emoji': '⚔️',
+        'gradient': ('#f59e0b', '#6366f1'),
+        'badge': ('#fef3c7', '#3730a3'),
+        'subjects': ['math', 'english'],
+        'tag': _('Math + English'),
+    },
+    {
         'slug': 'english-championship',
         'url': 'englishchamp_home',
         'name': _('English Championship'),
