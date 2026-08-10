@@ -208,6 +208,63 @@ the bottom of `static/css/style.css`. Pure CSS — never add JavaScript, and nev
 Prime Russian's practices are **not** the older `Часть NN: …` Russian drills (written in
 Russian, attached to no lesson) — those stay as they are.
 
+## Creating Prime Math tutorials (bulk) — maktab matematikasi, oʻzbek tilida
+**Prime Math** is the 100-lesson school-maths course in `tutorial`, held together by a
+`TutorialPlaylist` called "Prime Math". Titles are `PM-1: …`, category `math`. It is the
+fourth course on the Prime machinery and the first that is **not a language**: it runs from
+5-sinf arithmetic to a solid 9-sinf level (sonlar → kasr/foiz → algebra → funksiya va grafik
+→ geometriya → statistika → matnli masalalar → mantiq), and it feeds the English-language
+SAT Math tutorials (`SAT-…`) that already exist. Taught **in Uzbek**; the only English
+allowed is the term equivalent in each lesson's `pe-gloss` key-words list (the SAT bridge).
+When the user asks (e.g. "make the next 3 Prime Math lessons"):
+1. Read `tutorial/management/commands/STYLE_GUIDE_PRIME_MATH.md`.
+2. Read `tutorial/management/commands/toc_prime_math.txt` (header gives PREFIX, CATEGORY,
+   AUTHOR, PLAYLIST; body is the ordered 100-lesson list with `[done]`/`[next]` markers).
+3. Find where to continue: `Tutorial.objects.filter(title__startswith='PM-')`.
+4. Write into `tutorial/management/commands/_tutorials_prime_math_<range>.py` as
+   `PLAYLIST = {...}` + `TUTORIALS = [...]` (copy `PLAYLIST` unchanged from the previous
+   batch; each lesson carries `"order": <lesson number>`, category `math`).
+5. Import: `python manage.py import_tutorials <file> --author=prime` (`--republish` to
+   overwrite). The importer creates the playlist itself.
+6. Mark the range `[done]` in the toc, then give the `railway run python manage.py
+   import_tutorials ...` command — automatically, every time.
+**Each Prime Math lesson has THREE legs, written together in batches of 3:**
+1. the **tutorial** (`tutorial`, PM-n) — teaches the idea, with a `pm-solve` ladder whose
+   right column says *why* each line happened, and **at least one worked matnli masala
+   whatever the topic**;
+2. the **practice** (`practice`, 20 questions, subject **`Matematika`**) — drills it;
+   **questions 19–20 are always word problems.** Guide:
+   `practice/management/commands/STYLE_GUIDE_PM_PRACTICE.md`, list: `toc_pm_practices.txt`.
+   Always import with `--expect-questions=20`;
+3. the **reading** (`corner`, collection "Prime Math Readings", `order` = lesson number) —
+   the maths doing real work in a text. Guide: the overrides in
+   `corner/management/commands/toc_prime_math_readings.txt`.
+Import order per batch: tutorials → practices → readings → re-run `import_tutorials
+--republish` so the `stories` links resolve (the story must exist first).
+**Corner has a SECOND maths shelf: "Matematika olami"** (`toc_matematika_olami.txt`) —
+standalone texts bound to no lesson: buyuk matematiklar (al-Xorazmiy, Beruniy, Ulugʻbek,
+Gauss, Ramanujan), tabiatdagi matematika, kundalik hayotdagi matematika, jumboqlar. This is
+the shelf pupils open for pleasure; write 2–3 alongside the lesson batches or on request.
+Facts must be true.
+**⛔ NO AUDIO on either maths shelf** — formulas, `x²` and `3/4` do not survive TTS. Never
+run `gen_corner_audio` / `import_corner_audio` for them and never offer it.
+**⚠️ THE ARITHMETIC GATE (the rule that matters most).** A wrong answer key is the worst bug
+this course can ship. Every numeric answer in the tutorials, the practices and the readings
+is computed twice — the second time by a throwaway script in the scratchpad
+(`verify_pm_<range>.py`) that recomputes each answer and prints any mismatch. Run it, fix,
+then import.
+The visual kit **reuses the whole `pe-*` component set** and adds maths-only pieces
+(`pm-solve` solving ladder, `pm-frac` fractions, `pm-root`, `pm-num` number line, `pm-col`
+column arithmetic, `pm-fig` + inline SVG figures with `pm-ln`/`pm-fill`/`pm-lbl`, `pm-model`
+bar model, `pm-word` phrase→symbol table, `pm-check`, `pm-est`, plus `pe-ex__math`) in the
+**PRIME MATH** section at the bottom of `static/css/style.css`. Pure CSS — never add
+JavaScript, and never invent a `pm-*` class without adding it to that section and the style
+guide first. Maths is written as **HTML, never LaTeX** (`x<sup>2</sup>`, × ÷ √ ≤ ≥ π °,
+decimals with a comma), and geometry figures are **inline SVG**, never uploaded images.
+Prime Math is **not** the SAT course (`SAT-…`, English, exam-shaped) and not the Math
+Championship game (auto-generated, no explanations). It is the school course itself, from
+zero, in order.
+
 ## Creating examprep lessons (bulk) — TOPIK etc.
 `examprep` holds detailed, by-skill exam prep (`ExamTrack` → skill → `Topic` (question-type
 card, e.g. Reading → "Reklama va e'lonlar (광고)") → `Lesson` → ordered `LessonBlock`s with

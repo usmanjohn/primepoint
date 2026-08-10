@@ -3053,8 +3053,20 @@ h1, h2, h3, h4, h5, h6, .font-display {
     font-size: .87rem;
     margin: 0;
 }
-.pe-gloss b { color: var(--text); font-weight: 700; }
+/* `.tut-prose` sets word-break:break-word, which chopped Prime Math's longer
+   terms mid-word ("Koʻpaytuv / chi"). A term may wrap between its words, never
+   inside one. */
+.pe-gloss b {
+    color: var(--text);
+    font-weight: 700;
+    word-break: keep-all;
+    overflow-wrap: normal;
+}
 .pe-gloss span { color: var(--text-muted); margin-left: auto; text-align: right; }
+@media (max-width: 767.98px) {
+    .pe-gloss li { flex-direction: column; align-items: flex-start; gap: .15rem; }
+    .pe-gloss span { margin-left: 0; text-align: left; }
+}
 
 /* ── Recap card ────────────────────────────────────────────────── */
 .pe-recap {
@@ -3638,6 +3650,339 @@ h1, h2, h3, h4, h5, h6, .font-display {
     .pr-decl, .pr-case { font-size: .85rem; }
     .pr-decl td, .pr-decl th,
     .pr-case td, .pr-case th { padding: .4rem .35rem; }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   PRIME MATH — maths-lesson component kit  (pm-*)
+   Used inside .tut-prose by the "Prime Math" lessons (PM-1 …) and by the
+   two Corner maths shelves. EXTENDS the Prime English kit above — pe-goal,
+   pe-formula, pe-chip, pe-call, pe-fix, pe-quiz, pe-reveal, pe-gloss,
+   pe-recap, pe-grid, pe-vs, pe-steps and pe-table-wrap are reused as-is.
+
+   Maths needs four things the language courses never did:
+     a worked solution where every line says WHY  -> .pm-solve
+     fractions, columns and radicals without LaTeX -> .pm-frac, .pm-col, .pm-root
+     pictures of quantity and of shape             -> .pm-num, .pm-model, .pm-fig
+     the two habits that pass exams                -> .pm-est (taxmin qil),
+                                                      .pm-check (tekshir)
+   plus .pm-word, which tables an Uzbek phrase against the symbol it means —
+   the piece that turns a word problem into mathematics.
+
+   Figures are inline <svg> styled through .pm-ln / .pm-fill / .pm-lbl, so a
+   drawing follows the site's palette instead of being a black-on-white image.
+   Pure CSS: every interaction is <details>/:hover, no JavaScript.
+   Docs: tutorial/management/commands/STYLE_GUIDE_PRIME_MATH.md
+   ══════════════════════════════════════════════════════════════════ */
+
+.tut-prose, .cn-reader {
+    --pm-x:    #2563eb;   /* nomaʼlum (x), asosiy chizma rangi */
+    --pm-num:  #d97706;   /* berilgan son                      */
+    --pm-op:   #16a34a;   /* amal va natija                    */
+    --pm-unit: #0891b2;   /* birlik (kg, km, soʻm)             */
+    --pm-bad:  #e11d48;   /* xato                              */
+}
+
+/* Numbers must line up wherever they are compared or stacked. */
+.pm-solve__step, .pm-col, .pm-frac, .pe-ex__math, .pm-num__tick i {
+    font-variant-numeric: tabular-nums;
+}
+
+/* ── Solving ladder — the workhorse ──────────────────────────────
+   Left: the line of maths. Right: why that line happened. A solution
+   written as a paragraph hides the reasoning; this cannot. */
+.pm-solve {
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg-soft, rgba(127,127,127,.05));
+}
+.pm-solve__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: .15rem 1rem;
+    align-items: baseline;
+    padding: .6rem .9rem;
+    border-top: 1px solid var(--border);
+}
+.pm-solve__row:first-child { border-top: 0; }
+.pm-solve__step {
+    font-size: 1.14rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.5;
+}
+.pm-solve__why { font-size: .85rem; color: var(--text-muted); line-height: 1.45; }
+.pm-solve__why::before { content: "← "; color: var(--border); }
+.pm-solve__row--ans { background: rgba(22,163,74,.09); }
+.pm-solve__row--ans .pm-solve__step { color: var(--pm-op); font-weight: 800; }
+
+/* ── Fraction — a real one, built from two spans ─────────────────── */
+.pm-frac {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: -0.45em;
+    margin: 0 .18rem;
+    line-height: 1.08;
+}
+.pm-frac__n { padding: 0 .22rem; }
+.pm-frac__d { padding: 0 .22rem; border-top: 1.5px solid currentColor; }
+.pm-frac--big { font-size: 1.35rem; vertical-align: -0.5em; }
+
+/* ── Radical: √ plus the bar over the radicand ───────────────────── */
+.pm-root {
+    border-top: 1.5px solid currentColor;
+    padding: 0 .14em;
+    margin-left: .04em;
+}
+.pm-root::before {
+    content: "√";
+    display: inline-block;
+    margin: 0 .04em 0 -.1em;
+    border-top: 0;
+}
+
+/* ── Maths line inside a .pe-ex block (sits where .pe-ex__en does) ── */
+.pe-ex__math {
+    font-size: 1.16rem;
+    font-weight: 600;
+    line-height: 1.6;
+    color: var(--text);
+    margin: 0 0 .3rem;
+}
+
+/* ── Number line ─────────────────────────────────────────────────
+   left / width are percentages of the track, set inline — the only
+   place this course allows inline style (same exception as pe-timeline). */
+.pm-num { margin: 1.5rem 0 2.4rem; padding: 0 1.2rem; }
+.pm-num__track {
+    position: relative;
+    height: 3px;
+    margin: 2.4rem 0 2.6rem;   /* room for the tick labels hanging below */
+    background: var(--border);
+    border-radius: 2px;
+}
+.pm-num__track::after {
+    content: "";
+    position: absolute; right: -14px; top: 50%;
+    width: 0; height: 0;
+    transform: translateY(-50%);
+    border-left: 8px solid var(--border);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+.pm-num__tick { position: absolute; top: -7px; width: 0; }
+.pm-num__tick::before {
+    content: "";
+    position: absolute; left: -1px;
+    width: 2px; height: 17px;
+    background: var(--text-muted);
+}
+.pm-num__tick i {
+    position: absolute; top: 21px; left: 0;
+    transform: translateX(-50%);
+    font-style: normal;
+    font-size: .78rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+.pm-num__dot {
+    position: absolute; top: -6px;
+    width: 15px; height: 15px;
+    margin-left: -7.5px;
+    border-radius: 50%;
+    background: var(--pm-x);
+    border: 2px solid var(--surface, #fff);
+}
+.pm-num__dot--open { background: var(--surface, #fff); border-color: var(--pm-x); }
+.pm-num__dot i {
+    position: absolute; bottom: 20px; left: 50%;
+    transform: translateX(-50%);
+    font-style: normal;
+    font-size: .82rem; font-weight: 700;
+    color: var(--pm-x);
+    white-space: nowrap;
+}
+.pm-num__band {
+    position: absolute; top: -3px;
+    height: 9px;
+    border-radius: 5px;
+    background: rgba(37,99,235,.22);
+}
+
+/* ── Column arithmetic — ustunda qoʻshish, ayirish, koʻpaytirish ───
+   A stacked sum is NOT a data table: it must stay narrow and centred, and it
+   has no cell borders. `.tut-prose table` sets width:100% + row borders +
+   hover, so every one of those is switched off here (the selectors are
+   deliberately as specific as the prose ones). */
+.tut-prose table.pm-col,
+.cn-reader table.pm-col,
+table.pm-col {
+    width: auto;
+    margin: 1.3rem auto;
+    border-collapse: collapse;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text);
+}
+.tut-prose .pm-col td,
+.cn-reader .pm-col td,
+.pm-col td {
+    padding: .1rem .4rem;
+    text-align: center;
+    min-width: 1.7rem;
+    border: 0;
+    background: none;
+}
+.tut-prose .pm-col tr:hover td,
+.cn-reader .pm-col tr:hover td { background: none; }
+.pm-col__carry td {
+    font-size: .75rem; font-weight: 700;
+    color: var(--pm-num);
+    padding-bottom: 0;
+}
+.tut-prose .pm-col__op td,
+.cn-reader .pm-col__op td,
+.pm-col__op td { border-bottom: 2px solid var(--text); }
+.pm-col__op td:first-child { text-align: left; color: var(--pm-op); }
+.pm-col__res td { color: var(--pm-op); padding-top: .3rem; }
+
+/* ── Figures — inline SVG that follows the theme ─────────────────── */
+.pm-fig { margin: 1.4rem 0; text-align: center; }
+.pm-fig svg { width: 100%; max-width: 340px; height: auto; }
+.pm-fig figcaption {
+    font-size: .82rem;
+    color: var(--text-muted);
+    margin-top: .45rem;
+    line-height: 1.5;
+}
+.pm-ln {
+    stroke: var(--text);
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.pm-ln--dash { stroke: var(--text-muted); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.pm-ln--hl   { stroke: var(--pm-x); stroke-width: 3; }
+.pm-fill     { fill: rgba(37,99,235,.10); stroke: none; }
+.pm-fill--hl { fill: rgba(217,119,6,.22); stroke: none; }
+.pm-pt       { fill: var(--pm-x); stroke: none; }
+.pm-lbl      { fill: var(--text); font-size: 13px; font-weight: 600; }
+.pm-lbl--hl  { fill: var(--pm-num); }
+
+/* ── Bar model — seeing a word problem before writing the equation ─ */
+.pm-model {
+    margin: 1.2rem 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: .9rem 1rem .8rem;
+    background: var(--bg-soft, rgba(127,127,127,.05));
+}
+.pm-model__row {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    margin-bottom: .45rem;
+}
+.pm-model__lbl {
+    flex: 0 0 5.5rem;
+    text-align: right;
+    font-size: .85rem;
+    color: var(--text-muted);
+}
+.pm-model__bar {
+    min-width: 2.6rem;
+    padding: .35rem .6rem;
+    border-radius: 8px;
+    border: 1px solid rgba(37,99,235,.45);
+    background: rgba(37,99,235,.16);
+    font-size: .9rem; font-weight: 700;
+    color: var(--text);
+    text-align: center;
+    white-space: nowrap;
+}
+.pm-model__bar--alt { border-color: rgba(217,119,6,.5); background: rgba(217,119,6,.16); }
+.pm-model__tot {
+    margin: .5rem 0 0;
+    text-align: center;
+    font-size: .92rem; font-weight: 700;
+    color: var(--pm-op);
+}
+
+/* ── Word → symbol table — the signature piece of the text side ──── */
+.pm-word { width: 100%; border-collapse: collapse; margin: 1.1rem 0; font-size: .95rem; }
+.pm-word th {
+    text-align: left;
+    font-size: .74rem; font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--text-muted);
+    padding: .4rem .6rem;
+    border-bottom: 2px solid var(--border);
+}
+.pm-word td { padding: .5rem .6rem; border-bottom: 1px solid var(--border); }
+.pm-word tr:last-child td { border-bottom: 0; }
+.pm-word__sym {
+    text-align: center;
+    white-space: nowrap;
+    font-size: 1.14rem; font-weight: 800;
+    color: var(--pm-op);
+}
+
+/* ── Check and estimate — the two exam habits ────────────────────── */
+.pm-check {
+    margin: 1.1rem 0;
+    padding: .7rem .95rem;
+    border-left: 4px solid var(--pm-op);
+    border-radius: 0 10px 10px 0;
+    background: rgba(22,163,74,.09);
+}
+.pm-check__t {
+    margin: 0 0 .25rem;
+    font-size: .78rem; font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--pm-op);
+}
+.pm-check__t::before { content: "✓ "; }
+.pm-check p:last-child { margin-bottom: 0; }
+
+.pm-est {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: .5rem;
+    margin: 1.1rem 0;
+    padding: .6rem .9rem;
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+    background: var(--bg-soft, rgba(127,127,127,.04));
+    font-size: .95rem;
+}
+.pm-est__t {
+    font-size: .72rem; font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--pm-num);
+}
+.pm-est__t::before { content: "≈ "; }
+
+/* ── Mobile ────────────────────────────────────────────────────── */
+@media (max-width: 575.98px) {
+    .pm-solve__row { grid-template-columns: 1fr; gap: .2rem; padding: .55rem .75rem; }
+    .pm-solve__why { padding-left: .75rem; border-left: 2px solid var(--border); }
+    .pm-solve__why::before { content: ""; }
+    .pm-solve__step { font-size: 1.05rem; }
+    .pm-model__row { flex-wrap: wrap; }
+    .pm-model__lbl { flex: 0 0 100%; text-align: left; }
+    .pm-word { font-size: .88rem; }
+    .pm-word th, .pm-word td { padding: .4rem .35rem; }
+    .pm-col { font-size: 1.15rem; }
+    .pm-num { padding: 0 1.4rem; }
+    .pm-num__tick i { font-size: .72rem; }
 }
 
 

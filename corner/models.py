@@ -86,6 +86,15 @@ class Collection(models.Model):
             self.slug = slug
         super().save(*args, **kwargs)
 
+    @property
+    def labels(self):
+        """What this shelf calls its vocabulary / grammar / quiz blocks.
+
+        A maths reading's cn-words are terms and its grammar block is a formula,
+        so the headings differ from a language shelf's. See corner/labels.py."""
+        from .labels import labels_for
+        return labels_for(self.subject.slug)
+
     def __str__(self):
         return f'{self.subject.name} — {self.title}'
 
@@ -195,6 +204,12 @@ class Story(models.Model):
             ))
             order += 1
         StoryQuestion.objects.bulk_create(rows)
+
+    @property
+    def labels(self):
+        """Headings for this story's vocab / grammar / quiz blocks — the shelf
+        decides (a maths reading glosses terms, not words). See corner/labels.py."""
+        return self.collection.labels
 
     def __str__(self):
         return f'{self.collection.title} — {self.title}'

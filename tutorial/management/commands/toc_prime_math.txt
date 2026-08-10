@@ -1,0 +1,152 @@
+# ── Subject metadata (read by Claude) ────────────────────────────────
+PREFIX:   PM
+CATEGORY: math
+AUTHOR:   powerty
+PLAYLIST: Prime Math
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_PRIME_MATH.md — NOT STYLE_GUIDE.md (that one is for
+# the English-language SAT tutorials). Prime Math teaches in UZBEK.
+# The playlist is created automatically by import_tutorials from the PLAYLIST dict
+# inside each _tutorials_prime_math_*.py file.
+# This file is ONLY the ordered lesson list. Mark finished blocks with [done].
+# ─────────────────────────────────────────────────────────────────────
+
+# Prime Math — noldan mustahkam maktab matematikasigacha
+# 100 dars. 5-sinf darajasidan boshlanadi va 9-sinf darajasida tugaydi: sonlardan
+# tortib tenglama, funksiya, geometriya, statistika va masala yechish usullarigacha.
+# PM-1 dan PM-100 gacha oʻqigan oʻquvchi maktab matematikasining butun tizimini koʻradi
+# va SAT Math kursiga (SAT-1 …) tayyor boʻladi.
+#
+# Boshqa Prime kurslaridan farqi:
+#   1. Bu til emas — mavzu. Shuning uchun "kumulyativ" qoida bu yerda ancha qattiq:
+#      har bir dars faqat oʻzidan oldingi darslarga tayanadi. PM-30 da foiz ishlatib
+#      boʻlmaydi, chunki foiz PM-23 da emas, PM-23…26 da oʻrgatiladi — tartibga qarang.
+#   2. Har bir darsda kamida bitta MATNLI MASALA boʻlishi shart, mavzusi nima
+#      boʻlishidan qatʼi nazar. Foydalanuvchining talabi: "faqat raqamli savollar emas".
+#   3. Butun blok (G: 85–94) faqat matnli masala yechish usullariga bagʻishlangan.
+#
+# Til: hamma narsa oʻzbekcha. Inglizcha atama faqat darsning oxiridagi
+# "Kalit soʻzlar" roʻyxatida, oʻzbekcha atamaning yonida beriladi (keyinchalik
+# SAT Math kursiga oʻtish uchun koʻprik). Matn ichida inglizcha yoʻq.
+#
+# Har bir dars uchta boʻlakdan iborat:
+#   dars (tutorial) + mashq (practice, 20 savol) + oʻqish matni (corner).
+# Batch = 3 ta dars, uchalasi birga yoziladi.
+# ⛔ Oʻqish matnlarida AUDIO YOʻQ: formula, x², 3/4 kabi yozuvlar ovozda oʻqilmaydi.
+#   gen_corner_audio / import_corner_audio bu kursda umuman ishlatilmaydi.
+
+### Block A: Sonlar va amallar (1–14)
+1. Sonlar qayerdan boshlanadi — razryadlar va raqamning oʻrni                [done]
+2. Qoʻshish va ayirish: ustunda va ogʻzaki                                   [done]
+3. Koʻpaytirish — qoʻshishning qisqa yoʻli va jadval mantigʻi                [done]
+4. Boʻlish, qoldiqli boʻlish va javobni tekshirish                           [next]
+5. Amallar tartibi va qavslar
+6. Boʻlinish alomatlari: 2, 3, 4, 5, 6, 9, 10 ga
+7. Tub va murakkab sonlar; tub koʻpaytuvchilarga ajratish
+8. EKUB va EKUK — va ular qayerda kerak boʻladi
+9. Manfiy sonlar va son oʻqi
+10. Manfiy sonlarni qoʻshish va ayirish
+11. Manfiy sonlarni koʻpaytirish va boʻlish — ishoralar qoidasi
+12. Daraja: takroriy koʻpaytirishning qisqa yozuvi
+13. Kvadrat ildiz va aniq kvadratlar
+14. Yaxlitlash va taqribiy hisob — "javob mantiqiymi?"
+
+### Block B: Kasr, oʻnlik, foiz, nisbat (15–28)
+15. Kasr nima: butunning boʻlagi
+16. Kasrlarni qisqartirish va taqqoslash
+17. Kasrlarni qoʻshish va ayirish — umumiy maxraj
+18. Kasrlarni koʻpaytirish va boʻlish
+19. Aralash sonlar va notoʻgʻri kasrlar
+20. Oʻnlik kasrlar — razryadning davomi
+21. Oʻnlik kasrlar bilan toʻrt amal
+22. Kasr ↔ oʻnlik ↔ foiz: bitta sonning uch qiyofasi
+23. Sonning foizini topish
+24. Foizdan butunni topish va "necha foiz?" savoli
+25. Foiz oʻzgarishi: oshdi, kamaydi, necha foizga?
+26. Chegirma, ustama va soliq — bozor matematikasi
+27. Nisbat va miqdorni nisbat boʻyicha boʻlish
+28. Proporsiya, masshtab, toʻgʻri va teskari proporsionallik
+
+### Block C: Algebra tili (29–44)
+29. Harf nega kerak: nomaʼlum va oʻzgaruvchi
+30. Matndan ifoda tuzish — soʻzni belgiga aylantirish
+31. Ifodaning qiymatini hisoblash va oʻrniga qoʻyish
+32. Oʻxshash hadlarni ixchamlash
+33. Qavslarni ochish va ishoralar
+34. Umumiy koʻpaytuvchini qavsdan chiqarish
+35. Formula bilan ishlash: S = v·t va boshqalar
+36. Bir nomaʼlumli tenglama — muvozanat gʻoyasi
+37. Ikki tomonida ham nomaʼlumi bor tenglamalar
+38. Matnli masalani tenglama bilan yechish 1: nomaʼlumni tanlash
+39. Matnli masalani tenglama bilan yechish 2: bir bogʻlanish, ikki miqdor
+40. Tengsizlik va uni son oʻqida koʻrsatish
+41. Modul: sondan noldan masofagacha
+42. Daraja qonunlari
+43. Koʻphadlar: qoʻshish, ayirish, koʻpaytirish
+44. Qisqa koʻpaytirish formulalari va koʻpaytuvchilarga ajratish
+
+### Block D: Koordinata, funksiya, grafik (45–56)
+45. Koordinata tekisligi: nuqtaning manzili
+46. Nuqtalar orasidagi masofa va kesmaning oʻrtasi
+47. Funksiya gʻoyasi: kirish → qoida → chiqish
+48. Jadvaldan grafikka
+49. Chiziqli funksiya y = kx + b
+50. k va b nimani bildiradi — grafikning real maʼnosi
+51. Real hayot grafigini oʻqish: tarif, harakat, oʻsish
+52. Ikki chiziqning kesishishi — sistema nima
+53. Sistemani oʻrniga qoʻyish usuli bilan yechish
+54. Sistemani qoʻshish usuli bilan yechish
+55. Sistema bilan yechiladigan matnli masalalar
+56. Parabola bilan tanishuv: y = x²
+
+### Block E: Geometriya (57–74)
+57. Nuqta, chiziq, kesma, nur — geometriya alifbosi
+58. Burchak va uni oʻlchash
+59. Burchak juftliklari: qoʻshni, vertikal, toʻldiruvchi
+60. Parallel chiziqlar va kesuvchi hosil qilgan burchaklar
+61. Uchburchak turlari va burchaklar yigʻindisi
+62. Uchburchak tengsizligi: tomon va burchak bogʻliqligi
+63. Teng yonli va teng tomonli uchburchak
+64. Pifagor teoremasi — va nega u ishlaydi
+65. Pifagorning hayotdagi qoʻllanishi
+66. Toʻrtburchaklar oilasi: kvadrat, romb, parallelogramm, trapetsiya
+67. Perimetr — chegaraning uzunligi
+68. Yuza 1: toʻgʻri toʻrtburchak va uchburchak
+69. Yuza 2: parallelogramm, trapetsiya va murakkab shakllar
+70. Doira va aylana; π qayerdan chiqqan
+71. Aylana uzunligi va doira yuzasi
+72. Oʻxshashlik va masshtab: kichik chizma, katta dunyo
+73. Simmetriya, koʻchirish va burilish
+74. Fazoviy shakllar: hajm va sirt yuzasi
+
+### Block F: Maʼlumot va ehtimollik (75–84)
+75. Maʼlumot yigʻish va uni jadvalga solish
+76. Diagramma turlari: ustunli, chiziqli, doiraviy
+77. Diagrammani oʻqish — raqamlar ichidagi hikoya
+78. Oʻrta arifmetik
+79. Mediana va moda — qaysi biri haqiqatni toʻgʻriroq aytadi
+80. Tarqoqlik: eng katta va eng kichik orasidagi farq
+81. Aldamchi diagrammalar — statistika qanday yolgʻon gapiradi
+82. Sanash: koʻpaytirish prinsipi
+83. Ehtimollik gʻoyasi: 0 dan 1 gacha
+84. Ehtimollikni hisoblash va tajriba bilan tekshirish
+
+### Block G: Matnli masalalar ustaxonasi (85–94)
+85. Masalani oʻqishning toʻrt qadami
+86. Nomaʼlumni tanlash va jadval tuzish
+87. Chizma va sxema — masalani koʻrish
+88. Harakat masalalari 1: tezlik, vaqt, masofa
+89. Harakat masalalari 2: uchrashuv va quvish
+90. Ish va unumdorlik masalalari
+91. Aralashma va foizli masalalar
+92. Narx, miqdor, qiymat
+93. Yosh masalalari va sonlar haqidagi masalalar
+94. Oʻlchov birliklari; ortiqcha va yetishmayotgan maʼlumot
+
+### Block H: Mantiq va fikrlash usullari (95–100)
+95. Mantiqiy masalalar va jadval usuli
+96. Juftlik (juft-toq) gʻoyasi
+97. Dirixle prinsipi — kaptarxona qoidasi
+98. Teskaridan yurish
+99. Namuna izlash va umumlashtirish
+100. Yakuniy dars: 100 darsdan keyin siz qayerdasiz va endi nima qilasiz

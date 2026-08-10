@@ -81,8 +81,8 @@
 
     {% if words %}
     <section class="mb-4">
-        <h2 class="h5 mb-1"><i class="bi bi-translate me-1"></i>{% trans "Vocabulary from this story" %}</h2>
-        <p class="small text-secondary mb-3">{% trans "Tap a card to flip it." %}</p>
+        <h2 class="h5 mb-1"><i class="bi bi-translate me-1"></i>{{ story.labels.vocab }}</h2>
+        <p class="small text-secondary mb-3">{{ story.labels.vocab_hint }}</p>
         <div class="pp-flashcards" data-pp-flashcards>
             {% for w in words %}
             <div class="pp-card cn-fc-pos-{% if w.pos %}{{ w.pos }}{% else %}none{% endif %}">
@@ -98,8 +98,8 @@
 
     {% if grammar %}
     <section class="cn-grammar mb-4">
-        <h2 class="h5 mb-1"><i class="bi bi-mortarboard me-1"></i>{% trans "Grammar from this story" %}</h2>
-        <p class="small text-secondary mb-3">{% trans "Key patterns that appeared in the text." %}</p>
+        <h2 class="h5 mb-1"><i class="bi bi-mortarboard me-1"></i>{{ story.labels.gram }}</h2>
+        <p class="small text-secondary mb-3">{{ story.labels.gram_hint }}</p>
         {% for g in grammar %}
         <div class="cn-gram">
             <p class="cn-gram-pattern">{{ g.pattern }}</p>
@@ -120,8 +120,8 @@
 
     {% if questions %}
     <section class="cn-quiz mb-4" data-cn-quiz>
-        <h2 class="h5 mb-1"><i class="bi bi-patch-question me-1"></i>{% trans "Check your understanding" %}</h2>
-        <p class="small text-secondary mb-3">{% trans "Read the story, then choose the best answer. Tap a choice to check it." %}</p>
+        <h2 class="h5 mb-1"><i class="bi bi-patch-question me-1"></i>{{ story.labels.quiz }}</h2>
+        <p class="small text-secondary mb-3">{{ story.labels.quiz_hint }}</p>
         {% for q in questions %}
         <div class="cn-q" data-answer="{{ q.answer }}">
             <p class="cn-q-text">{{ forloop.counter }}. {{ q.text }}</p>

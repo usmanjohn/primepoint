@@ -25,13 +25,13 @@ same table, and the JS quiz becomes a static lettered list. The narration
     </article>
 
     {% if story.words.all %}
-    <h3 class="h6 mt-3 mb-1"><i class="bi bi-translate me-1"></i>{% trans "Vocabulary" %}</h3>
+    <h3 class="h6 mt-3 mb-1"><i class="bi bi-translate me-1"></i>{{ story.labels.p_vocab }}</h3>
     <table class="pp-vocab">
         <thead>
             <tr>
-                <th style="width:28%;">{% trans "Word" %}</th>
+                <th style="width:28%;">{{ story.labels.p_word }}</th>
                 <th style="width:14%;">{% trans "Part of speech" %}</th>
-                <th>{% trans "Translation" %}</th>
+                <th>{{ story.labels.p_tr }}</th>
             </tr>
         </thead>
         <tbody>
@@ -47,7 +47,7 @@ same table, and the JS quiz becomes a static lettered list. The narration
     {% endif %}
 
     {% if story.grammar.all %}
-    <h3 class="h6 mt-3 mb-1"><i class="bi bi-mortarboard me-1"></i>{% trans "Grammar in this text" %}</h3>
+    <h3 class="h6 mt-3 mb-1"><i class="bi bi-mortarboard me-1"></i>{{ story.labels.p_gram }}</h3>
     {% for g in story.grammar.all %}
     <div class="cn-gram">
         <p class="cn-gram-pattern">{{ g.pattern }}</p>

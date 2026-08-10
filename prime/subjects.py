@@ -35,8 +35,8 @@ SUBJECTS = [
         'icon': 'bi-calculator', 'color': '#f59e0b',
         'tutorial_categories': ['math'],
         'examprep_tracks': [],
-        'corner_subjects': [],
-        'practice_names': ['math', 'mathematics', 'sat math'],
+        'corner_subjects': ['matematika'],
+        'practice_names': ['math', 'mathematics', 'sat math', 'matematika'],
         'exam_languages': [],
     },
     {

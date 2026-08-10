@@ -1,0 +1,139 @@
+# ── Subject metadata (read by Claude) ────────────────────────────────
+PREFIX:   PM
+SUBJECT:  Matematika
+MASTER:   powerty
+TUTORIAL: PM-<n>:   (each practice links to its own tutorial)
+# (MASTER = production master username. On local dev use 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_PM_PRACTICE.md.
+# Import: python manage.py import_practices <file> --master=prime --expect-questions=20
+# EVERYTHING IN UZBEK. No English, no LaTeX, no Cyrillic.
+# ⚠️ Not to be confused with the older mixed math drills (create_math_practices_new.py),
+#    which belong to no lesson. These are Prime Math's matched tests.
+# ─────────────────────────────────────────────────────────────────────
+
+# Prime Math Mashqlar — one test per lesson, 20 questions each
+# Titles: "PM-23 Mashq: Sonning foizini topish"  (same wording as the tutorial)
+#
+# Ramp (every test): 1–5 tanish · 6–12 qoʻllash · 13–16 farqlash · 17–18 xato topish ·
+#                    19–20 MATNLI MASALA (always two, whatever the topic)
+# Levels: 1–30 easy · 31–70 medium · 71–100 hard
+# Rhythm: 3 lessons at a time, all three legs (tutorial → practice → reading).
+
+### Block A: Sonlar va amallar (1–14)   level: easy
+1. Razryadlar va raqamning oʻrni                                   [done]
+2. Qoʻshish va ayirish: ustunda va ogʻzaki                          [done]
+3. Koʻpaytirish va jadval mantigʻi                                  [done]
+4. Boʻlish, qoldiqli boʻlish va tekshirish                          [next]
+5. Amallar tartibi va qavslar
+6. Boʻlinish alomatlari
+7. Tub va murakkab sonlar; koʻpaytuvchilarga ajratish
+8. EKUB va EKUK
+9. Manfiy sonlar va son oʻqi
+10. Manfiy sonlarni qoʻshish va ayirish
+11. Manfiy sonlarni koʻpaytirish va boʻlish
+12. Daraja
+13. Kvadrat ildiz va aniq kvadratlar
+14. Yaxlitlash va taqribiy hisob
+
+### Block B: Kasr, oʻnlik, foiz, nisbat (15–28)   level: easy (15–28)
+15. Kasr nima
+16. Kasrlarni qisqartirish va taqqoslash
+17. Kasrlarni qoʻshish va ayirish
+18. Kasrlarni koʻpaytirish va boʻlish
+19. Aralash sonlar va notoʻgʻri kasrlar
+20. Oʻnlik kasrlar
+21. Oʻnlik kasrlar bilan toʻrt amal
+22. Kasr ↔ oʻnlik ↔ foiz
+23. Sonning foizini topish
+24. Foizdan butunni topish
+25. Foiz oʻzgarishi
+26. Chegirma, ustama va soliq
+27. Nisbat
+28. Proporsiya va masshtab
+
+### Block C: Algebra tili (29–44)   level: medium (31 dan)
+29. Nomaʼlum va oʻzgaruvchi
+30. Matndan ifoda tuzish
+31. Ifodaning qiymatini hisoblash
+32. Oʻxshash hadlarni ixchamlash
+33. Qavslarni ochish
+34. Umumiy koʻpaytuvchini qavsdan chiqarish
+35. Formula bilan ishlash
+36. Bir nomaʼlumli tenglama
+37. Ikki tomonida nomaʼlumi bor tenglamalar
+38. Matnli masalani tenglama bilan yechish 1
+39. Matnli masalani tenglama bilan yechish 2
+40. Tengsizlik
+41. Modul
+42. Daraja qonunlari
+43. Koʻphadlar
+44. Qisqa koʻpaytirish formulalari
+
+### Block D: Koordinata, funksiya, grafik (45–56)   level: medium
+45. Koordinata tekisligi
+46. Masofa va kesmaning oʻrtasi
+47. Funksiya gʻoyasi
+48. Jadvaldan grafikka
+49. Chiziqli funksiya y = kx + b
+50. k va b ning maʼnosi
+51. Real hayot grafigini oʻqish
+52. Ikki chiziqning kesishishi
+53. Sistema: oʻrniga qoʻyish usuli
+54. Sistema: qoʻshish usuli
+55. Sistemali matnli masalalar
+56. Parabola bilan tanishuv
+
+### Block E: Geometriya (57–74)   level: medium (70 gacha), hard (71 dan)
+57. Nuqta, chiziq, kesma, nur
+58. Burchak va uni oʻlchash
+59. Burchak juftliklari
+60. Parallel chiziqlar va kesuvchi
+61. Uchburchak turlari va burchaklar yigʻindisi
+62. Uchburchak tengsizligi
+63. Teng yonli va teng tomonli uchburchak
+64. Pifagor teoremasi
+65. Pifagorning qoʻllanishi
+66. Toʻrtburchaklar oilasi
+67. Perimetr
+68. Yuza 1: toʻgʻri toʻrtburchak va uchburchak
+69. Yuza 2: parallelogramm, trapetsiya, murakkab shakl
+70. Doira va aylana; π
+71. Aylana uzunligi va doira yuzasi
+72. Oʻxshashlik va masshtab
+73. Simmetriya, koʻchirish va burilish
+74. Fazoviy shakllar: hajm va sirt
+
+### Block F: Maʼlumot va ehtimollik (75–84)   level: hard
+75. Maʼlumot yigʻish va jadval
+76. Diagramma turlari
+77. Diagrammani oʻqish
+78. Oʻrta arifmetik
+79. Mediana va moda
+80. Tarqoqlik
+81. Aldamchi diagrammalar
+82. Sanash: koʻpaytirish prinsipi
+83. Ehtimollik gʻoyasi
+84. Ehtimollikni hisoblash
+
+### Block G: Matnli masalalar ustaxonasi (85–94)   level: hard
+# Bu blokda 20 ta savolning hammasi matnli — ramp oʻrniga:
+# 1–6 sodda masala · 7–14 ikki qadamli masala · 15–18 uslub tanlash ·
+# 19–20 ortiqcha/yetishmayotgan maʼlumotli masala.
+85. Masalani oʻqishning toʻrt qadami
+86. Nomaʼlumni tanlash va jadval tuzish
+87. Chizma va sxema
+88. Harakat masalalari 1
+89. Harakat masalalari 2
+90. Ish va unumdorlik
+91. Aralashma va foizli masalalar
+92. Narx, miqdor, qiymat
+93. Yosh masalalari va sonlar haqidagi masalalar
+94. Oʻlchov birliklari; ortiqcha maʼlumot
+
+### Block H: Mantiq va fikrlash usullari (95–100)   level: hard
+95. Mantiqiy masalalar va jadval usuli
+96. Juftlik gʻoyasi
+97. Dirixle prinsipi
+98. Teskaridan yurish
+99. Namuna izlash va umumlashtirish
+100. Yakuniy takror — 100 darsdan hammasi

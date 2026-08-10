@@ -1,0 +1,117 @@
+# ── Collection metadata (read by Claude) ─────────────────────────────
+SUBJECT:    Matematika        (icon: bi-calculator, color: #f59e0b, order: 7)
+COLLECTION: Matematika olami
+AUTHOR:     powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_CORNER.md, with the overrides below.
+# The overrides in THIS header win over the generic guide.
+# ─────────────────────────────────────────────────────────────────────
+
+# Matematika olami — the shelf pupils open because they WANT to
+#
+# The sister shelf of "Prime Math Readings", and its opposite in one respect: these
+# texts belong to NO lesson. Nothing here has to teach PM-23's percentage rule, nothing
+# has to stay inside what has been taught. They exist so that a pupil who came for a
+# homework answer stays for half an hour.
+#
+#   * NO `order` link to a lesson (order is just this shelf's own reading order).
+#   * NO `"stories"` key pointing here from any tutorial.
+#   * NO cumulative restriction — mention anything, as long as the text explains it.
+#   * NO audio (same reason as the readings: formulas do not survive TTS).
+#
+# ── The four families, and why each one is here ──
+#
+#   BUYUK MATEMATIKLAR — the strongest card this shelf holds. "Algoritm" is
+#     al-Xorazmiy's name; "algebra" is the title of his book. Beruniy measured the
+#     Earth from a mountain in Kat. Ulugʻbek's star catalogue was the world's best for
+#     two centuries. An Uzbek pupil should learn this from us, not from a foreign
+#     textbook's footnote. Facts must be true and dates must be right.
+#   TABIATDAGI MATEMATIKA — hexagonal honeycombs, snowflakes, Fibonacci in a pine cone.
+#     The answer to "matematika hayotda qayerda bor?" that no exercise can give.
+#   KUNDALIK HAYOTDAGI MATEMATIKA — round manhole covers, GPS, barcodes, compound
+#     interest, lying charts. The maths the pupil is already standing inside.
+#   JUMBOQ VA SIR — twelve coins and three weighings, Monty Hall, Hilbert's hotel.
+#     The reader should be able to try before reading on; put the reveal in the
+#     `grammar` block ("Yechim g'oyasi"), not in the middle of the text.
+#
+# ── Shape of a text ──
+#
+#   200–320 words. A hook in the first two sentences (a question, a scene, a claim the
+#   reader wants to argue with), then the idea, then the pay-off. One idea per text.
+#   Chronological, one thing per sentence, exactly as in the readings toc.
+#   A story that needs a picture gets an inline <svg> — same helper classes as the
+#   tutorials (pm-ln, pm-fill, pm-lbl…). Bodies render through |safe.
+#
+#   cn-word  →  ATAMA, 8–14 of them, data-tr = a short Uzbek definition.
+#   grammar  →  the IDEA behind the text: "Yechim gʻoyasi" for a puzzle, the formula or
+#               the principle for a science piece, the key fact for a history piece.
+#   questions → 2–3 in Uzbek: at least one comprehension, and for anything with numbers,
+#               one that makes the reader compute. Story questions render in STORED
+#               ORDER, so vary `answer` by hand — never leave it at 0 every time.
+#   summary  →  one Uzbek sentence. If the text retells real material, say so there.
+#
+# ── Language ──
+#   Everything in Uzbek. Maths as HTML (x<sup>2</sup>, ×, ÷, √, π, ≈, 3,5). No English,
+#   no LaTeX, no Cyrillic. Foreign names in Uzbek spelling with the original in brackets
+#   the first time: Karl Gauss (Carl Gauss).
+#
+# ── ⚠️ FACTS AND ARITHMETIC ──
+#   Every date, name and number is checked before it ships. If a famous anecdote is
+#   probably a legend (Gauss's schoolroom sum, Arximed's "Evrika!"), say so in one
+#   clause — "rivoyatga koʻra" — rather than repeating it as fact. Verify the numbers
+#   with the batch's scratchpad script, same gate as everything else in Prime Math.
+#
+# Rhythm: written in small batches (2–3 texts) alongside the lesson batches, or on
+# request ("make 3 more Matematika olami stories"). Mark finished ones [done].
+
+## Matematika olami
+
+### Buyuk matematiklar (1–14)
+1.  Al-Xorazmiy: «algoritm» soʻzi qayerdan kelgan                            [done]
+2.  «Al-jabr» — algebra tugʻilgan kitob
+3.  Abu Rayhon Beruniy Yer radiusini qanday oʻlchagan
+4.  Mirzo Ulugʻbek rasadxonasi: burchak, sabr va yulduzlar
+5.  Umar Xayyom — ham shoir, ham tenglama yechuvchi
+6.  Fales va piramidaning soyasi
+7.  Pifagor maktabi: «hamma narsa son»
+8.  Arximed: toj, hammom va «Evrika!»
+9.  Evklid «Negizlar»i — 2300 yildan beri oʻqilayotgan darslik
+10. Karl Gauss: 1 dan 100 gacha bir daqiqada                                  [done]
+11. Leonard Eyler: koʻr boʻlgan, lekin yozishdan toʻxtamagan
+12. Srinivasa Ramanujan: daftarlardagi mislsiz formulalar
+13. Ada Lavleys: birinchi dastur qanday yozilgan
+14. Emmi Nyoter: fizikaning ildizidagi ayol
+
+### Tabiatdagi matematika (15–22)
+15. Nega asalarilar uyni olti burchakli quradi                                [done]
+16. Qor parchasi: oltita nur, cheksiz naqsh
+17. Fibonachchi sonlari gul va qaragʻay qubbasida
+18. Chigʻanoqdagi spiral
+19. Daraxt shoxlari nega shunday tarmoqlanadi
+20. Nega katta hayvon sekin nafas oladi — oʻlcham matematikasi
+21. Zebra chiziqlari: naqsh ortidagi qoida
+22. Samolyot nega xaritada egri uchadi
+
+### Kundalik hayotdagi matematika (23–32)
+23. Nega lyuk qopqogʻi dumaloq
+24. GPS uchta masofadan joyni qanday topadi
+25. Shtrix-koddagi oxirgi raqam nima uchun kerak
+26. Foiz ustiga foiz: pul qanday oʻsadi
+27. Gazetadagi diagrammaga nega ishonmaslik kerak
+28. Bir xil ovoz, uch xil gʻolib — sanash usullari
+29. Nega yoʻlda tirbandlik oʻz-oʻzidan paydo boʻladi
+30. Musiqa ichidagi kasrlar
+31. A4 qogʻozning sirli oʻlchami
+32. Telefoningiz xabarni qanday yashiradi
+
+### Jumboq va sir (33–42)
+33. Oʻn ikki tanga va uch marta tortish
+34. Koʻprikdan oʻtish: toʻrt kishi, bitta fonar
+35. Kyonigsberg koʻpriklari: bir chiziq bilan chizib boʻladimi
+36. Monti Xoll: eshikni almashtirasizmi?
+37. Tugʻilgan kun paradoksi: 23 kishi yetarli
+38. Hilbert mehmonxonasi: cheksiz xona, yana bitta mehmon
+39. Boʻri, echki va karam — daryodan oʻtish
+40. Yolgʻonchilar oroli: kim rost gapiryapti
+41. Bir varaq qogʻozni qirq marta buklasa nima boʻladi
+42. Cheksizlik bir xil emas: sanaladigan va sanalmaydigan

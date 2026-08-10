@@ -262,7 +262,8 @@ details[open]::details-content { content-visibility: visible; block-size: auto; 
 /* Components that must not be split down the middle by a page break. */
 .pe-goal, .pe-formula, .pe-card, .pe-vs__card, .pe-call, .pe-fix, .pe-quiz,
 .pe-recap, .pe-ex, .pe-reveal, .pk-hangul, .pk-block, .pk-batchim, .pk-conj,
-.pk-level, .pp-part-head + *, table, figure {
+.pk-level, .pm-solve, .pm-model, .pm-num, .pm-col, .pm-check, .pm-est, .pm-word,
+.pp-part-head + *, table, figure {
     break-inside: avoid;
     page-break-inside: avoid;
 }

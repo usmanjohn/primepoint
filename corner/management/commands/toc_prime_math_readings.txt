@@ -1,0 +1,249 @@
+# ── Collection metadata (read by Claude) ─────────────────────────────
+SUBJECT:    Matematika        (icon: bi-calculator, color: #f59e0b, order: 7)
+COLLECTION: Prime Math Readings
+AUTHOR:     powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_CORNER.md, with the Prime Math overrides below.
+# The overrides in THIS header win over the generic guide.
+# ─────────────────────────────────────────────────────────────────────
+
+# Prime Math Readings — the third leg of each lesson
+#
+# Every reading belongs to ONE Prime Math lesson and its `order` IS the lesson number,
+# so PM-23's reading is order 23. Nothing here stands alone: the tutorial teaches the
+# idea, the practice drills it, the reading shows it doing real work in a text.
+#
+# ══════════════════════════════════════════════════════════════════════
+# ── WHY THIS COLLECTION EXISTS ──
+#
+# A pupil who can compute but cannot read a problem fails every exam that matters.
+# The gap between "hisobla: 240 000 × 0,3" and "Afsona pulining 30 foiziga kitob oldi,
+# kitob necha soʻm turdi?" is a READING gap, not a maths gap. This shelf is where that
+# gap is closed — and it is why the user asked for it: "please do not just give
+# numerical questions, you know text also is important".
+#
+# So a reading here is a real text that HAPPENS to contain the lesson's maths, never a
+# word problem with a paragraph glued on top.
+#
+# ── HOW CORNER'S MACHINERY IS REUSED (this is the whole trick) ──
+#
+#   cn-word span   →  ATAMA, not a translation.
+#                     <span class="cn-word" data-tr="butunning teng boʻlaklaridan biri
+#                     yoki bir nechtasi">kasr</span>
+#                     data-tr holds a short UZBEK DEFINITION. The end-of-story
+#                     flashcards therefore become a term drill: atama → taʼrif.
+#                     Terms only — never gloss ordinary words like "bozor" or "keldi".
+#                     Never put a cn-word inside a <strong>.
+#
+#   grammar block  →  QOIDA / FORMULA that the text used.
+#                     {"pattern": "sonning p foizi = son × p ÷ 100",
+#                      "meaning": "Foiz — yuzdan boʻlak. 30% = 0,30 = 30/100.",
+#                      "examples": ["240 000 × 0,3 = 72 000",
+#                                   "240 000 − 72 000 = 168 000 (chegirmadan keyingi narx)"]}
+#                     1–2 entries. The `examples` lines are the arithmetic the story
+#                     actually did, so the reader can check themselves.
+#
+#   questions      →  2–3 MCQs, in Uzbek. ALWAYS this mix:
+#                     • 1 tushunish savoli — who/what/why, answerable only by reading;
+#                     • 1–2 HISOB savoli — the reader must compute from the numbers in
+#                       the text. The distractors are the real wrong moves (wrong
+#                       operation, wrong percentage base, forgotten unit).
+#                     Every `explanation` shows the work, in Uzbek.
+#                     ⚠️ Story questions are rendered in STORED ORDER (unlike the
+#                     practice tests, which are shuffled by display_choices()). So
+#                     VARY `answer` by hand — never leave every correct option at
+#                     index 0, or a pupil scores without reading. Numeric options
+#                     stay in ascending order and the answer lands where it lands.
+#
+# ── The three structural rules ──
+#
+# 1. FOCUS. The reading uses the lesson's own maths and names it in the `grammar` block.
+#    Two natural uses beat six forced ones. If the maths fights the story, use it less
+#    and let the story win — a reading nobody enjoys teaches nothing.
+# 2. CUMULATIVE. Anything from an EARLIER lesson may be used freely; anything from a
+#    LATER lesson may not. Check toc_prime_math.txt before reaching for a tool: PM-17's
+#    reading may not lean on foiz (PM-23) or on tenglama (PM-36).
+# 3. LINKED. After importing a reading, re-run import_tutorials with --republish so the
+#    lesson's `"stories": [...]` key attaches it and the Reading card appears.
+#
+# ══════════════════════════════════════════════════════════════════════
+# ── CLARITY IS THE FIRST RULE (inherited from the Prime Russian readings) ──
+#
+#   * NAME the character in the first sentence and keep using the name.
+#   * CHRONOLOGICAL ORDER. Events happen in the order they are written.
+#   * ONE THING PER SENTENCE. A new action gets a new sentence.
+#   * EVERY NUMBER THE READER NEEDS IS IN THE TEXT, stated once, plainly. Never hide a
+#     number inside a subordinate clause, and never make the reader assume one.
+#   * NO UNEXPLAINED JUMPS. If the scene moves, say so: Ertasi kuni…, Kechqurun…
+#   * The ENDING must land — and in this collection the ending is usually the moment
+#     the maths pays off: the right answer, the caught mistake, the better choice.
+#   * Test before shipping: read it as a pupil who is fine at reading and shaky at
+#     maths. Anywhere they would have to guess a number — fix it.
+#
+# ── VERSATILE — rotate the genre, never three of the same shape in a row ──
+#
+#     kundalik hikoya          xat / maktub-javob        kundalik daftar
+#     retsept / qoʻllanma      yangilik xabari           sharh (mahsulot, tarif, reklama)
+#     ilmiy-ommabop matn       tarixiy epizod            sayohat qaydlari
+#     intervyu / soʻrovnoma    sport natijalari          jumboq / sirli hikoya
+#
+# Retelling real material is encouraged where it is clearer than invention (Misr
+# geometrlarining oʻn ikki tugunli arqoni, Fales va piramida soyasi, Gauss bolaligi,
+# shaxmat taxtasidagi bugʻdoy). FACTS MUST BE TRUE. When a text is a retelling, say so
+# in the Uzbek `summary`.
+#
+# Modern and everyday is good: telefon tarifi, taksi, dostavka, bozor, futbol, remont,
+# elektr hisobi, sinf kassasi. Keep it light and kind.
+#
+# ── Length curve (guide, not a rule) ──
+#   PM-1  … PM-28    90–150 words    a small scene with one calculation in it
+#   PM-29 … PM-56   150–200 words    a scene with a beginning, a middle and a decision
+#   PM-57 … PM-100  200–280 words    real texts: an article, a report, a retold history
+#
+# ── Language policy ──
+#   Everything is in UZBEK — the text, the title, the terms, the questions, the
+#   explanations. Maths appears as HTML exactly as in the tutorials (x<sup>2</sup>,
+#   ×, ÷, √, ≤, ≥, π, °, decimals with a comma: 3,5). No English, no LaTeX, no Cyrillic.
+#   Bold the lesson's own number work with <strong> where it appears — house style of
+#   the Prime collections.
+#
+# ── Terms (cn-word) ──
+#   6–10 in the early readings, 8–12 up to PM-56, 10–16 from PM-57.
+#   data-pos is left empty here (verb/adj/adv are for the language collections).
+#   Names: the user's pupils — Afsona, Jasur, Sherbek, Dilnoza, Bekzod — plus family
+#   and neighbours (buvijon, Karim aka, Nodira opa).
+#
+# ══════════════════════════════════════════════════════════════════════
+# ── ⛔ NO AUDIO ON THIS COLLECTION ──
+#
+# Formulas, x², 3/4 and 240 000 × 0,3 do not survive text-to-speech. Do NOT run
+# gen_corner_audio or import_corner_audio for Prime Math Readings, and do not offer it.
+# Korean and English keep their audio; maths gets none.
+#
+# A batch is therefore: 3 tutorials + 3 practices + 3 readings. That is all.
+#
+# ── ⚠️ THE ARITHMETIC GATE ──
+# Every number in a story must be internally consistent, and the correct MCQ option must
+# be exactly what the story's numbers produce. Verify with the batch's scratchpad script
+# (verify_pm_<range>.py) before importing. See STYLE_GUIDE_PRIME_MATH.md section 7.
+# ══════════════════════════════════════════════════════════════════════
+#
+# Mark finished ranges with [done].
+
+## Prime Math Readings — Matematika matnlari
+
+### Block A: Sonlar va amallar (1–14)
+1.  (PM-1 · razryadlar) Narxdagi nollar — Sherbek telefon tanlaydi (hikoya)          [done]
+2.  (PM-2 · qoʻshish/ayirish) Sinf kassasi — daftardagi hisob (kundalik)             [done]
+3.  (PM-3 · koʻpaytirish) Bir qutida nechta? — omborda bir kun (hikoya)              [done]
+4.  (PM-4 · qoldiqli boʻlish) Oʻttiz yetti kishi, oltitadan stol (hikoya)            [next]
+5.  (PM-5 · amallar tartibi) Bitta hisob, ikkita javob (dialog)
+6.  (PM-6 · boʻlinish alomatlari) Guruhlarga boʻlinamiz — mashgʻulotda (sport)
+7.  (PM-7 · tub sonlar) Tub sonlar sirni qanday saqlaydi (ilmiy-ommabop)
+8.  (PM-8 · EKUB/EKUK) Ikki avtobus qachon bir vaqtda keladi (ilmiy-ommabop)
+9.  (PM-9 · manfiy sonlar) Qish kundaligi — noldan pastda (kundalik)
+10. (PM-10 · manfiy qoʻshish) Lift, qavatlar va yerto'la (hikoya)
+11. (PM-11 · manfiy koʻpaytirish) Doʻkon daftaridagi qarz (hikoya)
+12. (PM-12 · daraja) Shaxmat taxtasidagi bugʻdoy — qadimiy rivoyat (tarix)
+13. (PM-13 · kvadrat ildiz) Kvadrat maydonning tomoni — usta hisobi (hikoya)
+14. (PM-14 · yaxlitlash) Buvijonning bozordagi taxmini (hikoya)
+
+### Block B: Kasr, oʻnlik, foiz, nisbat (15–28)
+15. (PM-15 · kasr) Bitta non, olti kishi (hikoya)
+16. (PM-16 · qisqartirish) Qaysi biri koʻproq? — ikki xil oʻlchovli retsept (retsept)
+17. (PM-17 · kasr qoʻshish) Devorni ikki kunda boʻyash (hikoya)
+18. (PM-18 · kasr koʻpaytirish) Yarimning uchdan biri — oshga yogʻ (retsept)
+19. (PM-19 · aralash sonlar) Ikki yarim soat — mashgʻulot jadvali (kundalik)
+20. (PM-20 · oʻnlik kasr) Tarozidagi raqamlar (hikoya)
+21. (PM-21 · oʻnlik amallar) Benzin va yoʻl — Samarqandga (sayohat qaydlari)
+22. (PM-22 · kasr↔foiz) Bitta son, uch xil libos (ilmiy-ommabop)
+23. (PM-23 · foiz) Bozordagi chegirma (hikoya)
+24. (PM-24 · foizdan butun) Imtihon natijasi — maktabdan xat (xat)
+25. (PM-25 · foiz oʻzgarishi) Narx oshdi, keyin tushdi — eski narxga qaytdimi? (yangilik)
+26. (PM-26 · chegirma/soliq) «Katta chegirma!» — reklama ortidagi hisob (sharh)
+27. (PM-27 · nisbat) Uch doʻst va bir savat olma (hikoya)
+28. (PM-28 · masshtab) Xaritadagi ikki santimetr (sayohat qaydlari)
+
+### Block C: Algebra tili (29–44)
+29. (PM-29 · nomaʼlum) X kim? — sinfdagi topishmoq (jumboq)
+30. (PM-30 · ifoda tuzish) Taksi hisobi: gapni formulaga aylantirish (ilmiy-ommabop)
+31. (PM-31 · qiymatni hisoblash) Qaysi tarif arzon? (sharh)
+32. (PM-32 · oʻxshash hadlar) Omborni tartibga solish (hikoya)
+33. (PM-33 · qavs ochish) Toʻrt qutida nechta? (hikoya)
+34. (PM-34 · qavsdan chiqarish) Sinf sovgʻasi — umumiy narsani ajratish (hikoya)
+35. (PM-35 · formula) Poyezd jadvali va tezlik formulasi (ilmiy-ommabop)
+36. (PM-36 · tenglama) Tarozi muvozanati (ilmiy-ommabop)
+37. (PM-37 · ikki tomonli tenglama) Ikki doʻkon, bitta narx (hikoya)
+38. (PM-38 · matnli masala 1) Jasur va Afsona necha yigʻdi (hikoya)
+39. (PM-39 · matnli masala 2) Ikki chelak suv (hikoya)
+40. (PM-40 · tengsizlik) Kamida qancha kerak — sayohat byudjeti (kundalik)
+41. (PM-41 · modul) Noldan qancha uzoq — harorat xabari (yangilik)
+42. (PM-42 · daraja qonunlari) Koinot masofalarini yozishning qisqa yoʻli (ilmiy-ommabop)
+43. (PM-43 · koʻphad) Bogʻ maydonini hisoblash (hikoya)
+44. (PM-44 · qisqa koʻpaytirish) Ustaning tez hisoblash hiylasi (hikoya)
+
+### Block D: Koordinata, funksiya, grafik (45–56)
+45. (PM-45 · koordinata) Kemadagi manzil — xarita katakchalari (tarix)
+46. (PM-46 · masofa) Ikki uy orasidagi toʻgʻri yoʻl (hikoya)
+47. (PM-47 · funksiya) Mashina qanday ishlaydi: kirish va chiqish (ilmiy-ommabop)
+48. (PM-48 · jadval→grafik) Bir haftalik harorat (yangilik)
+49. (PM-49 · y = kx + b) Taksi hisobi grafikda (ilmiy-ommabop)
+50. (PM-50 · k va b) Ikki tarif, ikki chiziq (sharh)
+51. (PM-51 · grafik oʻqish) Grafik nima deyapti? — mavsum natijalari (sport)
+52. (PM-52 · kesishish) Qaysi tarif qachon foydali (sharh)
+53. (PM-53 · sistema 1) Choy va non — kafedagi hisob (hikoya)
+54. (PM-54 · sistema 2) Ikki xil chipta (hikoya)
+55. (PM-55 · sistemali masala) Tovuq va quyon — qadimiy masala (tarix)
+56. (PM-56 · parabola) Toʻpning yoʻli (sport)
+
+### Block E: Geometriya (57–74)
+57. (PM-57 · geometriya alifbosi) Chizgʻich va qalam — birinchi chizma (hikoya)
+58. (PM-58 · burchak) Soat millari orasidagi burchak (jumboq)
+59. (PM-59 · burchak juftliklari) Chorrahadagi burchaklar (ilmiy-ommabop)
+60. (PM-60 · parallel) Temir yoʻl, shpallar va koʻz aldanishi (ilmiy-ommabop)
+61. (PM-61 · uchburchak) Nega uchburchak eng mustahkam shakl (ilmiy-ommabop)
+62. (PM-62 · uchburchak tengsizligi) Uch tayoq — uchburchak chiqadimi? (jumboq)
+63. (PM-63 · teng yonli) Uyning tomi (hikoya)
+64. (PM-64 · Pifagor) Oʻn ikki tugunli arqon — Misr geometriyasi (tarix)
+65. (PM-65 · Pifagor qoʻllanishi) Narvon devorga suyalganda (hikoya)
+66. (PM-66 · toʻrtburchaklar) Gilam naqshidagi shakllar (sharh)
+67. (PM-67 · perimetr) Bogʻga panjara (hikoya)
+68. (PM-68 · yuza 1) Sinf polini qoplash (hikoya)
+69. (PM-69 · yuza 2) Notekis dala (hikoya)
+70. (PM-70 · π) Arqon, gʻildirak va π ning tarixi (tarix)
+71. (PM-71 · aylana) Gʻildirak necha marta aylanadi (ilmiy-ommabop)
+72. (PM-72 · oʻxshashlik) Soya bilan minorani oʻlchash — Fales usuli (tarix)
+73. (PM-73 · simmetriya) Samarqand gumbazidagi naqsh (sharh)
+74. (PM-74 · hajm) Suv baki necha chelak (hikoya)
+
+### Block F: Maʼlumot va ehtimollik (75–84)
+75. (PM-75 · maʼlumot) Sinfda kim nima yeydi — soʻrovnoma hisoboti (intervyu)
+76. (PM-76 · diagramma turlari) Qaysi diagramma toʻgʻri gapiradi (ilmiy-ommabop)
+77. (PM-77 · diagramma oʻqish) Bir yillik yomgʻir (yangilik)
+78. (PM-78 · oʻrta arifmetik) Oʻrtacha baho — kundalik daftar (kundalik)
+79. (PM-79 · mediana) «Oʻrtacha maosh» qanday aldaydi (ilmiy-ommabop)
+80. (PM-80 · tarqoqlik) Ikki jamoa, bir xil oʻrtacha (sport)
+81. (PM-81 · aldamchi diagramma) Reklamadagi ustunlar (sharh)
+82. (PM-82 · sanash) Necha xil kiyim tanlash mumkin (hikoya)
+83. (PM-83 · ehtimollik) Tanga, zar va ob-havo bashorati (ilmiy-ommabop)
+84. (PM-84 · ehtimollik hisobi) Lotereya nega yutqazadi (ilmiy-ommabop)
+
+### Block G: Matnli masalalar ustaxonasi (85–94)
+85. (PM-85 · 4 qadam) Masalani qanday oʻqish kerak (qoʻllanma)
+86. (PM-86 · nomaʼlumni tanlash) Uch aka-uka va pul (hikoya)
+87. (PM-87 · chizma) Chizib yechilgan masala (qoʻllanma)
+88. (PM-88 · tezlik) Maktabga velosipedda (kundalik)
+89. (PM-89 · uchrashuv) Ikki avtobus, bitta yoʻl (hikoya)
+90. (PM-90 · ish) Ikki usta, bitta devor (hikoya)
+91. (PM-91 · aralashma) Choyga qancha shakar (retsept)
+92. (PM-92 · narx-miqdor) Katta paket haqiqatan arzonmi? (sharh)
+93. (PM-93 · yosh masalalari) Ota va oʻgʻil (jumboq)
+94. (PM-94 · birliklar) Retseptdagi xato — gramm va kilogramm (hikoya)
+
+### Block H: Mantiq va fikrlash usullari (95–100)
+95. (PM-95 · mantiq) Kim qaysi kasb egasi? (jumboq)
+96. (PM-96 · juftlik) Oʻn beshta stakan (jumboq)
+97. (PM-97 · Dirixle) Toshkentda ikki kishining sochi bir xil (ilmiy-ommabop)
+98. (PM-98 · teskaridan yurish) Qopdagi yongʻoq (jumboq)
+99. (PM-99 · namuna) Gaussning bolaligi — 1 dan 100 gacha (tarix)
+100. (PM-100 · yakun) Yuz darsdan keyin — oʻquvchiga xat (xat)

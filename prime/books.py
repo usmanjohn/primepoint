@@ -116,6 +116,43 @@ BOOKS = {
             ('Matn',   'Qoida yashab turgan qisqa matn, yangi so‘zlar izohi bilan.'),
         ],
     },
+
+    # The first non-language volume. Its "Matn" leg is not a reading in a
+    # foreign language but a text in Uzbek that the maths lives inside — which
+    # is the whole point of the course: a pupil who can compute but cannot read
+    # a problem fails every exam that matters.
+    'Prime Math': {
+        'series':   'Prime Math',
+        'subtitle': 'Maktab matematikasi — noldan',
+        'tagline':  'Matematika · 100 dars',
+        'lang':     'uz',
+        'accent':   '#b45309',
+        'accent2':  '#78350f',
+        'volumes': [
+            ('Sonlar va kasrlar',        1,  28),
+            ('Algebra tili',            29,  56),
+            ('Geometriya va ma’lumot',  57,  84),
+            ('Masala yechish',          85, 100),
+        ],
+        'blurb': (
+            'Prime Math maktab matematikasini boshidan boshlab, tartib bilan '
+            'o‘rgatadi: sonlardan tortib tenglama, grafik, geometriya va '
+            'ehtimollikkacha. Har bir qoida nega ishlashi tushuntiriladi, har bir '
+            'yechim esa qadamma-qadam, har qadamning sababi bilan yoziladi. Har '
+            'darsda kamida bitta matnli masala bor — chunki hisoblashni bilib, '
+            'masalani o‘qiy olmaslik eng ko‘p uchraydigan muammo.'
+        ),
+        'howto': [
+            ('Dars',   'Avval g‘oyani, keyin yechim zinapoyasini o‘qing: chap '
+                       'ustunda amal, o‘ng ustunda nega shunday qilingani.'),
+            ('Mashq',  'Shu darsning o‘ziga tegishli 20 ta savol, oxirgi ikkitasi '
+                       'har doim matnli masala. Daftarda ishlang; javoblar kitob '
+                       'oxirida.'),
+            ('Matn',   'Shu darsning matematikasi yashab turgan qisqa matn, '
+                       'atamalar izohi bilan. Oxiridagi savolga hisoblab javob '
+                       'bering.'),
+        ],
+    },
 }
 
 # Roman numerals for the volume number on the cover. Four volumes per course
