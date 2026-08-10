@@ -3639,3 +3639,51 @@ h1, h2, h3, h4, h5, h6, .font-display {
     .pr-decl td, .pr-decl th,
     .pr-case td, .pr-case th { padding: .4rem .35rem; }
 }
+
+
+/* =====================================================================
+   CHEMPIONLAR DUELI — per-question countdown bar  (duel-timer)
+   ---------------------------------------------------------------------
+   Pure CSS: the bar drains over `animation-duration`, which the template
+   sets to the seconds still left on the question (recomputed server-side,
+   so a page reload picks the clock up where it really is). The animation
+   is only the *display* — the server decides whether an answer was late.
+   ===================================================================== */
+
+.duel-timer {
+    height: 10px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+}
+
+.duel-timer__bar {
+    height: 100%;
+    width: 100%;
+    border-radius: 999px;
+    background: #22c55e;
+    animation-name: duel-timer-drain;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+.duel-timer__bar--out {
+    width: 100%;
+    background: #ef4444;
+    animation: none;
+}
+
+@keyframes duel-timer-drain {
+    0%   { width: 100%; background: #22c55e; }
+    55%  { background: #f59e0b; }
+    82%  { background: #ef4444; }
+    100% { width: 0%;   background: #ef4444; }
+}
+
+/* Respect the pupil's motion preference: no drain animation, just the
+   colour of the state the clock is in. */
+@media (prefers-reduced-motion: reduce) {
+    .duel-timer__bar { animation: none; background: #f59e0b; }
+}

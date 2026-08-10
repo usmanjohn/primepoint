@@ -31,7 +31,25 @@ MODES = (MODE_DUEL, MODE_TOGETHER)
 
 SUBJECT_MATH    = 'math'
 SUBJECT_ENGLISH = 'english'
+SUBJECT_BOTH    = 'both'                 # a pupil who wants the mix
 SUBJECTS = (SUBJECT_MATH, SUBJECT_ENGLISH)
+SUBJECT_PICKS = (SUBJECT_MATH, SUBJECT_ENGLISH, SUBJECT_BOTH)
+
+# Seconds allowed per question, chosen separately for each subject. 0 = no
+# limit, which is the default — a clock is something the teacher opts into.
+TIME_CHOICES = [
+    (0,   'Cheklovsiz'),
+    (15,  '15 soniya'),
+    (20,  '20 soniya'),
+    (30,  '30 soniya'),
+    (45,  '45 soniya'),
+    (60,  '1 daqiqa'),
+    (90,  '1,5 daqiqa'),
+    (120, '2 daqiqa'),
+    (180, '3 daqiqa'),
+]
+TIME_VALUES = [c[0] for c in TIME_CHOICES]
+TIME_GRACE = 2          # seconds of slack for the page round-trip
 
 SUBJECT_LABELS = {SUBJECT_MATH: 'Matematika', SUBJECT_ENGLISH: 'Ingliz tili'}
 SUBJECT_EMOJI  = {SUBJECT_MATH: '\U0001F522', SUBJECT_ENGLISH: '\U0001F524'}
@@ -78,16 +96,31 @@ def build_plan(mode, subjects):
             })
         return plan
 
-    # Together: the players alternate every question, while the subject changes
-    # every two — so each player still gets the same mix as the other.
-    pair = list(dict.fromkeys(subjects))
+    # Together: the players alternate every question and **each answers the
+    # subject they were signed up for** — a pupil entered as "matematika
+    # o'quvchisi" is never handed an English question. A math pupil next to an
+    # English pupil therefore still produces the math-English-math-English
+    # stream; only a pupil explicitly entered as `both` gets the mix, and then
+    # their own turns alternate between the two subjects.
     for stage in range(STAGES):
-        if len(pair) == 1:
-            subject = pair[0]
+        turn = stage % 2
+        pick = subjects[turn]
+        if pick == SUBJECT_BOTH:
+            own_turn = stage // 2          # how many turns this player has had
+            subject = SUBJECT_MATH if own_turn % 2 == 0 else SUBJECT_ENGLISH
         else:
-            subject = SUBJECT_MATH if stage % 4 < 2 else SUBJECT_ENGLISH
-        plan.append({'turn': stage % 2, 'subject': subject})
+            subject = pick
+        plan.append({'turn': turn, 'subject': subject})
     return plan
+
+
+def clean_limit(raw):
+    """A per-question time limit from the form: one of TIME_VALUES, else none."""
+    try:
+        value = int(raw)
+    except (TypeError, ValueError):
+        return 0
+    return value if value in TIME_VALUES else 0
 
 
 def make_question(subject, grade, level, tier, last_topic=None):

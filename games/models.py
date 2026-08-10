@@ -327,7 +327,8 @@ class DuelResult(models.Model):
     MODE_TOGETHER = 'together'
     MODE_CHOICES  = [(MODE_DUEL, 'Duel'), (MODE_TOGETHER, 'Together')]
 
-    SUBJECT_CHOICES = [('math', 'Matematika'), ('english', 'Ingliz tili')]
+    SUBJECT_CHOICES = [('math', 'Matematika'), ('english', 'Ingliz tili'),
+                       ('both', 'Ikkalasi ham')]
     WINNER_CHOICES  = [('a', 'A'), ('b', 'B'), ('', 'Draw / co-op')]
 
     mode       = models.CharField(max_length=10, choices=MODE_CHOICES, default=MODE_DUEL)
@@ -342,6 +343,8 @@ class DuelResult(models.Model):
 
     grade      = models.PositiveSmallIntegerField(default=5, help_text='Math difficulty (5-7).')
     level      = models.CharField(max_length=2, default='a1', help_text='English level (a1/a2/b1).')
+    limit_math    = models.PositiveSmallIntegerField(default=0, help_text='Seconds per math question; 0 = no limit.')
+    limit_english = models.PositiveSmallIntegerField(default=0, help_text='Seconds per English question; 0 = no limit.')
 
     score_a    = models.IntegerField(default=0)
     score_b    = models.IntegerField(default=0)

@@ -91,7 +91,22 @@
                             {% endfor %}
                         </select>
                     </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" style="font-size:0.85rem; color:#b45309;">&#x23F1;&#xFE0F; Matematika savoliga vaqt</label>
+                        <select name="limit_math" class="form-select">
+                            {% for value, label in times %}<option value="{{ value }}">{{ label }}</option>{% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" style="font-size:0.85rem; color:#3730a3;">&#x23F1;&#xFE0F; Ingliz tili savoliga vaqt</label>
+                        <select name="limit_english" class="form-select">
+                            {% for value, label in times %}<option value="{{ value }}">{{ label }}</option>{% endfor %}
+                        </select>
+                    </div>
                 </div>
+                <p class="mt-2 mb-0" style="color:var(--text-muted); font-size:0.78rem;">
+                    Vaqt har bir savol uchun alohida hisoblanadi. Tanlanmasa &mdash; vaqt cheklovi yo'q.
+                </p>
                 <button type="submit" class="btn btn-lg fw-semibold w-100 mt-3"
                         style="background:linear-gradient(135deg,#f59e0b 0%,#6366f1 100%); color:#fff; border:none; border-radius:12px;">
                     &#x2694;&#xFE0F; Duelni boshlash
@@ -124,6 +139,7 @@
                         <select name="subject_a" class="form-select">
                             <option value="math" selected>&#x1F522; Matematika o'quvchisi</option>
                             <option value="english">&#x1F524; Ingliz tili o'quvchisi</option>
+                            <option value="both">&#x1F500; Ikkala fandan ham</option>
                         </select>
                     </div>
                     <div class="col-12 col-md-6">
@@ -133,6 +149,7 @@
                         <select name="subject_b" class="form-select">
                             <option value="math">&#x1F522; Matematika o'quvchisi</option>
                             <option value="english" selected>&#x1F524; Ingliz tili o'quvchisi</option>
+                            <option value="both">&#x1F500; Ikkala fandan ham</option>
                         </select>
                     </div>
                     <div class="col-12 col-md-6">
@@ -151,7 +168,22 @@
                             {% endfor %}
                         </select>
                     </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" style="font-size:0.85rem; color:#b45309;">&#x23F1;&#xFE0F; Matematika savoliga vaqt</label>
+                        <select name="limit_math" class="form-select">
+                            {% for value, label in times %}<option value="{{ value }}">{{ label }}</option>{% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold" style="font-size:0.85rem; color:#3730a3;">&#x23F1;&#xFE0F; Ingliz tili savoliga vaqt</label>
+                        <select name="limit_english" class="form-select">
+                            {% for value, label in times %}<option value="{{ value }}">{{ label }}</option>{% endfor %}
+                        </select>
+                    </div>
                 </div>
+                <p class="mt-2 mb-0" style="color:var(--text-muted); font-size:0.78rem;">
+                    Vaqt har bir savol uchun alohida hisoblanadi. Tanlanmasa &mdash; vaqt cheklovi yo'q.
+                </p>
                 <button type="submit" class="btn btn-lg fw-semibold w-100 mt-3"
                         style="background:linear-gradient(135deg,#059669 0%,#065f46 100%); color:#fff; border:none; border-radius:12px;">
                     &#x1F91D; Birgalikda boshlash

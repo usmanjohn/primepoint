@@ -2387,6 +2387,7 @@ def _duel_next_question(state):
     state['q'] = q
     state['subject'] = subject
     state['turn'] = slot['turn']
+    state['asked_at'] = int(time.time())      # starts this question's clock
 
 
 def _duel_save_result(request, state):
@@ -2401,6 +2402,8 @@ def _duel_save_result(request, state):
         subject_b=state['subjects'][1] if state['mode'] == duelmod.MODE_TOGETHER else '',
         grade=state['grade'],
         level=state['level'],
+        limit_math=state.get('limits', {}).get(duelmod.SUBJECT_MATH, 0),
+        limit_english=state.get('limits', {}).get(duelmod.SUBJECT_ENGLISH, 0),
         score_a=state['scores'][0],
         score_b=state['scores'][1],
         hearts_a=state['hearts'][0],
@@ -2437,8 +2440,11 @@ def duel_home(request):
                      _duel_clean_name(request.POST.get('name_b'), "2-o'quvchi")]
             subjects = [request.POST.get('subject_a', duelmod.SUBJECT_MATH),
                         request.POST.get('subject_b', duelmod.SUBJECT_ENGLISH)]
-            subjects = [s if s in duelmod.SUBJECTS else duelmod.SUBJECT_MATH
+            subjects = [s if s in duelmod.SUBJECT_PICKS else duelmod.SUBJECT_MATH
                         for s in subjects]
+
+        limits = {duelmod.SUBJECT_MATH:    duelmod.clean_limit(request.POST.get('limit_math')),
+                  duelmod.SUBJECT_ENGLISH: duelmod.clean_limit(request.POST.get('limit_english'))}
 
         state = {
             'mode':       mode,
@@ -2446,6 +2452,7 @@ def duel_home(request):
             'subjects':   subjects,
             'grade':      grade,
             'level':      level,
+            'limits':     limits,
             'plan':       duelmod.build_plan(mode, subjects),
             'stage':      1,
             'hearts':     [duelmod.HEARTS, duelmod.HEARTS],
@@ -2476,6 +2483,7 @@ def duel_home(request):
         'has_active': bool(state) and not state.get('done'),
         'pupils':     duelmod.pupil_suggestions(),
         'levels':     [(lv, englishchamp.LEVEL_LABELS[lv]) for lv in englishchamp.LEVELS],
+        'times':      duelmod.TIME_CHOICES,
     })
 
 
@@ -2503,53 +2511,70 @@ def duel_play(request):
             request.session.pop(DUEL_SESSION_KEY, None)
             return redirect('duel_home')
 
-        if action == 'answer' and not state.get('done'):
-            try:
-                choice = int(request.POST.get('choice', -1))
-            except (ValueError, TypeError):
-                choice = -1
+        if action in ('answer', 'timeout') and not state.get('done'):
             q = state['q']
-            if 0 <= choice < len(q['choices']):
-                # In together mode both players share slot 0's hearts and score.
-                who = 0 if together else state['turn']
-                tally = state['stats'].setdefault(
-                    f"{state['turn']}:{state['subject']}", [0, 0])
-                tally[1] += 1
-                tally[0] += 1 if choice == q['correct'] else 0
-                if choice == q['correct']:
-                    state['streaks'][who] += 1
-                    pts = duelmod.stage_points(state['stage'])
-                    bonus = 5 if state['streaks'][who] >= 3 else 0
-                    state['scores'][who] += pts + bonus
-                    state['feedback'] = {
-                        'correct':     True,
-                        'name':        state['names'][state['turn']],
-                        'points':      pts,
-                        'bonus':       bonus,
-                        'explanation': q['explanation'],
-                    }
-                else:
-                    state['streaks'][who] = 0
-                    state['hearts'][who] -= 1
-                    if together:
-                        state['hearts'][1] = state['hearts'][0]
-                    state['feedback'] = {
-                        'correct':     False,
-                        'name':        state['names'][state['turn']],
-                        'chosen':      q['choices'][choice],
-                        'answer':      q['choices'][q['correct']],
-                        'question':    q['text'],
-                        'explanation': q['explanation'],
-                    }
+            limit = state['limits'].get(state['subject'], 0)
+            spent = int(time.time()) - state.get('asked_at', int(time.time()))
+            # Either the players pressed "time is up", or the clock ran out
+            # while the question was on screen. The server owns the clock; the
+            # bar on the page is only there to show it.
+            timed_out = (action == 'timeout'
+                         or bool(limit) and spent > limit + duelmod.TIME_GRACE)
 
-                if state['hearts'][who] <= 0:
-                    _duel_finish(request, state, False)
-                elif state['stage'] >= duelmod.STAGES:
-                    _duel_finish(request, state, True)
-                else:
-                    state['stage'] += 1
-                    _duel_next_question(state)
-                request.session[DUEL_SESSION_KEY] = state
+            choice = -1
+            if action == 'answer':
+                try:
+                    choice = int(request.POST.get('choice', -1))
+                except (ValueError, TypeError):
+                    choice = -1
+                if not 0 <= choice < len(q['choices']):
+                    return redirect('duel_play')
+            elif not limit:
+                return redirect('duel_play')      # no clock, nothing to skip
+
+            # In together mode both players share slot 0's hearts and score.
+            who = 0 if together else state['turn']
+            right = (not timed_out) and choice == q['correct']
+            tally = state['stats'].setdefault(
+                f"{state['turn']}:{state['subject']}", [0, 0])
+            tally[1] += 1
+            tally[0] += 1 if right else 0
+
+            if right:
+                state['streaks'][who] += 1
+                pts = duelmod.stage_points(state['stage'])
+                bonus = 5 if state['streaks'][who] >= 3 else 0
+                state['scores'][who] += pts + bonus
+                state['feedback'] = {
+                    'correct':     True,
+                    'name':        state['names'][state['turn']],
+                    'points':      pts,
+                    'bonus':       bonus,
+                    'explanation': q['explanation'],
+                }
+            else:
+                state['streaks'][who] = 0
+                state['hearts'][who] -= 1
+                if together:
+                    state['hearts'][1] = state['hearts'][0]
+                state['feedback'] = {
+                    'correct':     False,
+                    'timeout':     timed_out,
+                    'name':        state['names'][state['turn']],
+                    'chosen':      q['choices'][choice] if choice >= 0 and not timed_out else '',
+                    'answer':      q['choices'][q['correct']],
+                    'question':    q['text'],
+                    'explanation': q['explanation'],
+                }
+
+            if state['hearts'][who] <= 0:
+                _duel_finish(request, state, False)
+            elif state['stage'] >= duelmod.STAGES:
+                _duel_finish(request, state, True)
+            else:
+                state['stage'] += 1
+                _duel_next_question(state)
+            request.session[DUEL_SESSION_KEY] = state
             return redirect('duel_play')
 
         return redirect('duel_play')
@@ -2571,6 +2596,11 @@ def duel_play(request):
     total = state['scores'][0] + state['scores'][1]
     bar_a = 50 if total == 0 else round(state['scores'][0] * 100 / total)
     elapsed = state.get('elapsed', int(time.time()) - state['start'])
+
+    time_limit = state.get('limits', {}).get(state['subject'], 0)
+    time_left = 0
+    if time_limit:
+        time_left = max(0, time_limit - (int(time.time()) - state.get('asked_at', 0)))
 
     # Per-player, per-subject score card — tells the teacher at a glance which
     # subject each pupil was actually strong in.
@@ -2613,6 +2643,10 @@ def duel_play(request):
         'winner_name':  (state['names'][0] if state.get('winner') == 'a'
                          else state['names'][1] if state.get('winner') == 'b' else ''),
         'breakdown':    breakdown,
+        'time_limit':   time_limit,
+        # Seconds still on the clock — drives the CSS bar, and survives a page
+        # reload because it is recomputed from when the question was served.
+        'time_left':    time_left,
         'elapsed_min':  elapsed // 60,
         'elapsed_sec':  f"{elapsed % 60:02d}",
         'letters':      ['A', 'B', 'C', 'D'],

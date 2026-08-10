@@ -209,11 +209,14 @@
         {% else %}
         <div class="mb-3 p-3 rounded-3" style="background:#fef2f2; border:1.5px solid #fca5a5;">
             <div class="d-flex align-items-center gap-2 mb-1">
-                <span style="font-size:1.4rem;">&#x1F494;</span>
-                <div class="fw-semibold" style="color:#991b1b;">{{ feedback.name }} xato qildi &mdash; bitta jon kuydi.</div>
+                <span style="font-size:1.4rem;">{% if feedback.timeout %}&#x23F1;&#xFE0F;{% else %}&#x1F494;{% endif %}</span>
+                <div class="fw-semibold" style="color:#991b1b;">
+                    {% if feedback.timeout %}{{ feedback.name }} vaqtida ulgurmadi{% else %}{{ feedback.name }} xato qildi{% endif %}
+                    &mdash; {% if together %}jamoadan{% endif %} bitta jon kuydi.
+                </div>
             </div>
             <div style="color:#7f1d1d; font-size:0.86rem;" class="mb-1">
-                Javob: <strong>{{ feedback.chosen }}</strong> &middot; To'g'risi: <strong>{{ feedback.answer }}</strong>
+                {% if feedback.chosen %}Javob: <strong>{{ feedback.chosen }}</strong> &middot; {% endif %}To'g'risi: <strong>{{ feedback.answer }}</strong>
             </div>
             <div class="pt-2" style="border-top:1px dashed #fca5a5; color:#7f1d1d; font-size:0.85rem;">&#x1F4A1; {{ feedback.explanation }}</div>
         </div>
@@ -227,6 +230,23 @@
             {{ subject_emoji }} {{ turn_name }} &mdash; navbat sizda!
         </span>
     </div>
+
+    {% if time_limit %}
+    <!-- Countdown: pure CSS, duration = seconds actually left on this question -->
+    <div class="mb-3">
+        <div class="d-flex align-items-center justify-content-between mb-1" style="font-size:0.75rem; color:var(--text-muted);">
+            <span>&#x23F1;&#xFE0F; Bu savolga {{ time_limit }} soniya</span>
+            {% if not time_left %}<span class="fw-semibold" style="color:#ef4444;">Vaqt tugadi!</span>{% endif %}
+        </div>
+        <div class="duel-timer">
+            {% if time_left %}
+            <div class="duel-timer__bar" style="animation-duration:{{ time_left }}s;"></div>
+            {% else %}
+            <div class="duel-timer__bar duel-timer__bar--out"></div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
 
     <!-- Question card -->
     <div class="card border-0 shadow-sm mb-3" style="border-radius:14px; overflow:hidden;">
@@ -260,6 +280,17 @@
             {% endfor %}
         </div>
     </form>
+
+    {% if time_limit %}
+    <!-- Escape hatch when the clock runs out and nobody answers -->
+    <form method="post" class="text-center mb-2">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="timeout">
+        <button type="submit" class="btn btn-sm" style="border:1.5px solid var(--border); border-radius:10px; color:var(--text-muted); font-size:0.82rem;">
+            &#x23F1;&#xFE0F; Vaqt tugadi &mdash; keyingi savolga
+        </button>
+    </form>
+    {% endif %}
 
     <!-- Quit -->
     <form method="post" class="text-center">
