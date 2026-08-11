@@ -37,10 +37,10 @@ TUTORIAL: PM-<n>:   (each practice links to its own tutorial)
 
 ### Block B: Kasr, oʻnlik, foiz, nisbat (15–28)   level: easy (15–28)
 15. Kasr nima                                                       [done]
-16. Kasrlarni qisqartirish va taqqoslash                            [next]
-17. Kasrlarni qoʻshish va ayirish
-18. Kasrlarni koʻpaytirish va boʻlish
-19. Aralash sonlar va notoʻgʻri kasrlar
+16. Kasrlarni qisqartirish va taqqoslash                            [done]
+17. Kasrlarni qoʻshish va ayirish                                   [done]
+18. Kasrlarni koʻpaytirish va boʻlish                               [done]
+19. Aralash sonlar va notoʻgʻri kasrlar                             [next]
 20. Oʻnlik kasrlar
 21. Oʻnlik kasrlar bilan toʻrt amal
 22. Kasr ↔ oʻnlik ↔ foiz

@@ -100,7 +100,7 @@ AUTHOR:     powerty
 27. Gazetadagi diagrammaga nega ishonmaslik kerak
 28. Bir xil ovoz, uch xil gʻolib — sanash usullari
 29. Nega yoʻlda tirbandlik oʻz-oʻzidan paydo boʻladi
-30. Musiqa ichidagi kasrlar
+30. Musiqa ichidagi kasrlar                                                  [done]
 31. A4 qogʻozning sirli oʻlchami                                             [done]
 32. Telefoningiz xabarni qanday yashiradi
 

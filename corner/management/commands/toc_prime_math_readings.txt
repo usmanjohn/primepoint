@@ -150,10 +150,10 @@ AUTHOR:     powerty
 
 ### Block B: Kasr, oʻnlik, foiz, nisbat (15–28)
 15. (PM-15 · kasr) Bitta non, olti kishi (kundalik)                                  [done]
-16. (PM-16 · qisqartirish) Qaysi biri koʻproq? — ikki xil oʻlchovli retsept (retsept) [next]
-17. (PM-17 · kasr qoʻshish) Devorni ikki kunda boʻyash (hikoya)
-18. (PM-18 · kasr koʻpaytirish) Yarimning uchdan biri — oshga yogʻ (retsept)
-19. (PM-19 · aralash sonlar) Ikki yarim soat — mashgʻulot jadvali (kundalik)
+16. (PM-16 · qisqartirish) Qaysi biri koʻproq? — ikki xil oʻlchovli retsept (retsept) [done]
+17. (PM-17 · kasr qoʻshish) Devorni ikki kunda boʻyash (hikoya)                      [done]
+18. (PM-18 · kasr koʻpaytirish) Yarimning uchdan biri — oshga yogʻ (oshxonadagi sahna) [done]
+19. (PM-19 · aralash sonlar) Ikki yarim soat — mashgʻulot jadvali (kundalik)         [next]
 20. (PM-20 · oʻnlik kasr) Tarozidagi raqamlar (hikoya)
 21. (PM-21 · oʻnlik amallar) Benzin va yoʻl — Samarqandga (sayohat qaydlari)
 22. (PM-22 · kasr↔foiz) Bitta son, uch xil libos (ilmiy-ommabop)
