@@ -63,11 +63,11 @@ TUTORIAL: PM-<n>:   (each practice links to its own tutorial)
 37. Ikki tomonida nomaʼlumi bor tenglamalar                         [done]
 38. Matnli masalani tenglama bilan yechish 1                        [done]
 39. Matnli masalani tenglama bilan yechish 2                        [done]
-40. Tengsizlik                                                      [next]
-41. Modul
-42. Daraja qonunlari
-43. Koʻphadlar
-44. Qisqa koʻpaytirish formulalari
+40. Tengsizlik                                                      [done]
+41. Modul                                                           [done]
+42. Daraja qonunlari                                                [done]
+43. Koʻphadlar                                                      [done]
+44. Qisqa koʻpaytirish formulalari                                  [done]
 
 ### Block D: Koordinata, funksiya, grafik (45–56)   level: medium
 45. Koordinata tekisligi

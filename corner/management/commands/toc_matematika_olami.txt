@@ -70,9 +70,9 @@ AUTHOR:     powerty
 1.  Al-Xorazmiy: «algoritm» soʻzi qayerdan kelgan                            [done]
 2.  «Al-jabr» — algebra tugʻilgan kitob                                      [done]
 3.  Abu Rayhon Beruniy Yer radiusini qanday oʻlchagan                        [done]
-4.  Mirzo Ulugʻbek rasadxonasi: burchak, sabr va yulduzlar
+4.  Mirzo Ulugʻbek rasadxonasi: burchak, sabr va yulduzlar                    [done]
 5.  Umar Xayyom — ham shoir, ham tenglama yechuvchi
-6.  Fales va piramidaning soyasi
+6.  Fales va piramidaning soyasi                                              [done]
 7.  Pifagor maktabi: «hamma narsa son»
 8.  Arximed: toj, hammom va «Evrika!»
 9.  Evklid «Negizlar»i — 2300 yildan beri oʻqilayotgan darslik
@@ -105,7 +105,7 @@ AUTHOR:     powerty
 32. Telefoningiz xabarni qanday yashiradi
 
 ### Jumboq va sir (33–42)
-33. Oʻn ikki tanga va uch marta tortish
+33. Oʻn ikki tanga va uch marta tortish                                       [done]
 34. Koʻprikdan oʻtish: toʻrt kishi, bitta fonar
 35. Kyonigsberg koʻpriklari: bir chiziq bilan chizib boʻladimi
 36. Monti Xoll: eshikni almashtirasizmi?

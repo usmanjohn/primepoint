@@ -176,11 +176,11 @@ AUTHOR:     powerty
 37. (PM-37 · ikki tomonli tenglama) Ikki doʻkon, bitta narx (hikoya)                  [done]
 38. (PM-38 · matnli masala 1) Jasur va Afsona necha yigʻdi (yangilik)                 [done]
 39. (PM-39 · matnli masala 2) Ikki chelak suv (hikoya)                                [done]
-40. (PM-40 · tengsizlik) Kamida qancha kerak — sayohat byudjeti (kundalik)            [next]
-41. (PM-41 · modul) Noldan qancha uzoq — harorat xabari (yangilik)
-42. (PM-42 · daraja qonunlari) Koinot masofalarini yozishning qisqa yoʻli (ilmiy-ommabop)
-43. (PM-43 · koʻphad) Bogʻ maydonini hisoblash (hikoya)
-44. (PM-44 · qisqa koʻpaytirish) Ustaning tez hisoblash hiylasi (hikoya)
+40. (PM-40 · tengsizlik) Kamida qancha kerak — sayohat byudjeti (kundalik)            [done]
+41. (PM-41 · modul) Noldan qancha uzoq — harorat xabari (yangilik)                    [done]
+42. (PM-42 · daraja qonunlari) Koinot masofalarini yozishning qisqa yoʻli (ilmiy-ommabop) [done]
+43. (PM-43 · koʻphad) Bogʻ maydonini hisoblash (hikoya)                               [done]
+44. (PM-44 · qisqa koʻpaytirish) Ustaning tez hisoblash hiylasi (hikoya)              [done]
 
 ### Block D: Koordinata, funksiya, grafik (45–56)
 45. (PM-45 · koordinata) Kemadagi manzil — xarita katakchalari (tarix)

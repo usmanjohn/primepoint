@@ -79,11 +79,11 @@ PLAYLIST: Prime Math
 37. Ikki tomonida ham nomaʼlumi bor tenglamalar                              [done]
 38. Matnli masalani tenglama bilan yechish 1: nomaʼlumni tanlash             [done]
 39. Matnli masalani tenglama bilan yechish 2: bir bogʻlanish, ikki miqdor    [done]
-40. Tengsizlik va uni son oʻqida koʻrsatish                                  [next]
-41. Modul: sondan noldan masofagacha
-42. Daraja qonunlari
-43. Koʻphadlar: qoʻshish, ayirish, koʻpaytirish
-44. Qisqa koʻpaytirish formulalari va koʻpaytuvchilarga ajratish
+40. Tengsizlik va uni son oʻqida koʻrsatish                                  [done]
+41. Modul: sondan noldan masofagacha                                         [done]
+42. Daraja qonunlari                                                         [done]
+43. Koʻphadlar: qoʻshish, ayirish, koʻpaytirish                              [done]
+44. Qisqa koʻpaytirish formulalari va koʻpaytuvchilarga ajratish             [done]
 
 ### Block D: Koordinata, funksiya, grafik (45–56)
 45. Koordinata tekisligi: nuqtaning manzili
