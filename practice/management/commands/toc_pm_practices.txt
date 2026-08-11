@@ -49,21 +49,21 @@ TUTORIAL: PM-<n>:   (each practice links to its own tutorial)
 25. Foiz oʻzgarishi                                                 [done]
 26. Chegirma, ustama va soliq                                       [done]
 27. Nisbat                                                          [done]
-28. Proporsiya va masshtab                                          [next]
+28. Proporsiya va masshtab                                          [done]
 
 ### Block C: Algebra tili (29–44)   level: medium (31 dan)
-29. Nomaʼlum va oʻzgaruvchi
-30. Matndan ifoda tuzish
-31. Ifodaning qiymatini hisoblash
-32. Oʻxshash hadlarni ixchamlash
-33. Qavslarni ochish
-34. Umumiy koʻpaytuvchini qavsdan chiqarish
-35. Formula bilan ishlash
-36. Bir nomaʼlumli tenglama
-37. Ikki tomonida nomaʼlumi bor tenglamalar
-38. Matnli masalani tenglama bilan yechish 1
-39. Matnli masalani tenglama bilan yechish 2
-40. Tengsizlik
+29. Nomaʼlum va oʻzgaruvchi                                         [done]
+30. Matndan ifoda tuzish                                            [done]
+31. Ifodaning qiymatini hisoblash                                   [done]
+32. Oʻxshash hadlarni ixchamlash                                    [done]
+33. Qavslarni ochish                                                [done]
+34. Umumiy koʻpaytuvchini qavsdan chiqarish                         [done]
+35. Formula bilan ishlash                                           [done]
+36. Bir nomaʼlumli tenglama                                         [done]
+37. Ikki tomonida nomaʼlumi bor tenglamalar                         [done]
+38. Matnli masalani tenglama bilan yechish 1                        [done]
+39. Matnli masalani tenglama bilan yechish 2                        [done]
+40. Tengsizlik                                                      [next]
 41. Modul
 42. Daraja qonunlari
 43. Koʻphadlar

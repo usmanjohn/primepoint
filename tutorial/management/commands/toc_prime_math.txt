@@ -65,21 +65,21 @@ PLAYLIST: Prime Math
 25. Foiz oʻzgarishi: oshdi, kamaydi, necha foizga?                           [done]
 26. Chegirma, ustama va soliq — bozor matematikasi                           [done]
 27. Nisbat va miqdorni nisbat boʻyicha boʻlish                               [done]
-28. Proporsiya, masshtab, toʻgʻri va teskari proporsionallik                 [next]
+28. Proporsiya, masshtab, toʻgʻri va teskari proporsionallik                 [done]
 
 ### Block C: Algebra tili (29–44)
-29. Harf nega kerak: nomaʼlum va oʻzgaruvchi
-30. Matndan ifoda tuzish — soʻzni belgiga aylantirish
-31. Ifodaning qiymatini hisoblash va oʻrniga qoʻyish
-32. Oʻxshash hadlarni ixchamlash
-33. Qavslarni ochish va ishoralar
-34. Umumiy koʻpaytuvchini qavsdan chiqarish
-35. Formula bilan ishlash: S = v·t va boshqalar
-36. Bir nomaʼlumli tenglama — muvozanat gʻoyasi
-37. Ikki tomonida ham nomaʼlumi bor tenglamalar
-38. Matnli masalani tenglama bilan yechish 1: nomaʼlumni tanlash
-39. Matnli masalani tenglama bilan yechish 2: bir bogʻlanish, ikki miqdor
-40. Tengsizlik va uni son oʻqida koʻrsatish
+29. Harf nega kerak: nomaʼlum va oʻzgaruvchi                                 [done]
+30. Matndan ifoda tuzish — soʻzni belgiga aylantirish                        [done]
+31. Ifodaning qiymatini hisoblash va oʻrniga qoʻyish                         [done]
+32. Oʻxshash hadlarni ixchamlash                                             [done]
+33. Qavslarni ochish va ishoralar                                            [done]
+34. Umumiy koʻpaytuvchini qavsdan chiqarish                                  [done]
+35. Formula bilan ishlash: S = v·t va boshqalar                              [done]
+36. Bir nomaʼlumli tenglama — muvozanat gʻoyasi                              [done]
+37. Ikki tomonida ham nomaʼlumi bor tenglamalar                              [done]
+38. Matnli masalani tenglama bilan yechish 1: nomaʼlumni tanlash             [done]
+39. Matnli masalani tenglama bilan yechish 2: bir bogʻlanish, ikki miqdor    [done]
+40. Tengsizlik va uni son oʻqida koʻrsatish                                  [next]
 41. Modul: sondan noldan masofagacha
 42. Daraja qonunlari
 43. Koʻphadlar: qoʻshish, ayirish, koʻpaytirish

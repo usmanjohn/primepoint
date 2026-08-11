@@ -162,21 +162,21 @@ AUTHOR:     powerty
 25. (PM-25 · foiz oʻzgarishi) Narx oshdi, keyin tushdi — eski narxga qaytdimi? (yangilik) [done]
 26. (PM-26 · chegirma/soliq) «Katta chegirma!» — reklama ortidagi hisob (sharh)       [done]
 27. (PM-27 · nisbat) Uch doʻst va bir savat olma (hikoya)                             [done]
-28. (PM-28 · masshtab) Xaritadagi ikki santimetr (sayohat qaydlari)                   [next]
+28. (PM-28 · masshtab) Xaritadagi ikki santimetr (sayohat qaydlari)                   [done]
 
 ### Block C: Algebra tili (29–44)
-29. (PM-29 · nomaʼlum) X kim? — sinfdagi topishmoq (jumboq)
-30. (PM-30 · ifoda tuzish) Taksi hisobi: gapni formulaga aylantirish (ilmiy-ommabop)
-31. (PM-31 · qiymatni hisoblash) Qaysi tarif arzon? (sharh)
-32. (PM-32 · oʻxshash hadlar) Omborni tartibga solish (hikoya)
-33. (PM-33 · qavs ochish) Toʻrt qutida nechta? (hikoya)
-34. (PM-34 · qavsdan chiqarish) Sinf sovgʻasi — umumiy narsani ajratish (hikoya)
-35. (PM-35 · formula) Poyezd jadvali va tezlik formulasi (ilmiy-ommabop)
-36. (PM-36 · tenglama) Tarozi muvozanati (ilmiy-ommabop)
-37. (PM-37 · ikki tomonli tenglama) Ikki doʻkon, bitta narx (hikoya)
-38. (PM-38 · matnli masala 1) Jasur va Afsona necha yigʻdi (hikoya)
-39. (PM-39 · matnli masala 2) Ikki chelak suv (hikoya)
-40. (PM-40 · tengsizlik) Kamida qancha kerak — sayohat byudjeti (kundalik)
+29. (PM-29 · nomaʼlum) X kim? — sinfdagi topishmoq (jumboq)                           [done]
+30. (PM-30 · ifoda tuzish) Taksi hisobi: gapni formulaga aylantirish (ilmiy-ommabop)  [done]
+31. (PM-31 · qiymatni hisoblash) Qaysi tarif arzon? (sharh)                           [done]
+32. (PM-32 · oʻxshash hadlar) Omborni tartibga solish (hikoya)                        [done]
+33. (PM-33 · qavs ochish) Toʻrt qutida nechta? (hikoya)                               [done]
+34. (PM-34 · qavsdan chiqarish) Sinf sovgʻasi — umumiy narsani ajratish (kundalik)    [done]
+35. (PM-35 · formula) Poyezd jadvali va tezlik formulasi (ilmiy-ommabop)              [done]
+36. (PM-36 · tenglama) Tarozi muvozanati (ilmiy-ommabop)                              [done]
+37. (PM-37 · ikki tomonli tenglama) Ikki doʻkon, bitta narx (hikoya)                  [done]
+38. (PM-38 · matnli masala 1) Jasur va Afsona necha yigʻdi (yangilik)                 [done]
+39. (PM-39 · matnli masala 2) Ikki chelak suv (hikoya)                                [done]
+40. (PM-40 · tengsizlik) Kamida qancha kerak — sayohat byudjeti (kundalik)            [next]
 41. (PM-41 · modul) Noldan qancha uzoq — harorat xabari (yangilik)
 42. (PM-42 · daraja qonunlari) Koinot masofalarini yozishning qisqa yoʻli (ilmiy-ommabop)
 43. (PM-43 · koʻphad) Bogʻ maydonini hisoblash (hikoya)
