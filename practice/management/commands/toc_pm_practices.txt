@@ -40,16 +40,16 @@ TUTORIAL: PM-<n>:   (each practice links to its own tutorial)
 16. Kasrlarni qisqartirish va taqqoslash                            [done]
 17. Kasrlarni qoʻshish va ayirish                                   [done]
 18. Kasrlarni koʻpaytirish va boʻlish                               [done]
-19. Aralash sonlar va notoʻgʻri kasrlar                             [next]
-20. Oʻnlik kasrlar
-21. Oʻnlik kasrlar bilan toʻrt amal
-22. Kasr ↔ oʻnlik ↔ foiz
-23. Sonning foizini topish
-24. Foizdan butunni topish
-25. Foiz oʻzgarishi
-26. Chegirma, ustama va soliq
-27. Nisbat
-28. Proporsiya va masshtab
+19. Aralash sonlar va notoʻgʻri kasrlar                             [done]
+20. Oʻnlik kasrlar                                                  [done]
+21. Oʻnlik kasrlar bilan toʻrt amal                                 [done]
+22. Kasr ↔ oʻnlik ↔ foiz                                            [done]
+23. Sonning foizini topish                                          [done]
+24. Foizdan butunni topish                                          [done]
+25. Foiz oʻzgarishi                                                 [done]
+26. Chegirma, ustama va soliq                                       [done]
+27. Nisbat                                                          [done]
+28. Proporsiya va masshtab                                          [next]
 
 ### Block C: Algebra tili (29–44)   level: medium (31 dan)
 29. Nomaʼlum va oʻzgaruvchi

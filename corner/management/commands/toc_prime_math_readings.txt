@@ -153,16 +153,16 @@ AUTHOR:     powerty
 16. (PM-16 · qisqartirish) Qaysi biri koʻproq? — ikki xil oʻlchovli retsept (retsept) [done]
 17. (PM-17 · kasr qoʻshish) Devorni ikki kunda boʻyash (hikoya)                      [done]
 18. (PM-18 · kasr koʻpaytirish) Yarimning uchdan biri — oshga yogʻ (oshxonadagi sahna) [done]
-19. (PM-19 · aralash sonlar) Ikki yarim soat — mashgʻulot jadvali (kundalik)         [next]
-20. (PM-20 · oʻnlik kasr) Tarozidagi raqamlar (hikoya)
-21. (PM-21 · oʻnlik amallar) Benzin va yoʻl — Samarqandga (sayohat qaydlari)
-22. (PM-22 · kasr↔foiz) Bitta son, uch xil libos (ilmiy-ommabop)
-23. (PM-23 · foiz) Bozordagi chegirma (hikoya)
-24. (PM-24 · foizdan butun) Imtihon natijasi — maktabdan xat (xat)
-25. (PM-25 · foiz oʻzgarishi) Narx oshdi, keyin tushdi — eski narxga qaytdimi? (yangilik)
-26. (PM-26 · chegirma/soliq) «Katta chegirma!» — reklama ortidagi hisob (sharh)
-27. (PM-27 · nisbat) Uch doʻst va bir savat olma (hikoya)
-28. (PM-28 · masshtab) Xaritadagi ikki santimetr (sayohat qaydlari)
+19. (PM-19 · aralash sonlar) Ikki yarim soat — mashgʻulot jadvali (kundalik)         [done]
+20. (PM-20 · oʻnlik kasr) Tarozidagi raqamlar (hikoya)                                [done]
+21. (PM-21 · oʻnlik amallar) Benzin va yoʻl — Samarqandga (sayohat qaydlari)          [done]
+22. (PM-22 · kasr↔foiz) Bitta son, uch xil libos (ilmiy-ommabop)                      [done]
+23. (PM-23 · foiz) Bozordagi chegirma (hikoya)                                        [done]
+24. (PM-24 · foizdan butun) Imtihon natijasi — maktabdan xat (xat)                    [done]
+25. (PM-25 · foiz oʻzgarishi) Narx oshdi, keyin tushdi — eski narxga qaytdimi? (yangilik) [done]
+26. (PM-26 · chegirma/soliq) «Katta chegirma!» — reklama ortidagi hisob (sharh)       [done]
+27. (PM-27 · nisbat) Uch doʻst va bir savat olma (hikoya)                             [done]
+28. (PM-28 · masshtab) Xaritadagi ikki santimetr (sayohat qaydlari)                   [next]
 
 ### Block C: Algebra tili (29–44)
 29. (PM-29 · nomaʼlum) X kim? — sinfdagi topishmoq (jumboq)

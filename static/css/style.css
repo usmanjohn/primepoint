@@ -3970,6 +3970,31 @@ table.pm-col {
 }
 .pm-est__t::before { content: "≈ "; }
 
+/* ── Wrong ✗ / Right ✓ pair, with the REASON line ──────────────────
+   The language courses' .pe-fix holds a bare .pe-bad / .pe-good pair —
+   in a language lesson the right form speaks for itself. Maths needs a
+   third line: WHY the wrong line is wrong (which step broke, and what
+   makes the mistake tempting). These element classes are the maths
+   variant of .pe-bad / .pe-good plus that reason line.
+   Docs: STYLE_GUIDE_PRIME_MATH.md section 5.                        */
+.pe-fix__bad, .pe-fix__good {
+    display: flex; align-items: flex-start; gap: .55rem;
+    padding: .5rem .8rem;
+    border-radius: 10px;
+    font-size: .95rem;
+}
+.pe-fix__bad  { background: rgba(220,38,38,.07); color: var(--text); }
+.pe-fix__good { background: rgba(22,163,74,.08); color: var(--text); }
+.pe-fix__bad::before  { content: '✗'; color: var(--pe-warn); font-weight: 800; }
+.pe-fix__good::before { content: '✓'; color: var(--pe-ok);   font-weight: 800; }
+.pe-fix__bad s { text-decoration-color: var(--pe-warn); }
+.pe-fix__why {
+    margin: 0;
+    padding: .1rem .8rem 0 1.35rem;
+    font-size: .9rem;
+    color: var(--text-muted, #6b7280);
+}
+
 /* ── Mobile ────────────────────────────────────────────────────── */
 @media (max-width: 575.98px) {
     .pm-solve__row { grid-template-columns: 1fr; gap: .2rem; padding: .55rem .75rem; }

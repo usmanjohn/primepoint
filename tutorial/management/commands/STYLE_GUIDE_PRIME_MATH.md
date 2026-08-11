@@ -177,6 +177,18 @@ solution as a paragraph when it can be a ladder.
 </div>
 ```
 
+### Wrong ✗ / right ✓ pair — with the reason line
+The language courses put a bare `.pe-bad` / `.pe-good` pair inside `.pe-fix`. Maths needs a
+third line: **why** the wrong line is wrong. Use the maths variant — the same red/green
+chips plus a muted reason line — and always fill the `__why`:
+```html
+<div class="pe-fix">
+  <p class="pe-fix__bad">240 ning 30% i = 240 ÷ 30 = 8</p>
+  <p class="pe-fix__good">240 ning 30% i = 240 × 0,3 = 72</p>
+  <p class="pe-fix__why">Foizga boʻlingan. Boʻlish faqat <b>100</b> ga qilinadi.</p>
+</div>
+```
+
 ### Fraction, written properly
 ```html
 <span class="pm-frac"><span class="pm-frac__n">3</span><span class="pm-frac__d">4</span></span>

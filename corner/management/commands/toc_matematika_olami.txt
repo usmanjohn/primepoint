@@ -69,7 +69,7 @@ AUTHOR:     powerty
 ### Buyuk matematiklar (1–14)
 1.  Al-Xorazmiy: «algoritm» soʻzi qayerdan kelgan                            [done]
 2.  «Al-jabr» — algebra tugʻilgan kitob                                      [done]
-3.  Abu Rayhon Beruniy Yer radiusini qanday oʻlchagan
+3.  Abu Rayhon Beruniy Yer radiusini qanday oʻlchagan                        [done]
 4.  Mirzo Ulugʻbek rasadxonasi: burchak, sabr va yulduzlar
 5.  Umar Xayyom — ham shoir, ham tenglama yechuvchi
 6.  Fales va piramidaning soyasi
@@ -85,7 +85,7 @@ AUTHOR:     powerty
 ### Tabiatdagi matematika (15–22)
 15. Nega asalarilar uyni olti burchakli quradi                                [done]
 16. Qor parchasi: oltita nur, cheksiz naqsh
-17. Fibonachchi sonlari gul va qaragʻay qubbasida
+17. Fibonachchi sonlari gul va qaragʻay qubbasida                             [done]
 18. Chigʻanoqdagi spiral
 19. Daraxt shoxlari nega shunday tarmoqlanadi
 20. Nega katta hayvon sekin nafas oladi — oʻlcham matematikasi
@@ -95,9 +95,9 @@ AUTHOR:     powerty
 ### Kundalik hayotdagi matematika (23–32)
 23. Nega lyuk qopqogʻi dumaloq                                                [done]
 24. GPS uchta masofadan joyni qanday topadi
-25. Shtrix-koddagi oxirgi raqam nima uchun kerak
-26. Foiz ustiga foiz: pul qanday oʻsadi
-27. Gazetadagi diagrammaga nega ishonmaslik kerak
+25. Shtrix-koddagi oxirgi raqam nima uchun kerak                             [done]
+26. Foiz ustiga foiz: pul qanday oʻsadi                                       [done]
+27. Gazetadagi diagrammaga nega ishonmaslik kerak                            [done]
 28. Bir xil ovoz, uch xil gʻolib — sanash usullari
 29. Nega yoʻlda tirbandlik oʻz-oʻzidan paydo boʻladi
 30. Musiqa ichidagi kasrlar                                                  [done]
