@@ -68,7 +68,7 @@ AUTHOR:     powerty
 
 ### Buyuk matematiklar (1–14)
 1.  Al-Xorazmiy: «algoritm» soʻzi qayerdan kelgan                            [done]
-2.  «Al-jabr» — algebra tugʻilgan kitob
+2.  «Al-jabr» — algebra tugʻilgan kitob                                      [done]
 3.  Abu Rayhon Beruniy Yer radiusini qanday oʻlchagan
 4.  Mirzo Ulugʻbek rasadxonasi: burchak, sabr va yulduzlar
 5.  Umar Xayyom — ham shoir, ham tenglama yechuvchi
@@ -101,7 +101,7 @@ AUTHOR:     powerty
 28. Bir xil ovoz, uch xil gʻolib — sanash usullari
 29. Nega yoʻlda tirbandlik oʻz-oʻzidan paydo boʻladi
 30. Musiqa ichidagi kasrlar
-31. A4 qogʻozning sirli oʻlchami
+31. A4 qogʻozning sirli oʻlchami                                             [done]
 32. Telefoningiz xabarni qanday yashiradi
 
 ### Jumboq va sir (33–42)

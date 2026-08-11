@@ -29,15 +29,15 @@ TUTORIAL: PM-<n>:   (each practice links to its own tutorial)
 7. Tub va murakkab sonlar; koʻpaytuvchilarga ajratish               [done]
 8. EKUB va EKUK                                                     [done]
 9. Manfiy sonlar va son oʻqi                                        [done]
-10. Manfiy sonlarni qoʻshish va ayirish                             [next]
-11. Manfiy sonlarni koʻpaytirish va boʻlish
-12. Daraja
-13. Kvadrat ildiz va aniq kvadratlar
-14. Yaxlitlash va taqribiy hisob
+10. Manfiy sonlarni qoʻshish va ayirish                             [done]
+11. Manfiy sonlarni koʻpaytirish va boʻlish                         [done]
+12. Daraja                                                          [done]
+13. Kvadrat ildiz va aniq kvadratlar                                [done]
+14. Yaxlitlash va taqribiy hisob                                    [done]
 
 ### Block B: Kasr, oʻnlik, foiz, nisbat (15–28)   level: easy (15–28)
-15. Kasr nima
-16. Kasrlarni qisqartirish va taqqoslash
+15. Kasr nima                                                       [done]
+16. Kasrlarni qisqartirish va taqqoslash                            [next]
 17. Kasrlarni qoʻshish va ayirish
 18. Kasrlarni koʻpaytirish va boʻlish
 19. Aralash sonlar va notoʻgʻri kasrlar

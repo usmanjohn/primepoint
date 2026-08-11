@@ -142,15 +142,15 @@ AUTHOR:     powerty
 7.  (PM-7 · tub sonlar) Tub sonlar sirni qanday saqlaydi (ilmiy-ommabop)             [done]
 8.  (PM-8 · EKUB/EKUK) Ikki avtobus qachon bir vaqtda keladi (bekatdagi sahna)       [done]
 9.  (PM-9 · manfiy sonlar) Qish kundaligi — noldan pastda (kundalik)                 [done]
-10. (PM-10 · manfiy qoʻshish) Lift, qavatlar va yerto'la (hikoya)                    [next]
-11. (PM-11 · manfiy koʻpaytirish) Doʻkon daftaridagi qarz (hikoya)
-12. (PM-12 · daraja) Shaxmat taxtasidagi bugʻdoy — qadimiy rivoyat (tarix)
-13. (PM-13 · kvadrat ildiz) Kvadrat maydonning tomoni — usta hisobi (hikoya)
-14. (PM-14 · yaxlitlash) Buvijonning bozordagi taxmini (hikoya)
+10. (PM-10 · manfiy qoʻshish) Lift, qavatlar va yertoʻla (hikoya)                    [done]
+11. (PM-11 · manfiy koʻpaytirish) Doʻkon daftaridagi qarz (doʻkondagi dialog)        [done]
+12. (PM-12 · daraja) Shaxmat taxtasidagi bugʻdoy — qadimiy rivoyat (tarix)           [done]
+13. (PM-13 · kvadrat ildiz) Kvadrat maydonning tomoni — usta hisobi (hikoya)         [done]
+14. (PM-14 · yaxlitlash) Buvijonning bozordagi taxmini (bozordagi dialog)            [done]
 
 ### Block B: Kasr, oʻnlik, foiz, nisbat (15–28)
-15. (PM-15 · kasr) Bitta non, olti kishi (hikoya)
-16. (PM-16 · qisqartirish) Qaysi biri koʻproq? — ikki xil oʻlchovli retsept (retsept)
+15. (PM-15 · kasr) Bitta non, olti kishi (kundalik)                                  [done]
+16. (PM-16 · qisqartirish) Qaysi biri koʻproq? — ikki xil oʻlchovli retsept (retsept) [next]
 17. (PM-17 · kasr qoʻshish) Devorni ikki kunda boʻyash (hikoya)
 18. (PM-18 · kasr koʻpaytirish) Yarimning uchdan biri — oshga yogʻ (retsept)
 19. (PM-19 · aralash sonlar) Ikki yarim soat — mashgʻulot jadvali (kundalik)

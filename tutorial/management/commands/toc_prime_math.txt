@@ -45,15 +45,15 @@ PLAYLIST: Prime Math
 7. Tub va murakkab sonlar; tub koʻpaytuvchilarga ajratish                    [done]
 8. EKUB va EKUK — va ular qayerda kerak boʻladi                              [done]
 9. Manfiy sonlar va son oʻqi                                                 [done]
-10. Manfiy sonlarni qoʻshish va ayirish                                      [next]
-11. Manfiy sonlarni koʻpaytirish va boʻlish — ishoralar qoidasi
-12. Daraja: takroriy koʻpaytirishning qisqa yozuvi
-13. Kvadrat ildiz va aniq kvadratlar
-14. Yaxlitlash va taqribiy hisob — "javob mantiqiymi?"
+10. Manfiy sonlarni qoʻshish va ayirish                                      [done]
+11. Manfiy sonlarni koʻpaytirish va boʻlish — ishoralar qoidasi              [done]
+12. Daraja: takroriy koʻpaytirishning qisqa yozuvi                           [done]
+13. Kvadrat ildiz va aniq kvadratlar                                         [done]
+14. Yaxlitlash va taqribiy hisob — "javob mantiqiymi?"                       [done]
 
 ### Block B: Kasr, oʻnlik, foiz, nisbat (15–28)
-15. Kasr nima: butunning boʻlagi
-16. Kasrlarni qisqartirish va taqqoslash
+15. Kasr nima: butunning boʻlagi                                             [done]
+16. Kasrlarni qisqartirish va taqqoslash                                     [next]
 17. Kasrlarni qoʻshish va ayirish — umumiy maxraj
 18. Kasrlarni koʻpaytirish va boʻlish
 19. Aralash sonlar va notoʻgʻri kasrlar
