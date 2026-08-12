@@ -206,9 +206,9 @@ AUTHOR:     powerty
 63. (PM-63 · teng yonli) Uyning tomi (hikoya)                                         [done]
 64. (PM-64 · Pifagor) Oʻn ikki tugunli arqon — Misr geometriyasi (tarix)              [done]
 65. (PM-65 · Pifagor qoʻllanishi) Narvon devorga suyalganda (hikoya)                  [done]
-66. (PM-66 · toʻrtburchaklar) Gilam naqshidagi shakllar (sharh)
-67. (PM-67 · perimetr) Bogʻga panjara (hikoya)
-68. (PM-68 · yuza 1) Sinf polini qoplash (hikoya)
+66. (PM-66 · toʻrtburchaklar) Gilam naqshidagi shakllar (sharh)                       [done]
+67. (PM-67 · perimetr) Bogʻga panjara (hikoya)                                        [done]
+68. (PM-68 · yuza 1) Sinf polini qoplash (kundalik)                                   [done]
 69. (PM-69 · yuza 2) Notekis dala (hikoya)
 70. (PM-70 · π) Arqon, gʻildirak va π ning tarixi (tarix)
 71. (PM-71 · aylana) Gʻildirak necha marta aylanadi (ilmiy-ommabop)

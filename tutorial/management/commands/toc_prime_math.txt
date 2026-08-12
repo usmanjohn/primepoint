@@ -109,9 +109,9 @@ PLAYLIST: Prime Math
 63. Teng yonli va teng tomonli uchburchak                                     [done]
 64. Pifagor teoremasi — va nega u ishlaydi                                    [done]
 65. Pifagorning hayotdagi qoʻllanishi                                         [done]
-66. Toʻrtburchaklar oilasi: kvadrat, romb, parallelogramm, trapetsiya
-67. Perimetr — chegaraning uzunligi
-68. Yuza 1: toʻgʻri toʻrtburchak va uchburchak
+66. Toʻrtburchaklar oilasi: kvadrat, romb, parallelogramm, trapetsiya         [done]
+67. Perimetr — chegaraning uzunligi                                           [done]
+68. Yuza 1: toʻgʻri toʻrtburchak va uchburchak                                [done]
 69. Yuza 2: parallelogramm, trapetsiya va murakkab shakllar
 70. Doira va aylana; π qayerdan chiqqan
 71. Aylana uzunligi va doira yuzasi

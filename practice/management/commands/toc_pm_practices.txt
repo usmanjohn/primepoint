@@ -93,9 +93,9 @@ TUTORIAL: PM-<n>:   (each practice links to its own tutorial)
 63. Teng yonli va teng tomonli uchburchak                           [done]
 64. Pifagor teoremasi                                               [done]
 65. Pifagorning qoʻllanishi                                         [done]
-66. Toʻrtburchaklar oilasi
-67. Perimetr
-68. Yuza 1: toʻgʻri toʻrtburchak va uchburchak
+66. Toʻrtburchaklar oilasi                                          [done]
+67. Perimetr                                                        [done]
+68. Yuza 1: toʻgʻri toʻrtburchak va uchburchak                      [done]
 69. Yuza 2: parallelogramm, trapetsiya, murakkab shakl
 70. Doira va aylana; π
 71. Aylana uzunligi va doira yuzasi
