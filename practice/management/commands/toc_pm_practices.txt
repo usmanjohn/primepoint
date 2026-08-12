@@ -90,9 +90,9 @@ TUTORIAL: PM-<n>:   (each practice links to its own tutorial)
 60. Parallel chiziqlar va kesuvchi                                  [done]
 61. Uchburchak turlari va burchaklar yigʻindisi                     [done]
 62. Uchburchak tengsizligi                                          [done]
-63. Teng yonli va teng tomonli uchburchak
-64. Pifagor teoremasi
-65. Pifagorning qoʻllanishi
+63. Teng yonli va teng tomonli uchburchak                           [done]
+64. Pifagor teoremasi                                               [done]
+65. Pifagorning qoʻllanishi                                         [done]
 66. Toʻrtburchaklar oilasi
 67. Perimetr
 68. Yuza 1: toʻgʻri toʻrtburchak va uchburchak
