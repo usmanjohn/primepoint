@@ -200,9 +200,9 @@ AUTHOR:     powerty
 57. (PM-57 · geometriya alifbosi) Chizgʻich va qalam — birinchi chizma (hikoya)       [done]
 58. (PM-58 · burchak) Soat millari orasidagi burchak (jumboq)                         [done]
 59. (PM-59 · burchak juftliklari) Chorrahadagi burchaklar (ilmiy-ommabop)             [done]
-60. (PM-60 · parallel) Temir yoʻl, shpallar va koʻz aldanishi (ilmiy-ommabop)
-61. (PM-61 · uchburchak) Nega uchburchak eng mustahkam shakl (ilmiy-ommabop)
-62. (PM-62 · uchburchak tengsizligi) Uch tayoq — uchburchak chiqadimi? (jumboq)
+60. (PM-60 · parallel) Temir yoʻl, shpallar va koʻz aldanishi (hikoya)                [done]
+61. (PM-61 · uchburchak) Nega uchburchak eng mustahkam shakl (ilmiy-ommabop)          [done]
+62. (PM-62 · uchburchak tengsizligi) Uch tayoq — uchburchak chiqadimi? (jumboq)       [done]
 63. (PM-63 · teng yonli) Uyning tomi (hikoya)
 64. (PM-64 · Pifagor) Oʻn ikki tugunli arqon — Misr geometriyasi (tarix)
 65. (PM-65 · Pifagor qoʻllanishi) Narvon devorga suyalganda (hikoya)

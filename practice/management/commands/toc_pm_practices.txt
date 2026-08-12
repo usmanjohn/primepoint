@@ -87,9 +87,9 @@ TUTORIAL: PM-<n>:   (each practice links to its own tutorial)
 57. Nuqta, chiziq, kesma, nur                                       [done]
 58. Burchak va uni oʻlchash                                         [done]
 59. Burchak juftliklari                                             [done]
-60. Parallel chiziqlar va kesuvchi
-61. Uchburchak turlari va burchaklar yigʻindisi
-62. Uchburchak tengsizligi
+60. Parallel chiziqlar va kesuvchi                                  [done]
+61. Uchburchak turlari va burchaklar yigʻindisi                     [done]
+62. Uchburchak tengsizligi                                          [done]
 63. Teng yonli va teng tomonli uchburchak
 64. Pifagor teoremasi
 65. Pifagorning qoʻllanishi

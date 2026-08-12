@@ -103,9 +103,9 @@ PLAYLIST: Prime Math
 57. Nuqta, chiziq, kesma, nur — geometriya alifbosi                          [done]
 58. Burchak va uni oʻlchash                                                  [done]
 59. Burchak juftliklari: qoʻshni, vertikal, toʻldiruvchi                     [done]
-60. Parallel chiziqlar va kesuvchi hosil qilgan burchaklar
-61. Uchburchak turlari va burchaklar yigʻindisi
-62. Uchburchak tengsizligi: tomon va burchak bogʻliqligi
+60. Parallel chiziqlar va kesuvchi hosil qilgan burchaklar                   [done]
+61. Uchburchak turlari va burchaklar yigʻindisi                              [done]
+62. Uchburchak tengsizligi: tomon va burchak bogʻliqligi                     [done]
 63. Teng yonli va teng tomonli uchburchak
 64. Pifagor teoremasi — va nega u ishlaydi
 65. Pifagorning hayotdagi qoʻllanishi
