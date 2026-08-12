@@ -79,14 +79,14 @@ TUTORIAL: PM-<n>:   (each practice links to its own tutorial)
 51. Real hayot grafigini oʻqish                                     [done]
 52. Ikki chiziqning kesishishi                                      [done]
 53. Sistema: oʻrniga qoʻyish usuli                                  [done]
-54. Sistema: qoʻshish usuli
-55. Sistemali matnli masalalar
-56. Parabola bilan tanishuv
+54. Sistema: qoʻshish usuli                                         [done]
+55. Sistemali matnli masalalar                                      [done]
+56. Parabola bilan tanishuv                                         [done]
 
 ### Block E: Geometriya (57–74)   level: medium (70 gacha), hard (71 dan)
-57. Nuqta, chiziq, kesma, nur
-58. Burchak va uni oʻlchash
-59. Burchak juftliklari
+57. Nuqta, chiziq, kesma, nur                                       [done]
+58. Burchak va uni oʻlchash                                         [done]
+59. Burchak juftliklari                                             [done]
 60. Parallel chiziqlar va kesuvchi
 61. Uchburchak turlari va burchaklar yigʻindisi
 62. Uchburchak tengsizligi

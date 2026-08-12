@@ -95,14 +95,14 @@ PLAYLIST: Prime Math
 51. Real hayot grafigini oʻqish: tarif, harakat, oʻsish                      [done]
 52. Ikki chiziqning kesishishi — sistema nima                                [done]
 53. Sistemani oʻrniga qoʻyish usuli bilan yechish                            [done]
-54. Sistemani qoʻshish usuli bilan yechish
-55. Sistema bilan yechiladigan matnli masalalar
-56. Parabola bilan tanishuv: y = x²
+54. Sistemani qoʻshish usuli bilan yechish                                   [done]
+55. Sistema bilan yechiladigan matnli masalalar                              [done]
+56. Parabola bilan tanishuv: y = x²                                          [done]
 
 ### Block E: Geometriya (57–74)
-57. Nuqta, chiziq, kesma, nur — geometriya alifbosi
-58. Burchak va uni oʻlchash
-59. Burchak juftliklari: qoʻshni, vertikal, toʻldiruvchi
+57. Nuqta, chiziq, kesma, nur — geometriya alifbosi                          [done]
+58. Burchak va uni oʻlchash                                                  [done]
+59. Burchak juftliklari: qoʻshni, vertikal, toʻldiruvchi                     [done]
 60. Parallel chiziqlar va kesuvchi hosil qilgan burchaklar
 61. Uchburchak turlari va burchaklar yigʻindisi
 62. Uchburchak tengsizligi: tomon va burchak bogʻliqligi

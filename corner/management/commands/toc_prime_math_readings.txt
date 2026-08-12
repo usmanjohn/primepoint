@@ -192,14 +192,14 @@ AUTHOR:     powerty
 51. (PM-51 · grafik oʻqish) Grafik nima deyapti? — mavsum natijalari (sport)          [done]
 52. (PM-52 · kesishish) Qaysi tarif qachon foydali (sharh)                            [done]
 53. (PM-53 · sistema 1) Choy va non — kafedagi hisob (hikoya)                         [done]
-54. (PM-54 · sistema 2) Ikki xil chipta (hikoya)
-55. (PM-55 · sistemali masala) Tovuq va quyon — qadimiy masala (tarix)
-56. (PM-56 · parabola) Toʻpning yoʻli (sport)
+54. (PM-54 · sistema 2) Ikki xil chipta (hikoya)                                      [done]
+55. (PM-55 · sistemali masala) Tovuq va quyon — qadimiy masala (tarix)                [done]
+56. (PM-56 · parabola) Toʻpning yoʻli (sport)                                         [done]
 
 ### Block E: Geometriya (57–74)
-57. (PM-57 · geometriya alifbosi) Chizgʻich va qalam — birinchi chizma (hikoya)
-58. (PM-58 · burchak) Soat millari orasidagi burchak (jumboq)
-59. (PM-59 · burchak juftliklari) Chorrahadagi burchaklar (ilmiy-ommabop)
+57. (PM-57 · geometriya alifbosi) Chizgʻich va qalam — birinchi chizma (hikoya)       [done]
+58. (PM-58 · burchak) Soat millari orasidagi burchak (jumboq)                         [done]
+59. (PM-59 · burchak juftliklari) Chorrahadagi burchaklar (ilmiy-ommabop)             [done]
 60. (PM-60 · parallel) Temir yoʻl, shpallar va koʻz aldanishi (ilmiy-ommabop)
 61. (PM-61 · uchburchak) Nega uchburchak eng mustahkam shakl (ilmiy-ommabop)
 62. (PM-62 · uchburchak tengsizligi) Uch tayoq — uchburchak chiqadimi? (jumboq)
