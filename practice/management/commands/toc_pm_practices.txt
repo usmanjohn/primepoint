@@ -76,9 +76,9 @@ TUTORIAL: PM-<n>:   (each practice links to its own tutorial)
 48. Jadvaldan grafikka                                              [done]
 49. Chiziqli funksiya y = kx + b                                    [done]
 50. k va b ning maʼnosi                                             [done]
-51. Real hayot grafigini oʻqish
-52. Ikki chiziqning kesishishi
-53. Sistema: oʻrniga qoʻyish usuli
+51. Real hayot grafigini oʻqish                                     [done]
+52. Ikki chiziqning kesishishi                                      [done]
+53. Sistema: oʻrniga qoʻyish usuli                                  [done]
 54. Sistema: qoʻshish usuli
 55. Sistemali matnli masalalar
 56. Parabola bilan tanishuv

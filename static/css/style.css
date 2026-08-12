@@ -3086,8 +3086,36 @@ h1, h2, h3, h4, h5, h6, .font-display {
 .pe-recap li { margin-bottom: .35rem; }
 
 /* ── Table wrapper (mobile scroll) ─────────────────────────────── */
+/* The wrapper scrolls, so on a phone the TABLE has to be allowed to grow wider
+   than it. `.tut-prose table` and `.pm-word` both set width:100%, which pinned
+   the table to the screen — so instead of overflowing, the browser squeezed the
+   flexible columns down to their minimum, and `.tut-prose`'s
+   word-break:break-word then chopped those columns one character per line
+   (PM-50's "k va b nimani bildiradi" read vertically on a phone).
+   Desktop keeps width:100% — at that size the squeeze is harmless and a
+   scrollbar would be noise. The grow-and-scroll behaviour is scoped to narrow
+   SCREENS in the media query at the end of this block. */
 .pe-table-wrap { overflow-x: auto; margin: 1.2rem 0; -webkit-overflow-scrolling: touch; }
-.pe-table-wrap table { margin: 0; min-width: 380px; }
+/* Wide enough to fit: behave exactly as before — fill the column, no scroll. */
+.pe-table-wrap table { margin: 0; width: 100%; }
+/* A cell wraps between its words, never inside one. Undoes the break-word
+   that `.tut-prose` sets for CKEditor content. */
+.pe-table-wrap th,
+.pe-table-wrap td {
+    word-break: normal;
+    overflow-wrap: normal;
+}
+/* `screen` is load-bearing: an unqualified media query also matches PRINT, and
+   the A5 printed book (~559px) would match this width — a max-content table
+   inside print_sheet.css's `overflow: visible` wrapper would then bleed off
+   the page. Paper always gets the width:100% version above. */
+@media screen and (max-width: 767.98px) {
+    .pe-table-wrap table {
+        width: max-content;   /* as wide as the content actually needs */
+        min-width: 100%;      /* but never narrower than the wrapper */
+        max-width: 42rem;     /* and never so wide the phone scrolls forever */
+    }
+}
 
 /* ── Level badge ───────────────────────────────────────────────── */
 .pe-badge {
@@ -4005,6 +4033,9 @@ table.pm-col {
     .pm-model__lbl { flex: 0 0 100%; text-align: left; }
     .pm-word { font-size: .88rem; }
     .pm-word th, .pm-word td { padding: .4rem .35rem; }
+    /* the nowrap formula column is the widest thing in the table — shrink it
+       so the two text columns keep a readable share of the width */
+    .pm-word__sym { font-size: 1rem; }
     .pm-col { font-size: 1.15rem; }
     .pm-num { padding: 0 1.4rem; }
     .pm-num__tick i { font-size: .72rem; }

@@ -189,9 +189,9 @@ AUTHOR:     powerty
 48. (PM-48 · jadval→grafik) Bir haftalik harorat (yangilik)                           [done]
 49. (PM-49 · y = kx + b) Taksi hisobi grafikda (ilmiy-ommabop)                        [done]
 50. (PM-50 · k va b) Ikki tarif, ikki chiziq (sharh)                                  [done]
-51. (PM-51 · grafik oʻqish) Grafik nima deyapti? — mavsum natijalari (sport)
-52. (PM-52 · kesishish) Qaysi tarif qachon foydali (sharh)
-53. (PM-53 · sistema 1) Choy va non — kafedagi hisob (hikoya)
+51. (PM-51 · grafik oʻqish) Grafik nima deyapti? — mavsum natijalari (sport)          [done]
+52. (PM-52 · kesishish) Qaysi tarif qachon foydali (sharh)                            [done]
+53. (PM-53 · sistema 1) Choy va non — kafedagi hisob (hikoya)                         [done]
 54. (PM-54 · sistema 2) Ikki xil chipta (hikoya)
 55. (PM-55 · sistemali masala) Tovuq va quyon — qadimiy masala (tarix)
 56. (PM-56 · parabola) Toʻpning yoʻli (sport)

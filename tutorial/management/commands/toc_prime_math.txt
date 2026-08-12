@@ -92,9 +92,9 @@ PLAYLIST: Prime Math
 48. Jadvaldan grafikka                                                       [done]
 49. Chiziqli funksiya y = kx + b                                             [done]
 50. k va b nimani bildiradi — grafikning real maʼnosi                        [done]
-51. Real hayot grafigini oʻqish: tarif, harakat, oʻsish
-52. Ikki chiziqning kesishishi — sistema nima
-53. Sistemani oʻrniga qoʻyish usuli bilan yechish
+51. Real hayot grafigini oʻqish: tarif, harakat, oʻsish                      [done]
+52. Ikki chiziqning kesishishi — sistema nima                                [done]
+53. Sistemani oʻrniga qoʻyish usuli bilan yechish                            [done]
 54. Sistemani qoʻshish usuli bilan yechish
 55. Sistema bilan yechiladigan matnli masalalar
 56. Parabola bilan tanishuv: y = x²
