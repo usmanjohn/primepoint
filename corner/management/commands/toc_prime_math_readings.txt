@@ -183,12 +183,12 @@ AUTHOR:     powerty
 44. (PM-44 · qisqa koʻpaytirish) Ustaning tez hisoblash hiylasi (hikoya)              [done]
 
 ### Block D: Koordinata, funksiya, grafik (45–56)
-45. (PM-45 · koordinata) Kemadagi manzil — xarita katakchalari (tarix)
-46. (PM-46 · masofa) Ikki uy orasidagi toʻgʻri yoʻl (hikoya)
-47. (PM-47 · funksiya) Mashina qanday ishlaydi: kirish va chiqish (ilmiy-ommabop)
-48. (PM-48 · jadval→grafik) Bir haftalik harorat (yangilik)
-49. (PM-49 · y = kx + b) Taksi hisobi grafikda (ilmiy-ommabop)
-50. (PM-50 · k va b) Ikki tarif, ikki chiziq (sharh)
+45. (PM-45 · koordinata) Kemadagi manzil — xarita katakchalari (tarix)                [done]
+46. (PM-46 · masofa) Ikki uy orasidagi yoʻl (hikoya)                                  [done]
+47. (PM-47 · funksiya) Mashina qanday ishlaydi: kirish va chiqish (ilmiy-ommabop)     [done]
+48. (PM-48 · jadval→grafik) Bir haftalik harorat (yangilik)                           [done]
+49. (PM-49 · y = kx + b) Taksi hisobi grafikda (ilmiy-ommabop)                        [done]
+50. (PM-50 · k va b) Ikki tarif, ikki chiziq (sharh)                                  [done]
 51. (PM-51 · grafik oʻqish) Grafik nima deyapti? — mavsum natijalari (sport)
 52. (PM-52 · kesishish) Qaysi tarif qachon foydali (sharh)
 53. (PM-53 · sistema 1) Choy va non — kafedagi hisob (hikoya)

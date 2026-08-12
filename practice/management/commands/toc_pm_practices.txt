@@ -70,12 +70,12 @@ TUTORIAL: PM-<n>:   (each practice links to its own tutorial)
 44. Qisqa koʻpaytirish formulalari                                  [done]
 
 ### Block D: Koordinata, funksiya, grafik (45–56)   level: medium
-45. Koordinata tekisligi
-46. Masofa va kesmaning oʻrtasi
-47. Funksiya gʻoyasi
-48. Jadvaldan grafikka
-49. Chiziqli funksiya y = kx + b
-50. k va b ning maʼnosi
+45. Koordinata tekisligi                                            [done]
+46. Masofa va kesmaning oʻrtasi                                     [done]
+47. Funksiya gʻoyasi                                                [done]
+48. Jadvaldan grafikka                                              [done]
+49. Chiziqli funksiya y = kx + b                                    [done]
+50. k va b ning maʼnosi                                             [done]
 51. Real hayot grafigini oʻqish
 52. Ikki chiziqning kesishishi
 53. Sistema: oʻrniga qoʻyish usuli

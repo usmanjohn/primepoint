@@ -86,12 +86,12 @@ PLAYLIST: Prime Math
 44. Qisqa koʻpaytirish formulalari va koʻpaytuvchilarga ajratish             [done]
 
 ### Block D: Koordinata, funksiya, grafik (45–56)
-45. Koordinata tekisligi: nuqtaning manzili
-46. Nuqtalar orasidagi masofa va kesmaning oʻrtasi
-47. Funksiya gʻoyasi: kirish → qoida → chiqish
-48. Jadvaldan grafikka
-49. Chiziqli funksiya y = kx + b
-50. k va b nimani bildiradi — grafikning real maʼnosi
+45. Koordinata tekisligi: nuqtaning manzili                                  [done]
+46. Nuqtalar orasidagi masofa va kesmaning oʻrtasi                           [done]
+47. Funksiya gʻoyasi: kirish → qoida → chiqish                               [done]
+48. Jadvaldan grafikka                                                       [done]
+49. Chiziqli funksiya y = kx + b                                             [done]
+50. k va b nimani bildiradi — grafikning real maʼnosi                        [done]
 51. Real hayot grafigini oʻqish: tarif, harakat, oʻsish
 52. Ikki chiziqning kesishishi — sistema nima
 53. Sistemani oʻrniga qoʻyish usuli bilan yechish
