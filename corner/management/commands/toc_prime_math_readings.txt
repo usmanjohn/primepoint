@@ -209,12 +209,12 @@ AUTHOR:     powerty
 66. (PM-66 · toʻrtburchaklar) Gilam naqshidagi shakllar (sharh)                       [done]
 67. (PM-67 · perimetr) Bogʻga panjara (hikoya)                                        [done]
 68. (PM-68 · yuza 1) Sinf polini qoplash (kundalik)                                   [done]
-69. (PM-69 · yuza 2) Notekis dala (hikoya)
-70. (PM-70 · π) Arqon, gʻildirak va π ning tarixi (tarix)
-71. (PM-71 · aylana) Gʻildirak necha marta aylanadi (ilmiy-ommabop)
-72. (PM-72 · oʻxshashlik) Soya bilan minorani oʻlchash — Fales usuli (tarix)
-73. (PM-73 · simmetriya) Samarqand gumbazidagi naqsh (sharh)
-74. (PM-74 · hajm) Suv baki necha chelak (hikoya)
+69. (PM-69 · yuza 2) Notekis dala (hikoya)                                            [done]
+70. (PM-70 · π) Arqon, gʻildirak va π ning tarixi (tarix)                             [done]
+71. (PM-71 · aylana) Gʻildirak necha marta aylanadi (ilmiy-ommabop)                   [done]
+72. (PM-72 · oʻxshashlik) Soya bilan minorani oʻlchash — Fales usuli (tarix)          [done]
+73. (PM-73 · simmetriya) Samarqand gumbazidagi naqsh (sharh)                          [done]
+74. (PM-74 · hajm) Suv baki necha chelak (hikoya)                                     [done]
 
 ### Block F: Maʼlumot va ehtimollik (75–84)
 75. (PM-75 · maʼlumot) Sinfda kim nima yeydi — soʻrovnoma hisoboti (intervyu)

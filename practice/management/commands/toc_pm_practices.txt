@@ -96,12 +96,12 @@ TUTORIAL: PM-<n>:   (each practice links to its own tutorial)
 66. Toʻrtburchaklar oilasi                                          [done]
 67. Perimetr                                                        [done]
 68. Yuza 1: toʻgʻri toʻrtburchak va uchburchak                      [done]
-69. Yuza 2: parallelogramm, trapetsiya, murakkab shakl
-70. Doira va aylana; π
-71. Aylana uzunligi va doira yuzasi
-72. Oʻxshashlik va masshtab
-73. Simmetriya, koʻchirish va burilish
-74. Fazoviy shakllar: hajm va sirt
+69. Yuza 2: parallelogramm, trapetsiya, murakkab shakl              [done]
+70. Doira va aylana; π                                              [done]
+71. Aylana uzunligi va doira yuzasi                                 [done]
+72. Oʻxshashlik va masshtab                                         [done]
+73. Simmetriya, koʻchirish va burilish                              [done]
+74. Fazoviy shakllar: hajm va sirt                                  [done]
 
 ### Block F: Maʼlumot va ehtimollik (75–84)   level: hard
 75. Maʼlumot yigʻish va jadval

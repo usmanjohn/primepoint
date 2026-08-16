@@ -1,3 +1,4 @@
+
 # ── Subject metadata (read by Claude) ────────────────────────────────
 PREFIX:   PM
 CATEGORY: math
@@ -112,12 +113,12 @@ PLAYLIST: Prime Math
 66. Toʻrtburchaklar oilasi: kvadrat, romb, parallelogramm, trapetsiya         [done]
 67. Perimetr — chegaraning uzunligi                                           [done]
 68. Yuza 1: toʻgʻri toʻrtburchak va uchburchak                                [done]
-69. Yuza 2: parallelogramm, trapetsiya va murakkab shakllar
-70. Doira va aylana; π qayerdan chiqqan
-71. Aylana uzunligi va doira yuzasi
-72. Oʻxshashlik va masshtab: kichik chizma, katta dunyo
-73. Simmetriya, koʻchirish va burilish
-74. Fazoviy shakllar: hajm va sirt yuzasi
+69. Yuza 2: parallelogramm, trapetsiya va murakkab shakllar                   [done]
+70. Doira va aylana; π qayerdan chiqqan                                       [done]
+71. Aylana uzunligi va doira yuzasi                                           [done]
+72. Oʻxshashlik va masshtab: kichik chizma, katta dunyo                      [done]
+73. Simmetriya, koʻchirish va burilish                                       [done]
+74. Fazoviy shakllar: hajm va sirt yuzasi                                    [done]
 
 ### Block F: Maʼlumot va ehtimollik (75–84)
 75. Maʼlumot yigʻish va uni jadvalga solish
