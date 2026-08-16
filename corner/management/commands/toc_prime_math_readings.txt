@@ -217,15 +217,15 @@ AUTHOR:     powerty
 74. (PM-74 · hajm) Suv baki necha chelak (hikoya)                                     [done]
 
 ### Block F: Maʼlumot va ehtimollik (75–84)
-75. (PM-75 · maʼlumot) Sinfda kim nima yeydi — soʻrovnoma hisoboti (intervyu)
-76. (PM-76 · diagramma turlari) Qaysi diagramma toʻgʻri gapiradi (ilmiy-ommabop)
-77. (PM-77 · diagramma oʻqish) Bir yillik yomgʻir (yangilik)
-78. (PM-78 · oʻrta arifmetik) Oʻrtacha baho — kundalik daftar (kundalik)
-79. (PM-79 · mediana) «Oʻrtacha maosh» qanday aldaydi (ilmiy-ommabop)
-80. (PM-80 · tarqoqlik) Ikki jamoa, bir xil oʻrtacha (sport)
-81. (PM-81 · aldamchi diagramma) Reklamadagi ustunlar (sharh)
-82. (PM-82 · sanash) Necha xil kiyim tanlash mumkin (hikoya)
-83. (PM-83 · ehtimollik) Tanga, zar va ob-havo bashorati (ilmiy-ommabop)
+75. (PM-75 · maʼlumot) Sinfda kim nima yeydi — soʻrovnoma hisoboti (intervyu)         [done]
+76. (PM-76 · diagramma turlari) Qaysi diagramma toʻgʻri gapiradi (ilmiy-ommabop)      [done]
+77. (PM-77 · diagramma oʻqish) Bir yillik yomgʻir (yangilik)                          [done]
+78. (PM-78 · oʻrta arifmetik) Oʻrtacha baho — kundalik daftar (kundalik)              [done]
+79. (PM-79 · mediana) «Oʻrtacha maosh» qanday aldaydi (ilmiy-ommabop)                 [done]
+80. (PM-80 · tarqoqlik) Ikki jamoa, bir xil oʻrtacha (sport)                          [done]
+81. (PM-81 · aldamchi diagramma) Reklamadagi ustunlar (sharh)                         [done]
+82. (PM-82 · sanash) Necha xil kiyim tanlash mumkin (hikoya)                          [done]
+83. (PM-83 · ehtimollik) Tanga, zar va ob-havo bashorati (ilmiy-ommabop)              [done]
 84. (PM-84 · ehtimollik hisobi) Lotereya nega yutqazadi (ilmiy-ommabop)
 
 ### Block G: Matnli masalalar ustaxonasi (85–94)

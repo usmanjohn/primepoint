@@ -312,7 +312,7 @@ izlanish shu uch raqamda yashaydi.</p>
                         "hisoblaydi?",
                 "choices": [
                     "Vaqtni tezlikka koʻpaytiradi",
-                    "Yoʻlni sun'iy yoʻldosh orqali oʻlchaydi",
+                    "Yoʻlni sunʼiy yoʻldosh orqali oʻlchaydi",
                     "Gʻildirakning diametrini aylanishlar soniga qoʻshadi",
                     "Aylanishlar sonini aylana uzunligiga koʻpaytiradi",
                 ],

@@ -573,7 +573,7 @@ uchun bizga <b>son oʻqi</b> kerak — u hech qachon aldamaydi.</p>
   </div>
   <div class="pe-card">
     <p class="pe-card__h"><span class="pe-card__n">2</span>Qavatlar</p>
-    <p>Liftda −1 va −2 — yerto'la qavatlari. 0 — kirish qavati.</p>
+    <p>Liftda −1 va −2 — yertoʻla qavatlari. 0 — kirish qavati.</p>
   </div>
   <div class="pe-card">
     <p class="pe-card__h"><span class="pe-card__n">3</span>Pul</p>
@@ -724,7 +724,7 @@ ikki manfiy sondan <b>nolga yaqinrogʻi</b> katta.</div>
   <p class="pe-quiz__q"><span class="pe-quiz__n">4</span>
      Lift 3-qavatda turibdi va besh qavat pastga tushdi. U qaysi qavatda?</p>
   <details class="pe-reveal"><summary>Javobni koʻrish</summary>
-    <div class="pe-reveal__a"><p><strong>−2-qavatda</strong> (ikkinchi yerto'la).
+    <div class="pe-reveal__a"><p><strong>−2-qavatda</strong> (ikkinchi yertoʻla).
     Son oʻqida 3 dan chapga besh qadam sanang: 2, 1, 0, −1, −2. Nol — kirish qavati,
     uni ham sanashni unutmang.</p></div>
   </details>
@@ -758,7 +758,7 @@ ikki manfiy sondan <b>nolga yaqinrogʻi</b> katta.</div>
 <div class="pe-recap">
   <p class="pe-recap__t">🎯 Esda tuting</p>
   <ul>
-    <li>Manfiy son — nolning <b>boshqa tomonidagi</b> son: sovuq, yerto'la, qarz.</li>
+    <li>Manfiy son — nolning <b>boshqa tomonidagi</b> son: sovuq, yertoʻla, qarz.</li>
     <li>Son oʻqida <b>oʻngdagi har doim katta</b> — bu yagona kerakli qoida.</li>
     <li>Ikki manfiydan <b>nolga yaqinrogʻi</b> katta: −2 &gt; −7.</li>
     <li>Qarama-qarshi sonlar noldan bir xil uzoqlikda turadi.</li>

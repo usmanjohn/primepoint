@@ -7,7 +7,7 @@ Written with STYLE_GUIDE_PM_PRACTICE.md · lesson list in toc_pm_practices.txt
 Ramp: 1–5 tanish · 6–12 qoʻllash · 13–16 farqlash · 17–18 xato topish ·
       19–20 matnli masala (har doim ikkita).
 
-Level: PM-69 va PM-70 `medium`, PM-71 dan boshlab `hard` (STYLE_GUIDE 1-bo'lim).
+Level: PM-69 va PM-70 `medium`, PM-71 dan boshlab `hard` (STYLE_GUIDE 1-boʻlim).
 
 ⚠️ `choices` EKRANLANADI — HTML teg yoʻq: variantlarda x<sup>2</sup> emas,
    Unicode ² yoziladi (m², sm²).

@@ -121,15 +121,15 @@ PLAYLIST: Prime Math
 74. Fazoviy shakllar: hajm va sirt yuzasi                                    [done]
 
 ### Block F: Maʼlumot va ehtimollik (75–84)
-75. Maʼlumot yigʻish va uni jadvalga solish
-76. Diagramma turlari: ustunli, chiziqli, doiraviy
-77. Diagrammani oʻqish — raqamlar ichidagi hikoya
-78. Oʻrta arifmetik
-79. Mediana va moda — qaysi biri haqiqatni toʻgʻriroq aytadi
-80. Tarqoqlik: eng katta va eng kichik orasidagi farq
-81. Aldamchi diagrammalar — statistika qanday yolgʻon gapiradi
-82. Sanash: koʻpaytirish prinsipi
-83. Ehtimollik gʻoyasi: 0 dan 1 gacha
+75. Maʼlumot yigʻish va uni jadvalga solish                                  [done]
+76. Diagramma turlari: ustunli, chiziqli, doiraviy                           [done]
+77. Diagrammani oʻqish — raqamlar ichidagi hikoya                            [done]
+78. Oʻrta arifmetik                                                          [done]
+79. Mediana va moda — qaysi biri haqiqatni toʻgʻriroq aytadi                 [done]
+80. Tarqoqlik: eng katta va eng kichik orasidagi farq                        [done]
+81. Aldamchi diagrammalar — statistika qanday yolgʻon gapiradi               [done]
+82. Sanash: koʻpaytirish prinsipi                                            [done]
+83. Ehtimollik gʻoyasi: 0 dan 1 gacha                                        [done]
 84. Ehtimollikni hisoblash va tajriba bilan tekshirish
 
 ### Block G: Matnli masalalar ustaxonasi (85–94)

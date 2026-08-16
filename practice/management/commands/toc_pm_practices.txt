@@ -104,15 +104,15 @@ TUTORIAL: PM-<n>:   (each practice links to its own tutorial)
 74. Fazoviy shakllar: hajm va sirt                                  [done]
 
 ### Block F: Maʼlumot va ehtimollik (75–84)   level: hard
-75. Maʼlumot yigʻish va jadval
-76. Diagramma turlari
-77. Diagrammani oʻqish
-78. Oʻrta arifmetik
-79. Mediana va moda
-80. Tarqoqlik
-81. Aldamchi diagrammalar
-82. Sanash: koʻpaytirish prinsipi
-83. Ehtimollik gʻoyasi
+75. Maʼlumot yigʻish va jadval                                      [done]
+76. Diagramma turlari                                               [done]
+77. Diagrammani oʻqish                                              [done]
+78. Oʻrta arifmetik                                                 [done]
+79. Mediana va moda                                                 [done]
+80. Tarqoqlik                                                       [done]
+81. Aldamchi diagrammalar                                           [done]
+82. Sanash: koʻpaytirish prinsipi                                   [done]
+83. Ehtimollik gʻoyasi                                              [done]
 84. Ehtimollikni hisoblash
 
 ### Block G: Matnli masalalar ustaxonasi (85–94)   level: hard

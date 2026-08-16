@@ -525,7 +525,7 @@ Q_PM9 = [
         "choices": ["2-qavatda", "4-qavatda", "−6-qavatda", "6-qavatda"],
         "correct": "2-qavatda",
         "explanation": "<p><strong>2-qavatda.</strong> Son oʻqida −2 dan oʻngga toʻrt "
-                       "qadam: −1, 0, 1, 2. Yerto'ladan chiqib, kirish qavatidan ham "
+                       "qadam: −1, 0, 1, 2. Yertoʻladan chiqib, kirish qavatidan ham "
                        "oʻtdi.</p>",
     },
     {

@@ -126,7 +126,7 @@ oʻyinchi mashgʻulotga kelolmadi.»</b></p>
 
 <p>Undan keyingi boʻlak esa butun grafikdagi eng
 <span class="cn-word" data-tr="chiziqning tikligi, oʻzgarish tezligi">tik</span>
-joy edi: 4 dan 10 ga, ya'ni <strong>+6</strong> ochko.</p>
+joy edi: 4 dan 10 ga, yaʼni <strong>+6</strong> ochko.</p>
 
 <p><b>«Mana shu boʻlak menga hammasidan koʻproq yoqadi»</b>, — dedi murabbiy.
 — <b>«Eng baland nuqta fevralda. Lekin eng katta oʻzgarish yanvarda boʻlgan.

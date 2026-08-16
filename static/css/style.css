@@ -2951,15 +2951,24 @@ h1, h2, h3, h4, h5, h6, .font-display {
 
 /* ── Numbered steps ────────────────────────────────────────────── */
 .pe-steps { list-style: none; padding: 0; margin: 1.2rem 0; counter-reset: pe-step; }
-.pe-steps > li {
+/* darslar ikki xil yozilgan: <ol class="pe-steps"> va
+   <div class="pe-steps"><ol> — ikkalasi ham qoʻllab-quvvatlanadi */
+.pe-steps > ol, .pe-steps > ul { list-style: none; padding: 0; margin: 0; }
+.pe-steps > li,
+.pe-steps > ol > li,
+.pe-steps > ul > li {
     position: relative;
     counter-increment: pe-step;
     padding: .1rem 0 .9rem 2.6rem;
     border-left: 2px dashed var(--border);
     margin-left: .85rem;
 }
-.pe-steps > li:last-child { border-left-color: transparent; padding-bottom: 0; }
-.pe-steps > li::before {
+.pe-steps > li:last-child,
+.pe-steps > ol > li:last-child,
+.pe-steps > ul > li:last-child { border-left-color: transparent; padding-bottom: 0; }
+.pe-steps > li::before,
+.pe-steps > ol > li::before,
+.pe-steps > ul > li::before {
     content: counter(pe-step);
     position: absolute; left: -.9rem; top: -.15rem;
     width: 28px; height: 28px;
@@ -4039,6 +4048,58 @@ table.pm-col {
     .pm-col { font-size: 1.15rem; }
     .pm-num { padding: 0 1.4rem; }
     .pm-num__tick i { font-size: .72rem; }
+}
+
+
+/* ── DIAGRAMMALAR — Blok F (PM-75…84) ──────────────────────────────
+   Ustunli, chiziqli va doiraviy diagrammalar uchun. Inline SVG,
+   .pm-fig ichida — pm-ln / pm-fill bilan bir qatorda ishlaydi.
+   Docs: STYLE_GUIDE_PRIME_MATH.md section 5 ("Diagrammalar").
+
+   RANG QOIDASI (o'ylab topilgan emas, hisoblangan):
+   • Ustunli va chiziqli diagramma — BITTA seriya, demak hamma ustun
+     bitta rangda (--pm-x). Ustunning uzunligi sonni allaqachon
+     ko'rsatib turibdi; ustunni qiymatiga qarab bo'yash identiflik
+     kanalini behuda sarflaydi va legenda talab qiladi.
+   • Doiraviy diagramma — bo'laklar KATTALIGI bo'yicha tartiblanadi,
+     ya'ni tartibli (ordinal) kattalik. Shuning uchun bitta rangning
+     to'rtta bosqichi: yorug'likda monoton (nisbiy yorqinlik 0.051 →
+     0.107 → 0.236 → 0.363), har biri oq fonda kamida 2,5:1 kontrast.
+     To'rt xil RANG ishlatilmadi: rang ko'rligida (protan/deutan) to'rt
+     hue ning hammasi bir vaqtda ajralib turmaydi, yorqinlik esa har
+     doim ajralib turadi — va A5 kitob oq-qora chop etilganda ham
+     shu ramp ishlaydi.
+   • Har bir ustun va har bir bo'lak YOZUV bilan belgilanadi. Rang
+     hech qachon yagona ajratuvchi bo'lmasligi kerak.                */
+.pm-ch__ax   { stroke: var(--text-muted); stroke-width: 1.5; fill: none; }
+.pm-ch__grid { stroke: var(--border); stroke-width: 1; fill: none; }
+.pm-ch__bar  { fill: var(--pm-x); }
+.pm-ch__bar--hl { fill: var(--pm-num); }
+.pm-ch__line { stroke: var(--pm-x); stroke-width: 2; fill: none;
+               stroke-linejoin: round; stroke-linecap: round; }
+.pm-ch__dot  { fill: var(--pm-x); stroke: var(--surface, #fff); stroke-width: 2; }
+/* doiraviy diagramma — bitta hue, tartibli to'rt bosqich (katta → kichik).
+   stroke: fon rangi = bo'laklar orasidagi 2px tirqish (mark spec).      */
+.pm-ch__s1 { fill: #1e3a8a; stroke: var(--surface, #fff); stroke-width: 2; }
+.pm-ch__s2 { fill: #1d4ed8; stroke: var(--surface, #fff); stroke-width: 2; }
+.pm-ch__s3 { fill: #3b82f6; stroke: var(--surface, #fff); stroke-width: 2; }
+.pm-ch__s4 { fill: #60a5fa; stroke: var(--surface, #fff); stroke-width: 2; }
+/* taqqoslash chizigʻi — maʼlumot ustiga tortiladi (oʻrtacha, mediana…).
+   Seriya rangida EMAS: u maʼlumot emas, maʼlumot haqidagi izoh, shuning
+   uchun boshqa rang va punktir. Yozuvi ustunlar qiymatiga tegib
+   ketmasligi kerak — baland ustunlarda tepaga, past ustunlarda chapga. */
+.pm-ch__ref {
+    stroke: var(--pm-num); stroke-width: 2;
+    stroke-dasharray: 6 4; fill: none;
+}
+/* diagramma yozuvlari — matn rangida, hech qachon seriya rangida */
+.pm-ch__lbl { fill: var(--text); font-size: 12px; font-weight: 600; }
+.pm-ch__val { fill: var(--text); font-size: 12px; font-weight: 800; }
+.pm-ch__cap { fill: var(--text-muted); font-size: 11px; font-weight: 600; }
+
+@media screen and (max-width: 480px) {
+    .pm-ch__lbl, .pm-ch__val { font-size: 11px; }
+    .pm-ch__cap { font-size: 10px; }
 }
 
 

@@ -265,7 +265,7 @@ deb atashgan. Ularning butun asbobi — bitta uzun arqon.</p>
 bogʻlangan boʻlardi, ikki uchi esa bir-biriga ulanib
 <span class="cn-word" data-tr="ikki uchi tutashtirilgan yopiq shakl">halqa</span>
 hosil qilardi. Yopiq halqada oʻn ikkita tugun oʻn ikkita
-<span class="cn-word" data-tr="teng qismlarga boʻlingan bir bo'lagi">teng boʻlak</span>
+<span class="cn-word" data-tr="teng qismlarga boʻlingan bir boʻlagi">teng boʻlak</span>
 beradi.</p>
 
 <p>Uch kishi halqani ushlaydi. Birinchisi <strong>3</strong> boʻlakni,

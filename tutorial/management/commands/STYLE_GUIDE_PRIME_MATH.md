@@ -271,6 +271,57 @@ Use it in every lesson of Block G, and whenever a new phrase appears.
 </div>
 ```
 
+### Diagrammalar (Blok F, PM-75…84)
+
+Charts are inline SVG inside a `.pm-fig`, using the `pm-ch__*` classes. **The colour
+rules below are computed, not chosen — do not "improve" them by hand.**
+
+- **Ustunli (bar) va chiziqli (line) — one series, one colour.** Every bar is
+  `.pm-ch__bar` (the same blue). The bar's *length* already encodes the number;
+  colouring bars by their value spends the identity channel on something the length
+  already says, and forces a legend nobody needs. Use `.pm-ch__bar--hl` for **one**
+  bar only, when the text singles that bar out.
+- **Doiraviy (pie) — one hue, four ordinal steps.** Slices are sorted **largest
+  first** and take `.pm-ch__s1 … .pm-ch__s4` in that order. Four different *hues*
+  were rejected: under protanopia/deuteranopia four hues do not all stay apart, and
+  the A5 printed book is greyscale — lightness survives both. Max 4 slices; a fifth
+  category folds into "boshqalar".
+- **Every bar and every slice is directly labelled** (`.pm-ch__lbl` for the name,
+  `.pm-ch__val` for the number). Colour is never the only thing telling two marks
+  apart, so no chart here needs a legend box.
+- **Reference lines** (`.pm-ch__ref`) mark a *statistic* over the data — the mean, the
+  median. They are deliberately not the series colour and not solid: they are a comment on
+  the data, not data. Put the label where no bar value can reach it — above the plot when
+  the bars are tall, on the left when they are short. Two reference lines close together
+  (mean vs median) get staggered heights, never the same y.
+- **Dot plots** (a `.pm-ch__ax` axis with `.pm-ch__dot` circles stacked at repeated values)
+  are the right form for showing *spread*, and the only honest way to draw two datasets
+  with the same mean side by side. Give each row ≥ 92px so the lower row's labels clear the
+  upper row's tick numbers.
+- **No dual axis, ever.** Two quantities with different scales = two diagrams.
+- Axis `.pm-ch__ax`, gridlines `.pm-ch__grid` (recessive — the data is the loudest
+  thing on the page). Label text uses text colours, never the series colour.
+- Bar chart geometry: bars anchored on the baseline, a gap of roughly a third of the
+  bar width between them, and the value written above the bar.
+
+```html
+<figure class="pm-fig">
+  <svg viewBox="0 0 320 210" role="img" aria-label="Sevimli meva — ustunli diagramma">
+    <line class="pm-ch__grid" x1="46" y1="40" x2="300" y2="40"/>
+    <line class="pm-ch__ax" x1="46" y1="160" x2="300" y2="160"/>
+    <rect class="pm-ch__bar" x="60" y="80" width="38" height="80"/>
+    <text class="pm-ch__val" x="70" y="72">8</text>
+    <text class="pm-ch__lbl" x="62" y="176">olma</text>
+  </svg>
+  <figcaption>20 oʻquvchidan 8 tasi olmani tanladi.</figcaption>
+</figure>
+```
+
+⚠️ Pie slices are **generated**, never hand-typed: an arc path whose angles are
+wrong is a lying figure. Use the batch's `gen_pm<range>.py` and let
+`verify_pm_<range>.py` re-measure every slice angle back to the data
+(`ulush ÷ jami × 360°`, and the four angles must sum to exactly 360).
+
 ### Colour meanings on this course
 `pe-chip--s` / `pe-hl--s` = **nomaʼlum (x)** · `--o` = **berilgan son** · `--v` = **amal** ·
 `--aux` = **birlik (kg, km, soʻm)** · `--neg` = **manfiy yoki xato** · `--adv` = **shart** ·
