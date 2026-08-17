@@ -87,7 +87,7 @@ STORIES = [
                 "answer": 2,
                 "explanation": "Oʻrtacha qaytim — yutuq fondi ÷ biletlar "
                                "soni: 4 000 000 ÷ 2 000 = 2 000 soʻm. "
-                               "Ya'ni 5 000 soʻmlik biletning haqiqiy "
+                               "Yaʼni 5 000 soʻmlik biletning haqiqiy "
                                "qiymati 2 000 soʻm ekan.",
             },
             {
@@ -147,7 +147,7 @@ hisobladi: 2 000 × 5 000 = <strong>10 000 000</strong> soʻm.</p>
 
 <p>Demak yutish
 <span class="cn-word" data-tr="hodisaning roʻy berish imkoniyati oʻlchovi">ehtimollik</span>i
-56 ÷ 2 000 = <strong>0,028</strong>, ya'ni 2,8
+56 ÷ 2 000 = <strong>0,028</strong>, yaʼni 2,8
 <span class="cn-word" data-tr="yuzdan boʻlak">foiz</span>.</p>
 
 <p>Yutmaslik ehtimolligini Sherbek sanab oʻtirmadi.

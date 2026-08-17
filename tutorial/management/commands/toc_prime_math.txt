@@ -145,9 +145,9 @@ PLAYLIST: Prime Math
 94. Oʻlchov birliklari; ortiqcha va yetishmayotgan maʼlumot                   [done]
 
 ### Block H: Mantiq va fikrlash usullari (95–100)
-95. Mantiqiy masalalar va jadval usuli
-96. Juftlik (juft-toq) gʻoyasi
-97. Dirixle prinsipi — kaptarxona qoidasi
-98. Teskaridan yurish
-99. Namuna izlash va umumlashtirish
-100. Yakuniy dars: 100 darsdan keyin siz qayerdasiz va endi nima qilasiz
+95. Mantiqiy masalalar va jadval usuli                                        [done]
+96. Juftlik (juft-toq) gʻoyasi                                                [done]
+97. Dirixle prinsipi — kaptarxona qoidasi                                     [done]
+98. Teskaridan yurish                                                         [done]
+99. Namuna izlash va umumlashtirish                                           [done]
+100. Yakuniy dars: 100 darsdan keyin siz qayerdasiz va endi nima qilasiz      [done]

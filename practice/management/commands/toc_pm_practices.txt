@@ -131,9 +131,9 @@ TUTORIAL: PM-<n>:   (each practice links to its own tutorial)
 94. Oʻlchov birliklari; ortiqcha maʼlumot                           [done]
 
 ### Block H: Mantiq va fikrlash usullari (95–100)   level: hard
-95. Mantiqiy masalalar va jadval usuli
-96. Juftlik gʻoyasi
-97. Dirixle prinsipi
-98. Teskaridan yurish
-99. Namuna izlash va umumlashtirish
-100. Yakuniy takror — 100 darsdan hammasi
+95. Mantiqiy masalalar va jadval usuli                              [done]
+96. Juftlik gʻoyasi                                                 [done]
+97. Dirixle prinsipi                                                [done]
+98. Teskaridan yurish                                               [done]
+99. Namuna izlash va umumlashtirish                                 [done]
+100. Yakuniy takror — 100 darsdan hammasi                           [done]

@@ -80,7 +80,7 @@ STORIES = [
                 "answer": 1,
                 "explanation": "U (10 + 15) ÷ 2 = 12,5 deb oʻrtachani "
                                "olgan. Lekin oʻrtacha ham 10 dan katta — "
-                               "ya'ni yordamchi kelgach ish sekinlashgan "
+                               "yaʼni yordamchi kelgach ish sekinlashgan "
                                "boʻlib chiqadi. Bu mantiqan "
                                "boʻlishi mumkin emas.",
             },
@@ -139,7 +139,7 @@ shu mavzuni endigina oʻtgan edi.</p>
 kunda kim qanchasini qilishini sanash kerak».</p>
 
 <p>U butun <span class="cn-word" data-tr="bajarilishi kerak boʻlgan toʻliq vazifa">ish</span>ni —
-ya'ni butun devorni — <strong>1</strong> deb belgiladi.</p>
+yaʼni butun devorni — <strong>1</strong> deb belgiladi.</p>
 
 <p>Karim aka bir kunda devorning oʻndan bir
 <span class="cn-word" data-tr="butunning teng boʻlaklaridan biri">qism</span>ini quradi:
@@ -272,7 +272,7 @@ Retsept boʻyicha
 esa 400 + 1600 = <strong>2000</strong> g.</p>
 
 <p>Demak <span class="cn-word" data-tr="sof moddaning umumiy massadagi ulushi">konsentratsiya</span>:
-400 ÷ 2000 = 0,20, ya'ni <strong>20</strong>
+400 ÷ 2000 = 0,20, yaʼni <strong>20</strong>
 <span class="cn-word" data-tr="yuzdan boʻlak">foiz</span>.</p>
 
 <p>Kompot haqiqatan juda shirin chiqdi. Dilnoza buvijon aytganday
@@ -424,7 +424,7 @@ boʻldi.</p>
 <p>Katta paket: <strong>3</strong> kg, <strong>111 000</strong> soʻm.
 Hisoblaymiz: 111 000 ÷ 3 = <strong>37 000</strong> soʻm/kg.</p>
 
-<p>Ya'ni katta paket kilogrammiga <strong>2 000</strong> soʻm
+<p>Yaʼni katta paket kilogrammiga <strong>2 000</strong> soʻm
 <b>qimmatroq</b>. Uning ustida esa oʻsha «tejamkor» yozuvi turardi.</p>
 
 <p>Bu <span class="cn-word" data-tr="haqiqatga toʻgʻri kelmaydigan gap">yolgʻon</span>

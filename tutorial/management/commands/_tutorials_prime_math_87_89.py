@@ -1209,7 +1209,7 @@ aylanadi.</p>
     <p><b>11:00 da.</b> 08:00 gacha birinchisi 50 × 2 = 100 km yurdi,
     demak ora 460 − 100 = 360 km. Yaqinlashish tezligi
     50 + 70 = 120 km/soat. t = 360 ÷ 120 = 3 soat, 08:00 dan boshlab —
-    ya'ni 11:00. Tekshirish: birinchisi 5 soatda 250 km, ikkinchisi
+    yaʼni 11:00. Tekshirish: birinchisi 5 soatda 250 km, ikkinchisi
     3 soatda 210 km; 250 + 210 = 460 ✓</p>
   </details>
 </div>

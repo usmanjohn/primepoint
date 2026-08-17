@@ -198,7 +198,7 @@ oldi.</p>
                 "answer": 2,
                 "explanation": "Yoʻl har kuni oʻsha 6 km edi. Sherbekni "
                                "qiziqtirgani — masofa oʻzgarmasa ham "
-                               "tezlik nega oʻzgarishi, ya'ni v = S ÷ t "
+                               "tezlik nega oʻzgarishi, yaʼni v = S ÷ t "
                                "da vaqtning roli.",
             },
             {

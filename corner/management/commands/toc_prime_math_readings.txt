@@ -241,9 +241,9 @@ AUTHOR:     powerty
 94. (PM-94 · birliklar) Retseptdagi xato — gramm va kilogramm (hikoya)                [done]
 
 ### Block H: Mantiq va fikrlash usullari (95–100)
-95. (PM-95 · mantiq) Kim qaysi kasb egasi? (jumboq)
-96. (PM-96 · juftlik) Oʻn beshta stakan (jumboq)
-97. (PM-97 · Dirixle) Toshkentda ikki kishining sochi bir xil (ilmiy-ommabop)
-98. (PM-98 · teskaridan yurish) Qopdagi yongʻoq (jumboq)
-99. (PM-99 · namuna) Gaussning bolaligi — 1 dan 100 gacha (tarix)
-100. (PM-100 · yakun) Yuz darsdan keyin — oʻquvchiga xat (xat)
+95. (PM-95 · mantiq) Kim qaysi kasb egasi? (jumboq)                                   [done]
+96. (PM-96 · juftlik) Oʻn beshta stakan (jumboq)                                      [done]
+97. (PM-97 · Dirixle) Toshkentda ikki kishining sochi bir xil (ilmiy-ommabop)         [done]
+98. (PM-98 · teskaridan yurish) Qopdagi yongʻoq (jumboq)                              [done]
+99. (PM-99 · namuna) Gaussning bolaligi — 1 dan 100 gacha (tarix)                     [done]
+100. (PM-100 · yakun) Yuz darsdan keyin — oʻquvchiga xat (xat)                        [done]

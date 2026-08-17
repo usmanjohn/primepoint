@@ -123,7 +123,7 @@ yozish mumkin.</p>
 <div class="pe-ex">
   <p class="pe-ex__math">u = 1 ÷ 12 = <sup>1</sup>/<sub>12</sub></p>
   <p class="pe-ex__uz">Ikkinchi usta bir kunda oʻn ikkidan bir
-  qismini quradi — ya'ni ikki barobar sekin.</p>
+  qismini quradi — yaʼni ikki barobar sekin.</p>
 </div>
 
 <div class="pe-call pe-tip">

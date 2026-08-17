@@ -161,7 +161,7 @@ Q_PM93 = [
         "explanation": "<p><strong>32.</strong> x + (x+1) + (x+2) = 96 → "
                        "3x + 3 = 96 → x = 31, sonlar 31, 32, 33. "
                        "Oʻrtadagisi 32 — u har doim yigʻindining uchdan "
-                       "biriga, ya'ni oʻrtacha arifmetikka teng "
+                       "biriga, yaʼni oʻrtacha arifmetikka teng "
                        "(PM-78).</p>",
     },
     {
@@ -435,7 +435,7 @@ Q_PM94 = [
         "correct": "25 000 sm²",
         "explanation": "<p><strong>25 000 sm².</strong> "
                        "2,5 × 10 000 = 25 000. <strong>250</strong> — "
-                       "yuz barobar kichik javob, ya'ni kvadrat qoidasi "
+                       "yuz barobar kichik javob, yaʼni kvadrat qoidasi "
                        "unutilgan.</p>",
     },
     {

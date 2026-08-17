@@ -130,7 +130,7 @@ kerak… demak yarmi… yigirma yil?»</p>
 <p>«Toʻgʻri javob aytding», dedi bobo. «Lekin taxmin bilan aytding.
 Endi buni <b>bilib</b> ayt».</p>
 
-<p>Jasur daftar oldi. U x deb — ya'ni
+<p>Jasur daftar oldi. U x deb — yaʼni
 <span class="cn-word" data-tr="topilishi kerak boʻlgan miqdor">nomaʼlum</span>
 deb — oʻtadigan yillar sonini belgiladi. Muhimi
 shu ediki, x ikkalasiga ham qoʻshiladi — vaqt hamma uchun bir xil
@@ -235,7 +235,7 @@ boʻlsalar ham».</p>
                 "choices": ["125 g", "375 g", "500 g", "5 kg"],
                 "answer": 2,
                 "explanation": "Bir kishiga 1500 ÷ 12 = 125 g. Toʻrt "
-                               "kishiga 4 × 125 = 500 g, ya'ni 0,5 kg. "
+                               "kishiga 4 × 125 = 500 g, yaʼni 0,5 kg. "
                                "«5 kg» — daftardagi xato yozuv, u "
                                "toʻgʻri javobdan oʻn barobar katta.",
             },
@@ -291,7 +291,7 @@ kishiga bir yarim
 <span class="cn-word" data-tr="taom solinadigan idish; bu yerda oʻlchov sifatida">kosa</span>cha
 guruch — mantiqiy son.</p>
 
-<p>Toʻrt kishiga esa 4 × 125 = <strong>500</strong> g, ya'ni
+<p>Toʻrt kishiga esa 4 × 125 = <strong>500</strong> g, yaʼni
 <strong>0,5</strong>
 <span class="cn-word" data-tr="massaning asosiy oʻlchov birligi, 1000 gramm">kilogramm</span>
 kerak ekan.</p>

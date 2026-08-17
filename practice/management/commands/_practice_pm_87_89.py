@@ -355,7 +355,7 @@ Q_PM87 = [
                        "x ÷ 2 − 7 = 18 → x ÷ 2 = 25 → x = 50. "
                        "Tekshirish oldinga: 50 → 25 → 18 ✓ "
                        "<strong>36</strong> — 18 ni ikkilantirganda "
-                       "chiqadi, ya'ni 7 tani hisobga olmaganda.</p>",
+                       "chiqadi, yaʼni 7 tani hisobga olmaganda.</p>",
     },
 ]
 
@@ -426,7 +426,7 @@ Q_PM88 = [
         "explanation": "<p><strong>12 km.</strong> 45 minut = 45 ÷ 60 = "
                        "0,75 soat. S = 16 × 0,75 = 12 km. "
                        "<strong>720</strong> — 16 × 45 qilinganda "
-                       "chiqadi, ya'ni birlik moslanmaganda; bunday "
+                       "chiqadi, yaʼni birlik moslanmaganda; bunday "
                        "javob darrov mantiqsizligi bilan koʻzga "
                        "tashlanadi.</p>",
     },
@@ -450,7 +450,7 @@ Q_PM88 = [
                        "oʻtish uchun 3,6 ga boʻlinadi: 72 ÷ 3,6 = 20. "
                        "Tekshirish: 20 m/s × 3600 s = 72 000 m = "
                        "72 km ✓ <strong>259</strong> — 3,6 ga "
-                       "koʻpaytirilganda, ya'ni teskari yoʻnalishda "
+                       "koʻpaytirilganda, yaʼni teskari yoʻnalishda "
                        "chiqadi.</p>",
     },
     {
@@ -462,7 +462,7 @@ Q_PM88 = [
         "explanation": "<p><strong>72 km/soat.</strong> 10 minut = "
                        "10 ÷ 60 = 1/6 soat. v = 12 ÷ (1/6) = 12 × 6 = "
                        "72 km/soat. <strong>1,2</strong> — 12 ni 10 ga "
-                       "boʻlganda, ya'ni minutni soatga "
+                       "boʻlganda, yaʼni minutni soatga "
                        "oʻgirmaganda.</p>",
     },
     {
@@ -629,7 +629,7 @@ Q_PM88 = [
                        "0,3 soat. v = 1,5 ÷ 0,3 = 5 km/soat. "
                        "Tekshirish: 5 × 0,3 = 1,5 ✓ "
                        "<strong>0,08</strong> — 1,5 ni 18 ga "
-                       "boʻlganda chiqadi, ya'ni birlik "
+                       "boʻlganda chiqadi, yaʼni birlik "
                        "moslanmaganda.</p>",
     },
     {
@@ -706,7 +706,7 @@ Q_PM89 = [
         "explanation": "<p><strong>Sekin mashina chiqqan shaharga "
                        "yaqinroq.</strong> Vaqt ikkalasi uchun bir xil, "
                        "shuning uchun tez mashina koʻproq yoʻl bosadi "
-                       "va uchrashuv nuqtasi undan uzoqroqda — ya'ni "
+                       "va uchrashuv nuqtasi undan uzoqroqda — yaʼni "
                        "sekin mashinaning shahriga yaqin boʻladi. "
                        "Oʻrtada uchrashish faqat tezliklar teng "
                        "boʻlganda.</p>",
@@ -945,7 +945,7 @@ Q_PM89 = [
                        "avtobus 60 × 1 = 60 km yurdi, demak ora "
                        "320 − 60 = 260 km. Yaqinlashish tezligi "
                        "60 + 70 = 130 km/soat, t = 260 ÷ 130 = 2 soat "
-                       "— 08:00 dan boshlab, ya'ni 10:00. Tekshirish: "
+                       "— 08:00 dan boshlab, yaʼni 10:00. Tekshirish: "
                        "birinchisi 3 soatda 180 km, ikkinchisi 2 soatda "
                        "140 km; 180 + 140 = 320 ✓ <strong>09:00</strong> "
                        "— boshlangʻich ustunlik oradan "

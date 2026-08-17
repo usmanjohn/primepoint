@@ -334,7 +334,7 @@ qoʻllaymiz.</p>
 <div class="pm-check">
   <p class="pm-check__t">Tekshiramiz</p>
   <p>Agar qutida 15 koʻk va 5 qizil shar boʻlsa, P(qizil) = 5 ÷ 20 =
-  0,25. Tajribada qizil 60 − 45 = 15 marta chiqqan, ya'ni chastotasi
+  0,25. Tajribada qizil 60 − 45 = 15 marta chiqqan, yaʼni chastotasi
   15 ÷ 60 = 0,25 ✓
   <br><b>Javob:</b> qutida taxminan 15 ta koʻk shar bor.</p>
 </div>
@@ -422,7 +422,7 @@ qoʻllaymiz.</p>
   <p class="pe-quiz__q">4. Sherbek knopkani 200 marta tashladi; u
   76 marta uchi bilan yuqoriga tushdi. Nisbiy chastotani toping.</p>
   <details class="pe-reveal"><summary>Javobni koʻrish</summary>
-    <p><b>0,38.</b> 76 ÷ 200 = 0,38, ya'ni 38%. Knopkani sanab
+    <p><b>0,38.</b> 76 ÷ 200 = 0,38, yaʼni 38%. Knopkani sanab
     hisoblab boʻlmaydi — faqat shunday tajriba yordam beradi.</p>
   </details>
 </div>
@@ -628,7 +628,7 @@ uchdan bir qismi edi. Afsonada qancha pul bor edi?</p>
 ikkinchisidan 12 ta koʻp. Har bir qutida nechtadan?</p>
 
 <p><b>1-qadam.</b> Berilgan: jami 84; farq 12. Soʻralgan: har bir
-qutidagi olmalar soni — ya'ni <b>ikkita</b> son.</p>
+qutidagi olmalar soni — yaʼni <b>ikkita</b> son.</p>
 
 <p><b>2-qadam.</b> x — ikkinchi qutidagi olmalar (kichigi). Unda
 birinchi quti — x + 12. Jami: x + (x + 12) = 84.</p>
@@ -1117,7 +1117,7 @@ har birida qancha pul bor edi?</p>
 
 <p>Sinf muzeyga bordi. Jami 30 kishi kirdi. Katta odam chiptasi
 15 000 soʻm, bola chiptasi 6 000 soʻm turadi. Chiptalarga hammasi
-bo'lib 225 000 soʻm toʻlandi.</p>
+boʻlib 225 000 soʻm toʻlandi.</p>
 
 <p><b>Nechta katta odam va nechta bola borgan?</b></p>
 

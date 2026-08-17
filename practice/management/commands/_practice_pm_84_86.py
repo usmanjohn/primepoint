@@ -81,7 +81,7 @@ Q_PM84 = [
         "choices": ["0,17", "0,33", "0,5", "0,67"],
         "correct": "0,5",
         "explanation": "<p><strong>0,5.</strong> Uchdan katta sonlar — 4, 5 "
-                       "va 6, ya'ni 3 ta qulay hol: 3 ÷ 6 = 0,5. "
+                       "va 6, yaʼni 3 ta qulay hol: 3 ÷ 6 = 0,5. "
                        "<strong>0,67</strong> — «3 dan kichik boʻlmagan» "
                        "deb oʻqilganda (3, 4, 5, 6 → 4 ÷ 6) chiqadi.</p>",
     },
@@ -128,7 +128,7 @@ Q_PM84 = [
         "correct": "0,08",
         "explanation": "<p><strong>0,08.</strong> Qulay hollar: (4; 6), "
                        "(5; 5), (6; 4) — 3 ta. Demak 3 ÷ 36 = 0,083 ≈ "
-                       "0,08. <strong>0,17</strong> — 6 ÷ 36, ya'ni "
+                       "0,08. <strong>0,17</strong> — 6 ÷ 36, yaʼni "
                        "yigʻindisi 7 boʻlgan hol.</p>",
     },
     {
@@ -302,7 +302,7 @@ Q_PM84 = [
         "correct": "Teskari hodisada boʻlish oʻrniga ayirish kerak edi",
         "explanation": "<p><strong>Teskari hodisada boʻlish oʻrniga ayirish "
                        "kerak edi.</strong> Toʻgʻrisi: 1 − 0,2 = 0,8, "
-                       "ya'ni 80%. Javob 5 chiqqani xatoni darrov "
+                       "yaʼni 80%. Javob 5 chiqqani xatoni darrov "
                        "koʻrsatib turibdi — ehtimollik hech qachon 1 dan "
                        "katta boʻlmaydi.</p>",
     },
@@ -374,7 +374,7 @@ Q_PM85 = [
         "correct": "x ÷ 2",
         "explanation": "<p><strong>x ÷ 2.</strong> «Yarmi» — ikkiga boʻlish. "
                        "<strong>2x</strong> — «ikki marta koʻp» degani, "
-                       "ya'ni teskarisi.</p>",
+                       "yaʼni teskarisi.</p>",
     },
     {
         "text": "<p>Toʻgʻri javobni tanlang.</p><p><strong>Masalani "
@@ -454,7 +454,7 @@ Q_PM85 = [
                        "x × <sup>4</sup>/<sub>5</sub> = 96 → x = 96 × 5 "
                        "÷ 4 = 120. Tekshirish: 120 ÷ 5 = 24 oʻqildi, "
                        "120 − 24 = 96 ✓ <strong>480</strong> — 96 ni "
-                       "shunchaki 5 ga koʻpaytirganda chiqadi, ya'ni 96 "
+                       "shunchaki 5 ga koʻpaytirganda chiqadi, yaʼni 96 "
                        "oʻqilgan deb oʻqilgan.</p>",
     },
     {
@@ -724,7 +724,7 @@ Q_PM86 = [
                        "x + 2x + 3x = 120 000 → 6x = 120 000 → "
                        "x = 20 000. Tekshirish: 20 000 + 40 000 + "
                        "60 000 = 120 000 ✓ <strong>40 000</strong> — "
-                       "120 000 ni 3 ga boʻlganda chiqadi, ya'ni "
+                       "120 000 ni 3 ga boʻlganda chiqadi, yaʼni "
                        "ulushlar teng deb olinganda.</p>",
     },
     {
@@ -914,7 +914,7 @@ Q_PM86 = [
         ],
         "correct": "4x + 10 = 90 → x = 20",
         "explanation": "<p><strong>4x + 10 = 90 → x = 20.</strong> "
-                       "x + 2x + (x + 10) = 90, ya'ni 4x + 10 = 90 → "
+                       "x + 2x + (x + 10) = 90, yaʼni 4x + 10 = 90 → "
                        "4x = 80 → x = 20. Sonlar 20, 40 va 30; "
                        "tekshirish: 20 + 40 + 30 = 90 ✓ "
                        "<strong>4x = 90</strong> — 10 unutilgan, "

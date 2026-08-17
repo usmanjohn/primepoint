@@ -233,7 +233,7 @@ Q_PM90 = [
                        "tezlashadi.</strong> 6 + 12 = 18 degan javob "
                        "ishning uch barobar sekinlashganini bildiradi — "
                        "maʼnosiz. Qoʻshiladigan narsa bir kunlik "
-                       "ulush, ya'ni unumdorlik.</p>",
+                       "ulush, yaʼni unumdorlik.</p>",
     },
     {
         "text": "<p>Toʻgʻri javobni tanlang.</p><p>Masalada birgalikdagi "
@@ -287,7 +287,7 @@ Q_PM90 = [
         ],
         "correct": "Kasrlarni qoʻshishda maxrajlar ham qoʻshilgan",
         "explanation": "<p><strong>Maxrajlar ham qoʻshilgan.</strong> "
-                       "Toʻgʻrisi: umumiy maxraj 24, ya'ni "
+                       "Toʻgʻrisi: umumiy maxraj 24, yaʼni "
                        "3/24 + 1/24 = 4/24 = 1/6 → 6 kun. "
                        "Unumdorliklarni qoʻshish gʻoyasi toʻgʻri edi, "
                        "faqat kasr amali buzilgan (PM-17).</p>",
