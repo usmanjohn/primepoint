@@ -234,11 +234,11 @@ AUTHOR:     powerty
 87. (PM-87 · chizma) Chizib yechilgan masala (qoʻllanma)                              [done]
 88. (PM-88 · tezlik) Maktabga velosipedda (kundalik)                                  [done]
 89. (PM-89 · uchrashuv) Ikki avtobus, bitta yoʻl (hikoya)                             [done]
-90. (PM-90 · ish) Ikki usta, bitta devor (hikoya)
-91. (PM-91 · aralashma) Choyga qancha shakar (retsept)
-92. (PM-92 · narx-miqdor) Katta paket haqiqatan arzonmi? (sharh)
-93. (PM-93 · yosh masalalari) Ota va oʻgʻil (jumboq)
-94. (PM-94 · birliklar) Retseptdagi xato — gramm va kilogramm (hikoya)
+90. (PM-90 · ish) Ikki usta, bitta devor (hikoya)                                     [done]
+91. (PM-91 · aralashma) Choyga qancha shakar (retsept)                                [done]
+92. (PM-92 · narx-miqdor) Katta paket haqiqatan arzonmi? (sharh)                      [done]
+93. (PM-93 · yosh masalalari) Ota va oʻgʻil (jumboq)                                  [done]
+94. (PM-94 · birliklar) Retseptdagi xato — gramm va kilogramm (hikoya)                [done]
 
 ### Block H: Mantiq va fikrlash usullari (95–100)
 95. (PM-95 · mantiq) Kim qaysi kasb egasi? (jumboq)

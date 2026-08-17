@@ -138,11 +138,11 @@ PLAYLIST: Prime Math
 87. Chizma va sxema — masalani koʻrish                                        [done]
 88. Harakat masalalari 1: tezlik, vaqt, masofa                                [done]
 89. Harakat masalalari 2: uchrashuv va quvish                                 [done]
-90. Ish va unumdorlik masalalari
-91. Aralashma va foizli masalalar
-92. Narx, miqdor, qiymat
-93. Yosh masalalari va sonlar haqidagi masalalar
-94. Oʻlchov birliklari; ortiqcha va yetishmayotgan maʼlumot
+90. Ish va unumdorlik masalalari                                              [done]
+91. Aralashma va foizli masalalar                                             [done]
+92. Narx, miqdor, qiymat                                                      [done]
+93. Yosh masalalari va sonlar haqidagi masalalar                              [done]
+94. Oʻlchov birliklari; ortiqcha va yetishmayotgan maʼlumot                   [done]
 
 ### Block H: Mantiq va fikrlash usullari (95–100)
 95. Mantiqiy masalalar va jadval usuli

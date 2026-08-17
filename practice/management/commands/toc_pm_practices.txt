@@ -124,11 +124,11 @@ TUTORIAL: PM-<n>:   (each practice links to its own tutorial)
 87. Chizma va sxema                                                 [done]
 88. Harakat masalalari 1                                            [done]
 89. Harakat masalalari 2                                            [done]
-90. Ish va unumdorlik
-91. Aralashma va foizli masalalar
-92. Narx, miqdor, qiymat
-93. Yosh masalalari va sonlar haqidagi masalalar
-94. Oʻlchov birliklari; ortiqcha maʼlumot
+90. Ish va unumdorlik                                               [done]
+91. Aralashma va foizli masalalar                                   [done]
+92. Narx, miqdor, qiymat                                            [done]
+93. Yosh masalalari va sonlar haqidagi masalalar                    [done]
+94. Oʻlchov birliklari; ortiqcha maʼlumot                           [done]
 
 ### Block H: Mantiq va fikrlash usullari (95–100)   level: hard
 95. Mantiqiy masalalar va jadval usuli
