@@ -226,14 +226,14 @@ AUTHOR:     powerty
 81. (PM-81 · aldamchi diagramma) Reklamadagi ustunlar (sharh)                         [done]
 82. (PM-82 · sanash) Necha xil kiyim tanlash mumkin (hikoya)                          [done]
 83. (PM-83 · ehtimollik) Tanga, zar va ob-havo bashorati (ilmiy-ommabop)              [done]
-84. (PM-84 · ehtimollik hisobi) Lotereya nega yutqazadi (ilmiy-ommabop)
+84. (PM-84 · ehtimollik hisobi) Lotereya nega yutqazadi (ilmiy-ommabop)               [done]
 
 ### Block G: Matnli masalalar ustaxonasi (85–94)
-85. (PM-85 · 4 qadam) Masalani qanday oʻqish kerak (qoʻllanma)
-86. (PM-86 · nomaʼlumni tanlash) Uch aka-uka va pul (hikoya)
-87. (PM-87 · chizma) Chizib yechilgan masala (qoʻllanma)
-88. (PM-88 · tezlik) Maktabga velosipedda (kundalik)
-89. (PM-89 · uchrashuv) Ikki avtobus, bitta yoʻl (hikoya)
+85. (PM-85 · 4 qadam) Masalani qanday oʻqish kerak (qoʻllanma)                        [done]
+86. (PM-86 · nomaʼlumni tanlash) Uch aka-uka va pul (hikoya)                          [done]
+87. (PM-87 · chizma) Chizib yechilgan masala (qoʻllanma)                              [done]
+88. (PM-88 · tezlik) Maktabga velosipedda (kundalik)                                  [done]
+89. (PM-89 · uchrashuv) Ikki avtobus, bitta yoʻl (hikoya)                             [done]
 90. (PM-90 · ish) Ikki usta, bitta devor (hikoya)
 91. (PM-91 · aralashma) Choyga qancha shakar (retsept)
 92. (PM-92 · narx-miqdor) Katta paket haqiqatan arzonmi? (sharh)

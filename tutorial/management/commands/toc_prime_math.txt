@@ -130,14 +130,14 @@ PLAYLIST: Prime Math
 81. Aldamchi diagrammalar — statistika qanday yolgʻon gapiradi               [done]
 82. Sanash: koʻpaytirish prinsipi                                            [done]
 83. Ehtimollik gʻoyasi: 0 dan 1 gacha                                        [done]
-84. Ehtimollikni hisoblash va tajriba bilan tekshirish
+84. Ehtimollikni hisoblash va tajriba bilan tekshirish                        [done]
 
 ### Block G: Matnli masalalar ustaxonasi (85–94)
-85. Masalani oʻqishning toʻrt qadami
-86. Nomaʼlumni tanlash va jadval tuzish
-87. Chizma va sxema — masalani koʻrish
-88. Harakat masalalari 1: tezlik, vaqt, masofa
-89. Harakat masalalari 2: uchrashuv va quvish
+85. Masalani oʻqishning toʻrt qadami                                          [done]
+86. Nomaʼlumni tanlash va jadval tuzish                                       [done]
+87. Chizma va sxema — masalani koʻrish                                        [done]
+88. Harakat masalalari 1: tezlik, vaqt, masofa                                [done]
+89. Harakat masalalari 2: uchrashuv va quvish                                 [done]
 90. Ish va unumdorlik masalalari
 91. Aralashma va foizli masalalar
 92. Narx, miqdor, qiymat

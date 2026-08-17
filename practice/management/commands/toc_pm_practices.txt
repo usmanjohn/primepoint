@@ -113,17 +113,17 @@ TUTORIAL: PM-<n>:   (each practice links to its own tutorial)
 81. Aldamchi diagrammalar                                           [done]
 82. Sanash: koʻpaytirish prinsipi                                   [done]
 83. Ehtimollik gʻoyasi                                              [done]
-84. Ehtimollikni hisoblash
+84. Ehtimollikni hisoblash                                          [done]
 
 ### Block G: Matnli masalalar ustaxonasi (85–94)   level: hard
 # Bu blokda 20 ta savolning hammasi matnli — ramp oʻrniga:
 # 1–6 sodda masala · 7–14 ikki qadamli masala · 15–18 uslub tanlash ·
 # 19–20 ortiqcha/yetishmayotgan maʼlumotli masala.
-85. Masalani oʻqishning toʻrt qadami
-86. Nomaʼlumni tanlash va jadval tuzish
-87. Chizma va sxema
-88. Harakat masalalari 1
-89. Harakat masalalari 2
+85. Masalani oʻqishning toʻrt qadami                                [done]
+86. Nomaʼlumni tanlash va jadval tuzish                             [done]
+87. Chizma va sxema                                                 [done]
+88. Harakat masalalari 1                                            [done]
+89. Harakat masalalari 2                                            [done]
 90. Ish va unumdorlik
 91. Aralashma va foizli masalalar
 92. Narx, miqdor, qiymat
