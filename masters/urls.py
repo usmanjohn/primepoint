@@ -13,6 +13,7 @@ urlpatterns = [
     # My Students management
     path('<int:pk>/my-students/', views.my_students, name='masters-my-students'),
     path('<int:pk>/my-students/add/', views.add_student, name='masters-add-student'),
+    path('<int:pk>/prizes/', views.journey_prizes, name='masters-journey-prizes'),
     path('<int:pk>/my-students/<int:panda_pk>/', views.student_detail, name='masters-student-detail'),
     path('<int:pk>/my-students/<int:panda_pk>/attendance/', views.mark_attendance, name='masters-mark-attendance'),
     path('<int:pk>/my-students/<int:panda_pk>/payment/', views.add_payment, name='masters-add-payment'),

@@ -4196,3 +4196,810 @@ table.pm-col {
         to   { opacity: 1; pointer-events: auto; }
     }
 }
+
+
+/* =====================================================================
+   PRIME JOURNEY — the travelling adventure  (pj-*)
+   ---------------------------------------------------------------------
+   The game where a road IS a Prime course and every obstacle is one of
+   that lesson's practice questions. Rules: games/journey.py.
+
+   Pure CSS, like every other component kit here — no JavaScript anywhere
+   in this game. The map is a flex strip, the "current position" pulse is
+   a keyframe, and everything else is server-rendered between form posts.
+
+   One convention worth keeping: anything that sends the pupil AWAY from
+   the game and into a lesson (.pj-btn--study, .pj-peek, .pj-fastest) is
+   green — the colour of the way forward — because in this game leaving
+   the road to go and read is the strongest move, not the losing one.
+
+   Never invent a pj-* class without adding it here.
+   ===================================================================== */
+
+:root {
+    --pj-ink:    #2e1065;   /* deep adventure purple  */
+    --pj-accent: #7c3aed;
+    --pj-gold:   #d97706;
+    --pj-study:  #15803d;   /* the way forward = the lesson */
+}
+
+/* ── shared bits ──────────────────────────────────────────────────── */
+
+.pj-back {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+    font-size: 0.86rem;
+    text-decoration: none;
+}
+.pj-back:hover { color: var(--pj-accent); }
+
+.pj-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.72rem 1.35rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform .12s ease, filter .12s ease;
+}
+.pj-btn:active { transform: translateY(1px); }
+
+.pj-btn--go     { background: var(--pj-accent); color: #fff; }
+.pj-btn--go:hover { filter: brightness(1.08); color: #fff; }
+.pj-btn--study  { background: var(--pj-study); color: #fff; }
+.pj-btn--study:hover { filter: brightness(1.1); color: #fff; }
+.pj-btn--quiet  { background: transparent; color: var(--text-muted); font-weight: 500; }
+.pj-btn--quiet:hover { color: var(--text); }
+.pj-btn:disabled { opacity: .5; cursor: default; }
+
+.pj-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+}
+
+/* ── home: the premise ────────────────────────────────────────────── */
+
+.pj-hero {
+    text-align: center;
+    padding: 2rem 1.25rem;
+    border-radius: 18px;
+    background: linear-gradient(150deg, var(--pj-ink) 0%, #4c1d95 55%, #6d28d9 100%);
+    color: #fff;
+}
+.pj-hero__glyph { font-size: 3rem; line-height: 1; }
+.pj-hero__title {
+    font-size: 1.65rem;
+    font-weight: 800;
+    margin: 0.5rem 0 0.65rem;
+    color: #fff;
+}
+.pj-hero__lead {
+    margin: 0 auto;
+    max-width: 46ch;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.88);
+}
+.pj-hero__rule {
+    margin: 1rem auto 0;
+    max-width: 44ch;
+    padding: 0.7rem 0.9rem;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.12);
+    border: 1px dashed rgba(255,255,255,0.35);
+    font-size: 0.87rem;
+    line-height: 1.55;
+    color: #fff;
+}
+
+.pj-resume {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.9rem 1rem;
+    border-radius: 14px;
+    background: var(--surface);
+    border: 2px solid var(--pj-accent);
+    box-shadow: 0 3px 14px rgba(124,58,237,0.15);
+}
+.pj-resume__emoji { font-size: 1.8rem; line-height: 1; }
+.pj-resume__label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--pj-accent);
+    font-weight: 700;
+}
+.pj-resume__where { font-size: 0.95rem; font-weight: 600; color: var(--text); }
+.pj-resume__go { font-size: 0.88rem; font-weight: 600; color: var(--pj-accent); white-space: nowrap; }
+
+/* ── home: the road cards ─────────────────────────────────────────── */
+
+.pj-road {
+    height: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--surface);
+    box-shadow: 0 2px 10px rgba(15,23,42,0.07);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+.pj-road:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(15,23,42,0.12); }
+
+.pj-road__head {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 1.1rem 1.2rem;
+    background: linear-gradient(135deg, var(--pj-a) 0%, var(--pj-b) 100%);
+}
+.pj-road__emoji { font-size: 1.9rem; line-height: 1; }
+.pj-road__name { margin: 0; font-size: 1.1rem; font-weight: 700; color: #fff; }
+
+.pj-road__body { padding: 0.9rem 1.2rem 1.1rem; }
+.pj-road__blurb {
+    margin: 0 0 0.8rem;
+    font-size: 0.84rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+.pj-road__meter {
+    height: 7px;
+    border-radius: 999px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+.pj-road__fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--pj-a), var(--pj-b));
+}
+.pj-road__stat {
+    margin-top: 0.45rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+/* ── home: the rules panel ────────────────────────────────────────── */
+
+.pj-rules {
+    padding: 1.1rem 1.25rem;
+    border-radius: 14px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+}
+.pj-rules__title {
+    margin: 0 0 0.7rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+}
+.pj-rules__list { list-style: none; margin: 0; padding: 0; }
+.pj-rules__list li {
+    display: flex;
+    gap: 0.6rem;
+    padding: 0.42rem 0;
+    font-size: 0.86rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+.pj-rules__list strong { color: var(--text); }
+
+/* ── road: the header and the stage list ──────────────────────────── */
+
+.pj-roadhead {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.3rem 1.3rem;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--pj-a) 0%, var(--pj-b) 100%);
+}
+.pj-roadhead__emoji { font-size: 2.6rem; line-height: 1; }
+.pj-roadhead__name { margin: 0; font-size: 1.35rem; font-weight: 800; color: #fff; }
+.pj-roadhead__blurb {
+    margin: 0.2rem 0 0;
+    font-size: 0.86rem;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.88);
+}
+
+.pj-legs { display: flex; flex-direction: column; }
+
+.pj-leg {
+    display: flex;
+    gap: 0.9rem;
+    padding-bottom: 1rem;
+    position: relative;
+}
+/* the road drawn down the left, connecting the stage markers */
+.pj-leg::before {
+    content: "";
+    position: absolute;
+    left: 21px;
+    top: 44px;
+    bottom: 0;
+    width: 3px;
+    border-radius: 2px;
+    background: repeating-linear-gradient(
+        to bottom, var(--border) 0 6px, transparent 6px 12px);
+}
+.pj-leg:last-child::before { display: none; }
+.pj-leg--done::before {
+    background: var(--pj-accent);
+    opacity: .45;
+}
+
+.pj-leg__marker {
+    flex: 0 0 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: var(--surface);
+    border: 2.5px solid var(--pj-accent);
+    color: var(--pj-accent);
+    z-index: 1;
+}
+.pj-leg--done .pj-leg__marker { background: var(--pj-accent); color: #fff; }
+.pj-leg--locked .pj-leg__marker {
+    border-color: var(--border);
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.pj-leg__body {
+    flex: 1 1 auto;
+    padding: 0.6rem 0.95rem 0.8rem;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    min-width: 0;
+}
+.pj-leg--locked .pj-leg__body { background: var(--surface-2); }
+
+.pj-leg__place { font-size: 1rem; font-weight: 700; color: var(--text); }
+.pj-leg__range {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+    overflow-wrap: anywhere;
+}
+.pj-leg__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+    margin-top: 0.7rem;
+}
+.pj-leg__actions .pj-btn { padding: 0.5rem 1rem; font-size: 0.87rem; }
+.pj-leg__best { font-size: 0.8rem; color: var(--pj-gold); font-weight: 600; }
+.pj-leg__hint {
+    margin-top: 0.55rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+.pj-leg__studied {
+    display: inline-block;
+    margin-left: 0.35rem;
+    padding: 0.1rem 0.45rem;
+    border-radius: 999px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    font-size: 0.72rem;
+}
+
+/* ── road: leaderboard ────────────────────────────────────────────── */
+
+.pj-board {
+    padding: 1rem 1.1rem;
+    border-radius: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+}
+.pj-board__title {
+    margin: 0 0 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+}
+.pj-board__table { width: 100%; font-size: 0.85rem; }
+.pj-board__table td { padding: 0.4rem 0.3rem; border-top: 1px solid var(--border); }
+.pj-board__table tr:first-child td { border-top: none; }
+.pj-board__rank  { width: 1.8rem; color: var(--text-muted); font-weight: 700; }
+.pj-board__who   { font-weight: 600; color: var(--text); }
+.pj-board__leg   { color: var(--text-muted); font-size: 0.78rem; }
+.pj-board__coins { color: var(--pj-gold); font-weight: 700; white-space: nowrap; }
+.pj-board__time  { color: var(--text-muted); text-align: right; font-size: 0.78rem; }
+
+/* ── play: the head-up display ────────────────────────────────────── */
+
+.pj-hud {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.6rem;
+}
+.pj-hud__where { display: flex; flex-direction: column; min-width: 0; }
+.pj-hud__road  { font-size: 0.76rem; color: var(--text-muted); }
+.pj-hud__place { font-size: 0.98rem; font-weight: 700; color: var(--text); }
+.pj-hud__meters { display: flex; align-items: center; gap: 0.7rem; }
+.pj-kuch  { font-size: 0.95rem; letter-spacing: 0.04em; white-space: nowrap; }
+.pj-coins {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--pj-gold);
+    white-space: nowrap;
+}
+
+/* ── play: the trail strip ────────────────────────────────────────── */
+
+.pj-trail {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    overflow-x: auto;
+    padding: 0.55rem 0.15rem;
+    margin-bottom: 1rem;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    scrollbar-width: thin;
+}
+.pj-dot {
+    flex: 0 0 auto;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    background: var(--surface-2);
+    border: 1.5px solid var(--border);
+    filter: grayscale(1);
+    opacity: .55;
+}
+.pj-dot--done    { filter: none; opacity: 1; border-color: var(--pj-accent); }
+.pj-dot--current {
+    filter: none;
+    opacity: 1;
+    border-color: var(--pj-gold);
+    box-shadow: 0 0 0 3px rgba(217,119,6,0.2);
+    animation: pj-pulse 1.8s ease-in-out infinite;
+}
+.pj-dot--fork  { border-style: dashed; }
+.pj-dot--guard { border-width: 2.5px; }
+
+@keyframes pj-pulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(217,119,6,0.20); }
+    50%      { box-shadow: 0 0 0 6px rgba(217,119,6,0.08); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .pj-dot--current { animation: none; }
+}
+
+/* ── play: the encounter card ─────────────────────────────────────── */
+
+.pj-card {
+    padding: 1.5rem 1.25rem 1.35rem;
+    border-radius: 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: 0 3px 16px rgba(15,23,42,0.07);
+    text-align: center;
+}
+.pj-card--gate   { border-top: 4px solid var(--pj-t, var(--pj-accent)); }
+.pj-card--fork   { border-top: 4px solid var(--pj-accent); }
+.pj-card--rest   { border-top: 4px solid #0891b2; }
+.pj-card--chest  { border-top: 4px solid var(--pj-gold); }
+.pj-card--sealed { border-top: 4px solid #64748b; background: var(--surface-2); }
+.pj-card--win    { border-top: 4px solid #16a34a; }
+.pj-card--lose   { border-top: 4px solid #dc2626; }
+
+.pj-card__terrain {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--pj-t, var(--text-muted));
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+.pj-card__emoji { font-size: 2.6rem; line-height: 1; }
+.pj-card__title {
+    margin: 0.5rem 0 0.5rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--text);
+}
+.pj-card__intro {
+    margin: 0 auto;
+    max-width: 46ch;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    font-style: italic;
+}
+.pj-card__aside {
+    margin: 1rem 0 0;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--pj-gold);
+}
+
+/* ── play: tags above a question ──────────────────────────────────── */
+
+.pj-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin: 1rem 0 0.9rem;
+}
+.pj-tag {
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+.pj-tag--guard { background: #fee2e2; border-color: #fca5a5; color: #991b1b; }
+.pj-tag--twin  { background: #fef3c7; border-color: #fcd34d; color: #92400e; }
+
+/* ── play: the question itself ────────────────────────────────────── */
+
+.pj-q {
+    text-align: left;
+    padding: 1rem 1.1rem;
+    border-radius: 12px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--text);
+}
+.pj-q p:last-child { margin-bottom: 0; }
+.pj-q img { max-width: 100%; height: auto; }
+
+.pj-choices {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.9rem;
+}
+.pj-choice-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    width: 100%;
+    text-align: left;
+    padding: 0.8rem 0.9rem;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    color: var(--text);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: border-color .12s ease, background .12s ease;
+}
+.pj-choice-btn:hover {
+    border-color: var(--pj-accent);
+    background: rgba(124,58,237,0.04);
+}
+.pj-choice-btn__letter {
+    flex: 0 0 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #ede9fe;
+    color: #5b21b6;
+    font-weight: 700;
+    font-size: 0.82rem;
+}
+.pj-choice-btn__text { font-weight: 500; overflow-wrap: anywhere; }
+.pj-choice-btn__text p { margin: 0; }
+
+/* The quiet link to the lesson, always available under a question. */
+.pj-peek {
+    display: inline-block;
+    margin-top: 0.9rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--pj-study);
+    text-decoration: none;
+}
+.pj-peek:hover { text-decoration: underline; color: var(--pj-study); }
+
+/* ── play: what happened ──────────────────────────────────────────── */
+
+.pj-answer {
+    margin: 1rem 0 0;
+    border-radius: 12px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+.pj-answer__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.9rem;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.87rem;
+    text-align: left;
+}
+.pj-answer__row + .pj-answer__row { border-top: 1px solid var(--border); }
+.pj-answer__row span { color: var(--text-muted); flex: 0 0 auto; }
+.pj-answer__row b { color: var(--text); overflow-wrap: anywhere; }
+.pj-answer__row b p { margin: 0; }
+.pj-answer__right { color: #15803d !important; }
+
+.pj-explain {
+    margin-top: 0.8rem;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    background: #fffbeb;
+    border: 1px solid #fcd34d;
+    font-size: 0.87rem;
+    line-height: 1.6;
+    color: #78350f;
+    text-align: left;
+}
+.pj-explain p:last-child { margin-bottom: 0; }
+
+/* ── play: the way forward is always the lesson ───────────────────── */
+/* Green, prominent, and present on every card where a pupil is stuck.
+   This block is the whole point of the game. */
+
+.pj-fastest {
+    margin-top: 1.1rem;
+    padding: 1rem;
+    border-radius: 14px;
+    background: #f0fdf4;
+    border: 1.5px solid #86efac;
+    text-align: left;
+}
+.pj-fastest__head {
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--pj-study);
+    margin-bottom: 0.35rem;
+}
+.pj-fastest p {
+    margin: 0 0 0.75rem;
+    font-size: 0.86rem;
+    line-height: 1.6;
+    color: #14532d;
+}
+.pj-fastest .pj-btn { width: 100%; }
+
+/* ── play: forks and chest choices ────────────────────────────────── */
+
+.pj-branches, .pj-choice {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 1.1rem;
+}
+.pj-branch {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+    text-align: left;
+    padding: 0.85rem 0.95rem;
+    border-radius: 14px;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    color: var(--text);
+    cursor: pointer;
+    transition: border-color .12s ease, transform .12s ease;
+}
+.pj-branch:hover { border-color: var(--pj-accent); transform: translateY(-1px); }
+.pj-branch--sealed { opacity: .5; cursor: default; }
+.pj-branch--sealed:hover { border-color: var(--border); transform: none; }
+.pj-branch__icon { font-size: 1.5rem; line-height: 1; flex: 0 0 auto; }
+.pj-branch__body { flex: 1 1 auto; min-width: 0; }
+.pj-branch__name { display: block; font-weight: 700; font-size: 0.94rem; }
+.pj-branch__note {
+    display: block;
+    margin-top: 0.15rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+.pj-branch__pay {
+    flex: 0 0 auto;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--pj-gold);
+    white-space: nowrap;
+}
+
+.pj-loot {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1rem;
+    padding: 0.7rem 1.1rem;
+    border-radius: 999px;
+    background: #fffbeb;
+    border: 1.5px dashed var(--pj-gold);
+}
+.pj-loot__emoji { font-size: 1.5rem; line-height: 1; }
+.pj-loot__name { font-weight: 700; font-size: 0.95rem; color: #92400e; }
+
+/* ── play: the diary ──────────────────────────────────────────────── */
+
+.pj-diary {
+    margin-top: 1.25rem;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+}
+.pj-diary__head {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+}
+.pj-diary ul { list-style: none; margin: 0; padding: 0; }
+.pj-diary li {
+    padding: 0.22rem 0 0.22rem 0.85rem;
+    position: relative;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+.pj-diary li::before {
+    content: "·";
+    position: absolute;
+    left: 0.2rem;
+    color: var(--pj-accent);
+    font-weight: 700;
+}
+
+/* ── play: arrival ────────────────────────────────────────────────── */
+
+.pj-end {
+    text-align: center;
+    padding: 2.25rem 1.25rem;
+    border-radius: 18px 18px 0 0;
+    color: #fff;
+}
+.pj-end--win { background: linear-gradient(140deg, #7c3aed 0%, #4c1d95 100%); }
+.pj-end__glyph { font-size: 3.4rem; line-height: 1; }
+.pj-end__title { margin: 0.4rem 0 0.2rem; font-size: 1.5rem; font-weight: 800; color: #fff; }
+.pj-end__where { margin: 0; font-size: 0.95rem; color: rgba(255,255,255,0.85); }
+.pj-end__note {
+    margin: 1rem 0 0;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.pj-panel {
+    padding: 1.4rem 1.25rem;
+    border-radius: 0 0 18px 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: none;
+}
+.pj-stats { display: flex; gap: 0.6rem; }
+.pj-stat {
+    flex: 1 1 0;
+    padding: 0.8rem 0.4rem;
+    border-radius: 12px;
+    background: var(--surface-2);
+    text-align: center;
+}
+.pj-stat b { display: block; font-size: 1.3rem; line-height: 1.2; }
+.pj-stat span {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+}
+
+.pj-guestnote {
+    margin-top: 1rem;
+    padding: 0.75rem 0.9rem;
+    border-radius: 12px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: #1e40af;
+    text-align: center;
+}
+
+/* ── the prize chest ──────────────────────────────────────────────── */
+
+.pj-pending {
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    background: #fffbeb;
+    border: 1.5px solid #fcd34d;
+    color: #92400e;
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.pj-prizes { display: flex; flex-direction: column; gap: 0.55rem; }
+.pj-prize {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+}
+.pj-prize--done { opacity: .6; }
+.pj-prize__emoji { font-size: 1.6rem; line-height: 1; flex: 0 0 auto; }
+.pj-prize__body { flex: 1 1 auto; min-width: 0; }
+.pj-prize__name { font-weight: 700; font-size: 0.94rem; color: var(--text); }
+.pj-prize__meta { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.1rem; }
+.pj-prize__state { flex: 0 0 auto; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); }
+
+/* ── the teacher's hand-out list ──────────────────────────────────── */
+
+.pj-handout { display: flex; flex-direction: column; gap: 0.55rem; }
+.pj-handout__row {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    flex-wrap: wrap;
+}
+.pj-handout__row--done { opacity: .55; }
+.pj-handout__who { font-weight: 700; font-size: 0.92rem; color: var(--text); }
+.pj-handout__what { font-size: 0.85rem; color: var(--text-muted); }
+.pj-handout__when { font-size: 0.76rem; color: var(--text-muted); }
+.pj-handout__act { margin-left: auto; }
+
+/* ── phones ───────────────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+    .pj-hero { padding: 1.6rem 1rem; }
+    .pj-hero__title { font-size: 1.4rem; }
+    .pj-card { padding: 1.25rem 1rem 1.15rem; }
+    .pj-card__title { font-size: 1.05rem; }
+    .pj-card__emoji { font-size: 2.2rem; }
+    .pj-roadhead { flex-direction: column; text-align: center; gap: 0.5rem; }
+    .pj-roadhead__name { font-size: 1.2rem; }
+    .pj-stat b { font-size: 1.1rem; }
+    .pj-leg__marker { flex-basis: 38px; height: 38px; font-size: 0.85rem; }
+    .pj-leg::before { left: 18px; top: 38px; }
+}

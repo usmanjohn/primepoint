@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "My prize chest" %} — Powerty{% endblock %}
+{% block page_name %}{% trans "Prize chest" %}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4" style="max-width:660px;">
+
+    <a href="{% url 'journey_home' %}" class="pj-back">&larr; {% trans "Prime Journey" %}</a>
+
+    <div class="pj-hero mb-4">
+        <div class="pj-hero__glyph">&#x1F381;</div>
+        <h1 class="pj-hero__title">{% trans "Your prize chest" %}</h1>
+        <p class="pj-hero__lead">
+            {% blocktrans with coins=coins %}You have earned {{ coins }} coins on the road. Prizes found in chests are real — your teacher hands them over in class.{% endblocktrans %}
+        </p>
+    </div>
+
+    {% if pending %}
+    <div class="pj-pending">
+        &#x23F3; {% blocktrans count n=pending|length %}{{ n }} prize is waiting to be handed over.{% plural %}{{ n }} prizes are waiting to be handed over.{% endblocktrans %}
+    </div>
+    {% endif %}
+
+    <div class="pj-prizes">
+        {% for prize in prizes %}
+        <div class="pj-prize{% if prize.handed_over %} pj-prize--done{% endif %}">
+            <span class="pj-prize__emoji">{{ prize.reward.emoji }}</span>
+            <div class="pj-prize__body">
+                <div class="pj-prize__name">{{ prize.reward.name }}</div>
+                <div class="pj-prize__meta">
+                    {{ prize.won_at|date:"j M Y" }} &middot;
+                    {% if prize.carried %}{% trans "carried home" %}{% else %}{% trans "collected at the destination" %}{% endif %}
+                </div>
+            </div>
+            <span class="pj-prize__state">
+                {% if prize.handed_over %}&#x2705; {% trans "received" %}{% else %}&#x23F3; {% trans "waiting" %}{% endif %}
+            </span>
+        </div>
+        {% empty %}
+        <div class="text-center py-5" style="color:var(--text-muted);">
+            <div style="font-size:2.5rem; line-height:1;">&#x1F5DD;&#xFE0F;</div>
+            <p class="mt-2 mb-3">{% trans "The chest is empty for now. Chests appear halfway along every road." %}</p>
+            <a href="{% url 'journey_home' %}" class="btn-auth-outline text-decoration-none py-2 px-4">
+                {% trans "Set out" %}
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}

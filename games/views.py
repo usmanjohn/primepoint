@@ -10,11 +10,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import gettext as _
 import string
-from .models import CrosswordPuzzle, EnglishCrossword, WordSearchPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion, MathSquarePuzzle, MathChampResult, EnglishChampResult, DuelResult
+from django.db.models import F, Sum, Case, When, Value, BooleanField
+from django.utils import timezone
+from .models import CrosswordPuzzle, EnglishCrossword, WordSearchPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion, MathSquarePuzzle, MathChampResult, EnglishChampResult, DuelResult, JourneyRun, JourneySeenQuestion, JourneyReward, JourneyPrize
 from .generator import generate_math_square, empty_math_square, eval_line
 from .catalog import GAME_COUNT, filter_games, subject_facets  # noqa: F401 — GAME_COUNT re-exported for the nav badge
 from prime.subjects import get_study_subjects
-from . import mathchamp, englishchamp, duel as duelmod
+from tutorial.models import TutorialProgress
+from . import mathchamp, englishchamp, duel as duelmod, journey
 
 
 # ---------------------------------------------------------------------------
@@ -2668,3 +2671,666 @@ def duel_play(request):
         'letters':      ['A', 'B', 'C', 'D'],
     }
     return render(request, 'games/duel_play.html', context)
+
+
+# ---------------------------------------------------------------------------
+# Prime Journey views
+# ---------------------------------------------------------------------------
+# The rules live in `games/journey.py`; these views only move state between the
+# traveller and the road. There is one stateful screen (`journey_play`) that
+# renders on GET and acts on POST, redirecting afterwards — the same shape as
+# `mathchamp_play`, so a refresh never re-answers a question.
+#
+# The one thing worth understanding before editing: **the study loop.** A node
+# that has been failed twice is sealed, and `_journey_credit_study` is what
+# unseals it — it looks for a TutorialProgress row, which is written when a
+# pupil actually finishes reading the lesson. That function is the reason this
+# game exists, and it runs on every GET so the reward lands the moment they
+# come back from the tutorial.
+
+JOURNEY_SESSION_KEY = 'journey_state'
+JOURNEY_RUN_KEY     = 'journey_run'
+
+JOURNEY_OPEN_STATUSES = (JourneyRun.STATUS_TRAVELLING, JourneyRun.STATUS_PAUSED)
+
+# What a chest holds when the teacher's prize catalogue is empty (or the
+# traveller is a guest, who has no account to keep a prize in).
+CHEST_COINS      = 60
+CHEST_LEFT_BONUS = 150      # paid at the destination for travelling light
+
+JOURNEY_RARITY_WEIGHTS = {
+    JourneyReward.RARITY_COMMON:    70,
+    JourneyReward.RARITY_RARE:      25,
+    JourneyReward.RARITY_LEGENDARY: 5,
+}
+
+
+# ── state plumbing ─────────────────────────────────────────────────────────
+
+def _journey_load(request):
+    """The traveller's journey, as (state, run). `run` is None for guests."""
+    if request.user.is_authenticated:
+        run = None
+        pk = request.session.get(JOURNEY_RUN_KEY)
+        if pk:
+            run = JourneyRun.objects.filter(pk=pk, user=request.user).first()
+        if run is None:
+            run = (JourneyRun.objects
+                   .filter(user=request.user, status__in=JOURNEY_OPEN_STATUSES)
+                   .order_by('-updated_at').first())
+        if run and (run.state or {}).get('v') == journey.STATE_VERSION:
+            return run.state, run
+        return None, None
+
+    state = request.session.get(JOURNEY_SESSION_KEY)
+    if state and state.get('v') == journey.STATE_VERSION:
+        return state, None
+    return None, None
+
+
+def _journey_save(request, state, run):
+    """Persist wherever this traveller's journey lives."""
+    if run is not None:
+        run.state     = state
+        run.status    = state.get('status', JourneyRun.STATUS_TRAVELLING)
+        run.coins     = state.get('coins', 0)
+        run.kuch_left = state.get('kuch', 0)
+        run.detours   = state.get('detours', 0)
+        run.elapsed   = state.get('elapsed', 0)
+        if state.get('status') == JourneyRun.STATUS_FINISHED and run.finished_at is None:
+            run.finished_at = timezone.now()
+        run.save()
+    else:
+        request.session[JOURNEY_SESSION_KEY] = state
+        request.session.modified = True
+
+
+def _journey_clear(request, run):
+    if run is not None:
+        request.session.pop(JOURNEY_RUN_KEY, None)
+    request.session.pop(JOURNEY_SESSION_KEY, None)
+
+
+def _journey_seen(request, state, lesson_id):
+    """Questions this traveller has already met from this lesson's practice.
+
+    Scoped to the one practice rather than everything they have ever seen, so
+    the query stays small however long they play.
+    """
+    if request.user.is_authenticated:
+        return set(JourneySeenQuestion.objects
+                   .filter(user=request.user, question__practice__tutorials=lesson_id)
+                   .values_list('question_id', flat=True))
+    return set(state.get('seen', []))
+
+
+def _journey_mark_seen(request, state, qid):
+    """Marked when the question is *shown*, so reloading cannot reroll it."""
+    if request.user.is_authenticated:
+        JourneySeenQuestion.objects.get_or_create(user=request.user, question_id=qid)
+    else:
+        seen = state.setdefault('seen', [])
+        if qid not in seen:
+            seen.append(qid)
+        del seen[:-500]
+
+
+def _journey_serve(request, state, lesson_id, threat):
+    """Put a fresh question in front of the traveller."""
+    question = journey.pick_question(
+        lesson_id, threat, _journey_seen(request, state, lesson_id))
+    if question:
+        _journey_mark_seen(request, state, question['qid'])
+    state['q'] = question
+    state['feedback'] = None
+    return question
+
+
+def _journey_guard_lesson(state, node):
+    """Which earlier lesson the guardian is asking about this time."""
+    sources = node.get('sources') or [node.get('lesson')]
+    return sources[state.get('guard_right', 0) % len(sources)]
+
+
+def _journey_credit_study(request, state):
+    """Turn lessons the traveller has read into strength and open gates.
+
+    This is the heart of the whole design: reading the tutorial is the only
+    move that both unseals a gate *and* restores strength, and it is checked
+    here on every page load so the reward is waiting when they come back from
+    the lesson.
+    """
+    if not request.user.is_authenticated:
+        return []
+
+    game_map = state.get('map') or []
+    lesson_ids = {n.get('lesson') for step in game_map for n in step if n.get('lesson')}
+    if not lesson_ids:
+        return []
+
+    credited = set(state.setdefault('studied', []))
+    read = set(TutorialProgress.objects
+               .filter(user=request.user, tutorial_id__in=lesson_ids)
+               .values_list('tutorial_id', flat=True))
+    fresh = read - credited
+    if not fresh:
+        return []
+
+    titles = []
+    for step in game_map:
+        for node in step:
+            if node.get('lesson') in fresh:
+                journey.unseal(state, node)
+                if node.get('lesson_title'):
+                    titles.append(node['lesson_title'])
+
+    state['studied'] = list(credited | fresh)
+    journey.heal(state, journey.STUDY_HEAL * len(fresh))
+    for title in dict.fromkeys(titles):
+        journey.add_log(state, _('You studied "%(lesson)s" — the road ahead opens.')
+                        % {'lesson': title})
+    # Reading also lifts a pause: the pupil earned the right to carry on.
+    if state.get('status') == JourneyRun.STATUS_PAUSED:
+        journey.resume(state)
+    return list(fresh)
+
+
+# ── chests ────────────────────────────────────────────────────────────────
+
+def _journey_pick_reward():
+    """One prize from the teacher's catalogue, weighted by rarity.
+
+    Returns None when the catalogue is empty — which it is until the teacher
+    fills it in — and the chest quietly holds coins instead.
+    """
+    rewards = list(JourneyReward.objects.filter(is_active=True))
+    if not rewards:
+        return None
+    weights = [JOURNEY_RARITY_WEIGHTS.get(r.rarity, 10) for r in rewards]
+    return random.choices(rewards, weights=weights, k=1)[0]
+
+
+def _journey_open_chest(request, state, node):
+    """Decide what is in this chest, once, and remember it."""
+    if node.get('id') in state.get('chests', {}):
+        return state['chests'][node['id']]
+
+    reward = _journey_pick_reward() if request.user.is_authenticated else None
+    found = {'reward': reward.id if reward else None,
+             'name':   reward.name if reward else '',
+             'emoji':  reward.emoji if reward else '\U0001FA99',
+             'coins':  0 if reward else CHEST_COINS}
+    state.setdefault('chests', {})[node['id']] = found
+    return found
+
+
+def _journey_award(request, state, run, found, carried):
+    """Hand a prize over — or the coins, when there is no prize to hand."""
+    if not found.get('reward'):
+        state['coins'] += found.get('coins', CHEST_COINS)
+        return
+    reward = JourneyReward.objects.filter(id=found['reward']).first()
+    if reward is None or not request.user.is_authenticated:
+        state['coins'] += CHEST_COINS
+        return
+    JourneyPrize.objects.create(user=request.user, reward=reward, run=run,
+                                carried=carried)
+
+    # `stock = 0` means unlimited, so a prize must never be allowed to *reach*
+    # zero by being given away — it would silently become infinite. The last one
+    # off the shelf deactivates the prize instead, and the teacher reactivates it
+    # when they restock.
+    if reward.stock > 0:
+        JourneyReward.objects.filter(pk=reward.pk, stock__gt=0).update(
+            stock=F('stock') - 1, is_active=Case(
+                When(stock__lte=1, then=Value(False)), default=Value(True),
+                output_field=BooleanField()))
+
+
+def _journey_collect_left(request, state, run):
+    """Everything left on the road, collected at the destination — with the
+    bonus that made leaving it worth the risk."""
+    for found in state.pop('left_behind', []):
+        _journey_award(request, state, run, found, carried=False)
+        state['coins'] += CHEST_LEFT_BONUS
+
+
+# ── the road: which legs are open ─────────────────────────────────────────
+
+def _journey_leg_rows(request, road_slug):
+    """Every leg of a road, with its lock state and the traveller's best run.
+
+    A leg opens when the one before it is finished **or** when the pupil has
+    already read half its lessons — so somebody who is genuinely at lesson 40
+    of the course is never made to walk the first thirty again.
+    """
+    total = journey.leg_count(road_slug)
+    finished, best, read_ids = set(), {}, set()
+
+    if request.user.is_authenticated:
+        runs = JourneyRun.objects.filter(user=request.user, road=road_slug)
+        for run in runs:
+            if run.status == JourneyRun.STATUS_FINISHED:
+                finished.add(run.leg)
+                if run.coins > best.get(run.leg, -1):
+                    best[run.leg] = run.coins
+        read_ids = set(TutorialProgress.objects.filter(user=request.user)
+                       .values_list('tutorial_id', flat=True))
+
+    rows = []
+    for leg in range(1, total + 1):
+        lessons = journey.leg_lessons(road_slug, leg)
+        studied = len([l for l in lessons if l['id'] in read_ids])
+        open_by_study = lessons and studied * 2 >= len(lessons)
+        unlocked = leg == 1 or (leg - 1) in finished or open_by_study
+        rows.append({
+            'leg':      leg,
+            'place':    journey.leg_place(road_slug, leg),
+            'lessons':  lessons,
+            'first':    lessons[0]['title'] if lessons else '',
+            'last':     lessons[-1]['title'] if lessons else '',
+            'studied':  studied,
+            'unlocked': unlocked,
+            'finished': leg in finished,
+            'best':     best.get(leg),
+        })
+    return rows
+
+
+# ── the screens ───────────────────────────────────────────────────────────
+
+def journey_home(request):
+    """The four roads."""
+    state, run = _journey_load(request)
+    active = None
+    if state and state.get('status') in JOURNEY_OPEN_STATUSES:
+        road = journey.ROAD_MAP.get(state['road'])
+        if road:
+            active = {'road': road, 'leg': state['leg'],
+                      'place': journey.leg_place(state['road'], state['leg']),
+                      'paused': state.get('status') == JourneyRun.STATUS_PAUSED}
+
+    done_by_road = {}
+    if request.user.is_authenticated:
+        for row in (JourneyRun.objects
+                    .filter(user=request.user, status=JourneyRun.STATUS_FINISHED)
+                    .values('road', 'leg').distinct()):
+            done_by_road.setdefault(row['road'], set()).add(row['leg'])
+
+    roads = []
+    for road in journey.ROADS:
+        total = journey.leg_count(road['slug'])
+        done = len(done_by_road.get(road['slug'], ()))
+        roads.append({
+            'road':  road,
+            'legs':  total,
+            'done':  done,
+            'pct':   round(100 * done / total) if total else 0,
+        })
+
+    return render(request, 'games/journey_home.html', {
+        'roads':  roads,
+        'active': active,
+    })
+
+
+def journey_road(request, road):
+    """One road's legs, and who has walked them fastest."""
+    road_def = journey.ROAD_MAP.get(road)
+    if road_def is None:
+        return redirect('journey_home')
+
+    top = list(JourneyRun.objects
+               .filter(road=road, status=JourneyRun.STATUS_FINISHED)
+               .select_related('user')
+               .order_by('-coins', 'elapsed')[:8])
+
+    return render(request, 'games/journey_road.html', {
+        'road':  road_def,
+        'rows':  _journey_leg_rows(request, road),
+        'top':   top,
+    })
+
+
+def journey_start(request, road, leg):
+    """Set out. Any journey still open is abandoned first."""
+    if request.method != 'POST':
+        return redirect('journey_road', road=road)
+    if road not in journey.ROAD_MAP:
+        return redirect('journey_home')
+
+    rows = {r['leg']: r for r in _journey_leg_rows(request, road)}
+    row = rows.get(leg)
+    if row is None or not row['unlocked']:
+        return redirect('journey_road', road=road)
+
+    state = journey.new_state(road, leg)
+    if not state['map']:
+        return redirect('journey_road', road=road)
+    journey.add_log(state, _('You set out for %(place)s.')
+                    % {'place': journey.leg_place(road, leg)})
+
+    if request.user.is_authenticated:
+        (JourneyRun.objects
+         .filter(user=request.user, status__in=JOURNEY_OPEN_STATUSES)
+         .update(status=JourneyRun.STATUS_ABANDONED))
+        run = JourneyRun.objects.create(
+            user=request.user, road=road, leg=leg, seed=state['seed'],
+            state=state, status=JourneyRun.STATUS_TRAVELLING,
+            kuch_left=state['kuch'])
+        request.session[JOURNEY_RUN_KEY] = run.pk
+    else:
+        request.session[JOURNEY_SESSION_KEY] = state
+        request.session.modified = True
+
+    return redirect('journey_play')
+
+
+def journey_play(request):
+    """The one stateful screen: GET renders the road, POST walks it."""
+    state, run = _journey_load(request)
+    if not state:
+        return redirect('journey_home')
+
+    if request.method == 'POST':
+        _journey_act(request, state, run)
+        _journey_save(request, state, run)
+        return redirect('journey_play')
+
+    # Reading a lesson pays off the moment the traveller comes back.
+    dirty = bool(_journey_credit_study(request, state))
+
+    node = journey.current_node(state)
+    fork = journey.at_fork(state)
+    travelling = state.get('status') == JourneyRun.STATUS_TRAVELLING
+
+    # A node that needs a question and does not have one yet gets one now,
+    # rather than on the POST that arrives at it — so a refresh is harmless.
+    if (travelling and node and not fork and not state.get('feedback')
+            and node['kind'] in ('gate', 'twin', 'guard')
+            and not journey.is_sealed(state, node) and not state.get('q')):
+        lesson = (_journey_guard_lesson(state, node) if node['kind'] == 'guard'
+                  else node['lesson'])
+        _journey_serve(request, state, lesson, node.get('threat', 1))
+        dirty = True
+
+    # What is in a chest is decided once and written down straight away. If it
+    # were only decided while rendering, a reload would reroll it and the
+    # traveller could be shown a book and handed a pencil.
+    if (travelling and node and not fork and node['kind'] == 'chest'
+            and node['id'] not in state.get('chests', {})):
+        _journey_open_chest(request, state, node)
+        dirty = True
+
+    if dirty:
+        _journey_save(request, state, run)
+
+    return render(request, 'games/journey_play.html',
+                  _journey_context(request, state, run))
+
+
+def _journey_act(request, state, run):
+    """One move along the road."""
+    action = request.POST.get('action')
+
+    if action == 'quit':
+        if run is not None:
+            run.status = JourneyRun.STATUS_ABANDONED
+            run.save(update_fields=['status'])
+        _journey_clear(request, run)
+        return
+
+    if state.get('status') == JourneyRun.STATUS_FINISHED:
+        return
+
+    if action == 'resume':
+        if state.get('status') == JourneyRun.STATUS_PAUSED and not journey.pause_remaining(state):
+            journey.resume(state)
+            journey.add_log(state, _('Rested, you shoulder your pack and walk on.'))
+        return
+
+    if state.get('status') == JourneyRun.STATUS_PAUSED:
+        return
+
+    if action == 'choose':
+        try:
+            index = int(request.POST.get('branch', -1))
+        except (TypeError, ValueError):
+            index = -1
+        if journey.at_fork(state):
+            journey.choose_branch(state, index)
+        return
+
+    node = journey.current_node(state)
+    if node is None:
+        return
+
+    if action == 'rest' and node['kind'] == 'camp':
+        journey.heal(state, journey.CAMP_HEAL)
+        journey.add_log(state, _('You rest, and the road looks shorter afterwards.'))
+        journey.advance(state)
+        if state.get('status') == JourneyRun.STATUS_FINISHED:
+            _journey_finish(request, state, run)
+        return
+
+    if action in ('carry', 'leave') and node['kind'] == 'chest':
+        found = _journey_open_chest(request, state, node)
+        if action == 'carry':
+            # Banked at once — but treasure is heavy, and the rest of the road
+            # is walked a little weaker for it.
+            _journey_award(request, state, run, found, carried=True)
+            state['max_kuch'] = max(2, state['max_kuch'] - 1)
+            state['kuch'] = min(state['kuch'], state['max_kuch'])
+            journey.add_log(state, _('You shoulder what was in the chest. It is heavier than it looked.'))
+        else:
+            state.setdefault('left_behind', []).append(found)
+            journey.add_log(state, _('You leave it where it lies, and travel light.'))
+        journey.advance(state)
+        if state.get('status') == JourneyRun.STATUS_FINISHED:
+            _journey_finish(request, state, run)
+        return
+
+    if action == 'continue':
+        _journey_continue(request, state, run, node)
+        return
+
+    if action == 'retry':
+        state['feedback'] = None
+        if not journey.is_sealed(state, node):
+            lesson = (_journey_guard_lesson(state, node) if node['kind'] == 'guard'
+                      else node['lesson'])
+            _journey_serve(request, state, lesson, node.get('threat', 1))
+        return
+
+    if action == 'regroup':
+        # The stubborn way past a sealed gate, and the reason no traveller can
+        # ever be permanently stuck: reading the lesson is free and guests
+        # cannot do it at all, so trying again has to stay possible. It costs a
+        # strength, which is what keeps studying the better move.
+        if journey.is_sealed(state, node):
+            journey.unseal(state, node)
+            state['wrong_here'] = 0
+            state['guard_right'] = 0
+            state['guard_wrong'] = 0
+            state['feedback'] = None
+            journey.spend_kuch(state, 1)
+            journey.add_log(state, _('You square your shoulders and try the way again.'))
+            if state['kuch'] <= 0:
+                journey.pause(state)
+            else:
+                lesson = (_journey_guard_lesson(state, node) if node['kind'] == 'guard'
+                          else node['lesson'])
+                _journey_serve(request, state, lesson, node.get('threat', 1))
+        return
+
+    if action == 'retreat':
+        # Back off a sealed node to take the other branch instead.
+        if journey.siblings_open(state):
+            state['chosen'].pop(str(state['step']), None)
+            state['q'] = None
+            state['feedback'] = None
+            state['wrong_here'] = 0
+            journey.add_log(state, _('You turn back to the fork and look at the other way.'))
+        return
+
+    if action == 'answer':
+        _journey_answer(request, state, run, node)
+        return
+
+
+def _journey_answer(request, state, run, node):
+    """Grade one answer, and decide what the road does about it."""
+    question = state.get('q')
+    if not question or state.get('feedback'):
+        return
+    try:
+        chosen = int(request.POST.get('choice', -1))
+    except (TypeError, ValueError):
+        chosen = -1
+
+    correct = chosen == question.get('correct')
+    answer_text = next((c['text'] for c in question['choices']
+                        if c['id'] == question.get('correct')), '')
+    state['feedback'] = {
+        'correct':     correct,
+        'answer':      answer_text,
+        'chosen':      next((c['text'] for c in question['choices'] if c['id'] == chosen), ''),
+        'question':    question['text'],
+        'explanation': question.get('explanation', ''),
+        'lesson':      question.get('lesson'),
+        'lesson_title': question.get('lesson_title', ''),
+    }
+
+    if correct:
+        state['wrong_here'] = 0
+        if node['kind'] == 'guard':
+            state['guard_right'] = state.get('guard_right', 0) + 1
+        elif node['kind'] == 'twin':
+            state['twin_done'] = state.get('twin_done', 0) + 1
+        return
+
+    journey.spend_kuch(state, 1)
+    state['wrong_here'] = state.get('wrong_here', 0) + 1
+
+    if node['kind'] == 'guard':
+        state['guard_wrong'] = state.get('guard_wrong', 0) + 1
+    elif state['wrong_here'] >= journey.SEAL_AFTER:
+        journey.seal(state, node)
+        journey.add_log(state, _('The way is shut. You will have to study, rest, or go around.'))
+
+    if state['kuch'] <= 0:
+        journey.pause(state)
+
+
+def _journey_continue(request, state, run, node):
+    """Press on after the explanation card."""
+    feedback = state.get('feedback') or {}
+    state['feedback'] = None
+
+    if not feedback.get('correct'):
+        return
+
+    if node['kind'] == 'twin' and state.get('twin_done', 0) < 2:
+        _journey_serve(request, state, node['lesson'], node.get('threat', 1))
+        return
+
+    if node['kind'] == 'guard':
+        if state.get('guard_wrong', 0) > 1:
+            return
+        if state.get('guard_right', 0) < 3:
+            _journey_serve(request, state, _journey_guard_lesson(state, node),
+                           node.get('threat', 3))
+            return
+
+    state['coins'] += journey.node_coins(node)
+    journey.add_log(state, _('%(who)s lets you pass.')
+                    % {'who': str(journey.encounter(node['encounter'])['title'])})
+    journey.advance(state)
+    if state.get('status') == JourneyRun.STATUS_FINISHED:
+        _journey_finish(request, state, run)
+
+
+def _journey_finish(request, state, run):
+    """Arrival: collect what was left on the road, and close the run."""
+    _journey_collect_left(request, state, run)
+    journey.add_log(state, _('You reach %(place)s.')
+                    % {'place': journey.leg_place(state['road'], state['leg'])})
+
+
+def _journey_context(request, state, run):
+    """Everything the template needs, with slugs resolved to real prose."""
+    node = journey.current_node(state)
+    step = journey.current_step(state)
+    fork = journey.at_fork(state)
+    road = journey.ROAD_MAP.get(state['road'])
+
+    branches = []
+    if fork and step:
+        for index, option in enumerate(step):
+            spec = journey.branch(option.get('branch')) or {}
+            branches.append({
+                'index':     index,
+                'node':      option,
+                'spec':      spec,
+                'encounter': journey.encounter(option['encounter']),
+                'terrain':   journey.terrain(option['terrain']),
+                'sealed':    journey.is_sealed(state, option),
+                'coins':     journey.node_coins(option),
+            })
+
+    chest = None
+    if node and node['kind'] == 'chest' and state.get('status') == JourneyRun.STATUS_TRAVELLING:
+        chest = _journey_open_chest(request, state, node)
+
+    lesson_id = None
+    if node:
+        lesson_id = ((state.get('feedback') or {}).get('lesson')
+                     or (state.get('q') or {}).get('lesson')
+                     or node.get('lesson'))
+
+    return {
+        'state':      state,
+        'road':       road,
+        'place':      journey.leg_place(state['road'], state['leg']),
+        'node':       node,
+        'encounter':  journey.encounter(node['encounter']) if node else None,
+        'terrain':    journey.terrain(node['terrain']) if node else None,
+        'branch':     journey.branch(node.get('branch')) if node else None,
+        'fork':       fork,
+        'branches':   branches,
+        'chest':      chest,
+        'sealed':     journey.is_sealed(state, node) if node else False,
+        'siblings':   journey.siblings_open(state),
+        'q':          state.get('q'),
+        'feedback':   state.get('feedback'),
+        'trail':      journey.progress_row(state),
+        'kuch_full':  range(state.get('kuch', 0)),
+        'kuch_lost':  range(max(0, state.get('max_kuch', 0) - state.get('kuch', 0))),
+        'node_coins': journey.node_coins(node) if node else 0,
+        'lesson_id':  lesson_id,
+        'pause_left': journey.pause_remaining(state) // 60 + 1,
+        'bonus':      journey.arrival_bonus(state) if state.get('status') == 'finished' else 0,
+        'diary':      list(reversed(state.get('log', [])))[:6],
+        'elapsed_min': state.get('elapsed', 0) // 60,
+        'elapsed_sec': f"{state.get('elapsed', 0) % 60:02d}",
+        'guard_total': 3,
+        'guard_now':   state.get('guard_right', 0) + 1,
+    }
+
+
+@login_required
+def journey_chest(request):
+    """The pupil's prize chest — what they won, and what is still to be handed
+    over in the classroom."""
+    prizes = (JourneyPrize.objects
+              .filter(user=request.user)
+              .select_related('reward', 'run')
+              .order_by('handed_over', '-won_at'))
+    coins = (JourneyRun.objects
+             .filter(user=request.user, status=JourneyRun.STATUS_FINISHED)
+             .aggregate(total=Sum('coins'))['total'] or 0)
+    return render(request, 'games/journey_chest.html', {
+        'prizes':  prizes,
+        'pending': [p for p in prizes if not p.handed_over],
+        'coins':   coins,
+    })

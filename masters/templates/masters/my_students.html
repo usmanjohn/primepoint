@@ -179,6 +179,9 @@
     <p class="ms-subtitle">{{ student_rows|length }} {% trans "student(s) enrolled" %}</p>
   </div>
   <div class="ms-actions">
+    <a href="{% url 'masters-journey-prizes' master.pk %}" class="btn-core-outline text-decoration-none" style="font-size:0.82rem;">
+      <i class="bi bi-gift"></i> {% trans "Journey prizes" %}
+    </a>
     <a href="{% url 'masters-certificate' %}" class="btn-core-outline text-decoration-none" style="font-size:0.82rem;">
       <i class="bi bi-award"></i> {% trans "Certificates" %}
     </a>

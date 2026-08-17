@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Prime Journey" %} — Powerty{% endblock %}
+{% block page_name %}{% trans "Prime Journey" %}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4" style="max-width:820px;">
+
+    <!-- ══════════ THE PREMISE ══════════ -->
+    <div class="pj-hero mb-4">
+        <div class="pj-hero__glyph">&#x1F5FA;&#xFE0F;</div>
+        <h1 class="pj-hero__title">{% trans "Prime Journey" %}</h1>
+        <p class="pj-hero__lead">
+            {% trans "Every road here is one of the Prime courses. Somebody stands in your way at each stage, and they only step aside for a right answer — a real question from the lesson you have just reached." %}
+        </p>
+        <p class="pj-hero__rule">
+            {% trans "Fail twice and the way is shut. Then read the lesson: it is the only thing that both opens the gate and gives your strength back." %}
+        </p>
+    </div>
+
+    {% include "includes/guest_cta.html" %}
+
+    {% if active %}
+    <!-- ══════════ A JOURNEY ALREADY UNDER WAY ══════════ -->
+    <a href="{% url 'journey_play' %}" class="text-decoration-none">
+        <div class="pj-resume mb-4">
+            <div class="pj-resume__emoji">{{ active.road.emoji }}</div>
+            <div class="flex-grow-1">
+                <div class="pj-resume__label">
+                    {% if active.paused %}{% trans "Your journey is waiting" %}{% else %}{% trans "You are on the road" %}{% endif %}
+                </div>
+                <div class="pj-resume__where">{{ active.road.name }} &middot; {{ active.place }}</div>
+            </div>
+            <span class="pj-resume__go">{% trans "Continue" %} &rarr;</span>
+        </div>
+    </a>
+    {% endif %}
+
+    <!-- ══════════ THE ROADS ══════════ -->
+    <h2 class="fs-6 fw-bold mb-3" style="color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">
+        {% trans "Choose a road" %}
+    </h2>
+
+    <div class="row g-3">
+        {% for row in roads %}
+        <div class="col-12 col-sm-6">
+            <a href="{% url 'journey_road' row.road.slug %}" class="text-decoration-none d-block h-100">
+                <div class="pj-road" style="--pj-a:{{ row.road.gradient.0 }}; --pj-b:{{ row.road.gradient.1 }};">
+                    <div class="pj-road__head">
+                        <span class="pj-road__emoji">{{ row.road.emoji }}</span>
+                        <h3 class="pj-road__name">{{ row.road.name }}</h3>
+                    </div>
+                    <div class="pj-road__body">
+                        <p class="pj-road__blurb">{{ row.road.blurb }}</p>
+                        <div class="pj-road__meter">
+                            <div class="pj-road__fill" style="width:{{ row.pct }}%;"></div>
+                        </div>
+                        <div class="pj-road__stat">
+                            {% blocktrans with done=row.done total=row.legs %}{{ done }} of {{ total }} stages walked{% endblocktrans %}
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if user.is_authenticated %}
+    <div class="text-center mt-4">
+        <a href="{% url 'journey_chest' %}" class="btn-auth-outline text-decoration-none py-2 px-4">
+            &#x1F381; {% trans "My prize chest" %}
+        </a>
+    </div>
+    {% endif %}
+
+    <!-- ══════════ HOW IT WORKS ══════════ -->
+    <div class="pj-rules mt-4">
+        <h2 class="pj-rules__title">{% trans "The rules of the road" %}</h2>
+        <ul class="pj-rules__list">
+            <li><span>&#x1F4AA;</span> <strong>{% trans "Strength" %}</strong> — {% trans "a wrong answer costs one. At zero the journey pauses; it never ends." %}</li>
+            <li><span>&#x1F512;</span> <strong>{% trans "Sealed gates" %}</strong> — {% trans "two wrong answers shut the way. Read the lesson to open it and win strength back." %}</li>
+            <li><span>&#x1F500;</span> <strong>{% trans "Forks" %}</strong> — {% trans "the high road is shorter and pays double; the long way round is kinder and pays less." %}</li>
+            <li><span>&#x1F4E6;</span> <strong>{% trans "Chests" %}</strong> — {% trans "carry the prize now and walk weaker, or leave it and collect far more if you arrive." %}</li>
+            <li><span>&#x1F6E1;&#xFE0F;</span> <strong>{% trans "The guardian" %}</strong> — {% trans "at the end of every stage, three questions about the road behind you." %}</li>
+        </ul>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import reverse
 from django.utils.html import format_html
-from .models import CrosswordPuzzle, EnglishCrossword, WordSearchPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion, MathSquarePuzzle, MathChampResult, EnglishChampResult, DuelResult
+from .models import CrosswordPuzzle, EnglishCrossword, WordSearchPuzzle, CodeBreakerPuzzle, CodeBreakerClue, PrimeClimbChallenge, SortingRaceChallenge, WordOrderChallenge, OddOneOutPack, OddOneOutQuestion, MathSquarePuzzle, MathChampResult, EnglishChampResult, DuelResult, JourneyReward, JourneyPrize, JourneyRun
 from .views import generate_word_search
 from .views import _pc_correct_numbers
 from .generator import generate_math_square
@@ -299,6 +299,60 @@ class EnglishChampResultAdmin(admin.ModelAdmin):
                      'hearts_left', 'medal', 'elapsed_display', 'created_at')
     list_filter   = ('level', 'finished', 'medal')
     search_fields = ('user__username',)
+
+    def elapsed_display(self, obj):
+        return obj.elapsed_display
+    elapsed_display.short_description = 'Time'
+
+
+# ---------------------------------------------------------------------------
+# Prime Journey
+# ---------------------------------------------------------------------------
+# The prize catalogue is the one part of this game the teacher edits by hand:
+# put your real pens, notebooks and books in here and the chests on the road
+# start handing them out. Everything else is generated.
+
+
+@admin.register(JourneyReward)
+class JourneyRewardAdmin(admin.ModelAdmin):
+    list_display  = ('emoji', 'name', 'rarity', 'stock_display', 'is_active', 'won_count')
+    list_filter   = ('rarity', 'is_active')
+    search_fields = ('name', 'description')
+    list_editable = ('is_active',)
+    fields        = ('name', 'emoji', 'description', 'rarity', 'stock', 'is_active')
+
+    def stock_display(self, obj):
+        return '∞' if obj.stock == 0 else obj.stock
+    stock_display.short_description = 'In stock'
+
+    def won_count(self, obj):
+        return obj.prizes.count()
+    won_count.short_description = 'Won'
+
+
+@admin.register(JourneyPrize)
+class JourneyPrizeAdmin(admin.ModelAdmin):
+    list_display  = ('user', 'reward', 'carried', 'won_at', 'handed_over', 'handed_at')
+    list_filter   = ('handed_over', 'carried', 'reward__rarity')
+    search_fields = ('user__username', 'reward__name')
+    autocomplete_fields = ('user', 'reward')
+    actions       = ('mark_handed_over',)
+
+    @admin.action(description='Mark selected prizes as handed over')
+    def mark_handed_over(self, request, queryset):
+        from django.utils import timezone
+        updated = queryset.filter(handed_over=False).update(
+            handed_over=True, handed_at=timezone.now(), handed_by=request.user)
+        self.message_user(request, f'{updated} prize(s) marked as handed over.')
+
+
+@admin.register(JourneyRun)
+class JourneyRunAdmin(admin.ModelAdmin):
+    list_display  = ('user', 'road', 'leg', 'status', 'coins', 'kuch_left',
+                     'detours', 'elapsed_display', 'updated_at')
+    list_filter   = ('road', 'status')
+    search_fields = ('user__username',)
+    readonly_fields = ('state',)
 
     def elapsed_display(self, obj):
         return obj.elapsed_display

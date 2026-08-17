@@ -409,3 +409,141 @@ class MathSquarePuzzle(models.Model):
 
     class Meta:
         ordering = ['-created_at']
+
+
+# ---------------------------------------------------------------------------
+# Prime Journey
+# ---------------------------------------------------------------------------
+# The travelling adventure built on the Prime courses. The rules live in
+# `games/journey.py`; these four models are only what has to outlive a request.
+#
+# A guest's whole journey lives in the session, exactly like the championships.
+# A logged-in traveller gets a JourneyRun row instead, because the game's core
+# loop *depends* on being able to walk away: running out of strength pauses the
+# journey rather than ending it, and the fastest way to resume is to go and
+# finish a lesson. That only works if the road is still there tomorrow.
+
+
+class JourneyRun(models.Model):
+    """One traveller's journey along one leg of one road."""
+    STATUS_TRAVELLING = 'travelling'
+    STATUS_PAUSED     = 'paused'
+    STATUS_FINISHED   = 'finished'
+    STATUS_ABANDONED  = 'abandoned'
+    STATUS_CHOICES = [
+        (STATUS_TRAVELLING, 'Travelling'),
+        (STATUS_PAUSED,     'Paused'),
+        (STATUS_FINISHED,   'Finished'),
+        (STATUS_ABANDONED,  'Abandoned'),
+    ]
+
+    user       = models.ForeignKey(User, on_delete=models.CASCADE, related_name='journey_runs')
+    road       = models.CharField(max_length=20)
+    leg        = models.PositiveSmallIntegerField(default=1)
+    seed       = models.BigIntegerField(default=0)
+
+    # The whole journey — map, position, strength, diary. See journey.new_state().
+    state      = models.JSONField(default=dict, blank=True)
+
+    status     = models.CharField(max_length=12, choices=STATUS_CHOICES, default=STATUS_TRAVELLING)
+    coins      = models.IntegerField(default=0)
+    kuch_left  = models.PositiveSmallIntegerField(default=0)
+    detours    = models.PositiveSmallIntegerField(default=0)
+    elapsed    = models.PositiveIntegerField(default=0, help_text='Seconds from setting out to arriving.')
+
+    created_at  = models.DateTimeField(auto_now_add=True)
+    updated_at  = models.DateTimeField(auto_now=True)
+    finished_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ['-updated_at']
+        indexes  = [
+            models.Index(fields=['user', 'status']),
+            models.Index(fields=['road', 'leg', '-coins']),
+        ]
+
+    @property
+    def is_open(self):
+        return self.status in (self.STATUS_TRAVELLING, self.STATUS_PAUSED)
+
+    @property
+    def elapsed_display(self):
+        return f'{self.elapsed // 60}:{self.elapsed % 60:02d}'
+
+    def __str__(self):
+        return f'{self.user.username} — {self.road} {self.leg}-leg ({self.status})'
+
+
+class JourneySeenQuestion(models.Model):
+    """A question this traveller has already met on the road.
+
+    The point of the game is that coming back after studying gets you a
+    *different* question, so nothing is ever solved by memorising an answer.
+    Twenty questions per lesson gives plenty of headroom.
+    """
+    user       = models.ForeignKey(User, on_delete=models.CASCADE, related_name='journey_seen')
+    question   = models.ForeignKey('practice.PracticeQuestion', on_delete=models.CASCADE,
+                                   related_name='journey_sightings')
+    seen_at    = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = [('user', 'question')]
+        indexes = [models.Index(fields=['user', 'question'])]
+
+    def __str__(self):
+        return f'{self.user.username} saw Q{self.question_id}'
+
+
+class JourneyReward(models.Model):
+    """The teacher's prize catalogue — the real pens, notebooks and books.
+
+    A chest on the road hands out one of these, and the pupil redeems it in the
+    classroom. Edited in admin; `stock` is what is physically on the shelf, so
+    a prize stops appearing once it runs out.
+    """
+    RARITY_COMMON    = 'common'
+    RARITY_RARE      = 'rare'
+    RARITY_LEGENDARY = 'legendary'
+    RARITY_CHOICES = [
+        (RARITY_COMMON,    'Common'),
+        (RARITY_RARE,      'Rare'),
+        (RARITY_LEGENDARY, 'Legendary'),
+    ]
+
+    name        = models.CharField(max_length=120)
+    emoji       = models.CharField(max_length=8, blank=True, default='\U0001F381')
+    description = models.CharField(max_length=300, blank=True)
+    rarity      = models.CharField(max_length=12, choices=RARITY_CHOICES, default=RARITY_COMMON)
+    stock       = models.PositiveIntegerField(default=0, help_text='0 = unlimited.')
+    is_active   = models.BooleanField(default=True)
+    created_at  = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['rarity', 'name']
+
+    def __str__(self):
+        return f'{self.emoji} {self.name}'
+
+
+class JourneyPrize(models.Model):
+    """A prize a traveller actually won, waiting to be handed over in real life."""
+    user        = models.ForeignKey(User, on_delete=models.CASCADE, related_name='journey_prizes')
+    reward      = models.ForeignKey(JourneyReward, on_delete=models.CASCADE, related_name='prizes')
+    run         = models.ForeignKey(JourneyRun, on_delete=models.SET_NULL, null=True, blank=True,
+                                    related_name='prizes')
+
+    # Carried from the chest (banked at once, but it costs strength to carry) or
+    # left on the road and collected — doubled — at the destination.
+    carried     = models.BooleanField(default=True)
+    won_at      = models.DateTimeField(auto_now_add=True)
+
+    handed_over = models.BooleanField(default=False)
+    handed_at   = models.DateTimeField(null=True, blank=True)
+    handed_by   = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True,
+                                     related_name='journey_prizes_handed')
+
+    class Meta:
+        ordering = ['handed_over', '-won_at']
+
+    def __str__(self):
+        return f'{self.user.username} won {self.reward.name}'

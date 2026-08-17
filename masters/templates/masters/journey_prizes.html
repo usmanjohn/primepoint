@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Journey prizes" %} — Powerty{% endblock %}
+{% block page_name %}{% trans "Journey prizes" %}{% endblock %}
+{% block nav_masters %}active{% endblock %}
+{% block mob_nav_masters %}active{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4" style="max-width:760px;">
+
+    <a href="{% url 'masters-my-students' master.pk %}" class="pj-back">&larr; {% trans "My Students" %}</a>
+
+    <div class="pj-hero mb-4">
+        <div class="pj-hero__glyph">&#x1F381;</div>
+        <h1 class="pj-hero__title">{% trans "Prizes to hand over" %}</h1>
+        <p class="pj-hero__lead">
+            {% trans "Your pupils found these in chests along the Prime Journey roads. Give them out in class, then tick them off here." %}
+        </p>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+        <div class="pj-pending">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- ══════════ WAITING ══════════ -->
+    <h2 class="fs-6 fw-bold mb-2" style="color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">
+        {% trans "Waiting" %} ({{ pending|length }})
+    </h2>
+
+    <div class="pj-handout mb-4">
+        {% for prize in pending %}
+        <div class="pj-handout__row">
+            <span class="pj-prize__emoji">{{ prize.reward.emoji }}</span>
+            <div>
+                <div class="pj-handout__who">{{ prize.user.username }}</div>
+                <div class="pj-handout__what">{{ prize.reward.name }}</div>
+                <div class="pj-handout__when">
+                    {{ prize.won_at|date:"j M Y" }}
+                    {% if prize.run %}&middot; {{ prize.run.road }} {{ prize.run.leg }}{% endif %}
+                </div>
+            </div>
+            <form method="post" class="pj-handout__act">
+                {% csrf_token %}
+                <input type="hidden" name="prize" value="{{ prize.pk }}">
+                <button type="submit" class="pj-btn pj-btn--go" style="padding:0.45rem 0.95rem; font-size:0.85rem;">
+                    &#x2713; {% trans "Handed over" %}
+                </button>
+            </form>
+        </div>
+        {% empty %}
+        <div class="text-center py-4" style="color:var(--text-muted);">
+            <div style="font-size:2rem; line-height:1;">&#x2705;</div>
+            <p class="mt-2 mb-0" style="font-size:0.9rem;">
+                {% trans "Nothing is owed. Add prizes to the catalogue in admin and chests will start handing them out." %}
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- ══════════ ALREADY GIVEN ══════════ -->
+    {% if done %}
+    <h2 class="fs-6 fw-bold mb-2" style="color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">
+        {% trans "Already given" %}
+    </h2>
+    <div class="pj-handout">
+        {% for prize in done %}
+        <div class="pj-handout__row pj-handout__row--done">
+            <span class="pj-prize__emoji">{{ prize.reward.emoji }}</span>
+            <div>
+                <div class="pj-handout__who">{{ prize.user.username }}</div>
+                <div class="pj-handout__what">{{ prize.reward.name }}</div>
+            </div>
+            <span class="pj-handout__act pj-handout__when">{{ prize.handed_at|date:"j M Y" }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

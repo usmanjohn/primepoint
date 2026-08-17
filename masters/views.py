@@ -10,6 +10,8 @@ from .forms import MasterForm
 from practice.models import PracticeAttempt
 from homework.models import PandaGroup, Homework
 from tutorial.models import Tutorial
+from games.models import JourneyPrize
+from django.utils.translation import gettext as _
 
 
 def master_list(request):
@@ -411,4 +413,45 @@ def certificate_view(request, cert_pk):
     return render(request, 'masters/certificate_view.html', {
         'cert': cert,
         'today': cert.issued_at.date(),
+    })
+
+
+@login_required
+def journey_prizes(request, pk):
+    """Prizes the master's pupils have won in Prime Journey, waiting to be
+    handed over in real life.
+
+    This is the page that turns a browser game into something that happens in
+    a classroom: a chest on the road gives a pupil a token, and this list is
+    where the teacher sees whose pen or notebook is still owed.
+    """
+    master = get_object_or_404(Master, pk=pk)
+    if request.user != master.profile.user:
+        raise PermissionDenied
+
+    pupil_users = list(master.pandas.select_related('profile__user')
+                       .values_list('profile__user_id', flat=True))
+
+    if request.method == 'POST':
+        prize = JourneyPrize.objects.filter(
+            pk=request.POST.get('prize'), user_id__in=pupil_users).first()
+        if prize and not prize.handed_over:
+            prize.handed_over = True
+            prize.handed_at = timezone.now()
+            prize.handed_by = request.user
+            prize.save(update_fields=['handed_over', 'handed_at', 'handed_by'])
+            messages.success(request, _('Marked as handed over: %(prize)s → %(who)s')
+                             % {'prize': prize.reward.name,
+                                'who': prize.user.username})
+        return redirect('masters-journey-prizes', pk=master.pk)
+
+    prizes = (JourneyPrize.objects
+              .filter(user_id__in=pupil_users)
+              .select_related('reward', 'user', 'run')
+              .order_by('handed_over', '-won_at'))
+
+    return render(request, 'masters/journey_prizes.html', {
+        'master':  master,
+        'pending': [p for p in prizes if not p.handed_over],
+        'done':    [p for p in prizes if p.handed_over][:30],
     })

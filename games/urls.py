@@ -54,6 +54,12 @@ urlpatterns = [
     # Chempionlar Dueli (math vs English, 2 players)
     path('duel/', views.duel_home, name='duel_home'),
     path('duel/play/', views.duel_play, name='duel_play'),
+    # Prime Journey — the adventure built on the Prime courses
+    path('journey/', views.journey_home, name='journey_home'),
+    path('journey/chest/', views.journey_chest, name='journey_chest'),
+    path('journey/play/', views.journey_play, name='journey_play'),
+    path('journey/<slug:road>/', views.journey_road, name='journey_road'),
+    path('journey/<slug:road>/<int:leg>/start/', views.journey_start, name='journey_start'),
     # Math Square (Cross-Math)
     path('math-square/', views.mathsquare_list, name='mathsquare_list'),
     path('math-square/create/', views.mathsquare_create, name='mathsquare_create'),

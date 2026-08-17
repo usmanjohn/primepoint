@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ road.name }} — {% trans "Prime Journey" %}{% endblock %}
+{% block page_name %}{% trans "Prime Journey" %}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4" style="max-width:820px;">
+
+    <a href="{% url 'journey_home' %}" class="pj-back">&larr; {% trans "All roads" %}</a>
+
+    <div class="pj-roadhead mb-4" style="--pj-a:{{ road.gradient.0 }}; --pj-b:{{ road.gradient.1 }};">
+        <span class="pj-roadhead__emoji">{{ road.emoji }}</span>
+        <div>
+            <h1 class="pj-roadhead__name">{{ road.name }}</h1>
+            <p class="pj-roadhead__blurb">{{ road.blurb }}</p>
+        </div>
+    </div>
+
+    {% include "includes/guest_cta.html" %}
+
+    <!-- ══════════ THE STAGES ══════════ -->
+    <div class="pj-legs">
+        {% for row in rows %}
+        <div class="pj-leg {% if row.finished %}pj-leg--done{% elif not row.unlocked %}pj-leg--locked{% endif %}">
+            <div class="pj-leg__marker">
+                {% if row.finished %}&#x2713;{% elif not row.unlocked %}&#x1F512;{% else %}{{ row.leg }}{% endif %}
+            </div>
+            <div class="pj-leg__body">
+                <div class="pj-leg__place">{{ row.place }}</div>
+                <div class="pj-leg__range">{{ row.first }}{% if row.last and row.last != row.first %} &rarr; {{ row.last }}{% endif %}</div>
+
+                {% if row.unlocked %}
+                    <div class="pj-leg__actions">
+                        <form method="post" action="{% url 'journey_start' road.slug row.leg %}">
+                            {% csrf_token %}
+                            <button type="submit" class="pj-btn pj-btn--go">
+                                {% if row.finished %}{% trans "Walk it again" %}{% else %}{% trans "Set out" %}{% endif %} &rarr;
+                            </button>
+                        </form>
+                        {% if row.best %}
+                        <span class="pj-leg__best">&#x1FA99; {% blocktrans with coins=row.best %}best {{ coins }}{% endblocktrans %}</span>
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <div class="pj-leg__hint">
+                        {% blocktrans with prev=row.leg|add:"-1" %}Finish stage {{ prev }} to open this one — or read half its lessons.{% endblocktrans %}
+                        <span class="pj-leg__studied">{{ row.studied }}/{{ row.lessons|length }} {% trans "lessons read" %}</span>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center py-5" style="color:var(--text-muted);">{% trans "This road is not open yet." %}</p>
+        {% endfor %}
+    </div>
+
+    <!-- ══════════ WHO WALKED IT BEST ══════════ -->
+    {% if top %}
+    <div class="pj-board mt-4">
+        <h2 class="pj-board__title">&#x1F3C6; {% trans "Farthest travellers" %}</h2>
+        <table class="pj-board__table">
+            <tbody>
+            {% for run in top %}
+            <tr>
+                <td class="pj-board__rank">{{ forloop.counter }}</td>
+                <td class="pj-board__who">{{ run.user.username }}</td>
+                <td class="pj-board__leg">{% blocktrans with leg=run.leg %}stage {{ leg }}{% endblocktrans %}</td>
+                <td class="pj-board__coins">&#x1FA99; {{ run.coins }}</td>
+                <td class="pj-board__time">{{ run.elapsed_display }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

@@ -16,6 +16,20 @@ from django.utils.translation import gettext_lazy as _
 
 GAMES = [
     {
+        # The only game whose questions come from the courses themselves: each
+        # obstacle is a question from the Prime lesson that road has reached,
+        # and the way past a sealed gate is to go and read that lesson.
+        'slug': 'prime-journey',
+        'url': 'journey_home',
+        'name': _('Prime Journey'),
+        'description': _('Travel a Prime course like a road. Answer to pass the obstacle, read the lesson to open a sealed gate, and choose whether to carry the treasure or travel light.'),
+        'emoji': '\U0001F5FA️',
+        'gradient': ('#7c3aed', '#4c1d95'),
+        'badge': ('#ede9fe', '#5b21b6'),
+        'subjects': ['math', 'english', 'korean', 'russian'],
+        'tag': _('Adventure'),
+    },
+    {
         'slug': 'math-championship',
         'url': 'mathchamp_home',
         'name': _('Math Championship'),

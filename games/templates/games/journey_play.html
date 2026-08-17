@@ -1,0 +1,339 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ place }} — {% trans "Prime Journey" %}{% endblock %}
+{% block page_name %}{% trans "Prime Journey" %}{% endblock %}
+{% block nav_games %}active{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-3 py-4" style="max-width:660px;">
+
+{% if state.status == 'finished' %}
+    <!-- ══════════════════ ARRIVAL ══════════════════ -->
+    <div class="pj-end pj-end--win">
+        <div class="pj-end__glyph">&#x1F3F0;</div>
+        <h1 class="pj-end__title">{% trans "You have arrived." %}</h1>
+        <p class="pj-end__where">{{ place }}</p>
+    </div>
+    <div class="pj-panel">
+        <div class="pj-stats">
+            <div class="pj-stat"><b style="color:#d97706;">{{ state.coins }}</b><span>{% trans "Coins" %}</span></div>
+            <div class="pj-stat"><b style="color:#16a34a;">{{ state.kuch }}/{{ state.max_kuch }}</b><span>{% trans "Strength" %}</span></div>
+            <div class="pj-stat"><b style="color:#2563eb;">{{ elapsed_min }}:{{ elapsed_sec }}</b><span>{% trans "Time" %}</span></div>
+        </div>
+        <p class="pj-end__note">
+            {% blocktrans with bonus=bonus %}Arrival bonus: {{ bonus }} coins — strength you had left, minus the time you spent wandering.{% endblocktrans %}
+        </p>
+
+        {% if not user.is_authenticated %}
+        <div class="pj-guestnote">
+            &#x1F43C; {% trans "This journey was not saved." %}
+            <a href="{% url 'register' %}">{% trans "Sign up" %}</a>
+            {% trans "to keep your road, your coins and any real prizes you find." %}
+        </div>
+        {% endif %}
+
+        <div class="pj-actions">
+            <a href="{% url 'journey_road' state.road %}" class="pj-btn pj-btn--go">{% trans "The next stage" %} &rarr;</a>
+            <form method="post"><!-- clears the finished run -->
+                {% csrf_token %}
+                <input type="hidden" name="action" value="quit">
+                <button type="submit" class="pj-btn pj-btn--quiet">{% trans "Back to the map" %}</button>
+            </form>
+        </div>
+    </div>
+
+{% else %}
+
+    <!-- ══════════════════ THE TRAIL ══════════════════ -->
+    <div class="pj-hud">
+        <div class="pj-hud__where">
+            <span class="pj-hud__road">{{ road.emoji }} {{ road.name }}</span>
+            <span class="pj-hud__place">{{ place }}</span>
+        </div>
+        <div class="pj-hud__meters">
+            <span class="pj-kuch" title="{% trans 'Strength' %}">
+                {% for i in kuch_full %}&#x1F49A;{% endfor %}{% for i in kuch_lost %}&#x1F5A4;{% endfor %}
+            </span>
+            <span class="pj-coins">&#x1FA99; {{ state.coins }}</span>
+        </div>
+    </div>
+
+    <div class="pj-trail">
+        {% for dot in trail %}
+        <span class="pj-dot pj-dot--{{ dot.cls }} pj-dot--{{ dot.kind }}{% if dot.fork %} pj-dot--fork{% endif %}">{{ dot.emoji }}</span>
+        {% endfor %}
+    </div>
+
+{% if state.status == 'paused' %}
+    <!-- ══════════════════ OUT OF STRENGTH ══════════════════ -->
+    <div class="pj-card pj-card--rest">
+        <div class="pj-card__emoji">&#x1F6CC;</div>
+        <h2 class="pj-card__title">{% trans "You can go no further today." %}</h2>
+        <p class="pj-card__intro">
+            {% trans "You make camp where you stand. The road will still be here — a journey pauses, it does not end." %}
+        </p>
+
+        <div class="pj-fastest">
+            <div class="pj-fastest__head">&#x1F4D6; {% trans "The fast way back on the road" %}</div>
+            <p>{% trans "Finish any lesson from this stage and you may set off again at once, with strength to spare. Waiting works too — it is just slower." %}</p>
+            {% if lesson_id %}
+            <a href="{% url 'tutorial_detail' lesson_id %}" class="pj-btn pj-btn--study">{% trans "Open the lesson" %} &rarr;</a>
+            {% endif %}
+        </div>
+
+        <form method="post" class="pj-actions">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="resume">
+            {% if pause_left > 1 %}
+            <button type="submit" class="pj-btn pj-btn--quiet" disabled>
+                {% blocktrans with mins=pause_left %}Rest another {{ mins }} min{% endblocktrans %}
+            </button>
+            {% else %}
+            <button type="submit" class="pj-btn pj-btn--go">{% trans "Walk on" %} &rarr;</button>
+            {% endif %}
+        </form>
+    </div>
+
+{% elif fork %}
+    <!-- ══════════════════ A FORK IN THE ROAD ══════════════════ -->
+    <div class="pj-card pj-card--fork">
+        <div class="pj-card__emoji">&#x1F500;</div>
+        <h2 class="pj-card__title">{% trans "The road splits." %}</h2>
+        <p class="pj-card__intro">{% trans "Both ways reach the same place, and both ask about the same lesson. They do not ask it the same way." %}</p>
+
+        <div class="pj-branches">
+            {% for option in branches %}
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="choose">
+                <input type="hidden" name="branch" value="{{ option.index }}">
+                <button type="submit" class="pj-branch{% if option.sealed %} pj-branch--sealed{% endif %}"
+                        {% if option.sealed %}disabled{% endif %}>
+                    <span class="pj-branch__icon">{{ option.spec.emoji }}</span>
+                    <span class="pj-branch__body">
+                        <span class="pj-branch__name">{{ option.spec.name }}</span>
+                        <span class="pj-branch__note">
+                            {% if option.sealed %}{% trans "This way is shut." %}{% else %}{{ option.spec.note }}{% endif %}
+                        </span>
+                    </span>
+                    <span class="pj-branch__pay">&#x1FA99; {{ option.coins }}</span>
+                </button>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
+
+{% elif sealed %}
+    <!-- ══════════════════ THE WAY IS SHUT ══════════════════ -->
+    <div class="pj-card pj-card--sealed">
+        <div class="pj-card__emoji">&#x1F512;</div>
+        <h2 class="pj-card__title">{% trans "The way is shut." %}</h2>
+        <p class="pj-card__intro">{{ encounter.lose }}</p>
+
+        <div class="pj-fastest">
+            <div class="pj-fastest__head">&#x1F4D6; {% trans "This gate has one key." %}</div>
+            <p>
+                {% blocktrans with lesson=node.lesson_title %}Read <strong>{{ lesson }}</strong>. Finishing it opens this gate and gives you strength back — and when you return, the question will be a different one.{% endblocktrans %}
+            </p>
+            {% if node.lesson %}
+            <a href="{% url 'tutorial_detail' node.lesson %}" class="pj-btn pj-btn--study">{% trans "Open the lesson" %} &rarr;</a>
+            {% endif %}
+        </div>
+
+        <div class="pj-actions">
+            {% if siblings %}
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="retreat">
+                <button type="submit" class="pj-btn pj-btn--go">&larr; {% trans "Go back and take the other way" %}</button>
+            </form>
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="regroup">
+                <button type="submit" class="pj-btn pj-btn--quiet">
+                    {% trans "Try it again anyway" %} &nbsp;<small>&minus;1 &#x1F49A;</small>
+                </button>
+            </form>
+        </div>
+    </div>
+
+{% elif feedback %}
+    <!-- ══════════════════ WHAT HAPPENED ══════════════════ -->
+    <div class="pj-card {% if feedback.correct %}pj-card--win{% else %}pj-card--lose{% endif %}">
+        <div class="pj-card__emoji">{% if feedback.correct %}&#x2705;{% else %}&#x274C;{% endif %}</div>
+        <h2 class="pj-card__title">
+            {% if feedback.correct %}{{ encounter.win }}{% else %}{{ encounter.lose }}{% endif %}
+        </h2>
+
+        {% if not feedback.correct %}
+        <div class="pj-answer">
+            <div class="pj-answer__row"><span>{% trans "You said" %}</span><b>{{ feedback.chosen|safe }}</b></div>
+            <div class="pj-answer__row"><span>{% trans "The answer" %}</span><b class="pj-answer__right">{{ feedback.answer|safe }}</b></div>
+        </div>
+        {% endif %}
+
+        {% if feedback.explanation %}
+        <div class="pj-explain">&#x1F4A1; {{ feedback.explanation|safe }}</div>
+        {% endif %}
+
+        {% if feedback.correct %}
+            {% if node.kind == 'twin' and state.twin_done < 2 %}
+            <p class="pj-card__aside">{% trans "One more. This obstacle takes two." %}</p>
+            {% elif node.kind == 'guard' and state.guard_right < guard_total %}
+            <p class="pj-card__aside">
+                {% blocktrans with done=state.guard_right total=guard_total %}{{ done }} of {{ total }}. The guardian is not finished with you.{% endblocktrans %}
+            </p>
+            {% else %}
+            <p class="pj-card__aside">&#x1FA99; {% blocktrans with coins=node_coins %}+{{ coins }} coins{% endblocktrans %}</p>
+            {% endif %}
+            <form method="post" class="pj-actions">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="continue">
+                <button type="submit" class="pj-btn pj-btn--go">{% trans "Press on" %} &rarr;</button>
+            </form>
+        {% else %}
+            <div class="pj-fastest">
+                <div class="pj-fastest__head">&#x1F4D6; {% trans "Not sure? Go and look." %}</div>
+                <p>{% trans "The lesson this came from is one tap away, and reading it gives strength back. Nothing is lost by leaving the road for a while." %}</p>
+                {% if feedback.lesson %}
+                <a href="{% url 'tutorial_detail' feedback.lesson %}" class="pj-btn pj-btn--study">
+                    {{ feedback.lesson_title }} &rarr;
+                </a>
+                {% endif %}
+            </div>
+            <form method="post" class="pj-actions">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="retry">
+                <button type="submit" class="pj-btn pj-btn--go">{% trans "Try again — a different question" %}</button>
+            </form>
+        {% endif %}
+    </div>
+
+{% elif node.kind == 'camp' %}
+    <!-- ══════════════════ A PLACE TO REST ══════════════════ -->
+    <div class="pj-card pj-card--rest">
+        <div class="pj-card__emoji">{{ encounter.emoji }}</div>
+        <h2 class="pj-card__title">{{ encounter.title }}</h2>
+        <p class="pj-card__intro">{{ encounter.intro }}</p>
+        <form method="post" class="pj-actions">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="rest">
+            <button type="submit" class="pj-btn pj-btn--go">
+                &#x1F4AA; {% blocktrans with n=2 %}Rest (+{{ n }} strength){% endblocktrans %}
+            </button>
+        </form>
+    </div>
+
+{% elif node.kind == 'chest' %}
+    <!-- ══════════════════ SOMETHING WORTH CARRYING ══════════════════ -->
+    <div class="pj-card pj-card--chest">
+        <div class="pj-card__emoji">{{ encounter.emoji }}</div>
+        <h2 class="pj-card__title">{{ encounter.title }}</h2>
+        <p class="pj-card__intro">{{ encounter.intro }}</p>
+
+        <div class="pj-loot">
+            <span class="pj-loot__emoji">{{ chest.emoji }}</span>
+            <span class="pj-loot__name">
+                {% if chest.name %}{{ chest.name }}{% else %}{% blocktrans with coins=chest.coins %}A purse of {{ coins }} coins{% endblocktrans %}{% endif %}
+            </span>
+        </div>
+
+        <div class="pj-choice">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="carry">
+                <button type="submit" class="pj-branch">
+                    <span class="pj-branch__icon">&#x1F392;</span>
+                    <span class="pj-branch__body">
+                        <span class="pj-branch__name">{% trans "Take it with you" %}</span>
+                        <span class="pj-branch__note">{% trans "Yours for certain, whatever happens next — but you walk the rest of the road one strength weaker." %}</span>
+                    </span>
+                </button>
+            </form>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="leave">
+                <button type="submit" class="pj-branch">
+                    <span class="pj-branch__icon">&#x1F343;</span>
+                    <span class="pj-branch__body">
+                        <span class="pj-branch__name">{% trans "Leave it and travel light" %}</span>
+                        <span class="pj-branch__note">{% trans "No weight — and it is waiting for you at the end, worth far more. Lost if you never arrive." %}</span>
+                    </span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+{% elif q %}
+    <!-- ══════════════════ SOMEBODY IS IN THE WAY ══════════════════ -->
+    <div class="pj-card pj-card--gate" style="--pj-t:{{ terrain.color }};">
+        <div class="pj-card__terrain">{{ terrain.emoji }} {{ terrain.name }}</div>
+        <div class="pj-card__emoji">{{ encounter.emoji }}</div>
+        <h2 class="pj-card__title">{{ encounter.title }}</h2>
+        <p class="pj-card__intro">{{ encounter.intro }}</p>
+
+        <div class="pj-tags">
+            {% if node.kind == 'guard' %}
+            <span class="pj-tag pj-tag--guard">
+                &#x1F6E1;&#xFE0F; {% blocktrans with now=guard_now total=guard_total %}Question {{ now }} of {{ total }}{% endblocktrans %}
+            </span>
+            {% elif node.kind == 'twin' %}
+            <span class="pj-tag pj-tag--twin">&#x26A1; {% blocktrans with done=state.twin_done %}Two in a row — {{ done }} done{% endblocktrans %}</span>
+            {% endif %}
+            {% if branch %}<span class="pj-tag">{{ branch.emoji }} {{ branch.name }}</span>{% endif %}
+            <span class="pj-tag">&#x1FA99; {{ node_coins }}</span>
+        </div>
+
+        <div class="pj-q">{{ q.text|safe }}</div>
+
+        <form method="post" class="pj-choices">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="answer">
+            {% for choice in q.choices %}
+            <button type="submit" name="choice" value="{{ choice.id }}" class="pj-choice-btn">
+                <span class="pj-choice-btn__letter">{% cycle 'A' 'B' 'C' 'D' 'E' %}</span>
+                <span class="pj-choice-btn__text">{{ choice.text|safe }}</span>
+            </button>
+            {% endfor %}
+        </form>
+
+        {% if q.lesson %}
+        <a href="{% url 'tutorial_detail' q.lesson %}" class="pj-peek">
+            &#x1F4D6; {% blocktrans with lesson=q.lesson_title %}Not sure? Read {{ lesson }}{% endblocktrans %}
+        </a>
+        {% endif %}
+    </div>
+
+{% else %}
+    <div class="pj-card">
+        <div class="pj-card__emoji">&#x1F5FA;&#xFE0F;</div>
+        <h2 class="pj-card__title">{% trans "The road is quiet here." %}</h2>
+        <p class="pj-card__intro">{% trans "Nothing is standing in your way for the moment." %}</p>
+        <form method="post" class="pj-actions">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="continue">
+            <button type="submit" class="pj-btn pj-btn--go">{% trans "Walk on" %} &rarr;</button>
+        </form>
+    </div>
+{% endif %}
+
+    <!-- ══════════════════ THE DIARY ══════════════════ -->
+    {% if diary %}
+    <div class="pj-diary">
+        <div class="pj-diary__head">&#x1F4DC; {% trans "Journey diary" %}</div>
+        <ul>{% for line in diary %}<li>{{ line }}</li>{% endfor %}</ul>
+    </div>
+    {% endif %}
+
+    <form method="post" class="text-center mt-3">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="quit">
+        <button type="submit" class="pj-btn pj-btn--quiet">{% trans "Abandon this journey" %}</button>
+    </form>
+
+{% endif %}
+
+</div>
+{% endblock %}
