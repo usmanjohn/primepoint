@@ -313,56 +313,202 @@ savolga javob beradi: «ikki hodisa qachon yana bir vaqtda takrorlanadi?»</p>
   <span class="pe-chip pe-chip--v">EKUK: eng kichik umumiy karrali</span>
 </div>
 
-<h3>EKUB — «eng koʻpi bilan nechta guruh?»</h3>
+<h3>1. Avval ikkita soʻzni aniqlab olamiz</h3>
 
-<p>Umumiy boʻluvchi — ikkala sonni ham qoldiqsiz boʻladigan son. Ularning eng kattasi
-EKUB deyiladi. Tub koʻpaytuvchilarga ajratsak (PM-7), javob koʻzga koʻrinib qoladi:</p>
+<p>EKUB va EKUK ni hisoblashdan oldin ikkita soʻz aniq boʻlishi kerak.
+Ular chalkashsa, hamma qolgani chalkashadi.</p>
+
+<div class="pe-table-wrap"><table class="pm-word">
+  <tr><th>Soʻz</th><th>Maʼnosi</th><th>12 uchun misol</th></tr>
+  <tr><td><b>Boʻluvchi</b></td>
+    <td class="pm-word__sym">sonni qoldiqsiz boʻladigan son</td>
+    <td>1, 2, 3, 4, 6, 12</td></tr>
+  <tr><td><b>Karrali</b></td>
+    <td class="pm-word__sym">songa qoldiqsiz boʻlinadigan son</td>
+    <td>12, 24, 36, 48, 60 …</td></tr>
+</table></div>
+
+<div class="pe-call pe-uz">
+  <p class="pe-call__t">Boʻluvchi kichik, karrali katta</p>
+  <p>Boʻluvchilar sondan <b>katta boʻlmaydi</b> va ular sanoqli.
+  Karralilar sondan <b>kichik boʻlmaydi</b> va ular cheksiz koʻp.
+  Shuning uchun EKUB «eng katta»ni qidiradi (roʻyxat tugaydi), EKUK
+  esa «eng kichik»ni (roʻyxat tugamaydi).</p>
+</div>
+
+<h3>2. Birinchi usul: roʻyxat tuzish</h3>
+
+<p>Bu eng sekin usul — lekin u nima qilayotganingizni koʻrsatadi.
+Boshida albatta shundan boshlang.</p>
+
+<p><b>Masala.</b> EKUB(12, 18) va EKUK(12, 18) ni toping.</p>
+
+<p><b>EKUB uchun</b> ikkalasining boʻluvchilarini yozamiz va
+umumiylarini ajratamiz:</p>
+
+<div class="pe-table-wrap"><table class="pm-word">
+  <tr><th>Son</th><th>Boʻluvchilari</th><th>Umumiylari</th></tr>
+  <tr><td>12</td><td class="pm-word__sym">1, 2, 3, 4, 6, 12</td>
+    <td>1, 2, 3, <b>6</b></td></tr>
+  <tr><td>18</td><td class="pm-word__sym">1, 2, 3, 6, 9, 18</td>
+    <td>eng kattasi — <b>6</b></td></tr>
+</table></div>
+
+<p>Demak EKUB(12, 18) = <strong>6</strong>.</p>
+
+<p><b>EKUK uchun</b> ikkalasining karralilarini yozamiz va birinchi
+uchrashgan joyini olamiz:</p>
+
+<div class="pe-table-wrap"><table class="pm-word">
+  <tr><th>Son</th><th>Karralilari</th><th>Birinchi umumiysi</th></tr>
+  <tr><td>12</td><td class="pm-word__sym">12, 24, <b>36</b>, 48, 60 …</td>
+    <td><b>36</b></td></tr>
+  <tr><td>18</td><td class="pm-word__sym">18, <b>36</b>, 54, 72 …</td>
+    <td>undan kichigi yoʻq</td></tr>
+</table></div>
+
+<p>Demak EKUK(12, 18) = <strong>36</strong>.</p>
+
+<div class="pe-call pe-tip">
+  <p class="pe-call__t">Boʻluvchilar roʻyxatini qanday toʻliq yozish kerak</p>
+  <p>Ularni <b>juftlab</b> yozing: 12 uchun 1 × 12, 2 × 6, 3 × 4 —
+  uchta juftlik, oltita boʻluvchi. Juftliklar «uchrashgan» joyda
+  toʻxtaysiz (3 × 4 dan keyin 4 × 3 takrorlanadi). Shunda birorta
+  boʻluvchi tushib qolmaydi.</p>
+</div>
+
+<h3>3. Ikkinchi usul: tub koʻpaytuvchilar</h3>
+
+<p>Sonlar kattalashsa, roʻyxat uzayib ketadi. Unda PM-7 dagi tub
+koʻpaytuvchilarga ajratish yordam beradi.</p>
+
+<p><b>Masala.</b> EKUB(24, 36) va EKUK(24, 36).</p>
+
+<p>Avval ikkalasini ajratamiz va <b>bir-birining tagiga</b> yozamiz —
+shunda umumiy qismi koʻzga tashlanadi:</p>
+
+<div class="pe-table-wrap"><table class="pm-word">
+  <tr><th>Son</th><th>Tub koʻpaytuvchilari</th><th>Daraja bilan</th></tr>
+  <tr><td>24</td><td class="pm-word__sym">2 × 2 × 2 × 3</td>
+    <td>2<sup>3</sup> × 3</td></tr>
+  <tr><td>36</td><td class="pm-word__sym">2 × 2 × 3 × 3</td>
+    <td>2<sup>2</sup> × 3<sup>2</sup></td></tr>
+</table></div>
+
+<div class="pe-formula">
+  <span class="pe-formula__label">Ikkita qoida</span>
+  <span class="pe-chip pe-chip--s">EKUB = faqat umumiylari</span>
+  <span class="pe-op">·</span>
+  <span class="pe-chip pe-chip--v">EKUK = hammasi, umumiysi bir marta</span>
+</div>
 
 <div class="pm-solve">
   <div class="pm-solve__row">
-    <span class="pm-solve__step">24 = 2 × 2 × 2 × 3</span>
-    <span class="pm-solve__why">Birinchi sonning ajratmasi</span>
-  </div>
-  <div class="pm-solve__row">
-    <span class="pm-solve__step">36 = 2 × 2 × 3 × 3</span>
-    <span class="pm-solve__why">Ikkinchi sonning ajratmasi</span>
-  </div>
-  <div class="pm-solve__row">
-    <span class="pm-solve__step">umumiylari: 2, 2 va 3</span>
-    <span class="pm-solve__why">Ikkala roʻyxatda ham bor boʻlganlarini olamiz</span>
+    <span class="pm-solve__step">Ikkalasida ham bor: 2, 2 va 3</span>
+    <span class="pm-solve__why">24 da uchta 2 bor, 36 da ikkita — kamrogʻini olamiz</span>
   </div>
   <div class="pm-solve__row pm-solve__row--ans">
     <span class="pm-solve__step">EKUB(24, 36) = 2 × 2 × 3 = 12</span>
-    <span class="pm-solve__why">Demak eng koʻpi bilan 12 ta paket</span>
+    <span class="pm-solve__why">Faqat umumiy qism</span>
   </div>
 </div>
 
-<h3>EKUK — «qachon yana uchrashadi?»</h3>
-
-<p>Karrali — songa qoldiqsiz boʻlinadigan son: 12 ning karralilari 12, 24, 36, 48…
-Ikkala sonning ham karralisi boʻlgan eng kichik son — EKUK. Bu safar
-<b>hamma</b> koʻpaytuvchilarni olamiz, umumiylarini esa <b>bir marta</b>:</p>
-
 <div class="pm-solve">
   <div class="pm-solve__row">
-    <span class="pm-solve__step">24 = 2 × 2 × 2 × 3 · 36 = 2 × 2 × 3 × 3</span>
-    <span class="pm-solve__why">Oʻsha ajratmalar</span>
+    <span class="pm-solve__step">Umumiy qism: 2 × 2 × 3</span>
+    <span class="pm-solve__why">Uni bir marta olamiz</span>
   </div>
   <div class="pm-solve__row">
-    <span class="pm-solve__step">2 × 2 × 3 (umumiy qism) × 2 (24 dan ortiq) × 3 (36 dan ortiq)</span>
-    <span class="pm-solve__why">Har bir sonning «yetishmagan» qismini qoʻshamiz</span>
+    <span class="pm-solve__step">Ustiga: 24 dan ortgan 2, 36 dan ortgan 3</span>
+    <span class="pm-solve__why">Har birining «yetishmagan» qismi</span>
   </div>
   <div class="pm-solve__row pm-solve__row--ans">
-    <span class="pm-solve__step">EKUK(24, 36) = 72</span>
+    <span class="pm-solve__step">EKUK(24, 36) = 2 × 2 × 3 × 2 × 3 = 72</span>
     <span class="pm-solve__why">72 ÷ 24 = 3 ✓ va 72 ÷ 36 = 2 ✓</span>
   </div>
 </div>
 
+<div class="pe-call pe-rule">
+  <p class="pe-call__t">Daraja bilan aytganda — eng qisqa qoida</p>
+  <p>Har bir tub son uchun: <b>EKUB</b> uning <b>kichik</b> darajasini
+  oladi, <b>EKUK</b> esa <b>katta</b> darajasini.
+  <br>24 = 2<sup>3</sup> × 3<sup>1</sup> va 36 = 2<sup>2</sup> × 3<sup>2</sup>.
+  <br>EKUB = 2<sup>2</sup> × 3<sup>1</sup> = 12 · EKUK = 2<sup>3</sup> × 3<sup>2</sup> = 72.
+  <br>Bitta sonda umuman yoʻq tub son EKUB ga <b>kirmaydi</b>, EKUK ga
+  esa kiradi.</p>
+</div>
+
+<h3>4. Uchinchi usul: ustunli boʻlish — eng tezi</h3>
+
+<p>Qoʻlda hisoblashning eng qisqa yoʻli. Ikkala sonni yonma-yon
+yozamiz va <b>ikkalasini ham</b> boʻladigan tub songa boʻlaveramiz.</p>
+
+<div class="pe-table-wrap"><table class="pm-word">
+  <tr><th>Boʻluvchi</th><th>24</th><th>36</th></tr>
+  <tr><td class="pm-word__sym">2</td><td>12</td><td>18</td></tr>
+  <tr><td class="pm-word__sym">2</td><td>6</td><td>9</td></tr>
+  <tr><td class="pm-word__sym">3</td><td>2</td><td>3</td></tr>
+  <tr><td>toʻxtadik</td><td><b>2</b></td><td><b>3</b></td></tr>
+</table></div>
+
+<p>Toʻxtaymiz, chunki 2 bilan 3 ni birdan boʻladigan son endi yoʻq —
+ular oʻzaro tub.</p>
+
+<div class="pm-solve">
+  <div class="pm-solve__row">
+    <span class="pm-solve__step">EKUB = chap ustun: 2 × 2 × 3 = 12</span>
+    <span class="pm-solve__why">Faqat birga boʻlingan sonlar</span>
+  </div>
+  <div class="pm-solve__row pm-solve__row--ans">
+    <span class="pm-solve__step">EKUK = chap ustun × pastki qator: 12 × 2 × 3 = 72</span>
+    <span class="pm-solve__why">Ustiga qolgan «boʻlinmaganlar»</span>
+  </div>
+</div>
+
+<div class="pe-call pe-tip">
+  <p class="pe-call__t">Bu usul nega ishlaydi</p>
+  <p>Chap ustun — ikkala sonda ham bor tub koʻpaytuvchilar, yaʼni
+  EKUB ning oʻzi. Pastki qatorda esa har birining «oʻziga xos» qismi
+  qoladi. Demak bu ikkinchi usulning qisqa yozuvi, boshqa narsa
+  emas.</p>
+</div>
+
+<h3>5. Javobni tekshirish — bir qatorda</h3>
+
+<div class="pe-formula">
+  <span class="pe-formula__label">Har doim ishlaydigan qoida</span>
+  <span class="pe-chip pe-chip--o">EKUB</span>
+  <span class="pe-op">×</span>
+  <span class="pe-chip pe-chip--o">EKUK</span>
+  <span class="pe-op">=</span>
+  <span class="pe-chip pe-chip--s">birinchi son × ikkinchi son</span>
+</div>
+
 <div class="pm-check">
   <p class="pm-check__t">Tekshiramiz</p>
-  <p>EKUB × EKUK = ikki sonning koʻpaytmasi: 12 × 72 = 864 va 24 × 36 = 864 ✓ — bu
-  qoida har doim ishlaydi va javobni bir zumda tekshiradi.</p>
+  <p>12 × 72 = 864 va 24 × 36 = 864 ✓
+  <br>12 va 18 uchun ham: 6 × 36 = 216 va 12 × 18 = 216 ✓
+  <br>Bu qoida ikkala javobni bir yoʻla tekshiradi — biri xato boʻlsa,
+  koʻpaytmalar toʻgʻri kelmaydi.</p>
 </div>
+
+<div class="pe-call pe-tip">
+  <p class="pe-call__t">Undan bittasini topish ham mumkin</p>
+  <p>EKUB ni topish osonroq. Keyin EKUK ni shu qoidadan chiqaring:
+  <b>EKUK = a × b ÷ EKUB</b>. Masalan 24 × 36 ÷ 12 = 72 ✓</p>
+</div>
+
+<h3>6. Qaysi usulni tanlash</h3>
+
+<div class="pe-table-wrap"><table class="pm-word">
+  <tr><th>Usul</th><th>Qachon qulay</th><th>Kamchiligi</th></tr>
+  <tr><td>Roʻyxat</td><td class="pm-word__sym">sonlar kichik (20 gacha)</td>
+    <td>katta sonlarda uzoq</td></tr>
+  <tr><td>Tub koʻpaytuvchilar</td><td class="pm-word__sym">har qanday son</td>
+    <td>ajratish vaqt oladi</td></tr>
+  <tr><td>Ustunli boʻlish</td><td class="pm-word__sym">qoʻlda tez hisoblash</td>
+    <td>tub sonni koʻra bilish kerak</td></tr>
+</table></div>
 
 <div class="pe-call pe-uz"><span class="pe-call__t">Oʻzbekcha</span>
 Nomlarning oʻzi hammasini aytib turibdi: <b>EKUB</b> — eng katta umumiy

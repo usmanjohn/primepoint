@@ -566,6 +566,78 @@ soni n ÷ 2, har juftlik n + 1 ga teng:</p>
   <br>n = 10 uchun javob 10² = 100 — yuzta son qoʻshmasdan.</p>
 </div>
 
+<h4>Nega shunday? Kvadratdan kvadratga oʻtish qoidasi</h4>
+
+<p>Yuqoridagi chizmada har safar kvadratga bitta <b>burchak</b> qoʻshildi.
+Endi oʻsha burchakda nechta nuqta borligini sanaymiz.</p>
+
+<p>n × n kvadratni (n + 1) × (n + 1) ga aylantirish uchun: oʻng
+tomonga <b>n</b> ta nuqta, tepaga yana <b>n</b> ta, va burchakka
+<b>1</b> ta qoʻshiladi.</p>
+
+<div class="pe-formula">
+  <span class="pe-formula__label">Burchakdagi nuqtalar</span>
+  <span class="pe-chip pe-chip--o">n</span>
+  <span class="pe-op">+</span>
+  <span class="pe-chip pe-chip--o">n</span>
+  <span class="pe-op">+</span>
+  <span class="pe-chip pe-chip--o">1</span>
+  <span class="pe-op">=</span>
+  <span class="pe-chip pe-chip--s">2n + 1</span>
+</div>
+
+<p>Va <b>2n + 1</b> har doim toq son. Mana nima uchun qoʻshiladigan
+sonlar aynan toq boʻlib chiqadi — bu tasodif emas, kvadratning
+shaklidan kelib chiqadi.</p>
+
+<div class="pe-formula">
+  <span class="pe-formula__label">Kvadratdan keyingi kvadratga</span>
+  <span class="pe-chip pe-chip--o">n<sup>2</sup></span>
+  <span class="pe-op">+</span>
+  <span class="pe-chip pe-chip--v">(2n + 1)</span>
+  <span class="pe-op">=</span>
+  <span class="pe-chip pe-chip--s">(n + 1)<sup>2</sup></span>
+</div>
+
+<p>Buni algebra bilan ham koʻrsatish mumkin. Qisqa koʻpaytirish
+formulasiga koʻra (PM-44):</p>
+
+<div class="pm-solve">
+  <div class="pm-solve__row">
+    <span class="pm-solve__step">(n + 1)<sup>2</sup> = n<sup>2</sup> + 2n + 1</span>
+    <span class="pm-solve__why">Qavsni ochdik</span>
+  </div>
+  <div class="pm-solve__row pm-solve__row--ans">
+    <span class="pm-solve__step">demak (n + 1)<sup>2</sup> − n<sup>2</sup> = 2n + 1</span>
+    <span class="pm-solve__why">Ikki qoʻshni kvadratning farqi</span>
+  </div>
+</div>
+
+<div class="pe-table-wrap"><table class="pm-word">
+  <tr><th>Kvadrat</th><th>Qoʻshiladigan 2n + 1</th><th>Keyingi kvadrat</th></tr>
+  <tr><td>1<sup>2</sup> = 1</td><td class="pm-word__sym">2 × 1 + 1 = 3</td><td>1 + 3 = 4 = 2<sup>2</sup></td></tr>
+  <tr><td>2<sup>2</sup> = 4</td><td class="pm-word__sym">2 × 2 + 1 = 5</td><td>4 + 5 = 9 = 3<sup>2</sup></td></tr>
+  <tr><td>3<sup>2</sup> = 9</td><td class="pm-word__sym">2 × 3 + 1 = 7</td><td>9 + 7 = 16 = 4<sup>2</sup></td></tr>
+  <tr><td>9<sup>2</sup> = 81</td><td class="pm-word__sym">2 × 9 + 1 = 19</td><td>81 + 19 = 100 = 10<sup>2</sup></td></tr>
+</table></div>
+
+<div class="pe-call pe-tip">
+  <p class="pe-call__t">Bu qoida ogʻzaki hisobda ish beradi</p>
+  <p>Kvadratni bilsangiz, keyingisini yodlash shart emas — uni
+  <b>chiqarib olasiz</b>. 30<sup>2</sup> = 900 ekanini bilsangiz,
+  31<sup>2</sup> = 900 + (2 × 30 + 1) = 900 + 61 = <b>961</b>.
+  Xuddi shunday orqaga ham: 29<sup>2</sup> = 900 − (2 × 29 + 1) =
+  900 − 59 = <b>841</b>.</p>
+</div>
+
+<div class="pe-call pe-rule">
+  <p class="pe-call__t">Ikki qarash, bitta haqiqat</p>
+  <p>Chizma «har safar burchak qoʻshiladi» deydi. Algebra
+  «(n + 1)² − n² = 2n + 1» deydi. Bu bir gapning ikki tili — va
+  ikkalasi ham nima uchun toq sonlar yigʻindisi kvadrat berishini
+  tushuntiradi.</p>
+</div>
+
 <h3>3. Ketma-ketlikdan formulaga</h3>
 
 <p>Namuna izlashning eng koʻp uchraydigan turi: qator berilgan,
@@ -805,7 +877,17 @@ oʻtiradi.</p>
 </div>
 
 <div class="pe-quiz">
-  <p class="pe-quiz__q">7. 1 dan 50 gacha boʻlgan sonlar yigʻindisi
+  <p class="pe-quiz__q">7. 40<sup>2</sup> = 1600 ekani maʼlum.
+  41<sup>2</sup> ni yodlamasdan toping.</p>
+  <details class="pe-reveal"><summary>Javobni koʻrish</summary>
+    <p><b>1681.</b> n<sup>2</sup> + (2n + 1) = (n + 1)<sup>2</sup>
+    qoidasi bilan: 1600 + (2 × 40 + 1) = 1600 + 81 = 1681.
+    Tekshirish: 41 × 41 = 1681 ✓</p>
+  </details>
+</div>
+
+<div class="pe-quiz">
+  <p class="pe-quiz__q">8. 1 dan 50 gacha boʻlgan sonlar yigʻindisi
   qancha?</p>
   <details class="pe-reveal"><summary>Javobni koʻrish</summary>
     <p><b>1275.</b> 50 × 51 ÷ 2 = 1275. Juftlash bilan: 25 ta juftlik,
@@ -844,6 +926,8 @@ oʻtiradi.</p>
     <li>Formulani n = 1, 2, 3 bilan albatta tekshiring.</li>
     <li>1 + 2 + … + n = n(n + 1) ÷ 2.</li>
     <li>Birinchi n ta toq sonning yigʻindisi n².</li>
+    <li><b>n² + (2n + 1) = (n + 1)²</b> — kvadratdan keyingi kvadratga
+      oʻtish; shuning uchun qoʻshiladigan sonlar toq.</li>
     <li><b>Namuna taxmin beradi, isbot emas</b> — sababni ham
       koʻrsating.</li>
   </ul>

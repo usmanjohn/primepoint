@@ -371,8 +371,43 @@ wrong "correct answer" loses more than a lesson.
 
 ## 9. The user's own tips
 
-*(Empty for now — when the user shares how they want maths taught, it goes here and
-overrides the generic advice above.)*
+These override the generic advice above.
+
+### 9.1 Say *why* the pattern is the pattern — n² + (2n + 1) = (n + 1)²
+
+The user's own observation (2026-08-17), now written into **PM-99**: adding **2n + 1** to a
+square gives the next square. It is worth keeping as a template for how this course should
+treat any pattern.
+
+The odd-numbers-sum-to-a-square picture is pretty, but on its own it only shows *that* it
+happens. The identity says *why*: turning an n × n square into (n + 1) × (n + 1) needs
+**n** dots down the right side, **n** along the top and **1** in the corner — and n + n + 1
+is exactly 2n + 1, which is exactly why the numbers being added are the odd ones. The
+algebra agrees: (n + 1)² − n² = 2n + 1 (PM-44).
+
+Two lessons for future batches:
+- **A visual and an algebraic account of the same fact belong together**, each naming the
+  other. Neither alone is the explanation.
+- Prefer identities that **do work in mental arithmetic**. This one lets a pupil get
+  31² from 30²: 900 + 61 = 961, and 29² = 900 − 59 = 841. A rule the pupil can *use* is
+  remembered; a rule that only appears in its own exercise is not.
+
+### 9.2 Calculation methods need more than one route — see PM-8 (EKUB/EKUK)
+
+The user reported (2026-08-17) that **how to actually compute EKUB and EKUK was unclear**.
+The original lesson jumped straight to prime factorisation, which is the compact method but
+not the one that builds understanding.
+
+The fix, and the pattern to copy whenever a lesson teaches a *procedure*: give **three
+routes, ordered by concreteness**, and say plainly when each is worth using.
+1. **Roʻyxat usuli** — list the divisors / the multiples and look. Slow, but it makes the
+   words «umumiy boʻluvchi» and «umumiy karrali» mean something. Never skip it.
+2. **Tub koʻpaytuvchilar** — factorise both, then EKUB = the shared factors, EKUK = every
+   factor with the shared ones counted once. Show both numbers' factorisations **in one
+   aligned table** so "shared" is visible rather than asserted.
+3. **Ustunli boʻlish (ladder)** — divide both by a common prime, repeatedly. Fastest by
+   hand: EKUB = the left column, EKUK = left column × bottom row.
+Then close with a check that is independent of all three: **EKUB × EKUK = a × b**.
 
 ---
 
