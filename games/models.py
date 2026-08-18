@@ -427,13 +427,15 @@ class MathSquarePuzzle(models.Model):
 class JourneyRun(models.Model):
     """One traveller's journey along one leg of one road."""
     STATUS_TRAVELLING = 'travelling'
-    STATUS_PAUSED     = 'paused'
+    STATUS_STOPPED    = 'stopped'      # out of hearts, one reprieve still unspent
     STATUS_FINISHED   = 'finished'
+    STATUS_FAILED     = 'failed'       # out of hearts for good; the stage is lost
     STATUS_ABANDONED  = 'abandoned'
     STATUS_CHOICES = [
         (STATUS_TRAVELLING, 'Travelling'),
-        (STATUS_PAUSED,     'Paused'),
+        (STATUS_STOPPED,    'Stopped'),
         (STATUS_FINISHED,   'Finished'),
+        (STATUS_FAILED,     'Failed'),
         (STATUS_ABANDONED,  'Abandoned'),
     ]
 
@@ -464,7 +466,7 @@ class JourneyRun(models.Model):
 
     @property
     def is_open(self):
-        return self.status in (self.STATUS_TRAVELLING, self.STATUS_PAUSED)
+        return self.status in (self.STATUS_TRAVELLING, self.STATUS_STOPPED)
 
     @property
     def elapsed_display(self):

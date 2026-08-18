@@ -21,8 +21,19 @@
             <div class="pj-stat"><b style="color:#16a34a;">{{ state.kuch }}/{{ state.max_kuch }}</b><span>{% trans "Strength" %}</span></div>
             <div class="pj-stat"><b style="color:#2563eb;">{{ elapsed_min }}:{{ elapsed_sec }}</b><span>{% trans "Time" %}</span></div>
         </div>
+        {% if big_prize %}
+        <div class="pj-bigprize">
+            <div class="pj-bigprize__glyph">&#x1F3C6;</div>
+            <div>
+                <div class="pj-bigprize__head">{% trans "You travelled light, and it paid." %}</div>
+                <div class="pj-bigprize__what">
+                    {% blocktrans %}The chest you left on the road is yours — and so is something better: <strong>{{ big_prize }}</strong>.{% endblocktrans %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
         <p class="pj-end__note">
-            {% blocktrans with bonus=bonus %}Arrival bonus: {{ bonus }} coins — strength you had left, minus the time you spent wandering.{% endblocktrans %}
+            {% blocktrans with bonus=bonus %}Arrival bonus: {{ bonus }} coins — hearts you had left, minus the time you spent wandering.{% endblocktrans %}
         </p>
 
         {% if not user.is_authenticated %}
@@ -65,33 +76,61 @@
         {% endfor %}
     </div>
 
-{% if state.status == 'paused' %}
-    <!-- ══════════════════ OUT OF STRENGTH ══════════════════ -->
-    <div class="pj-card pj-card--rest">
-        <div class="pj-card__emoji">&#x1F6CC;</div>
-        <h2 class="pj-card__title">{% trans "You can go no further today." %}</h2>
+{% if failed %}
+    <!-- ══════════════════ THE ROAD WON ══════════════════ -->
+    <div class="pj-card pj-card--failed">
+        <div class="pj-card__emoji">&#x1F5FF;</div>
+        <h2 class="pj-card__title">{% trans "The road beat you this time." %}</h2>
         <p class="pj-card__intro">
-            {% trans "You make camp where you stand. The road will still be here — a journey pauses, it does not end." %}
+            {% trans "Your last heart is gone, and the stage ends here. This is what it costs to run out — which is exactly why leaving a prize on the road was worth anything." %}
+        </p>
+
+        <div class="pj-tally">
+            {% if lost_count %}
+            <div class="pj-tally__row pj-tally__row--lost">
+                <span>&#x1F4E6;</span>
+                {% blocktrans count n=lost_count %}The prize you left behind is lost.{% plural %}The {{ n }} prizes you left behind are lost.{% endblocktrans %}
+            </div>
+            {% endif %}
+            <div class="pj-tally__row pj-tally__row--kept">
+                <span>&#x1FA99;</span>
+                {% blocktrans with coins=state.coins %}You keep the {{ coins }} coins you earned, and anything you took and carried.{% endblocktrans %}
+            </div>
+        </div>
+
+        <div class="pj-actions">
+            <form method="post" action="{% url 'journey_start' state.road state.leg %}">
+                {% csrf_token %}
+                <button type="submit" class="pj-btn pj-btn--go">{% trans "Walk it again from the start" %} &rarr;</button>
+            </form>
+            <a href="{% url 'journey_road' state.road %}" class="pj-btn pj-btn--quiet">{% trans "Back to the map" %}</a>
+        </div>
+    </div>
+
+{% elif stopped %}
+    <!-- ══════════════════ ON THE FLOOR, ONE WAY UP ══════════════════ -->
+    <div class="pj-card pj-card--sealed">
+        <div class="pj-card__emoji">&#x1F494;</div>
+        <h2 class="pj-card__title">{% trans "Your last heart is gone." %}</h2>
+        <p class="pj-card__intro">
+            {% trans "One thing gets you off the floor, and resting is not it. Go and pass a practice from this stage — any one of them — and you stand up with a heart. It works once." %}
         </p>
 
         <div class="pj-fastest">
-            <div class="pj-fastest__head">&#x1F4D6; {% trans "The fast way back on the road" %}</div>
-            <p>{% trans "Finish any lesson from this stage and you may set off again at once, with strength to spare. Waiting works too — it is just slower." %}</p>
+            <div class="pj-fastest__head">&#x1F3AF; {% trans "The only way up" %}</div>
+            <p>{% trans "A score cannot be faked, so it is the only thing the road accepts here. Pass one and come straight back — the journey is waiting exactly where you left it." %}</p>
+            {% if practice_id %}
+            <a href="{% url 'practice_detail' practice_id %}" class="pj-btn pj-btn--proof">{% trans "Take the practice" %} &rarr;</a>
+            {% endif %}
             {% if lesson_id %}
-            <a href="{% url 'tutorial_detail' lesson_id %}" class="pj-btn pj-btn--study">{% trans "Open the lesson" %} &rarr;</a>
+            <a href="{% url 'tutorial_detail' lesson_id %}" class="pj-peek">{% trans "Read the lesson first" %} &rarr;</a>
             {% endif %}
         </div>
 
         <form method="post" class="pj-actions">
             {% csrf_token %}
-            <input type="hidden" name="action" value="resume">
-            {% if pause_left > 1 %}
-            <button type="submit" class="pj-btn pj-btn--quiet" disabled>
-                {% blocktrans with mins=pause_left %}Rest another {{ mins }} min{% endblocktrans %}
-            </button>
-            {% else %}
-            <button type="submit" class="pj-btn pj-btn--go">{% trans "Walk on" %} &rarr;</button>
-            {% endif %}
+            <input type="hidden" name="action" value="give_up">
+            <button type="submit" class="pj-btn pj-btn--quiet">{% trans "Give up on this stage" %}</button>
         </form>
     </div>
 
@@ -194,6 +233,16 @@
         <div class="pj-explain">&#x1F4A1; {{ feedback.explanation|safe }}</div>
         {% endif %}
 
+        {% if not feedback.correct %}
+        <p class="pj-heartwarn">
+            {% if feedback.lost_heart %}
+                &#x1F494; {% blocktrans with n=state.kuch %}That cost you a heart. {{ n }} left, and they do not come back on their own.{% endblocktrans %}
+            {% else %}
+                &#x1F49B; {% trans "One more slip and a heart goes. Two wrong answers cost one heart, wherever they fall." %}
+            {% endif %}
+        </p>
+        {% endif %}
+
         {% if feedback.correct %}
             {% if node.kind == 'twin' and state.twin_done < 2 %}
             <p class="pj-card__aside">{% trans "One more. This obstacle takes two." %}</p>
@@ -238,11 +287,14 @@
         <div class="pj-card__emoji">{{ encounter.emoji }}</div>
         <h2 class="pj-card__title">{{ encounter.title }}</h2>
         <p class="pj-card__intro">{{ encounter.intro }}</p>
+        <p class="pj-card__aside pj-card__aside--quiet">
+            {% trans "No heart comes back here — only proving a lesson does that. But a slip left hanging is forgiven, and there is a torch by the fire." %}
+        </p>
         <form method="post" class="pj-actions">
             {% csrf_token %}
             <input type="hidden" name="action" value="rest">
             <button type="submit" class="pj-btn pj-btn--go">
-                &#x1F4AA; {% blocktrans with n=2 %}Rest (+{{ n }} strength){% endblocktrans %}
+                &#x1F526; {% trans "Rest — clear the slate, take a torch" %}
             </button>
         </form>
     </div>
@@ -261,6 +313,10 @@
             </span>
         </div>
 
+        <p class="pj-card__aside">
+            &#x26A0;&#xFE0F; {% trans "The guardian of this stage is the very next thing on the road." %}
+        </p>
+
         <div class="pj-choice">
             <form method="post">
                 {% csrf_token %}
@@ -268,9 +324,10 @@
                 <button type="submit" class="pj-branch">
                     <span class="pj-branch__icon">&#x1F392;</span>
                     <span class="pj-branch__body">
-                        <span class="pj-branch__name">{% trans "Take it with you" %}</span>
-                        <span class="pj-branch__note">{% trans "Yours for certain, whatever happens next — but you walk the rest of the road one strength weaker." %}</span>
+                        <span class="pj-branch__name">{% trans "Take it now — it is yours whatever happens" %}</span>
+                        <span class="pj-branch__note">{% trans "Nothing can take it back, even if the guardian finishes you. But it costs you a heart to carry, and the guardian is next." %}</span>
                     </span>
+                    <span class="pj-branch__pay">&minus;1 &#x1F49A;</span>
                 </button>
             </form>
             <form method="post">
@@ -279,9 +336,10 @@
                 <button type="submit" class="pj-branch">
                     <span class="pj-branch__icon">&#x1F343;</span>
                     <span class="pj-branch__body">
-                        <span class="pj-branch__name">{% trans "Leave it and travel light" %}</span>
-                        <span class="pj-branch__note">{% trans "No weight — and it is waiting for you at the end, worth far more. Lost if you never arrive." %}</span>
+                        <span class="pj-branch__name">{% trans "Leave it and face the guardian at full strength" %}</span>
+                        <span class="pj-branch__note">{% trans "Beat the guardian and you get it anyway — plus a far better prize on top. Fall to the guardian and you get nothing at all." %}</span>
                     </span>
+                    <span class="pj-branch__pay">&#x1F3C6;</span>
                 </button>
             </form>
         </div>

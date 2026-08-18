@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Prime Point\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-18 10:16+0000\n"
+"POT-Creation-Date: 2026-08-18 14:06+0000\n"
 "PO-Revision-Date: 2026-04-29 15:20+0000\n"
 "Last-Translator: Prime Point\n"
 "Language-Team: Uzbek\n"
@@ -1261,7 +1261,9 @@ msgstr "Hali shablonlar yuklanmagan. Tez orada tekshiring!"
 msgid ""
 "Not so fast — stay with the story a little longer (about %(secs)d more "
 "seconds) and then mark it finished."
-msgstr "Shoshilmang — hikoya bilan yana biroz qoling (taxminan %(secs)d soniya) va shundan keyin tugatildi deb belgilang."
+msgstr ""
+"Shoshilmang — hikoya bilan yana biroz qoling (taxminan %(secs)d soniya) va "
+"shundan keyin tugatildi deb belgilang."
 
 #: corner/views.py:205
 #, python-format
@@ -2407,11 +2409,11 @@ msgstr ""
 "6 raqamni +, −, ×, ÷ yordamida birlashtiring va maqsadga yeting. Uch "
 "qiyinchilik darajasi!"
 
-#: games/journey.py:98
+#: games/journey.py:111
 msgid "Valley of Numbers"
 msgstr "Sonlar vodiysi"
 
-#: games/journey.py:99
+#: games/journey.py:112
 msgid ""
 "From the first arithmetic to algebra and geometry — the road every other "
 "road crosses."
@@ -2419,68 +2421,68 @@ msgstr ""
 "Dastlabki arifmetikadan algebra va geometriyagacha — boshqa barcha yo'llar "
 "kesib o'tadigan yo'l."
 
-#: games/journey.py:111
+#: games/journey.py:124
 msgid "Land of Words"
 msgstr "So'zlar o'lkasi"
 
-#: games/journey.py:112
+#: games/journey.py:125
 msgid "A hundred lessons of English grammar, laid out as one long road west."
 msgstr ""
 "Ingliz tili grammatikasining yuzta darsi — g'arbga ketgan bitta uzun yo'l."
 
-#: games/journey.py:124
+#: games/journey.py:137
 msgid "Hangul Mountains"
 msgstr "Hangul tog'lari"
 
-#: games/journey.py:125
+#: games/journey.py:138
 msgid ""
 "A hundred lessons of Korean, from the Hangul letters up — mountain after "
 "mountain."
 msgstr ""
 "Koreys tilining yuzta darsi, Hangul harflaridan boshlab — tog'dan tog'ga."
 
-#: games/journey.py:137
+#: games/journey.py:150
 msgid "Snow Steppe"
 msgstr "Qorli dasht"
 
-#: games/journey.py:138
+#: games/journey.py:151
 msgid ""
 "From the Cyrillic alphabet to the six cases — the long road across the snow."
 msgstr "Kirill alifbosidan olti kelishikkacha — qorli dasht bo'ylab uzun yo'l."
 
-#: games/journey.py:162
+#: games/journey.py:175
 msgid "The open road"
 msgstr "Ochiq yo'l"
 
-#: games/journey.py:163
+#: games/journey.py:176
 msgid "The forest"
 msgstr "O'rmon"
 
-#: games/journey.py:164
+#: games/journey.py:177
 msgid "The river"
 msgstr "Daryo"
 
-#: games/journey.py:165
+#: games/journey.py:178
 msgid "The mountains"
 msgstr "Tog'lar"
 
-#: games/journey.py:166
+#: games/journey.py:179
 msgid "The caves"
 msgstr "G'orlar"
 
-#: games/journey.py:167
+#: games/journey.py:180
 msgid "The desert"
 msgstr "Cho'l"
 
-#: games/journey.py:168
+#: games/journey.py:181
 msgid "The gate"
 msgstr "Darvoza"
 
-#: games/journey.py:186
+#: games/journey.py:199
 msgid "The Toll Post"
 msgstr "Bojxona ustuni"
 
-#: games/journey.py:187
+#: games/journey.py:200
 msgid ""
 "A striped pole blocks the road. The keeper leans out of his hut. \"The toll "
 "is one right answer. I have no use for money out here.\""
@@ -2488,13 +2490,13 @@ msgstr ""
 "Yo'lni chiziqli ustun to'sib turibdi. Qorovul kulbasidan bosh chiqaradi: "
 "«Boj — bitta to'g'ri javob. Bu yerda pulning menga keragi yo'q»."
 
-#: games/journey.py:188
+#: games/journey.py:201
 msgid "He lifts the pole and waves you through without another word."
 msgstr ""
 "U ustunni ko'taradi va boshqa hech narsa demay, qo'l silkib o'tkazib "
 "yuboradi."
 
-#: games/journey.py:189
+#: games/journey.py:202
 msgid ""
 "The pole stays down. \"Take your time,\" he says. \"The road is not going "
 "anywhere.\""
@@ -2502,11 +2504,11 @@ msgstr ""
 "Ustun tushgan holicha qoladi. «Shoshilmang, — deydi u. — Yo'l qochib "
 "ketmaydi»."
 
-#: games/journey.py:191
+#: games/journey.py:204
 msgid "The Caravan Master"
 msgstr "Karvonboshi"
 
-#: games/journey.py:192
+#: games/journey.py:205
 msgid ""
 "A caravan has stopped across the whole width of the road. The master will "
 "only let you squeeze past if you are worth talking to."
@@ -2514,19 +2516,19 @@ msgstr ""
 "Karvon yo'lning butun kengligini egallab to'xtagan. Karvonboshi faqat "
 "suhbatga arziydigan odamni o'tkazadi."
 
-#: games/journey.py:193
+#: games/journey.py:206
 msgid "\"Travel well,\" she says, and the camels shuffle aside."
 msgstr "«Yo'lingiz bexatar bo'lsin», — deydi u va tuyalar chetga suriladi."
 
-#: games/journey.py:194
+#: games/journey.py:207
 msgid "She turns back to her animals. The road stays blocked."
 msgstr "U yana tuyalariga o'girildi. Yo'l to'sig'icha qolaveradi."
 
-#: games/journey.py:196
+#: games/journey.py:209
 msgid "The Carved Milestone"
 msgstr "O'yma yo'l toshi"
 
-#: games/journey.py:197
+#: games/journey.py:210
 msgid ""
 "A stone stands at the roadside with writing cut deep into it. The road ahead "
 "blurs until the writing is read correctly."
@@ -2534,19 +2536,19 @@ msgstr ""
 "Yo'l chetida tosh turibdi, unga yozuv chuqur o'yilgan. Yozuv to'g'ri "
 "o'qilmaguncha, oldingi yo'l xiralashib turadi."
 
-#: games/journey.py:198
+#: games/journey.py:211
 msgid "The letters settle. The road ahead comes back into focus."
 msgstr "Harflar joyiga tushadi. Oldingi yo'l yana ravshan ko'rinadi."
 
-#: games/journey.py:199
+#: games/journey.py:212
 msgid "The carving swims in front of your eyes and will not hold still."
 msgstr "O'yma yozuv ko'z oldingizda suzib, bir joyda turmaydi."
 
-#: games/journey.py:203
+#: games/journey.py:216
 msgid "The Woodcutter"
 msgstr "O'tinchi ayol"
 
-#: games/journey.py:204
+#: games/journey.py:217
 msgid ""
 "A woodcutter rests her axe on a fallen trunk that lies across the path. "
 "\"Help me think, and I will help you climb over.\""
@@ -2554,21 +2556,21 @@ msgstr ""
 "O'tinchi ayol yo'lni to'sib yotgan yiqilgan tanaga boltasini qo'yib turibdi. "
 "«Menga o'ylashga yordam bering, men sizga oshib o'tishga yordam beraman»."
 
-#: games/journey.py:205
+#: games/journey.py:218
 msgid "She rolls the trunk aside with one shove. She was never really stuck."
 msgstr ""
 "U tanani bir turtishda chetga dumalatadi. Aslida u qiynalayotgani ham yo'q "
 "edi."
 
-#: games/journey.py:206
+#: games/journey.py:219
 msgid "She shrugs and goes back to sharpening her axe."
 msgstr "U yelka qisib, yana boltasini charxlashga tushadi."
 
-#: games/journey.py:208
+#: games/journey.py:221
 msgid "The Talking Crow"
 msgstr "Gapiradigan qarg‘a"
 
-#: games/journey.py:209
+#: games/journey.py:222
 msgid ""
 "A crow drops onto the branch above you. \"Two paths,\" it says. \"I will "
 "tell you which — after you tell me this.\""
@@ -2576,19 +2578,19 @@ msgstr ""
 "Qarg'a boshingiz uzra shoxga qo'nadi. «Ikkita yo'l bor, — deydi u. — Qaysi "
 "biri ekanini aytaman — avval siz menga buni ayting»."
 
-#: games/journey.py:210
+#: games/journey.py:223
 msgid "The crow flaps ahead and waits at the right turning."
 msgstr "Qarg'a oldinga uchib, to'g'ri burilishda kutib turadi."
 
-#: games/journey.py:211
+#: games/journey.py:224
 msgid "The crow says nothing at all, which is somehow worse."
 msgstr "Qarg'a umuman hech narsa demaydi — bu yanada yomonroq."
 
-#: games/journey.py:213
+#: games/journey.py:226
 msgid "The Thorn Wall"
 msgstr "Tikanli devor"
 
-#: games/journey.py:214
+#: games/journey.py:227
 msgid ""
 "Thorns have grown clean across the track. There is one gap, and only one, "
 "and finding it takes thinking rather than pushing."
@@ -2596,19 +2598,19 @@ msgstr ""
 "Tikanlar so'qmoqni butunlay to'sib o'sib ketgan. Bitta tirqish bor, faqat "
 "bitta — uni topish uchun kuch emas, fikr kerak."
 
-#: games/journey.py:215
+#: games/journey.py:228
 msgid "The gap opens exactly where the reasoning said it would."
 msgstr "Tirqish aynan mulohaza aytgan joydan ochiladi."
 
-#: games/journey.py:216
+#: games/journey.py:229
 msgid "The thorns hold. Pushing harder is not the answer here."
 msgstr "Tikanlar bo'sh kelmaydi. Bu yerda kuchliroq itarish yechim emas."
 
-#: games/journey.py:218
+#: games/journey.py:231
 msgid "The Lost Child"
 msgstr "Adashgan bola"
 
-#: games/journey.py:219
+#: games/journey.py:232
 msgid ""
 "A child sits crying on a stump. She has a homework page in her hand and "
 "cannot get past one question."
@@ -2616,19 +2618,19 @@ msgstr ""
 "Bir qiz kunda ustida yig'lab o'tiribdi. Qo'lida uy vazifasi varag'i — bitta "
 "savoldan o'ta olmayapti."
 
-#: games/journey.py:220
+#: games/journey.py:233
 msgid "She grins, folds the page away, and runs off shouting thanks."
 msgstr "U jilmayadi, varaqni buklab qo'yadi va rahmat aytib yugurib ketadi."
 
-#: games/journey.py:221
+#: games/journey.py:234
 msgid "She looks up at you hopefully. You will have to come back to this."
 msgstr "U umid bilan sizga qaraydi. Bunga yana qaytishingizga to'g'ri keladi."
 
-#: games/journey.py:225
+#: games/journey.py:238
 msgid "The Bridge Keeper"
 msgstr "Ko'prik qorovuli"
 
-#: games/journey.py:226
+#: games/journey.py:239
 msgid ""
 "An old man sits at the head of a rope bridge. \"Nobody crosses my bridge "
 "without paying,\" he says. \"And I do not take money.\""
@@ -2636,21 +2638,21 @@ msgstr ""
 "Arqonli ko'prik boshida bir chol o'tiribdi. «Mening ko'prigimdan hech kim "
 "tekinga o'tmaydi, — deydi u. — Men pul olmayman ham»."
 
-#: games/journey.py:227
+#: games/journey.py:240
 msgid "He stands, bows, and steps aside. The planks hold."
 msgstr ""
 "U o'rnidan turib, ta'zim qiladi va chetga suriladi. Taxtalar bardosh beradi."
 
-#: games/journey.py:228
+#: games/journey.py:241
 msgid ""
 "He shakes his head slowly and does not move from the middle of the bridge."
 msgstr "U sekin bosh chayqaydi va ko'prik o'rtasidan jilmaydi."
 
-#: games/journey.py:230
+#: games/journey.py:243
 msgid "The Ferryman"
 msgstr "Qayiqchi"
 
-#: games/journey.py:231
+#: games/journey.py:244
 msgid ""
 "The ferryman is already pushing off. \"One question, quickly, or you wait "
 "for the next crossing.\""
@@ -2658,19 +2660,19 @@ msgstr ""
 "Qayiqchi allaqachon suzib ketyapti. «Bitta savol, tez — bo'lmasa keyingi "
 "safarni kutasiz»."
 
-#: games/journey.py:232
+#: games/journey.py:245
 msgid "He swings the boat back around and holds it steady for you."
 msgstr "U qayiqni orqaga burib, siz uchun mahkam ushlab turadi."
 
-#: games/journey.py:233
+#: games/journey.py:246
 msgid "The boat glides out into the current without you."
 msgstr "Qayiq sizsiz oqim tomon suzib ketadi."
 
-#: games/journey.py:235
+#: games/journey.py:248
 msgid "The Stepping Stones"
 msgstr "Kechuv toshlari"
 
-#: games/journey.py:236
+#: games/journey.py:249
 msgid ""
 "Stones cross the water, but only some of them are steady. Which ones — that "
 "has to be worked out from the bank."
@@ -2678,21 +2680,21 @@ msgstr ""
 "Toshlar suvdan o'tkazadi, lekin ularning ba'zilarigina mustahkam. Qaysilari "
 "ekanini qirg'oqda turib hisoblash kerak."
 
-#: games/journey.py:237
+#: games/journey.py:250
 msgid "Every stone you chose holds firm. Dry feet on the far side."
 msgstr ""
 "Siz tanlagan har bir tosh mustahkam turadi. Narigi qirg'oqqa oyoq quruq "
 "yetib borasiz."
 
-#: games/journey.py:238
+#: games/journey.py:251
 msgid "The stone tilts under your foot and you jump back to the bank."
 msgstr "Tosh oyog'ingiz ostida qiyshayadi va siz qirg'oqqa sakrab qaytasiz."
 
-#: games/journey.py:240
+#: games/journey.py:253
 msgid "The Flooded Ford"
 msgstr "Suv bosgan kechuv"
 
-#: games/journey.py:241
+#: games/journey.py:254
 msgid ""
 "The ford is deeper than it looks. A traveller waits on the bank, working out "
 "how deep — and she is stuck on the sum."
@@ -2700,7 +2702,7 @@ msgstr ""
 "Kechuv ko'ringanidan chuqurroq. Qirg'oqda bir yo'lovchi qanchaligini "
 "hisoblab kutib turibdi — va hisobda qotib qolgan."
 
-#: games/journey.py:242
+#: games/journey.py:255
 msgid ""
 "The two of you wade across together, water at the knee, exactly as "
 "calculated."
@@ -2708,15 +2710,15 @@ msgstr ""
 "Ikkovingiz birga kechib o'tasiz — suv aynan hisoblanganidek tizzagacha "
 "keladi."
 
-#: games/journey.py:243
+#: games/journey.py:256
 msgid "Neither of you trusts the water. You both stay put."
 msgstr "Ikkovingiz ham suvga ishonmaysiz. Ikkalangiz ham joyingizda qolasiz."
 
-#: games/journey.py:247
+#: games/journey.py:260
 msgid "The Rockfall"
 msgstr "Tosh ko'chkisi"
 
-#: games/journey.py:248
+#: games/journey.py:261
 msgid ""
 "Boulders have come down across the pass. There is a way through them, but "
 "only one, and it has to be reasoned out."
@@ -2724,19 +2726,19 @@ msgstr ""
 "Dovonni katta toshlar to'sib qo'ygan. Ular orasidan o'tadigan yo'l bor, "
 "lekin bittagina — uni fikrlab topish kerak."
 
-#: games/journey.py:249
+#: games/journey.py:262
 msgid "You thread the gap. The stones stay where they are."
 msgstr "Siz tirqishdan o'tasiz. Toshlar joyida qoladi."
 
-#: games/journey.py:250
+#: games/journey.py:263
 msgid "Loose scree slides under your boots and you back away."
 msgstr "Mayda toshlar oyog'ingiz ostidan sirg'aladi va siz orqaga chekinasiz."
 
-#: games/journey.py:252
+#: games/journey.py:265
 msgid "The Goat Path"
 msgstr "Echki so'qmog'i"
 
-#: games/journey.py:253
+#: games/journey.py:266
 msgid ""
 "A goatherd blocks the narrow path with his flock. \"This trail is dangerous. "
 "Prove you are thinking clearly today.\""
@@ -2744,20 +2746,20 @@ msgstr ""
 "Cho'pon podasi bilan tor so'qmoqni to'sib turibdi. «Bu so'qmoq xavfli. Bugun "
 "boshingiz tiniq ishlayotganini isbotlang»."
 
-#: games/journey.py:254
+#: games/journey.py:267
 msgid "He whistles; the goats part like water. \"Go carefully.\""
 msgstr ""
 "U hushtak chaladi; echkilar suvdek ikkiga bo'linadi. «Ehtiyot bo'lib boring»."
 
-#: games/journey.py:255
+#: games/journey.py:268
 msgid "He plants his staff. \"Not today, then.\""
 msgstr "U hassasini yerga tirab qo'yadi. «Bugun bo'lmasa, boshqa kuni»."
 
-#: games/journey.py:257
+#: games/journey.py:270
 msgid "The Eagle"
 msgstr "Burgut"
 
-#: games/journey.py:258
+#: games/journey.py:271
 msgid ""
 "An eagle drops onto the rock in front of you with something bright in its "
 "claws. It will trade — but not for food."
@@ -2765,20 +2767,20 @@ msgstr ""
 "Burgut oldingizdagi qoyaga qo'nadi, changalida yaltiroq narsa bor. U "
 "almashishga rozi — lekin ovqatga emas."
 
-#: games/journey.py:259
+#: games/journey.py:272
 msgid "It opens its claws, takes off, and shows you the ridge line from above."
 msgstr ""
 "U changalini ochadi, uchib ko'tariladi va tepadan qir chizig'ini ko'rsatadi."
 
-#: games/journey.py:260
+#: games/journey.py:273
 msgid "It watches you for a long moment, then looks away."
 msgstr "U sizga uzoq tikilib turadi, so'ng nigohini olib qochadi."
 
-#: games/journey.py:262
+#: games/journey.py:275
 msgid "The Snow Line"
 msgstr "Qor chizig‘i"
 
-#: games/journey.py:263
+#: games/journey.py:276
 msgid ""
 "Above this point the snow starts. An old shepherd will lend you his coat, if "
 "you can keep up with him in conversation."
@@ -2786,19 +2788,19 @@ msgstr ""
 "Shu joydan tepada qor boshlanadi. Keksa cho'pon to'nini beradi — agar "
 "suhbatda undan orqada qolmasangiz."
 
-#: games/journey.py:264
+#: games/journey.py:277
 msgid "The coat is heavy and warm and smells of woodsmoke. He waves you on."
 msgstr "To'n og'ir, issiq va tutun hidi keladi. U qo'l silkib yo'lga soladi."
 
-#: games/journey.py:265
+#: games/journey.py:278
 msgid "He pulls the coat tighter around himself and says nothing."
 msgstr "U to'nini o'ziga mahkamroq o'raydi va indamaydi."
 
-#: games/journey.py:269
+#: games/journey.py:282
 msgid "The Stone Door"
 msgstr "Tosh eshik"
 
-#: games/journey.py:270
+#: games/journey.py:283
 msgid ""
 "A slab of rock seals the tunnel, and a question is cut into it. Doors like "
 "this have been opened by thinking for a thousand years."
@@ -2806,19 +2808,19 @@ msgstr ""
 "Tunnelni tosh plita berkitgan, unga savol o'yilgan. Bunday eshiklar ming "
 "yildan beri fikr bilan ochib kelinadi."
 
-#: games/journey.py:271
+#: games/journey.py:284
 msgid "The slab grinds inward. Cold air comes out of the dark."
 msgstr "Plita g'ijirlab ichkariga suriladi. Zulmatdan sovuq havo uriladi."
 
-#: games/journey.py:272
+#: games/journey.py:285
 msgid "The stone does not move a hair. It has all the time in the world."
 msgstr "Tosh qilcha ham qimirlamaydi. Uning vaqti cheksiz."
 
-#: games/journey.py:274
+#: games/journey.py:287
 msgid "The Echo"
 msgstr "Aks-sado"
 
-#: games/journey.py:275
+#: games/journey.py:288
 msgid ""
 "Something in the dark repeats every word you say — and then asks you a "
 "question in your own voice."
@@ -2826,21 +2828,21 @@ msgstr ""
 "Zulmatdagi allanarsa har bir so'zingizni takrorlaydi — so'ng sizning "
 "ovozingizda savol beradi."
 
-#: games/journey.py:276
+#: games/journey.py:289
 msgid "The echo repeats your answer once, approvingly, and fades."
 msgstr "Aks-sado javobingizni bir marta ma'qullab takrorlaydi va o'chadi."
 
-#: games/journey.py:277
+#: games/journey.py:290
 msgid "The echo repeats your answer, over and over, until you stop listening."
 msgstr ""
 "Aks-sado javobingizni qayta-qayta takrorlayveradi — quloq solishdan "
 "to'xtaguningizcha."
 
-#: games/journey.py:279
+#: games/journey.py:292
 msgid "The Lantern Moth"
 msgstr "Chiroq kapalak"
 
-#: games/journey.py:280
+#: games/journey.py:293
 msgid ""
 "One enormous moth glows in the passage. It only lights the way for "
 "travellers who are paying attention."
@@ -2848,19 +2850,19 @@ msgstr ""
 "Yo'lakda bitta ulkan kapalak yorug'lik sochadi. U faqat diqqat bilan "
 "qaraydigan yo'lovchilarga yo'l yoritadi."
 
-#: games/journey.py:281
+#: games/journey.py:294
 msgid "It flares bright and drifts ahead of you down the tunnel."
 msgstr "U yorqin alangalanadi va tunnel bo'ylab oldingizda suzib boradi."
 
-#: games/journey.py:282
+#: games/journey.py:295
 msgid "Its light dims to almost nothing, and the tunnel closes in."
 msgstr "Uning nuri deyarli so'nadi va tunnel qisib kelayotgandek tuyuladi."
 
-#: games/journey.py:284
+#: games/journey.py:297
 msgid "The Underground River"
 msgstr "Yer osti daryosi"
 
-#: games/journey.py:285
+#: games/journey.py:298
 msgid ""
 "Black water runs fast through the cave. Somewhere there is a ledge wide "
 "enough to walk — the trick is working out where."
@@ -2868,19 +2870,19 @@ msgstr ""
 "G'ordan qora suv tez oqadi. Qayerdadir yurish mumkin bo'lgan tokcha bor — "
 "gap uni qayerda ekanini hisoblashda."
 
-#: games/journey.py:286
+#: games/journey.py:299
 msgid "The ledge is exactly where the reasoning put it. You edge along it."
 msgstr "Tokcha aynan mulohaza aytgan joyda. Siz u bo'ylab yon berib o'tasiz."
 
-#: games/journey.py:287
+#: games/journey.py:300
 msgid "You cannot see the ledge, and guessing here would be foolish."
 msgstr "Tokchani ko'rmayapsiz, bu yerda taxmin qilish esa aqlsizlik bo'lardi."
 
-#: games/journey.py:291
+#: games/journey.py:304
 msgid "The Sandstorm"
 msgstr "Qum bo'roni"
 
-#: games/journey.py:292
+#: games/journey.py:305
 msgid ""
 "The horizon has gone brown. There is time to reach shelter, but only if you "
 "pick the right direction, and only right now."
@@ -2888,38 +2890,38 @@ msgstr ""
 "Ufq jigarrang tusga kirdi. Panohga yetib olishga vaqt bor — faqat to'g'ri "
 "yo'nalishni tanlasangiz va aynan hozir."
 
-#: games/journey.py:293
+#: games/journey.py:306
 msgid "You reach the rock overhang as the first sand hits. Close."
 msgstr "Birinchi qum urilganda qoya soyaboniga yetib olasiz. Zo'rg'a."
 
-#: games/journey.py:294
+#: games/journey.py:307
 msgid "The wind turns you around and pushes you back the way you came."
 msgstr "Shamol sizni burib, kelgan yo'lingizga qaytarib itaradi."
 
-#: games/journey.py:296
+#: games/journey.py:309
 msgid "The Mirage"
 msgstr "Sarob"
 
-#: games/journey.py:297
+#: games/journey.py:310
 msgid ""
 "There is water ahead. Or there is not. Only careful thinking tells the "
 "difference out here."
 msgstr ""
 "Oldinda suv bor. Yoki yo'q. Bu yerda farqni faqat sinchkov fikr ajratadi."
 
-#: games/journey.py:298
+#: games/journey.py:311
 msgid "The water is real. You drink, and fill the skin."
 msgstr "Suv haqiqiy. Ichasiz va meshni to'ldirasiz."
 
-#: games/journey.py:299
+#: games/journey.py:312
 msgid "You walk toward it for an hour, and it walks away from you."
 msgstr "Bir soat unga tomon yurasiz, u esa sizdan uzoqlashib boraveradi."
 
-#: games/journey.py:301
+#: games/journey.py:314
 msgid "The Well Keeper"
 msgstr "Quduq egasi"
 
-#: games/journey.py:302
+#: games/journey.py:315
 msgid ""
 "The only well for a day's walk has a woman sitting on its lid. \"Everyone "
 "drinks here,\" she says. \"Everyone answers first.\""
@@ -2927,19 +2929,19 @@ msgstr ""
 "Bir kunlik yo'ldagi yagona quduq qopqog'ida bir ayol o'tiribdi. «Bu yerda "
 "hamma suv ichadi, — deydi u. — Hamma avval javob beradi»."
 
-#: games/journey.py:303
+#: games/journey.py:316
 msgid "She slides the lid off and lowers the bucket herself."
 msgstr "U qopqoqni surib, chelakni o'zi tushiradi."
 
-#: games/journey.py:304
+#: games/journey.py:317
 msgid "She stays exactly where she is, and so does the lid."
 msgstr "U ham joyidan qimirlamaydi, qopqoq ham."
 
-#: games/journey.py:306
+#: games/journey.py:319
 msgid "The Salt Flat"
 msgstr "Sho'rxok"
 
-#: games/journey.py:307
+#: games/journey.py:320
 msgid ""
 "The crust is thin in places and will hold in others. A line of old "
 "footprints stops halfway across."
@@ -2947,21 +2949,21 @@ msgstr ""
 "Qatlam ba'zi joyda yupqa, ba'zi joyda bardosh beradi. Eski oyoq izlari yarim "
 "yo'lda uzilib qolgan."
 
-#: games/journey.py:308
+#: games/journey.py:321
 msgid "Your route holds all the way. You do not look back at the footprints."
 msgstr ""
 "Tanlagan yo'lingiz oxirigacha bardosh beradi. Oyoq izlariga orqangizga qarab "
 "ham qo'ymaysiz."
 
-#: games/journey.py:309
+#: games/journey.py:322
 msgid "The crust creaks underfoot and you retreat to firm ground."
 msgstr "Qatlam oyoq ostida g'ichirlaydi va siz qattiq yerga chekinasiz."
 
-#: games/journey.py:313
+#: games/journey.py:326
 msgid "The Outer Gate"
 msgstr "Tashqi darvoza"
 
-#: games/journey.py:314
+#: games/journey.py:327
 msgid ""
 "The city wall rises out of the plain. The outer gate is open, but a clerk "
 "with a ledger stands in it."
@@ -2969,19 +2971,19 @@ msgstr ""
 "Tekislikdan shahar devori ko'tariladi. Tashqi darvoza ochiq, lekin unda "
 "daftar ushlagan mirza turibdi."
 
-#: games/journey.py:315
+#: games/journey.py:328
 msgid "He writes your name in the ledger and stands aside."
 msgstr "U ismingizni daftarga yozadi va chetga suriladi."
 
-#: games/journey.py:316
+#: games/journey.py:329
 msgid "He closes the ledger. \"Come back when you are ready.\""
 msgstr "U daftarni yopadi. «Tayyor bo'lganingizda qayting»."
 
-#: games/journey.py:320
+#: games/journey.py:333
 msgid "A Fire in the Clearing"
 msgstr "Yalanglikdagi gulxan"
 
-#: games/journey.py:321
+#: games/journey.py:334
 msgid ""
 "Somebody has left a fire burning and a stack of dry wood beside it. Sit "
 "down. Nothing is chasing you."
@@ -2989,7 +2991,7 @@ msgstr ""
 "Kimdir gulxanni yoqib ketgan, yonida quruq o'tin uyumi. O'tiring. Sizni hech "
 "kim quvlayotgani yo'q."
 
-#: games/journey.py:322
+#: games/journey.py:335
 msgid ""
 "You rest until your legs stop aching, and bank the fire for the next "
 "traveller."
@@ -2997,11 +2999,11 @@ msgstr ""
 "Oyog'ingiz og'rig'i bosilguncha dam olasiz va keyingi yo'lovchi uchun "
 "cho'g'ni ko'mib qo'yasiz."
 
-#: games/journey.py:325
+#: games/journey.py:338
 msgid "The Hot Spring"
 msgstr "Issiq buloq"
 
-#: games/journey.py:326
+#: games/journey.py:339
 msgid ""
 "Steam rises out of the rocks, and the water is exactly as hot as it should "
 "be. This is not a trap. Not everything is."
@@ -3009,15 +3011,15 @@ msgstr ""
 "Toshlar orasidan bug' ko'tariladi, suv esa aynan kerakligicha issiq. Bu "
 "tuzoq emas. Hamma narsa ham tuzoq emas."
 
-#: games/journey.py:327
+#: games/journey.py:340
 msgid "You climb out warm to the bone and ready for the pass."
 msgstr "Suyagingizgacha isib chiqasiz va dovonga tayyor bo'lasiz."
 
-#: games/journey.py:330
+#: games/journey.py:343
 msgid "The Oasis"
 msgstr "Voha"
 
-#: games/journey.py:331
+#: games/journey.py:344
 msgid ""
 "Palms, shade, and water that is definitely water this time. Travellers sleep "
 "here in the heat of the day."
@@ -3025,15 +3027,15 @@ msgstr ""
 "Palmalar, soya va bu safar aniq suv bo'lgan suv. Yo'lovchilar kunning "
 "issig'ida shu yerda uxlaydi."
 
-#: games/journey.py:332
+#: games/journey.py:345
 msgid "You wake in the cool of the evening, water skin full."
 msgstr "Kechki salqinda uyg'onasiz, meshingiz to'la."
 
-#: games/journey.py:335
+#: games/journey.py:348
 msgid "The Shepherd's Hut"
 msgstr "Cho'pon kulbasi"
 
-#: games/journey.py:336
+#: games/journey.py:349
 msgid ""
 "A one-room hut with the door on the latch, bread on the shelf, and a note "
 "that says: leave it as you found it."
@@ -3041,15 +3043,15 @@ msgstr ""
 "Bir xonali kulba: eshigi ilgakda, tokchada non, va xat: qanday topgan "
 "bo'lsangiz, shunday qoldiring."
 
-#: games/journey.py:337
+#: games/journey.py:350
 msgid "You sleep on the floor by the stove and leave bread for the next one."
 msgstr "O'choq yonida yerda uxlaysiz va keyingisi uchun non qoldirasiz."
 
-#: games/journey.py:340
+#: games/journey.py:353
 msgid "The Inn at the Crossing"
 msgstr "Kechuvdagi mehmonxona"
 
-#: games/journey.py:341
+#: games/journey.py:354
 msgid ""
 "An inn on the riverbank, full of people going the other way, all of them "
 "with advice."
@@ -3057,17 +3059,17 @@ msgstr ""
 "Daryo bo'yidagi mehmonxona — qarama-qarshi tomonga ketayotganlarga to'la, "
 "hammasining maslahati bor."
 
-#: games/journey.py:342
+#: games/journey.py:355
 msgid ""
 "You eat, you listen, and you leave in the morning stronger than you arrived."
 msgstr ""
 "Ovqatlanasiz, tinglaysiz va ertalab kelganingizdan kuchliroq yo'lga chiqasiz."
 
-#: games/journey.py:347
+#: games/journey.py:360
 msgid "Something Buried"
 msgstr "Ko'milgan narsa"
 
-#: games/journey.py:348
+#: games/journey.py:361
 msgid ""
 "A corner of a wooden box shows through the leaf mould. It has been here a "
 "long time, and it is not locked."
@@ -3075,15 +3077,15 @@ msgstr ""
 "Chirigan barglar orasidan yog'och quti burchagi ko'rinib turibdi. U bu yerda "
 "uzoq yotgan va qulflanmagan."
 
-#: games/journey.py:349
+#: games/journey.py:362
 msgid "It comes out of the ground with a sucking sound. Heavier than it looks."
 msgstr "U yerdan shopillab chiqadi. Ko'ringanidan og'irroq."
 
-#: games/journey.py:352
+#: games/journey.py:365
 msgid "The Merchant's Thanks"
 msgstr "Savdogarning rahmati"
 
-#: games/journey.py:353
+#: games/journey.py:366
 msgid ""
 "A merchant you helped at the last crossing catches up with you, out of "
 "breath, holding something out."
@@ -3091,15 +3093,15 @@ msgstr ""
 "O'tgan kechuvda yordam bergan savdogaringiz hansirab yetib keladi, qo'lida "
 "nimadir uzatib."
 
-#: games/journey.py:354
+#: games/journey.py:367
 msgid "\"Take it, take it,\" he says, and is gone before you can argue."
 msgstr "«Oling, oling», — deydi u va siz e'tiroz bildirguncha g'oyib bo'ladi."
 
-#: games/journey.py:357
+#: games/journey.py:370
 msgid "The Sunken Crate"
 msgstr "Cho'kkan quti"
 
-#: games/journey.py:358
+#: games/journey.py:371
 msgid ""
 "A crate is wedged under the bank, half in the water. Whatever is inside has "
 "stayed dry."
@@ -3107,15 +3109,15 @@ msgstr ""
 "Qirg'oq ostiga quti tiqilib qolgan, yarmi suvda. Ichidagi nima bo'lsa ham "
 "quruq qolgan."
 
-#: games/journey.py:359
+#: games/journey.py:372
 msgid "You lever it loose and prise the lid up on the gravel."
 msgstr "Uni qo'zg'ab bo'shatasiz va shag'al ustida qopqog'ini ko'tarasiz."
 
-#: games/journey.py:362
+#: games/journey.py:375
 msgid "The Little Hoard"
 msgstr "Kichik xazina"
 
-#: games/journey.py:363
+#: games/journey.py:376
 msgid ""
 "Somebody hid something in this crack in the wall and never came back for it. "
 "That was probably a long time ago."
@@ -3123,16 +3125,16 @@ msgstr ""
 "Kimdir devordagi shu yoriqqa nimanidir yashirgan va uni olgani qaytmagan. "
 "Bu, ehtimol, juda ko'p yil oldin bo'lgan."
 
-#: games/journey.py:364
+#: games/journey.py:377
 msgid "It fits in one hand, and it is worth carrying. Or worth leaving."
 msgstr ""
 "U bir kaftga sig'adi va ko'tarib ketishga arziydi. Yoki qoldirib ketishga."
 
-#: games/journey.py:369
+#: games/journey.py:382
 msgid "The Woman at the Crossroads"
 msgstr "Chorrahadagi kampir"
 
-#: games/journey.py:370
+#: games/journey.py:383
 msgid ""
 "She has been sitting on that wall for longer than the wall has been there, "
 "and she has an opinion about your route."
@@ -3140,15 +3142,15 @@ msgstr ""
 "U o'sha devorda devorning o'zidan ham uzoqroq o'tiribdi va sizning yo'lingiz "
 "haqida o'z fikri bor."
 
-#: games/journey.py:371
+#: games/journey.py:384
 msgid "She tells you one true thing and goes back to watching the road."
 msgstr "U sizga bitta rost gapni aytadi va yana yo'lni kuzatishga qaytadi."
 
-#: games/journey.py:374
+#: games/journey.py:387
 msgid "The Wandering Poet"
 msgstr "Sayoq shoir"
 
-#: games/journey.py:375
+#: games/journey.py:388
 msgid ""
 "He is walking the other way and singing something with too many verses. He "
 "stops when he sees you."
@@ -3156,15 +3158,15 @@ msgstr ""
 "U qarama-qarshi tomonga ketyapti va bandlari haddan tashqari ko'p qo'shiqni "
 "aytyapti. Sizni ko'rib to'xtaydi."
 
-#: games/journey.py:376
+#: games/journey.py:389
 msgid "He gives you the last verse, which turns out to be directions."
 msgstr "U sizga oxirgi bandni beradi — u yo'l ko'rsatma bo'lib chiqadi."
 
-#: games/journey.py:381
+#: games/journey.py:394
 msgid "The Captain of the Gate"
 msgstr "Darvoza sardori"
 
-#: games/journey.py:382
+#: games/journey.py:395
 msgid ""
 "The inner gate. The captain has your whole journey written on the page in "
 "front of her — and she asks about the road behind you, not the road ahead. "
@@ -3174,11 +3176,11 @@ msgstr ""
 "oldingi yo'l haqida emas, ortda qolgan yo'l haqida so'raydi. «Uchta savol, — "
 "deydi u. — Bittasida adashsangiz bo'ladi»."
 
-#: games/journey.py:383
+#: games/journey.py:396
 msgid "She stamps the page and hauls the gate open herself. You are through."
 msgstr "U varaqqa muhr bosadi va darvozani o'z qo'li bilan ochadi. O'tdingiz."
 
-#: games/journey.py:384
+#: games/journey.py:397
 msgid ""
 "She closes the ledger gently. \"You know most of this. Go and find the rest."
 "\""
@@ -3186,11 +3188,11 @@ msgstr ""
 "U daftarni ohista yopadi. «Buning ko'pini bilasiz. Borib qolganini ham "
 "toping»."
 
-#: games/journey.py:386
+#: games/journey.py:399
 msgid "The Stone Giant"
 msgstr "Tosh dev"
 
-#: games/journey.py:387
+#: games/journey.py:400
 msgid ""
 "It has been sitting in the pass so long that trees grow on its shoulders. It "
 "opens one eye. It wants to know what you learned on the way here — all of "
@@ -3200,11 +3202,11 @@ msgstr ""
 "ko'zini ochadi. U bu yergacha nima o'rganganingizni bilmoqchi — hammasini, "
 "faqat oxirgisini emas."
 
-#: games/journey.py:388
+#: games/journey.py:401
 msgid "It stands, and the ground shakes, and the road behind it is open."
 msgstr "U o'rnidan turadi, yer larzaga keladi va uning ortidagi yo'l ochiladi."
 
-#: games/journey.py:389
+#: games/journey.py:402
 msgid ""
 "It closes its eye again. It is in no hurry, and it will be here when you "
 "return."
@@ -3212,11 +3214,11 @@ msgstr ""
 "U yana ko'zini yumadi. Shoshilmaydi va qaytib kelganingizda ham shu yerda "
 "bo'ladi."
 
-#: games/journey.py:391
+#: games/journey.py:404
 msgid "The Keeper of the Road Book"
 msgstr "Yo'l daftari egasi"
 
-#: games/journey.py:392
+#: games/journey.py:405
 msgid ""
 "Every traveller who ever walked this leg is written in his book. He turns to "
 "your page, which is nearly full, and asks about the beginning of it."
@@ -3224,21 +3226,21 @@ msgstr ""
 "Bu bosqichni bosib o'tgan har bir yo'lovchi uning daftariga yozilgan. U "
 "deyarli to'lgan sahifangizni ochadi va uning boshi haqida so'raydi."
 
-#: games/journey.py:393
+#: games/journey.py:406
 msgid "He signs the bottom of your page and turns to a fresh one."
 msgstr "U sahifangiz ostiga imzo qo'yadi va yangi varaqni ochadi."
 
-#: games/journey.py:394
+#: games/journey.py:407
 msgid "He leaves your page open. \"Unfinished is not the same as failed.\""
 msgstr ""
 "U sahifangizni ochiq qoldiradi. «Tugallanmagan degani muvaffaqiyatsiz degani "
 "emas»."
 
-#: games/journey.py:396
+#: games/journey.py:409
 msgid "The Dragon of the Last Crossing"
 msgstr "Oxirgi kechuv ajdari"
 
-#: games/journey.py:397
+#: games/journey.py:410
 msgid ""
 "It is coiled around the last bridge, and it is far more interested in "
 "talking than in eating. It asks about the whole road, from the very first "
@@ -3247,48 +3249,59 @@ msgstr ""
 "U oxirgi ko'prikni o'rab olgan va yeyishdan ko'ra suhbatlashishga ancha "
 "qiziqadi. U butun yo'l haqida, eng birinchi qadamdan boshlab so'raydi."
 
-#: games/journey.py:398
+#: games/journey.py:411
 msgid "It uncoils, unhurried, and lets you walk the length of the bridge."
 msgstr "U shoshilmay yoziladi va ko'prik bo'ylab o'tishingizga yo'l beradi."
 
-#: games/journey.py:399
+#: games/journey.py:412
 msgid ""
 "It settles back down across the planks. \"Again, later. I am not going "
 "anywhere.\""
 msgstr ""
 "U yana taxtalar ustiga cho'kadi. «Keyinroq, yana. Men qochib ketmayman»."
 
-#: games/journey.py:424
+#: games/journey.py:437
 msgid "The high road"
 msgstr "Baland yo'l"
 
-#: games/journey.py:425
+#: games/journey.py:438
 msgid "Shorter and meaner. Pays double."
 msgstr "Qisqaroq va shafqatsizroq. Ikki barobar to'laydi."
 
-#: games/journey.py:430
+#: games/journey.py:443
 msgid "The long way round"
 msgstr "Aylanma yo'l"
 
-#: games/journey.py:431
+#: games/journey.py:444
 msgid "Gentler, but you lose time. Pays less."
 msgstr "Yumshoqroq, lekin vaqt yo'qotasiz. Kamroq to'laydi."
 
-#: games/journey.py:436
+#: games/journey.py:449
 msgid "The old track"
 msgstr "Eski so'qmoq"
 
-#: games/journey.py:437
+#: games/journey.py:450
 msgid "Middling — and somebody left a torch on it."
 msgstr "O'rtacha — va kimdir unda mash'al qoldirib ketgan."
 
-#: games/journey.py:836
+#: games/journey.py:855
 msgid "You find a torch left on the old track."
 msgstr "Eski so'qmoqda qoldirilgan mash'alni topasiz."
 
-#: games/journey.py:908
-msgid "You are too tired to go on, and make camp where you stand."
-msgstr "Davom etishga holingiz qolmadi va turgan joyingizda tunab qolasiz."
+#: games/journey.py:935
+msgid ""
+"Your last heart is gone. Only proving a lesson will get you back on your "
+"feet."
+msgstr "Oxirgi yuragingiz ham ketdi. Faqat darsni isbotlash sizni oyoqqa turg'izadi."
+
+#: games/journey.py:945
+msgid "The road beat you this time. What you left behind stays where it lies."
+msgstr "Bu safar yo'l sizni yengdi. Qoldirib ketganingiz o'sha yerda qoladi."
+
+#: games/journey.py:956
+msgid ""
+"You proved a lesson and got back on your feet. There is no second reprieve."
+msgstr "Darsni isbotlab, oyoqqa turdingiz. Ikkinchi imkoniyat bo'lmaydi."
 
 #: games/templates/games/codebreaker_create.html:4
 msgid "New Code Breaker Puzzle"
@@ -3608,7 +3621,7 @@ msgstr ""
 #, python-format
 msgid "%(n)s prize is waiting to be handed over."
 msgid_plural "%(n)s prizes are waiting to be handed over."
-msgstr[0] ""
+msgstr[0] "%(n)s ta sovg'a topshirilishini kutmoqda."
 
 #: games/templates/games/journey_chest.html:35
 msgid "carried home"
@@ -3648,15 +3661,14 @@ msgstr ""
 
 #: games/templates/games/journey_home.html:19
 msgid ""
-"Fail twice and the way is shut. Then read the lesson: it is the only thing "
-"that both opens the gate and gives your strength back."
-msgstr ""
-"Ikki marta xato qilsangiz, yo'l berkiladi. Shunda darsni o'qing: darvozani "
-"ham ochadigan, kuchingizni ham qaytaradigan yagona narsa — shu."
+"Six hearts a stage, and they never come back on their own. Two wrong answers "
+"cost one; run out and the stage is lost, along with any prize you left on "
+"the road. Passing a lesson's practice is the only thing that returns a heart."
+msgstr "Har bosqichda oltita yurak va ular o'z-o'zidan hech qachon qaytmaydi. Ikkita noto'g'ri javob bittasini oladi; tugasa, bosqich ham, yo'lda qoldirgan sovg'angiz ham yo'qoladi. Yurakni qaytaradigan yagona narsa — darsning mashqidan o'tish."
 
 #: games/templates/games/journey_home.html:32
-msgid "Your journey is waiting"
-msgstr "Safaringiz kutib turibdi"
+msgid "Your journey is on the floor"
+msgstr "Safaringiz yiqilgan holatda"
 
 #: games/templates/games/journey_home.html:32
 msgid "You are on the road"
@@ -3676,60 +3688,55 @@ msgid "The rules of the road"
 msgstr "Yo'l qoidalari"
 
 #: games/templates/games/journey_home.html:82
-#: games/templates/games/journey_play.html:21
-#: games/templates/games/journey_play.html:55
-msgid "Strength"
-msgstr "Kuch"
+msgid "Six hearts"
+msgstr "Oltita yurak"
 
 #: games/templates/games/journey_home.html:82
-msgid "a wrong answer costs one. At zero the journey pauses; it never ends."
-msgstr ""
-"har bir xato javob bittasini oladi. Nolga tushganda safar to'xtaydi, lekin "
-"tugamaydi."
+msgid ""
+"handed out once at the start of a stage. Two wrong answers cost one, "
+"wherever they fall. Resting does not bring them back."
+msgstr "bosqich boshida bir marta beriladi. Ikkita noto'g'ri javob bittasini oladi, qayerda bo'lishidan qat'i nazar. Dam olish ularni qaytarmaydi."
 
 #: games/templates/games/journey_home.html:83
+msgid "Only proof heals"
+msgstr "Faqat isbot davolaydi"
+
+#: games/templates/games/journey_home.html:83
+msgid ""
+"passing a lesson's practice is the one thing that returns a heart — and it "
+"opens a sealed gate without the guard asking anything."
+msgstr "darsning mashqidan o'tish — yurakni qaytaradigan yagona narsa, va u berk darvozani qorovul hech narsa so'ramay ochadi."
+
+#: games/templates/games/journey_home.html:84
 msgid "Sealed gates"
 msgstr "Berk darvozalar"
 
-#: games/templates/games/journey_home.html:83
-msgid ""
-"two wrong answers shut the way. Read the lesson to open it and win strength "
-"back."
-msgstr ""
-"ikkita xato javob yo'lni berkitadi. Ochish va kuchni qaytarish uchun darsni "
-"o'qing."
-
-#: games/templates/games/journey_home.html:84
-msgid "Forks"
-msgstr "Ayrilishlar"
-
 #: games/templates/games/journey_home.html:84
 msgid ""
-"the high road is shorter and pays double; the long way round is kinder and "
-"pays less."
-msgstr ""
-"baland yo'l qisqaroq va ikki barobar to'laydi; aylanma yo'l yumshoqroq va "
-"kamroq to'laydi."
+"two wrong answers at one obstacle shut the way. Read the lesson to open it, "
+"or take another road."
+msgstr "bitta to'siqda ikkita noto'g'ri javob yo'lni berkitadi. Ochish uchun darsni o'qing yoki boshqa yo'ldan yuring."
 
 #: games/templates/games/journey_home.html:85
-msgid "Chests"
-msgstr "Sandiqlar"
+msgid "One prize a stage"
+msgstr "Bosqichga bitta sovg'a"
 
 #: games/templates/games/journey_home.html:85
 msgid ""
-"carry the prize now and walk weaker, or leave it and collect far more if you "
-"arrive."
-msgstr ""
-"sovg'ani hozir olib, kuchsizroq yurasiz — yoki qoldirib ketasiz va manzilga "
-"yetsangiz, ancha ko'p olasiz."
+"found just before the guardian. Take it and it is yours for good, but it "
+"costs a heart to carry. Leave it and beat the guardian to win it plus "
+"something far better."
+msgstr "qorovuldan sal oldin topiladi. Olsangiz — butunlay sizniki, lekin ko'tarish bitta yurakka tushadi. Qoldirib, qorovulni yengsangiz — uni ham, undan ancha yaxshiroq narsani ham olasiz."
 
 #: games/templates/games/journey_home.html:86
-msgid "The guardian"
-msgstr "Qorovul"
+msgid "You can lose"
+msgstr "Yutqazishingiz mumkin"
 
 #: games/templates/games/journey_home.html:86
-msgid "at the end of every stage, three questions about the road behind you."
-msgstr "har bosqich oxirida ortda qolgan yo'l bo'yicha uchta savol."
+msgid ""
+"run out of hearts and the stage ends. Whatever you left on the road stays "
+"there."
+msgstr "yuraklar tugasa, bosqich tugaydi. Yo'lda nima qoldirgan bo'lsangiz, o'sha yerda qoladi."
 
 #: games/templates/games/journey_play.html:15
 msgid "You have arrived."
@@ -3739,80 +3746,118 @@ msgstr "Yetib keldingiz."
 msgid "Coins"
 msgstr "Tanga"
 
-#: games/templates/games/journey_play.html:25
-#, python-format
-msgid ""
-"Arrival bonus: %(bonus)s coins — strength you had left, minus the time you "
-"spent wandering."
-msgstr ""
-"Manzil bonusi: %(bonus)s tanga — qolgan kuchingiz, sarson yurgan vaqtingiz "
-"ayrilgan holda."
+#: games/templates/games/journey_play.html:21
+#: games/templates/games/journey_play.html:66
+msgid "Strength"
+msgstr "Kuch"
+
+#: games/templates/games/journey_play.html:28
+msgid "You travelled light, and it paid."
+msgstr "Yengil yurdingiz va bu o'zini oqladi."
 
 #: games/templates/games/journey_play.html:30
+#, python-format
+msgid ""
+"The chest you left on the road is yours — and so is something better: "
+"<strong>%(big_prize)s</strong>."
+msgstr "Yo'lda qoldirgan sandig'ingiz sizniki — undan yaxshiroq narsa ham: <strong>%(big_prize)s</strong>."
+
+#: games/templates/games/journey_play.html:36
+#, python-format
+msgid ""
+"Arrival bonus: %(bonus)s coins — hearts you had left, minus the time you "
+"spent wandering."
+msgstr "Manzil bonusi: %(bonus)s tanga — qolgan yuraklaringiz, sarson yurgan vaqtingiz ayrilgan holda."
+
+#: games/templates/games/journey_play.html:41
 msgid "This journey was not saved."
 msgstr "Bu safar saqlanmadi."
 
-#: games/templates/games/journey_play.html:31
+#: games/templates/games/journey_play.html:42
 msgid "Sign up"
 msgstr "Ro'yxatdan o'tish"
 
-#: games/templates/games/journey_play.html:32
+#: games/templates/games/journey_play.html:43
 msgid "to keep your road, your coins and any real prizes you find."
 msgstr ""
 "— shunda yo'lingiz, tangalaringiz va topgan haqiqiy sovg'alaringiz saqlanadi."
 
-#: games/templates/games/journey_play.html:37
+#: games/templates/games/journey_play.html:48
 msgid "The next stage"
 msgstr "Keyingi bosqich"
 
-#: games/templates/games/journey_play.html:41
+#: games/templates/games/journey_play.html:52
+#: games/templates/games/journey_play.html:106
 msgid "Back to the map"
 msgstr "Xaritaga qaytish"
 
-#: games/templates/games/journey_play.html:72
-msgid "You can go no further today."
-msgstr "Bugun bundan narisiga bora olmaysiz."
+#: games/templates/games/journey_play.html:83
+msgid "The road beat you this time."
+msgstr "Bu safar yo'l sizni yengdi."
 
-#: games/templates/games/journey_play.html:74
+#: games/templates/games/journey_play.html:85
 msgid ""
-"You make camp where you stand. The road will still be here — a journey "
-"pauses, it does not end."
-msgstr ""
-"Turgan joyingizda tunab qolasiz. Yo'l shu yerda qolaveradi — safar "
-"to'xtaydi, tugamaydi."
+"Your last heart is gone, and the stage ends here. This is what it costs to "
+"run out — which is exactly why leaving a prize on the road was worth "
+"anything."
+msgstr "Oxirgi yuragingiz ketdi va bosqich shu yerda tugadi. Yuraklar tugashining narxi shu — aynan shuning uchun sovg'ani yo'lda qoldirish biror narsaga arziydi."
 
-#: games/templates/games/journey_play.html:78
-msgid "The fast way back on the road"
-msgstr "Yo'lga tez qaytish yo'li"
-
-#: games/templates/games/journey_play.html:79
-msgid ""
-"Finish any lesson from this stage and you may set off again at once, with "
-"strength to spare. Waiting works too — it is just slower."
-msgstr ""
-"Shu bosqichning istalgan darsini tugating va darhol, ortiqcha kuch bilan "
-"yo'lga chiqing. Kutish ham ish beradi — faqat sekinroq."
-
-#: games/templates/games/journey_play.html:81
-#: games/templates/games/journey_play.html:149
-msgid "Open the lesson"
-msgstr "Darsni ochish"
-
-#: games/templates/games/journey_play.html:90
+#: games/templates/games/journey_play.html:92
 #, python-format
-msgid "Rest another %(mins)s min"
-msgstr "Yana %(mins)s daqiqa dam oling"
+msgid "The prize you left behind is lost."
+msgid_plural "The %(n)s prizes you left behind are lost."
+msgstr[0] "Yo'lda qoldirgan %(n)s ta sovg'angiz yo'qoldi."
 
-#: games/templates/games/journey_play.html:93
-#: games/templates/games/journey_play.html:364
-msgid "Walk on"
-msgstr "Yo'lda davom etish"
+#: games/templates/games/journey_play.html:97
+#, python-format
+msgid ""
+"You keep the %(coins)s coins you earned, and anything you took and carried."
+msgstr "Ishlab topgan %(coins)s tangangiz va o'zingiz olib ketgan narsalar sizda qoladi."
 
-#: games/templates/games/journey_play.html:102
+#: games/templates/games/journey_play.html:104
+msgid "Walk it again from the start"
+msgstr "Boshidan yana bir bor o'tish"
+
+#: games/templates/games/journey_play.html:114
+msgid "Your last heart is gone."
+msgstr "Oxirgi yuragingiz ketdi."
+
+#: games/templates/games/journey_play.html:116
+msgid ""
+"One thing gets you off the floor, and resting is not it. Go and pass a "
+"practice from this stage — any one of them — and you stand up with a heart. "
+"It works once."
+msgstr "Sizni oyoqqa turg'izadigan bitta narsa bor va u dam olish emas. Shu bosqichning istalgan mashqidan o'ting — va bitta yurak bilan turasiz. Bu bir marta ishlaydi."
+
+#: games/templates/games/journey_play.html:120
+msgid "The only way up"
+msgstr "Yagona yo'l"
+
+#: games/templates/games/journey_play.html:121
+msgid ""
+"A score cannot be faked, so it is the only thing the road accepts here. Pass "
+"one and come straight back — the journey is waiting exactly where you left "
+"it."
+msgstr "Bahoni soxtalashtirib bo'lmaydi, shuning uchun yo'l bu yerda faqat shuni qabul qiladi. Bittasidan o'ting va darrov qayting — safar siz qoldirgan joyda kutib turibdi."
+
+#: games/templates/games/journey_play.html:123
+#: games/templates/games/journey_play.html:195
+msgid "Take the practice"
+msgstr "Mashqni bajarish"
+
+#: games/templates/games/journey_play.html:126
+msgid "Read the lesson first"
+msgstr "Avval darsni o'qish"
+
+#: games/templates/games/journey_play.html:133
+msgid "Give up on this stage"
+msgstr "Bu bosqichdan voz kechish"
+
+#: games/templates/games/journey_play.html:141
 msgid "The road splits."
 msgstr "Yo'l ikkiga ayriladi."
 
-#: games/templates/games/journey_play.html:103
+#: games/templates/games/journey_play.html:142
 msgid ""
 "Both ways reach the same place, and both ask about the same lesson. They do "
 "not ask it the same way."
@@ -3820,93 +3865,113 @@ msgstr ""
 "Ikkala yo'l ham bir joyga olib boradi va ikkalasi ham bir xil dars bo'yicha "
 "so'raydi. Faqat bir xil tarzda so'ramaydi."
 
-#: games/templates/games/journey_play.html:117
+#: games/templates/games/journey_play.html:156
 msgid "This way is shut."
 msgstr "Bu yo'l berk."
 
-#: games/templates/games/journey_play.html:131
+#: games/templates/games/journey_play.html:170
 msgid "The way is shut."
 msgstr "Yo'l berk."
 
-#: games/templates/games/journey_play.html:136
+#: games/templates/games/journey_play.html:175
 msgid "You have already read this one."
 msgstr "Buni allaqachon o'qigansiz."
 
-#: games/templates/games/journey_play.html:138
+#: games/templates/games/journey_play.html:177
 #, python-format
 msgid ""
 "You marked <strong>%(lesson)s</strong> finished before, so reading it again "
 "will not open this gate. Reading only ever counted once — and it clearly was "
 "not enough."
-msgstr "<strong>%(lesson)s</strong> darsini avval tugatildi deb belgilagansiz, shuning uchun uni qayta o'qish bu darvozani ochmaydi. O'qish faqat bir marta hisobga olinadi — va u yetarli bo'lmagani ko'rinib turibdi."
+msgstr ""
+"<strong>%(lesson)s</strong> darsini avval tugatildi deb belgilagansiz, "
+"shuning uchun uni qayta o'qish bu darvozani ochmaydi. O'qish faqat bir marta "
+"hisobga olinadi — va u yetarli bo'lmagani ko'rinib turibdi."
 
-#: games/templates/games/journey_play.html:141
+#: games/templates/games/journey_play.html:180
 msgid "Look at the lesson again anyway"
 msgstr "Shunda ham darsga yana bir bor qarash"
 
-#: games/templates/games/journey_play.html:144
+#: games/templates/games/journey_play.html:183
 msgid "This gate has two keys."
 msgstr "Bu darvozaning ikkita kaliti bor."
 
-#: games/templates/games/journey_play.html:146
+#: games/templates/games/journey_play.html:185
 #, python-format
 msgid ""
 "<strong>Read %(lesson)s</strong> and the way opens — but reading is "
 "something you tell us you did, so it buys nothing else. When you come back, "
 "the question will be a different one."
-msgstr "<strong>%(lesson)s</strong> darsini o'qing — yo'l ochiladi. Lekin o'qiganingizni faqat o'zingiz aytasiz, shuning uchun bu boshqa hech narsa bermaydi. Qaytib kelganingizda savol boshqasi bo'ladi."
+msgstr ""
+"<strong>%(lesson)s</strong> darsini o'qing — yo'l ochiladi. Lekin "
+"o'qiganingizni faqat o'zingiz aytasiz, shuning uchun bu boshqa hech narsa "
+"bermaydi. Qaytib kelganingizda savol boshqasi bo'ladi."
 
-#: games/templates/games/journey_play.html:153
+#: games/templates/games/journey_play.html:188
+msgid "Open the lesson"
+msgstr "Darsni ochish"
+
+#: games/templates/games/journey_play.html:192
 msgid ""
 "Or pass the lesson's practice. That is a score, not a promise — so the guard "
 "stands aside without asking anything, and you get your strength back."
-msgstr "Yoki darsning mashqidan o'ting. Bu — va'da emas, baho. Shuning uchun qorovul hech narsa so'ramay chetga suriladi va kuchingiz qaytadi."
+msgstr ""
+"Yoki darsning mashqidan o'ting. Bu — va'da emas, baho. Shuning uchun qorovul "
+"hech narsa so'ramay chetga suriladi va kuchingiz qaytadi."
 
-#: games/templates/games/journey_play.html:156
-msgid "Take the practice"
-msgstr "Mashqni bajarish"
-
-#: games/templates/games/journey_play.html:165
+#: games/templates/games/journey_play.html:204
 msgid "Go back and take the other way"
 msgstr "Qaytib, ikkinchi yo'ldan yurish"
 
-#: games/templates/games/journey_play.html:172
+#: games/templates/games/journey_play.html:211
 msgid "Try it again anyway"
 msgstr "Shunda ham yana urinib ko‘rish"
 
-#: games/templates/games/journey_play.html:188
+#: games/templates/games/journey_play.html:227
 msgid "You said"
 msgstr "Siz aytdingiz"
 
-#: games/templates/games/journey_play.html:189
+#: games/templates/games/journey_play.html:228
 msgid "The answer"
 msgstr "To'g'ri javob"
 
-#: games/templates/games/journey_play.html:199
+#: games/templates/games/journey_play.html:239
+#, python-format
+msgid ""
+"That cost you a heart. %(n)s left, and they do not come back on their own."
+msgstr "Bu sizga bitta yurakka tushdi. %(n)s ta qoldi va ular o'z-o'zidan qaytmaydi."
+
+#: games/templates/games/journey_play.html:241
+msgid ""
+"One more slip and a heart goes. Two wrong answers cost one heart, wherever "
+"they fall."
+msgstr "Yana bitta xato va yurak ketadi. Ikkita noto'g'ri javob — bitta yurak, qayerda bo'lishidan qat'i nazar."
+
+#: games/templates/games/journey_play.html:248
 msgid "One more. This obstacle takes two."
 msgstr "Yana bitta. Bu to'siq ikkitasini talab qiladi."
 
-#: games/templates/games/journey_play.html:202
+#: games/templates/games/journey_play.html:251
 #, python-format
 msgid "%(done)s of %(total)s. The guardian is not finished with you."
 msgstr ""
 "%(total)s tadan %(done)s ta. Qorovul hali siz bilan gaplashib bo'lgani yo'q."
 
-#: games/templates/games/journey_play.html:205
-#: games/templates/games/journey_play.html:298
+#: games/templates/games/journey_play.html:254
+#: games/templates/games/journey_play.html:356
 #, python-format
 msgid "+%(coins)s coins"
 msgstr "+%(coins)s tanga"
 
-#: games/templates/games/journey_play.html:210
+#: games/templates/games/journey_play.html:259
 msgid "Press on"
 msgstr "Oldinga yurish"
 
-#: games/templates/games/journey_play.html:214
+#: games/templates/games/journey_play.html:263
 msgid "Not sure? Go and look."
 msgstr "Ishonchingiz komil emasmi? Borib qarang."
 
-#: games/templates/games/journey_play.html:215
+#: games/templates/games/journey_play.html:264
 msgid ""
 "The lesson this came from is one tap away, and reading it gives strength "
 "back. Nothing is lost by leaving the road for a while."
@@ -3914,96 +3979,107 @@ msgstr ""
 "Bu savol olingan dars bir bosishda ochiladi va uni o'qish kuchni qaytaradi. "
 "Yo'ldan bir muddat chetga chiqishdan hech narsa yo'qotmaysiz."
 
-#: games/templates/games/journey_play.html:223
+#: games/templates/games/journey_play.html:272
 msgid "…or prove it with the practice and skip this gate entirely"
 msgstr "…yoki mashq bilan isbotlang va bu darvozani butunlay chetlab o'ting"
 
-#: games/templates/games/journey_play.html:230
+#: games/templates/games/journey_play.html:279
 msgid "Try again — a different question"
 msgstr "Yana urinish — boshqa savol"
 
-#: games/templates/games/journey_play.html:245
-#, python-format
-msgid "Rest (+%(n)s strength)"
-msgstr "Dam olish (+%(n)s kuch)"
+#: games/templates/games/journey_play.html:291
+msgid ""
+"No heart comes back here — only proving a lesson does that. But a slip left "
+"hanging is forgiven, and there is a torch by the fire."
+msgstr "Bu yerda yurak qaytmaydi — buni faqat darsni isbotlash qiladi. Lekin osilib qolgan xato kechiriladi va gulxan yonida mash'al bor."
 
-#: games/templates/games/journey_play.html:260
+#: games/templates/games/journey_play.html:297
+msgid "Rest — clear the slate, take a torch"
+msgstr "Dam olish — hisobni tozalash, mash'al olish"
+
+#: games/templates/games/journey_play.html:312
 #, python-format
 msgid "A purse of %(coins)s coins"
 msgstr "%(coins)s tangalik hamyon"
 
-#: games/templates/games/journey_play.html:271
-msgid "Take it with you"
-msgstr "O'zingiz bilan olish"
+#: games/templates/games/journey_play.html:317
+msgid "The guardian of this stage is the very next thing on the road."
+msgstr "Bu bosqichning qorovuli — yo'ldagi eng keyingi narsa."
 
-#: games/templates/games/journey_play.html:272
+#: games/templates/games/journey_play.html:327
+msgid "Take it now — it is yours whatever happens"
+msgstr "Hozir olish — nima bo'lsa ham sizniki"
+
+#: games/templates/games/journey_play.html:328
 msgid ""
-"Yours for certain, whatever happens next — but you walk the rest of the road "
-"one strength weaker."
-msgstr ""
-"Keyin nima bo'lsa ham, aniq sizniki — lekin yo'lning qolganini bir kuch "
-"kamroq bilan bosib o'tasiz."
+"Nothing can take it back, even if the guardian finishes you. But it costs "
+"you a heart to carry, and the guardian is next."
+msgstr "Qorovul sizni yenggan taqdirda ham uni hech kim qaytarib ololmaydi. Lekin uni ko'tarish bitta yurakka tushadi, qorovul esa navbatda."
 
-#: games/templates/games/journey_play.html:282
-msgid "Leave it and travel light"
-msgstr "Qoldirib, yengil yurish"
+#: games/templates/games/journey_play.html:339
+msgid "Leave it and face the guardian at full strength"
+msgstr "Qoldirib, qorovulga to'liq kuch bilan chiqish"
 
-#: games/templates/games/journey_play.html:283
+#: games/templates/games/journey_play.html:340
 msgid ""
-"No weight — and it is waiting for you at the end, worth far more. Lost if "
-"you never arrive."
-msgstr ""
-"Og'irlik yo'q — va u oxirida sizni ancha qimmatroq bo'lib kutadi. Yetib "
-"bormasangiz, yo'qoladi."
+"Beat the guardian and you get it anyway — plus a far better prize on top. "
+"Fall to the guardian and you get nothing at all."
+msgstr "Qorovulni yengsangiz, uni baribir olasiz — ustiga ancha yaxshiroq sovg'a ham. Qorovulga yiqilsangiz, hech narsa olmaysiz."
 
-#: games/templates/games/journey_play.html:294
+#: games/templates/games/journey_play.html:352
 msgid "stands aside."
 msgstr "chetga suriladi."
 
-#: games/templates/games/journey_play.html:296
+#: games/templates/games/journey_play.html:354
 #, python-format
 msgid ""
 "You passed the practice on %(lesson)s. There is nothing left to ask you "
 "about it."
-msgstr "%(lesson)s bo'yicha mashqdan o'tgansiz. Bu haqda sizdan so'raydigan hech narsa qolmadi."
+msgstr ""
+"%(lesson)s bo'yicha mashqdan o'tgansiz. Bu haqda sizdan so'raydigan hech "
+"narsa qolmadi."
 
-#: games/templates/games/journey_play.html:302
+#: games/templates/games/journey_play.html:360
 msgid "Walk through"
 msgstr "Ichkariga o'tish"
 
-#: games/templates/games/journey_play.html:317
+#: games/templates/games/journey_play.html:375
 #, python-format
 msgid "Question %(now)s of %(total)s"
 msgstr "%(total)s savoldan %(now)s-si"
 
-#: games/templates/games/journey_play.html:320
+#: games/templates/games/journey_play.html:378
 #, python-format
 msgid "Two in a row — %(done)s done"
 msgstr "Ketma-ket ikkita — %(done)s tasi bajarildi"
 
-#: games/templates/games/journey_play.html:344
+#: games/templates/games/journey_play.html:402
 #, python-format
 msgid "Strike a torch (%(n)s) — burn away two wrong answers"
 msgstr "Mash'al yoqish (%(n)s) — ikkita noto'g'ri javobni kuydirish"
 
-#: games/templates/games/journey_play.html:351
+#: games/templates/games/journey_play.html:409
 #, python-format
 msgid "Not sure? Read %(lesson)s"
 msgstr "Ishonchingiz yo'qmi? %(lesson)s ni o'qing"
 
-#: games/templates/games/journey_play.html:359
+#: games/templates/games/journey_play.html:417
 msgid "The road is quiet here."
 msgstr "Bu yerda yo'l tinch."
 
-#: games/templates/games/journey_play.html:360
+#: games/templates/games/journey_play.html:418
 msgid "Nothing is standing in your way for the moment."
 msgstr "Hozircha yo'lingizni hech kim to'smayapti."
 
-#: games/templates/games/journey_play.html:372
+#: games/templates/games/journey_play.html:422
+msgid "Walk on"
+msgstr "Yo'lda davom etish"
+
+#: games/templates/games/journey_play.html:430
 msgid "Journey diary"
 msgstr "Safar kundaligi"
 
-#: games/templates/games/journey_play.html:380
+#: games/templates/games/journey_play.html:438
 msgid "Abandon this journey"
 msgstr "Bu safarni tark etish"
 
@@ -4876,7 +4952,9 @@ msgstr "Boshqotirma yaratib bo'lmadi. Qayta urinib ko'ring."
 #, python-format
 msgid ""
 "You studied \"%(lesson)s\" — the way opens, but you are no stronger for it."
-msgstr "«%(lesson)s» darsini o'rgandingiz — yo'l ochildi, lekin bundan kuchliroq bo'lmadingiz."
+msgstr ""
+"«%(lesson)s» darsini o'rgandingiz — yo'l ochildi, lekin bundan kuchliroq "
+"bo'lmadingiz."
 
 #: games/views.py:2895
 #, python-format
@@ -4888,55 +4966,52 @@ msgid ""
 "You read the story that goes with the lesson — someone hands you a torch."
 msgstr "Darsga tegishli hikoyani o'qidingiz — kimdir sizga mash'al uzatadi."
 
-#: games/views.py:3092
+#: games/views.py:3119
 #, python-format
 msgid "You set out for %(place)s."
 msgstr "%(place)s tomon yo'lga chiqdingiz."
 
-#: games/views.py:3172
-msgid "Rested, you shoulder your pack and walk on."
-msgstr "Dam olib, xurjuningizni yelkaga olasiz va yo'lda davom etasiz."
+#: games/views.py:3224
+msgid ""
+"You rest. No wound closes, but the slate is clean and there is a torch by "
+"the fire."
+msgstr "Dam olasiz. Hech qanday yara bitmaydi, lekin hisob tozalandi va gulxan yonida mash'al bor."
 
-#: games/views.py:3193
-msgid "You rest, and the road looks shorter afterwards."
-msgstr "Dam olasiz va shundan keyin yo'l qisqaroq ko'rinadi."
-
-#: games/views.py:3207
+#: games/views.py:3239
 msgid "You shoulder what was in the chest. It is heavier than it looked."
 msgstr "Sandiqdagi narsani yelkaga olasiz. U ko'ringanidan og'irroq."
 
-#: games/views.py:3210
+#: games/views.py:3242
 msgid "You leave it where it lies, and travel light."
 msgstr "Uni yotgan joyida qoldirasiz va yengil yo'lga tushasiz."
 
-#: games/views.py:3227
+#: games/views.py:3259
 msgid "You strike a torch — two wrong paths fall into shadow."
 msgstr "Mash'al yoqasiz — ikkita noto'g'ri yo'l soyaga cho'kadi."
 
-#: games/views.py:3235
+#: games/views.py:3267
 #, python-format
 msgid "%(who)s stands aside — you proved this lesson the hard way."
 msgstr "%(who)s chetga suriladi — bu darsni mashaqqat bilan isbotladingiz."
 
-#: games/views.py:3267
+#: games/views.py:3301
 msgid "You square your shoulders and try the way again."
 msgstr "Yelkangizni rostlab, yo'lni yana bir bor sinab ko'rasiz."
 
-#: games/views.py:3283
+#: games/views.py:3317
 msgid "You turn back to the fork and look at the other way."
 msgstr "Ayrilishga qaytib, ikkinchi yo'lga qaraysiz."
 
-#: games/views.py:3329
-msgid "The way is shut. You will have to study, rest, or go around."
-msgstr ""
-"Yo'l berk. Endi o'qishingiz, dam olishingiz yoki aylanib o'tishingiz kerak."
+#: games/views.py:3365
+msgid "The way is shut. You will have to study or go around."
+msgstr "Yo'l berk. Endi o'qishingiz yoki aylanib o'tishingiz kerak."
 
-#: games/views.py:3356
+#: games/views.py:3392
 #, python-format
 msgid "%(who)s lets you pass."
 msgstr "%(who)s sizni o'tkazib yuboradi."
 
-#: games/views.py:3366
+#: games/views.py:3402
 #, python-format
 msgid "You reach %(place)s."
 msgstr "%(place)s — yetib keldingiz!"
@@ -8485,7 +8560,9 @@ msgstr "Darslik yaratish"
 msgid ""
 "Not so fast — stay with the lesson a little longer (about %(secs)d more "
 "seconds) and then mark it finished."
-msgstr "Shoshilmang — dars bilan yana biroz qoling (taxminan %(secs)d soniya) va shundan keyin tugatildi deb belgilang."
+msgstr ""
+"Shoshilmang — dars bilan yana biroz qoling (taxminan %(secs)d soniya) va "
+"shundan keyin tugatildi deb belgilang."
 
 #: tutorial/views.py:479
 #, python-format

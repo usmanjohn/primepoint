@@ -2693,12 +2693,12 @@ def duel_play(request):
 JOURNEY_SESSION_KEY = 'journey_state'
 JOURNEY_RUN_KEY     = 'journey_run'
 
-JOURNEY_OPEN_STATUSES = (JourneyRun.STATUS_TRAVELLING, JourneyRun.STATUS_PAUSED)
+JOURNEY_OPEN_STATUSES = (JourneyRun.STATUS_TRAVELLING, JourneyRun.STATUS_STOPPED)
 
 # What a chest holds when the teacher's prize catalogue is empty (or the
 # traveller is a guest, who has no account to keep a prize in).
 CHEST_COINS      = 60
-CHEST_LEFT_BONUS = 150      # paid at the destination for travelling light
+CHEST_LEFT_BONUS = 250      # paid at the destination for travelling light
 
 JOURNEY_RARITY_WEIGHTS = {
     JourneyReward.RARITY_COMMON:    70,
@@ -2910,9 +2910,14 @@ def _journey_credit_study(request, state):
                                  '— someone hands you a torch.'))
         changed = True
 
-    # Reading of any kind lifts a pause: the pupil earned the right to carry on.
-    if changed and state.get('status') == JourneyRun.STATUS_PAUSED:
-        journey.resume(state)
+    # A traveller on the floor is picked up by PROOF only — never by a read.
+    # That is the moment the whole design is aiming at: out of hearts, stage
+    # about to be lost, and the one thing that saves it is going and passing a
+    # test. It can happen once.
+    if (state.get('status') == JourneyRun.STATUS_STOPPED
+            and passed - credited_pass and not state.get('last_stand')):
+        journey.last_stand(state)
+        changed = True
 
     return changed
 
@@ -2969,12 +2974,34 @@ def _journey_award(request, state, run, found, carried):
                 output_field=BooleanField()))
 
 
+def _journey_big_prize(request, state, run):
+    """The reward for arriving with the chest still unopened on the road.
+
+    Deliberately drawn from the rare end of the catalogue: the traveller gambled
+    a prize they could have pocketed, and won.
+    """
+    rare = list(JourneyReward.objects.filter(
+        is_active=True, rarity__in=(JourneyReward.RARITY_RARE,
+                                    JourneyReward.RARITY_LEGENDARY)))
+    reward = random.choice(rare) if rare else _journey_pick_reward()
+    if reward is None:
+        state['coins'] += CHEST_LEFT_BONUS
+        return None
+    _journey_award(request, state, run,
+                   {'reward': reward.id, 'name': reward.name,
+                    'emoji': reward.emoji, 'coins': 0}, carried=False)
+    return reward.name
+
+
 def _journey_collect_left(request, state, run):
-    """Everything left on the road, collected at the destination — with the
-    bonus that made leaving it worth the risk."""
-    for found in state.pop('left_behind', []):
+    """Everything left on the road, collected at the destination — plus the big
+    prize that made leaving it worth the risk."""
+    left = state.pop('left_behind', [])
+    for found in left:
         _journey_award(request, state, run, found, carried=False)
         state['coins'] += CHEST_LEFT_BONUS
+    if left and request.user.is_authenticated:
+        state['big_prize'] = _journey_big_prize(request, state, run) or ''
 
 
 # ── the road: which legs are open ─────────────────────────────────────────
@@ -3030,7 +3057,7 @@ def journey_home(request):
         if road:
             active = {'road': road, 'leg': state['leg'],
                       'place': journey.leg_place(state['road'], state['leg']),
-                      'paused': state.get('status') == JourneyRun.STATUS_PAUSED}
+                      'stopped': state.get('status') == JourneyRun.STATUS_STOPPED}
 
     done_by_road = {}
     if request.user.is_authenticated:
@@ -3163,16 +3190,14 @@ def _journey_act(request, state, run):
         _journey_clear(request, run)
         return
 
-    if state.get('status') == JourneyRun.STATUS_FINISHED:
+    if state.get('status') in (JourneyRun.STATUS_FINISHED, JourneyRun.STATUS_FAILED):
         return
 
-    if action == 'resume':
-        if state.get('status') == JourneyRun.STATUS_PAUSED and not journey.pause_remaining(state):
-            journey.resume(state)
-            journey.add_log(state, _('Rested, you shoulder your pack and walk on.'))
+    if action == 'give_up' and state.get('status') == JourneyRun.STATUS_STOPPED:
+        journey.fail(state)
         return
 
-    if state.get('status') == JourneyRun.STATUS_PAUSED:
+    if state.get('status') in (JourneyRun.STATUS_STOPPED, JourneyRun.STATUS_FAILED):
         return
 
     if action == 'choose':
@@ -3189,8 +3214,15 @@ def _journey_act(request, state, run):
         return
 
     if action == 'rest' and node['kind'] == 'camp':
-        journey.heal(state, journey.CAMP_HEAL)
-        journey.add_log(state, _('You rest, and the road looks shorter afterwards.'))
+        # Hearts never come back from resting — only from proving a lesson. What
+        # a camp does is wipe the slate: a wrong answer left hanging half-way to
+        # costing a heart is forgiven here.
+        state['wrong_total'] = state.get('wrong_total', 0) + (
+            journey.wrong_until_heart(state) % journey.WRONGS_PER_HEART)
+        state['torches'] += journey.CAMP_TORCHES
+        state['coins'] += journey.CAMP_COINS
+        journey.add_log(state, _('You rest. No wound closes, but the slate is '
+                                 'clean and there is a torch by the fire.'))
         journey.advance(state)
         if state.get('status') == JourneyRun.STATUS_FINISHED:
             _journey_finish(request, state, run)
@@ -3263,10 +3295,12 @@ def _journey_act(request, state, run):
             state['guard_right'] = 0
             state['guard_wrong'] = 0
             state['feedback'] = None
+            # Shoving at a sealed gate costs a whole heart, not half of one —
+            # it is the impatient option and it should hurt more than a slip.
             journey.spend_kuch(state, 1)
             journey.add_log(state, _('You square your shoulders and try the way again.'))
             if state['kuch'] <= 0:
-                journey.pause(state)
+                journey.out_of_hearts(state)
             else:
                 lesson = (_journey_guard_lesson(state, node) if node['kind'] == 'guard'
                           else node['lesson'])
@@ -3319,17 +3353,19 @@ def _journey_answer(request, state, run, node):
             state['twin_done'] = state.get('twin_done', 0) + 1
         return
 
-    journey.spend_kuch(state, 1)
+    lost_a_heart = journey.count_wrong(state)
     state['wrong_here'] = state.get('wrong_here', 0) + 1
+    state['feedback']['lost_heart'] = lost_a_heart
+    state['feedback']['until_heart'] = journey.wrong_until_heart(state)
 
     if node['kind'] == 'guard':
         state['guard_wrong'] = state.get('guard_wrong', 0) + 1
     elif state['wrong_here'] >= journey.SEAL_AFTER:
         journey.seal(state, node)
-        journey.add_log(state, _('The way is shut. You will have to study, rest, or go around.'))
+        journey.add_log(state, _('The way is shut. You will have to study or go around.'))
 
     if state['kuch'] <= 0:
-        journey.pause(state)
+        journey.out_of_hearts(state)
 
 
 def _journey_continue(request, state, run, node):
@@ -3435,7 +3471,13 @@ def _journey_context(request, state, run):
         'kuch_lost':  range(max(0, state.get('max_kuch', 0) - state.get('kuch', 0))),
         'node_coins': journey.node_coins(node) if node else 0,
         'lesson_id':  lesson_id,
-        'pause_left': journey.pause_remaining(state) // 60 + 1,
+        'stopped':    state.get('status') == JourneyRun.STATUS_STOPPED,
+        'failed':     state.get('status') == JourneyRun.STATUS_FAILED,
+        'until_heart': journey.wrong_until_heart(state),
+        'last_stand': state.get('last_stand', False),
+        'big_prize':  state.get('big_prize', ''),
+        'lost_count': state.get('lost', 0),
+        'carried':    len([f for f in state.get('chests', {}).values()]) - len(state.get('left_behind', [])),
         'bonus':      journey.arrival_bonus(state) if state.get('status') == 'finished' else 0,
         'diary':      list(reversed(state.get('log', [])))[:6],
         'elapsed_min': state.get('elapsed', 0) // 60,

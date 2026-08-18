@@ -29,8 +29,10 @@ The reading (a Corner story) is never a key: 33 lessons across the four roads
 have no story, and gating on it would leave those gates with no key at all. It
 pays a torch and coins instead.
 
-Run out of strength and the journey **pauses** rather than dies: wait out the
-clock, or study and resume at once.
+Run out of hearts and the stage is **lost**: everything left on the road is
+forfeited, and the big prize at the end with it. There is exactly one reprieve —
+a *last stand*, once per stage, bought by going and passing a practice. Study is
+the only thing standing between a traveller and the end of the road.
 
 A leg's map is generated from a seed, the way `mathchamp.py` generates
 questions, so no two runs look alike and there are no hand-drawn maps to keep.
@@ -54,22 +56,33 @@ from django.utils.translation import gettext_lazy as _
 
 # Bumped whenever the shape of the state dict changes, so a journey started on
 # an older build is dropped instead of being resumed against a stale map.
-STATE_VERSION = 1
+STATE_VERSION = 2      # bumped when the heart economy changed
 
 LEG_SIZE = 10          # lessons per leg — one journey is ten lessons of a course
 
-MAX_KUCH = 5           # strength a traveller sets out with
-SEAL_AFTER = 2         # wrong answers at one node before it seals
-CAMP_HEAL = 2          # strength restored by resting at a camp
-PROOF_HEAL = 2         # strength restored by PASSING the lesson's practice
-READ_HEAL = 0          # …and by merely pressing "finished" on the lesson: none
+# ── hearts ─────────────────────────────────────────────────────────────────
+# Six hearts, handed out once at the start of a stage and **never refilled by
+# resting**. Two wrong answers cost one heart, wherever on the road they fall.
+# Run out and the stage is genuinely lost — which is the whole reason the prize
+# you left behind is worth anything.
+MAX_KUCH = 6
+WRONGS_PER_HEART = 2
+SEAL_AFTER = 2         # wrong answers at ONE node before it seals
+
+# The single exception to "hearts never come back", and the reason it exists:
+# passing a lesson's practice is the only claim about study on this platform
+# that is scored rather than self-reported. Study is the only medicine.
+PROOF_HEAL = 1
+READ_HEAL = 0          # pressing "finished" on a lesson heals nothing
+CAMP_HEAL = 0          # nor does resting — a camp forgives a half-heart instead
+
+CAMP_TORCHES = 1       # what a camp is for now
+CAMP_COINS = 20
 
 # Reading the lesson's Corner story is a bonus, never a key — see the module
 # docstring for why it cannot be one.
 STORY_TORCHES = 1
 STORY_COINS = 25
-PAUSE_MINUTES = 30     # how long an exhausted traveller must wait…
-                       # …or zero minutes, if they go and finish a lesson.
 
 LOG_LIMIT = 40         # entries kept in the journey diary
 
@@ -595,14 +608,18 @@ def build_map(road_slug, leg, seed):
     # of the same leg do not rest in the same places.
     beats = []                                   # (kind, lesson index or None)
     rest_after = {rng.choice((2, 3)), rng.choice((6, 7))}
-    chest_after = {rng.choice((1, 2)), rng.choice((5, 6)), len(lessons) - 2}
 
     for i in range(len(lessons)):
         beats.append(('lesson', i))
         if i in rest_after:
             beats.append(('camp', None))
-        if i in chest_after:
-            beats.append(('chest', None))
+
+    # ONE chest a stage, and it stands immediately before the guardian — which
+    # is the only placement that makes "take it or leave it" a real decision.
+    # A chest after the guardian would be free (nothing left to risk); a chest
+    # in the middle asks the traveller to guess at dangers they cannot see. Here
+    # they know exactly what they are gambling against: the guardian, next.
+    beats.append(('chest', None))
     beats.append(('guard', None))
 
     # Two of the lesson beats become forks — one early, one late — and one
@@ -776,7 +793,9 @@ def new_state(road_slug, leg, seed=None):
         'coins':     0,
         'detours':   0,
         'torches':   0,
-        'wrong_here': 0,
+        'wrong_here': 0,          # wrong answers at the node they stand on
+        'wrong_total': 0,         # …and over the whole stage: every 2nd costs a heart
+        'last_stand': False,      # the one reprieve, once used
         'sealed':    [],
         'q':         None,
         'twin_done': 0,
@@ -901,32 +920,65 @@ def add_log(state, line):
     del log[:-LOG_LIMIT]
 
 
-def pause(state):
-    """Out of strength. The journey stops; it does not end."""
-    state['status'] = 'paused'
-    state['paused_at'] = int(time.time())
-    add_log(state, _('You are too tired to go on, and make camp where you stand.'))
+def out_of_hearts(state):
+    """The last heart is gone.
+
+    Not the end yet — not the first time. A traveller who has not spent their
+    *last stand* is stopped rather than finished, and the only thing that will
+    get them moving again is passing a practice from this stage. Spend it, run
+    out a second time, and the road is over.
+    """
+    if state.get('last_stand'):
+        fail(state)
+    else:
+        state['status'] = 'stopped'
+        add_log(state, _('Your last heart is gone. Only proving a lesson will '
+                         'get you back on your feet.'))
 
 
-def pause_remaining(state):
-    """Seconds still to wait — or 0, which is also what finishing a lesson gives."""
-    if state.get('status') != 'paused':
-        return 0
-    waited = int(time.time()) - state.get('paused_at', 0)
-    return max(0, PAUSE_MINUTES * 60 - waited)
+def fail(state):
+    """The stage is lost. Whatever was left on the road is left there."""
+    state['status'] = 'failed'
+    state['elapsed'] = int(time.time()) - state.get('started', int(time.time()))
+    state['lost'] = len(state.get('left_behind', []))
+    state['left_behind'] = []
+    add_log(state, _('The road beat you this time. What you left behind stays '
+                     'where it lies.'))
 
 
-def resume(state):
+def last_stand(state):
+    """Bought with a passed practice: one heart, one more chance, once."""
     state['status'] = 'travelling'
-    state['paused_at'] = 0
-    state['kuch'] = max(1, min(state['max_kuch'], CAMP_HEAL))
+    state['last_stand'] = True
+    state['kuch'] = max(1, state['kuch'])
     state['wrong_here'] = 0
     state['q'] = None
+    add_log(state, _('You proved a lesson and got back on your feet. There is '
+                     'no second reprieve.'))
 
 
 def spend_kuch(state, amount=1):
     state['kuch'] = max(0, state['kuch'] - amount)
     return state['kuch']
+
+
+def count_wrong(state):
+    """Record a wrong answer; every second one costs a heart.
+
+    Counted over the whole stage rather than per node, so two slips at two
+    different obstacles cost exactly what two slips at one obstacle cost.
+    Returns True if this was the answer that took a heart.
+    """
+    state['wrong_total'] = state.get('wrong_total', 0) + 1
+    if state['wrong_total'] % WRONGS_PER_HEART == 0:
+        spend_kuch(state, 1)
+        return True
+    return False
+
+
+def wrong_until_heart(state):
+    """Wrong answers left before the next heart goes — for the warning line."""
+    return WRONGS_PER_HEART - (state.get('wrong_total', 0) % WRONGS_PER_HEART)
 
 
 def heal(state, amount):
