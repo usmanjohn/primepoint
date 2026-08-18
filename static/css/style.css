@@ -5003,3 +5003,43 @@ table.pm-col {
     .pj-leg__marker { flex-basis: 38px; height: 38px; font-size: 0.85rem; }
     .pj-leg::before { left: 18px; top: 38px; }
 }
+
+/* ── Prime Journey: the second key ────────────────────────────────────────
+   Reading the lesson is green (.pj-btn--study) because it is the way forward.
+   PASSING the practice is gold, and outranks it: it is the only claim about
+   study on this platform that is scored rather than self-reported, so it is
+   the one the game actually pays for. Keep gold above green everywhere. */
+
+.pj-btn--proof {
+    background: var(--pj-gold);
+    color: #fff;
+    width: 100%;
+    margin-top: 0.15rem;
+}
+.pj-btn--proof:hover { filter: brightness(1.08); color: #fff; }
+
+.pj-fastest__strong {
+    margin-top: 0.9rem !important;
+    padding-top: 0.8rem;
+    border-top: 1.5px dashed #86efac;
+    font-weight: 600;
+    color: #14532d;
+}
+
+.pj-card--proven { border-top: 4px solid var(--pj-gold); }
+
+/* The torch: burns two wrong answers away. Earned by reading the lesson's
+   Corner story, or found on the old track at a fork. */
+.pj-torch {
+    width: 100%;
+    padding: 0.6rem 0.9rem;
+    border-radius: 12px;
+    background: #fffbeb;
+    border: 1.5px dashed var(--pj-gold);
+    color: #92400e;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .12s ease;
+}
+.pj-torch:hover { background: #fef3c7; }

@@ -8,6 +8,7 @@ from django.utils.translation import gettext as _
 from django.views.decorators.http import require_POST
 
 from examprep.models import WritingDrill
+from prime import reading
 from .models import (Subject, Collection, Story, StoryProgress,
                      WritingTemplate, STORY_POINTS)
 from prime.subjects import get_study_subjects, value_visible
@@ -132,6 +133,7 @@ def corner_story(request, subject_slug, collection_slug, slug):
     percent = round(len(finished_ids) / len(siblings) * 100) if siblings else 0
 
     Story.objects.filter(pk=story.pk).update(views=F('views') + 1)
+    reading.mark_opened(request, 'story', story.pk)
 
     return render(request, 'corner/story_detail.html', {
         'subject': collection.subject,
@@ -181,6 +183,18 @@ def corner_story_finish(request, subject_slug, collection_slug, slug):
         collection__slug=collection_slug, slug=slug,
         **_published_filter(request.user),
     )
+    # Same rule as the tutorials: a finish has to arrive after the page has
+    # been open long enough to have been read. See prime/reading.py.
+    wait = reading.too_soon(request, 'story', story.pk, story.body)
+    if wait:
+        messages.warning(
+            request,
+            _('Not so fast — stay with the story a little longer (about '
+              '%(secs)d more seconds) and then mark it finished.')
+            % {'secs': wait})
+        return redirect('corner_story', subject_slug=subject_slug,
+                        collection_slug=collection_slug, slug=slug)
+
     progress, created = StoryProgress.objects.get_or_create(
         user=request.user, story=story,
         defaults={'points_awarded': STORY_POINTS},

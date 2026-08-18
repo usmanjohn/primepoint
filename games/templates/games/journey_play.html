@@ -132,12 +132,28 @@
         <p class="pj-card__intro">{{ encounter.lose }}</p>
 
         <div class="pj-fastest">
-            <div class="pj-fastest__head">&#x1F4D6; {% trans "This gate has one key." %}</div>
+            {% if already_read %}
+            <div class="pj-fastest__head">&#x1F511; {% trans "You have already read this one." %}</div>
             <p>
-                {% blocktrans with lesson=node.lesson_title %}Read <strong>{{ lesson }}</strong>. Finishing it opens this gate and gives you strength back — and when you return, the question will be a different one.{% endblocktrans %}
+                {% blocktrans with lesson=node.lesson_title %}You marked <strong>{{ lesson }}</strong> finished before, so reading it again will not open this gate. Reading only ever counted once — and it clearly was not enough.{% endblocktrans %}
+            </p>
+            {% if node.lesson %}
+            <a href="{% url 'tutorial_detail' node.lesson %}" class="pj-peek">{% trans "Look at the lesson again anyway" %} &rarr;</a>
+            {% endif %}
+            {% else %}
+            <div class="pj-fastest__head">&#x1F511; {% trans "This gate has two keys." %}</div>
+            <p>
+                {% blocktrans with lesson=node.lesson_title %}<strong>Read {{ lesson }}</strong> and the way opens — but reading is something you tell us you did, so it buys nothing else. When you come back, the question will be a different one.{% endblocktrans %}
             </p>
             {% if node.lesson %}
             <a href="{% url 'tutorial_detail' node.lesson %}" class="pj-btn pj-btn--study">{% trans "Open the lesson" %} &rarr;</a>
+            {% endif %}
+            {% endif %}
+            <p class="pj-fastest__strong">
+                {% trans "Or pass the lesson's practice. That is a score, not a promise — so the guard stands aside without asking anything, and you get your strength back." %}
+            </p>
+            {% if practice_id %}
+            <a href="{% url 'practice_detail' practice_id %}" class="pj-btn pj-btn--proof">&#x1F3AF; {% trans "Take the practice" %} &rarr;</a>
             {% endif %}
         </div>
 
@@ -200,6 +216,11 @@
                 {% if feedback.lesson %}
                 <a href="{% url 'tutorial_detail' feedback.lesson %}" class="pj-btn pj-btn--study">
                     {{ feedback.lesson_title }} &rarr;
+                </a>
+                {% endif %}
+                {% if practice_id %}
+                <a href="{% url 'practice_detail' practice_id %}" class="pj-peek">
+                    &#x1F3AF; {% trans "…or prove it with the practice and skip this gate entirely" %}
                 </a>
                 {% endif %}
             </div>
@@ -266,6 +287,22 @@
         </div>
     </div>
 
+{% elif proven %}
+    <!-- ══════════════════ ALREADY PROVED ══════════════════ -->
+    <div class="pj-card pj-card--proven">
+        <div class="pj-card__emoji">&#x1F3AF;</div>
+        <h2 class="pj-card__title">{{ encounter.title }} {% trans "stands aside." %}</h2>
+        <p class="pj-card__intro">
+            {% blocktrans with lesson=node.lesson_title %}You passed the practice on {{ lesson }}. There is nothing left to ask you about it.{% endblocktrans %}
+        </p>
+        <p class="pj-card__aside">&#x1FA99; {% blocktrans with coins=node_coins %}+{{ coins }} coins{% endblocktrans %}</p>
+        <form method="post" class="pj-actions">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="continue">
+            <button type="submit" class="pj-btn pj-btn--go">{% trans "Walk through" %} &rarr;</button>
+        </form>
+    </div>
+
 {% elif q %}
     <!-- ══════════════════ SOMEBODY IS IN THE WAY ══════════════════ -->
     <div class="pj-card pj-card--gate" style="--pj-t:{{ terrain.color }};">
@@ -291,13 +328,23 @@
         <form method="post" class="pj-choices">
             {% csrf_token %}
             <input type="hidden" name="action" value="answer">
-            {% for choice in q.choices %}
+            {% for choice in q_choices %}
             <button type="submit" name="choice" value="{{ choice.id }}" class="pj-choice-btn">
                 <span class="pj-choice-btn__letter">{% cycle 'A' 'B' 'C' 'D' 'E' %}</span>
                 <span class="pj-choice-btn__text">{{ choice.text|safe }}</span>
             </button>
             {% endfor %}
         </form>
+
+        {% if can_torch %}
+        <form method="post" class="mt-2">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="torch">
+            <button type="submit" class="pj-torch">
+                &#x1F526; {% blocktrans with n=state.torches %}Strike a torch ({{ n }}) — burn away two wrong answers{% endblocktrans %}
+            </button>
+        </form>
+        {% endif %}
 
         {% if q.lesson %}
         <a href="{% url 'tutorial_detail' q.lesson %}" class="pj-peek">

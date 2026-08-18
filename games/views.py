@@ -17,6 +17,8 @@ from .generator import generate_math_square, empty_math_square, eval_line
 from .catalog import GAME_COUNT, filter_games, subject_facets  # noqa: F401 — GAME_COUNT re-exported for the nav badge
 from prime.subjects import get_study_subjects
 from tutorial.models import TutorialProgress
+from practice.models import PracticeAttempt, Practice
+from corner.models import StoryProgress
 from . import mathchamp, englishchamp, duel as duelmod, journey
 
 
@@ -2792,47 +2794,127 @@ def _journey_guard_lesson(state, node):
     return sources[state.get('guard_right', 0) % len(sources)]
 
 
-def _journey_credit_study(request, state):
-    """Turn lessons the traveller has read into strength and open gates.
+def _journey_passed(user, lesson_ids):
+    """Lessons whose practice this pupil has actually *passed*.
 
-    This is the heart of the whole design: reading the tutorial is the only
-    move that both unseals a gate *and* restores strength, and it is checked
-    here on every page load so the reward is waiting when they come back from
-    the lesson.
+    The only claim about study on this platform that cannot be faked by
+    pressing a button: a completed attempt scoring at or above the practice's
+    own `pass_score`.
+    """
+    panda = getattr(getattr(user, 'profile', None), 'panda', None)
+    if not panda or not lesson_ids:
+        return set()
+    return set(PracticeAttempt.objects
+               .filter(panda=panda, status='completed',
+                       practice__tutorials__id__in=lesson_ids,
+                       score__gte=F('practice__pass_score'))
+               .values_list('practice__tutorials__id', flat=True))
+
+
+def _journey_read_stories(user, lesson_ids):
+    """(story id, lesson id) pairs for readings this pupil has finished."""
+    if not lesson_ids:
+        return []
+    return list(StoryProgress.objects
+                .filter(user=user, story__tutorials__id__in=lesson_ids)
+                .values_list('story_id', 'story__tutorials__id'))
+
+
+def _journey_credit_study(request, state):
+    """Turn study into progress on the road. The heart of the whole design.
+
+    Runs on every page load, so a pupil who leaves to study finds the reward
+    waiting when they come back. Three things are credited, and they are
+    deliberately worth different amounts:
+
+    * **Read the lesson** — opens the sealed gate, and nothing else. Pressing
+      "mark as finished" is a button; `prime/reading.py` makes it cost a minute
+      of dwell time but it still proves nothing, so it does not buy strength.
+    * **Passed the lesson's practice** — opens the gate, restores strength, and
+      marks the node *proven*, so the guard steps aside without asking. That
+      claim is scored, so it is the one the game pays for.
+    * **Read the linked Corner story** — never opens anything (33 lessons have
+      no story and those gates would have no key); pays a torch and coins.
     """
     if not request.user.is_authenticated:
-        return []
+        return False
 
     game_map = state.get('map') or []
     lesson_ids = {n.get('lesson') for step in game_map for n in step if n.get('lesson')}
     if not lesson_ids:
-        return []
+        return False
 
-    credited = set(state.setdefault('studied', []))
+    changed = False
+    sealed = set(state.get('sealed', []))
+
+    # ── the weak key: they say they read it ────────────────────────────────
     read = set(TutorialProgress.objects
                .filter(user=request.user, tutorial_id__in=lesson_ids)
                .values_list('tutorial_id', flat=True))
-    fresh = read - credited
-    if not fresh:
-        return []
+    credited_read = set(state.setdefault('studied', []))
+    for lesson in read - credited_read:
+        opened = [n for step in game_map for n in step
+                  if n.get('lesson') == lesson and n['id'] in sealed]
+        for node in opened:
+            journey.unseal(state, node)
+        if opened:
+            journey.add_log(state, _('You studied "%(lesson)s" — the way opens, '
+                                     'but you are no stronger for it.')
+                            % {'lesson': opened[0].get('lesson_title', '')})
+        changed = True
+    if read - credited_read:
+        state['studied'] = list(credited_read | read)
 
-    titles = []
-    for step in game_map:
-        for node in step:
-            if node.get('lesson') in fresh:
-                journey.unseal(state, node)
-                if node.get('lesson_title'):
-                    titles.append(node['lesson_title'])
+    # ── the real key: they passed the practice ────────────────────────────
+    # Note the asymmetry with the read above, and that it is deliberate:
+    # **a read counts once, but proof counts whenever you need it.** A pupil
+    # who passed the practice before setting out and then gets stuck must still
+    # be waved through — otherwise studying in advance would be punished and
+    # cramming only once stuck would be rewarded, which is backwards.
+    # Only the strength and the diary line are one-shot.
+    sealed = set(state.get('sealed', []))          # the read block may have moved it
+    passed = _journey_passed(request.user, lesson_ids)
+    credited_pass = set(state.setdefault('proved', []))
+    for lesson in passed:
+        nodes = [n for step in game_map for n in step if n.get('lesson') == lesson]
+        for node in nodes:
+            if node['id'] not in sealed:
+                continue
+            journey.unseal(state, node)
+            # Only a gate you were actually stuck at is waved through: the
+            # pupil who passed every practice in advance still gets to play.
+            if (node['kind'] in ('gate', 'twin')
+                    and node['id'] not in state.setdefault('proven', [])):
+                state['proven'].append(node['id'])
+                state['q'] = None
+                state['feedback'] = None
+            changed = True
+        if lesson not in credited_pass:
+            journey.heal(state, journey.PROOF_HEAL)
+            title = nodes[0].get('lesson_title', '') if nodes else ''
+            journey.add_log(state, _('You passed the test on "%(lesson)s". '
+                                     'That is proof, not a promise.')
+                            % {'lesson': title})
+            changed = True
+    state['proved'] = list(credited_pass | passed)
 
-    state['studied'] = list(credited | fresh)
-    journey.heal(state, journey.STUDY_HEAL * len(fresh))
-    for title in dict.fromkeys(titles):
-        journey.add_log(state, _('You studied "%(lesson)s" — the road ahead opens.')
-                        % {'lesson': title})
-    # Reading also lifts a pause: the pupil earned the right to carry on.
-    if state.get('status') == JourneyRun.STATUS_PAUSED:
+    # ── the bonus: they read the story ────────────────────────────────────
+    credited_story = set(state.setdefault('read_stories', []))
+    for story_id, lesson in _journey_read_stories(request.user, lesson_ids):
+        if story_id in credited_story:
+            continue
+        state['read_stories'].append(story_id)
+        state['torches'] += journey.STORY_TORCHES
+        state['coins'] += journey.STORY_COINS
+        journey.add_log(state, _('You read the story that goes with the lesson '
+                                 '— someone hands you a torch.'))
+        changed = True
+
+    # Reading of any kind lifts a pause: the pupil earned the right to carry on.
+    if changed and state.get('status') == JourneyRun.STATUS_PAUSED:
         journey.resume(state)
-    return list(fresh)
+
+    return changed
 
 
 # ── chests ────────────────────────────────────────────────────────────────
@@ -3048,6 +3130,7 @@ def journey_play(request):
     # rather than on the POST that arrives at it — so a refresh is harmless.
     if (travelling and node and not fork and not state.get('feedback')
             and node['kind'] in ('gate', 'twin', 'guard')
+            and node['id'] not in state.get('proven', [])
             and not journey.is_sealed(state, node) and not state.get('q')):
         lesson = (_journey_guard_lesson(state, node) if node['kind'] == 'guard'
                   else node['lesson'])
@@ -3125,6 +3208,33 @@ def _journey_act(request, state, run):
         else:
             state.setdefault('left_behind', []).append(found)
             journey.add_log(state, _('You leave it where it lies, and travel light.'))
+        journey.advance(state)
+        if state.get('status') == JourneyRun.STATUS_FINISHED:
+            _journey_finish(request, state, run)
+        return
+
+    if action == 'torch':
+        # A torch burns two wrong answers away. They come from reading the
+        # lesson's story, and from the old track at a fork.
+        question = state.get('q')
+        if (question and not state.get('feedback')
+                and state.get('torches', 0) > 0 and not question.get('hidden')):
+            wrong = [c['id'] for c in question['choices']
+                     if c['id'] != question.get('correct')]
+            random.shuffle(wrong)
+            question['hidden'] = wrong[:2]
+            state['torches'] -= 1
+            journey.add_log(state, _('You strike a torch — two wrong paths fall '
+                                     'into shadow.'))
+        return
+
+    if action == 'continue' and node['id'] in state.get('proven', []):
+        # They went and passed the practice. No twenty-first question.
+        state['proven'].remove(node['id'])
+        state['coins'] += journey.node_coins(node)
+        journey.add_log(state, _('%(who)s stands aside — you proved this lesson '
+                                 'the hard way.')
+                        % {'who': str(journey.encounter(node['encounter'])['title'])})
         journey.advance(state)
         if state.get('status') == JourneyRun.STATUS_FINISHED:
             _journey_finish(request, state, run)
@@ -3287,10 +3397,27 @@ def _journey_context(request, state, run):
         lesson_id = ((state.get('feedback') or {}).get('lesson')
                      or (state.get('q') or {}).get('lesson')
                      or node.get('lesson'))
+    question = state.get('q') or None
+    hidden = set((question or {}).get('hidden') or ())
+
+    # The door to the second key. Resolved here rather than stored in the map,
+    # because a lesson's practice can be republished between runs.
+    practice_id = None
+    if lesson_id:
+        practice_id = (Practice.objects
+                       .filter(tutorials__id=lesson_id, is_published=True)
+                       .values_list('id', flat=True).first())
 
     return {
         'state':      state,
         'road':       road,
+        'proven':     bool(node and node['id'] in state.get('proven', [])),
+        'practice_id': practice_id,
+        'already_read': bool(lesson_id and lesson_id in (state.get('studied') or [])),
+        'q_choices':  [c for c in (question or {}).get('choices', [])
+                       if c['id'] not in hidden],
+        'can_torch':  bool(question and not state.get('feedback')
+                           and state.get('torches', 0) > 0 and not hidden),
         'place':      journey.leg_place(state['road'], state['leg']),
         'node':       node,
         'encounter':  journey.encounter(node['encounter']) if node else None,

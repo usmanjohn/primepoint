@@ -11,11 +11,26 @@ That last sentence is the whole design. One rule governs everything here:
 
     ── STUDYING MUST BE THE STRONGEST MOVE IN THE GAME. ──
 
-Fail an obstacle twice and it *seals*: you may take another branch, you may
-camp, or you may read the lesson — and only reading it both unseals the gate
-and gives strength back. Run out of strength and the journey **pauses** rather
-than dies: wait out the clock, or finish one lesson and resume at once. Same
-door, two keys, and the studying key is always the faster one.
+Fail an obstacle twice and it *seals*. There are then two keys, and they are
+deliberately worth different amounts, because one of them can be faked and the
+other cannot:
+
+* **Read the lesson** — `TutorialProgress`, which is a button a pupil presses.
+  `prime/reading.py` makes that button cost a minute of dwell time, but it still
+  proves nothing. So it buys exactly one thing: the gate opens. No strength.
+* **Pass the lesson's practice** — a scored `PracticeAttempt` at or above
+  `pass_score`. This cannot be faked, so it pays properly: the gate opens, you
+  get strength back, and **the guard does not ask a question at all**. The gate
+  existed to check they knew the lesson; a twenty-question test already checked,
+  harder. Asking a twenty-first would be theatre — and the bank is only twenty
+  deep, so it could not be a fresh question anyway.
+
+The reading (a Corner story) is never a key: 33 lessons across the four roads
+have no story, and gating on it would leave those gates with no key at all. It
+pays a torch and coins instead.
+
+Run out of strength and the journey **pauses** rather than dies: wait out the
+clock, or study and resume at once.
 
 A leg's map is generated from a seed, the way `mathchamp.py` generates
 questions, so no two runs look alike and there are no hand-drawn maps to keep.
@@ -46,7 +61,13 @@ LEG_SIZE = 10          # lessons per leg — one journey is ten lessons of a cou
 MAX_KUCH = 5           # strength a traveller sets out with
 SEAL_AFTER = 2         # wrong answers at one node before it seals
 CAMP_HEAL = 2          # strength restored by resting at a camp
-STUDY_HEAL = 2         # strength restored by finishing the linked lesson
+PROOF_HEAL = 2         # strength restored by PASSING the lesson's practice
+READ_HEAL = 0          # …and by merely pressing "finished" on the lesson: none
+
+# Reading the lesson's Corner story is a bonus, never a key — see the module
+# docstring for why it cannot be one.
+STORY_TORCHES = 1
+STORY_COINS = 25
 PAUSE_MINUTES = 30     # how long an exhausted traveller must wait…
                        # …or zero minutes, if they go and finish a lesson.
 

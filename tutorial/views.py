@@ -10,6 +10,7 @@ from django.urls import reverse
 from django.utils.translation import gettext as _
 from django.views.decorators.http import require_POST
 
+from prime import reading
 from .models import (Tutorial, TutorialReaction, TutorialPlaylist, PlaylistTutorial,
                      TutorialProgress, TUTORIAL_POINTS, CATEGORY_CHOICES)
 from .forms import TutorialForm, TutorialPlaylistForm
@@ -76,6 +77,7 @@ def tutorial_list(request):
 def tutorial_detail(request, pk):
     tutorial = get_object_or_404(Tutorial, pk=pk, is_published=True)
     Tutorial.objects.filter(pk=pk).update(views=F('views') + 1)
+    reading.mark_opened(request, 'tutorial', pk)
 
     related = Tutorial.objects.filter(
         category=tutorial.category, is_published=True
@@ -454,6 +456,19 @@ def playlist_delete(request, pk):
 def tutorial_finish(request, pk):
     """Mark a tutorial read; award points to the panda once."""
     tutorial = get_object_or_404(Tutorial, pk=pk, is_published=True)
+
+    # "Mark as finished" used to be worth 4 points for one click. It now has to
+    # arrive after the page has been open long enough to have been read — see
+    # prime/reading.py for what this does and does not prove.
+    wait = reading.too_soon(request, 'tutorial', pk, tutorial.content)
+    if wait:
+        messages.warning(
+            request,
+            _('Not so fast — stay with the lesson a little longer (about '
+              '%(secs)d more seconds) and then mark it finished.')
+            % {'secs': wait})
+        return redirect('tutorial_detail', pk=pk)
+
     progress, created = TutorialProgress.objects.get_or_create(
         user=request.user, tutorial=tutorial,
         defaults={'points_awarded': TUTORIAL_POINTS},
