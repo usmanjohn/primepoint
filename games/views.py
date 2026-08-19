@@ -3060,6 +3060,7 @@ def _journey_leg_rows(request, road_slug):
             'unlocked': unlocked,
             'finished': leg in finished,
             'best':     best.get(leg),
+            'prize':    journey.has_prize(leg),
         })
     return rows
 

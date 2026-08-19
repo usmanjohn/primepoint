@@ -28,7 +28,10 @@
                 {% if row.finished %}&#x2713;{% elif not row.unlocked %}&#x1F512;{% else %}{{ row.leg }}{% endif %}
             </div>
             <div class="pj-leg__body">
-                <div class="pj-leg__place">{{ row.place }}</div>
+                <div class="pj-leg__place">
+                    {{ row.place }}
+                    {% if row.prize %}<span class="pj-leg__prize" title="{% trans 'A prize waits before the guardian' %}">&#x1F381;</span>{% endif %}
+                </div>
                 <div class="pj-leg__range">{{ row.first }}{% if row.last and row.last != row.first %} &rarr; {{ row.last }}{% endif %}</div>
 
                 {% if row.unlocked %}

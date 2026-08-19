@@ -61,11 +61,12 @@ STATE_VERSION = 2      # bumped when the heart economy changed
 LEG_SIZE = 10          # lessons per leg — one journey is ten lessons of a course
 
 # ── hearts ─────────────────────────────────────────────────────────────────
-# Six hearts, handed out once at the start of a stage and **never refilled by
-# resting**. Two wrong answers cost one heart, wherever on the road they fall.
-# Run out and the stage is genuinely lost — which is the whole reason the prize
-# you left behind is worth anything.
-MAX_KUCH = 6
+# Three hearts, handed out once at the start of a stage and **never refilled by
+# resting**. Two wrong answers cost one heart, wherever on the road they fall —
+# so a stage allows six slips in about fourteen obstacles. Run out and the stage
+# is genuinely lost, which is the whole reason the prize you left behind is
+# worth anything.
+MAX_KUCH = 3
 WRONGS_PER_HEART = 2
 SEAL_AFTER = 2         # wrong answers at ONE node before it seals
 
@@ -597,6 +598,18 @@ def node_coins(node):
     return base * node.get('coin_multiplier', 1)
 
 
+# A prize does not wait at the end of every stage — that handed out far too many.
+# One turns up on the first stage of a road (an early hook is worth a lot) and
+# then every third: stages 1, 4, 7, 10. On the rest, the guardian is simply the
+# last thing standing between the traveller and the destination.
+PRIZE_EVERY = 3
+
+
+def has_prize(leg):
+    """True when this stage ends with a chest before its guardian."""
+    return (leg - 1) % PRIZE_EVERY == 0
+
+
 def build_map(road_slug, leg, seed):
     """The whole leg, decided up front and JSON-safe.
 
@@ -626,12 +639,13 @@ def build_map(road_slug, leg, seed):
         if i == elder_after:
             beats.append(('elder', None))
 
-    # ONE chest a stage, and it stands immediately before the guardian — which
-    # is the only placement that makes "take it or leave it" a real decision.
-    # A chest after the guardian would be free (nothing left to risk); a chest
-    # in the middle asks the traveller to guess at dangers they cannot see. Here
+    # When this stage carries a prize it stands immediately before the guardian —
+    # the only placement that makes "take it or leave it" a real decision. A
+    # chest after the guardian would be free (nothing left to risk); a chest in
+    # the middle asks the traveller to guess at dangers they cannot see. Here
     # they know exactly what they are gambling against: the guardian, next.
-    beats.append(('chest', None))
+    if has_prize(leg):
+        beats.append(('chest', None))
     beats.append(('guard', None))
 
     # Two of the lesson beats become forks — one early, one late — and one

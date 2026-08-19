@@ -5135,3 +5135,11 @@ table.pm-col {
     line-height: 1.55;
     color: #5b21b6;
 }
+
+/* A stage that carries a prize is marked on the road map, so a traveller can
+   see one coming and decide whether to spend hearts getting there. */
+.pj-leg__prize {
+    margin-left: 0.35rem;
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
