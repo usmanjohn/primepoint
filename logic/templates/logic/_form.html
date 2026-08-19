@@ -1,0 +1,43 @@
+{% load i18n %}
+{% comment %}
+The answer form. Shared by the first attempt and by the "change my answer"
+fold, so the two can never drift apart.
+{% endcomment %}
+<form method="post" action="{% url 'logic_puzzle' puzzle.slug %}">
+    {% csrf_token %}
+
+    <p class="lg-form__head">
+        {% if puzzle.is_revealed %}🧠 {% trans "Try it yourself" %}{% else %}✉️ {% trans "Seal your answer" %}{% endif %}
+    </p>
+    <p class="lg-form__note">
+        {% if puzzle.is_revealed %}
+            {% trans "The solution is right below, so this one is on your honour — answer first, look after. Worth half points." %}
+        {% else %}
+            {% trans "You can change it any time before the reveal. Nobody, including you, finds out who was right until then." %}
+        {% endif %}
+    </p>
+
+    <div class="lg-form__row">
+        <label for="lg-answer">
+            {% trans "Your answer" %}{% if puzzle.display_answer_hint %} — {{ puzzle.display_answer_hint }}{% endif %}
+        </label>
+        <input type="text" id="lg-answer" name="answer" maxlength="200" required
+               autocomplete="off"
+               value="{{ submission.answer|default:'' }}"
+               placeholder="{% trans 'Short and exact' %}">
+    </div>
+
+    <div class="lg-form__row">
+        <label for="lg-reasoning">{% trans "How did you get there? (optional, but this is the real work)" %}</label>
+        <textarea id="lg-reasoning" name="reasoning" rows="4"
+                  placeholder="{% trans 'Explain your steps…' %}">{{ submission.reasoning|default:'' }}</textarea>
+    </div>
+
+    <button type="submit" class="lg-btn">
+        {% if puzzle.is_revealed %}
+            <i class="bi bi-check2-circle"></i> {% trans "Check my answer" %}
+        {% else %}
+            <i class="bi bi-envelope-paper-fill"></i> {% trans "Seal it" %}
+        {% endif %}
+    </button>
+</form>

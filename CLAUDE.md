@@ -265,6 +265,48 @@ Prime Math is **not** the SAT course (`SAT-…`, English, exam-shaped) and not t
 Championship game (auto-generated, no explanations). It is the school course itself, from
 zero, in order.
 
+## Creating Logic Arena puzzles (bulk) — sealed-answer logic problems
+**Logic Arena** (`logic` app, `/logic/`, uz "Mantiq maydoni") is the weekly logic-puzzle
+section: nine coins and two weighings, the wolf/goat/cabbage, the twelve-coin problem. Its
+one idea is that **you answer but you are not told whether you were right until the reveal
+date** — a puzzle opens, everyone seals an answer, and a week later the solution and the
+wall of solvers appear for everyone at once. Answering while sealed is worth full points;
+solving an old one from the archive is worth half. Guests may read; only logged-in users
+may answer. No JavaScript anywhere — the countdown is a server-rendered number and the
+hint/solution are native `<details>`.
+Puzzles are **bilingual in the data itself** (English + `*_uz` columns on the model), not
+through gettext: the bodies are content, not interface. Figures are **inline SVG built by
+`logic/figures.py`** — never an uploaded image.
+When the user asks (e.g. "make the next 4 logic puzzles"):
+1. Read `logic/management/commands/STYLE_GUIDE_LOGIC.md` (how to choose a puzzle, why the
+   typed answer must be a short unguessable value, the figure kit; section 12 holds the
+   user's own tips once they share them).
+2. Read `logic/management/commands/toc_logic_puzzles.txt` (header gives AUTHOR, SCHEDULE;
+   body is the ordered list with `[done]`/`[next]` markers and a candidate pool).
+3. Find where to continue: `LogicPuzzle.objects.order_by('-number').first()`.
+4. Write `logic/management/commands/_puzzles_logic_<range>.py` as `SCHEDULE = {...}`
+   (copied unchanged from the previous file — one season, one schedule) + `PUZZLES = [...]`,
+   **two puzzles per round**, one gentler and one harder.
+5. Import: `python manage.py import_logic <file> --author=prime` (`--republish` to
+   overwrite, `--draft` to import unpublished). The importer refuses a puzzle whose Uzbek
+   title/body/solution is missing.
+6. Mark the range `[done]` in the toc, then give the `railway run python manage.py
+   import_logic ...` command — automatically, every time.
+**⚠️ THE ANSWER GATE.** A wrong answer key is the worst bug this section can ship — the
+pupil is told they were wrong a week after they were right, in public on the solvers wall.
+Every answer is computed twice, the second time by a throwaway script in the scratchpad
+(`verify_logic_<range>.py`) that derives each answer independently (brute force, BFS over
+states, or an explicit formula) and prints any mismatch. Run it, fix, then import.
+**Keep at least four rounds ahead of today** or the Arena runs out of live puzzles.
+The visual kit is the `lg-*` section at the bottom of `static/css/style.css` (`lg-hero`,
+`lg-card`, `lg-status`, `lg-rule` constraint box, `lg-ask` "what to type" box, `lg-fold`
+hint/solution `<details>`, `lg-envelope` wax seal, `lg-steps` numbered solution ladder,
+`lg-moral` the-trick line, `lg-fig` + `lg-ln`/`lg-fill`/`lg-lbl` for figures). Pure CSS —
+never add JavaScript, and never invent an `lg-*` class without adding it to that section
+and to the style guide first.
+Logic Arena is **not** the Math Championship (auto-generated, instantly marked) and not a
+practice test. It is one hard, beautiful problem a week with a real explanation attached.
+
 ## Creating examprep lessons (bulk) — TOPIK etc.
 `examprep` holds detailed, by-skill exam prep (`ExamTrack` → skill → `Topic` (question-type
 card, e.g. Reading → "Reklama va e'lonlar (광고)") → `Lesson` → ordered `LessonBlock`s with

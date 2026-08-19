@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Prime Point\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-19 09:14+0000\n"
+"POT-Creation-Date: 2026-08-19 12:26+0000\n"
 "PO-Revision-Date: 2026-04-29 15:20+0000\n"
 "Last-Translator: Prime Point\n"
 "Language-Team: Uzbek\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #: analytics/templates/analytics/home.html:4
 #: analytics/templates/analytics/home.html:5
-#: prime/templates/prime/about.html:589 prime/templates/prime/index.html:601
+#: prime/templates/prime/about.html:589 prime/templates/prime/index.html:617
 #: templates/base.html:103
 msgid "Analytics"
 msgstr "Tahlil"
@@ -40,17 +40,17 @@ msgstr ""
 #: masters/templates/masters/master_list.html:187
 #: masters/templates/masters/my_students.html:201
 #: people/templates/people/profile.html:284
-#: prime/templates/prime/index.html:328 prime/templates/prime/index.html:546
-#: prime/templates/prime/index.html:682 prime/templates/prime/progress.html:106
+#: prime/templates/prime/index.html:328 prime/templates/prime/index.html:562
+#: prime/templates/prime/index.html:698 prime/templates/prime/progress.html:106
 msgid "Students"
 msgstr "O'quvchilar"
 
 #: analytics/templates/analytics/home.html:169
 #: masters/templates/masters/master_list.html:4
 #: masters/templates/masters/master_list.html:5
-#: panda/templates/panda/panda_list.html:306 prime/search.py:184
-#: prime/templates/prime/index.html:332 prime/templates/prime/index.html:532
-#: prime/templates/prime/index.html:535 templates/base.html:109
+#: panda/templates/panda/panda_list.html:306 prime/search.py:207
+#: prime/templates/prime/index.html:332 prime/templates/prime/index.html:548
+#: prime/templates/prime/index.html:551 templates/base.html:109
 msgid "Masters"
 msgstr "Ustozlar"
 
@@ -62,7 +62,7 @@ msgstr "Ustozlar"
 #: people/templates/people/profile.html:298
 #: people/templates/people/profile.html:422
 #: prime/templates/prime/about.html:494 prime/templates/prime/index.html:415
-#: prime/templates/prime/index.html:686
+#: prime/templates/prime/index.html:702
 #: tutorial/templates/tutorial/playlist_detail.html:122
 msgid "Practices"
 msgstr "Mashqlar"
@@ -70,7 +70,7 @@ msgstr "Mashqlar"
 #: analytics/templates/analytics/home.html:179
 #: masters/templates/masters/master_detail.html:404
 #: masters/templates/masters/my_students.html:248
-#: prime/templates/prime/index.html:636
+#: prime/templates/prime/index.html:652
 msgid "Avg Score"
 msgstr "O'rt. ball"
 
@@ -84,15 +84,15 @@ msgstr "O'rt. ball"
 msgid "Questions"
 msgstr "Savollar"
 
-#: analytics/templates/analytics/home.html:189 prime/search.py:216
+#: analytics/templates/analytics/home.html:189 prime/search.py:239
 msgid "Discussions"
 msgstr "Muhokamalar"
 
 #: analytics/templates/analytics/home.html:194
 #: classroom/templates/classroom/lesson_detail.html:270
-#: masters/templates/masters/master_detail.html:540 prime/progress.py:121
+#: masters/templates/masters/master_detail.html:540 prime/progress.py:142
 #: prime/search.py:43 prime/templates/prime/index.html:434
-#: templates/base.html:141 templates/base.html:353
+#: templates/base.html:141 templates/base.html:359
 #: tutorial/templates/tutorial/playlist_detail.html:15
 #: tutorial/templates/tutorial/playlist_list.html:90
 #: tutorial/templates/tutorial/tutorial_detail.html:40
@@ -242,30 +242,30 @@ msgstr ""
 #: examprep/templates/examprep/track_detail.html:12
 #: examprep/templates/examprep/vocab_detail.html:13
 #: examprep/templates/examprep/vocab_list.html:13
-#: examprep/templates/examprep/vocab_roots.html:13 prime/progress.py:119
+#: examprep/templates/examprep/vocab_roots.html:13 prime/progress.py:140
 #: prime/search.py:76 prime/templates/prime/index.html:306
 #: prime/templates/prime/index.html:450 templates/base.html:165
 msgid "Exam Prep"
 msgstr "Tayyorgarlik"
 
-#: analytics/templates/analytics/home.html:335 prime/progress.py:123
-#: prime/search.py:112
+#: analytics/templates/analytics/home.html:335 prime/progress.py:144
+#: prime/search.py:135
 msgid "Corner Stories"
 msgstr "Burchak hikoyalari"
 
 #: analytics/templates/analytics/home.html:340
 #: examprep/templates/examprep/drill_detail.html:13
 #: examprep/templates/examprep/drill_list.html:13
-#: examprep/templates/examprep/track_detail.html:109 prime/progress.py:125
-#: prime/search.py:126
+#: examprep/templates/examprep/track_detail.html:109 prime/progress.py:146
+#: prime/search.py:149
 msgid "Writing Drills"
 msgstr "Yozish mashqlari"
 
 #: analytics/templates/analytics/home.html:345
 #: exam/templates/exam/exam_list.html:4 exam/templates/exam/exam_list.html:5
-#: prime/progress.py:127 prime/search.py:90
+#: prime/progress.py:148 prime/search.py:113
 #: prime/templates/prime/index.html:479 prime/templates/prime/index.html:482
-#: templates/base.html:159 templates/base.html:356
+#: templates/base.html:159 templates/base.html:362
 msgid "Exams"
 msgstr "Imtihonlar"
 
@@ -286,9 +286,9 @@ msgstr "Imtihonlar"
 #: games/templates/games/sortingrace_list.html:13
 #: games/templates/games/target_number.html:78
 #: games/templates/games/wordorder_list.html:13
-#: games/templates/games/wordsearch_list.html:13 prime/search.py:169
-#: prime/templates/prime/index.html:340 prime/templates/prime/index.html:494
-#: prime/templates/prime/index.html:497 templates/base.html:153
+#: games/templates/games/wordsearch_list.html:13 prime/search.py:192
+#: prime/templates/prime/index.html:340 prime/templates/prime/index.html:510
+#: prime/templates/prime/index.html:513 templates/base.html:153
 msgid "Games"
 msgstr "O'yinlar"
 
@@ -297,13 +297,13 @@ msgstr "O'yinlar"
 #: classroom/templates/classroom/classroom_list.html:4
 #: classroom/templates/classroom/classroom_list.html:183
 #: classroom/templates/classroom/discussion_thread.html:95
-#: classroom/templates/classroom/lesson_detail.html:145 prime/search.py:230
-#: prime/templates/prime/index.html:563 templates/base.html:147
+#: classroom/templates/classroom/lesson_detail.html:145 prime/search.py:253
+#: prime/templates/prime/index.html:579 templates/base.html:147
 msgid "Classrooms"
 msgstr "Darsxonalar"
 
 #: analytics/templates/analytics/home.html:360 people/models.py:15
-#: prime/templates/prime/index.html:511 prime/templates/prime/index.html:648
+#: prime/templates/prime/index.html:527 prime/templates/prime/index.html:664
 #: templates/base.html:129
 msgid "Homework"
 msgstr "Vazifalar"
@@ -380,7 +380,7 @@ msgstr "a'zo"
 #: discussion/templates/discussion/home.html:4
 #: discussion/templates/discussion/home.html:5
 #: discussion/templates/discussion/home.html:189 people/models.py:20
-#: prime/templates/prime/index.html:577 templates/base.html:135
+#: prime/templates/prime/index.html:593 templates/base.html:135
 msgid "Discussion"
 msgstr "Muhokama"
 
@@ -465,7 +465,7 @@ msgstr "Hali nashr etilgan mashqlar yo'q."
 #: games/templates/games/oddoneout_manage.html:4
 #: people/templates/people/profile.html:424
 #: people/templates/people/profile.html:444
-#: prime/templates/prime/index.html:587
+#: prime/templates/prime/index.html:603
 msgid "Manage"
 msgstr "Boshqarish"
 
@@ -865,7 +865,7 @@ msgstr "Uy vazifasi yaratish"
 #: classroom/templates/classroom/lesson_detail.html:343 people/models.py:16
 #: practice/templates/practice/practice_list.html:451
 #: prime/templates/prime/index.html:418 templates/base.html:113
-#: templates/base.html:117 templates/base.html:359
+#: templates/base.html:117 templates/base.html:365
 #: templates/printing/_book_key.html:20 templates/printing/_practice.html:18
 #: tutorial/templates/tutorial/tutorial_detail.html:333
 msgid "Practice"
@@ -1011,7 +1011,7 @@ msgstr ""
 #: examprep/templates/examprep/vocab_detail.html:15
 #: examprep/templates/examprep/vocab_list.html:5
 #: examprep/templates/examprep/vocab_list.html:15
-#: examprep/templates/examprep/vocab_roots.html:15 prime/search.py:157
+#: examprep/templates/examprep/vocab_roots.html:15 prime/search.py:180
 msgid "Vocabulary"
 msgstr "Lug'at"
 
@@ -1309,6 +1309,8 @@ msgid "Closed"
 msgstr "Yopiq"
 
 #: discussion/templates/discussion/home.html:248
+#: logic/templates/logic/_card.html:40 logic/templates/logic/home.html:71
+#: logic/templates/logic/my_answers.html:19
 msgid "Solved"
 msgstr "Yechilgan"
 
@@ -1338,13 +1340,14 @@ msgid "Join the conversation — log in to post."
 msgstr "Suhbatga qo'shiling — yozish uchun kiring."
 
 #: discussion/templates/discussion/home.html:296
-#: people/templates/people/login.html:52 prime/templates/prime/index.html:320
-#: templates/base.html:321 templates/includes/guest_cta.html:11
+#: logic/templates/logic/puzzle.html:95 people/templates/people/login.html:52
+#: prime/templates/prime/index.html:320 templates/base.html:327
+#: templates/includes/guest_cta.html:11
 msgid "Log in"
 msgstr "Kirish"
 
 #: discussion/templates/discussion/home.html:297
-#: people/templates/people/register.html:5 templates/base.html:322
+#: people/templates/people/register.html:5 templates/base.html:328
 msgid "Register"
 msgstr "Ro'yxatdan o'tish"
 
@@ -1751,7 +1754,7 @@ msgstr ""
 msgid "Speaking"
 msgstr "Gapirish"
 
-#: examprep/models.py:16
+#: examprep/models.py:16 logic/models.py:56
 msgid "Strategy"
 msgstr "Strategiya"
 
@@ -1766,6 +1769,7 @@ msgstr ""
 #: examprep/templates/examprep/_block.html:63
 #: examprep/templates/examprep/lesson_detail.html:72
 #: games/templates/games/wordorder_play.html:275
+#: logic/templates/logic/puzzle.html:49
 msgid "Correct!"
 msgstr "To'g'ri!"
 
@@ -1876,7 +1880,7 @@ msgstr "Hali yozish mashqi yo'q. Tez orada qo'shiladi."
 #: examprep/templates/examprep/grammar_detail.html:15
 #: examprep/templates/examprep/grammar_list.html:5
 #: examprep/templates/examprep/grammar_list.html:15 games/catalog.py:153
-#: prime/search.py:141
+#: prime/search.py:164
 msgid "Grammar"
 msgstr "Grammatika"
 
@@ -1923,8 +1927,8 @@ msgstr "Chop etish"
 #: prime/templates/prime/search_results.html:4
 #: prime/templates/prime/search_results.html:5
 #: prime/templates/prime/search_results.html:22
-#: prime/templates/prime/search_results.html:27 templates/base.html:244
-#: templates/base.html:248
+#: prime/templates/prime/search_results.html:27 templates/base.html:250
+#: templates/base.html:254
 msgid "Search"
 msgstr "Qidiruv"
 
@@ -2231,7 +2235,7 @@ msgid ""
 msgstr ""
 
 #: games/catalog.py:63 games/catalog.py:96 games/catalog.py:107
-#: games/templates/games/english_crossword_list.html:47 point/settings.py:218
+#: games/templates/games/english_crossword_list.html:47 point/settings.py:219
 #: prime/subjects.py:16
 msgid "English"
 msgstr "Inglizcha"
@@ -3577,7 +3581,7 @@ msgstr "Izohni o'qing va koreys bo'g'inlarini to'ldiring."
 msgid "Play educational mini-games to sharpen your skills."
 msgstr "Ko'nikmalaringizni oshirish uchun ta'limiy mini-o'yinlar o'ynang."
 
-#: games/templates/games/games_home.html:25
+#: games/templates/games/games_home.html:25 logic/templates/logic/home.html:123
 #: tutorial/templates/tutorial/playlist_list.html:36
 #: tutorial/templates/tutorial/tutorial_list.html:33
 msgid "All"
@@ -3666,7 +3670,11 @@ msgid ""
 "answers cost one; run out and the stage is lost, along with any prize you "
 "left on the road. Passing a lesson's practice is the only thing that returns "
 "a heart."
-msgstr "Har bosqichda uchta yurak va ular o'z-o'zidan hech qachon qaytmaydi. Ikkita noto'g'ri javob bittasini oladi; tugasa, bosqich ham, yo'lda qoldirgan sovg'angiz ham yo'qoladi. Yurakni qaytaradigan yagona narsa — darsning mashqidan o'tish."
+msgstr ""
+"Har bosqichda uchta yurak va ular o'z-o'zidan hech qachon qaytmaydi. Ikkita "
+"noto'g'ri javob bittasini oladi; tugasa, bosqich ham, yo'lda qoldirgan "
+"sovg'angiz ham yo'qoladi. Yurakni qaytaradigan yagona narsa — darsning "
+"mashqidan o'tish."
 
 #: games/templates/games/journey_home.html:32
 msgid "Your journey is on the floor"
@@ -3697,7 +3705,10 @@ msgstr "Uchta yurak"
 msgid ""
 "handed out once at the start of a stage: six slips in all. Two wrong answers "
 "cost one, wherever they fall. Resting does not bring them back."
-msgstr "bosqich boshida bir marta beriladi: jami oltita xatoga o'rin bor. Ikkita noto'g'ri javob bittasini oladi, qayerda bo'lishidan qat'i nazar. Dam olish ularni qaytarmaydi."
+msgstr ""
+"bosqich boshida bir marta beriladi: jami oltita xatoga o'rin bor. Ikkita "
+"noto'g'ri javob bittasini oladi, qayerda bo'lishidan qat'i nazar. Dam olish "
+"ularni qaytarmaydi."
 
 #: games/templates/games/journey_home.html:83
 msgid "Only proof heals"
@@ -3732,7 +3743,11 @@ msgid ""
 "only some stages carry one, marked on the map, and it waits just before the "
 "guardian. Take it and it is yours for good, but it costs a heart to carry. "
 "Leave it and beat the guardian to win it plus something far better."
-msgstr "faqat ba'zi bosqichlarda bo'ladi — xaritada belgilangan — va qorovuldan sal oldin kutib turadi. Olsangiz butunlay sizniki, lekin ko'tarish bitta yurakka tushadi. Qoldirib, qorovulni yengsangiz — uni ham, undan ancha yaxshiroq narsani ham olasiz."
+msgstr ""
+"faqat ba'zi bosqichlarda bo'ladi — xaritada belgilangan — va qorovuldan sal "
+"oldin kutib turadi. Olsangiz butunlay sizniki, lekin ko'tarish bitta yurakka "
+"tushadi. Qoldirib, qorovulni yengsangiz — uni ham, undan ancha yaxshiroq "
+"narsani ham olasiz."
 
 #: games/templates/games/journey_home.html:86
 msgid "You can lose"
@@ -4386,7 +4401,7 @@ msgstr ""
 #: games/templates/games/target_number.html:183
 #: games/templates/games/target_number.html:428
 #: people/templates/people/profile.html:328
-#: prime/templates/prime/index.html:632
+#: prime/templates/prime/index.html:648
 msgid "Attempts"
 msgstr "Urinishlar"
 
@@ -4641,8 +4656,9 @@ msgid "Wrong"
 msgstr ""
 
 #: games/templates/games/primeclimb_play.html:195
+#: logic/templates/logic/_card.html:42
 msgid "Missed"
-msgstr ""
+msgstr "Oʻtkazib yuborilgan"
 
 #: games/templates/games/primeclimb_play.html:243
 msgid "numbers found"
@@ -5161,6 +5177,412 @@ msgstr "O'quvchilar tayinlanmagan"
 msgid "Edit this homework to assign it to students."
 msgstr "Ushbu uy vazifasini o'quvchilarga tayinlash uchun tahrirlang."
 
+#: logic/models.py:49
+msgid "Weighing"
+msgstr "Tarozi"
+
+#: logic/models.py:50
+msgid "Crossing"
+msgstr "Oʻtish"
+
+#: logic/models.py:51
+msgid "Liars & Truth"
+msgstr "Yolgʻon va rost"
+
+#: logic/models.py:52
+msgid "Cut & Measure"
+msgstr "Kesish va oʻlchash"
+
+#: logic/models.py:53
+msgid "Numbers"
+msgstr "Sonlar"
+
+#: logic/models.py:54
+msgid "Shapes & Grids"
+msgstr "Shakl va katak"
+
+#: logic/models.py:55
+msgid "Chance"
+msgstr "Ehtimollik"
+
+#: logic/templates/logic/_card.html:30
+msgid "Answer sealed"
+msgstr "Javob muhrlangan"
+
+#: logic/templates/logic/_card.html:36
+#, python-format
+msgid "%(counter)s day left"
+msgid_plural "%(counter)s days left"
+msgstr[0] "%(counter)s kun qoldi"
+
+#: logic/templates/logic/_card.html:36
+msgid "opens today"
+msgstr "bugun ochiladi"
+
+#: logic/templates/logic/_form.html:10
+msgid "Try it yourself"
+msgstr "Oʻzingiz urinib koʻring"
+
+#: logic/templates/logic/_form.html:10
+msgid "Seal your answer"
+msgstr "Javobingizni muhrlang"
+
+#: logic/templates/logic/_form.html:14
+msgid ""
+"The solution is right below, so this one is on your honour — answer first, "
+"look after. Worth half points."
+msgstr "Yechim shundoq pastda, shuning uchun bu — vijdoningiz ishi: avval javob bering, keyin qarang. Ballning yarmiga arziydi."
+
+#: logic/templates/logic/_form.html:16
+msgid ""
+"You can change it any time before the reveal. Nobody, including you, finds "
+"out who was right until then."
+msgstr "Ochilish kunigacha uni istalgan vaqtda oʻzgartirishingiz mumkin. Unga qadar kim haq ekanini hech kim, siz ham bilmaysiz."
+
+#: logic/templates/logic/_form.html:22
+msgid "Your answer"
+msgstr "Javobingiz"
+
+#: logic/templates/logic/_form.html:27
+msgid "Short and exact"
+msgstr "Qisqa va aniq"
+
+#: logic/templates/logic/_form.html:31
+msgid "How did you get there? (optional, but this is the real work)"
+msgstr "Qanday topdingiz? (ixtiyoriy, lekin asosiy ish shu)"
+
+#: logic/templates/logic/_form.html:33
+msgid "Explain your steps…"
+msgstr "Qadamlaringizni tushuntiring…"
+
+#: logic/templates/logic/_form.html:38
+msgid "Check my answer"
+msgstr "Javobimni tekshir"
+
+#: logic/templates/logic/_form.html:40
+msgid "Seal it"
+msgstr "Muhrlash"
+
+#: logic/templates/logic/home.html:4 logic/templates/logic/home.html:5
+#: logic/templates/logic/home.html:45 logic/templates/logic/leaderboard.html:4
+#: logic/templates/logic/leaderboard.html:5
+#: logic/templates/logic/leaderboard.html:10
+#: logic/templates/logic/my_answers.html:4
+#: logic/templates/logic/my_answers.html:5
+#: logic/templates/logic/my_answers.html:10 logic/templates/logic/puzzle.html:4
+#: logic/templates/logic/puzzle.html:5 logic/templates/logic/puzzle.html:11
+#: logic/templates/logic/upcoming.html:4 logic/templates/logic/upcoming.html:5
+#: logic/templates/logic/upcoming.html:10 prime/templates/prime/index.html:499
+#: templates/base.html:177
+msgid "Logic Arena"
+msgstr "Mantiq maydoni"
+
+#: logic/templates/logic/home.html:6
+msgid ""
+"Weekly logic puzzles with sealed answers: send in your solution, and the "
+"answer is revealed to everyone on the reveal day."
+msgstr "Har haftalik mantiq jumboqlari, javoblari muhrlangan: yechimingizni yuboring, javob esa ochilish kunida hamma uchun birdan oshkor boʻladi."
+
+#: logic/templates/logic/home.html:14
+msgid "Puzzle of the week"
+msgstr "Hafta jumbogʻi"
+
+#: logic/templates/logic/home.html:24 logic/templates/logic/puzzle.html:19
+#: logic/templates/logic/puzzle.html:49
+msgid "points"
+msgstr "ball"
+
+#: logic/templates/logic/home.html:28
+#, python-format
+msgid "answer revealed in %(counter)s day"
+msgid_plural "answer revealed in %(counter)s days"
+msgstr[0] "javob %(counter)s kundan keyin ochiladi"
+
+#: logic/templates/logic/home.html:30
+msgid "revealed today!"
+msgstr "javob bugun ochiladi!"
+
+#: logic/templates/logic/home.html:37
+msgid "Change my sealed answer"
+msgstr "Muhrlangan javobimni oʻzgartirish"
+
+#: logic/templates/logic/home.html:39
+msgid "Read it and seal an answer"
+msgstr "Oʻqing va javobni muhrlang"
+
+#: logic/templates/logic/home.html:46
+msgid "No puzzle is open right now"
+msgstr "Hozir ochiq jumboq yoʻq"
+
+#: logic/templates/logic/home.html:48
+msgid ""
+"The next one is on its way. Meanwhile, every past puzzle below can still be "
+"solved — and its solution is waiting once you have tried."
+msgstr "Keyingisi yoʻlda. Shu orada quyidagi har bir eski jumboqni yechish mumkin — urinib koʻrganingizdan keyin yechimi ham sizni kutib turibdi."
+
+#: logic/templates/logic/home.html:60
+msgid "How the Arena works"
+msgstr "Maydon qanday ishlaydi"
+
+#: logic/templates/logic/home.html:61
+msgid ""
+"A puzzle opens, and you send in your answer — but nobody is told whether "
+"they were right. On the reveal day the solution appears for everyone at "
+"once, together with the list of solvers. Answering while the puzzle is still "
+"sealed is worth full points; solving an old one from the archive is worth "
+"half."
+msgstr "Jumboq ochiladi va siz javobingizni yuborasiz — ammo kim haq ekani hech kimga aytilmaydi. Ochilish kunida yechim hamma uchun birdan paydo boʻladi, yechganlar roʻyxati bilan birga. Jumboq hali muhrlangan paytda javob berish toʻliq ball, arxivdagi eskisini yechish esa yarim ball keltiradi."
+
+#: logic/templates/logic/home.html:75 logic/templates/logic/my_answers.html:23
+#: prime/templates/prime/progress.html:59
+msgid "Points"
+msgstr "Ball"
+
+#: logic/templates/logic/home.html:79 logic/templates/logic/my_answers.html:27
+msgid "Streak"
+msgstr "Ketma-ketlik"
+
+#: logic/templates/logic/home.html:83 logic/templates/logic/my_answers.html:31
+#: logic/templates/logic/puzzle.html:102
+msgid "Sealed"
+msgstr "Muhrlangan"
+
+#: logic/templates/logic/home.html:91
+msgid "Also open now"
+msgstr "Hozir yana ochiq"
+
+#: logic/templates/logic/home.html:104
+msgid "Coming next"
+msgstr "Keyingi navbatda"
+
+#: logic/templates/logic/home.html:116
+msgid "Solved and revealed"
+msgstr "Yechilgan va ochilgan"
+
+#: logic/templates/logic/home.html:141
+msgid "Nothing has been revealed yet — the first solutions go up soon."
+msgstr "Hali hech narsa ochilmadi — birinchi yechimlar tez orada chiqadi."
+
+#: logic/templates/logic/home.html:148
+msgid "Top solvers"
+msgstr "Eng yaxshi yechuvchilar"
+
+#: logic/templates/logic/home.html:156
+#: logic/templates/logic/leaderboard.html:35
+#, python-format
+msgid "%(counter)s puzzle"
+msgid_plural "%(counter)s puzzles"
+msgstr[0] "%(counter)s ta jumboq"
+
+#: logic/templates/logic/home.html:162
+msgid "Full hall of fame"
+msgstr "Toʻliq shon-shuhrat zali"
+
+#: logic/templates/logic/home.html:166 logic/templates/logic/my_answers.html:5
+#: logic/templates/logic/my_answers.html:13
+msgid "My answers"
+msgstr "Mening javoblarim"
+
+#: logic/templates/logic/leaderboard.html:5
+#: logic/templates/logic/leaderboard.html:13
+msgid "Hall of fame"
+msgstr "Shon-shuhrat zali"
+
+#: logic/templates/logic/leaderboard.html:15
+msgid ""
+"Points from revealed puzzles only — a sealed answer stays sealed, even here."
+msgstr "Ballar faqat ochilgan jumboqlardan — muhrlangan javob bu yerda ham muhrlangan qoladi."
+
+#: logic/templates/logic/leaderboard.html:23
+#, python-format
+msgid "%(counter)s puzzle streak"
+msgid_plural "%(counter)s puzzle streak"
+msgstr[0] "%(counter)s ta jumboq ketma-ket"
+
+#: logic/templates/logic/leaderboard.html:25
+msgid ""
+"Keep answering every puzzle correctly and the streak grows. One miss resets "
+"it."
+msgstr "Har bir jumboqqa toʻgʻri javob bersangiz, ketma-ketlik oʻsadi. Bitta xato uni nolga qaytaradi."
+
+#: logic/templates/logic/leaderboard.html:40
+msgid "No solved puzzles yet — the first name here could be yours."
+msgstr "Hali yechilgan jumboq yoʻq — bu yerdagi birinchi ism sizniki boʻlishi mumkin."
+
+#: logic/templates/logic/my_answers.html:14
+msgid "Everything you have sent in — sealed envelopes first."
+msgstr "Siz yuborgan hamma narsa — avval muhrlangan konvertlar."
+
+#: logic/templates/logic/my_answers.html:36
+msgid "Still sealed"
+msgstr "Hali muhrlangan"
+
+#: logic/templates/logic/my_answers.html:43
+#, python-format
+msgid "opens %(when)s"
+msgstr "%(when)s ochiladi"
+
+#: logic/templates/logic/my_answers.html:51
+msgid "Revealed"
+msgstr "Ochilgan"
+
+#: logic/templates/logic/my_answers.html:58
+msgid "you said"
+msgstr "siz aytdingiz"
+
+#: logic/templates/logic/my_answers.html:58
+msgid "answer"
+msgstr "javob"
+
+#: logic/templates/logic/my_answers.html:67
+msgid "You have not answered a puzzle yet. Pick one and seal an envelope!"
+msgstr "Siz hali birorta jumboqqa javob bermadingiz. Bittasini tanlang va konvertni muhrlang!"
+
+#: logic/templates/logic/puzzle.html:31
+msgid "Your answer is sealed"
+msgstr "Javobingiz muhrlandi"
+
+#: logic/templates/logic/puzzle.html:32
+#, python-format
+msgid ""
+"Nobody finds out who was right until %(when)s — %(counter)s day to go. You "
+"may still change your answer until then."
+msgid_plural ""
+"Nobody finds out who was right until %(when)s — %(counter)s days to go. You "
+"may still change your answer until then."
+msgstr[0] "%(when)s gacha kim haq ekanini hech kim bilmaydi — %(counter)s kun qoldi. Unga qadar javobingizni oʻzgartirishingiz mumkin."
+
+#: logic/templates/logic/puzzle.html:39
+msgid "Open — answers are being collected"
+msgstr "Ochiq — javoblar yigʻilmoqda"
+
+#: logic/templates/logic/puzzle.html:40
+#, python-format
+msgid ""
+"The solution goes up on %(when)s. Send in your answer before then and it "
+"counts for full points — you will not be told whether it is right until the "
+"reveal."
+msgstr "Yechim %(when)s chiqadi. Javobingizni oʻshangacha yuboring — u toʻliq ball keltiradi, ammo toʻgʻri yoki notoʻgʻriligini ochilish kunigacha bilmaysiz."
+
+#: logic/templates/logic/puzzle.html:51
+msgid "And you sealed it before the reveal — that is the full prize."
+msgstr "Ustiga-ustak, uni ochilishdan oldin muhrladingiz — bu toʻliq mukofot."
+
+#: logic/templates/logic/puzzle.html:53
+msgid ""
+"Solved from the archive, so it is worth half. Catch the next one while it is "
+"still sealed for the full points."
+msgstr "Arxivdan yechildi, shuning uchun yarim ball. Toʻliq ball uchun keyingisini hali muhrlangan paytida ilib oling."
+
+#: logic/templates/logic/puzzle.html:61
+msgid "Not this time"
+msgstr "Bu safar boʻlmadi"
+
+#: logic/templates/logic/puzzle.html:62
+#, python-format
+msgid ""
+"You said <strong>%(mine)s</strong>; the answer is <strong>%(key)s</strong>. "
+"Read the solution below — the useful part is finding the exact step where "
+"your reasoning turned."
+msgstr "Siz <strong>%(mine)s</strong> dedingiz; javob esa <strong>%(key)s</strong>. Quyidagi yechimni oʻqing — eng foydali qismi mulohazangiz aynan qaysi qadamda burilganini topish."
+
+#: logic/templates/logic/puzzle.html:69
+msgid "This one has been revealed"
+msgstr "Bu jumboq ochilgan"
+
+#: logic/templates/logic/puzzle.html:70
+msgid ""
+"The solution is at the bottom of the page. Try it yourself first — an "
+"archive puzzle still counts, for half the points."
+msgstr "Yechim sahifaning pastida. Avval oʻzingiz urinib koʻring — arxivdagi jumboq ham hisobga oʻtadi, ballning yarmi bilan."
+
+#: logic/templates/logic/puzzle.html:81
+msgid "I want a nudge"
+msgstr "Menga ishora kerak"
+
+#: logic/templates/logic/puzzle.html:90
+msgid "Log in to send an answer"
+msgstr "Javob yuborish uchun tizimga kiring"
+
+#: logic/templates/logic/puzzle.html:92
+msgid ""
+"Reading is free for everyone. Sealing an answer, earning points and "
+"appearing on the solver wall need an account."
+msgstr "Oʻqish hamma uchun bepul. Javobni muhrlash, ball toʻplash va yechuvchilar devorida paydo boʻlish uchun hisob kerak."
+
+#: logic/templates/logic/puzzle.html:104
+#, python-format
+msgid "Opened on %(when)s, together with everyone else's."
+msgstr "%(when)s da, hammanikilar bilan birga ochiladi."
+
+#: logic/templates/logic/puzzle.html:109
+msgid "Your reasoning:"
+msgstr "Mulohazangiz:"
+
+#: logic/templates/logic/puzzle.html:115
+msgid "Change my answer"
+msgstr "Javobimni oʻzgartirish"
+
+#: logic/templates/logic/puzzle.html:125
+msgid "What you sent"
+msgstr "Siz yuborgan javob"
+
+#: logic/templates/logic/puzzle.html:140
+msgid "The solution"
+msgstr "Yechim"
+
+#: logic/templates/logic/puzzle.html:143
+msgid "Answer:"
+msgstr "Javob:"
+
+#: logic/templates/logic/puzzle.html:151
+msgid "Who got it"
+msgstr "Kim yechdi"
+
+#: logic/templates/logic/puzzle.html:153
+#, python-format
+msgid "%(correct)s of %(total)s — %(rate)s%%"
+msgstr "%(total)s tadan %(correct)s ta — %(rate)s%%"
+
+#: logic/templates/logic/puzzle.html:166
+msgid "Nobody cracked this one. It is still open for you."
+msgstr "Buni hech kim yecha olmadi. U hamon siz uchun ochiq."
+
+#: logic/templates/logic/puzzle.html:175
+msgid "Previous puzzle:"
+msgstr "Oldingi jumboq:"
+
+#: logic/templates/logic/upcoming.html:5
+msgid "Coming soon"
+msgstr "Tez orada"
+
+#: logic/templates/logic/upcoming.html:15
+msgid "Not open yet"
+msgstr "Hali ochilmagan"
+
+#: logic/templates/logic/upcoming.html:17
+#, python-format
+msgid ""
+"This puzzle unseals on %(when)s. Come back then — everyone gets it at the "
+"same moment."
+msgstr "Bu jumboq %(when)s ochiladi. Oʻshanda qayting — hamma uni bir vaqtda oladi."
+
+#: logic/views.py:164
+msgid "Write your answer before sealing the envelope."
+msgstr "Konvertni muhrlashdan oldin javobingizni yozing."
+
+#: logic/views.py:178
+msgid "Answer checked — the solution is below."
+msgstr "Javob tekshirildi — yechim quyida."
+
+#: logic/views.py:180
+msgid "Not this time — read the solution below and see where it turned."
+msgstr "Bu safar boʻlmadi — quyidagi yechimni oʻqing va qayerda burilganini koʻring."
+
+#: logic/views.py:182
+msgid "Your answer is sealed. Come back on the reveal day!"
+msgstr "Javobingiz muhrlandi. Ochilish kunida qayting!"
+
 #: masters/templates/masters/certificate.html:5
 #: masters/templates/masters/certificate.html:6
 msgid "Certificate Generator"
@@ -5310,7 +5732,7 @@ msgstr "Allaqachon berilgan"
 
 #: masters/templates/masters/master_detail.html:5
 #: people/templates/people/profile.html:121
-#: prime/templates/prime/index.html:677
+#: prime/templates/prime/index.html:693
 msgid "Master"
 msgstr "Ustoz"
 
@@ -5325,7 +5747,7 @@ msgstr "O'chirmoqchimisiz? Bu amalni qaytarib bo'lmaydi."
 #: masters/templates/masters/master_detail.html:399
 #: masters/templates/masters/my_students.html:216
 #: people/templates/people/profile.html:291
-#: prime/templates/prime/index.html:690
+#: prime/templates/prime/index.html:706
 msgid "Avg Rating"
 msgstr "O'rt. reyting"
 
@@ -5335,7 +5757,7 @@ msgstr "Yil tajriba"
 
 #: masters/templates/masters/master_detail.html:426
 #: people/templates/people/profile.html:147 prime/templates/prime/about.html:4
-#: prime/templates/prime/about.html:5 templates/base.html:179
+#: prime/templates/prime/about.html:5 templates/base.html:185
 msgid "About"
 msgstr "Haqida"
 
@@ -5452,7 +5874,7 @@ msgstr "O'chirish"
 
 #: masters/templates/masters/master_detail.html:701
 #: people/templates/people/profile.html:217
-#: prime/templates/prime/index.html:698
+#: prime/templates/prime/index.html:714
 msgid "Manage Practices"
 msgstr "Mashqlarni boshqarish"
 
@@ -5472,7 +5894,7 @@ msgid "New Tutorial"
 msgstr "Yangi darslik"
 
 #: masters/templates/masters/master_list.html:147
-#: prime/templates/prime/index.html:520
+#: prime/templates/prime/index.html:536
 msgid "Community"
 msgstr "Jamiyat"
 
@@ -5614,7 +6036,7 @@ msgstr "Talaba profili"
 
 #: masters/templates/masters/student_detail.html:208
 #: people/templates/people/profile.html:4
-#: people/templates/people/profile.html:5 templates/base.html:363
+#: people/templates/people/profile.html:5 templates/base.html:369
 msgid "Profile"
 msgstr "Profil"
 
@@ -5782,8 +6204,8 @@ msgid "Marked as handed over: %(prize)s → %(who)s"
 msgstr "Topshirildi deb belgilandi: %(prize)s → %(who)s"
 
 #: panda/templates/panda/panda_list.html:4
-#: panda/templates/panda/panda_list.html:5 prime/search.py:202
-#: prime/templates/prime/index.html:549 templates/base.html:123
+#: panda/templates/panda/panda_list.html:5 prime/search.py:225
+#: prime/templates/prime/index.html:565 templates/base.html:123
 msgid "Pandas"
 msgstr "Pandalar"
 
@@ -5802,7 +6224,7 @@ msgstr "Reyting bo'yicha — mashq va natijalar asosida."
 
 #: panda/templates/panda/panda_list.html:228
 #: prime/templates/prime/about.html:784 prime/templates/prime/index.html:309
-#: prime/templates/prime/index.html:662 templates/base.html:299
+#: prime/templates/prime/index.html:678 templates/base.html:305
 msgid "My Profile"
 msgstr "Profilim"
 
@@ -5890,8 +6312,8 @@ msgstr "%(master)s %(classroom)s darsxonasida yangi muhokama boshladi."
 msgid "Log In — Powerty"
 msgstr "Kirish — Powerty"
 
-#: people/templates/people/login.html:5 templates/base.html:323
-#: templates/base.html:367
+#: people/templates/people/login.html:5 templates/base.html:329
+#: templates/base.html:373
 msgid "Login"
 msgstr "Kirish"
 
@@ -5916,7 +6338,7 @@ msgid "Create one now"
 msgstr "Hozir ro'yxatdan o'ting"
 
 #: people/templates/people/notifications.html:4
-#: people/templates/people/notifications.html:66 templates/base.html:268
+#: people/templates/people/notifications.html:66 templates/base.html:274
 msgid "Notifications"
 msgstr "Bildirishnomalar"
 
@@ -6005,7 +6427,7 @@ msgid "Purpose"
 msgstr "Maqsad"
 
 #: people/templates/people/profile.html:344
-#: prime/templates/prime/index.html:708
+#: prime/templates/prime/index.html:724
 msgid "No role assigned yet"
 msgstr "Hali rol tayinlanmagan"
 
@@ -6015,7 +6437,7 @@ msgstr ""
 "Xususiyatlarni ochish uchun Ustoz yoki Talaba sifatida ro'yxatdan o'ting."
 
 #: people/templates/people/profile.html:347
-#: prime/templates/prime/index.html:711
+#: prime/templates/prime/index.html:727
 msgid "Apply as Master"
 msgstr "Ustoz sifatida ariza"
 
@@ -6134,12 +6556,12 @@ msgid "No completed attempts yet."
 msgstr "Hali tugatilgan urinishlar yo'q."
 
 #: people/templates/people/profile.html:647
-#: prime/templates/prime/index.html:303 prime/templates/prime/index.html:665
+#: prime/templates/prime/index.html:303 prime/templates/prime/index.html:681
 msgid "Browse Practices"
 msgstr "Mashqlarni ko'rish"
 
 #: people/templates/people/profile.html:687
-#: prime/templates/prime/index.html:668
+#: prime/templates/prime/index.html:684
 msgid "My Homework"
 msgstr "Mening uy vazifalarim"
 
@@ -6187,7 +6609,7 @@ msgstr "Hisobingiz bormi?"
 msgid "Log in instead"
 msgstr "Kirish"
 
-#: point/settings.py:219
+#: point/settings.py:220
 msgid "Uzbek"
 msgstr "O'zbekcha"
 
@@ -6376,11 +6798,15 @@ msgstr "Mashqlar topilmadi"
 msgid "Try different keywords or remove some filters."
 msgstr "Boshqa kalit so'zlarni sinab ko'ring yoki filtrlarni olib tashlang."
 
-#: prime/progress.py:117 prime/search.py:58
+#: prime/progress.py:138 prime/search.py:58
 msgid "Practice Sets"
 msgstr "Mashq to'plamlari"
 
-#: prime/search.py:199
+#: prime/progress.py:150 prime/search.py:99
+msgid "Logic Puzzles"
+msgstr "Mantiq jumboqlari"
+
+#: prime/search.py:222
 #, python-format
 msgid "%(n)s points"
 msgstr "%(n)s ball"
@@ -6706,7 +7132,7 @@ msgstr "Bepul qo'shiling"
 msgid "Sign In"
 msgstr "Kirish"
 
-#: prime/templates/prime/help.html:4 templates/base.html:184
+#: prime/templates/prime/help.html:4 templates/base.html:190
 msgid "Help"
 msgstr "Yordam"
 
@@ -7636,83 +8062,93 @@ msgstr ""
 msgid "Full timed exams — Listening, Reading and Writing."
 msgstr "To'liq vaqtli imtihonlar — Tinglash, O'qish va Yozish."
 
-#: prime/templates/prime/index.html:498
+#: prime/templates/prime/index.html:496
+msgid "Puzzles"
+msgstr "Jumboqlar"
+
+#: prime/templates/prime/index.html:500
+msgid ""
+"Weekly logic problems. Seal your answer — the solution is revealed to "
+"everyone on the day."
+msgstr "Har haftalik mantiq masalalari. Javobingizni muhrlang — yechim oʻsha kuni hamma uchun ochiladi."
+
+#: prime/templates/prime/index.html:514
 msgid "Crosswords, puzzles and brain games — learn by playing."
 msgstr "Krossvordlar, boshqotirmalar va aqliy o‘yinlar — o‘ynab o‘rganing."
 
-#: prime/templates/prime/index.html:508
+#: prime/templates/prime/index.html:524
 msgid "Tasks"
 msgstr "Vazifalar"
 
-#: prime/templates/prime/index.html:512
+#: prime/templates/prime/index.html:528
 msgid "Submitted and pending assignments."
 msgstr "Topshirilgan va bajarilishi kerak bo'lgan ishlar."
 
-#: prime/templates/prime/index.html:521
+#: prime/templates/prime/index.html:537
 msgid "People & classrooms"
 msgstr "Odamlar va darsxonalar"
 
-#: prime/templates/prime/index.html:536
+#: prime/templates/prime/index.html:552
 msgid "Learn from experienced instructors."
 msgstr "Tajribali o'qituvchilar bilan ishlang."
 
-#: prime/templates/prime/index.html:550
+#: prime/templates/prime/index.html:566
 msgid "Browse student profiles and progress."
 msgstr "O'quvchi profillari va natijalarini ko'ring."
 
-#: prime/templates/prime/index.html:560
+#: prime/templates/prime/index.html:576
 msgid "Rooms"
 msgstr "Darsxonalar"
 
-#: prime/templates/prime/index.html:564
+#: prime/templates/prime/index.html:580
 msgid "Private rooms where masters teach enrolled students."
 msgstr "Ustozlar o'z o'quvchilariga dars beradigan yopiq xonalar."
 
-#: prime/templates/prime/index.html:574
+#: prime/templates/prime/index.html:590
 msgid "Threads"
 msgstr "Mavzular"
 
-#: prime/templates/prime/index.html:578
+#: prime/templates/prime/index.html:594
 msgid "Ask questions and share ideas."
 msgstr "Savollar va fikr almashish maydoni."
 
-#: prime/templates/prime/index.html:588
+#: prime/templates/prime/index.html:604
 msgid "Administration"
 msgstr "Boshqaruv"
 
-#: prime/templates/prime/index.html:598
+#: prime/templates/prime/index.html:614
 msgid "Users"
 msgstr "Foydalanuvchilar"
 
-#: prime/templates/prime/index.html:602
+#: prime/templates/prime/index.html:618
 msgid "Platform insights, charts, and performance data."
 msgstr "Platforma tahlillari, grafiklar va ko'rsatkichlar."
 
-#: prime/templates/prime/index.html:611
+#: prime/templates/prime/index.html:627
 msgid "My Stats"
 msgstr "Mening statistikam"
 
-#: prime/templates/prime/index.html:612
+#: prime/templates/prime/index.html:628
 msgid "Your progress"
 msgstr "Sizning natijalaringiz"
 
-#: prime/templates/prime/index.html:640
+#: prime/templates/prime/index.html:656
 msgid "Best"
 msgstr "Eng yuqori"
 
-#: prime/templates/prime/index.html:644
+#: prime/templates/prime/index.html:660
 msgid "Pass Rate"
 msgstr "O'tish darajasi"
 
-#: prime/templates/prime/index.html:653
+#: prime/templates/prime/index.html:669
 msgid "Homework completion"
 msgstr "Uy vazifalarining bajarilishi"
 
-#: prime/templates/prime/index.html:695
+#: prime/templates/prime/index.html:711
 msgid "My Master Page"
 msgstr "Ustoz sahifam"
 
-#: prime/templates/prime/index.html:709 prime/templates/prime/progress.html:156
+#: prime/templates/prime/index.html:725 prime/templates/prime/progress.html:156
 msgid "Become a master or get enrolled as a student to see your stats here."
 msgstr ""
 "Statistikani ko'rish uchun ustoz bo'ling yoki o'quvchi sifatida yoziling."
@@ -7732,10 +8168,6 @@ msgid ""
 msgstr ""
 "Tugatgan har bir ishingiz bir marta hisoblanadi — reytingdagi barcha ball "
 "shu yerdan keladi."
-
-#: prime/templates/prime/progress.html:59
-msgid "Points"
-msgstr "Ball"
 
 #: prime/templates/prime/progress.html:67
 msgid "Of the library"
@@ -7804,7 +8236,7 @@ msgid ""
 "writing drills, games, masters, pandas, discussions and classrooms."
 msgstr ""
 
-#: prime/views.py:159
+#: prime/views.py:163
 msgid "Your study subjects have been saved."
 msgstr "Fanlaringiz saqlandi."
 
@@ -7854,48 +8286,48 @@ msgstr "Asosiy"
 msgid "Index"
 msgstr "Bosh sahifa"
 
-#: templates/base.html:175
+#: templates/base.html:181
 msgid "Support"
 msgstr "Ko'mak"
 
-#: templates/base.html:208
+#: templates/base.html:214
 msgid "Admin"
 msgstr "Admin"
 
-#: templates/base.html:208
+#: templates/base.html:214
 msgid "Member"
 msgstr "A'zo"
 
-#: templates/base.html:211
+#: templates/base.html:217
 msgid "Online"
 msgstr "Onlayn"
 
-#: templates/base.html:217
+#: templates/base.html:223
 msgid "Guest"
 msgstr "Mehmon"
 
-#: templates/base.html:231
+#: templates/base.html:237
 msgid "Open sidebar"
 msgstr "Panelni ochish"
 
-#: templates/base.html:244
+#: templates/base.html:250
 msgid "Search..."
 msgstr "Qidirish..."
 
-#: templates/base.html:282
+#: templates/base.html:288
 msgid "User menu"
 msgstr "Foydalanuvchi menyusi"
 
-#: templates/base.html:304 tutorial/templates/tutorial/playlist_form.html:86
+#: templates/base.html:310 tutorial/templates/tutorial/playlist_form.html:86
 #: tutorial/templates/tutorial/tutorial_form.html:110
 msgid "Settings"
 msgstr "Sozlamalar"
 
-#: templates/base.html:312
+#: templates/base.html:318
 msgid "Sign out"
 msgstr "Chiqish"
 
-#: templates/base.html:350
+#: templates/base.html:356
 msgid "Home"
 msgstr "Bosh"
 

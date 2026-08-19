@@ -8,6 +8,7 @@ from tutorial.models import Tutorial, TutorialPlaylist
 from examprep.models import ExamTrack, Lesson, GrammarPoint, VocabEntry
 from corner.models import Subject, Collection, Story
 from exam.models import Exam
+from logic.models import LogicPuzzle
 
 
 class StaticViewSitemap(Sitemap):
@@ -20,6 +21,7 @@ class StaticViewSitemap(Sitemap):
             'discussion_home', 'tutorial_list', 'playlist_list',
             'examprep_home', 'corner_home', 'corner_templates',
             'exam_list', 'games_home', 'progress',
+            'logic_home', 'logic_leaderboard',
         ]
 
     def location(self, item):
@@ -231,3 +233,20 @@ class ExamSitemap(Sitemap):
 
     def lastmod(self, obj):
         return obj.created_at
+
+
+class LogicPuzzleSitemap(Sitemap):
+    """Only puzzles that have opened — an upcoming one has nothing to index."""
+    changefreq = 'weekly'
+    priority = 0.6
+
+    def items(self):
+        from django.utils import timezone
+        return LogicPuzzle.objects.filter(is_published=True,
+                                          opens_at__lte=timezone.now())
+
+    def location(self, obj):
+        return reverse('logic_puzzle', kwargs={'slug': obj.slug})
+
+    def lastmod(self, obj):
+        return obj.updated_at

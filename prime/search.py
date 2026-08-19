@@ -76,6 +76,29 @@ def _examprep(q):
     return _group('examprep', _('Exam Prep'), 'bi-journal-bookmark', items, qs.count())
 
 
+def _logic(q):
+    """Logic puzzles — only ones that have opened, and never by their answer.
+
+    Searching the answer_key would let someone type "17" into the top bar and
+    find out which sealed puzzle it belongs to, so the fields searched stop at
+    the title and the teaser."""
+    from django.utils import timezone
+    from logic.models import LogicPuzzle
+
+    qs = LogicPuzzle.objects.filter(
+        is_published=True, opens_at__lte=timezone.now()
+    ).filter(
+        Q(title__icontains=q) | Q(title_uz__icontains=q)
+        | Q(teaser__icontains=q) | Q(teaser_uz__icontains=q)
+    ).order_by('-number')
+    items = [{
+        'title': p.display_title,
+        'meta': _join(p.cat['name'], p.stars, p.display_teaser),
+        'url': reverse('logic_puzzle', args=[p.slug]),
+    } for p in qs[:PER_GROUP]]
+    return _group('logic', _('Logic Puzzles'), 'bi-puzzle-fill', items, qs.count())
+
+
 def _exams(q):
     from exam.models import Exam
 
@@ -234,7 +257,7 @@ def _classrooms(q):
 # people, then community spaces.
 SOURCES = [
     _tutorials, _practices, _examprep, _grammar, _vocab, _exams, _stories, _writing,
-    _games, _masters, _pandas, _threads, _classrooms,
+    _logic, _games, _masters, _pandas, _threads, _classrooms,
 ]
 
 

@@ -8,6 +8,7 @@ def notification_context(request):
 
 def nav_counts(request):
     from django.core.cache import cache
+    from django.utils import timezone
     counts = cache.get('nav_counts_v3')
     if counts is None:
         from masters.models import Master
@@ -20,6 +21,7 @@ def nav_counts(request):
         from exam.models import Exam
         from examprep.models import Lesson
         from corner.models import Story
+        from logic.models import LogicPuzzle
         from games.views import GAME_COUNT
         counts = {
             'nav_masters_count': Master.objects.count(),
@@ -37,6 +39,10 @@ def nav_counts(request):
                 collection__is_published=True,
                 collection__subject__is_published=True,
             ).count(),
+            # Only puzzles that have actually opened — an upcoming one is not
+            # something the badge should promise.
+            'nav_logic_count': LogicPuzzle.objects.filter(
+                is_published=True, opens_at__lte=timezone.now()).count(),
         }
         cache.set('nav_counts_v3', counts, 300)
     return counts

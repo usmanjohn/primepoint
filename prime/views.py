@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
 from django.contrib.auth.models import User
+from django.utils import timezone
 from django.utils.translation import gettext as _
 
 from prime.subjects import (
@@ -25,6 +26,7 @@ from classroom.models import Classroom
 from exam.models import Exam
 from examprep.models import Lesson
 from corner.models import Story
+from logic.models import LogicPuzzle
 from games.views import GAME_COUNT
 
 
@@ -49,7 +51,7 @@ def robots_txt(request):
 
 
 def index(request):
-    stats = cache.get('index_stats_v3')
+    stats = cache.get('index_stats_v4')
     if stats is None:
         stats = {
             'masters': Master.objects.count(),
@@ -62,6 +64,8 @@ def index(request):
             'exams': Exam.objects.filter(is_published=True).count(),
             'examprep_lessons': Lesson.objects.filter(is_published=True, track__is_published=True).count(),
             'games': GAME_COUNT,
+            'logic_puzzles': LogicPuzzle.objects.filter(
+                is_published=True, opens_at__lte=timezone.now()).count(),
             'corner_stories': Story.objects.filter(
                 is_published=True,
                 collection__is_published=True,
@@ -72,7 +76,7 @@ def index(request):
             stats['practices'] + stats['tutorials'] + stats['exams']
             + stats['examprep_lessons'] + stats['corner_stories']
         )
-        cache.set('index_stats_v3', stats, 300)
+        cache.set('index_stats_v4', stats, 300)
 
     my_stats = None
     if request.user.is_authenticated:

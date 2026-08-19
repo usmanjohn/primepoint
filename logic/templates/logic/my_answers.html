@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block nav_logic %}active{% endblock %}
+{% block page_name %}{% trans "Logic Arena" %}{% endblock %}
+{% block title %}{% trans "My answers" %} — {% trans "Logic Arena" %}{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'logic_home' %}" class="lg-pill mb-3">
+    <i class="bi bi-arrow-left"></i> {% trans "Logic Arena" %}
+</a>
+
+<h1 class="page-title mb-1"><i class="bi bi-envelope-paper me-2"></i>{% trans "My answers" %}</h1>
+<p class="page-subtitle mb-4">{% trans "Everything you have sent in — sealed envelopes first." %}</p>
+
+<div class="lg-stats">
+    <div class="lg-stat">
+        <div class="lg-stat__num">{{ solved }}</div>
+        <div class="lg-stat__lbl">{% trans "Solved" %}</div>
+    </div>
+    <div class="lg-stat">
+        <div class="lg-stat__num">{{ points }}</div>
+        <div class="lg-stat__lbl">{% trans "Points" %}</div>
+    </div>
+    <div class="lg-stat lg-stat--fire">
+        <div class="lg-stat__num">🔥 {{ streak }}</div>
+        <div class="lg-stat__lbl">{% trans "Streak" %}</div>
+    </div>
+    <div class="lg-stat lg-stat--seal">
+        <div class="lg-stat__num">🔒 {{ sealed|length }}</div>
+        <div class="lg-stat__lbl">{% trans "Sealed" %}</div>
+    </div>
+</div>
+
+{% if sealed %}
+<div class="lg-head"><i class="bi bi-lock-fill" style="color:#4f46e5;"></i> {% trans "Still sealed" %}</div>
+{% for s in sealed %}
+<div class="lg-rank">
+    <span class="lg-rank__pos">🔒</span>
+    <span class="lg-rank__name">
+        <a href="{% url 'logic_puzzle' s.puzzle.slug %}" class="text-decoration-none">{{ s.puzzle.display_title }}</a>
+        <span class="d-block text-secondary" style="font-size:0.78rem;font-weight:600;">
+            {% blocktrans with when=s.puzzle.reveal_at|date:"d F" %}opens {{ when }}{% endblocktrans %} · {{ s.answer }}
+        </span>
+    </span>
+</div>
+{% endfor %}
+{% endif %}
+
+{% if settled %}
+<div class="lg-head"><i class="bi bi-unlock-fill" style="color:#059669;"></i> {% trans "Revealed" %}</div>
+{% for s in settled %}
+<div class="lg-rank">
+    <span class="lg-rank__pos">{% if s.is_correct %}✅{% else %}❌{% endif %}</span>
+    <span class="lg-rank__name">
+        <a href="{% url 'logic_puzzle' s.puzzle.slug %}" class="text-decoration-none">{{ s.puzzle.display_title }}</a>
+        <span class="d-block text-secondary" style="font-size:0.78rem;font-weight:600;">
+            {% trans "you said" %} {{ s.answer }} · {% trans "answer" %} {{ s.puzzle.answer_key }}
+        </span>
+    </span>
+    {% if s.is_correct %}<span class="lg-rank__pts">+{{ s.points_awarded|floatformat:"-1" }}</span>{% endif %}
+</div>
+{% endfor %}
+{% endif %}
+
+{% if not sealed and not settled %}
+<p class="text-secondary">{% trans "You have not answered a puzzle yet. Pick one and seal an envelope!" %}</p>
+{% endif %}
+
+{% endblock %}

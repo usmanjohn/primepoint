@@ -172,6 +172,12 @@
                 {% if nav_corner_count %}<span class="nav-badge">{{ nav_corner_count }}</span>{% endif %}
             </a>
 
+            <a href="{% url 'logic_home' %}" class="nav-link {% block nav_logic %}{% endblock %}">
+                <i class="bi bi-puzzle-fill"></i>
+                <span class="nav-label">{% trans "Logic Arena" %}</span>
+                {% if nav_logic_count %}<span class="nav-badge">{{ nav_logic_count }}</span>{% endif %}
+            </a>
+
             <span class="nav-section">{% trans "Support" %}</span>
 
             <a href="{% url 'about' %}" class="nav-link {% block nav_about %}{% endblock %}">

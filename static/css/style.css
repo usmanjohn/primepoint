@@ -5143,3 +5143,613 @@ table.pm-col {
     font-size: 0.95rem;
     vertical-align: middle;
 }
+
+
+/* =====================================================================
+   LOGIC ARENA — sealed-answer puzzle kit  (lg-*)
+   ---------------------------------------------------------------------
+   The section's whole promise is that you do NOT find out whether you were
+   right until the reveal date, so the visual language has three states and
+   never blurs them:
+
+       sealed    indigo / wax-red   — an envelope you cannot open yet
+       open      amber              — live, answers accepted
+       revealed  green or rose      — the verdict, at last
+
+   Pure CSS, no JavaScript: the countdown is a server-rendered number, the
+   hint and the solution are native <details>, and every figure is inline
+   SVG in the puzzle body (`lg-fig`) so a page weighs a few KB, not a few
+   hundred. Figures inherit `currentColor` where they can, so one SVG works
+   on a card, in the prose and on a print sheet.
+   ===================================================================== */
+
+/* ── Hero: this week's puzzle ─────────────────────────────────────────── */
+
+.lg-hero {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    padding: 1.6rem 1.4rem;
+    color: #f8fafc;
+    background: linear-gradient(135deg, #312e81 0%, #4c1d95 55%, #6d28d9 100%);
+    box-shadow: 0 10px 30px rgba(49, 46, 129, 0.25);
+}
+
+/* The faint gear/lightbulb wash behind the hero — decoration only, so it is a
+   background gradient rather than an <img>. */
+.lg-hero::after {
+    content: '';
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(250, 204, 21, 0.22) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.lg-hero__eyebrow {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fcd34d;
+    margin-bottom: 0.35rem;
+}
+
+.lg-hero__title {
+    font-size: 1.45rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin: 0 0 0.5rem;
+}
+
+.lg-hero__teaser {
+    font-size: 0.94rem;
+    line-height: 1.6;
+    color: rgba(248, 250, 252, 0.85);
+    margin: 0 0 1rem;
+    max-width: 60ch;
+}
+
+.lg-hero__meta { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+
+.lg-hero .lg-chip {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.22);
+    color: #f8fafc;
+}
+
+.lg-hero__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.62rem 1.15rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    text-decoration: none;
+    background: #fcd34d;
+    color: #422006;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.lg-hero__btn:hover {
+    color: #422006;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(252, 211, 77, 0.35);
+}
+
+/* ── Chips: category, difficulty, points, countdown ───────────────────── */
+
+.lg-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.32rem;
+    padding: 0.24rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    line-height: 1.5;
+    white-space: nowrap;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+}
+
+.lg-chip--cat  { background: var(--lg-c-bg, #eef2ff); border-color: transparent; color: var(--lg-c, #4338ca); }
+.lg-chip--star { color: #b45309; background: #fef3c7; border-color: #fde68a; letter-spacing: 0.08em; }
+.lg-chip--pts  { color: #065f46; background: #d1fae5; border-color: #a7f3d0; }
+.lg-chip--time { color: #9a3412; background: #ffedd5; border-color: #fed7aa; }
+.lg-chip--lock { color: #475569; background: #e2e8f0; border-color: #cbd5e1; }
+.lg-chip--done { color: #3730a3; background: #e0e7ff; border-color: #c7d2fe; }
+.lg-chip--ok   { color: #065f46; background: #d1fae5; border-color: #6ee7b7; }
+.lg-chip--miss { color: #9f1239; background: #ffe4e6; border-color: #fecdd3; }
+
+/* ── The puzzle card ──────────────────────────────────────────────────── */
+
+.lg-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1.05rem 1.1rem;
+    border-radius: 16px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    text-decoration: none;
+    color: var(--text);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.lg-card:hover {
+    color: var(--text);
+    transform: translateY(-2px);
+    border-color: var(--lg-c, #6366f1);
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+}
+
+/* The left edge carries the category colour, so a grid of cards reads as
+   families at a glance without a legend. */
+.lg-card--tinted { border-left: 5px solid var(--lg-c, #6366f1); }
+
+.lg-card__top {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.55rem;
+}
+
+.lg-card__glyph {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    font-size: 1.25rem;
+    background: var(--lg-c-bg, #eef2ff);
+}
+
+.lg-card__num {
+    margin-left: auto;
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: var(--text-muted);
+}
+
+.lg-card__title {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0 0 0.3rem;
+}
+
+.lg-card__teaser {
+    font-size: 0.84rem;
+    line-height: 1.55;
+    color: var(--text-muted);
+    margin: 0 0 0.75rem;
+}
+
+.lg-card__foot { margin-top: auto; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+
+/* An upcoming puzzle is a closed door: dimmed, dashed, not a link. */
+.lg-card--locked {
+    border-style: dashed;
+    background: var(--surface-2);
+    cursor: default;
+}
+.lg-card--locked .lg-card__title,
+.lg-card--locked .lg-card__glyph { opacity: 0.65; }
+.lg-card--locked:hover { transform: none; box-shadow: none; border-color: var(--border); }
+
+/* ── Status banner on the puzzle page ─────────────────────────────────── */
+
+.lg-status {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    padding: 0.9rem 1.05rem;
+    border-radius: 14px;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+    border: 1.5px solid;
+}
+.lg-status__glyph { font-size: 1.4rem; line-height: 1.2; flex: 0 0 auto; }
+.lg-status__head  { font-weight: 800; display: block; margin-bottom: 0.1rem; }
+
+.lg-status--open     { background: #fffbeb; border-color: #fcd34d; color: #78350f; }
+.lg-status--sealed   { background: #eef2ff; border-color: #a5b4fc; color: #3730a3; }
+.lg-status--revealed { background: #f1f5f9; border-color: #cbd5e1; color: #334155; }
+.lg-status--correct  { background: #ecfdf5; border-color: #6ee7b7; color: #065f46; }
+.lg-status--wrong    { background: #fff1f2; border-color: #fda4af; color: #9f1239; }
+
+/* ── The problem text ─────────────────────────────────────────────────── */
+
+.lg-body {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text);
+}
+.lg-body p { margin-bottom: 0.95rem; }
+.lg-body ul, .lg-body ol { margin: 0 0 1rem; padding-left: 1.35rem; }
+.lg-body li { margin-bottom: 0.4rem; }
+.lg-body strong { color: #4338ca; }
+
+/* A fact the solver must not miss — the constraint that makes the puzzle a
+   puzzle ("at most two weighings"). */
+.lg-rule {
+    display: flex;
+    gap: 0.7rem;
+    align-items: flex-start;
+    margin: 1.1rem 0;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    background: #fef2f2;
+    border: 1.5px solid #fecaca;
+    color: #991b1b;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    font-weight: 600;
+}
+.lg-rule__glyph { font-size: 1.1rem; line-height: 1.4; flex: 0 0 auto; }
+
+/* What exactly to type in the box. */
+.lg-ask {
+    margin: 1.2rem 0 0;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    background: #eef2ff;
+    border-left: 4px solid #6366f1;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #3730a3;
+}
+
+/* ── Figures ──────────────────────────────────────────────────────────── */
+
+.lg-fig {
+    margin: 1.2rem 0;
+    padding: 1rem;
+    border-radius: 14px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    text-align: center;
+}
+.lg-fig svg { max-width: 100%; height: auto; }
+.lg-fig__cap {
+    margin: 0.6rem 0 0;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Drawing primitives the puzzle SVGs share, so a figure carries no styling of
+   its own beyond geometry. */
+.lg-ln     { stroke: #475569; stroke-width: 2; fill: none; }
+.lg-ln--th { stroke-width: 3.5; stroke-linecap: round; }
+.lg-fill   { fill: #e0e7ff; stroke: #6366f1; stroke-width: 2; }
+.lg-fill--gold { fill: #fef3c7; stroke: #d97706; stroke-width: 2; }
+.lg-fill--rose { fill: #ffe4e6; stroke: #e11d48; stroke-width: 2; }
+.lg-fill--mint { fill: #d1fae5; stroke: #059669; stroke-width: 2; }
+.lg-lbl {
+    font-size: 13px;
+    font-weight: 700;
+    fill: #334155;
+    text-anchor: middle;
+    font-family: inherit;
+}
+.lg-lbl--sm { font-size: 11px; font-weight: 600; fill: #64748b; }
+
+/* ── Hint & solution: native <details>, no script ─────────────────────── */
+
+.lg-fold {
+    margin: 1.2rem 0;
+    border-radius: 14px;
+    border: 1.5px solid var(--border);
+    background: var(--surface);
+    overflow: hidden;
+}
+.lg-fold > summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 0.8rem 1.05rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: var(--text);
+    background: var(--surface-2);
+}
+.lg-fold > summary::-webkit-details-marker { display: none; }
+.lg-fold > summary::after {
+    content: '\203A';
+    margin-left: auto;
+    font-size: 1.3rem;
+    line-height: 1;
+    transition: transform 0.18s ease;
+}
+.lg-fold[open] > summary::after { transform: rotate(90deg); }
+.lg-fold__inner { padding: 1rem 1.05rem; }
+
+.lg-fold--hint > summary { background: #fffbeb; color: #92400e; }
+.lg-fold--sol  > summary { background: #ecfdf5; color: #065f46; }
+
+/* The solution prose gets the same treatment as the problem, plus numbered
+   reasoning steps. */
+.lg-steps { counter-reset: lgstep; list-style: none; margin: 0; padding: 0; }
+.lg-steps > li {
+    position: relative;
+    counter-increment: lgstep;
+    padding: 0 0 0.9rem 2.4rem;
+    font-size: 0.94rem;
+    line-height: 1.65;
+}
+.lg-steps > li::before {
+    content: counter(lgstep);
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    font-weight: 800;
+    background: #d1fae5;
+    color: #065f46;
+}
+
+/* The one line that names the trick — every solution ends with it. */
+.lg-moral {
+    margin: 1.1rem 0 0;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    background: #f5f3ff;
+    border-left: 4px solid #7c3aed;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: #4c1d95;
+}
+.lg-moral strong { color: #5b21b6; }
+
+/* ── The answer form / the sealed envelope ────────────────────────────── */
+
+.lg-form {
+    margin-top: 1.5rem;
+    padding: 1.15rem;
+    border-radius: 16px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+}
+.lg-form__head {
+    font-size: 1rem;
+    font-weight: 800;
+    margin: 0 0 0.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.lg-form__note {
+    font-size: 0.83rem;
+    color: var(--text-muted);
+    margin: 0 0 0.9rem;
+    line-height: 1.55;
+}
+.lg-form input[type="text"],
+.lg-form textarea {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border-radius: 12px;
+    border: 1.5px solid var(--border);
+    background: var(--surface-2);
+    font-size: 0.95rem;
+    color: var(--text);
+}
+.lg-form input[type="text"]:focus,
+.lg-form textarea:focus {
+    outline: none;
+    border-color: #6366f1;
+    background: var(--surface);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.14);
+}
+.lg-form label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+}
+.lg-form__row + .lg-form__row { margin-top: 0.9rem; }
+
+.lg-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.65rem 1.3rem;
+    border: none;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.lg-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(79, 70, 229, 0.3); }
+
+/* The envelope shown once an answer is in and the reveal has not come. Its
+   wax seal is a CSS circle rather than an image. */
+.lg-envelope {
+    position: relative;
+    margin-top: 1.5rem;
+    padding: 1.3rem 1.15rem 1.15rem;
+    border-radius: 16px;
+    background: linear-gradient(160deg, #eef2ff 0%, #e0e7ff 100%);
+    border: 1.5px dashed #818cf8;
+    text-align: center;
+}
+.lg-envelope__seal {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 0.7rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: #fff;
+    background: radial-gradient(circle at 35% 30%, #f87171, #b91c1c);
+    box-shadow: 0 4px 12px rgba(185, 28, 28, 0.3);
+}
+.lg-envelope__head {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #3730a3;
+    margin: 0 0 0.3rem;
+}
+.lg-envelope__note {
+    font-size: 0.85rem;
+    color: #4338ca;
+    line-height: 1.6;
+    margin: 0 0 0.9rem;
+}
+.lg-envelope__answer {
+    display: inline-block;
+    padding: 0.45rem 1rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid #c7d2fe;
+    font-weight: 700;
+    color: #312e81;
+    word-break: break-word;
+}
+
+/* ── Verdict + solver wall ────────────────────────────────────────────── */
+
+.lg-wall {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.8rem;
+}
+.lg-solver {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    color: #065f46;
+}
+.lg-solver--first { background: #fef3c7; border-color: #fcd34d; color: #92400e; }
+
+/* ── Stat strip ───────────────────────────────────────────────────────── */
+
+.lg-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+}
+.lg-stat {
+    padding: 0.75rem 0.6rem;
+    border-radius: 14px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    text-align: center;
+}
+.lg-stat__num { font-size: 1.35rem; font-weight: 800; line-height: 1.1; color: var(--text); }
+.lg-stat__lbl {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+}
+.lg-stat--fire .lg-stat__num { color: #ea580c; }
+.lg-stat--seal .lg-stat__num { color: #4f46e5; }
+
+@media (max-width: 575px) {
+    .lg-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .lg-hero { padding: 1.25rem 1.05rem; }
+    .lg-hero__title { font-size: 1.2rem; }
+}
+
+/* ── Category filter pills ────────────────────────────────────────────── */
+
+.lg-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.1rem; }
+.lg-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    color: var(--text-muted);
+    transition: border-color 0.15s ease, color 0.15s ease;
+}
+.lg-pill:hover { color: var(--text); border-color: #a5b4fc; }
+.lg-pill--on {
+    background: #4f46e5;
+    border-color: #4f46e5;
+    color: #fff;
+}
+.lg-pill--on:hover { color: #fff; }
+
+/* ── Leaderboard ──────────────────────────────────────────────────────── */
+
+.lg-rank {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0.9rem;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+}
+.lg-rank + .lg-rank { margin-top: 0.4rem; }
+.lg-rank--me { border-color: #6366f1; background: #eef2ff; }
+.lg-rank__pos {
+    flex: 0 0 auto;
+    width: 32px;
+    text-align: center;
+    font-weight: 800;
+    color: var(--text-muted);
+}
+.lg-rank__name { font-weight: 700; font-size: 0.92rem; }
+.lg-rank__pts { margin-left: auto; font-weight: 800; color: #4338ca; font-size: 0.92rem; }
+
+/* ── Section heads ────────────────────────────────────────────────────── */
+
+.lg-head {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 1.9rem 0 0.9rem;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--text);
+}
+.lg-head__count {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.1rem 0.55rem;
+    border-radius: 999px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block nav_logic %}active{% endblock %}
+{% block page_name %}{% trans "Logic Arena" %}{% endblock %}
+{% block title %}{% trans "Coming soon" %} — {% trans "Logic Arena" %}{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'logic_home' %}" class="lg-pill mb-3">
+    <i class="bi bi-arrow-left"></i> {% trans "Logic Arena" %}
+</a>
+
+<div class="lg-envelope" style="max-width:520px;margin-inline:auto;">
+    <div class="lg-envelope__seal"><i class="bi bi-hourglass-top"></i></div>
+    <p class="lg-envelope__head">{% trans "Not open yet" %}</p>
+    <p class="lg-envelope__note">
+        {% blocktrans with when=puzzle.opens_at|date:"d F" %}This puzzle unseals on {{ when }}. Come back then — everyone gets it at the same moment.{% endblocktrans %}
+    </p>
+    {% if puzzle.display_teaser %}
+    <p class="lg-envelope__answer">{{ puzzle.display_teaser }}</p>
+    {% endif %}
+    <div class="d-flex flex-wrap gap-2 justify-content-center mt-3">
+        <span class="lg-chip lg-chip--cat" style="--lg-c:{{ puzzle.cat.color }}; --lg-c-bg:{{ puzzle.cat.color }}1a;">
+            {{ puzzle.cat.emoji }} {{ puzzle.cat.name }}
+        </span>
+        <span class="lg-chip lg-chip--star">{{ puzzle.stars }}</span>
+        <span class="lg-chip lg-chip--pts">+{{ puzzle.points }}</span>
+    </div>
+</div>
+
+{% endblock %}

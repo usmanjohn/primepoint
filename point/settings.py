@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'exam',
     'examprep',
     'corner',
+    'logic',
 ]
 
 MIDDLEWARE = [

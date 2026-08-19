@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block nav_logic %}active{% endblock %}
+{% block page_name %}{% trans "Logic Arena" %}{% endblock %}
+{% block title %}{% trans "Hall of fame" %} — {% trans "Logic Arena" %}{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'logic_home' %}" class="lg-pill mb-3">
+    <i class="bi bi-arrow-left"></i> {% trans "Logic Arena" %}
+</a>
+
+<h1 class="page-title mb-1"><i class="bi bi-trophy-fill text-warning me-2"></i>{% trans "Hall of fame" %}</h1>
+<p class="page-subtitle mb-4">
+    {% trans "Points from revealed puzzles only — a sealed answer stays sealed, even here." %}
+</p>
+
+{% if user.is_authenticated and my_streak %}
+<div class="lg-status lg-status--open mb-4">
+    <span class="lg-status__glyph">🔥</span>
+    <div>
+        <span class="lg-status__head">
+            {% blocktrans count counter=my_streak %}{{ counter }} puzzle streak{% plural %}{{ counter }} puzzle streak{% endblocktrans %}
+        </span>
+        {% trans "Keep answering every puzzle correctly and the streak grows. One miss resets it." %}
+    </div>
+</div>
+{% endif %}
+
+{% if rows %}
+    {% for row in rows %}
+    <div class="lg-rank {% if user.id == row.user__id %}lg-rank--me{% endif %}">
+        <span class="lg-rank__pos">{% if row.medal %}{{ row.medal }}{% else %}{{ row.rank }}{% endif %}</span>
+        <span class="lg-rank__name">{{ row.user__first_name|default:row.user__username }}</span>
+        <span class="lg-chip">{% blocktrans count counter=row.solved %}{{ counter }} puzzle{% plural %}{{ counter }} puzzles{% endblocktrans %}</span>
+        <span class="lg-rank__pts">{{ row.points|floatformat:"-1" }}</span>
+    </div>
+    {% endfor %}
+{% else %}
+<p class="text-secondary">{% trans "No solved puzzles yet — the first name here could be yours." %}</p>
+{% endif %}
+
+{% endblock %}

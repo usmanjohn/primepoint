@@ -20,6 +20,7 @@ Adding a library means adding one entry to SOURCES. Nothing else changes: the
 progress page, the master dashboard and analytics all pick it up.
 """
 from django.db.models import Count, Sum
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 # Points per completed item. Practice and exam attempts are scored, so their
@@ -37,6 +38,7 @@ EXAM_SCORE_POINTS = 20
 def _published_counts():
     """Total published items per source. Cached per request by the callers."""
     from corner.models import Story
+    from logic.models import LogicPuzzle
     from examprep.models import Lesson, WritingDrill
     from exam.models import Exam
     from practice.models import Practice
@@ -53,6 +55,9 @@ def _published_counts():
             collection__subject__is_published=True).count(),
         'writing': WritingDrill.objects.filter(is_published=True).count(),
         'exams': Exam.objects.filter(is_published=True).count(),
+        # An unopened puzzle is not yet part of anyone's denominator.
+        'logic': LogicPuzzle.objects.filter(
+            is_published=True, opens_at__lte=timezone.now()).count(),
     }
 
 
@@ -105,6 +110,22 @@ def _writing(user, panda):
     return agg['done'] or 0, agg['points'] or 0
 
 
+def _logic(user, panda):
+    """Solved logic puzzles — only ones whose reveal date has passed.
+
+    Filtering on the reveal date is what keeps the sealed week sealed: a
+    correct answer sent in on Monday must not make the points total on the
+    progress page tick up before Wednesday, or the number becomes the spoiler
+    the whole section is designed to avoid.
+    """
+    agg = user.logic_submissions.filter(
+        is_correct=True,
+        puzzle__is_published=True,
+        puzzle__reveal_at__lte=timezone.now(),
+    ).aggregate(done=Count('id'), points=Sum('points_awarded'))
+    return agg['done'] or 0, agg['points'] or 0
+
+
 def _exams(user, panda):
     if not panda:
         return 0, 0
@@ -126,6 +147,8 @@ SOURCES = [
      'url': 'examprep_home', 'reader': _writing},
     {'key': 'exams', 'label': _('Exams'), 'icon': 'bi-journal-check',
      'url': 'exam_list', 'reader': _exams},
+    {'key': 'logic', 'label': _('Logic Puzzles'), 'icon': 'bi-puzzle-fill',
+     'url': 'logic_home', 'reader': _logic},
 ]
 
 

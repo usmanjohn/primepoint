@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block nav_logic %}active{% endblock %}
+{% block page_name %}{% trans "Logic Arena" %}{% endblock %}
+{% block title %}{% trans "Logic Arena" %} — Powerty{% endblock %}
+{% block meta_description %}{% trans "Weekly logic puzzles with sealed answers: send in your solution, and the answer is revealed to everyone on the reveal day." %}{% endblock %}
+
+{% block content %}
+
+{# ── The live puzzle ─────────────────────────────────────────────────── #}
+{% if hero %}
+<div class="lg-hero mb-4">
+    <p class="lg-hero__eyebrow">
+        <i class="bi bi-lightbulb-fill"></i> {% trans "Puzzle of the week" %} · #{{ hero.number }}
+    </p>
+    <h1 class="lg-hero__title">{{ hero.display_title }}</h1>
+    {% if hero.display_teaser %}
+    <p class="lg-hero__teaser">{{ hero.display_teaser }}</p>
+    {% endif %}
+
+    <div class="lg-hero__meta">
+        <span class="lg-chip">{{ hero.cat.emoji }} {{ hero.cat.name }}</span>
+        <span class="lg-chip">{{ hero.stars }}</span>
+        <span class="lg-chip">+{{ hero.points }} {% trans "points" %}</span>
+        <span class="lg-chip">
+            <i class="bi bi-hourglass-split"></i>
+            {% if hero.days_left %}
+                {% blocktrans count counter=hero.days_left %}answer revealed in {{ counter }} day{% plural %}answer revealed in {{ counter }} days{% endblocktrans %}
+            {% else %}
+                {% trans "revealed today!" %}
+            {% endif %}
+        </span>
+    </div>
+
+    <a href="{% url 'logic_puzzle' hero.slug %}" class="lg-hero__btn">
+        {% if hero.my %}
+            <i class="bi bi-pencil"></i> {% trans "Change my sealed answer" %}
+        {% else %}
+            <i class="bi bi-envelope-paper"></i> {% trans "Read it and seal an answer" %}
+        {% endif %}
+    </a>
+</div>
+{% else %}
+<div class="lg-hero mb-4">
+    <p class="lg-hero__eyebrow"><i class="bi bi-lightbulb-fill"></i> {% trans "Logic Arena" %}</p>
+    <h1 class="lg-hero__title">{% trans "No puzzle is open right now" %}</h1>
+    <p class="lg-hero__teaser">
+        {% trans "The next one is on its way. Meanwhile, every past puzzle below can still be solved — and its solution is waiting once you have tried." %}
+    </p>
+</div>
+{% endif %}
+
+{% include "includes/guest_cta.html" %}
+
+{# ── How it works — said once, plainly ───────────────────────────────── #}
+{% if not me %}
+<div class="lg-status lg-status--sealed">
+    <span class="lg-status__glyph">✉️</span>
+    <div>
+        <span class="lg-status__head">{% trans "How the Arena works" %}</span>
+        {% trans "A puzzle opens, and you send in your answer — but nobody is told whether they were right. On the reveal day the solution appears for everyone at once, together with the list of solvers. Answering while the puzzle is still sealed is worth full points; solving an old one from the archive is worth half." %}
+    </div>
+</div>
+{% endif %}
+
+{# ── Your own numbers ────────────────────────────────────────────────── #}
+{% if me %}
+<div class="lg-stats">
+    <div class="lg-stat">
+        <div class="lg-stat__num">{{ me.solved }}</div>
+        <div class="lg-stat__lbl">{% trans "Solved" %}</div>
+    </div>
+    <div class="lg-stat">
+        <div class="lg-stat__num">{{ me.points }}</div>
+        <div class="lg-stat__lbl">{% trans "Points" %}</div>
+    </div>
+    <div class="lg-stat lg-stat--fire">
+        <div class="lg-stat__num">🔥 {{ me.streak }}</div>
+        <div class="lg-stat__lbl">{% trans "Streak" %}</div>
+    </div>
+    <div class="lg-stat lg-stat--seal">
+        <div class="lg-stat__num">🔒 {{ me.sealed }}</div>
+        <div class="lg-stat__lbl">{% trans "Sealed" %}</div>
+    </div>
+</div>
+{% endif %}
+
+{# ── Other puzzles still open ────────────────────────────────────────── #}
+{% if rest_live %}
+<div class="lg-head">
+    <i class="bi bi-unlock-fill text-warning"></i> {% trans "Also open now" %}
+    <span class="lg-head__count">{{ rest_live|length }}</span>
+</div>
+<div class="row g-3">
+    {% for puzzle in rest_live %}
+    <div class="col-12 col-sm-6 col-lg-4">{% include "logic/_card.html" %}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{# ── Coming next ─────────────────────────────────────────────────────── #}
+{% if upcoming %}
+<div class="lg-head">
+    <i class="bi bi-lock-fill text-secondary"></i> {% trans "Coming next" %}
+    <span class="lg-head__count">{{ upcoming|length }}</span>
+</div>
+<div class="row g-3">
+    {% for puzzle in upcoming %}
+    <div class="col-12 col-sm-6 col-lg-4">{% include "logic/_card.html" %}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{# ── The archive ─────────────────────────────────────────────────────── #}
+<div class="lg-head">
+    <i class="bi bi-archive-fill" style="color:#6366f1;"></i> {% trans "Solved and revealed" %}
+    <span class="lg-head__count">{{ archive|length }}</span>
+</div>
+
+{% if facets %}
+<div class="lg-pills">
+    <a href="{% url 'logic_home' %}" class="lg-pill {% if not category %}lg-pill--on{% endif %}">
+        {% trans "All" %}
+    </a>
+    {% for facet in facets %}
+    <a href="?cat={{ facet.code }}" class="lg-pill {% if category == facet.code %}lg-pill--on{% endif %}">
+        {{ facet.emoji }} {{ facet.name }} <span>{{ facet.count }}</span>
+    </a>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if archive %}
+<div class="row g-3">
+    {% for puzzle in archive %}
+    <div class="col-12 col-sm-6 col-lg-4">{% include "logic/_card.html" %}</div>
+    {% endfor %}
+</div>
+{% else %}
+<p class="text-secondary small mb-0">
+    {% trans "Nothing has been revealed yet — the first solutions go up soon." %}
+</p>
+{% endif %}
+
+{# ── Hall of fame ────────────────────────────────────────────────────── #}
+{% if leaders %}
+<div class="lg-head">
+    <i class="bi bi-trophy-fill text-warning"></i> {% trans "Top solvers" %}
+</div>
+{% for row in leaders|slice:":5" %}
+<div class="lg-rank {% if user.id == row.user__id %}lg-rank--me{% endif %}">
+    <span class="lg-rank__pos">
+        {% if forloop.counter == 1 %}🥇{% elif forloop.counter == 2 %}🥈{% elif forloop.counter == 3 %}🥉{% else %}{{ forloop.counter }}{% endif %}
+    </span>
+    <span class="lg-rank__name">{{ row.user__first_name|default:row.user__username }}</span>
+    <span class="lg-chip">{% blocktrans count counter=row.solved %}{{ counter }} puzzle{% plural %}{{ counter }} puzzles{% endblocktrans %}</span>
+    <span class="lg-rank__pts">{{ row.points|floatformat:"-1" }}</span>
+</div>
+{% endfor %}
+<div class="d-flex gap-2 mt-3">
+    <a href="{% url 'logic_leaderboard' %}" class="lg-pill">
+        <i class="bi bi-list-ol"></i> {% trans "Full hall of fame" %}
+    </a>
+    {% if user.is_authenticated %}
+    <a href="{% url 'logic_my_answers' %}" class="lg-pill">
+        <i class="bi bi-envelope-paper"></i> {% trans "My answers" %}
+    </a>
+    {% endif %}
+</div>
+{% endif %}
+
+{% endblock %}

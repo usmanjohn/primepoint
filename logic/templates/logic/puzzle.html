@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block nav_logic %}active{% endblock %}
+{% block page_name %}{% trans "Logic Arena" %}{% endblock %}
+{% block title %}{{ puzzle.display_title }} — {% trans "Logic Arena" %}{% endblock %}
+{% block meta_description %}{{ puzzle.display_teaser }}{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'logic_home' %}" class="lg-pill mb-3">
+    <i class="bi bi-arrow-left"></i> {% trans "Logic Arena" %}
+</a>
+
+<div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+    <span class="lg-chip lg-chip--cat" style="--lg-c:{{ puzzle.cat.color }}; --lg-c-bg:{{ puzzle.cat.color }}1a;">
+        {{ puzzle.cat.emoji }} {{ puzzle.cat.name }}
+    </span>
+    <span class="lg-chip lg-chip--star">{{ puzzle.stars }}</span>
+    <span class="lg-chip lg-chip--pts">+{{ puzzle.points }} {% trans "points" %}</span>
+    <span class="lg-chip">#{{ puzzle.number }}</span>
+</div>
+
+<h1 class="page-title mb-3">{{ puzzle.display_title }}</h1>
+
+{# ── Where this puzzle stands, and what that means for you ───────────── #}
+{% if puzzle.is_open %}
+    {% if submission %}
+    <div class="lg-status lg-status--sealed">
+        <span class="lg-status__glyph">🔒</span>
+        <div>
+            <span class="lg-status__head">{% trans "Your answer is sealed" %}</span>
+            {% blocktrans count counter=puzzle.days_left with when=puzzle.reveal_at|date:"d F" %}Nobody finds out who was right until {{ when }} — {{ counter }} day to go. You may still change your answer until then.{% plural %}Nobody finds out who was right until {{ when }} — {{ counter }} days to go. You may still change your answer until then.{% endblocktrans %}
+        </div>
+    </div>
+    {% else %}
+    <div class="lg-status lg-status--open">
+        <span class="lg-status__glyph">⏳</span>
+        <div>
+            <span class="lg-status__head">{% trans "Open — answers are being collected" %}</span>
+            {% blocktrans with when=puzzle.reveal_at|date:"d F" %}The solution goes up on {{ when }}. Send in your answer before then and it counts for full points — you will not be told whether it is right until the reveal.{% endblocktrans %}
+        </div>
+    </div>
+    {% endif %}
+{% else %}
+    {% if submission and submission.is_correct %}
+    <div class="lg-status lg-status--correct">
+        <span class="lg-status__glyph">🎉</span>
+        <div>
+            <span class="lg-status__head">{% trans "Correct!" %} +{{ submission.points_awarded|floatformat:"-1" }} {% trans "points" %}</span>
+            {% if submission.sealed %}
+                {% trans "And you sealed it before the reveal — that is the full prize." %}
+            {% else %}
+                {% trans "Solved from the archive, so it is worth half. Catch the next one while it is still sealed for the full points." %}
+            {% endif %}
+        </div>
+    </div>
+    {% elif submission %}
+    <div class="lg-status lg-status--wrong">
+        <span class="lg-status__glyph">🤔</span>
+        <div>
+            <span class="lg-status__head">{% trans "Not this time" %}</span>
+            {% blocktrans with mine=submission.answer key=puzzle.answer_key %}You said <strong>{{ mine }}</strong>; the answer is <strong>{{ key }}</strong>. Read the solution below — the useful part is finding the exact step where your reasoning turned.{% endblocktrans %}
+        </div>
+    </div>
+    {% else %}
+    <div class="lg-status lg-status--revealed">
+        <span class="lg-status__glyph">📜</span>
+        <div>
+            <span class="lg-status__head">{% trans "This one has been revealed" %}</span>
+            {% trans "The solution is at the bottom of the page. Try it yourself first — an archive puzzle still counts, for half the points." %}
+        </div>
+    </div>
+    {% endif %}
+{% endif %}
+
+{# ── The problem ─────────────────────────────────────────────────────── #}
+<div class="lg-body">{{ puzzle.display_body|safe }}</div>
+
+{% if puzzle.display_hint %}
+<details class="lg-fold lg-fold--hint">
+    <summary>💡 {% trans "I want a nudge" %}</summary>
+    <div class="lg-fold__inner">{{ puzzle.display_hint|linebreaks }}</div>
+</details>
+{% endif %}
+
+{# ── Your answer ─────────────────────────────────────────────────────── #}
+{% if not user.is_authenticated %}
+<div class="lg-envelope">
+    <div class="lg-envelope__seal"><i class="bi bi-person-lock"></i></div>
+    <p class="lg-envelope__head">{% trans "Log in to send an answer" %}</p>
+    <p class="lg-envelope__note">
+        {% trans "Reading is free for everyone. Sealing an answer, earning points and appearing on the solver wall need an account." %}
+    </p>
+    <a href="{% url 'login' %}?next={{ request.path|urlencode }}" class="lg-btn text-decoration-none">
+        <i class="bi bi-box-arrow-in-right"></i> {% trans "Log in" %}
+    </a>
+</div>
+
+{% elif submission and puzzle.is_open %}
+<div class="lg-envelope">
+    <div class="lg-envelope__seal"><i class="bi bi-lock-fill"></i></div>
+    <p class="lg-envelope__head">{% trans "Sealed" %}</p>
+    <p class="lg-envelope__note">
+        {% blocktrans with when=puzzle.reveal_at|date:"d F, H:i" %}Opened on {{ when }}, together with everyone else's.{% endblocktrans %}
+    </p>
+    <p class="lg-envelope__answer">{{ submission.answer }}</p>
+    {% if submission.reasoning %}
+    <p class="lg-envelope__note mt-3 mb-0 text-start">
+        <strong>{% trans "Your reasoning:" %}</strong><br>{{ submission.reasoning|linebreaksbr }}
+    </p>
+    {% endif %}
+</div>
+
+<details class="lg-fold">
+    <summary>✏️ {% trans "Change my answer" %}</summary>
+    <div class="lg-fold__inner">
+        {% include "logic/_form.html" %}
+    </div>
+</details>
+
+{% elif submission %}
+{# Revealed and already answered — the envelope is open, so show it plainly. #}
+<div class="lg-form">
+    <p class="lg-form__head">
+        {% if submission.is_correct %}✅{% else %}📝{% endif %} {% trans "What you sent" %}
+    </p>
+    <p class="lg-envelope__answer">{{ submission.answer }}</p>
+    {% if submission.reasoning %}
+    <p class="lg-form__note mt-3 mb-0">{{ submission.reasoning|linebreaksbr }}</p>
+    {% endif %}
+</div>
+
+{% else %}
+<div class="lg-form">{% include "logic/_form.html" %}</div>
+{% endif %}
+
+{# ── The solution ────────────────────────────────────────────────────── #}
+{% if puzzle.is_revealed %}
+<details class="lg-fold lg-fold--sol" {% if open_solution %}open{% endif %}>
+    <summary>🔓 {% trans "The solution" %}</summary>
+    <div class="lg-fold__inner">
+        <p class="lg-ask mb-3">
+            {% trans "Answer:" %} <strong>{{ puzzle.answer_key }}</strong>
+        </p>
+        <div class="lg-body">{{ puzzle.display_solution|safe }}</div>
+    </div>
+</details>
+
+{% if answer_count %}
+<div class="lg-head">
+    <i class="bi bi-people-fill" style="color:#059669;"></i> {% trans "Who got it" %}
+    <span class="lg-head__count">
+        {% blocktrans with correct=correct_count total=answer_count rate=success_rate %}{{ correct }} of {{ total }} — {{ rate }}%{% endblocktrans %}
+    </span>
+</div>
+{% if solvers %}
+<div class="lg-wall">
+    {% for solver in solvers %}
+    <span class="lg-solver {% if forloop.first %}lg-solver--first{% endif %}">
+        {% if forloop.first %}🥇{% else %}✓{% endif %}
+        {{ solver.user.first_name|default:solver.user.username }}
+    </span>
+    {% endfor %}
+</div>
+{% else %}
+<p class="text-secondary small">{% trans "Nobody cracked this one. It is still open for you." %}</p>
+{% endif %}
+{% endif %}
+{% endif %}
+
+{% if prev_puzzle %}
+<div class="mt-4">
+    <a href="{% url 'logic_puzzle' prev_puzzle.slug %}" class="lg-pill">
+        <i class="bi bi-arrow-left-right"></i>
+        {% trans "Previous puzzle:" %} {{ prev_puzzle.display_title }}
+    </a>
+</div>
+{% endif %}
+
+{% endblock %}

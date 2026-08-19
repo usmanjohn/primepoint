@@ -1,0 +1,49 @@
+{% load i18n %}
+{% comment %}
+One puzzle as a card. The status chip is the only place a visitor's own state
+shows, and it never says "correct" while the puzzle is still sealed.
+{% endcomment %}
+{% if puzzle.is_upcoming %}<div class="lg-card lg-card--locked lg-card--tinted"{% else %}<a href="{% url 'logic_puzzle' puzzle.slug %}" class="lg-card lg-card--tinted"{% endif %}
+   style="--lg-c:{{ puzzle.cat.color }}; --lg-c-bg:{{ puzzle.cat.color }}1a;">
+
+    <div class="lg-card__top">
+        <span class="lg-card__glyph">{% if puzzle.is_upcoming %}🔒{% else %}{{ puzzle.cat.emoji }}{% endif %}</span>
+        <span class="lg-card__num">#{{ puzzle.number }}</span>
+    </div>
+
+    <p class="lg-card__title">{{ puzzle.display_title }}</p>
+
+    {% if puzzle.display_teaser %}
+    <p class="lg-card__teaser">{{ puzzle.display_teaser }}</p>
+    {% endif %}
+
+    <div class="lg-card__foot">
+        <span class="lg-chip lg-chip--cat">{{ puzzle.cat.emoji }} {{ puzzle.cat.name }}</span>
+        <span class="lg-chip lg-chip--star">{{ puzzle.stars }}</span>
+
+        {% if puzzle.is_upcoming %}
+            <span class="lg-chip lg-chip--lock">
+                <i class="bi bi-calendar-event"></i> {{ puzzle.opens_at|date:"d M" }}
+            </span>
+        {% elif puzzle.is_open %}
+            {% if puzzle.my %}
+                <span class="lg-chip lg-chip--done">🔒 {% trans "Answer sealed" %}</span>
+            {% else %}
+                <span class="lg-chip lg-chip--pts">+{{ puzzle.points }}</span>
+            {% endif %}
+            <span class="lg-chip lg-chip--time">
+                <i class="bi bi-hourglass-split"></i>
+                {% if puzzle.days_left %}{% blocktrans count counter=puzzle.days_left %}{{ counter }} day left{% plural %}{{ counter }} days left{% endblocktrans %}{% else %}{% trans "opens today" %}{% endif %}
+            </span>
+        {% else %}
+            {% if puzzle.my_verdict %}
+                <span class="lg-chip lg-chip--ok">✓ {% trans "Solved" %}</span>
+            {% elif puzzle.my %}
+                <span class="lg-chip lg-chip--miss">✗ {% trans "Missed" %}</span>
+            {% else %}
+                <span class="lg-chip lg-chip--pts">+{{ puzzle.points }}</span>
+            {% endif %}
+        {% endif %}
+    </div>
+
+{% if puzzle.is_upcoming %}</div>{% else %}</a>{% endif %}
