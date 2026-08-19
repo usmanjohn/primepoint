@@ -5118,3 +5118,20 @@ table.pm-col {
     color: #78350f;
     margin-top: 0.15rem;
 }
+
+/* ── Prime Journey: the wayfarer's riddles ────────────────────────────────
+   Riddles come from journey_riddles.py, not from a lesson, so they get their
+   own badge and their own note: there is nothing to go and read. */
+
+.pj-tag--riddle { background: #ede9fe; border-color: #c4b5fd; color: #5b21b6; }
+
+.pj-riddlenote {
+    margin: 0.9rem 0 0;
+    padding: 0.6rem 0.9rem;
+    border-radius: 12px;
+    background: #faf5ff;
+    border: 1px dashed #c4b5fd;
+    font-size: 0.83rem;
+    line-height: 1.55;
+    color: #5b21b6;
+}

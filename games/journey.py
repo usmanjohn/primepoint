@@ -91,6 +91,12 @@ COINS_BY_THREAT = {1: 10, 2: 20, 3: 30}
 GUARD_COINS = 60
 TWIN_MULTIPLIER = 2
 
+# The wise stranger's riddle. It pays well and costs nothing to fail, because a
+# riddle a pupil cannot crack should never end their journey — the reward for
+# meeting one is the trick in the explanation, whether or not they got it.
+ELDER_COINS = 70
+ELDER_TORCHES = 1
+
 
 # ---------------------------------------------------------------------------
 # The roads — one per Prime course
@@ -581,6 +587,8 @@ def _threat_for(index, total):
 
 def node_coins(node):
     """What passing this node pays."""
+    if node['kind'] == 'elder':
+        return ELDER_COINS
     if node['kind'] == 'guard':
         return GUARD_COINS
     base = COINS_BY_THREAT.get(node.get('threat', 1), 10)
@@ -609,10 +617,14 @@ def build_map(road_slug, leg, seed):
     beats = []                                   # (kind, lesson index or None)
     rest_after = {rng.choice((2, 3)), rng.choice((6, 7))}
 
+    elder_after = rng.choice((3, 4, 5))
+
     for i in range(len(lessons)):
         beats.append(('lesson', i))
         if i in rest_after:
             beats.append(('camp', None))
+        if i == elder_after:
+            beats.append(('elder', None))
 
     # ONE chest a stage, and it stands immediately before the guardian — which
     # is the only placement that makes "take it or leave it" a real decision.
@@ -654,6 +666,16 @@ def build_map(road_slug, leg, seed):
             steps.append([{
                 'id': f's{n}n0', 'kind': 'chest', 'terrain': terrain_key,
                 'encounter': _pick_encounter(rng, 'chest', terrain_key, used),
+            }])
+            continue
+
+        if kind == 'elder':
+            # No lesson attached, on purpose: the riddle bank is free of the
+            # course, so the same stranger can stop a maths traveller and a
+            # Korean one with the same puzzle.
+            steps.append([{
+                'id': f's{n}n0', 'kind': 'elder', 'terrain': terrain_key,
+                'encounter': _pick_encounter(rng, 'elder', terrain_key, used),
             }])
             continue
 

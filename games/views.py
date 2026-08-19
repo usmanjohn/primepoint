@@ -20,6 +20,7 @@ from tutorial.models import TutorialProgress
 from practice.models import PracticeAttempt, Practice
 from corner.models import StoryProgress
 from . import mathchamp, englishchamp, duel as duelmod, journey
+from . import journey_riddles
 
 
 # ---------------------------------------------------------------------------
@@ -2788,6 +2789,23 @@ def _journey_serve(request, state, lesson_id, threat):
     return question
 
 
+def _journey_serve_riddle(request, state):
+    """Put a wayfarer's riddle in front of the traveller.
+
+    Riddles are generated, not stored, so there is nothing to mark as seen —
+    only the *family* is remembered, so one stage never asks two socks-in-the-
+    dark puzzles.
+    """
+    lang = journey_riddles.language_for(state.get('road', 'math'))
+    used = state.setdefault('riddle_families', [])
+    question = journey_riddles.generate(lang, avoid=used)
+    used.append(question['family'])
+    del used[:-12]
+    state['q'] = question
+    state['feedback'] = None
+    return question
+
+
 def _journey_guard_lesson(state, node):
     """Which earlier lesson the guardian is asking about this time."""
     sources = node.get('sources') or [node.get('lesson')]
@@ -3156,12 +3174,18 @@ def journey_play(request):
     # A node that needs a question and does not have one yet gets one now,
     # rather than on the POST that arrives at it — so a refresh is harmless.
     if (travelling and node and not fork and not state.get('feedback')
-            and node['kind'] in ('gate', 'twin', 'guard')
+            and node['kind'] in ('gate', 'twin', 'guard', 'elder')
             and node['id'] not in state.get('proven', [])
             and not journey.is_sealed(state, node) and not state.get('q')):
-        lesson = (_journey_guard_lesson(state, node) if node['kind'] == 'guard'
-                  else node['lesson'])
-        _journey_serve(request, state, lesson, node.get('threat', 1))
+        # The wise stranger always asks a riddle, and so does the guardian for
+        # its LAST question — a stage should not end on a drill.
+        if node['kind'] == 'elder' or (node['kind'] == 'guard'
+                                       and state.get('guard_right', 0) >= 2):
+            _journey_serve_riddle(request, state)
+        else:
+            lesson = (_journey_guard_lesson(state, node) if node['kind'] == 'guard'
+                      else node['lesson'])
+            _journey_serve(request, state, lesson, node.get('threat', 1))
         dirty = True
 
     # What is in a chest is decided once and written down straight away. If it
@@ -3279,9 +3303,13 @@ def _journey_act(request, state, run):
     if action == 'retry':
         state['feedback'] = None
         if not journey.is_sealed(state, node):
-            lesson = (_journey_guard_lesson(state, node) if node['kind'] == 'guard'
-                      else node['lesson'])
-            _journey_serve(request, state, lesson, node.get('threat', 1))
+            if node['kind'] == 'elder' or (node['kind'] == 'guard'
+                                           and state.get('guard_right', 0) >= 2):
+                _journey_serve_riddle(request, state)
+            else:
+                lesson = (_journey_guard_lesson(state, node) if node['kind'] == 'guard'
+                          else node['lesson'])
+                _journey_serve(request, state, lesson, node.get('threat', 1))
         return
 
     if action == 'regroup':
@@ -3345,6 +3373,14 @@ def _journey_answer(request, state, run, node):
         'lesson_title': question.get('lesson_title', ''),
     }
 
+    # A riddle from the wise stranger is free either way: right or wrong, it
+    # never touches a heart. A puzzle a pupil cannot crack must not end their
+    # journey — what they take away is the trick in the explanation.
+    if node['kind'] == 'elder':
+        state['feedback']['free'] = True
+        if not correct:
+            return
+
     if correct:
         state['wrong_here'] = 0
         if node['kind'] == 'guard':
@@ -3373,6 +3409,20 @@ def _journey_continue(request, state, run, node):
     feedback = state.get('feedback') or {}
     state['feedback'] = None
 
+    if node['kind'] == 'elder':
+        if feedback.get('correct'):
+            state['coins'] += journey.node_coins(node)
+            state['torches'] += journey.ELDER_TORCHES
+            journey.add_log(state, _('You answered the riddle. The stranger gives '
+                                     'you a torch and goes back to watching the road.'))
+        else:
+            journey.add_log(state, _('The riddle beats you, but the stranger '
+                                     'explains it before you part.'))
+        journey.advance(state)
+        if state.get('status') == JourneyRun.STATUS_FINISHED:
+            _journey_finish(request, state, run)
+        return
+
     if not feedback.get('correct'):
         return
 
@@ -3384,8 +3434,11 @@ def _journey_continue(request, state, run, node):
         if state.get('guard_wrong', 0) > 1:
             return
         if state.get('guard_right', 0) < 3:
-            _journey_serve(request, state, _journey_guard_lesson(state, node),
-                           node.get('threat', 3))
+            if state.get('guard_right', 0) >= 2:
+                _journey_serve_riddle(request, state)
+            else:
+                _journey_serve(request, state, _journey_guard_lesson(state, node),
+                               node.get('threat', 3))
             return
 
     state['coins'] += journey.node_coins(node)
@@ -3484,6 +3537,8 @@ def _journey_context(request, state, run):
         'elapsed_sec': f"{state.get('elapsed', 0) % 60:02d}",
         'guard_total': 3,
         'guard_now':   state.get('guard_right', 0) + 1,
+        'is_riddle':   bool((state.get('q') or {}).get('riddle')),
+        'riddle_topic': (state.get('q') or {}).get('topic', ''),
     }
 
 

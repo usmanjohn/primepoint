@@ -233,7 +233,15 @@
         <div class="pj-explain">&#x1F4A1; {{ feedback.explanation|safe }}</div>
         {% endif %}
 
-        {% if not feedback.correct %}
+        {% if feedback.free %}
+        <p class="pj-heartwarn">
+            {% if feedback.correct %}
+                &#x1F9E9; {% blocktrans with coins=node_coins %}Solved. +{{ coins }} coins and a torch for your trouble.{% endblocktrans %}
+            {% else %}
+                &#x1F9E9; {% trans "No heart lost — a riddle never costs you one. The trick above is what you came away with." %}
+            {% endif %}
+        </p>
+        {% elif not feedback.correct %}
         <p class="pj-heartwarn">
             {% if feedback.lost_heart %}
                 &#x1F494; {% blocktrans with n=state.kuch %}That cost you a heart. {{ n }} left, and they do not come back on their own.{% endblocktrans %}
@@ -259,6 +267,7 @@
                 <button type="submit" class="pj-btn pj-btn--go">{% trans "Press on" %} &rarr;</button>
             </form>
         {% else %}
+            {% if not feedback.free %}
             <div class="pj-fastest">
                 <div class="pj-fastest__head">&#x1F4D6; {% trans "Not sure? Go and look." %}</div>
                 <p>{% trans "The lesson this came from is one tap away, and reading it gives strength back. Nothing is lost by leaving the road for a while." %}</p>
@@ -273,10 +282,13 @@
                 </a>
                 {% endif %}
             </div>
+            {% endif %}
             <form method="post" class="pj-actions">
                 {% csrf_token %}
-                <input type="hidden" name="action" value="retry">
-                <button type="submit" class="pj-btn pj-btn--go">{% trans "Try again — a different question" %}</button>
+                <input type="hidden" name="action" value="{% if feedback.free %}continue{% else %}retry{% endif %}">
+                <button type="submit" class="pj-btn pj-btn--go">
+                    {% if feedback.free %}{% trans "Walk on" %} &rarr;{% else %}{% trans "Try again — a different question" %}{% endif %}
+                </button>
             </form>
         {% endif %}
     </div>
@@ -377,6 +389,9 @@
             {% elif node.kind == 'twin' %}
             <span class="pj-tag pj-tag--twin">&#x26A1; {% blocktrans with done=state.twin_done %}Two in a row — {{ done }} done{% endblocktrans %}</span>
             {% endif %}
+            {% if is_riddle %}
+            <span class="pj-tag pj-tag--riddle">&#x1F9E9; {{ riddle_topic }}</span>
+            {% endif %}
             {% if branch %}<span class="pj-tag">{{ branch.emoji }} {{ branch.name }}</span>{% endif %}
             <span class="pj-tag">&#x1FA99; {{ node_coins }}</span>
         </div>
@@ -402,6 +417,12 @@
                 &#x1F526; {% blocktrans with n=state.torches %}Strike a torch ({{ n }}) — burn away two wrong answers{% endblocktrans %}
             </button>
         </form>
+        {% endif %}
+
+        {% if is_riddle %}
+        <p class="pj-riddlenote">
+            {% trans "No lesson will help you here — only thinking. Take your time; the stranger is not going anywhere." %}
+        </p>
         {% endif %}
 
         {% if q.lesson %}
