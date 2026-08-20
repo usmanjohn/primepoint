@@ -131,6 +131,7 @@ def analytics(request):
     from examprep.models import Lesson as _Lesson
     from games.catalog import GAME_COUNT
     from homework.models import Homework
+    from logic.models import LogicPuzzle
 
     other_counts = {
         'examprep': _Lesson.objects.filter(
@@ -138,6 +139,10 @@ def analytics(request):
         'stories': Story.objects.filter(is_published=True).count(),
         'writing': WritingDrill.objects.filter(is_published=True).count(),
         'exams': Exam.objects.filter(is_published=True).count(),
+        # Opened puzzles only, so this agrees with the library table above —
+        # a puzzle scheduled for a future round isn't part of the Arena yet.
+        'logic': LogicPuzzle.objects.filter(
+            is_published=True, opens_at__lte=timezone.now()).count(),
         'games': GAME_COUNT,
         'classrooms': Classroom.objects.filter(is_active=True).count(),
         'homework': Homework.objects.count(),

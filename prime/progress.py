@@ -229,6 +229,7 @@ def platform_totals():
     from corner.models import StoryProgress
     from examprep.models import LessonProgress, WritingDrillProgress
     from exam.models import ExamAttempt
+    from logic.models import LogicSubmission
     from practice.models import PracticeAttempt
     from tutorial.models import TutorialProgress
 
@@ -240,6 +241,13 @@ def platform_totals():
         'stories': StoryProgress.objects.count(),
         'writing': WritingDrillProgress.objects.count(),
         'exams': ExamAttempt.objects.filter(current_section='completed').count(),
+        # Same sealed-week rule as `_logic`: a puzzle only counts as solved
+        # once its reveal date has passed.
+        'logic': LogicSubmission.objects.filter(
+            is_correct=True,
+            puzzle__is_published=True,
+            puzzle__reveal_at__lte=timezone.now(),
+        ).count(),
     }
     return [{
         'key': s['key'],
