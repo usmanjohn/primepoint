@@ -485,8 +485,8 @@
   </div>
   {% endif %}
 
-  {# The Arena is not filtered by study subject: a logic puzzle belongs to
-     no subject, so it shows for everyone, like Games. #}
+  {% comment %}The Arena is not filtered by study subject: a logic puzzle
+  belongs to no subject, so it shows for everyone, like Games.{% endcomment %}
   <div class="col-12 col-sm-6 col-lg-4 col-xxl-3">
     <a href="{% url 'logic_home' %}" class="feat-card" style="--c:#7c3aed; --c-bg:rgba(124,58,237,0.12);">
       <div class="feat-card-top">
