@@ -60,24 +60,24 @@ TUTORIAL: PR-<n>:   (each practice links to its own tutorial)
 30. Предложный 1: где?                                                      [done]
 31. Предложный 2: о чём? о ком?                                             [done]
 32. Винительный 1: кого? что?                                               [done]
-33. Винительный 2: yoʻnalish                                                [done] — куда?
+33. Винительный 2: yoʻnalish — куда?                                        [done]
 34. Родительный 1: egalik va yoʻqlik                                        [done]
-35. Родительный 2: predloglar bilan                                         [next]
-36. Родительный 3: sonlar va miqdor bilan
-37. Дательный 1: кому?
-38. Дательный 2: мне холодно, по улице, к другу
-39. Творительный 1: чем? с кем?
-40. Творительный 2: быть/стать + Т.п., над, под, за, перед
-41. Olmoshlarning turlanishi
-42. Egalik olmoshlarining turlanishi
-43. Sifatlarning turlanishi 1 — Р.п. va В.п.
-44. Sifatlarning turlanishi 2 — Д.п., Т.п., П.п.
-45. Koʻplik kelishiklari 1 — И.п. va Р.п.
-46. Koʻplik kelishiklari 2 — Д.п., В.п., Т.п., П.п.
-47. Soʻroq soʻzlarining kelishiklari
-48. Predlog xaritasi
-49. Sonlarning kelishigi va vaqt ifodalari
-50. Kelishiklar — umumiy takror
+35. Родительный 2: predloglar bilan                                         [done]
+36. Родительный 3: sonlar va miqdor bilan                                   [done]
+37. Дательный 1: кому?                                                      [done]
+38. Дательный 2: мне холодно, по улице, к другу                             [done]
+39. Творительный 1: чем? с кем?                                             [done]
+40. Творительный 2: быть/стать + Т.п., над, под, за, перед                  [done]
+41. Olmoshlarning turlanishi                                                [done]
+42. Egalik olmoshlarining turlanishi                                        [done]
+43. Sifatlarning turlanishi 1 — Р.п. va В.п.                                [done]
+44. Sifatlarning turlanishi 2 — Д./Т./П.                                    [done]
+45. Koʻplik kelishiklari 1 — И.п. va Р.п.                                   [done]
+46. Koʻplik kelishiklari 2 — Д.п., В.п., Т.п., П.п.                         [done]
+47. Soʻroq soʻzlarining kelishiklari                                        [done]
+48. Predlog xaritasi                                                        [done]
+49. Sonlar va vaqt ifodalari                                                [done]
+50. Kelishiklar — umumiy takror                                             [next]
 
 ### Block E: Feʼl turi va harakat feʼllari (51–62)   level: medium · 20 savol
 51. Вид — tugallanmagan va tugallangan feʼl

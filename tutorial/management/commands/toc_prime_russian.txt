@@ -80,22 +80,25 @@ PLAYLIST: Prime Russian
 32. Винительный 1: кого? что? — jonli va jonsiz farqi                   [done]
 33. Винительный 2: yoʻnalish — в школу, на работу, куда?                [done]
 34. Родительный 1: egalik va yoʻqlik — книга брата, нет времени         [done]
-35. Родительный 2: predloglar bilan — из, от, до, у, без, для, около, после [next]
-36. Родительный 3: sonlar va miqdor bilan — два дома, пять домов, много книг
-37. Дательный 1: кому? — дать, сказать, написать, помочь
-38. Дательный 2: мне холодно, ему нравится, по улице, к другу
-39. Творительный 1: чем? — vosita va «с кем?» birgalik
-40. Творительный 2: быть/стать/работать + Т.п., над, под, за, перед, между
-41. Olmoshlarning turlanishi: меня, мне, мной, обо мне
-42. Egalik olmoshlarining turlanishi: моего, моей, моим, о моём
-43. Sifatlarning turlanishi 1 — Родительный va Винительный
-44. Sifatlarning turlanishi 2 — Дательный, Творительный, Предложный
-45. Koʻplik kelishiklari 1 — Именительный va Родительный (eng qiyin joyi)
-46. Koʻplik kelishiklari 2 — Дательный, Винительный, Творительный, Предложный
-47. Soʻroq soʻzlarining kelishiklari: кто, что, какой, чей, сколько
-48. Predlog xaritasi: qaysi predlog qaysi kelishikni talab qiladi
-49. Sonlarning kelishigi va vaqt ifodalari: в понедельник, в мае, в 2026 году
-50. Kelishiklar — umumiy takror va tirik gaplarda mashq
+35. Родительный 2: predloglar bilan — из, от, до, у, без, для, около, после [done]
+36. Родительный 3: sonlar va miqdor bilan — два дома, пять домов, много книг [done]
+37. Дательный 1: кому? — дать, сказать, написать, помочь                [done]
+38. Дательный 2: мне холодно, ему нравится, по улице, к другу           [done]
+39. Творительный 1: чем? — vosita va «с кем?» birgalik                  [done]
+40. Творительный 2: быть/стать/работать + Т.п., над, под, за, перед, между [done]
+# ↑ OLTITA KELISHIK TOʻLIQ (PR-29…40). PR-41 dan boshlab oʻsha tizim boshqa
+#   soʻz turkumlariga qoʻllanadi: olmosh, sifat, koʻplik.
+
+41. Olmoshlarning turlanishi: меня, мне, мной, обо мне                  [done]
+42. Egalik olmoshlarining turlanishi: моего, моей, моим, о моём         [done]
+43. Sifatlarning turlanishi 1 — Родительный va Винительный              [done]
+44. Sifatlarning turlanishi 2 — Дательный, Творительный, Предложный     [done]
+45. Koʻplik kelishiklari 1 — Именительный va Родительный (eng qiyin joyi) [done]
+46. Koʻplik kelishiklari 2 — Дательный, Винительный, Творительный, Предложный [done]
+47. Soʻroq soʻzlarining kelishiklari: кто, что, какой, чей, сколько     [done]
+48. Predlog xaritasi: qaysi predlog qaysi kelishikni talab qiladi       [done]
+49. Sonlarning kelishigi va vaqt ifodalari: в понедельник, в мае, в 2026 году [done]
+50. Kelishiklar — umumiy takror va tirik gaplarda mashq                 [next]
 
 ### Block E: Feʼl turi va harakat feʼllari (51–62)
 51. Вид — tugallanmagan va tugallangan feʼl (что делать? / что сделать?)

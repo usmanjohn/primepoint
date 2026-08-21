@@ -183,22 +183,23 @@ AUTHOR:     powerty
 32. (PR-32 · В.п. кого/что) Кто кого́ ждёт? — vokzalda                      [done]
 33. (PR-33 · В.п. куда?) Куда́ идёт э́тот авто́бус? — sayohat qaydlari       [done]
 34. (PR-34 · Р.п. egalik) Дом моего́ де́да — oila tarixi                    [done]
-35. (PR-35 · Р.п. predloglar) Письмо́ из Сиби́ри — xat                      [next]
-36. (PR-36 · Р.п. sonlar) Ско́лько в Москве́ мосто́в? (ilmiy-ommabop)
-37. (PR-37 · Д.п. кому?) Пода́рок учи́телю — sinf birga qaror qiladi
-38. (PR-38 · Д.п. мне холодно) Пе́рвая зима́ — Toshkentlik Sibirda
-39. (PR-39 · Т.п. чем? с кем?) Как де́лают самса́ — retsept
-40. (PR-40 · Т.п. стать) Кем ты хо́чешь стать? — intervyu
-41. (PR-41 · olmoshlar) Она́ мне не позвони́ла — kichik tushunmovchilik
-42. (PR-42 · egalik olmoshlari) В на́шем дворе́ — mahalla portreti
-43. (PR-43 · sifat Р.п./В.п.) Ста́рого моста́ бо́льше нет — yangilik xabari
-44. (PR-44 · sifat Д./Т./П.) В большо́м го́роде — sayohat qaydlari
-45. (PR-45 · koʻplik И./Р.) Пять дней без телефо́на — tajriba
-46. (PR-46 · koʻplik Д./В./Т./П.) Письмо́ всем друзья́м — umumiy xat
-47. (PR-47 · soʻroq soʻzlari) Игра́ «Два́дцать вопро́сов» — oʻyin
-48. (PR-48 · predlog xaritasi) Как я потеря́лся в метро́ — hikoya
-49. (PR-49 · sana va vaqt) Календа́рь Ни́ны — bir yil bir sahifada
-50. (PR-50 · takror) Оди́н день, шесть падеже́й — yakuniy matn
+35. (PR-35 · Р.п. predloglar) Письмо́ из Сиби́ри — xat                      [done]
+36. (PR-36 · Р.п. sonlar) Ско́лько в Москве́ мосто́в? (ilmiy-ommabop)        [done]
+37. (PR-37 · Д.п. кому?) Пода́рок учи́телю — sinf birga qaror qiladi        [done]
+38. (PR-38 · Д.п. мне холодно) Пе́рвая зима́ — Toshkentlik Sibirda          [done]
+39. (PR-39 · Т.п. чем? с кем?) Как де́лают самсу́ — retsept                 [done]
+#   ↑ sarlavha tuzatildi: «де́лают» Вини́тельный talab qiladi — самсу́, самса́ emas
+40. (PR-40 · Т.п. стать) Кем ты хо́чешь стать? — intervyu                   [done]
+41. (PR-41 · olmoshlar) Она́ мне не позвони́ла — kichik tushunmovchilik     [done]
+42. (PR-42 · egalik olmoshlari) В на́шем дворе́ — mahalla portreti          [done]
+43. (PR-43 · sifat Р.п./В.п.) Ста́рого моста́ бо́льше нет — yangilik xabari [done]
+44. (PR-44 · sifat Д./Т./П.) В большо́м го́роде — sayohat qaydlari          [done]
+45. (PR-45 · koʻplik И./Р.) Пять дней без телефо́на — tajriba               [done]
+46. (PR-46 · koʻplik Д./В./Т./П.) Письмо́ всем друзья́м — umumiy xat        [done]
+47. (PR-47 · soʻroq soʻzlari) Игра́ «Два́дцать вопро́сов» — oʻyin           [done]
+48. (PR-48 · predlog xaritasi) Как я потеря́лся в метро́ — hikoya           [done]
+49. (PR-49 · sana va vaqt) Календа́рь Ни́ны — bir yil bir sahifada          [done]
+50. (PR-50 · takror) Оди́н день, шесть падеже́й — yakuniy matn              [next]
 
 ### Block E: Feʼl turi va harakat feʼllari (51–62)
 51. (PR-51 · вид) Чита́л и прочита́л — nima farqi bor? (ilmiy-ommabop)
