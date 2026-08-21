@@ -60,23 +60,27 @@ PLAYLIST: Prime Russian
 ### Block C: Feʼl va hozirgi zamon (19–28)
 19. Feʼl nima? Infinitiv va ikkita tuslanish (спряжение)                    [done]
 20. I tuslanish: читать, работать, знать (-ю, -ешь, -ет, -ем, -ете, -ют)    [done]
-21. II tuslanish: говорить, смотреть, любить (-ю, -ишь, -ит, -им, -ите, -ят)[next]
-22. Notoʻgʻri feʼllar: хотеть, есть, дать, идти, ехать, жить, писать
-23. Oʻtgan zamon (прошедшее время) — jinsga qarab -л, -ла, -ло, -ли
-24. Kelasi zamon: буду + infinitiv
-25. Qaytim feʼllar -ся / -сь: учиться, находиться, нравиться
-26. Мочь va уметь — «-a olmoq» ning ikki xil turi
-27. Нужно, надо, можно, нельзя, должен — kerak va mumkin
-28. Мне нравится — teskari qurilish va uning mantigʻi
+21. II tuslanish: говорить, смотреть, любить (-ю, -ишь, -ит, -им, -ите, -ят)[done]
+22. Notoʻgʻri feʼllar: хотеть, есть, дать, идти, ехать, жить, писать   [done]
+23. Oʻtgan zamon (прошедшее время) — jinsga qarab -л, -ла, -ло, -ли    [done]
+24. Kelasi zamon: буду + infinitiv                                     [done]
+25. Qaytim feʼllar -ся / -сь: учиться, находиться, нравиться           [done]
+26. Мочь va уметь — «-a olmoq» ning ikki xil turi                      [done]
+27. Нужно, надо, можно, нельзя, должен — kerak va mumkin               [done]
+28. Мне нравится — teskari qurilish va uning mantigʻi                  [done]
+
+# ↑ Block C COMPLETE — PR-19…28: feʼl tizimi (ikki tuslanish, uch zamon,
+#   notoʻgʻri feʼllar, -ся, мочь/уметь, shaxssiz qurilishlar).
+#   PR-29 dan kelishiklar boshlanadi — kursning eng katta bloki.
 
 ### Block D: Kelishiklar — rus tilining yuragi (29–50)
-29. Kelishik nima? Olti падеж'ning umumiy xaritasi (+ oʻzbekcha bilan solishtirish)
-30. Предложный 1: где? — в школе, на работе, в Ташкенте
-31. Предложный 2: о чём? о ком? — о фильме, о тебе
-32. Винительный 1: кого? что? — jonli va jonsiz farqi
-33. Винительный 2: yoʻnalish — в школу, на работу, куда?
-34. Родительный 1: egalik va yoʻqlik — книга брата, нет времени
-35. Родительный 2: predloglar bilan — из, от, до, у, без, для, около, после
+29. Kelishik nima? Olti падеж'ning umumiy xaritasi (+ oʻzbekcha bilan solishtirish) [done]
+30. Предложный 1: где? — в школе, на работе, в Ташкенте                 [done]
+31. Предложный 2: о чём? о ком? — о фильме, о тебе                      [done]
+32. Винительный 1: кого? что? — jonli va jonsiz farqi                   [done]
+33. Винительный 2: yoʻnalish — в школу, на работу, куда?                [done]
+34. Родительный 1: egalik va yoʻqlik — книга брата, нет времени         [done]
+35. Родительный 2: predloglar bilan — из, от, до, у, без, для, около, после [next]
 36. Родительный 3: sonlar va miqdor bilan — два дома, пять домов, много книг
 37. Дательный 1: кому? — дать, сказать, написать, помочь
 38. Дательный 2: мне холодно, ему нравится, по улице, к другу

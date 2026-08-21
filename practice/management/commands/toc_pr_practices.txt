@@ -46,23 +46,23 @@ TUTORIAL: PR-<n>:   (each practice links to its own tutorial)
 ### Block C: Feʼl va hozirgi zamon (19–28)   level: easy · 20 savol
 19. Feʼl nima? Infinitiv va ikkita tuslanish (спряжение)                    [done]
 20. I tuslanish: читать, работать, знать                                    [done]
-21. II tuslanish: говорить, смотреть, любить                                [next]
-22. Notoʻgʻri feʼllar: хотеть, есть, дать, идти, ехать, жить, писать
-23. Oʻtgan zamon — jinsga qarab -л, -ла, -ло, -ли
-24. Kelasi zamon: буду + infinitiv
-25. Qaytim feʼllar -ся / -сь
-26. Мочь va уметь
-27. Нужно, надо, можно, нельзя, должен
-28. Мне нравится — teskari qurilish
+21. II tuslanish: говорить, смотреть, любить                                [done]
+22. Notoʻgʻri feʼllar: хотеть, есть, дать, идти, ехать, жить, писать        [done]
+23. Oʻtgan zamon — jinsga qarab -л, -ла, -ло, -ли                           [done]
+24. Kelasi zamon: буду + infinitiv                                          [done]
+25. Qaytim feʼllar -ся / -сь                                                [done]
+26. Мочь va уметь                                                           [done]
+27. Нужно, надо, можно, нельзя, должен                                      [done]
+28. Мне нравится — teskari qurilish                                         [done]
 
 ### Block D: Kelishiklar (29–50)   level: medium · 20 savol
-29. Kelishik nima? Olti падеж'ning umumiy xaritasi
-30. Предложный 1: где?
-31. Предложный 2: о чём? о ком?
-32. Винительный 1: кого? что?
-33. Винительный 2: yoʻnalish — куда?
-34. Родительный 1: egalik va yoʻqlik
-35. Родительный 2: predloglar bilan
+29. Kelishik nima? Olti падеж'ning umumiy xaritasi                          [done]
+30. Предложный 1: где?                                                      [done]
+31. Предложный 2: о чём? о ком?                                             [done]
+32. Винительный 1: кого? что?                                               [done]
+33. Винительный 2: yoʻnalish                                                [done] — куда?
+34. Родительный 1: egalik va yoʻqlik                                        [done]
+35. Родительный 2: predloglar bilan                                         [next]
 36. Родительный 3: sonlar va miqdor bilan
 37. Дательный 1: кому?
 38. Дательный 2: мне холодно, по улице, к другу

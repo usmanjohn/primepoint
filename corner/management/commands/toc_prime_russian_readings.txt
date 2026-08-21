@@ -167,23 +167,23 @@ AUTHOR:     powerty
 ### Block C: Feʼl va hozirgi zamon (19–28)
 19. (PR-19 · infinitiv) Анке́та — toʻgarakka yozilish varaqasi             [done]
 20. (PR-20 · I tuslanish) Оди́н день Жасу́ра — kundalik tartib              [done]
-21. (PR-21 · II tuslanish) Я говорю́ на трёх языка́х — kichik intervyu      [next]
-22. (PR-22 · notoʻgʻri feʼllar) Ку́хня в общежи́тии — kim nima yeydi
-23. (PR-23 · oʻtgan zamon) Вчера́ был дождь — kundalik daftar
-24. (PR-24 · kelasi zamon) За́втра экза́мен — reja va vaʼda
-25. (PR-25 · -ся) Как я учи́лся пла́вать — biografik hikoya
-26. (PR-26 · мочь/уметь) Ба́бушка уме́ет всё — oila portreti
-27. (PR-27 · надо/нельзя) Пра́вила библиоте́ки — qoʻllanma matni
-28. (PR-28 · нравиться) Что тебе́ нра́вится? — ikki doʻstning sharhi
+21. (PR-21 · II tuslanish) Я говорю́ на трёх языка́х — kichik intervyu      [done]
+22. (PR-22 · notoʻgʻri feʼllar) Ку́хня в общежи́тии — kim nima yeydi        [done]
+23. (PR-23 · oʻtgan zamon) Вчера́ был дождь — kundalik daftar               [done]
+24. (PR-24 · kelasi zamon) За́втра экза́мен — reja va vaʼda                 [done]
+25. (PR-25 · -ся) Как я учи́лся пла́вать — biografik hikoya                 [done]
+26. (PR-26 · мочь/уметь) Ба́бушка уме́ет всё — oila portreti                [done]
+27. (PR-27 · надо/нельзя) Пра́вила библиоте́ки — qoʻllanma matni            [done]
+28. (PR-28 · нравиться) Что тебе́ нра́вится? — ikki doʻstning sharhi        [done]
 
 ### Block D: Kelishiklar (29–50)
-29. (PR-29 · падежи xaritasi) Одно́ сло́во — шесть форм (ilmiy-ommabop)
-30. (PR-30 · П.п. где?) Где мои́ ключи́? — kichik sirli hikoya
-31. (PR-31 · П.п. о чём?) О чём э́та кни́га? — kitob sharhi
-32. (PR-32 · В.п. кого/что) Кто кого́ ждёт? — vokzalda
-33. (PR-33 · В.п. куда?) Куда́ идёт э́тот авто́бус? — sayohat qaydlari
-34. (PR-34 · Р.п. egalik) Дом моего́ де́да — oila tarixi
-35. (PR-35 · Р.п. predloglar) Письмо́ из Сиби́ри — xat
+29. (PR-29 · падежи xaritasi) Одно́ сло́во — шесть форм (ilmiy-ommabop)     [done]
+30. (PR-30 · П.п. где?) Где мои́ ключи́? — kichik sirli hikoya              [done]
+31. (PR-31 · П.п. о чём?) О чём э́та кни́га? — kitob sharhi                 [done]
+32. (PR-32 · В.п. кого/что) Кто кого́ ждёт? — vokzalda                      [done]
+33. (PR-33 · В.п. куда?) Куда́ идёт э́тот авто́бус? — sayohat qaydlari       [done]
+34. (PR-34 · Р.п. egalik) Дом моего́ де́да — oila tarixi                    [done]
+35. (PR-35 · Р.п. predloglar) Письмо́ из Сиби́ри — xat                      [next]
 36. (PR-36 · Р.п. sonlar) Ско́лько в Москве́ мосто́в? (ilmiy-ommabop)
 37. (PR-37 · Д.п. кому?) Пода́рок учи́телю — sinf birga qaror qiladi
 38. (PR-38 · Д.п. мне холодно) Пе́рвая зима́ — Toshkentlik Sibirda
