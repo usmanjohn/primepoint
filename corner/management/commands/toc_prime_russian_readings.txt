@@ -199,26 +199,27 @@ AUTHOR:     powerty
 47. (PR-47 · soʻroq soʻzlari) Игра́ «Два́дцать вопро́сов» — oʻyin           [done]
 48. (PR-48 · predlog xaritasi) Как я потеря́лся в метро́ — hikoya           [done]
 49. (PR-49 · sana va vaqt) Календа́рь Ни́ны — bir yil bir sahifada          [done]
-50. (PR-50 · takror) Оди́н день, шесть падеже́й — yakuniy matn              [next]
+50. (PR-50 · takror) Оди́н день, шесть падеже́й — yakuniy matn              [done]
 
 ### Block E: Feʼl turi va harakat feʼllari (51–62)
-51. (PR-51 · вид) Чита́л и прочита́л — nima farqi bor? (ilmiy-ommabop)
-52. (PR-52 · vid juftlari) Ремо́нт на ку́хне — tugallangan va tugallanmagan ishlar
-53. (PR-53 · vid va zamon) Три письма́ об одно́м дне
-54. (PR-54 · vid tanlash) Как я гото́вился к экза́мену — biografik
-55. (PR-55 · идти/ходить) Доро́га в шко́лу — kundalik yoʻl
-56. (PR-56 · ехать/ездить) Тра́нссиб: семь дней в по́езде (sayohat qaydlari)
-57. (PR-57 · prefikslar 1) Оди́н глаго́л, де́сять двере́й (ilmiy-ommabop)
-58. (PR-58 · prefikslar 2) Кот, кото́рый ушёл и пришёл — hikoya
-59. (PR-59 · buyruq mayli) Инстру́кция для но́вого сотру́дника
-60. (PR-60 · бы) Е́сли бы я знал ра́ньше — maslahat xati
-61. (PR-61 · majhul nisbat) Как был постро́ен Петербу́рг (tarix)
-62. (PR-62 · -ся) Шесть значе́ний одно́й ча́стицы (ilmiy-ommabop)
+51. (PR-51 · вид) Чита́л и прочита́л (ilmiy-ommabop)                        [done]
+52. (PR-52 · vid juftlari) Ремо́нт на ку́хне                                [done]
+53. (PR-53 · vid va zamon) Три письма́ об одно́м дне                        [done]
+54. (PR-54 · vid tanlash) Как я гото́вился к экза́мену — biografik          [done]
+55. (PR-55 · идти/ходить) Доро́га в шко́лу — kundalik yoʻl                  [done]
+56. (PR-56 · ехать/ездить) Тра́нссиб: семь дней в по́езде (sayohat qaydlari) [done]
+57. (PR-57 · prefikslar 1) Оди́н глаго́л, де́сять двере́й (ilmiy-ommabop)  [done]
+58. (PR-58 · prefikslar 2) Кот ушёл и пришёл — hikoya                      [done]
+#   ↑ sarlavha tuzatildi: КОТО́РЫЙ PR-63 da oʻrgatiladi, shuning uchun undan voz kechildi
+59. (PR-59 · buyruq mayli) Инстру́кция для но́вого сотру́дника              [done]
+60. (PR-60 · бы) Е́сли бы я знал ра́ньше — maslahat xati                    [done]
+61. (PR-61 · majhul nisbat) Как был постро́ен Петербу́рг (tarix)            [done]
+62. (PR-62 · -ся) Шесть значе́ний одно́й ча́стицы (ilmiy-ommabop)           [done]
 
 ### Block F: Murakkab gaplar (63–74)
-63. (PR-63 · который) Челове́к, кото́рый чини́л всё — mahalla portreti
-64. (PR-64 · что/чтобы) Что́бы тебя́ по́няли — muloqot haqida
-65. (PR-65 · если/когда) Когда́ отключи́ли свет — hikoya
+63. (PR-63 · который) Челове́к, кото́рый чини́л всё — mahalla portreti      [done]
+64. (PR-64 · что/чтобы) Что́бы тебя́ по́няли — muloqot haqida               [done]
+65. (PR-65 · если/когда) Когда́ отключи́ли свет — hikoya                    [next]
 66. (PR-66 · sabab) Почему́ Байка́л тако́й глубо́кий (ilmiy-ommabop)
 67. (PR-67 · хотя/зато) Ма́ленький го́род, больша́я библиоте́ка
 68. (PR-68 · ли) Никто́ не знал, придёт ли он — sirli hikoya

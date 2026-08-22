@@ -77,26 +77,26 @@ TUTORIAL: PR-<n>:   (each practice links to its own tutorial)
 47. Soʻroq soʻzlarining kelishiklari                                        [done]
 48. Predlog xaritasi                                                        [done]
 49. Sonlar va vaqt ifodalari                                                [done]
-50. Kelishiklar — umumiy takror                                             [next]
+50. Kelishiklar — umumiy takror                                             [done]
 
 ### Block E: Feʼl turi va harakat feʼllari (51–62)   level: medium · 20 savol
-51. Вид — tugallanmagan va tugallangan feʼl
-52. Vid juftliklarini yasash
-53. Vid uch zamonda
-54. Vidni tanlash
-55. Harakat feʼllari 1: идти va ходить
-56. Harakat feʼllari 2: ехать/ездить, бежать/бегать…
-57. Harakat feʼllarining prefikslari
-58. Prefikslar maʼnoni qanday oʻzgartiradi
-59. Buyruq mayli
-60. Шартли maylь — бы
-61. Majhul nisbat
-62. -ся feʼlining oltita maʼnosi
+51. Вид — НСВ va СВ                                                         [done]
+52. Vid juftliklarini yasash                                                [done]
+53. Vid uch zamonda                                                         [done]
+54. Vidni tanlash                                                           [done]
+55. Harakat feʼllari 1: идти / ходить                                       [done]
+56. Harakat feʼllari 2: ехать / ездить                                      [done]
+57. Harakat feʼllarining prefikslari                                        [done]
+58. Prefikslar maʼnoni oʻzgartiradi                                         [done]
+59. Buyruq mayli                                                            [done]
+60. Shartli mayl — бы                                                       [done]
+61. Majhul nisbat                                                           [done]
+62. -ся feʼlining oltita maʼnosi                                            [done]
 
 ### Block F: Murakkab gaplar (63–74)   level: medium/hard · 20 savol
-63. Который
-64. Что va чтобы
-65. Если va когда
+63. Который                                                                 [done]
+64. Что va чтобы                                                            [done]
+65. Если va когда                                                           [next]
 66. Потому что, поэтому, так как
 67. Хотя, но, зато, однако
 68. Ли va bilvosita savol

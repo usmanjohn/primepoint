@@ -98,26 +98,31 @@ PLAYLIST: Prime Russian
 47. Soʻroq soʻzlarining kelishiklari: кто, что, какой, чей, сколько     [done]
 48. Predlog xaritasi: qaysi predlog qaysi kelishikni talab qiladi       [done]
 49. Sonlarning kelishigi va vaqt ifodalari: в понедельник, в мае, в 2026 году [done]
-50. Kelishiklar — umumiy takror va tirik gaplarda mashq                 [next]
+50. Kelishiklar — umumiy takror va tirik gaplarda mashq                 [done]
+# ↑ BLOCK D COMPLETE — PR-29…50: oltita kelishik otlarda, olmoshlarda,
+#   egalik olmoshlarida, sifatlarda va koʻplikda. Kursning eng katta bloki.
 
 ### Block E: Feʼl turi va harakat feʼllari (51–62)
-51. Вид — tugallanmagan va tugallangan feʼl (что делать? / что сделать?)
-52. Vid juftliklarini yasash: prefiks, suffiks va butunlay boshqa oʻzak
-53. Vid uch zamonda: hozirgi zamonda СВ nega yoʻq?
-54. Vidni tanlash: takror, jarayon, natija, bir marta, buyruq
-55. Harakat feʼllari 1: идти va ходить — bir yoʻnalish va koʻp yoʻnalish
-56. Harakat feʼllari 2: ехать/ездить, бежать/бегать, лететь/летать, нести/носить
-57. Harakat feʼllarining prefikslari: при-, у-, вы-, в-, до-, пере-, под-, от-
-58. Prefikslar maʼnoni qanday oʻzgartiradi: по-, за-, про-, раз-, с-, на-
-59. Buyruq mayli: читай! читайте! давай пойдём! не опаздывай!
-60. Шартли maylь — бы: если бы, я хотел бы, на твоём месте я бы…
-61. Majhul nisbat: дом строится / дом построен
-62. -ся feʼlining oltita maʼnosi — bir qoʻshimcha, olti vazifa
+51. Вид — tugallanmagan va tugallangan feʼl (что делать? / что сделать?) [done]
+52. Vid juftliklarini yasash: prefiks, suffiks va butunlay boshqa oʻzak [done]
+53. Vid uch zamonda: hozirgi zamonda СВ nega yoʻq?                      [done]
+54. Vidni tanlash: takror, jarayon, natija, bir marta, buyruq           [done]
+55. Harakat feʼllari 1: идти va ходить — bir yoʻnalish va koʻp yoʻnalish [done]
+56. Harakat feʼllari 2: ехать/ездить, бежать/бегать, лететь/летать, нести/носить [done]
+57. Harakat feʼllarining prefikslari: при-, у-, вы-, в-, до-, пере-, под-, от- [done]
+58. Prefikslar maʼnoni qanday oʻzgartiradi: по-, за-, про-, раз-, с-, на- [done]
+59. Buyruq mayli: читай! читайте! давай пойдём! не опаздывай!               [done]
+60. Shartli mayl — бы: если бы, я хотел бы, на твоём месте я бы…            [done]
+61. Majhul nisbat: дом строится / дом построен                              [done]
+62. -ся feʼlining oltita maʼnosi — bir qoʻshimcha, olti vazifa              [done]
+# ↑ BLOCK E COMPLETE — PR-51…62: вид, harakat feʼllari va ularning
+#   prefikslari, buyruq mayli, shartli mayl, majhul nisbat va -ся.
+#   Yaʼni butun feʼl tizimi yopildi.
 
 ### Block F: Murakkab gaplar (63–74)
-63. Который — rus tilining «-gan» sifatdosh gapi
-64. Что va чтобы — bir soʻzga oʻxshaydi, ikki xil gap quradi
-65. Если va когда — shart va vaqt ergash gaplari
+63. Который — rus tilining «-gan» sifatdosh gapi                            [done]
+64. Что va чтобы — bir soʻzga oʻxshaydi, ikki xil gap quradi                [done]
+65. Если va когда — shart va vaqt ergash gaplari                            [next]
 66. Потому что, поэтому, так как, из-за того что — sabab va natija
 67. Хотя, но, зато, однако, тем не менее — qarama-qarshilik
 68. Ли va bilvosita savol: «Не знаю, придёт ли он»
