@@ -11,7 +11,7 @@
 .ms-hero {
   padding: 2rem 0 1.75rem;
   border-bottom: 1px solid var(--border);
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.25rem;
 }
 .ms-eyebrow {
   font-size: 0.68rem;
@@ -30,13 +30,44 @@
 }
 .ms-hero-sub { color: var(--text-muted); font-size: 0.88rem; margin: 0; }
 
-.ms-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
-  gap: 1.1rem;
+/* ── Filter bar ─────────────────────────────────────────────── */
+.ms-bar {
+  display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center;
+  margin-bottom: 1.5rem;
+}
+.ms-search { display: flex; gap: 0.4rem; flex: 1 1 220px; min-width: 0; }
+.ms-search input {
+  flex: 1; min-width: 0;
+  background: var(--surface); color: var(--text);
+  border: 1px solid var(--border); border-radius: 9px;
+  padding: 0.45rem 0.8rem; font-size: 0.84rem;
+}
+.ms-search input:focus { outline: none; border-color: var(--accent); }
+.ms-search button {
+  background: var(--surface-2); color: var(--text-muted);
+  border: 1px solid var(--border); border-radius: 9px;
+  padding: 0.45rem 0.8rem; font-size: 0.84rem; cursor: pointer;
+}
+.ms-tabs { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.ms-tab {
+  font-size: 0.76rem; font-weight: 600; text-decoration: none;
+  color: var(--text-muted); background: var(--surface);
+  border: 1px solid var(--border); border-radius: 999px;
+  padding: 0.35rem 0.85rem; white-space: nowrap;
+}
+.ms-tab:hover { color: var(--text); border-color: var(--accent); }
+.ms-tab.is-on {
+  color: #fff; background: var(--accent); border-color: var(--accent);
 }
 
+/* ── Card ───────────────────────────────────────────────────── */
+.ms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+  gap: 1.1rem;
+}
 .ms-card {
+  position: relative;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -54,88 +85,123 @@
   color: inherit;
   text-decoration: none;
 }
+/* Our own education staff get a warmer frame, not just a chip. */
+.ms-card--team { border-color: rgba(245,158,11,0.45); }
+.ms-card--team:hover { border-color: #f59e0b; }
+.ms-card-ribbon {
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+  color: #422006;
+  font-size: 0.63rem; font-weight: 800;
+  letter-spacing: 1px; text-transform: uppercase;
+  padding: 0.3rem 1rem;
+  display: flex; align-items: center; gap: 0.35rem;
+}
 .ms-card-top {
-  padding: 1.5rem 1.5rem 0;
+  padding: 1.35rem 1.35rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
+.ms-avatar-wrap { position: relative; margin-bottom: 0.8rem; }
 .ms-avatar {
-  width: 72px;
-  height: 72px;
+  width: 76px; height: 76px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--border);
-  margin-bottom: 0.85rem;
+  display: block;
+}
+.ms-card--team .ms-avatar { border-color: #fbbf24; }
+.ms-open-dot {
+  position: absolute; right: 2px; bottom: 2px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: #22c55e; border: 2px solid var(--surface);
 }
 .ms-name {
   font-family: 'Syne', sans-serif;
-  font-size: 1rem;
+  font-size: 1.02rem;
   font-weight: 700;
   color: var(--text);
-  margin: 0 0 0.2rem;
+  margin: 0 0 0.15rem;
+}
+.ms-headline {
+  font-size: 0.76rem; color: var(--text-muted);
+  margin: 0 0 0.55rem; line-height: 1.4;
+}
+.ms-subjects {
+  display: flex; flex-wrap: wrap; gap: 0.3rem;
+  justify-content: center; margin-bottom: 0.65rem;
 }
 .ms-subject {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--accent);
-  background: var(--accent-glow);
-  padding: 0.18rem 0.65rem;
-  border-radius: 5px;
-  margin-bottom: 0.7rem;
+  font-size: 0.7rem; font-weight: 600;
+  color: var(--accent); background: var(--accent-glow);
+  padding: 0.16rem 0.6rem; border-radius: 5px;
 }
+.ms-subject--more { color: var(--text-muted); background: var(--surface-2); }
+
+/* ── Stars ──────────────────────────────────────────────────── */
+.ms-rating { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.6rem; }
+.ms-stars { position: relative; display: inline-block; line-height: 1; }
+.ms-stars-bg, .ms-stars-fg {
+  font-size: 0.72rem; letter-spacing: 1px; white-space: nowrap;
+}
+.ms-stars-bg { color: var(--border); }
+.ms-stars-fg {
+  position: absolute; inset: 0 auto 0 0;
+  overflow: hidden; color: #f59e0b;
+}
+.ms-rating-num { font-size: 0.76rem; font-weight: 700; color: var(--text); }
+.ms-rating-cnt { font-size: 0.7rem; color: var(--text-muted); }
+.ms-rating--none { font-size: 0.72rem; color: var(--text-muted); }
+
 .ms-desc {
-  font-size: 0.81rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
   line-height: 1.55;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin: 0;
-  padding: 0 0.25rem 1.25rem;
+  padding: 0 0.25rem 1.1rem;
 }
 .ms-card-footer {
   margin-top: auto;
-  padding: 0.9rem 1.5rem;
+  padding: 0.85rem 1.1rem;
   border-top: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 0.4rem;
 }
 .ms-stat { text-align: center; }
 .ms-stat-num {
   font-family: 'Syne', sans-serif;
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--text);
   line-height: 1;
 }
 .ms-stat-lbl {
-  font-size: 0.62rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 0.6rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.4px;
   color: var(--text-muted);
 }
 .ms-view-btn {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--accent);
-  display: flex;
-  align-items: center;
-  gap: 0.2rem;
+  font-size: 0.76rem; font-weight: 700; color: var(--accent);
+  display: flex; align-items: center; gap: 0.2rem;
 }
 
-.ms-empty {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 4rem 2rem;
-}
+.ms-empty { grid-column: 1 / -1; text-align: center; padding: 4rem 2rem; }
 .ms-empty i { font-size: 2.5rem; color: var(--border); display: block; margin-bottom: 1rem; }
 .ms-empty h3 { font-family: 'Syne', sans-serif; color: var(--text); margin-bottom: 0.4rem; }
 .ms-empty p  { color: var(--text-muted); font-size: 0.88rem; }
+
+@media (max-width: 576px) {
+  .ms-hero h1 { font-size: 1.6rem; }
+  .ms-card-footer { padding: 0.75rem 0.85rem; }
+  .ms-stat-num { font-size: 0.92rem; }
+}
 </style>
 {% endblock %}
 
@@ -146,7 +212,7 @@
     <div>
       <p class="ms-eyebrow">{% trans "Community" %}</p>
       <h1>{% trans "Meet the Masters" %}</h1>
-      <p class="ms-hero-sub">{% trans "Educators, experts, and mentors creating practice sessions for you." %}</p>
+      <p class="ms-hero-sub">{% trans "Educators, experts and mentors — our own Powerty staff first, then everyone teaching here." %}</p>
     </div>
     {% if user.is_authenticated %}
       {% if not user.profile.master %}
@@ -165,30 +231,99 @@
     {% endif %}
   </div>
 
+  <!-- FILTERS -->
+  <div class="ms-bar">
+    <form method="get" class="ms-search" role="search">
+      {% if team %}<input type="hidden" name="team" value="{{ team }}">{% endif %}
+      {% if sort %}<input type="hidden" name="sort" value="{{ sort }}">{% endif %}
+      <input type="search" name="q" value="{{ query }}"
+             placeholder="{% trans 'Search by name or subject…' %}"
+             aria-label="{% trans 'Search masters' %}">
+      <button type="submit"><i class="bi bi-search"></i></button>
+    </form>
+    <div class="ms-tabs">
+      <a href="?{% if query %}q={{ query }}&{% endif %}{% if sort %}sort={{ sort }}{% endif %}"
+         class="ms-tab {% if not team %}is-on{% endif %}">{% trans "Everyone" %}</a>
+      <a href="?team=powerty{% if query %}&q={{ query }}{% endif %}{% if sort %}&sort={{ sort }}{% endif %}"
+         class="ms-tab {% if team == 'powerty' %}is-on{% endif %}">
+        <i class="bi bi-patch-check-fill"></i> {% trans "Powerty team" %} ({{ powerty_count }})</a>
+      <a href="?team=independent{% if query %}&q={{ query }}{% endif %}{% if sort %}&sort={{ sort }}{% endif %}"
+         class="ms-tab {% if team == 'independent' %}is-on{% endif %}">{% trans "Independent" %}</a>
+    </div>
+    <div class="ms-tabs">
+      <a href="?{% if query %}q={{ query }}&{% endif %}{% if team %}team={{ team }}{% endif %}"
+         class="ms-tab {% if not sort %}is-on{% endif %}">{% trans "Top rated" %}</a>
+      <a href="?sort=contribution{% if query %}&q={{ query }}{% endif %}{% if team %}&team={{ team }}{% endif %}"
+         class="ms-tab {% if sort == 'contribution' %}is-on{% endif %}">{% trans "Most content" %}</a>
+      <a href="?sort=students{% if query %}&q={{ query }}{% endif %}{% if team %}&team={{ team }}{% endif %}"
+         class="ms-tab {% if sort == 'students' %}is-on{% endif %}">{% trans "Most students" %}</a>
+      <a href="?sort=new{% if query %}&q={{ query }}{% endif %}{% if team %}&team={{ team }}{% endif %}"
+         class="ms-tab {% if sort == 'new' %}is-on{% endif %}">{% trans "Newest" %}</a>
+    </div>
+  </div>
+
   {% include "includes/guest_cta.html" %}
 
   <!-- GRID -->
   <div class="ms-grid">
     {% for master in masters %}
-    <a href="{% url 'masters-detail' master.id %}" class="ms-card">
+    <a href="{% url 'masters-detail' master.id %}"
+       class="ms-card {% if master.is_powerty %}ms-card--team{% endif %}">
+      {% if master.is_powerty %}
+      <div class="ms-card-ribbon">
+        <i class="bi bi-patch-check-fill"></i>
+        {% if master.powerty_role %}{{ master.powerty_role }}{% else %}{% trans "Powerty team" %}{% endif %}
+      </div>
+      {% endif %}
       <div class="ms-card-top">
-        <img src="{{ master.profile.image_url }}" alt="{{ master.name }}" class="ms-avatar">
+        <div class="ms-avatar-wrap">
+          <img src="{{ master.portrait_url }}" alt="{{ master.name }}" class="ms-avatar">
+          {% if master.accepting_students %}
+          <span class="ms-open-dot" title="{% trans 'Accepting new students' %}"></span>
+          {% endif %}
+        </div>
         <p class="ms-name">{{ master.name }}</p>
-        <span class="ms-subject">{{ master.subject }}</span>
+        {% if master.headline %}<p class="ms-headline">{{ master.headline }}</p>{% endif %}
+        <div class="ms-subjects">
+          {% for name in master.subject_names|slice:":3" %}
+            <span class="ms-subject">{{ name }}</span>
+          {% endfor %}
+          {% if master.subject_names|length > 3 %}
+            <span class="ms-subject ms-subject--more">+{{ master.subject_names|length|add:"-3" }}</span>
+          {% endif %}
+        </div>
+        <div class="ms-rating">
+          {% if master.review_count %}
+            <span class="ms-stars" aria-label="{{ master.avg_rating|floatformat:1 }} / {{ max_stars }}">
+              <span class="ms-stars-bg">★★★★★★★★★★</span>
+              <span class="ms-stars-fg" style="width:{{ master.star_percent }}%">★★★★★★★★★★</span>
+            </span>
+            <span class="ms-rating-num">{{ master.avg_rating|floatformat:1 }}</span>
+            <span class="ms-rating-cnt">({{ master.review_count }})</span>
+          {% else %}
+            <span class="ms-rating--none"><i class="bi bi-star"></i> {% trans "No student ratings yet" %}</span>
+          {% endif %}
+        </div>
         <p class="ms-desc">{{ master.description }}</p>
       </div>
       <div class="ms-card-footer">
-        <div class="ms-stat">
-          <div class="ms-stat-num">{{ master.practice_count }}</div>
-          <div class="ms-stat-lbl">{% trans "Practices" %}</div>
-        </div>
         <div class="ms-stat">
           <div class="ms-stat-num">{{ master.student_count_live }}</div>
           <div class="ms-stat-lbl">{% trans "Students" %}</div>
         </div>
         <div class="ms-stat">
-          <div class="ms-stat-num" style="font-size:0.95rem;">{{ master.avg_rating|floatformat:1 }}</div>
-          <div class="ms-stat-lbl">{% trans "Rating" %}</div>
+          <div class="ms-stat-num">
+            {% with tenure=master.platform_tenure %}
+              {% if tenure.0 %}{{ tenure.0 }}{% trans "y" %} {{ tenure.1 }}{% trans "mo" %}
+              {% elif tenure.1 %}{{ tenure.1 }}{% trans "mo" %}
+              {% else %}{% trans "new" %}{% endif %}
+            {% endwith %}
+          </div>
+          <div class="ms-stat-lbl">{% trans "On Powerty" %}</div>
+        </div>
+        <div class="ms-stat">
+          <div class="ms-stat-num">{{ master.contribution_score }}</div>
+          <div class="ms-stat-lbl">{% trans "Contribution" %}</div>
         </div>
         <span class="ms-view-btn">{% trans "View" %} <i class="bi bi-arrow-right"></i></span>
       </div>
@@ -196,9 +331,16 @@
     {% empty %}
     <div class="ms-empty">
       <i class="bi bi-people"></i>
-      <h3>{% trans "No masters yet" %}</h3>
-      <p>{% trans "Be the first to create a Master profile and share your knowledge." %}</p>
-      {% if user.is_authenticated %}
+      <h3>{% if query or team %}{% trans "No masters match that" %}{% else %}{% trans "No masters yet" %}{% endif %}</h3>
+      <p>
+        {% if query or team %}
+          {% trans "Try another subject, or clear the filters." %}
+          <a href="{% url 'masters-home' %}" style="color:var(--accent);">{% trans "Show everyone" %} →</a>
+        {% else %}
+          {% trans "Be the first to create a Master profile and share your knowledge." %}
+        {% endif %}
+      </p>
+      {% if user.is_authenticated and not query and not team %}
         <a href="{% url 'masters-create' %}" class="btn-auth-primary text-decoration-none py-2 px-4 mt-3 d-inline-block">
           {% trans "Become a Master" %}
         </a>

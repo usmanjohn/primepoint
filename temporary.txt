@@ -1,0 +1,6 @@
+Note: Do not execute these, I will say explicitly when to do.
+
+Examprep section has answers, and most of them the first choice, mix them to make student think. 
+Move homework entirely inside classrom, would be better if all can be inside classrom, easily, like assigning homeworks, manage students, manage payments etc. You can remove those features from other places, maybe you will just add my classrom button to my profile page. 
+So since homeworks, students, payments, notes, links (link to the video or something will be in the classrom only, please make the page very convenient for masters and students). 
+THen improve homework assignments process easier, for example, when an english master tries to assign homework practice, only english related practices should be in choice, not like russian or sat practices. What is more, please include corners, examprep, tutorials, etc in the homework, so that master will not only give practice but can include those other stuff. Or maybe even better that when a tutorial will be assigned, their relative practice and corner will be included. 

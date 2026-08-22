@@ -1,61 +1,70 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
 
-{% block title %}{% if master %}Edit Profile{% else %}Become a Master{% endif %} — CORE{% endblock %}
+{% block title %}{% if master %}{% trans "Edit Profile" %}{% else %}{% trans "Become a Master" %}{% endif %} — CORE{% endblock %}
 
 {% block extra_css %}
 <style>
-.mf-wrap {
-  max-width: 640px;
-  margin: 0 auto;
-}
+.mf-wrap { max-width: 780px; margin: 0 auto; }
 .mf-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
   overflow: hidden;
 }
-.mf-card-header {
-  padding: 1.5rem 2rem;
-  border-bottom: 1px solid var(--border);
-}
+.mf-card-header { padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); }
 .mf-card-header h1 {
   font-family: 'Syne', sans-serif;
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--text);
-  margin: 0 0 0.2rem;
+  font-size: 1.35rem; font-weight: 700; color: var(--text); margin: 0 0 0.2rem;
 }
-.mf-card-header p {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin: 0;
-}
+.mf-card-header p { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
 .mf-card-body { padding: 1.75rem 2rem; }
-.mf-field { margin-bottom: 1.25rem; }
+
+.mf-group { margin-bottom: 2rem; }
+.mf-group-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.9rem; font-weight: 700; color: var(--text);
+  margin: 0 0 0.25rem; display: flex; align-items: center; gap: 0.4rem;
+}
+.mf-group-hint { font-size: 0.78rem; color: var(--text-muted); margin: 0 0 1.1rem; }
+
+.mf-field { margin-bottom: 1.15rem; }
 .mf-label {
   display: block;
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--text-muted);
-  margin-bottom: 0.45rem;
+  font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  color: var(--text-muted); margin-bottom: 0.4rem;
 }
 .mf-field .form-core { width: 100%; }
 .mf-field .errorlist {
-  list-style: none;
-  padding: 0;
-  margin: 0.35rem 0 0;
-  font-size: 0.78rem;
-  color: var(--danger);
+  list-style: none; padding: 0; margin: 0.35rem 0 0;
+  font-size: 0.78rem; color: var(--danger);
+}
+.mf-check { display: flex; align-items: center; gap: 0.5rem; }
+.mf-check input { width: 1.05rem; height: 1.05rem; }
+.mf-check label { font-size: 0.85rem; color: var(--text); margin: 0; }
+
+/* Inline rows: a fixed handful of blank slots, no "add row" script. */
+.mf-row {
+  border: 1px solid var(--border); border-radius: 12px;
+  padding: 1rem 1.1rem; margin-bottom: 0.75rem; background: var(--surface-2);
+}
+.mf-row-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(180px,100%),1fr));
+  gap: 0.75rem;
+}
+.mf-row-grid .mf-field { margin-bottom: 0; }
+.mf-row .mf-del {
+  display: flex; align-items: center; gap: 0.4rem;
+  font-size: 0.76rem; color: var(--text-muted); margin-top: 0.7rem;
 }
 .mf-actions {
-  display: flex;
-  gap: 0.75rem;
-  padding-top: 0.5rem;
-  border-top: 1px solid var(--border);
-  margin-top: 0.5rem;
+  display: flex; gap: 0.75rem; flex-wrap: wrap;
+  padding-top: 1rem; border-top: 1px solid var(--border); margin-top: 0.5rem;
+}
+@media (max-width: 576px) {
+  .mf-card-body { padding: 1.25rem 1.1rem; }
+  .mf-card-header { padding: 1.25rem 1.1rem; }
 }
 </style>
 {% endblock %}
@@ -63,40 +72,123 @@
 {% block content %}
   <nav class="mb-4">
     <a href="{% url 'masters-home' %}" class="btn-auth-outline text-decoration-none">
-      <i class="bi bi-arrow-left"></i><span class="d-none d-sm-inline ms-2">Back to Masters</span>
+      <i class="bi bi-arrow-left"></i><span class="d-none d-sm-inline ms-2">{% trans "Back to Masters" %}</span>
     </a>
   </nav>
 
   <div class="mf-wrap">
     <div class="mf-card">
       <div class="mf-card-header">
-        <h1>{% if master %}Edit Master Profile{% else %}Become a Master{% endif %}</h1>
-        <p>{% if master %}Update your public profile information.{% else %}Create your profile and start building practice sessions.{% endif %}</p>
+        <h1>{% if master %}{% trans "Edit Master Profile" %}{% else %}{% trans "Become a Master" %}{% endif %}</h1>
+        <p>
+          {% if master %}
+            {% trans "Everything here is public. The fuller it is, the more likely a pupil is to choose you." %}
+          {% else %}
+            {% trans "Create your profile and start building practice sessions." %}
+          {% endif %}
+        </p>
       </div>
       <div class="mf-card-body">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
           {% csrf_token %}
 
           {% for field in form %}
-          <div class="mf-field">
-            <label class="mf-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
-            {{ field }}
-            {% if field.errors %}
-              <ul class="errorlist">
-                {% for error in field.errors %}<li>{{ error }}</li>{% endfor %}
-              </ul>
+            {% if field.name == 'accepting_students' %}
+            <div class="mf-field mf-check">
+              {{ field }}
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            </div>
+            {% else %}
+            <div class="mf-field">
+              <label class="mf-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+              {{ field }}
+              {% if field.errors %}
+                <ul class="errorlist">
+                  {% for error in field.errors %}<li>{{ error }}</li>{% endfor %}
+                </ul>
+              {% endif %}
+              {% if field.help_text %}
+                <small class="text-muted" style="font-size:0.75rem;">{{ field.help_text }}</small>
+              {% endif %}
+            </div>
             {% endif %}
-            {% if field.help_text %}
-              <small class="text-muted" style="font-size:0.75rem;">{{ field.help_text }}</small>
-            {% endif %}
-          </div>
           {% endfor %}
+
+          {% if subject_formset %}
+          <div class="mf-group">
+            <h2 class="mf-group-title">
+              <i class="bi bi-easel2-fill" style="color:var(--accent);"></i>
+              {% trans "What I teach" %}
+            </h2>
+            <p class="mf-group-hint">
+              {% trans "One row per subject — add as many as you teach. Leave a row blank to skip it; tick Delete to remove one." %}
+            </p>
+            {{ subject_formset.management_form }}
+            {% for sub in subject_formset %}
+            <div class="mf-row">
+              {{ sub.id }}
+              <div class="mf-row-grid">
+                {% for field in sub.visible_fields %}
+                  {% if field.name != 'DELETE' %}
+                  <div class="mf-field">
+                    <label class="mf-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                      <ul class="errorlist">{% for e in field.errors %}<li>{{ e }}</li>{% endfor %}</ul>
+                    {% endif %}
+                  </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              {% if sub.instance.pk %}
+              <div class="mf-del">{{ sub.DELETE }} <label for="{{ sub.DELETE.id_for_label }}">{% trans "Delete this subject" %}</label></div>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          {% if credential_formset %}
+          <div class="mf-group">
+            <h2 class="mf-group-title">
+              <i class="bi bi-patch-check-fill" style="color:var(--accent);"></i>
+              {% trans "Diplomas, certificates and experience" %}
+            </h2>
+            <p class="mf-group-hint">
+              {% trans "Attach the scan where you have one — it is what convinces a parent." %}
+            </p>
+            {{ credential_formset.management_form }}
+            {% for cred in credential_formset %}
+            <div class="mf-row">
+              {{ cred.id }}
+              <div class="mf-row-grid">
+                {% for field in cred.visible_fields %}
+                  {% if field.name != 'DELETE' %}
+                  <div class="mf-field">
+                    <label class="mf-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                      <ul class="errorlist">{% for e in field.errors %}<li>{{ e }}</li>{% endfor %}</ul>
+                    {% endif %}
+                  </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              {% if cred.instance.pk %}
+              <div class="mf-del">{{ cred.DELETE }} <label for="{{ cred.DELETE.id_for_label }}">{% trans "Delete this entry" %}</label></div>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+          {% endif %}
 
           <div class="mf-actions">
             <button type="submit" class="btn-auth-primary border-0 py-2 px-4">
-              {% if master %}<i class="bi bi-check2 me-1"></i>Save Changes{% else %}<i class="bi bi-person-check me-1"></i>Create Profile{% endif %}
+              {% if master %}<i class="bi bi-check2 me-1"></i>{% trans "Save Changes" %}
+              {% else %}<i class="bi bi-person-check me-1"></i>{% trans "Create Profile" %}{% endif %}
             </button>
-            <a href="{% url 'masters-home' %}" class="btn-auth-outline text-decoration-none py-2 px-4">Cancel</a>
+            <a href="{% if master %}{% url 'masters-detail' master.pk %}{% else %}{% url 'masters-home' %}{% endif %}"
+               class="btn-auth-outline text-decoration-none py-2 px-4">{% trans "Cancel" %}</a>
           </div>
         </form>
       </div>

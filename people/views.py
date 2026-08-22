@@ -143,7 +143,7 @@ def profile_update(request):
 
 @login_required
 def update_panda_masters(request):
-    from masters.models import StudentEnrollment
+    from masters.models import MasterReview, StudentEnrollment
     panda = getattr(request.user.profile, 'panda', None)
     if not panda or request.method != 'POST':
         return redirect('profile')
@@ -161,6 +161,12 @@ def update_panda_masters(request):
         )
     for master_id in removed_ids:
         StudentEnrollment.objects.filter(master_id=master_id, panda=panda).delete()
+        # Leaving a class also withdraws the rating: only current students rate.
+        MasterReview.objects.filter(master_id=master_id, panda=panda).delete()
+
+    # Student counts and contribution scores are cached on the Master row.
+    for master in Master.objects.filter(pk__in=new_ids | removed_ids):
+        master.recalc_stats()
 
     messages.success(request, 'Your masters have been updated.')
     return redirect('profile')

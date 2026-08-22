@@ -20,7 +20,7 @@
 }
 .mdt-hero-banner {
   height: 110px;
-  background: linear-gradient(135deg, var(--accent-glow) 0%, var(--chrome) 100%);
+  background: linear-gradient(135deg, var(--accent-glow) 0%, var(--surface-2) 100%);
   position: relative;
 }
 .mdt-hero-body {
@@ -61,7 +61,7 @@
 }
 .mdt-chip-cat {
   font-size: 0.72rem; font-weight: 600;
-  color: var(--text-muted); background: var(--chrome);
+  color: var(--text-muted); background: var(--surface-2);
   padding: 0.2rem 0.7rem; border-radius: 5px;
   border: 1px solid var(--border);
 }
@@ -322,6 +322,213 @@
   .mdt-avatar-wrap { margin-top: -36px; }
   .mdt-hw-counts { display: none; }
 }
+
+/* ── Powerty badge & hero extras ────────────────────────────── */
+.mdt-hero--team .mdt-hero-banner {
+  background: linear-gradient(135deg, rgba(245,158,11,0.35) 0%, rgba(251,191,36,0.12) 100%);
+}
+.mdt-hero--team { border-color: rgba(245,158,11,0.45); }
+.mdt-hero--team .mdt-avatar { box-shadow: 0 0 0 3px #fbbf24; }
+.mdt-badge-team {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+  color: #422006;
+  font-size: 0.68rem; font-weight: 800;
+  letter-spacing: 0.6px; text-transform: uppercase;
+  padding: 0.24rem 0.7rem; border-radius: 999px;
+}
+.mdt-badge-open {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  background: rgba(34,197,94,0.14); color: #16a34a;
+  font-size: 0.68rem; font-weight: 700;
+  padding: 0.24rem 0.7rem; border-radius: 999px;
+}
+.mdt-badge-closed {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  background: var(--surface-2); color: var(--text-muted);
+  font-size: 0.68rem; font-weight: 700;
+  padding: 0.24rem 0.7rem; border-radius: 999px;
+}
+.mdt-headline { font-size: 0.88rem; color: var(--text-muted); margin: 0 0 0.5rem; }
+.mdt-meta-row {
+  display: flex; flex-wrap: wrap; gap: 0.9rem;
+  font-size: 0.78rem; color: var(--text-muted); margin-top: 0.5rem;
+}
+.mdt-meta-row span { display: inline-flex; align-items: center; gap: 0.3rem; }
+.mdt-avatar--big { width: 118px; height: 118px; }
+
+/* ── Stars ──────────────────────────────────────────────────── */
+.mdt-stars { position: relative; display: inline-block; line-height: 1; }
+.mdt-stars-bg, .mdt-stars-fg { font-size: 0.95rem; letter-spacing: 2px; white-space: nowrap; }
+.mdt-stars-bg { color: var(--border); }
+.mdt-stars-fg { position: absolute; inset: 0 auto 0 0; overflow: hidden; color: #f59e0b; }
+.mdt-hero-rating { display: flex; align-items: center; gap: 0.45rem; margin-top: 0.55rem; }
+.mdt-hero-rating b { font-family: 'Syne', sans-serif; font-size: 1.05rem; color: var(--text); }
+.mdt-hero-rating small { font-size: 0.75rem; color: var(--text-muted); }
+
+/* ── Subjects taught ────────────────────────────────────────── */
+.mdt-subj-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(240px,100%),1fr));
+  gap: 0.75rem;
+}
+.mdt-subj {
+  background: var(--surface); border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 12px; padding: 0.9rem 1.1rem;
+}
+.mdt-subj-name {
+  font-family: 'Syne', sans-serif; font-weight: 700;
+  font-size: 0.92rem; color: var(--text); margin: 0 0 0.2rem;
+}
+.mdt-subj-level { font-size: 0.74rem; font-weight: 600; color: var(--accent); }
+.mdt-subj-note { font-size: 0.78rem; color: var(--text-muted); margin: 0.35rem 0 0; line-height: 1.5; }
+
+/* ── Credentials ────────────────────────────────────────────── */
+.mdt-cred-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(250px,100%),1fr));
+  gap: 0.75rem;
+}
+.mdt-cred {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1rem 1.1rem;
+  display: flex; gap: 0.75rem; align-items: flex-start;
+}
+.mdt-cred-icon {
+  flex-shrink: 0; width: 34px; height: 34px; border-radius: 9px;
+  background: var(--accent-glow); color: var(--accent);
+  display: flex; align-items: center; justify-content: center; font-size: 0.95rem;
+}
+.mdt-cred-title { font-weight: 700; font-size: 0.86rem; color: var(--text); margin: 0; }
+.mdt-cred-sub { font-size: 0.75rem; color: var(--text-muted); margin: 0.15rem 0 0; }
+.mdt-cred-note { font-size: 0.75rem; color: var(--text-muted); margin: 0.3rem 0 0; line-height: 1.5; }
+.mdt-cred-scan {
+  display: block; margin-top: 0.55rem; max-width: 100%;
+  border-radius: 8px; border: 1px solid var(--border);
+}
+
+/* ── Join / contact ─────────────────────────────────────────── */
+.mdt-join {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.25rem 1.5rem;
+}
+.mdt-join-text {
+  color: var(--text-muted); font-size: 0.88rem; line-height: 1.7;
+  white-space: pre-line; margin: 0 0 1rem;
+}
+.mdt-contact { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.mdt-contact a {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.8rem; font-weight: 600; text-decoration: none;
+  color: var(--text); background: var(--surface-2);
+  border: 1px solid var(--border); border-radius: 9px;
+  padding: 0.45rem 0.85rem;
+}
+.mdt-contact a:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── Contribution breakdown ─────────────────────────────────── */
+.mdt-contrib {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; overflow: hidden;
+}
+.mdt-contrib-hd {
+  display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap;
+  padding: 1.1rem 1.35rem; border-bottom: 1px solid var(--border);
+}
+.mdt-contrib-score {
+  font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800;
+  color: var(--accent); line-height: 1;
+}
+.mdt-contrib-why { font-size: 0.78rem; color: var(--text-muted); margin: 0; }
+.mdt-contrib-row {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.6rem 1.35rem; border-bottom: 1px solid var(--border);
+  font-size: 0.82rem;
+}
+.mdt-contrib-row:last-child { border-bottom: none; }
+.mdt-contrib-row .lbl { flex: 1; color: var(--text-muted); }
+.mdt-contrib-row .cnt { font-weight: 700; color: var(--text); min-width: 3rem; text-align: right; }
+.mdt-contrib-row .pts { min-width: 4.5rem; text-align: right; color: var(--accent); font-weight: 700; }
+.mdt-contrib-row--zero { opacity: 0.5; }
+
+/* ── Reviews ────────────────────────────────────────────────── */
+.mdt-rev-summary {
+  display: grid; grid-template-columns: minmax(150px, 210px) 1fr;
+  gap: 1.5rem; align-items: center;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.35rem 1.5rem; margin-bottom: 1rem;
+}
+.mdt-rev-big {
+  font-family: 'Syne', sans-serif; font-size: 2.6rem; font-weight: 800;
+  color: var(--text); line-height: 1;
+}
+.mdt-rev-big span { font-size: 1.1rem; color: var(--text-muted); font-weight: 700; }
+.mdt-rev-count { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.35rem; }
+.mdt-hist-row { display: flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; }
+.mdt-hist-star { width: 1.4rem; text-align: right; color: var(--text-muted); }
+.mdt-hist-track {
+  display: block; flex: 1; height: 7px; border-radius: 4px;
+  background: var(--border); overflow: hidden;
+}
+/* display:block matters: these are spans, and an inline box ignores width. */
+.mdt-hist-fill { display: block; height: 100%; background: #f59e0b; border-radius: 4px; }
+.mdt-hist-n { width: 1.6rem; color: var(--text-muted); }
+
+.mdt-rev-form {
+  background: var(--surface); border: 1px solid var(--accent);
+  border-radius: 14px; padding: 1.25rem 1.5rem; margin-bottom: 1.1rem;
+}
+.mdt-rev-form h3 {
+  font-family: 'Syne', sans-serif; font-size: 0.92rem;
+  font-weight: 700; color: var(--text); margin: 0 0 0.15rem;
+}
+.mdt-rev-form p.hint { font-size: 0.76rem; color: var(--text-muted); margin: 0 0 0.9rem; }
+
+/* Pure-CSS 10-star picker: the inputs are listed 10 → 1 and drawn
+   right-to-left, so `input:checked ~ label` lights every star below it.
+   No JavaScript, and it is a plain radio group for keyboard and screen
+   readers. */
+.mdt-rate {
+  display: inline-flex; flex-direction: row-reverse;
+  justify-content: flex-end; gap: 0.1rem; margin-bottom: 0.85rem;
+}
+.mdt-rate input {
+  position: absolute; opacity: 0; width: 1px; height: 1px;
+}
+.mdt-rate label {
+  font-size: 1.6rem; line-height: 1; cursor: pointer;
+  color: var(--border); padding: 0 0.05rem;
+  transition: color 0.12s ease, transform 0.12s ease;
+}
+.mdt-rate input:checked ~ label { color: #f59e0b; }
+.mdt-rate label:hover, .mdt-rate label:hover ~ label { color: #fbbf24; }
+.mdt-rate input:focus-visible + label { outline: 2px solid var(--accent); border-radius: 4px; }
+.mdt-rate-scale {
+  display: flex; justify-content: space-between;
+  font-size: 0.68rem; color: var(--text-muted); max-width: 320px; margin-bottom: 0.85rem;
+}
+
+.mdt-rev-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.mdt-rev {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1rem 1.2rem;
+}
+.mdt-rev-head { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
+.mdt-rev-avatar { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; }
+.mdt-rev-who { font-weight: 700; font-size: 0.84rem; color: var(--text); }
+.mdt-rev-when { font-size: 0.7rem; color: var(--text-muted); }
+.mdt-rev-score {
+  margin-left: auto; font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 0.9rem; color: #f59e0b;
+}
+.mdt-rev-body { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; margin: 0; }
+.mdt-rev-mine { border-color: var(--accent); }
+
+@media (max-width: 640px) {
+  .mdt-rev-summary { grid-template-columns: 1fr; gap: 1rem; text-align: center; }
+  .mdt-rate label { font-size: 1.35rem; }
+  .mdt-avatar--big { width: 92px; height: 92px; }
+}
+
 </style>
 {% endblock %}
 
@@ -336,24 +543,57 @@
 </nav>
 
 <!-- HERO -->
-<div class="mdt-hero">
+<div class="mdt-hero {% if master.is_powerty %}mdt-hero--team{% endif %}">
   <div class="mdt-hero-banner"></div>
   <div class="mdt-hero-body">
 
     <div class="mdt-avatar-wrap">
-      <img src="{{ master.profile.image_url }}" alt="{{ master.name }}" class="mdt-avatar">
+      <img src="{{ master.portrait_url }}" alt="{{ master.name }}" class="mdt-avatar mdt-avatar--big">
     </div>
 
     <div class="mdt-identity">
       <h1 class="mdt-name">{{ master.name }}</h1>
+      {% if master.headline %}<p class="mdt-headline">{{ master.headline }}</p>{% endif %}
+
       <div class="mdt-chips">
-        <span class="mdt-chip-subject">{{ master.subject }}</span>
+        {% if master.is_powerty %}
+        <span class="mdt-badge-team" title="{% trans 'Part of the Powerty education staff' %}">
+          <i class="bi bi-patch-check-fill"></i>
+          {% if master.powerty_role %}{{ master.powerty_role }}{% else %}{% trans "Powerty team" %}{% endif %}
+        </span>
+        {% endif %}
+        {% for name in master.subject_names %}
+          <span class="mdt-chip-subject">{{ name }}</span>
+        {% endfor %}
         {% if master.category %}<span class="mdt-chip-cat">{{ master.category }}</span>{% endif %}
+        {% if master.accepting_students %}
+          <span class="mdt-badge-open"><i class="bi bi-door-open-fill"></i> {% trans "Accepting students" %}</span>
+        {% else %}
+          <span class="mdt-badge-closed"><i class="bi bi-door-closed"></i> {% trans "Not taking students now" %}</span>
+        {% endif %}
       </div>
-      <a href="{% url 'user_profile' master.profile.user.username %}" class="mdt-profile-link">
-        <i class="bi bi-person-circle"></i>
-        @{{ master.profile.user.username }}
-      </a>
+
+      {% if master.review_count %}
+      <div class="mdt-hero-rating">
+        <span class="mdt-stars" aria-label="{{ master.avg_rating|floatformat:1 }} / {{ max_stars }}">
+          <span class="mdt-stars-bg">★★★★★★★★★★</span>
+          <span class="mdt-stars-fg" style="width:{{ master.star_percent }}%">★★★★★★★★★★</span>
+        </span>
+        <b>{{ master.avg_rating|floatformat:1 }}</b>
+        <small>/ {{ max_stars }} · {% blocktrans count n=master.review_count %}{{ n }} student review{% plural %}{{ n }} student reviews{% endblocktrans %}</small>
+      </div>
+      {% endif %}
+
+      <div class="mdt-meta-row">
+        <a href="{% url 'user_profile' master.profile.user.username %}" class="mdt-profile-link">
+          <i class="bi bi-person-circle"></i> @{{ master.profile.user.username }}
+        </a>
+        {% if master.location %}<span><i class="bi bi-geo-alt"></i> {{ master.location }}</span>{% endif %}
+        {% if master.lesson_format %}<span><i class="bi bi-camera-video"></i> {{ master.get_lesson_format_display }}</span>{% endif %}
+        {% if master.language_list %}
+          <span><i class="bi bi-translate"></i> {{ master.language_list|join:", " }}</span>
+        {% endif %}
+      </div>
     </div>
 
     <div class="mdt-hero-actions">
@@ -365,7 +605,7 @@
         <i class="bi bi-award"></i> {% trans "Certificate" %}
       </a>
       <a href="{% url 'update-master' master.pk %}" class="btn-core-outline text-decoration-none" style="font-size:0.82rem;">
-        <i class="bi bi-pencil"></i> {% trans "Edit" %}
+        <i class="bi bi-pencil"></i> {% trans "Edit profile" %}
       </a>
       <form method="post" action="{% url 'delete-master' master.pk %}" class="m-0">
         {% csrf_token %}
@@ -375,6 +615,10 @@
           <i class="bi bi-trash"></i> {% trans "Delete" %}
         </button>
       </form>
+      {% elif master.accepting_students %}
+      <a href="#mdt-join" class="btn-core-primary text-decoration-none" style="font-size:0.82rem;">
+        <i class="bi bi-person-plus-fill"></i> {% trans "Become a student" %}
+      </a>
       {% endif %}
     </div>
 
@@ -384,9 +628,11 @@
 <!-- STATS -->
 <div class="mdt-stats">
   <div class="mdt-stat">
-    <div class="mdt-stat-icon"><i class="bi bi-book-fill"></i></div>
-    <div class="mdt-stat-num">{{ practices|length }}</div>
-    <div class="mdt-stat-lbl">{% trans "Practices" %}</div>
+    <div class="mdt-stat-icon"><i class="bi bi-star-fill"></i></div>
+    <div class="mdt-stat-num">
+      {% if master.review_count %}{{ master.avg_rating|floatformat:1 }}{% else %}—{% endif %}
+    </div>
+    <div class="mdt-stat-lbl">{% trans "Student rating" %}</div>
   </div>
   <div class="mdt-stat">
     <div class="mdt-stat-icon"><i class="bi bi-people-fill"></i></div>
@@ -394,43 +640,309 @@
     <div class="mdt-stat-lbl">{% trans "Students" %}</div>
   </div>
   <div class="mdt-stat">
-    <div class="mdt-stat-icon"><i class="bi bi-star-fill"></i></div>
-    <div class="mdt-stat-num">{{ master.avg_rating|floatformat:1 }}</div>
-    <div class="mdt-stat-lbl">{% trans "Avg Rating" %}</div>
-  </div>
-  <div class="mdt-stat">
-    <div class="mdt-stat-icon"><i class="bi bi-graph-up-arrow"></i></div>
-    <div class="mdt-stat-num">{{ avg_student_score|floatformat:0 }}%</div>
-    <div class="mdt-stat-lbl">{% trans "Avg Score" %}</div>
-  </div>
-  <div class="mdt-stat">
-    <div class="mdt-stat-icon"><i class="bi bi-question-circle-fill"></i></div>
-    <div class="mdt-stat-num">{{ total_questions }}</div>
-    <div class="mdt-stat-lbl">{% trans "Questions" %}</div>
+    <div class="mdt-stat-icon"><i class="bi bi-mortarboard-fill"></i></div>
+    <div class="mdt-stat-num">
+      {% if master.years_teaching is not None %}{{ master.years_teaching }}{% else %}—{% endif %}
+    </div>
+    <div class="mdt-stat-lbl">{% trans "Years teaching" %}</div>
   </div>
   <div class="mdt-stat">
     <div class="mdt-stat-icon"><i class="bi bi-hourglass-split"></i></div>
     <div class="mdt-stat-num">
-      {% if experience_years > 0 %}{{ experience_years }}{% else %}&lt;1{% endif %}
+      {% with tenure=master.platform_tenure %}
+        {% if tenure.0 %}{{ tenure.0 }}{% trans "y" %} {{ tenure.1 }}{% trans "mo" %}
+        {% elif tenure.1 %}{{ tenure.1 }}{% trans "mo" %}
+        {% else %}{% trans "new" %}{% endif %}
+      {% endwith %}
     </div>
-    <div class="mdt-stat-lbl">{% trans "Yrs Active" %}</div>
+    <div class="mdt-stat-lbl">{% trans "On Powerty" %}</div>
+  </div>
+  <div class="mdt-stat">
+    <div class="mdt-stat-icon"><i class="bi bi-collection-fill"></i></div>
+    <div class="mdt-stat-num">{{ master.content_count }}</div>
+    <div class="mdt-stat-lbl">{% trans "Items made" %}</div>
+  </div>
+  <div class="mdt-stat">
+    <div class="mdt-stat-icon"><i class="bi bi-person-check-fill"></i></div>
+    <div class="mdt-stat-num">{{ master.learner_count }}</div>
+    <div class="mdt-stat-lbl">{% trans "Pupils reached" %}</div>
+  </div>
+  <div class="mdt-stat">
+    <div class="mdt-stat-icon"><i class="bi bi-graph-up-arrow"></i></div>
+    <div class="mdt-stat-num">{{ avg_student_score|floatformat:0 }}%</div>
+    <div class="mdt-stat-lbl">{% trans "Avg score" %}</div>
+  </div>
+  <div class="mdt-stat">
+    <div class="mdt-stat-icon"><i class="bi bi-trophy-fill"></i></div>
+    <div class="mdt-stat-num">{{ master.contribution_score }}</div>
+    <div class="mdt-stat-lbl">{% trans "Contribution" %}</div>
   </div>
 </div>
 
 <!-- ABOUT -->
-{% if master.profile.biography or master.description %}
+{% if master.about or master.profile.biography or master.description %}
 <div class="mdt-section">
   <div class="mdt-section-hdr">
     <h2 class="mdt-section-title">
       <i class="bi bi-person-circle me-1" style="color:var(--accent);"></i>
-      {% trans "About" %}
+      {% trans "About me" %}
     </h2>
   </div>
-  <div class="mdt-about">
-    {% if master.profile.biography %}{{ master.profile.biography }}{% else %}{{ master.description }}{% endif %}
+  <div class="mdt-about" style="white-space:pre-line;">
+    {% if master.about %}{{ master.about }}
+    {% elif master.profile.biography %}{{ master.profile.biography }}
+    {% else %}{{ master.description }}{% endif %}
   </div>
 </div>
 {% endif %}
+
+<!-- WHAT I TEACH -->
+{% if master.subjects.all %}
+<div class="mdt-section">
+  <div class="mdt-section-hdr">
+    <h2 class="mdt-section-title">
+      <i class="bi bi-easel2-fill me-1" style="color:var(--accent);"></i>
+      {% trans "What I teach" %}
+    </h2>
+  </div>
+  <div class="mdt-subj-grid">
+    {% for s in master.subjects.all %}
+    <div class="mdt-subj">
+      <p class="mdt-subj-name">{{ s.name }}</p>
+      {% if s.level %}<span class="mdt-subj-level">{{ s.level }}</span>{% endif %}
+      {% if s.note %}<p class="mdt-subj-note">{{ s.note }}</p>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+<!-- CREDENTIALS -->
+{% if master.credentials.all %}
+<div class="mdt-section">
+  <div class="mdt-section-hdr">
+    <h2 class="mdt-section-title">
+      <i class="bi bi-patch-check-fill me-1" style="color:var(--accent);"></i>
+      {% trans "Diplomas and certificates" %}
+    </h2>
+  </div>
+  <div class="mdt-cred-grid">
+    {% for c in master.credentials.all %}
+    <div class="mdt-cred">
+      <div class="mdt-cred-icon"><i class="bi {{ c.icon }}"></i></div>
+      <div style="min-width:0;">
+        <p class="mdt-cred-title">{{ c.title }}</p>
+        <p class="mdt-cred-sub">
+          {{ c.get_kind_display }}{% if c.issuer %} · {{ c.issuer }}{% endif %}{% if c.year %} · {{ c.year }}{% endif %}
+        </p>
+        {% if c.note %}<p class="mdt-cred-note">{{ c.note }}</p>{% endif %}
+        {% if c.image %}
+        <a href="{{ c.image.url }}" target="_blank" rel="noopener">
+          <img src="{{ c.image.url }}" alt="{{ c.title }}" class="mdt-cred-scan" loading="lazy">
+        </a>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+<!-- HOW TO JOIN -->
+{% if master.how_to_join or master.telegram or master.phone or master.public_email or master.website %}
+<div class="mdt-section" id="mdt-join">
+  <div class="mdt-section-hdr">
+    <h2 class="mdt-section-title">
+      <i class="bi bi-person-plus-fill me-1" style="color:var(--accent);"></i>
+      {% trans "How to become my student" %}
+    </h2>
+  </div>
+  <div class="mdt-join">
+    {% if master.how_to_join %}
+      <p class="mdt-join-text">{{ master.how_to_join }}</p>
+    {% else %}
+      <p class="mdt-join-text">{% trans "Get in touch and ask about a trial lesson." %}</p>
+    {% endif %}
+    {% if not master.accepting_students %}
+      <p class="mdt-join-text" style="color:#f59e0b;">
+        <i class="bi bi-info-circle"></i>
+        {% trans "This master is not taking new students at the moment." %}
+      </p>
+    {% endif %}
+    <div class="mdt-contact">
+      {% if master.telegram %}
+        <a href="https://t.me/{{ master.telegram }}" target="_blank" rel="noopener">
+          <i class="bi bi-telegram"></i> @{{ master.telegram }}</a>
+      {% endif %}
+      {% if master.phone %}
+        <a href="tel:{{ master.phone }}"><i class="bi bi-telephone-fill"></i> {{ master.phone }}</a>
+      {% endif %}
+      {% if master.public_email %}
+        <a href="mailto:{{ master.public_email }}"><i class="bi bi-envelope-fill"></i> {{ master.public_email }}</a>
+      {% endif %}
+      {% if master.website %}
+        <a href="{{ master.website }}" target="_blank" rel="noopener">
+          <i class="bi bi-globe2"></i> {% trans "Website" %}</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<!-- CONTRIBUTION -->
+<div class="mdt-section">
+  <div class="mdt-section-hdr">
+    <h2 class="mdt-section-title">
+      <i class="bi bi-trophy-fill me-1" style="color:var(--accent);"></i>
+      {% trans "Contribution to Powerty" %}
+    </h2>
+  </div>
+  <div class="mdt-contrib">
+    <div class="mdt-contrib-hd">
+      <span class="mdt-contrib-score">{{ master.contribution_score }}</span>
+      <p class="mdt-contrib-why">
+        {% trans "Points for everything published here — and for how many pupils actually worked through it." %}
+      </p>
+    </div>
+    {% for row in contribution.rows %}
+    <div class="mdt-contrib-row {% if not row.count %}mdt-contrib-row--zero{% endif %}">
+      <span class="lbl">{{ row.label }}</span>
+      <span class="cnt">{{ row.count }}</span>
+      <span class="pts">+{{ row.points }}</span>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<div class="mdt-section" id="mdt-reviews">
+  <div class="mdt-section-hdr">
+    <h2 class="mdt-section-title">
+      <i class="bi bi-chat-quote-fill me-1" style="color:var(--accent);"></i>
+      {% trans "Student ratings and reviews" %}
+    </h2>
+  </div>
+
+  {% if master.review_count %}
+  <div class="mdt-rev-summary">
+    <div>
+      <div class="mdt-rev-big">{{ master.avg_rating|floatformat:1 }}<span> / {{ max_stars }}</span></div>
+      <span class="mdt-stars" aria-hidden="true">
+        <span class="mdt-stars-bg">★★★★★★★★★★</span>
+        <span class="mdt-stars-fg" style="width:{{ master.star_percent }}%">★★★★★★★★★★</span>
+      </span>
+      <div class="mdt-rev-count">
+        {% blocktrans count n=master.review_count %}{{ n }} review from their own students{% plural %}{{ n }} reviews from their own students{% endblocktrans %}
+      </div>
+    </div>
+    <div>
+      {% for h in histogram %}
+      <div class="mdt-hist-row">
+        <span class="mdt-hist-star">{{ h.stars }}★</span>
+        <span class="mdt-hist-track"><span class="mdt-hist-fill" style="width:{{ h.percent }}%"></span></span>
+        <span class="mdt-hist-n">{{ h.count }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if is_student %}
+  <!-- Only this master's own pupils see this form. -->
+  <form method="post" action="{% url 'masters-review' master.pk %}" class="mdt-rev-form">
+    {% csrf_token %}
+    <h3>
+      {% if my_review %}{% trans "Edit your rating" %}{% else %}{% trans "Rate your master" %}{% endif %}
+    </h3>
+    <p class="hint">{% trans "Only students of this master can rate them. You can change your rating any time." %}</p>
+
+    <div class="mdt-rate">
+      {% for value in star_values %}
+      <input type="radio" name="stars" id="mdt-star-{{ value }}" value="{{ value }}"
+             {% if my_review.stars == value %}checked{% elif not my_review and value == max_stars %}checked{% endif %}>
+      <label for="mdt-star-{{ value }}" title="{{ value }} / {{ max_stars }}">★</label>
+      {% endfor %}
+    </div>
+    <div class="mdt-rate-scale">
+      <span>1 — {% trans "poor" %}</span>
+      <span>{{ max_stars }} — {% trans "excellent" %}</span>
+    </div>
+
+    {{ review_form.comment }}
+    <div class="d-flex flex-wrap gap-2 mt-3">
+      <button type="submit" class="btn-core-primary border-0">
+        <i class="bi bi-send-fill"></i>
+        {% if my_review %}{% trans "Update review" %}{% else %}{% trans "Post review" %}{% endif %}
+      </button>
+      {% if my_review %}
+      <button type="submit" form="mdt-rev-del" class="btn-core-outline border-0" style="color:#f87171;"
+              onclick="return confirm('{% trans "Remove your rating?" %}')">
+        <i class="bi bi-trash"></i> {% trans "Remove mine" %}
+      </button>
+      {% endif %}
+    </div>
+  </form>
+  {% if my_review %}
+  <form method="post" action="{% url 'masters-review-delete' master.pk %}" id="mdt-rev-del" class="d-none">
+    {% csrf_token %}
+    <input type="hidden" name="review" value="{{ my_review.pk }}">
+  </form>
+  {% endif %}
+  {% elif user.is_authenticated and not is_owner %}
+  <div class="mdt-empty mb-3">
+    <i class="bi bi-lock-fill me-1"></i>
+    {% trans "Only this master's own students can leave a rating." %}
+  </div>
+  {% endif %}
+
+  {% if reviews %}
+  <div class="mdt-rev-list" id="mdt-reviews-list">
+    {% for r in reviews %}
+    <div class="mdt-rev {% if r.panda_id == my_review.panda_id %}mdt-rev-mine{% endif %} {% if forloop.counter > 5 %}mdt-item-hidden{% endif %}">
+      <div class="mdt-rev-head">
+        <img src="{{ r.panda.profile.image_url }}" alt="" class="mdt-rev-avatar">
+        <div>
+          <div class="mdt-rev-who">
+            {{ r.panda.profile.first_name|default:r.panda.profile.user.username }}
+            {% if r.panda_id == my_review.panda_id %}<span class="mdt-rev-when">({% trans "you" %})</span>{% endif %}
+          </div>
+          <div class="mdt-rev-when">{{ r.updated_at|date:"d M Y" }}</div>
+        </div>
+        <div class="mdt-rev-score">{{ r.stars }}/{{ max_stars }}</div>
+      </div>
+      <span class="mdt-stars" aria-hidden="true" style="margin-bottom:.4rem;display:inline-block;">
+        <span class="mdt-stars-bg">★★★★★★★★★★</span>
+        <span class="mdt-stars-fg" style="width:{{ r.star_percent }}%">★★★★★★★★★★</span>
+      </span>
+      {% if r.comment %}<p class="mdt-rev-body">{{ r.comment|linebreaksbr }}</p>{% endif %}
+      {% if user.is_staff %}
+      <form method="post" action="{% url 'masters-review-delete' master.pk %}" class="mt-2">
+        {% csrf_token %}
+        <input type="hidden" name="review" value="{{ r.pk }}">
+        <button type="submit" class="mdt-icon-btn mdt-icon-btn--danger" title="{% trans 'Delete review' %}"
+                onclick="return confirm('{% trans "Delete this review?" %}')">
+          <i class="bi bi-trash"></i>
+        </button>
+      </form>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% if reviews|length > 5 %}
+  <button class="mdt-show-more" onclick="mdtExpand(this,'mdt-reviews-list',5)"
+          data-more="{% trans 'Show' %} {{ reviews|length|add:'-5' }} {% trans 'more' %}"
+          data-less="{% trans 'Show less' %}">
+    <i class="bi bi-chevron-down"></i>
+    <span>{% trans "Show" %} {{ reviews|length|add:"-5" }} {% trans "more" %}</span>
+  </button>
+  {% endif %}
+  {% elif not is_student %}
+  <div class="mdt-empty">
+    <i class="bi bi-chat-quote me-1"></i>
+    {% trans "No reviews yet." %}
+  </div>
+  {% endif %}
+</div>
 
 <!-- PRACTICES -->
 {% if practices or is_owner %}
@@ -439,6 +951,11 @@
     <h2 class="mdt-section-title">
       <i class="bi bi-book-half me-1" style="color:var(--accent);"></i>
       {% trans "Practices" %}
+      {% if practice_total > showcase_limit %}
+      <span style="font-weight:600;color:var(--text-muted);font-size:0.78rem;">
+        &nbsp;{% blocktrans with shown=showcase_limit total=practice_total %}{{ shown }} of {{ total }}{% endblocktrans %}
+      </span>
+      {% endif %}
     </h2>
     {% if is_owner %}
     <a href="{% url 'manage_practices' %}" class="btn-text-link" style="font-size:0.8rem;">
@@ -538,6 +1055,11 @@
     <h2 class="mdt-section-title">
       <i class="bi bi-journal-text me-1" style="color:var(--accent);"></i>
       {% trans "Tutorials" %}
+      {% if tutorial_total > showcase_limit %}
+      <span style="font-weight:600;color:var(--text-muted);font-size:0.78rem;">
+        &nbsp;{% blocktrans with shown=showcase_limit total=tutorial_total %}{{ shown }} of {{ total }}{% endblocktrans %}
+      </span>
+      {% endif %}
     </h2>
     {% if is_owner %}
     <a href="{% url 'tutorial_create' %}" class="btn-text-link" style="font-size:0.8rem;">
@@ -723,7 +1245,8 @@
 
 {% block extra_js %}
 <script>
-function mdtExpand(btn, sectionId) {
+function mdtExpand(btn, sectionId, limit) {
+  limit = limit || 6;
   var section = document.getElementById(sectionId);
   var hidden = section.querySelectorAll('.mdt-item-hidden');
   var label = btn.querySelector('span');
@@ -734,7 +1257,7 @@ function mdtExpand(btn, sectionId) {
     icon.className = 'bi bi-chevron-up';
   } else {
     Array.from(section.children).forEach(function(el, i) {
-      if (i >= 6) el.classList.add('mdt-item-hidden');
+      if (i >= limit) el.classList.add('mdt-item-hidden');
     });
     label.textContent = btn.dataset.more;
     icon.className = 'bi bi-chevron-down';

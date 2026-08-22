@@ -287,8 +287,10 @@
             <div class="col-6 col-sm-3">
                 <div class="profile-stat-card">
                     <div class="profile-stat-icon"><i class="bi bi-star-fill"></i></div>
-                    <div class="profile-stat-value">{{ master.avg_rating|floatformat:1 }}</div>
-                    <div class="profile-stat-label">{% trans "Avg Rating" %}</div>
+                    <div class="profile-stat-value">
+                        {% if master.review_count %}{{ master.avg_rating|floatformat:1 }}{% else %}—{% endif %}
+                    </div>
+                    <div class="profile-stat-label">{% trans "Student rating" %}</div>
                 </div>
             </div>
             <div class="col-6 col-sm-3">
@@ -376,7 +378,15 @@
                     {% trans "Your Master application is awaiting admin approval. You will be able to create practices and tutorials once approved." %}
                 </div>
                 {% endif %}
-                <div class="master-name">{{ master.name }}</div>
+                <div class="master-name">
+                    {{ master.name }}
+                    {% if master.is_powerty %}
+                    <span class="role-chip master" style="background:linear-gradient(90deg,#f59e0b,#fbbf24);color:#422006;">
+                        <i class="bi bi-patch-check-fill"></i>
+                        {% if master.powerty_role %}{{ master.powerty_role }}{% else %}{% trans "Powerty team" %}{% endif %}
+                    </span>
+                    {% endif %}
+                </div>
                 <div class="master-subject mt-1">
                     <i class="bi bi-mortarboard"></i> {{ master.subject }}
                     {% if master.category %}
@@ -572,7 +582,12 @@
                     <div class="d-flex flex-wrap gap-2">
                         {% for m in current_masters %}
                         <a href="{% url 'masters-detail' m.pk %}" class="panda-master-link d-inline-flex align-items-center gap-1">
-                            <i class="bi bi-person-badge"></i> {{ m.name }}
+                            {% if m.is_powerty %}
+                            <i class="bi bi-patch-check-fill" style="color:#f59e0b;" title="{% trans 'Powerty team' %}"></i>
+                            {% else %}
+                            <i class="bi bi-person-badge"></i>
+                            {% endif %}
+                            {{ m.name }}
                         </a>
                         {% endfor %}
                     </div>

@@ -124,6 +124,8 @@ def index(request):
                     'student_count': master.pandas.count(),
                     'practice_count': master.practices.filter(is_published=True).count(),
                     'avg_rating': float(master.avg_rating),
+                    'review_count': master.review_count,
+                    'contribution_score': master.contribution_score,
                 }
 
     slugs = get_study_subjects(request)

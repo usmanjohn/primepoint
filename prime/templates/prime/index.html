@@ -702,8 +702,14 @@
       <div class="my-stat-lbl">{% trans "Practices" %}</div>
     </div>
     <div class="my-stat-pill">
-      <div class="my-stat-num">{{ my_stats.avg_rating }}</div>
-      <div class="my-stat-lbl">{% trans "Avg Rating" %}</div>
+      <div class="my-stat-num">
+        {% if my_stats.review_count %}{{ my_stats.avg_rating|floatformat:1 }}{% else %}—{% endif %}
+      </div>
+      <div class="my-stat-lbl">{% trans "Student rating" %}</div>
+    </div>
+    <div class="my-stat-pill">
+      <div class="my-stat-num">{{ my_stats.contribution_score }}</div>
+      <div class="my-stat-lbl">{% trans "Contribution" %}</div>
     </div>
   </div>
   <div class="d-flex gap-2 flex-wrap">

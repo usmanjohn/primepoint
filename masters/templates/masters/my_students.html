@@ -212,8 +212,10 @@
   </div>
   <div class="ms-stat">
     <div class="ms-stat-icon"><i class="bi bi-star-fill" style="color:#f59e0b;"></i></div>
-    <div class="ms-stat-num">{{ master.avg_rating|floatformat:1 }}</div>
-    <div class="ms-stat-lbl">{% trans "Avg Rating" %}</div>
+    <div class="ms-stat-num">
+      {% if master.review_count %}{{ master.avg_rating|floatformat:1 }}{% else %}—{% endif %}
+    </div>
+    <div class="ms-stat-lbl">{% trans "Student rating" %}</div>
   </div>
 </div>
 {% endwith %}
@@ -227,7 +229,7 @@
     <input type="text" id="add-username" name="username" required
            class="form-control form-control-sm"
            placeholder="{% trans 'Enter username...' %}"
-           style="border-radius:8px; border:1px solid var(--border); background:var(--chrome); color:var(--text); font-size:0.85rem;">
+           style="border-radius:8px; border:1px solid var(--border); background:var(--surface-2); color:var(--text); font-size:0.85rem;">
   </div>
   <button type="submit" class="btn-core-primary" style="white-space:nowrap; font-size:0.82rem; height:34px;">
     <i class="bi bi-person-plus"></i> {% trans "Add" %}

@@ -10,6 +10,10 @@ urlpatterns = [
     path('delete/<int:pk>/', views.master_delete, name='delete-master'),
     path('<int:pk>/remove-student/<int:panda_pk>/', views.master_remove_student, name='master-remove-student'),
 
+    # Student ratings and reviews (only a master's own pupils may write one)
+    path('<int:master_id>/review/', views.master_review, name='masters-review'),
+    path('<int:master_id>/review/delete/', views.master_review_delete, name='masters-review-delete'),
+
     # My Students management
     path('<int:pk>/my-students/', views.my_students, name='masters-my-students'),
     path('<int:pk>/my-students/add/', views.add_student, name='masters-add-student'),
