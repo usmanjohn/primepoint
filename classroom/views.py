@@ -113,7 +113,7 @@ def classroom_create(request):
             classroom.master = master
             classroom.save()
             messages.success(request, _('Classroom created. Now add your students.'))
-            return redirect('classroom:students', pk=classroom.pk)
+            return redirect('classroom:students', classroom_pk=classroom.pk)
     else:
         form = ClassroomForm()
     return render(request, 'classroom/classroom_form.html', {
@@ -213,7 +213,7 @@ def classroom_manage(request, pk):
             classroom.groups.set(form.cleaned_data['groups'])
             classroom.individual_pandas.set(form.cleaned_data['individual_pandas'])
             messages.success(request, _('Membership updated.'))
-            return redirect('classroom:students', pk=classroom.pk)
+            return redirect('classroom:students', classroom_pk=classroom.pk)
     else:
         form = ClassroomMembershipForm(master, initial={
             'groups': classroom.groups.all(),
