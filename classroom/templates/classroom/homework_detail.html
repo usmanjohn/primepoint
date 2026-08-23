@@ -124,6 +124,7 @@
           <input type="hidden" name="kind" value="{{ kind }}">
           <input type="hidden" name="item" value="{{ item.pk }}">
           <input type="hidden" name="q" value="{{ query }}">
+          <input type="hidden" name="page" value="{{ page }}">
           {% if kind == 'tutorial' %}
           <label class="cr-chip" style="cursor:pointer;">
             <input type="checkbox" name="include_related" value="1" checked>
@@ -143,6 +144,23 @@
     </div>
     {% endfor %}
   </div>
+
+  {% if total %}
+  <div class="cr-search" style="margin:.85rem 0 0; align-items:center;">
+    <span class="cr-section-note" style="flex:1;">
+      {% blocktrans %}Showing {{ page_from }}–{{ page_to }} of {{ total }}{% endblocktrans %}
+      {% if total > page_to or page > 1 %}· {% trans "search to jump straight to one" %}{% endif %}
+    </span>
+    {% if prev_page %}
+    <a href="?kind={{ kind }}{% if query %}&q={{ query|urlencode }}{% endif %}&page={{ prev_page }}"
+       class="btn-auth-outline"><i class="bi bi-arrow-left"></i> {% trans "Back" %}</a>
+    {% endif %}
+    {% if next_page %}
+    <a href="?kind={{ kind }}{% if query %}&q={{ query|urlencode }}{% endif %}&page={{ next_page }}"
+       class="btn-auth-outline">{% trans "More" %} <i class="bi bi-arrow-right"></i></a>
+    {% endif %}
+  </div>
+  {% endif %}
 </div>
 
 {# ── Who has it, and how far they got ────────────────────────────────── #}

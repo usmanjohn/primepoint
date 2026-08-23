@@ -66,27 +66,30 @@ def practice_queryset(classroom, master):
           .select_related('subject', 'master'))
     slugs = classroom_slugs(classroom)
     if not slugs:
-        return qs.order_by('subject__name', 'title')
+        return qs.order_by('subject__name', 'id')
 
     allowed = registry.allowed_values(slugs, 'practice_names')
     mapped = registry.mapped_values('practice_names')
     keep = [s.pk for s in Subject.objects.all()
             if s.name.strip().lower() in allowed or s.name.strip().lower() not in mapped]
     # A practice with no subject at all is claimed by nobody, so it stays.
-    return qs.filter(Q(subject__in=keep) | Q(subject__isnull=True)).order_by('subject__name', 'title')
+    return qs.filter(Q(subject__in=keep) | Q(subject__isnull=True)).order_by('subject__name', 'id')
 
 
 def tutorial_queryset(classroom):
     from tutorial.models import Tutorial, CATEGORY_CHOICES
 
+    # Ordered by id, not title. A course is written in lesson order and that
+    # is the order a master looks for it in; sorting the titles as text puts
+    # PK-100 between PK-1 and PK-11 and scatters the whole course.
     qs = Tutorial.objects.filter(is_published=True)
     slugs = classroom_slugs(classroom)
     if not slugs:
-        return qs.order_by('category', 'title')
+        return qs.order_by('category', 'id')
     return qs.filter(_visible_q(
         slugs, 'tutorial_categories', 'category',
         lambda: [c for c, _label in CATEGORY_CHOICES],
-    )).order_by('category', 'title')
+    )).order_by('category', 'id')
 
 
 def story_queryset(classroom):

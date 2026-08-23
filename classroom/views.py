@@ -420,6 +420,9 @@ def homework_create(request, classroom_pk):
     })
 
 
+# How many candidates one page of the add-content panel shows.
+PICKER_PAGE_SIZE = 40
+
 # The four libraries a homework can pull from, and how to search each one.
 _PICKERS = {
     'tutorial':    (content.tutorial_queryset,    ['title__icontains', 'summary__icontains']),
@@ -480,8 +483,21 @@ def homework_detail(request, classroom_pk, hw_pk):
         kind = 'tutorial'
     query = request.GET.get('q', '').strip()
     already = set(getattr(homework, _FIELD[kind]).values_list('pk', flat=True))
-    candidates = _search(_picker_queryset(kind, classroom), kind, query)
-    candidates = [c for c in candidates.exclude(pk__in=already)[:40]]
+    matches = _search(_picker_queryset(kind, classroom), kind, query).exclude(pk__in=already)
+
+    # A 100-lesson course does not fit on one screen, so the list is paged.
+    # It used to be a bare [:40] with nothing saying more existed, which made
+    # PK-46 onwards look as though they were not in the library at all.
+    total = matches.count()
+    try:
+        page = max(1, int(request.GET.get('page', 1)))
+    except ValueError:
+        page = 1
+    start = (page - 1) * PICKER_PAGE_SIZE
+    if start >= total and total:
+        page, start = 1, 0
+    candidates = list(matches[start:start + PICKER_PAGE_SIZE])
+    has_more = start + PICKER_PAGE_SIZE < total
 
     assignments = (homework.assignments
                    .select_related('panda__profile__user')
@@ -504,6 +520,13 @@ def homework_detail(request, classroom_pk, hw_pk):
         ],
         'query': query,
         'candidates': candidates,
+        'total': total,
+        'page': page,
+        'page_from': start + 1,
+        'page_to': start + len(candidates),
+        'has_more': has_more,
+        'prev_page': page - 1 if page > 1 else 0,
+        'next_page': page + 1 if has_more else 0,
         'assign_form': HomeworkAssignForm(classroom),
         'is_master_user': True,
         'tab': 'homework',
@@ -560,11 +583,15 @@ def homework_add_item(request, classroom_pk, hw_pk):
     for assignment in homework.assignments.all():
         assignment.refresh()
 
-    params = f"?kind={kind}"
+    # Come back to the same page of the same search: a master adding four
+    # lessons in a row should not be thrown to the top of the list each time.
+    from urllib.parse import urlencode
+    params = {'kind': kind}
     if request.POST.get('q'):
-        params += f"&q={request.POST['q']}"
-    return redirect(
-        f"{_hw_url(classroom, homework)}{params}")
+        params['q'] = request.POST['q']
+    if (request.POST.get('page') or '').isdigit() and int(request.POST['page']) > 1:
+        params['page'] = request.POST['page']
+    return redirect(f"{_hw_url(classroom, homework)}?{urlencode(params)}")
 
 
 def _hw_url(classroom, homework):
