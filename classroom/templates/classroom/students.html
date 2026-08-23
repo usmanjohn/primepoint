@@ -1,0 +1,93 @@
+{% extends "classroom/_shell.html" %}
+{% load i18n %}
+
+{% block room_actions %}
+<div class="cr-action-row">
+  <a href="{% url 'classroom:attendance_register' classroom.pk %}" class="btn-auth-primary">
+    <i class="bi bi-check2-square me-1"></i>{% trans "Take the register" %}
+  </a>
+  <a href="{% url 'classroom:manage' classroom.pk %}" class="btn-auth-outline">
+    <i class="bi bi-people me-1"></i>{% trans "Attach groups" %}
+  </a>
+  <a href="{% url 'classroom:group_create' classroom.pk %}" class="btn-auth-outline">
+    <i class="bi bi-plus-lg me-1"></i>{% trans "New group" %}
+  </a>
+</div>
+{% endblock %}
+
+{% block room_content %}
+
+<div class="cr-panel">
+  <h2 class="cr-panel-title"><i class="bi bi-person-plus"></i>{% trans "Add a student" %}</h2>
+  <form method="post" action="{% url 'classroom:student_add' classroom.pk %}" class="cr-search">
+    {% csrf_token %}
+    {{ add_form.username }}
+    <button type="submit" class="btn-auth-primary"><i class="bi bi-plus-lg me-1"></i>{% trans "Add" %}</button>
+  </form>
+  <p class="cr-help">{% trans "They need a Powerty account first. Adding them here also makes them your student." %}</p>
+</div>
+
+<div class="cr-section-hdr">
+  <div class="cr-section-title"><i class="bi bi-people-fill"></i>{% trans "Roster" %}</div>
+  <span class="cr-section-note">{{ rows|length }} {% trans "students" %}</span>
+</div>
+
+<div class="cr-list">
+  {% for r in rows %}
+  <div class="cr-row">
+    <img src="{{ r.panda.profile.image_url }}" alt="" class="cr-student-chip-ava" style="width:36px;height:36px;">
+    <div class="cr-row-body">
+      <div class="cr-row-title">
+        <a href="{% url 'classroom:student_detail' classroom.pk r.panda.pk %}">
+          {{ r.panda.profile.user.get_full_name|default:r.panda.profile.user.username }}
+        </a>
+      </div>
+      <div class="cr-row-sub">
+        {% trans "Homework" %} {{ r.homework_done }}/{{ r.homework_total }} ·
+        {% trans "Attendance" %} {{ r.attendance_present }}/{{ r.attendance_total }}
+      </div>
+    </div>
+    <div class="cr-row-side">
+      {% if r.unpaid %}<span class="cr-chip cr-chip--bad">{{ r.unpaid }} {% trans "unpaid" %}</span>{% endif %}
+      <a href="{% url 'classroom:student_detail' classroom.pk r.panda.pk %}" class="cr-row-link">
+        {% trans "Open" %} <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+  {% empty %}
+  <div class="cr-empty">
+    <div class="cr-empty-icon"><i class="bi bi-people"></i></div>
+    {% trans "No students in this classroom yet. Add one above, or attach a group." %}
+  </div>
+  {% endfor %}
+</div>
+
+{% if groups %}
+<div class="cr-section-hdr">
+  <div class="cr-section-title"><i class="bi bi-diagram-3"></i>{% trans "Your groups" %}</div>
+  <span class="cr-section-note">{% trans "Shared across all your classrooms." %}</span>
+</div>
+<div class="cr-list">
+  {% for g in groups %}
+  <div class="cr-row">
+    <div class="cr-row-icon"><i class="bi bi-diagram-3"></i></div>
+    <div class="cr-row-body">
+      <div class="cr-row-title">{{ g.name }}</div>
+      <div class="cr-row-sub">{{ g.member_count }} {% trans "students" %}</div>
+    </div>
+    <div class="cr-row-side">
+      {% if g in classroom.groups.all %}<span class="cr-chip cr-chip--ok">{% trans "In this room" %}</span>{% endif %}
+      <a href="{% url 'classroom:group_edit' classroom.pk g.pk %}" class="cr-row-link">{% trans "Edit" %}</a>
+      <form method="post" action="{% url 'classroom:group_delete' classroom.pk g.pk %}">
+        {% csrf_token %}
+        <button type="submit" class="btn-auth-outline py-0 px-2"
+                style="color:var(--danger);border-color:var(--border);font-size:.72rem;">
+          <i class="bi bi-trash"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

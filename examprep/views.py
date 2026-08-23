@@ -297,6 +297,9 @@ def lesson_finish(request, track_slug, skill, slug):
             messages.success(request, _('Lesson finished!'))
     else:
         messages.info(request, _('You already finished this lesson.'))
+
+    from homework.items import tick_off
+    tick_off(request.user, 'exam_lesson', lesson)
     return redirect('examprep_lesson', track_slug=track_slug, skill=skill, slug=slug)
 
 

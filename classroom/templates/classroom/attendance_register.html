@@ -1,0 +1,48 @@
+{% extends "classroom/_shell.html" %}
+{% load i18n %}
+
+{% block room_content %}
+<div class="cr-section-hdr">
+  <div class="cr-section-title"><i class="bi bi-check2-square"></i>{% trans "Register" %}</div>
+  <form method="get" class="cr-search" style="margin:0;">
+    <input type="date" name="date" value="{{ date|date:'Y-m-d' }}" class="form-core">
+    <button type="submit" class="btn-auth-outline">{% trans "Go" %}</button>
+  </form>
+</div>
+
+<form method="post">
+  {% csrf_token %}
+  <input type="hidden" name="date" value="{{ date|date:'Y-m-d' }}">
+  <div class="cr-table-wrap">
+    <table class="cr-table">
+      <thead><tr><th>{% trans "Student" %}</th><th>{% trans "Status" %}</th></tr></thead>
+      <tbody>
+        {% for r in rows %}
+        <tr>
+          <td>{{ r.panda.profile.user.get_full_name|default:r.panda.profile.user.username }}</td>
+          <td>
+            <span class="cr-reg-choice">
+              {% for value, label in status_choices %}
+              <label>
+                <input type="radio" name="status_{{ r.panda.pk }}" value="{{ value }}"
+                       {% if r.status == value %}checked{% endif %}>
+                {{ label }}
+              </label>
+              {% endfor %}
+            </span>
+          </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="2">{% trans "No students in this classroom yet." %}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% if rows %}
+  <button type="submit" class="btn-auth-primary">
+    <i class="bi bi-check2 me-1"></i>{% trans "Save register" %}
+  </button>
+  {% endif %}
+  <a href="{% url 'classroom:students' classroom.pk %}" class="btn-auth-outline">{% trans "Back" %}</a>
+</form>
+{% endblock %}

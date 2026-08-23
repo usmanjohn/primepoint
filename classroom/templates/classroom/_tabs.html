@@ -1,0 +1,35 @@
+{% load i18n %}
+{% comment %}
+  The room's own navigation. Students see the four tabs that concern them;
+  the master gets the roster and the money as well. Plain links — the tab row
+  is a set of pages, not a JavaScript widget.
+{% endcomment %}
+<nav class="cr-tabs" aria-label="{% trans 'Classroom sections' %}">
+  <a href="{% url 'classroom:detail' classroom.pk %}"
+     class="cr-tab {% if tab == 'lessons' %}is-active{% endif %}">
+    <i class="bi bi-collection"></i>{% trans "Lessons" %}
+  </a>
+  <a href="{% url 'classroom:homework_list' classroom.pk %}"
+     class="cr-tab {% if tab == 'homework' %}is-active{% endif %}">
+    <i class="bi bi-journal-bookmark-fill"></i>{% trans "Homework" %}
+  </a>
+  <a href="{% url 'classroom:resources' classroom.pk %}"
+     class="cr-tab {% if tab == 'resources' %}is-active{% endif %}">
+    <i class="bi bi-paperclip"></i>{% trans "Notes & links" %}
+  </a>
+  {% if is_master_user %}
+  <a href="{% url 'classroom:students' classroom.pk %}"
+     class="cr-tab {% if tab == 'students' %}is-active{% endif %}">
+    <i class="bi bi-people-fill"></i>{% trans "Students" %}
+    <span class="cr-tab-count">{{ classroom.member_count }}</span>
+  </a>
+  <a href="{% url 'classroom:payments' classroom.pk %}"
+     class="cr-tab {% if tab == 'payments' %}is-active{% endif %}">
+    <i class="bi bi-cash-coin"></i>{% trans "Payments" %}
+  </a>
+  {% endif %}
+  <a href="{% url 'classroom:discussion_list' classroom.pk %}"
+     class="cr-tab {% if tab == 'discussion' %}is-active{% endif %}">
+    <i class="bi bi-chat-square-dots-fill"></i>{% trans "Discussion" %}
+  </a>
+</nav>

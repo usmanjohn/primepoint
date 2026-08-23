@@ -207,6 +207,9 @@ def corner_story_finish(request, subject_slug, collection_slug, slug):
             messages.success(request, _('Story finished!'))
     else:
         messages.info(request, _('You already finished this story.'))
+
+    from homework.items import tick_off
+    tick_off(request.user, 'story', story)
     return redirect('corner_story', subject_slug=subject_slug,
                     collection_slug=collection_slug, slug=slug)
 

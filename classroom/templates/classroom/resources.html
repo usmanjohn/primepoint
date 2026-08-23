@@ -1,0 +1,82 @@
+{% extends "classroom/_shell.html" %}
+{% load i18n %}
+
+{% block room_actions %}
+{% if is_master_user %}
+<div class="cr-action-row">
+  <a href="{% url 'classroom:resource_add' classroom.pk %}" class="btn-auth-primary">
+    <i class="bi bi-plus-lg me-1"></i>{% trans "Add note or link" %}
+  </a>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block room_content %}
+
+<div class="cr-section-hdr">
+  <div class="cr-section-title"><i class="bi bi-paperclip"></i>{% trans "Classroom shelf" %}</div>
+  <span class="cr-section-note">{% trans "Things that outlive one lesson." %}</span>
+</div>
+
+<div class="cr-list">
+  {% for r in resources %}
+  <div class="cr-row">
+    <div class="cr-row-icon"><i class="bi {{ r.icon }}"></i></div>
+    <div class="cr-row-body">
+      <div class="cr-row-title">
+        <a href="{{ r.url }}" target="_blank" rel="noopener">{{ r.title }}</a>
+      </div>
+      {% if r.description %}<div class="cr-row-sub">{{ r.description }}</div>{% endif %}
+    </div>
+    <div class="cr-row-side">
+      <span class="cr-chip">{{ r.get_kind_display }}</span>
+      {% if is_master_user %}
+      <form method="post" action="{% url 'classroom:resource_delete' classroom.pk r.pk %}">
+        {% csrf_token %}
+        <button type="submit" class="btn-auth-outline py-0 px-2"
+                style="color:var(--danger);border-color:var(--border);font-size:.72rem;">
+          <i class="bi bi-trash"></i>
+        </button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+  {% empty %}
+  <div class="cr-empty">
+    <div class="cr-empty-icon"><i class="bi bi-paperclip"></i></div>
+    {% if is_master_user %}{% trans "Nothing on the shelf yet — add a syllabus, a recording or the class Telegram link." %}
+    {% else %}{% trans "Your teacher has not put anything here yet." %}{% endif %}
+  </div>
+  {% endfor %}
+</div>
+
+{% for r in resources %}{% if r.embed_url %}
+<div class="mb-3">
+  <div class="cr-section-note mb-1">{{ r.title }}</div>
+  <div class="ratio ratio-16x9" style="border-radius:12px;overflow:hidden;">
+    <iframe src="{{ r.embed_url }}" title="{{ r.title }}" allowfullscreen loading="lazy"></iframe>
+  </div>
+</div>
+{% endif %}{% endfor %}
+
+{% if lesson_notes %}
+<div class="cr-section-hdr">
+  <div class="cr-section-title"><i class="bi bi-file-earmark-text"></i>{% trans "Lesson notes" %}</div>
+  <span class="cr-section-note">{% trans "Uploaded inside a lesson." %}</span>
+</div>
+<div class="cr-list">
+  {% for n in lesson_notes %}
+  <div class="cr-row">
+    <div class="cr-row-icon"><i class="bi bi-file-earmark-arrow-down"></i></div>
+    <div class="cr-row-body">
+      <div class="cr-row-title"><a href="{{ n.file.url }}" target="_blank" rel="noopener">{{ n }}</a></div>
+      <div class="cr-row-sub">
+        <a href="{% url 'classroom:lesson_detail' classroom.pk n.lesson.pk %}">{{ n.lesson.title }}</a>
+        · {{ n.uploaded_at|date:"M d, Y" }}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

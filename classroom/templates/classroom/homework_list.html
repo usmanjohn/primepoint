@@ -1,0 +1,93 @@
+{% extends "classroom/_shell.html" %}
+{% load i18n %}
+
+{% block room_actions %}
+{% if is_master_user %}
+<div class="cr-action-row">
+  <a href="{% url 'classroom:homework_create' classroom.pk %}" class="btn-auth-primary">
+    <i class="bi bi-journal-plus me-1"></i>{% trans "Set Homework" %}
+  </a>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block room_content %}
+
+{% if is_master_user %}
+<div class="cr-section-hdr">
+  <div class="cr-section-title"><i class="bi bi-journal-bookmark-fill"></i>{% trans "Homework in this classroom" %}</div>
+  <span class="cr-section-note">{% trans "Only this room's students can be given these." %}</span>
+</div>
+<div class="cr-list">
+  {% for hw in homeworks %}
+  <div class="cr-row">
+    <div class="cr-row-icon"><i class="bi bi-journal-bookmark"></i></div>
+    <div class="cr-row-body">
+      <div class="cr-row-title">
+        <a href="{% url 'classroom:homework_detail' classroom.pk hw.pk %}">{{ hw.title }}</a>
+      </div>
+      <div class="cr-row-sub">
+        {% if hw.tutorials.count %}{{ hw.tutorials.count }} {% trans "tutorial(s)" %} · {% endif %}
+        {% if hw.practices.count %}{{ hw.practices.count }} {% trans "practice(s)" %} · {% endif %}
+        {% if hw.stories.count %}{{ hw.stories.count }} {% trans "reading(s)" %} · {% endif %}
+        {% if hw.exam_lessons.count %}{{ hw.exam_lessons.count }} {% trans "exam lesson(s)" %} · {% endif %}
+        {{ hw.assignments.count }} {% trans "student(s)" %}
+        {% if hw.due_date %} · {% trans "due" %} {{ hw.due_date|date:"M d, H:i" }}{% endif %}
+      </div>
+    </div>
+    <div class="cr-row-side">
+      {% if hw.is_empty %}
+      <span class="cr-chip cr-chip--bad">{% trans "Empty" %}</span>
+      {% else %}
+      <span class="cr-chip cr-chip--ok">{{ hw.submitted_count|add:hw.graded_count }}/{{ hw.assignments.count }}</span>
+      {% endif %}
+      <a href="{% url 'classroom:homework_detail' classroom.pk hw.pk %}" class="cr-row-link">
+        {% trans "Open" %} <i class="bi bi-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+  {% empty %}
+  <div class="cr-empty">
+    <div class="cr-empty-icon"><i class="bi bi-journal-plus"></i></div>
+    <p class="mb-2">{% trans "No homework set in this classroom yet." %}</p>
+    <a href="{% url 'classroom:homework_create' classroom.pk %}" class="btn-auth-primary">
+      <i class="bi bi-plus-lg me-1"></i>{% trans "Set the first one" %}
+    </a>
+  </div>
+  {% endfor %}
+</div>
+
+{% else %}
+
+<div class="cr-section-hdr">
+  <div class="cr-section-title"><i class="bi bi-journal-bookmark-fill"></i>{% trans "Your homework" %}</div>
+</div>
+<div class="cr-list">
+  {% for a in assignments %}
+  <div class="cr-row">
+    <div class="cr-row-icon"><i class="bi bi-journal-bookmark"></i></div>
+    <div class="cr-row-body">
+      <div class="cr-row-title">
+        <a href="{% url 'classroom:homework_detail' classroom.pk a.homework.pk %}">{{ a.homework.title }}</a>
+      </div>
+      <div class="cr-row-sub">
+        {{ a.done_count }}/{{ a.homework.item_count }} {% trans "done" %}
+        {% if a.homework.due_date %} · {% trans "due" %} {{ a.homework.due_date|date:"M d, H:i" }}{% endif %}
+      </div>
+    </div>
+    <div class="cr-row-side">
+      <div class="cr-bar {% if a.percent_done == 100 %}cr-bar--done{% endif %}">
+        <span style="width: {{ a.percent_done }}%;"></span>
+      </div>
+      {% if a.status == 'graded' %}<span class="cr-chip cr-chip--accent">{% trans "Graded" %}</span>{% endif %}
+    </div>
+  </div>
+  {% empty %}
+  <div class="cr-empty">
+    <div class="cr-empty-icon"><i class="bi bi-emoji-smile"></i></div>
+    {% trans "Nothing set yet. Enjoy it while it lasts." %}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

@@ -78,6 +78,7 @@
 {% endblock %}
 
 {% block content %}
+{% include "classroom/_tabs.html" %}
 <div class="cr-manage-wrap">
   <a href="{% url 'classroom:detail' classroom.pk %}" class="btn-auth-outline mb-3 d-inline-flex align-items-center gap-1">
     <i class="bi bi-arrow-left"></i> {{ classroom.name }}
@@ -102,7 +103,7 @@
           {% endfor %}
         </div>
         {% else %}
-        <p class="cr-check-empty">{% trans "No groups found. Create groups in the Homework section first." %}</p>
+        <p class="cr-check-empty">{% trans "No groups yet — create one on the Students tab." %}</p>
         {% endif %}
         {% if form.groups.errors %}<div class="text-danger mt-2" style="font-size:.8rem;">{{ form.groups.errors }}</div>{% endif %}
       </div>

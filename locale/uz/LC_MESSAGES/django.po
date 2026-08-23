@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Prime Point\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-22 16:09+0000\n"
+"POT-Creation-Date: 2026-08-23 18:21+0000\n"
 "PO-Revision-Date: 2026-04-29 15:20+0000\n"
 "Last-Translator: Prime Point\n"
 "Language-Team: Uzbek\n"
@@ -33,12 +33,16 @@ msgid ""
 "nothing to refresh or export first."
 msgstr ""
 
-#: analytics/templates/analytics/home.html:164
-#: classroom/templates/classroom/classroom_detail.html:176
+#: analytics/templates/analytics/home.html:164 classroom/forms.py:206
+#: classroom/templates/classroom/_tabs.html:23
+#: classroom/templates/classroom/classroom_detail.html:169
+#: classroom/templates/classroom/classroom_list.html:235
+#: classroom/templates/classroom/homework_detail.html:150
 #: masters/templates/masters/master_detail.html:640
 #: masters/templates/masters/master_detail.html:1017
+#: masters/templates/masters/master_detail.html:1136
+#: masters/templates/masters/master_detail.html:1147
 #: masters/templates/masters/master_list.html:312
-#: masters/templates/masters/my_students.html:201
 #: people/templates/people/profile.html:284
 #: prime/templates/prime/index.html:328 prime/templates/prime/index.html:563
 #: prime/templates/prime/index.html:699 prime/templates/prime/progress.html:106
@@ -55,7 +59,7 @@ msgid "Masters"
 msgstr "Ustozlar"
 
 #: analytics/templates/analytics/home.html:174
-#: classroom/templates/classroom/lesson_detail.html:291
+#: classroom/templates/classroom/lesson_detail.html:292 classroom/views.py:501
 #: masters/templates/masters/master_detail.html:953
 #: people/templates/people/profile.html:300
 #: people/templates/people/profile.html:432
@@ -66,7 +70,6 @@ msgid "Practices"
 msgstr "Mashqlar"
 
 #: analytics/templates/analytics/home.html:179
-#: masters/templates/masters/my_students.html:250
 #: prime/templates/prime/index.html:653
 msgid "Avg Score"
 msgstr "O'rt. ball"
@@ -85,11 +88,11 @@ msgid "Discussions"
 msgstr "Muhokamalar"
 
 #: analytics/templates/analytics/home.html:194
-#: classroom/templates/classroom/lesson_detail.html:270 masters/rating.py:72
-#: masters/templates/masters/master_detail.html:1057 prime/progress.py:142
-#: prime/search.py:43 prime/templates/prime/index.html:434
-#: templates/base.html:141 templates/base.html:359
-#: tutorial/templates/tutorial/playlist_detail.html:15
+#: classroom/templates/classroom/lesson_detail.html:271 classroom/views.py:500
+#: masters/rating.py:72 masters/templates/masters/master_detail.html:1057
+#: prime/progress.py:142 prime/search.py:43
+#: prime/templates/prime/index.html:434 templates/base.html:141
+#: templates/base.html:359 tutorial/templates/tutorial/playlist_detail.html:15
 #: tutorial/templates/tutorial/playlist_list.html:90
 #: tutorial/templates/tutorial/tutorial_detail.html:40
 #: tutorial/templates/tutorial/tutorial_list.html:5
@@ -298,29 +301,253 @@ msgstr "O'yinlar"
 #: classroom/templates/classroom/classroom_list.html:4
 #: classroom/templates/classroom/classroom_list.html:183
 #: classroom/templates/classroom/discussion_thread.html:95
-#: classroom/templates/classroom/lesson_detail.html:145 prime/search.py:253
+#: classroom/templates/classroom/lesson_detail.html:146 prime/search.py:253
 #: prime/templates/prime/index.html:580 templates/base.html:147
 msgid "Classrooms"
 msgstr "Darsxonalar"
 
-#: analytics/templates/analytics/home.html:365 people/models.py:15
+#: analytics/templates/analytics/home.html:365
+#: classroom/templates/classroom/_tabs.html:14
+#: classroom/templates/classroom/classroom_list.html:232
+#: classroom/templates/classroom/lesson_detail.html:313
+#: classroom/templates/classroom/student_detail.html:33
+#: classroom/templates/classroom/students.html:46
+#: homework/templates/homework/my_homework.html:11
+#: homework/templates/homework/my_homework.html:12
+#: homework/templates/homework/my_homework.html:46
+#: masters/templates/masters/master_detail.html:1140
+#: masters/templates/masters/master_detail.html:1150 people/models.py:15
 #: prime/templates/prime/index.html:528 prime/templates/prime/index.html:665
 #: templates/base.html:129
 msgid "Homework"
 msgstr "Vazifalar"
 
+#: classroom/forms.py:40
+msgid "All subjects (no filtering)"
+msgstr "Hamma fanlar (saralashsiz)"
+
+#: classroom/forms.py:48 classroom/templates/classroom/students.html:10
+msgid "Attach groups"
+msgstr "Guruh biriktirish"
+
+#: classroom/forms.py:54
+msgid "Add individual students"
+msgstr "Alohida oʻquvchilar qoʻshish"
+
+#: classroom/forms.py:135 classroom/views.py:1100
+msgid "Add a link or upload a file."
+msgstr "Havola qoʻshing yoki fayl yuklang."
+
+#: classroom/forms.py:184
+msgid "e.g. Lesson 12 — home work"
+msgstr "masalan: 12-dars — uyga vazifa"
+
+#: classroom/forms.py:188
+msgid "Instructions for your students (optional)…"
+msgstr "Oʻquvchilaringiz uchun koʻrsatma (ixtiyoriy)…"
+
+#: classroom/forms.py:212
+msgid "Groups"
+msgstr "Guruhlar"
+
+#: classroom/forms.py:216
+msgid "Everyone in this classroom"
+msgstr "Bu sinfdagi hamma"
+
+#: classroom/forms.py:246
+msgid "e.g. Morning Class, Group A…"
+msgstr "masalan: Ertalabki guruh, A guruhi…"
+
+#: classroom/forms.py:269
+msgid "e.g. Sentabr 2026"
+msgstr "masalan: Sentabr 2026"
+
+#: classroom/forms.py:275 classroom/forms.py:293
+msgid "Note (optional)"
+msgstr "Izoh (ixtiyoriy)"
+
+#: classroom/forms.py:308
+msgid "e.g. Beginner Korean — completed"
+msgstr "masalan: Boshlangʻich koreys tili — tamomlandi"
+
+#: classroom/forms.py:312
+msgid "What it is for (optional)"
+msgstr "Nima uchun berilgani (ixtiyoriy)"
+
+#: classroom/forms.py:324
+msgid "Student username"
+msgstr "Oʻquvchi foydalanuvchi nomi"
+
+#: classroom/forms.py:326
+msgid "their username"
+msgstr "uning foydalanuvchi nomi"
+
+#: classroom/forms.py:337
+#, python-format
+msgid "No user found with username \"%(name)s\"."
+msgstr "\"%(name)s\" nomli foydalanuvchi topilmadi."
+
+#: classroom/forms.py:340
+msgid "That user does not have a student profile."
+msgstr "Bu foydalanuvchida oʻquvchi profili yoʻq."
+
+#: classroom/models.py:22 masters/models.py:227
+#: practice/templates/practice/practice_list.html:452
+msgid "Subject"
+msgstr "Fan"
+
+#: classroom/models.py:23
+msgid ""
+"What this classroom teaches. Narrows every homework picker to that subject. "
+"Leave blank to see everything."
+msgstr ""
+"Bu sinf nimani oʻqitadi. Har bir uyga vazifa roʻyxatini shu fanga "
+"toraytiradi. Hammasini koʻrish uchun boʻsh qoldiring."
+
+#: classroom/models.py:175 classroom/models.py:189
+msgid "File"
+msgstr "Fayl"
+
+#: classroom/models.py:176 classroom/models.py:186
+#: tutorial/templates/tutorial/tutorial_form.html:266
+msgid "Link"
+msgstr "Havola"
+
+#: classroom/models.py:177 classroom/templates/classroom/lesson_detail.html:200
+msgid "Video"
+msgstr "Video"
+
+#: classroom/models.py:183 masters/models.py:265
+msgid "Type"
+msgstr "Turi"
+
+#: classroom/models.py:184
+#: classroom/templates/classroom/discussion_form.html:68
+#: classroom/templates/classroom/lesson_detail.html:252
+#: classroom/templates/classroom/lesson_form.html:101
+#: corner/templates/corner/story_edit.html:33
+#: examprep/templates/examprep/lesson_edit.html:32 masters/models.py:266
+#: masters/templates/masters/certificate.html:360
+#: tutorial/templates/tutorial/playlist_form.html:39
+#: tutorial/templates/tutorial/tutorial_form.html:80
+msgid "Title"
+msgstr "Sarlavha"
+
+#: classroom/models.py:185 classroom/templates/classroom/student_detail.html:89
+#: masters/models.py:232 masters/models.py:271
+msgid "Note"
+msgstr "Izoh"
+
+#: classroom/models.py:187
+msgid "A YouTube video, a Google Doc, a Telegram group…"
+msgstr "YouTube video, Google Doc yoki Telegram guruhi…"
+
+#: classroom/templates/classroom/_shell.html:19
+msgid "Private Classroom"
+msgstr "Yopiq sinf"
+
+#: classroom/templates/classroom/_shell.html:26
+#: classroom/templates/classroom/classroom_list.html:224
+#: masters/templates/masters/master_detail.html:1130
+msgid "lessons"
+msgstr "dars"
+
+#: classroom/templates/classroom/_shell.html:27
+#: classroom/templates/classroom/students.html:32
+#: classroom/templates/classroom/students.html:76
+#: homework/templates/homework/my_homework.html:40
+#: people/templates/people/profile.html:464 prime/templates/prime/help.html:609
+msgid "students"
+msgstr "o'quvchi"
+
+#: classroom/templates/classroom/_tabs.html:7
+msgid "Classroom sections"
+msgstr "Sinf boʻlimlari"
+
+#: classroom/templates/classroom/_tabs.html:10
+#: classroom/templates/classroom/classroom_detail.html:81
+#: prime/templates/prime/index.html:447
+#: tutorial/templates/tutorial/playlist_detail.html:121
+msgid "Lessons"
+msgstr "Darslar"
+
+#: classroom/templates/classroom/_tabs.html:18
+#: classroom/templates/classroom/classroom_detail.html:120
+msgid "Notes & links"
+msgstr "Qaydlar va havolalar"
+
+#: classroom/templates/classroom/_tabs.html:28
+#: classroom/templates/classroom/classroom_list.html:238
+#: classroom/templates/classroom/student_detail.html:110
+msgid "Payments"
+msgstr "Toʻlovlar"
+
+#: classroom/templates/classroom/_tabs.html:33
+#: classroom/templates/classroom/discussion_form.html:54
+#: classroom/templates/classroom/discussion_list.html:3
+#: classroom/templates/classroom/discussion_list.html:4
+#: classroom/templates/classroom/discussion_list.html:79
+#: classroom/templates/classroom/discussion_thread.html:99
+#: discussion/templates/discussion/home.html:4
+#: discussion/templates/discussion/home.html:5
+#: discussion/templates/discussion/home.html:189 people/models.py:20
+#: prime/templates/prime/index.html:594 templates/base.html:135
+msgid "Discussion"
+msgstr "Muhokama"
+
+#: classroom/templates/classroom/attendance_register.html:6
+#: discussion/templates/discussion/home.html:297
+#: people/templates/people/register.html:5 templates/base.html:328
+msgid "Register"
+msgstr "Ro'yxatdan o'tish"
+
+#: classroom/templates/classroom/attendance_register.html:9
+msgid "Go"
+msgstr "Oʻtish"
+
+#: classroom/templates/classroom/attendance_register.html:18
+#: classroom/templates/classroom/payments.html:28
+#: classroom/templates/classroom/payments.html:56
+#: masters/templates/masters/certificate.html:346
+#: people/templates/people/profile.html:108
+#: people/templates/people/profile.html:122
+msgid "Student"
+msgstr "O'quvchi"
+
+#: classroom/templates/classroom/attendance_register.html:18
+#: classroom/templates/classroom/classroom_detail.html:146
+#: classroom/templates/classroom/lesson_form.html:123
+#: classroom/templates/classroom/payments.html:57
+#: classroom/templates/classroom/student_detail.html:89
+#: classroom/templates/classroom/student_detail.html:131
+msgid "Status"
+msgstr "Holat"
+
+#: classroom/templates/classroom/attendance_register.html:36
+msgid "No students in this classroom yet."
+msgstr "Bu sinfda hali oʻquvchi yoʻq."
+
+#: classroom/templates/classroom/attendance_register.html:43
+msgid "Save register"
+msgstr "Jurnalni saqlash"
+
+#: classroom/templates/classroom/attendance_register.html:46
+#: classroom/templates/classroom/classroom_form.html:105
+#: classroom/templates/classroom/classroom_form.html:109
+#: games/templates/games/crossword_print.html:215
+#: games/templates/games/mathsquare_print.html:112
+#: templates/printing/_bar.html:26 templates/printing/_book_bar.html:52
+msgid "Back"
+msgstr "Orqaga"
+
 #: classroom/templates/classroom/classroom_confirm_delete.html:3
 #: classroom/templates/classroom/classroom_confirm_delete.html:4
-#, fuzzy
-#| msgid "Delete"
 msgid "Confirm Delete"
-msgstr "O'chirish"
+msgstr "Oʻchirishni tasdiqlang"
 
 #: classroom/templates/classroom/classroom_confirm_delete.html:15
-#, fuzzy
-#| msgid "Delete Tutorial?"
 msgid "Delete permanently?"
-msgstr "Darslikni o'chirishni tasdiqlaysizmi?"
+msgstr "Butunlay oʻchirilsinmi?"
 
 #: classroom/templates/classroom/classroom_confirm_delete.html:18
 #, python-format
@@ -328,24 +555,25 @@ msgid ""
 "\n"
 "          \"%(name)s\" will be permanently deleted and cannot be recovered.\n"
 "        "
-msgstr ""
+msgstr "\n          \"%(name)s\" butunlay oʻchiriladi va qayta tiklab boʻlmaydi.\n        "
 
 #: classroom/templates/classroom/classroom_confirm_delete.html:27
 #: classroom/templates/classroom/lesson_confirm_delete.html:27
 #: tutorial/templates/tutorial/playlist_confirm_delete.html:30
-#, fuzzy
-#| msgid "Yes, delete it"
 msgid "Yes, delete"
-msgstr "Ha, o'chirish"
+msgstr "Ha, oʻchirilsin"
 
 #: classroom/templates/classroom/classroom_confirm_delete.html:31
 #: classroom/templates/classroom/classroom_confirm_delete.html:33
 #: classroom/templates/classroom/classroom_form.html:144
 #: classroom/templates/classroom/classroom_form.html:146
 #: classroom/templates/classroom/discussion_form.html:82
+#: classroom/templates/classroom/group_form.html:21
+#: classroom/templates/classroom/homework_form.html:52
 #: classroom/templates/classroom/lesson_confirm_delete.html:30
-#: classroom/templates/classroom/lesson_form.html:181
-#: classroom/templates/classroom/lesson_form.html:183
+#: classroom/templates/classroom/lesson_form.html:168
+#: classroom/templates/classroom/lesson_form.html:170
+#: classroom/templates/classroom/resource_form.html:22
 #: corner/templates/corner/story_edit.html:68
 #: exam/templates/exam/take_section.html:466
 #: examprep/templates/examprep/lesson_edit.html:112
@@ -357,80 +585,117 @@ msgstr "Ha, o'chirish"
 msgid "Cancel"
 msgstr "Bekor qilish"
 
-#: classroom/templates/classroom/classroom_detail.html:107
-#, fuzzy
-#| msgid "Classroom"
-msgid "Private Classroom"
-msgstr "Sinf xonasi"
-
-#: classroom/templates/classroom/classroom_detail.html:112
-#: classroom/templates/classroom/classroom_list.html:221
-msgid "lessons"
-msgstr "dars"
-
-#: classroom/templates/classroom/classroom_detail.html:113
-#: classroom/templates/classroom/classroom_list.html:222
-msgid "members"
-msgstr "a'zo"
-
-#: classroom/templates/classroom/classroom_detail.html:117
-#: classroom/templates/classroom/discussion_form.html:54
-#: classroom/templates/classroom/discussion_list.html:3
-#: classroom/templates/classroom/discussion_list.html:4
-#: classroom/templates/classroom/discussion_list.html:78
-#: classroom/templates/classroom/discussion_thread.html:99
-#: discussion/templates/discussion/home.html:4
-#: discussion/templates/discussion/home.html:5
-#: discussion/templates/discussion/home.html:189 people/models.py:20
-#: prime/templates/prime/index.html:594 templates/base.html:135
-msgid "Discussion"
-msgstr "Muhokama"
-
-#: classroom/templates/classroom/classroom_detail.html:121
-#, fuzzy
-#| msgid "Classroom"
-msgid "Edit Classroom"
-msgstr "Sinf xonasi"
-
-#: classroom/templates/classroom/classroom_detail.html:124
-msgid "Members"
-msgstr "A'zolar"
-
-#: classroom/templates/classroom/classroom_detail.html:132
-#: prime/templates/prime/index.html:447
-#: tutorial/templates/tutorial/playlist_detail.html:121
-msgid "Lessons"
-msgstr "Darslar"
-
-#: classroom/templates/classroom/classroom_detail.html:135
-#, fuzzy
-#| msgid "Lesson"
+#: classroom/templates/classroom/classroom_detail.html:8 classroom/views.py:254
 msgid "Add Lesson"
-msgstr "Dars"
+msgstr "Dars qoʻshish"
 
-#: classroom/templates/classroom/classroom_detail.html:149
-#: classroom/templates/classroom/lesson_detail.html:160
-msgid "Not Yet"
-msgstr ""
+#: classroom/templates/classroom/classroom_detail.html:11
+#: classroom/templates/classroom/homework_list.html:8
+msgid "Set Homework"
+msgstr "Uyga vazifa berish"
 
-#: classroom/templates/classroom/classroom_detail.html:150
-#: classroom/templates/classroom/lesson_detail.html:164
-#: prime/templates/prime/help.html:667
-msgid "Ongoing"
-msgstr "Davom etmoqda"
+#: classroom/templates/classroom/classroom_detail.html:14
+#: classroom/templates/classroom/homework_detail.html:11
+#: classroom/templates/classroom/lesson_detail.html:185
+#: classroom/templates/classroom/students.html:80
+#: corner/templates/corner/story_detail.html:38
+#: corner/templates/corner/story_edit.html:5
+#: corner/templates/corner/story_edit.html:13
+#: examprep/templates/examprep/lesson_detail.html:45
+#: examprep/templates/examprep/lesson_edit.html:5
+#: examprep/templates/examprep/lesson_edit.html:13
+#: games/templates/games/mathsquare_list.html:58
+#: games/templates/games/oddoneout_list.html:62
+#: masters/templates/masters/certificate.html:359
+#: tutorial/templates/tutorial/playlist_detail.html:54
+#: tutorial/templates/tutorial/tutorial_detail.html:78
+msgid "Edit"
+msgstr "Tahrirlash"
 
-#: classroom/templates/classroom/classroom_detail.html:151
-#: classroom/templates/classroom/lesson_detail.html:168
-#: corner/templates/corner/story_detail.html:149
-#: examprep/templates/examprep/drill_detail.html:106
-#: examprep/templates/examprep/lesson_detail.html:96
-#: prime/templates/prime/help.html:662 prime/templates/prime/progress.html:63
-#: tutorial/templates/tutorial/tutorial_detail.html:135
-msgid "Finished"
-msgstr "Tugallangan"
+#: classroom/templates/classroom/classroom_detail.html:25
+#: classroom/templates/classroom/homework_list.html:63
+#: homework/templates/homework/my_homework.html:19
+msgid "Your homework"
+msgstr "Uyga vazifangiz"
 
-#: classroom/templates/classroom/classroom_detail.html:155
-#: classroom/templates/classroom/lesson_detail.html:175
+#: classroom/templates/classroom/classroom_detail.html:26
+#: classroom/templates/classroom/classroom_detail.html:55
+#: classroom/templates/classroom/classroom_detail.html:121
+#: classroom/templates/classroom/payments.html:47
+#: games/templates/games/games_home.html:25 logic/templates/logic/home.html:123
+#: people/templates/people/profile.html:456
+#: tutorial/templates/tutorial/playlist_list.html:36
+#: tutorial/templates/tutorial/tutorial_list.html:33
+msgid "All"
+msgstr "Hammasi"
+
+#: classroom/templates/classroom/classroom_detail.html:37
+#: classroom/templates/classroom/homework_detail.html:31
+#: classroom/templates/classroom/homework_detail.html:165
+#: classroom/templates/classroom/homework_list.html:74
+#: classroom/templates/classroom/student_detail.html:55
+#: homework/templates/homework/my_homework.html:82
+msgid "done"
+msgstr "bajarildi"
+
+#: classroom/templates/classroom/classroom_detail.html:38
+#: classroom/templates/classroom/classroom_detail.html:68
+#: classroom/templates/classroom/homework_list.html:35
+#: classroom/templates/classroom/homework_list.html:75
+#: classroom/templates/classroom/student_detail.html:56
+#: homework/templates/homework/my_homework.html:83
+msgid "due"
+msgstr "muddati"
+
+#: classroom/templates/classroom/classroom_detail.html:42
+#: homework/templates/homework/my_homework.html:66
+msgid "To do"
+msgstr "Bajarish kerak"
+
+#: classroom/templates/classroom/classroom_detail.html:43
+#: classroom/templates/classroom/homework_detail.html:175
+#: classroom/templates/classroom/homework_list.html:82
+#: homework/templates/homework/my_homework.html:131
+#: prime/templates/prime/help.html:603
+msgid "Graded"
+msgstr "Baholangan"
+
+#: classroom/templates/classroom/classroom_detail.html:44
+#: classroom/templates/classroom/homework_detail.html:177
+#: prime/templates/prime/help.html:547
+msgid "Done"
+msgstr "Bajarildi"
+
+#: classroom/templates/classroom/classroom_detail.html:54
+msgid "Latest homework"
+msgstr "Soʻnggi vazifalar"
+
+#: classroom/templates/classroom/classroom_detail.html:66
+#: classroom/templates/classroom/lesson_detail.html:325
+msgid "item(s)"
+msgstr "ta topshiriq"
+
+#: classroom/templates/classroom/classroom_detail.html:67
+#: corner/templates/corner/story_detail.html:46
+#: examprep/templates/examprep/drill_list.html:24
+#: prime/templates/prime/progress.html:136
+msgid "finished"
+msgstr "tugallangan"
+
+#: classroom/templates/classroom/classroom_detail.html:72
+#: classroom/templates/classroom/homework_list.html:40
+msgid "Empty"
+msgstr "Boʻsh"
+
+#: classroom/templates/classroom/classroom_detail.html:84
+#: classroom/templates/classroom/homework_detail.html:134
+#: classroom/templates/classroom/students.html:25
+#: templates/includes/pwa_install.html:41
+msgid "Add"
+msgstr "Qo'shish"
+
+#: classroom/templates/classroom/classroom_detail.html:104
+#: classroom/templates/classroom/lesson_detail.html:176
 #: corner/templates/corner/_template_card.html:14
 #: corner/templates/corner/collection_detail.html:20
 #: corner/templates/corner/collection_detail.html:46
@@ -448,30 +713,47 @@ msgstr "Tugallangan"
 msgid "Draft"
 msgstr "Qoralama"
 
-#: classroom/templates/classroom/classroom_detail.html:159
-#: practice/templates/practice/practice_list.html:654
-msgid "Open"
-msgstr "Ochiq"
-
-#: classroom/templates/classroom/classroom_detail.html:166
+#: classroom/templates/classroom/classroom_detail.html:111
 msgid "No lessons yet. Add your first lesson above."
-msgstr ""
+msgstr "Hali dars yoʻq. Yuqoridan birinchi darsni qoʻshing."
 
-#: classroom/templates/classroom/classroom_detail.html:167
-#, fuzzy
-#| msgid "No published practices yet."
+#: classroom/templates/classroom/classroom_detail.html:112
 msgid "No lessons published yet."
-msgstr "Hali nashr etilgan mashqlar yo'q."
+msgstr "Hali nashr etilgan dars yoʻq."
 
-#: classroom/templates/classroom/classroom_detail.html:178
+#: classroom/templates/classroom/classroom_detail.html:140
+msgid "Your payments"
+msgstr "Toʻlovlaringiz"
+
+#: classroom/templates/classroom/classroom_detail.html:145
+#: classroom/templates/classroom/payments.html:56
+#: classroom/templates/classroom/student_detail.html:130
+msgid "Period"
+msgstr "Davr"
+
+#: classroom/templates/classroom/classroom_detail.html:145
+#: classroom/templates/classroom/payments.html:56
+#: classroom/templates/classroom/student_detail.html:130
+msgid "Amount"
+msgstr "Summa"
+
+#: classroom/templates/classroom/classroom_detail.html:146
+#: classroom/templates/classroom/homework_detail.html:23
+#: classroom/templates/classroom/lesson_detail.html:325
+#: classroom/templates/classroom/payments.html:57
+#: classroom/templates/classroom/student_detail.html:130
+#: people/templates/people/profile.html:700
+msgid "Due"
+msgstr "Muddat"
+
+#: classroom/templates/classroom/classroom_detail.html:171
 #: games/templates/games/oddoneout_manage.html:4
 #: people/templates/people/profile.html:434
-#: people/templates/people/profile.html:454
 #: prime/templates/prime/index.html:604
 msgid "Manage"
 msgstr "Boshqarish"
 
-#: classroom/templates/classroom/classroom_detail.html:189
+#: classroom/templates/classroom/classroom_detail.html:182
 #: masters/templates/masters/master_detail.html:933
 #: masters/templates/masters/master_detail.html:936
 #: masters/templates/masters/master_detail.html:995
@@ -483,21 +765,16 @@ msgstr "Boshqarish"
 msgid "more"
 msgstr "yana"
 
-#: classroom/templates/classroom/classroom_detail.html:197
-#, fuzzy
-#| msgid "Classroom"
+#: classroom/templates/classroom/classroom_detail.html:190
 msgid "Delete Classroom"
-msgstr "Sinf xonasi"
-
-#: classroom/templates/classroom/classroom_form.html:105
-#: classroom/templates/classroom/classroom_form.html:109
-#: games/templates/games/crossword_print.html:215
-#: games/templates/games/mathsquare_print.html:112
-#: templates/printing/_bar.html:26 templates/printing/_book_bar.html:52
-msgid "Back"
-msgstr "Orqaga"
+msgstr "Sinfni oʻchirish"
 
 #: classroom/templates/classroom/classroom_form.html:141
+#: classroom/templates/classroom/group_form.html:20
+#: classroom/templates/classroom/homework_form.html:50
+#: classroom/templates/classroom/payments.html:42
+#: classroom/templates/classroom/resource_form.html:21
+#: classroom/templates/classroom/student_detail.html:83
 #: corner/templates/corner/story_edit.html:65
 #: examprep/templates/examprep/lesson_edit.html:109
 #: games/templates/games/mathsquare_edit.html:68
@@ -517,6 +794,7 @@ msgid "Your enrolled classrooms."
 msgstr "Siz yozilgan darsxonalar."
 
 #: classroom/templates/classroom/classroom_list.html:194
+#: people/templates/people/profile.html:482
 msgid "New Classroom"
 msgstr "Yangi darsxona"
 
@@ -528,48 +806,51 @@ msgstr "Qaysi darsxonalarga yozilganingizni ko'rish uchun kiring."
 msgid "Sign in"
 msgstr "Kirish"
 
-#: classroom/templates/classroom/classroom_list.html:228
+#: classroom/templates/classroom/classroom_list.html:225
+msgid "members"
+msgstr "a'zo"
+
+#: classroom/templates/classroom/classroom_list.html:246
 #: discussion/templates/discussion/home.html:221
 msgid "Active"
 msgstr "Faol"
 
-#: classroom/templates/classroom/classroom_list.html:228
+#: classroom/templates/classroom/classroom_list.html:246
 msgid "Inactive"
 msgstr "Nofaol"
 
-#: classroom/templates/classroom/classroom_list.html:232
+#: classroom/templates/classroom/classroom_list.html:250
 msgid "Enrolled"
 msgstr "Yozilgan"
 
-#: classroom/templates/classroom/classroom_list.html:236
+#: classroom/templates/classroom/classroom_list.html:254
 msgid "Private"
 msgstr "Yopiq"
 
-#: classroom/templates/classroom/classroom_list.html:240
+#: classroom/templates/classroom/classroom_list.html:258
 msgid "Enter"
 msgstr "Kirish"
 
-#: classroom/templates/classroom/classroom_list.html:240
-#: masters/templates/masters/master_detail.html:1194
+#: classroom/templates/classroom/classroom_list.html:258
 #: masters/templates/masters/master_list.html:328
 #: panda/templates/panda/panda_list.html:310
-#: people/templates/people/profile.html:689
+#: people/templates/people/profile.html:675
 msgid "View"
 msgstr "Ko'rish"
 
-#: classroom/templates/classroom/classroom_list.html:248
+#: classroom/templates/classroom/classroom_list.html:266
 msgid "No classrooms yet"
 msgstr "Hali darsxona yo'q"
 
-#: classroom/templates/classroom/classroom_list.html:251
+#: classroom/templates/classroom/classroom_list.html:269
 msgid "Create your first classroom and start teaching."
 msgstr "Birinchi darsxonangizni yarating va dars bering."
 
-#: classroom/templates/classroom/classroom_list.html:253
+#: classroom/templates/classroom/classroom_list.html:271
 msgid "No classrooms have been created yet."
 msgstr "Hali darsxona yaratilmagan."
 
-#: classroom/templates/classroom/classroom_list.html:258
+#: classroom/templates/classroom/classroom_list.html:276 classroom/views.py:121
 msgid "Create Classroom"
 msgstr "Darsxona yaratish"
 
@@ -578,85 +859,59 @@ msgid ""
 "This classroom is private. You need to be enrolled by the master to access "
 "its lessons and discussions."
 msgstr ""
+"Bu sinf yopiq. Darslar va muhokamalarga kirish uchun ustoz sizni qoʻshishi "
+"kerak."
 
 #: classroom/templates/classroom/classroom_locked.html:77
 msgid "Contact this master to request access to the classroom."
-msgstr ""
+msgstr "Sinfga kirish uchun ustoz bilan bogʻlaning."
 
 #: classroom/templates/classroom/classroom_locked.html:84
-#, fuzzy
-#| msgid "Edit Master Profile"
 msgid "Visit Master Profile"
-msgstr "Ustoz profilini tahrirlash"
+msgstr "Ustoz profiliga oʻtish"
 
 #: classroom/templates/classroom/classroom_locked.html:87
-#, fuzzy
-#| msgid "Run Classrooms"
 msgid "All Classrooms"
-msgstr "Darsxonalarni yuritish"
+msgstr "Barcha sinflar"
 
 #: classroom/templates/classroom/classroom_manage.html:3
 #: classroom/templates/classroom/classroom_manage.html:4
-#, fuzzy
-#| msgid "Manage Homeworks"
 msgid "Manage Members"
-msgstr "Uy vazifalarini boshqarish"
+msgstr "Aʼzolarni boshqarish"
 
-#: classroom/templates/classroom/classroom_manage.html:93
-#, fuzzy
-#| msgid "Groups"
+#: classroom/templates/classroom/classroom_manage.html:94
 msgid "Attach Groups"
-msgstr "Guruhlar"
+msgstr "Guruh biriktirish"
 
-#: classroom/templates/classroom/classroom_manage.html:105
-msgid "No groups found. Create groups in the Homework section first."
-msgstr ""
+#: classroom/templates/classroom/classroom_manage.html:106
+msgid "No groups yet — create one on the Students tab."
+msgstr "Hali guruh yoʻq — \"Oʻquvchilar\" boʻlimida yarating."
 
-#: classroom/templates/classroom/classroom_manage.html:115
-#, fuzzy
-#| msgid "All Students"
+#: classroom/templates/classroom/classroom_manage.html:116
 msgid "Add Individual Students"
-msgstr "Barcha o'quvchilar"
+msgstr "Alohida oʻquvchilar qoʻshish"
 
-#: classroom/templates/classroom/classroom_manage.html:127
+#: classroom/templates/classroom/classroom_manage.html:128
 #: prime/templates/prime/progress.html:147
 msgid "No students connected to you yet."
 msgstr "Sizga hali o'quvchi biriktirilmagan."
 
-#: classroom/templates/classroom/classroom_manage.html:134
-#, fuzzy
-#| msgid "Member"
+#: classroom/templates/classroom/classroom_manage.html:135
 msgid "Update Members"
-msgstr "A'zo"
+msgstr "Aʼzolarni yangilash"
 
-#: classroom/templates/classroom/classroom_manage.html:143
+#: classroom/templates/classroom/classroom_manage.html:144
 msgid "Current Members"
-msgstr ""
+msgstr "Hozirgi aʼzolar"
 
 #: classroom/templates/classroom/discussion_form.html:3
 #: classroom/templates/classroom/discussion_form.html:4
-#, fuzzy
-#| msgid "Discussion"
 msgid "New Discussion"
-msgstr "Muhokama"
+msgstr "Yangi muhokama"
 
 #: classroom/templates/classroom/discussion_form.html:60
-#, fuzzy
-#| msgid "Discussion"
 msgid "Start a Discussion"
-msgstr "Muhokama"
-
-#: classroom/templates/classroom/discussion_form.html:68
-#: classroom/templates/classroom/lesson_detail.html:251
-#: classroom/templates/classroom/lesson_detail.html:339
-#: classroom/templates/classroom/lesson_form.html:100
-#: corner/templates/corner/story_edit.html:33
-#: examprep/templates/examprep/lesson_edit.html:32 masters/models.py:266
-#: masters/templates/masters/certificate.html:360
-#: tutorial/templates/tutorial/playlist_form.html:39
-#: tutorial/templates/tutorial/tutorial_form.html:80
-msgid "Title"
-msgstr "Sarlavha"
+msgstr "Muhokama boshlash"
 
 #: classroom/templates/classroom/discussion_form.html:73
 #: masters/templates/masters/certificate.html:363
@@ -665,92 +920,268 @@ msgstr "Asosiy matn"
 
 #: classroom/templates/classroom/discussion_form.html:80
 msgid "Post"
-msgstr ""
+msgstr "Joylash"
 
-#: classroom/templates/classroom/discussion_list.html:82
-#, fuzzy
-#| msgid "Classroom"
+#: classroom/templates/classroom/discussion_list.html:83
 msgid "Back to Classroom"
-msgstr "Sinf xonasi"
+msgstr "Sinfga qaytish"
 
-#: classroom/templates/classroom/discussion_list.html:85
+#: classroom/templates/classroom/discussion_list.html:86
 msgid "New Post"
-msgstr ""
+msgstr "Yangi mavzu"
 
-#: classroom/templates/classroom/discussion_list.html:98
+#: classroom/templates/classroom/discussion_list.html:99
 #: classroom/templates/classroom/discussion_thread.html:114
 #: discussion/templates/discussion/home.html:245
 msgid "Pinned"
 msgstr "Qadalgan"
 
-#: classroom/templates/classroom/discussion_list.html:102
+#: classroom/templates/classroom/discussion_list.html:103
 #: classroom/templates/classroom/discussion_thread.html:124
-#: prime/templates/prime/help.html:698
+#: prime/templates/prime/help.html:699
 msgid "replies"
 msgstr "javob"
 
-#: classroom/templates/classroom/discussion_list.html:110
-#, fuzzy
-#| msgid "Delete this tutorial"
+#: classroom/templates/classroom/discussion_list.html:111
 msgid "Delete this discussion?"
-msgstr "Ushbu darslikni o'chirish"
+msgstr "Bu muhokama oʻchirilsinmi?"
 
-#: classroom/templates/classroom/discussion_list.html:112
-#: classroom/templates/classroom/lesson_detail.html:187
+#: classroom/templates/classroom/discussion_list.html:113
+#: classroom/templates/classroom/homework_detail.html:14
+#: classroom/templates/classroom/lesson_detail.html:188
 #: examprep/templates/examprep/lesson_edit.html:69
 #: masters/templates/masters/master_detail.html:615
-#: masters/templates/masters/student_detail.html:404
 msgid "Delete"
 msgstr "O'chirish"
 
-#: classroom/templates/classroom/discussion_list.html:121
-#, fuzzy
-#| msgid "Discussions"
-msgid "No discussions yet"
-msgstr "Muhokamalar"
-
 #: classroom/templates/classroom/discussion_list.html:122
-msgid "Start a conversation with your classmates."
-msgstr ""
+msgid "No discussions yet"
+msgstr "Hali muhokama yoʻq"
 
-#: classroom/templates/classroom/discussion_list.html:124
-#, fuzzy
-#| msgid "Discussion"
+#: classroom/templates/classroom/discussion_list.html:123
+msgid "Start a conversation with your classmates."
+msgstr "Sinfdoshlaringiz bilan suhbat boshlang."
+
+#: classroom/templates/classroom/discussion_list.html:125
 msgid "Start Discussion"
-msgstr "Muhokama"
+msgstr "Muhokama boshlash"
 
 #: classroom/templates/classroom/discussion_thread.html:123
-#, fuzzy
-#| msgid "Views"
 msgid "views"
-msgstr "Ko'rishlar"
+msgstr "koʻrishlar"
 
 #: classroom/templates/classroom/discussion_thread.html:131
-#, fuzzy
-#| msgid "replies"
 msgid "Replies"
-msgstr "javob"
+msgstr "Javoblar"
 
 #: classroom/templates/classroom/discussion_thread.html:155
 msgid "Leave a Reply"
-msgstr ""
+msgstr "Javob yozing"
 
 #: classroom/templates/classroom/discussion_thread.html:169
 msgid "Post Reply"
+msgstr "Javobni joylash"
+
+#: classroom/templates/classroom/group_form.html:8
+msgid "Edit group"
+msgstr "Guruhni tahrirlash"
+
+#: classroom/templates/classroom/group_form.html:8
+#: classroom/templates/classroom/students.html:13
+msgid "New group"
+msgstr "Yangi guruh"
+
+#: classroom/templates/classroom/homework_detail.html:29
+msgid "What to do"
+msgstr "Nima qilish kerak"
+
+#: classroom/templates/classroom/homework_detail.html:54
+msgid "Remove"
+msgstr "Olib tashlash"
+
+#: classroom/templates/classroom/homework_detail.html:62
+msgid "Nothing added yet — use the panel below."
+msgstr "Hali hech narsa qoʻshilmadi — quyidagi paneldan foydalaning."
+
+#: classroom/templates/classroom/homework_detail.html:63
+msgid "Your teacher has not added anything to this homework yet."
+msgstr "Ustozingiz bu vazifaga hali hech narsa qoʻshmadi."
+
+#: classroom/templates/classroom/homework_detail.html:70
+msgid "Feedback from your teacher"
+msgstr "Ustozingizdan izoh"
+
+#: classroom/templates/classroom/homework_detail.html:79
+msgid "Add content"
+msgstr "Material qoʻshish"
+
+#: classroom/templates/classroom/homework_detail.html:82
+#, python-format
+msgid "Showing %(subject)s content only — this classroom's subject."
+msgstr "Faqat %(subject)s materiallari koʻrsatilmoqda — bu sinfning fani."
+
+#: classroom/templates/classroom/homework_detail.html:84
+msgid "Set a subject on this classroom to narrow these lists to one subject."
+msgstr "Roʻyxatlarni bitta fanga toraytirish uchun sinfga fan belgilang."
+
+#: classroom/templates/classroom/homework_detail.html:100
+msgid "Search by title…"
+msgstr "Sarlavha boʻyicha qidirish…"
+
+#: classroom/templates/classroom/homework_detail.html:103
+#: games/templates/games/target_number.html:226
+#: practice/templates/practice/practice_list.html:525
+msgid "Clear"
+msgstr "Tozalash"
+
+#: classroom/templates/classroom/homework_detail.html:110
+msgid ""
+"Adding a tutorial also pulls in its own practice and reading — the three "
+"legs of a lesson travel together."
 msgstr ""
+"Darslik qoʻshilsa, uning mashqi va oʻqish matni ham qoʻshiladi — darsning "
+"uch oyogʻi birga yuradi."
+
+#: classroom/templates/classroom/homework_detail.html:130
+msgid "+ its practice & reading"
+msgstr "+ mashqi va oʻqish matni"
+
+#: classroom/templates/classroom/homework_detail.html:141
+msgid "Nothing matches that search."
+msgstr "Bu qidiruvga hech narsa mos kelmadi."
+
+#: classroom/templates/classroom/homework_detail.html:142
+msgid "Nothing left to add from this library."
+msgstr "Bu kutubxonadan qoʻshadigan narsa qolmadi."
+
+#: classroom/templates/classroom/homework_detail.html:151
+msgid "assigned"
+msgstr "berilgan"
+
+#: classroom/templates/classroom/homework_detail.html:166
+msgid "score"
+msgstr "ball"
+
+#: classroom/templates/classroom/homework_detail.html:179
+#: exam/templates/exam/exam_detail.html:115
+#: people/templates/people/profile.html:704 prime/templates/prime/help.html:451
+#: prime/templates/prime/help.html:599
+msgid "Pending"
+msgstr "Kutilmoqda"
+
+#: classroom/templates/classroom/homework_detail.html:186
+msgid "Give feedback / mark graded"
+msgstr "Izoh yozish / baholandi deb belgilash"
+
+#: classroom/templates/classroom/homework_detail.html:192
+msgid "A line for this student…"
+msgstr "Bu oʻquvchi uchun bir qator…"
+
+#: classroom/templates/classroom/homework_detail.html:194
+msgid "Save & mark graded"
+msgstr "Saqlash va baholandi deb belgilash"
+
+#: classroom/templates/classroom/homework_detail.html:201
+msgid "Take this homework off them"
+msgstr "Bu vazifani undan olib tashlash"
+
+#: classroom/templates/classroom/homework_detail.html:206
+msgid "Nobody has this homework yet."
+msgstr "Bu vazifa hali hech kimga berilmagan."
+
+#: classroom/templates/classroom/homework_detail.html:211
+msgid "Give it to more students"
+msgstr "Yana oʻquvchilarga berish"
+
+#: classroom/templates/classroom/homework_detail.html:227
+msgid "Assign"
+msgstr "Berish"
+
+#: classroom/templates/classroom/homework_form.html:8
+msgid "Edit homework"
+msgstr "Vazifani tahrirlash"
+
+#: classroom/templates/classroom/homework_form.html:8
+msgid "Set homework"
+msgstr "Uyga vazifa berish"
+
+#: classroom/templates/classroom/homework_form.html:25
+msgid "Who gets it"
+msgstr "Kimga beriladi"
+
+#: classroom/templates/classroom/homework_form.html:31
+msgid "Untick to choose particular students or groups below."
+msgstr "Ayrim oʻquvchilar yoki guruhlarni tanlash uchun belgini olib tashlang."
+
+#: classroom/templates/classroom/homework_form.html:50
+msgid "Create and add content"
+msgstr "Yaratish va material qoʻshish"
+
+#: classroom/templates/classroom/homework_form.html:57
+msgid ""
+"You will pick the tutorials, practices and readings on the next screen — "
+"searchable, and already narrowed to this classroom's subject."
+msgstr ""
+"Darslik, mashq va oʻqish matnlarini keyingi sahifada tanlaysiz — qidiruv "
+"bilan va bu sinfning faniga toraytirilgan holda."
+
+#: classroom/templates/classroom/homework_list.html:18
+#: classroom/templates/classroom/student_detail.html:44
+msgid "Homework in this classroom"
+msgstr "Bu sinfdagi uyga vazifalar"
+
+#: classroom/templates/classroom/homework_list.html:19
+msgid "Only this room's students can be given these."
+msgstr "Bularni faqat shu sinf oʻquvchilariga berish mumkin."
+
+#: classroom/templates/classroom/homework_list.html:30
+msgid "tutorial(s)"
+msgstr "ta darslik"
+
+#: classroom/templates/classroom/homework_list.html:31
+msgid "practice(s)"
+msgstr "ta mashq"
+
+#: classroom/templates/classroom/homework_list.html:32
+msgid "reading(s)"
+msgstr "ta oʻqish matni"
+
+#: classroom/templates/classroom/homework_list.html:33
+msgid "exam lesson(s)"
+msgstr "ta imtihon darsi"
+
+#: classroom/templates/classroom/homework_list.html:34
+msgid "student(s)"
+msgstr "ta oʻquvchi"
+
+#: classroom/templates/classroom/homework_list.html:45
+#: classroom/templates/classroom/students.html:53
+#: homework/templates/homework/my_homework.html:90
+#: masters/templates/masters/master_detail.html:1144
+#: practice/templates/practice/practice_list.html:654
+msgid "Open"
+msgstr "Ochiq"
+
+#: classroom/templates/classroom/homework_list.html:52
+msgid "No homework set in this classroom yet."
+msgstr "Bu sinfda hali uyga vazifa berilmagan."
+
+#: classroom/templates/classroom/homework_list.html:54
+msgid "Set the first one"
+msgstr "Birinchisini bering"
+
+#: classroom/templates/classroom/homework_list.html:88
+msgid "Nothing set yet. Enjoy it while it lasts."
+msgstr "Hali vazifa yoʻq. Bundan foydalanib qoling."
 
 #: classroom/templates/classroom/lesson_confirm_delete.html:3
 #: classroom/templates/classroom/lesson_confirm_delete.html:4
-#, fuzzy
-#| msgid "Delete"
 msgid "Delete Lesson"
-msgstr "O'chirish"
+msgstr "Darsni oʻchirish"
 
 #: classroom/templates/classroom/lesson_confirm_delete.html:15
-#, fuzzy
-#| msgid "Delete Tutorial?"
 msgid "Delete lesson?"
-msgstr "Darslikni o'chirishni tasdiqlaysizmi?"
+msgstr "Dars oʻchirilsinmi?"
 
 #: classroom/templates/classroom/lesson_confirm_delete.html:18
 #, python-format
@@ -758,153 +1189,110 @@ msgid ""
 "\n"
 "          \"%(name)s\" and all its notes will be permanently deleted.\n"
 "        "
-msgstr ""
+msgstr "\n          \"%(name)s\" va uning barcha qaydlari butunlay oʻchiriladi.\n        "
 
-#: classroom/templates/classroom/lesson_detail.html:173
+#: classroom/templates/classroom/lesson_detail.html:161
+msgid "Not Yet"
+msgstr "Hali emas"
+
+#: classroom/templates/classroom/lesson_detail.html:165
+#: prime/templates/prime/help.html:668
+msgid "Ongoing"
+msgstr "Davom etmoqda"
+
+#: classroom/templates/classroom/lesson_detail.html:169
+#: corner/templates/corner/story_detail.html:149
+#: examprep/templates/examprep/drill_detail.html:106
+#: examprep/templates/examprep/lesson_detail.html:96
+#: homework/templates/homework/my_homework.html:106
+#: prime/templates/prime/help.html:663 prime/templates/prime/progress.html:63
+#: tutorial/templates/tutorial/tutorial_detail.html:135
+msgid "Finished"
+msgstr "Tugallangan"
+
+#: classroom/templates/classroom/lesson_detail.html:174
 msgid "Live"
 msgstr "Jonli"
 
-#: classroom/templates/classroom/lesson_detail.html:178 people/models.py:18
-#: templates/printing/_tutorial.html:17
+#: classroom/templates/classroom/lesson_detail.html:179 homework/items.py:20
+#: people/models.py:18 templates/printing/_tutorial.html:17
 msgid "Lesson"
 msgstr "Dars"
 
-#: classroom/templates/classroom/lesson_detail.html:184
-#: corner/templates/corner/story_detail.html:38
-#: corner/templates/corner/story_edit.html:5
-#: corner/templates/corner/story_edit.html:13
-#: examprep/templates/examprep/lesson_detail.html:45
-#: examprep/templates/examprep/lesson_edit.html:5
-#: examprep/templates/examprep/lesson_edit.html:13
-#: games/templates/games/mathsquare_list.html:58
-#: games/templates/games/oddoneout_list.html:62
-#: homework/templates/homework/homework_detail.html:76
-#: masters/templates/masters/certificate.html:359
-#: masters/templates/masters/master_detail.html:1197
-#: tutorial/templates/tutorial/playlist_detail.html:54
-#: tutorial/templates/tutorial/tutorial_detail.html:78
-msgid "Edit"
-msgstr "Tahrirlash"
-
-#: classroom/templates/classroom/lesson_detail.html:199
-msgid "Video"
-msgstr "Video"
-
-#: classroom/templates/classroom/lesson_detail.html:214
-#: masters/templates/masters/student_detail.html:352
-#: masters/templates/masters/student_detail.html:374
+#: classroom/templates/classroom/lesson_detail.html:215
 msgid "Notes"
 msgstr "Eslatmalar"
 
-#: classroom/templates/classroom/lesson_detail.html:225
+#: classroom/templates/classroom/lesson_detail.html:226
 #: corner/templates/corner/template_detail.html:40
 #: examprep/templates/examprep/grammar_list.html:38
 #: examprep/templates/examprep/vocab_list.html:38
 msgid "Download"
 msgstr "Yuklab olish"
 
-#: classroom/templates/classroom/lesson_detail.html:231
-#, fuzzy
-#| msgid "Delete"
-msgid "Delete note"
-msgstr "O'chirish"
-
 #: classroom/templates/classroom/lesson_detail.html:232
-#, fuzzy
-#| msgid "Delete this tutorial"
-msgid "Delete this note?"
-msgstr "Ushbu darslikni o'chirish"
+msgid "Delete note"
+msgstr "Qaydni oʻchirish"
 
-#: classroom/templates/classroom/lesson_detail.html:240
+#: classroom/templates/classroom/lesson_detail.html:233
+msgid "Delete this note?"
+msgstr "Bu qayd oʻchirilsinmi?"
+
+#: classroom/templates/classroom/lesson_detail.html:241
 msgid "No notes uploaded yet."
 msgstr "Hali eslatma yuklanmagan."
 
-#: classroom/templates/classroom/lesson_detail.html:246
+#: classroom/templates/classroom/lesson_detail.html:247
 msgid "Upload PDF Note"
-msgstr ""
+msgstr "PDF qayd yuklash"
 
-#: classroom/templates/classroom/lesson_detail.html:255
+#: classroom/templates/classroom/lesson_detail.html:256
 msgid "File (PDF)"
-msgstr ""
+msgstr "Fayl (PDF)"
 
-#: classroom/templates/classroom/lesson_detail.html:259
+#: classroom/templates/classroom/lesson_detail.html:260
 msgid "Upload"
 msgstr "Yuklash"
 
-#: classroom/templates/classroom/lesson_detail.html:279
+#: classroom/templates/classroom/lesson_detail.html:280
 msgid "min read"
 msgstr "daqiqa o'qish"
 
-#: classroom/templates/classroom/lesson_detail.html:312
-#: masters/templates/masters/master_detail.html:1155
-msgid "Homeworks"
-msgstr "Uy vazifalari"
+#: classroom/templates/classroom/lesson_detail.html:332
+msgid "No homework set from this lesson yet."
+msgstr "Bu darsdan hali uyga vazifa berilmagan."
 
-#: classroom/templates/classroom/lesson_detail.html:323
-#: homework/templates/homework/homework_detail.html:67
-#: masters/templates/masters/student_detail.html:372
-#: people/templates/people/profile.html:484
-#: people/templates/people/profile.html:714
-msgid "Due"
-msgstr "Muddat"
+#: classroom/templates/classroom/lesson_detail.html:345
+msgid "Set this lesson as homework"
+msgstr "Shu darsni uyga vazifa qilib berish"
 
-#: classroom/templates/classroom/lesson_detail.html:323
-#, fuzzy
-#| msgid "Due date"
-msgid "No due date"
-msgstr "Topshirish muddati"
-
-#: classroom/templates/classroom/lesson_detail.html:329
-#: people/templates/people/profile.html:745
-msgid "No homework assigned yet."
-msgstr "Hali uy vazifasi berilmagan."
-
-#: classroom/templates/classroom/lesson_detail.html:334
-#, fuzzy
-#| msgid "Create Homework"
-msgid "Create & Attach Homework"
-msgstr "Uy vazifasi yaratish"
-
-#: classroom/templates/classroom/lesson_detail.html:343 people/models.py:16
-#: practice/templates/practice/practice_list.html:451
-#: prime/templates/prime/index.html:418 templates/base.html:113
-#: templates/base.html:117 templates/base.html:365
-#: templates/printing/_book_key.html:20 templates/printing/_practice.html:18
-#: tutorial/templates/tutorial/tutorial_detail.html:333
-msgid "Practice"
-msgstr "Mashqlar"
-
-#: classroom/templates/classroom/lesson_detail.html:347
-#: masters/templates/masters/student_detail.html:344
-msgid "Due Date"
-msgstr "Topshirish muddati"
+#: classroom/templates/classroom/lesson_detail.html:348
+msgid "Build one by hand"
+msgstr "Qoʻlda tuzish"
 
 #: classroom/templates/classroom/lesson_detail.html:352
-msgid "Instructions"
-msgstr "Ko'rsatma"
+msgid ""
+"Takes this lesson's tutorials and practices — and each tutorial's own "
+"practice and reading — and gives the lot to everyone in the classroom."
+msgstr ""
+"Bu darsning darsliklari va mashqlarini — hamda har bir darslikning oʻz "
+"mashqi va oʻqish matnini — olib, sinfdagi hammaga beradi."
 
-#: classroom/templates/classroom/lesson_detail.html:356
-#: people/templates/people/profile.html:495
-msgid "Create Homework"
-msgstr "Uy vazifasi yaratish"
-
-#: classroom/templates/classroom/lesson_detail.html:370
+#: classroom/templates/classroom/lesson_detail.html:364
 msgid "Content coming soon."
 msgstr "Kontent tez orada."
 
-#: classroom/templates/classroom/lesson_form.html:106
+#: classroom/templates/classroom/lesson_form.html:107
 #: games/templates/games/oddoneout_create.html:39
 #: tutorial/templates/tutorial/playlist_form.html:48
-#, fuzzy
-#| msgid "Questions"
 msgid "Description"
-msgstr "Savollar"
+msgstr "Tavsif"
 
-#: classroom/templates/classroom/lesson_form.html:111
+#: classroom/templates/classroom/lesson_form.html:112
 msgid "YouTube Video URL"
-msgstr ""
+msgstr "YouTube video havolasi"
 
-#: classroom/templates/classroom/lesson_form.html:111
+#: classroom/templates/classroom/lesson_form.html:112
 #: games/templates/games/codebreaker_create.html:61
 #: games/templates/games/oddoneout_create.html:39
 #: games/templates/games/primeclimb_create.html:82
@@ -917,23 +1305,14 @@ msgstr ""
 msgid "optional"
 msgstr "ixtiyoriy"
 
-#: classroom/templates/classroom/lesson_form.html:118
+#: classroom/templates/classroom/lesson_form.html:119
 #: corner/templates/corner/story_edit.html:42
 #: examprep/templates/examprep/lesson_edit.html:41
 #: examprep/templates/examprep/lesson_edit.html:64
 msgid "Order"
 msgstr "Tartib"
 
-#: classroom/templates/classroom/lesson_form.html:122
-#: homework/templates/homework/homework_detail.html:124
-#: homework/templates/homework/homework_detail.html:193
-#: masters/templates/masters/student_detail.html:266
-#: masters/templates/masters/student_detail.html:334
-#: masters/templates/masters/student_detail.html:371
-msgid "Status"
-msgstr "Holat"
-
-#: classroom/templates/classroom/lesson_form.html:128
+#: classroom/templates/classroom/lesson_form.html:129
 #: corner/templates/corner/story_edit.html:47
 #: examprep/templates/examprep/lesson_edit.html:46
 #: tutorial/templates/tutorial/playlist_form.html:115
@@ -941,47 +1320,396 @@ msgstr "Holat"
 msgid "Published"
 msgstr "Nashr etilgan"
 
-#: classroom/templates/classroom/lesson_form.html:136
-#, fuzzy
-#| msgid "Practices"
+#: classroom/templates/classroom/lesson_form.html:137
 msgid "Link Practices"
-msgstr "Mashqlar"
+msgstr "Mashqlarni biriktirish"
 
-#: classroom/templates/classroom/lesson_form.html:141
-#, fuzzy
-#| msgid "No published practices yet."
+#: classroom/templates/classroom/lesson_form.html:142
 msgid "No published practices available."
-msgstr "Hali nashr etilgan mashqlar yo'q."
+msgstr "Nashr etilgan mashq yoʻq."
 
-#: classroom/templates/classroom/lesson_form.html:151
-#, fuzzy
-#| msgid "Homeworks"
-msgid "Link Homeworks"
-msgstr "Uy vazifalari"
+#: classroom/templates/classroom/lesson_form.html:152
+msgid "Link Tutorials"
+msgstr "Darsliklarni biriktirish"
 
-#: classroom/templates/classroom/lesson_form.html:156
-#, fuzzy
-#| msgid "No homework created yet."
-msgid "No homeworks created yet."
-msgstr "Hali uy vazifasi yaratilmagan."
+#: classroom/templates/classroom/lesson_form.html:157
+msgid "No published tutorials available."
+msgstr "Nashr etilgan darslik yoʻq."
 
 #: classroom/templates/classroom/lesson_form.html:165
-#, fuzzy
-#| msgid "Tutorials"
-msgid "Link Tutorials"
-msgstr "Darsliklar"
-
-#: classroom/templates/classroom/lesson_form.html:170
-#, fuzzy
-#| msgid "No published practices yet."
-msgid "No published tutorials available."
-msgstr "Hali nashr etilgan mashqlar yo'q."
-
-#: classroom/templates/classroom/lesson_form.html:178
-#, fuzzy
-#| msgid "Lesson"
 msgid "Save Lesson"
-msgstr "Dars"
+msgstr "Darsni saqlash"
+
+#: classroom/templates/classroom/payments.html:8
+#: classroom/templates/classroom/payments.html:83
+#: classroom/templates/classroom/student_detail.html:151
+#: masters/templates/masters/master_detail.html:975
+#: people/templates/people/profile.html:420
+#: practice/templates/practice/practice_detail.html:21
+#: practice/templates/practice/practice_list.html:610
+msgid "Paid"
+msgstr "Pullik"
+
+#: classroom/templates/classroom/payments.html:12
+msgid "Unpaid"
+msgstr "Toʻlanmagan"
+
+#: classroom/templates/classroom/payments.html:16
+msgid "Partial"
+msgstr "Qisman"
+
+#: classroom/templates/classroom/payments.html:22
+msgid "Record a payment"
+msgstr "Toʻlovni yozib qoʻyish"
+
+#: classroom/templates/classroom/payments.html:57
+msgid "Paid on"
+msgstr "Toʻlangan sana"
+
+#: classroom/templates/classroom/payments.html:99
+msgid "No payments recorded for this classroom yet."
+msgstr "Bu sinf uchun hali toʻlov yozilmagan."
+
+#: classroom/templates/classroom/resource_form.html:6
+msgid "Add to the shelf"
+msgstr "Javonga qoʻshish"
+
+#: classroom/templates/classroom/resources.html:8
+msgid "Add note or link"
+msgstr "Qayd yoki havola qoʻshish"
+
+#: classroom/templates/classroom/resources.html:17
+msgid "Classroom shelf"
+msgstr "Sinf javoni"
+
+#: classroom/templates/classroom/resources.html:18
+msgid "Things that outlive one lesson."
+msgstr "Bir darsdan uzoq yashaydigan narsalar."
+
+#: classroom/templates/classroom/resources.html:47
+msgid ""
+"Nothing on the shelf yet — add a syllabus, a recording or the class Telegram "
+"link."
+msgstr ""
+"Javon hali boʻsh — dastur, yozuv yoki sinf Telegram havolasini qoʻshing."
+
+#: classroom/templates/classroom/resources.html:48
+msgid "Your teacher has not put anything here yet."
+msgstr "Ustozingiz bu yerga hali hech narsa qoʻymadi."
+
+#: classroom/templates/classroom/resources.html:64
+msgid "Lesson notes"
+msgstr "Dars qaydlari"
+
+#: classroom/templates/classroom/resources.html:65
+msgid "Uploaded inside a lesson."
+msgstr "Dars ichida yuklangan."
+
+#: classroom/templates/classroom/student_detail.html:12
+#: people/templates/people/profile.html:4
+#: people/templates/people/profile.html:5 templates/base.html:369
+msgid "Profile"
+msgstr "Profil"
+
+#: classroom/templates/classroom/student_detail.html:17
+msgid "Remove from this classroom"
+msgstr "Bu sinfdan chiqarish"
+
+#: classroom/templates/classroom/student_detail.html:25
+#: classroom/templates/classroom/students.html:47
+msgid "Attendance"
+msgstr "Davomat"
+
+#: classroom/templates/classroom/student_detail.html:29
+msgid "Late"
+msgstr "Kechikdi"
+
+#: classroom/templates/classroom/student_detail.html:37
+#: logic/templates/logic/home.html:75 logic/templates/logic/my_answers.html:23
+#: prime/templates/prime/progress.html:59
+msgid "Points"
+msgstr "Ball"
+
+#: classroom/templates/classroom/student_detail.html:66
+msgid "No homework given to this student yet."
+msgstr "Bu oʻquvchiga hali vazifa berilmagan."
+
+#: classroom/templates/classroom/student_detail.html:72
+msgid "Mark attendance"
+msgstr "Davomatni belgilash"
+
+#: classroom/templates/classroom/student_detail.html:89
+#: masters/templates/masters/certificate.html:364
+msgid "Date"
+msgstr "Sana"
+
+#: classroom/templates/classroom/student_detail.html:123
+msgid "Record payment"
+msgstr "Toʻlovni yozish"
+
+#: classroom/templates/classroom/student_detail.html:175
+#: people/templates/people/profile.html:659
+msgid "Certificates"
+msgstr "Sertifikatlar"
+
+#: classroom/templates/classroom/student_detail.html:184
+msgid "Issue"
+msgstr "Berish"
+
+#: classroom/templates/classroom/student_detail.html:208
+msgid "Back to roster"
+msgstr "Roʻyxatga qaytish"
+
+#: classroom/templates/classroom/students.html:7
+msgid "Take the register"
+msgstr "Davomatni olish"
+
+#: classroom/templates/classroom/students.html:21
+msgid "Add a student"
+msgstr "Oʻquvchi qoʻshish"
+
+#: classroom/templates/classroom/students.html:27
+msgid ""
+"They need a Powerty account first. Adding them here also makes them your "
+"student."
+msgstr ""
+"Avval Powerty hisobi boʻlishi kerak. Bu yerga qoʻshsangiz, u sizning "
+"oʻquvchingizga ham aylanadi."
+
+#: classroom/templates/classroom/students.html:31
+msgid "Roster"
+msgstr "Roʻyxat"
+
+#: classroom/templates/classroom/students.html:51
+msgid "unpaid"
+msgstr "toʻlanmagan"
+
+#: classroom/templates/classroom/students.html:60
+msgid "No students in this classroom yet. Add one above, or attach a group."
+msgstr ""
+"Bu sinfda hali oʻquvchi yoʻq. Yuqoridan qoʻshing yoki guruh biriktiring."
+
+#: classroom/templates/classroom/students.html:67
+msgid "Your groups"
+msgstr "Guruhlaringiz"
+
+#: classroom/templates/classroom/students.html:68
+msgid "Shared across all your classrooms."
+msgstr "Barcha sinflaringiz uchun umumiy."
+
+#: classroom/templates/classroom/students.html:79
+msgid "In this room"
+msgstr "Shu sinfda"
+
+#: classroom/views.py:115
+msgid "Classroom created. Now add your students."
+msgstr "Sinf yaratildi. Endi oʻquvchilaringizni qoʻshing."
+
+#: classroom/views.py:122
+msgid "Set up a new private classroom for your students."
+msgstr "Oʻquvchilaringiz uchun yangi yopiq sinf tuzing."
+
+#: classroom/views.py:176
+msgid "Classroom updated."
+msgstr "Sinf yangilandi."
+
+#: classroom/views.py:183
+msgid "Edit Classroom"
+msgstr "Sinfni tahrirlash"
+
+#: classroom/views.py:184
+msgid "Update classroom details."
+msgstr "Sinf maʼlumotlarini yangilash."
+
+#: classroom/views.py:194
+msgid "Classroom deleted."
+msgstr "Sinf oʻchirildi."
+
+#: classroom/views.py:215
+msgid "Membership updated."
+msgstr "Aʼzolik yangilandi."
+
+#: classroom/views.py:246
+msgid "Lesson created."
+msgstr "Dars yaratildi."
+
+#: classroom/views.py:291
+msgid "Lesson updated."
+msgstr "Dars yangilandi."
+
+#: classroom/views.py:299
+msgid "Edit Lesson"
+msgstr "Darsni tahrirlash"
+
+#: classroom/views.py:312
+msgid "Lesson deleted."
+msgstr "Dars oʻchirildi."
+
+#: classroom/views.py:331
+msgid "Note uploaded."
+msgstr "Qayd yuklandi."
+
+#: classroom/views.py:333
+msgid "Please select a valid file."
+msgstr "Toʻgʻri fayl tanlang."
+
+#: classroom/views.py:345
+msgid "Note deleted."
+msgstr "Qayd oʻchirildi."
+
+#: classroom/views.py:406
+#, python-format
+msgid ""
+"\"%(title)s\" created for %(n)s student(s). Now add what they have to do."
+msgstr ""
+"\"%(title)s\" %(n)s ta oʻquvchi uchun yaratildi. Endi nima qilishlari "
+"kerakligini qoʻshing."
+
+#: classroom/views.py:502 masters/rating.py:74
+#: tutorial/templates/tutorial/playlist_detail.html:123
+msgid "Readings"
+msgstr "Oʻqishlar"
+
+#: classroom/views.py:503 homework/items.py:22
+msgid "Exam prep"
+msgstr "Imtihonga tayyorgarlik"
+
+#: classroom/views.py:533
+msgid "Nothing to add."
+msgstr "Qoʻshadigan narsa yoʻq."
+
+#: classroom/views.py:538
+msgid "That item is not available in this classroom."
+msgstr "Bu material bu sinfda mavjud emas."
+
+#: classroom/views.py:555
+#, python-format
+msgid "Added \"%(title)s\" and its %(n)s linked item(s)."
+msgstr "\"%(title)s\" va unga bogʻliq %(n)s ta material qoʻshildi."
+
+#: classroom/views.py:558
+#, python-format
+msgid "Added \"%(title)s\"."
+msgstr "\"%(title)s\" qoʻshildi."
+
+#: classroom/views.py:585
+msgid "Removed from this homework."
+msgstr "Vazifadan olib tashlandi."
+
+#: classroom/views.py:601
+#, python-format
+msgid "Assigned to %(n)s new student(s)."
+msgstr "%(n)s ta yangi oʻquvchiga berildi."
+
+#: classroom/views.py:603
+msgid "Those students already have this homework."
+msgstr "Bu oʻquvchilarda bu vazifa allaqachon bor."
+
+#: classroom/views.py:615
+msgid "Student removed from this homework."
+msgstr "Oʻquvchi bu vazifadan olib tashlandi."
+
+#: classroom/views.py:631
+msgid "Marked as graded."
+msgstr "Baholandi deb belgilandi."
+
+#: classroom/views.py:644
+msgid "Homework updated."
+msgstr "Vazifa yangilandi."
+
+#: classroom/views.py:664
+msgid "Homework deleted."
+msgstr "Vazifa oʻchirildi."
+
+#: classroom/views.py:691
+#, python-format
+msgid "%(lesson)s — homework"
+msgstr "%(lesson)s — uyga vazifa"
+
+#: classroom/views.py:703
+#, python-format
+msgid "Homework built from \"%(lesson)s\" and given to %(n)s student(s)."
+msgstr "\"%(lesson)s\" asosida vazifa tuzildi va %(n)s ta oʻquvchiga berildi."
+
+#: classroom/views.py:755
+#, python-format
+msgid "%(name)s joined this classroom."
+msgstr "%(name)s bu sinfga qoʻshildi."
+
+#: classroom/views.py:778
+#, python-format
+msgid "%(name)s removed from this classroom."
+msgstr "%(name)s bu sinfdan chiqarildi."
+
+#: classroom/views.py:839
+msgid "Attendance saved."
+msgstr "Davomat saqlandi."
+
+#: classroom/views.py:841
+msgid "Please check the date and try again."
+msgstr "Sanani tekshirib, qaytadan urinib koʻring."
+
+#: classroom/views.py:861
+#, python-format
+msgid "Register saved for %(date)s."
+msgstr "%(date)s uchun jurnal saqlandi."
+
+#: classroom/views.py:893
+msgid "Certificate issued."
+msgstr "Sertifikat berildi."
+
+#: classroom/views.py:895
+msgid "A certificate needs a title."
+msgstr "Sertifikatga sarlavha kerak."
+
+#: classroom/views.py:907
+msgid "Certificate revoked."
+msgstr "Sertifikat bekor qilindi."
+
+#: classroom/views.py:926
+#, python-format
+msgid "Group \"%(name)s\" created with %(n)s student(s)."
+msgstr "\"%(name)s\" guruhi %(n)s ta oʻquvchi bilan yaratildi."
+
+#: classroom/views.py:945
+msgid "Group updated."
+msgstr "Guruh yangilandi."
+
+#: classroom/views.py:962
+msgid "Group deleted."
+msgstr "Guruh oʻchirildi."
+
+#: classroom/views.py:1024
+msgid "Pick a student from this classroom."
+msgstr "Bu sinfdan oʻquvchi tanlang."
+
+#: classroom/views.py:1031
+msgid "Payment recorded."
+msgstr "Toʻlov yozildi."
+
+#: classroom/views.py:1033
+msgid "Check the amount and try again."
+msgstr "Summani tekshirib, qaytadan urinib koʻring."
+
+#: classroom/views.py:1047
+msgid "Marked as paid."
+msgstr "Toʻlangan deb belgilandi."
+
+#: classroom/views.py:1059
+msgid "Payment record deleted."
+msgstr "Toʻlov yozuvi oʻchirildi."
+
+#: classroom/views.py:1098
+msgid "Added to the classroom shelf."
+msgstr "Sinf javoniga qoʻshildi."
+
+#: classroom/views.py:1115
+msgid "Removed from the shelf."
+msgstr "Javondan olib tashlandi."
+
+#: classroom/views.py:1189
+msgid "Discussion deleted."
+msgstr "Muhokama oʻchirildi."
 
 #: corner/labels.py:27
 msgid "Vocabulary from this story"
@@ -1009,7 +1737,7 @@ msgstr ""
 msgid "Read the story, then choose the best answer. Tap a choice to check it."
 msgstr ""
 
-#: corner/labels.py:34 examprep/models.py:15
+#: corner/labels.py:34 examprep/models.py:16
 #: examprep/templates/examprep/vocab_detail.html:6
 #: examprep/templates/examprep/vocab_detail.html:15
 #: examprep/templates/examprep/vocab_list.html:5
@@ -1118,12 +1846,6 @@ msgstr "Chop etish / PDF saqlash"
 #, python-format
 msgid "Story %(current_no)s of %(total_no)s"
 msgstr "%(current_no)s-hikoya, jami %(total_no)s ta"
-
-#: corner/templates/corner/story_detail.html:46
-#: examprep/templates/examprep/drill_list.html:24
-#: prime/templates/prime/progress.html:136
-msgid "finished"
-msgstr "tugallangan"
 
 #: corner/templates/corner/story_detail.html:61
 msgid "Listen to this story"
@@ -1349,11 +2071,6 @@ msgstr "Suhbatga qo'shiling — yozish uchun kiring."
 msgid "Log in"
 msgstr "Kirish"
 
-#: discussion/templates/discussion/home.html:297
-#: people/templates/people/register.html:5 templates/base.html:328
-msgid "Register"
-msgstr "Ro'yxatdan o'tish"
-
 #: discussion/templates/discussion/home.html:303
 msgid "Categories"
 msgstr "Kategoriyalar"
@@ -1436,7 +2153,7 @@ msgstr ""
 #: exam/templates/exam/exam_list.html:155
 #: exam/templates/exam/exam_result.html:99
 #: exam/templates/exam/exam_result.html:137
-#: exam/templates/exam/take_section.html:477 examprep/models.py:13
+#: exam/templates/exam/take_section.html:477 examprep/models.py:14
 msgid "Listening"
 msgstr "Tinglash"
 
@@ -1458,7 +2175,7 @@ msgstr "Savollar"
 #: exam/templates/exam/exam_list.html:155
 #: exam/templates/exam/exam_list.html:156
 #: exam/templates/exam/exam_list.html:157 prime/templates/prime/help.html:577
-#: prime/templates/prime/help.html:633
+#: prime/templates/prime/help.html:634
 #: tutorial/templates/tutorial/tutorial_detail.html:110
 msgid "min"
 msgstr "daqiqa"
@@ -1468,8 +2185,9 @@ msgstr "daqiqa"
 #: exam/templates/exam/exam_list.html:156
 #: exam/templates/exam/exam_result.html:110
 #: exam/templates/exam/exam_result.html:176
-#: exam/templates/exam/take_section.html:479 examprep/models.py:11
-#: templates/printing/_book_key.html:20 templates/printing/_story.html:14
+#: exam/templates/exam/take_section.html:479 examprep/models.py:12
+#: homework/items.py:21 templates/printing/_book_key.html:20
+#: templates/printing/_story.html:14
 #: tutorial/templates/tutorial/tutorial_detail.html:353
 msgid "Reading"
 msgstr "O'qish"
@@ -1479,7 +2197,7 @@ msgstr "O'qish"
 #: exam/templates/exam/exam_list.html:157
 #: exam/templates/exam/exam_result.html:121
 #: exam/templates/exam/exam_result.html:215
-#: exam/templates/exam/take_section.html:481 examprep/models.py:12
+#: exam/templates/exam/take_section.html:481 examprep/models.py:13
 msgid "Writing"
 msgstr "Yozish"
 
@@ -1508,15 +2226,6 @@ msgstr ""
 #| msgid "Previous"
 msgid "Previous Attempt"
 msgstr "Oldingi"
-
-#: exam/templates/exam/exam_detail.html:115
-#: homework/templates/homework/homework_detail.html:93
-#: homework/templates/homework/homework_detail.html:141
-#: homework/templates/homework/homework_detail.html:211
-#: people/templates/people/profile.html:718 prime/templates/prime/help.html:451
-#: prime/templates/prime/help.html:598
-msgid "Pending"
-msgstr "Kutilmoqda"
 
 #: exam/templates/exam/exam_detail.html:118
 msgid "Continue Exam"
@@ -1753,11 +2462,11 @@ msgstr ""
 msgid "question(s) not answered"
 msgstr ""
 
-#: examprep/models.py:14
+#: examprep/models.py:15
 msgid "Speaking"
 msgstr "Gapirish"
 
-#: examprep/models.py:16 logic/models.py:56
+#: examprep/models.py:17 logic/models.py:56
 msgid "Strategy"
 msgstr "Strategiya"
 
@@ -1976,8 +2685,6 @@ msgid "Answers checked. Correct answers and explanations are shown below."
 msgstr "Javoblar tekshirildi. To'g'ri javoblar va izohlar quyida ko'rsatilgan."
 
 #: examprep/templates/examprep/lesson_detail.html:74
-#: homework/templates/homework/homework_detail.html:126
-#: homework/templates/homework/homework_detail.html:195
 msgid "Score"
 msgstr "Ball"
 
@@ -2146,16 +2853,16 @@ msgstr "Dars tugallandi!"
 msgid "You already finished this lesson."
 msgstr "Siz bu darsni allaqachon tugatgansiz."
 
-#: examprep/views.py:379
+#: examprep/views.py:382
 #, python-format
 msgid "Drill finished! +%(points)d points"
 msgstr "Mashq tugallandi! +%(points)d ball"
 
-#: examprep/views.py:382
+#: examprep/views.py:385
 msgid "Drill finished!"
 msgstr "Mashq tugallandi!"
 
-#: examprep/views.py:384
+#: examprep/views.py:387
 msgid "You already finished this drill."
 msgstr "Siz bu mashqni allaqachon tugatgansiz."
 
@@ -3584,12 +4291,6 @@ msgstr "Izohni o'qing va koreys bo'g'inlarini to'ldiring."
 msgid "Play educational mini-games to sharpen your skills."
 msgstr "Ko'nikmalaringizni oshirish uchun ta'limiy mini-o'yinlar o'ynang."
 
-#: games/templates/games/games_home.html:25 logic/templates/logic/home.html:123
-#: tutorial/templates/tutorial/playlist_list.html:36
-#: tutorial/templates/tutorial/tutorial_list.html:33
-msgid "All"
-msgstr "Hammasi"
-
 #: games/templates/games/games_home.html:60
 msgid "No games in this category yet."
 msgstr "Bu kategoriyada hali o'yin yo'q."
@@ -4828,11 +5529,6 @@ msgstr "Maqsad"
 msgid "Your numbers"
 msgstr "Sizning raqamlaringiz"
 
-#: games/templates/games/target_number.html:226
-#: practice/templates/practice/practice_list.html:525
-msgid "Clear"
-msgstr "Tozalash"
-
 #: games/templates/games/target_number.html:232
 msgid "Click numbers and operators above…"
 msgstr "Yuqoridagi raqam va amallarni bosing…"
@@ -5109,76 +5805,65 @@ msgstr "%(who)s sizni o'tkazib yuboradi."
 msgid "You reach %(place)s."
 msgstr "%(place)s — yetib keldingiz!"
 
-#: homework/templates/homework/homework_detail.html:4
-msgid "Homework Detail"
-msgstr "Uy vazifasi tafsilotlari"
+#: homework/items.py:19 people/models.py:16
+#: practice/templates/practice/practice_list.html:451
+#: prime/templates/prime/index.html:418 templates/base.html:113
+#: templates/base.html:117 templates/base.html:365
+#: templates/printing/_book_key.html:20 templates/printing/_practice.html:18
+#: tutorial/templates/tutorial/tutorial_detail.html:333
+msgid "Practice"
+msgstr "Mashqlar"
 
-#: homework/templates/homework/homework_detail.html:57
-msgid "All Homework"
-msgstr "Barcha uy vazifalari"
+#: homework/templates/homework/my_homework.html:20
+msgid "What you have to do"
+msgstr "Nima qilishingiz kerak"
 
-#: homework/templates/homework/homework_detail.html:73
-msgid "Assign More"
-msgstr "Yana tayinlash"
+#: homework/templates/homework/my_homework.html:21
+msgid "Everything your teachers have set, from every classroom you are in."
+msgstr "Siz aʼzo boʻlgan har bir sinfdan ustozlaringiz bergan hamma vazifa."
 
-#: homework/templates/homework/homework_detail.html:96
-#: homework/templates/homework/homework_detail.html:125
-#: homework/templates/homework/homework_detail.html:143
-#: homework/templates/homework/homework_detail.html:194
-#: homework/templates/homework/homework_detail.html:213
-#: prime/templates/prime/help.html:600 prime/templates/prime/help.html:611
-msgid "Submitted"
-msgstr "Topshirilgan"
+#: homework/templates/homework/my_homework.html:27
+msgid "Your classrooms"
+msgstr "Sinflaringiz"
 
-#: homework/templates/homework/homework_detail.html:99
-#: homework/templates/homework/homework_detail.html:145
-#: homework/templates/homework/homework_detail.html:215
-#: prime/templates/prime/help.html:602
-msgid "Graded"
-msgstr "Baholangan"
+#: homework/templates/homework/my_homework.html:29
+msgid ""
+"Homework, students and payments all live inside a classroom now — open the "
+"one you teach."
+msgstr ""
+"Uyga vazifa, oʻquvchilar va toʻlovlar endi sinf ichida — oʻzingiz "
+"oʻqitadigan sinfni oching."
 
-#: homework/templates/homework/homework_detail.html:108
-msgid "Results by Group"
-msgstr "Guruhlar bo'yicha natijalar"
+#: homework/templates/homework/my_homework.html:40
+#: people/templates/people/profile.html:465
+msgid "homework"
+msgstr "uyga vazifa"
 
-#: homework/templates/homework/homework_detail.html:116
-msgid "student"
-msgstr "o'quvchi"
+#: homework/templates/homework/my_homework.html:53
+msgid "You have no classrooms yet."
+msgstr "Sizda hali sinf yoʻq."
 
-#: homework/templates/homework/homework_detail.html:123
-#: homework/templates/homework/homework_detail.html:192
-#: masters/templates/masters/certificate.html:346
-#: masters/templates/masters/my_students.html:245
-#: people/templates/people/profile.html:108
-#: people/templates/people/profile.html:122
-msgid "Student"
-msgstr "O'quvchi"
+#: homework/templates/homework/my_homework.html:55
+#: masters/templates/masters/master_detail.html:1005
+#: masters/templates/masters/master_detail.html:1161
+msgid "Create one"
+msgstr "Bittasini yarating"
 
-#: homework/templates/homework/homework_detail.html:127
-#: homework/templates/homework/homework_detail.html:197 masters/models.py:299
-msgid "Review"
-msgstr "Ko'rib chiqish"
+#: homework/templates/homework/my_homework.html:98
+msgid "Nothing to do right now."
+msgstr "Hozircha bajaradigan vazifa yoʻq."
 
-#: homework/templates/homework/homework_detail.html:166
-#: homework/templates/homework/homework_detail.html:243
-msgid "Review answers"
-msgstr "Javoblarni ko'rish"
+#: homework/views.py:36
+msgid "You don't have a student or master profile yet."
+msgstr "Sizda hali oʻquvchi yoki ustoz profili yoʻq."
 
-#: homework/templates/homework/homework_detail.html:185
-msgid "All Students"
-msgstr "Barcha o'quvchilar"
-
-#: homework/templates/homework/homework_detail.html:196
-msgid "Feedback"
-msgstr "Fikr-mulohaza"
-
-#: homework/templates/homework/homework_detail.html:260
-msgid "No students assigned"
-msgstr "O'quvchilar tayinlanmagan"
-
-#: homework/templates/homework/homework_detail.html:261
-msgid "Edit this homework to assign it to students."
-msgstr "Ushbu uy vazifasini o'quvchilarga tayinlash uchun tahrirlang."
+#: homework/views.py:72
+msgid ""
+"Homework is set inside a classroom now — open the classroom you teach and "
+"use its Homework tab."
+msgstr ""
+"Uyga vazifa endi sinf ichida beriladi — oʻzingiz oʻqitadigan sinfni ochib, "
+"\"Uyga vazifa\" boʻlimidan foydalaning."
 
 #: logic/models.py:49
 msgid "Weighing"
@@ -5347,11 +6032,6 @@ msgstr ""
 "kimga aytilmaydi. Ochilish kunida yechim hamma uchun birdan paydo boʻladi, "
 "yechganlar roʻyxati bilan birga. Jumboq hali muhrlangan paytda javob berish "
 "toʻliq ball, arxivdagi eskisini yechish esa yarim ball keltiradi."
-
-#: logic/templates/logic/home.html:75 logic/templates/logic/my_answers.html:23
-#: prime/templates/prime/progress.html:59
-msgid "Points"
-msgstr "Ball"
 
 #: logic/templates/logic/home.html:79 logic/templates/logic/my_answers.html:27
 msgid "Streak"
@@ -5823,10 +6503,6 @@ msgstr "Ushbu ustoz yaratgan va chop etilgan materiallar soni."
 msgid "Distinct pupils who have worked through this master's content."
 msgstr "Ushbu ustoz materiallari bilan ishlagan oʻquvchilar soni."
 
-#: masters/models.py:227 practice/templates/practice/practice_list.html:452
-msgid "Subject"
-msgstr "Fan"
-
 #: masters/models.py:229
 msgid "Levels"
 msgstr "Darajalar"
@@ -5834,10 +6510,6 @@ msgstr "Darajalar"
 #: masters/models.py:230
 msgid "e.g. \"Beginner to IELTS 7.5\", \"5-9 sinf\"."
 msgstr "masalan: \"Boshlangʻichdan IELTS 7.5 gacha\", \"5-9 sinf\"."
-
-#: masters/models.py:232 masters/models.py:271
-msgid "Note"
-msgstr "Izoh"
 
 #: masters/models.py:233
 msgid "One line on how you teach this subject."
@@ -5850,7 +6522,7 @@ msgstr "Diplom"
 #: masters/models.py:252 masters/templates/masters/certificate_view.html:4
 #: masters/templates/masters/certificate_view.html:5
 #: masters/templates/masters/master_detail.html:605
-#: masters/templates/masters/master_detail.html:1239
+#: masters/templates/masters/master_detail.html:1184
 msgid "Certificate"
 msgstr "Sertifikat"
 
@@ -5861,10 +6533,6 @@ msgstr "Mukofot"
 #: masters/models.py:254
 msgid "Experience"
 msgstr "Tajriba"
-
-#: masters/models.py:265
-msgid "Type"
-msgstr "Turi"
 
 #: masters/models.py:267
 msgid "e.g. \"IELTS 8.0\", \"Bachelor in Linguistics\"."
@@ -5891,6 +6559,10 @@ msgstr "Nusxasi yoki surati"
 msgid "Rating"
 msgstr "Reyting"
 
+#: masters/models.py:299
+msgid "Review"
+msgstr "Ko'rib chiqish"
+
 #: masters/models.py:301
 msgid "Untick to hide an abusive review."
 msgstr "Haqoratli sharhni yashirish uchun belgini olib tashlang."
@@ -5902,10 +6574,6 @@ msgstr "Mashq testlari"
 #: masters/rating.py:73
 msgid "Exam-prep lessons"
 msgstr "Imtihonga tayyorgarlik darslari"
-
-#: masters/rating.py:74 tutorial/templates/tutorial/playlist_detail.html:123
-msgid "Readings"
-msgstr "Oʻqishlar"
 
 #: masters/rating.py:75
 msgid "Writing drills"
@@ -5939,11 +6607,6 @@ msgstr "Ism"
 #: masters/templates/masters/certificate.html:362
 msgid "Course"
 msgstr "Kurs"
-
-#: masters/templates/masters/certificate.html:364
-#: masters/templates/masters/student_detail.html:262
-msgid "Date"
-msgstr "Sana"
 
 #: masters/templates/masters/certificate.html:365
 msgid "Instructor"
@@ -6013,20 +6676,16 @@ msgstr ""
 
 #: masters/templates/masters/journey_prizes.html:4
 #: masters/templates/masters/journey_prizes.html:5
-#: masters/templates/masters/my_students.html:183
 msgid "Journey prizes"
 msgstr "Safar sovg'alari"
 
 #: masters/templates/masters/journey_prizes.html:12
 #: masters/templates/masters/master_detail.html:602
-#: masters/templates/masters/master_detail.html:1219
-#: masters/templates/masters/my_students.html:4
-#: masters/templates/masters/my_students.html:5
-#: masters/templates/masters/my_students.html:178
-#: masters/templates/masters/student_detail.html:187
-#: people/templates/people/profile.html:452
-msgid "My Students"
-msgstr "Mening o'quvchilarim"
+#: masters/templates/masters/master_detail.html:1116
+#: masters/templates/masters/master_detail.html:1172
+#: people/templates/people/profile.html:454
+msgid "My Classrooms"
+msgstr "Sinflarim"
 
 #: masters/templates/masters/journey_prizes.html:16
 msgid "Prizes to hand over"
@@ -6078,7 +6737,7 @@ msgstr "Powerty taʼlim jamoasi aʼzosi"
 #: masters/templates/masters/master_list.html:249
 #: masters/templates/masters/master_list.html:275
 #: people/templates/people/profile.html:386
-#: people/templates/people/profile.html:586
+#: people/templates/people/profile.html:572
 msgid "Powerty team"
 msgstr "Powerty jamoasi"
 
@@ -6109,7 +6768,6 @@ msgid "Become a student"
 msgstr "Oʻquvchi boʻlish"
 
 #: masters/templates/masters/master_detail.html:635
-#: masters/templates/masters/my_students.html:218
 #: people/templates/people/profile.html:293
 #: prime/templates/prime/index.html:709
 msgid "Student rating"
@@ -6151,8 +6809,7 @@ msgstr "Qamrab olingan oʻquvchi"
 
 #: masters/templates/masters/master_detail.html:673
 #: masters/templates/masters/master_detail.html:988
-#: masters/templates/masters/student_detail.html:222
-#: people/templates/people/profile.html:561
+#: people/templates/people/profile.html:547
 msgid "Avg score"
 msgstr "O'rt. ball"
 
@@ -6295,7 +6952,6 @@ msgstr "%(total)s tadan %(shown)s tasi"
 
 #: masters/templates/masters/master_detail.html:962
 #: people/templates/people/profile.html:409
-#: people/templates/people/profile.html:474
 msgid "Manage all"
 msgstr "Barchasini boshqarish"
 
@@ -6306,30 +6962,16 @@ msgstr "Barchasini boshqarish"
 msgid "Free"
 msgstr "Bepul"
 
-#: masters/templates/masters/master_detail.html:975
-#: masters/templates/masters/student_detail.html:336
-#: people/templates/people/profile.html:420
-#: practice/templates/practice/practice_detail.html:21
-#: practice/templates/practice/practice_list.html:610
-msgid "Paid"
-msgstr "Pullik"
-
 #: masters/templates/masters/master_detail.html:1004
 msgid "No practices yet."
 msgstr "Hozircha mashqlar yoʻq."
 
-#: masters/templates/masters/master_detail.html:1005
-msgid "Create one"
-msgstr "Bittasini yarating"
-
 #: masters/templates/masters/master_detail.html:1032
-#: masters/templates/masters/my_students.html:318
 msgid "Remove student"
 msgstr "Oʻquvchini olib tashlash"
 
 #: masters/templates/masters/master_detail.html:1066
-#: masters/templates/masters/master_detail.html:1117
-#: masters/templates/masters/master_detail.html:1158
+#: masters/templates/masters/master_detail.html:1119
 msgid "New"
 msgstr "Yangi"
 
@@ -6349,33 +6991,18 @@ msgstr "Hozircha darslik chop etilmagan."
 msgid "Write one"
 msgstr "Bittasini yozing"
 
-#: masters/templates/masters/master_detail.html:1114
-msgid "Groups"
-msgstr "Guruhlar"
+#: masters/templates/masters/master_detail.html:1160
+#: people/templates/people/profile.html:473
+msgid "No classrooms yet."
+msgstr "Hali sinf yoʻq."
 
-#: masters/templates/masters/master_detail.html:1130
-msgid "Edit group"
-msgstr "Guruhni tahrirlash"
-
-#: masters/templates/masters/master_detail.html:1133
-msgid "Delete group"
-msgstr "Guruhni oʻchirish"
-
-#: masters/templates/masters/master_detail.html:1223
+#: masters/templates/masters/master_detail.html:1176
 #: people/templates/people/profile.html:217
 #: prime/templates/prime/index.html:721
 msgid "Manage Practices"
 msgstr "Mashqlarni boshqarish"
 
-#: masters/templates/masters/master_detail.html:1227
-msgid "Manage Homeworks"
-msgstr "Uy vazifalarini boshqarish"
-
-#: masters/templates/masters/master_detail.html:1231
-msgid "Manage Groups"
-msgstr "Guruhlarni boshqarish"
-
-#: masters/templates/masters/master_detail.html:1235
+#: masters/templates/masters/master_detail.html:1180
 #: tutorial/templates/tutorial/tutorial_form.html:5
 #: tutorial/templates/tutorial/tutorial_form.html:52
 #: tutorial/templates/tutorial/tutorial_list.html:23
@@ -6533,258 +7160,25 @@ msgstr "Hammasini koʻrsatish"
 msgid "Be the first to create a Master profile and share your knowledge."
 msgstr "Birinchi bo'lib Ustoz profili yarating va bilimlaringizni ulashing."
 
-#: masters/templates/masters/my_students.html:179
-msgid "student(s) enrolled"
-msgstr "oʻquvchi yozilgan"
-
-#: masters/templates/masters/my_students.html:186
-#: masters/templates/masters/student_detail.html:237
-#: masters/templates/masters/student_detail.html:430
-#: people/templates/people/profile.html:673
-msgid "Certificates"
-msgstr "Sertifikatlar"
-
-#: masters/templates/masters/my_students.html:189
-msgid "Public Page"
-msgstr "Ochiq sahifa"
-
-#: masters/templates/masters/my_students.html:211
-msgid "Total"
-msgstr "Jami"
-
-#: masters/templates/masters/my_students.html:228
-msgid "Add Student by Username"
-msgstr "Foydalanuvchi nomi orqali oʻquvchi qoʻshish"
-
-#: masters/templates/masters/my_students.html:231
-msgid "Enter username..."
-msgstr "Foydalanuvchi nomini kiriting..."
-
-#: masters/templates/masters/my_students.html:235
-#: templates/includes/pwa_install.html:41
-msgid "Add"
-msgstr "Qo'shish"
-
-#: masters/templates/masters/my_students.html:246
-#: people/templates/people/profile.html:316
-#: prime/templates/prime/progress.html:72
-msgid "Rank"
-msgstr "Daraja"
-
-#: masters/templates/masters/my_students.html:247
-#: masters/templates/masters/student_detail.html:203
-#: people/templates/people/profile.html:177
-msgid "Joined"
-msgstr "Qo'shilgan"
-
-#: masters/templates/masters/my_students.html:248
-msgid "Payment"
-msgstr "Toʻlov"
-
-#: masters/templates/masters/my_students.html:249
-#: masters/templates/masters/student_detail.html:248
-msgid "Attendance"
-msgstr "Davomat"
-
-#: masters/templates/masters/my_students.html:251
-msgid "Actions"
-msgstr "Amallar"
-
-#: masters/templates/masters/my_students.html:288
-msgid "No records"
-msgstr "Yozuv yoʻq"
-
-#: masters/templates/masters/my_students.html:312
-msgid "View details"
-msgstr "Batafsil koʻrish"
-
-#: masters/templates/masters/my_students.html:316
-msgid "Remove this student?"
-msgstr "Bu oʻquvchi olib tashlansinmi?"
-
-#: masters/templates/masters/my_students.html:333
-#: panda/templates/panda/panda_list.html:319
-msgid "No students yet"
-msgstr "Hali o'quvchi yo'q"
-
-#: masters/templates/masters/my_students.html:334
-msgid ""
-"Add students using their username above, or students can choose you as their "
-"master from their profile."
-msgstr ""
-"Yuqorida foydalanuvchi nomi orqali oʻquvchi qoʻshing yoki oʻquvchilar oʻz "
-"profilidan sizni ustoz sifatida tanlashi mumkin."
-
-#: masters/templates/masters/student_detail.html:4
-#: masters/templates/masters/student_detail.html:5
-msgid "Student Detail"
-msgstr "Oʻquvchi maʼlumoti"
-
-#: masters/templates/masters/student_detail.html:208
-#: people/templates/people/profile.html:4
-#: people/templates/people/profile.html:5 templates/base.html:369
-msgid "Profile"
-msgstr "Profil"
-
-#: masters/templates/masters/student_detail.html:217
-#: people/templates/people/profile.html:552
-msgid "Tests taken"
-msgstr "Ishlangan testlar"
-
-#: masters/templates/masters/student_detail.html:227
-#: masters/templates/masters/student_detail.html:268
-msgid "Present"
-msgstr "Keldi"
-
-#: masters/templates/masters/student_detail.html:232
-msgid "Absent/Late"
-msgstr "Kelmadi/Kechikdi"
-
-#: masters/templates/masters/student_detail.html:251
-msgid "present"
-msgstr "keldi"
-
-#: masters/templates/masters/student_detail.html:269
-msgid "Absent"
-msgstr "Kelmadi"
-
-#: masters/templates/masters/student_detail.html:270
-msgid "Late"
-msgstr "Kechikdi"
-
-#: masters/templates/masters/student_detail.html:274
-msgid "Notes (optional)"
-msgstr "Izoh (ixtiyoriy)"
-
-#: masters/templates/masters/student_detail.html:275
-msgid "e.g. Left early"
-msgstr "masalan: Erta ketdi"
-
-#: masters/templates/masters/student_detail.html:280
-msgid "Mark Attendance"
-msgstr "Davomatni belgilash"
-
-#: masters/templates/masters/student_detail.html:304
-msgid "No attendance records yet. Mark the first one above."
-msgstr "Hozircha davomat yozuvi yoʻq. Yuqorida birinchisini belgilang."
-
-#: masters/templates/masters/student_detail.html:317
-msgid "Payments"
-msgstr "Toʻlovlar"
-
-#: masters/templates/masters/student_detail.html:326
-#: masters/templates/masters/student_detail.html:369
-msgid "Period"
-msgstr "Davr"
-
-#: masters/templates/masters/student_detail.html:327
-msgid "e.g. June 2026"
-msgstr "masalan: 2026-yil iyun"
-
-#: masters/templates/masters/student_detail.html:330
-#: masters/templates/masters/student_detail.html:370
-msgid "Amount"
-msgstr "Summa"
-
-#: masters/templates/masters/student_detail.html:337
-msgid "Unpaid"
-msgstr "Toʻlanmagan"
-
-#: masters/templates/masters/student_detail.html:338
-msgid "Partial"
-msgstr "Qisman"
-
-#: masters/templates/masters/student_detail.html:348
-msgid "Payment Date"
-msgstr "Toʻlov sanasi"
-
-#: masters/templates/masters/student_detail.html:353
-msgid "Optional note..."
-msgstr "Izoh (ixtiyoriy)..."
-
-#: masters/templates/masters/student_detail.html:358
-msgid "Add Payment Record"
-msgstr "Toʻlov yozuvini qoʻshish"
-
-#: masters/templates/masters/student_detail.html:373
-msgid "Paid on"
-msgstr "Toʻlangan sana"
-
-#: masters/templates/masters/student_detail.html:402
-msgid "Delete this payment record?"
-msgstr "Bu toʻlov yozuvi oʻchirilsinmi?"
-
-#: masters/templates/masters/student_detail.html:417
-msgid "No payment records yet. Add the first one above."
-msgstr "Hozircha toʻlov yozuvi yoʻq. Yuqorida birinchisini qoʻshing."
-
-#: masters/templates/masters/student_detail.html:433
-msgid "PDF generator"
-msgstr "PDF yaratuvchi"
-
-#: masters/templates/masters/student_detail.html:441
-msgid "Certificate Title"
-msgstr "Sertifikat nomi"
-
-#: masters/templates/masters/student_detail.html:442
-msgid "e.g. English B2 Completion Certificate"
-msgstr "masalan: Ingliz tili B2 kursini tamomlaganlik sertifikati"
-
-#: masters/templates/masters/student_detail.html:445
-msgid "Description (optional)"
-msgstr "Tavsif (ixtiyoriy)"
-
-#: masters/templates/masters/student_detail.html:447
-msgid "e.g. Awarded for completing the Advanced English course..."
-msgstr "masalan: Ingliz tili ilgʻor kursini tamomlagani uchun beriladi..."
-
-#: masters/templates/masters/student_detail.html:451
-msgid "Issue Certificate"
-msgstr "Sertifikat berish"
-
-#: masters/templates/masters/student_detail.html:467
-msgid "hidden on profile"
-msgstr "profilda yashirilgan"
-
-#: masters/templates/masters/student_detail.html:474
-msgid "View certificate"
-msgstr "Sertifikatni koʻrish"
-
-#: masters/templates/masters/student_detail.html:478
-msgid "Revoke this certificate?"
-msgstr "Bu sertifikat bekor qilinsinmi?"
-
-#: masters/templates/masters/student_detail.html:480
-msgid "Revoke"
-msgstr "Bekor qilish"
-
-#: masters/templates/masters/student_detail.html:490
-msgid ""
-"No certificates issued yet. Issue the first one above — it will appear on "
-"the student's profile."
-msgstr ""
-"Hozircha sertifikat berilmagan. Yuqorida birinchisini bering — u oʻquvchi "
-"profilida koʻrinadi."
-
-#: masters/views.py:176
+#: masters/views.py:172
 #, python-format
 msgid "Only %(name)s's own students can leave a rating."
 msgstr "Faqat %(name)s ning oʻz oʻquvchilari baho qoldira oladi."
 
-#: masters/views.py:189
+#: masters/views.py:185
 msgid "Thank you — your rating has been saved."
 msgstr "Rahmat — bahoyingiz saqlandi."
 
-#: masters/views.py:191
+#: masters/views.py:187
 #, python-format
 msgid "Please choose a rating between 1 and %(max)s."
 msgstr "Iltimos, 1 dan %(max)s gacha baho tanlang."
 
-#: masters/views.py:210
+#: masters/views.py:206
 msgid "Rating removed."
 msgstr "Baho oʻchirildi."
 
-#: masters/views.py:226
+#: masters/views.py:222
 msgid ""
 "Your Master application has been submitted. You'll gain full access once an "
 "admin approves it."
@@ -6792,11 +7186,30 @@ msgstr ""
 "Ustozlik arizangiz yuborildi. Administrator tasdiqlagach, toʻliq huquqqa ega "
 "boʻlasiz."
 
-#: masters/views.py:254
+#: masters/views.py:250
 msgid "Profile updated."
 msgstr "Profil yangilandi."
 
-#: masters/views.py:592
+#: masters/views.py:329
+msgid "Students, attendance and payments live inside the classroom now."
+msgstr "Oʻquvchilar, davomat va toʻlovlar endi sinf ichida."
+
+#: masters/views.py:333
+msgid ""
+"Create a classroom first — students, attendance and payments all live inside "
+"it now."
+msgstr ""
+"Avval sinf yarating — oʻquvchilar, davomat va toʻlovlar endi shu yerda."
+
+#: masters/views.py:336
+msgid ""
+"Pick the classroom you mean — students, attendance and payments live inside "
+"it now."
+msgstr ""
+"Qaysi sinfni nazarda tutayotganingizni tanlang — oʻquvchilar, davomat va "
+"toʻlovlar endi sinf ichida."
+
+#: masters/views.py:424
 #, python-format
 msgid "Marked as handed over: %(prize)s → %(who)s"
 msgstr "Topshirildi deb belgilandi: %(prize)s → %(who)s"
@@ -6808,7 +7221,7 @@ msgid "Pandas"
 msgstr "Pandalar"
 
 #: panda/templates/panda/panda_list.html:222
-#: people/templates/people/profile.html:510
+#: people/templates/people/profile.html:496
 msgid "Leaderboard"
 msgstr "Reyting"
 
@@ -6843,6 +7256,10 @@ msgstr "%(n)s ball"
 #: panda/templates/panda/panda_list.html:301
 msgid "Tests"
 msgstr "Testlar"
+
+#: panda/templates/panda/panda_list.html:319
+msgid "No students yet"
+msgstr "Hali o'quvchi yo'q"
 
 #: panda/templates/panda/panda_list.html:320
 msgid "Be the first to join and start your learning journey."
@@ -6973,6 +7390,10 @@ msgstr "Haqida"
 msgid "No biography yet."
 msgstr "Hali tarjimai hol yo'q."
 
+#: people/templates/people/profile.html:177
+msgid "Joined"
+msgstr "Qo'shilgan"
+
 #: people/templates/people/profile.html:188
 msgid "Quick Actions"
 msgstr "Tezkor amallar"
@@ -7011,6 +7432,11 @@ msgstr "Fanlarni saqlash"
 #: people/templates/people/profile.html:307
 msgid "Since"
 msgstr "Dan beri"
+
+#: people/templates/people/profile.html:316
+#: prime/templates/prime/progress.html:72
+msgid "Rank"
+msgstr "Daraja"
 
 #: people/templates/people/profile.html:337
 msgid "Purpose"
@@ -7067,91 +7493,79 @@ msgstr "Hali nashr etilgan mashqlar yo'q."
 msgid "Create Practice"
 msgstr "Mashq yaratish"
 
-#: people/templates/people/profile.html:458
-msgid "students enrolled"
-msgstr "oʻquvchi yozilgan"
+#: people/templates/people/profile.html:479
+msgid "Students, homework, payments and notes are all inside a classroom."
+msgstr "Oʻquvchilar, uyga vazifa, toʻlovlar va qaydlar — hammasi sinf ichida."
 
-#: people/templates/people/profile.html:460
-msgid "Open Student Dashboard"
-msgstr "Oʻquvchilar panelini ochish"
-
-#: people/templates/people/profile.html:472
-msgid "My Homework (as Master)"
-msgstr "Uy vazifalaram (Ustoz)"
-
-#: people/templates/people/profile.html:483
-msgid "pending"
-msgstr "kutilmoqda"
-
-#: people/templates/people/profile.html:483
-msgid "submitted"
-msgstr "topshirilgan"
-
-#: people/templates/people/profile.html:493
-msgid "No homework created yet."
-msgstr "Hali uy vazifasi yaratilmagan."
-
-#: people/templates/people/profile.html:508
+#: people/templates/people/profile.html:494
 msgid "Student Profile"
 msgstr "Talaba profili"
 
-#: people/templates/people/profile.html:570
+#: people/templates/people/profile.html:538
+msgid "Tests taken"
+msgstr "Ishlangan testlar"
+
+#: people/templates/people/profile.html:556
 msgid "How points are earned"
 msgstr "Ballar qanday toʻplanadi"
 
-#: people/templates/people/profile.html:571
+#: people/templates/people/profile.html:557
 #, python-format
 msgid "Easy test 100%% = 12 pts"
 msgstr "Oson test 100%% = 12 ball"
 
-#: people/templates/people/profile.html:572
+#: people/templates/people/profile.html:558
 #, python-format
 msgid "Medium test 100%% = 17 pts"
 msgstr "Oʻrtacha test 100%% = 17 ball"
 
-#: people/templates/people/profile.html:573
+#: people/templates/people/profile.html:559
 #, python-format
 msgid "Hard test 100%% = 22 pts"
 msgstr "Qiyin test 100%% = 22 ball"
 
-#: people/templates/people/profile.html:574
+#: people/templates/people/profile.html:560
 msgid "pts for every completed test"
 msgstr "har bir tugatilgan test uchun ball"
 
-#: people/templates/people/profile.html:581
+#: people/templates/people/profile.html:567
 msgid "My Masters"
 msgstr "Mening ustozlarim"
 
-#: people/templates/people/profile.html:601
+#: people/templates/people/profile.html:587
 msgid "Choose your masters"
 msgstr "Ustozlarni tanlang"
 
-#: people/templates/people/profile.html:615
+#: people/templates/people/profile.html:601
 msgid "Save Masters"
 msgstr "Ustozlarni saqlash"
 
-#: people/templates/people/profile.html:628
-#: people/templates/people/profile.html:657
+#: people/templates/people/profile.html:614
+#: people/templates/people/profile.html:643
 msgid "Recent Practice Attempts"
 msgstr "So'nggi amaliyot urinishlari"
 
-#: people/templates/people/profile.html:660
+#: people/templates/people/profile.html:646
 msgid "No completed attempts yet."
 msgstr "Hali tugatilgan urinishlar yo'q."
 
-#: people/templates/people/profile.html:662
+#: people/templates/people/profile.html:648
 #: prime/templates/prime/index.html:303 prime/templates/prime/index.html:682
 msgid "Browse Practices"
 msgstr "Mashqlarni ko'rish"
 
-#: people/templates/people/profile.html:702
+#: people/templates/people/profile.html:688
 #: prime/templates/prime/index.html:685
 msgid "My Homework"
 msgstr "Mening uy vazifalarim"
 
-#: people/templates/people/profile.html:705
+#: people/templates/people/profile.html:691
 msgid "See all"
 msgstr "Barchasini ko'rish"
+
+#: people/templates/people/profile.html:731
+msgid "No homework assigned yet."
+msgstr "Hali uy vazifasi berilmagan."
 
 #: people/templates/people/register.html:4
 msgid "Create Account — Powerty"
@@ -7406,7 +7820,7 @@ msgstr ""
 "jamoa orqali rivojlanadigan joy."
 
 #: prime/templates/prime/about.html:482 prime/templates/prime/help.html:363
-#: prime/templates/prime/help.html:883
+#: prime/templates/prime/help.html:884
 msgid "Start Practicing"
 msgstr "Mashqni boshlash"
 
@@ -7531,7 +7945,7 @@ msgstr ""
 "kutubxonasini boshqaradi va tizimli o'quv yo'llari orqali o'quvchilarini "
 "yo'naltiradi."
 
-#: prime/templates/prime/about.html:579 prime/templates/prime/help.html:681
+#: prime/templates/prime/about.html:579 prime/templates/prime/help.html:682
 msgid "Discussion Forum"
 msgstr "Muhokama forumi"
 
@@ -7543,7 +7957,7 @@ msgstr ""
 "Jamoa bilan muloqot qiling — savollar bering, fikrlar ulashing, javoblarga "
 "ovoz bering va mashq varag'idan tashqariga chiqadigan suhbatlardan o'rganing."
 
-#: prime/templates/prime/about.html:584 prime/templates/prime/help.html:711
+#: prime/templates/prime/about.html:584 prime/templates/prime/help.html:712
 msgid "Rank System"
 msgstr "Daraja tizimi"
 
@@ -7726,7 +8140,7 @@ msgstr ""
 "o'sishni istagan o'quvchi, darsxonasini qurayotgan ustoz yoki jamoasini "
 "o'rgatayotgan ta'lim markazi uchun."
 
-#: prime/templates/prime/help.html:366 prime/templates/prime/help.html:886
+#: prime/templates/prime/help.html:366 prime/templates/prime/help.html:887
 msgid "Browse Masters"
 msgstr "Ustozlarni ko'rish"
 
@@ -7887,11 +8301,11 @@ msgstr "O'quvchilarni boshqarish"
 
 #: prime/templates/prime/help.html:480
 msgid ""
-"View everyone who follows you. Remove students from your roster and organise "
-"them into named groups for bulk operations."
+"Each classroom has its own roster, register and payment sheet — so a master "
+"teaching two classes never has to untangle one shared pile."
 msgstr ""
-"Sizi kuzatayotgan barcha kishilarni ko'ring. O'quvchilarni ro'yxatdan "
-"o'chiring va ommaviy amallar uchun ularni nomlangan guruhlarga joylashtiring."
+"Har bir sinfning oʻz roʻyxati, davomat jurnali va toʻlov varagʻi bor — ikki "
+"sinf oʻqitadigan ustoz endi bitta aralash uyumni ajratib oʻtirmaydi."
 
 #: prime/templates/prime/help.html:484
 msgid "Create Groups"
@@ -7911,12 +8325,13 @@ msgstr "Uy vazifasi tayinlash"
 
 #: prime/templates/prime/help.html:490
 msgid ""
-"Link any practice to individual students or groups, add notes, and set an "
-"optional deadline. Track status — Pending, Submitted, or Graded."
+"Inside the classroom, gather tutorials, practices, readings and exam-prep "
+"lessons into one homework, set a deadline, and track every student's "
+"progress."
 msgstr ""
-"Har qanday mashqni alohida o'quvchilarga yoki guruhlarga bog'lang, izoh "
-"qo'shing va ixtiyoriy muddat belgilang. Holat — Kutilmoqda, Topshirilgan "
-"yoki Baholangan."
+"Sinf ichida darslik, mashq, oʻqish matni va imtihonga tayyorgarlik "
+"darslarini bitta vazifaga yigʻing, muddat qoʻying va har bir oʻquvchining "
+"yutugʻini kuzating."
 
 #: prime/templates/prime/help.html:494
 msgid "Write Tutorials"
@@ -7936,12 +8351,11 @@ msgstr "Darsxonalarni yuritish"
 
 #: prime/templates/prime/help.html:500
 msgid ""
-"Create private classrooms with structured lessons. Attach practices, "
-"homework, and tutorials to each lesson. Host a classroom-level discussion."
+"A classroom holds everything: lessons, homework, the student roster, "
+"attendance, payments, shared notes and links, and its own discussion."
 msgstr ""
-"Tuzilgan darslar bilan xususiy darsxonalar yarating. Har bir darsga "
-"mashqlar, uy vazifalari va darsliklarni biriktiring. Darsxona darajasida "
-"muhokama o'tkazing."
+"Sinf hamma narsani saqlaydi: darslar, uyga vazifa, oʻquvchilar roʻyxati, "
+"davomat, toʻlovlar, umumiy qaydlar va havolalar hamda oʻz muhokamasi."
 
 #: prime/templates/prime/help.html:504
 msgid "Generate Certificates"
@@ -8026,10 +8440,6 @@ msgstr "Profil → Ustozlar tanlagichini oching"
 msgid "Save — now enrolled as a student"
 msgstr "Saqlash — endi o'quvchi sifatida ro'yxatdan o'tdingiz"
 
-#: prime/templates/prime/help.html:547
-msgid "Done"
-msgstr "Bajarildi"
-
 #: prime/templates/prime/help.html:555
 msgid "Feature Guide"
 msgstr "Xususiyatlar bo'yicha qo'llanma"
@@ -8100,68 +8510,81 @@ msgstr "Maks. urinishlar"
 
 #: prime/templates/prime/help.html:589
 msgid ""
-"Masters link a practice to a homework assignment and push it directly to "
-"students or groups. Students complete the linked practice to submit the "
-"homework."
+"Homework is set inside a classroom, and can hold any mix of tutorials, "
+"practices, Corner readings and exam-prep lessons — not just one test."
 msgstr ""
-"Ustozlar mashqni uy vazifasiga bog'laydi va to'g'ridan-to'g'ri o'quvchilarga "
-"yoki guruhlarga yuboradi. O'quvchilar uy vazifasini topshirish uchun "
-"bog'langan mashqni bajaradi."
+"Uyga vazifa sinf ichida beriladi va darslik, mashq, Burchak oʻqish matni "
+"hamda imtihon darslarining istalgan aralashmasini saqlay oladi — faqat bitta "
+"test emas."
 
 #: prime/templates/prime/help.html:591
 msgid ""
-"Create homework: give it a title, optional notes, a linked practice, and an "
-"optional due date."
-msgstr ""
-"Uy vazifasini yarating: sarlavha, ixtiyoriy izoh, bog'langan mashq va "
-"ixtiyoriy topshirish muddatini kiriting."
+"Open your classroom → Homework → give it a title, optional notes and a due "
+"date."
+msgstr "Sinfingizni oching → Uyga vazifa → sarlavha, ixtiyoriy izoh va muddat bering."
 
 #: prime/templates/prime/help.html:592
-msgid "Assign to individual students or to an entire group in one step."
-msgstr "Bir qadamda alohida o'quvchilarga yoki butun guruhga tayinlang."
+msgid ""
+"Add content from any library. The lists are already narrowed to the "
+"classroom's subject, so an English class never sees Russian or SAT material."
+msgstr ""
+"Istalgan kutubxonadan material qoʻshing. Roʻyxatlar sinfning faniga "
+"toraytirilgan, shuning uchun ingliz tili sinfi rus tili yoki SAT materialini "
+"koʻrmaydi."
 
 #: prime/templates/prime/help.html:593
 msgid ""
-"Student completes the practice → homework status moves to Submitted "
-"automatically."
+"Add a tutorial and its own practice and reading come with it — the three "
+"legs of a lesson travel together."
 msgstr ""
-"O'quvchi mashqni bajaradi → uy vazifasi holati avtomatik ravishda "
-"Topshirilgan'ga o'tadi."
+"Darslik qoʻshsangiz, uning mashqi va oʻqish matni ham birga keladi — "
+"darsning uch oyogʻi birga yuradi."
 
 #: prime/templates/prime/help.html:594
-msgid "Master grades the submission and can leave written feedback."
-msgstr "Ustoz topshiriqni baholaydi va yozma fikr bildirishi mumkin."
+#, fuzzy
+#| msgid "Your progress"
+msgid "Or press \\"
+msgstr "Sizning natijalaringiz"
 
 #: prime/templates/prime/help.html:595
-msgid "Track per-student status from the homework detail view."
+msgid ""
+"A homework counts as done only when every piece is done — read the tutorial, "
+"read the reading, sit the practice."
 msgstr ""
-"Uy vazifasi tafsilotlari ko'rinishidan har bir o'quvchi holatini kuzating."
+"Vazifa faqat hamma qismi bajarilgandagina tugagan hisoblanadi — darslikni "
+"oʻqing, matnni oʻqing, mashqni yeching."
 
-#: prime/templates/prime/help.html:607
+#: prime/templates/prime/help.html:596
+msgid ""
+"The master sees a progress bar per student, and can leave written feedback "
+"and mark it graded."
+msgstr "Ustoz har bir oʻquvchi uchun yutuq chizigʻini koʻradi, yozma izoh qoldirib, baholandi deb belgilay oladi."
+
+#: prime/templates/prime/help.html:601 prime/templates/prime/help.html:612
+msgid "Submitted"
+msgstr "Topshirilgan"
+
+#: prime/templates/prime/help.html:608
 msgid "Assignment Overview"
 msgstr "Topshiriq ko'rinishi"
 
-#: prime/templates/prime/help.html:608
+#: prime/templates/prime/help.html:609
 msgid "Group: Advanced Class"
 msgstr "Guruh: Ilg'or sinf"
 
-#: prime/templates/prime/help.html:608
-msgid "students"
-msgstr "o'quvchi"
-
-#: prime/templates/prime/help.html:609
+#: prime/templates/prime/help.html:610
 msgid "Practice: Grammar Test 3"
 msgstr "Mashq: Grammatika testi 3"
 
-#: prime/templates/prime/help.html:610
+#: prime/templates/prime/help.html:611
 msgid "Due date"
 msgstr "Topshirish muddati"
 
-#: prime/templates/prime/help.html:619
+#: prime/templates/prime/help.html:620
 msgid "Tutorial System"
 msgstr "Darsliklar tizimi"
 
-#: prime/templates/prime/help.html:620
+#: prime/templates/prime/help.html:621
 msgid ""
 "Tutorials are long-form rich-text articles written by masters. They can "
 "include images, formatted text, and links to related practices — turning a "
@@ -8171,21 +8594,21 @@ msgstr ""
 "rasmlar, formatlangan matn va tegishli mashqlarga havolalarni o'z ichiga "
 "olishi mumkin — darsni interaktiv tajribaga aylantiradi."
 
-#: prime/templates/prime/help.html:622
+#: prime/templates/prime/help.html:623
 msgid "Categories: Mathematics, Korean, Programming, English, Other."
 msgstr "Kategoriyalar: Matematika, Koreys, Dasturlash, Ingliz, Boshqa."
 
-#: prime/templates/prime/help.html:623
+#: prime/templates/prime/help.html:624
 msgid "Read time is estimated automatically from the word count."
 msgstr "O'qish vaqti so'zlar sonidan avtomatik hisoblanadi."
 
-#: prime/templates/prime/help.html:624
+#: prime/templates/prime/help.html:625
 msgid "Students can like or dislike a tutorial to give the author feedback."
 msgstr ""
 "O'quvchilar muallifga fikr bildirish uchun darslikni yoqtirishi yoki "
 "yoqtirmasligi mumkin."
 
-#: prime/templates/prime/help.html:625
+#: prime/templates/prime/help.html:626
 msgid ""
 "Link any number of practices to a tutorial so students can test themselves "
 "immediately."
@@ -8193,43 +8616,43 @@ msgstr ""
 "O'quvchilar darhol o'zlarini sinab ko'rishi uchun darslikka istalgan "
 "miqdordagi mashqlarni bog'lang."
 
-#: prime/templates/prime/help.html:626
+#: prime/templates/prime/help.html:627
 msgid ""
 "View count is tracked so masters can see which tutorials are most popular."
 msgstr ""
 "Ko'rishlar soni kuzatiladi, shuning uchun ustozlar qaysi darsliklar "
 "mashhurligini ko'rishi mumkin."
 
-#: prime/templates/prime/help.html:631
+#: prime/templates/prime/help.html:632
 msgid "Tutorial Card"
 msgstr "Darslik kartasi"
 
-#: prime/templates/prime/help.html:632
+#: prime/templates/prime/help.html:633
 #: tutorial/templates/tutorial/playlist_form.html:89
 #: tutorial/templates/tutorial/tutorial_form.html:114
 msgid "Category"
 msgstr "Kategoriya"
 
-#: prime/templates/prime/help.html:632
+#: prime/templates/prime/help.html:633
 msgid "Programming"
 msgstr "Dasturlash"
 
-#: prime/templates/prime/help.html:633
+#: prime/templates/prime/help.html:634
 #: tutorial/templates/tutorial/tutorial_list.html:93
 msgid "Read time"
 msgstr "O'qish vaqti"
 
-#: prime/templates/prime/help.html:634
+#: prime/templates/prime/help.html:635
 #: tutorial/templates/tutorial/tutorial_detail.html:257
 #: tutorial/templates/tutorial/tutorial_list.html:90
 msgid "Views"
 msgstr "Ko'rishlar"
 
-#: prime/templates/prime/help.html:646
+#: prime/templates/prime/help.html:647
 msgid "Classroom System"
 msgstr "Darsxona tizimi"
 
-#: prime/templates/prime/help.html:647
+#: prime/templates/prime/help.html:648
 msgid ""
 "Classrooms are private learning spaces managed by a master. They contain "
 "structured lessons, and only enrolled students can access the content."
@@ -8238,12 +8661,12 @@ msgstr ""
 "tuzilgan darslarni o'z ichiga oladi va faqat ro'yxatdan o'tgan o'quvchilar "
 "kontentga kira oladi."
 
-#: prime/templates/prime/help.html:649
+#: prime/templates/prime/help.html:650
 msgid "Add students individually or import a whole group at once."
 msgstr ""
 "O'quvchilarni alohida qo'shing yoki butun guruhni bir vaqtda import qiling."
 
-#: prime/templates/prime/help.html:650
+#: prime/templates/prime/help.html:651
 msgid ""
 "Each classroom has ordered lessons with a status: Not Started, Ongoing, or "
 "Finished."
@@ -8251,45 +8674,45 @@ msgstr ""
 "Har bir darsxonada tartibli darslar mavjud: Boshlanmagan, Davom etmoqda yoki "
 "Tugallangan."
 
-#: prime/templates/prime/help.html:651
+#: prime/templates/prime/help.html:652
 msgid "Attach practices, homework assignments, and tutorials to any lesson."
 msgstr "Har qanday darsga mashqlar, uy vazifalari va darsliklarni biriktiring."
 
-#: prime/templates/prime/help.html:652
+#: prime/templates/prime/help.html:653
 msgid ""
 "Upload lesson notes (PDFs, slides) that students can download per lesson."
 msgstr ""
 "O'quvchilar har bir dars uchun yuklab olishi mumkin bo'lgan dars "
 "eslatmalarini (PDF, slaydlar) yuklang."
 
-#: prime/templates/prime/help.html:653
+#: prime/templates/prime/help.html:654
 msgid ""
 "Each classroom has its own discussion board for class-specific questions."
 msgstr ""
 "Har bir darsxonada sinf-xususiy savollar uchun o'zining muhokama doskasi "
 "mavjud."
 
-#: prime/templates/prime/help.html:658
+#: prime/templates/prime/help.html:659
 msgid "Lesson Structure"
 msgstr "Dars tuzilishi"
 
-#: prime/templates/prime/help.html:661
+#: prime/templates/prime/help.html:662
 msgid "Lesson 1: Introduction"
 msgstr "1-dars: Kirish"
 
-#: prime/templates/prime/help.html:666
+#: prime/templates/prime/help.html:667
 msgid "Lesson 2: Core Concepts"
 msgstr "2-dars: Asosiy tushunchalar"
 
-#: prime/templates/prime/help.html:671
+#: prime/templates/prime/help.html:672
 msgid "Lesson 3: Practice Session"
 msgstr "3-dars: Mashq sessiyasi"
 
-#: prime/templates/prime/help.html:672
+#: prime/templates/prime/help.html:673
 msgid "Not Started"
 msgstr "Boshlanmagan"
 
-#: prime/templates/prime/help.html:682
+#: prime/templates/prime/help.html:683
 msgid ""
 "The platform-wide discussion forum lets anyone ask questions, share "
 "insights, or start a conversation. The best answers rise to the top through "
@@ -8299,50 +8722,50 @@ msgstr ""
 "suhbat boshlash imkonini beradi. Eng yaxshi javoblar jamoat ovoz berishi "
 "orqali yuqoriga ko'tariladi."
 
-#: prime/templates/prime/help.html:684
+#: prime/templates/prime/help.html:685
 msgid "Threads are organised by category — find the right section quickly."
 msgstr ""
 "Mavzular kategoriya bo'yicha tartiblanadi — kerakli bo'limni tez toping."
 
-#: prime/templates/prime/help.html:685
+#: prime/templates/prime/help.html:686
 msgid "Announcements and pinned threads stay at the top of their category."
 msgstr ""
 "E'lonlar va mahkamlangan mavzular o'z kategoriyasining yuqorisida qoladi."
 
-#: prime/templates/prime/help.html:686
+#: prime/templates/prime/help.html:687
 msgid "Upvote helpful threads and replies — downvote off-topic ones."
 msgstr ""
 "Foydali mavzular va javoblarga ovoz bering — mavzuga mos kelmaydiganlarga "
 "salbiy ovoz bering."
 
-#: prime/templates/prime/help.html:687
+#: prime/templates/prime/help.html:688
 msgid "Thread authors can mark one reply as the accepted answer."
 msgstr ""
 "Mavzu mualliflari bitta javobni qabul qilingan javob sifatida belgilashi "
 "mumkin."
 
-#: prime/templates/prime/help.html:688
+#: prime/templates/prime/help.html:689
 msgid "Sort by Latest, Most Votes, Recent Activity, or Unanswered."
 msgstr ""
 "Eng yangi, Ko'p ovozli, So'nggi faollik yoki Javobsiz bo'yicha tartiblash."
 
-#: prime/templates/prime/help.html:693
+#: prime/templates/prime/help.html:694
 msgid "Thread Example"
 msgstr "Mavzu namunasi"
 
-#: prime/templates/prime/help.html:694
+#: prime/templates/prime/help.html:695
 msgid "How do I improve my score?"
 msgstr "Balimni qanday yaxshilayman?"
 
-#: prime/templates/prime/help.html:702
+#: prime/templates/prime/help.html:703
 msgid "Best answer accepted"
 msgstr "Eng yaxshi javob qabul qilindi"
 
-#: prime/templates/prime/help.html:710
+#: prime/templates/prime/help.html:711
 msgid "Progression"
 msgstr "Rivojlanish"
 
-#: prime/templates/prime/help.html:714
+#: prime/templates/prime/help.html:715
 msgid ""
 "Your rank is calculated from the total points earned across all completed "
 "practices. The higher your score on each attempt, the more points you "
@@ -8352,67 +8775,67 @@ msgstr ""
 "asosida hisoblanadi. Har bir urinishdagi balingiz qanchalik yuqori bo'lsa, "
 "shunchalik ko'proq ball olasiz."
 
-#: prime/templates/prime/help.html:720
+#: prime/templates/prime/help.html:721
 msgid "Novice"
 msgstr "Yangi"
 
-#: prime/templates/prime/help.html:721
+#: prime/templates/prime/help.html:722
 msgid "Points: 0 – 49"
 msgstr "Ball: 0 – 49"
 
-#: prime/templates/prime/help.html:722
+#: prime/templates/prime/help.html:723
 msgid "Just getting started. Every journey begins here."
 msgstr "Endigina boshlanmoqda. Har qanday yo'l shu yerdan boshlanadi."
 
-#: prime/templates/prime/help.html:726
+#: prime/templates/prime/help.html:727
 msgid "Scholar"
 msgstr "Bilimdon"
 
-#: prime/templates/prime/help.html:727
+#: prime/templates/prime/help.html:728
 msgid "Points: 50 – 149"
 msgstr "Ball: 50 – 149"
 
-#: prime/templates/prime/help.html:728
+#: prime/templates/prime/help.html:729
 msgid "Building knowledge and consistent study habits."
 msgstr "Bilim va muntazam o'qish odatlarini shakllantirish."
 
-#: prime/templates/prime/help.html:732
+#: prime/templates/prime/help.html:733
 msgid "Expert"
 msgstr "Mutaxassis"
 
-#: prime/templates/prime/help.html:733
+#: prime/templates/prime/help.html:734
 msgid "Points: 150 – 299"
 msgstr "Ball: 150 – 299"
 
-#: prime/templates/prime/help.html:734
+#: prime/templates/prime/help.html:735
 msgid "Deep understanding across multiple subjects."
 msgstr "Bir nechta fanda chuqur tushuncha."
 
-#: prime/templates/prime/help.html:738
+#: prime/templates/prime/help.html:739
 msgid "Grandmaster"
 msgstr "Grandmaster"
 
-#: prime/templates/prime/help.html:739
+#: prime/templates/prime/help.html:740
 msgid "Points: 300+"
 msgstr "Ball: 300+"
 
-#: prime/templates/prime/help.html:740
+#: prime/templates/prime/help.html:741
 msgid "The highest rank. Mastery of the platform's hardest challenges."
 msgstr "Eng yuqori daraja. Platformaning eng qiyin sinovlarini egallash."
 
-#: prime/templates/prime/help.html:747
+#: prime/templates/prime/help.html:748
 msgid "FAQ"
 msgstr "Ko'p so'raladigan savollar"
 
-#: prime/templates/prime/help.html:748
+#: prime/templates/prime/help.html:749
 msgid "Frequently Asked Questions"
 msgstr "Ko'p so'raladigan savollar"
 
-#: prime/templates/prime/help.html:758
+#: prime/templates/prime/help.html:759
 msgid "Is Prime Point free?"
 msgstr "Prime Point bepulmi?"
 
-#: prime/templates/prime/help.html:763
+#: prime/templates/prime/help.html:764
 msgid ""
 "Yes. Creating an account, following masters, taking practices, and "
 "participating in discussions is completely free. Some practices may be "
@@ -8424,11 +8847,11 @@ msgstr ""
 "bepul deb belgilanishi mumkin; boshqalari faqat ro'yxatdan o'tgan "
 "o'quvchilar uchun cheklanishi mumkin."
 
-#: prime/templates/prime/help.html:773
+#: prime/templates/prime/help.html:774
 msgid "How do I become a Master?"
 msgstr "Qanday qilib Ustoz bo'laman?"
 
-#: prime/templates/prime/help.html:778
+#: prime/templates/prime/help.html:779
 msgid ""
 "Visit the Masters page and click 'Become a Master'. Complete the short "
 "application form with your name, subject area, and a brief description. An "
@@ -8440,11 +8863,11 @@ msgstr ""
 "Administrator arizangizni ko'rib chiqadi va tasdiqlaydi. Tasdiqlanganidan "
 "so'ng barcha ustoz vositalari darhol ochiladi."
 
-#: prime/templates/prime/help.html:788
+#: prime/templates/prime/help.html:789
 msgid "How do I follow a Master?"
 msgstr "Ustozga qanday obuna bo'laman?"
 
-#: prime/templates/prime/help.html:793
+#: prime/templates/prime/help.html:794
 msgid ""
 "Go to your Profile page and scroll to the Masters section. Use the multi-"
 "select to add any masters you want to follow, then save your profile. You "
@@ -8455,11 +8878,11 @@ msgstr ""
 "saqlang. Xuddi shu tarzda istalgan vaqt ustozlarni qo'shish yoki o'chirish "
 "mumkin."
 
-#: prime/templates/prime/help.html:803
+#: prime/templates/prime/help.html:804
 msgid "How are points earned?"
 msgstr "Ballar qanday to'planadi?"
 
-#: prime/templates/prime/help.html:808
+#: prime/templates/prime/help.html:809
 msgid ""
 "Each time you complete a practice, points are added to your student profile "
 "based on your score. Higher scores give more points. Points accumulate "
@@ -8469,11 +8892,11 @@ msgstr ""
 "profilingizga ball qo'shiladi. Yuqori ball ko'proq ball beradi. Ballar "
 "barcha mashqlar bo'yicha to'planadi va platformadagi darajangizni belgilaydi."
 
-#: prime/templates/prime/help.html:818
+#: prime/templates/prime/help.html:819
 msgid "What happens if I exceed the maximum attempts on a practice?"
 msgstr "Mashqdagi maksimal urinishlardan oshib ketsam nima bo'ladi?"
 
-#: prime/templates/prime/help.html:823
+#: prime/templates/prime/help.html:824
 msgid ""
 "Once you reach the maximum attempts set by the master, the Start button is "
 "disabled and you will see a message indicating you have used all your "
@@ -8484,11 +8907,11 @@ msgstr ""
 "haqida xabar ko'rasiz. Qo'shimcha urinish kerak bo'lsa, ustozingizga "
 "murojaat qiling."
 
-#: prime/templates/prime/help.html:833
+#: prime/templates/prime/help.html:834
 msgid "Can I enroll in multiple classrooms?"
 msgstr "Bir nechta darsxonaga yozilish mumkinmi?"
 
-#: prime/templates/prime/help.html:838
+#: prime/templates/prime/help.html:839
 msgid ""
 "Yes. A master can add you to as many classrooms as they manage. Each "
 "classroom is independent with its own lessons, content, and discussion board."
@@ -8496,11 +8919,11 @@ msgstr ""
 "Ha. Ustoz sizni boshqaradigan darsxonalarning istalganiga qo'shishi mumkin. "
 "Har bir darsxona o'z darslari, kontenti va muhokama doskasi bilan mustaqil."
 
-#: prime/templates/prime/help.html:848
+#: prime/templates/prime/help.html:849
 msgid "Can a master see my homework submissions and scores?"
 msgstr "Ustoz uy vazifasini topshirishlarimni va ballarimni ko'ra oladimi?"
 
-#: prime/templates/prime/help.html:853
+#: prime/templates/prime/help.html:854
 msgid ""
 "Yes. When a master assigns homework, they can view each student's submission "
 "status, score, and any written feedback they leave. This lets masters track "
@@ -8511,11 +8934,11 @@ msgstr ""
 "rivojlanishni kuzatish va shaxsiylashtirilgan yo'riqnoma berish imkonini "
 "beradi."
 
-#: prime/templates/prime/help.html:863
+#: prime/templates/prime/help.html:864
 msgid "What tutorial categories are available?"
 msgstr "Qanday darslik kategoriyalari mavjud?"
 
-#: prime/templates/prime/help.html:868
+#: prime/templates/prime/help.html:869
 msgid ""
 "Tutorials are organised into five categories: Mathematics, Korean, "
 "Programming, English, and Other. Masters choose the best matching category "
@@ -8525,20 +8948,20 @@ msgstr ""
 "Ingliz va Boshqa. Ustozlar darslik chop etishda eng mos kategoriyani "
 "tanlaydi."
 
-#: prime/templates/prime/help.html:878
+#: prime/templates/prime/help.html:879
 msgid "Ready to get started?"
 msgstr "Boshlashga tayyormisiz?"
 
-#: prime/templates/prime/help.html:879
+#: prime/templates/prime/help.html:880
 msgid "Join Prime Point today — it is free for students and educators alike."
 msgstr ""
 "Bugun Prime Pointga qo'shiling — o'quvchilar va o'qituvchilar uchun bepul."
 
-#: prime/templates/prime/help.html:890
+#: prime/templates/prime/help.html:891
 msgid "Create Free Account"
 msgstr "Bepul hisob yaratish"
 
-#: prime/templates/prime/help.html:893
+#: prime/templates/prime/help.html:894
 msgid "Log In"
 msgstr "Kirish"
 
@@ -9585,10 +10008,6 @@ msgstr "Qalin"
 #: tutorial/templates/tutorial/tutorial_form.html:265
 msgid "Italic"
 msgstr "Kursiv"
-
-#: tutorial/templates/tutorial/tutorial_form.html:266
-msgid "Link"
-msgstr "Havola"
 
 #: tutorial/templates/tutorial/tutorial_form.html:267
 msgid "Undo"

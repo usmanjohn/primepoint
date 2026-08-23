@@ -27,7 +27,7 @@
 
     {% if block.is_question %}
     <div class="d-grid gap-2 examprep-mcq" data-pp-mcq>
-        {% for choice in block.choices.all %}
+        {% for choice in block.display_choices %}
         {% comment %} After submit: green = correct answer, red = wrongly picked.
         data-pp-correct lets the JS kit grade instantly (practice, not a scored exam). {% endcomment %}
         <label class="examprep-choice border rounded p-2 px-3 d-flex align-items-center gap-2

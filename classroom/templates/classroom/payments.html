@@ -1,0 +1,104 @@
+{% extends "classroom/_shell.html" %}
+{% load i18n %}
+
+{% block room_content %}
+
+<div class="cr-stats">
+  <div class="cr-stat">
+    <div class="cr-stat-label">{% trans "Paid" %}</div>
+    <div class="cr-stat-value" style="color:#16a34a;">{{ totals.paid|default:0|floatformat:"0" }}</div>
+  </div>
+  <div class="cr-stat">
+    <div class="cr-stat-label">{% trans "Unpaid" %}</div>
+    <div class="cr-stat-value" style="color:var(--danger);">{{ totals.unpaid|default:0|floatformat:"0" }}</div>
+  </div>
+  <div class="cr-stat">
+    <div class="cr-stat-label">{% trans "Partial" %}</div>
+    <div class="cr-stat-value">{{ totals.partial|default:0|floatformat:"0" }}</div>
+  </div>
+</div>
+
+<div class="cr-panel">
+  <h2 class="cr-panel-title"><i class="bi bi-plus-circle"></i>{% trans "Record a payment" %}</h2>
+  <form method="post" action="{% url 'classroom:payment_add' classroom.pk %}">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+    <div class="cr-grid mb-3">
+      <div>
+        <label class="cr-field-label" for="id_panda">{% trans "Student" %}</label>
+        <select name="panda" id="id_panda" class="form-core">
+          {% for p in members %}
+          <option value="{{ p.pk }}">{{ p.profile.user.get_full_name|default:p.profile.user.username }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      {% for field in payment_form %}
+      <div>
+        <label class="cr-field-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+      </div>
+      {% endfor %}
+    </div>
+    <button type="submit" class="btn-auth-primary"><i class="bi bi-check2 me-1"></i>{% trans "Save" %}</button>
+  </form>
+</div>
+
+<div class="cr-pills">
+  <a href="?" class="cr-pill {% if not status %}is-active{% endif %}">{% trans "All" %}</a>
+  {% for value, label in status_choices %}
+  <a href="?status={{ value }}" class="cr-pill {% if status == value %}is-active{% endif %}">{{ label }}</a>
+  {% endfor %}
+</div>
+
+<div class="cr-table-wrap">
+  <table class="cr-table">
+    <thead><tr>
+      <th>{% trans "Student" %}</th><th>{% trans "Period" %}</th><th>{% trans "Amount" %}</th>
+      <th>{% trans "Due" %}</th><th>{% trans "Paid on" %}</th><th>{% trans "Status" %}</th><th></th>
+    </tr></thead>
+    <tbody>
+      {% for p in rows %}
+      <tr>
+        <td>
+          <a href="{% url 'classroom:student_detail' classroom.pk p.panda.pk %}" style="color:inherit;">
+            {{ p.panda.profile.user.get_full_name|default:p.panda.profile.user.username }}
+          </a>
+        </td>
+        <td>{{ p.period_label|default:p.created_at|date:"M Y" }}</td>
+        <td>{{ p.amount|floatformat:"0" }}</td>
+        <td>{{ p.due_date|date:"M d"|default:"—" }}</td>
+        <td>{{ p.payment_date|date:"M d"|default:"—" }}</td>
+        <td>
+          <span class="cr-chip {% if p.status == 'paid' %}cr-chip--ok{% elif p.status == 'unpaid' %}cr-chip--bad{% else %}cr-chip--warn{% endif %}">
+            {{ p.get_status_display }}
+          </span>
+        </td>
+        <td>
+          <div class="d-flex gap-1">
+            {% if p.status != 'paid' %}
+            <form method="post" action="{% url 'classroom:payment_mark_paid' classroom.pk p.pk %}">
+              {% csrf_token %}
+              <input type="hidden" name="next" value="{{ request.get_full_path }}">
+              <button type="submit" class="btn-auth-outline py-0 px-2" style="font-size:.72rem;">
+                {% trans "Paid" %}
+              </button>
+            </form>
+            {% endif %}
+            <form method="post" action="{% url 'classroom:payment_delete' classroom.pk p.pk %}">
+              {% csrf_token %}
+              <input type="hidden" name="next" value="{{ request.get_full_path }}">
+              <button type="submit" class="btn-auth-outline py-0 px-2"
+                      style="color:var(--danger);border-color:var(--border);font-size:.72rem;">
+                <i class="bi bi-trash"></i>
+              </button>
+            </form>
+          </div>
+        </td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="7">{% trans "No payments recorded for this classroom yet." %}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

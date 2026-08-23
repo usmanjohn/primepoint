@@ -443,59 +443,45 @@
         {% endif %}
         {% endif %}
 
-        <!-- My Students link (master, own profile only) -->
+        <!-- My Classrooms (master, own profile only) -->
+        {# Students, homework, payments and notes all live inside a classroom #}
+        {# now, so the profile has one door into them instead of three cards. #}
         {% if master and is_own_profile and master.is_approved %}
         <div class="card profile-card mb-4">
             <div class="card-header d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center gap-2">
-                    <i class="bi bi-people-fill text-accent"></i>
-                    {% trans "My Students" %}
+                    <i class="bi bi-easel-fill text-accent"></i>
+                    {% trans "My Classrooms" %}
                 </div>
-                <a href="{% url 'masters-my-students' master.pk %}" class="btn-text-link">{% trans "Manage" %} →</a>
+                <a href="{% url 'classroom:list' %}" class="btn-text-link">{% trans "All" %} &rarr;</a>
             </div>
-            <div class="card-body text-center py-3">
-                <p class="fw-bold mb-0" style="font-size:1.5rem;">{{ master.student_count }}</p>
-                <p class="text-muted small mb-2">{% trans "students enrolled" %}</p>
-                <a href="{% url 'masters-my-students' master.pk %}" class="btn-core-primary text-decoration-none" style="font-size:0.82rem;">
-                    <i class="bi bi-people"></i> {% trans "Open Student Dashboard" %}
-                </a>
-            </div>
-        </div>
-        {% endif %}
-
-        <!-- Master Homework Card (own profile only) -->
-        {% if master and is_own_profile %}
-        <div class="card profile-card mb-4">
-            <div class="card-header d-flex align-items-center justify-content-between">
-                <div class="d-flex align-items-center gap-2">
-                    <i class="bi bi-journal-bookmark-fill text-accent"></i>
-                    {% trans "My Homework (as Master)" %}
-                </div>
-                <a href="{% url 'manage_homework' %}" class="btn-text-link">{% trans "Manage all" %} →</a>
-            </div>
-            {% if master_hw %}
             <div class="card-body p-0">
-                {% for hw in master_hw %}
-                <a href="{% url 'homework_detail' hw.pk %}" class="practice-row-link">
+                {% for room in master_classrooms %}
+                <a href="{% url 'classroom:detail' room.pk %}" class="practice-row-link">
                     <div class="practice-row-info">
-                        <span class="practice-row-title">{{ hw.title }}</span>
+                        <span class="practice-row-title">{{ room.name }}</span>
                         <span class="practice-row-meta">
-                            {{ hw.pending_count }} {% trans "pending" %} · {{ hw.submitted_count }} {% trans "submitted" %}
-                            {% if hw.due_date %} · {% trans "Due" %} {{ hw.due_date|date:"M d" }}{% endif %}
+                            {{ room.member_count }} {% trans "students" %} ·
+                            {{ room.homeworks.count }} {% trans "homework" %}
+                            {% if room.subject %} · {{ room.get_subject_display }}{% endif %}
                         </span>
                     </div>
                     <i class="bi bi-chevron-right text-muted" style="font-size:0.75rem;"></i>
                 </a>
+                {% empty %}
+                <div class="text-center py-4">
+                    <p class="text-muted small mb-2">{% trans "No classrooms yet." %}</p>
+                </div>
                 {% endfor %}
             </div>
-            {% else %}
-            <div class="card-body text-center py-4">
-                <p class="text-muted small mb-2">{% trans "No homework created yet." %}</p>
-                <a href="{% url 'create_homework' %}" class="btn-core-outline" style="font-size:0.8rem;">
-                    <i class="bi bi-plus"></i> {% trans "Create Homework" %}
+            <div class="card-body text-center py-3 border-top">
+                <p class="text-muted small mb-2">
+                    {% trans "Students, homework, payments and notes are all inside a classroom." %}
+                </p>
+                <a href="{% url 'classroom:create' %}" class="btn-core-primary text-decoration-none" style="font-size:0.82rem;">
+                    <i class="bi bi-plus-lg"></i> {% trans "New Classroom" %}
                 </a>
             </div>
-            {% endif %}
         </div>
         {% endif %}
 
@@ -707,7 +693,7 @@
             {% if panda_hw_pending or panda_hw_done %}
             <div class="card-body p-0">
                 {% for a in panda_hw_pending %}
-                <a href="{% url 'practice_detail' a.homework.practice.pk %}" class="practice-row-link">
+                <a href="{% if a.homework.classroom_id %}{% url 'classroom:homework_detail' a.homework.classroom_id a.homework.pk %}{% else %}{% url 'my_homework' %}{% endif %}" class="practice-row-link">
                     <div class="practice-row-info">
                         <span class="practice-row-title">{{ a.homework.title }}</span>
                         <span class="practice-row-meta">
@@ -730,7 +716,7 @@
                     </div>
                     <div class="practice-row-badges">
                         {% if a.attempt %}
-                        <span class="score-chip {% if a.attempt.score >= a.homework.practice.pass_score %}pass{% else %}fail{% endif %}">
+                        <span class="score-chip {% if a.attempt.score >= 50 %}pass{% else %}fail{% endif %}">
                             {{ a.attempt.score|floatformat:0 }}%
                         </span>
                         {% else %}

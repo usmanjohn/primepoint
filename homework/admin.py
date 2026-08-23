@@ -10,8 +10,9 @@ class HomeworkAssignmentInline(admin.TabularInline):
 
 @admin.register(Homework)
 class HomeworkAdmin(admin.ModelAdmin):
-    list_display = ('title', 'master', 'practice', 'due_date', 'created_at')
-    list_filter = ('master',)
+    list_display = ('title', 'master', 'classroom', 'item_count', 'due_date', 'created_at')
+    list_filter = ('master', 'classroom')
+    filter_horizontal = ('practices', 'tutorials', 'stories', 'exam_lessons')
     inlines = [HomeworkAssignmentInline]
 
 

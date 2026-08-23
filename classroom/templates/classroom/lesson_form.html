@@ -82,6 +82,7 @@
 {% endblock %}
 
 {% block content %}
+{% include "classroom/_tabs.html" %}
 <div class="cr-form-wrap">
   <a href="{% url 'classroom:detail' classroom.pk %}" class="btn-auth-outline mb-3 d-inline-flex align-items-center gap-1">
     <i class="bi bi-arrow-left"></i> {{ classroom.name }}
@@ -141,20 +142,6 @@
               <p class="cr-linked-empty">{% trans "No published practices available." %}</p>
               {% endif %}
               {% if form.practices.errors %}<ul class="errorlist">{% for e in form.practices.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
-            </div>
-          </div>
-        </div>
-
-        <!-- Homeworks -->
-        <div class="cr-field">
-          <div class="cr-linked-section">
-            <div class="cr-linked-header"><i class="bi bi-journal-bookmark-fill"></i>{% trans "Link Homeworks" %}</div>
-            <div class="cr-linked-body">
-              {% if form.homeworks.field.queryset.count %}
-              {{ form.homeworks }}
-              {% else %}
-              <p class="cr-linked-empty">{% trans "No homeworks created yet." %}</p>
-              {% endif %}
             </div>
           </div>
         </div>

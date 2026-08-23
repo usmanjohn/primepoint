@@ -482,4 +482,8 @@ def tutorial_finish(request, pk):
             messages.success(request, _('Tutorial finished!'))
     else:
         messages.info(request, _('You already finished this tutorial.'))
+
+    # A tutorial can be one leg of a homework now — tick it off there too.
+    from homework.items import tick_off
+    tick_off(request.user, 'tutorial', tutorial)
     return redirect('tutorial_detail', pk=pk)

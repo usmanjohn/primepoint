@@ -598,8 +598,8 @@
 
     <div class="mdt-hero-actions">
       {% if user == master.profile.user %}
-      <a href="{% url 'masters-my-students' master.pk %}" class="btn-core-primary text-decoration-none" style="font-size:0.82rem;">
-        <i class="bi bi-people-fill"></i> {% trans "My Students" %}
+      <a href="{% url 'classroom:list' %}" class="btn-core-primary text-decoration-none" style="font-size:0.82rem;">
+        <i class="bi bi-easel-fill"></i> {% trans "My Classrooms" %}
       </a>
       <a href="{% url 'masters-certificate' %}" class="btn-core-outline text-decoration-none" style="font-size:0.82rem;">
         <i class="bi bi-award"></i> {% trans "Certificate" %}
@@ -1105,97 +1105,50 @@
 </div>
 {% endif %}
 
-<!-- GROUPS (owner only) -->
+<!-- CLASSROOMS (owner only) -->
+{# Groups, homework, the register and the money all live inside a classroom  #}
+{# now, so one section replaces the old Groups + Homeworks pair.             #}
 {% if is_owner %}
 <div class="mdt-section">
   <div class="mdt-section-hdr">
     <h2 class="mdt-section-title">
-      <i class="bi bi-diagram-3-fill me-1" style="color:var(--accent);"></i>
-      {% trans "Groups" %}
+      <i class="bi bi-easel-fill me-1" style="color:var(--accent);"></i>
+      {% trans "My Classrooms" %}
     </h2>
-    <a href="{% url 'create_group' %}" class="btn-text-link" style="font-size:0.8rem;">
-      + {% trans "New" %} →
+    <a href="{% url 'classroom:create' %}" class="btn-text-link" style="font-size:0.8rem;">
+      + {% trans "New" %} &rarr;
     </a>
   </div>
-  {% if groups %}
-  <div class="mdt-groups">
-    {% for g in groups %}
-    <div class="mdt-group-card">
-      <i class="bi bi-people-fill mdt-group-icon"></i>
-      <div class="mdt-group-body">
-        <div class="mdt-group-name">{{ g.name }}</div>
-        <div class="mdt-group-meta">{{ g.member_count_ann }} student{{ g.member_count_ann|pluralize }}</div>
-      </div>
-      <div class="mdt-group-actions">
-        <a href="{% url 'edit_group' g.pk %}" class="mdt-icon-btn" title="{% trans 'Edit group' %}">
-          <i class="bi bi-pencil-square"></i>
-        </a>
-        <a href="{% url 'delete_group' g.pk %}" class="mdt-icon-btn mdt-icon-btn--danger" title="{% trans 'Delete group' %}"
-           onclick="return confirm('Delete group {{ g.name }}?')">
-          <i class="bi bi-trash"></i>
-        </a>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-  {% else %}
-  <div class="mdt-empty">
-    <i class="bi bi-diagram-3 me-1"></i>
-    No groups yet.
-    <a href="{% url 'create_group' %}" class="ms-1" style="color:var(--accent);">Create one →</a>
-  </div>
-  {% endif %}
-</div>
-
-<!-- HOMEWORKS (owner only) -->
-<div class="mdt-section">
-  <div class="mdt-section-hdr">
-    <h2 class="mdt-section-title">
-      <i class="bi bi-journal-bookmark-fill me-1" style="color:var(--accent);"></i>
-      {% trans "Homeworks" %}
-    </h2>
-    <a href="{% url 'create_homework' %}" class="btn-text-link" style="font-size:0.8rem;">
-      + {% trans "New" %} →
-    </a>
-  </div>
-  {% if homeworks %}
+  {% if classrooms %}
   <div class="mdt-hw-list">
-    {% for hw in homeworks %}
+    {% for room in classrooms %}
     <div class="mdt-hw-card">
       <div class="mdt-hw-info">
-        <div class="mdt-hw-title">{{ hw.title }}</div>
+        <div class="mdt-hw-title">{{ room.name }}</div>
         <div class="mdt-hw-sub">
-          {% if hw.practice %}
-            <i class="bi bi-book me-1"></i>{{ hw.practice.title }}
-            &nbsp;·&nbsp;
-          {% endif %}
-          {% if hw.due_date %}
-            <i class="bi bi-calendar-event me-1"></i>Due {{ hw.due_date|date:"M d, Y" }}
-          {% else %}
-            <i class="bi bi-infinity me-1"></i>No due date
-          {% endif %}
+          {% if room.subject %}<i class="bi bi-bookmark me-1"></i>{{ room.get_subject_display }}&nbsp;·&nbsp;{% endif %}
+          <i class="bi bi-collection me-1"></i>{{ room.lesson_count }} {% trans "lessons" %}
         </div>
       </div>
       <div class="mdt-hw-counts">
         <div class="mdt-hw-cnt">
-          <span class="mdt-hw-cnt-num" style="color:#f59e0b;">{{ hw.pending_count }}</span>
-          <span class="mdt-hw-cnt-lbl">Pending</span>
+          <span class="mdt-hw-cnt-num" style="color:var(--accent);">{{ room.member_count }}</span>
+          <span class="mdt-hw-cnt-lbl">{% trans "Students" %}</span>
         </div>
         <div class="mdt-hw-cnt">
-          <span class="mdt-hw-cnt-num" style="color:var(--accent);">{{ hw.submitted_count }}</span>
-          <span class="mdt-hw-cnt-lbl">Submitted</span>
-        </div>
-        <div class="mdt-hw-cnt">
-          <span class="mdt-hw-cnt-num" style="color:#22c55e;">{{ hw.graded_count }}</span>
-          <span class="mdt-hw-cnt-lbl">Graded</span>
+          <span class="mdt-hw-cnt-num" style="color:#f59e0b;">{{ room.homeworks.count }}</span>
+          <span class="mdt-hw-cnt-lbl">{% trans "Homework" %}</span>
         </div>
       </div>
       <div class="mdt-hw-actions">
-        <a href="{% url 'homework_detail' hw.pk %}" class="mdt-icon-btn" title="{% trans 'View' %}">
-          <i class="bi bi-eye"></i>
+        <a href="{% url 'classroom:detail' room.pk %}" class="mdt-icon-btn" title="{% trans 'Open' %}">
+          <i class="bi bi-box-arrow-in-right"></i>
         </a>
-        <a href="{% url 'edit_homework' hw.pk %}" class="mdt-icon-btn" title="{% trans 'Edit' %}">
-          <i class="bi bi-pencil-square"></i>
+        <a href="{% url 'classroom:students' room.pk %}" class="mdt-icon-btn" title="{% trans 'Students' %}">
+          <i class="bi bi-people-fill"></i>
+        </a>
+        <a href="{% url 'classroom:homework_list' room.pk %}" class="mdt-icon-btn" title="{% trans 'Homework' %}">
+          <i class="bi bi-journal-bookmark-fill"></i>
         </a>
       </div>
     </div>
@@ -1203,9 +1156,9 @@
   </div>
   {% else %}
   <div class="mdt-empty">
-    <i class="bi bi-journal-bookmark me-1"></i>
-    No homeworks yet.
-    <a href="{% url 'create_homework' %}" class="ms-1" style="color:var(--accent);">Create one →</a>
+    <i class="bi bi-easel me-1"></i>
+    {% trans "No classrooms yet." %}
+    <a href="{% url 'classroom:create' %}" class="ms-1" style="color:var(--accent);">{% trans "Create one" %} &rarr;</a>
   </div>
   {% endif %}
 </div>
@@ -1214,21 +1167,13 @@
 <!-- Own profile CTA -->
 {% if is_owner %}
 <div class="mt-2 pt-3 d-flex flex-wrap gap-2" style="border-top:1px solid var(--border);">
-  <a href="{% url 'masters-my-students' master.pk %}" class="btn-core-primary text-decoration-none">
-    <i class="bi bi-people-fill"></i>
-    {% trans "My Students" %}
+  <a href="{% url 'classroom:list' %}" class="btn-core-primary text-decoration-none">
+    <i class="bi bi-easel-fill"></i>
+    {% trans "My Classrooms" %}
   </a>
   <a href="{% url 'manage_practices' %}" class="btn-core-outline text-decoration-none">
     <i class="bi bi-collection"></i>
     {% trans "Manage Practices" %}
-  </a>
-  <a href="{% url 'manage_homework' %}" class="btn-core-outline text-decoration-none">
-    <i class="bi bi-journal-bookmark-fill"></i>
-    {% trans "Manage Homeworks" %}
-  </a>
-  <a href="{% url 'manage_groups' %}" class="btn-core-outline text-decoration-none">
-    <i class="bi bi-diagram-3-fill"></i>
-    {% trans "Manage Groups" %}
   </a>
   <a href="{% url 'tutorial_create' %}" class="btn-core-outline text-decoration-none">
     <i class="bi bi-journal-text"></i>

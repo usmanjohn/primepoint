@@ -1,0 +1,210 @@
+{% extends "classroom/_shell.html" %}
+{% load i18n %}
+
+{% block room_content %}
+
+<div class="cr-section-hdr">
+  <div class="cr-section-title">
+    <img src="{{ panda.profile.image_url }}" alt="" class="cr-student-chip-ava" style="width:28px;height:28px;">
+    {{ panda.profile.user.get_full_name|default:panda.profile.user.username }}
+  </div>
+  <div class="d-flex gap-2">
+    <a href="{% url 'user_profile' panda.profile.user.username %}" class="cr-row-link">{% trans "Profile" %}</a>
+    <form method="post" action="{% url 'classroom:student_remove' classroom.pk panda.pk %}">
+      {% csrf_token %}
+      <button type="submit" class="btn-auth-outline py-0 px-2"
+              style="color:var(--danger);border-color:var(--danger);font-size:.75rem;">
+        {% trans "Remove from this classroom" %}
+      </button>
+    </form>
+  </div>
+</div>
+
+<div class="cr-stats">
+  <div class="cr-stat">
+    <div class="cr-stat-label">{% trans "Attendance" %}</div>
+    <div class="cr-stat-value">{{ att_present }}/{{ att_total }}</div>
+  </div>
+  <div class="cr-stat">
+    <div class="cr-stat-label">{% trans "Late" %}</div>
+    <div class="cr-stat-value">{{ att_late }}</div>
+  </div>
+  <div class="cr-stat">
+    <div class="cr-stat-label">{% trans "Homework" %}</div>
+    <div class="cr-stat-value">{{ assignments|length }}</div>
+  </div>
+  <div class="cr-stat">
+    <div class="cr-stat-label">{% trans "Points" %}</div>
+    <div class="cr-stat-value">{{ panda.rating|floatformat:"0" }}</div>
+  </div>
+</div>
+
+{# ── Homework ────────────────────────────────────────────────────────── #}
+<div class="cr-section-hdr">
+  <div class="cr-section-title"><i class="bi bi-journal-bookmark-fill"></i>{% trans "Homework in this classroom" %}</div>
+</div>
+<div class="cr-list">
+  {% for a in assignments %}
+  <div class="cr-row">
+    <div class="cr-row-icon"><i class="bi bi-journal-bookmark"></i></div>
+    <div class="cr-row-body">
+      <div class="cr-row-title">
+        <a href="{% url 'classroom:homework_detail' classroom.pk a.homework.pk %}">{{ a.homework.title }}</a>
+      </div>
+      <div class="cr-row-sub">
+        {{ a.done_count }}/{{ a.homework.item_count }} {% trans "done" %}
+        {% if a.homework.due_date %}· {% trans "due" %} {{ a.homework.due_date|date:"M d" }}{% endif %}
+      </div>
+    </div>
+    <div class="cr-row-side">
+      <div class="cr-bar {% if a.percent_done == 100 %}cr-bar--done{% endif %}">
+        <span style="width: {{ a.percent_done }}%;"></span>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <div class="cr-empty">{% trans "No homework given to this student yet." %}</div>
+  {% endfor %}
+</div>
+
+{# ── Attendance ──────────────────────────────────────────────────────── #}
+<div class="cr-panel">
+  <h2 class="cr-panel-title"><i class="bi bi-check2-square"></i>{% trans "Mark attendance" %}</h2>
+  <form method="post" action="{% url 'classroom:attendance_mark' classroom.pk panda.pk %}">
+    {% csrf_token %}
+    <div class="cr-grid mb-3">
+      {% for field in attendance_form %}
+      <div>
+        <label class="cr-field-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+      </div>
+      {% endfor %}
+    </div>
+    <button type="submit" class="btn-auth-primary"><i class="bi bi-check2 me-1"></i>{% trans "Save" %}</button>
+  </form>
+
+  {% if attendances %}
+  <div class="cr-table-wrap mt-3" style="margin-bottom:0;">
+    <table class="cr-table">
+      <thead><tr><th>{% trans "Date" %}</th><th>{% trans "Status" %}</th><th>{% trans "Note" %}</th></tr></thead>
+      <tbody>
+        {% for a in attendances %}
+        <tr>
+          <td>{{ a.date|date:"M d, Y" }}</td>
+          <td>
+            <span class="cr-chip {% if a.status == 'present' %}cr-chip--ok{% elif a.status == 'absent' %}cr-chip--bad{% else %}cr-chip--warn{% endif %}">
+              {{ a.get_status_display }}
+            </span>
+          </td>
+          <td>{{ a.notes|default:"—" }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+</div>
+
+{# ── Payments ────────────────────────────────────────────────────────── #}
+<div class="cr-panel">
+  <h2 class="cr-panel-title"><i class="bi bi-cash-coin"></i>{% trans "Payments" %}</h2>
+  <form method="post" action="{% url 'classroom:payment_add' classroom.pk %}">
+    {% csrf_token %}
+    <input type="hidden" name="panda" value="{{ panda.pk }}">
+    <input type="hidden" name="next" value="{{ request.path }}">
+    <div class="cr-grid mb-3">
+      {% for field in payment_form %}
+      <div>
+        <label class="cr-field-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+      </div>
+      {% endfor %}
+    </div>
+    <button type="submit" class="btn-auth-primary"><i class="bi bi-plus-lg me-1"></i>{% trans "Record payment" %}</button>
+  </form>
+
+  {% if payments %}
+  <div class="cr-table-wrap mt-3" style="margin-bottom:0;">
+    <table class="cr-table">
+      <thead><tr>
+        <th>{% trans "Period" %}</th><th>{% trans "Amount" %}</th><th>{% trans "Due" %}</th>
+        <th>{% trans "Status" %}</th><th></th>
+      </tr></thead>
+      <tbody>
+        {% for p in payments %}
+        <tr>
+          <td>{{ p.period_label|default:p.created_at|date:"M Y" }}</td>
+          <td>{{ p.amount|floatformat:"0" }}</td>
+          <td>{{ p.due_date|date:"M d"|default:"—" }}</td>
+          <td>
+            <span class="cr-chip {% if p.status == 'paid' %}cr-chip--ok{% elif p.status == 'unpaid' %}cr-chip--bad{% else %}cr-chip--warn{% endif %}">
+              {{ p.get_status_display }}
+            </span>
+          </td>
+          <td>
+            <div class="d-flex gap-1">
+              {% if p.status != 'paid' %}
+              <form method="post" action="{% url 'classroom:payment_mark_paid' classroom.pk p.pk %}">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.path }}">
+                <button type="submit" class="btn-auth-outline py-0 px-2" style="font-size:.72rem;">
+                  {% trans "Paid" %}
+                </button>
+              </form>
+              {% endif %}
+              <form method="post" action="{% url 'classroom:payment_delete' classroom.pk p.pk %}">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.path }}">
+                <button type="submit" class="btn-auth-outline py-0 px-2"
+                        style="color:var(--danger);border-color:var(--border);font-size:.72rem;">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+</div>
+
+{# ── Certificates ────────────────────────────────────────────────────── #}
+<div class="cr-panel">
+  <h2 class="cr-panel-title"><i class="bi bi-award"></i>{% trans "Certificates" %}</h2>
+  <form method="post" action="{% url 'classroom:certificate_issue' classroom.pk panda.pk %}">
+    {% csrf_token %}
+    {% for field in certificate_form %}
+    <div class="mb-2">
+      <label class="cr-field-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+      {{ field }}
+    </div>
+    {% endfor %}
+    <button type="submit" class="btn-auth-primary"><i class="bi bi-award me-1"></i>{% trans "Issue" %}</button>
+  </form>
+
+  {% for c in certificates %}
+  <div class="cr-row mt-2">
+    <div class="cr-row-icon"><i class="bi bi-award"></i></div>
+    <div class="cr-row-body">
+      <div class="cr-row-title"><a href="{% url 'certificate-view' c.pk %}">{{ c.title }}</a></div>
+      <div class="cr-row-sub">{{ c.issued_at|date:"M d, Y" }}</div>
+    </div>
+    <div class="cr-row-side">
+      <form method="post" action="{% url 'classroom:certificate_delete' classroom.pk c.pk %}">
+        {% csrf_token %}
+        <button type="submit" class="btn-auth-outline py-0 px-2"
+                style="color:var(--danger);border-color:var(--border);font-size:.72rem;">
+          <i class="bi bi-trash"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<a href="{% url 'classroom:students' classroom.pk %}" class="btn-auth-outline">
+  <i class="bi bi-arrow-left me-1"></i>{% trans "Back to roster" %}
+</a>
+{% endblock %}

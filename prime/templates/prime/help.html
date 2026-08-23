@@ -477,7 +477,7 @@
       <div class="ab-service-card">
         <div class="ab-service-icon"><i class="bi bi-people-fill"></i></div>
         <p class="ab-service-name">{% trans "Manage Students" %}</p>
-        <p class="ab-service-desc">{% trans "View everyone who follows you. Remove students from your roster and organise them into named groups for bulk operations." %}</p>
+        <p class="ab-service-desc">{% trans "Each classroom has its own roster, register and payment sheet — so a master teaching two classes never has to untangle one shared pile." %}</p>
       </div>
       <div class="ab-service-card">
         <div class="ab-service-icon"><i class="bi bi-collection"></i></div>
@@ -487,7 +487,7 @@
       <div class="ab-service-card">
         <div class="ab-service-icon"><i class="bi bi-clipboard2-check"></i></div>
         <p class="ab-service-name">{% trans "Assign Homework" %}</p>
-        <p class="ab-service-desc">{% trans "Link any practice to individual students or groups, add notes, and set an optional deadline. Track status — Pending, Submitted, or Graded." %}</p>
+        <p class="ab-service-desc">{% trans "Inside the classroom, gather tutorials, practices, readings and exam-prep lessons into one homework, set a deadline, and track every student's progress." %}</p>
       </div>
       <div class="ab-service-card">
         <div class="ab-service-icon"><i class="bi bi-file-richtext"></i></div>
@@ -497,7 +497,7 @@
       <div class="ab-service-card">
         <div class="ab-service-icon"><i class="bi bi-door-open"></i></div>
         <p class="ab-service-name">{% trans "Run Classrooms" %}</p>
-        <p class="ab-service-desc">{% trans "Create private classrooms with structured lessons. Attach practices, homework, and tutorials to each lesson. Host a classroom-level discussion." %}</p>
+        <p class="ab-service-desc">{% trans "A classroom holds everything: lessons, homework, the student roster, attendance, payments, shared notes and links, and its own discussion." %}</p>
       </div>
       <div class="ab-service-card">
         <div class="ab-service-icon"><i class="bi bi-award"></i></div>
@@ -586,13 +586,14 @@
       <div>
         <div class="hp-feature-icon-wrap"><i class="bi bi-clipboard2-check"></i></div>
         <h3 class="hp-feature-title">{% trans "Homework System" %}</h3>
-        <p class="hp-feature-desc">{% trans "Masters link a practice to a homework assignment and push it directly to students or groups. Students complete the linked practice to submit the homework." %}</p>
+        <p class="hp-feature-desc">{% trans "Homework is set inside a classroom, and can hold any mix of tutorials, practices, Corner readings and exam-prep lessons — not just one test." %}</p>
         <ul class="hp-list">
-          <li><i class="bi bi-plus-circle"></i>{% trans "Create homework: give it a title, optional notes, a linked practice, and an optional due date." %}</li>
-          <li><i class="bi bi-send"></i>{% trans "Assign to individual students or to an entire group in one step." %}</li>
-          <li><i class="bi bi-check2-all"></i>{% trans "Student completes the practice → homework status moves to Submitted automatically." %}</li>
-          <li><i class="bi bi-star"></i>{% trans "Master grades the submission and can leave written feedback." %}</li>
-          <li><i class="bi bi-graph-up"></i>{% trans "Track per-student status from the homework detail view." %}</li>
+          <li><i class="bi bi-plus-circle"></i>{% trans "Open your classroom → Homework → give it a title, optional notes and a due date." %}</li>
+          <li><i class="bi bi-search"></i>{% trans "Add content from any library. The lists are already narrowed to the classroom's subject, so an English class never sees Russian or SAT material." %}</li>
+          <li><i class="bi bi-magic"></i>{% trans "Add a tutorial and its own practice and reading come with it — the three legs of a lesson travel together." %}</li>
+          <li><i class="bi bi-lightning-charge"></i>{% trans "Or press \"Set this lesson as homework\" on a classroom lesson and the whole thing is built and handed out in one click." %}</li>
+          <li><i class="bi bi-check2-all"></i>{% trans "A homework counts as done only when every piece is done — read the tutorial, read the reading, sit the practice." %}</li>
+          <li><i class="bi bi-star"></i>{% trans "The master sees a progress bar per student, and can leave written feedback and mark it graded." %}</li>
         </ul>
         <div class="hp-status-flow mt-3">
           <span class="hp-status-chip">{% trans "Pending" %}</span>

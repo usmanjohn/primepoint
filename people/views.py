@@ -81,11 +81,12 @@ def _profile_context(viewed_user, is_own_profile):
 
     # Homework for profile display (own profile only — private data)
     panda_hw_pending = panda_hw_done = master_hw = None
+    master_classrooms = None
     if is_own_profile:
         if panda:
             assignments = (
                 panda.homework_assignments
-                .select_related('homework__master', 'homework__practice', 'attempt')
+                .select_related('homework__master', 'homework__classroom', 'attempt')
                 .order_by('homework__due_date')
             )
             panda_hw_pending = assignments.filter(status='pending')[:5]
@@ -95,6 +96,13 @@ def _profile_context(viewed_user, is_own_profile):
                 master.homeworks
                 .prefetch_related('assignments')
                 .order_by('-created_at')[:5]
+            )
+            # Teaching now happens inside a classroom, so the profile links
+            # there rather than to the old standalone student/homework pages.
+            master_classrooms = (
+                master.classrooms
+                .prefetch_related('homeworks')
+                .order_by('-created_at')[:6]
             )
 
     from masters.models import Certificate
@@ -112,6 +120,7 @@ def _profile_context(viewed_user, is_own_profile):
         'panda_hw_pending': panda_hw_pending,
         'panda_hw_done': panda_hw_done,
         'master_hw': master_hw,
+        'master_classrooms': master_classrooms,
         'rating_stats': rating_stats,
         'certificates': certificates,
     }

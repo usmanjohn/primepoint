@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% comment %}
+  Every page inside a classroom wears the same frame: the coloured header, the
+  tab row, then the page's own content in `room_content`. Keeping the frame in
+  one file is what makes the room feel like one place rather than nine pages.
+{% endcomment %}
+{% block title %}{{ classroom.name }} – Powerty{% endblock %}
+{% block page_name %}{{ classroom.name }}{% endblock %}
+{% block nav_classroom %}active{% endblock %}
+{% block mob_nav_classroom %}active{% endblock %}
+
+{% block content %}
+<div class="cr-shell">
+
+  <div class="cr-header">
+    <div class="cr-header-strip" style="background: {{ classroom.cover_color }};"></div>
+    <div class="cr-eyebrow">
+      <i class="bi bi-lock-fill" style="font-size:.6rem;"></i>{% trans "Private Classroom" %}
+      {% if classroom.subject %}· {{ classroom.get_subject_display }}{% endif %}
+    </div>
+    <h1 class="cr-title"><a href="{% url 'classroom:detail' classroom.pk %}">{{ classroom.name }}</a></h1>
+    {% if classroom.description %}<p class="cr-desc">{{ classroom.description }}</p>{% endif %}
+    <div class="cr-meta-row">
+      <span class="cr-meta-item"><i class="bi bi-person-workspace"></i>{{ classroom.master.name }}</span>
+      <span class="cr-meta-item"><i class="bi bi-collection"></i>{{ classroom.lesson_count }} {% trans "lessons" %}</span>
+      <span class="cr-meta-item"><i class="bi bi-people"></i>{{ classroom.member_count }} {% trans "students" %}</span>
+    </div>
+    {% block room_actions %}{% endblock %}
+  </div>
+
+  {% include "classroom/_tabs.html" %}
+
+  {% block room_content %}{% endblock %}
+</div>
+{% endblock %}

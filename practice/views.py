@@ -33,12 +33,25 @@ SUBJECT_PALETTE = [
 
 # Avoid circular import — imported lazily in finish_practice
 def _auto_link_homework(attempt):
+    """Tick this practice off every homework the pupil holds that contains it.
+
+    A homework can now hold a tutorial and a reading as well, so finishing the
+    practice no longer means the homework is done — `refresh()` decides that by
+    checking every leg. The attempt is still stored on the assignment, because
+    the master's list shows the score.
+    """
+    from django.db.models import Q
     from homework.models import HomeworkAssignment
-    HomeworkAssignment.objects.filter(
-        panda=attempt.panda,
-        homework__practice=attempt.practice,
-        status='pending',
-    ).update(attempt=attempt, status='submitted', submitted_at=attempt.completed_at)
+
+    assignments = (HomeworkAssignment.objects
+                   .filter(panda=attempt.panda, homework__practices=attempt.practice)
+                   .exclude(status='graded')
+                   .distinct())
+    for assignment in assignments:
+        if assignment.attempt_id is None or assignment.status == 'pending':
+            assignment.attempt = attempt
+            assignment.save(update_fields=['attempt'])
+        assignment.refresh()
 
 
 # ─────────────────────────────────────────────

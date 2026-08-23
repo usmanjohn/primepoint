@@ -1,9 +1,20 @@
+"""Homework, from the pupil's side.
+
+Setting homework lives in the classroom now — a master assigns inside the room
+they teach, which is what makes the pickers subject-aware and the roster the
+right roster. What stays here is the other half: one inbox where a pupil sees
+everything due from every classroom at once. A pupil in three rooms should not
+have to open three pages to find out what is due tomorrow.
+
+The old master-facing URLs are kept as redirects rather than deleted, because
+they are bookmarked and linked from older pages.
+"""
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from django.core.exceptions import PermissionDenied
 from django.contrib import messages
-from .models import Homework, HomeworkAssignment, PandaGroup
-from .forms import HomeworkForm, HomeworkAssignForm, PandaGroupForm
+from django.utils.translation import gettext as _
+
+from .models import Homework, HomeworkAssignment
 
 
 def _get_master(request):
@@ -14,18 +25,7 @@ def _get_panda(request):
     return getattr(request.user.profile, 'panda', None)
 
 
-def _bulk_assign(homework, pandas_qs):
-    """Create HomeworkAssignment for each panda not already assigned. Returns count created."""
-    existing = set(homework.assignments.values_list('panda_id', flat=True))
-    created = 0
-    for panda in pandas_qs:
-        if panda.pk not in existing:
-            HomeworkAssignment.objects.create(homework=homework, panda=panda)
-            created += 1
-    return created
-
-
-# ── Student views ────────────────────────────────────────────────────────────
+# ── The pupil's inbox ────────────────────────────────────────────────────────
 
 @login_required
 def my_homework(request):
@@ -33,244 +33,67 @@ def my_homework(request):
     master = _get_master(request)
 
     if not panda and not master:
-        messages.info(request, "You don't have a student or master profile yet.")
+        messages.info(request, _("You don't have a student or master profile yet."))
         return redirect('index')
 
     pending = submitted = None
     if panda:
-        assignments = (
+        assignments = list(
             panda.homework_assignments
-            .select_related('homework__master', 'homework__practice', 'attempt')
+            .select_related('homework__master', 'homework__classroom')
+            .prefetch_related('homework__practices', 'homework__tutorials',
+                              'homework__stories', 'homework__exam_lessons')
             .order_by('homework__due_date', '-homework__created_at')
         )
-        pending = assignments.filter(status='pending')
-        submitted = assignments.filter(status__in=['submitted', 'graded'])
+        # Re-check before showing: a pupil who read the tutorial and sat the
+        # practice ten minutes ago should find the row already ticked off.
+        for assignment in assignments:
+            assignment.refresh()
+        pending = [a for a in assignments if a.status == 'pending']
+        submitted = [a for a in assignments if a.status in ('submitted', 'graded')]
 
-    master_homeworks = None
-    groups = None
+    classrooms = None
     if master:
-        master_homeworks = master.homeworks.prefetch_related('assignments').order_by('-created_at')[:5]
-        groups = master.panda_groups.prefetch_related('members')
+        classrooms = (master.classrooms
+                      .prefetch_related('homeworks')
+                      .order_by('-created_at'))
 
     return render(request, 'homework/my_homework.html', {
         'pending': pending,
         'submitted': submitted,
         'master': master,
-        'master_homeworks': master_homeworks,
-        'groups': groups,
+        'classrooms': classrooms,
     })
 
 
-# ── Master homework views ─────────────────────────────────────────────────────
+# ── Old master-facing routes, now inside the classroom ───────────────────────
+
+def _to_classroom(request):
+    messages.info(request, _('Homework is set inside a classroom now — open the '
+                             'classroom you teach and use its Homework tab.'))
+    return redirect('classroom:list')
+
 
 @login_required
 def manage_homework(request):
-    master = _get_master(request)
-    if not master:
-        raise PermissionDenied
-
-    homeworks = master.homeworks.prefetch_related('assignments')
-    return render(request, 'homework/manage_homework.html', {
-        'homeworks': homeworks,
-        'groups': master.panda_groups.all(),
-    })
+    return _to_classroom(request)
 
 
 @login_required
 def create_homework(request):
-    master = _get_master(request)
-    if not master:
-        raise PermissionDenied
+    return _to_classroom(request)
 
-    hw_form = HomeworkForm(master=master)
-    assign_form = HomeworkAssignForm(master=master)
 
-    if request.method == 'POST':
-        hw_form = HomeworkForm(master=master, data=request.POST)
-        assign_form = HomeworkAssignForm(master=master, data=request.POST)
-
-        if hw_form.is_valid() and assign_form.is_valid():
-            homework = hw_form.save(commit=False)
-            homework.master = master
-            homework.save()
-
-            count = _bulk_assign(homework, assign_form.get_all_pandas())
-            messages.success(request, f"'{homework.title}' created and assigned to {count} student(s).")
-            return redirect('homework_detail', pk=homework.pk)
-
-    return render(request, 'homework/homework_form.html', {
-        'hw_form': hw_form,
-        'assign_form': assign_form,
-    })
+@login_required
+def manage_groups(request):
+    return _to_classroom(request)
 
 
 @login_required
 def homework_detail(request, pk):
-    master = _get_master(request)
-    if not master:
-        raise PermissionDenied
-
-    homework = get_object_or_404(Homework, pk=pk, master=master)
-    assignments = homework.assignments.select_related(
-        'panda__profile__user', 'attempt'
-    ).order_by('panda__profile__user__first_name', 'panda__profile__user__username')
-
-    # Map panda_id → assignment for group lookup
-    assignment_map = {a.panda_id: a for a in assignments}
-
-    # Find groups that have at least one member assigned to this homework
-    groups_with_members = []
-    for group in master.panda_groups.prefetch_related('members__profile__user'):
-        member_assignments = [
-            assignment_map[panda.pk]
-            for panda in group.members.all()
-            if panda.pk in assignment_map
-        ]
-        if member_assignments:
-            groups_with_members.append({
-                'group': group,
-                'assignments': member_assignments,
-            })
-
-    return render(request, 'homework/homework_detail.html', {
-        'homework': homework,
-        'assignments': assignments,
-        'groups_with_members': groups_with_members,
-    })
-
-
-@login_required
-def assign_homework(request, pk):
-    """Reuse an existing homework — assign it to more pandas/groups."""
-    master = _get_master(request)
-    if not master:
-        raise PermissionDenied
-
-    homework = get_object_or_404(Homework, pk=pk, master=master)
-
-    if request.method == 'POST':
-        form = HomeworkAssignForm(master=master, data=request.POST)
-        if form.is_valid():
-            count = _bulk_assign(homework, form.get_all_pandas())
-            if count:
-                messages.success(request, f"Assigned to {count} new student(s).")
-            else:
-                messages.info(request, "All selected students already have this homework.")
-            return redirect('homework_detail', pk=homework.pk)
-    else:
-        form = HomeworkAssignForm(master=master)
-
-    already_assigned = set(homework.assignments.values_list('panda_id', flat=True))
-    return render(request, 'homework/assign_homework.html', {
-        'form': form,
-        'homework': homework,
-        'already_assigned': already_assigned,
-    })
-
-
-@login_required
-def edit_homework(request, pk):
-    master = _get_master(request)
-    if not master:
-        raise PermissionDenied
-
-    homework = get_object_or_404(Homework, pk=pk, master=master)
-
-    if request.method == 'POST':
-        form = HomeworkForm(master=master, data=request.POST, instance=homework)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Homework updated.")
-            return redirect('homework_detail', pk=homework.pk)
-    else:
-        form = HomeworkForm(master=master, instance=homework)
-
-    return render(request, 'homework/homework_form.html', {
-        'hw_form': form,
-        'homework': homework,
-    })
-
-
-@login_required
-def delete_homework(request, pk):
-    master = _get_master(request)
-    if not master:
-        raise PermissionDenied
-
-    homework = get_object_or_404(Homework, pk=pk, master=master)
-
-    if request.method == 'POST':
-        homework.delete()
-        messages.success(request, "Homework deleted.")
-        return redirect('manage_homework')
-
-    return render(request, 'homework/homework_confirm_delete.html', {'homework': homework})
-
-
-# ── Group views ───────────────────────────────────────────────────────────────
-
-@login_required
-def manage_groups(request):
-    master = _get_master(request)
-    if not master:
-        raise PermissionDenied
-
-    groups = master.panda_groups.prefetch_related('members__profile__user')
-    return render(request, 'homework/manage_groups.html', {'groups': groups})
-
-
-@login_required
-def create_group(request):
-    master = _get_master(request)
-    if not master:
-        raise PermissionDenied
-
-    if request.method == 'POST':
-        form = PandaGroupForm(master=master, data=request.POST)
-        if form.is_valid():
-            group = form.save(commit=False)
-            group.master = master
-            group.save()
-            form.save_m2m()
-            messages.success(request, f"Group '{group.name}' created with {group.member_count} student(s).")
-            return redirect('manage_groups')
-    else:
-        form = PandaGroupForm(master=master)
-
-    return render(request, 'homework/group_form.html', {'form': form})
-
-
-@login_required
-def edit_group(request, gpk):
-    master = _get_master(request)
-    if not master:
-        raise PermissionDenied
-
-    group = get_object_or_404(PandaGroup, pk=gpk, master=master)
-
-    if request.method == 'POST':
-        form = PandaGroupForm(master=master, data=request.POST, instance=group)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Group updated.")
-            return redirect('manage_groups')
-    else:
-        form = PandaGroupForm(master=master, instance=group)
-
-    return render(request, 'homework/group_form.html', {'form': form, 'group': group})
-
-
-@login_required
-def delete_group(request, gpk):
-    master = _get_master(request)
-    if not master:
-        raise PermissionDenied
-
-    group = get_object_or_404(PandaGroup, pk=gpk, master=master)
-
-    if request.method == 'POST':
-        group.delete()
-        messages.success(request, "Group deleted.")
-        return redirect('manage_groups')
-
-    return render(request, 'homework/group_confirm_delete.html', {'group': group})
+    """Land on the right classroom's copy of this homework."""
+    homework = get_object_or_404(Homework, pk=pk)
+    if homework.classroom_id:
+        return redirect('classroom:homework_detail',
+                        classroom_pk=homework.classroom_id, hw_pk=homework.pk)
+    return _to_classroom(request)

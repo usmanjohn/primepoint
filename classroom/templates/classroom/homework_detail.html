@@ -1,0 +1,232 @@
+{% extends "classroom/_shell.html" %}
+{% load i18n %}
+
+{% block room_content %}
+
+<div class="cr-section-hdr">
+  <div class="cr-section-title"><i class="bi bi-journal-bookmark-fill"></i>{{ homework.title }}</div>
+  {% if is_master_user %}
+  <div class="d-flex gap-2">
+    <a href="{% url 'classroom:homework_edit' classroom.pk homework.pk %}" class="cr-row-link">
+      <i class="bi bi-pencil"></i> {% trans "Edit" %}
+    </a>
+    <a href="{% url 'classroom:homework_delete' classroom.pk homework.pk %}" class="cr-row-link" style="color:var(--danger);">
+      <i class="bi bi-trash"></i> {% trans "Delete" %}
+    </a>
+  </div>
+  {% endif %}
+</div>
+
+{% if homework.notes %}<p class="cr-desc">{{ homework.notes|linebreaksbr }}</p>{% endif %}
+{% if homework.due_date %}
+<p class="cr-section-note mb-3">
+  <i class="bi bi-clock"></i> {% trans "Due" %} {{ homework.due_date|date:"D, M d — H:i" }}
+</p>
+{% endif %}
+
+{# ── What is in it ───────────────────────────────────────────────────── #}
+<div class="cr-section-hdr">
+  <div class="cr-section-title"><i class="bi bi-list-check"></i>{% trans "What to do" %}</div>
+  {% if not is_master_user %}
+  <span class="cr-section-note">{{ assignment.done_count }}/{{ homework.item_count }} {% trans "done" %}</span>
+  {% endif %}
+</div>
+<div class="cr-list">
+  {% for row in rows %}
+  <div class="cr-row">
+    <div class="cr-row-icon">
+      {% if row.done %}<i class="bi bi-check-circle-fill" style="color:#16a34a;"></i>
+      {% else %}<i class="bi {{ row.icon }}"></i>{% endif %}
+    </div>
+    <div class="cr-row-body">
+      <div class="cr-row-title"><a href="{{ row.url }}">{{ row.title }}</a></div>
+      {% if row.subtitle %}<div class="cr-row-sub">{{ row.subtitle }}</div>{% endif %}
+    </div>
+    <div class="cr-row-side">
+      <span class="cr-chip cr-chip--kind-{{ row.kind }}">{{ row.label }}</span>
+      {% if is_master_user %}
+      <form method="post" action="{% url 'classroom:homework_remove_item' classroom.pk homework.pk %}">
+        {% csrf_token %}
+        <input type="hidden" name="kind" value="{{ row.kind }}">
+        <input type="hidden" name="item" value="{{ row.obj.pk }}">
+        <button type="submit" class="btn-auth-outline py-0 px-2"
+                style="color:var(--danger);border-color:var(--border);font-size:.72rem;"
+                title="{% trans 'Remove' %}"><i class="bi bi-x-lg"></i></button>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+  {% empty %}
+  <div class="cr-empty">
+    <div class="cr-empty-icon"><i class="bi bi-inbox"></i></div>
+    {% if is_master_user %}{% trans "Nothing added yet — use the panel below." %}
+    {% else %}{% trans "Your teacher has not added anything to this homework yet." %}{% endif %}
+  </div>
+  {% endfor %}
+</div>
+
+{% if not is_master_user and assignment.feedback %}
+<div class="cr-panel">
+  <h2 class="cr-panel-title"><i class="bi bi-chat-left-text"></i>{% trans "Feedback from your teacher" %}</h2>
+  <p class="mb-0" style="font-size:.87rem;">{{ assignment.feedback|linebreaksbr }}</p>
+</div>
+{% endif %}
+
+{% if is_master_user %}
+
+{# ── Add content: one library at a time, searchable ──────────────────── #}
+<div class="cr-panel">
+  <h2 class="cr-panel-title"><i class="bi bi-plus-circle"></i>{% trans "Add content" %}</h2>
+  <p class="cr-help mb-2">
+    {% if classroom.subject %}
+      {% blocktrans with subject=classroom.get_subject_display %}Showing {{ subject }} content only — this classroom's subject.{% endblocktrans %}
+    {% else %}
+      {% trans "Set a subject on this classroom to narrow these lists to one subject." %}
+    {% endif %}
+  </p>
+
+  <div class="cr-pills">
+    {% for value, label, icon in kinds %}
+    <a href="?kind={{ value }}{% if query %}&q={{ query|urlencode }}{% endif %}"
+       class="cr-pill {% if kind == value %}is-active{% endif %}">
+      <i class="bi {{ icon }}"></i>{{ label }}
+    </a>
+    {% endfor %}
+  </div>
+
+  <form method="get" class="cr-search">
+    <input type="hidden" name="kind" value="{{ kind }}">
+    <input type="search" name="q" value="{{ query }}" class="form-core"
+           placeholder="{% trans 'Search by title…' %}">
+    <button type="submit" class="btn-auth-outline"><i class="bi bi-search"></i></button>
+    {% if query %}
+    <a href="?kind={{ kind }}" class="btn-auth-outline">{% trans "Clear" %}</a>
+    {% endif %}
+  </form>
+
+  {% if kind == 'tutorial' %}
+  <p class="cr-help mb-2">
+    <i class="bi bi-magic"></i>
+    {% trans "Adding a tutorial also pulls in its own practice and reading — the three legs of a lesson travel together." %}
+  </p>
+  {% endif %}
+
+  <div class="cr-list" style="margin-bottom:0;">
+    {% for item in candidates %}
+    <div class="cr-row">
+      <div class="cr-row-body">
+        <div class="cr-row-title">{{ item }}</div>
+      </div>
+      <div class="cr-row-side">
+        <form method="post" action="{% url 'classroom:homework_add_item' classroom.pk homework.pk %}"
+              class="d-flex align-items-center gap-2">
+          {% csrf_token %}
+          <input type="hidden" name="kind" value="{{ kind }}">
+          <input type="hidden" name="item" value="{{ item.pk }}">
+          <input type="hidden" name="q" value="{{ query }}">
+          {% if kind == 'tutorial' %}
+          <label class="cr-chip" style="cursor:pointer;">
+            <input type="checkbox" name="include_related" value="1" checked>
+            {% trans "+ its practice & reading" %}
+          </label>
+          {% endif %}
+          <button type="submit" class="btn-auth-primary py-1 px-3" style="font-size:.78rem;">
+            <i class="bi bi-plus-lg"></i> {% trans "Add" %}
+          </button>
+        </form>
+      </div>
+    </div>
+    {% empty %}
+    <div class="cr-empty">
+      {% if query %}{% trans "Nothing matches that search." %}
+      {% else %}{% trans "Nothing left to add from this library." %}{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{# ── Who has it, and how far they got ────────────────────────────────── #}
+<div class="cr-section-hdr">
+  <div class="cr-section-title"><i class="bi bi-people-fill"></i>{% trans "Students" %}</div>
+  <span class="cr-section-note">{{ assignments|length }} {% trans "assigned" %}</span>
+</div>
+<div class="cr-list">
+  {% for a in assignments %}
+  <div class="cr-row">
+    <img src="{{ a.panda.profile.image_url }}" alt="" class="cr-student-chip-ava"
+         style="width:32px;height:32px;">
+    <div class="cr-row-body">
+      <div class="cr-row-title">
+        <a href="{% url 'classroom:student_detail' classroom.pk a.panda.pk %}">
+          {{ a.panda.profile.user.get_full_name|default:a.panda.profile.user.username }}
+        </a>
+      </div>
+      <div class="cr-row-sub">
+        {{ a.done_count }}/{{ homework.item_count }} {% trans "done" %}
+        {% if a.attempt %}· {% trans "score" %} {{ a.attempt.score|floatformat:"0" }}%{% endif %}
+        {% if a.submitted_at %}· {{ a.submitted_at|date:"M d" }}{% endif %}
+      </div>
+    </div>
+    <div class="cr-row-side">
+      <div class="cr-bar {% if a.percent_done == 100 %}cr-bar--done{% endif %}">
+        <span style="width: {{ a.percent_done }}%;"></span>
+      </div>
+      {% if a.status == 'graded' %}
+      <span class="cr-chip cr-chip--accent">{% trans "Graded" %}</span>
+      {% elif a.status == 'submitted' %}
+      <span class="cr-chip cr-chip--ok">{% trans "Done" %}</span>
+      {% else %}
+      <span class="cr-chip cr-chip--warn">{% trans "Pending" %}</span>
+      {% endif %}
+    </div>
+  </div>
+
+  <details style="margin:-.4rem 0 .4rem .5rem;">
+    <summary style="font-size:.76rem;color:var(--text-muted);cursor:pointer;">
+      {% trans "Give feedback / mark graded" %}
+    </summary>
+    <form method="post" action="{% url 'classroom:homework_grade' classroom.pk homework.pk a.pk %}"
+          class="d-flex gap-2 flex-wrap mt-2">
+      {% csrf_token %}
+      <input type="text" name="feedback" class="form-core" style="flex:1;min-width:200px;"
+             value="{{ a.feedback }}" placeholder="{% trans 'A line for this student…' %}">
+      <button type="submit" class="btn-auth-primary py-1 px-3" style="font-size:.78rem;">
+        {% trans "Save & mark graded" %}
+      </button>
+    </form>
+    <form method="post" action="{% url 'classroom:homework_unassign' classroom.pk homework.pk a.pk %}" class="mt-2">
+      {% csrf_token %}
+      <button type="submit" class="btn-auth-outline py-1 px-3"
+              style="font-size:.75rem;color:var(--danger);border-color:var(--danger);">
+        {% trans "Take this homework off them" %}
+      </button>
+    </form>
+  </details>
+  {% empty %}
+  <div class="cr-empty">{% trans "Nobody has this homework yet." %}</div>
+  {% endfor %}
+</div>
+
+<div class="cr-panel">
+  <h2 class="cr-panel-title"><i class="bi bi-person-plus"></i>{% trans "Give it to more students" %}</h2>
+  <form method="post" action="{% url 'classroom:homework_assign' classroom.pk homework.pk %}">
+    {% csrf_token %}
+    <label class="d-flex align-items-center gap-2 mb-2" style="font-size:.85rem;">
+      {{ assign_form.everyone }} {{ assign_form.everyone.label }}
+    </label>
+    {% if assign_form.groups.field.queryset.exists %}
+    <div class="mb-2">
+      <span class="cr-field-label">{{ assign_form.groups.label }}</span>
+      {{ assign_form.groups }}
+    </div>
+    {% endif %}
+    <div class="mb-3">
+      <span class="cr-field-label">{{ assign_form.pandas.label }}</span>
+      {{ assign_form.pandas }}
+    </div>
+    <button type="submit" class="btn-auth-primary"><i class="bi bi-check2 me-1"></i>{% trans "Assign" %}</button>
+  </form>
+</div>
+
+{% endif %}
+{% endblock %}

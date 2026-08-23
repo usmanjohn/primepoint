@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Classroom, Lesson, LessonNote, ClassroomDiscussion, ClassroomReply
+from .models import (Classroom, Lesson, LessonNote, ClassroomDiscussion,
+                     ClassroomReply, ClassroomResource)
 
 
 class LessonInline(admin.TabularInline):
@@ -15,8 +16,8 @@ class LessonNoteInline(admin.TabularInline):
 
 @admin.register(Classroom)
 class ClassroomAdmin(admin.ModelAdmin):
-    list_display = ('name', 'master', 'is_active', 'lesson_count', 'created_at')
-    list_filter = ('is_active', 'master')
+    list_display = ('name', 'master', 'subject', 'is_active', 'lesson_count', 'created_at')
+    list_filter = ('is_active', 'subject', 'master')
     search_fields = ('name', 'master__name')
     filter_horizontal = ('groups', 'individual_pandas')
     inlines = [LessonInline]
@@ -34,3 +35,9 @@ class LessonAdmin(admin.ModelAdmin):
 class ClassroomDiscussionAdmin(admin.ModelAdmin):
     list_display = ('title', 'classroom', 'author', 'is_pinned', 'created_at')
     list_filter = ('classroom', 'is_pinned')
+
+
+@admin.register(ClassroomResource)
+class ClassroomResourceAdmin(admin.ModelAdmin):
+    list_display = ('title', 'classroom', 'kind', 'order', 'created_at')
+    list_filter = ('kind', 'classroom')

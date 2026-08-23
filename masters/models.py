@@ -339,13 +339,23 @@ class Attendance(models.Model):
     ]
     master = models.ForeignKey(Master, on_delete=models.CASCADE, related_name='attendances')
     panda = models.ForeignKey('panda.Panda', on_delete=models.CASCADE, related_name='attendances')
+    # Which room the pupil sat in. Nullable because every row written before
+    # attendance moved into the classroom predates the question.
+    classroom = models.ForeignKey('classroom.Classroom', on_delete=models.SET_NULL,
+                                  null=True, blank=True, related_name='attendances')
     date = models.DateField()
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default=PRESENT)
     notes = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = ['master', 'panda', 'date']
+        # One mark per pupil per room per day. The classroom is part of the key
+        # because a master may teach the same pupil Korean at nine and maths at
+        # four: without it, the second register of the day silently overwrites
+        # the first. Rows written before classrooms existed carry classroom
+        # NULL, and SQL treats NULLs as distinct, so those old rows are left
+        # alone rather than colliding with each other.
+        unique_together = ['master', 'panda', 'classroom', 'date']
         ordering = ['-date']
 
     def __str__(self):
@@ -363,6 +373,10 @@ class StudentPayment(models.Model):
     ]
     master = models.ForeignKey(Master, on_delete=models.CASCADE, related_name='payments')
     panda = models.ForeignKey('panda.Panda', on_delete=models.CASCADE, related_name='payments')
+    # Which room the money is for: a master teaching the same pupil Korean and
+    # maths needs to tell the two fees apart. Nullable for pre-classroom rows.
+    classroom = models.ForeignKey('classroom.Classroom', on_delete=models.SET_NULL,
+                                  null=True, blank=True, related_name='payments')
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     payment_date = models.DateField(null=True, blank=True)
     due_date = models.DateField(null=True, blank=True)
@@ -381,6 +395,8 @@ class StudentPayment(models.Model):
 class Certificate(models.Model):
     master = models.ForeignKey(Master, on_delete=models.CASCADE, related_name='issued_certificates')
     panda = models.ForeignKey('panda.Panda', on_delete=models.CASCADE, related_name='certificates')
+    classroom = models.ForeignKey('classroom.Classroom', on_delete=models.SET_NULL,
+                                  null=True, blank=True, related_name='certificates')
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     issued_at = models.DateTimeField(auto_now_add=True)

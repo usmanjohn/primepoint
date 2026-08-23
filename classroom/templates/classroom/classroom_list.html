@@ -218,9 +218,27 @@
         <span>{{ cr.master.name }}</span>
       </div>
       <div class="cr-card-chips">
+        {% if cr.subject %}
+        <span class="cr-chip"><i class="bi bi-bookmark-fill"></i>{{ cr.get_subject_display }}</span>
+        {% endif %}
         <span class="cr-chip"><i class="bi bi-collection"></i>{{ cr.lesson_count }} {% trans "lessons" %}</span>
         <span class="cr-chip"><i class="bi bi-people"></i>{{ cr.member_count }} {% trans "members" %}</span>
       </div>
+      {% if is_master %}
+      {# Straight into the room's own sections — a teacher usually knows       #}
+      {# which one they came for.                                             #}
+      <div class="cr-card-chips">
+        <a href="{% url 'classroom:homework_list' cr.pk %}" class="cr-chip" style="text-decoration:none;">
+          <i class="bi bi-journal-bookmark-fill"></i>{% trans "Homework" %}
+        </a>
+        <a href="{% url 'classroom:students' cr.pk %}" class="cr-chip" style="text-decoration:none;">
+          <i class="bi bi-people-fill"></i>{% trans "Students" %}
+        </a>
+        <a href="{% url 'classroom:payments' cr.pk %}" class="cr-chip" style="text-decoration:none;">
+          <i class="bi bi-cash-coin"></i>{% trans "Payments" %}
+        </a>
+      </div>
+      {% endif %}
     </div>
     <div class="cr-card-footer">
       {% if is_master %}

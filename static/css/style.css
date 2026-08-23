@@ -5753,3 +5753,210 @@ table.pm-col {
     border: 1px solid var(--border);
     color: var(--text-muted);
 }
+
+/* =====================================================================
+   CLASSROOM — the teacher's workspace
+   ---------------------------------------------------------------------
+   One room holds the lessons, the homework, the roster, the register, the
+   money and the shelf, so every one of those pages wears the same frame:
+   a coloured header strip, a row of tabs, then the page's own content.
+   Pure CSS, no script — the tabs are links, not panels.
+   ===================================================================== */
+
+.cr-shell { padding-bottom: 2rem; }
+
+/* ── Header ───────────────────────────────────────────────────────────── */
+.cr-header {
+  padding: 1.35rem 0 1rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.1rem;
+}
+.cr-header-strip { height: 4px; width: 40px; border-radius: 2px; margin-bottom: .8rem; }
+.cr-eyebrow {
+  font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: .3rem;
+  display: flex; align-items: center; gap: .35rem; flex-wrap: wrap;
+}
+.cr-title {
+  font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800;
+  color: var(--text); margin: 0 0 .3rem; line-height: 1.2;
+}
+.cr-title a { color: inherit; text-decoration: none; }
+.cr-desc { color: var(--text-muted); font-size: .87rem; max-width: 620px; margin: 0 0 .7rem; }
+.cr-meta-row { display: flex; align-items: center; gap: .85rem; flex-wrap: wrap; }
+.cr-meta-item { display: flex; align-items: center; gap: .3rem; font-size: .77rem; color: var(--text-muted); }
+.cr-meta-item i { color: var(--accent); }
+.cr-action-row { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .7rem; }
+
+/* ── Tabs: the whole room in one row ──────────────────────────────────── */
+.cr-tabs {
+  display: flex; gap: .3rem; overflow-x: auto; margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border); padding-bottom: 0;
+  scrollbar-width: none;
+}
+.cr-tabs::-webkit-scrollbar { display: none; }
+.cr-tab {
+  display: inline-flex; align-items: center; gap: .4rem; white-space: nowrap;
+  padding: .55rem .85rem; font-size: .82rem; font-weight: 600;
+  color: var(--text-muted); text-decoration: none;
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+  transition: color .15s, border-color .15s;
+}
+.cr-tab:hover { color: var(--text); }
+.cr-tab.is-active { color: var(--accent); border-bottom-color: var(--accent); }
+.cr-tab-count {
+  font-size: .68rem; font-weight: 700; padding: 1px 6px; border-radius: 20px;
+  background: var(--surface-2); color: var(--text-muted);
+}
+.cr-tab.is-active .cr-tab-count { background: var(--accent-glow); color: var(--accent); }
+
+/* ── Section headers ──────────────────────────────────────────────────── */
+.cr-section-hdr {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: .75rem; flex-wrap: wrap; margin-bottom: .85rem;
+}
+.cr-section-title {
+  font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--text);
+  display: flex; align-items: center; gap: .45rem;
+}
+.cr-section-title i { color: var(--accent); }
+.cr-section-note { font-size: .76rem; color: var(--text-muted); }
+
+/* ── The generic row card, used by every list in the room ─────────────── */
+.cr-list { display: flex; flex-direction: column; gap: .55rem; margin-bottom: 1.75rem; }
+.cr-row {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+  padding: .8rem 1rem; display: flex; align-items: center; gap: .8rem;
+  transition: border-color .18s, box-shadow .18s;
+}
+.cr-row:hover { border-color: var(--accent); box-shadow: 0 4px 14px rgba(0,0,0,.06); }
+.cr-row-icon {
+  width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0;
+  background: var(--surface-2); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .85rem; font-weight: 700; color: var(--text-muted);
+}
+.cr-row-body { flex: 1; min-width: 0; }
+.cr-row-title {
+  font-weight: 600; font-size: .9rem; color: var(--text);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.cr-row-title a { color: inherit; text-decoration: none; }
+.cr-row-title a:hover { color: var(--accent); }
+.cr-row-sub {
+  font-size: .74rem; color: var(--text-muted);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.cr-row-side { display: flex; align-items: center; gap: .4rem; flex-shrink: 0; }
+.cr-row-link {
+  color: var(--accent); font-size: .8rem; font-weight: 600; text-decoration: none;
+  white-space: nowrap; display: inline-flex; align-items: center; gap: .2rem;
+}
+
+/* ── Chips and badges ─────────────────────────────────────────────────── */
+.cr-chip {
+  display: inline-flex; align-items: center; gap: .3rem;
+  font-size: .68rem; font-weight: 600; padding: 2px 8px; border-radius: 20px;
+  background: var(--surface-2); color: var(--text-muted); white-space: nowrap;
+}
+.cr-chip--accent { background: var(--accent-glow); color: var(--accent); }
+.cr-chip--ok { background: rgba(34,197,94,.12); color: #16a34a; }
+.cr-chip--warn { background: rgba(251,191,36,.14); color: #b45309; }
+.cr-chip--bad { background: rgba(239,68,68,.12); color: #dc2626; }
+.cr-chip--kind-tutorial { background: rgba(56,189,248,.14); color: #0284c7; }
+.cr-chip--kind-practice { background: rgba(167,139,250,.16); color: #7c3aed; }
+.cr-chip--kind-story { background: rgba(251,146,60,.16); color: #c2410c; }
+.cr-chip--kind-exam_lesson { background: rgba(52,211,153,.16); color: #047857; }
+
+/* ── Progress bar on an assignment ────────────────────────────────────── */
+.cr-bar { height: 6px; border-radius: 3px; background: var(--surface-2); overflow: hidden; min-width: 70px; }
+.cr-bar > span { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
+.cr-bar--done > span { background: #16a34a; }
+
+/* ── Panels: a bordered box for a form or a small table ───────────────── */
+.cr-panel {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.1rem 1.2rem; margin-bottom: 1.5rem;
+}
+.cr-panel-title {
+  font-family: 'Syne', sans-serif; font-size: .92rem; font-weight: 700;
+  color: var(--text); margin: 0 0 .8rem;
+  display: flex; align-items: center; gap: .4rem;
+}
+.cr-panel-title i { color: var(--accent); }
+.cr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: .7rem; }
+.cr-field-label {
+  display: block; font-size: .74rem; font-weight: 600; color: var(--text-muted);
+  margin-bottom: .25rem;
+}
+.cr-help { font-size: .72rem; color: var(--text-muted); margin-top: .25rem; }
+
+/* ── Stat tiles (money totals, attendance) ────────────────────────────── */
+.cr-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: .6rem; margin-bottom: 1.5rem; }
+.cr-stat {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; padding: .8rem .9rem;
+}
+.cr-stat-label { font-size: .7rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--text-muted); }
+.cr-stat-value { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 800; color: var(--text); line-height: 1.2; }
+
+/* ── Empty states ─────────────────────────────────────────────────────── */
+.cr-empty {
+  text-align: center; padding: 2.25rem 1.5rem; background: var(--surface);
+  border: 1px dashed var(--border); border-radius: 12px; color: var(--text-muted);
+  font-size: .85rem;
+}
+.cr-empty-icon { font-size: 1.9rem; opacity: .3; margin-bottom: .5rem; }
+
+/* ── Student chips ────────────────────────────────────────────────────── */
+.cr-students-row { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+.cr-student-chip {
+  display: inline-flex; align-items: center; gap: .4rem;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 20px; padding: 4px 10px; font-size: .75rem; color: var(--text);
+  text-decoration: none; transition: border-color .12s;
+}
+.cr-student-chip:hover { border-color: var(--accent); color: var(--text); }
+.cr-student-chip-ava { width: 20px; height: 20px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border); }
+
+/* ── Tables (payments, register) ──────────────────────────────────────── */
+.cr-table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+.cr-table { width: 100%; border-collapse: collapse; font-size: .82rem; min-width: 520px; }
+.cr-table th {
+  text-align: left; font-size: .7rem; font-weight: 700; letter-spacing: .05em;
+  text-transform: uppercase; color: var(--text-muted);
+  padding: .5rem .6rem; border-bottom: 1px solid var(--border);
+}
+.cr-table td { padding: .6rem; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: middle; }
+.cr-table tr:last-child td { border-bottom: 0; }
+
+/* ── The register's three radio buttons per pupil ─────────────────────── */
+.cr-reg-choice { display: inline-flex; gap: .35rem; flex-wrap: wrap; }
+.cr-reg-choice label {
+  display: inline-flex; align-items: center; gap: .25rem; cursor: pointer;
+  font-size: .75rem; color: var(--text-muted);
+  border: 1px solid var(--border); border-radius: 20px; padding: 2px 9px;
+}
+.cr-reg-choice input { margin: 0; }
+
+/* ── Filter pills (payment status, picker kind) ───────────────────────── */
+.cr-pills { display: flex; gap: .35rem; flex-wrap: wrap; margin-bottom: .85rem; }
+.cr-pill {
+  font-size: .76rem; font-weight: 600; padding: .3rem .75rem; border-radius: 20px;
+  border: 1px solid var(--border); background: var(--surface);
+  color: var(--text-muted); text-decoration: none;
+  display: inline-flex; align-items: center; gap: .3rem;
+}
+.cr-pill:hover { border-color: var(--accent); color: var(--text); }
+.cr-pill.is-active { background: var(--accent-glow); border-color: var(--accent); color: var(--accent); }
+
+/* ── The add-content search bar on a homework ─────────────────────────── */
+.cr-search { display: flex; gap: .45rem; margin-bottom: .85rem; flex-wrap: wrap; }
+.cr-search input[type="search"], .cr-search input[type="text"] { flex: 1; min-width: 160px; }
+
+@media (max-width: 575.98px) {
+  .cr-title { font-size: 1.3rem; }
+  .cr-row { padding: .7rem .8rem; gap: .6rem; }
+  .cr-row-sub { display: none; }
+  .cr-panel { padding: .9rem 1rem; }
+}

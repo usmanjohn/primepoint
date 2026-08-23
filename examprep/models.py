@@ -1,3 +1,4 @@
+import random
 import re
 
 from django.db import models
@@ -162,6 +163,24 @@ class LessonBlock(models.Model):
     @property
     def is_question(self):
         return self.choices.exists()
+
+    def display_choices(self):
+        """Choices in a stable, shuffled order — use this everywhere a pupil sees them.
+
+        Choices are stored in the order they were written, and whole imported
+        lesson banks were written with the correct answer first: over half of
+        every MCQ in this app had its answer sitting in slot A, which lets a
+        pupil score without reading. Seeding the shuffle with the block id keeps
+        the order identical for every pupil and on every render (question,
+        submitted result, print), so it is purely a display fix — no stored data
+        changes and choice ids stay valid.
+
+        Deliberately reads `self.choices.all()` so a prefetched cache is reused:
+        the lesson view hangs `was_selected` on those very instances.
+        """
+        choices = list(self.choices.all())
+        random.Random(self.id).shuffle(choices)
+        return choices
 
     def __str__(self):
         return f'{self.lesson.title} — block #{self.order}'

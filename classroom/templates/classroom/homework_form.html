@@ -1,0 +1,62 @@
+{% extends "classroom/_shell.html" %}
+{% load i18n %}
+
+{% block room_content %}
+<div class="cr-panel" style="max-width: 720px;">
+  <h2 class="cr-panel-title">
+    <i class="bi bi-journal-plus"></i>
+    {% if homework %}{% trans "Edit homework" %}{% else %}{% trans "Set homework" %}{% endif %}
+  </h2>
+
+  <form method="post" novalidate>
+    {% csrf_token %}
+
+    {% for field in form %}
+    <div class="mb-3">
+      <label class="cr-field-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+      {{ field }}
+      {% if field.help_text %}<div class="cr-help">{{ field.help_text }}</div>{% endif %}
+      {% for error in field.errors %}<div class="cr-help" style="color:var(--danger);">{{ error }}</div>{% endfor %}
+    </div>
+    {% endfor %}
+
+    {% if assign_form %}
+    <hr class="my-3">
+    <p class="cr-field-label">{% trans "Who gets it" %}</p>
+
+    <label class="d-flex align-items-center gap-2 mb-2" style="font-size:.85rem;">
+      {{ assign_form.everyone }} {{ assign_form.everyone.label }}
+    </label>
+    <p class="cr-help mb-3">
+      {% trans "Untick to choose particular students or groups below." %}
+    </p>
+
+    {% if assign_form.groups.field.queryset.exists %}
+    <div class="mb-3">
+      <span class="cr-field-label">{{ assign_form.groups.label }}</span>
+      {{ assign_form.groups }}
+    </div>
+    {% endif %}
+
+    <div class="mb-3">
+      <span class="cr-field-label">{{ assign_form.pandas.label }}</span>
+      {{ assign_form.pandas }}
+    </div>
+    {% endif %}
+
+    <div class="d-flex gap-2 flex-wrap pt-2">
+      <button type="submit" class="btn-auth-primary">
+        <i class="bi bi-check2 me-1"></i>
+        {% if homework %}{% trans "Save" %}{% else %}{% trans "Create and add content" %}{% endif %}
+      </button>
+      <a href="{% url 'classroom:homework_list' classroom.pk %}" class="btn-auth-outline">{% trans "Cancel" %}</a>
+    </div>
+
+    {% if not homework %}
+    <p class="cr-help mt-3">
+      {% trans "You will pick the tutorials, practices and readings on the next screen — searchable, and already narrowed to this classroom's subject." %}
+    </p>
+    {% endif %}
+  </form>
+</div>
+{% endblock %}

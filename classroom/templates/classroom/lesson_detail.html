@@ -139,6 +139,7 @@
 {% endblock %}
 
 {% block content %}
+{% include "classroom/_tabs.html" %}
 <div class="cr-lesson-wrap">
   <div class="cr-lesson-header">
     <div class="cr-breadcrumb">
@@ -305,58 +306,50 @@
   </div>
   {% endif %}
 
-  <!-- Homeworks Section -->
+  <!-- Homework built from this lesson -->
   <div class="cr-content-section">
     <div class="cr-content-section-header">
       <div class="cr-content-section-title">
-        <i class="bi bi-journal-bookmark-fill"></i>{% trans "Homeworks" %}
+        <i class="bi bi-journal-bookmark-fill"></i>{% trans "Homework" %}
         <span style="font-size:.75rem;color:var(--text-muted);font-weight:400;">({{ homeworks.count }})</span>
       </div>
     </div>
     {% if homeworks %}
     <div class="cr-item-grid">
       {% for hw in homeworks %}
-      <a href="{% url 'homework_detail' hw.pk %}" class="cr-item-card">
+      <a href="{% url 'classroom:homework_detail' classroom.pk hw.pk %}" class="cr-item-card">
         <div class="cr-item-icon"><i class="bi bi-journal-bookmark-fill"></i></div>
         <div class="cr-item-text">
           <span class="cr-item-name">{{ hw.title }}</span>
-          <span class="cr-item-sub">{% if hw.due_date %}{% trans "Due" %} {{ hw.due_date|date:"M d" }}{% else %}{% trans "No due date" %}{% endif %}</span>
+          <span class="cr-item-sub">
+            {{ hw.item_count }} {% trans "item(s)" %}{% if hw.due_date %} · {% trans "Due" %} {{ hw.due_date|date:"M d" }}{% endif %}
+          </span>
         </div>
       </a>
       {% endfor %}
     </div>
     {% else %}
-    <p class="cr-empty-item">{% trans "No homework assigned yet." %}</p>
+    <p class="cr-empty-item">{% trans "No homework set from this lesson yet." %}</p>
     {% endif %}
 
-    {% if is_master_user and hw_form %}
-    <div class="cr-hw-form">
-      <div class="cr-hw-form-title"><i class="bi bi-plus-circle me-1"></i>{% trans "Create & Attach Homework" %}</div>
-      <form method="post" action="{% url 'classroom:lesson_homework_create' classroom.pk lesson.pk %}">
-        {% csrf_token %}
-        <div class="cr-hw-row mb-2">
-          <div class="cr-field">
-            <label for="{{ hw_form.title.id_for_label }}">{% trans "Title" %}</label>
-            {{ hw_form.title }}
-          </div>
-          <div class="cr-field">
-            <label for="{{ hw_form.practice.id_for_label }}">{% trans "Practice" %}</label>
-            {{ hw_form.practice }}
-          </div>
-          <div class="cr-field">
-            <label for="{{ hw_form.due_date.id_for_label }}">{% trans "Due Date" %}</label>
-            {{ hw_form.due_date }}
-          </div>
-        </div>
-        <div class="cr-field mb-2">
-          <label for="{{ hw_form.notes.id_for_label }}">{% trans "Instructions" %}</label>
-          {{ hw_form.notes }}
-        </div>
-        <button type="submit" class="btn-auth-primary">
-          <i class="bi bi-plus-lg me-1"></i>{% trans "Create Homework" %}
-        </button>
-      </form>
-    </div>
+    {% if is_master_user %}
+    {% comment %}
+      One click, because the lesson plan already says what the homework is:
+      the tutorials attached here, plus each tutorial's own practice and
+      reading. The master lands on the homework page to adjust it.
+    {% endcomment %}
+    <form method="post" action="{% url 'classroom:lesson_assign' classroom.pk lesson.pk %}" class="mt-3 d-flex gap-2 flex-wrap">
+      {% csrf_token %}
+      <button type="submit" class="btn-auth-primary">
+        <i class="bi bi-magic me-1"></i>{% trans "Set this lesson as homework" %}
+      </button>
+      <a href="{% url 'classroom:homework_create' classroom.pk %}" class="btn-auth-outline">
+        <i class="bi bi-journal-plus me-1"></i>{% trans "Build one by hand" %}
+      </a>
+    </form>
+    <p style="font-size:.74rem;color:var(--text-muted);margin-top:.5rem;">
+      {% trans "Takes this lesson's tutorials and practices — and each tutorial's own practice and reading — and gives the lot to everyone in the classroom." %}
+    </p>
     {% endif %}
   </div>
 
