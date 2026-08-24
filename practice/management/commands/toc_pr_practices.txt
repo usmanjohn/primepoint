@@ -96,24 +96,24 @@ TUTORIAL: PR-<n>:   (each practice links to its own tutorial)
 ### Block F: Murakkab gaplar (63–74)   level: medium/hard · 20 savol
 63. Который                                                                 [done]
 64. Что va чтобы                                                            [done]
-65. Если va когда                                                           [next]
-66. Потому что, поэтому, так как
-67. Хотя, но, зато, однако
-68. Ли va bilvosita savol
-69. Тот, кто… / то, что…
-70. Причастие 1: действительные
-71. Причастие 2: страдательные
-72. Деепричастие
-73. Sifatning qisqa shakli
-74. Sifat darajalari
+65. Если va когда                                                           [done]
+66. Потому что, поэтому, так как                                            [done]
+67. Хотя, но, зато, однако                                                  [done]
+68. Ли va bilvosita savol                                                   [done]
+69. Тот, кто… / то, что…                                                    [done]
+70. Причастие 1: действительные                                             [done]
+71. Причастие 2: страдательные                                              [done]
+72. Деепричастие                                                            [done]
+73. Sifatning qisqa shakli                                                  [done]
+74. Sifat darajalari                                                        [done]
 
 ### Block G: Nozik grammatika (75–88)   level: hard · 20 savol
-75. Свой
-76. Себя va сам
-77. Каждый, все, весь, любой, другой
-78. Кто-то / кто-нибудь / кое-кто
-79. Никто, ничто, никогда — ikki inkor
-80. Sana, vaqt, yosh va davomiylik
+75. Свой                                                                    [done]
+76. Себя va сам                                                             [done]
+77. Каждый, все, весь, любой, другой                                        [done]
+78. Кто-то / кто-нибудь / кое-кто                                           [done]
+79. Никто, ничто, никогда — ikki inkor                                      [done]
+80. Sana, vaqt, yosh va davomiylik                                          [next]
 81. Shaxssiz gaplar
 82. Jamlovchi va tartib sonlar
 83. Predlog xaritasi 2

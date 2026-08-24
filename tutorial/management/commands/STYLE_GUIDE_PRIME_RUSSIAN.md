@@ -135,6 +135,25 @@ the pieces Russian needs and the other two courses do not:
 </div>
 ```
 
+### Two aliases you may use (added 2026-08-24)
+`.pe-vs__side` is the Prime Russian / Prime Korean spelling of `.pe-vs__card` — the
+lessons had been writing it for months without it existing in the CSS, so it now renders
+properly (alternate sides pick up the second accent colour automatically). `.pe-ex__t` is
+the small uppercase label at the top of a `pe-ex` block. Both live in the **PRIME RUSSIAN**
+CSS section.
+```html
+<div class="pe-vs">
+  <div class="pe-vs__side"><p class="pe-vs__h">КОГДА́ — vaqt</p>…</div>
+  <div class="pe-vs__side"><p class="pe-vs__h">Е́СЛИ — shart</p>…</div>
+</div>
+
+<div class="pe-ex">
+  <p class="pe-ex__t">Yonma-yon</p>
+  <p class="pe-ex__ru">…</p>
+  <p class="pe-ex__uz">…</p>
+</div>
+```
+
 ### Alphabet cards — three families
 The signature visual of the alphabet block. `--same` = looks Latin and sounds Latin;
 `--false` = **soxta doʻst**, looks Latin but sounds different (В Н Р С У Х);

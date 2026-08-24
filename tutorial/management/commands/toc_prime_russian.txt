@@ -122,24 +122,24 @@ PLAYLIST: Prime Russian
 ### Block F: Murakkab gaplar (63–74)
 63. Который — rus tilining «-gan» sifatdosh gapi                            [done]
 64. Что va чтобы — bir soʻzga oʻxshaydi, ikki xil gap quradi                [done]
-65. Если va когда — shart va vaqt ergash gaplari                            [next]
-66. Потому что, поэтому, так как, из-за того что — sabab va natija
-67. Хотя, но, зато, однако, тем не менее — qarama-qarshilik
-68. Ли va bilvosita savol: «Не знаю, придёт ли он»
-69. Тот, кто… / то, что… — koʻrsatish va bogʻlash
-70. Причастие 1: действительные — читающий, прочитавший
-71. Причастие 2: страдательные — прочитанный, написан, сделан
-72. Деепричастие: читая, прочитав — bir vaqtda va undan oldin
-73. Sifatning qisqa shakli: красив, готов, должен, рад
-74. Sifat darajalari: больше, самый, лучше, наиболее, чем
+65. Если va когда — shart va vaqt ergash gaplari                            [done]
+66. Потому что, поэтому, так как, из-за того что — sabab va natija           [done]
+67. Хотя, но, зато, однако, тем не менее — qarama-qarshilik                  [done]
+68. Ли va bilvosita savol: «Не знаю, придёт ли он»                           [done]
+69. Тот, кто… / то, что… — koʻrsatish va bogʻlash                            [done]
+70. Причастие 1: действительные — читающий, прочитавший                      [done]
+71. Причастие 2: страдательные — прочитанный, написан, сделан                [done]
+72. Деепричастие: читая, прочитав — bir vaqtda va undan oldin                [done]
+73. Sifatning qisqa shakli: красив, готов, должен, рад                       [done]
+74. Sifat darajalari: больше, самый, лучше, наиболее, чем                    [done]
 
 ### Block G: Nozik grammatika (75–88)
-75. Свой — «oʻz» olmoshi va u nega shunchalik muhim
-76. Себя va сам — oʻziga qaytish va taʼkid
-77. Каждый, все, весь, любой, другой, остальные
-78. Кто-то / кто-нибудь / кое-кто — noaniq olmoshlar
-79. Никто, ничто, никогда — rus tilida ikki inkor qoidasi
-80. Sana, vaqt, yosh va davomiylik: сколько времени? как долго?
+75. Свой — «oʻz» olmoshi va u nega shunchalik muhim                          [done]
+76. Себя va сам — oʻziga qaytish va taʼkid                                   [done]
+77. Каждый, все, весь, любой, другой, остальные                              [done]
+78. Кто-то / кто-нибудь / кое-кто — noaniq olmoshlar                         [done]
+79. Никто, ничто, никогда — rus tilida ikki inkor qoidasi                    [done]
+80. Sana, vaqt, yosh va davomiylik   [next]: сколько времени? как долго?
 81. Shaxssiz gaplar: холодно, темнеет, мне не спится, говорят
 82. Jamlovchi va tartib sonlar: двое, оба, первый, тридцать первое
 83. Predlog xaritasi 2: по, за, из-за, благодаря, вместо, кроме, несмотря на

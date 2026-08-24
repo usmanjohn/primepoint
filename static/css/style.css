@@ -3675,6 +3675,32 @@ h1, h2, h3, h4, h5, h6, .font-display {
 }
 .pr-pair__uz { display: block; font-size: .82rem; color: var(--text-muted); }
 
+/* ── Two aliases the Prime lessons already write ───────────────────
+   `pe-vs__side` is what the Prime Russian/Korean lessons use instead of
+   `pe-vs__card` (48 uses across 12 lesson files), and `pe-ex__t` is the
+   little label at the top of a pe-ex block. Both were being written into
+   lessons without ever being defined, so they rendered unstyled. Defined
+   here so every existing lesson picks them up. */
+.pe-vs__side {
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--accent);
+    border-radius: 14px;
+    background: var(--surface);
+    padding: .9rem 1rem;
+}
+.pe-vs__side:nth-child(2n) { border-top-color: var(--pe-o); }
+.pe-vs__side p, .pe-vs__side li { font-size: .9rem; }
+.pe-vs__side ul { padding-left: 1.1rem; margin-bottom: 0; }
+.pe-vs__side p:last-child { margin-bottom: 0; }
+
+.pe-ex__t {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: .72rem;
+    text-transform: uppercase; letter-spacing: .06em;
+    color: var(--text-muted);
+    margin: 0 0 .4rem;
+}
+
 /* ── Mobile ────────────────────────────────────────────────────── */
 @media (max-width: 575.98px) {
     .pr-gender { grid-template-columns: 1fr; }

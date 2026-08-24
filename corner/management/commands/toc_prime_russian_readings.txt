@@ -219,24 +219,24 @@ AUTHOR:     powerty
 ### Block F: Murakkab gaplar (63–74)
 63. (PR-63 · который) Челове́к, кото́рый чини́л всё — mahalla portreti      [done]
 64. (PR-64 · что/чтобы) Что́бы тебя́ по́няли — muloqot haqida               [done]
-65. (PR-65 · если/когда) Когда́ отключи́ли свет — hikoya                    [next]
-66. (PR-66 · sabab) Почему́ Байка́л тако́й глубо́кий (ilmiy-ommabop)
-67. (PR-67 · хотя/зато) Ма́ленький го́род, больша́я библиоте́ка
-68. (PR-68 · ли) Никто́ не знал, придёт ли он — sirli hikoya
-69. (PR-69 · тот, кто) Тот, кто са́жает дере́вья — hayot hikoyasi
-70. (PR-70 · причастие 1) Лю́ди, живу́щие на Се́вере (ilmiy-ommabop)
-71. (PR-71 · причастие 2) Кни́га, напи́санная в тюрьме́ — biografiya
-72. (PR-72 · деепричастие) Возвраща́ясь домо́й — hikoya
-73. (PR-73 · qisqa sifat) Он был прав — kichik nizo va yarashuv
-74. (PR-74 · darajalar) Са́мая дли́нная река́ (ilmiy-ommabop)
+65. (PR-65 · если/когда) Когда́ отключи́ли свет — kundalik daftar           [done]
+66. (PR-66 · sabab) Почему́ Байка́л тако́й глубо́кий (ilmiy-ommabop)         [done]
+67. (PR-67 · хотя/зато) Ма́ленький го́род, больша́я библиоте́ка — intervyu   [done]
+68. (PR-68 · ли) Никто́ не знал, придёт ли он — sirli hikoya                 [done]
+69. (PR-69 · тот, кто) Тот, кто са́жает дере́вья — hayot hikoyasi (haqiqiy)  [done]
+70. (PR-70 · причастие 1) Лю́ди, живу́щие на Се́вере (ilmiy-ommabop)         [done]
+71. (PR-71 · причастие 2) Кни́га, напи́санная в тюрьме́ — biografiya (haqiqiy) [done]
+72. (PR-72 · деепричастие) Возвраща́ясь домо́й — hikoya                      [done]
+73. (PR-73 · qisqa sifat) Он был прав — maktub-javob                         [done]
+74. (PR-74 · darajalar) Са́мая дли́нная река́ (ilmiy-ommabop)                [done]
 
 ### Block G: Nozik grammatika (75–88)
-75. (PR-75 · свой) Свой дом — biografik hikoya
-76. (PR-76 · себя/сам) Сде́лай сам — usta haqida
-77. (PR-77 · каждый/весь) Ка́ждое у́тро, весь год — odat haqida
-78. (PR-78 · кто-то/кто-нибудь) Кто́-то оста́вил зонт — kichik sir
-79. (PR-79 · ikki inkor) Никто́ ничего́ не сказа́л — hikoya
-80. (PR-80 · vaqt) Ско́лько вре́мени ну́жно, что́бы… (ilmiy-ommabop)
+75. (PR-75 · свой) Свой дом — biografik hikoya                               [done]
+76. (PR-76 · себя/сам) Сде́лай сам — usta haqida                             [done]
+77. (PR-77 · каждый/весь) Ка́ждое у́тро, весь год — kundalik daftar          [done]
+78. (PR-78 · кто-то/кто-нибудь) Кто́-то оста́вил зонт — sirli hikoya         [done]
+79. (PR-79 · ikki inkor) Никто́ ничего́ не сказа́л — maktab hikoyasi         [done]
+80. (PR-80 · vaqt) Ско́лько вре́мени ну́жно, что́бы… (ilmiy-ommabop)         [next]
 81. (PR-81 · shaxssiz gaplar) Темне́ет ра́но — qish kundaligi
 82. (PR-82 · sonlar) Тро́е в ло́дке — sayohat hikoyasi
 83. (PR-83 · predloglar 2) Благодаря́ одному́ письму́ — hayot hikoyasi
