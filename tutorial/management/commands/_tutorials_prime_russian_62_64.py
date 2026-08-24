@@ -39,7 +39,7 @@ TUTORIALS = [
             "Ruschada bitta -ся, oʻzbekchada esa uchta alohida qoʻshimcha: -in-, "
             "-ish-, -il-. Shuning uchun bu dars siz uchun ruslardan osonroq."
         ),
-        "stories": ["Шесть значе́ний одно́й ча́стицы"],
+        "stories": ["Шесть значений одной частицы"],
         "content": """
 <h2>PR-62: -ся feʼlining oltita maʼnosi — bir qoʻshimcha, olti vazifa</h2>
 
@@ -294,7 +294,7 @@ buzilmayapti.</p>
             "Oʻzbekcha «yonimda yashaydigan odam» — sifatdosh otdan oldin. "
             "Ruscha «челове́к, кото́рый живёт ря́дом» — ergash gap otdan keyin."
         ),
-        "stories": ["Челове́к, кото́рый чини́л всё"],
+        "stories": ["Человек, который чинил всё"],
         "content": """
 <h2>PR-63: Который — rus tilining «-gan» sifatdosh gapi</h2>
 
@@ -555,7 +555,7 @@ ruschada <b>yoʻq</b>:</p>
             "Что — fakt: «bilaman, u keladi». Чтобы — istak yoki maqsad: "
             "«uning kelishini xohlayman». Va чтобы dan keyin oʻtgan zamon."
         ),
-        "stories": ["Что́бы тебя́ по́няли"],
+        "stories": ["Чтобы тебя поняли"],
         "content": """
 <h2>PR-64: Что va чтобы — bir soʻzga oʻxshaydi, ikki xil gap quradi</h2>
 

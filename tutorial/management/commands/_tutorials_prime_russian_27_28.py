@@ -44,7 +44,7 @@ TUTORIALS = [
             "Bu — oʻzbek oʻquvchi uchun tanish qurilish: «menga ishlash kerak» "
             "aynan shu shaklda ishlaydi."
         ),
-        "stories": ["Пра́вила библиоте́ки"],
+        "stories": ["Правила библиотеки"],
         "content": """
 <h2>PR-27: Нужно, надо, можно, нельзя, должен — kerak va mumkin</h2>
 
@@ -372,7 +372,7 @@ moslashadi: <em>Я <b>до́лжен был</b> рабо́тать</em> (erkak),
             "«teskari qurilish» deydi, lekin oʻzbek oʻquvchi uchun u teskari emas: "
             "«menga film yoqadi» aynan shunday ishlaydi."
         ),
-        "stories": ["Что тебе́ нра́вится?"],
+        "stories": ["Что тебе нравится?"],
         "content": """
 <h2>PR-28: Мне нравится — teskari qurilish va uning mantigʻi</h2>
 

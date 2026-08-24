@@ -7,8 +7,8 @@ Toc: corner/management/commands/toc_prime_russian_readings.txt
 Janr xilma-xilligi: 56 — sayohat qaydlari, 57 — ilmiy-ommabop,
 58 — hikoya. (53 uchta xat, 54 biografik, 55 kundalik yoʻl edi.)
 
-⚠️ SARLAVHA TUZATILDI (58). Toc'da «Кот, кото́рый ушёл и пришёл» yozilgan
-edi, lekin КОТО́РЫЙ PR-63 da oʻrgatiladi. Kumulyativ qoidaga koʻra
+⚠️ SARLAVHA TUZATILDI (58). Toc'da «Кот, который ушёл и пришёл» yozilgan
+edi, lekin КОТОРЫЙ PR-63 da oʻrgatiladi. Kumulyativ qoidaga koʻra
 oʻrgatilmagan qurilish sarlavhada boʻlishi mumkin emas, shuning uchun
 «Кот ушёл и пришёл» qilindi — maʼnosi bir xil, grammatikasi toza.
 
@@ -20,12 +20,12 @@ Tinch okeani. Aniq kilometr raqami ATAY aytilmagan — manbalarda u biroz
 har xil.
 
 Grammatika chegarasi (kumulyativ qoida):
-  56-matn: е́хать ↔ е́здить, лете́ть ↔ лета́ть, нести́ ↔ носи́ть.
+  56-matn: ехать ↔ ездить, лететь ↔ летать, нести ↔ носить.
            PREFIKSLI harakat feʼllari YOʻQ — ular PR-57 da.
   57-matn: prefikslar roʻyxati. Matn shakli — roʻyxat, chunki mavzu ham
            roʻyxat.
   58-matn: prefikslar hikoyada. Mushuk ketadi va qaytadi; ушёл/пришёл
-           (СВ, bir marta) va уходи́л/приходи́л (НСВ, odat) yonma-yon.
+           (СВ, bir marta) va уходил/приходил (НСВ, odat) yonma-yon.
 
     python manage.py import_corner \
         corner/management/commands/_stories_prime_russian_56_58.py --author=prime
@@ -52,7 +52,7 @@ STORIES = [
     # PR-56 — harakat juftliklari               SAYOHAT QAYDLARI
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Тра́нссиб: семь дней в по́езде",
+        "title":   "Транссиб: семь дней в поезде",
         "summary": (
             "PR-56 matni. Moskvadan Vladivostokgacha yetti kun. Deraza ortida "
             "oʻrmon, keyin yana oʻrmon — va yoʻl oxirida okean. Hamsafarning "
@@ -61,47 +61,47 @@ STORIES = [
         "order":   56,
         "grammar": [
             {
-                "pattern":  "е́хал — bir tomonga",
+                "pattern":  "ехал — bir tomonga",
                 "meaning":  "Yetti kun davomida bir tomonga ketish — bu ЕХАТЬ. "
                             "Oʻzbekcha «ketayotgan edim». Agar «ЕЗДИЛ» boʻlsa, borib "
                             "qaytish maʼnosi chiqardi.",
-                "examples": ["Я е́хал семь дней.", "По́езд шёл на восто́к."],
+                "examples": ["Я ехал семь дней.", "Поезд шёл на восток."],
             },
             {
-                "pattern":  "лета́л — muntazam",
-                "meaning":  "ЛЕТА́ТЬ — koʻp marta, muntazam: «Он лета́л в Москву́ "
-                            "мно́го раз». Bir marta, hozir uchayotgan boʻlsa — "
-                            "ЛЕТИ́Т.",
-                "examples": ["Мой сосе́д лета́л в Москву́ мно́го раз."],
+                "pattern":  "летал — muntazam",
+                "meaning":  "ЛЕТАТЬ — koʻp marta, muntazam: «Он летал в Москву "
+                            "много раз». Bir marta, hozir uchayotgan boʻlsa — "
+                            "ЛЕТИТ.",
+                "examples": ["Мой сосед летал в Москву много раз."],
             },
             {
-                "pattern":  "носи́л — muntazam olib yurish",
-                "meaning":  "НОСИ́ТЬ — takroriy: proyezdnik har soatda choy olib "
+                "pattern":  "носил — muntazam olib yurish",
+                "meaning":  "НОСИТЬ — takroriy: proyezdnik har soatda choy olib "
                             "keladi. Bir marta olib ketayotgan boʻlsa — НЁС.",
-                "examples": ["Проводни́к носи́л чай ка́ждый час."],
+                "examples": ["Проводник носил чай каждый час."],
             },
         ],
-        "body": '''<p>Тра́нссиб — дли́нная <span class="cn-word" data-tr="temir yoʻl">желе́зная доро́га</span>. О́чень дли́нная.</p>
+        "body": '''<p>Транссиб — длинная <span class="cn-word" data-tr="temir yoʻl">железная дорога</span>. Очень длинная.</p>
 
-<p>Москва́ — Владивосто́к. Семь дней в по́езде.</p>
+<p>Москва — Владивосток. Семь дней в поезде.</p>
 
-<p>Я <strong>е́хал</strong> семь дней. Ка́ждый день по́езд <strong>шёл</strong> на <span class="cn-word" data-tr="sharq">восто́к</span>.</p>
+<p>Я <strong>ехал</strong> семь дней. Каждый день поезд <strong>шёл</strong> на <span class="cn-word" data-tr="sharq">восток</span>.</p>
 
-<p>За окно́м — <span class="cn-word" data-tr="oʻrmon">лес</span>. Пото́м <span class="cn-word" data-tr="yana">опя́ть</span> лес. Пото́м сно́ва лес.</p>
+<p>За окном — <span class="cn-word" data-tr="oʻrmon">лес</span>. Потом <span class="cn-word" data-tr="yana">опять</span> лес. Потом снова лес.</p>
 
-<p>На тре́тий день — Байка́л. По́езд <strong>шёл</strong> <span class="cn-word" data-tr="boʻylab">вдоль</span> о́зера до́лго. Вода́ была́ <span class="cn-word" data-tr="quyuq koʻk">тёмно-си́няя</span>.</p>
+<p>На третий день — Байкал. Поезд <strong>шёл</strong> <span class="cn-word" data-tr="boʻylab">вдоль</span> озера долго. Вода была <span class="cn-word" data-tr="quyuq koʻk">тёмно-синяя</span>.</p>
 
-<p><span class="cn-word" data-tr="vagon xodimi">Проводни́к</span> <strong>носи́л</strong> чай ка́ждый час. Э́то его́ рабо́та.</p>
+<p><span class="cn-word" data-tr="vagon xodimi">Проводник</span> <strong>носил</strong> чай каждый час. Это его работа.</p>
 
-<p>Мой сосе́д <strong>лета́л</strong> в Москву́ мно́го раз. Но <span class="cn-word" data-tr="poyezdda">по́ездом</span> — пе́рвый раз.</p>
+<p>Мой сосед <strong>летал</strong> в Москву много раз. Но <span class="cn-word" data-tr="poyezdda">поездом</span> — первый раз.</p>
 
-<p>— Самолёт бы́стро, — говори́т он. — Но самолёт не пока́зывает страну́. А по́езд пока́зывает.</p>
+<p>— Самолёт быстро, — говорит он. — Но самолёт не показывает страну. А поезд показывает.</p>
 
-<p>Семь дней. Семь <span class="cn-word" data-tr="soat mintaqalari">часовы́х поясо́в</span>. Владивосто́к <span class="cn-word" data-tr="oldinda">впереди́</span> Москвы́ на семь часо́в.</p>
+<p>Семь дней. Семь <span class="cn-word" data-tr="soat mintaqalari">часовых поясов</span>. Владивосток <span class="cn-word" data-tr="oldinda">впереди</span> Москвы на семь часов.</p>
 
-<p>В <span class="cn-word" data-tr="oxirida">конце́</span> пути́ — мо́ре. Ти́хий океа́н.</p>
+<p>В <span class="cn-word" data-tr="oxirida">конце</span> пути — море. Тихий океан.</p>
 
-<p>Я <strong>е́хал</strong> семь дней. Тепе́рь я зна́ю: страна́ о́чень больша́я.</p>''',
+<p>Я <strong>ехал</strong> семь дней. Теперь я знаю: страна очень большая.</p>''',
         "questions": [
             {
                 "text": "Hamsafar samolyot va poyezdni qanday taqqoslaydi?",
@@ -112,13 +112,13 @@ STORIES = [
                     "Ikkalasi bir xil"
                 ],
                 "answer": 0,
-                "explanation": "«Самолёт бы́стро… Но самолёт не пока́зывает страну́. "
-                               "А по́езд пока́зывает». Matnning oxirgi jumlasi ham shu "
-                               "fikrni tasdiqlaydi: «Тепе́рь я зна́ю: страна́ о́чень "
-                               "больша́я».",
+                "explanation": "«Самолёт быстро… Но самолёт не показывает страну. "
+                               "А поезд показывает». Matnning oxirgi jumlasi ham shu "
+                               "fikrni tasdiqlaydi: «Теперь я знаю: страна очень "
+                               "большая».",
             },
             {
-                "text": "Nega matnda «я е́хал», «я е́здил» emas?",
+                "text": "Nega matnda «я ехал», «я ездил» emas?",
                 "choices": [
                     "Yetti kun bir tomonga ketildi — borib qaytish emas",
                     "Chunki poyezdda ketildi",
@@ -126,21 +126,21 @@ STORIES = [
                     "Bu matndagi xato"
                 ],
                 "answer": 0,
-                "explanation": "Е́хал — bir tomonga, jarayon. Е́здил «borib keldim» "
+                "explanation": "Ехал — bir tomonga, jarayon. Ездил «borib keldim» "
                                "degan boʻlardi, lekin matnda faqat Moskvadan "
                                "Vladivostokgacha boriladi.",
             },
             {
-                "text": "«Проводни́к носи́л чай ка́ждый час» — nega НОСИ́Л?",
+                "text": "«Проводник носил чай каждый час» — nega НОСИЛ?",
                 "choices": [
-                    "«Ка́ждый час» takrorni bildiradi — muntazam harakat",
+                    "«Каждый час» takrorni bildiradi — muntazam harakat",
                     "Chunki choy ogʻir edi",
                     "Chunki u bir marta olib keldi",
                     "Chunki bu oʻtgan zamon"
                 ],
                 "answer": 0,
-                "explanation": "НЕСТИ́ — bir marta, hozir olib ketish. НОСИ́ТЬ — "
-                               "muntazam, takroriy. «Ка́ждый час» ikkinchisini "
+                "explanation": "НЕСТИ — bir marta, hozir olib ketish. НОСИТЬ — "
+                               "muntazam, takroriy. «Каждый час» ikkinchisini "
                                "talab qiladi.",
             },
         ],
@@ -150,9 +150,9 @@ STORIES = [
     # PR-57 — prefikslar                        ILMIY-OMMABOP
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Оди́н глаго́л, де́сять двере́й",
+        "title":   "Один глагол, десять дверей",
         "summary": (
-            "PR-57 matni. Bitta feʼl — идти́ — va oʻnta prefiks. Har biri boshqa "
+            "PR-57 matni. Bitta feʼl — идти — va oʻnta prefiks. Har biri boshqa "
             "eshikni ochadi. Oxirida bitta soʻzning ichidan kutilmagan maʼno "
             "chiqadi."
         ),
@@ -163,71 +163,71 @@ STORIES = [
                 "meaning":  "ПРИ- kelmoq, У- ketmoq, В- kirmoq, ВЫ- chiqmoq, ДО- "
                             "yetib bormoq, ПЕРЕ- kesib oʻtmoq, ПОД- yaqinlashmoq, "
                             "ОТ- uzoqlashmoq. Bitta oʻzak, sakkizta maʼno.",
-                "examples": ["Прийти́ — быть здесь.", "Уйти́ — не быть здесь."],
+                "examples": ["Прийти — быть здесь.", "Уйти — не быть здесь."],
             },
             {
-                "pattern":  "идти́ → СВ, ходи́ть → НСВ",
-                "meaning":  "Prefiks ИДТИ ga qoʻshilsa СВ chiqadi (прийти́), ХОДИТЬ "
-                            "ga qoʻshilsa НСВ (приходи́ть). Vid va harakat tizimi shu "
+                "pattern":  "идти → СВ, ходить → НСВ",
+                "meaning":  "Prefiks ИДТИ ga qoʻshilsa СВ chiqadi (прийти), ХОДИТЬ "
+                            "ga qoʻshilsa НСВ (приходить). Vid va harakat tizimi shu "
                             "yerda birlashadi.",
-                "examples": ["прийти́ ↔ приходи́ть"],
+                "examples": ["прийти ↔ приходить"],
             },
             {
-                "pattern":  "найти́ = на + идти́",
+                "pattern":  "найти = на + идти",
                 "meaning":  "«Topmoq» soʻzi aslida «yurib borib ustiga tushmoq» "
-                            "degani. Shuning uchun u ИДТИ kabi turlanadi: найду́, "
-                            "нашёл, нашла́.",
-                "examples": ["Найти́ — идти́ и уви́деть."],
+                            "degani. Shuning uchun u ИДТИ kabi turlanadi: найду, "
+                            "нашёл, нашла.",
+                "examples": ["Найти — идти и увидеть."],
             },
         ],
-        "body": '''<p>Оди́н <span class="cn-word" data-tr="feʼl">глаго́л</span>: <strong>идти́</strong>.</p>
+        "body": '''<p>Один <span class="cn-word" data-tr="feʼl">глагол</span>: <strong>идти</strong>.</p>
 
-<p>Тепе́рь <span class="cn-word" data-tr="prefiks">приста́вка</span> — и глаго́л <span class="cn-word" data-pos="verb" data-tr="oʻzgaradi">меня́ется</span>.</p>
+<p>Теперь <span class="cn-word" data-tr="prefiks">приставка</span> — и глагол <span class="cn-word" data-pos="verb" data-tr="oʻzgaradi">меняется</span>.</p>
 
-<p><strong>Прийти́</strong> — быть здесь.</p>
+<p><strong>Прийти</strong> — быть здесь.</p>
 
-<p><strong>Уйти́</strong> — не быть здесь.</p>
+<p><strong>Уйти</strong> — не быть здесь.</p>
 
-<p><strong>Войти́</strong> — быть <span class="cn-word" data-tr="ichida">внутри́</span>.</p>
+<p><strong>Войти</strong> — быть <span class="cn-word" data-tr="ichida">внутри</span>.</p>
 
-<p><strong>Вы́йти</strong> — быть на у́лице.</p>
+<p><strong>Выйти</strong> — быть на улице.</p>
 
-<p><strong>Подойти́</strong> — быть <span class="cn-word" data-tr="yaqin">бли́зко</span>.</p>
+<p><strong>Подойти</strong> — быть <span class="cn-word" data-tr="yaqin">близко</span>.</p>
 
-<p><strong>Отойти́</strong> — быть далеко́.</p>
+<p><strong>Отойти</strong> — быть далеко.</p>
 
-<p><strong>Перейти́</strong> — быть на друго́й <span class="cn-word" data-tr="tomon">стороне́</span>.</p>
+<p><strong>Перейти</strong> — быть на другой <span class="cn-word" data-tr="tomon">стороне</span>.</p>
 
-<p><strong>Дойти́</strong> — быть в конце́ доро́ги.</p>
+<p><strong>Дойти</strong> — быть в конце дороги.</p>
 
-<p>Оди́н <span class="cn-word" data-tr="oʻzak">ко́рень</span>. Во́семь <span class="cn-word" data-tr="eshiklar">двере́й</span>. И э́то ещё не всё.</p>
+<p>Один <span class="cn-word" data-tr="oʻzak">корень</span>. Восемь <span class="cn-word" data-tr="eshiklar">дверей</span>. И это ещё не всё.</p>
 
-<p>Есть <strong>зайти́</strong> — быть недо́лго. Есть <strong>пройти́</strong> — быть да́льше. Есть <strong>пойти́</strong> — на́чать идти́.</p>
+<p>Есть <strong>зайти</strong> — быть недолго. Есть <strong>пройти</strong> — быть дальше. Есть <strong>пойти</strong> — начать идти.</p>
 
-<p>И есть <strong>найти́</strong>.</p>
+<p>И есть <strong>найти</strong>.</p>
 
-<p><strong>Найти́</strong> — э́то «на» плюс «идти́». Идти́ — и <span class="cn-word" data-pos="verb" data-tr="uchratmoq">встре́тить</span>.</p>
+<p><strong>Найти</strong> — это «на» плюс «идти». Идти — и <span class="cn-word" data-pos="verb" data-tr="uchratmoq">встретить</span>.</p>
 
-<p>Поэ́тому в ру́сском языке́ «найти́» зна́чит: ты шёл, шёл — и вот оно́.</p>
+<p>Поэтому в русском языке «найти» значит: ты шёл, шёл — и вот оно.</p>
 
-<p>В узбе́кском языке́ для ка́ждой две́ри есть <span class="cn-word" data-tr="alohida">отде́льное</span> сло́во.</p>
+<p>В узбекском языке для каждой двери есть <span class="cn-word" data-tr="alohida">отдельное</span> слово.</p>
 
-<p>В ру́сском языке́ дверь одна́ — э́то глаго́л. А приста́вки — э́то <span class="cn-word" data-tr="kalitlar">ключи́</span>.</p>
+<p>В русском языке дверь одна — это глагол. А приставки — это <span class="cn-word" data-tr="kalitlar">ключи</span>.</p>
 
-<p>Оди́н глаго́л. Де́сять ключе́й. Де́сять двере́й.</p>''',
+<p>Один глагол. Десять ключей. Десять дверей.</p>''',
         "questions": [
             {
-                "text": "«Найти́» soʻzi qanday tuzilgan va bu nimani anglatadi?",
+                "text": "«Найти» soʻzi qanday tuzilgan va bu nimani anglatadi?",
                 "choices": [
-                    "На + идти́ — yurib borib ustiga tushmoq",
+                    "На + идти — yurib borib ustiga tushmoq",
                     "На + йти — yangi soʻz, tuzilishi yoʻq",
                     "Най + ти — qadimiy oʻzak",
                     "Bu boshqa feʼllardan olingan"
                 ],
                 "answer": 0,
-                "explanation": "«Найти́ — э́то „на“ плюс „идти́“… ты шёл, шёл — и вот "
-                               "оно́». Shuning uchun u ИДТИ kabi turlanadi: найду́, "
-                               "нашёл, нашла́.",
+                "explanation": "«Найти — это „на“ плюс „идти“… ты шёл, шёл — и вот "
+                               "оно». Shuning uchun u ИДТИ kabi turlanadi: найду, "
+                               "нашёл, нашла.",
             },
             {
                 "text": "Matnga koʻra rus va oʻzbek tillari bu yerda qanday farq "
@@ -239,9 +239,9 @@ STORIES = [
                     "Farqi yoʻq"
                 ],
                 "answer": 0,
-                "explanation": "«В узбе́кском языке́ для ка́ждой две́ри есть "
-                               "отде́льное сло́во. В ру́сском языке́ дверь одна́ — "
-                               "э́то глаго́л. А приста́вки — э́то ключи́».",
+                "explanation": "«В узбекском языке для каждой двери есть "
+                               "отдельное слово. В русском языке дверь одна — "
+                               "это глагол. А приставки — это ключи».",
             },
             {
                 "text": "Matnning sarlavhasi nima uchun shunday tanlangan?",
@@ -252,9 +252,9 @@ STORIES = [
                     "Bu shunchaki chiroyli nom"
                 ],
                 "answer": 0,
-                "explanation": "Matn oxirgi ikki jumlada obrazni ochadi: «дверь одна́ "
-                               "— э́то глаго́л. А приста́вки — э́то ключи́. Оди́н "
-                               "глаго́л. Де́сять ключе́й. Де́сять двере́й».",
+                "explanation": "Matn oxirgi ikki jumlada obrazni ochadi: «дверь одна "
+                               "— это глагол. А приставки — это ключи. Один "
+                               "глагол. Десять ключей. Десять дверей».",
             },
         ],
     },
@@ -274,50 +274,50 @@ STORIES = [
             {
                 "pattern":  "ушёл / пришёл — bir marta",
                 "meaning":  "Prefiks + ИДТИ = СВ: bir marta tugagan harakat. «В "
-                            "сре́ду он ушёл» — aniq bir kuni, aniq bir voqea.",
-                "examples": ["В сре́ду ве́чером он ушёл.", "Но он не пришёл."],
+                            "среду он ушёл» — aniq bir kuni, aniq bir voqea.",
+                "examples": ["В среду вечером он ушёл.", "Но он не пришёл."],
             },
             {
-                "pattern":  "уходи́л / приходи́л — odat",
-                "meaning":  "Prefiks + ХОДИТЬ = НСВ: takroriy harakat. «Он уходи́л "
-                            "ка́ждый день и приходи́л» — bu uning odati edi.",
-                "examples": ["Он уходи́л ка́ждый день — и приходи́л."],
+                "pattern":  "уходил / приходил — odat",
+                "meaning":  "Prefiks + ХОДИТЬ = НСВ: takroriy harakat. «Он уходил "
+                            "каждый день и приходил» — bu uning odati edi.",
+                "examples": ["Он уходил каждый день — и приходил."],
             },
             {
-                "pattern":  "подошёл · вы́шел · сошёл",
+                "pattern":  "подошёл · вышел · сошёл",
                 "meaning":  "ПОД- yaqinlashmoq, ВЫ- chiqmoq, С- pastga tushmoq. "
                             "Har bir prefiks harakatning yoʻnalishini aniq "
                             "koʻrsatadi.",
-                "examples": ["Он подошёл к две́ри.", "Он сошёл вниз ме́дленно."],
+                "examples": ["Он подошёл к двери.", "Он сошёл вниз медленно."],
             },
         ],
-        "body": '''<p>У нас есть кот. Его́ зову́т <span class="cn-word" data-tr="Ryzhik (sarigʻ ism)">Ры́жик</span>.</p>
+        "body": '''<p>У нас есть кот. Его зовут <span class="cn-word" data-tr="Ryzhik (sarigʻ ism)">Рыжик</span>.</p>
 
-<p>В <span class="cn-word" data-tr="chorshanba">сре́ду</span> ве́чером он <strong>ушёл</strong>.</p>
+<p>В <span class="cn-word" data-tr="chorshanba">среду</span> вечером он <strong>ушёл</strong>.</p>
 
-<p>Снача́ла он <strong>подошёл</strong> к две́ри. Пото́м <strong>вы́шел</strong> во <span class="cn-word" data-tr="hovli">двор</span>. Пото́м — <span class="cn-word" data-tr="hech narsa">ничего́</span>.</p>
+<p>Сначала он <strong>подошёл</strong> к двери. Потом <strong>вышел</strong> во <span class="cn-word" data-tr="hovli">двор</span>. Потом — <span class="cn-word" data-tr="hech narsa">ничего</span>.</p>
 
-<p>Мы ду́мали: он <strong>зайдёт</strong> <span class="cn-word" data-tr="bir soatdan keyin">че́рез час</span>.</p>
+<p>Мы думали: он <strong>зайдёт</strong> <span class="cn-word" data-tr="bir soatdan keyin">через час</span>.</p>
 
 <p>Но он не <strong>пришёл</strong>.</p>
 
-<p>В <span class="cn-word" data-tr="payshanba">четве́рг</span> мы <span class="cn-word" data-pos="verb" data-tr="qidirdik">иска́ли</span> его́ во дворе́. В пя́тницу Бекзод <strong>перешёл</strong> у́лицу и <strong>дошёл</strong> до ры́нка. Ры́жика нет.</p>
+<p>В <span class="cn-word" data-tr="payshanba">четверг</span> мы <span class="cn-word" data-pos="verb" data-tr="qidirdik">искали</span> его во дворе. В пятницу Бекзод <strong>перешёл</strong> улицу и <strong>дошёл</strong> до рынка. Рыжика нет.</p>
 
-<p>В суббо́ту ба́бушка сказа́ла:</p>
+<p>В субботу бабушка сказала:</p>
 
-<p>— Он <strong>придёт</strong>. <span class="cn-word" data-tr="Mushuklar">Ко́шки</span> всегда́ <strong>прихо́дят</strong>.</p>
+<p>— Он <strong>придёт</strong>. <span class="cn-word" data-tr="Mushuklar">Кошки</span> всегда <strong>приходят</strong>.</p>
 
-<p>В воскресе́нье у́тром я <strong>вы́шел</strong> во двор.</p>
+<p>В воскресенье утром я <strong>вышел</strong> во двор.</p>
 
-<p>Ры́жик сиде́л на <span class="cn-word" data-tr="tom">кры́ше</span> и смотре́л на меня́.</p>
+<p>Рыжик сидел на <span class="cn-word" data-tr="tom">крыше</span> и смотрел на меня.</p>
 
-<p>Он <strong>сошёл</strong> вниз ме́дленно. Пото́м <strong>подошёл</strong> и <span class="cn-word" data-pos="verb" data-tr="oʻtirdi">сел</span> ря́дом. <span class="cn-word" data-tr="Xuddi">Как бу́дто</span> ничего́ не бы́ло.</p>
+<p>Он <strong>сошёл</strong> вниз медленно. Потом <strong>подошёл</strong> и <span class="cn-word" data-pos="verb" data-tr="oʻtirdi">сел</span> рядом. <span class="cn-word" data-tr="Xuddi">Как будто</span> ничего не было.</p>
 
-<p>Ры́жик <strong>уходи́л</strong> ка́ждый день — и ка́ждый день <strong>приходи́л</strong>.</p>
+<p>Рыжик <strong>уходил</strong> каждый день — и каждый день <strong>приходил</strong>.</p>
 
-<p>То́лько в э́тот раз он <strong>ушёл</strong> на четы́ре дня.</p>
+<p>Только в этот раз он <strong>ушёл</strong> на четыре дня.</p>
 
-<p>Ба́бушка была́ <span class="cn-word" data-tr="haqli">права́</span>.</p>''',
+<p>Бабушка была <span class="cn-word" data-tr="haqli">права</span>.</p>''',
         "questions": [
             {
                 "text": "Ryzhik qayerdan qaytdi?",
@@ -328,16 +328,16 @@ STORIES = [
                     "Matnda aytilmagan"
                 ],
                 "answer": 0,
-                "explanation": "«Ры́жик сиде́л на кры́ше и смотре́л на меня́. Он "
-                               "сошёл вниз ме́дленно». Toʻrt kun qidirilgan mushuk "
+                "explanation": "«Рыжик сидел на крыше и смотрел на меня. Он "
+                               "сошёл вниз медленно». Toʻrt kun qidirilgan mushuk "
                                "aslida yaqin joyda ekan.",
             },
             {
-                "text": "«Он ушёл» va «он уходи́л» — nima farq qiladi?",
+                "text": "«Он ушёл» va «он уходил» — nima farq qiladi?",
                 "choices": [
-                    "Ушёл — bir marta, aniq voqea; уходи́л — har kungi odat",
+                    "Ушёл — bir marta, aniq voqea; уходил — har kungi odat",
                     "Ушёл — hozirgi zamon",
-                    "Уходи́л — kelasi zamon",
+                    "Уходил — kelasi zamon",
                     "Ikkalasi bir xil"
                 ],
                 "answer": 0,
@@ -347,7 +347,7 @@ STORIES = [
                                "ketdi.",
             },
             {
-                "text": "Nega matnda «подошёл», «вы́шел», «сошёл» — har xil "
+                "text": "Nega matnda «подошёл», «вышел», «сошёл» — har xil "
                         "prefikslar?",
                 "choices": [
                     "Har bir prefiks harakatning boshqa yoʻnalishini koʻrsatadi",

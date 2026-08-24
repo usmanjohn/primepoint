@@ -9,20 +9,20 @@ Janr xilma-xilligi: 77 — kundalik daftar, 78 — sirli hikoya,
 76 portret edi — uchta bir xil shakl ketma-ket kelmayapti.)
 
 Grammatika chegarasi (kumulyativ qoida):
-  77-matn: ка́ждый / весь / все / всё / любо́й / друго́й / остальны́е.
+  77-matn: каждый / весь / все / всё / любой / другой / остальные.
            Sarlavhaning oʻzi darsning asosiy juftligi, va oxirgi jumla
            ham shu juftlik ustiga qurilgan.
-  78-matn: -то / -нибудь / ко́е-. Har uchala zarracha ham matnda oʻz
+  78-matn: -то / -нибудь / кое-. Har uchala zarracha ham matnda oʻz
            oʻrnida: oʻtgan zamon xabari → -то, savol va kelajak →
-           -нибудь, «bilaman-u aytmayman» → ко́е-.
-  79-matn: ikki inkor. Никто́ / ничего́ / никогда́ / никому́ beshta
+           -нибудь, «bilaman-u aytmayman» → кое-.
+  79-matn: ikki inkor. Никто / ничего / никогда / никому beshta
            joyda, har birida feʼl oldida «не» turibdi.
 
 ⚠️ ATAY QOCHILGAN (keyingi darslar): sana va davomiylik qurilishlari
-(PR-80), shaxssiz gaplar (PR-81), жамловчи sonlar — о́ба, тро́е (PR-82),
-благодаря́ / несмотря́ на (PR-83), частицы — же, ведь, ли́шь (PR-84).
+(PR-80), shaxssiz gaplar (PR-81), жамловчи sonlar — оба, трое (PR-82),
+благодаря / несмотря на (PR-83), частицы — же, ведь, лишь (PR-84).
 
-⚠️ 78-matnda ATAYIN bitta «никто́ … не» bor — u PR-79 da oʻrgatiladi,
+⚠️ 78-matnda ATAYIN bitta «никто … не» bor — u PR-79 da oʻrgatiladi,
 lekin bu ibora oldingi matnlarda ham lugʻat sifatida uchragan va
 kichik sir janrisiz iloji yoʻq. 79-matn uni toʻliq ochadi.
 
@@ -50,10 +50,10 @@ COLLECTION = {
 
 STORIES = [
     # ══════════════════════════════════════════════════════════════════
-    # PR-77 — ка́ждый / весь                          KUNDALIK DAFTAR
+    # PR-77 — каждый / весь                          KUNDALIK DAFTAR
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Ка́ждое у́тро, весь год",
+        "title":   "Каждое утро, весь год",
         "summary": (
             "PR-77 matni. Anna bir yil davomida har kuni ertalab bitta "
             "daraxtni suratga oldi. Yakuniy xulosasi darsning grammatikasi "
@@ -62,50 +62,50 @@ STORIES = [
         "order":   77,
         "grammar": [
             {
-                "pattern":  "Ка́ждый — takror · весь — davomiylik",
-                "meaning":  "«Ка́ждое у́тро» — har ertalab (necha marta?). «Весь "
+                "pattern":  "Каждый — takror · весь — davomiylik",
+                "meaning":  "«Каждое утро» — har ertalab (necha marta?). «Весь "
                             "год» — yil boʻyi (qancha vaqt?). Sarlavha ikkalasini "
                             "yonma-yon qoʻyadi.",
-                "examples": ["Ка́ждое у́тро Анна фотографи́ровала де́рево.",
-                             "Она́ де́лала э́то весь год."],
+                "examples": ["Каждое утро Анна фотографировала дерево.",
+                             "Она делала это весь год."],
             },
             {
                 "pattern":  "Все ↔ всё — bir harf",
-                "meaning":  "«Все фотогра́фии» — koʻplik (rasmlar). «Всё "
-                            "измени́лось» — oʻrta jins, birlik (hamma narsa). "
+                "meaning":  "«Все фотографии» — koʻplik (rasmlar). «Всё "
+                            "изменилось» — oʻrta jins, birlik (hamma narsa). "
                             "Feʼlga qarab ajratiladi.",
-                "examples": ["Все фотогра́фии бы́ли почти́ одина́ковые.",
-                             "И всё-таки всё измени́лось."],
+                "examples": ["Все фотографии были почти одинаковые.",
+                             "И всё-таки всё изменилось."],
             },
             {
-                "pattern":  "Любо́й · друго́й · остальны́е",
-                "meaning":  "«Любо́й день» — istalgan kun. «Друго́й» — boshqa. "
-                            "«Остальны́е» — qolganlar.",
-                "examples": ["Возьми́те любо́й сни́мок из ма́рта.",
-                             "Остальны́е лежа́т в па́пке."],
+                "pattern":  "Любой · другой · остальные",
+                "meaning":  "«Любой день» — istalgan kun. «Другой» — boshqa. "
+                            "«Остальные» — qolganlar.",
+                "examples": ["Возьмите любой снимок из марта.",
+                             "Остальные лежат в папке."],
             },
         ],
-        "body": '''<p><em>31 декабря́. После́дняя за́пись.</em></p>
+        "body": '''<p><em>31 декабря. Последняя запись.</em></p>
 
-<p>Год наза́д я реши́ла де́лать оди́н <span class="cn-word" data-tr="surat, kadr">сни́мок</span> в день. Всегда́ одно́ и то же де́рево во дворе́, всегда́ в во́семь утра́, всегда́ с одно́го ме́ста. Штати́в я поста́вила у <span class="cn-word" data-tr="panjara">пери́л</span> и бо́льше не дви́гала.</p>
+<p>Год назад я решила делать один <span class="cn-word" data-tr="surat, kadr">снимок</span> в день. Всегда одно и то же дерево во дворе, всегда в восемь утра, всегда с одного места. Штатив я поставила у <span class="cn-word" data-tr="panjara">перил</span> и больше не двигала.</p>
 
-<p><strong>Ка́ждое у́тро</strong> я выходи́ла на <span class="cn-word" data-tr="balkon">балко́н</span> и <span class="cn-word" data-pos="verb" data-tr="suratga olardim">фотографи́ровала</span>. Три́ста шестьдеся́т пять раз.</p>
+<p><strong>Каждое утро</strong> я выходила на <span class="cn-word" data-tr="balkon">балкон</span> и <span class="cn-word" data-pos="verb" data-tr="suratga olardim">фотографировала</span>. Триста шестьдесят пять раз.</p>
 
-<p>Пе́рвый ме́сяц бы́ло интере́сно. Второ́й — <span class="cn-word" data-tr="zerikarli">ску́чно</span>. В ма́рте я два ра́за <span class="cn-word" data-tr="sal boʻlmasa unutayozdim">чуть не забы́ла</span>, и оди́н раз сде́лала сни́мок в <span class="cn-word" data-tr="xalat">хала́те</span>, пря́мо из-под <span class="cn-word" data-tr="koʻrpa">одея́ла</span>.</p>
+<p>Первый месяц было интересно. Второй — <span class="cn-word" data-tr="zerikarli">скучно</span>. В марте я два раза <span class="cn-word" data-tr="sal boʻlmasa unutayozdim">чуть не забыла</span>, и один раз сделала снимок в <span class="cn-word" data-tr="xalat">халате</span>, прямо из-под <span class="cn-word" data-tr="koʻrpa">одеяла</span>.</p>
 
-<p><strong>Весь</strong> апре́ль шли дожди́, и де́рево стоя́ло <span class="cn-word" data-tr="yalangʻoch, bargsiz">го́лое</span>. <strong>Все</strong> сни́мки того́ ме́сяца се́рые и <span class="cn-word" data-tr="xira, oʻchgan">ту́склые</span>.</p>
+<p><strong>Весь</strong> апрель шли дожди, и дерево стояло <span class="cn-word" data-tr="yalangʻoch, bargsiz">голое</span>. <strong>Все</strong> снимки того месяца серые и <span class="cn-word" data-tr="xira, oʻchgan">тусклые</span>.</p>
 
-<p>Ле́том я уезжа́ла на неде́лю и попроси́ла <span class="cn-word" data-tr="qoʻshni ayolni">сосе́дку</span>. Она́ фотографи́ровала <strong>ка́ждый</strong> день, как я проси́ла. Её сни́мки <span class="cn-word" data-pos="verb" data-tr="ajralib turadi">отлича́ются</span>: она́ стоя́ла на <span class="cn-word" data-tr="yarim qadam chaproqda">полшага́ ле́вее</span>.</p>
+<p>Летом я уезжала на неделю и попросила <span class="cn-word" data-tr="qoʻshni ayolni">соседку</span>. Она фотографировала <strong>каждый</strong> день, как я просила. Её снимки <span class="cn-word" data-pos="verb" data-tr="ajralib turadi">отличаются</span>: она стояла на <span class="cn-word" data-tr="yarim qadam chaproqda">полшага левее</span>.</p>
 
-<p>Вчера́ я <span class="cn-word" data-pos="verb" data-tr="tera boshladim">собрала́</span> <strong>все</strong> фотогра́фии в оди́н файл и посмотре́ла их <span class="cn-word" data-tr="ketma-ket">подря́д</span>.</p>
+<p>Вчера я <span class="cn-word" data-pos="verb" data-tr="tera boshladim">собрала</span> <strong>все</strong> фотографии в один файл и посмотрела их <span class="cn-word" data-tr="ketma-ket">подряд</span>.</p>
 
-<p>Вот что <span class="cn-word" data-tr="gʻalati">стра́нно</span>. Возьми́те <strong>любо́й</strong> сни́мок и сни́мок сле́дующего дня — <span class="cn-word" data-tr="farq">ра́зницы</span> нет. Совсе́м. <strong>Ка́ждый</strong> день похо́ж на <span class="cn-word" data-tr="oldingi">предыду́щий</span>.</p>
+<p>Вот что <span class="cn-word" data-tr="gʻalati">странно</span>. Возьмите <strong>любой</strong> снимок и снимок следующего дня — <span class="cn-word" data-tr="farq">разницы</span> нет. Совсем. <strong>Каждый</strong> день похож на <span class="cn-word" data-tr="oldingi">предыдущий</span>.</p>
 
-<p>А тепе́рь возьми́те <span class="cn-word" data-tr="birinchisini">пе́рвый</span> и после́дний. Э́то <strong>друго́е</strong> де́рево. <strong>Друго́й</strong> двор. <strong>Друга́я</strong> зима́.</p>
+<p>А теперь возьмите <span class="cn-word" data-tr="birinchisini">первый</span> и последний. Это <strong>другое</strong> дерево. <strong>Другой</strong> двор. <strong>Другая</strong> зима.</p>
 
-<p><strong>Ка́ждый</strong> день был одина́ковым. А <strong>весь</strong> год — нет.</p>
+<p><strong>Каждый</strong> день был одинаковым. А <strong>весь</strong> год — нет.</p>
 
-<p>Ду́маю, с людьми́ <span class="cn-word" data-tr="xuddi shunday">так же</span>. <span class="cn-word" data-tr="qolganlarini">Остально́е</span> напишу́ в сле́дующем году́.</p>''',
+<p>Думаю, с людьми <span class="cn-word" data-tr="xuddi shunday">так же</span>. <span class="cn-word" data-tr="qolganlarini">Остальное</span> напишу в следующем году.</p>''',
         "questions": [
             {
                 "text": "Anna yil davomida nima qildi?",
@@ -116,20 +116,20 @@ STORIES = [
                     "Qoʻshnisining rasmlarini yigʻdi"
                 ],
                 "answer": 1,
-                "explanation": "«Всегда́ одно́ и то же де́рево во дворе́, "
-                               "всегда́ в во́семь утра́, всегда́ с одного́ "
-                               "ме́ста» — 365 marta.",
+                "explanation": "«Всегда одно и то же дерево во дворе, "
+                               "всегда в восемь утра, всегда с одного "
+                               "места» — 365 marta.",
             },
             {
-                "text": "Nega matnda «ка́ждое у́тро», lekin «весь апре́ль»?",
+                "text": "Nega matnda «каждое утро», lekin «весь апрель»?",
                 "choices": [
                     "Chunki aprel ayol jinsida",
                     "Chunki bu matndagi xato",
                     "Chunki «весь» faqat oylar bilan ishlatiladi",
-                    "Chunki «ка́ждое у́тро» — takror, «весь апре́ль» — bitta uzluksiz davr"
+                    "Chunki «каждое утро» — takror, «весь апрель» — bitta uzluksiz davr"
                 ],
                 "answer": 3,
-                "explanation": "Savol ikki xil: «necha marta?» → ка́ждый; "
+                "explanation": "Savol ikki xil: «necha marta?» → каждый; "
                                "«qancha vaqt?» → весь. Oʻzbekchada ham «har "
                                "ertalab» va «aprel boʻyi» ikki xil aytiladi.",
             },
@@ -142,7 +142,7 @@ STORIES = [
                     "Daraxt oʻzgarmagan"
                 ],
                 "answer": 0,
-                "explanation": "«Ка́ждый день был одина́ковым. А весь год — "
+                "explanation": "«Каждый день был одинаковым. А весь год — "
                                "нет». Ikki qoʻshni surat orasida farq yoʻq, "
                                "birinchi va oxirgisi orasida esa boshqa "
                                "daraxt.",
@@ -154,7 +154,7 @@ STORIES = [
     # PR-78 — noaniq olmoshlar                          SIRLI HIKOYA
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Кто́-то оста́вил зонт",
+        "title":   "Кто-то оставил зонт",
         "summary": (
             "PR-78 matni. Kichik kafeda kimdir soyabon qoldirib ketdi. Uni "
             "ikki yil kutishdi. Egasi kelmadi — lekin soyabon kafening eng "
@@ -167,46 +167,46 @@ STORIES = [
                 "meaning":  "Oʻtgan zamon xabari. Sarlavhaning oʻzi shunday: "
                             "soyabonni qoldirgan odam bor, faqat kimligi "
                             "nomaʼlum.",
-                "examples": ["Кто́-то оста́вил зонт у окна́.",
-                             "На ру́чке что́-то напи́сано."],
+                "examples": ["Кто-то оставил зонт у окна.",
+                             "На ручке что-то написано."],
             },
             {
                 "pattern":  "-нибудь — savol, kelasi zamon, shart",
                 "meaning":  "Hali boʻlmagan yoki boʻldimi deb soʻralayotgan narsa. "
                             "Matnda savolda ham, kelasi zamonda ham bor.",
-                "examples": ["Кто́-нибудь спра́шивал про зонт?",
-                             "Е́сли кто́-нибудь придёт, отда́йте ему́."],
+                "examples": ["Кто-нибудь спрашивал про зонт?",
+                             "Если кто-нибудь придёт, отдайте ему."],
             },
             {
-                "pattern":  "ко́е- — bilaman, aytmayman",
+                "pattern":  "кое- — bilaman, aytmayman",
                 "meaning":  "Soʻzlovchi biladi, lekin atayin aytmaydi. Predlog "
-                            "bilan kelganda uchta alohida soʻz: ко́е с кем.",
-                "examples": ["Ко́е-кто из ста́рых госте́й по́мнит тот ве́чер."],
+                            "bilan kelganda uchta alohida soʻz: кое с кем.",
+                "examples": ["Кое-кто из старых гостей помнит тот вечер."],
             },
         ],
-        "body": '''<p>В ма́леньком кафе́ на углу́ <strong>кто́-то</strong> оста́вил зонт.</p>
+        "body": '''<p>В маленьком кафе на углу <strong>кто-то</strong> оставил зонт.</p>
 
-<p>Э́то бы́ло в октябре́ два го́да наза́д. Ве́чером шёл дождь, наро́ду бы́ло мно́го, и <span class="cn-word" data-tr="ofitsiantka">официа́нтка</span> Ле́на нашла́ зонт у окна́, когда́ закрыва́ла зал.</p>
+<p>Это было в октябре два года назад. Вечером шёл дождь, народу было много, и <span class="cn-word" data-tr="ofitsiantka">официантка</span> Лена нашла зонт у окна, когда закрывала зал.</p>
 
-<p>Зонт был ста́рый, но хоро́ший: тёмно-си́ний, с деревя́нной <span class="cn-word" data-tr="dastasi">ру́чкой</span>. На ру́чке <strong>что́-то</strong> бы́ло напи́сано ме́лкими <span class="cn-word" data-tr="harflar">бу́квами</span>, но <span class="cn-word" data-pos="verb" data-tr="oʻchib ketgan">стёрлось</span>.</p>
+<p>Зонт был старый, но хороший: тёмно-синий, с деревянной <span class="cn-word" data-tr="dastasi">ручкой</span>. На ручке <strong>что-то</strong> было написано мелкими <span class="cn-word" data-tr="harflar">буквами</span>, но <span class="cn-word" data-pos="verb" data-tr="oʻchib ketgan">стёрлось</span>.</p>
 
-<p>Ле́на поста́вила зонт в у́гол и жда́ла.</p>
+<p>Лена поставила зонт в угол и ждала.</p>
 
-<p>Пе́рвую неде́лю она́ спра́шивала госте́й: «<strong>Кто́-нибудь</strong> забы́л зонт?» <span class="cn-word" data-pos="verb" data-tr="bosh chayqashardi">Кача́ли голово́й</span>.</p>
+<p>Первую неделю она спрашивала гостей: «<strong>Кто-нибудь</strong> забыл зонт?» <span class="cn-word" data-pos="verb" data-tr="bosh chayqashardi">Качали головой</span>.</p>
 
-<p>Пото́м она́ <span class="cn-word" data-pos="verb" data-tr="osib qoʻydi">пове́сила</span> <span class="cn-word" data-tr="eʼlon">объявле́ние</span> на дверь. Прошёл ме́сяц. Никто́ не пришёл.</p>
+<p>Потом она <span class="cn-word" data-pos="verb" data-tr="osib qoʻydi">повесила</span> <span class="cn-word" data-tr="eʼlon">объявление</span> на дверь. Прошёл месяц. Никто не пришёл.</p>
 
-<p>Зимо́й зонт переста́вили за <span class="cn-word" data-tr="peshtaxta">сто́йку</span>. Ле́том про него́ <span class="cn-word" data-pos="verb" data-tr="unutishdi">забы́ли</span>.</p>
+<p>Зимой зонт переставили за <span class="cn-word" data-tr="peshtaxta">стойку</span>. Летом про него <span class="cn-word" data-pos="verb" data-tr="unutishdi">забыли</span>.</p>
 
-<p>А в сентябре́ случи́лось вот что. На у́лице начался́ <span class="cn-word" data-tr="jala">ли́вень</span>, и одна́ де́вушка <span class="cn-word" data-pos="verb" data-tr="yugurib kirdi">вбежа́ла</span> в кафе́ <span class="cn-word" data-tr="jiqqa hoʻl">совсе́м мо́края</span>. Ле́на <span class="cn-word" data-tr="oʻylamasdan">не разду́мывая</span> доста́ла зонт и дала́ ей.</p>
+<p>А в сентябре случилось вот что. На улице начался <span class="cn-word" data-tr="jala">ливень</span>, и одна девушка <span class="cn-word" data-pos="verb" data-tr="yugurib kirdi">вбежала</span> в кафе <span class="cn-word" data-tr="jiqqa hoʻl">совсем мокрая</span>. Лена <span class="cn-word" data-tr="oʻylamasdan">не раздумывая</span> достала зонт и дала ей.</p>
 
-<p>Де́вушка верну́ла его́ на сле́дующий день.</p>
+<p>Девушка вернула его на следующий день.</p>
 
-<p>С тех пор зонт живёт у две́ри. Его́ берёт <strong>кто́-нибудь</strong>, кому́ ну́жно, и прино́сит обра́тно. За два го́да он <span class="cn-word" data-pos="verb" data-tr="sayohat qildi">пропутеше́ствовал</span> по всему́ райо́ну и ни ра́зу не <span class="cn-word" data-pos="verb" data-tr="yoʻqolmadi">потеря́лся</span>.</p>
+<p>С тех пор зонт живёт у двери. Его берёт <strong>кто-нибудь</strong>, кому нужно, и приносит обратно. За два года он <span class="cn-word" data-pos="verb" data-tr="sayohat qildi">пропутешествовал</span> по всему району и ни разу не <span class="cn-word" data-pos="verb" data-tr="yoʻqolmadi">потерялся</span>.</p>
 
-<p><strong>Ко́е-кто</strong> из ста́рых госте́й говори́т, что зна́ет хозя́ина. Но и́мени не называ́ет.</p>
+<p><strong>Кое-кто</strong> из старых гостей говорит, что знает хозяина. Но имени не называет.</p>
 
-<p>Ле́на счита́ет, что э́то и не ва́жно. Зонт <span class="cn-word" data-pos="verb" data-tr="topdi">нашёл</span> себе́ рабо́ту получше, чем стоя́ть в <span class="cn-word" data-tr="shkafda">шкафу́</span>.</p>''',
+<p>Лена считает, что это и не важно. Зонт <span class="cn-word" data-pos="verb" data-tr="topdi">нашёл</span> себе работу получше, чем стоять в <span class="cn-word" data-tr="shkafda">шкафу</span>.</p>''',
         "questions": [
             {
                 "text": "Soyabon bilan oxir-oqibat nima boʻldi?",
@@ -217,12 +217,12 @@ STORIES = [
                     "U eshik yonida turadi va kerak boʻlganlar olib turadi"
                 ],
                 "answer": 3,
-                "explanation": "«Его́ берёт кто́-нибудь, кому́ ну́жно, и "
-                               "прино́сит обра́тно». Ikki yilda u butun mahalla "
+                "explanation": "«Его берёт кто-нибудь, кому нужно, и "
+                               "приносит обратно». Ikki yilda u butun mahalla "
                                "boʻylab yurdi va bir marta ham yoʻqolmadi.",
             },
             {
-                "text": "Nega matnda «Кто́-нибудь забы́л зонт?», lekin «Кто́-то оста́вил зонт»?",
+                "text": "Nega matnda «Кто-нибудь забыл зонт?», lekin «Кто-то оставил зонт»?",
                 "choices": [
                     "Chunki birinchisi savol, ikkinchisi esa boʻlib oʻtgan voqea haqidagi xabar",
                     "Chunki birinchisi koʻplik",
@@ -235,7 +235,7 @@ STORIES = [
                                "qoldirilgan, demak odam bor.",
             },
             {
-                "text": "«Ко́е-кто из ста́рых госте́й» nimani bildiradi?",
+                "text": "«Кое-кто из старых гостей» nimani bildiradi?",
                 "choices": [
                     "Hech kim bilmaydi",
                     "Bir kishi bor — u biladi, lekin ismini aytmaydi",
@@ -243,9 +243,9 @@ STORIES = [
                     "Lena buni oʻzi oʻylab topgan"
                 ],
                 "answer": 1,
-                "explanation": "«Но и́мени не называ́ет». Ко́е- ning butun "
+                "explanation": "«Но имени не называет». Кое- ning butun "
                                "maʼnosi shu: soʻzlovchi biladi, lekin atayin "
-                               "aytmaydi — «кто́-то» dan farqi ana shunda.",
+                               "aytmaydi — «кто-то» dan farqi ana shunda.",
             },
         ],
     },
@@ -254,7 +254,7 @@ STORIES = [
     # PR-79 — ikki inkor                             MAKTAB HIKOYASI
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Никто́ ничего́ не сказа́л",
+        "title":   "Никто ничего не сказал",
         "summary": (
             "PR-79 matni. Sherbek rus maktabiga koʻchib keldi va birinchi "
             "kundan hech narsa tushunmadi. Kimdir uning partasiga har kuni "
@@ -267,43 +267,43 @@ STORIES = [
                 "meaning":  "Inkor soʻzi bor joyda feʼl oldida «не» turishi shart "
                             "— xuddi oʻzbekchadagi «hech kim demadi» kabi. "
                             "Matnda beshta joyda.",
-                "examples": ["Никто́ ничего́ не сказа́л.",
-                             "Шербе́к никогда́ не узна́л, кто э́то был."],
+                "examples": ["Никто ничего не сказал.",
+                             "Шербек никогда не узнал, кто это был."],
             },
             {
                 "pattern":  "Bir gapda bir nechta inkor",
-                "meaning":  "«Никто́ никогда́ ничего́ не спроси́л» — uchta inkor "
+                "meaning":  "«Никто никогда ничего не спросил» — uchta inkor "
                             "soʻzi va bitta «не». Bu meʼyor, xato emas.",
-                "examples": ["Никто́ никогда́ ничего́ у него́ не спроси́л."],
+                "examples": ["Никто никогда ничего у него не спросил."],
             },
             {
                 "pattern":  "Predlog soʻzni ikkiga boʻladi",
                 "meaning":  "«Ни с кем», «ни о чём» — uchta alohida soʻz. "
                             "Predlog «ни» bilan asosiy soʻz orasiga tushadi.",
-                "examples": ["Пе́рвый ме́сяц он ни с кем не разгова́ривал."],
+                "examples": ["Первый месяц он ни с кем не разговаривал."],
             },
         ],
-        "body": '''<p>Шербе́к прие́хал в Росси́ю в сентябре́ и пошёл в восьмо́й класс.</p>
+        "body": '''<p>Шербек приехал в Россию в сентябре и пошёл в восьмой класс.</p>
 
-<p>По-ру́сски он знал два́дцать слов. На пе́рвом уро́ке учи́тельница что́-то до́лго объясня́ла, весь класс <span class="cn-word" data-pos="verb" data-tr="yozardi">запи́сывал</span>, а Шербе́к смотре́л в <span class="cn-word" data-tr="daftar">тетра́дь</span> и <span class="cn-word" data-pos="verb" data-tr="tushunmasdi">не понима́л</span> <strong>ничего́</strong>.</p>
+<p>По-русски он знал двадцать слов. На первом уроке учительница что-то долго объясняла, весь класс <span class="cn-word" data-pos="verb" data-tr="yozardi">записывал</span>, а Шербек смотрел в <span class="cn-word" data-tr="daftar">тетрадь</span> и <span class="cn-word" data-pos="verb" data-tr="tushunmasdi">не понимал</span> <strong>ничего</strong>.</p>
 
-<p>Пе́рвый ме́сяц он <strong>ни с кем не</strong> разгова́ривал. Не потому́, что не хоте́л. Про́сто слов не́ было.</p>
+<p>Первый месяц он <strong>ни с кем не</strong> разговаривал. Не потому, что не хотел. Просто слов не было.</p>
 
-<p>В октябре́ он нашёл в <span class="cn-word" data-tr="parta">па́рте</span> <span class="cn-word" data-tr="qogʻoz varaqcha">листо́к</span>. На нём бы́ли ру́сские слова́ с уро́ка и рядом — перево́д на узбе́кский. <span class="cn-word" data-tr="qoʻlyozma">По́черк</span> был <span class="cn-word" data-tr="notekis">неро́вный</span>, де́тский.</p>
+<p>В октябре он нашёл в <span class="cn-word" data-tr="parta">парте</span> <span class="cn-word" data-tr="qogʻoz varaqcha">листок</span>. На нём были русские слова с урока и рядом — перевод на узбекский. <span class="cn-word" data-tr="qoʻlyozma">Почерк</span> был <span class="cn-word" data-tr="notekis">неровный</span>, детский.</p>
 
-<p>Шербе́к <span class="cn-word" data-pos="verb" data-tr="atrofga qaradi">огляде́лся</span>. <strong>Никто́</strong> на него́ <strong>не</strong> смотре́л.</p>
+<p>Шербек <span class="cn-word" data-pos="verb" data-tr="atrofga qaradi">огляделся</span>. <strong>Никто</strong> на него <strong>не</strong> смотрел.</p>
 
-<p>На сле́дующий день листо́к был сно́ва. И че́рез день. И <strong>всю</strong> зи́му.</p>
+<p>На следующий день листок был снова. И через день. И <strong>всю</strong> зиму.</p>
 
-<p>Он <span class="cn-word" data-pos="verb" data-tr="urinib koʻrdi">пыта́лся</span> поня́ть, кто э́то. Но в кла́ссе <strong>никто́ никогда́ ничего́ не</strong> говори́л про листки́. Ребя́та <span class="cn-word" data-pos="verb" data-tr="salomlashardi">здоро́вались</span>, <span class="cn-word" data-pos="verb" data-tr="taklif qilishardi">зва́ли</span> игра́ть в футбо́л — и <strong>ничего́ не</strong> спра́шивали.</p>
+<p>Он <span class="cn-word" data-pos="verb" data-tr="urinib koʻrdi">пытался</span> понять, кто это. Но в классе <strong>никто никогда ничего не</strong> говорил про листки. Ребята <span class="cn-word" data-pos="verb" data-tr="salomlashardi">здоровались</span>, <span class="cn-word" data-pos="verb" data-tr="taklif qilishardi">звали</span> играть в футбол — и <strong>ничего не</strong> спрашивали.</p>
 
-<p>К ма́рту Шербе́к на́чал отвеча́ть на уро́ках. К ма́ю — <span class="cn-word" data-pos="verb" data-tr="bahslashardi">спо́рил</span> с учи́телем.</p>
+<p>К марту Шербек начал отвечать на уроках. К маю — <span class="cn-word" data-pos="verb" data-tr="bahslashardi">спорил</span> с учителем.</p>
 
-<p>В после́дний день <span class="cn-word" data-tr="oʻquv yili">уче́бного го́да</span> он положи́л в свою́ па́рту листо́к. На нём бы́ло одно́ сло́во: «Спаси́бо».</p>
+<p>В последний день <span class="cn-word" data-tr="oʻquv yili">учебного года</span> он положил в свою парту листок. На нём было одно слово: «Спасибо».</p>
 
-<p>У́тром листка́ <strong>не</strong> было. Вме́сто него́ лежа́л друго́й, с <span class="cn-word" data-tr="oʻsha xatda">тем же по́черком</span>: «Не за что».</p>
+<p>Утром листка <strong>не</strong> было. Вместо него лежал другой, с <span class="cn-word" data-tr="oʻsha xatda">тем же почерком</span>: «Не за что».</p>
 
-<p>Шербе́к так и <strong>не</strong> узна́л, кто э́то был. <strong>Никто́ ничего́ не</strong> сказа́л — <span class="cn-word" data-tr="ehtimol">возмо́жно</span>, и́менно поэ́тому всё <span class="cn-word" data-pos="verb" data-tr="davom etdi">продолжа́лось</span> <strong>весь</strong> год.</p>''',
+<p>Шербек так и <strong>не</strong> узнал, кто это был. <strong>Никто ничего не</strong> сказал — <span class="cn-word" data-tr="ehtimol">возможно</span>, именно поэтому всё <span class="cn-word" data-pos="verb" data-tr="davom etdi">продолжалось</span> <strong>весь</strong> год.</p>''',
         "questions": [
             {
                 "text": "Sherbek partasidan nima topdi?",
@@ -314,12 +314,12 @@ STORIES = [
                     "Oʻzining eski daftarini"
                 ],
                 "answer": 1,
-                "explanation": "«Ру́сские слова́ с уро́ка и рядом — перево́д на "
-                               "узбе́кский». Qoʻlyozma bolalarniki edi, va "
+                "explanation": "«Русские слова с урока и рядом — перевод на "
+                               "узбекский». Qoʻlyozma bolalarniki edi, va "
                                "varaqcha butun qish davomida takrorlandi.",
             },
             {
-                "text": "Nega matnda «ни с кем не разгова́ривал» — nega uchta alohida soʻz?",
+                "text": "Nega matnda «ни с кем не разговаривал» — nega uchta alohida soʻz?",
                 "choices": [
                     "Chunki bu koʻplik shakli",
                     "Chunki «с» predlogi «ни» va «кем» orasiga tushadi",
@@ -329,7 +329,7 @@ STORIES = [
                 "answer": 1,
                 "explanation": "Predlog inkor olmoshini ikkiga boʻladi va "
                                "uchalasi alohida yoziladi: ни с кем, ни о чём, "
-                               "ни у кого́. Feʼl oldidagi «не» esa baribir "
+                               "ни у кого. Feʼl oldidagi «не» esa baribir "
                                "saqlanadi.",
             },
             {
@@ -341,8 +341,8 @@ STORIES = [
                     "Sherbek oxiri kim ekanini bilib oldi"
                 ],
                 "answer": 2,
-                "explanation": "«Никто́ ничего́ не сказа́л — возмо́жно, и́менно "
-                               "поэ́тому всё продолжа́лось весь год». Aytilsa, "
+                "explanation": "«Никто ничего не сказал — возможно, именно "
+                               "поэтому всё продолжалось весь год». Aytilsa, "
                                "u minnatdorchilikka aylanardi va toʻxtardi.",
             },
         ],

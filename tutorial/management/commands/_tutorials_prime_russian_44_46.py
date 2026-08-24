@@ -38,7 +38,7 @@ TUTORIALS = [
             "Sifat jadvali yopiladi. Va unda katta yengillik bor: ayol jinsidagi "
             "sifat toʻrtta kelishikda bitta shaklda turadi — -ОЙ."
         ),
-        "stories": ["В большо́м го́роде"],
+        "stories": ["В большом городе"],
         "content": """
 <h2>PR-44: Sifatlarning turlanishi 2 — Дательный, Творительный, Предложный</h2>
 
@@ -315,7 +315,7 @@ ishonadi.</div>
             "Koʻplik Роди́тельный rus tilida eng koʻp yodlashni talab qiladigan "
             "shakl. Lekin uning ham tartibi bor."
         ),
-        "stories": ["Пять дней без телефо́на"],
+        "stories": ["Пять дней без телефона"],
         "content": """
 <h2>PR-45: Koʻplik kelishiklari 1 — Именительный va Родительный</h2>
 
@@ -595,7 +595,7 @@ keyin osonlashadi, va aynan <b>ertaga</b> osonlashadi.</div>
             "qoʻshimcha, jins umuman yoʻq, istisno deyarli yoʻq. Va shu bilan "
             "kelishiklar tugaydi."
         ),
-        "stories": ["Письмо́ всем друзья́м"],
+        "stories": ["Письмо всем друзьям"],
         "content": """
 <h2>PR-46: Koʻplik kelishiklari 2 — Дательный, Винительный, Творительный, Предложный</h2>
 

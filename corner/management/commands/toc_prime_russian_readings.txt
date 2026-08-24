@@ -28,8 +28,8 @@ AUTHOR:     powerty
 #    PR-19. Until then a story still needs a way to say who did what between the
 #    lines of dialogue, so the NARRATION may use this small closed list as plain
 #    vocabulary, always with a cn-word gloss:
-#        есть · нет · зову́т · живёт · рабо́тает · говори́т · сказа́л / сказа́ла ·
-#        пришёл / пришла́ · дал / дала́ · был / была́
+#        есть · нет · зовут · живёт · работает · говорит · сказал / сказала ·
+#        пришёл / пришла · дал / дала · был / была
 #    The DIALOGUE lines stay strictly inside what the lessons have taught — that is
 #    where the pupil is meant to recognise the pattern. This is exactly how graded
 #    readers work: the frame carries the story, the dialogue carries the grammar.
@@ -54,9 +54,9 @@ AUTHOR:     powerty
 #     in one paragraph, before PR-66.
 #   * ONE THING PER SENTENCE. Short sentences. A new action gets a new sentence.
 #   * SAY THE OBVIOUS. Russian drops the subject and the verb "to be" happily;
-#     in these readings, don't. Write Ди́ма пришёл домо́й, not just Пришёл.
-#   * NO UNEXPLAINED JUMPS. If the scene moves, say so: На сле́дующий день…,
-#     Ве́чером…, В шко́ле…  A time/place word at the head of a paragraph is cheap
+#     in these readings, don't. Write Дима пришёл домой, not just Пришёл.
+#   * NO UNEXPLAINED JUMPS. If the scene moves, say so: На следующий день…,
+#     Вечером…, В школе…  A time/place word at the head of a paragraph is cheap
 #     and it saves the reader every time.
 #   * The ENDING must land. The reader should be able to say in one sentence what
 #     happened and why it mattered. If Claude cannot summarise it in one Uzbek
@@ -99,13 +99,25 @@ AUTHOR:     powerty
 #   `explanation`s: UZBEK. Questions themselves: UZBEK.
 #   No English anywhere.
 #
-# ── Stress marks in the body ──
-#   PR-6 … PR-20: mark the stress on every multi-syllable word — the pupil is
-#   still learning to read. PR-21 … PR-50: new and stress-shifting words only.
-#   PR-51 onward: only genuinely hard or ambiguous words. Never on ё.
+# ── ⛔ NO STRESS MARKS IN THE READINGS (user's decision, 2026-08-24) ──
+#
+#   Do NOT put the combining acute (U+0301) on any word in a story body,
+#   title, summary, grammar block or question. The readings are meant to
+#   look like real Russian, which is printed without them.
+#
+#   The marks were there from PR-6 to PR-79 and were stripped in one pass
+#   (8555 of them across 74 stories) with:
+#       python manage.py strip_stress --collection="Prime Russian Readings"
+#   If any ever come back, that command clears them again.
+#
+#   ⚠️ The TUTORIALS keep their stress marks — see section 4 of
+#   STYLE_GUIDE_PRIME_RUSSIAN.md. That split is deliberate: the lesson is
+#   where the pupil first meets a word and needs to know how to say it;
+#   the reading is where they meet it in the wild, unaided. Do not
+#   "harmonise" the two.
 #
 # ── Vocabulary ──
-#   Mark new words inline: <span class="cn-word" data-tr="tarjima">сло́во</span>
+#   Mark new words inline: <span class="cn-word" data-tr="tarjima">слово</span>
 #   6–10 marks in early readings, 10–16 up to PR-55, 20–32 from PR-56 where the
 #   texts are long narratives. Mark real new words, not words the pupil has met.
 #   data-pos: verb / adj / adv.
@@ -113,7 +125,7 @@ AUTHOR:     powerty
 #   where it appears — house style of the Prime collections.
 #   Names: the user's pupils (Afsona, Jasur, Sherbek, Dilnoza, Bekzod → Афсона,
 #   Жасур, Шербек, Дилноза, Бекзод) alongside Russian names (Анна, Дмитрий,
-#   Марина, Олег, Катя, Ни́на, Серге́й).
+#   Марина, Олег, Катя, Нина, Сергей).
 #
 # ── Questions ──
 #   2–3 `questions` (StoryQuestion MCQs), in Uzbek, at least one testing whether
@@ -147,115 +159,115 @@ AUTHOR:     powerty
 # so they have NO readings. The list starts at PR-6.
 # Mark finished ranges with [done].
 
-## Prime Russian Readings — Прайм Ру́сский: чте́ние
+## Prime Russian Readings — Прайм Русский: чтение
 
 ### Block B: Birinchi gaplar (6–18)
-6.  (PR-6 · Это) Кто э́то? — sinfda suhbat, fotosurat ustida                        [done]
-7.  (PR-7 · ты/вы) Два разгово́ра — bir yoʻlakda ikki xil murojaat             [done]
-8.  (PR-8 · род) Стол, кни́га и окно́ — uy sahnasi, Bekzod rodni topadi     [done]
-9.  (PR-9 · koʻplik) Ры́нок в суббо́ту — bozorda hamma narsa koʻplikda      [done]
-10. (PR-10 · мой/твой) Чей это телефо́н? — sinfda topilgan buyum            [done]
-11. (PR-11 · tire) Мой го́род — Ташке́нт (tanishtiruv matni)                [done]
-12. (PR-12 · sifat) Но́вая шко́ла — birinchi kun                            [done]
-13. (PR-13 · sonlar) Ско́лько сто́ит? — doʻkonda narxlar                    [done]
-14. (PR-14 · У меня есть) У меня́ есть всё — buvijon sanab chiqadi          [done]
+6.  (PR-6 · Это) Кто это? — sinfda suhbat, fotosurat ustida                        [done]
+7.  (PR-7 · ты/вы) Два разговора — bir yoʻlakda ikki xil murojaat             [done]
+8.  (PR-8 · род) Стол, книга и окно — uy sahnasi, Bekzod rodni topadi     [done]
+9.  (PR-9 · koʻplik) Рынок в субботу — bozorda hamma narsa koʻplikda      [done]
+10. (PR-10 · мой/твой) Чей это телефон? — sinfda topilgan buyum            [done]
+11. (PR-11 · tire) Мой город — Ташкент (tanishtiruv matni)                [done]
+12. (PR-12 · sifat) Новая школа — birinchi kun                            [done]
+13. (PR-13 · sonlar) Сколько стоит? — doʻkonda narxlar                    [done]
+14. (PR-14 · У меня есть) У меня есть всё — buvijon sanab chiqadi          [done]
 15. (PR-15 · savol soʻzlari) Кто? Что? Где? — buvijonning savollarga toʻla xati     [done]
-16. (PR-16 · этот/тот) Э́тот и́ли тот? — mushukcha tanlash sahnasi                       [done]
-17. (PR-17 · inkor) Нет, спаси́бо — dasturxon ustida muloyim rad javobi                      [done]
-18. (PR-18 · тоже/уже) Мы то́же! — hamma bir xil narsani xohlaydi           [done]
+16. (PR-16 · этот/тот) Этот или тот? — mushukcha tanlash sahnasi                       [done]
+17. (PR-17 · inkor) Нет, спасибо — dasturxon ustida muloyim rad javobi                      [done]
+18. (PR-18 · тоже/уже) Мы тоже! — hamma bir xil narsani xohlaydi           [done]
 
 ### Block C: Feʼl va hozirgi zamon (19–28)
-19. (PR-19 · infinitiv) Анке́та — toʻgarakka yozilish varaqasi             [done]
-20. (PR-20 · I tuslanish) Оди́н день Жасу́ра — kundalik tartib              [done]
-21. (PR-21 · II tuslanish) Я говорю́ на трёх языка́х — kichik intervyu      [done]
-22. (PR-22 · notoʻgʻri feʼllar) Ку́хня в общежи́тии — kim nima yeydi        [done]
-23. (PR-23 · oʻtgan zamon) Вчера́ был дождь — kundalik daftar               [done]
-24. (PR-24 · kelasi zamon) За́втра экза́мен — reja va vaʼda                 [done]
-25. (PR-25 · -ся) Как я учи́лся пла́вать — biografik hikoya                 [done]
-26. (PR-26 · мочь/уметь) Ба́бушка уме́ет всё — oila portreti                [done]
-27. (PR-27 · надо/нельзя) Пра́вила библиоте́ки — qoʻllanma matni            [done]
-28. (PR-28 · нравиться) Что тебе́ нра́вится? — ikki doʻstning sharhi        [done]
+19. (PR-19 · infinitiv) Анкета — toʻgarakka yozilish varaqasi             [done]
+20. (PR-20 · I tuslanish) Один день Жасура — kundalik tartib              [done]
+21. (PR-21 · II tuslanish) Я говорю на трёх языках — kichik intervyu      [done]
+22. (PR-22 · notoʻgʻri feʼllar) Кухня в общежитии — kim nima yeydi        [done]
+23. (PR-23 · oʻtgan zamon) Вчера был дождь — kundalik daftar               [done]
+24. (PR-24 · kelasi zamon) Завтра экзамен — reja va vaʼda                 [done]
+25. (PR-25 · -ся) Как я учился плавать — biografik hikoya                 [done]
+26. (PR-26 · мочь/уметь) Бабушка умеет всё — oila portreti                [done]
+27. (PR-27 · надо/нельзя) Правила библиотеки — qoʻllanma matni            [done]
+28. (PR-28 · нравиться) Что тебе нравится? — ikki doʻstning sharhi        [done]
 
 ### Block D: Kelishiklar (29–50)
-29. (PR-29 · падежи xaritasi) Одно́ сло́во — шесть форм (ilmiy-ommabop)     [done]
-30. (PR-30 · П.п. где?) Где мои́ ключи́? — kichik sirli hikoya              [done]
-31. (PR-31 · П.п. о чём?) О чём э́та кни́га? — kitob sharhi                 [done]
-32. (PR-32 · В.п. кого/что) Кто кого́ ждёт? — vokzalda                      [done]
-33. (PR-33 · В.п. куда?) Куда́ идёт э́тот авто́бус? — sayohat qaydlari       [done]
-34. (PR-34 · Р.п. egalik) Дом моего́ де́да — oila tarixi                    [done]
-35. (PR-35 · Р.п. predloglar) Письмо́ из Сиби́ри — xat                      [done]
-36. (PR-36 · Р.п. sonlar) Ско́лько в Москве́ мосто́в? (ilmiy-ommabop)        [done]
-37. (PR-37 · Д.п. кому?) Пода́рок учи́телю — sinf birga qaror qiladi        [done]
-38. (PR-38 · Д.п. мне холодно) Пе́рвая зима́ — Toshkentlik Sibirda          [done]
-39. (PR-39 · Т.п. чем? с кем?) Как де́лают самсу́ — retsept                 [done]
-#   ↑ sarlavha tuzatildi: «де́лают» Вини́тельный talab qiladi — самсу́, самса́ emas
-40. (PR-40 · Т.п. стать) Кем ты хо́чешь стать? — intervyu                   [done]
-41. (PR-41 · olmoshlar) Она́ мне не позвони́ла — kichik tushunmovchilik     [done]
-42. (PR-42 · egalik olmoshlari) В на́шем дворе́ — mahalla portreti          [done]
-43. (PR-43 · sifat Р.п./В.п.) Ста́рого моста́ бо́льше нет — yangilik xabari [done]
-44. (PR-44 · sifat Д./Т./П.) В большо́м го́роде — sayohat qaydlari          [done]
-45. (PR-45 · koʻplik И./Р.) Пять дней без телефо́на — tajriba               [done]
-46. (PR-46 · koʻplik Д./В./Т./П.) Письмо́ всем друзья́м — umumiy xat        [done]
-47. (PR-47 · soʻroq soʻzlari) Игра́ «Два́дцать вопро́сов» — oʻyin           [done]
-48. (PR-48 · predlog xaritasi) Как я потеря́лся в метро́ — hikoya           [done]
-49. (PR-49 · sana va vaqt) Календа́рь Ни́ны — bir yil bir sahifada          [done]
-50. (PR-50 · takror) Оди́н день, шесть падеже́й — yakuniy matn              [done]
+29. (PR-29 · падежи xaritasi) Одно слово — шесть форм (ilmiy-ommabop)     [done]
+30. (PR-30 · П.п. где?) Где мои ключи? — kichik sirli hikoya              [done]
+31. (PR-31 · П.п. о чём?) О чём эта книга? — kitob sharhi                 [done]
+32. (PR-32 · В.п. кого/что) Кто кого ждёт? — vokzalda                      [done]
+33. (PR-33 · В.п. куда?) Куда идёт этот автобус? — sayohat qaydlari       [done]
+34. (PR-34 · Р.п. egalik) Дом моего деда — oila tarixi                    [done]
+35. (PR-35 · Р.п. predloglar) Письмо из Сибири — xat                      [done]
+36. (PR-36 · Р.п. sonlar) Сколько в Москве мостов? (ilmiy-ommabop)        [done]
+37. (PR-37 · Д.п. кому?) Подарок учителю — sinf birga qaror qiladi        [done]
+38. (PR-38 · Д.п. мне холодно) Первая зима — Toshkentlik Sibirda          [done]
+39. (PR-39 · Т.п. чем? с кем?) Как делают самсу — retsept                 [done]
+#   ↑ sarlavha tuzatildi: «делают» Винительный talab qiladi — самсу, самса emas
+40. (PR-40 · Т.п. стать) Кем ты хочешь стать? — intervyu                   [done]
+41. (PR-41 · olmoshlar) Она мне не позвонила — kichik tushunmovchilik     [done]
+42. (PR-42 · egalik olmoshlari) В нашем дворе — mahalla portreti          [done]
+43. (PR-43 · sifat Р.п./В.п.) Старого моста больше нет — yangilik xabari [done]
+44. (PR-44 · sifat Д./Т./П.) В большом городе — sayohat qaydlari          [done]
+45. (PR-45 · koʻplik И./Р.) Пять дней без телефона — tajriba               [done]
+46. (PR-46 · koʻplik Д./В./Т./П.) Письмо всем друзьям — umumiy xat        [done]
+47. (PR-47 · soʻroq soʻzlari) Игра «Двадцать вопросов» — oʻyin           [done]
+48. (PR-48 · predlog xaritasi) Как я потерялся в метро — hikoya           [done]
+49. (PR-49 · sana va vaqt) Календарь Нины — bir yil bir sahifada          [done]
+50. (PR-50 · takror) Один день, шесть падежей — yakuniy matn              [done]
 
 ### Block E: Feʼl turi va harakat feʼllari (51–62)
-51. (PR-51 · вид) Чита́л и прочита́л (ilmiy-ommabop)                        [done]
-52. (PR-52 · vid juftlari) Ремо́нт на ку́хне                                [done]
-53. (PR-53 · vid va zamon) Три письма́ об одно́м дне                        [done]
-54. (PR-54 · vid tanlash) Как я гото́вился к экза́мену — biografik          [done]
-55. (PR-55 · идти/ходить) Доро́га в шко́лу — kundalik yoʻl                  [done]
-56. (PR-56 · ехать/ездить) Тра́нссиб: семь дней в по́езде (sayohat qaydlari) [done]
-57. (PR-57 · prefikslar 1) Оди́н глаго́л, де́сять двере́й (ilmiy-ommabop)  [done]
+51. (PR-51 · вид) Читал и прочитал (ilmiy-ommabop)                        [done]
+52. (PR-52 · vid juftlari) Ремонт на кухне                                [done]
+53. (PR-53 · vid va zamon) Три письма об одном дне                        [done]
+54. (PR-54 · vid tanlash) Как я готовился к экзамену — biografik          [done]
+55. (PR-55 · идти/ходить) Дорога в школу — kundalik yoʻl                  [done]
+56. (PR-56 · ехать/ездить) Транссиб: семь дней в поезде (sayohat qaydlari) [done]
+57. (PR-57 · prefikslar 1) Один глагол, десять дверей (ilmiy-ommabop)  [done]
 58. (PR-58 · prefikslar 2) Кот ушёл и пришёл — hikoya                      [done]
-#   ↑ sarlavha tuzatildi: КОТО́РЫЙ PR-63 da oʻrgatiladi, shuning uchun undan voz kechildi
-59. (PR-59 · buyruq mayli) Инстру́кция для но́вого сотру́дника              [done]
-60. (PR-60 · бы) Е́сли бы я знал ра́ньше — maslahat xati                    [done]
-61. (PR-61 · majhul nisbat) Как был постро́ен Петербу́рг (tarix)            [done]
-62. (PR-62 · -ся) Шесть значе́ний одно́й ча́стицы (ilmiy-ommabop)           [done]
+#   ↑ sarlavha tuzatildi: КОТОРЫЙ PR-63 da oʻrgatiladi, shuning uchun undan voz kechildi
+59. (PR-59 · buyruq mayli) Инструкция для нового сотрудника              [done]
+60. (PR-60 · бы) Если бы я знал раньше — maslahat xati                    [done]
+61. (PR-61 · majhul nisbat) Как был построен Петербург (tarix)            [done]
+62. (PR-62 · -ся) Шесть значений одной частицы (ilmiy-ommabop)           [done]
 
 ### Block F: Murakkab gaplar (63–74)
-63. (PR-63 · который) Челове́к, кото́рый чини́л всё — mahalla portreti      [done]
-64. (PR-64 · что/чтобы) Что́бы тебя́ по́няли — muloqot haqida               [done]
-65. (PR-65 · если/когда) Когда́ отключи́ли свет — kundalik daftar           [done]
-66. (PR-66 · sabab) Почему́ Байка́л тако́й глубо́кий (ilmiy-ommabop)         [done]
-67. (PR-67 · хотя/зато) Ма́ленький го́род, больша́я библиоте́ка — intervyu   [done]
-68. (PR-68 · ли) Никто́ не знал, придёт ли он — sirli hikoya                 [done]
-69. (PR-69 · тот, кто) Тот, кто са́жает дере́вья — hayot hikoyasi (haqiqiy)  [done]
-70. (PR-70 · причастие 1) Лю́ди, живу́щие на Се́вере (ilmiy-ommabop)         [done]
-71. (PR-71 · причастие 2) Кни́га, напи́санная в тюрьме́ — biografiya (haqiqiy) [done]
-72. (PR-72 · деепричастие) Возвраща́ясь домо́й — hikoya                      [done]
+63. (PR-63 · который) Человек, который чинил всё — mahalla portreti      [done]
+64. (PR-64 · что/чтобы) Чтобы тебя поняли — muloqot haqida               [done]
+65. (PR-65 · если/когда) Когда отключили свет — kundalik daftar           [done]
+66. (PR-66 · sabab) Почему Байкал такой глубокий (ilmiy-ommabop)         [done]
+67. (PR-67 · хотя/зато) Маленький город, большая библиотека — intervyu   [done]
+68. (PR-68 · ли) Никто не знал, придёт ли он — sirli hikoya                 [done]
+69. (PR-69 · тот, кто) Тот, кто сажает деревья — hayot hikoyasi (haqiqiy)  [done]
+70. (PR-70 · причастие 1) Люди, живущие на Севере (ilmiy-ommabop)         [done]
+71. (PR-71 · причастие 2) Книга, написанная в тюрьме — biografiya (haqiqiy) [done]
+72. (PR-72 · деепричастие) Возвращаясь домой — hikoya                      [done]
 73. (PR-73 · qisqa sifat) Он был прав — maktub-javob                         [done]
-74. (PR-74 · darajalar) Са́мая дли́нная река́ (ilmiy-ommabop)                [done]
+74. (PR-74 · darajalar) Самая длинная река (ilmiy-ommabop)                [done]
 
 ### Block G: Nozik grammatika (75–88)
 75. (PR-75 · свой) Свой дом — biografik hikoya                               [done]
-76. (PR-76 · себя/сам) Сде́лай сам — usta haqida                             [done]
-77. (PR-77 · каждый/весь) Ка́ждое у́тро, весь год — kundalik daftar          [done]
-78. (PR-78 · кто-то/кто-нибудь) Кто́-то оста́вил зонт — sirli hikoya         [done]
-79. (PR-79 · ikki inkor) Никто́ ничего́ не сказа́л — maktab hikoyasi         [done]
-80. (PR-80 · vaqt) Ско́лько вре́мени ну́жно, что́бы… (ilmiy-ommabop)         [next]
-81. (PR-81 · shaxssiz gaplar) Темне́ет ра́но — qish kundaligi
-82. (PR-82 · sonlar) Тро́е в ло́дке — sayohat hikoyasi
-83. (PR-83 · predloglar 2) Благодаря́ одному́ письму́ — hayot hikoyasi
+76. (PR-76 · себя/сам) Сделай сам — usta haqida                             [done]
+77. (PR-77 · каждый/весь) Каждое утро, весь год — kundalik daftar          [done]
+78. (PR-78 · кто-то/кто-нибудь) Кто-то оставил зонт — sirli hikoya         [done]
+79. (PR-79 · ikki inkor) Никто ничего не сказал — maktab hikoyasi         [done]
+80. (PR-80 · vaqt) Сколько времени нужно, чтобы… (ilmiy-ommabop)         [next]
+81. (PR-81 · shaxssiz gaplar) Темнеет рано — qish kundaligi
+82. (PR-82 · sonlar) Трое в лодке — sayohat hikoyasi
+83. (PR-83 · predloglar 2) Благодаря одному письму — hayot hikoyasi
 84. (PR-84 · частицы) Ну и что же? — jonli suhbat
-85. (PR-85 · soʻzlashuv) Разгово́р в такси́ — dialog
-86. (PR-86 · soʻz yasalishi) Оди́н ко́рень — со́рок слов (ilmiy-ommabop)
-87. (PR-87 · suffikslar) Профе́ссии на -тель и -щик (ilmiy-ommabop)
-88. (PR-88 · kichraytirish) Ба́бушкины слова́ — mehr haqida
+85. (PR-85 · soʻzlashuv) Разговор в такси — dialog
+86. (PR-86 · soʻz yasalishi) Один корень — сорок слов (ilmiy-ommabop)
+87. (PR-87 · suffikslar) Профессии на -тель и -щик (ilmiy-ommabop)
+88. (PR-88 · kichraytirish) Бабушкины слова — mehr haqida
 
 ### Block H: Til jonli holda (89–100)
-89. (PR-89 · soʻz tartibi) Одно́ предложе́ние, четы́ре смы́сла
-90. (PR-90 · uslub) Два письма́ об одно́м и том же
-91. (PR-91 · rasmiy til) Заявле́ние — namuna va tahlil
-92. (PR-92 · xabar tili) Чат гру́ппы 11-«А»
-93. (PR-93 · ish tili) Пе́рвое собесе́дование — hayot hikoyasi
-94. (PR-94 · frazeologizm) Бить баклу́ши и друзья́ (ilmiy-ommabop)
-95. (PR-95 · maqollar) Семь раз отме́рь — oʻzbekcha muqobillari bilan
-96. (PR-96 · adashtiriladiganlar) Оде́ть и́ли наде́ть? (ilmiy-ommabop)
-97. (PR-97 · punktuatsiya) «Казни́ть нельзя́ поми́ловать» (tarixiy hikoya)
-98. (PR-98 · matn qurish) Как написа́ть сочине́ние — qoʻllanma
-99. (PR-99 · til tarixi) Отку́да пришли́ ру́сские слова́ (ilmiy-ommabop)
-100. (PR-100 · yakun) Сто уро́ков спустя́ — oʻquvchiga murojaat
+89. (PR-89 · soʻz tartibi) Одно предложение, четыре смысла
+90. (PR-90 · uslub) Два письма об одном и том же
+91. (PR-91 · rasmiy til) Заявление — namuna va tahlil
+92. (PR-92 · xabar tili) Чат группы 11-«А»
+93. (PR-93 · ish tili) Первое собеседование — hayot hikoyasi
+94. (PR-94 · frazeologizm) Бить баклуши и друзья (ilmiy-ommabop)
+95. (PR-95 · maqollar) Семь раз отмерь — oʻzbekcha muqobillari bilan
+96. (PR-96 · adashtiriladiganlar) Одеть или надеть? (ilmiy-ommabop)
+97. (PR-97 · punktuatsiya) «Казнить нельзя помиловать» (tarixiy hikoya)
+98. (PR-98 · matn qurish) Как написать сочинение — qoʻllanma
+99. (PR-99 · til tarixi) Откуда пришли русские слова (ilmiy-ommabop)
+100. (PR-100 · yakun) Сто уроков спустя — oʻquvchiga murojaat

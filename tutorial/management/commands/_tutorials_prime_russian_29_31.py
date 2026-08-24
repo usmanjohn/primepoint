@@ -43,7 +43,7 @@ TUTORIALS = [
             "faqat xarita koʻriladi: oltita kelishik, ularning savollari va "
             "oʻzbekcha kelishiklar bilan solishtiruvi."
         ),
-        "stories": ["Одно́ сло́во — шесть форм"],
+        "stories": ["Одно слово — шесть форм"],
         "content": """
 <h2>PR-29: Kelishik nima? Olti падеж'ning umumiy xaritasi</h2>
 
@@ -375,7 +375,7 @@ tizim emas, oʻsha tizim.</p>
             "Birinchi haqiqiy kelishik, va u eng osoni: qoʻshimcha deyarli har doim "
             "-Е. Butun qiyinchilik bitta savolda — В mi yoki НА mi?"
         ),
-        "stories": ["Где мои́ ключи́?"],
+        "stories": ["Где мои ключи?"],
         "content": """
 <h2>PR-30: Предложный 1: где? — в школе, на работе, в Ташкенте</h2>
 
@@ -709,7 +709,7 @@ Bu qoida emas, lekin oʻntadan sakkiztasida ishlaydi.</div>
             "savol: «nima haqida?». Bu dars bilan siz nihoyat fikr bildira "
             "boshlaysiz."
         ),
-        "stories": ["О чём э́та кни́га?"],
+        "stories": ["О чём эта книга?"],
         "content": """
 <h2>PR-31: Предложный 2: о чём? о ком? — о фильме, о тебе</h2>
 

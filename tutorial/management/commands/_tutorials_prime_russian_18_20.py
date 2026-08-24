@@ -35,7 +35,7 @@ TUTORIALS = [
             "ravish. Sifatdan ravish yasashni va тоже / также / ещё / уже ni "
             "ajratishni oʻrganasiz."
         ),
-        "stories": ["Мы то́же!"],
+        "stories": ["Мы тоже!"],
         "content": """
 <h2>PR-18: Ravishlar va тоже / также / ещё / уже</h2>
 
@@ -314,7 +314,7 @@ koʻrsangiz, ularni boshqa adashtirmaysiz.</div>
             "nima, oltita shaxs qanday ishlaydi va rus feʼllari nega ikki guruhga "
             "boʻlingan."
         ),
-        "stories": ["Анке́та"],
+        "stories": ["Анкета"],
         "content": """
 <h2>PR-19: Feʼl nima? Infinitiv va ikkita tuslanish (спряжение)</h2>
 
@@ -601,7 +601,7 @@ soʻzlashuv uslubi — boshida har doim olmosh bilan gapiring.</div>
             "oʻnlab feʼl. Bu darsdan keyin siz kundalik hayotingiz haqida gapira "
             "olasiz."
         ),
-        "stories": ["Оди́н день Жасу́ра"],
+        "stories": ["Один день Жасура"],
         "content": """
 <h2>PR-20: I tuslanish: читать, работать, знать (-ю, -ешь, -ет, -ем, -ете, -ют)</h2>
 

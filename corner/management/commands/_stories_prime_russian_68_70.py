@@ -9,19 +9,19 @@ Janr xilma-xilligi: 68 — sirli hikoya, 69 — hayot hikoyasi (haqiqiy odam),
 uchta bir xil shakl ketma-ket kelmayapti.)
 
 Grammatika chegarasi (kumulyativ qoida):
-  68-matn: ли. Bilvosita savol beshta joyda («не знал, придёт ли», «спроси́л,
-           зна́ют ли», «не по́мнил, ско́лько» — savol soʻzli variant ham
+  68-matn: ли. Bilvosita savol beshta joyda («не знал, придёт ли», «спросил,
+           знают ли», «не помнил, сколько» — savol soʻzli variant ham
            qarshi qoʻyilgan) va oxirida «вряд ли».
   69-matn: тот, кто / то, что. Beshta shaklda: тот кто, то что, все кто,
-           о том что, де́ло в том что.
-  70-matn: действительные причастия — живу́щие, стоя́щие, рабо́тающие,
-           иду́щие, вы́росший, изуча́ющие. Otdan keyin turganda vergul bilan.
+           о том что, дело в том что.
+  70-matn: действительные причастия — живущие, стоящие, работающие,
+           идущие, выросший, изучающие. Otdan keyin turganda vergul bilan.
 
 ⚠️ ATAY QOCHILGAN (keyingi darslar): страдательные причастия (PR-71),
 деепричастие (PR-72), qisqa sifat — рад, готов, прав (PR-73), SIFAT
-DARAJALARI — са́мый / бо́льше / лу́чше / глу́бже (PR-74), свой (PR-75),
-себя́ (PR-76), кто́-то / кто́-нибудь (PR-78).
-Yagona istisno — 68-matndagi sarlavha va matndagi «никто́ не знал»:
+DARAJALARI — самый / больше / лучше / глубже (PR-74), свой (PR-75),
+себя (PR-76), кто-то / кто-нибудь (PR-78).
+Yagona istisno — 68-matndagi sarlavha va matndagi «никто не знал»:
 ikki inkor PR-79 da oʻrgatiladi, lekin bu ibora tocda oʻsha nom bilan
 rejalashtirilgan va oldingi matnlarda ham lugʻat sifatida uchragan.
 cn-word izohi berilgan.
@@ -33,7 +33,7 @@ cn-word izohi berilgan.
   gektar oʻrmon paydo boʻlgan, unga «Молаи» laqabidan «Молаи» oʻrmoni deb
   nom berilgan; u yerga fillar, karkidonlar va yoʻlbarslar keladi;
   2015-yilda «Падма Шри» davlat mukofotini olgan.
-  70-matn — Norilsk qutb tuni ~45 kun; abadiy muzloq (ве́чная мерзлота́)
+  70-matn — Norilsk qutb tuni ~45 kun; abadiy muzloq (вечная мерзлота)
   ustidagi uylar «сваи» — ustunlar ustiga quriladi, aks holda uyning issigʻi
   yerni eritadi; nenetslar — kiyik boquvchi koʻchmanchilar, chumda yashaydi;
   Yakutskda qishda -50 gradusgacha sovuq boʻladi.
@@ -64,7 +64,7 @@ STORIES = [
     # PR-68 — ли                                       SIRLI HIKOYA
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Никто́ не знал, придёт ли он",
+        "title":   "Никто не знал, придёт ли он",
         "summary": (
             "PR-68 matni. Har yili 1-sentabrda kichik qishloq maktabiga "
             "kitob toʻla posilka keladi, lekin joʻnatuvchisi yozilmagan. "
@@ -78,47 +78,47 @@ STORIES = [
                 "meaning":  "Savolni boshqa gap ichiga solganda ли majburiy. U "
                             "soʻralayotgan soʻzdan keyin turadi — oʻzbekcha "
                             "«-mi» kabi.",
-                "examples": ["Никто́ не знал, придёт ли посы́лка.",
-                             "Он спроси́л, зна́ют ли на по́чте отправи́теля."],
+                "examples": ["Никто не знал, придёт ли посылка.",
+                             "Он спросил, знают ли на почте отправителя."],
             },
             {
                 "pattern":  "Savol soʻzi bor boʻlsa — ли yoʻq",
-                "meaning":  "«Кто присыла́ет», «отку́да прихо́дит» — bu gaplarda "
+                "meaning":  "«Кто присылает», «откуда приходит» — bu gaplarda "
                             "savol soʻzi bor, shuning uchun ли qoʻyilmaydi. Matn "
                             "ikkala qurilishni yonma-yon koʻrsatadi.",
-                "examples": ["Никто́ не знал, кто присыла́ет кни́ги.",
-                             "Он посмотре́л, отку́да пришла́ посы́лка."],
+                "examples": ["Никто не знал, кто присылает книги.",
+                             "Он посмотрел, откуда пришла посылка."],
             },
             {
                 "pattern":  "Вряд ли",
                 "meaning":  "«Dargumon» degan tayyor ibora. Ichida ли turibdi, "
                             "lekin u qotib qolgan — alohida tahlil qilinmaydi.",
-                "examples": ["Вряд ли мы узна́ем, кто э́то."],
+                "examples": ["Вряд ли мы узнаем, кто это."],
             },
         ],
-        "body": '''<p>Ка́ждый год, пе́рвого сентября́, в шко́лу села́ Ивано́вка прихо́дит <span class="cn-word" data-tr="pochta posilkasi">посы́лка</span>. <span class="cn-word" data-tr="ichida">Внутри́</span> — кни́ги. Но́вые, хоро́шие кни́ги.</p>
+        "body": '''<p>Каждый год, первого сентября, в школу села Ивановка приходит <span class="cn-word" data-tr="pochta posilkasi">посылка</span>. <span class="cn-word" data-tr="ichida">Внутри</span> — книги. Новые, хорошие книги.</p>
 
-<p><span class="cn-word" data-tr="joʻnatuvchi">Отправи́теля</span> в посы́лке нет. То́лько а́дрес шко́лы и <span class="cn-word" data-tr="sana">да́та</span>.</p>
+<p><span class="cn-word" data-tr="joʻnatuvchi">Отправителя</span> в посылке нет. Только адрес школы и <span class="cn-word" data-tr="sana">дата</span>.</p>
 
-<p>Пе́рвая посы́лка пришла́ в 2003 году́. Учителя́ тогда́ <span class="cn-word" data-pos="verb" data-tr="qaror qilishdi">реши́ли</span>, что э́то <span class="cn-word" data-tr="tasodif">случа́йность</span>. Но че́рез год посы́лка пришла́ сно́ва. И ещё че́рез год.</p>
+<p>Первая посылка пришла в 2003 году. Учителя тогда <span class="cn-word" data-pos="verb" data-tr="qaror qilishdi">решили</span>, что это <span class="cn-word" data-tr="tasodif">случайность</span>. Но через год посылка пришла снова. И ещё через год.</p>
 
-<p>Ка́ждое ле́то в шко́ле начина́лся оди́н и тот же <span class="cn-word" data-tr="suhbat, gap">разгово́р</span>. <strong>Никто́ не знал, придёт ли</strong> посы́лка в э́том году́. И <strong>никто́ не знал, кто</strong> её присыла́ет.</p>
+<p>Каждое лето в школе начинался один и тот же <span class="cn-word" data-tr="suhbat, gap">разговор</span>. <strong>Никто не знал, придёт ли</strong> посылка в этом году. И <strong>никто не знал, кто</strong> её присылает.</p>
 
-<p>Дире́ктор шко́лы не́сколько раз <span class="cn-word" data-pos="verb" data-tr="soʻradi">спра́шивал</span> на по́чте, <strong>зна́ют ли</strong> там отправи́теля. На по́чте отвеча́ли, что не зна́ют: посы́лку <span class="cn-word" data-pos="verb" data-tr="joʻnatishadi">присыла́ют</span> без и́мени.</p>
+<p>Директор школы несколько раз <span class="cn-word" data-pos="verb" data-tr="soʻradi">спрашивал</span> на почте, <strong>знают ли</strong> там отправителя. На почте отвечали, что не знают: посылку <span class="cn-word" data-pos="verb" data-tr="joʻnatishadi">присылают</span> без имени.</p>
 
-<p><span class="cn-word" data-tr="qorovul">Сто́рож</span> Никола́й Ива́нович рабо́тал в шко́ле три́дцать лет. <span class="cn-word" data-tr="bir kuni">Одна́жды</span> он взял ста́рые посы́лки и посмотре́л, <strong>отку́да они́ пришли́</strong>.</p>
+<p><span class="cn-word" data-tr="qorovul">Сторож</span> Николай Иванович работал в школе тридцать лет. <span class="cn-word" data-tr="bir kuni">Однажды</span> он взял старые посылки и посмотрел, <strong>откуда они пришли</strong>.</p>
 
-<p>Все <span class="cn-word" data-tr="pochta shtempeli">шта́мпы</span> бы́ли из одного́ го́рода — из Ирку́тска.</p>
+<p>Все <span class="cn-word" data-tr="pochta shtempeli">штампы</span> были из одного города — из Иркутска.</p>
 
-<p>Никола́й Ива́нович написа́л письмо́ на ирку́тскую по́чту. Он спроси́л, <strong>мо́жно ли</strong> узна́ть и́мя <span class="cn-word" data-tr="joʻnatuvchining">отправи́теля</span>. Он не <span class="cn-word" data-pos="verb" data-tr="umid qilmasdi">наде́ялся</span> на отве́т. «<strong>Вряд ли</strong> они́ <span class="cn-word" data-pos="verb" data-tr="qidira boshlaydi">ста́нут иска́ть</span>», — ду́мал он.</p>
+<p>Николай Иванович написал письмо на иркутскую почту. Он спросил, <strong>можно ли</strong> узнать имя <span class="cn-word" data-tr="joʻnatuvchining">отправителя</span>. Он не <span class="cn-word" data-pos="verb" data-tr="umid qilmasdi">надеялся</span> на ответ. «<strong>Вряд ли</strong> они <span class="cn-word" data-pos="verb" data-tr="qidira boshlaydi">станут искать</span>», — думал он.</p>
 
-<p>Отве́т пришёл че́рез два ме́сяца. Кни́ги присыла́ла <span class="cn-word" data-tr="ayol">же́нщина</span> по и́мени Ири́на Серге́евна. Она́ учи́лась в э́той шко́ле со́рок лет наза́д, пото́м <span class="cn-word" data-pos="verb" data-tr="ketib qoldi">уе́хала</span> и ста́ла врачо́м.</p>
+<p>Ответ пришёл через два месяца. Книги присылала <span class="cn-word" data-tr="ayol">женщина</span> по имени Ирина Сергеевна. Она училась в этой школе сорок лет назад, потом <span class="cn-word" data-pos="verb" data-tr="ketib qoldi">уехала</span> и стала врачом.</p>
 
-<p>В 2003 году́ она́ позвони́ла в <span class="cn-word" data-tr="tuman markaziga">райо́н</span> и спроси́ла, <strong>рабо́тает ли</strong> ещё её ста́рая шко́ла. Ей отве́тили, что рабо́тает. <span class="cn-word" data-tr="oʻshandan beri">С тех пор</span> она́ присыла́ет кни́ги.</p>
+<p>В 2003 году она позвонила в <span class="cn-word" data-tr="tuman markaziga">район</span> и спросила, <strong>работает ли</strong> ещё её старая школа. Ей ответили, что работает. <span class="cn-word" data-tr="oʻshandan beri">С тех пор</span> она присылает книги.</p>
 
-<p>Тепе́рь в Ивано́вке зна́ют её и́мя. Но пе́рвого сентября́ никто́ уже́ не спра́шивает, придёт ли посы́лка.</p>
+<p>Теперь в Ивановке знают её имя. Но первого сентября никто уже не спрашивает, придёт ли посылка.</p>
 
-<p>Все <span class="cn-word" data-tr="allaqachon, shusiz ham">и так</span> зна́ют, что придёт.</p>''',
+<p>Все <span class="cn-word" data-tr="allaqachon, shusiz ham">и так</span> знают, что придёт.</p>''',
         "questions": [
             {
                 "text": "Nikolay Ivanovich sirni qanday yechdi?",
@@ -129,22 +129,22 @@ STORIES = [
                     "Kitoblarning ichidagi imzoni topdi"
                 ],
                 "answer": 1,
-                "explanation": "«Он взял ста́рые посы́лки и посмотре́л, отку́да "
-                               "они́ пришли́. Все шта́мпы бы́ли из одного́ "
-                               "го́рода — из Ирку́тска». Shundan keyin u xat "
+                "explanation": "«Он взял старые посылки и посмотрел, откуда "
+                               "они пришли. Все штампы были из одного "
+                               "города — из Иркутска». Shundan keyin u xat "
                                "yozdi.",
             },
             {
-                "text": "Nega matnda «зна́ют ли там отправи́теля», lekin «кто её присыла́ет» — birida ли bor, ikkinchisida yoʻq?",
+                "text": "Nega matnda «знают ли там отправителя», lekin «кто её присылает» — birida ли bor, ikkinchisida yoʻq?",
                 "choices": [
                     "Chunki birinchisi oʻtgan zamonda",
                     "Chunki ikkinchisi inkor gap",
                     "Chunki ikkinchi gapda savol soʻzi «кто» bor — ли keraksiz",
-                    "Chunki «присыла́ть» feʼli ли ni olmaydi"
+                    "Chunki «присылать» feʼli ли ni olmaydi"
                 ],
                 "answer": 2,
                 "explanation": "Ли faqat «ha/yoʻq» savoli boʻlganda qoʻyiladi. "
-                               "Gapda «кто», «где», «отку́да» kabi savol soʻzi "
+                               "Gapda «кто», «где», «откуда» kabi savol soʻzi "
                                "boʻlsa, ли ortiqcha — xuddi oʻzbekchada «kim "
                                "joʻnatadimi» deyilmagani kabi.",
             },
@@ -157,8 +157,8 @@ STORIES = [
                     "Endi «keladimi?» degan savolning oʻzi kerak emas — hamma ishonadi"
                 ],
                 "answer": 3,
-                "explanation": "«Никто́ уже́ не спра́шивает, придёт ли посы́лка. "
-                               "Все и так зна́ют, что придёт». Yaʼni bilvosita "
+                "explanation": "«Никто уже не спрашивает, придёт ли посылка. "
+                               "Все и так знают, что придёт». Yaʼni bilvosita "
                                "savol («придёт ли») oddiy tasdiqqa («что "
                                "придёт») aylandi.",
             },
@@ -169,7 +169,7 @@ STORIES = [
     # PR-69 — тот, кто / то, что                      HAYOT HIKOYASI
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Тот, кто са́жает дере́вья",
+        "title":   "Тот, кто сажает деревья",
         "summary": (
             "PR-69 matni. Haqiqiy odam haqida: hindistonlik Jadav Payeng "
             "1979-yilda yalangʻoch qumli orolda yolgʻiz daraxt eka boshlagan "
@@ -182,51 +182,51 @@ STORIES = [
                 "meaning":  "Ot boʻlmaganda «тот» otning oʻrnida turadi. Matnning "
                             "sarlavhasi ham, birinchi va oxirgi jumlasi ham shu "
                             "qurilishga qurilgan.",
-                "examples": ["Тот, кто са́жает де́рево, ду́мает о други́х.",
-                             "Тот, кого́ счита́ли стра́нным, оказа́лся прав."],
+                "examples": ["Тот, кто сажает дерево, думает о других.",
+                             "Тот, кого считали странным, оказался прав."],
             },
             {
                 "pattern":  "То, что — narsa yoki butun fikr haqida",
-                "meaning":  "«То, что он сде́лал» — u qilgan ish. Predlogdan keyin "
+                "meaning":  "«То, что он сделал» — u qilgan ish. Predlogdan keyin "
                             "«то» hech qachon tushib qolmaydi: о том, что…",
-                "examples": ["То, что он сде́лал, тепе́рь называ́ют ле́сом.",
-                             "Никто́ не ду́мал о том, что бу́дет че́рез со́рок лет."],
+                "examples": ["То, что он сделал, теперь называют лесом.",
+                             "Никто не думал о том, что будет через сорок лет."],
             },
             {
-                "pattern":  "Все, кто + birlik feʼl · де́ло в том, что",
+                "pattern":  "Все, кто + birlik feʼl · дело в том, что",
                 "meaning":  "«Кто» dan keyingi feʼl har doim birlikda turadi. "
-                            "«Де́ло в том, что…» = «Gap shundaki…».",
-                "examples": ["Все, кто ви́дел о́стров, говори́л одно́ и то же.",
-                             "Де́ло в том, что земля́ была́ пуста́я."],
+                            "«Дело в том, что…» = «Gap shundaki…».",
+                "examples": ["Все, кто видел остров, говорил одно и то же.",
+                             "Дело в том, что земля была пустая."],
             },
         ],
-        "body": '''<p>В Инди́и есть <span class="cn-word" data-tr="maqol">посло́вица</span>: <strong>тот, кто</strong> са́жает де́рево, ду́мает о други́х.</p>
+        "body": '''<p>В Индии есть <span class="cn-word" data-tr="maqol">пословица</span>: <strong>тот, кто</strong> сажает дерево, думает о других.</p>
 
-<p>В 1979 году́ на реке́ Брахмапу́тра случи́лось большо́е <span class="cn-word" data-tr="toshqin">наводне́ние</span>. Вода́ ушла́ и оста́вила го́лый <span class="cn-word" data-tr="qumloq">песо́к</span>. На э́том песке́ уме́рло мно́го змей: там не́ было <span class="cn-word" data-tr="soya">те́ни</span>, и со́лнце уби́ло их за оди́н день.</p>
+<p>В 1979 году на реке Брахмапутра случилось большое <span class="cn-word" data-tr="toshqin">наводнение</span>. Вода ушла и оставила голый <span class="cn-word" data-tr="qumloq">песок</span>. На этом песке умерло много змей: там не было <span class="cn-word" data-tr="soya">тени</span>, и солнце убило их за один день.</p>
 
-<p>Э́то уви́дел шестнадцатиле́тний ма́льчик. Его́ зва́ли Жада́в Па́йенг. Он жил на о́строве Маджу́ли и пас <span class="cn-word" data-tr="buyvollar">бу́йволов</span>.</p>
+<p>Это увидел шестнадцатилетний мальчик. Его звали Жадав Пайенг. Он жил на острове Маджули и пас <span class="cn-word" data-tr="buyvollar">буйволов</span>.</p>
 
-<p>Жада́в пошёл к <span class="cn-word" data-tr="kattalar">взро́слым</span> и спроси́л, что мо́жно сде́лать. Ему́ отве́тили, что на песке́ дере́вья не расту́т.</p>
+<p>Жадав пошёл к <span class="cn-word" data-tr="kattalar">взрослым</span> и спросил, что можно сделать. Ему ответили, что на песке деревья не растут.</p>
 
-<p>Тогда́ он взял два́дцать <span class="cn-word" data-tr="bambuk koʻchati">ростко́в бамбу́ка</span> и посади́л их сам.</p>
+<p>Тогда он взял двадцать <span class="cn-word" data-tr="bambuk koʻchati">ростков бамбука</span> и посадил их сам.</p>
 
-<p>Пото́м он приходи́л ка́ждый день. Он носи́л во́ду в вёдрах. Он де́лал <span class="cn-word" data-tr="soyabon, chodir">наве́сы</span> из ли́стьев, что́бы молоды́е дере́вья не сгоре́ли на со́лнце. Он приноси́л <span class="cn-word" data-tr="chumolilar">муравьёв</span>, что́бы они́ меня́ли <span class="cn-word" data-tr="tuproq">по́чву</span>.</p>
+<p>Потом он приходил каждый день. Он носил воду в вёдрах. Он делал <span class="cn-word" data-tr="soyabon, chodir">навесы</span> из листьев, чтобы молодые деревья не сгорели на солнце. Он приносил <span class="cn-word" data-tr="chumolilar">муравьёв</span>, чтобы они меняли <span class="cn-word" data-tr="tuproq">почву</span>.</p>
 
-<p><strong>Все, кто</strong> ви́дел его́ в те го́ды, счита́л его́ стра́нным. <strong>Де́ло в том, что</strong> рабо́та была́ бесконе́чная, а <span class="cn-word" data-tr="natija">результа́т</span> никто́ не мог уви́деть.</p>
+<p><strong>Все, кто</strong> видел его в те годы, считал его странным. <strong>Дело в том, что</strong> работа была бесконечная, а <span class="cn-word" data-tr="natija">результат</span> никто не мог увидеть.</p>
 
-<p>Жада́в рабо́тал три́дцать лет. Оди́н.</p>
+<p>Жадав работал тридцать лет. Один.</p>
 
-<p>В 2008 году́ на о́стров пришли́ <span class="cn-word" data-tr="mansabdorlar">чино́вники</span>. Они́ иска́ли <span class="cn-word" data-tr="fillar podasi">ста́до слоно́в</span>. И нашли́ лес.</p>
+<p>В 2008 году на остров пришли <span class="cn-word" data-tr="mansabdorlar">чиновники</span>. Они искали <span class="cn-word" data-tr="fillar podasi">стадо слонов</span>. И нашли лес.</p>
 
-<p>Никто́ не знал <span class="cn-word" data-tr="bu haqda">об э́том</span> ле́се. На ка́рте его́ не́ было.</p>
+<p>Никто не знал <span class="cn-word" data-tr="bu haqda">об этом</span> лесе. На карте его не было.</p>
 
-<p>Сейча́с <strong>то, что</strong> посади́л Жада́в, занима́ет пятьсо́т пятьдеся́т гекта́ров. Там живу́т слоны́, <span class="cn-word" data-tr="karkidonlar">носоро́ги</span>, оле́ни и ти́гры. Лес называ́ют «Мола́и» — по <span class="cn-word" data-tr="laqab">про́звищу</span> Жада́ва.</p>
+<p>Сейчас <strong>то, что</strong> посадил Жадав, занимает пятьсот пятьдесят гектаров. Там живут слоны, <span class="cn-word" data-tr="karkidonlar">носороги</span>, олени и тигры. Лес называют «Молаи» — по <span class="cn-word" data-tr="laqab">прозвищу</span> Жадава.</p>
 
-<p>В 2015 году́ Инди́я дала́ ему́ госуда́рственную <span class="cn-word" data-tr="mukofot">награ́ду</span>.</p>
+<p>В 2015 году Индия дала ему государственную <span class="cn-word" data-tr="mukofot">награду</span>.</p>
 
-<p>Журнали́сты спра́шивают его́ <strong>о том, что</strong> он чу́вствует. Жада́в отвеча́ет ко́ротко: он про́сто продолжа́ет сажа́ть.</p>
+<p>Журналисты спрашивают его <strong>о том, что</strong> он чувствует. Жадав отвечает коротко: он просто продолжает сажать.</p>
 
-<p><strong>Тот, кого́</strong> счита́ли стра́нным, оказа́лся <span class="cn-word" data-tr="oddiygina">про́сто</span> терпели́вым.</p>''',
+<p><strong>Тот, кого</strong> считали странным, оказался <span class="cn-word" data-tr="oddiygina">просто</span> терпеливым.</p>''',
         "questions": [
             {
                 "text": "Jadav Payeng nega daraxt eka boshladi?",
@@ -237,12 +237,12 @@ STORIES = [
                     "Toshqindan keyin yalangʻoch qumda ilonlar soyasizlikdan qirilib ketdi"
                 ],
                 "answer": 3,
-                "explanation": "«Там не́ было те́ни, и со́лнце уби́ло их за оди́н "
+                "explanation": "«Там не было тени, и солнце убило их за один "
                                "день». Oʻn olti yoshli bola shuni koʻrgach, "
                                "yigirmata bambuk koʻchatini oʻzi ekdi.",
             },
             {
-                "text": "Nega matnda «Все, кто ви́дел его́, счита́л» deyilgan — nega «счита́ли» emas?",
+                "text": "Nega matnda «Все, кто видел его, считал» deyilgan — nega «считали» emas?",
                 "choices": [
                     "Chunki gap bitta odam haqida",
                     "Chunki bu oʻtgan zamon",
@@ -264,9 +264,9 @@ STORIES = [
                     "U mukofot uchun ishlagan"
                 ],
                 "answer": 0,
-                "explanation": "«Тот, кого́ счита́ли стра́нным, оказа́лся про́сто "
-                               "терпели́вым». Bu yerda «тот» asosiy gapda ega "
-                               "(И.п.), «кого́» esa oʻz gapida obyekt (В.п.) — "
+                "explanation": "«Тот, кого считали странным, оказался просто "
+                               "терпеливым». Bu yerda «тот» asosiy gapda ega "
+                               "(И.п.), «кого» esa oʻz gapida obyekt (В.п.) — "
                                "darsning ikki kelishik qoidasi.",
             },
         ],
@@ -276,7 +276,7 @@ STORIES = [
     # PR-70 — действительные причастия              ILMIY-OMMABOP
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Лю́ди, живу́щие на Се́вере",
+        "title":   "Люди, живущие на Севере",
         "summary": (
             "PR-70 matni. Rossiya Shimolida odamlar qanday yashaydi: qutb "
             "tuni, abadiy muzloq va ustunlar ustidagi uylar, kiyik boquvchi "
@@ -286,47 +286,47 @@ STORIES = [
         "grammar": [
             {
                 "pattern":  "Hozirgi zamon sifatdoshi: -ущ- / -ющ- / -ащ- / -ящ-",
-                "meaning":  "«Они́» shaklidan yasaladi: живу́[т] → живу́щий. "
+                "meaning":  "«Они» shaklidan yasaladi: живу[т] → живущий. "
                             "Oʻzbekcha «-ayotgan / -adigan» ga toʻgʻri keladi.",
-                "examples": ["лю́ди, живу́щие на Се́вере",
-                             "учёные, изуча́ющие ве́чную мерзлоту́"],
+                "examples": ["люди, живущие на Севере",
+                             "учёные, изучающие вечную мерзлоту"],
             },
             {
                 "pattern":  "Oʻtgan zamon sifatdoshi: -вш- / -ш-",
-                "meaning":  "Oʻtgan zamon erkak shaklidan: вы́рос → вы́росший. "
+                "meaning":  "Oʻtgan zamon erkak shaklidan: вырос → выросший. "
                             "Oʻzbekcha «-gan».",
-                "examples": ["челове́к, вы́росший в ту́ндре",
-                             "по́езд, прише́дший у́тром"],
+                "examples": ["человек, выросший в тундре",
+                             "поезд, пришедший утром"],
             },
             {
                 "pattern":  "Vergul oʻringa bogʻliq",
                 "meaning":  "Oborot otdan keyin tursa — ikki tomondan vergul. "
                             "Otdan oldin tursa (oʻzbekcha tartib) — vergulsiz.",
-                "examples": ["дома́, стоя́щие на сва́ях",
-                             "стоя́щие на сва́ях дома́"],
+                "examples": ["дома, стоящие на сваях",
+                             "стоящие на сваях дома"],
             },
         ],
-        "body": '''<p>Над Поля́рным кру́гом со́лнце рабо́тает не так, как у нас. Зимо́й оно́ не встаёт, ле́том не сади́тся. В Нори́льске <span class="cn-word" data-tr="qutb tuni">поля́рная ночь</span> дли́тся со́рок пять дней.</p>
+        "body": '''<p>Над Полярным кругом солнце работает не так, как у нас. Зимой оно не встаёт, летом не садится. В Норильске <span class="cn-word" data-tr="qutb tuni">полярная ночь</span> длится сорок пять дней.</p>
 
-<p><strong>Лю́ди, живу́щие</strong> в таки́х города́х, привыка́ют к э́тому. Но <span class="cn-word" data-tr="tabiat, muhit">приро́да</span> ста́вит и други́е зада́чи.</p>
+<p><strong>Люди, живущие</strong> в таких городах, привыкают к этому. Но <span class="cn-word" data-tr="tabiat, muhit">природа</span> ставит и другие задачи.</p>
 
-<p>Пе́рвая зада́ча — <span class="cn-word" data-tr="abadiy muzloq">ве́чная мерзлота́</span>. Э́то земля́, кото́рая не <span class="cn-word" data-pos="verb" data-tr="erimaydi">та́ет</span> да́же ле́том. Она́ начина́ется в одно́м ме́тре от пове́рхности и ухо́дит вниз на со́тни ме́тров.</p>
+<p>Первая задача — <span class="cn-word" data-tr="abadiy muzloq">вечная мерзлота</span>. Это земля, которая не <span class="cn-word" data-pos="verb" data-tr="erimaydi">тает</span> даже летом. Она начинается в одном метре от поверхности и уходит вниз на сотни метров.</p>
 
-<p>Дом, <span class="cn-word" data-pos="verb" data-tr="turgan">стоя́щий</span> на тако́й земле́, гре́ет её. Мерзлота́ та́ет, и дом начина́ет па́дать.</p>
+<p>Дом, <span class="cn-word" data-pos="verb" data-tr="turgan">стоящий</span> на такой земле, греет её. Мерзлота тает, и дом начинает падать.</p>
 
-<p>Поэ́тому на Се́вере стро́ят ина́че. <strong>Дома́, стоя́щие</strong> в Яку́тске и Нори́льске, не каса́ются земли́: они́ стоя́т на <span class="cn-word" data-tr="ustunlar, qoziqlar">сва́ях</span>. Ме́жду до́мом и землёй хо́дит <span class="cn-word" data-tr="sovuq havo">холо́дный во́здух</span>. Земля́ остаётся <span class="cn-word" data-tr="sovuq">холо́дной</span>, и дом стои́т.</p>
+<p>Поэтому на Севере строят иначе. <strong>Дома, стоящие</strong> в Якутске и Норильске, не касаются земли: они стоят на <span class="cn-word" data-tr="ustunlar, qoziqlar">сваях</span>. Между домом и землёй ходит <span class="cn-word" data-tr="sovuq havo">холодный воздух</span>. Земля остаётся <span class="cn-word" data-tr="sovuq">холодной</span>, и дом стоит.</p>
 
-<p>Втора́я зада́ча — <span class="cn-word" data-tr="masofa">расстоя́ние</span>. <strong>Не́нцы, живу́щие</strong> в ту́ндре, пасу́т <span class="cn-word" data-tr="bugʻular">оле́ней</span>. <span class="cn-word" data-tr="poda">Ста́до</span> идёт за <span class="cn-word" data-tr="yem, oziq">ко́рмом</span>, и лю́ди иду́т за ста́дом. За год семья́ прохо́дит со́тни киломе́тров.</p>
+<p>Вторая задача — <span class="cn-word" data-tr="masofa">расстояние</span>. <strong>Ненцы, живущие</strong> в тундре, пасут <span class="cn-word" data-tr="bugʻular">оленей</span>. <span class="cn-word" data-tr="poda">Стадо</span> идёт за <span class="cn-word" data-tr="yem, oziq">кормом</span>, и люди идут за стадом. За год семья проходит сотни километров.</p>
 
-<p>Их дом называ́ется <span class="cn-word" data-tr="chum — kiyik terisidan chodir">чум</span>. Его́ мо́жно собра́ть за час и разобра́ть за час.</p>
+<p>Их дом называется <span class="cn-word" data-tr="chum — kiyik terisidan chodir">чум</span>. Его можно собрать за час и разобрать за час.</p>
 
-<p>Челове́к, <span class="cn-word" data-pos="verb" data-tr="oʻsgan">вы́росший</span> в ту́ндре, чита́ет снег как кни́гу. Он ви́дит, где прошли́ оле́ни и когда́ бу́дет <span class="cn-word" data-tr="boʻron">пурга́</span>.</p>
+<p>Человек, <span class="cn-word" data-pos="verb" data-tr="oʻsgan">выросший</span> в тундре, читает снег как книгу. Он видит, где прошли олени и когда будет <span class="cn-word" data-tr="boʻron">пурга</span>.</p>
 
-<p>Тре́тья зада́ча — <span class="cn-word" data-tr="ovqat">еда́</span>. Овощи́ на Се́вере не расту́т. Но <strong>лю́ди, живу́щие</strong> здесь ты́сячи лет, нашли́ реше́ние: <span class="cn-word" data-tr="baliq">ры́ба</span> и оле́нина даю́т витами́н D, кото́рый в друго́м ме́сте даёт со́лнце.</p>
+<p>Третья задача — <span class="cn-word" data-tr="ovqat">еда</span>. Овощи на Севере не растут. Но <strong>люди, живущие</strong> здесь тысячи лет, нашли решение: <span class="cn-word" data-tr="baliq">рыба</span> и оленина дают витамин D, который в другом месте даёт солнце.</p>
 
-<p>Сейча́с в ту́ндре рабо́тают <strong>учёные, изуча́ющие</strong> мерзлоту́. Они́ говоря́т, что земля́ на́чала та́ять сли́шком бы́стро, и что дома́ на сва́ях тепе́рь на́до стро́ить ина́че.</p>
+<p>Сейчас в тундре работают <strong>учёные, изучающие</strong> мерзлоту. Они говорят, что земля начала таять слишком быстро, и что дома на сваях теперь надо строить иначе.</p>
 
-<p>Се́вер у́чит одному́: здесь выи́грывает не <span class="cn-word" data-tr="kuchli">си́льный</span>, а тот, кто <span class="cn-word" data-pos="verb" data-tr="dunyoni kuzatadi">смо́трит по сторона́м</span>.</p>''',
+<p>Север учит одному: здесь выигрывает не <span class="cn-word" data-tr="kuchli">сильный</span>, а тот, кто <span class="cn-word" data-pos="verb" data-tr="dunyoni kuzatadi">смотрит по сторонам</span>.</p>''',
         "questions": [
             {
                 "text": "Nega Shimolda uylar ustunlar ustiga quriladi?",
@@ -337,13 +337,13 @@ STORIES = [
                     "Toshqin suvi kirmasligi uchun"
                 ],
                 "answer": 0,
-                "explanation": "«Дом, стоя́щий на тако́й земле́, гре́ет её. "
-                               "Мерзлота́ та́ет, и дом начина́ет па́дать». "
+                "explanation": "«Дом, стоящий на такой земле, греет её. "
+                               "Мерзлота тает, и дом начинает падать». "
                                "Ustunlar orasidan sovuq havo oʻtadi va yer "
                                "muzlagan holda qoladi.",
             },
             {
-                "text": "«Челове́к, вы́росший в ту́ндре» — bu qanday shakl va nimani bildiradi?",
+                "text": "«Человек, выросший в тундре» — bu qanday shakl va nimani bildiradi?",
                 "choices": [
                     "Hozirgi zamon sifatdoshi — «oʻsayotgan odam»",
                     "Oddiy sifat — «katta odam»",
@@ -351,13 +351,13 @@ STORIES = [
                     "Ravishdosh — «oʻsib»"
                 ],
                 "answer": 2,
-                "explanation": "«Вы́рос» — oʻtgan zamon erkak shakli, unda -л "
-                               "yoʻq, shuning uchun -ш- qoʻshilib «вы́росший» "
-                               "hosil boʻlgan. Uni «кото́рый вы́рос» deb yoyish "
+                "explanation": "«Вырос» — oʻtgan zamon erkak shakli, unda -л "
+                               "yoʻq, shuning uchun -ш- qoʻshilib «выросший» "
+                               "hosil boʻlgan. Uni «который вырос» deb yoyish "
                                "mumkin.",
             },
             {
-                "text": "Nega «Дома́, стоя́щие в Яку́тске…» da vergul bor, «стоя́щие на сва́ях дома́» da esa yoʻq?",
+                "text": "Nega «Дома, стоящие в Якутске…» da vergul bor, «стоящие на сваях дома» da esa yoʻq?",
                 "choices": [
                     "Chunki birinchisi koʻplikda",
                     "Chunki ikkinchisida oborot qisqaroq",

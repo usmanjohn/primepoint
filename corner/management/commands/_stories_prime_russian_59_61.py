@@ -6,7 +6,7 @@ Toc: corner/management/commands/toc_prime_russian_readings.txt
 
 Janr xilma-xilligi: 59 — qoʻllanma (buyruq shakllari bilan), 60 — maslahat
 xati, 61 — tarixiy matn. (56 sayohat qaydlari, 57 ilmiy-ommabop, 58 hikoya
-edi.) 59 PR-27 dagi «Пра́вила библиоте́ки» ga oʻxshaydi, lekin shakli
+edi.) 59 PR-27 dagi «Правила библиотеки» ga oʻxshaydi, lekin shakli
 boshqa: u qoidalar roʻyxati edi, bu esa odamga qaratilgan yoʻriqnoma.
 
 ⚠️ FAKTLAR (61-matn). Peterburg haqidagi daʼvolar tekshirilgan va ehtiyot
@@ -22,7 +22,7 @@ Grammatika chegarasi (kumulyativ qoida):
   60-matn: бы. Xat janri ideal — maslahat, afsus va muloyim taklif
            hammasi shartli maylda beriladi.
   61-matn: majhul nisbat. Tarixiy matnda bajaruvchi koʻpincha muhim emas,
-           shuning uchun «был постро́ен» tabiiy chiqadi.
+           shuning uchun «был построен» tabiiy chiqadi.
 
     python manage.py import_corner \
         corner/management/commands/_stories_prime_russian_59_61.py --author=prime
@@ -49,7 +49,7 @@ STORIES = [
     # PR-59 — buyruq mayli                       QOʻLLANMA
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Инстру́кция для но́вого сотру́дника",
+        "title":   "Инструкция для нового сотрудника",
         "summary": (
             "PR-59 matni. Yangi xodim uchun eslatma varaqasi: qachon kelish, "
             "kalitni kimdan olish, kofe qoidasi. Oxirgi band eslatmaning oʻzi "
@@ -59,47 +59,47 @@ STORIES = [
         "grammar": [
             {
                 "pattern":  "Buyruq: -Й / -И / -Ь",
-                "meaning":  "«Они́» shaklidan yasaladi: чита́ют → чита́й, говоря́т → "
-                            "говори́, гото́вят → готовь. ВЫ shakli -ТЕ qoʻshadi. "
+                "meaning":  "«Они» shaklidan yasaladi: читают → читай, говорят → "
+                            "говори, готовят → готовь. ВЫ shakli -ТЕ qoʻshadi. "
                             "Oʻzbekcha oʻqi! / oʻqing! bilan bir xil tizim.",
-                "examples": ["Приходи́те в де́вять.", "Возьми́те ключ."],
+                "examples": ["Приходите в девять.", "Возьмите ключ."],
             },
             {
                 "pattern":  "Inkor buyruqda НСВ",
-                "meaning":  "Не опа́здывайте, не теря́йте, не бо́йтесь — inkor "
+                "meaning":  "Не опаздывайте, не теряйте, не бойтесь — inkor "
                             "buyruqda deyarli har doim tugallanmagan feʼl. Bu "
                             "taqiq maʼnosini beradi.",
-                "examples": ["Не опа́здывайте.", "Не бо́йтесь ошиба́ться."],
+                "examples": ["Не опаздывайте.", "Не бойтесь ошибаться."],
             },
             {
                 "pattern":  "НСВ ↔ СВ buyruqda",
-                "meaning":  "Спра́шивайте (umumiy taklif — har doim shunday qiling) "
-                            "va прочита́йте (aniq vazifa — bir marta, oxirigacha). "
+                "meaning":  "Спрашивайте (umumiy taklif — har doim shunday qiling) "
+                            "va прочитайте (aniq vazifa — bir marta, oxirigacha). "
                             "Oxirgi band ikkalasini yonma-yon qoʻyadi.",
-                "examples": ["Спра́шивайте. Э́то норма́льно.", "Прочита́йте оди́н раз."],
+                "examples": ["Спрашивайте. Это нормально.", "Прочитайте один раз."],
             },
         ],
-        "body": '''<p>Здра́вствуйте! Вы — но́вый <span class="cn-word" data-tr="xodim">сотру́дник</span>. Вот <span class="cn-word" data-tr="eslatma varaqasi">па́мятка</span>.</p>
+        "body": '''<p>Здравствуйте! Вы — новый <span class="cn-word" data-tr="xodim">сотрудник</span>. Вот <span class="cn-word" data-tr="eslatma varaqasi">памятка</span>.</p>
 
-<p><strong>Приходи́те</strong> в де́вять. <strong>Не опа́здывайте</strong> — э́то ва́жно то́лько в пе́рвую неде́лю. Пото́м уже́ не о́чень.</p>
+<p><strong>Приходите</strong> в девять. <strong>Не опаздывайте</strong> — это важно только в первую неделю. Потом уже не очень.</p>
 
-<p><strong>Возьми́те</strong> <span class="cn-word" data-tr="kalit">ключ</span> у Ни́ны Петро́вны. <strong>Не теря́йте</strong> его́.</p>
+<p><strong>Возьмите</strong> <span class="cn-word" data-tr="kalit">ключ</span> у Нины Петровны. <strong>Не теряйте</strong> его.</p>
 
-<p>Ко́фе — на ку́хне. <strong>Пе́йте</strong> ско́лько хоти́те. Но <strong>помо́йте</strong> <span class="cn-word" data-tr="chashka">ча́шку</span>.</p>
+<p>Кофе — на кухне. <strong>Пейте</strong> сколько хотите. Но <strong>помойте</strong> <span class="cn-word" data-tr="chashka">чашку</span>.</p>
 
-<p><strong>Пиши́те</strong> пи́сьма <span class="cn-word" data-tr="qisqa">ко́ротко</span>. <span class="cn-word" data-tr="Uzun">Дли́нные</span> пи́сьма никто́ не чита́ет.</p>
+<p><strong>Пишите</strong> письма <span class="cn-word" data-tr="qisqa">коротко</span>. <span class="cn-word" data-tr="Uzun">Длинные</span> письма никто не читает.</p>
 
-<p>Что́-то <span class="cn-word" data-tr="tushunarsiz">непоня́тно</span>? <strong>Спра́шивайте</strong>. Э́то норма́льно.</p>
+<p>Что-то <span class="cn-word" data-tr="tushunarsiz">непонятно</span>? <strong>Спрашивайте</strong>. Это нормально.</p>
 
-<p><strong>Не бо́йтесь</strong> <span class="cn-word" data-pos="verb" data-tr="xato qilmoq">ошиба́ться</span>. В пе́рвый ме́сяц оши́бка — э́то не оши́бка, а <span class="cn-word" data-tr="oʻqish">учёба</span>.</p>
+<p><strong>Не бойтесь</strong> <span class="cn-word" data-pos="verb" data-tr="xato qilmoq">ошибаться</span>. В первый месяц ошибка — это не ошибка, а <span class="cn-word" data-tr="oʻqish">учёба</span>.</p>
 
-<p>В <span class="cn-word" data-tr="juma">пя́тницу</span> мы пьём чай вме́сте в четы́ре. <strong>Приходи́те</strong>.</p>
+<p>В <span class="cn-word" data-tr="juma">пятницу</span> мы пьём чай вместе в четыре. <strong>Приходите</strong>.</p>
 
-<p>И <span class="cn-word" data-tr="oxirgisi">после́днее</span>.</p>
+<p>И <span class="cn-word" data-tr="oxirgisi">последнее</span>.</p>
 
-<p><strong>Не чита́йте</strong> э́ту па́мятку ка́ждый день.</p>
+<p><strong>Не читайте</strong> эту памятку каждый день.</p>
 
-<p><strong>Прочита́йте</strong> оди́н раз — и <strong>рабо́тайте</strong>.</p>''',
+<p><strong>Прочитайте</strong> один раз — и <strong>работайте</strong>.</p>''',
         "questions": [
             {
                 "text": "Eslatmaning oxirgi bandi nima deydi?",
@@ -110,13 +110,13 @@ STORIES = [
                     "Eslatma keraksiz"
                 ],
                 "answer": 0,
-                "explanation": "«Не чита́йте э́ту па́мятку ка́ждый день. Прочита́йте "
-                               "оди́н раз — и рабо́тайте». Ikki buyruq, ikki vid: "
+                "explanation": "«Не читайте эту памятку каждый день. Прочитайте "
+                               "один раз — и работайте». Ikki buyruq, ikki vid: "
                                "takrorni taqiqlaydi (НСВ) va bitta aniq vazifa "
                                "beradi (СВ).",
             },
             {
-                "text": "Nega matnda «не чита́йте», lekin «прочита́йте»?",
+                "text": "Nega matnda «не читайте», lekin «прочитайте»?",
                 "choices": [
                     "Inkor buyruqda НСВ, aniq vazifada esa СВ ishlatiladi",
                     "Ikkalasi bir xil",
@@ -125,7 +125,7 @@ STORIES = [
                 ],
                 "answer": 0,
                 "explanation": "Inkor buyruq deyarli har doim НСВ oladi — bu taqiq. "
-                               "«Прочита́йте оди́н раз» esa bir martalik aniq vazifa, "
+                               "«Прочитайте один раз» esa bir martalik aniq vazifa, "
                                "demak СВ.",
             },
             {
@@ -137,8 +137,8 @@ STORIES = [
                     "Xatolar haqida hech narsa aytilmagan"
                 ],
                 "answer": 0,
-                "explanation": "«Не бо́йтесь ошиба́ться. В пе́рвый ме́сяц оши́бка — "
-                               "э́то не оши́бка, а учёба». Eslatmaning ohangi qatʼiy "
+                "explanation": "«Не бойтесь ошибаться. В первый месяц ошибка — "
+                               "это не ошибка, а учёба». Eslatmaning ohangi qatʼiy "
                                "emas — u yangi odamni tinchlantirmoqchi.",
             },
         ],
@@ -148,7 +148,7 @@ STORIES = [
     # PR-60 — бы                                 MASLAHAT XATI
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Е́сли бы я знал ра́ньше",
+        "title":   "Если бы я знал раньше",
         "summary": (
             "PR-60 matni. Oleg amaki jiyaniga maslahat soʻragan xatiga javob "
             "yozadi. Uchta maslahat beradi — va oxirida ularning barchasini "
@@ -157,49 +157,49 @@ STORIES = [
         "order":   60,
         "grammar": [
             {
-                "pattern":  "е́сли бы …, … бы",
+                "pattern":  "если бы …, … бы",
                 "meaning":  "Noreal shart: ikkala qismda ham БЫ va oʻtgan zamon. "
-                            "«Е́сли бы я мог верну́ться, я бы сде́лал» — qaytib "
+                            "«Если бы я мог вернуться, я бы сделал» — qaytib "
                             "bora olmayman, shuning uchun qilmadim ham.",
-                "examples": ["Е́сли бы я мог верну́ться, я бы сде́лал три ве́щи."],
+                "examples": ["Если бы я мог вернуться, я бы сделал три вещи."],
             },
             {
                 "pattern":  "я бы + oʻtgan zamon",
                 "meaning":  "Shartli mayl faqat oʻtgan zamon bilan yasaladi va "
-                            "tuslanmaydi. Jinsga qaraydi: я бы сде́лал (erkak), "
-                            "я бы сде́лала (ayol).",
-                "examples": ["Я бы бо́льше слу́шал.", "Я бы звони́л ча́ще."],
+                            "tuslanmaydi. Jinsga qaraydi: я бы сделал (erkak), "
+                            "я бы сделала (ayol).",
+                "examples": ["Я бы больше слушал.", "Я бы звонил чаще."],
             },
             {
-                "pattern":  "на твоём ме́сте",
+                "pattern":  "на твоём месте",
                 "meaning":  "Maslahat berishning eng muloyim yoʻli — chunki bu buyruq "
-                            "emas. Rasmiy shakli: на ва́шем ме́сте.",
-                "examples": ["На твоём ме́сте я бы не спра́шивал сове́та."],
+                            "emas. Rasmiy shakli: на вашем месте.",
+                "examples": ["На твоём месте я бы не спрашивал совета."],
             },
         ],
-        "body": '''<p>До́рогой Жасу́р!</p>
+        "body": '''<p>Дорогой Жасур!</p>
 
-<p>Ты <span class="cn-word" data-pos="verb" data-tr="soʻrayapsan">про́сишь</span> <span class="cn-word" data-tr="maslahat">сове́та</span>. Я не зна́ю, что сказа́ть. Но я скажу́ так.</p>
+<p>Ты <span class="cn-word" data-pos="verb" data-tr="soʻrayapsan">просишь</span> <span class="cn-word" data-tr="maslahat">совета</span>. Я не знаю, что сказать. Но я скажу так.</p>
 
-<p><strong>Е́сли бы</strong> я мог <span class="cn-word" data-pos="verb" data-tr="qaytmoq">верну́ться</span> в два́дцать лет, я <strong>бы</strong> сде́лал три ве́щи.</p>
+<p><strong>Если бы</strong> я мог <span class="cn-word" data-pos="verb" data-tr="qaytmoq">вернуться</span> в двадцать лет, я <strong>бы</strong> сделал три вещи.</p>
 
-<p><span class="cn-word" data-tr="Birinchidan">Пе́рвое</span>. Я <strong>бы</strong> <span class="cn-word" data-tr="koʻproq">бо́льше</span> слу́шал и <span class="cn-word" data-tr="kamroq">ме́ньше</span> говори́л.</p>
+<p><span class="cn-word" data-tr="Birinchidan">Первое</span>. Я <strong>бы</strong> <span class="cn-word" data-tr="koʻproq">больше</span> слушал и <span class="cn-word" data-tr="kamroq">меньше</span> говорил.</p>
 
-<p>Второ́е. Я <strong>бы</strong> не боя́лся ошиба́ться. <span class="cn-word" data-tr="Xato">Оши́бка</span> — э́то не <span class="cn-word" data-tr="oxir">коне́ц</span>. Э́то <span class="cn-word" data-tr="shunchaki">про́сто</span> день.</p>
+<p>Второе. Я <strong>бы</strong> не боялся ошибаться. <span class="cn-word" data-tr="Xato">Ошибка</span> — это не <span class="cn-word" data-tr="oxir">конец</span>. Это <span class="cn-word" data-tr="shunchaki">просто</span> день.</p>
 
-<p>Тре́тье. Я <strong>бы</strong> звони́л ба́бушке <span class="cn-word" data-tr="tez-tezroq">ча́ще</span>.</p>
+<p>Третье. Я <strong>бы</strong> звонил бабушке <span class="cn-word" data-tr="tez-tezroq">чаще</span>.</p>
 
-<p>Но я не могу́ верну́ться. И ты не мо́жешь взять мой <span class="cn-word" data-tr="tajriba">о́пыт</span> — он не рабо́тает в чужи́х рука́х.</p>
+<p>Но я не могу вернуться. И ты не можешь взять мой <span class="cn-word" data-tr="tajriba">опыт</span> — он не работает в чужих руках.</p>
 
-<p><strong>На твоём ме́сте</strong> я <strong>бы</strong> не спра́шивал сове́та. Я <strong>бы</strong> про́сто на́чал.</p>
+<p><strong>На твоём месте</strong> я <strong>бы</strong> не спрашивал совета. Я <strong>бы</strong> просто начал.</p>
 
 <p>И вот ещё что.</p>
 
-<p><strong>Е́сли бы</strong> мне сказа́ли всё э́то в два́дцать лет, я <strong>бы</strong> не по́нял.</p>
+<p><strong>Если бы</strong> мне сказали всё это в двадцать лет, я <strong>бы</strong> не понял.</p>
 
-<p>Поэ́тому не слу́шай меня́. Иди́ и де́лай.</p>
+<p>Поэтому не слушай меня. Иди и делай.</p>
 
-<p>Твой дя́дя Оле́г</p>''',
+<p>Твой дядя Олег</p>''',
         "questions": [
             {
                 "text": "Xat oxirida Oleg amaki nima deydi?",
@@ -210,13 +210,13 @@ STORIES = [
                     "Universitetga kir"
                 ],
                 "answer": 0,
-                "explanation": "«Не слу́шай меня́. Иди́ и де́лай». U uchta maslahat "
+                "explanation": "«Не слушай меня. Иди и делай». U uchta maslahat "
                                "beradi, keyin oʻzi ularni bekor qiladi — chunki yigirma "
                                "yoshda oʻzi ham bunday gaplarni tushunmagan boʻlardi.",
             },
             {
-                "text": "«Е́сли бы мне сказа́ли всё э́то в два́дцать лет, я бы не "
-                        "по́нял» — bu jumla nimani anglatadi?",
+                "text": "«Если бы мне сказали всё это в двадцать лет, я бы не "
+                        "понял» — bu jumla nimani anglatadi?",
                 "choices": [
                     "Maslahat faqat tajriba orttirgandan keyin tushuniladi",
                     "Hech kim unga hech narsa aytmagan",
@@ -230,7 +230,7 @@ STORIES = [
                                "soʻramaslik.",
             },
             {
-                "text": "Nega matnda «я бы сде́лал», «я бы сде́лаю» emas?",
+                "text": "Nega matnda «я бы сделал», «я бы сделаю» emas?",
                 "choices": [
                     "БЫ faqat oʻtgan zamon bilan ishlatiladi",
                     "Chunki bu koʻplik",
@@ -240,7 +240,7 @@ STORIES = [
                 "answer": 0,
                 "explanation": "Shartli mayl — oʻtgan zamon + БЫ. Boshqa zamon bilan "
                                "ishlatilmaydi. Shakl faqat jinsga qaraydi: erkak "
-                               "«сде́лал бы», ayol «сде́лала бы».",
+                               "«сделал бы», ayol «сделала бы».",
             },
         ],
     },
@@ -249,7 +249,7 @@ STORIES = [
     # PR-61 — majhul nisbat                      TARIXIY MATN
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Как был постро́ен Петербу́рг",
+        "title":   "Как был построен Петербург",
         "summary": (
             "PR-61 matni. 1703-yil, Neva deltasidagi botqoq — va uning ustida "
             "qurilgan shahar. Matn oxirida botqoq hali ham oʻsha yerda ekani "
@@ -258,46 +258,46 @@ STORIES = [
         "order":   61,
         "grammar": [
             {
-                "pattern":  "был постро́ен — natija",
+                "pattern":  "был построен — natija",
                 "meaning":  "Qisqa sifatdosh + БЫТЬ. Egaga moslashadi: был "
-                            "постро́ен (erkak), была́ постро́ена (ayol), бы́ли "
-                            "постро́ены (koʻplik).",
-                "examples": ["Петербу́рг был постро́ен на боло́те.", "Была́ постро́ена кре́пость."],
+                            "построен (erkak), была построена (ayol), были "
+                            "построены (koʻplik).",
+                "examples": ["Петербург был построен на болоте.", "Была построена крепость."],
             },
             {
-                "pattern":  "стро́ился — jarayon",
-                "meaning":  "НСВ + -СЯ majhul nisbatning jarayon shakli: «го́род "
-                            "стро́ился мно́го лет» — qurilish davom etgan, natija "
+                "pattern":  "строился — jarayon",
+                "meaning":  "НСВ + -СЯ majhul nisbatning jarayon shakli: «город "
+                            "строился много лет» — qurilish davom etgan, natija "
                             "hali yoʻq.",
-                "examples": ["Го́род стро́ился мно́го лет."],
+                "examples": ["Город строился много лет."],
             },
             {
-                "pattern":  "Bajaruvchi — Твори́тельный",
-                "meaning":  "Kim qilgani aytilsa, u Твори́тельный'ga kiradi: "
-                            "«постро́ен людьми́». Oʻzbekchada bu «odamlar TOMONIDAN» "
+                "pattern":  "Bajaruvchi — Творительный",
+                "meaning":  "Kim qilgani aytilsa, u Творительный'ga kiradi: "
+                            "«построен людьми». Oʻzbekchada bu «odamlar TOMONIDAN» "
                             "boʻlardi.",
-                "examples": ["Го́род был постро́ен людьми́."],
+                "examples": ["Город был построен людьми."],
             },
         ],
-        "body": '''<p>Петербу́рг <strong>был постро́ен</strong> на <span class="cn-word" data-tr="botqoq">боло́те</span>.</p>
+        "body": '''<p>Петербург <strong>был построен</strong> на <span class="cn-word" data-tr="botqoq">болоте</span>.</p>
 
-<p>В 1703 году́ Пётр Пе́рвый <span class="cn-word" data-pos="verb" data-tr="asos soldi">основа́л</span> здесь го́род.</p>
+<p>В 1703 году Пётр Первый <span class="cn-word" data-pos="verb" data-tr="asos soldi">основал</span> здесь город.</p>
 
-<p><span class="cn-word" data-tr="Joy">Ме́сто</span> бы́ло <span class="cn-word" data-tr="yomon">плохо́е</span>: вода́, боло́то, хо́лод, <span class="cn-word" data-tr="shamol">ве́тер</span>.</p>
+<p><span class="cn-word" data-tr="Joy">Место</span> было <span class="cn-word" data-tr="yomon">плохое</span>: вода, болото, холод, <span class="cn-word" data-tr="shamol">ветер</span>.</p>
 
-<p>Но ме́сто бы́ло ва́жное: здесь река́ Нева́ идёт в мо́ре.</p>
+<p>Но место было важное: здесь река Нева идёт в море.</p>
 
-<p>Снача́ла <strong>была́ постро́ена</strong> <span class="cn-word" data-tr="qalʼa">кре́пость</span>. Пото́м <strong>бы́ли постро́ены</strong> дома́, у́лицы, <span class="cn-word" data-tr="kanallar">кана́лы</span>.</p>
+<p>Сначала <strong>была построена</strong> <span class="cn-word" data-tr="qalʼa">крепость</span>. Потом <strong>были построены</strong> дома, улицы, <span class="cn-word" data-tr="kanallar">каналы</span>.</p>
 
-<p>Го́род <strong>стро́ился</strong> мно́го лет. Рабо́та была́ тяжёлая: лю́ди рабо́тали в воде́ и в хо́лоде. Мно́го люде́й <span class="cn-word" data-pos="verb" data-tr="halok boʻldi">поги́бло</span>.</p>
+<p>Город <strong>строился</strong> много лет. Работа была тяжёлая: люди работали в воде и в холоде. Много людей <span class="cn-word" data-pos="verb" data-tr="halok boʻldi">погибло</span>.</p>
 
-<p>В 1712 году́ Петербу́рг стал <span class="cn-word" data-tr="poytaxt">столи́цей</span>.</p>
+<p>В 1712 году Петербург стал <span class="cn-word" data-tr="poytaxt">столицей</span>.</p>
 
-<p>Сего́дня э́то большо́й го́род: кана́лы, мосты́, <span class="cn-word" data-tr="saroylar">дворцы́</span>.</p>
+<p>Сегодня это большой город: каналы, мосты, <span class="cn-word" data-tr="saroylar">дворцы</span>.</p>
 
-<p>Но под ка́ждым до́мом — всё то же боло́то.</p>
+<p>Но под каждым домом — всё то же болото.</p>
 
-<p>Го́род <strong>был постро́ен</strong> людьми́ — не приро́дой. И он стои́т уже́ три <span class="cn-word" data-tr="asr">ве́ка</span>.</p>''',
+<p>Город <strong>был построен</strong> людьми — не природой. И он стоит уже три <span class="cn-word" data-tr="asr">века</span>.</p>''',
         "questions": [
             {
                 "text": "Nega shunday yomon joyda shahar qurildi?",
@@ -308,23 +308,23 @@ STORIES = [
                     "Matnda aytilmagan"
                 ],
                 "answer": 0,
-                "explanation": "«Ме́сто бы́ло плохо́е… Но ме́сто бы́ло ва́жное: здесь "
-                               "река́ Нева́ идёт в мо́ре». Ikki jumla bir-biriga "
+                "explanation": "«Место было плохое… Но место было важное: здесь "
+                               "река Нева идёт в море». Ikki jumla bir-biriga "
                                "qarama-qarshi qoʻyilgan: yomon, lekin muhim.",
             },
             {
-                "text": "«Была́ постро́ена кре́пость» va «бы́ли постро́ены дома́» — "
+                "text": "«Была построена крепость» va «были построены дома» — "
                         "nega shakl har xil?",
                 "choices": [
-                    "Qisqa sifatdosh egaga moslashadi: кре́пость ayol, дома́ koʻplik",
+                    "Qisqa sifatdosh egaga moslashadi: крепость ayol, дома koʻplik",
                     "Chunki qalʼa avval qurilgan",
                     "Chunki ular har xil zamonda",
                     "Bu matndagi xato"
                 ],
                 "answer": 0,
                 "explanation": "Qisqa sifatdosh sifat kabi ishlaydi: jins va son "
-                               "boʻyicha moslashadi — постро́ен / постро́ена / "
-                               "постро́ено / постро́ены.",
+                               "boʻyicha moslashadi — построен / построена / "
+                               "построено / построены.",
             },
             {
                 "text": "Matnning oxirgi jumlasi nimani taʼkidlaydi?",
@@ -335,9 +335,9 @@ STORIES = [
                     "Shahar hali qurilmoqda"
                 ],
                 "answer": 0,
-                "explanation": "«Го́род был постро́ен людьми́ — не приро́дой». "
+                "explanation": "«Город был построен людьми — не природой». "
                                "Undan oldingi jumla ham shuni tayyorlaydi: «под "
-                               "ка́ждым до́мом — всё то же боло́то». Botqoq hali "
+                               "каждым домом — всё то же болото». Botqoq hali "
                                "ham oʻsha yerda, lekin shahar uch asr turibdi.",
             },
         ],

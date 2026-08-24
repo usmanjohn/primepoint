@@ -33,7 +33,7 @@ TUTORIALS = [
             "jinsi va soniga qarab toʻrt xil shakl oladi — va bu shakllarni siz "
             "allaqachon koʻrgansiz."
         ),
-        "stories": ["Но́вая шко́ла"],
+        "stories": ["Новая школа"],
         "content": """
 <h2>PR-12: Sifat otga moslashadi — новый, новая, новое, новые</h2>
 
@@ -336,7 +336,7 @@ tiresiz gap:</p>
             "Noldan yuzgacha sanashni oʻrganasiz. Ikkita sonning oʻziga xosligi bor: "
             "оди́н jinsga qarab oʻzgaradi, два esa ayol jinsi uchun две shaklini oladi."
         ),
-        "stories": ["Ско́лько сто́ит?"],
+        "stories": ["Сколько стоит?"],
         "content": """
 <h2>PR-13: Sonlar 0–100 va «сколько?»</h2>
 
@@ -656,7 +656,7 @@ sifatida yodlang — u har kuni kerak boʻladi.</div>
             "qurilmasi ishlatiladi — va u oʻzbekchadagi «Menda … bor» bilan aynan "
             "bir xil ishlaydi."
         ),
-        "stories": ["У меня́ есть всё"],
+        "stories": ["У меня есть всё"],
         "content": """
 <h2>PR-14: У меня есть — rus tilida egalik</h2>
 

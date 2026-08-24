@@ -107,6 +107,10 @@ cannot say the word at all.
 - **PR-51 onwards:** mark it only when the lesson is *about* the stress, or the word is
   genuinely new and hard, or a minimal pair is at stake.
 - **Never** put a stress mark on a one-syllable word, and never on ё — ё is always stressed.
+- **The readings do NOT use stress marks** (user's decision, 2026-08-24). Tutorials mark
+  the stress, Corner readings do not — the lesson teaches you how to say the word, the
+  reading shows it as real Russian prints it. See the header of
+  `corner/management/commands/toc_prime_russian_readings.txt`.
 - Add a `.pe-ex__rom` line for the *pronunciation* (not transliteration) whenever the
   spelling lies to the reader: `<p class="pe-ex__rom">[мълако́]</p>`. Through PR-20 do this
   for every аканье / оглушение word; after that only when it surprises.

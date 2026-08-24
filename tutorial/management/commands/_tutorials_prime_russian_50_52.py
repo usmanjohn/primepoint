@@ -41,7 +41,7 @@ TUTORIALS = [
             "yigʻiladi. Bu darsda yangi shakl yoʻq, lekin yangi narsa bor: "
             "kelishikni tanlashning amaliy tartibi."
         ),
-        "stories": ["Оди́н день, шесть падеже́й"],
+        "stories": ["Один день, шесть падежей"],
         "content": """
 <h2>PR-50: Kelishiklar — umumiy takror va tirik gaplarda mashq</h2>
 
@@ -321,7 +321,7 @@ lekin oʻsha usul: oʻzbekcha bilan solishtirib, qadam-baqadam.</p>
             "turdan biriga tegishli: jarayon yoki natija. Va bu tushuncha "
             "oʻzbekchada ham bor — faqat boshqa joyda yashaydi."
         ),
-        "stories": ["Чита́л и прочита́л"],
+        "stories": ["Читал и прочитал"],
         "content": """
 <h2>PR-51: Вид — tugallanmagan va tugallangan feʼl (что делать? / что сделать?)</h2>
 
@@ -616,7 +616,7 @@ emas — bu vaqtni tejaydi, chunki keyin oʻylab oʻtirmaysiz.</p>
             "oʻrganiladi; uchinchisi esa yodlanadi — lekin unda atigi bir necha "
             "feʼl bor."
         ),
-        "stories": ["Ремо́нт на ку́хне"],
+        "stories": ["Ремонт на кухне"],
         "content": """
 <h2>PR-52: Vid juftliklarini yasash: prefiks, suffiks va butunlay boshqa oʻzak</h2>
 

@@ -12,10 +12,10 @@ Shakl xilma-xilligi: 9 — bozor sahnasi (hikoya), 10 — kichik sir (sinfda),
 11 — birinchi shaxsdan tanishtiruv matni.
 
 Feʼl tizimi hali ochilmagan (PR-19 dan), shuning uchun tocdagi "narrative frame"
-istisnosi ishlatilgan: есть · нет · зову́т · живёт · рабо́тает · говори́т ·
-сказа́л(а)/сказа́ли · пришёл/пришла́/пришли́ · дал(а) · был/была́/бы́ло/бы́ли —
-hammasi cn-word izohi bilan. Vaqt va joy ravishlari (сего́дня, здесь, там,
-в суббо́ту) lugʻat sifatida izohlanadi: tocdagi CLARITY qoidasi sahna
+istisnosi ishlatilgan: есть · нет · зовут · живёт · работает · говорит ·
+сказал(а)/сказали · пришёл/пришла/пришли · дал(а) · был/была/было/были —
+hammasi cn-word izohi bilan. Vaqt va joy ravishlari (сегодня, здесь, там,
+в субботу) lugʻat sifatida izohlanadi: tocdagi CLARITY qoidasi sahna
 oʻzgarganda vaqt/joy soʻzini TALAB qiladi.
 
     python manage.py import_corner \
@@ -43,7 +43,7 @@ STORIES = [
     # PR-9 — koʻplik            HIKOYA (bozor sahnasi)
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Ры́нок в суббо́ту",
+        "title":   "Рынок в субботу",
         "summary": (
             "PR-9 matni. Shanba kuni bozor: stollar, olmalar, kitoblar, lugʻatlar — "
             "deyarli har bir soʻz koʻplikda. Dilnoza va Afsona meva olgani boradi, "
@@ -55,38 +55,38 @@ STORIES = [
                 "pattern":  "-ы / -и koʻplik qoʻshimchasi",
                 "meaning":  "Erkak va ayol jinsidagi otlarning asosiy koʻplik shakli. "
                             "Undosh yoki -а dan keyin -ы, yumshoq oxirlardan keyin -и.",
-                "examples": ["стол → столы́", "лимо́н → лимо́ны", "тетра́дь → тетра́ди"],
+                "examples": ["стол → столы", "лимон → лимоны", "тетрадь → тетради"],
             },
             {
                 "pattern":  "Г К Х Ж Ч Ш Щ dan keyin -и",
                 "meaning":  "Imlo qoidasi: bu yettita harfdan keyin -ы hech qachon "
-                            "yozilmaydi. Shuning uchun кни́га → кни́ги, ру́чка → ру́чки, "
-                            "врач → врачи́.",
-                "examples": ["кни́га → кни́ги", "врач → врачи́"],
+                            "yozilmaydi. Shuning uchun книга → книги, ручка → ручки, "
+                            "врач → врачи.",
+                "examples": ["книга → книги", "врач → врачи"],
             },
             {
-                "pattern":  "лю́ди — istisno",
-                "meaning":  "«челове́к» (odam) ning koʻpligi butunlay boshqa soʻz: "
-                            "лю́ди. «челове́ки» degan shakl yoʻq. Xuddi shunday "
-                            "ребёнок → де́ти.",
-                "examples": ["Здесь лю́ди.", "Ры́нок — э́то лю́ди."],
+                "pattern":  "люди — istisno",
+                "meaning":  "«человек» (odam) ning koʻpligi butunlay boshqa soʻz: "
+                            "люди. «человеки» degan shakl yoʻq. Xuddi shunday "
+                            "ребёнок → дети.",
+                "examples": ["Здесь люди.", "Рынок — это люди."],
             },
         ],
-        "body": '''<p><span class="cn-word" data-tr="shanba">Суббо́та</span>. Э́то <span class="cn-word" data-tr="bozor">ры́нок</span>. Здесь <span class="cn-word" data-pos="verb" data-tr="ishlaydi">рабо́тает</span> Оле́г.</p>
+        "body": '''<p><span class="cn-word" data-tr="shanba">Суббота</span>. Это <span class="cn-word" data-tr="bozor">рынок</span>. Здесь <span class="cn-word" data-pos="verb" data-tr="ishlaydi">работает</span> Олег.</p>
 
-<p>Вот <strong>столы́</strong>. Здесь <strong><span class="cn-word" data-tr="olmalar">я́блоки</span></strong>, <strong><span class="cn-word" data-tr="limonlar">лимо́ны</span></strong> и <strong><span class="cn-word" data-tr="pomidorlar">помидо́ры</span></strong>. Там <strong><span class="cn-word" data-tr="kitoblar">кни́ги</span></strong>, <strong><span class="cn-word" data-tr="daftarlar">тетра́ди</span></strong> и <strong><span class="cn-word" data-tr="lugʻatlar">словари́</span></strong>.</p>
+<p>Вот <strong>столы</strong>. Здесь <strong><span class="cn-word" data-tr="olmalar">яблоки</span></strong>, <strong><span class="cn-word" data-tr="limonlar">лимоны</span></strong> и <strong><span class="cn-word" data-tr="pomidorlar">помидоры</span></strong>. Там <strong><span class="cn-word" data-tr="kitoblar">книги</span></strong>, <strong><span class="cn-word" data-tr="daftarlar">тетради</span></strong> и <strong><span class="cn-word" data-tr="lugʻatlar">словари</span></strong>.</p>
 
-<p>Сего́дня <span class="cn-word" data-pos="verb" data-tr="kelishdi">пришли́</span> Дилно́за и Афсо́на. Дилно́за <span class="cn-word" data-pos="verb" data-tr="dedi (ayol)">сказа́ла</span>: «Вот я́блоки!»</p>
+<p>Сегодня <span class="cn-word" data-pos="verb" data-tr="kelishdi">пришли</span> Дилноза и Афсона. Дилноза <span class="cn-word" data-pos="verb" data-tr="dedi (ayol)">сказала</span>: «Вот яблоки!»</p>
 
-<p>Но Афсо́на там. Афсо́на сказа́ла: «Дилно́за, а э́то что? Э́то <strong>кни́ги</strong>?»</p>
+<p>Но Афсона там. Афсона сказала: «Дилноза, а это что? Это <strong>книги</strong>?»</p>
 
-<p>Оле́г сказа́л: «Э́то не то́лько кни́ги. Э́то <strong>словари́</strong>. И вот <strong>тетра́ди</strong>».</p>
+<p>Олег сказал: «Это не только книги. Это <strong>словари</strong>. И вот <strong>тетради</strong>».</p>
 
-<p>Оле́г <span class="cn-word" data-pos="verb" data-tr="berdi">дал</span> слова́рь. Афсо́на сказа́ла: «Спаси́бо!»</p>
+<p>Олег <span class="cn-word" data-pos="verb" data-tr="berdi">дал</span> словарь. Афсона сказала: «Спасибо!»</p>
 
-<p>Дилно́за сказа́ла: «А я́блоки?» Афсо́на сказа́ла: «Я́блоки — <span class="cn-word" data-tr="ertaga">за́втра</span>».</p>
+<p>Дилноза сказала: «А яблоки?» Афсона сказала: «Яблоки — <span class="cn-word" data-tr="ertaga">завтра</span>».</p>
 
-<p>Ры́нок: не то́лько помидо́ры и лимо́ны. Здесь <strong>кни́ги</strong> и <strong>словари́</strong>. И здесь <strong><span class="cn-word" data-tr="odamlar">лю́ди</span></strong>.</p>''',
+<p>Рынок: не только помидоры и лимоны. Здесь <strong>книги</strong> и <strong>словари</strong>. И здесь <strong><span class="cn-word" data-tr="odamlar">люди</span></strong>.</p>''',
         "questions": [
             {
                 "text": "Afsona bozordan nima olib qaytdi?",
@@ -97,44 +97,44 @@ STORIES = [
                     "Daftar"
                 ],
                 "answer": 0,
-                "explanation": "«Оле́г дал слова́рь» — Oleg lugʻat berdi, Afsona esa "
-                               "«Спаси́бо!» dedi. Olmalarni esa ertagaga qoldirishdi: "
-                               "«Я́блоки — за́втра».",
+                "explanation": "«Олег дал словарь» — Oleg lugʻat berdi, Afsona esa "
+                               "«Спасибо!» dedi. Olmalarni esa ertagaga qoldirishdi: "
+                               "«Яблоки — завтра».",
             },
             {
-                "text": "Nega matnda «кни́гы» emas, «кни́ги» deb yozilgan?",
+                "text": "Nega matnda «книгы» emas, «книги» deb yozilgan?",
                 "choices": [
                     "Chunki Г К Х Ж Ч Ш Щ dan keyin -ы hech qachon yozilmaydi",
-                    "Chunki кни́га ayol jinsida",
+                    "Chunki книга ayol jinsida",
                     "Chunki bu istisno soʻz",
                     "Chunki urgʻu birinchi boʻgʻinda"
                 ],
                 "answer": 0,
-                "explanation": "Bu yettita harf qoidasi. «Кни́га» Г bilan tugaydi, shuning "
-                               "uchun koʻplikda -и keladi. Xuddi shu sabab «ру́чки» va "
-                               "«врачи́» da ham ishlaydi.",
+                "explanation": "Bu yettita harf qoidasi. «Книга» Г bilan tugaydi, shuning "
+                               "uchun koʻplikda -и keladi. Xuddi shu sabab «ручки» va "
+                               "«врачи» da ham ishlaydi.",
             },
             {
-                "text": "Matnning oxirgi soʻzi «лю́ди». Bu qaysi soʻzning koʻpligi?",
+                "text": "Matnning oxirgi soʻzi «люди». Bu qaysi soʻzning koʻpligi?",
                 "choices": [
-                    "челове́к — va bu istisno, butunlay boshqa soʻz",
-                    "лю́д",
-                    "люд­и́на",
+                    "человек — va bu istisno, butunlay boshqa soʻz",
+                    "люд",
+                    "люд­ина",
                     "друг"
                 ],
                 "answer": 0,
-                "explanation": "«Челове́к» (odam) ning koʻpligi «лю́ди». Qoida boʻyicha "
-                               "«челове́ки» boʻlishi kerak edi, lekin bunday shakl yoʻq — "
-                               "bu yodlanadigan istisno, xuddi ребёнок → де́ти kabi.",
+                "explanation": "«Человек» (odam) ning koʻpligi «люди». Qoida boʻyicha "
+                               "«человеки» boʻlishi kerak edi, lekin bunday shakl yoʻq — "
+                               "bu yodlanadigan istisno, xuddi ребёнок → дети kabi.",
             },
         ],
     },
 
     # ══════════════════════════════════════════════════════════════════
-    # PR-10 — мой / твой / его́ / её        KICHIK SIR (sinfda)
+    # PR-10 — мой / твой / его / её        KICHIK SIR (sinfda)
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Чей э́то телефо́н?",
+        "title":   "Чей это телефон?",
         "summary": (
             "PR-10 matni. Sherbek sinfda telefon topib oladi va u kimniki ekanini "
             "hech kim bilmaydi. Javob ekrandagi suratda turgan edi — kichik sirli "
@@ -144,43 +144,43 @@ STORIES = [
         "grammar": [
             {
                 "pattern":  "Чей? Чья? Чьё? Чьи?",
-                "meaning":  "«Kimning?» savoli otning jinsiga moslashadi: чей телефо́н "
-                            "(m.), чья тетра́дь (f.), чьё окно́ (oʻrta), чьи кни́ги "
+                "meaning":  "«Kimning?» savoli otning jinsiga moslashadi: чей телефон "
+                            "(m.), чья тетрадь (f.), чьё окно (oʻrta), чьи книги "
                             "(koʻplik).",
-                "examples": ["Чей э́то телефо́н?", "Чья э́то тетра́дь?"],
+                "examples": ["Чей это телефон?", "Чья это тетрадь?"],
             },
             {
-                "pattern":  "мой / моя́ / моё / мои́",
+                "pattern":  "мой / моя / моё / мои",
                 "meaning":  "Egalik soʻzi EGAGA emas, egalik qilingan NARSANING jinsiga "
-                            "moslashadi. Shuning uchun bir odam «мой телефо́н» va «моя́ "
-                            "тетра́дь» deydi — oʻzgargani ot, ega emas.",
-                "examples": ["Э́то не мой телефо́н.", "Моя́ тетра́дь!"],
+                            "moslashadi. Shuning uchun bir odam «мой телефон» va «моя "
+                            "тетрадь» deydi — oʻzgargani ot, ega emas.",
+                "examples": ["Это не мой телефон.", "Моя тетрадь!"],
             },
             {
-                "pattern":  "его́ / её / их",
+                "pattern":  "его / её / их",
                 "meaning":  "«Uning» va «ularning» hech qachon oʻzgarmaydi. Talaffuzi "
-                            "diqqat talab qiladi: его́ = [йиво́], chunki -го oxiri "
+                            "diqqat talab qiladi: его = [йиво], chunki -го oxiri "
                             "[во] boʻlib oʻqiladi.",
-                "examples": ["Э́то её телефо́н.", "Мо́жет, его́?"],
+                "examples": ["Это её телефон.", "Может, его?"],
             },
         ],
-        "body": '''<p>Вот класс. Вот стол. И вот <span class="cn-word" data-tr="telefon">телефо́н</span>. Шербе́к <span class="cn-word" data-pos="verb" data-tr="dedi">сказа́л</span>: «<strong>Чей</strong> э́то <strong>телефо́н</strong>?»</p>
+        "body": '''<p>Вот класс. Вот стол. И вот <span class="cn-word" data-tr="telefon">телефон</span>. Шербек <span class="cn-word" data-pos="verb" data-tr="dedi">сказал</span>: «<strong>Чей</strong> это <strong>телефон</strong>?»</p>
 
-<p>Дилно́за <span class="cn-word" data-pos="verb" data-tr="dedi (ayol)">сказа́ла</span>: «Э́то не <strong>мой</strong> телефо́н. <strong>Мой</strong> — здесь».</p>
+<p>Дилноза <span class="cn-word" data-pos="verb" data-tr="dedi (ayol)">сказала</span>: «Это не <strong>мой</strong> телефон. <strong>Мой</strong> — здесь».</p>
 
-<p>Шербе́к сказа́л: «А <strong>чья</strong> э́то <span class="cn-word" data-tr="daftar">тетра́дь</span>?»</p>
+<p>Шербек сказал: «А <strong>чья</strong> это <span class="cn-word" data-tr="daftar">тетрадь</span>?»</p>
 
-<p>«<strong>Моя́</strong>! Спаси́бо, Шербе́к».</p>
+<p>«<strong>Моя</strong>! Спасибо, Шербек».</p>
 
-<p>Тетра́дь — Дилно́за. Но <strong>чей</strong> телефо́н?</p>
+<p>Тетрадь — Дилноза. Но <strong>чей</strong> телефон?</p>
 
-<p><span class="cn-word" data-tr="keyin, soʻng">Пото́м</span> <span class="cn-word" data-pos="verb" data-tr="keldi">пришёл</span> Жасу́р. Жасу́р сказа́л: «Э́то не <strong>мой</strong> телефо́н. Вот <strong>мой</strong>».</p>
+<p><span class="cn-word" data-tr="keyin, soʻng">Потом</span> <span class="cn-word" data-pos="verb" data-tr="keldi">пришёл</span> Жасур. Жасур сказал: «Это не <strong>мой</strong> телефон. Вот <strong>мой</strong>».</p>
 
-<p>Шербе́к сказа́л: «А здесь <span class="cn-word" data-tr="surat">фо́то</span>. Э́то Афсо́на. И вот <strong>её</strong> кот Ба́рсик».</p>
+<p>Шербек сказал: «А здесь <span class="cn-word" data-tr="surat">фото</span>. Это Афсона. И вот <strong>её</strong> кот Барсик».</p>
 
-<p>Дилно́за сказа́ла: «<span class="cn-word" data-tr="demak">Зна́чит</span>, э́то <strong>её</strong> телефо́н! Афсо́на — <span class="cn-word" data-tr="dugona">подру́га</span>».</p>
+<p>Дилноза сказала: «<span class="cn-word" data-tr="demak">Значит</span>, это <strong>её</strong> телефон! Афсона — <span class="cn-word" data-tr="dugona">подруга</span>».</p>
 
-<p>Телефо́н Афсо́на. Тетра́дь Дилно́за. А <span class="cn-word" data-tr="javob">отве́т</span> <span class="cn-word" data-pos="verb" data-tr="edi">был</span> здесь, <span class="cn-word" data-tr="hamma vaqt, boshidan">всё вре́мя</span>.</p>''',
+<p>Телефон Афсона. Тетрадь Дилноза. А <span class="cn-word" data-tr="javob">ответ</span> <span class="cn-word" data-pos="verb" data-tr="edi">был</span> здесь, <span class="cn-word" data-tr="hamma vaqt, boshidan">всё время</span>.</p>''',
         "questions": [
             {
                 "text": "Telefon kimniki ekanini nima aytdi?",
@@ -191,36 +191,36 @@ STORIES = [
                     "Oʻqituvchi aytdi"
                 ],
                 "answer": 0,
-                "explanation": "Sherbek suratni koʻrdi: «Э́то Афсо́на. И вот её кот». "
-                               "Shundan keyin Dilnoza «Зна́чит, э́то её телефо́н!» dedi. "
+                "explanation": "Sherbek suratni koʻrdi: «Это Афсона. И вот её кот». "
+                               "Shundan keyin Dilnoza «Значит, это её телефон!» dedi. "
                                "Javob boshidanoq telefonning oʻzida turgan edi.",
             },
             {
-                "text": "Nega «чей телефо́н» lekin «чья тетра́дь»?",
+                "text": "Nega «чей телефон» lekin «чья тетрадь»?",
                 "choices": [
-                    "Chunki телефо́н erkak jinsida, тетра́дь esa ayol jinsida",
+                    "Chunki телефон erkak jinsida, тетрадь esa ayol jinsida",
                     "Chunki telefon kattaroq narsa",
-                    "Chunki тетра́дь koʻplikda",
+                    "Chunki тетрадь koʻplikda",
                     "Bu shunchaki ikki xil aytish usuli"
                 ],
                 "answer": 0,
-                "explanation": "«Чей?» savoli ham otning jinsiga moslashadi. Телефо́н "
-                               "undosh bilan tugaydi — erkak jinsi, demak чей. Тетра́дь "
+                "explanation": "«Чей?» savoli ham otning jinsiga moslashadi. Телефон "
+                               "undosh bilan tugaydi — erkak jinsi, demak чей. Тетрадь "
                                "esa -ь bilan tugagan ayol jinsidagi ot, demak чья.",
             },
             {
-                "text": "Matnda «её телефо́н» va «её кот» bor. Nega «её» ikki marta bir "
+                "text": "Matnda «её телефон» va «её кот» bor. Nega «её» ikki marta bir "
                         "xil?",
                 "choices": [
-                    "Chunki его́, её va их hech qachon oʻzgarmaydi",
+                    "Chunki его, её va их hech qachon oʻzgarmaydi",
                     "Chunki ikkala soʻz ham ayol jinsida",
-                    "Bu xato, biri «его́» boʻlishi kerak",
+                    "Bu xato, biri «его» boʻlishi kerak",
                     "Chunki ikkalasi ham koʻplikda"
                 ],
                 "answer": 0,
-                "explanation": "«Кот» erkak jinsida, «телефо́н» ham erkak jinsida — lekin "
-                               "bu ahamiyatsiz, chunki его́/её/их umuman oʻzgarmaydi. "
-                               "Мой/моя́ oʻzgaradi, её esa hech qachon. Bu darsning eng "
+                "explanation": "«Кот» erkak jinsida, «телефон» ham erkak jinsida — lekin "
+                               "bu ahamiyatsiz, chunki его/её/их umuman oʻzgarmaydi. "
+                               "Мой/моя oʻzgaradi, её esa hech qachon. Bu darsning eng "
                                "oson qismi.",
             },
         ],
@@ -230,7 +230,7 @@ STORIES = [
     # PR-11 — feʼlsiz gaplar va tire        BIRINCHI SHAXS TANISHTIRUV
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Мой го́род — Ташке́нт",
+        "title":   "Мой город — Ташкент",
         "summary": (
             "PR-11 matni. Afsona oʻz shahri haqida gapirib beradi. Matn ataylab "
             "feʼlsiz gaplarga qurilgan: qayerda tire turgani va qayerda turmaganiga "
@@ -242,46 +242,46 @@ STORIES = [
                 "pattern":  "Ot + ot = tire",
                 "meaning":  "Hozirgi zamonda «boʻlmoq» feʼli yoʻq. Agar gapning ikkala "
                             "tomoni ham ot boʻlsa, uning oʻrniga tire (—) qoʻyiladi.",
-                "examples": ["Мой го́род — Ташке́нт.", "Мой па́па — врач."],
+                "examples": ["Мой город — Ташкент.", "Мой папа — врач."],
             },
             {
                 "pattern":  "Olmosh ega yoki sifat kesim → tire yoʻq",
-                "meaning":  "Ega olmosh boʻlsa (Я учени́ца) yoki kesim sifat/ravish "
-                            "boʻlsa (Ко́фе горя́чий, Мы до́ма) — tire qoʻyilmaydi.",
-                "examples": ["Я учени́ца.", "Наш дом здесь."],
+                "meaning":  "Ega olmosh boʻlsa (Я ученица) yoki kesim sifat/ravish "
+                            "boʻlsa (Кофе горячий, Мы дома) — tire qoʻyilmaydi.",
+                "examples": ["Я ученица.", "Наш дом здесь."],
             },
             {
-                "pattern":  "был / была́ / бы́ло / бы́ли",
+                "pattern":  "был / была / было / были",
                 "meaning":  "Oʻtgan zamonda «boʻlmoq» qaytib keladi va otning jinsiga "
                             "moslashadi. Oʻzbekchadagi «edi» bilan bir xil vazifa, "
                             "faqat u jinsga qarab oʻzgaradi.",
-                "examples": ["Здесь была́ шко́ла.", "Э́то бы́ло давно́."],
+                "examples": ["Здесь была школа.", "Это было давно."],
             },
         ],
-        "body": '''<p>Меня́ зову́т Афсо́на. Я <span class="cn-word" data-tr="oʻquvchi (qiz)">учени́ца</span>. <strong>Мой го́род — Ташке́нт.</strong></p>
+        "body": '''<p>Меня зовут Афсона. Я <span class="cn-word" data-tr="oʻquvchi (qiz)">ученица</span>. <strong>Мой город — Ташкент.</strong></p>
 
-<p>Ташке́нт — <span class="cn-word" data-tr="poytaxt">столи́ца</span>. Здесь <span class="cn-word" data-tr="koʻchalar">у́лицы</span>, дома́, <span class="cn-word" data-tr="bogʻlar">сады́</span> и лю́ди.</p>
+<p>Ташкент — <span class="cn-word" data-tr="poytaxt">столица</span>. Здесь <span class="cn-word" data-tr="koʻchalar">улицы</span>, дома, <span class="cn-word" data-tr="bogʻlar">сады</span> и люди.</p>
 
-<p><strong>Мой па́па — врач.</strong> <strong>Моя́ ма́ма — учи́тель.</strong> Мой брат Бекзо́д <span class="cn-word" data-tr="hali, hozircha">ещё</span> <span class="cn-word" data-tr="kichkina">ма́ленький</span>.</p>
+<p><strong>Мой папа — врач.</strong> <strong>Моя мама — учитель.</strong> Мой брат Бекзод <span class="cn-word" data-tr="hali, hozircha">ещё</span> <span class="cn-word" data-tr="kichkina">маленький</span>.</p>
 
-<p>Наш дом здесь. <span class="cn-word" data-tr="yaqin, yonida">Ря́дом</span> ры́нок, шко́ла и <span class="cn-word" data-tr="kutubxona">библиоте́ка</span>.</p>
+<p>Наш дом здесь. <span class="cn-word" data-tr="yaqin, yonida">Рядом</span> рынок, школа и <span class="cn-word" data-tr="kutubxona">библиотека</span>.</p>
 
-<p><span class="cn-word" data-tr="ilgari, avval">Ра́ньше</span> здесь <span class="cn-word" data-pos="verb" data-tr="edi (ayol)">была́</span> <span class="cn-word" data-tr="kichkina">ма́ленькая</span> шко́ла. Тепе́рь шко́ла <span class="cn-word" data-tr="yangi">но́вая</span>. Э́то <span class="cn-word" data-tr="mening maktabim">моя́ шко́ла</span>.</p>
+<p><span class="cn-word" data-tr="ilgari, avval">Раньше</span> здесь <span class="cn-word" data-pos="verb" data-tr="edi (ayol)">была</span> <span class="cn-word" data-tr="kichkina">маленькая</span> школа. Теперь школа <span class="cn-word" data-tr="yangi">новая</span>. Это <span class="cn-word" data-tr="mening maktabim">моя школа</span>.</p>
 
-<p>Моя́ шко́ла — не то́лько уро́ки. Моя́ шко́ла — <span class="cn-word" data-tr="doʻstlar">друзья́</span>: Дилно́за, Жасу́р, Шербе́к.</p>
+<p>Моя школа — не только уроки. Моя школа — <span class="cn-word" data-tr="doʻstlar">друзья</span>: Дилноза, Жасур, Шербек.</p>
 
-<p>Ташке́нт — не то́лько у́лицы и дома́. <strong>Ташке́нт — э́то лю́ди.</strong> И <strong>Ташке́нт — мой го́род.</strong></p>''',
+<p>Ташкент — не только улицы и дома. <strong>Ташкент — это люди.</strong> И <strong>Ташкент — мой город.</strong></p>''',
         "questions": [
             {
-                "text": "Nega «Мой па́па — врач» da tire bor, «Я учени́ца» da esa yoʻq?",
+                "text": "Nega «Мой папа — врач» da tire bor, «Я ученица» da esa yoʻq?",
                 "choices": [
                     "Birinchisida ikkala tomon ham ot; ikkinchisida ega — olmosh",
                     "Birinchisi uzunroq gap",
-                    "Chunki «па́па» -а bilan tugaydi",
+                    "Chunki «папа» -а bilan tugaydi",
                     "Bu shunchaki muallifning tanlovi"
                 ],
                 "answer": 0,
-                "explanation": "Qoida: ot + ot = tire. «Мой па́па» va «врач» — ikkalasi "
+                "explanation": "Qoida: ot + ot = tire. «Мой папа» va «врач» — ikkalasi "
                                "ham ot, shuning uchun tire qoʻyiladi. «Я» esa olmosh, "
                                "olmoshdan keyin tire qoʻyilmaydi.",
             },
@@ -294,23 +294,23 @@ STORIES = [
                     "Maktab bozorning ichida"
                 ],
                 "answer": 0,
-                "explanation": "«Ра́ньше здесь была́ ма́ленькая шко́ла. Тепе́рь шко́ла "
-                               "но́вая» — ilgari kichik maktab edi, endi yangisi. Diqqat: "
-                               "oʻtgan zamonda «была́» paydo boʻldi, hozirgi zamonda esa "
+                "explanation": "«Раньше здесь была маленькая школа. Теперь школа "
+                               "новая» — ilgari kichik maktab edi, endi yangisi. Diqqat: "
+                               "oʻtgan zamonda «была» paydo boʻldi, hozirgi zamonda esa "
                                "feʼl yoʻq.",
             },
             {
-                "text": "Nega «была́», «был» emas?",
+                "text": "Nega «была», «был» emas?",
                 "choices": [
-                    "Chunki «шко́ла» ayol jinsida",
+                    "Chunki «школа» ayol jinsida",
                     "Chunki gap oʻtgan zamonda",
-                    "Chunki «шко́ла» koʻplikda",
+                    "Chunki «школа» koʻplikda",
                     "Chunki muallif ayol kishi"
                 ],
                 "answer": 0,
-                "explanation": "«Был» otning jinsiga moslashadi: был (m.) / была́ (f.) / "
-                               "бы́ло (oʻrta) / бы́ли (koʻplik). «Шко́ла» -а bilan tugaydi "
-                               "— ayol jinsi, demak «была́». Muallifning jinsi bu yerda "
+                "explanation": "«Был» otning jinsiga moslashadi: был (m.) / была (f.) / "
+                               "было (oʻrta) / были (koʻplik). «Школа» -а bilan tugaydi "
+                               "— ayol jinsi, demak «была». Muallifning jinsi bu yerda "
                                "ahamiyatsiz.",
             },
         ],

@@ -36,7 +36,7 @@ TUTORIALS = [
             "Kelasi zamon ikki soʻzdan yasaladi: бу́ду + infinitiv. Shu dars bilan "
             "uchala zamon — kecha, bugun, ertaga — qoʻlingizda boʻladi."
         ),
-        "stories": ["За́втра экза́мен"],
+        "stories": ["Завтра экзамен"],
         "content": """
 <h2>PR-24: Kelasi zamon: буду + infinitiv</h2>
 
@@ -329,7 +329,7 @@ tushunarli.</div>
             "oʻzgartirishi mumkin. Oʻzbek tilida ham xuddi shunday qoʻshimcha bor — "
             "shuning uchun bu dars siz oʻylagandan osonroq."
         ),
-        "stories": ["Как я учи́лся пла́вать"],
+        "stories": ["Как я учился плавать"],
         "content": """
 <h2>PR-25: Qaytim feʼllar -ся / -сь: учиться, находиться, нравиться</h2>
 
@@ -648,7 +648,7 @@ ajratilgan — PR-28.</p>
             "olingan mahorat, мочь — shu ondagi imkoniyat. Farqni bilmaslik gapni "
             "butunlay boshqa maʼnoga burib yuboradi."
         ),
-        "stories": ["Ба́бушка уме́ет всё"],
+        "stories": ["Бабушка умеет всё"],
         "content": """
 <h2>PR-26: Мочь va уметь — «-a olmoq» ning ikki xil turi</h2>
 

@@ -39,7 +39,7 @@ TUTORIALS = [
             "narsa: erkak jinsida ot JONLI yoki JONSIZ ekaniga qarab boshqacha "
             "oʻzgaradi."
         ),
-        "stories": ["Кто кого́ ждёт?"],
+        "stories": ["Кто кого ждёт?"],
         "content": """
 <h2>PR-32: Винительный 1: кого? что? — jonli va jonsiz farqi</h2>
 
@@ -367,7 +367,7 @@ shuning uchun tekshirish oson:</p>
             "yonma-yon turadi va rus tilidagi eng chiroyli juftlikni ochadi: "
             "в шко́ле ↔ в шко́лу."
         ),
-        "stories": ["Куда́ идёт э́тот авто́бус?"],
+        "stories": ["Куда идёт этот автобус?"],
         "content": """
 <h2>PR-33: Винительный 2: yoʻnalish — в школу, на работу, куда?</h2>
 
@@ -656,7 +656,7 @@ yangi qoida yoʻq, oʻsha kelishikning yana bir ishi.</p>
             "ishi: «kimniki?» va «yoʻq». Egalikda soʻz tartibi oʻzbekchaning "
             "teskarisi — bu darsning eng katta xatosi."
         ),
-        "stories": ["Дом моего́ де́да"],
+        "stories": ["Дом моего деда"],
         "content": """
 <h2>PR-34: Родительный 1: egalik va yoʻqlik — книга брата, нет времени</h2>
 

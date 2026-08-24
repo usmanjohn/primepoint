@@ -10,12 +10,12 @@ portreti, 43 — yangilik xabari. (38 hikoya, 39 retsept, 40 intervyu edi;
 tushunmovchilik, ketma-ket ikki kun.)
 
 Grammatika chegarasi (kumulyativ qoida):
-  41-matn: olmoshlarning turlanishi — меня́/мне/мной/обо мне va Н qoidasi.
+  41-matn: olmoshlarning turlanishi — меня/мне/мной/обо мне va Н qoidasi.
            Matnda bitta odam (Afsona) uchta-toʻrtta shaklda uchraydi.
-  42-matn: egalik olmoshlari — наш → на́шем, мой → моего́ — VA его́ ning
+  42-matn: egalik olmoshlari — наш → нашем, мой → моего — VA его ning
            oʻzgarmasligi. Ikkalasi yonma-yon turadi.
   43-matn: sifatlarning Р.п. va В.п. shakllari. Yangilik xabari janri
-           bu yerda qulay: «ста́рого моста́», «но́вый мост» takrorlanadi.
+           bu yerda qulay: «старого моста», «новый мост» takrorlanadi.
 
 ⚠️ 43-matn haqida: bu MAHALLIY, oʻylab topilgan xabar. Unda real dunyo
 haqida hech qanday fakt daʼvo qilinmaydi (aniq shahar, sana, raqam yoʻq),
@@ -46,7 +46,7 @@ STORIES = [
     # PR-41 — olmoshlar                     KICHIK TUSHUNMOVCHILIK
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Она́ мне не позвони́ла",
+        "title":   "Она мне не позвонила",
         "summary": (
             "PR-41 matni. Katya butun kechqurun qoʻngʻiroqni kutadi. Afsona "
             "qoʻngʻiroq qilmaydi. Ertasi kuni sabab maʼlum boʻladi — va ikkalasi "
@@ -59,49 +59,49 @@ STORIES = [
                 "meaning":  "Bitta odam matnda bir necha shaklda uchraydi: её "
                             "(В.п.), ей (Д.п.), о ней (П.п.). Shaklni gapdagi ish "
                             "tanlaydi, odam emas.",
-                "examples": ["Ка́тя ждала́ её.", "Ты не звони́ла мне."],
+                "examples": ["Катя ждала её.", "Ты не звонила мне."],
             },
             {
                 "pattern":  "Predlogdan keyin Н",
-                "meaning":  "Он / она́ / они́ olmoshlari predlogdan keyin Н bilan "
-                            "boshlanadi: у него́, к ней, о ней. Predlogsiz esa Н "
-                            "yoʻq: его́ нет, я ви́жу её.",
-                "examples": ["Афсо́на пришла́ к ней.", "У него́ нет бата́реи."],
+                "meaning":  "Он / она / они olmoshlari predlogdan keyin Н bilan "
+                            "boshlanadi: у него, к ней, о ней. Predlogsiz esa Н "
+                            "yoʻq: его нет, я вижу её.",
+                "examples": ["Афсона пришла к ней.", "У него нет батареи."],
             },
             {
-                "pattern":  "обо мне / о тебе́",
+                "pattern":  "обо мне / о тебе",
                 "meaning":  "«О» predlogi «мне» dan oldin «обо» boʻladi — talaffuz "
                             "uchun. Xuddi «ко мне» va «со мной» kabi.",
-                "examples": ["Ты ду́мала обо мне, я ду́мала о тебе́."],
+                "examples": ["Ты думала обо мне, я думала о тебе."],
             },
         ],
-        "body": '''<p>В суббо́ту Афсона сказа́ла Кате: «Я <span class="cn-word" data-pos="verb" data-tr="qoʻngʻiroq qilaman">позвоню́</span> ве́чером».</p>
+        "body": '''<p>В субботу Афсона сказала Кате: «Я <span class="cn-word" data-pos="verb" data-tr="qoʻngʻiroq qilaman">позвоню</span> вечером».</p>
 
-<p>Катя <span class="cn-word" data-pos="verb" data-tr="kutdi">ждала́</span> <strong>её</strong>. Час. Два часа́.</p>
+<p>Катя <span class="cn-word" data-pos="verb" data-tr="kutdi">ждала</span> <strong>её</strong>. Час. Два часа.</p>
 
-<p>Афсона не <span class="cn-word" data-pos="verb" data-tr="qoʻngʻiroq qilmadi">позвони́ла</span>.</p>
+<p>Афсона не <span class="cn-word" data-pos="verb" data-tr="qoʻngʻiroq qilmadi">позвонила</span>.</p>
 
-<p>Кате бы́ло гру́стно. Она́ ду́мала <strong>о ней</strong> <span class="cn-word" data-tr="butun kechqurun">весь ве́чер</span>.</p>
+<p>Кате было грустно. Она думала <strong>о ней</strong> <span class="cn-word" data-tr="butun kechqurun">весь вечер</span>.</p>
 
-<p>«Она́ <span class="cn-word" data-pos="verb" data-tr="unutdi">забы́ла</span> <strong>меня́</strong>», — ду́мала Катя.</p>
+<p>«Она <span class="cn-word" data-pos="verb" data-tr="unutdi">забыла</span> <strong>меня</strong>», — думала Катя.</p>
 
-<p>В <span class="cn-word" data-tr="yakshanba">воскресе́нье</span> Афсона пришла́ <strong>к ней</strong>.</p>
+<p>В <span class="cn-word" data-tr="yakshanba">воскресенье</span> Афсона пришла <strong>к ней</strong>.</p>
 
-<p>— Ты не звони́ла <strong>мне</strong>, — сказа́ла Катя ти́хо.</p>
+<p>— Ты не звонила <strong>мне</strong>, — сказала Катя тихо.</p>
 
-<p>— Мой телефо́н, — сказа́ла Афсона. — <strong>У него́</strong> нет <span class="cn-word" data-tr="batareya">бата́реи</span>. Уже́ два дня.</p>
+<p>— Мой телефон, — сказала Афсона. — <strong>У него</strong> нет <span class="cn-word" data-tr="batareya">батареи</span>. Уже два дня.</p>
 
-<p>Катя <span class="cn-word" data-pos="verb" data-tr="qaradi">посмотре́ла</span> <strong>на неё</strong>. Пото́м на телефо́н. Телефо́н был <span class="cn-word" data-tr="qora">чёрный</span> и ти́хий.</p>
+<p>Катя <span class="cn-word" data-pos="verb" data-tr="qaradi">посмотрела</span> <strong>на неё</strong>. Потом на телефон. Телефон был <span class="cn-word" data-tr="qora">чёрный</span> и тихий.</p>
 
-<p>Афсона молча́ла. Пото́м сказа́ла:</p>
+<p>Афсона молчала. Потом сказала:</p>
 
-<p>— Я ду́мала <strong>о тебе́</strong> тоже. Два ве́чера.</p>
+<p>— Я думала <strong>о тебе</strong> тоже. Два вечера.</p>
 
-<p>Катя смея́лась.</p>
+<p>Катя смеялась.</p>
 
-<p>— Зна́чит, так, — сказа́ла она́. — Ты ду́мала <strong>обо мне</strong>. Я ду́мала <strong>о тебе́</strong>. А телефо́н молча́л.</p>
+<p>— Значит, так, — сказала она. — Ты думала <strong>обо мне</strong>. Я думала <strong>о тебе</strong>. А телефон молчал.</p>
 
-<p>Тепе́рь у Афсоны есть <span class="cn-word" data-tr="quvvatlagich">заря́дка</span>. Она́ живёт у Кати. На <span class="cn-word" data-tr="har ehtimolga qarshi">вся́кий слу́чай</span>.</p>''',
+<p>Теперь у Афсоны есть <span class="cn-word" data-tr="quvvatlagich">зарядка</span>. Она живёт у Кати. На <span class="cn-word" data-tr="har ehtimolga qarshi">всякий случай</span>.</p>''',
         "questions": [
             {
                 "text": "Nega Afsona qoʻngʻiroq qilmadi?",
@@ -112,12 +112,12 @@ STORIES = [
                     "U shanba kuni band edi"
                 ],
                 "answer": 0,
-                "explanation": "«У него́ нет бата́реи. Уже́ два дня». Katya esa «Она́ "
-                               "забы́ла меня́» deb oʻylagan edi — matnning butun "
+                "explanation": "«У него нет батареи. Уже два дня». Katya esa «Она "
+                               "забыла меня» deb oʻylagan edi — matnning butun "
                                "tugʻuni shu ikki taxmin orasida.",
             },
             {
-                "text": "«Она́ ду́мала о ней» va «Ты ду́мала обо мне» — nega bir xil "
+                "text": "«Она думала о ней» va «Ты думала обо мне» — nega bir xil "
                         "predlog ikki xil koʻrinadi?",
                 "choices": [
                     "«Мне» dan oldin О predlogi ОБО boʻladi — talaffuz uchun",
@@ -139,8 +139,8 @@ STORIES = [
                     "Afsona endi telefon ishlatmaydi"
                 ],
                 "answer": 0,
-                "explanation": "«Тепе́рь у Афсоны есть заря́дка. Она́ живёт у Кати. На "
-                               "вся́кий слу́чай». Doʻstlik muammoni hal qilmadi — "
+                "explanation": "«Теперь у Афсоны есть зарядка. Она живёт у Кати. На "
+                               "всякий случай». Doʻstlik muammoni hal qilmadi — "
                                "quvvatlagich hal qildi. Bu hikoyaning kichkina "
                                "hazili.",
             },
@@ -151,7 +151,7 @@ STORIES = [
     # PR-42 — egalik olmoshlari              MAHALLA PORTRETI
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "В на́шем дворе́",
+        "title":   "В нашем дворе",
         "summary": (
             "PR-42 matni. Bir hovlining portreti: qoʻshni Oleg Petrovich, buvi, "
             "eski daraxt va bolalarning ovozi. Oxirgi ikki jumla butun matnni "
@@ -160,50 +160,50 @@ STORIES = [
         "order":   42,
         "grammar": [
             {
-                "pattern":  "наш → на́шем, на́шего",
-                "meaning":  "Egalik olmoshi ot bilan BIRGA oʻzgaradi: в на́шем "
-                            "дворе́ (Предло́жный), му́зыка на́шего двора́ "
-                            "(Роди́тельный).",
-                "examples": ["В на́шем дворе́ есть де́рево.", "Му́зыка на́шего двора́."],
+                "pattern":  "наш → нашем, нашего",
+                "meaning":  "Egalik olmoshi ot bilan BIRGA oʻzgaradi: в нашем "
+                            "дворе (Предложный), музыка нашего двора "
+                            "(Родительный).",
+                "examples": ["В нашем дворе есть дерево.", "Музыка нашего двора."],
             },
             {
-                "pattern":  "мой → моего́, моя́",
-                "meaning":  "Xuddi shunday: у моего́ сосе́да (Роди́тельный), моя́ "
-                            "бабушка (bosh kelishik). Ayol jinsida мое́й toʻrtta "
+                "pattern":  "мой → моего, моя",
+                "meaning":  "Xuddi shunday: у моего соседа (Родительный), моя "
+                            "бабушка (bosh kelishik). Ayol jinsida моей toʻrtta "
                             "kelishikda ishlatiladi.",
-                "examples": ["У моего́ сосе́да есть соба́ка."],
+                "examples": ["У моего соседа есть собака."],
             },
             {
-                "pattern":  "его́ / её / их — oʻzgarmaydi",
+                "pattern":  "его / её / их — oʻzgarmaydi",
                 "meaning":  "Bu uchtasi hech qachon turlanmaydi va predlogdan keyin "
-                            "Н ham olmaydi: его́ дом, в его́ до́ме, их го́лоса. "
+                            "Н ham olmaydi: его дом, в его доме, их голоса. "
                             "Oʻzbekchadagi -i qoʻshimchasi kabi.",
-                "examples": ["Его́ дом пе́рвый.", "Их го́лоса — э́то му́зыка."],
+                "examples": ["Его дом первый.", "Их голоса — это музыка."],
             },
         ],
-        "body": '''<p><strong>Наш</strong> <span class="cn-word" data-tr="hovli">двор</span> ма́ленький. Но здесь живёт мно́го люде́й.</p>
+        "body": '''<p><strong>Наш</strong> <span class="cn-word" data-tr="hovli">двор</span> маленький. Но здесь живёт много людей.</p>
 
-<p>В <strong>на́шем</strong> дворе́ есть <span class="cn-word" data-tr="daraxt">де́рево</span>. Ста́рое. Ле́том под ним <span class="cn-word" data-tr="soya">тень</span>.</p>
+<p>В <strong>нашем</strong> дворе есть <span class="cn-word" data-tr="daraxt">дерево</span>. Старое. Летом под ним <span class="cn-word" data-tr="soya">тень</span>.</p>
 
-<p><strong>Мой</strong> <span class="cn-word" data-tr="qoʻshni">сосе́д</span> — Олег Петро́вич. <strong>Его́</strong> дом пе́рвый. <strong>Его́</strong> окно́ смо́трит на у́лицу.</p>
+<p><strong>Мой</strong> <span class="cn-word" data-tr="qoʻshni">сосед</span> — Олег Петрович. <strong>Его</strong> дом первый. <strong>Его</strong> окно смотрит на улицу.</p>
 
-<p>У <strong>моего́</strong> сосе́да есть <span class="cn-word" data-tr="it">соба́ка</span>. Её <span class="cn-word" data-pos="verb" data-tr="ismi">зову́т</span> Ди́на.</p>
+<p>У <strong>моего</strong> соседа есть <span class="cn-word" data-tr="it">собака</span>. Её <span class="cn-word" data-pos="verb" data-tr="ismi">зовут</span> Дина.</p>
 
-<p><strong>Моя́</strong> бабушка сиди́т у <strong>на́шего</strong> <span class="cn-word" data-tr="podyezd, kirish">подъе́зда</span> ка́ждый ве́чер.</p>
+<p><strong>Моя</strong> бабушка сидит у <strong>нашего</strong> <span class="cn-word" data-tr="podyezd, kirish">подъезда</span> каждый вечер.</p>
 
-<p>Она́ зна́ет здесь ка́ждый дом. И ка́ждую соба́ку.</p>
+<p>Она знает здесь каждый дом. И каждую собаку.</p>
 
-<p>Ве́чером де́ти игра́ют. <strong>Их</strong> <span class="cn-word" data-tr="ovozlar">го́лоса</span> — э́то му́зыка <strong>на́шего</strong> двора́.</p>
+<p>Вечером дети играют. <strong>Их</strong> <span class="cn-word" data-tr="ovozlar">голоса</span> — это музыка <strong>нашего</strong> двора.</p>
 
-<p>Зимо́й во дворе́ ти́хо. То́лько Ди́на и <span class="cn-word" data-tr="qor">снег</span>.</p>
+<p>Зимой во дворе тихо. Только Дина и <span class="cn-word" data-tr="qor">снег</span>.</p>
 
-<p>Ле́том — громко. Дети, вода́, <span class="cn-word" data-tr="velosiped">велосипе́д</span>.</p>
+<p>Летом — громко. Дети, вода, <span class="cn-word" data-tr="velosiped">велосипед</span>.</p>
 
-<p>Я зна́ю ка́ждое окно́ в <strong>на́шем</strong> до́ме. Я зна́ю, где Олег Петро́вич <span class="cn-word" data-pos="verb" data-tr="ichadi">пьёт</span> чай.</p>
+<p>Я знаю каждое окно в <strong>нашем</strong> доме. Я знаю, где Олег Петрович <span class="cn-word" data-pos="verb" data-tr="ichadi">пьёт</span> чай.</p>
 
-<p>Э́то не <strong>мой</strong> дом.</p>
+<p>Это не <strong>мой</strong> дом.</p>
 
-<p>Э́то <strong>наш</strong> дом.</p>''',
+<p>Это <strong>наш</strong> дом.</p>''',
         "questions": [
             {
                 "text": "Matnning oxirgi ikki jumlasi nimani bildiradi?",
@@ -214,35 +214,35 @@ STORIES = [
                     "Muallif oʻz uyini sotmoqchi"
                 ],
                 "answer": 0,
-                "explanation": "«Э́то не мой дом. Э́то наш дом». Butun matn qoʻshnilar, "
+                "explanation": "«Это не мой дом. Это наш дом». Butun matn qoʻshnilar, "
                                "buvi, bolalar va it haqida edi — oxirgi ikki jumla "
                                "shuni bitta soʻz almashtirish bilan aytadi: "
                                "мой → наш.",
             },
             {
-                "text": "Nega «в на́шем дворе́», lekin «его́ дом»?",
+                "text": "Nega «в нашем дворе», lekin «его дом»?",
                 "choices": [
-                    "Наш ot bilan birga oʻzgaradi, его́ esa hech qachon oʻzgarmaydi",
+                    "Наш ot bilan birga oʻzgaradi, его esa hech qachon oʻzgarmaydi",
                     "Chunki «двор» erkak jinsida",
                     "Chunki birinchisi koʻplik",
                     "Bu matndagi xato"
                 ],
                 "answer": 0,
-                "explanation": "Мой, твой, наш, ваш — sifat kabi turlanadi. Его́, её, "
-                               "их esa turlanmaydi: «его́ дом», «в его́ до́ме», «с "
-                               "его́ соба́кой» — har doim bir xil.",
+                "explanation": "Мой, твой, наш, ваш — sifat kabi turlanadi. Его, её, "
+                               "их esa turlanmaydi: «его дом», «в его доме», «с "
+                               "его собакой» — har doim bir xil.",
             },
             {
-                "text": "«Их го́лоса — э́то му́зыка на́шего двора́» — bu jumlada "
+                "text": "«Их голоса — это музыка нашего двора» — bu jumlada "
                         "nechta soʻz kelishikka kirgan?",
                 "choices": [
-                    "Ikkitasi: на́шего va двора́",
-                    "Bittasi: двора́",
-                    "Uchtasi: их, на́шего, двора́",
+                    "Ikkitasi: нашего va двора",
+                    "Bittasi: двора",
+                    "Uchtasi: их, нашего, двора",
                     "Hech qaysi"
                 ],
                 "answer": 0,
-                "explanation": "«На́шего двора́» — Роди́тельный, egalik: «hovlimizning "
+                "explanation": "«Нашего двора» — Родительный, egalik: «hovlimizning "
                                "musiqasi». Ikkala soʻz ham oʻzgargan. «Их» esa "
                                "oʻzgarmaydi — u har doim shu shaklda qoladi.",
             },
@@ -253,7 +253,7 @@ STORIES = [
     # PR-43 — sifat Р.п. / В.п.               YANGILIK XABARI
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Ста́рого моста́ бо́льше нет",
+        "title":   "Старого моста больше нет",
         "summary": (
             "PR-43 matni. Qisqa mahalliy xabar: qirq yil turgan eski koʻprik "
             "olib tashlandi. Xabar oxirida Nina Petrovna boʻsh joyga qarab "
@@ -262,46 +262,46 @@ STORIES = [
         "order":   43,
         "grammar": [
             {
-                "pattern":  "Sifat Роди́тельный'da: -ОГО / -ОЙ",
-                "meaning":  "Sifat otga ergashadi: ста́рого моста́, но́вой доро́ги. "
+                "pattern":  "Sifat Родительный'da: -ОГО / -ОЙ",
+                "meaning":  "Sifat otga ergashadi: старого моста, новой дороги. "
                             "-ОГО har doim [ово] boʻlib oʻqiladi.",
-                "examples": ["Ста́рого моста́ бо́льше нет.", "У но́вого моста́ бу́дет две доро́ги."],
+                "examples": ["Старого моста больше нет.", "У нового моста будет две дороги."],
             },
             {
-                "pattern":  "Sifat Вини́тельный'da",
-                "meaning":  "Jonsiz erkak — oʻzgarmaydi (но́вый мост), ayol jinsi "
+                "pattern":  "Sifat Винительный'da",
+                "meaning":  "Jonsiz erkak — oʻzgarmaydi (новый мост), ayol jinsi "
                             "-УЮ oladi. Jonlilik sifatga ham tegadi.",
-                "examples": ["Она́ ходи́ла че́рез ста́рый мост.", "Я бу́ду по́мнить ста́рый."],
+                "examples": ["Она ходила через старый мост.", "Я буду помнить старый."],
             },
             {
-                "pattern":  "нет + Роди́тельный",
-                "meaning":  "PR-34 dan: «yoʻq» dan keyin ot Роди́тельный'ga kiradi — "
-                            "va sifat ham. «Ста́рого моста́ нет» — ikkala soʻz "
+                "pattern":  "нет + Родительный",
+                "meaning":  "PR-34 dan: «yoʻq» dan keyin ot Родительный'ga kiradi — "
+                            "va sifat ham. «Старого моста нет» — ikkala soʻz "
                             "oʻzgargan.",
-                "examples": ["Ве́чером ста́рого моста́ уже́ не́ было."],
+                "examples": ["Вечером старого моста уже не было."],
             },
         ],
-        "body": '''<p><strong>Ста́рого моста́</strong> <span class="cn-word" data-tr="endi yoʻq">бо́льше нет</span>.</p>
+        "body": '''<p><strong>Старого моста</strong> <span class="cn-word" data-tr="endi yoʻq">больше нет</span>.</p>
 
-<p>Он <span class="cn-word" data-pos="verb" data-tr="turgan">стоя́л</span> здесь <span class="cn-word" data-tr="qirq yil">со́рок лет</span>. Тепе́рь его́ нет.</p>
+<p>Он <span class="cn-word" data-pos="verb" data-tr="turgan">стоял</span> здесь <span class="cn-word" data-tr="qirq yil">сорок лет</span>. Теперь его нет.</p>
 
-<p>Вчера́ у́тром пришли́ <span class="cn-word" data-tr="ishchilar">рабо́чие</span>. Ве́чером <strong>ста́рого моста́</strong> уже́ не́ было.</p>
+<p>Вчера утром пришли <span class="cn-word" data-tr="ishchilar">рабочие</span>. Вечером <strong>старого моста</strong> уже не было.</p>
 
-<p>Лю́ди смотре́ли ти́хо. Оди́н челове́к <span class="cn-word" data-pos="verb" data-tr="rasmga oldi">сфотографи́ровал</span> <span class="cn-word" data-tr="boʻsh joy">пусто́е ме́сто</span>.</p>
+<p>Люди смотрели тихо. Один человек <span class="cn-word" data-pos="verb" data-tr="rasmga oldi">сфотографировал</span> <span class="cn-word" data-tr="boʻsh joy">пустое место</span>.</p>
 
-<p>Ни́на Петро́вна по́мнит <strong>ста́рый мост</strong> с <span class="cn-word" data-tr="bolalikdan">де́тства</span>.</p>
+<p>Нина Петровна помнит <strong>старый мост</strong> с <span class="cn-word" data-tr="bolalikdan">детства</span>.</p>
 
-<p>— Я ходи́ла в шко́лу че́рез <strong>ста́рый мост</strong>, — говори́т она́. — Ка́ждый день. Оди́ннадцать лет.</p>
+<p>— Я ходила в школу через <strong>старый мост</strong>, — говорит она. — Каждый день. Одиннадцать лет.</p>
 
-<p>Ско́ро здесь бу́дет <strong>но́вый мост</strong>. Он бу́дет <span class="cn-word" data-tr="keng">широ́кий</span> и <span class="cn-word" data-tr="yorugʻ">све́тлый</span>.</p>
+<p>Скоро здесь будет <strong>новый мост</strong>. Он будет <span class="cn-word" data-tr="keng">широкий</span> и <span class="cn-word" data-tr="yorugʻ">светлый</span>.</p>
 
-<p><span class="cn-word" data-tr="muhandislar">Инжене́ры</span> говоря́т: у <strong>но́вого моста́</strong> бу́дет две доро́ги для маши́н и оди́н <span class="cn-word" data-tr="yoʻl(ak)">путь</span> для люде́й.</p>
+<p><span class="cn-word" data-tr="muhandislar">Инженеры</span> говорят: у <strong>нового моста</strong> будет две дороги для машин и один <span class="cn-word" data-tr="yoʻl(ak)">путь</span> для людей.</p>
 
-<p>Э́то хорошо́. <strong>У ста́рого моста́</strong> не́ было ме́ста для люде́й.</p>
+<p>Это хорошо. <strong>У старого моста</strong> не было места для людей.</p>
 
-<p>Ни́на Петро́вна смо́трит на пусто́е ме́сто над водо́й.</p>
+<p>Нина Петровна смотрит на пустое место над водой.</p>
 
-<p>— <strong>Но́вый мост</strong> — э́то хорошо́, — говори́т она́. — Но я бу́ду по́мнить <strong>ста́рый</strong>.</p>''',
+<p>— <strong>Новый мост</strong> — это хорошо, — говорит она. — Но я буду помнить <strong>старый</strong>.</p>''',
         "questions": [
             {
                 "text": "Yangi koʻprik eskisidan nima bilan farq qiladi?",
@@ -312,22 +312,22 @@ STORIES = [
                     "U boshqa joyda quriladi"
                 ],
                 "answer": 0,
-                "explanation": "«У но́вого моста́ бу́дет две доро́ги для маши́н и "
-                               "оди́н путь для люде́й» — va darrov keyin: «У ста́рого "
-                               "моста́ не́ было ме́ста для люде́й». Xabar farqni "
+                "explanation": "«У нового моста будет две дороги для машин и "
+                               "один путь для людей» — va darrov keyin: «У старого "
+                               "моста не было места для людей». Xabar farqni "
                                "aynan shu ikki jumla bilan koʻrsatadi.",
             },
             {
-                "text": "«Ста́рого моста́» va «ста́рый мост» — nega ikki xil shakl?",
+                "text": "«Старого моста» va «старый мост» — nega ikki xil shakl?",
                 "choices": [
-                    "Birinchisi Роди́тельный («нет» dan keyin), ikkinchisi Вини́тельный",
+                    "Birinchisi Родительный («нет» dan keyin), ikkinchisi Винительный",
                     "Birinchisi koʻplik",
                     "Ikkinchisi ayol jinsida",
                     "Bu matndagi xato"
                 ],
                 "answer": 0,
-                "explanation": "«Нет» va «у» dan keyin Роди́тельный keladi — sifat "
-                               "-ОГО oladi. «Че́рез ста́рый мост» esa Вини́тельный, "
+                "explanation": "«Нет» va «у» dan keyin Родительный keladi — sifat "
+                               "-ОГО oladi. «Через старый мост» esa Винительный, "
                                "va koʻprik jonsiz boʻlgani uchun shakl bosh kelishik "
                                "bilan bir xil qoladi.",
             },
@@ -340,8 +340,8 @@ STORIES = [
                     "U boshqa shaharga koʻchmoqchi"
                 ],
                 "answer": 0,
-                "explanation": "«Но́вый мост — э́то хорошо́. Но я бу́ду по́мнить "
-                               "ста́рый». U oʻn bir yil har kuni oʻsha koʻprikdan "
+                "explanation": "«Новый мост — это хорошо. Но я буду помнить "
+                               "старый». U oʻn bir yil har kuni oʻsha koʻprikdan "
                                "maktabga borgan. Xabar raqamlar bilan boshlanib, "
                                "xotira bilan tugaydi.",
             },

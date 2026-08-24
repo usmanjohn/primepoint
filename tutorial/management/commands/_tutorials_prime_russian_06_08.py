@@ -32,7 +32,7 @@ TUTORIALS = [
             "“-dir” feʼli yoʻq — xuddi oʻzbekchadagidek. Кто? va Что? savollarini "
             "ajratasiz."
         ),
-        "stories": ["Кто э́то?"],
+        "stories": ["Кто это?"],
         "content": """
 <h2>PR-6: Это — birinchi gapingiz. «Кто это? Что это?»</h2>
 
@@ -286,7 +286,7 @@ tilidagi <b>не</b> esa oldinda.</div>
             "Rus tilida salomlashish, tanishish va minnatdorchilik. Eng muhimi — "
             "ты va вы orasidagi tanlov, ya'ni oʻzbekchadagi sen va siz."
         ),
-        "stories": ["Два разгово́ра"],
+        "stories": ["Два разговора"],
         "content": """
 <h2>PR-7: Salomlashish, tanishuv va murojaat: ты yoki вы?</h2>
 
@@ -576,7 +576,7 @@ ikkita vazifa. Talaffuzda esa oʻrtasi yutiladi: [пажа́лустъ], “poja
             "tushuncha yoʻq — lekin jinsni soʻzning oxirgi harfidan deyarli har doim "
             "aniqlash mumkin."
         ),
-        "stories": ["Стол, кни́га и окно́"],
+        "stories": ["Стол, книга и окно"],
         "content": """
 <h2>PR-8: Jins (род) — otlarning uch jinsi va uni oxiridan aniqlash</h2>
 

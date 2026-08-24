@@ -42,7 +42,7 @@ TUTORIALS = [
             "Ruscha «ли» — oʻzbekcha «-mi» ning aynan oʻzi, va u ham soʻralayotgan "
             "soʻzga yopishadi. Shu bilan bilvosita savol quriladi."
         ),
-        "stories": ["Никто́ не знал, придёт ли он"],
+        "stories": ["Никто не знал, придёт ли он"],
         "content": """
 <h2>PR-68: Ли va bilvosita savol: «Не знаю, придёт ли он»</h2>
 
@@ -356,7 +356,7 @@ adashmaysiz.</div>
             "Который otga yopishadi. Ot boʻlmasa nima qilamiz? Rus tili otning "
             "oʻrniga «тот» yoki «то» qoʻyadi — oʻzbekcha «kim… oʻsha» kabi."
         ),
-        "stories": ["Тот, кто са́жает дере́вья"],
+        "stories": ["Тот, кто сажает деревья"],
         "content": """
 <h2>PR-69: Тот, кто… / то, что… — koʻrsatish va bogʻlash</h2>
 
@@ -655,7 +655,7 @@ har doim tayyor jumlangiz boʻladi.</div>
             "Sifatdosh — feʼlning sifat kiyimidagi shakli. Oʻzbek oʻquvchisida bu "
             "allaqachon bor: -ayotgan, -gan, -adigan. Farq faqat oʻrni va vergulda."
         ),
-        "stories": ["Лю́ди, живу́щие на Се́вере"],
+        "stories": ["Люди, живущие на Севере"],
         "content": """
 <h2>PR-70: Причастие 1: действительные — читающий, прочитавший</h2>
 

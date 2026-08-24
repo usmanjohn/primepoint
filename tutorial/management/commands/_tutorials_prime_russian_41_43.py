@@ -44,7 +44,7 @@ TUTORIALS = [
             "ishlatgansiz. Bugun ular bitta jadvalga yigʻiladi va nihoyat tizim "
             "koʻrinadi."
         ),
-        "stories": ["Она́ мне не позвони́ла"],
+        "stories": ["Она мне не позвонила"],
         "content": """
 <h2>PR-41: Olmoshlarning turlanishi: меня, мне, мной, обо мне</h2>
 
@@ -330,7 +330,7 @@ uchun eng yaxshi yoʻl — jadvalni emas, <b>iboralarni</b> yodlash:
             "bor: его́, её, их umuman oʻzgarmaydi, hech qachon, hech qanday "
             "kelishikda."
         ),
-        "stories": ["В на́шем дворе́"],
+        "stories": ["В нашем дворе"],
         "content": """
 <h2>PR-42: Egalik olmoshlarining turlanishi: моего, моей, моим, о моём</h2>
 
@@ -612,7 +612,7 @@ bir xil ish qilyapti.</div>
             "boʻyicha ham moslashadi. Bu yerda oʻzbekcha yordam bermaydi — lekin "
             "qoida mexanik va istisnosiz."
         ),
-        "stories": ["Ста́рого моста́ бо́льше нет"],
+        "stories": ["Старого моста больше нет"],
         "content": """
 <h2>PR-43: Sifatlarning turlanishi 1 — Родительный va Винительный</h2>
 

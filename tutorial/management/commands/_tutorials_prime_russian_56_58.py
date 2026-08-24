@@ -40,7 +40,7 @@ TUTORIALS = [
             "Kecha bitta juftlikni oʻrgandingiz. Aslida ular sakkizta — lekin "
             "mantiq bitta va u oʻzgarmaydi: bir tomonga yoki muntazam."
         ),
-        "stories": ["Тра́нссиб: семь дней в по́езде"],
+        "stories": ["Транссиб: семь дней в поезде"],
         "content": """
 <h2>PR-56: Harakat feʼllari 2: ехать/ездить, бежать/бегать, лететь/летать, нести/носить</h2>
 
@@ -309,7 +309,7 @@ Va <em>носи́ть</em> ning «kiymoq» maʼnosi ham tanish: oʻzbekchada ham
             "kursning eng chiroyli fakti ochiladi: prefiks + ИДТИ = СВ, prefiks + "
             "ХОДИТЬ = НСВ."
         ),
-        "stories": ["Оди́н глаго́л, де́сять двере́й"],
+        "stories": ["Один глагол, десять дверей"],
         "content": """
 <h2>PR-57: Harakat feʼllarining prefikslari: при-, у-, вы-, в-, до-, пере-, под-, от-</h2>
 

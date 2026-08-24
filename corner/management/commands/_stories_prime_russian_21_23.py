@@ -10,8 +10,8 @@ Janr xilma-xilligi: 21 — intervyu, 22 — yotoqxona sahnasi (dialog),
 Grammatika chegarasi (kumulyativ qoida):
   21-matn: faqat hozirgi zamon. I (PR-20) va II (PR-21) tuslanish.
            Notoʻgʻri feʼllar YOʻQ — ular PR-22 da.
-  22-matn: hozirgi zamon + PR-22 notoʻgʻri feʼllari (живёт, ест, едя́т,
-           хо́чет/хотя́т, пьёт, пи́шет, е́дет, дам).
+  22-matn: hozirgi zamon + PR-22 notoʻgʻri feʼllari (живёт, ест, едят,
+           хочет/хотят, пьёт, пишет, едет, дам).
   23-matn: oʻtgan zamon (PR-23) — birinchi marta. Hikoyachi qiz (Дилноза),
            shuning uchun «я» shakllari -ла bilan keladi va jins farqi
            matnning oʻzida koʻrinadi.
@@ -45,7 +45,7 @@ STORIES = [
     # PR-21 — II tuslanish                INTERVYU
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Я говорю́ на трёх языка́х",
+        "title":   "Я говорю на трёх языках",
         "summary": (
             "PR-21 matni. Jurnalist Nina maktabga keladi va uch tilda gapiradigan "
             "Afsonadan intervyu oladi. Oxirida savol beradigan odam oʻzi "
@@ -56,50 +56,50 @@ STORIES = [
             {
                 "pattern":  "II tuslanish: -ю, -ишь, -ит, -им, -ите, -ят",
                 "meaning":  "Ikkinchi tuslanish. Oʻzak = infinitiv minus -ить/-еть: "
-                            "говор-ю́, говор-и́шь, говор-и́т… «И qatori, oxirida Я». "
-                            "Feʼl qaysi guruhda ekanini «они́» shaklidan bilib olinadi.",
-                "examples": ["Я говорю́ по-ру́сски.", "Они́ говоря́т по-англи́йски."],
+                            "говор-ю, говор-ишь, говор-ит… «И qatori, oxirida Я». "
+                            "Feʼl qaysi guruhda ekanini «они» shaklidan bilib olinadi.",
+                "examples": ["Я говорю по-русски.", "Они говорят по-английски."],
             },
             {
                 "pattern":  "-ат (не -ят) после ж ш щ ч",
                 "meaning":  "Shivirlovchidan keyin Я yozilmaydi (PR-4). Shuning uchun "
                             "oʻzagi ж, ш, щ, ч ga tugagan II tuslanish feʼllari "
-                            "koʻplikda -АТ oladi: у́чат, спеша́т, слы́шат.",
-                "examples": ["Я учу́ слова́.", "Мы не спеши́м."],
+                            "koʻplikda -АТ oladi: учат, спешат, слышат.",
+                "examples": ["Я учу слова.", "Мы не спешим."],
             },
             {
-                "pattern":  "по-ру́сски / по-узбе́кски",
+                "pattern":  "по-русски / по-узбекски",
                 "meaning":  "«Ruschada», «oʻzbekchada» — bu ravish, u hech qachon "
                             "oʻzgarmaydi. Til nomi bilan adashtirmang: русский язык — "
                             "til, по-русски — qanday gapirish.",
-                "examples": ["Ты говори́шь по-ру́сски?", "Ба́бушка говори́т по-узбе́кски."],
+                "examples": ["Ты говоришь по-русски?", "Бабушка говорит по-узбекски."],
             },
         ],
-        "body": '''<p>Нина — <span class="cn-word" data-tr="jurnalist">журнали́ст</span>. Сегодня она в школе. Нина делает <span class="cn-word" data-tr="intervyu">интервью́</span>, а Афсона <span class="cn-word" data-pos="verb" data-tr="javob beradi">отвеча́ет</span>.</p>
+        "body": '''<p>Нина — <span class="cn-word" data-tr="jurnalist">журналист</span>. Сегодня она в школе. Нина делает <span class="cn-word" data-tr="intervyu">интервью</span>, а Афсона <span class="cn-word" data-pos="verb" data-tr="javob beradi">отвечает</span>.</p>
 
-<p>— Афсона, ты <strong>говори́шь</strong> по-ру́сски?</p>
+<p>— Афсона, ты <strong>говоришь</strong> по-русски?</p>
 
-<p>— Да, я <strong>говорю́</strong> по-ру́сски. И по-узбе́кски. И <span class="cn-word" data-tr="ozgina">немно́го</span> по-англи́йски.</p>
+<p>— Да, я <strong>говорю</strong> по-русски. И по-узбекски. И <span class="cn-word" data-tr="ozgina">немного</span> по-английски.</p>
 
-<p>— <span class="cn-word" data-tr="uch til">Три языка́</span>! Почему́ три?</p>
+<p>— <span class="cn-word" data-tr="uch til">Три языка</span>! Почему три?</p>
 
-<p>— Бабушка <strong>говори́т</strong> только по-узбе́кски, — отвеча́ет Афсона. — Моя <span class="cn-word" data-tr="dugona">подру́га</span> Катя <strong>говори́т</strong> по-ру́сски. А интерне́т <strong>говори́т</strong> по-англи́йски.</p>
+<p>— Бабушка <strong>говорит</strong> только по-узбекски, — отвечает Афсона. — Моя <span class="cn-word" data-tr="dugona">подруга</span> Катя <strong>говорит</strong> по-русски. А интернет <strong>говорит</strong> по-английски.</p>
 
 <p>— И какой язык трудный?</p>
 
-<p>— Ру́сский. Я понимаю хорошо, но <strong>говорю́</strong> медленно.</p>
+<p>— Русский. Я понимаю хорошо, но <strong>говорю</strong> медленно.</p>
 
 <p>— А что ты делаешь каждый день?</p>
 
-<p>— Я <strong>учу́</strong> <span class="cn-word" data-tr="soʻzlar">слова́</span>. Пять слов — и всё. Я не <strong>спешу́</strong>.</p>
+<p>— Я <strong>учу</strong> <span class="cn-word" data-tr="soʻzlar">слова</span>. Пять слов — и всё. Я не <strong>спешу</strong>.</p>
 
-<p>Нина слушает и думает. Она <strong>говори́т</strong> только по-ру́сски. Один язык.</p>
+<p>Нина слушает и думает. Она <strong>говорит</strong> только по-русски. Один язык.</p>
 
-<p>— Афсона, а как по-узбе́кски «<span class="cn-word" data-tr="rahmat">спаси́бо</span>»?</p>
+<p>— Афсона, а как по-узбекски «<span class="cn-word" data-tr="rahmat">спасибо</span>»?</p>
 
 <p>— Рахмат.</p>
 
-<p>Нина <strong>говори́т</strong> медленно: «Рах-мат». <span class="cn-word" data-tr="Endi">Тепе́рь</span> она тоже <strong>у́чит</strong> слова́. <span class="cn-word" data-tr="birinchi soʻz">Пе́рвое сло́во</span> — «рахмат».</p>''',
+<p>Нина <strong>говорит</strong> медленно: «Рах-мат». <span class="cn-word" data-tr="Endi">Теперь</span> она тоже <strong>учит</strong> слова. <span class="cn-word" data-tr="birinchi soʻz">Первое слово</span> — «рахмат».</p>''',
         "questions": [
             {
                 "text": "Nega Afsona uch tilda gapiradi?",
@@ -115,18 +115,18 @@ STORIES = [
                                "Yaʼni tillar unga darsdan emas, hayotdan kelgan.",
             },
             {
-                "text": "Matnda «Я учу́ слова́» va «Я не спешу́» bor. «Они́» uchun bu "
+                "text": "Matnda «Я учу слова» va «Я не спешу» bor. «Они» uchun bu "
                         "feʼllar qanday boʻladi?",
                 "choices": [
-                    "у́чат va спеша́т — Ч va Ш dan keyin -АТ yoziladi",
-                    "у́чут va спешу́т",
-                    "у́чят va спешя́т",
-                    "у́чят va спеша́т"
+                    "учат va спешат — Ч va Ш dan keyin -АТ yoziladi",
+                    "учут va спешут",
+                    "учят va спешят",
+                    "учят va спешат"
                 ],
                 "answer": 0,
                 "explanation": "Ikkalasi ham II tuslanishda, demak koʻplikda -ЯТ kutilardi. "
                                "Lekin oʻzak Ч va Ш ga tugaydi, shivirlovchidan keyin esa "
-                               "Я yozilmaydi (PR-4). Shuning uchun -АТ: у́чат, спеша́т. "
+                               "Я yozilmaydi (PR-4). Shuning uchun -АТ: учат, спешат. "
                                "Bu imlo qoidasi — talaffuzda farq deyarli sezilmaydi.",
             },
             {
@@ -140,7 +140,7 @@ STORIES = [
                 "answer": 0,
                 "explanation": "Nina faqat bir tilda gapirardi. Oxirida u oʻzbekcha "
                                "«rahmat» soʻzini soʻradi va uni sekin takrorladi — "
-                               "«Тепе́рь она тоже у́чит слова́». Afsonaning «kuniga besh "
+                               "«Теперь она тоже учит слова». Afsonaning «kuniga besh "
                                "soʻz» usuli unga ham yuqdi.",
             },
         ],
@@ -150,7 +150,7 @@ STORIES = [
     # PR-22 — notoʻgʻri feʼllar           YOTOQXONA SAHNASI
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Ку́хня в общежи́тии",
+        "title":   "Кухня в общежитии",
         "summary": (
             "PR-22 matni. Yotoqxona oshxonasida uch talaba — har biri oʻz ovqatini "
             "yeyapti. Jasur bir narsani sezadi va kechki ovqat birdan boshqacha "
@@ -159,94 +159,94 @@ STORIES = [
         "order":   22,
         "grammar": [
             {
-                "pattern":  "есть — ем, ешь, ест, еди́м, еди́те, едя́т",
+                "pattern":  "есть — ем, ешь, ест, едим, едите, едят",
                 "meaning":  "«Yemoq» feʼli hech qaysi tuslanishga oʻxshamaydi va "
-                            "juftlab yodlanadi: дать — дам, дашь, даст, дади́м… "
-                            "Diqqat: едя́т = yeydilar (есть), е́дут = ketadilar (е́хать).",
-                "examples": ["Жасу́р ест пло́в.", "Они́ едя́т вме́сте."],
+                            "juftlab yodlanadi: дать — дам, дашь, даст, дадим… "
+                            "Diqqat: едят = yeydilar (есть), едут = ketadilar (ехать).",
+                "examples": ["Жасур ест плов.", "Они едят вместе."],
             },
             {
-                "pattern":  "хоте́ть — birlikda Ч, koʻplikda Т",
-                "meaning":  "Bitta feʼl ikkita tuslanishda: хочу́, хо́чешь, хо́чет "
-                            "(I) — lekin хоти́м, хоти́те, хотя́т (II). Rus tilida bunday "
+                "pattern":  "хотеть — birlikda Ч, koʻplikda Т",
+                "meaning":  "Bitta feʼl ikkita tuslanishda: хочу, хочешь, хочет "
+                            "(I) — lekin хотим, хотите, хотят (II). Rus tilida bunday "
                             "feʼl deyarli bitta.",
-                "examples": ["Оле́г хо́чет пло́в.", "Они́ хотя́т пло́в."],
+                "examples": ["Олег хочет плов.", "Они хотят плов."],
             },
             {
-                "pattern":  "живёт · пьёт · пи́шет · е́дет",
+                "pattern":  "живёт · пьёт · пишет · едет",
                 "meaning":  "Oʻzagi oʻzgaradigan feʼllar oddiy I tuslanish "
                             "qoʻshimchalarini oladi. Urgʻu qoʻshimchaga tushsa, "
                             "Е oʻrniga Ё yoziladi: живёшь, пьёт.",
-                "examples": ["Ка́тя пьёт чай.", "Оле́г е́дет домо́й."],
+                "examples": ["Катя пьёт чай.", "Олег едет домой."],
             },
         ],
-        "body": '''<p>Вечер. <span class="cn-word" data-tr="yotoqxona">Общежи́тие</span>. <span class="cn-word" data-tr="oshxona">Ку́хня</span>. Здесь Жасур, Олег и Катя.</p>
+        "body": '''<p>Вечер. <span class="cn-word" data-tr="yotoqxona">Общежитие</span>. <span class="cn-word" data-tr="oshxona">Кухня</span>. Здесь Жасур, Олег и Катя.</p>
 
-<p>Жасур <strong>живёт</strong> здесь один <span class="cn-word" data-tr="oy">ме́сяц</span>. Олег и Катя <strong>живу́т</strong> здесь <span class="cn-word" data-tr="ancha vaqtdan beri">давно́</span>.</p>
+<p>Жасур <strong>живёт</strong> здесь один <span class="cn-word" data-tr="oy">месяц</span>. Олег и Катя <strong>живут</strong> здесь <span class="cn-word" data-tr="ancha vaqtdan beri">давно</span>.</p>
 
 <p>Жасур <strong>ест</strong> плов. Олег <strong>ест</strong> хлеб и <span class="cn-word" data-tr="pishloq">сыр</span>. Катя <strong>пьёт</strong> чай.</p>
 
-<p>— Жасур, что это? — <span class="cn-word" data-pos="verb" data-tr="soʻraydi">спра́шивает</span> Олег.</p>
+<p>— Жасур, что это? — <span class="cn-word" data-pos="verb" data-tr="soʻraydi">спрашивает</span> Олег.</p>
 
 <p>— Это плов. Моя мама готовит плов в субботу.</p>
 
-<p>Олег <strong>хо́чет</strong> плов. Катя тоже <strong>хо́чет</strong> плов. Они <strong>хотя́т</strong> плов, но <span class="cn-word" data-pos="verb" data-tr="jim turishadi">молча́т</span>.</p>
+<p>Олег <strong>хочет</strong> плов. Катя тоже <strong>хочет</strong> плов. Они <strong>хотят</strong> плов, но <span class="cn-word" data-pos="verb" data-tr="jim turishadi">молчат</span>.</p>
 
-<p>Жасур <strong>ви́дит</strong> это.</p>
+<p>Жасур <strong>видит</strong> это.</p>
 
-<p>— Олег, Катя! Я <strong>дам</strong> плов. Вы <strong>хоти́те</strong>?</p>
+<p>— Олег, Катя! Я <strong>дам</strong> плов. Вы <strong>хотите</strong>?</p>
 
-<p>— <strong>Хоти́м</strong>! — говорят Олег и Катя.</p>
+<p>— <strong>Хотим</strong>! — говорят Олег и Катя.</p>
 
-<p>Теперь Жасур, Олег и Катя <strong>едя́т</strong> плов <span class="cn-word" data-tr="birga">вме́сте</span>.</p>
+<p>Теперь Жасур, Олег и Катя <strong>едят</strong> плов <span class="cn-word" data-tr="birga">вместе</span>.</p>
 
-<p>— Дома мы тоже <strong>еди́м</strong> вместе, — говорит Жасур. — Плов <strong>лю́бит</strong> <span class="cn-word" data-tr="davra, hamrohlik">компа́нию</span>.</p>
+<p>— Дома мы тоже <strong>едим</strong> вместе, — говорит Жасур. — Плов <strong>любит</strong> <span class="cn-word" data-tr="davra, hamrohlik">компанию</span>.</p>
 
-<p>Катя <strong>пи́шет</strong> <span class="cn-word" data-tr="retsept">реце́пт</span>: «Плов — это <span class="cn-word" data-tr="guruch">рис</span>, <span class="cn-word" data-tr="goʻsht">мя́со</span>, <span class="cn-word" data-tr="sabzi">морко́вь</span> и <span class="cn-word" data-tr="piyoz">лук</span>».</p>
+<p>Катя <strong>пишет</strong> <span class="cn-word" data-tr="retsept">рецепт</span>: «Плов — это <span class="cn-word" data-tr="guruch">рис</span>, <span class="cn-word" data-tr="goʻsht">мясо</span>, <span class="cn-word" data-tr="sabzi">морковь</span> и <span class="cn-word" data-tr="piyoz">лук</span>».</p>
 
-<p>— А в субботу я <strong>е́ду</strong> домой, — говорит Олег. — Завтра я <strong>гото́влю</strong> <span class="cn-word" data-tr="borsh (rus shoʻrvasi)">борщ</span>. Борщ тоже <strong>лю́бит</strong> компанию.</p>''',
+<p>— А в субботу я <strong>еду</strong> домой, — говорит Олег. — Завтра я <strong>готовлю</strong> <span class="cn-word" data-tr="borsh (rus shoʻrvasi)">борщ</span>. Борщ тоже <strong>любит</strong> компанию.</p>''',
         "questions": [
             {
                 "text": "Nega Oleg va Katya oshdan soʻrashmadi?",
                 "choices": [
-                    "Ular xohlashardi, lekin jim turishdi — «молча́т»",
+                    "Ular xohlashardi, lekin jim turishdi — «молчат»",
                     "Ular osh yoqtirmaydi",
                     "Ular allaqachon toʻygan edi",
                     "Jasur ularga ruxsat bermadi"
                 ],
                 "answer": 0,
-                "explanation": "«Они хотя́т плов, но молча́т» — xohlash bor, soʻrash yoʻq. "
-                               "Shuning uchun keyingi jumla muhim: «Жасур ви́дит это» — "
+                "explanation": "«Они хотят плов, но молчат» — xohlash bor, soʻrash yoʻq. "
+                               "Shuning uchun keyingi jumla muhim: «Жасур видит это» — "
                                "u aytilmagan narsani koʻrdi va oʻzi taklif qildi.",
             },
             {
-                "text": "«Олег хо́чет плов» va «Они хотя́т плов» — nega bitta feʼlning "
+                "text": "«Олег хочет плов» va «Они хотят плов» — nega bitta feʼlning "
                         "qoʻshimchasi bunchalik boshqa?",
                 "choices": [
-                    "Хоте́ть birlikda I, koʻplikda II tuslanishda tuslanadi",
+                    "Хотеть birlikda I, koʻplikda II tuslanishda tuslanadi",
                     "Chunki bittasi oʻtgan zamon",
                     "Chunki «Олег» erkak jinsida",
                     "Bu ikki xil feʼl"
                 ],
                 "answer": 0,
-                "explanation": "Хоте́ть — rus tilidagi deyarli yagona feʼl, u guruhini gap "
-                               "oʻrtasida almashtiradi: birlikda Ч (хочу́, хо́чешь, "
-                               "хо́чет), koʻplikda Т (хоти́м, хоти́те, хотя́т).",
+                "explanation": "Хотеть — rus tilidagi deyarli yagona feʼl, u guruhini gap "
+                               "oʻrtasida almashtiradi: birlikda Ч (хочу, хочешь, "
+                               "хочет), koʻplikda Т (хотим, хотите, хотят).",
             },
             {
-                "text": "Matnda «они едя́т плов» va «я е́ду домой» bor. Bu ikki soʻz "
+                "text": "Matnda «они едят плов» va «я еду домой» bor. Bu ikki soʻz "
                         "nima farq qiladi?",
                 "choices": [
-                    "едя́т — yeydilar (есть), е́ду — ketaman transportda (е́хать)",
+                    "едят — yeydilar (есть), еду — ketaman transportda (ехать)",
                     "Ikkalasi ham «yemoq», faqat shaxsi boshqa",
-                    "едя́т — kelasi zamon, е́ду — hozirgi",
-                    "едя́т — koʻplik, е́ду — oʻsha feʼlning birligi"
+                    "едят — kelasi zamon, еду — hozirgi",
+                    "едят — koʻplik, еду — oʻsha feʼlning birligi"
                 ],
                 "answer": 0,
                 "explanation": "Bu ikki feʼl bir-biriga juda oʻxshaydi, lekin butunlay "
-                               "boshqa: есть (yemoq) → ем, ест, едя́т; е́хать (transportda "
-                               "ketmoq) → е́ду, е́дет, е́дут. Urgʻu ham yordam beradi: "
-                               "[йидя́т] — [йе́ду].",
+                               "boshqa: есть (yemoq) → ем, ест, едят; ехать (transportda "
+                               "ketmoq) → еду, едет, едут. Urgʻu ham yordam beradi: "
+                               "[йидят] — [йеду].",
             },
         ],
     },
@@ -255,7 +255,7 @@ STORIES = [
     # PR-23 — oʻtgan zamon                KUNDALIK DAFTAR
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Вчера́ был дождь",
+        "title":   "Вчера был дождь",
         "summary": (
             "PR-23 matni. Dilnozaning kundalik daftaridan bir sahifa: yomgʻirli "
             "ertalab, sekin avtobus va ukasi Bekzod bilan bogʻliq kichkina bir "
@@ -269,40 +269,40 @@ STORIES = [
                             "-ЛА, oʻrta -ЛО, koʻplik -ЛИ. Oʻzbekchada bunday narsa yoʻq "
                             "(oʻqidim / oʻqiding — jins koʻrinmaydi), shuning uchun har "
                             "safar ega kimligini tekshiring.",
-                "examples": ["Я была́ дома.", "Бекзо́д ждал."],
+                "examples": ["Я была дома.", "Бекзод ждал."],
             },
             {
-                "pattern":  "был / была́ / бы́ло / бы́ли",
+                "pattern":  "был / была / было / были",
                 "meaning":  "Hozirgi zamonda «быть» aytilmaydi (Он дома), oʻtgan zamonda "
                             "esa majburiy (Он был дома). Ayol jinsida urgʻu oxiriga "
-                            "koʻchadi: была́ — xuddi жила́, дала́, пила́ kabi.",
-                "examples": ["Вчера́ был дождь.", "В школе бы́ло тепло́."],
+                            "koʻchadi: была — xuddi жила, дала, пила kabi.",
+                "examples": ["Вчера был дождь.", "В школе было тепло."],
             },
             {
                 "pattern":  "шёл / шла / шли",
-                "meaning":  "Идти́ feʼlining oʻtgan zamoni — butunlay boshqa oʻzak. "
+                "meaning":  "Идти feʼlining oʻtgan zamoni — butunlay boshqa oʻzak. "
                             "Ob-havo haqida ham shu feʼl ishlatiladi: ruschada yomgʻir "
                             "yogʻmaydi, u YURADI — шёл дождь.",
-                "examples": ["Дождь шёл гро́мко.", "Я шла бы́стро."],
+                "examples": ["Дождь шёл громко.", "Я шла быстро."],
             },
         ],
-        "body": '''<p><span class="cn-word" data-tr="chorshanba">Среда́</span>.</p>
+        "body": '''<p><span class="cn-word" data-tr="chorshanba">Среда</span>.</p>
 
-<p>Вчера́ <strong>был</strong> дождь.</p>
+<p>Вчера <strong>был</strong> дождь.</p>
 
-<p>Утром я <strong>шла</strong> <span class="cn-word" data-tr="maktabga">в шко́лу</span>. <span class="cn-word" data-tr="soyabon">Зонт</span> <strong>был</strong> дома. Дождь <strong>шёл</strong> тихо, потом громко.</p>
+<p>Утром я <strong>шла</strong> <span class="cn-word" data-tr="maktabga">в школу</span>. <span class="cn-word" data-tr="soyabon">Зонт</span> <strong>был</strong> дома. Дождь <strong>шёл</strong> тихо, потом громко.</p>
 
-<p>Автобус <strong>шёл</strong> медленно. Я <strong>шла</strong> быстро. И я <strong>была́</strong> <span class="cn-word" data-tr="hoʻl">мо́края</span>.</p>
+<p>Автобус <strong>шёл</strong> медленно. Я <strong>шла</strong> быстро. И я <strong>была</strong> <span class="cn-word" data-tr="hoʻl">мокрая</span>.</p>
 
-<p>В школе <strong>бы́ло</strong> <span class="cn-word" data-tr="issiq">тепло́</span>. Марина Олеговна <strong>дала́</strong> чай. Потом мы <strong>чита́ли</strong> и <strong>писа́ли</strong>. Я <span class="cn-word" data-pos="verb" data-tr="unutdim">забы́ла</span> дождь.</p>
+<p>В школе <strong>было</strong> <span class="cn-word" data-tr="issiq">тепло</span>. Марина Олеговна <strong>дала</strong> чай. Потом мы <strong>читали</strong> и <strong>писали</strong>. Я <span class="cn-word" data-pos="verb" data-tr="unutdim">забыла</span> дождь.</p>
 
-<p>Вечером я <strong>была́</strong> дома. Бекзод <strong>ждал</strong>.</p>
+<p>Вечером я <strong>была</strong> дома. Бекзод <strong>ждал</strong>.</p>
 
-<p>— Дилноза, я <strong>ждал</strong> утром тоже, — <span class="cn-word" data-pos="verb" data-tr="dedi (erkak)">сказа́л</span> Бекзод. — Я <strong>шёл</strong> медленно. Ты <strong>шла</strong> быстро.</p>
+<p>— Дилноза, я <strong>ждал</strong> утром тоже, — <span class="cn-word" data-pos="verb" data-tr="dedi (erkak)">сказал</span> Бекзод. — Я <strong>шёл</strong> медленно. Ты <strong>шла</strong> быстро.</p>
 
-<p>Зонт <strong>был</strong> <span class="cn-word" data-tr="uning yonida">у него́</span>. Утром. А я не <strong>ви́дела</strong>.</p>
+<p>Зонт <strong>был</strong> <span class="cn-word" data-tr="uning yonida">у него</span>. Утром. А я не <strong>видела</strong>.</p>
 
-<p>Сегодня <span class="cn-word" data-tr="quyosh">со́лнце</span>. Но зонт <span class="cn-word" data-tr="menda">у меня́</span>.</p>
+<p>Сегодня <span class="cn-word" data-tr="quyosh">солнце</span>. Но зонт <span class="cn-word" data-tr="menda">у меня</span>.</p>
 
 <p>Спасибо, Бекзод.</p>''',
         "questions": [
@@ -317,10 +317,10 @@ STORIES = [
                 "answer": 0,
                 "explanation": "Bekzodning oʻz gapi: «Я ждал утром… Я шёл медленно. Ты "
                                "шла быстро». U soyabon bilan chiqqan edi, lekin ulgurmadi "
-                               "— «А я не ви́дела».",
+                               "— «А я не видела».",
             },
             {
-                "text": "Nega matnda «я шла» va «я была́» yozilgan, «я шёл» va «я был» "
+                "text": "Nega matnda «я шла» va «я была» yozilgan, «я шёл» va «я был» "
                         "emas?",
                 "choices": [
                     "Chunki hikoyachi — qiz; oʻtgan zamon jinsga qaraydi",
@@ -331,8 +331,8 @@ STORIES = [
                 "answer": 0,
                 "explanation": "Rus tilida oʻtgan zamon shaxsni koʻrsatmaydi, JINSni "
                                "koʻrsatadi. Kundalikni Dilnoza yozyapti, shuning uchun "
-                               "hamma «я» shakli -ЛА bilan: шла, была́, забы́ла, ви́дела. "
-                               "Bekzod haqidagi feʼllar esa -Л bilan: ждал, шёл, сказа́л.",
+                               "hamma «я» shakli -ЛА bilan: шла, была, забыла, видела. "
+                               "Bekzod haqidagi feʼllar esa -Л bilan: ждал, шёл, сказал.",
             },
             {
                 "text": "«Дождь шёл тихо, потом громко» — bu jumla ruscha haqida nimani "
@@ -344,7 +344,7 @@ STORIES = [
                     "Шёл bu yerda «boshlandi» degani"
                 ],
                 "answer": 0,
-                "explanation": "Идти́ feʼli ob-havo bilan ham ishlatiladi: шёл дождь, шёл "
+                "explanation": "Идти feʼli ob-havo bilan ham ishlatiladi: шёл дождь, шёл "
                                "снег. Uni butun ibora sifatida yodlash kerak — "
                                "oʻzbekchaga «yomgʻir yogʻdi» deb tarjima qilinadi. "
                                "«Дождь» erkak jinsidagi ot, shuning uchun ШЁЛ.",

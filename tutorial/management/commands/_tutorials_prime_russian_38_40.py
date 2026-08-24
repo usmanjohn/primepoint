@@ -40,7 +40,7 @@ TUTORIALS = [
             "два́дцать лет) va ikkita predlog — К va ПО. Bu yerda oʻzbekcha -GA "
             "ning chegarasi ochiladi."
         ),
-        "stories": ["Пе́рвая зима́"],
+        "stories": ["Первая зима"],
         "content": """
 <h2>PR-38: Дательный 2: мне холодно, ему нравится, по улице, к другу</h2>
 
@@ -326,7 +326,7 @@ uchun predlogga unli qoʻshiladi.</p>
             "bitta farq ustiga qurilgan: oʻzbekcha «bilan» ruschada ikkiga "
             "boʻlinadi — asbob (predlogsiz) va hamroh (С bilan)."
         ),
-        "stories": ["Как де́лают самсу́"],
+        "stories": ["Как делают самсу"],
         "content": """
 <h2>PR-39: Творительный 1: чем? — vosita va «с кем?» birgalik</h2>
 
@@ -614,7 +614,7 @@ keladi.</div>
             "joyni koʻrsatadigan beshta predlog. Shu dars bilan oltita kelishik "
             "toʻliq yigʻiladi."
         ),
-        "stories": ["Кем ты хо́чешь стать?"],
+        "stories": ["Кем ты хочешь стать?"],
         "content": """
 <h2>PR-40: Творительный 2: быть/стать/работать + Т.п., над, под, за, перед, между</h2>
 

@@ -7,20 +7,20 @@ Toc: corner/management/commands/toc_prime_russian_readings.txt
 Janr xilma-xilligi: 38 — hikoya (qish), 39 — retsept, 40 — intervyu.
 (35 xat, 36 ilmiy-ommabop, 37 sinf sahnasi edi.)
 
-⚠️ SARLAVHA TUZATILDI. Toc'da «Как де́лают самса́» yozilgan edi — bu
-grammatik jihatdan notoʻgʻri: де́лают feʼli Вини́тельный talab qiladi,
-demak «самсу́». Grammatika kursida sarlavhaning oʻzi xato boʻlishi mumkin
-emas, shuning uchun «Как де́лают самсу́» qilindi.
+⚠️ SARLAVHA TUZATILDI. Toc'da «Как делают самса» yozilgan edi — bu
+grammatik jihatdan notoʻgʻri: делают feʼli Винительный talab qiladi,
+demak «самсу». Grammatika kursida sarlavhaning oʻzi xato boʻlishi mumkin
+emas, shuning uchun «Как делают самсу» qilindi.
 
-Uzviylik: 38-matn PR-35 dagi «Письмо́ из Сиби́ри» ning davomi — oʻsha
+Uzviylik: 38-matn PR-35 dagi «Письмо из Сибири» ning davomi — oʻsha
 Sherbek, oʻsha Sibir, endi uning birinchi qishi. Oʻquvchi tanish odamni
 qayta uchratadi.
 
 Grammatika chegarasi (kumulyativ qoida):
-  38-matn: Д.п. — мне хо́лодно, yosh, К va ПО predloglari.
-  39-matn: Т.п. — asbob (predlogsiz: ножо́м, рука́ми) va hamroh (С bilan).
+  38-matn: Д.п. — мне холодно, yosh, К va ПО predloglari.
+  39-matn: Т.п. — asbob (predlogsiz: ножом, руками) va hamroh (С bilan).
            Matnning butun mazmuni aynan shu farq ustiga qurilgan.
-  40-matn: Т.п. — кем стать / рабо́тать. Oxirgi jumla hozirgi zamondagi
+  40-matn: Т.п. — кем стать / работать. Oxirgi jumla hozirgi zamondagi
            bosh kelishik bilan kelasi zamondagi Т.п. ni yonma-yon qoʻyadi.
 
     python manage.py import_corner \
@@ -48,66 +48,66 @@ STORIES = [
     # PR-38 — Д.п. holat, yosh, К, ПО            HIKOYA
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Пе́рвая зима́",
+        "title":   "Первая зима",
         "summary": (
-            "PR-38 matni. «Письмо́ из Сиби́ри» ning davomi: Sherbekning Sibirdagi "
+            "PR-38 matni. «Письмо из Сибири» ning davomi: Sherbekning Sibirdagi "
             "birinchi qishi. Minus oʻttiz, sotuvchi ayolning maslahati va "
             "hayotdagi birinchi marta yoqqan qish."
         ),
         "order":   38,
         "grammar": [
             {
-                "pattern":  "Мне хо́лодно — holat",
-                "meaning":  "Shaxssiz gap: ega yoʻq, olmosh Да́тельный'da. Oʻzbekcha "
-                            "«menga sovuq» ning aynan oʻzi. Oʻtgan zamonda «бы́ло» — "
+                "pattern":  "Мне холодно — holat",
+                "meaning":  "Shaxssiz gap: ega yoʻq, olmosh Дательный'da. Oʻzbekcha "
+                            "«menga sovuq» ning aynan oʻzi. Oʻtgan zamonda «было» — "
                             "har doim oʻrta jinsda.",
-                "examples": ["Ему́ хо́лодно.", "Ему́ бы́ло хо́лодно."],
+                "examples": ["Ему холодно.", "Ему было холодно."],
             },
             {
-                "pattern":  "Yosh — Да́тельный bilan",
+                "pattern":  "Yosh — Дательный bilan",
                 "meaning":  "Rus tilida yosh «menga ... yil» shaklida aytiladi: Мне "
-                            "два́дцать четы́ре го́да. Oʻzbekchada esa «men ... "
+                            "двадцать четыре года. Oʻzbekchada esa «men ... "
                             "yoshdaman» — ega bor. Ikkalasi ham gʻalati, lekin "
                             "boshqacha gʻalati.",
-                "examples": ["Мне два́дцать четы́ре го́да."],
+                "examples": ["Мне двадцать четыре года."],
             },
             {
-                "pattern":  "К va ПО + Да́тельный",
-                "meaning":  "К — odam yoki narsa TOMON (к магази́ну). ПО — boʻylab "
-                            "(по у́лице, по го́роду). Diqqat: joyga kirish uchun В "
+                "pattern":  "К va ПО + Дательный",
+                "meaning":  "К — odam yoki narsa TOMON (к магазину). ПО — boʻylab "
+                            "(по улице, по городу). Diqqat: joyga kirish uchun В "
                             "ishlatiladi, К emas.",
-                "examples": ["Он идёт к магази́ну.", "Он идёт по у́лице."],
+                "examples": ["Он идёт к магазину.", "Он идёт по улице."],
             },
         ],
-        "body": '''<p>Шербек из Ташке́нта. Тепе́рь он живёт в Сиби́ри. Э́то его́ пе́рвая <span class="cn-word" data-tr="qish">зима́</span>.</p>
+        "body": '''<p>Шербек из Ташкента. Теперь он живёт в Сибири. Это его первая <span class="cn-word" data-tr="qish">зима</span>.</p>
 
-<p>В Ташке́нте зимо́й тоже хо́лодно. Но здесь друго́й хо́лод.</p>
+<p>В Ташкенте зимой тоже холодно. Но здесь другой холод.</p>
 
-<p>Пе́рвый день. <span class="cn-word" data-tr="minus oʻttiz">Ми́нус три́дцать</span>.</p>
+<p>Первый день. <span class="cn-word" data-tr="minus oʻttiz">Минус тридцать</span>.</p>
 
-<p><strong>Ему́</strong> хо́лодно. <strong>Ему́</strong> хо́лодно утром, днём и ве́чером.</p>
+<p><strong>Ему</strong> холодно. <strong>Ему</strong> холодно утром, днём и вечером.</p>
 
-<p>Он идёт <strong>по</strong> у́лице ме́дленно. Он идёт <strong>к</strong> магази́ну.</p>
+<p>Он идёт <strong>по</strong> улице медленно. Он идёт <strong>к</strong> магазину.</p>
 
-<p>В магази́не <strong>ему́</strong> тепло́. Он не хо́чет идти́ домо́й.</p>
+<p>В магазине <strong>ему</strong> тепло. Он не хочет идти домой.</p>
 
-<p><span class="cn-word" data-tr="sotuvchi ayol">Продавщи́ца</span> смо́трит и говори́т:</p>
+<p><span class="cn-word" data-tr="sotuvchi ayol">Продавщица</span> смотрит и говорит:</p>
 
-<p>— Вы с ю́га?</p>
+<p>— Вы с юга?</p>
 
-<p>— Да. Из Ташке́нта.</p>
+<p>— Да. Из Ташкента.</p>
 
-<p>— <span class="cn-word" data-tr="Sizga ... kerak">Вам ну́жен</span> <span class="cn-word" data-tr="sharf">шарф</span>, — говори́т она́. — И <span class="cn-word" data-tr="qalpoq">ша́пка</span>. И <span class="cn-word" data-tr="qoʻlqoplar">рукави́цы</span>.</p>
+<p>— <span class="cn-word" data-tr="Sizga ... kerak">Вам нужен</span> <span class="cn-word" data-tr="sharf">шарф</span>, — говорит она. — И <span class="cn-word" data-tr="qalpoq">шапка</span>. И <span class="cn-word" data-tr="qoʻlqoplar">рукавицы</span>.</p>
 
-<p>Шербек покупа́ет всё.</p>
+<p>Шербек покупает всё.</p>
 
-<p><span class="cn-word" data-tr="Bir oydan keyin">Че́рез ме́сяц</span> он идёт <strong>по</strong> го́роду — и <strong>ему́</strong> не хо́лодно.</p>
+<p><span class="cn-word" data-tr="Bir oydan keyin">Через месяц</span> он идёт <strong>по</strong> городу — и <strong>ему</strong> не холодно.</p>
 
-<p>Он идёт <strong>к</strong> о́зеру. Там бе́лый лёд и <span class="cn-word" data-tr="quyosh">со́лнце</span>.</p>
+<p>Он идёт <strong>к</strong> озеру. Там белый лёд и <span class="cn-word" data-tr="quyosh">солнце</span>.</p>
 
-<p>Ве́чером он пи́шет Афсо́не:</p>
+<p>Вечером он пишет Афсоне:</p>
 
-<p>«<strong>Мне</strong> два́дцать четы́ре го́да. И зима́ <strong>мне</strong> нра́вится. Пе́рвый раз <span class="cn-word" data-tr="hayotda">в жи́зни</span>».</p>''',
+<p>«<strong>Мне</strong> двадцать четыре года. И зима <strong>мне</strong> нравится. Первый раз <span class="cn-word" data-tr="hayotda">в жизни</span>».</p>''',
         "questions": [
             {
                 "text": "Sotuvchi ayol nega Sherbekning janubdan ekanini payqadi?",
@@ -118,15 +118,15 @@ STORIES = [
                     "U koʻlga borishni soʻragan"
                 ],
                 "answer": 0,
-                "explanation": "«В магази́не ему́ тепло́. Он не хо́чет идти́ домо́й» — "
+                "explanation": "«В магазине ему тепло. Он не хочет идти домой» — "
                                "shundan keyin darrov sotuvchining savoli keladi: «Вы с "
-                               "ю́га?». Sovuqqa oʻrganmagan odam koʻrinib turadi.",
+                               "юга?». Sovuqqa oʻrganmagan odam koʻrinib turadi.",
             },
             {
-                "text": "«Ему́ хо́лодно» va «Мне два́дцать четы́ре го́да» — bu ikki "
+                "text": "«Ему холодно» va «Мне двадцать четыре года» — bu ikki "
                         "gapda nima umumiy?",
                 "choices": [
-                    "Ikkalasida ham ega yoʻq va olmosh Да́тельный padejida",
+                    "Ikkalasida ham ega yoʻq va olmosh Дательный padejida",
                     "Ikkalasi ham oʻtgan zamon",
                     "Ikkalasi ham savol",
                     "Ikkalasida ham feʼl bor"
@@ -146,7 +146,7 @@ STORIES = [
                     "Sherbek yigirma toʻrt yoshini nishonlayapti"
                 ],
                 "answer": 0,
-                "explanation": "«И зима́ мне нра́вится. Пе́рвый раз в жи́зни». Matn "
+                "explanation": "«И зима мне нравится. Первый раз в жизни». Matn "
                                "boshida unga har vaqt sovuq edi; oxirida esa u koʻl "
                                "tomon yuradi va qish unga yoqadi. Oʻzgargan narsa — "
                                "sharf emas, odamning oʻzi.",
@@ -158,10 +158,10 @@ STORIES = [
     # PR-39 — Т.п. asbob va hamroh                RETSEPT
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Как де́лают самсу́",
+        "title":   "Как делают самсу",
         "summary": (
             "PR-39 matni. Samsa retsepti — xamir, goʻsht, piyoz. Har bir qadamda "
-            "asbob koʻrsatiladi (ножо́м, рука́ми), va oxirida buvi eng muhim "
+            "asbob koʻrsatiladi (ножом, руками), va oxirida buvi eng muhim "
             "«bilan» ni aytadi."
         ),
         "order":   39,
@@ -169,48 +169,48 @@ STORIES = [
             {
                 "pattern":  "Asbob — predlogsiz",
                 "meaning":  "«Nima bilan?» degan savolga javob predlogSIZ beriladi: "
-                            "ре́зать ножо́м, де́лать рука́ми. Oʻzbekcha «bilan» bu "
+                            "резать ножом, делать руками. Oʻzbekcha «bilan» bu "
                             "yerda ruschada hech qanday soʻz bilan tarjima qilinmaydi "
                             "— faqat qoʻshimcha.",
-                "examples": ["Лук ре́жут ножо́м.", "Те́сто де́лают рука́ми."],
+                "examples": ["Лук режут ножом.", "Тесто делают руками."],
             },
             {
                 "pattern":  "Hamroh va qoʻshimcha — С bilan",
                 "meaning":  "«Kim bilan?» yoki «nima qoʻshib?» — С predlogi bilan: "
-                            "с со́лью, с людьми́. Bu yerda predlog SHART.",
-                "examples": ["Мя́со с со́лью и с пе́рцем.", "Самсу́ де́лают с людьми́."],
+                            "с солью, с людьми. Bu yerda predlog SHART.",
+                "examples": ["Мясо с солью и с перцем.", "Самсу делают с людьми."],
             },
             {
                 "pattern":  "Qoʻshimchalar: -ом/-ем · -ой/-ей",
-                "meaning":  "Erkak va oʻrta jins -ОМ/-ЕМ (ножо́м, пе́рцем), ayol jinsi "
-                            "-ОЙ/-ЕЙ (ло́жкой). Ayol jinsidagi -Ь otlari -ЬЮ oladi: "
-                            "соль → со́лью.",
-                "examples": ["Ло́жкой. Ножо́м. Со́лью."],
+                "meaning":  "Erkak va oʻrta jins -ОМ/-ЕМ (ножом, перцем), ayol jinsi "
+                            "-ОЙ/-ЕЙ (ложкой). Ayol jinsidagi -Ь otlari -ЬЮ oladi: "
+                            "соль → солью.",
+                "examples": ["Ложкой. Ножом. Солью."],
             },
         ],
-        "body": '''<p>Самса́ — э́то <span class="cn-word" data-tr="xamir">те́сто</span> и <span class="cn-word" data-tr="goʻsht">мя́со</span>. И ещё лук. Мно́го лу́ка.</p>
+        "body": '''<p>Самса — это <span class="cn-word" data-tr="xamir">тесто</span> и <span class="cn-word" data-tr="goʻsht">мясо</span>. И ещё лук. Много лука.</p>
 
-<p>Снача́ла де́лают те́сто. <span class="cn-word" data-tr="un">Мука́</span>, вода́, <span class="cn-word" data-tr="tuz">соль</span>. Всё.</p>
+<p>Сначала делают тесто. <span class="cn-word" data-tr="un">Мука</span>, вода, <span class="cn-word" data-tr="tuz">соль</span>. Всё.</p>
 
-<p>Те́сто де́лают <strong>рука́ми</strong>. Не маши́ной. <strong>Рука́ми</strong> <span class="cn-word" data-tr="yaxshiroq">лу́чше</span>.</p>
+<p>Тесто делают <strong>руками</strong>. Не машиной. <strong>Руками</strong> <span class="cn-word" data-tr="yaxshiroq">лучше</span>.</p>
 
-<p>Пото́м лук. Лук <span class="cn-word" data-pos="verb" data-tr="kesishadi">ре́жут</span> <strong>ножо́м</strong>. <span class="cn-word" data-tr="mayda">Ме́лко</span>.</p>
+<p>Потом лук. Лук <span class="cn-word" data-pos="verb" data-tr="kesishadi">режут</span> <strong>ножом</strong>. <span class="cn-word" data-tr="mayda">Мелко</span>.</p>
 
-<p>Мя́со тоже ре́жут <strong>ножо́м</strong>. Не маши́ной! Э́то ва́жно.</p>
+<p>Мясо тоже режут <strong>ножом</strong>. Не машиной! Это важно.</p>
 
-<p>Пото́м мя́со и лук <strong>с</strong> со́лью и <strong>с</strong> <span class="cn-word" data-tr="qalampir">пе́рцем</span>.</p>
+<p>Потом мясо и лук <strong>с</strong> солью и <strong>с</strong> <span class="cn-word" data-tr="qalampir">перцем</span>.</p>
 
-<p>Самсу́ де́лают <strong>рука́ми</strong>. Одна́ самса́ — одна́ мину́та.</p>
+<p>Самсу делают <strong>руками</strong>. Одна самса — одна минута.</p>
 
-<p>Пото́м <span class="cn-word" data-tr="tandir">танды́р</span>. И́ли <span class="cn-word" data-tr="duxovka">духо́вка</span>. Два́дцать мину́т.</p>
+<p>Потом <span class="cn-word" data-tr="tandir">тандыр</span>. Или <span class="cn-word" data-tr="duxovka">духовка</span>. Двадцать минут.</p>
 
-<p>Бабушка говори́т так:</p>
+<p>Бабушка говорит так:</p>
 
-<p>— Нож — э́то не гла́вное. Танды́р — тоже не гла́вное.</p>
+<p>— Нож — это не главное. Тандыр — тоже не главное.</p>
 
-<p>— А что гла́вное? — спра́шивает Бекзод.</p>
+<p>— А что главное? — спрашивает Бекзод.</p>
 
-<p>— Лю́ди, — говори́т бабушка. — Самсу́ де́лают <strong>с людьми́</strong>. Оди́н челове́к и одна́ самса́ — э́то не пра́здник. Э́то про́сто <span class="cn-word" data-tr="ovqat">еда́</span>.</p>''',
+<p>— Люди, — говорит бабушка. — Самсу делают <strong>с людьми</strong>. Один человек и одна самса — это не праздник. Это просто <span class="cn-word" data-tr="ovqat">еда</span>.</p>''',
         "questions": [
             {
                 "text": "Buvining fikricha, samsada eng muhimi nima?",
@@ -221,12 +221,12 @@ STORIES = [
                     "Xamirning sifati"
                 ],
                 "answer": 0,
-                "explanation": "«Нож — э́то не гла́вное. Танды́р — тоже не гла́вное… "
-                               "Лю́ди». Buvi asbobdan odamga oʻtadi: «Оди́н челове́к и "
-                               "одна́ самса́ — э́то не пра́здник».",
+                "explanation": "«Нож — это не главное. Тандыр — тоже не главное… "
+                               "Люди». Buvi asbobdan odamga oʻtadi: «Один человек и "
+                               "одна самса — это не праздник».",
             },
             {
-                "text": "Nega matnda «ножо́м», lekin «с со́лью»?",
+                "text": "Nega matnda «ножом», lekin «с солью»?",
                 "choices": [
                     "Pichoq — asbob (predlogsiz), tuz esa qoʻshiladigan narsa (С bilan)",
                     "Chunki «нож» erkak jinsida",
@@ -234,13 +234,13 @@ STORIES = [
                     "Bu matndagi xato"
                 ],
                 "answer": 0,
-                "explanation": "Ikkalasi ham Твори́тельный padejida. Farqni predlog "
+                "explanation": "Ikkalasi ham Творительный padejida. Farqni predlog "
                                "qiladi: asbob qoʻlingizda — predlog qoʻyilmaydi; nimadir "
                                "qoʻshilsa yoki kimdir hamroh boʻlsa — С qoʻyiladi. "
                                "Oʻzbekcha «bilan» ikkalasini ham qoplaydi.",
             },
             {
-                "text": "Oxirgi jumladagi «с людьми́» nega darsning eng yaxshi "
+                "text": "Oxirgi jumladagi «с людьми» nega darsning eng yaxshi "
                         "misoli?",
                 "choices": [
                     "Chunki bu matndagi yagona haqiqiy hamroh — qolgani asbob",
@@ -249,7 +249,7 @@ STORIES = [
                     "Chunki bu buvining gapi"
                 ],
                 "answer": 0,
-                "explanation": "Butun matn boʻyi asboblar sanaladi — рука́ми, ножо́м — "
+                "explanation": "Butun matn boʻyi asboblar sanaladi — руками, ножом — "
                                "va ularning hech birida предлог yoʻq. Oxirida esa "
                                "odamlar keladi, va u yerda С paydo boʻladi. Grammatika "
                                "matnning maʼnosini takrorlaydi.",
@@ -261,7 +261,7 @@ STORIES = [
     # PR-40 — Т.п. кем стать                      INTERVYU
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Кем ты хо́чешь стать?",
+        "title":   "Кем ты хочешь стать?",
         "summary": (
             "PR-40 matni. Jurnalist Nina maktabga qaytadi va bitta savol beradi. "
             "Javoblar oddiy — Jasurniki bundan mustasno, va u nega bobosidan "
@@ -270,58 +270,58 @@ STORIES = [
         "order":   40,
         "grammar": [
             {
-                "pattern":  "стать / рабо́тать + Твори́тельный",
-                "meaning":  "«Kim boʻlib?» degan savolga javob: хочу́ стать врачо́м, "
-                            "рабо́тает стро́ителем. Oʻzbekchada bu «boʻlib» soʻzi "
+                "pattern":  "стать / работать + Творительный",
+                "meaning":  "«Kim boʻlib?» degan savolga javob: хочу стать врачом, "
+                            "работает строителем. Oʻzbekchada bu «boʻlib» soʻzi "
                             "bilan beriladi.",
-                "examples": ["Я хочу́ стать врачо́м.", "Оте́ц рабо́тает стро́ителем."],
+                "examples": ["Я хочу стать врачом.", "Отец работает строителем."],
             },
             {
                 "pattern":  "Feʼl bor — Т.п., feʼl yoʻq — bosh kelishik",
                 "meaning":  "Hozirgi zamonda «быть» aytilmaydi, shuning uchun kasb "
-                            "bosh kelishikda qoladi: Я учени́к. Oʻtgan va kelasi "
+                            "bosh kelishikda qoladi: Я ученик. Oʻtgan va kelasi "
                             "zamonda feʼl paydo boʻladi va u bilan Т.п. keladi.",
-                "examples": ["Сейча́с я учени́к.", "Дед был стро́ителем."],
+                "examples": ["Сейчас я ученик.", "Дед был строителем."],
             },
             {
                 "pattern":  "кто → кем",
                 "meaning":  "Savol soʻzining oʻzi ham kelishikka kiradi. «Кем ты "
-                            "хо́чешь стать?» — rus maktablarida har yili beriladigan "
+                            "хочешь стать?» — rus maktablarida har yili beriladigan "
                             "savol.",
-                "examples": ["Кем ты хо́чешь стать?"],
+                "examples": ["Кем ты хочешь стать?"],
             },
         ],
-        "body": '''<p>Ни́на де́лает <span class="cn-word" data-tr="intervyu">интервью́</span> в школе. Оди́н <span class="cn-word" data-tr="savol">вопро́с</span>: «<strong>Кем</strong> ты хо́чешь <strong>стать</strong>?»</p>
+        "body": '''<p>Нина делает <span class="cn-word" data-tr="intervyu">интервью</span> в школе. Один <span class="cn-word" data-tr="savol">вопрос</span>: «<strong>Кем</strong> ты хочешь <strong>стать</strong>?»</p>
 
-<p>Афсона: «Я хочу́ <strong>стать врачо́м</strong>. Моя́ мама рабо́тает <strong>врачо́м</strong>».</p>
+<p>Афсона: «Я хочу <strong>стать врачом</strong>. Моя мама работает <strong>врачом</strong>».</p>
 
-<p>Бекзод: «Я хочу́ <strong>стать футболи́стом</strong>».</p>
+<p>Бекзод: «Я хочу <strong>стать футболистом</strong>».</p>
 
-<p>Катя: «Я не зна́ю. <span class="cn-word" data-tr="Balki">Мо́жет быть</span>, <strong>учи́телем</strong>».</p>
+<p>Катя: «Я не знаю. <span class="cn-word" data-tr="Balki">Может быть</span>, <strong>учителем</strong>».</p>
 
-<p>Жасур молчи́т.</p>
+<p>Жасур молчит.</p>
 
-<p>— А ты? — спра́шивает Ни́на.</p>
+<p>— А ты? — спрашивает Нина.</p>
 
-<p>— Мой <span class="cn-word" data-tr="bobo">дед</span> был <strong>стро́ителем</strong>, — говори́т Жасур. — Мой оте́ц рабо́тает <strong>стро́ителем</strong>.</p>
+<p>— Мой <span class="cn-word" data-tr="bobo">дед</span> был <strong>строителем</strong>, — говорит Жасур. — Мой отец работает <strong>строителем</strong>.</p>
 
-<p>— И ты бу́дешь <strong>стро́ителем</strong>?</p>
+<p>— И ты будешь <strong>строителем</strong>?</p>
 
-<p>— Нет. Я хочу́ <strong>стать архите́ктором</strong>.</p>
+<p>— Нет. Я хочу <strong>стать архитектором</strong>.</p>
 
-<p>Ни́на <span class="cn-word" data-pos="verb" data-tr="hayron boʻladi">удивля́ется</span>.</p>
+<p>Нина <span class="cn-word" data-pos="verb" data-tr="hayron boʻladi">удивляется</span>.</p>
 
-<p>— Э́то <span class="cn-word" data-tr="deyarli bir xil narsa">почти́ одно́ и то же</span>, — говори́т она́.</p>
+<p>— Это <span class="cn-word" data-tr="deyarli bir xil narsa">почти одно и то же</span>, — говорит она.</p>
 
-<p>— Нет, — говори́т Жасур. — Дед <span class="cn-word" data-pos="verb" data-tr="qurgan">стро́ил</span> <strong>рука́ми</strong>. Оте́ц тоже. А я хочу́ стро́ить <strong>голово́й</strong>. Пото́м <strong>рука́ми</strong> — но уже́ <strong>с</strong> <span class="cn-word" data-tr="reja">пла́ном</span>.</p>
+<p>— Нет, — говорит Жасур. — Дед <span class="cn-word" data-pos="verb" data-tr="qurgan">строил</span> <strong>руками</strong>. Отец тоже. А я хочу строить <strong>головой</strong>. Потом <strong>руками</strong> — но уже <strong>с</strong> <span class="cn-word" data-tr="reja">планом</span>.</p>
 
-<p>Ни́на <span class="cn-word" data-pos="verb" data-tr="yozib oladi">запи́сывает</span>. Пото́м спра́шивает:</p>
+<p>Нина <span class="cn-word" data-pos="verb" data-tr="yozib oladi">записывает</span>. Потом спрашивает:</p>
 
-<p>— А кто ты сейча́с?</p>
+<p>— А кто ты сейчас?</p>
 
-<p>— Сейча́с я <strong>учени́к</strong>, — говори́т Жасур.</p>
+<p>— Сейчас я <strong>ученик</strong>, — говорит Жасур.</p>
 
-<p>И э́то <span class="cn-word" data-tr="toʻgʻri">пра́вильно</span>. Сейча́с — <strong>учени́к</strong>. Пото́м — <strong>архите́ктором</strong>.</p>''',
+<p>И это <span class="cn-word" data-tr="toʻgʻri">правильно</span>. Сейчас — <strong>ученик</strong>. Потом — <strong>архитектором</strong>.</p>''',
         "questions": [
             {
                 "text": "Jasurning fikricha, quruvchi va arxitektor nima bilan farq "
@@ -333,31 +333,31 @@ STORIES = [
                     "Farqi yoʻq"
                 ],
                 "answer": 0,
-                "explanation": "«Дед стро́ил рука́ми. Оте́ц тоже. А я хочу́ стро́ить "
-                               "голово́й. Пото́м рука́ми — но уже́ с пла́ном». U "
+                "explanation": "«Дед строил руками. Отец тоже. А я хочу строить "
+                               "головой. Потом руками — но уже с планом». U "
                                "oilasidan voz kechmayapti — oʻsha ishga boshqa "
                                "tomondan kirmoqchi.",
             },
             {
-                "text": "«Сейча́с я учени́к» — nega bu yerda «учеником» emas?",
+                "text": "«Сейчас я ученик» — nega bu yerda «учеником» emas?",
                 "choices": [
                     "Hozirgi zamonda «быть» aytilmaydi, demak kelishik ham kerak emas",
-                    "Chunki «учени́к» erkak jinsida",
+                    "Chunki «ученик» erkak jinsida",
                     "Chunki bu savolga javob",
                     "Bu matndagi xato"
                 ],
                 "answer": 0,
-                "explanation": "Qoida: feʼl bor boʻlsa — Твори́тельный, feʼl yoʻq "
+                "explanation": "Qoida: feʼl bor boʻlsa — Творительный, feʼl yoʻq "
                                "boʻlsa — bosh kelishik. Shuning uchun oxirgi jumla ikki "
-                               "shaklni yonma-yon qoʻyadi: «Сейча́с — учени́к. Пото́м — "
-                               "архите́ктором».",
+                               "shaklni yonma-yon qoʻyadi: «Сейчас — ученик. Потом — "
+                               "архитектором».",
             },
             {
-                "text": "Matnda «рука́ми» ham, «с пла́ном» ham bor. Nega biri "
+                "text": "Matnda «руками» ham, «с планом» ham bor. Nega biri "
                         "predlogsiz?",
                 "choices": [
                     "Qoʻl — asbob (predlogsiz), reja esa qoʻshimcha narsa (С bilan)",
-                    "Chunki «ру́ки» koʻplikda",
+                    "Chunki «руки» koʻplikda",
                     "Chunki reja jonli hisoblanadi",
                     "Ikkalasi ham predlogsiz boʻlishi kerak"
                 ],

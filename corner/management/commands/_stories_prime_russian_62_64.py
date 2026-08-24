@@ -9,12 +9,12 @@ Janr xilma-xilligi: 62 — ilmiy-ommabop (til haqida), 63 — mahalla portreti
 demak uchta bir xil shakl ketma-ket kelmayapti.)
 
 Grammatika chegarasi (kumulyativ qoida):
-  62-matn: -ся ning oltita maʼnosi. ⚠️ КОТО́РЫЙ bu matnda ATAY yoʻq —
+  62-matn: -ся ning oltita maʼnosi. ⚠️ КОТОРЫЙ bu matnda ATAY yoʻq —
            u faqat PR-63 da oʻrgatiladi, matn esa PR-62 ники.
-  63-matn: который. Beshta kelishikda va predlog bilan: кото́рого,
-           кото́рый, у кото́рого, к кото́рому, с кото́рым, в кото́ром.
-  64-matn: что va что́бы yonma-yon. Xat janri emas, xat HAQIDA voqea —
-           shuning uchun «хоте́л, что́бы…» va «ду́мал, что…» tabiiy
+  63-matn: который. Beshta kelishikda va predlog bilan: которого,
+           который, у которого, к которому, с которым, в котором.
+  64-matn: что va чтобы yonma-yon. Xat janri emas, xat HAQIDA voqea —
+           shuning uchun «хотел, чтобы…» va «думал, что…» tabiiy
            ravishda bir matnga sigʻadi.
 
 ⚠️ FAKTLAR: 62-matndagi oʻzbek tili haqidagi daʼvo tekshirilgan —
@@ -47,7 +47,7 @@ STORIES = [
     # PR-62 — -ся                                ILMIY-OMMABOP
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Шесть значе́ний одно́й ча́стицы",
+        "title":   "Шесть значений одной частицы",
         "summary": (
             "PR-62 matni. Ikki harf — «-ся» — va uning oltita vazifasi, "
             "bittadan misol bilan. Oxirida oʻzbek tili bilan solishtirish: "
@@ -57,49 +57,49 @@ STORIES = [
         "grammar": [
             {
                 "pattern":  "-ся ning oltita maʼnosi",
-                "meaning":  "Oʻziga qaytish (мо́ется), bir-biriga (встреча́ются), "
-                            "majhul nisbat (стро́ится), holat (спи́тся), faqat -ся "
-                            "bilan yashaydigan feʼllar (смея́ться) va maʼno "
-                            "oʻzgarishi (учи́ть → учи́ться).",
-                "examples": ["Он мо́ется.", "Они́ встреча́ются."],
+                "meaning":  "Oʻziga qaytish (моется), bir-biriga (встречаются), "
+                            "majhul nisbat (строится), holat (спится), faqat -ся "
+                            "bilan yashaydigan feʼllar (смеяться) va maʼno "
+                            "oʻzgarishi (учить → учиться).",
+                "examples": ["Он моется.", "Они встречаются."],
             },
             {
                 "pattern":  "-ся feʼli obyekt olmaydi",
-                "meaning":  "Он мо́ет маши́ну (obyekt bor) ↔ он мо́ется (obyekt "
+                "meaning":  "Он моет машину (obyekt bor) ↔ он моется (obyekt "
                             "yoʻq). Matnning ikkinchi bandi shu farq ustiga "
                             "qurilgan.",
-                "examples": ["Он мо́ет маши́ну.", "Он мо́ется."],
+                "examples": ["Он моет машину.", "Он моется."],
             },
             {
                 "pattern":  "-ся ↔ oʻzbekcha -in-, -ish-, -il-",
                 "meaning":  "Oʻzbekchada uchta alohida qoʻshimcha bor, ruschada "
                             "esa bitta. Shuning uchun oʻzbek oʻquvchisi bu "
                             "maʼnolarni rus bolasidan koʻra aniqroq ajratadi.",
-                "examples": ["yuvinmoq → мы́ться", "koʻrishmoq → встреча́ться"],
+                "examples": ["yuvinmoq → мыться", "koʻrishmoq → встречаться"],
             },
         ],
-        "body": '''<p>В ру́сском языке́ есть о́чень коро́ткая <span class="cn-word" data-tr="qoʻshimcha, zarracha">ча́стица</span> — <strong>-ся</strong>. Две бу́квы. Но рабо́т у неё шесть.</p>
+        "body": '''<p>В русском языке есть очень короткая <span class="cn-word" data-tr="qoʻshimcha, zarracha">частица</span> — <strong>-ся</strong>. Две буквы. Но работ у неё шесть.</p>
 
-<p><strong>Пе́рвая рабо́та.</strong> Челове́к де́лает что́-то с собо́й. «Он мо́ет маши́ну» — здесь есть <span class="cn-word" data-tr="obyekt">объе́кт</span>. «Он <strong>мо́ется</strong>» — объе́кта нет, потому́ что объе́кт — сам челове́к.</p>
+<p><strong>Первая работа.</strong> Человек делает что-то с собой. «Он моет машину» — здесь есть <span class="cn-word" data-tr="obyekt">объект</span>. «Он <strong>моется</strong>» — объекта нет, потому что объект — сам человек.</p>
 
-<p><strong>Втора́я.</strong> Лю́ди де́лают что́-то друг дру́гу. Они́ <strong>встреча́ются</strong> в суббо́ту. Они́ <strong>ссо́рятся</strong>, а пото́м <strong>мирятся</strong>. Оди́н челове́к так не мо́жет — ну́жно как ми́нимум дво́е.</p>
+<p><strong>Вторая.</strong> Люди делают что-то друг другу. Они <strong>встречаются</strong> в субботу. Они <strong>ссорятся</strong>, а потом <strong>мирятся</strong>. Один человек так не может — нужно как минимум двое.</p>
 
-<p><strong>Тре́тья.</strong> Кто де́лал — <span class="cn-word" data-tr="nomaʼlum">неизве́стно</span> и́ли не ва́жно. Дом <strong>стро́ится</strong>. Магази́н <strong>открыва́ется</strong> в де́вять. Кто и́менно открыва́ет дверь, мы не говори́м.</p>
+<p><strong>Третья.</strong> Кто делал — <span class="cn-word" data-tr="nomaʼlum">неизвестно</span> или не важно. Дом <strong>строится</strong>. Магазин <strong>открывается</strong> в девять. Кто именно открывает дверь, мы не говорим.</p>
 
-<p><strong>Четвёртая.</strong> <span class="cn-word" data-tr="holat">Состоя́ние</span>. «Мне не <strong>спи́тся</strong>». «Мне <strong>хо́чется</strong> ча́я». Здесь никто́ не де́йствует. Есть то́лько челове́к и его́ состоя́ние.</p>
+<p><strong>Четвёртая.</strong> <span class="cn-word" data-tr="holat">Состояние</span>. «Мне не <strong>спится</strong>». «Мне <strong>хочется</strong> чая». Здесь никто не действует. Есть только человек и его состояние.</p>
 
-<p><strong>Пя́тая.</strong> Есть глаго́лы, <span class="cn-word" data-tr="faqat">то́лько</span> с -ся. <strong>Смея́ться. Боя́ться. Наде́яться. Улыба́ться.</strong> Сло́ва «смеять» в ру́сском языке́ про́сто нет.</p>
+<p><strong>Пятая.</strong> Есть глаголы, <span class="cn-word" data-tr="faqat">только</span> с -ся. <strong>Смеяться. Бояться. Надеяться. Улыбаться.</strong> Слова «смеять» в русском языке просто нет.</p>
 
-<p><strong>Шеста́я.</strong> Значе́ние <span class="cn-word" data-pos="verb" data-tr="oʻzgaradi">меня́ется</span>. <strong>Учи́ть</strong> — так де́лает учи́тель. <strong>Учи́ться</strong> — так де́лает <span class="cn-word" data-tr="oʻquvchi">учени́к</span>. Две бу́квы, и де́йствие пошло́ в другу́ю сто́рону.</p>
+<p><strong>Шестая.</strong> Значение <span class="cn-word" data-pos="verb" data-tr="oʻzgaradi">меняется</span>. <strong>Учить</strong> — так делает учитель. <strong>Учиться</strong> — так делает <span class="cn-word" data-tr="oʻquvchi">ученик</span>. Две буквы, и действие пошло в другую сторону.</p>
 
-<p>Тепе́рь <span class="cn-word" data-tr="eng qizigʻi">са́мое интере́сное</span>. В узбе́кском языке́ для э́тих значе́ний есть <strong>три</strong> ра́зных су́ффикса: оди́н для <span class="cn-word" data-tr="birinchi">пе́рвого</span> значе́ния, друго́й для второ́го, тре́тий для тре́тьего.</p>
+<p>Теперь <span class="cn-word" data-tr="eng qizigʻi">самое интересное</span>. В узбекском языке для этих значений есть <strong>три</strong> разных суффикса: один для <span class="cn-word" data-tr="birinchi">первого</span> значения, другой для второго, третий для третьего.</p>
 
-<p>Ру́сский язы́к в э́том ме́сте <span class="cn-word" data-tr="tejamkor">эконо́мный</span>. Узбе́кский — <span class="cn-word" data-tr="aniqroq">точне́е</span>.</p>
+<p>Русский язык в этом месте <span class="cn-word" data-tr="tejamkor">экономный</span>. Узбекский — <span class="cn-word" data-tr="aniqroq">точнее</span>.</p>
 
-<p>Поэ́тому для вас э́та те́ма не тру́дная. Вы уже́ зна́ете <span class="cn-word" data-tr="farqni">ра́зницу</span> — вам ну́жно то́лько запо́мнить, что здесь она́ пи́шется одина́ково.</p>''',
+<p>Поэтому для вас эта тема не трудная. Вы уже знаете <span class="cn-word" data-tr="farqni">разницу</span> — вам нужно только запомнить, что здесь она пишется одинаково.</p>''',
         "questions": [
             {
-                "text": "Nega «Он мо́ется» gapida obyekt yoʻq?",
+                "text": "Nega «Он моется» gapida obyekt yoʻq?",
                 "choices": [
                     "Chunki obyekt — odamning oʻzi",
                     "Chunki bu majhul nisbat",
@@ -107,7 +107,7 @@ STORIES = [
                     "Chunki gap toʻliq emas"
                 ],
                 "answer": 0,
-                "explanation": "Matn buni ochiq aytadi: «объе́кт — сам челове́к». "
+                "explanation": "Matn buni ochiq aytadi: «объект — сам человек». "
                                "Bu -ся ning birinchi maʼnosi, oʻzbekcha "
                                "«yuvinmoq» dagi -in- bilan bir xil.",
             },
@@ -117,10 +117,10 @@ STORIES = [
                     "Bunday soʻz rus tilida umuman yoʻq",
                     "U eskirgan soʻz",
                     "U faqat kitobiy tilda ishlatiladi",
-                    "U «смея́ться» ning buyruq shakli"
+                    "U «смеяться» ning buyruq shakli"
                 ],
                 "answer": 0,
-                "explanation": "«Сло́ва „смеять“ в ру́сском языке́ про́сто нет». Bu "
+                "explanation": "«Слова „смеять“ в русском языке просто нет». Bu "
                                "beshinchi guruh — -ся siz yashamaydigan feʼllar.",
             },
             {
@@ -132,9 +132,9 @@ STORIES = [
                     "Bu maʼnolarni yodlashning imkoni yoʻq"
                 ],
                 "answer": 0,
-                "explanation": "«Ру́сский язы́к эконо́мный. Узбе́кский — точне́е… вам "
-                               "ну́жно то́лько запо́мнить, что здесь она́ пи́шется "
-                               "одина́ково».",
+                "explanation": "«Русский язык экономный. Узбекский — точнее… вам "
+                               "нужно только запомнить, что здесь она пишется "
+                               "одинаково».",
             },
         ],
     },
@@ -143,7 +143,7 @@ STORIES = [
     # PR-63 — который                            MAHALLA PORTRETI
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Челове́к, кото́рый чини́л всё",
+        "title":   "Человек, который чинил всё",
         "summary": (
             "PR-63 matni. Hovlida hamma taniydigan usta Shavkat-aka: u pul "
             "olmagan, lekin har kim undan biror narsa oʻrgangan. Koʻchib "
@@ -153,51 +153,51 @@ STORIES = [
         "grammar": [
             {
                 "pattern":  "который — jins va son otdan",
-                "meaning":  "Aniqlanayotgan ot erkak boʻlsa кото́рый, ayol boʻlsa "
-                            "кото́рая, koʻplik boʻlsa кото́рые. Matnda uchalasi "
+                "meaning":  "Aniqlanayotgan ot erkak boʻlsa который, ayol boʻlsa "
+                            "которая, koʻplik boʻlsa которые. Matnda uchalasi "
                             "ham bor.",
-                "examples": ["челове́к, кото́рого зна́ли все",
-                             "дверь, кото́рая не закрыва́лась"],
+                "examples": ["человек, которого знали все",
+                             "дверь, которая не закрывалась"],
             },
             {
                 "pattern":  "который — kelishik oʻz gapidan",
-                "meaning":  "Кото́рого (koʻrdilar — kimni?), кото́рому (bordilar — "
-                            "kimga?), кото́рым (bogʻlangan — kim bilan?). Kelishik "
+                "meaning":  "Которого (koʻrdilar — kimni?), которому (bordilar — "
+                            "kimga?), которым (bogʻlangan — kim bilan?). Kelishik "
                             "ergash gapdagi vazifaga qarab tanlanadi.",
-                "examples": ["сосе́д, кото́рому все звони́ли",
-                             "ма́стер, кото́рым горди́лся весь двор"],
+                "examples": ["сосед, которому все звонили",
+                             "мастер, которым гордился весь двор"],
             },
             {
-                "pattern":  "Predlog кото́рый dan oldin",
-                "meaning":  "У кото́рого, в кото́ром, с кото́рым — predlog ergash "
-                            "gap oxirida qolmaydi, u кото́рый bilan birga oldinga "
+                "pattern":  "Predlog который dan oldin",
+                "meaning":  "У которого, в котором, с которым — predlog ergash "
+                            "gap oxirida qolmaydi, u который bilan birga oldinga "
                             "koʻchadi. Vergul esa predlogdan oldin qoʻyiladi.",
-                "examples": ["дом, в кото́ром он жил", "стари́к, у кото́рого был ключ"],
+                "examples": ["дом, в котором он жил", "старик, у которого был ключ"],
             },
         ],
-        "body": '''<p>В на́шем дворе́ жил челове́к, <strong>кото́рого</strong> зна́ли все. Его́ зва́ли Шавка́т-ака́.</p>
+        "body": '''<p>В нашем дворе жил человек, <strong>которого</strong> знали все. Его звали Шавкат-ака.</p>
 
-<p>Шавка́т-ака́ был <span class="cn-word" data-tr="usta">ма́стер</span>. Не тот ма́стер, <strong>кото́рый</strong> рабо́тает в мастерско́й и берёт де́ньги. Друго́й. Он про́сто чини́л <span class="cn-word" data-tr="narsalar">ве́щи</span>, <strong>кото́рые</strong> <span class="cn-word" data-pos="verb" data-tr="buzilardi">лома́лись</span> во дворе́.</p>
+<p>Шавкат-ака был <span class="cn-word" data-tr="usta">мастер</span>. Не тот мастер, <strong>который</strong> работает в мастерской и берёт деньги. Другой. Он просто чинил <span class="cn-word" data-tr="narsalar">вещи</span>, <strong>которые</strong> <span class="cn-word" data-pos="verb" data-tr="buzilardi">ломались</span> во дворе.</p>
 
-<p>Дверь, <strong>кото́рая</strong> не закрыва́лась. <span class="cn-word" data-tr="Kran">Кран</span>, <strong>кото́рый</strong> <span class="cn-word" data-pos="verb" data-tr="tomchilardi">ка́пал</span>. Велосипе́д, <strong>у кото́рого</strong> сло́малась цепь. Ла́мпа в подъе́зде, <strong>в кото́ром</strong> всегда́ бы́ло темно́.</p>
+<p>Дверь, <strong>которая</strong> не закрывалась. <span class="cn-word" data-tr="Kran">Кран</span>, <strong>который</strong> <span class="cn-word" data-pos="verb" data-tr="tomchilardi">капал</span>. Велосипед, <strong>у которого</strong> сломалась цепь. Лампа в подъезде, <strong>в котором</strong> всегда было темно.</p>
 
-<p>Он был <span class="cn-word" data-tr="qoʻshni">сосе́д</span>, <strong>кото́рому</strong> звони́ли пе́рвым. И он всегда́ приходи́л.</p>
+<p>Он был <span class="cn-word" data-tr="qoʻshni">сосед</span>, <strong>которому</strong> звонили первым. И он всегда приходил.</p>
 
-<p>Де́нег Шавка́т-ака́ не брал. Совсе́м. Но у него́ бы́ло одно́ <span class="cn-word" data-tr="shart">усло́вие</span>: челове́к, <strong>кото́рому</strong> он помога́л, до́лжен был стоя́ть ря́дом и <span class="cn-word" data-pos="verb" data-tr="qaramoq">смотре́ть</span>.</p>
+<p>Денег Шавкат-ака не брал. Совсем. Но у него было одно <span class="cn-word" data-tr="shart">условие</span>: человек, <strong>которому</strong> он помогал, должен был стоять рядом и <span class="cn-word" data-pos="verb" data-tr="qaramoq">смотреть</span>.</p>
 
-<p>— Смотри́, — говори́л он. — В сле́дующий раз сде́лаешь сам.</p>
+<p>— Смотри, — говорил он. — В следующий раз сделаешь сам.</p>
 
-<p>Жасу́р, <strong>кото́рый</strong> жил на тре́тьем этаже́, так научи́лся чини́ть кран. Дилно́за, <strong>кото́рая</strong> учи́лась в шко́ле, так научи́лась <span class="cn-word" data-pos="verb" data-tr="almashtirmoq">меня́ть</span> ла́мпу. Ро́за Кари́мовна, <strong>кото́рой</strong> бы́ло се́мьдесят два го́да, так научи́лась <span class="cn-word" data-pos="verb" data-tr="ulamoq">клеить</span> ме́бель.</p>
+<p>Жасур, <strong>который</strong> жил на третьем этаже, так научился чинить кран. Дилноза, <strong>которая</strong> училась в школе, так научилась <span class="cn-word" data-pos="verb" data-tr="almashtirmoq">менять</span> лампу. Роза Каримовна, <strong>которой</strong> было семьдесят два года, так научилась <span class="cn-word" data-pos="verb" data-tr="ulamoq">клеить</span> мебель.</p>
 
-<p>В про́шлом году́ Шавка́т-ака́ уе́хал к до́чери в друго́й го́род.</p>
+<p>В прошлом году Шавкат-ака уехал к дочери в другой город.</p>
 
-<p>Пе́рвую неде́лю двор ждал. Все ду́мали, что тепе́рь всё <span class="cn-word" data-pos="verb" data-tr="buziladi">слома́ется</span> и <span class="cn-word" data-pos="verb" data-tr="qoladi">оста́нется</span> сло́манным.</p>
+<p>Первую неделю двор ждал. Все думали, что теперь всё <span class="cn-word" data-pos="verb" data-tr="buziladi">сломается</span> и <span class="cn-word" data-pos="verb" data-tr="qoladi">останется</span> сломанным.</p>
 
-<p>Но во втору́ю неде́лю Жасу́р почини́л кран у Ни́ны Петро́вны. Дилно́за <span class="cn-word" data-pos="verb" data-tr="almashtirdi">поменя́ла</span> ла́мпу в подъе́зде. А Ро́за Кари́мовна <span class="cn-word" data-pos="verb" data-tr="tuzatdi">почини́ла</span> стул, <strong>на кото́ром</strong> сиде́ла три́дцать лет.</p>
+<p>Но во вторую неделю Жасур починил кран у Нины Петровны. Дилноза <span class="cn-word" data-pos="verb" data-tr="almashtirdi">поменяла</span> лампу в подъезде. А Роза Каримовна <span class="cn-word" data-pos="verb" data-tr="tuzatdi">починила</span> стул, <strong>на котором</strong> сидела тридцать лет.</p>
 
-<p>Ма́стер, <strong>кото́рым</strong> горди́лся весь двор, уе́хал. А двор оста́лся с рука́ми.</p>
+<p>Мастер, <strong>которым</strong> гордился весь двор, уехал. А двор остался с руками.</p>
 
-<p>Э́то и был его́ настоя́щий <span class="cn-word" data-tr="ish, mehnat">труд</span>.</p>''',
+<p>Это и был его настоящий <span class="cn-word" data-tr="ish, mehnat">труд</span>.</p>''',
         "questions": [
             {
                 "text": "Shavkat-akaning yagona sharti nima edi?",
@@ -208,21 +208,21 @@ STORIES = [
                     "Asboblarni qoʻshni bersin"
                 ],
                 "answer": 0,
-                "explanation": "«Челове́к, кото́рому он помога́л, до́лжен был стоя́ть ря́дом и "
-                               "смотре́ть». Va sababi keyingi qatorda: «В "
-                               "сле́дующий раз сде́лаешь сам».",
+                "explanation": "«Человек, которому он помогал, должен был стоять рядом и "
+                               "смотреть». Va sababi keyingi qatorda: «В "
+                               "следующий раз сделаешь сам».",
             },
             {
-                "text": "Nima uchun matnda «у кото́рого сло́малась цепь» deyilgan, «кото́рого» emas?",
+                "text": "Nima uchun matnda «у которого сломалась цепь» deyilgan, «которого» emas?",
                 "choices": [
-                    "Predlog «у» кото́рый bilan birga oldinga koʻchadi",
+                    "Predlog «у» который bilan birga oldinga koʻchadi",
                     "Chunki velosiped jonsiz",
                     "Chunki bu koʻplik shakli",
                     "Bu matndagi xato"
                 ],
                 "answer": 0,
                 "explanation": "Rus tilida predlog ergash gap oxirida qolmaydi — u "
-                               "кото́рый bilan birga keladi. Vergul esa "
+                               "который bilan birga keladi. Vergul esa "
                                "predlogdan oldin qoʻyiladi.",
             },
             {
@@ -235,7 +235,7 @@ STORIES = [
                 ],
                 "answer": 0,
                 "explanation": "Jasur kranni, Dilnoza lampani, Roza Karimovna esa "
-                               "stulni tuzatdi — «двор оста́лся с рука́ми».",
+                               "stulni tuzatdi — «двор остался с руками».",
             },
         ],
     },
@@ -244,7 +244,7 @@ STORIES = [
     # PR-64 — что / чтобы                        KICHIK VOQEA
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Что́бы тебя́ по́няли",
+        "title":   "Чтобы тебя поняли",
         "summary": (
             "PR-64 matni. Jasur maktab direktoriga xat yozadi va javob "
             "olmaydi. Sergey Petrovich xatni qayta yozdirmaydi — faqat uchta "
@@ -254,65 +254,65 @@ STORIES = [
         "grammar": [
             {
                 "pattern":  "что — fakt",
-                "meaning":  "Знать, ду́мать, ви́деть, понима́ть feʼllaridan keyin "
+                "meaning":  "Знать, думать, видеть, понимать feʼllaridan keyin "
                             "«что» keladi: bu axborot, sodir boʻlgan yoki "
                             "boʻladigan narsa.",
-                "examples": ["Он ду́мал, что письмо́ хоро́шее.",
-                             "Тепе́рь я зна́ю, что письмо́ бы́ло плохо́е."],
+                "examples": ["Он думал, что письмо хорошее.",
+                             "Теперь я знаю, что письмо было плохое."],
             },
             {
                 "pattern":  "чтобы + oʻtgan zamon (ega boshqa)",
-                "meaning":  "Хоте́ть, проси́ть, ну́жно feʼllaridan keyin «что́бы», "
+                "meaning":  "Хотеть, просить, нужно feʼllaridan keyin «чтобы», "
                             "va undan keyingi feʼl oʻtgan zamonda boʻladi — bu "
                             "oʻtmish emas, shunchaki shakl.",
-                "examples": ["Он хоте́л, что́бы дире́ктор отве́тил.",
-                             "Ну́жно, что́бы тебя́ по́няли."],
+                "examples": ["Он хотел, чтобы директор ответил.",
+                             "Нужно, чтобы тебя поняли."],
             },
             {
                 "pattern":  "чтобы + infinitiv (ega bir xil)",
-                "meaning":  "Ikkala qismda ham ega bitta boʻlsa, «что́бы» dan keyin "
+                "meaning":  "Ikkala qismda ham ega bitta boʻlsa, «чтобы» dan keyin "
                             "infinitiv qoʻyiladi — oʻzbekcha «-sh uchun».",
-                "examples": ["Он написа́л письмо́, что́бы попроси́ть но́вые мячи́.",
-                             "Пиши́, что́бы тебя́ по́няли."],
+                "examples": ["Он написал письмо, чтобы попросить новые мячи.",
+                             "Пиши, чтобы тебя поняли."],
             },
         ],
-        "body": '''<p>Жасу́р написа́л письмо́ <span class="cn-word" data-tr="direktorga">дире́ктору</span> шко́лы. Он написа́л его́, <strong>что́бы попроси́ть</strong> но́вые мячи́ для спортза́ла. Ста́рые мячи́ уже́ не <span class="cn-word" data-pos="verb" data-tr="sakramas edi">пры́гали</span> — они́ ста́ли <span class="cn-word" data-tr="yumshoq">мя́гкими</span>.</p>
+        "body": '''<p>Жасур написал письмо <span class="cn-word" data-tr="direktorga">директору</span> школы. Он написал его, <strong>чтобы попросить</strong> новые мячи для спортзала. Старые мячи уже не <span class="cn-word" data-pos="verb" data-tr="sakramas edi">прыгали</span> — они стали <span class="cn-word" data-tr="yumshoq">мягкими</span>.</p>
 
-<p>Он ду́мал, <strong>что</strong> письмо́ хоро́шее. Оно́ бы́ло дли́нное — две <span class="cn-word" data-tr="sahifa">страни́цы</span>.</p>
+<p>Он думал, <strong>что</strong> письмо хорошее. Оно было длинное — две <span class="cn-word" data-tr="sahifa">страницы</span>.</p>
 
-<p>Он хоте́л, <strong>что́бы дире́ктор отве́тил</strong> бы́стро.</p>
+<p>Он хотел, <strong>чтобы директор ответил</strong> быстро.</p>
 
-<p>Дире́ктор не отве́тил. Ни че́рез неде́лю, ни че́рез две.</p>
+<p>Директор не ответил. Ни через неделю, ни через две.</p>
 
-<p>Тогда́ Жасу́р пошёл к Серге́ю Петро́вичу — учи́телю, кото́рый вёл у них ру́сский язы́к.</p>
+<p>Тогда Жасур пошёл к Сергею Петровичу — учителю, который вёл у них русский язык.</p>
 
-<p>— Прочита́йте, пожа́луйста. Я хочу́, <strong>что́бы вы сказа́ли</strong>, где оши́бка.</p>
+<p>— Прочитайте, пожалуйста. Я хочу, <strong>чтобы вы сказали</strong>, где ошибка.</p>
 
-<p>Серге́й Петро́вич прочита́л письмо́ два ра́за. Пото́м он <span class="cn-word" data-pos="verb" data-tr="qoʻydi">положи́л</span> его́ на стол.</p>
+<p>Сергей Петрович прочитал письмо два раза. Потом он <span class="cn-word" data-pos="verb" data-tr="qoʻydi">положил</span> его на стол.</p>
 
-<p>— Оши́бок в <span class="cn-word" data-tr="grammatika">грамма́тике</span> нет, — сказа́л он. — Ни одно́й. Но я <span class="cn-word" data-pos="verb" data-tr="beraman">зада́м</span> три вопро́са.</p>
+<p>— Ошибок в <span class="cn-word" data-tr="grammatika">грамматике</span> нет, — сказал он. — Ни одной. Но я <span class="cn-word" data-pos="verb" data-tr="beraman">задам</span> три вопроса.</p>
 
-<p>— Пе́рвый: что тебе́ ну́жно? Отве́ть одни́м <span class="cn-word" data-tr="jumla">предложе́нием</span>.</p>
+<p>— Первый: что тебе нужно? Ответь одним <span class="cn-word" data-tr="jumla">предложением</span>.</p>
 
-<p>Жасу́р <span class="cn-word" data-pos="verb" data-tr="oʻyladi">поду́мал</span> и сказа́л:</p>
+<p>Жасур <span class="cn-word" data-pos="verb" data-tr="oʻyladi">подумал</span> и сказал:</p>
 
-<p>— Шесть мяче́й.</p>
+<p>— Шесть мячей.</p>
 
-<p>— Второ́й: в како́й <span class="cn-word" data-tr="qatorda">строке́</span> письма́ э́то напи́сано?</p>
+<p>— Второй: в какой <span class="cn-word" data-tr="qatorda">строке</span> письма это написано?</p>
 
-<p>Жасу́р посмотре́л. Э́то бы́ло напи́сано на второ́й страни́це, в конце́.</p>
+<p>Жасур посмотрел. Это было написано на второй странице, в конце.</p>
 
-<p>— Тре́тий: дире́ктор чита́ет три́дцать пи́сем в день. До второ́й страни́цы он дошёл?</p>
+<p>— Третий: директор читает тридцать писем в день. До второй страницы он дошёл?</p>
 
-<p>Жасу́р <span class="cn-word" data-pos="verb" data-tr="jim qoldi">замолча́л</span>.</p>
+<p>Жасур <span class="cn-word" data-pos="verb" data-tr="jim qoldi">замолчал</span>.</p>
 
-<p>Ве́чером он написа́л но́вое письмо́. Четы́ре строки́. В пе́рвой строке́ — про́сьба. Во второ́й — <span class="cn-word" data-tr="sabab">причи́на</span>. В тре́тьей — ско́лько сто́ит. В четвёртой — спаси́бо.</p>
+<p>Вечером он написал новое письмо. Четыре строки. В первой строке — просьба. Во второй — <span class="cn-word" data-tr="sabab">причина</span>. В третьей — сколько стоит. В четвёртой — спасибо.</p>
 
-<p>Отве́т пришёл на сле́дующий день.</p>
+<p>Ответ пришёл на следующий день.</p>
 
-<p>Тепе́рь Жасу́р зна́ет, <strong>что</strong> дли́нное письмо́ — не всегда́ хоро́шее письмо́.</p>
+<p>Теперь Жасур знает, <strong>что</strong> длинное письмо — не всегда хорошее письмо.</p>
 
-<p>Пиши́ не для того́, <strong>что́бы сказа́ть</strong>. Пиши́ для того́, <strong>что́бы тебя́ по́няли</strong>.</p>''',
+<p>Пиши не для того, <strong>чтобы сказать</strong>. Пиши для того, <strong>чтобы тебя поняли</strong>.</p>''',
         "questions": [
             {
                 "text": "Nega direktor birinchi xatga javob bermadi?",
@@ -324,19 +324,19 @@ STORIES = [
                 ],
                 "answer": 0,
                 "explanation": "Sergey Petrovichning uchinchi savoli shuni "
-                               "koʻrsatadi: «дире́ктор чита́ет три́дцать пи́сем в "
-                               "день. До второ́й страни́цы он дошёл?»",
+                               "koʻrsatadi: «директор читает тридцать писем в "
+                               "день. До второй страницы он дошёл?»",
             },
             {
-                "text": "Nega matnda «Он хоте́л, что́бы дире́ктор отве́тил», lekin «Он ду́мал, что письмо́ хоро́шее»?",
+                "text": "Nega matnda «Он хотел, чтобы директор ответил», lekin «Он думал, что письмо хорошее»?",
                 "choices": [
-                    "«Хоте́ть» istakni bildiradi — что́бы; «ду́мать» faktni — что",
+                    "«Хотеть» istakni bildiradi — чтобы; «думать» faktni — что",
                     "Ikkalasi bir xil, farqi yoʻq",
-                    "«Что́бы» faqat oʻtmish haqida ishlatiladi",
+                    "«Чтобы» faqat oʻtmish haqida ishlatiladi",
                     "Bu matndagi xato"
                 ],
                 "answer": 0,
-                "explanation": "Xohlash, soʻrash, talab qilish — что́бы va undan "
+                "explanation": "Xohlash, soʻrash, talab qilish — чтобы va undan "
                                "keyin oʻtgan zamon. Bilish, oʻylash, aytish — "
                                "что va oddiy zamonlar.",
             },
@@ -349,9 +349,9 @@ STORIES = [
                     "Direktorning savollariga javoblar"
                 ],
                 "answer": 0,
-                "explanation": "«Четы́ре строки́. В пе́рвой — про́сьба. Во второ́й — "
-                               "причи́на. В тре́тьей — ско́лько сто́ит. В "
-                               "четвёртой — спаси́бо». Va javob ertasiga keldi.",
+                "explanation": "«Четыре строки. В первой — просьба. Во второй — "
+                               "причина. В третьей — сколько стоит. В "
+                               "четвёртой — спасибо». Va javob ertasiga keldi.",
             },
         ],
     },

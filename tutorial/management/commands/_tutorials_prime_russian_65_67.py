@@ -39,7 +39,7 @@ TUTORIALS = [
             "Когда́ — aniq boʻladigan narsa, е́сли — boʻlishi mumkin narsa. Va rus "
             "tilining eng katta tuzogʻi: kelasi zamonda ikkala qismda ham kelasi zamon."
         ),
-        "stories": ["Когда́ отключи́ли свет"],
+        "stories": ["Когда отключили свет"],
         "content": """
 <h2>PR-65: Если va когда — shart va vaqt ergash gaplari</h2>
 
@@ -369,7 +369,7 @@ fakt:<br><br>
             "Потому́ что sababni aytadi, поэ́тому natijani — bitta voqeaning ikki "
             "tomoni. Ustiga из-за + Р.п. (yomon sabab) va благодаря́ + Д.п. (yaxshi)."
         ),
-        "stories": ["Почему́ Байка́л тако́й глубо́кий"],
+        "stories": ["Почему Байкал такой глубокий"],
         "content": """
 <h2>PR-66: Потому что, поэтому, так как, из-за того что — sabab va natija</h2>
 
@@ -699,7 +699,7 @@ xulosa chiqaradi.</div>
             "Oʻzbekcha «esa» — ruscha А, «lekin» — ruscha НО. Ustiga зато́ (kamchilik "
             "oʻrnini bosadigan yaxshilik), хотя́, одна́ко va тем не ме́нее."
         ),
-        "stories": ["Ма́ленький го́род, больша́я библиоте́ка"],
+        "stories": ["Маленький город, большая библиотека"],
         "content": """
 <h2>PR-67: Хотя, но, зато, однако, тем не менее — qarama-qarshilik</h2>
 

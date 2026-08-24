@@ -10,8 +10,8 @@ Shakl xilma-xilligi: 18 — sinfdagi sahna, 19 — anketa/hujjat (yangi janr),
 ⚠️ ISTISNO TUGADI. PR-19 dan feʼl tizimi ochildi, shuning uchun 19-matndan
 boshlab "narrative frame" istisnosi ishlatilmaydi — feʼllar oddiy grammatika
 sifatida keladi. 18-matn hali eski qoidada (feʼl darsi undan keyin).
-20-matnda faqat I tuslanish feʼllari (PR-20) ishlatiladi: рабо́тать, чита́ть,
-знать, де́лать, ду́мать, понима́ть, слу́шать, гуля́ть, игра́ть + frame feʼllari.
+20-matnda faqat I tuslanish feʼllari (PR-20) ishlatiladi: работать, читать,
+знать, делать, думать, понимать, слушать, гулять, играть + frame feʼllari.
 
     python manage.py import_corner \
         corner/management/commands/_stories_prime_russian_18_20.py --author=prime
@@ -38,7 +38,7 @@ STORIES = [
     # PR-18 — тоже / ещё / уже            SINFDAGI SAHNA
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Мы то́же!",
+        "title":   "Мы тоже!",
         "summary": (
             "PR-18 matni. Sinfda bitta bola qoʻlini koʻtaradi — keyin ikkinchisi, "
             "keyin hammasi. «Тоже» soʻzi qanday qilib butun sinfni harakatga "
@@ -47,45 +47,45 @@ STORIES = [
         "order":   18,
         "grammar": [
             {
-                "pattern":  "то́же",
+                "pattern":  "тоже",
                 "meaning":  "«Men ham» — yangi ega qoʻshadi, kimdir yana shuni qilyapti. "
-                            "Kundalik nutqda deyarli har doim ТО́ЖЕ ishlatiladi, "
-                            "ТА́КЖЕ esa kitobiy va rasmiyroq.",
-                "examples": ["Я то́же.", "Жасу́р то́же здесь."],
+                            "Kundalik nutqda deyarli har doim ТОЖЕ ishlatiladi, "
+                            "ТАКЖЕ esa kitobiy va rasmiyroq.",
+                "examples": ["Я тоже.", "Жасур тоже здесь."],
             },
             {
-                "pattern":  "ещё / уже́",
-                "meaning":  "ЕЩЁ — hali, yana. УЖЕ́ — allaqachon. Inkor shakllari ham "
-                            "juftlik: ЕЩЁ НЕ (hali … emas) va УЖЕ́ НЕ (endi … emas).",
-                "examples": ["Уже́ два́дцать!", "Ещё не все."],
+                "pattern":  "ещё / уже",
+                "meaning":  "ЕЩЁ — hali, yana. УЖЕ — allaqachon. Inkor shakllari ham "
+                            "juftlik: ЕЩЁ НЕ (hali … emas) va УЖЕ НЕ (endi … emas).",
+                "examples": ["Уже двадцать!", "Ещё не все."],
             },
             {
                 "pattern":  "Ravish: -ый → -о",
                 "meaning":  "Ravish hech nimaga moslashmaydi. U sifatdan yasaladi: "
-                            "ти́хий → ти́хо, гро́мкий → гро́мко. Sifat OTNI, ravish esa "
+                            "тихий → тихо, громкий → громко. Sifat OTNI, ravish esa "
                             "HOLAT yoki HARAKATNI taʼriflaydi.",
-                "examples": ["Здесь ти́хо.", "Гро́мко!"],
+                "examples": ["Здесь тихо.", "Громко!"],
             },
         ],
-        "body": '''<p>Уро́к. Здесь <span class="cn-word" data-tr="jimjit">ти́хо</span>. Мари́на Оле́говна <span class="cn-word" data-pos="verb" data-tr="dedi (ayol)">сказа́ла</span>: «Суббо́та — <span class="cn-word" data-tr="ekskursiya">экску́рсия</span>. Музе́й. Кто?»</p>
+        "body": '''<p>Урок. Здесь <span class="cn-word" data-tr="jimjit">тихо</span>. Марина Олеговна <span class="cn-word" data-pos="verb" data-tr="dedi (ayol)">сказала</span>: «Суббота — <span class="cn-word" data-tr="ekskursiya">экскурсия</span>. Музей. Кто?»</p>
 
-<p><span class="cn-word" data-tr="jimjitlik">Тишина́</span>.</p>
+<p><span class="cn-word" data-tr="jimjitlik">Тишина</span>.</p>
 
-<p><span class="cn-word" data-tr="Keyin">Пото́м</span> Афсо́на: «Я».</p>
+<p><span class="cn-word" data-tr="Keyin">Потом</span> Афсона: «Я».</p>
 
-<p>Дилно́за: «Я <strong>то́же</strong>».</p>
+<p>Дилноза: «Я <strong>тоже</strong>».</p>
 
-<p>Шербе́к: «И я <strong>то́же</strong>».</p>
+<p>Шербек: «И я <strong>тоже</strong>».</p>
 
-<p>Жасу́р сказа́л <strong>гро́мко</strong>: «Мы <strong>то́же</strong>!» — а <span class="cn-word" data-tr="yonida">ря́дом</span> Бекзо́д, и Бекзо́д <span class="cn-word" data-tr="hali">ещё</span> <span class="cn-word" data-tr="kichkina">ма́ленький</span>.</p>
+<p>Жасур сказал <strong>громко</strong>: «Мы <strong>тоже</strong>!» — а <span class="cn-word" data-tr="yonida">рядом</span> Бекзод, и Бекзод <span class="cn-word" data-tr="hali">ещё</span> <span class="cn-word" data-tr="kichkina">маленький</span>.</p>
 
-<p>Мари́на Оле́говна: «Бекзо́д <strong>ещё не</strong> <span class="cn-word" data-tr="oʻquvchi">учени́к</span>».</p>
+<p>Марина Олеговна: «Бекзод <strong>ещё не</strong> <span class="cn-word" data-tr="oʻquvchi">ученик</span>».</p>
 
-<p>Жасу́р: «Но он <strong>уже́ не</strong> ма́ленький!»</p>
+<p>Жасур: «Но он <strong>уже не</strong> маленький!»</p>
 
-<p>Здесь <strong>уже́</strong> не ти́хо. <span class="cn-word" data-tr="Hamma">Все</span> — «я <strong>то́же</strong>», «и я», «мы <strong>то́же</strong>».</p>
+<p>Здесь <strong>уже</strong> не тихо. <span class="cn-word" data-tr="Hamma">Все</span> — «я <strong>тоже</strong>», «и я», «мы <strong>тоже</strong>».</p>
 
-<p>Мари́на Оле́говна сказа́ла: «Хорошо́. <strong>Уже́</strong> два́дцать оди́н. И Бекзо́д — <strong>то́же</strong>».</p>''',
+<p>Марина Олеговна сказала: «Хорошо. <strong>Уже</strong> двадцать один. И Бекзод — <strong>тоже</strong>».</p>''',
         "questions": [
             {
                 "text": "Bekzod ekskursiyaga boradimi?",
@@ -96,26 +96,26 @@ STORIES = [
                     "Yoʻq, u kasal"
                 ],
                 "answer": 0,
-                "explanation": "Oʻqituvchi avval «Бекзо́д ещё не учени́к» dedi, lekin "
-                               "oxirida «Уже́ два́дцать оди́н. И Бекзо́д — то́же» — yaʼni "
+                "explanation": "Oʻqituvchi avval «Бекзод ещё не ученик» dedi, lekin "
+                               "oxirida «Уже двадцать один. И Бекзод — тоже» — yaʼni "
                                "u ham roʻyxatga kirdi.",
             },
             {
-                "text": "«Бекзо́д ещё не учени́к» va «Он уже́ не ма́ленький» — bu ikki gap "
+                "text": "«Бекзод ещё не ученик» va «Он уже не маленький» — bu ikki gap "
                         "nimani koʻrsatadi?",
                 "choices": [
-                    "ЕЩЁ НЕ — hali boshlanmagan, УЖЕ́ — allaqachon boshlangan",
+                    "ЕЩЁ НЕ — hali boshlanmagan, УЖЕ — allaqachon boshlangan",
                     "Ikkalasi bir xil maʼnoda",
                     "Birinchisi kelasi zamon, ikkinchisi oʻtgan",
-                    "ЕЩЁ НЕ — endi emas, УЖЕ́ — hali emas"
+                    "ЕЩЁ НЕ — endi emas, УЖЕ — hali emas"
                 ],
                 "answer": 0,
                 "explanation": "Bu vaqt chizigʻining ikki nuqtasi. Bekzod hali maktabga "
                                "kirmagan (ещё не), lekin allaqachon kichkina emas "
-                               "(уже́ не). Toʻliq toʻrtlik: ещё не → уже́ → ещё → уже́ не.",
+                               "(уже не). Toʻliq toʻrtlik: ещё не → уже → ещё → уже не.",
             },
             {
-                "text": "Matnda «Здесь ти́хо» va keyin «уже́ не ти́хо» bor. «Ти́хо» "
+                "text": "Matnda «Здесь тихо» va keyin «уже не тихо» bor. «Тихо» "
                         "qaysi soʻz turkumi?",
                 "choices": [
                     "Ravish — u holatni taʼriflaydi, otni emas",
@@ -125,8 +125,8 @@ STORIES = [
                 ],
                 "answer": 0,
                 "explanation": "Gapda taʼriflanadigan ot yoʻq — bu holat, demak ravish. "
-                               "Sifat boʻlganda «ти́хий класс» boʻlardi. Ravish "
-                               "sifatdan yasaladi: ти́хий → ти́хо.",
+                               "Sifat boʻlganda «тихий класс» boʻlardi. Ravish "
+                               "sifatdan yasaladi: тихий → тихо.",
             },
         ],
     },
@@ -135,7 +135,7 @@ STORIES = [
     # PR-19 — infinitiv                   ANKETA (yangi janr)
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Анке́та",
+        "title":   "Анкета",
         "summary": (
             "PR-19 matni. Maktabda toʻgaraklarga yozilish anketasi — uchta oʻquvchi "
             "toʻldirgan. Javoblarning hammasi infinitivda. Oxirgi anketa qoidani "
@@ -149,42 +149,42 @@ STORIES = [
                             "keladi. U hech kimga tegishli emas — shunchaki harakatning "
                             "nomi. Shuning uchun roʻyxat va anketalarda aynan shu shakl "
                             "ishlatiladi.",
-                "examples": ["чита́ть", "рисова́ть", "игра́ть"],
+                "examples": ["читать", "рисовать", "играть"],
             },
             {
                 "pattern":  "I va II tuslanish",
                 "meaning":  "Feʼllar ikki guruhga boʻlinadi. Ishonchli belgi — «ты» "
-                            "shakli: -ЕШЬ = I tuslanish (чита́ешь), -ИШЬ = II tuslanish "
-                            "(говори́шь). Infinitiv oxiri faqat maslahat beradi.",
-                "examples": ["чита́ть → чита́ешь (I)", "говори́ть → говори́шь (II)"],
+                            "shakli: -ЕШЬ = I tuslanish (читаешь), -ИШЬ = II tuslanish "
+                            "(говоришь). Infinitiv oxiri faqat maslahat beradi.",
+                "examples": ["читать → читаешь (I)", "говорить → говоришь (II)"],
             },
             {
                 "pattern":  "Soʻz tartibi: ega → feʼl → toʻldiruvchi",
                 "meaning":  "Oʻzbek gapida feʼl OXIRIDA turadi, rus gapida OʻRTADA. "
-                            "«Men kitob oʻqiyman» → «Я чита́ю кни́гу». Bu kursdagi eng "
+                            "«Men kitob oʻqiyman» → «Я читаю книгу». Bu kursdagi eng "
                             "muhim tartib farqi.",
-                "examples": ["Я чита́ю.", "Бекзо́д рабо́тает."],
+                "examples": ["Я читаю.", "Бекзод работает."],
             },
         ],
-        "body": '''<p><span class="cn-word" data-tr="Maktab toʻgaraklari">Шко́льные кружки́</span>. <span class="cn-word" data-tr="Anketa">Анке́та</span>.</p>
+        "body": '''<p><span class="cn-word" data-tr="Maktab toʻgaraklari">Школьные кружки</span>. <span class="cn-word" data-tr="Anketa">Анкета</span>.</p>
 
-<p><span class="cn-word" data-tr="Ism">И́мя</span>: Афсо́на. <span class="cn-word" data-tr="Sinf">Класс</span>: 9 «А».<br>
-Что <span class="cn-word" data-tr="qilmoq">де́лать</span>? — <strong>Чита́ть</strong> и <strong><span class="cn-word" data-tr="yozmoq">писа́ть</span></strong>.<br>
-<span class="cn-word" data-tr="Nima uchun">Заче́м</span>? — <span class="cn-word" data-tr="Chunki">Потому́ что</span> я <strong>чита́ю</strong> ка́ждый день.</p>
+<p><span class="cn-word" data-tr="Ism">Имя</span>: Афсона. <span class="cn-word" data-tr="Sinf">Класс</span>: 9 «А».<br>
+Что <span class="cn-word" data-tr="qilmoq">делать</span>? — <strong>Читать</strong> и <strong><span class="cn-word" data-tr="yozmoq">писать</span></strong>.<br>
+<span class="cn-word" data-tr="Nima uchun">Зачем</span>? — <span class="cn-word" data-tr="Chunki">Потому что</span> я <strong>читаю</strong> каждый день.</p>
 
-<p>И́мя: Жасу́р. Класс: 9 «А».<br>
-Что де́лать? — <strong>Игра́ть</strong>. <span class="cn-word" data-tr="Futbol">Футбо́л</span>.<br>
-Заче́м? — Потому́ что я <strong>игра́ю</strong> хорошо́.</p>
+<p>Имя: Жасур. Класс: 9 «А».<br>
+Что делать? — <strong>Играть</strong>. <span class="cn-word" data-tr="Futbol">Футбол</span>.<br>
+Зачем? — Потому что я <strong>играю</strong> хорошо.</p>
 
-<p>И́мя: Дилно́за. Класс: 9 «А».<br>
-Что де́лать? — <strong><span class="cn-word" data-tr="rasm chizmoq">Рисова́ть</span></strong> и <strong><span class="cn-word" data-tr="qoʻshiq aytmoq">петь</span></strong>.<br>
-Заче́м? — <strong>Не зна́ю</strong>. Про́сто хорошо́.</p>
+<p>Имя: Дилноза. Класс: 9 «А».<br>
+Что делать? — <strong><span class="cn-word" data-tr="rasm chizmoq">Рисовать</span></strong> и <strong><span class="cn-word" data-tr="qoʻshiq aytmoq">петь</span></strong>.<br>
+Зачем? — <strong>Не знаю</strong>. Просто хорошо.</p>
 
-<p>И <span class="cn-word" data-tr="yana bitta">ещё одна́</span> анке́та.</p>
+<p>И <span class="cn-word" data-tr="yana bitta">ещё одна</span> анкета.</p>
 
-<p>И́мя: Бекзо́д. Класс: — <span class="cn-word" data-tr="hali yoʻq">ещё нет</span>.<br>
-Что де́лать? — <strong>Чита́ть</strong>, <strong>рисова́ть</strong>, <strong>игра́ть</strong>, <strong>петь</strong>. <span class="cn-word" data-tr="Hammasi">Всё</span>.<br>
-Заче́м? — Потому́ что Афсо́на, Жасу́р и Дилно́за — <span class="cn-word" data-tr="u yerda">там</span>.</p>''',
+<p>Имя: Бекзод. Класс: — <span class="cn-word" data-tr="hali yoʻq">ещё нет</span>.<br>
+Что делать? — <strong>Читать</strong>, <strong>рисовать</strong>, <strong>играть</strong>, <strong>петь</strong>. <span class="cn-word" data-tr="Hammasi">Всё</span>.<br>
+Зачем? — Потому что Афсона, Жасур и Дилноза — <span class="cn-word" data-tr="u yerda">там</span>.</p>''',
         "questions": [
             {
                 "text": "Bekzodning anketasi nega boshqalardan farq qiladi?",
@@ -195,12 +195,12 @@ STORIES = [
                     "U faqat futbolni tanladi"
                 ],
                 "answer": 0,
-                "explanation": "Bekzodning javobi: «Чита́ть, рисова́ть, игра́ть, петь. "
-                               "Всё» — va sababi: «Потому́ что Афсо́на, Жасу́р и Дилно́за "
+                "explanation": "Bekzodning javobi: «Читать, рисовать, играть, петь. "
+                               "Всё» — va sababi: «Потому что Афсона, Жасур и Дилноза "
                                "— там». Uni toʻgarak emas, odamlar qiziqtiradi.",
             },
             {
-                "text": "Nega anketadagi javoblar infinitivda (чита́ть, игра́ть) berilgan?",
+                "text": "Nega anketadagi javoblar infinitivda (читать, играть) berilgan?",
                 "choices": [
                     "Chunki infinitiv hech kimga tegishli emas — u shunchaki harakatning nomi",
                     "Chunki bu oʻtgan zamon",
@@ -213,17 +213,17 @@ STORIES = [
                                "menyularda aynan shu shakl ishlatiladi.",
             },
             {
-                "text": "Matnda «я игра́ю хорошо́» bor. Nega «хоро́ший» emas?",
+                "text": "Matnda «я играю хорошо» bor. Nega «хороший» emas?",
                 "choices": [
                     "Chunki bu harakatni taʼriflaydi — demak ravish kerak",
                     "Chunki «я» erkak jinsida",
                     "Chunki gap oʻtgan zamonda",
-                    "Chunki «игра́ю» koʻplikda"
+                    "Chunki «играю» koʻplikda"
                 ],
                 "answer": 0,
-                "explanation": "«Хорошо́» — ravish, u qanday oʻynashini aytadi. "
-                               "«Хоро́ший» esa sifat va u otga kerak boʻlardi: "
-                               "«хоро́ший футбо́л». Sifat otni, ravish harakatni "
+                "explanation": "«Хорошо» — ravish, u qanday oʻynashini aytadi. "
+                               "«Хороший» esa sifat va u otga kerak boʻlardi: "
+                               "«хороший футбол». Sifat otni, ravish harakatni "
                                "taʼriflaydi (PR-18).",
             },
         ],
@@ -233,7 +233,7 @@ STORIES = [
     # PR-20 — I tuslanish                 KUNLIK TARTIB
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Оди́н день Жасу́ра",
+        "title":   "Один день Жасура",
         "summary": (
             "PR-20 matni. Jasurning oddiy kuni — ertalabdan kechgacha. Deyarli har "
             "bir jumlada I tuslanish feʼli bor, va oxirida kichik bir narsa "
@@ -244,44 +244,44 @@ STORIES = [
             {
                 "pattern":  "I tuslanish: -ю, -ешь, -ет, -ем, -ете, -ют",
                 "meaning":  "Oʻzak = infinitiv minus -ть. Naqsh hamma feʼlda bir xil "
-                            "ishlaydi: чита́-ю, чита́-ешь, чита́-ет… Oʻzbekchadagi "
+                            "ishlaydi: чита-ю, чита-ешь, чита-ет… Oʻzbekchadagi "
                             "oʻqi-y-man / oʻqi-y-san bilan bir xil tuzilma.",
-                "examples": ["Я чита́ю.", "Он рабо́тает.", "Они́ гуля́ют."],
+                "examples": ["Я читаю.", "Он работает.", "Они гуляют."],
             },
             {
                 "pattern":  "не + feʼl",
                 "meaning":  "Inkor: НЕ har doim feʼlning OLDIDA turadi. Oʻzbekchada "
                             "inkor qoʻshimcha ichida boʻladi (bilma-y-man), ruschada esa "
                             "alohida soʻz sifatida oldinda.",
-                "examples": ["Я не зна́ю.", "Он не понима́ет."],
+                "examples": ["Я не знаю.", "Он не понимает."],
             },
             {
                 "pattern":  "Ravish + feʼl",
-                "meaning":  "Ravish harakatni taʼriflaydi va oʻzgarmaydi: бы́стро, "
-                            "ме́дленно, хорошо́, ча́сто. U odatda feʼldan oldin yoki "
+                "meaning":  "Ravish harakatni taʼriflaydi va oʻzgarmaydi: быстро, "
+                            "медленно, хорошо, часто. U odatda feʼldan oldin yoki "
                             "keyin turadi.",
-                "examples": ["Он рабо́тает бы́стро.", "Мы ча́сто гуля́ем."],
+                "examples": ["Он работает быстро.", "Мы часто гуляем."],
             },
         ],
-        "body": '''<p><span class="cn-word" data-tr="Ertalab">У́тро</span>. Жасу́р <span class="cn-word" data-pos="verb" data-tr="uygʻonadi">встаёт</span> <span class="cn-word" data-tr="erta">ра́но</span>. Бекзо́д <strong>ещё</strong> <span class="cn-word" data-pos="verb" data-tr="uxlaydi">спит</span>.</p>
+        "body": '''<p><span class="cn-word" data-tr="Ertalab">Утро</span>. Жасур <span class="cn-word" data-pos="verb" data-tr="uygʻonadi">встаёт</span> <span class="cn-word" data-tr="erta">рано</span>. Бекзод <strong>ещё</strong> <span class="cn-word" data-pos="verb" data-tr="uxlaydi">спит</span>.</p>
 
-<p>Жасу́р <strong>слу́шает</strong> <span class="cn-word" data-tr="radio">ра́дио</span> и <strong>де́лает</strong> <span class="cn-word" data-tr="nonushta">за́втрак</span>. Он <strong>де́лает</strong> э́то <span class="cn-word" data-tr="tez">бы́стро</span>, потому́ что уро́к <strong>уже́</strong> <span class="cn-word" data-tr="yaqin, tez orada">ско́ро</span>.</p>
+<p>Жасур <strong>слушает</strong> <span class="cn-word" data-tr="radio">радио</span> и <strong>делает</strong> <span class="cn-word" data-tr="nonushta">завтрак</span>. Он <strong>делает</strong> это <span class="cn-word" data-tr="tez">быстро</span>, потому что урок <strong>уже</strong> <span class="cn-word" data-tr="yaqin, tez orada">скоро</span>.</p>
 
-<p>Шко́ла. Жасу́р <strong>чита́ет</strong>, <strong>слу́шает</strong>, <strong>ду́мает</strong>. Ру́сский язы́к — тру́дно. Мате́матика — легко́. Жасу́р <strong>понима́ет</strong> хорошо́, но ме́дленно.</p>
+<p>Школа. Жасур <strong>читает</strong>, <strong>слушает</strong>, <strong>думает</strong>. Русский язык — трудно. Математика — легко. Жасур <strong>понимает</strong> хорошо, но медленно.</p>
 
-<p>Пото́м — футбо́л. Жасу́р <strong>игра́ет</strong> ка́ждый день. Шербе́к <strong>игра́ет</strong> то́же. Они́ <strong>игра́ют</strong> гро́мко и <span class="cn-word" data-tr="quvnoq">ве́село</span>.</p>
+<p>Потом — футбол. Жасур <strong>играет</strong> каждый день. Шербек <strong>играет</strong> тоже. Они <strong>играют</strong> громко и <span class="cn-word" data-tr="quvnoq">весело</span>.</p>
 
-<p><span class="cn-word" data-tr="Kechqurun">Ве́чером</span> — <span class="cn-word" data-tr="doʻkon">магази́н</span>. Жасу́р <strong>рабо́тает</strong> <span class="cn-word" data-tr="oz">ма́ло</span>, два часа́. Ни́на Петро́вна <span class="cn-word" data-pos="verb" data-tr="deydi">говори́т</span>: «Жасу́р <strong>рабо́тает</strong> хорошо́».</p>
+<p><span class="cn-word" data-tr="Kechqurun">Вечером</span> — <span class="cn-word" data-tr="doʻkon">магазин</span>. Жасур <strong>работает</strong> <span class="cn-word" data-tr="oz">мало</span>, два часа. Нина Петровна <span class="cn-word" data-pos="verb" data-tr="deydi">говорит</span>: «Жасур <strong>работает</strong> хорошо».</p>
 
-<p><span class="cn-word" data-tr="Kech">По́здно</span>. Дом. Бекзо́д <strong>не</strong> <span class="cn-word" data-pos="verb" data-tr="uxlaydi">спит</span>. Бекзо́д <strong>ждёт</strong>.</p>
+<p><span class="cn-word" data-tr="Kech">Поздно</span>. Дом. Бекзод <strong>не</strong> <span class="cn-word" data-pos="verb" data-tr="uxlaydi">спит</span>. Бекзод <strong>ждёт</strong>.</p>
 
-<p>Бекзо́д: «Жасу́р, ты <strong>чита́ешь</strong>?»</p>
+<p>Бекзод: «Жасур, ты <strong>читаешь</strong>?»</p>
 
-<p>Жасу́р <strong>ду́мает</strong>: у́тро — ра́но, шко́ла — тру́дно, футбо́л, магази́н. Он <span class="cn-word" data-tr="charchagan">уста́л</span>.</p>
+<p>Жасур <strong>думает</strong>: утро — рано, школа — трудно, футбол, магазин. Он <span class="cn-word" data-tr="charchagan">устал</span>.</p>
 
-<p>Жасу́р: «<strong>Чита́ю</strong>».</p>
+<p>Жасур: «<strong>Читаю</strong>».</p>
 
-<p>И они́ <strong>чита́ют</strong>. Ме́дленно, ти́хо. Ка́ждый день.</p>''',
+<p>И они <strong>читают</strong>. Медленно, тихо. Каждый день.</p>''',
         "questions": [
             {
                 "text": "Jasur kechqurun charchagan boʻlsa ham nima qiladi?",
@@ -292,17 +292,17 @@ STORIES = [
                     "Futbol oʻynaydi"
                 ],
                 "answer": 0,
-                "explanation": "«Он уста́л» — charchagan. Lekin Bekzod kutib oʻtirgan edi "
-                               "va Jasur «Чита́ю» dedi. Oxirgi jumla: «И они́ чита́ют. "
-                               "Ме́дленно, ти́хо. Ка́ждый день» — bu har kungi odat.",
+                "explanation": "«Он устал» — charchagan. Lekin Bekzod kutib oʻtirgan edi "
+                               "va Jasur «Читаю» dedi. Oxirgi jumla: «И они читают. "
+                               "Медленно, тихо. Каждый день» — bu har kungi odat.",
             },
             {
-                "text": "Matnda «Они́ игра́ют» va «Жасу́р игра́ет» bor. Nega qoʻshimcha "
+                "text": "Matnda «Они играют» va «Жасур играет» bor. Nega qoʻshimcha "
                         "boshqa?",
                 "choices": [
-                    "Chunki feʼl egaga moslashadi: они́ → -ют, он → -ет",
+                    "Chunki feʼl egaga moslashadi: они → -ют, он → -ет",
                     "Chunki bir joyda oʻtgan zamon",
-                    "Chunki «Жасу́р» erkak jinsida",
+                    "Chunki «Жасур» erkak jinsida",
                     "Bu xato"
                 ],
                 "answer": 0,
@@ -311,7 +311,7 @@ STORIES = [
                                "eng koʻp adashtiriladigan juftlik.",
             },
             {
-                "text": "«Бекзо́д не спит» gapida НЕ qayerda turibdi va nega?",
+                "text": "«Бекзод не спит» gapida НЕ qayerda turibdi va nega?",
                 "choices": [
                     "Feʼlning oldida — ruschada НЕ har doim inkor qilinadigan soʻz oldida",
                     "Feʼldan keyin",

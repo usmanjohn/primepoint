@@ -39,7 +39,7 @@ TUTORIALS = [
             "Buyruq shakli oson yasaladi — «они́» shaklidan. Va oʻzbekcha bu yerda "
             "deyarli mukammal mos keladi: oʻqi! / oʻqing! / oʻqima!"
         ),
-        "stories": ["Инстру́кция для но́вого сотру́дника"],
+        "stories": ["Инструкция для нового сотрудника"],
         "content": """
 <h2>PR-59: Buyruq mayli: читай! читайте! давай пойдём! не опаздывай!</h2>
 
@@ -301,7 +301,7 @@ bilan <em>дава́й</em> + infinitiv (<em>дава́й чита́ть</em>).<
             "Tuslanish yoʻq, zamon yoʻq, istisno yoʻq — bitta soʻz butun mayl "
             "yasaydi."
         ),
-        "stories": ["Е́сли бы я знал ра́ньше"],
+        "stories": ["Если бы я знал раньше"],
         "content": """
 <h2>PR-60: Shartli mayl — бы: если бы, я хотел бы, на твоём месте я бы…</h2>
 
@@ -536,7 +536,7 @@ qismda ham <em>бы</em> qoʻyiladi.</div>
             "nisbat ishlatiladi. Rus tilida uning ikki shakli bor — va farq "
             "oʻsha tanish vid farqi."
         ),
-        "stories": ["Как был постро́ен Петербу́рг"],
+        "stories": ["Как был построен Петербург"],
         "content": """
 <h2>PR-61: Majhul nisbat: дом строится / дом построен</h2>
 

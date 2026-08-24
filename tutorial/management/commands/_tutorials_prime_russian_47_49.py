@@ -42,7 +42,7 @@ TUTORIALS = [
             "JAVOB kutilayotgan kelishikda beriladi. Oʻzbekcha «kim, kimning, "
             "kimga» ham xuddi shunday ishlaydi."
         ),
-        "stories": ["Игра́ «Два́дцать вопро́сов»"],
+        "stories": ["Игра «Двадцать вопросов»"],
         "content": """
 <h2>PR-47: Soʻroq soʻzlarining kelishiklari: кто, что, какой, чей, сколько</h2>
 
@@ -319,7 +319,7 @@ keyin <b>Роди́тельный</b> keladi (PR-36):</p>
             "xaritaga yigʻiladi — va maʼlum boʻladiki, ular tasodifiy emas: har "
             "bir kelishikning oʻz predloglari bor."
         ),
-        "stories": ["Как я потеря́лся в метро́"],
+        "stories": ["Как я потерялся в метро"],
         "content": """
 <h2>PR-48: Predlog xaritasi: qaysi predlog qaysi kelishikni talab qiladi</h2>
 
@@ -587,7 +587,7 @@ mos kelmasa, xato darrov koʻrinadi.</div>
             "eng yaxshi takror — chunki vaqt ifodalarida TOʻRTTA kelishik birdan "
             "ishlaydi."
         ),
-        "stories": ["Календа́рь Ни́ны"],
+        "stories": ["Календарь Нины"],
         "content": """
 <h2>PR-49: Sonlarning kelishigi va vaqt ifodalari: в понедельник, в мае, в 2026 году</h2>
 

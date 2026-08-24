@@ -38,7 +38,7 @@ TUTORIALS = [
             "almashinuvi (люблю́, хожу́) va feʼl qaysi tuslanishda ekanini "
             "aniqlashning ishonchli yoʻli."
         ),
-        "stories": ["Я говорю́ на трёх языка́х"],
+        "stories": ["Я говорю на трёх языках"],
         "content": """
 <h2>PR-21: II tuslanish: говорить, смотреть, любить (-ю, -ишь, -ит, -им, -ите, -ят)</h2>
 
@@ -397,7 +397,7 @@ qoladi. Yodlaganda urgʻuni ham yodlang — u soʻzning bir qismi.</p>
             "Oʻn ikkitasini bir darsda yigʻib olasiz — va shundan keyin kundalik "
             "nutqning katta qismi qoʻlingizda boʻladi."
         ),
-        "stories": ["Ку́хня в общежи́тии"],
+        "stories": ["Кухня в общежитии"],
         "content": """
 <h2>PR-22: Notoʻgʻri feʼllar: хотеть, есть, дать, идти, ехать, жить, писать</h2>
 
@@ -728,7 +728,7 @@ oʻzini eslab qoling.</div>
             "yoʻq. Lekin u shaxs oʻrniga JINSga qaraydi, va bu oʻzbek oʻquvchi uchun "
             "butunlay yangi."
         ),
-        "stories": ["Вчера́ был дождь"],
+        "stories": ["Вчера был дождь"],
         "content": """
 <h2>PR-23: Oʻtgan zamon (прошедшее время) — jinsga qarab -л, -ла, -ло, -ли</h2>
 

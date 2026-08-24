@@ -8,9 +8,9 @@ Shakl xilma-xilligi: 12 — kundalik daftar (yangi janr), 13 — doʻkondagi suh
 14 — buvijon haqidagi kichik hayot lavhasi.
 
 Feʼl tizimi hali ochilmagan (PR-19 dan), shuning uchun tocdagi "narrative frame"
-istisnosi ishlatilgan: есть · нет · зову́т · живёт · рабо́тает · говори́т ·
-сказа́л(а)/сказа́ли · пришёл/пришла́/пришли́ · дал(а) · был/была́/бы́ло/бы́ли.
-Vaqt/joy ravishlari va turgʻun iboralar (ско́лько сто́ит, спаси́бо, пожа́луйста)
+istisnosi ishlatilgan: есть · нет · зовут · живёт · работает · говорит ·
+сказал(а)/сказали · пришёл/пришла/пришли · дал(а) · был/была/было/были.
+Vaqt/joy ravishlari va turgʻun iboralar (сколько стоит, спасибо, пожалуйста)
 lugʻat sifatida izohlanadi.
 
     python manage.py import_corner \
@@ -38,7 +38,7 @@ STORIES = [
     # PR-12 — sifat                    KUNDALIK DAFTAR (yangi janr)
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Но́вая шко́ла",
+        "title":   "Новая школа",
         "summary": (
             "PR-12 matni. Dilnozaning kundalik daftaridan bir sahifa: yangi maktabdagi "
             "birinchi kun. Har bir jumlada sifat bor, va har bir sifat oʻz otiga "
@@ -49,37 +49,37 @@ STORIES = [
             {
                 "pattern":  "Sifat + ot (moslashuv)",
                 "meaning":  "Sifat otning jinsi va soniga qarab shakl oladi: "
-                            "но́вый (m.) / но́вая (f.) / но́вое (oʻrta) / но́вые "
+                            "новый (m.) / новая (f.) / новое (oʻrta) / новые "
                             "(koʻplik). Sifat otdan oldin turadi — oʻzbekchadagidek.",
-                "examples": ["но́вая шко́ла", "большо́й класс", "но́вые дру́зья"],
+                "examples": ["новая школа", "большой класс", "новые друзья"],
             },
             {
                 "pattern":  "Г К Х Ж Ч Ш Щ dan keyin -ий",
                 "meaning":  "Bu yettita harfdan keyin sifat -ый emas, -ий bilan "
-                            "tugaydi. Shuning uchun ру́сский, ма́ленький, хоро́ший.",
-                "examples": ["ру́сский язы́к", "ма́ленький кот", "хоро́ший день"],
+                            "tugaydi. Shuning uchun русский, маленький, хороший.",
+                "examples": ["русский язык", "маленький кот", "хороший день"],
             },
             {
                 "pattern":  "Sifat kesim sifatida — tiresiz",
                 "meaning":  "Sifat otdan keyin ham tura oladi. Bunda tire QOʻYILMAYDI "
-                            "(PR-11) va maʼno oʻzgaradi: «но́вая шко́ла» nomlaydi, "
-                            "«шко́ла но́вая» esa xabar beradi.",
-                "examples": ["Шко́ла но́вая.", "Класс большо́й."],
+                            "(PR-11) va maʼno oʻzgaradi: «новая школа» nomlaydi, "
+                            "«школа новая» esa xabar beradi.",
+                "examples": ["Школа новая.", "Класс большой."],
             },
         ],
-        "body": '''<p><span class="cn-word" data-tr="sentabr">Сентя́брь</span>. Сего́дня — <span class="cn-word" data-tr="yangi">но́вая</span> шко́ла.</p>
+        "body": '''<p><span class="cn-word" data-tr="sentabr">Сентябрь</span>. Сегодня — <span class="cn-word" data-tr="yangi">новая</span> школа.</p>
 
-<p>Шко́ла <strong>больша́я</strong> и <strong>све́тлая</strong>. Наш класс <strong>большо́й</strong>. Окна́ <strong><span class="cn-word" data-tr="katta (koʻplik)">больши́е</span></strong>, и здесь <strong><span class="cn-word" data-tr="yangi (koʻplik)">но́вые</span></strong> столы́.</p>
+<p>Школа <strong>большая</strong> и <strong>светлая</strong>. Наш класс <strong>большой</strong>. Окна <strong><span class="cn-word" data-tr="katta (koʻplik)">большие</span></strong>, и здесь <strong><span class="cn-word" data-tr="yangi (koʻplik)">новые</span></strong> столы.</p>
 
-<p><span class="cn-word" data-tr="oʻqituvchi (ayol)">Учи́тельница</span> — <span class="cn-word" data-tr="yosh">молода́я</span>. Её зову́т Мари́на Оле́говна. Она́ <strong><span class="cn-word" data-tr="mehribon">до́брая</span></strong>.</p>
+<p><span class="cn-word" data-tr="oʻqituvchi (ayol)">Учительница</span> — <span class="cn-word" data-tr="yosh">молодая</span>. Её зовут Марина Олеговна. Она <strong><span class="cn-word" data-tr="mehribon">добрая</span></strong>.</p>
 
-<p><span class="cn-word" data-tr="birinchi dars">Пе́рвый уро́к</span> — <strong>ру́сский</strong> язы́к. Уро́к <strong><span class="cn-word" data-tr="qiziqarli">интере́сный</span></strong>, но <strong><span class="cn-word" data-tr="qiyin">тру́дный</span></strong>.</p>
+<p><span class="cn-word" data-tr="birinchi dars">Первый урок</span> — <strong>русский</strong> язык. Урок <strong><span class="cn-word" data-tr="qiziqarli">интересный</span></strong>, но <strong><span class="cn-word" data-tr="qiyin">трудный</span></strong>.</p>
 
-<p>Мой сосе́д — Жасу́р. Жасу́р <strong><span class="cn-word" data-tr="quvnoq">весёлый</span></strong>. Его́ <span class="cn-word" data-tr="ryukzak">рюкза́к</span> <strong>ста́рый</strong>, а ру́чки <strong>но́вые</strong>.</p>
+<p>Мой сосед — Жасур. Жасур <strong><span class="cn-word" data-tr="quvnoq">весёлый</span></strong>. Его <span class="cn-word" data-tr="ryukzak">рюкзак</span> <strong>старый</strong>, а ручки <strong>новые</strong>.</p>
 
-<p>Пото́м <span class="cn-word" data-pos="verb" data-tr="keldi (ayol)">пришла́</span> Афсо́на. Афсо́на сказа́ла: «Шко́ла <strong>но́вая</strong>, но лю́ди <strong>хоро́шие</strong>».</p>
+<p>Потом <span class="cn-word" data-pos="verb" data-tr="keldi (ayol)">пришла</span> Афсона. Афсона сказала: «Школа <strong>новая</strong>, но люди <strong>хорошие</strong>».</p>
 
-<p>Да. Шко́ла <strong>но́вая</strong>. Класс <strong>большо́й</strong>. И дру́зья <strong><span class="cn-word" data-tr="yangi (koʻplik)">но́вые</span></strong>.</p>''',
+<p>Да. Школа <strong>новая</strong>. Класс <strong>большой</strong>. И друзья <strong><span class="cn-word" data-tr="yangi (koʻplik)">новые</span></strong>.</p>''',
         "questions": [
             {
                 "text": "Dilnoza kunini qanday yakunlaydi?",
@@ -90,25 +90,25 @@ STORIES = [
                     "U eski maktabini sogʻindi"
                 ],
                 "answer": 0,
-                "explanation": "Oxirgi jumla: «Шко́ла но́вая. Класс большо́й. И дру́зья "
-                               "но́вые». Afsonaning gapi ham shuni tayyorlaydi: "
-                               "«Шко́ла но́вая, но лю́ди хоро́шие».",
+                "explanation": "Oxirgi jumla: «Школа новая. Класс большой. И друзья "
+                               "новые». Afsonaning gapi ham shuni tayyorlaydi: "
+                               "«Школа новая, но люди хорошие».",
             },
             {
-                "text": "Nega «ру́сский язы́к», «ру́сскый» emas?",
+                "text": "Nega «русский язык», «русскый» emas?",
                 "choices": [
                     "Chunki oʻzak К bilan tugaydi — Г К Х Ж Ч Ш Щ dan keyin -ий keladi",
-                    "Chunki язы́к erkak jinsida",
+                    "Chunki язык erkak jinsida",
                     "Chunki bu tilning nomi",
                     "Chunki urgʻu oxirda"
                 ],
                 "answer": 0,
-                "explanation": "Yettita harf qoidasi — xuddi PR-9 dagi «кни́ги» kabi. "
+                "explanation": "Yettita harf qoidasi — xuddi PR-9 dagi «книги» kabi. "
                                "Bu roʻyxat rus imlosining koʻp joyida ishlaydi, shuning "
                                "uchun uni bir marta yodlash arziydi.",
             },
             {
-                "text": "Matnda «Шко́ла но́вая» bor, lekin tire yoʻq. Nega?",
+                "text": "Matnda «Школа новая» bor, lekin tire yoʻq. Nega?",
                 "choices": [
                     "Chunki kesim — sifat, ot emas",
                     "Chunki gap qisqa",
@@ -117,8 +117,8 @@ STORIES = [
                 ],
                 "answer": 0,
                 "explanation": "PR-11 qoidasi: tire faqat ikkala tomon ham OT boʻlganda "
-                               "qoʻyiladi. Bu yerda kesim sifat (но́вая), shuning uchun "
-                               "tire yoʻq. Solishtiring: «Мой го́род — Ташке́нт» — ot + ot.",
+                               "qoʻyiladi. Bu yerda kesim sifat (новая), shuning uchun "
+                               "tire yoʻq. Solishtiring: «Мой город — Ташкент» — ot + ot.",
             },
         ],
     },
@@ -127,7 +127,7 @@ STORIES = [
     # PR-13 — sonlar                   DOʻKONDAGI SUHBAT
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Ско́лько сто́ит?",
+        "title":   "Сколько стоит?",
         "summary": (
             "PR-13 matni. Sherbek maktabga daftar va ruchka olgani boradi, lekin puli "
             "yetmaydi. Sotuvchi ayol bitta narsani boshqacha hisoblaydi — sonlar bilan "
@@ -136,49 +136,49 @@ STORIES = [
         "order":   13,
         "grammar": [
             {
-                "pattern":  "Ско́лько сто́ит? / Ско́лько?",
+                "pattern":  "Сколько стоит? / Сколько?",
                 "meaning":  "«Qancha turadi?» va «Nechta?». Doʻkondagi eng kerakli "
                             "savol — uni turgʻun ibora sifatida yodlang, soʻz tartibi "
                             "oʻzgarmaydi.",
-                "examples": ["Ско́лько сто́ит тетра́дь?", "Ско́лько у вас ру́чек?"],
+                "examples": ["Сколько стоит тетрадь?", "Сколько у вас ручек?"],
             },
             {
                 "pattern":  "два / две",
                 "meaning":  "Faqat 2 sonining ayol jinsi uchun alohida shakli bor: "
-                            "две тетра́ди, lekin два карандаша́. Uch va undan keyingi "
+                            "две тетради, lekin два карандаша. Uch va undan keyingi "
                             "sonlar jinsga qarab oʻzgarmaydi.",
-                "examples": ["две тетра́ди", "два карандаша́", "три ру́чки"],
+                "examples": ["две тетради", "два карандаша", "три ручки"],
             },
             {
-                "pattern":  "оди́н / одна́ / одно́",
-                "meaning":  "«Bir» soni sifat kabi otga moslashadi: оди́н каранда́ш, "
-                            "одна́ ру́чка, одно́ сло́во.",
-                "examples": ["одна́ ру́чка", "оди́н рюкза́к"],
+                "pattern":  "один / одна / одно",
+                "meaning":  "«Bir» soni sifat kabi otga moslashadi: один карандаш, "
+                            "одна ручка, одно слово.",
+                "examples": ["одна ручка", "один рюкзак"],
             },
         ],
-        "body": '''<p>Э́то <span class="cn-word" data-tr="doʻkon">магази́н</span>. Здесь <span class="cn-word" data-pos="verb" data-tr="ishlaydi">рабо́тает</span> Ни́на Петро́вна. <span class="cn-word" data-pos="verb" data-tr="keldi">Пришёл</span> Шербе́к.</p>
+        "body": '''<p>Это <span class="cn-word" data-tr="doʻkon">магазин</span>. Здесь <span class="cn-word" data-pos="verb" data-tr="ishlaydi">работает</span> Нина Петровна. <span class="cn-word" data-pos="verb" data-tr="keldi">Пришёл</span> Шербек.</p>
 
-<p><strong>Шербе́к:</strong> Здра́вствуйте! <strong>Ско́лько сто́ит</strong> тетра́дь?</p>
+<p><strong>Шербек:</strong> Здравствуйте! <strong>Сколько стоит</strong> тетрадь?</p>
 
-<p><strong>Ни́на Петро́вна:</strong> <span class="cn-word" data-tr="besh">Пять</span> <span class="cn-word" data-tr="ming">ты́сяч</span>.</p>
+<p><strong>Нина Петровна:</strong> <span class="cn-word" data-tr="besh">Пять</span> <span class="cn-word" data-tr="ming">тысяч</span>.</p>
 
-<p><strong>Шербе́к:</strong> А ру́чка?</p>
+<p><strong>Шербек:</strong> А ручка?</p>
 
-<p><strong>Ни́на Петро́вна:</strong> <span class="cn-word" data-tr="uch">Три</span> ты́сячи.</p>
+<p><strong>Нина Петровна:</strong> <span class="cn-word" data-tr="uch">Три</span> тысячи.</p>
 
-<p>Шербе́к сказа́л: «<strong>Две</strong> тетра́ди и <strong>две</strong> ру́чки, пожа́луйста».</p>
+<p>Шербек сказал: «<strong>Две</strong> тетради и <strong>две</strong> ручки, пожалуйста».</p>
 
-<p><strong>Ни́на Петро́вна:</strong> Хорошо́. <span class="cn-word" data-tr="oʻn olti">Шестна́дцать</span> ты́сяч.</p>
+<p><strong>Нина Петровна:</strong> Хорошо. <span class="cn-word" data-tr="oʻn olti">Шестнадцать</span> тысяч.</p>
 
-<p>У него́ <span class="cn-word" data-tr="oʻn besh">пятна́дцать</span> ты́сяч. Шербе́к сказа́л: «<span class="cn-word" data-tr="kechirasiz">Извини́те</span>. Тогда́ <strong>одна́</strong> ру́чка».</p>
+<p>У него <span class="cn-word" data-tr="oʻn besh">пятнадцать</span> тысяч. Шербек сказал: «<span class="cn-word" data-tr="kechirasiz">Извините</span>. Тогда <strong>одна</strong> ручка».</p>
 
-<p>Ни́на Петро́вна <span class="cn-word" data-pos="verb" data-tr="dedi (ayol)">сказа́ла</span>: «Нет. <strong>Две</strong> тетра́ди и <strong>две</strong> ру́чки — <span class="cn-word" data-tr="oʻn besh">пятна́дцать</span>».</p>
+<p>Нина Петровна <span class="cn-word" data-pos="verb" data-tr="dedi (ayol)">сказала</span>: «Нет. <strong>Две</strong> тетради и <strong>две</strong> ручки — <span class="cn-word" data-tr="oʻn besh">пятнадцать</span>».</p>
 
-<p><strong>Шербе́к:</strong> Но э́то <span class="cn-word" data-tr="oʻn olti">шестна́дцать</span>!</p>
+<p><strong>Шербек:</strong> Но это <span class="cn-word" data-tr="oʻn olti">шестнадцать</span>!</p>
 
-<p><strong>Ни́на Петро́вна:</strong> Сего́дня — пятна́дцать. Пе́рвый день, но́вая шко́ла.</p>
+<p><strong>Нина Петровна:</strong> Сегодня — пятнадцать. Первый день, новая школа.</p>
 
-<p>Шербе́к сказа́л: «Спаси́бо!» У него́ есть <strong>две</strong> тетра́ди, <strong>две</strong> ру́чки — и <span class="cn-word" data-tr="yaxshi kun">хоро́ший день</span>.</p>''',
+<p>Шербек сказал: «Спасибо!» У него есть <strong>две</strong> тетради, <strong>две</strong> ручки — и <span class="cn-word" data-tr="yaxshi kun">хороший день</span>.</p>''',
         "questions": [
             {
                 "text": "Nega Nina Petrovna narxni oʻn olti emas, oʻn besh dedi?",
@@ -191,36 +191,36 @@ STORIES = [
                 ],
                 "answer": 0,
                 "explanation": "Sherbek bitta ruchkadan voz kechmoqchi boʻldi, lekin "
-                               "sotuvchi «Нет» dedi va narxni pasaytirdi: «Сего́дня — "
-                               "пятна́дцать. Пе́рвый день, но́вая шко́ла». Bu hikoyaning "
+                               "sotuvchi «Нет» dedi va narxni pasaytirdi: «Сегодня — "
+                               "пятнадцать. Первый день, новая школа». Bu hikoyaning "
                                "yumshoq yakuni.",
             },
             {
-                "text": "Nega matnda «две тетра́ди», lekin «два карандаша́» boʻlar edi?",
+                "text": "Nega matnda «две тетради», lekin «два карандаша» boʻlar edi?",
                 "choices": [
-                    "Chunki тетра́дь ayol jinsida, каранда́ш esa erkak jinsida",
-                    "Chunki тетра́дь koʻplikda",
+                    "Chunki тетрадь ayol jinsida, карандаш esa erkak jinsida",
+                    "Chunki тетрадь koʻplikda",
                     "Chunki daftar qimmatroq",
                     "Bu ikki xil aytish usuli, farqi yoʻq"
                 ],
                 "answer": 0,
                 "explanation": "Faqat 2 sonida jins farqi bor: ayol jinsi uchun "
                                "«две», erkak va oʻrta jins uchun «два». Uch va undan "
-                               "keyingi sonlarda bu farq yoʻq: «три тетра́ди», "
-                               "«три карандаша́».",
+                               "keyingi sonlarda bu farq yoʻq: «три тетради», "
+                               "«три карандаша».",
             },
             {
-                "text": "Sherbek «одна́ ру́чка» dedi. Nega «оди́н» emas?",
+                "text": "Sherbek «одна ручка» dedi. Nega «один» emas?",
                 "choices": [
-                    "Chunki ру́чка ayol jinsida, «оди́н» esa otga moslashadi",
+                    "Chunki ручка ayol jinsida, «один» esa otga moslashadi",
                     "Chunki ruchka bitta edi",
                     "Chunki u kechirim soʻradi",
                     "Chunki narx past edi"
                 ],
                 "answer": 0,
-                "explanation": "Sonlar orasida faqat «оди́н» sifat kabi oʻzgaradi: "
-                               "оди́н (m.) / одна́ (f.) / одно́ (oʻrta). «Ру́чка» -а "
-                               "bilan tugaydi — ayol jinsi, demak «одна́».",
+                "explanation": "Sonlar orasida faqat «один» sifat kabi oʻzgaradi: "
+                               "один (m.) / одна (f.) / одно (oʻrta). «Ручка» -а "
+                               "bilan tugaydi — ayol jinsi, demak «одна».",
             },
         ],
     },
@@ -229,7 +229,7 @@ STORIES = [
     # PR-14 — У меня есть           KICHIK HAYOT LAVHASI
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "У меня́ есть всё",
+        "title":   "У меня есть всё",
         "summary": (
             "PR-14 matni. Bekzod buvisidan nega uyi kichkina ekanini soʻraydi. "
             "Buvijon javob bermaydi — u shunchaki sanay boshlaydi, va sanoq oxirida "
@@ -238,46 +238,46 @@ STORIES = [
         "order":   14,
         "grammar": [
             {
-                "pattern":  "У меня́ / у тебя́ / у неё есть …",
+                "pattern":  "У меня / у тебя / у неё есть …",
                 "meaning":  "Rus tilida «ega boʻlmoq» feʼli yoʻq. Uning oʻrniga "
                             "«у + olmosh + есть + narsa» ishlatiladi — bu oʻzbekchadagi "
                             "«Menda … bor» bilan aynan bir xil qurilma.",
-                "examples": ["У меня́ есть сад.", "У тебя́ есть телефо́н?"],
+                "examples": ["У меня есть сад.", "У тебя есть телефон?"],
             },
             {
                 "pattern":  "У dan keyin н- qoʻshiladi",
-                "meaning":  "его́ → у него́, её → у неё, их → у них. Bu faqat predlog "
-                            "bilan boʻladi. Talaffuz: у него́ = [у н'иво́], chunki -го "
+                "meaning":  "его → у него, её → у неё, их → у них. Bu faqat predlog "
+                            "bilan boʻladi. Talaffuz: у него = [у н'иво], chunki -го "
                             "oxiri [во] boʻlib oʻqiladi.",
-                "examples": ["У него́ есть кот.", "У них есть дом."],
+                "examples": ["У него есть кот.", "У них есть дом."],
             },
             {
                 "pattern":  "есть — «bor», nomlash emas",
-                "meaning":  "«Э́то дом» da есть qoʻyilmaydi (nomlash), «У меня́ есть дом» "
+                "meaning":  "«Это дом» da есть qoʻyilmaydi (nomlash), «У меня есть дом» "
                             "da esa qoʻyiladi (mavjudlik). Tekshiruv: oʻzbekcha "
                             "tarjimada «bor» soʻzi bormi?",
-                "examples": ["Э́то дом. (есть yoʻq)", "У меня́ есть дом. (есть bor)"],
+                "examples": ["Это дом. (есть yoʻq)", "У меня есть дом. (есть bor)"],
             },
         ],
-        "body": '''<p>Э́то <span class="cn-word" data-tr="kichkina">ма́ленький</span> дом. Здесь <span class="cn-word" data-pos="verb" data-tr="yashaydi">живёт</span> ба́бушка. Её зову́т Роза́ Каримо́вна.</p>
+        "body": '''<p>Это <span class="cn-word" data-tr="kichkina">маленький</span> дом. Здесь <span class="cn-word" data-pos="verb" data-tr="yashaydi">живёт</span> бабушка. Её зовут Роза Каримовна.</p>
 
-<p>Бекзо́д <span class="cn-word" data-pos="verb" data-tr="keldi">пришёл</span> и <span class="cn-word" data-pos="verb" data-tr="dedi">сказа́л</span>: «Ба́бушка, дом ма́ленький. У тебя́ <span class="cn-word" data-tr="oz, kam">ма́ло</span>?»</p>
+<p>Бекзод <span class="cn-word" data-pos="verb" data-tr="keldi">пришёл</span> и <span class="cn-word" data-pos="verb" data-tr="dedi">сказал</span>: «Бабушка, дом маленький. У тебя <span class="cn-word" data-tr="oz, kam">мало</span>?»</p>
 
-<p>Ба́бушка сказа́ла: «Ма́ло? <strong>У меня́ есть</strong> <span class="cn-word" data-tr="bogʻ">сад</span>».</p>
+<p>Бабушка сказала: «Мало? <strong>У меня есть</strong> <span class="cn-word" data-tr="bogʻ">сад</span>».</p>
 
-<p>«И <strong>у меня́ есть</strong> <span class="cn-word" data-tr="olma daraxti">я́блоня</span>. <span class="cn-word" data-tr="eski">Ста́рая</span>, но хоро́шая».</p>
+<p>«И <strong>у меня есть</strong> <span class="cn-word" data-tr="olma daraxti">яблоня</span>. <span class="cn-word" data-tr="eski">Старая</span>, но хорошая».</p>
 
-<p>«<strong>У меня́ есть</strong> кот. Его́ зову́т Ти́ша. <strong>У него́ есть</strong> <span class="cn-word" data-tr="joy">ме́сто</span> — вот <span class="cn-word" data-tr="mana shu yerda">здесь</span>».</p>
+<p>«<strong>У меня есть</strong> кот. Его зовут Тиша. <strong>У него есть</strong> <span class="cn-word" data-tr="joy">место</span> — вот <span class="cn-word" data-tr="mana shu yerda">здесь</span>».</p>
 
-<p>«<strong>У меня́ есть</strong> сосе́ди. Ни́на Петро́вна и Оле́г. <strong>У них есть</strong> <span class="cn-word" data-tr="bolalar">де́ти</span>, и де́ти <span class="cn-word" data-tr="tez-tez">ча́сто</span> здесь».</p>
+<p>«<strong>У меня есть</strong> соседи. Нина Петровна и Олег. <strong>У них есть</strong> <span class="cn-word" data-tr="bolalar">дети</span>, и дети <span class="cn-word" data-tr="tez-tez">часто</span> здесь».</p>
 
-<p>«<strong>У меня́ есть</strong> <span class="cn-word" data-tr="nevaralar">вну́ки</span>. Ты, Дилно́за и Афсо́на».</p>
+<p>«<strong>У меня есть</strong> <span class="cn-word" data-tr="nevaralar">внуки</span>. Ты, Дилноза и Афсона».</p>
 
-<p>Бекзо́д сказа́л: «А <span class="cn-word" data-tr="pul">де́ньги</span>?»</p>
+<p>Бекзод сказал: «А <span class="cn-word" data-tr="pul">деньги</span>?»</p>
 
-<p>Ба́бушка сказа́ла: «Де́ньги — э́то не всё. Сад есть, кот есть, сосе́ди есть, вну́ки есть».</p>
+<p>Бабушка сказала: «Деньги — это не всё. Сад есть, кот есть, соседи есть, внуки есть».</p>
 
-<p>«Дом ма́ленький, Бекзо́д. А <strong>у меня́ есть всё</strong>».</p>''',
+<p>«Дом маленький, Бекзод. А <strong>у меня есть всё</strong>».</p>''',
         "questions": [
             {
                 "text": "Buvijon Bekzodning savoliga qanday javob berdi?",
@@ -288,13 +288,13 @@ STORIES = [
                     "U pul haqida gapirmadi"
                 ],
                 "answer": 0,
-                "explanation": "Buvijon «Ма́ло?» deb qaytarib soʻradi va sanay boshladi: "
+                "explanation": "Buvijon «Мало?» deb qaytarib soʻradi va sanay boshladi: "
                                "bogʻ, olma daraxti, mushuk, qoʻshnilar, nevaralar. "
-                               "Oxirida esa: «Дом ма́ленький, Бекзо́д. А у меня́ есть "
+                               "Oxirida esa: «Дом маленький, Бекзод. А у меня есть "
                                "всё». Sanoq javobning oʻzi boʻldi.",
             },
             {
-                "text": "Matnda «У него́ есть ме́сто» bor. Nega «у его́» emas?",
+                "text": "Matnda «У него есть место» bor. Nega «у его» emas?",
                 "choices": [
                     "Chunki «у» predlogidan keyin н- qoʻshiladi",
                     "Chunki кот erkak jinsida",
@@ -302,13 +302,13 @@ STORIES = [
                     "Bu xato"
                 ],
                 "answer": 0,
-                "explanation": "«У» predlogidan keyin его́ → у него́, её → у неё, "
-                               "их → у них. Egalik sifatida esa «его́ ме́сто» deb "
+                "explanation": "«У» predlogidan keyin его → у него, её → у неё, "
+                               "их → у них. Egalik sifatida esa «его место» deb "
                                "qolaveradi — н- faqat predlog bilan paydo boʻladi. "
-                               "Talaffuz: [у н'иво́].",
+                               "Talaffuz: [у н'иво].",
             },
             {
-                "text": "Nega «У меня́ есть сад» da «есть» bor, «Дом ма́ленький» da esa "
+                "text": "Nega «У меня есть сад» da «есть» bor, «Дом маленький» da esa "
                         "yoʻq?",
                 "choices": [
                     "Birinchisi mavjudlikni aytadi («bogʻim bor»), ikkinchisi esa uyning "

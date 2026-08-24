@@ -42,7 +42,7 @@ TUTORIALS = [
             "Oʻzbekcha «-dan katta» ruschada «бо́льше + Роди́тельный» boʻladi, «eng» "
             "esa «са́мый». Qolgani — soʻzning oʻzi oʻzgarishi."
         ),
-        "stories": ["Са́мая дли́нная река́"],
+        "stories": ["Самая длинная река"],
         "content": """
 <h2>PR-74: Sifat darajalari: больше, самый, лучше, наиболее, чем</h2>
 
@@ -720,7 +720,7 @@ mustasno, u yerda <em>свой</em> tabiiy eshitiladi.</div>
             "Oʻzbekcha «oʻzim» ikki ish qiladi — ruschada esa ular ikki soʻzga "
             "boʻlingan: себя́ (toʻldiruvchi) va сам (taʼkid)."
         ),
-        "stories": ["Сде́лай сам"],
+        "stories": ["Сделай сам"],
         "content": """
 <h2>PR-76: Себя va сам — oʻziga qaytish va taʼkid</h2>
 

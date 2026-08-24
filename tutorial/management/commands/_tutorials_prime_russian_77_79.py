@@ -43,7 +43,7 @@ TUTORIALS = [
             "«Har kuni» bilan «kun boʻyi» — oʻzbekchada ikki xil, ruschada ham: "
             "ка́ждый день ↔ весь день. Butun dars shu farqlar ustiga qurilgan."
         ),
-        "stories": ["Ка́ждое у́тро, весь год"],
+        "stories": ["Каждое утро, весь год"],
         "content": """
 <h2>PR-77: Каждый, все, весь, любой, другой, остальные</h2>
 
@@ -350,7 +350,7 @@ choyingizni <b>olib ketadi</b> va boshqasini keltiradi.</div>
             "Uchta zarracha, uchta maʼno: -то (bor, lekin kimligi nomaʼlum), "
             "-нибудь (kim boʻlsa ham, farqi yoʻq), кое- (bilaman, aytmayman)."
         ),
-        "stories": ["Кто́-то оста́вил зонт"],
+        "stories": ["Кто-то оставил зонт"],
         "content": """
 <h2>PR-78: Кто-то / кто-нибудь / кое-кто — noaniq olmoshlar</h2>
 
@@ -666,7 +666,7 @@ Yagona istisno — yuqoridagi predlogli holat.</p>
             "«Hech kim hech narsa demadi» = «Никто́ ничего́ не сказа́л» — soʻzma-soʻz. "
             "Rus tilida ikki inkor MAJBURIY, va oʻzbekchada ham xuddi shunday."
         ),
-        "stories": ["Никто́ ничего́ не сказа́л"],
+        "stories": ["Никто ничего не сказал"],
         "content": """
 <h2>PR-79: Никто, ничто, никогда — rus tilida ikki inkor qoidasi</h2>
 

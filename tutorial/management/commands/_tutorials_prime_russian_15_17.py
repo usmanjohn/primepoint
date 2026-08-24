@@ -320,7 +320,7 @@ Rus quloqi bu ikki ohangni darrov ajratadi.</p>
             "PR-6 dagi mustaqil «это» bilan otga yopishadigan «этот» ni bir umrga "
             "ajratasiz, va «тот» bilan uzoqdagi narsani koʻrsatishni oʻrganasiz."
         ),
-        "stories": ["Э́тот и́ли тот?"],
+        "stories": ["Этот или тот?"],
         "content": """
 <h2>PR-16: Bu va anavi: этот, эта, это, эти — va «тот»</h2>
 
@@ -573,7 +573,7 @@ beradi.</div>
             "oʻz vazifasi bor, va «не X, а Y» qurilmasi bilan aniq gapirishni "
             "oʻrganasiz."
         ),
-        "stories": ["Нет, спаси́бо"],
+        "stories": ["Нет, спасибо"],
         "content": """
 <h2>PR-17: Да, нет, не, ни — inkorning toʻrt shakli</h2>
 

@@ -9,7 +9,7 @@ Janr xilma-xilligi: 50 — yakuniy matn (bir kun), 51 — ilmiy-ommabop,
 
 Grammatika chegarasi (kumulyativ qoida):
   50-matn: kelishiklar blokining yakuni. Butun matn BITTA soʻz —
-           «шко́ла» — atrofida qurilgan va u oltita shaklda uchraydi.
+           «школа» — atrofida qurilgan va u oltita shaklda uchraydi.
            Vid hali YOʻQ: matn butunlay НСВ da.
   51-matn: vid haqidagi ilmiy-ommabop matn. Uning mavzusi aynan shu,
            shuning uchun ikkala vid ham misol sifatida keladi.
@@ -44,7 +44,7 @@ STORIES = [
     # PR-50 — kelishiklar yakuni                YAKUNIY MATN
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Оди́н день, шесть падеже́й",
+        "title":   "Один день, шесть падежей",
         "summary": (
             "PR-50 matni. Oddiy maktab kuni — lekin unda bitta soʻz oltita "
             "shaklda uchraydi. Matn oxirida oʻquvchi buni oʻzi sanab koʻradi."
@@ -53,52 +53,52 @@ STORIES = [
         "grammar": [
             {
                 "pattern":  "Bitta soʻz — oltita shakl",
-                "meaning":  "шко́ла · шко́лы · шко́ле · шко́лу · шко́лой · о шко́ле. "
+                "meaning":  "школа · школы · школе · школу · школой · о школе. "
                             "Har bir shakl soʻzning gapdagi boshqa ishini "
                             "koʻrsatadi — xuddi oʻzbekchadagi maktab, maktabning, "
                             "maktabga, maktabni, maktabda, maktabdan kabi.",
-                "examples": ["Я иду́ в шко́лу.", "Я иду́ из шко́лы."],
+                "examples": ["Я иду в школу.", "Я иду из школы."],
             },
             {
                 "pattern":  "Predlog kelishikni tanlaydi",
-                "meaning":  "в шко́лу (В.п. — harakat), в шко́ле (П.п. — joy), из "
-                            "шко́лы (Р.п.), к шко́ле (Д.п.), за шко́лой (Т.п.). "
+                "meaning":  "в школу (В.п. — harakat), в школе (П.п. — joy), из "
+                            "школы (Р.п.), к школе (Д.п.), за школой (Т.п.). "
                             "Predlog bor boʻlsa, u hal qiladi.",
-                "examples": ["Доро́га к шко́ле идёт че́рез парк.", "За шко́лой стадио́н."],
+                "examples": ["Дорога к школе идёт через парк.", "За школой стадион."],
             },
             {
                 "pattern":  "Uch soʻz birga oʻzgaradi",
-                "meaning":  "Egalik olmoshi, sifat va ot doim bitta guruh: «в на́шей "
-                            "ста́рой шко́ле». Otning kelishigini bilsangiz, qolgan "
+                "meaning":  "Egalik olmoshi, sifat va ot doim bitta guruh: «в нашей "
+                            "старой школе». Otning kelishigini bilsangiz, qolgan "
                             "ikkitasi oʻz-oʻzidan chiqadi.",
-                "examples": ["В на́шей ста́рой шко́ле тепло́."],
+                "examples": ["В нашей старой школе тепло."],
             },
         ],
-        "body": '''<p><span class="cn-word" data-tr="Ertalab">Утром</span> я иду́ <strong>в шко́лу</strong>.</p>
+        "body": '''<p><span class="cn-word" data-tr="Ertalab">Утром</span> я иду <strong>в школу</strong>.</p>
 
-<p><span class="cn-word" data-tr="Yoʻl">Доро́га</span> <strong>к шко́ле</strong> идёт <span class="cn-word" data-tr="orqali">че́рез</span> парк. Два́дцать мину́т <span class="cn-word" data-tr="piyoda">пешко́м</span>.</p>
+<p><span class="cn-word" data-tr="Yoʻl">Дорога</span> <strong>к школе</strong> идёт <span class="cn-word" data-tr="orqali">через</span> парк. Двадцать минут <span class="cn-word" data-tr="piyoda">пешком</span>.</p>
 
-<p><strong>Шко́ла</strong> — ста́рое <span class="cn-word" data-tr="bino">зда́ние</span>. Ей сто лет. <span class="cn-word" data-tr="Devorlar">Сте́ны</span> <span class="cn-word" data-tr="qalin">то́лстые</span>, о́кна большие.</p>
+<p><strong>Школа</strong> — старое <span class="cn-word" data-tr="bino">здание</span>. Ей сто лет. <span class="cn-word" data-tr="Devorlar">Стены</span> <span class="cn-word" data-tr="qalin">толстые</span>, окна большие.</p>
 
-<p><strong>В на́шей ста́рой шко́ле</strong> зимо́й тепло́, а ле́том <span class="cn-word" data-tr="salqin">прохла́дно</span>.</p>
+<p><strong>В нашей старой школе</strong> зимой тепло, а летом <span class="cn-word" data-tr="salqin">прохладно</span>.</p>
 
-<p><strong>За шко́лой</strong> есть стадио́н. <span class="cn-word" data-tr="Darslardan keyin">По́сле уро́ков</span> мы игра́ем там в футбо́л.</p>
+<p><strong>За школой</strong> есть стадион. <span class="cn-word" data-tr="Darslardan keyin">После уроков</span> мы играем там в футбол.</p>
 
-<p>В три часа́ я иду́ <strong>из шко́лы</strong> домо́й. Уже́ по <span class="cn-word" data-tr="boshqa">друго́й</span> доро́ге — че́рез ры́нок.</p>
+<p>В три часа я иду <strong>из школы</strong> домой. Уже по <span class="cn-word" data-tr="boshqa">другой</span> дороге — через рынок.</p>
 
-<p>Ве́чером ма́ма спра́шивает:</p>
+<p>Вечером мама спрашивает:</p>
 
-<p>— Что бы́ло <strong>в шко́ле</strong>?</p>
+<p>— Что было <strong>в школе</strong>?</p>
 
-<p>И я расска́зываю <strong>о шко́ле</strong>: об уро́ках, о друзья́х, о футбо́ле.</p>
+<p>И я рассказываю <strong>о школе</strong>: об уроках, о друзьях, о футболе.</p>
 
-<p>Оди́н день. Одно́ сло́во. Шесть форм:</p>
+<p>Один день. Одно слово. Шесть форм:</p>
 
-<p><strong>шко́ла · шко́лы · шко́ле · шко́лу · шко́лой · о шко́ле</strong>.</p>
+<p><strong>школа · школы · школе · школу · школой · о школе</strong>.</p>
 
-<p>Я не ду́маю об э́том. Я про́сто иду́ в шко́лу и говорю́ о шко́ле.</p>
+<p>Я не думаю об этом. Я просто иду в школу и говорю о школе.</p>
 
-<p>И э́то — хоро́ший <span class="cn-word" data-tr="belgi">знак</span>.</p>''',
+<p>И это — хороший <span class="cn-word" data-tr="belgi">знак</span>.</p>''',
         "questions": [
             {
                 "text": "Matnning oxirgi jumlasi nega «yaxshi belgi» deb ataladi?",
@@ -109,13 +109,13 @@ STORIES = [
                     "Chunki dars tugadi"
                 ],
                 "answer": 0,
-                "explanation": "«Я не ду́маю об э́том. Я про́сто иду́ в шко́лу». "
+                "explanation": "«Я не думаю об этом. Я просто иду в школу». "
                                "Yigirma ikki dars davomida kelishiklar qoida edi; "
                                "oxirida ular odat boʻlishi kerak. Oʻylamay ishlatish "
                                "— maqsadning oʻzi.",
             },
             {
-                "text": "«В шко́лу» va «в шко́ле» — nega ikki xil shakl?",
+                "text": "«В школу» va «в школе» — nega ikki xil shakl?",
                 "choices": [
                     "Birinchisi harakat (qayerga), ikkinchisi joy (qayerda)",
                     "Birinchisi koʻplik",
@@ -123,22 +123,22 @@ STORIES = [
                     "Ikkalasi bir xil"
                 ],
                 "answer": 0,
-                "explanation": "Predlog В ikki kelishik oladi. «Иду́ в шко́лу» — "
-                               "harakat bor, demak Вини́тельный. «Что бы́ло в "
-                               "шко́ле» — harakat yoʻq, demak Предло́жный.",
+                "explanation": "Predlog В ikki kelishik oladi. «Иду в школу» — "
+                               "harakat bor, demak Винительный. «Что было в "
+                               "школе» — harakat yoʻq, demak Предложный.",
             },
             {
-                "text": "«В на́шей ста́рой шко́ле» — bu iborada nechta soʻz kelishikka "
+                "text": "«В нашей старой школе» — bu iborada nechta soʻz kelishikka "
                         "kirgan?",
                 "choices": [
-                    "Uchtasi: на́шей, ста́рой, шко́ле",
-                    "Bittasi: шко́ле",
-                    "Ikkitasi: ста́рой va шко́ле",
+                    "Uchtasi: нашей, старой, школе",
+                    "Bittasi: школе",
+                    "Ikkitasi: старой va школе",
                     "Hech qaysi"
                 ],
                 "answer": 0,
                 "explanation": "Egalik olmoshi, sifat va ot doim birga oʻzgaradi. "
-                               "Bu yerda uchalasi ham Предло́жный padejida: -ЕЙ, -ОЙ, "
+                               "Bu yerda uchalasi ham Предложный padejida: -ЕЙ, -ОЙ, "
                                "-Е.",
             },
         ],
@@ -148,7 +148,7 @@ STORIES = [
     # PR-51 — вид                                ILMIY-OMMABOP
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Чита́л и прочита́л",
+        "title":   "Читал и прочитал",
         "summary": (
             "PR-51 matni. Ikki soʻz, bitta oʻzak, bitta zamon — lekin maʼnosi "
             "boshqa. Rus tilidagi «вид» nima ekani va nega undan qochib "
@@ -158,54 +158,54 @@ STORIES = [
         "grammar": [
             {
                 "pattern":  "НСВ — jarayon",
-                "meaning":  "Что де́лать? — чита́ть, писа́ть, де́лать. Davomiylik, "
+                "meaning":  "Что делать? — читать, писать, делать. Davomiylik, "
                             "takror, odat. Natija haqida hech narsa aytmaydi.",
-                "examples": ["Я чита́л два часа́.", "Ка́ждый ве́чер я чита́ю."],
+                "examples": ["Я читал два часа.", "Каждый вечер я читаю."],
             },
             {
                 "pattern":  "СВ — natija",
-                "meaning":  "Что сде́лать? — прочита́ть, написа́ть, сде́лать. Ish "
-                            "tugadi. СВ da hozirgi zamon YOʻQ: прочита́ю — bu kelasi "
+                "meaning":  "Что сделать? — прочитать, написать, сделать. Ish "
+                            "tugadi. СВ da hozirgi zamon YOʻQ: прочитаю — bu kelasi "
                             "zamon.",
-                "examples": ["Я прочита́л кни́гу.", "За́втра я прочита́ю её."],
+                "examples": ["Я прочитал книгу.", "Завтра я прочитаю её."],
             },
             {
                 "pattern":  "Neytral shakl yoʻq",
                 "meaning":  "Oʻzbekcha «oʻqidim» tugagan-tugamaganini aytmaydi — u "
-                            "neytral. Ruschada bunday shakl yoʻq: har safar чита́л "
-                            "yoki прочита́л deb tanlash kerak. Vidni qiyin qiladigan "
+                            "neytral. Ruschada bunday shakl yoʻq: har safar читал "
+                            "yoki прочитал deb tanlash kerak. Vidni qiyin qiladigan "
                             "narsa — qoida emas, majburiy tanlov.",
-                "examples": ["Ты чита́л? · Ты прочита́л?"],
+                "examples": ["Ты читал? · Ты прочитал?"],
             },
         ],
-        "body": '''<p>Два сло́ва: <strong>чита́л</strong> и <strong>прочита́л</strong>.</p>
+        "body": '''<p>Два слова: <strong>читал</strong> и <strong>прочитал</strong>.</p>
 
-<p>Оди́н <span class="cn-word" data-tr="oʻzak">ко́рень</span>. Одно́ вре́мя — проше́дшее. Но <span class="cn-word" data-tr="maʼno">смысл</span> ра́зный.</p>
+<p>Один <span class="cn-word" data-tr="oʻzak">корень</span>. Одно время — прошедшее. Но <span class="cn-word" data-tr="maʼno">смысл</span> разный.</p>
 
-<p><strong>Чита́л</strong> — э́то <span class="cn-word" data-tr="jarayon">проце́сс</span>. Я сиде́л и чита́л. Мо́жет быть, час. Мо́жет быть, весь ве́чер. Кни́га ко́нчилась и́ли нет — текст об э́том молчи́т.</p>
+<p><strong>Читал</strong> — это <span class="cn-word" data-tr="jarayon">процесс</span>. Я сидел и читал. Может быть, час. Может быть, весь вечер. Книга кончилась или нет — текст об этом молчит.</p>
 
-<p><strong>Прочита́л</strong> — э́то <span class="cn-word" data-tr="natija">результа́т</span>. Кни́га ко́нчилась. Тепе́рь я зна́ю её коне́ц.</p>
+<p><strong>Прочитал</strong> — это <span class="cn-word" data-tr="natija">результат</span>. Книга кончилась. Теперь я знаю её конец.</p>
 
-<p>Поэ́тому два вопро́са — э́то два ра́зных вопро́са.</p>
+<p>Поэтому два вопроса — это два разных вопроса.</p>
 
-<p>«Ты <strong>чита́л</strong> э́ту кни́гу?» зна́чит: ты <span class="cn-word" data-tr="tanishmisan">знако́м</span> с ней?</p>
+<p>«Ты <strong>читал</strong> эту книгу?» значит: ты <span class="cn-word" data-tr="tanishmisan">знаком</span> с ней?</p>
 
-<p>«Ты <strong>прочита́л</strong> э́ту кни́гу?» зна́чит: ты зако́нчил?</p>
+<p>«Ты <strong>прочитал</strong> эту книгу?» значит: ты закончил?</p>
 
-<p>Мо́жно отве́тить «да» на пе́рвый вопро́с и «нет» на второ́й. Э́то не <span class="cn-word" data-tr="ziddiyat">противоре́чие</span>.</p>
+<p>Можно ответить «да» на первый вопрос и «нет» на второй. Это не <span class="cn-word" data-tr="ziddiyat">противоречие</span>.</p>
 
-<p>В <span class="cn-word" data-tr="oʻzbek tilida">узбе́кском языке́</span> э́та иде́я то́же есть. Но там она́ живёт <span class="cn-word" data-tr="yonida">ря́дом</span> с глаго́лом — э́то второ́е сло́во.</p>
+<p>В <span class="cn-word" data-tr="oʻzbek tilida">узбекском языке</span> эта идея тоже есть. Но там она живёт <span class="cn-word" data-tr="yonida">рядом</span> с глаголом — это второе слово.</p>
 
-<p>Ру́сский язы́к де́лает друго́е: он <span class="cn-word" data-pos="verb" data-tr="qoʻyadi">кладёт</span> вид <strong>внутрь</strong> сло́ва.</p>
+<p>Русский язык делает другое: он <span class="cn-word" data-pos="verb" data-tr="qoʻyadi">кладёт</span> вид <strong>внутрь</strong> слова.</p>
 
-<p>И вот са́мое ва́жное. В ру́сском языке́ нет <span class="cn-word" data-tr="neytral">нейтра́льной</span> фо́рмы.</p>
+<p>И вот самое важное. В русском языке нет <span class="cn-word" data-tr="neytral">нейтральной</span> формы.</p>
 
-<p>Ка́ждый раз ну́жно вы́брать: проце́сс и́ли результа́т. Всегда́. Без исключе́ний.</p>
+<p>Каждый раз нужно выбрать: процесс или результат. Всегда. Без исключений.</p>
 
-<p>Э́то тру́дно. Но э́то и есть вид.</p>''',
+<p>Это трудно. Но это и есть вид.</p>''',
         "questions": [
             {
-                "text": "«Ты чита́л э́ту кни́гу?» va «Ты прочита́л э́ту кни́гу?» — "
+                "text": "«Ты читал эту книгу?» va «Ты прочитал эту книгу?» — "
                         "bu ikki savol nima soʻraydi?",
                 "choices": [
                     "Birinchisi: tanishmisan? Ikkinchisi: oxirigacha oʻqidingmi?",
@@ -214,8 +214,8 @@ STORIES = [
                     "Ikkinchisi koʻplik haqida"
                 ],
                 "answer": 0,
-                "explanation": "Matn buni aniq aytadi: birinchisi «знако́м с ней?», "
-                               "ikkinchisi «зако́нчил?». Va birinchisiga «ha», "
+                "explanation": "Matn buni aniq aytadi: birinchisi «знаком с ней?», "
+                               "ikkinchisi «закончил?». Va birinchisiga «ha», "
                                "ikkinchisiga «yoʻq» deb javob berish mumkin — bu "
                                "ziddiyat emas.",
             },
@@ -229,9 +229,9 @@ STORIES = [
                     "Oʻzbekchada bu faqat yozuvda ishlatiladi"
                 ],
                 "answer": 0,
-                "explanation": "«Там она́ живёт ря́дом с глаго́лом — э́то второ́е "
-                               "сло́во» (oʻqib CHIQDIM). «Ру́сский язы́к кладёт вид "
-                               "внутрь сло́ва» (ПРОчитал). Bir xil gʻoya, ikki xil "
+                "explanation": "«Там она живёт рядом с глаголом — это второе "
+                               "слово» (oʻqib CHIQDIM). «Русский язык кладёт вид "
+                               "внутрь слова» (ПРОчитал). Bir xil gʻoya, ikki xil "
                                "joylashuv.",
             },
             {
@@ -243,8 +243,8 @@ STORIES = [
                     "Chunki u faqat kitobiy tilda ishlatiladi"
                 ],
                 "answer": 0,
-                "explanation": "«В ру́сском языке́ нет нейтра́льной фо́рмы. Ка́ждый "
-                               "раз ну́жно вы́брать». Oʻzbekcha «oʻqidim» hech narsa "
+                "explanation": "«В русском языке нет нейтральной формы. Каждый "
+                               "раз нужно выбрать». Oʻzbekcha «oʻqidim» hech narsa "
                                "vaʼda qilmaydi; ruscha esa har safar jarayon yoki "
                                "natijani tanlashga majbur qiladi.",
             },
@@ -255,7 +255,7 @@ STORIES = [
     # PR-52 — vid juftliklari                    KUNDALIK HIKOYA
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Ремо́нт на ку́хне",
+        "title":   "Ремонт на кухне",
         "summary": (
             "PR-52 matni. Bir oylik oshxona taʼmiri: har bir ish avval qilinadi, "
             "keyin qilib boʻlinadi. Buvining oxirgi gapi ikki vidning farqini "
@@ -264,54 +264,54 @@ STORIES = [
         "order":   52,
         "grammar": [
             {
-                "pattern":  "Juftlik amalda: де́лали → сде́лали",
+                "pattern":  "Juftlik amalda: делали → сделали",
                 "meaning":  "Bir xil ish ikki shaklda: НСВ jarayonni, СВ natijani "
                             "koʻrsatadi. Matnda har bir ish shu tartibda: avval "
                             "qilinadi, keyin qilib boʻlinadi.",
-                "examples": ["Мы де́лали план три ве́чера.", "Пото́м мы сде́лали план."],
+                "examples": ["Мы делали план три вечера.", "Потом мы сделали план."],
             },
             {
                 "pattern":  "Prefiks bilan yasalgan juftliklar",
-                "meaning":  "кра́сить → покра́сить, чита́ть → прочита́ть, "
-                            "де́лать → сде́лать. Qaysi prefiks kerakligini taxmin "
+                "meaning":  "красить → покрасить, читать → прочитать, "
+                            "делать → сделать. Qaysi prefiks kerakligini taxmin "
                             "qilib boʻlmaydi — juftlab yodlanadi.",
-                "examples": ["Па́па кра́сил сте́ны. Пото́м он покра́сил их."],
+                "examples": ["Папа красил стены. Потом он покрасил их."],
             },
             {
-                "pattern":  "выбира́ть → вы́брать",
+                "pattern":  "выбирать → выбрать",
                 "meaning":  "Bu yerda НСВ uzunroq — chunki u СВ dan suffiks bilan "
                             "yasalgan. Yoʻnalishga qarang: prefiks СВ tomonga, "
                             "suffiks НСВ tomonga.",
-                "examples": ["Ма́ма выбира́ла ла́мпу неде́лю. Пото́м вы́брала."],
+                "examples": ["Мама выбирала лампу неделю. Потом выбрала."],
             },
         ],
-        "body": '''<p><span class="cn-word" data-tr="Bir oy oldin">Ме́сяц наза́д</span> мы <strong>на́чали</strong> <span class="cn-word" data-tr="taʼmir">ремо́нт</span> на ку́хне.</p>
+        "body": '''<p><span class="cn-word" data-tr="Bir oy oldin">Месяц назад</span> мы <strong>начали</strong> <span class="cn-word" data-tr="taʼmir">ремонт</span> на кухне.</p>
 
-<p><span class="cn-word" data-tr="Avvaliga">Снача́ла</span> мы <strong>де́лали</strong> <span class="cn-word" data-tr="reja">план</span>. До́лго. Три ве́чера.</p>
+<p><span class="cn-word" data-tr="Avvaliga">Сначала</span> мы <strong>делали</strong> <span class="cn-word" data-tr="reja">план</span>. Долго. Три вечера.</p>
 
-<p>Пото́м мы <strong>сде́лали</strong> план.</p>
+<p>Потом мы <strong>сделали</strong> план.</p>
 
-<p>Па́па <strong>кра́сил</strong> <span class="cn-word" data-tr="devorlar">сте́ны</span> два дня. На <span class="cn-word" data-tr="uchinchi">тре́тий</span> день он <strong>покра́сил</strong> их.</p>
+<p>Папа <strong>красил</strong> <span class="cn-word" data-tr="devorlar">стены</span> два дня. На <span class="cn-word" data-tr="uchinchi">третий</span> день он <strong>покрасил</strong> их.</p>
 
-<p>Ма́ма <strong>выбира́ла</strong> <span class="cn-word" data-tr="chiroq">ла́мпу</span> неде́лю. Она́ смотре́ла в <span class="cn-word" data-tr="internetda">интерне́те</span> ка́ждый ве́чер. Пото́м <strong>вы́брала</strong>.</p>
+<p>Мама <strong>выбирала</strong> <span class="cn-word" data-tr="chiroq">лампу</span> неделю. Она смотрела в <span class="cn-word" data-tr="internetda">интернете</span> каждый вечер. Потом <strong>выбрала</strong>.</p>
 
-<p>Я <strong>чита́л</strong> <span class="cn-word" data-tr="qoʻllanma">инстру́кцию</span> к столу́. Пото́м <strong>прочита́л</strong> её ещё раз. Пото́м мы <strong>де́лали</strong> стол четы́ре часа́.</p>
+<p>Я <strong>читал</strong> <span class="cn-word" data-tr="qoʻllanma">инструкцию</span> к столу. Потом <strong>прочитал</strong> её ещё раз. Потом мы <strong>делали</strong> стол четыре часа.</p>
 
-<p>Тепе́рь стол стои́т на ку́хне. Он немно́го <span class="cn-word" data-tr="qiyshiq">криво́й</span>.</p>
+<p>Теперь стол стоит на кухне. Он немного <span class="cn-word" data-tr="qiyshiq">кривой</span>.</p>
 
-<p>Бабушка <strong>смотре́ла</strong> на нас ме́сяц. Она́ <span class="cn-word" data-pos="verb" data-tr="jim turdi">молча́ла</span>.</p>
+<p>Бабушка <strong>смотрела</strong> на нас месяц. Она <span class="cn-word" data-pos="verb" data-tr="jim turdi">молчала</span>.</p>
 
-<p>Вчера́ она́ <strong>посмотре́ла</strong> на ку́хню и сказа́ла:</p>
+<p>Вчера она <strong>посмотрела</strong> на кухню и сказала:</p>
 
-<p>— Хорошо́. Но стол криво́й.</p>
+<p>— Хорошо. Но стол кривой.</p>
 
-<p>Па́па сказа́л:</p>
+<p>Папа сказал:</p>
 
-<p>— Мы <strong>де́лали</strong> его́ четы́ре часа́.</p>
+<p>— Мы <strong>делали</strong> его четыре часа.</p>
 
-<p>Бабушка сказа́ла:</p>
+<p>Бабушка сказала:</p>
 
-<p>— Зна́ю. Но вы его́ не <strong>сде́лали</strong>.</p>''',
+<p>— Знаю. Но вы его не <strong>сделали</strong>.</p>''',
         "questions": [
             {
                 "text": "Buvining oxirgi gapi nima demoqchi?",
@@ -322,22 +322,22 @@ STORIES = [
                     "Stol yaxshi chiqdi"
                 ],
                 "answer": 0,
-                "explanation": "«Мы де́лали его́ четы́ре часа́» — jarayon bor edi "
-                               "(НСВ). «Вы его́ не сде́лали» — natija yoʻq (СВ). Bitta "
+                "explanation": "«Мы делали его четыре часа» — jarayon bor edi "
+                               "(НСВ). «Вы его не сделали» — natija yoʻq (СВ). Bitta "
                                "feʼl, ikkita shakl — va butun hazil aynan shu farqda.",
             },
             {
-                "text": "Nega «выбира́ла» uzunroq, lekin «вы́брала» — СВ?",
+                "text": "Nega «выбирала» uzunroq, lekin «выбрала» — СВ?",
                 "choices": [
                     "НСВ bu yerda СВ dan suffiks bilan yasalgan",
-                    "Chunki «выбира́ла» koʻplik",
+                    "Chunki «выбирала» koʻplik",
                     "Chunki uzun shakl har doim НСВ",
                     "Bu matndagi xato"
                 ],
                 "answer": 0,
                 "explanation": "Yoʻnalishga qarang, uzunlikka emas: prefiks qoʻshilsa "
-                               "— СВ tomonga (чита́ть → ПРОчитать), suffiks qoʻshilsa "
-                               "— НСВ tomonga (вы́брать → выбирАТЬ).",
+                               "— СВ tomonga (читать → ПРОчитать), suffiks qoʻshilsa "
+                               "— НСВ tomonga (выбрать → выбирАТЬ).",
             },
             {
                 "text": "Matnda har bir ish qanday tartibda tasvirlangan?",
@@ -348,8 +348,8 @@ STORIES = [
                     "Faqat jarayonlar sanalgan"
                 ],
                 "answer": 0,
-                "explanation": "«де́лали план… сде́лали план», «кра́сил… покра́сил», "
-                               "«выбира́ла… вы́брала», «чита́л… прочита́л». Taʼmir "
+                "explanation": "«делали план… сделали план», «красил… покрасил», "
+                               "«выбирала… выбрала», «читал… прочитал». Taʼmir "
                                "mavzusi vid uchun ideal: har bir ish avval davom "
                                "etadi, keyin tugaydi.",
             },

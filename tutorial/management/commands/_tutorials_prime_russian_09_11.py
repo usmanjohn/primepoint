@@ -33,7 +33,7 @@ TUTORIALS = [
             "tanlanadi. Asosan ikkita qoʻshimcha bor — -ы/-и va -а/-я — plus bitta "
             "imlo qoidasi va qisqa istisnolar roʻyxati."
         ),
-        "stories": ["Ры́нок в суббо́ту"],
+        "stories": ["Рынок в субботу"],
         "content": """
 <h2>PR-9: Koʻplik (множественное число) — -ы, -и, -а va istisnolar</h2>
 
@@ -340,7 +340,7 @@ Koʻplikda esa <b>bitta</b> shakl — <b>они́</b>, jinsdan qatʼi nazar:</p>
             "Sakkizta shaxs olmoshi va egalik soʻzlari. Eng muhim gʻoya: ruschada "
             "egalik soʻzi egaga emas, EGALIK QILINGAN narsaning jinsiga qarab oʻzgaradi."
         ),
-        "stories": ["Чей э́то телефо́н?"],
+        "stories": ["Чей это телефон?"],
         "content": """
 <h2>PR-10: Shaxs olmoshlari va egalik: мой, твой, наш, ваш</h2>
 
@@ -627,7 +627,7 @@ deng.</p>
             "tire (—) qachon qoʻyilishini aniq bilib olasiz. Oʻtgan va kelasi zamonda "
             "esa u qaytib keladi: был va бу́дет."
         ),
-        "stories": ["Мой го́род — Ташке́нт"],
+        "stories": ["Мой город — Ташкент"],
         "content": """
 <h2>PR-11: «Быть» yoʻq gaplar: Я студент. Кофе горячий. Tire qachon qoʻyiladi?</h2>
 

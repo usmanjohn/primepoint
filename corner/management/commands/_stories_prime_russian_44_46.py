@@ -8,13 +8,13 @@ Janr xilma-xilligi: 44 — sayohat qaydlari, 45 — tajriba (kunma-kun),
 46 — umumiy xat. (41 hikoya, 42 mahalla portreti, 43 yangilik xabari edi.)
 
 Grammatika chegarasi (kumulyativ qoida):
-  44-matn: sifatlarning Д./Т./П. shakllari — в большо́м го́роде, по
-           широ́кой у́лице, с молоды́м води́телем.
+  44-matn: sifatlarning Д./Т./П. shakllari — в большом городе, по
+           широкой улице, с молодым водителем.
   45-matn: koʻplik И.п. va Р.п. — matn kunma-kun sanaydi, shuning uchun
-           «пять дней», «мно́го книг», «три дру́га», «дере́вьев» tabiiy
+           «пять дней», «много книг», «три друга», «деревьев» tabiiy
            chiqadi.
-  46-matn: koʻplik Д./В./Т./П. — xat janri butun matnni «друзья́м,
-           друзья́ми, о друзья́х» ustiga quradi. Oxirgi soʻz — «глаза́ми».
+  46-matn: koʻplik Д./В./Т./П. — xat janri butun matnni «друзьям,
+           друзьями, о друзьях» ustiga quradi. Oxirgi soʻz — «глазами».
 
     python manage.py import_corner \
         corner/management/commands/_stories_prime_russian_44_46.py --author=prime
@@ -41,7 +41,7 @@ STORIES = [
     # PR-44 — sifat Д./Т./П.                    SAYOHAT QAYDLARI
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "В большо́м го́роде",
+        "title":   "В большом городе",
         "summary": (
             "PR-44 matni. Kichkina shahardan kelgan odamning katta shahardagi "
             "birinchi kuni. Taksi haydovchisi uni bir qarashda tanib oladi — va "
@@ -50,47 +50,47 @@ STORIES = [
         "order":   44,
         "grammar": [
             {
-                "pattern":  "Sifat Предло́жный'da: -ОМ / -ОЙ",
-                "meaning":  "в большо́м го́роде, в ма́леньком кафе́ — erkak va oʻrta "
-                            "jins -ОМ oladi. Ayol jinsi esa -ОЙ: о ста́рой шко́ле.",
-                "examples": ["Пе́рвый раз в большо́м го́роде.", "Я сижу́ в ма́леньком кафе́."],
+                "pattern":  "Sifat Предложный'da: -ОМ / -ОЙ",
+                "meaning":  "в большом городе, в маленьком кафе — erkak va oʻrta "
+                            "jins -ОМ oladi. Ayol jinsi esa -ОЙ: о старой школе.",
+                "examples": ["Первый раз в большом городе.", "Я сижу в маленьком кафе."],
             },
             {
-                "pattern":  "Sifat Да́тельный'da: -ОМУ / -ОЙ",
-                "meaning":  "по широ́кой у́лице (ayol -ОЙ), к но́вому до́му (erkak "
-                            "-ОМУ). Predlog Да́тельный talab qilsa, sifat ham unga "
+                "pattern":  "Sifat Дательный'da: -ОМУ / -ОЙ",
+                "meaning":  "по широкой улице (ayol -ОЙ), к новому дому (erkak "
+                            "-ОМУ). Predlog Дательный talab qilsa, sifat ham unga "
                             "ergashadi.",
-                "examples": ["Я иду́ по широ́кой у́лице."],
+                "examples": ["Я иду по широкой улице."],
             },
             {
-                "pattern":  "Sifat Твори́тельный'da: -ЫМ / -ОЙ",
-                "meaning":  "с молоды́м води́телем — erkak jins -ЫМ. Tekshiruv: "
+                "pattern":  "Sifat Творительный'da: -ЫМ / -ОЙ",
+                "meaning":  "с молодым водителем — erkak jins -ЫМ. Tekshiruv: "
                             "savol soʻzining oxiri sifatning oxiri bilan bir xil "
-                            "(с каки́м? — с молоды́м).",
-                "examples": ["Я говорю́ с молоды́м води́телем."],
+                            "(с каким? — с молодым).",
+                "examples": ["Я говорю с молодым водителем."],
             },
         ],
-        "body": '''<p><span class="cn-word" data-tr="birinchi marta">Пе́рвый раз</span> в <strong>большо́м</strong> го́роде.</p>
+        "body": '''<p><span class="cn-word" data-tr="birinchi marta">Первый раз</span> в <strong>большом</strong> городе.</p>
 
-<p>Здесь всё большо́е. <strong>Больши́е</strong> дома́. <strong>Широ́кие</strong> у́лицы. И мно́го люде́й.</p>
+<p>Здесь всё большое. <strong>Большие</strong> дома. <strong>Широкие</strong> улицы. И много людей.</p>
 
-<p>Утром я иду́ по <strong>широ́кой</strong> у́лице. Со́рок <span class="cn-word" data-tr="daqiqa">мину́т</span> — и у́лица не <span class="cn-word" data-pos="verb" data-tr="tugamaydi">конча́ется</span>.</p>
+<p>Утром я иду по <strong>широкой</strong> улице. Сорок <span class="cn-word" data-tr="daqiqa">минут</span> — и улица не <span class="cn-word" data-pos="verb" data-tr="tugamaydi">кончается</span>.</p>
 
-<p>В такси́ я говорю́ <strong>с молоды́м</strong> <span class="cn-word" data-tr="haydovchi">води́телем</span>.</p>
+<p>В такси я говорю <strong>с молодым</strong> <span class="cn-word" data-tr="haydovchi">водителем</span>.</p>
 
-<p>— Вы из <strong>ма́ленького</strong> го́рода? — спра́шивает он.</p>
+<p>— Вы из <strong>маленького</strong> города? — спрашивает он.</p>
 
-<p>— Да. Как вы зна́ете?</p>
+<p>— Да. Как вы знаете?</p>
 
-<p>— Вы смо́трите <span class="cn-word" data-tr="tepaga">вверх</span>, — говори́т он. — Здесь лю́ди смо́трят <span class="cn-word" data-tr="oldinga">вперёд</span>.</p>
+<p>— Вы смотрите <span class="cn-word" data-tr="tepaga">вверх</span>, — говорит он. — Здесь люди смотрят <span class="cn-word" data-tr="oldinga">вперёд</span>.</p>
 
-<p>Ве́чером я <span class="cn-word" data-pos="verb" data-tr="oʻtiraman">сижу́</span> в <strong>ма́леньком</strong> <span class="cn-word" data-tr="kafe">кафе́</span>. За окно́м — <strong>больши́е</strong> дома́ и <span class="cn-word" data-tr="sariq">жёлтый</span> <span class="cn-word" data-tr="yorugʻlik">свет</span>.</p>
+<p>Вечером я <span class="cn-word" data-pos="verb" data-tr="oʻtiraman">сижу</span> в <strong>маленьком</strong> <span class="cn-word" data-tr="kafe">кафе</span>. За окном — <strong>большие</strong> дома и <span class="cn-word" data-tr="sariq">жёлтый</span> <span class="cn-word" data-tr="yorugʻlik">свет</span>.</p>
 
-<p>Мне здесь хорошо́. Но я ду́маю о <strong>ма́леньком</strong> го́роде. О <strong>моём</strong>.</p>
+<p>Мне здесь хорошо. Но я думаю о <strong>маленьком</strong> городе. О <strong>моём</strong>.</p>
 
-<p>В <strong>большо́м</strong> го́роде мо́жно быть оди́н. В <strong>ма́леньком</strong> — нельзя́.</p>
+<p>В <strong>большом</strong> городе можно быть один. В <strong>маленьком</strong> — нельзя.</p>
 
-<p>Э́то <span class="cn-word" data-tr="ham yaxshi, ham yomon">и хорошо́, и пло́хо</span>.</p>''',
+<p>Это <span class="cn-word" data-tr="ham yaxshi, ham yomon">и хорошо, и плохо</span>.</p>''',
         "questions": [
             {
                 "text": "Taksi haydovchisi mehmonni qanday tanib oldi?",
@@ -101,22 +101,22 @@ STORIES = [
                     "Uning kiyimi boshqacha edi"
                 ],
                 "answer": 0,
-                "explanation": "«Вы смо́трите вверх… Здесь лю́ди смо́трят вперёд». "
+                "explanation": "«Вы смотрите вверх… Здесь люди смотрят вперёд». "
                                "Katta shahar odami binolarga qaramaydi — u ularga "
                                "oʻrganib qolgan.",
             },
             {
-                "text": "Nega «в большо́м го́роде», lekin «по широ́кой у́лице»?",
+                "text": "Nega «в большом городе», lekin «по широкой улице»?",
                 "choices": [
-                    "Birinchisi Предло́жный (-ОМ), ikkinchisi Да́тельный (-ОЙ, ayol jinsi)",
+                    "Birinchisi Предложный (-ОМ), ikkinchisi Дательный (-ОЙ, ayol jinsi)",
                     "Ikkalasi bir xil kelishik",
-                    "Chunki «у́лица» koʻplikda",
+                    "Chunki «улица» koʻplikda",
                     "Bu matndagi xato"
                 ],
                 "answer": 0,
-                "explanation": "Sifat otga ergashadi. «В го́роде» — Предло́жный, erkak "
-                               "jins → большо́м. «По у́лице» — Да́тельный, ayol jins → "
-                               "широ́кой. Ayol jinsida -ОЙ toʻrtta kelishikda "
+                "explanation": "Sifat otga ergashadi. «В городе» — Предложный, erkak "
+                               "jins → большом. «По улице» — Дательный, ayol jins → "
+                               "широкой. Ayol jinsida -ОЙ toʻrtta kelishikda "
                                "ishlatiladi.",
             },
             {
@@ -128,8 +128,8 @@ STORIES = [
                     "Katta shaharda odamlar yomon"
                 ],
                 "answer": 0,
-                "explanation": "«В большо́м го́роде мо́жно быть оди́н. В ма́леньком — "
-                               "нельзя́. Э́то и хорошо́, и пло́хо». Matn tanlov "
+                "explanation": "«В большом городе можно быть один. В маленьком — "
+                               "нельзя. Это и хорошо, и плохо». Matn tanlov "
                                "qilmaydi — u faqat farqni aytadi.",
             },
         ],
@@ -139,7 +139,7 @@ STORIES = [
     # PR-45 — koʻplik И.п. / Р.п.                TAJRIBA
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Пять дней без телефо́на",
+        "title":   "Пять дней без телефона",
         "summary": (
             "PR-45 matni. Besh kunlik tajriba, kunma-kun. Natija kutilganidek "
             "boʻlmadi: kitoblar ham, vaqt ham emas — eshik oldidagi uch doʻst "
@@ -148,46 +148,46 @@ STORIES = [
         "order":   45,
         "grammar": [
             {
-                "pattern":  "Koʻplik Роди́тельный",
-                "meaning":  "Son va miqdor soʻzlaridan keyin: пять дней, мно́го книг, "
-                            "мно́го часо́в. Erkak jins -ОВ / -ЕЙ, ayol va oʻrta jins "
+                "pattern":  "Koʻplik Родительный",
+                "meaning":  "Son va miqdor soʻzlaridan keyin: пять дней, много книг, "
+                            "много часов. Erkak jins -ОВ / -ЕЙ, ayol va oʻrta jins "
                             "esa qoʻshimchasiz qoladi.",
-                "examples": ["Пять дней без телефо́на.", "Мно́го книг, мно́го слов."],
+                "examples": ["Пять дней без телефона.", "Много книг, много слов."],
             },
             {
                 "pattern":  "Notoʻgʻri koʻpliklar",
-                "meaning":  "Baʼzi soʻzlar koʻplikda butunlay oʻzgaradi: де́рево → "
-                            "дере́вья → дере́вьев, друг → друзья́ → друзе́й, "
+                "meaning":  "Baʼzi soʻzlar koʻplikda butunlay oʻzgaradi: дерево → "
+                            "деревья → деревьев, друг → друзья → друзей, "
                             "день → дни → дней.",
-                "examples": ["Мно́го дере́вьев.", "Три дру́га у две́ри."],
+                "examples": ["Много деревьев.", "Три друга у двери."],
             },
             {
                 "pattern":  "2-3-4 ↔ 5+",
-                "meaning":  "PR-36 dagi qoida: 2, 3, 4 dan keyin Роди́тельный BIRLIK "
-                            "(три дру́га), 5 va undan yuqori — Роди́тельный KOʻPLIK "
+                "meaning":  "PR-36 dagi qoida: 2, 3, 4 dan keyin Родительный BIRLIK "
+                            "(три друга), 5 va undan yuqori — Родительный KOʻPLIK "
                             "(пять дней).",
-                "examples": ["Две кни́ги за два дня.", "Пять дней."],
+                "examples": ["Две книги за два дня.", "Пять дней."],
             },
         ],
-        "body": '''<p>Я <span class="cn-word" data-pos="verb" data-tr="qaror qildim">реши́л</span>: пять <strong>дней</strong> без телефо́на.</p>
+        "body": '''<p>Я <span class="cn-word" data-pos="verb" data-tr="qaror qildim">решил</span>: пять <strong>дней</strong> без телефона.</p>
 
-<p><strong>Пе́рвый день.</strong> Тру́дно. Я <span class="cn-word" data-pos="verb" data-tr="qidiraman">ищу́</span> телефо́н де́сять <strong>раз</strong>. Его́ нет. Ру́ки <span class="cn-word" data-tr="boʻsh">пусты́е</span>.</p>
+<p><strong>Первый день.</strong> Трудно. Я <span class="cn-word" data-pos="verb" data-tr="qidiraman">ищу</span> телефон десять <strong>раз</strong>. Его нет. Руки <span class="cn-word" data-tr="boʻsh">пустые</span>.</p>
 
-<p><strong>Второ́й день.</strong> У меня́ мно́го <strong>вре́мени</strong>. Я чита́ю <span class="cn-word" data-tr="sekin">ме́дленно</span>. Две <strong>кни́ги</strong> за два дня.</p>
+<p><strong>Второй день.</strong> У меня много <strong>времени</strong>. Я читаю <span class="cn-word" data-tr="sekin">медленно</span>. Две <strong>книги</strong> за два дня.</p>
 
-<p><strong>Тре́тий день.</strong> Я не зна́ю <span class="cn-word" data-tr="yangiliklar">но́вости</span>. И э́то норма́льно.</p>
+<p><strong>Третий день.</strong> Я не знаю <span class="cn-word" data-tr="yangiliklar">новости</span>. И это нормально.</p>
 
-<p><strong>Четвёртый день.</strong> Я ви́жу мно́го <strong>дере́вьев</strong> в на́шем дворе́. Ра́ньше я их не ви́дел. Они́ стоя́ли там <span class="cn-word" data-tr="doim">всегда́</span>.</p>
+<p><strong>Четвёртый день.</strong> Я вижу много <strong>деревьев</strong> в нашем дворе. Раньше я их не видел. Они стояли там <span class="cn-word" data-tr="doim">всегда</span>.</p>
 
-<p><strong>Пя́тый день.</strong> Ве́чером ко мне <span class="cn-word" data-pos="verb" data-tr="kelishdi">пришли́</span> три <strong>дру́га</strong>.</p>
+<p><strong>Пятый день.</strong> Вечером ко мне <span class="cn-word" data-pos="verb" data-tr="kelishdi">пришли</span> три <strong>друга</strong>.</p>
 
-<p>— У тебя́ нет телефо́на, — сказа́л Бекзод. — Мы <span class="cn-word" data-pos="verb" data-tr="xavotirlandik">волнова́лись</span>.</p>
+<p>— У тебя нет телефона, — сказал Бекзод. — Мы <span class="cn-word" data-pos="verb" data-tr="xavotirlandik">волновались</span>.</p>
 
-<p>Пять дней. Мно́го <strong>книг</strong>. Мно́го <strong>часо́в</strong>. Мно́го <strong>слов</strong> в <span class="cn-word" data-tr="daftar">тетра́ди</span>.</p>
+<p>Пять дней. Много <strong>книг</strong>. Много <strong>часов</strong>. Много <strong>слов</strong> в <span class="cn-word" data-tr="daftar">тетради</span>.</p>
 
-<p>И три <strong>дру́га</strong> у <span class="cn-word" data-tr="eshik oldida">две́ри</span>.</p>
+<p>И три <strong>друга</strong> у <span class="cn-word" data-tr="eshik oldida">двери</span>.</p>
 
-<p>Тепе́рь телефо́н у меня́ есть. Но он <span class="cn-word" data-pos="verb" data-tr="yotadi">лежи́т</span> в су́мке. И я не ищу́ его́ де́сять раз в день.</p>''',
+<p>Теперь телефон у меня есть. Но он <span class="cn-word" data-pos="verb" data-tr="yotadi">лежит</span> в сумке. И я не ищу его десять раз в день.</p>''',
         "questions": [
             {
                 "text": "Tajribaning eng muhim natijasi nima boʻldi?",
@@ -199,34 +199,34 @@ STORIES = [
                 ],
                 "answer": 0,
                 "explanation": "Matn kitoblar, soatlar va soʻzlarni sanaydi — keyin "
-                               "alohida qatorda: «И три дру́га у две́ри». Sanalmaydigan "
+                               "alohida qatorda: «И три друга у двери». Sanalmaydigan "
                                "natija aynan shu.",
             },
             {
-                "text": "Nega «пять дней», lekin «три дру́га»?",
+                "text": "Nega «пять дней», lekin «три друга»?",
                 "choices": [
-                    "5 dan boshlab Роди́тельный koʻplik, 2-3-4 dan keyin esa birlik",
+                    "5 dan boshlab Родительный koʻplik, 2-3-4 dan keyin esa birlik",
                     "Chunki «друг» jonli",
                     "Chunki «день» erkak jinsida",
                     "Bu matndagi xato"
                 ],
                 "answer": 0,
                 "explanation": "PR-36 qoidasi: 1 → bosh kelishik; 2, 3, 4 → "
-                               "Роди́тельный birlik (дру́га); 5 va undan yuqori → "
-                               "Роди́тельный koʻplik (дней).",
+                               "Родительный birlik (друга); 5 va undan yuqori → "
+                               "Родительный koʻplik (дней).",
             },
             {
-                "text": "«Мно́го дере́вьев» — nega bu shakl gʻalati koʻrinadi?",
+                "text": "«Много деревьев» — nega bu shakl gʻalati koʻrinadi?",
                 "choices": [
-                    "Де́рево koʻplikda butunlay oʻzgaradi: дере́вья → дере́вьев",
+                    "Дерево koʻplikda butunlay oʻzgaradi: деревья → деревьев",
                     "Chunki daraxtlar jonli hisoblanadi",
                     "Chunki bu oʻrta jins",
                     "Bu matndagi xato"
                 ],
                 "answer": 0,
-                "explanation": "Bir guruh soʻz koʻplikda -ЬЯ oladi: де́рево → "
-                               "дере́вья, брат → бра́тья, стул → сту́лья. Ularning "
-                               "Роди́тельный shakli esa -ЬЕВ boʻladi. Bunday soʻzlar "
+                "explanation": "Bir guruh soʻz koʻplikda -ЬЯ oladi: дерево → "
+                               "деревья, брат → братья, стул → стулья. Ularning "
+                               "Родительный shakli esa -ЬЕВ boʻladi. Bunday soʻzlar "
                                "qoida bilan emas, yodlab olinadi.",
             },
         ],
@@ -236,59 +236,59 @@ STORIES = [
     # PR-46 — koʻplik Д./В./Т./П.                UMUMIY XAT
     # ══════════════════════════════════════════════════════════════════
     {
-        "title":   "Письмо́ всем друзья́м",
+        "title":   "Письмо всем друзьям",
         "summary": (
             "PR-46 matni. Yil oxirida hamma doʻstlarga yoziladigan umumiy xat. "
             "Butun matn koʻplik kelishiklari ustida turadi — va oxirgi soʻz "
-            "«глаза́ми»."
+            "«глазами»."
         ),
         "order":   46,
         "grammar": [
             {
                 "pattern":  "Koʻplik Д./Т./П.: -АМ, -АМИ, -АХ",
                 "meaning":  "Koʻplikda jins yoʻqoladi — uchta jins uchun bitta "
-                            "qoʻshimcha. Yumshoq oʻzakda -ЯМ, -ЯМИ, -ЯХ: друзья́м, "
-                            "друзья́ми, о друзья́х.",
-                "examples": ["Пишу́ всем друзья́м.", "Я ду́маю о ста́рых друзья́х."],
+                            "qoʻshimcha. Yumshoq oʻzakda -ЯМ, -ЯМИ, -ЯХ: друзьям, "
+                            "друзьями, о друзьях.",
+                "examples": ["Пишу всем друзьям.", "Я думаю о старых друзьях."],
             },
             {
-                "pattern":  "детьми́ · людьми́",
-                "meaning":  "Butun tizimdagi ikkita istisno. «Лю́дями» va «де́тями» "
-                            "emas — людьми́ va детьми́. Ular qofiyalanadi, shuning "
+                "pattern":  "детьми · людьми",
+                "meaning":  "Butun tizimdagi ikkita istisno. «Людями» va «детями» "
+                            "emas — людьми va детьми. Ular qofiyalanadi, shuning "
                             "uchun birga yodlanadi.",
-                "examples": ["Рабо́таю с ра́зными людьми́.", "Я говорю́ с детьми́."],
+                "examples": ["Работаю с разными людьми.", "Я говорю с детьми."],
             },
             {
                 "pattern":  "Sifat koʻplikda: -ЫМ, -ЫМИ, -ЫХ",
                 "meaning":  "Sifat ham jinsni yoʻqotadi va ot bilan birga oʻzgaradi: "
-                            "ста́рым друзья́м, с ра́зными людьми́, о ста́рых "
-                            "друзья́х.",
-                "examples": ["Спаси́бо ста́рым друзья́м."],
+                            "старым друзьям, с разными людьми, о старых "
+                            "друзьях.",
+                "examples": ["Спасибо старым друзьям."],
             },
         ],
-        "body": '''<p><span class="cn-word" data-tr="Aziz">Дороги́е</span> друзья́!</p>
+        "body": '''<p><span class="cn-word" data-tr="Aziz">Дорогие</span> друзья!</p>
 
-<p>Пишу́ <span class="cn-word" data-tr="hammaga">всем</span> — и <strong>ста́рым друзья́м</strong>, и <strong>но́вым</strong>.</p>
+<p>Пишу <span class="cn-word" data-tr="hammaga">всем</span> — и <strong>старым друзьям</strong>, и <strong>новым</strong>.</p>
 
-<p>Э́тот <span class="cn-word" data-tr="yil">год</span> был тру́дный. Я жил в <strong>двух города́х</strong>. Рабо́тал <strong>с ра́зными людьми́</strong>.</p>
+<p>Этот <span class="cn-word" data-tr="yil">год</span> был трудный. Я жил в <strong>двух городах</strong>. Работал <strong>с разными людьми</strong>.</p>
 
-<p>Ча́сто я ду́мал <strong>о ста́рых друзья́х</strong>. И <strong>о де́тях</strong> — мои́ де́ти <span class="cn-word" data-pos="verb" data-tr="oʻsyapti">расту́т</span> бы́стро.</p>
+<p>Часто я думал <strong>о старых друзьях</strong>. И <strong>о детях</strong> — мои дети <span class="cn-word" data-pos="verb" data-tr="oʻsyapti">растут</span> быстро.</p>
 
-<p>Я говорю́ <strong>с ни́ми</strong> по телефо́ну ка́ждую суббо́ту. Э́то <span class="cn-word" data-tr="oz">ма́ло</span>. Но э́то есть.</p>
+<p>Я говорю <strong>с ними</strong> по телефону каждую субботу. Это <span class="cn-word" data-tr="oz">мало</span>. Но это есть.</p>
 
-<p>Тепе́рь я хочу́ сказа́ть <strong>всем</strong> одно́ сло́во: спаси́бо.</p>
+<p>Теперь я хочу сказать <strong>всем</strong> одно слово: спасибо.</p>
 
-<p>Спаси́бо <strong>ста́рым друзья́м</strong> — за пи́сьма.</p>
+<p>Спасибо <strong>старым друзьям</strong> — за письма.</p>
 
-<p>Спаси́бо <strong>но́вым</strong> — за <span class="cn-word" data-tr="kechalar">ве́чера</span> и <span class="cn-word" data-tr="suhbatlar">разгово́ры</span>.</p>
+<p>Спасибо <strong>новым</strong> — за <span class="cn-word" data-tr="kechalar">вечера</span> и <span class="cn-word" data-tr="suhbatlar">разговоры</span>.</p>
 
-<p>Спаси́бо <strong>мои́м де́тям</strong> — за <span class="cn-word" data-tr="savollar">вопро́сы</span>. Они́ спра́шивают <span class="cn-word" data-tr="mendan yaxshiroq">лу́чше, чем я</span>.</p>
+<p>Спасибо <strong>моим детям</strong> — за <span class="cn-word" data-tr="savollar">вопросы</span>. Они спрашивают <span class="cn-word" data-tr="mendan yaxshiroq">лучше, чем я</span>.</p>
 
-<p>Спаси́бо <strong>лю́дям</strong> в <strong>двух города́х</strong> — за <span class="cn-word" data-tr="sabr">терпе́ние</span>.</p>
+<p>Спасибо <strong>людям</strong> в <strong>двух городах</strong> — за <span class="cn-word" data-tr="sabr">терпение</span>.</p>
 
-<p>В <span class="cn-word" data-tr="keyingi">сле́дующем</span> году́ я хочу́ ви́деть <strong>всех</strong>. Не по телефо́ну.</p>
+<p>В <span class="cn-word" data-tr="keyingi">следующем</span> году я хочу видеть <strong>всех</strong>. Не по телефону.</p>
 
-<p><strong>Глаза́ми</strong>.</p>''',
+<p><strong>Глазами</strong>.</p>''',
         "questions": [
             {
                 "text": "Xat muallifi kelasi yilda nimani xohlaydi?",
@@ -299,26 +299,26 @@ STORIES = [
                     "Yangi doʻstlar orttirishni"
                 ],
                 "answer": 0,
-                "explanation": "Xat shu ikki jumla bilan tugaydi: «я хочу́ ви́деть "
-                               "всех. Не по телефо́ну. Глаза́ми». Butun yil telefon "
+                "explanation": "Xat shu ikki jumla bilan tugaydi: «я хочу видеть "
+                               "всех. Не по телефону. Глазами». Butun yil telefon "
                                "orqali oʻtdi — shuning uchun oxirgi soʻz shunchalik "
                                "kuchli.",
             },
             {
-                "text": "Nega «с ра́зными людьми́», «лю́дями» emas?",
+                "text": "Nega «с разными людьми», «людями» emas?",
                 "choices": [
-                    "Людьми́ — butun tizimdagi ikkita istisnodan biri",
-                    "Chunki «лю́ди» jonli",
+                    "Людьми — butun tizimdagi ikkita istisnodan biri",
+                    "Chunki «люди» jonli",
                     "Chunki oldida sifat bor",
                     "Bu matndagi xato"
                 ],
                 "answer": 0,
-                "explanation": "Koʻplik Твори́тельный odatda -АМИ / -ЯМИ boʻladi "
-                               "(друзья́ми, города́ми). Faqat ikkita soʻz boshqacha: "
-                               "людьми́ va детьми́. Ular qofiyalanadi.",
+                "explanation": "Koʻplik Творительный odatda -АМИ / -ЯМИ boʻladi "
+                               "(друзьями, городами). Faqat ikkita soʻz boshqacha: "
+                               "людьми va детьми. Ular qofiyalanadi.",
             },
             {
-                "text": "«Друзья́м», «друзья́ми», «о друзья́х» — bu uch shakl nimani "
+                "text": "«Друзьям», «друзьями», «о друзьях» — bu uch shakl nimani "
                         "koʻrsatadi?",
                 "choices": [
                     "Koʻplikda jins yoʻqoladi va faqat kelishik qoʻshimchasi qoladi",

@@ -46,7 +46,7 @@ TUTORIALS = [
             "Ot ishni oʻzi qilmaydi — ish uning ustida qilinadi. Oʻzbekcha -il-/-in- "
             "majhul qoʻshimchasi kabi. Toʻliq shaklda -нн-, qisqasida -н-."
         ),
-        "stories": ["Кни́га, напи́санная в тюрьме́"],
+        "stories": ["Книга, написанная в тюрьме"],
         "content": """
 <h2>PR-71: Причастие 2: страдательные — прочитанный, написан, сделан</h2>
 
@@ -385,7 +385,7 @@ u alohida mavzu.</div>
             "Oʻzbekcha «-ib» va «-gach» ning aynan oʻzi. Bitta qoida hammasini hal "
             "qiladi: ravishdosh bilan asosiy feʼlning egasi BIR XIL boʻlishi shart."
         ),
-        "stories": ["Возвраща́ясь домо́й"],
+        "stories": ["Возвращаясь домой"],
         "content": """
 <h2>PR-72: Деепричастие: читая, прочитав — bir vaqtda va undan oldin</h2>
 

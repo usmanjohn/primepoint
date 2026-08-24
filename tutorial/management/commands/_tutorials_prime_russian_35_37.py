@@ -39,7 +39,7 @@ TUTORIALS = [
             "koʻpchiligi oʻzbekchada tanish: -dan, -siz, uchun, -gacha, keyin. "
             "Yangi narsa bittagina — «dan» ruschada ikkiga boʻlinadi."
         ),
-        "stories": ["Письмо́ из Сиби́ри"],
+        "stories": ["Письмо из Сибири"],
         "content": """
 <h2>PR-35: Родительный 2: predloglar bilan — из, от, до, у, без, для, около, после</h2>
 
@@ -347,7 +347,7 @@ bilan). Bitta qoida, uchinchi marta ishlayapti.</div>
             "uyLARNING. Uchta guruh, uchta shakl — va bu qoida har kuni kerak "
             "boʻladi."
         ),
-        "stories": ["Ско́лько в Москве́ мосто́в?"],
+        "stories": ["Сколько в Москве мостов?"],
         "content": """
 <h2>PR-36: Родительный 3: sonlar va miqdor bilan — два дома, пять домов, много книг</h2>
 
@@ -656,7 +656,7 @@ yordam beradi. Yaxshi xabar shuki, qoida <b>istisnosiz</b> ishlaydi.</div>
             "нра́вится». Bugun u oʻz nomini oladi va otlarga ham qoʻllanadi. "
             "Oʻzbekcha -GA ning aynan oʻzi."
         ),
-        "stories": ["Пода́рок учи́телю"],
+        "stories": ["Подарок учителю"],
         "content": """
 <h2>PR-37: Дательный 1: кому? — дать, сказать, написать, помочь</h2>
 

@@ -42,7 +42,7 @@ TUTORIALS = [
             "«Бу́ду чита́ть» vaʼda bermaydi, «прочита́ю» esa beradi. Farq shu "
             "yerda."
         ),
-        "stories": ["Три письма́ об одно́м дне"],
+        "stories": ["Три письма об одном дне"],
         "content": """
 <h2>PR-53: Vid uch zamonda: hozirgi zamonda СВ nega yoʻq?</h2>
 
@@ -304,7 +304,7 @@ vaʼda qilmaydi</b>. Agar kimdir sizdan natija kutayotgan boʻlsa —
             "Vid qoida emas, tanlov. Lekin tanlovni osonlashtiradigan narsa bor: "
             "gapdagi baʼzi soʻzlar javobni deyarli har doim aytib turadi."
         ),
-        "stories": ["Как я гото́вился к экза́мену"],
+        "stories": ["Как я готовился к экзамену"],
         "content": """
 <h2>PR-54: Vidni tanlash: takror, jarayon, natija, bir marta, buyruq</h2>
 
@@ -559,7 +559,7 @@ yodlash foydali: ular sizga tanlovni tayyor holda beradi.</div>
             "Rus tilida «bormoq» uchun ikkita feʼl bor. Farqi vid emas — farqi "
             "yoʻnalishda: bir marta bir tomonga yoki muntazam, u yoqqa-bu yoqqa."
         ),
-        "stories": ["Доро́га в шко́лу"],
+        "stories": ["Дорога в школу"],
         "content": """
 <h2>PR-55: Harakat feʼllari 1: идти va ходить — bir yoʻnalish va koʻp yoʻnalish</h2>
 
