@@ -139,26 +139,33 @@ PLAYLIST: Prime Russian
 77. Каждый, все, весь, любой, другой, остальные                              [done]
 78. Кто-то / кто-нибудь / кое-кто — noaniq olmoshlar                         [done]
 79. Никто, ничто, никогда — rus tilida ikki inkor qoidasi                    [done]
-80. Sana, vaqt, yosh va davomiylik   [next]: сколько времени? как долго?
-81. Shaxssiz gaplar: холодно, темнеет, мне не спится, говорят
-82. Jamlovchi va tartib sonlar: двое, оба, первый, тридцать первое
-83. Predlog xaritasi 2: по, за, из-за, благодаря, вместо, кроме, несмотря на
-84. Yuklamalar (частицы): же, ведь, ну, вот, разве, неужели, -то
-85. Undov soʻzlar va jonli soʻzlashuv nutqi
-86. Soʻz yasalishi: приставка + корень + суффикс + окончание
-87. Suffikslar xaritasi: -ость, -ение, -тель, -ник, -щик, -ка, -ство
-88. Kichraytiruvchi va erkalash shakllari: домик, сынок, Машенька, водичка
+80. Sana, vaqt, yosh va davomiylik: сколько времени? как долго?             [done]
+81. Shaxssiz gaplar: холодно, темнеет, мне не спится, говорят               [done]
+82. Jamlovchi va tartib sonlar: двое, оба, первый, тридцать первое          [done]
+83. Predlog xaritasi 2: по, за, из-за, благодаря, вместо, кроме, несмотря на [done]
+84. Yuklamalar (частицы): же, ведь, ну, вот, разве, неужели, -то            [done]
+85. Undov soʻzlar va jonli soʻzlashuv nutqi                                 [done]
+86. Soʻz yasalishi: приставка + корень + суффикс + окончание                [done]
+87. Suffikslar xaritasi: -ость, -ение, -тель, -ник, -щик, -ка, -ство        [done]
+88. Kichraytiruvchi va erkalash shakllari: домик, сынок, Машенька, водичка  [done]
 
 ### Block H: Til jonli holda (89–100)
-89. Soʻz tartibi va maʼno urgʻusi — rus tilida nima birinchi keladi
-90. Rasmiy va norasmiy uslub: bir fikrni ikki xil aytish
-91. Xat, ariza va rasmiy hujjat tili
-92. Telefon, elektron pochta va xabar tili
-93. Ish va oʻqish leksikasi: rezyume, suhbat, imtihon
-94. Фразеологизмы — rus iboralarining ichki mantigʻi
-95. Maqollar va matallar, oʻzbekcha muqobillari bilan
-96. Tez-tez adashtiriladigan juftlar: одеть/надеть, тоже/то же, в течение/в течении
-97. Punktuatsiya: vergul qoidalari va tire
-98. Matn qurish: kirish, asosiy qism, xulosa
-99. Rus tili qayerdan kelgan: soʻz boyligining kelib chiqishi
-100. Yakuniy dars: 100 darsdan keyin siz qayerdasiz va endi nima qilasiz
+89. Soʻz tartibi va maʼno urgʻusi — rus tilida nima birinchi keladi         [done]
+90. Rasmiy va norasmiy uslub: bir fikrni ikki xil aytish                    [done]
+91. Xat, ariza va rasmiy hujjat tili                                        [done]
+92. Telefon, elektron pochta va xabar tili                                  [done]
+93. Ish va oʻqish leksikasi: rezyume, suhbat, imtihon                       [done]
+94. Фразеологизмы — rus iboralarining ichki mantigʻi                        [done]
+95. Maqollar va matallar, oʻzbekcha muqobillari bilan                       [done]
+96. Tez-tez adashtiriladigan juftlar: одеть/надеть, тоже/то же, в течение/в течении [done]
+97. Punktuatsiya: vergul qoidalari va tire                                  [done]
+98. Matn qurish: kirish, asosiy qism, xulosa                                [done]
+99. Rus tili qayerdan kelgan: soʻz boyligining kelib chiqishi               [done]
+100. Yakuniy dars: 100 darsdan keyin siz qayerdasiz va endi nima qilasiz    [done]
+
+# ══════════════════════════════════════════════════════════════════
+# ✅ PRIME RUSSIAN TUGALLANDI — 2026-08-25.
+#    100 dars · 100 mashq (1960 savol) · 95 oʻqish matni.
+#    Har bir dars uch oyoqli: darslik + mashq + (PR-6 dan) oʻqish matni.
+#    Bundan keyin faqat tuzatish va qayta nashr (--republish).
+# ══════════════════════════════════════════════════════════════════

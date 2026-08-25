@@ -113,26 +113,28 @@ TUTORIAL: PR-<n>:   (each practice links to its own tutorial)
 77. Каждый, все, весь, любой, другой                                        [done]
 78. Кто-то / кто-нибудь / кое-кто                                           [done]
 79. Никто, ничто, никогда — ikki inkor                                      [done]
-80. Sana, vaqt, yosh va davomiylik                                          [next]
-81. Shaxssiz gaplar
-82. Jamlovchi va tartib sonlar
-83. Predlog xaritasi 2
-84. Yuklamalar (частицы)
-85. Undov soʻzlar va jonli soʻzlashuv
-86. Soʻz yasalishi
-87. Suffikslar xaritasi
-88. Kichraytiruvchi va erkalash shakllari
+80. Sana, vaqt, yosh va davomiylik                                          [done]
+81. Shaxssiz gaplar                                                         [done]
+82. Jamlovchi va tartib sonlar                                              [done]
+83. Predlog xaritasi 2                                                      [done]
+84. Yuklamalar (частицы)                                                    [done]
+85. Undov soʻzlar va jonli soʻzlashuv                                       [done]
+86. Soʻz yasalishi                                                          [done]
+87. Suffikslar xaritasi                                                     [done]
+88. Kichraytiruvchi va erkalash shakllari                                   [done]
 
 ### Block H: Til jonli holda (89–100)   level: hard · 20 savol
-89. Soʻz tartibi va maʼno urgʻusi
-90. Rasmiy va norasmiy uslub
-91. Xat, ariza va rasmiy hujjat tili
-92. Telefon, elektron pochta va xabar tili
-93. Ish va oʻqish leksikasi
-94. Фразеологизмы
-95. Maqollar va matallar
-96. Tez-tez adashtiriladigan juftlar
-97. Punktuatsiya
-98. Matn qurish
-99. Rus tili qayerdan kelgan
-100. Yakuniy dars
+89. Soʻz tartibi va maʼno urgʻusi                                           [done]
+90. Rasmiy va norasmiy uslub                                                [done]
+91. Xat, ariza va rasmiy hujjat tili                                        [done]
+92. Telefon, elektron pochta va xabar tili                                  [done]
+93. Ish va oʻqish leksikasi                                                 [done]
+94. Фразеологизмы                                                           [done]
+95. Maqollar va matallar                                                    [done]
+96. Tez-tez adashtiriladigan juftlar                                        [done]
+97. Punktuatsiya                                                            [done]
+98. Matn qurish                                                             [done]
+99. Rus tili qayerdan kelgan                                                [done]
+100. Yakuniy dars                                                           [done]
+
+# ✅ TUGALLANDI 2026-08-25 — 100 ta mashq, 1960 ta savol.

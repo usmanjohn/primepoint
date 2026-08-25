@@ -248,26 +248,38 @@ AUTHOR:     powerty
 77. (PR-77 · каждый/весь) Каждое утро, весь год — kundalik daftar          [done]
 78. (PR-78 · кто-то/кто-нибудь) Кто-то оставил зонт — sirli hikoya         [done]
 79. (PR-79 · ikki inkor) Никто ничего не сказал — maktab hikoyasi         [done]
-80. (PR-80 · vaqt) Сколько времени нужно, чтобы… (ilmiy-ommabop)         [next]
-81. (PR-81 · shaxssiz gaplar) Темнеет рано — qish kundaligi
-82. (PR-82 · sonlar) Трое в лодке — sayohat hikoyasi
-83. (PR-83 · predloglar 2) Благодаря одному письму — hayot hikoyasi
-84. (PR-84 · частицы) Ну и что же? — jonli suhbat
-85. (PR-85 · soʻzlashuv) Разговор в такси — dialog
-86. (PR-86 · soʻz yasalishi) Один корень — сорок слов (ilmiy-ommabop)
-87. (PR-87 · suffikslar) Профессии на -тель и -щик (ilmiy-ommabop)
-88. (PR-88 · kichraytirish) Бабушкины слова — mehr haqida
+80. (PR-80 · vaqt) Сколько времени нужно, чтобы… (ilmiy-ommabop)          [done]
+81. (PR-81 · shaxssiz gaplar) Темнеет рано — qish kundaligi               [done]
+82. (PR-82 · sonlar) Трое в лодке — sayohat hikoyasi                      [done]
+83. (PR-83 · predloglar 2) Благодаря одному письму — hayot hikoyasi (haqiqiy) [done]
+84. (PR-84 · частицы) Ну и что же? — jonli suhbat                         [done]
+85. (PR-85 · soʻzlashuv) Разговор в такси — dialog                        [done]
+86. (PR-86 · soʻz yasalishi) Один корень — сорок слов (ilmiy-ommabop)     [done]
+87. (PR-87 · suffikslar) Профессии на -тель и -щик (intervyu)             [done]
+#   ↑ janr almashtirildi: 86 ham ilmiy-ommabop edi, ketma-ket ikkita
+#     bir xil shakl chiqmasligi uchun intervyuga aylantirildi
+88. (PR-88 · kichraytirish) Бабушкины слова — mehr haqida                 [done]
 
 ### Block H: Til jonli holda (89–100)
-89. (PR-89 · soʻz tartibi) Одно предложение, четыре смысла
-90. (PR-90 · uslub) Два письма об одном и том же
-91. (PR-91 · rasmiy til) Заявление — namuna va tahlil
-92. (PR-92 · xabar tili) Чат группы 11-«А»
-93. (PR-93 · ish tili) Первое собеседование — hayot hikoyasi
-94. (PR-94 · frazeologizm) Бить баклуши и друзья (ilmiy-ommabop)
-95. (PR-95 · maqollar) Семь раз отмерь — oʻzbekcha muqobillari bilan
-96. (PR-96 · adashtiriladiganlar) Одеть или надеть? (ilmiy-ommabop)
-97. (PR-97 · punktuatsiya) «Казнить нельзя помиловать» (tarixiy hikoya)
-98. (PR-98 · matn qurish) Как написать сочинение — qoʻllanma
-99. (PR-99 · til tarixi) Откуда пришли русские слова (ilmiy-ommabop)
-100. (PR-100 · yakun) Сто уроков спустя — oʻquvchiga murojaat
+89. (PR-89 · soʻz tartibi) Одно предложение, четыре смысла                [done]
+90. (PR-90 · uslub) Два письма об одном и том же                          [done]
+91. (PR-91 · rasmiy til) Заявление — namuna va tahlil                     [done]
+#   ↑ sarlavha: «Первое заявление Бекзода» — namuna hikoya ichiga
+#     joylashtirildi, quruq shablon oʻrniga
+92. (PR-92 · xabar tili) Чат группы 11-«А»                                [done]
+93. (PR-93 · ish tili) Первое собеседование — hayot hikoyasi              [done]
+94. (PR-94 · frazeologizm) Бить баклуши и друзья (ilmiy-ommabop)          [done]
+#   ↑ sarlavha: «Бить баклуши и другие загадки» — toʻrtta ibora,
+#     har biri oʻz etimologiyasi bilan
+95. (PR-95 · maqollar) Семь раз отмерь — oʻzbekcha muqobillari bilan      [done]
+96. (PR-96 · adashtiriladiganlar) Одеть или надеть? (ilmiy-ommabop)       [done]
+97. (PR-97 · punktuatsiya) «Казнить нельзя помиловать» (tarixiy hikoya)   [done]
+#   ↑ sarlavha: «Запятая на доске» — sinf sahnasi. Ichida haqiqiy
+#     adabiy havola: «В Стране невыученных уроков» (Geraskina, 1965;
+#     multfilm 1969) — qahramon Витя Перестукин aynan shu vergulni qoʻyadi
+98. (PR-98 · matn qurish) Как написать сочинение — qoʻllanma              [done]
+99. (PR-99 · til tarixi) Откуда пришли русские слова (ilmiy-ommabop)      [done]
+100. (PR-100 · yakun) Сто уроков спустя — oʻquvchiga murojaat             [done]
+
+# ✅ TUGALLANDI 2026-08-25 — 95 ta matn (PR-6 … PR-100).
+#    PR-1…PR-5 alifbo darslari — ularda oʻqish matni yoʻq.
