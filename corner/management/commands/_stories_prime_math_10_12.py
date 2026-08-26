@@ -235,6 +235,10 @@ chizib tashladi va sahifada nol qoldi.</p>
                 ],
             },
         ],
+        "open_question": (
+            "Oxirgi — 64-katakdagi donlar oldingi 63 ta katakdagi donlarning "
+            "hammasidan koʻpmi, kammi, yoki tengmi?"
+        ),
         "questions": [
             {
                 "text": "Rivoyatga koʻra, shoh nima uchun vaʼdasini bajara olmadi?",

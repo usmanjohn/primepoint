@@ -114,6 +114,84 @@ AUTHOR:     powerty
 #   and neighbours (buvijon, Karim aka, Nodira opa).
 #
 # ══════════════════════════════════════════════════════════════════════
+# ── WRITING A READING THAT IS ALSO A VIDEO (added 2026-08-27) ──
+#
+# These readings are now also the source for the vertical maths videos in
+# `storyvideo/` (silent 1080x1920, narrated live). Everything below makes a text
+# better AS A READING first — none of it is a concession to the camera. A story
+# that fails the reading test is not fixed by being filmable.
+#
+# What adapting PM-4, PM-67 and PM-92 actually taught:
+#
+# 1. THE MISTAKE NEEDS A BODY.  A wrong number is not a scene. Name the physical
+#    consequence in one sentence: «Bekzod turgan joyida qoldi.» «Bogʻning yarmi
+#    ochiq qolar edi.» That single sentence is what makes the maths matter, and
+#    it is the moment the video is built around. A story that only says the
+#    answer was wrong gives the reader nothing to feel and the camera nothing
+#    to show.
+#
+# 2. GIVE THE WRONG MOVE A NAME.  «Koʻpchilik shunday oʻylaydi» is weaker than
+#    «Sardor darrov hisobladi va 6 dedi». A named person being confidently wrong
+#    is the strongest hook in teaching, because the reader immediately asks
+#    whether they would have done the same. Use the cast (Afsona, Sardor,
+#    Bekzod, Jasur, Sherbek, Dilnoza, Nodira opa) and keep them consistent —
+#    across the shelf they are becoming characters a pupil recognises.
+#
+# 3. END ON A QUOTABLE LINE, SPOKEN BY A CHARACTER.  Not the `grammar` block —
+#    that is a reference. A LINE: «Perimetr — bu chegara, ikkita tomon emas.»
+#    «Bir savol — bir stol.» It is the sentence the reader carries away and the
+#    last card of the video. Every reading should have one.
+#
+# 4. LEAVE A GAP BETWEEN THE QUESTION AND THE ANSWER.  At least a sentence, so
+#    the reader can try it first. In the video that gap becomes four seconds of
+#    silence, and it is the most valuable time in the whole film.
+#
+# 5. ONE COUNTABLE SET, where the topic allows. 37 bola. 4 tomon. 12 gul va 18
+#    shirinlik. The framing is often a free choice: «6 paketda 500 g» can be
+#    counted, «3 kg» cannot. Never distort the maths for this — but when the
+#    choice is free, take the countable one.
+#
+# 6. AT MOST FOUR LIVE NUMBERS.  A reader holding six numbers at once loses the
+#    thread, and a vertical frame holds two or three legibly. If a story needs
+#    more, it is really two stories.
+#
+# ── ROTATE THE SHAPE — never three of the same in a row ──
+#
+#   A. TUTILGAN XATO   someone is confidently wrong, someone pays for it, the
+#                      number changes (6 → 7, 28 → 56).           PM-4, PM-67
+#   B. TESKARI NATIJA  the same method applied twice gives opposite answers, or
+#                      defeats what the reader expected.          PM-92, PM-8
+#   C. TANLOV          two plausible options, the maths decides.  PM-31, PM-52
+#   D. KASHFIYOT       a small rule produces an impossible-looking quantity.
+#                                                                 PM-12
+#
+# This rotation matters as much as the rules above it. If every reading becomes
+# a caught mistake, a pupil predicts the ending by the twelfth one and the shelf
+# goes flat — the same reason the VERSATILE genre rule exists.
+#
+# ── `open_question` — one transfer question, no answer key ──
+#
+#   Story.open_question (CharField, optional). Rendered after the MCQs as
+#   «Oʻylab koʻring», and it is the last card of the video before the outro.
+#
+#   * TRANSFER, NOT TRIVIA. Reachable with this lesson's own tool in a new
+#     situation. Not a fact lookup, not a harder version of question 3.
+#   * NO ANSWER ANYWHERE — not in the text, not in an explanation. It is the one
+#     question on this shelf a pupil cannot get wrong, which is the whole point.
+#   * IT GOES AFTER THE RESOLUTION. Placed before the ending it deflates the
+#     payoff; the maths must pay off first.
+#   * One sentence. Concrete. Answerable in the reader's head or on one line.
+#
+#   Good:  «Agar stollar 6 emas, 8 kishilik boʻlsa, javob qanday oʻzgaradi?»
+#   Weak:  «Qoldiqli boʻlish yana qayerda uchraydi?»  (vague, not a question)
+#
+# ── Retrofitting older readings ──
+#   Do NOT rewrite the shelf. Apply this forward, and retrofit only a reading we
+#   actually film — and then lightly: the quotable line and the open_question.
+#   The existing readings work as readings.
+# ══════════════════════════════════════════════════════════════════════
+
+# ══════════════════════════════════════════════════════════════════════
 # ── ⛔ NO AUDIO ON THIS COLLECTION ──
 #
 # Formulas, x², 3/4 and 240 000 × 0,3 do not survive text-to-speech. Do NOT run

@@ -730,3 +730,25 @@
     .wp-exam { border-color: var(--cn-border); }
     .wp-exam-no { border-color: var(--cn-ink); }
 }
+
+/* ── Open question ────────────────────────────────────────────────────
+   The one question on a reading with no answer key. Styled apart from the
+   quiz so it does not read as "one more thing to get right". Pure CSS. */
+.cn-ask {
+    background: #fffdf7;
+    border: 1px solid #f0d9b5;
+    border-left: 5px solid #c9923a;
+    border-radius: 10px;
+    padding: 1rem 1.15rem;
+}
+.cn-ask h2 { color: #a5761f; }
+.cn-ask-q {
+    font-size: 1.08rem;
+    line-height: 1.55;
+    font-weight: 600;
+    color: #1a1410;
+}
+@media (prefers-color-scheme: dark) {
+    .cn-ask   { background: rgba(201,146,58,.09); border-color: rgba(201,146,58,.35); }
+    .cn-ask-q { color: inherit; }
+}

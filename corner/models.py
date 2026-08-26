@@ -118,6 +118,11 @@ class Story(models.Model):
                                               'Leave empty if there is no audio.')
     author       = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True,
                                      related_name='corner_stories')
+    open_question = models.CharField(
+        max_length=400, blank=True,
+        help_text='Optional transfer question with NO answer key, shown after the '
+                  'quiz. Same tool as the story, new situation — something to think '
+                  'about, not something to get wrong.')
     order        = models.PositiveIntegerField(default=0)
     is_published = models.BooleanField(default=True)
     views        = models.PositiveIntegerField(default=0)

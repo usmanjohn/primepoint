@@ -211,6 +211,7 @@ class Command(BaseCommand):
                     title=title,
                     defaults={
                         "summary": summary,
+                        "open_question": (data.get("open_question") or "")[:400],
                         "body": body,
                         "order": order,
                         "author": author,
@@ -227,6 +228,7 @@ class Command(BaseCommand):
                     self.stdout.write(self.style.SUCCESS(f"[{i}] created: {title} ({ng} grammar, {nq} questions)"))
                 elif republish:
                     story.summary = summary
+                    story.open_question = (data.get("open_question") or "")[:400]
                     story.body = body
                     story.order = order
                     story.author = author

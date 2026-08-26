@@ -56,6 +56,10 @@ STORIES = [
                 ],
             },
         ],
+        "open_question": (
+            "Agar narx avval 25 foizga tushib, keyin 25 foizga koʻtarilsa — "
+            "oxirgi narx yuqoridagidan farq qiladimi?"
+        ),
         "questions": [
             {
                 "text": "Xabarga koʻra, xaridorlar nimadan norozi boʻlishgan?",
@@ -96,12 +100,18 @@ doʻkonlar narxni <strong>25 foizga</strong> koʻtardi va yogʻ <strong>25 000</
 soʻm boʻldi.</p>
 
 <p>Oktyabrda hosil yaxshi boʻldi. Doʻkonlar «narxni <strong>25 foizga</strong>
-tushirdik» deb eʼlon qilishdi. Koʻpchilik yogʻ yana 20 000 soʻm boʻladi deb oʻyladi.</p>
+tushirdik» deb eʼlon qilishdi.</p>
 
-<p>Lekin yorliqda <strong>18 750</strong> soʻm turardi — eski narxdan atigi 1250 soʻm
-arzon.</p>
+<p>Dilnoza eʼlonni oʻqidi va hisobladi. «25 foiz oshgan edi, 25 foiz tushdi —
+demak eski narx», dedi u. Hamyoniga roppa-rosa <strong>20 000</strong> soʻm solib
+doʻkonga bordi.</p>
+
+<p>Lekin yorliqda <strong>18 750</strong> soʻm turardi. Kassir Dilnozaga
+<strong>1250</strong> soʻm qaytim berdi. Dilnoza qaytimga qarab turib qoldi:
+u umuman qaytim kutmagan edi.</p>
 
 <p>Sababi <span class="cn-word" data-tr="foiz olinayotgan qiymat">asos</span>da.
+Bir xil «25 foiz» ikki xil sondan olingan.
 Iyuldagi <span class="cn-word" data-tr="qiymatning koʻpayishi">oshish</span> 20 000
 dan hisoblangan, oktyabrdagi
 <span class="cn-word" data-tr="qiymatning pasayishi">kamayish</span> esa 25 000 dan.

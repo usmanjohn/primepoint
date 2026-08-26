@@ -35,6 +35,8 @@ DEFAULT = {
     'p_word':      _('Word'),
     'p_tr':        _('Translation'),
     'p_gram':      _('Grammar in this text'),
+    'ask':         _('Think about it'),
+    'ask_hint':    _('No answer key for this one — it is yours to work out.'),
 }
 
 # Prime Math's two shelves. Untranslated on purpose: this whole subject is
@@ -51,6 +53,8 @@ MATH = {
     'p_word':      'Atama',
     'p_tr':        'Taʼrifi',
     'p_gram':      'Qoida va formulalar',
+    'ask':         'Oʻylab koʻring',
+    'ask_hint':    'Bu savolning javobi berilmagan — oʻzingiz oʻylab koʻring.',
 }
 
 BY_SUBJECT = {

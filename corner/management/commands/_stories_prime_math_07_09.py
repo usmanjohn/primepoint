@@ -154,6 +154,10 @@ tuzib, sonlarni saralagan edi.</p>
                 "examples": ["EKUB(12, 18) = 6"],
             },
         ],
+        "open_question": (
+            "Bekatga uchinchi — har 8 daqiqada keladigan avtobus ham qoʻshilsa, "
+            "uchalasi birinchi marta soat nechada birga keladi?"
+        ),
         "questions": [
             {
                 "text": "Buvijon nima uchun 8:36 gacha kutishga qaror qildi?",
@@ -226,6 +230,11 @@ kerak. U ikkala sonning
 qaradi: 2 va 3. Ularning koʻpaytmasi — <strong>6</strong>.</p>
 
 <p>— Olti paket, — dedi Bekzod. — Har birida ikkita gul va uchta shirinlik.</p>
+
+<p>— Ikkalasi ham bitta juft sondan chiqdi-ya, — dedi buvijon.</p>
+
+<p>— Savol boshqa edi, — dedi Bekzod. — <strong>Uchrashuv — EKUK, ulashish —
+EKUB.</strong></p>
 
 <p>Aynan shu payt ikkita avtobus yonma-yon kelib toʻxtadi. Soat 8:36 edi.</p>
 """,

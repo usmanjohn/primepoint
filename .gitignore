@@ -318,3 +318,6 @@ pyvenv.cfg
 pip-selfcheck.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python,macos,venv,dotenv,django
+### storyvideo — rendered output, never committed ###
+storyvideo/out/
+storyvideo/frames/

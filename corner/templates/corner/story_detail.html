@@ -142,6 +142,16 @@
     </section>
     {% endif %}
 
+    {% if story.open_question %}
+    {# A transfer question with no answer key: it cannot be got wrong, so it is
+       the one place on the shelf a reader is asked to think past the text. #}
+    <section class="cn-ask mb-4">
+        <h2 class="h5 mb-1"><i class="bi bi-lightbulb me-1"></i>{{ story.labels.ask }}</h2>
+        <p class="small text-secondary mb-3">{{ story.labels.ask_hint }}</p>
+        <p class="cn-ask-q mb-0">{{ story.open_question }}</p>
+    </section>
+    {% endif %}
+
     <div class="cn-finish text-center py-3 mb-4">
         {% if is_finished %}
         <span class="badge rounded-pill text-bg-success fs-6 px-3 py-2">
