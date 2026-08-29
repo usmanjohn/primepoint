@@ -80,3 +80,42 @@ VIDEO = Video(
         outro(),
     ],
 )
+
+# ── Ovoz uchun matn (TTS). Raqamlar avtomatik soʻzga aylantiriladi. ──
+from spec import narrate
+
+narrate(VIDEO, [
+    "Yozda narx 25 foizga oshdi. Kuzda 25 foizga tushdi. "
+    "Savol oddiy: || narx *eski darajaga qaytdimi*?",
+
+    "Dilnoza eʼlonni oʻqidi. 25 foiz oshdi, 25 foiz tushdi — "
+    "demak *eski narx*. Hamyoniga roppa-rosa 20 000 soʻm solib "
+    "doʻkonga bordi.",
+
+    "Bir soniya oʻylab koʻring. || Siz ham shunday hisoblarmidingiz?",
+
+    "Iyun oyida bir litr yogʻ 20 000 soʻm edi. Iyul oxirida narx "
+    "25 foizga koʻtarildi va 25 000 soʻm boʻldi.",
+
+    "Uchta oyni yonma-yon qoʻyamiz. Iyunda 20 000. Iyulda 25 000. "
+    "Oktyabrda esa 18 750. | Punktir chiziq — eski narx. "
+    "Uchinchi ustun undan pastda toʻxtadi.",
+
+    "Dilnoza kassaga 20 000 soʻm berdi. Kassir unga *1250 soʻm qaytim* berdi. "
+    "Dilnoza qaytimga qarab qoldi — u qaytim kutmagan edi.",
+
+    "Demak narx *eski darajaga qaytmagan*. Ketma-ket oʻzgarishda "
+    "koʻpaytuvchilar koʻpaytiriladi.",
+
+    "Nega bunday boʻldi? Oshish 20 000 dan olingan: 5000 soʻm. "
+    "Tushish esa 25 000 dan: 6250 soʻm. "
+    "|| *Katta sondan olingan foiz koʻproq.*",
+
+    "Esda tutinglar. || *Bir xil foiz — bir xil pul emas.* Bir xil foizga "
+    "oshib, keyin tushgan narx eski darajaga qaytmaydi.",
+
+    "Endi oʻzingiz oʻylang. Agar narx avval 25 foizga tushib, keyin "
+    "koʻtarilsa — natija boshqacha boʻladimi? || Javobni izohda yozing.",
+
+    None,   # outro — jim, yozuvning oʻzi yetarli
+])

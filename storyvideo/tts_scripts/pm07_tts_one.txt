@@ -1,0 +1,33 @@
+Sherbek doskaga toʻqson bir deb yozdi va uni tub son deb atadi. <break time='0.45s' /> Rostdan ham shundaymi?
+
+<break time='2.5s' />
+
+Ikkiga boʻlinmaydi. Uchga ham, beshga ham boʻlinmaydi. <break time='0.3s' /> Demak tub son, degan xulosa chiqardi.
+
+<break time='2.5s' />
+
+Bir soniya oʻylab koʻring. <break time='0.45s' /> Siz yana nimani sinab koʻrardingiz?
+
+<break time='2.5s' />
+
+Afsona bitta savol berdi: <emphasis level='moderate'>yettiga urinib koʻrdingmi</emphasis>?
+
+<break time='2.5s' />
+
+Toʻqson birni yettiga boʻlamiz, oʻn uch chiqadi. <break time='0.3s' /> Demak toʻqson bir tub emas, <emphasis level='moderate'>murakkab son</emphasis>: yetti karra oʻn uch.
+
+<break time='2.5s' />
+
+Endi eng qizigʻi. Yetti va oʻn uchni koʻpaytirish uchun bir soniya kerak. <break time='0.3s' /> Teskari yoʻl esa, toʻqson birni koʻrib turib undan yetti bilan oʻn uchni topish, sinab koʻrishni talab qiladi. <break time='0.45s' /> Bir xil ikki son, ikki xil qiyinlik.
+
+<break time='2.5s' />
+
+Endi tasavvur qiling: har biri <emphasis level='moderate'>bir yuz xonali</emphasis> ikkita tub son. Ularni koʻpaytirish kompyuter uchun hamon bir zumlik ish. <break time='0.3s' /> Ajratish esa shunchalik ogʻirki, dunyodagi eng kuchli kompyuterlar ham uddalay olmaydi.
+
+<break time='2.5s' />
+
+Esda tutinglar. <break time='0.45s' /> Telefoningiz bankka ulanganda aynan shu qoidadan foydalanadi. Katta koʻpaytma hammaga ochiq, uni hosil qilgan ikkita tub son esa yashirin qoladi.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Toʻqson birni sinab koʻrayotganda nega oʻndan katta sonlarni tekshirish shart emas? <break time='0.45s' /> Izohda kutamiz.

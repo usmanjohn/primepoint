@@ -69,3 +69,34 @@ VIDEO = Video(
         outro(),
     ],
 )
+
+# ── Ovoz uchun matn (TTS). Raqamlar avtomatik soʻzga aylantiriladi. ──
+# ⚠️ Chegara: SSML bilan birga 2000 belgi. `cli.py script <slug> --one --ssml`
+#    oshib ketsa ogohlantiradi. Qisqa gap — yaxshi gap.
+from spec import narrate
+
+narrate(VIDEO, [
+    "Doʻkonda «tejamkor paket» yozuvi turibdi. || U haqiqatan arzonmi?",
+
+    "Afsona bir qoidani biladi: umumiy narxga qarab hukm chiqarib "
+    "boʻlmaydi. | Ikkalasini bir xil oʻlchovga — bir kilogrammga "
+    "keltirish kerak.",
+
+    "Yogurt. Kichik paket 400 g, narxi 12 000 soʻm. 400 g — bu "
+    "0,4 kilogramm, demak kilosi 30 000. | Katta paket bir kilogramm, "
+    "27 000. || *Rost — katta paket arzon.*",
+
+    "Endi ikkinchisi. || Xuddi shu yozuv. Rostmi?",
+
+    "Yuvish kukuni. Kichik paket 600 g, 21 000 soʻm — kilosi 35 000. "
+    "| Katta paket 3 kg, 111 000 soʻm — kilosi 37 000. || Katta paket "
+    "*2 000 soʻm qimmat*.",
+
+    "Yolgʻon yozilmagan — hech kim arzonroq demagan. Umumiy narxi baland "
+    "boʻlgani uchun foydali koʻrinadi, xolos.",
+
+    "Esda tutinglar. || *Katta paket arzon — bu qoida emas, taxmin.* "
+    "Birlik narx — qiymatni miqdorga boʻlish. Har safar tekshiring.",
+
+    None,   # outro — jim
+])

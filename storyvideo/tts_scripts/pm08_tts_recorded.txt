@@ -1,0 +1,37 @@
+Bir avtobus har oʻn ikki daqiqada keladi, ikkinchisi har oʻn sakkiz daqiqada. <break time='0.7s' /> Qachon birga kelishadi?
+
+<break time='1.5s' />
+
+Ertalab soat sakkizda ikkalasi birga kelib ketdi. Bekzod ulgurmay qoldi. <break time='0.4s' /> Yana qachon shunday boʻladi?
+
+<break time='1.5s' />
+
+Oʻzingiz oʻylab koʻring. <break time='0.7s' /> Oʻn ikki va oʻn sakkiz qayerda uchrashadi?
+
+<break time='1.5s' />
+
+Bekzod karralilarni yozdi. Birinchisi: oʻn ikki, yigirma toʻrt, oʻttiz olti. <break time='0.4s' /> Ikkinchisi: oʻn sakkiz, oʻttiz olti. <break time='0.7s' /> Ikkalasida ham bor birinchi son, <emphasis level='moderate'>oʻttiz olti</emphasis>. Eng kichik umumiy karrali.
+
+<break time='1.5s' />
+
+Tekshiramiz. Oʻn ikkini uchga koʻpaytirsak oʻttiz olti; oʻn sakkizni ikkiga koʻpaytirsak ham oʻttiz olti. Demak avtobuslar birga keladi, soat sakkiz-u oʻttiz olti.
+
+<break time='1.5s' />
+
+Endi boshqa savol. Sumkamda oʻn ikkita gul va oʻn sakkizta shirinlik bor. <break time='0.4s' /> Eng koʻpi bilan nechta bir xil paket chiqadi?
+
+<break time='1.5s' />
+
+Yana bir soniya. <break time='0.7s' /> Bu safar javob oʻttiz olti emas.
+
+<break time='1.5s' />
+
+Endi bor narsani boʻlamiz. Olti paket chiqadi: har birida ikkita gul, uchta shirinlik. <break time='0.7s' /> Olti, eng katta umumiy boʻluvchi.
+
+<break time='1.5s' />
+
+Esda tutinglar. <break time='0.7s' /> <emphasis level='moderate'>Qachon uchrashadi</emphasis> desa, eng kichik umumiy karrali. <break time='0.4s' /> <emphasis level='moderate'>Nechta guruh</emphasis> desa, eng katta umumiy boʻluvchi.
+
+<break time='1.5s' />
+
+Endi oʻzingiz oʻylang. Uchinchi avtobus har sakkiz daqiqada kelsa, uchalasi qachon birga keladi? <break time='0.7s' /> Izohda kutamiz.

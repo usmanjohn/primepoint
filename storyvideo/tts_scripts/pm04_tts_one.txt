@@ -1,0 +1,41 @@
+Oʻttiz yetti bola kafega bordi. Stollar olti kishilik. <break time='0.7s' /> Nechta stol kerak?
+
+<break time='1.5s' />
+
+Nodira opa sinfni kafega olib bordi. Sanaymiz: bir, ikki, uch... <break time='0.4s' /> hammasi oʻttiz yetti nafar bola.
+
+<break time='1.5s' />
+
+Eshikda ofitsiant kutib oldi. <break time='0.4s' /> Stollarimiz olti kishilik. Nechtasini tayyorlaymiz?
+
+<break time='1.5s' />
+
+Oʻylab koʻring. <break time='0.7s' /> Ayting-chi, oʻttiz yettini oltiga boʻlsangiz nima chiqadi?
+
+<break time='1.5s' />
+
+Sardor darrov hisobladi. <break time='0.4s' /> Javob <emphasis level='moderate'>olti</emphasis>.
+
+<break time='1.5s' />
+
+Bolalar oʻtira boshlashdi. Oltita stol toʻldi, oʻttiz olti bola joylashdi.
+
+<break time='1.5s' />
+
+Bekzod esa turgan joyida qoldi. <break time='0.7s' /> <emphasis level='moderate'>Bitta bolaga oʻrindiq yetmadi.</emphasis>
+
+<break time='1.5s' />
+
+Hisob toʻgʻri edi, lekin qoldiq unutilgan. Oʻttiz yettini oltiga boʻlsak, olti chiqadi va bitta qoladi. <break time='0.4s' /> Javob olti emas, <emphasis level='moderate'>yetti</emphasis>.
+
+<break time='1.5s' />
+
+Ofitsiant yettinchi stolni surdi. Endi hamma joylashdi.
+
+<break time='1.5s' />
+
+Tekshiramiz. Oltita stolda oltitadan, oʻttiz olti. Ustiga bitta qoldiq. <break time='0.4s' /> Jami oʻttiz yetti.
+
+<break time='1.5s' />
+
+Esda tutinglar. <break time='0.7s' /> <emphasis level='moderate'>Kamida nechta kerak</emphasis> desa, qoldiq uchun doim yana bitta. Teng boʻlinish har doim chiqavermaydi.

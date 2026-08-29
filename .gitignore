@@ -321,3 +321,10 @@ pip-selfcheck.json
 ### storyvideo — rendered output, never committed ###
 storyvideo/out/
 storyvideo/frames/
+# tayyor mp4 lar (~10 MB dan) va yozib olingan ovozlar — hech qachon commit qilinmaydi
+# (izoh alohida qatorda: .gitignore qator ichidagi # ni naqshning bir qismi deb oʻqiydi)
+storyvideo/videos/
+storyvideo/tts_audios/
+# storyvideo/tts_scripts/ ATAYLAB ignore qilinmagan: kichik matn fayllari va
+# qaysi video qaysi matndan yozib olinganining yagona yozuvi.
+# («scripts» deb atalmagan — yuqoridagi venv bloki [Ss]cripts ni ignore qiladi.)

@@ -223,3 +223,204 @@ def ask(question, dur=6.4, head=None, note="", cam="push"):
             + "".join('<span class="tick on"></span>' for _ in range(3)) + '</div>')
     return Scene(dur, body, cam=cam, dark=True, name="ask",
                  note=note or f"Savol: {question} — javobini aytmang.")
+
+
+# ── Matematika olami: beats for the history films ────────────────────────
+# That shelf is a different job. Its texts belong to no lesson and nobody in
+# them makes a mistake, so the "hook -> claim -> consequence -> correct" arc
+# has nothing to grip. The arc here is:
+#
+#     place & time  ->  the question  ->  the obstacle  ->  the method
+#                   ->  the number    ->  what survives
+#
+# All three builders are compositions of primitives that already exist -- no new
+# CSS, no new drawing code. `rule(head="Nima qoldi")` closes the film.
+
+def era(place, year, line=None, dur=6.4, cam="push", note=""):
+    """A dark chapter card: where, and when. The film's punctuation.
+
+    Dark on purpose: it is the only thing in these videos that interrupts, so
+    two or three of them give a 75-second film the feel of chapters.
+    """
+    body = [P.line(place, "lbl lbl--sm", at=0.0, anim="fade"),
+            P.line(year, "hero", at=0.45, anim="pop", dur=0.7)]
+    if line:
+        body.append(P.line(line, "cap", at=1.7, anim="rise"))
+    return Scene(dur, "".join(body), cam=cam, dark=True, name=f"era({year})",
+                 note=note or f"{place}, {year}. {line or ''}")
+
+
+def portrait(who, name=None, dates=None, caption="", dur=7.4, size=330,
+             mood="smile", cam="push", note=""):
+    """The person, standing, with their name and dates under them."""
+    body = [f'<div class="spot" data-at="0.000" data-dur="0.7" data-anim="pop">'
+            f'{P._people.figure(who, size=size, mood=mood)}</div>',
+            P.line(name or who, "ttl", at=0.9, anim="rise", dur=0.6)]
+    if dates:
+        body.append(P.line(dates, "lbl lbl--sm", at=1.5, anim="fade"))
+    if caption:
+        body.append(P.line(caption, "cap", at=2.4, anim="rise"))
+    return Scene(dur, "".join(body), cam=cam, name=f"portrait({who})",
+                 note=note or f"{name or who} — {caption or dates or ''}")
+
+
+def fact(big, label, cap=None, dur=6.6, cam="pull", dark=False, note=""):
+    """One number or one word, held. No arithmetic and no argument -- weight.
+
+    This is the beat the lesson videos do not have: sometimes the right move is
+    to stop and let a number sit there.
+    """
+    body = [P.line(big, "hero", at=0.0, anim="pop", dur=0.7),
+            P.line(label, "lbl", at=0.5, anim="rise")]
+    if cap:
+        body.append(P.line(cap, "cap", at=1.8, anim="rise"))
+    return Scene(dur, "".join(body), cam=cam, dark=dark, name=f"fact({big})",
+                 note=note or f"{big} — {label}. {cap or ''}")
+
+
+# ── Koreys: beats for the language films ─────────────────────────────────
+# A third register, and it needed its own arc for the same reason Matematika
+# olami did. A language reading has no wrong answer to catch, so
+# claim -> consequence -> correct has nothing to grip. What a language DOES
+# have is structure, and structure is countable:
+#
+#     the word  ->  where it comes from  ->  what it unlocks  ->  say it
+#               ->  the rule  ->  the question  ->  go and practise
+#
+# Every builder is a composition of wordkit.py, which is to language what
+# primitives.py is to maths. Nothing here is decoration: `word_family` counts
+# its words with the same counter machinery that counts chairs, so "nine words
+# from one syllable" is a quantity the viewer can check, not a claim.
+
+import wordkit as W
+
+
+def word(hangul, gloss=None, hanja=None, uz=None, dur=6.0, cam="push",
+         head=None, dark=False, note="", size=None):
+    """One Korean word, held: 한글, how to say it, what it means.
+
+    The transliteration is derived by korean.py rather than typed, so the line
+    on screen and the line the voice reads are the same line.
+    """
+    body = ""
+    if head:
+        body += P.line(head, "lbl lbl--sm", at=0.0, anim="fade")
+    body += W.pron(hangul, gloss=gloss, uz=uz, hanja=hanja,
+                   at=0.2 if head else 0.0, size=size)
+    return Scene(dur, body, cam=cam, dark=dark, name=f"word({hangul})",
+                 note=note or f"{hangul} — {gloss or ''}")
+
+
+def word_family(root, words, hanja=None, meaning=None, label="ta soʻz",
+                dur=None, lead=0.5, step=0.5, cols=2, cam="rise", note=""):
+    """A root, and everything it unlocks, dealt out one at a time.
+
+    THE Korean scene. 출(出) gives nine words, and nine is a quantity: the
+    counter counts `.fam__w` off the live DOM, so it cannot get ahead of the
+    picture. This is the maths format translated into a language rather than
+    replaced by one.
+
+    words: [(word, hanja_or_None, gloss), ...]
+    """
+    grid, secs = W.family(words, root=root, at=lead + 1.0, step=step, cols=cols)
+    head = P.counters(P.counter(len(words), label, at=lead + 1.0, dur=secs,
+                                counts=".fam__w"))
+    card = W.root_card(root, hanja=hanja, meaning=meaning, at=lead)
+    return Scene(dur or (lead + 1.0 + secs + 2.0), head + card + grid,
+                 cam=cam, top=True, name=f"family({root})",
+                 counts=[len(words)],
+                 note=note or f"{root} — {len(words)} ta soʻz")
+
+
+def spell(syllable, caption=None, head=None, dur=6.4, cam="push", note=""):
+    """A syllable block taken apart and put back together: ㅎ + ㅏ + ㄴ → 한.
+
+    The one beat in the kit that is a mechanism rather than an arrival. Korean
+    writing is a diagram of a syllable; somebody who has only ever seen it as a
+    wall of shapes cannot know that until they watch one being built.
+    """
+    body = P.line(head, "lbl lbl--sm", at=0.0, anim="fade") if head else ""
+    grid, secs = W.jamo(syllable, at=0.4 if head else 0.2)
+    body += grid
+    if caption:
+        body += P.line(caption, "cap", at=secs + 0.9, anim="rise")
+    return Scene(dur, body, cam=cam, name=f"spell({syllable})",
+                 note=note or f"{syllable} = harflardan yigʻiladi")
+
+
+def shape(zone, line, head=None, dur=7.0, cam="push", note=""):
+    """A letter's shape explained by the mouth that makes it.
+
+    ㄱ is the tongue humped at the back of the throat; the letter is a picture
+    of that. 훈민정음 해례 says so in as many words, which is why this is a
+    diagram of an argument and not an illustration beside one.
+    """
+    body = P.line(head, "lbl lbl--sm", at=0.0, anim="fade") if head else ""
+    body += W.mouth(zone, at=0.3)
+    body += P.line(line, "ttl", at=1.6, anim="rise", dur=0.6)
+    return Scene(dur, body, cam=cam, name=f"shape({zone})",
+                 note=note or line)
+
+
+def practice(title, sub=None, head="Endi oʻzingiz sinab koʻring",
+             dur=5.0, cam="push", note=""):
+    """The endcard that sends them somewhere to actually use it.
+
+    It sits AFTER `ask`, which breaks that scene's own rule ("nothing that
+    follows it could be a reply") only in appearance: a signpost is not an
+    answer. `ask` stays the last idea in the film; this is the door out of it.
+    """
+    body = (P.line(head, "lbl lbl--sm", at=0.0, anim="fade")
+            + W.cta(title, sub, at=0.5))
+    return Scene(dur, body, cam=cam, dark=True, name="practice",
+                 note=note or f"Powerty: {title}")
+
+
+def echo(hangul, gloss=None, hanja=None, head="Eshiting va takrorlang",
+         dur=None, cam="push", note="", size=None):
+    """The protected beat: the word on screen, said twice by a native voice.
+
+    This scene is DELIBERATELY SILENT in `narrate(...)` -- pass None for it.
+    That is not a gap in the film, it is the point: `voice.mix` puts narration
+    only into scenes that have some, so the hole this leaves is exactly where
+    koaudio.py lays the Korean voice. The maths films protect one silent scene
+    so the viewer can do the sum; this one protects it so they can say the word
+    out loud before the film moves on.
+    """
+    body = (P.line(head, "lbl lbl--sm", at=0.0, anim="fade")
+            + W.pron(hangul, gloss=gloss, hanja=hanja, at=0.5, speak=True,
+                     size=size)
+            + W.say_again(hangul, at=2.6))
+    return Scene(dur or 4.4, body, cam=cam, name=f"echo({hangul})",
+                 note=note or f"{hangul} — jim sahna, koreyscha ovoz.")
+
+
+def order(rows, head=None, verdict=None, dur=None, lead=0.4, step=0.9,
+          cam="push", note=""):
+    """The same sentence in three languages, aligned in columns.
+
+    rows: [(label, [(text, "s"|"o"|"v"), ...], is_korean), ...]
+    """
+    body = P.line(head, "lbl lbl--sm", at=0.0, anim="fade") if head else ""
+    grid, secs = W.order_strip(rows, at=lead + (0.5 if head else 0), step=step)
+    body += grid
+    end = lead + secs + 0.6
+    if verdict:
+        body += P.line(verdict, "ttl", at=end, anim="pop", dur=0.6)
+        end += 1.4
+    return Scene(dur or (end + 1.6), body, cam=cam, top=True,
+                 name="order", note=note or (verdict or "uch tilda bir gap"))
+
+
+def pairs(items, head=None, tail=None, dur=None, lead=0.4, step=0.6,
+          cam="push", note=""):
+    """The qoʻshimcha ↔ 조사 table: -ni = 을/를, -ga = 에, -ning = 의."""
+    body = P.line(head, "lbl lbl--sm", at=0.0, anim="fade") if head else ""
+    grid, secs = W.pair_rows(items, at=lead + (0.4 if head else 0), step=step)
+    body += grid
+    end = lead + secs + 0.5
+    if tail:
+        body += P.line(tail, "ttl", at=end, anim="rise", dur=0.6)
+        end += 1.4
+    return Scene(dur or (end + 1.5), body, cam=cam, name="pairs",
+                 note=note or "qoʻshimchalar juft-juft mos keladi")

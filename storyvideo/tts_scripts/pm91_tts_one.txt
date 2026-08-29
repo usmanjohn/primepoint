@@ -1,0 +1,37 @@
+Buvijonning olma kompoti: toʻrt yuz gramm shakar va ming olti yuz gramm suv. <break time='0.45s' /> Kompot juda shirin chiqdi. Nima qilamiz?
+
+<break time='2.5s' />
+
+Retsept tagida buvijonning bir qatorlik izohi bor: <emphasis level='moderate'>juda shirin boʻlsa, suv qoʻsh. Shakar qoʻshma.</emphasis>
+
+<break time='2.5s' />
+
+Bir soniya oʻylab koʻring. <break time='0.45s' /> Nega shakar qoʻshmaslik kerak?
+
+<break time='2.5s' />
+
+Dilnoza bu izohni tushunmadi. Axir shirinlikni shakar belgilaydi-ku.
+
+<break time='2.5s' />
+
+Hisoblab koʻramiz. Sof shakar toʻrt yuz gramm, butun massa ikki ming gramm, demak <emphasis level='moderate'>yigirma foiz</emphasis>. <break time='0.3s' /> Dilnoza besh yuz gramm suv qoʻshdi: shakar hamon toʻrt yuz, massa esa ikki ming besh yuz. Endi oʻn olti foiz.
+
+<break time='2.5s' />
+
+Ustunlarga qarang. Foiz yigirmadan oʻn oltiga, keyin oʻnga tushdi. <break time='0.45s' /> Shakar ustuni esa <emphasis level='moderate'>qimirlamadi</emphasis>, u hech qayoqqa ketmadi. Faqat maxraj kattalashdi.
+
+<break time='2.5s' />
+
+Demak shakar qoʻshish kerak emas edi. <break time='0.45s' /> Kerak boʻlgani, <emphasis level='moderate'>suv</emphasis>: u ulushni tushiradi.
+
+<break time='2.5s' />
+
+Mehmonlar oʻn foizli qilishni soʻradi. Dilnoza teskari tomondan yurdi: agar toʻrt yuz gramm butun massaning oʻn foizi boʻlsa, massa toʻrt ming gramm boʻlishi shart. <break time='0.3s' /> Hozir ikki ming besh yuz bor, demak yana <emphasis level='moderate'>ming besh yuz gramm suv</emphasis>.
+
+<break time='2.5s' />
+
+Esda tutinglar. <break time='0.45s' /> <emphasis level='moderate'>Suv qoʻshilsa shakar oʻzgarmaydi, faqat maxraj kattalashadi.</emphasis> Shuning uchun foiz tushadi.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Kompotni shirinroq qilish uchun nima qilish kerak va nega? <break time='0.45s' /> Izohda kutamiz.

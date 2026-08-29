@@ -1,0 +1,33 @@
+Oʻqituvchi sinfga uzoq davom etadigan vazifa berdi: birdan bir yuzgacha boʻlgan hamma sonni qoʻshing. <break time='0.45s' /> Bu bir soatlik ish edi.
+
+<break time='2.5s' />
+
+Rivoyat qilishlaricha, kichkina Gauss oʻshanda boshlangʻich sinfda oʻqir edi. <break time='0.3s' /> Oʻqituvchi vazifani aytdi va bolalar qoʻsha boshladi.
+
+<break time='2.5s' />
+
+Siz qanday qilardingiz? <break time='0.45s' /> Birma-bir qoʻshib chiqarmidingiz?
+
+<break time='2.5s' />
+
+Sardor birinchisidan boshladi: bir, uch, olti, oʻn... <break time='0.3s' /> va oldinda yana toʻqson olti ta son turardi.
+
+<break time='2.5s' />
+
+Gauss tezroq qoʻshmagan. <break time='0.45s' /> U sonlarni <emphasis level='moderate'>boshqacha joylashtirgan</emphasis>: qatorni ikki uchidan juftlagan. Bir va bir yuz, bir yuz bir. Ikki va toʻqson toʻqqiz, yana bir yuz bir. Uch va toʻqson sakkiz, yana bir yuz bir. <break time='0.3s' /> Biri oshadi, biri kamayadi. Yigʻindi <emphasis level='moderate'>oʻzgarmaydi</emphasis>.
+
+<break time='2.5s' />
+
+Yuzta son ikkitadan juftlansa, ellikta juftlik chiqadi. Har birining yigʻindisi bir yuz bir. <break time='0.3s' /> Ellikni bir yuz birga koʻpaytiramiz, <emphasis level='moderate'>besh ming ellik</emphasis>.
+
+<break time='2.5s' />
+
+Bu usul faqat bir yuz uchun emas, istalgan son uchun ishlaydi. <break time='0.3s' /> Tekshiramiz: birdan oʻngacha. Oʻnni oʻn birga koʻpaytirib ikkiga boʻlsak, <emphasis level='moderate'>ellik besh</emphasis>.
+
+<break time='2.5s' />
+
+Esda tutinglar. <break time='0.45s' /> Gauss <emphasis level='moderate'>savolni oʻzgartirgan</emphasis>. Bitta masalani yechish bitta masalani hal qiladi. Namunani koʻrish esa cheksiz koʻpini.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Birdan minggacha boʻlgan sonlar yigʻindisi qancha boʻladi? <break time='0.45s' /> Izohda kutamiz.

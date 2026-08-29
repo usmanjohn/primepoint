@@ -283,3 +283,129 @@ body.guides .pipguide { display: block; }
             border-top: 6px dashed var(--ink-faint); transform-origin: 0 50%; }
 .bar__ref span { position: absolute; right: 4px; top: -50px; font-family: var(--ff-body);
                  font-weight: 800; font-size: 36px; color: var(--ink-faint); }
+
+/* ═════════════════════════════════════════════════════════════ KOREYS ══
+ * The language kit. Same paper, same gold, same Playfair for display type --
+ * a Korean video and a maths video have to look like the same publication.
+ *
+ * Only one thing is genuinely new: Hangul has no glyphs in the vendored
+ * Playfair/Mulish, so it needs its own stack. macOS ships Apple SD Gothic Neo,
+ * so a render still needs no network; the later names are there so the page
+ * survives being opened on another machine.
+ */
+:root {
+  --ff-ko: 'Apple SD Gothic Neo', 'Noto Sans KR', 'Nanum Gothic',
+           'Malgun Gothic', sans-serif;
+  --ko-blue: #3b6ea5;          /* the "this is Korean" accent, next to gold */
+}
+.ko { font-family: var(--ff-ko); font-weight: 800; letter-spacing: -.01em; }
+
+/* ── the word card: Hangul, how to say it, what it means ──────────────── */
+.pron { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.pron__k { font-family: var(--ff-ko); font-weight: 800; font-size: 190px;
+           line-height: 1.06; color: var(--ink); text-align: center; }
+.pron__h { font-family: var(--ff-ko); font-weight: 600; font-size: 54px;
+           color: var(--ink-faint); letter-spacing: .06em; }
+/* The transliteration is gold because it is the thing the viewer is meant to
+ * repeat out loud -- the one line on the card that is an instruction. */
+.pron__u { font-family: var(--ff-head); font-weight: 800; font-size: 76px;
+           color: var(--gold); font-style: italic; }
+.pron__g { font-family: var(--ff-body); font-weight: 700; font-size: 50px;
+           color: var(--ink-soft); text-align: center; max-width: 860px; }
+.scene--dark .pron__k { color: var(--paper); }
+.scene--dark .pron__g { color: #cdd9e2; }
+
+/* ── the root family: one syllable, and everything it unlocks ─────────── */
+.root { display: flex; flex-direction: column; align-items: center; gap: 4px;
+        background: #fff; border: 5px solid var(--gold); border-radius: 36px;
+        padding: 22px 54px 26px; }
+.root__k { font-family: var(--ff-ko); font-weight: 800; font-size: 128px;
+           line-height: 1; color: var(--ink); }
+.root__h { font-family: var(--ff-ko); font-weight: 600; font-size: 46px;
+           color: var(--gold); }
+.root__m { font-family: var(--ff-body); font-weight: 700; font-size: 40px;
+           color: var(--ink-soft); }
+
+.fam { display: grid; grid-template-columns: repeat(var(--fcols, 2), 1fr);
+       gap: 16px 26px; width: var(--content-w); }
+.fam__w { display: flex; align-items: baseline; gap: 14px;
+          background: var(--paper-2); border-radius: 22px; padding: 12px 20px; }
+.fam__w b { font-family: var(--ff-ko); font-weight: 800; font-size: 62px;
+            line-height: 1.1; color: var(--ink); flex: none; }
+.fam__w i { font-family: var(--ff-ko); font-weight: 600; font-size: 36px;
+            color: var(--gold); font-style: normal; flex: none; }
+.fam__w span { font-family: var(--ff-body); font-weight: 600; font-size: 36px;
+               color: var(--ink-soft); line-height: 1.14; }
+/* The shared syllable is the whole point, so it is the only coloured letter. */
+.fam__w b em { font-style: normal; color: var(--gold); }
+
+/* ── the syllable block being assembled: ㅎ + ㅏ + ㄴ → 한 ─────────────── */
+.jamo { display: flex; align-items: center; justify-content: center; gap: 20px;
+        flex-wrap: wrap; }
+.jamo__l { font-family: var(--ff-ko); font-weight: 800; font-size: 130px;
+           line-height: 1; width: 168px; height: 168px; border-radius: 30px;
+           background: #fff; border: 5px solid var(--paper-3);
+           display: flex; align-items: center; justify-content: center; }
+.jamo__l--c { border-color: var(--ko-blue); color: var(--ko-blue); }
+.jamo__l--v { border-color: var(--gold); color: var(--gold); }
+.jamo__op { font-family: var(--ff-head); font-weight: 800; font-size: 76px;
+            color: var(--ink-faint); }
+.jamo__out { font-family: var(--ff-ko); font-weight: 800; font-size: 168px;
+             line-height: 1; width: 214px; height: 214px; border-radius: 34px;
+             background: var(--gold); color: #fff;
+             display: flex; align-items: center; justify-content: center; }
+
+/* ── the mouth diagram: why the letter is shaped the way it is ────────── */
+.mouthfig { width: 640px; }
+/* The silhouette is what makes it read as a face, so it is the firmest line. */
+.mouthfig .m-face   { fill: none; stroke: var(--ink-soft); stroke-width: 6;
+                      stroke-linejoin: round; stroke-linecap: round; }
+.mouthfig .m-cav    { fill: none; stroke: var(--ink-faint); stroke-width: 5;
+                      stroke-linecap: round; }
+.mouthfig .m-teeth  { stroke-width: 6; }
+/* The tongue is a solid body, not an outline -- an outlined tongue inside an
+   outlined head is unreadable at arm's length on a phone. */
+.mouthfig .m-tongue { fill: var(--paper-3); stroke: var(--ink-faint);
+                      stroke-width: 4; stroke-linejoin: round; }
+.mouthfig .m-hot    { fill: none; stroke: var(--gold); stroke-width: 18;
+                      stroke-linecap: round; stroke-linejoin: round; }
+.mouthfig .m-lbl    { font-family: var(--ff-body); font-weight: 700; font-size: 38px;
+                      fill: var(--ink-soft); }
+.mouthfig .m-ko     { font-family: var(--ff-ko); font-weight: 800; font-size: 92px;
+                      fill: var(--ko-blue); }
+
+/* ── the endcard that sends them to a practice ────────────────────────── */
+.cta { display: flex; flex-direction: column; align-items: center; gap: 18px;
+       background: #22323f; border: 5px solid var(--gold); border-radius: 40px;
+       padding: 46px 64px; max-width: var(--content-w); }
+.cta__t { font-family: var(--ff-head); font-weight: 800; font-size: 68px;
+          color: var(--gold); text-align: center; line-height: 1.1; }
+.cta__s { font-family: var(--ff-body); font-weight: 700; font-size: 44px;
+          color: #cdd9e2; text-align: center; }
+
+/* ── word order: the same sentence in three languages, in COLUMNS ─────── */
+.ord { display: flex; flex-direction: column; gap: 30px; width: var(--content-w); }
+.ord__lbl { font-family: var(--ff-body); font-weight: 700; font-size: 38px;
+            color: var(--ink-faint); display: block; margin-bottom: 10px; }
+/* Fixed columns, not flow: the whole point is that the colours line up on two
+   rows and do not on the third. Ragged rows hide exactly that. */
+.ord__row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.ord__w { font-family: var(--ff-body); font-weight: 800; font-size: 50px;
+          line-height: 1.2; text-align: center; padding: 14px 8px;
+          border-radius: 20px; background: var(--paper-2); color: var(--ink);
+          border: 4px solid transparent; }
+.ord__w.ko { font-family: var(--ff-ko); font-size: 54px; }
+.ord__w--s { border-color: var(--ko-blue); color: var(--ko-blue); }
+.ord__w--o { border-color: var(--gold);    color: #9a6c1f; }
+.ord__w--v { border-color: var(--green);   color: var(--green); }
+
+/* ── qoʻshimcha ↔ 조사 ────────────────────────────────────────────────── */
+.pairs { display: flex; flex-direction: column; gap: 18px; width: var(--content-w); }
+.pair { display: flex; align-items: center; gap: 26px; padding: 14px 30px;
+        background: var(--paper-2); border-radius: 24px; }
+.pair b { font-family: var(--ff-ko); font-weight: 800; font-size: 62px;
+          color: var(--ink); min-width: 210px; }
+.pair i { font-family: var(--ff-head); font-weight: 800; font-size: 46px;
+          color: var(--ink-faint); font-style: normal; }
+.pair span { font-family: var(--ff-body); font-weight: 700; font-size: 46px;
+             color: var(--ink-soft); }

@@ -1,0 +1,33 @@
+Telefoningiz qaysi videoni koʻrsatishni tanlaganda, ekranda <emphasis level='moderate'>algoritm</emphasis> degan soʻz paydo boʻladi. <break time='0.45s' /> Bu soʻz IT sohasidan kelmagan.
+
+<break time='2.5s' />
+
+Xorazm, taxminan yetti yuz saksoninchi yil. <break time='0.3s' /> Muhammad ibn Muso al-Xorazmiy shu yerda tugʻilgan. Nomining oʻzi buni aytib turibdi.
+
+<break time='2.5s' />
+
+Umrining katta qismi Bagʻdodda, <emphasis level='moderate'>Donishmandlik uyi</emphasis>da oʻtdi. <break time='0.3s' /> U yerda butun dunyodan kelgan kitoblar tarjima qilinardi.
+
+<break time='2.5s' />
+
+Taxminan sakkiz yuz yigirmainchi yil. <break time='0.45s' /> U bir kitob yozdi, va uning nomida ikkita amal bor edi: al-jabr va al-muqobala.
+
+<break time='2.5s' />
+
+Birinchi soʻz butun bir fanning nomiga aylandi: <emphasis level='moderate'>algebra</emphasis>. <break time='0.3s' /> Ikkinchisi esa olimning ismidan qoldi: Yevropada uning nomi lotinchada <emphasis level='moderate'>Algoritmi</emphasis> deb yozilgan edi. <break time='0.45s' /> Keyin maʼnosi kengaydi, natijaga olib boradigan aniq qadamlar ketma-ketligi.
+
+<break time='2.5s' />
+
+Yana bir kitobi hind raqamlari haqida edi. Oʻshanda Yevropa rim raqamlari bilan hisoblardi, bunday yozuvda ustunda qoʻshish deyarli imkonsiz. <break time='0.45s' /> Biz bugun ishlatadigan razryadli tizim aynan shu kitoblar orqali tarqaldi.
+
+<break time='2.5s' />
+
+Uning ichida esa eng sokin va eng kuchli belgi bor edi: <break time='0.45s' /> <emphasis level='moderate'>nol</emphasis>.
+
+<break time='2.5s' />
+
+Bugun daftarda son yozganingizda ham, telefoningiz sizga video tanlaganda ham, <break time='0.45s' /> ikkalasining orqasida bitta xorazmlik olimning ishi turibdi.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Rim raqamlari bilan boʻlish amalini bajarishga urinib koʻring, nega bunchalik qiyin? <break time='0.45s' /> Izohda kutamiz.

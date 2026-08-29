@@ -24,6 +24,22 @@ CAST = {
     "Sherbek":    {"shirt": "#8d6bb0", "skin": "l", "hair": "#3a2a22"},
     "Nodira opa": {"shirt": "#a8506e", "skin": "l", "hair": "#241b17", "long": True, "adult": True},
     "ofitsiant":  {"shirt": "#2f3a44", "skin": "m", "hair": "#241b17", "adult": True, "apron": True},
+    # Grandparents, added 2026-08-29 for PM-91 (buvijonning kompoti) and PM-93
+    # (bobo va nevara). Grey hair is the only thing that reads as "old" at this
+    # size -- the figure itself is the same, so nothing else needed changing.
+    "Buvijon":    {"shirt": "#7f8f9c", "skin": "l", "hair": "#b9b2ab", "long": True, "adult": True},
+    "Bobo":       {"shirt": "#6d7f6a", "skin": "m", "hair": "#c2bcb4", "adult": True},
+    # PM-97 uchun — u ham hisobga kiradi: 0 ta soch.
+    "Kal aka":    {"shirt": "#c98a3e", "skin": "m", "hair": "#241b17",
+                   "adult": True, "bald": True},
+    # ── Matematika olami: tarixiy siymolar ──
+    # Salla va soqol — bitta figurada oʻn ikki asr farqni koʻrsatadigan yagona narsa.
+    "Al-Xorazmiy": {"shirt": "#3f6f8f", "skin": "m", "hair": "#241b17", "adult": True,
+                    "turban": "#c3b394", "beard": "#3a2f28"},
+    "Beruniy":     {"shirt": "#6d8f6a", "skin": "m", "hair": "#241b17", "adult": True,
+                    "turban": "#aebfa6", "beard": "#4a3d34"},
+    "Ulugʻbek":    {"shirt": "#7a5aa0", "skin": "l", "hair": "#241b17", "adult": True,
+                    "turban": "#c2b2d2", "beard": "#3a2f28"},
 }
 
 # Extras for filling a crowd -- never named, just varied so 37 children look
@@ -42,7 +58,7 @@ MOUTHS = {
 
 
 def _person_svg(shirt, skin, hair, mood="smile", long_hair=False, adult=False,
-                apron=False, arms="down"):
+                apron=False, arms="down", bald=False, turban=None, beard=None):
     """One figure in a 100x175 viewBox, feet on the baseline.
 
     Kept deliberately simple in shape but complete in parts -- hair, eyes, a real
@@ -81,8 +97,33 @@ def _person_svg(shirt, skin, hair, mood="smile", long_hair=False, adult=False,
     out.append(f'<rect x="44" y="{body_top-12}" width="12" height="16" rx="6" fill="{sk}"/>')
     out.append(f'<circle cx="50" cy="46" r="34" fill="{sk}"/>')
 
-    # hair
-    if long_hair:
+    # beard -- drawn before the eyes and mouth so they sit on top of it
+    if beard:
+        out.append(f'<path d="M 19 48 Q 16 95 50 95 Q 84 95 81 48 Q 78 78 50 78 '
+                   f'Q 22 78 19 48 Z" fill="{beard}"/>')
+
+    # hair -- or, for PM-97's joke, none at all. A bald head is not just a gag
+    # there: it is the reason the count is 200 001 and not 200 000, because 0 is
+    # a legitimate number of hairs. So he gets a small shine instead of hair.
+    if turban:
+        # Salla: hair's shape, but taller and wider, with a wrap line and a knot.
+        # This is what makes the Matematika olami history films read as history
+        # at a glance -- the same figure, eight centuries earlier.
+        # A turban is WIDER than the head and sits above the brow. The first
+        # attempt was a hair-shaped dome and read as a beanie; a wide low ellipse
+        # plus a wrap line and a top knot is what makes it legible at 300px.
+        # Keep the whole shape INSIDE the 0..175 viewBox -- an <svg> clips to it,
+        # and a taller ellipse came out flat-topped. Wrap lines are inset so
+        # their round caps do not poke past the fabric.
+        out.append(f'<ellipse cx="50" cy="25" rx="45" ry="21" fill="{turban}"/>')
+        out.append(f'<path d="M 13 27 Q 50 45 87 27" stroke="#00000026" '
+                   f'stroke-width="7" fill="none" stroke-linecap="round"/>')
+        out.append(f'<path d="M 13 17 Q 50 33 87 17" stroke="#00000018" '
+                   f'stroke-width="6" fill="none" stroke-linecap="round"/>')
+    elif bald:
+        out.append(f'<ellipse cx="42" cy="26" rx="11" ry="6" fill="#ffffff" '
+                   f'opacity="0.30" transform="rotate(-18 42 26)"/>')
+    elif long_hair:
         out.append(f'<path d="M 16 52 Q 14 8 50 8 Q 86 8 84 52 L 84 74 Q 78 44 50 44 '
                    f'Q 22 44 16 74 Z" fill="{hair}"/>')
     else:
@@ -115,13 +156,18 @@ def figure(who=None, size=170, mood="smile", arms="down", i=0):
         c = CAST[who]
         shirt, skin, hair = c["shirt"], c["skin"], c["hair"]
         long_hair, adult, apron = c.get("long", False), c.get("adult", False), c.get("apron", False)
+        bald = c.get("bald", False)
+        turban, beard = c.get("turban"), c.get("beard")
     else:
         shirt = EXTRA_SHIRTS[i % len(EXTRA_SHIRTS)]
         skin  = EXTRA_SKIN[(i // 3) % len(EXTRA_SKIN)]
         hair  = ["#2b211c", "#241b17", "#3a2a22"][i % 3]
         long_hair, adult, apron = (i % 3 == 1), False, False
+        bald = False
+        turban = beard = None
 
-    inner = _person_svg(shirt, skin, hair, mood, long_hair, adult, apron, arms)
+    inner = _person_svg(shirt, skin, hair, mood, long_hair, adult, apron, arms,
+                        bald, turban, beard)
     w = round(size * 100 / 175)
     return (f'<svg class="fig" viewBox="0 0 100 175" width="{w}" height="{round(size)}" '
             f'fill="none">{inner}</svg>')

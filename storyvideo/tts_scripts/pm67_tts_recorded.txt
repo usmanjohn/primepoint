@@ -1,0 +1,37 @@
+Bogʻning uzunligi oʻn sakkiz metr, eni oʻn metr. <break time='0.7s' /> Necha metr panjara kerak?
+
+<break time='1.5s' />
+
+Sherbek bogʻni oʻlchadi. Oʻn sakkiz va oʻnni qoʻshdi, yigirma sakkiz chiqdi. <break time='0.4s' /> Menga yigirma sakkiz metr panjara bering.
+
+<break time='1.5s' />
+
+Oʻylab koʻring. <break time='0.7s' /> Sherbek nimani unutdi?
+
+<break time='1.5s' />
+
+Nodira opa xatoni darrov koʻrdi. Bogʻing toʻrtburchakmi? <break time='0.4s' /> Senga perimetr kerak. Sen faqat <emphasis level='moderate'>ikkita</emphasis> tomonni qoʻshibsan.
+
+<break time='1.5s' />
+
+Chegara boʻylab aylanamiz. Oʻn sakkiz. Yana oʻn, jami yigirma sakkiz. <break time='0.4s' /> Ikkinchi uzunlik, qirq olti. Ikkinchi en, <emphasis level='moderate'>ellik olti</emphasis>. <break time='0.7s' /> Mana, yigirma sakkizda toʻxtash xato edi.
+
+<break time='1.5s' />
+
+Qarama-qarshi tomonlar teng, demak har bir son ikki marta. Oʻn sakkiz va oʻnning yigʻindisi yigirma sakkiz, uni ikkiga koʻpaytiramiz, ellik olti metr.
+
+<break time='1.5s' />
+
+Sherbek yigirma sakkiz metr olganida, <break time='0.7s' /> bogʻning yarmi ochiq qolardi.
+
+<break time='1.5s' />
+
+Darvoza-chi? Darvoza toʻrt metr, u yerga panjara kerak emas. <break time='0.4s' /> Demak ellik ikki metr panjara.
+
+<break time='1.5s' />
+
+Narxi. Bir metri yigirma besh ming soʻm. Ellik ikkini yigirma besh mingga koʻpaytiramiz, <emphasis level='moderate'>bir million uch yuz ming soʻm</emphasis>.
+
+<break time='1.5s' />
+
+Esda tutinglar. <break time='0.7s' /> <emphasis level='moderate'>Perimetr, bu chegara, ikkita tomon emas.</emphasis>

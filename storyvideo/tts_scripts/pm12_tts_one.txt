@@ -1,0 +1,29 @@
+Birinchi katakka bitta don, ikkinchisiga ikkita. Har katakda ikki baravar koʻp. <break time='0.45s' /> Butun taxtaga qancha kerak?
+
+<break time='2.5s' />
+
+Donishmand shohdan shuni soʻradi: har katakka oldingisidan ikki baravar koʻp don, oltmish toʻrtinchi katakkacha. <break time='0.3s' /> Shoh kulib yubordi, bir hovuch don-ku bu.
+
+<break time='2.5s' />
+
+Oʻylab koʻring. <break time='0.45s' /> Qancha chiqadi? Bir qop? Bir vagon?
+
+<break time='2.5s' />
+
+Sanaymiz. Bitta, ikkita, toʻrtta, sakkizta... <break time='0.3s' /> Sakkizinchi katakda allaqachon bir yuz yigirma sakkizta don.
+
+<break time='2.5s' />
+
+Yigirma birinchi katakda son bir milliondan oshdi. <break time='0.3s' /> Oltmish toʻrtinchisida esa oʻn toʻqqiz xonali son. <break time='0.45s' /> Butun taxtada oʻn sakkiz kvintilliondan ortiq don.
+
+<break time='2.5s' />
+
+Nega bunday? Dastlabki toʻrt katakda jami oʻn besh don. Beshinchisida esa oʻn olti. <break time='0.45s' /> <emphasis level='moderate'>Bitta katak oldingi hammasidan koʻp.</emphasis>
+
+<break time='2.5s' />
+
+Esda tutinglar. <break time='0.45s' /> Qoʻshib borish sekin oʻsadi, <emphasis level='moderate'>ikkilanish esa portlaydi</emphasis>. Shoh vaʼdasini bajara olmagan.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Oltmish toʻrtinchi katakdagi donlar oldingi oltmish uchta katakdagi hammasidan koʻpmi? <break time='0.45s' /> Izohda kutamiz.

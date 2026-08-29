@@ -1,0 +1,25 @@
+Doʻkonda tejamkor paket yozuvi turibdi. <break time='0.7s' /> U haqiqatan arzonmi?
+
+<break time='1.5s' />
+
+Afsona bir qoidani biladi: umumiy narxga qarab hukm chiqarib boʻlmaydi. <break time='0.4s' /> Ikkalasini bir xil oʻlchovga, bir kilogrammga keltirish kerak.
+
+<break time='1.5s' />
+
+Yogurt. Kichik paket toʻrt yuz gramm, narxi oʻn ikki ming soʻm. Toʻrt yuz gramm, bu nol butun oʻndan toʻrt kilogramm, demak kilosi oʻttiz ming. <break time='0.4s' /> Katta paket bir kilogramm, yigirma yetti ming. <break time='0.7s' /> <emphasis level='moderate'>Rost, katta paket arzon.</emphasis>
+
+<break time='1.5s' />
+
+Endi ikkinchisi. <break time='0.7s' /> Xuddi shu yozuv. Rostmi?
+
+<break time='1.5s' />
+
+Yuvish kukuni. Kichik paket olti yuz gramm, yigirma bir ming soʻm, kilosi oʻttiz besh ming. <break time='0.4s' /> Katta paket uch kilogramm, bir yuz oʻn bir ming soʻm, kilosi oʻttiz yetti ming. <break time='0.7s' /> Katta paket <emphasis level='moderate'>ikki ming soʻm qimmat</emphasis>.
+
+<break time='1.5s' />
+
+Yolgʻon yozilmagan, hech kim arzonroq demagan. Umumiy narxi baland boʻlgani uchun foydali koʻrinadi, xolos.
+
+<break time='1.5s' />
+
+Esda tutinglar. <break time='0.7s' /> <emphasis level='moderate'>Katta paket arzon, bu qoida emas, taxmin.</emphasis> Birlik narx, qiymatni miqdorga boʻlish. Har safar tekshiring.

@@ -1,0 +1,41 @@
+Ota qirq yoshda, oʻgʻli oʻnda, toʻrt marta katta. <break time='0.45s' /> Qachon roppa-rosa ikki marta katta boʻladi?
+
+<break time='2.5s' />
+
+Bu jumboqni bobo nevarasiga berdi, oʻzi bolaligida eshitgan ekan.
+
+<break time='2.5s' />
+
+Bir soniya oʻylab koʻring. <break time='0.45s' /> Siz qanday javob berardingiz?
+
+<break time='2.5s' />
+
+Jasur darrov taxmin qildi: toʻrt martadan ikki martaga, demak yarmi, <emphasis level='moderate'>yigirma yil</emphasis>. <break time='0.3s' /> Javob toʻgʻri, lekin taxmin bilan.
+
+<break time='2.5s' />
+
+Endi bilib aytamiz. Oʻtadigan yillar ikkalasiga ham qoʻshiladi, vaqt hamma uchun bir xil. <break time='0.3s' /> Qavsni ochamiz: <emphasis level='moderate'>yigirma</emphasis>. Ota oltmish, oʻgʻil oʻttiz boʻladi.
+
+<break time='2.5s' />
+
+Bobo ikkinchi savolni berdi. Necha yil <emphasis level='moderate'>oldin</emphasis> ota oʻgʻlidan yetti marta katta edi? <break time='0.45s' /> Bu safar yarmi ishlamaydi.
+
+<break time='2.5s' />
+
+Endi yillar ayiriladi. Qavsni ochamiz: <emphasis level='moderate'>besh</emphasis>. <break time='0.3s' /> Besh yil oldin ota oʻttiz besh, oʻgʻil besh edi, roppa-rosa yetti marta.
+
+<break time='2.5s' />
+
+Yonma-yon qoʻyamiz. Keyin, oltmish va oʻttiz, nisbat ikki. <break time='0.3s' /> Oldin, oʻttiz besh va besh, nisbat yetti. <break time='0.45s' /> Nisbat boshqa, farq esa <emphasis level='moderate'>har doim oʻttiz</emphasis>.
+
+<break time='2.5s' />
+
+Tekshiramiz. Qirq va oʻn, farq oʻttiz. Oltmish va oʻttiz, yana oʻttiz. Oʻttiz besh va besh, yana oʻttiz.
+
+<break time='2.5s' />
+
+Esda tutinglar. <break time='0.45s' /> <emphasis level='moderate'>Farq oʻzgarmaydi, nisbat oʻzgaradi.</emphasis> Yoshlar masalasining kaliti, nimaning oʻzgarmasligini topish.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Ota oʻgʻlidan roppa-rosa uch marta katta boʻladigan yil qaysi? <break time='0.45s' /> Izohda kutamiz.

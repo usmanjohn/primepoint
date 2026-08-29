@@ -1,0 +1,133 @@
+# ── Collection metadata (read by Claude) ─────────────────────────────
+SUBJECT:    Korean            (icon: bi-translate, color: #6366f1, order: 0)
+COLLECTION: Koreya olami
+AUTHOR:     powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_CORNER.md, with the overrides below.
+# The overrides in THIS header win over the generic guide.
+# ─────────────────────────────────────────────────────────────────────
+
+# Koreya olami — the shelf pupils open because they WANT to
+#
+# The sister shelf of "Prime Korean Readings", and its opposite in the same way
+# "Matematika olami" is the opposite of "Prime Math Readings": these texts belong to
+# NO lesson. Nothing here has to teach PK-24's pattern, nothing has to stay inside what
+# has been taught. They exist so that a pupil who came to drill 받침 stays for half an
+# hour reading about why the alphabet is shaped like a mouth.
+#
+#   * NO `order` link to a lesson (order is just this shelf's own reading order).
+#   * NO `"stories"` key pointing here from any tutorial.
+#   * NO cumulative restriction — mention any pattern, as long as the text explains it.
+#   * NO audio. This shelf's prose is UZBEK, so a Korean voice cannot read it and the
+#     Korean words in it are single words, not sentences. Never run gen_corner_audio
+#     here. (Prime Korean Readings keep theirs — those are Korean texts.)
+#
+# ── ⚠️ THE LANGUAGE SPLIT — the one thing that makes this shelf different ──
+#
+# Every other Korean collection is a Korean TEXT with Uzbek glosses. This one inverts
+# it: the prose is **Uzbek**, and Korean appears as the MATERIAL being talked about —
+# single words and short phrases, each one a `cn-word` span with an Uzbek `data-tr`.
+#
+#   <span class="cn-word" data-tr="chiqish joyi">출구</span>
+#
+# A reader who cannot yet read Hangul must still be able to finish the text. So:
+#   * every Korean word is glossed the first time, in the span itself;
+#   * give the Uzbek pronunciation in brackets the first time a word matters —
+#     출구 (chulgu) — spelled the way `storyvideo/korean.py` spells it, so the shelf,
+#     the video and the narration never disagree with each other;
+#   * 한자 may be shown beside a Sino-Korean word (出口) but is never glossed alone
+#     and never appears in a sentence the reader is meant to read aloud.
+#
+# ── The four families, and why each one is here ──
+#
+#   TIL QANDAY ISHLAYDI — the strongest card this shelf holds, because it is the one
+#     an Uzbek pupil cannot get from an English-language Korean channel. Sino-Korean
+#     root families (출/出 → 출구·출근·출발). Word order, which Uzbek and Korean SHARE
+#     and English does not. Kelishik ↔ 조사. Two number systems. Speech levels.
+#   ALIFBO VA TOVUSH — Hangul as a designed object: 1443, Sejong, letters shaped like
+#     the organ that makes them, 받침, why syllables are written in blocks.
+#   KOREYA VA TARIX — real people and real dates: Sejong, 훈민정음 해례본 and UNESCO,
+#     Hanja's arrival and retreat, how Korean was written before 1443.
+#   HAYOT VA MADANIYAT — 존댓말 at a shop counter, why 4 is avoided, Konglish, names
+#     and family words, what a Korean classroom looks like. Facts must be true.
+#
+# ── Shape of a text ──
+#
+#   200–320 words. A hook in the first two sentences (a question, a scene, a claim the
+#   reader wants to argue with), then the idea, then the pay-off. One idea per text.
+#   Chronological, one thing per sentence, exactly as in the readings toc.
+#
+#   cn-word  →  8–14 KOREAN words, data-tr = a short Uzbek meaning.
+#   grammar  →  the IDEA behind the text, named: the root family, the word order rule,
+#               the letter-shape principle. Not a TOPIK pattern unless the text is
+#               actually about one. `examples` may be Korean or Uzbek↔Korean pairs.
+#   questions → 2–3 in Uzbek: at least one comprehension, and at least one that makes
+#               the reader USE the idea on a word the text did not gloss. Story
+#               questions render in STORED ORDER, so vary `answer` by hand.
+#   summary  →  one Uzbek sentence. If the text retells real material, say so there.
+#   open_question → one TRANSFER question with no answer anywhere in the text. It is
+#               also the video's last card. See the storyvideo notes below.
+#
+# ── ⚠️ FACTS ──
+#   Every date, name and number is checked before it ships. 1443 is when the alphabet
+#   was finished; 1446 is when 훈민정음 was published — do not merge them. Where a
+#   figure is an estimate ("yarmidan koʻpi"), say so rather than inventing a percent.
+#   Where a claim about a letter's shape comes from 훈민정음 해례본, that is a real
+#   source and may be stated as fact; folk etymologies may not.
+#
+# ── This shelf is a video source (storyvideo/) ──
+#   These texts feed the `ko*` films in `storyvideo/stories/`. What films well here is
+#   not a story arc but a STRUCTURE the picture can count: a root family (nine words
+#   from one syllable), a three-way word-order comparison, a syllable being built.
+#   So prefer a text whose idea has a NUMBER in it, and put that number in the first
+#   two sentences. The rules in toc_prime_math_readings.txt about the `ask` gap and
+#   the quotable closing line apply here unchanged.
+#
+# Rhythm: written in small batches (2–3 texts), or on request ("make 3 more Koreya
+# olami stories"). Mark finished ones [done].
+
+## Koreya olami
+
+### Til qanday ishlaydi (1–12)
+1.  Bitta boʻgʻin — toʻqqizta soʻz (출/出 ildiz oilasi)                        [done]
+2.  Oʻzbek va koreys: bir xil tartib                                          [done]
+3.  Koreys tilida nega ikkita sanoq tizimi bor
+4.  Kelishik va 조사: -ni, -ga, -ning koreyschada
+5.  Bir soʻzning uch xil darajasi: 반말, 존댓말, 높임말
+6.  «Men» soʻzi koreyschada nega ikkita (저 va 나)
+7.  Fe'l oxirida turadi — va shuning uchun oxirigacha eshitish kerak
+8.  Koreys tilida koʻplik qoʻshimchasi nega majburiy emas
+9.  Rang nomlari: 파랗다 ham koʻk, ham yashil
+10. 한자어 va 고유어: bir maʼno, ikki soʻz
+11. Konglish: inglizchadan kelib, koreyschaga aylangan soʻzlar
+12. Ismlar: familiya avval, va nega Kim juda koʻp
+
+### Alifbo va tovush (13–20)
+13. Koreys alifbosi — ogʻzingizning surati                                     [done]
+14. Nega harflar kvadrat boʻlib yoziladi (boʻgʻin bloki)
+15. 받침: soʻz oxiridagi harf nega boshqacha oʻqiladi
+16. Yettita tovush: 받침 qanday soddalashadi
+17. ㅗ va ㅓ — oʻzbek tilidagi oʻ va o
+18. Nega 감사합니다 «kamsahapnida» emas, «kamsahamnida»
+19. Yozuvsiz xalq: 1443-yilgacha koreyslar qanday yozgan
+20. Alifbo bayrami — 10-oktabr
+
+### Koreya va tarix (21–28)
+21. Sejong: shohning eng katta ixtirosi
+22. 훈민정음 해례본 va YUNESKO xotirasi
+23. Hanja qanday kelgan va qanday chekingan
+24. Koreya urushi va ikkiga boʻlingan til
+25. Shimol va Janub: bir til, ikki lugʻat
+26. Koreys tilidagi eng eski yozuv yodgorliklari
+27. Qanday qilib koreys tili dunyoga tarqaldi
+28. Koreyada maktab: bir kun ichida
+
+### Hayot va madaniyat (29–36)
+29. Nega Koreyada 4-qavat yoʻq
+30. Yosh soʻrash — bu qoʻpollik emas
+31. Ikki qoʻl bilan berish: nega muhim
+32. Oila soʻzlari: aka, opa — lekin kim aytishiga qarab
+33. Koreys ismidagi maʼno: 한자 bilan yozilgan orzu
+34. 김치 va boshqa soʻzlar: dunyoga chiqqan koreyscha
+35. Koreyada tugʻilgan kun: bir yosh oldinda
+36. Metro, kafe, doʻkon: bir kunda eshitiladigan iboralar

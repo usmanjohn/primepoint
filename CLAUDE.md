@@ -454,3 +454,22 @@ the next 5 TOPIK 53 writing drills"):
 Question types 51/52/54: add a new `toc_topik_writing_<qtype>.txt`; same workflow.
 Adding drills for another exam: add its `qtype` codes to `QTYPE_CHOICES` in
 `examprep/models.py` (IELTS `t1`/`t2` are already there) and point `TRACK` at that exam.
+
+## Making videos (`storyvideo/`) — Shorts/Reels animatics
+`storyvideo/` is a plain Python package at the repo root (**not** a Django app, never
+imported by Django, costs production nothing). It turns a Corner reading into a
+1080x1920 animatic with TTS narration and a synthesised sound layer.
+⚠️ Always `cd storyvideo && python3 cli.py …` — `python -m storyvideo` is broken.
+- **`storyvideo/README.md`** — the renderer, the `seek(t)` contract, the three lint
+  gates, the maths/history beat vocabulary.
+- **`storyvideo/STYLE_GUIDE_KOREAN_VIDEO.md`** — read this before writing ANY language
+  video (Korean now, English later): the full loop, the language beats, the three
+  narration rules (never send Hangul; hanja and lone jamo are refused; digits become
+  words), the native-Korean `echo` beat, and the two fault classes `cli.py check` tells
+  apart. Its checklist is the definition of done.
+- **`cli.py check <slug> --audio …` before EVERY render** — one second against six
+  minutes. It has already caught two recordings that would have shipped broken.
+Source shelves: "Prime Math Readings" + "Matematika olami" (maths),
+**"Koreya olami"** (`toc_koreya_olami.txt`, Uzbek prose about Korean — the language is
+the material, each word a `cn-word` span, ⛔ no audio). Those import through
+`import_corner`, so they DO need a `railway run` line; the videos themselves do not.

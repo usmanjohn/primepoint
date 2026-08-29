@@ -1,0 +1,33 @@
+Karim aka devorni yolgʻiz oʻn kunda quradi. Shogirdi Bekzod esa oʻn besh kunda. <break time='0.45s' /> Birga qurishsa, qancha vaqt ketadi?
+
+<break time='2.5s' />
+
+Bekzod bir zum oʻyladi. Oʻn va oʻn besh, oʻrtachasi oʻn ikki yarim kun.
+
+<break time='2.5s' />
+
+Shu yerda toʻxtang. <break time='0.45s' /> Bu javob toʻgʻri boʻlishi mumkinmi?
+
+<break time='2.5s' />
+
+Karim aka kuldi. <break time='0.45s' /> Demak sen kelganingdan keyin ish <emphasis level='moderate'>sekinlashadimi</emphasis>? Yolgʻiz oʻzim oʻn kunda qurardim-ku.
+
+<break time='2.5s' />
+
+Sherbek daftar bilan chiqdi. Vaqtlarni qoʻshib ham, oʻrtachalab ham boʻlmaydi, bir kunda kim qanchasini qilishini sanash kerak. <break time='0.3s' /> Butun devorni bir deb olamiz. Karim aka bir kunda oʻndan bir qismini quradi, Bekzod oʻn beshdan bir qismini. <break time='0.45s' /> Birga ishlaganda ulushlar qoʻshiladi: oltidan bir qism.
+
+<break time='2.5s' />
+
+Javob oʻn ikki yarim emas. <break time='0.45s' /> Bir kunda oltidan bir qism qilinsa, butun devorga <emphasis level='moderate'>olti kun</emphasis> kerak.
+
+<break time='2.5s' />
+
+Tekshiramiz. Olti kunda Karim aka devorning nol butun oʻndan olti qismini quradi, Bekzod nol butun oʻndan toʻrt qismini. <break time='0.3s' /> Yigʻindisi bir, roppa-rosa butun devor.
+
+<break time='2.5s' />
+
+Esda tutinglar. <break time='0.45s' /> <emphasis level='moderate'>Vaqt qoʻshilmaydi, unumdorlik qoʻshiladi.</emphasis> Har kimning bir kunlik ulushi, butun ishni yolgʻiz bitirish vaqtiga boʻlish bilan topiladi.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Uchinchi usta ham kelsa va u yolgʻiz oʻttiz kunda bitirsa, uchovi necha kunda bitiradi? <break time='0.45s' /> Izohda kutamiz.

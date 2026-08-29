@@ -1,0 +1,37 @@
+Qafasda tovuqlar va quyonlar bor. Yuqoridan oʻttiz beshta bosh koʻrinadi, pastdan toʻqson toʻrtta oyoq. <break time='0.45s' /> Nechta tovuq, nechta quyon?
+
+<break time='2.5s' />
+
+Bu masala ming besh yuz yil avval Xitoyda yozilgan. <break time='0.3s' /> Yaponiyada uni turna va toshbaqa masalasi deyishadi, matematikasi bir xil.
+
+<break time='2.5s' />
+
+Bir soniya oʻylab koʻring. <break time='0.45s' /> Siz qanday boshlagan boʻlardingiz?
+
+<break time='2.5s' />
+
+Sardor teng boʻlishga urindi: oʻn yettita tovuq va oʻn sakkizta quyon.
+
+<break time='2.5s' />
+
+Oyoqlarni sanaymiz. Oʻn yettita tovuqda oʻttiz toʻrtta oyoq, oʻn sakkizta quyonda yetmish ikkita. <break time='0.3s' /> Jami bir yuz olti. <break time='0.45s' /> Kerak edi <emphasis level='moderate'>toʻqson toʻrt</emphasis>. Oʻn ikkitasi ortiqcha.
+
+<break time='2.5s' />
+
+Faraz qilaylik, <emphasis level='moderate'>hammasi tovuq</emphasis>. Unda yetmishta oyoq boʻlardi. <break time='0.3s' /> Lekin toʻqson toʻrt kerak: yigirma toʻrttasi yetishmaydi. <break time='0.45s' /> Har bir quyon ikkita koʻp oyoq beradi. Demak oʻn ikkita quyon, yigirma uchtasi tovuq.
+
+<break time='2.5s' />
+
+Quyonlar oʻn sakkizta emas, <emphasis level='moderate'>oʻn ikkita</emphasis>. <break time='0.3s' /> Qolgan yigirma uchtasi esa tovuq.
+
+<break time='2.5s' />
+
+Tekshiramiz. Yigirma uchta tovuqning qirq oltita oyogʻi, oʻn ikkita quyonning qirq sakkizta oyogʻi. <break time='0.3s' /> Jami toʻqson toʻrt. Boshlar ham oʻttiz beshta.
+
+<break time='2.5s' />
+
+Esda tutinglar. <break time='0.45s' /> <emphasis level='moderate'>Hammasi bir xil deb faraz qiling</emphasis>, keyin farqni sanab almashtiring. Ikki nomaʼlum shu bilan bittaga aylanadi.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Agar oʻttiz beshta bosh va bir yuzta oyoq boʻlsa, nechta quyon boʻlardi? <break time='0.45s' /> Izohda kutamiz.

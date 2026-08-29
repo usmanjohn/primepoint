@@ -80,3 +80,37 @@ VIDEO = Video(
         outro(),
     ],
 )
+
+# ── Ovoz uchun matn (TTS). Raqamlar avtomatik soʻzga aylantiriladi. ──
+# ⚠️ Chegara: SSML bilan birga 2000 belgi. `cli.py script <slug> --one --ssml`
+#    oshib ketsa ogohlantiradi. Qisqa gap — yaxshi gap.
+from spec import narrate
+
+narrate(VIDEO, [
+    "Birinchi katakka bitta don, ikkinchisiga ikkita. Har katakda ikki "
+    "baravar koʻp. || Butun taxtaga qancha kerak?",
+
+    "Donishmand shohdan shuni soʻradi: har katakka oldingisidan ikki "
+    "baravar koʻp don, 64-katakkacha. | Shoh kulib yubordi — bir hovuch "
+    "don-ku bu.",
+
+    "Oʻylab koʻring. || Qancha chiqadi? Bir qop? Bir vagon?",
+
+    "Sanaymiz. Bitta, ikkita, toʻrtta, sakkizta... | Sakkizinchi katakda "
+    "allaqachon 128 ta don.",
+
+    "21-katakda son bir milliondan oshdi. | Oltmish toʻrtinchisida esa "
+    "19 xonali son. "
+    "|| Butun taxtada 18 kvintilliondan ortiq don.",
+
+    "Nega bunday? Dastlabki toʻrt katakda jami 15 don. Beshinchisida esa "
+    "16. || *Bitta katak oldingi hammasidan koʻp.*",
+
+    "Esda tutinglar. || Qoʻshib borish sekin oʻsadi, *ikkilanish esa "
+    "portlaydi*. Shoh vaʼdasini bajara olmagan.",
+
+    "Endi oʻzingiz oʻylang. 64-katakdagi donlar oldingi 63 ta katakdagi "
+    "hammasidan koʻpmi? || Izohda kutamiz.",
+
+    None,   # outro — jim
+])

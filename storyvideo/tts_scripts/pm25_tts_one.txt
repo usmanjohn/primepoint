@@ -1,0 +1,37 @@
+Yozda narx yigirma besh foizga oshdi. Kuzda yigirma besh foizga tushdi. Savol oddiy: <break time='0.7s' /> narx <emphasis level='moderate'>eski darajaga qaytdimi</emphasis>?
+
+<break time='1.5s' />
+
+Dilnoza eʼlonni oʻqidi. Yigirma besh foiz oshdi, yigirma besh foiz tushdi, demak <emphasis level='moderate'>eski narx</emphasis>. Hamyoniga roppa-rosa yigirma ming soʻm solib doʻkonga bordi.
+
+<break time='1.5s' />
+
+Bir soniya oʻylab koʻring. <break time='0.7s' /> Siz ham shunday hisoblarmidingiz?
+
+<break time='1.5s' />
+
+Iyun oyida bir litr yogʻ yigirma ming soʻm edi. Iyul oxirida narx yigirma besh foizga koʻtarildi va yigirma besh ming soʻm boʻldi.
+
+<break time='1.5s' />
+
+Uchta oyni yonma-yon qoʻyamiz. Iyunda yigirma ming. Iyulda yigirma besh ming. Oktyabrda esa oʻn sakkiz ming yetti yuz ellik. <break time='0.4s' /> Punktir chiziq, eski narx. Uchinchi ustun undan pastda toʻxtadi.
+
+<break time='1.5s' />
+
+Dilnoza kassaga yigirma ming soʻm berdi. Kassir unga <emphasis level='moderate'>ming ikki yuz ellik soʻm qaytim</emphasis> berdi. Dilnoza qaytimga qarab qoldi, u qaytim kutmagan edi.
+
+<break time='1.5s' />
+
+Demak narx <emphasis level='moderate'>eski darajaga qaytmagan</emphasis>. Ketma-ket oʻzgarishda koʻpaytuvchilar koʻpaytiriladi.
+
+<break time='1.5s' />
+
+Nega bunday boʻldi? Oshish yigirma mingdan olingan: besh ming soʻm. Tushish esa yigirma besh mingdan: olti ming ikki yuz ellik soʻm. <break time='0.7s' /> <emphasis level='moderate'>Katta sondan olingan foiz koʻproq.</emphasis>
+
+<break time='1.5s' />
+
+Esda tutinglar. <break time='0.7s' /> <emphasis level='moderate'>Bir xil foiz, bir xil pul emas.</emphasis> Bir xil foizga oshib, keyin tushgan narx eski darajaga qaytmaydi.
+
+<break time='1.5s' />
+
+Endi oʻzingiz oʻylang. Agar narx avval yigirma besh foizga tushib, keyin koʻtarilsa, natija boshqacha boʻladimi? <break time='0.7s' /> Javobni izohda yozing.

@@ -66,3 +66,38 @@ VIDEO = Video(
         outro(),
     ],
 )
+
+# ── Ovoz uchun matn (TTS). Raqamlar avtomatik soʻzga aylantiriladi. ──
+# ⚠️ Chegara: SSML bilan birga 2000 belgi. `cli.py script <slug> --one --ssml`
+#    oshib ketsa ogohlantiradi. Qisqa gap — yaxshi gap.
+from spec import narrate
+
+narrate(VIDEO, [
+    "Bogʻning uzunligi 18 metr, eni 10 metr. || Necha metr panjara kerak?",
+
+    "Sherbek bogʻni oʻlchadi. 18 va 10 ni qoʻshdi, 28 chiqdi. "
+    "| Menga yigirma sakkiz metr panjara bering.",
+
+    "Oʻylab koʻring. || Sherbek nimani unutdi?",
+
+    "Nodira opa xatoni darrov koʻrdi. Bogʻing toʻrtburchakmi? | Senga "
+    "perimetr kerak. Sen faqat *ikkita* tomonni qoʻshibsan.",
+
+    "Chegara boʻylab aylanamiz. 18. Yana 10 — jami 28. | Ikkinchi "
+    "uzunlik — 46. Ikkinchi en — *56*. || Mana, 28 da toʻxtash xato edi.",
+
+    "Qarama-qarshi tomonlar teng, demak har bir son ikki marta. 18 va "
+    "10 ning yigʻindisi 28, uni ikkiga koʻpaytiramiz — 56 metr.",
+
+    "Sherbek 28 metr olganida, || bogʻning yarmi ochiq qolardi.",
+
+    "Darvoza-chi? Darvoza 4 metr, u yerga panjara kerak emas. "
+    "| Demak 52 metr panjara.",
+
+    "Narxi. Bir metri 25 000 soʻm. 52 ni 25 000 ga koʻpaytiramiz — "
+    "*bir million uch yuz ming soʻm*.",
+
+    "Esda tutinglar. || *Perimetr — bu chegara, ikkita tomon emas.*",
+
+    None,   # outro — jim
+])

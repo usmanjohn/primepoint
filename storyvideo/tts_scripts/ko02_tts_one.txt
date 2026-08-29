@@ -1,0 +1,37 @@
+Dunyodagi alifbolarning deyarli hammasini kim oʻylab topganini hech kim bilmaydi. <break time='0.45s' /> Bittasini bilamiz.
+
+<break time='2.5s' />
+
+Koreya, ming toʻrt yuz qirq uchinchi yil. Shoh <emphasis level='moderate'>sejoʻng</emphasis>. <break time='0.3s' /> Oʻsha paytda yozuv xitoycha ierogliflar bilan olib borilardi, ularni oʻrganishga yillar ketardi.
+
+<break time='2.5s' />
+
+Uch yildan keyin alifboni tushuntiruvchi kitob chiqdi: <emphasis level='moderate'>hunminjongum</emphasis>. <break time='0.3s' /> Yaʼni, xalqni oʻrgatuvchi toʻgʻri tovushlar.
+
+<break time='2.5s' />
+
+Endi eng qizigʻi. Harflar shunchaki chizilmagan. <break time='0.45s' /> Hozir k tovushini ayting. <break time='0.3s' /> Tilingizning orqasi boʻgʻizni toʻsadi, birinchi harf aynan shu shaklni chizadi.
+
+<break time='2.5s' />
+
+Ikkinchisi, ogʻizning oʻzi. <break time='0.45s' /> Shuning uchun u kvadrat.
+
+<break time='2.5s' />
+
+Harflar qatorga emas, blokka yigʻiladi. <break time='0.3s' /> Undosh, unli, yana undosh, va bitta belgi hosil boʻladi.
+
+<break time='2.5s' />
+
+Dastlab yigirma sakkizta harf bor edi. <break time='0.3s' /> Bugun yigirma toʻrttasi ishlatiladi.
+
+<break time='2.5s' />
+
+Shuning uchun bu alifboni yodlash shart emas, uni tushunish mumkin. <break time='0.45s' /> Kitob esa ming toʻqqiz yuz toʻqson yettinchi yilda Yuneskoning Jahon xotirasi roʻyxatiga kiritilgan.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Harfga yana bitta chiziq qoʻshsak, tovush qanday oʻzgaradi? Izohda kutamiz.
+
+<break time='2.5s' />
+
+Koreys alifbosini noldan oʻrganmoqchi boʻlsangiz, Powertyda Prime Korean kursi bor: birinchi darsdan boshlang.

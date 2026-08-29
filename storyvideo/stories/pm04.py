@@ -64,3 +64,40 @@ VIDEO = Video(
         outro(),
     ],
 )
+
+# ── Ovoz uchun matn (TTS). Raqamlar avtomatik soʻzga aylantiriladi. ──
+# ⚠️ Chegara: SSML bilan birga 2000 belgi. `cli.py script <slug> --one --ssml`
+#    oshib ketsa ogohlantiradi. Qisqa gap — yaxshi gap.
+from spec import narrate
+
+narrate(VIDEO, [
+    "Oʻttiz yetti bola kafega bordi. Stollar 6 kishilik. "
+    "|| Nechta stol kerak?",
+
+    "Nodira opa sinfni kafega olib bordi. Sanaymiz: bir, ikki, uch... "
+    "| hammasi 37 nafar bola.",
+
+    "Eshikda ofitsiant kutib oldi. | Stollarimiz 6 kishilik. "
+    "Nechtasini tayyorlaymiz?",
+
+    "Oʻylab koʻring. || Ayting-chi, 37 ni 6 ga boʻlsangiz nima chiqadi?",
+
+    "Sardor darrov hisobladi. | Javob *6*.",
+
+    "Bolalar oʻtira boshlashdi. Oltita stol toʻldi — 36 bola joylashdi.",
+
+    "Bekzod esa turgan joyida qoldi. || *Bitta bolaga oʻrindiq yetmadi.*",
+
+    "Hisob toʻgʻri edi, lekin qoldiq unutilgan. 37 ni 6 ga boʻlsak, "
+    "olti chiqadi va bitta qoladi. | Javob 6 emas, *7*.",
+
+    "Ofitsiant yettinchi stolni surdi. Endi hamma joylashdi.",
+
+    "Tekshiramiz. Oltita stolda oltitadan — 36. Ustiga bitta qoldiq. "
+    "| Jami 37.",
+
+    "Esda tutinglar. || *Kamida nechta kerak* desa, qoldiq uchun doim "
+    "yana bitta. Teng boʻlinish har doim chiqavermaydi.",
+
+    None,   # outro — jim
+])

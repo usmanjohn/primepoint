@@ -90,3 +90,41 @@ VIDEO = Video(
         outro(),
     ],
 )
+
+# ── Ovoz uchun matn (TTS). Raqamlar avtomatik soʻzga aylantiriladi. ──
+# ⚠️ Chegara: SSML bilan birga 2000 belgi. `cli.py script <slug> --one --ssml`
+#    oshib ketsa ogohlantiradi. Qisqa gap — yaxshi gap.
+from spec import narrate
+
+narrate(VIDEO, [
+    "Bir avtobus har 12 daqiqada keladi, ikkinchisi har 18 daqiqada. "
+    "|| Qachon birga kelishadi?",
+
+    "Ertalab soat sakkizda ikkalasi birga kelib ketdi. Bekzod ulgurmay "
+    "qoldi. | Yana qachon shunday boʻladi?",
+
+    "Oʻzingiz oʻylab koʻring. || Oʻn ikki va oʻn sakkiz qayerda uchrashadi?",
+
+    "Bekzod karralilarni yozdi. Birinchisi: 12, 24, 36. | Ikkinchisi: "
+    "18, 36. || Ikkalasida ham bor birinchi son — *36*. "
+    "Eng kichik umumiy karrali.",
+
+    "Tekshiramiz. 12 ni uchga koʻpaytirsak 36; 18 ni ikkiga koʻpaytirsak "
+    "ham 36. Demak avtobuslar birga keladi — soat 8:36.",
+
+    "Endi boshqa savol. Sumkamda 12 ta gul va 18 ta shirinlik bor. "
+    "| Eng koʻpi bilan nechta bir xil paket chiqadi?",
+
+    "Yana bir soniya. || Bu safar javob 36 emas.",
+
+    "Endi bor narsani boʻlamiz. Olti paket chiqadi: har birida ikkita gul, "
+    "uchta shirinlik. || Olti — eng katta umumiy boʻluvchi.",
+
+    "Esda tutinglar. || *Qachon uchrashadi* desa — eng kichik umumiy "
+    "karrali. | *Nechta guruh* desa — eng katta umumiy boʻluvchi.",
+
+    "Endi oʻzingiz oʻylang. Uchinchi avtobus har 8 daqiqada kelsa, "
+    "uchalasi qachon birga keladi? || Izohda kutamiz.",
+
+    None,   # outro — jim
+])

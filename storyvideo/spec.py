@@ -17,12 +17,28 @@ class Scene:
     dark: bool = False
     top:  bool = False          # align content to the top instead of centring
     note: str = ""              # what to say over it -- goes in the cue sheet
+    say:  str = ""              # narration to read aloud; None = deliberately silent
     name: str = ""              # shown in the cue sheet and in lint output
     # Quantities this scene claims to show. lint.py checks each one is both
     # rendered as n discrete objects and tracked by a counter.
     counts: list = field(default_factory=list)
     # Arithmetic this scene asserts, e.g. "6 × 6 + 1 = 37". Checked by lint.py.
     claims: list = field(default_factory=list)
+
+
+def narrate(video, lines):
+    """Attach one narration line per scene, in order.
+
+    Kept out of the scene builders on purpose: the picture and the words are
+    written at different times, and a spec stays readable when the narration
+    sits in one block at the bottom rather than threaded through every call.
+    """
+    if len(lines) != len(video.scenes):
+        raise SystemExit(f"{video.slug}: {len(lines)} narration lines "
+                         f"for {len(video.scenes)} scenes")
+    for sc, line in zip(video.scenes, lines):
+        sc.say = None if line is None else line.strip()
+    return video
 
 
 @dataclass

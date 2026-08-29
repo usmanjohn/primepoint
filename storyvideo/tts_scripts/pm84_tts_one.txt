@@ -1,0 +1,37 @@
+Maktab hovlisida lotereya. Jami ikki mingta bilet, har biri besh ming soʻm. <break time='0.45s' /> Yutish ehtimoli qancha?
+
+<break time='2.5s' />
+
+Yutuqlar devorga ochiq yozilgan: bitta velosiped, beshta quloqchin, ellikta kitob.
+
+<break time='2.5s' />
+
+Bir soniya oʻylab koʻring. <break time='0.45s' /> Sizningcha, yutish ehtimoli qancha?
+
+<break time='2.5s' />
+
+Avval yutuq fondini topamiz. Quloqchinlar, bir million, kitoblar, bir yarim million. <break time='0.3s' /> Velosiped bilan birga <emphasis level='moderate'>toʻrt million</emphasis>. <break time='0.45s' /> Tushum esa oʻn million.
+
+<break time='2.5s' />
+
+Yutuqli biletlar, jami ellik oltita. Ellik oltini ikki mingga boʻlamiz: <emphasis level='moderate'>ikki butun oʻndan sakkiz foiz</emphasis>.
+
+<break time='2.5s' />
+
+Yutmaslikni sanab oʻtirish shart emas: bittadan ayiramiz, <emphasis level='moderate'>toʻqson yetti butun oʻndan ikki foiz</emphasis>.
+
+<break time='2.5s' />
+
+Endi eng qizigʻi. Yutuq fondini biletlar soniga boʻlamiz: toʻrt million boʻlinadi ikki mingga. <break time='0.3s' /> Bitta biletga <emphasis level='moderate'>ikki ming soʻm</emphasis> qaytadi.
+
+<break time='2.5s' />
+
+Bilet besh ming soʻm turadi, qaytim esa ikki ming. <break time='0.45s' /> Har bir biletdan <emphasis level='moderate'>uch ming soʻm</emphasis> tashkilotchida qoladi. Hammasi boʻlib olti million soʻm.
+
+<break time='2.5s' />
+
+Esda tutinglar. <break time='0.45s' /> <emphasis level='moderate'>Yutqazish uchun omadsiz boʻlish shart emas</emphasis>, u oʻyin shartiga kiritilgan. <break time='0.3s' /> Sherbek baribir bilet oldi va kitob yutdi: tasodif ikki butun oʻndan sakkiz foizni ham tanlaydi.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Tashkilotchi olgan olti million soʻm aynan qayerdan chiqdi? <break time='0.45s' /> Izohda kutamiz.

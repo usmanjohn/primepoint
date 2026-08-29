@@ -1,0 +1,37 @@
+Yerning radiusi, olti ming uch yuz yetmish bir kilometr. <break time='0.45s' /> Buni bilish uchun nima kerak? Kosmik kema? Sunʼiy yoʻldosh?
+
+<break time='2.5s' />
+
+Kat shahri, Xorazm. Toʻqqiz yuz yetmish uchinchi yil. <break time='0.3s' /> Abu Rayhon Beruniy shu yerda tugʻilgan.
+
+<break time='2.5s' />
+
+Astronomiya, geografiya, tarix va matematika. <break time='0.3s' /> Yer radiusini oʻlchash gʻoyasi uni yoshligidan qiziqtirgan.
+
+<break time='2.5s' />
+
+Avval eski usulni sinab koʻrdi: ikki shahar orasidagi masofani oʻlchash. <break time='0.3s' /> Bu katta sahro va koʻp odam talab qilardi. <break time='0.45s' /> Beruniy undan voz kechdi.
+
+<break time='2.5s' />
+
+Yangi usul ikki qadamdan iborat. Birinchisi, togʻning balandligi: unga ikki joydan qarab burchak oʻlchadi. <break time='0.3s' /> Ikkinchisi, eng chiroylisi.
+
+<break time='2.5s' />
+
+U choʻqqiga chiqdi va ufqqa qaradi. Yer yassi boʻlganida ufq roppa-rosa koʻz balandligida turardi. <break time='0.3s' /> Lekin Yer sharsimon, ufq sal pastda koʻrinadi. <break time='0.45s' /> Beruniy oʻsha ogʻishni oʻlchadi: bir gradusdan ham kichik.
+
+<break time='2.5s' />
+
+Shu ikki son yetdi. Uning javobi hozirgi oʻlchovlarda taxminan olti ming uch yuz qirq kilometrga toʻgʻri keladi. <break time='0.3s' /> Bugungi qiymat esa olti ming uch yuz yetmish bir.
+
+<break time='2.5s' />
+
+Farqni oʻlchaymiz: oʻttiz bir kilometr. Uni olti ming uch yuz yetmish birga boʻlsak, <break time='0.45s' /> <emphasis level='moderate'>yarim foizdan ham kam</emphasis>.
+
+<break time='2.5s' />
+
+Sunʼiy yoʻldoshsiz, kompyutersiz, teleskopsiz. <break time='0.45s' /> Bitta togʻ va yaxshi oʻylangan usul. <emphasis level='moderate'>Yaxshi matematika yetib boʻlmaydigan narsani oʻlchab beradi.</emphasis>
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Togʻ balandroq boʻlsa, ufqning ogʻishi qanday oʻzgaradi? <break time='0.45s' /> Izohda kutamiz.

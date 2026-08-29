@@ -1,0 +1,33 @@
+Koreys tilida bitta boʻgʻin toʻqqizta soʻzni ochib beradi. <break time='0.45s' /> Qanday qilib?
+
+<break time='2.5s' />
+
+Koreyadagi har bir binoda shu yozuv bor: <emphasis level='moderate'>chulgu</emphasis>. <break time='0.3s' /> Chiqish joyi.
+
+<break time='2.5s' />
+
+Uning birinchi boʻgʻini, <emphasis level='moderate'>chul</emphasis>. <break time='0.3s' /> Xitoychadan kirgan ildiz, maʼnosi: chiqmoq.
+
+<break time='2.5s' />
+
+Endi sanaymiz. Ishga chiqish. Yoʻlga chiqish. Davomat. Topshirish. Eksport. Xarajat. <break time='0.45s' /> toʻqqizta soʻz, hammasi bitta ildizdan.
+
+<break time='2.5s' />
+
+<emphasis level='moderate'>suchul</emphasis> soʻzini oling. Tashib chiqarish degani. <break time='0.3s' /> Yaʼni eksport. <break time='0.45s' /> Uni yodlash shart emas, oʻqib chiqarish mumkin.
+
+<break time='2.5s' />
+
+Powerty lugʻatida shunday ellik bitta ildiz bor. <break time='0.3s' /> Ular ikki yuzdan ortiq soʻzni ochadi.
+
+<break time='2.5s' />
+
+Shuning uchun koreys lugʻatini soʻzma-soʻz yodlash, eng sekin yoʻl. <break time='0.45s' /> Ildizni toping, soʻzlar oʻzi keladi.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Chul chiqmoq boʻlsa, ip nima degani? <break time='0.45s' /> ipku qanday joy? Izohda kutamiz.
+
+<break time='2.5s' />
+
+Ellik bitta ildizning hammasi Powertyda: Examprep, lugʻat, soʻz oilalari.

@@ -1,0 +1,29 @@
+Toshkentda soch tolalari soni roppa-rosa bir xil boʻlgan kamida ikki kishi bor. <break time='0.45s' /> Buni isbotlash uchun birorta ham sochni sanash shart emas.
+
+<break time='2.5s' />
+
+Umuman hech kimni koʻrish ham shart emas. <break time='0.3s' /> Yetarli, ikkita son.
+
+<break time='2.5s' />
+
+Bir soniya oʻylab koʻring. <break time='0.45s' /> Qaysi ikkita son?
+
+<break time='2.5s' />
+
+Birinchisi: odam boshidagi soch tolalari ikki yuz mingdan oshmaydi, demak <emphasis level='moderate'>ikki yuz ming bir xil variant</emphasis>. <break time='0.3s' /> Ikkinchisi: Toshkent aholisi <emphasis level='moderate'>uch million</emphasis>. <break time='0.45s' /> Har kimni sochlari soniga qarab bitta uyaga joylashtiramiz. Odamlar uyalardan koʻp.
+
+<break time='2.5s' />
+
+Teskari faraz qilamiz: aytaylik, hammada har xil son boʻlsin. <break time='0.3s' /> Unda shaharda ikki yuz ming birdan ortiq odam boʻlmasdi. <break time='0.45s' /> Lekin uch million kishi bor. <emphasis level='moderate'>Ziddiyat</emphasis>, faraz notoʻgʻri.
+
+<break time='2.5s' />
+
+Aslida xulosa ancha kuchliroq. Agar har uyada koʻpi bilan oʻn toʻrt kishi boʻlganda, jami ikki million sakkiz yuz mingdan oshmasdi. <break time='0.3s' /> Bu esa uch milliondan kam. <break time='0.45s' /> Demak biror uyada <emphasis level='moderate'>kamida oʻn besh kishi</emphasis> bor.
+
+<break time='2.5s' />
+
+Esda tutinglar. <break time='0.45s' /> Prinsip bu odamlarning kimligini <emphasis level='moderate'>aytmaydi</emphasis>. U ularni topib bermaydi, ismini bilmaydi. U faqat bitta narsani aytadi: bunday odamlar bor.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Sinfda oʻn uch oʻquvchi bor. Nega ulardan kamida ikkitasi bir oyda tugʻilgan? <break time='0.45s' /> Izohda kutamiz.

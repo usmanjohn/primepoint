@@ -1,0 +1,37 @@
+Roʻyxatda guruch besh kilogramm deb yozilgan. Retsept boʻyicha esa yarim kilo chiqishi kerak edi. <break time='0.45s' /> Qaysi biri toʻgʻri?
+
+<break time='2.5s' />
+
+Nodira opa Sherbekka oilaviy retseptni berdi. Retsept oʻn ikki kishiga: bir yarim kilogramm guruch. <break time='0.3s' /> Sherbek esa toʻrt kishiga tayyorlashi kerak.
+
+<break time='2.5s' />
+
+Doʻkondan qaytgach roʻyxatga qaradi va toʻxtab qoldi. Birinchi qatorda: guruch, besh kilogramm. <break time='0.3s' /> Bir zum ikkilandi. Balki toʻgʻridir?
+
+<break time='2.5s' />
+
+Siz nima qilardingiz? <break time='0.45s' /> Buni qanday tekshirish mumkin?
+
+<break time='2.5s' />
+
+Bir kishiga qancha toʻgʻri kelishini sanaymiz. Bir yarim kilogramm, ming besh yuz gramm. <break time='0.3s' /> oʻn ikki kishiga boʻlsak, bir kishiga bir yuz yigirma besh gramm. <break time='0.45s' /> Toʻrt kishiga besh yuz gramm, yaʼni yarim kilo.
+
+<break time='2.5s' />
+
+Endi ikkalasini bir kishiga keltiramiz. Roʻyxat boʻyicha bir kishiga ming ikki yuz ellik gramm toʻgʻri kelardi. <break time='0.3s' /> Retsept boʻyicha esa bir yuz yigirma besh. <break time='0.45s' /> <emphasis level='moderate'>Oʻn barobar farq.</emphasis>
+
+<break time='2.5s' />
+
+Xato topildi. Ukasi koʻchirayotib <emphasis level='moderate'>vergulni tushirib qoldirgan</emphasis>, yarim kilo besh kiloga aylanib qolgan.
+
+<break time='2.5s' />
+
+Tekshiramiz. Bir kishiga bir yuz yigirma besh gramm, toʻrt kishiga besh yuz gramm. <break time='0.3s' /> Yarim kilogramm, mantiqiy son.
+
+<break time='2.5s' />
+
+Esda tutinglar. <break time='0.45s' /> <emphasis level='moderate'>Bir kishiga qancha toʻgʻri kelishini hisoblang.</emphasis> Bu son birlik xatosini darrov fosh qiladi, uni oʻz tajribangiz bilan solishtira olasiz.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Retseptdagi qirq daqiqa yozuvi guruch hisobida nega kerak boʻlmadi? <break time='0.45s' /> Izohda kutamiz.

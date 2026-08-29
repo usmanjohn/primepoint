@@ -1,0 +1,41 @@
+Ish eʼlonida shunday yozilgan: bizda oʻrtacha maosh oʻn million soʻm. <break time='0.45s' /> Bu rostmi?
+
+<break time='2.5s' />
+
+Jasur eʼlonni oʻqidi va xursand boʻldi. Oʻrtacha oʻn million, demak u ham shuncha oladi.
+
+<break time='2.5s' />
+
+Bir soniya. <break time='0.45s' /> Eʼlon yolgʻon gapiryaptimi?
+
+<break time='2.5s' />
+
+Korxonaga kiramiz. Sanaymiz, bir, ikki, uch... <break time='0.3s' /> toʻqqiz nafar xodim ishlaydi.
+
+<break time='2.5s' />
+
+Maoshlar yigʻindisi toʻqson million. Toʻqqizga boʻlamiz, <emphasis level='moderate'>oʻn million</emphasis>. Hisob mutlaqo toʻgʻri.
+
+<break time='2.5s' />
+
+Endi maoshlarni yonma-yon qoʻyamiz. Toʻrt, toʻrt, toʻrt, besh, besh, olti, olti, yetti <break time='0.3s' /> va qirq toʻqqiz. Oxirgisi direktorniki. <break time='0.45s' /> Punktir chiziq, oʻrtacha. Sakkizta ustun undan pastda turibdi.
+
+<break time='2.5s' />
+
+Jasur diqqat qildi. <break time='0.45s' /> Toʻqqiz kishidan <emphasis level='moderate'>sakkiztasi</emphasis> oʻrtachadan kam oladi.
+
+<break time='2.5s' />
+
+Bitta juda katta son butun maʼlumotni yuqoriga tortib ketdi. Endi saralaymiz va roppa-rosa oʻrtadagisini olamiz, <emphasis level='moderate'>besh million</emphasis>. Bu son mediana deyiladi.
+
+<break time='2.5s' />
+
+Hisobni tekshiramiz. Toʻrt, toʻrt, toʻrt, besh, besh, olti, olti, yetti va qirq toʻqqiz, yigʻindi toʻqson. Toʻqqizga boʻlsak oʻn. <break time='0.3s' /> Yolgʻon yoʻq. Faqat notoʻgʻri oʻrtacha tanlangan.
+
+<break time='2.5s' />
+
+Esda tutinglar. <break time='0.45s' /> Oʻrtacha oʻn, mediana besh, moda toʻrt. <emphasis level='moderate'>Uchalasi ham rost.</emphasis> Shuning uchun eʼlonni oʻqiganda soʻrang: qaysi oʻrtacha?
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Direktorning maoshi qirq toʻqqiz emas, toʻrt yuz toʻqson million boʻlsa, mediana oʻzgaradimi? <break time='0.45s' /> Izohda kutamiz.
