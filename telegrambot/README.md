@@ -7,7 +7,7 @@ endpoint and nothing stored about who reads the channel**. It posts, and that is
 |---|---|
 | Bot | `@PowertyuzBot` |
 | Channel | `@powertyuz` (bot must be an **admin** with *Post Messages*) |
-| Schedule | every day 19:00 Tashkent = **14:00 UTC** (`TIME_ZONE` is UTC) |
+| Schedule | `0 17 * * *` on the Railway cron service = 22:00 Tashkent. Railway cron is **always UTC** |
 | Language | Uzbek. Only the material (an English sentence, a Korean line) is not. |
 
 ## What it posts
@@ -53,7 +53,7 @@ announced late.
 Railway runs cron as its own service. In the dashboard:
 
 1. **New** → **GitHub Repo** → this repo (same repo as the web service).
-2. Settings → **Cron Schedule**: `0 14 * * *`
+2. Settings → **Cron Schedule**: `0 17 * * *` (UTC — 22:00 Tashkent)
 3. Settings → **Custom Start Command**: `python manage.py telegram_daily`
 4. Variables → give it the same `DATABASE_URL`, `DJANGO_SECRET_KEY`,
    `TELEGRAM_BOT_TOKEN` and `SITE_URL` as the web service (Railway can reference
@@ -62,6 +62,13 @@ Railway runs cron as its own service. In the dashboard:
 A cron service starts, runs the command, and exits — it is billed only for those
 seconds. `telegram_daily` exits non-zero if a post failed, so a bad run shows up red
 in the Railway log instead of passing silently.
+
+**Railway's private network is not up the instant the container starts.** A cron job
+that connects immediately fails with `could not translate host name
+"postgres.railway.internal"`. `telegram_daily` therefore waits for the database (up to
+60s) before doing anything. If a run still cannot reach it, point the cron service's
+`DATABASE_URL` at the Postgres service's **public** URL (`DATABASE_PUBLIC_URL`,
+`…proxy.rlwy.net`), which needs no private network at all.
 
 ## Safety
 

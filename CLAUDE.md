@@ -459,7 +459,7 @@ Adding drills for another exam: add its `qtype` codes to `QTYPE_CHOICES` in
 `telegrambot` posts site content to the Telegram channel **@powertyuz** through the bot
 **@PowertyuzBot**. It is **outbound only**: no webhook, no public endpoint, nothing stored
 about who reads the channel. Read `telegrambot/README.md` before touching it.
-- **Daily 19:00 Tashkent (14:00 UTC)** — one `PracticeQuestion` as a native Telegram quiz
+- **Daily 22:00 Tashkent (`0 17 * * *`, Railway cron is UTC)** — one `PracticeQuestion` as a native Telegram quiz
   poll, subject rotating by calendar day: Ingliz tili → Koreys tili → Matematika → Rus tili
   → Matematika (SAT). Never repeats (`TelegramPost`), falls through to the next subject when
   one runs dry.
@@ -469,8 +469,10 @@ about who reads the channel. Read `telegrambot/README.md` before touching it.
   `telegram_ping` checks the token; `telegram_daily` is what Railway cron runs.
 - **`SITE_URL` must be set in Railway** — a cron command has no request to build links from,
   so if it is wrong every button in every post is dead.
-- The cron is its **own Railway service** (`0 14 * * *`, `python manage.py telegram_daily`)
+- The cron is its **own Railway service** (`0 17 * * *`, `python manage.py telegram_daily`)
   and does **not** inherit the web service's variables — they must be set on it too.
+- Railway's **private network is not up when a cron container starts**, so `telegram_daily`
+  waits for the DB before working; otherwise it dies on `postgres.railway.internal`.
 - ⛔ Never add user tracking / account linking to this bot without being asked: the user
   chose outbound-only deliberately (2026-09-02).
 
