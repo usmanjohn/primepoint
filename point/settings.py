@@ -21,6 +21,16 @@ DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '*').split(',')
 
+# ── Telegram channel bot (outbound only — see telegrambot/api.py) ───────────
+# The bot never receives updates and stores nothing about who reads the
+# channel; it only posts. TELEGRAM_BOT_TOKEN comes from @BotFather.
+TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN', '')
+TELEGRAM_CHANNEL = os.environ.get('TELEGRAM_CHANNEL', '@powertyuz')
+
+# Absolute base for the links inside those posts. A management command has no
+# request to derive the host from, so this must be set in production.
+SITE_URL = os.environ.get('SITE_URL', 'https://powerty.uz')
+
 CSRF_TRUSTED_ORIGINS = [
     origin.strip()
     for origin in os.environ.get('DJANGO_CSRF_TRUSTED_ORIGINS', '').split(',')
@@ -59,6 +69,7 @@ INSTALLED_APPS = [
     'examprep',
     'corner',
     'logic',
+    'telegrambot',
 ]
 
 MIDDLEWARE = [
@@ -84,6 +95,7 @@ _template_options = {
         'people.context_processors.notification_context',
         'people.context_processors.nav_counts',
         'prime.context_processors.study_subjects',
+        'prime.context_processors.social',
     ],
 }
 # In production, wrap loaders with the cached loader so templates are compiled once per worker.

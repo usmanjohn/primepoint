@@ -1,0 +1,40 @@
+{% load i18n %}
+{% comment %}
+Official accounts — data comes from prime/social.py via the `social` context processor.
+Usage:
+  include this file as-is                        -> full cards
+  include it "with style=compact"                -> icon row only
+  add "with title=..." (full style only)         -> custom heading
+{% endcomment %}
+{% if style == "compact" %}
+<div class="soc-row" role="list">
+  {% for s in social_links %}
+  <a href="{{ s.url }}" class="soc-dot" style="--soc:{{ s.color }};" role="listitem"
+     title="{{ s.name }} — {{ s.handle }}" aria-label="{{ s.name }}: {{ s.handle }}"
+     {% if s.key != 'email' %}target="_blank" rel="noopener"{% endif %}>
+    <i class="bi {{ s.icon }}"></i>
+  </a>
+  {% endfor %}
+</div>
+{% else %}
+<div class="soc-block">
+  <div class="soc-head">
+    <span class="soc-title">{% if title %}{{ title }}{% else %}{% trans "Follow Powerty" %}{% endif %}</span>
+    <span class="soc-sub">{% trans "Same lessons, wherever you already are." %}</span>
+  </div>
+  <div class="soc-grid">
+    {% for s in social_links %}
+    <a href="{{ s.url }}" class="soc-card" style="--soc:{{ s.color }};"
+       {% if s.key != 'email' %}target="_blank" rel="noopener"{% endif %}>
+      <span class="soc-ico"><i class="bi {{ s.icon }}"></i></span>
+      <span class="soc-text">
+        <span class="soc-name">{{ s.name }}</span>
+        <span class="soc-handle">{{ s.handle }}</span>
+        <span class="soc-blurb">{{ s.blurb }}</span>
+      </span>
+      <i class="bi bi-arrow-up-right soc-go"></i>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

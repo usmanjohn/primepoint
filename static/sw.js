@@ -1,4 +1,4 @@
-const CACHE = 'powerty-v6';
+const CACHE = 'powerty-v7';
 
 // Self-hosted shell assets only. These used to point at jsDelivr, but the site
 // stopped loading Bootstrap from a CDN — and one failed request makes addAll()

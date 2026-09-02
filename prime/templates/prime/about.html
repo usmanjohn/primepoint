@@ -763,9 +763,17 @@
       <p style="color:var(--accent); font-size:0.88rem; margin:0;">
         <i class="bi bi-envelope-fill me-2"></i>
         {% trans "Interested in partnering or investing?" %}
-        <strong>{% trans "Reach out at" %} <a href="mailto:hello@primepoint.app" style="color:var(--accent);">hello@primepoint.app</a></strong>
+        <strong>{% trans "Reach out at" %} <a href="mailto:{{ contact_email }}" style="color:var(--accent);">{{ contact_email }}</a></strong>
       </p>
     </div>
+  </div>
+
+  <!-- ── Follow us ─────────────────────────── -->
+  <div class="ab-partners-section">
+    <span class="ab-eyebrow">{% trans "Stay close" %}</span>
+    <h2 class="ab-section-title">{% trans "Find us outside the app" %}</h2>
+    <div class="ab-divider"></div>
+    {% include "includes/social_links.html" %}
   </div>
 
   <!-- ── CTA ───────────────────────────────────────── -->

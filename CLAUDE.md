@@ -455,6 +455,33 @@ Question types 51/52/54: add a new `toc_topik_writing_<qtype>.txt`; same workflo
 Adding drills for another exam: add its `qtype` codes to `QTYPE_CHOICES` in
 `examprep/models.py` (IELTS `t1`/`t2` are already there) and point `TRACK` at that exam.
 
+## The Telegram channel (`telegrambot/`) — outbound-only bot
+`telegrambot` posts site content to the Telegram channel **@powertyuz** through the bot
+**@PowertyuzBot**. It is **outbound only**: no webhook, no public endpoint, nothing stored
+about who reads the channel. Read `telegrambot/README.md` before touching it.
+- **Daily 19:00 Tashkent (14:00 UTC)** — one `PracticeQuestion` as a native Telegram quiz
+  poll, subject rotating by calendar day: Ingliz tili → Koreys tili → Matematika → Rus tili
+  → Matematika (SAT). Never repeats (`TelegramPost`), falls through to the next subject when
+  one runs dry.
+- **Weekly** — the Logic Arena puzzle when it opens and its answer when it reveals.
+- The channel is **Uzbek only**; only the material (an English sentence, a Korean line) is not.
+- Always `--dry-run` before sending: `python manage.py post_daily_quiz --dry-run`.
+  `telegram_ping` checks the token; `telegram_daily` is what Railway cron runs.
+- **`SITE_URL` must be set in Railway** — a cron command has no request to build links from,
+  so if it is wrong every button in every post is dead.
+- The cron is its **own Railway service** (`0 14 * * *`, `python manage.py telegram_daily`)
+  and does **not** inherit the web service's variables — they must be set on it too.
+- ⛔ Never add user tracking / account linking to this bot without being asked: the user
+  chose outbound-only deliberately (2026-09-02).
+
+## Social accounts (`prime/social.py`)
+Telegram `@Albetta` (contact) + channel `@powertyuz`, Instagram `@powerty.uz`, YouTube
+`@powertyuz`, e-mail `powertyuz@gmail.com` live in **one** registry, `prime/social.py`,
+exposed to every template by `prime.context_processors.social` and rendered by
+`templates/includes/social_links.html` (`style="compact"` = icon row, default = full cards).
+Change a handle there and the sidebar, About, Help and the schema.org `sameAs` block all
+follow. Never hard-code a handle in a template.
+
 ## Making videos (`storyvideo/`) — Shorts/Reels animatics
 `storyvideo/` is a plain Python package at the repo root (**not** a Django app, never
 imported by Django, costs production nothing). It turns a Corner reading into a

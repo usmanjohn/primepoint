@@ -5986,3 +5986,141 @@ table.pm-col {
   .cr-row-sub { display: none; }
   .cr-panel { padding: .9rem 1rem; }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   SOCIAL — official accounts strip (templates/includes/social_links.html)
+   Data lives in prime/social.py; each link sets its own brand colour
+   through the inline custom property --soc, so nothing here is per-network.
+═══════════════════════════════════════════════════════════════ */
+
+/* ── Compact icon row (sidebar, cards, page corners) ─────────── */
+.soc-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.soc-dot {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1rem;
+    color: var(--soc, var(--accent));
+    /* plain fallbacks first — color-mix() is unsupported on older Android browsers */
+    background: rgba(148, 163, 184, 0.14);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    background: color-mix(in srgb, var(--soc, var(--accent)) 14%, transparent);
+    border-color: color-mix(in srgb, var(--soc, var(--accent)) 32%, transparent);
+    text-decoration: none;
+    transition: var(--transition);
+}
+.soc-dot:hover,
+.soc-dot:focus-visible {
+    background: var(--soc, var(--accent));
+    border-color: var(--soc, var(--accent));
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Sidebar placement: sits above the user footer, collapses with the rail */
+.sidebar-social {
+    padding: 10px 14px;
+    border-top: 1px solid var(--chrome-border);
+    flex-shrink: 0;
+}
+.sidebar-social .soc-row { justify-content: flex-start; }
+#nav-toggler:checked ~ #sidebar .sidebar-social { padding: 10px 8px; }
+#nav-toggler:checked ~ #sidebar .sidebar-social .soc-row { justify-content: center; }
+
+/* ── Full cards (About, Help, contact sections) ──────────────── */
+.soc-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 1.5rem;
+}
+.soc-head { margin-bottom: 1.1rem; }
+.soc-title {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--text);
+}
+.soc-sub {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+}
+.soc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 0.85rem;
+}
+.soc-card {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.9rem 1rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    text-decoration: none;
+    transition: var(--transition);
+}
+.soc-card:hover,
+.soc-card:focus-visible {
+    border-color: var(--soc, var(--accent));
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.12);
+    box-shadow: 0 6px 20px color-mix(in srgb, var(--soc, var(--accent)) 18%, transparent);
+    transform: translateY(-3px);
+}
+.soc-ico {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.35rem;
+    color: #fff;
+    background: var(--soc, var(--accent));
+}
+.soc-text { display: flex; flex-direction: column; min-width: 0; }
+.soc-name {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+}
+.soc-handle {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--soc, var(--accent));
+    word-break: break-all;
+}
+.soc-blurb {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-top: 0.15rem;
+}
+.soc-go {
+    margin-left: auto;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+.soc-card:hover .soc-go { color: var(--soc, var(--accent)); }
+
+@media (max-width: 575.98px) {
+    .soc-block { padding: 1.15rem; border-radius: 14px; }
+    .soc-grid { grid-template-columns: 1fr; }
+    .soc-blurb { display: none; }
+}
