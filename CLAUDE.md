@@ -459,10 +459,14 @@ Adding drills for another exam: add its `qtype` codes to `QTYPE_CHOICES` in
 `telegrambot` posts site content to the Telegram channel **@powertyuz** through the bot
 **@PowertyuzBot**. It is **outbound only**: no webhook, no public endpoint, nothing stored
 about who reads the channel. Read `telegrambot/README.md` before touching it.
-- **Daily 22:00 Tashkent (`0 17 * * *`, Railway cron is UTC)** — one `PracticeQuestion` as a native Telegram quiz
-  poll, subject rotating by calendar day: Ingliz tili → Koreys tili → Matematika → Rus tili
-  → Matematika (SAT). Never repeats (`TelegramPost`), falls through to the next subject when
-  one runs dry.
+- **Daily 22:00 Tashkent (`0 17 * * *`, Railway cron is UTC)** — **one `PracticeQuestion`
+  per subject** as native quiz polls (Ingliz tili, Koreys tili, Matematika, Rus tili,
+  Matematika (SAT)), 3s apart. Never repeats (`TelegramPost`); the guard is per subject
+  per day, so a re-run sends only what is missing.
+- ⛔ **Never post from the local database.** `DATABASES` silently falls back to sqlite
+  without `DATABASE_URL`, and posts built from dev rows carry dev ids in every link —
+  this shipped once (2026-09-02). `api.refuse_local_database()` blocks it; use
+  `--dry-run` to preview locally.
 - **Weekly** — the Logic Arena puzzle when it opens and its answer when it reveals.
 - The channel is **Uzbek only**; only the material (an English sentence, a Korean line) is not.
 - Always `--dry-run` before sending: `python manage.py post_daily_quiz --dry-run`.

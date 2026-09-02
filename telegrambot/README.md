@@ -12,12 +12,16 @@ endpoint and nothing stored about who reads the channel**. It posts, and that is
 
 ## What it posts
 
-**Daily — one question as a native Telegram quiz poll.** One tap, marked instantly,
-the Uzbek explanation appears under the answer, and an inline button leads to the full
-practice on the site. The subject rotates by calendar day, not by a counter, so a
-missed day never shifts the cycle:
+**Daily — one question per subject as native Telegram quiz polls.** Five polls a day,
+one for each subject, three seconds apart:
 
-    Ingliz tili → Koreys tili → Matematika → Rus tili → Matematika (SAT)
+    Ingliz tili · Koreys tili · Matematika · Rus tili · Matematika (SAT)
+
+One tap, marked instantly, the Uzbek explanation appears under the answer, and an
+inline button leads to the full practice on the site. The guard is per subject per
+day (derived from the questions already sent, so no extra column), so a re-run sends
+only what is missing. `post_daily_quiz` without `--each-subject` still sends a single
+question, rotating by calendar day.
 
 A question is never repeated (`TelegramPost` remembers every one used), and when a
 subject runs dry the picker falls through to the next in the rotation instead of
@@ -71,6 +75,13 @@ that connects immediately fails with `could not translate host name
 `…proxy.rlwy.net`), which needs no private network at all.
 
 ## Safety
+
+**The bot refuses to post from a local database.** `DATABASES` falls back to local
+sqlite whenever `DATABASE_URL` is unset, so a plain `manage.py` run — or `railway run`
+against a service without that variable — would send real posts built from dev rows,
+with dev ids in every link. That shipped once, on 2026-09-02, and every link pointed
+at whatever held that id in production. `api.refuse_local_database()` now blocks any
+send whose connection is sqlite; `--dry-run` still works locally.
 
 - Running twice in a day posts once: the quiz checks whether one already went out
   (`--force` overrides), and the puzzle commands post only what is due and unposted.

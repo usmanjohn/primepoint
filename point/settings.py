@@ -221,7 +221,11 @@ CKEDITOR_5_CONFIGS = {
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+# Uzbek is the default: the audience is Uzbek, and a crawler that sends no
+# Accept-Language (Googlebot usually does not) should index the Uzbek pages.
+# Visitors keep whatever they pick — LocaleMiddleware reads the session and the
+# language cookie first, so the EN/UZ switch still wins for anyone who uses it.
+LANGUAGE_CODE = 'uz'
 
 TIME_ZONE = 'UTC'
 

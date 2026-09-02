@@ -26,6 +26,22 @@ def rotation_from(date):
     return ROTATION[start:] + ROTATION[:start]
 
 
+def subjects_posted_on(date):
+    """Which subjects already had a question go out on `date`.
+
+    Derived from the questions themselves rather than a column on TelegramPost,
+    so the daily guard needs no extra field: a re-run posts nothing twice.
+    """
+    ids = (TelegramPost.objects
+           .filter(kind=TelegramPost.QUIZ, posted_at__date=date)
+           .values_list('object_id', flat=True))
+    if not ids:
+        return set()
+    return set(PracticeQuestion.objects
+               .filter(id__in=list(ids))
+               .values_list('practice__subject__name', flat=True))
+
+
 def used_question_ids():
     return set(TelegramPost.objects
                .filter(kind=TelegramPost.QUIZ)

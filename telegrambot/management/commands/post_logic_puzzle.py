@@ -62,6 +62,10 @@ class Command(BaseCommand):
             return 1
         if not api.is_configured():
             raise CommandError('TELEGRAM_BOT_TOKEN / TELEGRAM_CHANNEL are not set.')
+        try:
+            api.refuse_local_database()
+        except api.LocalDatabaseRefused as exc:
+            raise CommandError(str(exc)) from exc
         result = api.send_message(text, buttons=buttons)
         TelegramPost.objects.create(
             kind=kind, object_id=puzzle.id,

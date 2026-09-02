@@ -15,6 +15,7 @@ import urllib.parse
 import urllib.request
 
 from django.conf import settings
+from django.db import connection
 
 logger = logging.getLogger(__name__)
 
@@ -32,6 +33,29 @@ MESSAGE_MAX = 4096
 
 class TelegramError(RuntimeError):
     """Telegram answered, and said no."""
+
+
+class LocalDatabaseRefused(RuntimeError):
+    """Refusing to post live from a development database."""
+
+
+def refuse_local_database():
+    """The channel is public; a dev database must never feed it.
+
+    `DATABASES` falls back to local sqlite whenever DATABASE_URL is unset
+    (point/settings.py), so a mistyped --service or a plain `manage.py` run
+    would happily send real posts built from dev rows — with dev ids in every
+    link, pointing at whatever happens to hold that id in production.
+    This has happened once; it does not get to happen twice.
+    """
+    engine = connection.settings_dict.get('ENGINE', '')
+    if 'sqlite' in engine:
+        raise LocalDatabaseRefused(
+            'Refusing to post: this process is on the local sqlite database '
+            f'({connection.settings_dict.get("NAME")}), not production. '
+            'The post would carry dev ids in its links. '
+            'Run it on Railway, or with DATABASE_URL set to the production '
+            'database. Use --dry-run to preview locally.')
 
 
 def is_configured():

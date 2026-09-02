@@ -56,10 +56,14 @@ class Command(BaseCommand):
         extra = ['--dry-run'] if dry else []
         failures = []
 
-        for command in ('post_logic_puzzle', 'post_daily_quiz'):
+        # One question per subject — Ingliz tili, Koreys tili, Matematika,
+        # Rus tili and Matematika (SAT) each get their own poll every day.
+        jobs = [('post_logic_puzzle', []), ('post_daily_quiz', ['--each-subject'])]
+
+        for command, args in jobs:
             self.stdout.write(self.style.MIGRATE_HEADING(f'── {command} ──'))
             try:
-                call_command(command, *extra, stdout=self.stdout, stderr=self.stderr)
+                call_command(command, *args, *extra, stdout=self.stdout, stderr=self.stderr)
             except Exception as exc:                      # noqa: BLE001 — a cron run reports, never crashes
                 failures.append(f'{command}: {exc}')
                 self.stderr.write(self.style.ERROR(f'{command} failed: {exc}'))
