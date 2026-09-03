@@ -1,33 +1,60 @@
-# ╔═══════════════════════════════════════════════════════════════════╗
-# ║  ⛔ SUPERSEDED — do not write new lessons from this file.          ║
-# ║  Prime SAT Math replaced it on 2026-09-03: same 100 titles, new   ║
-# ║  bilingual style, a playlist, and a 20-question practice each.    ║
-# ║      lesson list  ->  toc_prime_sat_math.txt                      ║
-# ║      writing rules ->  STYLE_GUIDE_PRIME_SAT.md                   ║
-# ║  Kept only so the old _tutorials_sat_math_*.py files still have   ║
-# ║  the list they were written against.                              ║
-# ╚═══════════════════════════════════════════════════════════════════╝
 # ── Subject metadata (read by Claude) ────────────────────────────────
 PREFIX:   SAT
 CATEGORY: math
 AUTHOR:   powerty
+PLAYLIST: Prime SAT Math
 # (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
-# Writing rules live in STYLE_GUIDE.md. This file is ONLY the ordered topic list.
+# Writing rules live in STYLE_GUIDE_PRIME_SAT.md — NOT STYLE_GUIDE.md (that one described
+# the first, thinner generation of these lessons) and NOT STYLE_GUIDE_PRIME_MATH.md.
+# The playlist is created automatically by import_tutorials from the PLAYLIST dict
+# inside each _tutorials_prime_sat_*.py file.
+# This file is ONLY the ordered lesson list. Mark finished ranges with [done].
 # ─────────────────────────────────────────────────────────────────────
 
-## Part 1: Core Content Mastery (80 Lessons)
+# Prime SAT Math — 100 dars, digital SAT uchun
+#
+# ⚠️ BU KURS QAYTA YOZILMOQDA. SAT-1 … SAT-100 sarlavhalari allaqachon bazada bor
+#    (eski, yupqa avlod: inglizcha matn, oʻzbekcha ikki izoh, mashqsiz). Yangi darslar
+#    AYNI OʻSHA sarlavhalar bilan yoziladi va `--republish` bilan ustiga yoziladi.
+#    Sarlavhani oʻzgartirish = dublikat dars. Sarlavhalar bu yerda qanday boʻlsa, shunday.
+#
+# Til: sarlavha va test savollari INGLIZCHA, tushuntirish HAMMASI OʻZBEKCHA.
+#      (STYLE_GUIDE_PRIME_SAT.md §0 — kursning butun pedagogikasi shu boʻlinishda.)
+# Son: nuqtali oʻnli kasr va vergulli minglik — 3.5 va 1,200 (SAT'ning oʻzi shunday).
+#
+# Har bir darsning IKKI oyogʻi bor, birga yoziladi, 5 tadan:
+#   1. dars      — tutorial/management/commands/_tutorials_prime_sat_<range>.py
+#   2. mashq     — practice/management/commands/_practice_ps_<range>.py  (20 savol)
+# Uchinchi oyoq (Corner oʻqish matni) bu kursda YOʻQ — SAT matematika, hikoya emas.
+#
+# Import tartibi (har bir batch):
+#   python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_sat_<range>.py \
+#       --author=prime --republish
+#   python manage.py import_practices practice/management/commands/_practice_ps_<range>.py \
+#       --master=prime --expect-questions=20 --republish
+#
+# Test haqidagi faktlar (darslarda ziddiyat boʻlmasin): 2 modul × 22 savol × 35 daqiqa;
+# 2-modul adaptiv; ~75% tanlovli, ~25% grid-in; Desmos ilovaning ichida; formula varagʻi
+# ekranda; notoʻgʻri javob uchun jarima YOʻQ; ball 200–800; ~95 soniya/savol.
+#
+# ─────────────────────────────────────────────────────────────────────
 
-### Block A: The Heart of Algebra (Lessons 1–22)
-1. Introduction to the Variable and Combining Like Terms
-2. Solving Single-Variable Linear Equations
-3. Setting Up Linear Equations from Word Problems
-4. Understanding Absolute Value Equations
-5. The Concept of Slope: Steepness and Direction
-6. Calculating Slope from Two Points
-7. Slope-Intercept Form (y = mx + b) in Depth
-8. Point-Slope Form and Standard Form
-9. Graphing Linear Equations Quickly
-10. Interpreting the Meaning of Slopes and Intercepts in Real-World Contexts
+## Part 1: Core Content Mastery (1–80)
+
+### Block A: The Heart of Algebra (1–22)   ·   domain: Algebra ≈ 35% of the section
+#   Chiziqli tenglama, qiyalik, sistema va tengsizlik. Testdagi eng katta blok va eng
+#   arzon ochkolar — bu 22 dars ideal ishlansa, Math ballining uchdan biri qoʻlda.
+
+1. Introduction to the Variable and Combining Like Terms                      [done]
+2. Solving Single-Variable Linear Equations                                   [done]
+3. Setting Up Linear Equations from Word Problems                             [done]
+4. Understanding Absolute Value Equations                                     [done]
+5. The Concept of Slope: Steepness and Direction                              [done]
+6. Calculating Slope from Two Points                                          [next]
+7. Slope-Intercept Form (y = mx + b) in Depth                                 [next]
+8. Point-Slope Form and Standard Form                                         [next]
+9. Graphing Linear Equations Quickly                                          [next]
+10. Interpreting the Meaning of Slopes and Intercepts in Real-World Contexts  [next]
 11. Parallel Lines and Equal Slopes
 12. Perpendicular Lines and Negative Reciprocal Slopes
 13. Solving Multi-Step Linear Inequalities
@@ -41,7 +68,10 @@ AUTHOR:   powerty
 21. Systems of Linear Inequalities and Bounded Regions
 22. Absolute Value Inequalities on the Number Line
 
-### Block B: Advanced Math (Lessons 23–48)
+### Block B: Advanced Math (23–48)   ·   domain: Advanced Math ≈ 35%
+#   Daraja, koʻphad, kvadrat tenglama, ratsional va irratsional ifoda, funksiya.
+#   Module 2 qiyin variantining asosiy yemi shu blokdan chiqadi.
+
 23. Laws of Exponents: Multiplication, Division, and Power-to-Power
 24. Negative and Fractional Exponents
 25. Simplifying Radical Expressions
@@ -69,7 +99,11 @@ AUTHOR:   powerty
 47. Concept of Functions: Domain, Range, and Evaluation
 48. Function Transformations (Vertical/Horizontal Shifts and Reflections)
 
-### Block C: Problem Solving and Data Analysis (Lessons 49–65)
+### Block C: Problem-Solving and Data Analysis (49–65)   ·   domain: PSDA ≈ 15%
+#   Nisbat, foiz, jadval va grafik oʻqish, statistika, ehtimollik, tanlanma.
+#   Matematikasi eng yengil, ingliz tili eng ogʻir blok — jumlani oʻqiy olmagan
+#   oʻquvchi shu yerda ball yoʻqotadi. Har darsda kamida bitta interpretatsiya savoli.
+
 49. Ratios, Rates, and Proportions
 50. Unit Conversions and Dimensional Analysis
 51. Percentages: Part, Whole, and Base Changes
@@ -88,7 +122,10 @@ AUTHOR:   powerty
 64. Comparing Data Sets: Boxplots and Histograms
 65. Linear vs. Exponential Data Modeling
 
-### Block D: Geometry and Trigonometry (Lessons 66–80)
+### Block D: Geometry and Trigonometry (66–80)   ·   domain: Geometry & Trig ≈ 15%
+#   Burchak, uchburchak, oʻxshashlik, Pifagor, trigonometriya, aylana.
+#   Formula varagʻida NIMA BOR va NIMA YOʻQ — har bir darsda aytilsin.
+
 66. Lines and Angles: Vertical, Supplementary, and Complementary Angles
 67. Parallel Lines Cut by a Transversal (Alternate Interior, Corresponding Angles)
 68. Triangles: Interior Angles Theorem and Exterior Angles Theorem
@@ -105,7 +142,12 @@ AUTHOR:   powerty
 79. Circle Equations in the Coordinate Plane: Standard Form
 80. Completing the Square to Find a Circle's Center and Radius
 
-## Part 2: Math Tactics & Test Strategy (20 Lessons)
+## Part 2: Math Tactics & Test Strategy (81–100)
+
+### Block E: Taktika va Desmos (81–100)   ·   domain: hammasi
+#   Bu blok matematika oʻrgatmaydi — testni yechish usulini oʻrgatadi: son qoʻyish,
+#   javobdan teskari yurish, Desmos, tuzoq javoblar, grid-in formati, vaqt taqsimoti.
+#   Shuning uchun oxirida: oʻquvchi avval matematikani bilishi kerak.
 
 81. The "Plugging In Numbers" Tactic
 82. Backsolving (Working from the Options)
@@ -127,3 +169,8 @@ AUTHOR:   powerty
 98. The Formula Sheet Hack
 99. Pacing for Module 2 (Hard vs. Easy, adaptive test)
 100. The Final Review Protocol (30-second double-check)
+
+# ─────────────────────────────────────────────────────────────────────
+# Holat: 5 / 100 qayta yozilgan (2026-09-03).  Keyingi batch: SAT-6 … SAT-10.
+# Eski avlod hali bazada turibdi (SAT-1 … SAT-100), har batch ustiga yoziladi.
+# ─────────────────────────────────────────────────────────────────────

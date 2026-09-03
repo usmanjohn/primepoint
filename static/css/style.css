@@ -6124,3 +6124,333 @@ table.pm-col {
     .soc-grid { grid-template-columns: 1fr; }
     .soc-blurb { display: none; }
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   PRIME SAT — SAT-lesson component kit  (ps-*)
+   Used inside .tut-prose by the "Prime SAT Math" lessons (SAT-1 …).
+   EXTENDS both kits above: pe-goal, pe-formula, pe-chip, pe-call,
+   pe-fix, pe-quiz, pe-reveal, pe-gloss, pe-recap, pe-grid, pe-vs,
+   pe-steps, pe-table-wrap and the whole pm-* maths kit (pm-solve,
+   pm-frac, pm-fig, pm-num, pm-model, pm-check, pm-est, pm-word) are
+   reused as-is. Nothing here duplicates them.
+
+   Prime SAT is the only bilingual course on the site: the exam speaks
+   ENGLISH, the teacher speaks UZBEK. So it needs five things no other
+   course did:
+     a real exam question, in English, answer hidden -> .ps-stem + .ps-ch
+     the tactic that beats the question, not the maths -> .ps-tactic
+     the wrong answer the test PUT THERE on purpose   -> .ps-trap
+     the Desmos keystrokes, typed exactly             -> .ps-desmos
+     the answer box you actually type into            -> .ps-gridin
+   plus .ps-phrase (exam English -> what it is asking) and .ps-time
+   (the pacing target), which together are the bridge an Uzbek pupil
+   crosses to read the test at all.
+
+   Pure CSS: every interaction is <details>/:hover, no JavaScript.
+   Docs: tutorial/management/commands/STYLE_GUIDE_PRIME_SAT.md
+   ══════════════════════════════════════════════════════════════════ */
+
+.tut-prose {
+    --ps-exam:  #4f46e5;   /* the test's own voice (English)     */
+    --ps-key:   #16a34a;   /* the correct choice                 */
+    --ps-trap:  #e11d48;   /* the trap the test planted          */
+    --ps-tac:   #0891b2;   /* tactic / strategy                  */
+    --ps-desmos:#0f172a;   /* calculator slab                    */
+}
+
+/* ── The exam question, exactly as the SAT prints it ──────────────
+   English stem, four choices, answer hidden until the pupil has
+   thought. This is the signature visual of Prime SAT: everything
+   inside the card is the test's language, everything in the reveal
+   is the teacher's. */
+.ps-stem {
+    margin: 1.4rem 0;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--ps-exam);
+    border-radius: 4px 4px 12px 12px;
+    background: var(--surface, #fff);
+    overflow: hidden;
+}
+.ps-stem__tag {
+    font-family: 'Syne', sans-serif;
+    font-size: .68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--ps-exam);
+    background: rgba(79, 70, 229, .07);
+    padding: .45rem .9rem;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .6rem;
+}
+.ps-stem__q {
+    padding: .9rem 1rem .2rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+.ps-stem__q p { margin: 0 0 .7rem; }
+.ps-stem__q .pm-fig { margin: .4rem 0 .9rem; }
+
+/* Choices — the letters are drawn by CSS, so the data stays clean. */
+.ps-ch {
+    list-style: none;
+    margin: 0;
+    padding: 0 1rem 1rem;
+    counter-reset: ps-ch;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: .45rem;
+}
+.ps-ch li {
+    counter-increment: ps-ch;
+    position: relative;
+    padding: .5rem .7rem .5rem 2.3rem;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    font-size: .95rem;
+    line-height: 1.45;
+    font-variant-numeric: tabular-nums;
+    background: var(--surface-2, rgba(127,127,127,.04));
+}
+.ps-ch li::before {
+    content: counter(ps-ch, upper-alpha) ")";
+    position: absolute;
+    left: .7rem;
+    top: .5rem;
+    font-weight: 800;
+    font-size: .85rem;
+    color: var(--text-muted);
+}
+/* Only for a worked example that shows the key straight away — never
+   on a question the pupil is meant to try first. */
+.ps-ch li.ps-ch--key {
+    border-color: var(--ps-key);
+    background: rgba(22, 163, 74, .1);
+}
+.ps-ch li.ps-ch--key::before { color: var(--ps-key); }
+.ps-ch li.ps-ch--key::after {
+    content: "✓";
+    margin-left: .4rem;
+    font-weight: 800;
+    color: var(--ps-key);
+}
+
+/* The teacher's half of the card. */
+.ps-sol { border-top: 1px solid var(--border); }
+.ps-sol > summary {
+    list-style: none;
+    cursor: pointer;
+    padding: .6rem 1rem;
+    font-size: .85rem;
+    font-weight: 700;
+    color: var(--ps-exam);
+    display: flex;
+    align-items: center;
+    gap: .45rem;
+    user-select: none;
+}
+.ps-sol > summary::-webkit-details-marker { display: none; }
+.ps-sol > summary::before { content: "▸"; transition: transform .18s ease; }
+.ps-sol[open] > summary::before { transform: rotate(90deg); }
+.ps-sol > summary:hover { background: rgba(79, 70, 229, .06); }
+.ps-sol__body {
+    padding: .3rem 1rem 1rem;
+    border-top: 1px dashed var(--border);
+    font-size: .95rem;
+}
+.ps-sol__body > :first-child { margin-top: .7rem; }
+.ps-sol__ans {
+    font-weight: 800;
+    color: var(--ps-key);
+}
+
+/* ── Tactic — how a test-taker beats the question ─────────────────
+   Not the maths: the move. Plug in, backsolve, eyeball, skip. */
+.ps-tactic {
+    margin: 1.3rem 0;
+    padding: .9rem 1.1rem;
+    border: 1px solid rgba(8, 145, 178, .35);
+    border-left: 5px solid var(--ps-tac);
+    border-radius: 0 12px 12px 0;
+    background: linear-gradient(180deg, rgba(8, 145, 178, .08), transparent);
+}
+.ps-tactic__t {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    color: var(--ps-tac);
+    margin-bottom: .4rem;
+}
+.ps-tactic__t::before { content: "⚡ "; }
+.ps-tactic p:last-child { margin-bottom: 0; }
+.ps-tactic ol, .ps-tactic ul { margin: .3rem 0 0; padding-left: 1.2rem; }
+.ps-tactic li { margin-bottom: .25rem; }
+
+/* ── Trap — the wrong answer the test planted on purpose ──────────
+   Every SAT distractor is somebody's honest mistake. Naming the
+   mistake is worth more than naming the answer. */
+.ps-trap {
+    margin: 1.2rem 0;
+    border: 1px solid rgba(225, 29, 72, .3);
+    border-radius: 12px;
+    background: rgba(225, 29, 72, .05);
+    padding: .8rem 1rem;
+}
+.ps-trap__t {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    color: var(--ps-trap);
+    margin-bottom: .45rem;
+}
+.ps-trap__t::before { content: "⚠ "; }
+.ps-trap__val {
+    display: inline-block;
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: var(--ps-trap);
+    background: rgba(225, 29, 72, .1);
+    border-radius: 7px;
+    padding: .1rem .5rem;
+    margin-right: .4rem;
+    font-variant-numeric: tabular-nums;
+}
+.ps-trap__why { display: block; margin-top: .45rem; font-size: .9rem; line-height: 1.55; }
+
+/* ── Desmos — the keystrokes, typed exactly ───────────────────────
+   The digital SAT ships a graphing calculator. A pupil who is told
+   "use Desmos" learns nothing; a pupil who is shown what to type
+   learns a repeatable move. */
+.ps-desmos {
+    margin: 1.3rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+.ps-desmos__t {
+    font-family: 'Syne', sans-serif;
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    color: #e2e8f0;
+    background: var(--ps-desmos);
+    padding: .5rem .9rem;
+    margin: 0;
+}
+.ps-desmos__t::before { content: "🖩 "; }
+.ps-desmos__keys {
+    list-style: none;
+    margin: 0;
+    padding: .7rem .9rem;
+    background: #1e293b;
+    counter-reset: ps-k;
+}
+.ps-desmos__keys li {
+    counter-increment: ps-k;
+    color: #f1f5f9;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: .92rem;
+    padding: .28rem 0 .28rem 1.7rem;
+    position: relative;
+    word-break: break-word;
+}
+.ps-desmos__keys li::before {
+    content: counter(ps-k);
+    position: absolute;
+    left: 0;
+    color: #64748b;
+    font-size: .78rem;
+    font-weight: 700;
+}
+.ps-desmos__read {
+    margin: 0;
+    padding: .6rem .9rem;
+    font-size: .87rem;
+    line-height: 1.55;
+    background: var(--surface-2, rgba(127,127,127,.05));
+    border-top: 1px solid var(--border);
+}
+
+/* ── Grid-in — the box you actually type the answer into ──────────
+   Student-produced responses are lost on formatting, not on maths. */
+.ps-gridin {
+    margin: 1.1rem 0;
+    text-align: center;
+}
+.ps-gridin__boxes {
+    display: inline-flex;
+    gap: .25rem;
+}
+.ps-gridin__boxes span {
+    min-width: 2.1rem;
+    padding: .45rem .3rem;
+    border: 2px solid var(--border);
+    border-radius: 7px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    font-variant-numeric: tabular-nums;
+    background: var(--surface, #fff);
+}
+.ps-gridin--ok .ps-gridin__boxes span { border-color: var(--ps-key); color: var(--ps-key); }
+.ps-gridin--no .ps-gridin__boxes span { border-color: var(--ps-trap); color: var(--ps-trap); }
+.ps-gridin figcaption {
+    margin-top: .4rem;
+    font-size: .84rem;
+    color: var(--text-muted);
+}
+
+/* ── Phrase book — exam English -> what it is actually asking ─────
+   The single most useful thing in the course for an Uzbek pupil:
+   the maths is known, the sentence is not. */
+.ps-phrase {
+    list-style: none;
+    margin: 1.2rem 0;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+.ps-phrase li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    gap: .2rem 1rem;
+    padding: .55rem .9rem;
+    border-top: 1px solid var(--border);
+    font-size: .92rem;
+    line-height: 1.5;
+}
+.ps-phrase li:first-child { border-top: 0; }
+.ps-phrase li:nth-child(odd) { background: rgba(127,127,127,.035); }
+.ps-phrase b { color: var(--ps-exam); font-weight: 700; }
+.ps-phrase span { color: var(--text-muted); }
+
+/* ── Pacing chip — inline, sits in a .ps-stem__tag row ────────────── */
+.ps-time {
+    font-family: 'Syne', sans-serif;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    color: var(--text-muted);
+    background: rgba(127,127,127,.1);
+    border-radius: 999px;
+    padding: .12rem .55rem;
+    white-space: nowrap;
+    text-transform: none;
+}
+.ps-time::before { content: "⏱ "; }
+
+@media (max-width: 575.98px) {
+    .ps-ch { grid-template-columns: 1fr; }
+    .ps-phrase li { grid-template-columns: 1fr; }
+    .ps-phrase span::before { content: "→ "; }
+}

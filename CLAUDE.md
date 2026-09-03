@@ -36,11 +36,15 @@
   Swap in `import_tutorials` / `import_examprep` / `import_writing` / etc. as appropriate
   for whichever app the task touched.
 
-## Creating Tutorials (bulk)
-When the user asks to create/continue tutorials (e.g. "make the next 5 SAT tutorials"):
-1. Read `tutorial/management/commands/STYLE_GUIDE.md` (how to write — same for every subject).
-2. Read the subject's table of contents, e.g. `tutorial/management/commands/toc_sat_math.txt`
-   (its header gives PREFIX, CATEGORY, AUTHOR; the body is the ordered topic list).
+## Creating Tutorials (bulk) — the generic, older workflow
+⚠️ Every course that exists today has its **own** section below (Prime English, Korean,
+Russian, Math, SAT). Use this generic workflow only for a **brand-new subject** that has no
+section yet. In particular, "make the next 5 SAT tutorials" now means **Prime SAT Math** —
+see that section; `STYLE_GUIDE.md` and `toc_sat_math.txt` are superseded for SAT.
+When the user asks for a subject with no section of its own:
+1. Read `tutorial/management/commands/STYLE_GUIDE.md` (how to write — the generic guide).
+2. Read the subject's table of contents (its header gives PREFIX, CATEGORY, AUTHOR; the
+   body is the ordered topic list).
 3. Find where to continue: query the DB for the highest existing number, e.g.
    `Tutorial.objects.filter(title__startswith='SAT-')`.
 4. Write the next batch into `tutorial/management/commands/_tutorials_<subject>_<range>.py`
@@ -264,6 +268,64 @@ decimals with a comma), and geometry figures are **inline SVG**, never uploaded 
 Prime Math is **not** the SAT course (`SAT-…`, English, exam-shaped) and not the Math
 Championship game (auto-generated, no explanations). It is the school course itself, from
 zero, in order.
+
+## Creating Prime SAT Math lessons (bulk) — digital SAT, ikki tilda
+**Prime SAT Math** is the 100-lesson digital-SAT maths course in `tutorial`, held together
+by a `TutorialPlaylist` called "Prime SAT Math". Titles are `SAT-1: …`, category `math`.
+It is the fifth course on the Prime machinery and the **only bilingual one**: the exam
+speaks **English**, the teacher speaks **Uzbek**.
+⚠️ **This is a REWRITE, not a new course.** `SAT-1 … SAT-100` already exist in the DB from
+an older, thinner generation (English prose, two Uzbek asides, no playlist, no practice).
+The new lessons carry **the same titles** and go in with `--republish`, overwriting them.
+**Never reword a title** — the title is the importer's match key, and a changed one creates
+a duplicate lesson instead of upgrading the old one.
+When the user asks (e.g. "make the next 5 Prime SAT lessons"):
+1. Read `tutorial/management/commands/STYLE_GUIDE_PRIME_SAT.md` (§0 is the language split,
+   §0.1 the American number format, §0.2 the facts about the test, §7 the answer gate).
+2. Read `tutorial/management/commands/toc_prime_sat_math.txt` (header gives PREFIX, CATEGORY,
+   AUTHOR, PLAYLIST; body is the ordered 100-lesson list with `[done]`/`[next]` markers).
+   The old `toc_sat_math.txt` is marked SUPERSEDED — do not write from it.
+3. Find where to continue: `Tutorial.objects.filter(title__startswith='SAT-')` plus the
+   toc's `[next]` markers (the DB alone lies here — all 100 titles already exist).
+4. Write into `tutorial/management/commands/_tutorials_prime_sat_<range>.py` as
+   `PLAYLIST = {...}` + `TUTORIALS = [...]` (copy `PLAYLIST` unchanged from the previous
+   batch; each lesson carries `"order": <lesson number>`, category `math`).
+5. Import with **`--republish`** (not optional — the old lesson is already there).
+6. Mark the range `[done]` in both tocs, then give the two `railway run python manage.py …`
+   commands — automatically, every time.
+**Each Prime SAT lesson has TWO legs, written together in batches of 5:**
+1. the **tutorial** (`tutorial`, SAT-n) — teaches the idea in Uzbek, with at least two
+   `.ps-stem` exam questions in English and their traps named;
+2. the **practice** (`practice`, 20 questions, subject **`Math`** — Telegram shows it as
+   "Matematika (SAT)"; NOT `Matematika`, which is Prime Math's) — drills it. Guide:
+   `practice/management/commands/STYLE_GUIDE_PS_PRACTICE.md`, list: `toc_ps_practices.txt`.
+   Questions in English, explanations in Uzbek. Always `--expect-questions=20`.
+There is **no third leg** — no Corner reading. SAT is maths, not a story.
+Import order per batch: tutorials → practices.
+```
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_sat_<range>.py --author=prime --republish
+python manage.py import_practices practice/management/commands/_practice_ps_<range>.py --master=prime --expect-questions=20
+```
+**⚠️ THE ANSWER GATE** (inherited from Prime Math and extended). Every numeric answer in the
+lessons and all 20 keys of every practice are computed twice, the second time by throwaway
+scripts in the scratchpad (`verify_sat_<range>.py` for the practices, plus one for the
+tutorials) that recompute each answer by a **different route** — brute force over
+`Fraction`s, or a numeric fingerprint of the expression at three sample points — and print
+any mismatch. They also check the key is among the choices, no two choices are equal, and
+numeric choice lists are sorted. Then re-read each English stem and ask whether a careful
+reader could defend a second answer: **ambiguity is a bug**. Run, fix, then import.
+The visual kit **reuses the whole `pe-*` set and the whole `pm-*` maths set**, and adds the
+`ps-*` pieces an exam course needs (`ps-stem` + `ps-ch` + `ps-sol` the exam question card,
+`ps-tactic` the move, `ps-trap` the planted wrong answer, `ps-desmos` the keystrokes,
+`ps-gridin` the answer box, `ps-phrase` exam English → what it asks, `ps-time` the pacing
+chip) in the **PRIME SAT** section at the bottom of `static/css/style.css`. Pure CSS — never
+add JavaScript, and never invent a `ps-*` class without adding it to that section and the
+style guide first. Maths is **HTML, never LaTeX**; figures are inline SVG.
+**Numbers use the SAT's own convention — `3.5` and `1,200`, decimal point and comma
+thousands** — the exact opposite of Prime Math's `3,5`. A pupil who types a comma into a
+grid-in loses the mark, so the habit is broken inside the course.
+Prime SAT is **not** Prime Math (Uzbek school maths, from zero) and not the Math
+Championship. It is the exam itself: its sentences, its traps and its clock.
 
 ## Creating Logic Arena puzzles (bulk) — sealed-answer logic problems
 **Logic Arena** (`logic` app, `/logic/`, uz "Mantiq maydoni") is the weekly logic-puzzle

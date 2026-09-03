@@ -1,33 +1,41 @@
-# ╔═══════════════════════════════════════════════════════════════════╗
-# ║  ⛔ SUPERSEDED — do not write new lessons from this file.          ║
-# ║  Prime SAT Math replaced it on 2026-09-03: same 100 titles, new   ║
-# ║  bilingual style, a playlist, and a 20-question practice each.    ║
-# ║      lesson list  ->  toc_prime_sat_math.txt                      ║
-# ║      writing rules ->  STYLE_GUIDE_PRIME_SAT.md                   ║
-# ║  Kept only so the old _tutorials_sat_math_*.py files still have   ║
-# ║  the list they were written against.                              ║
-# ╚═══════════════════════════════════════════════════════════════════╝
 # ── Subject metadata (read by Claude) ────────────────────────────────
 PREFIX:   SAT
-CATEGORY: math
-AUTHOR:   powerty
-# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
-# Writing rules live in STYLE_GUIDE.md. This file is ONLY the ordered topic list.
+SUBJECT:  Math          (Telegram shows it as "Matematika (SAT)")
+MASTER:   powerty
+TUTORIAL: SAT-<n>:      (each practice links to its own tutorial)
+# (MASTER = production master username. On local dev use 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_PS_PRACTICE.md.
+# Import: python manage.py import_practices <file> --master=prime --expect-questions=20
+# QUESTIONS IN ENGLISH, EXPLANATIONS IN UZBEK. Decimal point, comma thousands (3.5, 1,200).
+# ⚠️ Subject is `Math`, NOT `Matematika` — that one belongs to Prime Math.
 # ─────────────────────────────────────────────────────────────────────
 
-## Part 1: Core Content Mastery (80 Lessons)
+# Prime SAT Practices — one test per lesson, 20 questions each
+# Titles: "SAT-7 Practice: Slope-Intercept Form (y = mx + b) in Depth"
+#         (same wording as the tutorial, `Practice:` in place of the colon)
+#
+# Ramp (every test): 1–4 warm-up · 5–10 exam shape · 11–14 context & interpretation ·
+#                    15–16 trap-spotting · 17–18 Module 2 level ·
+#                    19–20 WORD PROBLEMS (always two, whatever the topic)
+# Levels: 1–22 easy · 23–48 hard · 49–65 medium · 66–80 hard · 81–100 medium
+# Rhythm: 5 lessons at a time, both legs together (tutorial → practice).
+#
+# ⚠️ These tests are NEW — the old SAT-1…100 tutorials had no practice at all.
+#    So there is nothing to overwrite: the first import of each batch creates them.
+# ─────────────────────────────────────────────────────────────────────
 
-### Block A: The Heart of Algebra (Lessons 1–22)
-1. Introduction to the Variable and Combining Like Terms
-2. Solving Single-Variable Linear Equations
-3. Setting Up Linear Equations from Word Problems
-4. Understanding Absolute Value Equations
-5. The Concept of Slope: Steepness and Direction
-6. Calculating Slope from Two Points
-7. Slope-Intercept Form (y = mx + b) in Depth
-8. Point-Slope Form and Standard Form
-9. Graphing Linear Equations Quickly
-10. Interpreting the Meaning of Slopes and Intercepts in Real-World Contexts
+### Block A: The Heart of Algebra (1–22)   level: easy
+
+1. Introduction to the Variable and Combining Like Terms                      [done]
+2. Solving Single-Variable Linear Equations                                   [done]
+3. Setting Up Linear Equations from Word Problems                             [done]
+4. Understanding Absolute Value Equations                                     [done]
+5. The Concept of Slope: Steepness and Direction                              [done]
+6. Calculating Slope from Two Points                                          [next]
+7. Slope-Intercept Form (y = mx + b) in Depth                                 [next]
+8. Point-Slope Form and Standard Form                                         [next]
+9. Graphing Linear Equations Quickly                                          [next]
+10. Interpreting the Meaning of Slopes and Intercepts in Real-World Contexts  [next]
 11. Parallel Lines and Equal Slopes
 12. Perpendicular Lines and Negative Reciprocal Slopes
 13. Solving Multi-Step Linear Inequalities
@@ -41,7 +49,8 @@ AUTHOR:   powerty
 21. Systems of Linear Inequalities and Bounded Regions
 22. Absolute Value Inequalities on the Number Line
 
-### Block B: Advanced Math (Lessons 23–48)
+### Block B: Advanced Math (23–48)   level: hard
+
 23. Laws of Exponents: Multiplication, Division, and Power-to-Power
 24. Negative and Fractional Exponents
 25. Simplifying Radical Expressions
@@ -69,7 +78,8 @@ AUTHOR:   powerty
 47. Concept of Functions: Domain, Range, and Evaluation
 48. Function Transformations (Vertical/Horizontal Shifts and Reflections)
 
-### Block C: Problem Solving and Data Analysis (Lessons 49–65)
+### Block C: Problem-Solving and Data Analysis (49–65)   level: medium
+
 49. Ratios, Rates, and Proportions
 50. Unit Conversions and Dimensional Analysis
 51. Percentages: Part, Whole, and Base Changes
@@ -88,7 +98,8 @@ AUTHOR:   powerty
 64. Comparing Data Sets: Boxplots and Histograms
 65. Linear vs. Exponential Data Modeling
 
-### Block D: Geometry and Trigonometry (Lessons 66–80)
+### Block D: Geometry and Trigonometry (66–80)   level: hard
+
 66. Lines and Angles: Vertical, Supplementary, and Complementary Angles
 67. Parallel Lines Cut by a Transversal (Alternate Interior, Corresponding Angles)
 68. Triangles: Interior Angles Theorem and Exterior Angles Theorem
@@ -105,7 +116,7 @@ AUTHOR:   powerty
 79. Circle Equations in the Coordinate Plane: Standard Form
 80. Completing the Square to Find a Circle's Center and Radius
 
-## Part 2: Math Tactics & Test Strategy (20 Lessons)
+### Block E: Taktika va Desmos (81–100)   level: medium
 
 81. The "Plugging In Numbers" Tactic
 82. Backsolving (Working from the Options)
@@ -127,3 +138,7 @@ AUTHOR:   powerty
 98. The Formula Sheet Hack
 99. Pacing for Module 2 (Hard vs. Easy, adaptive test)
 100. The Final Review Protocol (30-second double-check)
+
+# ─────────────────────────────────────────────────────────────────────
+# Holat: 5 / 100 yozilgan (2026-09-03).  Keyingi batch: SAT-6 … SAT-10.
+# ─────────────────────────────────────────────────────────────────────

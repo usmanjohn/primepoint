@@ -29,7 +29,9 @@ TELEGRAM_CHANNEL = os.environ.get('TELEGRAM_CHANNEL', '@powertyuz')
 
 # Absolute base for the links inside those posts. A management command has no
 # request to derive the host from, so this must be set in production.
-SITE_URL = os.environ.get('SITE_URL', 'https://powerty.uz')
+# The default carries the www: the apex powerty.uz has no HTTPS certificate, so
+# https://powerty.uz/... is a blank page. A wrong fallback here ships dead links.
+SITE_URL = os.environ.get('SITE_URL', 'https://www.powerty.uz')
 
 CSRF_TRUSTED_ORIGINS = [
     origin.strip()
