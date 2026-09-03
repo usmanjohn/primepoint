@@ -293,19 +293,42 @@ When the user asks (e.g. "make the next 5 Prime SAT lessons"):
 5. Import with **`--republish`** (not optional — the old lesson is already there).
 6. Mark the range `[done]` in both tocs, then give the two `railway run python manage.py …`
    commands — automatically, every time.
-**Each Prime SAT lesson has TWO legs, written together in batches of 5:**
+**Each Prime SAT lesson has THREE legs, written together in batches of 5:**
 1. the **tutorial** (`tutorial`, SAT-n) — teaches the idea in Uzbek, with at least two
    `.ps-stem` exam questions in English and their traps named;
 2. the **practice** (`practice`, 20 questions, subject **`Math`** — Telegram shows it as
    "Matematika (SAT)"; NOT `Matematika`, which is Prime Math's) — drills it. Guide:
    `practice/management/commands/STYLE_GUIDE_PS_PRACTICE.md`, list: `toc_ps_practices.txt`.
    Questions in English, explanations in Uzbek. Always `--expect-questions=20`.
-There is **no third leg** — no Corner reading. SAT is maths, not a story.
-Import order per batch: tutorials → practices.
+3. the **reading** (`corner`, collection "Prime SAT Readings", `order` = lesson number)
+   — the maths doing real work in an **English** text, with `cn-word` Uzbek glosses,
+   an "Exam English" block and **audio**. Guide: the overrides in
+   `corner/management/commands/toc_prime_sat_readings.txt`.
+   ⛔ **No algebraic notation in a reading's body** — no x, no equations. Quantities are
+   English ("a joining fee of $30 and $8 for each event"). Two reasons, both hard: it is
+   the skill being trained (turning an English sentence into maths), and an equation does
+   not survive TTS. Spell units out (millilitres, degrees) so the narrator reads them.
+   ⚠️ **Always pass `--voice` explicitly.** This shelf sits under the *Matematika* subject,
+   whose `gen_corner_audio` default voice is not English — an unattended run narrates an
+   English text with a Korean voice. Alternate `en-US-JennyNeural` / `en-US-GuyNeural`.
+Import order per batch: tutorials → practices → readings → audio → `import_tutorials
+--republish` (so the `"stories": [...]` links resolve; the story must exist first).
 ```
 python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_sat_<range>.py --author=prime --republish
 python manage.py import_practices practice/management/commands/_practice_ps_<range>.py --master=prime --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_sat_readings_<range>.py --author=prime
+python manage.py gen_corner_audio --collection="Prime SAT Readings" --only <n> --voice en-US-JennyNeural
+python manage.py import_corner_audio corner/management/commands/audio/prime-sat-readings --collection="Prime SAT Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_sat_<range>.py --author=prime --republish
 ```
+**Corner has a SECOND SAT shelf: "SAT olami"** (`toc_sat_olami.txt`, subject Matematika,
+order 4) — standalone Uzbek texts about the **exam itself**, bound to no lesson: how the
+adaptive module works, how 1,600 is put together, Desmos, test day, why the test changed in
+2024. This is the shelf a pupil opens to understand what they have signed up for. ⛔ **No
+audio** (the prose is Uzbek, the English in it is single terms — same as Koreya olami), and
+⛔ **never invent fees, test dates, centre names or university cut-offs**: describe the
+process and send the reader to the official source. Write 2–3 alongside the lesson batches
+or on request. Facts must be true.
 **⚠️ THE ANSWER GATE** (inherited from Prime Math and extended). Every numeric answer in the
 lessons and all 20 keys of every practice are computed twice, the second time by throwaway
 scripts in the scratchpad (`verify_sat_<range>.py` for the practices, plus one for the

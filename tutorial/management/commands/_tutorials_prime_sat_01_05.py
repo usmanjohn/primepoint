@@ -53,6 +53,7 @@ TUTORIALS = [
             "qoʻshish va qavs ochish — SAT'dagi har uchinchi algebra savoli aynan "
             "shu bir necha soniyalik ishdan boshlanadi."
         ),
+        "stories": ["Counting the Same Thing Twice"],
         "content": """
 <h2>SAT-1: Introduction to the Variable and Combining Like Terms</h2>
 
@@ -408,6 +409,7 @@ hamma hadga tegadi — birinchisiga emas, hammasiga:</p>
             "kasrdan qutulish va SAT juda yaxshi koʻradigan ikki maxsus hol: "
             "yechim yoʻq va cheksiz koʻp yechim."
         ),
+        "stories": ["The Week the Sunflower Passed the Fence"],
         "content": """
 <h2>SAT-2: Solving Single-Variable Linear Equations</h2>
 
@@ -768,6 +770,7 @@ solutions</strong>.</blockquote>
             "«5 less than x» tuzogʻi, boshlangʻich toʻlov va har birlik uchun narx "
             "modeli — SAT matnli masalalarining asosi."
         ),
+        "stories": ["Forty-One Seats and One Bus"],
         "content": """
 <h2>SAT-3: Setting Up Linear Equations from Word Problems</h2>
 
@@ -1127,6 +1130,7 @@ miles was the ride?</em></p>
             "Modulni izolyatsiya qilish, ikki holatga ajratish va SAT juda yaxshi "
             "koʻradigan «yechimlar yigʻindisi» savoli."
         ),
+        "stories": ["Five Hundred Millilitres, Give or Take"],
         "content": """
 <h2>SAT-4: Understanding Absolute Value Equations</h2>
 
@@ -1458,6 +1462,7 @@ sifatida ishlatadi: modul <u>yolgʻiz qolgach</u> oʻng tomonda manfiy son tursa
             "jadvaldan va tenglamadan oʻqish, ishorasining maʼnosi va SAT'ning eng "
             "sevimli savoli: «bu son kontekstda nimani bildiradi?»"
         ),
+        "stories": ["Two Readings, One Rate"],
         "content": """
 <h2>SAT-5: The Concept of Slope: Steepness and Direction</h2>
 

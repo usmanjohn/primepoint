@@ -50,16 +50,16 @@ PLAYLIST: Prime SAT Math
 3. Setting Up Linear Equations from Word Problems                             [done]
 4. Understanding Absolute Value Equations                                     [done]
 5. The Concept of Slope: Steepness and Direction                              [done]
-6. Calculating Slope from Two Points                                          [next]
-7. Slope-Intercept Form (y = mx + b) in Depth                                 [next]
-8. Point-Slope Form and Standard Form                                         [next]
-9. Graphing Linear Equations Quickly                                          [next]
-10. Interpreting the Meaning of Slopes and Intercepts in Real-World Contexts  [next]
-11. Parallel Lines and Equal Slopes
-12. Perpendicular Lines and Negative Reciprocal Slopes
-13. Solving Multi-Step Linear Inequalities
-14. Graphing Linear Inequalities on the Coordinate Plane
-15. Modeling Real-World Scenarios with Inequalities
+6. Calculating Slope from Two Points                                          [done]
+7. Slope-Intercept Form (y = mx + b) in Depth                                 [done]
+8. Point-Slope Form and Standard Form                                         [done]
+9. Graphing Linear Equations Quickly                                          [done]
+10. Interpreting the Meaning of Slopes and Intercepts in Real-World Contexts  [done]
+11. Parallel Lines and Equal Slopes                                           [next]
+12. Perpendicular Lines and Negative Reciprocal Slopes                        [next]
+13. Solving Multi-Step Linear Inequalities                                    [next]
+14. Graphing Linear Inequalities on the Coordinate Plane                      [next]
+15. Modeling Real-World Scenarios with Inequalities                           [next]
 16. Systems of Linear Equations: Solving by Substitution
 17. Systems of Linear Equations: Solving by Elimination
 18. Word Problems Involving Systems of Linear Equations
@@ -171,6 +171,6 @@ PLAYLIST: Prime SAT Math
 100. The Final Review Protocol (30-second double-check)
 
 # ─────────────────────────────────────────────────────────────────────
-# Holat: 5 / 100 qayta yozilgan (2026-09-03).  Keyingi batch: SAT-6 … SAT-10.
+# Holat: 10 / 100 qayta yozilgan (2026-09-03).  Keyingi batch: SAT-11 … SAT-15.
 # Eski avlod hali bazada turibdi (SAT-1 … SAT-100), har batch ustiga yoziladi.
 # ─────────────────────────────────────────────────────────────────────

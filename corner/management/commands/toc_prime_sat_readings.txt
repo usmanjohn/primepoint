@@ -1,0 +1,116 @@
+# ── Collection metadata (read by Claude) ─────────────────────────────
+SUBJECT:    Matematika        (icon: bi-calculator, color: #f59e0b, order: 7)
+COLLECTION: Prime SAT Readings   (order: 3)
+AUTHOR:     powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_CORNER.md, with the Prime SAT overrides below.
+# The overrides in THIS header win over the generic guide.
+# ─────────────────────────────────────────────────────────────────────
+
+# Prime SAT Readings — the third leg of each Prime SAT Math lesson
+#
+# Every reading belongs to ONE Prime SAT tutorial and its `order` IS the lesson number,
+# so SAT-24's reading is order 24. The tutorial teaches the idea, the practice drills it,
+# the reading shows the maths doing real work — IN ENGLISH.
+#
+# ── ⚠️ WHY THIS SHELF EXISTS (read this before writing a word) ──
+#
+# Our pupils' SAT problem is not the maths. It is the English sentence wrapped around it.
+# Every other Prime shelf shows a *pattern* living in a text; this one trains the thing
+# that actually costs the marks: reading English quantitative prose and turning it into
+# maths. Nothing else on the site does that, and the SAT has no Reading & Writing course
+# here yet, so this shelf is also their only SAT-shaped English reading.
+#
+# ── ⛔ NO ALGEBRAIC NOTATION IN THE BODY ──
+#
+#   No x, no equations, no x<sup>2</sup>, no formulas in the story text. Quantities appear
+#   as ENGLISH: "the club charges a joining fee of $30 and $8 for each event", "the plant
+#   grew by the same amount every week". The algebra belongs to the lesson; the reading's
+#   whole job is the step BEFORE algebra.
+#   Two reasons, both hard:
+#     1. it is the skill being trained (SAT-3's skill, needed in all 100 lessons);
+#     2. audio — an equation does not survive TTS, and this shelf HAS audio.
+#   Plain numbers, money and units are fine and wanted ($45, 12 minutes, 3.5 liters).
+#
+# ── LANGUAGE POLICY — the same split as the lessons ──
+#     * story `body` and `title`      → English (this is the exam's language)
+#     * `summary`                     → Uzbek (a card blurb for the pupil)
+#     * `cn-word` `data-tr` glosses   → Uzbek, always
+#     * `grammar` `pattern`           → English; `meaning` → Uzbek
+#     * `questions` `text`/`choices`  → English; `explanation` → Uzbek
+#   Numbers follow the SAT: 3.5 and 1,200 — decimal point, comma thousands.
+#
+# ── THE `grammar` BLOCK IS REPURPOSED: it is "Exam English" ──
+#   Not grammar. The 2–3 phrasings the SAT uses to ask about THIS lesson's topic:
+#       pattern:  "for each additional hour"
+#       meaning:  "har bir qoʻshimcha soat uchun — bu qiyalik, boshlangʻich narx emas."
+#       examples: 1–2 short English sentences using it
+#   Bold the phrase in the body with <strong> where it appears, and never put a cn-word
+#   inside a <strong> (same rule as every other shelf).
+#
+# ── GENRE — informational, not a life story ──
+#   This is the shelf's second difference from Prime English Readings, which are tales.
+#   The SAT's own texts are informational, so rotate through the shapes it uses and never
+#   run the same one twice in a row:
+#       a small business · a school committee's minutes · a lab report · a quality-control
+#       report · a news item with figures · a survey result · a park or museum notice ·
+#       a science piece · a sports season's numbers · a recipe scaled up · a budget
+#   Real settings, ordinary people, honest numbers. Facts must be true.
+#
+# ── CUMULATIVE ──
+#   The maths in a reading is that lesson's own maths plus anything from EARLIER lessons.
+#   Nothing from a later one — no percentages before SAT-51, no exponentials before SAT-44.
+#   Check the lesson list in tutorial/management/commands/toc_prime_sat_math.txt.
+#
+# ── Shape of a text ──
+#   200–300 words. 12–20 cn-word marks (words an Uzbek pupil would stumble on, plus the
+#   exam's own vocabulary: rate, fee, per, remaining, total, increase, initial).
+#   2–3 questions in English, Uzbek explanations, and AT LEAST ONE must make the reader
+#   COMPUTE from the text — that is the whole point. Vary `answer` by hand; story
+#   questions render in stored order, so never leave the key at index 0 every time.
+#   `summary` → one Uzbek sentence saying what the text is and which lesson it belongs to.
+#
+# ── AUDIO — always pass --voice EXPLICITLY ──
+#   ⚠️ This shelf sits under the Matematika subject, whose gen_corner_audio default voice
+#   is NOT English (SUBJECT_VOICES falls through to a Korean voice). An English reading
+#   narrated by the default is unusable, so the voice is never left to the default:
+#       python manage.py gen_corner_audio --collection="Prime SAT Readings" \
+#           --only <n> --voice en-US-JennyNeural
+#   Alternate en-US-JennyNeural / en-US-GuyNeural across a batch so a hundred readings do
+#   not sound like one. Then attach:
+#       python manage.py import_corner_audio corner/management/commands/audio/prime-sat-readings \
+#           --collection="Prime SAT Readings"
+#
+# ── LINKED ──
+#   After importing a reading, add "stories": ["<reading title>"] to that lesson in
+#   _tutorials_prime_sat_<range>.py and re-run import_tutorials --republish, so the
+#   Reading card appears next to the Practice card. The story must exist first.
+#
+# ── Import order per batch ──
+#   tutorials → practices → readings → audio → import_tutorials --republish
+# ─────────────────────────────────────────────────────────────────────
+
+### Block A: The Heart of Algebra (1–22)
+
+1. Counting the Same Thing Twice          (a café's order sheet)             [done]
+2. The Week the Sunflower Passed the Fence (a school lab report)             [done]
+3. Forty-One Seats and One Bus            (a school trip budget)             [done]
+4. Five Hundred Millilitres, Give or Take (a bottling line's tolerance)      [done]
+5. Two Readings, One Rate                 (a city's cooling afternoon)       [done]
+6. The Ramp at the Side Door             (a museum's accessibility notice)   [done]
+7. Forty Dollars and Three More          (a community pool's pass notice)    [done]
+8. Sixty Minutes, Two Kinds of Minute    (a radio show's running order)      [done]
+9. The Coach Who Drew Two Dots           (a cycling coach's training log)    [done]
+10. What Does the 62 Cents Mean?          (a newspaper answers a reader)      [done]
+11. …                                     (SAT-11: parallel lines)           [next]
+12. …                                     (SAT-12: perpendicular lines)      [next]
+13. …                                     (SAT-13: multi-step inequalities)  [next]
+14. …                                     (SAT-14: graphing inequalities)    [next]
+15. …                                     (SAT-15: modelling with them)      [next]
+# … one per lesson, through SAT-100. Titles are written when the batch is written:
+# give each reading a real English title, not the lesson's topic name.
+
+# ─────────────────────────────────────────────────────────────────────
+# Holat: 10 / 100 yozilgan (2026-09-03).  Keyingi batch: SAT-11 … SAT-15.
+# Ovoz navbati: 1-batch 3 ayol / 2 erkak, 2-batch 3 erkak / 2 ayol → 3-batch ayoldan boshlanadi.
+# ─────────────────────────────────────────────────────────────────────

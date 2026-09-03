@@ -1,0 +1,109 @@
+# ── Collection metadata (read by Claude) ─────────────────────────────
+SUBJECT:    Matematika        (icon: bi-calculator, color: #f59e0b, order: 7)
+COLLECTION: SAT olami         (order: 4)
+AUTHOR:     powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_CORNER.md, with the overrides below.
+# The overrides in THIS header win over the generic guide.
+# ─────────────────────────────────────────────────────────────────────
+
+# SAT olami — imtihonning oʻzi haqida, oʻzbek tilida
+#
+# The sister shelf of "Prime SAT Readings", and its opposite in exactly the way
+# "Matematika olami" is the opposite of "Prime Math Readings": these texts belong to NO
+# lesson. Nothing here teaches SAT-24's rule. They answer the questions every Uzbek pupil
+# actually has and nobody at home can answer — how the adaptive module really works, how
+# 1600 is put together, what happens on the day, why the test changed in 2024.
+#
+#   * NO `order` link to a lesson (order is just this shelf's own reading order).
+#   * NO `"stories"` key pointing here from any tutorial.
+#   * NO cumulative restriction.
+#   * NO audio. The prose is Uzbek and the English in it is single terms, not sentences —
+#     the same reason Koreya olami has none. Never run gen_corner_audio on this shelf.
+#
+# ── ⚠️ THE LANGUAGE SPLIT — like Koreya olami, inverted from the readings ──
+#
+#   The prose is **Uzbek**. English appears as the MATERIAL being talked about: the exam's
+#   own terms, each one a `cn-word` span with an Uzbek `data-tr`:
+#
+#       <span class="cn-word" data-tr="moslashuvchan: 2-modul 1-modulga qarab tanlanadi">adaptive</span>
+#
+#   A pupil who does not yet read English well must be able to finish the text. Gloss every
+#   English term the first time it appears, inside the span itself. 8–14 marks per text.
+#
+# ── ⚠️ FACTS. This shelf's whole value is that it is TRUE. ──
+#
+#   These are safe, stable, and must never be contradicted anywhere on the site:
+#     * Digital SAT, taken in College Board's **Bluebook** app on a laptop or tablet.
+#     * **Reading and Writing**: 2 modules × 27 questions × 32 minutes (54 Q, 64 min).
+#     * **Math**: 2 modules × 22 questions × 35 minutes (44 Q, 70 min).
+#     * About 2 hours 14 minutes of testing, plus a 10-minute break between the sections.
+#     * **Multistage adaptive**: Module 2 of each section is chosen by how Module 1 went.
+#     * Score: each section 200–800, total **400–1600**.
+#     * **No penalty for a wrong answer** — never leave a blank.
+#     * A **Desmos** graphing calculator is built into the app for the whole Math section;
+#       a reference sheet of formulas is on screen; an approved own calculator is allowed.
+#     * ~75% of Math is multiple choice, ~25% student-produced response (grid-in).
+#     * The **essay was discontinued in 2021**; the digital test replaced the paper one
+#       internationally in **March 2023** and in the US in **March 2024**.
+#
+#   ⛔ DO NOT invent, and do not print unless the user has confirmed it: exam fees, exact
+#   test dates, Uzbek test-centre names or addresses, university score cut-offs, visa or
+#   registration deadlines. These change and a wrong one does real harm. Where a text must
+#   touch them, describe the PROCESS ("College Board hisobi ochiladi, markaz va sana
+#   tanlanadi") and send the reader to the official source, without numbers.
+#
+# ── The four families ──
+#
+#   IMTIHON QANDAY ISHLAYDI — the strongest card: adaptive modules, how the raw score
+#     becomes a scaled one, why guessing costs nothing, what Desmos can and cannot decide.
+#   OʻZBEKISTONDAN SAT — the practical path, described as a process, never as prices and
+#     dates: an account, a centre, an ID, what a score report is for.
+#   TEST KUNI — the day hour by hour: check-in, the device, the break, the clock, what a
+#     module feels like when it gets harder, and what to do in the last five minutes.
+#   TARIX VA STRATEGIYA — how the test changed and why; how to practise; time management;
+#     what a score actually measures and what it does not.
+#
+# ── Shape of a text ──
+#   200–320 words. A hook in the first two sentences, then the idea, then the pay-off.
+#   One idea per text. Chronological, one thing per sentence.
+#   cn-word  →  8–14 English exam terms, data-tr = a short Uzbek definition.
+#   grammar  →  the key fact of the text ("Asosiy fakt"), pattern in English where it is a
+#               term, meaning in Uzbek.
+#   questions → 2–3 in Uzbek, at least one comprehension; vary `answer` by hand.
+#   summary  →  one Uzbek sentence.
+#
+# ── Language ──
+#   Everything in Uzbek except the glossed terms. No Cyrillic, no LaTeX. Numbers the SAT
+#   way (1,600 · 2 soat 14 daqiqa · 200–800).
+#
+#   python manage.py import_corner corner/management/commands/_stories_sat_olami_<range>.py \
+#       --author=prime
+# ─────────────────────────────────────────────────────────────────────
+
+### IMTIHON QANDAY ISHLAYDI
+1. Ikkinchi modul nega birinchisiga qarab oʻzgaradi                          [done]
+2. 1,600 ball qanday yigʻiladi                                               [done]
+3. Ekrandagi kalkulyator: Desmos nima qila oladi va nima qila olmaydi        [done]
+4. Formula varagʻida nima bor va — muhimi — nima yoʻq                        [next]
+5. Grid-in: javobni oʻzing yozadigan savollar                                [next]
+
+### TEST KUNI
+6. Test kuni: soat sayin                                                     [done]
+7. Modul qiyinlashganda miyada nima boʻladi                                  [next]
+8. Oxirgi besh daqiqa                                                        [next]
+
+### TARIX VA STRATEGIYA
+9. Qogʻozdan ekranga: SAT qanday oʻzgardi                                    [done]
+10. Insho nega bekor qilindi                                                 [next]
+11. Mashq qilishning toʻgʻri usuli: nega 10 ta test 1 ta tahlildan yomonroq  [next]
+12. Ball nimani oʻlchaydi va nimani oʻlchamaydi                              [next]
+
+### OʻZBEKISTONDAN SAT
+13. Roʻyxatdan oʻtish yoʻli (jarayon, narx va sanasiz)                       [next]
+14. Score report kimga va nima uchun yuboriladi                              [next]
+15. SAT, IELTS va TOPIK: uchtasi uch xil narsani oʻlchaydi                   [next]
+
+# ─────────────────────────────────────────────────────────────────────
+# Holat: 5 / 15 yozilgan (2026-09-03).  Keyingi batch: 4, 5, 7, 8, 10.
+# ─────────────────────────────────────────────────────────────────────
