@@ -102,15 +102,21 @@ AUTHOR:     powerty
 8. Sixty Minutes, Two Kinds of Minute    (a radio show's running order)      [done]
 9. The Coach Who Drew Two Dots           (a cycling coach's training log)    [done]
 10. What Does the 62 Cents Mean?          (a newspaper answers a reader)      [done]
-11. …                                     (SAT-11: parallel lines)           [next]
-12. …                                     (SAT-12: perpendicular lines)      [next]
-13. …                                     (SAT-13: multi-step inequalities)  [next]
-14. …                                     (SAT-14: graphing inequalities)    [next]
-15. …                                     (SAT-15: modelling with them)      [next]
+11. Two Canals, One Fall                  (a water office's survey note)     [done]
+12. The Carpenter's Diagonal              (a workshop guide)                 [done]
+13. Eighty-Five Percent                   (a school's attendance rule)       [done]
+14. Where You May Camp                    (a national park notice)           [done]
+15. Nine Boxes and a Coach                (a driver's loading sheet)         [done]
+16. …                                     (SAT-16: systems by substitution)  [next]
+17. …                                     (SAT-17: systems by elimination)   [next]
+18. …                                     (SAT-18: system word problems)     [next]
+19. …                                     (SAT-19: infinite solutions)       [next]
+20. …                                     (SAT-20: no solution)              [next]
 # … one per lesson, through SAT-100. Titles are written when the batch is written:
 # give each reading a real English title, not the lesson's topic name.
 
 # ─────────────────────────────────────────────────────────────────────
-# Holat: 10 / 100 yozilgan (2026-09-03).  Keyingi batch: SAT-11 … SAT-15.
-# Ovoz navbati: 1-batch 3 ayol / 2 erkak, 2-batch 3 erkak / 2 ayol → 3-batch ayoldan boshlanadi.
+# Holat: 15 / 100 yozilgan (2026-09-04).  Keyingi batch: SAT-16 … SAT-20.
+# Ovoz navbati: 1-batch 3 ayol/2 erkak · 2-batch 3 erkak/2 ayol · 3-batch 3 ayol/2 erkak
+#               → 4-batch erkakdan boshlanadi.
 # ─────────────────────────────────────────────────────────────────────

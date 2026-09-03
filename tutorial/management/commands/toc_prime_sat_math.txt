@@ -55,16 +55,16 @@ PLAYLIST: Prime SAT Math
 8. Point-Slope Form and Standard Form                                         [done]
 9. Graphing Linear Equations Quickly                                          [done]
 10. Interpreting the Meaning of Slopes and Intercepts in Real-World Contexts  [done]
-11. Parallel Lines and Equal Slopes                                           [next]
-12. Perpendicular Lines and Negative Reciprocal Slopes                        [next]
-13. Solving Multi-Step Linear Inequalities                                    [next]
-14. Graphing Linear Inequalities on the Coordinate Plane                      [next]
-15. Modeling Real-World Scenarios with Inequalities                           [next]
-16. Systems of Linear Equations: Solving by Substitution
-17. Systems of Linear Equations: Solving by Elimination
-18. Word Problems Involving Systems of Linear Equations
-19. Systems with Infinite Solutions (Identical Lines)
-20. Systems with No Solution (Parallel Lines)
+11. Parallel Lines and Equal Slopes                                           [done]
+12. Perpendicular Lines and Negative Reciprocal Slopes                        [done]
+13. Solving Multi-Step Linear Inequalities                                    [done]
+14. Graphing Linear Inequalities on the Coordinate Plane                      [done]
+15. Modeling Real-World Scenarios with Inequalities                           [done]
+16. Systems of Linear Equations: Solving by Substitution                      [next]
+17. Systems of Linear Equations: Solving by Elimination                       [next]
+18. Word Problems Involving Systems of Linear Equations                       [next]
+19. Systems with Infinite Solutions (Identical Lines)                         [next]
+20. Systems with No Solution (Parallel Lines)                                 [next]
 21. Systems of Linear Inequalities and Bounded Regions
 22. Absolute Value Inequalities on the Number Line
 
@@ -171,6 +171,6 @@ PLAYLIST: Prime SAT Math
 100. The Final Review Protocol (30-second double-check)
 
 # ─────────────────────────────────────────────────────────────────────
-# Holat: 10 / 100 qayta yozilgan (2026-09-03).  Keyingi batch: SAT-11 … SAT-15.
+# Holat: 15 / 100 qayta yozilgan (2026-09-04).  Keyingi batch: SAT-16 … SAT-20.
 # Eski avlod hali bazada turibdi (SAT-1 … SAT-100), har batch ustiga yoziladi.
 # ─────────────────────────────────────────────────────────────────────

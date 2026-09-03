@@ -48,3 +48,39 @@ class RenderMathFilterTests(SimpleTestCase):
         out = render_math(html)
         self.assertIn('<h2>Step</h2>', out)
         self.assertIn('$2x^{2}$', out)
+
+
+class MoneyIsNotMathTests(SimpleTestCase):
+    """Two prices in a lesson used to be read as one inline-math region, and
+    everything between them — paragraphs, lists, whole sections — was stripped
+    of its markup (SAT-3, SAT-5, SAT-10 and eight older lessons)."""
+
+    def test_prices_across_paragraphs_are_left_alone(self):
+        html = ('<p class="pe-bad">12 — bir metr $12.</p>'
+                '<p class="pe-good">har bir <b>qoʻshimcha</b> metr $12 ga oshiradi.</p>')
+        out = render_math(html)
+        self.assertIn('<p class="pe-good">', out)
+        self.assertIn('<b>qoʻshimcha</b>', out)
+        self.assertEqual(html, out)
+
+    def test_prices_in_one_sentence_are_left_alone(self):
+        html = '<p>Tikuvchi $12 oladi va ustiga bir martalik $25 qoʻyadi.</p>'
+        self.assertEqual(html, render_math(html))
+
+    def test_a_very_long_region_is_not_treated_as_math(self):
+        html = '<p>$' + ('word ' * 60) + '$</p>'
+        self.assertEqual(html, render_math(html))
+
+    def test_real_inline_math_still_works_beside_prices(self):
+        html = '<p>The fee is $45 and \\(x<sup>2</sup>\\) is math.</p>'
+        out = render_math(html)
+        self.assertIn(r'\(x^{2}\)', out)
+        self.assertIn('$45', out)
+
+    def test_region_that_opens_mid_markup_is_left_alone(self):
+        # SAT-49 shipped this shape: two prices with a sentence between them,
+        # the first one landing inside a <strong>.
+        html = '<p>2·12 = <strong>$24</strong> and 3·12 = <strong>$36</strong>.</p>'
+        out = render_math(html)
+        self.assertEqual(html, out)
+        self.assertEqual(out.count('<strong>'), 2)

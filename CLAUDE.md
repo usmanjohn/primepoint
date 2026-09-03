@@ -344,6 +344,16 @@ The visual kit **reuses the whole `pe-*` set and the whole `pm-*` maths set**, a
 chip) in the **PRIME SAT** section at the bottom of `static/css/style.css`. Pure CSS — never
 add JavaScript, and never invent a `ps-*` class without adding it to that section and the
 style guide first. Maths is **HTML, never LaTeX**; figures are inline SVG.
+**⚠️ THE DOLLAR-SIGN TRAP (fixed 2026-09-04, do not reintroduce).** `tutorial_detail.html`
+renders a lesson through the `render_math` filter, and MathJax is loaded on that page. Both
+used to treat `$…$` as inline maths — so in a lesson full of prices, everything between two
+amounts was read as a formula and **stripped of its markup**: paragraphs merged and the rest
+of the page collapsed into one grey block (it hit SAT-3, SAT-5, SAT-10 and eight older
+lessons). The fix is in place — `render_math` now refuses a region that crosses a block
+boundary, runs past 200 characters or opens mid-markup, and `inlineMath` no longer lists
+`['$','$']` — with regression tests in `tutorial/tests.py`. Write prices normally (`$12`);
+never "fix" this by escaping them, and if real LaTeX is ever needed use `\( … \)`.
+
 **Numbers use the SAT's own convention — `3.5` and `1,200`, decimal point and comma
 thousands** — the exact opposite of Prime Math's `3,5`. A pupil who types a comma into a
 grid-in loses the mark, so the habit is broken inside the course.

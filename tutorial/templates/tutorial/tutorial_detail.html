@@ -12,7 +12,10 @@
 <script>
     MathJax = {
         tex: {
-            inlineMath: [['\\(', '\\)'], ['$', '$']],
+            // NOT ['$','$']: lesson bodies are full of prices ($12 … $25) and
+            // MathJax would typeset the words between two amounts as a formula.
+            // Prime courses write maths as HTML; real LaTeX uses \( … \).
+            inlineMath: [['\\(', '\\)']],
             displayMath: [['\\[', '\\]'], ['$$', '$$']],
             processEscapes: true,
             tags: 'ams',
