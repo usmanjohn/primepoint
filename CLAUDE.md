@@ -278,7 +278,11 @@ speaks **English**, the teacher speaks **Uzbek**.
 an older, thinner generation (English prose, two Uzbek asides, no playlist, no practice).
 The new lessons carry **the same titles** and go in with `--republish`, overwriting them.
 **Never reword a title** — the title is the importer's match key, and a changed one creates
-a duplicate lesson instead of upgrading the old one.
+a duplicate lesson instead of upgrading the old one. ⚠️ **Take titles from the DB, not from
+the toc.** On 2026-09-04, 45 of the 100 titles in `toc_prime_sat_math.txt` differed from the
+live ones (dashes, "Vertices" vs "Vertex", trimmed subtitles); the toc has been realigned and
+carries a warning in its header, but always confirm with
+`Tutorial.objects.filter(title__startswith='SAT-')` before writing a batch.
 When the user asks (e.g. "make the next 5 Prime SAT lessons"):
 1. Read `tutorial/management/commands/STYLE_GUIDE_PRIME_SAT.md` (§0 is the language split,
    §0.1 the American number format, §0.2 the facts about the test, §7 the answer gate).

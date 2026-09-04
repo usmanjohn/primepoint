@@ -107,16 +107,42 @@ AUTHOR:     powerty
 13. Eighty-Five Percent                   (a school's attendance rule)       [done]
 14. Where You May Camp                    (a national park notice)           [done]
 15. Nine Boxes and a Coach                (a driver's loading sheet)         [done]
-16. …                                     (SAT-16: systems by substitution)  [next]
-17. …                                     (SAT-17: systems by elimination)   [next]
-18. …                                     (SAT-18: system word problems)     [next]
-19. …                                     (SAT-19: infinite solutions)       [next]
-20. …                                     (SAT-20: no solution)              [next]
+16. Two Receipts                          (a canteen manager's puzzle)       [done]
+17. The Balance and Two Weighings         (a warehouse method)               [done]
+18. The Inspector Counts Legs             (a vet's farm visit)               [done]
+19. Two Signs, One Offer                  (a market stall's two boards)      [done]
+20. The Fare That Never Catches Up        (a newspaper price column)         [done]
+21. Two Boxes on the Form                 (a blood-donation notice)          [done]
+22. One Hertz Either Way                  (a piano tuner's ear)              [done]
+23. The Chessboard and the Rice           (the doubling legend, checked)     [done]
+24. Why A4 Is That Shape                  (a design-history piece)           [done]
+25. Two Hundred Square Metres             (a town square being paved)        [done]
+26. Before the Calculator                 (a history-of-computation piece)   [done]
+27. Two Rooms and a Corridor              (an architect's note)              [done]
+28. The Garden That Grew Twice            (the area model, in a garden)      [done]
+29. Rows for the Sports Day               (a school parade)                  [done]
+30. The Trader's Two Squares              (a market anecdote)                [done]
+31. The Stage That Had To Fit             (a theatre workshop)               [done]
+32. Sixty and Seventeen                   (a warehouse anecdote)             [done]
+33. The Man from Khwarazm                 (biography — al-Khwarizmi)         [done]
+34. Will It Reach the Window?             (a fire-service demonstration)     [done]
+35. The Fountain in the Square            (city engineering)                 [done]
+36. The Price of Apricots                 (a market-stall diary)             [done]
+37. The Broken Arch                       (an archaeology field note)        [done]
+38. The Ridge on the Approach             (aviation)                         [done]
+39. Two Answers, One Road                 (forensics)                        [done]
+40. The Journey That Cannot Be Averaged   (a puzzle with a real punchline)   [done]
+41. …                                     (SAT-41: rational expressions)     [next]
+42. …                                     (SAT-42: remainder/factor theorem) [next]
+43. …                                     (SAT-43: higher-degree graphs)     [next]
+44. …                                     (SAT-44: exponential vs linear)    [next]
+45. …                                     (SAT-45: exponential models)       [next]
 # … one per lesson, through SAT-100. Titles are written when the batch is written:
 # give each reading a real English title, not the lesson's topic name.
 
 # ─────────────────────────────────────────────────────────────────────
-# Holat: 15 / 100 yozilgan (2026-09-04).  Keyingi batch: SAT-16 … SAT-20.
+# Holat: 40 / 100 yozilgan (2026-09-04).  Keyingi batch: SAT-41 … SAT-45.
 # Ovoz navbati: 1-batch 3 ayol/2 erkak · 2-batch 3 erkak/2 ayol · 3-batch 3 ayol/2 erkak
-#               → 4-batch erkakdan boshlanadi.
+#               → 4-batch 3 erkak/2 ayol · 5-batch 3 ayol/2 erkak
+#               → 8-batch 3 erkak/2 ayol · 9-batch ayoldan boshlanadi.
 # ─────────────────────────────────────────────────────────────────────

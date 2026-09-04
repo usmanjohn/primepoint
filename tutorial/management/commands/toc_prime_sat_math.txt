@@ -23,6 +23,12 @@ PLAYLIST: Prime SAT Math
 # Son: nuqtali oʻnli kasr va vergulli minglik — 3.5 va 1,200 (SAT'ning oʻzi shunday).
 #
 # Har bir darsning IKKI oyogʻi bor, birga yoziladi, 5 tadan:
+# ⚠️ SARLAVHALAR BAZADAGI SARLAVHALAR BILAN AYNAN BIR XIL BOʻLISHI SHART.
+#    Sarlavha — importerning moslashtirish kaliti: bitta harf oʻzgarsa,
+#    --republish eski darsni yangilamaydi, balki DUBLIKAT yaratadi.
+#    (2026-09-04: shu roʻyxatdagi 45 ta sarlavha bazadan farq qilardi —
+#     hammasi bazaga qarab tuzatildi. Yangi batch yozishdan oldin har doim
+#     Tutorial.objects.filter(title__startswith='SAT-') dan tekshiring.)
 #   1. dars      — tutorial/management/commands/_tutorials_prime_sat_<range>.py
 #   2. mashq     — practice/management/commands/_practice_ps_<range>.py  (20 savol)
 # Uchinchi oyoq (Corner oʻqish matni) bu kursda YOʻQ — SAT matematika, hikoya emas.
@@ -60,44 +66,43 @@ PLAYLIST: Prime SAT Math
 13. Solving Multi-Step Linear Inequalities                                    [done]
 14. Graphing Linear Inequalities on the Coordinate Plane                      [done]
 15. Modeling Real-World Scenarios with Inequalities                           [done]
-16. Systems of Linear Equations: Solving by Substitution                      [next]
-17. Systems of Linear Equations: Solving by Elimination                       [next]
-18. Word Problems Involving Systems of Linear Equations                       [next]
-19. Systems with Infinite Solutions (Identical Lines)                         [next]
-20. Systems with No Solution (Parallel Lines)                                 [next]
-21. Systems of Linear Inequalities and Bounded Regions
-22. Absolute Value Inequalities on the Number Line
-
+16. Systems of Linear Equations: Solving by Substitution                      [done]
+17. Systems of Linear Equations: Solving by Elimination                       [done]
+18. Word Problems Involving Systems of Linear Equations                       [done]
+19. Systems with Infinite Solutions (Identical Lines)                         [done]
+20. Systems with No Solution (Parallel Lines)                                 [done]
+21. Systems of Linear Inequalities and Bounded Regions                        [done]
+22. Absolute Value Inequalities on the Number Line                            [done]
 ### Block B: Advanced Math (23–48)   ·   domain: Advanced Math ≈ 35%
 #   Daraja, koʻphad, kvadrat tenglama, ratsional va irratsional ifoda, funksiya.
 #   Module 2 qiyin variantining asosiy yemi shu blokdan chiqadi.
 
-23. Laws of Exponents: Multiplication, Division, and Power-to-Power
-24. Negative and Fractional Exponents
-25. Simplifying Radical Expressions
-26. Rationalizing Denominators
-27. Introduction to Polynomials: Adding and Subtracting
-28. Multiplying Polynomials (FOIL and beyond)
-29. Factoring: Greatest Common Factor (GCF) and Grouping
-30. Factoring: Difference of Squares and Perfect Square Trinomials
-31. Factoring Standard Quadratics (x² + bx + c)
-32. Factoring Advanced Quadratics (ax² + bx + c)
-33. The Quadratic Formula and the Discriminant
-34. Determining Number and Type of Roots using the Discriminant
-35. Vertex Form of a Quadratic
-36. Finding Maximum and Minimum Values of a Quadratic
-37. Graphing Parabolas: Intercepts, Vertices, and Symmetric Properties
-38. Systems of Non-Linear Equations (Linear-Quadratic Systems)
-39. Radical Equations and Checking for Extraneous Solutions
-40. Rational Equations and Domain Restrictions
-41. Simplifying Rational Expressions (Polynomial Division)
-42. The Remainder Theorem and Factor Theorem
-43. Graphs of Higher-Degree Polynomials: End Behavior and Multiplicity
-44. Exponential vs. Linear Growth Models
-45. Writing Exponential Functions (y = ab^x) from Word Problems
-46. Percent Increase and Decrease in Exponential Contexts (Compound Interest)
-47. Concept of Functions: Domain, Range, and Evaluation
-48. Function Transformations (Vertical/Horizontal Shifts and Reflections)
+23. Laws of Exponents: Multiplication, Division, and Power-to-Power           [done]
+24. Negative and Fractional Exponents                                         [done]
+25. Simplifying Radical Expressions                                           [done]
+26. Rationalizing Denominators                                                [done]
+27. Introduction to Polynomials: Adding and Subtracting                       [done]
+28. Multiplying Polynomials (FOIL and beyond)                                 [done]
+29. Factoring: Greatest Common Factor (GCF) and Grouping                      [done]
+30. Factoring: Difference of Squares and Perfect Square Trinomials            [done]
+31. Factoring Standard Quadratics (x² + bx + c)                               [done]
+32. Factoring Advanced Quadratics (ax² + bx + c)                              [done]
+33. The Quadratic Formula and the Discriminant                                [done]
+34. Determining Number and Type of Roots using the Discriminant               [done]
+35. Vertex Form of a Quadratic                                                [done]
+36. Finding Maximum and Minimum Values of a Quadratic                         [done]
+37. Graphing Parabolas — Intercepts, Vertex, and Symmetry                     [done]
+38. Systems of Non-Linear Equations (Linear–Quadratic)                        [done]
+39. Radical Equations and Extraneous Solutions                                [done]
+40. Rational Equations and Domain Restrictions                                [done]
+41. Simplifying Rational Expressions & Polynomial Division                    [next]
+42. The Remainder Theorem and the Factor Theorem                              [next]
+43. Graphs of Higher-Degree Polynomials — End Behavior & Multiplicity         [next]
+44. Exponential vs. Linear Growth                                             [next]
+45. Writing Exponential Functions (y = ab^x) from Word Problems               [next]
+46. Compound Interest and Percent Growth
+47. Functions — Domain, Range, and Evaluation
+48. Function Transformations — Shifts and Reflections
 
 ### Block C: Problem-Solving and Data Analysis (49–65)   ·   domain: PSDA ≈ 15%
 #   Nisbat, foiz, jadval va grafik oʻqish, statistika, ehtimollik, tanlanma.
@@ -106,40 +111,40 @@ PLAYLIST: Prime SAT Math
 
 49. Ratios, Rates, and Proportions
 50. Unit Conversions and Dimensional Analysis
-51. Percentages: Part, Whole, and Base Changes
-52. Percent Change: Increase, Decrease, and Successive Percent Changes
+51. Percentages — Part, Whole, and Base
+52. Percent Change — Increase, Decrease, and Successive Changes
 53. Interpreting Tables, Graphs, and Bar Charts
-54. Scatterplots: Lines of Best Fit and Trend Analysis
-55. Calculating Descriptive Statistics: Mean and Median
-56. Understanding Mode, Range, and Outliers
-57. Standard Deviation: Visualizing Data Spread
-58. Probability: Simple Events and Independent Events
+54. Scatterplots — Lines of Best Fit and Trends
+55. Descriptive Statistics — Mean and Median
+56. Mode, Range, and Outliers
+57. Standard Deviation — Measuring Data Spread
+58. Probability — Simple and Independent Events
 59. Conditional Probability from Two-Way Tables
-60. Elements of Statistical Sample Surveys: Random Sampling
-61. Selection Bias and Generalizing Results to Populations
-62. Experimental Design: Random Assignment and Cause-and-Effect
+60. Sample Surveys and Random Sampling
+61. Selection Bias and Generalizing Results
+62. Experimental Design — Random Assignment and Cause-and-Effect
 63. Margin of Error and Confidence Intervals
-64. Comparing Data Sets: Boxplots and Histograms
+64. Comparing Data Sets — Boxplots and Histograms
 65. Linear vs. Exponential Data Modeling
 
 ### Block D: Geometry and Trigonometry (66–80)   ·   domain: Geometry & Trig ≈ 15%
 #   Burchak, uchburchak, oʻxshashlik, Pifagor, trigonometriya, aylana.
 #   Formula varagʻida NIMA BOR va NIMA YOʻQ — har bir darsda aytilsin.
 
-66. Lines and Angles: Vertical, Supplementary, and Complementary Angles
-67. Parallel Lines Cut by a Transversal (Alternate Interior, Corresponding Angles)
-68. Triangles: Interior Angles Theorem and Exterior Angles Theorem
-69. Isosceles and Equilateral Triangles: Properties and Theorems
-70. Pythagorean Theorem and Distance Formula on the Coordinate Plane
-71. Special Right Triangles: 45-45-90 Mechanics
-72. Special Right Triangles: 30-60-90 Mechanics
-73. Triangle Inequality Theorem and Similarity Criteria (AA, SAS)
-74. Congruent Triangles and Perimeter/Area Scaling of Similar Figures
-75. Right Triangle Trigonometry: Defining Sine, Cosine, and Tangent
-76. Trigonometric Identities: sin(x) = cos(90° − x)
-77. Radians vs. Degrees: Conversions and Arclength Calculations
-78. Area of Sector Calculations in Circles
-79. Circle Equations in the Coordinate Plane: Standard Form
+66. Lines and Angles — Vertical, Supplementary, and Complementary
+67. Parallel Lines Cut by a Transversal
+68. Triangles — Interior and Exterior Angle Theorems
+69. Isosceles and Equilateral Triangles
+70. Pythagorean Theorem and the Distance Formula
+71. Special Right Triangles — 45-45-90
+72. Special Right Triangles — 30-60-90
+73. Triangle Inequality and Similarity (AA, SAS)
+74. Congruent Triangles and Area/Perimeter Scaling
+75. Right Triangle Trigonometry — Sine, Cosine, Tangent
+76. Trigonometric Identities — sin(x) = cos(90° − x)
+77. Radians vs. Degrees and Arc Length
+78. Area of a Sector of a Circle
+79. Circle Equations in the Coordinate Plane
 80. Completing the Square to Find a Circle's Center and Radius
 
 ## Part 2: Math Tactics & Test Strategy (81–100)
@@ -151,26 +156,28 @@ PLAYLIST: Prime SAT Math
 
 81. The "Plugging In Numbers" Tactic
 82. Backsolving (Working from the Options)
-83. Mastering Desmos I: Graphing lines, curves, and finding intersections
-84. Mastering Desmos II: Using sliders to solve equations with unknown constants
-85. Mastering Desmos III: Systems of inequalities and bounded regions
-86. The "Eyeballing" Strategy for geometry diagrams
+83. Mastering Desmos I — Graphing and Intersections
+84. Mastering Desmos II — Sliders for Unknown Constants
+85. Mastering Desmos III — Inequalities and Bounded Regions
+86. The "Eyeballing" Strategy for Geometry Diagrams
 87. The Art of Estimation
 88. Strategic Guessing and Time Management
 89. Avoiding the "Trap Answers"
 90. The Grid-In Blueprint (Student-Produced Responses)
-91. Translating English into Math (key terms dictionary)
-92. Recognizing Structure (treating a grouped expression as one variable)
-93. The Extreme Plug-In Technique (0, 1, negatives)
+91. Translating English into Math (Key Terms Dictionary)
+92. Recognizing Structure (Treating a Group as One Variable)
+93. The Extreme Plug-In Technique (0, 1, Negatives)
 94. The Direct Translation Method for Word Problems
 95. Using the Scratchpad Effectively
-96. The "Testing the Boundaries" Tactic (domain and range)
+96. The "Testing the Boundaries" Tactic (Domain and Range)
 97. Data Table Extraction
 98. The Formula Sheet Hack
-99. Pacing for Module 2 (Hard vs. Easy, adaptive test)
-100. The Final Review Protocol (30-second double-check)
+99. Pacing for Module 2 (The Adaptive Test)
+100. The Final Review Protocol (30-Second Double-Check)
 
 # ─────────────────────────────────────────────────────────────────────
-# Holat: 15 / 100 qayta yozilgan (2026-09-04).  Keyingi batch: SAT-16 … SAT-20.
+# Holat: 40 / 100 qayta yozilgan (2026-09-04).  Keyingi batch: SAT-41 … SAT-45.
+# ✅ Blok A (1–22) TUGADI. SAT-23 dan Blok B (Advanced Math) boshlandi.
+# ✅ Blok A ning chiziqli qismi (1–20) tugadi: ifoda → tenglama → chiziq → sistema.
 # Eski avlod hali bazada turibdi (SAT-1 … SAT-100), har batch ustiga yoziladi.
 # ─────────────────────────────────────────────────────────────────────

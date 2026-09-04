@@ -41,39 +41,38 @@ TUTORIAL: SAT-<n>:      (each practice links to its own tutorial)
 13. Solving Multi-Step Linear Inequalities                                    [done]
 14. Graphing Linear Inequalities on the Coordinate Plane                      [done]
 15. Modeling Real-World Scenarios with Inequalities                           [done]
-16. Systems of Linear Equations: Solving by Substitution                      [next]
-17. Systems of Linear Equations: Solving by Elimination                       [next]
-18. Word Problems Involving Systems of Linear Equations                       [next]
-19. Systems with Infinite Solutions (Identical Lines)                         [next]
-20. Systems with No Solution (Parallel Lines)                                 [next]
-21. Systems of Linear Inequalities and Bounded Regions
-22. Absolute Value Inequalities on the Number Line
-
+16. Systems of Linear Equations: Solving by Substitution                      [done]
+17. Systems of Linear Equations: Solving by Elimination                       [done]
+18. Word Problems Involving Systems of Linear Equations                       [done]
+19. Systems with Infinite Solutions (Identical Lines)                         [done]
+20. Systems with No Solution (Parallel Lines)                                 [done]
+21. Systems of Linear Inequalities and Bounded Regions                        [done]
+22. Absolute Value Inequalities on the Number Line                            [done]
 ### Block B: Advanced Math (23–48)   level: hard
 
-23. Laws of Exponents: Multiplication, Division, and Power-to-Power
-24. Negative and Fractional Exponents
-25. Simplifying Radical Expressions
-26. Rationalizing Denominators
-27. Introduction to Polynomials: Adding and Subtracting
-28. Multiplying Polynomials (FOIL and beyond)
-29. Factoring: Greatest Common Factor (GCF) and Grouping
-30. Factoring: Difference of Squares and Perfect Square Trinomials
-31. Factoring Standard Quadratics (x² + bx + c)
-32. Factoring Advanced Quadratics (ax² + bx + c)
-33. The Quadratic Formula and the Discriminant
-34. Determining Number and Type of Roots using the Discriminant
-35. Vertex Form of a Quadratic
-36. Finding Maximum and Minimum Values of a Quadratic
-37. Graphing Parabolas: Intercepts, Vertices, and Symmetric Properties
-38. Systems of Non-Linear Equations (Linear-Quadratic Systems)
-39. Radical Equations and Checking for Extraneous Solutions
-40. Rational Equations and Domain Restrictions
-41. Simplifying Rational Expressions (Polynomial Division)
-42. The Remainder Theorem and Factor Theorem
-43. Graphs of Higher-Degree Polynomials: End Behavior and Multiplicity
-44. Exponential vs. Linear Growth Models
-45. Writing Exponential Functions (y = ab^x) from Word Problems
+23. Laws of Exponents: Multiplication, Division, and Power-to-Power           [done]
+24. Negative and Fractional Exponents                                         [done]
+25. Simplifying Radical Expressions                                           [done]
+26. Rationalizing Denominators                                                [done]
+27. Introduction to Polynomials: Adding and Subtracting                       [done]
+28. Multiplying Polynomials (FOIL and beyond)                                 [done]
+29. Factoring: Greatest Common Factor (GCF) and Grouping                      [done]
+30. Factoring: Difference of Squares and Perfect Square Trinomials            [done]
+31. Factoring Standard Quadratics (x² + bx + c)                               [done]
+32. Factoring Advanced Quadratics (ax² + bx + c)                              [done]
+33. The Quadratic Formula and the Discriminant                                [done]
+34. Determining Number and Type of Roots using the Discriminant               [done]
+35. Vertex Form of a Quadratic                                                [done]
+36. Finding Maximum and Minimum Values of a Quadratic                         [done]
+37. Graphing Parabolas: Intercepts, Vertices, and Symmetric Properties        [done]
+38. Systems of Non-Linear Equations (Linear-Quadratic Systems)                [done]
+39. Radical Equations and Checking for Extraneous Solutions                   [done]
+40. Rational Equations and Domain Restrictions                                [done]
+41. Simplifying Rational Expressions (Polynomial Division)                    [next]
+42. The Remainder Theorem and Factor Theorem                                  [next]
+43. Graphs of Higher-Degree Polynomials: End Behavior and Multiplicity        [next]
+44. Exponential vs. Linear Growth Models                                      [next]
+45. Writing Exponential Functions (y = ab^x) from Word Problems               [next]
 46. Percent Increase and Decrease in Exponential Contexts (Compound Interest)
 47. Concept of Functions: Domain, Range, and Evaluation
 48. Function Transformations (Vertical/Horizontal Shifts and Reflections)
@@ -140,5 +139,5 @@ TUTORIAL: SAT-<n>:      (each practice links to its own tutorial)
 100. The Final Review Protocol (30-second double-check)
 
 # ─────────────────────────────────────────────────────────────────────
-# Holat: 15 / 100 yozilgan (2026-09-04).  Keyingi batch: SAT-16 … SAT-20.
+# Holat: 40 / 100 yozilgan (2026-09-04).  Keyingi batch: SAT-41 … SAT-45.
 # ─────────────────────────────────────────────────────────────────────
