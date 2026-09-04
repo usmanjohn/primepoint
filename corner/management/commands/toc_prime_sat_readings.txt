@@ -132,17 +132,42 @@ AUTHOR:     powerty
 38. The Ridge on the Approach             (aviation)                         [done]
 39. Two Answers, One Road                 (forensics)                        [done]
 40. The Journey That Cannot Be Averaged   (a puzzle with a real punchline)   [done]
-41. …                                     (SAT-41: rational expressions)     [next]
-42. …                                     (SAT-42: remainder/factor theorem) [next]
-43. …                                     (SAT-43: higher-degree graphs)     [next]
-44. …                                     (SAT-44: exponential vs linear)    [next]
-45. …                                     (SAT-45: exponential models)       [next]
+41. What the Bolt Would Not Give          (a tailor's workshop)             [done]
+42. The Test That Takes One Line          (a newspaper column)               [done]
+43. Reading the Ridge Line                (nature writing)                   [done]
+44. The Squares of the Chessboard         (a legend)                         [done]
+45. Only Three Percent a Month            (a cautionary tale about a rate)   [done]
+46. The Passbook in the Drawer            (a museum archive)                 [done]
+47. What the Machine Will Not Accept      (everyday technology)              [done]
+48. Ten Minutes Later, Every Day          (transport administration)         [done]
+49. One, Two, Three                       (construction)                     [done]
+50. The Orbiter That Came In Too Low      (space engineering history)        [done]
+51. Sixty Percent of Whom?                (a school election)                [done]
+52. Down Forty, Up Forty                  (conservation science)             [done]
+53. The Chart on the Wall                 (a town council meeting)           [done]
+54. Breakfast and the Third Thing         (a school research project)        [done]
+55. The Average Nobody Is In              (the class-size paradox)           [done]
+56. The Day the Needle Moved              (a seismology station)             [done]
+57. Two Thermometers                      (a village clinic)                 [done]
+58. Twenty-Six Times                      (history — the gambler's fallacy)  [done]
+59. The Test Came Back Positive           (medical screening)                [done]
+60. Two Million Wrong Answers             (the history of polling)           [done]
+61. Where the Bullet Holes Were Not       (survivorship bias, wartime)       [done]
+62. Twelve Sailors, Six Pairs             (medical history — Lind, 1747)     [done]
+63. Two Percent, Give or Take             (factory quality control)          [done]
+64. The Same Middle, a Different Tail     (a business decision)              [done]
+65. Two, Four, and Then What?             (public health)                    [done]
+66. …                                     (SAT-66: lines and angles)         [next]
+67. …                                     (SAT-67: parallel lines)           [next]
+68. …                                     (SAT-68: triangle angles)          [next]
+69. …                                     (SAT-69: isosceles/equilateral)    [next]
+70. …                                     (SAT-70: Pythagoras, distance)     [next]
 # … one per lesson, through SAT-100. Titles are written when the batch is written:
 # give each reading a real English title, not the lesson's topic name.
 
 # ─────────────────────────────────────────────────────────────────────
-# Holat: 40 / 100 yozilgan (2026-09-04).  Keyingi batch: SAT-41 … SAT-45.
+# Holat: 65 / 100 yozilgan (2026-09-04) — Blok C tugadi.  Keyingi batch: SAT-66 … SAT-70.
 # Ovoz navbati: 1-batch 3 ayol/2 erkak · 2-batch 3 erkak/2 ayol · 3-batch 3 ayol/2 erkak
 #               → 4-batch 3 erkak/2 ayol · 5-batch 3 ayol/2 erkak
-#               → 8-batch 3 erkak/2 ayol · 9-batch ayoldan boshlanadi.
+#               → 13-batch 3 ayol/2 erkak · 14-batch erkakdan boshlanadi.
 # ─────────────────────────────────────────────────────────────────────

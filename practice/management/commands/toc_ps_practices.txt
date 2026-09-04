@@ -68,42 +68,40 @@ TUTORIAL: SAT-<n>:      (each practice links to its own tutorial)
 38. Systems of Non-Linear Equations (Linear-Quadratic Systems)                [done]
 39. Radical Equations and Checking for Extraneous Solutions                   [done]
 40. Rational Equations and Domain Restrictions                                [done]
-41. Simplifying Rational Expressions (Polynomial Division)                    [next]
-42. The Remainder Theorem and Factor Theorem                                  [next]
-43. Graphs of Higher-Degree Polynomials: End Behavior and Multiplicity        [next]
-44. Exponential vs. Linear Growth Models                                      [next]
-45. Writing Exponential Functions (y = ab^x) from Word Problems               [next]
-46. Percent Increase and Decrease in Exponential Contexts (Compound Interest)
-47. Concept of Functions: Domain, Range, and Evaluation
-48. Function Transformations (Vertical/Horizontal Shifts and Reflections)
-
+41. Simplifying Rational Expressions (Polynomial Division)                    [done]
+42. The Remainder Theorem and Factor Theorem                                  [done]
+43. Graphs of Higher-Degree Polynomials: End Behavior and Multiplicity        [done]
+44. Exponential vs. Linear Growth Models                                      [done]
+45. Writing Exponential Functions (y = ab^x) from Word Problems               [done]
+46. Percent Increase and Decrease in Exponential Contexts (Compound Interest) [done]
+47. Concept of Functions: Domain, Range, and Evaluation                       [done]
+48. Function Transformations (Vertical/Horizontal Shifts and Reflections)     [done]
 ### Block C: Problem-Solving and Data Analysis (49–65)   level: medium
 
-49. Ratios, Rates, and Proportions
-50. Unit Conversions and Dimensional Analysis
-51. Percentages: Part, Whole, and Base Changes
-52. Percent Change: Increase, Decrease, and Successive Percent Changes
-53. Interpreting Tables, Graphs, and Bar Charts
-54. Scatterplots: Lines of Best Fit and Trend Analysis
-55. Calculating Descriptive Statistics: Mean and Median
-56. Understanding Mode, Range, and Outliers
-57. Standard Deviation: Visualizing Data Spread
-58. Probability: Simple Events and Independent Events
-59. Conditional Probability from Two-Way Tables
-60. Elements of Statistical Sample Surveys: Random Sampling
-61. Selection Bias and Generalizing Results to Populations
-62. Experimental Design: Random Assignment and Cause-and-Effect
-63. Margin of Error and Confidence Intervals
-64. Comparing Data Sets: Boxplots and Histograms
-65. Linear vs. Exponential Data Modeling
-
+49. Ratios, Rates, and Proportions                                            [done]
+50. Unit Conversions and Dimensional Analysis                                 [done]
+51. Percentages: Part, Whole, and Base Changes                                [done]
+52. Percent Change: Increase, Decrease, and Successive Percent Changes        [done]
+53. Interpreting Tables, Graphs, and Bar Charts                               [done]
+54. Scatterplots: Lines of Best Fit and Trend Analysis                        [done]
+55. Calculating Descriptive Statistics: Mean and Median                       [done]
+56. Understanding Mode, Range, and Outliers                                   [done]
+57. Standard Deviation: Visualizing Data Spread                               [done]
+58. Probability: Simple Events and Independent Events                         [done]
+59. Conditional Probability from Two-Way Tables                               [done]
+60. Elements of Statistical Sample Surveys: Random Sampling                   [done]
+61. Selection Bias and Generalizing Results to Populations                    [done]
+62. Experimental Design: Random Assignment and Cause-and-Effect               [done]
+63. Margin of Error and Confidence Intervals                                  [done]
+64. Comparing Data Sets: Boxplots and Histograms                              [done]
+65. Linear vs. Exponential Data Modeling                                      [done]
 ### Block D: Geometry and Trigonometry (66–80)   level: hard
 
-66. Lines and Angles: Vertical, Supplementary, and Complementary Angles
-67. Parallel Lines Cut by a Transversal (Alternate Interior, Corresponding Angles)
-68. Triangles: Interior Angles Theorem and Exterior Angles Theorem
-69. Isosceles and Equilateral Triangles: Properties and Theorems
-70. Pythagorean Theorem and Distance Formula on the Coordinate Plane
+66. Lines and Angles: Vertical, Supplementary, and Complementary Angles       [next]
+67. Parallel Lines Cut by a Transversal (Alternate Interior, Corresponding Angles)[next]
+68. Triangles: Interior Angles Theorem and Exterior Angles Theorem            [next]
+69. Isosceles and Equilateral Triangles: Properties and Theorems              [next]
+70. Pythagorean Theorem and Distance Formula on the Coordinate Plane          [next]
 71. Special Right Triangles: 45-45-90 Mechanics
 72. Special Right Triangles: 30-60-90 Mechanics
 73. Triangle Inequality Theorem and Similarity Criteria (AA, SAS)
@@ -139,5 +137,5 @@ TUTORIAL: SAT-<n>:      (each practice links to its own tutorial)
 100. The Final Review Protocol (30-second double-check)
 
 # ─────────────────────────────────────────────────────────────────────
-# Holat: 40 / 100 yozilgan (2026-09-04).  Keyingi batch: SAT-41 … SAT-45.
+# Holat: 65 / 100 yozilgan (2026-09-04) — Blok C tugadi.  Keyingi batch: SAT-66 … SAT-70.
 # ─────────────────────────────────────────────────────────────────────

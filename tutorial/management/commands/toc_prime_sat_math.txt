@@ -95,47 +95,45 @@ PLAYLIST: Prime SAT Math
 38. Systems of Non-Linear Equations (Linear–Quadratic)                        [done]
 39. Radical Equations and Extraneous Solutions                                [done]
 40. Rational Equations and Domain Restrictions                                [done]
-41. Simplifying Rational Expressions & Polynomial Division                    [next]
-42. The Remainder Theorem and the Factor Theorem                              [next]
-43. Graphs of Higher-Degree Polynomials — End Behavior & Multiplicity         [next]
-44. Exponential vs. Linear Growth                                             [next]
-45. Writing Exponential Functions (y = ab^x) from Word Problems               [next]
-46. Compound Interest and Percent Growth
-47. Functions — Domain, Range, and Evaluation
-48. Function Transformations — Shifts and Reflections
-
+41. Simplifying Rational Expressions & Polynomial Division                    [done]
+42. The Remainder Theorem and the Factor Theorem                              [done]
+43. Graphs of Higher-Degree Polynomials — End Behavior & Multiplicity         [done]
+44. Exponential vs. Linear Growth                                             [done]
+45. Writing Exponential Functions (y = ab^x) from Word Problems               [done]
+46. Compound Interest and Percent Growth                                      [done]
+47. Functions — Domain, Range, and Evaluation                                 [done]
+48. Function Transformations — Shifts and Reflections                         [done]
 ### Block C: Problem-Solving and Data Analysis (49–65)   ·   domain: PSDA ≈ 15%
 #   Nisbat, foiz, jadval va grafik oʻqish, statistika, ehtimollik, tanlanma.
 #   Matematikasi eng yengil, ingliz tili eng ogʻir blok — jumlani oʻqiy olmagan
 #   oʻquvchi shu yerda ball yoʻqotadi. Har darsda kamida bitta interpretatsiya savoli.
 
-49. Ratios, Rates, and Proportions
-50. Unit Conversions and Dimensional Analysis
-51. Percentages — Part, Whole, and Base
-52. Percent Change — Increase, Decrease, and Successive Changes
-53. Interpreting Tables, Graphs, and Bar Charts
-54. Scatterplots — Lines of Best Fit and Trends
-55. Descriptive Statistics — Mean and Median
-56. Mode, Range, and Outliers
-57. Standard Deviation — Measuring Data Spread
-58. Probability — Simple and Independent Events
-59. Conditional Probability from Two-Way Tables
-60. Sample Surveys and Random Sampling
-61. Selection Bias and Generalizing Results
-62. Experimental Design — Random Assignment and Cause-and-Effect
-63. Margin of Error and Confidence Intervals
-64. Comparing Data Sets — Boxplots and Histograms
-65. Linear vs. Exponential Data Modeling
-
+49. Ratios, Rates, and Proportions                                            [done]
+50. Unit Conversions and Dimensional Analysis                                 [done]
+51. Percentages — Part, Whole, and Base                                       [done]
+52. Percent Change — Increase, Decrease, and Successive Changes               [done]
+53. Interpreting Tables, Graphs, and Bar Charts                               [done]
+54. Scatterplots — Lines of Best Fit and Trends                               [done]
+55. Descriptive Statistics — Mean and Median                                  [done]
+56. Mode, Range, and Outliers                                                 [done]
+57. Standard Deviation — Measuring Data Spread                                [done]
+58. Probability — Simple and Independent Events                               [done]
+59. Conditional Probability from Two-Way Tables                               [done]
+60. Sample Surveys and Random Sampling                                        [done]
+61. Selection Bias and Generalizing Results                                   [done]
+62. Experimental Design — Random Assignment and Cause-and-Effect              [done]
+63. Margin of Error and Confidence Intervals                                  [done]
+64. Comparing Data Sets — Boxplots and Histograms                             [done]
+65. Linear vs. Exponential Data Modeling                                      [done]
 ### Block D: Geometry and Trigonometry (66–80)   ·   domain: Geometry & Trig ≈ 15%
 #   Burchak, uchburchak, oʻxshashlik, Pifagor, trigonometriya, aylana.
 #   Formula varagʻida NIMA BOR va NIMA YOʻQ — har bir darsda aytilsin.
 
-66. Lines and Angles — Vertical, Supplementary, and Complementary
-67. Parallel Lines Cut by a Transversal
-68. Triangles — Interior and Exterior Angle Theorems
-69. Isosceles and Equilateral Triangles
-70. Pythagorean Theorem and the Distance Formula
+66. Lines and Angles — Vertical, Supplementary, and Complementary             [next]
+67. Parallel Lines Cut by a Transversal                                       [next]
+68. Triangles — Interior and Exterior Angle Theorems                          [next]
+69. Isosceles and Equilateral Triangles                                       [next]
+70. Pythagorean Theorem and the Distance Formula                              [next]
 71. Special Right Triangles — 45-45-90
 72. Special Right Triangles — 30-60-90
 73. Triangle Inequality and Similarity (AA, SAS)
@@ -176,7 +174,7 @@ PLAYLIST: Prime SAT Math
 100. The Final Review Protocol (30-Second Double-Check)
 
 # ─────────────────────────────────────────────────────────────────────
-# Holat: 40 / 100 qayta yozilgan (2026-09-04).  Keyingi batch: SAT-41 … SAT-45.
+# Holat: 65 / 100 qayta yozilgan (2026-09-04) — Blok C tugadi.  Keyingi batch: SAT-66 … SAT-70.
 # ✅ Blok A (1–22) TUGADI. SAT-23 dan Blok B (Advanced Math) boshlandi.
 # ✅ Blok A ning chiziqli qismi (1–20) tugadi: ifoda → tenglama → chiziq → sistema.
 # Eski avlod hali bazada turibdi (SAT-1 … SAT-100), har batch ustiga yoziladi.
