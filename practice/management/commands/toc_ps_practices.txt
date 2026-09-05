@@ -114,27 +114,26 @@ TUTORIAL: SAT-<n>:      (each practice links to its own tutorial)
 80. Completing the Square to Find a Circle's Center and Radius                [done]
 ### Block E: Taktika va Desmos (81–100)   level: medium
 
-81. The "Plugging In Numbers" Tactic                                          [next]
-82. Backsolving (Working from the Options)                                    [next]
-83. Mastering Desmos I: Graphing lines, curves, and finding intersections     [next]
-84. Mastering Desmos II: Using sliders to solve equations with unknown constants[next]
-85. Mastering Desmos III: Systems of inequalities and bounded regions         [next]
-86. The "Eyeballing" Strategy for geometry diagrams
-87. The Art of Estimation
-88. Strategic Guessing and Time Management
-89. Avoiding the "Trap Answers"
-90. The Grid-In Blueprint (Student-Produced Responses)
-91. Translating English into Math (key terms dictionary)
-92. Recognizing Structure (treating a grouped expression as one variable)
-93. The Extreme Plug-In Technique (0, 1, negatives)
-94. The Direct Translation Method for Word Problems
-95. Using the Scratchpad Effectively
-96. The "Testing the Boundaries" Tactic (domain and range)
-97. Data Table Extraction
-98. The Formula Sheet Hack
-99. Pacing for Module 2 (Hard vs. Easy, adaptive test)
-100. The Final Review Protocol (30-second double-check)
-
+81. The "Plugging In Numbers" Tactic                                          [done]
+82. Backsolving (Working from the Options)                                    [done]
+83. Mastering Desmos I: Graphing lines, curves, and finding intersections     [done]
+84. Mastering Desmos II: Using sliders to solve equations with unknown constants[done]
+85. Mastering Desmos III: Systems of inequalities and bounded regions         [done]
+86. The "Eyeballing" Strategy for geometry diagrams                           [done]
+87. The Art of Estimation                                                     [done]
+88. Strategic Guessing and Time Management                                    [done]
+89. Avoiding the "Trap Answers"                                               [done]
+90. The Grid-In Blueprint (Student-Produced Responses)                        [done]
+91. Translating English into Math (key terms dictionary)                      [done]
+92. Recognizing Structure (treating a grouped expression as one variable)     [done]
+93. The Extreme Plug-In Technique (0, 1, negatives)                           [done]
+94. The Direct Translation Method for Word Problems                           [done]
+95. Using the Scratchpad Effectively                                          [done]
+96. The "Testing the Boundaries" Tactic (domain and range)                    [done]
+97. Data Table Extraction                                                     [done]
+98. The Formula Sheet Hack                                                    [done]
+99. Pacing for Module 2 (Hard vs. Easy, adaptive test)                        [done]
+100. The Final Review Protocol (30-second double-check)                       [done]
 # ─────────────────────────────────────────────────────────────────────
 # Holat: 75 / 100 yozilgan (2026-09-04).  Keyingi batch: SAT-76 … SAT-80.
 # ─────────────────────────────────────────────────────────────────────

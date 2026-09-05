@@ -151,30 +151,29 @@ PLAYLIST: Prime SAT Math
 #   javobdan teskari yurish, Desmos, tuzoq javoblar, grid-in formati, vaqt taqsimoti.
 #   Shuning uchun oxirida: oʻquvchi avval matematikani bilishi kerak.
 
-81. The "Plugging In Numbers" Tactic                                          [next]
-82. Backsolving (Working from the Options)                                    [next]
-83. Mastering Desmos I — Graphing and Intersections                           [next]
-84. Mastering Desmos II — Sliders for Unknown Constants                       [next]
-85. Mastering Desmos III — Inequalities and Bounded Regions                   [next]
-86. The "Eyeballing" Strategy for Geometry Diagrams
-87. The Art of Estimation
-88. Strategic Guessing and Time Management
-89. Avoiding the "Trap Answers"
-90. The Grid-In Blueprint (Student-Produced Responses)
-91. Translating English into Math (Key Terms Dictionary)
-92. Recognizing Structure (Treating a Group as One Variable)
-93. The Extreme Plug-In Technique (0, 1, Negatives)
-94. The Direct Translation Method for Word Problems
-95. Using the Scratchpad Effectively
-96. The "Testing the Boundaries" Tactic (Domain and Range)
-97. Data Table Extraction
-98. The Formula Sheet Hack
-99. Pacing for Module 2 (The Adaptive Test)
-100. The Final Review Protocol (30-Second Double-Check)
-
+81. The "Plugging In Numbers" Tactic                                          [done]
+82. Backsolving (Working from the Options)                                    [done]
+83. Mastering Desmos I — Graphing and Intersections                           [done]
+84. Mastering Desmos II — Sliders for Unknown Constants                       [done]
+85. Mastering Desmos III — Inequalities and Bounded Regions                   [done]
+86. The "Eyeballing" Strategy for Geometry Diagrams                           [done]
+87. The Art of Estimation                                                     [done]
+88. Strategic Guessing and Time Management                                    [done]
+89. Avoiding the "Trap Answers"                                               [done]
+90. The Grid-In Blueprint (Student-Produced Responses)                        [done]
+91. Translating English into Math (Key Terms Dictionary)                      [done]
+92. Recognizing Structure (Treating a Group as One Variable)                  [done]
+93. The Extreme Plug-In Technique (0, 1, Negatives)                           [done]
+94. The Direct Translation Method for Word Problems                           [done]
+95. Using the Scratchpad Effectively                                          [done]
+96. The "Testing the Boundaries" Tactic (Domain and Range)                    [done]
+97. Data Table Extraction                                                     [done]
+98. The Formula Sheet Hack                                                    [done]
+99. Pacing for Module 2 (The Adaptive Test)                                   [done]
+100. The Final Review Protocol (30-Second Double-Check)                       [done]
 # ─────────────────────────────────────────────────────────────────────
-# Holat: 75 / 100 qayta yozilgan (2026-09-04).  Keyingi batch: SAT-76 … SAT-80.
-# ✅ Blok A (1–22) TUGADI. SAT-23 dan Blok B (Advanced Math) boshlandi.
-# ✅ Blok A ning chiziqli qismi (1–20) tugadi: ifoda → tenglama → chiziq → sistema.
-# Eski avlod hali bazada turibdi (SAT-1 … SAT-100), har batch ustiga yoziladi.
+# ✅ TUGADI — 100 / 100 (2026-09-05). Butun kurs qayta yozildi.
+# ✅ Blok A (1–22) · B (23–48) · C (49–65) · D (66–80) · E (81–100) — hammasi tugadi.
+# ✅ Har bir darsda uchta oyoq bor: dars + 20 savollik mashq + Corner matni (audio bilan).
+# Eski avlod butunlay ustiga yozildi — bazada 100 ta dars, dublikatsiz.
 # ─────────────────────────────────────────────────────────────────────

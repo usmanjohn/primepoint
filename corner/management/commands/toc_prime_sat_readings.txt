@@ -172,14 +172,36 @@ AUTHOR:     powerty
 78. The Green Circles You See From a Plane  (agriculture / science)            [done]
 79. Three Stations and One Earthquake       (popular science)                  [done]
 80. The Square That al-Khwarizmi Completed  (history of mathematics)           [done]
-# … one per lesson, through SAT-100. Titles are written when the batch is written:
-# give each reading a real English title, not the lesson's topic name.
+81. The Batch of Fifty                      (a workshop's production note)     [done]
+82. Backwards From the Curtain              (a theatre's call sheet)           [done]
+83. The Cup That Paid the Rent              (a small business)                 [done]
+84. Four Greenhouses, One Difference        (a trial report)                   [done]
+85. What Will Fit in the Hall               (committee minutes)                [done]
+86. The Map That Tells the Truth Sideways     (geography / science)            [done]
+87. How to Count a Crowd You Cannot Count     (journalism)                     [done]
+88. The Ten Minutes She Should Not Have Saved (sport)                          [done]
+89. The List That Was Written After the Crash (history of technology)          [done]
+90. The Last Digit Is Not a Digit             (how things work)                [done]
+91. The Comma That Was Worth Five Million     (a news item with figures)       [done]
+92. What the Chess Master Actually Sees       (popular science)                [done]
+93. They Bend the Wing Until It Breaks        (engineering)                    [done]
+94. Cooking for Three Hundred                 (a recipe scaled up)             [done]
+95. The Notebook You May Not Erase            (history of science)             [done]
+96. The Window Between Too Little and Too Much  (medicine)                     [done]
+97. Both Numbers Were True                      (statistics)                   [done]
+98. The Chart on the Classroom Wall             (how a subject is taught)      [done]
+99. The Bar Rises Until It Finds You            (sport)                        [done]
+100. The Mountain Is Not Finished at the Top    (mountaineering)               [done]
 
 # ─────────────────────────────────────────────────────────────────────
-# Holat: 80 / 100 yozilgan (2026-09-05).  Keyingi batch: SAT-81 … SAT-85.
+# ✅ TUGADI — 100 / 100 (2026-09-05). Har bir matnda audio bor.
 # Ovoz navbati: 1-batch 3 ayol/2 erkak · 2-batch 3 erkak/2 ayol · 3-batch 3 ayol/2 erkak
 #               → 4-batch 3 erkak/2 ayol · 5-batch 3 ayol/2 erkak
 #               → 15-batch 3 ayol/2 erkak
 #               → 16-batch 3 erkak/2 ayol (76 G · 77 J · 78 G · 79 J · 80 G)
-#               → 17-batch AYOLdan boshlanadi (3 ayol/2 erkak).
+#               → 17-batch 3 ayol/2 erkak (81 J · 82 G · 83 J · 84 G · 85 J)
+#               → 18-batch 3 erkak/2 ayol (86 G · 87 J · 88 G · 89 J · 90 G)
+#               → 19-batch 3 ayol/2 erkak (91 J · 92 G · 93 J · 94 G · 95 J)
+#               → 20-batch 3 erkak/2 ayol (96 G · 97 J · 98 G · 99 J · 100 G) — OXIRGI.
+#   Jami: 50 ta ayol ovozi, 50 ta erkak ovozi.
 # ─────────────────────────────────────────────────────────────────────
