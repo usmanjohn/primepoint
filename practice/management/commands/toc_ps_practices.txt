@@ -97,29 +97,28 @@ TUTORIAL: SAT-<n>:      (each practice links to its own tutorial)
 65. Linear vs. Exponential Data Modeling                                      [done]
 ### Block D: Geometry and Trigonometry (66–80)   level: hard
 
-66. Lines and Angles: Vertical, Supplementary, and Complementary Angles       [next]
-67. Parallel Lines Cut by a Transversal (Alternate Interior, Corresponding Angles)[next]
-68. Triangles: Interior Angles Theorem and Exterior Angles Theorem            [next]
-69. Isosceles and Equilateral Triangles: Properties and Theorems              [next]
-70. Pythagorean Theorem and Distance Formula on the Coordinate Plane          [next]
-71. Special Right Triangles: 45-45-90 Mechanics
-72. Special Right Triangles: 30-60-90 Mechanics
-73. Triangle Inequality Theorem and Similarity Criteria (AA, SAS)
-74. Congruent Triangles and Perimeter/Area Scaling of Similar Figures
-75. Right Triangle Trigonometry: Defining Sine, Cosine, and Tangent
-76. Trigonometric Identities: sin(x) = cos(90° − x)
-77. Radians vs. Degrees: Conversions and Arclength Calculations
-78. Area of Sector Calculations in Circles
-79. Circle Equations in the Coordinate Plane: Standard Form
-80. Completing the Square to Find a Circle's Center and Radius
-
+66. Lines and Angles: Vertical, Supplementary, and Complementary Angles       [done]
+67. Parallel Lines Cut by a Transversal (Alternate Interior, Corresponding Angles)[done]
+68. Triangles: Interior Angles Theorem and Exterior Angles Theorem            [done]
+69. Isosceles and Equilateral Triangles: Properties and Theorems              [done]
+70. Pythagorean Theorem and Distance Formula on the Coordinate Plane          [done]
+71. Special Right Triangles: 45-45-90 Mechanics                               [done]
+72. Special Right Triangles: 30-60-90 Mechanics                               [done]
+73. Triangle Inequality Theorem and Similarity Criteria (AA, SAS)             [done]
+74. Congruent Triangles and Perimeter/Area Scaling of Similar Figures         [done]
+75. Right Triangle Trigonometry: Defining Sine, Cosine, and Tangent           [done]
+76. Trigonometric Identities: sin(x) = cos(90° − x)                           [done]
+77. Radians vs. Degrees: Conversions and Arclength Calculations               [done]
+78. Area of Sector Calculations in Circles                                    [done]
+79. Circle Equations in the Coordinate Plane: Standard Form                   [done]
+80. Completing the Square to Find a Circle's Center and Radius                [done]
 ### Block E: Taktika va Desmos (81–100)   level: medium
 
-81. The "Plugging In Numbers" Tactic
-82. Backsolving (Working from the Options)
-83. Mastering Desmos I: Graphing lines, curves, and finding intersections
-84. Mastering Desmos II: Using sliders to solve equations with unknown constants
-85. Mastering Desmos III: Systems of inequalities and bounded regions
+81. The "Plugging In Numbers" Tactic                                          [next]
+82. Backsolving (Working from the Options)                                    [next]
+83. Mastering Desmos I: Graphing lines, curves, and finding intersections     [next]
+84. Mastering Desmos II: Using sliders to solve equations with unknown constants[next]
+85. Mastering Desmos III: Systems of inequalities and bounded regions         [next]
 86. The "Eyeballing" Strategy for geometry diagrams
 87. The Art of Estimation
 88. Strategic Guessing and Time Management
@@ -137,5 +136,5 @@ TUTORIAL: SAT-<n>:      (each practice links to its own tutorial)
 100. The Final Review Protocol (30-second double-check)
 
 # ─────────────────────────────────────────────────────────────────────
-# Holat: 65 / 100 yozilgan (2026-09-04) — Blok C tugadi.  Keyingi batch: SAT-66 … SAT-70.
+# Holat: 75 / 100 yozilgan (2026-09-04).  Keyingi batch: SAT-76 … SAT-80.
 # ─────────────────────────────────────────────────────────────────────

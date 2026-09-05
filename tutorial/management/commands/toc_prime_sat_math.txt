@@ -129,22 +129,21 @@ PLAYLIST: Prime SAT Math
 #   Burchak, uchburchak, oʻxshashlik, Pifagor, trigonometriya, aylana.
 #   Formula varagʻida NIMA BOR va NIMA YOʻQ — har bir darsda aytilsin.
 
-66. Lines and Angles — Vertical, Supplementary, and Complementary             [next]
-67. Parallel Lines Cut by a Transversal                                       [next]
-68. Triangles — Interior and Exterior Angle Theorems                          [next]
-69. Isosceles and Equilateral Triangles                                       [next]
-70. Pythagorean Theorem and the Distance Formula                              [next]
-71. Special Right Triangles — 45-45-90
-72. Special Right Triangles — 30-60-90
-73. Triangle Inequality and Similarity (AA, SAS)
-74. Congruent Triangles and Area/Perimeter Scaling
-75. Right Triangle Trigonometry — Sine, Cosine, Tangent
-76. Trigonometric Identities — sin(x) = cos(90° − x)
-77. Radians vs. Degrees and Arc Length
-78. Area of a Sector of a Circle
-79. Circle Equations in the Coordinate Plane
-80. Completing the Square to Find a Circle's Center and Radius
-
+66. Lines and Angles — Vertical, Supplementary, and Complementary             [done]
+67. Parallel Lines Cut by a Transversal                                       [done]
+68. Triangles — Interior and Exterior Angle Theorems                          [done]
+69. Isosceles and Equilateral Triangles                                       [done]
+70. Pythagorean Theorem and the Distance Formula                              [done]
+71. Special Right Triangles — 45-45-90                                        [done]
+72. Special Right Triangles — 30-60-90                                        [done]
+73. Triangle Inequality and Similarity (AA, SAS)                              [done]
+74. Congruent Triangles and Area/Perimeter Scaling                            [done]
+75. Right Triangle Trigonometry — Sine, Cosine, Tangent                       [done]
+76. Trigonometric Identities — sin(x) = cos(90° − x)                          [done]
+77. Radians vs. Degrees and Arc Length                                        [done]
+78. Area of a Sector of a Circle                                              [done]
+79. Circle Equations in the Coordinate Plane                                  [done]
+80. Completing the Square to Find a Circle's Center and Radius                [done]
 ## Part 2: Math Tactics & Test Strategy (81–100)
 
 ### Block E: Taktika va Desmos (81–100)   ·   domain: hammasi
@@ -152,11 +151,11 @@ PLAYLIST: Prime SAT Math
 #   javobdan teskari yurish, Desmos, tuzoq javoblar, grid-in formati, vaqt taqsimoti.
 #   Shuning uchun oxirida: oʻquvchi avval matematikani bilishi kerak.
 
-81. The "Plugging In Numbers" Tactic
-82. Backsolving (Working from the Options)
-83. Mastering Desmos I — Graphing and Intersections
-84. Mastering Desmos II — Sliders for Unknown Constants
-85. Mastering Desmos III — Inequalities and Bounded Regions
+81. The "Plugging In Numbers" Tactic                                          [next]
+82. Backsolving (Working from the Options)                                    [next]
+83. Mastering Desmos I — Graphing and Intersections                           [next]
+84. Mastering Desmos II — Sliders for Unknown Constants                       [next]
+85. Mastering Desmos III — Inequalities and Bounded Regions                   [next]
 86. The "Eyeballing" Strategy for Geometry Diagrams
 87. The Art of Estimation
 88. Strategic Guessing and Time Management
@@ -174,7 +173,7 @@ PLAYLIST: Prime SAT Math
 100. The Final Review Protocol (30-Second Double-Check)
 
 # ─────────────────────────────────────────────────────────────────────
-# Holat: 65 / 100 qayta yozilgan (2026-09-04) — Blok C tugadi.  Keyingi batch: SAT-66 … SAT-70.
+# Holat: 75 / 100 qayta yozilgan (2026-09-04).  Keyingi batch: SAT-76 … SAT-80.
 # ✅ Blok A (1–22) TUGADI. SAT-23 dan Blok B (Advanced Math) boshlandi.
 # ✅ Blok A ning chiziqli qismi (1–20) tugadi: ifoda → tenglama → chiziq → sistema.
 # Eski avlod hali bazada turibdi (SAT-1 … SAT-100), har batch ustiga yoziladi.

@@ -157,17 +157,29 @@ AUTHOR:     powerty
 63. Two Percent, Give or Take             (factory quality control)          [done]
 64. The Same Middle, a Different Tail     (a business decision)              [done]
 65. Two, Four, and Then What?             (public health)                    [done]
-66. …                                     (SAT-66: lines and angles)         [next]
-67. …                                     (SAT-67: parallel lines)           [next]
-68. …                                     (SAT-68: triangle angles)          [next]
-69. …                                     (SAT-69: isosceles/equilateral)    [next]
-70. …                                     (SAT-70: Pythagoras, distance)     [next]
+66. The Check That Closes                 (surveying)                        [done]
+67. The Thread That Crosses               (a weaver's loom)                  [done]
+68. A Triangle With Three Right Angles    (geography of ideas)               [done]
+69. Why the Kite Flies Straight           (a kite maker)                     [done]
+70. Twelve Knots                          (the history of building)          [done]
+71. The Diagonal That Broke the Rule      (history of mathematics)           [done]
+72. Six Triangles in Every Cell           (nature — the honeycomb)           [done]
+73. Measuring a Pyramid With a Stick      (ancient history)                  [done]
+74. Why the Elephant Has Thick Legs       (biology — the square-cube law)    [done]
+75. The Angle to the Star                 (navigation)                       [done]
+76. Two Ways to Say the Same Roof           (a trade / workplace text)         [done]
+77. The Wheel That Counts the Road          (how things work)                  [done]
+78. The Green Circles You See From a Plane  (agriculture / science)            [done]
+79. Three Stations and One Earthquake       (popular science)                  [done]
+80. The Square That al-Khwarizmi Completed  (history of mathematics)           [done]
 # … one per lesson, through SAT-100. Titles are written when the batch is written:
 # give each reading a real English title, not the lesson's topic name.
 
 # ─────────────────────────────────────────────────────────────────────
-# Holat: 65 / 100 yozilgan (2026-09-04) — Blok C tugadi.  Keyingi batch: SAT-66 … SAT-70.
+# Holat: 80 / 100 yozilgan (2026-09-05).  Keyingi batch: SAT-81 … SAT-85.
 # Ovoz navbati: 1-batch 3 ayol/2 erkak · 2-batch 3 erkak/2 ayol · 3-batch 3 ayol/2 erkak
 #               → 4-batch 3 erkak/2 ayol · 5-batch 3 ayol/2 erkak
-#               → 13-batch 3 ayol/2 erkak · 14-batch erkakdan boshlanadi.
+#               → 15-batch 3 ayol/2 erkak
+#               → 16-batch 3 erkak/2 ayol (76 G · 77 J · 78 G · 79 J · 80 G)
+#               → 17-batch AYOLdan boshlanadi (3 ayol/2 erkak).
 # ─────────────────────────────────────────────────────────────────────
