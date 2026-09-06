@@ -1668,49 +1668,1138 @@ def q_digits(grade, tier):
 
 
 # ---------------------------------------------------------------------------
+# Kalendar (hafta kunlari)
+# ---------------------------------------------------------------------------
+
+_WEEKDAYS = ['dushanba', 'seshanba', 'chorshanba', 'payshanba', 'juma',
+             'shanba', 'yakshanba']
+
+# (nom, kun soni) — fevral ataylab yo'q: kabisa yili savolni ikki xil qiladi.
+_MONTHS = [('yanvar', 31), ('mart', 31), ('aprel', 30), ('may', 31),
+           ('iyun', 30), ('iyul', 31), ('avgust', 31), ('sentyabr', 30),
+           ('oktyabr', 31), ('noyabr', 30)]
+
+
+def _weekday_wrongs(j):
+    return [_WEEKDAYS[(j + k) % 7] for k in (1, -1, 3)]
+
+
+
+def q_calendar(grade, tier):
+    """Hafta kunlari 7 lik qoldiq bilan — bolalar yaxshi ko'radigan savol."""
+    i = random.randrange(7)
+    day = _WEEKDAYS[i]
+    roll = random.random()
+
+    if roll < 0.34:
+        n = random.randint(12, 100)
+        j = (i + n) % 7
+        expl = (f"Bir hafta — 7 kun, shuning uchun faqat 7 ga bo'lgandagi "
+                f"qoldiq muhim: {n} ÷ 7 = {n // 7} (qoldiq {n % 7}). "
+                f"{day.capitalize()}dan {n % 7} kun keyin — {_WEEKDAYS[j]}.")
+        return _q("Kalendar",
+                  f"Bugun {day}. {n} kundan keyin haftaning qaysi kuni bo'ladi?",
+                  _WEEKDAYS[j], _weekday_wrongs(j), expl, pad=False)
+
+    if roll < 0.67:
+        month = random.choice(_MONTHS)[0]
+        d = random.randint(11, 28)
+        j = (i + d - 1) % 7
+        expl = (f"1-kun {day} bo'lsa, {d}-kungacha {d} − 1 = {d - 1} kun o'tadi. "
+                f"{d - 1} ÷ 7 = {(d - 1) // 7} (qoldiq {(d - 1) % 7}), demak "
+                f"{day}dan {(d - 1) % 7} kun keyin — {_WEEKDAYS[j]}.")
+        return _q("Kalendar",
+                  f"{month.capitalize()} oyining 1-kuni {day}ga to'g'ri keldi. "
+                  f"Shu oyning {d}-kuni qaysi kun bo'ladi?",
+                  _WEEKDAYS[j], _weekday_wrongs(j), expl, pad=False)
+
+    # Ketma-ket ikki oy. _MONTHS ro'yxatida fevral yo'q, shuning uchun
+    # qo'shni juftliklar faqat mart'dan boshlab haqiqiy ketma-ketlik bo'ladi.
+    idx = random.randrange(1, len(_MONTHS) - 1)
+    (m1, length), (m2, _) = _MONTHS[idx], _MONTHS[idx + 1]
+    j = (i + length) % 7
+    expl = (f"{m1.capitalize()} oyida {length} kun bor. {length} ÷ 7 = "
+            f"{length // 7} (qoldiq {length % 7}), demak {m2} oyining 1-kuni "
+            f"{day}dan {length % 7} kun keyinga — {_WEEKDAYS[j]}ga to'g'ri keladi.")
+    return _q("Kalendar",
+              f"{m1.capitalize()} oyining 1-kuni {day} edi. {m2.capitalize()} "
+              f"oyining 1-kuni qaysi kun bo'ladi?",
+              _WEEKDAYS[j], _weekday_wrongs(j), expl, pad=False)
+
+
+# ---------------------------------------------------------------------------
+# Soat strelkalari orasidagi burchak
+# ---------------------------------------------------------------------------
+
+def q_clock_angle(grade, tier):
+    """Strelkalar burchagi: soat strelkasi ham qimirlaydi — asosiy tuzoq shu."""
+    h = random.choice([1, 2, 3, 4, 5, 7, 8, 9, 10, 11])
+    m = 0 if tier == 1 else random.choice((0, 20, 30, 40))
+    ha = 30 * h + m // 2                 # soat strelkasi 12 dan burchagi
+    ma = 6 * m                           # minut strelkasi 12 dan burchagi
+    d = abs(ha - ma)
+    ans = min(d, 360 - d)
+
+    if m == 0:
+        expl = (f"Siferblatda 12 ta bo'lim bor, har biri 360° ÷ 12 = 30°. "
+                f"Soat {h}:00 da strelkalar orasida {h} ta bo'lim bor: "
+                f"{h} × 30 = {30 * h}°.")
+        if ans != 30 * h:
+            expl += f" Kichik burchak esa 360 − {30 * h} = {ans}°."
+    else:
+        expl = (f"Minut strelkasi bir daqiqada 6°, soat strelkasi esa 0,5° "
+                f"buriladi. {h}:{m:02d} da minut strelkasi 12 dan {ma}°, soat "
+                f"strelkasi {30 * h} + {m} × 0,5 = {ha}° uzoqlikda. "
+                f"Farqi: |{ha} − {ma}| = {d}°.")
+        if ans != d:
+            expl += f" Kichik burchak: 360 − {d} = {ans}°."
+    return _q("Soat strelkalari",
+              f"Soat {h}:{m:02d} da soat va minut strelkalari orasidagi kichik "
+              f"burchak necha gradusga teng?",
+              ans, [d if d != ans else ans + 15, 30 * h, ans + 15, ans - 15,
+                    abs(30 * h - ma)],
+              expl, unit="°")
+
+
+# ---------------------------------------------------------------------------
+# Sanash sirlari (the off-by-one family: kesish, ustun, qavat, zang)
+# ---------------------------------------------------------------------------
+
+def q_offbyone(grade, tier):
+    name = _names()
+    roll = random.randrange(5)
+
+    if roll == 0:
+        n = random.randint(4, 12)
+        expl = (f"Har bir kesish bo'laklar sonini bittaga oshiradi: bir marta "
+                f"kesilsa 2 bo'lak, ikki marta kesilsa 3 bo'lak… Demak {n} ta "
+                f"bo'lak uchun {n} − 1 = {n - 1} marta kesish kerak.")
+        return _q("Sanash sirlari",
+                  f"{name} uzun yog'ochni {n} ta teng bo'lakka bo'lmoqchi. "
+                  f"Buning uchun necha marta kesish kerak?",
+                  n - 1, [n, n + 1, 2 * n, n - 2], expl, unit="marta")
+
+    if roll == 1:
+        k = random.randint(4, 14)
+        expl = (f"Birinchi kesish 2 ta bo'lak beradi, keyingi har bir kesish "
+                f"yana bittadan qo'shadi: {k} + 1 = {k + 1} ta bo'lak.")
+        return _q("Sanash sirlari",
+                  f"{name} lentani {k} marta kesdi (har safar bitta joyidan). "
+                  f"Nechta bo'lak hosil bo'ldi?",
+                  k + 1, [k, k - 1, 2 * k, k + 2], expl, unit="ta")
+
+    if roll == 2:
+        d = random.choice((4, 5, 6, 8, 10))
+        cnt = random.randint(5, 15)
+        length = d * cnt
+        expl = (f"Ustunlar orasidagi oraliqlar soni: {length} ÷ {d} = {cnt} ta. "
+                f"Ikki chetida ham ustun bo'lgani uchun ustunlar oraliqlardan "
+                f"bitta ko'p: {cnt} + 1 = {cnt + 1} ta.")
+        return _q("Sanash sirlari",
+                  f"To'g'ri chiziqli {length} metrlik yo'l bo'ylab har {d} "
+                  f"metrda bitta ustun o'rnatildi. Yo'lning ikkala chetida ham "
+                  f"ustun bor. Jami nechta ustun o'rnatilgan?",
+                  cnt + 1, [cnt, cnt + 2, cnt - 1, length // d * 2], expl, unit="ta")
+
+    if roll == 3:
+        u = random.randint(6, 20)
+        k = random.randint(5, 9)
+        expl = (f"1-qavatdan 3-qavatga chiqishda 2 ta marsh bosib o'tiladi, "
+                f"demak bitta marsh {2 * u} ÷ 2 = {u} soniya. 1-qavatdan "
+                f"{k}-qavatgacha {k} − 1 = {k - 1} ta marsh bor: "
+                f"{k - 1} × {u} = {u * (k - 1)} soniya.")
+        return _q("Sanash sirlari",
+                  f"{name} 1-qavatdan 3-qavatga {2 * u} soniyada chiqadi. Xuddi "
+                  f"shu tezlik bilan u 1-qavatdan {k}-qavatga necha soniyada "
+                  f"chiqadi?",
+                  u * (k - 1), [u * k, 2 * u * (k - 1), u * (k - 2),
+                                2 * u + k],
+                  expl, unit="soniya")
+
+    u = random.randint(2, 9)
+    k = random.choice((6, 7, 9, 10, 12))
+    expl = (f"Soat 3 ni urganda zarblar orasida 2 ta oraliq bor, demak bitta "
+            f"oraliq {2 * u} ÷ 2 = {u} soniya. {k} ta zarb orasida {k} − 1 = "
+            f"{k - 1} ta oraliq bor: {k - 1} × {u} = {u * (k - 1)} soniya.")
+    return _q("Sanash sirlari",
+              f"Devor soati 3 ni {2 * u} soniyada uradi. U {k} ni necha "
+              f"soniyada uradi?",
+              u * (k - 1), [u * k, 2 * u * k, u * (k - 2), 2 * u + k],
+              expl, unit="soniya")
+
+
+# ---------------------------------------------------------------------------
+# Kombinatorika (sanash usullari)
+# ---------------------------------------------------------------------------
+
+_SHIRTS = [("ko'ylak", "shim"), ("futbolka", "shortik"), ("kofta", "yubka")]
+
+
+def q_combinatorics(grade, tier):
+    name = _names()
+    roll = random.randrange(5 if tier >= 2 else 3)
+
+    if roll == 0:
+        n = random.randint(5, 12)
+        ans = n * (n - 1) // 2
+        expl = (f"Har bir odam qolgan {n - 1} kishi bilan qo'l berib ko'rishadi: "
+                f"{n} × {n - 1} = {n * (n - 1)}. Lekin har bir ko'rishuv ikki "
+                f"marta sanaldi, shuning uchun 2 ga bo'lamiz: "
+                f"{n * (n - 1)} ÷ 2 = {ans}.")
+        return _q("Kombinatorika",
+                  f"Xonada {n} ta o'quvchi bor. Ularning har biri qolgan "
+                  f"hammasi bilan bir martadan qo'l berib ko'rishdi. Jami "
+                  f"nechta ko'rishuv bo'ldi?",
+                  ans, [n * (n - 1), n * n, n - 1, ans + n], expl, unit="ta")
+
+    if roll == 1:
+        top, bottom = random.choice(_SHIRTS)
+        a = random.randint(3, 6)
+        b = random.randint(3, 5)
+        expl = (f"Har bir {top} har bir {bottom} bilan kiyilishi mumkin, demak "
+                f"variantlar soni ko'paytiriladi: {a} × {b} = {a * b}.")
+        return _q("Kombinatorika",
+                  f"{name}ning {a} xil {top}i va {b} xil {bottom}i bor. U "
+                  f"nechta har xil kiyim to'plamini tanlashi mumkin?",
+                  a * b, [a + b, a * b * 2, a * b - a, (a + b) * 2], expl, unit="ta")
+
+    if roll == 2:
+        a, b, c = random.randint(2, 4), random.randint(3, 5), random.randint(2, 3)
+        expl = (f"Har bir bosqichdagi tanlovlar soni ko'paytiriladi: "
+                f"{a} × {b} × {c} = {a * b * c}.")
+        return _q("Kombinatorika",
+                  f"Oshxonada {a} xil salat, {b} xil issiq taom va {c} xil "
+                  f"ichimlik bor. {name} har biridan bittadan tanlaydi. U "
+                  f"nechta har xil tushlik tanlashi mumkin?",
+                  a * b * c, [a + b + c, a * b + c, a * b * c * 2, (a + b) * c],
+                  expl, unit="ta")
+
+    if roll == 3:
+        digits = random.sample([1, 2, 3, 4, 5, 6, 7, 8, 9], random.choice((4, 5)))
+        k = len(digits)
+        ans = k * (k - 1)
+        shown = ", ".join(str(d) for d in sorted(digits))
+        expl = (f"O'nlar xonasiga {k} ta raqamdan istalgan birini qo'yish "
+                f"mumkin, birlar xonasiga esa qolgan {k - 1} tasidan birini: "
+                f"{k} × {k - 1} = {ans} ta son.")
+        return _q("Kombinatorika",
+                  f"{shown} raqamlaridan nechta ikki xonali son tuzish mumkin? "
+                  f"(Bir sonda bir raqam ikki marta ishlatilmaydi.)",
+                  ans, [k * k, k * (k - 1) // 2, k + k, (k - 1) * (k - 1)],
+                  expl, unit="ta")
+
+    n = random.randint(5, 10)
+    ans = n * (n - 3) // 2
+    expl = (f"Har bir uchdan qolgan {n - 3} ta uchga diagonal chiqadi "
+            f"(o'ziga va ikkita qo'shnisiga chiqmaydi): {n} × {n - 3} = "
+            f"{n * (n - 3)}. Har bir diagonal ikki marta sanalgani uchun 2 ga "
+            f"bo'lamiz: {ans}.")
+    return _q("Kombinatorika",
+              f"{n} burchakli ko'pburchakning nechta diagonali bor?",
+              ans, [n * (n - 3), n, n * (n - 1) // 2, ans + n], expl, unit="ta")
+
+
+# ---------------------------------------------------------------------------
+# Ehtimollik
+# ---------------------------------------------------------------------------
+
+_BALL_COLORS = [("qizil", "ko'k", "yashil"), ("oq", "qora", "sariq")]
+
+
+def _frac_value(s):
+    """'2/5' -> 0.4 — distraktorni qiymati bo'yicha tekshirish uchun."""
+    if '/' in s:
+        n, d = s.split('/')
+        return int(n) / int(d)
+    return float(s)
+
+
+def _frac_str(n, d):
+    n, d = _simplify(n, d)
+    return f"{n}/{d}" if d != 1 else str(n)
+
+
+def _prob_wrongs(correct_value, cands):
+    """Faqat qiymati ham boshqa bo'lgan kasrlarni distraktor qilib olamiz."""
+    out = []
+    for n, d in cands:
+        if d <= 0 or n < 0:
+            continue
+        if abs(n / d - correct_value) < 1e-9:
+            continue
+        s = _frac_str(n, d)
+        if s not in out:
+            out.append(s)
+    return out
+
+
+def q_probability(grade, tier):
+    if random.random() < 0.55:
+        c1, c2, c3 = random.choice(_BALL_COLORS)
+        r = random.randint(2, 8)
+        b = random.randint(2, 8)
+        g = random.randint(1, 6)
+        tot = r + b + g
+        pick = random.choice(((r, c1), (b, c2), (g, c3)))
+        cnt, color = pick
+        ans = _frac_str(cnt, tot)
+        expl = (f"Jami sharlar soni: {r} + {b} + {g} = {tot} ta. Ulardan "
+                f"{cnt} tasi {color}. Ehtimollik = qulay hollar ÷ barcha hollar "
+                f"= {cnt}/{tot}"
+                + (f" = {ans}." if ans != f"{cnt}/{tot}" else "."))
+        wrongs = _prob_wrongs(cnt / tot,
+                              [(cnt, tot - cnt), (tot - cnt, tot), (cnt, tot + 1),
+                               (tot, cnt), (cnt + 1, tot), (1, tot)])
+        return _q("Ehtimollik",
+                  f"Qopchada {r} ta {c1}, {b} ta {c2} va {g} ta {c3} shar bor. "
+                  f"Qopchadan qaramasdan bitta shar olinadi. Olingan sharning "
+                  f"{color} bo'lish ehtimoli qanchaga teng?",
+                  ans, wrongs, expl, pad=False)
+
+    kind = random.choice(('juft', 'katta', 'karrali', 'aniq'))
+    if kind == 'juft':
+        ans, favourable, why = _frac_str(3, 6), "2, 4, 6", "juft son"
+        cands = [(1, 6), (2, 6), (4, 6), (1, 3)]
+    elif kind == 'katta':
+        ans, favourable, why = _frac_str(2, 6), "5 va 6", "4 dan katta"
+        cands = [(1, 6), (3, 6), (4, 6), (2, 5)]
+    elif kind == 'karrali':
+        ans, favourable, why = _frac_str(2, 6), "3 va 6", "3 ga karrali"
+        cands = [(1, 6), (3, 6), (1, 2), (2, 5)]
+    else:
+        ans, favourable, why = _frac_str(1, 6), "faqat 6", "6 ga teng"
+        cands = [(1, 3), (2, 6), (1, 2), (5, 6)]
+    expl = (f"O'yin soqqasida 6 ta yoq bor. {why.capitalize()} bo'lgan hollar: "
+            f"{favourable}. Ehtimollik = qulay hollar ÷ 6 = {ans}.")
+    return _q("Ehtimollik",
+              f"O'yin soqqasi (kubik) bir marta tashlandi. Tushgan ochkoning "
+              f"{why} bo'lish ehtimoli qanchaga teng?",
+              ans, _prob_wrongs(_frac_value(ans), cands), expl, pad=False)
+
+
+# ---------------------------------------------------------------------------
+# Yosh masalalari
+# ---------------------------------------------------------------------------
+
+_RELATIVES = ['akasi', 'opasi', 'otasi', 'onasi', 'bobosi']
+
+
+def q_age(grade, tier):
+    name = _names()
+    roll = random.randrange(4 if tier >= 2 else 2)
+
+    if roll == 0:
+        a = random.randint(9, 14)
+        k = random.randint(2, 6)
+        m = random.randint(3, 10)
+        expl = (f"{k} yil oldin {a} yoshda bo'lsa, hozir {a} + {k} = {a + k} "
+                f"yoshda. Yana {m} yildan keyin: {a + k} + {m} = {a + k + m} yosh.")
+        return _q("Yosh masalalari",
+                  f"{k} yil oldin {name} {a} yoshda edi. U {m} yildan keyin "
+                  f"necha yoshda bo'ladi?",
+                  a + k + m, [a + m, a + k, a + k + m + k, a + m - k],
+                  expl, unit="yosh")
+
+    if roll == 1:
+        d = random.choice((4, 6, 8, 10, 12))
+        younger = random.randint(8, 16)
+        s = younger * 2 + d
+        expl = (f"Kichigining yoshi x bo'lsa, kattasi x + {d}. "
+                f"x + (x + {d}) = {s} → 2x = {s} − {d} = {s - d} → x = "
+                f"{younger}. Kattasi: {younger} + {d} = {younger + d} yosh.")
+        return _q("Yosh masalalari",
+                  f"Ikki aka-ukaning yoshlari yig'indisi {s} ga teng. Kattasi "
+                  f"kichigidan {d} yosh katta. Kattasi necha yoshda?",
+                  younger + d, [younger, s // 2, s - d, younger + d + d],
+                  expl, unit="yosh")
+
+    if roll == 2:
+        s = random.randint(8, 14)
+        x = random.randint(2, 12)
+        f = 2 * s + x
+        expl = (f"{x} yildan keyin o'g'li {s} + {x} = {s + x} yoshda, otasi "
+                f"esa {f} + {x} = {f + x} yoshda bo'ladi. {f + x} = 2 × "
+                f"{s + x} — shart bajarildi. Tekshirish uchun: ota o'g'lidan "
+                f"doim {f - s} yosh katta, 2 marta katta bo'lishi uchun "
+                f"o'g'lining yoshi {f - s} ga teng bo'lishi kerak, ya'ni "
+                f"{f - s} − {s} = {x} yildan keyin.")
+        return _q("Yosh masalalari",
+                  f"Ota {f} yoshda, o'g'li esa {s} yoshda. Necha yildan keyin "
+                  f"otaning yoshi o'g'lining yoshidan roppa-rosa 2 marta katta "
+                  f"bo'ladi?",
+                  x, [f - 2 * s + 1, f - s, s, x + 2], expl, unit="yil")
+
+    rel = random.choice(_RELATIVES[:2])
+    a = random.randint(9, 15)
+    k = random.randint(3, 8)
+    times = random.choice((2, 3))
+    older = a * times
+    expl = (f"Hozir {rel} {a} × {times} = {older} yoshda. {k} yildan keyin "
+            f"ularning yoshlari yig'indisi: ({a} + {k}) + ({older} + {k}) = "
+            f"{a + older + 2 * k}.")
+    return _q("Yosh masalalari",
+              f"{name} {a} yoshda, {rel} esa undan {times} marta katta. "
+              f"{k} yildan keyin ikkalasining yoshlari yig'indisi nechaga teng "
+              f"bo'ladi?",
+              a + older + 2 * k, [a + older, a + older + k, a * times + k,
+                                  a + older + 4 * k],
+              expl, unit="yosh")
+# ---------------------------------------------------------------------------
+# Xatoni top — tayyor yechim beriladi, o'quvchi xato qadamni topadi
+# ---------------------------------------------------------------------------
+
+def _steps_question(topic, intro, steps, bad, explanation):
+    """Bir nechta qadamli yechim + 'xato qaysi qadamda?' javob variantlari."""
+    body = "\n".join(f"{i + 1}-qadam:  {s}" for i, s in enumerate(steps))
+    correct = f"{bad}-qadam"
+    wrongs = [f"{i}-qadam" for i in range(1, len(steps) + 1) if i != bad]
+    return _q(topic, f"{intro}\n\n{body}", correct, wrongs, explanation, pad=False)
+
+
+def q_find_error(grade, tier):
+    """Birinchi XATO qadamni topish — tekshirish ko'nikmasini o'rgatadi."""
+    intro = ("Quyidagi yechimda bitta xato bor. Xato BIRINCHI marta qaysi "
+             "qadamda qilingan?")
+    kind = random.randrange(6)
+
+    if kind == 0:
+        a = random.randint(2, 9)
+        x = random.randint(2, 12)
+        b = random.randint(3, 20)
+        c = a * x + b
+        steps = [f"{a}x + {b} = {c}",
+                 f"{a}x = {c} − {b}",
+                 f"{a}x = {c - b}",
+                 f"x = {c - b} × {a} = {(c - b) * a}"]
+        why = (f"4-qadamda ko'paytirish emas, bo'lish kerak edi: {a}x = "
+               f"{c - b} bo'lsa, x = {c - b} ÷ {a} = {x}.")
+        return _steps_question("Xatoni top", intro, steps, 4, why)
+
+    if kind == 1:
+        a = random.randint(2, 9)
+        b = random.randint(2, 9)
+        c = random.randint(2, 9)
+        steps = [f"{a} + {b} × {c}",
+                 f"= {a + b} × {c}",
+                 f"= {(a + b) * c}",
+                 f"Javob: {(a + b) * c}"]
+        why = (f"Amallar tartibi bo'yicha avval ko'paytirish bajariladi: "
+               f"{a} + {b} × {c} = {a} + {b * c} = {a + b * c}. "
+               f"2-qadamda qo'shish oldin bajarilib yuborilgan.")
+        return _steps_question("Xatoni top", intro, steps, 2, why)
+
+    if kind == 2:
+        a, b = random.choice([(2, 3), (3, 4), (2, 5), (4, 5), (3, 5), (2, 7)])
+        steps = [f"1/{a} + 1/{b}",
+                 f"= (1 + 1)/({a} + {b})",
+                 f"= 2/{a + b}",
+                 f"Javob: 2/{a + b}"]
+        why = (f"Kasrlarni qo'shishda maxrajlar qo'shilmaydi! Umumiy maxrajga "
+               f"keltiriladi: 1/{a} + 1/{b} = {b}/{a * b} + {a}/{a * b} = "
+               f"{a + b}/{a * b}.")
+        return _steps_question("Xatoni top", intro, steps, 2, why)
+
+    if kind == 3:
+        # 10% ataylab yo'q: {n} ÷ 10 va {n} × 10 ÷ 100 bir xil natija beradi,
+        # ya'ni "xato" qadam aslida xato bo'lmay qolardi.
+        n = random.choice((120, 240, 360, 480, 600, 750))
+        p = random.choice((20, 25, 50))
+        steps = [f"{n} sonining {p}% ini topamiz",
+                 f"{p}% = {p}/100",
+                 f"{n} ÷ {p} = {n // p}",
+                 f"Javob: {n // p}"]
+        why = (f"Foizni topishda songa KO'PAYTIRILADI: {n} × {p} ÷ 100 = "
+               f"{n * p // 100}. 3-qadamda songa bo'linib yuborilgan.")
+        return _steps_question("Xatoni top", intro, steps, 3, why)
+
+    if kind == 4:
+        a = random.randint(4, 15)
+        b = random.randint(2, a - 1)
+        steps = [f"To'g'ri to'rtburchak: bo'yi {a} sm, eni {b} sm",
+                 f"Perimetr = {a} + {b} = {a + b} sm",
+                 f"Yuza = {a} × {b} = {a * b} sm²",
+                 f"Javob: P = {a + b} sm, S = {a * b} sm²"]
+        why = (f"Perimetr — barcha to'rt tomonning yig'indisi: "
+               f"P = 2 × ({a} + {b}) = {2 * (a + b)} sm. Yuza to'g'ri "
+               f"topilgan.")
+        return _steps_question("Xatoni top", intro, steps, 2, why)
+
+    a = random.randint(3, 12)
+    b = random.randint(2, 9)
+    steps = [f"{a} − (−{b})",
+             f"= {a} − {b}",
+             f"= {a - b}",
+             f"Javob: {a - b}"]
+    why = (f"Manfiy sonni ayirish — uni qo'shish bilan bir xil: "
+           f"{a} − (−{b}) = {a} + {b} = {a + b}. Ikki minus qo'shuvga aylanadi.")
+    return _steps_question("Xatoni top", intro, steps, 2, why)
+
+
+# ---------------------------------------------------------------------------
+# Qaysi tasdiq to'g'ri? — javob variantlari son emas, gap
+# ---------------------------------------------------------------------------
+
+_PARITY_RULES = [
+    ("Ikkita toq sonning yig'indisi — juft son", True,
+     "Masalan, 3 + 5 = 8. Ikkita toq son har doim juft yig'indi beradi."),
+    ("Ikkita toq sonning ko'paytmasi — juft son", False,
+     "3 × 5 = 15 — toq. Ikkita toq sonning ko'paytmasi doim toq bo'ladi."),
+    ("Juft va toq sonning yig'indisi — toq son", True,
+     "Masalan, 4 + 3 = 7. Juft + toq har doim toq."),
+    ("0 — juft son", True, "0 ÷ 2 = 0, qoldiq yo'q, demak 0 juft son."),
+    ("1 — tub son", False,
+     "Tub sonning roppa-rosa ikkita bo'luvchisi bo'ladi, 1 ning esa bitta."),
+    ("2 — yagona juft tub son", True,
+     "Qolgan barcha juft sonlar 2 ga bo'linadi, demak tub emas."),
+    ("Har qanday tub son toq bo'ladi", False, "2 — tub, lekin juft son."),
+    ("Nolga bo'lish mumkin emas", True, "Nolga bo'lish ta'riflanmagan."),
+    ("Ikkita juft sonning ayirmasi doim juft", True, "Masalan, 10 − 4 = 6."),
+    ("Kvadratning yuzi doim perimetridan katta", False,
+     "Tomoni 2 bo'lgan kvadratda yuza 4, perimetr esa 8."),
+]
+
+
+def _stmt_div():
+    n = random.randint(24, 400)
+    d = random.choice((2, 3, 4, 5, 6, 9, 10))
+    truth = n % d == 0
+    why = (f"{n} ÷ {d} = {n // d}" if truth
+           else f"{n} ÷ {d} = {n // d}, qoldiq {n % d}")
+    return f"{n} soni {d} ga qoldiqsiz bo'linadi", truth, why + "."
+
+
+def _stmt_prime():
+    n = random.choice([11, 13, 17, 19, 21, 23, 27, 29, 31, 33, 37, 39, 41,
+                       49, 51, 53, 57, 59, 61, 63, 67, 87, 91])
+    truth = _is_prime(n)
+    why = (f"{n} faqat 1 ga va o'ziga bo'linadi." if truth
+           else f"{_prime_factorization(n)} — demak {n} tub emas.")
+    return f"{n} — tub son", truth, why
+
+
+def _stmt_frac():
+    (a, b), (c, d) = random.sample([(1, 2), (1, 3), (2, 3), (3, 4), (2, 5),
+                                    (3, 5), (5, 6), (1, 4), (4, 5)], 2)
+    truth = a * d > c * b
+    why = (f"{a}/{b} = {a * d}/{b * d}, {c}/{d} = {c * b}/{b * d}. "
+           f"{a * d} {'>' if truth else '<'} {c * b}.")
+    return f"{a}/{b} kasri {c}/{d} kasridan katta", truth, why
+
+
+def _stmt_neg():
+    a, b = random.sample(range(1, 25), 2)
+    truth = -a > -b
+    why = (f"Sonlar o'qida −{a} soni −{b} sonidan "
+           f"{'o‘ngda' if truth else 'chapda'} joylashgan: manfiy sonlarda "
+           f"moduli KICHIK bo'lgan son kattaroq.")
+    return f"−{a} soni −{b} sonidan katta", truth, why
+
+
+def _stmt_pct():
+    n = random.choice((60, 80, 120, 200, 240, 300, 400))
+    p = random.choice((10, 20, 25, 50, 75))
+    real = n * p // 100
+    shown = real if random.random() < 0.5 else real + random.choice((-real // 2, real // 2, 10))
+    truth = shown == real
+    why = f"{n} ning {p}% i = {n} × {p} ÷ 100 = {real}."
+    return f"{n} sonining {p}% i {shown} ga teng", truth, why
+
+
+def _stmt_square():
+    n = random.choice([16, 25, 36, 49, 64, 81, 100, 121, 20, 30, 45, 50, 60,
+                       72, 90, 99])
+    root = int(round(n ** 0.5))
+    truth = root * root == n
+    why = (f"{root} × {root} = {n}." if truth
+           else f"{root} × {root} = {root * root}, {root + 1} × {root + 1} = "
+                f"{(root + 1) ** 2} — orasida {n} yo'q.")
+    return f"{n} — biror natural sonning kvadrati", truth, why
+
+
+_STMT_MAKERS = [_stmt_div, _stmt_prime, _stmt_frac, _stmt_neg, _stmt_pct,
+                _stmt_square]
+
+
+def q_true_statement(grade, tier):
+    """Bitta to'g'ri tasdiq + uchta noto'g'ri: javoblar son emas, fikr."""
+    true_pool, false_pool = [], []
+    for _ in range(120):
+        if random.random() < 0.35:
+            text, truth, why = random.choice(_PARITY_RULES)
+            source = 'rule'
+        else:
+            maker = random.choice(_STMT_MAKERS)
+            text, truth, why = maker()
+            source = maker.__name__
+        target = true_pool if truth else false_pool
+        if all(text != t[0] for t in target):
+            target.append((text, why, source))
+        if true_pool and len({t[2] for t in false_pool}) >= 3:
+            break
+    if not true_pool or len(false_pool) < 3:
+        return q_divisibility(grade, tier)      # ehtiyot chorasi
+    correct, why, _ = random.choice(true_pool)
+    # Uchta noto'g'ri tasdiq har xil turdan bo'lsin — aks holda variantlarning
+    # ikkitasi bir xil qolipda chiqib, savol zerikarli ko'rinadi.
+    picked, used = [], set()
+    for cand in random.sample(false_pool, len(false_pool)):
+        if cand[2] not in used:
+            picked.append(cand)
+            used.add(cand[2])
+        if len(picked) == 3:
+            break
+    for cand in false_pool:
+        if len(picked) == 3:
+            break
+        if cand not in picked:
+            picked.append(cand)
+    wrongs = [t[0] for t in picked]
+    return _q("Qaysi tasdiq to'g'ri?",
+              "Quyidagi tasdiqlardan qaysi biri TO'G'RI?",
+              correct, wrongs, f"To'g'ri javob: {correct}. {why}", pad=False)
+
+
+# ---------------------------------------------------------------------------
+# Ortiqchasini top — xossani nomlab so'raymiz, shunda javob yagona bo'ladi
+# ---------------------------------------------------------------------------
+
+def q_odd_one_out(grade, tier):
+    kind = random.randrange(4)
+
+    if kind == 0:
+        primes = random.sample([11, 13, 17, 19, 23, 29, 31, 37, 41, 43], 3)
+        comp = random.choice([15, 21, 27, 33, 35, 39, 45, 51, 57])
+        expl = (f"{_prime_factorization(comp)} — demak {comp} tub emas. "
+                f"Qolgan sonlar faqat 1 ga va o'ziga bo'linadi.")
+        return _q("Ortiqchasini top",
+                  f"Quyidagi sonlardan qaysi biri TUB SON EMAS?",
+                  comp, [str(p) for p in primes], expl, pad=False,
+                  fmt=str)
+
+    if kind == 1:
+        squares = random.sample([16, 25, 36, 49, 64, 81, 100, 121, 144], 3)
+        pool = [n for n in range(15, 150) if int(round(n ** 0.5)) ** 2 != n]
+        other = random.choice(pool)
+        root = int(other ** 0.5)
+        expl = (f"{squares[0]}, {squares[1]}, {squares[2]} — kvadratlar. "
+                f"{other} esa emas: {root} × {root} = {root * root}, "
+                f"{root + 1} × {root + 1} = {(root + 1) ** 2}.")
+        return _q("Ortiqchasini top",
+                  "Quyidagi sonlardan qaysi biri biror natural sonning "
+                  "KVADRATI EMAS?",
+                  other, [str(s) for s in squares], expl, pad=False, fmt=str)
+
+    if kind == 2:
+        d = random.choice((3, 4, 6, 7, 9))
+        mults = random.sample([d * k for k in range(4, 16)], 3)
+        other = random.choice([n for n in range(20, 140) if n % d != 0
+                               and n not in mults])
+        expl = (f"{other} ÷ {d} = {other // d}, qoldiq {other % d} — bo'linmaydi. "
+                f"Qolganlari: " + ", ".join(f"{m} = {d} × {m // d}" for m in mults) + ".")
+        return _q("Ortiqchasini top",
+                  f"Quyidagi sonlardan qaysi biri {d} ga BO'LINMAYDI?",
+                  other, [str(m) for m in mults], expl, pad=False, fmt=str)
+
+    base = random.randint(2, 6)
+    powers = [base ** k for k in range(2, 5)]
+    other = random.choice([n for n in range(base ** 2, base ** 5)
+                           if n not in powers and n % base != 0])
+    expl = (", ".join(f"{p} = {base}{_SUP[k + 2]}" for k, p in enumerate(powers))
+            + f". {other} esa {base} ga hatto bo'linmaydi ham.")
+    return _q("Ortiqchasini top",
+              f"Quyidagi sonlardan qaysi biri {base} ning darajasi EMAS?",
+              other, [str(p) for p in powers], expl, pad=False, fmt=str)
+# ---------------------------------------------------------------------------
+# Taxminlash — kalkulyatorsiz kattalikni baholash
+# ---------------------------------------------------------------------------
+
+_SHOP_ITEMS = [("daftar", 4700), ("ruchka", 3200), ("kitob", 28000),
+               ("non", 4800), ("sut", 12500), ("olma (1 kg)", 18700)]
+
+
+def q_estimate(grade, tier):
+    roll = random.randrange(3)
+
+    if roll == 0:
+        a = random.choice((97, 198, 298, 302, 403, 496))
+        b = random.choice((19, 21, 39, 41, 48, 52))
+        ra = round(a, -2) if a >= 150 else 100
+        rb = round(b, -1)
+        ans = ra * rb
+        expl = (f"{a} ni {ra} ga, {b} ni {rb} ga yaxlitlaymiz: "
+                f"{ra} × {rb} = {ans}. Haqiqiy ko'paytma {a * b} — eng yaqin "
+                f"variant {ans}.")
+        return _q("Taxminlash",
+                  f"Kalkulyatorsiz baholang: {a} × {b} ko'paytma taxminan "
+                  f"nechaga teng?",
+                  ans, [ans * 10, ans // 10, ans * 5, ans // 2], expl,
+                  fmt=lambda v: "taxminan " + _fmt_money(v))
+
+    if roll == 1:
+        item, price = random.choice(_SHOP_ITEMS)
+        n = random.randint(4, 9)
+        rp = round(price, -3)
+        ans = round(n * rp, -3)
+        expl = (f"{_fmt_money(price)} so'mni {_fmt_money(rp)} so'mga "
+                f"yaxlitlaymiz: {n} × {_fmt_money(rp)} = {_fmt_money(n * rp)} "
+                f"so'm. Haqiqiy narx {_fmt_money(n * price)} so'm — eng yaqin "
+                f"variant {_fmt_money(ans)} so'm.")
+        return _q("Taxminlash",
+                  f"Bitta {item} {_fmt_money(price)} so'm turadi. {n} ta "
+                  f"{item} uchun taxminan qancha pul kerak?",
+                  ans, [ans * 10, ans // 10, ans * 3, ans // 3], expl,
+                  fmt=lambda v: "taxminan " + _fmt_money(v) + " so'm")
+
+    n = random.choice((287, 512, 749, 1234, 3560, 8125))
+    d = random.choice((9, 11, 19, 21, 49))
+    ans = round(n / d)
+    approx = round(n, -2) // (round(d, -1) or 10)
+    expl = (f"{n} ni taxminan {round(n, -2)} ga, {d} ni {round(d, -1)} ga "
+            f"yaxlitlasak, bo'linma taxminan {approx} chiqadi. Aniq qiymat "
+            f"{n} ÷ {d} ≈ {n / d:.1f}, eng yaqin butun son — {ans}.")
+    return _q("Taxminlash",
+              f"{n} ÷ {d} bo'linma qaysi songa eng yaqin?",
+              ans, [ans * 10, ans // 10 if ans >= 10 else ans + 7,
+                    ans + max(3, ans // 2), max(1, ans - max(3, ans // 3))],
+              expl)
+
+
+# ---------------------------------------------------------------------------
+# Jadval bilan ishlash — ma'lumotni o'qib, keyin hisoblash
+# ---------------------------------------------------------------------------
+
+_TABLE_STORIES = [
+    ("Kutubxonada bir haftada o'qilgan kitoblar soni:", "ta"),
+    ("Sinf jamg'armasiga yig'ilgan ballar:", "ball"),
+    ("Do'konda sotilgan muzqaymoqlar soni:", "ta"),
+    ("Mashqda urilgan gollar soni:", "ta"),
+]
+_TABLE_DAYS = ['Dushanba', 'Seshanba', 'Chorshanba', 'Payshanba', 'Juma']
+
+
+
+def q_table(grade, tier):
+    head, unit = random.choice(_TABLE_STORIES)
+    days = _TABLE_DAYS[:random.choice((4, 5))]
+    n = len(days)
+    kind = random.randrange(4)
+
+    if kind == 3:
+        # O'rtacha butun son chiqishi kafolatlanadi: oxirgi qiymat qolganidan
+        # kelib chiqib hisoblanadi va u ham haqiqiy oraliqqa tushmaguncha
+        # qayta uriniladi.
+        for _ in range(50):
+            mean = random.randint(8, 25)
+            vals = [random.randint(max(1, mean - 6), mean + 6)
+                    for _ in range(n - 1)]
+            last = mean * n - sum(vals)
+            if 1 <= last <= mean + 8:
+                vals.append(last)
+                break
+        else:
+            mean = 12
+            vals = [mean] * n
+        random.shuffle(vals)
+    else:
+        vals = [random.randint(4, 40) for _ in range(n)]
+
+    rows = "\n".join(f"{d} — {v} {unit}" for d, v in zip(days, vals))
+    text_head = f"{head}\n\n{rows}\n\n"
+    total = sum(vals)
+    hi, lo = max(vals), min(vals)
+
+    if kind == 0:
+        expl = ("Barcha kunlarni qo'shamiz: " + " + ".join(str(v) for v in vals)
+                + f" = {total}.")
+        return _q("Jadval bilan ishlash",
+                  text_head + "Bir haftada jami qancha bo'lgan?",
+                  total, [total - lo, total + hi, hi * n, total // 2], expl)
+
+    if kind == 1:
+        expl = (f"Eng kattasi — {hi} ({days[vals.index(hi)]}), eng kichigi — "
+                f"{lo} ({days[vals.index(lo)]}). Farqi: {hi} − {lo} = {hi - lo}.")
+        return _q("Jadval bilan ishlash",
+                  text_head + "Eng ko'p va eng kam kun orasidagi farq qancha?",
+                  hi - lo, [hi, lo, hi + lo, total - hi], expl)
+
+    if kind == 2:
+        limit = sorted(vals)[n // 2]
+        cnt = sum(1 for v in vals if v > limit)
+        if cnt == 0:
+            cnt, limit = sum(1 for v in vals if v >= limit), limit - 1
+        expl = (f"{limit} dan katta kunlar: "
+                + ", ".join(f"{d} ({v})" for d, v in zip(days, vals) if v > limit)
+                + f" — jami {cnt} ta kun.")
+        return _q("Jadval bilan ishlash",
+                  text_head + f"Necha kunda {limit} tadan ko'p bo'lgan?",
+                  cnt, [cnt + 1, cnt - 1, n - cnt, n], expl, unit="kun")
+
+    avg = total // n
+    expl = ("Yig'indi: " + " + ".join(str(v) for v in vals) + f" = {total}. "
+            f"Kunlar soni {n} ta. O'rtacha: {total} ÷ {n} = {avg}.")
+    return _q("Jadval bilan ishlash",
+              text_head + "Bir kunga o'rtacha qancha to'g'ri keladi?",
+              avg, [total, avg + 2, avg - 2, hi], expl)
+
+
+# ---------------------------------------------------------------------------
+# Sonlar piramidasi
+# ---------------------------------------------------------------------------
+
+
+def q_pyramid(grade, tier):
+    a = random.randint(2, 15)
+    b = random.randint(2, 15)
+    x = random.randint(2, 18)
+    top = a + 2 * b + x
+    left_hidden = random.random() < 0.5
+    if left_hidden:
+        a, x = x, a
+    bottom = (f"?     {b}     {x}" if left_hidden else f"{a}     {b}     ?")
+    ans = a if left_hidden else x
+    known = x if left_hidden else a
+    picture = (f"          {top}\n"
+               f"      ?       ?\n"
+               f"  {bottom}")
+    expl = (f"O'rta qatorning ma'lum katagi: {known} + {b} = {known + b}. "
+            f"Yuqori katak ikkala o'rta katakning yig'indisi, demak ikkinchi "
+            f"o'rta katak: {top} − {known + b} = {top - known - b}. U esa "
+            f"{b} bilan '?' ning yig'indisi: ? = {top - known - b} − {b} = {ans}.")
+    return _q("Sonlar piramidasi",
+              "Piramidaning har bir katagi ostidagi IKKITA sonning "
+              "yig'indisiga teng.\n\n" + picture +
+              "\n\nPastki qatordagi '?' o'rniga qaysi son kelishi kerak?",
+              ans, [top - known - b, top - known, b, known], expl)
+
+
+# ---------------------------------------------------------------------------
+# Sehrli kvadrat
+# ---------------------------------------------------------------------------
+
+_LOSHU = [[8, 1, 6], [3, 5, 7], [4, 9, 2]]
+
+
+def q_magic(grade, tier):
+    step = random.randint(1, 4)
+    base = random.randint(4 * step + 1, 4 * step + 22)
+    grid = [[base + step * (v - 5) for v in row] for row in _LOSHU]
+    if random.random() < 0.5:                       # jadvalni burab yuboramiz
+        grid = [list(r) for r in zip(*grid)]
+    ri, ci = random.randrange(3), random.randrange(3)
+    ans = grid[ri][ci]
+    s = 3 * base
+
+    lines = []
+    for i, row in enumerate(grid):
+        cells = ["?" if (i, j) == (ri, ci) else str(v) for j, v in enumerate(row)]
+        lines.append("   ".join(c.rjust(3) for c in cells))
+    full = next(i for i in range(3) if i != ri)
+    rest = [v for j, v in enumerate(grid[ri]) if j != ci]
+    expl = (f"To'liq satrdan yig'indini topamiz: "
+            + " + ".join(str(v) for v in grid[full]) + f" = {s}. "
+            f"'?' turgan satrda: {s} − {rest[0]} − {rest[1]} = {ans}.")
+    return _q("Sehrli kvadrat",
+              "Sehrli kvadratda har bir satr, har bir ustun va ikkala "
+              "diagonal yig'indisi bir xil.\n\n" + "\n".join(lines) +
+              "\n\n'?' o'rniga qaysi son keladi?",
+              ans, [s - rest[0], ans + step, ans - step, s], expl)
+
+
+# ---------------------------------------------------------------------------
+# Son topish — teskari amallar
+# ---------------------------------------------------------------------------
+
+def q_riddle(grade, tier):
+    x = random.randint(3, 20)
+    a = random.randint(2, 9)
+    c = random.choice((2, 3, 4, 5))
+    b = (-(x * a) % c) + c * random.randint(1, 6)
+    total = x * a + b
+    res = total // c
+    name = random.choice(_TEACHERS + _PUPILS)
+    expl = (f"Teskari yo'l bilan yechamiz: oxirida {res} chiqdi, undan oldin "
+            f"{c} ga bo'lingan edi → {res} × {c} = {total}. Undan oldin {b} "
+            f"qo'shilgan → {total} − {b} = {x * a}. Undan oldin {a} ga "
+            f"ko'paytirilgan → {x * a} ÷ {a} = {x}.")
+    return _q("Son topish",
+              f"{name} bir sonni o'yladi. U shu sonni {a} ga ko'paytirdi, "
+              f"natijaga {b} ni qo'shdi, hosil bo'lgan sonni {c} ga bo'ldi va "
+              f"{res} ni oldi. {name} qaysi sonni o'ylagan edi?",
+              x, [res, total, res - b, x + a], expl)
+
+
+# ---------------------------------------------------------------------------
+# Naqsh va formula (gugurt cho'plari, figuralar)
+# ---------------------------------------------------------------------------
+
+def q_pattern(grade, tier):
+    roll = random.randrange(4)
+
+    if roll == 0:
+        n = random.randint(5, 25)
+        ans = 3 * n + 1
+        expl = (f"Birinchi kvadratga 4 ta cho'p ketadi, keyingi har bir "
+                f"kvadrat esa faqat 3 ta qo'shimcha cho'p talab qiladi "
+                f"(bitta tomoni umumiy). Formula: 3n + 1 = 3 × {n} + 1 = {ans}.")
+        return _q("Naqsh va formula",
+                  f"Gugurt cho'plaridan bir qatorga yonma-yon {n} ta kvadrat "
+                  f"yasaldi (qo'shni kvadratlar bitta tomonni bo'lishadi). "
+                  f"Nechta cho'p kerak bo'ladi?",
+                  ans, [4 * n, 3 * n, 2 * n + 1, ans + 3], expl, unit="ta")
+
+    if roll == 1:
+        n = random.randint(6, 30)
+        ans = 2 * n + 1
+        expl = (f"Birinchi uchburchakka 3 ta cho'p, keyingi har biriga 2 tadan "
+                f"qo'shiladi. Formula: 2n + 1 = 2 × {n} + 1 = {ans}.")
+        return _q("Naqsh va formula",
+                  f"Gugurt cho'plaridan bir qatorga yonma-yon {n} ta uchburchak "
+                  f"yasaldi (qo'shni uchburchaklar bitta tomonni bo'lishadi). "
+                  f"Nechta cho'p kerak bo'ladi?",
+                  ans, [3 * n, 2 * n, n + 2, ans + 2], expl, unit="ta")
+
+    if roll == 2:
+        n = random.randint(4, 20)
+        sticks = 3 * n + 1
+        expl = (f"Formula: cho'plar soni = 3n + 1. {sticks} = 3n + 1 → "
+                f"3n = {sticks - 1} → n = {n}.")
+        return _q("Naqsh va formula",
+                  f"Bir qatorga yonma-yon kvadratlar yasashda har bir yangi "
+                  f"kvadrat 3 tadan cho'p talab qiladi (birinchisiga 4 ta "
+                  f"ketadi). {sticks} ta cho'pdan nechta kvadrat yasash mumkin?",
+                  n, [sticks // 3, n + 1, n - 1, sticks // 4], expl, unit="ta")
+
+    start = random.randint(3, 6)
+    d = random.randint(2, 5)
+    k = random.choice((8, 10, 12, 15, 20))
+    ans = start + (k - 1) * d
+    seq = ", ".join(str(start + i * d) for i in range(3))
+    expl = (f"Har bir keyingi figurada {d} tadan doira qo'shiladi. "
+            f"{k}-figurada: {start} + ({k} − 1) × {d} = {start} + "
+            f"{(k - 1) * d} = {ans} ta doira.")
+    return _q("Naqsh va formula",
+              f"Figuralar qatori shunday tuzilgan: 1-figurada {start} ta "
+              f"doira, keyin {seq}, ... {k}-figurada nechta doira bo'ladi?",
+              ans, [start + k * d, start * k, ans - d, ans + d], expl, unit="ta")
+
+
+# ---------------------------------------------------------------------------
+# Harorat (manfiy sonlar hayotda)
+# ---------------------------------------------------------------------------
+
+_COLD_CITIES = [("Toshkent", "Vorkuta"), ("Samarqand", "Yakutsk"),
+                ("Buxoro", "Norilsk")]
+
+
+def q_temperature(grade, tier):
+    roll = random.randrange(3)
+
+    if roll == 0:
+        a = random.randint(2, 15)
+        b = random.randint(3, 12)
+        ans = -(a + b)
+        expl = (f"Harorat pasaysa, sonlar o'qida CHAPGA siljiymiz: "
+                f"−{a} − {b} = −{a + b} gradus.")
+        return _q("Harorat",
+                  f"Kechqurun havo harorati −{a}°C edi. Tunda harorat yana "
+                  f"{b} gradusga pasaydi. Tunda harorat necha gradus bo'ldi?",
+                  ans, [-(a - b), a + b, -(b - a), -(a + b) - 5], expl,
+                  unit="°C", lo=None)
+
+    if roll == 1:
+        warm, cold = random.choice(_COLD_CITIES)
+        a = random.randint(3, 20)
+        b = random.randint(5, 30)
+        ans = a + b
+        expl = (f"Ikki harorat orasidagi farq — sonlar o'qidagi masofa: "
+                f"noldan +{a} gacha {a} gradus, noldan −{b} gacha {b} gradus. "
+                f"Jami: {a} + {b} = {ans} gradus.")
+        return _q("Harorat",
+                  f"Bir kuni {warm}da harorat +{a}°C, {cold}da esa −{b}°C "
+                  f"bo'ldi. Ikki shahardagi harorat farqi necha gradus?",
+                  ans, [abs(a - b), -(a + b), a + b + 10, max(a, b)], expl,
+                  unit="gradus")
+
+    a = random.randint(4, 18)
+    c = random.randint(5, 30)
+    ans = c - a
+    expl = (f"Ertalabki −{a} gradusdan {c} gradus ko'tarilamiz: "
+            f"−{a} + {c} = {ans} gradus"
+            + (" (nol darajadan yuqori)." if ans > 0 else
+               " (hamon noldan past)." if ans < 0 else " — roppa-rosa nol."))
+    return _q("Harorat",
+              f"Ertalab harorat −{a}°C edi. Kunduzi harorat {c} gradusga "
+              f"ko'tarildi. Kunduzi harorat necha gradus bo'ldi?",
+              ans, [-(a + c), a + c, -(c - a), ans + 5], expl,
+              unit="°C", lo=None)
+
+
+# ---------------------------------------------------------------------------
+# Masshtab (karta bilan ishlash)
+# ---------------------------------------------------------------------------
+
+_MAP_PLACES = [("Toshkent", "Samarqand"), ("Buxoro", "Xiva"),
+               ("Namangan", "Andijon"), ("Nukus", "Urganch")]
+
+
+def q_scale(grade, tier):
+    k = random.choice((100000, 200000, 500000, 1000000))
+    per_cm = k // 100000                          # 1 sm = necha km
+    a, b = random.choice(_MAP_PLACES)
+
+    if random.random() < 0.55:
+        c = random.randint(2, 12)
+        ans = c * per_cm
+        expl = (f"Masshtab 1 : {_fmt_money(k)} — kartadagi 1 sm haqiqatda "
+                f"{_fmt_money(k)} sm, ya'ni {per_cm} km. Demak {c} sm = "
+                f"{c} × {per_cm} = {ans} km.")
+        return _q("Masshtab",
+                  f"Kartaning masshtabi 1 : {_fmt_money(k)}. Kartada {a} bilan "
+                  f"{b} orasi {c} sm. Ular orasidagi haqiqiy masofa necha "
+                  f"kilometr?",
+                  ans, [c * k, c, ans * 10, ans // 2 or ans + 3], expl, unit="km")
+
+    c = random.randint(2, 12)
+    km = c * per_cm
+    expl = (f"Kartadagi 1 sm — {per_cm} km. {km} km da nechta {per_cm} km bor: "
+            f"{km} ÷ {per_cm} = {c} sm.")
+    return _q("Masshtab",
+              f"{a} bilan {b} orasi {km} km. Masshtabi 1 : {_fmt_money(k)} "
+              f"bo'lgan kartada bu masofa necha santimetr bilan tasvirlanadi?",
+              c, [km, km * per_cm, c * 10, c + per_cm], expl, unit="sm")
+
+
+# ---------------------------------------------------------------------------
+# Vaqt (jadval bo'yicha hisoblash)
+# ---------------------------------------------------------------------------
+
+_EVENTS = [("Film", "boshlandi"), ("Konsert", "boshlandi"),
+           ("Mashg'ulot", "boshlandi"), ("Uchrashuv", "boshlandi")]
+
+
+def _hhmm(total):
+    total %= 24 * 60
+    return f"{total // 60:02d}:{total % 60:02d}"
+
+
+def q_timetable(grade, tier):
+    roll = random.randrange(3)
+
+    if roll == 0:
+        h = random.randint(8, 20)
+        m = random.choice((0, 10, 15, 20, 25, 35, 40, 45, 50))
+        dur = random.choice((45, 55, 70, 85, 95, 105, 120, 135))
+        start = h * 60 + m
+        ans = _hhmm(start + dur)
+        expl = (f"{_hhmm(start)} ga {dur} daqiqa qo'shamiz. {dur} daqiqa = "
+                f"{dur // 60} soat {dur % 60} daqiqa. "
+                f"{_hhmm(start)} + {dur // 60} soat = {_hhmm(start + 60 * (dur // 60))}, "
+                f"undan + {dur % 60} daqiqa = {ans}.")
+        title, _ = random.choice(_EVENTS)
+        return _q("Vaqt",
+                  f"{title} soat {_hhmm(start)} da boshlandi va {dur} daqiqa "
+                  f"davom etdi. U soat nechada tugadi?",
+                  ans, [_hhmm(start + dur + 60), _hhmm(start + dur - 60),
+                        _hhmm(start + dur + 10), _hhmm(start + dur - 15)],
+                  expl, pad=False)
+
+    if roll == 1:
+        s = random.randint(6, 11) * 60 + random.choice((0, 10, 20, 25, 40, 45))
+        length = random.choice([n for n in range(95, 400) if n % 60])
+        e = s + length
+        expl = (f"{_hhmm(s)} dan {_hhmm(e)} gacha: avval to'liq soatlar, "
+                f"keyin daqiqalar. Jami {length} daqiqa = {length // 60} soat "
+                f"{length % 60} daqiqa.")
+        ans = f"{length // 60} soat {length % 60} daqiqa"
+        wrongs = [f"{length // 60} soat {60 - length % 60} daqiqa",
+                  f"{length // 60 + 1} soat {length % 60} daqiqa",
+                  f"{length // 60} soat {(length % 60 + 20) % 60} daqiqa",
+                  f"{length // 60 - 1} soat {length % 60} daqiqa",
+                  f"{length // 60} soat {(length % 60 + 35) % 60} daqiqa"]
+        return _q("Vaqt",
+                  f"Poyezd {_hhmm(s)} da jo'nab, manzilga {_hhmm(e)} da yetib "
+                  f"keldi. U yo'lda qancha vaqt bo'ldi?",
+                  ans, wrongs, expl, pad=False)
+
+    lesson = random.choice((40, 45))
+    brk = random.choice((5, 10, 15))
+    n = random.choice((3, 4, 5))
+    h = random.randint(8, 9)
+    m = random.choice((0, 15, 30))
+    start = h * 60 + m
+    total = n * lesson + (n - 1) * brk
+    ans = _hhmm(start + total)
+    expl = (f"{n} ta dars — {n} × {lesson} = {n * lesson} daqiqa. Ular orasida "
+            f"{n} − 1 = {n - 1} ta tanaffus — {n - 1} × {brk} = {(n - 1) * brk} "
+            f"daqiqa. Jami {total} daqiqa. {_hhmm(start)} + {total} daqiqa = {ans}.")
+    return _q("Vaqt",
+              f"Darslar soat {_hhmm(start)} da boshlanadi. Har bir dars "
+              f"{lesson} daqiqa, darslar orasidagi tanaffus {brk} daqiqa. "
+              f"{n}-dars soat nechada tugaydi?",
+              ans, [_hhmm(start + n * lesson + n * brk),
+                    _hhmm(start + n * lesson),
+                    _hhmm(start + total + 30), _hhmm(start + total - 20)],
+              expl, pad=False)
+
+
+# ---------------------------------------------------------------------------
 # Topic registry — which generators play in which round (tier)
 # ---------------------------------------------------------------------------
 
 # Shared base pool for every grade…
 _TIER_GENERATORS = {
     1: [q_divisibility, q_prime_pick, q_remainder, q_word_easy, q_speed_basic,
-        q_num_divisors, q_sequence, q_units, q_average, q_ratio, q_geometry],
+        q_num_divisors, q_sequence, q_units, q_average, q_ratio, q_geometry,
+        # yangi mavzular va yangi shakldagi savollar
+        q_calendar, q_offbyone, q_odd_one_out, q_table, q_pattern, q_riddle,
+        q_timetable, q_true_statement, q_estimate, q_pyramid],
     2: [q_divisibility, q_ekub, q_ekuk, q_num_divisors, q_sum_divisors,
         q_common_divisors, q_speed_basic, q_word_mid, q_remainder,
         q_ekuk_meeting, q_ekub_sharing, q_money_compare, q_ratio, q_average,
-        q_venn, q_sequence, q_geometry, q_proportion, q_units],
+        q_venn, q_sequence, q_geometry, q_proportion, q_units,
+        q_calendar, q_offbyone, q_odd_one_out, q_table, q_pattern, q_riddle,
+        q_timetable, q_true_statement, q_estimate, q_pyramid, q_magic,
+        q_combinatorics, q_age, q_find_error, q_clock_angle],
     3: [q_ekub, q_ekuk, q_num_divisors, q_sum_divisors, q_largest_prime,
         q_prime_pick, q_speed_hard, q_word_hard, q_common_divisors,
         q_divisibility, q_ekuk_meeting, q_ekub_sharing, q_work_compare,
-        q_proportion, q_venn, q_sequence, q_geometry, q_average],
+        q_proportion, q_venn, q_sequence, q_geometry, q_average,
+        q_offbyone, q_odd_one_out, q_pattern, q_riddle, q_true_statement,
+        q_pyramid, q_magic, q_combinatorics, q_age, q_find_error,
+        q_clock_angle, q_probability, q_table],
 }
 
 # …plus grade-exclusive topics, so 6th genuinely plays harder than 5th and
 # 7th harder than 6th. Signature topics appear twice for extra weight.
 _GRADE_EXTRAS = {
     5: {
-        1: [q_sequence],
-        2: [q_fraction_of, q_percent],
-        3: [q_fraction_of, q_fraction_add, q_equation, q_percent_reverse],
+        1: [q_sequence, q_calendar],
+        2: [q_fraction_of, q_percent, q_probability],
+        3: [q_fraction_of, q_fraction_add, q_equation, q_percent_reverse,
+            q_estimate, q_timetable],
     },
     6: {
-        1: [q_integers, q_fraction_of, q_percent],
+        1: [q_integers, q_fraction_of, q_percent, q_temperature],
         2: [q_equation, q_equation, q_fraction_add, q_percent,
             q_fraction_compare, q_percent_reverse, q_percent_of_what,
-            q_speed_units],
+            q_speed_units, q_temperature, q_scale, q_probability],
         3: [q_equation, q_equation, q_boat_wind, q_boat_wind, q_fraction_add,
             q_percent, q_percent_reverse, q_percent_of_what, q_mixture,
-            q_speed_average, q_train, q_digits],
+            q_speed_average, q_train, q_digits, q_temperature, q_scale,
+            q_probability],
     },
     7: {
-        1: [q_integers, q_fraction_of, q_power, q_percent, q_speed_units],
+        1: [q_integers, q_fraction_of, q_power, q_percent, q_speed_units,
+            q_temperature],
         2: [q_equation, q_square_diff, q_percent, q_fraction_add, q_boat_wind,
             q_power, q_percent_reverse, q_percent_of_what, q_mixture,
-            q_speed_average, q_train, q_digits, q_proportion],
+            q_speed_average, q_train, q_digits, q_proportion, q_temperature,
+            q_scale, q_probability, q_find_error],
         3: [q_square_diff, q_square_diff, q_equation, q_equation, q_boat_wind,
             q_fraction_compare, q_percent, q_percent_reverse, q_mixture,
             q_mixture, q_percent_chain, q_percent_chain, q_speed_average,
-            q_speed_average, q_train, q_digits, q_percent_of_what, q_sequence],
+            q_speed_average, q_train, q_digits, q_percent_of_what, q_sequence,
+            q_scale, q_probability, q_find_error, q_combinatorics],
     },
 }
 
@@ -1719,14 +2808,35 @@ def stage_tier(stage):
     return min(3, (stage - 1) // 5 + 1)
 
 
+def recent_topics(last_topic):
+    """`last_topic` bitta mavzu nomi ham, so'nggi mavzular ro'yxati ham
+    bo'lishi mumkin — eski chaqiruvlar buzilmasin."""
+    if not last_topic:
+        return ()
+    if isinstance(last_topic, str):
+        return (last_topic,)
+    return tuple(last_topic)
+
+
 def generate_question(grade, stage, last_topic=None):
-    """Generate a fresh question for this grade + stage, avoiding an
-    immediate topic repeat when possible."""
+    """Generate a fresh question for this grade + stage.
+
+    `last_topic` may be one topic or the last few: with thirty-odd generators
+    in a pool, remembering only the previous question still let the same
+    topic come back every other turn, which is exactly what makes a pupil who
+    plays every day bored. So we avoid ALL the remembered topics first, and
+    only fall back to avoiding the most recent one if the pool is too small.
+    """
     tier = stage_tier(stage)
     pool = _TIER_GENERATORS[tier] + _GRADE_EXTRAS.get(grade, {}).get(tier, [])
-    for _ in range(10):
-        gen = random.choice(pool)
-        q = gen(grade, tier)
-        if q['topic'] != last_topic:
+    recent = recent_topics(last_topic)
+    q = None
+    for _ in range(14):
+        q = random.choice(pool)(grade, tier)
+        if q['topic'] not in recent:
+            return q
+    for _ in range(6):
+        q = random.choice(pool)(grade, tier)
+        if not recent or q['topic'] != recent[-1]:
             return q
     return q

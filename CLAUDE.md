@@ -270,6 +270,13 @@ Championship game (auto-generated, no explanations). It is the school course its
 zero, in order.
 
 ## Creating Prime SAT Math lessons (bulk) — digital SAT, ikki tilda
+> ✅ **THIS COURSE IS FINISHED (2026-09-05).** All 100 lessons, 100 practices (2,000
+> questions) and 100 Corner readings with audio are written and imported. Do **not**
+> start a "next batch" — there is none. The workflow below is kept for maintenance
+> (fixing or re-importing an existing lesson) and as the template for the next course.
+> The obvious next SAT project is **Reading & Writing**, which does not exist yet and
+> has no toc, no style guide and no lessons.
+
 **Prime SAT Math** is the 100-lesson digital-SAT maths course in `tutorial`, held together
 by a `TutorialPlaylist` called "Prime SAT Math". Titles are `SAT-1: …`, category `math`.
 It is the fifth course on the Prime machinery and the **only bilingual one**: the exam
@@ -405,6 +412,33 @@ never add JavaScript, and never invent an `lg-*` class without adding it to that
 and to the style guide first.
 Logic Arena is **not** the Math Championship (auto-generated, instantly marked) and not a
 practice test. It is one hard, beautiful problem a week with a real explanation attached.
+
+## SAT Reading & Writing — DECIDED HOME: `examprep`, not `tutorial` (2026-09-06)
+Not built yet. When it starts, it goes in **`examprep` as a third `ExamTrack` named `SAT`**,
+beside TOPIK and IELTS — *not* in `tutorial` where Prime SAT Math lives. The reasoning,
+so it is not re-litigated:
+- **Shape.** Digital SAT R&W gives every question its own short passage (25–150 words).
+  That is one `LessonBlock`: `rich_text` (passage) + `choices` (question) + `explanation`.
+  In `tutorial` the whole lesson is a single HTML `content` field, so questions would be
+  `<details>` reveal boxes — not answerable, not scored, no progress. That is the deciding
+  argument.
+- **Topic layer.** `Topic` exists to model question-type cards (TOPIK Reading → 광고).
+  SAT R&W *is* a question-type taxonomy, so it needs no new modelling.
+- **Two banks nearly free.** Standard English Conventions wants a grammar bank and Words
+  in Context wants a vocab bank; both exist and are already track-aware via
+  `examprep/banklabels.py`. Add a `sat` block there (same move that made IELTS cheap).
+- **Skills fit.** `SKILL_CHOICES` already has reading/writing, and the four official
+  domains split 2/2: Information & Ideas + Craft & Structure → `reading`;
+  Expression of Ideas + Standard English Conventions → `writing`.
+Accepted cost: SAT is then split across two apps (Math in `tutorial`, R&W in `examprep`).
+That is correct — they are different content shapes — and `prime/subjects.py`, site search
+and the "SAT olami" Corner shelf already join them for the pupil.
+**Language rule is inherited from Prime SAT Math:** passages, questions and answer choices
+in **English**; every explanation, topic blurb and note in **Uzbek**. Numbers the SAT way
+(`3.5`, `1,200`).
+To start it, the pieces to create are: `STYLE_GUIDE_SAT_RW.md`, `toc_sat_reading.txt`,
+`toc_sat_writing.txt`, a `sat` block in `banklabels.py` — then import with the **existing**
+`import_examprep` command (no new importer needed).
 
 ## Creating examprep lessons (bulk) — TOPIK etc.
 `examprep` holds detailed, by-skill exam prep (`ExamTrack` → skill → `Topic` (question-type

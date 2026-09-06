@@ -61,7 +61,8 @@ HEARTS     = 3
 
 # Bumped whenever the shape of the session state changes, so a match started on
 # an older build is dropped instead of being replayed with a stale plan.
-STATE_VERSION = 3
+# 4 = `last_topic` now holds the last few topics per subject, not just one.
+STATE_VERSION = 4
 
 ROUND_NAMES  = {1: 'Saralash', 2: 'Chorak final', 3: 'Yarim final', 4: 'Final'}
 ROUND_TIERS  = {1: 1, 2: 2, 3: 3, 4: 3}      # difficulty fed to the engines
@@ -126,7 +127,11 @@ def clean_limit(raw):
 
 
 def make_question(subject, grade, level, tier, last_topic=None):
-    """Delegate to whichever engine owns this subject."""
+    """Delegate to whichever engine owns this subject.
+
+    `last_topic` may be a single topic or the last few — both engines accept
+    either, and the duel passes a list so a subject's topics keep rotating.
+    """
     stage = _TIER_STAGE[tier]
     if subject == SUBJECT_MATH:
         return mathchamp.generate_question(grade, stage, last_topic)

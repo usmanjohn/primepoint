@@ -2016,6 +2016,22 @@ def mathsquare_print(request, pk):
 
 MC_STAGES = 15
 MC_HEARTS = 3
+# Nechta oxirgi mavzu eslab qolinadi. Bitta emas: har bir raundning
+# mavzular havzasida o'ttizdan ortiq generator bor, va faqat oldingi savolni
+# eslab qolish bir mavzuning bir savol oralab qaytishiga yo'l qo'yardi — har
+# kuni o'ynaydigan o'quvchi buni darrov sezadi.
+TOPIC_MEMORY = 4
+
+
+def _remember_topic(state, topic, keep=TOPIC_MEMORY):
+    """Mavzuni "so'nggi ko'rilganlar" ro'yxatiga qo'shadi va ro'yxatni
+    qaytaradi (dvigatelga shu ro'yxat beriladi)."""
+    seen = [t for t in state.get('seen', []) if t != topic]
+    seen.append(topic)
+    state['seen'] = seen[-keep:]
+    return state['seen']
+
+
 MC_SESSION_KEY = 'mc_state'
 
 # Kid-facing labels are in Uzbek on purpose: the audience is Uzbek pupils.
@@ -2131,7 +2147,8 @@ def mathchamp_play(request):
                     else:
                         state['stage'] += 1
                         state['q'] = mathchamp.generate_question(
-                            state['grade'], state['stage'], q['topic'])
+                            state['grade'], state['stage'],
+                            _remember_topic(state, q['topic']))
                 else:
                     state['hearts'] -= 1
                     state['streak'] = 0
@@ -2152,7 +2169,8 @@ def mathchamp_play(request):
                         # Same stage, but a fresh question — no second try on
                         # the one they just saw.
                         state['q'] = mathchamp.generate_question(
-                            state['grade'], state['stage'], q['topic'])
+                            state['grade'], state['stage'],
+                            _remember_topic(state, q['topic']))
                 request.session[MC_SESSION_KEY] = state
             return redirect('mathchamp_play')
 
@@ -2311,7 +2329,8 @@ def englishchamp_play(request):
                     else:
                         state['stage'] += 1
                         state['q'] = englishchamp.generate_question(
-                            state['level'], state['stage'], q['topic'])
+                            state['level'], state['stage'],
+                            _remember_topic(state, q['topic']))
                 else:
                     state['hearts'] -= 1
                     state['streak'] = 0
@@ -2332,7 +2351,8 @@ def englishchamp_play(request):
                         # Same stage, but a fresh question — no second try on
                         # the one they just saw.
                         state['q'] = englishchamp.generate_question(
-                            state['level'], state['stage'], q['topic'])
+                            state['level'], state['stage'],
+                            _remember_topic(state, q['topic']))
                 request.session[EC_SESSION_KEY] = state
             return redirect('englishchamp_play')
 
@@ -2400,10 +2420,13 @@ def _duel_next_question(state):
     the same topic within that subject."""
     slot = state['plan'][state['stage'] - 1]
     subject = slot['subject']
+    seen = state['last_topic'].get(subject) or []
+    if isinstance(seen, str):                 # eski sessiyalar bitta mavzu saqlardi
+        seen = [seen]
     q = duelmod.make_question(subject, state['grade'], state['level'],
-                              duelmod.stage_tier(state['stage']),
-                              state['last_topic'].get(subject))
-    state['last_topic'][subject] = q['topic']
+                              duelmod.stage_tier(state['stage']), seen)
+    state['last_topic'][subject] = ([t for t in seen if t != q['topic']]
+                                    + [q['topic']])[-TOPIC_MEMORY:]
     state['q'] = q
     state['subject'] = subject
     state['turn'] = slot['turn']

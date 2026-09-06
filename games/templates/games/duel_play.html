@@ -102,7 +102,7 @@
             {% if feedback and not feedback.correct %}
             <div class="text-start mb-4 p-3 rounded-3" style="background:#fef2f2; border:1.5px solid #fca5a5;">
                 <div class="fw-semibold mb-1" style="color:#991b1b; font-size:0.9rem;">Oxirgi savol ({{ feedback.name }}):</div>
-                <div style="color:#7f1d1d; font-size:0.88rem;" class="mb-2">{{ feedback.question }}</div>
+                <div style="color:#7f1d1d; font-size:0.88rem; white-space:pre-wrap;" class="mb-2">{{ feedback.question }}</div>
                 <div style="color:#7f1d1d; font-size:0.88rem;">To'g'ri javob: <strong>{{ feedback.answer }}</strong></div>
                 <div class="mt-2 pt-2" style="border-top:1px dashed #fca5a5; color:#7f1d1d; font-size:0.85rem;">&#x1F4A1; {{ feedback.explanation }}</div>
             </div>
@@ -272,7 +272,7 @@
             <span style="color:{% if subject == 'math' %}#92400e{% else %}#3730a3{% endif %}; font-size:0.78rem; font-weight:600;">{{ q.topic }}</span>
         </div>
         <div class="card-body p-4" style="background:var(--surface);">
-            <p class="mb-0 fw-semibold" style="color:var(--text); font-size:1.08rem; line-height:1.6;">{{ q.text }}</p>
+            <p class="mb-0 fw-semibold" style="color:var(--text); font-size:1.08rem; line-height:1.6; white-space:pre-wrap; font-variant-numeric:tabular-nums;">{{ q.text }}</p>
         </div>
     </div>
 
