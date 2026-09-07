@@ -606,8 +606,15 @@ about who reads the channel. Read `telegrambot/README.md` before touching it.
   `telegram_ping` checks the token; `telegram_daily` is what Railway cron runs.
 - **`SITE_URL` must be set in Railway** — a cron command has no request to build links from,
   so if it is wrong every button in every post is dead.
-- The cron is its **own Railway service** (`0 17 * * *`, `python manage.py telegram_daily`)
-  and does **not** inherit the web service's variables — they must be set on it too.
+- The cron is its **own Railway service**, confusingly named **`primepoint`** (the web
+  server is `web`). It does **not** inherit the web service's variables — `DATABASE_URL`,
+  `TELEGRAM_BOT_TOKEN` and `SITE_URL` must be set on it too.
+- ⚠️ **Its schedule and start command live in `railway.cron.toml`**, and that service's
+  Settings → Config-as-code path must point at it. Railway's config-as-code beats the
+  dashboard, so a cron service left on the root `railway.toml` starts **gunicorn** and sits
+  there as a second web server, posting nothing and never exiting — which also swallows the
+  next day's trigger. That silenced the channel from 2026-09-02 to 2026-09-07. Never point
+  `web` at `railway.cron.toml`, and never put a `cronSchedule` in `railway.toml`.
 - Railway's **private network is not up when a cron container starts**, so `telegram_daily`
   waits for the DB before working; otherwise it dies on `postgres.railway.internal`.
 - ⛔ Never add user tracking / account linking to this bot without being asked: the user
