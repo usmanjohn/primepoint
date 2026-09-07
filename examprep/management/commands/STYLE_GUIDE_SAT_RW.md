@@ -129,6 +129,16 @@ about 60 words and use it. So:
   however beautiful the prose.
 - **Minimum 4 real exam-shaped questions per lesson, 6 for a practice lesson.** They are
   `choices` blocks, so the pupil is graded instantly and gets points for the lesson.
+- ⚠️ **The worked example does NOT count toward the four.** It is `rich_text` — the pupil
+  reads it, they do not answer it. The natural rhythm of writing a lesson is "one worked
+  example plus three practice questions", which lands on **three** answerable blocks, and
+  that has now happened in eleven lessons across three consecutive batches. Count
+  `choices` blocks *before* splicing a lesson into the batch file, not after:
+
+      python -c "import importlib.util as u; s=u.spec_from_file_location('d',PATH); \
+        m=u.module_from_spec(s); s.loader.exec_module(m); \
+        print([(l['order'], sum(1 for b in l['blocks'] if b.get('choices'))) for l in m.LESSONS])"
+
 - Passages must be **written to exam length (25–150 words) and exam register**. Do not
   write learner English, and do not write 400-word IELTS passages. A too-long passage is
   the most common way to write a lesson that does not train the real skill.
@@ -329,6 +339,10 @@ choices**, in Uzbek:
 > not. Elide the middle of a long choice if you must; never the start. The verifier
 > in §8 checks this.
 >
+> ⚠️ **Do not use A or B as variable names either.** Command of Evidence lessons want
+> to name a hypothesis's mechanism ("distance (A) → no handwashing (B)"), but the four
+> choices on screen are also A–D, so a pupil reads "(A)" as "choice A". Use **X → Y**.
+>
 > ⚠️ **NEVER write "Choice A", "B variant", "(C)" or any letter.** `LessonBlock.display_choices()`
 > **shuffles the choices** with a seed from the block id, so the pupil's screen shows them in
 > an order you cannot know. Quote the choice's **text** in bold instead — `<b>However,</b>`.
@@ -363,6 +377,15 @@ Before importing a batch, re-read every question and answer these out loud:
    error), not merely clumsier. Say which rule each one breaks.
 6. **Four choices, exactly one `is_correct: True`, no two choices identical.**
 7. **No letters in the explanation** (§6) and no Uzbek inside `.sr-passage`.
+
+**Quantitative questions carry a second, arithmetic gate.** Every table in a
+`sr-data` figure is re-typed BY HAND into `verify_sat_data_<range>.py` and every number
+the lesson claims — each difference, each rate, each ratio — is recomputed from that
+independent copy. Re-typing rather than parsing is the point: a typo shared with the
+data file would otherwise pass. Check in particular that a claim the text says the
+figures **refute** is actually refuted; on the first Quantitative batch a factory
+question had rates of 4 and 6 per 100 that supported the very claim the text called
+unsupported.
 
 Run the mechanical half of this with a throwaway script in the scratchpad
 (`verify_sat_rw_<range>.py`) that loads the data file and checks, across every block:

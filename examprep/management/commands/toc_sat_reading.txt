@@ -25,43 +25,43 @@ AUTHOR: powerty
 3. The Four Domains and the Order They Appear In
 4. Proof, Not Feeling: The Habit That Raises Every Score
 
-## TOPIC: So'z ma'nosi kontekstda (Words in Context)   [icon bi-fonts, topic order 2]  [10-14 done 2026-09-07, 15-16 next]
+## TOPIC: So'z ma'nosi kontekstda (Words in Context)   [icon bi-fonts, topic order 2]  [done 2026-09-07]
 10. Intro: The Two Shapes — Fill the Blank and "Most Nearly Means"   [done]
 11. Read the Sentence, Not the Word: Predicting Before You Look   [done]
 12. The Signal Words That Decide the Blank (but, because, although, and)   [done]
 13. "Most Nearly Means": Common Words With Uncommon Uses   [done]
 14. The Vocabulary Trap: The Impressive Word Is Bait, Not a Signal   [done]
-15. Second Meanings in Literature and History Passages   [next]
-16. Words in Context — Mixed Practice Under Time   [next]
+15. Second Meanings in Literature and History Passages   [done]
+16. Words in Context — Mixed Practice Under Time   [done]
 
-## TOPIC: Matn tuzilishi va maqsadi (Text Structure and Purpose)   [icon bi-diagram-2, topic order 3]  [next]
+## TOPIC: Matn tuzilishi va maqsadi (Text Structure and Purpose)   [icon bi-diagram-2, topic order 3]  [done 2026-09-07]
 20. Intro: Overall Structure vs Main Purpose — Two Different Questions
 21. Naming the Shape of a Text (claim → evidence, problem → solution, then → now)
 22. The Function of One Underlined Sentence
 23. Structure Words as Signposts (however, in fact, for instance, ultimately)
 24. Text Structure and Purpose — Mixed Practice
 
-## TOPIC: Ikki matn bog'lanishi (Cross-Text Connections)   [icon bi-arrow-left-right, topic order 4]  [next]
+## TOPIC: Ikki matn bog'lanishi (Cross-Text Connections)   [icon bi-arrow-left-right, topic order 4]  [done 2026-09-07]
 30. Intro: Two Texts, One Question — Mapping Agreement and Disagreement
 31. Finding the Exact Point of Contact Between Text 1 and Text 2
 32. "How Would the Author of Text 2 Respond?" — Answering in the Author's Voice
 33. Cross-Text Connections — Mixed Practice
 
-## TOPIC: Asosiy fikr va tafsilotlar (Central Ideas and Details)   [icon bi-bullseye, topic order 5]  [next]
+## TOPIC: Asosiy fikr va tafsilotlar (Central Ideas and Details)   [icon bi-bullseye, topic order 5]  [done 2026-09-07]
 40. Intro: Main Idea Is What the Text Argues, Not What It Mentions
 41. Too Broad, Too Narrow, Slightly Off: The Three Wrong Main Ideas
 42. Detail Questions: Answering From the Line, Not From Memory
 43. Literature Passages: Character and Situation Without a Thesis
 44. Central Ideas and Details — Mixed Practice
 
-## TOPIC: Matndan dalil (Command of Evidence — Textual)   [icon bi-quote, topic order 6]  [next]
+## TOPIC: Matndan dalil (Command of Evidence — Textual)   [icon bi-quote, topic order 6]  [done 2026-09-07]
 50. Intro: Which Quotation Proves the Claim?
 51. Matching the Claim Word for Word Before You Read the Choices
 52. "Which Finding, If True, Would Support / Weaken the Hypothesis?"
 53. Support vs Weaken vs Irrelevant — the Three-Way Sort
 54. Command of Evidence (Textual) — Mixed Practice
 
-## TOPIC: Grafik va jadvaldan dalil (Command of Evidence — Quantitative)   [icon bi-bar-chart, topic order 7]  [next]
+## TOPIC: Grafik va jadvaldan dalil (Command of Evidence — Quantitative)   [icon bi-bar-chart, topic order 7]  [done 2026-09-07]
 60. Intro: Reading the Table or Graph Before You Read the Text
 61. Choices That Misread the Axis: The Data Traps
 62. Data That Is Accurate but Does Not Support the Claim

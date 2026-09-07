@@ -1510,7 +1510,7 @@ LESSONS = [
                      "yo'qligi eskilik emas, tuzilish xususiyati."),
                     (False, "careless",
                      "«beparvo» — asl muallifni ayblaydi, matn esa hech kimni "
-                     "aybламaydi. Aksincha, <em>genuinely</em> so'zi bu holat "
+                     "ayblamaydi. Aksincha, <em>genuinely</em> so'zi bu holat "
                      "kamchilik emas, xususiyat ekanini bildiryapti."),
                     (False, "untranslated",
                      "«tarjima qilinmagan» — matnning o'zi ikki tarjimadan gapiryapti, "
