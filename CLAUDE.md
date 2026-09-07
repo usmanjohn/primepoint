@@ -274,8 +274,8 @@ zero, in order.
 > questions) and 100 Corner readings with audio are written and imported. Do **not**
 > start a "next batch" — there is none. The workflow below is kept for maintenance
 > (fixing or re-importing an existing lesson) and as the template for the next course.
-> The obvious next SAT project is **Reading & Writing**, which does not exist yet and
-> has no toc, no style guide and no lessons.
+> **Reading & Writing** — the other half of the same test — was started 2026-09-07 and
+> lives in `examprep`, not here; see its own section below.
 
 **Prime SAT Math** is the 100-lesson digital-SAT maths course in `tutorial`, held together
 by a `TutorialPlaylist` called "Prime SAT Math". Titles are `SAT-1: …`, category `math`.
@@ -413,32 +413,66 @@ and to the style guide first.
 Logic Arena is **not** the Math Championship (auto-generated, instantly marked) and not a
 practice test. It is one hard, beautiful problem a week with a real explanation attached.
 
-## SAT Reading & Writing — DECIDED HOME: `examprep`, not `tutorial` (2026-09-06)
-Not built yet. When it starts, it goes in **`examprep` as a third `ExamTrack` named `SAT`**,
-beside TOPIK and IELTS — *not* in `tutorial` where Prime SAT Math lives. The reasoning,
-so it is not re-litigated:
-- **Shape.** Digital SAT R&W gives every question its own short passage (25–150 words).
-  That is one `LessonBlock`: `rich_text` (passage) + `choices` (question) + `explanation`.
-  In `tutorial` the whole lesson is a single HTML `content` field, so questions would be
-  `<details>` reveal boxes — not answerable, not scored, no progress. That is the deciding
-  argument.
-- **Topic layer.** `Topic` exists to model question-type cards (TOPIK Reading → 광고).
-  SAT R&W *is* a question-type taxonomy, so it needs no new modelling.
-- **Two banks nearly free.** Standard English Conventions wants a grammar bank and Words
-  in Context wants a vocab bank; both exist and are already track-aware via
-  `examprep/banklabels.py`. Add a `sat` block there (same move that made IELTS cheap).
-- **Skills fit.** `SKILL_CHOICES` already has reading/writing, and the four official
-  domains split 2/2: Information & Ideas + Craft & Structure → `reading`;
-  Expression of Ideas + Standard English Conventions → `writing`.
-Accepted cost: SAT is then split across two apps (Math in `tutorial`, R&W in `examprep`).
-That is correct — they are different content shapes — and `prime/subjects.py`, site search
-and the "SAT olami" Corner shelf already join them for the pupil.
-**Language rule is inherited from Prime SAT Math:** passages, questions and answer choices
-in **English**; every explanation, topic blurb and note in **Uzbek**. Numbers the SAT way
-(`3.5`, `1,200`).
-To start it, the pieces to create are: `STYLE_GUIDE_SAT_RW.md`, `toc_sat_reading.txt`,
-`toc_sat_writing.txt`, a `sat` block in `banklabels.py` — then import with the **existing**
-`import_examprep` command (no new importer needed).
+## Creating SAT Reading & Writing lessons (bulk) — digital SAT, ikki tilda
+**SAT Reading & Writing** is the site's third `ExamTrack` (`examprep`, slug `sat`, beside
+TOPIK and IELTS) and the sixth course on the Prime machinery — **started 2026-09-07**.
+Titles are `SAT R&W 1: …`. It is the other half of the test Prime SAT Math prepares, and it
+inherits that course's language rule: **the exam speaks English, the teacher speaks Uzbek**,
+numbers the American way (`3.5`, `1,200`).
+It lives in `examprep` and **not** in `tutorial` where Prime SAT Math lives — decided
+2026-09-06, do not re-litigate. The reason is the content's shape: every digital-SAT R&W
+question comes with its *own* 25–150-word passage and is answered on the spot, which is
+exactly one `LessonBlock` (`rich_text` + `choices` + `explanation`) — graded, scored,
+tracked. In `tutorial` the lesson is one HTML field, so questions would be dead `<details>`
+boxes. Accepted cost: SAT is split across two apps; `prime/subjects.py` and site search
+already join them for the pupil.
+When the user asks (e.g. "make the next 5 SAT reading lessons"):
+1. Read `examprep/management/commands/STYLE_GUIDE_SAT_RW.md` (§0 the language split, §0.2
+   the facts about the test, §1 the one-passage-one-question rule, §3 the `sr-*` kit,
+   §4 the trap taxonomy, §8 the answer gate).
+2. Read `toc_sat_reading.txt` or `toc_sat_writing.txt` (header gives TRACK, SKILL, AUTHOR;
+   body is the ordered lesson list with `[done]`/`[next]` markers). The two tocs are the
+   two halves of **one** 54-question exam section — the split is ours, not the exam's:
+   Craft and Structure + Information and Ideas → `reading`; Standard English Conventions +
+   Expression of Ideas → `writing`.
+3. Find where to continue:
+   `Lesson.objects.filter(track__name='SAT', skill='reading').order_by('-order').first()`
+4. Write `examprep/management/commands/_lessons_sat_<skill>_<range>.py` as `TRACK = {...}`
+   + one `TOPIC_* = {...}` dict per question type + `LESSONS = [...]` (copy `TRACK`
+   unchanged from the previous batch). **Minimum 4 answerable questions per lesson** — a
+   lesson that only explains has failed, whatever the prose is like.
+5. Import: `python manage.py import_examprep <file> --author=prime` (`--republish` to
+   overwrite). No new importer, no audio pipeline — R&W has no listening component and
+   no essay.
+6. Mark the range `[done]` in the toc, then give the `railway run python manage.py
+   import_examprep ...` command — automatically, every time.
+**⚠️ THE DEFENSIBILITY GATE** (this course's answer gate). Prime Math has arithmetic;
+R&W has this: **a question a careful reader can defend two answers to is a bug**. Every
+batch is checked twice, the second time by a throwaway `verify_sat_rw_<range>.py` in the
+scratchpad that checks four choices with exactly one key, no duplicates, an explanation on
+every question, no choice **letters** in it, every choice named at its **opening words**,
+no Uzbek inside `.sr-passage`, passages inside 25–150 words, balanced `<div>`s, and no
+undefined `sr-*`/`pp-*` class. Then re-read every stem by eye and argue for each distractor.
+**⚠️ NEVER write "Choice A" / "(B)" in an explanation.** `LessonBlock.display_choices()`
+**shuffles** choices with a seed from the block id, so the pupil's order is unknowable —
+quote the choice's opening **text** in bold instead. Easiest way to ship a broken lesson.
+The visual kit is the **SAT READING & WRITING** (`sr-*`) section at the bottom of
+`static/css/examprep-kit.css` — `sr-passage` the Bluebook passage pane (+`--verse`),
+`sr-blank` the gap, `sr-focus` the underlined stretch, `sr-notes` the Rhetorical Synthesis
+notes card, `sr-data` the scrollable table/figure, `sr-why` the choice autopsy, `sr-time`
+the pacing chip — used alongside the shared `pp-*` kit (`pp-steps`, `pp-flashcards`, and
+the automatic MCQ) and the inline-styled callouts TOPIK and IELTS use. Pure CSS — never
+add JavaScript, and never invent an `sr-*` class without adding it to that section and the
+style guide first.
+The banks are ready but empty: `examprep/banklabels.py` has a `sat` block (English `en_*`
+grammar categories, Latin/Greek root families, levels read `SAT 650`), so a grammar or
+vocab bank for this track needs entries written, not plumbing. Their cards only appear on
+the track page once rows exist.
+Corner's **"SAT olami"** shelf (`toc_sat_olami.txt`) is the companion: Uzbek prose *about*
+the exam, bound to no lesson, no audio.
+SAT R&W is **not** Prime SAT Math (`tutorial`, `SAT-1…100`, finished) and not the `exam`
+mock simulator — questions here are practice, and the key being visible in the page source
+is fine.
 
 ## Creating examprep lessons (bulk) — TOPIK etc.
 `examprep` holds detailed, by-skill exam prep (`ExamTrack` → skill → `Topic` (question-type

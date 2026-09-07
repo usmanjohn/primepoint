@@ -15,6 +15,13 @@ which of those values a track uses, in what order, and what to call them.
 Everything degrades gracefully: a track with no entry here falls back to the
 model's own choices, so adding GMAT tomorrow renders sensibly on day one and
 only needs a block here when its wording should differ.
+
+SAT (added 2026-09-07 with the Reading & Writing track) shares IELTS's English
+values almost exactly — the `en_*` grammar categories and the Latin/Greek root
+families — but not its wording: SAT levels are target scores (`SAT 650`), not
+bands, and its grammar bank exists to serve one domain of one section,
+**Standard English Conventions**, so the sections are named after the exam's own
+question labels wherever the exam has one (Boundaries, Form/Structure/Sense).
 """
 
 from .models import (GRAMMAR_CATEGORY_CHOICES, GRAMMAR_FUNCTION_CHOICES,
@@ -37,6 +44,14 @@ GRAMMAR_CATEGORIES = {
         'en_article', 'en_prep', 'en_compare', 'en_verbpat', 'en_cohesion',
         'en_advanced',
     ],
+    # SAT tests a narrower, sharper slice than IELTS: punctuation and sentence
+    # boundaries carry ~half of Standard English Conventions, so the clause and
+    # cohesion sections lead. Modals, conditionals and articles are never tested
+    # on their own and are left out rather than listed and left empty.
+    'sat': [
+        'en_clause', 'en_cohesion', 'en_tense', 'en_verbpat', 'en_compare',
+        'en_prep', 'en_passive', 'en_advanced',
+    ],
 }
 
 GRAMMAR_FUNCTIONS = {
@@ -51,6 +66,11 @@ GRAMMAR_FUNCTIONS = {
         'purpose', 'comparison', 'change', 'degree', 'hedging', 'emphasis',
         'example', 'summary', 'reference', 'listing', 'guess', 'obligation',
         'ability', 'quote', 'feeling', 'case',
+    ],
+    'sat': [
+        'reference', 'listing', 'contrast', 'result', 'reason', 'concession',
+        'time', 'example', 'summary', 'comparison', 'change', 'degree',
+        'purpose', 'condition', 'emphasis', 'case',
     ],
 }
 
@@ -83,12 +103,24 @@ GRAMMAR_FUNCTION_LABELS = {
     },
 }
 
+# SAT's meaning groups are the same English ones IELTS uses, and the Uzbek
+# wording is already right — reuse it rather than keep two copies in step.
+GRAMMAR_FUNCTION_LABELS['sat'] = dict(GRAMMAR_FUNCTION_LABELS['ielts'])
+
+
 GRAMMAR_REGISTER_LABELS = {
     'ielts': {
         'written': 'Akademik yozma — Academic writing',
         'formal':  'Rasmiy — Formal',
         'polite':  'Neytral — Neutral',
         'casual':  'Norasmiy / og‘zaki — Informal',
+        'both':    'Ikkalasi ham',
+    },
+    'sat': {
+        'written': 'Yozma, tahririy — Edited written English',
+        'formal':  'Rasmiy — Formal',
+        'polite':  'Neytral — Neutral',
+        'casual':  'Norasmiy / og‘zaki — Informal (imtihonda deyarli uchramaydi)',
         'both':    'Ikkalasi ham',
     },
 }
@@ -99,9 +131,17 @@ GRAMMAR_REGISTER_LABELS = {
 VOCAB_POSES = {
     'topik': ['noun', 'verb', 'adj', 'adv', 'phrase', 'count'],
     'ielts': ['noun', 'verb', 'adj', 'adv', 'phrase', 'count'],
+    'sat':   ['verb', 'noun', 'adj', 'adv', 'phrase'],
 }
 
 VOCAB_POS_LABELS = {
+    'sat': {
+        'noun':   'Ot — Noun',
+        'verb':   'Fe’l — Verb',
+        'adj':    'Sifat — Adjective',
+        'adv':    'Ravish — Adverb',
+        'phrase': 'Ibora — Phrase',
+    },
     'ielts': {
         'noun':   'Ot — Noun',
         'verb':   'Fe’l — Verb',
@@ -123,9 +163,31 @@ VOCAB_TOPICS = {
         'environment', 'science', 'health', 'crime', 'government', 'culture',
         'media', 'tourism', 'person', 'daily', 'abstract',
     ],
+    # SAT passages come from four subject areas — literature, history/social
+    # studies, humanities, science — so the vocab shelf follows those, not
+    # IELTS's essay topics. `data` covers the Command of Evidence
+    # (Quantitative) language: graphs, tables, "the data suggest…".
+    'sat': [
+        'academic', 'abstract', 'culture', 'science', 'society', 'government',
+        'data', 'person', 'environment', 'economy', 'media', 'school',
+    ],
 }
 
 VOCAB_TOPIC_LABELS = {
+    'sat': {
+        'academic':    'Akademik til — Academic language',
+        'abstract':    'Mavhum tushunchalar — Abstract concepts',
+        'culture':     'Adabiyot va san’at — Literature & the arts',
+        'science':     'Fan — Science',
+        'society':     'Jamiyat va tarix — Society & history',
+        'government':  'Hukumat va huquq — Government & law',
+        'data':        'Grafik va jadval tili — Data & evidence language',
+        'person':      'Odamlar va xarakter — People & character',
+        'environment': 'Tabiat va ekologiya — Nature & environment',
+        'economy':     'Iqtisod — Economy',
+        'media':       'OAV va axborot — Media & information',
+        'school':      'Ta’lim — Education',
+    },
     'ielts': {
         'academic':    'Akademik til — Academic language',
         'data':        'Grafik va raqamlar — Data & trends (Task 1)',
@@ -148,6 +210,11 @@ VOCAB_TOPIC_LABELS = {
 }
 
 VOCAB_RELATION_LABELS = {
+    'sat': {
+        'syn': 'Sinonim — Synonym',
+        'ant': 'Antonim — Antonym',
+        'rel': 'Bog‘liq so‘z — Related word',
+    },
     'ielts': {
         'syn': 'Sinonim — Synonym',
         'ant': 'Antonim — Antonym',
@@ -164,6 +231,9 @@ VOCAB_RELATION_LABELS = {
 LEVEL_LABELS = {
     'topik': ['TOPIK 1', 'TOPIK 2', 'TOPIK 3', 'TOPIK 4', 'TOPIK 5', 'TOPIK 6'],
     'ielts': ['Band 5', 'Band 5.5', 'Band 6', 'Band 6.5', 'Band 7', 'Band 7.5+'],
+    # SAT: the Reading & Writing scaled score a pupil is aiming at when this
+    # pattern or word starts paying for itself. 200–800 per section.
+    'sat':   ['SAT 500', 'SAT 550', 'SAT 600', 'SAT 650', 'SAT 700', 'SAT 750+'],
 }
 
 
@@ -235,6 +305,39 @@ TERMS = {
                           '<b>spect</b>acular (ko‘zni quvontiruvchi) — hammasi mantiqiy bo‘lib '
                           'qoladi. Reading’da <u>notanish</u> so‘z uchrasa, ildizidan ma’nosini '
                           'taxmin qila olasiz — bu Band 7 ga chiqaradigan ko‘nikma.',
+    },
+    'sat': {
+        'level_filter':   'Maqsad ball',
+        'level_hint':     'Reading & Writing maqsad balli (500–750+)',
+        'freq_title':     'SAT’da uchrash chastotasi',
+        'example_lang':   'English',
+        'origin_label':   'Kelib chiqishi',
+        'root_word':      'Ildiz',
+        'root_kind':      'Lotin/yunon ildizlari',
+        'root_family':    'So‘z oilasi — bir ildizdan',
+        'root_glyph_source': 'syllable',
+        'examples_title':     'Namunalar — Examples',
+        'collocations_title': 'Ko‘p uchraydigan birikmalar — Collocations',
+        'grammar_search_hint': 'Qidirish: semicolon, ikki nuqta, however, subject-verb…',
+        'vocab_search_hint':   'Qidirish: undermine, tasdiqlamoq, nuance, dict…',
+        'roots_search_hint':   'Ildiz yoki so‘z: dict, spect, aytmoq, contradict…',
+        'root_banner_glyph': 'dict',
+        'root_banner_text':  '<b>dict</b> = «aytmoq» ni bilsangiz — contra<b>dict</b>, '
+                             'pre<b>dict</b>, <b>dict</b>ate, ver<b>dict</b>, '
+                             '<b>dict</b>ion ni ham tushunasiz. Bitta ildiz — o‘nlab so‘z.',
+        'roots_title':    'So‘z oilalari · Lotin va yunon ildizlari',
+        'roots_meta':     'SAT so‘z oilalari: dict (aytmoq) — contradict, predict, verdict, '
+                          'diction. Bitta ildizni o‘rganib, o‘nlab SAT so‘zini taniysiz.',
+        'roots_why':      'SAT’ning <em>Words in Context</em> savollari lug‘atni yoddan '
+                          'bilishni emas, <u>notanish so‘zning ma’nosini gapdan va uning '
+                          'ildizidan chiqara olishni</u> tekshiradi. Shuning uchun ildiz '
+                          'o‘rganish bu yerda IELTS’dagidan ham foydaliroq: '
+                          '<b>dict</b> = «aytmoq» ni bir marta o‘rgansangiz — '
+                          'contra<b>dict</b> (qarshi gapirmoq), pre<b>dict</b> (oldindan '
+                          'aytmoq), ver<b>dict</b> (hukm, «haqiqatni aytish»), '
+                          '<b>dict</b>ion (so‘z tanlash) — hammasi mantiqiy bo‘lib qoladi. '
+                          'Imtihonda notanish so‘z uchrasa, taxmin qilish o‘rniga '
+                          'hisoblaysiz.',
     },
 }
 

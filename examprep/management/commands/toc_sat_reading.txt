@@ -1,0 +1,82 @@
+# ── Track metadata (read by Claude) ──────────────────────────────────
+TRACK:  SAT
+SKILL:  reading
+AUTHOR: powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_SAT_RW.md. This file is ONLY the ordered lesson list.
+# The number = the lesson's `order` within SAT + reading.
+#
+# This half of the track covers the two READING domains of digital-SAT Reading & Writing:
+#   • Craft and Structure      (~28%, 13-15 savol)
+#   • Information and Ideas    (~26%, 12-14 savol)
+# The other two domains (Standard English Conventions, Expression of Ideas) are the
+# `writing` skill — see toc_sat_writing.txt. Together they are ONE 54-question section.
+#
+# Each `## TOPIC:` header = a real SAT question type; pass it as the lesson's "topic".
+# Each topic owns a lesson-order decade so groups never collide.
+# Status: [done] = imported; [next] = not written yet.
+# ─────────────────────────────────────────────────────────────────────
+
+## SAT — Reading (Craft and Structure + Information and Ideas)
+
+## TOPIC: Strategiya va format (Reading & Writing: qanday tuzilgan)   [icon bi-compass, topic order 1]  [done 2026-09-07]
+1. How SAT Reading and Writing Works: 2 Modules, 54 Questions, 64 Minutes
+2. One Passage, One Question: Why This Test Is Not a Reading Test
+3. The Four Domains and the Order They Appear In
+4. Proof, Not Feeling: The Habit That Raises Every Score
+
+## TOPIC: So'z ma'nosi kontekstda (Words in Context)   [icon bi-fonts, topic order 2]  [10-14 done 2026-09-07, 15-16 next]
+10. Intro: The Two Shapes — Fill the Blank and "Most Nearly Means"   [done]
+11. Read the Sentence, Not the Word: Predicting Before You Look   [done]
+12. The Signal Words That Decide the Blank (but, because, although, and)   [done]
+13. "Most Nearly Means": Common Words With Uncommon Uses   [done]
+14. The Vocabulary Trap: The Impressive Word Is Bait, Not a Signal   [done]
+15. Second Meanings in Literature and History Passages   [next]
+16. Words in Context — Mixed Practice Under Time   [next]
+
+## TOPIC: Matn tuzilishi va maqsadi (Text Structure and Purpose)   [icon bi-diagram-2, topic order 3]  [next]
+20. Intro: Overall Structure vs Main Purpose — Two Different Questions
+21. Naming the Shape of a Text (claim → evidence, problem → solution, then → now)
+22. The Function of One Underlined Sentence
+23. Structure Words as Signposts (however, in fact, for instance, ultimately)
+24. Text Structure and Purpose — Mixed Practice
+
+## TOPIC: Ikki matn bog'lanishi (Cross-Text Connections)   [icon bi-arrow-left-right, topic order 4]  [next]
+30. Intro: Two Texts, One Question — Mapping Agreement and Disagreement
+31. Finding the Exact Point of Contact Between Text 1 and Text 2
+32. "How Would the Author of Text 2 Respond?" — Answering in the Author's Voice
+33. Cross-Text Connections — Mixed Practice
+
+## TOPIC: Asosiy fikr va tafsilotlar (Central Ideas and Details)   [icon bi-bullseye, topic order 5]  [next]
+40. Intro: Main Idea Is What the Text Argues, Not What It Mentions
+41. Too Broad, Too Narrow, Slightly Off: The Three Wrong Main Ideas
+42. Detail Questions: Answering From the Line, Not From Memory
+43. Literature Passages: Character and Situation Without a Thesis
+44. Central Ideas and Details — Mixed Practice
+
+## TOPIC: Matndan dalil (Command of Evidence — Textual)   [icon bi-quote, topic order 6]  [next]
+50. Intro: Which Quotation Proves the Claim?
+51. Matching the Claim Word for Word Before You Read the Choices
+52. "Which Finding, If True, Would Support / Weaken the Hypothesis?"
+53. Support vs Weaken vs Irrelevant — the Three-Way Sort
+54. Command of Evidence (Textual) — Mixed Practice
+
+## TOPIC: Grafik va jadvaldan dalil (Command of Evidence — Quantitative)   [icon bi-bar-chart, topic order 7]  [next]
+60. Intro: Reading the Table or Graph Before You Read the Text
+61. Choices That Misread the Axis: The Data Traps
+62. Data That Is Accurate but Does Not Support the Claim
+63. Completing a Sentence With a Number From the Figure
+64. Command of Evidence (Quantitative) — Mixed Practice
+
+## TOPIC: Mantiqiy xulosa (Inferences)   [icon bi-lightbulb, topic order 8]  [next]
+70. Intro: "Which Choice Most Logically Completes the Text?"
+71. The Blank Is Always at the End — Reading Toward It
+72. Inference vs Outside Knowledge: Staying Inside the 60 Words
+73. Hedged Conclusions: may, suggests, is likely to
+74. Inferences — Mixed Practice
+
+## TOPIC: Yakuniy aralash amaliyot (Full Mixed Practice)   [icon bi-flag-fill, topic order 9]  [next]
+90. Mixed Module Practice 1: Craft and Structure Under Time
+91. Mixed Module Practice 2: Information and Ideas Under Time
+92. Mixed Module Practice 3: A Full Reading Half-Module (13 Questions)
+93. Diagnosing Your Own Mistakes: The Four Reasons You Missed It

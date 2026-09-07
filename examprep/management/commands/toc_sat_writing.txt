@@ -1,0 +1,91 @@
+# ── Track metadata (read by Claude) ──────────────────────────────────
+TRACK:  SAT
+SKILL:  writing
+AUTHOR: powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_SAT_RW.md. This file is ONLY the ordered lesson list.
+# The number = the lesson's `order` within SAT + writing.
+#
+# This half of the track covers the two WRITING domains of digital-SAT Reading & Writing:
+#   • Standard English Conventions  (~26%, 11-15 savol)  — grammar and punctuation
+#   • Expression of Ideas           (~20%,  8-12 savol)  — transitions and synthesis
+# The other two domains (Craft and Structure, Information and Ideas) are the `reading`
+# skill — see toc_sat_reading.txt. Together they are ONE 54-question section.
+#
+# ⚠️ There is NO essay on the digital SAT. Nothing in this skill asks the pupil to write
+# prose — every question is a four-choice MCQ, exactly like the reading half. Do not
+# import IELTS Task 1/2 habits here.
+#
+# Each `## TOPIC:` header = a real SAT question type; pass it as the lesson's "topic".
+# Each topic owns a lesson-order decade so groups never collide.
+# Status: [done] = imported; [next] = not written yet.
+# ─────────────────────────────────────────────────────────────────────
+
+## SAT — Writing (Standard English Conventions + Expression of Ideas)
+
+## TOPIC: Strategiya va format (Conventions & Expression: qanday tuzilgan)   [icon bi-compass, topic order 1]  [next]
+1. The Writing Half: Grammar Questions Are the Fastest Marks on the Test
+2. There Is No Essay: What "Writing" Means on the Digital SAT
+3. Reading the Whole Sentence Before You Look at the Choices
+
+## TOPIC: Bog'lovchi so'zlar (Transitions)   [icon bi-signpost-split, topic order 2]  [next]
+10. Intro: Find the Relationship First, the Word Second
+11. Contrast: however, nevertheless, in contrast, on the other hand
+12. Result and Cause: therefore, consequently, as a result, thus
+13. Addition and Example: moreover, furthermore, for instance, specifically
+14. Sequence, Concession and Emphasis: meanwhile, admittedly, indeed
+15. The Transition Traps: Two Choices That Mean the Same Thing
+16. Transitions — Mixed Practice Under Time
+
+## TOPIC: Qaydlardan jumla qurish (Rhetorical Synthesis)   [icon bi-journal-check, topic order 3]  [next]
+20. Intro: The Notes, the Goal, and Why the Goal Decides Everything
+21. Reading the Goal Sentence Like a Contract
+22. Goals That Compare, Goals That Emphasise, Goals That Introduce
+23. Accurate but Off-Goal: The Most Common Wrong Choice
+24. Using Two Notes in One Sentence Without Distorting Either
+25. Rhetorical Synthesis — Mixed Practice
+
+## TOPIC: Gap chegaralari (Boundaries — sentence boundaries)   [icon bi-slash-square, topic order 4]  [next]
+30. Intro: Independent Clause, Dependent Clause, and Why It Decides the Punctuation
+31. The Comma Splice: The Single Most Tested Error
+32. Full Stop, Semicolon, or Comma + FANBOYS — Three Legal Joins
+33. Fragments: Sentences With No Main Verb
+34. Dependent Clause First, Independent Second (and the Comma Between)
+35. Sentence Boundaries — Mixed Practice
+
+## TOPIC: Tinish belgilari (Boundaries — punctuation within the sentence)   [icon bi-three-dots, topic order 5]  [next]
+40. The Colon: One Rule, Always the Same (a complete sentence must come first)
+41. The Dash: A Louder Comma, and the Pair Rule
+42. Supplements: Commas, Dashes and Parentheses Around Extra Information
+43. Never Mix the Pair: A Dash Cannot Close What a Comma Opened
+44. No Comma Between Subject and Verb (the error Uzbek ears do not hear)
+45. Essential vs Non-Essential: The Comma That Changes the Meaning
+46. Punctuation Within the Sentence — Mixed Practice
+
+## TOPIC: Fe'l shakllari (Form, Structure and Sense — verbs)   [icon bi-arrow-repeat, topic order 6]  [next]
+50. Subject-Verb Agreement: Finding the Real Subject
+51. Prepositional Phrases and Other Words Hiding the Subject
+52. Verb Tense From Context: The Timeline in the Passage
+53. Past Perfect, Present Perfect, and When the SAT Wants Them
+54. Non-Finite Forms: -ing, to + verb, and the Missing Main Verb
+55. Verbs — Mixed Practice
+
+## TOPIC: Olmoshlar va moslashuv (Pronouns & agreement)   [icon bi-people, topic order 7]  [next]
+60. Pronoun-Antecedent Agreement: Singular Nouns Take Singular Pronouns
+61. its / it's / their / they're / there — the Five That Cost Marks
+62. Ambiguous Pronouns: When "it" Could Mean Two Things
+63. who / whom / which / that in Relative Clauses
+64. Pronouns and Agreement — Mixed Practice
+
+## TOPIC: Ko'plik, egalik va aniqlovchilar (Plurals, possessives & modifiers)   [icon bi-type, topic order 8]  [next]
+70. Plural or Possessive? students / student's / students'
+71. Possessive Nouns With Irregular Plurals (children's, women's)
+72. The Dangling Modifier: Whoever Is Doing It Must Come Next
+73. Parallel Structure in Lists and Comparisons
+74. Plurals, Possessives and Modifiers — Mixed Practice
+
+## TOPIC: Yakuniy aralash amaliyot (Full Mixed Practice)   [icon bi-flag-fill, topic order 9]  [next]
+90. Mixed Practice 1: Conventions Under Time (25 seconds a question)
+91. Mixed Practice 2: Expression of Ideas Under Time
+92. Mixed Practice 3: A Full Writing Half-Module (14 Questions)
+93. The Last Five Minutes: Banking the Grammar Marks

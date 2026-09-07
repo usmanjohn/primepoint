@@ -153,3 +153,159 @@
     .pp-ready .pp-flashcards .pp-card { background: #111827; }
     .pp-feedback { background: #1f2937; }
 }
+
+/* ============================================================================
+   SAT READING & WRITING  (`sr-*`)                            added 2026-09-07
+   ----------------------------------------------------------------------------
+   The digital SAT gives EVERY question its own short passage (25–150 words),
+   so an R&W lesson is mostly passage → question → four choices, over and over.
+   Inline-styling that shape a few hundred times is what these classes exist to
+   avoid. Pure CSS, no JavaScript, mobile-first — same contract as the pe-*,
+   pm-* and ps-* kits.
+
+   Never invent an `sr-*` class without adding it HERE and to
+   examprep/management/commands/STYLE_GUIDE_SAT_RW.md first.
+   ============================================================================ */
+
+:root {
+    --sr-paper:  #fbfaf7;   /* the Bluebook passage pane */
+    --sr-ink:    #1f2937;
+    --sr-rule:   #d6d3cd;
+    --sr-mark:   #7c3aed;   /* the thing the question is asking about */
+}
+
+/* ── The passage pane ─────────────────────────────────────────────────────
+   Where the pupil meets English exactly as the test prints it. Serif on
+   purpose: it should not look like the Uzbek teaching around it. */
+.sr-passage {
+    background: var(--sr-paper);
+    border: 1px solid var(--sr-rule);
+    border-left: 4px solid #94a3b8;
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    margin: 1rem 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.02rem;
+    line-height: 1.65;
+    color: var(--sr-ink);
+}
+.sr-passage p { margin: 0 0 .7rem; }
+.sr-passage p:last-child { margin-bottom: 0; }
+.sr-passage__src {
+    display: block;
+    margin-top: .75rem;
+    font-family: inherit;
+    font-size: .85rem;
+    font-style: italic;
+    color: var(--pp-muted);
+}
+/* Poetry and anything else whose line breaks are the point. */
+.sr-passage--verse p { white-space: pre-line; margin-bottom: .4rem; }
+
+/* ── The blank ────────────────────────────────────────────────────────────
+   Transitions and Conventions questions print an underlined gap. */
+.sr-blank {
+    display: inline-block;
+    min-width: 4.5em;
+    border-bottom: 2px solid var(--sr-mark);
+    vertical-align: baseline;
+}
+/* The stretch of text a Words-in-Context / Boundaries question points at. */
+.sr-focus {
+    background: #f3e8ff;
+    border-bottom: 2px solid var(--sr-mark);
+    padding: 0 .15em;
+}
+
+/* ── Student notes card (Rhetorical Synthesis) ────────────────────────────
+   That question type always opens with a pupil's research bullets. */
+.sr-notes {
+    background: #fffef5;
+    border: 1px dashed #d4c99a;
+    border-radius: 10px;
+    padding: .9rem 1.1rem;
+    margin: 1rem 0;
+}
+.sr-notes__head {
+    font-weight: 600;
+    font-size: .9rem;
+    color: #92742b;
+    margin: 0 0 .5rem;
+}
+.sr-notes ul { margin: 0; padding-left: 1.15rem; }
+.sr-notes li { margin-bottom: .3rem; line-height: 1.5; }
+
+/* ── Data card (Command of Evidence — Quantitative) ───────────────────────
+   Wraps a table or figure so a wide one scrolls inside itself on a phone
+   instead of pushing the page sideways. */
+.sr-data { margin: 1rem 0; }
+.sr-data__title { font-weight: 600; font-size: .95rem; margin: 0 0 .5rem; }
+.sr-data__scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.sr-data table {
+    border-collapse: collapse;
+    min-width: 320px;
+    width: 100%;
+    font-size: .92rem;
+}
+.sr-data th, .sr-data td {
+    border: 1px solid var(--sr-rule);
+    padding: .4rem .6rem;
+    text-align: left;
+}
+.sr-data th { background: #f1f5f9; font-weight: 600; }
+.sr-data td + td, .sr-data th + th { text-align: right; }
+
+/* ── Choice autopsy ───────────────────────────────────────────────────────
+   Goes in `explanation`: every wrong choice named, with the reason it was
+   put there. This is the course's whole pedagogy in one box. */
+.sr-why { margin: .75rem 0 0; }
+.sr-why__row {
+    display: flex;
+    gap: .6rem;
+    align-items: flex-start;
+    padding: .5rem 0;
+    border-top: 1px solid var(--pp-border);
+}
+.sr-why__row:first-child { border-top: 0; }
+.sr-why__tag {
+    flex: 0 0 auto;
+    font-size: .78rem;
+    font-weight: 700;
+    padding: .1rem .5rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+.sr-why__row--ok  .sr-why__tag { background: var(--pp-correct-soft); color: var(--pp-correct); }
+.sr-why__row--no  .sr-why__tag { background: var(--pp-wrong-soft);   color: var(--pp-wrong); }
+.sr-why__text { flex: 1 1 auto; line-height: 1.5; }
+.sr-why__text b { color: var(--sr-ink); }
+
+/* ── Pacing chip ──────────────────────────────────────────────────────────
+   R&W allows ~71 seconds a question. Say so, on worked examples. */
+.sr-time {
+    display: inline-block;
+    background: #eef2ff;
+    color: #4338ca;
+    border-radius: 999px;
+    padding: .15rem .7rem;
+    font-size: .82rem;
+    font-weight: 600;
+    margin: .25rem 0;
+}
+
+@media (max-width: 480px) {
+    .sr-passage { padding: .85rem .9rem; font-size: .98rem; }
+    .sr-why__row { flex-direction: column; gap: .25rem; }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --sr-paper: #17202e;
+        --sr-ink:   #e5e7eb;
+        --sr-rule:  #374151;
+    }
+    .sr-focus { background: #3b2a5c; }
+    .sr-notes { background: #1f2937; border-color: #4b5563; }
+    .sr-notes__head { color: #d9b96a; }
+    .sr-data th { background: #1f2937; }
+}

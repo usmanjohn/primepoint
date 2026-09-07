@@ -16,7 +16,7 @@ SUBJECTS = [
         'slug': 'english', 'name': _('English'),
         'icon': 'bi-translate', 'color': '#38bdf8',
         'tutorial_categories': ['english'],
-        'examprep_tracks': ['ielts'],
+        'examprep_tracks': ['ielts', 'sat'],
         'corner_subjects': ['english'],
         'practice_names': ['english'],
         'exam_languages': ['english'],
