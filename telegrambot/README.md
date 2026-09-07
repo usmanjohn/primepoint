@@ -58,27 +58,34 @@ The cron service in this project is the one confusingly named **`primepoint`**
 (the web server is `web`). It builds the same repo, on the same commits, and is
 billed only for the seconds a run takes.
 
-**Its start command comes from `railway.cron.toml`, not from railway.toml.**
-Railway's config-as-code overrides the dashboard, and the repo root's
-`railway.toml` starts gunicorn — so a cron service left on the default config
-wakes at its minute, runs migrate + attach_exam_audio + **gunicorn**, and sits
-there as a second web server, posting nothing and never exiting. That is exactly
-what it did every day from 2026-09-02 until 2026-09-07; its own log ends with
-`Listening at: http://0.0.0.0:8080`. Worse, a run that never exits means the next
-day's trigger has nothing to fire into, so one bad night silences the channel
-indefinitely.
+**Both services start through `start.sh`, which branches on `ROLE`.**
+`railway.toml` can name only one start command, and Railway's config file beats
+the dashboard — so a cron service on the default config wakes at its minute, runs
+migrate + attach_exam_audio + **gunicorn**, and sits there as a second web server,
+posting nothing and never exiting. That is exactly what it did every day from
+2026-09-02 until 2026-09-07; its own log ends with `Listening at:
+http://0.0.0.0:8080`. Worse, a run that never exits means the next day's trigger
+has nothing to fire into, so one bad night silences the channel indefinitely.
 
-The setting that fixes it:
+The setting that fixes it — one variable on the cron service:
 
-    Railway → service `primepoint` → Settings → Config-as-code
-        Config file path:  railway.cron.toml
+    Railway → service `primepoint` → Variables
+        ROLE = cron
 
-That file carries the schedule (`0 17 * * *` = 22:00 Tashkent), the start command
-(`python manage.py telegram_daily`) and `restartPolicyType = "never"`. Change the
-posting time there, in the repo — not in the dashboard, where the file overrides it.
+`web` sets no `ROLE`, so it takes the default branch and serves the site as before.
+The schedule stays in that service's **Settings → Cron Schedule** (`0 3 * * *` =
+08:00 Tashkent; Railway cron is always UTC).
 
-**Never point the `web` service at `railway.cron.toml`, and never put a
-`cronSchedule` in `railway.toml`** — either would turn the website into a cron job.
+⚠️ **Never set `ROLE=cron` on `web`** — the website would stop serving and post to
+Telegram instead.
+
+⚠️ **Config-as-code is deprecated and stops working 2026-12-01**, `railway.toml`
+included. When that day comes, `start.sh` does not change: paste `bash start.sh`
+into each service's **Custom Start Command** in the dashboard, set the Build
+Command to `python manage.py collectstatic --noinput` and the builder to Nixpacks,
+then delete `railway.toml`. (Check `web`'s dashboard fields before you do —
+as of 2026-09-07 its Build Command held a stray `migrate && gunicorn …`, harmless
+only because the config file was overriding it.)
 
 Variables: the cron service needs its own `DATABASE_URL`, `TELEGRAM_BOT_TOKEN`
 and `SITE_URL`. **A cron service does not inherit the web service's variables.**
@@ -96,7 +103,7 @@ that connects immediately fails with `could not translate host name
 
 A healthy run prints `── post_logic_puzzle ──`, `── post_daily_quiz ──`, the five
 polls, and `Qolgan savollar: …`. If it prints `Booting worker` or `Listening at`,
-the config file is not being applied — check the Config-as-code path first.
+`ROLE=cron` is not reaching the container — check that service's Variables first.
 
 ## Safety
 

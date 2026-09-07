@@ -609,12 +609,17 @@ about who reads the channel. Read `telegrambot/README.md` before touching it.
 - The cron is its **own Railway service**, confusingly named **`primepoint`** (the web
   server is `web`). It does **not** inherit the web service's variables — `DATABASE_URL`,
   `TELEGRAM_BOT_TOKEN` and `SITE_URL` must be set on it too.
-- ⚠️ **Its schedule and start command live in `railway.cron.toml`**, and that service's
-  Settings → Config-as-code path must point at it. Railway's config-as-code beats the
-  dashboard, so a cron service left on the root `railway.toml` starts **gunicorn** and sits
-  there as a second web server, posting nothing and never exiting — which also swallows the
-  next day's trigger. That silenced the channel from 2026-09-02 to 2026-09-07. Never point
-  `web` at `railway.cron.toml`, and never put a `cronSchedule` in `railway.toml`.
+- ⚠️ **Every service starts through `start.sh`, which branches on the `ROLE` variable**
+  (`ROLE=cron` on the cron service → `telegram_daily`; unset on `web` → migrate + serve).
+  `railway.toml` can name only one start command and Railway's config file beats the
+  dashboard, so a cron service on the default config starts **gunicorn** and sits there as
+  a second web server, posting nothing and never exiting — which also swallows the next
+  day's trigger. That silenced the channel from 2026-09-02 to 2026-09-07. Never set
+  `ROLE=cron` on `web`. The schedule stays in the dashboard (`0 3 * * *` = 08:00 Tashkent).
+- ⚠️ **Railway config-as-code, `railway.toml` included, stops working 2026-12-01.** Before
+  then, move both services to dashboard settings: Custom Start Command `bash start.sh`,
+  Build Command `python manage.py collectstatic --noinput`, builder Nixpacks — then delete
+  `railway.toml`. `start.sh` itself does not change.
 - Railway's **private network is not up when a cron container starts**, so `telegram_daily`
   waits for the DB before working; otherwise it dies on `postgres.railway.internal`.
 - ⛔ Never add user tracking / account linking to this bot without being asked: the user
