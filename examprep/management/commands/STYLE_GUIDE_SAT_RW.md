@@ -399,6 +399,26 @@ On the first batch that script caught twelve autopsies anchored mid-choice and n
 else — which is exactly the split to expect: the machine finds the shuffled-choice and
 markup faults, and only re-reading finds a defensible second answer.
 
+**8.1 The set read — do this after the gate passes.** The checks above look at one
+question at a time, so they are blind to the fault a topic of six lessons actually
+produces: the same passage, written five times. Dump every passage of the batch side by
+side and read them as a set. Three things to strike out:
+
+- **Repeated subject matter.** The verbs batch was drafted with three snow-closed
+  mountain passes, two parish rain gauges and two archives of ledgers. Each was fine
+  alone; together they read as one exhausted world.
+- **Leftover details from another passage.** The same batch had ledgers "found beneath
+  the varnish" bearing "a signature in a hand unlike the one on the frame" — an
+  adaptation of a *painting* passage that kept the painting's nouns. Every noun in a
+  passage must belong to the thing the passage is about.
+- **A tail that contradicts the key.** A sentence added only to reach the 25-word floor
+  is where this happens: a passage keyed on *has fallen* ended "…and the largest single
+  rise came in the two years after…". Read the whole passage once more with the key
+  spliced into the blank, aloud.
+
+Vary the register too — an archive, a bridge, a kitchen, a coastline, an observatory.
+The pupil meets these passages back to back.
+
 ### A Python gotcha that bites every batch
 
 Blocks are built by concatenating string literals with `+ CALLOUT.format(…)` pieces.

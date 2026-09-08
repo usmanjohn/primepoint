@@ -37,45 +37,45 @@ AUTHOR: powerty
 15. The Transition Traps: Two Choices That Mean the Same Thing
 16. Transitions — Mixed Practice Under Time
 
-## TOPIC: Qaydlardan jumla qurish (Rhetorical Synthesis)   [icon bi-journal-check, topic order 3]  [next]
-20. Intro: The Notes, the Goal, and Why the Goal Decides Everything
-21. Reading the Goal Sentence Like a Contract
-22. Goals That Compare, Goals That Emphasise, Goals That Introduce
-23. Accurate but Off-Goal: The Most Common Wrong Choice
-24. Using Two Notes in One Sentence Without Distorting Either
-25. Rhetorical Synthesis — Mixed Practice
+## TOPIC: Qaydlardan jumla qurish (Rhetorical Synthesis)   [icon bi-journal-check, topic order 3]  [done 2026-09-08]
+20. Intro: The Notes, the Goal, and Why the Goal Decides Everything   [done]
+21. Reading the Goal Sentence Like a Contract   [done]
+22. Goals That Compare, Goals That Emphasise, Goals That Introduce   [done]
+23. Accurate but Off-Goal: The Most Common Wrong Choice   [done]
+24. Using Two Notes in One Sentence Without Distorting Either   [done]
+25. Rhetorical Synthesis — Mixed Practice   [done]
 
-## TOPIC: Gap chegaralari (Boundaries — sentence boundaries)   [icon bi-slash-square, topic order 4]  [next]
-30. Intro: Independent Clause, Dependent Clause, and Why It Decides the Punctuation
-31. The Comma Splice: The Single Most Tested Error
-32. Full Stop, Semicolon, or Comma + FANBOYS — Three Legal Joins
-33. Fragments: Sentences With No Main Verb
-34. Dependent Clause First, Independent Second (and the Comma Between)
-35. Sentence Boundaries — Mixed Practice
+## TOPIC: Gap chegaralari (Boundaries — sentence boundaries)   [icon bi-slash-square, topic order 4]  [done 2026-09-08]
+30. Intro: Independent Clause, Dependent Clause, and Why It Decides the Punctuation   [done]
+31. The Comma Splice: The Single Most Tested Error   [done]
+32. Full Stop, Semicolon, or Comma + FANBOYS — Three Legal Joins   [done]
+33. Fragments: Sentences With No Main Verb   [done]
+34. Dependent Clause First, Independent Second (and the Comma Between)   [done]
+35. Sentence Boundaries — Mixed Practice   [done]
 
-## TOPIC: Tinish belgilari (Boundaries — punctuation within the sentence)   [icon bi-three-dots, topic order 5]  [next]
-40. The Colon: One Rule, Always the Same (a complete sentence must come first)
-41. The Dash: A Louder Comma, and the Pair Rule
-42. Supplements: Commas, Dashes and Parentheses Around Extra Information
-43. Never Mix the Pair: A Dash Cannot Close What a Comma Opened
-44. No Comma Between Subject and Verb (the error Uzbek ears do not hear)
-45. Essential vs Non-Essential: The Comma That Changes the Meaning
-46. Punctuation Within the Sentence — Mixed Practice
+## TOPIC: Tinish belgilari (Boundaries — punctuation within the sentence)   [icon bi-three-dots, topic order 5]  [done 2026-09-08]
+40. The Colon: One Rule, Always the Same (a complete sentence must come first)   [done]
+41. The Dash: A Louder Comma, and the Pair Rule   [done]
+42. Supplements: Commas, Dashes and Parentheses Around Extra Information   [done]
+43. Never Mix the Pair: A Dash Cannot Close What a Comma Opened   [done]
+44. No Comma Between Subject and Verb (the error Uzbek ears do not hear)   [done]
+45. Essential vs Non-Essential: The Comma That Changes the Meaning   [done]
+46. Punctuation Within the Sentence — Mixed Practice   [done]
 
-## TOPIC: Fe'l shakllari (Form, Structure and Sense — verbs)   [icon bi-arrow-repeat, topic order 6]  [next]
-50. Subject-Verb Agreement: Finding the Real Subject
-51. Prepositional Phrases and Other Words Hiding the Subject
-52. Verb Tense From Context: The Timeline in the Passage
-53. Past Perfect, Present Perfect, and When the SAT Wants Them
-54. Non-Finite Forms: -ing, to + verb, and the Missing Main Verb
-55. Verbs — Mixed Practice
+## TOPIC: Fe'l shakllari (Form, Structure and Sense — verbs)   [icon bi-arrow-repeat, topic order 6]  [done 2026-09-08]
+50. Subject-Verb Agreement: Finding the Real Subject   [done]
+51. Prepositional Phrases and Other Words Hiding the Subject   [done]
+52. Verb Tense From Context: The Timeline in the Passage   [done]
+53. Past Perfect, Present Perfect, and When the SAT Wants Them   [done]
+54. Non-Finite Forms: -ing, to + verb, and the Missing Main Verb   [done]
+55. Verbs — Mixed Practice   [done]
 
-## TOPIC: Olmoshlar va moslashuv (Pronouns & agreement)   [icon bi-people, topic order 7]  [next]
-60. Pronoun-Antecedent Agreement: Singular Nouns Take Singular Pronouns
-61. its / it's / their / they're / there — the Five That Cost Marks
-62. Ambiguous Pronouns: When "it" Could Mean Two Things
-63. who / whom / which / that in Relative Clauses
-64. Pronouns and Agreement — Mixed Practice
+## TOPIC: Olmoshlar va moslashuv (Pronouns & agreement)   [icon bi-people, topic order 7]  [done 2026-09-08]
+60. Pronoun-Antecedent Agreement: Singular Nouns Take Singular Pronouns   [done]
+61. its / it's / their / they're / there — the Five That Cost Marks   [done]
+62. Ambiguous Pronouns: When "it" Could Mean Two Things   [done]
+63. who / whom / which / that in Relative Clauses   [done]
+64. Pronouns and Agreement — Mixed Practice   [done]
 
 ## TOPIC: Ko'plik, egalik va aniqlovchilar (Plurals, possessives & modifiers)   [icon bi-type, topic order 8]  [next]
 70. Plural or Possessive? students / student's / students'
