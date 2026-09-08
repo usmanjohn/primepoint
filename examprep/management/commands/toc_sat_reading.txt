@@ -15,6 +15,10 @@ AUTHOR: powerty
 # Each `## TOPIC:` header = a real SAT question type; pass it as the lesson's "topic".
 # Each topic owns a lesson-order decade so groups never collide.
 # Status: [done] = imported; [next] = not written yet.
+#
+# ✅ THIS SKILL IS COMPLETE (2026-09-08): all 9 topics, 44 lessons, 205 answerable
+#    questions imported. Do not start a "next batch" here — the remaining SAT R&W
+#    work is the `writing` skill (toc_sat_writing.txt, 49 lessons, untouched).
 # ─────────────────────────────────────────────────────────────────────
 
 ## SAT — Reading (Craft and Structure + Information and Ideas)
@@ -68,14 +72,14 @@ AUTHOR: powerty
 63. Completing a Sentence With a Number From the Figure
 64. Command of Evidence (Quantitative) — Mixed Practice
 
-## TOPIC: Mantiqiy xulosa (Inferences)   [icon bi-lightbulb, topic order 8]  [next]
+## TOPIC: Mantiqiy xulosa (Inferences)   [icon bi-lightbulb, topic order 8]  [done 2026-09-08]
 70. Intro: "Which Choice Most Logically Completes the Text?"
 71. The Blank Is Always at the End — Reading Toward It
 72. Inference vs Outside Knowledge: Staying Inside the 60 Words
 73. Hedged Conclusions: may, suggests, is likely to
 74. Inferences — Mixed Practice
 
-## TOPIC: Yakuniy aralash amaliyot (Full Mixed Practice)   [icon bi-flag-fill, topic order 9]  [next]
+## TOPIC: Yakuniy aralash amaliyot (Full Mixed Practice)   [icon bi-flag-fill, topic order 9]  [done 2026-09-08]
 90. Mixed Module Practice 1: Craft and Structure Under Time
 91. Mixed Module Practice 2: Information and Ideas Under Time
 92. Mixed Module Practice 3: A Full Reading Half-Module (13 Questions)

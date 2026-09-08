@@ -23,12 +23,12 @@ AUTHOR: powerty
 
 ## SAT — Writing (Standard English Conventions + Expression of Ideas)
 
-## TOPIC: Strategiya va format (Conventions & Expression: qanday tuzilgan)   [icon bi-compass, topic order 1]  [next]
+## TOPIC: Strategiya va format (Conventions & Expression: qanday tuzilgan)   [icon bi-compass, topic order 1]  [done 2026-09-08]
 1. The Writing Half: Grammar Questions Are the Fastest Marks on the Test
 2. There Is No Essay: What "Writing" Means on the Digital SAT
 3. Reading the Whole Sentence Before You Look at the Choices
 
-## TOPIC: Bog'lovchi so'zlar (Transitions)   [icon bi-signpost-split, topic order 2]  [next]
+## TOPIC: Bog'lovchi so'zlar (Transitions)   [icon bi-signpost-split, topic order 2]  [done 2026-09-08]
 10. Intro: Find the Relationship First, the Word Second
 11. Contrast: however, nevertheless, in contrast, on the other hand
 12. Result and Cause: therefore, consequently, as a result, thus
