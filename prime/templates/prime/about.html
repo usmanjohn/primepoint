@@ -104,7 +104,7 @@
   border: 1px solid var(--border);
   border-radius: 16px;
   overflow: hidden;
-  margin-bottom: 3.5rem;
+  margin-bottom: 0.9rem;
 }
 .ab-stat {
   background: var(--surface);
@@ -366,57 +366,110 @@
 }
 
 /* ── Partners ────────────────────────────────────── */
+/* The logos are full-bleed artwork with their own backgrounds, so each one
+   fills the top of its card instead of being shrunk into a grey square. */
 .ab-partners-section { margin-bottom: 3.5rem; }
-.ab-partner-group-label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text-muted);
-  margin-bottom: 1rem;
-}
 .ab-partner-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 1rem;
-  margin-bottom: 1.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
 }
 .ab-partner-card {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 0.85rem;
-  padding: 1.5rem 1rem 1.25rem;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  border-radius: 18px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: border-color 0.2s, box-shadow 0.25s, transform 0.25s;
 }
 .ab-partner-card:hover {
   border-color: var(--accent);
-  box-shadow: 0 6px 20px rgba(56,189,248,0.12);
-  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.13);
+  transform: translateY(-5px);
 }
-.ab-partner-card.dashed { border-style: dashed; opacity: 0.55; }
-.ab-partner-logo {
-  width: 100px;
-  height: 100px;
-  border-radius: 16px;
+.ab-partner-media {
+  position: relative;
+  aspect-ratio: 1 / 1;
   background: var(--surface-2);
-  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.ab-partner-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.ab-partner-card:hover .ab-partner-media img { transform: scale(1.05); }
+/* A hairline over the artwork so a pale logo still has an edge. */
+.ab-partner-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 1px rgba(15,23,42,0.08);
+  pointer-events: none;
+}
+.ab-partner-body {
+  padding: 1rem 1.1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+.ab-partner-kind {
+  align-self: flex-start;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-glow);
+  padding: 0.15rem 0.5rem;
+  border-radius: 5px;
+}
+.ab-partner-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+}
+.ab-partner-blurb { font-size: 0.78rem; color: var(--text-muted); line-height: 1.55; margin: 0; }
+.ab-partner-site {
+  margin-top: auto;
+  padding-top: 0.75rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 2rem;
+  gap: 0.35rem;
+  font-size: 0.73rem;
+  font-weight: 600;
   color: var(--text-muted);
-  overflow: hidden;
-  flex-shrink: 0;
+  border-top: 1px solid var(--border);
+  transition: color 0.2s;
 }
-.ab-partner-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 14px; padding: 6px; }
-.ab-partner-info { display: flex; flex-direction: column; gap: 0.2rem; }
-.ab-partner-name { font-size: 0.88rem; font-weight: 700; color: var(--text); line-height: 1.3; }
-.ab-partner-type { font-size: 0.72rem; color: var(--text-muted); }
+.ab-partner-card:hover .ab-partner-site { color: var(--accent); }
+.ab-partner-site i { font-size: 0.68rem; }
+
+/* Invitation band that closes the partner wall. */
+.ab-partner-invite {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 14px;
+  padding: 1.35rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.ab-partner-invite strong { display: block; font-size: 0.95rem; color: var(--text); margin-bottom: 0.2rem; }
+.ab-partner-invite span { font-size: 0.83rem; color: var(--text-muted); }
+.ab-partner-invite a { color: var(--accent); font-weight: 700; text-decoration: none; }
+.ab-partner-invite a:hover { text-decoration: underline; }
 
 /* ── CTA banner ──────────────────────────────────── */
 .ab-cta {
@@ -454,12 +507,14 @@
   .ab-brand { font-size: 1.8rem; }
   .ab-section-title { font-size: 1.4rem; }
   .ab-cta h2 { font-size: 1.4rem; }
-  .ab-partner-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
-  .ab-partner-logo { width: 80px; height: 80px; }
+  .ab-partner-grid { grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
+  .ab-partner-body { padding: 0.8rem 0.85rem 0.9rem; }
+  .ab-partner-blurb { display: none; }
 }
 @media (max-width: 479px) {
   .ab-stats { grid-template-columns: repeat(2, 1fr); }
   .ab-partner-grid { grid-template-columns: repeat(2, 1fr); }
+  .ab-partner-name { font-size: 0.85rem; }
 }
 </style>
 {% endblock %}
@@ -487,25 +542,28 @@
     </div>
   </div>
 
-  <!-- ── STATS ─────────────────────────────────────── -->
+  <!-- ── STATS — live counts, not slogans ──────────── -->
   <div class="ab-stats">
     <div class="ab-stat">
-      <div class="ab-stat-num">∞</div>
-      <div class="ab-stat-lbl">{% trans "Practices" %}</div>
+      <div class="ab-stat-num">{{ stats.lessons }}</div>
+      <div class="ab-stat-lbl">{% trans "Lessons" %}</div>
+    </div>
+    <div class="ab-stat">
+      <div class="ab-stat-num">{{ stats.questions_display }}</div>
+      <div class="ab-stat-lbl">{% trans "Practice questions" %}</div>
+    </div>
+    <div class="ab-stat">
+      <div class="ab-stat-num">{{ stats.readings }}</div>
+      <div class="ab-stat-lbl">{% trans "Readings" %}</div>
     </div>
     <div class="ab-stat">
       <div class="ab-stat-num">100%</div>
-      <div class="ab-stat-lbl">{% trans "Free to Start" %}</div>
-    </div>
-    <div class="ab-stat">
-      <div class="ab-stat-num">1</div>
-      <div class="ab-stat-lbl">{% trans "Clear Goal" %}</div>
-    </div>
-    <div class="ab-stat">
-      <div class="ab-stat-num">∀</div>
-      <div class="ab-stat-lbl">{% trans "Every Learner" %}</div>
+      <div class="ab-stat-lbl">{% trans "Free" %}</div>
     </div>
   </div>
+  <p class="text-center" style="font-size:0.78rem; color:var(--text-muted); margin:0 0 3.5rem;">
+    {% trans "Live counts from the platform — English, Korean, Russian, mathematics, TOPIK, IELTS and SAT, in one place." %}
+  </p>
 
   <!-- ── MISSION ───────────────────────────────────── -->
   <div class="ab-mission">
@@ -638,133 +696,98 @@
           <img src="{% static 'images/founders/usmanjon.jpg' %}" alt="Usmanjon">
         </div>
         <p class="ab-founder-name">Usmanjon</p>
-        <span class="ab-founder-role">Co-Founder &amp; CEO</span>
+        <span class="ab-founder-role">{% trans "Co-Founder &amp; CEO" %}</span>
         <ul class="ab-founder-details">
-          <li><i class="bi bi-mortarboard-fill"></i> Education: <em>— KAIST —</em></li>
-          <li><i class="bi bi-geo-alt-fill"></i> Location: <em>— Sohil city —</em></li>
-          <li><i class="bi bi-briefcase-fill"></i> Background: <em>— Data Science —</em></li>
-          <li><i class="bi bi-star-fill"></i> Expertise: <em>— Korean, English, Mathematics —</em></li>
+          <li><i class="bi bi-mortarboard-fill"></i> {% trans "Education" %}: <em>KAIST</em></li>
+          <li><i class="bi bi-geo-alt-fill"></i> {% trans "Location" %}: <em>Sohil city</em></li>
+          <li><i class="bi bi-briefcase-fill"></i> {% trans "Background" %}: <em>Data Science</em></li>
+          <li><i class="bi bi-star-fill"></i> {% trans "Expertise" %}: <em>Korean, English, Mathematics</em></li>
         </ul>
         <p class="ab-founder-bio">
-          — Strong mind bends the line. —
+          “{% trans "Strong mind bends the line." %}”
         </p>
       </div>
     </div>
 
-    <!-- Placeholder slot 2 -->
+    <!-- Founder 2 — Ro'zimurod -->
     <div class="ab-founder-card">
       <div class="ab-founder-banner">
         <div class="ab-founder-banner-accent"><i class="bi bi-rocket-takeoff-fill"></i></div>
       </div>
       <div class="ab-founder-body">
-        <div class="ab-founder-avatar">
-          <img src="{% static 'images/founders/usmanjon.jpg' %}" alt="Usmanjon">
-          
-        </div>
+        <div class="ab-founder-avatar">R</div>
         <p class="ab-founder-name">Ro'zimurod</p>
-        <span class="ab-founder-role">Co-Founder, Master</span>
+        <span class="ab-founder-role">{% trans "Co-Founder, Master" %}</span>
         <ul class="ab-founder-details">
-          <li><i class="bi bi-mortarboard-fill"></i> Education: <em>— TDSUOS —</em></li>
-          <li><i class="bi bi-geo-alt-fill"></i> Location: <em>— Sohil city —</em></li>
-          <li><i class="bi bi-briefcase-fill"></i> Background: <em>— English language —</em></li>
-          <li><i class="bi bi-star-fill"></i> Expertise: <em>— English —</em></li>
+          <li><i class="bi bi-mortarboard-fill"></i> {% trans "Education" %}: <em>TDSUOS</em></li>
+          <li><i class="bi bi-geo-alt-fill"></i> {% trans "Location" %}: <em>Sohil city</em></li>
+          <li><i class="bi bi-briefcase-fill"></i> {% trans "Background" %}: <em>English language</em></li>
+          <li><i class="bi bi-star-fill"></i> {% trans "Expertise" %}: <em>English</em></li>
         </ul>
         <p class="ab-founder-bio">
-          — Strong mind bends the line. —
+          “{% trans "Strong mind bends the line." %}”
         </p>
       </div>
     </div>
 
-    <!-- Placeholder slot 3 -->
+    <!-- Founder 3 — Inomjon -->
     <div class="ab-founder-card">
       <div class="ab-founder-banner">
         <div class="ab-founder-banner-accent"><i class="bi bi-rocket-takeoff-fill"></i></div>
       </div>
       <div class="ab-founder-body">
-        <div class="ab-founder-avatar">
-          <img src="{% static 'images/founders/usmanjon.jpg' %}" alt="Usmanjon">
-          
-        </div>
+        <div class="ab-founder-avatar">I</div>
         <p class="ab-founder-name">Inomjon</p>
-        <span class="ab-founder-role">Co-Founder, Master</span>
+        <span class="ab-founder-role">{% trans "Co-Founder, Master" %}</span>
         <ul class="ab-founder-details">
-          <li><i class="bi bi-mortarboard-fill"></i> Education: <em>— TDIU —</em></li>
-          <li><i class="bi bi-geo-alt-fill"></i> Location: <em>— Sohil city —</em></li>
-          <li><i class="bi bi-briefcase-fill"></i> Background: <em>— Finance —</em></li>
-          <li><i class="bi bi-star-fill"></i> Expertise: <em>— Math —</em></li>
+          <li><i class="bi bi-mortarboard-fill"></i> {% trans "Education" %}: <em>TDIU</em></li>
+          <li><i class="bi bi-geo-alt-fill"></i> {% trans "Location" %}: <em>Sohil city</em></li>
+          <li><i class="bi bi-briefcase-fill"></i> {% trans "Background" %}: <em>Finance</em></li>
+          <li><i class="bi bi-star-fill"></i> {% trans "Expertise" %}: <em>Math</em></li>
         </ul>
         <p class="ab-founder-bio">
-          — Strong mind bends the line. —
+          “{% trans "Strong mind bends the line." %}”
         </p>
       </div>
     </div>
 
   </div>
 
-  <!-- ── PARTNERS & INVESTORS ───────────────────────── -->
+  <!-- ── PARTNERS ───────────────────────────────────── -->
   <div class="ab-partners-section">
-    <span class="ab-eyebrow">{% trans "Partners" %} &amp; {% trans "Investors" %}</span>
-    <h2 class="ab-section-title">{% trans "Backed by believers." %}</h2>
+    <span class="ab-eyebrow">{% trans "Partners" %}</span>
+    <h2 class="ab-section-title">{% trans "We do not do this alone." %}</h2>
     <div class="ab-divider"></div>
     <p class="ab-section-sub mb-4">
-      {% trans "We are actively building partnerships with educational institutions, EdTech investors, and technology companies that share our vision of accessible, quality learning." %}
+      {% trans "Prime Point works alongside the state institutions and youth programmes that carry education to the regions. Their support is what puts our lessons in front of the pupils who need them most." %}
     </p>
 
-    <p class="ab-partner-group-label"><i class="bi bi-handshake me-1"></i>{% trans "Partners" %}</p>
     <div class="ab-partner-grid">
-      <div class="ab-partner-card">
-        <div class="ab-partner-logo">
-          <img src="{% static 'images/partners/komak.png' %}" alt="Ko'mak Loyihasi">
-        </div>
-        <div class="ab-partner-info">
-          <div class="ab-partner-name">Ko'mak Loyihasi</div>
-          <div class="ab-partner-type">{% trans "Social Initiative" %}</div>
-        </div>
-      </div>
-      <div class="ab-partner-card">
-        <div class="ab-partner-logo">
-          <img src="{% static 'images/partners/yoshlar_agentlik.png' %}" alt="Yoshlar Ishlari Agentligi">
-        </div>
-        <div class="ab-partner-info">
-          <div class="ab-partner-name">Yoshlar Ishlari Agentligi</div>
-          <div class="ab-partner-type">{% trans "Government Agency" %}</div>
-        </div>
-      </div>
-      <div class="ab-partner-card">
-        <div class="ab-partner-logo">
-          <img src="{% static 'images/partners/sirdaryo_hokimligi.png' %}" alt="Sirdaryo tuman hokimligi">
-        </div>
-        <div class="ab-partner-info">
-          <div class="ab-partner-name">Sirdaryo tuman hokimligi</div>
-          <div class="ab-partner-type">{% trans "Local Government" %}</div>
-        </div>
-      </div>
+      {% for partner in partners %}
+        <a class="ab-partner-card" href="{{ partner.url }}" target="_blank" rel="noopener noreferrer">
+          <div class="ab-partner-media">
+            <img src="{% static partner.logo %}" alt="{{ partner.name }}" loading="lazy">
+          </div>
+          <div class="ab-partner-body">
+            <span class="ab-partner-kind">{{ partner.kind }}</span>
+            <div class="ab-partner-name">{{ partner.name }}</div>
+            <p class="ab-partner-blurb">{{ partner.blurb }}</p>
+            <span class="ab-partner-site">
+              <i class="bi bi-box-arrow-up-right"></i>{{ partner.site }}
+            </span>
+          </div>
+        </a>
+      {% endfor %}
     </div>
 
-    <p class="ab-partner-group-label"><i class="bi bi-graph-up-arrow me-1"></i>{% trans "Investors" %}</p>
-    <div class="ab-partner-grid">
-      <div class="ab-partner-card dashed">
-        <div class="ab-partner-logo"><i class="bi bi-bank"></i></div>
-        <div class="ab-partner-info">
-          <div class="ab-partner-name">{% trans "Seed Investor" %}</div>
-          <div class="ab-partner-type">{% trans "EdTech — Incoming" %}</div>
-        </div>
+    <div class="ab-partner-invite">
+      <div>
+        <strong>{% trans "Would you like to work with us?" %}</strong>
+        <span>{% trans "Schools, foundations, agencies and companies that want to bring Prime Point to their pupils are welcome." %}</span>
       </div>
-      <div class="ab-partner-card dashed">
-        <div class="ab-partner-logo"><i class="bi bi-cash-coin"></i></div>
-        <div class="ab-partner-info">
-          <div class="ab-partner-name">{% trans "Angel Investor" %}</div>
-          <div class="ab-partner-type">{% trans "Venture — Incoming" %}</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card border-0 p-4 text-center" style="background:var(--accent-glow); border-radius:14px; border:1px solid rgba(56,189,248,0.25) !important;">
-      <p style="color:var(--accent); font-size:0.88rem; margin:0;">
-        <i class="bi bi-envelope-fill me-2"></i>
-        {% trans "Interested in partnering or investing?" %}
-        <strong>{% trans "Reach out at" %} <a href="mailto:{{ contact_email }}" style="color:var(--accent);">{{ contact_email }}</a></strong>
-      </p>
+      <a href="mailto:{{ contact_email }}">
+        <i class="bi bi-envelope-fill me-2"></i>{{ contact_email }}
+      </a>
     </div>
   </div>
 

@@ -13,11 +13,12 @@ from prime.subjects import (
     SUBJECT_MAP, SUBJECT_SLUGS, SESSION_KEY,
     get_study_subjects, has_chosen_subjects,
 )
+from prime.partners import PARTNERS
 from prime.search import search_platform
 from prime.progress import student_progress, master_progress
 
 from masters.models import Master
-from practice.models import Practice, PracticeAttempt
+from practice.models import Practice, PracticeAttempt, PracticeQuestion
 from discussion.models import Thread
 from tutorial.models import Tutorial
 from panda.models import Panda
@@ -167,7 +168,39 @@ def set_study_subjects(request):
 
 
 def about(request):
-    return render(request, 'prime/about.html')
+    """Who we are — and, in real numbers, what is already built.
+
+    The stat bar used to read "∞ / 100% / 1 / ∀". This page is shown to
+    partners, so it counts the library instead: every number below is a live
+    count, cached for five minutes because nobody adds a thousand lessons
+    between two page loads.
+    """
+    stats = cache.get('about_stats_v1')
+    if stats is None:
+        tutorials = Tutorial.objects.filter(is_published=True).count()
+        examprep = Lesson.objects.filter(
+            is_published=True, track__is_published=True).count()
+        stats = {
+            'lessons': tutorials + examprep,
+            'questions': PracticeQuestion.objects.filter(
+                practice__is_published=True).count(),
+            'practices': Practice.objects.filter(is_published=True).count(),
+            'readings': Story.objects.filter(
+                is_published=True,
+                collection__is_published=True,
+                collection__subject__is_published=True,
+            ).count(),
+            'games': GAME_COUNT,
+        }
+        # Thousands separator here rather than in the template: `humanize`
+        # is not installed and a five-figure question count wants the comma.
+        stats['questions_display'] = f"{stats['questions']:,}"
+        cache.set('about_stats_v1', stats, 300)
+
+    return render(request, 'prime/about.html', {
+        'stats': stats,
+        'partners': PARTNERS,
+    })
 
 
 def help_page(request):
