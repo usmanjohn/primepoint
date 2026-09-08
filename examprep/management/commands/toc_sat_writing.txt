@@ -1,4 +1,7 @@
 # ── Track metadata (read by Claude) ──────────────────────────────────
+#
+# ✅ THIS SKILL IS COMPLETE (2026-09-09) — 9 topics, 49 lessons, 230 questions.
+#    Nothing left to write. Keep this file for maintenance and re-imports.
 TRACK:  SAT
 SKILL:  writing
 AUTHOR: powerty
@@ -77,15 +80,15 @@ AUTHOR: powerty
 63. who / whom / which / that in Relative Clauses   [done]
 64. Pronouns and Agreement — Mixed Practice   [done]
 
-## TOPIC: Ko'plik, egalik va aniqlovchilar (Plurals, possessives & modifiers)   [icon bi-type, topic order 8]  [next]
-70. Plural or Possessive? students / student's / students'
-71. Possessive Nouns With Irregular Plurals (children's, women's)
-72. The Dangling Modifier: Whoever Is Doing It Must Come Next
-73. Parallel Structure in Lists and Comparisons
-74. Plurals, Possessives and Modifiers — Mixed Practice
+## TOPIC: Ko'plik, egalik va aniqlovchilar (Plurals, possessives & modifiers)   [icon bi-type, topic order 8]  [done 2026-09-08]
+70. Plural or Possessive? students / student's / students'   [done]
+71. Possessive Nouns With Irregular Plurals (children's, women's)   [done]
+72. The Dangling Modifier: Whoever Is Doing It Must Come Next   [done]
+73. Parallel Structure in Lists and Comparisons   [done]
+74. Plurals, Possessives and Modifiers — Mixed Practice   [done]
 
-## TOPIC: Yakuniy aralash amaliyot (Full Mixed Practice)   [icon bi-flag-fill, topic order 9]  [next]
-90. Mixed Practice 1: Conventions Under Time (25 seconds a question)
-91. Mixed Practice 2: Expression of Ideas Under Time
-92. Mixed Practice 3: A Full Writing Half-Module (14 Questions)
-93. The Last Five Minutes: Banking the Grammar Marks
+## TOPIC: Yakuniy aralash amaliyot (Full Mixed Practice)   [icon bi-flag-fill, topic order 9]  [done 2026-09-09]
+90. Mixed Practice 1: Conventions Under Time (25 seconds a question)   [done]
+91. Mixed Practice 2: Expression of Ideas Under Time   [done]
+92. Mixed Practice 3: A Full Writing Half-Module (14 Questions)   [done]
+93. The Last Five Minutes: Banking the Grammar Marks   [done]

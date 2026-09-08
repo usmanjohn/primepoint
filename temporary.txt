@@ -1,0 +1,2 @@
+python manage.py import_examprep examprep/management/commands/_lessons_sat_writing_70_74.py --author=powerty
+python manage.py import_examprep examprep/management/commands/_lessons_sat_writing_90_93.py --author=powerty
