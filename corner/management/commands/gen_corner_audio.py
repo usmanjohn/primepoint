@@ -66,6 +66,14 @@ HANGUL_RE = re.compile(r'[가-힣]')
 # Block-level tags whose end marks a narration chunk boundary.
 BLOCK_END_RE = re.compile(r'</p>|</h[1-6]>|</li>|</blockquote>|<br\s*/?>', re.I)
 TAG_RE = re.compile(r'<[^>]+>')
+# Furigana. A <ruby> carries the word AND its reading:
+#     <ruby>日本語<rt>にほんご</rt></ruby>
+# Stripping tags naively leaves "日本語にほんご" and the narrator says it twice.
+# Drop the <rt> (and the <rp> fallback parens) FIRST, keeping the base text —
+# a Japanese voice reads kanji correctly in context, and kanji is what lets it
+# segment words at all, so feeding it the kana-only reading would be worse.
+# Prime Japanese is the first shelf to use ruby; nothing else is affected.
+RUBY_RT_RE = re.compile(r'<r[tp]\b[^>]*>.*?</r[tp]>', re.I | re.S)
 # A dialogue paragraph often starts with a speaker tag — the name must NOT be read
 # aloud. Two passes, because stories mark speakers two different ways:
 #
@@ -131,6 +139,7 @@ class Command(BaseCommand):
         chunks = []
         for raw in [story.title] + BLOCK_END_RE.split(story.body or ''):
             raw = SPEAKER_TAG_RE.sub('', raw, count=1)   # "<strong>벡조드:</strong> " → ""
+            raw = RUBY_RT_RE.sub('', raw)                # drop furigana before tags go
             # Inline tags are removed WITHOUT inserting a space: a cn-word span wraps
             # the bare word and the particle follows it immediately, so
             # '<span ...>빵</span>을' must stay '빵을'. Substituting a space gave '빵 을',

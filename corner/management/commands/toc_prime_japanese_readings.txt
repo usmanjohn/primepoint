@@ -33,6 +33,13 @@ AUTHOR:     powerty
 #    the pupil is meant to recognise the pattern. This is exactly how graded readers work:
 #    the frame carries the story, the dialogue carries the grammar.
 #
+#    ONE MORE, ADDED 2026-09-09 while writing PJ-13…15: the particle の. It is taught in
+#    PJ-17, but without it a text cannot say "my friend" or "Japan's clock", and every
+#    graded reader in existence uses it from the first page. So の is free from PJ-13 on.
+#    Nothing else is: い-adjectives wait for PJ-25, も for PJ-19, 〜ます for PJ-20.
+#    Two set words merely CONTAIN a forbidden string and are fine — すみません (not the
+#    〜ません verb form) and でも, "but" (not the particle も).
+#
 # 3. FURIGANA IS NOT OPTIONAL. Every kanji in a reading carries <ruby> furigana, for the
 #    whole shelf. A reading is where the pupil meets kanji in the wild; blocking them on a
 #    character rather than on the grammar wastes the text. Kanji load follows the tutorial
@@ -100,13 +107,13 @@ AUTHOR:     powerty
 # Each reading's title is its own Japanese title, not the lesson's. Mark [done] as they go.
 
 ### Block B: Birinchi gaplar (13–26)   40–70 soʻz · 丁寧体 · A/B dialog
-13. 〜です / 〜ではありません
-14. は va が
-15. これ・それ・あれ
-16. ここ・そこ・あそこ va あります / います
-17. の — egalik
-18. Soʻroq soʻzlari va か
-19. も, と, や
+13. 〜です / 〜ではありません   [done]
+14. は va が   [done]
+15. これ・それ・あれ   [done]
+16. ここ・そこ・あそこ va あります / います   [done]
+17. の — egalik   [done]
+18. Soʻroq soʻzlari va か   [done]
+19. も, と, や   [next]
 20. 〜ます / 〜ません
 21. を va に
 22. で va へ

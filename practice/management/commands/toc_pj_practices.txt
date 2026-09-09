@@ -30,18 +30,18 @@ TUTORIAL: PJ-<n>:   (each practice links to its own tutorial)
 7. Katakana 1: ア-ソ   [done]
 8. Katakana 2: タ-ン va chalgʻituvchi juftliklar   [done]
 9. Uzun unlilar ー va chet soʻzlar   [done]
-10. Kanji nima   [next]
-11. On'yomi va kun'yomi
-12. Sonlar, sana, yosh va sanoq soʻzlari
+10. Kanji nima   [done]
+11. On'yomi va kun'yomi   [done]
+12. Sonlar, sana, yosh va sanoq soʻzlari   [done]
 
 ### Block B: Birinchi gaplar (13–26)   level: easy · 20 savol
-13. 〜です / 〜ではありません
-14. は va が
-15. これ・それ・あれ va この・その・あの
-16. ここ・そこ・あそこ va あります / います
-17. の — egalik
-18. Soʻroq soʻzlari va か
-19. も, と, や
+13. 〜です / 〜ではありません   [done]
+14. は va が   [done]
+15. これ・それ・あれ va この・その・あの   [done]
+16. ここ・そこ・あそこ va あります / います   [done]
+17. の — egalik   [done]
+18. Soʻroq soʻzlari va か   [done]
+19. も, と, や   [next]
 20. 〜ます / 〜ません
 21. を va に
 22. で va へ

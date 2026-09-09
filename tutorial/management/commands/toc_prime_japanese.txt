@@ -46,21 +46,22 @@ PLAYLIST: Prime Japanese
 7. Katakana 1: ア-ソ — va nega ismingiz katakana bilan yoziladi   [done]
 8. Katakana 2: タ-ン va chalgʻituvchi juftliklar (シ/ツ, ソ/ン, ク/ワ)   [done]
 9. Uzun unlilar ー, chet soʻzlar va katakana bilan yozilgan dunyo   [done]
-10. Kanji nima — 漢字 qayerdan kelgan va nega qoʻrqmaslik kerak   [next]
-11. On'yomi va kun'yomi — bitta belgi, ikkita oʻqilish
-12. Sonlar 一〜百, sana, yosh va birinchi sanoq soʻzlari
-# ↑ Block A tugagach: 12 ta dars + 12 ta mashq (12 savoldan). Oʻqish matni yoʻq.
+10. Kanji nima — 漢字 qayerdan kelgan va nega qoʻrqmaslik kerak   [done]
+11. On'yomi va kun'yomi — bitta belgi, ikkita oʻqilish   [done]
+12. Sonlar 一〜百, sana, yosh va birinchi sanoq soʻzlari   [done]
+# ↑ Block A COMPLETE (2026-09-09) — 12 ta dars + 12 ta mashq (12 savoldan).
+#   Oʻqish matni yoʻq: bu darslarda grammatika yoʻq.
 #   PJ-13 dan boshlab har bir dars uchta boʻlakdan iborat.
 
 
 ### Block B: Birinchi gaplar (13–26)
-13. 〜です / 〜ではありません — birinchi gapingiz va uning inkori
-14. は va が — mavzu va ega orasidagi farq
-15. これ・それ・あれ va この・その・あの — koʻrsatish olmoshlari
-16. ここ・そこ・あそこ va に — joy va "bor" gapi (あります / います)
-17. の — egalik va ikki otni bogʻlash
-18. Soʻroq soʻzlari: なに, だれ, どこ, いつ, どう, どれ va か
-19. も, と, や — "ham", "va", "va boshqalar"
+13. 〜です / 〜ではありません — birinchi gapingiz va uning inkori   [done]
+14. は va が — mavzu va ega orasidagi farq   [done]
+15. これ・それ・あれ va この・その・あの — koʻrsatish olmoshlari   [done]
+16. ここ・そこ・あそこ va に — joy va "bor" gapi (あります / います)   [done]
+17. の — egalik va ikki otni bogʻlash   [done]
+18. Soʻroq soʻzlari: なに, だれ, どこ, いつ, どう, どれ va か   [done]
+19. も, と, や — "ham", "va", "va boshqalar"   [next]
 20. Feʼl 1: 〜ます / 〜ません — hozirgi-kelasi zamon
 21. を va に — toʻldiruvchi va yoʻnalish; oʻzbekcha -ni va -ga bilan yonma-yon
 22. で va へ — vosita, joy va yoʻnalishning ikkinchi shakli

@@ -249,6 +249,23 @@ When the user asks (e.g. "make the next 3 Prime Japanese lessons"):
    `corner/management/commands/toc_prime_japanese_readings.txt`.
 Import order per batch: tutorials → practices → readings → audio → re-run
 `import_tutorials --republish` so the `stories` links resolve (the story must exist first).
+**⚠️ ALWAYS PREVIEW THE NARRATION BEFORE GENERATING AUDIO.** Render each story the way
+`gen_corner_audio` does (strip `<rt>`, strip tags, drop the speaker tag) and read the
+result. On the first batch this caught `行来ました` — a bulk `きました`→`来ました` edit had
+eaten the middle of `行きました`, producing a non-word that every gate passed because it was
+structurally valid ruby. One second of reading beats a wasted audio run and a broken mp3.
+**⚠️ `<rt>` MUST BE STRIPPED FOR TTS** (fixed 2026-09-09 in `gen_corner_audio.py`,
+`RUBY_RT_RE`, with regression tests in `corner/tests.py`). Prime Japanese is the first shelf
+to use furigana; naive tag-stripping turned `<ruby>日本語<rt>にほんご</rt></ruby>` into
+`日本語にほんご` and the narrator said every kanji word twice. Keep the kanji, drop the
+reading — a Japanese voice needs kanji to segment words at all.
+**⚠️ The reading gate enforces the CUMULATIVE rule mechanically** (`verify_pj_stories_*.py`):
+an explicit inventory of what is taught so far, a forbidden list of later patterns
+(い-adjectives before PJ-25, も before PJ-19, 〜ます before PJ-20, 〜がほしい before PJ-39) and
+an exemption list for set words that merely *contain* a forbidden string — `すみません` is not
+the 〜ません verb form and `でも` is not the particle `も`. It also checks the tutorial's
+`"stories": [...]` titles actually exist, because `import_tutorials` only *warns* on a typo
+and the lesson then silently ships without its Reading card.
 **⚠️ THE RAMP GATE** (this course's answer gate). Two things ship broken most easily here,
 and both are silent: **a kana or kanji used before the lesson that teaches it**, and **an
 answer key that disagrees with the kana table**. Every batch is checked twice, the second
@@ -270,7 +287,17 @@ by construction — ask about the **talaffuz** instead, since both `sensei` and 
 defensible. And **widen the gate's regex to `[ぁ-ゟァ-ヶー]`** for the katakana lessons: a
 hiragana-only pattern silently skips every katakana question instead of failing loudly.
 The depth bar counts **prose, not markup** — strip tags before measuring, or a lesson with a
-31-tile kana grid is punished for the diagrams that make it good.
+31-tile kana grid is punished for the diagrams that make it good. (Do NOT also exclude tables:
+PJ-5 and PJ-9 fall under 900 without them, so table text is part of the intended count.)
+From PJ-10 the gate also checks **every kanji in prose sits inside `<ruby>`** — exempting only
+the specimen containers (`pj-kanji__ch`, `pj-stroke__s`, a table's `pj-stem` column, the bare
+radical glyphs 亻氵), since a specimen's reading is printed beside it. That check caught 20
+bare kanji in one batch, mostly grammar terms in brackets.
+For a numbers/date lesson, verify the **readings** too: `verify_pj12_numbers.py` reimplements
+Japanese numerals from the rules (ones, tens, the 300/600/800 and 3000/8000 sound changes, the
+four-gatsu/shichi-gatsu/ku-gatsu months, the ついたち…とおか days plus 14/20/24, the age
+irregulars 1/8/10/20) and checks all 54 readings the lesson claims, then the practice keys
+against the same reader.
 **⚠️ Never cite a choice letter or position in a practice explanation** —
 `PracticeQuestion.display_choices()` shuffles with a seed from the question id, so the
 pupil's order is not the file's order. Quote the choice's own text in `<strong>`.
