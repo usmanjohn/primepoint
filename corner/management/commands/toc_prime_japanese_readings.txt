@@ -1,0 +1,198 @@
+# ── Collection metadata (read by Claude) ─────────────────────────────
+SUBJECT:    Japanese          (icon: bi-brilliance, color: #be123c)
+COLLECTION: Prime Japanese Readings
+AUTHOR:     powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_CORNER.md, with the Prime Japanese overrides below.
+# ─────────────────────────────────────────────────────────────────────
+
+# Prime Japanese Readings — the third leg of each lesson
+#
+# Every reading belongs to ONE Prime Japanese tutorial and its `order` IS the lesson
+# number, so PJ-24's reading is order 24. Nothing here stands alone: the tutorial
+# teaches the pattern, the practice drills it, the reading shows it living in a text.
+#
+# ⚠️ READINGS START AT PJ-13. Lessons PJ-1 … PJ-12 teach the three writing systems and
+#    carry no grammar, so there is nothing for a text to embed. Orders 1–12 stay empty.
+#
+# ── The four rules that make these different from Keimyung stories ──
+#
+# 1. FOCUS. The reading uses the lesson's own pattern at least twice, and lists it in
+#    the story's `grammar` block (StoryGrammar) so it appears under the vocabulary.
+#
+# 2. CUMULATIVE. Anything taught in an EARLIER lesson may be used freely; anything from
+#    a LATER lesson may not. Check toc_prime_japanese.txt before reaching for a pattern.
+#    This is why the early readings are short and the later ones read like real Japanese.
+#
+#    ONE EXPLICIT EXCEPTION — the narrative frame. Between PJ-13 and PJ-19 there is no
+#    verb yet (〜ます arrives at PJ-20), so a story has no way to say who did what. The
+#    NARRATION may use this small closed list as plain vocabulary, always with a cn-word
+#    gloss:
+#        あります · います · 行きます · 来ました · 会いました · 言いました · 見ました
+#    The DIALOGUE lines stay strictly inside what the lessons have taught — that is where
+#    the pupil is meant to recognise the pattern. This is exactly how graded readers work:
+#    the frame carries the story, the dialogue carries the grammar.
+#
+# 3. FURIGANA IS NOT OPTIONAL. Every kanji in a reading carries <ruby> furigana, for the
+#    whole shelf. A reading is where the pupil meets kanji in the wild; blocking them on a
+#    character rather than on the grammar wastes the text. Kanji load follows the tutorial
+#    ramp (STYLE_GUIDE_PRIME_JAPANESE.md §4.3) — never run ahead of it.
+#
+# 4. LINKED. After importing a reading, re-run import_tutorials with --republish so the
+#    tutorial's `"stories": [...]` key attaches it and the Reading card appears on the
+#    lesson page.
+#
+# ── Length curve (guide, not a rule) ──
+#   PJ-13 … PJ-26   40–70 words     4–7 sentences, present tense, tiny dialogues
+#   PJ-27 … PJ-50   70–130 words    a small scene with a beginning and an end
+#   PJ-51 … PJ-75   130–190 words   connected paragraphs, past + quoted speech
+#   PJ-76 … PJ-100  190–270 words   near-N3 length and register
+#
+# ── STORIES, NOT DIALOGUES (inherited from Prime Korean, applies from PJ-40 on) ──
+#   The early readings are mostly A/B dialogue because the grammar is tiny. From PJ-40 the
+#   grammar carries real prose, so:
+#     * Write a STORY — narration in past tense, a small arc (something happens, something
+#       changes), a narrator who can describe, not just two people talking.
+#     * Dialogue is seasoning, not the dish. 2–4 quoted lines inside a story is plenty.
+#     * Modern and everyday is good: convenience stores, trains, phones, part-time jobs,
+#       exams, festivals, ramen, a lost umbrella, a group chat. Keep it light.
+#     * VARY the shape between batches — a diary entry, a letter, a folk-tale retelling,
+#       a "what happened at school today", a small mystery. Anything.
+#   The focus pattern does NOT have to appear many times. **2–3 natural uses beats 6 forced
+#   ones** — if the pattern fights the story, use it less and let the story win.
+#
+# ── PLAIN-STYLE NARRATION — 普通体 (from PJ-45 on) ──
+#   Up to PJ-44 the readings narrate in 丁寧体 (です・ます), because that is all the pupil
+#   has met. PJ-45 teaches 普通体, and from that lesson on the NARRATION switches to it —
+#   the style of every book, newspaper, essay and novel in Japanese:
+#       ある · いる · する · した · だ · ではない · 行った · 大きい · いい
+#     verb present  → 行く / 食べる
+#     verb past     → 行った / 食べた
+#     adjective     → 大きい / 大きかった
+#     な-adj / noun → 静かだ / 学生だ   (NOT 静かです in narration)
+#     negative      → 行かない / 大きくない / 学生ではない
+#   QUOTED SPEECH keeps its own register — people still speak です・ます inside 「」.
+#   Only the narrator switches. Letters and diaries may keep either, but pick one and hold
+#   it for the whole text.
+#
+# ── AUDIO — YES on this shelf (user's decision 2026-09-09) ──
+#   ja-JP-NanamiNeural and ja-JP-KeitaNeural, alternating between readings so the shelf is
+#   not one voice for 88 texts. gen_corner_audio picks Nanami from the Japanese subject by
+#   default; pass --voice explicitly when you want Keita.
+#     python manage.py gen_corner_audio --collection="Prime Japanese Readings" --only <n>
+#     python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings \
+#            --collection="Prime Japanese Readings"
+#   ⚠️ TTS AND FURIGANA. The narrator reads the text with the <rt> readings stripped, so
+#   a kanji it mis-reads is mis-read aloud however good the furigana looks. Two habits:
+#     * Check any name or unusual compound by listening before the batch ships.
+#     * A speaker tag is written as "<p><strong>ゆき:</strong> …" — gen_corner_audio strips
+#       a leading bold-name-colon, so the name is not spoken. Keep that markup.
+#   ⚠️ Because there IS audio, dialogue paragraphs stay one-speaker-per-<p>, exactly like
+#   Prime Korean. (This is the rule Prime Russian was freed from when its audio was cut.)
+#
+# ── Language split ──
+#   Story text, title and comprehension questions: **Japanese**.
+#   summary, cn-word data-tr glosses, grammar meanings, question explanations: **Uzbek**.
+#   No English anywhere. Japanese punctuation only: 。 、 「」
+#   Never put a cn-word span inside a <strong>, and never inside a <ruby>.
+#
+# ── The ordered list ──
+# Each reading's title is its own Japanese title, not the lesson's. Mark [done] as they go.
+
+### Block B: Birinchi gaplar (13–26)   40–70 soʻz · 丁寧体 · A/B dialog
+13. 〜です / 〜ではありません
+14. は va が
+15. これ・それ・あれ
+16. ここ・そこ・あそこ va あります / います
+17. の — egalik
+18. Soʻroq soʻzlari va か
+19. も, と, や
+20. 〜ます / 〜ません
+21. を va に
+22. で va へ
+23. 〜ました / 〜ませんでした
+24. Vaqt: soat, hafta kunlari, から〜まで
+25. い-sifatlar
+26. な-sifatlar
+
+### Block C: Feʼlning haqiqiy dunyosi (27–44)   70–130 soʻz · 丁寧体
+27. Uchta feʼl guruhi
+28. Lugʻat shakli
+29. て-shakli 1
+30. て-shakli 2
+31. 〜ています
+32. 〜てください va 〜てもいいです
+33. 〜てはいけません va 〜なければなりません
+34. ない-shakli
+35. 〜た shakli va 〜たことがあります
+36. 〜たり〜たりします
+37. 〜てから, 〜まえに, 〜あとで
+38. 〜ながら
+39. 〜たいです va 〜がほしいです
+40. 〜ましょう / 〜ませんか      ← STORIES from here on
+41. 〜ことができます
+42. Potensial shakl
+43. Sanoq soʻzlari
+44. Taqqoslash
+
+### Block D: Gapni bogʻlash (45–62)   130–190 soʻz · 普通体 narration from here
+45. Oddiy shakl (普通体)
+46. 〜と思います
+47. 〜と言いました
+48. Aniqlovchi ergash gap
+49. 〜とき
+50. 〜たら
+51. 〜ば va 〜と
+52. 〜なら
+53. 〜から va 〜ので
+54. 〜が va 〜けど
+55. 〜ても
+56. 〜ために va 〜ように
+57. 〜ようになります va 〜ことにします
+58. 〜てしまいます
+59. 〜ておきます va 〜てみます
+60. あげる, くれる, もらう
+61. 〜てあげる, 〜てくれる, 〜てもらう
+62. 〜でしょう, 〜かもしれません, 〜はずです
+
+### Block E: Ovoz va nuqtai nazar (63–78)   130–190 soʻz
+63. Passiv 1
+64. Passiv 2 — aziyat passivi
+65. Kauzativ
+66. Kauzativ-passiv
+67. Buyruq va taqiq shakllari
+68. Keigo 1
+69. Keigo 2: 尊敬語
+70. Keigo 3: 謙譲語
+71. Keigo 4: 丁寧語
+72. うちとそと
+73. 〜そうです 1
+74. 〜そうです 2
+75. 〜ようです va 〜らしいです
+76. 〜みたいです
+77. 擬音語・擬態語
+78. Erkak va ayol nutqi
+
+### Block F: Yozma til va N3 ga eshik (79–100)   190–270 soʻz
+79. 〜ということ
+80. 〜わけです
+81. 〜はずがない, 〜に違いない
+82. 〜べきです
+83. 〜ばかり
+84. 〜ところ
+85. 〜うちに va 〜あいだに
+86. 〜につれて
+87. 〜によって
+88. 〜として va 〜にとって
+89. 〜に関して, 〜について
+90. 〜ながらも, 〜つつ
+91. 〜さえ, 〜こそ, 〜しか〜ない
+92. 〜がち, 〜っぽい
+93. 〜おかげで va 〜せいで
+94. 〜どころか
+95. 〜たとたん, 〜次第
+96. だ・である体
+97. Xat va rasmiy murojaat
+98. 四字熟語 va ことわざ
+99. 和語・漢語・外来語
+100. N3 dan N2 gacha

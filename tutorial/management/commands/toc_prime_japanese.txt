@@ -1,0 +1,169 @@
+# ── Subject metadata (read by Claude) ────────────────────────────────
+PREFIX:   PJ
+CATEGORY: japanese
+AUTHOR:   powerty
+PLAYLIST: Prime Japanese
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_PRIME_JAPANESE.md — NOT STYLE_GUIDE.md, NOT the
+# Prime English one and NOT the Prime Korean one. Prime Japanese teaches in UZBEK;
+# Japanese is the material. Inglizcha umuman yoʻq.
+# The playlist is created automatically by import_tutorials from the PLAYLIST dict
+# inside each _tutorials_prime_japanese_*.py file.
+# This file is ONLY the ordered lesson list. Mark finished blocks with [done].
+# ─────────────────────────────────────────────────────────────────────
+
+# Prime Japanese — noldan ishonchli N4 gacha, N3 ga eshik ochib
+# 100 dars. Har bir dars mustaqil, lekin tartib butun kursni quradi.
+#
+# Prime Korean'dan farqi uchta — bir-biriga oʻxshab ketadigan ikki kursni
+# adashtirmaslik uchun yozib qoʻyilgan:
+#   1. YOZUV BLOKI UZUNROQ — 8 emas, 12 dars. Yapon tilida bitta emas, uchta
+#      yozuv tizimi bor (hiragana, katakana, kanji) va ular bir vaqtda, bitta
+#      gap ichida ishlaydi. Buni shoshib oʻtib boʻlmaydi.
+#   2. FURIGANA hech qachon tashlanmaydi. Romaji PJ-21 da tugaydi, lekin har bir
+#      kanji butun kurs davomida <ruby> ichida oʻqilishini olib yuradi.
+#   3. NISHON — N4, N3 ga kirib. Koreys kursi TOPIK II gacha bordi; yapon tilida
+#      100 dars ichida halol yetib boradigan joy — mustahkam N4 va N3 boshlanishi.
+#
+# Prime English'dan farqi: u yerda ingliz tili — oʻqitish tili. Bu yerda oʻqitish
+# tili — oʻzbekcha, yaponcha esa oʻrgatilayotgan material.
+#
+# Har bir dars uchta boʻlakdan iborat (PJ-13 dan boshlab):
+#   dars (tutorial) + mashq (practice, 20 savol) + oʻqish matni (corner, audio bilan).
+# Batch = 3 ta dars, uchalasi birga yoziladi.
+# PJ-1 … PJ-12 da grammatika yoʻq → oʻqish matni ham yoʻq, mashq esa 12 savoldan.
+
+
+### Block A: Uchta yozuv (1–12)
+# Bu blokda grammatika yoʻq, shuning uchun oʻqish matni ham yoʻq.
+# Mashqlar qisqa: 12 savoldan. Har bir darsda kamida bitta .pj-kana jadval.
+1. Yapon yozuvi — nega uchta alifbo bor va ular qanday birga ishlaydi   [done]
+2. Hiragana 1: あ い う え お · か き く け こ · さ し す せ そ   [done]
+3. Hiragana 2: た ち つ て と · な に ぬ ね の · は ひ ふ へ ほ   [done]
+4. Hiragana 3: ま み む め も · や ゆ よ · ら り る れ ろ · わ を ん   [done]
+5. Hiragana 4: butun 五十音図 ni oʻqish — soʻzlarni yigʻamiz   [done]
+6. Dakuten が ざ だ ば, handakuten ぱ, yōon きゃ va sokuon っ   [done]
+7. Katakana 1: ア-ソ — va nega ismingiz katakana bilan yoziladi   [done]
+8. Katakana 2: タ-ン va chalgʻituvchi juftliklar (シ/ツ, ソ/ン, ク/ワ)   [done]
+9. Uzun unlilar ー, chet soʻzlar va katakana bilan yozilgan dunyo   [done]
+10. Kanji nima — 漢字 qayerdan kelgan va nega qoʻrqmaslik kerak   [next]
+11. On'yomi va kun'yomi — bitta belgi, ikkita oʻqilish
+12. Sonlar 一〜百, sana, yosh va birinchi sanoq soʻzlari
+# ↑ Block A tugagach: 12 ta dars + 12 ta mashq (12 savoldan). Oʻqish matni yoʻq.
+#   PJ-13 dan boshlab har bir dars uchta boʻlakdan iborat.
+
+
+### Block B: Birinchi gaplar (13–26)
+13. 〜です / 〜ではありません — birinchi gapingiz va uning inkori
+14. は va が — mavzu va ega orasidagi farq
+15. これ・それ・あれ va この・その・あの — koʻrsatish olmoshlari
+16. ここ・そこ・あそこ va に — joy va "bor" gapi (あります / います)
+17. の — egalik va ikki otni bogʻlash
+18. Soʻroq soʻzlari: なに, だれ, どこ, いつ, どう, どれ va か
+19. も, と, や — "ham", "va", "va boshqalar"
+20. Feʼl 1: 〜ます / 〜ません — hozirgi-kelasi zamon
+21. を va に — toʻldiruvchi va yoʻnalish; oʻzbekcha -ni va -ga bilan yonma-yon
+22. で va へ — vosita, joy va yoʻnalishning ikkinchi shakli
+23. Feʼl 2: 〜ました / 〜ませんでした — oʻtgan zamon
+24. Vaqt: soat, hafta kunlari, 〜から 〜まで
+25. Sifat 1: い-sifatlar va ularning inkori, oʻtgan zamoni
+26. Sifat 2: な-sifatlar — nega ular boshqacha tuslanadi
+# ↑ Block B: oddiy, lekin toʻliq gap. Oʻquvchi oʻzi haqida gapira oladi.
+
+
+### Block C: Feʼlning haqiqiy dunyosi (27–44)
+27. Uchta feʼl guruhi: 五段, 一段, 不規則 — butun kursning kaliti
+28. Lugʻat shakli (辞書形) va nega lugʻatda ます yoʻq
+29. て-shakli 1: 一段 va 不規則 feʼllar
+30. て-shakli 2: 五段 feʼllar va ularning beshta qoidasi
+31. 〜ています — hozirgi davom etayotgan ish va holat
+32. 〜てください va 〜てもいいです — iltimos va ruxsat
+33. 〜てはいけません va 〜なければなりません — taqiq va majburiyat
+34. ない-shakli va 〜ないでください
+35. 〜た shakli va 〜たことがあります — tажriba
+36. 〜たり〜たりします — ishlarni sanash
+37. 〜てから, 〜まえに, 〜あとで — ish tartibi
+38. 〜ながら — bir vaqtda ikki ish
+39. Xohish: 〜たいです va 〜がほしいです
+40. 〜ましょう / 〜ませんか — taklif qilish
+41. Imkoniyat 1: 〜ことができます
+42. Imkoniyat 2: potensial shakl (読める, 食べられる)
+43. Sanoq soʻzlari (助数詞): 人, 枚, 本, 匹, 個, 台 va ularning tovush oʻzgarishi
+44. Taqqoslash: 〜より, 〜のほうが, いちばん
+# ↑ Block C: feʼl tizimi ochiladi. Bu — kursning eng ogʻir va eng muhim bloki.
+
+
+### Block D: Gapni bogʻlash (45–62)
+45. Oddiy shakl (普通体) — 丁寧体 dan 普通体 ga oʻtish jadvali
+46. 〜と思います — fikr bildirish
+47. 〜と言いました va koʻchirma gap
+48. Aniqlovchi ergash gap: 私が読んだ本 — otni butun gap bilan aniqlash
+49. 〜とき — "…ganda"
+50. Shart 1: 〜たら
+51. Shart 2: 〜ば va 〜と
+52. Shart 3: 〜なら — va toʻrttasining farqi bir jadvalda
+53. Sabab: 〜から va 〜ので
+54. Qarama-qarshilik: 〜が va 〜けど
+55. 〜ても — "…sa ham"
+56. 〜ために va 〜ように — maqsad
+57. 〜ようになります va 〜ことにします — oʻzgarish va qaror
+58. 〜てしまいます — tugatish va afsus
+59. 〜ておきます va 〜てみます — oldindan qilish va sinab koʻrish
+60. Berish-olish 1: あげる, くれる, もらう
+61. Berish-olish 2: 〜てあげる, 〜てくれる, 〜てもらう
+62. Taxmin: 〜でしょう, 〜かもしれません, 〜はずです
+# ↑ Block D: qoʻshma gap. Bu yerdan keyin oʻquvchi hikoya qila oladi.
+
+
+### Block E: Ovoz va nuqtai nazar (63–78)
+63. Passiv (受身) 1: shakl va oddiy ishlatilishi
+64. Passiv 2: "aziyat chekish" passivi — yaponchaning oʻziga xos shakli
+65. Kauzativ (使役): 行かせる — qildirmoq va ruxsat bermoq
+66. Kauzativ-passiv: 行かせられる — majburan
+67. Buyruq va taqiq shakllari: 行け / 行くな va ularning oʻrni
+68. Keigo 1: nega hurmat tili bor va uch tarmogʻi qanday ishlaydi
+69. Keigo 2: 尊敬語 — お〜になる va maxsus feʼllar
+70. Keigo 3: 謙譲語 — お〜する va oʻzini pastga qoʻyish
+71. Keigo 4: 丁寧語, ございます va doʻkondagi yapon tili
+72. うちとそと — ichki va tashqi guruh: keigo'ni haqiqatda boshqaradigan mantiq
+73. 〜そうです 1: koʻrinish ("yomgʻir yogʻadiganga oʻxshaydi")
+74. 〜そうです 2: eshitilgan xabar
+75. 〜ようです va 〜らしいです — taxminning ikki darajasi
+76. 〜みたいです va oddiy nutqdagi taqqoslash
+77. 擬音語・擬態語 — tovush va holat taqlidi soʻzlari
+78. Erkak va ayol nutqi, yoshlar tili va manga yaponchasi
+# ↑ Block E: N4 ning eng qiyin qismi + N3 ning boshi.
+
+
+### Block F: Yozma til va N3 ga eshik (79–100)
+79. 〜ということ va gapni otga aylantirish
+80. 〜わけです, 〜わけではない — mantiqiy xulosa
+81. 〜はずがない, 〜に違いない — ishonch darajalari
+82. 〜べきです va 〜なければならない — burch
+83. 〜ばかり va 〜たばかり — "endigina" va "faqat"
+84. 〜ところ (〜るところ, 〜ているところ, 〜たところ)
+85. 〜うちに va 〜あいだに
+86. 〜につれて, 〜にしたがって — birga oʻzgarish
+87. 〜によって va passivning yozma ishlatilishi
+88. 〜として va 〜にとって
+89. 〜に関して, 〜について, 〜に対して
+90. 〜ながらも, 〜つつ — yozma qarama-qarshilik
+91. 〜さえ, 〜こそ, 〜しか〜ない — urgʻu qoʻshimchalari
+92. 〜がち, 〜っぽい, 〜気味 — moyillik
+93. 〜おかげで va 〜せいで — yaxshi va yomon sabab
+94. 〜どころか va 〜ばかりか
+95. 〜たとたん, 〜次第, 〜か〜ないかのうちに — vaqt aniqligi
+96. Yozma uslub: だ・である体 va gazeta yaponchasi
+97. Xat, elektron xat va rasmiy murojaat qoliplari
+98. 四字熟語 va ことわざ — toʻrt belgili iboralar va maqollar
+99. 和語・漢語・外来語 — lugʻatning uch qatlami va uslub tanlash
+100. Bundan keyin qayerga: N3 dan N2 gacha yoʻl xaritasi
+# ↑ Block F: oʻquvchi endi kitob, yangilik va rasmiy xat oʻqiy oladi.
+
+
+# ── Kanji ramp (STYLE_GUIDE §4.3 ning qisqacha koʻrinishi) ──
+#   PJ-1  … PJ-12    faqat kana + PJ-10…12 dagi ~80 belgi
+#   PJ-13 … PJ-40    N5 kanji, darsiga 5–8 ta yangi
+#   PJ-41 … PJ-75    N4 kanji, xuddi shu tezlikda
+#   PJ-76 … PJ-100   N3 ga kirish
+#   PJ-100 da jami ~600 belgi koʻrilgan boʻladi.

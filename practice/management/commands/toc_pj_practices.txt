@@ -1,0 +1,133 @@
+# ── Subject metadata (read by Claude) ────────────────────────────────
+PREFIX:   PJ
+SUBJECT:  日本語
+MASTER:   powerty
+TUTORIAL: PJ-<n>:   (each practice links to its own tutorial)
+# (MASTER = production master username. On local dev use 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_PJ_PRACTICE.md.
+# Import: python manage.py import_practices <file> --master=prime --expect-questions=<n>
+# EVERYTHING IN UZBEK — Japanese only as the material. No English.
+# ─────────────────────────────────────────────────────────────────────
+
+# Prime Japanese Mashqlar — one test per lesson
+# Titles: "PJ-7 Mashq: Katakana 1 va ismingizni yozish"  (same wording as the tutorial)
+#
+# TWO LENGTHS:
+#   PJ-1 … PJ-12    12 savol   (yozuv — belgi tanish va oʻqish mashqi)
+#   PJ-13 … PJ-100  20 savol   (grammatika — Prime Korean ramp)
+#
+# Levels: 1–33 easy · 34–70 medium · 71–100 hard
+# Rhythm: 3 lessons at a time, all three legs (tutorial → practice → reading).
+# PJ-1 … PJ-12 have no reading leg — the script lessons carry no grammar to embed.
+
+### Block A: Uchta yozuv (1–12)   level: easy · 12 savol
+1. Yapon yozuvi — nega uchta alifbo bor   [done]
+2. Hiragana 1: あ-そ   [done]
+3. Hiragana 2: た-ほ   [done]
+4. Hiragana 3: ま-ん   [done]
+5. Hiragana 4: butun 五十音図 ni oʻqish   [done]
+6. Dakuten, handakuten, yōon va sokuon   [done]
+7. Katakana 1: ア-ソ   [done]
+8. Katakana 2: タ-ン va chalgʻituvchi juftliklar   [done]
+9. Uzun unlilar ー va chet soʻzlar   [done]
+10. Kanji nima   [next]
+11. On'yomi va kun'yomi
+12. Sonlar, sana, yosh va sanoq soʻzlari
+
+### Block B: Birinchi gaplar (13–26)   level: easy · 20 savol
+13. 〜です / 〜ではありません
+14. は va が
+15. これ・それ・あれ va この・その・あの
+16. ここ・そこ・あそこ va あります / います
+17. の — egalik
+18. Soʻroq soʻzlari va か
+19. も, と, や
+20. 〜ます / 〜ません
+21. を va に
+22. で va へ
+23. 〜ました / 〜ませんでした
+24. Vaqt: soat, hafta kunlari, から〜まで
+25. い-sifatlar
+26. な-sifatlar
+
+### Block C: Feʼlning haqiqiy dunyosi (27–44)   level: medium · 20 savol
+27. Uchta feʼl guruhi
+28. Lugʻat shakli (辞書形)
+29. て-shakli 1: 一段 va 不規則
+30. て-shakli 2: 五段
+31. 〜ています
+32. 〜てください va 〜てもいいです
+33. 〜てはいけません va 〜なければなりません
+34. ない-shakli
+35. 〜た shakli va 〜たことがあります
+36. 〜たり〜たりします
+37. 〜てから, 〜まえに, 〜あとで
+38. 〜ながら
+39. 〜たいです va 〜がほしいです
+40. 〜ましょう / 〜ませんか
+41. 〜ことができます
+42. Potensial shakl
+43. Sanoq soʻzlari (助数詞)
+44. Taqqoslash: より, のほうが, いちばん
+
+### Block D: Gapni bogʻlash (45–62)   level: medium · 20 savol
+45. Oddiy shakl (普通体)
+46. 〜と思います
+47. 〜と言いました
+48. Aniqlovchi ergash gap
+49. 〜とき
+50. 〜たら
+51. 〜ば va 〜と
+52. 〜なら va toʻrttasining farqi
+53. 〜から va 〜ので
+54. 〜が va 〜けど
+55. 〜ても
+56. 〜ために va 〜ように
+57. 〜ようになります va 〜ことにします
+58. 〜てしまいます
+59. 〜ておきます va 〜てみます
+60. あげる, くれる, もらう
+61. 〜てあげる, 〜てくれる, 〜てもらう
+62. 〜でしょう, 〜かもしれません, 〜はずです
+
+### Block E: Ovoz va nuqtai nazar (63–78)   level: hard · 20 savol
+63. Passiv 1
+64. Passiv 2 — aziyat passivi
+65. Kauzativ
+66. Kauzativ-passiv
+67. Buyruq va taqiq shakllari
+68. Keigo 1: uch tarmoq
+69. Keigo 2: 尊敬語
+70. Keigo 3: 謙譲語
+71. Keigo 4: 丁寧語 va ございます
+72. うちとそと
+73. 〜そうです 1: koʻrinish
+74. 〜そうです 2: eshitilgan xabar
+75. 〜ようです va 〜らしいです
+76. 〜みたいです
+77. 擬音語・擬態語
+78. Erkak va ayol nutqi, yoshlar tili
+
+### Block F: Yozma til va N3 ga eshik (79–100)   level: hard · 20 savol
+79. 〜ということ
+80. 〜わけです
+81. 〜はずがない, 〜に違いない
+82. 〜べきです
+83. 〜ばかり va 〜たばかり
+84. 〜ところ
+85. 〜うちに va 〜あいだに
+86. 〜につれて, 〜にしたがって
+87. 〜によって
+88. 〜として va 〜にとって
+89. 〜に関して, 〜について, 〜に対して
+90. 〜ながらも, 〜つつ
+91. 〜さえ, 〜こそ, 〜しか〜ない
+92. 〜がち, 〜っぽい, 〜気味
+93. 〜おかげで va 〜せいで
+94. 〜どころか va 〜ばかりか
+95. 〜たとたん, 〜次第
+96. だ・である体 va gazeta yaponchasi
+97. Xat va rasmiy murojaat qoliplari
+98. 四字熟語 va ことわざ
+99. 和語・漢語・外来語
+100. N3 dan N2 gacha yoʻl xaritasi

@@ -24,6 +24,7 @@ ROTATION = [
     ('Matematika', 'Matematika',       '🔢'),
     ('Russian',    'Rus tili',         '🇷🇺'),
     ('Math',       'Matematika (SAT)', '📐'),
+    ('日本語',      'Yapon tili',       '🇯🇵'),
 ]
 SUBJECT_LABELS = {name: (label, emoji) for name, label, emoji in ROTATION}
 

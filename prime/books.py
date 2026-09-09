@@ -91,6 +91,36 @@ BOOKS = {
         ],
     },
 
+    'Prime Japanese': {
+        'series':   'Prime Japanese',
+        'subtitle': 'Yapon tili grammatikasi — noldan',
+        'tagline':  '日本語 · 100 dars',
+        'lang':     'ja',
+        'accent':   '#be123c',
+        'accent2':  '#4c0519',
+        'volumes': [
+            ('Yozuv va ilk gaplar',     1,  25),
+            ('Feʼl va zamon',          26,  50),
+            ('Bogʻlovchi shakllar',    51,  75),
+            ('Keigo va yozma til',     76, 100),
+        ],
+        'blurb': (
+            'Prime Japanese yapon tilini noldan oʻrgatadi. Avval uchta yozuv — '
+            'hiragana, katakana va kanji — oʻn ikki darsda ochiladi, keyin '
+            'grammatika boshlanadi. Yapon tili ham oʻzbek tili kabi SOV: feʼl '
+            'oxirida, qoʻshimchalar soʻzga yopishadi — bu kursning eng kuchli '
+            'tayanch nuqtasi.'
+        ),
+        'howto': [
+            ('Dars',   'Avval gʻoyani, keyin qolip chizmasini oʻqing. Rangli '
+                       'misollar qoidaning ishlashini koʻrsatadi.'),
+            ('Mashq',  'Shu darsning oʻziga tegishli 20 ta savol. Kitobni yopib, '
+                       'daftarda ishlang. Javoblar kitob oxirida.'),
+            ('Matn',   'Qoida yashab turgan qisqa matn, yangi soʻzlar izohi bilan. '
+                       'Ovoz chiqarib oʻqing.'),
+        ],
+    },
+
     'Prime Russian': {
         'series':   'Prime Russian',
         'subtitle': 'Rus tili grammatikasi — noldan',

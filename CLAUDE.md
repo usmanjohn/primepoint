@@ -212,6 +212,82 @@ the bottom of `static/css/style.css`. Pure CSS — never add JavaScript, and nev
 Prime Russian's practices are **not** the older `Часть NN: …` Russian drills (written in
 Russian, attached to no lesson) — those stay as they are.
 
+## Creating Prime Japanese tutorials (bulk) — yapon tili grammatikasi
+**Prime Japanese** is the 100-lesson Japanese course in `tutorial`, held together by a
+`TutorialPlaylist` called "Prime Japanese". Titles are `PJ-1: …`, category `japanese`.
+Started **2026-09-09**; it is the sixth course on the Prime machinery and — like Prime
+Korean and Prime Russian — it **teaches in Uzbek**; Japanese is only the material.
+**No English anywhere.** Target: noldan mustahkam **N4**, N3 ga eshik ochib.
+Its three differences from Prime Korean are worth remembering:
+- the script block is **12 lessons, not 8** — Japanese has three writing systems
+  (hiragana, katakana, kanji) working inside one sentence, and they cannot be rushed;
+- **furigana is never thrown away.** Romaji stops at PJ-21, but every kanji carries its
+  reading in `<ruby>` for all 100 lessons. That is how Japanese learner material is
+  actually printed;
+- readings start at **PJ-13** (PJ-1…PJ-12 carry no grammar to embed), and they **have
+  audio** — `ja-JP-NanamiNeural` / `ja-JP-KeitaNeural`, alternating.
+When the user asks (e.g. "make the next 3 Prime Japanese lessons"):
+1. Read `tutorial/management/commands/STYLE_GUIDE_PRIME_JAPANESE.md`.
+2. Read `tutorial/management/commands/toc_prime_japanese.txt` (header gives PREFIX,
+   CATEGORY, AUTHOR, PLAYLIST; body is the ordered 100-lesson list with `[done]`/`[next]`).
+3. Find where to continue: `Tutorial.objects.filter(title__startswith='PJ-')`.
+4. Write into `tutorial/management/commands/_tutorials_prime_japanese_<range>.py` as
+   `PLAYLIST = {...}` + `TUTORIALS = [...]` (copy `PLAYLIST` unchanged from the previous
+   batch; each lesson carries `"order": <lesson number>`, category `japanese`).
+5. Import: `python manage.py import_tutorials <file> --author=prime` (`--republish` to
+   overwrite). The importer creates the playlist itself.
+6. Mark the range `[done]` in the toc, then give the `railway run python manage.py
+   import_tutorials ...` command — automatically, every time.
+**Each Prime Japanese lesson from PJ-13 has THREE legs, written together in batches of 3:**
+1. the **tutorial** (`tutorial`, PJ-n) — teaches the pattern;
+2. the **practice** (`practice`, 20 questions; **12** for the script lessons PJ-1…PJ-12),
+   subject **`日本語`**. Guide: `practice/management/commands/STYLE_GUIDE_PJ_PRACTICE.md`,
+   list: `toc_pj_practices.txt`. Always pass `--expect-questions`;
+3. the **reading** (`corner`, collection "Prime Japanese Readings", `order` = lesson
+   number) — the pattern living in a text, with `cn-word` glosses, a `grammar` block,
+   2–3 questions and **audio**. Guide: the overrides in
+   `corner/management/commands/toc_prime_japanese_readings.txt`.
+Import order per batch: tutorials → practices → readings → audio → re-run
+`import_tutorials --republish` so the `stories` links resolve (the story must exist first).
+**⚠️ THE RAMP GATE** (this course's answer gate). Two things ship broken most easily here,
+and both are silent: **a kana or kanji used before the lesson that teaches it**, and **an
+answer key that disagrees with the kana table**. Every batch is checked twice, the second
+time by throwaway scripts in the scratchpad (`verify_pj_<range>.py` for the lessons,
+`verify_pj_practice_<range>.py` for the tests) that rebuild a Hepburn table from scratch,
+re-derive every reading answer by that table, and refuse any character not yet taught.
+They also check every `pe-*`/`pj-*` class used is defined in `style.css`, balanced `<div>`
+and `<ruby>`, no `<script>`/`style=`, and no English in the prose. Run, fix, then import.
+The romaniser itself is **kept**, not retyped each batch:
+`tutorial/management/commands/_romaji.py` (a helper module like `_svgkit.py`, not a command).
+Run `python3 tutorial/management/commands/_romaji.py` — it self-tests on 43 words across both
+scripts, and each batch's throwaway gate imports `romanise` from it. Four things it must get
+right, every one of them a bug that self-test caught: **`ii` and `ei` are NOT collapsed**
+(大きい is `ōkii`, 先生 is `sensei` — only `aa`/`uu`/`oo`/`ou` take a macron) but the katakana
+length mark **`ー` always does**; **yoon inserts a y** (き+ゃ → kya) while **small plain vowels
+replace it** (フ+ァ → fa); and **`は` as a particle is a lexical exception**
+(こんにちは → `konnichiwa`). Also: a question whose key is a *romanisation* of えい is ambiguous
+by construction — ask about the **talaffuz** instead, since both `sensei` and `[sensē]` are
+defensible. And **widen the gate's regex to `[ぁ-ゟァ-ヶー]`** for the katakana lessons: a
+hiragana-only pattern silently skips every katakana question instead of failing loudly.
+The depth bar counts **prose, not markup** — strip tags before measuring, or a lesson with a
+31-tile kana grid is punished for the diagrams that make it good.
+**⚠️ Never cite a choice letter or position in a practice explanation** —
+`PracticeQuestion.display_choices()` shuffles with a seed from the question id, so the
+pupil's order is not the file's order. Quote the choice's own text in `<strong>`.
+The visual kit **reuses the whole `pe-*` component set** and adds Japanese-only pieces
+(`pj-kana` gojūon cards, `pj-pair` hiragana⇄katakana fork, `pj-kanji` character cards,
+`pj-yomi` on/kun fork, `pj-joshi` particle strip, `pj-conj` conjugation ladder, `pj-group`
+verb-group fork, `pj-level` politeness ladder, `pj-say`, `pj-stroke`, `pj-big`, plus
+`pe-ex__ja` and the `.pj-dim` faint-furigana self-test) in the **PRIME JAPANESE** section
+at the bottom of `static/css/style.css`. Pure CSS — never add JavaScript, and never invent
+a `pj-*` class without adding it to that section and the style guide first.
+Japanese punctuation is **Japanese**: 。 、 「」 — never `.` `,` `""`.
+Prime Japanese is **not** Prime Korean. The two look similar on the page and the languages
+genuinely rhyme, but never copy a Korean lesson across — the particles, the verb groups and
+the politeness system are different systems.
+⚠️ Adding this course put a **sixth subject in the Telegram rotation** (`日本語` →
+"Yapon tili" 🇯🇵), so the daily channel post is now six questions, not five.
+
 ## Creating Prime Math tutorials (bulk) — maktab matematikasi, oʻzbek tilida
 **Prime Math** is the 100-lesson school-maths course in `tutorial`, held together by a
 `TutorialPlaylist` called "Prime Math". Titles are `PM-1: …`, category `math`. It is the

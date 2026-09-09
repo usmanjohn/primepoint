@@ -55,9 +55,10 @@ from corner.models import Collection
 # Narrator per subject shelf. Female neural voices — the clearest of the
 # ko-KR/en-US sets for learner listening.
 SUBJECT_VOICES = {
-    'Korean':  'ko-KR-SunHiNeural',
-    'English': 'en-US-JennyNeural',
-    'Russian': 'ru-RU-SvetlanaNeural',
+    'Korean':   'ko-KR-SunHiNeural',
+    'English':  'en-US-JennyNeural',
+    'Russian':  'ru-RU-SvetlanaNeural',
+    'Japanese': 'ja-JP-NanamiNeural',
 }
 DEFAULT_VOICE = 'ko-KR-SunHiNeural'
 

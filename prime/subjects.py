@@ -40,6 +40,15 @@ SUBJECTS = [
         'exam_languages': [],
     },
     {
+        'slug': 'japanese', 'name': _('Japanese'),
+        'icon': 'bi-brilliance', 'color': '#fb7185',
+        'tutorial_categories': ['japanese'],
+        'examprep_tracks': [],
+        'corner_subjects': ['japanese'],
+        'practice_names': ['japanese', '日本語'],
+        'exam_languages': [],
+    },
+    {
         'slug': 'russian', 'name': _('Russian'),
         'icon': 'bi-globe-americas', 'color': '#a78bfa',
         'tutorial_categories': ['russian'],
