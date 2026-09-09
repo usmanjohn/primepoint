@@ -41,18 +41,18 @@ TUTORIAL: PJ-<n>:   (each practice links to its own tutorial)
 16. ここ・そこ・あそこ va あります / います   [done]
 17. の — egalik   [done]
 18. Soʻroq soʻzlari va か   [done]
-19. も, と, や   [next]
-20. 〜ます / 〜ません
-21. を va に
-22. で va へ
-23. 〜ました / 〜ませんでした
-24. Vaqt: soat, hafta kunlari, から〜まで
-25. い-sifatlar
-26. な-sifatlar
+19. も, と, や   [done]
+20. 〜ます / 〜ません   [done]
+21. を va に   [done]
+22. で va へ   [done]
+23. 〜ました / 〜ませんでした   [done]
+24. Vaqt: soat, hafta kunlari, から〜まで   [done]
+25. い-sifatlar   [done]
+26. な-sifatlar   [done]
 
 ### Block C: Feʼlning haqiqiy dunyosi (27–44)   level: medium · 20 savol
-27. Uchta feʼl guruhi
-28. Lugʻat shakli (辞書形)
+27. Uchta feʼl guruhi   [done]
+28. Lugʻat shakli (辞書形)   [next]
 29. て-shakli 1: 一段 va 不規則
 30. て-shakli 2: 五段
 31. 〜ています

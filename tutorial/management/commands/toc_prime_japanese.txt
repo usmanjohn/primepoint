@@ -61,20 +61,20 @@ PLAYLIST: Prime Japanese
 16. ここ・そこ・あそこ va に — joy va "bor" gapi (あります / います)   [done]
 17. の — egalik va ikki otni bogʻlash   [done]
 18. Soʻroq soʻzlari: なに, だれ, どこ, いつ, どう, どれ va か   [done]
-19. も, と, や — "ham", "va", "va boshqalar"   [next]
-20. Feʼl 1: 〜ます / 〜ません — hozirgi-kelasi zamon
-21. を va に — toʻldiruvchi va yoʻnalish; oʻzbekcha -ni va -ga bilan yonma-yon
-22. で va へ — vosita, joy va yoʻnalishning ikkinchi shakli
-23. Feʼl 2: 〜ました / 〜ませんでした — oʻtgan zamon
-24. Vaqt: soat, hafta kunlari, 〜から 〜まで
-25. Sifat 1: い-sifatlar va ularning inkori, oʻtgan zamoni
-26. Sifat 2: な-sifatlar — nega ular boshqacha tuslanadi
+19. も, と, や — "ham", "va", "va boshqalar"   [done]
+20. Feʼl 1: 〜ます / 〜ません — hozirgi-kelasi zamon   [done]
+21. を va に — toʻldiruvchi va yoʻnalish; oʻzbekcha -ni va -ga bilan yonma-yon   [done]
+22. で va へ — vosita, joy va yoʻnalishning ikkinchi shakli   [done]
+23. Feʼl 2: 〜ました / 〜ませんでした — oʻtgan zamon   [done]
+24. Vaqt: soat, hafta kunlari, 〜から 〜まで   [done]
+25. Sifat 1: い-sifatlar va ularning inkori, oʻtgan zamoni   [done]
+26. Sifat 2: な-sifatlar — nega ular boshqacha tuslanadi   [done]
 # ↑ Block B: oddiy, lekin toʻliq gap. Oʻquvchi oʻzi haqida gapira oladi.
 
 
 ### Block C: Feʼlning haqiqiy dunyosi (27–44)
-27. Uchta feʼl guruhi: 五段, 一段, 不規則 — butun kursning kaliti
-28. Lugʻat shakli (辞書形) va nega lugʻatda ます yoʻq
+27. Uchta feʼl guruhi: 五段, 一段, 不規則 — butun kursning kaliti   [done]
+28. Lugʻat shakli (辞書形) va nega lugʻatda ます yoʻq   [next]
 29. て-shakli 1: 一段 va 不規則 feʼllar
 30. て-shakli 2: 五段 feʼllar va ularning beshta qoidasi
 31. 〜ています — hozirgi davom etayotgan ish va holat

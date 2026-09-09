@@ -5,7 +5,9 @@ import re
 
 from django.test import SimpleTestCase
 
-from corner.management.commands.gen_corner_audio import RUBY_RT_RE, TAG_RE
+from corner.management.commands.gen_corner_audio import (
+    RUBY_RT_RE, SPEAKER_PREFIX_RE, SPEAKER_TAG_RE, TAG_RE,
+)
 
 
 def narrated(markup):
@@ -43,3 +45,54 @@ class FuriganaIsNotNarratedTests(SimpleTestCase):
     def test_markup_without_ruby_is_untouched(self):
         out = narrated('<p><span class="cn-word" data-tr="non">빵</span>을</p>')
         self.assertEqual(out, '빵을')
+
+
+class SpeakerNameIsNotNarratedTests(SimpleTestCase):
+    """A dialogue paragraph's speaker tag names the voice; it is not a line of the story.
+
+    Two bugs let Japanese names through, both found while previewing PJ-25…27:
+      * SPEAKER_TAG_RE was anchored at "<strong>", but _chunks() splits the body on
+        </p>, so every chunk but the first still opens with its own "<p>";
+      * SPEAKER_PREFIX_RE, the fallback that caught the Korean names in practice,
+        only started on Latin or Hangul, never on kana or kanji.
+    Together they meant "アフソナ:" was spoken aloud in every Prime Japanese reading.
+    """
+
+    def spoken(self, markup):
+        """One body block, exactly as _chunks() hands it to the narrator."""
+        text = SPEAKER_TAG_RE.sub('', markup, count=1)
+        text = html.unescape(TAG_RE.sub('', RUBY_RT_RE.sub('', text)))
+        text = re.sub(r'\s+', ' ', text).strip()
+        return SPEAKER_PREFIX_RE.sub('', text, count=1).strip()
+
+    def test_japanese_speaker_tag_inside_a_paragraph(self):
+        self.assertEqual(
+            self.spoken('<p><strong>アフソナ:</strong> クロは'
+                        '<ruby>速<rt>はや</rt></ruby>いですか。</p>'),
+            'クロは速いですか。')
+
+    def test_korean_speaker_tag_still_stripped(self):
+        self.assertEqual(
+            self.spoken('<p><strong>벡조드:</strong> 안녕하세요?</p>'),
+            '안녕하세요?')
+
+    def test_latin_speaker_tag_still_stripped(self):
+        self.assertEqual(self.spoken('<p><strong>Mike:</strong> Hello there.</p>'),
+                         'Hello there.')
+
+    def test_plain_text_japanese_name_without_markup(self):
+        self.assertEqual(self.spoken('<p>シェルベク: はい、'
+                                     '<ruby>走<rt>はし</rt></ruby>ります。</p>'),
+                         'はい、走ります。')
+
+    def test_narration_without_a_speaker_is_untouched(self):
+        self.assertEqual(
+            self.spoken('<p><ruby>四時<rt>よじ</rt></ruby>に'
+                        '<ruby>家<rt>いえ</rt></ruby>へ'
+                        '<ruby>帰<rt>かえ</rt></ruby>ります。</p>'),
+            '四時に家へ帰ります。')
+
+    def test_a_bold_word_mid_sentence_is_not_a_speaker_tag(self):
+        self.assertEqual(
+            self.spoken('<p>これは<strong>大事</strong>です。</p>'),
+            'これは大事です。')

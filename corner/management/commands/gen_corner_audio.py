@@ -82,16 +82,24 @@ RUBY_RT_RE = re.compile(r'<r[tp]\b[^>]*>.*?</r[tp]>', re.I | re.S)
 #    run before tags are removed. Language-agnostic and cannot touch ordinary prose,
 #    since it only fires on a <strong>/<b> that is the first thing in the block and
 #    whose text ends in a colon.
+#    The optional leading block tag matters: _chunks() splits the body on </p>, so
+#    every chunk after the first still carries its own opening "<p>" and the anchor
+#    would never fire. Korean got away with it because the plain-text fallback below
+#    caught Hangul names; Japanese names fell through both and were read aloud.
 SPEAKER_TAG_RE = re.compile(
-    r'^\s*<(strong|b)\b[^>]*>\s*[^<]{1,30}?:\s*</\1>\s*', re.I
+    r'^\s*(?:<(?:p|div|li)\b[^>]*>\s*)?<(strong|b)\b[^>]*>\s*[^<]{1,30}?:\s*</\1>\s*',
+    re.I
 )
 # 2. PLAIN TEXT (fallback, for stories that write "Mike: Hello there" with no markup).
 #    Strips one or two name-like tokens directly before a colon. The first character
 #    class covers Latin AND Hangul — it was Latin-only, which is why Korean speaker
 #    names ("벡조드:", "그 사람:") were still being spoken. Ordinary sentences that
 #    contain a colon later in the line are left untouched because this is anchored.
+#    The leading class covers Latin, Hangul AND kana/kanji — it was Latin+Hangul,
+#    so Japanese speaker names ("アフソナ:", "シェルベク:") were still being spoken.
 SPEAKER_PREFIX_RE = re.compile(
-    r"^\s*[A-Za-z가-힣][\w'.\-]{0,18}(?:\s+[\w'.\-]{1,18})?\s*:\s+"
+    r"^\s*[A-Za-z가-힣ぁ-ゟァ-ヿ一-鿿][\w'.\-]{0,18}"
+    r"(?:\s+[\w'.\-]{1,18})?\s*:\s+"
 )
 # Emoji / pictographs / dingbats — TTS should never see them.
 EMOJI_RE = re.compile(

@@ -40,6 +40,11 @@ AUTHOR:     powerty
 #    Two set words merely CONTAIN a forbidden string and are fine — すみません (not the
 #    〜ません verb form) and でも, "but" (not the particle も).
 #
+#    ⚑ THE FRAME EXCEPTION RETIRES AT PJ-20. From that lesson the pupil has 〜ます and
+#    〜ません, so a story can say what people actually DO with the grammar it has been
+#    taught. From PJ-20 on there is no free verb list: every verb in a reading must be
+#    one the lessons have given, in the form they gave it. PJ-13…19 keep the frame.
+#
 # 3. FURIGANA IS NOT OPTIONAL. Every kanji in a reading carries <ruby> furigana, for the
 #    whole shelf. A reading is where the pupil meets kanji in the wild; blocking them on a
 #    character rather than on the grammar wastes the text. Kanji load follows the tutorial
@@ -94,6 +99,12 @@ AUTHOR:     powerty
 #     * Check any name or unusual compound by listening before the batch ships.
 #     * A speaker tag is written as "<p><strong>ゆき:</strong> …" — gen_corner_audio strips
 #       a leading bold-name-colon, so the name is not spoken. Keep that markup.
+#       ⚠️ That stripping was BROKEN for Japanese until 2026-09-10 (found while previewing
+#       PJ-25…27): the markup rule was anchored past the chunk's own "<p>", and the
+#       plain-text fallback that rescued Korean only started on Latin or Hangul, never on
+#       kana. Every PJ-13…24 mp3 therefore says "アフソナ:" out loud. Fixed in
+#       gen_corner_audio.py with regression tests in corner/tests.py — those mp3s need
+#       regenerating (gen_corner_audio --only <n> … then import_corner_audio --republish).
 #   ⚠️ Because there IS audio, dialogue paragraphs stay one-speaker-per-<p>, exactly like
 #   Prime Korean. (This is the rule Prime Russian was freed from when its audio was cut.)
 #
@@ -113,18 +124,18 @@ AUTHOR:     powerty
 16. ここ・そこ・あそこ va あります / います   [done]
 17. の — egalik   [done]
 18. Soʻroq soʻzlari va か   [done]
-19. も, と, や   [next]
-20. 〜ます / 〜ません
-21. を va に
-22. で va へ
-23. 〜ました / 〜ませんでした
-24. Vaqt: soat, hafta kunlari, から〜まで
-25. い-sifatlar
-26. な-sifatlar
+19. も, と, や   [done]
+20. 〜ます / 〜ません   [done]
+21. を va に   [done]
+22. で va へ   [done]
+23. 〜ました / 〜ませんでした   [done]
+24. Vaqt: soat, hafta kunlari, から〜まで   [done]
+25. い-sifatlar   [done]
+26. な-sifatlar   [done]
 
 ### Block C: Feʼlning haqiqiy dunyosi (27–44)   70–130 soʻz · 丁寧体
-27. Uchta feʼl guruhi
-28. Lugʻat shakli
+27. Uchta feʼl guruhi   [done]
+28. Lugʻat shakli   [next]
 29. て-shakli 1
 30. て-shakli 2
 31. 〜ています

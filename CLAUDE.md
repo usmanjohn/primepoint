@@ -254,11 +254,28 @@ Import order per batch: tutorials → practices → readings → audio → re-ru
 result. On the first batch this caught `行来ました` — a bulk `きました`→`来ました` edit had
 eaten the middle of `行きました`, producing a non-word that every gate passed because it was
 structurally valid ruby. One second of reading beats a wasted audio run and a broken mp3.
+**⚠️ THE SPEAKER TAG MUST BE STRIPPED FOR TTS TOO** (fixed 2026-09-10 in
+`gen_corner_audio.py`, `SPEAKER_TAG_RE` + `SPEAKER_PREFIX_RE`, regression tests in
+`corner/tests.py`). The markup rule was anchored at `<strong>`, but `_chunks()` splits the
+body on `</p>` so every chunk still opens with its own `<p>`; the plain-text fallback that
+rescued Korean in practice only started on Latin or Hangul. So Japanese speaker names were
+read aloud — **every PJ-13…24 mp3 says "アフソナ:"** and wants regenerating. The narration
+preview below is what caught it: run it, and read the speaker lines too.
 **⚠️ `<rt>` MUST BE STRIPPED FOR TTS** (fixed 2026-09-09 in `gen_corner_audio.py`,
 `RUBY_RT_RE`, with regression tests in `corner/tests.py`). Prime Japanese is the first shelf
 to use furigana; naive tag-stripping turned `<ruby>日本語<rt>にほんご</rt></ruby>` into
 `日本語にほんご` and the narrator said every kanji word twice. Keep the kanji, drop the
 reading — a Japanese voice needs kanji to segment words at all.
+**⚠️ The narrative-frame exception RETIRES AT PJ-20.** Before it, readings may use a small
+closed list of verbs (あります・います・行きます・来ました…) because no verb has been taught
+yet; from PJ-20 the pupil has 〜ます, so every verb in a reading must be one the lessons
+actually gave, in the form they gave it. The gate encodes this by order, not just prose —
+`frame = FRAME_VERBS if story.order < 20 else SET_WORDS`. Verify it bites by injecting a
+later form into a PJ-20+ story and watching it fail.
+**⚠️ Practice files build their Japanese from helper constants (`W`, `HO`, `IK`…), so a
+choice written as a plain string instead of an f-string ships `{AS}` literally to the pupil.**
+Every practice gate now scans text/choices/explanations for `\{[A-Za-z_]\w*\}` — that caught
+one in PJ-20 that all other checks passed.
 **⚠️ The reading gate enforces the CUMULATIVE rule mechanically** (`verify_pj_stories_*.py`):
 an explicit inventory of what is taught so far, a forbidden list of later patterns
 (い-adjectives before PJ-25, も before PJ-19, 〜ます before PJ-20, 〜がほしい before PJ-39) and
