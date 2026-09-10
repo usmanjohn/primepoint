@@ -147,15 +147,15 @@ AUTHOR:     powerty
 37. 〜てから, 〜まえに, 〜あとで   [done]
 38. 〜ながら   [done]
 39. 〜たいです va 〜がほしいです   [done]
-40. 〜ましょう / 〜ませんか   [next]      ← STORIES from here on
-41. 〜ことができます
-42. Potensial shakl
-43. Sanoq soʻzlari
-44. Taqqoslash
+40. 〜ましょう / 〜ませんか   [done]      ← STORIES from here on
+41. 〜ことができます   [done]
+42. Potensial shakl   [done]
+43. Sanoq soʻzlari   [done]
+44. Taqqoslash   [done]
 
 ### Block D: Gapni bogʻlash (45–62)   130–190 soʻz · 普通体 narration from here
-45. Oddiy shakl (普通体)
-46. 〜と思います
+45. Oddiy shakl (普通体)   [done]
+46. 〜と思います   [next]
 47. 〜と言いました
 48. Aniqlovchi ergash gap
 49. 〜とき

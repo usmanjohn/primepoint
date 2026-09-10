@@ -87,3 +87,21 @@ python manage.py import_practices practice/management/commands/_practice_pj_37_3
 python manage.py import_corner corner/management/commands/_stories_prime_japanese_37_39.py --author=powerty
 python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
 python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_37_39.py --author=powerty --republish
+
+# Block C, 40-42  (PJ-40 taklif · PJ-41 ことができます · PJ-42 potensial shakl)
+# ⚠️ PJ-42 matnining sarlavhasi oʻzgargan — eski nomdagi hikoyani oʻchirish kerak:
+#    Story.objects.filter(collection__title='Prime Japanese Readings',
+#                         title='およげる ように なりました').delete()
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_40_42.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pj_40_42.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_40_42.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_40_42.py --author=powerty --republish
+
+# Block C oxiri + Block D boshi, 43-45
+#   (PJ-43 sanoq soʻzlari · PJ-44 taqqoslash · PJ-45 普通体)
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_43_45.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pj_43_45.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_43_45.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_43_45.py --author=powerty --republish

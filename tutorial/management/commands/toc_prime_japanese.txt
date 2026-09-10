@@ -86,17 +86,17 @@ PLAYLIST: Prime Japanese
 37. 〜てから, 〜まえに, 〜あとで — ish tartibi   [done]
 38. 〜ながら — bir vaqtda ikki ish   [done]
 39. Xohish: 〜たいです va 〜がほしいです   [done]
-40. 〜ましょう / 〜ませんか — taklif qilish   [next]
-41. Imkoniyat 1: 〜ことができます
-42. Imkoniyat 2: potensial shakl (読める, 食べられる)
-43. Sanoq soʻzlari (助数詞): 人, 枚, 本, 匹, 個, 台 va ularning tovush oʻzgarishi
-44. Taqqoslash: 〜より, 〜のほうが, いちばん
+40. 〜ましょう / 〜ませんか — taklif qilish   [done]
+41. Imkoniyat 1: 〜ことができます   [done]
+42. Imkoniyat 2: potensial shakl (読める, 食べられる)   [done]
+43. Sanoq soʻzlari (助数詞): 人, 枚, 本, 匹, 個, 台 va ularning tovush oʻzgarishi   [done]
+44. Taqqoslash: 〜より, 〜のほうが, いちばん   [done]
 # ↑ Block C: feʼl tizimi ochiladi. Bu — kursning eng ogʻir va eng muhim bloki.
 
 
 ### Block D: Gapni bogʻlash (45–62)
-45. Oddiy shakl (普通体) — 丁寧体 dan 普通体 ga oʻtish jadvali
-46. 〜と思います — fikr bildirish
+45. Oddiy shakl (普通体) — 丁寧体 dan 普通体 ga oʻtish jadvali   [done]
+46. 〜と思います — fikr bildirish   [next]
 47. 〜と言いました va koʻchirma gap
 48. Aniqlovchi ergash gap: 私が読んだ本 — otni butun gap bilan aniqlash
 49. 〜とき — "…ganda"

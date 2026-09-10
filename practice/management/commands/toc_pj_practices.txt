@@ -64,15 +64,15 @@ TUTORIAL: PJ-<n>:   (each practice links to its own tutorial)
 37. 〜てから, 〜まえに, 〜あとで   [done]
 38. 〜ながら   [done]
 39. 〜たいです va 〜がほしいです   [done]
-40. 〜ましょう / 〜ませんか   [next]
-41. 〜ことができます
-42. Potensial shakl
-43. Sanoq soʻzlari (助数詞)
-44. Taqqoslash: より, のほうが, いちばん
+40. 〜ましょう / 〜ませんか   [done]
+41. 〜ことができます   [done]
+42. Potensial shakl   [done]
+43. Sanoq soʻzlari   [done] (助数詞)
+44. Taqqoslash   [done]: より, のほうが, いちばん
 
 ### Block D: Gapni bogʻlash (45–62)   level: medium · 20 savol
-45. Oddiy shakl (普通体)
-46. 〜と思います
+45. Oddiy shakl (普通体)   [done]
+46. 〜と思います   [next]
 47. 〜と言いました
 48. Aniqlovchi ergash gap
 49. 〜とき
