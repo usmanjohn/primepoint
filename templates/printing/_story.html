@@ -50,7 +50,7 @@ same table, and the JS quiz becomes a static lettered list. The narration
     <h3 class="h6 mt-3 mb-1"><i class="bi bi-mortarboard me-1"></i>{{ story.labels.p_gram }}</h3>
     {% for g in story.grammar.all %}
     <div class="cn-gram">
-        <p class="cn-gram-pattern">{{ g.pattern }}</p>
+        <p class="cn-gram-pattern">{{ g.pattern|safe }}</p>
         {% comment %}
         meaning / examples / explanations are authored HTML (they use bold to
         mark the pattern inside a sentence), so they are rendered, not escaped.

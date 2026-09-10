@@ -88,10 +88,23 @@ Always in this order:
 - Use `oʻ` and `gʻ` (with the ʻ mark), not `o'`/`g'` or `ў`.
 - Good Uzbek, not translated-from-English Uzbek. Short sentences. Everyday words.
 - The glossary is always Japanese term → Uzbek meaning.
-- Names in examples: the user's real pupils — **Afsona, Jasur, Sherbek, Dilnoza, Bekzod** —
-  alongside common Japanese names (田中, 佐藤, ゆき, けん, はるか). An Uzbek name written in
-  Japanese goes in **katakana** (アフソナ, ジャスル) — and that is itself a teaching moment
-  from PJ-7 on.
+- Names in examples: the user's real pupils, alongside common Japanese names
+  (田中, 佐藤, ゆき, けん, はるか). An Uzbek name written in Japanese goes in **katakana** —
+  and that is itself a teaching moment from PJ-7 on.
+
+  **Use these five first** (the user asked for them by name, 2026-09-10 — the earlier
+  regulars Afsona / Jasur / Sherbek / Dilnoza / Bekzod had taken over the shelf):
+
+  | Uzbek | Katakana | |
+  |---|---|---|
+  | Rano   | ラノ    | qiz |
+  | Pari   | パリ    | qiz |
+  | Munira | ムニラ  | qiz |
+  | Inom   | イノム  | oʻgʻil |
+  | Imron  | イムロン | oʻgʻil |
+
+  Rotate them — a batch that uses only two of the five is doing the same thing the old
+  set did. The wider class list is still fine for variety; these five lead.
 
 ## 4. Script policy — the three ladders
 

@@ -135,10 +135,10 @@ AUTHOR:     powerty
 
 ### Block C: Feʼlning haqiqiy dunyosi (27–44)   70–130 soʻz · 丁寧体
 27. Uchta feʼl guruhi   [done]
-28. Lugʻat shakli   [next]
-29. て-shakli 1
-30. て-shakli 2
-31. 〜ています
+28. Lugʻat shakli   [done]
+29. て-shakli 1   [done]
+30. て-shakli 2   [done]
+31. 〜ています   [next]
 32. 〜てください va 〜てもいいです
 33. 〜てはいけません va 〜なければなりません
 34. ない-shakli

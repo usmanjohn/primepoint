@@ -102,15 +102,18 @@
         <p class="small text-secondary mb-3">{{ story.labels.gram_hint }}</p>
         {% for g in grammar %}
         <div class="cn-gram">
-            <p class="cn-gram-pattern">{{ g.pattern }}</p>
             {% comment %}
-            meaning and a question's explanation are authored HTML (bold/italic mark the
-            pattern), staff-only via import_corner or admin — same trust as story.body above.
+            EVERY field below is authored HTML, staff-only via import_corner or admin —
+            same trust as story.body above. Patterns, examples, question text and choices
+            were escaped here while the print sheet rendered them, so Prime Japanese —
+            the first shelf whose questions carry <ruby> furigana — showed pupils raw
+            "<ruby>教室<rt>きょうしつ</rt></ruby>" markup in every reading's quiz.
             {% endcomment %}
+            <p class="cn-gram-pattern">{{ g.pattern|safe }}</p>
             <p class="cn-gram-meaning">{{ g.meaning|safe }}</p>
             {% if g.examples %}
             <ul class="cn-gram-ex">
-                {% for ex in g.examples %}<li>{{ ex }}</li>{% endfor %}
+                {% for ex in g.examples %}<li>{{ ex|safe }}</li>{% endfor %}
             </ul>
             {% endif %}
         </div>
@@ -124,12 +127,12 @@
         <p class="small text-secondary mb-3">{{ story.labels.quiz_hint }}</p>
         {% for q in questions %}
         <div class="cn-q" data-answer="{{ q.answer }}">
-            <p class="cn-q-text">{{ forloop.counter }}. {{ q.text }}</p>
+            <p class="cn-q-text">{{ forloop.counter }}. {{ q.text|safe }}</p>
             <div class="cn-opts">
                 {% for choice in q.choices %}
                 <button type="button" class="cn-opt" data-i="{{ forloop.counter0 }}">
                     <span class="cn-opt-letter">{{ forloop.counter0|add:65|stringformat:"c" }}</span>
-                    <span class="cn-opt-text">{{ choice }}</span>
+                    <span class="cn-opt-text">{{ choice|safe }}</span>
                     <span class="cn-opt-mark" aria-hidden="true"></span>
                 </button>
                 {% endfor %}

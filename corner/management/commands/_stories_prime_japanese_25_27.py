@@ -29,7 +29,7 @@ STORIES = [
     {
         "title":   "おおきい ねこと ちいさい ねこ",
         "summary": (
-            "PJ-25 matni. Dilnozaning ikkita mushugi bor — biri katta, biri "
+            "PJ-25 matni. Muniraning ikkita mushugi bor — biri katta, biri "
             "kichik. Butun matn い-sifatlar ustida turadi: kesim, inkor va "
             "oʻtgan zamon."
         ),
@@ -59,19 +59,19 @@ STORIES = [
                 "examples": ["<ruby>白<rt>しろ</rt></ruby>い<ruby>猫<rt>ねこ</rt></ruby> · <ruby>黒<rt>くろ</rt></ruby>い<ruby>猫<rt>ねこ</rt></ruby>"],
             },
         ],
-        "body": '''<p>ディルノザさんの<ruby>家<rt>いえ</rt></ruby>に<span class="cn-word" data-tr="mushuk"><ruby>猫<rt>ねこ</rt></ruby></span>がいます。<span class="cn-word" data-tr="ism"><ruby>名前<rt>なまえ</rt></ruby></span>はシロとクロです。</p>
+        "body": '''<p>ムニラさんの<ruby>家<rt>いえ</rt></ruby>に<span class="cn-word" data-tr="mushuk"><ruby>猫<rt>ねこ</rt></ruby></span>がいます。<span class="cn-word" data-tr="ism"><ruby>名前<rt>なまえ</rt></ruby></span>はシロとクロです。</p>
 
-<p><strong>アフソナ:</strong> シロは<ruby>大<rt>おお</rt></ruby>きいですね。クロは<ruby>小<rt>ちい</rt></ruby>さいです。</p>
+<p><strong>ラノ:</strong> シロは<ruby>大<rt>おお</rt></ruby>きいですね。クロは<ruby>小<rt>ちい</rt></ruby>さいです。</p>
 
-<p><strong>ディルノザ:</strong> はい。シロは<span class="cn-word" data-tr="oq"><ruby>白<rt>しろ</rt></ruby>い</span><ruby>猫<rt>ねこ</rt></ruby>です。クロは<span class="cn-word" data-tr="qora"><ruby>黒<rt>くろ</rt></ruby>い</span><ruby>猫<rt>ねこ</rt></ruby>です。</p>
+<p><strong>ムニラ:</strong> はい。シロは<span class="cn-word" data-tr="oq"><ruby>白<rt>しろ</rt></ruby>い</span><ruby>猫<rt>ねこ</rt></ruby>です。クロは<span class="cn-word" data-tr="qora"><ruby>黒<rt>くろ</rt></ruby>い</span><ruby>猫<rt>ねこ</rt></ruby>です。</p>
 
-<p><strong>アフソナ:</strong> クロは<span class="cn-word" data-tr="tez"><ruby>速<rt>はや</rt></ruby>い</span>ですか。</p>
+<p><strong>ラノ:</strong> クロは<span class="cn-word" data-tr="tez"><ruby>速<rt>はや</rt></ruby>い</span>ですか。</p>
 
-<p><strong>ディルノザ:</strong> とても<ruby>速<rt>はや</rt></ruby>いです。シロは<ruby>速<rt>はや</rt></ruby>くないです。シロは<ruby>毎日<rt>まいにち</rt></ruby><span class="cn-word" data-tr="koʻp">たくさん</span><ruby>食<rt>た</rt></ruby>べます。</p>
+<p><strong>ムニラ:</strong> とても<ruby>速<rt>はや</rt></ruby>いです。シロは<ruby>速<rt>はや</rt></ruby>くないです。シロは<ruby>毎日<rt>まいにち</rt></ruby><span class="cn-word" data-tr="koʻp">たくさん</span><ruby>食<rt>た</rt></ruby>べます。</p>
 
-<p><strong>アフソナ:</strong> <ruby>昨日<rt>きのう</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>、シロを<ruby>見<rt>み</rt></ruby>ました。とても<span class="cn-word" data-tr="qiziqarli edi"><ruby>面白<rt>おもしろ</rt></ruby>かった</span>です。</p>
+<p><strong>ラノ:</strong> <ruby>昨日<rt>きのう</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>、シロを<ruby>見<rt>み</rt></ruby>ました。とても<span class="cn-word" data-tr="qiziqarli edi"><ruby>面白<rt>おもしろ</rt></ruby>かった</span>です。</p>
 
-<p><strong>ディルノザ:</strong> シロはいい<ruby>猫<rt>ねこ</rt></ruby>です。クロもいい<ruby>猫<rt>ねこ</rt></ruby>です。</p>''',
+<p><strong>ムニラ:</strong> シロはいい<ruby>猫<rt>ねこ</rt></ruby>です。クロもいい<ruby>猫<rt>ねこ</rt></ruby>です。</p>''',
         "questions": [
             {
                 "text": "シロは どんな <ruby>猫<rt>ねこ</rt></ruby>ですか。",
@@ -101,7 +101,7 @@ STORIES = [
                                "<strong>くない</strong>.",
             },
             {
-                "text": "アフソナさんは<ruby>昨日<rt>きのう</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>どう<ruby>言<rt>い</rt></ruby>いましたか。",
+                "text": "ラノさんは<ruby>昨日<rt>きのう</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>どう<ruby>言<rt>い</rt></ruby>いましたか。",
                 "choices": [
                     "とても<ruby>面白<rt>おもしろ</rt></ruby>いでした",
                     "とても<ruby>面白<rt>おもしろ</rt></ruby>いかったです",
@@ -120,7 +120,7 @@ STORIES = [
     {
         "title":   "しずかな としょかん",
         "summary": (
-            "PJ-26 matni. Jasur har shanba kutubxonaga boradi. Matnda な-sifat "
+            "PJ-26 matni. Inom har shanba kutubxonaga boradi. Matnda な-sifat "
             "uch holatda koʻrinadi: otdan oldin な bilan, kesim boʻlib な siz, "
             "va 〜が好きです qolipida."
         ),
@@ -147,24 +147,24 @@ STORIES = [
                              "<ruby>漢字<rt>かんじ</rt></ruby>は<ruby>好<rt>す</rt></ruby>きではありません。"],
             },
         ],
-        "body": '''<p>ジャスルさんは<ruby>毎週<rt>まいしゅう</rt></ruby><ruby>土曜日<rt>どようび</rt></ruby>に<span class="cn-word" data-tr="kutubxona"><ruby>図書館<rt>としょかん</rt></ruby></span>へ<ruby>行<rt>い</rt></ruby>きます。<ruby>図書館<rt>としょかん</rt></ruby>は<span class="cn-word" data-tr="jimjit"><ruby>静<rt>しず</rt></ruby>か</span>です。<ruby>大<rt>おお</rt></ruby>きい<span class="cn-word" data-tr="bino"><ruby>建物<rt>たてもの</rt></ruby></span>です。</p>
+        "body": '''<p>イノムさんは<ruby>毎週<rt>まいしゅう</rt></ruby><ruby>土曜日<rt>どようび</rt></ruby>に<span class="cn-word" data-tr="kutubxona"><ruby>図書館<rt>としょかん</rt></ruby></span>へ<ruby>行<rt>い</rt></ruby>きます。<ruby>図書館<rt>としょかん</rt></ruby>は<span class="cn-word" data-tr="jimjit"><ruby>静<rt>しず</rt></ruby>か</span>です。<ruby>大<rt>おお</rt></ruby>きい<span class="cn-word" data-tr="bino"><ruby>建物<rt>たてもの</rt></ruby></span>です。</p>
 
-<p><strong>ベクゾド:</strong> ジャスルさん、ここは<span class="cn-word" data-tr="qulay"><ruby>便利<rt>べんり</rt></ruby></span>ですか。</p>
+<p><strong>パリ:</strong> イノムさん、ここは<span class="cn-word" data-tr="qulay"><ruby>便利<rt>べんり</rt></ruby></span>ですか。</p>
 
-<p><strong>ジャスル:</strong> はい、とても<ruby>便利<rt>べんり</rt></ruby>です。<ruby>私<rt>わたし</rt></ruby>の<ruby>家<rt>いえ</rt></ruby>から<span class="cn-word" data-tr="yaqin"><ruby>近<rt>ちか</rt></ruby>い</span>です。</p>
+<p><strong>イノム:</strong> はい、とても<ruby>便利<rt>べんり</rt></ruby>です。<ruby>私<rt>わたし</rt></ruby>の<ruby>家<rt>いえ</rt></ruby>から<span class="cn-word" data-tr="yaqin"><ruby>近<rt>ちか</rt></ruby>い</span>です。</p>
 
-<p><strong>ベクゾド:</strong> <ruby>私<rt>わたし</rt></ruby>は<ruby>数学<rt>すうがく</rt></ruby>が<span class="cn-word" data-tr="yoqadigan"><ruby>好<rt>す</rt></ruby>き</span>です。ジャスルさんは<ruby>何<rt>なに</rt></ruby>が<ruby>好<rt>す</rt></ruby>きですか。</p>
+<p><strong>パリ:</strong> <ruby>私<rt>わたし</rt></ruby>は<ruby>数学<rt>すうがく</rt></ruby>が<span class="cn-word" data-tr="yoqadigan"><ruby>好<rt>す</rt></ruby>き</span>です。イノムさんは<ruby>何<rt>なに</rt></ruby>が<ruby>好<rt>す</rt></ruby>きですか。</p>
 
-<p><strong>ジャスル:</strong> <ruby>日本語<rt>にほんご</rt></ruby>が<ruby>好<rt>す</rt></ruby>きです。でも<span class="cn-word" data-tr="iyeroglif"><ruby>漢字<rt>かんじ</rt></ruby></span>は<ruby>好<rt>す</rt></ruby>きではありません。</p>
+<p><strong>イノム:</strong> <ruby>日本語<rt>にほんご</rt></ruby>が<ruby>好<rt>す</rt></ruby>きです。でも<span class="cn-word" data-tr="iyeroglif"><ruby>漢字<rt>かんじ</rt></ruby></span>は<ruby>好<rt>す</rt></ruby>きではありません。</p>
 
-<p><strong>ベクゾド:</strong> ここは<span class="cn-word" data-tr="mashhur"><ruby>有名<rt>ゆうめい</rt></ruby></span>な<ruby>図書館<rt>としょかん</rt></ruby>ですか。</p>
+<p><strong>パリ:</strong> ここは<span class="cn-word" data-tr="mashhur"><ruby>有名<rt>ゆうめい</rt></ruby></span>な<ruby>図書館<rt>としょかん</rt></ruby>ですか。</p>
 
-<p><strong>ジャスル:</strong> はい。<ruby>私<rt>わたし</rt></ruby>は<ruby>静<rt>しず</rt></ruby>かな<span class="cn-word" data-tr="joy"><ruby>所<rt>ところ</rt></ruby></span>が<ruby>好<rt>す</rt></ruby>きです。</p>
+<p><strong>イノム:</strong> はい。<ruby>私<rt>わたし</rt></ruby>は<ruby>静<rt>しず</rt></ruby>かな<span class="cn-word" data-tr="joy"><ruby>所<rt>ところ</rt></ruby></span>が<ruby>好<rt>す</rt></ruby>きです。</p>
 
 <p><ruby>先週<rt>せんしゅう</rt></ruby>の<ruby>土曜日<rt>どようび</rt></ruby>は<ruby>静<rt>しず</rt></ruby>かではありませんでした。<span class="cn-word" data-tr="bola"><ruby>子供<rt>こども</rt></ruby></span>がたくさんいました。</p>''',
         "questions": [
             {
-                "text": "ジャスルさんは<ruby>何<rt>なに</rt></ruby>が<ruby>好<rt>す</rt></ruby>きですか。",
+                "text": "イノムさんは<ruby>何<rt>なに</rt></ruby>が<ruby>好<rt>す</rt></ruby>きですか。",
                 "choices": [
                     "<ruby>数学<rt>すうがく</rt></ruby>が<ruby>好<rt>す</rt></ruby>きです",
                     "<ruby>漢字<rt>かんじ</rt></ruby>が<ruby>好<rt>す</rt></ruby>きです",
@@ -174,7 +174,7 @@ STORIES = [
                 "answer": 2,
                 "explanation": "«日本語が 好きです。でも 漢字は 好きではありません» — "
                                "yapon tili yoqadi, ammo iyerogliflar yoqmaydi. "
-                               "<strong>数学が好きです</strong> — bu Bekzodning gapi.",
+                               "<strong>数学が好きです</strong> — bu Parining gapi.",
             },
             {
                 "text": "<ruby>先週<rt>せんしゅう</rt></ruby>の<ruby>土曜日<rt>どようび</rt></ruby>、<ruby>図書館<rt>としょかん</rt></ruby>はどうでしたか。",
@@ -210,7 +210,7 @@ STORIES = [
     {
         "title":   "がっこうの あさ",
         "summary": (
-            "PJ-27 matni. Sherbekning bir kuni — ichida uchala feʼl guruhidan "
+            "PJ-27 matni. Imronning bir kuni — ichida uchala feʼl guruhidan "
             "feʼllar bor: 起きます va 寝ます (II), 読みます va 書きます (I), "
             "します va 来ます (III), hamda uchta tuzoq feʼl: 入ります, 帰ります, 走ります."
         ),
@@ -245,28 +245,28 @@ STORIES = [
                              "<ruby>帰<rt>かえ</rt></ruby>る → <ruby>帰<rt>かえ</rt></ruby>ります"],
             },
         ],
-        "body": '''<p>シェルベクさんは<ruby>毎朝<rt>まいあさ</rt></ruby><ruby>六時<rt>ろくじ</rt></ruby>に<span class="cn-word" data-tr="turadi"><ruby>起<rt>お</rt></ruby>きます</span>。<span class="cn-word" data-tr="nonushta"><ruby>朝<rt>あさ</rt></ruby>ごはん</span>を<ruby>食<rt>た</rt></ruby>べます。<ruby>牛乳<rt>ぎゅうにゅう</rt></ruby>を<ruby>飲<rt>の</rt></ruby>みます。</p>
+        "body": '''<p>イムロンさんは<ruby>毎朝<rt>まいあさ</rt></ruby><ruby>六時<rt>ろくじ</rt></ruby>に<span class="cn-word" data-tr="turadi"><ruby>起<rt>お</rt></ruby>きます</span>。<span class="cn-word" data-tr="nonushta"><ruby>朝<rt>あさ</rt></ruby>ごはん</span>を<ruby>食<rt>た</rt></ruby>べます。<ruby>牛乳<rt>ぎゅうにゅう</rt></ruby>を<ruby>飲<rt>の</rt></ruby>みます。</p>
 
 <p><ruby>七時<rt>しちじ</rt></ruby>にバスで<ruby>学校<rt>がっこう</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きます。バスの<ruby>中<rt>なか</rt></ruby>で<ruby>本<rt>ほん</rt></ruby>を<ruby>読<rt>よ</rt></ruby>みます。<ruby>八時<rt>はちじ</rt></ruby>に<ruby>教室<rt>きょうしつ</rt></ruby>に<span class="cn-word" data-tr="kiradi"><ruby>入<rt>はい</rt></ruby>ります</span>。<span class="cn-word" data-tr="doʻst"><ruby>友<rt>とも</rt></ruby>だち</span>を<span class="cn-word" data-tr="kutadi"><ruby>待<rt>ま</rt></ruby>ちます</span>。</p>
 
-<p><strong>アフソナ:</strong> おはようございます。<ruby>今日<rt>きょう</rt></ruby>は<ruby>何<rt>なに</rt></ruby>をしますか。</p>
+<p><strong>ラノ:</strong> おはようございます。<ruby>今日<rt>きょう</rt></ruby>は<ruby>何<rt>なに</rt></ruby>をしますか。</p>
 
-<p><strong>シェルベク:</strong> <ruby>日本語<rt>にほんご</rt></ruby>を<ruby>勉強<rt>べんきょう</rt></ruby>します。<span class="cn-word" data-tr="iyeroglif"><ruby>漢字<rt>かんじ</rt></ruby></span>も<ruby>書<rt>か</rt></ruby>きます。</p>
+<p><strong>イムロン:</strong> <ruby>日本語<rt>にほんご</rt></ruby>を<ruby>勉強<rt>べんきょう</rt></ruby>します。<span class="cn-word" data-tr="iyeroglif"><ruby>漢字<rt>かんじ</rt></ruby></span>も<ruby>書<rt>か</rt></ruby>きます。</p>
 
-<p><strong>アフソナ:</strong> やまだ<ruby>先生<rt>せんせい</rt></ruby>は<ruby>来<rt>き</rt></ruby>ますか。</p>
+<p><strong>ラノ:</strong> やまだ<ruby>先生<rt>せんせい</rt></ruby>は<ruby>来<rt>き</rt></ruby>ますか。</p>
 
-<p><strong>シェルベク:</strong> はい、<ruby>八時<rt>はちじ</rt></ruby><ruby>半<rt>はん</rt></ruby>に<ruby>来<rt>き</rt></ruby>ます。</p>
+<p><strong>イムロン:</strong> はい、<ruby>八時<rt>はちじ</rt></ruby><ruby>半<rt>はん</rt></ruby>に<ruby>来<rt>き</rt></ruby>ます。</p>
 
-<p><ruby>十二時<rt>じゅうにじ</rt></ruby>に<ruby>二人<rt>ふたり</rt></ruby>は<span class="cn-word" data-tr="oshxona"><ruby>食堂<rt>しょくどう</rt></ruby></span>へ<ruby>行<rt>い</rt></ruby>きます。シェルベクさんはパンを<span class="cn-word" data-tr="sotib oladi"><ruby>買<rt>か</rt></ruby>います</span>。アフソナさんはお<ruby>茶<rt>ちゃ</rt></ruby>を<ruby>飲<rt>の</rt></ruby>みます。<ruby>二人<rt>ふたり</rt></ruby>は<ruby>日本語<rt>にほんご</rt></ruby>で<ruby>話<rt>はな</rt></ruby>します。</p>
+<p><ruby>十二時<rt>じゅうにじ</rt></ruby>に<ruby>二人<rt>ふたり</rt></ruby>は<span class="cn-word" data-tr="oshxona"><ruby>食堂<rt>しょくどう</rt></ruby></span>へ<ruby>行<rt>い</rt></ruby>きます。イムロンさんはパンを<span class="cn-word" data-tr="sotib oladi"><ruby>買<rt>か</rt></ruby>います</span>。ラノさんはお<ruby>茶<rt>ちゃ</rt></ruby>を<ruby>飲<rt>の</rt></ruby>みます。<ruby>二人<rt>ふたり</rt></ruby>は<ruby>日本語<rt>にほんご</rt></ruby>で<ruby>話<rt>はな</rt></ruby>します。</p>
 
-<p><strong>アフソナ:</strong> シェルベクさんは<ruby>毎朝<rt>まいあさ</rt></ruby><span class="cn-word" data-tr="yuguradi"><ruby>走<rt>はし</rt></ruby>ります</span>か。</p>
+<p><strong>ラノ:</strong> イムロンさんは<ruby>毎朝<rt>まいあさ</rt></ruby><span class="cn-word" data-tr="yuguradi"><ruby>走<rt>はし</rt></ruby>ります</span>か。</p>
 
-<p><strong>シェルベク:</strong> はい、<ruby>走<rt>はし</rt></ruby>ります。でも<ruby>今日<rt>きょう</rt></ruby>は<ruby>走<rt>はし</rt></ruby>りませんでした。</p>
+<p><strong>イムロン:</strong> はい、<ruby>走<rt>はし</rt></ruby>ります。でも<ruby>今日<rt>きょう</rt></ruby>は<ruby>走<rt>はし</rt></ruby>りませんでした。</p>
 
 <p><ruby>四時<rt>よじ</rt></ruby>に<ruby>家<rt>いえ</rt></ruby>へ<span class="cn-word" data-tr="qaytadi"><ruby>帰<rt>かえ</rt></ruby>ります</span>。<ruby>夜<rt>よる</rt></ruby><ruby>十時<rt>じゅうじ</rt></ruby>に<span class="cn-word" data-tr="uxlaydi"><ruby>寝<rt>ね</rt></ruby>ます</span>。<span class="cn-word" data-tr="uzun"><ruby>長<rt>なが</rt></ruby>い</span><ruby>一日<rt>いちにち</rt></ruby>です。</p>''',
         "questions": [
             {
-                "text": "シェルベクさんは<ruby>何時<rt>なんじ</rt></ruby>に<ruby>教室<rt>きょうしつ</rt></ruby>に<ruby>入<rt>はい</rt></ruby>りますか。",
+                "text": "イムロンさんは<ruby>何時<rt>なんじ</rt></ruby>に<ruby>教室<rt>きょうしつ</rt></ruby>に<ruby>入<rt>はい</rt></ruby>りますか。",
                 "choices": [
                     "<ruby>六時<rt>ろくじ</rt></ruby>に<ruby>入<rt>はい</rt></ruby>ります",
                     "<ruby>七時<rt>しちじ</rt></ruby>に<ruby>入<rt>はい</rt></ruby>ります",

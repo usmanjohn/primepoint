@@ -52,10 +52,10 @@ TUTORIAL: PJ-<n>:   (each practice links to its own tutorial)
 
 ### Block C: Feʼlning haqiqiy dunyosi (27–44)   level: medium · 20 savol
 27. Uchta feʼl guruhi   [done]
-28. Lugʻat shakli (辞書形)   [next]
-29. て-shakli 1: 一段 va 不規則
-30. て-shakli 2: 五段
-31. 〜ています
+28. Lugʻat shakli (辞書形)   [done]
+29. て-shakli 1: 一段 va 不規則   [done]
+30. て-shakli 2: 五段   [done]
+31. 〜ています   [next]
 32. 〜てください va 〜てもいいです
 33. 〜てはいけません va 〜なければなりません
 34. ない-shakli

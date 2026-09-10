@@ -243,8 +243,8 @@ Q_PJ25 = [
       f"Tartib: koʻrsatish olmoshi → ot → は → sifat → です. Yaponchada kesim "
       f"doim gap oxirida turadi.</p>"),
 
-    q(f"<p>Suhbatni toʻldiring.</p><p><strong>アフソナ:</strong> "
-      f"{KN}の{EGA}はどうでしたか。</p><p><strong>ジャスル:</strong> ___</p>",
+    q(f"<p>Suhbatni toʻldiring.</p><p><strong>ラノ:</strong> "
+      f"{KN}の{EGA}はどうでしたか。</p><p><strong>イノム:</strong> ___</p>",
       [f"はい、{OMO}です", f"とても<ruby>面白<rt>おもしろ</rt></ruby>かったです",
        f"はい、{OMO}でした", f"{OMO}ではありませんでした"],
       f"とても<ruby>面白<rt>おもしろ</rt></ruby>かったです",
@@ -396,8 +396,8 @@ Q_PJ26 = [
       f"<p><strong>{SHI}な{KY}です</strong> — «jimjit sinf». Tartib doim "
       f"bir xil: sifat → な → ot → です.</p>"),
 
-    q(f"<p>Suhbatni toʻldiring.</p><p><strong>ベクゾド:</strong> "
-      f"{TSK}は{SHI}ですか。</p><p><strong>ジャスル:</strong> ___</p>",
+    q(f"<p>Suhbatni toʻldiring.</p><p><strong>パリ:</strong> "
+      f"{TSK}は{SHI}ですか。</p><p><strong>イノム:</strong> ___</p>",
       [f"いいえ、{SHI}くないです", f"いいえ、{SHI}ではありません",
        f"いいえ、{SHI}かったです", f"いいえ、{SHI}なではありません"],
       f"いいえ、{SHI}ではありません",
@@ -570,8 +570,8 @@ Q_PJ27 = [
       f"Vaqt kattadan kichikka boradi — avval <ruby>夜<rt>よる</rt></ruby>, "
       f"keyin soat — feʼl esa doim gap oxirida.</p>"),
 
-    q(f"<p>Suhbatni toʻldiring.</p><p><strong>アフソナ:</strong> "
-      f"{KY}で{NG}を___か。</p><p><strong>シェルベク:</strong> はい。</p>",
+    q(f"<p>Suhbatni toʻldiring.</p><p><strong>ラノ:</strong> "
+      f"{KY}で{NG}を___か。</p><p><strong>イムロン:</strong> はい。</p>",
       ["<ruby>勉強<rt>べんきょう</rt></ruby>します",
        "<ruby>勉強<rt>べんきょう</rt></ruby>すります",
        "<ruby>勉強<rt>べんきょう</rt></ruby>しるます",

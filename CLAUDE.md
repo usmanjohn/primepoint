@@ -254,13 +254,19 @@ Import order per batch: tutorials → practices → readings → audio → re-ru
 result. On the first batch this caught `行来ました` — a bulk `きました`→`来ました` edit had
 eaten the middle of `行きました`, producing a non-word that every gate passed because it was
 structurally valid ruby. One second of reading beats a wasted audio run and a broken mp3.
+**⚠️ A READING'S QUIZ IS AUTHORED HTML — `story_detail.html` USED TO ESCAPE IT** (fixed
+2026-09-10, regression tests in `corner/tests.py`). Question text, choices, the grammar
+`pattern` and its `examples` were rendered without `|safe` on the web page while the print
+sheet rendered them properly, so every Prime Japanese reading showed pupils literal
+`<ruby>教室<rt>きょうしつ</rt></ruby>` markup in its quiz. Prime Japanese is the first shelf
+whose questions carry furigana, which is why nothing caught it earlier.
 **⚠️ THE SPEAKER TAG MUST BE STRIPPED FOR TTS TOO** (fixed 2026-09-10 in
 `gen_corner_audio.py`, `SPEAKER_TAG_RE` + `SPEAKER_PREFIX_RE`, regression tests in
 `corner/tests.py`). The markup rule was anchored at `<strong>`, but `_chunks()` splits the
 body on `</p>` so every chunk still opens with its own `<p>`; the plain-text fallback that
 rescued Korean in practice only started on Latin or Hangul. So Japanese speaker names were
-read aloud — **every PJ-13…24 mp3 says "アフソナ:"** and wants regenerating. The narration
-preview below is what caught it: run it, and read the speaker lines too.
+read aloud. All 18 PJ mp3s were regenerated on 2026-09-10. The narration preview below is
+what caught it: run it, and read the speaker lines too.
 **⚠️ `<rt>` MUST BE STRIPPED FOR TTS** (fixed 2026-09-09 in `gen_corner_audio.py`,
 `RUBY_RT_RE`, with regression tests in `corner/tests.py`). Prime Japanese is the first shelf
 to use furigana; naive tag-stripping turned `<ruby>日本語<rt>にほんご</rt></ruby>` into

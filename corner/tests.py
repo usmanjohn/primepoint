@@ -3,7 +3,10 @@
 import html
 import re
 
-from django.test import SimpleTestCase
+from django.contrib.auth.models import User
+from django.test import SimpleTestCase, TestCase
+
+from corner.models import Collection, Story, StoryGrammar, StoryQuestion, Subject
 
 from corner.management.commands.gen_corner_audio import (
     RUBY_RT_RE, SPEAKER_PREFIX_RE, SPEAKER_TAG_RE, TAG_RE,
@@ -96,3 +99,54 @@ class SpeakerNameIsNotNarratedTests(SimpleTestCase):
         self.assertEqual(
             self.spoken('<p>これは<strong>大事</strong>です。</p>'),
             'これは大事です。')
+
+
+class StoryQuizRendersAuthoredHtmlTests(TestCase):
+    """A reading's question text, choices, grammar pattern and examples are HTML.
+
+    They are authored by staff through import_corner (same trust as story.body),
+    and the print sheet always rendered them — but story_detail.html escaped them.
+    Prime Japanese is the first shelf whose questions carry <ruby> furigana, so
+    pupils were shown raw "<ruby>教室<rt>きょうしつ</rt></ruby>" in every quiz.
+    """
+
+    def setUp(self):
+        author = User.objects.create_user('sensei', password='x')
+        subject = Subject.objects.create(name='Japanese', slug='japanese')
+        collection = Collection.objects.create(
+            subject=subject, title='Test Readings', slug='test-readings')
+        self.story = Story.objects.create(
+            collection=collection, author=author, title='てすと', slug='tesuto',
+            body='<p><ruby>本<rt>ほん</rt></ruby>があります。</p>', is_published=True)
+        StoryGrammar.objects.create(
+            story=self.story,
+            pattern='〜が<ruby>好<rt>す</rt></ruby>きです',
+            meaning='«… yoqadi» — <b>が</b> oladi.',
+            examples=['<ruby>音楽<rt>おんがく</rt></ruby>が<ruby>好<rt>す</rt></ruby>きです。'])
+        StoryQuestion.objects.create(
+            story=self.story, order=1,
+            text='<ruby>教室<rt>きょうしつ</rt></ruby>は どこですか。',
+            choices=['<ruby>図書館<rt>としょかん</rt></ruby>の<ruby>中<rt>なか</rt></ruby>です',
+                     '<ruby>学校<rt>がっこう</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>です',
+                     'あそこです', 'ここです'],
+            answer=0, explanation='<b>図書館</b>の中です。')
+
+    def page(self):
+        c = self.story.collection
+        url = f'/corner/{c.subject.slug}/{c.slug}/{self.story.slug}/'
+        return self.client.get(url).content.decode()
+
+    def test_question_text_is_rendered_not_escaped(self):
+        body = self.page()
+        self.assertIn('<ruby>教室<rt>きょうしつ</rt></ruby>は どこですか。', body)
+        self.assertNotIn('&lt;ruby&gt;', body)
+
+    def test_choices_are_rendered_not_escaped(self):
+        self.assertIn('<ruby>図書館<rt>としょかん</rt></ruby>の'
+                      '<ruby>中<rt>なか</rt></ruby>です', self.page())
+
+    def test_grammar_pattern_and_examples_are_rendered(self):
+        body = self.page()
+        self.assertIn('〜が<ruby>好<rt>す</rt></ruby>きです', body)
+        self.assertIn('<ruby>音楽<rt>おんがく</rt></ruby>が'
+                      '<ruby>好<rt>す</rt></ruby>きです。', body)

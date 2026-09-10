@@ -49,3 +49,20 @@ python manage.py import_practices practice/management/commands/_practice_pj_25_2
 python manage.py import_corner corner/management/commands/_stories_prime_japanese_25_27.py --author=powerty
 python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
 python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_25_27.py --author=powerty --republish
+
+# Block C, 28-30  (PJ-28 lugʻat shakli · PJ-29 て-shakli 1 · PJ-30 て-shakli 2)
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_28_30.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pj_28_30.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_28_30.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_28_30.py --author=powerty --republish
+
+# 2026-09-10 tuzatishlar — PJ-13…30 audio qayta yaratildi (ismlar oʻqilib qolgan edi)
+# va PJ-25…30 ismlari almashtirildi (Rano, Pari, Munira, Inom, Imron).
+# Quyidagilarni yuqoridagi 25-27 va 28-30 bloklaridan KEYIN, --republish bilan ishlating:
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_25_27.py --author=powerty --republish
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_28_30.py --author=powerty --republish
+python manage.py import_practices practice/management/commands/_practice_pj_25_27.py --master=powerty --expect-questions=20 --republish
+python manage.py import_practices practice/management/commands/_practice_pj_28_30.py --master=powerty --expect-questions=20 --republish
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_28_30.py --author=powerty --republish
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings" --republish
