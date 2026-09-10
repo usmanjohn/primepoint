@@ -12,14 +12,17 @@ import importlib.util
 import pathlib
 import sys
 
+import primitives as _P
+
 HERE = pathlib.Path(__file__).resolve().parent
 
 PAGE = """<!doctype html>
 <meta charset="utf-8">
 <title>{title}</title>
 <link rel="stylesheet" href="{css}">
-<body>
+<body{subj}>
 {scenes}
+{chip}
 <div class="pipguide"></div>
 <script src="{js}"></script>
 <script>
@@ -42,6 +45,20 @@ def load_story(slug):
 
 
 def build(video, out=None, guides=False, tail=""):
+    import spec as _spec
+
+    # The subject decides --accent (stage.css) and the corner chip. A film with
+    # no subject set gets neither, so every video written before 2026-09-11
+    # renders byte-for-byte as it did.
+    subj = f' data-subj="{video.subject}"' if video.subject else ""
+    # Emitted ONCE, outside every scene: the camera scales a scene as a whole,
+    # so a tag living inside one drifts and, at the 1.075 end of a `push`, is
+    # pushed clean off the bottom of the frame (27 lint findings on ko04, which
+    # is how this was caught). It is channel furniture, not part of the drawing,
+    # and it should sit rock steady while the picture moves.
+    chip = _spec.SUBJECTS.get(video.subject)
+    chip = _P.tag(*chip) if chip else ""
+
     parts = []
     for i, (a, b, sc) in enumerate(video.bounds()):
         cls = "scene"
@@ -64,6 +81,8 @@ def build(video, out=None, guides=False, tail=""):
         css=(HERE / "stage.css").as_uri(),
         js=(HERE / "anim.js").as_uri(),
         scenes="\n".join(parts),
+        subj=subj,
+        chip=chip,
         meta=meta,
         tail=("document.body.classList.add('guides');\n" if guides else "") + tail,
     )

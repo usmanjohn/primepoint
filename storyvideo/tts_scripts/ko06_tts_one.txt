@@ -1,0 +1,29 @@
+Soat uch yarimni koreyscha oʻqing. <break time='0.45s' /> Sherbek shunday oʻqidi, va yarmi xato.
+
+<break time='2.5s' />
+
+Diqqat qiling: <emphasis level='moderate'>sam si samsip pun</emphasis>. <break time='0.3s' /> Bir qarashda hammasi joyida koʻrinadi.
+
+<break time='2.5s' />
+
+Ammo koreys tilida ikkita sanoq tizimi bor. <break time='0.3s' /> Koreyscha sanoq: <emphasis level='moderate'>hana</emphasis>, <emphasis level='moderate'>tul</emphasis>, <emphasis level='moderate'>set</emphasis>, soatni, odamni, narsani va yoshni sanaydi. <break time='0.45s' /> Xitoycha sanoq: <emphasis level='moderate'>il</emphasis>, <emphasis level='moderate'>i</emphasis>, <emphasis level='moderate'>sam</emphasis>, daqiqani, pulni, oyni va yilni sanaydi.
+
+<break time='2.5s' />
+
+Demak daqiqa toʻgʻri edi. <break time='0.3s' /> Xato soatda: <emphasis level='moderate'>sam si</emphasis> emas, <emphasis level='moderate'>se si</emphasis>.
+
+<break time='2.5s' />
+
+Endi oʻzingiz sinang. Soat oʻn yigirma. <break time='0.3s' /> Soat, koreyscha: <emphasis level='moderate'>yol</emphasis>. <break time='0.3s' /> Daqiqa, xitoycha: <emphasis level='moderate'>isip</emphasis>. <break time='0.45s' /> <emphasis level='moderate'>yol si isip pun</emphasis>.
+
+<break time='2.5s' />
+
+Shuning uchun soatni koreyscha, daqiqani xitoycha sanaysiz. <break time='0.45s' /> Bu xato ona tilingizdan kelmaydi, koreys tilining oʻzida ikkita sanoq tizimi yonma-yon yashaydi.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Yoshni koreyscha sanoq bilan sanaydi. <break time='0.45s' /> Unda pasportdagi tugʻilgan yilni qaysi sanoq bilan oʻqiydi? Izohda kutamiz.
+
+<break time='2.5s' />
+
+Koreyscha sonlar Powertyda: Prime Korean, yigirma toʻrtinchi dars.

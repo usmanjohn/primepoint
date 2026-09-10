@@ -8,6 +8,21 @@ primitives.py, so a new story is written, not coded.
 
 from dataclasses import dataclass, field
 
+# The subject registry: accent colour lives in stage.css, the chip lives here.
+# The glyph is taken from the subject's OWN material rather than a flag emoji --
+# 한 says "Korean" to somebody learning Korean in a way 🇰🇷 does not, and it
+# sits in the same type as the rest of the frame.
+SUBJECTS = {
+    "math":     ("\u00f7", "Matematika"),
+    "english":  ("\u0259", "Ingliz tili"),
+    "korean":   ("\ud55c", "Koreys tili"),
+    "japanese": ("\u65e5", "Yapon tili"),
+    "russian":  ("\u0416", "Rus tili"),
+    "sat":      ("SAT",     "Digital SAT"),
+    "logic":    ("\u2696", "Mantiq"),
+    "story":    ("\u2726", "Hikoyalar"),
+}
+
 
 @dataclass
 class Scene:
@@ -47,6 +62,9 @@ class Video:
     title:  str
     lesson: str = ""            # e.g. "PM-4"
     story:  str = ""            # the Corner story this came from
+    # One of SUBJECTS above, or "" for the films written before the accent
+    # system existed -- those keep the gold default and render unchanged.
+    subject: str = ""
     scenes: list = field(default_factory=list)
 
     @property

@@ -3,7 +3,7 @@
 Turns a Prime Math reading into a 1080x1920 animatic for Shorts / Reels / Telegram,
 with TTS narration and a synthesised sound layer under it.
 
-    python3 cli.py lint    pm04     three gates, no rendering
+    python3 cli.py lint    pm04     four gates, no rendering
     python3 cli.py sheet   pm04     contact sheet, one frame per scene
     python3 cli.py preview pm04     scrubbable stage in Chrome
     python3 cli.py render  pm04     silent mp4 + cue sheet
@@ -171,3 +171,91 @@ inversion: the prose is Uzbek and Korean is the *material*, each word a
 
 Pronunciations quoted in those texts are spelled the way `korean.py` spells
 them, so the shelf, the video and the narration never disagree.
+
+
+## Bitta kanal, sakkizta fan — `subject`, `.tag`, `cover()`   (2026-09-11)
+
+Sakkiz fan bitta kanalda turishi kerak, va tomoshabin uchun ularning kesishmasi
+**mavzu emas — format**. Shuning uchun brend qogʻozning oʻzida qoladi, fan esa
+faqat **urgʻu rangini** oʻzgartiradi.
+
+**`Video(subject="korean")`** — bitta soʻz, uchta natija:
+
+| qatlam | nima | oʻzgaradimi |
+|---|---|---|
+| qogʻoz, Playfair/Mulish, sanagich, `beat`, `ask`, `outro` | kanal | **hech qachon** |
+| `--accent` + burchakdagi chip | fan | har videoda |
+| ochilish marosimi va muqova tartibi | seriya | har seriyada |
+
+`spec.SUBJECTS` — sakkiz fan, har biriga bitta belgi (`한`, `÷`, `ə`, `日`, `Ж`,
+`SAT`, `⚖`, `✦`) va oʻzbekcha nom; ranglar `stage.css` ning **SUBJECT ACCENT**
+boʻlimida. Belgi bayroq emoji emas, fanning **oʻz materialidan** olinadi.
+`subject` boʻsh boʻlsa — na urgʻu, na chip: shu sababli bugungacha yozilgan
+22 ta film aynan avvalgidek render qiladi.
+
+Chip (`primitives.tag`) `build.py` tomonidan **bir marta**, sahnalardan
+**tashqarida** chiqariladi va `position: fixed`. Sahna ichida turgani kamera
+bilan suriladi va `push` ning 1.075 chegarasida kadrdan tushib ketadi — ko04 da
+27 ta lint xatosi shundan chiqdi. Chip — chizmaning bir qismi emas, kanalning
+mebeli; rasm surilganda u qimirlamaydi. Qogʻoz rangli tabletka esa bitta
+element ikkala fonda ishlashi uchun: yorugʻda oddiy chip, qorongʻi yopuvchi
+kartada esa yorqin tabletka.
+
+### `cover()` — birinchi kadr, yaʼni muqova
+
+`hook` bu ishni bajara olmaydi: u har bir satrni `scale(0.3)` dan `at=0.0` da
+ochadi, demak uning **0-kadri boʻsh qogʻoz**. Reels, Shorts va Telegram esa
+muqova uchun aynan 0-kadrga qoʻl uzatadi. `cover()` ning hammasi `anim="none"`
+bilan `t=0` da chizilgan — platforma qaysi kadrni olsa, oʻsha tuzilgan kadr.
+
+Uchta qoida, va bu — format, bezak emas:
+
+* **notoʻgʻri** narsani koʻrsatadi (chizib tashlangan) yoki gʻalati narsani —
+  hech qachon mavzu nomini. «Koreys tili darsi» ustiga bosilmaydi; ustidan
+  qizil chiziq oʻtgan 고마워 esa aylanib oʻtilmaydi.
+* vaʼda — **toʻrt soʻzdan koʻp emas**, fan urgʻu rangida, tabletka ustida.
+* ikkalasi ham **y 420…1500** ichida — profil setkasi 9:16 ni shu kvadratga
+  qirqadi. Chip ataylab shundan tashqarida qoladi.
+
+⚠️ **Qizil chiziq faqat notoʻgʻri qismdan oʻtsin.** ko06 ning vaʼdasi «Yarmi
+xato», birinchi variantda esa chiziq butun gapdan oʻtgan edi — rasm oʻz
+vaʼdasiga qarshi chiqdi. `strike=False` bering va `<span class="strike">` ni
+faqat xato boʻlagiga qoʻying (ko05 va ko06 shunday).
+
+`cover` filmning **birinchi ovoz satrini** olib yuradi, shuning uchun jim
+sarlavha kartasiga bir soniya ham ketmaydi.
+
+### Toʻrtinchi darvoza: `cover`
+
+`lint` endi `t=0` ni ham tekshiradi — bu yergacha hech bir probe qaramagan edi
+(hammasi sahnaning oʻrtasidan namuna oladi). Kamida 3 ta element va eng kamida
+120px yozuv talab qiladi. Muqova sahnasi bilan boshlanmagan film **yiqilmaydi,
+ogohlantiriladi**: 22 ta filmning 0-kadri haqiqatan boʻsh, lekin ularni qayta
+kesish alohida ish.
+
+### Ikkita oʻlchov xatosi, ikkalasi ham tuzatildi
+
+**`fit_px`/`expr_size` belgilarni sanardi.** Hangul, kana va CJK **kvadrat**
+gavdada chiziladi — lotin uchun moʻljallangan 0.63em emas, taxminan 1.0em.
+Shuning uchun `hero`/`ttl`/`expr` ga tushgan koreyscha satr yarim baravar
+katta chiqadi va kadrdan chiqib ketadi. ko01-03 buni sezmagan, chunki
+ulardagi har bir koreyscha satr `size=` bilan qoʻlda berilgan edi.
+`primitives.advance()` — belgi emas, **kenglik** sanaydi.
+
+**Mulish oʻzbekcha okinani (`ʻ`, U+02BB) 0.50em kenglikda chizadi** —
+Playfairning 0.21em iga qarshi. Shuning uchun tana shriftidagi har bir
+`oʻ`/`gʻ` «o ʻ» boʻlib koʻrinadi: «Oʻylab koʻring» → «O ʻylab ko ʻring».
+Oʻlchandi, taxmin qilinmadi. `'Okina'` @font-face oʻsha bitta kodni Playfairdan
+oladi va `--ff-body` stekining boshida turadi — boshqa hech bir belgi
+qimirlamaydi. Qaytarish kerak boʻlsa: stekdan `'Okina'` ni olib tashlang.
+
+**Koreyscha soʻz hech qachon boʻlinmasin.** `.pair b` ga `white-space: nowrap`
+qoʻshildi — 감사합니다 ko04 da «감사합니 / 다» boʻlib ketdi. ko03 buni koʻrmagan,
+chunki 을/를 va 의 bir-ikki belgidan iborat.
+
+### «Tutilgan xato» — birinchi seriya
+
+Format mavzuga bogʻliq emas edi: matematika filmlari notoʻgʻri boʻluvchini
+ushlaydi, ko04 notoʻgʻri nutq darajasini, arc esa oʻzgarmaydi
+(`says → consequence → correct`). Birinchi uchtasi — ko04 (PK-11),
+ko05 (PK-14), ko06 (PK-23/24).

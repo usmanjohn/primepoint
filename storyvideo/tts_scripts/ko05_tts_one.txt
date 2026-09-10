@@ -1,0 +1,33 @@
+Uyda oʻqiyman degan gapni koreyschaga oʻgiring. <break time='0.45s' /> Koʻpchilik shunday yozadi, va bitta harfda adashadi.
+
+<break time='2.5s' />
+
+Afsona ham shunday qildi. <break time='0.3s' /> Oʻzbekchada uyda, bitta soʻz, shuning uchun u bitta qoʻshimcha qidirdi.
+
+<break time='2.5s' />
+
+Ammo qarang. Chapda: <emphasis level='moderate'>chibe issoyoʻ</emphasis>, uyda borman. <break time='0.3s' /> Oʻngda: <emphasis level='moderate'>chibeso koʻngbuheyoʻ</emphasis>, uyda oʻqiyman. <break time='0.45s' /> Oʻzbekchada ikkalasi ham uyda. Koreyschada esa ikki xil qoʻshimcha.
+
+<break time='2.5s' />
+
+Farqi feʼlda. <break time='0.3s' /> Agar feʼl ish bildirsa, <emphasis level='moderate'>eso</emphasis> qoʻyiladi.
+
+<break time='2.5s' />
+
+Qoida oddiy. <emphasis level='moderate'>e</emphasis>, joyning oʻzi: bor, yoʻq, boradi, keladi. <break time='0.3s' /> <emphasis level='moderate'>eso</emphasis>, ish bajarilgan joy: oʻqiydi, ishlaydi, yeydi. <break time='0.45s' /> Va <emphasis level='moderate'>eso</emphasis> ning yana bitta vazifasi bor, -dan. Uydan chiqdim.
+
+<break time='2.5s' />
+
+Endi yangi gapda sinaymiz. Maktabda oʻqiyman. <break time='0.3s' /> Feʼl, oʻqiyman, bu ish. <break time='0.45s' /> Demak <emphasis level='moderate'>hakkyoʻeso koʻngbuheyoʻ</emphasis>.
+
+<break time='2.5s' />
+
+Shuning uchun oʻzbekcha -da koreyschada ikkiga boʻlinadi. <break time='0.45s' /> Bu xato eʼtiborsizlikdan emas, ona tilidan keladi. Bir marta ajratib olsangiz, boshqa adashmaysiz.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. <emphasis level='moderate'>odieso vassoyoʻ</emphasis>, qaerdan keldingiz. <break time='0.45s' /> Nega bu yerda <emphasis level='moderate'>eso</emphasis> turadi? Izohda kutamiz.
+
+<break time='2.5s' />
+
+Joy qoʻshimchalari Powertyda: Prime Korean, oʻn toʻrtinchi dars.

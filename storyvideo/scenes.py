@@ -16,6 +16,46 @@ from spec import Scene
 import primitives as P
 
 
+def cover(wrong, ask, kicker=None, context=None, right=None, strike=True,
+          dur=3.6, cam="push", size=None, note=""):
+    """The designed first frame -- it IS the thumbnail.
+
+    Every element is drawn at t=0 with anim="none", so the frame a platform
+    grabs for a cover is the frame that was composed. `hook` cannot do this
+    job: it pops each line in from scale 0.3 starting at 0.0, so its frame 0
+    is bare paper, and Reels, Shorts and Telegram all reach for frame 0.
+
+    Three rules, and they are the format rather than decoration:
+
+    * it shows the WRONG thing, struck through, or the strange thing -- never
+      the topic's name. "Koreys tili darsi" is unclickable; 고마워 with a red
+      bar through it cannot be scrolled past.
+    * the promise is at most four words, in the subject accent, on a slab so
+      it survives being shrunk to a grid cell.
+    * both sit inside y 420...1500 -- the centre square a profile grid crops
+      the 9:16 frame down to. The corner tag deliberately sits outside it.
+
+    It carries the film's FIRST narration line, so the voice starts on frame 1
+    and nothing is spent on a silent title card.
+    """
+    px = size or min(300, P.fit_px(wrong, "hero", 840))
+    at = 'data-at="0.000" data-dur="0.30" data-anim="none"'
+    body = ['<div class="cover">']
+    if kicker:
+        body.append(f'<div class="cover__k" {at}>{kicker}</div>')
+    if context:
+        body.append(f'<div class="cover__c" {at}>{context}</div>')
+    body.append(f'<div class="cover__w{" strike" if strike else ""}" '
+                f'style="font-size:{px}px" {at}>{wrong}</div>')
+    if right:
+        body.append(f'<div class="cover__w grn" style="font-size:{px}px" {at}>'
+                    f'{right}</div>')
+    body.append(f'<div class="cover__slab" {at}><div class="cover__a">{ask}</div></div>')
+    body.append('</div>')
+    return Scene(dur, "".join(body), cam=cam, name="cover",
+                 note=note or f"MUQOVA: {wrong} — {ask}")
+
+
 def hook(big, label, then=None, then_label=None, ask=None, dur=4.6):
     """Title card. The two numbers of the problem, then the question."""
     h = [P.line(big, "hero", at=0.0, anim="pop", dur=0.7),

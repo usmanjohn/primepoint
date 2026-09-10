@@ -256,6 +256,68 @@ def check_layout(stage, video, per_scene=3):
     return rows
 
 
+# ─────────────────────────────────────────────────── the cover gate ──
+# The fourth gate, added with the cover beat (2026-09-11). Every other probe in
+# this file samples the MIDDLE of a scene, so nothing here ever looked at t=0 --
+# and t=0 is the frame Reels, Shorts and Telegram all reach for when they need a
+# thumbnail. `hook` pops its lines in from scale 0.3 starting at 0.0, so a film
+# that opens on one has a blank first frame and a blank cover. This gate exists
+# so that can never ship again.
+COVER_JS = r"""
+(() => {
+  const out = {n: 0, big: 0, texts: []};
+  const sc = document.querySelector('.scene');
+  if (!sc || sc.style.display === 'none') return out;
+  sc.querySelectorAll('*').forEach(el => {
+    if (el.closest('svg') && el.tagName.toLowerCase() !== 'svg') return;
+    const st = getComputedStyle(el);
+    if (st.visibility === 'hidden' || parseFloat(st.opacity) < 0.9) return;
+    const r = el.getBoundingClientRect();
+    if (r.width < 2 || r.height < 2) return;
+    const kid = [...el.children].some(c => c.getBoundingClientRect().width > 2);
+    const tx = (el.textContent || '').trim();
+    if (kid || !tx) return;
+    out.n += 1;
+    out.big = Math.max(out.big, parseFloat(st.fontSize));
+    out.texts.push(tx.slice(0, 24));
+  });
+  return out;
+})()
+"""
+
+COVER_MIN_ELS = 3        # kicker + the wrong thing + the promise, at least
+COVER_MIN_PX  = 120      # ~13px once the grid shrinks 1080 to 120 wide
+
+
+def check_cover(stage, video):
+    """At t=0 the first scene must already be a finished picture."""
+    from playwright.sync_api import sync_playwright
+    import render
+
+    bad = []
+    with sync_playwright() as pw:
+        b_, pg = render._page(pw, pathlib.Path(stage).resolve().as_uri())
+        pg.evaluate("seek(0)")
+        r = pg.evaluate(COVER_JS)
+        b_.close()
+
+    first = video.scenes[0].name if video.scenes else "?"
+    if r["n"] < COVER_MIN_ELS:
+        bad.append(f"frame 0 [{first}]: faqat {r['n']} element chizilgan "
+                   f"(kerak >= {COVER_MIN_ELS}) — muqova boʻsh chiqadi")
+    if r["big"] < COVER_MIN_PX:
+        bad.append(f"frame 0 [{first}]: eng katta yozuv {r['big']:.0f}px "
+                   f"(kerak >= {COVER_MIN_PX}px) — setkada oʻqilmaydi")
+
+    # A film that opens on a `cover` is held to the gate. A film written before
+    # the beat existed is TOLD -- its frame 0 really is blank paper and its
+    # thumbnail really is empty -- but not failed, because 22 of them shipped
+    # that way and re-cutting them is its own job, not a blocker on this one.
+    if first != "cover":
+        return [], dict(r, warn=bad)
+    return bad, dict(r, warn=[])
+
+
 # ───────────────────────────────────────────────────────── report ──
 def run(video, stage, layout=True):
     print(f"lint {video.slug} — {video.duration:.1f}s, {len(video.scenes)} scenes")
@@ -303,6 +365,18 @@ def run(video, stage, layout=True):
                 n = f" x{len(g)}" if len(g) > 1 else ""
                 print(f'    {kind:<10} [{scene}] {el}{n}  {extra}')
         fails += len(rows)
+
+        bad, r = check_cover(stage, video)
+        print(f"  cover: frame 0 has {r['n']} element(s), "
+              f"largest {r['big']:.0f}px" + (" — OK" if not (bad or r["warn"]) else ""))
+        for b in bad:
+            print(f"    FAIL {b}")
+        for w in r["warn"]:
+            print(f"    ogohlantirish  {w}")
+        if r["warn"]:
+            print("    (muqova sahnasi yoʻq — `cover(...)` qoʻshilsa, "
+                  "birinchi kadrning oʻzi eskiz boʻladi)")
+        fails += len(bad)
 
     print(f"  => {'PASS' if fails == 0 else str(fails) + ' problem(s)'}")
     return fails

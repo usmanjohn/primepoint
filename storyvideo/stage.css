@@ -18,7 +18,7 @@
   --wood-dark:  #9c6b3c;
 
   --ff-head: 'Playfair Display', Georgia, serif;
-  --ff-body: 'Mulish', system-ui, sans-serif;
+  --ff-body: 'Okina', 'Mulish', system-ui, sans-serif;
 
   /* Layout contract. The PIP patch is where his face circle sits; lint.py
    * fails any build that puts content under it. */
@@ -404,8 +404,99 @@ body.guides .pipguide { display: block; }
 .pair { display: flex; align-items: center; gap: 26px; padding: 14px 30px;
         background: var(--paper-2); border-radius: 24px; }
 .pair b { font-family: var(--ff-ko); font-weight: 800; font-size: 62px;
-          color: var(--ink); min-width: 210px; }
+          color: var(--ink); min-width: 210px; white-space: nowrap; }
 .pair i { font-family: var(--ff-head); font-weight: 800; font-size: 46px;
           color: var(--ink-faint); font-style: normal; }
 .pair span { font-family: var(--ff-body); font-weight: 700; font-size: 46px;
              color: var(--ink-soft); }
+
+/* ═══════════════════════════════════════════════════════════════════════
+ * SUBJECT ACCENT · THE TAG · THE COVER            (2026-09-11)
+ *
+ * The channel is the PAPER; the subject is the ACCENT. One variable, stamped
+ * once on <body> from Video.subject, so a Korean film and a maths film are the
+ * same film in a different colour — which is the whole point: eight subjects
+ * that still read as one channel. Giving each subject its own BACKGROUND was
+ * the other option and it was rejected: the warm paper is the thing nobody
+ * else on Reels has, and it is the only reason the grid looks like a channel.
+ *
+ * `--accent` defaults to gold, so every video written before today renders
+ * exactly as it did. Only a spec that sets `subject=` moves.
+ * ═══════════════════════════════════════════════════════════════════════ */
+:root { --accent: var(--gold); --accent-dim: var(--gold-dim); --accent-ink: #fff; }
+
+body[data-subj="math"]     { --accent: #c9923a; --accent-dim: rgba(201,146,58,.14); }
+body[data-subj="english"]  { --accent: #2e7d7a; --accent-dim: rgba(46,125,122,.13); }
+body[data-subj="korean"]   { --accent: #3b6ea5; --accent-dim: rgba(59,110,165,.13); }
+body[data-subj="japanese"] { --accent: #3d4a7d; --accent-dim: rgba(61,74,125,.13); }
+body[data-subj="russian"]  { --accent: #7a5aa0; --accent-dim: rgba(122,90,160,.13); }
+body[data-subj="sat"]      { --accent: #24405e; --accent-dim: rgba(36,64,94,.13); }
+body[data-subj="logic"]    { --accent: #5f7d3a; --accent-dim: rgba(95,125,58,.13); }
+body[data-subj="story"]    { --accent: #c08a52; --accent-dim: rgba(192,138,82,.14); }
+
+/* ── the corner tag: which subject this is, on every frame ─────────────
+ * Bottom-left, because top-right is his face and top-left is where the
+ * top-aligned scenes park their counters. It scales with the camera like
+ * everything else, so it never reads as an overlay bolted on afterwards. */
+/* `fixed`, and outside every .scene, so the camera cannot drag it off frame.
+ * The paper pill is what lets one element serve both grounds: on the paper it
+ * reads as a plain chip, on a dark closing card it becomes a light pill and
+ * stays legible without a second rule to keep in sync. */
+.tag { position: fixed; left: 62px; bottom: 56px; z-index: 90;
+       display: flex; align-items: center; gap: 14px;
+       background: rgba(250,247,242,.93); border-radius: 24px;
+       padding: 9px 22px 9px 9px; }
+.tag__g { font-family: var(--ff-ko); font-weight: 800; font-size: 42px;
+          line-height: 1; color: #fff; background: var(--accent);
+          border-radius: 15px; padding: 9px 15px 11px; }
+.tag__n { font-family: var(--ff-body); font-weight: 800; font-size: 34px;
+          letter-spacing: .04em; text-transform: uppercase;
+          color: var(--ink-soft); }
+
+/* ── the cover: the first frame, and therefore the thumbnail ───────────
+ * Everything here is drawn at t=0 with anim="none". That is the whole
+ * requirement: `hook` pops from scale 0.3 at t=0.0, so its frame 0 is very
+ * nearly blank, and any platform that grabs the first frame for a cover
+ * grabs blank paper. This scene is finished before the video starts.
+ *
+ * It is also cropped: the profile grid shows a centre square of the 9:16
+ * frame (y 420…1500), so the wrong thing and the promise both sit inside
+ * that band and the tag deliberately does not. */
+/* Mulish draws U+02BB -- the Uzbek okina in oʻ / gʻ -- with a 0.50em advance,
+ * two and a half times Playfair's 0.21em, so "oʻqiyman" in the body font reads
+ * as "o ʻqiyman". Measured, not guessed. This borrows Playfair's okina for that
+ * one codepoint and leaves every other glyph on Mulish.
+ *
+ * Wired into `--ff-body` itself, so it fixes every Uzbek label in every film.
+ * That is a correction, not a restyle: no glyph but U+02BB/02BC moves, and the
+ * contact sheets showed the gap on nearly every closing card in the catalogue
+ * ("Oʻylab koʻring" -> "O ʻylab ko ʻring"). To revert, drop 'Okina' from the
+ * --ff-body stack on one line and nothing else changes. */
+@font-face {
+  font-family: 'Okina';
+  font-style: normal;
+  font-weight: 200 900;
+  src: url(./assets/fonts/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgEM86xQ.woff2) format('woff2');
+  unicode-range: U+02BB-02BC;
+}
+
+/* Lifted 110px above the padded centre: the block is clear of the PIP circle
+ * either way, and centred in the box it sits low with 300px of dead paper
+ * between his face and the kicker. */
+.cover      { display: flex; flex-direction: column; align-items: center; gap: 30px;
+              margin-bottom: 220px; }
+.cover__k   { font-family: 'Okina', var(--ff-body); font-weight: 800; font-size: 38px;
+              letter-spacing: .12em; text-transform: uppercase;
+              color: var(--accent); }
+.cover__c   { font-family: 'Okina', var(--ff-body); font-weight: 700; font-size: 46px;
+              color: var(--ink-soft); text-align: center; max-width: 860px; }
+/* The wrong thing, big enough to read at 120px wide in a profile grid. */
+.cover__w   { font-family: var(--ff-ko); font-weight: 800; line-height: 1.04;
+              text-align: center; color: var(--ink);
+              max-width: 940px; word-break: keep-all; }
+.cover__a   { font-family: var(--ff-head); font-weight: 900; font-size: 78px;
+              line-height: 1.1; text-align: center; max-width: 900px;
+              color: var(--accent); }
+/* The promise sits in a slab so it survives being shrunk to a grid cell. */
+.cover__slab{ background: var(--accent-dim); border-radius: 30px;
+              padding: 26px 40px; max-width: 940px; }

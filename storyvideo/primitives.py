@@ -13,6 +13,8 @@ a quantity without one, because "every quantity countable on screen" is the whol
 point of the format.
 """
 
+import re
+
 import people as _people
 
 
@@ -137,8 +139,9 @@ EXPR_MAX_PX = 128
 
 
 def expr_size(text, max_w=EXPR_MAX_W):
-    import re as _re
-    n = len(_re.sub(r"<[^>]+>", "", text))
+    # advance(), not len(): see the note on _WIDE. A Korean line in `.expr`
+    # counted by characters comes out half again too wide for the card.
+    n = advance(text)
     return max(46, min(EXPR_MAX_PX, int(max_w / (n * 0.56)))) if n else EXPR_MAX_PX
 
 
@@ -155,22 +158,36 @@ _FIT = {"hero": (360, 0.63, 1), "big": (200, 0.63, 1),
         "ttl": (84, 0.55, 3), "ask": (74, 0.55, 2)}
 
 
+# Hangul, kana and CJK are drawn on a SQUARE body -- about 1.6x the 0.63em the
+# display classes assume for Latin. Counting characters therefore sizes a Korean
+# line 60% too large and runs it off the frame. ko01-03 never hit this because
+# every Korean line in them went through `.pron__k`/`.fam__w b` at a fixed size,
+# or was given `size=` by hand; the moment one goes into `hero`/`ttl` -- which
+# is exactly what a cover does -- the width has to be computed instead.
+_WIDE = re.compile(r"[\u1100-\u11ff\u3130-\u318f\uac00-\ud7af"
+                   r"\u3040-\u30ff\u31f0-\u31ff\u4e00-\u9fff\uff01-\uff60]")
+
+
+def advance(text):
+    """Width of `text` in Latin-character units, markup stripped."""
+    plain = re.sub(r"<[^>]+>", "", text)
+    return sum(1.6 if _WIDE.match(c) else 1.0 for c in plain)
+
+
 def fit_px(text, cls="hero", fit=880):
     """The px size a display class needs to fit `text` into `fit` pixels."""
-    import re as _re
     base, em, lines = _FIT.get(cls, (84, 0.55, 1))
-    n = len(_re.sub(r"<[^>]+>", "", text))
+    n = advance(text)
     return max(40, min(base, int(fit * lines / (n * em)))) if n else base
 
 
 def line(text, cls="lbl", at=0.0, anim="rise", dur=0.45, fit=880):
     """A line of type. Display classes shrink to fit rather than run off frame."""
-    import re as _re
     style = ""
     key = next((k for k in _FIT if k in cls.split()), None)
     if key and fit:
         base, em, lines = _FIT[key]
-        n = len(_re.sub(r"<[^>]+>", "", text))
+        n = advance(text)
         if n:
             px = max(40, min(base, int(fit * lines / (n * em))))
             if px < base:
@@ -388,3 +405,17 @@ def bars(items, ref=None, ref_label="", at=0.0, step=1.1, unit=""):
                    f'<span>{ref_label}</span></div>')
     return (f'<div class="bars">{refline}{"".join(cols)}</div>',
             len(items) * step + 0.6)
+
+
+# ───────────────────────────────────────────────────── the subject tag ──
+def tag(glyph, name):
+    """The subject chip, bottom-left, on every frame of the film.
+
+    Injected by build.py ONCE, outside the scenes, rather than written into
+    any spec: it is not content, it is the label that lets eight subjects share
+    one channel. It carries no `data-at`, so seek() never touches it -- it is
+    on frame 0 and every frame after, and it does not ride the camera.
+    """
+    return (f'<div class="tag">'
+            f'<span class="tag__g">{glyph}</span>'
+            f'<span class="tag__n">{name}</span></div>')

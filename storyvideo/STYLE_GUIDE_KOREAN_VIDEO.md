@@ -2,7 +2,9 @@
 
 `storyvideo/` orqali koreys tili haqidagi 1080x1920 videolarni yasash qoʻllanmasi.
 Birinchi uchtasi 2026-08-30 da yasaldi: **ko01** (출 ildiz oilasi), **ko02** (alifbo),
-**ko03** (soʻz tartibi). Ingliz tili uchun ham xuddi shu mashina ishlaydi — farqi
+**ko03** (soʻz tartibi). 2026-09-11 da «Tutilgan xato» seriyasi qoʻshildi:
+**ko04** (nutq darajalari), **ko05** (에/에서), **ko06** (ikkita sanoq tizimi) —
+muqova, fan urgʻusi va burchak chipi bilan; `README.md` ning oxirgi boʻlimiga qarang. Ingliz tili uchun ham xuddi shu mashina ishlaydi — farqi
 faqat `korean.py` oʻrniga qoʻlda yozilgan talaffuz.
 
 Umumiy renderer, `seek(t)` shartnomasi va matematika videolarining qoidalari
@@ -40,7 +42,7 @@ IELTS uchun **31 ta ildiz / 167 ta soʻz**. Bitta ildiz = bitta video.
 cd storyvideo                      # HAR DOIM shu papkadan; `python -m storyvideo` ISHLAMAYDI
 
 python3 korean.py                  # 0. talaffuz qoidalari hali ham toʻgʻrimi (15/15)
-python3 cli.py lint    ko04        # 1. uchta darvoza, render yoʻq
+python3 cli.py lint    ko04        # 1. toʻrtta darvoza, render yoʻq
 python3 cli.py sheet   ko04        # 2. HAR BIR kadrni koʻring (pastga qarang)
 python3 cli.py script  ko04 --one --ssml    # 3. tts_scripts/ko04_tts_one.txt
 python3 cli.py kowords ko04        # 4. koreyscha ovozlar (yagona internet talab qiladigan qadam)
@@ -244,7 +246,10 @@ railway run python manage.py import_corner \
 ## 10. Chiqarishdan oldingi roʻyxat
 
 - [ ] `python3 korean.py` → 15/15
-- [ ] `cli.py lint` → PASS (uchta darvoza)
+- [ ] `cli.py lint` → PASS (**toʻrtta** darvoza — muqova ham)
+- [ ] `Video(subject=...)` qoʻyilgan (aks holda urgʻu ham, chip ham yoʻq)
+- [ ] muqovaning 0-kadri toʻliq chizilgan, qizil chiziq FAQAT xato boʻlakdan oʻtadi
+- [ ] muqova vaʼdasi toʻrt soʻzdan koʻp emas va mavzu nomi EMAS
 - [ ] `cli.py sheet` → **har bir kadrga** qaradim
 - [ ] `cli.py script --one --ssml` → raqam yoʻq, hangul yoʻq, hanja yoʻq, <2000 belgi
 - [ ] `practice` kartasidagi manzil bazada haqiqatan bor
