@@ -66,3 +66,24 @@ python manage.py import_practices practice/management/commands/_practice_pj_25_2
 python manage.py import_practices practice/management/commands/_practice_pj_28_30.py --master=powerty --expect-questions=20 --republish
 python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_28_30.py --author=powerty --republish
 python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings" --republish
+
+# Block C, 31-33  (PJ-31 〜ています · PJ-32 てください/てもいいです · PJ-33 taqiq va majburiyat)
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_31_33.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pj_31_33.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_31_33.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_31_33.py --author=powerty --republish
+
+# Block C, 34-36  (PJ-34 ない-shakli · PJ-35 た-shakli va tajriba · PJ-36 〜たり)
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_34_36.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pj_34_36.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_34_36.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_34_36.py --author=powerty --republish
+
+# Block C, 37-39  (PJ-37 ish tartibi · PJ-38 〜ながら · PJ-39 xohish)
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_37_39.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pj_37_39.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_37_39.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_37_39.py --author=powerty --republish

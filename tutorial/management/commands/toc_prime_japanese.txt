@@ -77,16 +77,16 @@ PLAYLIST: Prime Japanese
 28. Lugʻat shakli (辞書形) va nega lugʻatda ます yoʻq   [done]
 29. て-shakli 1: 一段 va 不規則 feʼllar   [done]
 30. て-shakli 2: 五段 feʼllar va ularning beshta qoidasi   [done]
-31. 〜ています — hozirgi davom etayotgan ish va holat   [next]
-32. 〜てください va 〜てもいいです — iltimos va ruxsat
-33. 〜てはいけません va 〜なければなりません — taqiq va majburiyat
-34. ない-shakli va 〜ないでください
-35. 〜た shakli va 〜たことがあります — tажriba
-36. 〜たり〜たりします — ishlarni sanash
-37. 〜てから, 〜まえに, 〜あとで — ish tartibi
-38. 〜ながら — bir vaqtda ikki ish
-39. Xohish: 〜たいです va 〜がほしいです
-40. 〜ましょう / 〜ませんか — taklif qilish
+31. 〜ています — hozirgi davom etayotgan ish va holat   [done]
+32. 〜てください va 〜てもいいです — iltimos va ruxsat   [done]
+33. 〜てはいけません va 〜なければなりません — taqiq va majburiyat   [done]
+34. ない-shakli va 〜ないでください   [done]
+35. 〜た shakli va 〜たことがあります — tajriba   [done]
+36. 〜たり〜たりします — ishlarni sanash   [done]
+37. 〜てから, 〜まえに, 〜あとで — ish tartibi   [done]
+38. 〜ながら — bir vaqtda ikki ish   [done]
+39. Xohish: 〜たいです va 〜がほしいです   [done]
+40. 〜ましょう / 〜ませんか — taklif qilish   [next]
 41. Imkoniyat 1: 〜ことができます
 42. Imkoniyat 2: potensial shakl (読める, 食べられる)
 43. Sanoq soʻzlari (助数詞): 人, 枚, 本, 匹, 個, 台 va ularning tovush oʻzgarishi

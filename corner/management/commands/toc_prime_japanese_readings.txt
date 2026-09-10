@@ -138,16 +138,16 @@ AUTHOR:     powerty
 28. Lugʻat shakli   [done]
 29. て-shakli 1   [done]
 30. て-shakli 2   [done]
-31. 〜ています   [next]
-32. 〜てください va 〜てもいいです
-33. 〜てはいけません va 〜なければなりません
-34. ない-shakli
-35. 〜た shakli va 〜たことがあります
-36. 〜たり〜たりします
-37. 〜てから, 〜まえに, 〜あとで
-38. 〜ながら
-39. 〜たいです va 〜がほしいです
-40. 〜ましょう / 〜ませんか      ← STORIES from here on
+31. 〜ています   [done]
+32. 〜てください va 〜てもいいです   [done]
+33. 〜てはいけません va 〜なければなりません   [done]
+34. ない-shakli   [done]
+35. 〜た shakli va 〜たことがあります   [done]
+36. 〜たり〜たりします   [done]
+37. 〜てから, 〜まえに, 〜あとで   [done]
+38. 〜ながら   [done]
+39. 〜たいです va 〜がほしいです   [done]
+40. 〜ましょう / 〜ませんか   [next]      ← STORIES from here on
 41. 〜ことができます
 42. Potensial shakl
 43. Sanoq soʻzlari
