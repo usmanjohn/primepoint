@@ -1,0 +1,29 @@
+Afsona Jasurni tugʻilgan kuniga chaqirdi. <break time='0.3s' /> Jasurning ertaga imtihoni bor edi. <break time='0.45s' /> U <emphasis level='moderate'>an kayoʻ</emphasis> dedi.
+
+<break time='2.5s' />
+
+Grammatikada hech qanday xato yoʻq. <break time='0.3s' /> Shuning uchun bu xatoni hech kim tuzatmaydi ham.
+
+<break time='2.5s' />
+
+Ammo Afsona rad javobini eshitdi. <break time='0.45s' /> Chunki <emphasis level='moderate'>an</emphasis>, bu tanlov.
+
+<break time='2.5s' />
+
+Almashadigan narsa bitta boʻgʻin. <break time='0.3s' /> <emphasis level='moderate'>an</emphasis> emas, <emphasis level='moderate'>moʻt</emphasis>.
+
+<break time='2.5s' />
+
+Qarang. <emphasis level='moderate'>an kayoʻ</emphasis>, bormayman, yaʼni oʻzim xohlamayman. <break time='0.3s' /> <emphasis level='moderate'>moʻt kayoʻ</emphasis>, bora olmayman, yaʼni imkonim yoʻq. <break time='0.45s' /> Oʻzbekchada bu ikkitasi butunlay boshqa soʻzlar, shuning uchun farqni siz allaqachon bilasiz.
+
+<break time='2.5s' />
+
+Shuning uchun koreys tilida xohlamaslik bilan imkonsizlik ajratiladi. <break time='0.45s' /> Oʻzbekchada bu farq soʻzning ichida, koreyschada esa feʼldan oldingi bitta boʻgʻinda turadi.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Vegetarian odam goʻsht haqida nima deydi? <break time='0.45s' /> Izohda kutamiz.
+
+<break time='2.5s' />
+
+Inkor shakllari Powertyda: Prime Korean, yigirma ikkinchi dars.

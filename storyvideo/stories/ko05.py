@@ -56,6 +56,11 @@ VIDEO = Video(
                note="Butun dalil shu ustunlarda: chapda ham «uyda», oʻngda "
                     "ham «uyda», koreyschada esa ikki xil qoʻshimcha."),
 
+        echo("집에 있어요", gloss="uyda borman", size=120,
+             note="JIM sahna. Qarama-qarshilikning BIRINCHI tomoni — "
+                  "ikkinchisi (집에서 공부해요) filmning oxirida eshitiladi, "
+                  "shuning uchun ikkita jim sahna yonma-yon tushmaydi."),
+
         correct("에", "에서",
                 because="Feʼl ish bildirsa — 에서",
                 lead="집__ 공부해요",
@@ -109,6 +114,8 @@ narrate(VIDEO, [
     "Ammo qarang. Chapda: *집에 있어요* — uyda borman. | Oʻngda: "
     "*집에서 공부해요* — uyda oʻqiyman. || Oʻzbekchada ikkalasi ham «uyda». "
     "Koreyschada esa ikki xil qoʻshimcha.",
+
+    None,   # echo(집에 있어요) — jim sahna, koreyscha ovoz
 
     "Farqi feʼlda. | Agar feʼl ish bildirsa — *에서* qoʻyiladi.",
 

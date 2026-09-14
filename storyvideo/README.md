@@ -175,6 +175,10 @@ them, so the shelf, the video and the narration never disagree.
 
 ## Bitta kanal, sakkizta fan — `subject`, `.tag`, `cover()`   (2026-09-11)
 
+> **Seriyalar, muqova qoidalari, brending va joylashtirish siyosati:
+> [`SERIES.md`](SERIES.md).** Yangi video yozishdan oldin oʻshani oʻqing — bu
+> boʻlim faqat MEXANIZMNI yozadi, qaysi film qanday boʻlishi kerakligini emas.
+
 Sakkiz fan bitta kanalda turishi kerak, va tomoshabin uchun ularning kesishmasi
 **mavzu emas — format**. Shuning uchun brend qogʻozning oʻzida qoladi, fan esa
 faqat **urgʻu rangini** oʻzgartiradi.

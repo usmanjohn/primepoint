@@ -798,7 +798,14 @@ follow. Never hard-code a handle in a template.
 imported by Django, costs production nothing). It turns a Corner reading into a
 1080x1920 animatic with TTS narration and a synthesised sound layer.
 ⚠️ Always `cd storyvideo && python3 cli.py …` — `python -m storyvideo` is broken.
-- **`storyvideo/README.md`** — the renderer, the `seek(t)` contract, the three lint
+- **`storyvideo/SERIES.md`** — ⚠️ **READ THIS FIRST when making any video.** The
+  series («Tutilgan xato», «Nega shunday?»), the subject accent registry
+  (`Video(subject=...)`), the `cover()` contract (frame 0 IS the thumbnail), the echo
+  policy, the sound level, the inventory, and the Instagram posting policy. It holds the
+  decisions that are invisible in any single spec: ⛔ **no viral meme GIFs** (reactions go
+  INSIDE a scene, never as a new scene), **never give a subject its own background** (change
+  the accent, keep the paper), and **`--sfx-gain` default is 1.5**.
+- **`storyvideo/README.md`** — the renderer, the `seek(t)` contract, the **four** lint
   gates, the maths/history beat vocabulary.
 - **`storyvideo/STYLE_GUIDE_KOREAN_VIDEO.md`** — read this before writing ANY language
   video (Korean now, English later): the full loop, the language beats, the three
@@ -807,6 +814,12 @@ imported by Django, costs production nothing). It turns a Corner reading into a
   apart. Its checklist is the definition of done.
 - **`cli.py check <slug> --audio …` before EVERY render** — one second against six
   minutes. It has already caught two recordings that would have shipped broken.
+- ⚠️ **Before touching the shared kit (`stage.css`, `primitives.py`), lint the WHOLE
+  catalogue.** A one-line `min-width:0` fixed ko08 and silently broke mo01.
+- ⚠️ **`korean.py` had no ㅅ-palatalisation rule until 2026-09-13** — 시 came out `si`, not
+  `shi`, and all fifteen self-tests were green because not one contained 시. The user's ear
+  caught it. 26 cases now. **When you add a sound rule, first write the case that fails
+  without it.**
 Source shelves: "Prime Math Readings" + "Matematika olami" (maths),
 **"Koreya olami"** (`toc_koreya_olami.txt`, Uzbek prose about Korean — the language is
 the material, each word a `cn-word` span, ⛔ no audio). Those import through

@@ -37,6 +37,20 @@ write as "o" and "eo" and which learners then never hear. So 오 is `oʻ` and
 어 is `o`, and an Uzbek pupil reading aloud lands much closer than an English
 one would.
 
+## What is deliberately NOT modelled: 경음화 after an obstruent
+
+A lax onset after a stop is tensed: 고맙습니다 is [고맙씀니다], 삼십 분 is
+[삼십뿐], 열 시 is [열씨]. For ㄱ and ㄷ this already falls out of the tables by
+accident (final `k` + hard onset `k` = "hakkyoʻ", final `t` + `t` = "itta"), but
+for ㅅ it does not: we write "koʻmapsumnida", not "koʻmapssumnida".
+
+That is left alone on purpose. Uzbek has no tense series, so "ss" is read as a
+long s, and after a `p` an Uzbek voice already produces a tense-sounding [s]
+without help. The gain is inaudible and the rule would need a 한자어/합성어
+distinction to apply correctly (열 시 tenses, 한 시 does not). Revisit only if
+the user's ear says otherwise -- it was his ear, not a test, that found the
+palatalisation bug.
+
 The one genuine gap is **ㅡ** [ɯ], which Uzbek Latin has no letter for (Cyrillic
 would write ы). It is written `u`, colliding with ㅜ. That is deliberate and
 cheap: the Hangul is on screen and a native voice says the word aloud, so the
@@ -79,6 +93,19 @@ JUNG_UZ = {"ㅏ": "a", "ㅐ": "e", "ㅑ": "ya", "ㅒ": "ye", "ㅓ": "o", "ㅔ": 
            "ㅕ": "yo", "ㅖ": "ye", "ㅗ": "oʻ", "ㅘ": "va", "ㅙ": "ve", "ㅚ": "ve",
            "ㅛ": "yoʻ", "ㅜ": "u", "ㅝ": "vo", "ㅞ": "ve", "ㅟ": "vi", "ㅠ": "yu",
            "ㅡ": "u", "ㅢ": "ui", "ㅣ": "i"}
+
+# 구개음화 (palatalisation) — ㅅ/ㅆ before /i/ or a y-glide is [ɕ], not [s].
+# 시 is "shi", never "si"; 십 is "ship"; 이십 is "iship". This is the single
+# most audible consonant rule in Korean and it was MISSING until 2026-09-13 --
+# not one of the 15 cases below contained 시, because 감사합니다 has 사,
+# 안녕하세요 has 세 and 수출 has 수. ko06 is a clock-and-numbers film, so it
+# said "sam si samsip pun" all the way through. Caught by the user's ear.
+#
+# The y-glide is ABSORBED into the sh, so the vowel loses its y as well:
+# 셔 is "sho", not "shyo" -- the same trap the Japanese romaniser has with
+# yoon. Hence a second table rather than a flag.
+PALATAL = {"ㅣ": "i", "ㅑ": "a", "ㅒ": "e", "ㅕ": "o", "ㅖ": "e",
+           "ㅛ": "oʻ", "ㅠ": "u", "ㅟ": "vi"}
 
 SONORANT = {"n", "m", "ng", "l"}
 ASPIRATE = {"ㄱ": "ㅋ", "ㄷ": "ㅌ", "ㅈ": "ㅊ", "ㅂ": "ㅍ"}
@@ -160,9 +187,15 @@ def _word(word):
         soft = prev != "" and (prev == "V" or prev in SONORANT)
         if cho == "ㄹ" and prev == "l":
             out.append("l")                      # 빨리 -> ppalli
+            out.append(JUNG_UZ[jung])
+        elif cho in ("ㅅ", "ㅆ") and jung in PALATAL:
+            # Tenseness is dropped on purpose: Uzbek has no tense series, and
+            # "sshi" would be read as s-shi, which is worse than losing it.
+            out.append("sh")
+            out.append(PALATAL[jung])
         else:
             out.append((ONSET_SOFT if soft else ONSET_HARD)[cho])
-        out.append(JUNG_UZ[jung])
+            out.append(JUNG_UZ[jung])
         f = finals[i]
         out.append(f)
         prev = f if f else "V"
@@ -199,7 +232,7 @@ CASES = [
     ("출발",       "chulbal"),
     ("수출",       "suchul"),
     ("안녕하세요", "annyonghaseyoʻ"),
-    ("신라",       "silla"),          # 유음화
+    ("신라",       "shilla"),         # 유음화 + 구개음화 (was "silla" — wrong)
     ("빨리",       "ppalli"),
     ("좋아요",     "choʻayoʻ"),       # ㅎ drops into an empty onset
     ("읽어요",     "ilgoyoʻ"),        # only the cluster's second member moves
@@ -207,6 +240,19 @@ CASES = [
     ("있다",       "itta"),
     ("세종",       "sejoʻng"),        # ㅈ between vowels is voiced
     ("훈민정음",   "hunminjongum"),   # the final ㅇ must not move
+    # ── 구개음화: the rule that was missing until 2026-09-13 ──
+    ("시",         "shi"),            # NOT "si" -- the case none of the above had
+    ("십",         "ship"),
+    ("이십",       "iship"),          # the user's own correction
+    ("삼십",       "samship"),
+    ("시간",       "shigan"),         # ㄱ still softens after the vowel
+    ("소식",       "soʻshik"),        # palatal onset, ㄱ final
+    ("샤워",       "shavo"),          # ㅑ: the y is absorbed, not kept as "shya"
+    # ── and the neighbours that must NOT change ──
+    ("사",         "sa"),
+    ("수",         "su"),
+    ("셋",         "set"),            # ㅔ does not palatalise
+    ("서울",       "soul"),
 ]
 
 

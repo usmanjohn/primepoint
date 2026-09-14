@@ -25,6 +25,18 @@ SR = 44100
 
 # Master level for the whole cue layer. Raise via --sfx-gain, not by
 # editing the individual cues -- their balance against each other is tuned.
+#
+# ⚠️ LEVELS, 2026-09-14: the default `--sfx-gain` moved 1.0 -> 1.5 because the
+# cues were still too quiet under the voice on the finished Reels. Measured on
+# ko04 rather than guessed:
+#
+#     gain   sfx peak   mix peak   limiter   sfx/voice RMS
+#     1.0      0.390      0.982     0.988        0.41
+#     1.5      0.584      1.042     0.931        0.62     <- chosen
+#     2.2      0.857      1.157     0.838        0.91     <- cues fight the voice
+#
+# The limiter's 7% comes off the WHOLE mix, so nothing gets quieter relative to
+# anything else. Past ~1.8 the cues stop being punctuation and start competing.
 GAIN = 1.0
 
 

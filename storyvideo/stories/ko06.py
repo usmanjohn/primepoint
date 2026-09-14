@@ -65,6 +65,11 @@ VIDEO = Video(
                note="Mexanizm avval, tuzatish keyin: ikkita tizim borligini "
                     "koʻrmagan odamni xato qildi deb ayblash mumkin emas."),
 
+        echo("하나 둘 셋", gloss="bir, ikki, uch — koreyscha sanoq", size=140,
+             note="JIM sahna. Koreyscha sanoqni hech kim taxmin qila olmaydi, "
+                  "xitoychasini esa (일 이 삼) oʻzbek quloq osongina tutadi — "
+                  "shuning uchun aynan bu ladder eshitiladi."),
+
         correct("삼 시", "세 시",
                 because="Soat — koreyscha son. Daqiqa — xitoycha son.",
                 lead="3시 30분",
@@ -114,6 +119,8 @@ narrate(VIDEO, [
     "*하나*, *둘*, *셋* — soatni, odamni, narsani va yoshni sanaydi. "
     "|| Xitoycha sanoq: *일*, *이*, *삼* — daqiqani, pulni, oyni va "
     "yilni sanaydi.",
+
+    None,   # echo(하나 둘 셋) — jim sahna, koreyscha ovoz
 
     "Demak daqiqa toʻgʻri edi. | Xato soatda: *삼 시* emas, *세 시*.",
 

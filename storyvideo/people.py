@@ -32,6 +32,11 @@ CAST = {
     # PM-97 uchun — u ham hisobga kiradi: 0 ta soch.
     "Kal aka":    {"shirt": "#c98a3e", "skin": "m", "hair": "#241b17",
                    "adult": True, "bald": True},
+    # MO-10 uchun: toʻqqiz yashar bola va uning oʻqituvchisi.
+    "Gauss":       {"shirt": "#4a6fa5", "skin": "l", "hair": "#c9a227"},
+    "Oʻqituvchi":  {"shirt": "#5b5147", "skin": "l", "hair": "#6b6259",
+                    "adult": True},
+
     # ── Matematika olami: tarixiy siymolar ──
     # Salla va soqol — bitta figurada oʻn ikki asr farqni koʻrsatadigan yagona narsa.
     "Al-Xorazmiy": {"shirt": "#3f6f8f", "skin": "m", "hair": "#241b17", "adult": True,

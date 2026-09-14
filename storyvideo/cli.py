@@ -447,7 +447,7 @@ def main():
     p.add_argument("--fps", type=int, default=30)
     p.add_argument("--workers", type=int, default=3)
     p.add_argument("--no-sfx", action="store_true")
-    p.add_argument("--sfx-gain", type=float, default=1.0,
+    p.add_argument("--sfx-gain", type=float, default=1.5,
                    help="ovoz effektlari balandligi (1.0 = sfx.py dagi daraja)")
     p.add_argument("--no-ko", action="store_true",
                    help="koreyscha soʻz ovozlarini qoʻshmaslik")

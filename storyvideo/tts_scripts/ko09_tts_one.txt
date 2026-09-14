@@ -1,0 +1,29 @@
+Afsona sovuq demoqchi edi va <emphasis level='moderate'>chuboyoʻ</emphasis> dedi. <break time='0.45s' /> Qoidani toʻgʻri qoʻlladi. Natija esa koreys tilida yoʻq soʻz.
+
+<break time='2.5s' />
+
+U <emphasis level='moderate'>chupta</emphasis> ga oddiy qoʻshimchani qoʻshdi. <break time='0.3s' /> Har qanday oʻquvchi shunday qiladi, shuning uchun bu eng koʻp qilinadigan xato.
+
+<break time='2.5s' />
+
+Toʻgʻrisi, <emphasis level='moderate'>chuvoyoʻ</emphasis>. <break time='0.45s' /> Oxirgi undosh ketadi, oʻrniga <emphasis level='moderate'>u</emphasis> keladi.
+
+<break time='2.5s' />
+
+Shu guruhda kundalik soʻzlar bor. <emphasis level='moderate'>chupta</emphasis> sovuq boʻlsa <emphasis level='moderate'>chuvoyoʻ</emphasis>. <break time='0.3s' /> <emphasis level='moderate'>topta</emphasis> issiq boʻlsa <emphasis level='moderate'>tovoyoʻ</emphasis>. <break time='0.3s' /> <emphasis level='moderate'>mepta</emphasis> achchiq boʻlsa <emphasis level='moderate'>mevoyoʻ</emphasis>. <break time='0.45s' /> Uchtasida ham bir xil oʻzgarish.
+
+<break time='2.5s' />
+
+Ammo diqqat qiling. <emphasis level='moderate'>ipta</emphasis>, kiymoq. U ham xuddi shu harf bilan tugaydi. <break time='0.3s' /> Lekin uning tuslanishi <emphasis level='moderate'>iboyoʻ</emphasis>, undosh joyida qoladi. <break time='0.45s' /> Yaʼni soʻzning yozilishi uni qaysi guruhda ekanini aytmaydi.
+
+<break time='2.5s' />
+
+Shuning uchun bu sifatlarni tuslangan shakli bilan birga yodlang. <break time='0.45s' /> Koreyslar ham darslikda shunday beradi: soʻz va uning oʻzgargan shakli yonma-yon.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. <emphasis level='moderate'>chupta</emphasis> sovuq boʻlsa, <emphasis level='moderate'>chuun nal</emphasis> nima degani? <break time='0.45s' /> Va oʻzgarish bu yerda ham ishladimi? Izohda kutamiz.
+
+<break time='2.5s' />
+
+Notoʻgʻri feʼllar Powertyda: Prime Korean, oʻttiz ikkinchi dars.

@@ -127,6 +127,48 @@ yil». Tartib son unlidan keyin `-nchi`, undoshdan keyin `-inchi` oladi
 `kamsahamnida`**: u ikki qoidani birdan mixlaydi. `python3 korean.py` 15 ta holatni
 tekshiradi; qoidaga tegsangiz, avval shuni ishlating.
 
+### ⚠️ Koreyscha soʻz kadrda hech qachon boʻlinmasin
+
+Hangulda soʻz ichida boʻsh joy yoʻq, shuning uchun brauzer 먹어요 ni
+**먹 / 어요** qilib ikkiga boʻlib tashlaydi — yaʼni mavjud boʻlmagan ikkita
+soʻzga. Ikki marta ushlandi: 감사합니다 ko04 ning `pairs` jadvalida, 먹어요 esa
+ko08 ning `ask` sahnasida. Yechim `stage.css` da: `.pair b` ga `nowrap`,
+qolgan matn klasslariga (`hero big expr ttl ask lbl cap cmp__*`)
+**`word-break: keep-all`** — lotin matniga taʼsiri yoʻq.
+
+### ⚠️ `versus` kartasini boʻsh joysiz uzun soʻz kengaytirib yuboradi
+
+`.cmp__side` — flex element, va u oʻz min-content kengligidan pastga
+siqilmaydi. Shuning uchun **boʻsh joysiz bitta uzun soʻz** (teg satrida
+`bora olmayman` emas, `boraolmayman`) butun kartani kadrdan chiqarib yuboradi.
+
+Tuzatishning **notoʻgʻri** yoʻli — `.cmp__side { min-width: 0 }`: u ko08 ni
+tuzatdi va **mo01 ni buzdi** (karta endi mazmunidan kichrayib, chap chetdan
+chiqib ketdi, x = −25). Umumiy kitga tegishdan oldin butun katalogni linting
+qiling. Toʻgʻri yoʻli oddiy: **tegda boʻsh joy boʻlsin** — `ketayotgan odamga`,
+`ketayotganga` emas. Bu, qolaversa, oʻzbek imlosiga ham mos.
+
+### ⚠️ 구개음화 — ㅅ/ㅆ + ㅣ yoki y-unli = **sh**, hech qachon **s** emas
+
+2026-09-13 da foydalanuvchining qulogʻi ushladi, `selftest` esa **oʻn besh
+holatda ham sezmagan**: 감사합니다 da 사, 안녕하세요 da 세, 수출 da 수 — birortasida
+ham **시** yoʻq edi. Natijada ko06 (soat va sonlar filmi) boshdan-oxir
+«sam si samsip pun» deb oʻqilgan.
+
+    시 → shi      십 → ship      이십 → iship      삼십 → samship
+    사 → sa       세 → se        셋 → set         수 → su      (oʻzgarmaydi)
+
+**y-unli sh ichiga singib ketadi**, shuning uchun unlidan y tushadi:
+셔 → `sho`, `shyo` EMAS. Bu — yapon romanizatoridagi yoon tuzogʻining aynan
+oʻzi, va shu sababli `PALATAL` alohida jadval, flag emas.
+
+Endi 26 ta holat tekshiriladi va ular orasida 시, 십, 이십, 삼십, 시간, 소식,
+샤워 bor — hamda oʻzgarmasligi kerak boʻlganlar: 사, 수, 셋, 서울.
+Bu rule 신라 ning eski kutilgan javobini ham tuzatdi: `silla` emas, **`shilla`**.
+
+**Saboq: yangi tovush qoidasi qoʻshsangiz, avval uni USHLAYDIGAN holat yozing.**
+Oʻn besh holat yashil boʻlgani qoidaning borligini isbotlamaydi.
+
 Oʻzbek tilining ikkita omadi: **ㅗ→`oʻ` / ㅓ→`o`** — ingliz transliteratsiyasi
 yoʻqotadigan farq. ㅡ esa `u` deb yoziladi va ㅜ bilan ataylab toʻqnashadi
 (lotin oʻzbekchada ы yoʻq) — ekranda 한글 turadi va koreyscha ovoz aytadi, shuning

@@ -378,18 +378,25 @@ def board(lit=8, at=0.0, step=0.5, cols=8, rows=8, show_upto=8):
 
 
 # ────────────────────────────────────────────────────────────── bars ──
-def bars(items, ref=None, ref_label="", at=0.0, step=1.1, unit=""):
+def bars(items, ref=None, ref_label="", at=0.0, step=1.1, unit="", base=0):
     """Value bars with a dashed reference line.
 
     items: [(value, label, css_class), ...]. `ref` draws the original level
     across the whole chart, which is what makes PM-25 land: you do not have to
     be told the last bar came out below where it started -- you can see it.
+
+    `base` is where the axis STARTS. It defaults to 0, which is the only honest
+    setting, and exists so a film can draw the dishonest one: the same two
+    numbers with base=45 stand in a ratio the data never had. That trick is the
+    whole argument of mo27, and showing it is the only way to make a viewer
+    recognise it on a real chart -- so the kit has to be able to lie on purpose.
     """
-    top = max(v for v, *_ in items) * 1.12
+    span = max(v for v, *_ in items) - base
+    top = base + span * 1.12
     cols = []
     for i, (v, lab, *rest) in enumerate(items):
         cls = rest[0] if rest else ""
-        h = v / top * 100
+        h = max(0.0, (v - base) / (top - base)) * 100
         cols.append(
             f'<div class="bar__col">'
             f'<div class="bar__v" {_t(at + i * step + 0.28)} data-dur="0.3" '
@@ -399,7 +406,7 @@ def bars(items, ref=None, ref_label="", at=0.0, step=1.1, unit=""):
             f'<div class="bar__l">{lab}</div></div>')
     refline = ""
     if ref is not None:
-        y = ref / top * 100
+        y = max(0.0, (ref - base) / (top - base)) * 100
         refline = (f'<div class="bar__ref" style="bottom:calc({y:.1f}% + 46px)" '
                    f'{_t(at + 0.9)} data-dur="0.5" data-anim="widen">'
                    f'<span>{ref_label}</span></div>')

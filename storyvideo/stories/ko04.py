@@ -40,6 +40,12 @@ VIDEO = Video(
              note="Xato tugʻilgan joy: serial qahramonlari bir-biriga "
                   "yaqin, shuning uchun hammasi 반말da gapiradi."),
 
+        echo("고마워", gloss="rahmat — yaqin odamga",
+             head="Serialda shunday eshitiladi",
+             note="JIM sahna. Koreyscha ovoz. Bu yerda maqsad — TANIB OLISH, "
+                  "takrorlash emas: film bu shaklni qachon ISHLATMASLIKni "
+                  "oʻrgatadi."),
+
         consequence("Nodira opa", "Xodimim menga «sen»lab gapirdi.",
                     mood="oh",
                     note="Xatoning bahosi bitta yuzda. Grammatik xato emas — "
@@ -87,6 +93,8 @@ narrate(VIDEO, [
 
     "Serialda qahramonlar bir-biriga shunday deyishadi. | Sardor esa buni "
     "shunchaki «rahmat» deb yodlab qoʻygan edi.",
+
+    None,   # echo(고마워) — jim sahna, koreyscha ovoz
 
     "Direktorning yuzi oʻzgardi. || Chunki Sardor unga *sen*lab gapirgan edi.",
 

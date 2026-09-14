@@ -88,6 +88,12 @@ body::after {
 .lbl--sm{ font-size: 42px; color: var(--ink-faint); font-weight: 600; }
 .cap    { font-family: var(--ff-body); font-weight: 600; font-size: 46px; line-height: 1.36;
           text-align: center; color: var(--ink-soft); max-width: 880px; }
+/* Hangul has no spaces inside a word, so the default `break-word` behaviour
+ * splits 먹어요 into 먹 / 어요 -- which reads as two words that do not exist.
+ * No-op for Latin. */
+.hero, .big, .expr, .ttl, .ask, .lbl, .cap, .cmp__u, .cmp__p, .cmp__n,
+.pron__g, .fam__w span { word-break: keep-all; }
+
 .gold { color: var(--gold); }  .red { color: var(--red); }
 .grn  { color: var(--green); } .soft { color: var(--ink-soft); }
 .strike { position: relative; color: var(--ink-faint); }
