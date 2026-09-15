@@ -174,6 +174,14 @@ def rule(pattern, meaning=None, strip=None, dur=9.0, head="Esda tutinglar", note
     Comes from the source story's grammar block, so the video and the reading
     teach exactly the same sentence.
     """
+    # `rule` adds its own guillemets, so a pattern that already carries a pair
+    # renders as ««...»». Written three times (ko04, ko05, ko11) before this
+    # line existed -- a mistake I keep making belongs in the builder, not in my
+    # memory. Inner quotes around a PART of the pattern are untouched; only a
+    # pair wrapping the whole thing is dropped.
+    pattern = pattern.strip()
+    if pattern.startswith("«") and pattern.endswith("»"):
+        pattern = pattern[1:-1].strip()
     body = [P.line(head, "lbl lbl--sm", at=0.0, anim="fade"),
             P.line(f'«{pattern}»', "ttl gold", at=0.6, anim="rise", dur=0.6),
             P.card(P.card_expr(strip), at=1.8, cls="card--dark", dur=0.55)

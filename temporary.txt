@@ -105,3 +105,35 @@ python manage.py import_practices practice/management/commands/_practice_pj_43_4
 python manage.py import_corner corner/management/commands/_stories_prime_japanese_43_45.py --author=powerty
 python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
 python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_43_45.py --author=powerty --republish
+
+# Block D, 46-48
+#   (PJ-46 〜と思います · PJ-47 〜と言いました · PJ-48 aniqlovchi ergash gap)
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_46_48.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pj_46_48.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_46_48.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_46_48.py --author=powerty --republish
+
+# Block D, 49-51
+#   (PJ-49 〜とき · PJ-50 shart 〜たら · PJ-51 shart 〜ば va 〜と)
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_49_51.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pj_49_51.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_49_51.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_49_51.py --author=powerty --republish
+
+# Block D, 52-54
+#   (PJ-52 shart 〜なら · PJ-53 sabab から/ので · PJ-54 qarama-qarshilik が/けど)
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_52_54.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pj_52_54.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_52_54.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_52_54.py --author=powerty --republish
+
+# Block D oxiri, 55-57
+#   (PJ-55 〜ても · PJ-56 maqsad ために/ように · PJ-57 ようになる/ことにする)
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_55_57.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pj_55_57.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_55_57.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_55_57.py --author=powerty --republish

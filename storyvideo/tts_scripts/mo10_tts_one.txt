@@ -2,7 +2,7 @@ Bir dan yuzgacha boʻlgan hamma sonni qoʻshing. <break time='0.45s' /> Javobi, 
 
 <break time='2.5s' />
 
-Rivoyatga koʻra, XVIII asr oxirida Germaniyada bir oʻqituvchi shovqin solayotgan sinfni tinchitmoqchi boʻldi. <break time='0.45s' /> Bu bir soatlik ish edi. <break time='0.3s' /> Oʻqituvchi stulga oʻtirdi.
+Rivoyatga koʻra, oʻn sakkizinchi asr oxirida Germaniyada bir oʻqituvchi shovqin solayotgan sinfni tinchitmoqchi boʻldi. <break time='0.45s' /> Bu bir soatlik ish edi. <break time='0.3s' /> Oʻqituvchi stulga oʻtirdi.
 
 <break time='2.5s' />
 

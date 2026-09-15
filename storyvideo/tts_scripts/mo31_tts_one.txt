@@ -1,0 +1,29 @@
+A toʻrt qogʻozning tomonlari ikki yuz oʻn va ikki yuz toʻqson yetti millimetr. <break time='0.45s' /> Gʻalati sonlar, shunday emasmi?
+
+<break time='2.5s' />
+
+Nega ikki yuz va uch yuz emas? <break time='0.45s' /> Chunki bu sonlar tanlanmagan, ular hisoblab chiqarilgan.
+
+<break time='2.5s' />
+
+Talab bitta edi: buklangan varaq avvalgisining aynan nisbatida boʻlsin. <break time='0.45s' /> Javob, ikkining kvadrat ildizi.
+
+<break time='2.5s' />
+
+Ikkiga buklaymiz. <break time='0.45s' /> Nisbat oʻsha qoldi, shakl oʻziga oʻxshaydi, faqat kichrayadi.
+
+<break time='2.5s' />
+
+Butun qator A noldan boshlanadi, yuzasi bir kvadrat metr. <break time='0.45s' /> A toʻrtgacha toʻrtta buklash bor.
+
+<break time='2.5s' />
+
+Nusxa koʻchirgichda A toʻrtni A beshga kichraytirish uchun apparat yetmish bir foizni tanlaydi.
+
+<break time='2.5s' />
+
+Shuning uchun bu sonlar tanlanmagan, hisoblab chiqarilgan. <break time='0.45s' /> Bitta talab butun bir standartni keltirib chiqardi.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. <break time='0.3s' /> A uch, A toʻrtdan bir marta katta buklash, yuzasi necha marta katta? <break time='0.45s' /> Izohda kutamiz.

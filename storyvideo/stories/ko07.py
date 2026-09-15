@@ -111,9 +111,8 @@ narrate(VIDEO, [
 
     "Almashadigan narsa bitta boʻgʻin. | *가세요* emas, *계세요*.",
 
-    "Qarang. Agar SIZ qolsangiz, ketayotgan odamga *안녕히 가세요* deysiz — "
-    "yaxshi boring. | Agar SIZ ketsangiz, qoladigan odamga *안녕히 계세요* "
-    "deysiz — yaxshi turing. || Oʻzbekchada ikkalasi ham «xayr».",
+    "Siz qolsangiz, ketayotgan odamga *안녕히 가세요* deysiz. | Siz ketsangiz, "
+    "qoladigan odamga *안녕히 계세요*.",
 
     None,   # echo(안녕히 계세요) — jim sahna, koreyscha ovoz
 
@@ -124,7 +123,7 @@ narrate(VIDEO, [
     "Endi oʻzingiz oʻylang. Ikkovingiz ham bir vaqtda, birga chiqib "
     "ketyapsiz. || Unda bir-biringizga nima deysiz? Izohda kutamiz.",
 
-    "Salomlashish va xayrlashish Powertyda: Prime Korean, toʻqqizinchi dars.",
+    "Salomlashish va xayrlashish Powertyda: Praym Korean, toʻqqizinchi dars.",
 
     None,   # outro — jim
 ])

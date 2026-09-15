@@ -96,19 +96,19 @@ PLAYLIST: Prime Japanese
 
 ### Block D: Gapni bogʻlash (45–62)
 45. Oddiy shakl (普通体) — 丁寧体 dan 普通体 ga oʻtish jadvali   [done]
-46. 〜と思います — fikr bildirish   [next]
-47. 〜と言いました va koʻchirma gap
-48. Aniqlovchi ergash gap: 私が読んだ本 — otni butun gap bilan aniqlash
-49. 〜とき — "…ganda"
-50. Shart 1: 〜たら
-51. Shart 2: 〜ば va 〜と
-52. Shart 3: 〜なら — va toʻrttasining farqi bir jadvalda
-53. Sabab: 〜から va 〜ので
-54. Qarama-qarshilik: 〜が va 〜けど
-55. 〜ても — "…sa ham"
-56. 〜ために va 〜ように — maqsad
-57. 〜ようになります va 〜ことにします — oʻzgarish va qaror
-58. 〜てしまいます — tugatish va afsus
+46. 〜と思います — fikr bildirish   [done]
+47. 〜と言いました va koʻchirma gap   [done]
+48. Aniqlovchi ergash gap: 私が読んだ本 — otni butun gap bilan aniqlash   [done]
+49. 〜とき — "…ganda"   [done]
+50. Shart 1: 〜たら   [done]
+51. Shart 2: 〜ば va 〜と   [done]
+52. Shart 3: 〜なら — va toʻrttasining farqi bir jadvalda   [done]
+53. Sabab: 〜から va 〜ので   [done]
+54. Qarama-qarshilik: 〜が va 〜けど   [done]
+55. 〜ても — "…sa ham"   [done]
+56. 〜ために va 〜ように — maqsad   [done]
+57. 〜ようになります va 〜ことにします — oʻzgarish va qaror   [done]
+58. 〜てしまいます — tugatish va afsus   [next]
 59. 〜ておきます va 〜てみます — oldindan qilish va sinab koʻrish
 60. Berish-olish 1: あげる, くれる, もらう
 61. Berish-olish 2: 〜てあげる, 〜てくれる, 〜てもらう

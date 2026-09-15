@@ -1,0 +1,25 @@
+Har bir shtrix-kodda oʻn uchta raqam bor. <break time='0.45s' /> Eng oxirgisi esa hech qanday maʼlumot bermaydi.
+
+<break time='2.5s' />
+
+Keyingi raqamlar ishlab chiqaruvchini va mahsulotni koʻrsatadi. <break time='0.45s' /> Oxirgisi esa butunlay boshqa ish qiladi.
+
+<break time='2.5s' />
+
+U qolgan oʻn ikkitasidan hisoblab chiqariladi. <break time='0.3s' /> Raqamlar navbatma-navbat birga va uchga koʻpaytiriladi, keyin qoʻshiladi.
+
+<break time='2.5s' />
+
+Yigʻindini keyingi oʻnlikkacha toʻldiramiz. <break time='0.3s' /> Bir yuz oʻttizdan bir yuz yigirma oltini ayirsak, oxirgi raqam toʻrt.
+
+<break time='2.5s' />
+
+Endi eng qizigʻi. <break time='0.3s' /> Agar skaner bitta raqamni xato oʻqisa, nazorat raqami boshqa chiqadi.
+
+<break time='2.5s' />
+
+Shuning uchun oxirgi raqam maʼlumot emas, u qorovul. <break time='0.45s' /> Xuddi shunday tizim bank kartalarida ham, pasport raqamlarida ham ishlaydi.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. <break time='0.3s' /> Qirq besh oʻrniga ellik toʻrt yozilsa, nazorat raqami buni nega tutadi? <break time='0.45s' /> Izohda kutamiz.

@@ -181,6 +181,205 @@ The limiter's 7% comes off the **whole** mix, so nothing gets quieter relative t
 else. Past ~1.8 the cues stop being punctuation and start competing with the narration.
 The table is repeated in `sfx.py` so nobody re-guesses it.
 
+### 7.1 ⚠️ The speech-rate check — why `check` alone was not enough
+
+`check` used to score each block's **span**, and a span includes the pauses inside it. So
+a block carrying several `|` breaks can lose a whole clause and still span about the right
+length. That is exactly what ko07 did on its first take (2026-09-15):
+
+- span ratio **0.71x** — inside nobody's alarm, and `check` printed *"split ishonchli"*;
+- but its 181 characters were spoken in **5.89s of actual speech** = 30.7 ch/s, against
+  **21.6 ch/s** everywhere else in the same recording — **1.42x**;
+- ~54 characters were never spoken, and the block was the `versus` scene carrying the
+  film's whole argument. Rendering it would have put the 계세요 half of the contrast on
+  screen in silence.
+
+**The conservation test still applies and still works:** a misplaced boundary MOVES time,
+so a squashed segment sits next to a stretched one. Missing text is absorbed by nobody —
+ko07's neighbours were 1.17x and 0.94x. But the span ratio was not extreme enough to
+trigger on, which is why the speech rate is now measured too.
+
+`cmd_check` subtracts each segment's internal silences and flags any block reading
+**>1.25x the median rate**. Validated before trusting it: across 25 blocks of the three
+known-good takes (ko04, ko05, ko06) the spread is **0.89–1.05x**, so the margin to 1.25 is
+wide and it does not cry wolf. It also settled an old question — ko06's block 5, which
+`check` once flagged as a suspicious boundary at 1.39x span, reads at **0.98x** speech
+rate, so that really was a false positive from inner-break density.
+
+**The fix for a flagged block is to RESTRUCTURE it, not to re-record it unchanged**
+(ko02 dropped the same sentence on two separate takes): remove the inner `||`, shorten it,
+and make sure every remaining `|` has real text on both sides. Move what you cut into the
+picture — ko07's literal glosses went to the `versus` card, which already printed them.
+
+⚠️ **`check` assumes the script and the audio correspond.** It compares a script file to an
+mp3; if the take was made from an older version of the script the report is meaningless.
+After editing a spec, regenerate the script AND re-record.
+
+### 7.1.0 ⛔ `check` now detects a SCRIPT/AUDIO MISMATCH by itself
+
+§7.2.1 said `check` assumes the script and the audio correspond. It no longer
+just assumes it — it tests it, because the assumption failed in practice on
+2026-09-15 and cost a round trip: mo25 and mo31 were **shortened after** being
+recorded, and `check` dutifully reported three blocks as "OVOZDA MATN YOQ" when
+the takes were simply the older, longer script.
+
+**The reasoning is exact: the engine can only DROP text, never add it.** So a
+block whose audio holds more speech than the script accounts for cannot be an
+engine fault.
+
+The discriminating statistic is the **spread** of the speech rates (max/min),
+which is scale-free — an absolute floor fails because several mismatched blocks
+drag the median down with them, and mo25's slowest landed at exactly 0.75x and
+slipped past a 0.75 threshold. Measured over 13 takes:
+
+| | rate spread |
+|---|---|
+| 11 matched takes | 1.07 – **1.37** |
+| the two edited after recording | **2.29**, **2.92** |
+
+Threshold **1.7**, and the whole report stops there rather than printing
+conclusions drawn from mismatched inputs. Validated both ways: flags both
+mismatches, zero false positives across all 11 matched takes.
+
+### 7.1.2 ⭐ KEEP A NARRATION BLOCK UNDER 120 CHARACTERS
+
+The single most useful measurement in this pipeline so far. The engine silently
+drops part of a block, and **length is the predictor** — measured over 105 blocks
+across 13 recordings (2026-09-15):
+
+| block length (converted) | blocks | dropped |
+|---|---|---|
+| **0 – 120 chars** | 59 | **0** |
+| 120 – 160 | 27 | 1 (3.7%) |
+| 160 – 200 | 17 | 1 (5.9%) |
+| 200 + | 2 | 1 (50%) |
+
+By sentence count: **1–2 sentences never failed in 45 blocks**; 5 sentences failed
+11% of the time. ko07 is the case study — 181 chars dropped a clause, 143 dropped
+another, 110 finally worked. Three takes for one film.
+
+`cli.py script` now **warns before recording**, per block, with the risk figure.
+That is the whole value: every earlier version of this problem cost a re-record,
+and the user had said plainly that the manual churn was defeating the purpose.
+
+**The fix is always the same, and it improves the film: cut what the PICTURE
+already says.** mo25's `solve` ladder prints every number the voice was reciting;
+mo31's `versus` card prints both sets of dimensions; its 71% card already reads
+«Bu — √2 ning teskarisi». Removing those took both scripts down by a quarter
+(1472→1081, 1704→1140) and lost nothing.
+
+⚠️ **When a film has to be re-recorded, shorten EVERY risky block in it, not just
+the one that failed.** A 6% block left in place brings him back a third time.
+
+**Confirmed prospectively.** mo25 was re-recorded from the shortened script (every block
+under 130 characters) and came back with speech rates of **0.97–1.06x** — a spread of
+1.09x, the tightest of any take in the project, against 1.07–1.37 for matched takes
+generally. Nothing dropped. That is the rule predicting a result before the fact, not
+explaining one after it.
+
+### 7.1.1 When the boundaries are FORCED, a span flag cannot be a mis-cut
+
+`check` reports two things and they can disagree. The **span** ratio catches a
+misplaced boundary (time moves between neighbours); the **speech rate** catches
+missing text. A span flag with a clean speech rate is usually neither — it is the
+per-character model mispredicting how much internal silence a block holds.
+
+There is an arithmetic test for it, and I worked it out by hand twice (ko06
+block 5, ko11 blocks 3-4) before putting it in the tool: **if there are exactly
+n-1 silences at scene-break length and every other pause is clearly shorter, the
+solver had no choice**, so a misplaced boundary is impossible. `check` now says
+so:
+
+    SHUBHALI CHEGARA - 3-blok 0.68x, qoshnilari ['0.97', '1.39'].
+    ⓘ  Lekin chegaralar MAJBURIY: 8 ta sahna-sukut, 8 ta chegara kerak,
+       qolgan eng uzun pauza 2.10s.
+    Demak chegara notoʻgʻri boʻlishi MUMKIN EMAS.
+
+So the decision rule is: **speech rate clean + boundaries forced → render.**
+A short one-sentence block (ko11's block 3, 49 characters) will read low on span
+forever and there is nothing to fix.
+
+### 7.2 ⚙️ Foreign words and Roman numerals are the PIPELINE's job, not yours
+
+⚠️ **2026-09-15, and this was a fair complaint: "it is becoming more manual stuff
+when our purpose is automation."** He was hand-editing the same things in every
+paste — `prime` → `praym`, `examprep` → `ekzamprep`, `XVIII` → `oʻn sakkiz`. That is
+the same class of bug as sending the engine a digit, and `speech.py`'s own docstring
+already states the principle: *the engine's mistakes are nearly all OUR mistakes.*
+
+**`speech.SAY_AS`** now converts the known foreign words on the way to the engine, and
+Roman numerals become Uzbek words — with the **ordinal** before `asr`/`yil`, because the
+18th century is «oʻn sakkizinchi asr», not «oʻn sakkiz asr»:
+
+    XVIII asr oxirida      -> Oʻn sakkizinchi asr oxirida
+    Prime Korean           -> Praym Korean
+    Examprep lugʻati       -> Ekzamprep lugʻati
+    MCMXLVIII yil          -> Ming toʻqqiz yuz qirq sakkizinchi yil
+    IELTS imtihoni         -> Ayelts imtihoni
+
+**When a new foreign word appears, add it to `SAY_AS` — never fix it by hand in the
+script file**, or the next regeneration silently undoes the fix and he records the wrong
+thing again.
+
+The SPEC and the SCREEN keep the real name (`practice("Prime Korean · PK-9")`); only the
+voice gets the respelling. Same bridge as `korean.py`, one alphabet over.
+
+**`cli.py script` now prints a pronunciation review** — a short, high-signal list of every
+token where risk actually lives (letters outside the Uzbek alphabet, ALL-CAPS acronyms,
+and capitalised words that are not sentence-initial), plus a **hard failure** on any Roman
+numeral that survived. His instruction behind it is the right one and worth keeping in
+mind on every line: **"always try to not read but HEAR how it will be delivered."** I
+cannot hear, so the substitute is to review the short list rather than skim the whole
+script — the risk hides in the skim.
+
+Still unresolved, surfaced by the review and left alone because he has never objected to
+them: **`Powerty`** (an Uzbek voice has no `w`) and **`Korean`** in "Praym Korean". Ask
+before changing either; both are his brand.
+
+### 7.2.2 ⚠️ Cyrillic look-alikes, and why the eye cannot catch them
+
+mo31's narration shipped **`kichrayди`** — д and и typed on a Cyrillic keyboard.
+Latin-Uzbek prose with two Cyrillic letters in the middle of a word looks
+completely ordinary at a glance, and the capitalisation review cannot see it
+because the letters are lowercase. `cli.py script` now **hard-fails** on any
+Cyrillic in the narration.
+
+The same scan found a pre-existing one in the pipeline: `speech.py`'s suffix list
+read `dan|gacha|dagi|daги|...` — `daги` is `dagi` typed on a Cyrillic keyboard,
+and since `dagi` was already in the list that alternative had never matched
+anything. Removed.
+
+**Worth re-running after any hand-edit of a spec:** scan `say` and `html` for
+`[Ѐ-ӿ]`. Two of the project's own files had it.
+
+### 7.2.1 ⚠️ A recorded film's script file is a RECORD, not a live artifact
+
+A dry regression on 2026-09-15 (compute what every script *would* be now, write nothing)
+showed the already-recorded films would change — and **that is correct and must be left
+alone**:
+
+- ko01-ko06 would gain `Praym` / `Ekzamprep`;
+- mo01 would gain `yigirmanchi` (the `uz_ordinal` vowel fix, made after it was recorded);
+- pm04/pm08/pm25 would gain the widened breaks (`0.7s`→`0.45s`, `1.5s`→`2.5s`, changed
+  2026-08-29).
+
+Those files match the audio that exists. **Do not regenerate a recorded film's script to
+"tidy" it** — `cli.py check` compares script to audio and assumes they correspond, so a
+tidied script silently makes every future report on that film meaningless. Regenerate only
+when re-recording.
+
+The regression itself is worth repeating after any `speech.py` change: it is the only way
+to see whether a new rule mangles text it was not aimed at. This run confirmed **no Roman
+numeral false positives** — the `[IVXLCDM]{2,}` pattern touched nothing it should not.
+
+### 7.3 Say "Praym", write "Prime"
+
+An Uzbek voice mispronounces **"Prime"**. His own fix, adopted 2026-09-15: the narration
+says **`Praym Korean`**, the on-screen `practice()` card keeps the real product name
+**`Prime Korean`**. Same principle as the Korean romanisation — a bridge for the voice, the
+real thing for the eye. Applied to ko07-ko09; ko04-ko06 were already recorded and were
+left alone.
+
 ## 8. Inventory
 
 | register | slugs | state |
@@ -232,7 +431,8 @@ Korean-only; the answer was **no — concentrate, do not switch**:
 - [ ] `cli.py sheet --per-scene` → **every frame looked at**, not one
 - [ ] `cli.py script --one --ssml` → no digit, no Hangul, no hanja/jamo, <2000 chars
 - [ ] `cli.py kowords` → clips fetched, each ≤2.1s
-- [ ] `cli.py check --audio` → "split ishonchli"
+- [ ] `cli.py check --audio` → "split ishonchli" **AND every block's speech rate
+      within ~1.1x of the median** (see §7.1 — the span ratio alone missed ko07)
 - [ ] `cli.py voice` → then pull frames from the finished mp4 and look at them
 - [ ] ⚠️ before touching the SHARED kit (`stage.css`, `primitives.py`), **lint the whole
       catalogue** — `min-width:0` fixed ko08 and broke mo01

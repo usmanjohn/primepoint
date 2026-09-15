@@ -148,6 +148,90 @@ def cmd_script(a):
               f"(ekranda qolaversin).")
         bad = 1
 
+    # ── BLOCK LENGTH (added 2026-09-15) ─────────────────────────────────
+    #
+    # The engine silently drops part of a long block, and the ONLY reliable
+    # predictor is length. Measured over 105 blocks in 13 recordings:
+    #
+    #     0-120 chars   59 blocks   0 dropped      <- the safe zone
+    #   120-160 chars   27 blocks   1 dropped  3.7%
+    #   160-200 chars   17 blocks   1 dropped  5.9%
+    #       200+        2 blocks    1 dropped   50%
+    #
+    # By sentence count, 1-2 sentences never failed in 45 blocks; 5 sentences
+    # failed 11% of the time. ko07 is the case study: 181 chars dropped a
+    # clause, 143 dropped another, 110 finally worked.
+    #
+    # This is a warning BEFORE recording, which is the whole point -- every
+    # earlier version of this problem cost a re-record.
+    import speech as _sp
+    v_ = build.load_story(a.slug)
+    long_blocks = []
+    for i, sc in enumerate([x for x in v_.scenes if getattr(x, "say", None)], 1):
+        n = len(_re.sub(r"<[^>]+>", "", _sp.for_tts(sc.say)))
+        sents = len([t for t in _re.split(r"(?<=[.?!])\s+",
+                     _re.sub(r"<[^>]+>", "", _sp.for_tts(sc.say)).strip()) if t])
+        if n > 160 or sents > 4:
+            long_blocks.append((i, n, sents))
+    if long_blocks:
+        hard = [x for x in long_blocks if x[1] > 200]
+        print(f"   {'⚠️ ' if hard else 'ⓘ  '} BLOK UZUNLIGI — engine uzun blokdan "
+              f"matn tashlab ketishi mumkin:")
+        for i, n, q in long_blocks:
+            risk = "50%" if n > 200 else "~6%"
+            print(f"       {i}-blok: {n} belgi, {q} gap  (tushib qolish "
+                  f"ehtimoli {risk}) — 120 belgidan past tushirsangiz 0%")
+        print(f"       Rasm allaqachon aytadigan narsani ovozdan olib tashlang.")
+
+    # ── PRONUNCIATION REVIEW (added 2026-09-15) ─────────────────────────
+    #
+    # The user was hand-fixing prime/examprep/XVIII in every paste and said,
+    # correctly, that this is manual work in a pipeline meant to automate. The
+    # lexicon in speech.py now converts the KNOWN cases; this surfaces the rest
+    # so they are reviewed instead of read past.
+    #
+    # His instruction, and it is the right one: "always try to not read but HEAR
+    # how it will be delivered". I cannot hear, so the substitute is a short,
+    # high-signal list of every token where pronunciation risk actually lives --
+    # not the whole script, which is where the risk hides.
+    bare = _re.sub(r"<[^>]+>", " ", txt)
+
+    # A Roman numeral surviving is a hard failure: an Uzbek voice reads it as
+    # letters or as nothing. speech.py converts them; anything here escaped it.
+    rom = sorted(set(_re.findall(r"\b(?=[IVXLCDM]{2,}\b)[IVXLCDM]+\b", bare)))
+    if rom:
+        print(f"   ⚠️  RIM RAQAMI QOLDI: {', '.join(rom)} — "
+              f"speech.py ularni soʻzga aylantira olmadi.")
+        bad = 1
+
+    # Cyrillic has no business in a Latin-Uzbek script and the engine will not
+    # read it as intended. Found on mo31: "kichrayди" -- д and и typed on a
+    # Cyrillic keyboard, invisible to the eye at a glance and invisible to the
+    # capitalisation check above, because it looks like ordinary lowercase.
+    cyr = sorted(set(_re.findall(r"[\u0400-\u04ff\u0500-\u052f]+", bare)))
+    if cyr:
+        print(f"   ⚠️  KIRILL HARF QOLDI: {', '.join(cyr)} — lotin "
+              f"oʻzbekchada yozing (д/и/г lar koʻzga oddiy koʻrinadi).")
+        bad = 1
+
+    # Tokens the engine is most likely to mispronounce, in one short list:
+    #   * letters outside the Uzbek Latin alphabet (w; c not part of ch)
+    #   * ALL-CAPS runs, i.e. acronyms
+    #   * capitalised words that are NOT sentence-initial, i.e. real names
+    words = _re.findall(r"[A-Za-zʻʼ]+", bare)
+    starts = set()
+    for m in _re.finditer(r"(?:^|[.?!]\s+)([A-Za-zʻʼ]+)", bare, _re.M):
+        starts.add(m.group(1))
+    odd = {w for w in words
+           if _re.search(r"w|c(?!h)", w, _re.I)
+           or (w.isupper() and len(w) > 1)
+           or (w[:1].isupper() and w not in starts)}
+    if odd:
+        print(f"   TEKSHIRING — talaffuzni koʻzdan kechiring: "
+              f"{', '.join(sorted(odd))}")
+        print(f"      (notoʻgʻri oʻqiladigani bo'lsa, speech.py dagi SAY_AS ga "
+              f"qoʻshing — qoʻlda tuzatmang)")
+
     han = sorted(set(_re.findall(r"[가-힣]+", txt)))
     if han:
         import korean as _ko
@@ -304,6 +388,13 @@ def cmd_check(a):
     # is the true segmentation and that segment is the block the engine did not
     # speak. (Found on ko02: the solver blamed block 4; the clean hypothesis
     # showed 9 of 10 segments consistent and block 9 at 0.18x.)
+    # Are the boundaries FORCED? Exactly n-1 silences at scene-break length,
+    # every other pause clearly shorter. If so the solver had no choice.
+    others = [x[2] for x in body if x[2] < 2.5]
+    other = max(others) if others else 0.0
+    forced = (len(longs) == len(blocks) - 1
+              and (not others or min(x[2] for x in longs) >= 1.5 * other))
+
     clean = None
     if len(longs) == len(blocks) - 1:
         cuts = sorted(longs, key=lambda x: x[0])
@@ -346,7 +437,91 @@ def cmd_check(a):
         print(f"   {k+1:3d} {weights[k]:6d} {want[k]:8.2f}s {got[k]:7.2f}s "
               f"{r:6.2f}x {flag} {txt!r}")
 
+    # ── the SPEECH-RATE check (added 2026-09-15, after ko07) ────────────
+    #
+    # Everything above scores a segment's SPAN, and a span includes the pauses
+    # inside it. So a block carrying several `|` breaks can lose a whole clause
+    # and still span about the right length -- which is exactly what ko07's
+    # block 5 did: 0.71x on span (inside nobody's alarm) while its 181
+    # characters were read in 5.89s of actual speech, 30.7 ch/s against
+    # 21.6 ch/s everywhere else in the same recording.
+    #
+    # Subtracting the internal silences removes that confound. A TTS engine at
+    # fixed settings does not read one block 40% faster than the rest of the
+    # same take, so an outlier here means text was not spoken. This is the
+    # measurement that caught ko07; before it, `check` printed
+    # "split ishonchli" on a film with a clause missing from its central scene.
+    rates, speech = [], []
+    for (st, e), w in zip(segs, weights):
+        quiet = sum(min(e, x[1]) - max(st, x[0]) for x in sil
+                    if x[1] > st + 0.12 and x[0] < e - 0.12)
+        sp = max((e - st) - max(0.0, quiet), 0.25)
+        speech.append(sp)
+        rates.append(w / sp)
+    med = sorted(rates)[len(rates) // 2]
+
+    # ── SCRIPT/AUDIO MISMATCH ───────────────────────────────────────────
+    # The engine can only DROP text, never add it. So a block whose audio holds
+    # much MORE speech than the script accounts for is not an engine fault --
+    # the script was edited after the take. Across every matched recording
+    # measured here the slowest block is 0.88x; below 0.75x is outside anything
+    # a real take produces.
+    #
+    # This cost a round trip on 2026-09-15: mo25/mo31 were shortened AFTER
+    # recording, and `check` dutifully reported three blocks as "OVOZDA MATN
+    # YOQ" when the take was simply the older, longer script. The whole report
+    # is meaningless in that state, so it stops here.
+    # The SPREAD is the discriminating statistic, and it is scale-free -- an
+    # absolute floor fails because several mismatched blocks drag the median
+    # down with them (mo25's slowest landed at exactly 0.75x and slipped past).
+    # Measured across 13 takes: 11 matched ones span 1.07-1.37; the two whose
+    # scripts were edited after recording span 2.29 and 2.92.
+    rel = [r / med for r in rates]
+    spread = max(rel) / max(min(rel), 1e-6)
+    slow = [k for k, r in enumerate(rates) if r < med * 0.75]
+    if spread > 1.7 or slow:
+        print("")
+        print(f"   ⛔ SCRIPT VA OVOZ MOS EMAS — tezlik tarqoqligi "
+              f"{spread:.2f}x (mos yozuvlarda eng koʻpi 1.37x):")
+        for k in sorted(range(len(rates)), key=lambda i: rates[i])[:3]:
+            print(f"       {k+1}-blok {rates[k]/med:.2f}x sekin "
+                  f"({rates[k]:.1f} belgi/s, oʻrtacha {med:.1f})")
+        print(f"   Engine matn QOʻSHMAYDI — faqat tashlab ketadi. Demak bu "
+              f"yozuv boshqa (uzunroq) script versiyasidan olingan.")
+        print(f"   Scriptni tahrirlagandan keyin QAYTA yozdirish kerak.")
+        return 1
+
+    # 1.15, not 1.25. Calibrated twice: 25 blocks across the known-good takes
+    # (ko04/05/06) span only 0.89-1.05x, while ko07 take 2 dropped a 30-char
+    # clause out of a 143-char block and came in at 1.20x -- under the original
+    # 1.25 and therefore missed. A 17% drop from a short block is the smallest
+    # thing worth catching, so the threshold sits just above the observed noise
+    # floor rather than halfway to the first disaster.
+    fast = [k for k, r in enumerate(rates) if r > med * 1.15]
+
+    print("")
+    print(f"   soʻzlash tezligi (sukutlar ayirilgan) — oʻrtacha "
+          f"{med:.1f} belgi/s")
+    for k, r in enumerate(rates):
+        flag = "<<<<" if k in fast else "    "
+        print(f"   {k+1:3d} {speech[k]:7.2f}s soʻzlash {r:7.1f} belgi/s "
+              f"{r/med:5.2f}x {flag}")
+
     bad = [k for k, r in enumerate(ratios) if r < 0.7 or r > 1.4]
+    if fast:
+        for k in fast:
+            head = _re.sub(r"<[^>]+>", "", blocks[k]).strip()[:70]
+            miss = weights[k] - speech[k] * med
+            print("")
+            print(f"   OVOZDA MATN YOQ - {k+1}-blok {rates[k]/med:.2f}x tez "
+                  f"oʻqilgan ({rates[k]:.1f} belgi/s, oʻrtacha {med:.1f}).")
+            print(f"   Taxminan {miss:.0f} belgi aytilmagan. Engine matnning "
+                  f"bir qismini tashlab ketgan — split aybdor emas.")
+            print(f"   Blokni QAYTA TUZING (ichki `||` ni olib tashlang va "
+                  f"qisqartiring), keyin qayta yozdiring.")
+            print(f"   Tinglang: ...{head}...")
+        return 1
+
     if not bad:
         print("")
         print("   => split ishonchli, render qilsa boladi")
@@ -365,7 +540,22 @@ def cmd_check(a):
         else:
             print(f"   SHUBHALI CHEGARA - {k+1}-blok {ratios[k]:.2f}x, "
                   f"qoshnilari {['%.2f' % x for x in near]}.")
-            print(f"   Vaqt qoshniga kochgan bolishi mumkin: chegara notogri.")
+            if forced:
+                # Worked out by hand twice (ko06 block 5, ko11 blocks 3-4)
+                # before this said it. When there are exactly n-1 silences at
+                # scene-break length and every other pause is far shorter, the
+                # solver had NO choice -- so a misplaced boundary is
+                # arithmetically impossible and the span ratio is a model
+                # artefact: the block simply holds more or less internal
+                # silence than per-character time predicts.
+                print(f"   ⓘ  Lekin chegaralar MAJBURIY: {len(longs)} ta "
+                      f"sahna-sukut, {len(blocks)-1} ta chegara kerak, "
+                      f"qolgan eng uzun pauza {other:.2f}s.")
+                print(f"   Demak chegara notoʻgʻri boʻlishi MUMKIN EMAS. "
+                      f"Soʻzlash tezligi toza boʻlsa — render qilsa boʻladi.")
+            else:
+                print(f"   Vaqt qoshniga kochgan bolishi mumkin: "
+                      f"chegara notogri.")
     return 1
 
 

@@ -123,7 +123,7 @@ narrate(VIDEO, [
     "Endi oʻzingiz oʻylang. Vegetarian odam goʻsht haqida nima deydi? "
     "|| Izohda kutamiz.",
 
-    "Inkor shakllari Powertyda: Prime Korean, yigirma ikkinchi dars.",
+    "Inkor shakllari Powertyda: Praym Korean, yigirma ikkinchi dars.",
 
     None,   # outro — jim
 ])

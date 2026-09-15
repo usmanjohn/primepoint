@@ -83,6 +83,47 @@ SYMBOLS = [
 # real 1.5s scene break, which is what made the re-split fragile. Pushing the
 # scene break up and the inner ones down separates them unmistakably. Costs no
 # video length: the boundary silence is discarded when the clip is cut.
+# ── foreign words the engine cannot pronounce ───────────────────────────
+#
+# THE SAME RULE AS "never send it a digit", and it exists for the same reason
+# this module's docstring gives: the engine's mistakes are nearly all OUR
+# mistakes. An Uzbek voice reads "Prime" as something like [pree-meh] and
+# "Examprep" wrong. So the SPEC writes the real brand, the SCREEN keeps it, and
+# this table hands the engine the spelling that SOUNDS right -- exactly the
+# korean.py bridge, one alphabet over.
+#
+# ⚠️ The user was fixing these BY HAND in every paste until 2026-09-15 and
+# rightly objected: "it is becoming more manual stuff when our purpose is
+# automation". When a new foreign word turns up, add it HERE, once, and every
+# future script gets it.
+SAY_AS = [
+    ("Prime",    "Praym"),
+    ("Examprep", "Ekzamprep"),
+    ("examprep", "ekzamprep"),
+    ("IELTS",    "Ayelts"),
+]
+
+# Roman numerals. "XVIII asr" came out as letters, and centuries are the one
+# place this project uses them (mo01's MCMXLVIII lives on screen, not in
+# narration). Before `asr`/`yil` Uzbek wants the ORDINAL -- the 18th century is
+# «oʻn sakkizinchi asr», not «oʻn sakkiz asr».
+_ROMAN_VAL = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+_ROMAN = (r"\b(?=[IVXLCDM]{2,}\b)"
+          r"(M{0,4}(?:CM|CD|D?C{0,3})(?:XC|XL|L?X{0,3})(?:IX|IV|V?I{0,3}))\b")
+
+
+def roman_to_int(r):
+    """XVIII -> 18. Returns None if it is not a well-formed numeral."""
+    total, prev = 0, 0
+    for ch in reversed(r.upper()):
+        v = _ROMAN_VAL.get(ch)
+        if v is None:
+            return None
+        total = total - v if v < prev else total + v
+        prev = max(prev, v)
+    return total or None
+
+
 SCENE_BREAK = "2.5s"      # long enough to be unmistakable when re-splitting
 INNER_BREAK = "0.45s"
 SHORT_BREAK = "0.3s"
@@ -105,6 +146,24 @@ def for_tts(text, ssml=False):
     # word once and it reaches the picture as Hangul and the engine as Uzbek.
     s = korean.romanise_all(s)
 
+    # Foreign brand words, then Roman numerals -- both before ANY digit pass,
+    # so a converted numeral is plain Uzbek words by the time the number
+    # regexes run and cannot be mangled a second time.
+    for a, b in SAY_AS:
+        s = re.sub(rf"\b{re.escape(a)}\b", b, s)
+    s = re.sub(_ROMAN + r"(\s+(?:asr|yil|asrda|asrning))",
+               lambda m: (uz_ordinal(roman_to_int(m.group(1))) + m.group(2))
+                         if roman_to_int(m.group(1)) else m.group(0), s)
+    s = re.sub(_ROMAN,
+               lambda m: uz_number(roman_to_int(m.group(1)))
+                         if roman_to_int(m.group(1)) else m.group(0), s)
+
+    # A letter glued to a digit is a NAME, not a quantity: A4, A0, B5, PK-9.
+    # Without a separator the number word fuses onto the letter and the engine
+    # says "Atoʻrt", "Anol", "Abesh". Found on mo31 by the pronunciation review
+    # in `cli.py script`, which is exactly what that list is for.
+    s = re.sub(r"(?<=[A-Za-z])(?=\d)", " ", s)
+
     # Join thousands spaces first: "25 000" is one number, not two.
     prev = None
     while prev != s:
@@ -112,7 +171,7 @@ def for_tts(text, ssml=False):
         s = re.sub(r"(?<=\d) (?=\d{3}\b)", "", s)
 
     # Case suffixes attach to the number they follow.
-    SUFFIX = "dan|gacha|dagi|daги|ga|da|ni|ning|ta|tadan|tasi|inchi|nchi"
+    SUFFIX = "dan|gacha|dagi|ga|da|ni|ning|ta|tadan|tasi|inchi|nchi"
     s = re.sub(rf"\b(\d+)\s+({SUFFIX})\b", r"\1\2", s)
 
     for a, b in SYMBOLS:
@@ -143,7 +202,11 @@ def for_tts(text, ssml=False):
     s = re.sub(r"\s+([,.!?])", r"\1", s)
     s = s.strip()
     # Recapitalise: expanding "25 foiz" mid-rewrite can leave a clause lowercase.
-    s = re.sub(r"(^|[.!?]\s+)([a-zoʻgʻ])",
+    # This runs BEFORE `|`/`||` become SSML breaks, so the original pattern
+    # could not see past one: "toʻldiramiz. | 130 dan" left "bir yuz oʻttizdan"
+    # lowercase. A sentence-ender is REQUIRED before the pipes, so a `|` used
+    # mid-clause ("ketadi, | oʻrniga...") is never wrongly capitalised.
+    s = re.sub(r"(^|[.!?]\s*\|{1,2}\s*|[.!?]\s+)([a-zoʻgʻ])",
                lambda m: m.group(1) + m.group(2).upper(), s)
 
     if ssml:

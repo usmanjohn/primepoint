@@ -14,7 +14,7 @@ Almashadigan narsa bitta boʻgʻin. <break time='0.3s' /> <emphasis level='moder
 
 <break time='2.5s' />
 
-Qarang. Agar SIZ qolsangiz, ketayotgan odamga <emphasis level='moderate'>annyonghi kaseyoʻ</emphasis> deysiz, yaxshi boring. <break time='0.3s' /> Agar SIZ ketsangiz, qoladigan odamga <emphasis level='moderate'>annyonghi kyeseyoʻ</emphasis> deysiz, yaxshi turing. <break time='0.45s' /> Oʻzbekchada ikkalasi ham xayr.
+Siz qolsangiz, ketayotgan odamga <emphasis level='moderate'>annyonghi kaseyoʻ</emphasis> deysiz. <break time='0.3s' /> Siz ketsangiz, qoladigan odamga <emphasis level='moderate'>annyonghi kyeseyoʻ</emphasis>.
 
 <break time='2.5s' />
 
@@ -26,4 +26,4 @@ Endi oʻzingiz oʻylang. Ikkovingiz ham bir vaqtda, birga chiqib ketyapsiz. <bre
 
 <break time='2.5s' />
 
-Salomlashish va xayrlashish Powertyda: Prime Korean, toʻqqizinchi dars.
+Salomlashish va xayrlashish Powertyda: Praym Korean, toʻqqizinchi dars.

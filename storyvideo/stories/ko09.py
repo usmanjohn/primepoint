@@ -132,7 +132,7 @@ narrate(VIDEO, [
     "Endi oʻzingiz oʻylang. *춥다* sovuq boʻlsa, *추운 날* nima degani? "
     "|| Va oʻzgarish bu yerda ham ishladimi? Izohda kutamiz.",
 
-    "Notoʻgʻri feʼllar Powertyda: Prime Korean, oʻttiz ikkinchi dars.",
+    "Notoʻgʻri feʼllar Powertyda: Praym Korean, oʻttiz ikkinchi dars.",
 
     None,   # outro — jim
 ])

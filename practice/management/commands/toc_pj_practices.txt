@@ -72,19 +72,19 @@ TUTORIAL: PJ-<n>:   (each practice links to its own tutorial)
 
 ### Block D: Gapni bogʻlash (45–62)   level: medium · 20 savol
 45. Oddiy shakl (普通体)   [done]
-46. 〜と思います   [next]
-47. 〜と言いました
-48. Aniqlovchi ergash gap
-49. 〜とき
-50. 〜たら
-51. 〜ば va 〜と
-52. 〜なら va toʻrttasining farqi
-53. 〜から va 〜ので
-54. 〜が va 〜けど
-55. 〜ても
-56. 〜ために va 〜ように
-57. 〜ようになります va 〜ことにします
-58. 〜てしまいます
+46. 〜と思います   [done]
+47. 〜と言いました   [done]
+48. Aniqlovchi ergash gap   [done]
+49. 〜とき   [done]
+50. 〜たら   [done]
+51. 〜ば va 〜と   [done]
+52. 〜なら va toʻrttasining farqi   [done]
+53. 〜から va 〜ので   [done]
+54. 〜が va 〜けど   [done]
+55. 〜ても   [done]
+56. 〜ために va 〜ように   [done]
+57. 〜ようになります va 〜ことにします   [done]
+58. 〜てしまいます   [next]
 59. 〜ておきます va 〜てみます
 60. あげる, くれる, もらう
 61. 〜てあげる, 〜てくれる, 〜てもらう

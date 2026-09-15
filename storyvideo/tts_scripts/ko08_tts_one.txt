@@ -26,4 +26,4 @@ Endi oʻzingiz oʻylang. Vegetarian odam goʻsht haqida nima deydi? <break time=
 
 <break time='2.5s' />
 
-Inkor shakllari Powertyda: Prime Korean, yigirma ikkinchi dars.
+Inkor shakllari Powertyda: Praym Korean, yigirma ikkinchi dars.
