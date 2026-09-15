@@ -137,3 +137,47 @@ python manage.py import_practices practice/management/commands/_practice_pj_55_5
 python manage.py import_corner corner/management/commands/_stories_prime_japanese_55_57.py --author=powerty
 python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
 python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_55_57.py --author=powerty --republish
+
+# Blok D oxiri, 58-60
+#   (PJ-58 〜てしまう · PJ-59 〜ておく/〜てみる · PJ-60 あげる/くれる/もらう)
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_58_60.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pj_58_60.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_58_60.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_58_60.py --author=powerty --republish
+
+# Blok D yopildi + Blok E boshi, 61-63
+#   (PJ-61 〜てあげる/くれる/もらう · PJ-62 taxmin でしょう/かもしれません/はず
+#    · PJ-63 passiv 受身)
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_61_63.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pj_61_63.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_61_63.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_61_63.py --author=powerty --republish
+
+# Blok E, 64-66
+#   (PJ-64 aziyat passivi 迷惑の受身 · PJ-65 kauzativ 使役
+#    · PJ-66 kauzativ-passiv 使役受身) — uchalasi ham bitta あ-oʻzakdan
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_64_66.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pj_64_66.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_64_66.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_64_66.py --author=powerty --republish
+
+# Blok E, 67-69
+#   (PJ-67 buyruq 行け / taqiq 行くな · PJ-68 keigo 1: uch tarmoq
+#    · PJ-69 keigo 2: 尊敬語)
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_67_69.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pj_67_69.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_67_69.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_67_69.py --author=powerty --republish
+
+# Blok E — keigo yopildi, 70-72
+#   (PJ-70 keigo 3: 謙譲語 · PJ-71 keigo 4: ございます va doʻkon tili
+#    · PJ-72 うちとそと — butun blokni boshqaradigan mantiq)
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_70_72.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pj_70_72.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_70_72.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_70_72.py --author=powerty --republish

@@ -108,26 +108,26 @@ PLAYLIST: Prime Japanese
 55. 〜ても — "…sa ham"   [done]
 56. 〜ために va 〜ように — maqsad   [done]
 57. 〜ようになります va 〜ことにします — oʻzgarish va qaror   [done]
-58. 〜てしまいます — tugatish va afsus   [next]
-59. 〜ておきます va 〜てみます — oldindan qilish va sinab koʻrish
-60. Berish-olish 1: あげる, くれる, もらう
-61. Berish-olish 2: 〜てあげる, 〜てくれる, 〜てもらう
-62. Taxmin: 〜でしょう, 〜かもしれません, 〜はずです
+58. 〜てしまいます — tugatish va afsus   [done]
+59. 〜ておきます va 〜てみます — oldindan qilish va sinab koʻrish   [done]
+60. Berish-olish 1: あげる, くれる, もらう   [done]
+61. Berish-olish 2: 〜てあげる, 〜てくれる, 〜てもらう   [done]
+62. Taxmin: 〜でしょう, 〜かもしれません, 〜はずです   [done]
 # ↑ Block D: qoʻshma gap. Bu yerdan keyin oʻquvchi hikoya qila oladi.
 
 
 ### Block E: Ovoz va nuqtai nazar (63–78)
-63. Passiv (受身) 1: shakl va oddiy ishlatilishi
-64. Passiv 2: "aziyat chekish" passivi — yaponchaning oʻziga xos shakli
-65. Kauzativ (使役): 行かせる — qildirmoq va ruxsat bermoq
-66. Kauzativ-passiv: 行かせられる — majburan
-67. Buyruq va taqiq shakllari: 行け / 行くな va ularning oʻrni
-68. Keigo 1: nega hurmat tili bor va uch tarmogʻi qanday ishlaydi
-69. Keigo 2: 尊敬語 — お〜になる va maxsus feʼllar
-70. Keigo 3: 謙譲語 — お〜する va oʻzini pastga qoʻyish
-71. Keigo 4: 丁寧語, ございます va doʻkondagi yapon tili
-72. うちとそと — ichki va tashqi guruh: keigo'ni haqiqatda boshqaradigan mantiq
-73. 〜そうです 1: koʻrinish ("yomgʻir yogʻadiganga oʻxshaydi")
+63. Passiv (受身) 1: shakl va oddiy ishlatilishi   [done]
+64. Passiv 2: "aziyat chekish" passivi — yaponchaning oʻziga xos shakli   [done]
+65. Kauzativ (使役): 行かせる — qildirmoq va ruxsat bermoq   [done]
+66. Kauzativ-passiv: 行かせられる — majburan   [done]
+67. Buyruq va taqiq shakllari: 行け / 行くな va ularning oʻrni   [done]
+68. Keigo 1: nega hurmat tili bor va uch tarmogʻi qanday ishlaydi   [done]
+69. Keigo 2: 尊敬語 — お〜になる va maxsus feʼllar   [done]
+70. Keigo 3: 謙譲語 — お〜する va oʻzini pastga qoʻyish   [done]
+71. Keigo 4: 丁寧語, ございます va doʻkondagi yapon tili   [done]
+72. うちとそと — ichki va tashqi guruh: keigo'ni haqiqatda boshqaradigan mantiq   [done]
+73. 〜そうです 1: koʻrinish ("yomgʻir yogʻadiganga oʻxshaydi")   [next]
 74. 〜そうです 2: eshitilgan xabar
 75. 〜ようです va 〜らしいです — taxminning ikki darajasi
 76. 〜みたいです va oddiy nutqdagi taqqoslash

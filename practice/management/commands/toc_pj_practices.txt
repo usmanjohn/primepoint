@@ -84,24 +84,24 @@ TUTORIAL: PJ-<n>:   (each practice links to its own tutorial)
 55. 〜ても   [done]
 56. 〜ために va 〜ように   [done]
 57. 〜ようになります va 〜ことにします   [done]
-58. 〜てしまいます   [next]
-59. 〜ておきます va 〜てみます
-60. あげる, くれる, もらう
-61. 〜てあげる, 〜てくれる, 〜てもらう
-62. 〜でしょう, 〜かもしれません, 〜はずです
+58. 〜てしまいます   [done]
+59. 〜ておきます va 〜てみます   [done]
+60. あげる, くれる, もらう   [done]
+61. 〜てあげる, 〜てくれる, 〜てもらう   [done]
+62. 〜でしょう, 〜かもしれません, 〜はずです   [done]
 
 ### Block E: Ovoz va nuqtai nazar (63–78)   level: hard · 20 savol
-63. Passiv 1
-64. Passiv 2 — aziyat passivi
-65. Kauzativ
-66. Kauzativ-passiv
-67. Buyruq va taqiq shakllari
-68. Keigo 1: uch tarmoq
-69. Keigo 2: 尊敬語
-70. Keigo 3: 謙譲語
-71. Keigo 4: 丁寧語 va ございます
-72. うちとそと
-73. 〜そうです 1: koʻrinish
+63. Passiv 1   [done]
+64. Passiv 2 — aziyat passivi   [done]
+65. Kauzativ   [done]
+66. Kauzativ-passiv   [done]
+67. Buyruq va taqiq shakllari   [done]
+68. Keigo 1: uch tarmoq   [done]
+69. Keigo 2: 尊敬語   [done]
+70. Keigo 3: 謙譲語   [done]
+71. Keigo 4: 丁寧語 va ございます   [done]
+72. うちとそと   [done]
+73. 〜そうです 1: koʻrinish   [next]
 74. 〜そうです 2: eshitilgan xabar
 75. 〜ようです va 〜らしいです
 76. 〜みたいです
