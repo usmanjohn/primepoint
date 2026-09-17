@@ -39,7 +39,7 @@
             <input type="radio" class="form-check-input mt-0 flex-shrink-0"
                    name="mcq_{{ block.id }}" value="{{ choice.id }}"
                    {% if choice.was_selected %}checked{% endif %}>
-            <span class="flex-grow-1">{{ choice.text }}</span>
+            <span class="flex-grow-1">{{ choice.text|safe }}</span>
             {% if submitted %}
                 {% if choice.is_correct %}
                     <i class="bi bi-check-circle-fill text-success flex-shrink-0"></i>

@@ -191,9 +191,22 @@ def rule(pattern, meaning=None, strip=None, dur=9.0, head="Esda tutinglar", note
     return Scene(dur, "".join(body), cam="push", dark=True, name="rule", note=note or pattern)
 
 
-def outro(line1="Powerty", line2="matematika hikoyalari", dur=3.4):
+def outro(line1="Powerty", line2="matematika hikoyalari", dur=3.4,
+          link="Havola profilda", site="powerty.uz"):
+    """The channel card -- and where to go next.  (`link`/`site`: 2026-09-16)
+
+    Reels and Shorts strip every clickable thing out of the frame, so the last
+    card has to say the two things a viewer cannot otherwise act on: that the
+    address is in the bio, and what it is. Both default ON, so a film written
+    after today carries them without remembering to. Pass link=None to drop
+    the instruction, site=None to drop the address.
+    """
     body = (P.line(line1, "ttl gold", at=0.0, anim="pop", dur=0.6)
             + P.line(line2, "lbl lbl--sm", at=0.5, anim="rise"))
+    if link:
+        body += P.line(link, "lbl", at=1.15, anim="rise")
+    if site:
+        body += P.line(site, "ttl gold", at=1.6, anim="pop", dur=0.5)
     return Scene(dur, body, cam="pull", dark=True, name="outro", note="Kanal nomi.")
 
 
@@ -411,7 +424,7 @@ def shape(zone, line, head=None, dur=7.0, cam="push", note=""):
 
 
 def practice(title, sub=None, head="Endi oʻzingiz sinab koʻring",
-             dur=5.0, cam="push", note=""):
+             dur=5.0, cam="push", note="", link="powerty.uz"):
     """The endcard that sends them somewhere to actually use it.
 
     It sits AFTER `ask`, which breaks that scene's own rule ("nothing that
@@ -419,7 +432,7 @@ def practice(title, sub=None, head="Endi oʻzingiz sinab koʻring",
     answer. `ask` stays the last idea in the film; this is the door out of it.
     """
     body = (P.line(head, "lbl lbl--sm", at=0.0, anim="fade")
-            + W.cta(title, sub, at=0.5))
+            + W.cta(title, sub, at=0.5, link=link))
     return Scene(dur, body, cam=cam, dark=True, name="practice",
                  note=note or f"Powerty: {title}")
 

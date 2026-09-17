@@ -1,0 +1,33 @@
+Koreysda shunday maqol bor: <emphasis level='moderate'>tikkul moʻa tesan</emphasis>.
+
+<break time='2.5s' />
+
+Bekzod boshqacha yoʻl tanladi: kuniga ikki yuzta soʻz.
+
+<break time='2.5s' />
+
+Uchinchi kuni tashladi. <break time='0.45s' /> Reja katta boʻlgani uchun emas, kunlik boʻlmagani uchun.
+
+<break time='2.5s' />
+
+<emphasis level='moderate'>tikkul</emphasis>, chang zarrasi. <break time='0.3s' /> <emphasis level='moderate'>moʻa</emphasis>, yigʻilib. <break time='0.3s' /> <emphasis level='moderate'>tesan</emphasis>, ulkan togʻ.
+
+<break time='2.5s' />
+
+Endi sanaymiz. Kuniga oʻnta soʻz, besh daqiqa vaqt. <break time='0.45s' /> Bir yilda, uch ming olti yuz ellikta soʻz.
+
+<break time='2.5s' />
+
+Bekzodning uch kuni esa olti yuzta. <break time='0.45s' /> Bir xil odam, bir xil daftar.
+
+<break time='2.5s' />
+
+Bizda ham shu maqol bor, faqat suvdan: tomchi tomchi yigʻilib, koʻl boʻlar. <break time='0.45s' /> Kichik boʻlsin, lekin har kuni boʻlsin.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Bugungi bitta tikkulingiz nima boʻladi? <break time='0.45s' /> Izohda kutamiz.
+
+<break time='2.5s' />
+
+Har kunlik oʻnta soʻz Powertyda: Topik, lugʻat banki. <break time='0.3s' /> Havola profilda.

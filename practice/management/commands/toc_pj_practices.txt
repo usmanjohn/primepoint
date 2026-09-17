@@ -101,30 +101,30 @@ TUTORIAL: PJ-<n>:   (each practice links to its own tutorial)
 70. Keigo 3: 謙譲語   [done]
 71. Keigo 4: 丁寧語 va ございます   [done]
 72. うちとそと   [done]
-73. 〜そうです 1: koʻrinish   [next]
-74. 〜そうです 2: eshitilgan xabar
-75. 〜ようです va 〜らしいです
-76. 〜みたいです
-77. 擬音語・擬態語
-78. Erkak va ayol nutqi, yoshlar tili
+73. 〜そうです 1: koʻrinish   [done]
+74. 〜そうです 2: eshitilgan xabar   [done]
+75. 〜ようです va 〜らしいです   [done]
+76. 〜みたいです   [done]
+77. 擬音語・擬態語   [done]
+78. Erkak va ayol nutqi, yoshlar tili   [done]
 
 ### Block F: Yozma til va N3 ga eshik (79–100)   level: hard · 20 savol
-79. 〜ということ
-80. 〜わけです
-81. 〜はずがない, 〜に違いない
-82. 〜べきです
-83. 〜ばかり va 〜たばかり
-84. 〜ところ
-85. 〜うちに va 〜あいだに
-86. 〜につれて, 〜にしたがって
-87. 〜によって
-88. 〜として va 〜にとって
-89. 〜に関して, 〜について, 〜に対して
-90. 〜ながらも, 〜つつ
-91. 〜さえ, 〜こそ, 〜しか〜ない
-92. 〜がち, 〜っぽい, 〜気味
-93. 〜おかげで va 〜せいで
-94. 〜どころか va 〜ばかりか
+79. 〜ということ   [done]
+80. 〜わけです   [done]
+81. 〜はずがない, 〜に違いない   [done]
+82. 〜べきです   [done]
+83. 〜ばかり va 〜たばかり   [done]
+84. 〜ところ   [done]
+85. 〜うちに va 〜あいだに   [done]
+86. 〜につれて, 〜にしたがって   [done]
+87. 〜によって   [done]
+88. 〜として va 〜にとって   [done]
+89. 〜に関して, 〜について, 〜に対して   [done]
+90. 〜ながらも, 〜つつ   [done]
+91. 〜さえ, 〜こそ, 〜しか〜ない   [done]
+92. 〜がち, 〜っぽい, 〜気味   [done]
+93. 〜おかげで va 〜せいで   [done]
+94. 〜どころか va 〜ばかりか   [next]
 95. 〜たとたん, 〜次第
 96. だ・である体 va gazeta yaponchasi
 97. Xat va rasmiy murojaat qoliplari

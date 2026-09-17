@@ -181,3 +181,31 @@ python manage.py import_practices practice/management/commands/_practice_pj_70_7
 python manage.py import_corner corner/management/commands/_stories_prime_japanese_70_72.py --author=powerty
 python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
 python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_70_72.py --author=powerty --republish
+
+# Blok E — taxmin bloki boshlandi, 73-75
+#   (PJ-73 様態 そう: koʻrinish · PJ-74 伝聞 そう: eshitilgan xabar
+#    · PJ-75 ようです / らしいです — va toʻrtala taxmin bir jadvalda)
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_73_75.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pj_73_75.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_73_75.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_73_75.py --author=powerty --republish
+
+# Blok E YOPILDI, 76-78
+#   (PJ-76 みたい: ようだ ning kundalik egizagi · PJ-77 擬音語・擬態語
+#    · PJ-78 kim qanday gapiradi — 僕/俺/あたし, yoshlar tili, manga)
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_76_78.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pj_76_78.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_76_78.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_76_78.py --author=powerty --republish
+
+# Blok F OCHILDI, 79-81
+#   (PJ-79 ということ: gapni otga aylantirish · PJ-80 わけ oilasi —
+#    わけです / わけではない / わけがない / わけにはいかない
+#    · PJ-81 はずがない va に違いない — ishonch shkalasi yopildi)
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_79_81.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pj_79_81.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_79_81.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_79_81.py --author=powerty --republish

@@ -108,6 +108,11 @@ PALATAL = {"ㅣ": "i", "ㅑ": "a", "ㅒ": "e", "ㅕ": "o", "ㅖ": "e",
            "ㅛ": "oʻ", "ㅠ": "u", "ㅟ": "vi"}
 
 SONORANT = {"n", "m", "ng", "l"}
+
+# The three two-consonant finals that sound their SECOND letter (닭 [닥],
+# 삶 [삼], 읊다 [읍따]). Every other cluster sounds its first -- 없다 [업따],
+# 앉다 [안따], 여덟 [여덜]. See the reduction step in `_word`.
+SOUNDS_SECOND = {"ㄹㄱ", "ㄹㅁ", "ㄹㅍ"}
 ASPIRATE = {"ㄱ": "ㅋ", "ㄷ": "ㅌ", "ㅈ": "ㅊ", "ㅂ": "ㅍ"}
 
 
@@ -164,10 +169,41 @@ def _word(word):
                 nxt[0] = moved
             continue
 
-    # The remaining rules read finals as SOUNDS, so reduce them first.
+    # 자음군 단순화 — a two-consonant final only ever sounds ONE of its two
+    # letters, and which one is not the same for every cluster. Taking the
+    # last one always (what this did until 2026-09-16) is right for ㄺ ㄻ ㄿ
+    # and wrong for the other seven: 없다 came out "otta" instead of "opta",
+    # and 읽기 came out "ikki" -- the Uzbek word for "two", in a course whose
+    # narration is full of numbers.
+    #
+    # Only an INTACT cluster is reduced here. If 연음 already moved the second
+    # member into the next syllable (읽어요 -> 일거요) there is nothing left to
+    # choose between, which is why that case keeps working untouched.
     finals = []
-    for s in syls:
-        finals.append(TERMINAL.get(s[2][-1], "") if s[2] else "")
+    hard = [False] * len(syls)          # onsets a dropped consonant keeps hard
+    for i, s in enumerate(syls):
+        c = s[2]
+        if not c:
+            finals.append("")
+        elif len(c) == 2:
+            pair = c[0] + c[1]
+            nxt = syls[i + 1][0] if i + 1 < len(syls) else ""
+            if pair == "ㄹㄱ" and nxt == "ㄱ":
+                # ㄺ keeps its ㄹ before ㄱ -- 읽기 [일끼], 읽고 [일꼬].
+                finals.append("l")
+                hard[i + 1] = True
+            else:
+                finals.append(TERMINAL.get(c[1] if pair in SOUNDS_SECOND
+                                           else c[0], ""))
+                # 경음화 — the dropped member is still there underneath, and
+                # it tenses what follows: 앉다 [안따], 핥다 [할따]. Uzbek has
+                # no tense series, so this comes out as the HARD onset rather
+                # than a doubled letter (the same choice PALATAL makes above):
+                # "anta", not "anda" and not "antta".
+                if pair not in SOUNDS_SECOND and nxt in ASPIRATE:
+                    hard[i + 1] = True
+        else:
+            finals.append(TERMINAL.get(c[-1], ""))
 
     for i in range(len(syls) - 1):
         f, nxt = finals[i], syls[i + 1]
@@ -184,7 +220,7 @@ def _word(word):
     # ── letters ─────────────────────────────────────────────────────────
     out, prev = [], ""      # prev = the sound immediately before this onset
     for i, (cho, jung, _c) in enumerate(syls):
-        soft = prev != "" and (prev == "V" or prev in SONORANT)
+        soft = (not hard[i]) and prev != "" and (prev == "V" or prev in SONORANT)
         if cho == "ㄹ" and prev == "l":
             out.append("l")                      # 빨리 -> ppalli
             out.append(JUNG_UZ[jung])
@@ -248,6 +284,24 @@ CASES = [
     ("시간",       "shigan"),         # ㄱ still softens after the vowel
     ("소식",       "soʻshik"),        # palatal onset, ㄱ final
     ("샤워",       "shavo"),          # ㅑ: the y is absorbed, not kept as "shya"
+    # ── 자음군 단순화: the rule that was missing until 2026-09-16 ──
+    # Every one of these has a TWO-consonant final, and only one of the two is
+    # ever heard. Until today the code always took the SECOND, which is right
+    # for ㄺ/ㄻ/ㄿ and wrong for every other cluster.
+    ("없다",       "opta"),          # ㅄ -> [ㅂ]. Was "otta".
+    ("값",         "kap"),           # same cluster, word-finally. Was "kat".
+    ("앉다",       "anta"),          # ㄵ -> [ㄴ]. Was "atta".
+    ("여덟",       "yodol"),         # ㄼ -> [ㄹ]. Was "yodop".
+    ("핥다",       "halta"),         # ㄾ -> [ㄹ]. Was "hatta".
+    ("닭",         "tak"),           # ㄺ -> [ㄱ]: the clusters that DO sound
+    ("삶",         "sam"),           # ㄻ -> [ㅁ]  their second member.
+    ("읽다",       "ikta"),
+    # ...except ㄺ before ㄱ, which keeps its ㄹ and tenses the ㄱ. This one
+    # matters beyond Korean: 읽기 used to come out "ikki", which is the Uzbek
+    # word for "two", in a narration full of numbers. Tenseness is dropped as
+    # everywhere else in this module, so [일끼] is "ilki", not "ilkki".
+    ("읽기",       "ilki"),
+    ("읽고",       "ilkoʻ"),
     # ── and the neighbours that must NOT change ──
     ("사",         "sa"),
     ("수",         "su"),

@@ -127,32 +127,33 @@ PLAYLIST: Prime Japanese
 70. Keigo 3: 謙譲語 — お〜する va oʻzini pastga qoʻyish   [done]
 71. Keigo 4: 丁寧語, ございます va doʻkondagi yapon tili   [done]
 72. うちとそと — ichki va tashqi guruh: keigo'ni haqiqatda boshqaradigan mantiq   [done]
-73. 〜そうです 1: koʻrinish ("yomgʻir yogʻadiganga oʻxshaydi")   [next]
-74. 〜そうです 2: eshitilgan xabar
-75. 〜ようです va 〜らしいです — taxminning ikki darajasi
-76. 〜みたいです va oddiy nutqdagi taqqoslash
-77. 擬音語・擬態語 — tovush va holat taqlidi soʻzlari
-78. Erkak va ayol nutqi, yoshlar tili va manga yaponchasi
-# ↑ Block E: N4 ning eng qiyin qismi + N3 ning boshi.
+73. 〜そうです 1: koʻrinish ("yomgʻir yogʻadiganga oʻxshaydi")   [done]
+74. 〜そうです 2: eshitilgan xabar   [done]
+75. 〜ようです va 〜らしいです — taxminning ikki darajasi   [done]
+76. 〜みたいです va oddiy nutqdagi taqqoslash   [done]
+77. 擬音語・擬態語 — tovush va holat taqlidi soʻzlari   [done]
+78. Erkak va ayol nutqi, yoshlar tili va manga yaponchasi   [done]
+# ↑ Block E COMPLETE (2026-09-16) — 16 ta dars, mashq va oʻqish matni.
+#   PJ-73…75 taxminning toʻrt ovozini, PJ-76…78 registr oʻqini qoʻshdi.
 
 
 ### Block F: Yozma til va N3 ga eshik (79–100)
-79. 〜ということ va gapni otga aylantirish
-80. 〜わけです, 〜わけではない — mantiqiy xulosa
-81. 〜はずがない, 〜に違いない — ishonch darajalari
-82. 〜べきです va 〜なければならない — burch
-83. 〜ばかり va 〜たばかり — "endigina" va "faqat"
-84. 〜ところ (〜るところ, 〜ているところ, 〜たところ)
-85. 〜うちに va 〜あいだに
-86. 〜につれて, 〜にしたがって — birga oʻzgarish
-87. 〜によって va passivning yozma ishlatilishi
-88. 〜として va 〜にとって
-89. 〜に関して, 〜について, 〜に対して
-90. 〜ながらも, 〜つつ — yozma qarama-qarshilik
-91. 〜さえ, 〜こそ, 〜しか〜ない — urgʻu qoʻshimchalari
-92. 〜がち, 〜っぽい, 〜気味 — moyillik
-93. 〜おかげで va 〜せいで — yaxshi va yomon sabab
-94. 〜どころか va 〜ばかりか
+79. 〜ということ va gapni otga aylantirish   [done]
+80. 〜わけです, 〜わけではない — mantiqiy xulosa   [done]
+81. 〜はずがない, 〜に違いない — ishonch darajalari   [done]
+82. 〜べきです va 〜なければならない — burch   [done]
+83. 〜ばかり va 〜たばかり — "endigina" va "faqat"   [done]
+84. 〜ところ (〜るところ, 〜ているところ, 〜たところ)   [done]
+85. 〜うちに va 〜あいだに   [done]
+86. 〜につれて, 〜にしたがって — birga oʻzgarish   [done]
+87. 〜によって va passivning yozma ishlatilishi   [done]
+88. 〜として va 〜にとって   [done]
+89. 〜に関して, 〜について, 〜に対して   [done]
+90. 〜ながらも, 〜つつ — yozma qarama-qarshilik   [done]
+91. 〜さえ, 〜こそ, 〜しか〜ない — urgʻu qoʻshimchalari   [done]
+92. 〜がち, 〜っぽい, 〜気味 — moyillik   [done]
+93. 〜おかげで va 〜せいで — yaxshi va yomon sabab   [done]
+94. 〜どころか va 〜ばかりか   [next]
 95. 〜たとたん, 〜次第, 〜か〜ないかのうちに — vaqt aniqligi
 96. Yozma uslub: だ・である体 va gazeta yaponchasi
 97. Xat, elektron xat va rasmiy murojaat qoliplari
@@ -161,6 +162,22 @@ PLAYLIST: Prime Japanese
 100. Bundan keyin qayerga: N3 dan N2 gacha yoʻl xaritasi
 # ↑ Block F: oʻquvchi endi kitob, yangilik va rasmiy xat oʻqiy oladi.
 
+
+# ── ⚠️ TOC'DA YOʻQ, DEMAK OʻRGATILMAGAN (2026-09-16 da PJ-76…78 da topildi) ──
+#   Bu roʻyxat kursda hech qachon berilmagan, lekin yozganda qoʻl oʻzi yozib
+#   yuboradigan shakllar. Ikkalasi ham bitta batchda matnga kirib ketgan edi va
+#   faqat tasodifan (boshqa qoidaning regexi bilan) tutildi. Gate endi ularni
+#   ataylab tekshiradi — yangi batchda ham tekshirsin:
+#     * 意向形 (oddiy istak shakli): 行こう · 出よう · 戻ろうと思う · 〜ようとする
+#       Kurs PJ-40 da faqat 〜ましょう beradi va uni hech qachon oddiy shaklga
+#       oʻtkazmaydi. Oʻrniga: 〜たい (PJ-39), 〜ましょう (PJ-40), 〜ことにする (PJ-57).
+#     * 〜んです / 〜んだ: butun shelfda faqat PJ-18 da, oʻtib ketishda uchraydi.
+#       Oʻrniga oddiy 〜です / 〜ます yoki 〜から (PJ-53).
+#   ⚠️ Tekshirganda 〜んです ni ALBATTA oddiy shaklga bogʻlang
+#   (`(?:た|る|い|ない|な)ん(?:です|だ)`) — keng regex 読んで・飲んで kabi
+#   て-shakllarni ushlab, 34 ta «uchrash» koʻrsatdi va haqiqiysini yashirdi.
+#   Agar bu ikkisi kerak boʻlsa — ularni toc'ga DARS qilib qoʻshish kerak,
+#   matnga jimgina kiritish emas.
 
 # ── Kanji ramp (STYLE_GUIDE §4.3 ning qisqacha koʻrinishi) ──
 #   PJ-1  … PJ-12    faqat kana + PJ-10…12 dagi ~80 belgi

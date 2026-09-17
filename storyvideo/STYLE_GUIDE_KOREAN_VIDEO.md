@@ -41,7 +41,7 @@ IELTS uchun **31 ta ildiz / 167 ta soʻz**. Bitta ildiz = bitta video.
 ```bash
 cd storyvideo                      # HAR DOIM shu papkadan; `python -m storyvideo` ISHLAMAYDI
 
-python3 korean.py                  # 0. talaffuz qoidalari hali ham toʻgʻrimi (15/15)
+python3 korean.py                  # 0. talaffuz qoidalari hali ham toʻgʻrimi (36/36)
 python3 cli.py lint    ko04        # 1. toʻrtta darvoza, render yoʻq
 python3 cli.py sheet   ko04        # 2. HAR BIR kadrni koʻring (pastga qarang)
 python3 cli.py script  ko04 --one --ssml    # 3. tts_scripts/ko04_tts_one.txt
@@ -124,7 +124,7 @@ yil». Tartib son unlidan keyin `-nchi`, undoshdan keyin `-inchi` oladi
 
 `korean.py` — jamo boʻlish arifmetika, ish esa beshta tovush qoidasida
 (연음 · 비음화 · 유음화 · 격음화 · jaranglilik). **Etalon holat — 감사합니다 →
-`kamsahamnida`**: u ikki qoidani birdan mixlaydi. `python3 korean.py` 15 ta holatni
+`kamsahamnida`**: u ikki qoidani birdan mixlaydi. `python3 korean.py` 36 ta holatni
 tekshiradi; qoidaga tegsangiz, avval shuni ishlating.
 
 ### ⚠️ Koreyscha soʻz kadrda hech qachon boʻlinmasin
@@ -133,7 +133,7 @@ Hangulda soʻz ichida boʻsh joy yoʻq, shuning uchun brauzer 먹어요 ni
 **먹 / 어요** qilib ikkiga boʻlib tashlaydi — yaʼni mavjud boʻlmagan ikkita
 soʻzga. Ikki marta ushlandi: 감사합니다 ko04 ning `pairs` jadvalida, 먹어요 esa
 ko08 ning `ask` sahnasida. Yechim `stage.css` da: `.pair b` ga `nowrap`,
-qolgan matn klasslariga (`hero big expr ttl ask lbl cap cmp__*`)
+qolgan matn klasslariga (`hero big expr ttl ask lbl cap cmp__* pron__k pron__g`)
 **`word-break: keep-all`** — lotin matniga taʼsiri yoʻq.
 
 ### ⚠️ `versus` kartasini boʻsh joysiz uzun soʻz kengaytirib yuboradi
@@ -162,9 +162,31 @@ ham **시** yoʻq edi. Natijada ko06 (soat va sonlar filmi) boshdan-oxir
 셔 → `sho`, `shyo` EMAS. Bu — yapon romanizatoridagi yoon tuzogʻining aynan
 oʻzi, va shu sababli `PALATAL` alohida jadval, flag emas.
 
-Endi 26 ta holat tekshiriladi va ular orasida 시, 십, 이십, 삼십, 시간, 소식,
+Endi 36 ta holat tekshiriladi va ular orasida 시, 십, 이십, 삼십, 시간, 소식,
 샤워 bor — hamda oʻzgarmasligi kerak boʻlganlar: 사, 수, 셋, 서울.
 Bu rule 신라 ning eski kutilgan javobini ham tuzatdi: `silla` emas, **`shilla`**.
+
+### ⚠️ 자음군 단순화 — ikki undoshli 받침 dan FAQAT BITTASI eshitiladi
+
+2026-09-16 da topildi, ko14 ga 시간이 없다 kerak boʻlganda. Kod har doim
+klasterning **oxirgisini** olardi — bu ㄺ ㄻ ㄿ uchun toʻgʻri, qolgan yettitasi
+uchun notoʻgʻri:
+
+    없다 → «opta»,  «otta» emas        값 → «kap»       앉다 → «anta»
+    여덟 → «yodol»                      핥다 → «halta»
+    닭 → «tak»     삶 → «sam»          읽다 → «ikta»    (bular oʻzgarmadi)
+
+Va ㄺ **ㄱ dan oldin** ㄹ ini saqlaydi: 읽기 [일끼] → **`ilki`**. Bu qoida
+koreys tilidan tashqarida ham muhim edi: ilgari 읽기 «ikki» boʻlib chiqardi —
+yaʼni oʻzbekcha **«ikki»** soni, sonlarga toʻla ovoz matnining oʻrtasida.
+
+Jarangsizlantirish (경음화) tushib qolgan undosh tufayli qoladi, lekin
+qoʻshaloq harf bilan emas — PALATAL bilan bir xil tanlov: **`anta`**, `anda`
+ham emas, `antta` ham emas.
+
+**Yana bir marta oʻsha saboq:** avval yiqiladigan holatni yozdim (36 tadan
+7 tasi qizil chiqdi), keyin qoidani. Yashil selftest qoidaning borligini
+isbotlamaydi.
 
 **Saboq: yangi tovush qoidasi qoʻshsangiz, avval uni USHLAYDIGAN holat yozing.**
 Oʻn besh holat yashil boʻlgani qoidaning borligini isbotlamaydi.
@@ -265,6 +287,13 @@ spetsifikatsiyada esa yana bittasi yozilgan edi. `lint` buni koʻra olmaydi.
 Yana: SVG `<text>` ni viewBox chetiga yaqin qoʻymang (iyak ustiga bosib chiqdi);
 `.pron__k` oʻzi kichraymaydi — uzun ibora uchun `size=` bering.
 
+**`.pron__k` ham `word-break: keep-all` roʻyxatiga qoʻshildi (2026-09-16).**
+ko16 ning `echo` kartasi 호랑이도 온다 ni «호랑이도 온 / 다» qilib boʻlib
+tashladi — ko04 dagi 감사합니다 bilan aynan bir xil nosozlik, faqat asl
+tuzatish oʻtkazib yuborgan klassda. Undan oldingi har bir `echo` yo yetarlicha
+qisqa edi, yo `size=` bilan yozilgan edi. Ikkalasini ham qiling: klass
+tuzatildi, uzun iboraga esa baribir `size=` bering.
+
 ---
 
 ## 9. Manba javoni: «Koreya olami»
@@ -287,7 +316,7 @@ railway run python manage.py import_corner \
 
 ## 10. Chiqarishdan oldingi roʻyxat
 
-- [ ] `python3 korean.py` → 15/15
+- [ ] `python3 korean.py` → 36/36
 - [ ] `cli.py lint` → PASS (**toʻrtta** darvoza — muqova ham)
 - [ ] `Video(subject=...)` qoʻyilgan (aks holda urgʻu ham, chip ham yoʻq)
 - [ ] muqovaning 0-kadri toʻliq chizilgan, qizil chiziq FAQAT xato boʻlakdan oʻtadi

@@ -1,0 +1,37 @@
+Sardorning koreyschasi joyida edi. <break time='0.45s' /> Oʻqish boʻlimi tugaganda esa javob varagʻida qirqta belgi bor edi.
+
+<break time='2.5s' />
+
+Ellik savoldan qirqtasi. <break time='0.3s' /> Oxirgi oʻntasini u koʻrmadi ham.
+
+<break time='2.5s' />
+
+Bu bilim masalasi emas. <break time='0.45s' /> Taqsimot masalasi.
+
+<break time='2.5s' />
+
+Sanaymiz. Yetmish daqiqa, ellikta savol. <break time='0.45s' /> Har bir savolga bir daqiqa yigirma toʻrt soniya.
+
+<break time='2.5s' />
+
+Demak reja soat bilan tuziladi, savol bilan emas.
+
+<break time='2.5s' />
+
+Shunday boʻlinadi: yigirmanchi daqiqada yigirmanchi savolda boʻling. <break time='0.45s' /> Qirqinchi daqiqada, oʻttiz beshinchi savolda.
+
+<break time='2.5s' />
+
+Endi bahosi. Oʻnta savol, yigirma ball. <break time='0.45s' /> Bir yuz qirq sakkiz ball uchinchi daraja, bir yuz oltmish sakkiz toʻrtinchi daraja.
+
+<break time='2.5s' />
+
+Va eng arzon ball shu yerda: notoʻgʻri javob uchun ball ayirilmaydi. <break time='0.45s' /> Demak boʻsh katak taxmindan hech qachon yaxshi emas.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Besh daqiqa qoldi, sakkizta savol boʻsh. <break time='0.45s' /> Nimadan boshlaysiz? Izohda kutamiz.
+
+<break time='2.5s' />
+
+Imtihonning butun tuzilmasi Powertyda: Topik, strategiya. <break time='0.3s' /> Havola profilda.

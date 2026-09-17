@@ -147,9 +147,12 @@ REFUSED, not converted** — a hanja has several readings and a bare consonant h
 no vowel, so there is nothing to compute. On screen they are the point; in
 narration, say the sound in Uzbek.
 
-The transliteration is checked against 15 cases in `korean.py` — run
+The transliteration is checked against 36 cases in `korean.py` — run
 `python3 korean.py`. 감사합니다 → `kamsahamnida` is the reference case: it pins
-down both word-initial ㄱ = k and 비음화 (ㅂ before ㄴ becomes m).
+down both word-initial ㄱ = k and 비음화 (ㅂ before ㄴ becomes m). The other two
+rules that took a bug to find are 구개음화 (시 is `shi`, never `si`) and
+자음군 단순화 (없다 is `opta`, not `otta`; 읽기 is `ilki`, and used to be
+`ikki` — the Uzbek word for "two").
 
 **A Korean word is spoken by a Korean voice, and only in a silent scene.** The
 Uzbek narration fills nearly every second of a scene it owns, so a Korean word

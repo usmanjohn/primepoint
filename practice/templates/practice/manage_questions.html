@@ -227,7 +227,7 @@
         <div class="mq-choices">
           {% for choice in q.choices.all %}
             <span class="mq-choice-chip {% if choice.is_correct %}correct{% endif %}">
-              {% if choice.is_correct %}<i class="bi bi-check2 me-1"></i>{% endif %}{{ choice.text|truncatechars:40 }}
+              {% if choice.is_correct %}<i class="bi bi-check2 me-1"></i>{% endif %}{{ choice.text|striptags|truncatechars:40 }}
             </span>
           {% empty %}
             <span class="mq-choice-chip" style="opacity:0.5; font-style:italic;">No choices yet</span>

@@ -154,25 +154,25 @@
             {% if choice.id in qr.correct_ids and choice.id in qr.selected_ids %}
               <div class="res-choice correct-answer">
                 <i class="bi bi-check-circle-fill res-choice-icon"></i>
-                <span>{{ choice.text }}</span>
+                <span>{{ choice.text|safe }}</span>
                 <small class="ms-auto text-success fw-bold">Student picked ✓</small>
               </div>
             {% elif choice.id in qr.correct_ids %}
               <div class="res-choice correct-answer">
                 <i class="bi bi-check-circle-fill res-choice-icon"></i>
-                <span>{{ choice.text }}</span>
+                <span>{{ choice.text|safe }}</span>
                 <small class="ms-auto fw-bold" style="color:#15803d;">Correct answer</small>
               </div>
             {% elif choice.id in qr.selected_ids %}
               <div class="res-choice wrong-pick">
                 <i class="bi bi-x-circle-fill res-choice-icon"></i>
-                <span>{{ choice.text }}</span>
+                <span>{{ choice.text|safe }}</span>
                 <small class="ms-auto text-danger fw-bold">Student picked ✗</small>
               </div>
             {% else %}
               <div class="res-choice neutral">
                 <i class="bi bi-circle res-choice-icon"></i>
-                <span>{{ choice.text }}</span>
+                <span>{{ choice.text|safe }}</span>
               </div>
             {% endif %}
           {% endfor %}

@@ -24,6 +24,11 @@ CAST = {
     "Sherbek":    {"shirt": "#8d6bb0", "skin": "l", "hair": "#3a2a22"},
     "Nodira opa": {"shirt": "#a8506e", "skin": "l", "hair": "#241b17", "long": True, "adult": True},
     "ofitsiant":  {"shirt": "#2f3a44", "skin": "m", "hair": "#241b17", "adult": True, "apron": True},
+    # Same figure under a capitalised key. `says` never prints the name, so the
+    # lowercase role was fine until ko17 gave the waiter a `consequence` beat --
+    # which DOES print it, as a title under the spotlight. Renaming the original
+    # key would have changed pm04, so this is an alias, not a move.
+    "Ofitsiant":  {"shirt": "#2f3a44", "skin": "m", "hair": "#241b17", "adult": True, "apron": True},
     # Grandparents, added 2026-08-29 for PM-91 (buvijonning kompoti) and PM-93
     # (bobo va nevara). Grey hair is the only thing that reads as "old" at this
     # size -- the figure itself is the same, so nothing else needed changing.

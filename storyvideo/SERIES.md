@@ -67,6 +67,7 @@ learns the ritual and recognises it in 0.3s.
 | **«Nega shunday?»** | `fact/era/portrait` + mechanism | the `olami` shelves | mo01, mo03, mo04, mo10, mo27 |
 | **«Sanab koʻring»** | `count_in → beat → check` | maths, logic | the pm films |
 | **«Bitta soʻz»** | `word_family` | ko, pe, pj, pr, SAT roots | ko01 |
+| **«Bir maqol, ikki til»** | 속담 + its Uzbek twin | Korean (and any language with proverbs) | ko16-ko18 |
 
 «Tutilgan xato» should be the majority: a wrong answer on screen is the least scrollable
 thing in short video, and it is subject-agnostic.
@@ -81,6 +82,51 @@ film three times:
   (ko04 speech level, ko08 안/못).
 - **Language-internal** — a mechanism nothing in Uzbek prepares them for (ko06 two number
   systems, ko09 the ㅂ-irregular).
+
+### «Bir maqol, ikki til» — the proverb series (2026-09-16)
+
+The one thing an Uzbek-language Korean channel can say that an English-language
+one cannot: **a Korean proverb and an Uzbek proverb are very often the same
+proverb with a different animal in it.** 호랑이도 제 말 하면 온다 is «boʻrini
+yoʻqlasang, qulogʻi koʻrinar», word for word, with a tiger where the wolf is.
+
+So the beat that carries it is `order` — three cells wide, the Korean row, the
+literal row, the Uzbek row — and the turn is the moment the Uzbek line lands
+underneath and matches. Nobody is wrong in these films; the arc is
+
+    vaziyat → gʻalati tasvir → tekislash → egizak → qoida
+
+**Each one must also teach something about the LANGUAGE, not only the wisdom**,
+or it is a caption with a voice over it. ko17 is the model: 말 is «soʻz» and
+«ot» written identically, so the proverb looks like a sentence about horses
+until you know the homograph. ko18's is arithmetic — 10 × 365 against
+200 × 3 — which is 티끌 모아 태산 doing work instead of being admired.
+
+⛔ **Never present the two animals as translations of each other.** They are
+not; the proverbs are twins and the animals are not. What they share is the
+job — the most feared animal in the listener's own hills — and saying exactly
+that is the film.
+
+### The TOPIK films (ko13-ko15, 2026-09-16)
+
+Exam tips are «Tutilgan xato» like everything else, and the band rotates the
+KIND of mistake so three exam films do not feel like one film three times:
+
+- **ko13 — a register** (쓰기 54 written in 해요체). Lost with good Korean.
+- **ko14 — a clock** (읽기 50 savol / 70 daqiqa). Lost with perfect Korean.
+- **ko15 — a mechanical slip** (the answer sheet one row out). Lost with
+  answers you actually had, and nothing to do with Korean at all.
+
+⚠️ **Every number comes from the site's own TOPIK strategy lesson**
+(`examprep`, TOPIK → strategy, order 1), never from memory: 300 ball, 100 per
+boʻlim, 50 savol / 70 daqiqa, 2 ball a question, 120/150/190/230 for 3-6급,
+and 쓰기 = 10 + 10 + 30 + 50. The arithmetic goes on screen so `lint`
+recomputes it, and the film cannot then disagree with the lesson it points at.
+
+⛔ **Never state what a test centre supplies, what a guess is worth, or how
+many words a level needs.** Those change, differ by centre, or were never
+published — and a film cannot be re-recorded when they do. Describe the
+process and point at the lesson.
 
 ### Which shelf feeds a maths film
 
@@ -119,6 +165,30 @@ title card.
 **The fourth lint gate** checks `t=0`: ≥3 drawn elements and a ≥120px element. A film that
 does not open on a `cover` is **warned, not failed** — those 22 are a to-do list, not a
 blocker.
+
+### 4.1 The endcard says WHERE — «Havola profilda» + `powerty.uz`  (2026-09-16)
+
+The cover is the way in; this is the way out, and until today the films had no way out at
+all. **A Reel is not clickable.** Every film ended on a `practice` card naming a lesson
+and an `outro` naming the channel, and a viewer who wanted the lesson had to want it
+enough to go looking. So, at his request, the address is now part of the furniture:
+
+| card | carries | why that half |
+|---|---|---|
+| `practice` | the gold pill **`powerty.uz`** (`.cta__l`) | the name to remember, beside the lesson it belongs to |
+| `outro` | **«Havola profilda»** then **`powerty.uz`** | the instruction — where the clickable thing actually is |
+
+Both are **defaults** (`practice(link="powerty.uz")`, `outro(link=…, site=…)`), so a film
+written later carries them without anyone remembering to; pass `None` to drop either. The
+split is deliberate — one card says the name, the other says where to click, and neither
+nags twice.
+
+The narration of the last spoken block ends «Havola profilda.» in ko13-ko18. That line is
+the only place the voice sells anything, and it costs three words.
+
+⚠️ This is the **channel** layer of §1, which the table says never moves. It moved once,
+on purpose, for a reason no design change can substitute for: the account exists to send
+people to the site. Do not take it as licence to move the rest.
 
 ## 5. Echo policy (language films)
 
@@ -299,6 +369,41 @@ So the decision rule is: **speech rate clean + boundaries forced → render.**
 A short one-sentence block (ko11's block 3, 49 characters) will read low on span
 forever and there is nothing to fix.
 
+### 7.1.3 ⚠️ Before believing a mismatch, check the take is the RIGHT FILM
+
+2026-09-16: six films were recorded in one sitting and two of the mp3s reached
+`tts_audios/` under the wrong numbers (there was a `ko_19.mp3` and no `ko_15`).
+`check` reported **SCRIPT VA OVOZ MOS EMAS** on ko16 and ko17 — correctly, and
+about something entirely different from what it says in the message.
+
+I spent twenty minutes on the wrong hypothesis (that the gate mis-scores very
+short blocks) and got as far as shortening two narrations that were never
+broken. **The measurement that killed that theory is worth keeping**: across
+265 blocks of the matched takes, block length does not predict speech rate —
+0-40 chars average 1.06x, and no bucket's minimum falls below 0.88x. So the
+gate's 0.75x floor is not a short-block artefact, and it must not be relaxed.
+
+The 30-second version of what took twenty minutes is a **cross-table**: score
+every film against every recording. The scene-break count (`blocks - 1`) alone
+eliminates most pairs, and the rate spread settles the rest — a correct pairing
+sits at 1.1x and a wrong one at 2.5x+, so the diagonal lights up and nothing
+else does:
+
+               ko_13   ko_14   ko_15   ko_16   ko_17   ko_18
+       ko13    1.13x   2.57x       ·       ·       ·       ·
+       ko14    1.65x   1.17x       ·       ·       ·       ·
+       ko15        ·       ·   1.17x       ·       ·   4.14x
+       ko16        ·       ·       ·   1.14x   2.74x       ·
+
+**So when `check` says the script and audio disagree, ask "is this even the
+right film?" before asking "what changed in the script?"** Especially in a
+batch: the failure is one `cp` away and looks exactly like a content fault.
+
+⚠️ A related thing that bit here: a recording's **pace varies between takes**
+(ko13 ran ~26 ch/s, ko14 ~20 ch/s from the same settings). The gate normalises
+per take so this never affects correctness, but two films in the same posted
+band will feel different. Worth a listen before posting a band, not a re-record.
+
 ### 7.2 ⚙️ Foreign words and Roman numerals are the PIPELINE's job, not yours
 
 ⚠️ **2026-09-15, and this was a fair complaint: "it is becoming more manual stuff
@@ -390,6 +495,9 @@ left alone.
 | Koreya olami | ko01 · ko02 · ko03 | voiced · **uploaded** (ko02 = Sejong, the one that got traction) |
 | Tutilgan xato (Korean) | ko04 · ko05 · ko06 | voiced · ko05 + ko06 **not yet uploaded** |
 | Tutilgan xato (Korean) | ko07 · ko08 · ko09 | **scripts out, awaiting voice** |
+| Tutilgan xato (Korean) | ko10 · ko11 · ko12 | voiced |
+| TOPIK (Tutilgan xato) | ko13 (쓰기 54) · ko14 (읽기 soati) · ko15 (답안지) | voiced · rendered 2026-09-16 |
+| Bir maqol, ikki til | ko16 (호랑이) · ko17 (말) · ko18 (티끌) | voiced · rendered 2026-09-16 |
 
 **No film from before 2026-09-11 has a cover** (blank frame 0). Re-covering them is
 mechanical — add `cover()` and `subject=`, no re-recording, because the cover carries the
@@ -423,6 +531,7 @@ Korean-only; the answer was **no — concentrate, do not switch**:
 ## 10. Per-film checklist
 
 - [ ] `Video(subject=...)` set, and the film opens on `cover()`
+- [ ] the endcard carries the address (default since 2026-09-16 — see §4.1)
 - [ ] cover shows the wrong/strange thing, promise ≤4 words, strike only on the wrong part
 - [ ] `python3 korean.py` → 26/26 (language films)
 - [ ] every target-language word re-derived and **read by eye** (see §5 and the palatalisation

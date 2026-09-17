@@ -51,11 +51,19 @@ def _subscript(match):
     return '_' + inner
 
 
+# Furigana must go before the tags do: naive stripping turns
+# "<ruby>父<rt>ちち</rt></ruby>" into "父ちち", so every Japanese poll option would
+# print the kanji and its reading glued together. Keep the kanji, drop the reading —
+# the same rule gen_corner_audio applies for TTS (corner's RUBY_RT_RE).
+RUBY_RT_RE = re.compile(r'<r[tp]\b[^>]*>.*?</r[tp]>', re.I | re.S)
+
+
 def to_text(markup):
     """CKEditor HTML → the plain text a poll option or poll question can carry."""
     if not markup:
         return ''
     text = str(markup)
+    text = RUBY_RT_RE.sub('', text)
     text = re.sub(r'<sup[^>]*>(.*?)</sup>', _superscript, text, flags=re.S | re.I)
     text = re.sub(r'<sub[^>]*>(.*?)</sub>', _subscript, text, flags=re.S | re.I)
     text = re.sub(r'<(br|/p|/div|/li|/h[1-6])[^>]*>', '\n', text, flags=re.I)

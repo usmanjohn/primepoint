@@ -91,8 +91,12 @@ body::after {
 /* Hangul has no spaces inside a word, so the default `break-word` behaviour
  * splits 먹어요 into 먹 / 어요 -- which reads as two words that do not exist.
  * No-op for Latin. */
+/* `.pron__k` joined the list on 2026-09-16: ko16's echo card rendered
+   호랑이도 온다 as «호랑이도 온 / 다» -- the same split 감사합니다 made in ko04's
+   table, in the one class the original fix missed. Every echo written before
+   then was either short enough or carried an explicit `size=`. */
 .hero, .big, .expr, .ttl, .ask, .lbl, .cap, .cmp__u, .cmp__p, .cmp__n,
-.pron__g, .fam__w span { word-break: keep-all; }
+.pron__k, .pron__g, .fam__w span { word-break: keep-all; }
 
 .gold { color: var(--gold); }  .red { color: var(--red); }
 .grn  { color: var(--green); } .soft { color: var(--ink-soft); }
@@ -388,6 +392,17 @@ body.guides .pipguide { display: block; }
           color: var(--gold); text-align: center; line-height: 1.1; }
 .cta__s { font-family: var(--ff-body); font-weight: 700; font-size: 44px;
           color: #cdd9e2; text-align: center; }
+/* The address, on the endcard.  (2026-09-16, at the user's request)
+   A Reel cannot be clicked, so the film has to SAY where to go. Two halves,
+   deliberately split: `outro` carries the instruction («Havola profilda»),
+   this carries the name the viewer has to remember. A pill rather than a line
+   because the endcard is the one frame people screenshot, and a filled shape
+   survives being shrunk to a grid cell where a text line does not.
+   Gold, not `--accent`: it sits on the card's own dark navy, and the gold
+   border around it is already gold on every subject. */
+.cta__l { font-family: var(--ff-body); font-weight: 800; font-size: 46px;
+          color: #22323f; background: var(--gold); border-radius: 999px;
+          padding: 12px 42px; letter-spacing: .02em; white-space: nowrap; }
 
 /* ── word order: the same sentence in three languages, in COLUMNS ─────── */
 .ord { display: flex; flex-direction: column; gap: 30px; width: var(--content-w); }

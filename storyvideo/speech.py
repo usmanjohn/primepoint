@@ -101,6 +101,9 @@ SAY_AS = [
     ("Examprep", "Ekzamprep"),
     ("examprep", "ekzamprep"),
     ("IELTS",    "Ayelts"),
+    # An ALL-CAPS token is read letter by letter by some engines, and this one
+    # is a word in Uzbek mouths ("topik"). Capitalised, it is read as a name.
+    ("TOPIK",    "Topik"),
 ]
 
 # Roman numerals. "XVIII asr" came out as letters, and centuries are the one

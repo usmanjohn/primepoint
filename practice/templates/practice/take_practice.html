@@ -107,7 +107,7 @@
                 {% if choice.id in existing_choice_ids %}checked{% endif %}
               >
               <div class="choice-box">✓</div>
-              <span class="choice-label">{{ choice.text }}</span>
+              <span class="choice-label">{{ choice.text|safe }}</span>
             </label>
           {% endfor %}
         </div>

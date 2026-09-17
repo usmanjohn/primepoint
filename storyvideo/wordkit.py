@@ -231,10 +231,19 @@ def mouth(zone, at=0.0, dur=0.6, label=True):
 
 
 # ─────────────────────────────────────────────────────────── endcard ──
-def cta(title, sub=None, at=0.0, dur=0.55):
+def cta(title, sub=None, at=0.0, dur=0.55, link=None):
+    """The endcard that names a lesson -- and, since 2026-09-16, the address.
+
+    `link` is the site itself on a pill. A Reel is not clickable, so a film
+    that never says where to go relies on the viewer wondering hard enough to
+    search; the pill costs one row and answers it. The instruction half
+    («Havola profilda») lives on `outro`, so neither card nags twice.
+    """
     rows = [f'<div class="cta__t">{title}</div>']
     if sub:
         rows.append(f'<div class="cta__s">{sub}</div>')
+    if link:
+        rows.append(f'<div class="cta__l">{link}</div>')
     return (f'<div class="cta" {_t(at)} data-dur="{dur}" data-anim="pop">'
             f'{"".join(rows)}</div>')
 

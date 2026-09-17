@@ -260,6 +260,15 @@ structurally valid ruby. One second of reading beats a wasted audio run and a br
 sheet rendered them properly, so every Prime Japanese reading showed pupils literal
 `<ruby>教室<rt>きょうしつ</rt></ruby>` markup in its quiz. Prime Japanese is the first shelf
 whose questions carry furigana, which is why nothing caught it earlier.
+**⚠️ A PRACTICE CHOICE IS AUTHORED HTML TOO — the same bug lived in `practice`** (fixed
+2026-09-18, regression tests in `practice/tests.py`). `question_text`, `hint` and
+`explanation` were rendered with `|safe` but `choice.text` was not, in
+`take_practice.html`, `practice_result.html` and `review_attempt.html` (the print sheet
+and Journey always rendered it), so every Prime Japanese answer showed literal
+`<ruby>父<rt>ちち</rt></ruby>`. `examprep/_block.html` had it as well. And the daily
+Telegram poll glued the reading onto the kanji (父ちち) until `to_text` learned corner's
+`RUBY_RT_RE` — a poll option is plain text, so the furigana must be dropped, not stripped
+around. The `exam` mock simulator still escapes choice text; its banks carry no markup.
 **⚠️ THE SPEAKER TAG MUST BE STRIPPED FOR TTS TOO** (fixed 2026-09-10 in
 `gen_corner_audio.py`, `SPEAKER_TAG_RE` + `SPEAKER_PREFIX_RE`, regression tests in
 `corner/tests.py`). The markup rule was anchored at `<strong>`, but `_chunks()` splits the
