@@ -1,0 +1,35 @@
+{% load i18n static %}<!doctype html>
+{% comment %}
+The business card, one front and one back, at true size. This page is the
+proof — you look at it, read it, maybe print one sheet to check the colours.
+The stack you actually cut up comes from kit/card_sheet.html.
+Context: prime.views.kit_card.
+{% endcomment %}
+<html lang="{{ lang }}">
+<head>
+  <title>Prime Point — {{ c.bar_card }}</title>
+  {% include "kit/_head.html" %}
+</head>
+<body class="{% if bare %}kt-bare{% endif %}">
+
+{% if not bare %}{% include "kit/_bar.html" %}{% endif %}
+
+<div class="kt-stage">
+  {% if not bare %}<div class="kt-stage__note kt-noprint">
+    {{ c.sheet_cut }} — {{ c.bar_hint_card }}
+  </div>{% endif %}
+
+  <div class="kt-cardpair">
+    <div class="kt-cardwrap">
+      <span class="kt-cardwrap__label">{{ c.bar_side_front }}</span>
+      {% include "kit/_card_front.html" %}
+    </div>
+    <div class="kt-cardwrap">
+      <span class="kt-cardwrap__label">{{ c.bar_side_back }}</span>
+      {% include "kit/_card_back.html" %}
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

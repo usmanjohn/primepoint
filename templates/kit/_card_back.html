@@ -1,0 +1,27 @@
+{% load i18n %}
+{% comment %}
+The back of the card — the half a centre director reads after the QR is
+scanned or forgotten. The three numbers are live counts, not claims, and they
+are the argument: nobody writes 900 lessons on a weekend.
+Context: c, stats, social, contact_email.
+{% endcomment %}
+<div class="kt-card kt-card--back">
+  <div class="kt-card__title">{{ c.card_back_title }}</div>
+  <p class="kt-card__lead">{{ c.card_back_lead }}</p>
+
+  <ul class="kt-card__list">
+    {% for line in c.card_bullets %}<li>{{ line }}</li>{% endfor %}
+  </ul>
+
+  <div class="kt-card__stats">
+    <div class="kt-card__stat"><b>{{ stats.lessons }}</b><span>{{ c.stat_lessons }}</span></div>
+    <div class="kt-card__stat"><b>{{ stats.questions_round }}</b><span>{{ c.stat_questions }}</span></div>
+    <div class="kt-card__stat"><b>{{ stats.readings }}</b><span>{{ c.stat_readings }}</span></div>
+  </div>
+
+  <div class="kt-card__foot">
+    <span><i class="kt-dot"></i><b>{{ kit.SITE_HOST }}</b></span>
+    <span><i class="bi bi-telegram"></i>{{ social.telegram.handle }}</span>
+    <span><i class="bi bi-envelope-fill"></i>{{ contact_email }}</span>
+  </div>
+</div>

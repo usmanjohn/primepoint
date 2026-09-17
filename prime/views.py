@@ -8,24 +8,27 @@ from django.core.cache import cache
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.utils.translation import gettext as _
+from django.views.decorators.clickjacking import xframe_options_sameorigin
 
 from prime.subjects import (
     SUBJECT_MAP, SUBJECT_SLUGS, SESSION_KEY,
     get_study_subjects, has_chosen_subjects,
 )
 from prime.partners import PARTNERS
+from prime.social import SOCIAL_MAP, CONTACT_EMAIL
 from prime.search import search_platform
 from prime.progress import student_progress, master_progress
+from prime import kit
 
 from masters.models import Master
 from practice.models import Practice, PracticeAttempt, PracticeQuestion
 from discussion.models import Thread
-from tutorial.models import Tutorial
+from tutorial.models import Tutorial, TutorialPlaylist
 from panda.models import Panda
 from homework.models import Homework, HomeworkAssignment
 from classroom.models import Classroom
 from exam.models import Exam
-from examprep.models import Lesson
+from examprep.models import Lesson, ExamTrack
 from corner.models import Story
 from logic.models import LogicPuzzle
 from games.views import GAME_COUNT
@@ -167,15 +170,14 @@ def set_study_subjects(request):
     return redirect('profile' if request.POST.get('next') == 'profile' else 'index')
 
 
-def about(request):
-    """Who we are — and, in real numbers, what is already built.
+def _platform_stats():
+    """Live counts of what is actually built, cached for five minutes.
 
-    The stat bar used to read "∞ / 100% / 1 / ∀". This page is shown to
-    partners, so it counts the library instead: every number below is a live
-    count, cached for five minutes because nobody adds a thousand lessons
-    between two page loads.
+    Shared by the About page and the printed hand-out kit, so a flyer and the
+    page it links to can never disagree about how many lessons exist. Nobody
+    adds a thousand lessons between two page loads, hence the cache.
     """
-    stats = cache.get('about_stats_v1')
+    stats = cache.get('about_stats_v2')
     if stats is None:
         tutorials = Tutorial.objects.filter(is_published=True).count()
         examprep = Lesson.objects.filter(
@@ -190,16 +192,33 @@ def about(request):
                 collection__is_published=True,
                 collection__subject__is_published=True,
             ).count(),
+            'courses': TutorialPlaylist.objects.count(),
+            'tracks': ExamTrack.objects.filter(is_published=True).count(),
             'games': GAME_COUNT,
         }
         # Thousands separator here rather than in the template: `humanize`
         # is not installed and a five-figure question count wants the comma.
         stats['questions_display'] = f"{stats['questions']:,}"
-        cache.set('about_stats_v1', stats, 300)
+        # The flyer prints this one large; "11,839" is a truer promise than a
+        # rounded "12,000", but the trailing digits are noise on paper, so the
+        # printed pieces show the floor of the thousand with a +. Below a
+        # thousand that would read "0,000+", so the exact count stands instead.
+        q = stats['questions']
+        stats['questions_round'] = f"{q // 1000:,},000+" if q >= 1000 else f"{q:,}"
+        cache.set('about_stats_v2', stats, 300)
+    return stats
 
+
+def about(request):
+    """Who we are — and, in real numbers, what is already built.
+
+    The stat bar used to read "∞ / 100% / 1 / ∀". This page is shown to
+    partners, so it counts the library instead.
+    """
     return render(request, 'prime/about.html', {
-        'stats': stats,
+        'stats': _platform_stats(),
         'partners': PARTNERS,
+        'qr_site': kit.QR_SITE,
     })
 
 
@@ -234,3 +253,72 @@ def progress(request):
         'master': master,
         'students': master_progress(master) if master else None,
     })
+
+
+# ══════════════════════════════════════════════════════════════════════
+#  THE HAND-OUT KIT — the printable business card and flyer
+#
+#  Three public pages a teacher opens, hits Ctrl+P on, and walks into an
+#  educational centre with. Public on purpose: the point of the pieces is
+#  that anyone who likes the platform can print their own stack, which a
+#  staff gate would defeat. (The staff gate on `prime/printing.py` guards
+#  *lesson content* walking off the site — this is marketing, we want it
+#  walking off the site.)
+#
+#  The numbers on them are `_platform_stats()`, the same live counts the
+#  About page shows; the words are `prime/kit.py`. Each view is
+#  `xframe_options_sameorigin` because the About page embeds it as a live
+#  preview and the project's default is DENY — same origin only, so nobody
+#  else's site can frame us. Language is chosen with
+#  ?lang= and is deliberately independent of the visitor's own EN/UZ
+#  switch — a master reading the site in English still prints the Uzbek
+#  card, because the card is for the centre director, not for them.
+# ══════════════════════════════════════════════════════════════════════
+
+def _kit_context(request, piece):
+    """Everything every piece of the kit needs: copy, counts, links, QR paths.
+
+    `?bare=1` drops the toolbar and the grey stage so the page can be embedded
+    as a live preview — that is how the About page shows these pieces without
+    keeping a screenshot that goes stale the moment a lesson is added.
+    """
+    lang = kit.pick_lang(request.GET.get('lang'))
+    c = kit.copy_for(lang)
+    return {
+        'bare': request.GET.get('bare') == '1',
+        'c': c,
+        'lang': lang,
+        'piece': piece,
+        'stats': _platform_stats(),
+        'partners': PARTNERS,
+        'social': SOCIAL_MAP,
+        'contact_email': CONTACT_EMAIL,
+        'kit': kit,
+        'other_lang': c['other_lang'],
+    }
+
+
+@xframe_options_sameorigin
+def kit_card(request):
+    """The business card — 90 × 50 mm, front and back, one pair per page."""
+    return render(request, 'kit/card.html', _kit_context(request, 'card'))
+
+
+@xframe_options_sameorigin
+def kit_card_sheet(request):
+    """Ten cards on one A4 sheet, with cut guides — what you actually print.
+
+    `?side=back` prints the backs. The two sheets need no mirroring: all ten
+    cards on a sheet are the same card, so whichever way the paper is flipped,
+    every back lands behind a front.
+    """
+    ctx = _kit_context(request, 'sheet')
+    ctx['side'] = 'back' if request.GET.get('side') == 'back' else 'front'
+    ctx['cards'] = range(10)     # 2 columns x 5 rows of 90 x 50 mm on A4
+    return render(request, 'kit/card_sheet.html', ctx)
+
+
+@xframe_options_sameorigin
+def kit_flyer(request):
+    """The A4 flyer for educational centres — two sides, one page each."""
+    return render(request, 'kit/flyer.html', _kit_context(request, 'flyer'))

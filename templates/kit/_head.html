@@ -1,0 +1,16 @@
+{% load static %}
+{% comment %}
+The <head> shared by every piece of the hand-out kit. Deliberately short:
+kit.css is standalone (it does not sit on style.css) so a marketing piece can
+never inherit the app chrome. Bootstrap Icons comes in for the little contact
+glyphs and nothing else.
+{% endcomment %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="{% static 'vendor/bootstrap-icons.min.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/kit.css' %}">

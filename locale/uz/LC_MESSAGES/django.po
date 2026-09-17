@@ -10176,6 +10176,63 @@ msgstr "Darslik tugallandi!"
 msgid "You already finished this tutorial."
 msgstr "Siz bu darslikni allaqachon tugatgansiz."
 
+
+#: prime/templates/prime/about.html
+
+msgid "For educational centres"
+msgstr "Oʻquv markazlari uchun"
+
+msgid "Take Prime Point with you."
+msgstr "Prime Pointni oʻzingiz bilan olib keting."
+
+msgid "A printable business card and a two-page flyer, open for anyone to download — teachers, school directors, volunteers. Open one, press Print, and choose “Save as PDF”. Both carry a QR code that opens the platform, and both print the library’s live numbers, not last year’s."
+msgstr "Chop etsa boʻladigan vizitka va ikki betlik flayer — hamma uchun ochiq: oʻqituvchilarga ham, markaz rahbarlariga ham, koʻngillilarga ham. Ochasiz, «Chop etish»ni bosasiz va «PDF saqlash»ni tanlaysiz. Ikkisida ham platformani ochadigan QR kod bor, ikkisi ham kutubxonaning hozirgi raqamlarini chiqaradi — oʻtgan yilgisini emas."
+
+msgid "Business card"
+msgstr "Vizitka"
+
+msgid "Business card preview"
+msgstr "Vizitka koʻrinishi"
+
+msgid "Flyer"
+msgstr "Flayer"
+
+msgid "Flyer preview"
+msgstr "Flayer koʻrinishi"
+
+msgid "two sides"
+msgstr "ikki tomon"
+
+msgid "two pages"
+msgstr "ikki bet"
+
+msgid "The card you leave behind after the conversation: the mark, the promise, a QR that opens the platform, and the numbers on the back. Print one A4 sheet and you have ten."
+msgstr "Suhbatdan keyin qoldiriladigan vizitka: belgi, vaʼda, platformani ochadigan QR va orqasida raqamlar. Bitta A4 varaq chop etsangiz — oʻnta vizitka."
+
+msgid "Flyer for centres"
+msgstr "Markazlar uchun flayer"
+
+msgid "The whole case on two sides of one sheet: what the library holds, what a centre gets — classroom, self-marking homework, analytics — three steps to start, and why we built it."
+msgstr "Butun taklif bitta varaqning ikki tomonida: kutubxonada nima bor, markaz nima yutadi — sinfxona, oʻzi tekshiriladigan uy vazifasi, tahlil — uch qadamda boshlash va nega buni qurganimiz."
+
+msgid "Open &amp; print"
+msgstr "Ochish va chop etish"
+
+msgid "A4 sheet — 10 cards"
+msgstr "A4 varaq — 10 ta vizitka"
+
+msgid "The QR code on its own"
+msgstr "QR kodning oʻzi"
+
+msgid "Scanning it opens powerty.uz. Put it on your own poster, your board or your handout — no permission needed."
+msgstr "Skanerlansa powerty.uz ochiladi. Oʻz plakatingizga, doskangizga yoki tarqatma materialingizga qoʻyavering — ruxsat soʻrash shart emas."
+
+msgid "QR code for powerty.uz"
+msgstr "powerty.uz uchun QR kod"
+
+msgid "Telegram channel QR"
+msgstr "Telegram kanal QR kodi"
+
 #~ msgid "Free to Start"
 #~ msgstr "Bepul boshlash"
 

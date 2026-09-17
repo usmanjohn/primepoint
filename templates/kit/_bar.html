@@ -1,0 +1,39 @@
+{% load i18n %}
+{% comment %}
+The on-screen toolbar — never printed (.kt-noprint). It is the whole UI of the
+kit: print, switch language, switch piece. `window.print()` is the one line of
+JavaScript on these pages, the same line templates/printing/_bar.html already
+uses; the alternative is telling the visitor to find Ctrl+P themselves.
+Context: c, lang, piece, plus `side` on the cut sheet.
+{% endcomment %}
+<div class="kt-bar kt-noprint">
+  <span class="kt-bar__title">Prime Point</span>
+
+  <button type="button" class="kt-bar__go" onclick="window.print()">
+    <i class="bi bi-printer-fill"></i> {{ c.bar_print }}
+  </button>
+
+  {% if piece == 'flyer' %}
+    <a href="{% url 'kit_card' %}?lang={{ lang }}"><i class="bi bi-credit-card-2-front"></i> {{ c.bar_card }}</a>
+  {% else %}
+    <a href="{% url 'kit_flyer' %}?lang={{ lang }}"><i class="bi bi-file-earmark-richtext"></i> {{ c.bar_flyer }}</a>
+  {% endif %}
+
+  {% if piece == 'card' %}
+    <a href="{% url 'kit_card_sheet' %}?lang={{ lang }}"><i class="bi bi-grid-3x2-gap-fill"></i> {{ c.bar_sheet }}</a>
+  {% elif piece == 'sheet' %}
+    <a href="{% url 'kit_card' %}?lang={{ lang }}"><i class="bi bi-credit-card-2-front"></i> {{ c.bar_single }}</a>
+    <a class="{% if side == 'front' %}kt-bar__on{% endif %}" href="{% url 'kit_card_sheet' %}?lang={{ lang }}&amp;side=front">{{ c.bar_side_front }}</a>
+    <a class="{% if side == 'back' %}kt-bar__on{% endif %}" href="{% url 'kit_card_sheet' %}?lang={{ lang }}&amp;side=back">{{ c.bar_side_back }}</a>
+  {% endif %}
+
+  <a href="?lang={{ c.other_lang }}{% if side %}&amp;side={{ side }}{% endif %}">
+    <i class="bi bi-translate"></i> {{ c.other_lang_label }}
+  </a>
+
+  <a href="{% url 'about' %}"><i class="bi bi-arrow-left"></i> {{ c.bar_back }}</a>
+
+  <span class="kt-bar__hint">
+    {% if piece == 'flyer' %}{{ c.bar_hint }}{% else %}{{ c.bar_hint_card }}{% endif %}
+  </span>
+</div>

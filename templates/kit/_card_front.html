@@ -1,0 +1,30 @@
+{% load static %}
+{% comment %}
+The front of the 90 × 50 mm card. One job: get the card scanned. So the QR is
+a third of the surface and everything to the left of it is only there to say
+whose QR it is — the mark, the name, the promise, the address.
+Context: c, kit.
+{% endcomment %}
+<div class="kt-card kt-card--front kt-navy">
+  <div class="kt-card__arc kt-card__arc--2"></div>
+  <div class="kt-card__arc"></div>
+
+  <div class="kt-card__left">
+    <div class="kt-card__brandrow">
+      <div class="kt-mark"><img src="{% static 'images/finlogo.png' %}" alt=""></div>
+      <div class="kt-wordmark kt-card__name">Prime <em>Point</em></div>
+    </div>
+
+    <div class="kt-card__slogan">{{ c.card_slogan }}</div>
+    <div class="kt-card__role">{{ c.card_role }}</div>
+
+    <div class="kt-card__urlrow">
+      <span class="kt-url">{{ kit.SITE_HOST }}</span>
+    </div>
+  </div>
+
+  <div class="kt-card__right">
+    <div class="kt-qr"><img src="{% static kit.QR_SITE %}" alt="{{ kit.SITE_URL }}"></div>
+    <div class="kt-card__scan">{{ c.card_scan }}<span>{{ c.card_scan_sub }}</span></div>
+  </div>
+</div>

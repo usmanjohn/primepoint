@@ -209,3 +209,68 @@ python manage.py import_practices practice/management/commands/_practice_pj_79_8
 python manage.py import_corner corner/management/commands/_stories_prime_japanese_79_81.py --author=powerty
 python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
 python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_79_81.py --author=powerty --republish
+
+# Blok F, 82-84
+#   (PJ-82 〜べきです va 〜なければならない — burch · PJ-83 〜ばかり va 〜たばかり
+#    · PJ-84 〜ところ — 〜るところ / 〜ているところ / 〜たところ)
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_82_84.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pj_82_84.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_82_84.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_82_84.py --author=powerty --republish
+
+# Blok F, 85-87
+#   (PJ-85 〜うちに va 〜あいだに · PJ-86 〜につれて va 〜にしたがって — birga oʻzgarish
+#    · PJ-87 〜によって va passivning yozma ishlatilishi)
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_85_87.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pj_85_87.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_85_87.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_85_87.py --author=powerty --republish
+
+# Blok F, 88-90
+#   (PJ-88 〜として va 〜にとって · PJ-89 〜に関して, 〜について, 〜に対して
+#    · PJ-90 〜ながらも va 〜つつ — yozma qarama-qarshilik)
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_88_90.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pj_88_90.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_88_90.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_88_90.py --author=powerty --republish
+
+# Blok F, 91-93
+#   (PJ-91 〜さえ, 〜こそ, 〜しか〜ない — urgʻu qoʻshimchalari
+#    · PJ-92 〜がち, 〜っぽい, 〜気味 — moyillik · PJ-93 〜おかげで va 〜せいで)
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_91_93.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pj_91_93.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_japanese_91_93.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-japanese-readings --collection="Prime Japanese Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_91_93.py --author=powerty --republish
+
+
+# ══════════════════════════════════════════════════════════════════════
+# HOLAT (2026-09-18) — Prime Japanese qayerda toʻxtadi
+# ══════════════════════════════════════════════════════════════════════
+#   Tayyor: PJ-1 … PJ-93 — 93 dars, 93 mashq (1-12 da 12 savol, 13-93 da 20),
+#           81 oʻqish matni (PJ-13 dan boshlanadi) va ularning mp3 lari
+#           (corner/management/commands/audio/prime-japanese-readings/13…93.mp3).
+#   Keyingi batch: PJ-94…96 — 94. 〜どころか va 〜ばかりか ·
+#           95. 〜たとたん, 〜次第, 〜か〜ないかのうちに · 96. だ・である体 va
+#           gazeta yaponchasi.  (toc_prime_japanese.txt da [next] shu yerda.)
+#   Qolgani: PJ-94 … PJ-100 — 7 dars, 7 mashq, 7 oʻqish matni + audio.
+#
+#   Fayllar diskda bor, lekin hali GitHub ga qoʻyilmagan (untracked):
+#     _tutorials_prime_japanese_82_84 … 91_93  (tutorial/management/commands/)
+#     _practice_pj_82_84 … 91_93               (practice/management/commands/)
+#     _stories_prime_japanese_73_75 … 91_93    (corner/management/commands/)
+#     audio/prime-japanese-readings/73.mp3 … 93.mp3
+#   Push qilmasdan turib bu buyruqlarni Railway da ishlatib boʻlmaydi.
+#
+#   Ishlatish tartibi oʻzgarmaydi: tutorials → practices → corner → audio →
+#   tutorials --republish (oxirgisi "stories" bogʻlanishini hal qiladi).
+#   Railway da har bir satr oldiga "railway run" qoʻshiladi, masalan:
+#     railway run python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_japanese_91_93.py --author=powerty
+#
+#   2026-09-18 tuzatishi (import talab qilmaydi — faqat shablon):
+#     mashq javoblarida <ruby> yozuvi xom koʻrinib turgan edi; take_practice /
+#     practice_result / review_attempt endi |safe bilan chiqaradi, Telegram
+#     poll esa furiganani tashlab, faqat kanjini yuboradi. Push yetarli.

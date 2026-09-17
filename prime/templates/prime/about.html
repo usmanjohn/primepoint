@@ -471,6 +471,119 @@
 .ab-partner-invite a { color: var(--accent); font-weight: 700; text-decoration: none; }
 .ab-partner-invite a:hover { text-decoration: underline; }
 
+/* ── Hand-out kit ────────────────────────────────────
+   The printable business card and flyer. Each card shows the REAL page in an
+   iframe (`?bare=1`), scaled down — a screenshot would go stale the moment a
+   lesson is added, and these pieces print live counts. */
+.ab-kit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.ab-kit-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+}
+.ab-kit-card:hover { border-color: var(--accent); box-shadow: 0 10px 30px rgba(56,189,248,0.12); }
+.ab-kit-shot {
+  display: block;
+  position: relative;
+  height: 210px;
+  overflow: hidden;
+  background: #0b1220;
+  border-bottom: 1px solid var(--border);
+}
+.ab-kit-shot iframe {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border: 0;
+  pointer-events: none;      /* the whole tile is the link */
+  transform-origin: top center;
+}
+/* Two pieces, two natural sizes: the card pair is short and wide, the flyer
+   is a tall A4 page we crop to its top. The iframes are 1000px wide on
+   purpose — kit.css shrinks a sheet with `zoom` below 900px, and a preview
+   that shrank itself and was then scaled again came out tiny. */
+/* The card pair is only 50mm tall, so its frame is cropped to the pair and
+   centred in the tile; the flyer is a whole A4 page and is cropped from the
+   top instead. */
+.ab-kit-shot--card iframe { width: 1000px; height: 200px; top: 50%; transform-origin: center; transform: translate(-50%, -50%) scale(0.66); }
+.ab-kit-shot--flyer iframe { width: 1000px; height: 900px; transform: translateX(-50%) scale(0.52); }
+.ab-kit-shot--flyer { background: #e7ebf1; }
+.ab-kit-shot::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 42px;
+  background: linear-gradient(transparent, rgba(11,18,32,0.55));
+  pointer-events: none;
+}
+.ab-kit-body { padding: 1.15rem 1.3rem 1.3rem; display: flex; flex-direction: column; flex: 1; }
+.ab-kit-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0 0 0.3rem;
+}
+.ab-kit-meta {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.55rem;
+}
+.ab-kit-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 1rem; }
+.ab-kit-links { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; }
+.ab-kit-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.45rem 0.85rem;
+  border-radius: 9px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  background: var(--surface-2);
+}
+.ab-kit-links a:hover { border-color: var(--accent); color: var(--accent); }
+.ab-kit-links a.primary { background: var(--accent); border-color: var(--accent); color: #06121f; }
+.ab-kit-links a.primary:hover { background: #7dd3fc; color: #06121f; }
+
+.ab-kit-qr {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+}
+.ab-kit-qr img { width: 96px; height: 96px; background: #fff; border-radius: 8px; padding: 6px; }
+.ab-kit-qr strong { display: block; font-size: 0.95rem; color: var(--text); margin-bottom: 0.2rem; }
+.ab-kit-qr p { font-size: 0.83rem; color: var(--text-muted); margin: 0 0 0.6rem; max-width: 520px; line-height: 1.6; }
+.ab-kit-qr-links { display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.8rem; }
+.ab-kit-qr-links a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.ab-kit-qr-links a:hover { text-decoration: underline; }
+
+@media (max-width: 480px) {
+  .ab-kit-shot { height: 165px; }
+  .ab-kit-shot--card iframe { transform: translate(-50%, -50%) scale(0.42); }
+  .ab-kit-shot--flyer iframe { transform: translateX(-50%) scale(0.38); }
+}
+
 /* ── CTA banner ──────────────────────────────────── */
 .ab-cta {
   background: linear-gradient(135deg, #0d1117 0%, #0f2033 100%);
@@ -751,6 +864,61 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- ── HAND-OUT KIT ───────────────────────────────── -->
+  <div class="ab-partners-section">
+    <span class="ab-eyebrow">{% trans "For educational centres" %}</span>
+    <h2 class="ab-section-title">{% trans "Take Prime Point with you." %}</h2>
+    <div class="ab-divider"></div>
+    <p class="ab-section-sub mb-4">
+      {% trans "A printable business card and a two-page flyer, open for anyone to download — teachers, school directors, volunteers. Open one, press Print, and choose “Save as PDF”. Both carry a QR code that opens the platform, and both print the library’s live numbers, not last year’s." %}
+    </p>
+
+    <div class="ab-kit-grid">
+      <div class="ab-kit-card">
+        <a class="ab-kit-shot ab-kit-shot--card" href="{% url 'kit_card' %}" aria-label="{% trans "Business card" %}">
+          <iframe src="{% url 'kit_card' %}?bare=1" title="{% trans "Business card preview" %}" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+        </a>
+        <div class="ab-kit-body">
+          <div class="ab-kit-meta">90 × 50 mm · {% trans "two sides" %}</div>
+          <p class="ab-kit-name">{% trans "Business card" %}</p>
+          <p class="ab-kit-desc">{% trans "The card you leave behind after the conversation: the mark, the promise, a QR that opens the platform, and the numbers on the back. Print one A4 sheet and you have ten." %}</p>
+          <div class="ab-kit-links">
+            <a class="primary" href="{% url 'kit_card' %}"><i class="bi bi-printer-fill"></i>{% trans "Open &amp; print" %}</a>
+            <a href="{% url 'kit_card_sheet' %}"><i class="bi bi-grid-3x2-gap-fill"></i>{% trans "A4 sheet — 10 cards" %}</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ab-kit-card">
+        <a class="ab-kit-shot ab-kit-shot--flyer" href="{% url 'kit_flyer' %}" aria-label="{% trans "Flyer" %}">
+          <iframe src="{% url 'kit_flyer' %}?bare=1" title="{% trans "Flyer preview" %}" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+        </a>
+        <div class="ab-kit-body">
+          <div class="ab-kit-meta">A4 · {% trans "two pages" %}</div>
+          <p class="ab-kit-name">{% trans "Flyer for centres" %}</p>
+          <p class="ab-kit-desc">{% trans "The whole case on two sides of one sheet: what the library holds, what a centre gets — classroom, self-marking homework, analytics — three steps to start, and why we built it." %}</p>
+          <div class="ab-kit-links">
+            <a class="primary" href="{% url 'kit_flyer' %}"><i class="bi bi-printer-fill"></i>{% trans "Open &amp; print" %}</a>
+            <a href="{% url 'kit_flyer' %}?lang=en"><i class="bi bi-translate"></i>English</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ab-kit-qr">
+      <img src="{% static qr_site %}" alt="{% trans "QR code for powerty.uz" %}">
+      <div>
+        <strong>{% trans "The QR code on its own" %}</strong>
+        <p>{% trans "Scanning it opens powerty.uz. Put it on your own poster, your board or your handout — no permission needed." %}</p>
+        <div class="ab-kit-qr-links">
+          <a href="{% static 'images/qr/powerty-site.svg' %}" download><i class="bi bi-download"></i> SVG</a>
+          <a href="{% static 'images/qr/powerty-site.png' %}" download><i class="bi bi-download"></i> PNG</a>
+          <a href="{% static 'images/qr/powerty-telegram.png' %}" download><i class="bi bi-download"></i> {% trans "Telegram channel QR" %}</a>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- ── PARTNERS ───────────────────────────────────── -->

@@ -1,0 +1,45 @@
+{% load i18n static %}<!doctype html>
+{% comment %}
+Ten cards on one A4 sheet — the page that actually becomes a stack of cards.
+2 × 5 of 90 × 50 mm is 180 × 250 mm, which leaves a 15 mm side margin and a
+23.5 mm head and foot on A4; the browser's own margin is off (@page margin: 0)
+because the navy has to reach the cut line.
+
+All ten cards on a sheet are identical, so the front and back sheets need no
+mirroring — whichever way the paper is flipped, every back lands behind a front.
+Context: prime.views.kit_card_sheet.
+{% endcomment %}
+<html lang="{{ lang }}">
+<head>
+  <title>Prime Point — {{ c.bar_sheet }} ({{ side }})</title>
+  {% include "kit/_head.html" %}
+</head>
+<body class="{% if bare %}kt-bare{% endif %}">
+
+{% if not bare %}{% include "kit/_bar.html" %}{% endif %}
+
+<div class="kt-stage">
+  {% if not bare %}<div class="kt-stage__note kt-noprint">
+    {% if side == 'back' %}{{ c.sheet_note_back }}{% else %}{{ c.sheet_note_front }}{% endif %}
+    <br>{{ c.bar_hint_card }}
+  </div>{% endif %}
+
+  <div class="kt-page kt-sheet">
+    <div class="kt-sheet__grid">
+      {% for _ in cards %}
+        {% if side == 'back' %}
+          {% include "kit/_card_back.html" %}
+        {% else %}
+          {% include "kit/_card_front.html" %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="kt-sheet__foot kt-noprint">
+      <span>{{ c.sheet_cut }}</span>
+      <span>{{ kit.SITE_HOST }}</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

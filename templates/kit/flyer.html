@@ -1,0 +1,205 @@
+{% load i18n static %}<!doctype html>
+{% comment %}
+The A4 flyer for educational centres — two sides, one page each.
+
+Page one sells the library: who we are, the live numbers, the six courses, the
+three exam tracks, and a QR the size of a matchbox so the director can look
+while you are still standing there.
+Page two sells the running of a centre: the classroom, the homework that marks
+itself, the analytics, three steps to start, why we built it, and who stands
+behind us.
+
+Every number on it is a live count from the database (prime.views._platform_stats);
+every word is prime/kit.py.
+{% endcomment %}
+<html lang="{{ lang }}">
+<head>
+  <title>Prime Point — {{ c.bar_flyer }}</title>
+  {% include "kit/_head.html" %}
+</head>
+<body class="{% if bare %}kt-bare{% endif %}">
+
+{% if not bare %}{% include "kit/_bar.html" %}{% endif %}
+
+<div class="kt-stage">
+
+  {# ══ PAGE 1 — the library ══════════════════════════════════════ #}
+  <div class="kt-page">
+    <div class="kt-flyer">
+
+      <div class="kt-hero kt-navy">
+        <div class="kt-hero__arc kt-hero__arc--2"></div>
+        <div class="kt-hero__arc"></div>
+
+        <div class="kt-hero__top">
+          <div class="kt-mark"><img src="{% static 'images/finlogo.png' %}" alt=""></div>
+          <div class="kt-hero__brand">
+            <div class="kt-wordmark">Prime <em>Point</em></div>
+            <p>{{ c.card_slogan }}</p>
+          </div>
+          <div class="kt-hero__site">
+            <span class="kt-url">{{ kit.SITE_HOST }}</span>
+            <span>{{ c.hero_kicker }}</span>
+          </div>
+        </div>
+
+        <div class="kt-hero__eyebrow">{{ c.eyebrow }}</div>
+        <h1>{{ c.headline|safe }}</h1>
+        <p class="kt-hero__lead">{{ c.lead|safe }}</p>
+      </div>
+
+      <div class="kt-stats">
+        <div class="kt-stats__cell">
+          <div class="kt-stats__num">{{ stats.lessons }}</div>
+          <div class="kt-stats__lbl">{{ c.stat_lessons }}</div>
+        </div>
+        <div class="kt-stats__cell">
+          <div class="kt-stats__num">{{ stats.questions_round }}</div>
+          <div class="kt-stats__lbl">{{ c.stat_questions }}</div>
+        </div>
+        <div class="kt-stats__cell">
+          <div class="kt-stats__num">{{ stats.readings }}</div>
+          <div class="kt-stats__lbl">{{ c.stat_readings }}</div>
+        </div>
+        <div class="kt-stats__cell">
+          <div class="kt-stats__num">{{ stats.courses }}</div>
+          <div class="kt-stats__lbl">{{ c.stat_courses }}</div>
+        </div>
+        <div class="kt-stats__cell">
+          <div class="kt-stats__num">{{ stats.tracks }}</div>
+          <div class="kt-stats__lbl">{{ c.stat_tracks }}</div>
+        </div>
+      </div>
+      <p class="kt-stats__note">{{ c.stats_note }}</p>
+
+      <div class="kt-sec">
+        <div class="kt-sec__head">
+          <div class="kt-eyebrow">{{ c.courses_title }}</div>
+          <div class="kt-rule"></div>
+          <p class="kt-sec__sub">{{ c.courses_sub }}</p>
+        </div>
+        <div class="kt-courses">
+          {% for course in c.courses %}
+            <div class="kt-course" style="border-left-color: {{ course.color }};">
+              <b>{{ course.name }}</b>
+              <span>{{ course.line }}</span>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="kt-sec">
+        <div class="kt-sec__head">
+          <div class="kt-eyebrow">{{ c.tracks_title }}</div>
+          <div class="kt-rule"></div>
+        </div>
+        <div class="kt-tracks">
+          {% for track in c.tracks %}
+            <div class="kt-track"><b>{{ track.name }}</b><span>{{ track.line }}</span></div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="kt-scan kt-navy">
+        <div class="kt-qr"><img src="{% static kit.QR_SITE %}" alt="{{ kit.SITE_URL }}"></div>
+        <div class="kt-scan__text">
+          <b>{{ c.scan_title }}</b>
+          <p>{{ c.scan_sub }}</p>
+          <div class="kt-scan__url">{{ kit.SITE_HOST }}</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  {# ══ PAGE 2 — the centre ═══════════════════════════════════════ #}
+  <div class="kt-page">
+    <div class="kt-flyer">
+
+      <div class="kt-sec" style="padding-top: 13mm;">
+        <div class="kt-sec__head">
+          <div class="kt-eyebrow">{{ c.centre_eyebrow }}</div>
+          <h2>{{ c.centre_title }}</h2>
+          <div class="kt-rule"></div>
+          <p class="kt-sec__sub" style="margin-top: 3mm;">{{ c.centre_lead }}</p>
+        </div>
+        <div class="kt-gets">
+          {% for name, line in c.centre_items %}
+            <div class="kt-get"><b>{{ name }}</b><span>{{ line }}</span></div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="kt-sec">
+        <div class="kt-sec__head">
+          <div class="kt-eyebrow">{{ c.how_title }}</div>
+          <div class="kt-rule"></div>
+        </div>
+        <div class="kt-steps">
+          {% for name, line in c.how_steps %}
+            <div class="kt-step">
+              <div class="kt-step__n"></div>
+              <b>{{ name }}</b>
+              <span>{{ line }}</span>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="kt-why">
+          <b>{{ c.why_title }}</b>
+          <p>{{ c.why_text }}</p>
+        </div>
+      </div>
+
+      <div class="kt-sec">
+        <div class="kt-sec__head">
+          <div class="kt-eyebrow">{{ c.partners_title }}</div>
+          <div class="kt-rule"></div>
+          <p class="kt-sec__sub">{{ c.partners_sub }}</p>
+        </div>
+        <div class="kt-partners">
+          {% for partner in partners %}
+            <div class="kt-partner">
+              <img src="{% static partner.logo %}" alt="{{ partner.name }}">
+              <span>{{ partner.name }}</span>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="kt-close kt-navy">
+        <div class="kt-contact">
+          <div class="kt-contact__text">
+            <b>{{ c.contact_title }}</b>
+            <p>{{ c.contact_sub }}</p>
+            <div class="kt-lines">
+              <span class="kt-line"><i class="bi bi-globe2"></i>{{ kit.SITE_HOST }}</span>
+              <span class="kt-line"><i class="bi bi-telegram"></i>{{ social.telegram.handle }}</span>
+              <span class="kt-line"><i class="bi bi-envelope-fill"></i>{{ contact_email }}</span>
+              <span class="kt-line"><i class="bi bi-instagram"></i>{{ social.instagram.handle }}</span>
+            </div>
+          </div>
+          <div class="kt-contact__qrs">
+            <div class="kt-contact__qr">
+              <div class="kt-qr"><img src="{% static kit.QR_SITE %}" alt="{{ kit.SITE_URL }}"></div>
+              <span>{{ kit.SITE_HOST }}</span>
+            </div>
+            <div class="kt-contact__qr">
+              <div class="kt-qr"><img src="{% static kit.QR_TELEGRAM %}" alt="{{ social.telegram_channel.url }}"></div>
+              <span>{{ social.telegram_channel.handle }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="kt-foot">
+          <span>{{ c.foot }}</span>
+          <span>{{ c.tg_channel }}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
