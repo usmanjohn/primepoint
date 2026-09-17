@@ -6,8 +6,8 @@ Page one sells the library: who we are, the live numbers, the six courses, the
 three exam tracks, and a QR the size of a matchbox so the director can look
 while you are still standing there.
 Page two sells the running of a centre: the classroom, the homework that marks
-itself, the analytics, three steps to start, why we built it, and who stands
-behind us.
+itself, the analytics, three steps to start, why we built it, and the three
+questions a director always asks.
 
 Every number on it is a live count from the database (prime.views._platform_stats);
 every word is prime/kit.py.
@@ -153,15 +153,14 @@ every word is prime/kit.py.
 
       <div class="kt-sec">
         <div class="kt-sec__head">
-          <div class="kt-eyebrow">{{ c.partners_title }}</div>
+          <div class="kt-eyebrow">{{ c.faq_title }}</div>
           <div class="kt-rule"></div>
-          <p class="kt-sec__sub">{{ c.partners_sub }}</p>
         </div>
-        <div class="kt-partners">
-          {% for partner in partners %}
-            <div class="kt-partner">
-              <img src="{% static partner.logo %}" alt="{{ partner.name }}">
-              <span>{{ partner.name }}</span>
+        <div class="kt-faq">
+          {% for question, answer in c.faq %}
+            <div class="kt-q">
+              <b>{{ question }}</b>
+              <span>{{ answer }}</span>
             </div>
           {% endfor %}
         </div>

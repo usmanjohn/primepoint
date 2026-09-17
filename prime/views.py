@@ -290,7 +290,6 @@ def _kit_context(request, piece):
         'lang': lang,
         'piece': piece,
         'stats': _platform_stats(),
-        'partners': PARTNERS,
         'social': SOCIAL_MAP,
         'contact_email': CONTACT_EMAIL,
         'kit': kit,

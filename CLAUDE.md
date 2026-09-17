@@ -809,6 +809,12 @@ document and the visitor presses Ctrl+P → "Save as PDF" (A4, margins **None**,
 **not** sit on `style.css`, because a marketing piece must not inherit the app
 chrome. Numbers: `prime.views._platform_stats()`, the same live counts the About
 page prints, so a flyer and the site can never disagree.
+**⛔ NO PARTNER LOGOS ON THE FLYER** (user's decision 2026-09-18) — the state-agency
+wall lives on the About page and nowhere else; page two closes on a three-question
+**Savol-javob** strip instead. And **only claim what a centre can actually do**: the
+lesson print sheets and the A5 books are `is_staff`-gated (`prime/printing.py`), so a
+master who signs up cannot print them — the flyer promises the **mock exams** (open,
+11 of them, TOPIK II with audio) and offers printed copies on request instead.
 **⛔ NOTHING ON THESE PIECES MENTIONS THE PRICE** (user's decision 2026-09-18). No
 "bepul", no "100% free", no "costs nothing" — not on the card, not in the flyer's
 stat band, not in the closing note (which is "Nega buni qurdik?", not "Nega bepul?").

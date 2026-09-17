@@ -147,8 +147,8 @@ COPY = {
                             'qoʻyasiz; javoblar oʻzi tekshiriladi.'),
             ('Tahlil', 'Kim qayerda qoqildi — savolma-savol, variantma-variant '
                        'koʻrinadi. Keyingi dars nimaga bagʻishlanishi oʻzi maʼlum.'),
-            ('Chop etish', 'Dars + mashq + matn — A4 varaqqa yoki A5 kitob '
-                           'holida. Internetsiz sinf uchun ham.'),
+            ('Imtihon', 'Vaqt bilan oʻlchanadigan TOPIK II sinovlari — '
+                        'tinglash audiosi bilan, oʻzi baholanadi.'),
             ('Oʻyinlar', 'Matematika va ingliz tili chempionatlari, Mantiq '
                          'maydoni, Sayohat — bolalar oʻzi qaytadigan qism.'),
             ('Telefonda', 'Sayt telefonga ilova boʻlib oʻrnatiladi. Kompyuter '
@@ -170,9 +170,18 @@ COPY = {
                     'turgan holda koʻrsatadi. Markazingiz uchun ham shu ish '
                     'qilingan — materiallaringiz koʻpaygani va oʻquvchilaringiz '
                     'oʻsganini koʻrmoqchimiz.',
-        'partners_title': 'Biz yolgʻiz emasmiz',
-        'partners_sub': 'Prime Point davlat idoralari va yoshlar dasturlari '
-                        'bilan birga ishlaydi.',
+        'faq_title': 'Koʻp soʻraladi',
+        'faq': [
+            ('Oʻz mashqlarimni qoʻsha olamanmi?',
+             'Ha. Oʻz testingizni yozasiz va guruhingizga tayinlaysiz — tayyor '
+             'mashqlar bilan yonma-yon turadi.'),
+            ('Materiallar qaysi tilda?',
+             'Koreys, yapon, rus tili va matematika — oʻzbek tilida '
+             'tushuntiriladi. Ingliz tili va SAT — imtihonning oʻz tilida.'),
+            ('Sinfda internet boʻlmasa-chi?',
+             'Sayt telefonga ilova boʻlib oʻrnatiladi. Bosma nusxa kerak '
+             'boʻlsa — bogʻlaning, tayyorlab beramiz.'),
+        ],
         'contact_title': 'Bogʻlaning',
         'contact_sub': 'Markazingizga Prime Pointni olib kirmoqchimisiz? '
                        'Yozing — oʻqituvchilaringizga boshidan oxirigacha '
@@ -255,8 +264,8 @@ COPY = {
                          'and let the answers mark themselves.'),
             ('Analytics', 'Who slipped and where — question by question, choice '
                           'by choice. The next lesson plans itself.'),
-            ('Print', 'Lesson + practice + reading as an A4 handout or an A5 '
-                      'bound book, for classrooms with no internet.'),
+            ('Mock exams', 'Timed TOPIK II papers with the listening audio, '
+                           'marked automatically.'),
             ('Games', 'Maths and English championships, the Logic Arena, the '
                       'Journey — the part pupils come back to on their own.'),
             ('On a phone', 'The site installs as an app. No computer needed.'),
@@ -276,9 +285,18 @@ COPY = {
                     'each one, and a reading that shows the rule at work. The '
                     'same work is done for your centre — we would rather see '
                     'your shelves full and your pupils moving.',
-        'partners_title': 'We do not do this alone',
-        'partners_sub': 'Prime Point works alongside state institutions and '
-                        'youth programmes.',
+        'faq_title': 'Asked often',
+        'faq': [
+            ('Can I add my own practices?',
+             'Yes. Write your own test and assign it to your group — it sits '
+             'beside the ready-made ones.'),
+            ('What language is the material in?',
+             'Korean, Japanese, Russian and maths are taught in Uzbek. English '
+             'and SAT are in the language of the exam itself.'),
+            ('What if the classroom has no internet?',
+             'The site installs as an app on a phone. If you need printed '
+             'copies, write to us and we will prepare them.'),
+        ],
         'contact_title': 'Talk to us',
         'contact_sub': 'Want Prime Point in your centre? Write to us and we '
                        'will walk your teachers through it, start to finish.',

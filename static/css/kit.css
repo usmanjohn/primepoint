@@ -477,21 +477,23 @@ body.kt-bare .kt-cardwrap { gap: 0; }
 .kt-why b { font-family: 'Syne', sans-serif; font-size: 3.8mm; color: var(--kt-ink); display: block; margin-bottom: 1.4mm; }
 .kt-why p { margin: 0; font-size: 2.9mm; line-height: 1.55; color: #6b5a3a; }
 
-/* partners strip */
-.kt-partners { display: flex; gap: 3mm; margin-top: 4mm; }
-.kt-partner {
-  flex: 1;
-  border: .3mm solid var(--kt-line);
-  border-radius: 2mm;
-  overflow: hidden;
-  background: #fff;
-  text-align: center;
+/* the three questions a director asks — where the partner wall used to be */
+.kt-faq { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.4mm; }
+.kt-q {
+  border-top: .8mm solid var(--kt-sky);
+  background: var(--kt-paper-2);
+  border-radius: 0 0 2mm 2mm;
+  padding: 3.2mm 4mm 3.6mm;
 }
-/* `contain`, not `cover`: two of the four partner marks are round seals, and
-   a wide crop cuts the top and bottom off a seal. A little white at the sides
-   is the cheaper mistake. */
-.kt-partner img { width: 100%; height: 19mm; object-fit: contain; display: block; padding: 1.5mm; background: #fff; }
-.kt-partner span { display: block; font-size: 2.3mm; color: var(--kt-muted); padding: 1.6mm 1.5mm; line-height: 1.3; }
+.kt-q b {
+  display: block;
+  font-family: 'Syne', sans-serif;
+  font-size: 3.1mm;
+  line-height: 1.25;
+  color: var(--kt-ink);
+  margin-bottom: 1.4mm;
+}
+.kt-q span { font-size: 2.75mm; color: var(--kt-muted); line-height: 1.45; }
 
 /* the contact foot of page two */
 .kt-contact { padding: 6mm 15mm 5mm; display: flex; gap: 7mm; align-items: center; }
