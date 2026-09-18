@@ -124,10 +124,12 @@ TUTORIAL: PJ-<n>:   (each practice links to its own tutorial)
 91. 〜さえ, 〜こそ, 〜しか〜ない   [done]
 92. 〜がち, 〜っぽい, 〜気味   [done]
 93. 〜おかげで va 〜せいで   [done]
-94. 〜どころか va 〜ばかりか   [next]
-95. 〜たとたん, 〜次第
-96. だ・である体 va gazeta yaponchasi
-97. Xat va rasmiy murojaat qoliplari
-98. 四字熟語 va ことわざ
-99. 和語・漢語・外来語
-100. N3 dan N2 gacha yoʻl xaritasi
+94. 〜どころか va 〜ばかりか   [done]
+95. 〜たとたん, 〜次第   [done]
+96. だ・である体 va gazeta yaponchasi   [done]
+97. Xat va rasmiy murojaat qoliplari   [done]
+98. 四字熟語 va ことわざ   [done]
+99. 和語・漢語・外来語   [done]
+100. N3 dan N2 gacha yoʻl xaritasi   [done]
+# ↑ Prime Japanese mashqlari COMPLETE (2026-09-19) — 100 ta test, 1 904 savol
+#   (PJ-1…12 — 12 savoldan, PJ-13…100 — 20 savoldan).

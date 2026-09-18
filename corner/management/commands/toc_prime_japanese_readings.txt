@@ -207,10 +207,12 @@ AUTHOR:     powerty
 91. 〜さえ, 〜こそ, 〜しか〜ない   [done]
 92. 〜がち, 〜っぽい   [done]
 93. 〜おかげで va 〜せいで   [done]
-94. 〜どころか   [next]
-95. 〜たとたん, 〜次第
-96. だ・である体
-97. Xat va rasmiy murojaat
-98. 四字熟語 va ことわざ
-99. 和語・漢語・外来語
-100. N3 dan N2 gacha
+94. 〜どころか   [done]
+95. 〜たとたん, 〜次第   [done]
+96. だ・である体   [done]
+97. Xat va rasmiy murojaat   [done]
+98. 四字熟語 va ことわざ   [done]
+99. 和語・漢語・外来語   [done]
+100. N3 dan N2 gacha   [done]
+# ↑ Prime Japanese Readings COMPLETE (2026-09-19) — 88 ta matn (PJ-13…100),
+#   hammasi audio bilan (Nanami/Keita navbatma-navbat; 100-matn Nanami bilan tugadi).

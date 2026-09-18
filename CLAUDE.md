@@ -213,9 +213,15 @@ Prime Russian's practices are **not** the older `Часть NN: …` Russian dri
 Russian, attached to no lesson) — those stay as they are.
 
 ## Creating Prime Japanese tutorials (bulk) — yapon tili grammatikasi
+> ✅ **THIS COURSE IS FINISHED (2026-09-19).** All 100 lessons, 100 practices (1,904
+> questions) and 88 Corner readings with audio are written and imported. Do **not**
+> start a "next batch" — there is none, and all three toc files are fully `[done]`.
+> The workflow below is kept for maintenance (fixing or re-importing an existing
+> lesson) and as the reference for the next course built on this machinery.
+
 **Prime Japanese** is the 100-lesson Japanese course in `tutorial`, held together by a
 `TutorialPlaylist` called "Prime Japanese". Titles are `PJ-1: …`, category `japanese`.
-Started **2026-09-09**; it is the sixth course on the Prime machinery and — like Prime
+Started **2026-09-09**, completed **2026-09-19**; it is the sixth course on the Prime machinery and — like Prime
 Korean and Prime Russian — it **teaches in Uzbek**; Japanese is only the material.
 **No English anywhere.** Target: noldan mustahkam **N4**, N3 ga eshik ochib.
 Its three differences from Prime Korean are worth remembering:

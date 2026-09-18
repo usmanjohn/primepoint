@@ -153,13 +153,16 @@ PLAYLIST: Prime Japanese
 91. 〜さえ, 〜こそ, 〜しか〜ない — urgʻu qoʻshimchalari   [done]
 92. 〜がち, 〜っぽい, 〜気味 — moyillik   [done]
 93. 〜おかげで va 〜せいで — yaxshi va yomon sabab   [done]
-94. 〜どころか va 〜ばかりか   [next]
-95. 〜たとたん, 〜次第, 〜か〜ないかのうちに — vaqt aniqligi
-96. Yozma uslub: だ・である体 va gazeta yaponchasi
-97. Xat, elektron xat va rasmiy murojaat qoliplari
-98. 四字熟語 va ことわざ — toʻrt belgili iboralar va maqollar
-99. 和語・漢語・外来語 — lugʻatning uch qatlami va uslub tanlash
-100. Bundan keyin qayerga: N3 dan N2 gacha yoʻl xaritasi
+94. 〜どころか va 〜ばかりか   [done]
+95. 〜たとたん, 〜次第, 〜か〜ないかのうちに — vaqt aniqligi   [done]
+96. Yozma uslub: だ・である体 va gazeta yaponchasi   [done]
+97. Xat, elektron xat va rasmiy murojaat qoliplari   [done]
+98. 四字熟語 va ことわざ — toʻrt belgili iboralar va maqollar   [done]
+99. 和語・漢語・外来語 — lugʻatning uch qatlami va uslub tanlash   [done]
+100. Bundan keyin qayerga: N3 dan N2 gacha yoʻl xaritasi   [done]
+# ↑ Prime Japanese COMPLETE (2026-09-19) — 100 ta dars, 100 ta mashq (1 904 savol),
+#   88 ta oʻqish matni (PJ-13…100), hammasi audio bilan. Keyingi batch YOʻQ.
+#   Bu yerdan keyin faqat texnik xizmat: mavjud darsni tuzatish yoki qayta import.
 # ↑ Block F: oʻquvchi endi kitob, yangilik va rasmiy xat oʻqiy oladi.
 
 
