@@ -32,6 +32,116 @@
 .badge-listen { background: rgba(56,189,248,0.15); color: #38bdf8; }
 .badge-read   { background: rgba(34,197,94,0.12);  color: #22c55e; }
 .badge-write  { background: rgba(167,139,250,0.12); color: #a78bfa; }
+.badge-rw     { background: rgba(56,189,248,0.15); color: #38bdf8; }
+.badge-math   { background: rgba(245,158,11,0.15); color: #f59e0b; }
+
+/* ── Digital-SAT two-pane layout ─────────────────────── */
+.sat-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+.sat-split > .sat-pane-left {
+  border-right: 1px solid var(--border);
+  padding-right: 1.5rem;
+}
+@media (max-width: 860px) {
+  .sat-split { grid-template-columns: 1fr; gap: 1rem; }
+  .sat-split > .sat-pane-left {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding-right: 0;
+    padding-bottom: 1rem;
+  }
+}
+.sat-passage {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--text);
+}
+.sat-passage p { margin-bottom: 0.85rem; }
+.sat-passage table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  margin: 0.5rem 0;
+}
+.sat-passage th, .sat-passage td {
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.5rem;
+  text-align: left;
+}
+.sat-passage th { background: rgba(56,189,248,0.07); font-weight: 700; }
+.sat-blank {
+  display: inline-block;
+  min-width: 90px;
+  border-bottom: 2px solid var(--accent);
+  vertical-align: baseline;
+}
+.sat-note {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 0.6rem;
+}
+
+/* ── Grid-in (student-produced response) ─────────────── */
+.grid-in { margin-top: 0.25rem; }
+.grid-in-input {
+  width: 100%;
+  max-width: 230px;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  padding: 0.6rem 0.9rem;
+  font-family: 'Syne', monospace;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.grid-in-input:focus { border-color: var(--accent); outline: none; }
+.grid-in-lbl {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+.grid-in-hint {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 0.45rem;
+  line-height: 1.5;
+}
+
+/* ── Math tools strip ────────────────────────────────── */
+.tools-bar {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0.45rem 0;
+}
+.tools-bar details { font-size: 0.75rem; color: var(--text-muted); }
+.tools-bar summary { cursor: pointer; font-weight: 600; }
+.ref-sheet {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.6rem;
+  margin-top: 0.7rem;
+  font-size: 0.76rem;
+}
+.ref-item {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem 0.65rem;
+  background: var(--surface);
+  line-height: 1.6;
+}
+.ref-item b { color: var(--accent); display: block; font-size: 0.68rem;
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.2rem; }
 .timer-box {
   display: flex;
   align-items: center;
@@ -135,7 +245,7 @@
   border-bottom: 1px solid var(--border);
   padding: 0.3rem 0;
   position: sticky;
-  top: {% if attempt.current_section == 'listening' and exam.listening_audio %}115px{% else %}53px{% endif %};
+  top: {% if module.kind == 'listening' and exam.listening_audio %}115px{% else %}53px{% endif %};
   z-index: 198;
   font-size: 0.72rem;
   color: var(--text-muted);
@@ -464,7 +574,7 @@
     <div class="confirm-warn" id="confirm-warn" style="display:none;"></div>
     <div class="confirm-actions">
       <button class="btn-auth-outline" onclick="closeConfirm()">{% trans "Cancel" %}</button>
-      <button class="btn-auth" onclick="submitConfirmed()">{% trans "Yes, Submit" %}</button>
+      <button class="btn-auth-primary" onclick="submitConfirmed()">{% trans "Yes, Submit" %}</button>
     </div>
   </div>
 </div>
@@ -473,14 +583,18 @@
 <div class="exam-bar">
   <div class="container-fluid px-3">
     <div class="exam-bar-inner">
-      {% if attempt.current_section == 'listening' %}
-        <span class="section-badge badge-listen"><i class="bi bi-headphones-fill me-1"></i>듣기 — {% trans "Listening" %}</span>
-      {% elif attempt.current_section == 'reading' %}
-        <span class="section-badge badge-read"><i class="bi bi-book-fill me-1"></i>읽기 — {% trans "Reading" %}</span>
+      {% if module.kind == 'listening' %}
+        <span class="section-badge badge-listen"><i class="bi bi-headphones-fill me-1"></i>{{ module.label }}</span>
+      {% elif module.kind == 'reading' %}
+        <span class="section-badge badge-read"><i class="bi bi-book-fill me-1"></i>{{ module.label }}</span>
+      {% elif module.kind == 'writing' %}
+        <span class="section-badge badge-write"><i class="bi bi-pencil-fill me-1"></i>{{ module.label }}</span>
+      {% elif module.kind == 'rw' %}
+        <span class="section-badge badge-rw"><i class="bi bi-book-fill me-1"></i>{{ module.label }}</span>
       {% else %}
-        <span class="section-badge badge-write"><i class="bi bi-pencil-fill me-1"></i>쓰기 — {% trans "Writing" %}</span>
+        <span class="section-badge badge-math"><i class="bi bi-calculator-fill me-1"></i>{{ module.label }}</span>
       {% endif %}
-      <small class="text-muted d-none d-sm-inline" style="font-size:0.72rem;">{% trans "Section" %} {{ section_order_index }}/{{ total_sections }}</small>
+      <small class="text-muted d-none d-sm-inline" style="font-size:0.72rem;">{% trans "Module" %} {{ section_order_index }}/{{ total_sections }}</small>
       <div class="timer-box" id="timer-box">
         <i class="bi bi-clock"></i>
         <span id="timer-display">--:--</span>
@@ -490,7 +604,7 @@
 </div>
 
 <!-- Audio bar (listening section only) -->
-{% if attempt.current_section == 'listening' and exam.listening_audio %}
+{% if module.kind == 'listening' and exam.listening_audio %}
 <div class="audio-bar">
   <div class="container-fluid px-3">
     <div class="audio-player-wrap">
@@ -524,6 +638,35 @@
 </div>
 {% endif %}
 
+{% if module.reference_sheet or module.calculator %}
+<div class="tools-bar">
+  <div class="container-fluid px-3">
+    <details>
+      <summary><i class="bi bi-rulers me-1"></i>{% trans "Reference sheet & calculator" %}</summary>
+      {% if module.calculator %}
+      <div class="mt-2">{% trans "A calculator is allowed on every Math question. On the real test it is Desmos, built into Bluebook — open it in another tab if you want the same tool." %}</div>
+      {% endif %}
+      {% if module.reference_sheet %}
+      <div class="ref-sheet">
+        <div class="ref-item"><b>{% trans "Circle" %}</b>A = πr<sup>2</sup> · C = 2πr</div>
+        <div class="ref-item"><b>{% trans "Rectangle" %}</b>A = ℓw</div>
+        <div class="ref-item"><b>{% trans "Triangle" %}</b>A = ½bh</div>
+        <div class="ref-item"><b>{% trans "Right triangle" %}</b>c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup></div>
+        <div class="ref-item"><b>30–60–90</b>x, x√3, 2x</div>
+        <div class="ref-item"><b>45–45–90</b>s, s, s√2</div>
+        <div class="ref-item"><b>{% trans "Rect. solid" %}</b>V = ℓwh</div>
+        <div class="ref-item"><b>{% trans "Cylinder" %}</b>V = πr<sup>2</sup>h</div>
+        <div class="ref-item"><b>{% trans "Sphere" %}</b>V = ⁴⁄₃πr<sup>3</sup></div>
+        <div class="ref-item"><b>{% trans "Cone" %}</b>V = ⅓πr<sup>2</sup>h</div>
+        <div class="ref-item"><b>{% trans "Pyramid" %}</b>V = ⅓ℓwh</div>
+        <div class="ref-item"><b>{% trans "Degrees / radians" %}</b>360° = 2π</div>
+      </div>
+      {% endif %}
+    </details>
+  </div>
+</div>
+{% endif %}
+
 <!-- Answered progress -->
 <div class="answered-bar">
   <div class="container-fluid px-3">
@@ -546,47 +689,36 @@
 
     {% for question in questions %}
     {% with sel_id=selected_choices|get_item:question.id written=written_answers|get_item:question.id passage=passage_map|get_item:question.number %}
-    {% if passage %}
-    <div class="q-passage-group">
-      {% if passage.text %}<div class="q-passage">{{ passage.text|safe }}</div>{% endif %}
-      {% if passage.image %}<img src="{{ passage.image.url }}" class="q-img" alt="{% trans 'Passage image' %}">{% endif %}
-    </div>
+    {% if exam.is_sat %}
+      {# Digital SAT: every question carries its own stimulus, so the passage    #}
+      {# sits beside the question in a Bluebook-style pane instead of above a    #}
+      {# whole group. Math questions have no passage and fall back to stacked.   #}
+      <div class="q-card" id="qcard-{{ question.id }}">
+        {% if passage %}
+        <div class="sat-split">
+          <div class="sat-pane-left">
+            {% if passage.text %}<div class="sat-passage">{{ passage.text|safe }}</div>{% endif %}
+            {% if passage.image %}<img src="{{ passage.image.url }}" class="q-img" alt="{% trans 'Passage image' %}">{% endif %}
+          </div>
+          <div class="sat-pane-right">
+            {% include "exam/_question_body.html" %}
+          </div>
+        </div>
+        {% else %}
+          {% include "exam/_question_body.html" %}
+        {% endif %}
+      </div>
+    {% else %}
+      {% if passage %}
+      <div class="q-passage-group">
+        {% if passage.text %}<div class="q-passage">{{ passage.text|safe }}</div>{% endif %}
+        {% if passage.image %}<img src="{{ passage.image.url }}" class="q-img" alt="{% trans 'Passage image' %}">{% endif %}
+      </div>
+      {% endif %}
+      <div class="q-card" id="qcard-{{ question.id }}">
+        {% include "exam/_question_body.html" %}
+      </div>
     {% endif %}
-    <div class="q-card" id="qcard-{{ question.id }}">
-      <div class="q-num">{% trans "Question" %} {{ question.number }}</div>
-
-      {% if question.question_text %}
-      <div class="q-text">{{ question.question_text|safe }}</div>
-      {% endif %}
-
-      {% if question.question_image %}
-        <img src="{{ question.question_image.url }}" class="q-img" alt="{% trans 'Question image' %}">
-      {% endif %}
-
-      {% if question.is_writing %}
-        <textarea
-          class="writing-area"
-          name="q{{ question.id }}"
-          placeholder="{% trans 'Write your answer here...' %} / 여기에 답을 쓰세요..."
-          oninput="updateProgress(); updateNavigator();">{{ written|default:'' }}</textarea>
-      {% else %}
-        {% for choice in question.choices.all %}
-        <label class="choice-label {% if sel_id == choice.id %}selected{% endif %}"
-               id="lbl-{{ question.id }}-{{ choice.id }}"
-               for="c{{ question.id }}-{{ choice.id }}">
-          <input
-            type="radio"
-            name="q{{ question.id }}"
-            id="c{{ question.id }}-{{ choice.id }}"
-            value="{{ choice.id }}"
-            {% if sel_id == choice.id %}checked{% endif %}
-            onchange="onChoiceChange({{ question.id }}, {{ choice.id }})">
-          <span class="choice-num">{{ forloop.counter }}</span>
-          <span>{{ choice.text }}</span>
-        </label>
-        {% endfor %}
-      {% endif %}
-    </div>
     {% endwith %}
     {% empty %}
       <div class="text-center py-5 text-muted">
@@ -603,11 +735,11 @@
       <div class="autosave-indicator" id="autosave-indicator">
         <i class="bi bi-cloud-check"></i><span id="autosave-label">{% trans "Auto-save on" %}</span>
       </div>
-      <button type="button" class="btn-auth" style="white-space:nowrap;" onclick="showConfirm()">
-        {% if section_order_index < total_sections %}
-          {% trans "Finish & Continue" %} →
-        {% else %}
+      <button type="button" class="btn-auth-primary" style="white-space:nowrap;" onclick="showConfirm()">
+        {% if is_last_module %}
           {% trans "Submit Exam" %}
+        {% else %}
+          {% trans "Finish & Continue" %} →
         {% endif %}
       </button>
     </div>
@@ -620,7 +752,7 @@
 const AUTOSAVE_URL = '{% url "autosave_section" attempt.id %}';
 const CSRF_TOKEN = '{{ csrf_token }}';
 const totalQ = {{ questions|length }};
-const isLastSection = {{ section_order_index }} >= {{ total_sections }};
+const isLastSection = {{ is_last_module|yesno:'true,false' }};
 const examForm = document.getElementById('exam-form');
 
 // ── Timer ─────────────────────────────────────────────
@@ -659,13 +791,21 @@ function onChoiceChange(questionId, choiceId) {
 }
 
 // ── Answered progress ─────────────────────────────────
+// A question counts as answered if a radio is picked, an essay has text, or a
+// grid-in box has something in it. The grid-in box is the third case and was
+// the one easiest to forget — without it the progress bar and the navigator
+// both lie on the whole Math section.
+function cardHasAnswer(card) {
+  const qid = card.id.replace('qcard-', '');
+  if (document.querySelector(`input[name="q${qid}"]:checked`)) return true;
+  const typed = card.querySelector('textarea, input.grid-in-input');
+  return !!(typed && typed.value.trim().length > 0);
+}
+
 function countAnswered() {
   let count = 0;
   document.querySelectorAll('.q-card').forEach(card => {
-    const qid = card.id.replace('qcard-', '');
-    const radio = document.querySelector(`input[name="q${qid}"]:checked`);
-    const textarea = card.querySelector('textarea');
-    if (radio || (textarea && textarea.value.trim().length > 0)) count++;
+    if (cardHasAnswer(card)) count++;
   });
   return count;
 }
@@ -681,11 +821,8 @@ updateProgress();
 function updateNavigator() {
   document.querySelectorAll('.q-card').forEach(card => {
     const qid = card.id.replace('qcard-', '');
-    const radio = document.querySelector(`input[name="q${qid}"]:checked`);
-    const textarea = card.querySelector('textarea');
-    const answered = !!(radio || (textarea && textarea.value.trim().length > 0));
     const navBtn = document.getElementById(`navbtn-${qid}`);
-    if (navBtn) navBtn.classList.toggle('answered', answered);
+    if (navBtn) navBtn.classList.toggle('answered', cardHasAnswer(card));
   });
 }
 updateNavigator();
@@ -708,9 +845,9 @@ function collectAnswers() {
   document.querySelectorAll('.q-card').forEach(card => {
     const qid = card.id.replace('qcard-', '');
     const radio = document.querySelector(`input[name="q${qid}"]:checked`);
-    const textarea = card.querySelector('textarea');
+    const typed = card.querySelector('textarea, input.grid-in-input');
     if (radio) data[qid] = radio.value;
-    else if (textarea) data[qid] = textarea.value;
+    else if (typed) data[qid] = typed.value;
   });
   return data;
 }
@@ -768,7 +905,7 @@ function submitConfirmed() {
 }
 
 // ── Audio Player ──────────────────────────────────────
-{% if attempt.current_section == 'listening' and exam.listening_audio %}
+{% if module.kind == 'listening' and exam.listening_audio %}
 const examAudio = document.getElementById('exam-audio');
 const playIcon = document.getElementById('play-icon');
 const audioFill = document.getElementById('audio-fill');

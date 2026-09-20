@@ -615,6 +615,66 @@ SAT R&W is **not** Prime SAT Math (`tutorial`, `SAT-1…100`, finished) and not 
 mock simulator — questions here are practice, and the key being visible in the page source
 is fine.
 
+## Creating digital-SAT mock exams (bulk) — the `exam` app
+**Mock 1 shipped 2026-09-21.** `exam` is the timed, scored test simulator (TOPIK II
+mocks live there too). A digital-SAT mock is **adaptive**: 147 questions written, 98 seen.
+```
+RW Module 1  27 Q / 32 min  ──┬─ ≥18 correct ─→ RW M2 upper   27 Q / 32 min
+                              └─ <18        ─→ RW M2 lower   27 Q / 32 min
+                                    ↓ BREAK 10 min (the only one)
+Math Module 1 22 Q / 35 min ──┬─ ≥14 correct ─→ Math M2 upper 22 Q / 35 min
+                              └─ <14        ─→ Math M2 lower  22 Q / 35 min
+```
+Scoring is **400–1600**, not a percentage: `exam/satscore.py` holds two raw→scaled
+curves per section, and **the lower route cannot pass ~600**. The score report says that
+out loud — it is the most useful thing a pupil learns from a mock.
+When the user asks (e.g. "make SAT mock 2"):
+1. Read `exam/data/STYLE_GUIDE_SAT_MOCK.md` (§0 the language split, §2 the blueprints,
+   §3 what "upper" vs "lower" actually means, §5 the answer gate).
+2. Read `exam/data/toc_sat_mocks.txt` (exam numbers, route thresholds, the subject pool
+   so no two mocks read alike — never reuse a passage subject).
+3. Find where to continue: `Exam.objects.filter(exam_format='sat')`. Mock N is
+   `exam_number = 200 + N`; TOPIK owns 96 and 101–110, never collide.
+4. Write **six** files, `exam/data/sat<N>_{rw1,rw2_easy,rw2_hard,math1,math2_easy,math2_hard}.py`,
+   each repeating `EXAM_META` + `MODULES` unchanged (copy them from the previous file —
+   a test asserts the six agree) plus `QUESTIONS`.
+5. Load each with `--expect-questions` (27 or 22). **Never omit it** — a file that
+   silently loses a question still loads, still scores, and is quietly wrong.
+6. Mark the mock `[done]` in the toc, then give the six `railway run python manage.py
+   load_mock ...` commands — automatically, every time.
+**Language split (inherited from Prime SAT Math, not negotiable):** every passage, stem
+and choice in **English**; every `explanation` in **Uzbek**; `skill` in English (it is
+College Board's own domain name). **No Uzbek anywhere inside a module** — not a gloss,
+not a hint. A word the pupil does not know is part of the measurement. Numbers the SAT
+way: `3.5` and `1,200`.
+**⚠️ THE ANSWER GATE (both halves).** A wrong key in a mock is worse than in a lesson —
+the pupil changes what they study because of it. Two throwaway scripts in the scratchpad
+per mock, per §5 of the guide:
+- `verify_sat_mock<N>_math.py` — **recomputes every numeric answer by a different route**
+  (brute force over `Fraction`s, never by re-reading your own working), plus sorted
+  numeric choice lists, grid-ins parseable and at 18–22, blueprint counts.
+  This caught mock 1's Q17: the vertex of (x−3)(x+5) is at x = **−1**, so k = −16, not −12.
+- `verify_sat_mock<N>_rw.py` — four choices with exactly one key, every explanation
+  quoting the key's **opening words**, no choice letters, passages 25–150 words,
+  balanced tags, domains in Bluebook order, **no Cyrillic inside the Uzbek** (that check
+  exists because `vergulдан` shipped past a human proof-read).
+Then re-read every English stem by eye: **a question a careful reader can defend two
+answers to is a bug**, not a hard question.
+**Grid-ins** (`answer_type: 'grid'`, ~23% of Math, always questions 18–22) are graded by
+`exam/gridin.py`, by **value not string**: 2/3, 4/6, .6666, .6667, .666 and 0.667 all
+pass; .67 does not. ⛔ **A comma, a % or a $ is a WRONG answer, never a typo to forgive** —
+Prime SAT breaks that habit on purpose, so the mock bites too.
+**⛔ Never cite a choice letter in an explanation.** Quote the choice's own opening words
+in `<strong>`; the loader refuses a file that does otherwise.
+**The engine is shared with TOPIK.** `ExamModule` generalised "section": a TOPIK exam has
+three stage-1 modules, an SAT exam has two plus four branches, and one code path serves
+both (`exam/views.py`, migration `0006` moved the ten TOPIK mocks across). If you add a
+format, add modules — do not fork the views or the templates.
+**⚠️ A mock is not a lesson.** No teaching inside a module, ever; the `explanation` is
+shown only on the result page. And never reuse a passage or a question from
+`tutorial` SAT-1…100 or the `examprep` `sat` track — a mock made of material the pupil
+has already met measures their memory, not their reading.
+
 ## Creating examprep lessons (bulk) — TOPIK etc.
 `examprep` holds detailed, by-skill exam prep (`ExamTrack` → skill → `Topic` (question-type
 card, e.g. Reading → "Reklama va e'lonlar (광고)") → `Lesson` → ordered `LessonBlock`s with

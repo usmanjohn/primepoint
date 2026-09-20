@@ -1,0 +1,57 @@
+# ──────────────────────────────────────────────────────────────────────
+#  TABLE OF CONTENTS — Digital SAT mock exams  (exam app)
+#
+#  FORMAT      : sat
+#  LANGUAGE    : english
+#  EXAM NUMBERS: 201, 202, 203 …  (TOPIK uses 96 and 101–110 — never collide)
+#  GUIDE       : exam/data/STYLE_GUIDE_SAT_MOCK.md
+#
+#  Each mock = SIX files, 147 written questions, 98 seen:
+#     sat<N>_rw1.py         27   32 min   everyone
+#     sat<N>_rw2_easy.py    27   32 min   routed
+#     sat<N>_rw2_hard.py    27   32 min   routed
+#     sat<N>_math1.py       22   35 min   everyone   (Q18–22 grid-in)
+#     sat<N>_math2_easy.py  22   35 min   routed     (Q18–22 grid-in)
+#     sat<N>_math2_hard.py  22   35 min   routed     (Q18–22 grid-in)
+#
+#  Route thresholds: RW 18 of 27, Math 14 of 22.
+#  Break: 10 minutes, after Reading and Writing module 2. The only one.
+#
+#  Load (add --expect-questions every time):
+#     python manage.py load_mock exam/data/sat1_rw1.py --expect-questions=27
+#
+#  ⚠️ THE ANSWER GATE (§5 of the guide) runs before every import: a throwaway
+#     verify_sat_mock<N>_<module>.py in the scratchpad that recomputes every
+#     maths answer by a different route and re-argues every English stem.
+#     A wrong key in a mock is worse than a wrong key in a lesson — the pupil
+#     changes what they study because of it.
+# ──────────────────────────────────────────────────────────────────────
+
+## MOCK 1 — exam_number 201  [done]
+Reading and Writing, Module 1                                       [done]
+Reading and Writing, Module 2 — lower                               [done]
+Reading and Writing, Module 2 — upper                               [done]
+Math, Module 1                                                      [done]
+Math, Module 2 — lower                                              [done]
+Math, Module 2 — upper                                              [done]
+
+## MOCK 2 — exam_number 202  [next]
+Reading and Writing, Module 1
+Reading and Writing, Module 2 — lower
+Reading and Writing, Module 2 — upper
+Math, Module 1
+Math, Module 2 — lower
+Math, Module 2 — upper
+
+## MOCK 3 — exam_number 203
+## MOCK 4 — exam_number 204
+## MOCK 5 — exam_number 205
+
+# ── Subject pool, so no two mocks read alike ──────────────────────────
+# RW passages rotate: science (biology, astronomy, materials), social
+# science (economics, archaeology, linguistics), humanities (art history,
+# literature criticism), literature (a short fiction or poetry extract),
+# and one US-founding-document / great-global-conversation text per module.
+# Mock 1 used: mycorrhizal networks, Bessie Coleman, Uzbek suzani textiles,
+# Rosalind Franklin, urban heat islands, the Aral Sea, Hokusai, Ada Lovelace.
+# Do not reuse a subject across mocks — a pupil sits several of these.

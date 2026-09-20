@@ -1,0 +1,353 @@
+{% extends "base.html" %}
+{% load i18n exam_extras %}
+
+{% block title %}{% trans "Score report" %} — {{ exam.title }}{% endblock %}
+
+{% block extra_css %}
+<style>
+.sc-hero {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface);
+  padding: 2.25rem 1.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.sc-total {
+  font-family: 'Syne', sans-serif;
+  font-size: 4.2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--accent);
+}
+.sc-range { font-size: 0.78rem; color: var(--text-muted); letter-spacing: 1px; }
+.sc-band {
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-top: 0.9rem;
+  line-height: 1.6;
+}
+.sc-split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.sc-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  padding: 1.35rem 1.4rem;
+}
+.sc-card-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.sc-card-score {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+.sc-card-raw { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.45rem; }
+.sc-route {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.22rem 0.6rem;
+  border-radius: 99px;
+  margin-top: 0.7rem;
+}
+.sc-route-hard { background: rgba(34,197,94,0.12); color: #22c55e; }
+.sc-route-easy { background: rgba(245,158,11,0.12); color: #f59e0b; }
+.sc-note {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  background: var(--bg);
+  padding: 0.85rem 1.1rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 1.75rem;
+}
+.sc-section-head {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 2rem 0 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.sc-bar-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 1.4fr) 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  font-size: 0.82rem;
+}
+.sc-bar {
+  height: 7px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.sc-bar-fill { height: 100%; border-radius: 99px; background: var(--accent); }
+.sc-bar-fill.low  { background: #ef4444; }
+.sc-bar-fill.mid  { background: #f59e0b; }
+.sc-bar-fill.high { background: #22c55e; }
+.sc-bar-num { font-variant-numeric: tabular-nums; color: var(--text-muted); font-size: 0.78rem; }
+
+.rv-q {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  padding: 1rem 1.15rem;
+  margin-bottom: 0.75rem;
+}
+.rv-q.correct { border-left: 3px solid #22c55e; }
+.rv-q.wrong   { border-left: 3px solid #ef4444; }
+.rv-q.blank   { border-left: 3px solid var(--text-muted); }
+.rv-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+}
+.rv-skill {
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 600;
+  color: var(--accent);
+}
+.rv-mark { font-size: 0.95rem; }
+.rv-mark.ok  { color: #22c55e; }
+.rv-mark.bad { color: #ef4444; }
+.rv-answers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  font-size: 0.83rem;
+  margin-bottom: 0.7rem;
+}
+.rv-answers .lbl {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  display: block;
+}
+.rv-exp {
+  border-top: 1px solid var(--border);
+  padding-top: 0.7rem;
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.75;
+}
+.rv-stem {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 0.65rem;
+}
+.rv-passage {
+  font-size: 0.84rem;
+  color: var(--text);
+  line-height: 1.7;
+  border-left: 2px solid var(--border);
+  padding-left: 0.85rem;
+  margin-bottom: 0.7rem;
+}
+.rv-passage p:last-child { margin-bottom: 0; }
+.rv-passage table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+  margin: 0.4rem 0;
+}
+.rv-passage th, .rv-passage td {
+  border: 1px solid var(--border);
+  padding: 0.25rem 0.45rem;
+  text-align: left;
+}
+.rv-passage svg { max-width: 100%; height: auto; }
+/* .btn-auth-outline is painted with the sidebar-chrome variables, so on the
+   page background its label all but disappears. The report's secondary action
+   gets its own colours rather than changing a class the whole site uses. */
+.sc-btn-secondary {
+  display: inline-block;
+  padding: 7px 18px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1.5px solid var(--border);
+  color: var(--text);
+  background: transparent;
+  text-decoration: none;
+  transition: 0.18s;
+}
+.sc-btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+details.rv-module > summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--text);
+  padding: 0.7rem 0;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container py-4" style="max-width:900px;">
+
+  <div class="mb-3">
+    <a href="{% url 'exam_list' %}" class="text-muted small text-decoration-none">
+      <i class="bi bi-arrow-left me-1"></i>{% trans "All mock exams" %}</a>
+  </div>
+
+  <!-- ── The number ─────────────────────────────────── -->
+  <div class="sc-hero">
+    <div class="sc-card-label">{{ exam.title }}</div>
+    {% if attempt.total_score %}
+      <div class="sc-total">{{ attempt.total_score }}</div>
+      <div class="sc-range">400 – 1600</div>
+      <div class="sc-band">{{ band }}</div>
+    {% else %}
+      <div class="sc-total">—</div>
+      <div class="sc-range">{% trans "Not enough modules finished to score." %}</div>
+    {% endif %}
+  </div>
+
+  <!-- ── The two halves ─────────────────────────────── -->
+  <div class="sc-split">
+    {% for section in sat_sections %}
+    <div class="sc-card">
+      <div class="sc-card-label">{{ section.label }}</div>
+      <div class="sc-card-score">{{ section.scaled }}</div>
+      <div class="sc-card-raw">
+        {{ section.raw }} / {{ section.total }} {% trans "correct" %} · 200–800
+      </div>
+      {% if section.route == 'hard' %}
+        <span class="sc-route sc-route-hard">
+          <i class="bi bi-arrow-up-right"></i>{% trans "Upper module 2" %}</span>
+      {% else %}
+        <span class="sc-route sc-route-easy">
+          <i class="bi bi-arrow-down-right"></i>{% trans "Lower module 2" %}</span>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="sc-note">
+    <strong>{% trans "Why the route matters." %}</strong>
+    {% blocktrans %}The digital SAT chooses your second module from how you did in the first. The upper module is harder but reaches 800; the lower one cannot go above about 600. So two people with the same number of correct answers can finish on different scores — and the way up is to get more of module 1 right.{% endblocktrans %}
+    <br>
+    <em>{% blocktrans %}This is an estimate. College Board equates every real form separately, so treat the number as a band, not a promise.{% endblocktrans %}</em>
+  </div>
+
+  <!-- ── What you were strong and weak at ───────────── -->
+  {% for section in sat_sections %}
+  <div class="sc-section-head">
+    {% if section.kind == 'math' %}<i class="bi bi-calculator-fill"></i>{% else %}<i class="bi bi-book-fill"></i>{% endif %}
+    {{ section.label }}
+  </div>
+
+  {% for row in section.breakdown %}
+  <div class="sc-bar-row">
+    <div>{{ row.skill }}</div>
+    <div class="sc-bar">
+      <div class="sc-bar-fill {% if row.percent >= 75 %}high{% elif row.percent >= 50 %}mid{% else %}low{% endif %}"
+           style="width:{{ row.percent }}%"></div>
+    </div>
+    <div class="sc-bar-num">{{ row.correct }}/{{ row.total }}</div>
+  </div>
+  {% endfor %}
+
+  <!-- ── Question by question ───────────────────────── -->
+  {% for block in section.review %}
+  <details class="rv-module">
+    <summary>
+      <i class="bi bi-chevron-right me-1"></i>{{ block.module.label }} —
+      {% trans "review every question" %}
+    </summary>
+    <div class="pt-2">
+      {% for question in block.questions %}
+      {% with answer=answer_map|get_item:question.id %}
+      <div class="rv-q {% if answer.is_correct %}correct{% elif answer %}wrong{% else %}blank{% endif %}">
+        <div class="rv-head">
+          <span>{% trans "Question" %} {{ question.number }}</span>
+          {% if question.skill %}<span class="rv-skill">{{ question.skill }}</span>{% endif %}
+          {% if question.answer_type == 'grid' %}
+            <span class="rv-skill"><i class="bi bi-input-cursor-text"></i> {% trans "grid-in" %}</span>
+          {% endif %}
+          {% if answer.is_correct %}
+            <span class="rv-mark ok ms-auto"><i class="bi bi-check-circle-fill"></i></span>
+          {% else %}
+            <span class="rv-mark bad ms-auto"><i class="bi bi-x-circle-fill"></i></span>
+          {% endif %}
+        </div>
+
+        {% if question.stimulus and question.stimulus.text %}
+          <div class="rv-passage">{{ question.stimulus.text|safe }}</div>
+        {% endif %}
+
+        {% if question.question_text %}
+          <div class="rv-stem">{{ question.question_text|safe }}</div>
+        {% endif %}
+
+        <div class="rv-answers">
+          <div>
+            <span class="lbl">{% trans "Your answer" %}</span>
+            {% if question.answer_type == 'grid' %}
+              {{ answer.written_answer|default:"—" }}
+            {% elif answer.selected_choice %}
+              {{ answer.selected_choice.text|safe }}
+            {% else %}
+              —
+            {% endif %}
+          </div>
+          <div>
+            <span class="lbl">{% trans "Correct" %}</span>
+            {{ question.answer_key|safe }}
+          </div>
+        </div>
+
+        {% if question.explanation %}
+        <div class="rv-exp">{{ question.explanation|safe }}</div>
+        {% endif %}
+      </div>
+      {% endwith %}
+      {% endfor %}
+    </div>
+  </details>
+  {% endfor %}
+  {% endfor %}
+
+  <div class="d-flex gap-2 mt-4">
+    <a href="{% url 'exam_detail' exam.id %}" class="sc-btn-secondary flex-fill text-center">
+      {% trans "Exam page" %}</a>
+    <a href="{% url 'exam_list' %}" class="btn-auth-primary flex-fill text-center">
+      {% trans "Another mock" %}</a>
+  </div>
+</div>
+{% endblock %}

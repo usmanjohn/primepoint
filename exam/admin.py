@@ -1,7 +1,10 @@
 from django import forms
 from django.contrib import admin
 from django_ckeditor_5.widgets import CKEditor5Widget
-from .models import Exam, ExamPassage, ExamQuestion, ExamChoice, ExamAttempt, ExamAnswer
+from .models import (
+    Exam, ExamModule, ExamModuleAttempt, ExamPassage, ExamQuestion,
+    ExamChoice, ExamAttempt, ExamAnswer,
+)
 
 
 class ExamPassageForm(forms.ModelForm):
@@ -109,3 +112,22 @@ class ExamAttemptAdmin(admin.ModelAdmin):
                        'listening_score', 'reading_score')
     inlines = [ExamAnswerInline]
     search_fields = ('panda__user__username',)
+
+
+class ExamModuleInline(admin.TabularInline):
+    model = ExamModule
+    extra = 0
+    fields = ('code', 'kind', 'stage', 'difficulty', 'label', 'minutes',
+              'order', 'route_threshold', 'break_minutes', 'calculator', 'reference_sheet')
+
+
+@admin.register(ExamModule)
+class ExamModuleAdmin(admin.ModelAdmin):
+    list_display = ('exam', 'code', 'kind', 'stage', 'difficulty', 'minutes', 'order')
+    list_filter = ('exam', 'kind', 'stage')
+
+
+@admin.register(ExamModuleAttempt)
+class ExamModuleAttemptAdmin(admin.ModelAdmin):
+    list_display = ('attempt', 'module', 'raw_score', 'total_questions', 'submitted_at')
+    list_filter = ('module__kind',)

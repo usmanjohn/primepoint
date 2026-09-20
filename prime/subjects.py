@@ -37,7 +37,10 @@ SUBJECTS = [
         'examprep_tracks': [],
         'corner_subjects': ['matematika'],
         'practice_names': ['math', 'mathematics', 'sat math', 'matematika'],
-        'exam_languages': [],
+        # The digital-SAT mocks are filed under language 'english' because half
+        # of them is Reading and Writing — but the other half is Math, and a
+        # pupil who picked only Math would otherwise be shown no mock at all.
+        'exam_languages': ['english'],
     },
     {
         'slug': 'japanese', 'name': _('Japanese'),

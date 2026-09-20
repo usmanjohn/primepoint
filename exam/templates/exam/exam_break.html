@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Break" %} — {{ exam.title }}{% endblock %}
+
+{% block extra_css %}
+<style>
+.break-wrap {
+  max-width: 520px;
+  margin: 3rem auto;
+  text-align: center;
+}
+.break-icon {
+  width: 72px; height: 72px;
+  border-radius: 20px;
+  background: rgba(34,197,94,0.12);
+  color: #22c55e;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto 1.25rem;
+}
+.break-clock {
+  font-family: 'Syne', monospace;
+  font-size: 3.4rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.break-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+.break-sub { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
+.break-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  padding: 2rem 1.5rem;
+}
+.break-next {
+  border-top: 1px solid var(--border);
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+.break-rules {
+  text-align: left;
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin: 1.25rem 0 0;
+  padding-left: 1.1rem;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="break-wrap">
+    <div class="break-card">
+      <div class="break-icon"><i class="bi bi-cup-hot-fill"></i></div>
+      <div class="break-title">{% trans "Break" %}</div>
+      <div class="break-clock" id="break-clock">--:--</div>
+      <div class="break-sub">
+        {% trans "Stand up, drink some water. The next module starts by itself when the clock runs out." %}
+      </div>
+
+      <ul class="break-rules">
+        <li>{% trans "On the real test this break is 10 minutes and it is the only one." %}</li>
+        <li>{% trans "You cannot go back to the modules you have already finished." %}</li>
+        <li>{% trans "Your answers are saved." %}</li>
+      </ul>
+
+      <form method="post" action="{% url 'exam_break' attempt.id %}" id="break-form" class="mt-4">
+        {% csrf_token %}
+        <button type="submit" class="btn-auth-primary w-100">
+          {% trans "I'm ready — start the next module" %} →
+        </button>
+      </form>
+
+      <div class="break-next">
+        <i class="bi bi-arrow-right-short"></i>
+        {% trans "Next" %}: <strong>{{ next_module.label }}</strong>
+        — {{ next_module.questions_count }} {% trans "questions" %}, {{ next_module.minutes }} {% trans "min" %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+let breakSeconds = {{ seconds_remaining }};
+const clock = document.getElementById('break-clock');
+const breakForm = document.getElementById('break-form');
+
+function pad(n) { return String(n).padStart(2, '0'); }
+function render() { clock.textContent = pad(Math.floor(breakSeconds / 60)) + ':' + pad(breakSeconds % 60); }
+render();
+
+const breakTimer = setInterval(() => {
+  breakSeconds = Math.max(0, breakSeconds - 1);
+  render();
+  if (breakSeconds === 0) {
+    clearInterval(breakTimer);
+    breakForm.submit();
+  }
+}, 1000);
+</script>
+{% endblock %}

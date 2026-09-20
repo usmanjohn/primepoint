@@ -152,13 +152,20 @@
           {% endif %}
           <div class="exam-title">{{ exam.title }}</div>
           <div class="section-pills">
-            <span class="section-pill"><i class="bi bi-headphones"></i> {% trans "Listening" %} {{ exam.listening_minutes }}{% trans "min" %}</span>
-            <span class="section-pill"><i class="bi bi-book"></i> {% trans "Reading" %} {{ exam.reading_minutes }}{% trans "min" %}</span>
-            <span class="section-pill"><i class="bi bi-pencil"></i> {% trans "Writing" %} {{ exam.writing_minutes }}{% trans "min" %}</span>
+            {% for part in exam.spine %}
+            <span class="section-pill">
+              {% if part.kind == 'listening' %}<i class="bi bi-headphones"></i>
+              {% elif part.kind == 'math' %}<i class="bi bi-calculator"></i>
+              {% elif part.kind == 'writing' %}<i class="bi bi-pencil"></i>
+              {% else %}<i class="bi bi-book"></i>{% endif %}
+              {{ part.label_uz|default:part.label }} {{ part.minutes }}{% trans "min" %}</span>
+            {% endfor %}
           </div>
           <div class="exam-meta">
-            <span><i class="bi bi-clock"></i> {{ exam.listening_minutes|add:exam.reading_minutes|add:exam.writing_minutes }} {% trans "min total" %}</span>
+            <span><i class="bi bi-clock"></i> {{ exam.total_minutes }} {% trans "min total" %}</span>
+            <span><i class="bi bi-list-ol"></i> {{ exam.question_total }} {% trans "questions" %}</span>
             {% if exam.listening_audio %}<span><i class="bi bi-volume-up"></i> {% trans "Audio included" %}</span>{% endif %}
+            {% if exam.is_sat %}<span><i class="bi bi-shuffle"></i> {% trans "Adaptive" %}</span>{% endif %}
           </div>
         </div>
         <div class="mt-auto d-flex gap-2">

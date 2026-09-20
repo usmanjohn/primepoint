@@ -17,3 +17,12 @@ def get_item(d, key):
 def plain_text(value):
     """Strip HTML tags, unescape entities, and normalise non-breaking spaces."""
     return unescape(strip_tags(value or '')).replace('\xa0', ' ').strip()
+
+
+@register.filter
+def choice_letter(index):
+    """1 -> A. SAT choices are lettered on screen; TOPIK's are numbered."""
+    try:
+        return 'ABCDEFGH'[int(index) - 1]
+    except (ValueError, TypeError, IndexError):
+        return index

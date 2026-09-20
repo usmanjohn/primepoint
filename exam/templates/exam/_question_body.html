@@ -1,0 +1,56 @@
+{% load i18n exam_extras %}
+{# One question's number, stem and answer widget. Shared by the stacked (TOPIK) #}
+{# and two-pane (SAT) layouts in take_section.html, so a change to the grid-in  #}
+{# box or the choice list only has to happen once.                              #}
+<div class="q-num">{% trans "Question" %} {{ question.number }}</div>
+
+{% if question.question_text %}
+  <div class="q-text">{{ question.question_text|safe }}</div>
+{% endif %}
+
+{% if question.question_image %}
+  <img src="{{ question.question_image.url }}" class="q-img" alt="{% trans 'Question image' %}">
+{% endif %}
+
+{% if question.is_writing or question.answer_type == 'essay' %}
+  <textarea
+    class="writing-area"
+    name="q{{ question.id }}"
+    placeholder="{% trans 'Write your answer here...' %}"
+    oninput="updateProgress(); updateNavigator();">{{ written|default:'' }}</textarea>
+
+{% elif question.answer_type == 'grid' %}
+  <div class="grid-in">
+    <label class="grid-in-lbl" for="g{{ question.id }}">{% trans "Your answer" %}</label>
+    <input type="text"
+           class="grid-in-input"
+           id="g{{ question.id }}"
+           name="q{{ question.id }}"
+           value="{{ written|default:'' }}"
+           maxlength="12"
+           autocomplete="off"
+           spellcheck="false"
+           oninput="updateProgress(); updateNavigator();">
+    <div class="grid-in-hint">
+      {% trans "Enter an integer, a fraction (3/4) or a decimal (0.75). No comma, no % and no $ — the real test marks those wrong." %}
+    </div>
+  </div>
+
+{% else %}
+  {% for choice in question.choices.all %}
+  <label class="choice-label {% if sel_id == choice.id %}selected{% endif %}"
+         id="lbl-{{ question.id }}-{{ choice.id }}"
+         for="c{{ question.id }}-{{ choice.id }}">
+    <input
+      type="radio"
+      name="q{{ question.id }}"
+      id="c{{ question.id }}-{{ choice.id }}"
+      value="{{ choice.id }}"
+      {% if sel_id == choice.id %}checked{% endif %}
+      onchange="onChoiceChange({{ question.id }}, {{ choice.id }})">
+    <span class="choice-num">{% if exam.is_sat %}{{ forloop.counter|choice_letter }}{% else %}{{ forloop.counter }}{% endif %}</span>
+    {# Choice text is authored HTML: SAT math needs x<sup>2</sup>, fractions and SVG. #}
+    <span>{{ choice.text|safe }}</span>
+  </label>
+  {% endfor %}
+{% endif %}
