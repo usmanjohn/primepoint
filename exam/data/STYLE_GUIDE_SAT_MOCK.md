@@ -90,6 +90,13 @@ grammar questions are scattered.
 the old paper SAT. Each passage is **25–150 words** and lives in the
 question's own `passage` key.
 
+⚠️ A Command of Evidence stem is a *claim*, not a passage, and it is the one
+that keeps failing the 25-word floor — a bare "A researcher hypothesizes that
+X" runs to about twenty words. Give the claim its second clause: what the
+hypothesis would explain, or what the arguer thinks follows from it. That is
+content the question needs anyway, because a claim with no reasoning attached
+gives the distractors nothing to be wrong about.
+
 ### Math — 22 questions, 35 minutes
 
 | # | Domain (`skill`) | Count |

@@ -22,19 +22,28 @@
   **NOT** run any bulk-content import command. Pushing to GitHub alone never gets new
   tutorials/lessons/stories/drills into the live DB.
 - **Whenever a bulk-content task finishes (tutorials, examprep lessons, Corner stories,
-  examprep writing drills, or anything else added via a `python manage.py import_*`
-  management command) — ALWAYS give the matching `railway run python manage.py ...`
-  command(s) at the end, without being asked.** The user runs these himself after he
-  pushes to GitHub. Use `--author=powerty` (the production admin — local dev uses
-  `prime` instead, see each toc file's AUTHOR header). One line per file imported, in
-  the order the files must be applied (e.g. story data file(s) before an audio-attach
-  step, since the collection/lesson must exist first). Example shape:
+  examprep writing drills, mock exams, or anything else added via a `python manage.py
+  import_*` / `load_*` management command) — ALWAYS write the matching commands into
+  `temporary.txt` at the repo root, without being asked.** (User's instruction,
+  2026-09-21 — it replaces the older habit of printing `railway run ...` lines in chat.)
+  The rules for that file:
+  - **plain `python manage.py ...` lines, NO `railway run` prefix** — the user adds the
+    runner himself;
+  - one line per file imported, **in the order the files must be applied** (e.g. story
+    data before an audio-attach step, since the collection/lesson must exist first);
+  - **append, never overwrite** — lines already in the file may not have been run yet,
+    and make sure the file ends in a newline first or the first new line is glued
+    onto the last old one;
+  - use `--author=powerty` (the production admin — local dev uses `prime` instead, see
+    each toc file's AUTHOR header).
+  Example shape:
   ```
-  railway run python manage.py import_corner corner/management/commands/_stories_<x>.py --author=powerty
-  railway run python manage.py import_corner_audio corner/management/commands/audio/<slug> --collection="<title>"
+  python manage.py import_corner corner/management/commands/_stories_<x>.py --author=powerty
+  python manage.py import_corner_audio corner/management/commands/audio/<slug> --collection="<title>"
   ```
-  Swap in `import_tutorials` / `import_examprep` / `import_writing` / etc. as appropriate
-  for whichever app the task touched.
+  Swap in `import_tutorials` / `import_examprep` / `import_writing` / `load_mock` / etc.
+  as appropriate for whichever app the task touched. Still mention in chat that the file
+  has been updated, but the commands themselves live there.
 
 ## Creating Tutorials (bulk) — the generic, older workflow
 ⚠️ Every course that exists today has its **own** section below (Prime English, Korean,
@@ -640,8 +649,8 @@ When the user asks (e.g. "make SAT mock 2"):
    a test asserts the six agree) plus `QUESTIONS`.
 5. Load each with `--expect-questions` (27 or 22). **Never omit it** — a file that
    silently loses a question still loads, still scores, and is quietly wrong.
-6. Mark the mock `[done]` in the toc, then give the six `railway run python manage.py
-   load_mock ...` commands — automatically, every time.
+6. Mark the mock `[done]` in the toc, then append the six `python manage.py load_mock ...`
+   lines to `temporary.txt` (see Deployment) — automatically, every time.
 **Language split (inherited from Prime SAT Math, not negotiable):** every passage, stem
 and choice in **English**; every `explanation` in **Uzbek**; `skill` in English (it is
 College Board's own domain name). **No Uzbek anywhere inside a module** — not a gloss,

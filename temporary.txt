@@ -1,0 +1,12 @@
+python manage.py load_mock exam/data/sat1_rw1.py --expect-questions=27
+python manage.py load_mock exam/data/sat1_rw2_easy.py --expect-questions=27
+python manage.py load_mock exam/data/sat1_rw2_hard.py --expect-questions=27
+python manage.py load_mock exam/data/sat1_math1.py --expect-questions=22
+python manage.py load_mock exam/data/sat1_math2_easy.py --expect-questions=22
+python manage.py load_mock exam/data/sat1_math2_hard.py --expect-questions=22
+python manage.py load_mock exam/data/sat2_rw1.py --expect-questions=27
+python manage.py load_mock exam/data/sat2_rw2_easy.py --expect-questions=27
+python manage.py load_mock exam/data/sat2_rw2_hard.py --expect-questions=27
+python manage.py load_mock exam/data/sat2_math1.py --expect-questions=22
+python manage.py load_mock exam/data/sat2_math2_easy.py --expect-questions=22
+python manage.py load_mock exam/data/sat2_math2_hard.py --expect-questions=22

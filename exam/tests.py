@@ -380,21 +380,41 @@ class LoadMockGateTests(TestCase):
             call_command('load_mock', path, expect_questions=27)
 
 
-class SatMock1ContentTests(TestCase):
-    """The shape of the shipped mock, checked without touching the database.
+class SatMockContentTests(TestCase):
+    """The shape of every shipped mock, checked without touching the database.
 
     These are not a substitute for the scratchpad answer gates — those
     recompute every maths answer. This locks in the blueprint so a later edit
     cannot quietly drop a question or move a grid-in.
+
+    MOCKS is derived from the files on disk, so adding mock 3 puts it under
+    test without anyone remembering to come back here.
     """
-    FILES = {
-        'sat1_rw1': ('rw1', 27),
-        'sat1_rw2_easy': ('rw2e', 27),
-        'sat1_rw2_hard': ('rw2h', 27),
-        'sat1_math1': ('math1', 22),
-        'sat1_math2_easy': ('math2e', 22),
-        'sat1_math2_hard': ('math2h', 22),
-    }
+    MODULE_SIZES = [
+        ('rw1', 'rw1', 27), ('rw2_easy', 'rw2e', 27), ('rw2_hard', 'rw2h', 27),
+        ('math1', 'math1', 22), ('math2_easy', 'math2e', 22),
+        ('math2_hard', 'math2h', 22),
+    ]
+
+    @classmethod
+    def mock_numbers(cls):
+        import glob
+        import os
+        import re
+        from django.conf import settings
+        pattern = os.path.join(settings.BASE_DIR, 'exam', 'data', 'sat*_rw1.py')
+        found = sorted(int(re.search(r'sat(\d+)_rw1', p).group(1))
+                       for p in glob.glob(pattern))
+        assert found, 'no SAT mock data files found'
+        return found
+
+    @property
+    def FILES(self):
+        files = {}
+        for number in self.mock_numbers():
+            for suffix, code, count in self.MODULE_SIZES:
+                files[f'sat{number}_{suffix}'] = (code, count)
+        return files
     RW_BLUEPRINT = {
         'Words in Context': 4, 'Text Structure and Purpose': 2,
         'Cross-Text Connections': 1, 'Central Ideas and Details': 2,
@@ -418,7 +438,7 @@ class SatMock1ContentTests(TestCase):
         return module
 
     def test_every_module_has_the_right_size_and_section(self):
-        total = 0
+        per_mock = {}
         for name, (code, count) in self.FILES.items():
             module = self._load(name)
             questions = module.QUESTIONS
@@ -426,19 +446,29 @@ class SatMock1ContentTests(TestCase):
             self.assertEqual({q['section'] for q in questions}, {code}, name)
             self.assertEqual([q['number'] for q in questions],
                              list(range(1, count + 1)), name)
-            total += count
-        self.assertEqual(total, 147)
+            per_mock[name.split('_')[0]] = per_mock.get(name.split('_')[0], 0) + count
+        # 147 written per mock: 27 x 3 for Reading and Writing, 22 x 3 for Math.
+        for mock, total in per_mock.items():
+            self.assertEqual(total, 147, mock)
 
-    def test_the_six_files_agree_on_the_exam_and_its_modules(self):
-        metas = [self._load(name).EXAM_META for name in self.FILES]
-        self.assertEqual({m['exam_number'] for m in metas}, {201})
-        self.assertEqual({m['exam_format'] for m in metas}, {'sat'})
-        module_lists = [self._load(name).MODULES for name in self.FILES]
-        first = module_lists[0]
-        for other in module_lists[1:]:
-            self.assertEqual(first, other, 'MODULES drifted between files')
-        self.assertEqual({m['code'] for m in first},
-                         {'rw1', 'rw2e', 'rw2h', 'math1', 'math2e', 'math2h'})
+    def test_the_six_files_of_a_mock_agree_on_the_exam_and_its_modules(self):
+        for number in self.mock_numbers():
+            names = [f'sat{number}_{suffix}' for suffix, _c, _n in self.MODULE_SIZES]
+            metas = [self._load(name).EXAM_META for name in names]
+            self.assertEqual({m['exam_number'] for m in metas}, {200 + number})
+            self.assertEqual({m['exam_format'] for m in metas}, {'sat'})
+            module_lists = [self._load(name).MODULES for name in names]
+            first = module_lists[0]
+            for other in module_lists[1:]:
+                self.assertEqual(first, other,
+                                 f'MODULES drifted between mock {number} files')
+            self.assertEqual({m['code'] for m in first},
+                             {'rw1', 'rw2e', 'rw2h', 'math1', 'math2e', 'math2h'})
+
+    def test_mocks_do_not_share_an_exam_number(self):
+        numbers = [self._load(f'sat{n}_rw1').EXAM_META['exam_number']
+                   for n in self.mock_numbers()]
+        self.assertEqual(len(numbers), len(set(numbers)))
 
     def test_blueprints(self):
         from collections import Counter

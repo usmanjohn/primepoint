@@ -35,15 +35,15 @@ Math, Module 1                                                      [done]
 Math, Module 2 — lower                                              [done]
 Math, Module 2 — upper                                              [done]
 
-## MOCK 2 — exam_number 202  [next]
-Reading and Writing, Module 1
-Reading and Writing, Module 2 — lower
-Reading and Writing, Module 2 — upper
-Math, Module 1
-Math, Module 2 — lower
-Math, Module 2 — upper
+## MOCK 2 — exam_number 202  [done]
+Reading and Writing, Module 1                                       [done]
+Reading and Writing, Module 2 — lower                               [done]
+Reading and Writing, Module 2 — upper                               [done]
+Math, Module 1                                                      [done]
+Math, Module 2 — lower                                              [done]
+Math, Module 2 — upper                                              [done]
 
-## MOCK 3 — exam_number 203
+## MOCK 3 — exam_number 203  [next]
 ## MOCK 4 — exam_number 204
 ## MOCK 5 — exam_number 205
 
@@ -52,6 +52,23 @@ Math, Module 2 — upper
 # science (economics, archaeology, linguistics), humanities (art history,
 # literature criticism), literature (a short fiction or poetry extract),
 # and one US-founding-document / great-global-conversation text per module.
-# Mock 1 used: mycorrhizal networks, Bessie Coleman, Uzbek suzani textiles,
-# Rosalind Franklin, urban heat islands, the Aral Sea, Hokusai, Ada Lovelace.
 # Do not reuse a subject across mocks — a pupil sits several of these.
+#
+# Mock 1 — M1: mycorrhizal networks, Bessie Coleman, suzani textiles, Rosalind
+#   Franklin, urban heat islands, the Aral Sea, Hokusai, Ada Lovelace,
+#   self-healing concrete, linguistic complexity.
+#   M2 lower: Mary Anning, the waggle dance, Katherine Johnson, tardigrades,
+#   Gutenberg, Antarctic ice cores, community gardens, sourdough, Frida Kahlo.
+#   M2 upper: octopus cognition, Zora Neale Hurston, Ulugʻbek's observatory,
+#   coral bleaching, Federalist 51, open-source economics, Toni Morrison,
+#   Ibn Sina's Canon, algorithmic fairness, deep time.
+#
+# Mock 2 — M1: Wangari Maathai, Murano cristallo, cuttlefish camouflage, cement
+#   chemistry, the Antikythera mechanism, Nüshu, beaver rewilding, Hedy Lamarr,
+#   the Namib fog beetle, the second-hand clothing trade, Svalbard seed vault.
+#   M2 lower: the Beck tube map, Grace Hopper, lichens, the terracotta army,
+#   homing pigeons, teenage sleep, Greenland moulins, Maria Sibylla Merian,
+#   ebru marbling, salt cod.
+#   M2 upper: Emmy Noether, the Indus script, Deinococcus radiodurans, Elinor
+#   Ostrom, the Declaration of Sentiments, the replication crisis, dark matter
+#   vs modified gravity, James Baldwin, Ibn Battuta's Rihla.
