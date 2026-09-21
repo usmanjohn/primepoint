@@ -43,9 +43,23 @@ Math, Module 1                                                      [done]
 Math, Module 2 — lower                                              [done]
 Math, Module 2 — upper                                              [done]
 
-## MOCK 3 — exam_number 203  [next]
-## MOCK 4 — exam_number 204
-## MOCK 5 — exam_number 205
+## MOCK 3 — exam_number 203  [done]
+Reading and Writing, Module 1                                       [done]
+Reading and Writing, Module 2 — lower                               [done]
+Reading and Writing, Module 2 — upper                               [done]
+Math, Module 1                                                      [done]
+Math, Module 2 — lower                                              [done]
+Math, Module 2 — upper                                              [done]
+
+## MOCK 4 — exam_number 204  [done]
+Reading and Writing, Module 1                                       [done]
+Reading and Writing, Module 2 — lower                               [done]
+Reading and Writing, Module 2 — upper                               [done]
+Math, Module 1                                                      [done]
+Math, Module 2 — lower                                              [done]
+Math, Module 2 — upper                                              [done]
+
+## MOCK 5 — exam_number 205  [next]
 
 # ── Subject pool, so no two mocks read alike ──────────────────────────
 # RW passages rotate: science (biology, astronomy, materials), social
@@ -72,3 +86,23 @@ Math, Module 2 — upper                                              [done]
 #   M2 upper: Emmy Noether, the Indus script, Deinococcus radiodurans, Elinor
 #   Ostrom, the Declaration of Sentiments, the replication crisis, dark matter
 #   vs modified gravity, James Baldwin, Ibn Battuta's Rihla.
+#
+# Mock 3 — M1: Anni Albers, axolotl regeneration, Ibn al-Haytham, permafrost
+#   carbon, Polynesian wayfinding, Chauvet cave, microplastics in soil, sparrow
+#   song dialects, the quipu.
+#   M2 lower: Marie Tharp, sea otters and kelp, the soroban, monarch migration,
+#   the Eiffel Tower, Hildegard of Bingen, cork oak montado, the Banaue rice
+#   terraces, concert pitch and A440, dandelions.
+#   M2 upper: Henrietta Leavitt, the Dead Sea Scrolls, gene drives, Tycho and
+#   Kepler, Frederick Douglass at Rochester, Maxwell's demon, the lighthouse
+#   and Coase, Sor Juana Inés de la Cruz, the Anthropocene boundary.
+#
+# Mock 4 — M1: Semmelweis, naked mole rats, kintsugi, the plastic mantle, the
+#   Voyager Golden Record, Nicaraguan Sign Language, mammoth de-extinction, the
+#   Bayeux Tapestry, Vavilov's seed bank, great tit song and traffic noise.
+#   M2 lower: Rachel Carson, bamboo masting, the Miura fold, chocolate
+#   tempering, the Mesoamerican wheel, penguin huddles, bicycle lanes, the
+#   Nightingale rose diagram, Beethoven's metronome marks.
+#   M2 upper: Ramanujan's letter, the Justinianic plague DNA, the Meissner
+#   effect, the literary canon, Aphra Behn, ELIZA, the minimum-wage debate,
+#   W. E. B. Du Bois's Paris charts.
