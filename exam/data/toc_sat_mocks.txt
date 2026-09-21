@@ -59,7 +59,23 @@ Math, Module 1                                                      [done]
 Math, Module 2 — lower                                              [done]
 Math, Module 2 — upper                                              [done]
 
-## MOCK 5 — exam_number 205  [next]
+## MOCK 5 — exam_number 205  [done]
+Reading and Writing, Module 1                                       [done]
+Reading and Writing, Module 2 — lower                               [done]
+Reading and Writing, Module 2 — upper                               [done]
+Math, Module 1                                                      [done]
+Math, Module 2 — lower                                              [done]
+Math, Module 2 — upper                                              [done]
+
+## MOCK 6 — exam_number 206  [done]
+Reading and Writing, Module 1                                       [done]
+Reading and Writing, Module 2 — lower                               [done]
+Reading and Writing, Module 2 — upper                               [done]
+Math, Module 1                                                      [done]
+Math, Module 2 — lower                                              [done]
+Math, Module 2 — upper                                              [done]
+
+## MOCK 7 — exam_number 207  [next]
 
 # ── Subject pool, so no two mocks read alike ──────────────────────────
 # RW passages rotate: science (biology, astronomy, materials), social
@@ -106,3 +122,23 @@ Math, Module 2 — upper                                              [done]
 #   M2 upper: Ramanujan's letter, the Justinianic plague DNA, the Meissner
 #   effect, the literary canon, Aphra Behn, ELIZA, the minimum-wage debate,
 #   W. E. B. Du Bois's Paris charts.
+#
+# Mock 5 — M1: Ötzi's axe, firefly synchrony, Ashurbanipal's library, nitrogen
+#   fixation, the qanat, whale falls, the four-day week, the flying buttress,
+#   the Timbuktu manuscripts.
+#   M2 lower: the Shinkansen, tool-making crows, graphite and "pencil lead",
+#   bell-founding, Braille's six dots, snowflake symmetry, primary-school
+#   homework, the Hubble Deep Field, the Venus flytrap's counting.
+#   M2 upper: Mansa Musa's hajj, resistance plasmids, Gödel's first theorem,
+#   Shelley's 1831 preface, the Ise Grand Shrine, the nocebo effect, carbon
+#   offsets, Sergei Korolev.
+#
+# Mock 6 — M1: Jeanne Baret, prime-numbered cicada broods, the Domesday survey,
+#   statistical noise, Bazalgette's sewers, the Wardian case, remote work and
+#   city centres, Hilma af Klint, the Dunhuang library cave.
+#   M2 lower: Sequoyah's syllabary, caffeine in nectar, the zipper, a map's key,
+#   the lightning rod, elephant seismic hearing, plastic-bag charges, the metre,
+#   the Stradivari varnish question.
+#   M2 upper: Shannon's 1948 paper, Tunguska, prions, climate models as
+#   arguments, Magna Carta's afterlife, Simpson's paradox, basic-income pilots,
+#   Duchamp's Fountain, Alice Kober and Linear B.
