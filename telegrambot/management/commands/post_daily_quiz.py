@@ -52,9 +52,19 @@ class Command(BaseCommand):
         self.deliver(question, subject, options)
 
     def post_each_subject(self, today, options):
-        """One question per subject, in rotation order, skipping any already sent today."""
+        """One question per subject, in rotation order, skipping any already sent today.
+
+        A subject that fails is reported and the rotation CONTINUES. It used not
+        to: one refusal from Telegram propagated straight out of the loop and
+        every subject after it was silently skipped. On 22 Sept 2026 that turned
+        one unpostable maths explanation into a channel with two polls instead of
+        six — and the rotation is ordered, so the same four subjects lose every
+        time. Failing the run at the end still marks the night red in Railway;
+        failing it in the middle just hides the other five subjects.
+        """
         done = set() if options['force'] else pick.subjects_posted_on(today)
         sent = skipped = 0
+        failures = []
 
         for name, label, _emoji in ROTATION:
             if name in done:
@@ -66,12 +76,19 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.WARNING(f'{label}: no question left, skipping.'))
                 skipped += 1
                 continue
-            self.deliver(question, name, options)
+            try:
+                self.deliver(question, name, options)
+            except Exception as exc:              # noqa: BLE001 — one subject must not take the rest down
+                failures.append(f'{label} (#{question.id}): {exc}')
+                self.stderr.write(self.style.ERROR(f'{label}: failed — {exc}'))
+                continue
             sent += 1
             if not options['dry_run'] and sent < len(ROTATION):
                 time.sleep(GAP_SECONDS)
 
-        self.stdout.write(self.style.SUCCESS(f'{sent} sent, {skipped} skipped.'))
+        self.stdout.write(self.style.SUCCESS(f'{sent} sent, {skipped} skipped, {len(failures)} failed.'))
+        if failures:
+            raise CommandError('Some subjects did not post:\n  ' + '\n  '.join(failures))
         if not sent and not skipped:
             raise CommandError('No unposted, poll-shaped question left for any subject.')
 

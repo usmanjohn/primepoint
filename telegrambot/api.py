@@ -116,7 +116,21 @@ def send_message(text, chat_id=None, buttons=None, disable_preview=True):
 
 
 def send_quiz(question, options, correct_index, explanation='', chat_id=None, buttons=None):
-    """Send a native quiz poll — one tap, instantly marked, explanation on reveal."""
+    """Send a native quiz poll — one tap, instantly marked, explanation on reveal.
+
+    ⛔ The explanation is sent as PLAIN TEXT, with no parse mode. It used to go
+    as HTML, which was wrong in a way that took the channel down for eight days
+    (22–30 Sept 2026): `content.build_quiz` runs the explanation through
+    `to_text`, whose last step is `html.unescape` — so `&lt;` comes back as a
+    bare `<`. Ask Telegram to parse that as HTML and a maths explanation like
+    "x < 6. 2x < 12, keyin 2 ga boʻlamiz" is read as an unclosed tag, and the
+    whole poll is refused with "can't parse entities".
+
+    74 questions in the bank carry an inequality in the explanation — 29 in
+    Matematika, 44 in Matematika (SAT) — so this was a dice roll every night.
+    There is nothing to gain by parsing: `to_text` has already stripped every
+    tag, so HTML mode could only ever misread the text, never render it.
+    """
     return call(
         'sendPoll',
         chat_id=chat_id or settings.TELEGRAM_CHANNEL,
@@ -125,7 +139,6 @@ def send_quiz(question, options, correct_index, explanation='', chat_id=None, bu
         type='quiz',
         correct_option_id=correct_index,
         explanation=(explanation or '')[:POLL_EXPLANATION_MAX] or None,
-        explanation_parse_mode='HTML' if explanation else None,
         is_anonymous=True,
         reply_markup=_keyboard(buttons),
     )
