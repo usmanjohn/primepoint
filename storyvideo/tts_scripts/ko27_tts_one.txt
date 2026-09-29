@@ -1,0 +1,29 @@
+Koreysda bitta xitoycha belgi bor, va u ikki xil oʻqiladi. <break time='0.45s' /> Birinchisi maqolda turibdi.
+
+<break time='2.5s' />
+
+Sherbek uch yil dam olmay ishladi.
+
+<break time='2.5s' />
+
+Toʻrtinchi yili oʻz doʻkonini ochdi.
+
+<break time='2.5s' />
+
+Maqol shunday: <emphasis level='moderate'>koʻseng kkute nagi oʻnda</emphasis>. <break time='0.45s' /> Mashaqqat oxirida zavq keladi.
+
+<break time='2.5s' />
+
+Endi oʻsha belgi. <break time='0.3s' /> <emphasis level='moderate'>nak</emphasis> boʻlib oʻqilsa, zavq. <break time='0.45s' /> <emphasis level='moderate'>ak</emphasis> boʻlib oʻqilsa, musiqa. Aynan bitta belgi.
+
+<break time='2.5s' />
+
+Bizda esa: sabr tagi, sariq oltin. <break time='0.45s' /> Koreys vaqtni sanaydi, biz qiymat oʻlchaymiz. Vaʼda esa bitta.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. <emphasis level='moderate'>umak</emphasis> musiqa boʻlsa, <emphasis level='moderate'>akki</emphasis> qanday narsa? <break time='0.45s' /> Izohda kutamiz.
+
+<break time='2.5s' />
+
+Koreys tili noldan Powertyda: Praym Korean, yuzta dars. <break time='0.3s' /> Havola profilda.

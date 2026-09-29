@@ -143,6 +143,51 @@ def jamo(syllable, at=0.0, step=0.7, show_uz=True):
     return html, secs
 
 
+def compound(parts, result, gloss=None, at=0.0, step=0.8, size=126):
+    """한자 compound built in front of the viewer: 학 + 생 → 학생.
+
+    `spell` does this for a syllable's jamo; this does it for a WORD's roots,
+    which is the move the whole vocabulary argument rests on. A pupil who has
+    been told "Korean words are built from roots" has heard a claim; a pupil who
+    watches 학(ilm) and 생(hayot) land and become the word they learned in
+    lesson one has seen it happen.
+
+    parts: [(syllable, gloss, is_root), ...]  -- is_root golds the tile.
+    Returns (html, seconds).
+    """
+    out, i = [], 0
+    for k, (syl, gl, is_root) in enumerate(parts):
+        if k:
+            out.append(f'<span class="jamo__op" {_t(at + i * step - 0.1)} '
+                       f'data-dur="0.3" data-anim="fade">+</span>')
+        cls = "jamo__l--r" if is_root else "jamo__l--c"
+        out.append(f'<span class="jamo__cell" {_t(at + i * step)} data-dur="0.45" '
+                   f'data-anim="pop">'
+                   f'<b class="jamo__l {cls}" style="font-size:{size}px">{syl}</b>'
+                   f'<i class="jamo__g">{gl}</i></span>')
+        i += 1
+    out.append(f'<span class="jamo__op" {_t(at + i * step - 0.1)} data-dur="0.3" '
+               f'data-anim="fade">→</span>')
+    # `.jamo__out` is a fixed 214px SQUARE, because `spell` builds exactly one
+    # syllable. A compound never does -- 학생 at 168px is 336px wide and spilled
+    # straight out of the gold tile on the first contact sheet. So the result is
+    # always a pill here, sized to its own length, and the whole row is kept
+    # inside the 880px content width: two 172px tiles, two operators and a
+    # 2-character result come to about 870.
+    rs = min(140, int(520 / max(len(result), 1)))
+    style = (f' style="font-size:{rs}px; width:auto; min-width:{rs + 46}px; '
+             f'height:{rs + 46}px; padding:0 30px"')
+    out.append(f'<span class="jamo__out"{style} {_t(at + i * step)} data-dur="0.55" '
+               f'data-anim="stamp">{result}</span>')
+    html = f'<div class="jamo">{"".join(out)}</div>'
+    secs = (i + 1) * step
+    if gloss:
+        html += (f'<div class="pron__u" {_t(at + secs + 0.2)} data-dur="0.45" '
+                 f'data-anim="rise">{gloss}</div>')
+        secs += 0.7
+    return html, secs
+
+
 # ───────────────────────────────────────────────────── mouth diagram ──
 # A head in profile, facing left, with the mouth open and the TONGUE IN THE
 # POSITION THE SOUND IS MADE IN. The first version drew the mouth as a duct

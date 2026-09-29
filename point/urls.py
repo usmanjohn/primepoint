@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib.sitemaps.views import sitemap
+from django.contrib.sitemaps.views import index as sitemap_index, sitemap
 from point.sitemaps import (
     StaticViewSitemap, MasterSitemap, PracticeSitemap, ThreadSitemap,
     TutorialSitemap, TutorialPlaylistSitemap, ExamTrackSitemap,
@@ -33,7 +33,15 @@ sitemaps = {
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('i18n/', include('django.conf.urls.i18n')),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    # /sitemap.xml is an INDEX, and each section gets its own file. One flat
+    # list of 3,600 URLs is legal but undiagnosable: Search Console reports
+    # coverage per submitted sitemap, so a single file can only ever say "some
+    # of it is indexed". Split, it says WHICH shelf Google is ignoring.
+    path('sitemap.xml', sitemap_index,
+         {'sitemaps': sitemaps, 'sitemap_url_name': 'sitemap_section'},
+         name='sitemap_index'),
+    path('sitemap-<section>.xml', sitemap, {'sitemaps': sitemaps},
+         name='sitemap_section'),
     path("ckeditor5/", include('django_ckeditor_5.urls')),
     
     path('', include('prime.urls')),

@@ -365,6 +365,24 @@ body.guides .pipguide { display: block; }
              background: var(--gold); color: #fff;
              display: flex; align-items: center; justify-content: center; }
 
+/* ── the same tiles, one level up: a WORD built from its roots (2026-09-22) ──
+   `spell` takes a syllable apart into jamo; `build` takes a word apart into the
+   han-characters it is made of, which is the move the vocabulary films rest on.
+   Same tile, plus a gloss under it and a gold variant for the root being
+   taught, so the tile the whole film is about is the one that is filled. */
+.jamo__cell { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.jamo__cell .jamo__l { font-size: 126px; width: 172px; height: 172px; }
+.jamo__l--r { border-color: var(--gold); background: var(--gold); color: #fff; }
+.jamo__g { font-family: var(--ff-body); font-weight: 700; font-style: normal;
+           font-size: 38px; color: var(--ink-soft); text-align: center;
+           max-width: 220px; line-height: 1.15; word-break: keep-all; }
+
+/* ── the reaction shot (2026-09-22, SERIES.md §6) ──────────────────────────
+   `.spot` already draws the warm glow behind a figure; a reaction is that spot
+   with a head in it instead of a body, so it needs no new lighting -- only a
+   little room, because the crop puts the face where the shoulders used to be. */
+.react { margin-block: 18px; }
+
 /* ── the mouth diagram: why the letter is shaped the way it is ────────── */
 .mouthfig { width: 640px; }
 /* The silhouette is what makes it read as a face, so it is the firmest line. */
@@ -511,6 +529,16 @@ body[data-subj="story"]    { --accent: #c08a52; --accent-dim: rgba(192,138,82,.1
               color: var(--accent); }
 .cover__c   { font-family: 'Okina', var(--ff-body); font-weight: 700; font-size: 46px;
               color: var(--ink-soft); text-align: center; max-width: 860px; }
+/* The subject label, in the subject's own script, INSIDE the grid crop.
+   The corner chip does this job for somebody watching the film; this does it
+   for somebody scrolling past the cover, which is the only frame most people
+   ever see. Filled rather than outlined so it survives being shrunk to a
+   120px grid cell. */
+.cover__row { display: flex; align-items: center; justify-content: center;
+              gap: 20px; flex-wrap: wrap; }
+.cover__ko  { font-family: var(--ff-ko); font-weight: 800; font-size: 42px;
+              line-height: 1; background: var(--accent); color: #fff;
+              border-radius: 15px; padding: 12px 20px; white-space: nowrap; }
 /* The wrong thing, big enough to read at 120px wide in a profile grid. */
 .cover__w   { font-family: var(--ff-ko); font-weight: 800; line-height: 1.04;
               text-align: center; color: var(--ink);

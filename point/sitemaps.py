@@ -47,7 +47,10 @@ class PracticeSitemap(Sitemap):
     priority = 0.6
 
     def items(self):
-        return Practice.objects.filter(is_published=True)
+        # Ordered explicitly: Practice has no Meta.ordering, and Django pages
+        # a sitemap section at 50,000 URLs. An unordered queryset can then
+        # repeat one URL across pages and drop another entirely.
+        return Practice.objects.filter(is_published=True).order_by('pk')
 
     def location(self, obj):
         return reverse('practice_detail', kwargs={'pk': obj.pk})

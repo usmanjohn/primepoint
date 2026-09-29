@@ -12,7 +12,7 @@ from django.conf import settings
 from django.test import SimpleTestCase, TestCase
 from django.urls import reverse
 
-from prime import kit
+from prime import kit, seo
 
 
 class KitCopyTests(SimpleTestCase):
@@ -160,3 +160,132 @@ class PlatformStatsTests(TestCase):
                     qs.filter.return_value.count.return_value = count
                     self.assertEqual(_platform_stats()['questions_round'], printed)
         cache.clear()
+
+
+class CanonicalHostTests(SimpleTestCase):
+    """The apex must bounce to www, and nothing else may be caught by it.
+
+    Both halves matter. Without the redirect every page exists at two URLs
+    once the apex answers on https; with too greedy a redirect, Railway's own
+    healthcheck host gets 301'd to a hostname that does not resolve and the
+    deploy fails with the site "up".
+    """
+
+    def test_apex_redirects_to_www_preserving_path_and_query(self):
+        resp = self.client.get('/tutorials/?page=2', HTTP_HOST='powerty.uz')
+        self.assertEqual(resp.status_code, 301)
+        self.assertEqual(
+            resp['Location'], 'https://www.powerty.uz/tutorials/?page=2')
+
+    def test_apex_with_a_port_is_still_matched(self):
+        resp = self.client.get('/', HTTP_HOST='powerty.uz:8080')
+        self.assertEqual(resp.status_code, 301)
+        self.assertEqual(resp['Location'], 'https://www.powerty.uz/')
+
+    def test_canonical_host_is_not_redirected(self):
+        # /robots.txt so the assertion is about the middleware, not a view.
+        resp = self.client.get('/robots.txt', HTTP_HOST='www.powerty.uz')
+        self.assertEqual(resp.status_code, 200)
+
+    def test_railway_and_local_hosts_are_left_alone(self):
+        for host in ('8cgiqo8y.up.railway.app', 'healthcheck.railway.app',
+                     'localhost', '127.0.0.1', 'testserver'):
+            with self.subTest(host=host):
+                resp = self.client.get('/robots.txt', HTTP_HOST=host)
+                self.assertEqual(resp.status_code, 200)
+
+    def test_the_alias_list_holds_only_the_apex(self):
+        # A stray entry here silently takes a working host off the air.
+        self.assertEqual(settings.CANONICAL_HOST_ALIASES, ('powerty.uz',))
+
+
+class SeoTitleTests(SimpleTestCase):
+    """The title is the whole point: it decides what a page can match.
+
+    These guard the two ways it goes wrong silently — a topic that loses a
+    word to over-eager stripping, and a qualifier repeated into keyword soup.
+    """
+
+    def test_course_code_is_stripped(self):
+        for original, topic in (
+            ('PK-24: -고 싶다', '-고 싶다'),
+            ('SAT-7: Linear Equations', 'Linear Equations'),
+            ('TOPIK 광고 3: Xizmat reklamalari', 'Xizmat reklamalari'),
+            ('SAT R&W W25: Rhetorical Synthesis', 'Rhetorical Synthesis'),
+        ):
+            with self.subTest(original=original):
+                self.assertEqual(seo.strip_course_code(original), topic)
+
+    def test_a_title_without_a_code_is_left_whole(self):
+        # The dangerous direction: never eat the opening clause of a real title.
+        for title in ('Bananas Don\'t Grow on Trees',
+                      'Punktuatsiya: vergul qoidalari va tire',
+                      'Al-Xorazmiy: «algoritm» soʻzi qayerdan kelgan',
+                      'Am/Is/Are'):
+            with self.subTest(title=title):
+                self.assertEqual(seo.strip_course_code(title), title)
+
+    def test_the_topic_keeps_its_own_colon(self):
+        self.assertEqual(
+            seo.strip_course_code('PJ-42: Imkoniyat 2 — potensial shakl'),
+            'Imkoniyat 2 — potensial shakl')
+
+    def test_brand_is_dropped_before_the_qualifier(self):
+        long_topic = 'Your Grammar Toolkit: The One-Page Review of Everything'
+        composed = seo.compose(long_topic, 'ingliz tili grammatikasi')
+        self.assertIn('ingliz tili grammatikasi', composed)
+        self.assertNotIn(seo.BRAND, composed)
+
+    def test_short_titles_keep_the_brand(self):
+        self.assertEqual(seo.compose('Teskaridan yurish', 'matematika'),
+                         'Teskaridan yurish — matematika | Powerty')
+
+    def test_a_qualifier_the_topic_already_states_is_dropped(self):
+        composed = seo.compose('Rus tili qayerdan kelgan', 'rus tili grammatikasi')
+        self.assertEqual(composed, 'Rus tili qayerdan kelgan | Powerty')
+
+    def test_a_partial_word_does_not_count_as_stating_it(self):
+        # "Ruslan" is not "rus"; the qualifier must survive.
+        self.assertIn('rus tili', seo.compose('Ruslan va kitob', 'rus tili grammatikasi'))
+
+    def test_no_title_carries_two_em_dashes(self):
+        composed = seo.compose('거늘, 기로서니 — adabiy yon berish',
+                               'koreys tili grammatikasi')
+        self.assertEqual(composed.count('—'), 1)
+
+    def test_description_is_plain_text_within_budget(self):
+        described = seo.description('<p>Bir xil maxrajli <b>kasrlarni</b> qoʻshish. ' + 'x' * 400 + '</p>')
+        self.assertLessEqual(len(described), seo.DESCRIPTION_BUDGET + 1)
+        self.assertNotIn('<', described)
+
+    def test_description_cuts_at_a_word_boundary(self):
+        described = seo.description(' '.join(['word'] * 80))
+        self.assertTrue(described.endswith('…'))
+        self.assertNotIn('wor…', described)
+
+    def test_description_falls_through_to_the_next_candidate(self):
+        self.assertEqual(seo.description('', '   ', 'Fallback'), 'Fallback')
+
+
+class SitemapIndexTests(TestCase):
+    """robots.txt points crawlers at /sitemap.xml, so it must stay an entry
+    point — and it is now an index, which is what lets Search Console report
+    coverage one shelf at a time instead of one number for 3,600 URLs."""
+
+    def test_sitemap_is_an_index_of_sections(self):
+        resp = self.client.get('/sitemap.xml')
+        self.assertEqual(resp.status_code, 200)
+        body = resp.content.decode()
+        self.assertIn('<sitemapindex', body)
+        for section in ('tutorials', 'corner_stories', 'examprep_lessons'):
+            self.assertIn(f'/sitemap-{section}.xml', body)
+
+    def test_each_section_serves_its_own_urlset(self):
+        resp = self.client.get('/sitemap-tutorials.xml')
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn('<urlset', resp.content.decode())
+
+    def test_robots_still_points_at_the_index(self):
+        resp = self.client.get('/robots.txt')
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn('/sitemap.xml', resp.content.decode())

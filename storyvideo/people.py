@@ -64,7 +64,26 @@ MOUTHS = {
     "sad":    "M 36 70 Q 50 58 64 70",
     "oh":     None,          # drawn as an ellipse instead
     "think":  "M 38 66 Q 46 62 60 67",
+    # ── 2026-09-22: the three moods SERIES.md §6 asked for ──────────────
+    # The answer to "can we drop reaction GIFs in" was "no to a stranger's
+    # meme face, yes to our own cast reacting". That only pays off if the
+    # cast can actually react, and five moods could not: `sad` is
+    # disappointment, not shock, and nothing in the set laughed.
+    "shock":  None,          # a taller ellipse, like `oh` but wider-eyed
+    "cross":  "M 37 70 L 63 70",         # a hard flat line under angry brows
 }
+
+# A laugh is not an `oh` with different eyes: an open OVAL reads as a shout.
+# What reads as laughing is a mouth with a FLAT TOP and a deep round bottom --
+# the upper lip pulled back over the teeth. Drawn filled rather than stroked,
+# for the same reason the tongue in `mouth()` is filled: an outline inside an
+# outline is unreadable at arm's length.
+LAUGH_MOUTH = "M 34 60 L 66 60 A 16 15 0 0 1 34 60 Z"
+
+# Which moods open the mouth, and how big. `oh` is the original surprise; the
+# 2026-09-22 additions keep the same drawing and only change the size, because
+# what reads as shock at 340px is the EYES, not the mouth.
+_OPEN = {"oh": (7, 9), "shock": (10, 13)}
 
 
 def _person_svg(shirt, skin, hair, mood="smile", long_hair=False, adult=False,
@@ -140,23 +159,62 @@ def _person_svg(shirt, skin, hair, mood="smile", long_hair=False, adult=False,
         out.append(f'<path d="M 17 46 Q 17 10 50 10 Q 83 10 83 46 Q 72 32 50 32 '
                    f'Q 28 32 17 46 Z" fill="{hair}"/>')
 
-    # eyes
-    out.append('<circle cx="38" cy="48" r="4.6" fill="#2b211c"/>')
-    out.append('<circle cx="62" cy="48" r="4.6" fill="#2b211c"/>')
+    out.append(face(mood))
+
+    return "".join(out)
+
+
+def face(mood="smile"):
+    """Eyes, brows and mouth, in the 100x175 figure's own coordinates.
+
+    Pulled out of `_person_svg` on 2026-09-22 so `head()` can draw the SAME
+    face -- a reaction shot and the standing figure it belongs to must not be
+    two different people. Every pre-existing mood renders byte-identically to
+    what was inline before; the new ones are new branches only.
+    """
+    out = []
+    # eyes -- `shock` widens them, `laugh` closes them into arcs. This is the
+    # part that actually carries the expression at reaction size.
+    if mood == "laugh":
+        # Kept at y 45..52: the long-hair fringe comes down to y=44 at the
+        # centre, so an arc drawn any higher is simply painted over -- which is
+        # exactly what happened to Afsona on ko19's first contact sheet.
+        out.append('<path d="M 32 52 Q 38 45 44 52" stroke="#2b211c" stroke-width="3.8" '
+                   'stroke-linecap="round" fill="none"/>')
+        out.append('<path d="M 56 52 Q 62 45 68 52" stroke="#2b211c" stroke-width="3.8" '
+                   'stroke-linecap="round" fill="none"/>')
+    elif mood == "shock":
+        out.append('<circle cx="38" cy="48" r="7.4" fill="#fff" stroke="#2b211c" stroke-width="2.4"/>')
+        out.append('<circle cx="62" cy="48" r="7.4" fill="#fff" stroke="#2b211c" stroke-width="2.4"/>')
+        out.append('<circle cx="38" cy="48" r="3.6" fill="#2b211c"/>')
+        out.append('<circle cx="62" cy="48" r="3.6" fill="#2b211c"/>')
+    else:
+        out.append('<circle cx="38" cy="48" r="4.6" fill="#2b211c"/>')
+        out.append('<circle cx="62" cy="48" r="4.6" fill="#2b211c"/>')
+
     # brows lift the expression
     if mood == "sad":
         out.append('<path d="M 31 38 L 44 42" stroke="#2b211c" stroke-width="3.4" stroke-linecap="round" fill="none"/>')
         out.append('<path d="M 69 38 L 56 42" stroke="#2b211c" stroke-width="3.4" stroke-linecap="round" fill="none"/>')
     elif mood == "think":
         out.append('<path d="M 31 39 L 44 37" stroke="#2b211c" stroke-width="3.4" stroke-linecap="round" fill="none"/>')
+    elif mood == "cross":
+        # Angry is the mirror of sad: the inner ends come DOWN, not up.
+        out.append('<path d="M 31 36 L 44 42" stroke="#2b211c" stroke-width="3.8" stroke-linecap="round" fill="none"/>')
+        out.append('<path d="M 69 36 L 56 42" stroke="#2b211c" stroke-width="3.8" stroke-linecap="round" fill="none"/>')
+    elif mood == "shock":
+        out.append('<path d="M 30 33 Q 38 28 46 32" stroke="#2b211c" stroke-width="3.4" stroke-linecap="round" fill="none"/>')
+        out.append('<path d="M 70 33 Q 62 28 54 32" stroke="#2b211c" stroke-width="3.4" stroke-linecap="round" fill="none"/>')
 
     # mouth
-    if mood == "oh":
-        out.append('<ellipse cx="50" cy="66" rx="7" ry="9" fill="#8d4a44"/>')
+    if mood == "laugh":
+        out.append(f'<path d="{LAUGH_MOUTH}" fill="#8d4a44"/>')
+    elif mood in _OPEN:
+        rx, ry = _OPEN[mood]
+        out.append(f'<ellipse cx="50" cy="66" rx="{rx}" ry="{ry}" fill="#8d4a44"/>')
     else:
         out.append(f'<path d="{MOUTHS.get(mood, MOUTHS["smile"])}" stroke="#2b211c" '
                    f'stroke-width="3.6" stroke-linecap="round" fill="none"/>')
-
     return "".join(out)
 
 
@@ -181,6 +239,62 @@ def figure(who=None, size=170, mood="smile", arms="down", i=0):
     w = round(size * 100 / 175)
     return (f'<svg class="fig" viewBox="0 0 100 175" width="{w}" height="{round(size)}" '
             f'fill="none">{inner}</svg>')
+
+
+def head(who=None, size=340, mood="smile", i=0):
+    """Head and shoulders, close up -- the reaction shot.
+
+    `figure` draws a whole body, so at reaction size the face is a tenth of it
+    and the expression is lost. This crops the SAME drawing to the head, in the
+    same coordinates, so the boy who was standing in the previous scene is
+    recognisably the boy filling the frame in this one.
+
+    SERIES.md §6: the answer to "can we drop a viral reaction GIF in" was no --
+    his own cast, on his own paper, in his own colours. This is the thing that
+    was supposed to replace it, finally built (2026-09-22).
+    """
+    if who and who in CAST:
+        c = CAST[who]
+        shirt, skin, hair = c["shirt"], c["skin"], c["hair"]
+        long_hair = c.get("long", False)
+        bald, turban, beard = c.get("bald", False), c.get("turban"), c.get("beard")
+    else:
+        shirt = EXTRA_SHIRTS[i % len(EXTRA_SHIRTS)]
+        skin  = EXTRA_SKIN[(i // 3) % len(EXTRA_SKIN)]
+        hair  = ["#2b211c", "#241b17", "#3a2a22"][i % 3]
+        long_hair, bald, turban, beard = (i % 3 == 1), False, None, None
+
+    sk = SKIN[skin]
+    out = [f'<rect x="4" y="84" width="92" height="34" rx="16" fill="{shirt}"/>',
+           f'<circle cx="50" cy="46" r="34" fill="{sk}"/>']
+    if beard:
+        out.append(f'<path d="M 19 48 Q 16 95 50 95 Q 84 95 81 48 Q 78 78 50 78 '
+                   f'Q 22 78 19 48 Z" fill="{beard}"/>')
+    if turban:
+        out.append(f'<ellipse cx="50" cy="25" rx="45" ry="21" fill="{turban}"/>')
+        out.append('<path d="M 13 27 Q 50 45 87 27" stroke="#00000026" '
+                   'stroke-width="7" fill="none" stroke-linecap="round"/>')
+    elif bald:
+        out.append('<ellipse cx="42" cy="26" rx="11" ry="6" fill="#ffffff" '
+                   'opacity="0.30" transform="rotate(-18 42 26)"/>')
+    elif long_hair:
+        # The fringe is LIFTED here (it dips to y=34, not 44) and only here. On
+        # the standing figure a low fringe is invisible at 170px; at 430px it
+        # sits straight on the eyes and the brows disappear into it -- Nodira
+        # opa's angry close-up on ko21's first contact sheet came out a dark
+        # blob with a mouth. The silhouette, which is what says "long hair", is
+        # unchanged, so she is still recognisably the same person.
+        out.append(f'<path d="M 16 52 Q 14 8 50 8 Q 86 8 84 52 L 84 74 Q 78 34 50 34 '
+                   f'Q 22 34 16 74 Z" fill="{hair}"/>')
+    else:
+        out.append(f'<path d="M 17 46 Q 17 10 50 10 Q 83 10 83 46 Q 72 30 50 30 '
+                   f'Q 28 30 17 46 Z" fill="{hair}"/>')
+    out.append(face(mood))
+    # The crop is the whole point: head from y=12 to y=80, plus a slice of
+    # shoulder. A looser box gives back exactly the problem `figure` already
+    # had -- a small face in a large frame.
+    return (f'<svg class="fig" viewBox="10 4 80 96" width="{round(size * 80 / 96)}" '
+            f'height="{round(size)}" fill="none">{"".join(out)}</svg>')
 
 
 def seated(who=None, i=0, size=64):

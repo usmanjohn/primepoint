@@ -66,8 +66,8 @@ learns the ritual and recognises it in 0.3s.
 | **«Tutilgan xato»** | `says → consequence → correct` | every subject | ko04-ko09 |
 | **«Nega shunday?»** | `fact/era/portrait` + mechanism | the `olami` shelves | mo01, mo03, mo04, mo10, mo27 |
 | **«Sanab koʻring»** | `count_in → beat → check` | maths, logic | the pm films |
-| **«Bitta soʻz»** | `word_family` | ko, pe, pj, pr, SAT roots | ko01 |
-| **«Bir maqol, ikki til»** | 속담 + its Uzbek twin | Korean (and any language with proverbs) | ko16-ko18 |
+| **«Bitta soʻz»** | `word_family` + `build` | ko, pe, pj, pr, SAT roots | ko01 · ko10 · ko20 · ko24 · ko28 |
+| **«Bir maqol, ikki til»** | 속담 + its Uzbek twin | Korean (and any language with proverbs) | ko16-ko19 · ko23 · ko27 |
 
 «Tutilgan xato» should be the majority: a wrong answer on screen is the least scrollable
 thing in short video, and it is subject-agnostic.
@@ -162,6 +162,37 @@ ko09 all do this).
 The cover carries the film's **first narration line**, so nothing is spent on a silent
 title card.
 
+### 4.2 The 한국어 badge — the subject, INSIDE the crop  (2026-09-23)
+
+His ask was «make the start great so I can upload without editing the cover», plus
+«maybe add 한국 as well». Both point at the same hole, and it had been there since §2:
+
+> the corner chip labels the subject — and §4 rule 3 deliberately puts it **outside**
+> y 420…1500. So the one frame a profile grid actually shows is the one frame with no
+> subject label on it.
+
+A viewer scrolling Reels therefore has to read the Hangul in the picture to know what
+language this is. On ko22's cover that is «노력 노력» with a red bar through it: perfect
+as a hook, useless as a label, and unreadable to exactly the beginner the channel wants.
+
+So `cover(ko="한국어")` puts a filled accent pill on the kicker row, in the subject's own
+script. **This is §1's rule, not an exception to it** — *brand the format, LABEL the
+subject, never brand the subject.* The paper does not move, the accent does not move, and
+the pill never becomes the promise: the promise is still the strange or wrong thing.
+
+- **Filled, not outlined.** It has to survive being shrunk to a 120px grid cell.
+- **On the kicker row**, so the stack does not grow and the essentials stay inside
+  y 420…1500. ko19 measured at y 610…1250 with it.
+- **한국어, not 한국.** The channel teaches the language, not the country, and 한국어 is
+  what a learner sees on their own textbook.
+- Optional, and off by default (`ko=None`), so every earlier film renders unchanged.
+- It is a **picture-only** change: the narration is untouched, so it can be added to a
+  film that is already recorded. Verified on all ten of ko19-ko28 by recomputing their
+  scripts and diffing against the ones already handed over — no change.
+
+The obvious extension when another language register starts: `日本語`, `Русский`, and so
+on, one pill per subject, same rule.
+
 **The fourth lint gate** checks `t=0`: ≥3 drawn elements and a ≥120px element. A film that
 does not open on a `cover` is **warned, not failed** — those 22 are a to-do list, not a
 blocker.
@@ -235,6 +266,37 @@ recording.
 **What to build instead, for the same goal:** more moods on the cast (shock/anger/laugh in
 `people.py`), a `reaction()` element that pops a big face at the turn, a stinger cue at
 the mistake moment, and a faster camera on the turn.
+
+### 6.1 ✅ That list was built, 2026-09-22
+
+Three of the four, and they cost about eighty lines between them:
+
+| piece | where | what it does |
+|---|---|---|
+| `shock` · `laugh` · `cross` | `people.MOUTHS` + `people.face()` | the three moods the cast could not do. `sad` is disappointment, not shock, and nothing in the set laughed |
+| `people.head()` → `P.reaction()` | `consequence(..., close=True)` | the same drawing cropped to the head. A standing figure at 340px spends nine tenths of its height on a shirt, so the expression — the only thing that beat exists for — is about 40px of face |
+| `shake` · `stamp` | `anim.js` ANIM | the mistake wobbles in, the correction lands from above and stops dead. `correct(..., shake=True)` |
+| `build()` → `W.compound()` | `scenes.py` / `wordkit.py` | 학(ilm) + 생(hayot) → 학생, tiles landing one at a time. `spell` does this for jamo; this does it for roots, which is what the vocabulary films were asserting rather than showing |
+
+All of them are OFF by default — a new mood is a new string, a new entrance is a new key,
+`close=` and `shake=` default False — so every film written before that date renders
+byte-for-byte as it did. That was **verified, not assumed**: all 41 stages were built from
+`git archive HEAD` and from the working tree and diffed (identical), and the same was done
+for all 41 narration scripts after the `korean.py` change (also identical). Repeat that
+diff before the next shared-kit change; it takes thirty seconds and it is stronger evidence
+than a lint pass, because it proves the INPUT to lint did not move.
+
+⚠️ **Two things the first contact sheet caught, and neither is visible in code:**
+- the long-hair fringe dips to y=44, so at 430px it sits **on the eyes** and the brows
+  disappear into it — Nodira opa's angry close-up came out a dark blob with a mouth.
+  `head()` lifts it to y=34, the close-up only; the standing figure is untouched, because
+  at 170px that low fringe is what makes the hair read as long.
+- a laugh drawn as an open OVAL reads as a **shout**. What reads as laughing is a flat top
+  with a deep round bottom (`LAUGH_MOUTH`) plus arc eyes — and the arcs must sit at y 45-52,
+  or the fringe paints over them too.
+- `.jamo__out` is a fixed 214px **square**, because `spell` builds exactly one syllable.
+  A compound never does: 학생 at 168px is 336px wide and spilled straight out of the gold
+  tile. `compound()` always emits a pill sized to its own length.
 
 ## 7. Sound
 
@@ -310,6 +372,54 @@ slipped past a 0.75 threshold. Measured over 13 takes:
 Threshold **1.7**, and the whole report stops there rather than printing
 conclusions drawn from mismatched inputs. Validated both ways: flags both
 mismatches, zero false positives across all 11 matched takes.
+
+### 7.1.4 ⚠️ A SLOW BLOCK IS NEVER DROPPED TEXT — read the FAST ones
+
+2026-09-23, ko24. `check` fired **SCRIPT VA OVOZ MOS EMAS** (spread 1.81x) and
+named blocks 2, 6 and 9 — all of them *sekin* — concluding «bu yozuv boshqa
+(uzunroq) script versiyasidan olingan». That conclusion was wrong, and the
+message points at the wrong blocks, so it is worth knowing why.
+
+§7.1.0's reasoning is exact and still holds: **the engine can only DROP text,
+never add it.** But run that the other way round and it says something the
+report does not: *dropping makes a block **FAST**.* A slow block therefore
+cannot be missing words — whatever it is, it is not the fault the gate exists
+to catch. So when the gate fires, compute the per-block speech rates yourself
+and read the top of the list, not the bottom:
+
+    #   ch   span    sil  speech   ch/s    rel
+    4   62   4.23   2.01    2.22   27.9   1.33   build(사회)
+    5   78   5.95   3.47    2.49   31.4   1.50   build(회사)   <-- the real fault
+
+31.4 ch/s against a 21 ch/s median is **ko07's signature almost exactly**
+(30.7 vs 21.6, §7.1). Two blocks were losing text, and they were the two
+`build` scenes — the 사회 ↔ 회사 swap, which is the entire film. The gate never
+mentioned either of them.
+
+The fix was §7.1.2's, and it worked: remove the inner break, cut what the
+picture already prints («Oʻsha ikkita boʻgʻin» — both tiles are on screen).
+Block 5 went 78 → 56 characters and came back at **1.05x**.
+
+### 7.1.5 A short block carries fixed pause overhead — shortening makes it WORSE
+
+The same re-take left one outlier: a 31-character block at **0.68x**, whose
+whole content was `Ildiz — 회, maʼnosi: yigʻilish`. 1.58s of its 3.90s span was
+silence, most of it around the emphasised `회`. It had already been shortened
+from 39 characters, and shortening moved it the WRONG way — 0.82x → 0.68x.
+
+That is the tell, and it is diagnostic: missing text makes a block faster, so a
+block that gets *slower* per character as you remove characters is paying a
+fixed cost (the pauses an `<emphasis>` and the punctuation buy) spread over
+fewer characters. **Do not "fix" it by shortening again.** Either leave it — a
+slow block only makes `retime` hold the scene a little longer, which is
+harmless — or merge it into its neighbour.
+
+⚠️ This does NOT license relaxing the gate's floor: §7.1.3 measured 265 blocks
+of matched takes and found no bucket's minimum below 0.88x, so 0.68x is a real
+outlier and deserved the look it got. The rule is to *diagnose* it, not to
+ignore it. **Excluding that one block ko24's spread was 1.35x**, inside the
+1.07–1.37 band of every matched take in the project — which is the number that
+settled it.
 
 ### 7.1.2 ⭐ KEEP A NARRATION BLOCK UNDER 120 CHARACTERS
 
@@ -498,6 +608,10 @@ left alone.
 | Tutilgan xato (Korean) | ko10 · ko11 · ko12 | voiced |
 | TOPIK (Tutilgan xato) | ko13 (쓰기 54) · ko14 (읽기 soati) · ko15 (답안지) | voiced · rendered 2026-09-16 |
 | Bir maqol, ikki til | ko16 (호랑이) · ko17 (말) · ko18 (티끌) | voiced · rendered 2026-09-16 |
+| Bir maqol, ikki til | ko19 (등잔 밑) · ko23 (백문이 불여일견) · ko27 (고생 끝에 樂) | voiced · rendered 2026-09-23 |
+| Bitta soʻz | ko20 (생) · ko24 (회 — 사회↔회사) · ko28 (인 — 人 vs 因) | voiced · rendered 2026-09-23 (ko24 re-recorded once, §7.1.4) |
+| Tutilgan xato (grammatika) | ko21 (은/는 va 이/가) · ko25 (고 싶어하다) | voiced · rendered 2026-09-23 |
+| TOPIK (Tutilgan xato) | ko22 (읽기 lugʻat metodi) · ko26 (쓰기 53) | voiced · rendered 2026-09-23 |
 
 **No film from before 2026-09-11 has a cover** (blank frame 0). Re-covering them is
 mechanical — add `cover()` and `subject=`, no re-recording, because the cover carries the

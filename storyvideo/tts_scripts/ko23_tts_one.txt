@@ -1,0 +1,33 @@
+Koreysda shunday maqol bor: <emphasis level='moderate'>pengmuni puryoilgyon</emphasis>. <break time='0.45s' /> Va uning ichida ikkita son yashiringan.
+
+<break time='2.5s' />
+
+Bekzod Jasurga metro yoʻlini oʻn daqiqa tushuntirdi.
+
+<break time='2.5s' />
+
+Jasur bitta narsa soʻradi: xaritani.
+
+<break time='2.5s' />
+
+Endi maqolni ochamiz. <emphasis level='moderate'>pek</emphasis>, yuz. <break time='0.3s' /> <emphasis level='moderate'>mun</emphasis>, eshitish. <break time='0.45s' /> Yaʼni: yuz marta eshitish.
+
+<break time='2.5s' />
+
+Keyingisi: <emphasis level='moderate'>il</emphasis>, bir. <break time='0.3s' /> <emphasis level='moderate'>kyon</emphasis>, koʻrish. <break time='0.45s' /> Bir marta koʻrish.
+
+<break time='2.5s' />
+
+Demak maqol taqqoslayapti. Yuz marta eshitish, bir marta koʻrishcha emas.
+
+<break time='2.5s' />
+
+Bizda ham xuddi shu maqol bor: yuz marta eshitgandan, bir marta koʻrgan afzal. <break time='0.45s' /> Buni yodlash shart emas, oʻqib chiqarsa boʻladi.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Maqoldagi uchinchi boʻgʻin emas degani. <break time='0.45s' /> Unda <emphasis level='moderate'>pulganung</emphasis> nima degani? Izohda kutamiz.
+
+<break time='2.5s' />
+
+Koreys tili noldan Powertyda: Praym Korean, yuzta dars. <break time='0.3s' /> Havola profilda.

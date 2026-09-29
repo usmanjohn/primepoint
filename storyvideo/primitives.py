@@ -222,6 +222,24 @@ def person(who=None, size=170, mood="smile", arms="down", at=0.0, i=0,
             f'{_people.figure(who, size=size, mood=mood, arms=arms, i=i)}</div>')
 
 
+def reaction(who=None, mood="shock", size=360, at=0.0, dur=0.55,
+             anim="stamp", i=0):
+    """A big face, landing. The beat SERIES.md §6 promised instead of a meme.
+
+    The argument against imported reaction GIFs was never "no reactions" -- it
+    was that a stranger's meme face is somebody else's brand dropped into the
+    middle of his, and that a GIF animates on its own clock, so three parallel
+    renderers capture three different frames of it at the same `t`. A drawn head
+    has neither problem: it is the same cast, on the same paper, and it obeys
+    `seek(t)` like everything else.
+
+    `stamp` rather than `pop` on purpose -- it arrives from above the camera
+    instead of growing into it, which is what makes it read as a cut.
+    """
+    return (f'<div class="spot react" {_t(at)} data-dur="{dur}" data-anim="{anim}">'
+            f'{_people.head(who, size=size, mood=mood, i=i)}</div>')
+
+
 def ticks(n, at=0.0, step=1.1):
     """A silent thinking beat: dots that tick over while the viewer divides."""
     d = "".join(f'<span class="tick" data-in="0" {_t(at + i * step)}></span>' for i in range(n))

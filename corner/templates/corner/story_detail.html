@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
-{% load i18n static %}
+{% load i18n static seo_extras %}
 {% block nav_corner %}active{% endblock %}
 {% block page_name %}{{ story.title }}{% endblock %}
-{% block title %}{{ story.title }} — {% trans "Corner" %}{% endblock %}
-{% block og_title %}{{ story.title }}{% endblock %}
-{% block meta_description %}{{ story.summary|default:story.title }}{% endblock %}
-{% block og_description %}{{ story.summary|default:story.title }}{% endblock %}
+{% block title %}{{ story|seo_title }}{% endblock %}
+{% block og_title %}{{ story|seo_social_title }}{% endblock %}
+{% block meta_description %}{% seo_description story.summary story.body story.title %}{% endblock %}
+{% block og_description %}{% seo_description story.summary story.body story.title %}{% endblock %}
 
 {% block content %}
 

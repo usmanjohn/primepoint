@@ -17,7 +17,7 @@ import primitives as P
 
 
 def cover(wrong, ask, kicker=None, context=None, right=None, strike=True,
-          dur=3.6, cam="push", size=None, note=""):
+          dur=3.6, cam="push", size=None, note="", ko=None):
     """The designed first frame -- it IS the thumbnail.
 
     Every element is drawn at t=0 with anim="none", so the frame a platform
@@ -41,7 +41,25 @@ def cover(wrong, ask, kicker=None, context=None, right=None, strike=True,
     px = size or min(300, P.fit_px(wrong, "hero", 840))
     at = 'data-at="0.000" data-dur="0.30" data-anim="none"'
     body = ['<div class="cover">']
-    if kicker:
+    # The subject LABEL, inside the grid crop.  (2026-09-23, at his request)
+    #
+    # The corner chip already labels the subject, but §4 puts it deliberately
+    # OUTSIDE y 420...1500 -- so the one frame a profile grid actually shows
+    # is the one frame with no subject on it. A viewer scrolling Reels has to
+    # read the Hangul in the picture to know what language this is, and on a
+    # cover like ko22's («노력 노력» struck through) that is asking a lot of
+    # somebody who does not read Hangul yet. So the kicker row can carry a
+    # filled accent pill: 한국어, in the subject's own script.
+    #
+    # This is §1's rule, not an exception to it -- brand the format, LABEL the
+    # subject. It stays a label: it never becomes the promise, and the promise
+    # is still the strange or wrong thing.
+    if ko:
+        body.append(f'<div class="cover__row" {at}>'
+                    f'<span class="cover__ko">{ko}</span>'
+                    + (f'<span class="cover__k">{kicker}</span>' if kicker else "")
+                    + '</div>')
+    elif kicker:
         body.append(f'<div class="cover__k" {at}>{kicker}</div>')
     if context:
         body.append(f'<div class="cover__c" {at}>{context}</div>')
@@ -122,33 +140,50 @@ def claim(who, expr, answer, doubt=None, dur=8.0, note=""):
 
 
 def consequence(hero, says_, dur=7.0, mood="sad", above="", above_label="",
-                note="", cam="push"):
-    """The moment it goes wrong, on one face. The emotional beat of the video."""
+                note="", cam="push", close=False):
+    """The moment it goes wrong, on one face. The emotional beat of the video.
+
+    `close=True` (2026-09-22) frames the head instead of the whole body. At
+    340px a standing figure spends nine tenths of its height on a shirt, so the
+    expression -- the only thing this beat exists for -- is about 40px of face.
+    The close shot is the same drawing cropped, and it lands with `stamp`. Off
+    by default, so every film written before today renders unchanged.
+    """
     body = []
     if above:
         body.append(P.counters(P.counter(int(above), above_label, at=0.0, dur=0.5)))
-    body.append(f'<div class="spot" data-at="0.500" data-dur="0.6" data-anim="pop">'
-                f'{P._people.figure(hero, size=340, mood=mood)}</div>')
+    if close:
+        body.append(P.reaction(hero, mood=mood, size=430, at=0.5, dur=0.55))
+    else:
+        body.append(f'<div class="spot" data-at="0.500" data-dur="0.6" data-anim="pop">'
+                    f'{P._people.figure(hero, size=340, mood=mood)}</div>')
     body.append(P.line(hero, "ttl", at=1.5, anim="rise"))
     body.append(P.line(says_, "ask", at=2.6, anim="rise"))
     return Scene(dur, "".join(body), cam=cam, name=f"consequence({hero})",
                  note=note or f"{hero}: {says_}")
 
 
-def correct(frm, to, because, dur=8.5, lead="", note=""):
-    """The correction: the wrong answer struck through, the right one beside it."""
+def correct(frm, to, because, dur=8.5, lead="", note="", shake=False):
+    """The correction: the wrong answer struck through, the right one beside it.
+
+    `shake=True` (2026-09-22) makes the wrong form wobble on its way in and the
+    right one land with `stamp`. It is the one place in the kit where motion
+    carries meaning rather than attention: the mistake cannot sit still, and the
+    correction arrives from above and stops dead. Off by default.
+    """
     body = []
     if lead:
         body.append(P.expr(lead, at=0.0, anim="rise", dur=0.5))
     # Both numbers share one row, so each gets less than half the content width.
     # "20 000" at the size meant for "7" is three times too wide.
     px = min(P.fit_px(frm, "hero", 380), P.fit_px(to, "hero", 380))
+    a_frm, a_to = ("shake", "stamp") if shake else ("fade", "pop")
     body.append(
         f'<div class="fix">'
         f'<span class="hero strike" style="font-size:{px}px" data-at="0.900" '
-        f'data-dur="0.5" data-anim="fade">{frm}</span>'
+        f'data-dur="{0.7 if shake else 0.5}" data-anim="{a_frm}">{frm}</span>'
         f'<span class="hero red" style="font-size:{px}px" data-at="1.700" '
-        f'data-dur="0.6" data-anim="pop">{to}</span>'
+        f'data-dur="0.6" data-anim="{a_to}">{to}</span>'
         f'</div>')
     body.append(P.card(P.card_expr(because), at=2.9, cls="card--gold", dur=0.55))
     return Scene(dur, "".join(body), cam="push", name=f"correct({frm}->{to})",
@@ -407,6 +442,30 @@ def spell(syllable, caption=None, head=None, dur=6.4, cam="push", note=""):
         body += P.line(caption, "cap", at=secs + 0.9, anim="rise")
     return Scene(dur, body, cam=cam, name=f"spell({syllable})",
                  note=note or f"{syllable} = harflardan yigʻiladi")
+
+
+def build(parts, result, gloss=None, head=None, caption=None, dur=None,
+          step=0.8, size=126, cam="push", note=""):
+    """A word assembled from its roots: 학(ilm) + 생(hayot) → 학생.
+
+    The sibling of `spell`, one level up. `word_family` proves a root is
+    PRODUCTIVE by counting what it opens; this proves a particular word is
+    TRANSPARENT by taking it apart. Both are needed: the first is the argument,
+    the second is the moment it becomes personal, because the word taken apart
+    is always one the viewer already knows.
+
+    parts: [(syllable, gloss, is_root), ...]
+    """
+    body = P.line(head, "lbl lbl--sm", at=0.0, anim="fade") if head else ""
+    grid, secs = W.compound(parts, result, gloss=gloss,
+                            at=0.4 if head else 0.2, step=step, size=size)
+    body += grid
+    end = (0.4 if head else 0.2) + secs
+    if caption:
+        body += P.line(caption, "cap", at=end + 0.5, anim="rise")
+        end += 1.6
+    return Scene(dur or (end + 1.8), body, cam=cam, name=f"build({result})",
+                 note=note or f"{result} = " + " + ".join(p[0] for p in parts))
 
 
 def shape(zone, line, head=None, dur=7.0, cam="push", note=""):

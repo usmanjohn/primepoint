@@ -134,8 +134,23 @@ its own countable structure, so the same machinery works with no new format —
 | `koaudio.py` | native Korean word clips (edge-tts), cached in `assets/ko_words/` |
 
 New beats in `scenes.py`: `word` · `echo` · `word_family` · `spell` · `shape` ·
-`practice`. The `pe-*`-style visual kit is the **KOREYS** section at the bottom
-of `stage.css`.
+`build` · `practice`. The `pe-*`-style visual kit is the **KOREYS** section at the
+bottom of `stage.css`.
+
+`build` (2026-09-22) is `spell` one level up: `spell` takes a syllable apart into jamo,
+`build` takes a WORD apart into the han-characters it is made of — 학(ilm) + 생(hayot) →
+학생, the tiles landing one at a time. Four vocabulary films had been asserting that a
+Korean word is built from roots; this is the beat that shows it happening. The drawing is
+`wordkit.compound()`, reusing the `.jamo` tiles plus a gloss under each one (`.jamo__g`)
+and a gold variant for the root being taught (`.jamo__l--r`).
+
+Added at the same time, from SERIES.md §6's list of what to build INSTEAD of importing
+reaction GIFs: three new moods (`shock` · `laugh` · `cross`), `people.head()` — the same
+figure cropped to head-and-shoulders — behind `primitives.reaction()` and
+`consequence(..., close=True)`, and two entrances in `anim.js`: `shake` (the mistake will
+not sit still) and `stamp` (the correction lands from above). All of them are off by
+default, and that was verified by diffing all 41 existing stages against ones built from
+`git archive HEAD`, not assumed.
 
 ### The two rules that are new
 
@@ -147,12 +162,17 @@ REFUSED, not converted** — a hanja has several readings and a bare consonant h
 no vowel, so there is nothing to compute. On screen they are the point; in
 narration, say the sound in Uzbek.
 
-The transliteration is checked against 36 cases in `korean.py` — run
+The transliteration is checked against **52 cases** in `korean.py` — run
 `python3 korean.py`. 감사합니다 → `kamsahamnida` is the reference case: it pins
-down both word-initial ㄱ = k and 비음화 (ㅂ before ㄴ becomes m). The other two
-rules that took a bug to find are 구개음화 (시 is `shi`, never `si`) and
+down both word-initial ㄱ = k and 비음화 (ㅂ before ㄴ becomes m). The other rules,
+each of which took a bug to find, are 구개음화 (시 is `shi`, never `si`),
 자음군 단순화 (없다 is `opta`, not `otta`; 읽기 is `ilki`, and used to be
-`ikki` — the Uzbek word for "two").
+`ikki` — the Uzbek word for "two") and, from 2026-09-22, **ㄹ의 비음화** (합리 is
+`hamni`, 독립 is `toʻngnip` — an onset ㄹ after anything but a vowel, ㄴ or ㄹ becomes
+ㄴ, and nasalises the stop in front of it) and **구개음화 proper** (밑이 is `michi`,
+같이 is `kachi`). Neither of the last two changes a single word any already-recorded
+film says, which was checked by recomputing all 41 narration scripts under both
+versions of the module rather than assumed.
 
 **A Korean word is spoken by a Korean voice, and only in a silent scene.** The
 Uzbek narration fills nearly every second of a scene it owns, so a Korean word

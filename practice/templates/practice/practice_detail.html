@@ -1,7 +1,10 @@
 {% extends "base.html" %}
-{% load static i18n %}
+{% load static i18n seo_extras %}
 
-{% block title %}{{ practice.title }} — CORE{% endblock %}
+{% block title %}{{ practice|seo_title }}{% endblock %}
+{% block og_title %}{{ practice|seo_social_title }}{% endblock %}
+{% block meta_description %}{% seo_description practice.description practice.title %}{% endblock %}
+{% block og_description %}{% seo_description practice.description practice.title %}{% endblock %}
 
 {% block content %}
     <!-- TOP NAVIGATION -->

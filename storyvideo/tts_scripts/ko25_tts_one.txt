@@ -1,0 +1,33 @@
+Oʻzbekchada bormoqchi degan soʻz hamma uchun bir xil. <break time='0.45s' /> Koreysda esa yoʻq.
+
+<break time='2.5s' />
+
+Sardor shunday dedi: <emphasis level='moderate'>omoninun hanguge kagoʻ shipoyoʻ</emphasis>.
+
+<break time='2.5s' />
+
+Oʻqituvchi soʻradi: onangizning ichini qayerdan bilasiz?
+
+<break time='2.5s' />
+
+Almashadigan narsa feʼl emas. <break time='0.3s' /> Uning oxiri. <break time='0.45s' /> <emphasis level='moderate'>kagoʻ shipoyoʻ</emphasis> emas, <emphasis level='moderate'>kagoʻ shipoheyoʻ</emphasis>.
+
+<break time='2.5s' />
+
+<emphasis level='moderate'>shipoyoʻ</emphasis>, oʻzimning xohishim. <break time='0.45s' /> <emphasis level='moderate'>shipoheyoʻ</emphasis>, tashqaridan koʻrinib turgan xohish.
+
+<break time='2.5s' />
+
+Bu faqat xohishga tegishli emas. <emphasis level='moderate'>choʻayoʻ</emphasis>, <emphasis level='moderate'>choʻaheyoʻ</emphasis>. <break time='0.3s' /> <emphasis level='moderate'>apayoʻ</emphasis>, <emphasis level='moderate'>apaheyoʻ</emphasis>.
+
+<break time='2.5s' />
+
+Sababi chiroyli. <break time='0.3s' /> Oʻz ichingizni bilasiz, boshqaniknini esa faqat koʻrasiz. <break time='0.45s' /> Koreys tili shu ikkisini ajratadi.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Oʻzingiz haqingizda <emphasis level='moderate'>kagoʻ shipoheyoʻ</emphasis> desangiz, qanday eshitiladi? <break time='0.45s' /> Izohda kutamiz.
+
+<break time='2.5s' />
+
+Yigirma sakkizinchi darsning oʻzi Powertyda: Praym Korean. <break time='0.3s' /> Havola profilda.

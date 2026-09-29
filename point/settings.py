@@ -33,6 +33,17 @@ TELEGRAM_CHANNEL = os.environ.get('TELEGRAM_CHANNEL', '@powertyuz')
 # https://powerty.uz/... is a blank page. A wrong fallback here ships dead links.
 SITE_URL = os.environ.get('SITE_URL', 'https://www.powerty.uz')
 
+# The one host the site is meant to be reached at, and the aliases that must
+# bounce to it (see point.middleware.CanonicalHostMiddleware). Keep the alias
+# list tight: every host named here is redirected unconditionally, so a stray
+# entry takes that host off the air.
+CANONICAL_HOST = os.environ.get('CANONICAL_HOST', 'www.powerty.uz')
+CANONICAL_HOST_ALIASES = tuple(
+    host.strip()
+    for host in os.environ.get('CANONICAL_HOST_ALIASES', 'powerty.uz').split(',')
+    if host.strip()
+)
+
 CSRF_TRUSTED_ORIGINS = [
     origin.strip()
     for origin in os.environ.get('DJANGO_CSRF_TRUSTED_ORIGINS', '').split(',')
@@ -75,6 +86,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'point.middleware.CanonicalHostMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

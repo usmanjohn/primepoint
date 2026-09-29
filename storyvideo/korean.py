@@ -109,6 +109,11 @@ PALATAL = {"ㅣ": "i", "ㅑ": "a", "ㅒ": "e", "ㅕ": "o", "ㅖ": "e",
 
 SONORANT = {"n", "m", "ng", "l"}
 
+# 구개음화 proper: a ㄷ or ㅌ landing in front of 이 is made at the palate, so
+# it comes out ㅈ or ㅊ. The 2026-09-13 fix carried this name but only did the
+# ㅅ half (시 -> shi); this is the half every Korean textbook means by it.
+PALATALISE = {"ㄷ": "ㅈ", "ㅌ": "ㅊ"}
+
 # The three two-consonant finals that sound their SECOND letter (닭 [닥],
 # 삶 [삼], 읊다 [읍따]). Every other cluster sounds its first -- 없다 [업따],
 # 앉다 [안따], 여덟 [여덜]. See the reduction step in `_word`.
@@ -156,6 +161,11 @@ def _word(word):
         if nxt[0] == "ㅎ" and tail in ASPIRATE:
             nxt[0] = ASPIRATE[tail]
             cur[2] = cur[2][:-1]
+            # 닫히다 [다치다]: the ㅌ this just made is immediately in front of
+            # 이, so 구개음화 fires on it in the same step. Doing it here rather
+            # than in a later pass is what keeps the two rules composable.
+            if nxt[0] in PALATALISE and nxt[1] == "\u3163":
+                nxt[0] = PALATALISE[nxt[0]]
             continue
 
         # 연음 — a final slides into a following empty onset. ㅎ just vanishes
@@ -166,7 +176,12 @@ def _word(word):
         if nxt[0] == "ㅇ" and cur[2] and cur[2][-1] != "ㅇ":
             moved = cur[2].pop()
             if moved != "ㅎ":
-                nxt[0] = moved
+                # 구개음화 — a ㄷ or ㅌ that lands in front of 이 does not stay
+                # a ㄷ or ㅌ: 밑이 [미치], 같이 [가치], 굳이 [구지]. The tongue is
+                # already at the palate for 이 and the stop is made there too.
+                nxt[0] = (PALATALISE[moved]
+                          if moved in PALATALISE and nxt[1] == "\u3163"
+                          else moved)
             continue
 
     # 자음군 단순화 — a two-consonant final only ever sounds ONE of its two
@@ -216,6 +231,16 @@ def _word(word):
             finals[i] = "l"
         elif f == "l" and nxt[0] == "ㄴ":
             nxt[0] = "ㄹ"
+        # ㄹ의 비음화 — an onset ㄹ can only follow a vowel, ㄴ or ㄹ; the two
+        # sonorant cases are the branches above, and everything else turns the
+        # ㄹ into ㄴ. If the final in front of it is a stop, that stop then meets
+        # a nasal and nasalises in turn, so ㅂ + ㄹ is ㅁ + ㄴ and ㄱ + ㄹ is
+        # ㅇ + ㄴ: 합리 [함니], 독립 [동닙]. Two changes, one cause, and the
+        # second runs BACKWARDS -- which is why it cannot be folded into the
+        # 비음화 branch above, whose test looks forward at the onset.
+        elif nxt[0] == "ㄹ" and f not in ("", "l"):
+            nxt[0] = "ㄴ"
+            finals[i] = {"k": "ng", "t": "n", "p": "m"}.get(f, f)
 
     # ── letters ─────────────────────────────────────────────────────────
     out, prev = [], ""      # prev = the sound immediately before this onset
@@ -302,11 +327,37 @@ CASES = [
     # everywhere else in this module, so [일끼] is "ilki", not "ilkki".
     ("읽기",       "ilki"),
     ("읽고",       "ilkoʻ"),
+    # ── ㄹ의 비음화: the rule that was missing until 2026-09-22 ──
+    # An onset ㄹ cannot follow anything but a vowel, ㄴ or ㄹ. After any other
+    # final it becomes ㄴ -- and if that final is a stop, the stop nasalises to
+    # match, so the change runs BACKWARDS through the word as well as forwards.
+    # Found while romanising 합리적이다 for a TOPIK film: it came out
+    # "haprijogida" and a Korean says [함니저기다].
+    ("심리",       "shimni"),        # after ㅁ. Was "shimri".
+    ("정리",       "chongni"),       # after ㅇ. Was "chongri".
+    ("종로",       "choʻngnoʻ"),      # the Seoul street. Was "choʻngroʻ".
+    ("대통령",     "tetoʻngnyong"),   # y-glide survives the ㄹ -> ㄴ
+    ("합리",       "hamni"),         # ㅂ + ㄹ -> ㅁ + ㄴ. Was "hapri".
+    ("독립",       "toʻngnip"),       # ㄱ + ㄹ -> ㅇ + ㄴ. Was "toʻkrip".
+    ("국립",       "kungnip"),
+    ("합리적이다", "hamnijogida"),   # the word that started it
+    # ── 구개음화 proper: ㄷ/ㅌ + 이 -> ㅈ/ㅊ, missing until 2026-09-22 ──
+    # The 2026-09-13 fix was named 구개음화 but only did the ㅅ half. The other
+    # half is the textbook one, and ko19 needs it: the proverb 등잔 밑이 어둡다
+    # is read [등잔 미치 어둡따], and the romaniser said "miti".
+    ("밑이",       "michi"),         # Was "miti".
+    ("같이",       "kachi"),         # Was "kati".
+    ("굳이",       "kuji"),          # ㄷ -> ㅈ, not ㅊ. Was "kudi".
+    ("해돋이",     "hedoʻji"),
+    ("닫히다",     "tachida"),       # ㄷ + ㅎ -> ㅌ -> ㅊ, both rules at once
     # ── and the neighbours that must NOT change ──
     ("사",         "sa"),
     ("수",         "su"),
     ("셋",         "set"),            # ㅔ does not palatalise
     ("서울",       "soul"),
+    ("미디어",     "midio"),          # no 받침, so no 구개음화
+    ("들리다",     "tullida"),        # ㄹ + ㄹ stays 유음화
+    ("신라",       "shilla"),         # ㄴ + ㄹ is 유음화, NOT ㄹ -> ㄴ
 ]
 
 

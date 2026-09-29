@@ -1,0 +1,33 @@
+Koreysda ikkita soʻz bor, ikkalasida ham in eshitiladi. <break time='0.45s' /> Lekin ular bitta ildizdan emas.
+
+<break time='2.5s' />
+
+<emphasis level='moderate'>ingan</emphasis>, inson degani.
+
+<break time='2.5s' />
+
+Ochamiz. <emphasis level='moderate'>in</emphasis>, odam. <break time='0.3s' /> <emphasis level='moderate'>kan</emphasis>, oraliq. <break time='0.45s' /> Yaʼni odamlar orasi.
+
+<break time='2.5s' />
+
+Va oʻsha <emphasis level='moderate'>in</emphasis> yana beshta soʻzni ochadi: shaxs, katta yoshli odam, mashhurlik, umr. <break time='0.45s' /> Va sunʼiy intellekt.
+
+<break time='2.5s' />
+
+Endi mana bu soʻzga qarang: <emphasis level='moderate'>vonin</emphasis>. <break time='0.3s' /> Sabab degani. <break time='0.45s' /> Unda ham in bor.
+
+<break time='2.5s' />
+
+Lekin belgisi boshqa. <break time='0.45s' /> Ovoz bir xil, ildiz boshqa, va maʼnosining odamga hech qanday aloqasi yoʻq.
+
+<break time='2.5s' />
+
+Demak ildiz usuli taxmin beradi, kafolat emas. <break time='0.45s' /> Ildizni toping, keyin maʼnosi mos kelyaptimi, tekshiring.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. <emphasis level='moderate'>ingi</emphasis> mashhurlik boʻlsa, <emphasis level='moderate'>ingiga manta</emphasis> nima degani? <break time='0.45s' /> Izohda kutamiz.
+
+<break time='2.5s' />
+
+Ellik bitta ildizning hammasi Powertyda: Ekzamprep, lugʻat, soʻz oilalari.

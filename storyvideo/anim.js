@@ -41,6 +41,17 @@ const ANIM = {
   slidel: p => ({ opacity: clamp(p * 1.6), transform: `translateX(${(1 - EASE.out(p)) * -140}px)` }),
   slider: p => ({ opacity: clamp(p * 1.6), transform: `translateX(${(1 - EASE.out(p)) * 140}px)` }),
   pop:    p => ({ opacity: clamp(p * 2.2), transform: `scale(${0.3 + 0.7 * EASE.pop(p)})` }),
+  /* A mistake that will not sit still. The amplitude decays with (1-p), so it is
+   * identity at p=1 like every other entrance -- a settled element is pixel-clean
+   * and a renderer that lands exactly on the end of the entrance sees no wobble. */
+  shake:  p => ({ opacity: clamp(p * 3),
+                  transform: `translateX(${Math.sin(p * Math.PI * 6) * 30 * (1 - p)}px)` }),
+  /* Lands from above the camera rather than growing into it: scale 2.4 down to 1
+   * with the tilt straightening out. Used where something ARRIVES with authority
+   * -- the correct form, the verdict, the root inside the word. */
+  stamp:  p => ({ opacity: clamp(p * 2.6),
+                  transform: `scale(${2.4 - 1.4 * EASE.out(p)}) `
+                           + `rotate(${(1 - EASE.out(p)) * -8}deg)` }),
   grow:   p => ({ opacity: 1, transform: `scaleY(${EASE.out(p)})` }),
   widen:  p => ({ opacity: 1, transform: `scaleX(${EASE.out(p)})` }),
   none:   () => ({ opacity: 1 }),

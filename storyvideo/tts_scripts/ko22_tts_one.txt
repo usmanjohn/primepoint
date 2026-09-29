@@ -1,0 +1,33 @@
+Sherbek har kuni bir soat lugʻat yodladi. <break time='0.3s' /> Daftarga koʻchirib. <break time='0.45s' /> Imtihonda esa soʻzlarni tanimadi.
+
+<break time='2.5s' />
+
+Mehnat bor edi. <break time='0.3s' /> Natija yoʻq.
+
+<break time='2.5s' />
+
+Chunki u soʻzni yoza olardi.
+
+<break time='2.5s' />
+
+Imtihon esa yozishni emas, tanishni soʻraydi.
+
+<break time='2.5s' />
+
+Yana bir narsa. <break time='0.3s' /> Koʻpchilik otlarni yodlaydi. <break time='0.45s' /> Javobni esa koʻpincha sifat va ravish hal qiladi.
+
+<break time='2.5s' />
+
+Mana shunaqa soʻzlar: oqilona, tabiiy ravishda, hurmat qilmoq, erishmoq. <break time='0.45s' /> Birortasi ham ot emas.
+
+<break time='2.5s' />
+
+Shuning uchun qoida bitta: koʻp oʻqing, kam tarjima qiling. <break time='0.45s' /> Oʻqigan matnni bir necha kundan keyin qayta oching.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Bugun oʻqigan matningizdan qaysi jumlani yozib qoʻyasiz? <break time='0.45s' /> Izohda kutamiz.
+
+<break time='2.5s' />
+
+Oʻqish metodining oʻzi Powertyda: Ekzamprep, Topik, oʻqish. <break time='0.3s' /> Havola profilda.

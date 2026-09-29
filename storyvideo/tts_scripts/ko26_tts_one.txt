@@ -1,0 +1,33 @@
+Topik yozish boʻlimida ellik uchinchi savol grafik beradi. <break time='0.45s' /> Va koʻpchilik unga oʻz fikrini yozadi.
+
+<break time='2.5s' />
+
+Afsona shunday boshladi: <emphasis level='moderate'>che senggagenun undoʻngi choʻtsumnida</emphasis>.
+
+<break time='2.5s' />
+
+Oʻqituvchi bitta narsani aytdi: buni grafik aytmagan.
+
+<break time='2.5s' />
+
+Grafikda hammasi turibdi: sport qirq besh foiz, sayohat oʻttiz, kitob oʻqish yigirma besh. <break time='0.45s' /> Yigʻindisi, yuz foiz.
+
+<break time='2.5s' />
+
+Almashadigan narsa bitta ibora. <break time='0.3s' /> <emphasis level='moderate'>che senggagenun</emphasis> emas, <emphasis level='moderate'>choʻsa kyolgva</emphasis>.
+
+<break time='2.5s' />
+
+Va butun javob toʻrtta iboraga sigʻadi: natijaga koʻra, eng yuqori chiqdi, undan keyin turdi, eng past chiqdi.
+
+<break time='2.5s' />
+
+Fikringiz uchun ellik toʻrtinchi savol bor. <break time='0.3s' /> Va u ellik ball. <break time='0.45s' /> Ellik uchinchida esa grafik gapiradi.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Javob ikki yuzdan uch yuz belgigacha. <break time='0.45s' /> Bu necha jumla boʻladi? Izohda kutamiz.
+
+<break time='2.5s' />
+
+Ellik uchinchi savolning oʻz darsi Powertyda: Ekzamprep, Topik, yozish. <break time='0.3s' /> Havola profilda.

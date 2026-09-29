@@ -41,7 +41,7 @@ IELTS uchun **31 ta ildiz / 167 ta soʻz**. Bitta ildiz = bitta video.
 ```bash
 cd storyvideo                      # HAR DOIM shu papkadan; `python -m storyvideo` ISHLAMAYDI
 
-python3 korean.py                  # 0. talaffuz qoidalari hali ham toʻgʻrimi (36/36)
+python3 korean.py                  # 0. talaffuz qoidalari hali ham toʻgʻrimi (52/52)
 python3 cli.py lint    ko04        # 1. toʻrtta darvoza, render yoʻq
 python3 cli.py sheet   ko04        # 2. HAR BIR kadrni koʻring (pastga qarang)
 python3 cli.py script  ko04 --one --ssml    # 3. tts_scripts/ko04_tts_one.txt
@@ -73,6 +73,7 @@ Har bir sahnaga bitta ovoz satri, jim sahnaga `None`.
 | `shape` | ogʻiz kesimi, bitta artikulyator oltin | harf shakli |
 | `order` | bir gap uch tilda, **ustunlarda** | grammatika, tartib |
 | `pairs` | 조사 ↔ oʻzbekcha qoʻshimcha jadvali | qoʻshimchalar |
+| `build` | ildizlardan soʻz yigʻiladi: 학 + 생 → 학생 | soʻz oilasi filmi |
 | `echo` | **jim sahna** — koreyscha ovoz aytadi | takrorlash |
 | `practice` | Powertyga yoʻllovchi karta | oxiridan oldin |
 
@@ -124,7 +125,7 @@ yil». Tartib son unlidan keyin `-nchi`, undoshdan keyin `-inchi` oladi
 
 `korean.py` — jamo boʻlish arifmetika, ish esa beshta tovush qoidasida
 (연음 · 비음화 · 유음화 · 격음화 · jaranglilik). **Etalon holat — 감사합니다 →
-`kamsahamnida`**: u ikki qoidani birdan mixlaydi. `python3 korean.py` 36 ta holatni
+`kamsahamnida`**: u ikki qoidani birdan mixlaydi. `python3 korean.py` 52 ta holatni
 tekshiradi; qoidaga tegsangiz, avval shuni ishlating.
 
 ### ⚠️ Koreyscha soʻz kadrda hech qachon boʻlinmasin
@@ -190,6 +191,54 @@ isbotlamaydi.
 
 **Saboq: yangi tovush qoidasi qoʻshsangiz, avval uni USHLAYDIGAN holat yozing.**
 Oʻn besh holat yashil boʻlgani qoidaning borligini isbotlamaydi.
+
+### ⚠️ ㄹ ning 비음화 — undoshdan keyin ㄹ **hech qachon** ㄹ boʻlib qolmaydi
+
+2026-09-22 da topildi, ko22 uchun 합리적이다 ni oʻgirganda: `haprijogida` chiqdi,
+koreys esa **[함니저기다]** deydi. Qoida ikki tomonlama ishlaydi va aynan shuning
+uchun eski `비음화` shoxiga sigʻmaydi — u faqat oldinga, keyingi bosh undoshga
+qaraydi:
+
+    심리 → «shimni»      정리 → «chongni»     종로 → «choʻngnoʻ»
+    합리 → «hamni»       독립 → «toʻngnip»    국립 → «kungnip»
+    대통령 → «tetoʻngnyong»
+
+Yaʼni: bosh ㄹ faqat unli, ㄴ yoki ㄹ dan keyin tura oladi. Boshqa har qanday
+받침 dan keyin u **ㄴ** ga aylanadi; agar oʻsha 받침 portlovchi boʻlsa, u ham
+oʻz navbatida burun tovushiga oʻtadi (ㅂ+ㄹ → ㅁ+ㄴ, ㄱ+ㄹ → ㅇ+ㄴ). Oʻzgarish
+**orqaga** yuradi — shuning uchun alohida shox.
+
+⚠️ 신라 **bu qoidaga kirmaydi**: ㄴ + ㄹ = 유음화, natija `shilla`. Tekshiruvda
+u ham, 들리다 ham «oʻzgarmasligi kerak» roʻyxatida turibdi.
+
+### ⚠️ 구개음화 ning IKKINCHI yarmi — ㄷ/ㅌ + 이 → ㅈ/ㅊ
+
+2026-09-13 dagi tuzatish «구개음화» deb atalgan edi, lekin faqat ㅅ qismini
+qilardi (시 → `shi`). Darsliklar bu nom bilan aytadigani esa mana bu, va ko19
+aynan shunga muhtoj boʻldi — 등잔 밑이 어둡다 **[등잔 미치 어둡따]** deb oʻqiladi:
+
+    밑이 → «michi»   같이 → «kachi»   굳이 → «kuji»
+    해돋이 → «hedoʻji»                닫히다 → «tachida»  (격음화 + 구개음화 birga)
+
+Oʻzi ham oʻsha saboq: **avval yiqiladigan oʻn uchta holat yozildi, keyin
+qoida.** Endi `python3 korean.py` — **52 ta holat**.
+
+⚠️ **Va hech bir eski film matni oʻzgarmadi.** Ikkala qoida ham hozirgacha
+aytilgan birorta soʻzga tegmaydi — bu quruq regressiya bilan tekshirildi
+(41 ta skript eski va yangi kod bilan qayta hisoblandi, farq yoʻq). §7.2.1
+qoidasi kuchda qoladi: yozib olingan filmning skripti — HUJJAT, uni «tartibga
+solish» uchun qayta generatsiya qilmang.
+
+### ⚠️ Romanizatsiya oʻzbekcha soʻzga aylanib qolmasin
+
+읽기 «ikki» boʻlib chiqqani bejiz eslanmaydi. 2026-09-22 da yana bittasi
+ushlandi, ko23 da: **불** (不, «emas») — `pul`. Yaʼni oʻzbekcha nutq oʻrtasida
+«pul emas boʻlsa…» degan gap. Yechim qayta yozish emas — **ovozda oʻsha
+boʻgʻinni yolgʻiz aytmang**: ekranda 한글 turibdi, u yerda u maqsad; ovozda esa
+«maqoldagi uchinchi boʻgʻin» deyildi.
+
+**Har bir batch uchun:** `cli.py script` chiqargan `<emphasis>` ichidagi
+tokenlarni koʻzdan kechiring va har birini oʻzbekcha lugʻatga solib koʻring.
 
 Oʻzbek tilining ikkita omadi: **ㅗ→`oʻ` / ㅓ→`o`** — ingliz transliteratsiyasi
 yoʻqotadigan farq. ㅡ esa `u` deb yoziladi va ㅜ bilan ataylab toʻqnashadi
@@ -316,7 +365,7 @@ railway run python manage.py import_corner \
 
 ## 10. Chiqarishdan oldingi roʻyxat
 
-- [ ] `python3 korean.py` → 36/36
+- [ ] `python3 korean.py` → **52/52**
 - [ ] `cli.py lint` → PASS (**toʻrtta** darvoza — muqova ham)
 - [ ] `Video(subject=...)` qoʻyilgan (aks holda urgʻu ham, chip ham yoʻq)
 - [ ] muqovaning 0-kadri toʻliq chizilgan, qizil chiziq FAQAT xato boʻlakdan oʻtadi
