@@ -1,0 +1,112 @@
+{% load i18n %}{% comment %}
+One line of a task. Context: task, item (item.resp = this user's response or None),
+review (optional — the teacher's read-only view).
+Auto kinds render an input (a <select> for `pick`) inside the stem when the stem
+has a ___ gap, or under it when it has none. The verdict styles the whole line.
+{% endcomment %}
+{% with r=item.resp %}
+<li class="wb-item{% if r.verdict == 'right' or r.verdict == 'nearly' %} wb-item--right{% elif r.verdict == 'wrong' %} wb-item--wrong{% endif %}">
+
+{% if task.is_auto %}
+    {% if task.kind == 'build' and item.words %}
+    <div class="wb-words">{% for w in item.words %}<span class="wb-word">{{ w }}</span>{% endfor %}</div>
+    {% endif %}
+
+    {% with parts=item.stem_parts %}
+    <div class="wb-line">
+        {% if parts %}
+            <span class="wb-stem">{{ parts.0|safe }}</span>
+            {% include "workbook/_input.html" %}
+            <span class="wb-stem">{{ parts.1|safe }}</span>
+        {% else %}
+            {% if item.stem %}<div class="wb-stem wb-stem--block">{{ item.stem|safe }}</div>{% endif %}
+            {% include "workbook/_input.html" with as_block=1 %}
+        {% endif %}
+        {% if r.verdict == 'right' or r.verdict == 'nearly' %}<span class="wb-mark wb-mark--ok" aria-label="{% trans 'right' %}">✓</span>
+        {% elif r.verdict == 'wrong' %}<span class="wb-mark wb-mark--no" aria-label="{% trans 'wrong' %}">✗</span>{% endif %}
+    </div>
+    {% endwith %}
+
+    {% if r.verdict == 'nearly' %}
+    <div class="wb-fb wb-fb--nearly">{% trans "Right! Only check the spacing or punctuation:" %} <strong lang="ko">{{ item.answers.0 }}</strong></div>
+    {% elif r.verdict == 'wrong' %}
+    <div class="wb-fb wb-fb--wrong">
+        {% trans "Answer:" %} <strong lang="ko">{{ item.answers.0 }}</strong>
+        {% if item.explanation %}<div class="wb-fb__why">{{ item.explanation|safe }}</div>{% endif %}
+        {% if not review %}
+        <button type="submit" form="ap{{ item.pk }}" class="wb-appeal">
+            <i class="bi bi-flag"></i> {% trans "I think my answer is right too" %}
+        </button>
+        {% endif %}
+    </div>
+    {% elif r.verdict == 'right' and item.explanation %}
+    <details class="wb-why"><summary>{% trans "Why?" %}</summary>{{ item.explanation|safe }}</details>
+    {% endif %}
+
+{% elif task.is_write %}
+    {% if item.stem %}<div class="wb-stem wb-stem--block">{{ item.stem|safe }}</div>{% endif %}
+    {% if review %}
+        <div class="wb-written" lang="ko">{{ r.text|default:"—"|linebreaksbr }}</div>
+    {% else %}
+        <textarea name="i{{ item.pk }}" class="wb-textarea" rows="6" lang="ko"
+                  autocomplete="off" autocapitalize="off" spellcheck="false"
+                  {% if not user.is_authenticated %}disabled{% endif %}
+                  placeholder="{% trans 'Write here…' %}">{{ r.text }}</textarea>
+    {% endif %}
+    {% if item.checklist %}
+    <div class="wb-check">
+        <div class="wb-check__head">{% trans "Before you send it, check your own text:" %}</div>
+        {% for line in item.checklist %}
+        <label class="wb-check__line">
+            <input type="checkbox" name="c{{ item.pk }}" value="{{ forloop.counter0 }}"
+                   {% if forloop.counter0 in r.checks %}checked{% endif %}
+                   {% if review or not user.is_authenticated %}disabled{% endif %}>
+            <span>{{ line|safe }}</span>
+        </label>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% if r.text %}
+    <details class="wb-model" open>
+        <summary>{% trans "Compare with a model answer" %}</summary>
+        <div class="wb-model__body" lang="ko">{{ item.model_answer|safe }}</div>
+        {% if item.explanation %}<div class="wb-fb__why">{{ item.explanation|safe }}</div>{% endif %}
+    </details>
+    {% if review %}
+        {% if r.self_mark %}<div class="wb-self">{% trans "Pupil's own verdict:" %} {% if r.self_mark == 'good' %}👍 {% trans "I managed it" %}{% else %}🔁 {% trans "I need another go" %}{% endif %}</div>{% endif %}
+    {% else %}
+    <div class="wb-self">
+        <span>{% trans "Honestly — how did it go?" %}</span>
+        <button type="submit" form="sm{{ item.pk }}" name="value" value="good"
+                class="wb-self__btn {% if r.self_mark == 'good' %}is-on{% endif %}">👍 {% trans "I managed it" %}</button>
+        <button type="submit" form="sm{{ item.pk }}" name="value" value="again"
+                class="wb-self__btn {% if r.self_mark == 'again' %}is-on{% endif %}">🔁 {% trans "I need another go" %}</button>
+    </div>
+    {% endif %}
+    {% endif %}
+
+{% else %}{# mission / copy — ticked done #}
+    {% if task.kind == 'copy' %}
+    {% if item.stem %}<div class="wb-stem wb-stem--block">{{ item.stem|safe }}</div>{% endif %}
+    <div class="wb-copy" lang="ko">{% for w in item.words %}<span class="wb-copy__ch">{{ w }}</span>{% endfor %}</div>
+    {% else %}
+    <div class="wb-mission">{{ item.stem|safe }}</div>
+    {% endif %}
+    <label class="wb-done">
+        <input type="checkbox" name="d{{ item.pk }}" value="1" {% if r.done %}checked{% endif %}
+               {% if review or not user.is_authenticated %}disabled{% endif %}>
+        <span>{% trans "Done it!" %}</span>
+    </label>
+    {% if review %}
+        {% if r.text %}<div class="wb-written">{{ r.text|linebreaksbr }}</div>{% endif %}
+    {% else %}
+    <textarea name="i{{ item.pk }}" class="wb-textarea wb-textarea--short" rows="2"
+              {% if not user.is_authenticated %}disabled{% endif %}
+              placeholder="{% trans 'How did it go? (optional)' %}">{{ r.text }}</textarea>
+    {% endif %}
+    {% if item.model_answer %}
+    <details class="wb-why"><summary>{% trans "An example" %}</summary><div lang="ko">{{ item.model_answer|safe }}</div></details>
+    {% endif %}
+{% endif %}
+</li>
+{% endwith %}

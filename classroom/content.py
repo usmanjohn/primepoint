@@ -140,3 +140,20 @@ def expand_tutorials(tutorials):
         stories.extend(tutorial.stories.filter(
             is_published=True, collection__is_published=True))
     return practices, stories
+
+
+def expand_workbooks(tutorials):
+    """The workbooks — a Prime lesson's fourth leg — that belong to these
+    tutorials. Kept apart from `expand_tutorials` so its two callers that
+    only want practices and readings do not change shape."""
+    from workbook.models import Workbook
+    return list(Workbook.objects.filter(
+        tutorial__in=tutorials, is_published=True))
+
+
+def workbook_queryset(classroom):
+    """Workbooks whose lesson this classroom may see, in lesson order."""
+    from workbook.models import Workbook
+    return (Workbook.objects.filter(is_published=True,
+                                    tutorial__in=tutorial_queryset(classroom))
+            .select_related('tutorial').order_by('tutorial_id'))

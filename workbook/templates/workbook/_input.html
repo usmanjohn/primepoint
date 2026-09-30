@@ -1,0 +1,11 @@
+{% load i18n %}{% comment %}
+The answer box for one auto-marked item. `lang="ko"` asks a phone for the
+Korean keyboard; autocorrect is off because it "fixes" Hangul into nonsense.
+{% endcomment %}{% if review %}<span class="wb-given{% if as_block %} wb-given--block{% endif %}" lang="ko">{{ item.resp.text|default:"—" }}</span>{% elif task.kind == 'pick' %}<select name="i{{ item.pk }}" class="wb-select" {% if not user.is_authenticated %}disabled{% endif %}>
+    <option value="">…</option>
+    {% for opt in item.options %}<option value="{{ opt }}" {% if item.resp.text == opt %}selected{% endif %}>{{ opt }}</option>{% endfor %}
+</select>{% else %}<input type="text" name="i{{ item.pk }}" value="{{ item.resp.text }}"
+       class="wb-input wb-input--{% if as_block %}l{% else %}{{ item.size }}{% endif %}"
+       lang="ko" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+       {% if not user.is_authenticated %}disabled{% endif %}
+       aria-label="{% trans 'Your answer' %}">{% endif %}

@@ -43,6 +43,7 @@ def _published_counts():
     from exam.models import Exam
     from practice.models import Practice
     from tutorial.models import Tutorial
+    from workbook.models import Workbook
 
     return {
         'practices': Practice.objects.filter(is_published=True).count(),
@@ -58,6 +59,8 @@ def _published_counts():
         # An unopened puzzle is not yet part of anyone's denominator.
         'logic': LogicPuzzle.objects.filter(
             is_published=True, opens_at__lte=timezone.now()).count(),
+        'workbooks': Workbook.objects.filter(
+            is_published=True, tutorial__is_published=True).count(),
     }
 
 
@@ -126,6 +129,13 @@ def _logic(user, panda):
     return agg['done'] or 0, agg['points'] or 0
 
 
+def _workbooks(user, panda):
+    """Finished workbooks — every section sent at least once."""
+    agg = user.workbook_attempts.filter(completed_at__isnull=False).aggregate(
+        done=Count('id'), points=Sum('points_awarded'))
+    return agg['done'] or 0, agg['points'] or 0
+
+
 def _exams(user, panda):
     if not panda:
         return 0, 0
@@ -143,6 +153,8 @@ SOURCES = [
      'url': 'tutorial_list', 'reader': _tutorials},
     {'key': 'stories', 'label': _('Corner Stories'), 'icon': 'bi-stars',
      'url': 'corner_home', 'reader': _stories},
+    {'key': 'workbooks', 'label': _('Workbooks'), 'icon': 'bi-pencil-square',
+     'url': 'tutorial_list', 'reader': _workbooks},
     {'key': 'writing', 'label': _('Writing Drills'), 'icon': 'bi-pencil-square',
      'url': 'examprep_home', 'reader': _writing},
     {'key': 'exams', 'label': _('Exams'), 'icon': 'bi-journal-check',

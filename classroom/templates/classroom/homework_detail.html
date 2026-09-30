@@ -128,7 +128,7 @@
           {% if kind == 'tutorial' %}
           <label class="cr-chip" style="cursor:pointer;">
             <input type="checkbox" name="include_related" value="1" checked>
-            {% trans "+ its practice & reading" %}
+            {% trans "+ its practice, reading & workbook" %}
           </label>
           {% endif %}
           <button type="submit" class="btn-auth-primary py-1 px-3" style="font-size:.78rem;">
@@ -184,6 +184,12 @@
         {% if a.attempt %}· {% trans "score" %} {{ a.attempt.score|floatformat:"0" }}%{% endif %}
         {% if a.submitted_at %}· {{ a.submitted_at|date:"M d" }}{% endif %}
       </div>
+      {% for wb in homework.workbooks.all %}
+      <a href="{% url 'workbook_review' wb.pk a.panda.profile.user.pk %}?back={{ request.path|urlencode }}"
+         class="cr-chip cr-chip--kind-workbook text-decoration-none mt-1 d-inline-block">
+        <i class="bi bi-pencil-square"></i> {% blocktrans with code=wb.code %}{{ code }} workbook — read their writing{% endblocktrans %}
+      </a>
+      {% endfor %}
     </div>
     <div class="cr-row-side">
       <div class="cr-bar {% if a.percent_done == 100 %}cr-bar--done{% endif %}">

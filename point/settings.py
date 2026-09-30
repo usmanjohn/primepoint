@@ -82,6 +82,7 @@ INSTALLED_APPS = [
     'examprep',
     'corner',
     'logic',
+    'workbook',
     'telegrambot',
 ]
 

@@ -12,7 +12,7 @@ class HomeworkAssignmentInline(admin.TabularInline):
 class HomeworkAdmin(admin.ModelAdmin):
     list_display = ('title', 'master', 'classroom', 'item_count', 'due_date', 'created_at')
     list_filter = ('master', 'classroom')
-    filter_horizontal = ('practices', 'tutorials', 'stories', 'exam_lessons')
+    filter_horizontal = ('practices', 'tutorials', 'stories', 'exam_lessons', 'workbooks')
     inlines = [HomeworkAssignmentInline]
 
 

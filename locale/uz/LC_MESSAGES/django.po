@@ -5407,7 +5407,7 @@ msgstr "To'g'ri!"
 
 #: games/templates/games/primeclimb_play.html:248
 msgid "wrong"
-msgstr ""
+msgstr "notoʻgʻri"
 
 #: games/templates/games/primeclimb_play.html:249
 msgid "missed"
@@ -9661,10 +9661,8 @@ msgid "The number is the lesson whose reading the word appears in."
 msgstr ""
 
 #: templates/printing/_book_key.html:10 templates/printing/_book_toc.html:32
-#, fuzzy
-#| msgid "Unanswered"
 msgid "Answer key"
-msgstr "Javobsiz"
+msgstr "Javoblar kaliti"
 
 #: templates/printing/_book_key.html:11
 msgid "Check only after you have finished the whole practice."
@@ -10280,3 +10278,210 @@ msgstr "Telegram kanal QR kodi"
 
 #~ msgid "Reach out at"
 #~ msgstr "Murojaat qiling"
+
+msgid "Right! Only check the spacing or punctuation:"
+msgstr "Toʻgʻri! Faqat boʻsh joy yoki tinish belgisini tekshiring:"
+
+msgid "I think my answer is right too"
+msgstr "Menimcha, mening javobim ham toʻgʻri"
+
+msgid "Why?"
+msgstr "Nega?"
+
+msgid "Before you send it, check your own text:"
+msgstr "Yuborishdan oldin matningizni oʻzingiz tekshiring:"
+
+msgid "Compare with a model answer"
+msgstr "Namuna javob bilan solishtiring"
+
+msgid "Pupil's own verdict:"
+msgstr "Oʻquvchining oʻz bahosi:"
+
+msgid "I managed it"
+msgstr "Uddaladim"
+
+msgid "I need another go"
+msgstr "Yana urinib koʻrishim kerak"
+
+msgid "Honestly — how did it go?"
+msgstr "Rostini ayting — qanday chiqdi?"
+
+msgid "Done it!"
+msgstr "Bajardim!"
+
+msgid "An example"
+msgstr "Misol"
+
+msgid "right"
+msgstr "toʻgʻri"
+
+msgid "Write here…"
+msgstr "Shu yerga yozing…"
+
+msgid "How did it go? (optional)"
+msgstr "Qanday oʻtdi? (ixtiyoriy)"
+
+msgid "Workbook appeals"
+msgstr "Ish daftari: eʼtirozlar"
+
+msgid "Pupils who think a typed answer was marked wrong unfairly. Accepting adds it to the item's answers and re-marks everyone who typed it."
+msgstr "Javobi nohaq notoʻgʻri deb baholangan deb hisoblagan oʻquvchilar. Qabul qilsangiz, javob toʻgʻri javoblar roʻyxatiga qoʻshiladi va uni yozgan hamma qayta baholanadi."
+
+msgid "Pupil typed:"
+msgstr "Oʻquvchi yozdi:"
+
+msgid "Accepted now:"
+msgstr "Hozir qabul qilinadi:"
+
+msgid "Accept"
+msgstr "Qabul qilish"
+
+msgid "Reject"
+msgstr "Rad etish"
+
+msgid "No open appeals."
+msgstr "Ochiq eʼtirozlar yoʻq."
+
+msgid "Workbook"
+msgstr "Ish daftari"
+
+msgid "Workbooks"
+msgstr "Ish daftarlari"
+
+msgid "Back to the homework"
+msgstr "Uy vazifasiga qaytish"
+
+msgid "Teacher view"
+msgstr "Oʻqituvchi koʻrinishi"
+
+msgid "This pupil has not opened the workbook yet."
+msgstr "Bu oʻquvchi ish daftarini hali ochmagan."
+
+msgid "Your note to the pupil — shown at the top of their workbook"
+msgstr "Oʻquvchiga izohingiz — ish daftarining tepasida koʻrinadi"
+
+msgid "Save note"
+msgstr "Izohni saqlash"
+
+msgid "The lesson taught it, the practice checked you recognise it. Here you produce it yourself — type it, build it, write it, use it."
+msgstr "Dars oʻrgatdi, mashq uni taniyotganingizni tekshirdi. Bu yerda esa oʻzingiz yaratasiz — yozasiz, yigʻasiz, qoʻllaysiz."
+
+msgid "Download worksheet (PDF)"
+msgstr "Ish varagʻini yuklab olish (PDF)"
+
+msgid "Print version"
+msgstr "Chop etish uchun"
+
+msgid "Your teacher says"
+msgstr "Oʻqituvchingiz izohi"
+
+msgid "Log in to check your answers"
+msgstr "Javoblarni tekshirish uchun kiring"
+
+msgid "You can read every task and print the worksheet without an account. Checking answers, saving your writing and earning points need one."
+msgstr "Hamma vazifalarni oʻqish va ish varagʻini chop etish uchun hisob shart emas. Javoblarni tekshirish, yozganingizni saqlash va ball olish uchun esa kerak."
+
+msgid "sent"
+msgstr "yuborildi"
+
+msgid "Save my writing"
+msgstr "Yozganimni saqlash"
+
+msgid "Workbook finished."
+msgstr "Ish daftari tugadi."
+
+msgid "Come back in a few days and do sections B and C again without looking at the lesson — the second time is the one that makes it stick."
+msgstr "Bir necha kundan keyin qaytib, B va C boʻlimlarini darsga qaramasdan yana bajaring — xotirada aynan ikkinchi marta mustahkamlanadi."
+
+msgid "This lesson"
+msgstr "Bu dars"
+
+msgid "Stretch task"
+msgstr "Qiyinroq vazifa"
+
+msgid "Typed tasks, a piece of writing and a real-life mission for the lesson \"%(t)s\", with a printable worksheet."
+msgstr "«%(t)s» darsi uchun yoziladigan vazifalar, ijodiy yozuv va hayotiy missiya — chop etiladigan ish varagʻi bilan."
+
+msgid "Without the answer key"
+msgstr "Javoblar kalitisiz"
+
+msgid "With the answer key"
+msgstr "Javoblar kaliti bilan"
+
+msgid "Do it online too: every answer is checked instantly."
+msgstr "Onlayn ham bajaring: har bir javob darhol tekshiriladi."
+
+msgid "Do the tasks"
+msgstr "Vazifalarni bajarish"
+
+msgid "Worksheet to print (PDF)"
+msgstr "Chop etiladigan ish varagʻi (PDF)"
+
+msgid "+ its practice, reading & workbook"
+msgstr "+ mashqi, oʻqish matni va ish daftari"
+
+msgid "%(code)s workbook — read their writing"
+msgstr "%(code)s ish daftari — yozganlarini oʻqish"
+
+msgid "workbook(s)"
+msgstr "ish daftari"
+
+msgid "Warm-up"
+msgstr "Isinish"
+
+msgid "Drill"
+msgstr "Mashq"
+
+msgid "Apply"
+msgstr "Qoʻllash"
+
+msgid "Create"
+msgstr "Ijod"
+
+msgid "Mission"
+msgstr "Missiya"
+
+msgid "Fill the gap"
+msgstr "Boʻsh joyni toʻldiring"
+
+msgid "Conjugate"
+msgstr "Tuslang"
+
+msgid "Transform"
+msgstr "Oʻzgartiring"
+
+msgid "Build the sentence"
+msgstr "Gapni yigʻing"
+
+msgid "Translate"
+msgstr "Tarjima qiling"
+
+msgid "Find and fix the error"
+msgstr "Xatoni toping va tuzating"
+
+msgid "Letters and blocks"
+msgstr "Harflar va bloklar"
+
+msgid "Choose"
+msgstr "Tanlang"
+
+msgid "Write"
+msgstr "Yozing"
+
+msgid "Copy by hand"
+msgstr "Qoʻlda yozing"
+
+msgid "Nothing was filled in yet — write your answers, then send."
+msgstr "Hali hech narsa yozilmadi — avval javoblaringizni yozing, keyin yuboring."
+
+msgid "Workbook finished! +%(points)s points."
+msgstr "Ish daftari tugadi! +%(points)s ball."
+
+msgid "Note saved — the pupil sees it on their workbook."
+msgstr "Izoh saqlandi — oʻquvchi uni ish daftarida koʻradi."
+
+msgid "Accepted — added to the answers and re-marked."
+msgstr "Qabul qilindi — javoblarga qoʻshildi va qayta baholandi."
+
+msgid "Thank you — a teacher will look at your answer. If it is right, it will be marked right for everyone."
+msgstr "Rahmat — oʻqituvchi javobingizni koʻrib chiqadi. Agar u toʻgʻri boʻlsa, hamma uchun toʻgʻri deb belgilanadi."

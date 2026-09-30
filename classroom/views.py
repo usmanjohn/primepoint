@@ -370,7 +370,7 @@ def homework_list(request, classroom_pk):
     if is_master_user:
         homeworks = (classroom.homeworks
                      .prefetch_related('assignments', 'practices', 'tutorials',
-                                       'stories', 'exam_lessons')
+                                       'stories', 'exam_lessons', 'workbooks')
                      .order_by('-created_at'))
     else:
         assignments = (HomeworkAssignment.objects
@@ -429,11 +429,12 @@ _PICKERS = {
     'practice':    (None,                          ['title__icontains', 'description__icontains']),
     'story':       (content.story_queryset,        ['title__icontains', 'summary__icontains']),
     'exam_lesson': (content.exam_lesson_queryset,  ['title__icontains', 'summary__icontains']),
+    'workbook':    (content.workbook_queryset,     ['tutorial__title__icontains']),
 }
 
 _FIELD = {
     'tutorial': 'tutorials', 'practice': 'practices',
-    'story': 'stories', 'exam_lesson': 'exam_lessons',
+    'story': 'stories', 'exam_lesson': 'exam_lessons', 'workbook': 'workbooks',
 }
 
 
@@ -517,6 +518,7 @@ def homework_detail(request, classroom_pk, hw_pk):
             ('practice', _('Practices'), 'bi-journal-check'),
             ('story', _('Readings'), 'bi-stars'),
             ('exam_lesson', _('Exam prep'), 'bi-journal-bookmark'),
+            ('workbook', _('Workbooks'), 'bi-pencil-square'),
         ],
         'query': query,
         'candidates': candidates,
@@ -572,6 +574,10 @@ def homework_add_item(request, classroom_pk, hw_pk):
         for story in stories:
             if not homework.stories.filter(pk=story.pk).exists():
                 homework.stories.add(story)
+                extra += 1
+        for wb in content.expand_workbooks([obj]):
+            if not homework.workbooks.filter(pk=wb.pk).exists():
+                homework.workbooks.add(wb)
                 extra += 1
 
     if extra:
@@ -724,6 +730,7 @@ def lesson_assign_homework(request, classroom_pk, lesson_pk):
     homework.practices.set({p.pk for p in practices} | set(
         lesson.practices.values_list('pk', flat=True)))
     homework.stories.set({s.pk for s in stories})
+    homework.workbooks.set({w.pk for w in content.expand_workbooks(tutorials)})
     lesson.homeworks.add(homework)
 
     count = _assign(homework, classroom.get_all_pandas())

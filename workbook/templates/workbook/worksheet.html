@@ -1,0 +1,138 @@
+{% load i18n static %}<!doctype html>
+{% comment %}
+The workbook as an A4 worksheet — the page IS the document (prime/printing.py).
+Every gap becomes a write-on line, every Hangul answer a row of 원고지 squares,
+every writing task ruled lines, and the answer key goes on its own last page,
+like the back of a textbook. Open to everyone; ?key=0 drops the key,
+?bare=1 drops the toolbar (gen_worksheet_pdfs prints with it).
+{% endcomment %}
+<html lang="uz">
+<head>
+    <title>{{ workbook.code }} — {% trans "Workbook" %}</title>
+    {% include "printing/_head.html" %}
+</head>
+<body>
+
+{% if not bare %}
+<div class="pp-bar pp-noprint">
+    <button type="button" class="primary" onclick="window.print()">
+        <i class="bi bi-printer"></i> {% trans "Print / Save as PDF" %}
+    </button>
+    {% if pdf_url %}
+    <a href="{{ pdf_url }}" download><i class="bi bi-file-earmark-pdf"></i> {% trans "Download PDF" %}</a>
+    {% endif %}
+    {% if show_key %}
+    <a href="{{ url_key_off }}"><i class="bi bi-eye-slash"></i> {% trans "Without the answer key" %}</a>
+    {% else %}
+    <a href="{{ url_key_on }}"><i class="bi bi-check2-square"></i> {% trans "With the answer key" %}</a>
+    {% endif %}
+    <a href="{{ back_url }}"><i class="bi bi-arrow-left"></i> {% trans "Back" %}</a>
+    <span class="pp-bar-note">{% trans "Tip: choose A4 and “Save as PDF” in the print dialog." %}</span>
+</div>
+{% endif %}
+
+<div class="pp-sheet">
+    {% include "printing/_watermark.html" %}
+    <div class="pp-body">
+
+    <header class="wb-ws-head">
+        <div class="wb-ws-head__brand">POWERTY · {% trans "Workbook" %} · {{ workbook.code }}</div>
+        <h1 class="wb-ws-head__title">{{ tutorial.title }}</h1>
+        <div class="wb-ws-fields">
+            <span>{% trans "Name" %}: <i></i></span>
+            <span>{% trans "Date" %}: <i></i></span>
+            <span>{% trans "Score" %}: <i class="wb-ws-fields__short"></i></span>
+        </div>
+    </header>
+
+    {% for code, label, icon, tasks in sections %}
+    <section class="wb-ws-sec">
+        <h2 class="wb-ws-sec__head"><span>{{ code }}</span> {{ label }}</h2>
+        {% for task in tasks %}
+        <div class="wb-ws-task">
+            <div class="wb-ws-task__head">
+                <strong>{{ code }}{{ forloop.counter }}.</strong>
+                {% if task.title %}{{ task.title }}{% endif %}
+                {% if task.star_marks %}<span class="wb-ws-stars">{{ task.star_marks }}</span>{% endif %}
+            </div>
+            <div class="wb-ws-task__instr">{{ task.instruction|safe }}</div>
+
+            <ol class="wb-ws-items">
+            {% for item in task.items.all %}
+            <li class="wb-ws-item wb-ws-item--{{ task.kind }}">
+                {% if task.kind == 'hangul' %}
+                    <span class="wb-ws-stem">{{ item.stem|safe|cut:"___" }}</span>
+                    <span class="wb-ws-grid">{% for _ in item.ws_boxes %}<i></i>{% endfor %}</span>
+
+                {% elif task.kind == 'copy' %}
+                    {% if item.stem %}<div class="wb-ws-stem">{{ item.stem|safe }}</div>{% endif %}
+                    {% for w in item.words %}
+                    <div class="wb-ws-copyrow" lang="ko">
+                        <b>{{ w }}</b><i>{{ w }}</i><i>{{ w }}</i><i></i><i></i><i></i><i></i><i></i><i></i>
+                    </div>
+                    {% endfor %}
+
+                {% elif task.kind == 'write' %}
+                    {% if item.stem %}<div class="wb-ws-stem">{{ item.stem|safe }}</div>{% endif %}
+                    {% if item.checklist %}
+                    <ul class="wb-ws-check">{% for line in item.checklist %}<li>☐ {{ line|safe }}</li>{% endfor %}</ul>
+                    {% endif %}
+                    <div class="wb-ws-lines">{% for _ in "12345678" %}<i></i>{% endfor %}</div>
+
+                {% elif task.kind == 'mission' %}
+                    <div class="wb-ws-stem">{{ item.stem|safe }}</div>
+                    <div class="wb-ws-done">☐ {% trans "Done it!" %}</div>
+                    <div class="wb-ws-lines">{% for _ in "12" %}<i></i>{% endfor %}</div>
+
+                {% else %}
+                    {% if task.kind == 'build' and item.words %}
+                    <div class="wb-ws-words" lang="ko">{% for w in item.words %}<span>{{ w }}</span>{% endfor %}</div>
+                    {% endif %}
+                    {% with parts=item.stem_parts %}
+                    {% if parts %}
+                        <span class="wb-ws-stem">{{ parts.0|safe }}</span><span class="wb-ws-blank wb-ws-blank--{{ item.size }}"></span><span class="wb-ws-stem">{{ parts.1|safe }}</span>
+                    {% else %}
+                        {% if item.stem %}<div class="wb-ws-stem">{{ item.stem|safe }}</div>{% endif %}
+                        <div class="wb-ws-lines">{% if item.size == 'l' %}<i></i>{% endif %}<i></i></div>
+                    {% endif %}
+                    {% endwith %}
+                    {% if task.kind == 'pick' and item.options %}
+                    <span class="wb-ws-opts" lang="ko">( {{ item.options|join:" / " }} )</span>
+                    {% endif %}
+                {% endif %}
+            </li>
+            {% endfor %}
+            </ol>
+        </div>
+        {% endfor %}
+    </section>
+    {% endfor %}
+
+    {% if show_key %}
+    <section class="wb-ws-key">
+        <h2 class="wb-ws-sec__head"><span>🔑</span> {% trans "Answer key" %}</h2>
+        {% for code, label, icon, tasks in sections %}
+        {% for task in tasks %}
+        {% if task.is_auto %}
+        <div class="wb-ws-key__task">
+            <strong>{{ code }}{{ forloop.counter }}</strong>
+            {% for item in task.items.all %}<span lang="ko">{{ forloop.counter }}) {{ item.answers.0 }}</span>{% endfor %}
+        </div>
+        {% elif task.is_write and task.items.all.0.model_answer %}
+        <div class="wb-ws-key__task wb-ws-key__task--model">
+            <strong>{{ code }}{{ forloop.counter }}</strong>
+            {% for item in task.items.all %}<div lang="ko">{{ item.model_answer|safe }}</div>{% endfor %}
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </section>
+    {% endif %}
+
+    <p class="pp-foot">
+        <strong>Powerty</strong> — www.powerty.uz · {{ workbook.code }} · {% trans "Do it online too: every answer is checked instantly." %}
+    </p>
+    </div>
+</div>
+</body>
+</html>

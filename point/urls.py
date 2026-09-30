@@ -59,5 +59,6 @@ urlpatterns = [
     path('examprep/', include('examprep.urls')),
     path('corner/', include('corner.urls')),
     path('logic/', include('logic.urls')),
+    path('workbook/', include('workbook.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

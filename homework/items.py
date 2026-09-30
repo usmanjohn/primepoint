@@ -1,4 +1,4 @@
-"""One homework, four kinds of thing inside it.
+"""One homework, five kinds of thing inside it.
 
 A homework used to be a practice and nothing else, so every screen could just
 read `homework.practice`. Now it can hold a tutorial, a Corner reading and an
@@ -20,6 +20,7 @@ LABELS = {
     'tutorial':    _('Lesson'),
     'story':       _('Reading'),
     'exam_lesson': _('Exam prep'),
+    'workbook':    _('Workbook'),
 }
 
 ICONS = {
@@ -27,6 +28,7 @@ ICONS = {
     'tutorial':    'bi-journal-text',
     'story':       'bi-stars',
     'exam_lesson': 'bi-journal-bookmark',
+    'workbook':    'bi-pencil-square',
 }
 
 
@@ -62,6 +64,10 @@ def homework_items(homework):
     for p in homework.practices.select_related('subject').all():
         rows.append(_row('practice', p, reverse('practice_detail', args=[p.pk]),
                          p.title, p.subject.name if p.subject_id else ''))
+    # Last: the workbook is where the pupil produces what the other legs taught.
+    for w in homework.workbooks.select_related('tutorial').all():
+        rows.append(_row('workbook', w, reverse('workbook_detail', args=[w.pk]),
+                         w.tutorial.title, _('Workbook')))
     return rows
 
 
@@ -86,8 +92,13 @@ def _exam_lesson_done(obj, user, panda):
     return obj.progress.filter(user=user).exists()
 
 
+def _workbook_done(obj, user, panda):
+    return obj.attempts.filter(user=user, completed_at__isnull=False).exists()
+
+
 _DONE = {
     'practice':    _practice_done,
+    'workbook':    _workbook_done,
     'tutorial':    _tutorial_done,
     'story':       _story_done,
     'exam_lesson': _exam_lesson_done,
@@ -130,5 +141,6 @@ def tick_off(user, kind, obj):
     if panda is None or kind not in _DONE:
         return
     field = {'practice': 'practices', 'tutorial': 'tutorials',
-             'story': 'stories', 'exam_lesson': 'exam_lessons'}[kind]
+             'story': 'stories', 'exam_lesson': 'exam_lessons',
+             'workbook': 'workbooks'}[kind]
     refresh_for(panda, Q(**{f'homework__{field}': obj}))

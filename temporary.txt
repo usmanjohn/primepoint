@@ -34,3 +34,4 @@ python manage.py load_mock exam/data/sat6_rw2_hard.py --expect-questions=27
 python manage.py load_mock exam/data/sat6_math1.py --expect-questions=22
 python manage.py load_mock exam/data/sat6_math2_easy.py --expect-questions=22
 python manage.py load_mock exam/data/sat6_math2_hard.py --expect-questions=22
+python manage.py import_workbook workbook/management/commands/_workbook_prime_korean_01_09_10.py --author=powerty --expect-items=107

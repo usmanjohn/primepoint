@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block page_name %}{% trans "Workbook appeals" %}{% endblock %}
+{% block title %}{% trans "Workbook appeals" %}{% endblock %}
+
+{% block content %}
+<div class="wb-page">
+<h1 class="page-title mb-2">{% trans "Workbook appeals" %}</h1>
+<p class="text-secondary small">{% trans "Pupils who think a typed answer was marked wrong unfairly. Accepting adds it to the item's answers and re-marks everyone who typed it." %}</p>
+
+{% for a in appeals %}
+<div class="wb-task">
+    <div class="wb-task__head">
+        <span class="wb-task__num">{{ a.item.task.workbook.code }}</span>
+        <span class="wb-task__title">{{ a.item.task.get_kind_display }} · {{ a.user.username }} · {{ a.created_at|date:"d.m H:i" }}</span>
+    </div>
+    <div class="wb-stem wb-stem--block">{{ a.item.stem|safe }}</div>
+    <div class="wb-fb">{% trans "Pupil typed:" %} <strong lang="ko">{{ a.text }}</strong></div>
+    <div class="wb-fb">{% trans "Accepted now:" %} {% for ans in a.item.answers %}<code lang="ko">{{ ans }}</code>{% if not forloop.last %} · {% endif %}{% endfor %}</div>
+    <form method="post" class="d-flex gap-2 mt-2">
+        {% csrf_token %}
+        <input type="hidden" name="appeal" value="{{ a.pk }}">
+        <button name="decision" value="accept" class="wb-btn wb-btn--primary">✓ {% trans "Accept" %}</button>
+        <button name="decision" value="reject" class="wb-btn wb-btn--ghost-dark">✗ {% trans "Reject" %}</button>
+    </form>
+</div>
+{% empty %}
+<p class="wb-empty">{% trans "No open appeals." %}</p>
+{% endfor %}
+</div>
+{% endblock %}

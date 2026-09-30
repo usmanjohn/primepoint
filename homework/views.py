@@ -42,7 +42,8 @@ def my_homework(request):
             panda.homework_assignments
             .select_related('homework__master', 'homework__classroom')
             .prefetch_related('homework__practices', 'homework__tutorials',
-                              'homework__stories', 'homework__exam_lessons')
+                              'homework__stories', 'homework__exam_lessons',
+                              'homework__workbooks')
             .order_by('homework__due_date', '-homework__created_at')
         )
         # Re-check before showing: a pupil who read the tutorial and sat the

@@ -47,6 +47,7 @@ class Homework(models.Model):
     tutorials = models.ManyToManyField('tutorial.Tutorial', blank=True, related_name='homeworks')
     stories = models.ManyToManyField('corner.Story', blank=True, related_name='homeworks')
     exam_lessons = models.ManyToManyField('examprep.Lesson', blank=True, related_name='homeworks')
+    workbooks = models.ManyToManyField('workbook.Workbook', blank=True, related_name='homeworks')
 
     due_date = models.DateTimeField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -66,7 +67,8 @@ class Homework(models.Model):
     @property
     def item_count(self):
         return (self.practices.count() + self.tutorials.count()
-                + self.stories.count() + self.exam_lessons.count())
+                + self.stories.count() + self.exam_lessons.count()
+                + self.workbooks.count())
 
     @property
     def is_empty(self):

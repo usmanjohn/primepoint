@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block page_name %}{% trans "Workbook" %}{% endblock %}
+{% block title %}{{ workbook.code }} — {{ pupil.get_full_name|default:pupil.username }}{% endblock %}
+
+{% block content %}
+<div class="wb-page">
+{% if back %}<a href="{{ back }}" class="wb-back"><i class="bi bi-arrow-left"></i> {% trans "Back to the homework" %}</a>{% endif %}
+
+<header class="wb-hero wb-hero--teacher">
+    <div class="wb-hero__eyebrow"><i class="bi bi-person-check"></i> {% trans "Teacher view" %} · {{ workbook.code }}</div>
+    <h1 class="wb-hero__title">{{ pupil.get_full_name|default:pupil.username }}</h1>
+    <p class="wb-hero__sub">{{ workbook.tutorial.title }}</p>
+    {% if attempt %}
+    <div class="wb-meter">
+        {% for code, label, icon, tasks in sections %}
+        <span class="wb-meter__seg {% if code in attempt.sections_done %}wb-meter__seg--done{% endif %}" title="{{ label }}">{{ code }}</span>
+        {% endfor %}
+        {% if attempt.total %}<span class="wb-meter__score">{{ attempt.correct }}/{{ attempt.total }} ✓</span>{% endif %}
+    </div>
+    {% endif %}
+</header>
+
+{% if not attempt %}
+<p class="wb-empty">{% trans "This pupil has not opened the workbook yet." %}</p>
+{% else %}
+
+<form method="post" class="wb-note wb-note--form">
+    {% csrf_token %}
+    <label class="wb-note__head" for="teacher_note"><i class="bi bi-chat-quote"></i> {% trans "Your note to the pupil — shown at the top of their workbook" %}</label>
+    <textarea id="teacher_note" name="teacher_note" rows="3" class="wb-textarea">{{ attempt.teacher_note }}</textarea>
+    <button type="submit" class="wb-btn wb-btn--primary">{% trans "Save note" %}</button>
+</form>
+
+{% for code, label, icon, tasks in sections %}
+<section class="wb-sec wb-sec--{{ code }}">
+    <div class="wb-sec__head">
+        <span class="wb-sec__letter">{{ code }}</span>
+        <h2 class="wb-sec__title"><i class="bi {{ icon }}"></i> {{ label }}</h2>
+    </div>
+    {% for task in tasks %}
+    <div class="wb-task wb-task--{{ task.kind }}">
+        <div class="wb-task__head">
+            <span class="wb-task__num">{{ code }}{{ forloop.counter }}</span>
+            {% if task.title %}<span class="wb-task__title">{{ task.title }}</span>{% endif %}
+        </div>
+        <ol class="wb-items">
+            {% for item in task.items.all %}{% include "workbook/_item.html" with review=1 %}{% endfor %}
+        </ol>
+    </div>
+    {% endfor %}
+</section>
+{% endfor %}
+{% endif %}
+</div>
+{% endblock %}

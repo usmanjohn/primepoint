@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block nav_tutorials %}active{% endblock %}
+{% block mob_nav_tutorials %}active{% endblock %}
+{% block page_name %}{% trans "Workbook" %}{% endblock %}
+{% block title %}{{ workbook.code }} — {% trans "Workbook" %} · {{ tutorial.title }}{% endblock %}
+{% block meta_description %}{% blocktrans with t=tutorial.title %}Typed tasks, a piece of writing and a real-life mission for the lesson "{{ t }}", with a printable worksheet.{% endblocktrans %}{% endblock %}
+
+{% block content %}
+<div class="wb-page">
+
+<a href="{% url 'tutorial_detail' tutorial.pk %}" class="wb-back">
+    <i class="bi bi-arrow-left"></i> {{ tutorial.title }}
+</a>
+
+{# ── Header ──────────────────────────────────────────────────────────── #}
+<header class="wb-hero">
+    <div class="wb-hero__eyebrow"><i class="bi bi-pencil-square"></i> {% trans "Workbook" %} · {{ workbook.code }}</div>
+    <h1 class="wb-hero__title">{{ tutorial.title }}</h1>
+    <p class="wb-hero__sub">{% trans "The lesson taught it, the practice checked you recognise it. Here you produce it yourself — type it, build it, write it, use it." %}</p>
+
+    {% if attempt %}
+    <div class="wb-meter" aria-label="{% trans 'Progress' %}">
+        {% for s in sections %}
+        <span class="wb-meter__seg {% if s.sent %}wb-meter__seg--done{% endif %}" title="{{ s.label }}">{{ s.code }}</span>
+        {% endfor %}
+        {% if attempt.total %}<span class="wb-meter__score">{{ attempt.correct }}/{{ attempt.total }} ✓</span>{% endif %}
+        {% if attempt.is_complete %}<span class="wb-meter__done">🎉 +{{ attempt.points_awarded|floatformat:"-1" }}</span>{% endif %}
+    </div>
+    {% endif %}
+
+    <div class="wb-hero__actions">
+        {% if pdf_url %}
+        <a href="{{ pdf_url }}" class="wb-btn wb-btn--light" download>
+            <i class="bi bi-file-earmark-pdf"></i> {% trans "Download worksheet (PDF)" %}
+        </a>
+        {% endif %}
+        <a href="{% url 'workbook_worksheet' workbook.pk %}" class="wb-btn wb-btn--ghost">
+            <i class="bi bi-printer"></i> {% trans "Print version" %}
+        </a>
+    </div>
+</header>
+
+{# ── The four legs of this lesson ────────────────────────────────────── #}
+<nav class="wb-legs" aria-label="{% trans 'This lesson' %}">
+    <a href="{% url 'tutorial_detail' tutorial.pk %}" class="wb-leg"><i class="bi bi-journal-text"></i> {% trans "Lesson" %}</a>
+    {% if practice %}<a href="{% url 'practice_detail' practice.pk %}" class="wb-leg"><i class="bi bi-ui-checks"></i> {% trans "Practice" %}</a>{% endif %}
+    {% if story %}<a href="{% url 'corner_story' story.collection.subject.slug story.collection.slug story.slug %}" class="wb-leg"><i class="bi bi-book"></i> {% trans "Reading" %}</a>{% endif %}
+    <span class="wb-leg wb-leg--here"><i class="bi bi-pencil-square"></i> {% trans "Workbook" %}</span>
+</nav>
+
+{% if attempt.teacher_note %}
+<div class="wb-note">
+    <div class="wb-note__head"><i class="bi bi-chat-quote"></i> {% trans "Your teacher says" %}{% if attempt.teacher_note_by %} — {{ attempt.teacher_note_by.get_full_name|default:attempt.teacher_note_by.username }}{% endif %}</div>
+    {{ attempt.teacher_note|linebreaksbr }}
+</div>
+{% endif %}
+
+{% if workbook.intro %}<div class="wb-intro">{{ workbook.intro|safe }}</div>{% endif %}
+
+{% if not user.is_authenticated %}
+<div class="wb-guest">
+    <i class="bi bi-person-lock"></i>
+    <div>
+        <strong>{% trans "Log in to check your answers" %}</strong><br>
+        {% trans "You can read every task and print the worksheet without an account. Checking answers, saving your writing and earning points need one." %}
+        <a href="{% url 'login' %}?next={{ request.path|urlencode }}">{% trans "Log in" %}</a>
+    </div>
+</div>
+{% endif %}
+
+{# ── Sections ────────────────────────────────────────────────────────── #}
+{% for s in sections %}
+<section id="sec-{{ s.code }}" class="wb-sec wb-sec--{{ s.code }}">
+    <div class="wb-sec__head">
+        <span class="wb-sec__letter">{{ s.code }}</span>
+        <h2 class="wb-sec__title"><i class="bi {{ s.icon }}"></i> {{ s.label }}</h2>
+        {% if s.marked %}<span class="wb-chip {% if s.right == s.marked %}wb-chip--ok{% endif %}">{{ s.right }}/{{ s.marked }} ✓</span>
+        {% elif s.sent %}<span class="wb-chip wb-chip--ok">✓ {% trans "sent" %}</span>{% endif %}
+    </div>
+
+    <form method="post" class="wb-form">
+        {% csrf_token %}
+        <input type="hidden" name="section" value="{{ s.code }}">
+        {% for task in s.tasks %}
+        <div class="wb-task wb-task--{{ task.kind }}" id="t{{ task.pk }}">
+            <div class="wb-task__head">
+                <span class="wb-task__num">{{ s.code }}{{ forloop.counter }}</span>
+                {% if task.title %}<span class="wb-task__title">{{ task.title }}</span>{% endif %}
+                {% if task.star_marks %}<span class="wb-task__stars" title="{% trans 'Stretch task' %}">{{ task.star_marks }}</span>{% endif %}
+            </div>
+            <div class="wb-task__instr">{{ task.instruction|safe }}</div>
+            <ol class="wb-items">
+                {% for item in task.items.all %}
+                {% include "workbook/_item.html" %}
+                {% endfor %}
+            </ol>
+        </div>
+        {% endfor %}
+
+        {% if user.is_authenticated %}
+        <button type="submit" class="wb-btn wb-btn--primary">
+            <i class="bi bi-check2-circle"></i>
+            {% if s.code == 'D' %}{% trans "Save my writing" %}{% elif s.code == 'E' %}{% trans "Save" %}{% else %}{% trans "Check my answers" %}{% endif %}
+        </button>
+        {% endif %}
+    </form>
+
+    {% comment %}Forms that live outside the section form (HTML forbids nesting);
+    their buttons sit inside it and point here with the form= attribute.{% endcomment %}
+    {% for task in s.tasks %}{% for item in task.items.all %}
+        {% if item.resp and task.is_auto and item.resp.verdict == 'wrong' %}
+        <form method="post" action="{% url 'workbook_appeal' item.pk %}" id="ap{{ item.pk }}">{% csrf_token %}</form>
+        {% elif item.resp and task.is_write and item.resp.text %}
+        <form method="post" id="sm{{ item.pk }}">{% csrf_token %}
+            <input type="hidden" name="action" value="selfmark">
+            <input type="hidden" name="item" value="{{ item.pk }}">
+        </form>
+        {% endif %}
+    {% endfor %}{% endfor %}
+</section>
+{% endfor %}
+
+{% if attempt.is_complete %}
+<div class="wb-finish">
+    <div class="wb-finish__glyph">🎉</div>
+    <div>
+        <strong>{% trans "Workbook finished." %}</strong>
+        {% trans "Come back in a few days and do sections B and C again without looking at the lesson — the second time is the one that makes it stick." %}
+    </div>
+</div>
+{% endif %}
+
+</div>
+{% endblock %}

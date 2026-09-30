@@ -125,7 +125,14 @@ def tutorial_detail(request, pk):
         'linked_stories':   tutorial.stories.filter(is_published=True)
                                             .select_related('collection'),
         'playlist_context': playlist_context,
+        'linked_workbook':  _published_workbook(tutorial),
     })
+
+
+def _published_workbook(tutorial):
+    """The lesson's workbook (fourth leg), if it has a published one."""
+    from workbook.models import Workbook
+    return Workbook.objects.filter(tutorial=tutorial, is_published=True).first()
 
 
 @login_required

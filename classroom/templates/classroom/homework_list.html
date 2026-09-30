@@ -31,6 +31,7 @@
         {% if hw.practices.count %}{{ hw.practices.count }} {% trans "practice(s)" %} · {% endif %}
         {% if hw.stories.count %}{{ hw.stories.count }} {% trans "reading(s)" %} · {% endif %}
         {% if hw.exam_lessons.count %}{{ hw.exam_lessons.count }} {% trans "exam lesson(s)" %} · {% endif %}
+        {% if hw.workbooks.count %}{{ hw.workbooks.count }} {% trans "workbook(s)" %} · {% endif %}
         {{ hw.assignments.count }} {% trans "student(s)" %}
         {% if hw.due_date %} · {% trans "due" %} {{ hw.due_date|date:"M d, H:i" }}{% endif %}
       </div>

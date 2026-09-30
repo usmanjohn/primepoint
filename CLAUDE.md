@@ -168,6 +168,39 @@ Prime Korean is **not** exam prep: `examprep` TOPIK = question types and strateg
 grammar/vocab banks = lookup tables, `corner` = reading. Prime Korean = the language itself,
 from zero, in order.
 
+## Prime Workbook — the fourth leg ("Ish daftari"), piloted on Prime Korean
+Started **2026-10-01**. The other three legs are recognition (read · pick A–D · read); the
+**workbook** (`workbook` app, `/workbook/<pk>/`) is **production**: typed, auto-marked tasks,
+one piece of writing, a real-life mission, and a **downloadable A4 worksheet PDF** per lesson.
+One `Workbook` per `Tutorial`; sections always **A Isinish** (spaced review of n-1/n-3/n-7) ·
+**B Mashq** · **C Qoʻllash** · **D Ijod** (write + checklist + model answer, self-marked, the
+teacher reads it) · **E Missiya**. No JavaScript: one `<form>` per section, ✓/✗ from the server.
+When the user asks (e.g. "make the next 5 Prime Korean workbooks"):
+1. Read `workbook/management/commands/STYLE_GUIDE_PK_WORKBOOK.md` and `toc_pk_workbook.txt`
+   (pilot = PK-1, PK-9, PK-10; continue in order from the `[next]` marker, batches of 5).
+2. Write `workbook/management/commands/_workbook_prime_korean_<range>.py` (`WORKBOOKS = [...]`).
+3. **Answer gate**: a throwaway `verify_pk_workbook_<range>.py` in the scratchpad (copy the
+   pilot's shape) that re-derives keys with `tutorial/management/commands/_hangul.py` (kept
+   helper, self-test: `python3 tutorial/management/commands/_hangul.py`), prints tokens outside
+   the cumulative corpus, and checks tags/English/`wb-*` classes. Prove it bites, then import:
+   `python manage.py import_workbook <file> --author=prime --expect-items=<N>`.
+4. `python manage.py gen_worksheet_pdfs --only PK-…` (dev-only, headless Chrome) and **commit
+   `static/workbook/pdf/`** — `workbook.tests.CommittedDataTests` fails until the PDF matches
+   the data hash, and the site never offers a stale PDF.
+5. Mark `[done]`, append the `import_workbook … --author=powerty` line to `temporary.txt`.
+Marking (`workbook/grading.py`): NFC (never NFKC), trailing punctuation ignored, and a
+**spacing/punctuation-only difference is RIGHT with a 띄어쓰기 note** — so never list spaceless
+variants; do list every grammatical variant (subject drop, taught synonyms). Pupils can appeal
+a ✗; staff accept at `/workbook/appeals/`, which re-marks everyone who typed it.
+`import_workbook --republish` updates **in place** so pupils' answers survive a fix.
+Worksheets are **open to everyone** (user's decision 2026-10-01 — homework, watermarked),
+unlike the staff-only lesson prints. Homework carries `workbooks` too; adding a tutorial to a
+homework pulls in its workbook, and the master reads each pupil's writing at
+`/workbook/<pk>/pupil/<user_id>/` and leaves a note shown on the pupil's workbook.
+Kit: the **PRIME WORKBOOK** (`wb-*`, `wb-ws-*`) section at the bottom of `static/css/style.css`.
+⚠️ Never name a template include flag `block` — inside `{% block %}` Django's context already
+has one and it is always truthy (every answer box went full-width until renamed `as_block`).
+
 ## Creating Prime Russian tutorials (bulk) — rus tili grammatikasi
 **Prime Russian** is the 100-lesson Russian course in `tutorial`, held together by a
 `TutorialPlaylist` called "Prime Russian". Titles are `PR-1: …`, category `russian`. It is the
