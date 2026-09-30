@@ -86,6 +86,17 @@ function resolve(root = document) {
       delete el.dataset.at;
     });
 
+    // Karaoke timings. A lit word is NOT an entrance -- every ANIM must be
+    // identity at p=1, so none of them can hold a state -- so these live on
+    // their own attributes and the entrance loop never sees them.
+    scene.querySelectorAll('[data-lit]').forEach(el => {
+      el.dataset.litIn = (start + parseFloat(el.dataset.lit)).toFixed(4);
+      if (el.dataset.until !== undefined)
+        el.dataset.litOut = (start + parseFloat(el.dataset.until)).toFixed(4);
+      delete el.dataset.lit;
+      delete el.dataset.until;
+    });
+
     // A staggered container deals its children in one at a time.
     scene.querySelectorAll('[data-stagger]').forEach(box => {
       const step = parseFloat(box.dataset.stagger);
@@ -169,6 +180,17 @@ function seek(t) {
         v = Math.round(from + (to - from) * clamp((t - tin) / Math.max(dur, 1e-6)));
       }
       if (el.textContent !== String(v)) el.textContent = v;
+    });
+
+    // The karaoke highlight: a word is ON while the voice is on it and DONE
+    // once the voice has passed. Same shape as .tick below -- a state toggled
+    // by time, not an animation -- so it stays a pure function of t and three
+    // parallel renderers cannot disagree about which word is lit.
+    scene.querySelectorAll('.lite').forEach(el => {
+      const a = parseFloat(el.dataset.litIn);
+      const b = el.dataset.litOut !== undefined ? parseFloat(el.dataset.litOut) : a;
+      el.classList.toggle('on', t >= a && t < b);
+      el.classList.toggle('done', t >= b);
     });
 
     // Dots that tick away a silent thinking beat.

@@ -1,0 +1,29 @@
+Topik oʻqish boʻlimida toʻrtta gapni tartiblash savoli bor. <break time='0.45s' /> Va bitta gapni oʻqimasdan turib chiqarib tashlash mumkin.
+
+<break time='2.5s' />
+
+Anvar aka shunday qiladi: toʻrttasini oʻqiydi va tuygʻu bilan tanlaydi.
+
+<break time='2.5s' />
+
+Natija, vaqt ketdi, javob esa taxmin boʻlib qoldi. <break time='0.45s' /> Xato bilimda emas. Usul yoʻq.
+
+<break time='2.5s' />
+
+Mana usul. <break time='0.3s' /> Kureso, shuning uchun. Undan oldin sabab boʻlishi kerak. <break time='0.3s' /> Kuronde, lekin. Undan oldin boshqa fikr boʻlishi kerak. <break time='0.45s' /> Iron, yoki ku va ot. Undan oldin oʻsha narsa aytilgan boʻlishi kerak.
+
+<break time='2.5s' />
+
+Endi qoʻllaymiz. <break time='0.3s' /> Birinchisi kureso bilan boshlanadi, tushdi. <break time='0.3s' /> Ikkinchisi kuronde, tushdi. <break time='0.3s' /> Uchinchisi iron saramun, tushdi. <break time='0.45s' /> Toʻrtinchisi hech narsaga tayanmaydi. Birinchi gap, oʻsha.
+
+<break time='2.5s' />
+
+Bu soʻzlar oʻzidan oldin matn borligini talab qiladi. <break time='0.3s' /> Shuning uchun ular bilan boshlangan gap hech qachon birinchi boʻlmaydi. <break time='0.45s' /> Avval shularni chizib tashlang.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Gap hajiman bilan boshlansa-chi? <break time='0.3s' /> U ham orqaga qaraydimi? <break time='0.45s' /> Izohda kutamiz.
+
+<break time='2.5s' />
+
+Topik oʻqish, savol turlari boʻyicha, Powertyda, Ekzamprep boʻlimida.

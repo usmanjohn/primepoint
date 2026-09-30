@@ -17,7 +17,8 @@ import primitives as P
 
 
 def cover(wrong, ask, kicker=None, context=None, right=None, strike=True,
-          dur=3.6, cam="push", size=None, note="", ko=None):
+          dur=3.6, cam="push", size=None, note="", ko=None,
+          track=None, n=None, badge="pills"):
     """The designed first frame -- it IS the thumbnail.
 
     Every element is drawn at t=0 with anim="none", so the frame a platform
@@ -37,6 +38,33 @@ def cover(wrong, ask, kicker=None, context=None, right=None, strike=True,
 
     It carries the film's FIRST narration line, so the voice starts on frame 1
     and nothing is spent on a silent title card.
+
+    ## The numbered track  (2026-09-30, at his request)
+
+    `track="속담", n=7` puts a numbered badge on the cover. His ask was that a
+    viewer can tell from frame 0 *what kind* of film this is and *where it sits*
+    -- so that grammar is watched in order rather than jumped into halfway.
+
+    This does not replace SERIES.md §3. That organises by SHAPE («Tutilgan
+    xato», «Bir maqol, ikki til») and cuts across subjects on purpose; the
+    ritual is what a returning viewer recognises in 0.3s. The track is a second,
+    finer axis -- the CONTENT strand -- and it is a label, exactly like the
+    한국어 pill of §4.2. Same rule as §1: brand the format, LABEL the subject.
+
+    `badge` picks the layout, so all three can be compared on real frames
+    instead of argued about:
+
+        "pills"     한국어 | 속담 · 07     two pills on the kicker row
+        "combined"  한국어 · 속담 07       one fused pill
+        "big"       한국어 | 속담  + «07» set large beside the promise slab
+
+    ⚠️ Numbering starts now and is NOT backfilled. Every film written before
+    today passes no `track`, draws no badge, and renders byte-for-byte as it
+    did -- verified by diffing all 41 stages against `git archive HEAD`.
+
+    None of the three grows the stack vertically: "pills" and "combined" sit on
+    the kicker row that already exists, and "big" widens the slab row rather
+    than adding to it. So the essentials stay inside y 420...1500.
     """
     px = size or min(300, P.fit_px(wrong, "hero", 840))
     at = 'data-at="0.000" data-dur="0.30" data-anim="none"'
@@ -54,9 +82,24 @@ def cover(wrong, ask, kicker=None, context=None, right=None, strike=True,
     # This is §1's rule, not an exception to it -- brand the format, LABEL the
     # subject. It stays a label: it never becomes the promise, and the promise
     # is still the strange or wrong thing.
-    if ko:
+    num = f"{n:02d}" if isinstance(n, int) else (n or "")
+    # "combined" fuses subject and track into the one pill, so it replaces the
+    # 한국어 pill rather than sitting beside it.
+    fused = badge == "combined" and track and ko
+    trk = ""
+    if track and not fused:
+        label = f'{track} · {num}' if num and badge != "big" else track
+        trk = f'<span class="cover__trk">{label}</span>'
+
+    if fused:
         body.append(f'<div class="cover__row" {at}>'
-                    f'<span class="cover__ko">{ko}</span>'
+                    f'<span class="cover__ko cover__one">{ko} · {track} {num}</span>'
+                    + (f'<span class="cover__k">{kicker}</span>' if kicker else "")
+                    + '</div>')
+    elif ko or trk:
+        body.append(f'<div class="cover__row" {at}>'
+                    + (f'<span class="cover__ko">{ko}</span>' if ko else "")
+                    + trk
                     + (f'<span class="cover__k">{kicker}</span>' if kicker else "")
                     + '</div>')
     elif kicker:
@@ -68,7 +111,19 @@ def cover(wrong, ask, kicker=None, context=None, right=None, strike=True,
     if right:
         body.append(f'<div class="cover__w grn" style="font-size:{px}px" {at}>'
                     f'{right}</div>')
-    body.append(f'<div class="cover__slab" {at}><div class="cover__a">{ask}</div></div>')
+    if badge == "big" and track and num:
+        # The number beside the promise, not inside it: the slab keeps its own
+        # width and the chip cannot push the words onto another line.
+        # Only this variant wraps the slab. The other two emit it EXACTLY as
+        # before -- a wrapper would move the `data-at` off the slab and onto a
+        # new element, so `seek()` would animate a different node and no
+        # existing film would be byte-identical any more.
+        body.append(f'<div class="cover__promise" {at}>'
+                    f'<div class="cover__slab"><div class="cover__a">{ask}</div></div>'
+                    f'<span class="cover__num">{num}</span></div>')
+    else:
+        body.append(f'<div class="cover__slab" {at}>'
+                    f'<div class="cover__a">{ask}</div></div>')
     body.append('</div>')
     return Scene(dur, "".join(body), cam=cam, name="cover",
                  note=note or f"MUQOVA: {wrong} — {ask}")
@@ -544,3 +599,29 @@ def pairs(items, head=None, tail=None, dur=None, lead=0.4, step=0.6,
         end += 1.4
     return Scene(dur or (end + 1.5), body, cam=cam, name="pairs",
                  note=note or "qoʻshimchalar juft-juft mos keladi")
+
+
+def passage(words, head=None, tail=None, dur=None, lead=0.6, cam="hold",
+            hold=3.0, note=""):
+    """MATN: a Korean passage read at natural speed, word by word.
+
+    `words` is [(korean, gloss_or_None, start, end), ...] in seconds from the
+    start of the reading -- real measurements, not guesses (`cli.py matn`).
+
+    The camera HOLDS. Everywhere else in this kit something drifts, because
+    with no narration on the track stillness reads as a frozen video; here the
+    moving thing is the highlight itself, and a push under a block of text
+    fights the eye that is trying to read it.
+    """
+    body = P.line(head, "lbl lbl--sm", at=0.0, anim="fade") if head else ""
+    body += W.passage(words, at=lead)
+    end = lead + (max(b for _k, _g, _a, b in words) if words else 0)
+    if tail:
+        body += P.line(tail, "ttl", at=end + 0.5, anim="rise", dur=0.6)
+        # The translation has to be READ, and `voice.retime` sizes a silent
+        # scene by when it stops moving. Without this the card would land and
+        # the scene would cut a second later.
+        body += f'<span data-hold="{hold:.2f}" style="display:none"></span>'
+        end += hold
+    return Scene(dur or (end + 1.4), body, cam=cam, top=True, name="passage",
+                 note=note or "MATN: oʻqib borish")

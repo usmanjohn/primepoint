@@ -350,3 +350,39 @@ def pair_rows(pairs, at=0.0, step=0.6):
         out.append(f'<div class="pair" {_t(at + i * step)} data-dur="0.36" '
                    f'data-anim="pop"><b>{ko}</b><i>=</i><span>{uz_}</span></div>')
     return f'<div class="pairs">{"".join(out)}</div>', len(pairs) * step
+
+
+def passage(words, at=0.0):
+    """The read-along passage: [(korean, gloss_or_None, start, end), ...].
+
+    `start`/`end` are seconds from the START OF THE SCENE, measured from the
+    narration clip rather than guessed -- see `koaudio.time_passage`. The word
+    carries them on `data-lit`/`data-until`, which `resolve()` turns into
+    absolute seconds and `seek()` reads as a state. Nothing here animates: the
+    highlight is a class, so the frame stays a pure function of t.
+    """
+    # One spoken clip per SENTENCE, not per word: the sentence was synthesised
+    # whole so its prosody is real, and the per-word clips exist only as the
+    # measuring stick that produced these timings. The tag carries the rate
+    # because that clip is cached at PASSAGE_RATE, not at the word rate.
+    from koaudio import PASSAGE_RATE
+    say, sent, sent_at = [], [], None
+    for ko, _g, a, _b in words:
+        if sent_at is None:
+            sent_at = a
+        sent.append(ko)
+        if ko.rstrip().endswith((".", "?", "!", "\u3002")):
+            say.append(f'<span data-say-ko="{" ".join(sent)}" '
+                       f'data-at="{at + sent_at:.3f}" data-dur="0.3" '
+                       f'data-say-rate="{PASSAGE_RATE}" style="display:none"></span>')
+            sent, sent_at = [], None
+
+    cells = []
+    for ko, gloss, a, b in words:
+        g = f'<span class="matn__g">{gloss}</span>' if gloss else ""
+        cells.append(f'<span class="matn__w lite" data-lit="{at + a:.3f}" '
+                     f'data-until="{at + b:.3f}">'
+                     f'<span class="matn__k">{ko}</span>{g}</span>')
+        if ko.rstrip().endswith((".", "?", "!", "\u3002")):
+            cells.append('<span class="matn__br"></span>')
+    return f'<div class="matn__p">{"".join(cells)}</div>{"".join(say)}'

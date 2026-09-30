@@ -539,6 +539,37 @@ body[data-subj="story"]    { --accent: #c08a52; --accent-dim: rgba(192,138,82,.1
 .cover__ko  { font-family: var(--ff-ko); font-weight: 800; font-size: 42px;
               line-height: 1; background: var(--accent); color: #fff;
               border-radius: 15px; padding: 12px 20px; white-space: nowrap; }
+/* ── the numbered track badge  (2026-09-30) ────────────────────────────
+ * Three layouts, all drawn at t=0 with the rest of the cover, so whichever
+ * one wins is still a composed thumbnail rather than a frame caught in
+ * mid-animation.
+ *
+ * The track pill is OUTLINED where the subject pill is FILLED, and that is
+ * the hierarchy, not decoration: at a 120px grid cell two filled pills of
+ * the same weight fight each other and the eye lands on neither. The subject
+ * is the thing a stranger needs; the number is for somebody already watching
+ * the strand. So one is solid and one is drawn in line only. */
+.cover__trk { font-family: 'Okina', var(--ff-body); font-weight: 800; font-size: 38px;
+              line-height: 1; color: var(--accent); background: transparent;
+              border: 3px solid var(--accent); border-radius: 15px;
+              padding: 9px 18px; white-space: nowrap; letter-spacing: .04em;
+              font-variant-numeric: lining-nums tabular-nums; }
+/* "combined": subject and track in one pill. Longer text in the same slot, so
+   it steps down a size to keep the kicker row on one line. */
+.cover__one { font-size: 36px; letter-spacing: .02em; }
+/* "big": the number set beside the promise. The row is flex so the chip sits
+   next to the slab instead of inside it -- the slab keeps its own max-width
+   and the promise can never be pushed onto an extra line by the number. */
+.cover__promise { display: flex; align-items: center; justify-content: center;
+                  gap: 26px; max-width: 1000px; }
+.cover__num { font-family: var(--ff-head); font-weight: 900; font-size: 92px;
+              line-height: 1; color: var(--accent); background: transparent;
+              border: 4px solid var(--accent); border-radius: 24px;
+              padding: 14px 20px; white-space: nowrap; flex: none;
+              /* Playfair's default zero is round enough that "07" reads as
+                 "O7" at a glance. Lining, tabular figures fix it. */
+              font-variant-numeric: lining-nums tabular-nums; }
+
 /* The wrong thing, big enough to read at 120px wide in a profile grid. */
 .cover__w   { font-family: var(--ff-ko); font-weight: 800; line-height: 1.04;
               text-align: center; color: var(--ink);
@@ -549,3 +580,44 @@ body[data-subj="story"]    { --accent: #c08a52; --accent-dim: rgba(192,138,82,.1
 /* The promise sits in a slab so it survives being shrunk to a grid cell. */
 .cover__slab{ background: var(--accent-dim); border-radius: 30px;
               padding: 26px 40px; max-width: 940px; }
+
+/* ── MATN: the read-along passage  (2026-09-30) ────────────────────────
+ * A Korean passage read at natural speed, with the word being spoken lit
+ * and its Uzbek gloss appearing underneath as the voice reaches it.
+ *
+ * ⚠️ NO transitions here, deliberately. A CSS transition runs on the wall
+ * clock, not on t -- so three parallel renderers landing on the same frame
+ * would each catch it at a different point and the highlight would flicker
+ * at every worker boundary. The switch is instant, which is what karaoke
+ * does anyway. `.on` and `.done` are toggled by seek() exactly like `.tick`.
+ *
+ * The gloss is driven by the SAME state rather than its own entrance, so a
+ * word and its meaning can never drift apart. */
+.matn      { display: flex; flex-direction: column; align-items: center;
+             gap: 34px; width: 100%; }
+.matn__p   { display: flex; flex-wrap: wrap; justify-content: center;
+             align-items: flex-start; gap: 26px 20px; max-width: 950px; }
+/* A sentence ends on its own line -- in a wrapped flow the reader cannot see
+   where one stops and the next starts, and this passage holds three.
+   flex-shrink:0 is load-bearing: a flex item shrinks below its basis by
+   default, so a 100%-basis break collapses to nothing and the next sentence
+   carries on along the same line, putting 책을 at the end of sentence one. */
+.matn__br  { flex-basis: 100%; flex-shrink: 0; height: 0; }
+.matn__w   { display: flex; flex-direction: column; align-items: center;
+             gap: 6px; }
+/* keep-all: Hangul has no spaces inside a word, so a browser will happily
+   split 먹어요 into two non-words. Same rule as the rest of the kit. */
+/* 52, not 56: the gloss below had to grow past lint's 34px floor (it was
+   caught at 25px) and the two still have to sit in one column. */
+.matn__k   { font-family: var(--ff-ko); font-weight: 800; font-size: 52px;
+             line-height: 1.15; color: var(--ink-soft); word-break: keep-all;
+             padding: 4px 12px; border-radius: 14px; }
+.matn__g   { font-family: 'Okina', var(--ff-body); font-weight: 700;
+             font-size: 34px; line-height: 1.2; color: var(--accent);
+             opacity: 0; text-align: center; max-width: 250px; }
+/* spoken now */
+.lite.on   .matn__k { background: var(--accent); color: #fff; }
+/* already spoken -- darker than unread, so the eye can see how far it has got */
+.lite.done .matn__k { color: var(--ink); }
+.lite.on   .matn__g,
+.lite.done .matn__g { opacity: 1; }

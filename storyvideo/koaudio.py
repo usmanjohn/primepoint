@@ -48,9 +48,21 @@ CACHE = HERE / "assets" / "ko_words"
 VOICE = "ko-KR-SunHiNeural"
 RATE = "-10%"          # a word said for imitation, not at conversation speed
 
-# Elements that ask to be spoken. `wordkit.pron(speak=True)` writes it.
-SAY_RE = re.compile(r'data-say-ko="([^"]+)"[^>]*?data-at="([\d.]+)"'
-                    r'|data-at="([\d.]+)"[^>]*?data-say-ko="([^"]+)"')
+# Elements that ask to be spoken. `wordkit.pron(speak=True)` and
+# `wordkit.say_span()` write them.
+#
+# Matched as a WHOLE TAG and then read attribute by attribute, rather than by
+# one regex per attribute order. The old pattern had to spell out both orders
+# of (data-say-ko, data-at) and could not have carried a third attribute at
+# all -- which `data-say-rate` now is: a passage sentence is cached at
+# PASSAGE_RATE, not at the word RATE, and loading it at the wrong rate looks
+# for a different hash and silently finds nothing.
+SAY_TAG_RE = re.compile(r'<[^>]*\bdata-say-ko="[^"]*"[^>]*>')
+
+
+def _attr(tag, name, default=None):
+    m = re.search(rf'\b{name}="([^"]*)"', tag)
+    return m.group(1) if m else default
 
 
 def clip_path(text, voice=VOICE, rate=RATE):
@@ -59,23 +71,25 @@ def clip_path(text, voice=VOICE, rate=RATE):
 
 
 def events(video):
-    """[(absolute_seconds, korean_text)] for one video, read from the scenes."""
+    """[(absolute_seconds, korean_text, rate)] for one video, from the scenes."""
     out = []
     for start, _end, sc in video.bounds():
-        for m in SAY_RE.finditer(sc.html):
-            text = m.group(1) or m.group(4)
-            at = float(m.group(2) or m.group(3))
-            out.append((start + at, text))
+        for tag in SAY_TAG_RE.findall(sc.html):
+            text = _attr(tag, "data-say-ko")
+            at = _attr(tag, "data-at")
+            if text is None or at is None:
+                continue
+            out.append((start + float(at), text, _attr(tag, "data-say-rate", RATE)))
     return sorted(out)
 
 
 def words(video):
-    """Every distinct Korean word this video needs a clip for."""
+    """Every distinct (text, rate) this video needs a clip for."""
     seen, out = set(), []
-    for _t, w in events(video):
-        if w not in seen:
-            seen.add(w)
-            out.append(w)
+    for _t, w, rate in events(video):
+        if (w, rate) not in seen:
+            seen.add((w, rate))
+            out.append((w, rate))
     return out
 
 
@@ -132,8 +146,10 @@ def track(video, seconds, gain=0.8, voice=VOICE, rate=RATE):
         return None, []
     buf = np.zeros(int(SR * seconds) + SR, dtype="float32")
     missing = []
-    for t, text in evs:
-        pcm = _load(text, voice, rate)
+    for t, text, ev_rate in evs:
+        # The element's own rate wins: a passage sentence is cached slower
+        # than a drill word, and each must be loaded at the rate it was made.
+        pcm = _load(text, voice, ev_rate or rate)
         if pcm is None:
             missing.append(text)
             continue
@@ -147,3 +163,59 @@ def track(video, seconds, gain=0.8, voice=VOICE, rate=RATE):
         end = min(k + len(pcm), len(buf))
         buf[k:end] += pcm[:end - k] * gain
     return buf[:int(SR * seconds)], missing
+
+
+# ── MATN: timings for a read-along passage ──────────────────────────────
+#
+# edge-tts does NOT emit WordBoundary events -- checked 2026-09-30 on both
+# ko-KR-SunHiNeural and en-US-JennyNeural, and both return SentenceBoundary
+# only. So per-word timings have to be derived, and there is no forced
+# aligner on this machine (no torch, no whisper, no MFA).
+#
+# The derivation, and it uses only what this module already does:
+#   1. the SENTENCE is synthesised as one clip, so the prosody is real;
+#   2. each WORD is synthesised separately as a MEASURING STICK -- never
+#      played, only measured, and cached like every other clip;
+#   3. the word lengths are scaled so they sum exactly to the sentence's
+#      true length, which removes the bias that isolated words are slower.
+#
+# It is proportional, not an alignment: expect ~0.1s of error on a word.
+# That is invisible on a moving highlight, and because the numbers end up
+# in the spec, any word that lands late can be nudged by hand.
+PASSAGE_RATE = "-5%"       # a reading, not a drill -- slower than a word clip
+
+
+def clip_seconds(text, voice=VOICE, rate=PASSAGE_RATE):
+    """True length of one cached clip, in seconds, silence trimmed."""
+    pcm = _load(text, voice, rate)
+    return (len(pcm) / SR) if pcm is not None else None
+
+
+def time_passage(sentence, gap=0.06, voice=VOICE, rate=PASSAGE_RATE):
+    """[(word, start, end)] for one sentence, plus its total length.
+
+    Clips for the sentence and for every word must already be cached --
+    `cli.py matn` fetches them. Raises if one is missing rather than
+    inventing a timing, for the same reason `track()` reports missing words.
+    """
+    total = clip_seconds(sentence, voice, rate)
+    if total is None:
+        raise SystemExit(f"no clip for the sentence: {sentence!r}")
+    words = sentence.split()
+    sticks = []
+    for w in words:
+        d = clip_seconds(w, voice, rate)
+        if d is None:
+            raise SystemExit(f"no clip for the word: {w!r}")
+        sticks.append(d)
+
+    # Inter-word gaps are part of the sentence, so take them off the top
+    # before scaling -- otherwise every word absorbs a share of the silence
+    # and the highlight runs steadily late.
+    gaps = gap * (len(words) - 1)
+    scale = (total - gaps) / sum(sticks) if sum(sticks) else 1.0
+    out, t = [], 0.0
+    for w, d in zip(words, sticks):
+        out.append((w, round(t, 3), round(t + d * scale, 3)))
+        t += d * scale + gap
+    return out, total

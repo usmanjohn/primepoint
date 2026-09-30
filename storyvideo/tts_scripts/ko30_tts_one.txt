@@ -1,0 +1,29 @@
+Koreysda uchta koʻrsatkich bor: i, ku, cho. <break time='0.45s' /> Va oʻzbek tilida ham aynan uchta.
+
+<break time='2.5s' />
+
+Eng koʻp adashtiradigani, kugo. <break time='0.3s' /> Shu narsa degani: sizning yoningizdagi narsa.
+
+<break time='2.5s' />
+
+Menga yaqin boʻlsa, <emphasis level='moderate'>igo</emphasis>, bu. <break time='0.3s' /> Sizga yaqin boʻlsa, <emphasis level='moderate'>kugo</emphasis>, shu. <break time='0.45s' /> Ikkimizdan ham uzoqda boʻlsa, <emphasis level='moderate'>chogo</emphasis>, u.
+
+<break time='2.5s' />
+
+Joylar ham xuddi shunday: <emphasis level='moderate'>yogi</emphasis> bu yer, <emphasis level='moderate'>kogi</emphasis> shu yer, <emphasis level='moderate'>chogi</emphasis> u yer. <break time='0.45s' /> Bitta qoidani ikki marta oʻrganish shart emas.
+
+<break time='2.5s' />
+
+Doʻkonda Zilola uzoqdagi narsaga koʻrsatadi: chogo chuseyoʻ. <break time='0.3s' /> Sotuvchining qoʻlida boʻlganida, kugo boʻlardi.
+
+<break time='2.5s' />
+
+Ingliz tilida ikkita masofa bor, this va that. <break time='0.3s' /> Shuning uchun darsliklar ku ni ham, cho ni ham that deb tarjima qiladi, va ikkisi qoʻshilib ketadi. <break time='0.45s' /> Oʻzbekchaga oʻgiring: shu va u hech qachon aralashmaydi.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Telefonda gaplashyapsiz va suhbatdoshingiz qoʻlidagi narsani soʻrayapsiz. <break time='0.3s' /> Kugo mi, chogo mi? <break time='0.45s' /> Izohda kutamiz.
+
+<break time='2.5s' />
+
+Praym Korean, yuzta dars, boshidan. Powertyda, oʻn beshinchi dars.

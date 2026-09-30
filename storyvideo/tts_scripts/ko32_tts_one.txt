@@ -1,0 +1,21 @@
+Koreys maqolida maymun bor. <break time='0.45s' /> Bizda esa, ot.
+
+<break time='2.5s' />
+
+Vonsungidoʻ namueso ttorojinda. <break time='0.3s' /> Soʻzma-soʻz: maymun ham daraxtdan yiqiladi. <break time='0.45s' /> Otning ham oyogʻi toyadi. <break time='0.3s' /> Hayvon boshqa, vazifa bitta: har bir xalq oʻz olamidagi eng ustasini oladi.
+
+<break time='2.5s' />
+
+Endi bitta boʻgʻinni olib tashlang. <break time='0.3s' /> Vonsungi ttorojinda, maymun yiqiladi. Oddiy xabar. <break time='0.45s' /> Vonsungidoʻ ttorojinda, maymun <emphasis level='moderate'>ham</emphasis> yiqiladi. Maqol. <break time='0.3s' /> Maqolni hikmat emas, mana shu bitta boʻgʻin yasaydi.
+
+<break time='2.5s' />
+
+Toʻ, oʻzbekcha ham. <break time='0.3s' /> Va maqolning butun kuchi shu soʻzda: gap maymun haqida emas, ustaning ham xato qilishi haqida.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Chodoʻ haksengieyoʻ, bu gapda toʻ nimani bildiryapti? <break time='0.45s' /> Izohda kutamiz.
+
+<break time='2.5s' />
+
+Koreys maqollari, Powertyda, Burchak boʻlimida.

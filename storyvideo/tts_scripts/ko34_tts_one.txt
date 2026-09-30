@@ -1,0 +1,17 @@
+Bugun koreyscha matn oʻqiymiz. <break time='0.3s' /> Oʻn bitta soʻz. <break time='0.45s' /> Va hammasi sizga tanish.
+
+<break time='2.5s' />
+
+Bu matnda uchta tanish qoida bor. <break time='0.3s' /> Chonun, men esa. <break time='0.3s' /> Toʻsogvane va chibeso, biri joyga, ikkinchisi joyda. <break time='0.45s' /> Kassoyoʻ va ilgossoyoʻ, oʻzak unlisi qoʻshimchani tanladi.
+
+<break time='2.5s' />
+
+Qoidani alohida yodlash yetmaydi. <break time='0.3s' /> Matnda uni koʻrib tanisangiz, oʻsha qoida sizniki boʻldi. <break time='0.45s' /> Shuning uchun har bir darsdan keyin shu darsning matnini oʻqing.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Matnda se kvon bor, uchta. <break time='0.3s' /> Nega kvon, nega ke emas? <break time='0.45s' /> Izohda kutamiz.
+
+<break time='2.5s' />
+
+Praym Korean matnlari, Powertyda, Burchak boʻlimida.

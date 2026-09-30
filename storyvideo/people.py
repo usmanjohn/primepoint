@@ -42,6 +42,25 @@ CAST = {
     "Oʻqituvchi":  {"shirt": "#5b5147", "skin": "l", "hair": "#6b6259",
                     "adult": True},
 
+    # ── 2026-09-30: yangi avlod ──
+    # ⚠️ Yangi ism qoʻshishdan oldin BUTUN stories/ ni tekshiring, faqat ko* ni
+    # emas. `figure()` CAST da yoʻq ismga indeks boʻyicha statist koʻrinishini
+    # beradi — demak ilgari statist boʻlgan ismni CAST ga qoʻshish oʻsha
+    # filmni JIMGINA oʻzgartiradi. «Dilnoza» aynan shunday qildi: pm25 va
+    # pm91 da u bor edi, va CAST ga qoʻshilishi bilan koʻylagi ham, sochi ham
+    # almashdi. Shuning uchun u Sevara ga oʻzgartirildi.
+    # Afsona, Sardor, Bekzod, Jasur, Sherbek va Nodira opa yigirma sakkizta
+    # filmda ishladi; bir xil olti kishi qaytaversa, seriya emas, takror
+    # boʻlib qoladi. Koʻylak ranglari yuqoridagilardan ataylab uzoq tanlandi —
+    # 120px setkada figura faqat siluet va rang boʻlib koʻrinadi.
+    "Sevara":    {"shirt": "#d4756b", "skin": "l", "hair": "#2b211c", "long": True},
+    "Otabek":     {"shirt": "#2f7f8f", "skin": "m", "hair": "#241b17"},
+    "Zilola":     {"shirt": "#7b9e3f", "skin": "l", "hair": "#3a2a22", "long": True},
+    "Farrux":     {"shirt": "#b5543f", "skin": "d", "hair": "#241b17"},
+    "Anvar aka":  {"shirt": "#46566b", "skin": "m", "hair": "#241b17", "adult": True},
+    "Malika opa": {"shirt": "#8f4f7a", "skin": "l", "hair": "#241b17",
+                   "long": True, "adult": True},
+
     # ── Matematika olami: tarixiy siymolar ──
     # Salla va soqol — bitta figurada oʻn ikki asr farqni koʻrsatadigan yagona narsa.
     "Al-Xorazmiy": {"shirt": "#3f6f8f", "skin": "m", "hair": "#241b17", "adult": True,

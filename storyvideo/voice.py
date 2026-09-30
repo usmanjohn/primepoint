@@ -212,7 +212,19 @@ def settle_of(scene):
         m = max(m, float(a) + float(d))
     for d, a in re.findall(r'data-dur="([\d.]+)"[^>]*data-at="([\d.]+)"', scene.html):
         m = max(m, float(a) + float(d))
-    return m + 0.35
+    # A read-along passage is still MOVING while the highlight travels, but it
+    # does that on data-lit/data-until rather than on an entrance -- invisible
+    # to the two patterns above. Without this, `retime` gives the scene the
+    # 3s a silent scene gets and the reading is cut off mid-word.
+    for u in re.findall(r'data-until="([\d.]+)"', scene.html):
+        m = max(m, float(u))
+    # `data-hold` is READING time, not movement: a scene that stops animating
+    # is not necessarily a scene the viewer has finished with. A passage ends
+    # by putting three lines of Uzbek on screen, and `settle_of` would hand it
+    # 0.95s to be read. Nothing written before today carries the attribute, so
+    # every existing film keeps exactly the length it had.
+    hold = [float(h) for h in re.findall(r'data-hold="([\d.]+)"', scene.html)]
+    return m + 0.35 + (max(hold) if hold else 0.0)
 
 
 def decode(path):

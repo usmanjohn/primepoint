@@ -1,0 +1,29 @@
+Koreys tilida oʻtgan zamon ikki xil yasaladi. <break time='0.45s' /> Va bu shakl, mogassoyoʻ, mavjud emas.
+
+<break time='2.5s' />
+
+Farrux aytadi: chonun pabul mogassoyoʻ. <break time='0.3s' /> U pap soʻzidagi a ni eshitgan. <break time='0.45s' /> Lekin qaraladigan unli u yerda emas.
+
+<break time='2.5s' />
+
+Feʼl oʻzagiga qaraladi. <break time='0.3s' /> Oʻzak, mok, unlisi o. <break time='0.45s' /> Demak mogossoyoʻ.
+
+<break time='2.5s' />
+
+Qoida oddiy. <break time='0.3s' /> Oʻzakning oxirgi unlisi a yoki oʻ boʻlsa, assoyoʻ. <break time='0.3s' /> Boshqa unli boʻlsa, ossoyoʻ. <break time='0.45s' /> Hada esa hessoyoʻ boʻladi.
+
+<break time='2.5s' />
+
+Tekshiramiz. Mashida, ichmoq. <break time='0.3s' /> Oʻzagi mashi, oxirgi unlisi i. <break time='0.45s' /> Demak mashossoyoʻ.
+
+<break time='2.5s' />
+
+Oʻzbekchada qoʻshimcha oʻzgarmaydi: bordim, keldim, oʻqidim. <break time='0.3s' /> Koreysda oʻzak qoʻshimchani tanlaydi. <break time='0.45s' /> Shuning uchun feʼlni yodlaganda oʻzagini ham yodlang.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Noʻlda, oʻynamoq, oʻzagi noʻl. <break time='0.3s' /> Oʻtgan zamoni qanday boʻladi? <break time='0.45s' /> Izohda kutamiz.
+
+<break time='2.5s' />
+
+Praym Korean, yuzta dars, boshidan. Powertyda, yigirmanchi dars.

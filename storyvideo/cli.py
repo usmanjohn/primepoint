@@ -567,18 +567,26 @@ def cmd_kowords(a):
     """
     import koaudio as KO
     a.voice = a.voice or KO.VOICE
-    a.rate = a.rate or KO.RATE
+    # a.rate stays None unless given: each element carries its own rate now
+    # (a passage sentence is cached slower than a drill word), and --rate is
+    # an override for all of them rather than the only rate there is.
     v = build.load_story(a.slug)
-    need = KO.words(v)
+    need = [(w, a.rate or r) for w, r in KO.words(v)]
     if not need:
         print(f"{a.slug}: koreyscha ovoz talab qiladigan sahna yoʻq "
               f"(`scenes.echo` ishlating).")
         return 0
-    have = [w for w in need if KO.clip_path(w, a.voice, a.rate).exists()]
+    have = [w for w, r in need if KO.clip_path(w, a.voice, r).exists()]
     print(f"{a.slug}: {len(need)} ta soʻz, {len(have)} tasi allaqachon bor")
-    made, missing = KO.generate(need, voice=a.voice, rate=a.rate, force=a.force)
-    for text, path in made:
-        print(f"  + {text}  →  assets/ko_words/{path.name}")
+    by_rate = {}
+    for w, r in need:
+        by_rate.setdefault(r, []).append(w)
+    missing = []
+    for rate, texts in by_rate.items():
+        made, miss = KO.generate(texts, voice=a.voice, rate=rate, force=a.force)
+        for text, path in made:
+            print(f"  + {text}  ({rate})  →  assets/ko_words/{path.name}")
+        missing += miss
     if missing:
         print(f"  ⚠️  olinmadi: {', '.join(missing)}")
         return 1
