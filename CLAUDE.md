@@ -201,6 +201,29 @@ Kit: the **PRIME WORKBOOK** (`wb-*`, `wb-ws-*`) section at the bottom of `static
 ⚠️ Never name a template include flag `block` — inside `{% block %}` Django's context already
 has one and it is always truthy (every answer box went full-width until renamed `as_block`).
 
+## Study abroad — "Xorijda oʻqish" (`abroad` app, `/abroad/`)
+Started **2026-10-01**. How to apply to universities abroad: 10 guides (letters, documents and
+apostille, certificates, money, visa, choosing), scholarships (**GKS in depth**; MEXT, Türkiye
+Bursları, Stipendium Hungaricum, CSC, Chevening, Fulbright, DAAD, Erasmus Mundus, El-Yurt Umidi as
+cards), annotated sample letters with printable planners, a GKS university list, a "which path fits
+me?" finder (GET form) and a per-user document checklist. Bilingual **in the data** (`*_uz`
+columns, like Logic Arena), Uzbek default; no JavaScript. Kit: STUDY ABROAD (`ab-*`) at the bottom
+of `static/css/style.css`.
+**⛔ Never a confident wrong date.** Every date/amount/eligibility rule comes from the official
+source on the day it is written and carries `source_url` + `last_checked` (the importer refuses
+one without them). Unannounced dates are `is_estimate` and never count down; facts older than a
+year show "check the official site". Countdowns use **Tashkent's date** (`abroad.models.today`),
+not the server's UTC one.
+When the user says "update the abroad deadlines": run `python manage.py abroad_check` (lists
+CLOSED / ESTIM / STALE with URLs), research each on the official page (PDF → `pymupdf`), edit the
+data file, run the fact gate, `import_abroad <file> --author=prime --republish`, append the line
+with `--author=powerty` to `temporary.txt`. Read `abroad/management/commands/STYLE_GUIDE_ABROAD.md`
+and `toc_abroad.txt` first.
+Worth remembering: Uzbekistan's apostille is **not** accepted by Germany, Austria or Greece
+(their 2012 objections stand; Belgium withdrew in 2025), so DAAD applicants need consular
+legalisation. In GKS, TOPIK 3 = IELTS 7.0 in the language score *plus* bonus points — the
+TOPIK track page and the Prime Korean playlist link to the GKS page for that reason.
+
 ## Creating Prime Russian tutorials (bulk) — rus tili grammatikasi
 **Prime Russian** is the 100-lesson Russian course in `tutorial`, held together by a
 `TutorialPlaylist` called "Prime Russian". Titles are `PR-1: …`, category `russian`. It is the

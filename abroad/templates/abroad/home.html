@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block nav_abroad %}active{% endblock %}
+{% block page_name %}{% trans "Study abroad" %}{% endblock %}
+{% block title %}{% trans "Study abroad: scholarships, letters, documents, deadlines" %}{% endblock %}
+{% block meta_description %}{% trans "How to apply to a university abroad from Uzbekistan: GKS and other scholarships, motivation letters, study plans, documents, tuition and deadlines — in Uzbek and English." %}{% endblock %}
+
+{% block content %}
+<div class="ab-page">
+
+<header class="ab-hero">
+    <div class="ab-hero__eyebrow"><i class="bi bi-globe2"></i> {% trans "Study abroad" %}</div>
+    <h1 class="ab-hero__title">{% trans "Study abroad on a scholarship — where to start?" %}</h1>
+    <p class="ab-hero__sub">{% trans "Which documents, how to write the letters, what each certificate is worth, how tuition is paid, and when the deadlines are. Step by step, without agencies." %}</p>
+    <div class="ab-hero__actions">
+        <a href="{% url 'abroad_scholarships' %}" class="ab-btn ab-btn--light"><i class="bi bi-search"></i> {% trans "Which path fits me?" %}</a>
+        <a href="{% url 'abroad_checklist' %}" class="ab-btn ab-btn--ghost"><i class="bi bi-check2-square"></i> {% trans "My checklist" %}</a>
+    </div>
+</header>
+
+{% if deadlines %}
+<section class="ab-block">
+    <h2 class="ab-h2"><i class="bi bi-alarm"></i> {% trans "Next deadlines" %}</h2>
+    <div class="ab-dls">{% for d in deadlines %}{% include "abroad/_deadline.html" %}{% endfor %}</div>
+    <p class="ab-fine">{% trans "Every date links to its official source. Dates change every year — always confirm on the official site before you plan around one." %}</p>
+</section>
+{% endif %}
+
+<section class="ab-block">
+    <h2 class="ab-h2"><i class="bi bi-signpost-split"></i> {% trans "The road, in six steps" %}</h2>
+    <ol class="ab-road">
+        <li><span class="ab-road__n">1</span><div><strong>{% trans "Certificate" %}</strong><br>{% trans "IELTS / TOPIK / SAT — 6–12 months before" %}</div></li>
+        <li><span class="ab-road__n">2</span><div><strong>{% trans "Choose" %}</strong><br>{% trans "scholarship, country, 3–5 universities" %}</div></li>
+        <li><span class="ab-road__n">3</span><div><strong>{% trans "Documents" %}</strong><br>{% trans "transcript, diploma, translation, apostille" %}</div></li>
+        <li><span class="ab-road__n">4</span><div><strong>{% trans "Letters" %}</strong><br>{% trans "personal statement, study plan, recommendation" %}</div></li>
+        <li><span class="ab-road__n">5</span><div><strong>{% trans "Apply and interview" %}</strong><br>{% trans "online form, then an interview" %}</div></li>
+        <li><span class="ab-road__n">6</span><div><strong>{% trans "Visa and flight" %}</strong><br>{% trans "admission letter → visa → arrival" %}</div></li>
+    </ol>
+</section>
+
+<section class="ab-block">
+    <h2 class="ab-h2"><i class="bi bi-book"></i> {% trans "Guides" %}</h2>
+    <div class="ab-grid">
+        {% for g in guides %}
+        <a href="{% url 'abroad_guide' g.slug %}" class="ab-card">
+            <i class="bi {{ g.icon }} ab-card__icon"></i>
+            <span class="ab-card__title">{{ g.display_title }}</span>
+            <span class="ab-card__sub">{{ g.display_summary }}</span>
+            <span class="ab-card__meta">{% blocktrans with m=g.minutes %}{{ m }} min read{% endblocktrans %}</span>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="ab-block">
+    <h2 class="ab-h2"><i class="bi bi-award"></i> {% trans "Scholarships" %}</h2>
+    <div class="ab-grid">
+        {% for s in scholarships %}
+        <a href="{% url 'abroad_scholarship' s.slug %}" class="ab-card ab-card--sch">
+            <span class="ab-card__flag">{{ s.flag }}</span>
+            <span class="ab-card__title">{{ s.name }}{% if s.depth == 'full' %} <span class="ab-tag">{% trans "full guide" %}</span>{% endif %}</span>
+            <span class="ab-card__sub">{{ s.display_summary }}</span>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+{% if samples %}
+<section class="ab-block">
+    <h2 class="ab-h2"><i class="bi bi-file-earmark-text"></i> {% trans "Annotated samples" %}</h2>
+    <div class="ab-grid">
+        {% for s in samples %}
+        <a href="{% url 'abroad_sample' s.slug %}" class="ab-card ab-card--sample">
+            <span class="ab-tag ab-tag--sample">{{ s.get_kind_display }}</span>
+            <span class="ab-card__title">{{ s.display_title }}</span>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<section class="ab-block ab-duo">
+    <a href="{% url 'abroad_universities' %}" class="ab-card">
+        <i class="bi bi-building ab-card__icon"></i>
+        <span class="ab-card__title">{% trans "Universities" %}</span>
+        <span class="ab-card__sub">{% blocktrans with n=university_count %}{{ n }} Korean universities that take GKS scholars{% endblocktrans %}</span>
+    </a>
+    <a href="{% url 'abroad_checklist' %}" class="ab-card">
+        <i class="bi bi-list-check ab-card__icon"></i>
+        <span class="ab-card__title">{% trans "My checklist" %}</span>
+        <span class="ab-card__sub">{% trans "Tick each document as you get it — saved to your account." %}</span>
+    </a>
+</section>
+
+<p class="ab-fine">{% trans "Powerty is not an agency. We explain the process and link to the official sources." %}</p>
+</div>
+{% endblock %}

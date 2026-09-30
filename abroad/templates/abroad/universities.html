@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block nav_abroad %}active{% endblock %}
+{% block page_name %}{% trans "Study abroad" %}{% endblock %}
+{% block title %}{% trans "Korean universities that take GKS scholars" %}{% endblock %}
+
+{% block content %}
+<div class="ab-page">
+<a href="{% url 'abroad_home' %}" class="ab-back"><i class="bi bi-arrow-left"></i> {% trans "Study abroad" %}</a>
+<h1 class="ab-h1">{% trans "Korean universities that take GKS scholars" %}</h1>
+<p class="ab-fine">{% trans "Type A and Type B are the groups used in the GKS bachelor's guidelines. In the Embassy track you choose up to three universities and at least one must be Type B; R-GKS applicants choose up to two, Type B only. Always check the current year's “University Information” file — departments change." %}</p>
+
+<div class="ab-unis">
+{% for u in universities %}
+    <a href="{{ u.url }}" class="ab-uni" target="_blank" rel="noopener">
+        <span class="ab-uni__name">{{ u.name }}{% if u.name_local %} <small lang="ko">{{ u.name_local }}</small>{% endif %}</span>
+        <span class="ab-uni__meta"><i class="bi bi-geo-alt"></i> {{ u.city }}
+            {% if u.rank_label %}· {{ u.rank_label }}{% endif %}</span>
+        <span class="ab-uni__sum">{{ u.display_strengths }}</span>
+    </a>
+{% endfor %}
+</div>
+</div>
+{% endblock %}

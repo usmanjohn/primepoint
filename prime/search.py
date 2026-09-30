@@ -253,11 +253,36 @@ def _classrooms(q):
     return _group('classrooms', _('Classrooms'), 'bi-easel-fill', items, qs.count())
 
 
+def _abroad(q):
+    """Study-abroad guides and scholarships — both languages are searched, so
+    "GKS", "apostil" and "motivatsion xat" all find something."""
+    from abroad.models import Guide, Scholarship
+
+    guides = Guide.objects.filter(is_published=True).filter(
+        Q(title__icontains=q) | Q(title_uz__icontains=q)
+        | Q(summary__icontains=q) | Q(summary_uz__icontains=q))
+    schols = Scholarship.objects.filter(is_published=True).filter(
+        Q(name__icontains=q) | Q(full_name__icontains=q) | Q(country__icontains=q)
+        | Q(country_uz__icontains=q) | Q(summary__icontains=q) | Q(summary_uz__icontains=q))
+    items = [{
+        'title': f'{s.flag} {s.name}',
+        'meta': _join(s.display_country, s.display_summary),
+        'url': reverse('abroad_scholarship', args=[s.slug]),
+    } for s in schols[:PER_GROUP]]
+    items += [{
+        'title': g.display_title,
+        'meta': g.display_summary,
+        'url': reverse('abroad_guide', args=[g.slug]),
+    } for g in guides[:max(0, PER_GROUP - len(items))]]
+    return _group('abroad', _('Study abroad'), 'bi-globe2', items,
+                  guides.count() + schols.count())
+
+
 # Learning material first — that is what people type into a search box — then
 # people, then community spaces.
 SOURCES = [
     _tutorials, _practices, _examprep, _grammar, _vocab, _exams, _stories, _writing,
-    _logic, _games, _masters, _pandas, _threads, _classrooms,
+    _logic, _abroad, _games, _masters, _pandas, _threads, _classrooms,
 ]
 
 

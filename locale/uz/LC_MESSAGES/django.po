@@ -10485,3 +10485,246 @@ msgstr "Qabul qilindi — javoblarga qoʻshildi va qayta baholandi."
 
 msgid "Thank you — a teacher will look at your answer. If it is right, it will be marked right for everyone."
 msgstr "Rahmat — oʻqituvchi javobingizni koʻrib chiqadi. Agar u toʻgʻri boʻlsa, hamma uchun toʻgʻri deb belgilanadi."
+
+msgid "Study abroad"
+msgstr "Xorijda oʻqish"
+
+msgid "My checklist"
+msgstr "Mening roʻyxatim"
+
+msgid "Log in to save your ticks. You can read the whole list without an account."
+msgstr "Belgilaringizni saqlash uchun kiring. Butun roʻyxatni hisobsiz ham oʻqish mumkin."
+
+msgid "%(n)s of %(total)s ready"
+msgstr "%(total)s tadan %(n)s tasi tayyor"
+
+msgid "Study abroad: scholarships, letters, documents, deadlines"
+msgstr "Xorijda oʻqish: stipendiyalar, xatlar, hujjatlar, muddatlar"
+
+msgid "How to apply to a university abroad from Uzbekistan: GKS and other scholarships, motivation letters, study plans, documents, tuition and deadlines — in Uzbek and English."
+msgstr "Oʻzbekistondan xorijiy universitetga qanday topshirish: GKS va boshqa stipendiyalar, motivatsion xat, oʻqish rejasi, hujjatlar, kontrakt va muddatlar — oʻzbek va ingliz tillarida."
+
+msgid "Study abroad on a scholarship — where to start?"
+msgstr "Xorijda stipendiya bilan oʻqish — qayerdan boshlash kerak?"
+
+msgid "Which documents, how to write the letters, what each certificate is worth, how tuition is paid, and when the deadlines are. Step by step, without agencies."
+msgstr "Qaysi hujjatlar, xatlar qanday yoziladi, har bir sertifikat qancha turadi, kontrakt qanday toʻlanadi va muddatlar qachon. Bosqichma-bosqich, agentliklarsiz."
+
+msgid "Which path fits me?"
+msgstr "Qaysi yoʻl menga mos?"
+
+msgid "Next deadlines"
+msgstr "Yaqin muddatlar"
+
+msgid "Every date links to its official source. Dates change every year — always confirm on the official site before you plan around one."
+msgstr "Har bir sana rasmiy manbasiga bogʻlangan. Sanalar har yili oʻzgaradi — rejangizni qurishdan oldin doim rasmiy saytda tasdiqlang."
+
+msgid "The road, in six steps"
+msgstr "Yoʻl — olti qadamda"
+
+msgid "IELTS / TOPIK / SAT — 6–12 months before"
+msgstr "IELTS / TOPIK / SAT — 6–12 oy oldin"
+
+msgid "scholarship, country, 3–5 universities"
+msgstr "stipendiya, davlat, 3–5 ta universitet"
+
+msgid "Documents"
+msgstr "Hujjatlar"
+
+msgid "transcript, diploma, translation, apostille"
+msgstr "baholar varaqasi, diplom, tarjima, apostil"
+
+msgid "Letters"
+msgstr "Xatlar"
+
+msgid "personal statement, study plan, recommendation"
+msgstr "shaxsiy bayonot, oʻqish rejasi, tavsiyanoma"
+
+msgid "Apply and interview"
+msgstr "Ariza va suhbat"
+
+msgid "online form, then an interview"
+msgstr "onlayn shakl, keyin suhbat"
+
+msgid "Visa and flight"
+msgstr "Viza va parvoz"
+
+msgid "admission letter → visa → arrival"
+msgstr "qabul xati → viza → yetib borish"
+
+msgid "Scholarships"
+msgstr "Stipendiyalar"
+
+msgid "full guide"
+msgstr "toʻliq qoʻllanma"
+
+msgid "Annotated samples"
+msgstr "Izohli namunalar"
+
+msgid "Universities"
+msgstr "Universitetlar"
+
+msgid "Tick each document as you get it — saved to your account."
+msgstr "Har bir hujjatni olganingizda belgilang — hisobingizda saqlanadi."
+
+msgid "Powerty is not an agency. We explain the process and link to the official sources."
+msgstr "Powerty — agentlik emas. Biz jarayonni tushuntiramiz va rasmiy manbalarga yoʻllaymiz."
+
+msgid "%(m)s min read"
+msgstr "%(m)s daqiqalik oʻqish"
+
+msgid "%(n)s Korean universities that take GKS scholars"
+msgstr "GKS stipendiatlarini qabul qiladigan %(n)s ta Koreya universiteti"
+
+msgid "Planner"
+msgstr "Reja varagʻi"
+
+msgid "Answer these in note form first — in Uzbek is fine. The letter comes after, from your notes, never from a sample."
+msgstr "Avval bularga qisqa qaydlar bilan javob bering — oʻzbekcha boʻlsa ham boʻladi. Xat keyin, namunadan emas, qaydlaringizdan yoziladi."
+
+msgid "Scholarships — which path fits me?"
+msgstr "Stipendiyalar — qaysi yoʻl menga mos?"
+
+msgid "I want to study for a"
+msgstr "Men oʻqimoqchiman:"
+
+msgid "A language I already have (or will have)"
+msgstr "Menda bor (yoki boʻladigan) til"
+
+msgid "I need full funding"
+msgstr "Menga toʻliq moliyalashtirish kerak"
+
+msgid "Nothing matches all of these yet. Try removing one filter — or start a language now: a language year is part of several scholarships."
+msgstr "Bularning hammasiga mos keladigani hozircha yoʻq. Bitta filtrni olib tashlang — yoki tilni hozirdan boshlang: bir nechta stipendiyada til yili bor."
+
+msgid "sample"
+msgstr "namuna"
+
+msgid "Sample — do not copy."
+msgstr "Namuna — koʻchirmang."
+
+msgid "This letter is fictional. Committees read hundreds of letters and check for copied text; a borrowed sentence can cost you the scholarship. Read it to see HOW it is built, then use the planner to write your own."
+msgstr "Bu xat oʻylab topilgan. Komissiya yuzlab xat oʻqiydi va koʻchirilgan matnni tekshiradi; oʻzlashtirilgan bitta gap stipendiyadan mahrum qilishi mumkin. U QANDAY qurilganini koʻrish uchun oʻqing, keyin reja varagʻi bilan oʻzingiznikini yozing."
+
+msgid "Planner to print"
+msgstr "Chop etiladigan reja varagʻi"
+
+msgid "The questions to answer before you write your own — on paper, with space to think."
+msgstr "Oʻzingiznikini yozishdan oldin javob beriladigan savollar — qogʻozda, oʻylash uchun joy bilan."
+
+msgid "Other samples"
+msgstr "Boshqa namunalar"
+
+msgid "check the date on the official site"
+msgstr "sanani rasmiy saytda tekshiring"
+
+msgid "expected around"
+msgstr "taxminan"
+
+msgid "opens"
+msgstr "ochiladi"
+
+msgid "closes today"
+msgstr "bugun yopiladi"
+
+msgid "estimate"
+msgstr "taxminiy"
+
+msgid "Official site"
+msgstr "Rasmiy sayt"
+
+msgid "This is over a year old — confirm everything on the official site."
+msgstr "Bu bir yildan eski — hammasini rasmiy saytda tasdiqlang."
+
+msgid "Dates"
+msgstr "Sanalar"
+
+msgid "Recently closed"
+msgstr "Yaqinda yopilganlar"
+
+msgid "source"
+msgstr "manba"
+
+msgid "What it pays for"
+msgstr "Nimalarni toʻlaydi"
+
+msgid "A few of the participating universities — the full list for each year is in the official “University Information” file."
+msgstr "Ishtirokchi universitetlarning bir qismi — har yilgi toʻliq roʻyxat rasmiy «University Information» faylida."
+
+msgid "See the list"
+msgstr "Roʻyxatni koʻrish"
+
+msgid "Turn this into a checklist"
+msgstr "Buni roʻyxatga aylantiring"
+
+msgid "Tick each document as you get it."
+msgstr "Har bir hujjatni olganingizda belgilang."
+
+msgid "Checked against the official guidelines on %(d)s."
+msgstr "Rasmiy yoʻriqnoma bilan %(d)s da solishtirilgan."
+
+msgid "Korean universities that take GKS scholars"
+msgstr "GKS stipendiatlarini qabul qiladigan Koreya universitetlari"
+
+msgid "Type A and Type B are the groups used in the GKS bachelor's guidelines. In the Embassy track you choose up to three universities and at least one must be Type B; R-GKS applicants choose up to two, Type B only. Always check the current year's “University Information” file — departments change."
+msgstr "Type A va Type B — GKS bakalavr yoʻriqnomasidagi guruhlar. Elchixona yoʻlida 3 tagacha universitet tanlaysiz va kamida bittasi Type B boʻlishi shart; R-GKS nomzodlari 2 tagacha, faqat Type B tanlaydi. Har doim joriy yilgi «University Information» faylini tekshiring — yoʻnalishlar oʻzgaradi."
+
+msgid "TOPIK → a GKS scholarship in Korea"
+msgstr "TOPIK → Koreyada GKS stipendiyasi"
+
+msgid "In GKS, TOPIK 3 is worth as much as IELTS 7.0 — plus bonus points. See how the scholarship works."
+msgstr "GKSda TOPIK 3 IELTS 7,0 bilan teng turadi — ustiga qoʻshimcha ball. Stipendiya qanday ishlashini koʻring."
+
+msgid "Where this certificate takes you"
+msgstr "Bu sertifikat sizni qayerga olib boradi"
+
+msgid "Scholarships, documents and deadlines for studying abroad."
+msgstr "Xorijda oʻqish uchun stipendiyalar, hujjatlar va muddatlar."
+
+msgid "Start here"
+msgstr "Shu yerdan boshlang"
+
+msgid "Money"
+msgstr "Pul"
+
+msgid "Visa and arrival"
+msgstr "Viza va yetib borish"
+
+msgid "Choosing"
+msgstr "Tanlash"
+
+msgid "Personal statement"
+msgstr "Shaxsiy bayonot"
+
+msgid "Study plan"
+msgstr "Oʻqish rejasi"
+
+msgid "Recommendation letter"
+msgstr "Tavsiyanoma"
+
+msgid "CV"
+msgstr "CV"
+
+msgid "Email to a professor"
+msgstr "Professorga xat"
+
+msgid "Any university abroad"
+msgstr "Istalgan xorijiy universitet"
+
+msgid "GKS — Bachelor (GKS-U)"
+msgstr "GKS — bakalavr (GKS-U)"
+
+msgid "GKS — Master (GKS-G)"
+msgstr "GKS — magistratura (GKS-G)"
+
+msgid "Bachelor"
+msgstr "Bakalavr"
+
+msgid "Japanese"
+msgstr "Yapon tili"
+
+msgid "Not yet"
+msgstr "Hali yoʻq"
+
+msgid "Checklist saved."
+msgstr "Roʻyxat saqlandi."

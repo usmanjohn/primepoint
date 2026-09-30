@@ -8,7 +8,7 @@ from point.sitemaps import (
     TutorialSitemap, TutorialPlaylistSitemap, ExamTrackSitemap,
     ExamprepLessonSitemap, CornerSubjectSitemap, CornerCollectionSitemap,
     CornerStorySitemap, WritingDrillSitemap, GrammarPointSitemap, VocabEntrySitemap, ExamSitemap,
-    LogicPuzzleSitemap,
+    LogicPuzzleSitemap, AbroadSitemap,
 )
 
 sitemaps = {
@@ -28,6 +28,7 @@ sitemaps = {
     'examprep_vocab': VocabEntrySitemap,
     'exams': ExamSitemap,
     'logic': LogicPuzzleSitemap,
+    'abroad': AbroadSitemap,
 }
 
 urlpatterns = [
@@ -60,5 +61,6 @@ urlpatterns = [
     path('corner/', include('corner.urls')),
     path('logic/', include('logic.urls')),
     path('workbook/', include('workbook.urls')),
+    path('abroad/', include('abroad.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

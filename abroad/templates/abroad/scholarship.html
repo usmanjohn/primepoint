@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block nav_abroad %}active{% endblock %}
+{% block page_name %}{% trans "Study abroad" %}{% endblock %}
+{% block title %}{{ scholarship.name }} — {{ scholarship.display_country }} · {% trans "Study abroad" %}{% endblock %}
+{% block meta_description %}{{ scholarship.display_summary }}{% endblock %}
+
+{% block content %}
+<div class="ab-page">
+<a href="{% url 'abroad_scholarships' %}" class="ab-back"><i class="bi bi-arrow-left"></i> {% trans "Scholarships" %}</a>
+
+<header class="ab-hero ab-hero--sch">
+    <div class="ab-hero__eyebrow">{{ scholarship.flag }} {{ scholarship.display_country }}</div>
+    <h1 class="ab-hero__title">{{ scholarship.name }}</h1>
+    {% if scholarship.full_name %}<p class="ab-hero__full">{{ scholarship.full_name }}</p>{% endif %}
+    <p class="ab-hero__sub">{{ scholarship.display_summary }}</p>
+    <div class="ab-hero__actions">
+        <a href="{{ scholarship.official_url }}" class="ab-btn ab-btn--light" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right"></i> {% trans "Official site" %}</a>
+    </div>
+</header>
+
+<div class="ab-stamp">
+    <i class="bi bi-patch-check"></i>
+    {% blocktrans with d=scholarship.last_checked|date:"j F Y" %}Checked against the official guidelines on {{ d }}.{% endblocktrans %}
+    {% if scholarship.is_stale %}<strong>{% trans "This is over a year old — confirm everything on the official site." %}</strong>{% endif %}
+</div>
+
+{% if deadlines or past %}
+<section class="ab-block">
+    <h2 class="ab-h2"><i class="bi bi-alarm"></i> {% trans "Dates" %}</h2>
+    {% if deadlines %}<div class="ab-dls">{% for d in deadlines %}{% include "abroad/_deadline.html" %}{% endfor %}</div>{% endif %}
+    {% for d in deadlines %}{% if d.display_note %}<p class="ab-fine">{{ d.display_label }}: {{ d.display_note }}</p>{% endif %}{% endfor %}
+    {% if past %}
+    <details class="ab-fold"><summary>{% trans "Recently closed" %}</summary>
+        <ul class="ab-past">{% for d in past %}<li>{{ d.display_label }} — {{ d.closes|date:"j M Y" }}{% if d.display_note %} · {{ d.display_note }}{% endif %} · <a href="{{ d.source_url }}" target="_blank" rel="noopener">{% trans "source" %}</a></li>{% endfor %}</ul>
+    </details>
+    {% endif %}
+</section>
+{% endif %}
+
+{% if scholarship.display_covers %}
+<section class="ab-block">
+    <h2 class="ab-h2"><i class="bi bi-cash-coin"></i> {% trans "What it pays for" %}</h2>
+    <div class="ab-prose">{{ scholarship.display_covers|safe }}</div>
+</section>
+{% endif %}
+
+{% if scholarship.display_body %}<article class="ab-prose">{{ scholarship.display_body|safe }}</article>{% endif %}
+
+{% if samples %}
+<section class="ab-block">
+    <h2 class="ab-h2"><i class="bi bi-file-earmark-text"></i> {% trans "Annotated samples" %}</h2>
+    <div class="ab-grid">{% for s in samples %}
+        <a href="{% url 'abroad_sample' s.slug %}" class="ab-card ab-card--sample"><span class="ab-tag ab-tag--sample">{{ s.get_kind_display }}</span><span class="ab-card__title">{{ s.display_title }}</span></a>
+    {% endfor %}</div>
+</section>
+{% endif %}
+
+{% if universities %}
+<section class="ab-block">
+    <h2 class="ab-h2"><i class="bi bi-building"></i> {% trans "Universities" %}</h2>
+    <p class="ab-fine">{% trans "A few of the participating universities — the full list for each year is in the official “University Information” file." %}</p>
+    <a href="{% url 'abroad_universities' %}" class="ab-btn ab-btn--primary">{% trans "See the list" %} <i class="bi bi-arrow-right"></i></a>
+</section>
+{% endif %}
+
+<a href="{% url 'abroad_checklist' %}?target={% if scholarship.slug == 'gks' %}gks-u{% else %}general{% endif %}" class="ab-cta">
+    <i class="bi bi-list-check"></i>
+    <span><strong>{% trans "Turn this into a checklist" %}</strong><br>{% trans "Tick each document as you get it." %}</span>
+</a>
+</div>
+{% endblock %}

@@ -193,6 +193,11 @@
                 {% if nav_logic_count %}<span class="nav-badge">{{ nav_logic_count }}</span>{% endif %}
             </a>
 
+            <a href="{% url 'abroad_home' %}" class="nav-link {% block nav_abroad %}{% endblock %}">
+                <i class="bi bi-globe2"></i>
+                <span class="nav-label">{% trans "Study abroad" %}</span>
+            </a>
+
             <span class="nav-section">{% trans "Support" %}</span>
 
             <a href="{% url 'about' %}" class="nav-link {% block nav_about %}{% endblock %}">

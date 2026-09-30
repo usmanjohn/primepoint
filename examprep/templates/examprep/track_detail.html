@@ -124,6 +124,19 @@
 </div>
 {% endif %}
 
+{# Where this certificate leads — the Study-abroad section. #}
+{% if track.slug == 'topik' %}
+<a href="{% url 'abroad_scholarship' 'gks' %}" class="ab-cta">
+    <i class="bi bi-globe2"></i>
+    <span><strong>{% trans "TOPIK → a GKS scholarship in Korea" %}</strong><br>{% trans "In GKS, TOPIK 3 is worth as much as IELTS 7.0 — plus bonus points. See how the scholarship works." %}</span>
+</a>
+{% elif track.slug == 'ielts' or track.slug == 'sat' %}
+<a href="{% url 'abroad_guide' 'certificates' %}" class="ab-cta">
+    <i class="bi bi-globe2"></i>
+    <span><strong>{% trans "Where this certificate takes you" %}</strong><br>{% trans "Scholarships, documents and deadlines for studying abroad." %}</span>
+</a>
+{% endif %}
+
 {% endblock %}
 
 {% block extra_css %}<link rel="stylesheet" href="{% static 'css/examprep.css' %}">{% endblock %}

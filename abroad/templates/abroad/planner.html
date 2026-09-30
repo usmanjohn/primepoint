@@ -1,0 +1,35 @@
+{% load i18n static %}<!doctype html>
+{% comment %}The printable planner for one sample — the page is the document
+(prime/printing.py). Open to everyone. Prompts + ruled lines, nothing else.{% endcomment %}
+<html lang="{{ LANGUAGE_CODE|default:'uz' }}">
+<head>
+    <title>{{ sample.display_title }} — {% trans "Planner" %}</title>
+    {% include "printing/_head.html" %}
+</head>
+<body>
+<div class="pp-bar pp-noprint">
+    <button type="button" class="primary" onclick="window.print()"><i class="bi bi-printer"></i> {% trans "Print / Save as PDF" %}</button>
+    <a href="{% url 'abroad_sample' sample.slug %}"><i class="bi bi-arrow-left"></i> {% trans "Back" %}</a>
+    <span class="pp-bar-note">{% trans "Tip: choose A4 and “Save as PDF” in the print dialog." %}</span>
+</div>
+<div class="pp-sheet">
+    {% include "printing/_watermark.html" %}
+    <div class="pp-body">
+        <header class="wb-ws-head">
+            <div class="wb-ws-head__brand">POWERTY · {% trans "Study abroad" %} · {{ sample.get_kind_display }}</div>
+            <h1 class="wb-ws-head__title">{% trans "Planner" %}: {{ sample.display_title }}</h1>
+            <p class="ab-fine">{% trans "Answer these in note form first — in Uzbek is fine. The letter comes after, from your notes, never from a sample." %}</p>
+        </header>
+        <ol class="ab-plan">
+            {% for p in prompts %}
+            <li class="ab-plan__q">
+                <div class="ab-plan__text">{{ p.text|safe }}</div>
+                <div class="wb-ws-lines">{% for _ in p.lines %}<i></i>{% endfor %}</div>
+            </li>
+            {% endfor %}
+        </ol>
+        <p class="pp-foot"><strong>Powerty</strong> — www.powerty.uz · {% trans "Study abroad" %}</p>
+    </div>
+</div>
+</body>
+</html>

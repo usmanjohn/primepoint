@@ -253,3 +253,20 @@ class LogicPuzzleSitemap(Sitemap):
 
     def lastmod(self, obj):
         return obj.updated_at
+
+
+class AbroadSitemap(Sitemap):
+    """The Study-abroad section: its index pages, guides, scholarships and samples."""
+    changefreq = 'weekly'
+    priority = 0.6
+
+    def items(self):
+        from abroad.models import Guide, Sample, Scholarship
+        pages = ['abroad_home', 'abroad_scholarships', 'abroad_universities']
+        return (pages
+                + list(Guide.objects.filter(is_published=True))
+                + list(Scholarship.objects.filter(is_published=True))
+                + list(Sample.objects.filter(is_published=True)))
+
+    def location(self, obj):
+        return reverse(obj) if isinstance(obj, str) else obj.get_absolute_url()

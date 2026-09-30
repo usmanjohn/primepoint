@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block nav_abroad %}active{% endblock %}
+{% block page_name %}{% trans "Study abroad" %}{% endblock %}
+{% block title %}{{ guide.display_title }} — {% trans "Study abroad" %}{% endblock %}
+{% block meta_description %}{{ guide.display_summary }}{% endblock %}
+
+{% block content %}
+<div class="ab-page">
+<a href="{% url 'abroad_home' %}" class="ab-back"><i class="bi bi-arrow-left"></i> {% trans "Study abroad" %}</a>
+
+<header class="ab-head">
+    <span class="ab-head__icon"><i class="bi {{ guide.icon }}"></i></span>
+    <div>
+        <div class="ab-head__eyebrow">{{ guide.get_category_display }} · {% blocktrans with m=guide.minutes %}{{ m }} min read{% endblocktrans %}</div>
+        <h1 class="ab-head__title">{{ guide.display_title }}</h1>
+        <p class="ab-head__sub">{{ guide.display_summary }}</p>
+    </div>
+</header>
+
+<article class="ab-prose">{{ guide.display_body|safe }}</article>
+
+<nav class="ab-pager">
+    {% if prev %}<a href="{% url 'abroad_guide' prev.slug %}" class="ab-pager__a"><i class="bi bi-arrow-left"></i> {{ prev.display_title }}</a>{% else %}<span></span>{% endif %}
+    {% if next %}<a href="{% url 'abroad_guide' next.slug %}" class="ab-pager__a ab-pager__a--next">{{ next.display_title }} <i class="bi bi-arrow-right"></i></a>{% endif %}
+</nav>
+</div>
+{% endblock %}

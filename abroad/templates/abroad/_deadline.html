@@ -1,0 +1,14 @@
+{% load i18n %}{% comment %}One deadline as a chip. Context: d (Deadline).
+A stale fact never counts down — it tells the pupil to check the source.{% endcomment %}
+<a href="{{ d.source_url }}" class="ab-dl ab-dl--{{ d.state }}" rel="noopener" target="_blank">
+    <span class="ab-dl__name">{{ d.scholarship.flag }} {{ d.display_label }}</span>
+    <span class="ab-dl__when">
+    {% if d.state == 'stale' %}⚠ {% trans "check the date on the official site" %}
+    {% elif d.state == 'estimate' %}{% trans "expected around" %} {{ d.closes|date:"j M Y" }}
+    {% elif d.state == 'upcoming' %}{% trans "opens" %} {{ d.opens|date:"j M Y" }}
+    {% elif d.days_left == 0 %}⏰ {% trans "closes today" %}
+    {% else %}{% blocktrans count counter=d.days_left %}{{ counter }} day left{% plural %}{{ counter }} days left{% endblocktrans %} · {{ d.closes|date:"j M" }}
+    {% endif %}
+    {% if d.is_estimate %}<em class="ab-dl__est">{% trans "estimate" %}</em>{% endif %}
+    </span>
+</a>

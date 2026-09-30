@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block nav_abroad %}active{% endblock %}
+{% block page_name %}{% trans "Study abroad" %}{% endblock %}
+{% block title %}{{ sample.display_title }} — {% trans "sample" %}{% endblock %}
+
+{% block content %}
+<div class="ab-page ab-page--wide">
+<a href="{% url 'abroad_home' %}" class="ab-back"><i class="bi bi-arrow-left"></i> {% trans "Study abroad" %}</a>
+
+<header class="ab-head">
+    <span class="ab-head__icon"><i class="bi bi-file-earmark-text"></i></span>
+    <div>
+        <div class="ab-head__eyebrow">{{ sample.get_kind_display }}{% if sample.scholarship %} · {{ sample.scholarship.name }}{% endif %}</div>
+        <h1 class="ab-head__title">{{ sample.display_title }}</h1>
+    </div>
+</header>
+
+<div class="ab-warn">
+    <strong>🚫 {% trans "Sample — do not copy." %}</strong>
+    {% trans "This letter is fictional. Committees read hundreds of letters and check for copied text; a borrowed sentence can cost you the scholarship. Read it to see HOW it is built, then use the planner to write your own." %}
+</div>
+
+{% if sample.display_intro %}<div class="ab-prose">{{ sample.display_intro|safe }}</div>{% endif %}
+
+<div class="ab-letter">
+    {% for row in rows %}
+    <div class="ab-letter__row">
+        <div class="ab-letter__p" lang="en">{{ row.html|safe }}</div>
+        <div class="ab-letter__notes">
+            {% for n in row.notes %}<div class="ab-note"><i class="bi bi-lightbulb"></i> {{ n|safe }}</div>{% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<a href="{% url 'abroad_planner' sample.slug %}" class="ab-cta">
+    <i class="bi bi-printer"></i>
+    <span><strong>{% trans "Planner to print" %}</strong><br>{% trans "The questions to answer before you write your own — on paper, with space to think." %}</span>
+</a>
+
+{% if others %}
+<h2 class="ab-h2 mt-4">{% trans "Other samples" %}</h2>
+<div class="ab-grid">{% for s in others %}
+    <a href="{% url 'abroad_sample' s.slug %}" class="ab-card ab-card--sample"><span class="ab-tag ab-tag--sample">{{ s.get_kind_display }}</span><span class="ab-card__title">{{ s.display_title }}</span></a>
+{% endfor %}</div>
+{% endif %}
+</div>
+{% endblock %}

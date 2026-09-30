@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block nav_abroad %}active{% endblock %}
+{% block page_name %}{% trans "Study abroad" %}{% endblock %}
+{% block title %}{% trans "My checklist" %} — {{ label }}{% endblock %}
+
+{% block content %}
+<div class="ab-page">
+<a href="{% url 'abroad_home' %}" class="ab-back"><i class="bi bi-arrow-left"></i> {% trans "Study abroad" %}</a>
+<h1 class="ab-h1">{% trans "My checklist" %}</h1>
+
+<nav class="ab-tabs">
+    {% for code, name in targets %}
+    <a href="?target={{ code }}" class="ab-tab {% if code == target %}is-on{% endif %}">{{ name }}</a>
+    {% endfor %}
+</nav>
+
+{% if deadline %}<div class="ab-dls mb-3">{% include "abroad/_deadline.html" with d=deadline %}</div>{% endif %}
+
+{% if user.is_authenticated %}
+<div class="ab-meter"><span style="width: {{ percent }}%;"></span></div>
+<p class="ab-fine">{% blocktrans with n=done total=items|length %}{{ n }} of {{ total }} ready{% endblocktrans %}</p>
+{% else %}
+<div class="ab-warn ab-warn--soft">{% trans "Log in to save your ticks. You can read the whole list without an account." %}
+    <a href="{% url 'login' %}?next={{ request.get_full_path|urlencode }}">{% trans "Log in" %}</a></div>
+{% endif %}
+
+<form method="post" class="ab-check">
+    {% csrf_token %}
+    <input type="hidden" name="target" value="{{ target }}">
+    {% for item in items %}
+    <label class="ab-check__row">
+        <input type="checkbox" name="item" value="{{ item.pk }}" {% if item.pk in ticked %}checked{% endif %} {% if not user.is_authenticated %}disabled{% endif %}>
+        <span><strong>{{ item.display_text }}</strong>{% if item.display_hint %}<br><small>{{ item.display_hint }}</small>{% endif %}</span>
+    </label>
+    {% endfor %}
+    {% if user.is_authenticated %}<button type="submit" class="ab-btn ab-btn--primary w-100 justify-content-center">{% trans "Save" %}</button>{% endif %}
+</form>
+</div>
+{% endblock %}

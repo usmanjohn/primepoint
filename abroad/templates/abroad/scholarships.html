@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block nav_abroad %}active{% endblock %}
+{% block page_name %}{% trans "Study abroad" %}{% endblock %}
+{% block title %}{% trans "Scholarships — which path fits me?" %}{% endblock %}
+
+{% block content %}
+<div class="ab-page">
+<a href="{% url 'abroad_home' %}" class="ab-back"><i class="bi bi-arrow-left"></i> {% trans "Study abroad" %}</a>
+<h1 class="ab-h1">{% trans "Which path fits me?" %}</h1>
+
+<form method="get" class="ab-finder">
+    <fieldset>
+        <legend>{% trans "I want to study for a" %}</legend>
+        {% for code, label in levels %}
+        <label class="ab-pill"><input type="radio" name="level" value="{{ code }}" {% if level == code %}checked{% endif %}> {{ label }}</label>
+        {% endfor %}
+    </fieldset>
+    <fieldset>
+        <legend>{% trans "A language I already have (or will have)" %}</legend>
+        {% for code, label in langs %}
+        <label class="ab-pill"><input type="radio" name="lang" value="{{ code }}" {% if lang == code %}checked{% endif %}> {{ label }}</label>
+        {% endfor %}
+    </fieldset>
+    <label class="ab-pill ab-pill--check"><input type="checkbox" name="full" value="1" {% if full %}checked{% endif %}> {% trans "I need full funding" %}</label>
+    <div class="ab-finder__go">
+        <button type="submit" class="ab-btn ab-btn--primary"><i class="bi bi-search"></i> {% trans "Show" %}</button>
+        {% if filtered %}<a href="{% url 'abroad_scholarships' %}" class="ab-link">{% trans "Clear" %}</a>{% endif %}
+    </div>
+</form>
+
+<div class="ab-list">
+{% for s in scholarships %}
+    <a href="{% url 'abroad_scholarship' s.slug %}" class="ab-sch">
+        <span class="ab-sch__flag">{{ s.flag }}</span>
+        <span class="ab-sch__body">
+            <span class="ab-sch__name">{{ s.name }} <small>· {{ s.display_country }}</small>
+                {% if s.depth == 'full' %}<span class="ab-tag">{% trans "full guide" %}</span>{% endif %}</span>
+            <span class="ab-sch__sum">{{ s.display_summary }}</span>
+            {% if s.display_usual_period %}<span class="ab-sch__period"><i class="bi bi-calendar3"></i> {{ s.display_usual_period }}</span>{% endif %}
+        </span>
+        <i class="bi bi-chevron-right ab-sch__go"></i>
+    </a>
+{% empty %}
+    <p class="ab-empty">{% trans "Nothing matches all of these yet. Try removing one filter — or start a language now: a language year is part of several scholarships." %}</p>
+{% endfor %}
+</div>
+</div>
+{% endblock %}
