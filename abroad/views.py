@@ -22,7 +22,21 @@ TARGETS = {
     'general': (_('Any university abroad'), None),
     'gks-u': (_('GKS — Bachelor (GKS-U)'), 'gks'),
     'gks-g': (_('GKS — Master (GKS-G)'), 'gks'),
+    'mext-u': (_('MEXT — Bachelor'), 'mext'),
+    'mext-r': (_('MEXT — Master / PhD'), 'mext'),
+    'turkiye': (_('Türkiye Bursları'), 'turkiye'),
+    'hungary': (_('Stipendium Hungaricum'), 'hungary'),
+    'chevening': (_('Chevening'), 'chevening'),
+    'csc': (_('CSC (China)'), 'csc'),
+    'eyuf': (_('El-Yurt Umidi'), 'eyuf'),
+    'daad': (_('DAAD (Germany)'), 'daad'),
+    'fulbright': (_('Fulbright (USA)'), 'fulbright'),
+    'erasmus': (_('Erasmus Mundus'), 'erasmus'),
 }
+# Which checklist a scholarship page's "turn this into a checklist" opens.
+CHECKLIST_FOR = {'gks': 'gks-u', 'mext': 'mext-u', 'turkiye': 'turkiye', 'hungary': 'hungary',
+                 'chevening': 'chevening', 'csc': 'csc',
+                 'eyuf': 'eyuf', 'daad': 'daad', 'fulbright': 'fulbright', 'erasmus': 'erasmus'}
 
 LEVELS = [('bachelor', _('Bachelor')), ('master', _('Master'))]
 LANGS = [('english', _('English')), ('korean', _('Korean')),
@@ -93,8 +107,8 @@ def scholarship_detail(request, slug):
         'deadlines': _deadlines(scholarship.deadlines.all()),
         'past': scholarship.deadlines.filter(closes__lt=today()).order_by('-closes')[:3],
         'samples': scholarship.samples.filter(is_published=True),
-        'universities': University.objects.filter(country=scholarship.country)
-                        if scholarship.slug == 'gks' else [],
+        'universities': University.objects.filter(country=scholarship.country).exists(),
+        'checklist_target': CHECKLIST_FOR.get(scholarship.slug, 'general'),
     })
 
 
@@ -126,8 +140,14 @@ def sample_planner(request, slug):
 
 
 def university_list(request):
+    country = request.GET.get('country', '')
+    unis = University.objects.all().order_by('country', 'order')
+    # A set, not .distinct(): the default ordering would make each row distinct.
+    countries = sorted(set(University.objects.values_list('country', flat=True)))
+    if country in countries:
+        unis = unis.filter(country=country)
     return render(request, 'abroad/universities.html', {
-        'universities': University.objects.all(),
+        'universities': unis, 'countries': countries, 'country': country,
     })
 
 

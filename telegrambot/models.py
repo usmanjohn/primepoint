@@ -13,15 +13,19 @@ class TelegramPost(models.Model):
     QUIZ = 'quiz'
     PUZZLE = 'puzzle'
     SOLUTION = 'solution'
+    ABROAD_MONTH = 'abroad_month'
+    ABROAD_REMINDER = 'abroad_reminder'
     KIND_CHOICES = [
         (QUIZ, 'Daily quiz question'),
         (PUZZLE, 'Logic Arena puzzle'),
         (SOLUTION, 'Logic Arena solution'),
+        (ABROAD_MONTH, 'Study abroad — monthly deadlines (object_id = YYYYMM)'),
+        (ABROAD_REMINDER, 'Study abroad — 7-day reminder (object_id = Deadline.id)'),
     ]
 
     kind = models.CharField(max_length=20, choices=KIND_CHOICES)
     object_id = models.PositiveIntegerField(
-        help_text='PracticeQuestion.id or LogicPuzzle.id, depending on kind.')
+        help_text='PracticeQuestion.id, LogicPuzzle.id, Deadline.id or YYYYMM, depending on kind.')
 
     chat_id = models.CharField(max_length=64, blank=True)
     message_id = models.BigIntegerField(null=True, blank=True)

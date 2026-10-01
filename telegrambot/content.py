@@ -172,3 +172,51 @@ def build_solution(puzzle):
         'Toʻliq izoh va yechganlar roʻyxati saytda.',
     ]
     return '\n'.join(lines), [('📖 Toʻliq yechimni oʻqish', url)]
+
+
+# ── Study abroad: monthly deadlines and the last-call reminder ─────────────
+UZ_MONTHS = ['yanvar', 'fevral', 'mart', 'aprel', 'may', 'iyun', 'iyul',
+             'avgust', 'sentabr', 'oktabr', 'noyabr', 'dekabr']
+
+
+def _uz_date(d):
+    return f'{d.day}-{UZ_MONTHS[d.month - 1]}'
+
+
+def _deadline_line(d):
+    """One line per deadline. An estimate never counts down — the site's rule."""
+    label = html.escape(d.label_uz or d.label)
+    if d.state == 'estimate':
+        when = f'taxminan {_uz_date(d.closes)} <i>(hali eʼlon qilinmagan)</i>'
+    elif d.state == 'upcoming':
+        when = f'{_uz_date(d.opens)} kuni ochiladi, {_uz_date(d.closes)} kuni yopiladi'
+    else:
+        when = f'<b>{d.days_left} kun qoldi</b> · {_uz_date(d.closes)}'
+    return f'{d.scholarship.flag} {label} — {when}'
+
+
+def build_abroad_digest(deadlines, today):
+    lines = [
+        f'<b>🌍 Xorijda oʻqish: {UZ_MONTHS[today.month - 1]} va undan keyingi muddatlar</b>',
+        '',
+    ]
+    lines += [_deadline_line(d) for d in deadlines]
+    lines += [
+        '',
+        'Har bir sana rasmiy manbaga bogʻlangan. Rejangizni qurishdan oldin '
+        'sanani rasmiy saytda tasdiqlang.',
+    ]
+    return '\n'.join(lines), [('🌍 Barcha muddatlar va qoʻllanmalar', site_url(reverse('abroad_home')))]
+
+
+def build_abroad_reminder(deadline):
+    s = deadline.scholarship
+    lines = [
+        f'<b>⏰ {deadline.days_left} kun qoldi: {html.escape(deadline.label_uz or deadline.label)}</b>',
+        '',
+        f'{s.flag} {html.escape(s.name)} — {_uz_date(deadline.closes)} kuni yopiladi.',
+    ]
+    if deadline.note_uz:
+        lines += ['', html.escape(deadline.note_uz)]
+    lines += ['', 'Hujjatlaringiz tayyormi? Roʻyxat bilan tekshirib chiqing.']
+    return '\n'.join(lines), [('📋 Stipendiya sahifasi', site_url(reverse('abroad_scholarship', args=[s.slug])))]

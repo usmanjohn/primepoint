@@ -10728,3 +10728,54 @@ msgstr "Hali yoʻq"
 
 msgid "Checklist saved."
 msgstr "Roʻyxat saqlandi."
+
+msgid "MEXT — Bachelor"
+msgstr "MEXT — bakalavr"
+
+msgid "MEXT — Master / PhD"
+msgstr "MEXT — magistratura / PhD"
+
+msgid "Türkiye Bursları"
+msgstr "Türkiye Bursları"
+
+msgid "Stipendium Hungaricum"
+msgstr "Stipendium Hungaricum"
+
+msgid "South Korea"
+msgstr "Janubiy Koreya"
+
+msgid "Japan"
+msgstr "Yaponiya"
+
+msgid "MEXT places undergraduate grantees at Japanese national universities — MEXT decides which one. Research students choose by finding a professor who will accept them."
+msgstr "MEXT bakalavr stipendiatlarini Yaponiya davlat universitetlariga joylashtiradi — qaysi biriga ekanini MEXT hal qiladi. Tadqiqotchi talabalar esa ularni qabul qiladigan professorni topish orqali tanlaydi."
+
+msgid "A few of the universities this scholarship places students at — the official list for each year is on the scholarship's own site."
+msgstr "Bu stipendiya talabalarni joylashtiradigan universitetlarning bir qismi — har yilgi rasmiy roʻyxat stipendiyaning oʻz saytida."
+
+msgid "%(n)s universities, by country"
+msgstr "Davlatlar boʻyicha %(n)s ta universitet"
+
+msgid "Japanese → a MEXT scholarship in Japan"
+msgstr "Yapon tili → Yaponiyada MEXT stipendiyasi"
+
+msgid "Japan's government pays tuition, a monthly allowance and flights. See how the exams and the application work."
+msgstr "Yaponiya hukumati kontrakt, oylik stipendiya va aviabiletni toʻlaydi. Imtihonlar va ariza qanday ishlashini koʻring."
+
+msgid "Chevening"
+msgstr "Chevening"
+
+msgid "CSC (China)"
+msgstr "CSC (Xitoy)"
+
+msgid "El-Yurt Umidi"
+msgstr "«El-yurt umidi»"
+
+msgid "DAAD (Germany)"
+msgstr "DAAD (Germaniya)"
+
+msgid "Fulbright (USA)"
+msgstr "Fulbright (AQSh)"
+
+msgid "Erasmus Mundus"
+msgstr "Erasmus Mundus"

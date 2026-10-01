@@ -1,144 +1,148 @@
-"""Study abroad — batch 2: the other scholarships, as short cards.
+"""Study abroad — Erasmus Mundus Joint Masters (full page).
 
-Researched 2026-10-01. Only facts found on the official pages (or the official
-announcement of the latest cycle) are stated; a period that is only a pattern
-is called "usually", and a date not yet announced is an estimate.
+This file held the short scholarship cards of batch 2. One by one every card
+became a full page in its own file (MEXT, Türkiye Bursları, Stipendium
+Hungaricum, Chevening, CSC, El-Yurt Umidi, DAAD, Fulbright); Erasmus Mundus,
+the last one, became a full page here on 2026-10-01. The file keeps its name
+because temporary.txt already lists it for production.
 
-  · Chevening 2027/28 — chevening.org application timeline: opened 4 Aug 2026,
-    closes 6 Oct 2026 11:00 UTC; interviews Mar–Apr 2027; results mid-June 2027.
-  · Türkiye Bursları 2026 — official announcement: 10 Jan – 20 Feb 2026.
-  · MEXT — studyinjapan.go.jp: embassy and university recommendation; monthly
-    ¥117,000–145,000 by programme; tuition exempt; round-trip airfare.
-  · Stipendium Hungaricum — Uzbekistan's Sending Partner is the Ministry of
-    Higher Education; the call usually opens in November and closes mid-January.
-  · CSC, Fulbright, DAAD, Erasmus Mundus, El-Yurt Umidi — process only, no
-    dates: each programme or embassy announces its own.
+Sources, read 2026-10-01:
+  · erasmus-plus.ec.europa.eu — EMJM for students: bachelor's degree or final
+    bachelor's year (graduate before the master's starts); apply directly to
+    the consortium; applications mostly October–January; the scholarship
+    covers participation costs and contributes to travel, visa and a living
+    allowance; €1,400 a month, at most 24 months (programme guide).
+  · EACEA — the EMJM catalogue: 60, 90 or 120 ECTS (12, 18 or 24 months),
+    delivered by institutions in several countries.
 
-    python manage.py import_abroad abroad/management/commands/_abroad_scholarships_2.py --author=prime
+    python manage.py import_abroad abroad/management/commands/_abroad_scholarships_2.py --author=prime --republish
 """
 CHECKED = "2026-10-01"
 
+COVERS = """
+<ul><li>A living allowance of <strong>€1,400 a month</strong>, for up to 24 months</li><li>Participation costs (tuition and related fees)</li><li>A contribution to travel and visa costs</li></ul>
+<p>Not every admitted student gets the scholarship: programmes also admit self-funded students, and award the EU scholarships to their highest-ranked applicants.</p>
+<p class="ab-src">Source: Erasmus+ — Erasmus Mundus Joint Masters (students) and programme guide.</p>
+"""
+COVERS_UZ = """
+<ul><li>Oyiga <strong>1 400 yevro</strong> yashash puli, 24 oygacha</li><li>Ishtirok xarajatlari (kontrakt va shunga bogʻliq toʻlovlar)</li><li>Yoʻl va viza xarajatlariga hissa</li></ul>
+<p>Qabul qilinganlarning hammasi ham stipendiya olmaydi: dasturlar oʻz hisobidan oʻqiydigan talabalarni ham qabul qiladi va Yevropa Ittifoqi stipendiyalarini eng yuqori reytingli nomzodlarga beradi.</p>
+<p class="ab-src">Manba: Erasmus+ — Erasmus Mundus Joint Masters (talabalar uchun) va dastur qoʻllanmasi.</p>
+"""
 
-def card(slug, order, name, full_name, flag, country, country_uz, levels, languages,
-         summary, summary_uz, covers, covers_uz, period, period_uz, url):
-    return {
-        "slug": slug, "order": order, "name": name, "full_name": full_name, "flag": flag,
-        "country": country, "country_uz": country_uz, "depth": "card",
-        "levels": levels, "languages": languages, "fully_funded": True,
-        "summary": summary, "summary_uz": summary_uz,
-        "covers": covers, "covers_uz": covers_uz,
-        "usual_period": period, "usual_period_uz": period_uz,
-        "official_url": url, "last_checked": CHECKED,
-    }
+BODY = """
+<ul class="ab-toc">
+<li><a href="#what">What it is</a></li><li><a href="#who">Who can apply</a></li><li><a href="#how">How to apply</a></li>
+<li><a href="#choose">Choosing programmes</a></li><li><a href="#tips">Tips</a></li>
+</ul>
 
+<h2 id="what">What it is</h2>
+<p>An Erasmus Mundus Joint Master is <strong>one master's programme run by a group of universities</strong> in different countries. You study in at least two of them — for example, a first year in Spain and a second in Sweden — and graduate with a joint or multiple degree. Programmes last 12, 18 or 24 months, and most are taught in English.</p>
+<p>There is no central Erasmus Mundus application: <strong>each programme selects its own students</strong> and gives the EU scholarships to the best of them.</p>
 
-SCHOLARSHIPS = [
-    card("mext", 2, "MEXT", "Japanese Government (Monbukagakusho) Scholarship", "🇯🇵",
-         "Japan", "Yaponiya", "bachelor,master,phd", "japanese,english",
-         "Japan's government scholarship. Apply through the Embassy of Japan (embassy recommendation) or be nominated by a Japanese university.",
-         "Yaponiya hukumati stipendiyasi. Yaponiya elchixonasi orqali (elchixona tavsiyasi) topshirasiz yoki Yaponiya universiteti sizni tavsiya qiladi.",
-         "<ul><li>Tuition exempt</li><li>Monthly allowance of ¥117,000–145,000, depending on the programme</li><li>Round-trip airfare</li><li>Undergraduates usually start with a preparatory year that includes Japanese</li></ul><p class=\"ab-src\">Source: Study in Japan (official), checked 1 Oct 2026.</p>",
-         "<ul><li>Kontrakt toʻlanmaydi</li><li>Dasturga qarab oyiga 117 000–145 000 iyena</li><li>Borish-kelish aviabileti</li><li>Bakalavrlar odatda yapon tili ham oʻqitiladigan tayyorlov yilidan boshlaydi</li></ul><p class=\"ab-src\">Manba: Study in Japan (rasmiy), 2026-yil 1-oktabrda tekshirilgan.</p>",
-         "Embassy round usually in spring (about April–May) for study from the following April",
-         "Elchixona bosqichi odatda bahorda (taxminan aprel–may), oʻqish keyingi yil aprelidan",
-         "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/"),
-    card("turkiye", 3, "Türkiye Bursları", "Türkiye Scholarships", "🇹🇷",
-         "Türkiye", "Turkiya", "bachelor,master,phd", "english,any",
-         "Türkiye's government scholarship for every level, with one online application and university placement done for you.",
-         "Turkiya hukumatining barcha darajalar uchun stipendiyasi: bitta onlayn ariza, universitetga joylashtirishni ular oʻzi qiladi.",
-         "<ul><li>Tuition</li><li>Monthly stipend</li><li>Accommodation</li><li>Health insurance</li><li>University placement</li></ul><p>Amounts and the Turkish-language year are described in the official call.</p><p class=\"ab-src\">Source: turkiyeburslari.gov.tr, 2026 announcement.</p>",
-         "<ul><li>Kontrakt</li><li>Oylik stipendiya</li><li>Yotoqxona</li><li>Tibbiy sugʻurta</li><li>Universitetga joylashtirish</li></ul><p>Miqdorlar va turk tili yili rasmiy eʼlonda yozilgan.</p><p class=\"ab-src\">Manba: turkiyeburslari.gov.tr, 2026-yil eʼloni.</p>",
-         "Usually January–February (2026: 10 January – 20 February)",
-         "Odatda yanvar–fevral (2026: 10-yanvar – 20-fevral)",
-         "https://www.turkiyeburslari.gov.tr/"),
-    card("hungary", 4, "Stipendium Hungaricum", "Hungarian Government Scholarship", "🇭🇺",
-         "Hungary", "Vengriya", "bachelor,master,phd", "english",
-         "Study in Hungary, mostly in English, on a government scholarship. You apply twice: on the Stipendium Hungaricum portal and through Uzbekistan's Sending Partner.",
-         "Vengriyada, asosan ingliz tilida, davlat stipendiyasi bilan oʻqish. Ikki joyga topshirasiz: Stipendium Hungaricum portaliga va Oʻzbekistonning «Sending Partner»i orqali.",
-         "<ul><li>Tuition-free study</li><li>Monthly stipend</li><li>Accommodation or a housing contribution</li><li>Medical insurance</li></ul><p>Uzbekistan's Sending Partner is the Ministry of Higher Education, Science and Innovation — follow its own call too.</p><p class=\"ab-src\">Source: stipendiumhungaricum.hu.</p>",
-         "<ul><li>Bepul oʻqish</li><li>Oylik stipendiya</li><li>Yotoqxona yoki uy-joy uchun toʻlov</li><li>Tibbiy sugʻurta</li></ul><p>Oʻzbekistonning «Sending Partner»i — Oliy taʼlim, fan va innovatsiyalar vazirligi; uning eʼloniga ham amal qiling.</p><p class=\"ab-src\">Manba: stipendiumhungaricum.hu.</p>",
-         "Usually opens in November and closes in mid-January",
-         "Odatda noyabrda ochilib, yanvar oʻrtalarida yopiladi",
-         "https://stipendiumhungaricum.hu/"),
-    card("csc", 5, "CSC", "Chinese Government Scholarship", "🇨🇳",
-         "China", "Xitoy", "bachelor,master,phd", "english,any",
-         "China's government scholarship. Apply through the Chinese Embassy (bilateral programme) or through a Chinese university, on the Campus China portal.",
-         "Xitoy hukumati stipendiyasi. Xitoy elchixonasi (ikki tomonlama dastur) yoki Xitoy universiteti orqali, Campus China portalida topshiriladi.",
-         "<p>A full scholarship usually includes tuition, accommodation, a monthly stipend and medical insurance; Chinese-taught programmes start with a Chinese-language year. Exact terms are in each year's call.</p>",
-         "<p>Toʻliq stipendiya odatda kontrakt, yotoqxona, oylik stipendiya va tibbiy sugʻurtani oʻz ichiga oladi; xitoy tilidagi dasturlar xitoy tili yilidan boshlanadi. Aniq shartlar har yilgi eʼlonda.</p>",
-         "Usually winter to early spring; each embassy and university sets its own deadline",
-         "Odatda qishdan erta bahorgacha; har bir elchixona va universitet oʻz muddatini belgilaydi",
-         "https://www.campuschina.org/"),
-    card("chevening", 6, "Chevening", "UK Government's Chevening Scholarships", "🇬🇧",
-         "United Kingdom", "Buyuk Britaniya", "master", "english",
-         "A one-year master's at any UK university, funded by the UK government, for future leaders with work experience.",
-         "Buyuk Britaniyaning istalgan universitetida bir yillik magistratura, Buyuk Britaniya hukumati hisobidan — ish tajribasi bor boʻlajak yetakchilar uchun.",
-         "<ul><li>Tuition</li><li>Monthly living allowance</li><li>Return flight to the UK</li><li>Visa costs</li></ul><p>Chevening asks for work experience and a commitment to return home after the degree — read the eligibility page before you start.</p><p class=\"ab-src\">Source: chevening.org.</p>",
-         "<ul><li>Kontrakt</li><li>Oylik yashash puli</li><li>Buyuk Britaniyaga borish-kelish bileti</li><li>Viza xarajatlari</li></ul><p>Chevening ish tajribasi va oʻqishdan keyin vatanga qaytish majburiyatini talab qiladi — boshlashdan oldin shartlar sahifasini oʻqing.</p><p class=\"ab-src\">Manba: chevening.org.</p>",
-         "Opens in August, closes in early October",
-         "Avgustda ochilib, oktabr boshida yopiladi",
-         "https://www.chevening.org/scholarship/uzbekistan/"),
-    card("fulbright", 7, "Fulbright", "Fulbright Foreign Student Program", "🇺🇸",
-         "United States", "AQSh", "master", "english",
-         "A master's in the United States for graduates from Uzbekistan, run by the U.S. Embassy in Tashkent.",
-         "Oʻzbekistonlik bitiruvchilar uchun AQShda magistratura; Toshkentdagi AQSh elchixonasi oʻtkazadi.",
-         "<p>Tuition, a monthly stipend, health insurance and visa support. Applicants need a bachelor's degree and professional experience; the embassy's page lists the current requirements and English tests.</p><p class=\"ab-src\">Source: U.S. Embassy in Uzbekistan.</p>",
-         "<p>Kontrakt, oylik stipendiya, tibbiy sugʻurta va viza yordami. Nomzodga bakalavr diplomi va ish tajribasi kerak; amaldagi talablar va ingliz tili testlari elchixona sahifasida.</p><p class=\"ab-src\">Manba: AQShning Oʻzbekistondagi elchixonasi.</p>",
-         "Once a year — announced by the U.S. Embassy in Tashkent",
-         "Yiliga bir marta — Toshkentdagi AQSh elchixonasi eʼlon qiladi",
-         "https://uz.usembassy.gov/fulbright-foreign-student-program/"),
-    card("daad", 8, "DAAD", "German Academic Exchange Service scholarships", "🇩🇪",
-         "Germany", "Germaniya", "master,phd", "english",
-         "Germany's scholarship organisation: many programmes for master's and PhD students, each with its own rules and deadline.",
-         "Germaniyaning stipendiya tashkiloti: magistratura va PhD uchun koʻplab dasturlar, har birining oʻz qoidasi va muddati bor.",
-         "<p>Use the DAAD scholarship database: choose your country and level and it lists what you can apply for. Many German university programmes are tuition-free anyway, so a DAAD award is often about living costs.</p><div class=\"ab-mistake\"><strong>Documents for Germany</strong><p>Germany does not accept apostilles from Uzbekistan — plan for consular legalisation.</p></div>",
-         "<p>DAAD stipendiyalar bazasidan foydalaning: davlatingiz va darajani tanlasangiz, nimaga topshirish mumkinligini koʻrsatadi. Koʻp nemis universitet dasturlari baribir bepul, shuning uchun DAAD granti koʻpincha yashash xarajatlari uchun.</p><div class=\"ab-mistake\"><strong>Germaniya uchun hujjatlar</strong><p>Germaniya Oʻzbekiston apostilini qabul qilmaydi — konsullik legalizatsiyasini rejalashtiring.</p></div>",
-         "Depends on the programme — see the DAAD database",
-         "Dasturga bogʻliq — DAAD bazasiga qarang",
-         "https://www.daad.de/en/studying-in-germany/scholarships/"),
-    card("erasmus", 9, "Erasmus Mundus", "Erasmus Mundus Joint Masters", "🇪🇺",
-         "European Union", "Yevropa Ittifoqi", "master", "english",
-         "One master's in two or more European countries. Each joint programme picks its students and gives full scholarships to the best.",
-         "Ikki yoki undan ortiq Yevropa davlatida bitta magistratura. Har bir qoʻshma dastur talabalarni oʻzi tanlaydi va eng yaxshilariga toʻliq stipendiya beradi.",
-         "<p>You apply to a programme, not to a central office. Browse the official catalogue, then follow that programme's own deadline and requirements.</p>",
-         "<p>Siz markaziy idoraga emas, dasturga topshirasiz. Rasmiy katalogni koʻrib chiqing, keyin oʻsha dasturning oʻz muddati va talablariga amal qiling.</p>",
-         "Set by each programme — many close between October and January",
-         "Har bir dastur oʻzi belgilaydi — koʻplari oktabr–yanvar oraligʻida yopiladi",
-         "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en"),
-    card("eyuf", 10, "El-Yurt Umidi", "“El-Yurt Umidi” Foundation (Uzbekistan)", "🇺🇿",
-         "Uzbekistan → abroad", "Oʻzbekiston → xorij", "bachelor,master,phd", "english,any",
-         "Uzbekistan's own foundation that funds study at leading universities abroad, for bachelor's, master's and doctoral programmes.",
-         "Oʻzbekistonning oʻz jamgʻarmasi: xorijdagi yetakchi universitetlarda bakalavriat, magistratura va doktoranturada oʻqishni moliyalashtiradi.",
-         "<p>Selections are announced as “open scholarship competitions”, several times a year, each with its own list of places and conditions. Applications go through the foundation's admission portal.</p>",
-         "<p>Tanlovlar yiliga bir necha marta «ochiq stipendiya tanlovi» sifatida eʼlon qilinadi, har birining oʻz oʻrinlar roʻyxati va shartlari bor. Hujjatlar jamgʻarmaning qabul portali orqali topshiriladi.</p>",
-         "Several competitions a year — watch the foundation's announcements",
-         "Yiliga bir necha tanlov — jamgʻarma eʼlonlarini kuzatib boring",
-         "https://eyuf.uz/"),
-]
+<h2 id="who">Who can apply</h2>
+<ul>
+<li>Students from anywhere in the world, including Uzbekistan.</li>
+<li>A bachelor's degree — or you are in your <strong>final bachelor's year</strong> and will graduate before the master's starts.</li>
+<li>Each programme adds its own requirements: subject background, grades, English level.</li>
+</ul>
+<div class="ab-uz"><strong>A master's without work experience</strong><p>Unlike Chevening, Fulbright or DAAD's EPOS, most Erasmus Mundus programmes do not require years of work. For a strong final-year student in Uzbekistan it is often the most realistic fully funded master's in Europe.</p></div>
 
-DEADLINES = [
-    {
-        "scholarship": "chevening",
-        "label": "Chevening 2027/28", "label_uz": "Chevening 2027/28",
-        "opens": "2026-08-04", "closes": "2026-10-06",
-        "note": "Closes 6 October 2026 at 11:00 UTC (16:00 Tashkent). Interviews March–April 2027; results mid-June 2027.",
-        "note_uz": "2026-yil 6-oktabr, 11:00 UTC (Toshkent vaqti bilan 16:00) da yopiladi. Suhbatlar 2027-yil mart–aprel; natijalar 2027-yil iyun oʻrtasida.",
-        "source_url": "https://www.chevening.org/scholarships/application-timeline/", "last_checked": CHECKED,
-    },
-    {
-        "scholarship": "hungary",
-        "label": "Stipendium Hungaricum 2027/28", "label_uz": "Stipendium Hungaricum 2027/28",
-        "opens": None, "closes": "2027-01-15", "is_estimate": True,
-        "note": "Estimate: the call usually closes in mid-January. Confirm the date in the official call when it opens (usually November).",
-        "note_uz": "Taxmin: eʼlon odatda yanvar oʻrtasida yopiladi. Sanani rasmiy eʼlon chiqqanda tasdiqlang (odatda noyabrda).",
-        "source_url": "https://stipendiumhungaricum.hu/apply/", "last_checked": CHECKED,
-    },
-    {
-        "scholarship": "turkiye",
-        "label": "Türkiye Bursları 2027", "label_uz": "Türkiye Bursları 2027",
-        "opens": None, "closes": "2027-02-20", "is_estimate": True,
-        "note": "Estimate from the 2026 cycle (10 January – 20 February 2026).",
-        "note_uz": "2026-yilgi tsikl asosida taxmin (2026-yil 10-yanvar – 20-fevral).",
-        "source_url": "https://www.turkiyeburslari.gov.tr/announcements/turkiye-scholarships-2026-applications-121", "last_checked": CHECKED,
-    },
-]
+<h2 id="how">How to apply</h2>
+<ol class="ab-steps">
+<li>Search the <strong>EACEA Erasmus Mundus catalogue</strong> by field.</li>
+<li>Open each programme's own website: requirements, documents, deadline.</li>
+<li>Apply <strong>directly to the programme</strong>, usually between October and January for study starting the following autumn.</li>
+<li>Programmes rank applicants; the top ones receive the scholarship, others may be offered a self-funded place or a waiting-list position.</li>
+</ol>
+<p>Typical documents: degree and transcripts (with translations), CV, motivation letter, recommendation letters, English certificate, passport — each programme lists its own.</p>
+
+<h2 id="choose">Choosing programmes</h2>
+<ul>
+<li><strong>Fit beats fame.</strong> Pick programmes whose modules match what you studied and what you want to do — the motivation letter has to show it.</li>
+<li><strong>Read the partner universities and the mobility path</strong> — which countries, in which semester.</li>
+<li><strong>Check the deadline for scholarship applicants</strong> — some programmes have an earlier date for scholarship candidates than for self-funded ones.</li>
+</ul>
+
+<h2 id="tips">Tips</h2>
+<ul>
+<li>Start in <strong>September</strong>: shortlist programmes, book IELTS, ask for recommendations.</li>
+<li>Write <strong>a different motivation letter for each programme</strong> — name its modules, its partner universities, and why this mobility path.</li>
+<li>Documents for several EU countries: check each country's rule on apostille. Germany, Austria and Greece do not accept Uzbek apostilles.</li>
+</ul>
+<p class="ab-src">Sources: Erasmus+ (erasmus-plus.ec.europa.eu) — Erasmus Mundus Joint Masters for students and programme guide; EACEA catalogue (checked 1 October 2026).</p>
+"""
+
+BODY_UZ = """
+<ul class="ab-toc">
+<li><a href="#what">Bu nima</a></li><li><a href="#who">Kim topshira oladi</a></li><li><a href="#how">Qanday topshiriladi</a></li>
+<li><a href="#choose">Dastur tanlash</a></li><li><a href="#tips">Maslahatlar</a></li>
+</ul>
+
+<h2 id="what">Bu nima</h2>
+<p>Erasmus Mundus Joint Master — turli davlatlardagi universitetlar guruhi <strong>birgalikda oʻtkazadigan bitta magistratura dasturi</strong>. Siz ulardan kamida ikkitasida oʻqiysiz — masalan, birinchi yil Ispaniyada, ikkinchisi Shvetsiyada — va qoʻshma yoki bir nechta diplom bilan bitirasiz. Dasturlar 12, 18 yoki 24 oy davom etadi, koʻpchiligi ingliz tilida.</p>
+<p>Markaziy Erasmus Mundus arizasi yoʻq: <strong>har bir dastur talabalarini oʻzi tanlaydi</strong> va Yevropa Ittifoqi stipendiyalarini eng yaxshilariga beradi.</p>
+
+<h2 id="who">Kim topshira oladi</h2>
+<ul>
+<li>Dunyoning istalgan joyidan, jumladan Oʻzbekistondan talabalar.</li>
+<li>Bakalavr diplomi — yoki magistratura boshlanishidan oldin bitiradigan <strong>bakalavriatning oxirgi kursi</strong> talabasi.</li>
+<li>Har bir dastur oʻz talablarini qoʻshadi: fan boʻyicha tayyorgarlik, baholar, ingliz tili darajasi.</li>
+</ul>
+<div class="ab-uz"><strong>Ish tajribasisiz magistratura</strong><p>Chevening, Fulbright yoki DAAD EPOS'dan farqli oʻlaroq, koʻp Erasmus Mundus dasturlari yillab ish tajribasini talab qilmaydi. Oʻzbekistondagi kuchli bitiruvchi kurs talabasi uchun bu koʻpincha Yevropadagi eng real toʻliq moliyalashtirilgan magistratura.</p></div>
+
+<h2 id="how">Qanday topshiriladi</h2>
+<ol class="ab-steps">
+<li><strong>EACEA Erasmus Mundus katalogi</strong>dan soha boʻyicha qidiring.</li>
+<li>Har bir dasturning oʻz saytini oching: talablar, hujjatlar, muddat.</li>
+<li><strong>Toʻgʻridan-toʻgʻri dasturga</strong> topshiring — odatda oktabr–yanvar oraligʻida, keyingi kuzda boshlanadigan oʻqish uchun.</li>
+<li>Dasturlar nomzodlarni reytinglaydi; eng yuqoridagilar stipendiya oladi, boshqalarga oʻz hisobidan oʻrin yoki kutish roʻyxati taklif qilinishi mumkin.</li>
+</ol>
+<p>Odatdagi hujjatlar: diplom va baholar varaqasi (tarjima bilan), CV, motivatsion xat, tavsiyanomalar, ingliz tili sertifikati, pasport — har bir dastur oʻz roʻyxatini beradi.</p>
+
+<h2 id="choose">Dastur tanlash</h2>
+<ul>
+<li><strong>Moslik — mashhurlikdan muhim.</strong> Modullari siz oʻqigan va qilmoqchi boʻlgan ishingizga mos dasturlarni tanlang — motivatsion xat buni koʻrsatishi kerak.</li>
+<li><strong>Hamkor universitetlar va mobillik yoʻlini oʻqing</strong> — qaysi davlatlar, qaysi semestrda.</li>
+<li><strong>Stipendiya nomzodlari uchun muddatni tekshiring</strong> — baʼzi dasturlarda stipendiya nomzodlari uchun muddat oʻz hisobidan oʻqiydiganlarnikidan oldinroq.</li>
+</ul>
+
+<h2 id="tips">Maslahatlar</h2>
+<ul>
+<li><strong>Sentabrda</strong> boshlang: dasturlar roʻyxatini tuzing, IELTSga yoziling, tavsiyanoma soʻrang.</li>
+<li><strong>Har bir dastur uchun alohida motivatsion xat</strong> yozing — uning modullarini, hamkor universitetlarini va nega aynan shu mobillik yoʻlini tanlaganingizni ayting.</li>
+<li>Bir nechta Yevropa Ittifoqi davlati uchun hujjatlar: har bir davlatning apostil qoidasini tekshiring. Germaniya, Avstriya va Gretsiya oʻzbek apostilini qabul qilmaydi.</li>
+</ul>
+<p class="ab-src">Manbalar: Erasmus+ (erasmus-plus.ec.europa.eu) — talabalar uchun Erasmus Mundus Joint Masters va dastur qoʻllanmasi; EACEA katalogi (2026-yil 1-oktabrda tekshirilgan).</p>
+"""
+
+SCHOLARSHIPS = [{
+    "slug": "erasmus", "order": 9, "name": "Erasmus Mundus", "full_name": "Erasmus Mundus Joint Masters",
+    "flag": "🇪🇺", "country": "European Union", "country_uz": "Yevropa Ittifoqi", "depth": "full",
+    "levels": "master", "languages": "english", "fully_funded": True,
+    "summary": "One master's in two or more European countries, mostly in English, with €1,400 a month for the best applicants. No work experience needed; final-year students can apply.",
+    "summary_uz": "Ikki yoki undan ortiq Yevropa davlatida, asosan ingliz tilida bitta magistratura; eng yaxshi nomzodlarga oyiga 1 400 yevro. Ish tajribasi shart emas; bitiruvchi kurs talabalari topshira oladi.",
+    "covers": COVERS, "covers_uz": COVERS_UZ,
+    "usual_period": "Each programme sets its own deadline — mostly October to January",
+    "usual_period_uz": "Har bir dastur oʻz muddatini belgilaydi — asosan oktabrdan yanvargacha",
+    "body": BODY, "body_uz": BODY_UZ,
+    "official_url": "https://erasmus-plus.ec.europa.eu/opportunities/opportunities-for-individuals/students/erasmus-mundus-joint-masters-scholarships",
+    "last_checked": CHECKED,
+}]
+
+DEADLINES = []
+
+CHECKLISTS = {
+    "erasmus": [
+        {"text": "Bachelor's degree, or graduating before the master's starts", "text_uz": "Bakalavr diplomi yoki magistratura boshlanishidan oldin bitirish"},
+        {"text": "3–5 programmes shortlisted from the EACEA catalogue", "text_uz": "EACEA katalogidan 3–5 ta dastur tanlandi"},
+        {"text": "Each programme's deadline noted — including any earlier one for scholarship applicants", "text_uz": "Har bir dasturning muddati yozib olindi — stipendiya nomzodlari uchun oldingisi ham"},
+        {"text": "IELTS or the English test each programme asks for", "text_uz": "Har bir dastur soʻraydigan IELTS yoki ingliz tili testi"},
+        {"text": "Degree/transcripts with certified translations", "text_uz": "Diplom va baholar varaqasi, tasdiqlangan tarjima bilan"},
+        {"text": "CV", "text_uz": "CV"},
+        {"text": "A separate motivation letter for each programme", "text_uz": "Har bir dastur uchun alohida motivatsion xat"},
+        {"text": "Recommendation letters as each programme asks", "text_uz": "Har bir dastur soʻragan tavsiyanomalar"},
+        {"text": "Passport", "text_uz": "Pasport"},
+        {"text": "Apostille or legalisation rule checked for each country on the mobility path", "text_uz": "Mobillik yoʻlidagi har bir davlat uchun apostil yoki legalizatsiya qoidasi tekshirildi"},
+    ],
+}

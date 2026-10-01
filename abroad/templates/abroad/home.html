@@ -83,7 +83,7 @@
     <a href="{% url 'abroad_universities' %}" class="ab-card">
         <i class="bi bi-building ab-card__icon"></i>
         <span class="ab-card__title">{% trans "Universities" %}</span>
-        <span class="ab-card__sub">{% blocktrans with n=university_count %}{{ n }} Korean universities that take GKS scholars{% endblocktrans %}</span>
+        <span class="ab-card__sub">{% blocktrans with n=university_count %}{{ n }} universities, by country{% endblocktrans %}</span>
     </a>
     <a href="{% url 'abroad_checklist' %}" class="ab-card">
         <i class="bi bi-list-check ab-card__icon"></i>

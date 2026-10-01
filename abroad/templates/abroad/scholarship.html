@@ -59,12 +59,12 @@
 {% if universities %}
 <section class="ab-block">
     <h2 class="ab-h2"><i class="bi bi-building"></i> {% trans "Universities" %}</h2>
-    <p class="ab-fine">{% trans "A few of the participating universities — the full list for each year is in the official “University Information” file." %}</p>
-    <a href="{% url 'abroad_universities' %}" class="ab-btn ab-btn--primary">{% trans "See the list" %} <i class="bi bi-arrow-right"></i></a>
+    <p class="ab-fine">{% trans "A few of the universities this scholarship places students at — the official list for each year is on the scholarship's own site." %}</p>
+    <a href="{% url 'abroad_universities' %}?country={{ scholarship.country|urlencode }}" class="ab-btn ab-btn--primary">{% trans "See the list" %} <i class="bi bi-arrow-right"></i></a>
 </section>
 {% endif %}
 
-<a href="{% url 'abroad_checklist' %}?target={% if scholarship.slug == 'gks' %}gks-u{% else %}general{% endif %}" class="ab-cta">
+<a href="{% url 'abroad_checklist' %}?target={{ checklist_target }}" class="ab-cta">
     <i class="bi bi-list-check"></i>
     <span><strong>{% trans "Turn this into a checklist" %}</strong><br>{% trans "Tick each document as you get it." %}</span>
 </a>

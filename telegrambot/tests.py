@@ -105,3 +105,53 @@ class RotationResilienceTests(TestCase):
         posted = TelegramPost.objects.filter(
             kind=TelegramPost.QUIZ, posted_at__date=timezone.localdate())
         self.assertEqual(posted.count(), 2)
+
+
+class AbroadDeadlinePostTests(TestCase):
+    """The channel follows the site's rule: never a confident wrong date."""
+
+    def setUp(self):
+        import datetime
+        from abroad.models import Deadline, Scholarship
+        self.day = datetime.date(2026, 10, 1)
+        s = Scholarship.objects.create(
+            slug='x', name='X', country='C', country_uz='C', summary='s', summary_uz='s',
+            official_url='https://x.org/', last_checked=self.day, flag='🏳')
+        mk = lambda **kw: Deadline.objects.create(
+            scholarship=s, label_uz=kw.pop('label'), label='L', source_url='https://x.org/',
+            last_checked=kw.pop('checked', self.day), **kw)
+        self.soon = mk(label='Tez', closes=self.day + datetime.timedelta(days=5))
+        self.later = mk(label='Keyin', closes=self.day + datetime.timedelta(days=40))
+        self.estimate = mk(label='Taxmin', closes=self.day + datetime.timedelta(days=50), is_estimate=True)
+        self.stale = mk(label='Eski', closes=self.day + datetime.timedelta(days=20),
+                        checked=self.day - datetime.timedelta(days=400))
+        self.far = mk(label='Uzoq', closes=self.day + datetime.timedelta(days=200))
+
+    def _run(self):
+        from io import StringIO
+        from unittest import mock
+        out = StringIO()
+        with mock.patch('abroad.models.today', lambda: self.day), \
+             mock.patch('telegrambot.management.commands.post_abroad_deadlines.tashkent_today',
+                        lambda: self.day):
+            call_command('post_abroad_deadlines', '--dry-run', stdout=out)
+        return out.getvalue()
+
+    def test_digest_includes_only_trustworthy_dates(self):
+        out = self._run()
+        self.assertIn('Tez', out)
+        self.assertIn('Keyin', out)
+        self.assertIn('taxminan', out)            # the estimate, without a countdown
+        self.assertNotIn('Eski', out)             # stale — never posted
+        self.assertNotIn('Uzoq', out)             # beyond the 60-day horizon
+
+    def test_reminder_only_for_confirmed_deadline_within_a_week(self):
+        out = self._run()
+        self.assertIn('[abroad_reminder] %d' % self.soon.id, out)
+        self.assertNotIn('[abroad_reminder] %d' % self.later.id, out)
+        self.assertNotIn('[abroad_reminder] %d' % self.estimate.id, out)
+
+    def test_already_posted_this_month_and_reminded_is_quiet(self):
+        TelegramPost.objects.create(kind=TelegramPost.ABROAD_MONTH, object_id=202610)
+        TelegramPost.objects.create(kind=TelegramPost.ABROAD_REMINDER, object_id=self.soon.id)
+        self.assertIn('Nothing due.', self._run())

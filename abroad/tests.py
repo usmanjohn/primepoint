@@ -21,6 +21,18 @@ from abroad.models import ChecklistItem, ChecklistTick, Deadline, Guide, Scholar
 
 DATA_DIR = Path(settings.BASE_DIR) / 'abroad' / 'management' / 'commands'
 TODAY = datetime.date(2026, 10, 1)
+# Import order from toc_abroad.txt — the full pages after the cards file, so a
+# card can never overwrite a full page.
+DATA_FILES = ('_abroad_gks.py', '_abroad_scholarships_2.py', '_abroad_mext.py',
+              '_abroad_turkiye_hungary.py', '_abroad_chevening_csc.py',
+              '_abroad_eyuf_daad_fulbright.py',
+              '_abroad_guides_1.py', '_abroad_guides_2.py')
+
+
+def import_all():
+    with open('/dev/null', 'w') as sink:
+        for name in DATA_FILES:
+            call_command('import_abroad', str(DATA_DIR / name), stdout=sink)
 
 
 def make_scholarship(**kw):
@@ -100,12 +112,15 @@ class ImporterTests(TestCase):
                 self.assertEqual(validate(load(path)), [])
 
     def test_committed_files_import_cleanly(self):
-        with open('/dev/null', 'w') as sink:
-            for name in ('_abroad_gks.py', '_abroad_scholarships_2.py',
-                         '_abroad_guides_1.py', '_abroad_guides_2.py'):
-                call_command('import_abroad', str(DATA_DIR / name), stdout=sink)
+        import_all()
         self.assertEqual(Guide.objects.count(), 10)
         self.assertEqual(Scholarship.objects.count(), 10)
+        # Every scholarship is a full page now; a card reappearing means a
+        # data file downgraded one on republish.
+        self.assertFalse(Scholarship.objects.filter(depth='card').exists())
+        # Every data file on disk is in the import order above.
+        on_disk = {Path(p).name for p in glob.glob(str(DATA_DIR / '_abroad_*.py'))}
+        self.assertEqual(on_disk, set(DATA_FILES))
         # Checklist rows keep their ids across a re-import, so ticks survive.
         first = ChecklistItem.objects.get(target='gks-u', order=1).pk
         with open('/dev/null', 'w') as sink:
@@ -116,16 +131,23 @@ class ImporterTests(TestCase):
 class PageTests(TestCase):
     @classmethod
     def setUpTestData(cls):
-        with open('/dev/null', 'w') as sink:
-            for name in ('_abroad_gks.py', '_abroad_scholarships_2.py',
-                         '_abroad_guides_1.py', '_abroad_guides_2.py'):
-                call_command('import_abroad', str(DATA_DIR / name), stdout=sink)
+        import_all()
 
     def test_guest_reads_everything_in_both_languages(self):
         urls = ['/abroad/', '/abroad/guides/documents/', '/abroad/scholarships/',
                 '/abroad/scholarships/gks/', '/abroad/samples/gks-personal-statement/',
                 '/abroad/samples/gks-study-plan/planner/', '/abroad/universities/',
-                '/abroad/checklist/']
+                '/abroad/checklist/', '/abroad/scholarships/mext/', '/abroad/scholarships/turkiye/',
+                '/abroad/scholarships/hungary/', '/abroad/samples/mext-research-plan/',
+                '/abroad/universities/?country=Japan', '/abroad/checklist/?target=mext-r',
+                '/abroad/checklist/?target=turkiye', '/abroad/checklist/?target=hungary',
+                '/abroad/scholarships/chevening/', '/abroad/scholarships/csc/',
+                '/abroad/samples/chevening-leadership-essay/', '/abroad/checklist/?target=chevening',
+                '/abroad/scholarships/eyuf/', '/abroad/scholarships/daad/', '/abroad/scholarships/fulbright/',
+                '/abroad/checklist/?target=eyuf', '/abroad/checklist/?target=daad', '/abroad/checklist/?target=fulbright',
+                '/abroad/scholarships/erasmus/', '/abroad/checklist/?target=erasmus',
+                '/abroad/samples/chevening-networking-essay/', '/abroad/samples/chevening-career-plan-essay/',
+                '/abroad/samples/hungary-motivation-letter/', '/abroad/samples/hungary-motivation-letter/planner/']
         # The language comes from the cookie (LocaleMiddleware), as for a visitor.
         for lang, title in (('uz', 'Hujjatlar, tarjima va apostil'),
                             ('en', 'Documents, translation and apostille')):
@@ -164,6 +186,10 @@ class PageTests(TestCase):
         self.client.login(username='a', password='pw')
         self.client.post('/abroad/checklist/', {'target': 'gks-u'})
         self.assertFalse(ChecklistTick.objects.filter(user=a).exists())
+
+    def test_country_tabs_appear_once_each(self):
+        page = self.client.get('/abroad/universities/').content.decode()
+        self.assertEqual(page.count('?country=Japan"'), 1)
 
     def test_templates_carry_no_script(self):
         for f in glob.glob(str(Path(settings.BASE_DIR) / 'abroad/templates/abroad/*.html')):

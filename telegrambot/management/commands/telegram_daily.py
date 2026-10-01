@@ -58,7 +58,10 @@ class Command(BaseCommand):
 
         # One question per subject — Ingliz tili, Koreys tili, Matematika,
         # Rus tili and Matematika (SAT) each get their own poll every day.
-        jobs = [('post_logic_puzzle', []), ('post_daily_quiz', ['--each-subject'])]
+        # Study-abroad deadlines post only on the first run of a month, or
+        # 7 days before a confirmed deadline — most days they print "Nothing due".
+        jobs = [('post_logic_puzzle', []), ('post_abroad_deadlines', []),
+                ('post_daily_quiz', ['--each-subject'])]
 
         for command, args in jobs:
             self.stdout.write(self.style.MIGRATE_HEADING(f'── {command} ──'))

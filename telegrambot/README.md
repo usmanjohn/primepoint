@@ -33,6 +33,13 @@ Only the title, hook and difficulty go to Telegram; the body stays on the site, 
 is where the answer gets sealed. A puzzle whose reveal already passed is never
 announced late.
 
+**Monthly — study-abroad deadlines** (`post_abroad_deadlines`, inside `telegram_daily`).
+The first run of each month (Tashkent date) posts the deadlines of the next 60 days from
+the `abroad` app; once, 7 days before each confirmed open deadline, a "⏰ N kun qoldi"
+reminder. Estimates are marked *taxminan* and never counted down; stale facts are never
+posted — the site's "no confident wrong date" rule. Guarded by `TelegramPost`
+(`abroad_month` with object_id = YYYYMM, `abroad_reminder` with the Deadline id).
+
 ## Commands
 
     python manage.py telegram_ping              # token + channel + how many questions left
@@ -40,7 +47,8 @@ announced late.
     python manage.py post_daily_quiz --dry-run  # print today's post, send nothing
     python manage.py post_daily_quiz --subject='한국어' --force
     python manage.py post_logic_puzzle --dry-run
-    python manage.py telegram_daily             # what cron runs: puzzle check, then quiz
+    python manage.py post_abroad_deadlines --dry-run
+    python manage.py telegram_daily             # what cron runs: puzzle, abroad deadlines, quiz
 
 `--dry-run` builds the real post and prints it. Use it before any change goes live.
 

@@ -205,8 +205,12 @@ has one and it is always truthy (every answer box went full-width until renamed 
 Started **2026-10-01**. How to apply to universities abroad: 10 guides (letters, documents and
 apostille, certificates, money, visa, choosing), scholarships (**GKS in depth**; MEXT, Türkiye
 Bursları, Stipendium Hungaricum, CSC, Chevening, Fulbright, DAAD, Erasmus Mundus, El-Yurt Umidi as
-cards), annotated sample letters with printable planners, a GKS university list, a "which path fits
-me?" finder (GET form) and a per-user document checklist. Bilingual **in the data** (`*_uz`
+cards; MEXT, Türkiye Bursları, Stipendium Hungaricum, Chevening, CSC, **El-Yurt Umidi, DAAD and
+Fulbright** and **Erasmus Mundus** got full pages the same day — no cards remain; 10 annotated samples), annotated
+sample letters with printable planners, university lists by country (Korea, Japan), a "which path
+fits me?" finder (GET form) and a per-user document checklist. **Import order matters** — see
+`toc_abroad.txt`: a scholarship lives in exactly one data file, and full pages are imported after
+the cards file, or a card republish downgrades them. Bilingual **in the data** (`*_uz`
 columns, like Logic Arena), Uzbek default; no JavaScript. Kit: STUDY ABROAD (`ab-*`) at the bottom
 of `static/css/style.css`.
 **⛔ Never a confident wrong date.** Every date/amount/eligibility rule comes from the official
@@ -222,7 +226,9 @@ and `toc_abroad.txt` first.
 Worth remembering: Uzbekistan's apostille is **not** accepted by Germany, Austria or Greece
 (their 2012 objections stand; Belgium withdrew in 2025), so DAAD applicants need consular
 legalisation. In GKS, TOPIK 3 = IELTS 7.0 in the language score *plus* bonus points — the
-TOPIK track page and the Prime Korean playlist link to the GKS page for that reason.
+TOPIK track page and the Prime Korean playlist link to the GKS page for that reason (Prime
+Japanese links to MEXT). Uzbek school is **11 years**: MEXT accepts it as upper-secondary
+equivalent, but direct placement needs 12 — never write that school + lyceum "makes 12".
 
 ## Creating Prime Russian tutorials (bulk) — rus tili grammatikasi
 **Prime Russian** is the 100-lesson Russian course in `tutorial`, held together by a
@@ -901,6 +907,9 @@ about who reads the channel. Read `telegrambot/README.md` before touching it.
   this shipped once (2026-09-02). `api.refuse_local_database()` blocks it; use
   `--dry-run` to preview locally.
 - **Weekly** — the Logic Arena puzzle when it opens and its answer when it reveals.
+- **Monthly** — study-abroad deadlines (`post_abroad_deadlines`, run inside `telegram_daily`):
+  a digest on the first run of each month, and a "⏰ N kun qoldi" reminder 7 days before each
+  confirmed open deadline. Estimates never count down; stale facts are never posted.
 - The channel is **Uzbek only**; only the material (an English sentence, a Korean line) is not.
 - Always `--dry-run` before sending: `python manage.py post_daily_quiz --dry-run`.
   `telegram_ping` checks the token; `telegram_daily` is what Railway cron runs.

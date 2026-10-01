@@ -5,21 +5,34 @@ AUTHOR:   powerty
 # Started 2026-10-01 (Bachelor + Master; GKS in depth first).
 # ─────────────────────────────────────────────────────────────────────
 
-## Data files (import in this order)
-_abroad_gks.py              GKS page + 3 deadlines + 18 universities + 3 checklists + 2 samples  [done]
-_abroad_scholarships_2.py   MEXT, Türkiye, Hungary, CSC, Chevening, Fulbright, DAAD, Erasmus, EYUF cards + 3 deadlines  [done]
+## Data files — import in THIS order (full pages after the cards file)
+_abroad_gks.py              GKS full page + 3 deadlines + 18 Korean universities + 3 checklists + 2 samples  [done]
+_abroad_scholarships_2.py   Erasmus Mundus full page + checklist (was the cards file; name kept for temporary.txt)  [done]
+_abroad_mext.py             MEXT full page + 2 deadlines + 10 Japanese universities + 2 checklists + research-plan sample  [done 2026-10-01]
+_abroad_turkiye_hungary.py  Türkiye Bursları + Stipendium Hungaricum full pages + 2 deadlines + 2 checklists + SH motivation letter  [done 2026-10-01]
+_abroad_chevening_csc.py    Chevening + CSC full pages + 2 deadlines + 2 checklists + 3 Chevening essays  [done 2026-10-01]
+_abroad_eyuf_daad_fulbright.py  El-Yurt Umidi + DAAD + Fulbright full pages + 2 deadlines + 3 checklists  [done 2026-10-01]
 _abroad_guides_1.py         Start here, Personal statement, Study plan, Recommendation, Documents  [done]
 _abroad_guides_2.py         CV, Certificates, Money, Visa and arrival, Choosing + 3 samples  [done]
+# A scholarship lives in exactly ONE file. When a card becomes a full page, move it
+# out of _abroad_scholarships_2.py — otherwise a --republish of the cards file
+# silently downgrades the full page back to a card. abroad.tests checks the order.
 
 ## Next
-- Deep pages (depth=full): MEXT [next], Türkiye Bursları, Stipendium Hungaricum
-- A Japanese university list for MEXT; checklists for MEXT and Chevening
-- Monthly "deadlines this month" Telegram post (telegrambot) — not built
+- All 10 scholarships are full pages; 10 annotated samples. Candidates next: a GKS-G (master's)
+  study plan sample, a Türkiye Bursları sample, more Korean/Japanese universities.
+- El-Yurt Umidi: the exact post-study work obligation (years per level) — sources disagree; read
+  the contract in the next competition's documents before stating a number
+- CSC: the Chinese Embassy in Tashkent's own agency number and deadline (not found online 2026-10-01)
+- Monthly Telegram deadline post — DONE (telegrambot post_abroad_deadlines)
 - Masters reviewing a pupil's draft letter — not built
 
 ## Facts that expire (re-check with `abroad_check`)
+- Chevening 2027/28 — closes 6 Oct 2026 11:00 UTC; unconditional offer by 8 Jul 2027; add 2028/29 in August 2027
 - GKS-U 2027 University track — closes by 30 Nov 2026 (varies by university)
-- GKS-G 2027 Embassy track — ESTIMATE 25 Feb 2027, from the 2026 cycle
-- Chevening 2027/28 — closes 6 Oct 2026 11:00 UTC; add 2028/29 in August 2027
-- Stipendium Hungaricum 2027/28 — ESTIMATE mid-January 2027
-- Türkiye Bursları 2027 — ESTIMATE 20 Feb 2027, from the 2026 cycle
+- Stipendium Hungaricum 2027/28 — ESTIMATE 15 Jan 2027 (call opens ~November)
+- GKS-G 2027 Embassy track — ESTIMATE 25 Feb 2027
+- Türkiye Bursları 2027 — ESTIMATE 20 Feb 2027 (official calendar: 10 Jan – 20 Feb)
+- MEXT 2028 Embassy — ESTIMATE 25 May 2027 (call ~mid-April)
+- El-Yurt Umidi autumn 2026 — ESTIMATE 26 Nov 2026 (2025: 14–26 Nov); spring round ~April
+- Fulbright 2028–29 — watch the U.S. Embassy from late winter (2027–28 instructions: March 2026)

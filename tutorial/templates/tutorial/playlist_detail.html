@@ -251,6 +251,12 @@
 </a>
 {% endif %}
 
+{% if playlist.title == 'Prime Japanese' %}
+<a href="{% url 'abroad_scholarship' 'mext' %}" class="ab-cta">
+    <i class="bi bi-globe2"></i>
+    <span><strong>{% trans "Japanese → a MEXT scholarship in Japan" %}</strong><br>{% trans "Japan's government pays tuition, a monthly allowance and flights. See how the exams and the application work." %}</span>
+</a>
+{% endif %}
 {% if playlist.title == 'Prime Korean' %}
 <a href="{% url 'abroad_scholarship' 'gks' %}" class="ab-cta">
     <i class="bi bi-globe2"></i>
