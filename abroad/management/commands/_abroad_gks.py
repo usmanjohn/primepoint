@@ -329,6 +329,19 @@ UNIVERSITIES = [
      "url": "https://www.kmu.ac.kr/uni/eng/main.jsp", "gks_university_track": True,
      "strengths": "GKS-U Type B, and in 2027 a UIC school (mechanical engineering). Home of the textbook our Keimyung readings follow.",
      "strengths_uz": "GKS-U Type B; 2027-yilda UIC (mexanika muhandisligi) ham bor. Burchakdagi Keimyung oʻqish matnlari shu universitet darsligiga tayanadi."},
+    {'name': 'Chung-Ang University', 'name_local': '중앙대학교', 'city': 'Seoul', 'country': 'South Korea', 'url': 'https://neweng.cau.ac.kr/', 'strengths': 'GKS-U Type A. Private university known for media, arts and business.', 'strengths_uz': 'GKS-U Type A. Media, sanʼat va biznes bilan tanilgan xususiy universitet.', 'gks_university_track': False},
+    {'name': 'Dongguk University', 'name_local': '동국대학교', 'city': 'Seoul', 'country': 'South Korea', 'url': 'https://www.dongguk.edu/eng/main', 'strengths': 'GKS-U Type A. Private university in central Seoul with a strong film school.', 'strengths_uz': 'GKS-U Type A. Seul markazidagi, kuchli kino maktabiga ega xususiy universitet.', 'gks_university_track': False},
+    {'name': 'Hongik University', 'name_local': '홍익대학교', 'city': 'Seoul', 'country': 'South Korea', 'url': 'https://www.hongik.ac.kr/en/', 'strengths': 'GKS-U Type A. Best known for art, design and architecture.', 'strengths_uz': 'GKS-U Type A. Avvalo sanʼat, dizayn va arxitektura bilan mashhur.', 'gks_university_track': False},
+    {'name': 'Incheon National University', 'name_local': '인천대학교', 'city': 'Incheon', 'country': 'South Korea', 'url': 'https://www.inu.ac.kr/sites/inuengl/index.do', 'strengths': "GKS-U Type A. National university in Incheon, the city of Korea's main international airport.", 'strengths_uz': 'GKS-U Type A. Koreyaning asosiy xalqaro aeroporti joylashgan Inchxon shahridagi davlat universiteti.', 'gks_university_track': False},
+    {'name': 'Kookmin University', 'name_local': '국민대학교', 'city': 'Seoul', 'country': 'South Korea', 'url': 'https://english.kookmin.ac.kr/', 'strengths': 'GKS-U Type A; in 2027 also a UIC (University-track) school for software.', 'strengths_uz': 'GKS-U Type A; 2027-yilda dasturiy taʼminot boʻyicha UIC (universitet yoʻli) ham bor.', 'gks_university_track': True},
+    {'name': 'Sejong University', 'name_local': '세종대학교', 'city': 'Seoul', 'country': 'South Korea', 'url': 'https://en.sejong.ac.kr/', 'strengths': 'GKS-U Type A. Private university known for hospitality and computer science.', 'strengths_uz': 'GKS-U Type A. Mehmonxona biznesi va kompyuter fanlari bilan tanilgan xususiy universitet.', 'gks_university_track': False},
+    {'name': 'University of Seoul', 'name_local': '서울시립대학교', 'city': 'Seoul', 'country': 'South Korea', 'url': 'https://english.uos.ac.kr/', 'strengths': 'GKS-U Type A. Public university run by the Seoul city government; urban studies and engineering.', 'strengths_uz': 'GKS-U Type A. Seul shahar hokimiyati universiteti; shaharshunoslik va muhandislik.', 'gks_university_track': False},
+    {'name': 'The Catholic University of Korea', 'name_local': '가톨릭대학교', 'city': 'Bucheon / Seoul', 'country': 'South Korea', 'url': 'https://www.catholic.ac.kr/en/', 'strengths': 'GKS-U Type A. Private university with a large medical school.', 'strengths_uz': 'GKS-U Type A. Katta tibbiyot fakulteti bor xususiy universitet.', 'gks_university_track': False},
+    {'name': 'Jeonbuk National University', 'name_local': '전북대학교', 'city': 'Jeonju', 'country': 'South Korea', 'url': 'https://www.jbnu.ac.kr/eng/', 'strengths': 'GKS-U Type B. National university in the historic city of Jeonju.', 'strengths_uz': 'GKS-U Type B. Tarixiy Jonju shahridagi davlat universiteti.', 'gks_university_track': False},
+    {'name': 'Kangwon National University', 'name_local': '강원대학교', 'city': 'Chuncheon', 'country': 'South Korea', 'url': 'https://www.kangwon.ac.kr/', 'strengths': 'GKS-U Type B. National university in Gangwon province (site opens in Korean).', 'strengths_uz': 'GKS-U Type B. Kangvon viloyatidagi davlat universiteti (sayt koreyscha ochiladi).', 'gks_university_track': False},
+    {'name': 'Chungbuk National University', 'name_local': '충북대학교', 'city': 'Cheongju', 'country': 'South Korea', 'url': 'https://www.chungbuk.ac.kr/', 'strengths': 'GKS-U Type B. National university in central Korea (site opens in Korean).', 'strengths_uz': 'GKS-U Type B. Koreyaning markazidagi davlat universiteti (sayt koreyscha ochiladi).', 'gks_university_track': False},
+    {'name': 'Pukyong National University', 'name_local': '부경대학교', 'city': 'Busan', 'country': 'South Korea', 'url': 'https://www.pknu.ac.kr/eng', 'strengths': 'GKS-U Type B. National university in Busan, strong in marine and fisheries science.', 'strengths_uz': 'GKS-U Type B. Pusandagi davlat universiteti; dengiz va baliqchilik fanlarida kuchli.', 'gks_university_track': False},
+    {'name': 'Yeungnam University', 'name_local': '영남대학교', 'city': 'Gyeongsan', 'country': 'South Korea', 'url': 'https://www.yu.ac.kr/english/', 'strengths': 'GKS-U Type B; in 2027 also a UIC school (environmental engineering).', 'strengths_uz': 'GKS-U Type B; 2027-yilda UIC (atrof-muhit muhandisligi) ham bor.', 'gks_university_track': True},
 ]
 
 CHECKLISTS = {
@@ -462,6 +475,40 @@ SAMPLES = [
             {"en": "Years 1–2: five real course names from your chosen department's curriculum.", "uz": "1–2-yillar: tanlagan yoʻnalishingiz oʻquv rejasidan beshta haqiqiy fan nomi.", "lines": 4},
             {"en": "Years 3–4: a lab, a club, an internship or a project — and why it fits your goal.", "uz": "3–4-yillar: laboratoriya, toʻgarak, amaliyot yoki loyiha — va nega u maqsadingizga mos.", "lines": 4},
             {"en": "After graduation: first 3 years, then 10 years from now. Where is Uzbekistan in it?", "uz": "Bitirgandan keyin: dastlabki 3 yil, keyin 10 yildan keyin. Bunda Oʻzbekiston qayerda?", "lines": 4},
+        ],
+    },
+    {
+        "slug": "gks-g-study-plan", "order": 11, "kind": "study_plan", "scholarship": "gks",
+        "title": "GKS-G study plan — Sardor, renewable energy (master's)",
+        "title_uz": "GKS-G oʻqish rejasi — Sardor, qayta tiklanuvchi energetika (magistratura)",
+        "intro": "<p>Sardor is fictional: an electrical-engineering graduate from Bukhara with two years at a regional power company, applying for a master's through GKS-G. A master's study plan is closer to a research plan than the bachelor's one: a question, a method, a lab — and the language year still has to be planned. Follow the headings on this year's official form.</p>",
+        "intro_uz": "<p>Sardor — oʻylab topilgan qahramon: Buxorolik elektrotexnika bitiruvchisi, viloyat elektr kompaniyasida ikki yil ishlagan, GKS-G orqali magistraturaga topshiryapti. Magistratura oʻqish rejasi bakalavrnikiga qaraganda tadqiqot rejasiga yaqin: savol, usul, laboratoriya — til yilini ham rejalashtirish kerak. Shu yilgi rasmiy shakl sarlavhalariga amal qiling.</p>",
+        "letter": """
+<h4>Study goal</h4>
+<p>I want to earn a master's degree in electrical engineering with a focus on integrating solar power into weak regional grids, so that I can help my region in Uzbekistan use more solar energy without more blackouts.</p>
+<h4>Research question</h4>
+<p>In my two years at the Bukhara regional power company, I saw that new rooftop solar systems cause voltage problems on old rural lines in summer afternoons, and engineers respond by disconnecting them. My question is: how can low-cost smart inverters and simple forecasting keep voltage stable on such lines, so that solar can stay connected?</p>
+<h4>Why this laboratory</h4>
+<p>Professor Park's power-systems laboratory works on inverter control for distribution grids and runs a test grid on campus. Its recent studies on voltage control with residential inverters are the closest work to my question that I have found. I have written to Professor Park to introduce my project.</p>
+<h4>Plan of study</h4>
+<p><strong>Korean language year:</strong> my target is TOPIK level 4, so that I can follow lectures and work with Korean lab members; I already study for an hour a day. <strong>First semester:</strong> courses in power-system analysis, power electronics and renewable-energy integration. <strong>Second and third semesters:</strong> simulation of a typical Uzbek rural feeder using data I collected at work, then tests on the laboratory's grid. <strong>Final semester:</strong> thesis and one conference paper.</p>
+<h4>After the degree</h4>
+<p>I will return to the regional power company to lead a pilot on two rural feeders, and share the results with the Ministry of Energy, which is expanding solar generation across the country.</p>
+""",
+        "notes": [
+            {"para": 1, "en": "One sentence: degree, focus, and the <strong>problem it serves</strong> at home.", "uz": "Bir gap: daraja, yoʻnalish va u vatanda hal qiladigan <strong>muammo</strong>."},
+            {"para": 2, "en": "The research question comes <strong>from his own work</strong>, with a concrete observation. A committee believes a question you have met in real life.", "uz": "Tadqiqot savoli <strong>oʻz ishidan</strong> kelib chiqqan, aniq kuzatish bilan. Komissiya hayotda duch kelgan savolingizga ishonadi."},
+            {"para": 3, "en": "A specific lab and how its work matches the question — and he has already written to the professor. Check the lab's real publications before you name them.", "uz": "Aniq laboratoriya va uning ishi savolga qanday mos kelishi — u professorga allaqachon yozgan. Nomlashdan oldin laboratoriyaning haqiqiy nashrlarini tekshiring."},
+            {"para": 4, "en": "The <strong>language year is planned</strong>, then each semester has a job. Data from home makes the plan realistic.", "uz": "<strong>Til yili rejalashtirilgan</strong>, keyin har bir semestrning oʻz vazifasi bor. Vatandan olingan maʼlumot rejani real qiladi."},
+            {"para": 5, "en": "A return that is a real next step: the same employer, a pilot, and a national partner.", "uz": "Haqiqiy keyingi qadam boʻlgan qaytish: oʻsha ish beruvchi, sinov loyihasi va milliy hamkor."},
+        ],
+        "prompts": [
+            {"en": "Your study goal in one sentence: degree, focus, the problem at home.", "uz": "Bir gapda oʻqish maqsadingiz: daraja, yoʻnalish, vatandagi muammo.", "lines": 3},
+            {"en": "The research question — and the moment at work or study where you met it.", "uz": "Tadqiqot savoli — va unga ish yoki oʻqishda duch kelgan lahza.", "lines": 4},
+            {"en": "Two labs in Korea whose recent work matches your question (check their papers).", "uz": "Soʻnggi ishlari savolingizga mos Koreyadagi ikkita laboratoriya (maqolalarini tekshiring).", "lines": 4},
+            {"en": "Language year: your TOPIK target and daily habit.", "uz": "Til yili: TOPIK maqsadingiz va kundalik odatingiz.", "lines": 2},
+            {"en": "Each semester's job: courses, data, experiments, thesis.", "uz": "Har bir semestr vazifasi: fanlar, maʼlumot, tajribalar, dissertatsiya.", "lines": 4},
+            {"en": "After the degree: which organisation, which pilot, which partner?", "uz": "Darajadan keyin: qaysi tashkilot, qaysi sinov loyihasi, qaysi hamkor?", "lines": 3},
         ],
     },
 ]

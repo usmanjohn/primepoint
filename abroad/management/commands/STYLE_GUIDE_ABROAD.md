@@ -40,8 +40,12 @@ the callouts for the three things a pupil must not miss:
 `style.css` first.
 
 ## 4. Samples
-Fictional applicants only (Madina, Jasur…), clearly stamped "do not copy". One `<p>` per
-paragraph in `letter`; each note names its paragraph (`para`, 1-based). Every sample has a
+Fictional applicants only (Madina, Jasur…), clearly stamped "do not copy". A letter is written
+in the language it is submitted in — usually English; set `letter_lang` (e.g. `"uz"` for the
+El-Yurt Umidi essay) so the page marks it correctly. One `<p>` per
+paragraph in `letter`; each note names its paragraph (`para`, 1-based). **A heading (`<h4>`)
+is not a paragraph** — it is shown with the `<p>` after it, so count only `<p>`s. The importer
+refuses a note that points past the last paragraph (it would never be shown). Every sample has a
 planner (`prompts`, 4–6 questions, `lines` for writing space). The notes explain *why* a
 paragraph works — structure, evidence, reflection — never just "good".
 

@@ -146,3 +146,31 @@ CHECKLISTS = {
         {"text": "Apostille or legalisation rule checked for each country on the mobility path", "text_uz": "Mobillik yoʻlidagi har bir davlat uchun apostil yoki legalizatsiya qoidasi tekshirildi"},
     ],
 }
+
+SAMPLES = [{
+    "slug": "erasmus-motivation", "order": 14, "kind": "statement", "scholarship": "erasmus",
+    "title": "Erasmus Mundus motivation letter — Bekzod, data science (final-year student)",
+    "title_uz": "Erasmus Mundus motivatsion xati — Bekzod, maʼlumotlar ilmi (bitiruvchi kurs talabasi)",
+    "intro": "<p>Bekzod is fictional: a final-year applied-mathematics student in Tashkent, with no full-time work yet — the typical Erasmus Mundus applicant. A joint master is chosen for its <strong>modules and its mobility path</strong>, so the letter must be about that programme and no other.</p>",
+    "intro_uz": "<p>Bekzod — oʻylab topilgan qahramon: Toshkentdagi amaliy matematika bitiruvchi kurs talabasi, hali toʻliq ish tajribasi yoʻq — Erasmus Mundus uchun odatiy nomzod. Qoʻshma magistratura <strong>modullari va mobillik yoʻli</strong> uchun tanlanadi, shuning uchun xat aynan oʻsha dastur haqida boʻlishi kerak.</p>",
+    "letter": """
+<p>Dear Selection Committee,</p>
+<p>I am a final-year student of applied mathematics in Tashkent, graduating in June, and I am applying to your joint master's in data science. Last year, for my course project, I analysed three years of public transport data from my city and found that two bus routes carried a third of all passengers while their timetables had not changed in a decade. Presenting this to the city transport office was the first time I saw data change a real decision: one route now runs every eight minutes instead of fifteen.</p>
+<p>My studies have given me a solid base in statistics, linear algebra and programming in Python, and I have completed online courses in machine learning. What I lack is experience with large real-world datasets and with the ethics of using personal data — two areas this programme treats seriously.</p>
+<p>The programme's structure is the reason I am applying to it and not to a single university. The first year's focus on statistical foundations matches what I need to strengthen, and the second year's specialisation in urban data at the partner university is exactly the field my project opened for me. Studying in two countries would also let me compare how two European cities use data in transport.</p>
+<p>After graduating, I want to return to Uzbekistan and work in a city administration or a transport company, helping Tashkent and other growing cities plan with data. I also plan to keep sharing what I learn with students at my university's data club, which I co-founded in my second year.</p>
+<p>Sincerely,<br>Bekzod Tursunov</p>
+""",
+    "notes": [
+        {"para": 2, "en": "Who he is (final-year, graduating before the start — an eligibility point) and a <strong>project with a real result</strong> instead of work experience.", "uz": "U kim (bitiruvchi kurs, oʻqish boshlanishidan oldin bitiradi — shart sifatida muhim) va ish tajribasi oʻrniga <strong>haqiqiy natijali loyiha</strong>."},
+        {"para": 3, "en": "An honest account of strengths <strong>and gaps</strong> — and the gaps are exactly what the programme teaches.", "uz": "Kuchli tomonlar <strong>va boʻshliqlar</strong>ning halol bayoni — boʻshliqlar esa aynan dastur oʻrgatadigan narsalar."},
+        {"para": 4, "en": "Why this joint programme: year by year, and why the <strong>mobility path</strong> matters. Replace the details with your programme's real ones.", "uz": "Nega aynan shu qoʻshma dastur: yilma-yil va nega <strong>mobillik yoʻli</strong> muhim. Tafsilotlarni dasturingizning haqiqiylari bilan almashtiring."},
+        {"para": 5, "en": "A realistic plan at home, plus something he already does for others — committees like applicants who multiply what they learn.", "uz": "Vatandagi real reja va boshqalar uchun allaqachon qilayotgan ishi — komissiya oʻrganganini koʻpaytiradigan nomzodlarni yoqtiradi."},
+    ],
+    "prompts": [
+        {"en": "Your year of study, graduation date, and one project with a real result.", "uz": "Kursingiz, bitirish sanasi va haqiqiy natijali bitta loyiha.", "lines": 3},
+        {"en": "What you are strong in — and two honest gaps.", "uz": "Nimada kuchlisiz — va ikkita halol boʻshliq.", "lines": 3},
+        {"en": "For THIS programme: what you take in year one, where you go in year two, and why.", "uz": "AYNAN shu dastur uchun: birinchi yilda nima oʻqiysiz, ikkinchi yilda qayerga borasiz va nega.", "lines": 4},
+        {"en": "Your plan in Uzbekistan, and how you will pass on what you learn.", "uz": "Oʻzbekistondagi rejangiz va oʻrganganingizni boshqalarga qanday yetkazasiz.", "lines": 3},
+    ],
+}]

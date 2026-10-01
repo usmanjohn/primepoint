@@ -112,13 +112,29 @@ def scholarship_detail(request, slug):
     })
 
 
+# A heading (<h3>/<h4>) belongs to the paragraph after it: the pair is one row,
+# and notes are numbered by paragraph. Anything else would silently drop the
+# headings — which happened until 2026-10-01.
+BLOCK_RE = re.compile(r'<(h[34]|p)\b.*?</\1>', re.S)
+
+
+def letter_paragraphs(letter):
+    rows, heading = [], ''
+    for m in BLOCK_RE.finditer(letter):
+        if m.group(1).startswith('h'):
+            heading += m.group(0)
+        else:
+            rows.append(heading + m.group(0))
+            heading = ''
+    return rows
+
+
 def sample_detail(request, slug):
     sample = get_object_or_404(Sample, slug=slug, is_published=True)
     uz = (request.LANGUAGE_CODE or 'uz').startswith('uz')
     # The letter is authored as <p> paragraphs; each note names the paragraph
     # it explains, so the page can set them side by side (stacked on phones).
-    paragraphs = re.findall(r'<p\b.*?</p>', sample.letter, re.S)
-    rows = [{'html': p, 'notes': []} for p in paragraphs]
+    rows = [{'html': p, 'notes': []} for p in letter_paragraphs(sample.letter)]
     for note in sample.notes:
         n = note.get('para', 0) - 1
         if 0 <= n < len(rows):

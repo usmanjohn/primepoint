@@ -106,6 +106,22 @@ class ImporterTests(TestCase):
         self.assertIn('last_checked is required', problems)
         self.assertIn('usual_period and usual_period_uz must both be filled', problems)
 
+    def test_headings_stay_with_their_paragraph(self):
+        """Until 2026-10-01 the sample page dropped every <h4> and notes were
+        numbered against a different paragraph count — both silently."""
+        from abroad.views import letter_paragraphs
+        rows = letter_paragraphs('<p>Dear</p><h4>Goal</h4><p>To build.</p><h4>Plan</h4><p>Year 1.</p>')
+        self.assertEqual(rows, ['<p>Dear</p>', '<h4>Goal</h4><p>To build.</p>', '<h4>Plan</h4><p>Year 1.</p>'])
+
+    def test_refuses_a_note_past_the_last_paragraph(self):
+        problems = ' | '.join(validate({'SAMPLES': [{
+            'slug': 's', 'title': 'T', 'title_uz': 'T',
+            'letter': '<h4>A</h4><p>a</p><h4>B</h4><p>b</p>',
+            'notes': [{'para': 2, 'en': 'e', 'uz': 'u'}, {'para': 4, 'en': 'e', 'uz': 'u'}],
+        }]}))
+        self.assertIn('note para 4 but the letter has 2 paragraphs', problems)
+        self.assertNotIn('note para 2 ', problems)
+
     def test_every_committed_data_file_validates(self):
         for path in sorted(glob.glob(str(DATA_DIR / '_abroad_*.py'))):
             with self.subTest(path=Path(path).name):
@@ -147,7 +163,11 @@ class PageTests(TestCase):
                 '/abroad/checklist/?target=eyuf', '/abroad/checklist/?target=daad', '/abroad/checklist/?target=fulbright',
                 '/abroad/scholarships/erasmus/', '/abroad/checklist/?target=erasmus',
                 '/abroad/samples/chevening-networking-essay/', '/abroad/samples/chevening-career-plan-essay/',
-                '/abroad/samples/hungary-motivation-letter/', '/abroad/samples/hungary-motivation-letter/planner/']
+                '/abroad/samples/hungary-motivation-letter/', '/abroad/samples/hungary-motivation-letter/planner/',
+                '/abroad/samples/gks-g-study-plan/', '/abroad/samples/turkiye-statement/',
+                '/abroad/samples/daad-epos-motivation/', '/abroad/samples/erasmus-motivation/',
+                '/abroad/samples/fulbright-study-objectives/', '/abroad/samples/eyuf-motivation-essay/',
+                '/abroad/universities/?country=Hungary', '/abroad/universities/?country=China']
         # The language comes from the cookie (LocaleMiddleware), as for a visitor.
         for lang, title in (('uz', 'Hujjatlar, tarjima va apostil'),
                             ('en', 'Documents, translation and apostille')):

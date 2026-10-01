@@ -21,6 +21,12 @@
 <p class="ab-fine">{% trans "Type A and Type B are the groups used in the GKS bachelor's guidelines. In the Embassy track you choose up to three universities and at least one must be Type B; R-GKS applicants choose up to two, Type B only. Always check the current year's “University Information” file — departments change." %}</p>
 {% elif g.grouper == "Japan" %}
 <p class="ab-fine">{% trans "MEXT places undergraduate grantees at Japanese national universities — MEXT decides which one. Research students choose by finding a professor who will accept them." %}</p>
+{% elif g.grouper == "Türkiye" %}
+<p class="ab-fine">{% trans "Türkiye Scholarships places you at a university from the programmes you list — these are some of the leading state universities, for orientation." %}</p>
+{% elif g.grouper == "Hungary" %}
+<p class="ab-fine">{% trans "All of these are Stipendium Hungaricum host institutions. Choose programmes in the official study finder — you may pick two." %}</p>
+{% elif g.grouper == "China" %}
+<p class="ab-fine">{% trans "Some of China's leading universities, for orientation. Check the current CSC host list on campuschina.org before you choose." %}</p>
 {% endif %}
 <div class="ab-unis">
 {% for u in g.list %}

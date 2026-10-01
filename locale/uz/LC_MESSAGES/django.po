@@ -10779,3 +10779,21 @@ msgstr "Fulbright (AQSh)"
 
 msgid "Erasmus Mundus"
 msgstr "Erasmus Mundus"
+
+msgid "Türkiye"
+msgstr "Turkiya"
+
+msgid "Hungary"
+msgstr "Vengriya"
+
+msgid "China"
+msgstr "Xitoy"
+
+msgid "Türkiye Scholarships places you at a university from the programmes you list — these are some of the leading state universities, for orientation."
+msgstr "Türkiye Bursları sizni siz sanagan dasturlardan biriga universitetga joylashtiradi — bular yetakchi davlat universitetlarining bir qismi, moʻljal uchun."
+
+msgid "All of these are Stipendium Hungaricum host institutions. Choose programmes in the official study finder — you may pick two."
+msgstr "Bularning hammasi Stipendium Hungaricum qabul qiluvchi muassasalari. Dasturlarni rasmiy study finder'da tanlang — ikkitasini tanlash mumkin."
+
+msgid "Some of China's leading universities, for orientation. Check the current CSC host list on campuschina.org before you choose."
+msgstr "Xitoyning yetakchi universitetlaridan bir qismi, moʻljal uchun. Tanlashdan oldin campuschina.org dagi joriy CSC roʻyxatini tekshiring."

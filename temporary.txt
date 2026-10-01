@@ -15,3 +15,13 @@ python manage.py import_abroad abroad/management/commands/_abroad_eyuf_daad_fulb
 python manage.py import_abroad abroad/management/commands/_abroad_scholarships_2.py --author=powerty --republish
 python manage.py import_abroad abroad/management/commands/_abroad_chevening_csc.py --author=powerty --republish
 python manage.py import_abroad abroad/management/commands/_abroad_turkiye_hungary.py --author=powerty --republish
+python manage.py import_abroad abroad/management/commands/_abroad_gks.py --author=powerty --republish
+python manage.py import_abroad abroad/management/commands/_abroad_mext.py --author=powerty --republish
+python manage.py import_abroad abroad/management/commands/_abroad_turkiye_hungary.py --author=powerty --republish
+python manage.py import_abroad abroad/management/commands/_abroad_gks.py --author=powerty --republish
+python manage.py import_abroad abroad/management/commands/_abroad_mext.py --author=powerty --republish
+python manage.py import_abroad abroad/management/commands/_abroad_eyuf_daad_fulbright.py --author=powerty --republish
+python manage.py import_abroad abroad/management/commands/_abroad_scholarships_2.py --author=powerty --republish
+python manage.py import_abroad abroad/management/commands/_abroad_eyuf_daad_fulbright.py --author=powerty --republish
+python manage.py import_abroad abroad/management/commands/_abroad_turkiye_hungary.py --author=powerty --republish
+python manage.py import_abroad abroad/management/commands/_abroad_chevening_csc.py --author=powerty --republish

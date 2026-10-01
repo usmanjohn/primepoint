@@ -26,7 +26,7 @@
 <div class="ab-letter">
     {% for row in rows %}
     <div class="ab-letter__row">
-        <div class="ab-letter__p" lang="en">{{ row.html|safe }}</div>
+        <div class="ab-letter__p" lang="{{ sample.letter_lang }}">{{ row.html|safe }}</div>
         <div class="ab-letter__notes">
             {% for n in row.notes %}<div class="ab-note"><i class="bi bi-lightbulb"></i> {{ n|safe }}</div>{% endfor %}
         </div>

@@ -349,6 +349,29 @@ DEADLINES = [
     },
 ]
 
+# Türkiye: leading state universities — orientation only; Türkiye Scholarships
+# places the scholar. Hungary: Stipendium Hungaricum host institutions as listed
+# at apply.stipendiumhungaricum.hu/institutions (read 2026-10-01).
+UNIVERSITIES = [
+    {'name': 'Middle East Technical University (METU)', 'name_local': 'Orta Doğu Teknik Üniversitesi', 'city': 'Ankara', 'country': 'Türkiye', 'url': 'https://www.metu.edu.tr/', 'strengths': 'State university in Ankara; teaching is in English.', 'strengths_uz': 'Anqaradagi davlat universiteti; oʻqitish ingliz tilida.'},
+    {'name': 'Boğaziçi University', 'name_local': 'Boğaziçi Üniversitesi', 'city': 'Istanbul', 'country': 'Türkiye', 'url': 'https://bogazici.edu.tr/en', 'strengths': 'State university in Istanbul; teaching is in English.', 'strengths_uz': 'Istanbuldagi davlat universiteti; oʻqitish ingliz tilida.'},
+    {'name': 'Istanbul Technical University', 'name_local': 'İstanbul Teknik Üniversitesi', 'city': 'Istanbul', 'country': 'Türkiye', 'url': 'https://www.itu.edu.tr/en', 'strengths': 'State technical university: engineering and architecture.', 'strengths_uz': 'Davlat texnika universiteti: muhandislik va arxitektura.'},
+    {'name': 'Hacettepe University', 'name_local': 'Hacettepe Üniversitesi', 'city': 'Ankara', 'country': 'Türkiye', 'url': 'https://www.hacettepe.edu.tr/english', 'strengths': 'State university known for medicine and health sciences.', 'strengths_uz': 'Tibbiyot va sogʻliqni saqlash fanlari bilan tanilgan davlat universiteti.'},
+    {'name': 'Ankara University', 'name_local': 'Ankara Üniversitesi', 'city': 'Ankara', 'country': 'Türkiye', 'url': 'https://www.ankara.edu.tr/en/', 'strengths': 'Large state university in the capital, with many faculties.', 'strengths_uz': 'Poytaxtdagi, koʻp fakultetli katta davlat universiteti.'},
+    {'name': 'Istanbul University', 'name_local': 'İstanbul Üniversitesi', 'city': 'Istanbul', 'country': 'Türkiye', 'url': 'https://istanbul.edu.tr/en', 'strengths': 'Large historic state university in Istanbul.', 'strengths_uz': 'Istanbuldagi katta va tarixiy davlat universiteti.'},
+    {'name': 'Ege University', 'name_local': 'Ege Üniversitesi', 'city': 'İzmir', 'country': 'Türkiye', 'url': 'https://ege.edu.tr/en', 'strengths': 'Large state university in İzmir, on the Aegean coast.', 'strengths_uz': 'Egey sohilidagi Izmirda joylashgan katta davlat universiteti.'},
+    {'name': 'Marmara University', 'name_local': 'Marmara Üniversitesi', 'city': 'Istanbul', 'country': 'Türkiye', 'url': 'https://www.marmara.edu.tr/en', 'strengths': 'Large state university in Istanbul.', 'strengths_uz': 'Istanbuldagi katta davlat universiteti.'},
+    {'name': 'Eötvös Loránd University (ELTE)', 'name_local': 'Eötvös Loránd Tudományegyetem', 'city': 'Budapest', 'country': 'Hungary', 'url': 'https://www.elte.hu/en', 'strengths': "Stipendium Hungaricum host. One of Hungary's largest universities: sciences, humanities, IT.", 'strengths_uz': 'Stipendium Hungaricum qabul qiluvchisi. Vengriyaning eng katta universitetlaridan: tabiiy, gumanitar fanlar, IT.'},
+    {'name': 'Budapest University of Technology and Economics (BME)', 'name_local': 'Budapesti Műszaki és Gazdaságtudományi Egyetem', 'city': 'Budapest', 'country': 'Hungary', 'url': 'https://www.bme.hu/en', 'strengths': "Stipendium Hungaricum host. Hungary's leading technical university.", 'strengths_uz': 'Stipendium Hungaricum qabul qiluvchisi. Vengriyaning yetakchi texnika universiteti.'},
+    {'name': 'Semmelweis University', 'name_local': 'Semmelweis Egyetem', 'city': 'Budapest', 'country': 'Hungary', 'url': 'https://semmelweis.hu/english/', 'strengths': 'Stipendium Hungaricum host. Medicine, dentistry and pharmacy.', 'strengths_uz': 'Stipendium Hungaricum qabul qiluvchisi. Tibbiyot, stomatologiya va farmatsiya.'},
+    {'name': 'Corvinus University of Budapest', 'name_local': 'Budapesti Corvinus Egyetem', 'city': 'Budapest', 'country': 'Hungary', 'url': 'https://www.uni-corvinus.hu/?lang=en', 'strengths': 'Stipendium Hungaricum host. Economics, business and social sciences.', 'strengths_uz': 'Stipendium Hungaricum qabul qiluvchisi. Iqtisodiyot, biznes va ijtimoiy fanlar.'},
+    {'name': 'University of Debrecen', 'name_local': 'Debreceni Egyetem', 'city': 'Debrecen', 'country': 'Hungary', 'url': 'https://unideb.hu/en', 'strengths': 'Stipendium Hungaricum host. Large university in eastern Hungary with many international students.', 'strengths_uz': 'Stipendium Hungaricum qabul qiluvchisi. Sharqiy Vengriyadagi, xorijlik talabalari koʻp katta universitet.'},
+    {'name': 'University of Szeged', 'name_local': 'Szegedi Tudományegyetem', 'city': 'Szeged', 'country': 'Hungary', 'url': 'https://u-szeged.hu/english', 'strengths': 'Stipendium Hungaricum host. Large university in southern Hungary.', 'strengths_uz': 'Stipendium Hungaricum qabul qiluvchisi. Janubiy Vengriyadagi katta universitet.'},
+    {'name': 'University of Pécs', 'name_local': 'Pécsi Tudományegyetem', 'city': 'Pécs', 'country': 'Hungary', 'url': 'https://international.pte.hu/', 'strengths': 'Stipendium Hungaricum host. Large university in south-western Hungary.', 'strengths_uz': 'Stipendium Hungaricum qabul qiluvchisi. Janubi-gʻarbiy Vengriyadagi katta universitet.'},
+    {'name': 'Hungarian University of Agriculture and Life Sciences (MATE)', 'name_local': 'Magyar Agrár- és Élettudományi Egyetem', 'city': 'Gödöllő', 'country': 'Hungary', 'url': 'https://uni-mate.hu/', 'strengths': 'Stipendium Hungaricum host. Agriculture, food science and environmental studies.', 'strengths_uz': 'Stipendium Hungaricum qabul qiluvchisi. Qishloq xoʻjaligi, oziq-ovqat va atrof-muhit fanlari.'},
+    {'name': 'Óbuda University', 'name_local': 'Óbudai Egyetem', 'city': 'Budapest', 'country': 'Hungary', 'url': 'https://uni-obuda.hu/en/', 'strengths': 'Stipendium Hungaricum host. Engineering and IT.', 'strengths_uz': 'Stipendium Hungaricum qabul qiluvchisi. Muhandislik va IT.'},
+]
+
 CHECKLISTS = {
     "turkiye": [
         {"text": "Age under the limit on the day of application (bachelor's: under 21)", "text_uz": "Ariza kuni yosh chegarasidan kichik (bakalavr: 21 yoshdan kichik)"},
@@ -403,5 +426,34 @@ SAMPLES = [{
         {"en": "Your evidence: grades in the key subjects, olympiads, a project — with numbers.", "uz": "Dalillaringiz: asosiy fanlardan baholar, olimpiadalar, loyiha — raqamlar bilan.", "lines": 4},
         {"en": "Three things in THIS programme (modules, language, place) that fit you.", "uz": "AYNAN shu dasturdagi sizga mos uchta narsa (modullar, til, joy).", "lines": 3},
         {"en": "What you will do in Uzbekistan after graduating.", "uz": "Bitirgandan keyin Oʻzbekistonda nima qilasiz.", "lines": 3},
+    ],
+}, {
+    "slug": "turkiye-statement", "order": 12, "kind": "statement", "scholarship": "turkiye",
+    "title": "Türkiye Bursları answers on interests and goals — Kamola, medicine (bachelor's)",
+    "title_uz": "Türkiye Bursları: qiziqishlar va maqsadlar haqidagi javoblar — Kamola, tibbiyot (bakalavr)",
+    "intro": "<p>The Türkiye Scholarships form asks about your academic interests and career goals, and the expert committee reads the answers before the interview. Kamola is fictional: a school-leaver from Khorezm applying for medicine — a field where the minimum grade is 90%. Check this year's form for the exact questions and character limits.</p>",
+    "intro_uz": "<p>Türkiye Bursları shakli ilmiy qiziqishlaringiz va kasbiy maqsadlaringiz haqida soʻraydi; ekspert komissiya javoblarni suhbatdan oldin oʻqiydi. Kamola — oʻylab topilgan qahramon: Xorazmlik bitiruvchi, tibbiyotga topshiryapti — bu sohada minimal baho 90%. Aniq savollar va belgi chegarasini shu yilgi shakldan tekshiring.</p>",
+    "letter": """
+<h4>Why this field</h4>
+<p>My grandmother lives in a village two hours from the nearest hospital. When she had a stroke in 2024, the first hours were lost on the road. Since then I have wanted to become a doctor who works where doctors are fewest, and to understand how emergency care can reach such villages faster.</p>
+<h4>What I have done</h4>
+<p>My grades in biology and chemistry have been 5 out of 5 for three years, and I placed second in the regional biology olympiad in 2025. For six months I volunteered on Saturdays at our district clinic, helping nurses record patients, which showed me how much of medicine is organisation and communication.</p>
+<h4>Why Türkiye</h4>
+<p>Türkiye has built a strong network of city and regional hospitals, and its medical faculties train doctors for very different regions. I also want to study in a country that is culturally close to Uzbekistan, and I am ready to learn Turkish in the preparatory year, since medicine must be learned in the language of the patients.</p>
+<h4>Career goal</h4>
+<p>After graduating, I will return to Khorezm to work in emergency medicine at the regional hospital, and in the long term help set up first-aid training for village health workers, so that the first hour is no longer lost.</p>
+""",
+    "notes": [
+        {"para": 1, "en": "A personal reason told in two sentences, then turned into a <strong>direction</strong> (rural emergency care) — not just “I want to help people”.", "uz": "Ikki gapda shaxsiy sabab, keyin <strong>yoʻnalish</strong>ga aylantirilgan (qishloqdagi tez yordam) — shunchaki «odamlarga yordam bermoqchiman» emas."},
+        {"para": 2, "en": "Evidence for a 90% field: top grades in the subjects that matter, an olympiad, and real contact with medicine.", "uz": "90% talab qilinadigan soha uchun dalil: kerakli fanlardan eng yuqori baholar, olimpiada va tibbiyot bilan haqiqiy aloqa."},
+        {"para": 3, "en": "“Why Türkiye” with a real reason about its system, and an honest, positive answer about learning Turkish — the interviewers will ask.", "uz": "«Nega Turkiya» — uning tizimi haqidagi haqiqiy sabab bilan, va turk tilini oʻrganish haqida halol, ijobiy javob — suhbatda albatta soʻraladi."},
+        {"para": 4, "en": "The goal closes the circle opened in the first answer. Committees notice when the story holds together.", "uz": "Maqsad birinchi javobda ochilgan doirani yopadi. Komissiya hikoya yaxlit ekanini sezadi."},
+    ],
+    "prompts": [
+        {"en": "The moment that pointed you to your field — and the direction it gave you.", "uz": "Sizni sohangizga yoʻnaltirgan lahza — va u bergan yoʻnalish.", "lines": 3},
+        {"en": "Your evidence: grades in the key subjects, olympiads, volunteering — with numbers.", "uz": "Dalillaringiz: asosiy fanlardan baholar, olimpiadalar, koʻngillilik — raqamlar bilan.", "lines": 4},
+        {"en": "One real reason to study this field in Türkiye.", "uz": "Bu sohani aynan Turkiyada oʻqish uchun bitta haqiqiy sabab.", "lines": 2},
+        {"en": "Your honest answer: are you ready to study in Turkish after the language year?", "uz": "Halol javobingiz: til yilidan keyin turk tilida oʻqishga tayyormisiz?", "lines": 2},
+        {"en": "Where you will work after graduating — and what will change there.", "uz": "Bitirgandan keyin qayerda ishlaysiz — va u yerda nima oʻzgaradi.", "lines": 3},
     ],
 }]

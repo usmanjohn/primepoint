@@ -301,6 +301,19 @@ DEADLINES = [
     },
 ]
 
+# China: leading universities — orientation only; the CSC host list is on
+# campuschina.org (unreachable from here on 2026-10-01).
+UNIVERSITIES = [
+    {'name': 'Tsinghua University', 'name_local': '清华大学', 'city': 'Beijing', 'country': 'China', 'url': 'https://www.tsinghua.edu.cn/en/', 'strengths': 'Leading university, especially strong in engineering.', 'strengths_uz': 'Yetakchi universitet, ayniqsa muhandislikda kuchli.'},
+    {'name': 'Peking University', 'name_local': '北京大学', 'city': 'Beijing', 'country': 'China', 'url': 'https://english.pku.edu.cn/', 'strengths': 'Leading comprehensive university.', 'strengths_uz': 'Yetakchi koʻp tarmoqli universitet.'},
+    {'name': 'Fudan University', 'name_local': '复旦大学', 'city': 'Shanghai', 'country': 'China', 'url': 'https://www.fudan.edu.cn/en/', 'strengths': 'Leading comprehensive university in Shanghai.', 'strengths_uz': 'Shanxaydagi yetakchi koʻp tarmoqli universitet.'},
+    {'name': 'Shanghai Jiao Tong University', 'name_local': '上海交通大学', 'city': 'Shanghai', 'country': 'China', 'url': 'https://en.sjtu.edu.cn/', 'strengths': 'Engineering, medicine and business.', 'strengths_uz': 'Muhandislik, tibbiyot va biznes.'},
+    {'name': 'Zhejiang University', 'name_local': '浙江大学', 'city': 'Hangzhou', 'country': 'China', 'url': 'https://www.zju.edu.cn/english/', 'strengths': 'Large comprehensive university.', 'strengths_uz': 'Katta koʻp tarmoqli universitet.'},
+    {'name': 'Nanjing University', 'name_local': '南京大学', 'city': 'Nanjing', 'country': 'China', 'url': 'https://www.nju.edu.cn/en/', 'strengths': 'Leading comprehensive university.', 'strengths_uz': 'Yetakchi koʻp tarmoqli universitet.'},
+    {'name': 'Wuhan University', 'name_local': '武汉大学', 'city': 'Wuhan', 'country': 'China', 'url': 'https://en.whu.edu.cn/', 'strengths': 'Large comprehensive university in central China.', 'strengths_uz': 'Markaziy Xitoydagi katta koʻp tarmoqli universitet.'},
+    {'name': 'Beijing Language and Culture University', 'name_local': '北京语言大学', 'city': 'Beijing', 'country': 'China', 'url': 'https://english.blcu.edu.cn/', 'strengths': 'Specialises in teaching Chinese to international students — a common start for the language year.', 'strengths_uz': 'Xorijlik talabalarga xitoy tilini oʻrgatishga ixtisoslashgan — til yili uchun koʻp tanlanadigan joy.'},
+]
+
 CHECKLISTS = {
     "chevening": [
         {"text": "Bachelor's degree finished at least two years before the deadline", "text_uz": "Bakalavr diplomi muddatdan kamida ikki yil oldin olingan"},

@@ -399,3 +399,87 @@ CHECKLISTS = {
         {"text": "Test scores ready as the instructions require", "text_uz": "Yoʻriqnoma talab qilgan test natijalari tayyor"},
     ],
 }
+
+SAMPLES = [{
+    "slug": "daad-epos-motivation", "order": 13, "kind": "statement", "scholarship": "daad",
+    "title": "DAAD EPOS motivation letter — Nodira, water management (master's)",
+    "title_uz": "DAAD EPOS motivatsion xati — Nodira, suv resurslarini boshqarish (magistratura)",
+    "intro": "<p>Nodira is fictional: a hydraulic engineer from Karakalpakstan with three years at a regional water authority, applying to an EPOS-listed master's course. EPOS looks for a <strong>development-related</strong> motivation: what you will change at home, and why this course is the tool. Follow the length and format the course asks for.</p>",
+    "intro_uz": "<p>Nodira — oʻylab topilgan qahramon: Qoraqalpogʻistonlik gidrotexnik muhandis, viloyat suv xoʻjaligi boshqarmasida uch yil ishlagan, EPOS roʻyxatidagi magistratura kursiga topshiryapti. EPOS <strong>rivojlanish bilan bogʻliq</strong> maqsadni qidiradi: vataningizda nimani oʻzgartirasiz va nega aynan shu kurs buning vositasi. Kurs soʻragan hajm va formatga amal qiling.</p>",
+    "letter": """
+<p>Dear Selection Committee,</p>
+<p>I am applying for the Master's programme in Integrated Water Resources Management with a DAAD EPOS scholarship. For three years I have worked as an engineer at the irrigation authority of a district in Karakalpakstan, where every summer I see the same choice: which farms receive water and which do not, decided by phone calls rather than data.</p>
+<p>In my work I maintain canals and pumping stations, and I led a small project to install water meters at 14 canal outlets. For the first time we could show how much water each farm actually received; in the first season, losses on two canals fell by about a fifth after repairs that the data had pointed to. The project also taught me that technology is the easy part: the farmers trusted the numbers only after we explained them at village meetings.</p>
+<p>This course fits my work because it combines hydrology with water governance and economics — exactly the gap I feel. I know how to fix a canal; I do not yet know how to design a fair allocation system or argue for it with institutions. The course's field project would let me work on a real basin, and I would like to base my thesis on data from my district.</p>
+<p>After the degree, I will return to the irrigation authority, which has agreed to keep my position, and propose a district water-allocation plan based on measured data. In the longer term I want to contribute to basin-level planning in the Amu Darya delta, where every cubic metre matters.</p>
+<p>Sincerely,<br>Nodira Ismoilova</p>
+""",
+    "notes": [
+        {"para": 2, "en": "Course, scholarship and her job in the first lines — then the <strong>development problem</strong> she lives with. EPOS wants exactly this link.", "uz": "Birinchi qatorlarda kurs, stipendiya va ishi — keyin u har kuni duch keladigan <strong>rivojlanish muammosi</strong>. EPOS aynan shu bogʻliqlikni xohlaydi."},
+        {"para": 3, "en": "Professional evidence with numbers, plus a lesson about people, not only technology — a sign of someone who can lead change.", "uz": "Raqamli kasbiy dalil va faqat texnologiya emas, odamlar haqidagi saboq — oʻzgarishga yetakchilik qila oladigan odam belgisi."},
+        {"para": 4, "en": "“Why this course” answered by naming <strong>the gap in her skills</strong> the course fills. Use the real modules of your course.", "uz": "«Nega aynan shu kurs» — kurs toʻldiradigan <strong>koʻnikmalaridagi boʻshliq</strong>ni nomlash bilan javob. Kursingizning haqiqiy modullaridan foydalaning."},
+        {"para": 5, "en": "A concrete return: the same employer, a named proposal, a wider goal. If your employer will support you, say so — and ask them to confirm it in their letter.", "uz": "Aniq qaytish: oʻsha ish beruvchi, nomlangan taklif, kengroq maqsad. Ish beruvchingiz qoʻllasa, buni ayting — va ulardan buni xatlarida tasdiqlashni soʻrang."},
+    ],
+    "prompts": [
+        {"en": "The course, and the development problem you meet in your work.", "uz": "Kurs va ishingizda duch keladigan rivojlanish muammosi.", "lines": 3},
+        {"en": "Something you did about it — with numbers — and what it taught you about people.", "uz": "Bu borada nima qildingiz — raqamlar bilan — va bu sizga odamlar haqida nima oʻrgatdi.", "lines": 4},
+        {"en": "The gap in your skills, and which modules of the course fill it.", "uz": "Koʻnikmalaringizdagi boʻshliq va kursning qaysi modullari uni toʻldiradi.", "lines": 3},
+        {"en": "Your plan at home: employer, proposal, wider goal.", "uz": "Vatandagi rejangiz: ish beruvchi, taklif, kengroq maqsad.", "lines": 3},
+    ],
+},
+{
+    "slug": "fulbright-study-objectives", "order": 15, "kind": "statement", "scholarship": "fulbright",
+    "title": "Fulbright study objectives — Malika, data science (master's)",
+    "title_uz": "Fulbright oʻqish maqsadlari — Malika, maʼlumotlar ilmi (magistratura)",
+    "intro": "<p>Malika is fictional: a data analyst with three years at a regional statistics office. The Fulbright application asks for essays about what you will study and why — the exact essays and limits are in the embassy's current instructions. This one shows a study-objectives essay in a priority field.</p>",
+    "intro_uz": "<p>Malika — oʻylab topilgan qahramon: viloyat statistika boshqarmasida uch yil ishlagan maʼlumotlar tahlilchisi. Fulbright arizasi nimani va nega oʻqishingiz haqida insholar soʻraydi — aniq insholar va chegaralar elchixonaning joriy yoʻriqnomasida. Bu yerda ustuvor sohadagi oʻqish maqsadlari inshosi koʻrsatilgan.</p>",
+    "letter": """
+<p>I want to earn a master's degree in data science in the United States so that Uzbekistan's regional statistics can be used to make decisions, not only reports.</p>
+<p>For three years I have worked as an analyst at the statistics office of my region. Every month we publish dozens of tables on employment, prices and agriculture, but local officials rarely use them, because they arrive late and are hard to read. On my own initiative I built a simple dashboard of monthly food prices for the regional administration; it became the first of our products that officials asked for every week. It showed me both the value of our data and how much I still need to learn.</p>
+<p>In a U.S. master's programme I want to gain three things. First, rigorous training in statistical learning and machine learning, so that I can build forecasts officials can trust. Second, experience with data engineering — the pipelines that turn raw survey files into timely, clean datasets. Third, an understanding of responsible data use: privacy and fairness matter when government data describes real people.</p>
+<p>I am drawn to programmes that combine these with applied projects for public agencies, so that my thesis can be a real forecasting tool rather than an exercise. Learning alongside students from many countries will also show me how other governments organise their data.</p>
+<p>After returning, I plan to lead a small analytics team at my office, starting with a monthly forecast of regional prices and employment, and to share the methods with other regional offices. In the long term I want to help build a national standard for open, timely regional statistics.</p>
+""",
+    "notes": [
+        {"para": 1, "en": "The degree and its <strong>purpose at home</strong> in one sentence — a reader knows the whole essay from it.", "uz": "Daraja va uning <strong>vatandagi maqsadi</strong> bir gapda — oʻquvchi butun inshoni shundan biladi."},
+        {"para": 2, "en": "The problem from her own work, and something she did on her own initiative, with a visible result. Fulbright looks for professionals who already act.", "uz": "Oʻz ishidagi muammo va oʻz tashabbusi bilan qilgan, natijasi koʻrinadigan ish. Fulbright allaqachon harakat qilayotgan mutaxassislarni qidiradi."},
+        {"para": 3, "en": "<strong>Three specific things</strong> to learn — each tied to a gap. This is the heart of a study-objectives essay; it also connects naturally to the embassy's priority fields.", "uz": "Oʻrganiladigan <strong>uchta aniq narsa</strong> — har biri boʻshliqqa bogʻlangan. Bu oʻqish maqsadlari inshosining yuragi; u elchixonaning ustuvor sohalariga ham tabiiy bogʻlanadi."},
+        {"para": 4, "en": "What kind of programme suits her — without naming universities she cannot be sure of. Fulbright often handles placement, so describe the fit.", "uz": "Unga qanday dastur mos kelishi — aniq boʻlmagan universitetlarni nomlamasdan. Joylashtirishni koʻpincha Fulbright hal qiladi, shuning uchun moslikni tasvirlang."},
+        {"para": 5, "en": "A return plan in steps: a team, a first product, a wider goal for the country.", "uz": "Bosqichli qaytish rejasi: jamoa, birinchi mahsulot, davlat uchun kengroq maqsad."},
+    ],
+    "prompts": [
+        {"en": "The degree you want and its purpose at home, in one sentence.", "uz": "Xohlagan darajangiz va uning vatandagi maqsadi, bir gapda.", "lines": 2},
+        {"en": "A problem from your work, and something you did about it on your own initiative.", "uz": "Ishingizdagi muammo va bu borada oʻz tashabbusingiz bilan qilgan ishingiz.", "lines": 4},
+        {"en": "Three things you will learn — each tied to a gap in your skills.", "uz": "Oʻrganadigan uchta narsa — har biri koʻnikmalaringizdagi boʻshliqqa bogʻlangan.", "lines": 4},
+        {"en": "What kind of programme fits you (projects, courses, setting).", "uz": "Sizga qanday dastur mos (loyihalar, fanlar, muhit).", "lines": 3},
+        {"en": "Your plan after returning: first step and long-term goal.", "uz": "Qaytgandan keyingi rejangiz: birinchi qadam va uzoq muddatli maqsad.", "lines": 3},
+    ],
+},
+{
+    "slug": "eyuf-motivation-essay", "order": 16, "kind": "statement", "scholarship": "eyuf", "letter_lang": "uz",
+    "title": "El-Yurt Umidi motivation essay — Shahzod, urban planning (master's)",
+    "title_uz": "«El-yurt umidi» motivatsion inshosi — Shahzod, shaharsozlik (magistratura)",
+    "intro": "<p>Shahzod is fictional: an architect with three years at a district khokimiyat's construction department, who has already won a place on a master's in urban planning abroad. The foundation funds study that will be used in Uzbekistan — so the essay is about the work waiting for you at home. Write it in the language the competition asks for; this sample is in Uzbek.</p>",
+    "intro_uz": "<p>Shahzod — oʻylab topilgan qahramon: tuman hokimligi qurilish boʻlimida uch yil ishlagan arxitektor, xorijda shaharsozlik magistraturasiga allaqachon qabul qilingan. Jamgʻarma Oʻzbekistonda qoʻllaniladigan oʻqishni moliyalashtiradi — shuning uchun insho vatanda sizni kutayotgan ish haqida. Tanlov soʻragan tilda yozing; bu namuna oʻzbek tilida.</p>",
+    "letter": """
+<p>Men xorijdagi universitetning shaharsozlik magistratura dasturiga qabul qilindim va oʻqishimni «El-yurt umidi» jamgʻarmasi orqali moliyalashtirishni soʻrayman. Tanlagan yoʻnalishim Farmonda koʻrsatilgan ustuvor sohalardan biri — urbanizatsiya bilan bevosita bogʻliq.</p>
+<p>Uch yildan beri tuman hokimligi qurilish boʻlimida arxitektor boʻlib ishlayman. Tumanimizda har yili yangi uy-joy massivlari quriladi, lekin maktab, bogʻcha va jamoat transporti ularga yetib bormaydi: yangi mahallalar shahar ichidagi orolchalarga aylanmoqda. Ikki yil oldin men birinchi marta yangi massivlar uchun piyodalar yoʻlaklari va avtobus bekatlari sxemasini tayyorladim; ulardan uchtasi qurildi va bir massivda bekatgacha boʻlgan yoʻl 25 daqiqadan 8 daqiqaga qisqardi.</p>
+<p>Shu ish menga bilimim yetmayotgan joyni koʻrsatdi: men alohida obyektni loyihalay olaman, lekin butun hududning uzoq muddatli rejasini — aholi, transport va ijtimoiy obyektlarni birga — tuza olmayman. Magistratura dasturi aynan shu boʻshliqni toʻldiradi: shaharni rejalashtirish, transport va geografik axborot tizimlari boʻyicha fanlar, real shahar loyihasida amaliyot.</p>
+<p>Oʻqishni tugatgach, men Oʻzbekistonga qaytib, majburiyatimga muvofiq davlat tizimida ishlayman. Maqsadim — tumanimiz uchun birinchi kompleks rivojlanish rejasini tayyorlash va keyinchalik shu tajribani viloyatning boshqa tumanlariga yoyish.</p>
+<p>Bu imkoniyat men uchun shaxsiy yutuq emas, balki yangi mahallalarimizdagi minglab oilalarning kundalik hayotini yaxshilash yoʻli deb bilaman.</p>
+""",
+    "notes": [
+        {"para": 1, "en": "States the admission is <strong>already won</strong> (the foundation requires it) and links the field to the decree's priority areas.", "uz": "Qabul <strong>allaqachon olingani</strong>ni aytadi (jamgʻarma buni talab qiladi) va yoʻnalishni Farmondagi ustuvor sohalar bilan bogʻlaydi."},
+        {"para": 2, "en": "A real problem in his district, and what he already did, <strong>with a number</strong> (25 → 8 minutes).", "uz": "Tumanidagi haqiqiy muammo va u allaqachon qilgan ish, <strong>raqam bilan</strong> (25 → 8 daqiqa)."},
+        {"para": 3, "en": "The honest gap in his skills — and how the programme fills it.", "uz": "Koʻnikmalaridagi halol boʻshliq — va dastur uni qanday toʻldirishi."},
+        {"para": 4, "en": "Accepts the <strong>work obligation</strong> openly and turns it into a plan: a first concrete result, then spreading it.", "uz": "<strong>Ishlash majburiyati</strong>ni ochiq qabul qiladi va uni rejaga aylantiradi: birinchi aniq natija, keyin uni yoyish."},
+        {"para": 5, "en": "A short closing that puts the people who benefit at the centre.", "uz": "Foyda koʻradigan odamlarni markazga qoʻyadigan qisqa yakun."},
+    ],
+    "prompts": [
+        {"en": "The programme you were admitted to, and how it connects to Uzbekistan's priority fields.", "uz": "Qabul qilingan dasturingiz va u Oʻzbekistonning ustuvor sohalari bilan qanday bogʻlanadi.", "lines": 3},
+        {"en": "A problem in your workplace or region, and what you already did — with a number.", "uz": "Ish joyingiz yoki hududingizdagi muammo va allaqachon qilgan ishingiz — raqam bilan.", "lines": 4},
+        {"en": "The gap in your skills and how the programme fills it.", "uz": "Koʻnikmalaringizdagi boʻshliq va dastur uni qanday toʻldiradi.", "lines": 3},
+        {"en": "Your plan within the work obligation: first result, then wider.", "uz": "Ishlash majburiyati doirasidagi rejangiz: birinchi natija, keyin kengroq.", "lines": 3},
+        {"en": "Who in Uzbekistan benefits from your study?", "uz": "Oʻqishingizdan Oʻzbekistonda kim foyda koʻradi?", "lines": 2},
+    ],
+}]

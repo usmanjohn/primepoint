@@ -19,8 +19,10 @@ _abroad_guides_2.py         CV, Certificates, Money, Visa and arrival, Choosing 
 # silently downgrades the full page back to a card. abroad.tests checks the order.
 
 ## Next
-- All 10 scholarships are full pages; 10 annotated samples. Candidates next: a GKS-G (master's)
-  study plan sample, a Türkiye Bursları sample, more Korean/Japanese universities.
+- All 10 scholarships are full pages; 16 annotated samples — every scholarship now has at least
+  one (the El-Yurt Umidi essay is in Uzbek: `letter_lang: "uz"`); 31 Korean and 15 Japanese
+  universities, plus 8 Turkish, 9 Hungarian (official SH host list) and 8 Chinese — 71 in all
+  (2026-10-01). Türkiye and China lists are orientation, not confirmed host lists.
 - El-Yurt Umidi: the exact post-study work obligation (years per level) — sources disagree; read
   the contract in the next competition's documents before stating a number
 - CSC: the Chinese Embassy in Tashkent's own agency number and deadline (not found online 2026-10-01)

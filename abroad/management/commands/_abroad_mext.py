@@ -307,6 +307,11 @@ UNIVERSITIES = [
      "url": "https://www.hiroshima-u.ac.jp/en",
      "strengths": "Broad national university with a large international-student office.",
      "strengths_uz": "Keng yoʻnalishli, katta xalqaro boʻlimi bor davlat universiteti."},
+    {'name': 'Kobe University', 'name_local': '神戸大学', 'city': 'Kobe', 'country': 'Japan', 'url': 'https://www.kobe-u.ac.jp/en/', 'strengths': 'National university in a port city, known for economics and business.', 'strengths_uz': 'Port shahridagi davlat universiteti; iqtisodiyot va biznes bilan tanilgan.'},
+    {'name': 'Chiba University', 'name_local': '千葉大学', 'city': 'Chiba', 'country': 'Japan', 'url': 'https://www.chiba-u.ac.jp/e/', 'strengths': 'National university near Tokyo with a wide range of faculties.', 'strengths_uz': 'Tokio yaqinidagi, koʻp fakultetli davlat universiteti.'},
+    {'name': 'Kanazawa University', 'name_local': '金沢大学', 'city': 'Kanazawa', 'country': 'Japan', 'url': 'https://www.kanazawa-u.ac.jp/en/', 'strengths': 'National university on the Sea of Japan coast.', 'strengths_uz': 'Yapon dengizi sohilidagi davlat universiteti.'},
+    {'name': 'Okayama University', 'name_local': '岡山大学', 'city': 'Okayama', 'country': 'Japan', 'url': 'https://www.okayama-u.ac.jp/index_e.html', 'strengths': 'National university in western Japan with many international students.', 'strengths_uz': 'Gʻarbiy Yaponiyadagi, xorijlik talabalari koʻp davlat universiteti.'},
+    {'name': 'Yokohama National University', 'name_local': '横浜国立大学', 'city': 'Yokohama', 'country': 'Japan', 'url': 'https://www.ynu.ac.jp/english/', 'strengths': 'National university known for engineering and business.', 'strengths_uz': 'Muhandislik va biznes bilan tanilgan davlat universiteti.'},
 ]
 
 CHECKLISTS = {
@@ -358,15 +363,15 @@ SAMPLES = [{
 <p>I plan to return to the Ministry of Water Resources' research institute, where I worked before, and pilot the model with farmer cooperatives in Syrdarya.</p>
 """,
     "notes": [
-        {"para": 2, "en": "One sentence that names the <strong>place, the crop, the data and the method</strong>. A committee knows what you will do before reading further.",
+        {"para": 1, "en": "One sentence that names the <strong>place, the crop, the data and the method</strong>. A committee knows what you will do before reading further.",
          "uz": "<strong>Joy, ekin, maʼlumot va usulni</strong> nomlaydigan bitta gap. Komissiya davomini oʻqimasdan nima qilishingizni biladi."},
-        {"para": 4, "en": "The problem in numbers, then <strong>her own evidence</strong> from her thesis. This is what separates a plan from a wish. <em>Check every figure you cite against a source.</em>",
+        {"para": 2, "en": "The problem in numbers, then <strong>her own evidence</strong> from her thesis. This is what separates a plan from a wish. <em>Check every figure you cite against a source.</em>",
          "uz": "Raqamlardagi muammo, keyin diplom ishidan <strong>oʻz dalili</strong>. Rejani orzudan ajratadigan narsa shu. <em>Keltirgan har bir raqamni manba bilan tekshiring.</em>"},
-        {"para": 6, "en": "Three steps, in order, each doable. The third step tests the result — reviewers look for that.",
+        {"para": 3, "en": "Three steps, in order, each doable. The third step tests the result — reviewers look for that.",
          "uz": "Tartibli uchta qadam, har biri bajarsa boʻladigan. Uchinchi qadam natijani sinaydi — ekspertlar aynan shuni qidiradi."},
-        {"para": 8, "en": "“Why Japan” answered with a <strong>specific professor and paper</strong> — the same professor she will ask for provisional acceptance.",
+        {"para": 4, "en": "“Why Japan” answered with a <strong>specific professor and paper</strong> — the same professor she will ask for provisional acceptance.",
          "uz": "«Nega Yaponiya» — <strong>aniq professor va maqola</strong> bilan javob. Dastlabki roziligini soʻraydigan professor ham aynan u."},
-        {"para": 10, "en": "A concrete return: an institution, a region, partners. MEXT asks grantees to be bridges between the two countries.",
+        {"para": 5, "en": "A concrete return: an institution, a region, partners. MEXT asks grantees to be bridges between the two countries.",
          "uz": "Aniq qaytish: muassasa, hudud, hamkorlar. MEXT stipendiatlardan ikki davlat oʻrtasida koʻprik boʻlishni kutadi."},
     ],
     "prompts": [

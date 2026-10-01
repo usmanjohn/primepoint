@@ -92,9 +92,14 @@ def validate(data):
             problems.append(f'{tag}: opens after it closes')
     for i, row in enumerate(data.get('SAMPLES', []), 1):
         tag = f"SAMPLES[{i}] {row.get('slug')}"
+        from abroad.views import letter_paragraphs
+        count = len(letter_paragraphs(row.get('letter', '')))
         for n in row.get('notes', []):
             if not (n.get('en') and n.get('uz') and n.get('para')):
                 problems.append(f'{tag}: every note needs para, en and uz')
+            elif not 1 <= n['para'] <= count:
+                # A note pointing past the last paragraph is never shown.
+                problems.append(f"{tag}: note para {n['para']} but the letter has {count} paragraphs")
         for p in row.get('prompts', []):
             if not (p.get('en') and p.get('uz')):
                 problems.append(f'{tag}: every prompt needs en and uz')

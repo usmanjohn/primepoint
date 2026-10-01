@@ -215,6 +215,8 @@ class Sample(Bilingual):
     # The letter itself is written in the language it is submitted in (English);
     # the margin notes explaining it are bilingual.
     letter = models.TextField(help_text='HTML, one <p> per paragraph.')
+    letter_lang = models.CharField(max_length=5, default='en',
+                                   help_text='Language the letter is written in (it is submitted in it).')
     notes = models.JSONField(default=list,
                              help_text='[{"para": 1, "en": "...", "uz": "..."}] — para is 1-based.')
     # The printable planner: questions to answer before writing your own.
