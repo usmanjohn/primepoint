@@ -583,6 +583,56 @@ grid-in loses the mark, so the habit is broken inside the course.
 Prime SAT is **not** Prime Math (Uzbek school maths, from zero) and not the Math
 Championship. It is the exam itself: its sentences, its traps and its clock.
 
+## Creating Prime GMAT lessons (bulk) — GMAT Focus Quant, ikki tilda
+> ✅ **THE QUANT BLOCK IS FINISHED (2026-10-02).** GMAT-1…25, 25 practices (500 questions;
+> GMAT-25's is a mixed review of the whole course) and 25 Corner readings with audio are
+> written and imported. There is no "next batch" of Quant. **Verbal Reasoning and Data
+> Insights are not started — ask the user** before building either (they may belong in
+> `examprep`, like SAT R&W). The workflow below is kept for maintenance and for those.
+
+**Prime GMAT** is the course for MBA / business-master's applicants, in `tutorial`,
+playlist "Prime GMAT", titles `GMAT-1: …`, category `math`. **Started 2026-10-01 as a
+5-lesson Quant pilot; Quant block (GMAT-1…25) completed 2026-10-02.** It is Prime SAT Math's machinery and language
+split (exam English, teacher Uzbek, `3.5` / `1,200`), with these differences:
+- **five** answer choices;
+- no calculator, so no `ps-desmos`;
+- no grid-ins;
+- no geometry;
+- **no Data Sufficiency**: in the Focus Edition that lives in Data Insights.
+
+The pupil is an adult, so examples are business-shaped. When the user asks (e.g. "make
+the next 5 Prime GMAT lessons"):
+1. Read `tutorial/management/commands/STYLE_GUIDE_PRIME_SAT.md` **and then**
+   `STYLE_GUIDE_PRIME_GMAT.md` (only the differences, plus §0.1 the test facts).
+2. Read `toc_prime_gmat.txt` (`[done]`/`[next]`) and `corner/…/toc_prime_gmat_readings.txt`.
+3. Write the three legs together, batches of 5:
+   - `_tutorials_prime_gmat_<range>.py`;
+   - `practice/…/_practice_pg_<range>.py` (subject **`GMAT`**, 20 questions);
+   - `corner/…/_stories_prime_gmat_readings_<range>.py` (collection "Prime GMAT Readings",
+     subject Matematika, business genre).
+4. Run the answer gate `verify_gmat_<range>.py` in the scratchpad. It brute-forces every
+   "must be true" item over negatives, 0, 1 and fractions, and it checks days of the week
+   against `datetime`. Copy `verify_gmat_21_25.py`'s shape (the latest: it enumerates sample spaces for probability, flags tables that will overflow a phone, and a trap card naming a value that is not among the choices), because it also enforces the
+   **depth bar**: ≥ 900 words of prose, ≥ 3 `pe-uz`, and the counts of every other piece.
+   The pilot's gate did not, and GMAT-4/5 shipped thin until batch 2 caught them.
+   **Screenshot any table at 390px.** `pm-word` cells do not wrap, so a 3-column table with
+   sentences in it runs off a phone screen; prefer 2 short columns or plain paragraphs.
+   Prove the gate bites, fix, then import:
+```
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_gmat_<range>.py --author=prime
+python manage.py import_practices practice/management/commands/_practice_pg_<range>.py --master=prime --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_gmat_readings_<range>.py --author=prime
+python manage.py gen_corner_audio --collection="Prime GMAT Readings" --only <n> --voice en-US-JennyNeural   # odd n; GuyNeural for even
+python manage.py import_corner_audio corner/management/commands/audio/prime-gmat-readings --collection="Prime GMAT Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_gmat_<range>.py --author=prime --republish
+```
+5. Mark `[done]` in both tocs, then append the production lines (`--author=powerty`,
+   `--master=powerty`) to `temporary.txt`.
+
+Subject `GMAT` is **not** in the Telegram `ROTATION`. Add it only if asked. Verbal and
+Data Insights are **not planned**: ask the user before starting either. Like SAT R&W,
+they may fit `examprep` better than `tutorial`.
+
 ## Creating Logic Arena puzzles (bulk) — sealed-answer logic problems
 **Logic Arena** (`logic` app, `/logic/`, uz "Mantiq maydoni") is the weekly logic-puzzle
 section: nine coins and two weighings, the wolf/goat/cabbage, the twelve-coin problem. Its

@@ -1,0 +1,61 @@
+# ── Subject metadata (read by Claude) ────────────────────────────────
+PREFIX:   GMAT
+CATEGORY: math
+AUTHOR:   powerty
+PLAYLIST: Prime GMAT
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_PRIME_GMAT.md (it inherits most of
+# STYLE_GUIDE_PRIME_SAT.md — read both). The playlist is created automatically by
+# import_tutorials from the PLAYLIST dict inside each _tutorials_prime_gmat_*.py file.
+# This file is ONLY the ordered lesson list. Mark finished ranges with [done].
+# ─────────────────────────────────────────────────────────────────────
+
+# Prime GMAT — GMAT Focus Edition, biznes maktabiga yoʻl
+#
+# ✅ QUANT BLOCK COMPLETE 2026-10-02: GMAT-1…25, 500 practice questions, 25 readings with audio.
+#    There is no [next] here. Verbal and Data Insights need the user's decision first.
+#
+# Started 2026-10-01 as a 5-lesson PILOT of the Quant section. Three legs per lesson
+# (tutorial + 20-question practice + English reading with audio), batches of 5.
+# Til: savollar INGLIZCHA, tushuntirish OʻZBEKCHA. Son: 3.5 va 1,200 (American).
+# Quant = Problem Solving ONLY (no Data Sufficiency — that is Data Insights), arithmetic
+# and algebra ONLY (no geometry), no calculator, FIVE answer choices.
+#
+# Verbal Reasoning and Data Insights are NOT planned yet — decide with the user before
+# starting either; they may belong in `examprep` (one passage + one question per block),
+# the way SAT Reading & Writing did.
+
+## QUANT — Arithmetic and number properties
+GMAT-1: The Quant Section and Arithmetic Without a Calculator   [done]
+GMAT-2: Number Properties — Integers, Factors and Multiples      [done]
+GMAT-3: Primes, Prime Factorization, GCD and LCM                [done]
+GMAT-4: Odd and Even, Positive and Negative                     [done]
+GMAT-5: Percentages and Percent Change                          [done]
+GMAT-6: Fractions and Decimals Without a Calculator             [done]
+GMAT-7: Remainders and Divisibility Patterns                    [done]
+GMAT-8: Exponents and Roots                                     [done]
+GMAT-9: Units Digits and Cyclicity                              [done]
+GMAT-10: Ratios and Proportions                                 [done]
+
+## QUANT — Word problems
+GMAT-11: Averages and Weighted Averages                         [done]
+GMAT-12: Mixtures and Concentrations                            [done]
+GMAT-13: Rates, Work and Distance                               [done]
+GMAT-14: Profit, Cost, Markup and Discount                      [done]
+GMAT-15: Simple and Compound Interest                           [done]
+GMAT-16: Overlapping Sets and Venn Tables                       [done]
+
+## QUANT — Algebra
+GMAT-17: Linear Equations and Systems                           [done]
+GMAT-18: Inequalities and Absolute Value                        [done]
+GMAT-19: Quadratics and Factoring                               [done]
+GMAT-20: Functions and Custom Operations                        [done]
+GMAT-21: Sequences and Series                                   [done]
+
+## QUANT — Counting, probability, statistics
+GMAT-22: Counting — Permutations and Combinations               [done]
+GMAT-23: Probability                                            [done]
+GMAT-24: Statistics — Median, Range and Standard Deviation      [done]
+
+## QUANT — The section as a whole
+GMAT-25: Strategy — Pacing, Guessing and Question Review & Edit [done]

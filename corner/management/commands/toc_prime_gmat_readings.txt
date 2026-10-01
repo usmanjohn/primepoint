@@ -1,0 +1,55 @@
+# ── Collection metadata (read by Claude) ─────────────────────────────
+SUBJECT:    Matematika        (icon: bi-calculator, color: #f59e0b, order: 7)
+COLLECTION: Prime GMAT Readings   (order: 5)
+AUTHOR:     powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_CORNER.md, with the overrides below — which are the
+# Prime SAT Readings overrides (toc_prime_sat_readings.txt) with three changes.
+# ─────────────────────────────────────────────────────────────────────
+
+# Prime GMAT Readings — the third leg of each Prime GMAT lesson
+#
+# One reading per lesson, `order` = lesson number. English body, Uzbek summary, Uzbek
+# cn-word glosses, "Exam English" grammar block, 2–3 questions with Uzbek explanations.
+# Everything in toc_prime_sat_readings.txt applies (⛔ no algebraic notation in the body,
+# 200–300 words, vary the answer index, at least one question needs a computation),
+# EXCEPT:
+#
+#   1. GENRE — BUSINESS. The pupil is an adult heading to an MBA or a business master's.
+#      Settings are offices, warehouses, shops, factories, invoices, prices, schedules —
+#      in Uzbekistan by default (Tashkent, Samarkand, Fergana, Bukhara). One named person
+#      makes one decision with the lesson's maths; the reading ends on a changed rule.
+#   2. GLOSSES — 8–20 cn-word marks (business vocabulary is the point, not every noun).
+#      Never inside <strong>; bold the Exam-English phrases where they appear.
+#   3. AUDIO — yes, ALWAYS with an explicit voice (the Matematika subject's default is not
+#      English): odd orders en-US-JennyNeural, even orders en-US-GuyNeural.
+#
+#   python manage.py gen_corner_audio --collection="Prime GMAT Readings" --only <n> --voice en-US-JennyNeural
+#   python manage.py import_corner_audio corner/management/commands/audio/prime-gmat-readings --collection="Prime GMAT Readings"
+
+1  The Invoice Nobody Checked              (GMAT-1, Jenny)   [done]
+2  Twelve to a Carton                      (GMAT-2, Guy)     [done]
+3  When the Two Machines Stop Together     (GMAT-3, Jenny)   [done]
+4  Red Numbers on the Ledger               (GMAT-4, Guy)     [done]
+5  Up Twenty, Down Twenty                  (GMAT-5, Jenny)   [done]
+6  Three-Eighths of the Budget             (GMAT-6, Guy)     [done]
+7  The Bottles That Did Not Fit            (GMAT-7, Jenny)   [done]
+8  Doubling Every Year                     (GMAT-8, Guy)     [done]
+9  The Last Digit Check                    (GMAT-9, Jenny)   [done]
+10 Two to Three to Four                    (GMAT-10, Guy)    [done]
+11 The Average That Hid a Branch          (GMAT-11, Jenny)  [done]
+12 The Tea Blender                         (GMAT-12, Guy)    [done]
+13 Two Printers, One Deadline              (GMAT-13, Jenny)  [done]
+14 The Sale That Lost Money                (GMAT-14, Guy)    [done]
+15 Simple or Compound?                     (GMAT-15, Jenny)  [done]
+16 Two Lists, One Customer Base            (GMAT-16, Guy)    [done]
+17 The Price of a Ticket                   (GMAT-17, Jenny)  [done]
+18 Within Four Millilitres                 (GMAT-18, Guy)    [done]
+19 The Price That Earns the Most           (GMAT-19, Jenny)  [done]
+20 A Formula for the Fare                  (GMAT-20, Guy)    [done]
+21 Two Salary Offers                       (GMAT-21, Jenny)  [done]
+22 How Many Lunches?                       (GMAT-22, Guy)    [done]
+23 The Two Alarms                          (GMAT-23, Jenny)  [done]
+24 The Average Salary                      (GMAT-24, Guy)    [done]
+25 Twenty-One Questions, Forty-Five Minutes (GMAT-25, Jenny) [done]
+# ✅ Quant block complete — 25 readings, all with audio.
