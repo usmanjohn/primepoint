@@ -244,6 +244,7 @@ def platform_totals():
     from logic.models import LogicSubmission
     from practice.models import PracticeAttempt
     from tutorial.models import TutorialProgress
+    from workbook.models import WorkbookAttempt
 
     totals = _published_counts()
     completions = {
@@ -260,6 +261,7 @@ def platform_totals():
             puzzle__is_published=True,
             puzzle__reveal_at__lte=timezone.now(),
         ).count(),
+        'workbooks': WorkbookAttempt.objects.filter(completed_at__isnull=False).count(),
     }
     return [{
         'key': s['key'],

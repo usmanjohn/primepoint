@@ -114,6 +114,7 @@ GKS_BODY = """
 
 <h2 id="master">Master's and PhD: GKS-G</h2>
 <p>Same structure, different dates and limits. In the 2026 cycle the guidelines were posted on 2 February 2026 and Embassy-track online applications ran from <strong>12 to 25 February 2026</strong>; University-track dates were set by each university (for example, 9 February – 31 March at one national university). Eligibility in 2026: <strong>under 40</strong> (born after 1 September 1986), a bachelor's degree (or expected), and the same 80% / top-20% / CGPA rule. Recommendations come from professors or department heads. A master's scholarship is normally 3 years: 1 language year + 2 degree years.</p>
+<p>The University track also has an <strong>R&amp;D specialization</strong> programme — in 2026, 60 departments at 25 institutions, including KAIST — where each university selects by its own rules. Some universities, KAIST among them, take GKS scholars only at master's/PhD level.</p>
 <p>The 2027 GKS-G guidelines are expected around February 2027 — the date on this page is an estimate until they appear.</p>
 
 <h2 id="mistakes">The mistakes that sink applications</h2>
@@ -195,6 +196,7 @@ GKS_BODY_UZ = """
 
 <h2 id="master">Magistratura va doktorantura: GKS-G</h2>
 <p>Tuzilishi bir xil, sanalari va chegaralari boshqa. 2026-yilgi tsiklda yoʻriqnoma 2026-yil 2-fevralda eʼlon qilindi, elchixona yoʻlida onlayn ariza <strong>2026-yil 12–25 fevral</strong> kunlari qabul qilindi; universitet yoʻlida sanalarni har bir universitet oʻzi belgiladi (masalan, bir davlat universitetida 9-fevral – 31-mart). 2026-yilgi shartlar: <strong>40 yoshdan kichik</strong> (1986-yil 1-sentabrdan keyin tugʻilgan), bakalavr diplomi (yoki tugatish arafasida) va oʻsha 80% / eng yaxshi 20% / CGPA qoidasi. Tavsiyanomalar professor yoki kafedra mudiridan olinadi. Magistratura stipendiyasi odatda 3 yil: 1 til yili + 2 oʻqish yili.</p>
+<p>Universitet yoʻlida <strong>R&amp;D ixtisoslashuv</strong> dasturi ham bor — 2026-yilda 25 ta muassasadagi 60 ta yoʻnalish, jumladan KAIST — unda har bir universitet oʻz qoidasi bilan tanlaydi. Baʼzi universitetlar, jumladan KAIST, GKS stipendiatlarini faqat magistratura/PhD bosqichida qabul qiladi.</p>
 <p>2027 GKS-G yoʻriqnomasi 2027-yil fevral atrofida kutilmoqda — u chiqquncha bu sahifadagi sana taxminiy.</p>
 
 <h2 id="mistakes">Arizani yiqitadigan xatolar</h2>
@@ -254,8 +256,9 @@ DEADLINES = [
     },
 ]
 
-# From the Type A / Type B lists in the 2027 GKS-U guidelines (II.4). KAIST is
-# not on the GKS-U list, so it is not here — only listed universities are.
+# From the Type A / Type B lists in the 2027 GKS-U guidelines (II.4), plus KAIST:
+# not on the GKS-U (bachelor's) list, but Type A and an R&D-specialization institution
+# in the 2026 GKS-G (master's/PhD) guidelines — its card says exactly that.
 UNIVERSITIES = [
     {"name": "Seoul National University", "name_local": "서울대학교", "city": "Seoul", "country": "South Korea",
      "url": "https://en.snu.ac.kr/", "gks_university_track": False,
@@ -277,6 +280,10 @@ UNIVERSITIES = [
      "url": "https://www.hanyang.ac.kr/web/eng", "gks_university_track": False,
      "strengths": "GKS-U Type A. Known above all for engineering.",
      "strengths_uz": "GKS-U Type A. Avvalo muhandisligi bilan mashhur."},
+    {"name": "KAIST", "name_local": "한국과학기술원", "city": "Daejeon", "country": "South Korea",
+     "url": "https://www.kaist.ac.kr/en/", "gks_university_track": True,
+     "strengths": "Master's/PhD only via GKS: Type A and an R&D-specialization institution in the 2026 GKS-G guidelines (not on the GKS-U bachelor's list). Science and technology.",
+     "strengths_uz": "GKS orqali faqat magistratura/PhD: 2026 GKS-G yoʻriqnomasida Type A va R&D ixtisoslashuv muassasasi (GKS-U bakalavr roʻyxatida yoʻq). Fan va texnologiya."},
     {"name": "POSTECH", "name_local": "포항공과대학교", "city": "Pohang", "country": "South Korea",
      "url": "https://www.postech.ac.kr/eng/", "gks_university_track": False,
      "strengths": "GKS-U Type A. Small research university of science and technology.",

@@ -289,3 +289,20 @@ class SitemapIndexTests(TestCase):
         resp = self.client.get('/robots.txt')
         self.assertEqual(resp.status_code, 200)
         self.assertIn('/sitemap.xml', resp.content.decode())
+
+
+class PlatformTotalsCoverEverySourceTests(TestCase):
+    """`platform_totals` keeps its own completion count per library. When the
+    workbook was added to SOURCES (2026-10-01) that dict was missed and the
+    analytics page crashed with KeyError: 'workbooks'."""
+
+    def test_every_source_has_a_completion_count(self):
+        from prime.progress import SOURCES, platform_totals
+        rows = platform_totals()
+        self.assertEqual([r['key'] for r in rows], [s['key'] for s in SOURCES])
+
+    def test_analytics_page_renders_for_staff(self):
+        from django.contrib.auth.models import User
+        User.objects.create_superuser('boss', 'b@x.org', 'pw')
+        self.client.login(username='boss', password='pw')
+        self.assertEqual(self.client.get('/analytics/').status_code, 200)

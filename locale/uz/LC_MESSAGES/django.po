@@ -10797,3 +10797,6 @@ msgstr "Bularning hammasi Stipendium Hungaricum qabul qiluvchi muassasalari. Das
 
 msgid "Some of China's leading universities, for orientation. Check the current CSC host list on campuschina.org before you choose."
 msgstr "Xitoyning yetakchi universitetlaridan bir qismi, moʻljal uchun. Tanlashdan oldin campuschina.org dagi joriy CSC roʻyxatini tekshiring."
+
+msgid "The master's/PhD programme (GKS-G) has its own, different list — some universities, such as KAIST, take GKS scholars only at graduate level. Check the GKS-G “University Information” file for your year."
+msgstr "Magistratura/PhD dasturining (GKS-G) oʻz, boshqacha roʻyxati bor — KAIST kabi baʼzi universitetlar GKS stipendiatlarini faqat magistratura va doktoranturaga qabul qiladi. Oʻz yilingiz uchun GKS-G «University Information» faylini tekshiring."
