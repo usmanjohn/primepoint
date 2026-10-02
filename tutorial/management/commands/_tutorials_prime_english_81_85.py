@@ -36,6 +36,7 @@ TUTORIALS = [
             "The small marks that carry big meaning — where the comma goes, what a colon does, "
             "and the comma splice that spoils good writing."
         ),
+        "stories": ['The Comma That Changed the Meaning'],
         "content": """
 <h2>PE-81: Punctuation: Comma, Apostrophe, Colon, Semicolon</h2>
 
@@ -316,6 +317,7 @@ LEGEND_HERE
             "Where English uses capitals that Uzbek doesn't, the spelling rules worth knowing, "
             "and the twenty words learners misspell most."
         ),
+        "stories": ['Uzbekistan, English, Monday'],
         "content": """
 <h2>PE-82: Capital Letters and Spelling Rules</h2>
 
@@ -600,6 +602,7 @@ LEGEND_HERE
             "I DID tell you! How English uses its helper verb in a positive sentence to insist, "
             "contradict and add warmth."
         ),
+        "stories": ['I Do Believe It Works'],
         "content": """
 <h2>PE-83: Emphasis with do, does, did</h2>
 
@@ -874,6 +877,7 @@ it aloud, not just writing it.</p>
             "Putting the helper before the subject for dramatic effect — the structure that "
             "makes writing sound literary, and the exam favourite 'Had I known'."
         ),
+        "stories": ['Never Have I Seen Anything Like It'],
         "content": """
 <h2>PE-84: Inversion: Never have I seen ...</h2>
 
@@ -1153,6 +1157,7 @@ invert instead. It sounds more formal and slightly more elegant.</p>
             "How to put a spotlight on exactly the word you mean — splitting one sentence into "
             "two to correct, contrast or emphasise."
         ),
+        "stories": ['What This Town Needs Is a Library'],
         "content": """
 <h2>PE-85: Cleft Sentences: It was ... / What I need is ...</h2>
 

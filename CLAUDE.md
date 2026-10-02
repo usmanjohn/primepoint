@@ -590,7 +590,7 @@ Championship. It is the exam itself: its sentences, its traps and its clock.
 > **✅ completed the same day: GMAT-26…35** (Data Sufficiency ×5, Table Analysis, Graphics
 > Interpretation, Two-Part Analysis, Multi-Source Reasoning, strategy) — 35 lessons, 700 practice
 > questions and 35 readings with audio in the whole course. **Verbal Reasoning lives in
-> `examprep`** (track `GMAT`, started 2026-10-02) — see "Creating GMAT Verbal lessons" below.
+> `examprep`** (track `GMAT`, completed 2026-10-02) — see "Creating GMAT Verbal lessons" below.
 > The multi-part formats are rebuilt as single-answer practice questions that keep the "no
 > partial credit" rule: three statements → "I and III only", two columns → a PAIR per choice,
 > drop-downs → one blank. Tables and charts come from `tutorial/management/commands/_dikit.py`
@@ -692,6 +692,10 @@ Logic Arena is **not** the Math Championship (auto-generated, instantly marked) 
 practice test. It is one hard, beautiful problem a week with a real explanation attached.
 
 ## Creating GMAT Verbal lessons (bulk) — GMAT Focus Verbal Reasoning, ikki tilda
+> ✅ **THIS TRACK IS FINISHED (2026-10-02).** 24 lessons, 129 questions, 16 real-fact RC passages:
+> strategy 1–3, Critical Reasoning 10–13 + 20–26, Reading Comprehension 30–36, timed drills 40–42.
+> With Prime GMAT (Quant + Data Insights, GMAT-1…35) **all three GMAT Focus sections are covered.**
+> Do not start a "next batch"; the workflow below is for maintenance or extra drills on request.
 **GMAT Verbal** is the fourth `ExamTrack` in `examprep` (name `GMAT`, slug `gmat`, order 4),
 **started 2026-10-02**: the third section of the test whose Quant and Data Insights are the
 `tutorial` course Prime GMAT. Titles `GMAT Verbal N: …`, all `skill: reading`. It lives in

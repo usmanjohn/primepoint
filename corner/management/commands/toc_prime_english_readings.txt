@@ -233,7 +233,7 @@ AUTHOR:     powerty
 65. (PE-65 · stop doing / stop to do) He Stopped to Help (yuk mashinasi haydovchisi)                [done]
 66. (PE-66 · the causative) I Had My Phone Repaired (2014-yilgi telefon)                            [done]
 
-### Block F: Precision (67–82)  [done: 67–80]
+### Block F: Precision (67–82)  [done — COMPLETE]
 67. (PE-67 · comparatives & superlatives) The Longest Bridge in the Region (qirq santimetr)         [done]
 68. (PE-68 · as...as / too / enough) Old Enough to Decide (buvining gapi)                           [done]
 69. (PE-69 · quantifiers) Too Much Salt, Too Many Cooks (toʻydagi qozon)                            [done]
@@ -248,14 +248,14 @@ AUTHOR:     powerty
 78. (PE-78 · phrasal verbs by topic) Getting Up, Getting Along, Getting By (Seuldan xat)            [done]
 79. (PE-79 · expressions of quantity) A Slice, a Loaf, a Bottle (1993-yilgi roʻyxat)                [done]
 80. (PE-80 · advanced articles) The Moon, a Moon, Moons (maktab tomidagi teleskop, 1998)            [done]
-81. (PE-81 · punctuation) The Comma That Changed the Meaning                                        [next]
-82. (PE-82 · capitals & spelling) Uzbekistan, English, Monday
+81. (PE-81 · punctuation) The Comma That Changed the Meaning (Meyn, 2017 — haqiqiy sud ishi)       [done]
+82. (PE-82 · capitals & spelling) Uzbekistan, English, Monday (Samarqand mehmonxonasi)            [done]
 
-### Block G: Advanced and Stylish English (83–92)  — written register from here
-83. (PE-83 · emphasis with do) I Do Believe It Works
-84. (PE-84 · inversion) Never Have I Seen Anything Like It
-85. (PE-85 · cleft sentences) What This Town Needs Is a Library
-86. (PE-86 · participle clauses) Standing on the Bridge, She Understood
+### Block G: Advanced and Stylish English (83–92)  — written register from here  [done: 83–85]
+83. (PE-83 · emphasis with do) I Do Believe It Works (direktor ustuni)                           [done]
+84. (PE-84 · inversion) Never Have I Seen Anything Like It (Ugom-Chatqol, sayohat esesi)          [done]
+85. (PE-85 · cleft sentences) What This Town Needs Is a Library (gazetaga xat)                    [done]
+86. (PE-86 · participle clauses) Standing on the Bridge, She Understood                          [next]
 87. (PE-87 · the unreal past) It's Time We Talked About Water
 88. (PE-88 · linking words) However, Therefore, Although
 89. (PE-89 · prefixes & suffixes) The Word Factory

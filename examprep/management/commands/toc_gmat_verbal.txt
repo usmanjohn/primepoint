@@ -14,6 +14,8 @@ AUTHOR: powerty
 #
 # Each `## TOPIC:` header = a lesson group card; each topic owns a lesson-order decade.
 # Status: [done] = imported; [next] = not written yet.
+# ✅ TRACK COMPLETE 2026-10-02: 24 lessons, 129 questions (5 choices each), 16 real-fact RC passages.
+#    No [next]. Future work = maintenance, or more drills on request (new passage subjects only).
 # ─────────────────────────────────────────────────────────────────────
 
 ## GMAT — Verbal Reasoning (Critical Reasoning + Reading Comprehension)
@@ -41,7 +43,8 @@ AUTHOR: powerty
 ## TOPIC: Reading Comprehension   [icon bi-book, topic order 4]
 # Passages used so far (never reuse a subject): Ulugh Beg's observatory, the shipping container,
 # anchoring, microcredit, the Aral Sea, penicillin, the Great Stink, tulip mania, Wegener,
-# Toyota's andon cord / NUMMI, al-Khwarizmi, the default effect, Robert Fortune's tea, Borlaug.
+# Toyota's andon cord / NUMMI, al-Khwarizmi, the default effect, Robert Fortune's tea, Borlaug,
+# Singapore/Stockholm congestion pricing, M-Pesa.
 30. How Reading Comprehension Works — Passages, Question Sets and a Reading Map   [done]
 31. Main Idea and Primary Purpose   [done]
 32. Detail Questions — Answering From the Line   [done]
@@ -51,6 +54,6 @@ AUTHOR: powerty
 36. Reading Comprehension — Mixed Practice   [done]
 
 ## TOPIC: Aralash mashq (Verbal section drills)   [icon bi-stopwatch, topic order 5]
-40. Verbal Drill I — Mixed Critical Reasoning and Reading Comprehension   [next]
-41. Verbal Drill II — Mixed, Under Time
-42. Verbal Strategy Review — Pacing, Guessing and Review & Edit
+40. Verbal Drill I — Mixed Critical Reasoning and Reading Comprehension   [done]
+41. Verbal Drill II — Mixed, Under Time   [done]
+42. Verbal Strategy Review — Pacing, Guessing and Review & Edit   [done]
