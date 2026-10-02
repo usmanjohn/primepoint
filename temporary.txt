@@ -52,3 +52,20 @@ python manage.py import_practices practice/management/commands/_practice_pg_21_2
 python manage.py import_corner corner/management/commands/_stories_prime_gmat_readings_21_25.py --author=powerty
 python manage.py import_corner_audio corner/management/commands/audio/prime-gmat-readings --collection="Prime GMAT Readings"
 python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_gmat_21_25.py --author=powerty --republish
+python manage.py migrate practice
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_gmat_26_30.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pg_26_30.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_gmat_readings_26_30.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-gmat-readings --collection="Prime GMAT Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_gmat_26_30.py --author=powerty --republish
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_gmat_31_35.py --author=powerty
+python manage.py import_practices practice/management/commands/_practice_pg_31_35.py --master=powerty --expect-questions=20
+python manage.py import_corner corner/management/commands/_stories_prime_gmat_readings_31_35.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-gmat-readings --collection="Prime GMAT Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_gmat_31_35.py --author=powerty --republish
+python manage.py import_examprep examprep/management/commands/_lessons_gmat_verbal_1_12.py --author=powerty
+python manage.py import_examprep examprep/management/commands/_lessons_gmat_verbal_1_12.py --author=powerty --republish
+python manage.py import_examprep examprep/management/commands/_lessons_gmat_verbal_3_22.py --author=powerty
+python manage.py import_examprep examprep/management/commands/_lessons_gmat_verbal_23_26.py --author=powerty
+python manage.py import_examprep examprep/management/commands/_lessons_gmat_verbal_30_32.py --author=powerty
+python manage.py import_examprep examprep/management/commands/_lessons_gmat_verbal_33_36.py --author=powerty

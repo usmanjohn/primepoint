@@ -3738,7 +3738,10 @@ h1, h2, h3, h4, h5, h6, .font-display {
    Docs: tutorial/management/commands/STYLE_GUIDE_PRIME_MATH.md
    ══════════════════════════════════════════════════════════════════ */
 
-.tut-prose, .cn-reader {
+/* .pm-fig / .pe-table-wrap carry the palette too, so a chart or table keeps its colours
+   outside a lesson — a practice question (Prime GMAT Data Insights) renders its text inside
+   .q-text / .res-q-text, where the bars used to fall back to black. */
+.tut-prose, .cn-reader, .pm-fig, .pe-table-wrap {
     --pm-x:    #2563eb;   /* nomaʼlum (x), asosiy chizma rangi */
     --pm-num:  #d97706;   /* berilgan son                      */
     --pm-op:   #16a34a;   /* amal va natija                    */
@@ -3914,6 +3917,10 @@ table.pm-col {
 
 /* ── Figures — inline SVG that follows the theme ─────────────────── */
 .pm-fig { margin: 1.4rem 0; text-align: center; }
+/* Figures and data tables keep the body face even inside a heading-styled question. */
+.pm-fig, .pe-table-wrap { font-family: var(--ff-body); font-weight: 400; }
+.q-text .pm-fig, .q-text .pe-table-wrap,
+.res-q-text .pm-fig, .res-q-text .pe-table-wrap { font-size: 1rem; line-height: 1.45; }
 .pm-fig svg { width: 100%; max-width: 340px; height: auto; }
 .pm-fig figcaption {
     font-size: .82rem;

@@ -53,3 +53,18 @@ AUTHOR:     powerty
 24 The Average Salary                      (GMAT-24, Guy)    [done]
 25 Twenty-One Questions, Forty-Five Minutes (GMAT-25, Jenny) [done]
 # ✅ Quant block complete — 25 readings, all with audio.
+
+# ── Data Insights (from 2026-10-02) ──
+# For Data Sufficiency the reading is a manager asking "is this enough to decide?" —
+# one fact that is not enough, one that is, and the habit of asking before calculating.
+26 Enough to Decide                        (GMAT-26, Guy)    [done]
+27 One Number or Two?                      (GMAT-27, Jenny)  [done]
+28 A Definite No                           (GMAT-28, Guy)    [done]
+29 The Second Report Said Nothing New      (GMAT-29, Jenny)  [done]
+30 What the Board Needed to Know           (GMAT-30, Guy)    [done]
+31 The Spreadsheet Nobody Sorted           (GMAT-31, Jenny)  [done]
+32 The Chart That Started at 100           (GMAT-32, Guy)    [done]
+33 Two Answers, One Decision               (GMAT-33, Jenny)  [done]
+34 Three Emails and a Table                (GMAT-34, Guy)    [done]
+35 Forty-Five Minutes of Data              (GMAT-35, Jenny)  [done]
+# ✅ Data Insights block complete — 35 readings in the shelf, all with audio.

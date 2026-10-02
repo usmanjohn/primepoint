@@ -585,10 +585,27 @@ Championship. It is the exam itself: its sentences, its traps and its clock.
 
 ## Creating Prime GMAT lessons (bulk) — GMAT Focus Quant, ikki tilda
 > ✅ **THE QUANT BLOCK IS FINISHED (2026-10-02).** GMAT-1…25, 25 practices (500 questions;
-> GMAT-25's is a mixed review of the whole course) and 25 Corner readings with audio are
-> written and imported. There is no "next batch" of Quant. **Verbal Reasoning and Data
-> Insights are not started — ask the user** before building either (they may belong in
-> `examprep`, like SAT R&W). The workflow below is kept for maintenance and for those.
+> GMAT-25's is a mixed review of the whole course) and 25 Corner readings with audio.
+> **DATA INSIGHTS is in progress in the same playlist** (user's choice 2026-10-02):
+> **✅ completed the same day: GMAT-26…35** (Data Sufficiency ×5, Table Analysis, Graphics
+> Interpretation, Two-Part Analysis, Multi-Source Reasoning, strategy) — 35 lessons, 700 practice
+> questions and 35 readings with audio in the whole course. **Verbal Reasoning lives in
+> `examprep`** (track `GMAT`, started 2026-10-02) — see "Creating GMAT Verbal lessons" below.
+> The multi-part formats are rebuilt as single-answer practice questions that keep the "no
+> partial credit" rule: three statements → "I and III only", two columns → a PAIR per choice,
+> drop-downs → one blank. Tables and charts come from `tutorial/management/commands/_dikit.py`
+> (never hand-typed); `verify_gmat_31_35.py` parses them back out of the HTML and re-measures
+> every bar and dot. `.pm-fig` / `.pe-table-wrap` now carry the chart palette themselves, so a
+> chart in a practice question is no longer drawn black.
+> ⚠️ **Every Data Sufficiency practice question is imported with `"fixed_order": True`**
+> (`PracticeQuestion.fixed_order`, migration `practice/0007`): the five DS verdicts are
+> always A–E on the real test and must not be shuffled. Production needs that migration
+> before `import_practices` can write the flag — deploy the code first.
+> ⚠️ **The DS gate derives every verdict by brute force** (`verify_gmat_26_30.py`): a model
+> per question — worlds, the asked quantity, the two statements as predicates. Two lessons
+> from batch 1: it caught **three questions whose statements contradicted each other**
+> (the real GMAT never does that), and a **too-narrow world set can fake sufficiency** —
+> widen it, and hand-check every "sufficient" claim is mathematically forced.
 
 **Prime GMAT** is the course for MBA / business-master's applicants, in `tutorial`,
 playlist "Prime GMAT", titles `GMAT-1: …`, category `math`. **Started 2026-10-01 as a
@@ -629,9 +646,8 @@ python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_
 5. Mark `[done]` in both tocs, then append the production lines (`--author=powerty`,
    `--master=powerty`) to `temporary.txt`.
 
-Subject `GMAT` is **not** in the Telegram `ROTATION`. Add it only if asked. Verbal and
-Data Insights are **not planned**: ask the user before starting either. Like SAT R&W,
-they may fit `examprep` better than `tutorial`.
+Subject `GMAT` is **not** in the Telegram `ROTATION`. Add it only if asked. Data Insights
+is done (GMAT-26…35, same playlist); Verbal lives in `examprep` — see its own section.
 
 ## Creating Logic Arena puzzles (bulk) — sealed-answer logic problems
 **Logic Arena** (`logic` app, `/logic/`, uz "Mantiq maydoni") is the weekly logic-puzzle
@@ -674,6 +690,32 @@ never add JavaScript, and never invent an `lg-*` class without adding it to that
 and to the style guide first.
 Logic Arena is **not** the Math Championship (auto-generated, instantly marked) and not a
 practice test. It is one hard, beautiful problem a week with a real explanation attached.
+
+## Creating GMAT Verbal lessons (bulk) — GMAT Focus Verbal Reasoning, ikki tilda
+**GMAT Verbal** is the fourth `ExamTrack` in `examprep` (name `GMAT`, slug `gmat`, order 4),
+**started 2026-10-02**: the third section of the test whose Quant and Data Insights are the
+`tutorial` course Prime GMAT. Titles `GMAT Verbal N: …`, all `skill: reading`. It lives in
+examprep for the SAT R&W reason (one passage + one graded question = one `LessonBlock`).
+The section: **23 questions / 45 min, Critical Reasoning + Reading Comprehension, five
+choices, NO Sentence Correction** (mba.com, checked 2026-10-02).
+When the user asks (e.g. "make the next 5 GMAT Verbal lessons"):
+1. Read `examprep/management/commands/STYLE_GUIDE_SAT_RW.md`, then
+   `STYLE_GUIDE_GMAT_VERBAL.md` (only the differences: adult pupil, 5 choices, CR ≤ 100 words,
+   RC passage in its own block + 2–4 question blocks, the five CR traps, the negation test).
+2. Read `toc_gmat_verbal.txt` (`[done]`/`[next]`, topic decades 1/10/20/30/40).
+3. Write `examprep/management/commands/_lessons_gmat_verbal_<range>.py` — **load** `TRACK`, the
+   `TOPIC_*` dicts and the `cr()` / `ask()` / `why()` / `steps()` / `cards()` helpers from
+   `_lessons_gmat_verbal_1_12.py` by path, as `_lessons_gmat_verbal_3_22.py` does (never copy
+   them — one definition). New topics are defined in the batch that first uses them. ≥ 5 answerable questions per lesson (≥ 4 in strategy).
+4. Gate: `verify_gmat_verbal_<range>.py` in the scratchpad (copy `verify_gmat_verbal_1_12.py`
+   — 5 choices / one key / every choice named once in the `.sr-why` with the right tag / no
+   letters / no Uzbek in `.sr-passage` / CR 25–100 words / kit classes / ASCII `'` in Uzbek).
+   Prove it bites, then **re-argue every distractor by eye** — batch 1 lost a key that a
+   careful reader could argue against (the Saturday-survey question), batch 2 a distractor
+   that was secretly relevant (survivorship: "whether any hires have since left"). Gate on the
+   script's **exit code** — piping it through `tail` once let a failing batch import.
+5. `python manage.py import_examprep <file> --author=prime`, mark `[done]`, append the
+   `--author=powerty` line to `temporary.txt`.
 
 ## Creating SAT Reading & Writing lessons (bulk) — digital SAT, ikki tilda
 **SAT Reading & Writing** is the site's third `ExamTrack` (`examprep`, slug `sat`, beside

@@ -1,0 +1,56 @@
+# ── Track metadata (read by Claude) ──────────────────────────────────
+TRACK:  GMAT
+SKILL:  reading
+AUTHOR: powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# Writing rules live in STYLE_GUIDE_GMAT_VERBAL.md (which sits on top of STYLE_GUIDE_SAT_RW.md).
+# This file is ONLY the ordered lesson list. The number = the lesson's `order` in GMAT + reading.
+#
+# GMAT Focus Edition — Verbal Reasoning (mba.com / gmac.com, checked 2026-10-02):
+#   23 questions in 45 minutes · Reading Comprehension + Critical Reasoning · five choices ·
+#   NO Sentence Correction (removed in the Focus Edition).
+# Quant and Data Insights are the tutorial course "Prime GMAT" (GMAT-1…35) — this track is the
+# third section of the same test. Started 2026-10-02 at the user's request.
+#
+# Each `## TOPIC:` header = a lesson group card; each topic owns a lesson-order decade.
+# Status: [done] = imported; [next] = not written yet.
+# ─────────────────────────────────────────────────────────────────────
+
+## GMAT — Verbal Reasoning (Critical Reasoning + Reading Comprehension)
+
+## TOPIC: Strategiya va format (Verbal: qanday tuzilgan)   [icon bi-compass, topic order 1]
+1. How the Verbal Section Works — 23 Questions, 45 Minutes   [done]
+2. Read the Question First — One Method for Every Verbal Question   [done]
+3. Pacing Verbal — Reading Comprehension Sets and Critical Reasoning   [done]
+
+## TOPIC: Critical Reasoning: argument tuzilishi   [icon bi-diagram-3, topic order 2]
+10. Anatomy of an Argument — Conclusion, Premises, Background   [done]
+11. The Gap — Finding What the Argument Assumes   [done]
+12. Weaken and Strengthen — Attacking and Supporting the Gap   [done]
+13. Critical Reasoning — Mixed Practice I   [done]
+
+## TOPIC: Critical Reasoning: boshqa savol turlari   [icon bi-puzzle, topic order 3]
+20. Evaluate the Argument — The Question That Would Decide It   [done]
+21. Flaw Questions — The Classic Reasoning Errors   [done]
+22. Inference — What Must Be True   [done]
+23. Explain the Discrepancy — Resolving a Paradox   [done]
+24. Role and Boldface Questions   [done]
+25. Plans and Methods of Reasoning   [done]
+26. Critical Reasoning — Mixed Practice II   [done]
+
+## TOPIC: Reading Comprehension   [icon bi-book, topic order 4]
+# Passages used so far (never reuse a subject): Ulugh Beg's observatory, the shipping container,
+# anchoring, microcredit, the Aral Sea, penicillin, the Great Stink, tulip mania, Wegener,
+# Toyota's andon cord / NUMMI, al-Khwarizmi, the default effect, Robert Fortune's tea, Borlaug.
+30. How Reading Comprehension Works — Passages, Question Sets and a Reading Map   [done]
+31. Main Idea and Primary Purpose   [done]
+32. Detail Questions — Answering From the Line   [done]
+33. Inference in Reading Comprehension   [done]
+34. Function and Structure — Why the Author Says It   [done]
+35. Application, Tone and the Author's Attitude   [done]
+36. Reading Comprehension — Mixed Practice   [done]
+
+## TOPIC: Aralash mashq (Verbal section drills)   [icon bi-stopwatch, topic order 5]
+40. Verbal Drill I — Mixed Critical Reasoning and Reading Comprehension   [next]
+41. Verbal Drill II — Mixed, Under Time
+42. Verbal Strategy Review — Pacing, Guessing and Review & Edit

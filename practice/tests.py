@@ -93,3 +93,33 @@ class FuriganaIsNotPostedTwiceTests(SimpleTestCase):
 
     def test_markup_without_ruby_is_untouched(self):
         self.assertEqual(to_text('<p>x<sup>2</sup> = 9</p>'), 'x² = 9')
+
+
+class FixedOrderChoicesTests(TestCase):
+    """GMAT Data Sufficiency lists the same five verdicts in the same A–E order on every
+    question; pupils answer by that reflex. Such questions set fixed_order and must keep
+    their written order, while every other question keeps the seeded shuffle."""
+
+    def _question(self, practice, fixed):
+        q = PracticeQuestion.objects.create(practice=practice, order=1, question_text='Q',
+                                            explanation='E', fixed_order=fixed)
+        for t in ['A text', 'B text', 'C text', 'D text', 'E text']:
+            PracticeChoice.objects.create(question=q, text=t, is_correct=(t == 'D text'))
+        return q
+
+    def setUp(self):
+        teacher = User.objects.create_user('ds-teacher', password='x')
+        master = Master.objects.create(profile=teacher.profile, name='T', description='-',
+                                       subject='GMAT', is_approved=True)
+        self.practice = Practice.objects.create(master=master, title='DS',
+                                                subject=Subject.objects.create(name='GMAT'))
+
+    def test_fixed_order_keeps_written_order(self):
+        q = self._question(self.practice, fixed=True)
+        self.assertEqual([c.text for c in q.display_choices()],
+                         ['A text', 'B text', 'C text', 'D text', 'E text'])
+
+    def test_default_still_shuffles(self):
+        orders = {tuple(c.text for c in self._question(self.practice, fixed=False).display_choices())
+                  for _ in range(6)}
+        self.assertTrue(any(o != ('A text', 'B text', 'C text', 'D text', 'E text') for o in orders))

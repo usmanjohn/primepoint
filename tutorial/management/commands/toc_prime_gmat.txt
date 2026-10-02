@@ -13,7 +13,7 @@ PLAYLIST: Prime GMAT
 # Prime GMAT — GMAT Focus Edition, biznes maktabiga yoʻl
 #
 # ✅ QUANT BLOCK COMPLETE 2026-10-02: GMAT-1…25, 500 practice questions, 25 readings with audio.
-#    There is no [next] here. Verbal and Data Insights need the user's decision first.
+#    Data Insights chosen by the user 2026-10-02 (continues here as GMAT-26…35; Verbal not started).
 #
 # Started 2026-10-01 as a 5-lesson PILOT of the Quant section. Three legs per lesson
 # (tutorial + 20-question practice + English reading with audio), batches of 5.
@@ -59,3 +59,18 @@ GMAT-24: Statistics — Median, Range and Standard Deviation      [done]
 
 ## QUANT — The section as a whole
 GMAT-25: Strategy — Pacing, Guessing and Question Review & Edit [done]
+
+## DATA INSIGHTS — started and COMPLETED 2026-10-02 (20 questions / 45 minutes, on-screen calculator)
+# ✅ Block complete: GMAT-26…35. No [next]. Verbal Reasoning is not started — ask the user.
+# Data Sufficiency practices are imported with "fixed_order": True on every question —
+# the five DS verdicts are always A–E on the real test, so they must not be shuffled.
+GMAT-26: The Data Insights Section and Data Sufficiency            [done]
+GMAT-27: Data Sufficiency — Value Questions                     [done]
+GMAT-28: Data Sufficiency — Yes/No Questions                    [done]
+GMAT-29: Data Sufficiency — Traps and Hidden Constraints        [done]
+GMAT-30: Data Sufficiency — Word Problems                       [done]
+GMAT-31: Table Analysis                                         [done]
+GMAT-32: Graphics Interpretation                                [done]
+GMAT-33: Two-Part Analysis                                      [done]
+GMAT-34: Multi-Source Reasoning                                 [done]
+GMAT-35: Data Insights Strategy and Mixed Review                [done]

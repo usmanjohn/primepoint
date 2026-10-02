@@ -204,6 +204,7 @@ class Command(BaseCommand):
                 hint=q.get("hint") or "",
                 order=i,
                 points=q.get("points", 1),
+                fixed_order=bool(q.get("fixed_order", False)),
                 made_by=master,
             )
             correct = q["correct"]

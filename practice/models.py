@@ -62,6 +62,13 @@ class PracticeQuestion(models.Model):
 
     order = models.PositiveIntegerField(default=0)
     points = models.FloatField(default=1)
+    # A few formats have choices whose ORDER is part of the question: GMAT Data
+    # Sufficiency always lists the same five verdicts as A–E, and pupils learn them
+    # as a fixed reflex. Those questions opt out of the shuffle below.
+    fixed_order = models.BooleanField(
+        default=False,
+        help_text='Show the choices in the order they were written instead of shuffled '
+                  '(e.g. GMAT Data Sufficiency, whose five answers are always A–E).')
 
     made_by = models.ForeignKey(Master, on_delete=models.SET_NULL, null=True, blank=True)
 
@@ -81,6 +88,8 @@ class PracticeQuestion(models.Model):
         for every pupil and on every page (taking, results, review, print), so it is
         purely a display fix: no stored data changes and answer ids stay valid.
         """
+        if self.fixed_order:
+            return list(self.choices.order_by('id'))
         choices = list(self.choices.all())
         random.Random(self.id).shuffle(choices)
         return choices
