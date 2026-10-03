@@ -1162,8 +1162,11 @@ Started **2026-10-03**. A cloud Claude routine (claude.ai/code/routines, daily 0
 `0 3 * * *` UTC, Opus) reads `flowstudio/GUIDE.md`, writes one Google Flow production package
 (R1… reference images for Nano Banana, then per-scene Flow mode + Veo prompt with the
 characters' Uzbek lines inside it; short Uzbek, no facts/explanations sent) as JSON, gates it with `python3 flowstudio/send.py <json> --check`, and
-sends it to a private Telegram channel (the brother and the user are members) through a **separate** bot (`FLOW_BOT_TOKEN` / `FLOW_CHAT_ID`,
+sends it to the private Telegram channel «Creative» through a **separate** bot (`FLOW_BOT_TOKEN` / `FLOW_CHAT_ID`,
 set in the cloud environment, never in the repo) — **not** @PowertyuzBot, which stays the
 channel's outbound-only bot. History lives on the branch `claude/flowstudio-log`
 (`sent.tsv` + `packages/`), never on `main`. Not a Django app. `flowstudio/example.json` is the
 quality reference (the Amudaryo episode). Facts come only from repo files (§3 of the guide).
+**Two packages a day since 2026-10-04**, one per brother — `"for": "Inom"` then `"Jonibek"`
+(the gate refuses any other name), different series; each opens «👤 <name> uchun» with `#Inom`/`#Jonibek`
+and ends «✅ … 👍 bosing» — the 👍 reaction is the "done" mark (no buttons: the bot is send-only).

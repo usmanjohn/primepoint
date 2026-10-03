@@ -30,6 +30,7 @@ BAD_APOSTROPHE = re.compile(r"[oOgG]['‘’`]")
 CYRILLIC = re.compile(r'[Ѐ-ӿ]')
 REF_ID = re.compile(r'^R\d+$')
 SECONDS = 8                       # one Veo clip
+BROTHERS = ('Inom', 'Jonibek')    # one package each, every day (the user's request, 2026-10-04)
 
 
 # ── the gate ─────────────────────────────────────────────────────────────
@@ -63,6 +64,8 @@ def check(pkg):
             errs.append(f'missing or empty: {key}')
     if errs:
         return errs
+    if pkg.get('for') not in BROTHERS:
+        errs.append(f"for must be one of {BROTHERS} — whose video this is")
     if not str(pkg['number']).isdigit():
         errs.append("number must be a whole number (the video's №)")
     for k in ('title_uz', 'concept_uz', 'format_uz', 'post_text_uz'):
@@ -209,15 +212,17 @@ def render(pkg):
     body = sections(pkg)
     num = int(pkg['number'])
     total = len(body) + 1
-    first = (f"🎬 <b>№{num} · «{e(pkg['title_uz'])}»</b>\n{tag(pkg)} {series_tag(pkg)}\n\n"
+    first = (f"👤 <b>{e(pkg['for'])} uchun</b>\n"
+             f"🎬 <b>№{num} · «{e(pkg['title_uz'])}»</b>\n#{pkg['for']} {tag(pkg)} {series_tag(pkg)}\n\n"
              f"<b>Gʻoya:</b> {e(pkg['concept_uz'])}\n<b>Format:</b> {e(pkg['format_uz'])}\n\n"
-             "1️⃣ Rasmlar → 2️⃣ Ssenariy → 3️⃣ Flowʼda yaratish (hammasi shu xabarga javob)")
+             "1️⃣ Rasmlar → 2️⃣ Ssenariy → 3️⃣ Flowʼda yaratish (hammasi shu xabarga javob)\n\n"
+             "✅ Video tayyor boʻlsa — shu xabarga 👍 bosing.")
     return [first] + [f"<i>№{num} · {k}/{total}</i>\n{m}" for k, m in enumerate(body, 2)]
 
 
 def plain(pkg):
     """The whole package as a .txt file to keep."""
-    lines = [f"№{pkg['number']} · {pkg['title_uz']} — {pkg['series']} — {pkg['date']}", '',
+    lines = [f"{pkg['for']} uchun", f"№{pkg['number']} · {pkg['title_uz']} — {pkg['series']} — {pkg['date']}", '',
              pkg['concept_uz'], pkg['format_uz'], '']
     for m in sections(pkg):
         lines += [html.unescape(re.sub(r'</?(b|i|pre)>', '', m)), '', '─' * 40, '']
@@ -236,7 +241,7 @@ def _token():
 def _chat():
     c = os.environ.get('FLOW_CHAT_ID')
     if not c:
-        sys.exit('FLOW_CHAT_ID is not set (run --whoami after the brother presses Start)')
+        sys.exit('FLOW_CHAT_ID is not set (add the bot to the channel as admin, post once, run --whoami)')
     return c
 
 
@@ -284,7 +289,7 @@ def send(pkg):
     info = api('getChat', {'chat_id': chat}).get('result', {})
     if info.get('is_forum'):
         topic = api('createForumTopic', {'chat_id': chat,
-                                         'name': f"№{pkg['number']} · {pkg['title_uz']}"[:128]})
+                                         'name': f"{pkg['for']} · №{pkg['number']} · {pkg['title_uz']}"[:128]})
         where['message_thread_id'] = topic['result']['message_thread_id']
     first = api('sendMessage', {'chat_id': chat, 'text': msgs[0], 'parse_mode': 'HTML',
                                 'disable_web_page_preview': True, **where})['result']['message_id']

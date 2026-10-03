@@ -1,16 +1,19 @@
 # Flow Studio — the daily video package
 
-Every morning a cloud Claude routine reads this file, writes **one** complete production
-package for an AI video made in **Google Flow** (Nano Banana Pro + Veo), checks it with
-`send.py`, and sends it to a private Telegram channel. The reader is the user's brother: he makes
-the videos, he does not touch this repo, the terminal, or the site. Telegram is all he sees.
+Every morning a cloud Claude routine reads this file, writes **two** complete production
+packages for AI videos made in **Google Flow** (Nano Banana Pro + Veo), one for each of the
+user's brothers — **Inom** and **Jonibek** — checks them with `send.py`, and sends both to the
+private Telegram channel «Creative». The brothers make the videos; they do not touch this repo,
+the terminal, or the site. Telegram is all they see. Each package opens with «👤 <name> uchun»
+and carries `#Inom` / `#Jonibek`, so each finds his own; he presses 👍 on it when the video is made.
 
 Not a Django app, never imported by Django, costs production nothing (like `storyvideo/`).
 
 ```
 EXPLAIN_LANGUAGE: Uzbek          # everything the brother READS. Only the Flow/Veo prompts are English.
-CHAT:             the user's own Telegram (the brother uses it); FLOW_CHAT_ID is a number
+CHAT:             a private Telegram channel (the bot is an admin there); FLOW_CHAT_ID is -100…
 SEND_TIME:        08:00 Tashkent (03:00 UTC), daily
+PER_DAY:          2 — "for": "Inom" first, then "for": "Jonibek"; two DIFFERENT series
 ```
 
 ---
@@ -22,7 +25,11 @@ SEND_TIME:        08:00 Tashkent (03:00 UTC), daily
    git fetch origin claude/flowstudio-log 2>/dev/null && git show origin/claude/flowstudio-log:flowstudio/sent.tsv
    ```
    (Absent on the very first run — that is fine.) Also read the seed list in §6.
-   The video's **№** = the number of lines in `sent.tsv` + 1 (line 1 is the Amudaryo episode, №1).
+   The video's **№** = the number of lines in `sent.tsv` + 1 (line 1 is the Amudaryo episode, №1);
+   the day's second package takes the next № after the first.
+   Column 6 of `sent.tsv` says whose video it was (lines without it predate the two-brother split).
+**Steps 2–5 run twice: first for Inom, then for Jonibek.** Then log both in step 6.
+
 2. **Pick today's idea** by the rotation rule (§2) from the source pool (§3). Open the
    source file and read the actual text — the facts, numbers and answers come from there.
 3. **Write the package** as JSON (§4) to `flowstudio/out/<id>.json`.
@@ -37,12 +44,14 @@ SEND_TIME:        08:00 Tashkent (03:00 UTC), daily
    git fetch origin claude/flowstudio-log
    git worktree add -B claude/flowstudio-log /tmp/fslog origin/claude/flowstudio-log
    cp flowstudio/out/<id>.json /tmp/fslog/flowstudio/packages/
-   printf '%s\t%s\t%s\t%s\t%s\n' "<№>" "<date>" "<id>" "<series>" "<source path>" >> /tmp/fslog/flowstudio/sent.tsv
+   printf '%s\t%s\t%s\t%s\t%s\t%s\n' "<№>" "<date>" "<id>" "<series>" "<source path>" "<Inom|Jonibek>" >> /tmp/fslog/flowstudio/sent.tsv
    git -C /tmp/fslog add flowstudio && git -C /tmp/fslog commit -m "flowstudio: №<№> <id>" \
      && git -C /tmp/fslog push origin claude/flowstudio-log
    ```
    If the push fails, the package has still been sent — say so in the final message.
-7. Finish with one line: the id, the title, and whether the send and the push worked.
+   (one `cp` and one `printf` line per package, one commit for the day)
+7. Finish with two lines, one per brother: the id, the title, and whether the send worked; then
+   whether the push worked. If one package fails the gate or the send, still send the other.
 
 If `send.py` fails to send (network, token), do **not** retry more than twice. Report it.
 
@@ -98,8 +107,8 @@ Facts and sources still go in the JSON (`facts`, `sources`) and are checked, but
 
 ## 2. Rotation — never the same shape two days running
 
-Cycle through these series; across any 7 days at least 5 different ones. Check
-`sent.tsv` before choosing.
+Cycle through these series; across any 7 days at least 5 different ones **per brother**, and
+the two packages of one day are always different series. Check `sent.tsv` (column 6) before choosing.
 
 | series | shape | source pool (§3) |
 |---|---|---|
@@ -119,8 +128,8 @@ Ali Qushchi, al-Fargʻoniy…) — «bobolar» means *our* ancestors. Anyone els
 A famous legend (Fales' shadow, Arximed's «Evrika!») is called a legend in the voice-over too.
 
 A **Mantiq maydoni** package is the QUESTION video and ends on the question. Exactly 7 days
-later (check `sent.tsv`) the day's package is its ANSWER video — that takes priority over the
-rotation that day.
+later (check `sent.tsv`) the ANSWER video goes to **the same brother** who made the question —
+that takes priority over the rotation for his package that day.
 
 ---
 
@@ -154,6 +163,7 @@ Match its shape; do not copy its content.
 {
   "id": "2026-10-05-kashfiyot-fales",
   "number": 3,
+  "for": "Inom",
   "date": "2026-10-05",
   "series": "Buyuk kashfiyot",
   "title_uz": "Soya va piramida",
@@ -181,7 +191,7 @@ Match its shape; do not copy its content.
 
 Field rules (`send.py --check` enforces them):
 
-- `number` = the video's №. Refs are `R1, R2 …`; a `from` points only at EARLIER refs.
+- `for` = `Inom` or `Jonibek` (whose video it is). `number` = the video's №. Refs are `R1, R2 …`; a `from` points only at EARLIER refs.
 - `method` ∈ `Frames to Video` (needs `start`, optional `end`) · `Ingredients to Video`
   (`attach` 1–3 refs) · `Text to Video` · `Extend` (`extends` = an earlier scene's `n`).
 - Every scene prompt is English, contains each of its `lines` word for word (apostrophes
@@ -214,6 +224,6 @@ Field rules (`send.py --check` enforces them):
 ## 7. How it arrives (`send.py` does this — do not imitate it in the JSON)
 
 Five or six messages, all replies to the first (pinned) one, each tagged `№N · k/total`:
-🎬 title + Gʻoya + Format → 1️⃣ Rasmlar → 2️⃣ Ssenariy → 3️⃣ Flowʼda yaratish → 4️⃣ Post matni,
+👤 whose + 🎬 title + Gʻoya + Format → 1️⃣ Rasmlar → 2️⃣ Ssenariy → 3️⃣ Flowʼda yaratish → 4️⃣ Post matni,
 then the whole package as a `.txt` file. In a Telegram group with Topics each video gets its
 own topic instead.
