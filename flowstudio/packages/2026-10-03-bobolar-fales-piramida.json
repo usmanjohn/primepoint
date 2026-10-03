@@ -1,0 +1,348 @@
+{
+ "id": "2026-10-03-bobolar-fales-piramida",
+ "number": 2,
+ "date": "2026-10-03",
+ "series": "Bobolar sirri",
+ "title_uz": "Fales piramidani soyasi bilan oʻlchaydi",
+ "logline": "Miloddan avvalgi VI asr, Misr. Hech kim piramidaning balandligini bilmaydi — unga chiqib ham, ichini oʻlchab ham boʻlmaydi. Yunon olimi Fales qumga bitta tayoq qadaydi va javobni piramidaga tegmasdan topadi. Oxirida tomoshabin oʻz maktabini shu usulda oʻlchashga chaqiriladi.",
+ "parts": [
+  {
+   "name": "1-qism",
+   "length": "59 soniya"
+  }
+ ],
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_13_15.py (Matematika olami, 6-matn: «Fales piramidani soyasi bilan oʻlchagan»)",
+  "corner/management/commands/toc_matematika_olami.txt (6-band)"
+ ],
+ "facts": [
+  {
+   "claim": "Fales — yunon faylasufi, taxminan miloddan avvalgi 624–546-yillarda yashagan; voqea miloddan avvalgi VI asrda",
+   "source": "corner/management/commands/_stories_matematika_olami_13_15.py (FAKTLAR bloki va matn)"
+  },
+  {
+   "claim": "Piramidani soya bilan oʻlchagani RIVOYAT: uni Diogen Laertskiy va Plutarx voqeadan ancha keyin yozib qoldirgan. Videoda «rivoyatga koʻra» deyiladi",
+   "source": "corner/management/commands/_stories_matematika_olami_13_15.py"
+  },
+  {
+   "claim": "Usul: quyosh bir vaqtda hamma narsaga bir xil burchakda tushadi, shuning uchun balandlik : soya nisbati odam uchun ham, piramida uchun ham bir xil",
+   "source": "corner/management/commands/_stories_matematika_olami_13_15.py (grammar bloki)"
+  },
+  {
+   "claim": "1,8 m boʻy va 2,4 m soya — FARAZ qilingan misol sonlar (matnda «faraz qilaylik»); 1,8 : 2,4 = 3 : 4",
+   "source": "corner/management/commands/_stories_matematika_olami_13_15.py"
+  },
+  {
+   "claim": "Piramida soyasi 195 m — ham misol son («aytaylik»); 195 × 3 ÷ 4 = 146,25 m",
+   "source": "corner/management/commands/_stories_matematika_olami_13_15.py"
+  },
+  {
+   "claim": "Buyuk piramidaning dastlabki balandligi taxminan 146,6 m",
+   "source": "corner/management/commands/_stories_matematika_olami_13_15.py (FAKTLAR bloki)"
+  }
+ ],
+ "emotion_arc": [
+  {
+   "time": "0–2 s",
+   "beat": "Ilmoq: tayoq qumga sanchiladi, soya otiladi",
+   "feel": "qiziqish"
+  },
+  {
+   "time": "2–14 s",
+   "beat": "Ulkan piramida, hech kim balandligini bilmaydi",
+   "feel": "hayrat, ojizlik"
+  },
+  {
+   "time": "14–28 s",
+   "beat": "Fales kutadi, oʻz soyasini oʻlchaydi: 3 : 4",
+   "feel": "sirli sabr"
+  },
+  {
+   "time": "28–33 s",
+   "beat": "Burilish: piramidaning soyasi ham xuddi shu qoidaga boʻysunadi",
+   "feel": "«aha!»"
+  },
+  {
+   "time": "33–46 s",
+   "beat": "Hisob va javob: 146,25 m ga qarshi 146,6 m",
+   "feel": "gʻurur, hayrat"
+  },
+  {
+   "time": "46–59 s",
+   "beat": "Bugungi maktab hovlisi: «siz ham qila olasiz»",
+   "feel": "ishonch, chaqiriq"
+  }
+ ],
+ "style_line": "Cinematic photoreal, bright low morning sun of ancient Egypt, long crisp shadows on pale golden sand, warm ochre and limestone-white palette with deep blue sky, 35mm film look, calm documentary mood. No text, no letters, no hieroglyphs, no numbers, no watermark.",
+ "ingredients": [
+  {
+   "name": "THALES",
+   "prompt": "Character reference sheet of one ancient Greek scholar of the 6th century BC, about 50, lean, sun-tanned, short curly grey beard, thoughtful eyes, a simple undyed linen tunic under a deep blue wool cloak fastened on the right shoulder with a round bronze clasp, leather sandals, holding a straight plain wooden staff as tall as his chest. Four views on a plain light-grey background: front, three-quarter, profile, full body. Same man in all four.",
+   "check": "toʻrttala koʻrinishda bir xil yuz; KOʻK plashch, oʻng yelkasida dumaloq bronza toʻqa — shu belgi bilan uni tanib olamiz"
+  },
+  {
+   "name": "BOY",
+   "prompt": "Character reference sheet of one Egyptian boy, about 11, shaved head with a single side lock of hair, bright curious eyes, plain white linen kilt, barefoot, a coil of rough rope with large knots tied at equal intervals hanging from his shoulder. Front, three-quarter, profile, full body, plain light-grey background. Same boy in all four.",
+   "check": "yonida bitta soch tutami; yelkasida tugunli arqon — har kadrda boʻlsin"
+  },
+  {
+   "name": "STAFF",
+   "prompt": "One straight plain wooden staff about 1.8 metres long, smooth pale wood, slightly darker at the top from hands, no carvings, no decoration. Shown standing upright in sand and lying flat, plain light-grey background.",
+   "check": "naqshsiz, oddiy tayoq; harf yoki belgi yoʻq"
+  },
+  {
+   "name": "PYRAMID",
+   "prompt": "The Great Pyramid of Giza as it looked when new, around the 6th century BC: smooth pale limestone faces, sharp apex, standing alone in a flat desert of golden sand under a deep blue morning sky, low sun from the left. No people, no modern buildings, no roads, no tourists.",
+   "check": "zamonaviy shahar, yoʻl, turist yoʻq; piramida bitta"
+  },
+  {
+   "name": "SCHOOLYARD",
+   "prompt": "A sunny schoolyard of a modern Uzbek school in the afternoon: a three-storey building of pale brick with large windows, a few young plane trees, a flat paved yard with long sharp shadows. No people, no signs, no flags, no lettering anywhere.",
+   "check": "binoda yozuv, bayroq, belgi yoʻq"
+  },
+  {
+   "name": "GIRL",
+   "prompt": "Character reference sheet of one Uzbek schoolgirl, about 13, dark hair in two braids with white ribbons, white school blouse and dark skirt, a yellow plastic tape measure in her hand. Front, three-quarter, profile, full body, plain light-grey background. Same girl in all four.",
+   "check": "ikkita oq lentali oʻrim; qoʻlida sariq ruletka"
+  }
+ ],
+ "shots": [
+  {
+   "n": "1",
+   "part": "1-qism",
+   "time": "0:00-0:02",
+   "what": "Tayoq qumga keskin sanchiladi va uning uzun soyasi qum boʻylab bir zumda choʻziladi.",
+   "method": "Frames to Video",
+   "model": "Quality",
+   "attach": [
+    "STAFF"
+   ],
+   "frame_prompt": "Extreme low close-up at sand level: the tip of a plain wooden staff a few centimetres above pale golden sand, a hand holding it, bright low morning sun from the left. Exactly one staff.",
+   "end_frame_prompt": "The staff now stands upright in the sand and its long sharp shadow stretches to the right across the sand.",
+   "video_prompt": "The staff is driven down into the sand with one firm stab; a small puff of sand jumps up, and the camera tilts along its long sharp shadow as it lies across the ground. Fast, punchy, then still. Audio: a hard thud into sand, a light hiss of grains, desert wind. No speech, no music.",
+   "emotion": "qiziqish — «bu nima?»",
+   "voice_uz": "Mana shu tayoq piramidani oʻlchaydi.",
+   "check": "tayoq bitta, soyasi aniq va toʻgʻri chiziq"
+  },
+  {
+   "n": "2",
+   "part": "1-qism",
+   "time": "0:02-0:07",
+   "what": "Keng kadr: oppoq ulkan piramida choʻl ustida, etagida bitta kichkina odam qiyofasi.",
+   "method": "Frames to Video",
+   "model": "Fast",
+   "attach": [
+    "PYRAMID",
+    "THALES"
+   ],
+   "frame_prompt": "Very wide vertical shot of the new white-limestone Great Pyramid filling the frame, golden desert around it, and at its base one tiny human figure in a blue cloak for scale. Exactly one person. Low morning sun from the left casting the pyramid's long shadow to the right.",
+   "video_prompt": "Very slow tilt up from the tiny figure at the base to the sharp apex against the deep blue sky. Heat shimmer over the sand. Majestic and slow. Audio: wide desert wind, one distant bird call. No speech, no music.",
+   "emotion": "hayrat, odam juda kichkina",
+   "voice_uz": "Miloddan avvalgi oltinchi asr. Misr.",
+   "check": "odam bitta va juda kichkina; piramidada yozuv yoki naqsh yoʻq"
+  },
+  {
+   "n": "3",
+   "part": "1-qism",
+   "time": "0:07-0:11",
+   "what": "Misrlik bola boshini orqaga tashlab piramida choʻqqisiga qaraydi; boshini sekin chayqaydi.",
+   "method": "Ingredients to Video",
+   "model": "Fast",
+   "attach": [
+    "BOY",
+    "PYRAMID"
+   ],
+   "video_prompt": "Medium close-up of the Egyptian boy with the knotted rope on his shoulder, standing at the foot of the pyramid, tilting his head far back to look up at the apex, squinting into the sun, then slowly shaking his head in wonder. Audio: wind, the rope creaks on his shoulder. No speech, no music.",
+   "emotion": "ojizlik, kichik kulgi",
+   "voice_uz": "Hamma bir narsani soʻraydi: bu piramida qanchalik baland? Unga chiqib boʻlmaydi. Ichida oʻlchab ham boʻlmaydi.",
+   "check": "yelkada tugunli arqon; bola bitta"
+  },
+  {
+   "n": "4",
+   "part": "1-qism",
+   "time": "0:11-0:15",
+   "what": "Fales koʻzini quyoshdan qoʻli bilan toʻsib osmonga qaraydi va sekin jilmayadi.",
+   "method": "Ingredients to Video",
+   "model": "Fast",
+   "attach": [
+    "THALES",
+    "PYRAMID"
+   ],
+   "video_prompt": "Medium shot of the Greek scholar in the deep blue cloak with the bronze clasp, the pyramid behind him in soft focus. He raises a hand to shade his eyes, looks at the low sun, then down at the sand, and a slow knowing smile appears. Audio: wind, a soft rustle of the cloak. No speech, no music.",
+   "emotion": "sirli xotirjamlik",
+   "voice_uz": "Yunon olimi Fales arqon ham, narvon ham soʻramadi. Rivoyatga koʻra, u shunchaki… kutdi.",
+   "check": "plashch koʻk, bronza toʻqa oʻng yelkada; yuz maʼlumotnomadagi bilan bir xil"
+  },
+  {
+   "n": "5",
+   "part": "1-qism",
+   "time": "0:15-0:19",
+   "what": "Qumga sanchilgan tayoqning soyasi tez-tez qisqaradi (timelapse), oyoqlar yonida turadi.",
+   "method": "Frames to Video",
+   "model": "Fast",
+   "attach": [
+    "STAFF",
+    "THALES"
+   ],
+   "frame_prompt": "Ground-level shot: the plain wooden staff standing upright in the sand, its long shadow stretching right; beside it the sandalled feet and blue cloak hem of the scholar, standing still. Exactly one staff.",
+   "video_prompt": "Time-lapse: the staff's shadow slowly shortens and swings across the sand as the sun climbs, while the scholar's feet stay still beside it. Clouds' shadows race over the sand. Audio: a soft ticking wind, grains of sand moving. No speech, no music.",
+   "emotion": "sabr, kutish",
+   "voice_uz": "U qumga tayoq qadab, soyalarni kuzatdi.",
+   "check": "tayoq qimirlamaydi, faqat soya harakatlanadi"
+  },
+  {
+   "n": "6",
+   "part": "1-qism",
+   "time": "0:19-0:24",
+   "what": "Fales tik turibdi; bola uning soyasi ustiga tugunli arqonni tortib, tugunlarni sanaydi.",
+   "method": "Frames to Video",
+   "model": "Fast→Quality",
+   "attach": [
+    "THALES",
+    "BOY"
+   ],
+   "frame_prompt": "High three-quarter view on flat sand: the scholar in the blue cloak standing perfectly straight, his dark shadow lying on the sand behind him, longer than he is tall. The Egyptian boy kneels at the end of the shadow holding the knotted rope stretched along it. Exactly two people, one shadow each.",
+   "video_prompt": "The boy pulls the knotted rope taut along the scholar's shadow and touches the knots one by one with his finger, moving his lips silently as he counts. The scholar stays still. Audio: rope rubbing on sand, soft finger taps. No speech, no music.",
+   "emotion": "diqqat",
+   "voice_uz": "Faraz qilaylik, Falesning boʻyi bir metr-u sakson santimetr, soyasi esa ikki metr-u qirq santimetr.",
+   "check": "Falesning soyasi oʻzidan UZUN boʻlsin; har birida bitta soya"
+  },
+  {
+   "n": "7",
+   "part": "1-qism",
+   "time": "0:24-0:28",
+   "what": "6-kadr qotadi; ustida yozuvlar paydo boʻladi: «1,8 m», «2,4 m», keyin «3 : 4».",
+   "method": "Editor",
+   "model": "—",
+   "emotion": "tushunish",
+   "voice_uz": "Nisbat — uchga toʻrt. Har toʻrt metr soyaga uch metr balandlik.",
+   "check": "CapCutʼda: 6-kadrning oxirgi tasviri Freeze; sonlar vergul bilan (1,8 — nuqta emas)"
+  },
+  {
+   "n": "8",
+   "part": "1-qism",
+   "time": "0:28-0:33",
+   "what": "Past burchakdan: piramidaning ulkan soyasi qum boʻylab choʻzilgan, uning uchida Fales kichkina, uning soyasi ham xuddi shu tomonga.",
+   "method": "Frames to Video",
+   "model": "Quality",
+   "attach": [
+    "PYRAMID",
+    "THALES"
+   ],
+   "frame_prompt": "Low wide vertical shot from the tip of the pyramid's long triangular shadow on the sand, looking back toward the bright pyramid. At the very tip of the dark shadow stands the scholar in the blue cloak, small, with his own short shadow pointing in exactly the same direction as the pyramid's. Exactly one person.",
+   "video_prompt": "Slow push-in toward the scholar as he looks from his own small shadow to the huge shadow of the pyramid beside him, then back, and nods once. The two shadows lie perfectly parallel. Audio: wind dropping to near silence, one low resonant tone from the desert. No speech, no music.",
+   "emotion": "«aha!» — burilish nuqtasi",
+   "voice_uz": "Sir mana shunda: quyosh hammaga bir xil burchakda tushadi. Falesga ham, piramidaga ham. Demak, nisbat ham bir xil.",
+   "check": "ikkala soya bir yoʻnalishda va parallel; odam bitta"
+  },
+  {
+   "n": "9",
+   "part": "1-qism",
+   "time": "0:33-0:38",
+   "what": "Bola tugunli arqon bilan piramida soyasi boʻylab yugurib, oʻlchab boradi.",
+   "method": "Ingredients to Video",
+   "model": "Fast",
+   "attach": [
+    "BOY",
+    "PYRAMID"
+   ],
+   "video_prompt": "Tracking shot alongside the Egyptian boy as he runs barefoot along the edge of the pyramid's long dark shadow on the sand, laying down the knotted rope length by length and marking each length with his heel. Energetic, playful. Audio: running feet on sand, rope slapping, quick breaths. No speech, no music.",
+   "emotion": "quvnoq gʻayrat",
+   "voice_uz": "Endi piramidaning soyasini oʻlchaydi. Aytaylik, bir yuz toʻqson besh metr.",
+   "check": "bola bitta; soya chizigʻi oʻzgarmaydi"
+  },
+  {
+   "n": "10",
+   "part": "1-qism",
+   "time": "0:38-0:42",
+   "what": "Fales tayoq uchi bilan qumga ikki uchburchak chizadi: kichigi va kattasi, bir xil shaklda.",
+   "method": "Frames to Video",
+   "model": "Fast",
+   "attach": [
+    "THALES",
+    "STAFF"
+   ],
+   "frame_prompt": "Top-down shot on smooth sand: the tip of the wooden staff and the scholar's hand; on the sand two right triangles already drawn as clean grooves, one small and one large, the same shape. Only lines, no marks, no symbols, no numbers.",
+   "video_prompt": "The staff tip finishes drawing the long side of the large triangle in the sand, then taps once inside the small triangle and once inside the large one. Audio: the scrape of wood on sand, two soft taps. No speech, no music.",
+   "emotion": "aniqlik",
+   "voice_uz": "Bir yuz toʻqson beshni uchga koʻpaytiramiz, toʻrtga boʻlamiz. Bir yuz qirq olti metr-u yigirma besh santimetr.",
+   "check": "qumda harf yoki raqam paydo boʻlmasin — faqat chiziqlar"
+  },
+  {
+   "n": "11",
+   "part": "1-qism",
+   "time": "0:42-0:46",
+   "what": "Bola choʻqqiga, keyin Falesga qaraydi; hayratdan ogʻzi ochilib qoladi.",
+   "method": "Ingredients to Video",
+   "model": "Quality",
+   "attach": [
+    "BOY",
+    "THALES",
+    "PYRAMID"
+   ],
+   "video_prompt": "Over-the-shoulder of the scholar toward the Egyptian boy. The boy looks up at the apex of the pyramid, then back at the scholar, his mouth slowly falling open in amazement; the scholar gives a calm small nod. Warm golden backlight. Audio: wind, a soft gasp-like breath without words. No speech, no music.",
+   "emotion": "hayrat, gʻurur",
+   "voice_uz": "Piramidaning haqiqiy balandligi taxminan bir yuz qirq olti metr-u oltmish santimetr boʻlgan. Unga tegmasdan ham — deyarli aniq.",
+   "check": "bola gapirmaydi, faqat hayron; Falesda koʻk plashch"
+  },
+  {
+   "n": "12",
+   "part": "1-qism",
+   "time": "0:46-0:51",
+   "what": "Bugun: maktab hovlisi, oʻquvchi qiz oʻz soyasini sariq ruletka bilan oʻlchaydi, orqada maktab binosining uzun soyasi.",
+   "method": "Frames to Video",
+   "model": "Fast",
+   "attach": [
+    "SCHOOLYARD",
+    "GIRL"
+   ],
+   "frame_prompt": "Sunny paved schoolyard, low afternoon sun: the schoolgirl with two braids crouches at the end of her own shadow holding a yellow tape measure stretched along it; behind her the long sharp shadow of the three-storey school building lies across the yard. Exactly one person. No lettering on the building.",
+   "video_prompt": "Match cut feel: the girl pulls the yellow tape measure along her shadow, glances at it, then looks over her shoulder at the long shadow of the school building. Audio: tape measure clicking, distant schoolyard birds. No speech, no music.",
+   "emotion": "yaqinlik — «bu menga ham tegishli»",
+   "voice_uz": "Bu voqea balki rivoyatdir. Lekin usul haqiqiy — va bugun ham ishlaydi.",
+   "check": "qiz bitta; binoda yozuv, bayroq, belgi yoʻq"
+  },
+  {
+   "n": "13",
+   "part": "1-qism",
+   "time": "0:51-0:56",
+   "what": "Qiz oʻrnidan turib kameraga jilmayib qaraydi; kadr qotadi va oxirgi lavha chiqadi.",
+   "method": "Ingredients to Video",
+   "model": "Quality",
+   "attach": [
+    "GIRL",
+    "SCHOOLYARD"
+   ],
+   "video_prompt": "The schoolgirl stands up holding the yellow tape measure, turns to the camera and gives a confident half-smile, as if daring the viewer to try. Hold still on the look. Audio: soft breeze, one tape measure click. No speech, no music.",
+   "emotion": "chaqiriq, ishonch",
+   "voice_uz": "Ertaga quyoshli kunda oʻz maktabingizni oʻlchang. Necha metr chiqdi? Izohda yozing.",
+   "check": "koʻzlari obyektivga qaragan kadrda toʻxtating"
+  },
+  {
+   "n": "14",
+   "part": "1-qism",
+   "time": "0:56-0:59",
+   "what": "Oxirgi lavha: «Bobolar sirri» va «powerty.uz», oltin rangli tasmada.",
+   "method": "Editor",
+   "model": "—",
+   "emotion": "yakun",
+   "voice_uz": "",
+   "check": "rang — matematika oltini #c9923a; narx haqida hech narsa yoʻq"
+  }
+ ],
+ "edit": {
+  "captions": "Qoʻlda yozing: qalin oq harf, qora hoshiya, koʻpi bilan 2 qator, ekranning pastki 20% qismidan yuqorida. 2-kadrda «Mil. avv. VI asr · Misr». 4-kadrda kichik yozuv «rivoyatga koʻra». 6–7-kadrlarda «Boʻy 1,8 m», «Soya 2,4 m», «1,8 : 2,4 = 3 : 4» va kichik «(misol sonlar)». 9-kadrda «Soya ≈ 195 m (misol)». 10-kadrda «195 × 3 ÷ 4 = 146,25 m». 11-kadrda «Haqiqiy: ≈ 146,6 m». Sonlarda doim vergul: 1,8 — 1.8 emas.",
+  "music": "Sokin, sirli musiqa: ud yoki ney ohangi, ovozdan taxminan −18 dB past. 8-kadrda (burilish) musiqa bir soniyaga jim boʻladi, keyin yorugʻroq ohang kiradi. 10-kadrda hisob paytida yengil chertmalar. Veoʼning shamol, qum va arqon tovushlari qolsin.",
+  "cover": "Nano Bananaʼda bitta rasm: past burchakdan oppoq piramida, oldinda qumga sanchilgan tayoq va uning uzun soyasi piramida soyasiga parallel. Ustiga oltin tasmada «Tayoq bilan oʻlchadi», pastroqda «Piramida necha metr?» yozing. 0,5 soniya birinchi kadr boʻlib tursin; birinchi ovoz satri ham shu kadrda boshlanadi.",
+  "post_text_uz": "Unga chiqmasdan ham, tegmasdan ham — piramidaning balandligini topish mumkinmi? Rivoyatga koʻra, Fales buni bitta tayoq va soya bilan qilgan. Ertaga quyoshli kunda oʻz maktabingizni oʻlchang va natijani izohda yozing! #matematika #BobolarSirri #Fales #Powerty",
+  "checklist": [
+   "Har kadrda Fales bitta, koʻk plashch va bronza toʻqa bilan",
+   "Soyalar hamma kadrda bir tomonga tushadi (quyosh doim chapda)",
+   "Piramidada, qumda va maktab binosida hech qanday harf, raqam yoki ieroglif yoʻq",
+   "Ovozda «rivoyatga koʻra» va «faraz qilaylik / aytaylik» soʻzlari bor — misol sonlar haqiqat deb aytilmagan",
+   "Sonlar yozuvlarda vergul bilan: 1,8; 2,4; 146,25; 146,6",
+   "Rasmda sunʼiy harflar, ovozda tushunarsiz gaplar yoʻq",
+   "Oxirgi lavha oltin rangda, «powerty.uz» bilan; narx haqida hech narsa yoʻq"
+  ]
+ }
+}
