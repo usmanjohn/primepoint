@@ -589,7 +589,7 @@
         <span class="section-badge badge-read"><i class="bi bi-book-fill me-1"></i>{{ module.label }}</span>
       {% elif module.kind == 'writing' %}
         <span class="section-badge badge-write"><i class="bi bi-pencil-fill me-1"></i>{{ module.label }}</span>
-      {% elif module.kind == 'rw' %}
+      {% elif module.kind == 'rw' or module.kind == 'verbal' %}
         <span class="section-badge badge-rw"><i class="bi bi-book-fill me-1"></i>{{ module.label }}</span>
       {% else %}
         <span class="section-badge badge-math"><i class="bi bi-calculator-fill me-1"></i>{{ module.label }}</span>
@@ -642,9 +642,13 @@
 <div class="tools-bar">
   <div class="container-fluid px-3">
     <details>
-      <summary><i class="bi bi-rulers me-1"></i>{% trans "Reference sheet & calculator" %}</summary>
+      <summary><i class="bi bi-rulers me-1"></i>{% if exam.is_gmat %}{% trans "Calculator" %}{% else %}{% trans "Reference sheet & calculator" %}{% endif %}</summary>
       {% if module.calculator %}
+      {% if exam.is_gmat %}
+      <div class="mt-2">{% trans "Data Insights allows a basic on-screen calculator (add, subtract, multiply, divide, square root). Quantitative Reasoning does not — work those by hand." %}</div>
+      {% else %}
       <div class="mt-2">{% trans "A calculator is allowed on every Math question. On the real test it is Desmos, built into Bluebook — open it in another tab if you want the same tool." %}</div>
+      {% endif %}
       {% endif %}
       {% if module.reference_sheet %}
       <div class="ref-sheet">
@@ -689,8 +693,8 @@
 
     {% for question in questions %}
     {% with sel_id=selected_choices|get_item:question.id written=written_answers|get_item:question.id passage=passage_map|get_item:question.number %}
-    {% if exam.is_sat %}
-      {# Digital SAT: every question carries its own stimulus, so the passage    #}
+    {% if exam.uses_letters %}
+      {# Digital SAT / GMAT: every question carries its own stimulus, so the passage    #}
       {# sits beside the question in a Bluebook-style pane instead of above a    #}
       {# whole group. Math questions have no passage and fall back to stacked.   #}
       <div class="q-card" id="qcard-{{ question.id }}">

@@ -62,6 +62,39 @@
 {% block content %}
 <div class="container">
   <div class="break-wrap">
+    {% if offer %}
+    {# GMAT Focus: one optional 10-minute break, after section 1 or section 2. #}
+    <div class="break-card">
+      <div class="break-icon"><i class="bi bi-cup-hot-fill"></i></div>
+      <div class="break-title">{% trans "Optional break" %}</div>
+      <div class="break-sub">
+        {% if last_chance %}
+          {% trans "This is your last chance to take the optional 10-minute break. If you continue now, you will finish the test without one." %}
+        {% else %}
+          {% trans "You may take one optional 10-minute break, now or after the next section. If you skip it now, it will be offered again after the next section." %}
+        {% endif %}
+      </div>
+      <ul class="break-rules">
+        <li>{% trans "On the real GMAT this break is optional, lasts 10 minutes, and can be taken once — after the first or the second section." %}</li>
+        <li>{% trans "You cannot go back to a section you have finished." %}</li>
+        <li>{% trans "Your answers are saved." %}</li>
+      </ul>
+      <form method="post" action="{% url 'exam_break' attempt.id %}" class="mt-4 d-grid gap-2">
+        {% csrf_token %}
+        <button type="submit" name="action" value="take" class="btn-auth-primary w-100">
+          <i class="bi bi-cup-hot me-1"></i>{% trans "Take the 10-minute break" %}
+        </button>
+        <button type="submit" name="action" value="skip" class="btn-auth-outline w-100">
+          {% trans "Continue without a break" %} →
+        </button>
+      </form>
+      <div class="break-next">
+        <i class="bi bi-arrow-right-short"></i>
+        {% trans "Next" %}: <strong>{{ next_module.label }}</strong>
+        — {{ next_module.questions_count }} {% trans "questions" %}, {{ next_module.minutes }} {% trans "min" %}
+      </div>
+    </div>
+    {% else %}
     <div class="break-card">
       <div class="break-icon"><i class="bi bi-cup-hot-fill"></i></div>
       <div class="break-title">{% trans "Break" %}</div>
@@ -71,7 +104,11 @@
       </div>
 
       <ul class="break-rules">
+        {% if exam.is_gmat %}
+        <li>{% trans "On the real GMAT this is your one optional break. It lasts 10 minutes." %}</li>
+        {% else %}
         <li>{% trans "On the real test this break is 10 minutes and it is the only one." %}</li>
+        {% endif %}
         <li>{% trans "You cannot go back to the modules you have already finished." %}</li>
         <li>{% trans "Your answers are saved." %}</li>
       </ul>
@@ -89,11 +126,13 @@
         — {{ next_module.questions_count }} {% trans "questions" %}, {{ next_module.minutes }} {% trans "min" %}
       </div>
     </div>
+    {% endif %}
   </div>
 </div>
 {% endblock %}
 
 {% block extra_js %}
+{% if not offer %}
 <script>
 let breakSeconds = {{ seconds_remaining }};
 const clock = document.getElementById('break-clock');
@@ -112,4 +151,5 @@ const breakTimer = setInterval(() => {
   }
 }, 1000);
 </script>
+{% endif %}
 {% endblock %}

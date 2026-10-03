@@ -73,3 +73,16 @@ python manage.py import_examprep examprep/management/commands/_lessons_gmat_verb
 python manage.py import_corner corner/management/commands/_stories_prime_english_81_85.py --author=powerty
 python manage.py import_corner_audio corner/management/commands/audio/prime-english-readings --collection="Prime English Readings"
 python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_english_81_85.py --author=powerty --republish
+python manage.py import_corner corner/management/commands/_stories_prime_english_86_90.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-english-readings --collection="Prime English Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_english_86_90.py --author=powerty --republish
+python manage.py import_corner corner/management/commands/_stories_prime_english_91_95.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-english-readings --collection="Prime English Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_english_91_95.py --author=powerty --republish
+python manage.py import_corner corner/management/commands/_stories_prime_english_96_100.py --author=powerty
+python manage.py import_corner_audio corner/management/commands/audio/prime-english-readings --collection="Prime English Readings"
+python manage.py import_tutorials tutorial/management/commands/_tutorials_prime_english_96_100.py --author=powerty --republish
+python manage.py migrate exam
+python manage.py load_mock exam/data/gmat1_quant.py --expect-questions=21
+python manage.py load_mock exam/data/gmat1_verbal.py --expect-questions=23
+python manage.py load_mock exam/data/gmat1_di.py --expect-questions=20

@@ -48,7 +48,7 @@
       value="{{ choice.id }}"
       {% if sel_id == choice.id %}checked{% endif %}
       onchange="onChoiceChange({{ question.id }}, {{ choice.id }})">
-    <span class="choice-num">{% if exam.is_sat %}{{ forloop.counter|choice_letter }}{% else %}{{ forloop.counter }}{% endif %}</span>
+    <span class="choice-num">{% if exam.uses_letters %}{{ forloop.counter|choice_letter }}{% else %}{{ forloop.counter }}{% endif %}</span>
     {# Choice text is authored HTML: SAT math needs x<sup>2</sup>, fractions and SVG. #}
     <span>{{ choice.text|safe }}</span>
   </label>

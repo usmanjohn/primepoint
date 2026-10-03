@@ -12,6 +12,7 @@ class Exam(models.Model):
     FORMAT_CHOICES = [
         ('topik', 'TOPIK II'),
         ('sat', 'Digital SAT'),
+        ('gmat', 'GMAT Focus Edition'),
     ]
     title = models.CharField(max_length=200)
     language = models.CharField(max_length=20, choices=LANGUAGE_CHOICES, default='korean')
@@ -40,6 +41,20 @@ class Exam(models.Model):
     @property
     def is_sat(self):
         return self.exam_format == 'sat'
+
+    @property
+    def is_gmat(self):
+        return self.exam_format == 'gmat'
+
+    @property
+    def uses_letters(self):
+        """Choices labelled A, B, C… (SAT, GMAT) rather than 1, 2, 3… (TOPIK)."""
+        return self.exam_format in ('sat', 'gmat')
+
+    @property
+    def choice_count(self):
+        """Answer choices per multiple-choice question: the GMAT has five."""
+        return 5 if self.is_gmat else 4
 
     def spine(self):
         """The stage-1 modules, in the order a taker meets them."""
@@ -83,6 +98,9 @@ SECTION_CHOICES = [
     ('math1', 'SAT Math — Module 1'),
     ('math2e', 'SAT Math — Module 2 (lower)'),
     ('math2h', 'SAT Math — Module 2 (upper)'),
+    ('quant', 'GMAT Quantitative Reasoning'),
+    ('verbal', 'GMAT Verbal Reasoning'),
+    ('di', 'GMAT Data Insights'),
 ]
 
 
@@ -99,6 +117,9 @@ class ExamModule(models.Model):
         ('writing', 'Writing'),
         ('rw', 'Reading and Writing'),
         ('math', 'Math'),
+        ('quant', 'Quantitative Reasoning'),
+        ('verbal', 'Verbal Reasoning'),
+        ('di', 'Data Insights'),
     ]
     DIFFICULTY_CHOICES = [
         ('', '—'),
@@ -259,7 +280,15 @@ class ExamAttempt(models.Model):
     # Digital SAT scaled scores
     rw_score = models.IntegerField(null=True, blank=True, help_text='SAT 200–800')
     math_score = models.IntegerField(null=True, blank=True, help_text='SAT 200–800')
-    total_score = models.IntegerField(null=True, blank=True, help_text='SAT 400–1600')
+    total_score = models.IntegerField(null=True, blank=True, help_text='SAT 400–1600 / GMAT 205–805')
+    # GMAT Focus: the taker chooses the order of the three sections, and may take
+    # one optional 10-minute break after the first or the second.
+    section_order = models.CharField(
+        max_length=40, blank=True, help_text='GMAT: module kinds in the chosen order, e.g. "verbal,quant,di"')
+    break_used = models.BooleanField(default=False, help_text='GMAT: the optional break has been taken')
+    quant_score = models.IntegerField(null=True, blank=True, help_text='GMAT 60–90')
+    verbal_score = models.IntegerField(null=True, blank=True, help_text='GMAT 60–90')
+    di_score = models.IntegerField(null=True, blank=True, help_text='GMAT 60–90')
 
     class Meta:
         ordering = ['-start_time']

@@ -113,6 +113,16 @@
       </div>
       {% endif %}
       {% endfor %}
+      {% if exam.is_gmat %}
+      <div class="section-row" style="opacity:0.7;">
+        <div class="section-icon icon-write"><i class="bi bi-cup-hot-fill"></i></div>
+        <div>
+          <div class="section-name">{% trans "Optional break" %}</div>
+          <div class="section-sub">{% trans "One break, after the first or the second section — you decide." %}</div>
+        </div>
+        <div class="section-dur"><i class="bi bi-clock me-1"></i>10 {% trans "min" %}</div>
+      </div>
+      {% endif %}
     </div>
 
     <!-- Rules -->
@@ -124,6 +134,12 @@
         <li class="d-flex gap-2 align-items-start py-2 border-bottom" style="border-color:var(--border) !important;"><i class="bi bi-clock-fill text-accent mt-1"></i>{% trans "Each module has its own clock and cannot be paused. You cannot return to a finished module." %}</li>
         <li class="d-flex gap-2 align-items-start py-2 border-bottom" style="border-color:var(--border) !important;"><i class="bi bi-calculator text-accent mt-1"></i>{% trans "A calculator is allowed on every Math question, and some Math answers are typed in, not chosen." %}</li>
         <li class="d-flex gap-2 align-items-start py-2"><i class="bi bi-bar-chart-line text-accent mt-1"></i>{% trans "You get a 400–1600 score and an explanation for every question you missed." %}</li>
+        {% elif exam.is_gmat %}
+        <li class="d-flex gap-2 align-items-start py-2 border-bottom" style="border-color:var(--border) !important;"><i class="bi bi-arrow-left-right text-accent mt-1"></i>{% trans "You choose the order of the three sections before you start — exactly as on the real GMAT Focus Edition." %}</li>
+        <li class="d-flex gap-2 align-items-start py-2 border-bottom" style="border-color:var(--border) !important;"><i class="bi bi-clock-fill text-accent mt-1"></i>{% trans "Each section has 45 minutes and its own clock. You cannot return to a finished section." %}</li>
+        <li class="d-flex gap-2 align-items-start py-2 border-bottom" style="border-color:var(--border) !important;"><i class="bi bi-calculator text-accent mt-1"></i>{% trans "A basic calculator is allowed in Data Insights only. Every question has five answer choices." %}</li>
+        <li class="d-flex gap-2 align-items-start py-2 border-bottom" style="border-color:var(--border) !important;"><i class="bi bi-info-circle text-accent mt-1"></i>{% trans "The real test adapts to you question by question; this mock is a fixed paper. Your 205–805 score is therefore an estimate of a band, not a prediction of a number." %}</li>
+        <li class="d-flex gap-2 align-items-start py-2"><i class="bi bi-bar-chart-line text-accent mt-1"></i>{% trans "You get three section scores (60–90), an estimated total and an explanation for every question." %}</li>
         {% else %}
         <li class="d-flex gap-2 align-items-start py-2 border-bottom" style="border-color:var(--border) !important;"><i class="bi bi-arrow-right-circle-fill text-accent mt-1"></i>{% trans "Sections are completed in order: Listening → Reading → Writing" %}</li>
         <li class="d-flex gap-2 align-items-start py-2 border-bottom" style="border-color:var(--border) !important;"><i class="bi bi-clock-fill text-accent mt-1"></i>{% trans "Timer runs continuously and cannot be paused." %}</li>
@@ -139,7 +155,14 @@
     <div class="card p-4 sticky-top" style="top: 80px; z-index: 10;">
       {% if last_attempt %}
         <h6 class="text-muted text-uppercase mb-3" style="font-size:0.7rem;letter-spacing:1px;">{% trans "Previous Attempt" %}</h6>
-        {% if exam.is_sat %}
+        {% if exam.is_gmat %}
+          <div class="mb-1" style="font-family:'Syne',sans-serif;font-size:2rem;font-weight:700;color:var(--accent);line-height:1;">
+            {{ last_attempt.total_score|default:"—" }}</div>
+          <div class="mb-3 small text-muted">
+            Quant: <strong class="text-accent">{{ last_attempt.quant_score|default:"—" }}</strong> ·
+            Verbal: <strong class="text-accent">{{ last_attempt.verbal_score|default:"—" }}</strong> ·
+            DI: <strong class="text-accent">{{ last_attempt.di_score|default:"—" }}</strong></div>
+        {% elif exam.is_sat %}
           <div class="mb-1" style="font-family:'Syne',sans-serif;font-size:2rem;font-weight:700;color:var(--accent);line-height:1;">
             {{ last_attempt.total_score|default:"—" }}</div>
           <div class="mb-3 small text-muted">
@@ -165,6 +188,14 @@
       {% if user.is_authenticated %}
       <form method="post" action="{% url 'start_exam' exam.id %}">
         {% csrf_token %}
+        {% if gmat_orders %}
+        <label for="gmat-order" class="form-label small text-muted mb-1">{% trans "Section order" %}</label>
+        <select name="order" id="gmat-order" class="form-select form-select-sm mb-3">
+          {% for option in gmat_orders %}
+          <option value="{{ option.value }}">{{ option.label }}</option>
+          {% endfor %}
+        </select>
+        {% endif %}
         <button type="submit" class="btn-auth-primary w-100">
           {% if last_attempt %}{% trans "Retake Exam" %}{% else %}{% trans "Start Exam" %}{% endif %}
         </button>

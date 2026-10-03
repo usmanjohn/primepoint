@@ -90,6 +90,8 @@ JavaScript to a lesson, and never invent a `pe-*` class without adding it to tha
 to the style guide first.
 
 ### Prime English readings (the third leg) — "Prime English Readings" in `corner`
+> ✅ **COMPLETE 2026-10-02** — all 100 readings written, narrated (Jenny/Guy alternating) and
+> linked to their lessons. No next batch; the workflow below is for maintenance.
 Like Prime Korean, **every PE lesson gets a Corner reading with audio**: the tutorial teaches
 the pattern, the practice drills it, the reading shows it living in a text. Collection
 "Prime English Readings" (subject **English**, `order` 6) — story `order` = the lesson number,
@@ -841,6 +843,32 @@ format, add modules — do not fork the views or the templates.
 shown only on the result page. And never reuse a passage or a question from
 `tutorial` SAT-1…100 or the `examprep` `sat` track — a mock made of material the pupil
 has already met measures their memory, not their reading.
+
+## Creating GMAT Focus mock exams (bulk) — the `exam` app
+**Mock 1 shipped 2026-10-03** (user's choice after the GMAT course was complete). Same
+engine as the TOPIK and SAT mocks, with a `gmat` format: **three 45-minute sections —
+Quant 21, Verbal 23, Data Insights 20 — in the order the TAKER chooses** (a select on the
+exam page; `ExamAttempt.section_order`), **one optional 10-minute break** offered after
+section 1 and, if skipped, after section 2 (`break_used`; modules carry `break_minutes = 0`),
+**five choices** (`load_mock` refuses four), calculator only in DI. Scores 60–90 per section
+and 205–805 total from `exam/gmatscore.py` — **always labelled an estimate**: the real test
+adapts per question and GMAC publishes no conversion. Result page: `exam_result_gmat.html`
+(shares `_score_report_css.html` with the SAT report).
+When the user asks (e.g. "make GMAT mock 2"):
+1. Read `exam/data/STYLE_GUIDE_GMAT_MOCK.md` and `toc_gmat_mocks.txt` (never reuse a
+   subject — the toc lists every passage and setting used).
+2. Write `exam/data/gmat<N>_{quant,verbal,di}.py` (exam_number 300 + N), each repeating
+   `EXAM_META` + all three `MODULES` unchanged. Never reuse Prime GMAT or examprep material.
+3. Three scratchpad gates, copied from `verify_gmat_mock1_{quant,verbal,di}.py`: Quant keys
+   recomputed by a second route; DS verdicts from world models (and statements must not
+   contradict — mock 1's first DS7 did); tables/charts parsed back out of the HTML and
+   measured; every two-part pair tested. Prove each bites, then re-read every stem.
+4. ⚠️ **Choices are shown in FILE ORDER** (that is what keeps DS in A–E). Mock 1's first
+   Verbal draft put every key at A, and its Quant never had a key at E. Set Verbal key
+   positions with `KEY_POS`, spread Quant keys through the distractors; the gates and
+   `exam.tests.GmatMockContentTests` refuse a letter that is never the key.
+5. `load_mock … --expect-questions=21/23/20`, mark `[done]`, append the three lines to
+   `temporary.txt`.
 
 ## Creating examprep lessons (bulk) — TOPIK etc.
 `examprep` holds detailed, by-skill exam prep (`ExamTrack` → skill → `Topic` (question-type

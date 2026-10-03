@@ -36,6 +36,7 @@ TUTORIALS = [
             "How to join two sentences without a conjunction — the -ing and -ed openers that "
             "make written English shorter and more elegant."
         ),
+        "stories": ['Standing on the Bridge, She Understood'],
         "content": """
 <h2>PE-86: Participle Clauses</h2>
 
@@ -323,6 +324,7 @@ the Past Perfect (PE-38) in this compact style.</p>
             "More places where English uses a past tense for something that isn't past — it's "
             "time you went, I'd rather you stayed, he acts as if he knew."
         ),
+        "stories": ["It's Time We Talked About Water"],
         "content": """
 <h2>PE-87: The Unreal Past: It's time, would rather, as if</h2>
 
@@ -608,6 +610,7 @@ steps back into the past.</p>
             "The words that hold an essay together — how to add, contrast, explain and conclude, "
             "and the punctuation each one needs."
         ),
+        "stories": ['However, Therefore, Although'],
         "content": """
 <h2>PE-88: Linking Words for Writing: however, therefore, although</h2>
 
@@ -892,6 +895,7 @@ test.</p>
             "How one word becomes six — the prefixes that reverse meaning and the suffixes that "
             "change a word's job. The fastest way to grow your vocabulary."
         ),
+        "stories": ['The Word Factory'],
         "content": """
 <h2>PE-89: Word Formation: Prefixes and Suffixes</h2>
 
@@ -1192,6 +1196,7 @@ meaning completely.</p>
             "Why you make a mistake but do your homework — the word partnerships that make the "
             "difference between correct English and natural English."
         ),
+        "stories": ['Words That Live Together'],
         "content": """
 <h2>PE-90: Collocations: Words That Live Together</h2>
 

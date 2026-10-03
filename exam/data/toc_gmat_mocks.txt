@@ -1,0 +1,16 @@
+# GMAT Focus Edition mocks — exam app. Rules: STYLE_GUIDE_GMAT_MOCK.md
+# exam_number = 300 + N · language english · exam_format gmat
+# Status: [done] = loaded locally and gated; [next] = not written yet.
+
+Mock 1   exam_number 301   files gmat1_{quant,verbal,di}.py                [done 2026-10-03]
+Mock 2   exam_number 302   files gmat2_{quant,verbal,di}.py                [next]
+
+# ── Subjects used (never reuse one in a later mock) ──
+# Mock 1 RC passages: the honeybee waggle dance (von Frisch) · QWERTY and path
+#   dependence (David 1985 vs Liebowitz & Margolis 1990) · the marshmallow test and its
+#   2018 replication · Kodak and the first digital camera (Sasson, 1975)
+# Mock 1 CR settings: FreshCart free delivery · hospital attendance bonus · Navoi Street co-working
+#   centre · Country R cigarette tax · ring-road speed limit · Tashkent scooter sales · walk after
+#   lunch · university bank branch · Firm T doctorates · own-brand price cut · Riverline railway
+# Mock 1 DI settings: Company Z regional beverage sales · Riverside Museum visitors · Orion Ltd
+#   share price · caterer fees · A–B train · Lotus Textiles shipping to Riga

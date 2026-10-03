@@ -38,6 +38,7 @@ TUTORIALS = [
             "The most common speaking task there is — how to describe someone's appearance and "
             "character, a place you love, and an object, using the grammar you already have."
         ),
+        "stories": ['The Room I Grew Up In'],
         "content": """
 <h2>PE-96: Describing People, Places and Things</h2>
 
@@ -323,6 +324,7 @@ and finish with what it means to you.</p>
             "The language of data — rise, fall, peak, remain stable — plus the prepositions that "
             "decide whether something increased BY or TO a number."
         ),
+        "stories": ['What the Numbers Said About Reading'],
         "content": """
 <h2>PE-97: Describing Charts, Trends and Numbers</h2>
 
@@ -600,6 +602,7 @@ LEGEND_HERE
             "Sorry for being late — the grammar of apologies, the tenses that make an excuse "
             "believable, and how to accept an apology graciously."
         ),
+        "stories": ['The Apology That Worked'],
         "content": """
 <h2>PE-98: Making Excuses, Apologising and Explaining</h2>
 
@@ -890,6 +893,7 @@ wrong).</p>
             "The grammar of being friendly — openers, echo questions, so do I / neither do I, "
             "and how to leave a conversation politely."
         ),
+        "stories": ['Waiting for the Bus with a Stranger'],
         "content": """
 <h2>PE-99: Small Talk and Everyday Conversation Grammar</h2>
 
@@ -1157,6 +1161,7 @@ plus <b>inversion</b> (PE-84).</p>
             "The whole course on one page — every tense, every modal, every conditional, the ten "
             "golden rules, and what to do next. The finish line."
         ),
+        "stories": ['The Three Per Cent Who Finish'],
         "content": """
 <h2>PE-100: Your Grammar Toolkit: The One-Page Review of Everything</h2>
 

@@ -156,6 +156,8 @@ AUTHOR:     powerty
 # Mark finished ranges with [done].
 
 ## Prime English Readings — Prime English oʻqish matnlari
+# ✅ COLLECTION COMPLETE 2026-10-02: 100 readings, every one with audio and linked to its
+#    lesson. No [next]. Future work = maintenance only.
 
 ### Block A: Foundations (1–18)  [done — COMPLETE]
 1.  (PE-1 · subject + verb) The First Day                                [done]
@@ -251,27 +253,27 @@ AUTHOR:     powerty
 81. (PE-81 · punctuation) The Comma That Changed the Meaning (Meyn, 2017 — haqiqiy sud ishi)       [done]
 82. (PE-82 · capitals & spelling) Uzbekistan, English, Monday (Samarqand mehmonxonasi)            [done]
 
-### Block G: Advanced and Stylish English (83–92)  — written register from here  [done: 83–85]
+### Block G: Advanced and Stylish English (83–92)  — written register from here  [done — COMPLETE]
 83. (PE-83 · emphasis with do) I Do Believe It Works (direktor ustuni)                           [done]
 84. (PE-84 · inversion) Never Have I Seen Anything Like It (Ugom-Chatqol, sayohat esesi)          [done]
 85. (PE-85 · cleft sentences) What This Town Needs Is a Library (gazetaga xat)                    [done]
-86. (PE-86 · participle clauses) Standing on the Bridge, She Understood                          [next]
-87. (PE-87 · the unreal past) It's Time We Talked About Water
-88. (PE-88 · linking words) However, Therefore, Although
-89. (PE-89 · prefixes & suffixes) The Word Factory
-90. (PE-90 · collocations) Words That Live Together
-91. (PE-91 · formal vs informal) Two Emails, One Message
-92. (PE-92 · the 20 Uzbek-speaker mistakes) The Mistakes We Keep Making
+86. (PE-86 · participle clauses) Standing on the Bridge, She Understood (Emili Roebling, haqiqiy)  [done]
+87. (PE-87 · the unreal past) It's Time We Talked About Water (ustun: tomchilagan kran)          [done]
+88. (PE-88 · linking words) However, Therefore, Although (hisobot: 4 kunlik hafta, 2022)         [done]
+89. (PE-89 · prefixes & suffixes) The Word Factory (tarjimon esesi: -siz/-less)                  [done]
+90. (PE-90 · collocations) Words That Live Together (buxorolik gid daftari)                      [done]
+91. (PE-91 · formal vs informal) Two Emails, One Message (adashgan xat)                          [done]
+92. (PE-92 · the 20 Uzbek-speaker mistakes) The Mistakes We Keep Making (oʻqituvchi sanogʻi)    [done]
 
-### Block H: Grammar at Work (93–100)
-93.  (PE-93 · polite email) The Email That Got a Reply
-94.  (PE-94 · narrative tenses) The Night the Power Went Out
-95.  (PE-95 · opinion & disagreement) I See Your Point, But
-96.  (PE-96 · describing) The Room I Grew Up In
-97.  (PE-97 · charts & trends) What the Numbers Said About Reading
-98.  (PE-98 · excuses & apologies) The Apology That Worked
-99.  (PE-99 · small talk) Waiting for the Bus with a Stranger
-100. (PE-100 · the toolkit) The Three Per Cent Who Finish
+### Block H: Grammar at Work (93–100)  [done — COMPLETE]
+93.  (PE-93 · polite email) The Email That Got a Reply (Sherbekning 12-xati)                     [done]
+94.  (PE-94 · narrative tenses) The Night the Power Went Out (esdalik, buvi hikoyasi)            [done]
+95.  (PE-95 · opinion & disagreement) I See Your Point, But (mahalla yigʻilishi)                 [done]
+96.  (PE-96 · describing) The Room I Grew Up In (Qoʻqon, kafe va soat)                            [done]
+97.  (PE-97 · charts & trends) What the Numbers Said About Reading (kutubxona hisoboti)          [done]
+98.  (PE-98 · excuses & apologies) The Apology That Worked (fotoapparat)                         [done]
+99.  (PE-99 · small talk) Waiting for the Bus with a Stranger (Manchester bekati)                [done]
+100. (PE-100 · the toolkit) The Three Per Cent Who Finish (oʻquvchiga xat)                       [done]
 
 # ↑ PE-100's reading closes the collection the way PK-100's did — it speaks to the
 #   READER, because someone who has read a hundred English texts in order is already

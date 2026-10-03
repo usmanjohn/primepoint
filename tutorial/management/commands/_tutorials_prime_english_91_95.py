@@ -36,6 +36,7 @@ TUTORIALS = [
             "The same message in two registers — how to sound right in an exam essay and right "
             "in a message to a friend."
         ),
+        "stories": ['Two Emails, One Message'],
         "content": """
 <h2>PE-91: Formal vs Informal English</h2>
 
@@ -318,6 +319,7 @@ style for an email to a teacher, a colleague or a shop.</p>
             "The complete checklist — every error that comes from Uzbek, gathered in one place "
             "with the reason behind it and the fix."
         ),
+        "stories": ['The Mistakes We Keep Making'],
         "content": """
 <h2>PE-92: The 20 Mistakes Uzbek Speakers Make Most</h2>
 
@@ -599,6 +601,7 @@ quickly:</p>
             "The email that gets a helpful reply — openings, closings, and the grammar of "
             "polite requests, all in one template you can reuse."
         ),
+        "stories": ['The Email That Got a Reply'],
         "content": """
 <h2>PE-93: Writing an Email: Grammar That Sounds Polite</h2>
 
@@ -860,6 +863,7 @@ LEGEND_HERE
             "How the four past tenses work together to build a story — background, events, "
             "earlier causes and the words that carry a reader along."
         ),
+        "stories": ['The Night the Power Went Out'],
         "content": """
 <h2>PE-94: Telling a Story: Narrative Tenses in Action</h2>
 
@@ -1145,6 +1149,7 @@ creates drama:</p>
             "How to say what you think and say 'no' without offence — the phrases for opinions, "
             "agreement, partial agreement and polite disagreement."
         ),
+        "stories": ['I See Your Point, But'],
         "content": """
 <h2>PE-95: Giving Your Opinion and Disagreeing Politely</h2>
 

@@ -11,7 +11,7 @@ The data file defines:
     EXAM_META = {              # identifies / creates the Exam row
         'title': 'Digital SAT — PrimePoint Mock 1',
         'language': 'english',
-        'exam_format': 'sat',          # 'topik' (default) or 'sat'
+        'exam_format': 'sat',          # 'topik' (default), 'sat' or 'gmat'
         'exam_number': 201,
         'is_published': True,
     }
@@ -32,7 +32,7 @@ The data file defines:
         {'section': 'rw1', 'number': 1,
          'passage': '<p>...</p>',             # optional: this question's own stimulus
          'question_text': '...',              # HTML allowed
-         'choices': ['a', 'b', 'c', 'd'],     # omit for grid-in / essay
+         'choices': ['a', 'b', 'c', 'd'],     # omit for grid-in / essay (GMAT: five)
          'correct': 2,                        # 1-based index into choices
          'answer_type': 'mcq',                # 'mcq' | 'grid' | 'essay'
          'accepted': ['2/3', '0.667'],        # grid-in only
@@ -82,7 +82,11 @@ class Command(BaseCommand):
     def _validate(self, meta, modules, questions):
         """Refuse anything that would ship a broken exam. Loud, before any write."""
         errors = []
-        is_sat = meta.get('exam_format', 'topik') == 'sat'
+        exam_format = meta.get('exam_format', 'topik')
+        is_sat = exam_format == 'sat'
+        is_gmat = exam_format == 'gmat'
+        # The GMAT has five answer choices on every multiple-choice question.
+        n_choices = 5 if is_gmat else 4
         codes = {m['code'] for m in modules}
 
         for m in modules:
@@ -106,10 +110,10 @@ class Command(BaseCommand):
             answer_type = q.get('answer_type', 'essay' if q.get('is_writing') else 'mcq')
             if answer_type == 'mcq':
                 choices = q.get('choices', [])
-                if len(choices) != 4:
-                    errors.append(f'{where}: needs exactly 4 choices, got {len(choices)}')
-                if q.get('correct') not in (1, 2, 3, 4):
-                    errors.append(f'{where}: correct must be 1–4')
+                if len(choices) != n_choices:
+                    errors.append(f'{where}: needs exactly {n_choices} choices, got {len(choices)}')
+                if q.get('correct') not in range(1, n_choices + 1):
+                    errors.append(f'{where}: correct must be 1–{n_choices}')
                 if len(set(choices)) != len(choices):
                     errors.append(f'{where}: two choices are identical')
             elif answer_type == 'grid':
@@ -122,12 +126,14 @@ class Command(BaseCommand):
                 if q.get('choices'):
                     errors.append(f'{where}: a grid-in cannot have choices')
 
-            if is_sat and answer_type != 'essay' and not q.get('explanation', '').strip():
-                errors.append(f'{where}: every SAT question needs an Uzbek explanation')
+            if (is_sat or is_gmat) and answer_type != 'essay' and not q.get('explanation', '').strip():
+                errors.append(f'{where}: every {exam_format.upper()} question needs an Uzbek explanation')
+            if is_gmat and answer_type != 'mcq':
+                errors.append(f'{where}: GMAT questions are multiple choice only')
             # A shuffled choice list makes "Choice B" meaningless, and the SAT
             # explanations quote the choice text anyway — catch the habit early.
             explanation = q.get('explanation', '')
-            for bad in ('Choice A', 'Choice B', 'Choice C', 'Choice D', 'variant A)'):
+            for bad in ('Choice A', 'Choice B', 'Choice C', 'Choice D', 'Choice E', 'variant A)'):
                 if bad in explanation:
                     errors.append(f'{where}: explanation cites a choice letter ({bad!r}) — quote the text')
 

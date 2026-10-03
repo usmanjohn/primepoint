@@ -10,7 +10,7 @@ from django.test import TestCase
 from django.urls import reverse
 
 from panda.models import Panda
-from exam import satscore
+from exam import gmatscore, satscore
 from exam.gridin import grid_answer_matches, parse
 from exam.models import (
     Exam, ExamModule, ExamQuestion, ExamChoice, ExamAttempt, ExamAnswer,
@@ -514,3 +514,218 @@ class SatMockContentTests(TestCase):
                 self.assertEqual(len(q['choices']), 4, where)
                 self.assertEqual(len(set(q['choices'])), 4, where)
                 self.assertIn(q['correct'], (1, 2, 3, 4), where)
+
+
+
+class GmatScaleTests(TestCase):
+    def test_section_runs_60_to_90_and_never_drops(self):
+        for total in (20, 21, 23):
+            scores = [gmatscore.section(raw, total) for raw in range(total + 1)]
+            self.assertEqual((scores[0], scores[-1]), (60, 90))
+            self.assertEqual(scores, sorted(scores))
+
+    def test_total_runs_205_to_805_and_ends_in_5(self):
+        self.assertEqual(gmatscore.total(60, 60, 60), 205)
+        self.assertEqual(gmatscore.total(90, 90, 90), 805)
+        for q, v, d in ((75, 80, 70), (81, 79, 84), (62, 88, 71)):
+            self.assertEqual(gmatscore.total(q, v, d) % 10, 5)
+
+    def test_sections_weigh_equally(self):
+        self.assertEqual(gmatscore.total(90, 60, 60), gmatscore.total(60, 60, 90))
+
+
+class GmatFlowTests(TestCase):
+    """Build a miniature GMAT Focus exam and walk a taker through it."""
+
+    def setUp(self):
+        self.user = User.objects.create_user('gtaker', password='pw')
+        self.panda, _ = Panda.objects.get_or_create(profile=self.user.profile)
+        self.exam = Exam.objects.create(
+            title='Test GMAT', language='english', exam_format='gmat',
+            exam_number=9301, is_published=True,
+        )
+        for order, kind in enumerate(('quant', 'verbal', 'di'), start=1):
+            ExamModule.objects.create(
+                exam=self.exam, code=kind, kind=kind, stage=1, label=kind,
+                minutes=45, order=order, calculator=(kind == 'di'))
+            for n in range(1, 3):
+                question = ExamQuestion.objects.create(
+                    exam=self.exam, section=kind, number=n, question_text=f'{kind} {n}',
+                    skill='Skill', explanation='izoh')
+                for i in range(5):
+                    ExamChoice.objects.create(question=question, text=f'c{i}', is_correct=(i == 0))
+        self.client.login(username='gtaker', password='pw')
+
+    def _attempt(self):
+        return ExamAttempt.objects.filter(panda=self.panda, exam=self.exam).latest('start_time')
+
+    def _submit(self, attempt, correct_count):
+        data = {}
+        for i, question in enumerate(attempt.current_module.questions().order_by('number')):
+            choice = question.choices.filter(is_correct=(i < correct_count)).first()
+            data[f'q{question.id}'] = choice.id
+        return self.client.post(reverse('submit_section', args=[attempt.id]), data)
+
+    def test_the_taker_chooses_the_section_order(self):
+        self.client.post(reverse('start_exam', args=[self.exam.id]), {'order': 'verbal,di,quant'})
+        attempt = self._attempt()
+        self.assertEqual(attempt.section_order, 'verbal,di,quant')
+        self.assertEqual(attempt.current_module.kind, 'verbal')
+
+    def test_a_forged_order_falls_back_to_the_default(self):
+        self.client.post(reverse('start_exam', args=[self.exam.id]), {'order': 'quant,quant,quant'})
+        attempt = self._attempt()
+        self.assertEqual(attempt.section_order, 'quant,verbal,di')
+        self.assertEqual(attempt.current_module.kind, 'quant')
+
+    def test_the_break_is_offered_twice_and_taken_once(self):
+        self.client.post(reverse('start_exam', args=[self.exam.id]), {'order': 'verbal,di,quant'})
+        attempt = self._attempt()
+        self._submit(attempt, 2)
+        attempt.refresh_from_db()
+        # Offered, not taken: status break, no clock yet, next section waiting.
+        self.assertEqual((attempt.status, attempt.break_until, attempt.current_module.kind),
+                         ('break', None, 'di'))
+        page = self.client.get(reverse('exam_break', args=[attempt.id]))
+        self.assertContains(page, 'Continue without a break')
+        self.client.post(reverse('exam_break', args=[attempt.id]), {'action': 'skip'})
+        attempt.refresh_from_db()
+        self.assertEqual((attempt.status, attempt.current_module.kind, attempt.break_used),
+                         ('in_progress', 'di', False))
+
+        self._submit(attempt, 1)
+        attempt.refresh_from_db()
+        self.assertEqual(attempt.status, 'break')     # offered again after section 2
+        self.client.post(reverse('exam_break', args=[attempt.id]), {'action': 'take'})
+        attempt.refresh_from_db()
+        self.assertTrue(attempt.break_used)
+        self.assertIsNotNone(attempt.break_until)
+        self.client.post(reverse('exam_break', args=[attempt.id]))   # "I'm ready"
+        attempt.refresh_from_db()
+        self.assertEqual((attempt.status, attempt.current_module.kind), ('in_progress', 'quant'))
+
+    def test_no_second_break_once_one_was_taken(self):
+        self.client.post(reverse('start_exam', args=[self.exam.id]))
+        attempt = self._attempt()
+        self._submit(attempt, 2)
+        self.client.post(reverse('exam_break', args=[attempt.id]), {'action': 'take'})
+        self.client.post(reverse('exam_break', args=[attempt.id]))
+        attempt.refresh_from_db()
+        self._submit(attempt, 2)
+        attempt.refresh_from_db()
+        self.assertEqual(attempt.status, 'in_progress')   # straight into section 3
+
+    def test_full_sitting_scores_three_sections_and_a_total(self):
+        self.client.post(reverse('start_exam', args=[self.exam.id]), {'order': 'di,quant,verbal'})
+        attempt = self._attempt()
+        self._submit(attempt, 2)                                            # DI 2/2
+        self.client.post(reverse('exam_break', args=[attempt.id]), {'action': 'skip'})
+        attempt.refresh_from_db()
+        self._submit(attempt, 1)                                            # Quant 1/2
+        self.client.post(reverse('exam_break', args=[attempt.id]), {'action': 'skip'})
+        attempt.refresh_from_db()
+        response = self._submit(attempt, 0)                                 # Verbal 0/2
+        attempt.refresh_from_db()
+        self.assertTrue(attempt.is_completed)
+        self.assertEqual((attempt.di_score, attempt.quant_score, attempt.verbal_score), (90, 75, 60))
+        self.assertEqual(attempt.total_score, gmatscore.total(75, 60, 90))
+        self.assertRedirects(response, reverse('exam_result', args=[attempt.id]))
+        page = self.client.get(reverse('exam_result', args=[attempt.id]))
+        self.assertTemplateUsed(page, 'exam/exam_result_gmat.html')
+        self.assertContains(page, '205 – 805')
+
+    def test_detail_page_offers_six_orders(self):
+        page = self.client.get(reverse('exam_detail', args=[self.exam.id]))
+        self.assertEqual(page.content.decode().count('<option value='), 6)
+
+
+class GmatLoaderTests(LoadMockGateTests):
+    def _gmat(self, **overrides):
+        question = {'section': 'quant', 'number': 1, 'question_text': 'q',
+                    'choices': ['a', 'b', 'c', 'd', 'e'], 'correct': 5,
+                    'explanation': 'izoh', 'skill': 'Algebra'}
+        question.update(overrides)
+        return question
+
+    def test_five_choices_load(self):
+        self._run([self._gmat()], exam_format='gmat', exam_number=9302)
+        self.assertEqual(ExamChoice.objects.filter(
+            question__exam__exam_number=9302, is_correct=True).get().text, 'e')
+
+    def test_four_choices_are_refused(self):
+        with self.assertRaises(CommandError):
+            self._run([self._gmat(choices=['a', 'b', 'c', 'd'], correct=1)],
+                      exam_format='gmat', exam_number=9303)
+
+    def test_missing_explanation_is_refused(self):
+        with self.assertRaises(CommandError):
+            self._run([self._gmat(explanation='')], exam_format='gmat', exam_number=9304)
+
+
+
+class GmatMockContentTests(TestCase):
+    """The shape of every shipped GMAT mock, checked without the database.
+
+    The scratchpad answer gates recompute the keys; this locks the blueprint so a later
+    edit cannot drop a question, lose a choice, or put every key under the same letter.
+    MOCKS is read from the files on disk, so mock 2 is covered the day it appears.
+    """
+    SECTIONS = [('quant', 21), ('verbal', 23), ('di', 20)]
+    BLUEPRINTS = {
+        'quant': {'Number Properties': 4, 'Percents, Ratios and Rates': 5, 'Algebra': 4,
+                  'Word Problems': 4, 'Statistics and Counting': 4},
+        'di': {'Data Sufficiency': 7, 'Table Analysis': 3, 'Graphics Interpretation': 4,
+               'Two-Part Analysis': 3, 'Multi-Source Reasoning': 3},
+    }
+
+    def _numbers(self):
+        import glob, os, re
+        from django.conf import settings
+        found = sorted(int(re.search(r'gmat(\d+)_quant', p).group(1)) for p in
+                       glob.glob(os.path.join(settings.BASE_DIR, 'exam', 'data', 'gmat*_quant.py')))
+        self.assertTrue(found, 'no GMAT mock data files found')
+        return found
+
+    def _load(self, name):
+        import importlib.util, os
+        from django.conf import settings
+        path = os.path.join(settings.BASE_DIR, 'exam', 'data', f'{name}.py')
+        spec = importlib.util.spec_from_file_location(name, path)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module
+
+    def test_sections_sizes_choices_and_explanations(self):
+        from collections import Counter
+        for n in self._numbers():
+            for section, size in self.SECTIONS:
+                mod = self._load(f'gmat{n}_{section}')
+                self.assertEqual(len(mod.QUESTIONS), size, f'gmat{n}_{section}')
+                self.assertEqual(mod.EXAM_META['exam_number'], 300 + n)
+                for q in mod.QUESTIONS:
+                    self.assertEqual(q['section'], section)
+                    self.assertEqual(len(set(q['choices'])), 5, (section, q['number']))
+                    self.assertIn(q['correct'], range(1, 6))
+                    self.assertTrue(q['explanation'].strip())
+                positions = Counter(q['correct'] for q in mod.QUESTIONS)
+                self.assertEqual(len(positions), 5, f'gmat{n}_{section}: some letter is never the key')
+                if section in self.BLUEPRINTS:
+                    self.assertEqual(Counter(q['skill'] for q in mod.QUESTIONS), self.BLUEPRINTS[section])
+
+    def test_the_three_files_agree_on_the_exam_and_its_modules(self):
+        for n in self._numbers():
+            mods = [self._load(f'gmat{n}_{s}') for s, _ in self.SECTIONS]
+            for mod in mods[1:]:
+                self.assertEqual(mod.EXAM_META, mods[0].EXAM_META)
+                self.assertEqual(mod.MODULES, mods[0].MODULES)
+            minutes = {m['kind']: m['minutes'] for m in mods[0].MODULES}
+            self.assertEqual(minutes, {'quant': 45, 'verbal': 45, 'di': 45})
+            calc = {m['kind'] for m in mods[0].MODULES if m.get('calculator')}
+            self.assertEqual(calc, {'di'})
+
+    def test_data_sufficiency_keeps_the_standard_order(self):
+        for n in self._numbers():
+            mod = self._load(f'gmat{n}_di')
+            for q in mod.QUESTIONS:
+                if q['skill'] == 'Data Sufficiency':
+                    self.assertEqual(q['choices'], mod.DS_CHOICES)

@@ -20,45 +20,38 @@
     <div class="sc-card-label">{{ exam.title }}</div>
     {% if attempt.total_score %}
       <div class="sc-total">{{ attempt.total_score }}</div>
-      <div class="sc-range">400 – 1600</div>
+      <div class="sc-range">205 – 805 · {% trans "estimated" %}</div>
       <div class="sc-band">{{ band }}</div>
     {% else %}
       <div class="sc-total">—</div>
-      <div class="sc-range">{% trans "Not enough modules finished to score." %}</div>
+      <div class="sc-range">{% trans "Not enough sections finished to score." %}</div>
     {% endif %}
   </div>
 
-  <!-- ── The two halves ─────────────────────────────── -->
+  <!-- ── The three sections, in the order this taker chose ── -->
   <div class="sc-split">
-    {% for section in sat_sections %}
+    {% for section in gmat_sections %}
     <div class="sc-card">
-      <div class="sc-card-label">{{ section.label }}</div>
+      <div class="sc-card-label">{{ forloop.counter }}. {{ section.label }}</div>
       <div class="sc-card-score">{{ section.scaled }}</div>
       <div class="sc-card-raw">
-        {{ section.raw }} / {{ section.total }} {% trans "correct" %} · 200–800
+        {{ section.raw }} / {{ section.total }} {% trans "correct" %} · 60–90
       </div>
-      {% if section.route == 'hard' %}
-        <span class="sc-route sc-route-hard">
-          <i class="bi bi-arrow-up-right"></i>{% trans "Upper module 2" %}</span>
-      {% else %}
-        <span class="sc-route sc-route-easy">
-          <i class="bi bi-arrow-down-right"></i>{% trans "Lower module 2" %}</span>
-      {% endif %}
     </div>
     {% endfor %}
   </div>
 
   <div class="sc-note">
-    <strong>{% trans "Why the route matters." %}</strong>
-    {% blocktrans %}The digital SAT chooses your second module from how you did in the first. The upper module is harder but reaches 800; the lower one cannot go above about 600. So two people with the same number of correct answers can finish on different scores — and the way up is to get more of module 1 right.{% endblocktrans %}
-    <br>
-    <em>{% blocktrans %}This is an estimate. College Board equates every real form separately, so treat the number as a band, not a promise.{% endblocktrans %}</em>
+    <strong>{% trans "How to read this score." %}</strong>
+    {% blocktrans %}The three sections weigh equally in the total. On the real GMAT Focus Edition every question is chosen for you from how you answered the one before, and GMAC does not publish how answers become scores — so this mock, a fixed paper, can only estimate. Read the number as a band. The section cards and the skill bars below tell you more than the total: they show where the next month of work should go.{% endblocktrans %}
   </div>
 
-  <!-- ── What you were strong and weak at ───────────── -->
-  {% for section in sat_sections %}
+  <!-- ── Strong and weak skills, then every question ─── -->
+  {% for section in gmat_sections %}
   <div class="sc-section-head">
-    {% if section.kind == 'math' %}<i class="bi bi-calculator-fill"></i>{% else %}<i class="bi bi-book-fill"></i>{% endif %}
+    {% if section.kind == 'quant' %}<i class="bi bi-calculator-fill"></i>
+    {% elif section.kind == 'di' %}<i class="bi bi-bar-chart-fill"></i>
+    {% else %}<i class="bi bi-book-fill"></i>{% endif %}
     {{ section.label }}
   </div>
 
@@ -73,23 +66,17 @@
   </div>
   {% endfor %}
 
-  <!-- ── Question by question ───────────────────────── -->
-  {% for block in section.review %}
   <details class="rv-module">
     <summary>
-      <i class="bi bi-chevron-right me-1"></i>{{ block.module.label }} —
-      {% trans "review every question" %}
+      <i class="bi bi-chevron-right me-1"></i>{{ section.label }} — {% trans "review every question" %}
     </summary>
     <div class="pt-2">
-      {% for question in block.questions %}
+      {% for question in section.questions %}
       {% with answer=answer_map|get_item:question.id %}
       <div class="rv-q {% if answer.is_correct %}correct{% elif answer %}wrong{% else %}blank{% endif %}">
         <div class="rv-head">
           <span>{% trans "Question" %} {{ question.number }}</span>
           {% if question.skill %}<span class="rv-skill">{{ question.skill }}</span>{% endif %}
-          {% if question.answer_type == 'grid' %}
-            <span class="rv-skill"><i class="bi bi-input-cursor-text"></i> {% trans "grid-in" %}</span>
-          {% endif %}
           {% if answer.is_correct %}
             <span class="rv-mark ok ms-auto"><i class="bi bi-check-circle-fill"></i></span>
           {% else %}
@@ -108,13 +95,7 @@
         <div class="rv-answers">
           <div>
             <span class="lbl">{% trans "Your answer" %}</span>
-            {% if question.answer_type == 'grid' %}
-              {{ answer.written_answer|default:"—" }}
-            {% elif answer.selected_choice %}
-              {{ answer.selected_choice.text|safe }}
-            {% else %}
-              —
-            {% endif %}
+            {% if answer.selected_choice %}{{ answer.selected_choice.text|safe }}{% else %}—{% endif %}
           </div>
           <div>
             <span class="lbl">{% trans "Correct" %}</span>
@@ -130,7 +111,6 @@
       {% endfor %}
     </div>
   </details>
-  {% endfor %}
   {% endfor %}
 
   <div class="d-flex gap-2 mt-4">

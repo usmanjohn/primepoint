@@ -8,7 +8,9 @@ from django.http import JsonResponse
 from django.utils import timezone
 
 from panda.models import Panda
-from . import satscore
+from itertools import permutations
+
+from . import gmatscore, satscore
 from .models import (
     Exam, ExamModule, ExamModuleAttempt, ExamPassage, ExamQuestion, ExamChoice,
     ExamAttempt, ExamAnswer,
@@ -36,8 +38,32 @@ def _route_target(attempt, module):
     return branches.filter(difficulty=wanted).first() or branches.first()
 
 
+def _gmat_order(exam):
+    """The section kinds of a GMAT exam, in the exam's default order."""
+    return [m.kind for m in exam.spine()]
+
+
+def gmat_orders(exam):
+    """Every section order a GMAT taker may choose (all permutations: 6)."""
+    return [list(p) for p in permutations(_gmat_order(exam))]
+
+
+def _attempt_order(attempt):
+    """The section kinds in the order THIS taker chose (GMAT), else the spine's."""
+    if attempt.exam.is_gmat and attempt.section_order:
+        return attempt.section_order.split(',')
+    return _gmat_order(attempt.exam)
+
+
 def _next_module(attempt, module):
     """What follows `module` — its stage-2 branch, or the next kind. None = done."""
+    if attempt.exam.is_gmat:
+        order = _attempt_order(attempt)
+        try:
+            following = order[order.index(module.kind) + 1]
+        except (ValueError, IndexError):
+            return None
+        return attempt.exam.modules.filter(stage=1, kind=following).first()
     if module.stage == 1:
         branch = _route_target(attempt, module)
         if branch:
@@ -125,7 +151,30 @@ def _section_result(attempt, kind):
     }
 
 
+def _gmat_section_result(attempt, kind):
+    """Raw and estimated 60–90 score for one GMAT section."""
+    row = attempt.module_attempts.filter(module__kind=kind).select_related('module').first()
+    if not row:
+        return None
+    raw, total = row.raw_score or 0, row.total_questions or 0
+    return {
+        'kind': kind,
+        'label': gmatscore.SECTION_LABELS[kind],
+        'label_uz': gmatscore.SECTION_LABELS_UZ[kind],
+        'raw': raw,
+        'total': total,
+        'scaled': gmatscore.section(raw, total),
+        'modules': [row],
+    }
+
+
 def _score_attempt(attempt):
+    if attempt.exam.is_gmat:
+        results = {kind: _gmat_section_result(attempt, kind) for kind in gmatscore.SECTION_KINDS}
+        for kind, result in results.items():
+            setattr(attempt, f'{kind}_score', result['scaled'] if result else None)
+        attempt.total_score = gmatscore.total(attempt.quant_score, attempt.verbal_score, attempt.di_score)
+        return results
     if not attempt.exam.is_sat:
         return None
     rw = _section_result(attempt, 'rw')
@@ -192,6 +241,11 @@ def exam_detail(request, pk):
         'last_attempt': last_attempt,
         'spine': spine,
         'is_adaptive': exam.modules.filter(stage=2).exists(),
+        'gmat_orders': [
+            {'value': ','.join(order),
+             'label': ' → '.join(gmatscore.SECTION_LABELS[k] for k in order)}
+            for order in gmat_orders(exam)
+        ] if exam.is_gmat else [],
         # Legacy TOPIK counts, still used by the non-SAT half of the template.
         'listening_count': exam.questions.filter(section='listening').count(),
         'reading_count': exam.questions.filter(section='reading').count(),
@@ -220,7 +274,15 @@ def start_exam(request, pk):
         current_section='completed', status='completed', completed_at=timezone.now(),
     )
 
-    attempt = ExamAttempt.objects.create(panda=panda, exam=exam, current_section=first.code)
+    section_order = ''
+    if exam.is_gmat:
+        valid = {','.join(order) for order in gmat_orders(exam)}
+        chosen = request.POST.get('order', '')
+        section_order = chosen if chosen in valid else ','.join(_gmat_order(exam))
+        first = exam.modules.filter(stage=1, kind=section_order.split(',')[0]).first()
+
+    attempt = ExamAttempt.objects.create(
+        panda=panda, exam=exam, current_section=first.code, section_order=section_order)
     _start_module(attempt, first)
     return redirect('take_section', attempt_id=attempt.id)
 
@@ -258,6 +320,9 @@ def take_section(request, attempt_id):
     written_answers = {a.question_id: a.written_answer for a in existing_answers if a.written_answer}
 
     spine = list(attempt.exam.spine())
+    if attempt.exam.is_gmat:
+        kinds = _attempt_order(attempt)
+        spine = sorted(spine, key=lambda m: kinds.index(m.kind) if m.kind in kinds else 99)
     position = next((i for i, m in enumerate(spine) if m.kind == module.kind), 0)
     steps_per_kind = 2 if attempt.exam.modules.filter(kind=module.kind, stage=2).exists() else 1
     step = position * steps_per_kind + module.stage
@@ -328,6 +393,19 @@ def submit_section(request, attempt_id):
         _finish(attempt)
         return redirect('exam_result', attempt_id=attempt.id)
 
+    if attempt.exam.is_gmat:
+        done = attempt.module_attempts.filter(submitted_at__isnull=False).count()
+        if not attempt.break_used and done in (1, 2):
+            # Offer the one optional break: break_until stays empty until it is taken.
+            attempt.current_module = following
+            attempt.current_section = following.code
+            attempt.status = 'break'
+            attempt.break_until = None
+            attempt.save(update_fields=['current_module', 'current_section', 'status', 'break_until'])
+            return redirect('exam_break', attempt_id=attempt.id)
+        _start_module(attempt, following)
+        return redirect('take_section', attempt_id=attempt.id)
+
     if module.break_minutes:
         attempt.current_module = following
         attempt.current_section = following.code
@@ -353,6 +431,22 @@ def exam_break(request, attempt_id):
         return redirect('exam_result', attempt_id=attempt.id)
     if attempt.status != 'break' or not attempt.current_module:
         return redirect('take_section', attempt_id=attempt.id)
+
+    if attempt.exam.is_gmat and not attempt.break_until:
+        # The optional break is on offer, not yet taken.
+        if request.method == 'POST' and request.POST.get('action') == 'take':
+            attempt.break_used = True
+            attempt.break_until = timezone.now() + timedelta(minutes=10)
+            attempt.save(update_fields=['break_used', 'break_until'])
+            return redirect('exam_break', attempt_id=attempt.id)
+        if request.method == 'POST':
+            _start_module(attempt, attempt.current_module)
+            return redirect('take_section', attempt_id=attempt.id)
+        done = attempt.module_attempts.filter(submitted_at__isnull=False).count()
+        return render(request, 'exam/exam_break.html', {
+            'attempt': attempt, 'exam': attempt.exam, 'next_module': attempt.current_module,
+            'offer': True, 'last_chance': done >= 2,
+        })
 
     resuming = request.method == 'POST' or attempt.break_seconds_remaining() <= 0
     if resuming:
@@ -454,6 +548,25 @@ def exam_result(request, attempt_id):
         'exam': attempt.exam,
         'answer_map': answer_map,
     }
+
+    if attempt.exam.is_gmat:
+        passages = {
+            (p.section, p.question_from): p
+            for p in ExamPassage.objects.filter(exam=attempt.exam)
+        }
+        sections = []
+        for kind in _attempt_order(attempt):
+            result = _gmat_section_result(attempt, kind)
+            if not result:
+                continue
+            result['breakdown'] = _domain_breakdown(attempt, kind)
+            questions = list(result['modules'][0].module.questions().prefetch_related('choices'))
+            for question in questions:
+                question.stimulus = passages.get((question.section, question.number))
+            result['questions'] = questions
+            sections.append(result)
+        context.update({'gmat_sections': sections, 'band': gmatscore.band(attempt.total_score)})
+        return render(request, 'exam/exam_result_gmat.html', context)
 
     if attempt.exam.is_sat:
         passages = {
