@@ -1,0 +1,280 @@
+{
+ "id": "2026-10-03-mantiq-amudaryo",
+ "number": 1,
+ "date": "2026-10-03",
+ "series": "Mantiq maydoni",
+ "title_uz": "Amudaryo kechuvi: boʻri, echki va karam",
+ "logline": "Tong. Amudaryo boʻyi. Rustam aka boʻri, echki va karamni narigi qirgʻoqqa oʻtkazishi kerak, lekin qayiqqa oʻzi va yana bittasi sigʻadi. Ikki marta urinib, ikki marta yutqazadi va tomoshabindan soʻraydi: necha marta? (Namuna paket: faqat 1-qism.)",
+ "parts": [
+  {
+   "name": "1-qism",
+   "length": "46 soniya"
+  }
+ ],
+ "sources": [
+  "logic/management/commands/_puzzles_logic_01_08.py (puzzle 3)"
+ ],
+ "facts": [
+  {
+   "claim": "Eng kam oʻtishlar soni — 7 (answer_key '7'); oynadagi aksi boʻlgan ikkinchi yechim ham 7",
+   "source": "logic/management/commands/_puzzles_logic_01_08.py"
+  },
+  {
+   "claim": "Jumboq Alkuin Yorklikning «Propositiones ad acuendos juvenes» kitobida bor (taxm. 800-yil), demak «1200 yildan beri» toʻgʻri",
+   "source": "Propositiones ad acuendos juvenes, 18-masala"
+  }
+ ],
+ "emotion_arc": [
+  {
+   "time": "0–4 s",
+   "beat": "Ilmoq: uchta koʻz",
+   "feel": "qiziqish"
+  },
+  {
+   "time": "4–14 s",
+   "beat": "Daryo va kichkina qayiq",
+   "feel": "hayrat, yengil kulgi"
+  },
+  {
+   "time": "14–24 s",
+   "beat": "Qoidalar",
+   "feel": "kulgi, keyin xavotir"
+  },
+  {
+   "time": "24–36 s",
+   "beat": "Ikki muvaffaqiyatsiz urinish",
+   "feel": "taranglik, kulgi"
+  },
+  {
+   "time": "36–46 s",
+   "beat": "Savol",
+   "feel": "«men yecha olaman»"
+  }
+ ],
+ "style_line": "Cinematic photoreal, warm dawn golden light, soft haze over the water, 35mm film look, muted earth tones with khaki-green river water, gentle Central Asian folk-tale mood. No text, no letters, no watermark.",
+ "ingredients": [
+  {
+   "name": "FARMER",
+   "prompt": "Character reference sheet of one Uzbek farmer from Khorezm, about 50, kind weathered face, short grey-black beard, tall shaggy white sheepskin hat (chugirma), striped quilted robe (chapan) with a cloth belt, leather boots. Four views on a plain light-grey background: front, three-quarter, profile, full body. Same man in all four.",
+   "check": "toʻrttala koʻrinishda bir xil yuz; baland jun Xorazm telpagi, doʻppi emas"
+  },
+  {
+   "name": "WOLF",
+   "prompt": "Reference sheet of one grey steppe wolf, realistic, lean, yellow eyes, a thick old rope tied loosely round its neck as a leash. Calm but watchful. Front, side and lying down, plain light-grey background.",
+   "check": "haqiqiy boʻri, haski emas; boʻynidagi arqon koʻrinsin"
+  },
+  {
+   "name": "GOAT",
+   "prompt": "Reference sheet of one small white goat with a brown patch over its left eye and a small copper bell on a red string. Cheeky expression, mid-chew. Front, side, three-quarter, plain light-grey background.",
+   "check": "jigarrang dogʻ har doim CHAP koʻzda (shu belgi bilan soxta echkini topamiz)"
+  },
+  {
+   "name": "CABBAGE",
+   "prompt": "One large round green cabbage with dew on its outer leaves, in a woven willow basket with a handle. Front and top view, plain light-grey background.",
+   "check": "savatda faqat bitta karam"
+  },
+  {
+   "name": "BOAT",
+   "prompt": "A small old wooden rowboat, flat-bottomed, faded blue stripe along the side, one pair of wooden oars, room for one rower in the middle and one passenger at the bow. Side view on sand by a river.",
+   "check": "ikki kishidan ortiq sigʻmasligi koʻrinib tursin"
+  },
+  {
+   "name": "NEAR BANK",
+   "prompt": "The near bank of the wide Amudaryo river at dawn, seen from the water: a sandy landing, tamarisk bushes, a mud-brick farmhouse wall behind, a wooden tethering post. No people, no animals.",
+   "check": "boʻsh: model oʻzidan hayvon qoʻshmagan boʻlsin"
+  },
+  {
+   "name": "FAR BANK",
+   "prompt": "The far bank of the wide Amudaryo river at sunrise, seen from the water: a sandy landing with a wooden post, poplars, and far behind them the faint domes and walls of an old Khorezm town. No people, no animals.",
+   "check": "bu qirgʻoqdan aniq farq qilsin: gumbazlar, quyosh ularning ortida"
+  }
+ ],
+ "shots": [
+  {
+   "n": "1a",
+   "part": "1-qism",
+   "time": "0:00-0:01",
+   "what": "Boʻrining sariq koʻzi ochiladi.",
+   "method": "Ingredients to Video",
+   "model": "Quality",
+   "attach": [
+    "WOLF"
+   ],
+   "video_prompt": "Extreme close-up of the grey wolf's eye, closed, in dawn light. The eye opens slowly and the yellow iris catches the sun. Tiny focus pull, static camera. Audio: a low breath, distant river water. No speech, no music.",
+   "emotion": "qiziqish",
+   "voice_uz": "Boʻri.",
+   "check": "itning emas, boʻrining koʻzi boʻlsin"
+  },
+  {
+   "n": "1b",
+   "part": "1-qism",
+   "time": "0:01-0:03",
+   "what": "Echki kavshanadi, yon koʻz bilan qaraydi, qoʻngʻirogʻi chayqaladi.",
+   "method": "Ingredients to Video",
+   "model": "Quality",
+   "attach": [
+    "GOAT"
+   ],
+   "video_prompt": "Extreme close-up of the white goat with the brown patch over its left eye, chewing, then giving a slow sideways look at the camera. The copper bell swings once. Audio: chewing, one clear bell ring. No speech, no music.",
+   "emotion": "tabassum",
+   "voice_uz": "Echki.",
+   "check": "dogʻ chap koʻzda"
+  },
+  {
+   "n": "1c",
+   "part": "1-qism",
+   "time": "0:03-0:04",
+   "what": "Karam bargidan shudring tomchisi sirgʻanadi.",
+   "method": "Ingredients to Video",
+   "model": "Fast",
+   "attach": [
+    "CABBAGE"
+   ],
+   "video_prompt": "Macro shot of a drop of dew sliding down the outer leaf of a green cabbage in a willow basket, golden backlight. Very slow push-in. Audio: a single soft water drip, birdsong far away. No speech, no music.",
+   "emotion": "qiziqish",
+   "voice_uz": "Karam. Va bitta kichkina qayiq.",
+   "check": "bitta karam"
+  },
+  {
+   "n": "2",
+   "part": "1-qism",
+   "time": "0:04-0:09",
+   "what": "Dron tumanli daryo ustidan koʻtariladi; qirgʻoqda dehqon, uchta hayvon va qayiq kichkina koʻrinadi.",
+   "method": "Frames to Video",
+   "model": "Quality",
+   "attach": [
+    "NEAR BANK",
+    "FARMER",
+    "WOLF",
+    "GOAT",
+    "CABBAGE",
+    "BOAT"
+   ],
+   "frame_prompt": "High aerial view of the near bank of the wide misty Amudaryo at dawn. On the sand, small in frame: the farmer next to the wooden rowboat, the wolf on a rope tied to a post, the goat, and the cabbage basket, a few metres apart. Exactly one of each animal. Vertical composition, river filling the top half.",
+   "video_prompt": "The drone slowly rises and tilts down over the river; mist drifts across the water. The figures on the bank stay still and small. Smooth, slow, majestic. Audio: wind, wide river ambience, a distant bird. No speech, no music.",
+   "emotion": "hayrat, gʻurur",
+   "voice_uz": "Bu jumboq 1200 yildan beri odamlarni oʻylantiradi. Bugun u Amudaryo boʻyida.",
+   "check": "har bir hayvondan aynan bittadan"
+  },
+  {
+   "n": "3",
+   "part": "1-qism",
+   "time": "0:09-0:14",
+   "what": "Dehqon qayiqqa oyoq qoʻyadi; qayiq chayqalib, choʻkib ketay deydi.",
+   "method": "Ingredients to Video",
+   "model": "Fast→Quality",
+   "attach": [
+    "FARMER",
+    "BOAT",
+    "NEAR BANK"
+   ],
+   "video_prompt": "Medium shot. The Khorezm farmer in the tall white sheepskin hat steps one foot into the small wooden rowboat at the water's edge. The boat rocks and sinks low; he holds the side, looks at the tiny boat and lets out a small amused sigh. Audio: wood creak, water slapping the hull. No speech, no music.",
+   "emotion": "yengil kulgi",
+   "voice_uz": "Rustam aka uchalasini narigi qirgʻoqqa oʻtkazishi kerak. Qayiq kichkina: oʻzi va yana bittasi sigʻadi.",
+   "check": "yuz maʼlumotnoma varagʻidagi bilan bir xil"
+  },
+  {
+   "n": "4",
+   "part": "1-qism",
+   "time": "0:14-0:18",
+   "what": "Boʻri echkiga tikilib qaraydi; echki qotib qoladi.",
+   "method": "Frames to Video",
+   "model": "Fast",
+   "attach": [
+    "WOLF",
+    "GOAT",
+    "NEAR BANK"
+   ],
+   "frame_prompt": "Low shot on the sand: in the foreground the wolf lying on its rope, eyes fixed on the goat; in the background, in soft focus, the goat mid-chew. Exactly one wolf and one goat.",
+   "video_prompt": "Very slow push-in on the wolf's face. It does not move except its eyes. In the background the goat stops chewing and freezes. Audio: the bell goes silent, a low rumble in the wolf's throat. No speech, no music.",
+   "emotion": "xavotir",
+   "voice_uz": "Lekin u yoʻqligida boʻri echkini yeydi…",
+   "check": "hujum yoʻq, faqat nigoh"
+  },
+  {
+   "n": "5",
+   "part": "1-qism",
+   "time": "0:18-0:21",
+   "what": "Echki karamga oʻgirilib, labini yalaydi.",
+   "method": "Frames to Video",
+   "model": "Fast",
+   "attach": [
+    "GOAT",
+    "CABBAGE",
+    "NEAR BANK"
+   ],
+   "frame_prompt": "The goat in profile in the foreground, the cabbage basket two metres away on the sand. Exactly one goat, one cabbage.",
+   "video_prompt": "The goat slowly turns its head toward the cabbage, narrows its eyes and licks its lips. Comic timing, a held beat at the end. Audio: one small bell ring, a tiny bleat. No speech, no music.",
+   "emotion": "kulgi",
+   "voice_uz": "…echki esa — karamni.",
+   "check": "dogʻ chap koʻzda"
+  },
+  {
+   "n": "7",
+   "part": "1-qism",
+   "time": "0:24-0:30",
+   "what": "1-urinish: boʻri bilan suzib ketadi; orqasiga qaraydi — bu qirgʻoqda echki savatga engashgan.",
+   "method": "Frames to Video",
+   "model": "Fast→Quality",
+   "attach": [
+    "FARMER",
+    "WOLF",
+    "BOAT",
+    "GOAT",
+    "CABBAGE",
+    "NEAR BANK"
+   ],
+   "frame_prompt": "The rowboat in the middle of the river, filmed from the far side: the farmer rowing toward camera, the wolf sitting in the bow. Behind them, small on the near bank, the goat standing next to the cabbage basket. Exactly one goat, one cabbage, one wolf.",
+   "end_frame_prompt": "The same view, but the goat's nose is inside the cabbage basket on the near bank and the farmer has turned round, eyes wide.",
+   "video_prompt": "The farmer rows calmly, then glances back over his shoulder, sees the goat leaning into the cabbage basket on the near bank behind him, and freezes mid-stroke with wide eyes. The wolf in the bow looks back too. Audio: oars in the water, a faint crunch of leaves, the oars stop. No speech, no music.",
+   "emotion": "taranglik → kulgi",
+   "voice_uz": "Boʻrini olsa… karam ketdi.",
+   "check": "echki va karam BU qirgʻoqda, boʻri qayiqda"
+  },
+  {
+   "n": "8",
+   "part": "1-qism",
+   "time": "0:30-0:31",
+   "what": "7-kadr tez orqaga aylantiriladi, lenta ovozi bilan.",
+   "method": "Editor",
+   "model": "—",
+   "emotion": "oʻyin",
+   "check": "CapCutʼda Reverse + tezlik 3x"
+  },
+  {
+   "n": "10",
+   "part": "1-qism",
+   "time": "0:36-0:46",
+   "what": "Dehqon qayiq yonida telpagi ostini qashiydi va kameraga qaraydi; kadr qotadi.",
+   "method": "Frames to Video",
+   "model": "Quality",
+   "attach": [
+    "FARMER",
+    "BOAT",
+    "NEAR BANK",
+    "WOLF",
+    "GOAT",
+    "CABBAGE"
+   ],
+   "frame_prompt": "Medium close-up of the farmer standing by the beached rowboat; behind him on the sand, apart from each other, the wolf on its rope, the goat, and the cabbage basket. He faces the camera.",
+   "video_prompt": "The farmer scratches under his tall sheepskin hat, sighs, then slowly looks straight into the camera with a half-smile, as if asking the viewer for help. Hold still on the look. Audio: river ambience, one bell ring. No speech, no music.",
+   "emotion": "chaqiriq",
+   "voice_uz": "Xoʻsh, siz qanday qilasiz? Qayiq daryoni eng kamida necha marta kesib oʻtishi kerak? Boʻsh qaytish ham hisoblanadi. Javobni izohda yozing.",
+   "check": "koʻzlari obyektivga tushgan kadrda toʻxtating"
+  }
+ ],
+ "edit": {
+  "captions": "Qoʻlda yozing: qalin oq harf, qora hoshiya, koʻpi bilan 2 qator, ekranning pastki 20% qismidan yuqorida. 3-kadrdan to qotishgacha qoida kartalari: «Qayiq: dehqon + 1», «Boʻri + echki = ❌», «Echki + karam = ❌».",
+  "music": "Dutor ohangli yengil xalq kuyi, ovozdan taxminan −18 dB past; har urinishda qisqa chertma; kadr qotganda musiqa birdan toʻxtaydi. Veoʼning suv, eshkak va qoʻngʻiroq tovushlari qolsin.",
+  "cover": "Nano Bananaʼda bitta rasm: qayiq tumshugʻida echki kameraga yon koʻz bilan qaraydi, orqada boʻri va karam kichkina. Ustiga «1200 yillik jumboq» va «Necha marta?» yozing. 0,5 soniya birinchi kadr boʻlib tursin.",
+  "post_text_uz": "Boʻri, echki va karam. Qayiqqa dehqon va yana bittasi sigʻadi. Qayiq eng kamida necha marta daryoni kesib oʻtishi kerak? Javobingizni izohda yozing — toʻgʻri javob keyingi hafta! #mantiq #jumboq #Amudaryo #Powerty",
+  "checklist": [
+   "Har kadrda faqat bitta echki, dogʻi chap koʻzda",
+   "Qirgʻoqlar chalkashmagan: gumbazlar faqat narigi qirgʻoqda",
+   "Hech bir hayvonga hujum koʻrsatilmagan",
+   "Rasmda sunʼiy harflar, ovozda tushunarsiz gaplar yoʻq",
+   "1-qismda birinchi toʻgʻri yurish koʻrsatilmagan",
+   "Qotgan kadr jimlikda 6+ soniya turadi"
+  ]
+ }
+}
