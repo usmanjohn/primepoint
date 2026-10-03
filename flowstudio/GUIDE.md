@@ -102,6 +102,7 @@ Cycle through these series; across any 7 days at least 5 different ones. Check
 |---|---|---|
 | **Mantiq maydoni** | puzzle drama → freeze → "Javobni izohda yozing"; answer video next week | Logic Arena |
 | **Bobolar sirri** | a real scholar, a real problem, the method on screen, "you can do this too" | Matematika olami — Buyuk matematiklar |
+| **Buyuk kashfiyot** | the same shape for a scholar from ELSEWHERE (Fales, Arximed, Gauss, Ramanujan) | Matematika olami — Buyuk matematiklar |
 | **Tutilgan xato LIVE** | live-action comedy: mistake → social cost → rewind → correct line → rule | storyvideo ko04–ko15, Prime course lessons |
 | **Bir maqol, ikki til** | the proverb shown literally, then its Uzbek twin | Korean proverbs shelf, storyvideo ko16–ko27 |
 | **Nega shunday?** | a wonder of nature/science made visible, one mechanism | Wonders shelf, Matematika olami (tabiat / kundalik hayot) |
@@ -109,6 +110,10 @@ Cycle through these series; across any 7 days at least 5 different ones. Check
 | **Bitta sahna, toʻrt til** | one everyday scene replayed in Korean / Japanese / Russian / English | Prime courses (greetings, politeness levels) |
 | **Hayot hikoyasi** | a quiet human story with a twist, retold in Uzbek | Life Stories shelf, Koreya olami |
 | **Special** | once a week at most: a bigger 60–90 s film (Hangul's birth, the SAT module thriller, a Powerty brand film) | any |
+
+**Bobolar sirri is only for our own region's scholars** (al-Xorazmiy, Beruniy, Ulugʻbek, Ibn Sino,
+Ali Qushchi, al-Fargʻoniy…) — «bobolar» means *our* ancestors. Anyone else is «Buyuk kashfiyot».
+A famous legend (Fales' shadow, Arximed's «Evrika!») is called a legend in the voice-over too.
 
 A **Mantiq maydoni** package must contain BOTH parts (question + answer) in one package,
 because the answer is posted a week later and must be planned from day one.
