@@ -50,46 +50,49 @@ If `send.py` fails to send (network, token), do **not** retry more than twice. R
 
 ## 1. What the brother needs (the bar every package must clear)
 
-- **Uzbek for him, English for the machines.** He reads little English. Everything he *reads* —
-  `logline`, `what`, `emotion`, `check`, ingredient `check`, `emotion_arc`, `facts[].claim`, every
-  `edit` field, `voice_uz`, `title_uz` — is natural, simple Uzbek (Latin, `ʻ` in oʻ gʻ, `ʼ` for
-  the tutuq belgisi and after foreign names: Veoʼga, CapCutʼda). Only `prompt`, `frame_prompt`,
-  `end_frame_prompt`, `video_prompt` and `style_line` are English. Flow's button names stay as
-  they are in Flow (Frames to Video, Extend…); `send.py` adds the Uzbek gloss.
-- **Copy-paste ready.** Every prompt is complete — the style line is appended by `send.py`,
-  so do not paste it in yourself. He should never have to write a prompt.
-- **The method on every shot**, said plainly: Frames to Video / Ingredients to Video /
-  Text to Video / Extend / Editor-only, and **which ingredients to attach**.
-- **The model on every shot**: Lite (blocking tests) · Fast (all drafts) · Quality (only
-  the hero shots, 3–6 per video). Credits are finite: Ultra ≈ 25,000/month, Quality ≈ 100
-  a clip, Fast ≈ 10 with the Ultra discount. Aim for ≤ 1,500 credits a video.
-- **Emotion per shot** — what the viewer should feel, and what on screen produces it.
-- **Uzbek voice lines** per shot, ready to record. Nobody on screen speaks (Veo cannot do
-  Uzbek speech or lip-sync), a narrator tells. A character may speak a *foreign* line
-  (Korean, Japanese, English, Russian) only if the language IS the point — and then say in
-  `check` that he must listen for gibberish.
-- **A check per shot**: the one thing to look at before keeping the clip.
+**Short and doable.** The user's words (2026-10-03): *"No need to tell each stuff, like facts,
+explanations. Just: generate these images, name them like that; attach that image, frame to
+frame or ingredient; then the prompt."* So a package is four things, nothing else:
 
-### The Flow rules (learned on episode 1, keep them)
+1. **Gʻoya** — 2–3 Uzbek sentences (`concept_uz`) + the format (`format_uz`, "7 sahna × 8 soniya = 56 soniya").
+2. **Rasmlar** — reference images R1, R2 … for Nano Banana Pro, each with a short Uzbek name.
+3. **Ssenariy** — who says what in each scene (built from the scenes' `lines`).
+4. **Sahnalar** — per scene: the Flow mode, which R-images to use, and the Veo prompt.
 
-- **Nano Banana Pro builds pictures, Veo moves them.** Anything whose *exact content*
-  matters (who stands where, how many of something, what the board says) gets a still
-  start frame first → **Frames to Video**. A wrong extra animal ruins a puzzle.
-- **Ingredients to Video** only when ≤ 3 subjects must keep their faces while moving freely.
-  `attach` lists 1–3 ingredient names.
-- **Text to Video** only for empty landscape / atmosphere.
-- **Extend** at most once or twice in a video (quality drifts).
-- **No text in the picture.** Veo and Nano Banana garble letters. All words — captions,
-  numbers, labels, counters — go in the edit (CapCut). Every prompt says so via the style line.
-- **Every video prompt ends with an audio line containing "No speech, no music."** Veo
-  invents gibberish voices otherwise; music goes in the edit. Keep its SFX.
-- **9:16, 8 s clips, 1080p upscale.** Most clips are trimmed to 3–6 s in the edit.
-- **One continuity tag per character** (a patch over one eye, a red scarf, a chipped cup)
-  so a wrong duplicate is spotted at a glance. Name it in the ingredient's `check`.
-- **No violence shown, no real living person's face, no brand logos, no real
-  institution's branding** (no fake GKS letterhead, no university crest). Historical
-  figures (Beruniy, Ulugʻbek, Sejong) are fine as respectful reconstructions.
-- **Cover = frame 0.** Describe the cover still (Nano Banana) and its overlay words.
+Facts and sources still go in the JSON (`facts`, `sources`) and are checked, but they are
+**not sent** — he does not need them. No emotion charts, no checklists, no explanations.
+
+- **Uzbek for him, English for the machines.** Everything he reads (`title_uz`, `concept_uz`,
+  `format_uz`, `name_uz`, scene `title_uz`, `lines`, `post_text_uz`) is simple spoken Uzbek
+  (Latin, `ʻ` in oʻ gʻ, `ʼ` for the tutuq belgisi). Prompts are English.
+- **Characters SPEAK UZBEK inside the video.** The line goes into the Veo prompt, word for word:
+  `The farmer says in Uzbek with a warm, husky middle-aged male voice: "Faqat men va yana bittasi sig'adi."`
+  Inside a prompt write Uzbek with a plain `'` (sig'adi, to'g'ri) — never ʻ. Give every speaker a
+  voice description (age, warmth, mood) and keep it identical across scenes. Lines are short —
+  one or two sentences per 8-second scene, at most two speakers per scene. An off-screen narrator
+  is allowed ("An off-screen man says in Uzbek …"). Every prompt ends with
+  `No subtitles, no on-screen text.` The gate checks each line is in its prompt.
+- **Copy-paste ready.** Base refs get the `style_line` appended by `send.py`; edit refs
+  (`from`) and scene prompts are sent exactly as written.
+
+### The Flow rules (keep them)
+
+- **Nano Banana Pro builds pictures, Veo moves them.** Anything whose exact content matters
+  (who stands where, how many) gets its own reference image → **Frames to Video** with
+  `start` (and `end` when the shot must land on a picture, e.g. a transformation).
+- **Edit chains keep faces.** A ref with `"from": "R2"` (or a list) means: attach R2 in Nano
+  Banana and give the edit prompt ("Transform this character into …, same face, same scene").
+  Build character variants and key scenes this way instead of from scratch.
+- **Ingredients to Video** for free movement with 1–3 refs (`attach`).
+- **Text to Video** only for empty landscape. **Extend** at most once a video.
+- **No text in the picture** (style line + "No subtitles, no on-screen text.").
+- **9:16, 8-second scenes, 5–10 scenes.**
+- **One continuity tag per character** (an eye patch, a red scarf) written into its ref prompt.
+- **No violence shown, no real living person, no brand logos, no real institution's branding.**
+  Historical figures are fine as respectful reconstructions.
+- **Style is free per video**: photoreal cinema, or premium 3D animated feature film
+  (characters can be shapes, letters, numbers, animals). Animation suits maths and grammar
+  ideas — a crooked quadrilateral that grows into a square teaches more than a diagram.
 
 ---
 
@@ -115,8 +118,9 @@ Cycle through these series; across any 7 days at least 5 different ones. Check
 Ali Qushchi, al-Fargʻoniy…) — «bobolar» means *our* ancestors. Anyone else is «Buyuk kashfiyot».
 A famous legend (Fales' shadow, Arximed's «Evrika!») is called a legend in the voice-over too.
 
-A **Mantiq maydoni** package must contain BOTH parts (question + answer) in one package,
-because the answer is posted a week later and must be planned from day one.
+A **Mantiq maydoni** package is the QUESTION video and ends on the question. Exactly 7 days
+later (check `sent.tsv`) the day's package is its ANSWER video — that takes priority over the
+rotation that day.
 
 ---
 
@@ -143,64 +147,46 @@ Put the file path(s) you used in `sources`, and every checkable claim in `facts`
 
 ## 4. The package JSON
 
-`flowstudio/example.json` is a complete, passing package (the Amudaryo episode, Part 1
-only, №1) — Uzbek explanations, English prompts. Match its depth and tone; do not copy its content.
+`flowstudio/example.json` is a complete, passing package (the Amudaryo episode, №1).
+Match its shape; do not copy its content.
 
 ```json
 {
-  "id": "2026-10-05-bobolar-beruniy-earth",
-  "number": 2,
+  "id": "2026-10-05-kashfiyot-fales",
+  "number": 3,
   "date": "2026-10-05",
-  "series": "Bobolar sirri",
-  "title_uz": "Beruniy Yerni oʻlchaydi",
-  "logline": "One or two sentences: who, where, what goes wrong or what is discovered.",
-  "parts": [ { "name": "Part 1", "length": "45 s" } ],
-  "sources": ["corner/management/commands/_stories_matematika_olami_04.py"],
-  "facts": [ { "claim": "…", "source": "path or URL" } ],
-  "emotion_arc": [ { "time": "0-4 s", "beat": "Hook", "feel": "curiosity" } ],
-  "style_line": "Cinematic photoreal, … No text, no letters, no watermark.",
-  "ingredients": [
-    { "name": "FARMER", "prompt": "Character reference sheet of …", "check": "same face in all four views" }
+  "series": "Buyuk kashfiyot",
+  "title_uz": "Soya va piramida",
+  "concept_uz": "2–3 sentences: who, where, the turn.",
+  "format_uz": "7 sahna × 8 soniya = 56 soniya",
+  "sources": ["corner/management/commands/_stories_matematika_olami_13_15.py (story 6)"],
+  "facts": [{"claim": "…", "source": "…"}],
+  "style_line": "Premium 3D animated feature film style, … No text, no letters, no watermark.",
+  "refs": [
+    {"id": "R1", "name_uz": "Muhit: Giza", "prompt": "Vertical 9:16 …"},
+    {"id": "R2", "name_uz": "Fales", "prompt": "Vertical 9:16 …"},
+    {"id": "R3", "name_uz": "Fales tayoq bilan", "from": "R2", "prompt": "Change the scene: …"},
+    {"id": "R4", "name_uz": "Hammasi", "from": ["R1", "R2"], "prompt": "Combine the attached …"}
   ],
-  "shots": [
-    {
-      "n": "1", "part": "Part 1", "time": "0:00-0:04",
-      "what": "What the viewer sees, one sentence.",
-      "method": "Frames to Video",
-      "model": "Fast",
-      "attach": ["FARMER", "BOAT", "NEAR BANK"],
-      "frame_prompt": "…", "end_frame_prompt": "",
-      "video_prompt": "… Audio: water, oars. No speech, no music.",
-      "extends": "",
-      "emotion": "tension → laugh",
-      "voice_uz": "Boʻrini olsa… karam ketdi.",
-      "check": "goat still on the near bank"
-    }
+  "scenes": [
+    {"n": 1, "title_uz": "Savol", "method": "Frames to Video", "start": "R4", "end": "",
+     "prompt": "… He says in Uzbek with a calm old male voice: \"Bu piramida qanchalik baland?\" No subtitles, no on-screen text.",
+     "lines": [{"who": "Fales", "text": "Bu piramida qanchalik baland?"}]},
+    {"n": 2, "title_uz": "…", "method": "Ingredients to Video", "attach": ["R2", "R1"], "prompt": "…", "lines": []},
+    {"n": 3, "title_uz": "…", "method": "Extend", "extends": "2", "prompt": "…", "lines": []}
   ],
-  "edit": {
-    "captions": "…", "music": "…", "cover": "…",
-    "post_text_uz": "…",
-    "checklist": ["…", "…"]
-  }
+  "post_text_uz": "Instagram/Telegram caption, Uzbek, hashtags at the end"
 }
 ```
 
-Field rules (`send.py --check` enforces the mechanical ones):
+Field rules (`send.py --check` enforces them):
 
-- `number` = the video's №, shown on every message (`📦 №2 · 5/15`) and as `#video002`.
-- `method` ∈ `Frames to Video` · `Ingredients to Video` · `Text to Video` · `Extend` · `Editor`.
-- `model` ∈ `Lite` · `Fast` · `Quality` · `Fast→Quality` · `—` (Editor shots).
-- Frames → `frame_prompt` required, `attach` = the ingredients to give Nano Banana Pro
-  (any number). `end_frame_prompt` when the shot must land on a specific picture.
-- Ingredients → `attach` has 1–3 names; `video_prompt` required, no `frame_prompt`.
-- Text → `video_prompt` only. Extend → `extends` = the shot number it continues.
-- Every `attach` name exists in `ingredients`. Every `video_prompt` contains "No speech".
-- **Uzbek fields** (`title_uz`, `voice_uz`, `post_text_uz`): proper `ʻ` (U+02BB) in oʻ gʻ
-  and the tutuq belgisi `ʼ` — never `'`, `‘`, `’` or a backtick; no Cyrillic.
-- Prompts are in **English** (the models follow it best). No Uzbek inside prompts.
-- 8–16 shots per part. Total Quality clips ≤ 6 per part.
-
----
+- `number` = the video's №. Refs are `R1, R2 …`; a `from` points only at EARLIER refs.
+- `method` ∈ `Frames to Video` (needs `start`, optional `end`) · `Ingredients to Video`
+  (`attach` 1–3 refs) · `Text to Video` · `Extend` (`extends` = an earlier scene's `n`).
+- Every scene prompt is English, contains each of its `lines` word for word (apostrophes
+  aside), says "in Uzbek" when anyone speaks, and ends with "No subtitles, no on-screen text."
+- At least half the scenes have Uzbek lines. 4–12 scenes. `concept_uz` under 500 characters.
 
 ## 5. Quality bar — read before writing
 
@@ -213,10 +199,8 @@ Field rules (`send.py --check` enforces the mechanical ones):
 - **Uzbek that sounds spoken**, not translated — short sentences, a storyteller's rhythm.
 - **Facts are true and sourced.** A legend is called a legend.
 - **Never the price**: do not say Powerty is free; the end card says «powerty.uz».
-- End card: the series name + «powerty.uz», in the subject's accent colour from
-  `storyvideo/SERIES.md` §2 (logic olive `#5f7d3a`, math gold `#c9923a`, korean blue `#3b6ea5`,
-  japanese indigo `#3d4a7d`, russian violet `#7a5aa0`, english teal `#2e7d7a`,
-  sat graphite `#24405e`, story wood `#c08a52`).
+- **A hook for the next episode** in the last line when it fits (the old circle's wink:
+  "Endi… doira boʻlishni oʻrgan").
 
 ---
 
@@ -229,9 +213,7 @@ Field rules (`send.py --check` enforces the mechanical ones):
 
 ## 7. How it arrives (`send.py` does this — do not imitate it in the JSON)
 
-1. A **contents message** (pinned): №, title, hashtags `#video00N #SeriesName`, logline, the
-   numbered contents, and a short Uzbek legend of the Flow methods and models.
-2. Every other message is a **reply to it** and starts `📦 №N · k/total`, so a package stays
-   one thread even when the brother is a week behind. In a Telegram group with Topics, each
-   video gets its own topic instead.
-3. Last, the whole package as a `.txt` file.
+Five or six messages, all replies to the first (pinned) one, each tagged `№N · k/total`:
+🎬 title + Gʻoya + Format → 1️⃣ Rasmlar → 2️⃣ Ssenariy → 3️⃣ Flowʼda yaratish → 4️⃣ Post matni,
+then the whole package as a `.txt` file. In a Telegram group with Topics each video gets its
+own topic instead.

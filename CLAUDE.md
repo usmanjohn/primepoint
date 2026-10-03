@@ -1160,8 +1160,8 @@ the material, each word a `cn-word` span, ⛔ no audio). Those import through
 ## Flow Studio (`flowstudio/`) — daily AI-video packages to Telegram
 Started **2026-10-03**. A cloud Claude routine (claude.ai/code/routines, daily 08:00 Tashkent =
 `0 3 * * *` UTC, Opus) reads `flowstudio/GUIDE.md`, writes one Google Flow production package
-(Nano Banana ingredient prompts, per-shot Frames/Ingredients/Text/Extend + Veo model, Uzbek
-voice lines, edit notes) as JSON, gates it with `python3 flowstudio/send.py <json> --check`, and
+(R1… reference images for Nano Banana, then per-scene Flow mode + Veo prompt with the
+characters' Uzbek lines inside it; short Uzbek, no facts/explanations sent) as JSON, gates it with `python3 flowstudio/send.py <json> --check`, and
 sends it to a private Telegram channel (the brother and the user are members) through a **separate** bot (`FLOW_BOT_TOKEN` / `FLOW_CHAT_ID`,
 set in the cloud environment, never in the repo) — **not** @PowertyuzBot, which stays the
 channel's outbound-only bot. History lives on the branch `claude/flowstudio-log`
