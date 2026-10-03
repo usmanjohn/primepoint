@@ -1,0 +1,71 @@
+{
+ "id": "2026-10-03-maqol-yolbars",
+ "number": 4,
+ "for": "Jonibek",
+ "date": "2026-10-03",
+ "series": "Bir maqol, ikki til",
+ "title_uz": "Yoʻlbars ham keladi",
+ "concept_uz": "Seuldagi kichik kafeda Dilnoza bilan Sherbek Sardorni gapirib oʻtirishadi — shu payt eshikdan Sardor kiradi. Koreys opa kulib maqol aytadi: «yoʻlbars ham oʻzi haqida gapirsang keladi». Bizda esa xuddi shu maqol bor, faqat hayvon boshqa: «Boʻrini yoʻqlasang, qulogʻi koʻrinar».",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "storyvideo/stories/ko16.py («Yoʻlbars ham keladi», narration + ask)",
+  "corner/management/commands/_stories_proverbs_1_5.py (호랑이도 제 말 하면 온다)"
+ ],
+ "facts": [
+  {"claim": "Koreys maqoli 호랑이도 제 말 하면 온다 = «yoʻlbars ham oʻzi haqida gapirsang keladi»", "source": "storyvideo/stories/ko16.py narration"},
+  {"claim": "Kimdir haqida gapirib turganda aynan oʻsha odam toʻsatdan paydo boʻlsa aytiladi", "source": "corner/management/commands/_stories_proverbs_1_5.py body"},
+  {"claim": "Oʻzbek egizagi: «Boʻrini yoʻqlasang, qulogʻi koʻrinar» — faqat hayvon almashgan", "source": "storyvideo/stories/ko16.py order beat + narration"},
+  {"claim": "Koreys yoʻlbarsni togʻda koʻrgan, biz boʻrini dashtda; maqol tarjima qilinmaydi — almashtiriladi", "source": "storyvideo/stories/ko16.py versus + rule"},
+  {"claim": "Koreyada ayiq ham bor — ochiq savol, javobi aytilmaydi", "source": "storyvideo/stories/ko16.py ask"}
+ ],
+ "style_line": "Premium 3D animated feature film style, cozy cinematic lighting, soft depth of field, warm autumn palette of amber, teal and wood tones, expressive friendly characters. No text, no letters, no readable signs, no logos, no watermark.",
+ "refs": [
+  {"id": "R1", "name_uz": "Muhit: Seul kafesi", "prompt": "Vertical 9:16 interior of a small cozy neighbourhood cafe in Seoul on an autumn evening: wooden tables, warm hanging lamps, a glass entrance door with a small brass bell above it, potted plants, a wooden counter with an espresso machine, maple leaves outside the window. Signs and menus are blank or blurred. No people."},
+  {"id": "R2", "name_uz": "Sherbek", "prompt": "Vertical 9:16 full-body character portrait of a cheerful Uzbek student, about 20, short black hair, a GREEN knitted beanie, beige hoodie and jeans, big expressive eyebrows, slightly mischievous grin, standing in a cozy cafe."},
+  {"id": "R3", "name_uz": "Dilnoza", "prompt": "Vertical 9:16 full-body character portrait of a clever Uzbek student girl, about 20, long dark braid, a bright YELLOW scarf, navy coat over a white sweater, holding a paper coffee cup without any logo, confident knowing smile, standing in a cozy cafe."},
+  {"id": "R4", "name_uz": "Sardor", "prompt": "Vertical 9:16 full-body character portrait of a friendly tall Uzbek student, about 20, curly hair, a RED backpack on one shoulder and big white headphones around his neck, denim jacket, wide easy smile, standing in a cafe doorway."},
+  {"id": "R5", "name_uz": "Kafe egasi", "prompt": "Vertical 9:16 character portrait of a warm Korean cafe owner, a woman about 60, grey hair in a neat bun held by a green JADE hairpin, cream apron over a brown cardigan, laughing eyes, standing behind a wooden cafe counter wiping a cup."},
+  {"id": "R6", "name_uz": "Stol atrofida", "from": ["R1", "R2", "R3"], "prompt": "Combine the attached images into one vertical 9:16 shot: the green-beanie student and the yellow-scarf girl sit close together at a small table near the glass entrance door, leaning in and whispering like gossips, coffee cups between them. The door is closed behind them. Same faces, same clothes, same warm light."},
+  {"id": "R7", "name_uz": "Sardor eshikda", "from": ["R6", "R4"], "prompt": "Change the scene: the glass door is now open and the red-backpack student stands in the doorway smiling and waving; at the table the green-beanie student and the yellow-scarf girl are frozen mid-whisper with wide eyes, caught. Same faces, same clothes, same light, 9:16."},
+  {"id": "R8", "name_uz": "Koreys qishlogʻi", "prompt": "Vertical 9:16 old Korean mountain village at dusk in a storybook style: misty pine-covered mountains, a thatched-roof house, three villagers in traditional white hanbok sitting on a wooden porch around a small lantern, chatting and gesturing, a dark pine forest behind them. No animals."},
+  {"id": "R9", "name_uz": "Yoʻlbars keldi", "from": "R8", "prompt": "Change the scene: a big friendly-looking Korean tiger with soft orange fur and a fluffy white chin now peeks out from the pine trees right behind the porch, curious, not aggressive; the three villagers have jumped up in comic surprise. Same village, same light, 9:16."},
+  {"id": "R10", "name_uz": "Oʻzbek dashti", "prompt": "Vertical 9:16 wide Uzbek steppe at dusk in a storybook style: golden dry grass, a flock of sheep, two shepherds in quilted chapan robes and fur hats sitting by a small campfire, chatting and laughing; far behind them, just above the tall grass, two grey pointed wolf ears are poking up, only the ears visible."},
+  {"id": "R11", "name_uz": "Ikki hayvon", "from": ["R9", "R10"], "prompt": "Combine the attached images into one vertical 9:16 split picture divided by a soft glowing line: on the top half the friendly orange tiger standing on a misty pine mountain; on the bottom half a grey steppe wolf standing in golden grass. Both animals look straight at the camera with the same calm, slightly amused expression. Same storybook light."}
+ ],
+ "scenes": [
+  {"n": 1, "title_uz": "Gʻiybat", "method": "Frames to Video", "start": "R6",
+   "lines": [{"who": "Dilnoza", "text": "Sardor yana kechikadi. U hech qachon vaqtida kelmaydi!"}],
+   "prompt": "Close two-shot. The yellow-scarf girl leans toward her friend and whispers dramatically, rolling her eyes; the green-beanie student nods and covers a laugh. Audio: soft cafe chatter, a coffee machine hiss, cup clinks. She says in Uzbek with a lively, clear young woman's voice, in a gossipy whisper: \"Sardor yana kechikadi. U hech qachon vaqtida kelmaydi!\" No subtitles, no on-screen text."},
+  {"n": 2, "title_uz": "Eshik", "method": "Frames to Video", "start": "R6", "end": "R7",
+   "lines": [{"who": "Sardor", "text": "Salom! Meni gapirayotgan edingizmi?"}],
+   "prompt": "The brass bell above the door rings loudly; the glass door swings open and the red-backpack student steps in, waving with a big smile; the two at the table freeze mid-whisper, eyes wide. Audio: loud door bell, a record-scratch comic beat, silence. He says in Uzbek with a relaxed, friendly young man's voice: \"Salom! Meni gapirayotgan edingizmi?\" No subtitles, no on-screen text."},
+  {"n": 3, "title_uz": "Koreys maqoli", "method": "Ingredients to Video", "attach": ["R5", "R1", "R2"],
+   "lines": [
+    {"who": "Kafe egasi (koreyscha)", "text": "호랑이도 제 말 하면 온다!"},
+    {"who": "Sherbek", "text": "Nima dedi? Yoʻlbars?"}
+   ],
+   "prompt": "Behind the counter the Korean cafe owner bursts out laughing, points at the newcomer at the door with her cloth and calls out cheerfully. Cut to the green-beanie student at the table, turning to the camera, confused. Audio: warm laughter, cafe ambience. She says in Korean with a warm, amused older woman's voice: \"호랑이도 제 말 하면 온다!\" Then he whispers in Uzbek with a cheerful young man's voice, puzzled: \"Nima dedi? Yo'lbars?\" No subtitles, no on-screen text."},
+  {"n": 4, "title_uz": "Koreyada", "method": "Frames to Video", "start": "R8", "end": "R9",
+   "lines": [{"who": "Dilnoza (kadr ortida)", "text": "Koreyschada: yoʻlbars ham oʻzi haqida gapirsang keladi."}],
+   "prompt": "Storybook flashback. The villagers on the porch chat and gesture toward the mountains; the pine branches behind them rustle, and a friendly tiger slowly pushes its head out of the trees; the villagers jump up in comic surprise. No attack. Audio: crickets, a Korean bamboo flute, rustling branches, a soft surprised gasp. An off-screen young woman says in Uzbek with a lively, clear young woman's voice: \"Koreyschada: yo'lbars ham o'zi haqida gapirsang keladi.\" No subtitles, no on-screen text."},
+  {"n": 5, "title_uz": "Bizda", "method": "Frames to Video", "start": "R10",
+   "lines": [{"who": "Dilnoza (kadr ortida)", "text": "Bizda esa: boʻrini yoʻqlasang, qulogʻi koʻrinar."}],
+   "prompt": "Storybook flashback on the steppe. The two shepherds by the fire laugh and talk; slowly the camera drifts past them toward the tall grass, where the two grey wolf ears twitch and turn toward them. No attack. Audio: crackling fire, sheep bleating softly, a doira drum heartbeat, wind in the grass. An off-screen young woman says in Uzbek with a lively, clear young woman's voice, smiling: \"Bizda esa: bo'rini yo'qlasang, qulog'i ko'rinar.\" No subtitles, no on-screen text."},
+  {"n": 6, "title_uz": "Bitta maqol", "method": "Frames to Video", "start": "R11",
+   "lines": [{"who": "Dilnoza (kadr ortida)", "text": "Bitta maqol. Faqat hayvon almashgan."}],
+   "prompt": "The tiger on the mountain and the wolf in the steppe both tilt their heads at exactly the same moment, mirroring each other, then both blink at the camera. Slow gentle push-in. Audio: a Korean flute note and a Uzbek dutar note playing the same short phrase together. An off-screen young woman says in Uzbek with a lively, clear young woman's voice: \"Bitta maqol. Faqat hayvon almashgan.\" No subtitles, no on-screen text."},
+  {"n": 7, "title_uz": "Nega boshqa hayvon", "method": "Ingredients to Video", "attach": ["R3", "R1"],
+   "lines": [{"who": "Dilnoza", "text": "Koreys yoʻlbarsni togʻda koʻrgan, biz boʻrini dashtda koʻrganmiz."}],
+   "prompt": "Back in the cafe. The yellow-scarf girl, now relaxed, holds her cup and explains with one raised finger, like a little teacher, looking at the camera. Audio: cafe ambience, a spoon stirring. She says in Uzbek with a lively, clear young woman's voice: \"Koreys yo'lbarsni tog'da ko'rgan, biz bo'rini dashtda ko'rganmiz.\" No subtitles, no on-screen text."},
+  {"n": 8, "title_uz": "Kulgi", "method": "Ingredients to Video", "attach": ["R2", "R4", "R1"],
+   "lines": [
+    {"who": "Sherbek", "text": "Demak, sen bizning boʻrimizsan!"},
+    {"who": "Sardor", "text": "Qulogʻim koʻrindimi?"}
+   ],
+   "prompt": "The red-backpack student sits down at the table; the green-beanie student pats him on the shoulder, laughing; the newcomer touches his own ears in mock worry and then laughs too. Audio: warm laughter, a cup set down. The green-beanie student says in Uzbek with a cheerful young man's voice: \"Demak, sen bizning bo'rimizsan!\" The red-backpack student answers in Uzbek with a relaxed, friendly young man's voice: \"Qulog'im ko'rindimi?\" No subtitles, no on-screen text."},
+  {"n": 9, "title_uz": "Savol sizga", "method": "Ingredients to Video", "attach": ["R3", "R1"],
+   "lines": [{"who": "Dilnoza", "text": "Koreyada ayiq ham bor. Nega maqolda aynan yoʻlbars? Izohda yozing!"}],
+   "prompt": "Close-up: the yellow-scarf girl leans toward the camera with a playful, curious smile and raises one eyebrow, as if asking the viewer a riddle; hold on her look at the end. Audio: cafe ambience fades, one soft bell ring. She says in Uzbek with a lively, clear young woman's voice: \"Koreyada ayiq ham bor. Nega maqolda aynan yo'lbars? Izohda yozing!\" No subtitles, no on-screen text."}
+ ],
+ "post_text_uz": "Koreyslar: «호랑이도 제 말 하면 온다» — yoʻlbars ham oʻzi haqida gapirsang keladi. Biz: «Boʻrini yoʻqlasang, qulogʻi koʻrinar». Bitta maqol, faqat hayvon almashgan. Koreyada ayiq ham bor — nega maqolda aynan yoʻlbars? Izohda yozing! Koreys tili noldan — powerty.uz #BirMaqolIkkiTil #koreystili #maqol #Powerty"
+}

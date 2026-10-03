@@ -1,0 +1,61 @@
+{
+ "id": "2026-10-03-nega-asalari-uyasi",
+ "number": 3,
+ "for": "Inom",
+ "date": "2026-10-03",
+ "series": "Nega shunday?",
+ "title_uz": "Asalari uyi nega olti burchak?",
+ "concept_uz": "Kichkina asalari Asalxon soʻraydi: mening uyim nega olti burchakli? Beshburchakni sinab koʻradi — orasida boʻshliq qoladi. Keyin uchta shakl musobaqa qiladi: joy bir xil, lekin olti burchakka eng kam mum ketadi. Odamlar buni faqat 1999-yilda toʻliq isbotladi.",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_01_03.py (story 15, «Nega asalarilar uyni olti burchakli quradi»)"
+ ],
+ "facts": [
+  {"claim": "Tekislikni boʻshliqsiz faqat uchta muntazam shakl qoplaydi: teng tomonli uchburchak, kvadrat, muntazam olti burchak", "source": "_stories_matematika_olami_01_03.py story 15, body + grammar"},
+  {"claim": "Muntazam beshburchaklar orasida boʻshliq qoladi", "source": "_stories_matematika_olami_01_03.py story 15, body"},
+  {"claim": "Mum qimmat: uni ishlab chiqarish koʻp asal talab qiladi; devor mumdan quriladi", "source": "_stories_matematika_olami_01_03.py story 15, body"},
+  {"claim": "Yuza 100 sm² boʻlsa perimetr: uchburchak ≈ 45,6 sm (≈ 46), kvadrat 40 sm, olti burchak ≈ 37,2 sm (≈ 37); qayta hisoblandi", "source": "_stories_matematika_olami_01_03.py story 15, grammar examples"},
+  {"claim": "«Olti burchak eng tejamkor» fikri ikki ming yil taxmin boʻlib qolgan, 1999-yilda toʻliq isbotlangan", "source": "_stories_matematika_olami_01_03.py story 15, body (Tomas Xeyls)"}
+ ],
+ "style_line": "Premium 3D animated feature film style, warm golden honey light, soft depth of field, rich amber and cream palette, gentle storybook mood, cute expressive characters. No text, no letters, no numbers, no watermark.",
+ "refs": [
+  {"id": "R1", "name_uz": "Muhit: asal kataklari", "prompt": "Vertical 9:16 macro shot inside a beehive: a wall of perfect hexagonal golden wax honeycomb cells, some filled with glowing honey, some capped with pale wax, warm sunlight coming through a gap in the wooden hive box. No bees, no people."},
+  {"id": "R2", "name_uz": "Asalxon (ari)", "prompt": "Vertical 9:16 full-body character portrait of one small cute cartoon honeybee girl with big shiny brown eyes, fuzzy golden-and-black striped body, translucent wings, and a tiny knitted ORANGE scarf around her neck, standing on a honeycomb edge, curious smile, hands on hips."},
+  {"id": "R3", "name_uz": "Asalchi bobo", "prompt": "Vertical 9:16 full-body character portrait of a kind old Uzbek beekeeper, about 70, short white beard, round wire-rim glasses, black-and-white embroidered doppi skullcap, simple light linen shirt and dark vest, standing in a sunny garden next to a wooden beehive with apricot trees behind, gentle smile."},
+  {"id": "R4", "name_uz": "Bobo va Asalxon", "from": ["R1", "R2", "R3"], "prompt": "Combine the attached images into one vertical 9:16 shot in the garden: the old beekeeper holds up one wooden frame of golden hexagonal honeycomb in both hands, looking at it closely through his glasses; the small bee girl with the orange scarf sits on the top edge of the frame looking at him. Same faces, same orange scarf, same warm light."},
+  {"id": "R5", "name_uz": "Beshburchak kataklar", "from": "R2", "prompt": "Change the scene: the same bee girl with the orange scarf stands on a small wall of wax cells she built in the shape of regular PENTAGONS (five sides each). Between the pentagons there are clearly visible dark empty diamond-shaped gaps. She frowns and scratches her head. Same character, same warm light, 9:16."},
+  {"id": "R6", "name_uz": "Uchta shakl", "from": "R2", "prompt": "Change the scene: the same bee girl with the orange scarf hovers above three small golden wax floors side by side: one tiled with equal triangles, one tiled with equal squares, one tiled with equal hexagons. All three floors are perfectly tiled with NO gaps. She looks from one to another, amazed. Same character, same warm light, 9:16."},
+  {"id": "R7", "name_uz": "Uchta devor", "from": "R2", "prompt": "Change the scene: on a flat wooden table lie three thin wax walls bent into three closed shapes: a triangle, a square and a hexagon, each one filled with the SAME amount of glowing honey. The triangle wall is visibly the longest, the hexagon wall the shortest. The same bee girl with the orange scarf stands beside them holding a wax measuring thread. Same character, same warm light, 9:16."},
+  {"id": "R8", "name_uz": "Olti burchak yutdi", "from": "R7", "prompt": "Change the scene: the hexagon of wax glows softly and golden sparkles rise from it; the triangle and the square look dull. The bee girl with the orange scarf stands on top of the hexagon wall with both arms raised in victory. Same character, same table, same light, 9:16."}
+ ],
+ "scenes": [
+  {"n": 1, "title_uz": "Savol", "method": "Ingredients to Video", "attach": ["R2", "R1"],
+   "lines": [{"who": "Asalxon", "text": "Mening uyim nega olti burchak? Bilasizmi?"}],
+   "prompt": "Extreme macro on the golden honeycomb wall; the bee girl with the orange scarf zooms into frame with a loud buzz, lands on a cell edge right in front of the camera and taps the hexagon wall with her tiny hand. Audio: buzzing, a soft wax tap, a bright plucked string. She says in Uzbek with a bright, playful young girl's voice: \"Mening uyim nega olti burchak? Bilasizmi?\" No subtitles, no on-screen text."},
+  {"n": 2, "title_uz": "Bobo", "method": "Frames to Video", "start": "R4",
+   "lines": [{"who": "Asalchi bobo", "text": "Asalari geometriya oʻqimagan-ku. Unda nega aynan olti burchak?"}],
+   "prompt": "Slow push-in. The old beekeeper turns the honeycomb frame in the sunlight, raises his eyebrows above his glasses and smiles at the little bee on the frame. Audio: garden birds, soft buzzing. He says in Uzbek with a calm, warm, slightly raspy old man's voice: \"Asalari geometriya o'qimagan-ku. Unda nega aynan olti burchak?\" No subtitles, no on-screen text."},
+  {"n": 3, "title_uz": "Beshburchak", "method": "Frames to Video", "start": "R5",
+   "lines": [{"who": "Asalxon", "text": "Beshburchak? Yoʻq, orasida boʻshliq qoladi."}],
+   "prompt": "The bee girl presses one more pentagon wax cell into the wall; a dark gap opens next to it, a drop of honey slips through the gap and falls away. She sighs and shakes her head, comic disappointment. Audio: squishy wax, a drip, a sad little trombone note. She says in Uzbek with a bright, playful young girl's voice: \"Beshburchak? Yo'q, orasida bo'shliq qoladi.\" No subtitles, no on-screen text."},
+  {"n": 4, "title_uz": "Uchtasi qoladi", "method": "Frames to Video", "start": "R6",
+   "lines": [{"who": "Asalchi bobo (kadr ortida)", "text": "Boʻshliqsiz faqat uchtasi qoplaydi: uchburchak, kvadrat va olti burchak."}],
+   "prompt": "The camera glides slowly over the three perfectly tiled wax floors, triangles, then squares, then hexagons, each one lighting up with a soft glow as it is named; the bee girl flies along above them. Audio: three soft chime notes, one per floor. An off-screen old man says in Uzbek with a calm, warm, slightly raspy old man's voice: \"Bo'shliqsiz faqat uchtasi qoplaydi: uchburchak, kvadrat va olti burchak.\" No subtitles, no on-screen text."},
+  {"n": 5, "title_uz": "Mum qimmat", "method": "Ingredients to Video", "attach": ["R2", "R1"],
+   "lines": [{"who": "Asalxon", "text": "Mum juda qimmat. Uni qilish uchun koʻp asal kerak."}],
+   "prompt": "Close-up: the bee girl strains to squeeze out one tiny white flake of wax, puffing her cheeks; beside her a big glowing drop of honey visibly shrinks as she works. She wipes her forehead with her orange scarf. Audio: effort grunts, a tiny pop, slurping honey sound. She says in Uzbek with a bright, playful young girl's voice, tired: \"Mum juda qimmat. Uni qilish uchun ko'p asal kerak.\" No subtitles, no on-screen text."},
+  {"n": 6, "title_uz": "Devorlar", "method": "Frames to Video", "start": "R7",
+   "lines": [{"who": "Asalchi bobo (kadr ortida)", "text": "Asal bir xil. Uchburchakka qariyb qirq olti santimetr devor ketadi, kvadratga qirq."}],
+   "prompt": "The bee girl walks along the triangle wall unrolling her wax thread, it runs long; then along the square wall, a bit shorter. The camera follows the thread at table height. Audio: a stretching thread, ticking, a measuring zip sound. An off-screen old man says in Uzbek with a calm, warm, slightly raspy old man's voice: \"Asal bir xil. Uchburchakka qariyb qirq olti santimetr devor ketadi, kvadratga qirq.\" No subtitles, no on-screen text."},
+  {"n": 7, "title_uz": "Gʻolib", "method": "Frames to Video", "start": "R7", "end": "R8",
+   "lines": [{"who": "Asalxon", "text": "Olti burchakka qariyb oʻttiz yetti! Eng kam mum!"}],
+   "prompt": "The bee girl measures the hexagon wall: the thread comes out clearly the shortest; she gasps, flies up and lands on the hexagon, which starts to glow golden while sparkles rise. Audio: a rising whoosh, a triumphant small fanfare. She shouts in Uzbek with a bright, playful young girl's voice, delighted: \"Olti burchakka qariyb o'ttiz yetti! Eng kam mum!\" No subtitles, no on-screen text."},
+  {"n": 8, "title_uz": "Burilish", "method": "Ingredients to Video", "attach": ["R3", "R1"],
+   "lines": [{"who": "Asalchi bobo", "text": "Odamlar buni ikki ming yil taxmin qilgan. Toʻliq isbot faqat 1999-yilda keldi."}],
+   "prompt": "Golden-hour garden. The old beekeeper gently slides the honeycomb frame back into the wooden hive, then looks into the camera with a wise little smile and lifts one finger. Audio: evening crickets, soft buzzing, a wooden knock. He says in Uzbek with a calm, warm, slightly raspy old man's voice: \"Odamlar buni ikki ming yil taxmin qilgan. To'liq isbot faqat 1999-yilda keldi.\" No subtitles, no on-screen text."},
+  {"n": 9, "title_uz": "Savol sizga", "method": "Frames to Video", "start": "R4",
+   "lines": [{"who": "Asalxon", "text": "Biz esa buni ancha oldin bilardik! Sizningcha, qanday? Izohda yozing!"}],
+   "prompt": "The bee girl lifts off the frame, flies right up to the camera lens, winks and points at the viewer with a proud grin; the beekeeper laughs softly behind her, slightly out of focus. Hold on her face at the end. Audio: buzzing, a short warm laugh, one bright chime. She says in Uzbek with a bright, playful young girl's voice, cheeky: \"Biz esa buni ancha oldin bilardik! Sizningcha, qanday? Izohda yozing!\" No subtitles, no on-screen text."}
+ ],
+ "post_text_uz": "Asalari geometriya oʻqimagan, lekin uyasi eng tejamkor shakldan qurilgan. Nega aynan olti burchak? Javob videoda. Sizningcha, asalari buni qanday «biladi»? Izohda yozing! Batafsil — powerty.uz, «Matematika olami». #NegaShunday #matematika #asalari #tabiat #Powerty"
+}
