@@ -81,6 +81,10 @@ Facts and sources still go in the JSON (`facts`, `sources`) and are checked, but
   one or two sentences per 8-second scene, at most two speakers per scene. An off-screen narrator
   is allowed ("An off-screen man says in Uzbek …"). Every prompt ends with
   `No subtitles, no on-screen text.` The gate checks each line is in its prompt.
+- **One exception: «Bir maqol, ikki til».** The proverb itself may be spoken **once** in its
+  original language (e.g. Korean `호랑이도 제 말 하면 온다`), so the viewer hears the real thing
+  before its Uzbek twin. Write it in the prompt as `… says in Korean: "…"` and in `lines` exactly
+  as in the prompt. Every other line in the video stays Uzbek. (User's approval, 2026-10-04.)
 - **Copy-paste ready.** Base refs get the `style_line` appended by `send.py`; edit refs
   (`from`) and scene prompts are sent exactly as written.
 
