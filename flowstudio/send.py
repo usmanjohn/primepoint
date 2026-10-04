@@ -31,6 +31,7 @@ CYRILLIC = re.compile(r'[Ѐ-ӿ]')
 REF_ID = re.compile(r'^R\d+$')
 SECONDS = 8                       # one Veo clip
 BROTHERS = ('Inom', 'Jonibek')    # one package each, every day (the user's request, 2026-10-04)
+WHO = BROTHERS + ('Birga',)       # 'Birga' = a series package for whoever films it (2026-10-05)
 
 
 # ── the gate ─────────────────────────────────────────────────────────────
@@ -64,8 +65,8 @@ def check(pkg):
             errs.append(f'missing or empty: {key}')
     if errs:
         return errs
-    if pkg.get('for') not in BROTHERS:
-        errs.append(f"for must be one of {BROTHERS} — whose video this is")
+    if pkg.get('for') not in WHO:
+        errs.append(f"for must be one of {WHO} — whose video this is")
     if not str(pkg['number']).isdigit():
         errs.append("number must be a whole number (the video's №)")
     for k in ('title_uz', 'concept_uz', 'format_uz', 'post_text_uz'):
@@ -169,6 +170,10 @@ def sections(pkg):
     refs = []
     for r in pkg['refs']:
         how = f" ({e(' + '.join(_froms(r)))} ni biriktiring)" if r.get('from') else ''
+        if r.get('saved'):                # a series cast image made in an earlier episode
+            refs.append(f"<b>{e(r['id'])} — {e(r['name_uz'])}</b> ♻️ <i>oldingi qismdan saqlangan — "
+                        f"qayta yaratmang</i>")
+            continue
         prompt = r['prompt'] if r.get('from') else f"{r['prompt'].rstrip()} {pkg['style_line']}"
         refs.append(f"<b>{e(r['id'])} — {e(r['name_uz'])}</b>{how}\n<pre>{e(prompt)}</pre>")
     chain = any(r.get('from') for r in pkg['refs'])
@@ -212,7 +217,8 @@ def render(pkg):
     body = sections(pkg)
     num = int(pkg['number'])
     total = len(body) + 1
-    first = (f"👤 <b>{e(pkg['for'])} uchun</b>\n"
+    who = '👥 <b>Birga</b>' if pkg['for'] == 'Birga' else f"👤 <b>{e(pkg['for'])} uchun</b>"
+    first = (f"{who}\n"
              f"🎬 <b>№{num} · «{e(pkg['title_uz'])}»</b>\n#{pkg['for']} {tag(pkg)} {series_tag(pkg)}\n\n"
              f"<b>Gʻoya:</b> {e(pkg['concept_uz'])}\n<b>Format:</b> {e(pkg['format_uz'])}\n\n"
              "1️⃣ Rasmlar → 2️⃣ Ssenariy → 3️⃣ Flowʼda yaratish (hammasi shu xabarga javob)\n\n"
@@ -222,7 +228,7 @@ def render(pkg):
 
 def plain(pkg):
     """The whole package as a .txt file to keep."""
-    lines = [f"{pkg['for']} uchun", f"№{pkg['number']} · {pkg['title_uz']} — {pkg['series']} — {pkg['date']}", '',
+    lines = [pkg['for'] if pkg['for'] == 'Birga' else f"{pkg['for']} uchun", f"№{pkg['number']} · {pkg['title_uz']} — {pkg['series']} — {pkg['date']}", '',
              pkg['concept_uz'], pkg['format_uz'], '']
     for m in sections(pkg):
         lines += [html.unescape(re.sub(r'</?(b|i|pre)>', '', m)), '', '─' * 40, '']

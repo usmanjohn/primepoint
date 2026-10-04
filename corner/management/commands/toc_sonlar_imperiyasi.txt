@@ -1,0 +1,42 @@
+# ── Collection metadata (read by Claude) ─────────────────────────────
+SUBJECT:    Matematika        (icon: bi-calculator, color: #f59e0b, order: 7)
+COLLECTION: Sonlar imperiyasi
+AUTHOR:     powerty
+# (AUTHOR = production admin username. On local dev the admin is 'prime' instead.)
+# BIBLE: flowstudio/series/sonlar_imperiyasi.md — the cast, the rules, the season plan.
+#        The bible wins over everything here. Read it before touching an episode.
+# ─────────────────────────────────────────────────────────────────────
+
+# Sonlar imperiyasi — a comic fairy-tale SERIES about the number system
+#
+# The user's own tale (Zero gravity.docx), rebuilt as a series: every episode a new kind
+# of number is born because the old ones could not do something. It is the third maths
+# shelf, beside "Prime Math Readings" and "Matematika olami", and like Matematika olami
+# it belongs to NO lesson.
+#
+#   * TWO LAWS: every scene mathematically true; every scene funny — and the joke IS the
+#     maths (the twins vanish when they hug because 1 + (−1) = 0).
+#   * Episode shape: cold-open joke → problem → comic failure → the new number is born →
+#     cliffhanger → «Haqiqatda» box (pe-call pe-tip, real maths + real history) →
+#     «Keyingi qismda…» line. 330–500 words; ertak register («…ekan»), lots of dialogue.
+#   * cn-word 2–6 per episode (the key terms only), grammar = the episode's one maths idea,
+#     2–3 questions (vary `answer`), open_question.
+#   * Inline SVG with pm-* classes. NO audio (maths shelf).
+#   * All episodes released together (user's choice, 2026-10-05); the weekly rhythm is
+#     the Flow Studio videos (GUIDE §2 «Sonlar imperiyasi», ordered).
+#   * Facts: every date in a Haqiqatda box is listed in the data file's FAKTLAR header;
+#     a legend is called «rivoyat».
+
+## 1-MAVSUM — _stories_sonlar_imperiyasi_01_05.py + _06_10.py   [done]
+1.  Noʻl va egizak Birlar            0, ±1, 1 + (−1) = 0
+2.  Ishoralar oʻyini                 + − ×, a + 0 = a, a × 0 = 0
+3.  Nolga boʻlish                    1 ÷ 0 aniqlanmagan; cheksizlik — yoʻnalish
+4.  Tayoq va saf                     sonlar oʻqi, juft/toq, 0 juft
+5.  Oraliqdagi yerlar                kasrlar, zichlik
+6.  Nisbat xalqi                     ratsional sonlar, davriy kasr 2,(3)
+7.  Ildiz qafasi                     kvadrat, ildiz, √2 irratsional, oʻqdagi teshiklar
+8.  Doiraning siri                   π
+9.  Irratsional xonlik               irratsionallar, e (murakkab foiz)
+10. Haqiqiy sonlar imperiyasi        haqiqiy sonlar; √(−1) — 2-mavsumga ilgak
+
+## 2-MAVSUM — mavhum sonlar (i), tik oʻq   [next — not planned yet; write a bible first]

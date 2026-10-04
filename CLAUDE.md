@@ -1174,3 +1174,9 @@ and ends «✅ … 👍 bosing» — the 👍 reaction is the "done" mark (no bu
 told in Uzbek (Mantiq maydoni · Bobolar sirri · Buyuk kashfiyot · Nega shunday? · Hayotdagi
 matematika · Hayot hikoyasi · Special). Mixing in Korean lessons loses retention. The pools are
 Logic Arena + Matematika olami + Wonders + Life Stories — new puzzles/stories there feed the videos.
+**«Sonlar imperiyasi» (2026-10-05)** — the user's own number-system fairy tale (`Zero gravity.docx`)
+as a comic SERIES: bible `flowstudio/series/sonlar_imperiyasi.md` (two laws: mathematically true
+AND funny — the joke is the maths), 10 Corner episodes (`_stories_sonlar_imperiyasi_01_05/06_10.py`,
+shelf «Sonlar imperiyasi», all published at once, no audio) and a weekly Saturday Flow episode
+`"for": "Birga"` (GUIDE §2b) with a FIXED cast (`sonlar_imperiyasi_cast.json`, refs reused with
+`"saved": true`). Episode 1's package is pre-written (`sonlar_imperiyasi_ep01.json`). Season 2 = i.

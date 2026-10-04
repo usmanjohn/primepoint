@@ -28,7 +28,8 @@ PER_DAY:          2 — "for": "Inom" first, then "for": "Jonibek"; two DIFFEREN
    The video's **№** = the number of lines in `sent.tsv` + 1 (line 1 is the Amudaryo episode, №1);
    the day's second package takes the next № after the first.
    Column 6 of `sent.tsv` says whose video it was (lines without it predate the two-brother split).
-**Steps 2–5 run twice: first for Inom, then for Jonibek.** Then log both in step 6.
+**Steps 2–5 run twice: first for Inom, then for Jonibek.** On a **Saturday** they run a third
+time for the «Sonlar imperiyasi» episode (§2b, `"for": "Birga"`). Then log them all in step 6.
 
 2. **Pick today's idea** by the rotation rule (§2) from the source pool (§3). Open the
    source file and read the actual text — the facts, numbers and answers come from there.
@@ -136,6 +137,34 @@ A famous legend (Fales' shadow, Arximed's «Evrika!») is called a legend in the
 A **Mantiq maydoni** package is the QUESTION video and ends on the question. Exactly 7 days
 later (check `sent.tsv`) the ANSWER video goes to **the same brother** who made the question —
 that takes priority over the rotation for his package that day.
+
+---
+
+## 2b. «Sonlar imperiyasi» — the ordered series (weekly, «Birga»)
+
+A comic fairy-tale series about the number system (the user's own tale). It is **not part of
+the rotation** and does not replace either brother's package: on its day it is a **third**
+package, `"for": "Birga"` (one brother films the whole season; the user chose not to name him).
+
+- **When:** every **Saturday** (Tashkent date), and only then — unless the user asks.
+- **Which episode:** count the `Sonlar imperiyasi` rows in `sent.tsv`; send episode
+  count + 1. Season 1 has 10 episodes; after episode 10, stop and say so in the final message.
+  Never skip, never send two in one week, never send out of order.
+- **Read first:** `flowstudio/series/sonlar_imperiyasi.md` (the bible: cast, catchphrases, the
+  two laws — mathematically true AND funny, the joke is the maths) and the episode's text in
+  `corner/management/commands/_stories_sonlar_imperiyasi_*.py` (`order` = episode).
+- **Episode 1 is already written:** `flowstudio/series/sonlar_imperiyasi_ep01.json`. Copy it to
+  `flowstudio/out/`, set `number` and `date`, gate, send. Episodes 2-10: write them in the same
+  shape and depth.
+- **The cast never changes:** take refs **verbatim** from `flowstudio/series/sonlar_imperiyasi_cast.json`
+  (same id, `name_uz`, `prompt`, and the style line and voices from there). A cast ref first
+  generated in an EARLIER episode (`introduced` < this episode) gets `"saved": true` — the
+  brother reuses his saved image instead of making a new face. Episode-only refs use ids
+  **R11 and up** and are named «N-qism: …».
+- Every video ends on the episode's cliffhanger image with the off-screen line
+  «Davomi — powerty.uz da.»; `post_text_uz` starts «Sonlar imperiyasi · N-qism» and carries
+  `#SonlarImperiyasi`. Uzbek only, as everywhere.
+- Log it like any package (`sent.tsv` column 6 = `Birga`, column 4 = `Sonlar imperiyasi`).
 
 ---
 
