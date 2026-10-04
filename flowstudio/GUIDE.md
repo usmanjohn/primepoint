@@ -81,10 +81,8 @@ Facts and sources still go in the JSON (`facts`, `sources`) and are checked, but
   one or two sentences per 8-second scene, at most two speakers per scene. An off-screen narrator
   is allowed ("An off-screen man says in Uzbek …"). Every prompt ends with
   `No subtitles, no on-screen text.` The gate checks each line is in its prompt.
-- **One exception: «Bir maqol, ikki til».** The proverb itself may be spoken **once** in its
-  original language (e.g. Korean `호랑이도 제 말 하면 온다`), so the viewer hears the real thing
-  before its Uzbek twin. Write it in the prompt as `… says in Korean: "…"` and in `lines` exactly
-  as in the prompt. Every other line in the video stays Uzbek. (User's approval, 2026-10-04.)
+- **Uzbek only — no foreign-language lines, ever.** Even when the source text is Korean (the
+  Wonders shelf) or English (Life Stories), the video retells it in Uzbek.
 - **Copy-paste ready.** Base refs get the `style_line` appended by `send.py`; edit refs
   (`from`) and scene prompts are sent exactly as written.
 
@@ -111,21 +109,25 @@ Facts and sources still go in the JSON (`facts`, `sources`) and are checked, but
 
 ## 2. Rotation — never the same shape two days running
 
-Cycle through these series; across any 7 days at least 5 different ones **per brother**, and
-the two packages of one day are always different series. Check `sent.tsv` (column 6) before choosing.
+**The channel is about thinking: logic, maths, science and the stories behind them** (the
+user's decision, 2026-10-05). ⛔ **No language-learning videos** — no Korean, Japanese,
+Russian or English lessons, proverbs, mistakes or politeness sketches. Mixing those in loses
+the viewer who came for the puzzles. The old language series (Tutilgan xato LIVE, Bir maqol
+ikki til, Bitta sahna toʻrt til) and Xorijda oʻqish are retired; do not bring them back unless asked.
+
+A brother never gets the same series two days running; across any 7 days each brother gets at
+least 4 different ones, and the two packages of one day are always different series. Check
+`sent.tsv` (column 6) before choosing. Lines in `sent.tsv` from the retired series are history only.
 
 | series | shape | source pool (§3) |
 |---|---|---|
 | **Mantiq maydoni** | puzzle drama → freeze → "Javobni izohda yozing"; answer video next week | Logic Arena |
 | **Bobolar sirri** | a real scholar, a real problem, the method on screen, "you can do this too" | Matematika olami — Buyuk matematiklar |
 | **Buyuk kashfiyot** | the same shape for a scholar from ELSEWHERE (Fales, Arximed, Gauss, Ramanujan) | Matematika olami — Buyuk matematiklar |
-| **Tutilgan xato LIVE** | live-action comedy: mistake → social cost → rewind → correct line → rule | storyvideo ko04–ko15, Prime course lessons |
-| **Bir maqol, ikki til** | the proverb shown literally, then its Uzbek twin | Korean proverbs shelf, storyvideo ko16–ko27 |
 | **Nega shunday?** | a wonder of nature/science made visible, one mechanism | Wonders shelf, Matematika olami (tabiat / kundalik hayot) |
-| **Xorijda oʻqish** | a pupil's path abroad as a short drama; facts only from the data | abroad/ |
-| **Bitta sahna, toʻrt til** | one everyday scene replayed in Korean / Japanese / Russian / English | Prime courses (greetings, politeness levels) |
-| **Hayot hikoyasi** | a quiet human story with a twist, retold in Uzbek | Life Stories shelf, Koreya olami |
-| **Special** | once a week at most: a bigger 60–90 s film (Hangul's birth, the SAT module thriller, a Powerty brand film) | any |
+| **Hayotdagi matematika** | an everyday object hides a clever idea: why the manhole cover is round, the barcode's last digit, interest on interest, the A4 sheet | Matematika olami — kundalik hayot |
+| **Hayot hikoyasi** | a quiet human story with a twist, retold in Uzbek | Life Stories shelf |
+| **Special** | once a week at most: a bigger 60–90 s film (al-Xorazmiy and the birth of algebra, the twelve-coin problem as a thriller, a Powerty brand film) | any pool above |
 
 **Bobolar sirri is only for our own region's scholars** (al-Xorazmiy, Beruniy, Ulugʻbek, Ibn Sino,
 Ali Qushchi, al-Fargʻoniy…) — «bobolar» means *our* ancestors. Anyone else is «Buyuk kashfiyot».
@@ -145,14 +147,12 @@ Read the file; never write a fact, date, number or answer from memory.
 |---|---|---|
 | Logic Arena (16 puzzles) | `logic/management/commands/_puzzles_logic_*.py` | `answer_key` is brute-force verified; `solution_uz` holds the Uzbek steps |
 | Matematika olami | `corner/management/commands/_stories_matematika_olami_*.py`, toc `toc_matematika_olami.txt` | history, nature, daily-life maths, puzzles — Uzbek, facts checked |
-| Koreya olami | `corner/management/commands/_stories_koreya_olami_*.py` | Uzbek prose about Korean |
-| Korean proverbs | `corner/management/commands/_stories_proverbs_*.py`, `toc_korean_proverbs.txt` | |
-| Wonders | `corner/management/commands/_stories_wonders_*.py`, `toc_wonders.txt` | Korean texts with Uzbek titles; wow-facts |
+| Wonders | `corner/management/commands/_stories_wonders_*.py`, `toc_wonders.txt` | Korean texts with Uzbek titles; use the FACT, tell it in Uzbek |
 | Life Stories | `corner/management/commands/_stories_life_*.py` | English narratives, quiet twist |
-| SAT olami | `corner/management/commands/_stories_sat_olami_*.py` | the exam itself |
-| Study abroad | `abroad/management/commands/_abroad_*.py`, `STYLE_GUIDE_ABROAD.md` | every fact has `source_url` + `last_checked`; ⛔ never a deadline or amount not in the file, and never a countdown on an `is_estimate` date |
-| Existing animatics | `storyvideo/SERIES.md`, `storyvideo/stories/` | ideas already proven as paper animatics; a cinematic remake is welcome |
-| Prime courses | `tutorial/management/commands/toc_prime_*.txt` | lesson topics for language sketches |
+| Existing animatics | `storyvideo/stories/pm*.py`, `mo*.py` (maths only — never `ko*`) | ideas already proven as paper animatics; a cinematic remake is welcome |
+
+If a pool runs dry, say so in the final message — the user writes new Logic Arena puzzles and
+Corner stories for this; never invent a fact to fill the gap.
 
 Put the file path(s) you used in `sources`, and every checkable claim in `facts`.
 

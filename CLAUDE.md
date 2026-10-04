@@ -1170,3 +1170,7 @@ quality reference (the Amudaryo episode). Facts come only from repo files (§3 o
 **Two packages a day since 2026-10-04**, one per brother — `"for": "Inom"` then `"Jonibek"`
 (the gate refuses any other name), different series; each opens «👤 <name> uchun» with `#Inom`/`#Jonibek`
 and ends «✅ … 👍 bosing» — the 👍 reaction is the "done" mark (no buttons: the bot is send-only).
+**⛔ No language videos since 2026-10-05** — the channel is logic, maths, science and Corner stories
+told in Uzbek (Mantiq maydoni · Bobolar sirri · Buyuk kashfiyot · Nega shunday? · Hayotdagi
+matematika · Hayot hikoyasi · Special). Mixing in Korean lessons loses retention. The pools are
+Logic Arena + Matematika olami + Wonders + Life Stories — new puzzles/stories there feed the videos.
