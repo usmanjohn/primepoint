@@ -145,7 +145,7 @@ Read the file; never write a fact, date, number or answer from memory.
 
 | pool | path | notes |
 |---|---|---|
-| Logic Arena (16 puzzles) | `logic/management/commands/_puzzles_logic_*.py` | `answer_key` is brute-force verified; `solution_uz` holds the Uzbek steps |
+| Logic Arena (32 puzzles) | `logic/management/commands/_puzzles_logic_*.py` | `answer_key` is brute-force verified; `solution_uz` holds the Uzbek steps. ⛔ **Never spoil a sealed puzzle:** compute each puzzle's dates from its file's `SCHEDULE` + `round` (opens = start + 7×(round−1) days, reveal = opens + 7). Use only puzzles already OPEN; a QUESTION video may say «javobni powerty.uz/logic da yuboring»; the ANSWER video is sent no earlier than the puzzle's reveal date. |
 | Matematika olami | `corner/management/commands/_stories_matematika_olami_*.py`, toc `toc_matematika_olami.txt` | history, nature, daily-life maths, puzzles — Uzbek, facts checked |
 | Wonders | `corner/management/commands/_stories_wonders_*.py`, `toc_wonders.txt` | Korean texts with Uzbek titles; use the FACT, tell it in Uzbek |
 | Life Stories | `corner/management/commands/_stories_life_*.py` | English narratives, quiet twist |

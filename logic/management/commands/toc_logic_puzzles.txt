@@ -50,28 +50,52 @@ Round 8 — opens 2026-08-31, revealed 2026-09-07
  16. Four Weights for the Bazaar weighing ★★★★ → 40
 
 
-## SEASON 2 — rounds 9-16, _puzzles_logic_17_32.py   [next]
+## SEASON 2 — _puzzles_logic_17_24.py + _puzzles_logic_25_32.py   [done]
 
-Keep at least four rounds ahead of today, or the Arena runs out of live puzzles
-and the home page falls back to the archive.
+Season 1 ran out on 2026-09-07, so season 2 has its OWN schedule (start 2026-10-05 09:00 UTC,
+rounds numbered 1-8 again). The two files share one SCHEDULE. Weighing rested all season.
+Gate: verify_logic_17_32.py (scratchpad) — every key by brute force / BFS / DP / simulation.
 
-Candidates, not yet written or ordered — pick with §2 of the style guide, and
-rotate the categories away from weighing for a while (season 1 used it four
-times):
+Round 1 — opens 2026-10-05, revealed 2026-10-12
+ 17. Seventeen Camels              numbers  ★★    → 6      (the middle son)
+ 18. Two Bowls from Rishton        strategy ★★★★  → 14     (two-egg drop, 100 shelves)
 
-  - The two-egg building drop (which floor breaks an egg, fewest drops)  strategy ★★★★
-  - The prisoners and the light switch                                   strategy ★★★★★
-  - Crossing a desert with fuel caches (the jeep problem)                crossing ★★★★
-  - The four-colour flag / counting distinct arrangements                shapes   ★★★
-  - Two trains and the fly (the trap: sum the series or time it)         numbers  ★★★
-  - The birthday paradox, asked as a count                               chance   ★★★★
-  - Knights and knaves, three islanders                                  liars    ★★★★
-  - Cutting a cake into eight with three straight cuts                   cutting  ★★★
-  - Al-Khwarizmi's inheritance problem (a real historical one)           numbers  ★★★
-  - The chaykhana teapot: measuring with two unmarked pots               cutting  ★★
-  - Sharing 17 camels between three sons (1/2, 1/3, 1/9)                 numbers  ★★★
-  - A river crossing with a boat that holds a weight limit               crossing ★★★
+Round 2 — opens 2026-10-12, revealed 2026-10-19
+ 19. Rectangles in the Tile Panel  shapes   ★★★   → 225
+ 20. Six Sellers at Chorsu         liars    ★★★★  → 8      (honest: stalls 2 and 6)
 
-Signature ones worth inventing rather than borrowing: a Chorsu bazaar weighing
-problem, a Registon tile-pattern counting problem, a puzzle built on the Uzbek
-school timetable. Facts about real people and places must be true.
+Round 3 — opens 2026-10-19, revealed 2026-10-26
+ 21. The Little Boat               crossing ★★    → 13
+ 22. The Shared Birthday           chance   ★★★★  → 23
+
+Round 4 — opens 2026-10-26, revealed 2026-11-02
+ 23. When the Hands Meet           numbers  ★★★   → 22
+ 24. The Walnut Game               strategy ★★★★  → 14     (multiples of 7)
+
+Round 5 — opens 2026-11-02, revealed 2026-11-09
+ 25. Five Cuts in a Non            cutting  ★★★   → 16
+ 26. Thirty Hats in a Line         strategy ★★★★  → 29
+
+Round 6 — opens 2026-11-09, revealed 2026-11-16
+ 27. A Rope Around the Earth       shapes   ★★★   → 628    (cm; 2π m)
+ 28. Six Cities in the Wafers      chance   ★★★★  → 14,7
+
+Round 7 — opens 2026-11-16, revealed 2026-11-23
+ 29. The 2026 Lockers              numbers  ★★★   → 45
+ 30. The Hundred Boxes             chance   ★★★★★ → 31     (%, rounded down)
+
+Round 8 — opens 2026-11-23, revealed 2026-11-30
+ 31. The Silver Chain              cutting  ★★★   → 63
+ 32. Five Merchants and the Apples numbers  ★★★★★ → 3121
+
+
+## SEASON 3 — rounds from 2026-11-30, _puzzles_logic_33_….py   [next]
+
+⚠️ Write it before mid-November (keep four rounds ahead). Puzzles also feed the Flow Studio
+«Mantiq maydoni» videos, so the pool matters twice.
+
+Candidates (unused): the prisoners and the light switch (strategy ★★★★★), the jeep / Kyzylkum
+water caches (crossing ★★★★), two trains and the swallow (numbers ★★★), knights and knaves with
+a question you choose (liars ★★★★), look-and-say 1, 11, 21, 1211 (numbers ★★), a weighing
+puzzle again (rested in season 2), al-Xorazmiy's real inheritance problems from al-jabr
+(numbers ★★★ — quote the source), a Registon tile-pattern count (shapes ★★★).

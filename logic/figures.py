@@ -248,3 +248,90 @@ def bridge(times, glyph='🚶'):
         parts.append(_glyph(x, 84, glyph, 20))
         parts.append(_text(x, 108, str(t), 'lg-lbl lg-lbl--sm'))
     return _svg(400, 128, ''.join(parts))
+
+
+# ── season 2 ────────────────────────────────────────────────────────────────
+
+def tiles(rows=5, cols=5, mark=None):
+    """A panel of square tiles; `mark` = (r0, c0, r1, c1) outlines one rectangle
+    of them, so the reader sees what "a rectangle made of tiles" means."""
+    cell, pad = 34, 14
+    parts = []
+    for r in range(rows):
+        for c in range(cols):
+            parts.append(f'<rect x="{pad + c * cell}" y="{pad + r * cell}" width="{cell}" '
+                         f'height="{cell}" class="lg-fill"/>')
+    if mark:
+        r0, c0, r1, c1 = mark
+        parts.append(f'<rect x="{pad + c0 * cell}" y="{pad + r0 * cell}" '
+                     f'width="{(c1 - c0 + 1) * cell}" height="{(r1 - r0 + 1) * cell}" '
+                     f'class="lg-fill--rose" style="fill-opacity:.55;stroke-width:3.5"/>')
+    return _svg(pad * 2 + cols * cell, pad * 2 + rows * cell, ''.join(parts))
+
+
+def clockface(hour=12, minute=0):
+    """A plain clock dial with both hands at the given time."""
+    import math
+    cx, cy, r = 80, 80, 64
+    parts = [f'<circle cx="{cx}" cy="{cy}" r="{r}" class="lg-fill"/>']
+    for k in range(12):
+        a = math.radians(k * 30)
+        x1, y1 = cx + (r - 8) * math.sin(a), cy - (r - 8) * math.cos(a)
+        x2, y2 = cx + r * math.sin(a), cy - r * math.cos(a)
+        parts.append(f'<path d="M{x1:.1f} {y1:.1f} L{x2:.1f} {y2:.1f}" class="lg-ln"/>')
+    ah = math.radians((hour % 12) * 30 + minute * 0.5)
+    am = math.radians(minute * 6)
+    parts.append(f'<path d="M{cx} {cy} L{cx + 34 * math.sin(ah):.1f} {cy - 34 * math.cos(ah):.1f}" '
+                 f'class="lg-ln lg-ln--th"/>')
+    parts.append(f'<path d="M{cx} {cy} L{cx + 52 * math.sin(am):.1f} {cy - 52 * math.cos(am):.1f}" '
+                 f'class="lg-ln"/>')
+    parts.append(f'<circle cx="{cx}" cy="{cy}" r="4" class="lg-fill--gold"/>')
+    return _svg(160, 160, ''.join(parts))
+
+
+def flatbread(chords=()):
+    """A round non seen from above, with straight cuts drawn as chords.
+
+    `chords` are pairs of angles in degrees: each cut runs from the rim at the
+    first angle to the rim at the second.
+    """
+    import math
+    cx, cy, r = 90, 84, 70
+    parts = [f'<circle cx="{cx}" cy="{cy}" r="{r}" class="lg-fill--gold"/>',
+             f'<circle cx="{cx}" cy="{cy}" r="{r * 0.45:.0f}" class="lg-ln" '
+             f'style="stroke-dasharray:3 4"/>']
+    for a, b in chords:
+        x1, y1 = cx + r * math.cos(math.radians(a)), cy - r * math.sin(math.radians(a))
+        x2, y2 = cx + r * math.cos(math.radians(b)), cy - r * math.sin(math.radians(b))
+        parts.append(f'<path d="M{x1:.1f} {y1:.1f} L{x2:.1f} {y2:.1f}" class="lg-ln lg-ln--th"/>')
+    return _svg(180, 168, ''.join(parts))
+
+
+def chain(links=7, cut=()):
+    """A straight chain of links; the 1-based positions in `cut` are drawn open."""
+    per, pad = 30, 16
+    parts = []
+    for i in range(links):
+        x = pad + i * per
+        cls = 'lg-fill--rose' if (i + 1) in cut else 'lg-fill--gold'
+        dash = ';stroke-dasharray:4 3' if (i + 1) in cut else ''
+        parts.append(f'<rect x="{x}" y="{24 if i % 2 else 18}" width="{per + 8}" '
+                     f'height="{18 if i % 2 else 30}" rx="9" class="{cls}" '
+                     f'style="fill-opacity:.6{dash}"/>')
+        parts.append(_text(x + per // 2 + 4, 70, str(i + 1), 'lg-lbl lg-lbl--sm'))
+    return _svg(pad * 2 + links * per + 8, 82, ''.join(parts))
+
+
+def rings(inner='R', outer='R + 1 m'):
+    """Two concentric circles — a planet and the rope lifted off it — with both
+    radii drawn, so the reader sees that only the radius changed."""
+    cx, cy = 110, 100
+    parts = [
+        f'<circle cx="{cx}" cy="{cy}" r="82" class="lg-ln" style="stroke-dasharray:6 4"/>',
+        f'<circle cx="{cx}" cy="{cy}" r="62" class="lg-fill--mint"/>',
+        f'<path d="M{cx} {cy} L{cx + 62} {cy}" class="lg-ln lg-ln--th"/>',
+        f'<path d="M{cx} {cy} L{cx} {cy - 82}" class="lg-ln"/>',
+        _text(cx + 18, cy - 6, escape(inner), 'lg-lbl lg-lbl--sm'),
+        _text(cx + 34, cy - 58, escape(outer), 'lg-lbl lg-lbl--sm'),
+    ]
+    return _svg(220, 200, ''.join(parts))
