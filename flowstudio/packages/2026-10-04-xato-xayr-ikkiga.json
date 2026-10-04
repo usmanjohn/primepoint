@@ -1,0 +1,190 @@
+{
+ "id": "2026-10-04-xato-xayr-ikkiga",
+ "number": 6,
+ "for": "Jonibek",
+ "date": "2026-10-04",
+ "series": "Tutilgan xato LIVE",
+ "title_uz": "«Xayr» ikkiga boʻlinadi",
+ "concept_uz": "Seuldagi ofis, kechqurun. Sardor ketayotib rahbari Nodira opaga taʼzim qilib «안녕히 가세요» deydi — yaʼni «yaxshi boring». Opa hayron: «Men ketyapmanmi?» Orqaga qaytamiz: ketayotgan odam «계세요», qoladigan odam «가세요» deydi.",
+ "format_uz": "7 sahna × 8 soniya = 56 soniya",
+ "sources": [
+  "storyvideo/stories/ko07.py («Xayr» ikkiga boʻlinadi, narration + rule + ask)",
+  "tutorial/management/commands/_tutorials_prime_korean_09_11.py (PK-9: 안녕히 계세요 / 안녕히 가세요)"
+ ],
+ "facts": [
+  {
+   "claim": "안녕히 가세요 = «yaxshi boring» — ketayotgan odamga aytiladi",
+   "source": "storyvideo/stories/ko07.py («Xayr» ikkiga boʻlinadi, narration + rule + ask)"
+  },
+  {
+   "claim": "안녕히 계세요 = «yaxshi turing» — oʻzingiz ketayotganda qoladigan odamga aytiladi",
+   "source": "storyvideo/stories/ko07.py («Xayr» ikkiga boʻlinadi, narration + rule + ask)"
+  },
+  {
+   "claim": "Serialda 가세요 koʻp eshitiladi, chunki kamera qoladigan odam bilan qoladi",
+   "source": "storyvideo/stories/ko07.py («Xayr» ikkiga boʻlinadi, narration + rule + ask)"
+  },
+  {
+   "claim": "Namunaviy dialog: 가: 안녕히 계세요. 나: 네, 안녕히 가세요.",
+   "source": "tutorial/management/commands/_tutorials_prime_korean_09_11.py (PK-9: 안녕히 계세요 / 안녕히 가세요)"
+  },
+  {
+   "claim": "Ikkalasi birga ketayotgan boʻlsa — ochiq savol, javob videoda aytilmaydi",
+   "source": "storyvideo/stories/ko07.py («Xayr» ikkiga boʻlinadi, narration + rule + ask) ask"
+  }
+ ],
+ "style_line": "Cinematic photoreal comedy, modern Seoul office in the evening, warm desk lamps against cool blue city light through the windows, shallow depth of field, clean natural colours, sitcom energy. No text, no letters, no readable signs, no logos, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: Seul ofisi",
+   "prompt": "Vertical 9:16 interior of a small modern open-plan office in Seoul in the evening: a few white desks with monitors showing blurred blank screens, warm desk lamps, potted plants, a coat rack, a glass entrance door on one side, and through tall windows the blue lights of the city. Signs and papers are blank. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Sardor",
+   "prompt": "Vertical 9:16 full-body portrait of a young Uzbek office worker, about twenty-five, short black hair, friendly round face, white shirt, navy blazer, a bright ORANGE lanyard with a blank card around his neck, a black backpack on one shoulder. Polite, slightly nervous smile. Modern office background."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Nodira opa",
+   "prompt": "Vertical 9:16 full-body portrait of an Uzbek team leader, a woman about forty-five, dark hair in a neat low bun, rectangular glasses on a thin GOLD chain, grey cardigan over a cream blouse, holding a coffee mug without any logo. Composed, kind, quietly amused expression. Modern office background."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Eshik oldida",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot of the office: in the foreground the young man in the orange lanyard stands by the glass door with his backpack on, mid-bow, polite and cheerful; in the background the woman with glasses on a gold chain sits at her desk, still working at her monitor, coffee mug beside her. Same faces, same clothes, evening light."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Opa hayron",
+   "from": "R4",
+   "prompt": "Change the shot: medium close-up of the woman at her desk, glasses on the gold chain, coffee mug halfway to her mouth, frozen and puzzled, one eyebrow raised, looking toward the door. The young man is a soft blur in the background. Same face, same clothes, same light, 9:16."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Sardor uyda",
+   "from": "R2",
+   "prompt": "Change the scene: night, a tiny cozy Seoul studio apartment. The same young man in a grey hoodie, orange lanyard still around his neck, sits cross-legged on the floor eating noodles from a pot, eyes glued to a laptop playing a drama scene (blurred figures, no readable text). Laptop glow on his face. Same face, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Xato",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Sardor",
+     "text": "안녕히 가세요!"
+    },
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Gap toʻgʻri. Vaziyat esa teskari."
+    }
+   ],
+   "prompt": "The young man bows deeply at the glass door and says his goodbye brightly; then a vinyl record-scratch, and the image freezes on his bow. Audio: office hum, the record scratch. He says in Korean with a friendly, slightly nervous Uzbek young man's voice, about twenty-five: \"안녕히 가세요!\" Then an off-screen narrator says in Uzbek with a lively, playful male narrator voice: \"Gap to'g'ri. Vaziyat esa teskari.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Opa hayron",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Nodira opa",
+     "text": "Men ketyapmanmi? Men hali ishlayapman-ku…"
+    }
+   ],
+   "prompt": "The woman slowly lowers her coffee mug, looks at her own chair, at her monitor, then back at the door, deeply confused. Comic timing, a slow push-in on her face. Audio: a clock ticking, a single cricket chirp. She says in Uzbek with a warm, composed Uzbek woman's voice, about forty-five, with a dry sense of humour: \"Men ketyapmanmi? Men hali ishlayapman-ku...\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Nega?",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Bu shaklni serialda koʻp eshitasiz. Chunki kamera qoladigan odam bilan qoladi."
+    }
+   ],
+   "prompt": "Flashback: the young man at home slurps noodles, eyes on the laptop drama, and silently mouths a goodbye along with the character on screen, nodding as if learning it. Audio: muffled drama music, slurping. An off-screen narrator says in Uzbek with a lively, playful male narrator voice: \"Bu shaklni serialda ko'p eshitasiz. Chunki kamera qoladigan odam bilan qoladi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Orqaga",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Toʻxtang! Orqaga qaytamiz. Ketayotgan kim? Sardor-ku!"
+    }
+   ],
+   "prompt": "Rewind effect: the whole office scene plays backwards fast with a VHS rewind wobble, the young man un-bowing and stepping backwards from the door, then everything snaps to normal speed and he stands ready to try again, taking a breath. Audio: tape rewind whirr, a snap. An off-screen narrator says in Uzbek with a lively, playful male narrator voice: \"To'xtang! Orqaga qaytamiz. Ketayotgan kim? Sardor-ku!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Toʻgʻrisi",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Sardor",
+     "text": "안녕히 계세요!"
+    },
+    {
+     "who": "Nodira opa",
+     "text": "Mana endi toʻgʻri. Ertaga koʻrishguncha!"
+    }
+   ],
+   "prompt": "The young man bows again at the door, this time carefully; the woman at her desk looks up, smiles warmly and gives a small approving nod. Audio: office hum, a soft chime. He says in Korean with a friendly, slightly nervous Uzbek young man's voice, about twenty-five: \"안녕히 계세요!\" She answers in Uzbek with a warm, composed Uzbek woman's voice, about forty-five, with a dry sense of humour, pleased: \"Mana endi to'g'ri. Ertaga ko'rishguncha!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Qoida",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "U ketsa — 가세요. Oʻzingiz ketsangiz — 계세요. Oʻzbekchada ikkalasi ham «xayr»."
+    }
+   ],
+   "prompt": "Split-screen feel in one shot: first the woman walks out through the glass door while the young man waves from his desk; then they swap, he walks out while she waves from hers. Light playful staging. Audio: door chime twice, upbeat plucked strings. An off-screen narrator says in Uzbek with a lively, playful male narrator voice: \"U ketsa — 가세요. O'zingiz ketsangiz — 계세요. O'zbekchada ikkalasi ham «xayr».\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Savol",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Sardor",
+     "text": "Ikkovimiz ham birga chiqib ketyapmiz. Endi nima deymiz?"
+    },
+    {
+     "who": "Nodira opa",
+     "text": "Javobni izohda yozing!"
+    }
+   ],
+   "prompt": "Both put on their coats and reach the glass door at the same moment, about to leave together. They open their mouths to say goodbye, stop, look at each other, puzzled, then both turn to the camera. Hold on their faces at the end. Audio: coat rustle, a door chime. He says in Uzbek with a friendly, slightly nervous Uzbek young man's voice, about twenty-five: \"Ikkovimiz ham birga chiqib ketyapmiz. Endi nima deymiz?\" She says in Uzbek with a warm, composed Uzbek woman's voice, about forty-five, with a dry sense of humour, smiling: \"Javobni izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Oʻzbekchada bitta «xayr», koreyschada esa ikkita: 안녕히 가세요 — ketayotgan odamga, 안녕히 계세요 — oʻzingiz ketayotganda. Ikkovingiz birga chiqib ketsangiz-chi? Izohda yozing! Toʻliq dars — powerty.uz, Prime Korean, PK-9. #TutilganXato #koreystili #한국어 #Powerty"
+}

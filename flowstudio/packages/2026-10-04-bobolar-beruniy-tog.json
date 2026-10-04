@@ -1,0 +1,208 @@
+{
+ "id": "2026-10-04-bobolar-beruniy-tog",
+ "number": 5,
+ "for": "Inom",
+ "date": "2026-10-04",
+ "series": "Bobolar sirri",
+ "title_uz": "Bitta togʻ va butun Yer",
+ "concept_uz": "Ming yil oldin shogird soʻraydi: «Yerni oʻlchab boʻladimi?» Beruniy kuladi: «Menga bitta togʻ yetadi.» Avval togʻning balandligini, keyin choʻqqidan ufq qancha pastda turganini oʻlchaydi — va Yer radiusini topadi. Javobi bugungi qiymatdan atigi 31 kilometr farq qiladi.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_09.py (story 3, «Beruniy Yer radiusini bir togʻdan turib oʻlchagan»)"
+ ],
+ "facts": [
+  {
+   "claim": "Beruniy 973-yilda Xorazmning Kat shahrida tugʻilgan",
+   "source": "corner/management/commands/_stories_matematika_olami_09.py (story 3, «Beruniy Yer radiusini bir togʻdan turib oʻlchagan»)"
+  },
+  {
+   "claim": "Usul ikki qadam: avval togʻ balandligi (ikki joydan burchak + uchburchak), keyin choʻqqidan ufqning ogʻish burchagi",
+   "source": "corner/management/commands/_stories_matematika_olami_09.py (story 3, «Beruniy Yer radiusini bir togʻdan turib oʻlchagan»)"
+  },
+  {
+   "claim": "Ufqning ogʻishi bir gradusdan ham kichik edi",
+   "source": "corner/management/commands/_stories_matematika_olami_09.py (story 3, «Beruniy Yer radiusini bir togʻdan turib oʻlchagan»)"
+  },
+  {
+   "claim": "Usul «Al-Qonun al-Masʼudiy» kitobida yozilgan — rivoyat emas, hujjat",
+   "source": "corner/management/commands/_stories_matematika_olami_09.py (story 3, «Beruniy Yer radiusini bir togʻdan turib oʻlchagan»)"
+  },
+  {
+   "claim": "Natija ≈ 6340 km, bugungi qiymat 6371 km, farq 31 km (≈0,5%)",
+   "source": "corner/management/commands/_stories_matematika_olami_09.py (story 3, «Beruniy Yer radiusini bir togʻdan turib oʻlchagan»)"
+  }
+ ],
+ "style_line": "Cinematic photoreal historical film, 11th-century Central Asia, warm golden-hour light, dust in the air, 35mm film grain, ochre, sand and deep indigo palette, respectful reconstruction. No text, no letters, no writing visible, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: togʻ choʻqqisi",
+   "prompt": "Vertical 9:16 wide shot from the rocky flat summit of a lone mountain at sunrise, looking out over a vast flat plain that stretches to a perfectly clean, far horizon line; a few stones arranged as a small observation spot, a thin morning haze low on the plain. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Beruniy",
+   "prompt": "Vertical 9:16 full-body portrait of a respected Central Asian scholar of the 11th century, about fifty, lean intelligent face, dark beard streaked with grey, white turban, long deep-indigo robe with a GREEN silk sash, holding a large brass quarter-circle angle-measuring instrument with a sighting tube along one edge. Calm, curious eyes. Plain warm background."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Shogird",
+   "prompt": "Vertical 9:16 full-body portrait of a Central Asian apprentice boy of the 11th century, about fourteen, round cheerful face, small white cap, sand-coloured cotton robe with a RED cloth belt, carrying a wooden writing board and a reed pen. Eager, curious expression. Plain warm background."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Togʻ etagida oʻlchash",
+   "from": [
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached characters into one vertical 9:16 shot on a flat dusty plain at golden hour: in the far background rises one lone mountain. The scholar kneels and sights the mountain peak through the tube of his brass quarter-circle instrument; the apprentice stands beside him writing on his wooden board. Same faces, same clothes."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Choʻqqida ikkovi",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot on the mountain summit at sunrise: the scholar stands at the edge holding his brass quarter-circle instrument, gazing at the far horizon; the apprentice stands next to him looking up at him, wooden board under his arm. The flat plain and the distant horizon line behind them. Same faces, same clothes, same light."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Yer shari va ufq chizigʻi",
+   "prompt": "Vertical 9:16 cinematic visualization: the whole Earth as a glowing blue-and-ochre sphere floating in a dark starry sky; on its upper edge one tiny mountain, and from the mountain top a thin golden ray of light grazes the curve of the sphere toward the horizon, dipping very slightly below the level line. Elegant, minimal, no labels."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Kechasi hisob",
+   "from": "R5",
+   "prompt": "Change the scene: night, inside a small mud-brick study lit by one oil lamp. The scholar sits on a carpet writing in a large handmade book, the brass instrument beside him; the apprentice kneels opposite holding the lamp closer. Same faces, same clothes, warm lamplight, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Savol",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Shogird",
+     "text": "Ustoz, Yerni oʻlchab boʻladimi? U juda katta-ku!"
+    },
+    {
+     "who": "Beruniy",
+     "text": "Menga bitta togʻ yetadi."
+    }
+   ],
+   "prompt": "Sunrise on the summit. A gust of wind snaps the scholar's robe. The apprentice spreads his arms wide toward the endless plain and asks, amazed; the scholar turns to him with a small knowing smile. Audio: wind, a hawk's cry. The apprentice says in Uzbek with a bright, eager Uzbek teenage boy's voice: \"Ustoz, Yerni o'lchab bo'ladimi? U juda katta-ku!\" The scholar answers in Uzbek with a calm, deep, wise Uzbek male voice of a man about fifty: \"Menga bitta tog' yetadi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Kim u?",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Bu — Abu Rayhon Beruniy. U 973-yilda Xorazmning Kat shahrida tugʻilgan."
+    }
+   ],
+   "prompt": "Tracking shot: the scholar and the apprentice walk side by side across a dusty plain toward a lone mountain in the golden light, the brass instrument glinting on the scholar's shoulder. Audio: footsteps on gravel, soft dutar music. An off-screen narrator says in Uzbek with a warm, low male storyteller voice: \"Bu — Abu Rayhon Beruniy. U 973-yilda Xorazmning Kat shahrida tug'ilgan.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "1-qadam: balandlik",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Beruniy",
+     "text": "Avval togʻning balandligini bilamiz. Ikki joydan qarab, burchak oʻlchaymiz."
+    }
+   ],
+   "prompt": "The scholar kneels and sights the distant mountain peak through the tube of his brass quarter-circle instrument, carefully turning it; close-up of his eye and the brass edge catching the sun. Audio: a soft metallic click, wind. He says in Uzbek with a calm, deep, wise Uzbek male voice of a man about fifty: \"Avval tog'ning balandligini bilamiz. Ikki joydan qarab, burchak o'lchaymiz.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Uchburchak",
+   "method": "Extend",
+   "extends": 3,
+   "lines": [
+    {
+     "who": "Shogird",
+     "text": "Ikki burchak — bitta uchburchak. Balandlik chiqdi!"
+    }
+   ],
+   "prompt": "Continue: the scholar stands, walks a long way back across the plain with the apprentice counting steps, kneels again and sights the peak a second time. The apprentice draws on his board and grins. Audio: counted footsteps, a click. The apprentice says in Uzbek with a bright, eager Uzbek teenage boy's voice: \"Ikki burchak — bitta uchburchak. Balandlik chiqdi!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "2-qadam: ufq",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Beruniy",
+     "text": "Yer yassi boʻlsa, ufq koʻz tekisligida turardi. Lekin u sal pastda…"
+    }
+   ],
+   "prompt": "On the summit the scholar slowly raises the brass instrument and sights the far horizon line through its tube; extreme close-up of his eye narrowing, then of the brass scale. Audio: wind, the instrument's soft click. He says in Uzbek with a calm, deep, wise Uzbek male voice of a man about fifty, quietly: \"Yer yassi bo'lsa, ufq ko'z tekisligida turardi. Lekin u sal pastda...\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Burilish",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Bir gradusdan ham kichik ogʻish. Yer sharsimon — va shu ogʻish uning radiusini aytib beradi."
+    }
+   ],
+   "prompt": "Slow cinematic pull-back away from the glowing Earth: the tiny mountain on its edge, the thin golden ray grazing the curve of the sphere and dipping just below level. Stars drift. Audio: a deep swelling hum, a single soft bell. An off-screen narrator says in Uzbek with a warm, low male storyteller voice: \"Bir gradusdan ham kichik og'ish. Yer sharsimon — va shu og'ish uning radiusini aytib beradi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Kitob",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Shogird",
+     "text": "Ustoz, qancha chiqdi?"
+    },
+    {
+     "who": "Beruniy",
+     "text": "Olti ming uch yuz qirq kilometrga yaqin. Hammasini «Al-Qonun al-Masʼudiy» kitobimga yozaman."
+    }
+   ],
+   "prompt": "Night. Lamplight flickers. The scholar finishes a line in the big book and sets down his pen; the apprentice leans in, wide-eyed. Audio: pen scratching, crackling lamp. The apprentice whispers in Uzbek with a bright, eager Uzbek teenage boy's voice: \"Ustoz, qancha chiqdi?\" The scholar answers in Uzbek with a calm, deep, wise Uzbek male voice of a man about fifty, calm and proud: \"Olti ming uch yuz qirq kilometrga yaqin. Hammasini «Al-Qonun al-Mas'udiy» kitobimga yozaman.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Siz-chi?",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R5"
+   ],
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Bugungi qiymat — olti ming uch yuz yetmish bir. Farq atigi oʻttiz bir kilometr."
+    },
+    {
+     "who": "Beruniy",
+     "text": "Endi siz hisoblang: bu necha foiz xato? Javobni izohda yozing!"
+    }
+   ],
+   "prompt": "Sunrise on the summit again. The scholar turns from the horizon and looks straight into the camera with a warm, challenging half-smile; the apprentice beside him nods eagerly. Hold on his look at the end. Audio: wind, the hawk's cry. An off-screen narrator says in Uzbek with a warm, low male storyteller voice: \"Bugungi qiymat — olti ming uch yuz yetmish bir. Farq atigi o'ttiz bir kilometr.\" Then the scholar says in Uzbek with a calm, deep, wise Uzbek male voice of a man about fifty: \"Endi siz hisoblang: bu necha foiz xato? Javobni izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Ming yil oldin sunʼiy yoʻldosh ham, kompyuter ham yoʻq edi. Abu Rayhon Beruniyga esa bitta togʻ, bitta burchak va sabr yetdi. Natija: 6340 km. Bugungi qiymat: 6371 km. Xato necha foiz? Izohda hisoblang! Toʻliq hikoya — powerty.uz, «Matematika olami». #BobolarSirri #Beruniy #matematika #Powerty"
+}
