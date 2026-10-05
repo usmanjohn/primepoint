@@ -151,8 +151,10 @@ package, `"for": "Birga"` (one brother films the whole season; the user chose no
   (pre-written packages `flowstudio/series/sonlar_imperiyasi_ep01…10.json`). `sent.tsv` then holds
   10 `Sonlar imperiyasi` rows, so the Saturday slot has nothing left to send until Season 2 —
   say so once in the final message and send nothing for the series.
-- **Which episode:** count the `Sonlar imperiyasi` rows in `sent.tsv`; send episode
-  count + 1. Season 1 has 10 episodes; after episode 10, stop and say so in the final message.
+- **Which episode:** count the **distinct episode numbers** among the `Sonlar imperiyasi` rows in
+  `sent.tsv` (ids `sonlar-imperiyasi-NN` and `sonlar-imperiyasi-NN-v2` are the same episode NN);
+  send that count + 1. ⚠️ **2026-10-06: all ten were resent as `-v2`** (new look: yin-yang Zero,
+  the Sun's face, a split crystal world, global picture ids), so the log holds 20 rows for 10 episodes. Season 1 has 10 episodes; after episode 10, stop and say so in the final message.
   Never skip, never send two in one week, never send out of order.
 - **Read first:** `flowstudio/series/sonlar_imperiyasi.md` (the bible: cast, catchphrases, the
   two laws — mathematically true AND funny, the joke is the maths) and the episode's text in
@@ -163,8 +165,10 @@ package, `"for": "Birga"` (one brother films the whole season; the user chose no
 - **The cast never changes:** take refs **verbatim** from `flowstudio/series/sonlar_imperiyasi_cast.json`
   (same id, `name_uz`, `prompt`, and the style line and voices from there). A cast ref first
   generated in an EARLIER episode (`introduced` < this episode) gets `"saved": true` — the
-  brother reuses his saved image instead of making a new face. Episode-only refs use ids
-  **R11 and up** and are named «N-qism: …».
+  brother reuses his saved image instead of making a new face. **Picture ids are global for the
+  series** (bible §2.1): episode pictures take the next free number after the last one in the
+  cast file's `episode_refs` (Season 1 ends at R23), are registered there first, and are named by
+  what they show — never «N-qism: …». `send.py --check` refuses anything else.
 - Every video ends on the episode's cliffhanger image with the off-screen line
   «Davomi — powerty.uz da.»; `post_text_uz` starts «Sonlar imperiyasi · N-qism» and carries
   `#SonlarImperiyasi`. Uzbek only, as everywhere.

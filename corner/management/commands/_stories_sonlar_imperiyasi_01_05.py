@@ -130,9 +130,11 @@ STORIES = [
         "body": """
 <p>Bu hikoyani bilgan odam hech qachon <strong>noʻlga oʻtirib qolmas</strong> ekan.</p>
 
-<p>Qadim-qadim zamonda, hali birorta ham son yoʻq paytda, cheksiz oltin tekislikning qoq
-oʻrtasida <b>Qirol Noʻl</b> yashagan ekan. Yumaloq, oltindek yaltiroq, boshida chapga
-biroz qiyshaygan kichkina toj. U adolatli va bosiq edi: doim oʻrtada turib, hamma narsani
+<p>Qadim-qadim zamonda, hali birorta ham son yoʻq paytda, cheksiz billur tekislikning qoq
+oʻrtasida <b>Qirol Noʻl</b> yashagan ekan. Tekislikning chap tomoni oy nuridek salqin, oʻng
+tomoni quyoshdek iliq edi — qirol esa aynan ikkalasi uchrashgan joyda turardi. Uning oʻzi ham
+shunday: yumaloq, bir yarmi oydek kumush, bir yarmi quyoshdek oltin, boshida chapga biroz
+qiyshaygan kichkina toj. U adolatli va bosiq edi: doim oʻrtada turib, hamma narsani
 kuzatardi. Bitta muammosi bor edi — kuzatadigan hech narsa yoʻq edi.</p>
 
 <p>— Men hech narsa emasman, — derdi u har tong koʻzguga qarab. — Lekin mensiz hech

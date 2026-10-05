@@ -6,6 +6,7 @@
     python3 flowstudio/send.py PACKAGE.json             # gate + send
     python3 flowstudio/send.py --whoami                 # list chats that wrote to the bot
     python3 flowstudio/send.py --ping                   # send one test message
+    python3 flowstudio/send.py --catalog CAST.json [--dry-run]   # a series' picture list (@R1 …)
 
 Needs FLOW_BOT_TOKEN and FLOW_CHAT_ID in the environment to send.
 Standard library only, so it runs in a bare cloud container.
@@ -32,6 +33,10 @@ REF_ID = re.compile(r'^R\d+$')
 SECONDS = 8                       # one Veo clip
 BROTHERS = ('Inom', 'Jonibek')    # one package each, every day (the user's request, 2026-10-04)
 WHO = BROTHERS + ('Birga',)       # 'Birga' = a series package for whoever films it (2026-10-05)
+HERE = os.path.dirname(os.path.abspath(__file__))
+# A series with a fixed cast keeps ONE global picture numbering (the user's request, 2026-10-06):
+# every id means one picture for the whole series, so the brother's Flow folder never clashes.
+SERIES_CAST = {'Sonlar imperiyasi': os.path.join(HERE, 'series', 'sonlar_imperiyasi_cast.json')}
 
 
 # ── the gate ─────────────────────────────────────────────────────────────
@@ -57,6 +62,13 @@ def _froms(ref):
     return [f] if isinstance(f, str) else list(f)
 
 
+def series_pictures(series):
+    """{id: name_uz} for every picture a series has ever defined (cast + episode_refs)."""
+    with open(SERIES_CAST[series], encoding='utf-8') as f:
+        cast = json.load(f)
+    return {r['id']: r['name_uz'] for r in cast['cast'] + cast.get('episode_refs', [])}
+
+
 def check(pkg):
     errs = []
     for key in ('id', 'number', 'date', 'series', 'title_uz', 'concept_uz', 'format_uz',
@@ -76,6 +88,7 @@ def check(pkg):
     if 'no text' not in pkg['style_line'].lower():
         errs.append('style_line must forbid text in the picture ("No text, …")')
 
+    registry = series_pictures(pkg['series']) if pkg['series'] in SERIES_CAST else None
     seen = []
     for r in pkg['refs']:
         rid = r.get('id', '')
@@ -89,6 +102,12 @@ def check(pkg):
         if not r.get('name_uz') or not r.get('prompt'):
             errs.append(f'{rid}: needs name_uz and prompt')
         errs += _uz_errors(f'{rid} name_uz', r.get('name_uz', ''))
+        if 'qism' in r.get('name_uz', '').lower():
+            errs.append(f"{rid}: name «{r.get('name_uz')}» — a picture is named by what it shows; "
+                        "the number (R…) already makes it unique, no «N-qism:»")
+        if registry is not None and registry.get(rid) != r.get('name_uz'):
+            errs.append(f"{rid}: not «{r.get('name_uz')}» in the series register "
+                        f"(there it is {registry.get(rid, 'missing')!r}) — ids are global, never reuse one")
         if CYRILLIC.search(r.get('prompt', '')) or re.search(r'[ʻʼ]', r.get('prompt', '')):
             errs.append(f'{rid}: prompt must be English')
         seen.append(rid)
@@ -142,6 +161,10 @@ def e(text):
     return html.escape(str(text or ''), quote=False)
 
 
+def at(ids):
+    return ' + '.join(f'@{i}' for i in ids)
+
+
 def tag(pkg):
     return f"#video{int(pkg['number']):03d}"
 
@@ -169,15 +192,17 @@ def pack(head, cards):
 def sections(pkg):
     refs = []
     for r in pkg['refs']:
-        how = f" ({e(' + '.join(_froms(r)))} ni biriktiring)" if r.get('from') else ''
+        how = f" ({e(at(_froms(r)))} ni biriktiring)" if r.get('from') else ''
         if r.get('saved'):                # a series cast image made in an earlier episode
-            refs.append(f"<b>{e(r['id'])} — {e(r['name_uz'])}</b> ♻️ <i>oldingi qismdan saqlangan — "
+            refs.append(f"<b>@{e(r['id'])} — {e(r['name_uz'])}</b> ♻️ <i>oldingi qismdan saqlangan — "
                         f"qayta yaratmang</i>")
             continue
         prompt = r['prompt'] if r.get('from') else f"{r['prompt'].rstrip()} {pkg['style_line']}"
-        refs.append(f"<b>{e(r['id'])} — {e(r['name_uz'])}</b>{how}\n<pre>{e(prompt)}</pre>")
+        refs.append(f"<b>@{e(r['id'])} — {e(r['name_uz'])}</b>{how}\n<pre>{e(prompt)}</pre>")
     chain = any(r.get('from') for r in pkg['refs'])
-    out = pack("1️⃣ 🎨 <b>RASMLAR</b> — Nano Banana Pro, 9:16. Har birini nomi bilan saqlang (R1, R2…)."
+    out = pack("1️⃣ 🎨 <b>RASMLAR</b> — Nano Banana Pro, 9:16. Har birini raqami bilan saqlang: R1, R2…"
+               + (" Raqamlar butun serial uchun bitta — hech qachon takrorlanmaydi."
+                  if pkg['series'] in SERIES_CAST else '')
                + ("\n«… ni biriktiring» — oʻsha rasm(lar)ni Nano Bananaʼga biriktirib, promptni bering."
                   if chain else ''), refs)
 
@@ -195,14 +220,15 @@ def sections(pkg):
     for sc in pkg['scenes']:
         m = sc['method']
         if m == 'Frames to Video':
-            how = f"start: {sc['start']}" + (f", end: {sc['end']}" if sc.get('end') else '')
+            how = f"🖼 boshi: @{sc['start']}" + (f", oxiri: @{sc['end']}" if sc.get('end') else '')
         elif m == 'Ingredients to Video':
-            how = ' + '.join(sc['attach'])
+            how = f"🖼 {at(sc['attach'])}"
         elif m == 'Extend':
-            how = f"{sc['extends']}-sahnani davom ettiring"
+            how = f"↪️ {sc['extends']}-sahnani davom ettiring"
         else:
-            how = 'rasmsiz'
-        scenes.append(f"<b>Sahna {e(sc['n'])} · {e(sc['title_uz'])}</b> — {e(m)}, {e(how)}\n"
+            how = '🖼 rasmsiz'
+        # the @R marks stay OUTSIDE <pre>: the prompt is copied into Veo, which must never see "@R4"
+        scenes.append(f"<b>Sahna {e(sc['n'])} · {e(sc['title_uz'])}</b> — {e(m)}\n{e(how)}\n"
                       f"<pre>{e(sc['prompt'])}</pre>")
     out += pack("3️⃣ 🛠 <b>FLOWʼDA YARATISH</b>\nYangi loyiha, 9:16. Veo 3.1: avval Fastʼda sinang, "
                 "eng yaxshisini Qualityʼda. Har sahna 8 soniya. Oʻzbekcha gap buzilib chiqsa — "
@@ -317,7 +343,52 @@ def send(pkg):
     print(f"sent {len(msgs)} messages + 1 file for №{pkg['number']} {pkg['id']}")
 
 
+def catalog(cast_path):
+    """One pinned message: every picture of a series, its @R number, where it is made and reused."""
+    import glob
+    with open(cast_path, encoding='utf-8') as f:
+        cast = json.load(f)
+    used = {}
+    for path in sorted(glob.glob(cast_path.replace('_cast.json', '_ep*.json'))):
+        with open(path, encoding='utf-8') as f:
+            pkg = json.load(f)
+        ep = int(re.search(r'_ep(\d+)', path).group(1))
+        for r in pkg['refs']:
+            used.setdefault(r['id'], []).append(ep)
+    series = next(iter(k for k, v in SERIES_CAST.items() if os.path.samefile(v, cast_path)))
+
+    def row(rid, name, made):
+        again = [n for n in used.get(rid, []) if n != made]
+        tail = f" · ♻️ {', '.join(map(str, again))}-qismlarda ham" if again else ''
+        return f"<b>@{e(rid)}</b> — {e(name)} · <i>{made}-qismda yasaladi</i>{e(tail)}"
+
+    lines = [f"🗂 <b>{e(series)} — rasmlar roʻyxati</b>",
+             "Bitta Flow papkasi, bitta raqamlash. Har rasmni shu raqam bilan saqlang (R1, R2…); "
+             "paketlarda <b>@R…</b> aynan shu rasmni bildiradi. Raqam hech qachon takrorlanmaydi.",
+             '', '👑 <b>Doimiy qahramonlar va olam</b>']
+    lines += [row(r['id'], r['name_uz'], r['introduced']) for r in cast['cast']]
+    lines += ['', '🎬 <b>Sahna rasmlari</b>']
+    lines += [row(r['id'], r['name_uz'], r['episode']) for r in cast.get('episode_refs', [])]
+    return '\n'.join(lines)
+
+
 def main(argv):
+    if '--catalog' in argv:
+        paths = [a for a in argv if not a.startswith('--')]
+        msg = catalog(paths[0])
+        if len(msg) > LIMIT:
+            sys.exit(f'catalog is {len(msg)} chars — over {LIMIT}')
+        if '--dry-run' in argv:
+            print(msg)
+            return
+        mid = api('sendMessage', {'chat_id': _chat(), 'text': msg, 'parse_mode': 'HTML',
+                                  'disable_web_page_preview': True})['result']['message_id']
+        try:
+            api('pinChatMessage', {'chat_id': _chat(), 'message_id': mid, 'disable_notification': True})
+        except SystemExit as err:
+            print(f'(not pinned: {err})')
+        print('catalog sent')
+        return
     if '--whoami' in argv:
         for u in api('getUpdates').get('result', []):
             chat = (u.get('message') or u.get('channel_post') or u.get('my_chat_member')

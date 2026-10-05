@@ -4,6 +4,10 @@
 > cameo in ep. 9; one brother films the whole season, labelled **«Birga»** (no name). Site
 > episodes all released at once; videos one per week (Saturdays, GUIDE §2b). No site audio.
 > This file is the single source of truth for both the site episodes and the videos.
+>
+> **v2 look — 2026-10-06 (user's ideas):** Zero is a yin-yang ring, the Sun has a face, the sky and the
+> ground are split cool-left / warm-right, the world is a low-poly crystal plain, and picture ids are global
+> (§2.1). All ten packages were resent as `sonlar-imperiyasi-NN-v2`; the 2026-10-05 versions are obsolete.
 
 Based on the user's own tale `Zero gravity.docx` (repo root, 8 parts, written in Uzbek).
 Kept: King Zero, the twin Ones, the signs as toys, the ÷0 tantrum, the stick that becomes
@@ -35,16 +39,25 @@ Audience: grades 5–7 first (the fairy-tale register), written so a parent laug
 
 ## 2. The cast (with continuity tags for Flow reference images)
 
-Style for every image and clip: **premium 3D animated feature film**, warm light, the world
-is a vast golden plain with a horizon; numbers are characters with small arms, legs and big
-expressive eyes. No text on screen — the numbers are recognised by **shape and tag**.
+Style for every image and clip: **premium 3D animated feature film**. Numbers are characters
+with small arms, legs and big expressive eyes. No text on screen — the numbers are recognised by
+**shape and tag**.
+
+**The world is split the way the number line is** (v2). The ground is a vast **low-poly crystal
+plain** of faceted triangles — cool lavender-blue on the **left**, warm amber on the **right**,
+blending at the centre, with a thin glowing path running left to right (the number line before
+it exists). The sky does the same: soft twilight on the left where **Oy** lives, warm morning on
+the right where **Quyosh** lives. The light is split too: cool moonlight from the left, warm
+sunlight from the right. It is a gentle difference, never black. **Left = minus, right = plus,
+always, in the picture's own left and right** — never "the king's right", which flips when he
+faces the camera.
 
 | Character | Look (continuity tag in **bold**) | Voice / personality | Catchphrase (Uzbek) |
 |---|---|---|---|
-| **Qirol Noʻl** | a round golden ring-shaped king, **small crown tilted to the left**, a long wooden **staff** (it becomes the number line in ep. 4) | warm middle-aged male voice; dramatic, insecure, kind | «Men hech narsa emasman… lekin mensiz hech narsa boʻlmaydi!» |
+| **Qirol Noʻl** | a chunky ring-king coloured as a **yin-yang**: dark moon-silver half on the left, bright sun-gold half on the right, a dot of each in the other; **small crown tilted to the left**, a long wooden **staff** (it becomes the number line in ep. 4) | warm middle-aged male voice; dramatic, insecure, kind | «Men hech narsa emasman… lekin mensiz hech narsa boʻlmaydi!» |
 | **Birjon (+1)** | a slim sun-gold “1”, **a tiny plus badge on the chest**, always smiling | bright boy's voice; the eternal optimist | «Zoʻr-ku! Yana bitta qoʻshamiz!» |
 | **Minusjon (−1)** | the same “1” in moon-silver, **a horizontal sash across the body**, eyebrows down | slightly croaky boy's voice; grumpy, sees the downside | «Men salbiy emasman, men *manfiyman*!» |
-| **Quyosh** and **Oy** | the sun and the moon as old faces in the sky | grandfather / grandmother | — |
+| **Quyosh** and **Oy** | the sun and the moon as **old faces** in the sky: Quyosh a kind grandfather (smiling eyes, bushy brows, a beard of rays) on the right, Oy a gentle grandmother on the left | grandfather / grandmother — Quyosh speaks too (ep. 1: «Meniki!») | — |
 | **Cheksizlik** | never fully seen: a figure on the horizon, **always a little further away** | far-away echoing voice | «Yetib keldim! … Yoʻq, hali yoʻldaman.» |
 | **Toq va juft askarlar** | integers in little uniforms; evens in **blue caps**, odds in **red caps** | a drill sergeant (Ikki) | «Juft-juft safga turinglar!» — «Bizda juft yoʻq!» |
 | **Uch** (the 2,333… one) | a chatty “3” with a **toʻy host's microphone** | never stops talking | «…uch, uch, uch, uch…» |
@@ -54,8 +67,27 @@ expressive eyes. No text on screen — the numbers are recognised by **shape and
 
 One continuity tag per character, written into its first reference prompt, kept identical
 in every episode (GUIDE §1 Flow rules). Episode 1's reference images (R1 Zero, R2 +1, R3 −1,
-R4 the golden plain) are **reused by every later episode** — the brothers keep them in one
+R4 the crystal plain) are **reused by every later episode** — the brothers keep them in one
 Flow folder.
+
+**Why Zero is a yin-yang — and why that is exact maths.** Zero stands on the seam of the empire:
+it is the one number that is **neither positive nor negative**, so it carries both colours and
+belongs to neither side. Its silver half faces the minus side and its gold half the plus side.
+A yin-yang turned half a circle swaps its colours and is still itself, which is a picture of
+**−0 = 0**. That gives an available gag (not yet scripted): Zero does a cartwheel, lands with
+his colours swapped and says «Aylansam ham — oʻsha-oʻsha!».
+
+### 2.1 Picture numbering — one sequence for the whole series
+
+- **R1–R10** are the fixed cast (`sonlar_imperiyasi_cast.json` → `cast`).
+- **Episode pictures continue the same sequence** and are registered once in the cast file
+  (`episode_refs`): ep1 R11 R12 · ep2 R13 · ep3 R14 · ep4 R15 R16 · ep5 R17 R18 · ep6 R19 ·
+  ep7 R20 · ep8 R21 · ep9 R22 · ep10 R23. **An id is never reused**; Season 2 starts at R24.
+- A picture is **named by what it shows** («Sandiq yonida»), never «2-qism: …».
+- Messages print them as **@R13**. The scene card carries a `🖼 @R2 + @R4` line *above* the
+  prompt — never inside it, because the prompt goes to Veo, which must not see text.
+- `send.py --check` refuses a reused id or a name that differs from the register, and
+  `send.py --catalog flowstudio/series/sonlar_imperiyasi_cast.json` posts the pinned picture list.
 
 ---
 
