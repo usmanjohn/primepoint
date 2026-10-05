@@ -3,3 +3,5 @@ python manage.py load_mock exam/data/gmat1_verbal.py --expect-questions=23
 python manage.py load_mock exam/data/gmat1_di.py --expect-questions=20
 python manage.py import_logic logic/management/commands/_puzzles_logic_17_24.py --author=powerty
 python manage.py import_logic logic/management/commands/_puzzles_logic_25_32.py --author=powerty
+python manage.py import_corner corner/management/commands/_stories_sonlar_imperiyasi_01_05.py --author=powerty
+python manage.py import_corner corner/management/commands/_stories_sonlar_imperiyasi_06_10.py --author=powerty
