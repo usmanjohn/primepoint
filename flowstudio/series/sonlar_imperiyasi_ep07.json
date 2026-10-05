@@ -7,7 +7,7 @@
  "series": "Sonlar imperiyasi",
  "title_uz": "7-qism. Ildiz qafasi (yangi koʻrinish)",
  "concept_uz": "Sonlar kvadrat minoralar va ildiz yertoʻlalarini kashf qiladi: 25 kirsa — 5 chiqadi. Qiziquvchan Ikki tushadi-yu, chiqa olmaydi: kvadrati aniq 2 boʻladigan kasr yoʻq. U qafas bilan chiqadi, ismi pasportga sigʻmaydi — 1,41421356… Sonlar oʻqida teshik borligi maʼlum boʻladi.",
- "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
  "sources": [
   "corner/management/commands/_stories_sonlar_imperiyasi_06_10.py (7-qism)",
   "flowstudio/series/sonlar_imperiyasi.md (5-boʻlim, 7-qism)"
@@ -61,10 +61,23 @@
  "scenes": [
   {
    "n": 1,
+   "title_uz": "Minora va yertoʻla",
+   "method": "Frames to Video",
+   "start": "R20",
+   "prompt": "Slow crane shot from the top of the tall tower of blocks down to the root-shaped cellar door, a queue of characters waiting. An off-screen narrator says in Uzbek with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Sonlar minoralar qurib, yerto'lalar qazishni o'rganibdi…\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi",
+     "text": "Sonlar minoralar qurib, yertoʻlalar qazishni oʻrganibdi…"
+    }
+   ]
+  },
+  {
+   "n": 2,
    "title_uz": "Yigirma besh kirdi",
    "method": "Frames to Video",
    "start": "R20",
-   "prompt": "A character climbs down into the root-shaped cellar door and pops out a moment later smaller, proud and shining; the queue claps. It says in Uzbek with an excited, high young voice: \"Yigirma besh kirdi — besh chiqdi!\" No subtitles, no on-screen text.",
+   "prompt": "A character climbs down into the root-shaped cellar door and pops out a moment later smaller, proud and shining; the queue claps. It says in Uzbek with an excited, high young voice: \"Yigirma besh kirdi — besh chiqdi!\" Lip-sync: only the character that just came out of the cellar moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Son",
@@ -73,11 +86,11 @@
    ]
   },
   {
-   "n": 2,
+   "n": 3,
    "title_uz": "Qiziquvchan Ikki",
    "method": "Frames to Video",
    "start": "R20",
-   "prompt": "A tall thoughtful teal character with a swan-like curved neck steps out of the queue, peers into the dark cellar and says in Uzbek with a calm, soft, slightly sad young man's voice: \"Ichkarida nima bor ekan?\" Then it climbs in. No subtitles, no on-screen text.",
+   "prompt": "A tall thoughtful teal character with a swan-like curved neck steps out of the queue, peers into the dark cellar and says in Uzbek with a calm, soft, slightly sad voice of a gentle young man: \"Ichkarida nima bor ekan?\" Then it climbs in. Lip-sync: only the tall teal character moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Ikki",
@@ -86,11 +99,11 @@
    ]
   },
   {
-   "n": 3,
+   "n": 4,
    "title_uz": "Chiqolmayapman",
    "method": "Frames to Video",
    "start": "R20",
-   "prompt": "The cellar door slams shut. Banging from inside and a muffled voice says in Uzbek with a calm, soft, slightly sad young man's voice: \"Chiqolmayapman!\" Characters outside shout numbers through the keyhole, then shake their heads. No subtitles, no on-screen text.",
+   "prompt": "The cellar door slams shut. Banging from inside and a muffled voice says in Uzbek with a calm, soft, slightly sad voice of a gentle young man: \"Chiqolmayapman!\" Characters outside shout numbers through the keyhole, then shake their heads. Lip-sync: nobody on screen speaks — the muffled voice inside the cellar is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Ikki",
@@ -99,7 +112,7 @@
    ]
   },
   {
-   "n": 4,
+   "n": 5,
    "title_uz": "Qafas",
    "method": "Frames to Video",
    "start": "R8",
@@ -107,14 +120,14 @@
    "lines": []
   },
   {
-   "n": 5,
+   "n": 6,
    "title_uz": "Ismingiz?",
    "method": "Ingredients to Video",
    "attach": [
     "R8",
     "R4"
    ],
-   "prompt": "At the palace gate a guard with a long scroll asks, says in Uzbek with a slow, bored palace guard's voice: \"Ismingiz?\" The caged character answers slowly, says in Uzbek with a calm, soft, slightly sad young man's voice: \"Bir butun, to'rt, bir, to'rt, ikki, bir, uch, besh…\" Time-lapse: the sun sets while the guard keeps writing, the scroll piling up on the ground. No subtitles, no on-screen text.",
+   "prompt": "At the palace gate a guard with a long scroll asks, says in Uzbek with a slow, bored, nasal voice of a palace guard: \"Ismingiz?\" The caged character answers slowly, says in Uzbek with a calm, soft, slightly sad voice of a gentle young man: \"Bir butun, to'rt, bir, to'rt, ikki, bir, uch, besh…\" Time-lapse: the sun sets while the guard keeps writing, the scroll piling up on the ground. Lip-sync: the lines are spoken in this order — the guard with the scroll, then the caged teal character; each mouth moves only during its own line and everyone else keeps their mouth closed. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qorovul",
@@ -127,13 +140,13 @@
    ]
   },
   {
-   "n": 6,
+   "n": 7,
    "title_uz": "Pasport",
    "method": "Ingredients to Video",
    "attach": [
     "R8"
    ],
-   "prompt": "Night at the gate; the guard is asleep on the huge pile of scroll. The caged character sighs and says in Uzbek with a calm, soft, slightly sad young man's voice: \"Ismim pasportga sig'mayapti.\" No subtitles, no on-screen text.",
+   "prompt": "Night at the gate; the guard is asleep on the huge pile of scroll. The caged character sighs and says in Uzbek with a calm, soft, slightly sad voice of a gentle young man: \"Ismim pasportga sig'mayapti.\" Lip-sync: only the caged teal character moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Ildiz-Ikki",
@@ -142,7 +155,7 @@
    ]
   },
   {
-   "n": 7,
+   "n": 8,
    "title_uz": "Teshik",
    "method": "Ingredients to Video",
    "attach": [
@@ -150,7 +163,7 @@
     "R6",
     "R8"
    ],
-   "prompt": "The ring-king walks along the glowing staff and suddenly stops: between two notches, exactly under the caged character, there is a tiny dark hole in the line that no notch covers. He gasps and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"O'qda teshik bor ekan!\" No subtitles, no on-screen text.",
+   "prompt": "The ring-king walks along the glowing staff and suddenly stops: between two notches, exactly under the caged character, there is a tiny dark hole in the line that no notch covers. He gasps and says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"O'qda teshik bor ekan!\" Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -159,14 +172,14 @@
    ]
   },
   {
-   "n": 8,
+   "n": 9,
    "title_uz": "Badargʻa",
    "method": "Ingredients to Video",
    "attach": [
     "R1",
     "R8"
    ],
-   "prompt": "Dusk. The ring-king sadly points his staff toward the horizon; the caged character and a few other caged characters walk away into the dark distance, where they gather in a circle and begin to whisper. An off-screen narrator says in Uzbek with a warm storyteller's male voice: \"Davomi — powerty.uz da.\" No subtitles, no on-screen text.",
+   "prompt": "Dusk. The ring-king sadly points his staff toward the horizon; the caged character and a few other caged characters walk away into the dark distance, where they gather in a circle and begin to whisper. An off-screen narrator says in Uzbek with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Davomi — powerty.uz da.\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Hikoyachi",

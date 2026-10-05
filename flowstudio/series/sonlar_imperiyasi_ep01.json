@@ -7,7 +7,7 @@
  "series": "Sonlar imperiyasi",
  "title_uz": "1-qism. Noʻl va egizak Birlar (yangi koʻrinish)",
  "concept_uz": "Zerikkan Qirol Noʻl ikki egizak Bir yasaydi: biri Quyoshniki (+1), biri Oyniki (−1). Ular birinchi marta quchoqlashadi — puf! — ikkalasi ham gʻoyib, faqat Noʻl qoladi: 1 + (−1) = 0. Oxirida egizaklar sirli sandiq topadi.",
- "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
  "sources": [
   "corner/management/commands/_stories_sonlar_imperiyasi_01_05.py (1-qism)",
   "flowstudio/series/sonlar_imperiyasi.md (5-boʻlim, 1-qism)"
@@ -64,10 +64,26 @@
  "scenes": [
   {
    "n": 1,
+   "title_uz": "Bor ekan",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R4",
+    "R1"
+   ],
+   "prompt": "A slow aerial glide over the vast crystal plain at dawn, the moon on the left of the sky and the sun on the right, both with sleepy faces; the camera descends toward the tiny yin-yang ring-king standing alone at the very centre. An off-screen narrator says in Uzbek with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Bor ekan-da, yo'q ekan… Hali birorta ham son yo'q ekan. Faqat Qirol No'l bor ekan.\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi",
+     "text": "Bor ekan-da, yoʻq ekan… Hali birorta ham son yoʻq ekan. Faqat Qirol Noʻl bor ekan."
+    }
+   ]
+  },
+  {
+   "n": 2,
    "title_uz": "Koʻzgu",
    "method": "Frames to Video",
    "start": "R11",
-   "prompt": "The ring-king gazes into his hand mirror; the mirror shows only the empty plain behind him. He lets out a long dramatic sigh, then says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Men hech narsa emasman… lekin mensiz hech narsa bo'lmaydi!\" He looks back into the mirror: still nothing. Slow push-in, gentle comic timing. No subtitles, no on-screen text.",
+   "prompt": "The ring-king gazes into his hand mirror; the mirror shows only the empty plain behind him. He lets out a long dramatic sigh, then says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Men hech narsa emasman… lekin mensiz hech narsa bo'lmaydi!\" He looks back into the mirror: still nothing. Slow push-in, gentle comic timing. Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -76,7 +92,7 @@
    ]
   },
   {
-   "n": 2,
+   "n": 3,
    "title_uz": "Birjon tugʻiladi",
    "method": "Ingredients to Video",
    "attach": [
@@ -84,27 +100,27 @@
     "R2",
     "R4"
    ],
-   "prompt": "The ring-king waves his wooden staff; golden sparks swirl beside him and form the slim gold character, who blinks open its big eyes and grins. Up in the sky the sun with the kind grandfather's face beams and says in Uzbek with a deep, warm, cheerful elderly man's voice: \"Meniki!\" The king says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Seni Bir deb ataymiz.\" The gold character bounces happily on the spot. No subtitles, no on-screen text.",
+   "prompt": "The ring-king waves his wooden staff; golden sparks swirl beside him and form the slim gold character, who blinks open its big eyes and grins. Up in the sky the sun with the kind grandfather's face beams and says in Uzbek with a big, booming, jolly voice of a cheerful old grandfather: \"Meniki!\" The king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Seni Bir deb ataymiz.\" The gold character bounces happily on the spot. Lip-sync: the lines are spoken in this order — the sun's grandfather face in the sky, then the yin-yang ring-king; each mouth moves only during its own line and everyone else keeps their mouth closed. No subtitles, no on-screen text.",
    "lines": [
-    {
-     "who": "Qirol Noʻl",
-     "text": "Seni Bir deb ataymiz."
-    },
     {
      "who": "Quyosh",
      "text": "Meniki!"
+    },
+    {
+     "who": "Qirol Noʻl",
+     "text": "Seni Bir deb ataymiz."
     }
    ]
   },
   {
-   "n": 3,
+   "n": 4,
    "title_uz": "Oyning hasadi",
    "method": "Ingredients to Video",
    "attach": [
     "R4",
     "R3"
    ],
-   "prompt": "Up in the sky the pale moon with an old woman's face frowns jealously and says in Uzbek with a gentle elderly woman's voice: \"Menga ham!\" A stream of silver sparkles pours down from the moon onto the plain and forms the silver character with the dark-blue sash, who lands, looks around and immediately crosses its arms. No subtitles, no on-screen text.",
+   "prompt": "Up in the sky the pale moon with an old woman's face frowns jealously and says in Uzbek with a soft, tender, slightly trembling voice of a loving old grandmother: \"Menga ham!\" A stream of silver sparkles pours down from the moon onto the plain and forms the silver character with the dark-blue sash, who lands, looks around and immediately crosses its arms. Lip-sync: only the moon's old-woman face in the sky moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Oy",
@@ -113,14 +129,14 @@
    ]
   },
   {
-   "n": 4,
+   "n": 5,
    "title_uz": "Salbiy emas, manfiy",
    "method": "Ingredients to Video",
    "attach": [
     "R1",
     "R3"
    ],
-   "prompt": "The grumpy silver character tugs at its sash and says in Uzbek with a slightly croaky, grumpy young boy's voice: \"Nega menga minus? Men salbiymanmi?\" The ring-king kneels to its height, smiles kindly and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Yo'q. Sen salbiy emassan, manfiysan.\" The silver character thinks, then nods proudly. No subtitles, no on-screen text.",
+   "prompt": "The grumpy silver character tugs at its sash and says in Uzbek with a low, raspy, sulky voice of a grumpy ten-year-old boy, slow, with a sigh: \"Nega menga minus? Men salbiymanmi?\" The ring-king kneels to its height, smiles kindly and says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Yo'q. Sen salbiy emassan, manfiysan.\" The silver character thinks, then nods proudly. Lip-sync: the lines are spoken in this order — the silver character with the dark-blue sash, then the yin-yang ring-king; each mouth moves only during its own line and everyone else keeps their mouth closed. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Minusjon",
@@ -133,11 +149,11 @@
    ]
   },
   {
-   "n": 5,
+   "n": 6,
    "title_uz": "Bir xil yaqin",
    "method": "Frames to Video",
    "start": "R12",
-   "prompt": "The ring-king stands between the two characters, turns so that his dark silver half faces the silver character and his bright gold half faces the gold character, rests a hand on each one's shoulder and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Ikkalangiz menga bir xil yaqinsiz.\" The gold and the silver character lean forward and see each other for the first time; their eyes grow huge with joy. No subtitles, no on-screen text.",
+   "prompt": "The ring-king stands between the two characters, turns so that his dark silver half faces the silver character and his bright gold half faces the gold character, rests a hand on each one's shoulder and says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Ikkalangiz menga bir xil yaqinsiz.\" The gold and the silver character lean forward and see each other for the first time; their eyes grow huge with joy. Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -146,7 +162,7 @@
    ]
   },
   {
-   "n": 6,
+   "n": 7,
    "title_uz": "Puf!",
    "method": "Frames to Video",
    "start": "R12",
@@ -155,7 +171,7 @@
    "lines": []
   },
   {
-   "n": 7,
+   "n": 8,
    "title_uz": "Qayerdasizlar?!",
    "method": "Ingredients to Video",
    "attach": [
@@ -163,7 +179,7 @@
     "R2",
     "R3"
    ],
-   "prompt": "The ring-king runs frantically in circles across the plain, lifting stones and peeking behind them, and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Qayerdasizlar?!\" Behind his back, with a soft pop, the two characters reappear as they let go of each other, giggling with their hands over their mouths. The king spins round and freezes. No subtitles, no on-screen text.",
+   "prompt": "The ring-king runs frantically in circles across the plain, lifting stones and peeking behind them, and says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Qayerdasizlar?!\" Behind his back, with a soft pop, the two characters reappear as they let go of each other, giggling with their hands over their mouths. The king spins round and freezes. Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -172,7 +188,7 @@
    ]
   },
   {
-   "n": 8,
+   "n": 9,
    "title_uz": "Sirli sandiq",
    "method": "Ingredients to Video",
    "attach": [
@@ -180,7 +196,7 @@
     "R2",
     "R3"
    ],
-   "prompt": "The moon in the sky, exasperated, says in Uzbek with a gentle elderly woman's voice: \"Quchoqlashmanglar! Har safar yo'q bo'lib qolasizlar!\" The twins jump apart guiltily, then notice an old wooden chest half-buried in the crystal ground, glowing from inside. They open the lid slowly; warm light falls on their amazed faces. An off-screen narrator says in Uzbek with a warm storyteller's male voice: \"Davomi — powerty.uz da.\" No subtitles, no on-screen text.",
+   "prompt": "The moon in the sky, exasperated, says in Uzbek with a soft, tender, slightly trembling voice of a loving old grandmother: \"Quchoqlashmanglar! Har safar yo'q bo'lib qolasizlar!\" The twins jump apart guiltily, then notice an old wooden chest half-buried in the crystal ground, glowing from inside. They open the lid slowly; warm light falls on their amazed faces. An off-screen narrator says in Uzbek with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Davomi — powerty.uz da.\" Lip-sync: only the moon's old-woman face in the sky moves its mouth and speaks; every other character keeps its mouth closed and just listens. The narrator is heard off screen: no one on screen moves their lips for it. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Oy",

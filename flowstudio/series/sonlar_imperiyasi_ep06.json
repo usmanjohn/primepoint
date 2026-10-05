@@ -7,7 +7,7 @@
  "series": "Sonlar imperiyasi",
  "title_uz": "6-qism. Nisbat xalqi (yangi koʻrinish)",
  "concept_uz": "Boʻlishdan butun boʻlmagan sonlar tugʻiladi — Nisbat xalqi. Qirol kasr chizigʻidan qoʻrqadi: «Umrbod shu chiziqning kasriga qoldim-a». 7 ÷ 3 dagi Uch mikrofonni qoʻymay «uch, uch, uch…» deydi — takrorlangani uchun 2,(3) deb yoziladi. Oxirida hamma butun son ham kasr boʻlib chiqadi: 5 = 5/1.",
- "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
  "sources": [
   "corner/management/commands/_stories_sonlar_imperiyasi_06_10.py (6-qism)",
   "flowstudio/series/sonlar_imperiyasi.md (5-boʻlim, 6-qism)"
@@ -71,13 +71,26 @@
  "scenes": [
   {
    "n": 1,
+   "title_uz": "Yangi xalq",
+   "method": "Frames to Video",
+   "start": "R19",
+   "prompt": "Slow push-in on the two gold characters posing on and under the glowing bar, soft sparkles around them. An off-screen narrator says in Uzbek with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Qirol hammaga o'yinchoqlarni beribdi — hatto bo'lishni ham. Shunda yangi xalq tug'ilibdi…\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi",
+     "text": "Qirol hammaga oʻyinchoqlarni beribdi — hatto boʻlishni ham. Shunda yangi xalq tugʻilibdi…"
+    }
+   ]
+  },
+  {
+   "n": 2,
    "title_uz": "Yarim",
    "method": "Ingredients to Video",
    "attach": [
     "R2",
     "R4"
    ],
-   "prompt": "A gold character splits itself into two groups; three and a half small pieces of light appear — one of them only half the size. Everyone gasps. The character says in Uzbek with an astonished young voice: \"Uch butun… va yarim?!\" No subtitles, no on-screen text.",
+   "prompt": "A gold character splits itself into two groups; three and a half small pieces of light appear — one of them only half the size. Everyone gasps. The character says in Uzbek with an astonished young voice: \"Uch butun… va yarim?!\" Lip-sync: only the gold character that split itself moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Yetti",
@@ -86,11 +99,11 @@
    ]
   },
   {
-   "n": 2,
+   "n": 3,
    "title_uz": "Biz nisbatmiz",
    "method": "Frames to Video",
    "start": "R19",
-   "prompt": "The two characters on and under the glowing bar strike a proud pose and together says in Uzbek with several proud young voices speaking in unison: \"Biz ikki butun sonning nisbatidan yaralganmiz!\" No subtitles, no on-screen text.",
+   "prompt": "The two characters on and under the glowing bar strike a proud pose and together says in Uzbek with several proud young voices speaking in unison: \"Biz ikki butun sonning nisbatidan yaralganmiz!\" Lip-sync: only the fraction characters, together moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Nisbat xalqi",
@@ -99,14 +112,14 @@
    ]
   },
   {
-   "n": 3,
+   "n": 4,
    "title_uz": "Kasriga qoldim",
    "method": "Ingredients to Video",
    "attach": [
     "R1",
     "R19"
    ],
-   "prompt": "The ring-king sees the glowing bar, shudders, and steps back as if it might bite. He mutters to himself, says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Umrbod shu chiziqning kasriga qoldim-a.\" No subtitles, no on-screen text.",
+   "prompt": "The ring-king sees the glowing bar, shudders, and steps back as if it might bite. He mutters to himself, says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Umrbod shu chiziqning kasriga qoldim-a.\" Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -115,11 +128,11 @@
    ]
   },
   {
-   "n": 4,
+   "n": 5,
    "title_uz": "Uch, uch, uch",
    "method": "Frames to Video",
    "start": "R7",
-   "prompt": "The purple character with the microphone talks non-stop; behind it the sun sets and rises again in a time-lapse while it keeps going: it says in Uzbek with a fast, loud wedding-host man's voice: \"Uch, uch, uch, uch, uch, uch…\" No subtitles, no on-screen text.",
+   "prompt": "The purple character with the microphone talks non-stop; behind it the sun sets and rises again in a time-lapse while it keeps going: it says in Uzbek with a loud, fast, sing-song voice of a wedding host: \"Uch, uch, uch, uch, uch, uch…\" Lip-sync: only the purple character with the microphone moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Uch",
@@ -128,14 +141,14 @@
    ]
   },
   {
-   "n": 5,
+   "n": 6,
    "title_uz": "Mikrofon",
    "method": "Ingredients to Video",
    "attach": [
     "R3",
     "R7"
    ],
-   "prompt": "The silver character covers its ears in agony while the purple character keeps talking into the microphone; it says in Uzbek with a slightly croaky, grumpy young boy's voice: \"Kimdir mikrofonni olsin!\" No subtitles, no on-screen text.",
+   "prompt": "The silver character covers its ears in agony while the purple character keeps talking into the microphone; it says in Uzbek with a low, raspy, sulky voice of a grumpy ten-year-old boy, slow, with a sigh: \"Kimdir mikrofonni olsin!\" Lip-sync: only the silver character with the dark-blue sash moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Minusjon",
@@ -144,14 +157,14 @@
    ]
   },
   {
-   "n": 6,
+   "n": 7,
    "title_uz": "Ikki butun, qavsda uch",
    "method": "Ingredients to Video",
    "attach": [
     "R1",
     "R7"
    ],
-   "prompt": "The ring-king gently takes the microphone, smiles, and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Xo'p. Ikki butun, qavs ichida uch. Bas!\" The purple character finally falls silent, then grins happily. No subtitles, no on-screen text.",
+   "prompt": "The ring-king gently takes the microphone, smiles, and says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Xo'p. Ikki butun, qavs ichida uch. Bas!\" The purple character finally falls silent, then grins happily. Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -160,14 +173,14 @@
    ]
   },
   {
-   "n": 7,
+   "n": 8,
    "title_uz": "Siz ham bizdansiz",
    "method": "Ingredients to Video",
    "attach": [
     "R19",
     "R1"
    ],
-   "prompt": "The fraction folk place a gold character on top of the glowing bar and a single slim one-character beneath it, then turn to the king triumphantly; one of them says in Uzbek with several proud young voices speaking in unison: \"Besh — bu besh bo'lu bir. Demak, siz ham bizdansiz!\" The king's crown slips. No subtitles, no on-screen text.",
+   "prompt": "The fraction folk place a gold character on top of the glowing bar and a single slim one-character beneath it, then turn to the king triumphantly; one of them says in Uzbek with several proud young voices speaking in unison: \"Besh — bu besh bo'lu bir. Demak, siz ham bizdansiz!\" The king's crown slips. Lip-sync: only one of the fraction characters moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Nisbat xalqi",
@@ -176,14 +189,14 @@
    ]
   },
   {
-   "n": 8,
+   "n": 9,
    "title_uz": "Lekin",
    "method": "Ingredients to Video",
    "attach": [
     "R1",
     "R4"
    ],
-   "prompt": "A grand ceremony on the plain: everyone cheers as the ring-king is honoured as ruler of the fraction kingdom, confetti of light falling. Then the camera slowly drifts away to a dark, quiet gap in the ground. An off-screen narrator says in Uzbek with a warm storyteller's male voice: \"Ammo bitta lekin bor edi… Davomi — powerty.uz da.\" No subtitles, no on-screen text.",
+   "prompt": "A grand ceremony on the plain: everyone cheers as the ring-king is honoured as ruler of the fraction kingdom, confetti of light falling. Then the camera slowly drifts away to a dark, quiet gap in the ground. An off-screen narrator says in Uzbek with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Ammo bitta lekin bor edi… Davomi — powerty.uz da.\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Hikoyachi",

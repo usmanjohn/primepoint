@@ -7,7 +7,7 @@
  "series": "Sonlar imperiyasi",
  "title_uz": "2-qism. Ishoralar oʻyini (yangi koʻrinish)",
  "concept_uz": "Egizaklar sandiqdagi oʻyinchoqlar bilan qoʻshish, ayirish va koʻpaytirishni kashf qiladi. Qirol Noʻl oʻz kuchini bilib oladi: qoʻshilsa hech kim sezmaydi (a + 0 = a), koʻpaytirsa hamma yoʻqoladi (a × 0 = 0). Oxirida egizaklar «÷» yasab, uxlayotgan qirolga qarashadi.",
- "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
  "sources": [
   "corner/management/commands/_stories_sonlar_imperiyasi_01_05.py (2-qism)",
   "flowstudio/series/sonlar_imperiyasi.md (5-boʻlim, 2-qism)"
@@ -67,10 +67,23 @@
  "scenes": [
   {
    "n": 1,
+   "title_uz": "Sehrli sandiq",
+   "method": "Frames to Video",
+   "start": "R13",
+   "prompt": "Slow push-in on the open glowing chest; the gold and silver twins stare into it in wonder, sparkles drifting up. An off-screen narrator says in Uzbek with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Egizaklar topgan sandiqda sehrli o'yinchoqlar bor ekan…\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi",
+     "text": "Egizaklar topgan sandiqda sehrli oʻyinchoqlar bor ekan…"
+    }
+   ]
+  },
+  {
+   "n": 2,
    "title_uz": "Qoʻshish",
    "method": "Frames to Video",
    "start": "R13",
-   "prompt": "The gold character holds the glowing cross-shaped toy up beside itself; with a sparkle a second identical gold character pops into existence next to it. Both look at each other amazed, then the first one says in Uzbek with a bright, cheerful young boy's voice: \"Zo'r-ku! Yana bitta qo'shamiz!\" No subtitles, no on-screen text.",
+   "prompt": "The gold character holds the glowing cross-shaped toy up beside itself; with a sparkle a second identical gold character pops into existence next to it. Both look at each other amazed, then the first one says in Uzbek with a bright, high, bouncy voice of a cheerful ten-year-old boy, quick and excited: \"Zo'r-ku! Yana bitta qo'shamiz!\" Lip-sync: only the gold character with the plus badge moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Birjon",
@@ -79,14 +92,14 @@
    ]
   },
   {
-   "n": 2,
+   "n": 3,
    "title_uz": "Ayirish",
    "method": "Ingredients to Video",
    "attach": [
     "R2",
     "R3"
    ],
-   "prompt": "The silver character taps one of two gold characters with the flat bar-shaped toy and it vanishes with a soft pop. For the first time the grumpy silver character smiles a tiny smile, hides the toy behind its back and says in Uzbek with a slightly croaky, grumpy young boy's voice: \"Bu menga yoqdi.\" No subtitles, no on-screen text.",
+   "prompt": "The silver character taps one of two gold characters with the flat bar-shaped toy and it vanishes with a soft pop. For the first time the grumpy silver character smiles a tiny smile, hides the toy behind its back and says in Uzbek with a low, raspy, sulky voice of a grumpy ten-year-old boy, slow, with a sigh: \"Bu menga yoqdi.\" Lip-sync: only the silver character with the dark-blue sash moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Minusjon",
@@ -95,14 +108,14 @@
    ]
   },
   {
-   "n": 3,
+   "n": 4,
    "title_uz": "Koʻpaytirish",
    "method": "Ingredients to Video",
    "attach": [
     "R2",
     "R4"
    ],
-   "prompt": "The gold character tips the cross-shaped toy on its side so it becomes a slanted X, and touches a row of three gold characters: instantly there are four rows of three, twelve characters crowding the plain and bumping into each other. The gold character says in Uzbek with a bright, cheerful young boy's voice: \"Uch karra to'rt — o'n ikki!\" No subtitles, no on-screen text.",
+   "prompt": "The gold character tips the cross-shaped toy on its side so it becomes a slanted X, and touches a row of three gold characters: instantly there are four rows of three, twelve characters crowding the plain and bumping into each other. The gold character says in Uzbek with a bright, high, bouncy voice of a cheerful ten-year-old boy, quick and excited: \"Uch karra to'rt — o'n ikki!\" Lip-sync: only the gold character with the plus badge moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Birjon",
@@ -111,14 +124,14 @@
    ]
   },
   {
-   "n": 4,
+   "n": 5,
    "title_uz": "Hech kim sezmaydi",
    "method": "Ingredients to Video",
    "attach": [
     "R1",
     "R2"
    ],
-   "prompt": "The ring-king joins a group of five gold characters and stands among them, waving his arms; nothing changes, nobody even notices him. He lowers his arms and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Qo'shilaman — hech kim sezmaydi.\" No subtitles, no on-screen text.",
+   "prompt": "The ring-king joins a group of five gold characters and stands among them, waving his arms; nothing changes, nobody even notices him. He lowers his arms and says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Qo'shilaman — hech kim sezmaydi.\" Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -127,7 +140,7 @@
    ]
   },
   {
-   "n": 5,
+   "n": 6,
    "title_uz": "Puf, puf, puf",
    "method": "Ingredients to Video",
    "attach": [
@@ -135,7 +148,7 @@
     "R2",
     "R3"
    ],
-   "prompt": "The ring-king picks up the slanted X toy and accidentally touches a crowd of gold characters — POP, POP, POP — each one vanishes in a puff of sparkles. Embarrassed, he says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Voy, kechirasiz… yana ko'paytirib qo'ydim-a.\" He lifts the toy again and the remaining characters scream and run away in every direction. No subtitles, no on-screen text.",
+   "prompt": "The ring-king picks up the slanted X toy and accidentally touches a crowd of gold characters — POP, POP, POP — each one vanishes in a puff of sparkles. Embarrassed, he says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Voy, kechirasiz… yana ko'paytirib qo'ydim-a.\" He lifts the toy again and the remaining characters scream and run away in every direction. Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -144,14 +157,14 @@
    ]
   },
   {
-   "n": 6,
+   "n": 7,
    "title_uz": "Bu qanaqa hayot",
    "method": "Ingredients to Video",
    "attach": [
     "R1",
     "R4"
    ],
-   "prompt": "Night on the plain. The ring-king sits slumped, talking up to the moon, and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Ko'paytiraman — hamma yo'qoladi. Bu qanaqa hayot?!\" The moon with the old woman's face smiles gently and says in Uzbek with a gentle elderly woman's voice: \"Senda shunday qoida bor, xolos.\" No subtitles, no on-screen text.",
+   "prompt": "Night on the plain. The ring-king sits slumped, talking up to the moon, and says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Ko'paytiraman — hamma yo'qoladi. Bu qanaqa hayot?!\" The moon with the old woman's face smiles gently and says in Uzbek with a soft, tender, slightly trembling voice of a loving old grandmother: \"Senda shunday qoida bor, xolos.\" Lip-sync: the lines are spoken in this order — the yin-yang ring-king, then the moon's old-woman face in the sky; each mouth moves only during its own line and everyone else keeps their mouth closed. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -164,7 +177,7 @@
    ]
   },
   {
-   "n": 7,
+   "n": 8,
    "title_uz": "Trampolin",
    "method": "Ingredients to Video",
    "attach": [
@@ -175,7 +188,7 @@
    "lines": []
   },
   {
-   "n": 8,
+   "n": 9,
    "title_uz": "Ayyor nigoh",
    "method": "Ingredients to Video",
    "attach": [
@@ -183,7 +196,7 @@
     "R2",
     "R3"
    ],
-   "prompt": "The twins hold the new glowing toy, then slowly turn their heads toward the ring-king sleeping on his back in the middle of the plain, snoring, his crown over his eyes. They look at each other with a mischievous grin. An off-screen narrator says in Uzbek with a warm storyteller's male voice: \"Davomi — powerty.uz da.\" No subtitles, no on-screen text.",
+   "prompt": "The twins hold the new glowing toy, then slowly turn their heads toward the ring-king sleeping on his back in the middle of the plain, snoring, his crown over his eyes. They look at each other with a mischievous grin. An off-screen narrator says in Uzbek with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Davomi — powerty.uz da.\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Hikoyachi",

@@ -7,7 +7,7 @@
  "series": "Sonlar imperiyasi",
  "title_uz": "5-qism. Oraliqdagi yerlar (yangi koʻrinish)",
  "concept_uz": "Sonlar chiziqchalar orasidagi yerni talab qiladi: «Ikki bilan uch orasidan bir yarim sotix bering!» Qirol oraliqni ikkiga, yana ikkiga boʻladi — yer hech qachon tugamaydi. Keyin sonlar qirolni ayblaydi, u kechirim soʻrab, hammaga «÷» oʻyinchogʻini ham beradi.",
- "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
  "sources": [
   "corner/management/commands/_stories_sonlar_imperiyasi_01_05.py (5-qism)",
   "flowstudio/series/sonlar_imperiyasi.md (5-boʻlim, 5-qism)"
@@ -73,10 +73,26 @@
  "scenes": [
   {
    "n": 1,
+   "title_uz": "Navbat",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R6",
+    "R4"
+   ],
+   "prompt": "Morning light along the glowing notched staff; a long queue of small number-characters forms beside it, each clutching a paper petition. An off-screen narrator says in Uzbek with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Sonlar o'qi tug'ilibdi. Endi esa hamma o'ziga yer so'ray boshlabdi…\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi",
+     "text": "Sonlar oʻqi tugʻilibdi. Endi esa hamma oʻziga yer soʻray boshlabdi…"
+    }
+   ]
+  },
+  {
+   "n": 2,
    "title_uz": "Ariza",
    "method": "Frames to Video",
    "start": "R17",
-   "prompt": "A small character at the front of the queue waves its petition at the camera and says in Uzbek with an excited, high young voice: \"Hazratim, ikki bilan uch orasidan bir yarim sotix bering!\" No subtitles, no on-screen text.",
+   "prompt": "A small character at the front of the queue waves its petition at the camera and says in Uzbek with an excited, high young voice: \"Hazratim, ikki bilan uch orasidan bir yarim sotix bering!\" Lip-sync: only the small character at the front of the queue moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Son",
@@ -85,14 +101,14 @@
    ]
   },
   {
-   "n": 2,
+   "n": 3,
    "title_uz": "Oʻrtasi",
    "method": "Ingredients to Video",
    "attach": [
     "R1",
     "R6"
    ],
-   "prompt": "The ring-king kneels by the staff, peers at the empty gap between two notches, and carves a new glowing notch exactly halfway. He says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Bu — ikki butun ikkidan bir.\" No subtitles, no on-screen text.",
+   "prompt": "The ring-king kneels by the staff, peers at the empty gap between two notches, and carves a new glowing notch exactly halfway. He says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Bu — ikki butun ikkidan bir.\" Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -101,14 +117,14 @@
    ]
   },
   {
-   "n": 3,
+   "n": 4,
    "title_uz": "Yana oʻrtasi",
    "method": "Ingredients to Video",
    "attach": [
     "R1",
     "R17"
    ],
-   "prompt": "The new character at the halfway notch immediately complains it is squeezed; the king carves another notch halfway again, and again, the notches getting finer and finer. He scratches his head and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Yana o'rtasi bor ekan…\" No subtitles, no on-screen text.",
+   "prompt": "The new character at the halfway notch immediately complains it is squeezed; the king carves another notch halfway again, and again, the notches getting finer and finer. He scratches his head and says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Yana o'rtasi bor ekan…\" Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -117,14 +133,14 @@
    ]
   },
   {
-   "n": 4,
+   "n": 5,
    "title_uz": "Yer tugamaydi",
    "method": "Ingredients to Video",
    "attach": [
     "R18",
     "R17"
    ],
-   "prompt": "The broker runs through the crowded bazaar waving his notebook and says in Uzbek with a fast, hoarse bazaar-broker man's voice: \"Yer tugamaydi, aka, tugamaydi! Qancha bo'lsangiz ham, o'rtasi bor!\" No subtitles, no on-screen text.",
+   "prompt": "The broker runs through the crowded bazaar waving his notebook and says in Uzbek with a fast, hoarse voice of a bazaar broker: \"Yer tugamaydi, aka, tugamaydi! Qancha bo'lsangiz ham, o'rtasi bor!\" Lip-sync: only the broker with the notebook moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Dallol",
@@ -133,7 +149,7 @@
    ]
   },
   {
-   "n": 5,
+   "n": 6,
    "title_uz": "Ayblov",
    "method": "Ingredients to Video",
    "attach": [
@@ -141,7 +157,7 @@
     "R2",
     "R3"
    ],
-   "prompt": "A group of number-characters marches up to the king, the two twins nervously at the side. Their leader points at the king and says in Uzbek with an excited, high young voice: \"Egizaklar quchoqlashsa, doim siz paydo bo'lasiz — bizdan foydalanyapsiz!\" No subtitles, no on-screen text.",
+   "prompt": "A group of number-characters marches up to the king, the two twins nervously at the side. Their leader points at the king and says in Uzbek with an excited, high young voice: \"Egizaklar quchoqlashsa, doim siz paydo bo'lasiz — bizdan foydalanyapsiz!\" Lip-sync: only the leader of the group moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Son",
@@ -150,13 +166,13 @@
    ]
   },
   {
-   "n": 6,
+   "n": 7,
    "title_uz": "Kechirasiz",
    "method": "Ingredients to Video",
    "attach": [
     "R1"
    ],
-   "prompt": "The ring-king, hurt, puts his hand on his heart and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Men buni atayin qilmayman. Bu qoida. Lekin… kechirasiz.\" The crowd falls quiet. No subtitles, no on-screen text.",
+   "prompt": "The ring-king, hurt, puts his hand on his heart and says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Men buni atayin qilmayman. Bu qoida. Lekin… kechirasiz.\" The crowd falls quiet. Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -165,7 +181,7 @@
    ]
   },
   {
-   "n": 7,
+   "n": 8,
    "title_uz": "Hammaga oʻyinchoq",
    "method": "Ingredients to Video",
    "attach": [
@@ -173,7 +189,7 @@
     "R2",
     "R3"
    ],
-   "prompt": "The king opens the old wooden chest and hands out glowing toys to everybody; he gives the bar-with-two-dots toy last, hesitantly, and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Faqat bitta shart: hech kim meni bo'lish ostiga qo'ymasin!\" No subtitles, no on-screen text.",
+   "prompt": "The king opens the old wooden chest and hands out glowing toys to everybody; he gives the bar-with-two-dots toy last, hesitantly, and says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Faqat bitta shart: hech kim meni bo'lish ostiga qo'ymasin!\" Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -182,14 +198,14 @@
    ]
   },
   {
-   "n": 8,
+   "n": 9,
    "title_uz": "Yangi oʻyin",
    "method": "Ingredients to Video",
    "attach": [
     "R2",
     "R4"
    ],
-   "prompt": "Characters gleefully play with the bar-with-two-dots toy; when they touch each other with it, strange small glowing fragments split off and float in the air. Everyone stops and stares. An off-screen narrator says in Uzbek with a warm storyteller's male voice: \"Davomi — powerty.uz da.\" No subtitles, no on-screen text.",
+   "prompt": "Characters gleefully play with the bar-with-two-dots toy; when they touch each other with it, strange small glowing fragments split off and float in the air. Everyone stops and stares. An off-screen narrator says in Uzbek with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Davomi — powerty.uz da.\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Hikoyachi",

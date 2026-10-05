@@ -7,7 +7,7 @@
  "series": "Sonlar imperiyasi",
  "title_uz": "10-qism. Haqiqiy sonlar imperiyasi (yangi koʻrinish)",
  "concept_uz": "Qirol Noʻl qaror qiladi: ratsional ham, irratsional ham — haqiqiy sonlar. Ikki xalq birlashib, Haqiqiy sonlar imperiyasiga asos soladi; oʻqda birorta teshik qolmaydi. Katta toʻy: Uch kuylaydi, egizaklar yana gʻoyib boʻladi. Yarim tunda oʻqning ustidan ovoz keladi: «Men √(−1)man…»",
- "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
  "sources": [
   "corner/management/commands/_stories_sonlar_imperiyasi_06_10.py (10-qism)",
   "flowstudio/series/sonlar_imperiyasi.md (5-boʻlim, 10-qism)"
@@ -93,6 +93,22 @@
  "scenes": [
   {
    "n": 1,
+   "title_uz": "Katta kun",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R4",
+    "R1"
+   ],
+   "prompt": "Dawn over the crystal plain; two crowds gather from the left and the right toward the yin-yang ring-king standing at the centre. An off-screen narrator says in Uzbek with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Va nihoyat, katta qaror kuni yetib kelibdi…\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi",
+     "text": "Va nihoyat, katta qaror kuni yetib kelibdi…"
+    }
+   ]
+  },
+  {
+   "n": 2,
    "title_uz": "Qaror",
    "method": "Ingredients to Video",
    "attach": [
@@ -100,7 +116,7 @@
     "R8",
     "R9"
    ],
-   "prompt": "On the palace square the ring-king faces two crowds — the bright fraction folk on one side and the caged characters with the scholar on the other — and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Siz ikkalangiz ham haqiqiysiz!\" No subtitles, no on-screen text.",
+   "prompt": "On the palace square the ring-king faces two crowds — the bright fraction folk on one side and the caged characters with the scholar on the other — and says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Siz ikkalangiz ham haqiqiysiz!\" Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -109,14 +125,14 @@
    ]
   },
   {
-   "n": 2,
+   "n": 3,
    "title_uz": "Olqish",
    "method": "Ingredients to Video",
    "attach": [
     "R8",
     "R9"
    ],
-   "prompt": "Both crowds erupt in cheers; the caged teal character proudly lifts its cage high for the first time. The scholar begins, says in Uzbek with a slow, sleepy elderly professor's voice: \"Rahmat… uch butun, bir, to'rt…\" and everyone gently, laughingly, puts their hands over his mouth. No subtitles, no on-screen text.",
+   "prompt": "Both crowds erupt in cheers; the caged teal character proudly lifts its cage high for the first time. The scholar begins, says in Uzbek with a slow, sleepy, creaky voice of an elderly professor: \"Rahmat… uch butun, bir, to'rt…\" and everyone gently, laughingly, puts their hands over his mouth. Lip-sync: only the elderly scholar in the circle-patterned robe moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Pi",
@@ -125,11 +141,11 @@
    ]
   },
   {
-   "n": 3,
+   "n": 4,
    "title_uz": "Teshiksiz oʻq",
    "method": "Frames to Video",
    "start": "R6",
-   "prompt": "Along the whole staff every tiny dark gap fills with light, one after another, until the line glows without a single hole from horizon to horizon. An off-screen narrator says in Uzbek with a warm storyteller's male voice: \"Haqiqiy sonlar imperiyasi tug'ildi.\" No subtitles, no on-screen text.",
+   "prompt": "Along the whole staff every tiny dark gap fills with light, one after another, until the line glows without a single hole from horizon to horizon. An off-screen narrator says in Uzbek with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Haqiqiy sonlar imperiyasi tug'ildi.\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Hikoyachi",
@@ -138,11 +154,11 @@
    ]
   },
   {
-   "n": 4,
+   "n": 5,
    "title_uz": "Oshning narxi",
    "method": "Frames to Video",
    "start": "R23",
-   "prompt": "At the feast the merchant leans over the plov pot with his purse and says in Uzbek with a quick, smooth bazaar-trader's voice: \"Oshning narxi, foiz ustiga foiz…\" Two guards politely lift him by the arms and carry him to the far end of the table. No subtitles, no on-screen text.",
+   "prompt": "At the feast the merchant leans over the plov pot with his purse and says in Uzbek with a quick, smooth, smiling voice of a bazaar trader: \"Oshning narxi, foiz ustiga foiz…\" Two guards politely lift him by the arms and carry him to the far end of the table. Lip-sync: only the merchant with the swelling purse moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "E",
@@ -151,14 +167,14 @@
    ]
   },
   {
-   "n": 5,
+   "n": 6,
    "title_uz": "Hamma kuylaydi",
    "method": "Ingredients to Video",
    "attach": [
     "R7",
     "R23"
    ],
-   "prompt": "The purple character grabs the microphone again — and this time the whole feast sings along, swaying with raised cups: everyone says in Uzbek with a crowd of cheerful mixed voices in unison: \"Uch, uch, uch!\" No subtitles, no on-screen text.",
+   "prompt": "The purple character grabs the microphone again — and this time the whole feast sings along, swaying with raised cups: everyone says in Uzbek with a crowd of cheerful mixed voices in unison: \"Uch, uch, uch!\" Lip-sync: only the whole crowd, together moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Hamma",
@@ -167,7 +183,7 @@
    ]
   },
   {
-   "n": 6,
+   "n": 7,
    "title_uz": "Yana-ya?!",
    "method": "Ingredients to Video",
    "attach": [
@@ -175,7 +191,7 @@
     "R3",
     "R23"
    ],
-   "prompt": "The gold and silver twins, overjoyed, hug each other — POP — they vanish. The whole table bursts out laughing and shouts, says in Uzbek with a crowd of cheerful mixed voices in unison: \"Yana-ya?!\" No subtitles, no on-screen text.",
+   "prompt": "The gold and silver twins, overjoyed, hug each other — POP — they vanish. The whole table bursts out laughing and shouts, says in Uzbek with a crowd of cheerful mixed voices in unison: \"Yana-ya?!\" Lip-sync: only the whole crowd, together moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Hamma",
@@ -184,14 +200,14 @@
    ]
   },
   {
-   "n": 7,
+   "n": 8,
    "title_uz": "Hammaga joy",
    "method": "Ingredients to Video",
    "attach": [
     "R1",
     "R4"
    ],
-   "prompt": "Midnight. The ring-king stands alone at the centre of the glowing line under a sky full of stars, smiling peacefully, and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Hammaga joy bor.\" No subtitles, no on-screen text.",
+   "prompt": "Midnight. The ring-king stands alone at the centre of the glowing line under a sky full of stars, smiling peacefully, and says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Hammaga joy bor.\" Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -200,14 +216,14 @@
    ]
   },
   {
-   "n": 8,
+   "n": 9,
    "title_uz": "Oʻqdan tashqarida",
    "method": "Ingredients to Video",
    "attach": [
     "R1",
     "R4"
    ],
-   "prompt": "Above the line, high in the air where nothing should be, a tiny glowing violet figure floats down and says in Uzbek with a tiny, shy, echoing child's voice: \"Kechirasiz… men ildiz ostida minus birman. Meni ham qabul qilasizlarmi?\" The king jumps, his crown flying off, and stares up. An off-screen narrator says in Uzbek with a warm storyteller's male voice: \"Birinchi mavsum tugadi. Davomi — powerty.uz da.\" No subtitles, no on-screen text.",
+   "prompt": "Above the line, high in the air where nothing should be, a tiny glowing violet figure floats down and says in Uzbek with a tiny, shy, echoing child's voice: \"Kechirasiz… men ildiz ostida minus birman. Meni ham qabul qilasizlarmi?\" The king jumps, his crown flying off, and stares up. An off-screen narrator says in Uzbek with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Birinchi mavsum tugadi. Davomi — powerty.uz da.\" Lip-sync: nobody on screen speaks — the tiny voice from above and the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "√(−1)",

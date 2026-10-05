@@ -7,7 +7,7 @@
  "series": "Sonlar imperiyasi",
  "title_uz": "4-qism. Tayoq va saf (yangi koʻrinish)",
  "concept_uz": "Yangi sonlar kim qayerda turishini talashadi. Qirol tayogʻini yerga yotqizadi — sonlar oʻqi: katta son oʻngroqda. Paradda toq askarlar «juft-juft» saflana olmaydi, qirol esa oʻzini juft deb eʼlon qiladi: «Oʻzim bilan — nol qoʻshuv nol!»",
- "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
  "sources": [
   "corner/management/commands/_stories_sonlar_imperiyasi_01_05.py (4-qism)",
   "flowstudio/series/sonlar_imperiyasi.md (5-boʻlim, 4-qism)"
@@ -73,6 +73,23 @@
  "scenes": [
   {
    "n": 1,
+   "title_uz": "Shovqin",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R4",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Wide shot of the crystal plain filling up with more and more gold and silver characters popping into existence, the hubbub growing. An off-screen narrator says in Uzbek with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Qirol ko'p yangi son yasabdi. Sonlar ko'paygan sari, saltanatda shovqin ham ko'payibdi…\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi",
+     "text": "Qirol koʻp yangi son yasabdi. Sonlar koʻpaygan sari, saltanatda shovqin ham koʻpayibdi…"
+    }
+   ]
+  },
+  {
+   "n": 2,
    "title_uz": "Tartibsizlik",
    "method": "Ingredients to Video",
    "attach": [
@@ -80,7 +97,7 @@
     "R3",
     "R4"
    ],
-   "prompt": "Chaos on the plain: dozens of gold and silver characters jostle, one climbs onto another's head, silver ones wander among gold ones. The silver character, squashed in the crowd, says in Uzbek with a slightly croaky, grumpy young boy's voice: \"Kim qayerda turadi o'zi?!\" No subtitles, no on-screen text.",
+   "prompt": "Chaos on the plain: dozens of gold and silver characters jostle, one climbs onto another's head, silver ones wander among gold ones. The silver character, squashed in the crowd, says in Uzbek with a low, raspy, sulky voice of a grumpy ten-year-old boy, slow, with a sigh: \"Kim qayerda turadi o'zi?!\" Lip-sync: only the silver character with the dark-blue sash moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Minusjon",
@@ -89,14 +106,14 @@
    ]
   },
   {
-   "n": 2,
+   "n": 3,
    "title_uz": "Tayoq",
    "method": "Ingredients to Video",
    "attach": [
     "R1",
     "R4"
    ],
-   "prompt": "The ring-king raises his long staff angrily and the crowd cowers. He pauses, sighs, lowers it gently and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Yo'q… boshqacha qilaman.\" No subtitles, no on-screen text.",
+   "prompt": "The ring-king raises his long staff angrily and the crowd cowers. He pauses, sighs, lowers it gently and says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Yo'q… boshqacha qilaman.\" Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -105,11 +122,11 @@
    ]
   },
   {
-   "n": 3,
+   "n": 4,
    "title_uz": "Farmon",
    "method": "Frames to Video",
    "start": "R6",
-   "prompt": "The staff lies on the ground and one by one carved notches glow along it. Off screen the king says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Har bir chiziqcha — bitta sonning joyi. Kim katta bo'lsa, o'ngroqda turadi!\" No subtitles, no on-screen text.",
+   "prompt": "The staff lies on the ground and one by one carved notches glow along it. Off screen the king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Har bir chiziqcha — bitta sonning joyi. Kim katta bo'lsa, o'ngroqda turadi!\" Lip-sync: nobody on screen speaks — the king is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -118,11 +135,11 @@
    ]
   },
   {
-   "n": 4,
+   "n": 5,
    "title_uz": "Hamma joyida",
    "method": "Frames to Video",
    "start": "R15",
-   "prompt": "The characters stand at their notches in perfect order. The silver character leans out and peers far to the left at a smaller silver character and says in Uzbek with a slightly croaky, grumpy young boy's voice: \"Minus besh mendan kichik ekan — u chaproqda!\" No subtitles, no on-screen text.",
+   "prompt": "The characters stand at their notches in perfect order. The silver character leans out and peers far to the left at a smaller silver character and says in Uzbek with a low, raspy, sulky voice of a grumpy ten-year-old boy, slow, with a sigh: \"Minus besh mendan kichik ekan — u chaproqda!\" Lip-sync: only the silver character with the dark-blue sash moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Minusjon",
@@ -131,11 +148,11 @@
    ]
   },
   {
-   "n": 5,
+   "n": 6,
    "title_uz": "Serjant",
    "method": "Frames to Video",
    "start": "R16",
-   "prompt": "The drill sergeant blows the whistle and says in Uzbek with a loud, strict army-sergeant man's voice: \"Juft-juft safga turinglar!\" The red-capped soldiers look at each other, confused. No subtitles, no on-screen text.",
+   "prompt": "The drill sergeant blows the whistle and says in Uzbek with a loud, barking voice of a strict army sergeant: \"Juft-juft safga turinglar!\" The red-capped soldiers look at each other, confused. Lip-sync: only the drill sergeant moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Serjant",
@@ -144,11 +161,11 @@
    ]
   },
   {
-   "n": 6,
+   "n": 7,
    "title_uz": "Biz toqmiz",
    "method": "Frames to Video",
    "start": "R16",
-   "prompt": "The red-capped soldiers throw up their hands and one of them says in Uzbek with a squeaky, cheeky young soldier's voice: \"Bizda juft yo'q — biz toqmiz!\" The parade collapses into a comic pile-up, caps flying. No subtitles, no on-screen text.",
+   "prompt": "The red-capped soldiers throw up their hands and one of them says in Uzbek with a squeaky, cheeky voice of a young soldier: \"Bizda juft yo'q — biz toqmiz!\" The parade collapses into a comic pile-up, caps flying. Lip-sync: only the red-capped soldier who answers moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Toq askar",
@@ -157,14 +174,14 @@
    ]
   },
   {
-   "n": 7,
+   "n": 8,
    "title_uz": "Men ham juftman",
    "method": "Ingredients to Video",
    "attach": [
     "R1",
     "R16"
    ],
-   "prompt": "The ring-king steps forward proudly and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Men ham juftman!\" A voice from the crowd says in Uzbek with a crowd of cheerful mixed voices: \"Kim bilan?\" The king grins and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"O'zim bilan — nol qo'shuv nol!\" No subtitles, no on-screen text.",
+   "prompt": "The ring-king steps forward proudly and says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Men ham juftman!\" A voice from the crowd says in Uzbek with a crowd of cheerful mixed voices: \"Kim bilan?\" The king grins and says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"O'zim bilan — nol qo'shuv nol!\" Lip-sync: the lines are spoken in this order — the yin-yang ring-king, then one character in the crowd, then the yin-yang ring-king; each mouth moves only during its own line and everyone else keeps their mouth closed. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -181,11 +198,11 @@
    ]
   },
   {
-   "n": 8,
+   "n": 9,
    "title_uz": "Joyimiz tor",
    "method": "Frames to Video",
    "start": "R15",
-   "prompt": "Back in line, every character is squeezed onto its tiny notch, elbows in each other's faces, and together they chant, says in Uzbek with a crowd of cheerful mixed voices in unison: \"Joyimiz tor!\" An off-screen narrator says in Uzbek with a warm storyteller's male voice: \"Davomi — powerty.uz da.\" No subtitles, no on-screen text.",
+   "prompt": "Back in line, every character is squeezed onto its tiny notch, elbows in each other's faces, and together they chant, says in Uzbek with a crowd of cheerful mixed voices in unison: \"Joyimiz tor!\" An off-screen narrator says in Uzbek with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Davomi — powerty.uz da.\" Lip-sync: only the whole crowd, together moves its mouth and speaks; every other character keeps its mouth closed and just listens. The narrator is heard off screen: no one on screen moves their lips for it. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Hamma",

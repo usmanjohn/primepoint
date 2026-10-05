@@ -7,7 +7,7 @@
  "series": "Sonlar imperiyasi",
  "title_uz": "9-qism. Irratsional xonlik (yangi koʻrinish)",
  "concept_uz": "Badargʻa qilinganlar oʻqdagi teshiklarda oʻz xonligini quradi: Ildiz-Ikki — xon, Pi — vazir, savdogar E esa murakkab foiz bilan boyiydi — lekin pul hech qachon 2,72 baravarga yetmaydi. Elchi Pi qirol huzuriga keladi: «Biz ham haqiqiy sonlarmiz!» Qirol qiyin savol oldida qoladi.",
- "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
  "sources": [
   "corner/management/commands/_stories_sonlar_imperiyasi_06_10.py (9-qism)",
   "flowstudio/series/sonlar_imperiyasi.md (5-boʻlim, 9-qism)"
@@ -66,10 +66,23 @@
  "scenes": [
   {
    "n": 1,
+   "title_uz": "Xonlik",
+   "method": "Frames to Video",
+   "start": "R22",
+   "prompt": "A slow glide down into the glowing crack in the ground, past lanterns, to the hidden camp of the caged characters. An off-screen narrator says in Uzbek with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Quvilganlar o'qdagi teshiklarda o'z xonligini qurishibdi…\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi",
+     "text": "Quvilganlar oʻqdagi teshiklarda oʻz xonligini qurishibdi…"
+    }
+   ]
+  },
+  {
+   "n": 2,
    "title_uz": "Bizning navbat",
    "method": "Frames to Video",
    "start": "R22",
-   "prompt": "The caged teal character rises from the throne and says in Uzbek with a calm, soft, slightly sad young man's voice: \"Endi bizning navbatimiz keldi!\" The odd-looking crowd cheers and raises lanterns. No subtitles, no on-screen text.",
+   "prompt": "The caged teal character rises from the throne and says in Uzbek with a calm, soft, slightly sad voice of a gentle young man: \"Endi bizning navbatimiz keldi!\" The odd-looking crowd cheers and raises lanterns. Lip-sync: only the caged teal character moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Ildiz-Ikki",
@@ -78,11 +91,11 @@
    ]
   },
   {
-   "n": 2,
+   "n": 3,
    "title_uz": "Foiz ustiga foiz",
    "method": "Frames to Video",
    "start": "R10",
-   "prompt": "The merchant shakes his coin purse, which swells bigger and bigger, and says in Uzbek with a quick, smooth bazaar-trader's voice: \"Foiz ustiga foiz — boylik shu!\" No subtitles, no on-screen text.",
+   "prompt": "The merchant shakes his coin purse, which swells bigger and bigger, and says in Uzbek with a quick, smooth, smiling voice of a bazaar trader: \"Foiz ustiga foiz — boylik shu!\" Lip-sync: only the merchant with the swelling purse moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "E",
@@ -91,14 +104,14 @@
    ]
   },
   {
-   "n": 3,
+   "n": 4,
    "title_uz": "Har soniyada",
    "method": "Ingredients to Video",
    "attach": [
     "R10",
     "R22"
    ],
-   "prompt": "A small character asks the merchant, says in Uzbek with an excited, high young voice: \"Har soniyada qo'shsak-chi?\" The purse swells faster and faster — then stops at a certain size, as if hitting an invisible wall. The merchant blinks and says in Uzbek with a quick, smooth bazaar-trader's voice: \"Baribir ikki butun yetmish ikkiga yetmaydi!\" No subtitles, no on-screen text.",
+   "prompt": "A small character asks the merchant, says in Uzbek with an excited, high young voice: \"Har soniyada qo'shsak-chi?\" The purse swells faster and faster — then stops at a certain size, as if hitting an invisible wall. The merchant blinks and says in Uzbek with a quick, smooth, smiling voice of a bazaar trader: \"Baribir ikki butun yetmish ikkiga yetmaydi!\" Lip-sync: the lines are spoken in this order — the small character who asks, then the merchant with the swelling purse; each mouth moves only during its own line and everyone else keeps their mouth closed. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Son",
@@ -111,14 +124,14 @@
    ]
   },
   {
-   "n": 4,
+   "n": 5,
    "title_uz": "Elchi",
    "method": "Ingredients to Video",
    "attach": [
     "R9",
     "R1"
    ],
-   "prompt": "In the bright palace, the elderly scholar bows before the ring-king and says in Uzbek with a slow, sleepy elderly professor's voice: \"Hazratim! Biz ham haqiqiy sonlarmiz. Talablarimiz bor-yo'g'i uch… bir, to'rt, bir, besh…\" No subtitles, no on-screen text.",
+   "prompt": "In the bright palace, the elderly scholar bows before the ring-king and says in Uzbek with a slow, sleepy, creaky voice of an elderly professor: \"Hazratim! Biz ham haqiqiy sonlarmiz. Talablarimiz bor-yo'g'i uch… bir, to'rt, bir, besh…\" Lip-sync: only the elderly scholar in the circle-patterned robe moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Pi",
@@ -127,14 +140,14 @@
    ]
   },
   {
-   "n": 5,
+   "n": 6,
    "title_uz": "Qisqasini",
    "method": "Ingredients to Video",
    "attach": [
     "R1",
     "R9"
    ],
-   "prompt": "The scholar keeps listing digits; the ring-king clasps his hands and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Qisqasini ayting!\" No subtitles, no on-screen text.",
+   "prompt": "The scholar keeps listing digits; the ring-king clasps his hands and says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Qisqasini ayting!\" Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -143,7 +156,7 @@
    ]
   },
   {
-   "n": 6,
+   "n": 7,
    "title_uz": "Keyin!",
    "method": "Ingredients to Video",
    "attach": [
@@ -151,7 +164,7 @@
     "R1",
     "R9"
    ],
-   "prompt": "The merchant bursts through the palace doors with his swelling purse and says in Uzbek with a quick, smooth bazaar-trader's voice: \"Hazratim, xazinangizni menga bering, foiz ustiga foiz…\" The king and the scholar turn together and both shout, says in Uzbek with the king's and the scholar's voices together, in unison: \"Keyin!\" No subtitles, no on-screen text.",
+   "prompt": "The merchant bursts through the palace doors with his swelling purse and says in Uzbek with a quick, smooth, smiling voice of a bazaar trader: \"Hazratim, xazinangizni menga bering, foiz ustiga foiz…\" The king and the scholar turn together and both shout, says in Uzbek with the king's and the scholar's voices together, in unison: \"Keyin!\" Lip-sync: the lines are spoken in this order — the merchant with the swelling purse, then the ring-king and the scholar, both at once; each mouth moves only during its own line and everyone else keeps their mouth closed. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "E",
@@ -164,7 +177,7 @@
    ]
   },
   {
-   "n": 7,
+   "n": 8,
    "title_uz": "Jimlik",
    "method": "Ingredients to Video",
    "attach": [
@@ -174,14 +187,14 @@
    "lines": []
   },
   {
-   "n": 8,
+   "n": 9,
    "title_uz": "Haqiqiymi?",
    "method": "Ingredients to Video",
    "attach": [
     "R1",
     "R4"
    ],
-   "prompt": "Night under the stars. The ring-king stands alone in the middle of the plain holding his staff, looking toward the dark cracks in the ground where lanterns glow. An off-screen narrator says in Uzbek with a warm storyteller's male voice: \"Ular haqiqiymi? Davomi — powerty.uz da.\" No subtitles, no on-screen text.",
+   "prompt": "Night under the stars. The ring-king stands alone in the middle of the plain holding his staff, looking toward the dark cracks in the ground where lanterns glow. An off-screen narrator says in Uzbek with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Ular haqiqiymi? Davomi — powerty.uz da.\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Hikoyachi",

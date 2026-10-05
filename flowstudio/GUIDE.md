@@ -169,6 +169,9 @@ package, `"for": "Birga"` (one brother films the whole season; the user chose no
   series** (bible §2.1): episode pictures take the next free number after the last one in the
   cast file's `episode_refs` (Season 1 ends at R23), are registered there first, and are named by
   what they show — never «N-qism: …». `send.py --check` refuses anything else.
+- **Voices and lip-sync (bible §2.0):** every line uses its speaker's voice card from the cast
+  file word for word, every speaking scene carries a «Lip-sync:» sentence, and scene 1 is the
+  storyteller's opening. `send.py --check` enforces the first two.
 - Every video ends on the episode's cliffhanger image with the off-screen line
   «Davomi — powerty.uz da.»; `post_text_uz` starts «Sonlar imperiyasi · N-qism» and carries
   `#SonlarImperiyasi`. Uzbek only, as everywhere.

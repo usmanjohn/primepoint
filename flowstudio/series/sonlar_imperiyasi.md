@@ -77,6 +77,28 @@ A yin-yang turned half a circle swaps its colours and is still itself, which is 
 **−0 = 0**. That gives an available gag (not yet scripted): Zero does a cartwheel, lands with
 his colours swapped and says «Aylansam ham — oʻsha-oʻsha!».
 
+### 2.0 Voices, lip-sync and the storyteller (2026-10-06, user's notes after the first renders)
+
+- **Every episode opens like a real ertak.** Scene 1 is an establishing shot under an off-screen
+  storyteller («Hikoyachi»): ep 1 «Bor ekan-da, yoʻq ekan… Hali birorta ham son yoʻq ekan. Faqat
+  Qirol Noʻl bor ekan.», then a one-line «previously» in the same register for every later
+  episode. The same storyteller closes each episode («Davomi — powerty.uz da»). Episodes are now
+  9 scenes × 8 s = 72 s. More storyteller bridges can go mid-episode where a scene has no dialogue.
+- **Lip-sync.** Veo moved the wrong mouth when a line was introduced only by «He…», «It…» or «One
+  of them…» in a shot with several characters. Every speaking scene now ends with a
+  **«Lip-sync:»** sentence that names the speaker by its LOOK («the yin-yang ring-king», «the
+  silver character with the dark-blue sash»), gives the order when several speak, and tells
+  everyone else to keep their mouth closed. Off-screen voices (storyteller, Cheksizlik, √(−1), the
+  muffled voice in the cellar) are declared off screen. `send.py --check` refuses a speaking scene
+  without it.
+- **Voices.** Veo has no voice ids, so a character only sounds the same if it is described with
+  the **same words every time**. Each speaker has a distinctive voice card in
+  `sonlar_imperiyasi_cast.json` (`voices`, plus `voice_alias` for Ikki → Ildiz-Ikki), and
+  `send.py --check` refuses a line whose speaker's card is not in the prompt word for word. That
+  narrows the drift; it cannot remove it. In practice: regenerate a clip whose voice drifts, and
+  if Zero still varies, the sure fix is in the edit — one voice effect applied to all of Zero's
+  clips in CapCut, or Zero's lines re-voiced by one person.
+
 ### 2.1 Picture numbering — one sequence for the whole series
 
 - **R1–R10** are the fixed cast (`sonlar_imperiyasi_cast.json` → `cast`).

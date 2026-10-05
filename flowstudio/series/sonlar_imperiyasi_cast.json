@@ -2,29 +2,29 @@
  "_note": "Sonlar imperiyasi — the fixed cast. Every episode package copies these refs VERBATIM (same id, name_uz, prompt). A ref first made in an earlier episode carries \"saved\": true in later packages, so the brother reuses the saved image instead of generating a new face. Ids never change. Introduced = the episode where it is first generated. Picture ids are GLOBAL for the series and never reused: R1–R10 = cast, episode pictures continue the sequence (episode_refs below); Season 2 starts at the next free number.",
  "style_line": "Premium 3D animated feature film style, gentle split light — cool moonlight from the left, warm sunlight from the right — soft shadows, rich colours, vertical 9:16. No text, no captions, no letters or numerals written anywhere, no watermark.",
  "voices": {
-  "Quyosh": "a deep, warm, cheerful elderly man's voice",
-  "Qirol Noʻl": "a warm, slightly dramatic middle-aged male voice",
-  "Birjon": "a bright, cheerful young boy's voice",
-  "Minusjon": "a slightly croaky, grumpy young boy's voice",
-  "Oy": "a gentle elderly woman's voice",
-  "Cheksizlik": "a far-away, echoing young man's voice",
-  "Uch": "a fast, loud wedding-host man's voice",
-  "Ildiz-Ikki": "a calm, soft, slightly sad young man's voice",
-  "Pi": "a slow, sleepy elderly professor's voice",
-  "E": "a quick, smooth bazaar-trader's voice",
-  "narrator": "a warm storyteller's male voice",
-  "Serjant": "a loud, strict army-sergeant man's voice",
-  "Toq askar": "a squeaky, cheeky young soldier's voice",
+  "Quyosh": "a big, booming, jolly voice of a cheerful old grandfather",
+  "Qirol Noʻl": "a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses",
+  "Birjon": "a bright, high, bouncy voice of a cheerful ten-year-old boy, quick and excited",
+  "Minusjon": "a low, raspy, sulky voice of a grumpy ten-year-old boy, slow, with a sigh",
+  "Oy": "a soft, tender, slightly trembling voice of a loving old grandmother",
+  "Cheksizlik": "a far-away, echoing, airy young man's voice, as if calling across a canyon",
+  "Uch": "a loud, fast, sing-song voice of a wedding host",
+  "Ildiz-Ikki": "a calm, soft, slightly sad voice of a gentle young man",
+  "Pi": "a slow, sleepy, creaky voice of an elderly professor",
+  "E": "a quick, smooth, smiling voice of a bazaar trader",
+  "Serjant": "a loud, barking voice of a strict army sergeant",
+  "Toq askar": "a squeaky, cheeky voice of a young soldier",
   "Olomon": "a crowd of cheerful mixed voices",
   "Hamma": "a crowd of cheerful mixed voices in unison",
   "Son": "an excited, high young voice",
   "Yetti": "an astonished young voice",
-  "Dallol": "a fast, hoarse bazaar-broker man's voice",
-  "Gʻildirakchi": "a gruff, friendly craftsman's voice",
+  "Dallol": "a fast, hoarse voice of a bazaar broker",
+  "Gʻildirakchi": "a gruff, friendly voice of an old craftsman",
   "Nisbat xalqi": "several proud young voices speaking in unison",
-  "Qorovul": "a slow, bored palace guard's voice",
+  "Qorovul": "a slow, bored, nasal voice of a palace guard",
   "Ikki ovoz": "the king's and the scholar's voices together, in unison",
-  "√(−1)": "a tiny, shy, echoing child's voice"
+  "√(−1)": "a tiny, shy, echoing child's voice",
+  "Hikoyachi": "a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale"
  },
  "cast": [
   {
@@ -155,5 +155,9 @@
    "name_uz": "Toʻy",
    "episode": 10
   }
- ]
+ ],
+ "voice_alias": {
+  "Ikki": "Ildiz-Ikki",
+  "Qirol Noʻl va Pi": "Ikki ovoz"
+ }
 }

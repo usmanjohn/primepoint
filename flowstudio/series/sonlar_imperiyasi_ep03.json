@@ -7,7 +7,7 @@
  "series": "Sonlar imperiyasi",
  "title_uz": "3-qism. Nolga boʻlish (yangi koʻrinish)",
  "concept_uz": "Egizaklar «÷»ni uxlayotgan qirolning ustiga qoʻyadi: 1 ÷ 0. Qirol javob izlab kichrayadi va oʻngga yuguradi — 10, 100, 1000… Minusjon sakrasa — chapga, −1000. U hech qachon yetib bormaydi: ufqda Cheksizlik tugʻiladi. Birinchi qonun: «Noʻlga boʻlib boʻlmaydi».",
- "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
  "sources": [
   "corner/management/commands/_stories_sonlar_imperiyasi_01_05.py (3-qism)",
   "flowstudio/series/sonlar_imperiyasi.md (5-boʻlim, 3-qism)"
@@ -71,10 +71,23 @@
  "scenes": [
   {
    "n": 1,
+   "title_uz": "Tun",
+   "method": "Frames to Video",
+   "start": "R14",
+   "prompt": "A starry night over the crystal plain; slow push-in on the sleeping king and the twins tiptoeing above him with the glowing toy. An off-screen narrator says in Uzbek with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"O'sha kechasi qirol qattiq uxlab qolibdi. Egizaklar esa uxlamabdi…\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi",
+     "text": "Oʻsha kechasi qirol qattiq uxlab qolibdi. Egizaklar esa uxlamabdi…"
+    }
+   ]
+  },
+  {
+   "n": 2,
    "title_uz": "Savol",
    "method": "Frames to Video",
    "start": "R14",
-   "prompt": "The gold character leans down from the glowing toy above the sleeping king and whispers mischievously: it says in Uzbek with a bright, cheerful young boy's voice: \"Hazratim, meni teng bo'lish uchun nechta siz kerak?\" The ring-king's eyes snap wide open. No subtitles, no on-screen text.",
+   "prompt": "The gold character leans down from the glowing toy above the sleeping king and whispers mischievously: it says in Uzbek with a bright, high, bouncy voice of a cheerful ten-year-old boy, quick and excited: \"Hazratim, meni teng bo'lish uchun nechta siz kerak?\" The ring-king's eyes snap wide open. Lip-sync: only the gold character with the plus badge moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Birjon",
@@ -83,14 +96,14 @@
    ]
   },
   {
-   "n": 2,
+   "n": 3,
    "title_uz": "Oʻn",
    "method": "Ingredients to Video",
    "attach": [
     "R1",
     "R4"
    ],
-   "prompt": "The ring-king shrinks to a tenth of his size and ten tiny copies of him appear in a row; he starts running to the right across the plain and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"O'n!\" No subtitles, no on-screen text.",
+   "prompt": "The ring-king shrinks to a tenth of his size and ten tiny copies of him appear in a row; he starts running to the right across the plain and says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"O'n!\" Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -99,14 +112,14 @@
    ]
   },
   {
-   "n": 3,
+   "n": 4,
    "title_uz": "Yuz! Ming!",
    "method": "Ingredients to Video",
    "attach": [
     "R1",
     "R4"
    ],
-   "prompt": "He shrinks even smaller and sprints faster and faster to the right, his crown flying off, his staff left behind, dust trailing, and he says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Yuz! Ming! Million!\" No subtitles, no on-screen text.",
+   "prompt": "He shrinks even smaller and sprints faster and faster to the right, his crown flying off, his staff left behind, dust trailing, and he says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Yuz! Ming! Million!\" Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -115,14 +128,14 @@
    ]
   },
   {
-   "n": 4,
+   "n": 5,
    "title_uz": "Endi chapga",
    "method": "Ingredients to Video",
    "attach": [
     "R3",
     "R1"
    ],
-   "prompt": "The silver character jumps onto the glowing toy with a thud. The running king skids, spins around and sprints just as madly to the LEFT. The silver character says in Uzbek with a slightly croaky, grumpy young boy's voice: \"Endi menga!\" and the king, running away, says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Minus ming!\" No subtitles, no on-screen text.",
+   "prompt": "The silver character jumps onto the glowing toy with a thud. The running king skids, spins around and sprints just as madly to the LEFT. The silver character says in Uzbek with a low, raspy, sulky voice of a grumpy ten-year-old boy, slow, with a sigh: \"Endi menga!\" and the king, running away, says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Minus ming!\" Lip-sync: the lines are spoken in this order — the silver character with the dark-blue sash, then the yin-yang ring-king; each mouth moves only during its own line and everyone else keeps their mouth closed. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Minusjon",
@@ -135,11 +148,11 @@
    ]
   },
   {
-   "n": 5,
+   "n": 6,
    "title_uz": "Uchqunlar",
    "method": "Frames to Video",
    "start": "R5",
-   "prompt": "Sparks stream from the horizon behind the running king toward the far edge of the world, where a glowing figure of light appears. From the horizon a far-away voice says in Uzbek with a far-away, echoing young man's voice: \"Yetib keldim!\" No subtitles, no on-screen text.",
+   "prompt": "Sparks stream from the horizon behind the running king toward the far edge of the world, where a glowing figure of light appears. From the horizon a far-away voice says in Uzbek with a far-away, echoing, airy young man's voice, as if calling across a canyon: \"Yetib keldim!\" Lip-sync: nobody on screen speaks — the far-away voice is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Cheksizlik",
@@ -148,7 +161,7 @@
    ]
   },
   {
-   "n": 6,
+   "n": 7,
    "title_uz": "Hali yoʻlda",
    "method": "Ingredients to Video",
    "attach": [
@@ -156,7 +169,7 @@
     "R2",
     "R3"
    ],
-   "prompt": "The camera zooms fast toward the horizon — but the figure of light is still exactly as far away. The twins squint into the distance. The far-away voice says in Uzbek with a far-away, echoing young man's voice: \"…Yo'q, hali yo'ldaman.\" No subtitles, no on-screen text.",
+   "prompt": "The camera zooms fast toward the horizon — but the figure of light is still exactly as far away. The twins squint into the distance. The far-away voice says in Uzbek with a far-away, echoing, airy young man's voice, as if calling across a canyon: \"…Yo'q, hali yo'ldaman.\" Lip-sync: nobody on screen speaks — the far-away voice is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Cheksizlik",
@@ -165,7 +178,7 @@
    ]
   },
   {
-   "n": 7,
+   "n": 8,
    "title_uz": "Birinchi qonun",
    "method": "Ingredients to Video",
    "attach": [
@@ -173,7 +186,7 @@
     "R2",
     "R3"
    ],
-   "prompt": "Dawn. The exhausted ring-king, crownless and panting, stands in the middle of the plain, raises his staff high and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"No'lga bo'lib bo'lmaydi!\" The twins bow their heads, then hug each other to apologise — POP — they vanish. The king facepalms. No subtitles, no on-screen text.",
+   "prompt": "Dawn. The exhausted ring-king, crownless and panting, stands in the middle of the plain, raises his staff high and says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"No'lga bo'lib bo'lmaydi!\" The twins bow their heads, then hug each other to apologise — POP — they vanish. The king facepalms. Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -182,14 +195,14 @@
    ]
   },
   {
-   "n": 8,
+   "n": 9,
    "title_uz": "Devor",
    "method": "Ingredients to Video",
    "attach": [
     "R1",
     "R4"
    ],
-   "prompt": "The ring-king waves his staff and golden sparks form a long line of new number-characters of all sizes stretching toward the horizon like a wall. At the end of the line a few of them turn around, cross their arms and frown rebelliously. An off-screen narrator says in Uzbek with a warm storyteller's male voice: \"Davomi — powerty.uz da.\" No subtitles, no on-screen text.",
+   "prompt": "The ring-king waves his staff and golden sparks form a long line of new number-characters of all sizes stretching toward the horizon like a wall. At the end of the line a few of them turn around, cross their arms and frown rebelliously. An off-screen narrator says in Uzbek with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Davomi — powerty.uz da.\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Hikoyachi",

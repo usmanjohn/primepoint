@@ -62,10 +62,14 @@ def _froms(ref):
     return [f] if isinstance(f, str) else list(f)
 
 
+def series_cast(series):
+    with open(SERIES_CAST[series], encoding='utf-8') as f:
+        return json.load(f)
+
+
 def series_pictures(series):
     """{id: name_uz} for every picture a series has ever defined (cast + episode_refs)."""
-    with open(SERIES_CAST[series], encoding='utf-8') as f:
-        cast = json.load(f)
+    cast = series_cast(series)
     return {r['id']: r['name_uz'] for r in cast['cast'] + cast.get('episode_refs', [])}
 
 
@@ -89,6 +93,8 @@ def check(pkg):
         errs.append('style_line must forbid text in the picture ("No text, …")')
 
     registry = series_pictures(pkg['series']) if pkg['series'] in SERIES_CAST else None
+    cast = series_cast(pkg['series']) if pkg['series'] in SERIES_CAST else {}
+    voices, alias = cast.get('voices'), cast.get('voice_alias', {})
     seen = []
     for r in pkg['refs']:
         rid = r.get('id', '')
@@ -149,6 +155,17 @@ def check(pkg):
                 errs.append(f"{tag}: the line «{ln['text'][:40]}…» is not in the prompt word for word")
         if sc.get('lines') and 'in uzbek' not in prompt.lower():
             errs.append(f'{tag}: say "speaks in Uzbek with a … voice" in the prompt')
+        if voices is not None and sc.get('lines'):
+            # Veo has no voice ids: the same character only sounds the same if it is described
+            # with the SAME words every time, and the right mouth only moves if we say whose.
+            for ln in sc['lines']:
+                v = voices.get(alias.get(ln.get('who'), ln.get('who')))
+                if not v:
+                    errs.append(f"{tag}: «{ln.get('who')}» has no voice card in the cast file")
+                elif v not in prompt:
+                    errs.append(f"{tag}: «{ln.get('who')}» must speak with its exact voice card: {v!r}")
+            if 'Lip-sync:' not in prompt:
+                errs.append(f'{tag}: add a "Lip-sync:" sentence — who speaks, everyone else mouth closed')
         done.append(str(sc.get('n')))
     if not any(sc.get('lines') for sc in pkg['scenes']):
         errs.append('nobody speaks — at least half the scenes should have Uzbek lines')
@@ -232,7 +249,10 @@ def sections(pkg):
                       f"<pre>{e(sc['prompt'])}</pre>")
     out += pack("3️⃣ 🛠 <b>FLOWʼDA YARATISH</b>\nYangi loyiha, 9:16. Veo 3.1: avval Fastʼda sinang, "
                 "eng yaxshisini Qualityʼda. Har sahna 8 soniya. Oʻzbekcha gap buzilib chiqsa — "
-                "qayta generatsiya qiling.", scenes)
+                "qayta generatsiya qiling."
+               + ("\n🗣 Har sahnada faqat gapirayotgan qahramonning ogʻzi qimirlashi kerak. Boshqasining "
+                  "ogʻzi qimirlasa yoki ovoz boshqacha chiqsa — oʻsha sahnani qayta generatsiya qiling."
+                  if pkg['series'] in SERIES_CAST else ''), scenes)
     if pkg.get('post_text_uz'):
         out.append(f"4️⃣ 📲 <b>POST MATNI</b>\n<pre>{e(pkg['post_text_uz'])}</pre>")
     return out

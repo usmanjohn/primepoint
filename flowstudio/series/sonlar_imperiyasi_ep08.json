@@ -7,7 +7,7 @@
  "series": "Sonlar imperiyasi",
  "title_uz": "8-qism. Doiraning siri (yangi koʻrinish)",
  "concept_uz": "Har bir gʻildirak, lagan va gumbazda aylana diametrdan «uch martadan sal koʻp». Nisbat xalqi bu sonni kasr qilolmaydi. Olim Pi keladi — lekin gapini hech qachon tugatolmaydi, butun saroy uxlab qoladi. Uning raqamlari takrorlanmaydi: «Ismim nisbatdan, lekin men Nisbat xalqidan emasman».",
- "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
  "sources": [
   "corner/management/commands/_stories_sonlar_imperiyasi_06_10.py (8-qism)",
   "flowstudio/series/sonlar_imperiyasi.md (5-boʻlim, 8-qism)"
@@ -68,10 +68,23 @@
  "scenes": [
   {
    "n": 1,
+   "title_uz": "Doiralar",
+   "method": "Frames to Video",
+   "start": "R21",
+   "prompt": "Slow push-in across the wheelwright's workshop: a cart wheel, a round plate, a clay pot, a dome in the distance. An off-screen narrator says in Uzbek with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Saltanatdagi har bir g'ildirak, har bir lagan bitta sirni yashirar ekan…\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi",
+     "text": "Saltanatdagi har bir gʻildirak, har bir lagan bitta sirni yashirar ekan…"
+    }
+   ]
+  },
+  {
+   "n": 2,
    "title_uz": "Uchdan sal koʻp",
    "method": "Frames to Video",
    "start": "R21",
-   "prompt": "The wheelwright wraps the rope once around the wheel, then lays the rope straight across the wheel's width: it fits three times and a little bit more. He scratches his head and says in Uzbek with a gruff, friendly craftsman's voice: \"Yana uch martadan sal ko'p!\" No subtitles, no on-screen text.",
+   "prompt": "The wheelwright wraps the rope once around the wheel, then lays the rope straight across the wheel's width: it fits three times and a little bit more. He scratches his head and says in Uzbek with a gruff, friendly voice of an old craftsman: \"Yana uch martadan sal ko'p!\" Lip-sync: only the wheelwright moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Gʻildirakchi",
@@ -80,14 +93,14 @@
    ]
   },
   {
-   "n": 2,
+   "n": 3,
    "title_uz": "Har safar",
    "method": "Ingredients to Video",
    "attach": [
     "R21",
     "R2"
    ],
-   "prompt": "Quick comic montage: characters measure the round plate, the tandir's mouth and the dome with ropes — each time the rope fits three times and a little more. Together they says in Uzbek with a crowd of cheerful mixed voices in unison: \"Har safar uchdan sal ko'p!\" No subtitles, no on-screen text.",
+   "prompt": "Quick comic montage: characters measure the round plate, the tandir's mouth and the dome with ropes — each time the rope fits three times and a little more. Together they says in Uzbek with a crowd of cheerful mixed voices in unison: \"Har safar uchdan sal ko'p!\" Lip-sync: only the whole crowd, together moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Hamma",
@@ -96,7 +109,7 @@
    ]
   },
   {
-   "n": 3,
+   "n": 4,
    "title_uz": "Yigirma ikki boʻlu yetti",
    "method": "Ingredients to Video",
    "attach": [
@@ -104,7 +117,7 @@
     "R2",
     "R3"
    ],
-   "prompt": "The fraction folk proudly bring a fraction to the wheel; it almost matches but sticks out a tiny bit. One of them says in Uzbek with several proud young voices speaking in unison: \"Yigirma ikki bo'lu yetti!\" and another, disappointed, says in Uzbek with a slightly croaky, grumpy young boy's voice: \"Sal ko'p!\" No subtitles, no on-screen text.",
+   "prompt": "The fraction folk proudly bring a fraction to the wheel; it almost matches but sticks out a tiny bit. One of them says in Uzbek with several proud young voices speaking in unison: \"Yigirma ikki bo'lu yetti!\" and another, disappointed, says in Uzbek with a low, raspy, sulky voice of a grumpy ten-year-old boy, slow, with a sigh: \"Sal ko'p!\" Lip-sync: the lines are spoken in this order — one of the fraction characters, then the silver character with the dark-blue sash; each mouth moves only during its own line and everyone else keeps their mouth closed. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Nisbat xalqi",
@@ -117,7 +130,7 @@
    ]
   },
   {
-   "n": 4,
+   "n": 5,
    "title_uz": "Olim keladi",
    "method": "Frames to Video",
    "start": "R9",
@@ -125,14 +138,14 @@
    "lines": []
   },
   {
-   "n": 5,
+   "n": 6,
    "title_uz": "Siri",
    "method": "Ingredients to Video",
    "attach": [
     "R9",
     "R1"
    ],
-   "prompt": "The ring-king asks hopefully, says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Doiraning sirini bilasizmi?\" The scholar clears his throat and says in Uzbek with a slow, sleepy elderly professor's voice: \"Doiraning sirini aytsam… uch butun, bir, to'rt, bir, besh, to'qqiz…\" No subtitles, no on-screen text.",
+   "prompt": "The ring-king asks hopefully, says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Doiraning sirini bilasizmi?\" The scholar clears his throat and says in Uzbek with a slow, sleepy, creaky voice of an elderly professor: \"Doiraning sirini aytsam… uch butun, bir, to'rt, bir, besh, to'qqiz…\" Lip-sync: the lines are spoken in this order — the yin-yang ring-king, then the elderly scholar in the circle-patterned robe; each mouth moves only during its own line and everyone else keeps their mouth closed. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -145,14 +158,14 @@
    ]
   },
   {
-   "n": 6,
+   "n": 7,
    "title_uz": "Hamma uxladi",
    "method": "Ingredients to Video",
    "attach": [
     "R9",
     "R3"
    ],
-   "prompt": "Time-lapse through the night: the whole palace falls asleep one by one, the silver character yawning hugely and toppling over, snoring; the scholar is still talking, says in Uzbek with a slow, sleepy elderly professor's voice: \"…ikki, olti, besh, uch, besh, sakkiz…\" No subtitles, no on-screen text.",
+   "prompt": "Time-lapse through the night: the whole palace falls asleep one by one, the silver character yawning hugely and toppling over, snoring; the scholar is still talking, says in Uzbek with a slow, sleepy, creaky voice of an elderly professor: \"…ikki, olti, besh, uch, besh, sakkiz…\" Lip-sync: only the elderly scholar in the circle-patterned robe moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Pi",
@@ -161,14 +174,14 @@
    ]
   },
   {
-   "n": 7,
+   "n": 8,
    "title_uz": "Takrorlanmaydi",
    "method": "Ingredients to Video",
    "attach": [
     "R1",
     "R9"
    ],
-   "prompt": "Morning. The ring-king wakes up and asks, says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Hech bo'lmasa, takrorlanadimi?\" The scholar shakes his head kindly: says in Uzbek with a slow, sleepy elderly professor's voice: \"Yo'q. Hech qachon takrorlanmaydi, hech qachon tugamaydi.\" No subtitles, no on-screen text.",
+   "prompt": "Morning. The ring-king wakes up and asks, says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Hech bo'lmasa, takrorlanadimi?\" The scholar shakes his head kindly: says in Uzbek with a slow, sleepy, creaky voice of an elderly professor: \"Yo'q. Hech qachon takrorlanmaydi, hech qachon tugamaydi.\" Lip-sync: the lines are spoken in this order — the yin-yang ring-king, then the elderly scholar in the circle-patterned robe; each mouth moves only during its own line and everyone else keeps their mouth closed. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Qirol Noʻl",
@@ -181,14 +194,14 @@
    ]
   },
   {
-   "n": 8,
+   "n": 9,
    "title_uz": "Nisbat emas",
    "method": "Ingredients to Video",
    "attach": [
     "R9",
     "R4"
    ],
-   "prompt": "Sunset. The scholar bows and walks away toward the dark horizon with his rope, turning back once to says in Uzbek with a slow, sleepy elderly professor's voice: \"Ismim nisbatdan, lekin men Nisbat xalqidan emasman.\" An off-screen narrator says in Uzbek with a warm storyteller's male voice: \"Davomi — powerty.uz da.\" No subtitles, no on-screen text.",
+   "prompt": "Sunset. The scholar bows and walks away toward the dark horizon with his rope, turning back once to says in Uzbek with a slow, sleepy, creaky voice of an elderly professor: \"Ismim nisbatdan, lekin men Nisbat xalqidan emasman.\" An off-screen narrator says in Uzbek with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Davomi — powerty.uz da.\" Lip-sync: only the elderly scholar in the circle-patterned robe moves its mouth and speaks; every other character keeps its mouth closed and just listens. The narrator is heard off screen: no one on screen moves their lips for it. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Pi",
