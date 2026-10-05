@@ -71,16 +71,16 @@ AUTHOR:     powerty
 2.  «Al-jabr» — algebra tugʻilgan kitob                                      [done]
 3.  Abu Rayhon Beruniy Yer radiusini qanday oʻlchagan                        [done]
 4.  Mirzo Ulugʻbek rasadxonasi: burchak, sabr va yulduzlar                    [done]
-5.  Umar Xayyom — ham shoir, ham tenglama yechuvchi
+5.  Umar Xayyom — ham shoir, ham tenglama yechuvchi                           [done]
 6.  Fales va piramidaning soyasi                                              [done]
-7.  Pifagor maktabi: «hamma narsa son»
-8.  Arximed: toj, hammom va «Evrika!»
-9.  Evklid «Negizlar»i — 2300 yildan beri oʻqilayotgan darslik
+7.  Pifagor maktabi: «hamma narsa son»                                        [done]
+8.  Arximed: toj, hammom va «Evrika!»                                         [done]
+9.  Evklid «Negizlar»i — 2300 yildan beri oʻqilayotgan darslik                [done]
 10. Karl Gauss: 1 dan 100 gacha bir daqiqada                                  [done]
-11. Leonard Eyler: koʻr boʻlgan, lekin yozishdan toʻxtamagan
-12. Srinivasa Ramanujan: daftarlardagi mislsiz formulalar
-13. Ada Lavleys: birinchi dastur qanday yozilgan
-14. Emmi Nyoter: fizikaning ildizidagi ayol
+11. Leonard Eyler: koʻr boʻlgan, lekin yozishdan toʻxtamagan                  [done]
+12. Srinivasa Ramanujan: daftarlardagi mislsiz formulalar                     [done]
+13. Ada Lavleys: birinchi dastur qanday yozilgan                              [done]
+14. Emmi Nyoter: fizikaning ildizidagi ayol                                   [done]
 
 ### Tabiatdagi matematika (15–22)
 15. Nega asalarilar uyni olti burchakli quradi                                [done]
@@ -88,13 +88,13 @@ AUTHOR:     powerty
 17. Fibonachchi sonlari gul va qaragʻay qubbasida                             [done]
 18. Chigʻanoqdagi spiral
 19. Daraxt shoxlari nega shunday tarmoqlanadi
-20. Nega katta hayvon sekin nafas oladi — oʻlcham matematikasi
+20. Nega katta hayvon sekin nafas oladi — oʻlcham matematikasi                [done]
 21. Zebra chiziqlari: naqsh ortidagi qoida
 22. Samolyot nega xaritada egri uchadi
 
 ### Kundalik hayotdagi matematika (23–32)
 23. Nega lyuk qopqogʻi dumaloq                                                [done]
-24. GPS uchta masofadan joyni qanday topadi
+24. GPS uchta masofadan joyni qanday topadi                                   [done]
 25. Shtrix-koddagi oxirgi raqam nima uchun kerak                             [done]
 26. Foiz ustiga foiz: pul qanday oʻsadi                                       [done]
 27. Gazetadagi diagrammaga nega ishonmaslik kerak                            [done]
@@ -108,10 +108,10 @@ AUTHOR:     powerty
 33. Oʻn ikki tanga va uch marta tortish                                       [done]
 34. Koʻprikdan oʻtish: toʻrt kishi, bitta fonar
 35. Kyonigsberg koʻpriklari: bir chiziq bilan chizib boʻladimi
-36. Monti Xoll: eshikni almashtirasizmi?
-37. Tugʻilgan kun paradoksi: 23 kishi yetarli
-38. Hilbert mehmonxonasi: cheksiz xona, yana bitta mehmon
+36. Monti Xoll: eshikni almashtirasizmi?                                      [done]
+37. Tugʻilgan kun paradoksi: 23 kishi yetarli                                 [done]
+38. Hilbert mehmonxonasi: cheksiz xona, yana bitta mehmon                     [done]
 39. Boʻri, echki va karam — daryodan oʻtish
 40. Yolgʻonchilar oroli: kim rost gapiryapti
-41. Bir varaq qogʻozni qirq marta buklasa nima boʻladi
+41. Bir varaq qogʻozni qirq marta buklasa nima boʻladi                        [done]
 42. Cheksizlik bir xil emas: sanaladigan va sanalmaydigan
