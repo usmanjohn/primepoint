@@ -1,0 +1,205 @@
+{
+  "_note": "TEMPLATE: before sending, set \"number\" (next № in sent.tsv) and \"date\" (today), and save the copy to flowstudio/out/.",
+  "id": "sonlar-imperiyasi-08",
+  "number": 16,
+  "for": "Birga",
+  "date": "2026-10-05",
+  "series": "Sonlar imperiyasi",
+  "title_uz": "8-qism. Doiraning siri",
+  "concept_uz": "Har bir gʻildirak, lagan va gumbazda aylana diametrdan «uch martadan sal koʻp». Nisbat xalqi bu sonni kasr qilolmaydi. Olim Pi keladi — lekin gapini hech qachon tugatolmaydi, butun saroy uxlab qoladi. Uning raqamlari takrorlanmaydi: «Ismim nisbatdan, lekin men Nisbat xalqidan emasman».",
+  "format_uz": "8 sahna × 8 soniya = 64 soniya",
+  "sources": [
+    "corner/management/commands/_stories_sonlar_imperiyasi_06_10.py (8-qism)",
+    "flowstudio/series/sonlar_imperiyasi.md (5-boʻlim, 8-qism)"
+  ],
+  "facts": [
+    {
+      "claim": "aylana uzunligi = π × diametr",
+      "source": "arifmetika / bible Haqiqatda"
+    },
+    {
+      "claim": "22/7 = 3,1428… — π dan sal koʻp",
+      "source": "arifmetika / bible Haqiqatda"
+    },
+    {
+      "claim": "π ≈ 3,14159265… — irratsional, raqamlari takrorlanmaydi",
+      "source": "arifmetika / bible Haqiqatda"
+    }
+  ],
+  "style_line": "Premium 3D animated feature film style, warm golden light, soft shadows, rich colours, vertical 9:16. No text, no captions, no letters or numerals written anywhere, no watermark.",
+  "refs": [
+    {
+      "id": "R1",
+      "name_uz": "Qirol Noʻl",
+      "prompt": "Vertical 9:16 full-body character portrait. A round golden ring-shaped king: a smooth, thick, upright gold ring like a donut standing on its edge, with big kind expressive eyes and a small mouth on the front of the ring, thin cartoon arms and legs, a small jewelled crown tilted to the left, holding a long plain wooden staff. He stands in the middle of a vast empty golden plain at sunrise, front view, centred.",
+      "saved": true
+    },
+    {
+      "id": "R2",
+      "name_uz": "Birjon (+1)",
+      "prompt": "Vertical 9:16 full-body character portrait. A slim upright sun-gold character shaped like a tall narrow pillar with a small slanted flag-like tip at the top, big cheerful eyes, a wide smile, thin cartoon arms and legs, and a small round badge with a plus sign pinned on its chest. It stands on a vast golden plain at sunrise, front view, centred.",
+      "saved": true
+    },
+    {
+      "id": "R3",
+      "name_uz": "Minusjon (−1)",
+      "from": "R2",
+      "prompt": "Change this character: exactly the same shape, size and face, but made of shining moon-silver instead of gold, eyebrows lowered in a grumpy frown, arms crossed, and a horizontal dark-blue sash wrapped across its middle instead of the plus badge. Same plain, same framing, full body, front view.",
+      "saved": true
+    },
+    {
+      "id": "R4",
+      "name_uz": "Oltin tekislik",
+      "prompt": "Vertical 9:16 wide landscape. A vast empty golden plain under a huge sky, a warm sun low on the right horizon and a pale smiling moon with a gentle old woman's face on the left side of the sky, soft morning light, a faint straight line on the ground running from left to right through the centre. No characters.",
+      "saved": true
+    },
+    {
+      "id": "R9",
+      "name_uz": "Olim Pi",
+      "prompt": "Vertical 9:16 full-body character portrait. An elderly scholar character with a round kind face, small spectacles and a long white beard, wearing a deep-blue chapan robe covered in a pattern of circles, holding a coil of measuring rope. He stands beside a wooden cart wheel on the golden plain, front view, centred."
+    },
+    {
+      "id": "R11",
+      "name_uz": "8-qism: Gʻildirakchi",
+      "from": "R4",
+      "prompt": "On this golden plain, a wheelwright character in a leather apron measures a big wooden cart wheel with a rope; around him lie a large round serving plate, a clay tandir oven and, in the distance, a turquoise dome. Vertical 9:16."
+    }
+  ],
+  "scenes": [
+    {
+      "n": 1,
+      "title_uz": "Uchdan sal koʻp",
+      "method": "Frames to Video",
+      "start": "R11",
+      "prompt": "The wheelwright wraps the rope once around the wheel, then lays the rope straight across the wheel's width: it fits three times and a little bit more. He scratches his head and says in Uzbek with a gruff, friendly craftsman's voice: \"Yana uch martadan sal ko'p!\" No subtitles, no on-screen text.",
+      "lines": [
+        {
+          "who": "Gʻildirakchi",
+          "text": "Yana uch martadan sal koʻp!"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "title_uz": "Har safar",
+      "method": "Ingredients to Video",
+      "attach": [
+        "R11",
+        "R2"
+      ],
+      "prompt": "Quick comic montage: characters measure the round plate, the tandir's mouth and the dome with ropes — each time the rope fits three times and a little more. Together they says in Uzbek with a crowd of cheerful mixed voices in unison: \"Har safar uchdan sal ko'p!\" No subtitles, no on-screen text.",
+      "lines": [
+        {
+          "who": "Hamma",
+          "text": "Har safar uchdan sal koʻp!"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "title_uz": "Yigirma ikki boʻlu yetti",
+      "method": "Ingredients to Video",
+      "attach": [
+        "R11",
+        "R2",
+        "R3"
+      ],
+      "prompt": "The fraction folk proudly bring a fraction to the wheel; it almost matches but sticks out a tiny bit. One of them says in Uzbek with several proud young voices speaking in unison: \"Yigirma ikki bo'lu yetti!\" and another, disappointed, says in Uzbek with a slightly croaky, grumpy young boy's voice: \"Sal ko'p!\" No subtitles, no on-screen text.",
+      "lines": [
+        {
+          "who": "Nisbat xalqi",
+          "text": "Yigirma ikki boʻlu yetti!"
+        },
+        {
+          "who": "Minusjon",
+          "text": "Sal koʻp!"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "title_uz": "Olim keladi",
+      "method": "Frames to Video",
+      "start": "R9",
+      "prompt": "At the palace gate the elderly scholar in the circle-patterned robe arrives slowly, leaning on his coil of measuring rope; the crowd parts respectfully. No subtitles, no on-screen text.",
+      "lines": []
+    },
+    {
+      "n": 5,
+      "title_uz": "Siri",
+      "method": "Ingredients to Video",
+      "attach": [
+        "R9",
+        "R1"
+      ],
+      "prompt": "The ring-king asks hopefully, says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Doiraning sirini bilasizmi?\" The scholar clears his throat and says in Uzbek with a slow, sleepy elderly professor's voice: \"Doiraning sirini aytsam… uch butun, bir, to'rt, bir, besh, to'qqiz…\" No subtitles, no on-screen text.",
+      "lines": [
+        {
+          "who": "Qirol Noʻl",
+          "text": "Doiraning sirini bilasizmi?"
+        },
+        {
+          "who": "Pi",
+          "text": "Doiraning sirini aytsam… uch butun, bir, toʻrt, bir, besh, toʻqqiz…"
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "title_uz": "Hamma uxladi",
+      "method": "Ingredients to Video",
+      "attach": [
+        "R9",
+        "R3"
+      ],
+      "prompt": "Time-lapse through the night: the whole palace falls asleep one by one, the silver character yawning hugely and toppling over, snoring; the scholar is still talking, says in Uzbek with a slow, sleepy elderly professor's voice: \"…ikki, olti, besh, uch, besh, sakkiz…\" No subtitles, no on-screen text.",
+      "lines": [
+        {
+          "who": "Pi",
+          "text": "…ikki, olti, besh, uch, besh, sakkiz…"
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "title_uz": "Takrorlanmaydi",
+      "method": "Ingredients to Video",
+      "attach": [
+        "R1",
+        "R9"
+      ],
+      "prompt": "Morning. The ring-king wakes up and asks, says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Hech bo'lmasa, takrorlanadimi?\" The scholar shakes his head kindly: says in Uzbek with a slow, sleepy elderly professor's voice: \"Yo'q. Hech qachon takrorlanmaydi, hech qachon tugamaydi.\" No subtitles, no on-screen text.",
+      "lines": [
+        {
+          "who": "Qirol Noʻl",
+          "text": "Hech boʻlmasa, takrorlanadimi?"
+        },
+        {
+          "who": "Pi",
+          "text": "Yoʻq. Hech qachon takrorlanmaydi, hech qachon tugamaydi."
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "title_uz": "Nisbat emas",
+      "method": "Ingredients to Video",
+      "attach": [
+        "R9",
+        "R4"
+      ],
+      "prompt": "Sunset. The scholar bows and walks away toward the dark horizon with his rope, turning back once to says in Uzbek with a slow, sleepy elderly professor's voice: \"Ismim nisbatdan, lekin men Nisbat xalqidan emasman.\" An off-screen narrator says in Uzbek with a warm storyteller's male voice: \"Davomi — powerty.uz da.\" No subtitles, no on-screen text.",
+      "lines": [
+        {
+          "who": "Pi",
+          "text": "Ismim nisbatdan, lekin men Nisbat xalqidan emasman."
+        },
+        {
+          "who": "Hikoyachi",
+          "text": "Davomi — powerty.uz da."
+        }
+      ]
+    }
+  ],
+  "post_text_uz": "Sonlar imperiyasi · 8-qism 👑\nHar bir gʻildirakda bitta sir bor. Uni bilgan olim gapini hech tugatolmaydi 😴\nButun ertak va keyingi qismlar — powerty.uz da.\n#SonlarImperiyasi #matematika #ertak #powerty"
+}
