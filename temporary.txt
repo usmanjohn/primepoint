@@ -1,2 +1,4 @@
 python manage.py import_corner corner/management/commands/_stories_matematika_olami_16_21.py --author=powerty
 python manage.py import_corner corner/management/commands/_stories_matematika_olami_22_29.py --author=powerty
+python manage.py import_corner corner/management/commands/_stories_matematika_olami_30_36.py --author=powerty
+python manage.py import_corner corner/management/commands/_stories_matematika_olami_37_42.py --author=powerty
