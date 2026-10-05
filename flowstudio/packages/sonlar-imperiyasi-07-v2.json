@@ -1,0 +1,179 @@
+{
+ "_note": "TEMPLATE: before sending, set \"number\" (next № in sent.tsv) and \"date\" (today), and save the copy to flowstudio/out/.",
+ "id": "sonlar-imperiyasi-07-v2",
+ "number": 25,
+ "for": "Birga",
+ "date": "2026-10-06",
+ "series": "Sonlar imperiyasi",
+ "title_uz": "7-qism. Ildiz qafasi (yangi koʻrinish)",
+ "concept_uz": "Sonlar kvadrat minoralar va ildiz yertoʻlalarini kashf qiladi: 25 kirsa — 5 chiqadi. Qiziquvchan Ikki tushadi-yu, chiqa olmaydi: kvadrati aniq 2 boʻladigan kasr yoʻq. U qafas bilan chiqadi, ismi pasportga sigʻmaydi — 1,41421356… Sonlar oʻqida teshik borligi maʼlum boʻladi.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_sonlar_imperiyasi_06_10.py (7-qism)",
+  "flowstudio/series/sonlar_imperiyasi.md (5-boʻlim, 7-qism)"
+ ],
+ "facts": [
+  {
+   "claim": "√25 = 5",
+   "source": "arifmetika / bible Haqiqatda"
+  },
+  {
+   "claim": "1,41² = 1,9881; 1,414² = 1,999396 — hech qachon aniq 2 emas",
+   "source": "arifmetika / bible Haqiqatda"
+  },
+  {
+   "claim": "√2 ≈ 1,41421356 — irratsional",
+   "source": "arifmetika / bible Haqiqatda"
+  }
+ ],
+ "style_line": "Premium 3D animated feature film style, gentle split light — cool moonlight from the left, warm sunlight from the right — soft shadows, rich colours, vertical 9:16. No text, no captions, no letters or numerals written anywhere, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Qirol Noʻl",
+   "prompt": "Vertical 9:16 full-body character portrait. A round king shaped like a thick, chunky upright ring with a small hole in the middle, so its wide front face is a disc. The ring is coloured like a yin-yang: the left half dark moon-silver with one small bright gold dot, the right half bright sun-gold with one small dark silver dot, the two halves curving into each other in a smooth S-shaped wave — made of polished metal, not a flat printed symbol. Big kind expressive eyes and a small mouth on the front of the ring, thin cartoon arms and legs, a small jewelled crown tilted to the left, holding a long plain wooden staff. He stands in the middle of a vast low-poly crystal plain, exactly where the cool left side meets the warm right side, front view, centred.",
+   "saved": true
+  },
+  {
+   "id": "R4",
+   "name_uz": "Kristall tekislik",
+   "prompt": "Vertical 9:16 wide landscape. A vast empty low-poly crystal plain made of smooth faceted triangular polygons: cool lavender-blue facets on the left, warm amber facets on the right, blending softly in the middle. A thin glowing straight path runs across the ground from left to right through the centre. The sky is split the same gentle way: soft twilight indigo with a few stars on the left, where a pale moon with a gentle old woman's face smiles; warm morning light on the right, where a big warm sun with a kind old grandfather's face — smiling eyes, bushy eyebrows and a beard of rays — smiles back. Not dark, just a gentle difference between the two sides. No characters.",
+   "saved": true
+  },
+  {
+   "id": "R6",
+   "name_uz": "Sonlar oʻqi (tayoq)",
+   "prompt": "Vertical 9:16. The king's long wooden staff lying flat on the low-poly crystal plain from left to right, with evenly spaced carved notches along it, the middle notch glowing gold. Low camera angle along the staff, morning light, no characters.",
+   "saved": true
+  },
+  {
+   "id": "R8",
+   "name_uz": "Ildiz-Ikki qafasda",
+   "prompt": "Vertical 9:16 full-body character portrait. A tall, thoughtful teal character with a graceful swan-like curved neck and a flat base, gentle sad eyes, standing inside a glass cage whose front edge is shaped like a large tick-mark with a long roof (the square-root sign). Moody evening light on the low-poly crystal plain, front view, centred."
+  },
+  {
+   "id": "R20",
+   "name_uz": "Minora va yertoʻla",
+   "from": "R4",
+   "prompt": "On this low-poly crystal plain build a tall tower of stacked golden blocks, and at its foot a cellar door whose frame is shaped like a big tick-mark with a long roof (the square-root sign). A queue of small excited number-characters waits at the door. Vertical 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Yigirma besh kirdi",
+   "method": "Frames to Video",
+   "start": "R20",
+   "prompt": "A character climbs down into the root-shaped cellar door and pops out a moment later smaller, proud and shining; the queue claps. It says in Uzbek with an excited, high young voice: \"Yigirma besh kirdi — besh chiqdi!\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Son",
+     "text": "Yigirma besh kirdi — besh chiqdi!"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "title_uz": "Qiziquvchan Ikki",
+   "method": "Frames to Video",
+   "start": "R20",
+   "prompt": "A tall thoughtful teal character with a swan-like curved neck steps out of the queue, peers into the dark cellar and says in Uzbek with a calm, soft, slightly sad young man's voice: \"Ichkarida nima bor ekan?\" Then it climbs in. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Ikki",
+     "text": "Ichkarida nima bor ekan?"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "title_uz": "Chiqolmayapman",
+   "method": "Frames to Video",
+   "start": "R20",
+   "prompt": "The cellar door slams shut. Banging from inside and a muffled voice says in Uzbek with a calm, soft, slightly sad young man's voice: \"Chiqolmayapman!\" Characters outside shout numbers through the keyhole, then shake their heads. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Ikki",
+     "text": "Chiqolmayapman!"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "title_uz": "Qafas",
+   "method": "Frames to Video",
+   "start": "R8",
+   "prompt": "The teal character finally walks out of the cellar slowly — but now a glass cage shaped like the root sign surrounds it and moves with it. It looks down at the cage sadly. The crowd steps back. No subtitles, no on-screen text.",
+   "lines": []
+  },
+  {
+   "n": 5,
+   "title_uz": "Ismingiz?",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R8",
+    "R4"
+   ],
+   "prompt": "At the palace gate a guard with a long scroll asks, says in Uzbek with a slow, bored palace guard's voice: \"Ismingiz?\" The caged character answers slowly, says in Uzbek with a calm, soft, slightly sad young man's voice: \"Bir butun, to'rt, bir, to'rt, ikki, bir, uch, besh…\" Time-lapse: the sun sets while the guard keeps writing, the scroll piling up on the ground. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Qorovul",
+     "text": "Ismingiz?"
+    },
+    {
+     "who": "Ildiz-Ikki",
+     "text": "Bir butun, toʻrt, bir, toʻrt, ikki, bir, uch, besh…"
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "title_uz": "Pasport",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R8"
+   ],
+   "prompt": "Night at the gate; the guard is asleep on the huge pile of scroll. The caged character sighs and says in Uzbek with a calm, soft, slightly sad young man's voice: \"Ismim pasportga sig'mayapti.\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Ildiz-Ikki",
+     "text": "Ismim pasportga sigʻmayapti."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "title_uz": "Teshik",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R1",
+    "R6",
+    "R8"
+   ],
+   "prompt": "The ring-king walks along the glowing staff and suddenly stops: between two notches, exactly under the caged character, there is a tiny dark hole in the line that no notch covers. He gasps and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"O'qda teshik bor ekan!\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Qirol Noʻl",
+     "text": "Oʻqda teshik bor ekan!"
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "title_uz": "Badargʻa",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R1",
+    "R8"
+   ],
+   "prompt": "Dusk. The ring-king sadly points his staff toward the horizon; the caged character and a few other caged characters walk away into the dark distance, where they gather in a circle and begin to whisper. An off-screen narrator says in Uzbek with a warm storyteller's male voice: \"Davomi — powerty.uz da.\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi",
+     "text": "Davomi — powerty.uz da."
+    }
+   ]
+  }
+ ],
+ "post_text_uz": "Sonlar imperiyasi · 7-qism 👑\nIkki ildiz yertoʻlasiga tushdi-yu, chiqa olmadi. Nega? 🔐\nButun ertak va keyingi qismlar — powerty.uz da.\n#SonlarImperiyasi #matematika #ertak #powerty"
+}

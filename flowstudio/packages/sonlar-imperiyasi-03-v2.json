@@ -1,0 +1,202 @@
+{
+ "_note": "TEMPLATE: before sending, set \"number\" (next № in sent.tsv) and \"date\" (today), and save the copy to flowstudio/out/.",
+ "id": "sonlar-imperiyasi-03-v2",
+ "number": 21,
+ "for": "Birga",
+ "date": "2026-10-06",
+ "series": "Sonlar imperiyasi",
+ "title_uz": "3-qism. Nolga boʻlish (yangi koʻrinish)",
+ "concept_uz": "Egizaklar «÷»ni uxlayotgan qirolning ustiga qoʻyadi: 1 ÷ 0. Qirol javob izlab kichrayadi va oʻngga yuguradi — 10, 100, 1000… Minusjon sakrasa — chapga, −1000. U hech qachon yetib bormaydi: ufqda Cheksizlik tugʻiladi. Birinchi qonun: «Noʻlga boʻlib boʻlmaydi».",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_sonlar_imperiyasi_01_05.py (3-qism)",
+  "flowstudio/series/sonlar_imperiyasi.md (5-boʻlim, 3-qism)"
+ ],
+ "facts": [
+  {
+   "claim": "1 ÷ 0,1 = 10; 1 ÷ 0,01 = 100; 1 ÷ 0,001 = 1000",
+   "source": "arifmetika / bible Haqiqatda"
+  },
+  {
+   "claim": "1 ÷ (−0,001) = −1000",
+   "source": "arifmetika / bible Haqiqatda"
+  },
+  {
+   "claim": "nolga boʻlish aniqlanmagan; cheksizlik son emas",
+   "source": "arifmetika / bible Haqiqatda"
+  }
+ ],
+ "style_line": "Premium 3D animated feature film style, gentle split light — cool moonlight from the left, warm sunlight from the right — soft shadows, rich colours, vertical 9:16. No text, no captions, no letters or numerals written anywhere, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Qirol Noʻl",
+   "prompt": "Vertical 9:16 full-body character portrait. A round king shaped like a thick, chunky upright ring with a small hole in the middle, so its wide front face is a disc. The ring is coloured like a yin-yang: the left half dark moon-silver with one small bright gold dot, the right half bright sun-gold with one small dark silver dot, the two halves curving into each other in a smooth S-shaped wave — made of polished metal, not a flat printed symbol. Big kind expressive eyes and a small mouth on the front of the ring, thin cartoon arms and legs, a small jewelled crown tilted to the left, holding a long plain wooden staff. He stands in the middle of a vast low-poly crystal plain, exactly where the cool left side meets the warm right side, front view, centred.",
+   "saved": true
+  },
+  {
+   "id": "R2",
+   "name_uz": "Birjon (+1)",
+   "prompt": "Vertical 9:16 full-body character portrait. A slim upright sun-gold character shaped like a tall narrow pillar with a small slanted flag-like tip at the top, big cheerful eyes, a wide smile, thin cartoon arms and legs, and a small round badge with a plus sign pinned on its chest. It stands on the vast low-poly crystal plain, front view, centred.",
+   "saved": true
+  },
+  {
+   "id": "R3",
+   "name_uz": "Minusjon (−1)",
+   "from": "R2",
+   "prompt": "Change this character: exactly the same shape, size and face, but made of shining moon-silver instead of gold, eyebrows lowered in a grumpy frown, arms crossed, and a horizontal dark-blue sash wrapped across its middle instead of the plus badge. Same plain, same framing, full body, front view.",
+   "saved": true
+  },
+  {
+   "id": "R4",
+   "name_uz": "Kristall tekislik",
+   "prompt": "Vertical 9:16 wide landscape. A vast empty low-poly crystal plain made of smooth faceted triangular polygons: cool lavender-blue facets on the left, warm amber facets on the right, blending softly in the middle. A thin glowing straight path runs across the ground from left to right through the centre. The sky is split the same gentle way: soft twilight indigo with a few stars on the left, where a pale moon with a gentle old woman's face smiles; warm morning light on the right, where a big warm sun with a kind old grandfather's face — smiling eyes, bushy eyebrows and a beard of rays — smiles back. Not dark, just a gentle difference between the two sides. No characters.",
+   "saved": true
+  },
+  {
+   "id": "R5",
+   "name_uz": "Cheksizlik ufqda",
+   "prompt": "Vertical 9:16. The same low-poly crystal plain seen from ground level, and on the very far horizon a tiny glowing silhouette of a running young man made of sparkling light, half dissolved into the haze, always far away. Dramatic dusk light, sparks drifting toward the horizon."
+  },
+  {
+   "id": "R14",
+   "name_uz": "Uxlayotgan qirol ustida",
+   "from": [
+    "R1",
+    "R2"
+   ],
+   "prompt": "Night. The ring-king lies asleep on his back on the low-poly crystal plain, crown over his eyes. Above him the gold character balances on a glowing toy shaped like a short horizontal bar with one dot above it and one dot below it. Keep both designs exactly the same. Vertical 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Savol",
+   "method": "Frames to Video",
+   "start": "R14",
+   "prompt": "The gold character leans down from the glowing toy above the sleeping king and whispers mischievously: it says in Uzbek with a bright, cheerful young boy's voice: \"Hazratim, meni teng bo'lish uchun nechta siz kerak?\" The ring-king's eyes snap wide open. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Birjon",
+     "text": "Hazratim, meni teng boʻlish uchun nechta siz kerak?"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "title_uz": "Oʻn",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R1",
+    "R4"
+   ],
+   "prompt": "The ring-king shrinks to a tenth of his size and ten tiny copies of him appear in a row; he starts running to the right across the plain and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"O'n!\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Qirol Noʻl",
+     "text": "Oʻn!"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "title_uz": "Yuz! Ming!",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R1",
+    "R4"
+   ],
+   "prompt": "He shrinks even smaller and sprints faster and faster to the right, his crown flying off, his staff left behind, dust trailing, and he says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Yuz! Ming! Million!\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Qirol Noʻl",
+     "text": "Yuz! Ming! Million!"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "title_uz": "Endi chapga",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R1"
+   ],
+   "prompt": "The silver character jumps onto the glowing toy with a thud. The running king skids, spins around and sprints just as madly to the LEFT. The silver character says in Uzbek with a slightly croaky, grumpy young boy's voice: \"Endi menga!\" and the king, running away, says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Minus ming!\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Minusjon",
+     "text": "Endi menga!"
+    },
+    {
+     "who": "Qirol Noʻl",
+     "text": "Minus ming!"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "title_uz": "Uchqunlar",
+   "method": "Frames to Video",
+   "start": "R5",
+   "prompt": "Sparks stream from the horizon behind the running king toward the far edge of the world, where a glowing figure of light appears. From the horizon a far-away voice says in Uzbek with a far-away, echoing young man's voice: \"Yetib keldim!\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Cheksizlik",
+     "text": "Yetib keldim!"
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "title_uz": "Hali yoʻlda",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R5",
+    "R2",
+    "R3"
+   ],
+   "prompt": "The camera zooms fast toward the horizon — but the figure of light is still exactly as far away. The twins squint into the distance. The far-away voice says in Uzbek with a far-away, echoing young man's voice: \"…Yo'q, hali yo'ldaman.\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Cheksizlik",
+     "text": "…Yoʻq, hali yoʻldaman."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "title_uz": "Birinchi qonun",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Dawn. The exhausted ring-king, crownless and panting, stands in the middle of the plain, raises his staff high and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"No'lga bo'lib bo'lmaydi!\" The twins bow their heads, then hug each other to apologise — POP — they vanish. The king facepalms. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Qirol Noʻl",
+     "text": "Noʻlga boʻlib boʻlmaydi!"
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "title_uz": "Devor",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R1",
+    "R4"
+   ],
+   "prompt": "The ring-king waves his staff and golden sparks form a long line of new number-characters of all sizes stretching toward the horizon like a wall. At the end of the line a few of them turn around, cross their arms and frown rebelliously. An off-screen narrator says in Uzbek with a warm storyteller's male voice: \"Davomi — powerty.uz da.\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi",
+     "text": "Davomi — powerty.uz da."
+    }
+   ]
+  }
+ ],
+ "post_text_uz": "Sonlar imperiyasi · 3-qism 👑\nNima uchun nolga boʻlib boʻlmaydi? Qirol Noʻl buni oʻz terisida sinab koʻrdi… 🏃‍♂️💨\nButun ertak va keyingi qismlar — powerty.uz da.\n#SonlarImperiyasi #matematika #ertak #powerty"
+}

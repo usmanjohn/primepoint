@@ -1,0 +1,197 @@
+{
+ "_note": "TEMPLATE: before sending, set \"number\" (next № in sent.tsv) and \"date\" (today), and save the copy to flowstudio/out/.",
+ "id": "sonlar-imperiyasi-01-v2",
+ "number": 19,
+ "for": "Birga",
+ "date": "2026-10-06",
+ "series": "Sonlar imperiyasi",
+ "title_uz": "1-qism. Noʻl va egizak Birlar (yangi koʻrinish)",
+ "concept_uz": "Zerikkan Qirol Noʻl ikki egizak Bir yasaydi: biri Quyoshniki (+1), biri Oyniki (−1). Ular birinchi marta quchoqlashadi — puf! — ikkalasi ham gʻoyib, faqat Noʻl qoladi: 1 + (−1) = 0. Oxirida egizaklar sirli sandiq topadi.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_sonlar_imperiyasi_01_05.py (1-qism)",
+  "flowstudio/series/sonlar_imperiyasi.md (5-boʻlim, 1-qism)"
+ ],
+ "facts": [
+  {
+   "claim": "1 + (−1) = 0: qarama-qarshi sonlar qoʻshilsa, nol qoladi",
+   "source": "arifmetika"
+  }
+ ],
+ "style_line": "Premium 3D animated feature film style, gentle split light — cool moonlight from the left, warm sunlight from the right — soft shadows, rich colours, vertical 9:16. No text, no captions, no letters or numerals written anywhere, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Qirol Noʻl",
+   "prompt": "Vertical 9:16 full-body character portrait. A round king shaped like a thick, chunky upright ring with a small hole in the middle, so its wide front face is a disc. The ring is coloured like a yin-yang: the left half dark moon-silver with one small bright gold dot, the right half bright sun-gold with one small dark silver dot, the two halves curving into each other in a smooth S-shaped wave — made of polished metal, not a flat printed symbol. Big kind expressive eyes and a small mouth on the front of the ring, thin cartoon arms and legs, a small jewelled crown tilted to the left, holding a long plain wooden staff. He stands in the middle of a vast low-poly crystal plain, exactly where the cool left side meets the warm right side, front view, centred."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Birjon (+1)",
+   "prompt": "Vertical 9:16 full-body character portrait. A slim upright sun-gold character shaped like a tall narrow pillar with a small slanted flag-like tip at the top, big cheerful eyes, a wide smile, thin cartoon arms and legs, and a small round badge with a plus sign pinned on its chest. It stands on the vast low-poly crystal plain, front view, centred."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Minusjon (−1)",
+   "from": "R2",
+   "prompt": "Change this character: exactly the same shape, size and face, but made of shining moon-silver instead of gold, eyebrows lowered in a grumpy frown, arms crossed, and a horizontal dark-blue sash wrapped across its middle instead of the plus badge. Same plain, same framing, full body, front view."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Kristall tekislik",
+   "prompt": "Vertical 9:16 wide landscape. A vast empty low-poly crystal plain made of smooth faceted triangular polygons: cool lavender-blue facets on the left, warm amber facets on the right, blending softly in the middle. A thin glowing straight path runs across the ground from left to right through the centre. The sky is split the same gentle way: soft twilight indigo with a few stars on the left, where a pale moon with a gentle old woman's face smiles; warm morning light on the right, where a big warm sun with a kind old grandfather's face — smiling eyes, bushy eyebrows and a beard of rays — smiles back. Not dark, just a gentle difference between the two sides. No characters."
+  },
+  {
+   "id": "R11",
+   "name_uz": "Qirol yolgʻiz",
+   "from": [
+    "R1",
+    "R4"
+   ],
+   "prompt": "Place this ring-king alone in the exact centre of this low-poly crystal plain, holding a small round hand mirror and looking bored, the sun on the right and the moon on the left of the sky. Same character design, same crown tilt. Vertical 9:16."
+  },
+  {
+   "id": "R12",
+   "name_uz": "Uchovi saf",
+   "from": [
+    "R11",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Put the gold character one step from the king on the RIGHT side of the picture (the warm sun side) and the silver character one step from him on the LEFT side of the picture (the cool moon side), the king's gold half facing the gold character and his silver half facing the silver one, all three standing in a row on the faint line across the plain, facing the camera, the twins not yet looking at each other. Keep every character design exactly the same. Vertical 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Koʻzgu",
+   "method": "Frames to Video",
+   "start": "R11",
+   "prompt": "The ring-king gazes into his hand mirror; the mirror shows only the empty plain behind him. He lets out a long dramatic sigh, then says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Men hech narsa emasman… lekin mensiz hech narsa bo'lmaydi!\" He looks back into the mirror: still nothing. Slow push-in, gentle comic timing. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Qirol Noʻl",
+     "text": "Men hech narsa emasman… lekin mensiz hech narsa boʻlmaydi!"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "title_uz": "Birjon tugʻiladi",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R1",
+    "R2",
+    "R4"
+   ],
+   "prompt": "The ring-king waves his wooden staff; golden sparks swirl beside him and form the slim gold character, who blinks open its big eyes and grins. Up in the sky the sun with the kind grandfather's face beams and says in Uzbek with a deep, warm, cheerful elderly man's voice: \"Meniki!\" The king says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Seni Bir deb ataymiz.\" The gold character bounces happily on the spot. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Qirol Noʻl",
+     "text": "Seni Bir deb ataymiz."
+    },
+    {
+     "who": "Quyosh",
+     "text": "Meniki!"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "title_uz": "Oyning hasadi",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R4",
+    "R3"
+   ],
+   "prompt": "Up in the sky the pale moon with an old woman's face frowns jealously and says in Uzbek with a gentle elderly woman's voice: \"Menga ham!\" A stream of silver sparkles pours down from the moon onto the plain and forms the silver character with the dark-blue sash, who lands, looks around and immediately crosses its arms. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Oy",
+     "text": "Menga ham!"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "title_uz": "Salbiy emas, manfiy",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R1",
+    "R3"
+   ],
+   "prompt": "The grumpy silver character tugs at its sash and says in Uzbek with a slightly croaky, grumpy young boy's voice: \"Nega menga minus? Men salbiymanmi?\" The ring-king kneels to its height, smiles kindly and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Yo'q. Sen salbiy emassan, manfiysan.\" The silver character thinks, then nods proudly. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Minusjon",
+     "text": "Nega menga minus? Men salbiymanmi?"
+    },
+    {
+     "who": "Qirol Noʻl",
+     "text": "Yoʻq. Sen salbiy emassan, manfiysan."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "title_uz": "Bir xil yaqin",
+   "method": "Frames to Video",
+   "start": "R12",
+   "prompt": "The ring-king stands between the two characters, turns so that his dark silver half faces the silver character and his bright gold half faces the gold character, rests a hand on each one's shoulder and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Ikkalangiz menga bir xil yaqinsiz.\" The gold and the silver character lean forward and see each other for the first time; their eyes grow huge with joy. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Qirol Noʻl",
+     "text": "Ikkalangiz menga bir xil yaqinsiz."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "title_uz": "Puf!",
+   "method": "Frames to Video",
+   "start": "R12",
+   "end": "R11",
+   "prompt": "The gold and the silver characters run toward each other in front of the king and hug — with a loud cartoon POP and a puff of sparkles both vanish instantly. Only the ring-king remains, frozen, eyes wide, his crown slowly slipping sideways. A single tumbleweed rolls past. Silence, then a tiny gust of wind. No subtitles, no on-screen text.",
+   "lines": []
+  },
+  {
+   "n": 7,
+   "title_uz": "Qayerdasizlar?!",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "The ring-king runs frantically in circles across the plain, lifting stones and peeking behind them, and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Qayerdasizlar?!\" Behind his back, with a soft pop, the two characters reappear as they let go of each other, giggling with their hands over their mouths. The king spins round and freezes. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Qirol Noʻl",
+     "text": "Qayerdasizlar?!"
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "title_uz": "Sirli sandiq",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R4",
+    "R2",
+    "R3"
+   ],
+   "prompt": "The moon in the sky, exasperated, says in Uzbek with a gentle elderly woman's voice: \"Quchoqlashmanglar! Har safar yo'q bo'lib qolasizlar!\" The twins jump apart guiltily, then notice an old wooden chest half-buried in the crystal ground, glowing from inside. They open the lid slowly; warm light falls on their amazed faces. An off-screen narrator says in Uzbek with a warm storyteller's male voice: \"Davomi — powerty.uz da.\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Oy",
+     "text": "Quchoqlashmanglar! Har safar yoʻq boʻlib qolasizlar!"
+    },
+    {
+     "who": "Hikoyachi",
+     "text": "Davomi — powerty.uz da."
+    }
+   ]
+  }
+ ],
+ "post_text_uz": "Sonlar imperiyasi · 1-qism 👑\nZerikkan Qirol Noʻl ikki egizak Bir yasadi. Ular quchoqlashganda nima boʻldi? 😄\nButun ertak va keyingi qismlar — powerty.uz da.\n#SonlarImperiyasi #matematika #ertak #powerty"
+}

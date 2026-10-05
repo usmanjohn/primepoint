@@ -1,0 +1,196 @@
+{
+ "_note": "TEMPLATE: before sending, set \"number\" (next № in sent.tsv) and \"date\" (today), and save the copy to flowstudio/out/.",
+ "id": "sonlar-imperiyasi-02-v2",
+ "number": 20,
+ "for": "Birga",
+ "date": "2026-10-06",
+ "series": "Sonlar imperiyasi",
+ "title_uz": "2-qism. Ishoralar oʻyini (yangi koʻrinish)",
+ "concept_uz": "Egizaklar sandiqdagi oʻyinchoqlar bilan qoʻshish, ayirish va koʻpaytirishni kashf qiladi. Qirol Noʻl oʻz kuchini bilib oladi: qoʻshilsa hech kim sezmaydi (a + 0 = a), koʻpaytirsa hamma yoʻqoladi (a × 0 = 0). Oxirida egizaklar «÷» yasab, uxlayotgan qirolga qarashadi.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_sonlar_imperiyasi_01_05.py (2-qism)",
+  "flowstudio/series/sonlar_imperiyasi.md (5-boʻlim, 2-qism)"
+ ],
+ "facts": [
+  {
+   "claim": "a + 0 = a",
+   "source": "arifmetika / bible Haqiqatda"
+  },
+  {
+   "claim": "a × 0 = 0",
+   "source": "arifmetika / bible Haqiqatda"
+  },
+  {
+   "claim": "3 × 4 = 12",
+   "source": "arifmetika / bible Haqiqatda"
+  }
+ ],
+ "style_line": "Premium 3D animated feature film style, gentle split light — cool moonlight from the left, warm sunlight from the right — soft shadows, rich colours, vertical 9:16. No text, no captions, no letters or numerals written anywhere, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Qirol Noʻl",
+   "prompt": "Vertical 9:16 full-body character portrait. A round king shaped like a thick, chunky upright ring with a small hole in the middle, so its wide front face is a disc. The ring is coloured like a yin-yang: the left half dark moon-silver with one small bright gold dot, the right half bright sun-gold with one small dark silver dot, the two halves curving into each other in a smooth S-shaped wave — made of polished metal, not a flat printed symbol. Big kind expressive eyes and a small mouth on the front of the ring, thin cartoon arms and legs, a small jewelled crown tilted to the left, holding a long plain wooden staff. He stands in the middle of a vast low-poly crystal plain, exactly where the cool left side meets the warm right side, front view, centred.",
+   "saved": true
+  },
+  {
+   "id": "R2",
+   "name_uz": "Birjon (+1)",
+   "prompt": "Vertical 9:16 full-body character portrait. A slim upright sun-gold character shaped like a tall narrow pillar with a small slanted flag-like tip at the top, big cheerful eyes, a wide smile, thin cartoon arms and legs, and a small round badge with a plus sign pinned on its chest. It stands on the vast low-poly crystal plain, front view, centred.",
+   "saved": true
+  },
+  {
+   "id": "R3",
+   "name_uz": "Minusjon (−1)",
+   "from": "R2",
+   "prompt": "Change this character: exactly the same shape, size and face, but made of shining moon-silver instead of gold, eyebrows lowered in a grumpy frown, arms crossed, and a horizontal dark-blue sash wrapped across its middle instead of the plus badge. Same plain, same framing, full body, front view.",
+   "saved": true
+  },
+  {
+   "id": "R4",
+   "name_uz": "Kristall tekislik",
+   "prompt": "Vertical 9:16 wide landscape. A vast empty low-poly crystal plain made of smooth faceted triangular polygons: cool lavender-blue facets on the left, warm amber facets on the right, blending softly in the middle. A thin glowing straight path runs across the ground from left to right through the centre. The sky is split the same gentle way: soft twilight indigo with a few stars on the left, where a pale moon with a gentle old woman's face smiles; warm morning light on the right, where a big warm sun with a kind old grandfather's face — smiling eyes, bushy eyebrows and a beard of rays — smiles back. Not dark, just a gentle difference between the two sides. No characters.",
+   "saved": true
+  },
+  {
+   "id": "R13",
+   "name_uz": "Sandiq yonida",
+   "from": [
+    "R2",
+    "R3",
+    "R4"
+   ],
+   "prompt": "Put the gold character and the silver character sitting on the low-poly crystal plain beside an open old wooden chest, pulling out glowing toys: a golden toy shaped like a cross with four equal arms and a silver toy shaped like a short flat bar. Keep both character designs exactly the same. Vertical 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Qoʻshish",
+   "method": "Frames to Video",
+   "start": "R13",
+   "prompt": "The gold character holds the glowing cross-shaped toy up beside itself; with a sparkle a second identical gold character pops into existence next to it. Both look at each other amazed, then the first one says in Uzbek with a bright, cheerful young boy's voice: \"Zo'r-ku! Yana bitta qo'shamiz!\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Birjon",
+     "text": "Zoʻr-ku! Yana bitta qoʻshamiz!"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "title_uz": "Ayirish",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R3"
+   ],
+   "prompt": "The silver character taps one of two gold characters with the flat bar-shaped toy and it vanishes with a soft pop. For the first time the grumpy silver character smiles a tiny smile, hides the toy behind its back and says in Uzbek with a slightly croaky, grumpy young boy's voice: \"Bu menga yoqdi.\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Minusjon",
+     "text": "Bu menga yoqdi."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "title_uz": "Koʻpaytirish",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R4"
+   ],
+   "prompt": "The gold character tips the cross-shaped toy on its side so it becomes a slanted X, and touches a row of three gold characters: instantly there are four rows of three, twelve characters crowding the plain and bumping into each other. The gold character says in Uzbek with a bright, cheerful young boy's voice: \"Uch karra to'rt — o'n ikki!\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Birjon",
+     "text": "Uch karra toʻrt — oʻn ikki!"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "title_uz": "Hech kim sezmaydi",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R1",
+    "R2"
+   ],
+   "prompt": "The ring-king joins a group of five gold characters and stands among them, waving his arms; nothing changes, nobody even notices him. He lowers his arms and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Qo'shilaman — hech kim sezmaydi.\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Qirol Noʻl",
+     "text": "Qoʻshilaman — hech kim sezmaydi."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "title_uz": "Puf, puf, puf",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "The ring-king picks up the slanted X toy and accidentally touches a crowd of gold characters — POP, POP, POP — each one vanishes in a puff of sparkles. Embarrassed, he says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Voy, kechirasiz… yana ko'paytirib qo'ydim-a.\" He lifts the toy again and the remaining characters scream and run away in every direction. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Qirol Noʻl",
+     "text": "Voy, kechirasiz… yana koʻpaytirib qoʻydim-a."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "title_uz": "Bu qanaqa hayot",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R1",
+    "R4"
+   ],
+   "prompt": "Night on the plain. The ring-king sits slumped, talking up to the moon, and says in Uzbek with a warm, slightly dramatic middle-aged male voice: \"Ko'paytiraman — hamma yo'qoladi. Bu qanaqa hayot?!\" The moon with the old woman's face smiles gently and says in Uzbek with a gentle elderly woman's voice: \"Senda shunday qoida bor, xolos.\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Qirol Noʻl",
+     "text": "Koʻpaytiraman — hamma yoʻqoladi. Bu qanaqa hayot?!"
+    },
+    {
+     "who": "Oy",
+     "text": "Senda shunday qoida bor, xolos."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "title_uz": "Trampolin",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R3"
+   ],
+   "prompt": "Late at night the twins bounce on the flat silver bar toy like a trampoline, giggling silently, higher and higher, until two little glowing dots pop off it and stick, one above the bar and one below. The toy now glows with a new shape. The twins freeze and stare at it. No subtitles, no on-screen text.",
+   "lines": []
+  },
+  {
+   "n": 8,
+   "title_uz": "Ayyor nigoh",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "The twins hold the new glowing toy, then slowly turn their heads toward the ring-king sleeping on his back in the middle of the plain, snoring, his crown over his eyes. They look at each other with a mischievous grin. An off-screen narrator says in Uzbek with a warm storyteller's male voice: \"Davomi — powerty.uz da.\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi",
+     "text": "Davomi — powerty.uz da."
+    }
+   ]
+  }
+ ],
+ "post_text_uz": "Sonlar imperiyasi · 2-qism 👑\nQirol Noʻl qoʻshilsa — hech kim sezmaydi. Koʻpaytirsa — hamma yoʻqoladi! 😄 Nima uchun?\nButun ertak va keyingi qismlar — powerty.uz da.\n#SonlarImperiyasi #matematika #ertak #powerty"
+}
