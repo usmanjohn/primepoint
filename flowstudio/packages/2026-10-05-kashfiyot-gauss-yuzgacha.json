@@ -1,0 +1,219 @@
+{
+ "id": "2026-10-05-kashfiyot-gauss-yuzgacha",
+ "number": 8,
+ "for": "Jonibek",
+ "date": "2026-10-05",
+ "series": "Buyuk kashfiyot",
+ "title_uz": "Gauss: 1 dan 100 gacha bir daqiqada",
+ "concept_uz": "Rivoyatga koʻra, nemis maktabida jahldor oʻqituvchi shovqinli sinfga «1 dan 100 gacha qoʻshinglar» deydi. Hamma bir soatga koʻmilganda, toʻqqiz yashar Gauss bir daqiqada 5 050 deb javob beradi: u sonlarni chetdan juftlab, har bir juft 101 ekanini koʻradi. Oxirida tomoshabinga savol: 1 dan 20 gacha qancha?",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_01_03.py (story 10)"
+ ],
+ "facts": [
+  {
+   "claim": "Bu voqea rivoyat — tafsilotlari turli kitoblarda turlicha",
+   "source": "corner/management/commands/_stories_matematika_olami_01_03.py body, question 3"
+  },
+  {
+   "claim": "XVIII asr oxiri, Germaniyadagi maktab; Gauss toʻqqiz yoshda; Karl Fridrix Gauss 1777–1855",
+   "source": "corner/management/commands/_stories_matematika_olami_01_03.py body"
+  },
+  {
+   "claim": "1+100=101, 2+99=101 …; 50 ta juft; 50×101=5 050",
+   "source": "corner/management/commands/_stories_matematika_olami_01_03.py body, grammar"
+  },
+  {
+   "claim": "Bir soatlik vazifani bir daqiqada yechgan",
+   "source": "corner/management/commands/_stories_matematika_olami_01_03.py body"
+  },
+  {
+   "claim": "Gaussni «matematiklar shohi» deb atashadi",
+   "source": "corner/management/commands/_stories_matematika_olami_01_03.py body"
+  },
+  {
+   "claim": "1 dan 20 gacha yigʻindi 210 (10×21)",
+   "source": "corner/management/commands/_stories_matematika_olami_01_03.py question 2"
+  }
+ ],
+ "style_line": "Premium 3D animated feature film style, warm storybook lighting, soft volumetric sunbeams through dusty air, rich wood and candle tones, expressive stylised characters, late 18th-century German village atmosphere. No text, no letters, no numbers, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: eski sinf xonasi",
+   "prompt": "Vertical 9:16 interior of a small late-18th-century German village schoolroom: rough wooden benches in rows, a tall teacher's desk on a low platform, a big blank dark slate board on the wall, a tiled stove in the corner, dusty sunbeams through small leaded windows, an hourglass on the teacher's desk. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Oʻqituvchi",
+   "prompt": "Vertical 9:16 full-body portrait of a stern 1780s German village schoolteacher, about 50, tall and thin, long nose, bushy grey eyebrows, a short powdered grey wig tied with a black ribbon, dark brown long coat, white neckcloth, round spectacles on the tip of his nose, holding a thick leather-bound book under one arm, standing in a sunlit wooden schoolroom."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Kichkina Gauss",
+   "prompt": "Vertical 9:16 full-body portrait of a nine-year-old German village boy in the 1780s, small and thin, tousled light-brown hair, big calm blue eyes, simple linen shirt, brown waistcoat and short breeches, a knitted GREEN scarf around his neck, holding a small wooden-framed school slate turned away from the camera, standing in a sunlit wooden schoolroom, thoughtful half-smile."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Shovqinli sinf",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot: a noisy schoolroom full of about twenty village children in 1780s clothes, laughing, throwing a paper ball, one standing on a bench; the stern teacher in the doorway with the book raised high; the boy with the green scarf sits quietly on the front bench. Same faces, same light."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Hamma sanayapti",
+   "from": "R4",
+   "prompt": "Change the scene: now every child is bent over a small slate, scribbling hard, some groaning, one counting on his fingers; the slates are turned away from the camera. The teacher sits at his desk with his eyes closed and hands folded over his belly, the hourglass running. Only the boy with the green scarf is not writing: he stares up at the sunbeam, thinking. Same faces, same light, 9:16."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Zinapoya",
+   "from": "R3",
+   "prompt": "Change the scene: the same boy with the green scarf stands in a dark dreamlike space, glowing softly, in front of a long staircase of glowing golden blocks: the first column is one block tall, each next column one block taller, climbing to a very tall column at the far end. No digits anywhere. Same face, 9:16."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Teng ustunlar",
+   "from": "R6",
+   "prompt": "Change the scene: the golden staircase is gone; in its place stands a long even row of glowing golden columns, ALL exactly the same height, like a perfect wall; the boy with the green scarf stands in front of it smiling. No digits anywhere. Same face, 9:16."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Javob stolda",
+   "from": "R4",
+   "prompt": "Change the scene: the classroom is quiet; the boy with the green scarf stands at the teacher's desk and lays his slate face-down on it; the teacher leans forward over the desk, spectacles slipping, astonished; the other children stare from their benches with open mouths. Same faces, same light, 9:16."
+  },
+  {
+   "id": "R9",
+   "name_uz": "Katta Gauss",
+   "from": "R3",
+   "prompt": "Transform this boy into the same man grown up, about 50, in an early-1800s observatory at night: same calm blue eyes and face, light-brown hair now greying, dark coat, the same GREEN scarf, sitting at a wooden desk with a brass telescope, globe and stacks of papers by candlelight, looking up at the stars through an open dome. 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Jim!",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Oʻqituvchi",
+     "text": "Jim!"
+    },
+    {
+     "who": "Hikoyachi",
+     "text": "Rivoyatga koʻra, bu Germaniyadagi bir maktabda boʻlgan."
+    }
+   ],
+   "prompt": "The teacher slams the thick book down on a bench with a loud BANG in the first second; the whole noisy class freezes mid-motion, the paper ball drops. The teacher shouts in Uzbek with a stern, booming, slightly hoarse middle-aged male voice: \"Jim!\" Then slow push-in on the quiet boy with the green scarf. An off-screen narrator says in Uzbek with a warm, deep, unhurried elderly Uzbek male storyteller's voice: \"Rivoyatga ko'ra, bu Germaniyadagi bir maktabda bo'lgan.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Vazifa",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Oʻqituvchi",
+     "text": "Birdan yuzgacha hamma sonlarni qoʻshinglar! Bitmaguncha hech kim chiqmaydi."
+    }
+   ],
+   "prompt": "The teacher walks to his desk, turns the hourglass over with a smug little smile and sits down, folding his hands. Audio: creaking floorboards, the hourglass thud, sand hissing. He says in Uzbek with a stern, booming, slightly hoarse middle-aged male voice, pleased with himself: \"Birdan yuzgacha hamma sonlarni qo'shinglar! Bitmaguncha hech kim chiqmaydi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Bir soatlik ish",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Hikoyachi",
+     "text": "Bu bir soatlik ish edi. Hamma qoʻshishni boshladi… bittasidan tashqari."
+    }
+   ],
+   "prompt": "Slow sideways dolly along the benches: children scribbling furiously, a boy counting on his fingers, a girl sighing; the camera stops on the boy with the green scarf, who is not writing and looks up into the sunbeam. Audio: chalk scratching, groans, a fly buzzing, the teacher softly snoring. An off-screen narrator says in Uzbek with a warm, deep, unhurried elderly Uzbek male storyteller's voice: \"Bu bir soatlik ish edi. Hamma qo'shishni boshladi… bittasidan tashqari.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Juftlar",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Kichkina Gauss",
+     "text": "Bir qoʻshuv yuz — yuz bir. Ikki qoʻshuv toʻqson toʻqqiz — yana yuz bir!"
+    }
+   ],
+   "prompt": "Magical moment: the shortest column at the start of the golden staircase and the tallest column at the end glide toward each other and stack into one column; then the second-shortest and the second-tallest do the same, and their column is exactly as tall. Soft chime each time. The boy watches, eyes shining. He says in Uzbek with a soft, clear, thoughtful nine-year-old boy's voice, amazed: \"Bir qo'shuv yuz — yuz bir. Ikki qo'shuv to'qson to'qqiz — yana yuz bir!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Ellik juft",
+   "method": "Frames to Video",
+   "start": "R6",
+   "end": "R7",
+   "lines": [
+    {
+     "who": "Kichkina Gauss",
+     "text": "Hammasi bir xil! Ellikta juft, har biri yuz bir."
+    }
+   ],
+   "prompt": "Faster and faster, all the remaining pairs of golden columns glide together and stack, until the staircase has become one long even wall of columns all the same height. Audio: a rising cascade of soft chimes ending on one warm chord. The boy says in Uzbek with a soft, clear, thoughtful nine-year-old boy's voice, laughing quietly: \"Hammasi bir xil! Ellikta juft, har biri yuz bir.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Bir daqiqa",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Kichkina Gauss",
+     "text": "Besh ming ellik."
+    },
+    {
+     "who": "Oʻqituvchi",
+     "text": "Bir… daqiqada?!"
+    }
+   ],
+   "prompt": "Back in the schoolroom. The boy places his slate face-down on the teacher's desk and says calmly in Uzbek with a soft, clear, thoughtful nine-year-old boy's voice: \"Besh ming ellik.\" The teacher grabs the hourglass, sees it has barely started, and his spectacles slip off his nose. He says in Uzbek with a stern, booming, slightly hoarse middle-aged male voice, stunned: \"Bir… daqiqada?!\" No attack, just comedy. Audio: a sharp silence, then the spectacles clink on the desk. No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Matematiklar shohi",
+   "method": "Frames to Video",
+   "start": "R9",
+   "lines": [
+    {
+     "who": "Hikoyachi",
+     "text": "Bu bola keyin «matematiklar shohi» boʻldi. Uning sirini esa siz ham ishlatishingiz mumkin."
+    }
+   ],
+   "prompt": "Slow crane up from the grown man writing by candlelight to the starry sky through the open observatory dome. Audio: quill scratching, a soft wind, a gentle swelling score. An off-screen narrator says in Uzbek with a warm, deep, unhurried elderly Uzbek male storyteller's voice: \"Bu bola keyin «matematiklar shohi» bo'ldi. Uning sirini esa siz ham ishlatishingiz mumkin.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Endi siz",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Kichkina Gauss",
+     "text": "Endi siz sinang: birdan yigirmagacha nechchi boʻladi? Javobni izohda yozing!"
+    }
+   ],
+   "prompt": "The boy with the green scarf sits on the front bench in the empty sunlit schoolroom, leans toward the camera with a playful grin and raises one eyebrow. Hold on his look at the end. Audio: a single bird outside, the last grains of the hourglass. He says in Uzbek with a soft, clear, thoughtful nine-year-old boy's voice, playful: \"Endi siz sinang: birdan yigirmagacha nechchi bo'ladi? Javobni izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Rivoyatga koʻra, toʻqqiz yashar Gauss 1 dan 100 gacha sonlar yigʻindisini bir daqiqada topgan: 1+100, 2+99, 3+98… har bir juft — 101. Endi siz sinang: 1 dan 20 gacha nechchi? Javobni izohda yozing! #matematika #Gauss #buyukkashfiyot #Powerty powerty.uz"
+}

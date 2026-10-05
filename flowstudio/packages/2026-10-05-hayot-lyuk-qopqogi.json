@@ -1,0 +1,188 @@
+{
+ "id": "2026-10-05-hayot-lyuk-qopqogi",
+ "number": 7,
+ "for": "Inom",
+ "date": "2026-10-05",
+ "series": "Hayotdagi matematika",
+ "title_uz": "Nega lyuk qopqogʻi dumaloq?",
+ "concept_uz": "Koʻchada usta Sherzod kvadrat qopqoqni yopayotganda u qiyshayib, quduqqa tushib ketadi. Usta qiziquvchan Boburga lenta bilan sababni koʻrsatadi: kvadratning diagonali tomonidan uzun, doiraning eni esa hamma tomondan bir xil. Oxirida dumaloq qopqoqni gʻildirakday dumalatib ketishadi.",
+ "format_uz": "7 sahna × 8 soniya = 56 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_04.py (story 23)"
+ ],
+ "facts": [
+  {
+   "claim": "Tomoni 60 sm kvadrat qopqoqning diagonali taxminan 85 sm (60×√2≈84,9)",
+   "source": "corner/management/commands/_stories_matematika_olami_04.py grammar examples"
+  },
+  {
+   "claim": "Teshikning eni 60 sm, qiyshaytirilgan kvadrat qopqoq diagonal boʻylab tushib ketadi",
+   "source": "corner/management/commands/_stories_matematika_olami_04.py body"
+  },
+  {
+   "claim": "Doiraning eni (diametri) qaysi tomondan oʻlchansa ham bir xil — dumaloq qopqoq teshikdan oʻtmaydi",
+   "source": "corner/management/commands/_stories_matematika_olami_04.py body"
+  },
+  {
+   "claim": "Ogʻir dumaloq qopqoqni koʻtarmasdan dumalatib olib borish mumkin",
+   "source": "corner/management/commands/_stories_matematika_olami_04.py body, question 3"
+  }
+ ],
+ "style_line": "Cinematic photoreal, soft late-afternoon sunlight, warm golden tones, shallow depth of field, 35mm film look, a quiet residential street in Tashkent with plane trees and dappled shade. No text, no letters, no numbers, no logos, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: koʻcha va ochiq quduq",
+   "prompt": "Vertical 9:16 low wide shot of a quiet residential street in Tashkent in late-afternoon light: old plane trees, a low yellow-brick wall, worn asphalt. In the foreground an OPEN square utility shaft in the asphalt, about 60 cm wide, dark inside, with a square cast-iron cover with a plain diamond-tread pattern leaning against a small plain toolbox beside it. Further down the street, set into the asphalt, an ordinary closed round cast-iron manhole cover. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Usta Sherzod",
+   "prompt": "Vertical 9:16 full-body portrait of an Uzbek utility worker, about 45, kind tanned face, thick black moustache, ORANGE hard hat with a single blue stripe around it, grey work overalls, plain reflective safety vest with no logos, heavy work gloves, a yellow tape measure clipped to his belt, standing on a sunny residential street with plane trees softly blurred behind."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Bobur",
+   "prompt": "Vertical 9:16 full-body portrait of a curious Uzbek boy, about 10, big dark eyes, a RED baseball cap worn backwards, white T-shirt, blue shorts, a small yellow school backpack, standing on a sunny residential street with plane trees softly blurred behind, leaning forward with interest."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Kvadrat qopqoq ustida",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot of the same street: the worker stands over the open square shaft holding the square cast-iron cover upright by one edge, already tilting it diagonally over the opening; the boy stands one step behind him watching with his hands on his knees. Same faces, same clothes, same light."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Lenta: tomoni",
+   "from": "R4",
+   "prompt": "Change the scene: the square cover now lies flat on the asphalt next to the open shaft. The worker kneels and stretches his yellow tape measure along ONE SIDE of the square cover, edge to edge; the boy kneels opposite, watching the tape. Top-down three-quarter angle. Same faces, same light, 9:16."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Lenta: diagonal",
+   "from": "R5",
+   "prompt": "Change the scene: the same kneeling worker now stretches the yellow tape measure DIAGONALLY across the square cover from one corner to the opposite corner, and the tape is visibly longer than the side; the boy's eyes are wide with surprise. Same faces, same light, 9:16."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Dumaloq qopqoq ustida",
+   "from": [
+    "R4"
+   ],
+   "prompt": "Change the scene: further down the same street, the round manhole is now open. The worker holds a heavy round cast-iron cover with the same diamond-tread pattern upright over the round opening, tilted on its edge; the boy watches from beside him. Same faces, same clothes, same light, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Sharaq!",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Bobur",
+     "text": "Voy! Qopqoq tushib ketdi!"
+    }
+   ],
+   "prompt": "The worker lowers the tilted square cover; it slips diagonally straight through the square opening and drops into the dark shaft with a loud echoing metal CLANG in the first second. Both lean over the edge and look down. Audio: the clang, a long echo, a sparrow flies off. The boy says in Uzbek with a bright, curious Uzbek boy's voice, about ten years old, shocked: \"Voy! Qopqoq tushib ketdi!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Nega?",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Usta Sherzod",
+     "text": "Mana shuning uchun kvadrat qopqoq yaramaydi."
+    },
+    {
+     "who": "Bobur",
+     "text": "Nega? Axir u teshikka mos-ku!"
+    }
+   ],
+   "prompt": "Medium two-shot by the open square shaft. The worker pushes his orange hard hat back and sighs with a half-smile; the boy looks up at him, puzzled, pointing at the hole. Audio: street ambience, distant birds. The worker says in Uzbek with a deep, calm, slightly gravelly Uzbek male voice of a man in his mid-forties, friendly: \"Mana shuning uchun kvadrat qopqoq yaramaydi.\" The boy answers in Uzbek with a bright, curious Uzbek boy's voice, about ten years old: \"Nega? Axir u teshikka mos-ku!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Tomoni",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Usta Sherzod",
+     "text": "Qara: tomoni oltmish santimetr. Teshik ham oltmish."
+    }
+   ],
+   "prompt": "Slow push-in on the yellow tape measure running along one side of the square cover; the worker taps the far end of the tape with his gloved finger, then points at the open shaft. Audio: the tape measure rattles and clicks. The worker says in Uzbek with a deep, calm, slightly gravelly Uzbek male voice of a man in his mid-forties, friendly, patiently: \"Qara: tomoni oltmish santimetr. Teshik ham oltmish.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Diagonal",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Usta Sherzod",
+     "text": "Burchakdan burchakka esa — sakson besh! Qiyshaysa, tushib ketadi."
+    }
+   ],
+   "prompt": "The worker pulls the tape from one corner across the diagonal to the opposite corner; the tape slides out visibly longer than before. The boy's mouth opens in surprise. Audio: a long zip of the tape, a click when it locks. The worker says in Uzbek with a deep, calm, slightly gravelly Uzbek male voice of a man in his mid-forties, friendly, raising an eyebrow: \"Burchakdan burchakka esa — sakson besh! Qiyshaysa, tushib ketadi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Doira",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Usta Sherzod",
+     "text": "Doiraning eni har tomondan bir xil. Qanday bursang ham, u tushmaydi."
+    }
+   ],
+   "prompt": "The worker turns the round cast-iron cover slowly in his hands above the round opening, tilting it one way, then another, then on edge: every time it rests on the rim and never slips in. The boy leans closer each time. Audio: heavy iron scraping on the rim, a satisfied clunk. The worker says in Uzbek with a deep, calm, slightly gravelly Uzbek male voice of a man in his mid-forties, friendly, calm and sure: \"Doiraning eni har tomondan bir xil. Qanday bursang ham, u tushmaydi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Gʻildirak",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Bobur",
+     "text": "Uni koʻtarmasdan dumalatsa ham boʻlarkan!"
+    }
+   ],
+   "prompt": "Tracking shot down the sunny street: the worker stands the heavy round cast-iron cover on its edge and rolls it along the asphalt like a wheel with one gloved hand; the boy runs beside it laughing. Audio: deep rolling iron rumble, the boy's laugh, footsteps. The boy shouts in Uzbek with a bright, curious Uzbek boy's voice, about ten years old, delighted: \"Uni ko'tarmasdan dumalatsa ham bo'larkan!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Savol",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Bobur",
+     "text": "Oyogʻingiz ostida geometriya yotibdi. Sizning koʻchangizdagi lyuk qanaqa? Izohda yozing!"
+    }
+   ],
+   "prompt": "The boy stands with one sneaker on a closed round manhole cover in the street, looks down at it, then up straight into the camera with a big grin. Hold on his look at the end. Audio: street ambience, a light breeze in the plane trees. The boy says in Uzbek with a bright, curious Uzbek boy's voice, about ten years old, grinning: \"Oyog'ingiz ostida geometriya yotibdi. Sizning ko'changizdagi lyuk qanaqa? Izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Nega lyuk qopqogʻi deyarli doim dumaloq? Kvadrat qopqoq qiyshaysa — diagonali boʻylab quduqqa tushib ketadi. Doiraning eni esa hamma tomondan bir xil. Sizning koʻchangizdagi lyuk qanaqa? Izohda yozing! #matematika #geometriya #hayotdagimatematika #Powerty powerty.uz"
+}
