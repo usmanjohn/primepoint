@@ -152,6 +152,12 @@ package, `"for": "Birga"` (one brother films the whole season; the user chose no
   10 `Sonlar imperiyasi` rows, so the Saturday slot has nothing left to send until Season 2 —
   say so once in the final message and send nothing for the series.
 - ⚠️ **2026-10-06: the series is being remade IN VERSE** (the user's own poem; `flowstudio/series/sonlar_imperiyasi_sher_epNN.json`, ids `sonlar-imperiyasi-sher-NN`). Verse episodes are sent **only when the user asks**, never by the routine — the Saturday slot sends nothing for this series until the user says otherwise.
+- **2026-10-07: the user films this series HIMSELF.** Do not send it to Telegram; build a local kit:
+  `python3 flowstudio/kit.py flowstudio/series/sonlar_imperiyasi_sher_epNN.json ~/Desktop/sonlar_imperiyasi_sher/NN-qism-kit`
+  (guide + one prompt file per picture/scene + storyteller mp3s). The storyteller is **ElevenLabs**, not Veo:
+  his scenes are silent («for a voice-over»), his lines carry a `tts` text with [tags], and `voice.py` voices them
+  with `narrator_tts` from the cast file (Jahongir, **eleven_v4** — the only model with Uzbek; v3 reads Uzbek with
+  an English accent). Key: `ELEVENLABS_API_KEY` in the environment, never in the repo.
 - **Which episode:** count the **distinct episode numbers** among the `Sonlar imperiyasi` rows in
   `sent.tsv` (ids `sonlar-imperiyasi-NN` and `sonlar-imperiyasi-NN-v2` are the same episode NN);
   send that count + 1. ⚠️ **2026-10-06: all ten were resent as `-v2`** (new look: yin-yang Zero,

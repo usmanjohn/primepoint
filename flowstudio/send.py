@@ -147,19 +147,26 @@ def check(pkg):
             errs.append(f'{tag}: prompt must end with "No subtitles, no on-screen text."')
         if CYRILLIC.search(prompt) or re.search(r'[ʻʼ]', prompt):
             errs.append(f"{tag}: prompt must be English; Uzbek lines inside it use a plain ' (to'g'ri)")
+        spoken = [ln for ln in sc.get('lines') or [] if not ln.get('tts')]   # 'tts' = voice-over, made outside Veo
+        if any(ln.get('tts') for ln in sc.get('lines') or []) and 'voice-over' not in prompt:
+            errs.append(f'{tag}: a voice-over scene must say it is silent "for a voice-over" (no speech in Veo)')
         for ln in sc.get('lines') or []:
             if not ln.get('who') or not ln.get('text'):
                 errs.append(f'{tag}: every line needs who and text')
                 continue
             errs += _uz_errors(f'{tag} line', f"{ln['who']} {ln['text']}")
+            if ln.get('tts'):
+                continue
             if _flat(ln['text']) not in _flat(prompt):
                 errs.append(f"{tag}: the line «{ln['text'][:40]}…» is not in the prompt word for word")
-        if sc.get('lines') and 'in uzbek' not in prompt.lower():
+        if spoken and 'in uzbek' not in prompt.lower():
             errs.append(f'{tag}: say "speaks in Uzbek with a … voice" in the prompt')
         if voices is not None and sc.get('lines'):
+            if not spoken and 'Lip-sync:' not in prompt:
+                errs.append(f'{tag}: add a "Lip-sync:" sentence — every mouth closed')
             # Veo has no voice ids: the same character only sounds the same if it is described
             # with the SAME words every time, and the right mouth only moves if we say whose.
-            for ln in sc['lines']:
+            for ln in spoken:
                 v = voices.get(alias.get(ln.get('who'), ln.get('who')))
                 if not v:
                     errs.append(f"{tag}: «{ln.get('who')}» has no voice card in the cast file")

@@ -182,5 +182,17 @@
   "Qirol Noʻl": "Nol",
   "Birjon": "Bir",
   "Minusjon": "Minus Bir"
+ },
+ "narrator_tts": {
+  "provider": "elevenlabs",
+  "voice_id": "xDwfBjUEPdIoQekNOXAX",
+  "voice_name": "Jahongir",
+  "model_id": "eleven_v4",
+  "language_code": "uz",
+  "voice_settings": {
+   "speed": 0.88
+  },
+  "lead_tag": "[old grandfather, slow, warm, slightly husky]",
+  "_note": "Chosen by the user 2026-10-07 (sample «2-keksaroq-sekinroq»). eleven_v4 = the only model with Uzbek."
  }
 }
