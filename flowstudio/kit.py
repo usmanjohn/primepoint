@@ -9,6 +9,7 @@ Writes OUT_DIR/
     1-rasmlar/R1.txt …      one Nano Banana prompt per picture (copy-paste)
     2-sahnalar/S01.txt …    one Veo prompt per scene (copy-paste)
     3-ovoz/S01-hikoyachi.mp3 …  the storyteller's voice-over (ElevenLabs, see voice.py)
+    4-kliplar/                 where the user drops the Flow clips; assemble.py joins them
 
 The package is gated first (send.py check). Voice-over lines carry a 'tts' text; their scenes
 are silent in Veo and the mp3 goes on top in the edit. Needs ELEVENLABS_API_KEY for the mp3s.
@@ -44,7 +45,7 @@ def build(pkg_path, out):
     if errs:
         sys.exit('gate failed:\n  - ' + '\n  - '.join(errs))
     cast = send.series_cast(pkg['series']) if pkg['series'] in send.SERIES_CAST else {}
-    for sub in ('1-rasmlar', '2-sahnalar', '3-ovoz'):
+    for sub in ('1-rasmlar', '2-sahnalar', '3-ovoz', '4-kliplar'):
         os.makedirs(os.path.join(out, sub), exist_ok=True)
 
     g = [f"{pkg['series'].upper()} — {pkg['title_uz']}", '=' * 60, '',
@@ -86,15 +87,16 @@ def build(pkg_path, out):
                 g.append(f"       🔇 SOKIN sahna. Ovoz montajda: 3-ovoz/{name}-hikoyachi.mp3 ({note})")
             else:
                 g.append(f"       🗣 {ln['who']}: Veo oʻzi gapiradi — notoʻgʻri ogʻiz qimirlasa, qayta generatsiya")
-    g += ['', '3) MONTAJ — CapCut',
-          '  • Sahnalarni S01 dan boshlab tartib bilan qoʻying.',
-          '  • 🔇 sokin sahnalarga oʻsha raqamli mp3 ni qoʻying; Veo ovozini (shamol va h.k.) pastroq qiling.']
-    long = [f'{n} ({d:.1f} s)' for n, d in mp3s if d and d > SECONDS]
-    if long:
-        g.append(f"  • Bu ovozlar 8 soniyadan uzun: {', '.join(long)} — Flowʼda oʻsha sahnani Extend qiling "
-                 "yoki klipni biroz sekinlashtiring, ovozni kesmang.")
-    g += ['  • Gapiradigan sahnada 4 qator shoshib chiqsa — sahnani ikkiga boʻling (Extend).',
-          '  • Musiqa: ostidan juda past, yumshoq doʻmbira yoki ertak kuyi.', '']
+    g += ['', '3) YIGʻISH — CapCut kerak emas',
+          '  • Flowʼdan har bir sahnani yuklab oling va 4-kliplar/ papkasiga S01.mp4, S02.mp4 … deb qoʻying.',
+          '  • Xohlasangiz, musiqani shu papkaga musiqa.mp3 deb qoʻying (ixtiyoriy).',
+          '  • Keyin bitta buyruq (yoki Claudeʼga «yigʻ» deng):',
+          f"      python3 flowstudio/assemble.py {pkg_path} {out}",
+          '    U sahnalarni tartib bilan ulaydi, hikoyachi ovozini oʻz sahnasiga qoʻyadi (ovoz uzun boʻlsa,',
+          '    oxirgi kadrni ushlab turadi), musiqani gap paytida avtomatik pasaytiradi va',
+          f"    TAYYOR-{pkg['id']}.mp4 faylini yozadi.",
+          '  • Ovoz effektlari (puf!, jiringlash…) Veoʼning oʻzida — har sahna promptida «Sound:» qatori bor.',
+          '  • Gapiradigan sahnada 4 qator shoshib chiqsa — sahnani qayta generatsiya qiling yoki ikkiga boʻling (Extend).', '']
     if pkg.get('post_text_uz'):
         g += ['4) POST MATNI', '', pkg['post_text_uz'], '']
     with open(os.path.join(out, '00-QOʻLLANMA.txt'), 'w', encoding='utf-8') as f:
