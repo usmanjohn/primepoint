@@ -67,7 +67,7 @@ def segment(clip, voice, out):
         a = sound + (f',atrim=0:{vd},afade=t=in:d={EDGE},afade=t=out:st={vd - EDGE:.3f}:d={EDGE}[a]'
                      if has_audio(clip) else f',atrim=0:{vd}[a]')
         run(['-i', clip, '-filter_complex', f'[0:v]{norm}[v];{a}',
-             '-map', '[v]', '-map', '[a]', '-t', f'{vd}', '-c:v', 'libx264', '-preset', 'medium',
+             '-map', '[v]', '-map', '[a]', '-t', f'{vd}', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-preset', 'medium',
              '-crf', '18', '-c:a', 'aac', '-b:a', '192k', out])
         return vd
     total = max(vd, VOICE_DELAY + duration(voice) + VOICE_TAIL)
@@ -80,7 +80,7 @@ def segment(clip, voice, out):
           f'[fx][vo]amix=inputs=2:duration=longest:normalize=0,atrim=0:{total:.3f},'
           f'afade=t=in:d={EDGE},afade=t=out:st={total - EDGE:.3f}:d={EDGE}[a]')
     run(['-i', clip, '-i', voice, '-filter_complex', fc, '-map', '[v]', '-map', '[a]',
-         '-t', f'{total:.3f}', '-c:v', 'libx264', '-preset', 'medium', '-crf', '18',
+         '-t', f'{total:.3f}', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-preset', 'medium', '-crf', '18',
          '-c:a', 'aac', '-b:a', '192k', out])
     return total
 
@@ -103,7 +103,7 @@ def join(parts, lens, out):
         fc.append(f'{a}[{k}:a]acrossfade=d={XFADE}:c1=tri:c2=tri[a{k}]')
         v, a = f'[v{k}]', f'[a{k}]'
         acc += lens[k] - XFADE
-    run([*args, '-filter_complex', ';'.join(fc), '-map', v, '-map', a, '-c:v', 'libx264', '-preset', 'medium',
+    run([*args, '-filter_complex', ';'.join(fc), '-map', v, '-map', a, '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-preset', 'medium',
          '-crf', '18', '-c:a', 'aac', '-b:a', '192k', out])
     return acc
 
@@ -155,7 +155,7 @@ def build(pkg_path, kit, clips_dir=None, music=None):
     if not music:
         print('(musiqa yoʻq — KIT papkasiga musiqa.mp3 qoʻysangiz, qoʻshiladi)')
         run(['-i', joined, '-filter_complex', f'[0:v]{vfade}[v];[0:a]{master}[a]', '-map', '[v]', '-map', '[a]',
-             '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-c:a', 'aac', '-b:a', '192k', final])
+             '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-preset', 'medium', '-crf', '18', '-c:a', 'aac', '-b:a', '192k', final])
     else:
         mfade = max(length - 2.5, 0)
         fc = (f'[0:v]{vfade}[v];'
@@ -165,7 +165,7 @@ def build(pkg_path, kit, clips_dir=None, music=None):
               f'[m][sc]sidechaincompress=threshold=0.02:ratio=8:attack=20:release=400[duck];'
               f'[main][duck]amix=inputs=2:duration=first:normalize=0,{master}[a]')
         run(['-i', joined, '-stream_loop', '-1', '-i', music, '-filter_complex', fc,
-             '-map', '[v]', '-map', '[a]', '-c:v', 'libx264', '-preset', 'medium', '-crf', '18',
+             '-map', '[v]', '-map', '[a]', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-preset', 'medium', '-crf', '18',
              '-c:a', 'aac', '-b:a', '192k', '-shortest', final])
     print(f'TAYYOR: {final}  ({length:.1f} s)')
     return final
