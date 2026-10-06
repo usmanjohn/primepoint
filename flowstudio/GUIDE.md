@@ -151,6 +151,7 @@ package, `"for": "Birga"` (one brother films the whole season; the user chose no
   (pre-written packages `flowstudio/series/sonlar_imperiyasi_ep01…10.json`). `sent.tsv` then holds
   10 `Sonlar imperiyasi` rows, so the Saturday slot has nothing left to send until Season 2 —
   say so once in the final message and send nothing for the series.
+- ⚠️ **2026-10-06: the series is being remade IN VERSE** (the user's own poem; `flowstudio/series/sonlar_imperiyasi_sher_epNN.json`, ids `sonlar-imperiyasi-sher-NN`). Verse episodes are sent **only when the user asks**, never by the routine — the Saturday slot sends nothing for this series until the user says otherwise.
 - **Which episode:** count the **distinct episode numbers** among the `Sonlar imperiyasi` rows in
   `sent.tsv` (ids `sonlar-imperiyasi-NN` and `sonlar-imperiyasi-NN-v2` are the same episode NN);
   send that count + 1. ⚠️ **2026-10-06: all ten were resent as `-v2`** (new look: yin-yang Zero,
