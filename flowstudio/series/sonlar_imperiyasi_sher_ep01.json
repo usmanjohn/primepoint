@@ -7,7 +7,7 @@
  "series": "Sonlar imperiyasi",
  "title_uz": "1-qism. Nol va sovgʻa",
  "concept_uz": "Sheʼriy ertak. Qadim zamonda Nol ismli qirol yashagan — na oʻngda, na soʻlda, qoq oʻrtada. U safarga otlanib, eski doʻstlari Quyosh va Oydan hol soʻraydi. Ular unga sovgʻa qiladi: oltin va kumush egizaklar. Nol ularga ism qoʻyadi — «Bir» va «Minus Bir».",
- "format_uz": "15 sahna × 8 soniya = 2:00",
+ "format_uz": "22 sahna (har sahnada 2 qator), taxminan 3 daqiqa",
  "sources": [
   "flowstudio/series/sonlar_imperiyasi_poem_draft.md (foydalanuvchining sheʼri)",
   "flowstudio/series/sonlar_imperiyasi.md"
@@ -91,132 +91,228 @@
    "n": 2,
    "title_uz": "Salom-salom",
    "method": "Ingredients to Video",
-   "attach": [
-    "R1",
-    "R4"
-   ],
-   "prompt": "Medium shot of the yin-yang ring-king at the centre of the crystal plain. He looks straight into the camera, waves cheerfully and recites in Uzbek, in a bouncy rhythmic verse cadence, with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Salom-salom, men No'lman,\nNa o'ngdirman, na so'lman.\nTa'minlayman adolat,\nBunga shaklim dalolat.\" On \"na o'ngdirman\" he points his staff to the right side of the picture, on \"na so'lman\" to the left side, then taps the glowing seam between his silver and gold halves; on the last line he spreads both arms out level like a perfectly balanced scale and gives a proud little nod. Delivery: natural dialogue that happens to rhyme, not sing-song — a short pause after each line, the rhyming last word of each line clear and held a little longer, the last line slower and lower like the end of a sentence. Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. Sound: a quick little whoosh each time he points the staff right and left, a soft bell ding when he taps his seam; no background music. No subtitles, no on-screen text.",
+   "prompt": "Medium shot of the yin-yang ring-king at the centre of the crystal plain, looking straight into the camera. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — cheerfully, waving hello: \"Salom-salom, men No'lman,\" Then, playfully, pointing his staff to the right side of the picture and then to the left side: \"Na o'ngdirman, na so'lman.\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a quick little whoosh each time the staff points right and left; no background music. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Nol",
-     "text": "Salom-salom, men Nolman,\nNa oʻngdirman, na soʻlman.\nTaʼminlayman adolat,\nBunga shaklim dalolat."
+     "text": "Salom-salom, men Nolman,\nNa oʻngdirman, na soʻlman."
     }
+   ],
+   "attach": [
+    "R1",
+    "R4"
    ]
   },
   {
    "n": 3,
-   "title_uz": "Qadrim",
+   "title_uz": "Adolat",
    "method": "Ingredients to Video",
+   "prompt": "The yin-yang ring-king stands tall at the centre of the plain, facing the camera. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — proudly and steadily, tapping the glowing seam between his silver and gold halves: \"Ta'minlayman adolat,\" Then, slower, spreading both arms out level like a perfectly balanced scale, with a satisfied little nod: \"Bunga shaklim dalolat.\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a soft bell ding when he taps his seam; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Nol",
+     "text": "Taʼminlayman adolat,\nBunga shaklim dalolat."
+    }
+   ],
    "attach": [
     "R1",
     "R4"
-   ],
-   "prompt": "Close-up. The yin-yang ring-king leans in toward the camera as if sharing a secret, a little hurt, and recites in Uzbek, softly, in a rhythmic verse cadence, with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Odamzod bilmas qadrim,\nMen go'yoki hech kimsa,\" He shrugs and looks down at his feet; a small tumbleweed of light rolls slowly past behind him. Delivery: natural dialogue that happens to rhyme, not sing-song — a short pause after each line, the rhyming last word of each line clear and held a little longer, the last line slower and lower like the end of a sentence. Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. Sound: a tiny comic rustle as the tumbleweed of light rolls past; no background music. No subtitles, no on-screen text.",
+   ]
+  },
+  {
+   "n": 4,
+   "title_uz": "Qadrim",
+   "method": "Ingredients to Video",
+   "prompt": "Close-up. The yin-yang ring-king leans in toward the camera as if sharing a secret. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — softly, a little hurt: \"Odamzod bilmas qadrim,\" Then, quieter, with a sad shrug, looking down at his feet: \"Men go'yoki hech kimsa,\" A small tumbleweed of light rolls slowly past behind him. Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a tiny comic rustle as the tumbleweed of light rolls past; no background music. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Nol",
      "text": "Odamzod bilmas qadrim,\nMen goʻyoki hech kimsa,"
     }
-   ]
-  },
-  {
-   "n": 4,
-   "title_uz": "Kissa",
-   "method": "Ingredients to Video",
+   ],
    "attach": [
     "R1",
     "R4"
-   ],
-   "prompt": "The yin-yang ring-king holds up a fat leather purse bulging with gold coins, raises one finger and recites in Uzbek, in a rhythmic verse cadence, with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Lek men yo'q bo'lsam, bilib qo'y,\nBo'shab qoladi kissa.\" While he speaks he sets the purse down on a crystal rock and steps away from it: the purse deflates with a comic hiss, smaller and smaller, until only one lonely coin rolls out. He looks back at the camera and raises one eyebrow. Delivery: natural dialogue that happens to rhyme, not sing-song — a short pause after each line, the rhyming last word of each line clear and held a little longer, the last line slower and lower like the end of a sentence. Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. Sound: coins jingle as he lifts the purse, a long comic deflating hiss as it shrinks, then one single coin clinks on the crystal; no background music. No subtitles, no on-screen text.",
+   ]
+  },
+  {
+   "n": 5,
+   "title_uz": "Kissa",
+   "method": "Ingredients to Video",
+   "prompt": "The yin-yang ring-king holds up a fat leather purse bulging with gold coins. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — suddenly serious, raising one finger: \"Lek men yo'q bo'lsam, bilib qo'y,\" Then, after a pause, slow and deadpan, while the purse he has set on a crystal rock deflates until only one lonely coin rolls out: \"Bo'shab qoladi kissa.\" He raises one eyebrow at the camera. Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: coins jingle as he lifts the purse, a long comic deflating hiss, then one single coin clinks on the crystal; no background music. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Nol",
      "text": "Lek men yoʻq boʻlsam, bilib qoʻy,\nBoʻshab qoladi kissa."
     }
-   ]
-  },
-  {
-   "n": 5,
-   "title_uz": "Oʻtirdim — dema",
-   "method": "Ingredients to Video",
+   ],
    "attach": [
     "R1",
     "R4"
-   ],
-   "prompt": "The yin-yang ring-king wags his finger at the camera, then recites in Uzbek, half-stern and half-joking, in a rhythmic verse cadence, with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"«O'tirdim» — dema no'lga,\nMenda ham bordir yurak.\nAybni menga ag'darmay,\nMehnat ham qilish kerak.\" On \"yurak\" he puts his hand on his heart; on \"mehnat\" he rolls up his sleeves and flexes a skinny arm with a comically serious face. Delivery: natural dialogue that happens to rhyme, not sing-song — a short pause after each line, the rhyming last word of each line clear and held a little longer, the last line slower and lower like the end of a sentence. Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. Sound: a soft heartbeat thump on \"yurak\", a comic stretchy squeak as he flexes his skinny arm; no background music. No subtitles, no on-screen text.",
-   "lines": [
-    {
-     "who": "Nol",
-     "text": "«Oʻtirdim» — dema nolga,\nMenda ham bordir yurak.\nAybni menga agʻdarmay,\nMehnat ham qilish kerak."
-    }
    ]
   },
   {
    "n": 6,
-   "title_uz": "Safar",
+   "title_uz": "Dema nolga",
    "method": "Ingredients to Video",
-   "attach": [
-    "R1",
-    "R4"
-   ],
-   "prompt": "The yin-yang ring-king grabs his long wooden staff, throws a small cloth bundle over his shoulder and marches a few determined steps along the glowing path, then recites in Uzbek, in a brave marching verse cadence, with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Hassamni olib qo'lga,\nOtlandim muhim yo'lga.\nKutmoqda olis safar,\nSherik bo'l menga, jigar!\" On the last line he stops, turns back to the camera, winks and beckons with his hand, then laughs a short warm laugh. Delivery: natural dialogue that happens to rhyme, not sing-song — a short pause after each line, the rhyming last word of each line clear and held a little longer, the last line slower and lower like the end of a sentence. Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. Sound: light marching footsteps on crystal, a cheeky little ting on the wink; no background music. No subtitles, no on-screen text.",
+   "prompt": "The yin-yang ring-king faces the camera and wags his finger. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — half-stern, half-joking: \"«O'tirdim» — dema no'lga,\" Then, softer, putting his hand on his heart: \"Menda ham bordir yurak.\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a soft heartbeat thump as his hand touches his heart; no background music. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Nol",
-     "text": "Hassamni olib qoʻlga,\nOtlandim muhim yoʻlga.\nKutmoqda olis safar,\nSherik boʻl menga, jigar!"
+     "text": "«Oʻtirdim» — dema nolga,\nMenda ham bordir yurak."
     }
+   ],
+   "attach": [
+    "R1",
+    "R4"
    ]
   },
   {
    "n": 7,
-   "title_uz": "Eski qadrdonlar",
+   "title_uz": "Mehnat",
    "method": "Ingredients to Video",
-   "attach": [
-    "R1",
-    "R4"
-   ],
-   "prompt": "The yin-yang ring-king turns his back to the camera and looks up at the sky — the sun face on the right of the picture, the moon face on the left. He recites in Uzbek, in a rhythmic verse cadence, with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"O'ng tomonim nur-quyosh,\nSo'l tomonim so'lim oy!\nEski qadrdonlarim,\nSizdan hol-ahvol so'ray.\" On \"nur-quyosh\" he raises his staff to the right toward the sun, on \"so'lim oy\" to the left toward the moon, and on the last line he bows deeply to both. In the sky both faces slowly open their eyes and smile. Delivery: natural dialogue that happens to rhyme, not sing-song — a short pause after each line, the rhyming last word of each line clear and held a little longer, the last line slower and lower like the end of a sentence. Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. Sound: a gentle magical shimmer as the sun and moon faces open their eyes; no background music. No subtitles, no on-screen text.",
+   "prompt": "The yin-yang ring-king puts his hands on his hips. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — firm and a little cheeky: \"Aybni menga ag'darmay,\" Then, comically serious, rolling up his sleeves and flexing a skinny arm: \"Mehnat ham qilish kerak.\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a comic stretchy squeak as he flexes his arm; no background music. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Nol",
-     "text": "Oʻng tomonim nur-quyosh,\nSoʻl tomonim soʻlim oy!\nEski qadrdonlarim,\nSizdan hol-ahvol soʻray."
+     "text": "Aybni menga agʻdarmay,\nMehnat ham qilish kerak."
     }
+   ],
+   "attach": [
+    "R1",
+    "R4"
    ]
   },
   {
    "n": 8,
-   "title_uz": "Quyosh",
+   "title_uz": "Yoʻlga",
    "method": "Ingredients to Video",
-   "attach": [
-    "R24",
-    "R1"
-   ],
-   "prompt": "Close-up of the sun's grandfather face in the warm sky, beaming down at the small yin-yang ring-king far below. The sun recites in Uzbek, in a hearty rhythmic verse cadence, with a big, booming, jolly voice of a cheerful old grandfather: \"Horma, No'l, eski qardosh!\nBoshlabsan olis safar,\nYoritsak gar Oy-Quyosh,\nYo'ling bo'lar bexatar.\" On \"yoritsak\" golden rays pour down and light up a glowing path in front of the king. Delivery: natural dialogue that happens to rhyme, not sing-song — a short pause after each line, the rhyming last word of each line clear and held a little longer, the last line slower and lower like the end of a sentence. Lip-sync: only the sun's grandfather face moves its mouth and speaks; every other character keeps its mouth closed and just listens. Sound: a warm swelling shimmer as the golden rays pour down; no background music. No subtitles, no on-screen text.",
+   "prompt": "The yin-yang ring-king grabs his long wooden staff and throws a small cloth bundle over his shoulder. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — bravely: \"Hassamni olib qo'lga,\" Then, proudly, marching a few determined steps along the glowing path: \"Otlandim muhim yo'lga.\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: light marching footsteps on crystal; no background music. No subtitles, no on-screen text.",
    "lines": [
     {
-     "who": "Quyosh",
-     "text": "Horma, Nol, eski qardosh!\nBoshlabsan olis safar,\nYoritsak gar Oy-Quyosh,\nYoʻling boʻlar bexatar."
+     "who": "Nol",
+     "text": "Hassamni olib qoʻlga,\nOtlandim muhim yoʻlga."
     }
+   ],
+   "attach": [
+    "R1",
+    "R4"
    ]
   },
   {
    "n": 9,
-   "title_uz": "Oy",
+   "title_uz": "Jigar",
    "method": "Ingredients to Video",
-   "attach": [
-    "R25",
-    "R1"
-   ],
-   "prompt": "Close-up of the moon's grandmother face in the twilight sky, tender and caring, looking down at the yin-yang ring-king. The moon recites in Uzbek, gently, in a rhythmic verse cadence, with a soft, tender, slightly trembling voice of a loving old grandmother: \"Yana qolding keksayib,\nSenga kerak suyanchiq.\nShu sababli biz senga\nSovg'amiz qilsak tortiq!\" Below, the king straightens his tilted crown, a little embarrassed. Delivery: natural dialogue that happens to rhyme, not sing-song — a short pause after each line, the rhyming last word of each line clear and held a little longer, the last line slower and lower like the end of a sentence. Lip-sync: only the moon's grandmother face moves its mouth and speaks; every other character keeps its mouth closed and just listens. Sound: soft night crickets and a gentle twinkle; no background music. No subtitles, no on-screen text.",
+   "prompt": "The yin-yang ring-king stops on the glowing path and gazes far toward the horizon. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — dreamily, looking into the distance: \"Kutmoqda olis safar,\" Then, turning back to the camera with a wink and a beckoning hand, then a short warm laugh: \"Sherik bo'l menga, jigar!\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a cheeky little ting on the wink; no background music. No subtitles, no on-screen text.",
    "lines": [
     {
-     "who": "Oy",
-     "text": "Yana qolding keksayib,\nSenga kerak suyanchiq.\nShu sababli biz senga\nSovgʻamiz qilsak tortiq!"
+     "who": "Nol",
+     "text": "Kutmoqda olis safar,\nSherik boʻl menga, jigar!"
     }
+   ],
+   "attach": [
+    "R1",
+    "R4"
    ]
   },
   {
    "n": 10,
+   "title_uz": "Quyosh va Oy",
+   "method": "Ingredients to Video",
+   "prompt": "The yin-yang ring-king turns his back to the camera and looks up at the sky — the sun face on the right of the picture, the moon face on the left. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — warmly, raising his staff to the right toward the sun: \"O'ng tomonim nur-quyosh,\" Then, tenderly, turning the staff to the left toward the moon: \"So'l tomonim so'lim oy!\" In the sky both faces slowly open their eyes and smile. Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a gentle magical shimmer as the sun and moon faces open their eyes; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Nol",
+     "text": "Oʻng tomonim nur-quyosh,\nSoʻl tomonim soʻlim oy!"
+    }
+   ],
+   "attach": [
+    "R1",
+    "R4"
+   ]
+  },
+  {
+   "n": 11,
+   "title_uz": "Hol-ahvol",
+   "method": "Ingredients to Video",
+   "prompt": "Still with his back to the camera, the yin-yang ring-king opens his arms to the sun and the moon in the sky. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — joyfully: \"Eski qadrdonlarim,\" Then, respectfully, bowing deeply to both: \"Sizdan hol-ahvol so'ray.\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a soft respectful chime on the bow; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Nol",
+     "text": "Eski qadrdonlarim,\nSizdan hol-ahvol soʻray."
+    }
+   ],
+   "attach": [
+    "R1",
+    "R4"
+   ]
+  },
+  {
+   "n": 12,
+   "title_uz": "Horma, Nol",
+   "method": "Ingredients to Video",
+   "prompt": "Close-up of the sun's grandfather face in the warm sky, beaming down at the small yin-yang ring-king far below. The sun's grandfather face says in Uzbek with a big, booming, jolly voice of a cheerful old grandfather — booming and delighted: \"Horma, No'l, eski qardosh!\" Then, warmly, impressed: \"Boshlabsan olis safar,\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the sun's grandfather face moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a warm low shimmer of sunlight; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Quyosh",
+     "text": "Horma, Nol, eski qardosh!\nBoshlabsan olis safar,"
+    }
+   ],
+   "attach": [
+    "R24",
+    "R1"
+   ]
+  },
+  {
+   "n": 13,
+   "title_uz": "Yoʻling yorugʻ",
+   "method": "Ingredients to Video",
+   "prompt": "The sun's grandfather face smiles generously. The sun's grandfather face says in Uzbek with a big, booming, jolly voice of a cheerful old grandfather — proudly and generously: \"Yoritsak gar Oy-Quyosh,\" Then, reassuringly, beaming, as golden rays pour down and light up a glowing path in front of the king: \"Yo'ling bo'lar bexatar.\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the sun's grandfather face moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a warm swelling shimmer as the golden rays pour down; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Quyosh",
+     "text": "Yoritsak gar Oy-Quyosh,\nYoʻling boʻlar bexatar."
+    }
+   ],
+   "attach": [
+    "R24",
+    "R1"
+   ]
+  },
+  {
+   "n": 14,
+   "title_uz": "Suyanchiq",
+   "method": "Ingredients to Video",
+   "prompt": "Close-up of the moon's grandmother face in the twilight sky, looking down at the yin-yang ring-king. The moon's grandmother face says in Uzbek with a soft, tender, slightly trembling voice of a loving old grandmother — gently teasing, like a loving grandmother: \"Yana qolding keksayib,\" Then, tenderly, with care: \"Senga kerak suyanchiq.\" Below, the king straightens his tilted crown, a little embarrassed. Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the moon's grandmother face moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: soft night crickets; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Oy",
+     "text": "Yana qolding keksayib,\nSenga kerak suyanchiq."
+    }
+   ],
+   "attach": [
+    "R25",
+    "R1"
+   ]
+  },
+  {
+   "n": 15,
+   "title_uz": "Sovgʻamiz",
+   "method": "Ingredients to Video",
+   "prompt": "The moon's grandmother face smiles with a little secret. The moon's grandmother face says in Uzbek with a soft, tender, slightly trembling voice of a loving old grandmother — softly, with a secret smile: \"Shu sababli biz senga\" Then, warm and delighted: \"Sovg'amiz qilsak tortiq!\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the moon's grandmother face moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a gentle twinkle; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Oy",
+     "text": "Shu sababli biz senga\nSovgʻamiz qilsak tortiq!"
+    }
+   ],
+   "attach": [
+    "R25",
+    "R1"
+   ]
+  },
+  {
+   "n": 16,
    "title_uz": "Tortiq",
    "method": "Ingredients to Video",
    "attach": [
@@ -233,7 +329,7 @@
    ]
   },
   {
-   "n": 11,
+   "n": 17,
    "title_uz": "Egizaklar",
    "method": "Ingredients to Video",
    "attach": [
@@ -251,46 +347,59 @@
    ]
   },
   {
-   "n": 12,
-   "title_uz": "Ming tashakkur",
+   "n": 18,
+   "title_uz": "Ajoyib",
    "method": "Frames to Video",
-   "start": "R26",
-   "prompt": "The yin-yang ring-king, standing between the twins, looks up at the sky, presses his hands together and recites in Uzbek, moved and joyful, in a rhythmic verse cadence, with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Naqadar ham ajoyib,\nSizlarga ming tashakkur,\nQirolligim huvillab,\nYolg'iz qolmayman, shukur!\" On \"huvillab\" he glances around the empty plain with a mock-sad face; on \"shukur\" he beams and opens his arms wide over both twins without pulling them together. Delivery: natural dialogue that happens to rhyme, not sing-song — a short pause after each line, the rhyming last word of each line clear and held a little longer, the last line slower and lower like the end of a sentence. Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. Sound: a hollow gust of wind across the empty plain on \"huvillab\", then a warm magical shimmer on \"shukur\"; no background music. No subtitles, no on-screen text.",
+   "prompt": "The yin-yang ring-king stands between the twins and looks up at the sky. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — amazed, pressing his hands together: \"Naqadar ham ajoyib,\" Then, deeply grateful, bowing to the sky: \"Sizlarga ming tashakkur,\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a warm magical shimmer; no background music. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Nol",
-     "text": "Naqadar ham ajoyib,\nSizlarga ming tashakkur,\nQirolligim huvillab,\nYolgʻiz qolmayman, shukur!"
+     "text": "Naqadar ham ajoyib,\nSizlarga ming tashakkur,"
     }
-   ]
+   ],
+   "start": "R26"
   },
   {
-   "n": 13,
+   "n": 19,
+   "title_uz": "Shukur",
+   "method": "Frames to Video",
+   "prompt": "The yin-yang ring-king glances around the wide empty plain. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — mock-sad: \"Qirolligim huvillab,\" Then, beaming, opening his arms wide over both twins without pulling them together: \"Yolg'iz qolmayman, shukur!\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a hollow gust of wind, then a warm magical shimmer; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Nol",
+     "text": "Qirolligim huvillab,\nYolgʻiz qolmayman, shukur!"
+    }
+   ],
+   "start": "R26"
+  },
+  {
+   "n": 20,
    "title_uz": "«Bir»",
    "method": "Frames to Video",
-   "start": "R26",
-   "prompt": "The yin-yang ring-king turns to the gold twin on the right side of the picture, touches the top of its head with his staff — a burst of golden sparkles — and recites in Uzbek, solemnly, in a rhythmic verse cadence, with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Quyosh nuri sadosi,\nSening noming bo'lsin «Bir».\" The gold twin beams and bounces on its toes. Delivery: natural dialogue that happens to rhyme, not sing-song — a short pause after each line, the rhyming last word of each line clear and held a little longer, the last line slower and lower like the end of a sentence. Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. Sound: a sparkly golden chime when the staff touches the gold twin, then a springy cartoon boing as it bounces; no background music. No subtitles, no on-screen text.",
+   "prompt": "The yin-yang ring-king turns to the gold twin on the right side of the picture and touches the top of its head with his staff; golden sparkles burst. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — solemnly: \"Quyosh nuri sadosi,\" Then, warmly and proudly: \"Sening noming bo'lsin «Bir».\" The gold twin beams and bounces on its toes. Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a sparkly golden chime, then a springy cartoon boing as it bounces; no background music. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Nol",
      "text": "Quyosh nuri sadosi,\nSening noming boʻlsin «Bir»."
     }
-   ]
+   ],
+   "start": "R26"
   },
   {
-   "n": 14,
+   "n": 21,
    "title_uz": "«Minus Bir»",
    "method": "Frames to Video",
-   "start": "R26",
-   "prompt": "Now the yin-yang ring-king turns to the silver twin on the left side of the picture, touches its head with the staff — a burst of silver sparkles — and recites in Uzbek, solemnly, in a rhythmic verse cadence, with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Oy shu'lasi-safosi,\nSenga bo'lsin «Minus Bir»!\" On the word «Minus» the silver twin's happy smile slowly drops into a grumpy frown, eyebrows down; the shot holds on its sulky face. Delivery: natural dialogue that happens to rhyme, not sing-song — a short pause after each line, the rhyming last word of each line clear and held a little longer, the last line slower and lower like the end of a sentence. Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. Sound: a cooler silver chime when the staff touches the silver twin, then a comic descending trombone wah-wah as its smile drops; no background music. No subtitles, no on-screen text.",
+   "prompt": "Now the yin-yang ring-king turns to the silver twin on the left side of the picture and touches its head with the staff; silver sparkles burst. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — solemnly: \"Oy shu'lasi-safosi,\" Then, ceremoniously, with a flourish of the staff: \"Senga bo'lsin «Minus Bir»!\" On the word «Minus» the silver twin's happy smile slowly drops into a grumpy frown, eyebrows down; the shot holds on its sulky face. Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a cooler silver chime, then a comic descending trombone wah-wah as its smile drops; no background music. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Nol",
      "text": "Oy shuʼlasi-safosi,\nSenga boʻlsin «Minus Bir»!"
     }
-   ]
+   ],
+   "start": "R26"
   },
   {
-   "n": 15,
+   "n": 22,
    "title_uz": "Davomi bor",
    "method": "Ingredients to Video",
    "attach": [

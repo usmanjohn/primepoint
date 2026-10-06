@@ -119,8 +119,8 @@ def check(pkg):
             errs.append(f'{rid}: prompt must be English')
         seen.append(rid)
 
-    if not 4 <= len(pkg['scenes']) <= 16:          # 16: a verse episode (2026-10-07)
-        errs.append(f"{len(pkg['scenes'])} scenes — want 4-16 (8 s each)")
+    if not 4 <= len(pkg['scenes']) <= 24:          # 24: a verse episode at 2 lines per clip (2026-10-07)
+        errs.append(f"{len(pkg['scenes'])} scenes — want 4-24 (8 s each)")
     done = []
     for sc in pkg['scenes']:
         tag = f"sahna {sc.get('n')}"
@@ -157,7 +157,8 @@ def check(pkg):
             errs += _uz_errors(f'{tag} line', f"{ln['who']} {ln['text']}")
             if ln.get('tts'):
                 continue
-            if _flat(ln['text']) not in _flat(prompt):
+            # each verse line may sit in its own quote, with a direction between them (2026-10-07)
+            if not all(_flat(part) in _flat(prompt) for part in ln['text'].split('\n') if part.strip()):
                 errs.append(f"{tag}: the line «{ln['text'][:40]}…» is not in the prompt word for word")
         if spoken and 'in uzbek' not in prompt.lower():
             errs.append(f'{tag}: say "speaks in Uzbek with a … voice" in the prompt')
