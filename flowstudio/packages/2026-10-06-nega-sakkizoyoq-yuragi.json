@@ -1,0 +1,199 @@
+{
+ "id": "2026-10-06-nega-sakkizoyoq-yuragi",
+ "number": 30,
+ "for": "Jonibek",
+ "date": "2026-10-06",
+ "series": "Nega shunday?",
+ "title_uz": "Uch yurakli dangasa",
+ "concept_uz": "Dengiz tubi. Shoshqaloq baliqcha sakkizoyoq Sakkizdan soʻraydi: nega suzmaysan? Javob — uchta yurak va koʻk qon. Sakkiz suzib koʻradi, lekin suzganda asosiy yuragi birpas toʻxtaydi va u tez charchaydi. Shuning uchun u oʻrmalashni yaxshi koʻradi.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_wonders_1_10.py (story 5, 심장이 셋인 동물, 문어)"
+ ],
+ "facts": [
+  {
+   "claim": "Sakkizoyoqning uchta yuragi bor",
+   "source": "corner/management/commands/_stories_wonders_1_10.py story 5"
+  },
+  {
+   "claim": "Ikkita yurak qonni jabraga, bittasi butun tanaga yuboradi",
+   "source": "corner/management/commands/_stories_wonders_1_10.py story 5"
+  },
+  {
+   "claim": "Sakkizoyoq qoni koʻk: unda mis bor; odam qoni temir tufayli qizil",
+   "source": "corner/management/commands/_stories_wonders_1_10.py story 5"
+  },
+  {
+   "claim": "Suzganda butun tanaga qon yuboruvchi yurak birpas toʻxtaydi, shuning uchun u tez charchaydi va tubda oʻrmalashni afzal koʻradi",
+   "source": "corner/management/commands/_stories_wonders_1_10.py story 5"
+  }
+ ],
+ "style_line": "Premium 3D animated feature film style, soft underwater caustic light, turquoise and coral colour palette, gentle floating particles, expressive cute characters, shallow depth of field. No text, no letters, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: dengiz tubi",
+   "prompt": "Vertical 9:16 wide shot of a sunny shallow sea floor: pale sand, smooth rocks, small coral heads, swaying sea grass, light rays from the surface far above, a few tiny bubbles. No animals."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Sakkiz (sakkizoyoq)",
+   "prompt": "Vertical 9:16 full-body character portrait of a cute, chubby reddish-orange octopus with eight curling arms, big sleepy friendly eyes with heavy eyelids, and one small WHITE STAR-SHAPED SPOT on top of its head, resting relaxed on pale sand on the sea floor."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Baliqcha",
+   "prompt": "Vertical 9:16 character portrait of a tiny round bright-yellow fish with huge excited eyes, a big open smile and a small CHIPPED NOTCH in its top fin, hovering energetically in clear turquoise water."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Ikkalasi tubda",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot: the octopus rests lazily on the sand in the foreground, the little yellow fish hovers right in front of its face, sea floor all around. Same characters, same light."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Sakkizning ichi: uch yurak",
+   "from": "R2",
+   "prompt": "Change the image: the same octopus, now gently semi-transparent like a glowing x-ray, showing THREE small glowing hearts inside its body: two small hearts side by side near the gills and one bigger central heart, connected by softly glowing BLUE blood vessels. Same face, same white star spot, 9:16."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Sakkiz suzmoqda",
+   "from": "R4",
+   "prompt": "Change the scene: the octopus is now shooting through open water like a rocket, arms trailing straight behind, a little jet of bubbles behind it, the yellow fish racing beside it cheering. Same characters, 9:16."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Sakkiz charchadi",
+   "from": "R4",
+   "prompt": "Change the scene: the octopus lies flat and floppy on the sand, arms spread out, eyes half closed, cheeks puffed, completely out of breath; the little yellow fish hovers above it looking surprised. Same characters, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Savol",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Baliqcha",
+     "text": "Sakkiz, nega suzmaysan? Hamma suzadi-ku!"
+    }
+   ],
+   "prompt": "The little yellow fish zooms into frame with a bubbly whoosh and stops right in front of the lazy octopus, who slowly opens one eye. Audio: underwater whoosh, bubbles popping. The fish says in Uzbek with a high, fast, excited little boy voice: \"Sakkiz, nega suzmaysan? Hamma suzadi-ku!\". No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Uchta yurak",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Sakkiz",
+     "text": "Chunki menda uchta yurak bor."
+    },
+    {
+     "who": "Baliqcha",
+     "text": "Uchta?!"
+    }
+   ],
+   "prompt": "Close two-shot: the octopus lifts three arms and wiggles them one by one with a proud sleepy smile; the fish's eyes go huge and it does a little backflip. Audio: soft bubble pops, a comic boing. The octopus says in Uzbek with a soft, slightly sleepy, friendly young female voice: \"Chunki menda uchta yurak bor.\" Then the fish shouts in Uzbek with a high, fast, excited little boy voice: \"Uchta?!\". No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Kim qayerga haydaydi",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Ikkitasi qonni jabraga haydaydi. Uchinchisi — butun tanaga."
+    }
+   ],
+   "prompt": "Slow orbit around the glowing semi-transparent octopus: the two small hearts beat in turn and push glowing blue blood toward the gills, then the big central heart beats and sends blue blood flowing out through all eight arms. Audio: three soft heartbeats in rhythm. An off-screen narrator says in Uzbek with a calm, warm adult male narrator voice: \"Ikkitasi qonni jabraga haydaydi. Uchinchisi — butun tanaga.\". No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Koʻk qon",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Sakkiz",
+     "text": "Qonim ham koʻk. Sizniki temirdan qizil, meniki misdan koʻk."
+    }
+   ],
+   "prompt": "Push-in on the glowing octopus as it raises one arm and admires the bright blue blood glowing inside it, then winks at the camera. Audio: a soft shimmering sound, heartbeat. The octopus says, a little proud in Uzbek with a soft, slightly sleepy, friendly young female voice: \"Qonim ham ko'k. Sizniki temirdan qizil, meniki misdan ko'k.\". No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Qani, suz!",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R4"
+   ],
+   "lines": [
+    {
+     "who": "Baliqcha",
+     "text": "Uchta yurak bilan sen eng tez suzarsan! Qani, ketdik!"
+    }
+   ],
+   "prompt": "The excited yellow fish tugs one octopus arm with its mouth; the octopus sighs, rolls its eyes, then shoots off the sand in a burst of bubbles. Audio: tug, sigh, a big whoosh. The fish says in Uzbek with a high, fast, excited little boy voice: \"Uchta yurak bilan sen eng tez suzarsan! Qani, ketdik!\". No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Yurak toʻxtaydi",
+   "method": "Frames to Video",
+   "start": "R6",
+   "end": "R7",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Lekin sakkizoyoq suzganda butun tanaga qon haydaydigan yurak birpas toʻxtaydi."
+    }
+   ],
+   "prompt": "The octopus speeds through open water; the image briefly shifts to a glowing x-ray view where the big central heart flickers and goes still while the two small hearts keep beating, then back to normal as the octopus slows and sags. Audio: fast whoosh, then a heartbeat that stops, then quiet bubbles. An off-screen narrator says in Uzbek with a calm, warm adult male narrator voice: \"Lekin sakkizoyoq suzganda butun tanaga qon haydaydigan yurak birpas to'xtaydi.\". No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Dangasa emas, aqlli",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Sakkiz",
+     "text": "Uf… Shuning uchun men suzishdan koʻra oʻrmalashni yaxshi koʻraman."
+    }
+   ],
+   "prompt": "The tired octopus lies flat on the sand, catches its breath, then slowly starts crawling along the sea floor on its arms with a relieved smile. Audio: heavy comic sighs, soft sand shuffles. The octopus says, out of breath in Uzbek with a soft, slightly sleepy, friendly young female voice: \"Uf... Shuning uchun men suzishdan ko'ra o'rmalashni yaxshi ko'raman.\". No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Sizga savol",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Baliqcha",
+     "text": "Siz-chi? Yana qaysi hayvonning yuragi gʻalati? Izohda yozing!"
+    }
+   ],
+   "prompt": "The little yellow fish swims straight up to the camera, its chipped fin flicking, and looks into the lens with a big curious grin while the octopus crawls away in the background. Hold on the fish's face at the end. Audio: bubbles, a cheerful pop. The fish says to the viewer in Uzbek with a high, fast, excited little boy voice: \"Siz-chi? Yana qaysi hayvonning yuragi g'alati? Izohda yozing!\". No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Sakkizoyoqning uchta yuragi bor, qoni esa koʻk! Lekin suzganda asosiy yuragi birpas toʻxtaydi — shuning uchun u oʻrmalashni yaxshi koʻradi. Yana qaysi hayvonning yuragi gʻalati? Izohda yozing! #NegaShunday #tabiat #sakkizoyoq #Powerty"
+}
