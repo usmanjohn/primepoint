@@ -64,7 +64,7 @@ def build(pkg_path, out):
         how = f"  ← {' + '.join('@' + x for x in froms)} ni biriktiring" if froms else ''
         g.append(f"  @{r['id']} — {r['name_uz']}   [1-rasmlar/{r['id']}.txt]{how}")
 
-    g += ['', '2) SAHNALAR — Flow, Veo 3.1, 9:16, har biri 8 soniya.', '']
+    g += ['', '2) SAHNALAR — Flow, 9:16. ⏱ = shu klip necha soniya boʻlsin.', '']
     mp3s = []
     for sc in pkg['scenes']:
         n = int(sc['n'])
@@ -75,7 +75,8 @@ def build(pkg_path, out):
             pics = f"boshi: @{sc['start']}" + (f", oxiri: @{sc['end']}" if sc.get('end') else '')
         else:
             pics = ' + '.join('@' + x for x in sc.get('attach') or [])
-        g.append(f"  {name} · {sc['title_uz']} — {sc['method']}, {pics}   [2-sahnalar/{name}.txt]")
+        secs = sc.get('seconds') or pkg.get('clip_seconds') or SECONDS
+        g.append(f"  {name} · ⏱ {secs} s · {sc['title_uz']} — {sc['method']}, {pics}   [2-sahnalar/{name}.txt]")
         for ln in sc.get('lines') or []:
             if ln.get('tts'):
                 mp3 = os.path.join(out, '3-ovoz', f'{name}-hikoyachi.mp3')
