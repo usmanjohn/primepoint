@@ -23,7 +23,8 @@ import subprocess
 import sys
 
 W, H, FPS = 1080, 1920, 30
-VOICE_DELAY = 0.3          # s of breath before the storyteller starts
+VOICE_DELAY = 0.45         # s of breath before the storyteller starts (clear of the dissolve)
+XFADE = 0.3                # s cross-dissolve between scenes, picture and sound (user, 2026-10-07)
 VOICE_TAIL = 0.6           # s held after he finishes
 SFX_UNDER_VOICE = 0.6      # clip sound (effects, wind) under the storyteller
 MUSIC_LEVEL = 0.22         # music bed, before ducking
@@ -84,6 +85,29 @@ def segment(clip, voice, out):
     return total
 
 
+def join(parts, lens, out):
+    """Chain the scenes with a short cross-dissolve (xfade + acrossfade); returns the new length."""
+    if len(parts) == 1 or XFADE <= 0:
+        listing = out + '.txt'
+        with open(listing, 'w') as f:
+            f.writelines(f"file '{p}'\n" for p in parts)
+        run(['-f', 'concat', '-safe', '0', '-i', listing, '-c', 'copy', out])
+        return sum(lens)
+    args, fc, acc = [], [], lens[0]
+    for p in parts:
+        args += ['-i', p]
+    v, a = '[0:v]', '[0:a]'
+    for k in range(1, len(parts)):
+        off = acc - XFADE
+        fc.append(f'{v}[{k}:v]xfade=transition=fade:duration={XFADE}:offset={off:.3f}[v{k}]')
+        fc.append(f'{a}[{k}:a]acrossfade=d={XFADE}:c1=tri:c2=tri[a{k}]')
+        v, a = f'[v{k}]', f'[a{k}]'
+        acc += lens[k] - XFADE
+    run([*args, '-filter_complex', ';'.join(fc), '-map', v, '-map', a, '-c:v', 'libx264', '-preset', 'medium',
+         '-crf', '18', '-c:a', 'aac', '-b:a', '192k', out])
+    return acc
+
+
 def find_clips(folder, scene_numbers):
     """[(first_scene, last_scene, path)] in story order; refuses gaps and overlaps."""
     found = []
@@ -109,19 +133,16 @@ def build(pkg_path, kit, clips_dir=None, music=None):
     os.makedirs(tmp, exist_ok=True)
     clips = find_clips(clips_dir, [int(sc['n']) for sc in pkg['scenes']])
 
-    parts, length = [], 0.0
+    parts, lens = [], []
     for a, b, path in clips:
         n = f'S{a:02d}' + (f'-{b:02d}' if b != a else '')
         voice = os.path.join(kit, '3-ovoz', f'S{a:02d}-hikoyachi.mp3')
         out = os.path.join(tmp, f'{n}.mp4')
-        length += segment(path, voice if (a == b and os.path.exists(voice)) else None, out)
+        lens.append(segment(path, voice if (a == b and os.path.exists(voice)) else None, out))
         parts.append(out)
         print(f'  {n} ✓  ({os.path.basename(path)})')
-    listing = os.path.join(tmp, 'list.txt')
-    with open(listing, 'w') as f:
-        f.writelines(f"file '{p}'\n" for p in parts)
     joined = os.path.join(tmp, 'joined.mp4')
-    run(['-f', 'concat', '-safe', '0', '-i', listing, '-c', 'copy', joined])
+    length = join(parts, lens, joined)
 
     final = os.path.join(kit, f"TAYYOR-{pkg['id']}.mp4")
     music = music or next((os.path.join(kit, m) for m in sorted(os.listdir(kit))

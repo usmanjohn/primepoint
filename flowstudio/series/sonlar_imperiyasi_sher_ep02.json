@@ -1,5 +1,5 @@
 {
- "_note": "POEM VERSION — user's own verse. DRAFT for review: set \"number\" and \"date\" at send time.",
+ "_note": "POEM VERSION, ep 2. LOCAL kit (kit.py) — the user films it himself; not for Telegram.",
  "id": "sonlar-imperiyasi-sher-02",
  "number": 30,
  "for": "Birga",
@@ -7,7 +7,7 @@
  "series": "Sonlar imperiyasi",
  "title_uz": "2-qism. Puf!",
  "concept_uz": "Minus Bir oʻz ismidan xafa: «salbiy»manmi? Nol tushuntiradi: salbiy emas — manfiy. Egizaklar quchoqlashadi — puf! — ikkalasi ham yoʻqoladi, chunki 1 + (−1) = 0. Nol sirni biladi: ular uning oʻzida. Uchovlon safarga yoʻl oladi.",
- "format_uz": "10 sahna × 8 soniya = 1:20",
+ "format_uz": "12 sahna: gapiradigan sahnalar 6 soniya, hikoyachi sahnalari 10 soniya (~1:40)",
  "sources": [
   "flowstudio/series/sonlar_imperiyasi_poem_draft.md (foydalanuvchining sheʼri)",
   "flowstudio/series/sonlar_imperiyasi.md"
@@ -66,39 +66,52 @@
   {
    "n": 1,
    "title_uz": "Aybim nima?",
-   "method": "Frames to Video",
-   "start": "R26",
-   "prompt": "The silver twin with the dark-blue sash tugs at the yin-yang ring-king's robe, looks up at him with a sulky pout and says in Uzbek, in a hurt rhythmic verse cadence, with a low, raspy, sulky voice of a grumpy ten-year-old boy, slow, with a sigh: \"Aybim nima, qirolim,\nTamg'a qo'ydingiz «salbiy».\" The king kneels down to its height, smiles kindly and answers in Uzbek, in a warm rhythmic verse cadence, with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Yo'q-yo'q, sening aybing yo'q,\nSalbiy emassan, manfiy!\" On «manfiy» he gently taps the silver twin's sash; its frown melts into a shy smile. The gold twin on the right watches, grinning. Lip-sync: the lines are spoken in this order — the silver twin with the dark-blue sash, then the yin-yang ring-king; each mouth moves only during its own line and everyone else keeps their mouth closed. No subtitles, no on-screen text.",
+   "prompt": "A self-contained 6-second shot. On the crystal plain the silver twin with the dark-blue sash stands on the left side of the picture, tugging at the robe of the yin-yang ring-king in the centre; the gold twin watches from the right. The silver twin with the dark-blue sash says in Uzbek with a low, raspy, sulky voice of a grumpy ten-year-old boy, slow, with a sigh — sulky, looking up at the king: \"Aybim nima, qirolim,\" Then, hurt, pointing at its own dark-blue sash: \"Tamg'a qo'ydingiz «salbiy».\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the silver twin with the dark-blue sash moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a small cloth tug and a soft sad little woodwind note; no background music. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Minus Bir",
      "text": "Aybim nima, qirolim,\nTamgʻa qoʻydingiz «salbiy»."
-    },
+    }
+   ],
+   "seconds": 6,
+   "method": "Frames to Video",
+   "start": "R26"
+  },
+  {
+   "n": 2,
+   "title_uz": "Manfiy",
+   "prompt": "A self-contained 6-second shot. On the crystal plain the yin-yang ring-king kneels down to the height of the silver twin with the dark-blue sash on the left side of the picture; the gold twin watches from the right. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — warmly, shaking his head kindly: \"Yo'q-yo'q, sening aybing yo'q,\" Then, gently tapping the silver twin's sash, with a reassuring smile: \"Salbiy emassan, manfiy!\" The silver twin's frown melts into a shy smile. Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a soft warm chime on the tap; no background music. No subtitles, no on-screen text.",
+   "lines": [
     {
      "who": "Nol",
      "text": "Yoʻq-yoʻq, sening aybing yoʻq,\nSalbiy emassan, manfiy!"
     }
-   ]
-  },
-  {
-   "n": 2,
-   "title_uz": "Bagʻri toʻlib",
-   "method": "Ingredients to Video",
-   "attach": [
-    "R2",
-    "R3",
-    "R4"
    ],
-   "prompt": "The gold twin and the silver twin chase each other in happy circles across the crystal plain, hopping over glowing facets and giggling, while the yin-yang ring-king watches nearby, a soft warm glow pulsing in his chest. An off-screen narrator recites in Uzbek, in a playful rhythmic fairy-tale cadence, with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Shu tariqa No'lning ham\nBag'ri qolibdi to'lib,\nEgizaklar o'ynarmish\nAhil va inoq bo'lib!\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
-   "lines": [
-    {
-     "who": "Hikoyachi",
-     "text": "Shu tariqa Nolning ham\nBagʻri qolibdi toʻlib,\nEgizaklar oʻynarmish\nAhil va inoq boʻlib!"
-    }
-   ]
+   "seconds": 6,
+   "method": "Frames to Video",
+   "start": "R26"
   },
   {
    "n": 3,
+   "title_uz": "Bagʻri toʻlib",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "A self-contained 10-second shot. On the crystal plain the gold twin and the silver twin with the dark-blue sash chase each other in happy circles around the yin-yang ring-king, hopping over glowing facets, while a soft warm glow pulses in the king's chest. This is a silent scene for a voice-over added later: nobody speaks, there are no voices and no singing, only ambient sound and the sound effects below. Lip-sync: nobody on screen speaks — every mouth stays closed the whole time. Sound: light running footsteps on crystal and soft playful twinkles; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi",
+     "text": "Shu tariqa Nolning ham\nBagʻri qolibdi toʻlib,\nEgizaklar oʻynarmish\nAhil va inoq boʻlib!",
+     "tts": "[warm, smiling] Shu tariqa No'lning ham... [short pause]\n[tender] Bag'ri qolibdi to'lib,\n[playful, lively] Egizaklar o'ynarmish\n[happy, a little slower] Ahil va inoq bo'lib!"
+    }
+   ],
+   "seconds": 10
+  },
+  {
+   "n": 4,
    "title_uz": "Quchoq",
    "method": "Ingredients to Video",
    "attach": [
@@ -106,16 +119,18 @@
     "R3",
     "R4"
    ],
-   "prompt": "The twins stop, take each other's hands, spin around together laughing, then run toward each other with arms wide open for a big hug — the shot ends just as their arms close around each other. An off-screen narrator recites in Uzbek, in a playful rhythmic fairy-tale cadence, with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Hali yosh va sho'x Birlar,\nQuvnoq ko'z, so'zi shirin,\nDo'st bo'lib, qo'lin tutib,\nQuchoqladi bir-birin!\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
+   "prompt": "A self-contained 10-second shot. On the crystal plain the gold twin and the silver twin with the dark-blue sash take each other's hands, spin around together, then run toward each other with arms wide open for a big hug; the shot ends just as their arms close around each other. This is a silent scene for a voice-over added later: nobody speaks, there are no voices and no singing, only ambient sound and the sound effects below. Lip-sync: nobody on screen speaks — every mouth stays closed the whole time. Sound: a soft whoosh as they spin and a gentle rising chime; no background music. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Hikoyachi",
-     "text": "Hali yosh va shoʻx Birlar,\nQuvnoq koʻz, soʻzi shirin,\nDoʻst boʻlib, qoʻlin tutib,\nQuchoqladi bir-birin!"
+     "text": "Hali yosh va shoʻx Birlar,\nQuvnoq koʻz, soʻzi shirin,\nDoʻst boʻlib, qoʻlin tutib,\nQuchoqladi bir-birin!",
+     "tts": "[cheerful, light] Hali yosh va sho'x Birlar,\n[smiling] Quvnoq ko'z, so'zi shirin... [short pause]\n[softer, tender] Do'st bo'lib, qo'lin tutib,\n[warm, building] Quchoqladi bir-birin!"
     }
-   ]
+   ],
+   "seconds": 10
   },
   {
-   "n": 4,
+   "n": 5,
    "title_uz": "Puf!",
    "method": "Ingredients to Video",
    "attach": [
@@ -123,32 +138,52 @@
     "R2",
     "R3"
    ],
-   "prompt": "The twins hug — a loud cartoon POP and a burst of gold and silver sparkles — and both vanish completely. The yin-yang ring-king freezes, his crown slowly slipping sideways; he peeks behind a crystal rock, lifts the hem of his robe — nothing. Then he slowly looks down at himself: the seam between his silver and gold halves glows softly, and a slow knowing smile spreads across his face. An off-screen narrator recites in Uzbek, in a mysterious rhythmic fairy-tale cadence, with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Shu onda egizaklar\nKo'rinmay qolib ko'zdan,\nNo'l topolmay ularni,\nSababin ko'rib o'zdan.\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
+   "prompt": "A self-contained 10-second shot. On the crystal plain the gold twin and the silver twin hug beside the yin-yang ring-king — a loud cartoon POP and a burst of gold and silver sparkles — and both vanish. The king freezes, his crown slipping sideways, looks around, then slowly looks down at the glowing seam between his silver and gold halves and smiles knowingly. This is a silent scene for a voice-over added later: nobody speaks, there are no voices and no singing, only ambient sound and the sound effects below. Lip-sync: nobody on screen speaks — every mouth stays closed the whole time. Sound: a loud cartoon POP, a shower of sparkles, then a soft magical hum from the glowing seam; no background music. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Hikoyachi",
-     "text": "Shu onda egizaklar\nKoʻrinmay qolib koʻzdan,\nNol topolmay ularni,\nSababin koʻrib oʻzdan."
+     "text": "Shu onda egizaklar\nKoʻrinmay qolib koʻzdan,\nNol topolmay ularni,\nSababin koʻrib oʻzdan.",
+     "tts": "[sudden, hushed, mysterious] Shu onda egizaklar... [dramatic pause]\n[whispering] Ko'rinmay qolib ko'zdan,\n[puzzled, slow] No'l topolmay ularni... [pause]\n[knowing, a little smile] Sababin ko'rib o'zdan."
     }
-   ]
+   ],
+   "seconds": 10
   },
   {
-   "n": 5,
-   "title_uz": "Sir",
+   "n": 6,
+   "title_uz": "Bekinmachoq",
+   "prompt": "A self-contained 6-second shot. Close-up of the yin-yang ring-king alone on the crystal plain, the seam between his silver and gold halves glowing softly. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — teasing, tapping the glowing seam on his own middle as if the twins were hiding inside: \"Hoy, yashinmay kelinglar,\" Then, playfully stern, wagging a finger at his own middle: \"Sinamangiz sabrimni,\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a playful little knock-knock tap and a soft glowing hum; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Nol",
+     "text": "Hoy, yashinmay kelinglar,\nSinamangiz sabrimni,"
+    }
+   ],
+   "seconds": 6,
    "method": "Ingredients to Video",
    "attach": [
     "R1",
     "R4"
-   ],
-   "prompt": "Close-up: the yin-yang ring-king, alone, smiling slyly, taps the glowing seam on his own middle and talks to it as if the twins were hiding inside. He recites in Uzbek, teasing, in a rhythmic verse cadence, with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Hoy, yashinmay kelinglar,\nSinamangiz sabrimni,\nAytadigan vaqt keldi\nSizlarga ajib sirni.\" On the last line he leans toward the camera and winks: he knows the secret. Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
-   "lines": [
-    {
-     "who": "Nol",
-     "text": "Hoy, yashinmay kelinglar,\nSinamangiz sabrimni,\nAytadigan vaqt keldi\nSizlarga ajib sirni."
-    }
    ]
   },
   {
-   "n": 6,
+   "n": 7,
+   "title_uz": "Ajib sir",
+   "prompt": "A self-contained 6-second shot. Close-up of the yin-yang ring-king alone on the crystal plain, his seam glowing softly. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — leaning toward the camera, lowering his voice: \"Aytadigan vaqt keldi\" Then, with a sly wink, almost whispering: \"Sizlarga ajib sirni.\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a mysterious soft chime on the wink; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Nol",
+     "text": "Aytadigan vaqt keldi\nSizlarga ajib sirni."
+    }
+   ],
+   "seconds": 6,
+   "method": "Ingredients to Video",
+   "attach": [
+    "R1",
+    "R4"
+   ]
+  },
+  {
+   "n": 8,
    "title_uz": "Paydo",
    "method": "Ingredients to Video",
    "attach": [
@@ -156,46 +191,46 @@
     "R2",
     "R3"
    ],
-   "prompt": "Gold and silver sparkles stream out of the glowing seam of the yin-yang ring-king and split apart: the gold twin pops back on the right side of the picture and the silver twin on the left, their hands just letting go of each other; they blink in astonishment and stare at the king, fascinated. An off-screen narrator recites in Uzbek, in a playful rhythmic fairy-tale cadence, with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Egizaklar ham hayron,\nBu sirga bo'lib shaydo,\nQo'llarin olib sekin,\nBo'libdi darrov paydo.\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
+   "prompt": "A self-contained 10-second shot. On the crystal plain gold and silver sparkles stream out of the glowing seam of the yin-yang ring-king and split apart: the gold twin pops into being on the right side of the picture and the silver twin with the dark-blue sash on the left, their hands just letting go of each other; they blink in astonishment and stare at the king. This is a silent scene for a voice-over added later: nobody speaks, there are no voices and no singing, only ambient sound and the sound effects below. Lip-sync: nobody on screen speaks — every mouth stays closed the whole time. Sound: a reverse whoosh and two bright little pops; no background music. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Hikoyachi",
-     "text": "Egizaklar ham hayron,\nBu sirga boʻlib shaydo,\nQoʻllarin olib sekin,\nBoʻlibdi darrov paydo."
+     "text": "Egizaklar ham hayron,\nBu sirga boʻlib shaydo,\nQoʻllarin olib sekin,\nBoʻlibdi darrov paydo.",
+     "tts": "[amazed] Egizaklar ham hayron,\n[dreamy] Bu sirga bo'lib shaydo... [short pause]\n[slow, careful] Qo'llarin olib sekin,\n[bright, playful surprise] Bo'libdi darrov paydo!"
     }
-   ]
+   ],
+   "seconds": 10
   },
   {
-   "n": 7,
+   "n": 9,
    "title_uz": "Tayanchim",
-   "method": "Frames to Video",
-   "start": "R26",
-   "prompt": "The yin-yang ring-king puts a hand on each twin's shoulder and recites in Uzbek, warmly, in a rhythmic verse cadence, with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Sizlar mening tayanchim:\nSen o'ngdasan, sen so'lda.\" On \"sen o'ngdasan\" he points with his staff to the gold twin on the right side of the picture, on \"sen so'lda\" to the silver twin on the left side. Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
+   "prompt": "A self-contained 6-second shot. On the crystal plain the yin-yang ring-king stands between the gold twin on the right and the silver twin on the left, a hand on each one's shoulder. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — warmly, looking from one twin to the other: \"Sizlar mening tayanchim:\" Then, pointing his staff to the gold twin on the right side of the picture and then to the silver twin on the left side: \"Sen o'ngdasan, sen so'lda.\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a soft chime each time he points; no background music. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Nol",
      "text": "Sizlar mening tayanchim:\nSen oʻngdasan, sen soʻlda."
     }
-   ]
+   ],
+   "seconds": 6,
+   "method": "Frames to Video",
+   "start": "R26"
   },
   {
-   "n": 8,
+   "n": 10,
    "title_uz": "Natija — Nol",
    "method": "Frames to Video",
    "start": "R26",
-   "prompt": "The yin-yang ring-king takes the gold twin's hand and the silver twin's hand and slowly brings them together while he recites in Uzbek, in a rhythmic verse cadence, with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Qo'llar agar tutashsa,\" The moment the twins' hands touch: POP — both vanish in sparkles. The king, suddenly alone, turns to the camera, shrugs with open palms and recites in Uzbek, with a cheeky grin, with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses: \"Natija yana No'l-da!\" Then, pop-pop, the twins reappear on both sides of him, laughing. Lip-sync: only the yin-yang ring-king moves its mouth and speaks; every other character keeps its mouth closed and just listens. No subtitles, no on-screen text.",
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. On the crystal plain the yin-yang ring-king stands between the gold twin on the right and the silver twin on the left and takes one hand of each. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — slowly bringing their hands together: \"Qo'llar agar tutashsa,\" The moment the twins' hands touch: POP — both vanish in sparkles. Then, alone, turning to the camera and shrugging with open palms, with a cheeky grin: \"Natija yana No'l-da!\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a loud cartoon POP and a sparkle shower; no background music. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Nol",
-     "text": "Qoʻllar agar tutashsa,"
-    },
-    {
-     "who": "Nol",
-     "text": "Natija yana Nol-da!"
+     "text": "Qoʻllar agar tutashsa,\nNatija yana Nol-da!"
     }
    ]
   },
   {
-   "n": 9,
+   "n": 11,
    "title_uz": "Uchovlon",
    "method": "Ingredients to Video",
    "attach": [
@@ -203,16 +238,18 @@
     "R2",
     "R3"
    ],
-   "prompt": "Seen from behind, the three walk side by side along the glowing straight path toward distant crystal mountain passes — the gold twin on the right, the king in the middle, the silver twin on the left — the sun on the right and the moon on the left of the sky. An off-screen narrator recites in Uzbek, in a brave rhythmic fairy-tale cadence, with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Markazda No'l, uchovlon,\nHali ko'p oshar dovon.\nQalblarda sabr-toqat,\nDavom etar sayohat.\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
+   "prompt": "A self-contained 10-second shot. Seen from behind, the yin-yang ring-king, the gold twin on the right and the silver twin on the left walk side by side along a glowing straight path across the crystal plain toward distant crystal mountain passes, the sun on the right of the sky and the moon on the left. This is a silent scene for a voice-over added later: nobody speaks, there are no voices and no singing, only ambient sound and the sound effects below. Lip-sync: nobody on screen speaks — every mouth stays closed the whole time. Sound: light footsteps on crystal and a soft wind from the mountains; no background music. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Hikoyachi",
-     "text": "Markazda Nol, uchovlon,\nHali koʻp oshar dovon.\nQalblarda sabr-toqat,\nDavom etar sayohat."
+     "text": "Markazda Nol, uchovlon,\nHali koʻp oshar dovon.\nQalblarda sabr-toqat,\nDavom etar sayohat.",
+     "tts": "[brave, warm] Markazda No'l, uchovlon,\n[looking far ahead] Hali ko'p oshar dovon... [pause]\n[gentle, wise] Qalblarda sabr-toqat,\n[hopeful, a little grand] Davom etar sayohat."
     }
-   ]
+   ],
+   "seconds": 10
   },
   {
-   "n": 10,
+   "n": 12,
    "title_uz": "Davomi bor",
    "method": "Ingredients to Video",
    "attach": [
@@ -220,13 +257,15 @@
     "R2",
     "R3"
    ],
-   "prompt": "The three stop, turn around together and wave at the camera with big smiles; the camera rises into a wide shot of the whole split world, cool on the left and warm on the right. An off-screen narrator recites in Uzbek, in a warm rhythmic fairy-tale cadence, with a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale: \"Sen hamroh bo'l ularga,\nDavom etar hikoya.\nYordam bermoq istasang,\nLayk bosishing kifoya.\" Lip-sync: nobody on screen speaks — the narrator is heard off screen and every mouth stays closed. No subtitles, no on-screen text.",
+   "prompt": "A self-contained 10-second shot. On the crystal plain at sunset the yin-yang ring-king, the gold twin on the right and the silver twin on the left stop, turn around together and wave at the camera with big smiles; the camera slowly rises into a wide shot of the whole split world. This is a silent scene for a voice-over added later: nobody speaks, there are no voices and no singing, only ambient sound and the sound effects below. Lip-sync: nobody on screen speaks — every mouth stays closed the whole time. Sound: soft evening wind and distant twinkling; no background music. No subtitles, no on-screen text.",
    "lines": [
     {
      "who": "Hikoyachi",
-     "text": "Sen hamroh boʻl ularga,\nDavom etar hikoya.\nYordam bermoq istasang,\nLayk bosishing kifoya."
+     "text": "Sen hamroh boʻl ularga,\nDavom etar hikoya.\nYordam bermoq istasang,\nLayk bosishing kifoya.",
+     "tts": "[warm, inviting] Sen hamroh bo'l ularga,\n[mysterious] Davom etar hikoya... [short pause]\n[friendly] Yordam bermoq istasang,\n[cheerful, a wink in the voice] Layk bosishing kifoya!"
     }
-   ]
+   ],
+   "seconds": 10
   }
  ],
  "post_text_uz": "Sonlar imperiyasi · 2-qism 💥\nEgizaklar quchoqlashdi — va gʻoyib boʻldi! Ular qayerga ketdi? 😄\nButun ertak — powerty.uz da.\n#SonlarImperiyasi #matematika #ertak #powerty"

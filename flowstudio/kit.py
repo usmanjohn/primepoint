@@ -89,7 +89,9 @@ def build(pkg_path, out):
             else:
                 g.append(f"       🗣 {ln['who']}: Veo oʻzi gapiradi — notoʻgʻri ogʻiz qimirlasa, qayta generatsiya")
     g += ['', '3) YIGʻISH — CapCut kerak emas',
-          '  • Flowʼdan har bir sahnani yuklab oling va 4-kliplar/ papkasiga S01.mp4, S02.mp4 … deb qoʻying.',
+          '  • Flowʼdan har bir sahnani yuklab oling va 4-kliplar/ papkasiga qoʻying. Nom S raqami bilan boshlansa',
+          '    boʻldi: S05_1080p_….mp4 ham, ikki sahnani qamragan S02-03_….mp4 ham ishlaydi.',
+          '  • Sahnalar orasida 0,3 soniyalik yumshoq oʻtish (rasm va ovoz) avtomatik qoʻshiladi.',
           '  • Xohlasangiz, musiqani shu papkaga musiqa.mp3 deb qoʻying (ixtiyoriy).',
           '  • Keyin bitta buyruq (yoki Claudeʼga «yigʻ» deng):',
           f"      python3 {os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assemble.py')} {os.path.abspath(pkg_path)} {out}",
