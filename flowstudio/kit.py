@@ -91,7 +91,7 @@ def build(pkg_path, out):
           '  • Flowʼdan har bir sahnani yuklab oling va 4-kliplar/ papkasiga S01.mp4, S02.mp4 … deb qoʻying.',
           '  • Xohlasangiz, musiqani shu papkaga musiqa.mp3 deb qoʻying (ixtiyoriy).',
           '  • Keyin bitta buyruq (yoki Claudeʼga «yigʻ» deng):',
-          f"      python3 flowstudio/assemble.py {pkg_path} {out}",
+          f"      python3 {os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assemble.py')} {os.path.abspath(pkg_path)} {out}",
           '    U sahnalarni tartib bilan ulaydi, hikoyachi ovozini oʻz sahnasiga qoʻyadi (ovoz uzun boʻlsa,',
           '    oxirgi kadrni ushlab turadi), musiqani gap paytida avtomatik pasaytiradi va',
           f"    TAYYOR-{pkg['id']}.mp4 faylini yozadi.",
