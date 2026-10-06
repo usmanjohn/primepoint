@@ -112,7 +112,9 @@ def find_clips(folder, scene_numbers):
     """[(first_scene, last_scene, path)] in story order; refuses gaps and overlaps."""
     found = []
     for name in sorted(os.listdir(folder)):
-        m = re.match(r'[Ss](\d+)(?:-(?:[Ss])?(\d+))?(?=[_.\s-]|$)', name)
+        # "S05_…", "S02-03_…", "S22.mp4", and with a series prefix "S2_01_…" (the user's naming, 2026-10-07)
+        m = (re.match(r'[Ss]\d+_(\d{1,3})(?:-(\d{1,3}))?(?=[_.\s-]|$)', name)
+             or re.match(r'[Ss](\d+)(?:-(?:[Ss])?(\d+))?(?=[_.\s-]|$)', name))
         if m and name.lower().endswith(('.mp4', '.mov')):
             a = int(m.group(1)); b = int(m.group(2) or a)
             found.append((a, b, os.path.join(folder, name)))
