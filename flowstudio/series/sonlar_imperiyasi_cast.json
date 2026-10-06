@@ -3,9 +3,6 @@
  "style_line": "Premium 3D animated feature film style, gentle split light — cool moonlight from the left, warm sunlight from the right — soft shadows, rich colours, vertical 9:16. No text, no captions, no letters or numerals written anywhere, no watermark.",
  "voices": {
   "Quyosh": "a big, booming, jolly voice of a cheerful old grandfather",
-  "Qirol Noʻl": "a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses",
-  "Birjon": "a bright, high, bouncy voice of a cheerful ten-year-old boy, quick and excited",
-  "Minusjon": "a low, raspy, sulky voice of a grumpy ten-year-old boy, slow, with a sigh",
   "Oy": "a soft, tender, slightly trembling voice of a loving old grandmother",
   "Cheksizlik": "a far-away, echoing, airy young man's voice, as if calling across a canyon",
   "Uch": "a loud, fast, sing-song voice of a wedding host",
@@ -24,25 +21,28 @@
   "Qorovul": "a slow, bored, nasal voice of a palace guard",
   "Ikki ovoz": "the king's and the scholar's voices together, in unison",
   "√(−1)": "a tiny, shy, echoing child's voice",
-  "Hikoyachi": "a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale"
+  "Hikoyachi": "a calm, deep, velvety storyteller's voice, slow and mysterious like an old radio fairy tale",
+  "Nol": "a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses",
+  "Bir": "a bright, high, bouncy voice of a cheerful ten-year-old boy, quick and excited",
+  "Minus Bir": "a low, raspy, sulky voice of a grumpy ten-year-old boy, slow, with a sigh"
  },
  "cast": [
   {
    "id": "R1",
    "introduced": 1,
-   "name_uz": "Qirol Noʻl",
+   "name_uz": "Qirol Nol",
    "prompt": "Vertical 9:16 full-body character portrait. A round king shaped like a thick, chunky upright ring with a small hole in the middle, so its wide front face is a disc. The ring is coloured like a yin-yang: the left half dark moon-silver with one small bright gold dot, the right half bright sun-gold with one small dark silver dot, the two halves curving into each other in a smooth S-shaped wave — made of polished metal, not a flat printed symbol. Big kind expressive eyes and a small mouth on the front of the ring, thin cartoon arms and legs, a small jewelled crown tilted to the left, holding a long plain wooden staff. He stands in the middle of a vast low-poly crystal plain, exactly where the cool left side meets the warm right side, front view, centred."
   },
   {
    "id": "R2",
    "introduced": 1,
-   "name_uz": "Birjon (+1)",
+   "name_uz": "Bir (+1)",
    "prompt": "Vertical 9:16 full-body character portrait. A slim upright sun-gold character shaped like a tall narrow pillar with a small slanted flag-like tip at the top, big cheerful eyes, a wide smile, thin cartoon arms and legs, and a small round badge with a plus sign pinned on its chest. It stands on the vast low-poly crystal plain, front view, centred."
   },
   {
    "id": "R3",
    "introduced": 1,
-   "name_uz": "Minusjon (−1)",
+   "name_uz": "Minus Bir (−1)",
    "from": "R2",
    "prompt": "Change this character: exactly the same shape, size and face, but made of shining moon-silver instead of gold, eyebrows lowered in a grumpy frown, arms crossed, and a horizontal dark-blue sash wrapped across its middle instead of the plus badge. Same plain, same framing, full body, front view."
   },
@@ -87,6 +87,20 @@
    "introduced": 9,
    "name_uz": "Savdogar E",
    "prompt": "Vertical 9:16 full-body character portrait. A lively bazaar merchant character with a curled moustache and a bright embroidered doppi cap, grinning, holding a leather coin purse that is visibly swelling and bulging with gold coins. A colourful market stall on the low-poly crystal plain behind him, front view, centred."
+  },
+  {
+   "id": "R24",
+   "introduced": 1,
+   "name_uz": "Quyosh yuzi",
+   "from": "R4",
+   "prompt": "Close-up of the sun from this picture: a big warm glowing sun with a kind old grandfather's face — smiling crinkled eyes, bushy golden eyebrows and a beard made of soft rays — filling the frame against the warm morning sky. Same style and colours. Vertical 9:16."
+  },
+  {
+   "id": "R25",
+   "introduced": 1,
+   "name_uz": "Oy yuzi",
+   "from": "R4",
+   "prompt": "Close-up of the moon from this picture: a pale silver moon with a gentle old grandmother's face — soft kind eyes, a few smile lines, a tender smile — filling the frame against the twilight indigo sky with a few stars. Same style and colours. Vertical 9:16."
   }
  ],
  "episode_refs": [
@@ -154,10 +168,19 @@
    "id": "R23",
    "name_uz": "Toʻy",
    "episode": 10
+  },
+  {
+   "id": "R26",
+   "name_uz": "Nol va egizaklar",
+   "episode": 1,
+   "version": "sheʼr"
   }
  ],
  "voice_alias": {
   "Ikki": "Ildiz-Ikki",
-  "Qirol Noʻl va Pi": "Ikki ovoz"
+  "Qirol Noʻl va Pi": "Ikki ovoz",
+  "Qirol Noʻl": "Nol",
+  "Birjon": "Bir",
+  "Minusjon": "Minus Bir"
  }
 }

@@ -53,7 +53,8 @@ def _uz_errors(where, text):
 
 def _flat(text):
     """Compare a spoken line with the prompt: apostrophe variants and spacing ignored."""
-    text = re.sub(r"[ʻʼ‘’`']", "'", (text or '').replace('…', '...'))
+    # apostrophes dropped entirely: a Veo prompt may spell a word as it is SAID (No'l for Nol)
+    text = re.sub(r"[ʻʼ‘’`']", '', (text or '').replace('…', '...'))
     return re.sub(r'\s+', ' ', text).strip().lower()
 
 
@@ -118,8 +119,8 @@ def check(pkg):
             errs.append(f'{rid}: prompt must be English')
         seen.append(rid)
 
-    if not 4 <= len(pkg['scenes']) <= 12:
-        errs.append(f"{len(pkg['scenes'])} scenes — want 4-12 (8 s each)")
+    if not 4 <= len(pkg['scenes']) <= 16:          # 16: a verse episode (2026-10-07)
+        errs.append(f"{len(pkg['scenes'])} scenes — want 4-16 (8 s each)")
     done = []
     for sc in pkg['scenes']:
         tag = f"sahna {sc.get('n')}"
