@@ -1,0 +1,205 @@
+{
+ "id": "2026-10-07-kashfiyot-arximed-toj",
+ "number": 32,
+ "for": "Inom",
+ "date": "2026-10-07",
+ "series": "Buyuk kashfiyot",
+ "title_uz": "Arximed va oltin toj",
+ "concept_uz": "Sirakuza, miloddan avvalgi III asr. Shoh Gieron soʻraydi: bu toj sof oltinmi yoki zargar kumush qoʻshganmi — tojni buzmasdan bil. Rivoyatga koʻra Arximed vannada suv toshganini koʻrib, «Evrika!» deb koʻchaga yuguradi: bir xil ogʻirlikda kumushli toj koʻproq suv chiqaradi. Oxirida tomoshabinga hazil savol.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_22_29.py (story 8)"
+ ],
+ "facts": [
+  {
+   "claim": "Arximed taxminan m.a. 287–212 yillarda Sirakuzada yashagan",
+   "source": "corner/management/commands/_stories_matematika_olami_22_29.py (story 8) header notes"
+  },
+  {
+   "claim": "Toj voqeasini ~200 yil keyin Rim meʼmori Vitruviy yozgan — bu rivoyat",
+   "source": "corner/management/commands/_stories_matematika_olami_22_29.py (story 8)"
+  },
+  {
+   "claim": "Shoh Gieron zargarga oltin berib toj yasatgan; toj ogʻirligi berilgan oltin bilan bir xil",
+   "source": "corner/management/commands/_stories_matematika_olami_22_29.py (story 8)"
+  },
+  {
+   "claim": "1 kg oltin ≈ 51,8 sm³; 700 g oltin + 300 g kumush ≈ 64,8 sm³ — hajm 13 sm³ katta",
+   "source": "corner/management/commands/_stories_matematika_olami_22_29.py (story 8)"
+  },
+  {
+   "claim": "Kumush oltindan kamroq zich, bir xil ogʻirlikda koʻproq joy egallaydi va koʻproq suv siqib chiqaradi",
+   "source": "corner/management/commands/_stories_matematika_olami_22_29.py (story 8) grammar"
+  }
+ ],
+ "style_line": "Cinematic photoreal historical film, warm Mediterranean sunlight, marble and terracotta tones, soft dust in the light, 35mm film look, gentle comic warmth. No text, no letters, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: Sirakuza saroyi",
+   "prompt": "Vertical 9:16 wide shot of an ancient Greek palace hall in Syracuse, Sicily, 3rd century BC: white marble columns, a terracotta floor, a low stone throne with red cushions, an open colonnade with the blue sea and a harbour behind it, afternoon sun. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Arximed",
+   "prompt": "Vertical 9:16 full-body portrait of an ancient Greek scholar about sixty, lively bright eyes, wild curly grey hair and a short curly grey beard, a cream wool himation robe with a wide DARK-BLUE border, leather sandals, a small bronze drawing compass hanging on a cord at his belt, standing in sunlight with a curious half-smile. Respectful historical reconstruction, eye-level camera."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Shoh Gieron",
+   "prompt": "Vertical 9:16 full-body portrait of an ancient Greek king about fifty, stern but fair face, short dark beard with grey streaks, a deep purple cloak over a white tunic, a thin gold diadem band on his head, one heavy gold ring, standing in a marble hall. Eye-level camera."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Oltin toj",
+   "prompt": "Vertical 9:16 close-up of one ancient Greek golden wreath crown made of fine gold laurel leaves, gleaming, resting on a dark red velvet cushion on a marble table, warm sunlight, shallow depth of field."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Saroyda: shoh tojni beradi",
+   "from": [
+    "R1",
+    "R2",
+    "R3",
+    "R4"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot in the same palace hall: the king stands by the throne holding the golden laurel crown out toward the scholar, who steps forward with both hands open to take it. Same faces, same clothes, same light."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Hammomda",
+   "from": "R2",
+   "prompt": "Change the scene: the same scholar sits in a large stone bathtub in an ancient Greek bathhouse, water filled exactly to the brim, only his head, shoulders and arms above the water, steam in the sunbeams, mosaic floor. His robe with the dark-blue border is folded on a bench beside the tub. Same face, 9:16. Modest framing."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Koʻchada: «Evrika!»",
+   "from": "R2",
+   "prompt": "Change the scene: the same scholar runs barefoot down a sunny narrow street of ancient Syracuse, wrapped from chest to knees in a big white bath towel, wet hair flying, arms up, overjoyed; surprised townspeople and a donkey in the background. Comic, modest. Same face, 9:16."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Ustaxona: ikki idish",
+   "from": "R2",
+   "prompt": "Change the scene: the same scholar, dressed again in his robe with the dark-blue border, leans over a wooden workshop table. On the table: two identical bronze bowls, each filled with water exactly to the brim, each standing in its own flat clay tray; a gleaming gold bar on the left, the golden laurel crown on the right. Same face, warm window light, 9:16."
+  },
+  {
+   "id": "R9",
+   "name_uz": "Tarozi: oltin va kumush",
+   "prompt": "Vertical 9:16 close-up of an ancient bronze balance scale on a wooden table, perfectly level: on the left pan a SMALL gleaming gold block, on the right pan a noticeably BIGGER dull silver block. Same weight, different size. Warm window light. No people."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Suv toshadi",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Rivoyatga koʻra, bu odam vannada oʻtirib, shohning sirini ochgan."
+    }
+   ],
+   "prompt": "Close-up. The scholar sinks deeper into the full bathtub; water spills over the rim with a loud splash onto the mosaic floor. He freezes and stares at the spilling water, eyes wide. Audio: big splash, dripping, echo of the bathhouse. An off-screen man says in Uzbek with a calm, warm male storyteller voice, about forty: \"Rivoyatga ko'ra, bu odam vannada o'tirib, shohning sirini ochgan.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Shohning shubhasi",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Shoh Gieron",
+     "text": "Bu toj sof oltinmi? Tojni buzmasdan bil, Arximed."
+    }
+   ],
+   "prompt": "The king turns the golden crown in the sunlight, frowning, then hands it to the scholar. Slow push-in on the crown. Audio: a soft metallic chime, sea breeze. The king says in Uzbek with a deep, slow, commanding male voice, about fifty: \"Bu toj sof oltinmi? Tojni buzmasdan bil, Arximed.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Ogʻir savol",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R4"
+   ],
+   "lines": [
+    {
+     "who": "Arximed",
+     "text": "Ogʻirligi toʻgʻri... lekin ichida nima bor?"
+    }
+   ],
+   "prompt": "Medium shot. The scholar weighs the golden crown in his palm, lifts it, lowers it, squints at it, taps it with a fingernail. Audio: a faint ring of gold, a thoughtful hum. He says in Uzbek with a lively, slightly raspy elderly male voice, about sixty, curious and quick, puzzled: \"Og'irligi to'g'ri... lekin ichida nima bor?\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Gʻoya",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Arximed",
+     "text": "Men tushsam, suv chiqadi. Katta narsa koʻproq suv chiqaradi!"
+    }
+   ],
+   "prompt": "The scholar slowly lifts one arm out of the water and lowers it back; the water level rises and spills again. He looks from his arm to the spilling water, and a huge smile spreads over his face. Audio: gentle splashes, drips. He whispers in Uzbek with a lively, slightly raspy elderly male voice, about sixty, curious and quick, excited: \"Men tushsam, suv chiqadi. Katta narsa ko'proq suv chiqaradi!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "«Evrika!»",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Arximed",
+     "text": "Evrika! Evrika! Topdim!"
+    }
+   ],
+   "prompt": "Tracking shot running backwards in front of the scholar as he dashes down the sunny street in his towel, arms up; townspeople turn, a donkey brays, a woman drops a basket of figs. Comic, joyful. Audio: bare footsteps on stone, crowd gasps, donkey bray. He shouts in Uzbek with a lively, slightly raspy elderly male voice, about sixty, curious and quick, overjoyed: \"Evrika! Evrika! Topdim!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Sinov",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Arximed",
+     "text": "Ogʻirligi bir xil, lekin toj koʻproq suv chiqardi. Demak, ichida kumush bor!"
+    }
+   ],
+   "prompt": "The scholar gently lowers the gold bar into the left bowl: a little water spills into its tray. Then he lowers the crown into the right bowl: clearly MORE water spills into its tray. He points at the bigger puddle. Audio: two trickles, the second longer. He says in Uzbek with a lively, slightly raspy elderly male voice, about sixty, curious and quick, triumphant: \"Og'irligi bir xil, lekin toj ko'proq suv chiqardi. Demak, ichida kumush bor!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Nega?",
+   "method": "Frames to Video",
+   "start": "R9",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Kumush oltindan yengilroq modda. Tojning uch yuz grammi kumush boʻlsa, u oʻn uch kub santimetr kattalashadi."
+    }
+   ],
+   "prompt": "Slow orbiting close-up around the level balance scale: the small gold block and the big silver block hang perfectly still in balance; light glints on the gold. Audio: a soft wooden creak, a calm low music note. An off-screen man says in Uzbek with a calm, warm male storyteller voice, about forty: \"Kumush oltindan yengilroq modda. Tojning uch yuz grammi kumush bo'lsa, u o'n uch kub santimetr kattalashadi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Savol sizga",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R4"
+   ],
+   "lines": [
+    {
+     "who": "Arximed",
+     "text": "Bu voqea rivoyat, lekin hisob haqiqiy. Endi siz ayting: qaysi ogʻirroq — bir kilo oltinmi yoki bir kilo kumushmi? Izohda yozing!"
+    }
+   ],
+   "prompt": "Medium close-up. The scholar, in his robe with the dark-blue border, holds the golden crown in one hand, looks straight into the camera with a sly grin and raises one eyebrow, then waits. Hold on his look at the end. Audio: workshop ambience, one soft chime. He says in Uzbek with a lively, slightly raspy elderly male voice, about sixty, curious and quick, playful: \"Bu voqea rivoyat, lekin hisob haqiqiy. Endi siz ayting: qaysi og'irroq — bir kilo oltinmi yoki bir kilo kumushmi? Izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Shoh soʻradi: toj sof oltinmi? Arximed tojni buzmasdan javob topdi — rivoyatga koʻra, vannada. Siz-chi: bir kilo oltin ogʻirmi yoki bir kilo kumush? Izohda yozing! #BuyukKashfiyot #Arximed #matematika #Powerty"
+}

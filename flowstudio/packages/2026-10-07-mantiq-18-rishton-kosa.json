@@ -1,0 +1,184 @@
+{
+ "id": "2026-10-07-mantiq-18-rishton-kosa",
+ "number": 33,
+ "for": "Jonibek",
+ "date": "2026-10-07",
+ "series": "Mantiq maydoni",
+ "title_uz": "Rishtondan ikki kosa",
+ "concept_uz": "Rishtonlik kulol Malika opa juda mustahkam yangi sir ixtiro qildi. Yuz tokchali javon bor, sinov kosasi esa atigi ikkita: kosa qaysi tokchadan sinishini aniq topish kerak. Shogird Sardor ikki yoʻl taklif qiladi, ikkalasi ham uzoq. Video savol bilan toʻxtaydi: eng yomon holatda ham yetadigan eng kam tashlashlar soni nechta?",
+ "format_uz": "7 sahna × 8 soniya = 56 soniya",
+ "sources": [
+  "logic/management/commands/_puzzles_logic_17_24.py (puzzle 18)"
+ ],
+ "facts": [
+  {
+   "claim": "Javon 100 tokchali, tokchalar pastdan 1 dan 100 gacha; sinov kosasi faqat ikkita",
+   "source": "logic/management/commands/_puzzles_logic_17_24.py (puzzle 18) body_uz"
+  },
+  {
+   "claim": "Bir tokchadan sinadigan kosa undan baland har qanday tokchadan ham sinadi; butun qolgan kosani yana tashlash mumkin",
+   "source": "logic/management/commands/_puzzles_logic_17_24.py (puzzle 18) body_uz"
+  },
+  {
+   "claim": "Bitta kosa bilan 100 martagacha tashlash kerak boʻladi",
+   "source": "logic/management/commands/_puzzles_logic_17_24.py (puzzle 18) body_uz"
+  },
+  {
+   "claim": "Javob (14) bu videoda AYTILMAYDI: 18-jumboq 1-raundda, 2026-10-05 da ochilgan, javob 2026-10-12 da ochiladi",
+   "source": "logic/management/commands/_puzzles_logic_17_24.py (puzzle 18) answer_key + SCHEDULE"
+  }
+ ],
+ "style_line": "Premium 3D animated feature film style, warm late-afternoon light, rich cobalt-blue and turquoise Rishton ceramic colours against warm clay and plaster, soft dust in sunbeams, expressive characters, gentle comedy. No text, no letters, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: Rishton ustaxonasi",
+   "prompt": "Vertical 9:16 wide shot of a sunny pottery courtyard in Rishton, Fergana Valley: a clay kiln, shelves of cobalt-blue and turquoise glazed plates, a potter's wheel, a grape vine overhead, and in the centre a VERY tall narrow wooden test tower with many thin numbered-looking shelves (no visible digits) rising high above a flat grey stone floor, with a wooden ladder leaning on it. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Malika opa (kulol)",
+   "prompt": "Vertical 9:16 full-body character of an Uzbek woman potter about forty, kind clever eyes, a dark INDIGO headscarf with small white dots tied at the back, a long earth-brown dress, a canvas apron with turquoise glaze smudges, sleeves rolled up, clay on her fingers, standing confidently with a slight smile."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Sardor (shogird)",
+   "prompt": "Vertical 9:16 full-body character of an Uzbek boy about twelve, big eager eyes, a black-and-white chust skullcap (doppi), an orange shirt with rolled sleeves, a smear of clay on his LEFT cheek, sneakers, bouncing on his toes with excitement."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Ikki sinov kosasi",
+   "prompt": "Vertical 9:16 close-up of exactly two identical ceramic bowls side by side on a folded white cloth: deep cobalt-blue glaze with a white and turquoise Rishton floral pattern and a thin golden rim, very glossy. Warm light, shallow depth of field. No people."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Hammasi javon oldida",
+   "from": [
+    "R1",
+    "R2",
+    "R3",
+    "R4"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot in the same courtyard: the potter stands at the foot of the tall test tower holding one blue bowl in each hand; the boy stands beside her looking up at the top of the tower with his mouth open. Exactly two bowls. Same faces, same clothes, same light."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Narvonda: tashlashdan oldin",
+   "from": "R5",
+   "prompt": "Change the scene: the potter now stands high on the wooden ladder halfway up the tall tower, holding ONE blue bowl out at arm's length over the stone floor; far below, the boy covers his ears and squints. The second bowl rests safely on a cloth on the ground. Low camera angle looking up. Same faces, 9:16."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Bitta kosa singan",
+   "from": "R5",
+   "prompt": "Change the scene: blue ceramic shards lie on the stone floor at the foot of the tower; the potter holds the ONE remaining bowl protectively against her apron; the boy kneels by the shards with both hands on his head. Same faces, same light, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Tashlash!",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Malika opa",
+     "text": "Butun qoldi! Sirim haqiqatan mustahkam!"
+    }
+   ],
+   "prompt": "The potter lets go of the bowl; it falls in slow motion past the shelves and hits the stone floor with a loud ringing CLANG, bounces once and spins to a stop — unbroken. The boy peeks through his fingers. Audio: whoosh, ringing clang, spinning wobble. The woman shouts down in Uzbek with a warm, confident female voice, about forty, patient and a little teasing, delighted: \"Butun qoldi! Sirim haqiqatan mustahkam!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Savol",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R4"
+   ],
+   "lines": [
+    {
+     "who": "Malika opa",
+     "text": "Lekin qaysi tokchadan sinadi? Shuni aniq bilishim kerak."
+    }
+   ],
+   "prompt": "Medium shot. The potter turns one glossy blue bowl in her hands, taps the rim and listens to its ring, then narrows her eyes thoughtfully. Audio: a clear ceramic ping, courtyard birds. She says in Uzbek with a warm, confident female voice, about forty, patient and a little teasing: \"Lekin qaysi tokchadan sinadi? Shuni aniq bilishim kerak.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Qoida",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Malika opa",
+     "text": "Yuzta tokcha. Kosa esa atigi ikkita. Ikkalasi sinsa, sinov tugaydi."
+    }
+   ],
+   "prompt": "Slow vertical tilt from the stone floor all the way up the tall tower to its top shelf, then back down to the potter, who raises the two bowls one after the other. Audio: a long rising whistle as the camera climbs, then a soft thud. She says in Uzbek with a warm, confident female voice, about forty, patient and a little teasing, serious: \"Yuzta tokcha. Kosa esa atigi ikkita. Ikkalasi sinsa, sinov tugaydi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Sardorning rejasi",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Sardor",
+     "text": "Oson-ku! Birinchi tokchadan boshlab, bittadan yuqoriga chiqamiz!"
+    }
+   ],
+   "prompt": "The boy bounces with excitement, points at the lowest shelf, then mimes climbing step by step up an invisible staircase, faster and faster. Audio: quick comic footsteps, a little musical run. He says in Uzbek with a bright, eager boy's voice, about twelve, eager: \"Oson-ku! Birinchi tokchadan boshlab, bittadan yuqoriga chiqamiz!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Juda uzoq",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R3"
+   ],
+   "lines": [
+    {
+     "who": "Malika opa",
+     "text": "Unda yuz marta tashlashga toʻgʻri kelishi mumkin. Kechgacha shu yerda turamiz."
+    }
+   ],
+   "prompt": "Medium two-shot. The potter crosses her arms and gives the boy a patient look; the boy's shoulders drop and he slumps dramatically onto a bench. Audio: a slow comic deflating trombone note, a sigh. She says in Uzbek with a warm, confident female voice, about forty, patient and a little teasing, gently teasing: \"Unda yuz marta tashlashga to'g'ri kelishi mumkin. Kechgacha shu yerda turamiz.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Ikkinchi reja",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Sardor",
+     "text": "Unda oʻntadan sakraymiz! Sinsa, pastini bittadan tekshiramiz."
+    },
+    {
+     "who": "Malika opa",
+     "text": "Yaxshi fikr... lekin bundan ham kam boʻladi."
+    }
+   ],
+   "prompt": "The boy jumps up from beside the shards with a new idea, counting on his fingers by tens; the potter, holding the last bowl, smiles and slowly shakes her head. Audio: a light 'ding' of an idea, ceramic shards clinking. The boy says in Uzbek with a bright, eager boy's voice, about twelve: \"Unda o'ntadan sakraymiz! Sinsa, pastini bittadan tekshiramiz.\" The woman answers in Uzbek with a warm, confident female voice, about forty, patient and a little teasing, smiling: \"Yaxshi fikr... lekin bundan ham kam bo'ladi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Sizga savol",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Malika opa",
+     "text": "Eng yomon holatda ham albatta yetadigan eng kam tashlashlar soni nechta? Javobni izohda yozing!"
+    }
+   ],
+   "prompt": "The potter turns from the tower and looks straight into the camera holding up the two blue bowls, one eyebrow raised; the boy pops in beside her and looks at the camera too. Hold still on both faces at the end. Audio: courtyard ambience, one bright ceramic ping. She says in Uzbek with a warm, confident female voice, about forty, patient and a little teasing, friendly and challenging: \"Eng yomon holatda ham albatta yetadigan eng kam tashlashlar soni nechta? Javobni izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Yuz tokcha, ikkita kosa. Kosa qaysi tokchadan sinishini aniq bilish uchun eng kamida necha marta tashlash kerak — eng yomon holatda ham? Javobingizni izohda yozing yoki powerty.uz/logic da yuboring — toʻgʻri javob keyingi hafta! #MantiqMaydoni #jumboq #Rishton #Powerty"
+}
