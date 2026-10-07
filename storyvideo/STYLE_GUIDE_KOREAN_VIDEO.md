@@ -40,21 +40,53 @@ IELTS uchun **31 ta ildiz / 167 ta soʻz**. Bitta ildiz = bitta video.
 
 ```bash
 cd storyvideo                      # HAR DOIM shu papkadan; `python -m storyvideo` ISHLAMAYDI
+A=/Applications/anaconda3/bin/python3   # Playwright faqat shu Pythonda ishlaydi (venv dagisi buzuq)
 
 python3 korean.py                  # 0. talaffuz qoidalari hali ham toʻgʻrimi (57/57)
-python3 cli.py lint    ko04        # 1. toʻrtta darvoza, render yoʻq
-python3 cli.py sheet   ko04        # 2. HAR BIR kadrni koʻring (pastga qarang)
+$A cli.py lint    ko04             # 1. toʻrtta darvoza, render yoʻq
+$A cli.py sheet   ko04 --per-scene # 2. HAR BIR kadrni koʻring (pastga qarang)
 python3 cli.py script  ko04 --one --ssml    # 3. tts_scripts/ko04_tts_one.txt
-python3 cli.py kowords ko04        # 4. koreyscha ovozlar (yagona internet talab qiladigan qadam)
-python3 cli.py eleven  ko04        # 5. ElevenLabs ovozi → tts_audios/ko_04.mp3 (2026-10-08 dan)
+python3 cli.py kowords ko04        # 4. koreyscha klip (edge_tts faqat venv da)
+python3 cli.py eleven  ko04        # 5. ElevenLabs ovozi → tts_audios/ko_04.mp3
+python3 cli.py hear    ko04        # 5b. teg/flag bor bloklarni ESHITIB tekshirish (STT)
 python3 cli.py check   ko04 --audio tts_audios/ko_04.mp3     # 6. BIR SONIYA
-python3 cli.py voice   ko04 --audio tts_audios/ko_04.mp3 \
-                            --script tts_scripts/ko04_tts_one.txt --workers 3
-#   → videos/ko04_voiced.mp4  (~6 daqiqa)
+$A cli.py voice   ko04 --audio tts_audios/ko_04.mp3 \
+                       --script tts_scripts/ko04_tts_one.txt --workers 3
+#   → videos/ko04_voiced.mp4  (~6 daqiqa; toʻrttasini fonda ketma-ket)
 ```
 
 **6-qadamni hech qachon oʻtkazib yubormang.** U bir soniya turadi, `voice` esa olti
 daqiqa. 2026-08-30 da u ikki marta buzuq yozuvni render qilinishidan oldin ushladi.
+
+### 2.1 ElevenLabs bilan ishlash — 2026-10-08 saboqlari
+
+- **Flag = savol, javob emas.** `eleven` ham, `check` ham tezlikni oʻlchaydi; v4 ning
+  sur'ati edge-tts dagidan notekis. **Tez** blok → `cli.py hear <slug> <n>` bilan
+  eshiting: hamma soʻz bormi? **Sekin** blok hech qachon matn yoʻqotmagan (SERIES
+  §7.1.4) — teg yoki hayqiriq bor blok doim sekin. Darvozani boʻshatmang, eshiting.
+- **Qayta yozish arzon:** `cli.py eleven ko04 --only 3` faqat shu blokni (~100 belgi).
+  Ikki dubl bir xil uzunlikda chiqsa — ovoz shunchaki tez gapirgan, matn joyida.
+- **Audio teglar:** `[laughs]` `[gasps]` `[excited]` toʻgʻridan-toʻgʻri `narrate(...)`
+  satriga yoziladi; ovozda aytilmaydi (STT bilan tekshirilgan). Blokda bittadan ortiq emas,
+  reaksiya joyida. Kulgi *eshitiladimi* — buni STT aytmaydi, quloq bilan tekshiring.
+- **Kulgili soʻzlar (uning iltimosi):** tomoshabinga «oshqovoqchalar», «toʻnkalar —
+  kechirasiz, aqllilar!» — `ask` satrida; koreyscha hayqiriq (아이고, 대박, 헐) 한글 da
+  yoziladi, `korean.py` uni ovozga oʻgiradi. Filmga 1–2 ta, `rule` kartasida hech qachon.
+  ⛔ 아 씨 — yengil soʻkinish, ishlatilmaydi.
+
+### 2.2 Mavzu tanlash va kadrdagi tuzoqlar
+
+- **Mavzuni bazadan oling, xotiradan emas:** `Story.objects.filter(collection__title__icontains='속담')`
+  (30 ta maqol, har birida oʻzbek egizagi 💡 bilan), `VocabRoot` (ildiz oilalari),
+  PK darsining matni (qoida va misollar oʻsha yerdan). Ishlatilganlar — SERIES §8.
+- **Bankdagi maʼlumotni ham tekshiring:** 대(大) oilasida 현대/세대 turibdi, ularning
+  hanjasi esa 代. Soʻz oilasi filmini qurishdan oldin har bir soʻzning `hanja` sini oʻqing.
+- **Muqova ≥ 120px** (`lint` ning toʻrtinchi darvozasi). `fit_px` ehtiyotkor — uzun gapni
+  qisqartiring (faqat xato boʻlak + feʼl) va `size=124` bering; layout darvozasi toshib
+  ketsa aytadi.
+- **Qavsli qoliplar boʻlinadi:** «(으) / 니까», ««- / dan»». Yechim:
+  `<span style="white-space:nowrap">(으)니까</span>` — ko38 dagi `NK` ga qarang.
+- **Echo klipi:** `koaudio._load(soʻz)` bilan uzunligini oʻlchang (≤ 2.1s).
 
 ---
 
@@ -388,5 +420,5 @@ railway run python manage.py import_corner \
 - [ ] `practice` kartasidagi manzil bazada haqiqatan bor
 - [ ] sanalar va sonlar tekshirilgan (tarixiy film boʻlsa — ikki marta)
 - [ ] `cli.py kowords` → koreyscha klip bor
-- [ ] **`cli.py check --audio`** → «split ishonchli»
+- [ ] **`cli.py check --audio`** → «split ishonchli» (flag boʻlsa — `cli.py hear`)
 - [ ] `cli.py voice` → PASS, keyin tayyor mp4 dan bir necha kadr olib koʻrdim

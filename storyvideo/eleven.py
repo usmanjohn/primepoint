@@ -147,3 +147,31 @@ def _dur(path):
     m = re.findall(r"time=(\d+):(\d+):([\d.]+)", r.stderr)
     h, mnt, s = m[-1]
     return int(h) * 3600 + int(mnt) * 60 + float(s)
+
+
+def transcribe(mp3):
+    """ElevenLabs speech-to-text (scribe_v1, Uzbek) -> what the take actually says.
+
+    The settle-it tool for a `check` flag (SERIES §7.4): v4's pace varies more
+    than edge-tts', so a speech-rate flag is a question, and the transcript
+    answers it — every word there or not, and whether a [laughs] tag was
+    performed or read out as a word. Costs a few seconds of STT quota per block.
+    """
+    import uuid
+    key = os.environ.get("ELEVENLABS_API_KEY")
+    if not key:
+        sys.exit("ELEVENLABS_API_KEY is not set")
+    b = uuid.uuid4().hex
+    field = lambda n, v: f"--{b}\r\nContent-Disposition: form-data; name=\"{n}\"\r\n\r\n{v}\r\n"
+    body = (field("model_id", "scribe_v1") + field("language_code", "uz")
+            + f"--{b}\r\nContent-Disposition: form-data; name=\"file\"; "
+              f"filename=\"a.mp3\"\r\nContent-Type: audio/mpeg\r\n\r\n").encode()
+    body += pathlib.Path(mp3).read_bytes() + f"\r\n--{b}--\r\n".encode()
+    req = urllib.request.Request(
+        "https://api.elevenlabs.io/v1/speech-to-text", data=body,
+        headers={"xi-api-key": key,
+                 "Content-Type": f"multipart/form-data; boundary={b}"})
+    try:
+        return json.loads(urllib.request.urlopen(req, timeout=180).read())["text"]
+    except urllib.error.HTTPError as err:
+        sys.exit(f"ElevenLabs STT {err.code}: {err.read()[:300]!r}")

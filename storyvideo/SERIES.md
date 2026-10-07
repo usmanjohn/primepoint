@@ -612,7 +612,7 @@ scene breaks, so the split is always forced. `--only N` re-takes one block.
 - **`check` was calibrated on edge-tts**, whose pace is flat. v4 varies more: a block with a
   tag or an exclamation reads SLOW (fires «MOS EMAS», ko41 1.73x) and a plain sentence can
   read 1.2x fast (ko36). §7.1.4 still decides — slow is never missing text — and for a fast
-  flag, **transcribe the block with STT instead of loosening the gate.**
+  flag, **transcribe the block with `cli.py hear <slug> <n>` instead of loosening the gate.**
 - ⚙️ **Two Pythons.** The Django venv's Playwright driver is broken (`coreBundle` exports
   nothing) and Anaconda's has no `edge_tts`. So: `lint` / `sheet` / `voice` with
   `/Applications/anaconda3/bin/python3`; `kowords` / `eleven` / `check` with the venv.

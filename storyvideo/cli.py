@@ -641,6 +641,27 @@ def cmd_eleven(a):
     return 0
 
 
+def cmd_hear(a):
+    """Transcribe recorded blocks and print them beside the script (SERIES §7.4).
+
+    `check` measures; this LISTENS. Use it on every block `eleven`/`check` flags
+    and on every block carrying an audio tag, before deciding to re-record.
+    """
+    import eleven as E
+    blocks = blocks_of(a.slug)
+    want = ([int(x) for x in a.blocks.split(",")] if a.blocks
+            else [n for n, b in enumerate(blocks, 1)
+                  if "[" in E.to_eleven(b)])
+    for n in want:
+        text = E.to_eleven(blocks[n - 1])
+        mp3 = E.CACHE / f"{E._key(text, E.VOICE)}.mp3"
+        if not mp3.exists():
+            print(f"{n}: yozuv yoʻq — avval: python3 cli.py eleven {a.slug}")
+            continue
+        print(f"#{n}\n  matn:     {text}\n  eshitildi: {E.transcribe(mp3)}\n")
+    return 0
+
+
 def cmd_draft(a):
     import draft
     print(draft.draft(int(a.order)))
@@ -706,6 +727,10 @@ def main():
     p = sub.add_parser("eleven");  p.add_argument("slug"); p.set_defaults(fn=cmd_eleven)
     p.add_argument("--only", default=None, help="1,4 — shu bloklarni qayta yozdirish")
     p.add_argument("--out", default=None)
+
+    p = sub.add_parser("hear");    p.add_argument("slug"); p.set_defaults(fn=cmd_hear)
+    p.add_argument("blocks", nargs="?", default=None,
+                   help="3,7 — boʻlmasa teg ([laughs]…) bor bloklar")
 
     p = sub.add_parser("kowords"); p.add_argument("slug"); p.set_defaults(fn=cmd_kowords)
     p.add_argument("--voice", default=None)
