@@ -593,6 +593,54 @@ def cmd_kowords(a):
     return 0
 
 
+def cmd_eleven(a):
+    """Record the narration with ElevenLabs -- the step that used to be a paste.
+
+    Voices each block separately (eleven.py) and joins them with the scene
+    break, so `check` and `voice` read the result exactly as they read a
+    pasted take. Prints each block's speech rate: a block far FASTER than the
+    others lost text (SERIES §7.1.4) -- re-voice just that one with --only.
+    """
+    import statistics
+    import eleven as E
+    path = SCRIPTS / f"{a.slug}_tts_one.txt"
+    if not path.exists():
+        print(f"avval: python3 cli.py script {a.slug} --one --ssml")
+        return 1
+    blocks = blocks_of(a.slug)
+    num = "".join(ch for ch in a.slug if ch.isdigit()).lstrip("0") or "0"
+    prefix = "".join(ch for ch in a.slug if ch.isalpha())
+    out = pathlib.Path(a.out) if a.out else HERE / "tts_audios" / f"{prefix}_{int(num):02d}.mp3"
+    only = {int(x) for x in a.only.split(",")} if a.only else None
+    rows = E.record(blocks, out, only=only)
+    # SPEECH rate, not span rate: a block with few [pause] tags otherwise reads
+    # "fast" with nothing missing (ko36 block 1 on 2026-10-08: 1.37x span,
+    # 1.22x speech). Tags are not characters the voice says, so they go too.
+    import re as _re
+    import voice as V
+    rates = []
+    for (n, c, s, _), b in zip(rows, blocks):
+        w = E.CACHE / f"{E._key(E.to_eleven(b), E.VOICE)}.wav"
+        sil = sum(x[2] for x in V.silences(w, minimum=0.15))
+        plain = len(_re.sub(r"\[[^\]]*\]", "", E.to_eleven(b)).strip())
+        rates.append(plain / max(s - sil, 0.1))
+    med = statistics.median(rates)
+    print(f"{'#':>3} {'ch':>5} {'sec':>6} {'nutq':>6} {'rel':>5}")
+    bad = []
+    for (n, c, s, cached), r in zip(rows, rates):
+        flag = ""
+        if r / med > 1.25:
+            flag, _ = "  <-- tez: matn tushib qolgan boʻlishi mumkin", bad.append(n)
+        print(f"{n:>3} {c:>5} {s:>6.2f} {r:>6.1f} {r/med:>5.2f}"
+              f"{'  (kesh)' if cached else ''}{flag}")
+    print(f"\n-> {out}")
+    if bad:
+        print(f"⚠️  qayta yozdiring: python3 cli.py eleven {a.slug} --only "
+              f"{','.join(map(str, bad))}")
+        return 1
+    return 0
+
+
 def cmd_draft(a):
     import draft
     print(draft.draft(int(a.order)))
@@ -654,6 +702,10 @@ def main():
 
     p = sub.add_parser("check");   p.add_argument("slug"); p.set_defaults(fn=cmd_check)
     p.add_argument("--audio", required=True)
+
+    p = sub.add_parser("eleven");  p.add_argument("slug"); p.set_defaults(fn=cmd_eleven)
+    p.add_argument("--only", default=None, help="1,4 — shu bloklarni qayta yozdirish")
+    p.add_argument("--out", default=None)
 
     p = sub.add_parser("kowords"); p.add_argument("slug"); p.set_defaults(fn=cmd_kowords)
     p.add_argument("--voice", default=None)

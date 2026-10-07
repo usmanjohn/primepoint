@@ -1,0 +1,37 @@
+Koreyschada bitta boʻgʻin bor, <break time='0.3s' /> u oʻzbekchadagi uchta qoʻshimchaning ishini qiladi.
+
+<break time='2.5s' />
+
+Pulganung. <break time='0.3s' /> Oldidagisi, inkor. <break time='0.3s' /> Qolgani, imkon. <break time='0.45s' /> Yaʼni: imkonsiz.
+
+<break time='2.5s' />
+
+Oʻsha inkor boshqa soʻzlarni ham ochadi: <break time='0.3s' /> noqulay, notinch, baxtsizlik. <break time='0.45s' /> Va imkonsiz.
+
+<break time='2.5s' />
+
+Oʻzbekchada inkorning uch xil qolipi bor: no-, be- va -siz. <break time='0.45s' /> Koreyschada, bitta, va u har doim oldinda.
+
+<break time='2.5s' />
+
+Endi bunga qarang: pujoʻk, yetishmaslik. <break time='0.45s' /> Belgisi oʻsha, lekin oʻqilishi boshqa.
+
+<break time='2.5s' />
+
+Keyingi boʻgʻin t yoki ch tovushi bilan boshlansa, <break time='0.3s' /> bu inkor odatda pu deb oʻqiladi.
+
+<break time='2.5s' />
+
+Va eng chiroylisi: pudoʻngsan. <break time='0.3s' /> Inkor, harakat, mulk. <break time='0.45s' /> Oʻzbekcha, koʻchmas mulk. Soʻzma-soʻz oʻsha.
+
+<break time='2.5s' />
+
+Soʻz oldidagi bu boʻgʻin, inkor. <break time='0.45s' /> Ildizni taniysiz, maʼnoni taxmin qilasiz.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Manjoʻk, mamnunlik. <break time='0.3s' /> Oldiga inkor qoʻyilsa-chi? <break time='0.45s' /> Izohda kutamiz.
+
+<break time='2.5s' />
+
+Ellik bitta ildizning hammasi Powertyda: Ekzamprep, lugʻat, soʻz oilalari.

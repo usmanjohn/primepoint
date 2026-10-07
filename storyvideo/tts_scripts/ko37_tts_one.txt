@@ -1,0 +1,25 @@
+Koreys maqolida gapingizni sichqon eshitadi. <break time='0.45s' /> Bizda esa, devor.
+
+<break time='2.5s' />
+
+Nanmarun sega tutkoʻ, pammarun chviga tunnunda. <break time='0.45s' /> Kunduzgi gapni qush, kechasi gapni sichqon eshitadi.
+
+<break time='2.5s' />
+
+Nega aynan ular? <break time='0.3s' /> Eski koreys uyi yogʻoch va qogʻozdan, devori yupqa. <break time='0.45s' /> Bizda esa quloqni devorning oʻziga berishgan.
+
+<break time='2.5s' />
+
+Endi tilga qarang. <break time='0.3s' /> Nanmarul, kunduzgi gapni: oddiy xabar. <break time='0.45s' /> Nanmarun, kunduzgi gapni esa, va davomi bor.
+
+<break time='2.5s' />
+
+Maqolning ikki yarmini bitta boʻgʻin bogʻlaydi: esa. <break time='0.45s' /> Kunduzi qush eshitadi, kechasi esa sichqon.
+
+<break time='2.5s' />
+
+Endi oʻzingiz oʻylang. Kopinun choʻaheyoʻ, qahvani esa yoqtiraman. <break time='0.3s' /> Bu gap yana nimani aytyapti? <break time='0.45s' /> Izohda kutamiz.
+
+<break time='2.5s' />
+
+Bu maqolning toʻliq hikoyasi, Powertyda, Burchak boʻlimida.
