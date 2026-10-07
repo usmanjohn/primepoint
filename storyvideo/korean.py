@@ -107,6 +107,9 @@ JUNG_UZ = {"ㅏ": "a", "ㅐ": "e", "ㅑ": "ya", "ㅒ": "ye", "ㅓ": "o", "ㅔ": 
 PALATAL = {"ㅣ": "i", "ㅑ": "a", "ㅒ": "e", "ㅕ": "o", "ㅖ": "e",
            "ㅛ": "oʻ", "ㅠ": "u", "ㅟ": "vi"}
 
+# The same absorption after ㅈ/ㅊ/ㅉ (2026-10-08): 가져가세요 is [가저가세요].
+Y_DROP = {"ㅑ": "a", "ㅒ": "e", "ㅕ": "o", "ㅖ": "e", "ㅛ": "oʻ", "ㅠ": "u"}
+
 SONORANT = {"n", "m", "ng", "l"}
 
 # 구개음화 proper: a ㄷ or ㅌ landing in front of 이 is made at the palate, so
@@ -254,6 +257,11 @@ def _word(word):
             # "sshi" would be read as s-shi, which is worse than losing it.
             out.append("sh")
             out.append(PALATAL[jung])
+        elif cho in ("ㅈ", "ㅊ", "ㅉ") and jung in Y_DROP:
+            # 져 [저], 쳐 [처], 죠 [조]: the onset is already palatal, so the
+            # y-glide is absorbed exactly as in 셔 -> "sho". Found on ko38.
+            out.append((ONSET_SOFT if soft else ONSET_HARD)[cho])
+            out.append(Y_DROP[jung])
         else:
             out.append((ONSET_SOFT if soft else ONSET_HARD)[cho])
             out.append(JUNG_UZ[jung])
@@ -358,6 +366,16 @@ CASES = [
     ("미디어",     "midio"),          # no 받침, so no 구개음화
     ("들리다",     "tullida"),        # ㄹ + ㄹ stays 유음화
     ("신라",       "shilla"),         # ㄴ + ㄹ is 유음화, NOT ㄹ -> ㄴ
+    # ── ㅈ/ㅊ/ㅉ swallow the y-glide: 져 [저], 쳐 [처], 죠 [조] ─────────────
+    # Missing until 2026-10-08 (ko38): 가져가세요 came out "kajyogaseyoʻ".
+    # ㅈ is already made at the palate, so a following y has nowhere to go --
+    # the same absorption PALATAL does for 셔 -> "sho". Standard pronunciation
+    # rule 5 states it for 져/쪄/쳐; 죠 and 쥬 follow the same mouth.
+    ("가져가세요", "kajogaseyoʻ"),    # Was "kajyogaseyoʻ".
+    ("가르쳐요",   "karuchoyoʻ"),     # Was "karuchyoyoʻ".
+    ("다쳤어요",   "tachossoyoʻ"),
+    ("좋죠",       "choʻchoʻ"),        # Was "choʻchyoʻ".
+    ("지금",       "chigum"),         # ㅈ + ㅣ has no glide: unchanged
 ]
 
 

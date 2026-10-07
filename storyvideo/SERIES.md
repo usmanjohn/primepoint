@@ -595,6 +595,28 @@ says **`Praym Korean`**, the on-screen `practice()` card keeps the real product 
 real thing for the eye. Applied to ko07-ko09; ko04-ko06 were already recorded and were
 left alone.
 
+### 7.4 ElevenLabs — `cli.py eleven`, audio tags and fun words  (2026-10-08)
+
+The narration is now recorded by the pipeline: `python3 cli.py eleven <slug>` voices each
+block with `eleven_v4` (the only model that speaks Uzbek) and joins them with exact 2.5 s
+scene breaks, so the split is always forced. `--only N` re-takes one block.
+
+- **Audio tags work and are not read aloud** — `[laughs]`, `[gasps]`, `[excited]` in a
+  `narrate(...)` line pass straight through `speech.for_tts`. Verified by transcribing the
+  blocks with ElevenLabs STT (`scribe_v1`, `language_code=uz`): every word present, no tag
+  spoken. One tag per block, at the reaction.
+- **His ask (2026-10-08): make it fun** — Uzbek pet-names to the viewer («oshqovoqchalar»,
+  «toʻnkalar — kechirasiz, aqllilar!») in the `ask` line, and Korean exclamations
+  (아이고, 대박, 헐) written in Hangul so `korean.py` spells them for the voice. One or two per
+  film, never in the rule. ⛔ Not 아 씨 — it is a mild curse, whatever it sounds like.
+- **`check` was calibrated on edge-tts**, whose pace is flat. v4 varies more: a block with a
+  tag or an exclamation reads SLOW (fires «MOS EMAS», ko41 1.73x) and a plain sentence can
+  read 1.2x fast (ko36). §7.1.4 still decides — slow is never missing text — and for a fast
+  flag, **transcribe the block with STT instead of loosening the gate.**
+- ⚙️ **Two Pythons.** The Django venv's Playwright driver is broken (`coreBundle` exports
+  nothing) and Anaconda's has no `edge_tts`. So: `lint` / `sheet` / `voice` with
+  `/Applications/anaconda3/bin/python3`; `kowords` / `eleven` / `check` with the venv.
+
 ## 8. Inventory
 
 | register | slugs | state |
@@ -612,6 +634,9 @@ left alone.
 | Bitta soʻz | ko20 (생) · ko24 (회 — 사회↔회사) · ko28 (인 — 人 vs 因) | voiced · rendered 2026-09-23 (ko24 re-recorded once, §7.1.4) |
 | Tutilgan xato (grammatika) | ko21 (은/는 va 이/가) · ko25 (고 싶어하다) | voiced · rendered 2026-09-23 |
 | TOPIK (Tutilgan xato) | ko22 (읽기 lugʻat metodi) · ko26 (쓰기 53) | voiced · rendered 2026-09-23 |
+| Grammatika · Bir maqol · TOPIK · Matn | ko29 – ko34 | voiced · rendered 2026-09-30 |
+| ElevenLabs (first) | ko35 (관용 표현) · ko36 (불 不) · ko37 (낮말은 새가) | voiced (eleven_v4) · rendered 2026-10-08 |
+| ElevenLabs · week of 2026-10-08 | ko38 (아/어서 vs (으)니까) · ko39 (학 學) · ko40 (배보다 배꼽) · ko41 (대박) | voiced (eleven_v4) · rendered 2026-10-08 |
 
 **No film from before 2026-09-11 has a cover** (blank frame 0). Re-covering them is
 mechanical — add `cover()` and `subject=`, no re-recording, because the cover carries the

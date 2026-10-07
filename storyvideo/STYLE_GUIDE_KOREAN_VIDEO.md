@@ -41,12 +41,12 @@ IELTS uchun **31 ta ildiz / 167 ta soʻz**. Bitta ildiz = bitta video.
 ```bash
 cd storyvideo                      # HAR DOIM shu papkadan; `python -m storyvideo` ISHLAMAYDI
 
-python3 korean.py                  # 0. talaffuz qoidalari hali ham toʻgʻrimi (52/52)
+python3 korean.py                  # 0. talaffuz qoidalari hali ham toʻgʻrimi (57/57)
 python3 cli.py lint    ko04        # 1. toʻrtta darvoza, render yoʻq
 python3 cli.py sheet   ko04        # 2. HAR BIR kadrni koʻring (pastga qarang)
 python3 cli.py script  ko04 --one --ssml    # 3. tts_scripts/ko04_tts_one.txt
 python3 cli.py kowords ko04        # 4. koreyscha ovozlar (yagona internet talab qiladigan qadam)
-#   → 5. matnni saytga qoʻying, mp3 ni tts_audios/ ga saqlang
+python3 cli.py eleven  ko04        # 5. ElevenLabs ovozi → tts_audios/ko_04.mp3 (2026-10-08 dan)
 python3 cli.py check   ko04 --audio tts_audios/ko_04.mp3     # 6. BIR SONIYA
 python3 cli.py voice   ko04 --audio tts_audios/ko_04.mp3 \
                             --script tts_scripts/ko04_tts_one.txt --workers 3
@@ -229,6 +229,19 @@ aytilgan birorta soʻzga tegmaydi — bu quruq regressiya bilan tekshirildi
 qoidasi kuchda qoladi: yozib olingan filmning skripti — HUJJAT, uni «tartibga
 solish» uchun qayta generatsiya qilmang.
 
+### ⚠️ ㅈ/ㅊ/ㅉ dan keyin y-unli — y YUTILADI (2026-10-08, ko38)
+
+가져가세요 «kajyogaseyoʻ» boʻlib chiqdi, koreys esa **[가저가세요]** deydi.
+ㅈ allaqachon tanglayda aytiladi, shuning uchun keyingi y ga joy yoʻq — 셔 → `sho`
+dagi aynan oʻsha yutilish (standart talaffuz qoidasi 5: 져/쪄/쳐 → [저/쩌/처]).
+
+    가져가세요 → «kajogaseyoʻ»    가르쳐요 → «karuchoyoʻ»    좋죠 → «choʻchoʻ»
+    지금 → «chigum»  (ㅣ da glide yoʻq — oʻzgarmaydi)
+
+`korean.py` da `Y_DROP` jadvali. Yana oʻsha tartib: **avval toʻrtta yiqiladigan
+holat, keyin qoida** — 57 ta holat. Eski filmlarning hech birida bu boʻgʻinlar
+ovozda yoʻq edi (tekshirildi), demak hech narsa qayta yozilmaydi.
+
 ### ⚠️ Romanizatsiya oʻzbekcha soʻzga aylanib qolmasin
 
 읽기 «ikki» boʻlib chiqqani bejiz eslanmaydi. 2026-09-22 da yana bittasi
@@ -365,7 +378,7 @@ railway run python manage.py import_corner \
 
 ## 10. Chiqarishdan oldingi roʻyxat
 
-- [ ] `python3 korean.py` → **52/52**
+- [ ] `python3 korean.py` → **57/57**
 - [ ] `cli.py lint` → PASS (**toʻrtta** darvoza — muqova ham)
 - [ ] `Video(subject=...)` qoʻyilgan (aks holda urgʻu ham, chip ham yoʻq)
 - [ ] muqovaning 0-kadri toʻliq chizilgan, qizil chiziq FAQAT xato boʻlakdan oʻtadi
