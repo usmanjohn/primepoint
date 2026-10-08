@@ -1,0 +1,222 @@
+{
+ "id": "2026-10-08-hayot-a4-varaq",
+ "number": 35,
+ "for": "Jonibek",
+ "date": "2026-10-08",
+ "series": "Hayotdagi matematika",
+ "title_uz": "A4 varaqning siri",
+ "concept_uz": "Bobur chizgʻich bilan A4 varaqni oʻlchaydi: 210 ga 297 — nega 200 ga 300 emas? Tirik Varaq javob beradi: ikkiga buklansa, yana oʻziga oʻxshagan kichik varaq chiqadi — buni faqat √2 nisbati qila oladi. Oxirida tomoshabinga savol: nusxa apparatida A4 dan A5 uchun necha foiz?",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_06.py (story 31, «A4 qogʻozning sirli oʻlchami»)"
+ ],
+ "facts": [
+  {
+   "claim": "A4 ning tomonlari 210 mm va 297 mm",
+   "source": "corner/management/commands/_stories_matematika_olami_06.py"
+  },
+  {
+   "claim": "Uzun tomon boʻylab buklanganda nisbat oʻzgarmaydi; bunga faqat uzun÷qisqa = √2 nisbati mos keladi (297÷210 ≈ 1,414)",
+   "source": "corner/management/commands/_stories_matematika_olami_06.py"
+  },
+  {
+   "claim": "A0 ning yuzasi taxminan 1 m²; A0 dan A4 gacha 4 marta buklanadi, yuza 16 marta kichrayadi",
+   "source": "corner/management/commands/_stories_matematika_olami_06.py"
+  },
+  {
+   "claim": "80 g/m² qogʻozda bitta A4 taxminan 5 gramm (80 ÷ 16 = 5)",
+   "source": "corner/management/commands/_stories_matematika_olami_06.py"
+  },
+  {
+   "claim": "Nusxa apparatida A4 → A5 uchun 71% tanlanadi (1/√2 ≈ 0,707) — post javobi, videoda aytilmaydi",
+   "source": "corner/management/commands/_stories_matematika_olami_06.py"
+  },
+  {
+   "claim": "Tizim 1922-yilda Germaniyada qabul qilingan",
+   "source": "corner/management/commands/_stories_matematika_olami_06.py"
+  }
+ ],
+ "style_line": "Premium 3D animated feature film style, soft warm evening lamp light, clean pastel colours, rounded friendly shapes, gentle comic timing, crisp paper textures. No text, no letters, no numbers, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: Boburning ish stoli",
+   "prompt": "Vertical 9:16 cozy children's study room in a modern Uzbek apartment in the evening: a wooden desk with a small home printer, a desk lamp, a wooden ruler, a pencil cup, a window with city lights, a patterned rug. No people. No writing on anything."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Bobur",
+   "prompt": "Vertical 9:16 full-body portrait of an Uzbek boy about 11, messy black hair, big round glasses, a bright YELLOW hoodie, jeans and sneakers, curious lively expression, standing by a desk in warm lamp light. No writing on the clothes."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Varaq",
+   "prompt": "Vertical 9:16 character portrait of a living sheet of plain white printer paper (tall rectangle, portrait orientation), standing upright on a desk, with large expressive cartoon eyes, small rosy cheeks and a small smiling mouth on its surface, thin bendy paper arms and legs, and a tiny silver paper clip clipped to its top-left corner like a hair bow. Completely blank — no writing, no lines."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Bobur va Varaq stolda",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot: the same boy in the yellow hoodie sits at the same desk holding a wooden ruler; the living paper sheet with the paper clip stands upright on the desk facing him, at his eye level. Same faces, same room, same lamp light."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Varaq va kichik nusxasi",
+   "from": "R3",
+   "prompt": "Change the scene: the same living paper sheet now stands next to an exactly half-size copy of itself — same tall rectangle shape, same face, same tiny paper clip, just smaller — both smiling, standing on the desk side by side. Same style, 9:16."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Varaqlar oilasi",
+   "from": [
+    "R3",
+    "R2"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot: a row of five living paper sheets of the same tall rectangle shape, all with the same friendly face and paper clip, each exactly half the size of the next: the biggest, a huge grandfather sheet with bushy paper eyebrows, towers over the boy in the yellow hoodie, who stands at the side looking up in awe; the smallest is the original sheet. Plain light background on the floor of the study room."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Bobur va kvadrat salfetka",
+   "from": "R2",
+   "prompt": "Change the scene: the same boy in the yellow hoodie sits at his desk holding a plain white square paper napkin in both hands, about to fold it, with a determined look; the living paper sheet watches from the desk corner. Same face, same lamp light, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Savol",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Bobur",
+     "text": "Ikki yuz oʻnga ikki yuz toʻqson yetti?! Nega yuzga uch yuz emas?"
+    }
+   ],
+   "prompt": "The boy holds a wooden ruler against the living paper sheet's long side, squints, and throws up his hands. The sheet gasps and puts its thin paper hands on its hips, offended. Audio: a ruler clack, a crisp paper rustle, a comic gasp. The boy says in Uzbek with a bright, curious Uzbek boy's voice, about eleven, puzzled: \"Ikki yuz o'nga ikki yuz to'qson yetti?! Nega yuzga uch yuz emas?\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Varaq javobi",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Varaq",
+     "text": "Bu sonlarni hech kim shunchaki tanlamagan. Ular hisoblab chiqarilgan!"
+    }
+   ],
+   "prompt": "The living paper sheet hops to the front of the desk, straightens itself proudly, and wags one thin paper finger at the camera. Audio: a crisp paper snap, a playful sting. The paper sheet says in Uzbek with a crisp, cheerful, slightly proud young female cartoon voice: \"Bu sonlarni hech kim shunchaki tanlamagan. Ular hisoblab chiqarilgan!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Buklanish",
+   "method": "Frames to Video",
+   "start": "R3",
+   "end": "R5",
+   "lines": [
+    {
+     "who": "Varaq",
+     "text": "Qara: ikkiga buklansam, yana oʻzimga oʻxshayman. Faqat kichikroq."
+    }
+   ],
+   "prompt": "The living paper sheet folds itself neatly in half across its long side with a satisfying crease, and pops open as two smaller sheets of exactly the same shape standing side by side, the small one a perfect mini copy with the same face. Audio: a crisp fold, a magical pop. The paper sheet says in Uzbek with a crisp, cheerful, slightly proud young female cartoon voice, delighted: \"Qara: ikkiga buklansam, yana o'zimga o'xshayman. Faqat kichikroq.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Kvadrat sinovi",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Bobur",
+     "text": "Kvadratni buklasam, kvadrat chiqmaydi-ku!"
+    }
+   ],
+   "prompt": "The boy folds a plain white square napkin in half; it becomes a long thin rectangle, nothing like a square. He stares at it, disappointed. Audio: a soft fold, a sad trombone note. The boy says in Uzbek with a bright, curious Uzbek boy's voice, about eleven, surprised: \"Kvadratni buklasam, kvadrat chiqmaydi-ku!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Yagona nisbat",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R2"
+   ],
+   "lines": [
+    {
+     "who": "Varaq",
+     "text": "Buni faqat bitta nisbat qila oladi: uzun tomon qisqasidan ikkidan kvadrat ildiz marta uzun."
+    }
+   ],
+   "prompt": "Close-up of the living paper sheet leaning toward the boy like a teacher sharing a secret, then tapping its own long edge and short edge in turn. Audio: soft paper taps, a curious hum. The paper sheet says in Uzbek with a crisp, cheerful, slightly proud young female cartoon voice, in a confiding whisper: \"Buni faqat bitta nisbat qila oladi: uzun tomon qisqasidan ikkidan kvadrat ildiz marta uzun.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Oila",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Varaq",
+     "text": "Bobom — A nol. Uning yuzasi qariyb bir kvadrat metr. Toʻrt marta buklansa, men chiqaman."
+    }
+   ],
+   "prompt": "Slow tilt up along a line of living paper sheets standing in a row, each one exactly half the size of the one before it, all with the same face; at the end towers a huge grandfather sheet taller than the boy, who stares up in awe. Audio: a deep friendly paper rumble, a low gong. The paper sheet says in Uzbek with a crisp, cheerful, slightly proud young female cartoon voice, proudly: \"Bobom — A nol. Uning yuzasi qariyb bir kvadrat metr. To'rt marta buklansa, men chiqaman.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Hisob",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R3"
+   ],
+   "lines": [
+    {
+     "who": "Bobur",
+     "text": "Demak, sen bobongdan oʻn olti marta kichiksan!"
+    },
+    {
+     "who": "Varaq",
+     "text": "Shuning uchun men besh grammcha kelaman."
+    }
+   ],
+   "prompt": "The boy counts on his fingers, one fold, two, three, four, his eyes growing wide, then points at the little paper sheet. The sheet strikes a light, floaty pose as if weighing nothing. Audio: four soft counting ticks, a light feather whoosh. The boy says in Uzbek with a bright, curious Uzbek boy's voice, about eleven, amazed: \"Demak, sen bobongdan o'n olti marta kichiksan!\" The paper sheet answers in Uzbek with a crisp, cheerful, slightly proud young female cartoon voice: \"Shuning uchun men besh grammcha kelaman.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Bir asrlik qaror",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Varaq",
+     "text": "Bu qoida bir ming toʻqqiz yuz yigirma ikkinchi yilda Germaniyada qabul qilingan."
+    }
+   ],
+   "prompt": "The living paper sheet bows like a performer at the end of a show while the whole paper family behind it bows too. Warm spotlight. Audio: a soft drumroll, gentle applause of rustling paper. The paper sheet says in Uzbek with a crisp, cheerful, slightly proud young female cartoon voice, with a grand bow: \"Bu qoida bir ming to'qqiz yuz yigirma ikkinchi yilda Germaniyada qabul qilingan.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 9,
+   "title_uz": "Sizga savol",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Bobur",
+     "text": "Siz-chi: A4 ni A5 ga kichraytirish uchun nusxa apparatida necha foiz tanlanadi? Izohda yozing!"
+    }
+   ],
+   "prompt": "Medium close-up: the boy looks straight into the camera with a cheeky grin, holding the little paper sheet up beside his face; the sheet winks. Hold on the look at the end. Audio: a playful pluck, room ambience. The boy says in Uzbek with a bright, curious Uzbek boy's voice, about eleven, playful and challenging: \"Siz-chi: A4 ni A5 ga kichraytirish uchun nusxa apparatida necha foiz tanlanadi? Izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "A4 varaq — 210 ga 297 mm. Nega 200 ga 300 emas? Chunki ikkiga buklansa ham shakli oʻzgarmasligi kerak. Endi savol: nusxa apparatida A4 ni A5 ga kichraytirish uchun necha foiz tanlanadi? Izohda yozing! #HayotdagiMatematika #A4 #matematika #Powerty"
+}

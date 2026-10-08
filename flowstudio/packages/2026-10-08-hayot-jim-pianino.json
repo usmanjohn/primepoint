@@ -1,0 +1,209 @@
+{
+ "id": "2026-10-08-hayot-jim-pianino",
+ "number": 34,
+ "for": "Inom",
+ "date": "2026-10-08",
+ "series": "Hayot hikoyasi",
+ "title_uz": "Jim pianino",
+ "concept_uz": "Buvining pianinosi yigirma yildan ortiq jim turdi, hamma uni buzuq derdi. Buvi olamdan oʻtgach, nevara qopqogʻini ochadi — klavishlar yangidek, ovoz tiniq. Burilish: pianino hech qachon buzilmagan; buvi bobo vafot etgan kuni chalishni toʻxtatgan va «buzuq» deyishni osonroq deb bilgan.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_life_1_6.py (story 2, «The Silent Piano»)"
+ ],
+ "facts": [
+  {
+   "claim": "Pianino yillar davomida yopiq turgan, oila uni buzuq deb bilgan",
+   "source": "corner/management/commands/_stories_life_1_6.py story 2"
+  },
+  {
+   "claim": "Buvi oʻtgan bahorda vafot etgan; nevara uyni boʻshatayotganda qopqoqni ochgan, klavishlar deyarli yangidek",
+   "source": "corner/management/commands/_stories_life_1_6.py story 2"
+  },
+  {
+   "claim": "Buvi bobo vafot etgan kuni, yigirma yildan koʻproq oldin, chalishni toʻxtatgan; bu boboning sevimli ovozi edi",
+   "source": "corner/management/commands/_stories_life_1_6.py story 2"
+  },
+  {
+   "claim": "Buvi sotmagan ham, bermagan ham — qopqoqni yopib, hammaga buzuq deb ishonishga yoʻl qoʻygan, chunki bu tushuntirishdan osonroq edi",
+   "source": "corner/management/commands/_stories_life_1_6.py story 2"
+  },
+  {
+   "claim": "Nevara bolalikdagi darslardan eslagan yagona kuyni chaladi, onasi yonida turadi",
+   "source": "corner/management/commands/_stories_life_1_6.py story 2"
+  }
+ ],
+ "style_line": "Cinematic photoreal drama, soft spring daylight through lace curtains, gentle dust in the light, warm muted tones of walnut wood and faded fabric, 35mm film look, quiet intimate mood. No text, no letters, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: buvining mehmonxonasi",
+   "prompt": "Vertical 9:16 interior of an old Tashkent family living room: patterned carpet, a faded suzani on the wall, lace curtains with spring sunlight, a low table, and in the corner an old dark-walnut upright piano with its lid closed and covered in a thin layer of dust, a small framed photo of an elderly couple on top (blurred faces). No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Nevara",
+   "prompt": "Vertical 9:16 waist-up portrait of an Uzbek young man about 25, short dark hair, gentle face, light stubble, wearing a grey knitted sweater, a thin red woven bracelet on his LEFT wrist, standing in a sunlit old living room, thoughtful expression."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Oyi",
+   "prompt": "Vertical 9:16 waist-up portrait of an Uzbek woman about 50, kind tired face, a blue patterned headscarf tied at the back of the neck, small gold earrings, a beige cardigan over a long dress, standing in a doorway of an old house, soft daylight."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Xotira: buvi va bobo",
+   "prompt": "Vertical 9:16 warm nostalgic shot, more than twenty years ago: an Uzbek grandmother about 60 in a white headscarf with a green border plays an old dark-walnut upright piano in a sunlit living room with a suzani on the wall; beside the piano sits an Uzbek grandfather about 65 with a short grey beard and a black-and-white doppi skullcap, eyes closed, smiling, listening. Soft golden glow, slightly faded colours."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Nevara pianino oldida",
+   "from": [
+    "R1",
+    "R2"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot: the same young man (red bracelet on his left wrist) stands in front of the closed, dusty upright piano in the same living room, a cardboard box at his feet, looking at the piano with curiosity. Same face, same room, same light."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Ochiq pianino",
+   "from": "R5",
+   "prompt": "Change the scene: the piano lid is now open, showing clean ivory and black keys that look almost new; the young man leans over them in surprise, one hand raised above the keys. Same face, same room, same light, 9:16."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Oyi eshik oldida",
+   "from": [
+    "R1",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot: the same woman stands frozen in the doorway of the same living room, one hand on the door frame, staring toward the piano in the corner (its lid open), eyes wet. Same face, same room, same light."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Birga",
+   "from": [
+    "R6",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot: the young man sits at the open piano playing; the woman stands beside him with her hand on his shoulder, smiling through tears. Sunlight across the keys. Same faces, same room, same light."
+  },
+  {
+   "id": "R9",
+   "name_uz": "Buvi qopqoqni yopadi",
+   "from": "R4",
+   "prompt": "Change the scene: the grandfather is gone; his black-and-white doppi skullcap rests on top of the piano. The grandmother, alone, slowly closes the piano lid with both hands, head bowed. The light is cooler and dimmer. Same grandmother, same room, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Jim burchak",
+   "method": "Frames to Video",
+   "start": "R1",
+   "lines": [
+    {
+     "who": "Nevara (kadr ortida)",
+     "text": "Buvimning pianinosi yigirma yildan ortiq jim turdi. Hamma uni buzuq derdi."
+    }
+   ],
+   "prompt": "Slow push-in through the quiet living room toward the old upright piano in the corner. Dust floats in a beam of spring sunlight; the closed lid is grey with dust. Audio: a wall clock ticking, distant street sounds, total stillness in the room. An off-screen man says in Uzbek with a soft, warm young Uzbek male voice, about twenty-five, quiet and thoughtful: \"Buvimning pianinosi yigirma yildan ortiq jim turdi. Hamma uni buzuq derdi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Qiziqish",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Nevara (kadr ortida)",
+     "text": "Buvim bahorda olamdan oʻtdi. Uyni yigʻishtirayotib, birinchi marta qiziqib qoldim."
+    }
+   ],
+   "prompt": "Medium shot. The young man stands before the closed piano holding a cardboard box, sets the box down, and slowly draws one finger through the dust on the lid, looking at the clean line it leaves. Audio: cardboard thump, soft footsteps, the clock ticking. An off-screen man says in Uzbek with a soft, warm young Uzbek male voice, about twenty-five, quiet and thoughtful: \"Buvim bahorda olamdan o'tdi. Uyni yig'ishtirayotib, birinchi marta qiziqib qoldim.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Qopqoq",
+   "method": "Frames to Video",
+   "start": "R5",
+   "end": "R6",
+   "lines": [
+    {
+     "who": "Nevara",
+     "text": "Klavishlari… xuddi yangidek."
+    }
+   ],
+   "prompt": "Close-up on his hands. He lifts the heavy wooden lid slowly, bracing for broken keys; the lid opens to reveal clean ivory keys that look almost new. His face shows surprise. Audio: a long wooden creak, his breath held. He whispers in Uzbek with a soft, warm young Uzbek male voice, about twenty-five, amazed: \"Klavishlari... xuddi yangidek.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Birinchi nota",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Nevara",
+     "text": "Buzuq emas-ku…"
+    }
+   ],
+   "prompt": "Extreme close-up: one finger presses a single white key, gently. A soft, clear piano note rings out and fills the room; dust in the sunbeam seems to tremble. He presses a second key, then a third. Audio: three clean piano notes, then silence. He says in Uzbek with a soft, warm young Uzbek male voice, about twenty-five, barely above a whisper: \"Buzuq emas-ku...\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Eshik oldida",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Nevara (kadr ortida)",
+     "text": "Oyi, qarang! U umuman buzuq emas!"
+    }
+   ],
+   "prompt": "The mother stands frozen in the doorway, one hand on the door frame, staring at the open piano as if she were seeing a ghost. Her eyes fill with tears. Slow push-in on her face. Audio: the last note fading, a quiet gasp. An off-screen young man says in Uzbek with a soft, warm young Uzbek male voice, about twenty-five, excited and confused: \"Oyi, qarang! U umuman buzuq emas!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Xotira",
+   "method": "Frames to Video",
+   "start": "R4",
+   "end": "R9",
+   "lines": [
+    {
+     "who": "Oyi (kadr ortida)",
+     "text": "Bu dadamning eng sevgan ovozi edi. U ketgan kuni buvang chalishni toʻxtatdi."
+    }
+   ],
+   "prompt": "Warm, softly glowing memory. The grandmother plays the piano while the grandfather listens beside it, smiling, eyes closed. The light slowly fades and cools; the grandfather is gone, and the grandmother, alone, slowly closes the lid and rests her hand on it. Audio: a gentle old melody that stops mid-phrase, then silence. An off-screen woman says in Uzbek with a gentle, slightly tired middle-aged Uzbek female voice, about fifty, softly: \"Bu dadamning eng sevgan ovozi edi. U ketgan kuni buvang chalishni to'xtatdi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Sir",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Oyi",
+     "text": "Buzuq deyish osonroq edi… nega chalmasligini tushuntirishdan koʻra."
+    }
+   ],
+   "prompt": "Close-up of the mother in the doorway, wiping a tear and giving a small sad smile, looking at the piano. Audio: quiet room, the clock ticking. She says in Uzbek with a gentle, slightly tired middle-aged Uzbek female voice, about fifty, softly: \"Buzuq deyish osonroq edi... nega chalmasligini tushuntirishdan ko'ra.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Kuy",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Nevara (kadr ortida)",
+     "text": "U hech qachon buzilmagan edi. Shunchaki kutgan edi. Sizning uyingizda ham shunday jim narsa bormi?"
+    }
+   ],
+   "prompt": "The young man plays a slow, simple childhood melody on the piano; the mother stands beside him with her hand on his shoulder, smiling through tears. Camera slowly pulls back across the sunlit room. Audio: the simple melody, warm and clear. An off-screen man says in Uzbek with a soft, warm young Uzbek male voice, about twenty-five, warm and quiet: \"U hech qachon buzilmagan edi. Shunchaki kutgan edi. Sizning uyingizda ham shunday jim narsa bormi?\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Buvimning pianinosi yigirma yildan ortiq jim turdi. Hamma uni buzuq derdi. Bir kuni qopqogʻini ochdim… Sizning uyingizda ham jim turgan narsa bormi? Izohda yozing. #HayotHikoyasi #pianino #xotira #Powerty"
+}
