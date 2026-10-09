@@ -1,0 +1,229 @@
+{
+ "id": "2026-10-09-bobolar-ulugbek-yil",
+ "number": 37,
+ "for": "Jonibek",
+ "date": "2026-10-09",
+ "series": "Bobolar sirri",
+ "title_uz": "Ellik sakkiz sekund",
+ "concept_uz": "Samarqand, olti asr oldin. Shogird ishonch bilan aytadi: «Bir yil — 365 kun!» Ulugʻbek kuladi: «Bu taxminiy.» Teleskop yoʻq — faqat yer ostiga qurilgan 40 metrli ulkan yoy va yillab sabr. Yil uzunligini shunday oʻlchaydiki, bugungi qiymatdan farqi atigi 58 sekund.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_13_15.py (story 4, Mirzo Ulugʻbek rasadxonasi)"
+ ],
+ "facts": [
+  {
+   "claim": "Mirzo Ulugʻbek (1394–1449) Amir Temurning nabirasi",
+   "source": "corner/management/commands/_stories_matematika_olami_13_15.py (story 4)"
+  },
+  {
+   "claim": "1424-yilda Samarqandda rasadxona qurishni boshlagan",
+   "source": "corner/management/commands/_stories_matematika_olami_13_15.py (story 4)"
+  },
+  {
+   "claim": "Fahriy sekstanti — radiusi taxminan 40 metr boʻlgan yoy, shamol qimirlatmasligi uchun xandaqqa qurilgan",
+   "source": "corner/management/commands/_stories_matematika_olami_13_15.py (story 4)"
+  },
+  {
+   "claim": "Radius katta boʻlsa, bir gradus uzunroq boʻladi va uni daqiqa va sekundlarga boʻlish mumkin",
+   "source": "corner/management/commands/_stories_matematika_olami_13_15.py (story 4)"
+  },
+  {
+   "claim": "«Ziji jadidi Koʻragoniy» — 1018 ta yulduz katalogi, ikki asr dunyodagi eng aniq jadval",
+   "source": "corner/management/commands/_stories_matematika_olami_13_15.py (story 4)"
+  },
+  {
+   "claim": "Ulugʻbek yulduz yilini 365 kun 6 soat 10 daqiqa 8 sekund deb oʻlchagan; hozirgi qiymat ≈ 365 kun 6 soat 9 daqiqa 10 sekund; farq 608 − 550 = 58 sekund",
+   "source": "corner/management/commands/_stories_matematika_olami_13_15.py (story 4)"
+  },
+  {
+   "claim": "Rasadxona vayron boʻlgan; 1908-yilda arxeolog V. L. Vyatkin sekstantning yer ostidagi qismini topgan, u bugun ham oʻsha yerda",
+   "source": "corner/management/commands/_stories_matematika_olami_13_15.py (story 4)"
+  },
+  {
+   "claim": "Teleskop hali ixtiro qilinmagan edi",
+   "source": "corner/management/commands/_stories_matematika_olami_13_15.py (story 4)"
+  }
+ ],
+ "style_line": "Cinematic photoreal historical film, 15th-century Samarkand, deep indigo night sky full of stars, warm oil-lamp amber light, turquoise tilework accents, 35mm film grain, respectful reconstruction. No text, no letters, no numerals, no writing visible, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: rasadxona tepaligi",
+   "prompt": "Vertical 9:16 wide shot at night of a large round observatory building of fired brick with turquoise tile bands standing on a low hill outside a medieval Central Asian city; the city's domes faintly lit below, a huge clear star-filled sky above, the Milky Way overhead. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Ulugʻbek",
+   "prompt": "Vertical 9:16 full-body portrait, respectful reconstruction of a 15th-century Timurid prince and astronomer about forty, thoughtful noble face, short dark beard, a WHITE turban with a small TURQUOISE clasp, a DARK GREEN silk robe with a gold-embroidered collar, holding a small brass astrolabe. Calm, focused eyes. Plain warm background."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Shogird",
+   "prompt": "Vertical 9:16 full-body portrait of a young 15th-century Central Asian student of astronomy, about eighteen, eager open face, first thin moustache, small embroidered black-and-white cap, a sand-coloured cotton robe with a BLUE sash, holding a bundle of paper sheets and a reed pen. Plain warm background."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Yer ostidagi ulkan yoy",
+   "prompt": "Vertical 9:16 dramatic shot looking down into a deep narrow trench cut into a hill at night: inside it a gigantic smooth curved arc of polished marble set between two brick walls sweeps down into the darkness like a giant frozen wave, lined on both sides with tiny engraved division marks, small oil lamps along its edge, a slit of starry sky above. No people."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Tomda ikkovi",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot on the flat roof of the observatory at night: the prince-astronomer stands holding his brass astrolabe, gazing up at the stars; the student stands beside him with his papers, pointing at the sky and smiling confidently. The city domes far below, the Milky Way above. Same faces, same clothes."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Yoy ichida ikkovi",
+   "from": [
+    "R4",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot inside the deep trench: the prince-astronomer and the student stand small on narrow steps beside the gigantic marble arc that curves up past them toward the slit of starry sky; the student stares up in awe, the astronomer rests one hand on the arc's edge. Oil lamps glow along the arc. Same faces, same clothes."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Yoydagi mayda belgilar",
+   "from": "R4",
+   "prompt": "Change the shot: an extreme close-up of the marble arc's edge, showing very fine evenly spaced engraved notches, long ones and many tiny ones between them, with a thin beam of pale starlight falling across them from above and a brass sighting plate sliding along. No numerals, no letters. 9:16."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Kechasi hisob",
+   "from": "R5",
+   "prompt": "Change the scene: late night inside a small study of the observatory lit by two oil lamps; the prince-astronomer sits on a carpet at a low desk writing in a large handmade book, the brass astrolabe beside him; the student kneels opposite, holding the lamp closer and watching with held breath. Pages show only abstract lines, nothing legible. Same faces, same clothes, 9:16."
+  },
+  {
+   "id": "R9",
+   "name_uz": "Bugungi yoy",
+   "prompt": "Vertical 9:16 shot in present-day daylight: the surviving lower part of a gigantic curved marble arc preserved inside a deep trench in a hill, under a simple modern protective vault, dusty sunbeams falling in from above, old brick walls on both sides. No people, no signs."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Bir yil necha kun?",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Shogird",
+     "text": "Ustoz, bu oson-ku! Bir yil — uch yuz oltmish besh kun!"
+    },
+    {
+     "who": "Ulugʻbek",
+     "text": "Bu taxminiy. Aniq javobni osmon aytadi."
+    }
+   ],
+   "prompt": "Night on the observatory roof. A shooting star streaks across the sky. The student points up and announces proudly; the astronomer lowers his astrolabe, smiles and shakes his head slowly. Audio: night crickets, a soft wind, a faint whoosh of the shooting star. The student says in Uzbek with a bright, eager young Uzbek male voice of about eighteen: \"Ustoz, bu oson-ku! Bir yil — uch yuz oltmish besh kun!\" The astronomer answers in Uzbek with a calm, deep, noble Uzbek male voice of a man about forty: \"Bu taxminiy. Aniq javobni osmon aytadi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Kim u?",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Bu — Mirzo Ulugʻbek, Amir Temurning nabirasi. 1424-yilda u Samarqandda rasadxona qura boshladi."
+    }
+   ],
+   "prompt": "Slow sweeping shot: the astronomer walks up a lamp-lit path toward the round observatory on the hill under the starry sky, his dark green robe moving in the wind. Audio: footsteps on stone, soft dutar music. An off-screen narrator says in Uzbek with a warm, low male storyteller voice: \"Bu — Mirzo Ulug'bek, Amir Temurning nabirasi. 1424-yilda u Samarqandda rasadxona qura boshladi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Ulkan yoy",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Shogird",
+     "text": "Nega bunchalik katta? Nega yer ostida?"
+    },
+    {
+     "who": "Ulugʻbek",
+     "text": "Radiusi qirq metr. Yer ustida uni shamol qimirlatardi."
+    }
+   ],
+   "prompt": "The camera rises slowly along the gigantic marble arc from the two small figures up toward the slit of stars, then drops back to them. The student turns to the astronomer, astonished. Audio: deep echo, a lamp flame fluttering. The student says in Uzbek with a bright, eager young Uzbek male voice of about eighteen: \"Nega bunchalik katta? Nega yer ostida?\" The astronomer says in Uzbek with a calm, deep, noble Uzbek male voice of a man about forty: \"Radiusi qirq metr. Yer ustida uni shamol qimirlatardi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Kattalik — aniqlik",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Ulugʻbek (kadr ortida)",
+     "text": "Yoy qancha katta boʻlsa, bir gradus shuncha uzun. Uni daqiqa va sekundlarga boʻlsa boʻladi."
+    }
+   ],
+   "prompt": "Extreme close-up: the brass sighting plate slides along the marble edge past the fine notches; the camera pushes in so that the gap between two long marks opens up to reveal many tiny marks between them. A beam of starlight lands exactly on one tiny mark. Audio: a soft stone-on-brass scrape, a quiet click. An off-screen man says in Uzbek with a calm, deep, noble Uzbek male voice of a man about forty: \"Yoy qancha katta bo'lsa, bir gradus shuncha uzun. Uni daqiqa va sekundlarga bo'lsa bo'ladi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Yillar",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Ular oʻn yillab kuzatishdi. 1018 ta yulduz katalogi ikki asr dunyoda eng aniq boʻlib qoldi."
+    }
+   ],
+   "prompt": "Time-lapse montage at the observatory: star trails wheel over the round building, seasons change from snow to blossom to summer dust; the astronomer and the student, a little older each time, write by lamplight and sight the sky. Audio: a rising, patient dutar melody, a ticking rhythm. An off-screen narrator says in Uzbek with a warm, low male storyteller voice: \"Ular o'n yillab kuzatishdi. 1018 ta yulduz katalogi ikki asr dunyoda eng aniq bo'lib qoldi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Javob",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Ulugʻbek",
+     "text": "Yil — uch yuz oltmish besh kun, olti soat, oʻn daqiqa va sakkiz sekund."
+    }
+   ],
+   "prompt": "Lamplight study at night. The astronomer finishes a calculation, lays down his pen and reads the result aloud slowly; the student's eyes widen and his lamp trembles. Audio: lamp crackle, pen tap, silence before the words. The astronomer says in Uzbek with a calm, deep, noble Uzbek male voice of a man about forty: \"Yil — uch yuz oltmish besh kun, olti soat, o'n daqiqa va sakkiz sekund.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "58 sekund",
+   "method": "Extend",
+   "extends": 6,
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Bugungi qiymatdan farqi — atigi ellik sakkiz sekund. Teleskopsiz!"
+    }
+   ],
+   "prompt": "Continue: the camera slowly drifts up from the lamp-lit study through the open roof hatch to the huge starry sky, the Milky Way glowing. Audio: music swells softly, then a single bright bell tone. An off-screen narrator says in Uzbek with a warm, low male storyteller voice, with quiet awe: \"Bugungi qiymatdan farqi — atigi ellik sakkiz sekund. Teleskopsiz!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Bugun",
+   "method": "Frames to Video",
+   "start": "R9",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "1908-yilda Vyatkin yer ostidan yoyni topdi. U hamon Samarqandda turibdi. Siz koʻrganmisiz? Izohda yozing!"
+    }
+   ],
+   "prompt": "Present day. Slow descending shot into the trench toward the surviving marble arc as dusty sunbeams fall across it; hold on the arc at the end. Audio: quiet wind, distant city sounds, a soft final dutar note. An off-screen narrator says in Uzbek with a warm, low male storyteller voice: \"1908-yilda Vyatkin yer ostidan yoyni topdi. U hamon Samarqandda turibdi. Siz ko'rganmisiz? Izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Teleskop yoʻq. Faqat yer ostiga qurilgan 40 metrli yoy, yillab sabr va matematika. Mirzo Ulugʻbek yil uzunligini shunday oʻlchadiki, bugungi qiymatdan farqi atigi 58 sekund! Samarqanddagi bu yoyni koʻrganmisiz? Izohda yozing. powerty.uz #bobolarsirri #Ulugbek #Samarqand #ilm #Powerty"
+}

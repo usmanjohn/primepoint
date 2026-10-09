@@ -1,0 +1,204 @@
+{
+ "id": "2026-10-09-nega-qor-parchasi",
+ "number": 36,
+ "for": "Inom",
+ "date": "2026-10-09",
+ "series": "Nega shunday?",
+ "title_uz": "Nega doim olti nur?",
+ "concept_uz": "Qishki hovli. Malika qoʻlqopiga tushgan qor parchasining nurlarini sanaydi — olti. Keyingisida ham olti. Bobosi sirni ochadi: suv muzlaganda zarralari olti burchakli panjaraga terilib qotadi, oltita nur esa bir xil sovuqdan oʻtib, bir xil shoxlanadi. Oxirida — besh mingta suratda ikkita bir xil parcha topilmagan.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_30_36.py (story 16, «Qor parchasi: nega doim olti nur»)"
+ ],
+ "facts": [
+  {
+   "claim": "Qor parchasining nurlari doim oltita — hech qachon beshta yoki sakkizta emas",
+   "source": "corner/management/commands/_stories_matematika_olami_30_36.py (story 16)"
+  },
+  {
+   "claim": "Bu savolni 1611-yilda nemis astronomi Iogann Kepler alohida kitobda bergan va javobini topa olmagan",
+   "source": "corner/management/commands/_stories_matematika_olami_30_36.py (story 16)"
+  },
+  {
+   "claim": "Suv muzlaganda molekulalari asalari uyiga oʻxshash olti burchakli panjaraga terilib qotadi; qor parchasi shu panjaradan oʻsgan kristal",
+   "source": "corner/management/commands/_stories_matematika_olami_30_36.py (story 16)"
+  },
+  {
+   "claim": "Parcha juda kichik, oltita nuri bir vaqtda bir xil harorat va namlikdan oʻtadi va bir xil shoxlanadi",
+   "source": "corner/management/commands/_stories_matematika_olami_30_36.py (story 16)"
+  },
+  {
+   "claim": "Uilson Bentli 1885-yilda qor parchasini birinchi marta suratga olgan, 5000 dan ortiq parchani suratga olib, ikkita bir xilini topmagan",
+   "source": "corner/management/commands/_stories_matematika_olami_30_36.py (story 16)"
+  },
+  {
+   "claim": "Koch qor parchasining chegarasi cheksiz uzun boʻladi (keyingi qism uchun ilmoq)",
+   "source": "corner/management/commands/_stories_matematika_olami_30_36.py (story 16)"
+  }
+ ],
+ "style_line": "Premium 3D animated feature film style, soft winter daylight, gently falling snow, crisp blue-white and warm amber palette, tactile wool and wood textures, cosy Central Asian winter mood. No text, no letters, no numbers, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: qishki hovli",
+   "prompt": "Vertical 9:16 wide shot of a quiet Uzbek family courtyard in winter: a bare apricot tree with snow on its branches, a carved wooden blue gate, a raised wooden tapchan platform covered with snow, a mud-brick wall with a small window glowing warm, large snowflakes falling slowly. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Malika",
+   "prompt": "Vertical 9:16 full-body portrait of an Uzbek girl about eight years old, round cheeks pink from the cold, big curious dark eyes, two dark braids, a RED knitted hat with a white pompom, a dark green padded winter coat, NAVY BLUE wool mittens, felt boots. She holds one mittened hand palm-up, catching snow. Snowy background softly blurred."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Bobo",
+   "prompt": "Vertical 9:16 full-body portrait of a kind Uzbek grandfather about seventy, short white beard, ROUND WIRE GLASSES, a grey lambskin hat, a long dark blue quilted chapan with a warm grey wool scarf, smiling with crinkled eyes, hands behind his back. Snowy background softly blurred."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Hovlida ikkovi",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot in the snowy courtyard: the girl stands by the apricot tree holding out her navy mitten with a few snowflakes on it, looking up at her grandfather; the grandfather bends down beside her, smiling through his round glasses. Snow falls slowly. Same faces, same clothes, same light."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Qoʻlqopdagi qor parchasi",
+   "prompt": "Vertical 9:16 extreme macro shot of one perfect six-armed snowflake resting on navy blue wool mitten fibres, every arm with identical fern-like branches, glittering ice edges, shallow depth of field, a few more flakes blurred in the air."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Muz panjarasi",
+   "prompt": "Vertical 9:16 magical close-up inside freezing water: tiny glowing water molecules, each a white ball with two small pale-blue balls, drifting and then clicking together into a perfect hexagonal lattice like a honeycomb, cool blue light, sparkling, clean and elegant, deep dark-blue background."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Bulutda oʻsayotgan kristal",
+   "prompt": "Vertical 9:16 shot inside a soft grey-white winter cloud: one tiny flat hexagonal ice plate floats in the centre, glowing faintly, with six small identical arms just beginning to sprout from its six corners; drifting mist around it, cold blue rim light."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Uilson Bentli",
+   "prompt": "Vertical 9:16 respectful reconstruction of a 19th-century American farmer and snowflake photographer in a snowy Vermont farmyard: a slim man about twenty, neat moustache, flat wool cap, brown wool coat, bending over a large wooden bellows camera on a table pointed down at a small black board where a snowflake rests; a red barn behind, snow falling."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Bir, ikki… olti!",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R5",
+    "R2"
+   ],
+   "lines": [
+    {
+     "who": "Malika",
+     "text": "Bir, ikki, uch, toʻrt, besh… olti!"
+    }
+   ],
+   "prompt": "Opens on an extreme macro of a snowflake landing on a navy wool mitten with a tiny crystal chime. The camera pulls back to reveal the girl in the red knitted hat, eyes wide, touching each arm of the flake with the tip of her other mitten as she counts. Audio: crystal chime, soft wind, crunch of snow. The girl says in Uzbek with a bright, curious Uzbek girl's voice of about eight: \"Bir, ikki, uch, to'rt, besh... olti!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Nega doim olti?",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Malika",
+     "text": "Bunisi ham olti! Bobo, nega doim olti?"
+    }
+   ],
+   "prompt": "Another snowflake lands on the girl's mitten; she counts it quickly with her finger, gasps and looks up at her grandfather, puzzled; he chuckles and adjusts his round glasses. Audio: soft falling snow, a crow far away, the grandfather's chuckle. The girl says in Uzbek with a bright, curious Uzbek girl's voice of about eight: \"Bunisi ham olti! Bobo, nega doim olti?\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Eski savol",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Bobo",
+     "text": "Bu savolni 1611-yilda Kepler degan olim ham bergan. Lekin javobini topolmagan."
+    }
+   ],
+   "prompt": "Medium shot: the grandfather sits down on the edge of the snowy tapchan, takes off his round glasses, wipes a snowflake from them and puts them back on, smiling as if about to tell a secret. Audio: wood creak, soft wind. He says in Uzbek with a warm, slow, slightly gravelly Uzbek grandfather's voice of about seventy: \"Bu savolni 1611-yilda Kepler degan olim ham bergan. Lekin javobini topolmagan.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Muz ichida",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Bobo (kadr ortida)",
+     "text": "Suv muzlaganda zarralari olti burchakli panjaraga terilib qotadi. Xuddi asalari uyasidek."
+    }
+   ],
+   "prompt": "Magical slow push into the glowing molecules: they drift, turn, and click into place one by one, the hexagonal honeycomb lattice spreading outward with soft sparkles at each join. Audio: tiny glassy clicks, a soft magical shimmer. An off-screen grandfather says in Uzbek with a warm, slow, slightly gravelly Uzbek grandfather's voice of about seventy: \"Suv muzlaganda zarralari olti burchakli panjaraga terilib qotadi. Xuddi asalari uyasidek.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Olti tomonga",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Malika (kadr ortida)",
+     "text": "Demak, qor parchasi shu panjaradan olti tomonga oʻsadi!"
+    }
+   ],
+   "prompt": "Inside the cloud, the tiny hexagonal ice plate slowly rotates while its six arms grow outward at the same speed, glittering. Audio: soft airy wind, a rising crystal tone. An off-screen girl says in Uzbek with a bright, curious Uzbek girl's voice of about eight, excited: \"Demak, qor parchasi shu panjaradan olti tomonga o'sadi!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Nega bir xil?",
+   "method": "Extend",
+   "extends": 5,
+   "lines": [
+    {
+     "who": "Bobo (kadr ortida)",
+     "text": "Parcha juda kichik. Oltita nuri bir xil sovuqdan oʻtadi — bir xil shoxlanadi."
+    }
+   ],
+   "prompt": "Continue: the growing crystal falls through layers of the cloud; each time it passes a colder, brighter layer, all six arms sprout the same new side branches at exactly the same moment, perfectly symmetrical. Audio: a soft whoosh at each layer, a gentle chime as the branches appear. An off-screen grandfather says in Uzbek with a warm, slow, slightly gravelly Uzbek grandfather's voice of about seventy: \"Parcha juda kichik. Oltita nuri bir xil sovuqdan o'tadi — bir xil shoxlanadi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Besh ming surat",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Bobo (kadr ortida)",
+     "text": "1885-yilda dehqon Uilson Bentli qor parchasini ilk bor suratga oldi. Besh mingdan ortigʻini oldi — ikkita bir xilini topmadi."
+    }
+   ],
+   "prompt": "The young farmer carefully lifts a snowflake onto the black board with a feather, bends to the wooden bellows camera and squeezes the shutter bulb; a soft flash of light. Quick gentle time-passing: snow falls heavier, glass plates pile up beside him. Audio: shutter click, wind, a soft piano note. An off-screen grandfather says in Uzbek with a warm, slow, slightly gravelly Uzbek grandfather's voice of about seventy: \"1885-yilda dehqon Uilson Bentli qor parchasini ilk bor suratga oldi. Besh mingdan ortig'ini oldi — ikkita bir xilini topmadi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Sizga savol",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Malika",
+     "text": "Siz-chi? Ikkita bir xil qor parchasini koʻrganmisiz? Izohda yozing!"
+    },
+    {
+     "who": "Bobo",
+     "text": "Ertaga senga chegarasi cheksiz uzun qor parchasini koʻrsataman."
+    }
+   ],
+   "prompt": "The girl turns to the camera holding up her mitten full of sparkling snowflakes and asks the viewer with a cheeky smile; then the grandfather leans into frame behind her and winks mysteriously. Hold on the wink. Audio: falling snow, a soft magical chime. The girl says in Uzbek with a bright, curious Uzbek girl's voice of about eight: \"Siz-chi? Ikkita bir xil qor parchasini ko'rganmisiz? Izohda yozing!\" The grandfather says in Uzbek with a warm, slow, slightly gravelly Uzbek grandfather's voice of about seventy: \"Ertaga senga chegarasi cheksiz uzun qor parchasini ko'rsataman.\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Qor parchasining nurlarini sanab koʻring: doim olti! Nega? Suv muzlaganda zarralari olti burchakli panjaraga terilib qotadi. 1885-yildan beri besh mingdan ortiq parcha suratga olingan — ikkita bir xili topilmagan. Siz koʻrganmisiz? Izohda yozing! powerty.uz #negashunday #qor #ilm #matematika #Powerty"
+}
