@@ -1,0 +1,436 @@
+{
+ "_note": "POEM VERSION, ep 3 — the first \"richer\" episode (the user's sister, 2026-10-08): new places (dunes, oasis, tapchan), background action in every speaking shot, camera moves, maths overlays drawn by assemble.py. LOCAL kit; not for Telegram.",
+ "id": "sonlar-imperiyasi-sher-03",
+ "number": 32,
+ "for": "Birga",
+ "date": "2026-10-08",
+ "series": "Sonlar imperiyasi",
+ "title_uz": "3-qism. Toʻrt amal",
+ "concept_uz": "Choʻl-u dashtda egizaklar ishoralar bilan oʻynashga ruxsat soʻraydi. Plyusda oʻrin almashsa farqi yoʻq, minusda — bor. Plyus burilib «×», minus qiyshayib «/» boʻladi; Nol ularni koʻpaytirish va boʻlish deb ataydi. Oʻyin qanday boʻlmasin, javob doim Minus Bir! Shunday qilib toʻrt amal dunyoga keladi.",
+ "format_uz": "15 sahna: gapiradigan sahnalar 6 soniya, hikoyachi sahnalari 10 soniya, ikki sokin sahna 6 soniya (~1:50, 1.2× da ~1:32)",
+ "sources": [
+  "flowstudio/series/sonlar_imperiyasi_poem_draft.md (foydalanuvchining sheʼri, 3-qism)",
+  "flowstudio/series/sonlar_imperiyasi.md"
+ ],
+ "facts": [
+  {
+   "claim": "a + b = b + a (2 + 3 = 3 + 2 = 5)",
+   "source": "oʻrin almashtirish qonuni"
+  },
+  {
+   "claim": "a − b ≠ b − a (5 − 3 = 2, 3 − 5 = −2)",
+   "source": "ayirish oʻrin almashtirmaydi"
+  },
+  {
+   "claim": "1 × (−1) = (−1) × 1 = 1 : (−1) = (−1) : 1 = −1",
+   "source": "ishoralar qoidasi: bitta minus — javob minus"
+  }
+ ],
+ "style_line": "Premium 3D animated feature film style, gentle split light — cool moonlight from the left, warm sunlight from the right — soft shadows, rich colours, vertical 9:16. No text, no captions, no letters or numerals written anywhere, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Qirol Nol",
+   "prompt": "Vertical 9:16 full-body character portrait. A round king shaped like a thick, chunky upright ring with a small hole in the middle, so its wide front face is a disc. The ring is coloured like a yin-yang: the left half dark moon-silver with one small bright gold dot, the right half bright sun-gold with one small dark silver dot, the two halves curving into each other in a smooth S-shaped wave — made of polished metal, not a flat printed symbol. Big kind expressive eyes and a small mouth on the front of the ring, thin cartoon arms and legs, a small jewelled crown tilted to the left, holding a long plain wooden staff. He stands in the middle of a vast low-poly crystal plain, exactly where the cool left side meets the warm right side, front view, centred.",
+   "saved": true
+  },
+  {
+   "id": "R2",
+   "name_uz": "Bir (+1)",
+   "prompt": "Vertical 9:16 full-body character portrait. A slim upright sun-gold character shaped like a tall narrow pillar with a small slanted flag-like tip at the top, big cheerful eyes, a wide smile, thin cartoon arms and legs, and a small round badge with a plus sign pinned on its chest. It stands on the vast low-poly crystal plain, front view, centred.",
+   "saved": true
+  },
+  {
+   "id": "R3",
+   "name_uz": "Minus Bir (−1)",
+   "prompt": "Change this character: exactly the same shape, size and face, but made of shining moon-silver instead of gold, eyebrows lowered in a grumpy frown, arms crossed, and a horizontal dark-blue sash wrapped across its middle instead of the plus badge. Same plain, same framing, full body, front view.",
+   "from": "R2",
+   "saved": true
+  },
+  {
+   "id": "R4",
+   "name_uz": "Kristall tekislik",
+   "prompt": "Vertical 9:16 wide landscape. A vast empty low-poly crystal plain made of smooth faceted triangular polygons: cool lavender-blue facets on the left, warm amber facets on the right, blending softly in the middle. A thin glowing straight path runs across the ground from left to right through the centre. The sky is split the same gentle way: soft twilight indigo with a few stars on the left, where a pale moon with a gentle old woman's face smiles; warm morning light on the right, where a big warm sun with a kind old grandfather's face — smiling eyes, bushy eyebrows and a beard of rays — smiles back. Not dark, just a gentle difference between the two sides. No characters.",
+   "saved": true
+  },
+  {
+   "id": "R24",
+   "name_uz": "Quyosh yuzi",
+   "from": "R4",
+   "prompt": "Close-up of the sun from this picture: a big warm glowing sun with a kind old grandfather's face — smiling crinkled eyes, bushy golden eyebrows and a beard made of soft rays — filling the frame against the warm morning sky. Same style and colours. Vertical 9:16.",
+   "saved": true
+  },
+  {
+   "id": "R25",
+   "name_uz": "Oy yuzi",
+   "from": "R4",
+   "prompt": "Close-up of the moon from this picture: a pale silver moon with a gentle old grandmother's face — soft kind eyes, a few smile lines, a tender smile — filling the frame against the twilight indigo sky with a few stars. Same style and colours. Vertical 9:16.",
+   "saved": true
+  },
+  {
+   "id": "R26",
+   "name_uz": "Nol va egizaklar",
+   "from": [
+    "R1",
+    "R2",
+    "R3",
+    "R4"
+   ],
+   "prompt": "Put these three characters together on this crystal plain: the yin-yang ring-king exactly in the centre, the gold twin one step away on the RIGHT side of the picture (the warm sun side) and the silver twin with the dark-blue sash one step away on the LEFT side of the picture (the cool moon side). All three face the camera, full body, the twins not touching each other. Keep every character design exactly the same. Vertical 9:16.",
+   "saved": true
+  },
+  {
+   "id": "R27",
+   "name_uz": "Kristall qumtepalar",
+   "prompt": "Vertical 9:16 wide landscape. A rolling desert of smooth low-poly crystal dunes made of faceted triangular polygons: cool lavender-blue dunes on the left, warm amber and honey-gold dunes on the right, blending softly in the middle. A thin glowing straight path runs across the dunes from left to right, with small round glowing marker stones placed at exactly equal distances along it; the marker stone in the middle glows gold. Fine crystal sand drifts off the dune crests in the wind. The sky is split the same gentle way: soft twilight indigo with a few stars and a pale moon with a gentle old woman's face on the left, warm morning light and a big warm sun with a kind old grandfather's face and a beard of rays on the right. No characters."
+  },
+  {
+   "id": "R28",
+   "name_uz": "Qumtepada uchovlon",
+   "from": [
+    "R26",
+    "R27"
+   ],
+   "prompt": "Put these three characters into this crystal-dune landscape, walking toward the camera along the glowing path: the yin-yang ring-king exactly in the centre holding his staff, the gold twin with the plus badge one step away on the RIGHT side of the picture (the warm sun side) and the silver twin with the dark-blue sash one step away on the LEFT side of the picture (the cool moon side). Full body, a little crystal sand blowing around their feet. Keep every character design exactly the same. Vertical 9:16."
+  },
+  {
+   "id": "R29",
+   "name_uz": "Kristall voha",
+   "prompt": "Vertical 9:16 wide landscape. A small cosy oasis in the middle of low-poly crystal dunes: a round turquoise pond that sparkles, tall palm trees with faceted emerald crystal leaves, and beside the pond a low wooden Uzbek tapchan bed covered with a red patterned carpet and cushions, under a striped canopy, with a blue-and-white teapot and two small piyola tea bowls on a low table. Cool lavender light from the left, warm golden light from the right. No characters."
+  },
+  {
+   "id": "R30",
+   "name_uz": "Choyxonadagi qirol",
+   "from": [
+    "R1",
+    "R29"
+   ],
+   "prompt": "Put this yin-yang ring-king on the carpeted tapchan of this oasis: he sits cross-legged among the cushions, his staff leaning against the canopy pole, holding a small piyola tea bowl in one hand, eyes half-closed and content. Keep the character design exactly the same. Medium-wide shot, vertical 9:16."
+  },
+  {
+   "id": "R31",
+   "name_uz": "Ishora oʻyinchoqlari",
+   "from": [
+    "R30",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Same oasis, the king still sitting on the tapchan in the background. In the foreground, by the pond, the gold twin stands on the RIGHT side of the picture holding up in both hands a big glowing gold crystal plus sign about the size of its head, and the silver twin with the dark-blue sash stands on the LEFT side of the picture holding a glowing silver crystal bar of the same size horizontally. They grin at their new toys. The badge and the sash stay on their bodies. Keep every character design exactly the same. Full body, vertical 9:16."
+  },
+  {
+   "id": "R32",
+   "name_uz": "Ishoralar aylandi",
+   "from": "R31",
+   "prompt": "Change only the two crystal toys, keep everything else exactly the same: the gold plus sign is now turned an eighth of a turn so it stands as an X-shaped cross (a multiplication sign), and the silver bar is now tilted so it stands slanted like a slash, its top leaning to the right. Both crystals glow a little brighter. The twins stare at them with wide surprised eyes. Vertical 9:16."
+  },
+  {
+   "id": "R33",
+   "name_uz": "Uchovlon va yangi ishoralar",
+   "from": "R32",
+   "prompt": "Same oasis, same moment, but the yin-yang ring-king has got up from the tapchan and now stands between the twins by the pond, holding his staff: the gold twin with the glowing X-shaped cross on the RIGHT side of the picture, the silver twin with the glowing slanted slash on the LEFT. All three full body, facing the camera. Keep every character design exactly the same. Vertical 9:16."
+  },
+  {
+   "id": "R34",
+   "name_uz": "Toʻrt amal",
+   "from": "R33",
+   "prompt": "Same three characters at the same oasis, but the king now raises his staff high, and above its tip four glowing crystal signs float in one straight row, from left to right: a gold plus sign, a silver horizontal bar, a gold X-shaped cross, a silver slanted slash. The twins look up at them in awe, the evening sky turning golden. Keep every character design exactly the same. Vertical 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "title_uz": "Choʻl-u dasht",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R28",
+    "R27"
+   ],
+   "seconds": 10,
+   "prompt": "A self-contained 10-second shot. Across the low-poly crystal dunes under the split sky, the sun-grandfather on the right and the moon-grandmother on the left. Camera: a sweeping drone shot gliding low over the dune crests, then descending to the travellers. The yin-yang ring-king walks slowly along the glowing path with his staff, one hand on his chin, deep in thought. Around him the gold twin with the plus badge and the silver twin with the dark-blue sash race each other up a dune, slide down it on their bellies in a spray of crystal sand, roll at the bottom and run circles around the king. This is a silent scene for a voice-over added later: nobody speaks, there are no voices and no singing, only ambient sound and the sound effects below. Lip-sync: nobody on screen speaks — every mouth stays closed the whole time. Sound: wind over the dunes, crystal sand hissing on the slide, light running footsteps; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi",
+     "text": "Oshib borar choʻl-u dasht,\nNol oʻylardi tobora.\nShumtakalar surib gasht,\nOʻynash bilan ovora.",
+     "tts": "[calm, setting out on a journey] Oshib borar cho'l-u dasht,\n[thoughtful, slow] No'l o'ylardi tobora... [short pause]\n[smiling, lively] Shumtakalar surib gasht,\n[playful] O'ynash bilan ovora."
+    }
+   ],
+   "n": 1
+  },
+  {
+   "title_uz": "Ruxsat bersangiz",
+   "method": "Frames to Video",
+   "start": "R28",
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. On the low-poly crystal dunes, by the glowing path with its evenly spaced marker stones: the yin-yang ring-king in the centre, the gold twin with the plus badge on the right side of the picture (the warm sun side) and the silver twin with the dark-blue sash on the left side of the picture (the cool moon side). Camera: a medium tracking shot, moving backwards in front of them as they walk. The gold twin with the plus badge says in Uzbek with a bright, high, bouncy voice of a cheerful ten-year-old boy, quick and excited — pleading, bouncing on its toes beside the king: \"Qirol, ruxsat bersangiz,\" Then, with a hopeful grin, tapping its own plus badge: \"O'ynab ko'rsak ishora.\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Meanwhile: the silver twin with the dark-blue sash, on the left, balances along a dune crest with its arms stretched out like a tightrope walker. Lip-sync: only the gold twin with the plus badge moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: soft footsteps on crystal sand and a light hopeful twinkle; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Bir",
+     "text": "Qirol, ruxsat bersangiz,\nOʻynab koʻrsak ishora."
+    }
+   ],
+   "n": 2
+  },
+  {
+   "title_uz": "Nachora!",
+   "method": "Frames to Video",
+   "start": "R28",
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. On the low-poly crystal dunes, by the glowing path with its evenly spaced marker stones: the yin-yang ring-king in the centre, the gold twin with the plus badge on the right side of the picture (the warm sun side) and the silver twin with the dark-blue sash on the left side of the picture (the cool moon side). Camera: a low angle on the king, the split sky behind him. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — pointing his staff first at the gold twin on the right side of the picture, then at the silver twin on the left side: \"Sen musbat, sen-chi manfiy,\" Then, with a long theatrical sigh and a smile, shrugging with open palms: \"Ruxsat berdim, nachora!\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Meanwhile: on the word of permission both twins jump up and down with joy, big closed-mouth grins. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a soft chime each time the staff points, then a happy sparkle; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Nol",
+     "text": "Sen musbat, sen-chi manfiy,\nRuxsat berdim, nachora!"
+    }
+   ],
+   "n": 3
+  },
+  {
+   "title_uz": "Plyus va minus",
+   "method": "Frames to Video",
+   "start": "R31",
+   "seconds": 10,
+   "prompt": "A self-contained 10-second shot. At the small crystal oasis with the sparkling turquoise pond, the emerald crystal palm trees and the carpeted tapchan under a striped canopy. the gold twin with the plus badge holds a big glowing gold crystal plus sign, the silver twin with the dark-blue sash a glowing silver crystal bar; the king rests on the tapchan in the background. Camera: a playful side angle at sand level, then a gentle push-in. The twins lay the glowing plus sign on the sand between a small pile of crystal pebbles and a bigger pile, then swap the two piles: the plus sign glows a happy warm gold and chimes. Then they lay the silver bar between the piles and swap them again: the bar flashes red, wobbles and lets out a funny buzz, and the twins jump back, startled. This is a silent scene for a voice-over added later: nobody speaks, there are no voices and no singing, only ambient sound and the sound effects below. Lip-sync: nobody on screen speaks — every mouth stays closed the whole time. Sound: pebbles clinking, a bright happy chime, then a comic buzzer and a little startled hop; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi",
+     "text": "Plyus boʻlsa, farqi yoʻqdir,\nAlmashishga yoʻq taʼqiq.\nMinus boʻlsa-chi, agar?\nTartib boʻlishi aniq.",
+     "tts": "[light, explaining with a smile] Plyus bo'lsa, farqi yo'qdir,\n[easy] Almashishga yo'q ta'qiq. [pause]\n[curious, raising the voice] Minus bo'lsa-chi, agar?\n[firm, a wagging finger in the voice] Tartib bo'lishi aniq."
+    }
+   ],
+   "overlays": [
+    {
+     "t": 1.0,
+     "d": 3.8,
+     "text": "2 + 3 = 3 + 2"
+    },
+    {
+     "t": 5.6,
+     "d": 4.0,
+     "text": "5 − 3 ≠ 3 − 5"
+    }
+   ],
+   "n": 4
+  },
+  {
+   "title_uz": "Aylantiraylik",
+   "method": "Frames to Video",
+   "start": "R31",
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. At the small crystal oasis with the sparkling turquoise pond, the emerald crystal palm trees and the carpeted tapchan under a striped canopy. the gold twin with the plus badge on the right of the picture, the silver twin with the dark-blue sash on the left, each holding its glowing crystal toy. Camera: a close two-shot, slowly pushing in on the silver twin. The silver twin with the dark-blue sash says in Uzbek with a low, raspy, sulky voice of a grumpy ten-year-old boy, slow, with a sigh — with a mischievous grin replacing its usual frown, leaning toward the gold twin: \"Kel, bu ishoralarni\" Then, twirling the glowing silver bar between its fingers: \"Aylantirib ko'raylik.\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Meanwhile: the gold twin tosses its glowing plus sign up and catches it, eyes wide with curiosity. Lip-sync: only the silver twin with the dark-blue sash moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a soft crystal ring as the bar twirls; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Minus Bir",
+     "text": "Kel, bu ishoralarni\nAylantirib koʻraylik."
+    }
+   ],
+   "n": 5
+  },
+  {
+   "title_uz": "Klik!",
+   "method": "Frames to Video",
+   "start": "R31",
+   "end": "R32",
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. At the small crystal oasis with the sparkling turquoise pond, the emerald crystal palm trees and the carpeted tapchan under a striped canopy. Camera: a slow push-in on the two crystal toys. The gold twin with the plus badge turns its glowing plus sign an eighth of a turn — click — and it becomes an X-shaped cross; the silver twin with the dark-blue sash tilts its glowing bar — click — until it stands slanted like a slash. Both crystals flash brighter. The twins freeze and stare at their new toys. Nobody speaks in this shot: no voices, no singing, no murmur. Lip-sync: every mouth stays closed the whole time. Sound: two crisp crystal clicks and a rising magical shimmer; no background music. No subtitles, no on-screen text.",
+   "overlays": [
+    {
+     "t": 1.0,
+     "d": 4.6,
+     "text": "+   →   ×"
+    },
+    {
+     "t": 2.6,
+     "d": 3.0,
+     "text": "−   →   /",
+     "y": 0.25
+    }
+   ],
+   "n": 6
+  },
+  {
+   "title_uz": "Yo tavba",
+   "method": "Frames to Video",
+   "start": "R32",
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. At the small crystal oasis with the sparkling turquoise pond, the emerald crystal palm trees and the carpeted tapchan under a striped canopy. the gold twin with the plus badge on the right of the picture holds a glowing X-shaped cross, the silver twin with the dark-blue sash on the left a glowing slanted slash. Camera: a close-up on the gold twin, then a quick whip-pan toward the tapchan. The gold twin with the plus badge says in Uzbek with a bright, high, bouncy voice of a cheerful ten-year-old boy, quick and excited — astonished, staring at the X-shaped cross in its hands: \"Yo tavba, bular nima?\" Then, grabbing the silver twin's hand and nodding toward the king on the tapchan: \"Yur, qiroldan so'raylik.\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Meanwhile: the silver twin turns its slash round and round, puzzled. Lip-sync: only the gold twin with the plus badge moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a puzzled little \"hmm\" tone from the crystals, then quick running footsteps; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Bir",
+     "text": "Yo tavba, bular nima?\nYur, qiroldan soʻraylik."
+    }
+   ],
+   "n": 7
+  },
+  {
+   "title_uz": "Shumtakalar",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R30",
+    "R32"
+   ],
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. At the small crystal oasis with the sparkling turquoise pond, the emerald crystal palm trees and the carpeted tapchan under a striped canopy. The yin-yang ring-king sits cross-legged on the tapchan with a piyola of tea; the gold twin with the plus badge comes running in from the right and the silver twin with the dark-blue sash from the left, holding their glowing X-cross and slash. Camera: a medium shot of the tapchan from the pond side. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — mock-stern, raising an eyebrow and putting down his tea bowl: \"Voybo', shumtaka Birlar,\" Then, wagging a finger, trying hard not to laugh: \"So'ramay qilibsiz ish.\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Meanwhile: the twins hide their crystals behind their backs and shuffle their feet, sheepish. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a tea bowl clinking on the tray and a little comic \"oops\" woodwind; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Nol",
+     "text": "Voyboʼ, shumtaka Birlar,\nSoʻramay qilibsiz ish."
+    }
+   ],
+   "n": 8
+  },
+  {
+   "title_uz": "Koʻpaytirish va boʻlish",
+   "method": "Frames to Video",
+   "start": "R33",
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. At the small crystal oasis with the sparkling turquoise pond, the emerald crystal palm trees and the carpeted tapchan under a striped canopy. The yin-yang ring-king stands by the pond between the gold twin with the plus badge with the glowing X-shaped cross on the right side of the picture and the silver twin with the dark-blue sash with the glowing slanted slash on the left side. Camera: a low angle, the palms and the evening sky above them. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — proudly, tapping the X-shaped cross in the gold twin's hands with his staff: \"Ko'paytirish mana bu,\" Then, then tapping the slash in the silver twin's hands: \"Bunisi esa bo'lish.\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Meanwhile: each crystal glows brightly when the staff touches it, and its twin nods eagerly. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a bright chime on each tap; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Nol",
+     "text": "Koʻpaytirish mana bu,\nBunisi esa boʻlish."
+    }
+   ],
+   "overlays": [
+    {
+     "t": 0.6,
+     "d": 2.5,
+     "text": "×   koʻpaytirish"
+    },
+    {
+     "t": 3.3,
+     "d": 2.5,
+     "text": "/  ( : )   boʻlish"
+    }
+   ],
+   "n": 9
+  },
+  {
+   "title_uz": "Yangi oʻyinchoq",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R32",
+    "R30"
+   ],
+   "seconds": 10,
+   "prompt": "A self-contained 10-second shot. At the small crystal oasis with the sparkling turquoise pond, the emerald crystal palm trees and the carpeted tapchan under a striped canopy. Camera: a handheld following shot at the twins' height, ending on a wide shot of the oasis. The gold twin with the plus badge rolls its glowing X-shaped cross across the sand like a wheel and chases it; the silver twin with the dark-blue sash leans its glowing slash against a dune and slides down it like a playground slide, laughing silently; together they splash through the shallow edge of the pond. On the tapchan the yin-yang ring-king sips his tea, his shoulders shaking with silent laughter, mouth closed. This is a silent scene for a voice-over added later: nobody speaks, there are no voices and no singing, only ambient sound and the sound effects below. Lip-sync: nobody on screen speaks — every mouth stays closed the whole time. Sound: a rolling crystal rumble, a slide whoosh, splashes in the pond; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi",
+     "text": "Qiziqqan shumtakalar,\nQoʻlda yangi oʻyinchoq.\nZerikkan paytlarida\nBoʻldi-da zab ovunchoq.",
+     "tts": "[smiling, warm] Qiziqqan shumtakalar,\n[playful] Qo'lda yangi o'yinchoq... [short pause]\n[lazy, amused] Zerikkan paytlarida\n[cheerful] Bo'ldi-da zab ovunchoq!"
+    }
+   ],
+   "n": 10
+  },
+  {
+   "title_uz": "Javob doim Minus Bir",
+   "method": "Frames to Video",
+   "start": "R33",
+   "seconds": 10,
+   "prompt": "A self-contained 10-second shot. At the small crystal oasis with the sparkling turquoise pond, the emerald crystal palm trees and the carpeted tapchan under a striped canopy. the gold twin with the plus badge and the silver twin with the dark-blue sash face each other across a flat crystal rock by the pond. Camera: starting from straight above the rock, then dropping to a side angle. The glowing X-shaped cross lies on the rock between the twins. They slap their hands down on both sides — FLASH — the silver twin leaps up punching the air in triumph while the gold twin scratches its head. They swap sides and slap again — FLASH — silver wins again and does a little dance. They swap the cross for the glowing slash — FLASH, FLASH — and the silver twin takes a deep, proud bow while the gold twin throws up its arms. This is a silent scene for a voice-over added later: nobody speaks, there are no voices and no singing, only ambient sound and the sound effects below. Lip-sync: nobody on screen speaks — every mouth stays closed the whole time. Sound: four bright flashes with a rising \"ta-da\" each time, then a comic sad trombone for the gold twin; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi",
+     "text": "Koʻpayarlar, boʻlinar,\nNatija bari bir xil:\nJavob doim Minus Bir!\nHamma hayron, ojiz til!",
+     "tts": "[brisk, counting] Ko'payarlar, bo'linar,\n[puzzled] Natija bari bir xil... [pause]\n[laughing, triumphant] Javob doim Minus Bir!\n[amazed, slowing down] Hamma hayron, ojiz til!"
+    }
+   ],
+   "overlays": [
+    {
+     "t": 0.8,
+     "d": 8.8,
+     "text": "1 × (−1) = −1",
+     "y": 0.12
+    },
+    {
+     "t": 2.6,
+     "d": 7.0,
+     "text": "(−1) × 1 = −1",
+     "y": 0.19
+    },
+    {
+     "t": 4.4,
+     "d": 5.2,
+     "text": "1 : (−1) = −1",
+     "y": 0.26
+    },
+    {
+     "t": 5.6,
+     "d": 4.0,
+     "text": "(−1) : 1 = −1",
+     "y": 0.33
+    }
+   ],
+   "n": 11
+  },
+  {
+   "title_uz": "Hamma hayron",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R24",
+    "R25",
+    "R30"
+   ],
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. The split sky above the crystal oasis: the big warm sun with the grandfather face on the right, the pale moon with the grandmother face on the left. Camera: a tilt down from the sky to the tapchan below. The sun-grandfather and the moon-grandmother both lean in, eyebrows shooting up, eyes wide, mouths closed in astonishment. Below, on the tapchan, the yin-yang ring-king freezes with his piyola halfway to his mouth while tea dribbles over the rim. Nobody speaks in this shot: no voices, no singing, no murmur. Lip-sync: every mouth stays closed the whole time. Sound: a comic \"boing\" and a tiny tea splash; no background music. No subtitles, no on-screen text.",
+   "n": 12
+  },
+  {
+   "title_uz": "Amrimga amal",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R30",
+    "R33"
+   ],
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. At the small crystal oasis with the sparkling turquoise pond, the emerald crystal palm trees and the carpeted tapchan under a striped canopy. The yin-yang ring-king stands tall on the tapchan; the gold twin with the plus badge and the silver twin with the dark-blue sash sit cross-legged on the sand in front of it, their glowing crystals in their laps. Camera: a low angle from behind the twins up at the king. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — solemnly, like a king on a throne, raising his staff: \"Gapimga tuting quloq,\" Then, striking the staff once on the tapchan: \"Amrimga qilib amal.\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Meanwhile: the twins sit up straight, hands on knees, listening. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a deep wooden thump of the staff; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Nol",
+     "text": "Gapimga tuting quloq,\nAmrimga qilib amal."
+    }
+   ],
+   "n": 13
+  },
+  {
+   "title_uz": "Toʻrt amal",
+   "method": "Frames to Video",
+   "start": "R33",
+   "end": "R34",
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. At the small crystal oasis with the sparkling turquoise pond, the emerald crystal palm trees and the carpeted tapchan under a striped canopy. The yin-yang ring-king stands between the gold twin with the plus badge on the right side of the picture and the silver twin with the dark-blue sash on the left. Camera: a slow crane up as the signs rise. The yin-yang ring-king says in Uzbek with a deep, warm, slightly theatrical baritone voice of a kind middle-aged king, slow, with dramatic pauses — grandly, lifting his staff high: \"Endi ishoralarni\" Then, triumphantly, as four glowing crystal signs rise and line up above the staff: \"Atagaymiz to'rt amal!\" Delivery: natural dialogue that happens to rhyme, not sing-song, with a short breath between the two lines. Meanwhile: a gold plus sign floats out of the gold twin's badge and a silver bar out of the silver twin's sash, the X-cross and the slash fly up from their hands, and all four line up in a row above the staff; the twins gaze up in awe. Lip-sync: only the yin-yang ring-king moves its mouth and speaks, one line at a time, never two voices at once; every other character keeps its mouth closed; no background voices or murmur. Sound: a rising choir-like shimmer and four bell notes, one per sign; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Nol",
+     "text": "Endi ishoralarni\nAtagaymiz toʻrt amal!"
+    }
+   ],
+   "overlays": [
+    {
+     "t": 3.6,
+     "d": 2.3,
+     "text": "+    −    ×    /"
+    }
+   ],
+   "n": 14
+  },
+  {
+   "title_uz": "Davomi bor",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R34",
+    "R27"
+   ],
+   "seconds": 10,
+   "prompt": "A self-contained 10-second shot. The crystal oasis among the low-poly dunes at golden evening. Camera: starting at the three characters, then rising high into a wide aerial shot. The four glowing crystal signs shoot up into the sky like fireworks and burst into gold and silver sparkles over the oasis. The yin-yang ring-king and both twins wave at the camera with big smiles. The camera keeps rising: the oasis becomes small among the dunes, and far away on the horizon a glowing crystal city with tall slender towers catches the last light. This is a silent scene for a voice-over added later: nobody speaks, there are no voices and no singing, only ambient sound and the sound effects below. Lip-sync: nobody on screen speaks — every mouth stays closed the whole time. Sound: firework whooshes and soft crackling sparkles, then evening wind; no background music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi",
+     "text": "Shu tariqa toʻrt amal\nDunyoga kelgani rost.\nDavomini kutganlar,\nQilib qoʻying-da repost!",
+     "tts": "[grand, warm] Shu tariqa to'rt amal\n[proud] Dunyoga kelgani rost... [pause]\n[friendly, leaning in] Davomini kutganlar,\n[cheerful, a wink in the voice] Qilib qo'ying-da repost!"
+    }
+   ],
+   "n": 15
+  }
+ ],
+ "post_text_uz": "Sonlar imperiyasi · 3-qism ✖️➗\nEgizaklar ishoralarni aylantirib koʻrdi — va toʻrt amal dunyoga keldi! Nega javob doim Minus Bir? 😄\nButun ertak — powerty.uz da.\n#SonlarImperiyasi #matematika #ertak #powerty"
+}

@@ -444,3 +444,52 @@ def tag(glyph, name):
     return (f'<div class="tag">'
             f'<span class="tag__g">{glyph}</span>'
             f'<span class="tag__n">{name}</span></div>')
+
+
+# ──────────────────────────────────────────── widths: square vs circle ──
+def widths(kind, side=60, diag=85, at=0.0, step=0.9, unit="sm", w=560):
+    """mo23: a lid's WIDTHS, drawn one at a time (2026-10-09).
+
+    kind="square" draws the lid, then its side, then the diagonal in red with
+    its length -- the one width that is longer than the hole. kind="circle"
+    draws four diameters at different angles, each labelled with the SAME
+    length, so "constant width" is something the viewer watches happen four
+    times instead of a phrase. Reuses .fig--rect's classes; no new CSS.
+
+    Returns (html, seconds).
+    """
+    pad = 110
+    W_ = w + pad * 2
+    c = W_ / 2
+    red = 'style="stroke:var(--red)"'
+    parts = []
+    if kind == "square":
+        x0, y0, x1, y1 = pad, pad, pad + w, pad + w
+        parts.append(f'<rect x="{x0}" y="{y0}" width="{w}" height="{w}" class="ghost"/>')
+        parts.append(f'<line class="side" x1="{x0}" y1="{y1}" x2="{x1}" y2="{y1}" '
+                     f'{_t(at)} data-dur="0.45" data-anim="fade"/>')
+        parts.append(f'<text class="dim" x="{c}" y="{y1 + 70}" text-anchor="middle" '
+                     f'{_t(at + 0.2)} data-dur="0.4" data-anim="fade">{side} {unit}</text>')
+        parts.append(f'<line class="side" {red} x1="{x0}" y1="{y1}" x2="{x1}" y2="{y0}" '
+                     f'{_t(at + step)} data-dur="0.5" data-anim="fade"/>')
+        parts.append(f'<text class="dim" style="fill:var(--red)" x="{c - 30}" y="{c - 30}" '
+                     f'text-anchor="end" {_t(at + step + 0.3)} data-dur="0.4" '
+                     f'data-anim="pop">≈ {diag} {unit}</text>')
+        secs = step + 0.8
+    else:
+        r = w / 2
+        parts.append(f'<circle cx="{c}" cy="{c}" r="{r}" class="ghost"/>')
+        import math
+        for i, deg in enumerate((0, 45, 90, 135)):
+            a = math.radians(deg)
+            dx, dy = r * math.cos(a), r * math.sin(a)
+            parts.append(f'<line class="side" x1="{c - dx:.1f}" y1="{c - dy:.1f}" '
+                         f'x2="{c + dx:.1f}" y2="{c + dy:.1f}" {_t(at + i * step)} '
+                         f'data-dur="0.4" data-anim="fade"/>')
+        parts.append(f'<text class="dim" x="{c}" y="{c + r + 80}" text-anchor="middle" '
+                     f'{_t(at + 0.2)} data-dur="0.4" data-anim="fade">'
+                     f'har tomondan {side} {unit}</text>')
+        secs = 4 * step
+    svg = (f'<svg class="fig fig--rect" viewBox="0 0 {W_} {W_ + 40}">'
+           f'{"".join(parts)}</svg>')
+    return f'<div class="figwrap">{svg}</div>', secs

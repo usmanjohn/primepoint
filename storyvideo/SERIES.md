@@ -624,6 +624,7 @@ scene breaks, so the split is always forced. `--only N` re-takes one block.
 | Prime Math lessons | pm04 · pm07 · pm08 · pm12 · pm25 · pm55 · pm67 · pm79 · pm84 · pm90 · pm91 · pm92 · pm93 · pm94 · pm97 · pm99 | voiced · **uploaded** |
 | Matematika olami | mo01 · mo03 · mo04 | voiced · **uploaded** |
 | Matematika olami (new) | mo10 (Gauss) · mo27 (diagramma) | **scripts out, awaiting voice** |
+| Matematika olami · ElevenLabs (2026-10-09) | mo23 (lyuk — `P.widths()`) · mo37 (tugʻilgan kun) · mo41 (qogʻoz Oyga) — `math`; mo34 (koʻprik va fonar) · mo36 (Monti Xoll) — `logic` | voiced (eleven_v4) · rendered; every block STT-checked; end on `practice("Burchak · Matematika olami")` |
 | Koreya olami | ko01 · ko02 · ko03 | voiced · **uploaded** (ko02 = Sejong, the one that got traction) |
 | Tutilgan xato (Korean) | ko04 · ko05 · ko06 | voiced · ko05 + ko06 **not yet uploaded** |
 | Tutilgan xato (Korean) | ko07 · ko08 · ko09 | **scripts out, awaiting voice** |

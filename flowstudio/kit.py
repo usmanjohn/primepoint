@@ -77,6 +77,8 @@ def build(pkg_path, out):
             pics = ' + '.join('@' + x for x in sc.get('attach') or [])
         secs = sc.get('seconds') or pkg.get('clip_seconds') or SECONDS
         g.append(f"  {name} · ⏱ {secs} s · {sc['title_uz']} — {sc['method']}, {pics}   [2-sahnalar/{name}.txt]")
+        for o in sc.get('overlays') or []:
+            g.append(f"       🧮 ekranda «{o['text']}» — montajda avtomatik qoʻshiladi, Veoʼga yozdirmang")
         for ln in sc.get('lines') or []:
             if ln.get('tts'):
                 mp3 = os.path.join(out, '3-ovoz', f'{name}-hikoyachi.mp3')

@@ -147,3 +147,75 @@ Sen hamroh boʻl ularga,
 Davom etar hikoya.
 Yordam bermoq istasang,
 Layk bosishing kifoya.
+
+## Part 3 — «Toʻrt amal» (received 2026-10-08, fixes accepted the same day)
+
+Hikoyachi:
+Oshib borar choʻl-u dasht,
+Nol oʻylardi tobora.
+Shumtakalar surib gasht,
+Oʻynash bilan ovora.
+
+Bir:
+Qirol, ruxsat bersangiz,
+Oʻynab koʻrsak ishora.
+
+Nol:
+Sen musbat, sen-chi manfiy,
+Ruxsat berdim, nachora!
+
+Hikoyachi:
+Plyus boʻlsa, farqi yoʻqdir,
+Almashishga yoʻq taʼqiq.
+Minus boʻlsa-chi, agar?
+Tartib boʻlishi aniq.
+
+Minus Bir:
+Kel, bu ishoralarni
+Aylantirib koʻraylik.
+(plyus biroz burilib «×» boʻladi, minus qiyshayib «/» boʻladi)
+
+Bir:
+Yo tavba, bular nima?
+Yur, qiroldan soʻraylik.
+
+Nol:
+Voyboʼ, shumtaka Birlar,
+Soʻramay qilibsiz ish.
+Koʻpaytirish mana bu,
+Bunisi esa boʻlish.
+
+Hikoyachi:
+Qiziqqan shumtakalar,
+Qoʻlda yangi oʻyinchoq.
+Zerikkan paytlarida
+Boʻldi-da zab ovunchoq.
+
+Koʻpayarlar, boʻlinar,
+Natija bari bir xil:
+Javob doim Minus Bir!
+Hamma hayron, ojiz til!
+
+Nol:
+Gapimga tuting quloq,
+Amrimga qilib amal.
+Endi ishoralarni
+Atagaymiz toʻrt amal!
+
+Hikoyachi:
+Shu tariqa toʻrt amal
+Dunyoga kelgani rost.
+Davomini kutganlar,
+Qilib qoʻying-da repost!
+
+### What I changed in Part 3 (revert any you like)
+1. «Musbat boʻlsa farqi yoʻq / Agar manfiy boʻlsachi?» → «Plyus boʻlsa, farqi yoʻqdir / Minus boʻlsa-chi, agar?»
+   — the commutative law belongs to the OPERATIONS, not to positive/negative numbers:
+   3 + (−1) = (−1) + 3 still holds. On screen: 2 + 3 = 3 + 2, then 5 − 3 ≠ 3 − 5.
+2. «Sabab, manfiy ishora» → «Javob doim Minus Bir!» — all four answers really are −1
+   (1×(−1), (−1)×1, 1:(−1), (−1):1), but "the reason is the minus sign" could teach that order
+   never matters in division (6:2 ≠ 2:6). Now the joke is the maths: Minus Bir wins every time.
+3. «Sen Musbat, senda manfiy» → «Sen musbat, sen-chi manfiy» («senda» = "you have").
+4. «Pilus Bir» → Bir; «Qirol» → Nol; «Narrator» → Hikoyachi (the series' names).
+5. Spelling: Qiziqqon → Qiziqqan, Qilb → Qilib, Yo tovba → Yo tavba, Noʻl → Nol (Noʻl only inside Veo prompts).
+Idea parked for a later part: (−1) × (−1) = +1 — the one game Minus Bir cannot win.

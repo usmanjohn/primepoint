@@ -1,0 +1,41 @@
+Bir varaq qogʻozni qirq ikki marta buklasangiz, <break time='0.45s' /> qalinligi qancha boʻladi?
+
+<break time='2.5s' />
+
+Koʻpchilik aytadi: bir necha santimetr, nari borsa bir metr. <break time='0.45s' /> Toʻgʻri javob esa, Oygacha.
+
+<break time='2.5s' />
+
+Varaq qalinligi, millimetrning oʻndan biri. <break time='0.45s' /> Har bir buklash uni ikki barobar oshiradi.
+
+<break time='2.5s' />
+
+Yetti marta, daftar qalinligi. <break time='0.3s' /> Oʻn marta, gʻisht. <break time='0.45s' /> Yigirma marta, oʻttiz qavatli bino.
+
+<break time='2.5s' />
+
+Keyin tezlik keskin oshadi. <break time='0.3s' /> Yigirma yetti marta, Everestdan baland. <break time='0.45s' /> Oʻttiz marta, allaqachon koinot.
+
+<break time='2.5s' />
+
+Qirq ikki marta, toʻrt yuz qirq ming kilometr. <break time='0.45s' /> Oygacha esa, uch yuz sakson toʻrt ming. [gasps]
+
+<break time='2.5s' />
+
+Sir shunda: har yangi buklash oldingi hammasicha qalinlik qoʻshadi. <break time='0.45s' /> Oxirgisining oʻzi, ikki yuz yigirma ming kilometr.
+
+<break time='2.5s' />
+
+Amalda qogʻozni yetti-sakkiz martadan koʻp buklab boʻlmaydi. <break time='0.45s' /> Rekord, oʻn ikki marta.
+
+<break time='2.5s' />
+
+Ikki barobar oʻsadigan narsa boshida arzimas koʻrinadi. <break time='0.45s' /> Keyin esa bir zumda hammasini egallaydi.
+
+<break time='2.5s' />
+
+Endi oʻylang, aqlli boshlar: <break time='0.3s' /> oʻt koʻlni oʻttiz kunda qoplaydi. <break time='0.45s' /> Yarmini qachon qoplagan? Izohda kutamiz.
+
+<break time='2.5s' />
+
+Bunday hikoyalar, Powertyda, Burchak boʻlimida.

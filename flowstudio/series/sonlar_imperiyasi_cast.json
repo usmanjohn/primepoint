@@ -101,6 +101,20 @@
    "name_uz": "Oy yuzi",
    "from": "R4",
    "prompt": "Close-up of the moon from this picture: a pale silver moon with a gentle old grandmother's face — soft kind eyes, a few smile lines, a tender smile — filling the frame against the twilight indigo sky with a few stars. Same style and colours. Vertical 9:16."
+  },
+  {
+   "id": "R27",
+   "introduced": 3,
+   "version": "sheʼr",
+   "name_uz": "Kristall qumtepalar",
+   "prompt": "Vertical 9:16 wide landscape. A rolling desert of smooth low-poly crystal dunes made of faceted triangular polygons: cool lavender-blue dunes on the left, warm amber and honey-gold dunes on the right, blending softly in the middle. A thin glowing straight path runs across the dunes from left to right, with small round glowing marker stones placed at exactly equal distances along it; the marker stone in the middle glows gold. Fine crystal sand drifts off the dune crests in the wind. The sky is split the same gentle way: soft twilight indigo with a few stars and a pale moon with a gentle old woman's face on the left, warm morning light and a big warm sun with a kind old grandfather's face and a beard of rays on the right. No characters."
+  },
+  {
+   "id": "R29",
+   "introduced": 3,
+   "version": "sheʼr",
+   "name_uz": "Kristall voha",
+   "prompt": "Vertical 9:16 wide landscape. A small cosy oasis in the middle of low-poly crystal dunes: a round turquoise pond that sparkles, tall palm trees with faceted emerald crystal leaves, and beside the pond a low wooden Uzbek tapchan bed covered with a red patterned carpet and cushions, under a striped canopy, with a blue-and-white teapot and two small piyola tea bowls on a low table. Cool lavender light from the left, warm golden light from the right. No characters."
   }
  ],
  "episode_refs": [
@@ -173,6 +187,42 @@
    "id": "R26",
    "name_uz": "Nol va egizaklar",
    "episode": 1,
+   "version": "sheʼr"
+  },
+  {
+   "id": "R28",
+   "name_uz": "Qumtepada uchovlon",
+   "episode": 3,
+   "version": "sheʼr"
+  },
+  {
+   "id": "R30",
+   "name_uz": "Choyxonadagi qirol",
+   "episode": 3,
+   "version": "sheʼr"
+  },
+  {
+   "id": "R31",
+   "name_uz": "Ishora oʻyinchoqlari",
+   "episode": 3,
+   "version": "sheʼr"
+  },
+  {
+   "id": "R32",
+   "name_uz": "Ishoralar aylandi",
+   "episode": 3,
+   "version": "sheʼr"
+  },
+  {
+   "id": "R33",
+   "name_uz": "Uchovlon va yangi ishoralar",
+   "episode": 3,
+   "version": "sheʼr"
+  },
+  {
+   "id": "R34",
+   "name_uz": "Toʻrt amal",
+   "episode": 3,
    "version": "sheʼr"
   }
  ],

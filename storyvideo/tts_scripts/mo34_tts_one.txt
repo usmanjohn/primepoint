@@ -1,0 +1,37 @@
+Tun. Toʻrt kishi tor koʻprik oldida turibdi. <break time='0.45s' /> Ularda bitta fonar bor.
+
+<break time='2.5s' />
+
+Koʻprik faqat ikki kishini koʻtaradi. <break time='0.45s' /> Fonarni esa kimdir qaytarib olib kelishi kerak.
+
+<break time='2.5s' />
+
+Jasur bir daqiqada oʻtadi. <break time='0.3s' /> Afsona ikki, Sherbek besh, bobo esa oʻn daqiqada. <break time='0.45s' /> Juftlik sekinrogʻining tezligida yuradi.
+
+<break time='2.5s' />
+
+Birinchi reja: eng tez Jasur hammani bittalab kuzatadi. <break time='0.45s' /> Jami, oʻn toʻqqiz daqiqa.
+
+<break time='2.5s' />
+
+Ammo bu rejada isrof bor. <break time='0.3s' /> Bobo va Sherbek alohida oʻtyapti. <break time='0.45s' /> Ikkala sekin vaqt ham toʻliq ketadi.
+
+<break time='2.5s' />
+
+Sir: ikki eng sekinni birga yuboring. <break time='0.45s' /> Faqat narigi tomonda fonarni qaytaradigan tez odam tursin.
+
+<break time='2.5s' />
+
+Sanaymiz: ikki, bir, oʻn, ikki, ikki. <break time='0.45s' /> Jami, oʻn yetti daqiqa. [excited] Bundan tez yoʻl yoʻq!
+
+<break time='2.5s' />
+
+Har qadamda eng yaxshisini qilish, har doim eng yaxshi natija emas. <break time='0.45s' /> Buni optimallash deyishadi.
+
+<break time='2.5s' />
+
+Endi siz, aqlli boshlar: <break time='0.3s' /> bobo uch daqiqada yursa-chi? <break time='0.45s' /> Eng tez yoʻl qancha? Izohda kutamiz.
+
+<break time='2.5s' />
+
+Bunday jumboqlar, Powertyda, Burchak boʻlimida.

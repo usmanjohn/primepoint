@@ -2,6 +2,7 @@
 """Assemble a finished episode from a kit folder — no CapCut (the user's request, 2026-10-07).
 
     python3 flowstudio/assemble.py PACKAGE.json KIT_DIR [--clips DIR] [--music FILE]
+                                   [--speed 1.2] [--tight]
 
 KIT_DIR is the folder kit.py made. Put the clips downloaded from Flow in KIT_DIR/4-kliplar/
 as S01.mp4, S02.mp4 … (one per scene), and optionally one music file KIT_DIR/musiqa.mp3.
@@ -14,6 +15,10 @@ The script then:
   3. joins the scenes in order;
   4. lays the music under everything, ducked automatically whenever anyone speaks;
   5. writes KIT_DIR/TAYYOR-<id>.mp4.
+A scene may carry "overlays": [{"t": 1.0, "d": 3.0, "text": "2 + 3 = 3 + 2"}] — maths drawn
+on the picture HERE, never by Veo (it garbles digits, and the style line forbids text).
+--speed 1.2 plays picture and speech faster (pitch kept) but not the music; --tight trims the
+breath around the storyteller (the user's sister: "a little slow to wait", 2026-10-08).
 Needs ffmpeg (not ffprobe — this Mac has none).
 """
 import json
@@ -31,6 +36,9 @@ MUSIC_LEVEL = 0.22         # music bed, before ducking
 SPEECH_LUFS = -20          # every clip's own sound evened out to this before joining
 FINAL_LUFS = -14           # what Instagram / YouTube play at
 EDGE = 0.03                # s of audio fade at every cut — no clicks
+FONT = '/System/Library/Fonts/Supplemental/Arial Bold.ttf'   # has − × ≠ : (no ✓ — use = / ≠)
+OVERLAY_SIZE = 92
+OVERLAY_FADE = 0.25
 
 
 def run(args):
@@ -54,11 +62,29 @@ def has_audio(path):
     return 'Audio:' in r.stderr
 
 
-def segment(clip, voice, out):
+def overlay_filter(overlays, tmp, name):
+    """drawtext for a scene's maths overlays (each text from a file: no escaping of ':' or '=')."""
+    out = ''
+    for k, o in enumerate(overlays or []):
+        path = os.path.join(tmp, f'{name}-ov{k}.txt')
+        with open(path, 'w', encoding='utf-8') as f:
+            f.write(o['text'])
+        a, b, fd = float(o['t']), float(o['t']) + float(o['d']), OVERLAY_FADE
+        alpha = (f"if(lt(t,{a}),0,if(lt(t,{a + fd}),(t-{a})/{fd},"
+                 f"if(lt(t,{b - fd}),1,if(lt(t,{b}),({b}-t)/{fd},0))))")
+        y = o.get('y', 0.15)
+        out += (f",drawtext=fontfile='{FONT}':textfile='{path}':fontsize={OVERLAY_SIZE}:"
+                f"fontcolor=white:borderw=6:bordercolor=0x24184f:shadowx=0:shadowy=6:shadowcolor=black@0.35:"
+                f"x=(w-text_w)/2:y=h*{y}-text_h/2:alpha='{alpha}':enable='between(t,{a},{b})'")
+    return out
+
+
+def segment(clip, voice, out, overlays=None):
     """One scene → a normalised mp4 (with the voice-over mixed in, if any)."""
     vd = duration(clip)
     norm = (f'scale={W}:{H}:force_original_aspect_ratio=decrease,pad={W}:{H}:(ow-iw)/2:(oh-ih)/2,'
             f'setsar=1,fps={FPS},format=yuv420p')
+    norm += overlay_filter(overlays, os.path.dirname(out), os.path.basename(out)[:-4])
     # level only clips where characters SPEAK; a voice-over scene keeps its quiet ambience as it is
     level = f',loudnorm=I={SPEECH_LUFS}:TP=-2:LRA=11,aresample=48000' if not voice else ''
     sound = (f'[0:a]aresample=48000,aformat=channel_layouts=stereo{level}' if has_audio(clip)
@@ -127,7 +153,7 @@ def find_clips(folder, scene_numbers):
     return found
 
 
-def build(pkg_path, kit, clips_dir=None, music=None):
+def build(pkg_path, kit, clips_dir=None, music=None, speed=1.0):
     with open(pkg_path, encoding='utf-8') as f:
         pkg = json.load(f)
     clips_dir = clips_dir or os.path.join(kit, '4-kliplar')
@@ -140,13 +166,18 @@ def build(pkg_path, kit, clips_dir=None, music=None):
         n = f'S{a:02d}' + (f'-{b:02d}' if b != a else '')
         voice = os.path.join(kit, '3-ovoz', f'S{a:02d}-hikoyachi.mp3')
         out = os.path.join(tmp, f'{n}.mp4')
-        lens.append(segment(path, voice if (a == b and os.path.exists(voice)) else None, out))
+        overlays = [o for sc in pkg['scenes'] if int(sc['n']) == a for o in sc.get('overlays') or []]
+        lens.append(segment(path, voice if (a == b and os.path.exists(voice)) else None, out, overlays))
         parts.append(out)
         print(f'  {n} ✓  ({os.path.basename(path)})')
     joined = os.path.join(tmp, 'joined.mp4')
     length = join(parts, lens, joined)
 
-    final = os.path.join(kit, f"TAYYOR-{pkg['id']}.mp4")
+    tag = f'-x{speed:g}' if speed != 1 else ''
+    final = os.path.join(kit, f"TAYYOR-{pkg['id']}{tag}.mp4")
+    fast_v = f'setpts=PTS/{speed},fps={FPS},' if speed != 1 else ''
+    fast_a = f'atempo={speed},' if speed != 1 else ''
+    length /= speed
     music = music or next((os.path.join(kit, m) for m in sorted(os.listdir(kit))
                            if m.lower().startswith('musiqa') and m.lower().endswith(('.mp3', '.m4a', '.wav'))), None)
     fade = max(length - 1.2, 0)
@@ -154,14 +185,14 @@ def build(pkg_path, kit, clips_dir=None, music=None):
     master = f'loudnorm=I={FINAL_LUFS}:TP=-1.5:LRA=11,aresample=48000,afade=t=in:d=0.5,afade=t=out:st={fade:.3f}:d=1.2'
     if not music:
         print('(musiqa yoʻq — KIT papkasiga musiqa.mp3 qoʻysangiz, qoʻshiladi)')
-        run(['-i', joined, '-filter_complex', f'[0:v]{vfade}[v];[0:a]{master}[a]', '-map', '[v]', '-map', '[a]',
+        run(['-i', joined, '-filter_complex', f'[0:v]{fast_v}{vfade}[v];[0:a]{fast_a}{master}[a]', '-map', '[v]', '-map', '[a]',
              '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-preset', 'medium', '-crf', '18', '-c:a', 'aac', '-b:a', '192k', final])
     else:
         mfade = max(length - 2.5, 0)
-        fc = (f'[0:v]{vfade}[v];'
+        fc = (f'[0:v]{fast_v}{vfade}[v];'
               f'[1:a]aresample=48000,aformat=channel_layouts=stereo,volume={MUSIC_LEVEL},'
               f'atrim=0:{length:.3f},afade=t=in:d=1.5,afade=t=out:st={mfade:.3f}:d=2.5[m];'
-              f'[0:a]asplit=2[sc][main];'
+              f'[0:a]{fast_a}asplit=2[sc][main];'
               f'[m][sc]sidechaincompress=threshold=0.02:ratio=8:attack=20:release=400[duck];'
               f'[main][duck]amix=inputs=2:duration=first:normalize=0,{master}[a]')
         run(['-i', joined, '-stream_loop', '-1', '-i', music, '-filter_complex', fc,
@@ -183,4 +214,7 @@ if __name__ == '__main__':
             and (i == 0 or not sys.argv[i].startswith('--'))]
     if len(args) != 2:
         sys.exit(__doc__)
-    build(args[0], os.path.expanduser(args[1]), _opt(sys.argv, '--clips'), _opt(sys.argv, '--music'))
+    if '--tight' in sys.argv:
+        VOICE_DELAY, VOICE_TAIL = 0.2, 0.25
+    build(args[0], os.path.expanduser(args[1]), _opt(sys.argv, '--clips'), _opt(sys.argv, '--music'),
+          float(_opt(sys.argv, '--speed') or 1))
