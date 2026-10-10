@@ -1,0 +1,218 @@
+{
+ "id": "2026-10-10-bobolar-xorazmiy-aljabr",
+ "number": 38,
+ "for": "Inom",
+ "date": "2026-10-10",
+ "series": "Bobolar sirri",
+ "title_uz": "Minus uchta qoʻy yoʻq",
+ "concept_uz": "Oʻquvchi qiz «x − 5 = 7» ni yechib, beshni narigi tomonga oʻtkazadi. Bu harakatning nomi 1200 yil oldin Bagʻdodda al-Xorazmiy kitobida tugʻilgan: «al-jabr» — butunlash. Burilish: u manfiy sonni tan olmagan — «minus uchta qoʻy» yoʻq — shuning uchun minusni har doim narigi tomonga koʻchirgan. Oxirida tomoshabin oʻzi yechadi.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_05.py (story 2, «Al-jabr» — algebra tugʻilgan kitob)"
+ ],
+ "facts": [
+  {
+   "claim": "Taxminan 1200 yil oldin Bagʻdoddagi «Bayt ul-hikma» (Donishmandlik uyi) dunyoning eng katta ilmiy markazi edi; al-Xorazmiy u yerda ishlagan",
+   "source": "_stories_matematika_olami_05.py body"
+  },
+  {
+   "claim": "Toʻliq ismi Muhammad ibn Muso al-Xorazmiy; matn uni «Xorazmdan chiqqan olim» deydi",
+   "source": "_stories_matematika_olami_05.py body"
+  },
+  {
+   "claim": "«Al-jabr» — butunlash, tiklash: ayirilayotgan sonni ikkinchi tomonga oʻtkazish; x − 5 = 7 → x = 12",
+   "source": "_stories_matematika_olami_05.py body + grammar"
+  },
+  {
+   "claim": "Al-Xorazmiy davrida manfiy sonlar qabul qilinmagan; «minus uchta qoʻy» mavjud emas — son bu miqdor: qoʻy, tanga, yer",
+   "source": "_stories_matematika_olami_05.py body"
+  },
+  {
+   "claim": "Kitobda belgi yoʻq — na x, na tenglik ishorasi; «bir mol va oʻn ildiz oʻttiz toʻqqizga teng» deb soʻz bilan yozilgan",
+   "source": "_stories_matematika_olami_05.py body"
+  },
+  {
+   "claim": "XII asrda kitob lotin tiliga oʻgirildi; yevropaliklar uni «al-jabr» deb atadi va undan «algebra» soʻzi chiqdi",
+   "source": "_stories_matematika_olami_05.py body"
+  },
+  {
+   "claim": "Tomoshabin uchun savol: x − 9 = 11 → x = 20 (11 + 9)",
+   "source": "hisoblangan, xuddi shu al-jabr qadami"
+  },
+  {
+   "claim": "Shogird va tangali mato — sahnalashtirish (dramatizatsiya), tarixiy daʼvo emas",
+   "source": "ssenariy"
+  }
+ ],
+ "style_line": "Cinematic photoreal historical drama, warm oil-lamp and golden-hour light, rich ochre, deep green and indigo tones, soft haze and floating dust, 35mm film look; modern classroom scenes bright and natural. No text, no letters, no numbers, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: Donishmandlik uyi",
+   "prompt": "Vertical 9:16 wide shot of a grand ninth-century library hall in Baghdad, a respectful historical reconstruction: tall pointed arches, carved wooden lattice screens, shelves of bound manuscripts and scrolls, low wooden desks with oil lamps and reed pens, patterned carpets, a sunlit courtyard with a small fountain beyond the arches. Manuscripts show only blurred, illegible marks. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Al-Xorazmiy",
+   "prompt": "Vertical 9:16 waist-up portrait, respectful historical reconstruction of a ninth-century Central Asian scholar about 45: calm intelligent face, dark beard with grey streaks, white turban, long deep-green robe with a wide INDIGO-BLUE SASH, a reed pen in his right hand, sitting at a low wooden desk with an oil lamp in a grand old library. Warm, wise expression."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Shogird",
+   "prompt": "Vertical 9:16 waist-up portrait of a ninth-century apprentice boy about 16 in a grand old library: curious bright eyes, short dark hair under a small white cap, plain beige cotton robe with a RUST-ORANGE cloth belt, holding a small wooden tablet. Eager, slightly puzzled expression."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Oʻquvchi qiz",
+   "prompt": "Vertical 9:16 waist-up portrait of a modern Uzbek schoolgirl about 14: two dark braids with WHITE RIBBON BOWS, white school blouse and dark navy vest, a YELLOW PENCIL tucked behind her right ear, lively confident face, sitting in a bright modern classroom."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Qiz daftar ustida",
+   "from": "R4",
+   "prompt": "Change the scene: the same girl sits at a wooden school desk, leaning over an open notebook with a pencil in her hand; the page is covered in soft, blurred, unreadable pencil marks. Sunny classroom window behind her, other pupils softly blurred. Same face, same braids and ribbons, 9:16."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Ustoz va shogird",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot in the same library hall: the scholar with the indigo sash and the apprentice with the rust-orange belt sit on a carpet facing each other across a dark cloth laid on the floor; a thin white cord divides the cloth into two halves, with small piles of copper coins on each side. Oil lamp light. Same faces, same light."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Tangali mato",
+   "from": "R6",
+   "prompt": "Change the scene: top-down close-up of the same dark cloth divided by the thin white cord. On the left side: a pile of copper coins and, a little apart from it, a small neat stack of exactly five coins. On the right side: a pile of copper coins. The scholar's hand, with the indigo sleeve edge visible, rests near the stack of five. Same light, 9:16."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Yevropa kutubxonasi",
+   "prompt": "Vertical 9:16 interior of a candle-lit stone library in twelfth-century Europe: a middle-aged translator in a plain brown hooded robe with a GREY ROPE BELT sits at a slanted wooden desk, copying from an old manuscript into a new leather-bound book with a quill. Rain on a narrow arched window. All writing is blurred and illegible."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Daftar",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Oʻquvchi qiz",
+     "text": "Iks minus besh yettiga teng. Beshni narigi tomonga oʻtkazaman — iks oʻn ikki!"
+    }
+   ],
+   "prompt": "Close-up, then a quick push-in: a pencil taps twice on a notebook page covered in soft, blurred, unreadable pencil marks; the schoolgirl draws a quick arrow and grins, tapping the pencil again. Audio: two sharp pencil taps, a classroom murmur, chalk on a board in the distance. The schoolgirl says quickly to herself in Uzbek with a bright, clear Uzbek girl's voice, about fourteen, quick and confident: \"Iks minus besh yettiga teng. Beshni narigi tomonga o'tkazaman — iks o'n ikki!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Donishmandlik uyi",
+   "method": "Frames to Video",
+   "start": "R1",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Bu harakatning nomi bor. Uni taxminan ming ikki yuz yil oldin Bagʻdodda bir olim kitobga yozgan."
+    }
+   ],
+   "prompt": "Slow, majestic push-in through the great hall of the old library at golden hour: dust floating in light beams, scholars bent over manuscripts in the distance, a fountain murmuring in the courtyard beyond the arches. Audio: soft pages turning, distant water, a reed pen scratching. An off-screen old man says in Uzbek with a deep, warm, unhurried Uzbek male storyteller voice, about sixty: \"Bu harakatning nomi bor. Uni taxminan ming ikki yuz yil oldin Bag'dodda bir olim kitobga yozgan.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Olim",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Xorazmdan chiqqan olim — Muhammad ibn Muso al-Xorazmiy. U Donishmandlik uyida ishlardi."
+    }
+   ],
+   "prompt": "Medium shot: the scholar with the indigo sash sits at a low wooden desk by an oil lamp, dips a reed pen in ink, writes a line of blurred script on paper, pauses and looks up thoughtfully. The great library hall behind him. Audio: lamp flame flutter, pen on paper. An off-screen old man says in Uzbek with a deep, warm, unhurried Uzbek male storyteller voice, about sixty: \"Xorazmdan chiqqan olim — Muhammad ibn Muso al-Xorazmiy. U Donishmandlik uyida ishlardi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Savol",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Shogird",
+     "text": "Ustoz, minus uchta qoʻy boʻladimi?"
+    },
+    {
+     "who": "Al-Xorazmiy",
+     "text": "Yoʻq. Son — bu miqdor: qoʻy, tanga, yer."
+    }
+   ],
+   "prompt": "The young apprentice leans over the counting cloth, frowning, holding up three fingers; the scholar smiles gently and shakes his head, pointing to the coins on the cloth. Audio: coins clinking softly, quiet library. The apprentice asks in Uzbek with a light, eager Uzbek teenage boy's voice, about sixteen, curious: \"Ustoz, minus uchta qo'y bo'ladimi?\" Then the scholar answers in Uzbek with a calm, warm, low Uzbek male voice of a scholar, about forty-five, kind and precise: \"Yo'q. Son — bu miqdor: qo'y, tanga, yer.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Al-jabr",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Al-Xorazmiy (kadr ortida)",
+     "text": "Minus qolmasin. Ayirilganni narigi tomonga oʻtkazib, butunlaymiz. Buning nomi — al-jabr."
+    }
+   ],
+   "prompt": "Top-down close-up of the counting cloth: the scholar's hand slides a small stack of five copper coins across the dividing cord from one side to the other, and taps the cord once. Calm, satisfying motion. Audio: coins sliding on cloth, one soft tap. The scholar, off-screen, says in Uzbek with a calm, warm, low Uzbek male voice of a scholar, about forty-five, kind and precise: \"Minus qolmasin. Ayirilganni narigi tomonga o'tkazib, butunlaymiz. Buning nomi — al-jabr.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Belgisiz kitob",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Al-Xorazmiy",
+     "text": "Bir mol va oʻn ildiz oʻttiz toʻqqizga teng."
+    },
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Kitobda na iks bor edi, na tenglik belgisi. Hammasi soʻz bilan yozilgan."
+    }
+   ],
+   "prompt": "Close-up: the scholar reads aloud from his manuscript, tracing the blurred script with one finger, then looks up with a small smile. Audio: page rustle, lamp flame. The scholar reads aloud in Uzbek with a calm, warm, low Uzbek male voice of a scholar, about forty-five, kind and precise: \"Bir mol va o'n ildiz o'ttiz to'qqizga teng.\" Then an off-screen old man says in Uzbek with a deep, warm, unhurried Uzbek male storyteller voice, about sixty: \"Kitobda na iks bor edi, na tenglik belgisi. Hammasi so'z bilan yozilgan.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Yevropa",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Oʻn ikkinchi asrda kitob lotin tiliga oʻgirildi. Uzun nomdan bitta soʻz qoldi: al-jabr. Bugun biz uni algebra deymiz."
+    }
+   ],
+   "prompt": "Slow pan across a candle-lit stone library in medieval Europe: the translator copies from an old manuscript into a new book, turning a page. Audio: quill scratching, a distant church-like bell, rain on stone. An off-screen old man says in Uzbek with a deep, warm, unhurried Uzbek male storyteller voice, about sixty: \"O'n ikkinchi asrda kitob lotin tiliga o'girildi. Uzun nomdan bitta so'z qoldi: al-jabr. Bugun biz uni algebra deymiz.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Sizning navbatingiz",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Oʻquvchi qiz",
+     "text": "Demak, algebra — Xorazmlik olim kitobining nomi! Sinab koʻring: iks minus toʻqqiz oʻn birga teng. Iks nechchi? Izohda yozing!"
+    }
+   ],
+   "prompt": "The schoolgirl looks up from her notebook, amazed, then turns and looks straight into the camera with a challenging smile, pencil raised. Hold on her look at the end. Audio: classroom murmur, one pencil tap. The schoolgirl says to the camera in Uzbek with a bright, clear Uzbek girl's voice, about fourteen, quick and confident: \"Demak, algebra — Xorazmlik olim kitobining nomi! Sinab ko'ring: iks minus to'qqiz o'n birga teng. Iks nechchi? Izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "«x − 5 = 7» ni yechganingizda beshni narigi tomonga oʻtkazasiz. Bu harakatning nomi bor — «al-jabr». Uni 1200 yil oldin Xorazmdan chiqqan olim yozgan, «algebra» soʻzi ham shundan. Endi siz: x − 9 = 11 boʻlsa, x nechchi? Javobni izohda yozing! #BobolarSirri #alXorazmiy #algebra #matematika #Powerty"
+}

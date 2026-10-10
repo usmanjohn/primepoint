@@ -1,0 +1,226 @@
+{
+ "id": "2026-10-10-hayot-soyabon",
+ "number": 39,
+ "for": "Jonibek",
+ "date": "2026-10-10",
+ "series": "Hayot hikoyasi",
+ "title_uz": "14-gate oldidagi soyabon",
+ "concept_uz": "Jala, tungi aeroport, reys bekor qilingan. Yonidagi toʻqiyotgan kampir notanish yigitga soyabonini beradi. Burilish: bir paytlar unga ham notanish odam soyabon bergan va «bir kun boshqa birovga bering» degan — u oʻshandan beri sumkasida ortiqcha soyabon olib yuradi. Endi yigit ham shunday qiladi.",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "corner/management/commands/_stories_life_1_6.py (story 1, «The Umbrella at Gate 14»)"
+ ],
+ "facts": [
+  {
+   "claim": "Hikoyachi oʻn yildan beri ish bilan uchadi, uni kam narsa ajablantiradi",
+   "source": "_stories_life_1_6.py story 1"
+  },
+  {
+   "claim": "Ulanuvchi reysi ogohlantirishsiz bekor qilingan, tashqarida jala; u 14-gate yonida oʻtirgan",
+   "source": "_stories_life_1_6.py story 1"
+  },
+  {
+   "claim": "Yaqinda oʻtirgan keksa ayol xotirjam toʻqib oʻtirgan va qoʻngandan keyin uyga qanday borishini soʻragan; mashinasi boshqa aeroportda qolgan",
+   "source": "_stories_life_1_6.py story 1"
+  },
+  {
+   "claim": "Ayol kichik yigʻma soyabonni berib, «uyga hoʻl boʻlib bormang» degan; u rad etmoqchi boʻlgan",
+   "source": "_stories_life_1_6.py story 1"
+  },
+  {
+   "claim": "Yillar oldin boʻronda qolganida notanish odam unga soyabon bergan, qaytib olmagan va «bir kun boshqa birovga bering» degan; oʻshandan beri u sumkasida ortiqcha soyabon olib yurgan",
+   "source": "_stories_life_1_6.py story 1"
+  },
+  {
+   "claim": "U oʻsha kechasi soatlab kechikib uchgan va yomgʻirda uning soyabonidan foydalangan",
+   "source": "_stories_life_1_6.py story 1"
+  },
+  {
+   "claim": "Endi oʻzi ham sumkasida ortiqcha soyabon olib yuradi va uni ikki marta notanish odamlarga bergan",
+   "source": "_stories_life_1_6.py story 1"
+  }
+ ],
+ "style_line": "Cinematic photoreal drama, rainy night, cool blue-grey light from windows and screens against warm amber lamps, glistening wet reflections, soft film grain, 35mm look, quiet tender mood. No text, no letters, no logos, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: tungi aeroport",
+   "prompt": "Vertical 9:16 wide shot of a quiet airport departure hall at night during a heavy rainstorm: huge dark windows streaked with rain, rows of grey waiting seats, a departure board of blurred, unreadable flickering lines, wet reflections on the floor. No airline logos, no readable text. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Yoʻlovchi",
+   "prompt": "Vertical 9:16 waist-up portrait of an Uzbek man about 35, short dark hair, tired kind eyes, light stubble, wearing a NAVY RAINCOAT over a white shirt and a GREY WOOL SCARF, a black carry-on bag strap on his shoulder, standing in a night airport hall with rain on the windows behind him."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Kampir",
+   "prompt": "Vertical 9:16 waist-up portrait of an elderly Uzbek woman about 70, kind wrinkled face, ROUND GOLD-RIMMED GLASSES, a soft white headscarf, a LAVENDER KNITTED SHAWL over a dark dress, knitting something cream-coloured with two wooden needles, a cloth knitting bag on her lap, sitting calmly in an airport seat at night."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Ikkalasi gate oldida",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot in the same night airport hall: the elderly woman knitting in one seat, two seats away the tired man in the navy raincoat and grey scarf, both lit by the cold light of the board, rain on the window behind. Same faces, same light."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Soyabonni berish",
+   "from": "R4",
+   "prompt": "Change the scene: the elderly woman has moved to the seat next to the man and is pressing a small folded dark-green umbrella into his hands; he looks surprised, palms half-raised. Close two-shot. Same faces, same light, 9:16."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Xotira: yosh ayol boʻronda",
+   "from": "R3",
+   "prompt": "Change the scene: the same woman many years younger, about 30, same kind face, no glasses, a lavender headscarf, soaked by rain, standing under a shop awning on an old city street at night in a storm, while a stranger seen only from behind in a dark coat holds a black umbrella out to her. Faded, warm, slightly grainy memory look, 9:16."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Yomgʻirda uyga",
+   "from": "R2",
+   "prompt": "Change the scene: the same man in the navy raincoat and grey scarf walks along a wet city street at night in heavy rain under a small dark-green folding umbrella, street lamps glowing in the puddles. Full body, slightly low angle. Same face, 9:16."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Bekatda",
+   "from": "R2",
+   "prompt": "Change the scene: the same man in the grey scarf stands at a covered city bus stop in the rain, holding out a small folded spare umbrella to a soaked, tired young Uzbek student about 20 with a backpack. Evening light, wet street. Same face, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Bekor qilindi",
+   "method": "Frames to Video",
+   "start": "R1",
+   "lines": [
+    {
+     "who": "Yoʻlovchi (kadr ortida)",
+     "text": "Oʻn yildan beri ish bilan uchaman. Meni hech narsa ajablantirmaydi, deb oʻylardim."
+    }
+   ],
+   "prompt": "A crack of thunder; rain hammers the huge dark windows of the night terminal. Slow push-in down the empty waiting hall toward a quiet gate, where the departure board flickers and rows of blurred red lights blink. Audio: thunder, heavy rain on glass, a soft airport chime, a tired murmur of passengers. An off-screen man says in Uzbek with a calm, slightly tired Uzbek male voice, about thirty-five, quiet and sincere: \"O'n yildan beri ish bilan uchaman. Meni hech narsa ajablantirmaydi, deb o'ylardim.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Kutish",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Yoʻlovchi (kadr ortida)",
+     "text": "Oʻsha kechasi reysim bekor qilindi. Tashqarida jala quyardi."
+    }
+   ],
+   "prompt": "Medium shot: the traveller in the navy raincoat and grey scarf drops into a seat near the gate, rubs his face, and stares at the rain-streaked window. Audio: rain, a distant announcement chime, his long sigh. An off-screen man says in Uzbek with a calm, slightly tired Uzbek male voice, about thirty-five, quiet and sincere: \"O'sha kechasi reysim bekor qilindi. Tashqarida jala quyardi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Toʻqiyotgan kampir",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Kampir",
+     "text": "Oʻgʻlim, qoʻnganingizdan keyin uyga qanday borasiz?"
+    },
+    {
+     "who": "Yoʻlovchi",
+     "text": "Mashinam boshqa aeroportda. Ivib ketaman-da."
+    }
+   ],
+   "prompt": "The elderly woman in the lavender shawl knits calmly, needles clicking, completely at peace amid the chaos; she glances over her round glasses at the traveller and asks him kindly. He turns, surprised, and answers with a tired half-smile. Audio: knitting needles clicking, rain. The elderly woman asks in Uzbek with a soft, kind, unhurried elderly Uzbek female voice, about seventy, gently smiling: \"O'g'lim, qo'nganingizdan keyin uyga qanday borasiz?\" The man answers in Uzbek with a calm, slightly tired Uzbek male voice, about thirty-five, quiet and sincere: \"Mashinam boshqa aeroportda. Ivib ketaman-da.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Soyabon",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Kampir",
+     "text": "Mana, oling. Uyga hoʻl boʻlib bormang."
+    },
+    {
+     "who": "Yoʻlovchi",
+     "text": "Yoʻq-yoʻq, kerak emas…"
+    }
+   ],
+   "prompt": "Without hesitating, the elderly woman takes a small folded umbrella from her knitting bag and presses it into his hands; he lifts his palms to refuse, she gently pushes his hands closed around it. Audio: rain, the soft rustle of the bag. The elderly woman says in Uzbek with a soft, kind, unhurried elderly Uzbek female voice, about seventy, gently smiling: \"Mana, oling. Uyga ho'l bo'lib bormang.\" The man says in Uzbek with a calm, slightly tired Uzbek male voice, about thirty-five, quiet and sincere: \"Yo'q-yo'q, kerak emas...\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Uning hikoyasi",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Kampir (kadr ortida)",
+     "text": "Bir paytlar men ham boʻronda qolganman. Notanish odam soyabonini berdi-yu, qaytib olmadi."
+    }
+   ],
+   "prompt": "Soft, faded memory: in a night storm on an old city street, the young woman stands soaked and shivering under a shop awning; a stranger, seen only from behind in a dark coat, holds a black umbrella over her and puts it in her hand, then walks away into the rain without it. Audio: storm, rain on the umbrella, fading footsteps. An off-screen elderly woman says in Uzbek with a soft, kind, unhurried elderly Uzbek female voice, about seventy, gently smiling: \"Bir paytlar men ham bo'ronda qolganman. Notanish odam soyabonini berdi-yu, qaytib olmadi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Navbat",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Kampir",
+     "text": "U faqat dedi: bir kun buni boshqa birovga bering. Oʻshandan beri sumkamda doim ortiqcha soyabon yuradi."
+    }
+   ],
+   "prompt": "Close-up of the elderly woman back in the terminal, holding the traveller's gaze with a small, warm smile, her hand resting on her knitting bag. Audio: rain, the needles still for a moment. The elderly woman says in Uzbek with a soft, kind, unhurried elderly Uzbek female voice, about seventy, gently smiling: \"U faqat dedi: bir kun buni boshqa birovga bering. O'shandan beri sumkamda doim ortiqcha soyabon yuradi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Yomgʻirda uyga",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Yoʻlovchi (kadr ortida)",
+     "text": "Soatlab kechikib uchdim. Lekin uyga quruq bordim — uning soyabonida."
+    }
+   ],
+   "prompt": "Night, wet street, glowing puddles. The traveller walks home slowly under the small umbrella, rain pouring around him, and looks up at it with a quiet smile. Audio: rain drumming on the umbrella, distant traffic. An off-screen man says in Uzbek with a calm, slightly tired Uzbek male voice, about thirty-five, quiet and sincere: \"Soatlab kechikib uchdim. Lekin uyga quruq bordim — uning soyabonida.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Mening navbatim",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Yoʻlovchi (kadr ortida)",
+     "text": "Endi mening sumkamda ham ortiqcha soyabon bor. Hozircha uni ikki marta berdim."
+    }
+   ],
+   "prompt": "Some time later, rain at a bus stop: the traveller, the same grey scarf, takes a spare folded umbrella from his own bag and holds it out to a soaked, tired young student, who hesitates, then takes it. Audio: rain, a passing bus. An off-screen man says in Uzbek with a calm, slightly tired Uzbek male voice, about thirty-five, quiet and sincere: \"Endi mening sumkamda ham ortiqcha soyabon bor. Hozircha uni ikki marta berdim.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 9,
+   "title_uz": "Sizchi?",
+   "method": "Extend",
+   "extends": "8",
+   "lines": [
+    {
+     "who": "Yoʻlovchi (kadr ortida)",
+     "text": "Kichik yaxshilik siz bilan tugashi shart emas. Sizga kim soyabon tutgan? Izohda yozing."
+    }
+   ],
+   "prompt": "Continue: the student opens the umbrella and walks off into the rain; the traveller, now wet, turns his face to the camera and smiles, rain on his cheeks. Hold on the smile. Audio: rain softening. An off-screen man says in Uzbek with a calm, slightly tired Uzbek male voice, about thirty-five, quiet and sincere: \"Kichik yaxshilik siz bilan tugashi shart emas. Sizga kim soyabon tutgan? Izohda yozing.\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Reys bekor qilindi, tashqarida jala. Notanish kampir soyabonini berdi va bir gap aytdi: «Bir kun buni boshqa birovga bering». Kichik yaxshilik siz bilan tugashi shart emas. Sizga kim «soyabon» tutgan? Izohda yozing. #HayotHikoyasi #yaxshilik #soyabon #Powerty"
+}
