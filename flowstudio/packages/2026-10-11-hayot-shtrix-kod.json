@@ -1,0 +1,231 @@
+{
+ "id": "2026-10-11-hayot-shtrix-kod",
+ "number": 40,
+ "for": "Inom",
+ "date": "2026-10-11",
+ "series": "Hayotdagi matematika",
+ "title_uz": "Kassadagi «bip» siri",
+ "concept_uz": "Mahalla doʻkoni. Madina kassadagi skaner hech adashmaydimi, deb soʻraydi — sut qutisidagi shtrix-kod yorligʻi tirilib javob beradi: oxirgi raqam — qorovul, u qolgan oʻn ikkitasidan hisoblanadi. Skaner bitta chiziqni xato oʻqiydi va qorovul darrov hushtak chaladi. Oxirida tomoshabinga hisob savoli.",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_11.py (story 25)"
+ ],
+ "facts": [
+  {
+   "claim": "Shtrix-kod odatda 13 ta raqamdan iborat; dastlabki uchtasi mamlakat, Oʻzbekiston uchun 476",
+   "source": "corner/management/commands/_stories_matematika_olami_11.py (story 25)"
+  },
+  {
+   "claim": "Oxirgi raqam — nazorat raqami, qolgan 12 tasidan hisoblanadi",
+   "source": "corner/management/commands/_stories_matematika_olami_11.py (story 25)"
+  },
+  {
+   "claim": "Raqamlar navbatma-navbat 1 ga va 3 ga koʻpaytiriladi, hammasi qoʻshiladi, keyingi oʻnlikkacha yetmagani — nazorat raqami",
+   "source": "corner/management/commands/_stories_matematika_olami_11.py (story 25)"
+  },
+  {
+   "claim": "476123456789: toq oʻrinlar 30, juft oʻrinlar 32×3 = 96, jami 126, 130 − 126 = 4",
+   "source": "corner/management/commands/_stories_matematika_olami_11.py (story 25) (qayta hisoblandi)"
+  },
+  {
+   "claim": "Bitta raqam xato oʻqilsa yigʻindi oʻzgaradi va kompyuter xato beradi; oʻrin almashish (45/54) xatosi ham tutiladi",
+   "source": "corner/management/commands/_stories_matematika_olami_11.py (story 25)"
+  },
+  {
+   "claim": "Shunday nazorat tizimi bank kartalarida ham bor",
+   "source": "corner/management/commands/_stories_matematika_olami_11.py (story 25)"
+  },
+  {
+   "claim": "Savol javobi: yigʻindi 117 boʻlsa nazorat raqami 120 − 117 = 3",
+   "source": "corner/management/commands/_stories_matematika_olami_11.py (story 25) (xuddi shu qoida bilan hisoblandi)"
+  }
+ ],
+ "style_line": "Premium 3D animated feature film style, warm cosy shop lighting, saturated friendly colours, rounded shapes, gentle comic timing, soft depth of field. No text, no letters, no numbers, no logos, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: mahalla doʻkoni",
+   "prompt": "Vertical 9:16 interior of a small cosy neighbourhood grocery shop in Tashkent in the late afternoon: a wooden checkout counter with a small handheld barcode scanner on a coiled cable and a little screen facing the cashier, shelves of unbranded jars, bread rounds (non) in a basket, a crate of apples, warm sunlight through the door. No people. No writing, no logos on any package."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Sardor aka (kassir)",
+   "prompt": "Vertical 9:16 waist-up portrait of an Uzbek cashier about 25, short black hair, friendly easy smile, a dark GREEN apron over a white shirt, a yellow pencil tucked behind his RIGHT ear, holding a handheld barcode scanner, standing behind a wooden counter. No writing on the apron."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Madina",
+   "prompt": "Vertical 9:16 full-body portrait of an Uzbek girl about 10, two long black braids tied with bright RED ribbons, a navy-blue school jacket, big curious eyes, standing on tiptoe at a shop counter. No writing on the clothes."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Yorliq (tirik shtrix-kod)",
+   "prompt": "Vertical 9:16 close character portrait of a small living white rectangular barcode sticker on the side of a plain white milk carton: the sticker is covered in black vertical stripes of different widths, with two large expressive cartoon eyes and a small smiling mouth just above the stripes, and two tiny thin black arms. At the right end of the stripes stands a tiny separate stripe-shaped guard character wearing a little blue guard cap and holding a silver whistle. No digits, no letters anywhere."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Kassada hammasi",
+   "from": [
+    "R1",
+    "R2",
+    "R3",
+    "R4"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot at the same counter: the cashier in the green apron holds the scanner over the milk carton with the living barcode sticker; the girl with red ribbons leans on the counter beside it, watching closely. Same faces, same shop, same warm light."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Yorliq va qorovul",
+   "from": "R4",
+   "prompt": "Change the scene: the same living barcode sticker has stepped off the carton onto the counter, and the tiny guard character with the blue cap stands proudly in front of it, chest out, whistle ready. Above the stripes float twelve small glowing round beads in a row, alternating single gold beads and stacks of three blue beads. No digits, no letters. Same faces, 9:16."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Skaner xatosi",
+   "from": "R5",
+   "prompt": "Change the scene: the scanner beam glows red, one stripe on the sticker is torn and crumpled, the tiny guard blows his whistle with puffed cheeks, the cashier frowns at his screen and the girl covers her mouth in surprise. Same faces, same light, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Bip",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Sardor aka",
+     "text": "Bip! Keyingisi."
+    },
+    {
+     "who": "Madina",
+     "text": "Aka, skaner hech adashmaydimi?"
+    }
+   ],
+   "prompt": "Snappy start: the cashier swipes the milk carton under the scanner, a crisp beep, he slides it aside; the girl leans in, eyes narrowed, suspicious. Audio: a loud crisp scanner beep, shop ambience. The cashier says in Uzbek with a friendly, relaxed young Uzbek male voice, about twenty-five: \"Bip! Keyingisi.\" The girl asks in Uzbek with a bright, curious Uzbek girl's voice, about ten: \"Aka, skaner hech adashmaydimi?\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Yorliq uygʻondi",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R4",
+    "R3"
+   ],
+   "lines": [
+    {
+     "who": "Yorliq",
+     "text": "Adashadi! Lekin men darrov sezaman."
+    }
+   ],
+   "prompt": "Close-up on the milk carton: the barcode sticker blinks its big cartoon eyes open, stretches its tiny arms and grins at the girl, who jumps back. Audio: a magical twinkle, a surprised gasp. The sticker says in Uzbek with a quick, squeaky, cheerful little cartoon voice: \"Adashadi! Lekin men darrov sezaman.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Oʻn uch raqam",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Yorliq",
+     "text": "Menda oʻn uchta raqam bor. Boshidagi toʻrt yuz yetmish olti — Oʻzbekiston degani."
+    }
+   ],
+   "prompt": "The living sticker hops onto the counter and runs one tiny hand along its stripes from left to right like a guide; the stripes shimmer one after another. Audio: soft xylophone notes running up. The sticker says in Uzbek with a quick, squeaky, cheerful little cartoon voice, proudly: \"Menda o'n uchta raqam bor. Boshidagi to'rt yuz yetmish olti — O'zbekiston degani.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Qorovul",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Yorliq",
+     "text": "Oxirgisi — qorovul. U hech narsa demaydi. Faqat qolgan oʻn ikkitasini tekshiradi."
+    }
+   ],
+   "prompt": "The tiny guard with the blue cap steps forward, salutes smartly, and plants his feet at the end of the stripes. The sticker points at him. Audio: a short brass fanfare, a boot stamp. The sticker says in Uzbek with a quick, squeaky, cheerful little cartoon voice: \"Oxirgisi — qorovul. U hech narsa demaydi. Faqat qolgan o'n ikkitasini tekshiradi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Bir va uch",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R6",
+    "R3"
+   ],
+   "lines": [
+    {
+     "who": "Yorliq",
+     "text": "Raqamlar navbat bilan birga va uchga koʻpaytiriladi. Keyin hammasi qoʻshiladi."
+    }
+   ],
+   "prompt": "The twelve glowing beads float above the stripes: the single gold beads stay as they are, the blue beads triple with a pop, then all of them pour together into one bright glowing ball. The girl watches, chin on her hands. Audio: alternating soft plink and triple plink, then a whoosh. The sticker says in Uzbek with a quick, squeaky, cheerful little cartoon voice: \"Raqamlar navbat bilan birga va uchga ko'paytiriladi. Keyin hammasi qo'shiladi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Toʻrt yetmaydi",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Yorliq",
+     "text": "Mening yigʻindim bir yuz yigirma olti. Bir yuz oʻttizgacha toʻrt yetmaydi. Demak, qorovul — toʻrt!"
+    }
+   ],
+   "prompt": "The guard looks at the glowing ball, counts on his tiny fingers, then holds up four fingers with a satisfied nod. Audio: four soft ticks, a bright ding. The sticker says in Uzbek with a quick, squeaky, cheerful little cartoon voice: \"Mening yig'indim bir yuz yigirma olti. Bir yuz o'ttizgacha to'rt yetmaydi. Demak, qorovul — to'rt!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Xato!",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Sardor aka",
+     "text": "Xato? Bitta chizigʻi yirtilgan ekan!"
+    },
+    {
+     "who": "Yorliq",
+     "text": "Bitta raqam oʻzgarsa, yigʻindi oʻzgaradi. Qorovul darrov hushtak chaladi!"
+    }
+   ],
+   "prompt": "The scanner beam turns red with a harsh error buzz; the guard blows his whistle hard; the cashier frowns at his screen, then notices the torn stripe and smooths it with his thumb. Audio: an error buzz, a sharp whistle. The cashier says in Uzbek with a friendly, relaxed young Uzbek male voice, about twenty-five, surprised: \"Xato? Bitta chizig'i yirtilgan ekan!\" The sticker says in Uzbek with a quick, squeaky, cheerful little cartoon voice: \"Bitta raqam o'zgarsa, yig'indi o'zgaradi. Qorovul darrov hushtak chaladi!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Har bir bip",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Madina",
+     "text": "Demak, har bir «bip» — kichkina hisob ekan!"
+    },
+    {
+     "who": "Sardor aka",
+     "text": "Bank kartangda ham shunday qorovul bor."
+    }
+   ],
+   "prompt": "The cashier scans the carton again: a clean green beep. The girl's face lights up; the cashier taps his own bank card on the counter with a knowing wink. Audio: a happy beep, a light card tap. The girl says in Uzbek with a bright, curious Uzbek girl's voice, about ten, amazed: \"Demak, har bir «bip» — kichkina hisob ekan!\" The cashier says in Uzbek with a friendly, relaxed young Uzbek male voice, about twenty-five: \"Bank kartangda ham shunday qorovul bor.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 9,
+   "title_uz": "Savol",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Madina",
+     "text": "Sizga savol: yigʻindi bir yuz oʻn yetti chiqsa, qorovul nechchi boʻladi? Izohda yozing!"
+    }
+   ],
+   "prompt": "Medium close-up: the girl turns to the camera holding up the milk carton, the sticker and the tiny guard peeking over the top; she raises one eyebrow, challenging. Hold on her look at the end. Audio: a playful pluck, shop ambience. The girl says in Uzbek with a bright, curious Uzbek girl's voice, about ten, playful: \"Sizga savol: yig'indi bir yuz o'n yetti chiqsa, qorovul nechchi bo'ladi? Izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Kassadagi «bip» — aslida kichkina hisob. Shtrix-kodning oxirgi raqami qolgan oʻn ikkitasidan hisoblanadi va skaner adashsa, darrov fosh qiladi. Savol: yigʻindi 117 chiqsa, nazorat raqami nechchi? Izohda yozing! #HayotdagiMatematika #shtrixkod #matematika #Powerty"
+}

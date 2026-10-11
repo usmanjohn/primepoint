@@ -1,0 +1,231 @@
+{
+ "id": "2026-10-11-kashfiyot-eyler-kub",
+ "number": 41,
+ "for": "Jonibek",
+ "date": "2026-10-11",
+ "series": "Buyuk kashfiyot",
+ "title_uz": "Koʻzi koʻrmagan matematik",
+ "concept_uz": "1771-yil, Sankt-Peterburg, yongʻin. Deyarli koʻr boʻlib qolgan Leonard Eylerni uydan olib chiqishadi — lekin u ishlashdan toʻxtamaydi: oʻgʻliga aytib yozdiradi. Qoʻlida yogʻoch kub, barmoqlari bilan sanaydi: 8 − 12 + 6 = 2. Piramidada ham 2! Oxirida tomoshabinga savol.",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_22_29.py (story 11)"
+ ],
+ "facts": [
+  {
+   "claim": "1771-yil Sankt-Peterburgda katta yongʻin boʻlgan, deyarli koʻr Eylerni yonayotgan uydan olib chiqishgan",
+   "source": "corner/management/commands/_stories_matematika_olami_22_29.py (story 11)"
+  },
+  {
+   "claim": "Eyler 1707-yilda Shveysariyaning Bazel shahrida tugʻilgan",
+   "source": "corner/management/commands/_stories_matematika_olami_22_29.py (story 11)"
+  },
+  {
+   "claim": "Taxminan 1738-yilda oʻng koʻzi koʻrmay qolgan, 1771-yilga kelib katarakta tufayli deyarli butunlay koʻr boʻlgan",
+   "source": "corner/management/commands/_stories_matematika_olami_22_29.py (story 11)"
+  },
+  {
+   "claim": "Koʻr boʻlgach formulalarni xayolida tuzib, oʻgʻillari va yordamchilariga aytib yozdirgan",
+   "source": "corner/management/commands/_stories_matematika_olami_22_29.py (story 11)"
+  },
+  {
+   "claim": "Umri davomida 800 dan ortiq ishi chiqqan",
+   "source": "corner/management/commands/_stories_matematika_olami_22_29.py (story 11)"
+  },
+  {
+   "claim": "U − Q + Y = 2: kub 8 − 12 + 6 = 2, uchburchakli piramida 4 − 6 + 4 = 2; teshigi yoʻq koʻpyoqda doim 2",
+   "source": "corner/management/commands/_stories_matematika_olami_22_29.py (story 11) (qayta hisoblandi)"
+  },
+  {
+   "claim": "Savol javobi: asosi kvadrat piramida — 5 uch, 8 qirra → 5 − 8 + Y = 2 → Y = 5",
+   "source": "corner/management/commands/_stories_matematika_olami_22_29.py (story 11) (questions[1])"
+  },
+  {
+   "claim": "Eyler 1783-yilda vafot etgan",
+   "source": "corner/management/commands/_stories_matematika_olami_22_29.py (story 11)"
+  }
+ ],
+ "style_line": "Cinematic photoreal historical drama, 18th-century Saint Petersburg, candlelight and warm amber firelight, deep blue night shadows, 35mm film look, soft grain, respectful reconstruction. No text, no letters, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: tungi koʻcha",
+   "prompt": "Vertical 9:16 wide shot of a snowy cobbled street in 18th-century Saint Petersburg at night: tall stone townhouses with many small windows, a distant orange glow and smoke rising over the rooftops several streets away, a horse cart, lanterns, a church bell tower silhouette. No people. No signs, no writing."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Leonard Eyler",
+   "prompt": "Vertical 9:16 waist-up portrait, respectful historical reconstruction, of the Swiss mathematician Leonhard Euler in 1771, aged about 64: round kind face, soft double chin, a cream-coloured cloth cap wrapped like a soft turban on his head, a dark green quilted dressing gown over a white shirt with a loose cravat; his eyes are clouded and gaze gently past the camera, the RIGHT eye noticeably paler. Warm candlelight, calm wise half-smile."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Oʻgʻli",
+   "prompt": "Vertical 9:16 waist-up portrait of a man about 37 in 1770s European dress: brown frock coat, white shirt, a plain black ribbon tying back his powdered grey hair, an ink-stained quill tucked behind his LEFT ear, attentive patient face, holding a sheaf of paper. Warm candlelight."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Muhit: Eylerning xonasi",
+   "prompt": "Vertical 9:16 interior of an 18th-century scholar's study at night: a heavy wooden writing desk with inkwell, quills and stacks of blank paper, a brass candelabra, bookshelves, a tiled stove, a small wooden cube and a small wooden triangular pyramid on the desk. No people. No writing on the papers."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Yongʻin kechasi",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot on the same snowy street at night: the son in the brown coat gently leads the old man in the cream cloth cap and green dressing gown out of a doorway by the arm, wrapping a blanket around his shoulders; the orange glow and smoke are far behind them over the rooftops, nobody is hurt. Same faces, same night light."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Aytib yozdirish",
+   "from": [
+    "R4",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot in the same study: the son sits at the desk with a quill over a blank page, looking up; the old man in the cream cloth cap stands beside him, one hand raised as he speaks, his clouded eyes looking into the distance. Same faces, warm candlelight."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Eyler va kub",
+   "from": "R6",
+   "prompt": "Change the scene: close-up of the old man in the cream cloth cap holding the small wooden cube in both hands near his face, fingertips resting on its corners, eyes closed in concentration, a faint smile. The son blurred behind him. Same face, same candlelight, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Yongʻin",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Bir ming yetti yuz yetmish birinchi yil. Sankt-Peterburgda katta yongʻin."
+    }
+   ],
+   "prompt": "Urgent opening: church bells ring, the son hurries the old man out of the doorway into the snow, wrapping the blanket around him; the orange glow pulses far over the rooftops. No flames near them, nobody hurt. Audio: loud alarm bells, distant crackle, shouts far away, crunching snow. An off-screen narrator says in Uzbek with a calm, deep, warm Uzbek male narrator voice: \"Bir ming yetti yuz yetmish birinchi yil. Sankt-Peterburgda katta yong'in.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Hammasi shu yerda",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Oʻgʻli",
+     "text": "Ota, qoʻlimni qoʻyib yubormang!"
+    },
+    {
+     "who": "Eyler",
+     "text": "Koʻzim koʻrmaydi, oʻgʻlim. Lekin hisoblarim shu yerda."
+    }
+   ],
+   "prompt": "Close two-shot in the snowy street: the son steadies the old man; the old man, eyes unfocused, calmly taps two fingers against his temple and smiles. Audio: bells fading, soft wind. The son says in Uzbek with a warm, earnest Uzbek male voice, late thirties, worried: \"Ota, qo'limni qo'yib yubormang!\" The old man answers in Uzbek with an old, gentle, slightly hoarse Uzbek male voice, about sixty-five, kind and unhurried: \"Ko'zim ko'rmaydi, o'g'lim. Lekin hisoblarim shu yerda.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Kim u?",
+   "method": "Frames to Video",
+   "start": "R2",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Bu — Leonard Eyler. Dunyodagi eng sermahsul matematik. U deyarli butunlay koʻr edi."
+    }
+   ],
+   "prompt": "Slow push-in on the old man's face in candlelight, his clouded eyes looking into the distance. Audio: a single low cello note, a clock ticking. An off-screen narrator says in Uzbek with a calm, deep, warm Uzbek male narrator voice: \"Bu — Leonard Eyler. Dunyodagi eng sermahsul matematik. U deyarli butunlay ko'r edi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Yoz, oʻgʻlim",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Eyler",
+     "text": "Yoz, oʻgʻlim. Bugun koʻpyoqlarni sanaymiz."
+    }
+   ],
+   "prompt": "In the study, the old man paces slowly beside the desk with one hand raised, dictating; the son dips his quill and writes fast. Audio: quill scratching, candle flicker, footsteps on wood. The old man says in Uzbek with an old, gentle, slightly hoarse Uzbek male voice, about sixty-five, kind and unhurried: \"Yoz, o'g'lim. Bugun ko'pyoqlarni sanaymiz.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Kubni sanash",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Eyler",
+     "text": "Sakkizta uch. Oʻn ikkita qirra. Oltita yoq."
+    }
+   ],
+   "prompt": "Close-up: the old man's fingertips slowly travel over the wooden cube, tapping each corner, then sliding along each edge, then pressing each flat face. Audio: soft wooden taps, a quiet counting rhythm. He says in Uzbek with an old, gentle, slightly hoarse Uzbek male voice, about sixty-five, kind and unhurried, slowly counting: \"Sakkizta uch. O'n ikkita qirra. Oltita yoq.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Ikki!",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Eyler",
+     "text": "Sakkizdan oʻn ikkini ayir, oltini qoʻsh. Ikki chiqdi!"
+    }
+   ],
+   "prompt": "The old man raises the cube a little, his face lighting up; behind him the son stops writing and looks up, surprised. Audio: a soft rising string chord, the quill stops. He says in Uzbek with an old, gentle, slightly hoarse Uzbek male voice, about sixty-five, kind and unhurried, delighted: \"Sakkizdan o'n ikkini ayir, oltini qo'sh. Ikki chiqdi!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Piramida",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R6",
+    "R4"
+   ],
+   "lines": [
+    {
+     "who": "Oʻgʻli",
+     "text": "Piramidada-chi?"
+    },
+    {
+     "who": "Eyler",
+     "text": "Toʻrt, olti, toʻrt... Yana ikki!"
+    }
+   ],
+   "prompt": "The son picks up the small wooden triangular pyramid and places it in his father's hands; the old man feels its corners and edges quickly, then laughs softly. Audio: a wooden clink, a warm chuckle. The son asks in Uzbek with a warm, earnest Uzbek male voice, late thirties: \"Piramidada-chi?\" The old man answers in Uzbek with an old, gentle, slightly hoarse Uzbek male voice, about sixty-five, kind and unhurried: \"To'rt, olti, to'rt... Yana ikki!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Doim ikki",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Teshigi yoʻq har qanday koʻpyoqda javob doim ikki. Eyler umri davomida sakkiz yuzdan ortiq ish qoldirdi."
+    }
+   ],
+   "prompt": "Slow pull-back from the candlelit desk: the son writes, the old man stands by the window with the cube in his hand, snow falling outside. Audio: gentle piano, crackling stove. An off-screen narrator says in Uzbek with a calm, deep, warm Uzbek male narrator voice: \"Teshigi yo'q har qanday ko'pyoqda javob doim ikki. Eyler umri davomida sakkiz yuzdan ortiq ish qoldirdi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 9,
+   "title_uz": "Savol",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Eyler",
+     "text": "Asosi kvadrat piramidada beshta uch, sakkizta qirra bor. Nechta yoq? Izohda yozing!"
+    }
+   ],
+   "prompt": "Medium close-up: the old man turns his face toward the camera as if he can sense the viewer, holding the cube, with a warm knowing smile. Hold on his face at the end. Audio: a single soft bell, candle flicker. He says in Uzbek with an old, gentle, slightly hoarse Uzbek male voice, about sixty-five, kind and unhurried, playful: \"Asosi kvadrat piramidada beshta uch, sakkizta qirra bor. Nechta yoq? Izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Leonard Eyler deyarli koʻr boʻlib qolgach ham ishlashdan toʻxtamadi — oʻgʻillariga aytib yozdirdi va 800 dan ortiq ish qoldirdi. Uning kashfiyoti: uchlar − qirralar + yoqlar = 2. Savol: asosi kvadrat piramidada 5 uch, 8 qirra bor. Nechta yoq? Izohda yozing! #BuyukKashfiyot #Eyler #matematika #Powerty"
+}
