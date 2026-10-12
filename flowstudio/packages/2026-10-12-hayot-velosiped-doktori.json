@@ -1,0 +1,252 @@
+{
+ "id": "2026-10-12-hayot-velosiped-doktori",
+ "number": 42,
+ "for": "Inom",
+ "date": "2026-10-12",
+ "series": "Hayot hikoyasi",
+ "title_uz": "Velosiped doktori",
+ "concept_uz": "Parkda zanjiri uzilgan yigitga keksa usta velosipedini tekinga tuzatib beradi — u har shanba yoʻl boʻyida stol qoʻyib oʻtiradi. Burilish: bir kampir aytib beradi — ustaning yolgʻiz oʻgʻli aynan shu yoʻlda halok boʻlgan, otasi unga velosiped tuzatishni oʻrgatishga ulgurmagan. Endi usta har bir bolani oʻz qoʻli bilan tuzatishga oʻrgatadi.",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "corner/management/commands/_stories_life_7_12.py (story 8, «The Bicycle Doctor»)"
+ ],
+ "facts": [
+  {
+   "claim": "Har shanba tongi keksa odam park velosiped yoʻlagi yonida kichik yigʻma stol, ochiq asboblar qutisi va «tekin taʼmir» degan qoʻlda boʻyalgan yozuv bilan oʻtiradi",
+   "source": "_stories_life_7_12.py story 8"
+  },
+  {
+   "claim": "Hikoyachining zanjiri yoʻl yarmida uzilgan; usta uni bir necha daqiqada tuzatgan va pulni rad etgan, yana biror narsa buzilsa kelishni aytgan",
+   "source": "_stories_life_7_12.py story 8"
+  },
+  {
+   "claim": "Usta oʻn yillar oldin kichik doʻkonda velosiped tuzatgan, bu ishni doim yaxshi qila olgan",
+   "source": "_stories_life_7_12.py story 8"
+  },
+  {
+   "claim": "Hikoyachi hech narsa buzilmasa ham deyarli har hafta gaplashgani kelgan",
+   "source": "_stories_life_7_12.py story 8"
+  },
+  {
+   "claim": "Har hafta nevaralarini olib keladigan keksa ayol unga qolganini aytgan: ustaning yolgʻiz oʻgʻli velosiped baxtsiz hodisasida, aynan shu yoʻlda mashina urib halok boʻlgan",
+   "source": "_stories_life_7_12.py story 8"
+  },
+  {
+   "claim": "Usta oʻgʻliga velosiped tuzatishni oʻrgatishga ulgurmagan, bola buni doim soʻragan",
+   "source": "_stories_life_7_12.py story 8"
+  },
+  {
+   "claim": "U har shanba, yomgʻir boʻlsa ham, erta keladi",
+   "source": "_stories_life_7_12.py story 8"
+  },
+  {
+   "claim": "U bolalarga zanjir va tormozni oʻzlari tuzatishni oʻrgatadi, ular uchun qilib bermaydi, oʻz qoʻllari bilan qilishlarini talab qiladi",
+   "source": "_stories_life_7_12.py story 8"
+  },
+  {
+   "claim": "Hikoyachi bilganini ustaga hech qachon aytmagan, usta ham gapirmagan",
+   "source": "_stories_life_7_12.py story 8"
+  }
+ ],
+ "style_line": "Cinematic photoreal drama, soft autumn morning light in a city park, golden leaves, gentle haze, warm amber and muted green tones, soft film grain, 35mm look, quiet tender mood. No text, no letters, no logos, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: park yoʻlagi",
+   "prompt": "Vertical 9:16 wide shot of a quiet city park in Tashkent on an autumn morning: a smooth asphalt bike path curving between tall plane trees with yellow leaves, a wooden bench, and beside the path a small folding table with an open red metal toolbox, a bicycle pump, spare chains, and a small hand-painted cardboard sign showing only a drawn bicycle and a wrench, no letters. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Usta chol",
+   "prompt": "Vertical 9:16 waist-up portrait of an Uzbek man about seventy, kind lined face, short white beard, a GREY FLAT CAP, a worn OLIVE CANVAS WORK APRON over a checked shirt, a RED RAG hanging from the apron pocket, slightly oily strong hands holding a small wrench, standing by a bike path in an autumn park."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Yigit (hikoyachi)",
+   "prompt": "Vertical 9:16 full-body portrait of an Uzbek young man about twenty-five, short dark hair, friendly open face, a MUSTARD-YELLOW WINDBREAKER, dark jeans, white sneakers, holding a blue city bicycle by the handlebars, its chain hanging loose and broken, on a park path in autumn."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Buvi va nevaralar",
+   "prompt": "Vertical 9:16 full-body shot of an Uzbek woman about sixty-five, calm careful face, a cream headscarf, a PLUM-COLOURED WOOL COAT, holding the hands of her two grandchildren: a girl about nine with two braids and a red jacket, and a boy about seven in a green cap with a small bicycle. Autumn park path behind them."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Stol oldida",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot on the same park path: the young man in the mustard windbreaker pushes his blue bicycle with the broken chain up to the small folding table, where the old man in the grey flat cap and olive apron looks up and waves him over. Same faces, same light."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Zanjirni tuzatish",
+   "from": "R5",
+   "prompt": "Change the scene: close two-shot. The blue bicycle stands upside down on the table; the old man fits the new chain onto the gear with his oily hands, the red rag over his shoulder; the young man crouches beside him, watching closely. Same faces, same light, 9:16."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Xotira: ota va oʻgʻil",
+   "from": "R2",
+   "prompt": "Change the scene: the same man about twenty-five years younger, about forty-five, same kind face, a short dark beard, no cap, in a small sunny home courtyard with a grapevine; a boy about ten with a red bicycle tugs his sleeve, pointing at the bike chain and smiling up at him. The man smiles down at him and nods, as if to say: one day. Faded, warm, slightly grainy memory look, 9:16."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Bolalarga saboq",
+   "from": [
+    "R2",
+    "R4"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot at the folding table in the park: the old man in the grey flat cap crouches beside the girl with two braids, who turns the bicycle chain with her own small hands while he only points and explains; the little boy in the green cap watches; the grandmother in the plum coat stands smiling in the background. The old man keeps his hands behind his back. Same faces, same light."
+  },
+  {
+   "id": "R9",
+   "name_uz": "Skameykada suhbat",
+   "from": [
+    "R1",
+    "R3",
+    "R4"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot: on the wooden park bench the grandmother in the plum coat sits beside the young man in the mustard windbreaker, speaking quietly; in the soft background the repair table with her two grandchildren. Same faces, same light."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Zanjir uzildi",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Yigit (kadr ortida)",
+     "text": "Shanba tongi edi. Yoʻlning oʻrtasida velosipedimning zanjiri uzildi."
+    }
+   ],
+   "prompt": "A loud metallic SNAP: the young man in the mustard windbreaker is riding his blue bicycle fast along the autumn park path when the chain snaps; the pedals spin free, he wobbles, stops, and looks down at the chain hanging on the asphalt. Audio: snap, clatter, leaves rustling, his frustrated exhale. An off-screen young man says in Uzbek with a warm, thoughtful young Uzbek male voice, about twenty-five, calm storyteller tone: \"Shanba tongi edi. Yo'lning o'rtasida velosipedimning zanjiri uzildi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Usta",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Usta",
+     "text": "Olib keling, bolam. Bir koʻraylik-chi."
+    }
+   ],
+   "prompt": "The young man pushes his bike toward the folding table; the old man in the grey flat cap looks up from his toolbox, smiles and beckons with the wrench. Audio: bike wheels ticking, birds, rustling leaves. The old man says in Uzbek with a gentle, slightly raspy elderly Uzbek male voice, about seventy, unhurried and kind: \"Olib keling, bolam. Bir ko'raylik-chi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Pul kerak emas",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Usta",
+     "text": "Yoʻq, pul kerak emas. Yana biror narsa buzilsa, kelavering."
+    }
+   ],
+   "prompt": "Fast, skilled hands: in a few seconds the old man fits the chain, spins the pedal, and the wheel hums. The young man pulls a few banknotes from his pocket and offers them; the old man gently pushes his hand back, wiping his fingers on the red rag. Audio: clicking chain, humming wheel. The old man says in Uzbek with a gentle, slightly raspy elderly Uzbek male voice, about seventy, unhurried and kind: \"Yo'q, pul kerak emas. Yana biror narsa buzilsa, kelavering.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Nega tekinga?",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R3"
+   ],
+   "lines": [
+    {
+     "who": "Yigit",
+     "text": "Nega tekinga tuzatasiz?"
+    },
+    {
+     "who": "Usta",
+     "text": "Yoshligimda kichik ustaxonada velosiped tuzatardim. Qoʻlim shunga oʻrgangan."
+    }
+   ],
+   "prompt": "Medium two-shot by the table. The young man, curious, tilts his head; the old man chuckles and looks at his oily hands. Audio: park ambience, a distant bicycle bell. The young man asks in Uzbek with a warm, thoughtful young Uzbek male voice, about twenty-five, calm storyteller tone: \"Nega tekinga tuzatasiz?\" The old man answers in Uzbek with a gentle, slightly raspy elderly Uzbek male voice, about seventy, unhurried and kind: \"Yoshligimda kichik ustaxonada velosiped tuzatardim. Qo'lim shunga o'rgangan.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Har shanba",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Yigit (kadr ortida)",
+     "text": "Har shanba, yomgʻir boʻlsa ham, u hammadan oldin kelardi. Men ham hech narsa buzilmasa-da kelaveradigan boʻldim."
+    }
+   ],
+   "prompt": "Montage feel: early grey morning, light rain, the old man alone unfolds the table and sets out his tools under a small umbrella before anyone arrives; then a sunny morning, the young man sits on the edge of the table chatting with him, laughing. Audio: rain on leaves, then birds and soft laughter. An off-screen young man says in Uzbek with a warm, thoughtful young Uzbek male voice, about twenty-five, calm storyteller tone: \"Har shanba, yomg'ir bo'lsa ham, u hammadan oldin kelardi. Men ham hech narsa buzilmasa-da kelaveradigan bo'ldim.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Kampirning gapi",
+   "method": "Frames to Video",
+   "start": "R9",
+   "lines": [
+    {
+     "who": "Kampir",
+     "text": "Uning yolgʻiz oʻgʻli bor edi. Shu yoʻlda, velosipedda ketayotganda… mashina urib ketgan."
+    }
+   ],
+   "prompt": "On the bench, the grandmother in the plum coat glances toward the old man at the table, lowers her voice and speaks to the young man; his smile slowly fades. No accident is shown. Audio: quiet park, distant children's voices. The grandmother says in Uzbek with a soft, low elderly Uzbek female voice, about sixty-five, quiet and careful: \"Uning yolg'iz o'g'li bor edi. Shu yo'lda, velosipedda ketayotganda... mashina urib ketgan.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Ulgurmagan saboq",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Bola",
+     "text": "Dada, menga ham zanjir tuzatishni oʻrgatasizmi?"
+    },
+    {
+     "who": "Kampir (kadr ortida)",
+     "text": "Bola doim soʻrardi. Otasi ulgurmadi."
+    }
+   ],
+   "prompt": "Soft, faded memory in a sunny courtyard: the boy with the red bicycle tugs his father's sleeve and points at the chain, hopeful; the father smiles, ruffles his hair and nods, as if to say: one day. The memory slowly fades to white. Audio: courtyard birds, a soft bicycle bell. The boy says in Uzbek with a bright, eager Uzbek boy's voice, about ten: \"Dada, menga ham zanjir tuzatishni o'rgatasizmi?\" An off-screen elderly woman says in Uzbek with a soft, low elderly Uzbek female voice, about sixty-five, quiet and careful: \"Bola doim so'rardi. Otasi ulgurmadi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Oʻz qoʻling bilan",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Usta",
+     "text": "Yoʻq, oʻzing qil. Mana bunday — oʻz qoʻling bilan."
+    }
+   ],
+   "prompt": "The girl reaches for the old man's wrench to hand it to him; he smiles, shakes his head and gently pushes it back into her small hands, then points at the chain. She tries, and the chain clicks into place; her face lights up. Audio: the click of the chain, the boy cheering. The old man says in Uzbek with a gentle, slightly raspy elderly Uzbek male voice, about seventy, unhurried and kind: \"Yo'q, o'zing qil. Mana bunday — o'z qo'ling bilan.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 9,
+   "title_uz": "Sizchi?",
+   "method": "Extend",
+   "extends": "8",
+   "lines": [
+    {
+     "who": "Yigit (kadr ortida)",
+     "text": "U oʻgʻliga bera olmagan saboqni endi har bir bolaga beradi. Sizga kim shunday saboq bergan? Izohda yozing."
+    }
+   ],
+   "prompt": "Continue: the girl rides off along the path, wobbling then steady, the old man watching her go with a quiet, proud smile; slow push-in on his face, eyes wet, then he looks down at the next bicycle. Hold on him. Audio: wheels on asphalt, falling leaves, soft wind. An off-screen young man says in Uzbek with a warm, thoughtful young Uzbek male voice, about twenty-five, calm storyteller tone: \"U o'g'liga bera olmagan saboqni endi har bir bolaga beradi. Sizga kim shunday saboq bergan? Izohda yozing.\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Har shanba parkda bir keksa usta velosipedlarni tekinga tuzatadi. Nega? Uning yolgʻiz oʻgʻli bor edi… Endi u bolalarga oʻzi tuzatib bermaydi — oʻz qoʻllari bilan qilishni oʻrgatadi. Sizga kim shunday saboq bergan? Izohda yozing. #HayotHikoyasi #ota #saboq #Powerty"
+}

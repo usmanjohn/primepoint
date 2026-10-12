@@ -1,0 +1,240 @@
+{
+ "id": "2026-10-12-nega-dengiz-shor",
+ "number": 43,
+ "for": "Jonibek",
+ "date": "2026-10-12",
+ "series": "Nega shunday?",
+ "title_uz": "Dengiz nega shoʻr?",
+ "concept_uz": "Malika dengiz suvidan yutib yuboradi: «Nega bunaqa shoʻr?» Javob uchun bir tomchi yomgʻir bilan togʻdan dengizgacha sayohat qilamiz: tomchi qoyadagi tuz donachasini eritib olib ketadi. Burilish: quyosh tomchini osmonga koʻtaradi, tuz donachasi esa dengizda qolib ketadi — suv ketadi, tuz qoladi.",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "corner/management/commands/_stories_wonders_11_20.py (story 12, «바다는 왜 짤까?»)"
+ ],
+ "facts": [
+  {
+   "claim": "Yomgʻir suvi togʻ va yer ustidan oqib daryoga tushadi",
+   "source": "_stories_wonders_11_20.py story 12"
+  },
+  {
+   "claim": "Suv tosh va tuproqdagi juda mayda tuzni oz-ozdan eritib, oʻzi bilan oqizib ketadi",
+   "source": "_stories_wonders_11_20.py story 12"
+  },
+  {
+   "claim": "Daryo suvi oxir-oqibat dengizga yigʻiladi",
+   "source": "_stories_wonders_11_20.py story 12"
+  },
+  {
+   "claim": "Dengizda quyosh tufayli suv bugʻlanadi, tuz esa oʻsha holicha dengizda qoladi",
+   "source": "_stories_wonders_11_20.py story 12"
+  },
+  {
+   "claim": "Faqat suv chiqib ketadi, tuz toʻplanib boradi; bu juda uzoq vaqt takrorlangani sari dengiz shoʻrlashgan",
+   "source": "_stories_wonders_11_20.py story 12"
+  },
+  {
+   "claim": "Dengiz hozir ham asta-sekin shoʻrroq boʻlib bormoqda",
+   "source": "_stories_wonders_11_20.py story 12"
+  }
+ ],
+ "style_line": "Premium 3D animated feature film style, bright saturated colours, soft global illumination, sparkling water and crystals, expressive cartoon characters, playful science-adventure mood. No text, no letters, no logos, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: dengiz sohili",
+   "prompt": "Vertical 9:16 wide shot of a sunny sandy beach with gentle turquoise waves, a few shells, distant green hills, and on one side a small river flowing out across the sand into the sea. Bright midday. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Malika",
+   "prompt": "Vertical 9:16 full-body character of a cheerful Uzbek girl about nine, big expressive dark eyes, two short black braids, a YELLOW SUNHAT WITH A BLUE RIBBON, a blue-and-white striped swimsuit with a short skirt, standing knee-deep at the edge of the sea, laughing."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Tomchi",
+   "prompt": "Vertical 9:16 character sheet pose of a tiny round raindrop character, translucent sky-blue water body with light shining through, big friendly eyes, a wide smile, tiny arms, and a SMALL GREEN LEAF STUCK ON TOP of its head, floating against a soft cloudy sky."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Tuzcha",
+   "prompt": "Vertical 9:16 character sheet pose of a tiny salt-crystal character: a small white sparkling cube with glittering facets, two round black eyes, a cheeky lopsided grin, tiny stick arms, and ONE CHIPPED TOP CORNER, sitting on a grey rock."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Muhit: yomgʻirli togʻ",
+   "prompt": "Vertical 9:16 shot of a rocky mountain slope in rain: dark grey cliffs streaked with tiny sparkling white mineral grains, rivulets of rainwater running over the rocks and down into a stream in the valley, low clouds. No people."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Qoyada uchrashuv",
+   "from": [
+    "R5",
+    "R3",
+    "R4"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 close shot on the wet mountain rock: the raindrop character with the green leaf has just landed beside the little salt cube and hugs it, starting to carry it along a rivulet of rainwater. Same characters, same look."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Daryo boʻylab",
+   "from": "R6",
+   "prompt": "Change the scene: the raindrop and the salt cube ride together on a fast, splashing mountain river like on a water slide, rushing down through a green valley; far below, the shining sea is visible on the horizon. Same characters, 9:16."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Quyosh koʻtaradi",
+   "from": "R6",
+   "prompt": "Change the scene: the calm sunny sea surface. The raindrop character, now soft and glowing like mist, rises up out of the water toward a bright warm sun, waving; the little salt cube is left behind floating in the sea water below, reaching up with both arms. Same characters, 9:16."
+  },
+  {
+   "id": "R9",
+   "name_uz": "Tuz toʻplanadi",
+   "from": "R4",
+   "prompt": "Change the scene: deep inside clear blue sea water, thousands of tiny identical sparkling salt cubes with little faces drift together like a glittering snowfall, the first salt cube with the chipped corner in front, grinning. Sunbeams through the water, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Tfu!",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Malika",
+     "text": "Tfu! Nega dengiz bunaqa shoʻr?!"
+    }
+   ],
+   "prompt": "A wave splashes the girl in the yellow sunhat right in the face; she swallows some water, scrunches her face, sticks out her tongue and spits, then looks at the sea with offended disbelief. Comic timing. Audio: a big splash, gulls, her 'tfu' and coughing laugh. The girl shouts in Uzbek with a lively, bright Uzbek girl's voice, about nine: \"Tfu! Nega dengiz bunaqa sho'r?!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Javob togʻlarda",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Bu tuz qayerdan kelgan? Javob — uzoq togʻlarda."
+    }
+   ],
+   "prompt": "The girl licks a drop off her finger, frowns, and turns to look where the little river flows into the sea; the camera follows the river upstream, rising over hills toward distant grey mountains under rain clouds. Audio: waves fading, wind, distant thunder. An off-screen man says in Uzbek with a warm, playful adult Uzbek male storyteller voice, about forty, clear and curious: \"Bu tuz qayerdan kelgan? Javob — uzoq tog'larda.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Tomchi va Tuzcha",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Yomgʻir toshdagi juda mayda tuzni eritib, oʻzi bilan olib ketadi."
+    },
+    {
+     "who": "Tomchi",
+     "text": "Salom! Yur, birga ketamiz!"
+    }
+   ],
+   "prompt": "Rain pours on the mountain rock; the raindrop with the green leaf lands with a plip, bounces, spots the little salt cube, hugs it, and the cube starts to dissolve slightly at the edges into a sparkle as they slide away together down a rivulet. Audio: rain, a tiny plip, a crystal tinkle. An off-screen man says in Uzbek with a warm, playful adult Uzbek male storyteller voice, about forty, clear and curious: \"Yomg'ir toshdagi juda mayda tuzni eritib, o'zi bilan olib ketadi.\" The raindrop squeaks in Uzbek with a tiny, cheerful, high-pitched Uzbek cartoon voice, bubbly and quick: \"Salom! Yur, birga ketamiz!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Daryo",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Tuzcha",
+     "text": "Voy-voy! Qayoqqa ketyapmiz?"
+    },
+    {
+     "who": "Tomchi",
+     "text": "Dengizga! Daryo oxiri dengizga quyiladi!"
+    }
+   ],
+   "prompt": "Whoosh: the raindrop and the salt cube race down the splashing mountain river like a water slide, spinning past rocks and fish; the salt cube clings on, screaming happily, the raindrop throws its arms up. Audio: rushing water, splashes, their squeals. The salt cube yells in Uzbek with a small, crackly, cheeky Uzbek cartoon voice, slightly squeaky: \"Voy-voy! Qayoqqa ketyapmiz?\" The raindrop laughs and answers in Uzbek with a tiny, cheerful, high-pitched Uzbek cartoon voice, bubbly and quick: \"Dengizga! Daryo oxiri dengizga quyiladi!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Quyosh",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Tomchi",
+     "text": "Quyosh meni koʻtaryapti!"
+    },
+    {
+     "who": "Tuzcha",
+     "text": "Menchi?! Meni ham olib ket!"
+    }
+   ],
+   "prompt": "On the calm sunny sea, warm sunlight bathes the raindrop; it starts to glow and lift off the water as soft mist, surprised and delighted; below, the salt cube stays in the water, reaching up with both arms in panic. Audio: a soft rising shimmer, gentle waves. The raindrop says in Uzbek with a tiny, cheerful, high-pitched Uzbek cartoon voice, bubbly and quick: \"Quyosh meni ko'taryapti!\" The salt cube cries in Uzbek with a small, crackly, cheeky Uzbek cartoon voice, slightly squeaky: \"Menchi?! Meni ham olib ket!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Suv ketadi",
+   "method": "Extend",
+   "extends": "5",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Quyosh suvni bugʻlatadi. Tuz esa dengizda qoladi."
+    }
+   ],
+   "prompt": "Continue: the raindrop rises into a white cloud and waves goodbye; the salt cube, left alone on the waves, crosses its tiny arms and sulks, then shrugs. Audio: shimmer fading, a tiny huff. An off-screen man says in Uzbek with a warm, playful adult Uzbek male storyteller voice, about forty, clear and curious: \"Quyosh suvni bug'latadi. Tuz esa dengizda qoladi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Tuz qoladi",
+   "method": "Frames to Video",
+   "start": "R9",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Suv ketadi, tuz qoladi. Bu juda-juda uzoq takrorlangan — shuning uchun dengiz shoʻr."
+    }
+   ],
+   "prompt": "Underwater: more and more glittering salt cubes drift down from rivers into the sea, joining the first one, filling the blue water like snowfall; the chipped-corner cube waves to the new arrivals. Time passes as the light shifts from day to night to day. Audio: deep water hum, many tiny tinkles. An off-screen man says in Uzbek with a warm, playful adult Uzbek male storyteller voice, about forty, clear and curious: \"Suv ketadi, tuz qoladi. Bu juda-juda uzoq takrorlangan — shuning uchun dengiz sho'r.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Hozir ham",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R4",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Dengiz hozir ham asta-sekin shoʻrlashib boryapti."
+    }
+   ],
+   "prompt": "Back on the beach: the girl in the yellow sunhat crouches at the water's edge and peers into a wave; a tiny glint of the salt cube winks at her from the foam. She gasps and smiles. Audio: soft waves, a tiny tinkle. An off-screen man says in Uzbek with a warm, playful adult Uzbek male storyteller voice, about forty, clear and curious: \"Dengiz hozir ham asta-sekin sho'rlashib boryapti.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 9,
+   "title_uz": "Sizchi?",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Savol: daryo ham tuz olib keladi. Unda nega daryo suvi shoʻr emas? Javobni izohda yozing!"
+    }
+   ],
+   "prompt": "The girl turns from the sea to the little river flowing in beside her, then looks straight into the camera, puzzled, one finger on her chin. Hold on her face. Audio: river murmur, gulls. An off-screen man asks in Uzbek with a warm, playful adult Uzbek male storyteller voice, about forty, clear and curious: \"Savol: daryo ham tuz olib keladi. Unda nega daryo suvi sho'r emas? Javobni izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Dengiz nega shoʻr? Yomgʻir togʻdagi toshlardan mayda tuzni eritib, daryo orqali dengizga olib boradi. Quyosh suvni bugʻlatadi — tuz esa qoladi. Savol: daryo ham tuz olib keladi, unda nega daryo suvi shoʻr emas? Javobni izohda yozing! #NegaShunday #dengiz #fan #Powerty"
+}
