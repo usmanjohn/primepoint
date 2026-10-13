@@ -1,0 +1,222 @@
+{
+ "id": "2026-10-13-hayot-gps-aylanalar",
+ "number": 45,
+ "for": "Jonibek",
+ "date": "2026-10-13",
+ "series": "Hayotdagi matematika",
+ "title_uz": "Telefon sizni qanday topadi",
+ "concept_uz": "Malika notanish koʻchada adashadi, telefoni esa bir zumda uni topadi. Osmonda uchta kichik yoʻldosh «men shu yerdaman» deb baqiradi: har bir masofa — bitta aylana, uchtasi bitta nuqtada uchrashadi. Burilish: bir mikrosekund xato — 300 metr, shuning uchun toʻrtinchi «bobo yoʻldosh» kerak.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_16_21.py (story 24)"
+ ],
+ "facts": [
+  {
+   "claim": "Yer atrofida 30 dan ortiq GPS yoʻldoshi, taxminan 20 200 km balandlikda",
+   "source": "_stories_matematika_olami_16_21.py story 24 body"
+  },
+  {
+   "claim": "Har bir yoʻldosh «men shu nuqtadaman, soat esa shuncha» degan signal yuboradi",
+   "source": "_stories_matematika_olami_16_21.py story 24 body"
+  },
+  {
+   "claim": "Signal yorugʻlik tezligida (300 000 km/s) uchadi va ~0,07 s da yetib keladi (0,1 s dan kam)",
+   "source": "_stories_matematika_olami_16_21.py story 24 body + grammar"
+  },
+  {
+   "claim": "Masofa = tezlik × vaqt; bitta masofa — bitta aylana, ikkitasi odatda ikki nuqtada, uchinchisi bittasini tanlaydi (trilateratsiya)",
+   "source": "_stories_matematika_olami_16_21.py story 24 body"
+  },
+  {
+   "claim": "Bir mikrosekund soat xatosi = 300 metr masofa xatosi",
+   "source": "_stories_matematika_olami_16_21.py story 24 body + grammar example"
+  },
+  {
+   "claim": "Telefonda atom soati yoʻq; toʻrtinchi yoʻldosh soat xatosini topishga yordam beradi",
+   "source": "_stories_matematika_olami_16_21.py story 24 body + question 3"
+  },
+  {
+   "claim": "Yakuniy savol javobi: 1 sekund xato = 300 000 km (300 000 km/s × 1 s)",
+   "source": "hisob: story 24 dagi 300 000 km/s tezlikdan"
+  }
+ ],
+ "style_line": "Premium 3D animated feature film style, soft global illumination, rich saturated colours, warm amber city lights against deep blue night and space, expressive cartoon faces, cinematic depth of field. No text, no letters, no logos, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: kechki koʻcha",
+   "prompt": "Vertical 9:16 wide shot of a narrow old Central Asian city street at dusk: warm amber lamps, brick walls with carved wooden doors, a few small domes, several identical-looking lanes branching off, a deep blue evening sky with the first stars. No people, no signs."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Malika",
+   "prompt": "Vertical 9:16 full-body character of a 12-year-old Uzbek girl with two dark braids, big curious eyes, a blue denim jacket over a white dress and a bright YELLOW backpack, holding a plain blank smartphone with no logo, standing on a city street at dusk."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Uchta yoʻldosh",
+   "prompt": "Vertical 9:16 shot in space high above the curved blue Earth: three small cute satellite characters with round metal bodies, two blue solar-panel wings each and friendly cartoon faces with big eyes; each wears one glowing lamp on top — one RED, one GREEN, one BLUE — floating in a loose row against the stars."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Bobo yoʻldosh",
+   "prompt": "Vertical 9:16 shot in space above the curved blue Earth: an old wise satellite character, larger than the others, polished GOLD metal body with a big round glowing clock face on its belly, slightly dented solar-panel wings, a small white moustache and kind half-closed eyes, floating calmly among the stars."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Malika koʻchada",
+   "from": [
+    "R1",
+    "R2"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot: the girl with the yellow backpack stands in the middle of the dusk street, looking around lost, her phone in her hand glowing softly. Same face, same clothes, same street, same light."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Xarita: bitta qizil aylana",
+   "from": [
+    "R5"
+   ],
+   "prompt": "Change the view: a top-down 3D view of the same old city at night like a glowing toy map, with tiny warm-lit streets and domes; one big thin RED ring of light lies across the city, and a tiny glowing figure of the girl with the yellow backpack stands on the ring's edge. No text, no labels, 9:16."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Xarita: uchta aylana bitta nuqtada",
+   "from": [
+    "R6"
+   ],
+   "prompt": "Change the scene: add a GREEN ring and a BLUE ring of light of different sizes, so the red, green and blue rings all cross at exactly one point, and that point glows bright gold right where the tiny girl with the yellow backpack stands. Same map, same light, no text, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Men qayerdaman?",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Malika",
+     "text": "Voy… men qayerdaman?"
+    }
+   ],
+   "prompt": "Fast push-in: the girl with the yellow backpack spins around on the unfamiliar evening street, every lane looks the same; she lifts her phone and it gives a bright ping, a soft blue dot glowing on its screen. Audio: distant street noise, a clear phone ping. She whispers, scared, in Uzbek with a bright, slightly worried girl voice of about 12: \"Voy… men qayerdaman?\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Telefon tinglaydi",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R2"
+   ],
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Telefon hech kimdan soʻramaydi. U faqat osmonni tinglaydi."
+    }
+   ],
+   "prompt": "The camera flies straight up from the girl's glowing phone, through the evening clouds into space, where the three little satellites with red, green and blue lamps glide in orbit high above the curved blue Earth. Audio: whoosh, then a soft space hum. An off-screen narrator says in Uzbek with a calm, warm, curious middle-aged male narrator voice: \"Telefon hech kimdan so'ramaydi. U faqat osmonni tinglaydi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Qizil yoʻldosh",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3"
+   ],
+   "lines": [
+    {
+     "who": "Qizil yoʻldosh",
+     "text": "Men hozir shu yerdaman, soat esa — aynan shuncha!"
+    },
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Bu xabar yorugʻlik tezligida uchadi — yigirma ming kilometrni sekundning oʻndan biriga ham yetmay bosib oʻtadi."
+    }
+   ],
+   "prompt": "The red-lamp satellite puffs out its chest, its lamp blinks and a thin red beam of light shoots down toward Earth like a streak, faster and faster. Audio: a bright beep and a zipping sound. The red-lamp satellite shouts proudly in Uzbek with a loud, cheerful, fast young robot voice: \"Men hozir shu yerdaman, soat esa — aynan shuncha!\" Then an off-screen narrator says in Uzbek with a calm, warm, curious middle-aged male narrator voice: \"Bu xabar yorug'lik tezligida uchadi — yigirma ming kilometrni sekundning o'ndan biriga ham yetmay bosib o'tadi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Bitta aylana",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Vaqt × tezlik = masofa. Bitta masofa — bitta aylana: Malika uning istalgan joyida boʻlishi mumkin."
+    }
+   ],
+   "prompt": "Top-down view of the glowing toy-like city map: one red ring of light slowly draws itself around the city, a tiny glowing figure of the girl somewhere on its edge. Audio: a soft rising hum as the ring closes. An off-screen narrator says in Uzbek with a calm, warm, curious middle-aged male narrator voice: \"Vaqt × tezlik = masofa. Bitta masofa — bitta aylana: Malika uning istalgan joyida bo'lishi mumkin.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Uchta aylana — bitta nuqta",
+   "method": "Frames to Video",
+   "start": "R6",
+   "end": "R7",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Ikkinchi yoʻldosh — ikki nuqta. Uchinchisi — faqat bittasi. Mana u, Malika!"
+    }
+   ],
+   "prompt": "A green ring of light draws itself and crosses the red one, then a blue ring draws itself and all three meet at one single point, which flashes bright gold right where the tiny girl stands. Audio: two soft chimes and one big bright chime. An off-screen narrator says, building up in Uzbek with a calm, warm, curious middle-aged male narrator voice: \"Ikkinchi yo'ldosh — ikki nuqta. Uchinchisi — faqat bittasi. Mana u, Malika!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Bobo yoʻldosh",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R4",
+    "R3"
+   ],
+   "lines": [
+    {
+     "who": "Bobo yoʻldosh",
+     "text": "Ehtiyot boʻling! Soat bir milliondan bir sekund adashsa — uch yuz metr xato!"
+    },
+    {
+     "who": "Qizil yoʻldosh",
+     "text": "Uch yuz metr?!"
+    }
+   ],
+   "prompt": "The old golden satellite with the big glowing clock on its belly glides in slowly beside the three small satellites; its clock ticks loudly; the red-lamp satellite jumps back in shock, lamp flickering. Comic timing. Audio: loud ticking, a startled beep. The old golden satellite says, raising one solar-panel wing like a finger, in Uzbek with a slow, wise, grandfatherly robot voice with a soft crackle: \"Ehtiyot bo'ling! Soat bir milliondan bir sekund adashsa — uch yuz metr xato!\" The red-lamp satellite gasps in Uzbek with a loud, cheerful, fast young robot voice: \"Uch yuz metr?!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Toʻrtinchi",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R4",
+    "R2"
+   ],
+   "lines": [
+    {
+     "who": "Bobo yoʻldosh",
+     "text": "Telefonda atom soati yoʻq. Shuning uchun men — toʻrtinchiman: soat xatosini ham topamiz."
+    }
+   ],
+   "prompt": "The old golden satellite's clock glows, and a golden beam of light travels down to Earth and lands softly on the girl's phone in the evening street; the blue dot on her phone snaps sharp and still. Audio: a deep calm chime. The old golden satellite says, smiling, in Uzbek with a slow, wise, grandfatherly robot voice with a soft crackle: \"Telefonda atom soati yo'q. Shuning uchun men — to'rtinchiman: soat xatosini ham topamiz.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Savol",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Malika",
+     "text": "Topildim!"
+    },
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Bir mikrosekund — uch yuz metr. Soat butun bir sekund adashsa-chi? Izohda yozing!"
+    }
+   ],
+   "prompt": "The girl looks at her phone, smiles widely and starts walking confidently down the warm-lit street; the camera tilts up to the night sky where four tiny lights — red, green, blue and gold — twinkle in a row. Hold on the sky. Audio: her footsteps, a soft twinkle. She laughs, relieved, in Uzbek with a bright, slightly worried girl voice of about 12: \"Topildim!\" Then an off-screen narrator asks the viewer, playful, in Uzbek with a calm, warm, curious middle-aged male narrator voice: \"Bir mikrosekund — uch yuz metr. Soat butun bir sekund adashsa-chi? Izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Telefoningiz sizni qanday topadi? U hech kimdan soʻramaydi — osmondagi yoʻldoshlarni tinglaydi. Har bir masofa bitta aylana, uchtasi bitta nuqtada uchrashadi — oʻsha nuqta siz. Bir mikrosekund xato esa 300 metr! Soat butun bir sekund adashsa-chi? Javobni izohda yozing. #matematika #GPS #HayotdagiMatematika #Powerty"
+}

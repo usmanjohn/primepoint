@@ -1,0 +1,236 @@
+{
+ "id": "2026-10-13-mantiq-17-tuya-javob",
+ "number": 44,
+ "for": "Inom",
+ "date": "2026-10-13",
+ "series": "Mantiq maydoni",
+ "title_uz": "Oʻn yetti tuya — javob",
+ "concept_uz": "6-oktabrdagi «Oʻn yetti tuya» videosining javobi. Dono ayol oʻz tuyasini podaga qoʻshadi — 18 ta boʻladi: 9, 6, 2 — jami 17, bittasi ortib qoladi, u uniki. Sirri: ½ + ⅓ + ⅑ = 17/18. Oldingi videodagi R1–R7 rasmlar saqlangan boʻlsa, qayta ishlating.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "logic/management/commands/_puzzles_logic_17_24.py (puzzle 17)"
+ ],
+ "facts": [
+  {
+   "claim": "Ayol oʻz tuyasini qarzga beradi, tuyalar 18 ta boʻladi",
+   "source": "logic/management/commands/_puzzles_logic_17_24.py puzzle 17 solution_uz"
+  },
+  {
+   "claim": "18 ning yarmi 9 (katta), uchdan biri 6 (oʻrtancha), toʻqqizdan biri 2 (kenja); 9 + 6 + 2 = 17",
+   "source": "logic/management/commands/_puzzles_logic_17_24.py puzzle 17 solution_uz"
+  },
+  {
+   "claim": "Bitta tuya ortib qoladi — ayolning oʻzi, u uyiga oʻsha tuyada ketadi",
+   "source": "logic/management/commands/_puzzles_logic_17_24.py puzzle 17 solution_uz + body_uz"
+  },
+  {
+   "claim": "½ + ⅓ + ⅑ = 17/18 — ota butun podani taqsimlamagan",
+   "source": "logic/management/commands/_puzzles_logic_17_24.py puzzle 17 solution_uz"
+  },
+  {
+   "claim": "Javob: oʻrtancha oʻgʻil 6 ta tuya oladi",
+   "source": "logic/management/commands/_puzzles_logic_17_24.py answer_key '6'"
+  },
+  {
+   "claim": "Raund 1: ochilgan 2026-10-05, javobi 2026-10-12 da ochildi — bugun (2026-10-13) javob videosi ruxsat",
+   "source": "logic/management/commands/_puzzles_logic_17_24.py SCHEDULE start 2026-10-05, days 7"
+  }
+ ],
+ "style_line": "Cinematic photoreal, warm late-afternoon desert light, fine dust in the air, 35mm film look, sand, terracotta brick and faded turquoise tile tones, old Silk Road folk-tale mood. No text, no letters, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: karvonsaroy hovlisi (6-oktabr videosidagi rasm)",
+   "prompt": "Vertical 9:16 wide shot of the courtyard of an old Bukhara-style caravanserai in late afternoon: a square sandy yard ringed by brick arcades, a turquoise-tiled arched gate, a stone well in the middle, about seventeen resting two-humped camels kneeling and standing around the yard with simple woven saddle blankets. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Katta oʻgʻil (6-oktabr videosidagi rasm)",
+   "prompt": "Vertical 9:16 full-body portrait of an Uzbek man of about 30, tall and broad, short black beard, serious frowning face, DARK GREEN striped chapan robe with a wide leather belt, black-and-white doppi skullcap, holding a rolled paper scroll, standing in a sandy caravanserai yard."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Oʻrtancha oʻgʻil (6-oktabr videosidagi rasm)",
+   "prompt": "Vertical 9:16 full-body portrait of a thin Uzbek man of about 25, clean-shaven, worried quick eyes, plain beige shirt and trousers with a bright RED scarf tied round his neck, counting on his fingers, standing in a sandy caravanserai yard."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Kenja oʻgʻil (6-oktabr videosidagi rasm)",
+   "prompt": "Vertical 9:16 full-body portrait of an Uzbek teenage boy of about 16, cheeky grin, messy hair under a BLUE embroidered skullcap tilted to one side, white shirt with rolled sleeves, a small wooden flute tucked in his belt, standing in a sandy caravanserai yard."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Keksa ayol va uning tuyasi (6-oktabr videosidagi rasm)",
+   "prompt": "Vertical 9:16 full-body shot of a wise elderly Uzbek woman of about 70 with a kind wrinkled face and bright eyes, a white headscarf and a long dark-blue velvet robe, sitting calmly on one pale cream-white two-humped camel whose bridle carries a row of RED wool tassels and one small brass bell, at the turquoise gate of a caravanserai."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Uch aka-uka tuyalar orasida",
+   "from": [
+    "R1",
+    "R2",
+    "R3",
+    "R4"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot of the same caravanserai yard: the three brothers standing together by the well in the foreground arguing, the eldest holding the scroll, the camels resting all around them. Same faces, same clothes, same light."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Ayol hovliga kirdi",
+   "from": [
+    "R6",
+    "R5"
+   ],
+   "prompt": "Combine the attached images: the elderly woman on her cream-white camel with red tassels has just ridden in through the turquoise gate and stopped near the well; the three brothers turn toward her, surprised. Same faces, same clothes, same light, 9:16."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Ayol tuyasini podaga qoʻshdi",
+   "from": [
+    "R7"
+   ],
+   "prompt": "Change the scene: the elderly woman has stepped down from her cream-white camel and stands on the sand holding its bridle with the red tassels, leading it in among the resting camels of the herd so it becomes one of them; the three brothers watch her, puzzled. Same faces, same clothes, same yard, same light, 9:16."
+  },
+  {
+   "id": "R9",
+   "name_uz": "Tuyalar uchga boʻlindi",
+   "from": [
+    "R8"
+   ],
+   "prompt": "Change the scene: the camels now stand in three clear groups across the yard: a big group of nine beside the eldest brother in the dark green chapan, a group of six beside the middle brother with the red scarf, and two camels beside the youngest in the blue skullcap; the woman's cream-white camel with red tassels and brass bell stands alone by the well, next to her. Same faces, same clothes, same light, 9:16."
+  },
+  {
+   "id": "R10",
+   "name_uz": "Ayol uyiga ketyapti",
+   "from": [
+    "R9"
+   ],
+   "prompt": "Change the scene: the elderly woman is back up on her cream-white camel with the red tassels, riding out through the turquoise gate, turning to wave; the three brothers stand with their camel groups and bow to her with a hand on the chest, smiling. Same faces, same clothes, warm sunset light, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Javob vaqti",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Oʻtgan hafta: oʻn yetti tuya, uch oʻgʻil. Bugun — javob!"
+    }
+   ],
+   "prompt": "The frozen yard comes back to life with one loud ring of the brass bell: the brothers blink, the camels stir, the woman on her cream-white camel smiles. Fast push-in on her face. Audio: a sharp bell ring, then wind and camel grunts. An off-screen narrator says with excitement in Uzbek with a calm, warm middle-aged male storyteller voice: \"O'tgan hafta: o'n yetti tuya, uch o'g'il. Bugun — javob!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Mening tuyamni ham qoʻshing",
+   "method": "Frames to Video",
+   "start": "R7",
+   "end": "R8",
+   "lines": [
+    {
+     "who": "Keksa ayol",
+     "text": "Mening tuyamni ham podaga qoʻshinglar. Endi nechta boʻldi?"
+    }
+   ],
+   "prompt": "The elderly woman climbs down from her camel slowly and leads it by the red-tasselled bridle in among the herd; the brothers exchange puzzled looks. Audio: soft steps on sand, the bell swaying. She says in Uzbek with a slow, warm, smiling elderly woman voice of about 70: \"Mening tuyamni ham podaga qo'shinglar. Endi nechta bo'ldi?\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Oʻn sakkiz!",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R4",
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Kenja oʻgʻil",
+     "text": "Oʻn sakkizta!"
+    },
+    {
+     "who": "Katta oʻgʻil",
+     "text": "Oʻn sakkizning yarmi — toʻqqizta. Menga!"
+    }
+   ],
+   "prompt": "The youngest brother in the blue skullcap counts the camels at lightning speed pointing his finger, then jumps; the eldest in the dark green chapan unrolls the scroll, reads it again and breaks into a slow proud smile. Comic timing. Audio: quick counting taps, a camel snort. The youngest brother shouts, thrilled, in Uzbek with a bright, cheeky teenage boy voice of about 16: \"O'n sakkizta!\" Then the eldest brother says, amazed, in Uzbek with a deep, firm young male voice of about 30: \"O'n sakkizning yarmi — to'qqizta. Menga!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Olti va ikki",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R4",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Oʻrtancha oʻgʻil",
+     "text": "Uchdan biri — oltita! Menga!"
+    },
+    {
+     "who": "Kenja oʻgʻil",
+     "text": "Toʻqqizdan biri — ikkita. Menga!"
+    }
+   ],
+   "prompt": "The middle brother with the red scarf counts on his fingers, gasps and claps; the youngest in the blue skullcap pats two camels on the neck. Audio: claps, a happy camel groan. The middle brother says, relieved and fast, in Uzbek with a quick, nervous young male voice of about 25: \"Uchdan biri — oltita! Menga!\" Then the youngest says happily in Uzbek with a bright, cheeky teenage boy voice of about 16: \"To'qqizdan biri — ikkita. Menga!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Toʻqqiz, olti, ikki",
+   "method": "Frames to Video",
+   "start": "R8",
+   "end": "R9",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Toʻqqiz, olti, ikki. Jami — oʻn yetti. Hech bir tuya kesilmadi!"
+    }
+   ],
+   "prompt": "The camels rise and walk to their new owners, forming three groups of nine, six and two; the woman's cream-white camel walks out alone and stops beside her at the well. Smooth overhead crane shot. Audio: many soft hooves on sand, bells. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"To'qqiz, olti, ikki. Jami — o'n yetti. Hech bir tuya kesilmadi!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Bittasi ortib qoldi",
+   "method": "Frames to Video",
+   "start": "R9",
+   "end": "R10",
+   "lines": [
+    {
+     "who": "Keksa ayol",
+     "text": "Bittasi ortib qoldi. U — meniki. Rahmat, bolalarim!"
+    }
+   ],
+   "prompt": "The elderly woman pats her cream-white camel, climbs back onto it and turns it toward the gate; the brothers stare, then laugh and bow with a hand on the chest. Audio: the brass bell, warm laughter. She says with a wink in Uzbek with a slow, warm, smiling elderly woman voice of about 70: \"Bittasi ortib qoldi. U — meniki. Rahmat, bolalarim!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Sirri",
+   "method": "Text to Video",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Sirri: yarim, uchdan bir, toʻqqizdan bir — jami oʻn sakkizdan oʻn yetti. Ota butun podani boʻlmagan edi!"
+    }
+   ],
+   "prompt": "Slow aerial drone shot over empty golden sand dunes at sunset, long soft shadows sliding across the ridges, dust glowing in the light. No people, no animals. Audio: wind, one faraway bell. An off-screen narrator explains, slow and delighted, in Uzbek with a calm, warm middle-aged male storyteller voice: \"Sirri: yarim, uchdan bir, to'qqizdan bir — jami o'n sakkizdan o'n yetti. Ota butun podani bo'lmagan edi!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Siz topdingizmi?",
+   "method": "Frames to Video",
+   "start": "R10",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Toʻgʻri javob — oltita. Siz topdingizmi? Izohda yozing! Yangi jumboq — powerty.uz/logic da."
+    }
+   ],
+   "prompt": "The woman rides out through the turquoise gate into the sunset; the camera rises over the arch and holds on her small silhouette and the swinging red tassels. Audio: the bell fading away, wind. An off-screen narrator asks the viewer, warm and friendly, in Uzbek with a calm, warm middle-aged male storyteller voice: \"To'g'ri javob — oltita. Siz topdingizmi? Izohda yozing! Yangi jumboq — powerty.uz/logic da.\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Oʻn yetti tuya — javob! Dono ayol oʻz tuyasini qoʻshdi: 18 ta. Yarmi 9, uchdan biri 6, toʻqqizdan biri 2 — jami 17, bittasi ortib qoldi va u yana ayolniki. Oʻrtancha oʻgʻil 6 ta tuya oldi. Siz topdingizmi? Yangi jumboqlar — powerty.uz/logic da. #mantiq #jumboq #MantiqMaydoni #Powerty"
+}
