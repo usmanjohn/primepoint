@@ -41,7 +41,6 @@ Real text, DOM in reading order, so applicant-tracking systems can parse it.
       </ul>
     </div>
     <ul class="cv-contact">
-      <li><i class="bi bi-geo-alt-fill"></i>{{ cv.LOCATION }}</li>
       {% for l in resume_links %}
       <li><i class="bi {{ l.icon }}"></i><a href="{{ l.url }}">{{ l.handle }}</a></li>
       {% endfor %}

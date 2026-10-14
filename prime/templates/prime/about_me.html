@@ -34,7 +34,6 @@ The founder's personal page. Words: prime/resume.py (the résumé is English;
         <p class="me-lede">{{ p.lede }}</p>
         <ul class="me-status">
           {% for s in cv.STATUS %}<li><i class="bi {{ s.icon }}"></i> {{ s.text }}</li>{% endfor %}
-          <li><i class="bi bi-geo-alt-fill"></i> {{ cv.LOCATION }}</li>
         </ul>
         <div class="me-cta">
           {% if pdf_ready %}
@@ -118,6 +117,39 @@ The founder's personal page. Words: prime/resume.py (the résumé is English;
       </li>
       {% endfor %}
     </ol>
+  </section>
+
+  {# ── Kaggle ───────────────────────────────────────────── #}
+  <section class="me-section" aria-labelledby="me-kaggle">
+    <h2 id="me-kaggle" class="me-h2">{{ p.kaggle_title }}</h2>
+    <p class="me-sub">{{ p.kaggle_sub }}</p>
+    <div class="me-kg-badges">
+      {% for b in cv.KAGGLE.badges %}
+      <div class="me-kg-badge"><span class="me-kg-badge__value">{{ b.value }}</span><span class="me-kg-badge__label">{{ b.label }}</span></div>
+      {% endfor %}
+    </div>
+    <div class="me-kg-grid">
+      {% for nb in cv.KAGGLE.notebooks %}
+      <article class="me-kg{% if forloop.first %} me-kg--lead{% endif %}">
+        <div class="me-kg__top">
+          <span class="me-kg__kind"><i class="bi {{ nb.icon }}"></i> {{ nb.kind }}</span>
+          <span class="me-kg__stats">{{ nb.stats }}</span>
+        </div>
+        <h3 class="me-kg__title">{{ nb.title }}</h3>
+        <dl class="me-kg__dl">
+          <dt>{{ p.kaggle_q }}</dt><dd>{{ nb.question }}</dd>
+          <dt>{{ p.kaggle_how }}</dt>
+          <dd><ul>{% for m in nb.method %}<li>{{ m }}</li>{% endfor %}</ul></dd>
+        </dl>
+        <p class="me-kg__result"><i class="bi bi-check2-circle"></i> <span><strong>{{ p.kaggle_result }}:</strong> {{ nb.result }}</span></p>
+        <div class="me-kg__foot">
+          <ul class="me-chips me-chips--soft">{% for t in nb.tools %}<li>{{ t }}</li>{% endfor %}</ul>
+          <a class="me-chip-link" href="{{ nb.url }}" target="_blank" rel="noopener">{{ p.kaggle_open }} <i class="bi bi-arrow-up-right"></i></a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="me-footnote"><a class="me-chip-link" href="{{ cv.KAGGLE.url }}" target="_blank" rel="noopener"><i class="bi bi-clipboard-data-fill"></i> {{ p.kaggle_all }} <i class="bi bi-arrow-up-right"></i></a></p>
   </section>
 
   {# ── Experience ───────────────────────────────────────── #}

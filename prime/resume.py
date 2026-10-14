@@ -18,14 +18,15 @@ visitor's site language, and its Japanese self-introduction is fixed.
 """
 
 NAME = 'Usmanjon Abduraimov'
-HEADLINE = 'Data & Analytics Engineer · Python / Django · BI & ML'
-LOCATION = 'Tashkent, Uzbekistan → relocating to Japan'
+HEADLINE = 'Data Scientist & Analytics Engineer · Python · ML · Django · BI'
 EMAIL = 'abduraimovusmanjon@gmail.com'
 
-# Two facts a recruiter in Japan looks for before anything else.
+# The one fact a recruiter in Japan looks for before anything else.
+# ⛔ The user's decision (2026-10-14): no location line, no relocation, no family —
+# the visa status says everything an employer needs.
 STATUS = [
     {'icon': 'bi-passport', 'text': 'Long-Term Resident of Japan (定住者 Teijūsha) — no visa sponsorship needed'},
-    {'icon': 'bi-airplane', 'text': 'Ready to relocate to Japan — family based there'},
+    {'icon': 'bi-award-fill', 'text': 'Kaggle Notebooks Expert — peak global rank #1,919'},
 ]
 
 # Every outbound link on the page and the résumé. `resume: True` = printed on
@@ -70,7 +71,7 @@ LINKS = [
 ]
 
 SUMMARY = (
-    'Data and analytics engineer who builds the whole system, not just the script: '
+    'Data scientist and analytics engineer who builds the whole system, not just the script: '
     'from Oracle and PostgreSQL extraction through validation, analytics and machine '
     'learning to dashboards and secure Django web applications — then deploys and '
     'documents it. 5+ years across banking, tax administration and accounting '
@@ -165,15 +166,16 @@ PROJECTS = [
         'tech': 'Python · Django · PostgreSQL · AWS S3 · Git/GitHub · Railway · Bootstrap · AI-assisted development (Claude Code)',
     },
     {
-        'name': 'Data science & analytics portfolio',
-        'role': 'Kaggle · Tableau Public', 'dates': '',
-        'url': 'https://www.kaggle.com/usmanjon', 'url_label': 'kaggle.com/usmanjon',
+        'name': 'Kaggle — Notebooks Expert',
+        'role': '14 public notebooks · 5 medals · 490 forks', 'dates': '',
+        'url': 'https://www.kaggle.com/usmanjon/code', 'url_label': 'kaggle.com/usmanjon',
         'points': [
-            'House-price prediction with a Random Forest regressor; movie recommendation with TF-IDF and nearest neighbours.',
-            'Hypothesis testing and A/B tests (Student’s t-test); Korea demographics analysis; a business-analytics case study.',
-            'Interactive Tableau dashboards on Tableau Public.',
+            '<strong>House-price regression</strong> (20,640 districts): treated multicollinearity with engineered ratio features, stratified split, one-hot + scaling pipeline; tuned a random forest with 5-fold grid search — R² 0.60 (linear) → <strong>0.72 on held-out test</strong>.',
+            '<strong>Home-advantage hypothesis test</strong> (380 Premier League matches): one-tailed two-sample t-test derived by hand and checked against SciPy — t = 2.22, p = 0.013.',
+            '<strong>Indonesian schools</strong> (215,372 rows): joined census data scraped from Wikipedia, caught impossible coordinates and filtered ~3,000 to valid bounds before mapping.',
+            '<strong>South Korea demographics 2000–2022</strong> (17 regions, monthly): time-series resampling showed deaths overtaking births nationwide in 2020.',
         ],
-        'tech': 'scikit-learn · Pandas · Matplotlib · Tableau',
+        'tech': 'scikit-learn · SciPy · Pandas · Plotly · Seaborn · Matplotlib',
     },
 ]
 
@@ -223,6 +225,86 @@ LANGUAGES = [
     {'name': 'Japanese', 'level': 1, 'note': 'Studying'},
 ]
 
+# Kaggle: the profile's own numbers (read 2026-10-14) and the notebooks worth
+# opening. Every figure below was read off the notebook's own output — re-check
+# before changing one. `stats` = views · forks on the day it was read.
+KAGGLE = {
+    'url': 'https://www.kaggle.com/usmanjon/code',
+    'badges': [
+        {'value': 'Expert', 'label': 'Kaggle Notebooks tier'},
+        {'value': '#1,919', 'label': 'peak global rank, Notebooks'},
+        {'value': 'Top 12%', 'label': 'today: #6,851 of 59,993'},
+        {'value': '490', 'label': 'forks of my notebooks'},
+    ],
+    'notebooks': [
+        {
+            'title': 'California house prices — from linear regression to a tuned random forest',
+            'url': 'https://www.kaggle.com/code/usmanjon/random-forest-reg',
+            'kind': 'Machine learning', 'icon': 'bi-cpu-fill',
+            'question': 'How well can district features predict the median house value?',
+            'method': [
+                'Found 7 feature pairs correlated above 0.85 and replaced them with engineered ratios (rooms per household, people per family).',
+                'Stratified the train/test split on ocean proximity, so the 5 island districts could not all fall on one side.',
+                'One-hot + standard-scaling pipeline; linear regression as the baseline, then a random forest tuned with 5-fold grid search.',
+            ],
+            'result': 'R² 0.60 (linear) → 0.78 (tuned forest, validation) → 0.72 on the untouched test set; RMSE ≈ $61k.',
+            'tools': ['scikit-learn', 'GridSearchCV', 'StratifiedShuffleSplit', 'ColumnTransformer'],
+            'stats': '444 views · 14 forks',
+        },
+        {
+            'title': 'Is home advantage real? A hypothesis test on the Premier League',
+            'url': 'https://www.kaggle.com/code/usmanjon/stat-test',
+            'kind': 'Statistics', 'icon': 'bi-calculator-fill',
+            'question': 'Do teams score more at home than away, at the 5% level?',
+            'method': [
+                'Stated H₀ / H₁ for a one-tailed, two-sample test on all 380 matches of 2021–22.',
+                'Derived the t-statistic and p-value by hand from the formula, then checked it against SciPy.',
+            ],
+            'result': 't = 2.22, p = 0.013 < 0.05 — reject H₀: home sides score significantly more (1.51 vs 1.31 goals).',
+            'tools': ['SciPy', 't-test', 'Pandas'],
+            'stats': '577 views · 47 forks',
+        },
+        {
+            'title': '215,000 Indonesian schools — cleaning, enriching and mapping',
+            'url': 'https://www.kaggle.com/code/usmanjon/indonesia-schools',
+            'kind': 'Data quality & geo', 'icon': 'bi-geo-alt-fill',
+            'question': 'Where are the schools, and who runs them — the state or private owners?',
+            'method': [
+                'Scraped 2020 census population from Wikipedia and joined it by province, fixing the names that did not match.',
+                'Caught impossible coordinates (a longitude of 9,720) and kept only rows inside Indonesia’s real bounds — about 3,000 dropped.',
+                'Mapped school density against population; compared public and private schools by stage and province.',
+            ],
+            'result': 'A medal-winning notebook, forked 83 times. Jakarta turned out to have nearly as many private schools as public ones — public schools dominate everywhere else.',
+            'tools': ['Pandas', 'read_html', 'Seaborn', 'geo scatter'],
+            'stats': '1,211 views · 83 forks · medal',
+        },
+        {
+            'title': 'South Korea’s demographics, 2000–2022',
+            'url': 'https://www.kaggle.com/code/usmanjon/demografia-korea',
+            'kind': 'Time series', 'icon': 'bi-graph-down-arrow',
+            'question': 'What is happening to births, deaths and marriages, region by region?',
+            'method': [
+                'Monthly series for 17 regions, resampled to years and compared across birth, death, marriage and divorce rates.',
+            ],
+            'result': 'Deaths overtook births nationwide in 2020; Sejong is the only region still growing naturally.',
+            'tools': ['Pandas resample', 'Matplotlib'],
+            'stats': '741 views · 29 forks',
+        },
+        {
+            'title': 'What really drives an air fare? Interactive price analysis',
+            'url': 'https://www.kaggle.com/code/usmanjon/eda-in-depth-price-analysis-plotly',
+            'kind': 'Analytics & Plotly', 'icon': 'bi-airplane-fill',
+            'question': 'Why does the same route cost different amounts on different airlines?',
+            'method': [
+                'Held route, class and number of stops fixed to isolate one driver at a time, instead of comparing raw airline averages.',
+            ],
+            'result': 'On Mumbai → Delhi the number of stops, not the departure time, was the main driver of the price gap.',
+            'tools': ['Plotly', 'pivot tables'],
+            'stats': '125 views · 12 forks',
+        },
+    ],
+}
+
 BEYOND = [
     {'icon': 'bi-trophy-fill', 'text': 'Two-time chess champion of Syrdarya Province, Uzbekistan'},
     {'icon': 'bi-camera-reels-fill', 'text': 'Creator and narrator of animated educational videos (YouTube, Instagram)'},
@@ -234,7 +316,7 @@ BEYOND = [
 JAPANESE_INTRO = [
     'はじめまして。ウスマンジョン・アブドゥライモフと申します。',
     'データ分析・データ基盤エンジニアとして、銀行・税務・会計の分野で、データの抽出から分析、ダッシュボード、Djangoによる社内システムの構築まで一貫して担当してきました。',
-    '定住者の在留資格を持っており、就労制限はありません。家族が日本に住んでおり、日本で長く働きたいと考えています。日本語は現在勉強中です。',
+    '定住者の在留資格を持っており、就労制限はありません。日本で長く働きたいと考えています。日本語は現在勉強中です。',
 ]
 
 # The page's own words — not the résumé. Uzbek is not a translation of the
@@ -254,11 +336,15 @@ PAGE = {
             'In the evenings I built Powerty — this site — because I wanted my pupils in Uzbekistan to have the course I wished I had. It is now thousands of lessons and questions, a Telegram bot, mock exams with real scoring, and a lot of tests that make sure the answers are right.',
         ],
         'japan_title': 'Why Japan',
-        'japan': 'My family lives in Japan, and I hold Long-Term Resident (Teijūsha) status, so I can start without a visa process. I want to bring end-to-end data ownership into a strong engineering team there, and grow with it for the long run. I am learning Japanese.',
+        'japan': 'I hold Long-Term Resident (Teijūsha) status in Japan, so there is no visa process and no restriction on the work I can do. I want to bring end-to-end data ownership into a strong engineering team there, and grow with it for the long run. I am learning Japanese.',
         'impact_title': 'In numbers',
         'links_title': 'Find me',
         'pipeline_title': 'What I build, end to end',
         'pipeline_sub': 'One person, the whole lifecycle — the shape of almost every system I have shipped.',
+        'kaggle_title': 'Data science on Kaggle',
+        'kaggle_sub': 'Selected notebooks: the question, how I answered it, and what came out.',
+        'kaggle_q': 'Question', 'kaggle_how': 'How', 'kaggle_result': 'Result', 'kaggle_open': 'Open notebook',
+        'kaggle_all': 'All 14 notebooks on Kaggle',
         'exp_title': 'Experience',
         'proj_title': 'Projects',
         'skills_title': 'Skills',
@@ -285,11 +371,15 @@ PAGE = {
             'Kechqurunlari Powerty’ni — shu saytni — qurdim: Oʻzbekistondagi oʻquvchilarim men orzu qilgan kursga ega boʻlsin, dedim. Bugun bu minglab darslar va savollar, Telegram bot, haqiqiy ballash tizimli mock imtihonlar va javoblarning toʻgʻriligini tekshiradigan koʻplab testlar.',
         ],
         'japan_title': 'Nega Yaponiya',
-        'japan': 'Oilam Yaponiyada yashaydi, menda esa Teijūsha (uzoq muddatli rezident) maqomi bor — viza jarayonisiz ishni boshlay olaman. U yerdagi kuchli muhandislar jamoasiga tizimni boshidan oxirigacha olib borish tajribamni olib kirmoqchiman va u bilan uzoq yillar oʻsmoqchiman. Yapon tilini oʻrganyapman.',
+        'japan': 'Menda Yaponiyada Teijūsha (uzoq muddatli rezident) maqomi bor — viza jarayoni yoʻq, qaysi ishda ishlashimga cheklov ham yoʻq. U yerdagi kuchli muhandislar jamoasiga tizimni boshidan oxirigacha olib borish tajribamni olib kirmoqchiman va u bilan uzoq yillar oʻsmoqchiman. Yapon tilini oʻrganyapman.',
         'impact_title': 'Raqamlarda',
         'links_title': 'Meni toping',
         'pipeline_title': 'Nimani quraman — boshidan oxirigacha',
         'pipeline_sub': 'Bir kishi, butun jarayon — men topshirgan deyarli har bir tizimning shakli shu.',
+        'kaggle_title': 'Kaggle’da data science',
+        'kaggle_sub': 'Tanlangan daftarlar: savol, qanday yechildi va natija.',
+        'kaggle_q': 'Savol', 'kaggle_how': 'Qanday', 'kaggle_result': 'Natija', 'kaggle_open': 'Daftarni ochish',
+        'kaggle_all': 'Kaggle’dagi barcha 14 ta daftar',
         'exp_title': 'Ish tajribasi',
         'proj_title': 'Loyihalar',
         'skills_title': 'Koʻnikmalar',
