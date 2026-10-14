@@ -1,0 +1,465 @@
+{% extends 'base.html' %}
+
+{% block title %}Макропруденциальные нормативы — Положение № 3618{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ── Law explainer pages. Every rule is scoped under .lw so the dashboard's own
+      .card / .btn / .table styles are never touched. ─────────────────────────── */
+.lw {
+    --lw-navy: #1e3a8a;
+    --lw-amber: #f59e0b;
+    --lw-amber-d: #b45309;
+    --lw-ink: #1f2937;
+    --lw-muted: #6b7280;
+    --lw-line: #e5e7eb;
+    --lw-soft: #fff8eb;
+    --lw-ok: #15803d;
+    --lw-ok-bg: #dcfce7;
+    --lw-warn: #b45309;
+    --lw-warn-bg: #fef3c7;
+    --lw-bad: #b91c1c;
+    --lw-bad-bg: #fee2e2;
+    color: var(--lw-ink);
+    padding-bottom: 3rem;
+}
+.lw section, .lw .lw-anchor { scroll-margin-top: 80px; }
+
+/* hero */
+.lw-hero {
+    background: linear-gradient(135deg, #e2d2ce, #f7cc8b);
+    color: #5b3a2e;
+    border-radius: 0 0 18px 18px;
+    padding: 2.25rem 0 1.75rem;
+    margin-bottom: 1.5rem;
+}
+.lw-hero h1 { font-size: 2rem; font-weight: 700; margin: .5rem 0; }
+.lw-hero .lw-lead { font-size: 1.1rem; max-width: 820px; margin: 0; }
+.lw-doc {
+    display: inline-block; background: rgba(255,255,255,.7); color: var(--lw-navy);
+    font-weight: 600; font-size: .85rem; border-radius: 999px; padding: .25rem .8rem;
+}
+.lw-meta { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+.lw-meta span {
+    background: rgba(255,255,255,.55); border-radius: 8px; padding: .3rem .65rem; font-size: .85rem;
+}
+.lw-meta a { color: var(--lw-navy); font-weight: 600; }
+
+/* in-page navigation */
+.lw-nav {
+    position: sticky; top: 56px; z-index: 5; background: rgba(241,245,249,.95);
+    backdrop-filter: blur(4px); padding: .5rem 0; margin-bottom: 1rem;
+    display: flex; flex-wrap: wrap; gap: .4rem;
+}
+.lw-nav a {
+    text-decoration: none; font-size: .85rem; color: var(--lw-navy);
+    border: 1px solid #c7d2fe; background: #fff; border-radius: 999px; padding: .25rem .75rem;
+}
+.lw-nav a:hover { background: var(--lw-navy); color: #fff; }
+
+/* blocks */
+.lw-box {
+    background: #fff; border-radius: 14px; box-shadow: 0 2px 10px rgba(15,23,42,.06);
+    padding: 1.5rem; margin-bottom: 1.5rem;
+}
+.lw-box > h2 {
+    font-size: 1.35rem; font-weight: 700; color: var(--lw-navy); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: .6rem;
+}
+.lw-box > h2 i { color: var(--lw-amber); }
+.lw-box h3 { font-size: 1.05rem; font-weight: 700; margin-top: 1rem; }
+
+/* KPI tiles */
+.lw-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: .9rem; }
+.lw-kpi {
+    background: var(--lw-soft); border: 1px solid #fde68a; border-radius: 12px; padding: 1rem;
+}
+.lw-kpi b { display: block; font-size: 1.75rem; color: var(--lw-navy); line-height: 1.1; }
+.lw-kpi span { font-size: .88rem; color: var(--lw-muted); }
+
+/* formula strip */
+.lw-formula {
+    background: #0f172a; color: #f8fafc; border-radius: 10px; padding: .85rem 1rem;
+    font-family: SFMono-Regular, Menlo, Consolas, monospace; font-size: .95rem;
+    overflow-x: auto; white-space: nowrap; margin: .75rem 0;
+}
+.lw-formula em { color: #fbbf24; font-style: normal; }
+
+/* callouts */
+.lw-note, .lw-tip, .lw-alert {
+    border-radius: 10px; padding: .85rem 1rem; margin: 1rem 0; font-size: .95rem;
+    border-left: 5px solid;
+}
+.lw-note  { background: #eff6ff; border-color: #3b82f6; }
+.lw-tip   { background: var(--lw-ok-bg); border-color: var(--lw-ok); }
+.lw-alert { background: var(--lw-warn-bg); border-color: var(--lw-amber); }
+.lw-note b, .lw-tip b, .lw-alert b { display: block; margin-bottom: .2rem; }
+
+/* tables */
+.lw-table-wrap { overflow-x: auto; }
+.lw-table { width: 100%; border-collapse: collapse; font-size: .93rem; }
+.lw-table th { background: var(--lw-navy); color: #fff; font-weight: 600; padding: .55rem .7rem; text-align: left; }
+.lw-table td { border-bottom: 1px solid var(--lw-line); padding: .55rem .7rem; vertical-align: top; }
+.lw-table tr:nth-child(even) td { background: #f9fafb; }
+.lw-table .num { text-align: right; white-space: nowrap; font-weight: 600; }
+
+/* ladder / stack */
+.lw-stack { display: flex; flex-direction: column-reverse; gap: 3px; max-width: 520px; }
+.lw-stack div {
+    border-radius: 6px; padding: .45rem .8rem; color: #fff; font-size: .9rem;
+    display: flex; justify-content: space-between;
+}
+
+/* steps */
+.lw-steps { counter-reset: lw; list-style: none; padding: 0; margin: 0; }
+.lw-steps li { position: relative; padding: 0 0 .9rem 2.6rem; }
+.lw-steps li::before {
+    counter-increment: lw; content: counter(lw);
+    position: absolute; left: 0; top: 0; width: 1.9rem; height: 1.9rem; border-radius: 50%;
+    background: var(--lw-amber); color: #fff; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* calculator */
+.lw-calc { background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; padding: 1.25rem; }
+.lw-calc label { font-size: .85rem; color: var(--lw-muted); margin-bottom: .2rem; }
+.lw-calc input, .lw-calc select { font-weight: 600; }
+.lw-out { margin-top: 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .75rem; }
+.lw-res { background: #fff; border-radius: 10px; padding: .8rem 1rem; border: 1px solid var(--lw-line); }
+.lw-res .lw-res-v { font-size: 1.5rem; font-weight: 700; }
+.lw-res .lw-res-l { font-size: .85rem; color: var(--lw-muted); }
+.lw-bar { height: 8px; background: #e5e7eb; border-radius: 99px; margin-top: .45rem; position: relative; overflow: hidden; }
+.lw-bar i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 99px; background: var(--lw-ok); }
+.lw-pill { display: inline-block; border-radius: 999px; padding: .1rem .6rem; font-size: .78rem; font-weight: 700; }
+.lw-ok   { background: var(--lw-ok-bg); color: var(--lw-ok); }
+.lw-warn { background: var(--lw-warn-bg); color: var(--lw-warn); }
+.lw-bad  { background: var(--lw-bad-bg); color: var(--lw-bad); }
+
+/* quiz / FAQ — native <details>, works without JS */
+.lw-q { border: 1px solid var(--lw-line); border-radius: 10px; margin-bottom: .6rem; background: #fff; }
+.lw-q summary { cursor: pointer; padding: .75rem 1rem; font-weight: 600; list-style: none; }
+.lw-q summary::-webkit-details-marker { display: none; }
+.lw-q summary::before { content: "\f059"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--lw-amber); margin-right: .55rem; }
+.lw-q[open] summary { border-bottom: 1px solid var(--lw-line); }
+.lw-q div { padding: .75rem 1rem; }
+
+/* checklist */
+.lw-check { list-style: none; padding: 0; }
+.lw-check li { padding: .3rem 0 .3rem 1.8rem; position: relative; }
+.lw-check li::before {
+    content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900;
+    position: absolute; left: 0; color: var(--lw-ok);
+}
+
+.lw-src { font-size: .85rem; color: var(--lw-muted); border-top: 1px solid var(--lw-line); padding-top: 1rem; }
+.lw-back { color: var(--lw-navy); font-weight: 600; text-decoration: none; }
+
+@media (max-width: 768px) {
+    .lw-hero h1 { font-size: 1.5rem; }
+    .lw-hero .lw-lead { font-size: 1rem; }
+    .lw-box { padding: 1.1rem; }
+    .lw-nav { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .lw-nav a { white-space: nowrap; flex: 0 0 auto; }
+}
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+<div class="lw">
+
+    <div class="lw-hero">
+        <div class="container-fluid px-4">
+            <span class="lw-doc"><i class="fas fa-landmark"></i> Положение ЦБ РУз № 3618</span>
+            <h1>Макропруденциальные нормативы по кредитам физлицам</h1>
+            <p class="lw-lead">
+                Четыре «тормоза» на розничном кредитовании: долговая нагрузка (ПДН), долг к доходу (DTI),
+                кредит к залогу (LTV) и доля рискованных продуктов в портфеле. Плюс потолок на проценты и комиссии.
+            </p>
+            <div class="lw-meta">
+                <span><i class="far fa-calendar"></i> Зарегистрировано: 22.04.2025</span>
+                <span><i class="fas fa-play"></i> Вступило в силу: 24.07.2025</span>
+                <span><i class="fas fa-pen"></i> Изменения № 3618-1 — с 21.01.2026; DTI — с 01.03.2026</span>
+                <span><a href="https://lex.uz/docs/7491592" target="_blank" rel="noopener">Текст на lex.uz <i class="fas fa-arrow-up-right-from-square"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid px-4">
+
+        <nav class="lw-nav">
+            <a href="#short">Коротко</a>
+            <a href="#pdn">ПДН</a>
+            <a href="#income">Как считать доход</a>
+            <a href="#dti">DTI</a>
+            <a href="#ltv">LTV</a>
+            <a href="#conc">Концентрация</a>
+            <a href="#cost">Потолок платежей</a>
+            <a href="#calc">Калькулятор</a>
+            <a href="#quiz">Проверь себя</a>
+        </nav>
+
+        <section class="lw-box" id="short">
+            <h2><i class="fas fa-bolt"></i> За 30 секунд</h2>
+            <div class="lw-kpis">
+                <div class="lw-kpi"><b>≤ 50%</b><span>ПДН: платежи по всем кредитам / доход</span></div>
+                <div class="lw-kpi"><b>≤ 8× / 5×</b><span>DTI: долг по потреб. кредитам и микрозаймам / месячный доход (доход подтверждён / нет)</span></div>
+                <div class="lw-kpi"><b>75% / 80%</b><span>LTV: автокредит / ипотека</span></div>
+                <div class="lw-kpi"><b>≤ 25%</b><span>доля микрозаймов, карт или автокредитов в портфеле — каждого</span></div>
+                <div class="lw-kpi"><b>0,25%</b><span>в день — максимум процентов и комиссий</span></div>
+            </div>
+            <div class="lw-note mb-0">
+                <b>Кого касается</b>
+                Банки, включая микрофинансовые, по кредитам и микрозаймам <b>физическим лицам</b>, в том числе
+                самозанятым. Требования о долговой нагрузке отдельным постановлением (№ 3205-4) распространены и на
+                микрофинансовые организации и ломбарды.
+            </div>
+        </section>
+
+        <section class="lw-box" id="pdn">
+            <h2><i class="fas fa-weight-hanging"></i> ПДН — показатель долговой нагрузки (гл. 2)</h2>
+            <div class="lw-formula">ПДН = <em>Среднемесячные платежи по всем кредитам</em> / <em>Среднемесячный доход</em> ≤ 50%</div>
+            <h3>Что входит в платежи</h3>
+            <ul>
+                <li>все действующие кредиты у <b>всех</b> кредиторов (данные кредитного бюро);</li>
+                <li>кредиты, где человек — <b>поручитель или созаёмщик</b>;</li>
+                <li>заявки на кредит в любых организациях за последние <b>3 рабочих дня</b>;</li>
+                <li>просроченная задолженность, включая начисленные пени;</li>
+                <li>по кредитной карте или возобновляемой линии — <b>8% от лимита</b> в месяц (п. 9).</li>
+            </ul>
+            <h3>Как растянуть длинный кредит (п. 8)</h3>
+            <div class="lw-table-wrap">
+                <table class="lw-table">
+                    <thead><tr><th>Вид кредита</th><th class="num">Если срок длиннее — считаем аннуитет на</th></tr></thead>
+                    <tbody>
+                        <tr><td>Микрозаём</td><td class="num">36 мес.</td></tr>
+                        <tr><td>Ипотека (кроме рефинансируемой за счёт Минэкономфина)</td><td class="num">180 мес.</td></tr>
+                        <tr><td>Прочие кредиты (кроме кредитных линий и карт)</td><td class="num">60 мес.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="small text-muted">Если срок по договору не длиннее — платежи делятся на фактическое число месяцев.</p>
+            <div class="lw-alert">
+                <b><i class="fas fa-percent"></i> Исключения (п. 3–4)</b>
+                До <b>15% от числа</b> непогашенных кредитов банка можно выдать с ПДН до <b>100%</b>.
+                Ещё до 15% — самозанятым, зарегистрированным не более 6 месяцев назад, на доходную деятельность — без расчёта ПДН.
+                ПДН не применяется к кредитам ИП, по программам семейного предпринимательства и к образовательным кредитам.
+            </div>
+            <p class="mb-0">Расчёт ПДН действителен не дольше <b>3 рабочих дней</b> до выдачи (п. 12). Пересчёт нужен и при
+                увеличении лимита, платежа (кроме роста плавающей ставки), продлении срока, рефинансировании и покупке прав требования.</p>
+        </section>
+
+        <section class="lw-box" id="income">
+            <h2><i class="fas fa-wallet"></i> Как считать доход (гл. 2, § 3)</h2>
+            <ol class="lw-steps">
+                <li>Среднее арифметическое за непрерывные <b>6–12 месяцев</b> до обращения (п. 13).
+                    Можно взять <b>медиану</b>, если она меньше среднего (п. 14).</li>
+                <li>Источники: справки о зарплате, пенсия, накопительные пенсионные взносы, налоговые декларации,
+                    поступления на банковские счета клиента. Один источник дважды не считается (п. 18–19).</li>
+                <li>Сезонные работники: 1/6 дохода за последние 6 месяцев, если работали не меньше 3 месяцев подряд (п. 17).</li>
+                <li>Отпуск и сохранение рабочего места — не разрыв в доходе (п. 16).</li>
+                <li>Можно добавить доход созаёмщика (п. 15).</li>
+            </ol>
+        </section>
+
+        <section class="lw-box" id="dti">
+            <h2><i class="fas fa-divide"></i> DTI — долг к доходу (гл. 2¹, лимиты — с 01.03.2026)</h2>
+            <div class="lw-formula">DTI = <em>Основной долг (лимиты) по потреб. кредитам и микрозаймам</em> / <em>Среднемесячный доход</em></div>
+            <div class="row g-3">
+                <div class="col-md-4"><div class="lw-kpi"><b>≤ 8×</b><span>доход подтверждён документами из п. 19 (п. 24⁴)</span></div></div>
+                <div class="col-md-4"><div class="lw-kpi"><b>≤ 5×</b><span>доход документами не подтверждён</span></div></div>
+                <div class="col-md-4"><div class="lw-kpi"><b>≤ 8×</b><span>самозанятые</span></div></div>
+            </div>
+            <div class="lw-tip mb-0">
+                <b>Разница с ПДН</b>
+                ПДН смотрит на <b>платёж</b> — его можно «уменьшить» длинным сроком. DTI смотрит на <b>сумму долга</b>,
+                и срок его не меняет. Вместе они закрывают лазейку «растянем на 5 лет — и пройдём по ПДН».
+                DTI не применяется к кредитам ИП и образовательным кредитам.
+            </div>
+        </section>
+
+        <section class="lw-box" id="ltv">
+            <h2><i class="fas fa-house-chimney"></i> LTV — кредит к залогу (гл. 3)</h2>
+            <div class="lw-formula">LTV = (<em>Остаток кредита</em> + неиспользованная часть − денежное обеспечение в банке) / <em>Залоговая стоимость</em></div>
+            <div class="lw-table-wrap">
+                <table class="lw-table">
+                    <thead><tr><th>Кредит</th><th class="num">LTV не выше</th><th class="num">Свой взнос, если залог — сама покупка</th></tr></thead>
+                    <tbody>
+                        <tr><td>Автокредит</td><td class="num">75%</td><td class="num">25%</td></tr>
+                        <tr><td>Ипотека</td><td class="num">80%</td><td class="num">20%</td></tr>
+                        <tr><td>Ипотека, рефинансируемая за счёт Минэкономфина (доход определяется)</td><td class="num">85%</td><td class="num">15%</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <ul class="small mt-2 mb-0">
+                <li>Залоговая стоимость — по оценке, не выше рыночной и не выше первоначально согласованной (п. 26–27).</li>
+                <li>До <b>15% от числа</b> авто- и ипотечных кредитов банка могут превышать лимит
+                    (кроме ипотеки, где доход определить нельзя).</li>
+            </ul>
+        </section>
+
+        <section class="lw-box" id="conc">
+            <h2><i class="fas fa-chart-pie"></i> Концентрация в портфеле (гл. 4)</h2>
+            <p>Для банков (кроме микрофинансовых) доля каждого продукта в <b>совокупном кредитном портфеле</b>:</p>
+            <div class="lw-kpis">
+                <div class="lw-kpi"><b>≤ 25%</b><span>микрозаймы</span></div>
+                <div class="lw-kpi"><b>≤ 25%</b><span>овердрафты и кредитные карты</span></div>
+                <div class="lw-kpi"><b>≤ 25%</b><span>автокредиты</span></div>
+            </div>
+            <p class="mt-3">Кредитная карта в смысле положения: нет жёсткого графика, льготный период <b>не менее 45 дней</b>,
+                плата за переводы и снятие наличных, льготный период прерывается при снятии наличных, есть минимальный платёж (п. 32).</p>
+            <div class="lw-alert mb-0">
+                <b><i class="fas fa-calendar-check"></i> Переходный период</b>
+                Банки, которые не укладываются в лимиты по микрозаймам и картам, приводят портфель в норму поэтапно,
+                по графику, согласованному с ЦБ, — до <b>1 января 2029 года</b> (п. 33).
+            </div>
+        </section>
+
+        <section class="lw-box" id="cost">
+            <h2><i class="fas fa-hand-holding-dollar"></i> Потолок процентов и комиссий (гл. 2, § 4)</h2>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <h3 class="mt-0">В день — 0,25%</h3>
+                    <p class="mb-0">Проценты плюс прочие платежи (кроме основного долга и штрафов) — не больше <b>0,25% в день</b>
+                        от остатка основного долга (п. 23). Это примерно 91% годовых в простом выражении.</p>
+                </div>
+                <div class="col-md-6">
+                    <h3 class="mt-0">В год — 50% долга</h3>
+                    <p class="mb-0">Все платежи сверх основного долга — проценты, комиссии, неустойки — не больше <b>50% суммы долга в год</b>
+                        (п. 24). Для кредитов длиннее 12 месяцев «сумма долга» — остаток на начало каждого 12-месячного периода.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="lw-box" id="calc">
+            <h2><i class="fas fa-calculator"></i> Калькулятор заявки</h2>
+            <div class="lw-calc">
+                <div class="row g-3">
+                    <div class="col-6 col-md-4 col-xl-3"><label for="mp-type">Продукт</label>
+                        <select id="mp-type" class="form-select">
+                            <option value="consumer">Потребительский кредит</option>
+                            <option value="micro">Микрозаём</option>
+                            <option value="card">Кредитная карта / линия</option>
+                            <option value="auto">Автокредит</option>
+                            <option value="mortgage">Ипотека</option>
+                            <option value="mortgage_mef">Ипотека (рефинанс. Минэкономфином)</option>
+                        </select></div>
+                    <div class="col-6 col-md-4 col-xl-3"><label for="mp-amount">Сумма / лимит, сум</label><input id="mp-amount" class="form-control" type="number" value="60000000" min="0" step="any"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="mp-rate">Ставка, % годовых</label><input id="mp-rate" class="form-control" type="number" value="28" min="0" step="any"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="mp-term">Срок, мес.</label><input id="mp-term" class="form-control" type="number" value="84" min="1" step="1"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="mp-coll">Залог (авто/ипотека)</label><input id="mp-coll" class="form-control" type="number" value="0" min="0" step="any"></div>
+                    <div class="col-6 col-md-4 col-xl-3"><label for="mp-income">Среднемесячный доход, сум</label><input id="mp-income" class="form-control" type="number" value="9000000" min="0" step="any"></div>
+                    <div class="col-6 col-md-4 col-xl-3"><label for="mp-pay">Текущие платежи в месяц, сум</label><input id="mp-pay" class="form-control" type="number" value="1500000" min="0" step="any"></div>
+                    <div class="col-6 col-md-4 col-xl-3"><label for="mp-debt">Текущий долг по потреб. кредитам/микрозаймам</label><input id="mp-debt" class="form-control" type="number" value="10000000" min="0" step="any"></div>
+                    <div class="col-12 col-md-6 col-xl-3 d-flex flex-column justify-content-end">
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="mp-doc" checked><label class="form-check-label" for="mp-doc">Доход подтверждён документами</label></div>
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="mp-self"><label class="form-check-label" for="mp-self">Самозанятый</label></div>
+                    </div>
+                </div>
+                <div class="lw-out" id="mp-out"></div>
+            </div>
+            <p class="small text-muted mt-2 mb-0">Упрощённо: исключения в пределах 15% портфеля и особые случаи не учитываются.
+                В «текущие платежи» включите и 8% от лимитов уже открытых карт.</p>
+        </section>
+
+        <section class="lw-box" id="quiz">
+            <h2><i class="fas fa-circle-question"></i> Проверь себя</h2>
+            <details class="lw-q"><summary>У клиента кредитная карта с лимитом 20 млн сум, долг по ней 0. Учитывается ли она в ПДН?</summary>
+                <div><b>Да</b>: в платежи берётся <b>8% лимита</b> — 1,6 млн сум в месяц, даже если карта не использована.</div></details>
+            <details class="lw-q"><summary>Потребкредит на 84 месяца. На сколько месяцев считать платёж для ПДН?</summary>
+                <div>На <b>60</b>: для прочих кредитов срок больше 60 месяцев «обрезается» до 60 (аннуитет).</div></details>
+            <details class="lw-q"><summary>Клиент — поручитель по чужому кредиту. Это влияет на его ПДН?</summary>
+                <div><b>Да</b>, платежи по договорам, где он поручитель или созаёмщик, входят в расчёт.</div></details>
+            <details class="lw-q"><summary>Квартира стоит 800 млн сум. Максимальная ипотека?</summary>
+                <div>LTV ≤ 80% → не более <b>640 млн сум</b> (по программе с рефинансированием Минэкономфина — до 85%, 680 млн).</div></details>
+            <details class="lw-q"><summary>Доход 10 млн, подтверждён справкой. Какой предел долга по потреб. кредитам и микрозаймам?</summary>
+                <div>DTI ≤ 8× → <b>80 млн сум</b> в сумме по всем таким кредитам (без справки — 5×, 50 млн).</div></details>
+        </section>
+
+        <p class="lw-src">
+            Источник: Положение о макропруденциальных нормативах, устанавливаемых банкам, и требованиях к максимальным
+            размерам платежей по кредитам (микрозаймам), утверждено постановлением Правления ЦБ РУз от 08.04.2025 № 7/3,
+            рег. МЮ № 3618 от 22.04.2025, в ред. изменений № 3618-1 от 18.12.2025
+            (<a href="https://lex.uz/docs/7491592" target="_blank" rel="noopener">lex.uz</a>).
+            Страница — упрощённое объяснение; юридическую силу имеет только официальный текст.
+            <br><a class="lw-back" href="{% url 'laws-home' %}"><i class="fas fa-arrow-left"></i> Ко всем законам</a>
+        </p>
+    </div>
+</div>
+
+<script>
+(function () {
+    var CAP = { micro: 36, mortgage: 180, consumer: 60, auto: 60, mortgage_mef: null };
+    var LTV = { auto: 0.75, mortgage: 0.80, mortgage_mef: 0.85 };
+    var DTI_TYPES = { consumer: true, micro: true, card: true };
+
+    function g(id) { return document.getElementById('mp-' + id); }
+    function f(id) { var x = parseFloat(g(id).value); return isNaN(x) || x < 0 ? 0 : x; }
+    function sum(x) { return Math.round(x).toLocaleString('ru-RU') + ' сум'; }
+    function p(x) { return (x * 100).toLocaleString('ru-RU', { maximumFractionDigits: 1 }) + '%'; }
+
+    function annuity(amount, ratePct, months) {
+        var r = ratePct / 100 / 12;
+        if (r === 0) return amount / months;
+        return amount * r / (1 - Math.pow(1 + r, -months));
+    }
+
+    function res(label, value, ok, note, bar) {
+        var cls = ok === null ? 'lw-ok' : (ok ? 'lw-ok' : 'lw-bad');
+        var html = '<div class="lw-res"><div class="lw-res-l">' + label + '</div><div class="lw-res-v">' + value + '</div>';
+        if (ok !== null) html += '<span class="lw-pill ' + cls + '">' + (ok ? 'в пределах' : 'превышение') + '</span> ';
+        html += '<span class="small text-muted">' + note + '</span>';
+        if (bar !== undefined) html += '<div class="lw-bar"><i style="width:' + Math.min(100, bar * 100) + '%;background:' + (ok ? '#15803d' : '#b91c1c') + '"></i></div>';
+        return html + '</div>';
+    }
+
+    function render() {
+        var type = g('type').value, amount = f('amount'), rate = f('rate');
+        var term = Math.max(1, Math.round(f('term'))), income = f('income');
+        var payment, termNote;
+        if (type === 'card') {
+            payment = amount * 0.08; termNote = '8% от лимита';
+        } else {
+            var cap = CAP[type], used = cap && term > cap ? cap : term;
+            payment = annuity(amount, rate, used);
+            termNote = 'аннуитет на ' + used + ' мес.' + (used < term ? ' (срок обрезан с ' + term + ')' : '');
+        }
+        var html = res('Платёж по новому кредиту для ПДН', sum(payment), null, termNote);
+
+        if (income > 0) {
+            var pdn = (f('pay') + payment) / income;
+            html += res('ПДН', p(pdn), pdn <= 0.5, 'лимит 50%', pdn);
+            if (DTI_TYPES[type]) {
+                var limit = (g('doc').checked || g('self').checked) ? 8 : 5;
+                var dti = (f('debt') + amount) / income;
+                html += res('DTI', dti.toLocaleString('ru-RU', { maximumFractionDigits: 2 }) + '×', dti <= limit,
+                    'лимит ' + limit + '× · максимум долга ' + sum(limit * income), dti / (limit * 2));
+            } else {
+                html += res('DTI', '—', null, 'в калькуляторе считается только для потреб. кредитов, микрозаймов и карт');
+            }
+        } else {
+            html += '<div class="lw-res">Введите доход, чтобы посчитать ПДН и DTI.</div>';
+        }
+
+        if (LTV[type]) {
+            var coll = f('coll');
+            if (coll > 0) {
+                var ltv = amount / coll;
+                html += res('LTV', p(ltv), ltv <= LTV[type], 'лимит ' + p(LTV[type]) + ' · максимум кредита ' + sum(coll * LTV[type]), ltv);
+            } else {
+                html += '<div class="lw-res">Укажите залоговую стоимость, чтобы посчитать LTV.</div>';
+            }
+        }
+
+        var daily = rate / 365;
+        html += res('Ставка в день (без комиссий)', daily.toLocaleString('ru-RU', { maximumFractionDigits: 3 }) + '%', daily <= 0.25, 'потолок 0,25% в день');
+        g('out').innerHTML = html;
+    }
+
+    ['type', 'amount', 'rate', 'term', 'coll', 'income', 'pay', 'debt', 'doc', 'self'].forEach(function (id) {
+        g(id).addEventListener('input', render);
+        g(id).addEventListener('change', render);
+    });
+    render();
+})();
+</script>
+{% endblock %}

@@ -1,0 +1,227 @@
+{% extends 'base.html' %}
+
+{% block title %}Законы управления банками{% endblock %}
+{% block content %}
+
+<html lang="ru">
+    <style>
+        
+        .header-section {
+            background: linear-gradient(135deg, #e2d2ce, #f7cc8b);
+            color: rgb(122, 84, 84);
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .header-section h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        .header-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 15px;
+            background-color: white;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .card-icon {
+            font-size: 3rem;
+            color: #e6be0f;
+            margin-bottom: 1rem;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+        .card-text {
+            color: #4b5563;
+            font-size: 0.95rem;
+        }
+        .btn-law {
+            background-color: #f59e0b;
+            border: none;
+            color: white;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .btn-law:hover {
+            background-color: #d97706;
+        }
+        @media (max-width: 768px) {
+            .header-section h1 {
+                font-size: 2rem;
+            }
+            .header-section p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Секция заголовка -->
+    <div class="header-section">
+        <div class="container">
+            <h1 class="page-header">Законы управления банками</h1>
+            <p>
+                Ознакомьтесь с ключевыми законами и нормативными актами, регулирующими управление банками. Эта страница предоставляет обзор важных правовых рамок, обеспечивающих соответствие, прозрачность и стабильность банковских операций. Нажмите на каждую карточку, чтобы узнать больше о конкретных законах.
+            </p>
+        </div>
+    </div>
+    
+    <!-- Секция карточек -->
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <!-- Карточка 1 -->
+            <div class="col">
+                <a href="{% url 'laws-2696' %}" class="text-decoration-none">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-solid fa-circle-nodes card-icon"></i>
+                            <h3 class="card-title">Положение о классификации качества активов в коммерческих банках</h3>
+                            <p class="card-text">
+                                Регулирует классификацию качества активов, формирование резервов для покрытия возможных убытков и их использование.
+                            </p>
+                            <button class="btn btn-law mt-3">Узнать больше</button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Карточка 2 -->
+            <div class="col">
+                <a href="{% url 'laws-accounting' %}" class="text-decoration-none">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-t card-icon"></i>
+                            <h3 class="card-title">План счетов бухгалтерского учета</h3>
+                            <p class="card-text">
+                                План счетов разделен на классы, каждый из которых охватывает определенные аспекты банковской деятельности. Ниже приведены основные классы и их назначение.
+                            </p>
+                            <button class="btn btn-law mt-3">Узнать больше</button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Карточка 3 -->
+            <div class="col">
+                <a href="{% url 'laws-overdue' %}" class="text-decoration-none">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-file-contract card-icon"></i>
+                            <h3 class="card-title">Закон о Сокращение доли неактивных активов </h3>
+                            <p class="card-text">
+                                О мерах по ускорению реализации имущества, принятого на баланс банков в счет погашения задолженности
+                            </p>
+                            <button class="btn btn-law mt-3">Узнать больше</button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Карточка 4 -->
+            <div class="col">
+                <a href="{% url 'laws-capital' %}" class="text-decoration-none">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-balance-scale card-icon"></i>
+                            <h3 class="card-title">Нормы достаточности капитала</h3>
+                            <p class="card-text">
+                                Обеспечивает наличие у банков достаточного капитала для поглощения финансовых потрясений.
+                            </p>
+                            <button class="btn btn-law mt-3">Узнать больше</button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Карточка 5 -->
+            <div class="col">
+                <a href="{% url 'laws-secret' %}" class="text-decoration-none">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-lock card-icon"></i>
+                            <h3 class="card-title">О банковской тайне</h3>
+                            <p class="card-text">
+                                Обеспечение конфиденциальности и защиты банковской информации клиентов.
+                            </p>
+                            <button class="btn btn-law mt-3">Узнать больше</button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Карточка 6 -->
+            <div class="col">
+                <a href="#" class="text-decoration-none">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-handshake card-icon"></i>
+                            <h3 class="card-title">Кодекс корпоративного управления</h3>
+                            <p class="card-text">
+                                Способствует этичному управлению и подотчетности в банковских учреждениях.
+                            </p>
+                            <button class="btn btn-law mt-3">Узнать больше</button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="{% url 'laws-3618' %}" class="text-decoration-none">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-y card-icon"></i>
+                            <h3 class="card-title">Макропруденциальных Норматив</h3>
+                            <p class="card-text">
+                                Положение Центрального банка Узбекистана регулирует макропруденциальные нормативы и платежи по кредитам, обеспечивая финансовую стабильность и защиту заемщиков.
+                            </p>
+                            <button class="btn btn-law mt-3">Узнать больше</button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="{% url 'laws-3283' %}" class="text-decoration-none">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fa-solid fa-border-top-left card-icon"></i>
+                            <h3 class="card-title">Максимальный размер риска </h3>
+                            <p class="card-text">
+                                ПОЛОЖЕНИЕ о максимальном размере риска на одного
+                                заемщика, группу взаимосвязанных заемщиков,
+                                в том числе связанных с банком лиц
+                                
+                            </p>
+                            <button class="btn btn-law mt-3">Узнать больше</button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col">
+                <a href="{% url 'laws-terror' %}" class="text-decoration-none">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fa-solid fa-bug card-icon"></i>
+                            <h3 class="card-title">О противодействии легализации доходов, финансированию терроризма</h3>
+                            <p class="card-text">
+                                <strong>Правовые основания</strong> — статьи 13 Закона «О прокуратуре» и 15 Закона «О противодействии легализации доходов, финансированию терроризма...» 
+                                
+                            </p>
+                            <button class="btn btn-law mt-3">Узнать больше</button>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+    
+
+    
+
+{% endblock %}

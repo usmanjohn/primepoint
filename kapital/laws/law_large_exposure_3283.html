@@ -1,0 +1,434 @@
+{% extends 'base.html' %}
+
+{% block title %}Максимальный размер риска — Положение № 3283{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ── Law explainer pages. Every rule is scoped under .lw so the dashboard's own
+      .card / .btn / .table styles are never touched. ─────────────────────────── */
+.lw {
+    --lw-navy: #1e3a8a;
+    --lw-amber: #f59e0b;
+    --lw-amber-d: #b45309;
+    --lw-ink: #1f2937;
+    --lw-muted: #6b7280;
+    --lw-line: #e5e7eb;
+    --lw-soft: #fff8eb;
+    --lw-ok: #15803d;
+    --lw-ok-bg: #dcfce7;
+    --lw-warn: #b45309;
+    --lw-warn-bg: #fef3c7;
+    --lw-bad: #b91c1c;
+    --lw-bad-bg: #fee2e2;
+    color: var(--lw-ink);
+    padding-bottom: 3rem;
+}
+.lw section, .lw .lw-anchor { scroll-margin-top: 80px; }
+
+/* hero */
+.lw-hero {
+    background: linear-gradient(135deg, #e2d2ce, #f7cc8b);
+    color: #5b3a2e;
+    border-radius: 0 0 18px 18px;
+    padding: 2.25rem 0 1.75rem;
+    margin-bottom: 1.5rem;
+}
+.lw-hero h1 { font-size: 2rem; font-weight: 700; margin: .5rem 0; }
+.lw-hero .lw-lead { font-size: 1.1rem; max-width: 820px; margin: 0; }
+.lw-doc {
+    display: inline-block; background: rgba(255,255,255,.7); color: var(--lw-navy);
+    font-weight: 600; font-size: .85rem; border-radius: 999px; padding: .25rem .8rem;
+}
+.lw-meta { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+.lw-meta span {
+    background: rgba(255,255,255,.55); border-radius: 8px; padding: .3rem .65rem; font-size: .85rem;
+}
+.lw-meta a { color: var(--lw-navy); font-weight: 600; }
+
+/* in-page navigation */
+.lw-nav {
+    position: sticky; top: 56px; z-index: 5; background: rgba(241,245,249,.95);
+    backdrop-filter: blur(4px); padding: .5rem 0; margin-bottom: 1rem;
+    display: flex; flex-wrap: wrap; gap: .4rem;
+}
+.lw-nav a {
+    text-decoration: none; font-size: .85rem; color: var(--lw-navy);
+    border: 1px solid #c7d2fe; background: #fff; border-radius: 999px; padding: .25rem .75rem;
+}
+.lw-nav a:hover { background: var(--lw-navy); color: #fff; }
+
+/* blocks */
+.lw-box {
+    background: #fff; border-radius: 14px; box-shadow: 0 2px 10px rgba(15,23,42,.06);
+    padding: 1.5rem; margin-bottom: 1.5rem;
+}
+.lw-box > h2 {
+    font-size: 1.35rem; font-weight: 700; color: var(--lw-navy); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: .6rem;
+}
+.lw-box > h2 i { color: var(--lw-amber); }
+.lw-box h3 { font-size: 1.05rem; font-weight: 700; margin-top: 1rem; }
+
+/* KPI tiles */
+.lw-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: .9rem; }
+.lw-kpi {
+    background: var(--lw-soft); border: 1px solid #fde68a; border-radius: 12px; padding: 1rem;
+}
+.lw-kpi b { display: block; font-size: 1.75rem; color: var(--lw-navy); line-height: 1.1; }
+.lw-kpi span { font-size: .88rem; color: var(--lw-muted); }
+
+/* formula strip */
+.lw-formula {
+    background: #0f172a; color: #f8fafc; border-radius: 10px; padding: .85rem 1rem;
+    font-family: SFMono-Regular, Menlo, Consolas, monospace; font-size: .95rem;
+    overflow-x: auto; white-space: nowrap; margin: .75rem 0;
+}
+.lw-formula em { color: #fbbf24; font-style: normal; }
+
+/* callouts */
+.lw-note, .lw-tip, .lw-alert {
+    border-radius: 10px; padding: .85rem 1rem; margin: 1rem 0; font-size: .95rem;
+    border-left: 5px solid;
+}
+.lw-note  { background: #eff6ff; border-color: #3b82f6; }
+.lw-tip   { background: var(--lw-ok-bg); border-color: var(--lw-ok); }
+.lw-alert { background: var(--lw-warn-bg); border-color: var(--lw-amber); }
+.lw-note b, .lw-tip b, .lw-alert b { display: block; margin-bottom: .2rem; }
+
+/* tables */
+.lw-table-wrap { overflow-x: auto; }
+.lw-table { width: 100%; border-collapse: collapse; font-size: .93rem; }
+.lw-table th { background: var(--lw-navy); color: #fff; font-weight: 600; padding: .55rem .7rem; text-align: left; }
+.lw-table td { border-bottom: 1px solid var(--lw-line); padding: .55rem .7rem; vertical-align: top; }
+.lw-table tr:nth-child(even) td { background: #f9fafb; }
+.lw-table .num { text-align: right; white-space: nowrap; font-weight: 600; }
+
+/* ladder / stack */
+.lw-stack { display: flex; flex-direction: column-reverse; gap: 3px; max-width: 520px; }
+.lw-stack div {
+    border-radius: 6px; padding: .45rem .8rem; color: #fff; font-size: .9rem;
+    display: flex; justify-content: space-between;
+}
+
+/* steps */
+.lw-steps { counter-reset: lw; list-style: none; padding: 0; margin: 0; }
+.lw-steps li { position: relative; padding: 0 0 .9rem 2.6rem; }
+.lw-steps li::before {
+    counter-increment: lw; content: counter(lw);
+    position: absolute; left: 0; top: 0; width: 1.9rem; height: 1.9rem; border-radius: 50%;
+    background: var(--lw-amber); color: #fff; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* calculator */
+.lw-calc { background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; padding: 1.25rem; }
+.lw-calc label { font-size: .85rem; color: var(--lw-muted); margin-bottom: .2rem; }
+.lw-calc input, .lw-calc select { font-weight: 600; }
+.lw-out { margin-top: 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .75rem; }
+.lw-res { background: #fff; border-radius: 10px; padding: .8rem 1rem; border: 1px solid var(--lw-line); }
+.lw-res .lw-res-v { font-size: 1.5rem; font-weight: 700; }
+.lw-res .lw-res-l { font-size: .85rem; color: var(--lw-muted); }
+.lw-bar { height: 8px; background: #e5e7eb; border-radius: 99px; margin-top: .45rem; position: relative; overflow: hidden; }
+.lw-bar i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 99px; background: var(--lw-ok); }
+.lw-pill { display: inline-block; border-radius: 999px; padding: .1rem .6rem; font-size: .78rem; font-weight: 700; }
+.lw-ok   { background: var(--lw-ok-bg); color: var(--lw-ok); }
+.lw-warn { background: var(--lw-warn-bg); color: var(--lw-warn); }
+.lw-bad  { background: var(--lw-bad-bg); color: var(--lw-bad); }
+
+/* quiz / FAQ — native <details>, works without JS */
+.lw-q { border: 1px solid var(--lw-line); border-radius: 10px; margin-bottom: .6rem; background: #fff; }
+.lw-q summary { cursor: pointer; padding: .75rem 1rem; font-weight: 600; list-style: none; }
+.lw-q summary::-webkit-details-marker { display: none; }
+.lw-q summary::before { content: "\f059"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--lw-amber); margin-right: .55rem; }
+.lw-q[open] summary { border-bottom: 1px solid var(--lw-line); }
+.lw-q div { padding: .75rem 1rem; }
+
+/* checklist */
+.lw-check { list-style: none; padding: 0; }
+.lw-check li { padding: .3rem 0 .3rem 1.8rem; position: relative; }
+.lw-check li::before {
+    content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900;
+    position: absolute; left: 0; color: var(--lw-ok);
+}
+
+.lw-src { font-size: .85rem; color: var(--lw-muted); border-top: 1px solid var(--lw-line); padding-top: 1rem; }
+.lw-back { color: var(--lw-navy); font-weight: 600; text-decoration: none; }
+
+@media (max-width: 768px) {
+    .lw-hero h1 { font-size: 1.5rem; }
+    .lw-hero .lw-lead { font-size: 1rem; }
+    .lw-box { padding: 1.1rem; }
+    .lw-nav { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .lw-nav a { white-space: nowrap; flex: 0 0 auto; }
+}
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+<div class="lw">
+
+    <div class="lw-hero">
+        <div class="container-fluid px-4">
+            <span class="lw-doc"><i class="fas fa-landmark"></i> Положение ЦБ РУз № 3283</span>
+            <h1>Максимальный размер риска на одного заёмщика</h1>
+            <p class="lw-lead">
+                Чтобы банк не «сложил все яйца в одну корзину»: сколько можно дать одному клиенту,
+                группе связанных компаний и своим (связанным с банком) лицам.
+            </p>
+            <div class="lw-meta">
+                <span><i class="far fa-calendar"></i> Зарегистрировано: 29.10.2020</span>
+                <span><i class="fas fa-play"></i> Вступило в силу: 30.01.2021</span>
+                <span><i class="fas fa-pen"></i> Последняя редакция: 20.07.2026 (изм. № 3283-3)</span>
+                <span><a href="https://lex.uz/docs/5086894" target="_blank" rel="noopener">Текст на lex.uz <i class="fas fa-arrow-up-right-from-square"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid px-4">
+
+        <nav class="lw-nav">
+            <a href="#short">Коротко</a>
+            <a href="#what">Что считается риском</a>
+            <a href="#group">Группа заёмщиков</a>
+            <a href="#related">Связанные лица</a>
+            <a href="#calc">Проверка портфеля</a>
+            <a href="#reduce">Что уменьшает риск</a>
+            <a href="#quiz">Проверь себя</a>
+        </nav>
+
+        <section class="lw-box" id="short">
+            <h2><i class="fas fa-bolt"></i> За 30 секунд</h2>
+            <p>Все лимиты считаются от <b>капитала I уровня</b> (Tier 1) банка.</p>
+            <div class="lw-kpis">
+                <div class="lw-kpi"><b>25%</b><span>один заёмщик или группа связанных заёмщиков (п. 3)</span></div>
+                <div class="lw-kpi"><b>5%</b><span>бланковый (необеспеченный) кредит одному заёмщику / группе; кроме межбанка (п. 4)</span></div>
+                <div class="lw-kpi"><b>10%</b><span>с этого уровня риск считается «крупным»</span></div>
+                <div class="lw-kpi"><b>× 5</b><span>сумма всех крупных рисков ≤ 5 капиталов I уровня (п. 5)</span></div>
+                <div class="lw-kpi"><b>15%</b><span>одно лицо, связанное с банком (п. 20)</span></div>
+                <div class="lw-kpi"><b>25%</b><span>все связанные с банком лица вместе (п. 21)</span></div>
+            </div>
+            <p class="small text-muted mt-2 mb-0">Для микрофинансовых банков установлены отдельные лимиты — на этой странице не рассматриваются.</p>
+        </section>
+
+        <section class="lw-box" id="what">
+            <h2><i class="fas fa-magnifying-glass-dollar"></i> Что входит в «риск» (п. 2)</h2>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <ul class="lw-check mb-0">
+                        <li>Кредиты, займы, микрозаймы, овердрафты, лизинг, факторинг.</li>
+                        <li>Деньги банка, выданные заёмщику косвенно — через другой банк или кредитную организацию.</li>
+                        <li>Вложения в уставный капитал и ценные бумаги заёмщика.</li>
+                        <li>Начисленные проценты к получению, авансы, дебиторская задолженность.</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="lw-check mb-0">
+                        <li>Внебалансовые обязательства: гарантии, аккредитивы, неиспользованные лимиты —
+                            после умножения на коэффициент кредитной конверсии <b>10% и выше</b> (п. 32).</li>
+                        <li>Обязательства купить ценные бумаги или валюту.</li>
+                        <li>Риск считается за вычетом обязательных резервов на возможные потери (п. 31).</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lw-tip">
+                <b>Не ограничиваются (п. 33)</b>
+                Требования к ЦБ РУз и к Правительству / госорганам с весом риска 0% в расчёте достаточности капитала.
+            </div>
+        </section>
+
+        <section class="lw-box" id="group">
+            <h2><i class="fas fa-sitemap"></i> Группа взаимосвязанных заёмщиков</h2>
+            <p>Компании, которые «утонут вместе», считаются одним заёмщиком. Связь бывает двух видов (п. 6–9):</p>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <h3 class="mt-0"><i class="fas fa-crown text-warning"></i> Через контроль</h3>
+                    <ul>
+                        <li>владение <b>20% и более</b> уставного капитала (прямо или косвенно, в т. ч. с аффилированными);</li>
+                        <li>фактический контроль над компанией;</li>
+                        <li>физлицо — член наблюдательного совета, правления или должностное лицо компании;</li>
+                        <li>компании под общим контролем или с одинаковым составом участников / органов управления;</li>
+                        <li>близкие родственники (родители, братья и сёстры, супруги, дети, бабушки/дедушки, внуки, родители и братья/сёстры супруга).</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="mt-0"><i class="fas fa-link text-warning"></i> Через экономическую зависимость</h3>
+                    <ul>
+                        <li><b>50% и более</b> годовой выручки одна сторона получает от другой;</li>
+                        <li><b>не менее 50%</b> продукции продаётся одной стороне и альтернативных покупателей трудно найти;</li>
+                        <li>одна сторона — единственный источник финансирования другой (кроме госбанков и МФО развития);</li>
+                        <li><b>более 30%</b> обязательств перед банком гасится за счёт средств другой стороны;</li>
+                        <li><b>более 30%</b> полученного кредита направляется на финансирование другой стороны.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lw-alert">
+                <b><i class="fas fa-triangle-exclamation"></i> Порог проверки — 5%</b>
+                Если риск на одного заёмщика достигает 5% капитала I уровня, банк обязан проверить его на
+                экономическую зависимость с другими клиентами (п. 12). Заёмщик в двух группах учитывается в
+                каждой из них отдельно (п. 11).
+            </div>
+            <p class="small text-muted mb-0">Один и тот же банк или рынок, где финансируются компании, сам по себе не делает их связанными.</p>
+        </section>
+
+        <section class="lw-box" id="related">
+            <h2><i class="fas fa-user-shield"></i> Лица, связанные с банком</h2>
+            <p>Акционеры со значительной долей (5% и более), члены совета и правления, ключевые сотрудники,
+               их родственники и компании, а также компании, где банк владеет 20% и больше.</p>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <h3 class="mt-0">Лимиты</h3>
+                    <ul>
+                        <li>Одно связанное лицо — <b>≤ 15%</b> капитала I уровня.</li>
+                        <li>Все связанные лица вместе — <b>≤ 25%</b>.</li>
+                        <li>Превышение <b>вычитается из капитала I уровня</b> при расчёте достаточности капитала (п. 22).</li>
+                        <li>Условия не могут быть лучше, чем для посторонних клиентов: ниже ставка, сделки, которые банк
+                            не заключил бы с другими, покупка неликвидных активов у связанных лиц.</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h3 class="mt-0">Минимальное обеспечение кредита связанному лицу (п. 25)</h3>
+                    <div class="lw-table-wrap">
+                        <table class="lw-table">
+                            <thead><tr><th>Вид обеспечения</th><th class="num">≥ от кредита</th></tr></thead>
+                            <tbody>
+                                <tr><td>Гарантия Правительства РУз</td><td class="num">100%</td></tr>
+                                <tr><td>Депозит в банке-кредиторе в сумах</td><td class="num">100%</td></tr>
+                                <tr><td>Депозит в банке-кредиторе в валюте</td><td class="num">110%</td></tr>
+                                <tr><td>Государственные ценные бумаги</td><td class="num">125%</td></tr>
+                                <tr><td>Прочее обеспечение (по рыночной стоимости)</td><td class="num">130%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="lw-note mb-0">
+                <b>Клиент стал связанным уже после выдачи кредита</b>
+                Это не нарушение, если банк в течение <b>10 дней</b> сообщил ЦБ и взял обязательство привести
+                риск в норму в согласованный с ЦБ срок (п. 23).
+            </div>
+        </section>
+
+        <section class="lw-box" id="calc">
+            <h2><i class="fas fa-table-list"></i> Проверка портфеля</h2>
+            <p class="text-muted small">Введите капитал I уровня и риски по заёмщикам (группам). Строки можно добавлять. Все суммы — в одних единицах.</p>
+            <div class="lw-calc">
+                <div class="row g-3 mb-3">
+                    <div class="col-sm-6 col-lg-3"><label for="le-t1">Капитал I уровня</label><input id="le-t1" class="form-control" type="number" value="1000" min="0" step="any"></div>
+                </div>
+                <div class="lw-table-wrap">
+                    <table class="lw-table" id="le-table">
+                        <thead><tr><th>Заёмщик / группа</th><th>Риск</th><th>из них бланк</th><th>Связан с банком</th><th class="num">% Tier 1</th><th>Статус</th><th></th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <button type="button" class="btn btn-sm btn-outline-primary mt-2" id="le-add"><i class="fas fa-plus"></i> Добавить строку</button>
+                <div class="lw-out" id="le-sum"></div>
+            </div>
+        </section>
+
+        <section class="lw-box" id="reduce">
+            <h2><i class="fas fa-shield-halved"></i> Что уменьшает риск</h2>
+            <p>При расчёте нормативов риск можно уменьшить на часть, покрытую надёжным обеспечением (п. 34),
+               и только этими видами обеспечения:</p>
+            <ul>
+                <li>государственные ценные бумаги;</li>
+                <li>активы, обеспеченные или гарантированные Правительством РУз и ЦБ;</li>
+                <li>риски на международные банки развития и активы, гарантированные ими;</li>
+                <li>гарантии и ценные бумаги правительств и центральных банков стран с низким уровнем риска;</li>
+                <li>депозиты и депозитные сертификаты в самом банке-кредиторе.</li>
+            </ul>
+            <ul class="lw-check mb-0">
+                <li>Если обеспечение покрывает только основной долг — проценты и прочие платежи считаются необеспеченными.</li>
+                <li>Если валюта обеспечения не совпадает с валютой риска — обеспечение уменьшается на <b>10%</b> (п. 37).</li>
+            </ul>
+        </section>
+
+        <section class="lw-box" id="quiz">
+            <h2><i class="fas fa-circle-question"></i> Проверь себя</h2>
+            <details class="lw-q"><summary>Капитал I уровня 1 000. Можно ли выдать группе компаний 300?</summary>
+                <div><b>Нет</b>: 30% > 25%. Максимум — 250, из них без обеспечения — не больше 50 (5%).</div></details>
+            <details class="lw-q"><summary>Риск на заёмщика 120 при капитале I уровня 1 000. Это крупный риск?</summary>
+                <div><b>Да</b>, 12% ≥ 10%. Он входит в сумму крупных рисков, которая не может превышать 5 000 (5 × капитал I уровня).</div></details>
+            <details class="lw-q"><summary>Поставщик получает 60% выручки от одного покупателя. Они — группа?</summary>
+                <div>Да, это экономическая зависимость: <b>50% и более</b> выручки от одной стороны.</div></details>
+            <details class="lw-q"><summary>Кредит связанному лицу обеспечен валютным депозитом на 105% суммы. Достаточно?</summary>
+                <div><b>Нет</b>, для депозита в иностранной валюте нужно не менее <b>110%</b>.</div></details>
+            <details class="lw-q"><summary>Что будет, если риск на связанное лицо 18% капитала I уровня?</summary>
+                <div>Превышение над 15% (3 п.п.) вычитается из капитала I уровня при расчёте достаточности капитала.</div></details>
+        </section>
+
+        <p class="lw-src">
+            Источник: Положение о максимальном размере риска на одного заёмщика, в том числе связанных с банком лиц,
+            или группу взаимосвязанных заёмщиков, рег. МЮ № 3283 от 29.10.2020, в ред. изменений № 3283-1 (2024),
+            3283-2 (05.09.2025), 3283-3 (20.07.2026) (<a href="https://lex.uz/docs/5086894" target="_blank" rel="noopener">lex.uz</a>).
+            Страница — упрощённое объяснение; юридическую силу имеет только официальный текст.
+            <br><a class="lw-back" href="{% url 'laws-home' %}"><i class="fas fa-arrow-left"></i> Ко всем законам</a>
+        </p>
+    </div>
+</div>
+
+<script>
+(function () {
+    var body = document.querySelector('#le-table tbody');
+    var start = [
+        ['ООО «Альфа-Строй» (группа)', 240, 30, false],
+        ['АО «Текстиль Плюс»', 130, 60, false],
+        ['ИП Каримов', 40, 40, false],
+        ['ООО «Дочерняя лизинговая»', 170, 0, true]
+    ];
+
+    function p(x) { return (x * 100).toLocaleString('ru-RU', { maximumFractionDigits: 1 }) + '%'; }
+    function num(el) { var x = parseFloat(el.value); return isNaN(x) || x < 0 ? 0 : x; }
+
+    function addRow(r) {
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+            '<td><input class="form-control form-control-sm" type="text"></td>' +
+            '<td><input class="form-control form-control-sm" type="number" min="0" step="any"></td>' +
+            '<td><input class="form-control form-control-sm" type="number" min="0" step="any"></td>' +
+            '<td class="text-center"><input class="form-check-input" type="checkbox"></td>' +
+            '<td class="num"></td><td></td>' +
+            '<td><button type="button" class="btn btn-sm btn-link text-danger" title="Удалить"><i class="fas fa-xmark"></i></button></td>';
+        var inp = tr.querySelectorAll('input');
+        inp[0].value = r[0]; inp[1].value = r[1]; inp[2].value = r[2]; inp[3].checked = r[3];
+        tr.querySelector('button').addEventListener('click', function () { tr.remove(); render(); });
+        inp.forEach(function (i) { i.addEventListener('input', render); i.addEventListener('change', render); });
+        body.appendChild(tr);
+    }
+
+    function render() {
+        var t1 = num(document.getElementById('le-t1'));
+        var large = 0, related = 0, breaches = 0;
+        body.querySelectorAll('tr').forEach(function (tr) {
+            var inp = tr.querySelectorAll('input');
+            var risk = num(inp[1]), blank = num(inp[2]), rel = inp[3].checked;
+            var share = t1 > 0 ? risk / t1 : 0, blankShare = t1 > 0 ? blank / t1 : 0;
+            var flags = [];
+            if (share > 0.25) flags.push('<span class="lw-pill lw-bad">> 25%</span>');
+            if (blankShare > 0.05) flags.push('<span class="lw-pill lw-bad">бланк > 5%</span>');
+            if (rel && share > 0.15) flags.push('<span class="lw-pill lw-bad">связанное > 15%</span>');
+            if (share >= 0.10) { large += risk; flags.push('<span class="lw-pill lw-warn">крупный</span>'); }
+            if (share >= 0.05 && share < 0.10) flags.push('<span class="lw-pill lw-warn">проверить связь</span>');
+            if (!flags.length) flags.push('<span class="lw-pill lw-ok">в норме</span>');
+            if (rel) related += risk;
+            breaches += flags.filter(function (f) { return f.indexOf('lw-bad') > -1; }).length;
+            tr.children[4].textContent = p(share);
+            tr.children[5].innerHTML = flags.join(' ');
+        });
+        var lr = t1 > 0 ? large / t1 : 0, rr = t1 > 0 ? related / t1 : 0;
+        document.getElementById('le-sum').innerHTML =
+            '<div class="lw-res"><div class="lw-res-l">Сумма крупных рисков / Tier 1</div><div class="lw-res-v">' + p(lr) + '</div>' +
+            '<span class="lw-pill ' + (lr <= 5 ? 'lw-ok' : 'lw-bad') + '">лимит 500%</span></div>' +
+            '<div class="lw-res"><div class="lw-res-l">Все связанные лица / Tier 1</div><div class="lw-res-v">' + p(rr) + '</div>' +
+            '<span class="lw-pill ' + (rr <= 0.25 ? 'lw-ok' : 'lw-bad') + '">лимит 25%</span></div>' +
+            '<div class="lw-res"><div class="lw-res-l">Нарушений по строкам</div><div class="lw-res-v">' + breaches + '</div>' +
+            '<span class="small text-muted">«проверить связь» — риск от 5%, обязательна проверка экономической зависимости</span></div>';
+    }
+
+    start.forEach(addRow);
+    document.getElementById('le-add').addEventListener('click', function () { addRow(['', 0, 0, false]); render(); });
+    document.getElementById('le-t1').addEventListener('input', render);
+    render();
+})();
+</script>
+{% endblock %}
