@@ -1,0 +1,142 @@
+{% load static %}<!doctype html>
+{% comment %}
+The résumé, two A4 pages. This page IS the document: Ctrl+P → Save as PDF
+(A4, margins None, background graphics on), or `manage.py gen_resume_pdf`,
+which prints it with headless Chrome into prime/resume/ for the download.
+English only — see prime/resume.py. `?bare=1` drops the toolbar.
+Real text, DOM in reading order, so applicant-tracking systems can parse it.
+{% endcomment %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ cv.NAME }} — Résumé</title>
+  <meta name="description" content="{{ cv.NAME }} — {{ cv.HEADLINE }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/resume.css' %}">
+</head>
+<body class="{% if bare %}cv-bare{% endif %}">
+
+{% if not bare %}
+<nav class="cv-bar">
+  <a href="{% url 'about_me' %}" class="cv-bar__back"><i class="bi bi-arrow-left"></i> About me</a>
+  <span class="cv-bar__hint">A4 · Ctrl+P → Save as PDF · margins None · background graphics on</span>
+  {% if pdf_ready %}<a href="{% url 'resume_pdf' %}" class="cv-bar__btn" download><i class="bi bi-download"></i> PDF</a>{% endif %}
+</nav>
+{% endif %}
+
+<main class="cv-sheet">
+
+  {# ── Header ─────────────────────────────────────────── #}
+  <header class="cv-head">
+    <div class="cv-head__id">
+      <h1 class="cv-name">{{ cv.NAME }}</h1>
+      <p class="cv-title">{{ cv.HEADLINE }}</p>
+      <ul class="cv-status">
+        {% for s in cv.STATUS %}<li><i class="bi {{ s.icon }}"></i>{{ s.text }}</li>{% endfor %}
+      </ul>
+    </div>
+    <ul class="cv-contact">
+      <li><i class="bi bi-geo-alt-fill"></i>{{ cv.LOCATION }}</li>
+      {% for l in resume_links %}
+      <li><i class="bi {{ l.icon }}"></i><a href="{{ l.url }}">{{ l.handle }}</a></li>
+      {% endfor %}
+    </ul>
+  </header>
+
+  <section class="cv-summary">
+    <p>{{ cv.SUMMARY }}</p>
+    <ul class="cv-impact">
+      {% for i in cv.IMPACT %}
+      <li><strong>{% if i.where == 'Powerty' %}{{ figures.questions_round }}{% else %}{{ i.value }}{% endif %}</strong><span>{{ i.label }}</span></li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <div class="cv-cols">
+    <div class="cv-main">
+      <section>
+        <h2 class="cv-h2">Professional experience</h2>
+        {% for job in cv.EXPERIENCE %}
+        <article class="cv-item">
+          <div class="cv-item__head">
+            <h3>{{ job.role }}</h3>
+            <span class="cv-dates">{{ job.dates }}</span>
+          </div>
+          <p class="cv-org">{{ job.org }} · {{ job.place }}</p>
+          <ul>{% for pt in job.points %}<li>{{ pt|safe }}</li>{% endfor %}</ul>
+          {% if job.tech %}<p class="cv-tech">{{ job.tech }}</p>{% endif %}
+        </article>
+        {% endfor %}
+      </section>
+
+      <section>
+        <h2 class="cv-h2">Key projects</h2>
+        {% for pr in projects %}
+        <article class="cv-item">
+          <div class="cv-item__head">
+            <h3>{{ pr.name }}</h3>
+            {% if pr.dates %}<span class="cv-dates">{{ pr.dates }}</span>{% endif %}
+          </div>
+          <p class="cv-org">{{ pr.role }} · <a href="{{ pr.url }}">{{ pr.url_label }}</a></p>
+          <ul>{% for pt in pr.points %}<li>{{ pt|safe }}</li>{% endfor %}</ul>
+          <p class="cv-tech">{{ pr.tech }}</p>
+        </article>
+        {% endfor %}
+      </section>
+    </div>
+
+    <aside class="cv-side">
+      <section>
+        <h2 class="cv-h2">What I build</h2>
+        <ol class="cv-pipe">
+          {% for s in pipeline %}<li><strong>{{ s.en }}</strong><span>{{ s.sub }}</span></li>{% endfor %}
+        </ol>
+      </section>
+
+      <section>
+        <h2 class="cv-h2">Skills</h2>
+        {% for g in cv.SKILLS %}
+        <div class="cv-skill">
+          <h3>{{ g.group }}</h3>
+          <p>{{ g.items|join:" · " }}</p>
+        </div>
+        {% endfor %}
+      </section>
+
+      <section>
+        <h2 class="cv-h2">Education</h2>
+        {% for e in cv.EDUCATION %}
+        <div class="cv-edu">
+          <h3>{{ e.degree }}</h3>
+          <p class="cv-org">{{ e.school }}<br>{{ e.place }} · {{ e.dates }}</p>
+          <ul>{% for n in e.notes %}<li>{{ n }}</li>{% endfor %}</ul>
+        </div>
+        {% endfor %}
+      </section>
+
+      <section>
+        <h2 class="cv-h2">Languages</h2>
+        <ul class="cv-langs">
+          {% for l in cv.LANGUAGES %}
+          <li><span>{{ l.name }}</span><span class="cv-dots">{% for i in '12345' %}<i class="{% if forloop.counter <= l.level %}on{% endif %}"></i>{% endfor %}</span><em>{{ l.note }}</em></li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="cv-h2">Beyond work</h2>
+        <ul class="cv-beyond">
+          {% for b in cv.BEYOND %}<li>{{ b.text }}</li>{% endfor %}
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+</main>
+</body>
+</html>

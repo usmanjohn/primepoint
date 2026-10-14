@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, FileResponse, Http404
 from django.conf import settings
 from django.db.models import Q, Avg, Max, Count
 from django.contrib import messages
@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
 from django.contrib.auth.models import User
 from django.utils import timezone
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext as _, get_language
 from django.views.decorators.clickjacking import xframe_options_sameorigin
 
 from prime.subjects import (
@@ -19,6 +19,7 @@ from prime.social import SOCIAL_MAP, CONTACT_EMAIL
 from prime.search import search_platform
 from prime.progress import student_progress, master_progress
 from prime import kit
+from prime import resume as cv
 
 from masters.models import Master
 from practice.models import Practice, PracticeAttempt, PracticeQuestion
@@ -220,6 +221,70 @@ def about(request):
         'partners': PARTNERS,
         'qr_site': kit.QR_SITE,
     })
+
+
+def _floor_plus(n, step):
+    """1,234 → "1,200+" — a résumé promises the floor, never a rounded-up figure."""
+    return f"{n // step * step:,}+" if n >= step else f"{n:,}"
+
+
+def _resume_context(request):
+    """What both the personal page and the printable résumé render from.
+
+    The résumé is English everywhere; only the personal page's prose follows the
+    visitor's language. Powerty's figures come from the same live counts as the
+    About page and are floored, so a printed PDF can only ever undersell.
+    """
+    lang = (get_language() or 'en')[:2]
+    if lang not in cv.LANGS:
+        lang = 'en'
+    stats = _platform_stats()
+    figures = {
+        'lessons_round': _floor_plus(stats['lessons'], 100),
+        'questions_round': _floor_plus(stats['questions'], 1000),
+        'readings_round': _floor_plus(stats['readings'], 100),
+    }
+    projects = [
+        dict(p, points=[pt.format(**figures) for pt in p['points']])
+        for p in cv.PROJECTS
+    ]
+    links = [dict(l, blurb_text=l['blurb'][lang]) for l in cv.LINKS if l['url']]
+    pipeline = [dict(s, label=s[lang]) for s in cv.PIPELINE]
+    return {
+        'cv': cv,
+        'p': cv.PAGE[lang],
+        'lang': lang,
+        'links': links,
+        'resume_links': [l for l in links if l['resume']],
+        'projects': projects,
+        'pipeline': pipeline,
+        'figures': figures,
+        'bare': request.GET.get('bare') == '1',
+        'pdf_ready': (cv_pdf_path()).exists(),
+    }
+
+
+def cv_pdf_path():
+    return settings.BASE_DIR / 'prime' / 'resume' / cv.PDF_FILENAME
+
+
+def about_me(request):
+    """The founder's personal page — story, links, experience, résumé download."""
+    return render(request, 'prime/about_me.html', _resume_context(request))
+
+
+def resume_print(request):
+    """The two-page A4 résumé. The page *is* the document: Ctrl+P, or the PDF."""
+    return render(request, 'prime/resume_print.html', _resume_context(request))
+
+
+def resume_pdf(request):
+    """The committed PDF of resume_print, built by `manage.py gen_resume_pdf`."""
+    path = cv_pdf_path()
+    if not path.exists():
+        raise Http404('The résumé PDF has not been generated yet.')
+    return FileResponse(path.open('rb'), as_attachment=True,
+                        filename=cv.PDF_FILENAME, content_type='application/pdf')
 
 
 def help_page(request):

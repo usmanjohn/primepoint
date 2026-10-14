@@ -1,0 +1,242 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% comment %}
+The founder's personal page. Words: prime/resume.py (the résumé is English;
+`p` is the page's own prose in the visitor's language). Ink: static/css/me.css
+(the `me-*` kit). Context: prime.views._resume_context. No JavaScript.
+{% endcomment %}
+
+{% block title %}{{ cv.NAME }} — {{ p.kicker }} · Powerty{% endblock %}
+{% block page_name %}{{ p.kicker }}{% endblock %}
+{% block nav_about %}active{% endblock %}
+{% block meta_description %}{{ cv.NAME }} — {{ cv.HEADLINE }}. {{ p.lede }}{% endblock %}
+{% block og_title %}{{ cv.NAME }} — {{ cv.HEADLINE }}{% endblock %}
+{% block og_description %}{{ p.lede }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/me.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="me-page">
+
+  {# ── Hero ─────────────────────────────────────────────── #}
+  <header class="me-hero">
+    <div class="me-hero__sun" aria-hidden="true"></div>
+    <div class="me-hero__inner">
+      <div class="me-avatar">
+        <img src="{% static 'images/founders/usmanjon-portrait.jpg' %}" alt="{{ cv.NAME }}" width="160" height="160">
+      </div>
+      <div class="me-hero__text">
+        <span class="me-kicker">{{ p.kicker }}</span>
+        <h1 class="me-name">{{ p.hello }}</h1>
+        <p class="me-headline">{{ cv.HEADLINE }}</p>
+        <p class="me-lede">{{ p.lede }}</p>
+        <ul class="me-status">
+          {% for s in cv.STATUS %}<li><i class="bi {{ s.icon }}"></i> {{ s.text }}</li>{% endfor %}
+          <li><i class="bi bi-geo-alt-fill"></i> {{ cv.LOCATION }}</li>
+        </ul>
+        <div class="me-cta">
+          {% if pdf_ready %}
+          <a class="me-btn me-btn--primary" href="{% url 'resume_pdf' %}" download>
+            <i class="bi bi-file-earmark-arrow-down-fill"></i> {{ p.cta_pdf }}</a>
+          {% endif %}
+          <a class="me-btn me-btn--ghost" href="{% url 'resume_print' %}">
+            <i class="bi bi-file-earmark-text"></i> {{ p.cta_view }}</a>
+          <a class="me-btn me-btn--ghost" href="mailto:{{ cv.EMAIL }}">
+            <i class="bi bi-envelope"></i> {{ p.cta_mail }}</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {# ── Impact ───────────────────────────────────────────── #}
+  <section class="me-section" aria-labelledby="me-impact">
+    <h2 id="me-impact" class="me-h2 visually-hidden">{{ p.impact_title }}</h2>
+    <div class="me-impact">
+      {% for i in cv.IMPACT %}
+      <div class="me-impact__item">
+        <span class="me-impact__value">{% if i.where == 'Powerty' %}{{ figures.questions_round }}{% else %}{{ i.value }}{% endif %}</span>
+        <span class="me-impact__label">{{ i.label }}</span>
+        <span class="me-impact__where">{{ i.where }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  {# ── Story + Why Japan ────────────────────────────────── #}
+  <section class="me-section">
+    <div class="row g-4">
+      <div class="col-lg-7">
+        <h2 class="me-h2">{{ p.story_title }}</h2>
+        <div class="me-prose">
+          {% for para in p.story %}<p>{{ para }}</p>{% endfor %}
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="me-japan">
+          <div class="me-japan__mark" aria-hidden="true"></div>
+          <h2 class="me-h2">{{ p.japan_title }}</h2>
+          <p>{{ p.japan }}</p>
+          <div class="me-ja" lang="ja">
+            <span class="me-ja__title">{{ p.ja_title }}</span>
+            {% for line in cv.JAPANESE_INTRO %}<p>{{ line }}</p>{% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# ── Links ────────────────────────────────────────────── #}
+  <section class="me-section" aria-labelledby="me-links">
+    <h2 id="me-links" class="me-h2">{{ p.links_title }}</h2>
+    <div class="me-links">
+      {% for l in links %}
+      <a class="me-link" href="{{ l.url }}" {% if l.key != 'email' %}target="_blank" rel="noopener me"{% endif %} style="--brand: {{ l.color }}">
+        <span class="me-link__icon"><i class="bi {{ l.icon }}"></i></span>
+        <span class="me-link__body">
+          <span class="me-link__name">{{ l.name }}</span>
+          <span class="me-link__handle">{{ l.handle }}</span>
+          <span class="me-link__blurb">{{ l.blurb_text }}</span>
+        </span>
+        <i class="bi bi-arrow-up-right me-link__go" aria-hidden="true"></i>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  {# ── Pipeline ─────────────────────────────────────────── #}
+  <section class="me-section" aria-labelledby="me-pipe">
+    <h2 id="me-pipe" class="me-h2">{{ p.pipeline_title }}</h2>
+    <p class="me-sub">{{ p.pipeline_sub }}</p>
+    <ol class="me-pipe">
+      {% for s in pipeline %}
+      <li class="me-pipe__step">
+        <span class="me-pipe__icon"><i class="bi {{ s.icon }}"></i></span>
+        <span class="me-pipe__label">{{ s.label }}</span>
+        <span class="me-pipe__sub">{{ s.sub }}</span>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  {# ── Experience ───────────────────────────────────────── #}
+  <section class="me-section" aria-labelledby="me-exp">
+    <h2 id="me-exp" class="me-h2">{{ p.exp_title }}</h2>
+    {% if lang != 'en' %}<p class="me-sub">{{ p.cv_note }}</p>{% endif %}
+    <ol class="me-timeline">
+      {% for job in cv.EXPERIENCE %}
+      <li class="me-job">
+        <div class="me-job__head">
+          <div>
+            <h3 class="me-job__role">{{ job.role }}</h3>
+            <span class="me-job__org">{{ job.org }} · {{ job.place }}</span>
+          </div>
+          <span class="me-job__dates">{{ job.dates }}</span>
+        </div>
+        <ul class="me-job__points">
+          {% for pt in job.points %}<li>{{ pt|safe }}</li>{% endfor %}
+        </ul>
+        {% if job.tech %}<p class="me-job__tech">{{ job.tech }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  {# ── Projects ─────────────────────────────────────────── #}
+  <section class="me-section" aria-labelledby="me-proj">
+    <h2 id="me-proj" class="me-h2">{{ p.proj_title }}</h2>
+    <div class="row g-3">
+      {% for pr in projects %}
+      <div class="col-lg-6">
+        <article class="me-card me-card--project">
+          <div class="me-job__head">
+            <div>
+              <h3 class="me-job__role">{{ pr.name }}</h3>
+              <span class="me-job__org">{{ pr.role }}{% if pr.dates %} · {{ pr.dates }}{% endif %}</span>
+            </div>
+            <a class="me-chip-link" href="{{ pr.url }}" target="_blank" rel="noopener">{{ pr.url_label }} <i class="bi bi-arrow-up-right"></i></a>
+          </div>
+          <ul class="me-job__points">
+            {% for pt in pr.points %}<li>{{ pt|safe }}</li>{% endfor %}
+          </ul>
+          <p class="me-job__tech">{{ pr.tech }}</p>
+        </article>
+      </div>
+      {% endfor %}
+    </div>
+    <p class="me-footnote"><i class="bi bi-broadcast"></i> {{ p.stats_live }}</p>
+  </section>
+
+  {# ── Skills ───────────────────────────────────────────── #}
+  <section class="me-section" aria-labelledby="me-skills">
+    <h2 id="me-skills" class="me-h2">{{ p.skills_title }}</h2>
+    <div class="row g-3">
+      {% for g in cv.SKILLS %}
+      <div class="col-md-6">
+        <div class="me-card">
+          <h3 class="me-card__title"><i class="bi {{ g.icon }}"></i> {{ g.group }}</h3>
+          <ul class="me-chips">{% for item in g.items %}<li>{{ item }}</li>{% endfor %}</ul>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  {# ── Education + Languages ────────────────────────────── #}
+  <section class="me-section">
+    <div class="row g-4">
+      <div class="col-lg-7">
+        <h2 class="me-h2">{{ p.edu_title }}</h2>
+        {% for e in cv.EDUCATION %}
+        <div class="me-card me-edu">
+          <div class="me-job__head">
+            <div>
+              <h3 class="me-job__role">{{ e.degree }}</h3>
+              <span class="me-job__org">{{ e.school }} · {{ e.place }}</span>
+            </div>
+            <span class="me-job__dates">{{ e.dates }}</span>
+          </div>
+          <ul class="me-chips me-chips--soft">{% for n in e.notes %}<li>{{ n }}</li>{% endfor %}</ul>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="col-lg-5">
+        <h2 class="me-h2">{{ p.lang_title }}</h2>
+        <div class="me-card me-card--auto">
+          <ul class="me-langs">
+            {% for l in cv.LANGUAGES %}
+            <li>
+              <span class="me-langs__name">{{ l.name }}</span>
+              <span class="me-dots" aria-label="{{ l.level }}/5">{% for i in '12345' %}<span class="me-dot{% if forloop.counter <= l.level %} is-on{% endif %}"></span>{% endfor %}</span>
+              <span class="me-langs__note">{{ l.note }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <h2 class="me-h2 mt-4">{{ p.beyond_title }}</h2>
+        <div class="me-card me-card--auto">
+          <ul class="me-beyond">
+            {% for b in cv.BEYOND %}<li><i class="bi {{ b.icon }}"></i> {{ b.text }}</li>{% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# ── Close ────────────────────────────────────────────── #}
+  <section class="me-close">
+    <h2>{{ p.close_title }}</h2>
+    <p>{{ p.close_text }}</p>
+    <div class="me-cta me-cta--center">
+      {% if pdf_ready %}
+      <a class="me-btn me-btn--primary" href="{% url 'resume_pdf' %}" download>
+        <i class="bi bi-file-earmark-arrow-down-fill"></i> {{ p.cta_pdf }}</a>
+      {% endif %}
+      <a class="me-btn me-btn--light" href="mailto:{{ cv.EMAIL }}">
+        <i class="bi bi-envelope"></i> {{ cv.EMAIL }}</a>
+    </div>
+  </section>
+
+</div>
+{% endblock %}

@@ -144,7 +144,9 @@ def find_clips(folder, scene_numbers):
         if m and name.lower().endswith(('.mp4', '.mov')):
             a = int(m.group(1)); b = int(m.group(2) or a)
             found.append((a, b, os.path.join(folder, name)))
-    found.sort()
+    # a short cut of an episode reads the episode's clip folder and takes only its own scenes
+    wanted = set(scene_numbers)
+    found = sorted(f for f in found if f[0] in wanted and f[1] in wanted)
     covered = [n for a, b, _ in found for n in range(a, b + 1)]
     missing = sorted(set(scene_numbers) - set(covered))
     twice = sorted({n for n in covered if covered.count(n) > 1})

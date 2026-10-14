@@ -1,0 +1,214 @@
+/* ═══ RÉSUMÉ (`cv-*`) ═════════════════════════════════════════════════
+   The two-page A4 résumé, /about/me/resume/ (prime/templates/prime/resume_print.html).
+   Standalone like kit.css: a document must not inherit the app chrome.
+   ⚠️ PAPER GATE: `manage.py gen_resume_pdf` refuses anything but exactly 2 pages.
+   ═══════════════════════════════════════════════════════════════════════ */
+:root {
+  --cv-ink: #0f172a;
+  --cv-soft: #475569;
+  --cv-faint: #94a3b8;
+  --cv-line: #e2e8f0;
+  --cv-navy: #0b1530;
+  --cv-accent: #0284c7;
+  --cv-sun: #e5484d;
+  --cv-side: #f6f8fb;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: #e5e7eb;
+  color: var(--cv-ink);
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 8.9pt;
+  line-height: 1.42;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; }
+
+/* ── Toolbar (screen only) ────────────────────────────────────────── */
+.cv-bar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: .7rem 1rem;
+  background: var(--cv-navy);
+  color: #cbd5e1;
+  font-size: 13px;
+}
+.cv-bar__back { color: #fff; font-weight: 600; }
+.cv-bar__hint { flex: 1; text-align: center; color: #94a3b8; }
+.cv-bar__btn {
+  background: #38bdf8;
+  color: #06233a;
+  font-weight: 700;
+  padding: .4rem .9rem;
+  border-radius: 8px;
+}
+.cv-bar i { margin-right: .3rem; }
+
+/* ── The sheet ────────────────────────────────────────────────────── */
+.cv-sheet {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 24px auto;
+  background: #fff;
+  box-shadow: 0 10px 40px rgba(15,23,42,.18);
+}
+@page { size: A4; margin: 9mm 0 8mm; }
+@page :first { margin-top: 0; }
+@media print {
+  body { background: #fff; }
+  .cv-bar { display: none; }
+  .cv-sheet { margin: 0; box-shadow: none; }
+}
+.cv-bare { background: #fff; }
+.cv-bare .cv-sheet { margin: 0; box-shadow: none; }
+
+/* ── Header ───────────────────────────────────────────────────────── */
+.cv-head {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 64mm;
+  gap: 8mm;
+  padding: 10mm 12mm 8mm;
+  background: var(--cv-navy);
+  color: #e2e8f0;
+}
+.cv-head::after {          /* the rising sun */
+  content: '';
+  position: absolute;
+  right: -22mm;
+  top: -26mm;
+  width: 62mm;
+  height: 62mm;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(229,72,77,.55) 0%, rgba(229,72,77,0) 70%);
+}
+.cv-head > * { position: relative; z-index: 1; }
+.cv-name {
+  font-size: 23pt;
+  font-weight: 800;
+  letter-spacing: -.3pt;
+  color: #fff;
+  line-height: 1.05;
+}
+.cv-title { margin-top: 1.6mm; font-size: 10.5pt; font-weight: 600; color: #7dd3fc; }
+.cv-status { list-style: none; margin-top: 3.5mm; display: flex; flex-direction: column; gap: 1.4mm; }
+.cv-status li { font-size: 8.4pt; color: #f1f5f9; }
+.cv-status li:first-child { color: #fecaca; font-weight: 700; }
+.cv-status i { margin-right: 2mm; color: var(--cv-sun); }
+.cv-contact { list-style: none; display: flex; flex-direction: column; gap: 1.3mm; font-size: 8pt; align-self: center; }
+.cv-contact li { display: flex; gap: 2mm; align-items: baseline; color: #e2e8f0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cv-contact i { color: #7dd3fc; width: 3.5mm; flex-shrink: 0; }
+
+/* ── Summary + impact ─────────────────────────────────────────────── */
+.cv-summary { padding: 5mm 12mm 4mm; border-bottom: 1px solid var(--cv-line); }
+.cv-summary > p { font-size: 9.2pt; line-height: 1.5; color: var(--cv-ink); }
+.cv-impact {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3mm;
+  margin-top: 3.5mm;
+}
+.cv-impact li {
+  border-left: 2.5px solid var(--cv-sun);
+  padding: .5mm 0 .5mm 2.5mm;
+  display: flex;
+  flex-direction: column;
+}
+.cv-impact strong { font-size: 13pt; font-weight: 800; color: var(--cv-navy); line-height: 1.1; }
+.cv-impact span { font-size: 7.3pt; color: var(--cv-soft); line-height: 1.3; }
+
+/* ── Columns ──────────────────────────────────────────────────────── */
+.cv-cols { display: grid; grid-template-columns: 1fr 62mm; }
+.cv-main { padding: 4.5mm 7mm 8mm 12mm; }
+.cv-side { padding: 4.5mm 10mm 8mm 6mm; background: var(--cv-side); }
+.cv-main section + section, .cv-side section + section { margin-top: 4.5mm; }
+
+.cv-h2 {
+  font-size: 8.4pt;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.4pt;
+  color: var(--cv-accent);
+  padding-bottom: 1.2mm;
+  margin-bottom: 2.6mm;
+  border-bottom: 1.5px solid var(--cv-line);
+  break-after: avoid;
+}
+.cv-item { margin-bottom: 3.6mm; break-inside: avoid; }
+.cv-item__head { display: flex; justify-content: space-between; align-items: baseline; gap: 3mm; }
+.cv-item h3 { font-size: 9.8pt; font-weight: 700; color: var(--cv-ink); }
+.cv-dates { font-size: 7.8pt; font-weight: 600; color: var(--cv-soft); white-space: nowrap; }
+.cv-org { font-size: 8.3pt; color: var(--cv-soft); font-weight: 500; margin: .4mm 0 1.3mm; }
+.cv-org a { color: var(--cv-accent); }
+.cv-item ul { list-style: none; }
+.cv-item li { position: relative; padding-left: 3.4mm; margin-bottom: .9mm; }
+.cv-item li::before {
+  content: '';
+  position: absolute;
+  left: .3mm;
+  top: 1.75mm;
+  width: 1.3mm;
+  height: 1.3mm;
+  border-radius: 50%;
+  background: var(--cv-sun);
+}
+.cv-item strong { font-weight: 700; color: var(--cv-navy); }
+.cv-tech { font-size: 7.5pt; color: var(--cv-faint); margin-top: 1mm; }
+
+/* ── Sidebar pieces ───────────────────────────────────────────────── */
+.cv-side h3 { font-size: 8.5pt; font-weight: 700; color: var(--cv-ink); }
+.cv-pipe { list-style: none; counter-reset: s; }
+.cv-pipe li { counter-increment: s; display: flex; flex-direction: column; padding-left: 5mm; position: relative; margin-bottom: 1.2mm; }
+.cv-pipe li::before {
+  content: counter(s);
+  position: absolute; left: 0; top: .2mm;
+  width: 3.4mm; height: 3.4mm; border-radius: 50%;
+  background: var(--cv-navy); color: #fff;
+  font-size: 6pt; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.cv-pipe strong { font-size: 8.2pt; }
+.cv-pipe span { font-size: 7.3pt; color: var(--cv-soft); }
+
+.cv-skill { margin-bottom: 2.2mm; break-inside: avoid; }
+.cv-skill p { font-size: 7.9pt; color: var(--cv-soft); line-height: 1.45; margin-top: .4mm; }
+
+.cv-edu { margin-bottom: 2.8mm; break-inside: avoid; }
+.cv-side section { break-inside: avoid; }
+.cv-edu .cv-org { font-size: 7.8pt; margin-bottom: .8mm; }
+.cv-edu ul { list-style: none; }
+.cv-edu li { font-size: 7.6pt; color: var(--cv-ink); padding-left: 2.8mm; position: relative; margin-bottom: .4mm; }
+.cv-edu li::before { content: '›'; position: absolute; left: 0; color: var(--cv-sun); font-weight: 800; }
+
+.cv-langs { list-style: none; }
+.cv-langs li { display: grid; grid-template-columns: 15mm auto; column-gap: 2mm; align-items: center; margin-bottom: 1.2mm; font-size: 8.2pt; font-weight: 600; }
+.cv-langs em { grid-column: 1 / -1; font-style: normal; font-weight: 400; font-size: 7.3pt; color: var(--cv-soft); }
+.cv-dots { display: inline-flex; gap: 1mm; }
+.cv-dots i { width: 2.2mm; height: 2.2mm; border-radius: 50%; background: var(--cv-line); }
+.cv-dots i.on { background: var(--cv-accent); }
+
+.cv-beyond { list-style: none; }
+.cv-beyond li { font-size: 7.8pt; padding-left: 2.8mm; position: relative; margin-bottom: 1mm; }
+.cv-beyond li::before { content: '›'; position: absolute; left: 0; color: var(--cv-sun); font-weight: 800; }
+
+/* ── Phone: the sheet becomes a page ──────────────────────────────── */
+@media screen and (max-width: 820px) {
+  body { font-size: 14px; }
+  .cv-sheet { width: auto; min-height: 0; margin: 0; box-shadow: none; }
+  .cv-bar__hint { display: none; }
+  .cv-bar { justify-content: space-between; }
+  .cv-head, .cv-cols, .cv-impact { grid-template-columns: 1fr; }
+  .cv-head { padding: 24px 16px; gap: 16px; }
+  .cv-summary, .cv-main, .cv-side { padding: 16px; }
+  .cv-contact li { white-space: normal; }
+}

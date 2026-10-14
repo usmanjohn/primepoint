@@ -1,0 +1,122 @@
+{
+  "id": "toshkent-yollari-01-short1",
+  "series": "Toshkent yo'llari",
+  "title_uz": "Tugma",
+  "concept_uz": "Bir yigitning ertalabki yoʻli: tugmali svetofor oldida uyalib turadi, Damas kelganda qoʻlini choʻntagiga yashiradi, oxiri uzun avtobusga chiqadi — va avtobusning «garmoni» butun shaharni chaldiradi. Deyarli soʻzsiz, Mister Bin uslubida.",
+  "format_uz": "Bitta film (~13 sahna, ~75 s, montajda --speed 1.2 bilan ~63 s) + uchta qisqa versiya (har biri ~25 s), hammasi bir xil kliplardan.",
+  "style_line": "Photorealistic, natural daylight, handheld cinematic 35mm look, real present-day Tashkent, Uzbekistan in October: wide avenues lined with tall plane trees (chinar) with golden leaves, open concrete irrigation ditches (ariq) along the sidewalk, Soviet-era nine-storey panel apartment blocks, traffic made up mostly of white Chevrolet Cobalt, Nexia and Spark cars and small white Damas minivans. No text, no readable signs, no readable licence plates.",
+  "refs": [
+    {
+      "id": "R1",
+      "name_uz": "Qahramon (sizning rasmingiz asosida)",
+      "from_photo": true,
+      "prompt": "Character reference sheet of the man in the attached photo. Keep his face, hairstyle, skin tone and build exactly as in the photo. He wears a light-blue cotton shirt with sleeves rolled to the elbow, dark grey trousers, brown leather shoes and a brown leather shoulder bag. Three views side by side: front full body, three-quarter full body, close-up of the face with a mild, slightly shy expression. Plain light grey studio background, soft even light, photorealistic."
+    },
+    {
+      "id": "R2",
+      "name_uz": "Tugmali chorraha",
+      "prompt": "A pedestrian crossing on a wide avenue in Tashkent, Uzbekistan, early morning, golden October light. Zebra crossing over four lanes, a traffic-light pole on the near kerb with a pedestrian signal showing a red standing figure and a small yellow push-button box at hand height. Tall plane trees with golden leaves, a concrete ariq irrigation ditch along the sidewalk, a Soviet-era nine-storey panel apartment block behind the trees. The road is completely empty. Vertical 9:16 frame, camera at eye level on the sidewalk."
+    },
+    {
+      "id": "R3",
+      "name_uz": "Opa (bozordan qaytgan)",
+      "prompt": "Full body reference of a sturdy Uzbek woman in her late fifties, warm round face, patterned silk headscarf tied at the back of the head, long floral dress under a dark knitted cardigan, comfortable shoes. She carries two heavy red-white-blue striped plastic market bags, one in each hand, full of vegetables and bread. Confident, no-nonsense expression with a hidden smile. Plain light grey background, photorealistic."
+    },
+    {
+      "id": "R4",
+      "name_uz": "Damas va haydovchi",
+      "prompt": "A small white Daewoo Damas minivan used as a shared route taxi in Tashkent, seen from the front three-quarter angle at the side of a wide avenue. Behind the wheel an Uzbek man in his forties with a thick black moustache, sunglasses pushed up on his head, white polo shirt, one arm resting on the open window. The passenger seats behind him are visibly empty. No route number, no readable plate. Photorealistic, morning light."
+    },
+    {
+      "id": "R5",
+      "name_uz": "Uzun avtobus («garmon»)",
+      "prompt": "A modern 18-metre articulated city bus on a wide avenue in Tashkent, side view, in the middle of a gentle left turn so the black rubber accordion bellows joint between the two sections is clearly folded on the inside of the curve and stretched on the outside. Clean white body, large windows, plane trees with golden leaves behind. No logos, no route number, no readable text. Photorealistic, morning light, vertical 9:16 frame."
+    }
+  ],
+  "scenes": [
+    {
+      "n": 1,
+      "title_uz": "Chorrahaga keldi",
+      "act": 1,
+      "seconds": 6,
+      "method": "Ingredients to Video",
+      "attach": [
+        "R1",
+        "R2"
+      ],
+      "prompt": "The man from the first reference (light-blue shirt, brown shoulder bag) walks into frame along the sidewalk of the empty Tashkent crossing from the second reference and stops at the kerb. The pedestrian light shows a red standing figure. He waits, then notices the small yellow push-button box on the pole at his hand height and looks at it. Camera: medium-wide, slow push-in toward him and the pole. Sound: quiet morning city ambience, sparrows in the plane trees, distant traffic; no music, no speech. No subtitles, no on-screen text."
+    },
+    {
+      "n": 2,
+      "title_uz": "Barmoq va uyat",
+      "act": 1,
+      "seconds": 6,
+      "method": "Ingredients to Video",
+      "attach": [
+        "R1",
+        "R2"
+      ],
+      "prompt": "Close-up at the traffic-light pole in Tashkent: the hand of the man from the first reference (light-blue sleeve rolled up) rises slowly toward the yellow push-button box, stops one centimetre away and hovers. Cut to his face: he glances left, then right, embarrassed, as if someone might be watching. He pulls the hand back and pretends to scratch his ear, then looks innocently at the sky. Camera: tight shots, comic timing, hold on his face at the end. Sound: sparrows, distant traffic, one tiny awkward silence; no music, no speech. No subtitles, no on-screen text."
+    },
+    {
+      "n": 3,
+      "title_uz": "Hamma uyaladi",
+      "act": 1,
+      "seconds": 8,
+      "method": "Ingredients to Video",
+      "attach": [
+        "R1",
+        "R2"
+      ],
+      "prompt": "Wide static shot of the Tashkent crossing from the second reference, the road completely empty, the pedestrian light red. The man from the first reference stands at the kerb pretending to read his phone. A second man in a dark jacket arrives, looks at the yellow push-button, hesitates, and also takes out his phone. Then a young woman with earbuds arrives and does the same. By the end five adults stand in a neat row at the kerb, all staring at their phones, the button on the pole between them untouched, the empty road in front of them. Nobody speaks. Camera: locked-off, symmetrical, deadpan. Sound: sparrows, a light breeze in the leaves; no music, no speech. No subtitles, no on-screen text."
+    },
+    {
+      "n": 4,
+      "title_uz": "Opa keldi",
+      "act": 1,
+      "seconds": 6,
+      "method": "Ingredients to Video",
+      "attach": [
+        "R1",
+        "R2",
+        "R3"
+      ],
+      "prompt": "The woman from the third reference (patterned headscarf, floral dress, two heavy striped market bags) walks briskly along the row of adults waiting at the red pedestrian light in Tashkent, without slowing down presses the yellow push-button with her elbow because both her hands are full, and says over her shoulder, with a warm, slightly amused voice of an older Uzbek woman, speaking in Uzbek: \"Bosish kerak-da, bolalar!\" The man from the first reference looks at her, then at his phone, embarrassed. The pedestrian light turns green with a short electronic beep. Lip-sync: only the woman with the market bags moves her mouth, one short line; everyone else keeps their mouth closed, no background voices. Camera: medium shot following her. Sound: the button click, the beep of the green light; no music. No subtitles, no on-screen text."
+    },
+    {
+      "n": 5,
+      "title_uz": "Hamma oʻtdi",
+      "act": 1,
+      "seconds": 4,
+      "method": "Ingredients to Video",
+      "attach": [
+        "R1",
+        "R2",
+        "R3"
+      ],
+      "prompt": "Wide shot of the Tashkent zebra crossing, green pedestrian light: the woman from the third reference marches across first with her two striped market bags, and the row of adults follows her in a line. The man from the first reference walks last, nodding confidently to himself as if it had all been his plan. Camera: from the far kerb, people walking toward camera. Sound: footsteps, the ticking of the pedestrian signal; no music, no speech. No subtitles, no on-screen text."
+    },
+    {
+      "n": 13,
+      "title_uz": "Yakun: Toshkent yoʻllari",
+      "act": 0,
+      "seconds": 5,
+      "method": "Text to Video",
+      "prompt": "Golden-hour aerial view of a wide avenue in Tashkent, Uzbekistan: rows of plane trees with golden October leaves, white Chevrolet cars and small white Damas minivans, and two long articulated buses gliding along the avenue, Soviet-era panel apartment blocks and a few modern glass towers in the hazy distance. The camera rises slowly and gently. Leave the upper half of the frame calm, mostly sky and treetops. Sound: soft city hum; no speech. No subtitles, no on-screen text.",
+      "overlays": [
+        {
+          "t": 0.6,
+          "d": 4.2,
+          "y": 0.3,
+          "text": "Toshkent yo‘llari"
+        },
+        {
+          "t": 1.5,
+          "d": 3.3,
+          "y": 0.38,
+          "text": "har kuni konsert"
+        }
+      ]
+    }
+  ]
+}

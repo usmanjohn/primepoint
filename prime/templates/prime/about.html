@@ -260,6 +260,12 @@
 .ab-step-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; margin: 0; }
 
 /* ── Founders ────────────────────────────────────── */
+.ab-founder-more {
+  display: inline-flex; align-items: center; gap: .35rem;
+  margin-top: .85rem; font-size: .82rem; font-weight: 700;
+  color: var(--accent); text-decoration: none;
+}
+.ab-founder-more:hover { text-decoration: underline; }
 .ab-founders-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -819,6 +825,7 @@
         <p class="ab-founder-bio">
           “{% trans "Strong mind bends the line." %}”
         </p>
+        <a href="{% url 'about_me' %}" class="ab-founder-more">{% trans "Profile & résumé" %} <i class="bi bi-arrow-right"></i></a>
       </div>
     </div>
 

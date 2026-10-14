@@ -17,7 +17,7 @@ class StaticViewSitemap(Sitemap):
 
     def items(self):
         return [
-            'index', 'about', 'masters-home', 'practice_list', 'panda-home',
+            'index', 'about', 'about_me', 'masters-home', 'practice_list', 'panda-home',
             'discussion_home', 'tutorial_list', 'playlist_list',
             'examprep_home', 'corner_home', 'corner_templates',
             'exam_list', 'games_home', 'progress',

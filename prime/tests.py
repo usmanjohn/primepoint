@@ -306,3 +306,45 @@ class PlatformTotalsCoverEverySourceTests(TestCase):
         User.objects.create_superuser('boss', 'b@x.org', 'pw')
         self.client.login(username='boss', password='pw')
         self.assertEqual(self.client.get('/analytics/').status_code, 200)
+
+
+class ResumeTests(TestCase):
+    """The founder's page, the printable résumé and its committed PDF."""
+
+    def test_pages_are_public(self):
+        for name in ('about_me', 'resume_print'):
+            self.assertEqual(self.client.get(reverse(name)).status_code, 200)
+
+    def test_pdf_downloads_as_an_attachment(self):
+        r = self.client.get(reverse('resume_pdf'))
+        self.assertEqual(r.status_code, 200)
+        self.assertIn('attachment', r.headers['Content-Disposition'])
+        self.assertIn('Usmanjon_Abduraimov_Resume.pdf', r.headers['Content-Disposition'])
+
+    def test_committed_pdf_matches_its_sources(self):
+        """Edited prime/resume.py, the template or resume.css? Run gen_resume_pdf."""
+        import json
+        import re
+        from prime.management.commands.gen_resume_pdf import manifest_path, source_hash, PAGES
+        from prime.views import cv_pdf_path
+        manifest = json.loads(manifest_path().read_text())
+        self.assertEqual(manifest['source_hash'], source_hash(),
+                         'The résumé PDF is stale — run `python manage.py gen_resume_pdf` and commit prime/resume/.')
+        pages = len(re.findall(rb'/Type\s*/Page(?!s)', cv_pdf_path().read_bytes()))
+        self.assertEqual(pages, PAGES)
+
+    def test_about_page_links_the_founder_profile(self):
+        body = self.client.get(reverse('about')).content.decode()
+        self.assertIn(reverse('about_me'), body)
+
+    def test_page_shows_the_resume_links_and_hides_empty_ones(self):
+        from prime import resume as cv
+        body = self.client.get(reverse('about_me')).content.decode()
+        for link in cv.LINKS:
+            if link['url']:
+                self.assertIn(link['url'], body)
+        self.assertNotIn('href=""', body)
+
+    def test_both_languages_have_the_same_keys(self):
+        from prime import resume as cv
+        self.assertEqual(set(cv.PAGE['en']), set(cv.PAGE['uz']))
