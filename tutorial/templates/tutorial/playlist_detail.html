@@ -63,6 +63,11 @@
         </div>
 
         <h1 class="tut-detail-title">{{ playlist.title }}</h1>
+        {% if not playlist.is_published %}
+        <div class="alert alert-warning small py-2 mb-2">
+            <i class="bi bi-shield-lock me-1"></i>{% trans "Admin only — this playlist is hidden from everyone else." %}
+        </div>
+        {% endif %}
         {% if playlist.description %}
         <p class="tut-detail-subtitle">{{ playlist.description }}</p>
         {% endif %}

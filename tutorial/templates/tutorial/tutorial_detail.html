@@ -131,6 +131,11 @@
                 {{ tutorial.content|render_math }}
             </div>
 
+            {% if not tutorial.is_published %}
+            <div class="alert alert-warning m-3 mb-0 small">
+                <i class="bi bi-shield-lock me-1"></i>{% trans "Admin only — this lesson is hidden from everyone else." %}
+            </div>
+            {% else %}
             <!-- ── Mark as finished ──────────────────────────── -->
             <div class="text-center py-3">
                 {% if is_finished %}
@@ -199,6 +204,7 @@
                     </a>
                 {% endif %}
             </div>
+            {% endif %}
         </div>
 
         <!-- Back link -->

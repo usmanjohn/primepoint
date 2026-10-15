@@ -10803,3 +10803,12 @@ msgstr "Magistratura/PhD dasturining (GKS-G) oʻz, boshqacha roʻyxati bor — K
 
 msgid "Profile & résumé"
 msgstr "Profil va rezyume"
+
+msgid "Admin only — hidden from everyone else"
+msgstr "Faqat adminlar uchun — boshqalarga koʻrinmaydi"
+
+msgid "Admin only — this lesson is hidden from everyone else."
+msgstr "Faqat adminlar uchun — bu dars boshqalarga koʻrinmaydi."
+
+msgid "Admin only — this playlist is hidden from everyone else."
+msgstr "Faqat adminlar uchun — bu pleylist boshqalarga koʻrinmaydi."

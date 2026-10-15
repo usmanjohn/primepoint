@@ -39,6 +39,15 @@ def _can_create(user):
         return False
 
 
+def _visible(model, user):
+    """Published rows for everyone; staff also see unpublished (admin-only) ones,
+    e.g. the "Kapital" playlist. Every other listing on the site keeps filtering
+    is_published=True, so admin-only content never leaks into search, sitemap,
+    counts or the Telegram posts."""
+    qs = model.objects.all()
+    return qs if user.is_staff else qs.filter(is_published=True)
+
+
 def tutorial_list(request):
     qs = (
         Tutorial.objects
@@ -75,7 +84,7 @@ def tutorial_list(request):
 
 
 def tutorial_detail(request, pk):
-    tutorial = get_object_or_404(Tutorial, pk=pk, is_published=True)
+    tutorial = get_object_or_404(_visible(Tutorial, request.user), pk=pk)
     Tutorial.objects.filter(pk=pk).update(views=F('views') + 1)
     reading.mark_opened(request, 'tutorial', pk)
 
@@ -100,7 +109,7 @@ def tutorial_detail(request, pk):
     # Playlist navigation context
     playlist_context = None
     pl_item = PlaylistTutorial.objects.filter(tutorial=tutorial).select_related('playlist').order_by('playlist__created_at').first()
-    if pl_item and pl_item.playlist.is_published:
+    if pl_item and (pl_item.playlist.is_published or request.user.is_staff):
         siblings = list(pl_item.playlist.items.select_related('tutorial'))
         idx = next((i for i, s in enumerate(siblings) if s.tutorial_id == tutorial.pk), None)
         if idx is not None:
@@ -250,12 +259,18 @@ def playlist_list(request):
         'categories':      CATEGORY_CHOICES,
         'can_create':      _can_create(request.user),
         'total_count':     TutorialPlaylist.objects.filter(is_published=True).count(),
+        # Admin-only playlists (unpublished) are listed for staff in their own row.
+        'admin_playlists': (TutorialPlaylist.objects.filter(is_published=False)
+                            .annotate(tutorial_count=Count('items')).order_by('title')
+                            if request.user.is_staff else []),
     })
 
 
 def playlist_detail(request, pk):
-    playlist = get_object_or_404(TutorialPlaylist, pk=pk, is_published=True)
-    items    = playlist.items.select_related('tutorial').filter(tutorial__is_published=True)
+    playlist = get_object_or_404(_visible(TutorialPlaylist, request.user), pk=pk)
+    items    = playlist.items.select_related('tutorial')
+    if not request.user.is_staff:
+        items = items.filter(tutorial__is_published=True)
     can_edit = request.user.is_authenticated and (
         request.user == playlist.author or request.user.is_staff
     )

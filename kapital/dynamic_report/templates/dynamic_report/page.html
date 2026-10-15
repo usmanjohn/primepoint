@@ -1,0 +1,307 @@
+{% extends "base.html" %}
+{% comment %}
+  Block names to match your project base:
+    title / extra_css / content / extra_js
+  Uses the Bootstrap 5 already loaded by base.html, plus a small scoped
+  stylesheet. Everything is under .drp so it cannot touch other pages.
+{% endcomment %}
+
+{% block title %}Динамический отчёт по портфелю{% endblock %}
+
+{% block extra_css %}
+<style>
+  .drp{--ink:#0B0B0C;--soft:#2A2A2E;--gold:#F2C230;--gd:#C9971A;--rule:#E4E1D8;
+       --muted:#8A867C;--bad:#B3341F;--good:#2F6B4F;--cool:#4A6E8A;
+       font-family:Cambria,Georgia,serif;color:var(--ink)}
+  .drp .hero{background:var(--ink);color:#fff;border-radius:10px;
+             padding:28px 30px;margin-bottom:22px;position:relative;overflow:hidden}
+  .drp .hero::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;
+             height:220px;background:var(--gold);opacity:.10;border-radius:50%}
+  .drp .hero .eyebrow{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+             color:var(--gold)}
+  .drp .hero h1{font-weight:400;font-size:30px;margin:8px 0 6px}
+  .drp .hero p{color:#B9B5AB;font-size:13.5px;margin:0;max-width:72ch}
+  .drp .facts{display:flex;gap:28px;flex-wrap:wrap;margin-top:18px;
+             padding-top:16px;border-top:1px solid #2A2A2E}
+  .drp .fact .n{font-size:22px;line-height:1.1}
+  .drp .fact .l{font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+             color:#8E8A80;margin-top:3px}
+
+  .drp .card{border:1px solid var(--rule);border-radius:10px;box-shadow:none}
+  .drp .card-header{background:#FAF8F2;border-bottom:1px solid var(--rule);
+             font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+             color:var(--gd);padding:11px 18px;border-radius:10px 10px 0 0}
+  .drp .form-label{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+             color:var(--muted);margin-bottom:5px}
+  .drp .form-select{font-family:inherit;font-size:14.5px;border-color:#CFCBC0;
+             border-radius:6px;padding:8px 11px}
+  .drp .form-select:focus{border-color:var(--gd);box-shadow:0 0 0 .18rem rgba(242,194,48,.28)}
+  .drp .btn-go{background:var(--gold);border:none;color:var(--ink);font-weight:600;
+             font-family:inherit;font-size:15px;padding:10px 30px;border-radius:6px}
+  .drp .btn-go:hover:not(:disabled){background:var(--gd)}
+  .drp .btn-go:disabled{background:var(--rule);color:var(--muted)}
+  .drp .preset{background:#fff;border:1px solid var(--rule);color:var(--soft);
+             font-size:12.5px;padding:4px 13px;border-radius:999px;cursor:pointer;
+             font-family:inherit}
+  .drp .preset:hover{border-color:var(--gd);color:var(--gd)}
+  .drp .hint{font-size:12.5px;color:var(--muted)}
+
+  .drp #drp-panel{display:none;border-left:3px solid var(--gold);background:#FCFAF4;
+             border-radius:0 8px 8px 0;padding:16px 20px;margin-top:18px}
+  .drp #drp-panel.on{display:block}
+  .drp #drp-panel.err{border-left-color:var(--bad);background:#FBF3F1}
+  .drp #drp-panel.ok{border-left-color:var(--good);background:#F2F7F4}
+  .drp .step{font-size:14.5px}
+  .drp .bar{height:3px;background:var(--rule);margin-top:12px;overflow:hidden;
+             border-radius:2px}
+  .drp .bar i{display:block;height:100%;width:30%;background:var(--gd);
+             animation:drp-slide 1.1s ease-in-out infinite}
+  @keyframes drp-slide{0%{margin-left:-30%}100%{margin-left:100%}}
+
+  .drp table{font-size:13.5px;margin:0}
+  .drp thead th{font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+             color:var(--muted);border-bottom:1px solid var(--ink);font-weight:400;
+             padding:9px 14px}
+  .drp tbody td{padding:10px 14px;border-bottom:1px solid var(--rule);
+             vertical-align:middle}
+  .drp tbody tr:hover td{background:#FCFAF4}
+  .drp .pill{font-size:11px;padding:3px 10px;border-radius:999px;
+             display:inline-block;letter-spacing:.04em}
+  .drp .p-done{background:#E7F0EA;color:var(--good)}
+  .drp .p-failed{background:#F7E6E2;color:var(--bad)}
+  .drp .p-running,.drp .p-pending{background:#FBF2D9;color:var(--gd)}
+  .drp .go-link{color:var(--gd);font-weight:600;text-decoration:none}
+  .drp .go-link:hover{text-decoration:underline}
+  .drp .mono{font-variant-numeric:tabular-nums}
+  @media (prefers-reduced-motion:reduce){.drp .bar i{animation:none;width:100%}}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="drp container-fluid py-4" style="max-width:1180px">
+
+  <div class="hero">
+    <div class="eyebrow">Kapitalbank · кредитный портфель</div>
+    <h1>Динамический отчёт</h1>
+    <p>Выберите период для анализа динамики и отчётную дату для структурного
+       среза. Отчёт собирается из месячных выгрузок и открывается в новой вкладке.</p>
+    <div class="facts">
+      <div class="fact">
+        <div class="n">{{ n_files }}</div>
+        <div class="l">отчётных дат в базе</div>
+      </div>
+      <div class="fact">
+        <div class="n">{{ periods.0.label|default:"—" }} — {{ latest_label|default:"—" }}</div>
+        <div class="l">доступный диапазон</div>
+      </div>
+      <div class="fact">
+        <div class="n">{{ n_done }}</div>
+        <div class="l">готовых отчётов</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header">Параметры отчёта</div>
+    <div class="card-body p-4">
+      <form id="drp-form" method="post" action="{% url 'report-start' %}">
+        {% csrf_token %}
+        <input type="hidden" name="force" id="drp-force" value="0">
+        <div class="row g-3 align-items-end">
+          <div class="col-lg-3 col-md-6">
+            <label class="form-label" for="pf">Динамика с</label>
+            <select class="form-select" name="period_from" id="pf">
+              <option value="">самая ранняя</option>
+              {% for p in periods %}<option value="{{ p.value }}">{{ p.label }}</option>{% endfor %}
+            </select>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <label class="form-label" for="pt">Динамика по</label>
+            <select class="form-select" name="period_to" id="pt">
+              <option value="">самая поздняя</option>
+              {% for p in periods %}<option value="{{ p.value }}">{{ p.label }}</option>{% endfor %}
+            </select>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <label class="form-label" for="sp">Структура на дату</label>
+            <select class="form-select" name="selected_period" id="sp">
+              <option value="">последняя доступная</option>
+              {% for p in periods %}<option value="{{ p.value }}">{{ p.label }}</option>{% endfor %}
+            </select>
+          </div>
+          <div class="col-lg-3 col-md-6 d-grid">
+            <button type="submit" class="btn btn-go" id="drp-go">Построить отчёт</button>
+          </div>
+        </div>
+
+        <div class="d-flex gap-2 flex-wrap mt-3">
+          <button type="button" class="preset" data-months="12">Последние 12 месяцев</button>
+          <button type="button" class="preset" data-months="24">Последние 24 месяца</button>
+          <button type="button" class="preset" data-months="0">Весь период</button>
+        </div>
+
+        <div class="hint mt-3">
+          Пустое поле — без ограничения. Структурные графики считаются
+          <strong>только по выбранной дате</strong>: число клиентов, средние суммы
+          и концентрация относятся к ней одной.
+          Повторный запрос с теми же параметрами откроет уже готовый отчёт
+          мгновенно — пересчёт запускается только после загрузки новых данных.
+        </div>
+      </form>
+
+      <div id="drp-panel">
+        <div class="step" id="drp-step">Запуск…</div>
+        <div class="bar" id="drp-bar"><i></i></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <span>Ранее построенные отчёты</span>
+      <span class="text-muted" style="letter-spacing:0;text-transform:none;font-size:11.5px">
+        открываются мгновенно</span>
+    </div>
+    <div class="table-responsive">
+      <table class="table mb-0">
+        <thead><tr>
+          <th>#</th><th>Структура на</th><th>Период динамики</th>
+          <th>Статус</th><th class="text-end">Графиков</th>
+          <th class="text-end">Сек.</th><th>Создан</th><th></th>
+        </tr></thead>
+        <tbody>
+          {% for r in runs %}
+          <tr>
+            <td class="mono text-muted">{{ r.pk }}</td>
+            <td>{{ r.selected_period|default:"—" }}</td>
+            <td class="mono">{{ r.period_from|default:"…" }} – {{ r.period_to|default:"…" }}</td>
+            <td><span class="pill p-{{ r.status }}">{{ r.get_status_display }}</span></td>
+            <td class="text-end mono">{{ r.stats.n_charts|default:"—" }}</td>
+            <td class="text-end mono">{{ r.seconds }}</td>
+            <td class="text-muted">{{ r.created_at|date:"d.m.Y H:i" }}</td>
+            <td class="text-end">
+              {% if r.status == "done" %}
+                <a class="go-link" href="{% url 'report-view' r.pk %}" target="_blank"
+                   rel="noopener">открыть</a>
+                <span class="text-muted">·</span>
+                <a class="go-link" href="{% url 'report-download' r.pk %}">скачать</a>
+              {% elif r.status == "failed" %}
+                <span class="text-muted" title="{{ r.error|truncatechars:200 }}">ошибка</span>
+              {% endif %}
+            </td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="8" class="text-muted py-4 text-center">
+            Отчётов пока нет — постройте первый.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const form  = document.getElementById('drp-form');
+  const go    = document.getElementById('drp-go');
+  const force = document.getElementById('drp-force');
+  const panel = document.getElementById('drp-panel');
+  const step  = document.getElementById('drp-step');
+  const bar   = document.getElementById('drp-bar');
+  const pf    = document.getElementById('pf');
+  const pt    = document.getElementById('pt');
+  const sp    = document.getElementById('sp');
+  if (!form) return;
+
+  // every <option value> on the period selects, oldest first
+  const all = Array.from(pf.options).map(o => o.value).filter(Boolean);
+
+  function csrf() {
+    const i = form.querySelector('[name=csrfmiddlewaretoken]');
+    if (i) return i.value;
+    const m = document.cookie.match(/csrftoken=([^;]+)/);
+    return m ? m[1] : '';
+  }
+
+  function show(text, cls) {
+    panel.classList.add('on');
+    panel.classList.remove('err', 'ok');
+    if (cls) panel.classList.add(cls);
+    bar.style.display = cls ? 'none' : 'block';
+    step.innerHTML = text;
+  }
+
+  // Presets just set the three selects; the form is still the source of truth.
+  document.querySelectorAll('.preset').forEach(b => {
+    b.addEventListener('click', () => {
+      const n = parseInt(b.dataset.months, 10);
+      if (!all.length) return;
+      pf.value = n > 0 ? (all[Math.max(0, all.length - n)] || '') : '';
+      pt.value = '';
+      sp.value = '';
+    });
+  });
+
+  // The run can take minutes, so the page polls instead of waiting on the POST.
+  async function poll(id) {
+    try {
+      const r = await fetch(`status/${id}/`);
+      const s = await r.json();
+
+      if (s.status === 'done') {
+        const st = s.stats || {};
+        show(`Готово за ${s.seconds} с — ${st.n_charts || '—'} графиков, ` +
+             `${st.n_periods || 0} отчётных дат, ` +
+             `${(st.n_clients || 0).toLocaleString('ru-RU')} клиентов. ` +
+             `<a class="go-link" href="view/${id}/" target="_blank" rel="noopener">` +
+             `Открыть отчёт</a>`, 'ok');
+        window.open(`view/${id}/`, '_blank', 'noopener');
+        go.disabled = false;
+        setTimeout(() => window.location.reload(), 2000);
+        return;
+      }
+      if (s.status === 'failed') {
+        show('Ошибка: ' + (s.error || '').split('\n')[0], 'err');
+        go.disabled = false;
+        return;
+      }
+      show((s.step || 'выполняется') + ` … ${s.seconds} с`);
+      setTimeout(() => poll(id), 1200);
+    } catch (e) {
+      show('Потеряна связь с сервером: ' + e.message, 'err');
+      go.disabled = false;
+    }
+  }
+
+  form.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    go.disabled = true;
+    show('Проверка готовых отчётов…');
+    try {
+      const r = await fetch('start/', {
+        method: 'POST',
+        headers: {'X-CSRFToken': csrf()},
+        body: new FormData(form),
+      });
+      const s = await r.json();
+      if (!r.ok) {
+        show('Ошибка: ' + (s.error || r.status), 'err');
+        go.disabled = false;
+        force.value = '0';
+        return;
+      }
+      if (s.cached) show('Такой отчёт уже построен — открываю…');
+      else show('Запуск расчёта…');
+      force.value = '0';
+      poll(s.id);
+    } catch (e) {
+      show('Не удалось запустить: ' + e.message, 'err');
+      go.disabled = false;
+      force.value = '0';
+    }
+  });
+});
+</script>
+{% endblock %}

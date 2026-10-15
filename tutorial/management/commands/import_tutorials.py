@@ -14,6 +14,7 @@ The data file must expose a ``TUTORIALS`` list of dicts, e.g.::
             # "stories":   ["Story title", 34],     # Corner readings, titles or ids
             # "playlist":  "My Playlist",           # overrides the file-level PLAYLIST
             # "order":     1,                       # position inside the playlist
+            # "renamed_from": ["Old title"],        # rename an existing lesson in place
         },
         ...
     ]
@@ -27,6 +28,8 @@ production on Railway — ends up with the same playlist as local dev::
         "title":       "Prime English",
         "category":    "english",
         "description": "Short blurb for the playlist card.",
+        # "staff_only": True,   # admin-only: playlist + its lessons stay unpublished,
+        #                       # so only staff can open them (tutorial/views._visible)
     }
 
 Usage::
@@ -135,13 +138,19 @@ class Command(BaseCommand):
             defaults={
                 "category":    meta.get("category", "other"),
                 "description": (meta.get("description") or "")[:300],
-                "is_published": True,
+                "is_published": not meta.get("staff_only"),
             },
         )
         if was_created:
             self.stdout.write(self.style.SUCCESS(f"playlist created: {title}"))
         else:
             self.stdout.write(f"playlist exists: {title}")
+        published = not meta.get("staff_only")
+        if playlist.is_published != published:
+            playlist.is_published = published
+            playlist.save(update_fields=["is_published"])
+        if not published:
+            self.stdout.write(self.style.WARNING("  staff only: playlist and its lessons are hidden from non-admins"))
         return playlist.title
 
     def _link_practices(self, tut, refs, author):
@@ -194,6 +203,7 @@ class Command(BaseCommand):
         republish = options["republish"]
 
         default_playlist = None
+        published = not (playlist_meta or {}).get("staff_only")
         if playlist_meta:
             default_playlist = self._ensure_playlist(playlist_meta, author)
 
@@ -218,6 +228,16 @@ class Command(BaseCommand):
             summary = (data.get("summary") or "")[:300]
 
             with transaction.atomic():
+                # A renamed lesson keeps its id, progress and reactions: find it under
+                # its old title and give it the new one before the usual match.
+                if not Tutorial.objects.filter(title=title, author=author).exists():
+                    old = Tutorial.objects.filter(
+                        title__in=data.get("renamed_from") or [], author=author).first()
+                    if old:
+                        self.stdout.write(f"[{i}] renamed: {old.title} -> {title}")
+                        old.title = title
+                        old.save(update_fields=["title"])
+
                 tut, was_created = Tutorial.objects.get_or_create(
                     title=title,
                     author=author,
@@ -225,7 +245,7 @@ class Command(BaseCommand):
                         "category": category,
                         "summary": summary,
                         "content": content,
-                        "is_published": True,
+                        "is_published": published,
                     },
                 )
 
@@ -236,7 +256,7 @@ class Command(BaseCommand):
                     tut.category = category
                     tut.summary = summary
                     tut.content = content
-                    tut.is_published = True
+                    tut.is_published = published
                     tut.save()
                     updated += 1
                     self.stdout.write(self.style.SUCCESS(f"[{i}] updated: {title}"))
@@ -245,6 +265,11 @@ class Command(BaseCommand):
                     self.stdout.write(self.style.WARNING(
                         f"[{i}] exists, skipped (use --republish to update): {title}"
                     ))
+
+                # Staff-only files never leave a lesson public, even when skipped.
+                if not published and tut.is_published:
+                    tut.is_published = False
+                    tut.save(update_fields=["is_published"])
 
                 if (was_created or republish) and data.get("practices"):
                     self._link_practices(tut, data["practices"], author)

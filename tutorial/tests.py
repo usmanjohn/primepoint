@@ -84,3 +84,67 @@ class MoneyIsNotMathTests(SimpleTestCase):
         out = render_math(html)
         self.assertEqual(html, out)
         self.assertEqual(out.count('<strong>'), 2)
+
+
+# ── Admin-only (staff_only) playlists, e.g. "Kapital" ────────────────────────
+import os
+import tempfile
+
+from django.contrib.auth.models import User
+from django.core.management import call_command
+from django.test import TestCase
+from django.urls import reverse
+
+from tutorial.models import Tutorial, TutorialPlaylist
+
+
+class StaffOnlyPlaylistTests(TestCase):
+    DATA = (
+        "PLAYLIST = {'title': 'Kapital', 'category': 'programming', 'staff_only': True}\n"
+        "TUTORIALS = [\n"
+        "  {'title': '1. Setup', 'renamed_from': ['Old setup'], 'category': 'programming',\n"
+        "   'order': 1, 'content': '<p>views</p>'},\n"
+        "  {'title': '2. Home', 'category': 'programming', 'order': 2, 'content': '<p>home</p>'},\n"
+        "]\n"
+    )
+
+    def setUp(self):
+        self.admin = User.objects.create_user('boss', password='x', is_staff=True)
+        self.pupil = User.objects.create_user('pupil', password='x')
+        # an existing public lesson under its old title — must be renamed, not duplicated
+        self.old = Tutorial.objects.create(title='Old setup', author=self.admin,
+                                           category='programming', content='<p>old</p>')
+        fd, self.path = tempfile.mkstemp(suffix='.py')
+        with os.fdopen(fd, 'w') as f:
+            f.write(self.DATA)
+        call_command('import_tutorials', self.path, author='boss', republish=True, stdout=open(os.devnull, 'w'))
+
+    def tearDown(self):
+        os.remove(self.path)
+
+    def test_import_hides_and_renames(self):
+        pl = TutorialPlaylist.objects.get(title='Kapital')
+        self.assertFalse(pl.is_published)
+        self.assertFalse(Tutorial.objects.filter(is_published=True, title__in=['1. Setup', '2. Home']).exists())
+        self.old.refresh_from_db()
+        self.assertEqual(self.old.title, '1. Setup')          # same row, new title
+        self.assertEqual(Tutorial.objects.filter(author=self.admin).count(), 2)
+
+    def test_pupil_and_guest_get_404(self):
+        pl = TutorialPlaylist.objects.get(title='Kapital')
+        for client_user in (None, self.pupil):
+            if client_user:
+                self.client.force_login(client_user)
+            self.assertEqual(self.client.get(reverse('playlist_detail', args=[pl.pk])).status_code, 404)
+            self.assertEqual(self.client.get(reverse('tutorial_detail', args=[self.old.pk])).status_code, 404)
+            self.assertNotContains(self.client.get(reverse('playlist_list')), 'Kapital')
+            self.client.logout()
+
+    def test_admin_sees_everything(self):
+        self.client.force_login(self.admin)
+        pl = TutorialPlaylist.objects.get(title='Kapital')
+        self.assertContains(self.client.get(reverse('playlist_list')), 'Kapital')
+        r = self.client.get(reverse('playlist_detail', args=[pl.pk]))
+        self.assertContains(r, '1. Setup')
+        self.assertContains(r, '2. Home')
+        self.assertEqual(self.client.get(reverse('tutorial_detail', args=[self.old.pk])).status_code, 200)
