@@ -2,7 +2,7 @@
 Analytics engine for the portfolio report — the "album" edition.
 
 The report is a stack of A4 landscape pages, one chart per page. Every page has the
-chart on the left and a panel on the right: what the chart shows, what every colour
+chart across the page and a panel under it: what the chart shows, what every colour
 means, and the findings read straight out of the numbers ("крупнейший департамент —
 kk, 45% портфеля"). The same file prints cleanly: Ctrl+P → A4, landscape, margins
 "None", background graphics on.
@@ -55,6 +55,9 @@ COLORS = {
     "ink": "#1A1A1E",        # totals, bank-wide lines
 }
 CURRENCY_COLORS = {"Сум": "#D6D1C4", "USD": "#5E5A52", "EUR": "#1A1A1E"}
+# Products inside one department (A14…): clearly different colours, largest first.
+# No red — red is the NPL line drawn over them. "Прочие" is always light grey.
+PRODUCT_COLORS = ["#1F4E79", "#E0A526", "#2E9C8F", "#7A4E9A", "#4F9BD9", "#8BB04A", "#D97A9B", "#8C6D4F"]
 
 # Delinquency: the risk zone shown on A01/A13 and the KPI, and the report's buckets.
 WATCH_DPD = (61, 90)
@@ -68,12 +71,14 @@ SHOW_CURRENT_BUCKET = False   # False: the "0 дней" bucket is left out of A0
 
 # Top clients (A-page dynamics + B08 table).
 TOP_CLIENTS = 50
-TOP_CLIENTS_EXCLUDE = ["rk"]  # these departments' clients are never ranked or named
+TOP_CLIENTS_EXCLUDE = ["rk"]  # a client whose loans are ONLY in these departments is never ranked
+                              # or named; a client with loans here AND elsewhere counts in full
 COURT_DEPARTMENT = "rk"       # B10 looks at this department only
+WRITE_OFF_COL = "spisat_95413_summa"   # B10's «Списано» piece; "spisat_91501_summa" is the other one
 
 # Branches whose name means "unknown" are left out of every branch chart.
 NO_BRANCH = ["nodata", "no data", "нет данных", "", "nan", "none", "<na>"]
-BRANCHES_PER_PAGE = 24        # longer branch lists continue on the next page
+BRANCHES_PER_PAGE = 18        # longer branch lists continue on the next page
 
 # Dates. The data for September is the state on 1 October, so by default every reporting
 # date is labelled by its report_date month: September's portfolio shows as «окт».
@@ -84,11 +89,12 @@ LABEL_BY_REPORT_DATE = True
 TOP_PASSPORTS, TOP_PRODUCTS, TOP_OKED = 7, 15, 10
 UNIT, UNIT_NAME = 1e9, "млрд сум"
 
-# Page geometry (A4 landscape) and type sizes. Chart is CHART_W × CHART_H pixels.
-CHART_W, CHART_H = 735, 600
+# Page geometry (A4 landscape): the chart spans the page, the explanation sits under it.
+CHART_W, CHART_H = 1045, 420
 FONT = "Segoe UI, Roboto, Arial, sans-serif"
 FONT_SIZE, LABEL_SIZE = 13, 12
-MAX_LABELS = 12               # value labels per line/series, so they never overlap
+LABEL_PX = 34                 # room one value label needs; labels per series = chart width / this,
+                              # so every month is labelled when it fits, every 2nd when it does not
 
 
 # ==========================================================================
@@ -124,6 +130,7 @@ SUD_ALIASES = {"unofficial": "neofficial", "neoficial": "neofficial", "neofficia
                "official": "official", "oficial": "official", "norm": "norm", "normal": "norm"}
 SUD_ORDER = ["norm", "neofficial", "official"]
 SUD_COLORS = {"norm": "#D9D4C7", "neofficial": "#E08A1E", "official": "#B3341F"}
+WRITE_OFF_COLOR = "#3A3A40"
 
 CANONICAL = [
     "contragent", "anketa", "filial", "tobo", "valuta", "dogovor_sana", "vidacha_sana",
@@ -250,6 +257,11 @@ def _e(s):
     return _html.escape(str(s))
 
 
+def fit(px=None):
+    """How many labels of ~px pixels fit side by side across the plot area."""
+    return max(4, int((CHART_W - 150) / (px or LABEL_PX)))
+
+
 def thin(values, fmt=lambda v: fnum(v, 1), max_labels=None, keep_last=True):
     """Label every k-th point (and the last) so labels never collide."""
     vals = list(values)
@@ -260,7 +272,7 @@ def thin(values, fmt=lambda v: fnum(v, 1), max_labels=None, keep_last=True):
 def _label_idx(n, max_labels=None, keep_last=True):
     """Which positions get a label: every k-th, plus the last — dropping the one before
     the last when the two would sit closer than ~half a step."""
-    step = max(1, math.ceil(n / (max_labels or MAX_LABELS)))
+    step = max(1, math.ceil(n / (max_labels or fit())))
     idx = set(range(0, n, step))
     if keep_last and n:
         prev = max(i for i in idx if i <= n - 1)
@@ -364,15 +376,53 @@ def base(f, **layout):
     for tr in f.data:
         if tr.type == "bar" and tr.textposition == "outside":
             tr.constraintext = "none"      # otherwise plotly hides labels wider than the bar
+        if tr.type == "bar" and tr.textposition == "inside" and tr.textangle is None:
+            tr.textangle = 0               # never auto-rotated ("%16"); hidden if it does not fit
+    for tr in list(f.data):
+        if tr.type == "scatter" and tr.yaxis == "y2" and tr.text is not None and "text" in (tr.mode or ""):
+            pos = tr.textposition if isinstance(tr.textposition, (list, tuple)) else [tr.textposition] * len(tr.x)
+            col = (tr.line.color if tr.line and tr.line.color else COLORS["ink"])
+            for xi, yi, ti, ps in zip(tr.x, tr.y, tr.text, pos):
+                if ti and _ok(yi):
+                    f.add_annotation(x=xi, y=yi, yref="y2", text=ti, showarrow=False,
+                                     yshift=11 if str(ps).startswith("top") else -11,
+                                     font=dict(size=10.5, color=col), bgcolor="rgba(255,255,255,.88)",
+                                     borderpad=1)
+            tr.mode = tr.mode.replace("+text", "").replace("text+", "")
+            tr.text = None
     return f
 
 
-def split(top_title, top_max, frac=.30):
-    """Lines get their own strip above the bars, so a line never runs across a bar."""
-    return dict(yaxis2=dict(domain=[1 - frac, 1], anchor="x", title=dict(text=top_title, font=dict(size=11)),
-                            range=[0, (top_max or 1) * 1.35], showgrid=True, gridcolor="#EFECE4",
-                            tickfont=dict(size=11), zeroline=False),
-                yaxis_domain=[0, 1 - frac - .07])
+def overlay(bar_max, *lines, pct_title="%"):
+    """
+    The classic two-scale chart: amounts on the left, percent on the right, and the line
+    drawn straight through the bars. Line values get white labels (see base()), so they
+    stay readable on top of a dark bar.
+    """
+    vals = np.concatenate([np.asarray(l, dtype=float) for l in lines]) if lines else np.array([1.0])
+    vals = vals[np.isfinite(vals)]
+    hi = float(vals.max()) if len(vals) else 1.0
+    return dict(yaxis=dict(range=[0, (bar_max or 1) * 1.12]),
+                yaxis2=dict(overlaying="y", side="right", range=[0, (hi or 1) * 1.18], ticksuffix="%",
+                            showgrid=False, zeroline=False, tickfont=dict(size=11, color=COLORS["npl"]),
+                            title=dict(text=pct_title, font=dict(size=11, color=COLORS["npl"]))))
+
+
+def nice_ticks(top, n=4):
+    """Round tick values from 0 up to `top` only — the bar scale stops where the bars stop."""
+    if not _ok(top) or top <= 0:
+        return [0]
+    raw = top / n
+    mag = 10 ** math.floor(math.log10(raw))
+    step = next(m * mag for m in (1, 2, 2.5, 5, 10) if m * mag >= raw)
+    return [round(i * step, 10) for i in range(int(top // step) + 1)]
+
+
+def line_text(vals, fmt):
+    """A value on every point: labels alternate above/below the line, so neighbours never touch."""
+    text = thin(vals, fmt, max_labels=fit(17))
+    pos = ["top center" if i % 2 == 0 else "bottom center" for i in range(len(text))]
+    return text, pos
 
 
 def page(fig, *, what, legend=(), insights=(), terms=(), title=None, body_html=None):
@@ -420,8 +470,9 @@ def glossary():
         "court": ("Судебная стадия", "норма — без судебной работы; неофициальная — досудебная работа "
                                      "с должником; официальная — иск подан в суд."),
         "top": (f"Топ-{TOP_CLIENTS}", f"{TOP_CLIENTS} крупнейших клиентов месяца по сумме остатка. "
-                                      "Клиенты департамента " + ", ".join(TOP_CLIENTS_EXCLUDE)
-                                      + " не учитываются и не называются."),
+                                      "Клиенты, у которых кредиты только в " + ", ".join(TOP_CLIENTS_EXCLUDE)
+                                      + ", не учитываются и не называются; у клиентов с кредитами и там, "
+                                        "и в других департаментах считается весь долг."),
         "vintage": ("Месяц выдачи", "когорта: все кредиты, выданные в этом месяце."),
     }
 
@@ -607,6 +658,7 @@ def build_panel(raw):
     d["disbursed"] = d["vidacha_tekushiy_summa"]
     d["repaid"] = d["pogashen_tekushiy_summa"]
     d["written_amt"] = d["spisat_95413_summa"]
+    d["writeoff"] = d[WRITE_OFF_COL]
     d["insurance_paid"] = d["straxovka_summa"]
 
     d["dpd"] = d["maks_dni"].clip(lower=0)
@@ -634,7 +686,7 @@ def build_panel(raw):
     keep = ["anketa", "contragent", "contragent_name", "period", "vintage", "mob", "mob_band",
             "dpd", "bucket", "mbucket", "is_npl", "is_watch", "is_new", "is_npl_gross",
             "in_court", "exposure", "exposure_gross", "npl_exposure", "watch_exposure",
-            "npl_gross_exp", "reserve", "disbursed", "repaid", "written_amt",
+            "npl_gross_exp", "reserve", "disbursed", "repaid", "written_amt", "writeoff",
             "insurance_paid", "filial", "department", "dkey", "passport", "avto",
             "valuta", "cur_name", "sud"] + (["oked_name"] if has_oked else [])
     p = d[keep].sort_values(["anketa", "period"], kind="stable").reset_index(drop=True)
@@ -685,12 +737,17 @@ def by_period(p, dim=None):
 
 def top_clients(panel, totals):
     """
-    Each month's TOP_CLIENTS largest clients by balance, departments in
-    TOP_CLIENTS_EXCLUDE left out entirely (their clients are never ranked or named).
+    Each month's TOP_CLIENTS largest clients by balance. A client whose loans are only in
+    TOP_CLIENTS_EXCLUDE is left out (never ranked or named); a client with loans there and
+    elsewhere is ranked on the whole balance.
     Returns (all clients ranked per period, top rows, per-period summary, top by department).
     """
     excl = {dkey(x) for x in TOP_CLIENTS_EXCLUDE}
-    p = panel[(panel["exposure"] > MIN_BALANCE) & ~panel["dkey"].isin(excl)]
+    p = panel[panel["exposure"] > MIN_BALANCE]
+    # keep a client in a month only if they hold at least one loan OUTSIDE the excluded
+    # departments that month; then all their loans count, the excluded ones included
+    elsewhere = (~p["dkey"].isin(excl)).groupby([p["period"], p["contragent"]], observed=True).transform("any")
+    p = p[elsewhere.to_numpy()]
     g = (p.groupby(["period", "contragent"], observed=True)
           .agg(exposure=("exposure", "sum"), npl=("npl_exposure", "sum"),
                dpd=("dpd", "max"), n_loans=("anketa", "size"),
@@ -781,10 +838,15 @@ def build_marts(panel, snap, periods, sel, has_oked):
         vin[f"gl{thr}"] = gv[f"ever_{thr}"].sum() / gv["anketa"].size()
     vin = vin.reset_index()
     vin["reliable"] = vin["n_loans"] >= MIN_COHORT
-    A["vin_marks"] = pd.concat(
-        [vin[vin["mob"] == mob].assign(metric=f"GL{thr}+@{mob}MOB", rate=vin[f"gl{thr}"])
-            [["vintage", "metric", "rate", "n_loans", "reliable"]]
-         for thr, mob in VINTAGE_MARKS], ignore_index=True)
+    # rate comes from the SAME rows (sub), not from vin: assigning vin's column to an empty
+    # selection used to create ghost NA rows whenever no cohort had reached that month yet
+    marks = []
+    for thr, mob in VINTAGE_MARKS:
+        sub = vin[vin["mob"] == mob]
+        marks.append(pd.DataFrame({"vintage": sub["vintage"], "metric": f"GL{thr}+@{mob}MOB",
+                                   "rate": sub[f"gl{thr}"], "n_loans": sub["n_loans"],
+                                   "reliable": sub["reliable"].astype(bool)}))
+    A["vin_marks"] = pd.concat(marks, ignore_index=True)
 
     # products per department, chosen and ORDERED by their standing at SEL
     top_pass = {}
@@ -881,6 +943,10 @@ def build_marts(panel, snap, periods, sel, has_oked):
                     .agg(exposure=("exposure", "sum"), n_loans=("anketa", "size"))
                     .reset_index())
     B["court_dep_name"] = (str(cs["department"].iloc[0]) if len(cs) else COURT_DEPARTMENT)
+    # written off: taken from ALL loans at sel — a fully written-off loan has a zero balance
+    # and is not in `snap`, but its write-off belongs on this page
+    wo = panel[(panel["period"] == sel) & (panel["dkey"] == ck) & (panel["writeoff"] > 0)]
+    B["court_writeoff"] = wo.groupby("avto", observed=True)["writeoff"].sum()
 
     return A, B, top_pass
 
@@ -893,6 +959,10 @@ def build_marts(panel, snap, periods, sel, has_oked):
 # arguments rather than reading globals, because two requests can be running
 # with different periods at the same time.
 # ==========================================================================
+class Notice(Exception):
+    """Not an error: the chart has nothing to show for this window. Rendered as a calm note."""
+
+
 def _x(periods):
     return [plabel(p) for p in periods]
 
@@ -938,7 +1008,7 @@ def a01_portfolio(A, B, ctx):
     t = _total(A).reindex(piv.index)
     order = order_at(piv, sel)
     x = _x(piv.index)
-    n, step = len(x), max(1, math.ceil(len(x) / MAX_LABELS))
+    n, step = len(x), max(1, math.ceil(len(x) / fit(36)))
     tot = money(t["exposure"])
     f = go.Figure()
     for dep in order:
@@ -953,16 +1023,18 @@ def a01_portfolio(A, B, ctx):
     f.add_scatter(x=x, y=tot, mode="text", text=thin(tot, famt), textposition="top center",
                   textfont=dict(size=LABEL_SIZE, color=COLORS["ink"]), hoverinfo="skip")
     npl, wat = t["npl_ratio"] * 100, t["watch_ratio"] * 100
+    t_, p_ = line_text(npl, lambda v: f"{v:.2f}%")
     f.add_scatter(x=x, y=npl, name="NPL 90+, %", yaxis="y2", mode="lines+markers+text",
                   line=dict(color=COLORS["npl"], width=3), marker=dict(size=5),
-                  text=thin(npl, lambda v: f"{v:.2f}%", max_labels=8), textposition="top center",
+                  text=t_, textposition=p_,
                   textfont=dict(size=11, color=COLORS["npl"]),
                   hovertemplate="%{x}<br>NPL 90+: %{y:.2f}%<extra></extra>")
     f.add_scatter(x=x, y=wat, name=f"Зона риска {_wz()}, %", yaxis="y2", mode="lines",
                   line=dict(color=COLORS["watch"], width=2.2, dash="dot"),
                   hovertemplate="%{x}<br>зона риска: %{y:.2f}%<extra></extra>")
-    base(f, barmode="stack", bargap=.25, yaxis=dict(title=UNIT_NAME, range=[0, _safemax(tot) * 1.12]),
-         **split("NPL и зона риска, %", max(_safemax(npl), _safemax(wat))))
+    ov = overlay(_safemax(tot), npl, wat, pct_title="NPL и зона риска, %")
+    ov["yaxis"]["title"] = UNIT_NAME
+    base(f, barmode="stack", bargap=.25, **ov)
 
     T = _total(A)
     shares = (piv.loc[sel] / T.loc[sel, "exposure"]) if sel in piv.index else None
@@ -977,13 +1049,13 @@ def a01_portfolio(A, B, ctx):
         _trend(f"Зона риска {_wz()}", T["watch_ratio"] * 100, sel),
     ]
     return page(f, what="Остаток кредитного портфеля на каждую отчётную дату, разделённый по "
-                        "департаментам (столбцы, левая шкала), и его качество (линии в полосе сверху, %).",
+                        "департаментам (столбцы, левая шкала), и его качество (линии, правая шкала, %).",
                 legend=_dept_legend(order, shares) + [
                     (COLORS["ink"], "Число над столбцом", f"весь портфель банка, {UNIT_NAME}", "text"),
                     (COLORS["npl"], "Красная линия", "доля NPL 90+ в портфеле, %", "line"),
                     (COLORS["watch"], "Оранжевый пунктир",
                      f"зона риска: просрочка {_wz()} дней, ещё не NPL", "dot")],
-                insights=ins, terms=["dates", "npl", "watch"])
+                insights=ins, terms=["dates", "npl"])
 
 
 def a02_stock_flow(A, B, ctx):
@@ -993,14 +1065,15 @@ def a02_stock_flow(A, B, ctx):
     dis, rep = money(d["disbursed"]), money(d["repaid"])
     f = go.Figure()
     f.add_bar(x=x, y=dis, name="Выдано", marker_color=COLORS["good"],
-              text=thin(dis, max_labels=8), textposition="outside", cliponaxis=False,
+              text=thin(dis, famt, max_labels=fit(16)), textposition="outside", cliponaxis=False, textangle=-90,
               textfont=dict(size=11, color=COLORS["good"]),
               hovertemplate="%{x}<br>выдано %{y:,.1f} " + UNIT_NAME + "<extra></extra>")
     f.add_bar(x=x, y=rep, name="Погашено", marker_color=COLORS["neutral"],
-              text=thin(rep, max_labels=8), textposition="outside", cliponaxis=False,
+              text=thin(rep, famt, max_labels=fit(16)), textposition="outside", cliponaxis=False, textangle=-90,
               textfont=dict(size=11, color=COLORS["neutral"]),
               hovertemplate="%{x}<br>погашено %{y:,.1f} " + UNIT_NAME + "<extra></extra>")
-    base(f, barmode="group", bargap=.22, bargroupgap=.05, yaxis=dict(title=UNIT_NAME))
+    base(f, barmode="group", bargap=.22, bargroupgap=.05,
+         yaxis=dict(title=UNIT_NAME, range=[0, max(_safemax(dis), _safemax(rep)) * 1.22]))
 
     s = d.set_index("period")
     best = s["disbursed"].idxmax() if s["disbursed"].notna().any() else None
@@ -1031,7 +1104,7 @@ def a03_bucket_mix(A, B, ctx):
                                       values="share", aggfunc="sum", observed=True).fillna(0) * 100
     cols = _bucket_cols(piv)
     x = _x(piv.index)
-    n, step = len(x), max(1, math.ceil(len(x) / MAX_LABELS))
+    n, step = len(x), max(1, math.ceil(len(x) / fit(36)))
     f = go.Figure()
     for b in cols:
         v = piv[b]
@@ -1062,9 +1135,9 @@ def a03_bucket_mix(A, B, ctx):
     ]
     return page(f, what="Какая часть портфеля просрочена и насколько глубоко — по каждому месяцу. "
                         "Высота столбца = доля всего портфеля с любой просрочкой.",
-                legend=[(BUCKET_COLORS[b], lab(b), "просрочка столько дней, % всего портфеля", "bar")
+                legend=[(BUCKET_COLORS[b], lab(b), "% всего портфеля", "bar")
                         for b in cols] +
-                       [(COLORS["ink"], "Чёрная линия", "сумма всех корзин — весь просроченный портфель", "line")],
+                       [(COLORS["ink"], "Чёрная линия", "весь просроченный портфель", "line")],
                 insights=ins, terms=["overdue", "pp"])
 
 
@@ -1078,7 +1151,7 @@ def a04_npl_departments(A, B, ctx):
         v = piv[dep]
         f.add_scatter(x=x, y=v, name=dname(dep), mode="lines+markers+text",
                       line=dict(width=3, color=dcolor(dep)), marker=dict(size=4),
-                      text=thin(v, lambda z: f"{z:.1f}", max_labels=7),
+                      text=thin(v, lambda z: f"{z:.1f}", max_labels=fit(80)),
                       textposition="top center", textfont=dict(size=11, color=dcolor(dep)),
                       hovertemplate="%{x} · " + _e(dname(dep)) + "<br>NPL %{y:.2f}%<extra></extra>")
     tv = _total(A).reindex(piv.index)["npl_ratio"] * 100
@@ -1151,7 +1224,7 @@ def a05_branch_heatmap(A, B, ctx):
     for k, part in enumerate(parts, 1):
         sub = piv[part]
         z = sub.T.to_numpy(dtype=float)
-        keep = _label_idx(ncol, None if ncol > 18 else ncol)
+        keep = _label_idx(ncol, fit(28))
         txt = [[f"{z[r, c]:.1f}" if c in keep and np.isfinite(z[r, c]) else ""
                 for c in range(ncol)] for r in range(z.shape[0])]
         f = go.Figure(go.Heatmap(
@@ -1161,7 +1234,7 @@ def a05_branch_heatmap(A, B, ctx):
             colorbar=dict(title="NPL, %", thickness=12, len=.8),
             xgap=1, ygap=1, hovertemplate="%{y}<br>%{x}: NPL %{z:.2f}%<extra></extra>"))
         base(f, yaxis=dict(autorange="reversed", tickfont=dict(size=11)),
-             xaxis=dict(side="top", tickangle=-45 if ncol > 18 else 0))
+             xaxis=dict(side="top", tickangle=-45 if ncol > fit(48) else 0))
         sfx = f" ({k}/{len(parts)})" if len(parts) > 1 else ""
         pages_.append(page(
             f, title=f"Доля NPL 90+ по филиалам и месяцам{sfx}",
@@ -1221,16 +1294,17 @@ def a07_vintage_quality(A, B, ctx):
     m6 = vm[vm.metric == "GL30+@6MOB"].set_index("vintage")["rate"] * 100
     idx = sorted(set(m12.index) | set(m6.index))
     if not idx:
-        raise ValueError("нет когорт с достаточным числом кредитов")
+        raise Notice("Период слишком короткий для когорт: кредиту нужно прожить 6–12 месяцев внутри "
+                     "выбранного периода. Выберите динамику длиной от 12–18 месяцев — и страница заполнится.")
     x = [vlabel(v) for v in idx]
     v12, v6 = m12.reindex(idx), m6.reindex(idx)
     f = go.Figure()
     f.add_bar(x=x, y=v6, name="GL30+@6MOB", marker_color=COLORS["watch"],
-              text=thin(v6, lambda z: f"{z:.1f}", max_labels=10), textposition="outside",
+              text=thin(v6, lambda z: f"{z:.1f}", max_labels=fit(16)), textposition="outside", textangle=-90,
               cliponaxis=False, textfont=dict(size=11, color=COLORS["watch"]),
               hovertemplate="выдача %{x}<br>GL30+@6MOB: %{y:.1f}%<extra></extra>")
     f.add_bar(x=x, y=v12, name="GL90+@12MOB", marker_color=COLORS["npl"],
-              text=thin(v12, lambda z: f"{z:.1f}", max_labels=10), textposition="outside",
+              text=thin(v12, lambda z: f"{z:.1f}", max_labels=fit(16)), textposition="outside", textangle=-90,
               cliponaxis=False, textfont=dict(size=11, color=COLORS["npl"]),
               hovertemplate="выдача %{x}<br>GL90+@12MOB: %{y:.1f}%<extra></extra>")
     avg = float(np.nanmean(v12)) if v12.notna().sum() else np.nan
@@ -1239,7 +1313,7 @@ def a07_vintage_quality(A, B, ctx):
                     annotation_text=f"среднее GL90+@12MOB: {avg:.1f}%",
                     annotation_position="top left", annotation_font_size=12)
     base(f, barmode="group", bargap=.2, xaxis=dict(title="месяц выдачи кредита"),
-         yaxis=dict(title="% кредитов когорты"))
+         yaxis=dict(title="% кредитов когорты", range=[0, max(_safemax(v6), _safemax(v12)) * 1.2]))
 
     ins = []
     ex = v12.dropna()
@@ -1273,11 +1347,12 @@ def a08_vintage_heat(A, B, ctx):
     order = [f"GL{a_}+@{b_}MOB" for a_, b_ in VINTAGE_MARKS]
     piv = piv.reindex([o for o in order if o in piv.index])
     if piv.empty:
-        raise ValueError("нет когорт с достаточным числом кредитов")
+        raise Notice("Период слишком короткий для когорт: кредиту нужно прожить 6–12 месяцев внутри "
+                     "выбранного периода. Выберите динамику длиной от 12–18 месяцев — и страница заполнится.")
     z = piv.to_numpy(dtype=float)
     ncol = z.shape[1]
     step = 1 if ncol <= 18 else max(1, math.ceil(ncol / 14))
-    keep = _label_idx(ncol, 14 if ncol > 18 else ncol)
+    keep = _label_idx(ncol, fit(28))
     txt = [[f"{z[r, c]:.1f}" if c in keep and np.isfinite(z[r, c]) else ""
             for c in range(ncol)] for r in range(z.shape[0])]
     nice = {o: o.replace("@", " к ").replace("MOB", "-му мес.") for o in order}
@@ -1287,14 +1362,14 @@ def a08_vintage_heat(A, B, ctx):
         colorscale=[[0, "#FFFFFF"], [.3, "#F6E3A8"], [.65, COLORS["watch"]], [1, COLORS["npl"]]],
         colorbar=dict(title="%", thickness=12),
         hovertemplate="%{y}<br>выдача %{x}: %{z:.1f}%<extra></extra>"))
-    base(f, height=min(CHART_H, 420), xaxis=dict(title="месяц выдачи", tickangle=-45 if ncol > 18 else 0),
+    base(f, height=min(CHART_H, 420), xaxis=dict(title="месяц выдачи", tickangle=-45 if ncol > fit(48) else 0),
          yaxis=dict(autorange="reversed"))
     ins = []
     for o in piv.index:
         s = piv.loc[o].dropna()
         if len(s):
-            ins.append(f"{nice[o]}: последняя когорта ({vlabel_full(s.index[-1])}) — <b>{fpct(s.iloc[-1])}</b>, "
-                       f"среднее {fpct(s.mean())}.")
+            ins.append(f"{nice[o]}: <b>{fpct(s.iloc[-1])}</b> у выдачи {vlabel(s.index[-1])}, "
+                       f"в среднем {fpct(s.mean())}.")
     return page(f, what="Четыре контрольные точки качества для каждой когорты выдач. Строка — правило, "
                         "столбец — месяц выдачи, число — % кредитов когорты.",
                 legend=[(COLORS["watch"], "GL30+ к 3/6-му мес.", "ранний сигнал: просрочка больше 30 дней", "bar"),
@@ -1347,7 +1422,7 @@ def a10_currency(A, B, ctx):
     piv = piv.div(piv.sum(axis=1), axis=0) * 100
     order = order_at(piv, sel)
     x = _x(piv.index)
-    n, step = len(x), max(1, math.ceil(len(x) / MAX_LABELS))
+    n, step = len(x), max(1, math.ceil(len(x) / fit(36)))
     pal = list(CURRENCY_COLORS.values())
     f = go.Figure()
     for i, c in enumerate(order):
@@ -1360,17 +1435,19 @@ def a10_currency(A, B, ctx):
                   textfont=dict(size=11, color=text_on(col)),
                   hovertemplate="%{x}<br>" + c + ": %{y:.2f}%<extra></extra>")
     fx = 100 - piv.get("Сум", pd.Series(0.0, index=piv.index)).fillna(0)
+    t_, p_ = line_text(fx, lambda v: f"{v:.1f}%")
     f.add_scatter(x=x, y=fx, yaxis="y2", mode="lines+markers+text", line=dict(color=COLORS["npl"], width=2.4),
-                  marker=dict(size=4), text=thin(fx, lambda v: f"{v:.1f}%"), textposition="top center",
+                  marker=dict(size=4), text=t_, textposition=p_,
                   textfont=dict(size=11, color=COLORS["npl"]),
                   hovertemplate="%{x}<br>валютная часть: %{y:.2f}%<extra></extra>")
-    base(f, barmode="stack", bargap=.25, yaxis=dict(title="% портфеля", range=[0, 100]),
-         **split("валютная часть, %", _safemax(fx)))
+    ov = overlay(100, fx, pct_title="валютная часть, %")
+    ov["yaxis"].update(title="% портфеля", range=[0, 100])
+    base(f, barmode="stack", bargap=.25, **ov)
     return page(f, what="Из каких валют состоит портфель: доли внутри каждого месяца (сумма = 100%). "
-                        "Красная линия сверху — вся валютная часть на своей шкале, чтобы были видны изменения.",
+                        "Красная линия — вся валютная часть на правой шкале, со значением в каждом месяце.",
                 legend=[(CURRENCY_COLORS.get(c, pal[i % len(pal)]), _e(c), "доля валюты в портфеле", "bar")
                         for i, c in enumerate(order)] +
-                       [(COLORS["npl"], "Красная линия", "все валюты кроме сума, % (полоса сверху)", "line")],
+                       [(COLORS["npl"], "Красная линия", "все валюты кроме сума, % (правая шкала)", "line")],
                 insights=[_trend("Валютная часть портфеля", fx, sel),
                           "Суммы в источнике уже в сумах; рост валютной части — валютный риск заёмщиков, "
                           "который возвращается к банку кредитным риском."],
@@ -1488,7 +1565,7 @@ def _passport_chart(dep):
             raise ValueError(f"у департамента «{dep}» нет остатка")
         named = [c for c in order_at(piv, sel) if c != "Прочие"]
         cols = named + (["Прочие"] if "Прочие" in piv.columns else [])
-        cmap = dict(zip(named, shades(dcolor(dep), max(len(named), 1))))
+        cmap = {c: PRODUCT_COLORS[i % len(PRODUCT_COLORS)] for i, c in enumerate(named)}
         cmap["Прочие"] = COLORS["light"]
         x = _x(piv.index)
         tot = money(piv.sum(axis=1))
@@ -1500,13 +1577,15 @@ def _passport_chart(dep):
                       textfont=dict(size=LABEL_SIZE, color=COLORS["ink"]), hoverinfo="skip")
         g = d.groupby("period", observed=True)[["npl_exposure", "exposure"]].sum().reindex(piv.index)
         nplr = g.npl_exposure / g.exposure.replace(0, np.nan) * 100
+        t_, p_ = line_text(nplr, lambda v: f"{v:.1f}%")
         f.add_scatter(x=x, y=nplr, yaxis="y2", mode="lines+markers+text",
                       line=dict(color=COLORS["npl"], width=2.6), marker=dict(size=4),
-                      text=thin(nplr, lambda v: f"{v:.1f}%", max_labels=8), textposition="top center",
+                      text=t_, textposition=p_,
                       textfont=dict(size=11, color=COLORS["npl"]),
                       hovertemplate="%{x}<br>NPL департамента %{y:.2f}%<extra></extra>")
-        base(f, barmode="stack", bargap=.25, yaxis=dict(title=UNIT_NAME, range=[0, _safemax(tot) * 1.12]),
-             **split("NPL, %", _safemax(nplr)))
+        ov = overlay(_safemax(tot), nplr, pct_title="NPL, %")
+        ov["yaxis"]["title"] = UNIT_NAME
+        base(f, barmode="stack", bargap=.25, **ov)
 
         row = piv.loc[sel] if sel in piv.index else piv.iloc[-1]
         share = row / row.sum() * 100 if row.sum() else row
@@ -1522,7 +1601,7 @@ def _passport_chart(dep):
         if piv.index[0] != ctx["periods"][0]:
             ins.append(f"Департамент появился в данных с {plabel_full(piv.index[0])} — раньше месяцев нет.")
         leg = [(cmap[c], _e(c), f"{fpct(share.get(c))} на дату", "bar") for c in cols]
-        leg.append((COLORS["npl"], "Красная линия", "NPL 90+ департамента, % (полоса сверху)", "line"))
+        leg.append((COLORS["npl"], "Красная линия", "NPL 90+ департамента, % (правая шкала)", "line"))
         return page(f, title=f"«{dname(dep)}»: портфель по продуктам",
                     what=f"Остаток портфеля департамента {dname(dep)} по продуктам. Порядок полос — по доле на "
                          f"{plabel_full(sel)}: самый крупный продукт внизу и на том же месте в каждом месяце.",
@@ -1547,7 +1626,7 @@ def a_oked_dynamics(A, B, ctx):
     cmap = dict(zip(named, _series_palette(len(named))))
     cmap["Прочие отрасли"] = COLORS["light"]
     x = _x(piv.index)
-    n, step = len(x), max(1, math.ceil(len(x) / 10))
+    n, step = len(x), max(1, math.ceil(len(x) / fit(36)))
     f = go.Figure()
     for c in cols:
         v = nan0(piv[c])
@@ -1585,32 +1664,36 @@ def a_top_clients(A, B, ctx):
     f.add_scatter(x=x, y=tot, mode="text", text=thin(tot, famt), textposition="top center",
                   textfont=dict(size=LABEL_SIZE), hoverinfo="skip")
     sh = s["share"] * 100
+    t_, p_ = line_text(sh, lambda v: f"{v:.1f}%")
     f.add_scatter(x=x, y=sh, yaxis="y2", mode="lines+markers+text", line=dict(color=COLORS["npl"], width=2.6),
-                  marker=dict(size=4), text=thin(sh, lambda v: f"{v:.1f}%", max_labels=8),
-                  textposition="top center", textfont=dict(size=11, color=COLORS["npl"]),
+                  marker=dict(size=4), text=t_, textposition=p_, textfont=dict(size=11, color=COLORS["npl"]),
                   hovertemplate="%{x}<br>доля в портфеле банка: %{y:.2f}%<extra></extra>")
-    base(f, barmode="stack", bargap=.25, yaxis=dict(title=UNIT_NAME, range=[0, _safemax(tot) * 1.12]),
-         **split("% портфеля банка", _safemax(sh)))
+    ov = overlay(_safemax(tot), sh, pct_title="% портфеля банка")
+    ov["yaxis"]["title"] = UNIT_NAME
+    base(f, barmode="stack", bargap=.25, **ov)
     ex = ", ".join(TOP_CLIENTS_EXCLUDE)
     ins = [_trend(f"Доля топ-{TOP_CLIENTS} в портфеле банка", sh, sel),
            (f"Крупнейший клиент — {fpct(at(s['top1_share'] * 100, sel), 2)} портфеля банка."
             if _ok(at(s["top1_share"], sel)) else ""),
            (f"За месяц в топ-{TOP_CLIENTS} вошли <b>{int(at(s['newcomers'], sel))}</b> новых клиентов."
             if _ok(at(s["newcomers"], sel)) else ""),
-           f"Клиенты департамента {_e(ex)} не участвуют в рейтинге; их место занимают следующие по размеру."]
+           f"Клиенты только с кредитами {_e(ex)} в рейтинге не участвуют; у клиентов, которые есть и в {_e(ex)}, "
+           f"и в других департаментах, считается весь долг."]
     return page(f, title=f"Топ-{TOP_CLIENTS} клиентов по месяцам",
                 what=f"Сумма остатка {TOP_CLIENTS} крупнейших клиентов каждого месяца (столбцы, по департаментам) "
                      f"и их доля во всём портфеле банка (красная линия). Состав топ-{TOP_CLIENTS} в каждом "
                      f"месяце свой. Список на дату — на странице B08.",
                 legend=_dept_legend(order) + [
                     (COLORS["ink"], "Число над столбцом", f"сумма топ-{TOP_CLIENTS}, {UNIT_NAME}", "text"),
-                    (COLORS["npl"], "Красная линия", "их доля во всём портфеле банка, % (полоса сверху)", "line")],
+                    (COLORS["npl"], "Красная линия", "их доля во всём портфеле банка, % (правая шкала)", "line")],
                 insights=ins, terms=["top"])
 
 
 # ---------------------------------------------------------------- B: structure
-def _hbar_height(n, per_row=24, minimum=360):
-    return int(min(CHART_H, max(minimum, 70 + per_row * n)))
+def _hbar_height(n, per_row=20, minimum=300):
+    """Horizontal bar charts always use the full height: a short list gets thicker bars, not
+    an empty half-page. (n/per_row kept so callers stay readable.)"""
+    return CHART_H
 
 
 def b01_dep_filial(A, B, ctx):
@@ -1695,17 +1778,18 @@ def b03_vintage_mix(A, B, ctx):
     x = [vlabel(v) for v in d.vintage]
     amt, nplr = money(d.exposure), d.npl_ratio * 100
     f = go.Figure()
-    f.add_bar(x=x, y=amt, marker_color=COLORS["neutral"], text=thin(amt, max_labels=10),
+    f.add_bar(x=x, y=amt, marker_color=COLORS["neutral"], text=thin(amt, famt, max_labels=fit(36)),
               textposition="outside", cliponaxis=False, textfont=dict(size=11),
               customdata=np.stack([d["share"] * 100, d["n_loans"]], axis=-1),
               hovertemplate="выдача %{x}<br>%{y:,.1f} " + UNIT_NAME +
                             "<br>%{customdata[0]:.1f}% портфеля<br>кредитов %{customdata[1]:,}<extra></extra>")
+    t_, p_ = line_text(nplr, lambda v: f"{v:.1f}%")
     f.add_scatter(x=x, y=nplr, yaxis="y2", mode="lines+markers+text", line=dict(color=COLORS["npl"], width=2.4),
-                  marker=dict(size=4), text=thin(nplr, lambda v: f"{v:.1f}%", max_labels=8),
-                  textposition="top center", textfont=dict(size=11, color=COLORS["npl"]),
+                  marker=dict(size=4), text=t_, textposition=p_, textfont=dict(size=11, color=COLORS["npl"]),
                   hovertemplate="выдача %{x}<br>NPL когорты %{y:.2f}%<extra></extra>")
-    base(f, bargap=.2, xaxis=dict(title="месяц выдачи"), yaxis=dict(title=UNIT_NAME, range=[0, _safemax(amt) * 1.15]),
-         **split("NPL когорты, %", _safemax(nplr)))
+    ov = overlay(_safemax(amt), nplr, pct_title="NPL когорты, %")
+    ov["yaxis"]["title"] = UNIT_NAME
+    base(f, bargap=.2, xaxis=dict(title="месяц выдачи"), **ov)
     recent = d[d.vintage >= shift_p(sel, 11)]
     worst = d.loc[d.npl_ratio.idxmax()] if d.npl_ratio.notna().any() else None
     ins = [f"Выдачи последних 12 месяцев — <b>{fpct(recent.exposure.sum() / B['_tot_exp'] * 100)}</b> портфеля.",
@@ -1716,7 +1800,7 @@ def b03_vintage_mix(A, B, ctx):
                 what="Сколько денег из выдач каждого месяца ещё на балансе (столбцы) и насколько плохо ведёт себя "
                      "именно эта когорта (красная линия). Последние три года.",
                 legend=[(COLORS["neutral"], "Серый столбец", f"остаток кредитов этого месяца выдачи, {UNIT_NAME}", "bar"),
-                        (COLORS["npl"], "Красная линия", "NPL 90+ этой когорты, % (полоса сверху)", "line")],
+                        (COLORS["npl"], "Красная линия", "NPL 90+ этой когорты, % (правая шкала)", "line")],
                 insights=ins, terms=["vintage", "npl"])
 
 
@@ -1792,35 +1876,39 @@ def b06_passport_dep(A, B, ctx):
     sel = ctx["sel"]
     d = B["passport_dep"].copy()
     deps = dept_sorted(d["department"].dropna().unique())
-    rows, cols, names = [], [], []
-    for dep in deps:
-        g = d[d.department == dep].nlargest(TOP_PASSPORTS, "exposure")
-        rows.append(g)
-    d = pd.concat(rows) if rows else d.iloc[0:0]
-    d["tag"] = d["passport"].astype(str) + "  ·  " + d["department"].map(dname)
-    order = list(d["tag"])                         # kk first, largest first inside each department
-    f = go.Figure()
-    for dep in deps:
-        s = d[d.department == dep]
-        f.add_bar(x=money(s.exposure), y=s["tag"], orientation="h", name=dname(dep), marker_color=dcolor(dep),
-                  text=[f"  {fnum(v / UNIT, 1)} · NPL {fpct(n * 100)}" for v, n in zip(s.exposure, s.npl_ratio)],
-                  textposition="outside", cliponaxis=False, textfont=dict(size=10.5),
-                  customdata=np.stack([s["n_loans"], s["share"] * 100], axis=-1),
-                  hovertemplate="<b>%{y}</b><br>%{x:,.1f} " + UNIT_NAME +
-                                "<br>кредитов %{customdata[0]:,}<br>%{customdata[1]:.1f}% портфеля банка<extra></extra>")
-    base(f, height=_hbar_height(len(d), 20), margin=dict(r=160), xaxis=dict(title=UNIT_NAME),
-         yaxis=dict(categoryorder="array", categoryarray=list(reversed(order)), tickfont=dict(size=10.5)))
-    ins = []
-    for dep in deps:
-        s = d[d.department == dep]
-        if len(s):
-            r = s.iloc[0]
-            ins.append(f"{_e(dname(dep))}: крупнейший продукт — <b>{_e(r.passport)}</b>, "
-                       f"{fnum(r.exposure / UNIT)} {UNIT_NAME}, NPL {fpct(r.npl_ratio * 100)}.")
-    return page(f, title=f"Топ-{TOP_PASSPORTS} продуктов каждого департамента, {plabel_full(sel)}",
-                what="Крупнейшие продукты внутри каждого департамента, в порядке " + ", ".join(dname(x) for x in deps) +
-                     ". Подпись: сумма и NPL продукта.",
-                legend=_dept_legend(deps), insights=ins, terms=["npl"])
+    groups = chunks(deps, 2)
+    pages_ = []
+    for k, grp in enumerate(groups, 1):
+        rows = [d[d.department == dep].nlargest(TOP_PASSPORTS, "exposure") for dep in grp]
+        g = pd.concat(rows) if rows else d.iloc[0:0]
+        g = g.assign(tag=g["passport"].astype(str) + "  ·  " + g["department"].map(dname))
+        order = list(g["tag"])                      # department order, largest first inside each
+        f = go.Figure()
+        for dep in grp:
+            sub = g[g.department == dep]
+            f.add_bar(x=money(sub.exposure), y=sub["tag"], orientation="h", name=dname(dep),
+                      marker_color=dcolor(dep),
+                      text=[f"  {fnum(v / UNIT, 1)} · NPL {fpct(n * 100)}" for v, n in zip(sub.exposure, sub.npl_ratio)],
+                      textposition="outside", cliponaxis=False, textfont=dict(size=11),
+                      customdata=np.stack([sub["n_loans"], sub["share"] * 100], axis=-1),
+                      hovertemplate="<b>%{y}</b><br>%{x:,.1f} " + UNIT_NAME +
+                                    "<br>кредитов %{customdata[0]:,}<br>%{customdata[1]:.1f}% портфеля банка<extra></extra>")
+        base(f, height=_hbar_height(len(g), 22), margin=dict(r=170), xaxis=dict(title=UNIT_NAME),
+             yaxis=dict(categoryorder="array", categoryarray=list(reversed(order)), tickfont=dict(size=11)))
+        ins = []
+        for dep in grp:
+            sub = g[g.department == dep]
+            if len(sub):
+                r = sub.iloc[0]
+                ins.append(f"{_e(dname(dep))}: крупнейший продукт — <b>{_e(r.passport)}</b>, "
+                           f"{fnum(r.exposure / UNIT)} {UNIT_NAME}, NPL {fpct(r.npl_ratio * 100)}.")
+        sfx = f" ({k}/{len(groups)})" if len(groups) > 1 else ""
+        pages_.append(page(
+            f, title=f"Топ-{TOP_PASSPORTS} продуктов каждого департамента, {plabel_full(sel)}{sfx}",
+            what="Крупнейшие продукты внутри каждого департамента, в порядке " + ", ".join(dname(x) for x in deps) +
+                 ". Подпись: сумма и NPL продукта.",
+            legend=_dept_legend(grp), insights=ins, terms=["npl"]))
+    return pages_
 
 
 def b07_filial_bucket(A, B, ctx):
@@ -1911,7 +1999,7 @@ def b08_top_table(A, B, ctx):
            f"Новых в списке по сравнению с {plabel_full(shift_p(sel, 1))}: {newc}.",
            (f"С просрочкой на дату: {len(late)} клиентов ({fnum(late.exposure.sum() / UNIT, 2)} {UNIT_NAME})."
             if len(late) else "Ни у одного клиента из списка нет просрочки на дату."),
-           f"Департамент {_e(', '.join(TOP_CLIENTS_EXCLUDE))} не участвует в рейтинге."]
+           f"Клиенты только с кредитами {_e(', '.join(TOP_CLIENTS_EXCLUDE))} не участвуют; смешанные — со всем долгом."]
     return page(None, title=f"Топ-{TOP_CLIENTS} клиентов на {plabel_full(sel)}",
                 what=f"Крупнейшие клиенты по сумме остатка. Δ — изменение места по сравнению с прошлым месяцем; "
                      f"«накоп.» — доля портфеля банка у клиентов с 1-го по этот; «дн.» — максимальная просрочка, дней.",
@@ -1959,7 +2047,10 @@ def b10_auto_court(A, B, ctx):
     piv.loc["all"] = piv.sum()
     stages = [s for s in SUD_ORDER if s in piv.columns] + [s for s in piv.columns if s not in SUD_ORDER]
     xs = [seg.get(k, f"Все кредиты<br>{_e(dname(dep))}") for k in piv.index]
-    totals = piv.sum(axis=1)
+    totals = piv.sum(axis=1)                       # on-balance portfolio of each segment
+    wo = B["court_writeoff"].reindex([k for k in piv.index if k != "all"]).fillna(0)
+    wo.loc["all"] = wo.sum()
+    wo_share = wo / (totals + wo).replace(0, np.nan) * 100   # written off, % of (portfolio + written off)
     f = go.Figure()
     for s in stages:
         v = money(piv[s])
@@ -1970,14 +2061,21 @@ def b10_auto_court(A, B, ctx):
                   textfont=dict(size=11, color=text_on(SUD_COLORS.get(s, COLORS["neutral"]))),
                   customdata=sh, hovertemplate="%{x}<br>" + lab(s) + ": %{y:,.2f} " + UNIT_NAME +
                                               " (%{customdata:.1f}%)<extra></extra>")
+    f.add_bar(x=xs, y=money(wo), name="Списано", marker_color=WRITE_OFF_COLOR,
+              text=[f"{fnum(a, 1)} · {fpct(p)}" if _ok(p) and p >= 4 else "" for a, p in zip(money(wo), wo_share)],
+              textposition="inside", insidetextanchor="middle", textfont=dict(size=11, color="white"),
+              customdata=wo_share, hovertemplate="%{x}<br>списано: %{y:,.2f} " + UNIT_NAME +
+                                                 " (%{customdata:.1f}% от портфеля + списанного)<extra></extra>")
     for i, k in enumerate(piv.index):
         tot = totals[k]
         parts = [f"{lab(s).split(' (')[0]}: {fpct(piv.loc[k, s] / tot * 100)}" for s in stages
                  if s != "norm" and tot]
-        f.add_annotation(x=xs[i], y=money(tot), yshift=10, showarrow=False, yanchor="bottom",
-                         text=f"<b>{fnum(tot / UNIT, 1)}</b><br>" + "<br>".join(parts),
+        parts.append(f"<b>Списано: {fpct(wo_share[k])}</b>" if _ok(wo_share[k]) else "Списано: 0%")
+        f.add_annotation(x=xs[i], y=money(tot + wo[k]), yshift=10, showarrow=False, yanchor="bottom",
+                         text=f"<b>{fnum(tot / UNIT, 1)}</b> + {fnum(wo[k] / UNIT, 1)} списано<br>" + "<br>".join(parts),
                          font=dict(size=11))
-    base(f, barmode="stack", bargap=.35, yaxis=dict(title=UNIT_NAME, range=[0, _safemax(money(totals)) * 1.3]))
+    base(f, barmode="stack", bargap=.35,
+         yaxis=dict(title=UNIT_NAME, range=[0, _safemax(money(totals + wo)) * 1.38]))
     a_ = piv.loc["all"]
     tot_all = a_.sum()
     rate = {k: (piv.loc[k].drop("norm", errors="ignore").sum() / totals[k] * 100 if totals[k] else np.nan)
@@ -1989,15 +2087,20 @@ def b10_auto_court(A, B, ctx):
            (f"Чаще всего до суда доходит сегмент «{seg[worst].split('<br>')[0]}»: "
             f"{fpct(rate[worst])} его портфеля." if worst else ""),
            (f"Официально в суде: {fnum(a_.get('official', 0) / UNIT, 2)} {UNIT_NAME}, неофициально: "
-            f"{fnum(a_.get('neofficial', 0) / UNIT, 2)} {UNIT_NAME}.")]
+            f"{fnum(a_.get('neofficial', 0) / UNIT, 2)} {UNIT_NAME}."),
+           (f"Списано: <b>{fnum(wo['all'] / UNIT, 2)} {UNIT_NAME}</b> — {fpct(wo_share['all'])} от портфеля "
+            f"и списанного вместе" + (f"; больше всего — «{seg[wo.drop('all').idxmax()].split('<br>')[0]}» "
+                                      f"({fpct(wo_share[wo.drop('all').idxmax()])})" if wo.drop('all').sum() > 0 else "")
+            + ".")]
     return page(f, title=f"Автокредиты и судебная стадия, департамент {dname(dep)}, {plabel_full(sel)}",
                 what=f"Портфель департамента {dname(dep)}: автокредиты на первичном и вторичном рынке, остальные "
-                     "кредиты и все вместе. Каждый столбец разделён по судебной стадии. Над столбцом — сумма и "
-                     "доли судебных стадий.",
+                     "кредиты и все вместе. Столбец разделён по судебной стадии, сверху — списанная сумма. Доли "
+                     "стадий — от портфеля на балансе; «Списано» — от портфеля и списанного вместе.",
                 legend=[(SUD_COLORS.get(s, COLORS["neutral"]), lab(s), {
                     "norm": "кредит обслуживается без судебной работы",
                     "neofficial": "досудебная работа с должником",
-                    "official": "иск подан в суд"}.get(s, "стадия из данных"), "bar") for s in stages],
+                    "official": "иск подан в суд"}.get(s, "стадия из данных"), "bar") for s in stages]
+                       + [(WRITE_OFF_COLOR, "Списано", f"списанная сумма ({WRITE_OFF_COL}), уже не на балансе", "bar")],
                 insights=ins, terms=["court"])
 
 
@@ -2134,14 +2237,18 @@ padding:3px 8px;border-radius:3px;white-space:nowrap}
 .ph-r{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;font-size:11px;white-space:nowrap}
 .chip{border:1px solid var(--rule);border-radius:20px;padding:2px 9px;color:var(--soft)}
 .chip.k{border-color:var(--gd);color:var(--gd);font-weight:600}
-.pb{flex:1;display:flex;gap:14px;padding-top:8px;min-height:0}
-.pc{flex:0 0 auto;width:""" + str(CHART_W) + """px}
-.pa{flex:1;min-width:0;border-left:1px solid var(--rule);padding-left:13px;overflow:hidden;font-size:12px}
+.pb{flex:1;display:flex;flex-direction:column;gap:6px;padding-top:6px;min-height:0}
+.pc{flex:0 0 auto;width:100%;display:flex;justify-content:center}
+.pa{flex:1;min-height:0;border-top:1px solid var(--rule);padding-top:7px;overflow:hidden;font-size:11.5px;
+display:grid;grid-template-columns:1fr 1.15fr 1.45fr;gap:0 18px}
+.pa>div{min-width:0;overflow:hidden}
+.pa>div+div{border-left:1px solid var(--rule);padding-left:14px}
 .pa h4{margin:8px 0 4px;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gd)}
 .pa h4:first-child{margin-top:0}
 .pa p{margin:0 0 4px}
 .lg,.ins{list-style:none;margin:0;padding:0}
-.lg li{display:flex;gap:7px;align-items:flex-start;margin:0 0 4px}
+.lg li{display:flex;gap:7px;align-items:flex-start;margin:0 0 4px;break-inside:avoid}
+.lg.two{columns:2;column-gap:12px}
 .lg b{font-weight:600}
 .sw{flex:0 0 22px;height:12px;margin-top:3px;border-radius:2px;display:inline-block}
 .sw.bar{border:1px solid rgba(0,0,0,.15)}
@@ -2157,6 +2264,8 @@ padding:3px 8px;border-radius:3px;white-space:nowrap}
 .pf{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);
 border-top:1px solid var(--rule);padding:4px 0 5mm;margin-top:auto}
 .err{color:var(--bad);padding:30px;border:1px dashed var(--bad)}
+.notice{color:var(--soft);padding:40px 60px;margin:40px auto;max-width:640px;font-size:15px;
+border:1px solid var(--rule);background:#FCFAF4;border-radius:6px;text-align:center}
 /* cover */
 .cover{background:var(--ink);color:#fff}
 .cover .pf{color:#8E8A80;border-color:#333}
@@ -2193,11 +2302,11 @@ break-inside:avoid;font-size:12.5px}
 .gl{columns:2;column-gap:26px;margin-top:8px;font-size:12px}
 .gl div{break-inside:avoid;margin:0 0 7px}.gl dt{font-weight:700;display:inline}.gl dd{display:inline;margin:0}
 /* top table */
-.tt2{display:flex;gap:12px;width:""" + str(CHART_W) + """px}
+.tt2{display:flex;gap:16px;width:""" + str(CHART_W) + """px}
 .tt{border-collapse:collapse;font-size:10.5px;width:50%}
 .tt th{background:var(--ink);color:#fff;font-weight:600;padding:3px 4px;text-align:left;font-size:10px}
-.tt td{padding:2px 4px;border-bottom:1px solid var(--rule);white-space:nowrap}
-.tt td.nm{white-space:normal;max-width:120px;overflow:hidden;text-overflow:ellipsis}
+.tt td{padding:1px 5px;border-bottom:1px solid var(--rule);white-space:nowrap;line-height:1.3}
+.tt td.nm{max-width:190px;overflow:hidden;text-overflow:ellipsis}
 .tt td.n{text-align:right;font-variant-numeric:tabular-nums}
 .tt td.bad{color:var(--bad);font-weight:700}.tt td.warn{color:#B86E0A}
 .mv{font-size:10px;color:var(--muted)}.mv.up{color:var(--good)}.mv.dn{color:var(--bad)}
@@ -2302,7 +2411,7 @@ def _legend_html(items):
         else:
             sw = f'<i class="sw {shape}" style="background:{col}"></i>'
         out.append(f"<li>{sw}<span><b>{name}</b> — {_e(meaning)}</span></li>")
-    return "<ul class='lg'>" + "".join(out) + "</ul>"
+    return f"<ul class='lg{' two' if len(out) > 5 else ''}'>" + "".join(out) + "</ul>"
 
 
 def _page_html(pg, cid, kind, section, unit, footer, pno, plotly_first):
@@ -2313,19 +2422,26 @@ def _page_html(pg, cid, kind, section, unit, footer, pno, plotly_first):
             + (f"<span class='chip'>{_e(unit)}</span>" if unit else "") + "</div></header>")
     if pg.get("error"):
         body = f"<div class='err'>График не построен: {_e(pg['error'])}</div>"
+    elif pg.get("notice"):
+        body = f"<div class='notice'>{_e(pg['notice'])}</div>"
     elif pg.get("body_html"):
         body = pg["body_html"]
     else:
         body = pg["fig"].to_html(full_html=False, include_plotlyjs=False, config=PCFG,
                                  default_width=f"{CHART_W}px", default_height=f"{pg['fig'].layout.height or CHART_H}px")
     terms = "".join(f"<div><dt>{_e(G[t][0])}</dt> <dd>— {_e(G[t][1])}</dd></div>"
-                    for t in pg.get("terms", []) if t in G)
-    aside = (f"<h4>Что показано</h4><p>{_e(pg.get('what', ''))}</p>"
-             + (f"<h4>Как читать</h4>{_legend_html(pg['legend'])}" if pg.get("legend") else "")
-             + (f"<h4>Главное</h4><ul class='ins'>" + "".join(f"<li>{i}</li>" for i in pg["insights"]) + "</ul>"
-                if pg.get("insights") else "")
-             + (f"<h4>Термины</h4><dl class='terms'>{terms}</dl>"
-                if terms and len(pg.get("legend", [])) + len(pg.get("insights", [])) <= 11 else ""))
+                    for t in pg.get("terms", [])[:2] if t in G)   # two fit under the text; all are on page 3
+    tblock = f"<h4>Термины</h4><dl class='terms'>{terms}</dl>" if terms else ""
+    # the glossary goes under whichever text column is shorter, so it is never cut off
+    tl = sum(len(G[t][0]) + len(G[t][1]) for t in pg.get("terms", [])[:2] if t in G)
+    left = (len(pg.get("what", "")) + tl) / 1.0                       # column widths 1 : 1.45
+    right = (sum(len(re.sub("<[^>]+>", "", i)) + 25 for i in pg.get("insights", [])) + tl) / 1.45
+    terms_left = left * 1.25 <= right      # the left column is also the one with less height to spare
+    col1 = f"<h4>Что показано</h4><p>{_e(pg.get('what', ''))}</p>" + (tblock if terms_left else "")
+    col2 = f"<h4>Как читать</h4>{_legend_html(pg['legend'])}" if pg.get("legend") else ""
+    col3 = ((f"<h4>Главное</h4><ul class='ins'>" + "".join(f"<li>{i}</li>" for i in pg["insights"]) + "</ul>"
+             if pg.get("insights") else "") + ("" if terms_left else tblock))
+    aside = f"<div>{col1}</div><div>{col2}</div><div>{col3}</div>"
     return (f"<section class='page' id='{cid}'>{head}<div class='pb'><div class='pc'>{body}</div>"
             f"<aside class='pa'>{aside}</aside></div>"
             f"<footer class='pf'><span>{_e(footer)}</span><span>стр. {pno}</span></footer></section>")
@@ -2340,6 +2456,8 @@ def _render_pages(charts, A, B, ctx, progress):
         try:
             res = fn(A, B, ctx)
             res = res if isinstance(res, list) else [res]
+        except Notice as exc:
+            res = [{"fig": None, "notice": str(exc), "what": "", "legend": [], "insights": [], "terms": []}]
         except Exception as exc:
             res = [{"fig": None, "error": f"{type(exc).__name__}: {exc}", "what": "", "legend": [],
                     "insights": [], "terms": []}]
@@ -2409,7 +2527,7 @@ def build_html(A, B, ctx, out_path, progress=None):
              f"<div class='key'><div><h3>Департаменты</h3>{k1}</div><div><h3>Смысл цвета</h3>{k2}</div>"
              f"<div><h3>Просрочка</h3>{k3}</div></div>"
              f"<p style='margin:12px 0 0;color:#3A3A40'>Один цвет всегда означает одно и то же. Каждая страница — "
-             f"один график: слева картинка, справа «Что показано», «Как читать» и «Главное» — выводы, посчитанные "
+             f"один график: сверху картинка во всю ширину, под ней «Что показано», «Как читать» и «Главное» — выводы, посчитанные "
              f"из данных. Раздел A — динамика по месяцам, раздел B — структура на одну дату ({plabel_full(sel)}). "
              f"Суммы — в {UNIT_NAME}.</p><h4 style='font-size:11px;letter-spacing:.2em;text-transform:uppercase;"
              f"color:#C9971A;margin:14px 0 4px'>Словарь</h4><dl class='gl'>{gl}</dl>"
