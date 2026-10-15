@@ -116,7 +116,7 @@ MONTHS_RU = ["янв", "фев", "мар", "апр", "май", "июн", "июл
 LABEL = {
     "CUR": "Без просрочки", "B01_30": "1–30 дн.", "B31_90": "31–90 дн.",
     "B91_180": "91–180 дн.", "B181_365": "181–365 дн.", "B365P": "365+ дн.",
-    "non_auto": "Не авто", "pervichka": "Авто: первичка", "vtorichka": "Авто: вторичка",
+    "non_auto": "Не авто", "pervichka": "pervichka (новые авто)", "vtorichka": "vtorichka (с пробегом)",
     "norm": "Норма (без суда)", "neofficial": "Неофициальная (досудебная)",
     "official": "Официальная (в суде)",
 }
@@ -127,21 +127,20 @@ SUD_COLORS = {"norm": "#D9D4C7", "neofficial": "#E08A1E", "official": "#B3341F"}
 
 CANONICAL = [
     "contragent", "anketa", "filial", "tobo", "valuta", "dogovor_sana", "vidacha_sana",
-    "department", "department_number", "passport", "contragent_name",
+    "department", "passport", "contragent_name",
     "brutto_95_summa", "brutto_summa", "protsent_16309_summa", "protsent_16377_summa",
     "protsent_16379_summa", "spisat_95413_summa", "spisat_91501_summa", "reserve_summa",
-    "vidacha_tekushiy_summa", "pogashen_tekushiy_summa", "maks_dni", "kategoriya_origin",
+    "vidacha_tekushiy_summa", "pogashen_tekushiy_summa", "maks_dni",
     "kategoriya_npl_90", "straxovka_summa", "straxovka_brutto_95_summa",
-    "kategoriya_straxovka", "sud", "avto", "report_date", "all_time_given_amount",
+    "kategoriya_straxovka", "sud", "avto", "report_date",
 ]
 OPTIONAL = ["oked_name"]
 RENAME = {
     "vidacha_tm_summa": "vidacha_tekushiy_summa",
     "pogashen_tm_summa": "pogashen_tekushiy_summa",
-    "vidacha_alltime_summa": "all_time_given_amount",
 }
 DATE_COLS = ("dogovor_sana", "vidacha_sana", "report_date")
-AMOUNT_COLS = [c for c in CANONICAL if c.endswith("_summa") or c == "all_time_given_amount"]
+AMOUNT_COLS = [c for c in CANONICAL if c.endswith("_summa")]
 
 PCFG = {"displaylogo": False, "responsive": False,
         "modeBarButtonsToRemove": ["select2d", "lasso2d", "autoScale2d",
@@ -444,19 +443,18 @@ def normalise(df):
     for c in AMOUNT_COLS:
         df[c] = pd.to_numeric(df[c], errors="coerce").fillna(0.0)
     df["maks_dni"] = pd.to_numeric(df["maks_dni"], errors="coerce").fillna(0).astype("int32")
-    for c in ("kategoriya_origin", "kategoriya_npl_90", "kategoriya_straxovka"):
+    for c in ("kategoriya_npl_90", "kategoriya_straxovka"):
         df[c] = pd.to_numeric(df[c], errors="coerce").fillna(0).astype("int8")
     df["valuta"] = pd.to_numeric(df["valuta"], errors="coerce").fillna(0).astype("int32")
     for c in ("anketa", "contragent"):
         df[c] = pd.to_numeric(df[c], errors="coerce").astype("int64")
-    for c in ["filial", "tobo", "department", "department_number", "passport",
+    for c in ["filial", "tobo", "department", "passport",
               "contragent_name", "sud", "avto"] + have_opt:
         df[c] = df[c].astype("string").str.strip()
 
-    df["avto"] = df["avto"].fillna("0").replace(
-        {"0": "non_auto", "0.0": "non_auto", "": "non_auto",
-         "nan": "non_auto", "None": "non_auto", "<NA>": "non_auto"})
-    df.loc[~df["avto"].isin(["pervichka", "vtorichka"]), "avto"] = "non_auto"
+    # avto: Latin pervichka / vtorichka (any case); everything else — 0, empty, other — is "not auto"
+    a = df["avto"].fillna("").str.lower()
+    df["avto"] = a.where(a.isin(["pervichka", "vtorichka"]), "non_auto").astype("string")
     # spelling variants of the court stage collapse onto three keys; unknown values stay as they are
     s = df["sud"].fillna("norm").str.lower()
     df["sud"] = s.map(lambda v: SUD_ALIASES.get(v, v)).astype("string")
@@ -1950,7 +1948,7 @@ def b10_auto_court(A, B, ctx):
     dep = B["court_dep_name"]
     if c.empty:
         raise ValueError(f"нет кредитов департамента «{COURT_DEPARTMENT}» на дату")
-    seg = {"pervichka": "Первичка<br>(новые авто)", "vtorichka": "Вторичка<br>(с пробегом)",
+    seg = {"pervichka": "pervichka<br>(новые авто)", "vtorichka": "vtorichka<br>(с пробегом)",
            "non_auto": "Прочие<br>(не авто)"}
     piv = c.pivot_table(index="avto", columns="sud", values="exposure", aggfunc="sum").fillna(0)
     piv = piv.reindex([k for k in seg if k in piv.index])
