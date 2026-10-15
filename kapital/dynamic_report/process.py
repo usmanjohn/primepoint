@@ -74,7 +74,8 @@ TOP_CLIENTS = 50
 TOP_CLIENTS_EXCLUDE = ["rk"]  # a client whose loans are ONLY in these departments is never ranked
                               # or named; a client with loans here AND elsewhere counts in full
 COURT_DEPARTMENT = "rk"       # B10 looks at this department only
-WRITE_OFF_COL = "spisat_95413_summa"   # B10's «Списано» piece; "spisat_91501_summa" is the other one
+WRITE_OFF_COL = "spisat_95413_summa"   # B10: the bad part INSIDE a loan's balance. It is carved out
+                                       # first; what is left stays in the loan's court stage
 
 # Branches whose name means "unknown" are left out of every branch chart.
 NO_BRANCH = ["nodata", "no data", "нет данных", "", "nan", "none", "<na>"]
@@ -87,6 +88,11 @@ BRANCHES_PER_PAGE = 18        # longer branch lists continue on the next page
 LABEL_BY_REPORT_DATE = True
 
 TOP_PASSPORTS, TOP_PRODUCTS, TOP_OKED = 7, 15, 10
+SHOW_OKED = False             # True brings back both industry (ОКЭД) pages: the monthly one and B12
+
+# Lines drawn through the bars use the right-hand % scale; it reaches LINE_HEADROOM × the
+# line's highest value, so a bigger number puts the line lower. 1.0 = the line touches the top.
+LINE_HEADROOM = 1.75
 UNIT, UNIT_NAME = 1e9, "млрд сум"
 
 # Page geometry (A4 landscape): the chart spans the page, the explanation sits under it.
@@ -403,7 +409,7 @@ def overlay(bar_max, *lines, pct_title="%"):
     vals = vals[np.isfinite(vals)]
     hi = float(vals.max()) if len(vals) else 1.0
     return dict(yaxis=dict(range=[0, (bar_max or 1) * 1.12]),
-                yaxis2=dict(overlaying="y", side="right", range=[0, (hi or 1) * 1.18], ticksuffix="%",
+                yaxis2=dict(overlaying="y", side="right", range=[0, (hi or 1) * LINE_HEADROOM], ticksuffix="%",
                             showgrid=False, zeroline=False, tickfont=dict(size=11, color=COLORS["npl"]),
                             title=dict(text=pct_title, font=dict(size=11, color=COLORS["npl"]))))
 
@@ -939,14 +945,15 @@ def build_marts(panel, snap, periods, sel, has_oked):
     # court stage × auto segment, one department only
     ck = dkey(COURT_DEPARTMENT)
     cs = snap[snap["dkey"] == ck]
-    B["court"] = (cs.groupby(["avto", "sud"], observed=True)
-                    .agg(exposure=("exposure", "sum"), n_loans=("anketa", "size"))
-                    .reset_index())
+    # the write-off is the bad part INSIDE the balance: take it out first (never more than the
+    # balance itself), and only the remainder stays in the loan's court stage
+    wo = cs["writeoff"].clip(lower=0).where(lambda v: v <= cs["exposure"], cs["exposure"])
+    parts = pd.concat([
+        pd.DataFrame({"avto": cs["avto"], "stage": cs["sud"].astype("string"), "amount": cs["exposure"] - wo}),
+        pd.DataFrame({"avto": cs["avto"], "stage": "writeoff", "amount": wo}),
+    ])
+    B["court"] = parts.groupby(["avto", "stage"], observed=True)["amount"].sum().reset_index()
     B["court_dep_name"] = (str(cs["department"].iloc[0]) if len(cs) else COURT_DEPARTMENT)
-    # written off: taken from ALL loans at sel — a fully written-off loan has a zero balance
-    # and is not in `snap`, but its write-off belongs on this page
-    wo = panel[(panel["period"] == sel) & (panel["dkey"] == ck) & (panel["writeoff"] > 0)]
-    B["court_writeoff"] = wo.groupby("avto", observed=True)["writeoff"].sum()
 
     return A, B, top_pass
 
@@ -2042,65 +2049,59 @@ def b10_auto_court(A, B, ctx):
         raise ValueError(f"нет кредитов департамента «{COURT_DEPARTMENT}» на дату")
     seg = {"pervichka": "pervichka<br>(новые авто)", "vtorichka": "vtorichka<br>(с пробегом)",
            "non_auto": "Прочие<br>(не авто)"}
-    piv = c.pivot_table(index="avto", columns="sud", values="exposure", aggfunc="sum").fillna(0)
+    piv = c.pivot_table(index="avto", columns="stage", values="amount", aggfunc="sum").fillna(0)
     piv = piv.reindex([k for k in seg if k in piv.index])
     piv.loc["all"] = piv.sum()
-    stages = [s for s in SUD_ORDER if s in piv.columns] + [s for s in piv.columns if s not in SUD_ORDER]
+    order = ["norm", "neofficial", "official", "writeoff"]      # bottom → top; bad on top
+    stages = [s_ for s_ in order if s_ in piv.columns] + [s_ for s_ in piv.columns if s_ not in order]
+    colors = dict(SUD_COLORS, writeoff=WRITE_OFF_COLOR)
+    names = dict(writeoff="Списано")
     xs = [seg.get(k, f"Все кредиты<br>{_e(dname(dep))}") for k in piv.index]
-    totals = piv.sum(axis=1)                       # on-balance portfolio of each segment
-    wo = B["court_writeoff"].reindex([k for k in piv.index if k != "all"]).fillna(0)
-    wo.loc["all"] = wo.sum()
-    wo_share = wo / (totals + wo).replace(0, np.nan) * 100   # written off, % of (portfolio + written off)
+    totals = piv.sum(axis=1)                                    # = the segment's portfolio
+    share = piv.div(totals.replace(0, np.nan), axis=0) * 100
     f = go.Figure()
-    for s in stages:
-        v = money(piv[s])
-        sh = piv[s] / totals.replace(0, np.nan) * 100
-        f.add_bar(x=xs, y=v, name=lab(s), marker_color=SUD_COLORS.get(s, COLORS["neutral"]),
-                  text=[f"{fnum(a, 1)} · {fpct(p)}" if _ok(p) and p >= 6 else "" for a, p in zip(v, sh)],
-                  textposition="inside", insidetextanchor="middle",
-                  textfont=dict(size=11, color=text_on(SUD_COLORS.get(s, COLORS["neutral"]))),
-                  customdata=sh, hovertemplate="%{x}<br>" + lab(s) + ": %{y:,.2f} " + UNIT_NAME +
-                                              " (%{customdata:.1f}%)<extra></extra>")
-    f.add_bar(x=xs, y=money(wo), name="Списано", marker_color=WRITE_OFF_COLOR,
-              text=[f"{fnum(a, 1)} · {fpct(p)}" if _ok(p) and p >= 4 else "" for a, p in zip(money(wo), wo_share)],
-              textposition="inside", insidetextanchor="middle", textfont=dict(size=11, color="white"),
-              customdata=wo_share, hovertemplate="%{x}<br>списано: %{y:,.2f} " + UNIT_NAME +
-                                                 " (%{customdata:.1f}% от портфеля + списанного)<extra></extra>")
+    for s_ in stages:
+        v = money(piv[s_])
+        col = colors.get(s_, COLORS["neutral"])
+        f.add_bar(x=xs, y=v, name=names.get(s_, lab(s_)), marker_color=col,
+                  text=[f"{fnum(a, 1)} · {fpct(p_)}" if _ok(p_) and p_ >= 6 else "" for a, p_ in zip(v, share[s_])],
+                  textposition="inside", insidetextanchor="middle", textfont=dict(size=11, color=text_on(col)),
+                  customdata=share[s_], hovertemplate="%{x}<br>" + names.get(s_, lab(s_)) + ": %{y:,.2f} "
+                                                      + UNIT_NAME + " (%{customdata:.1f}%)<extra></extra>")
+    short = {"writeoff": "Списано", "official": "Официальная", "neofficial": "Неофициальная"}
     for i, k in enumerate(piv.index):
-        tot = totals[k]
-        parts = [f"{lab(s).split(' (')[0]}: {fpct(piv.loc[k, s] / tot * 100)}" for s in stages
-                 if s != "norm" and tot]
-        parts.append(f"<b>Списано: {fpct(wo_share[k])}</b>" if _ok(wo_share[k]) else "Списано: 0%")
-        f.add_annotation(x=xs[i], y=money(tot + wo[k]), yshift=10, showarrow=False, yanchor="bottom",
-                         text=f"<b>{fnum(tot / UNIT, 1)}</b> + {fnum(wo[k] / UNIT, 1)} списано<br>" + "<br>".join(parts),
-                         font=dict(size=11))
-    base(f, barmode="stack", bargap=.35,
-         yaxis=dict(title=UNIT_NAME, range=[0, _safemax(money(totals + wo)) * 1.38]))
+        lines = [f"{short[s_]}: {fpct(share.loc[k, s_])}" for s_ in ("writeoff", "official", "neofficial")
+                 if s_ in share.columns]
+        if lines:
+            lines[0] = f"<b>{lines[0]}</b>" if "writeoff" in share.columns else lines[0]
+        f.add_annotation(x=xs[i], y=money(totals[k]), yshift=10, showarrow=False, yanchor="bottom",
+                         text=f"<b>{fnum(totals[k] / UNIT, 1)}</b><br>" + "<br>".join(lines), font=dict(size=11))
+    base(f, barmode="stack", bargap=.35, yaxis=dict(title=UNIT_NAME, range=[0, _safemax(money(totals)) * 1.35]))
+
     a_ = piv.loc["all"]
-    tot_all = a_.sum()
-    rate = {k: (piv.loc[k].drop("norm", errors="ignore").sum() / totals[k] * 100 if totals[k] else np.nan)
-            for k in piv.index if k != "all"}
-    worst = max(rate, key=lambda k: rate[k] if _ok(rate[k]) else -1) if rate else None
-    ins = [f"Весь портфель {_e(dname(dep))}: {fnum(tot_all / UNIT)} {UNIT_NAME}; в судебной работе "
-           f"(официальная + неофициальная) — <b>{fpct(a_.drop('norm', errors='ignore').sum() / tot_all * 100)}</b>."
-           if tot_all else "",
-           (f"Чаще всего до суда доходит сегмент «{seg[worst].split('<br>')[0]}»: "
-            f"{fpct(rate[worst])} его портфеля." if worst else ""),
-           (f"Официально в суде: {fnum(a_.get('official', 0) / UNIT, 2)} {UNIT_NAME}, неофициально: "
+    tot_all = float(a_.sum())
+    bad = [x for x in ("writeoff", "official", "neofficial") if x in piv.columns]
+    rate = {k: piv.loc[k, bad].sum() / totals[k] * 100 for k in piv.index if k != "all" and totals[k]}
+    worst = max(rate, key=rate.get) if rate else None
+    ins = [(f"Весь портфель {_e(dname(dep))}: {fnum(tot_all / UNIT)} {UNIT_NAME}; из них норма — "
+            f"<b>{fpct(a_.get('norm', 0) / tot_all * 100)}</b>, остальное — списано или в судебной работе."
+            if tot_all else ""),
+           (f"Списано: <b>{fnum(a_.get('writeoff', 0) / UNIT, 2)} {UNIT_NAME}</b> — {fpct(a_.get('writeoff', 0) / tot_all * 100)} портфеля."
+            if tot_all and "writeoff" in piv.columns else ""),
+           (f"Официально в суде: {fnum(a_.get('official', 0) / UNIT, 2)}, неофициально: "
             f"{fnum(a_.get('neofficial', 0) / UNIT, 2)} {UNIT_NAME}."),
-           (f"Списано: <b>{fnum(wo['all'] / UNIT, 2)} {UNIT_NAME}</b> — {fpct(wo_share['all'])} от портфеля "
-            f"и списанного вместе" + (f"; больше всего — «{seg[wo.drop('all').idxmax()].split('<br>')[0]}» "
-                                      f"({fpct(wo_share[wo.drop('all').idxmax()])})" if wo.drop('all').sum() > 0 else "")
-            + ".")]
+           (f"Хуже всех сегмент «{seg[worst].split('<br>')[0]}»: списано или в суде {fpct(rate[worst])} его портфеля."
+            if worst else "")]
+    meaning = {"norm": "хорошие кредиты: без суда и без списанной части",
+               "neofficial": "досудебная работа с должником (без списанной части)",
+               "official": "иск подан в суд (без списанной части)",
+               "writeoff": f"плохая часть долга ({WRITE_OFF_COL}) — вынесена из своей стадии первой"}
     return page(f, title=f"Автокредиты и судебная стадия, департамент {dname(dep)}, {plabel_full(sel)}",
                 what=f"Портфель департамента {dname(dep)}: автокредиты на первичном и вторичном рынке, остальные "
-                     "кредиты и все вместе. Столбец разделён по судебной стадии, сверху — списанная сумма. Доли "
-                     "стадий — от портфеля на балансе; «Списано» — от портфеля и списанного вместе.",
-                legend=[(SUD_COLORS.get(s, COLORS["neutral"]), lab(s), {
-                    "norm": "кредит обслуживается без судебной работы",
-                    "neofficial": "досудебная работа с должником",
-                    "official": "иск подан в суд"}.get(s, "стадия из данных"), "bar") for s in stages]
-                       + [(WRITE_OFF_COLOR, "Списано", f"списанная сумма ({WRITE_OFF_COL}), уже не на балансе", "bar")],
+                     "кредиты и все вместе. Сначала из каждого кредита выделена списанная часть, остаток — по "
+                     "судебной стадии. Четыре цвета вместе = весь портфель сегмента.",
+                legend=[(colors.get(s_, COLORS["neutral"]), names.get(s_, lab(s_)), meaning.get(s_, "стадия из данных"), "bar")
+                        for s_ in reversed(stages)],
                 insights=ins, terms=["court"])
 
 
@@ -2207,12 +2208,12 @@ def chart_registry(ctx):
     a = list(CHARTS_A_BASE)
     for dep in ctx.get("departments", []):
         a.append((f"A{len(a) + 1:02d}", "СТОК", f"«{dname(dep)}»: портфель по продуктам", _passport_chart(dep)))
-    if ctx.get("has_oked"):
+    if ctx.get("has_oked") and SHOW_OKED:
         a.append((f"A{len(a) + 1:02d}", "СТОК", "Отраслевая структура портфеля (ОКЭД)", a_oked_dynamics))
     a.append((f"A{len(a) + 1:02d}", "СТОК", f"Топ-{TOP_CLIENTS} клиентов по месяцам", a_top_clients))
 
     b = list(CHARTS_B_BASE)
-    if ctx.get("has_oked"):
+    if ctx.get("has_oked") and SHOW_OKED:
         b.append(("B12", "СРЕЗ", "Отраслевая концентрация (ОКЭД)", b12_oked))
     return a, b
 
