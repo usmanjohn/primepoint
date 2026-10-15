@@ -45,3 +45,5 @@
 45	2026-10-13	2026-10-13-hayot-gps-aylanalar	Hayotdagi matematika	corner/management/commands/_stories_matematika_olami_16_21.py (story 24)	Jonibek
 46	2026-10-14	2026-10-14-kashfiyot-ramanujan-1729	Buyuk kashfiyot	corner/management/commands/_stories_matematika_olami_22_29.py (story 12)	Inom
 47	2026-10-14	2026-10-14-mantiq-18-rishton-kosa-javob	Mantiq maydoni	logic/management/commands/_puzzles_logic_17_24.py (puzzle 18)	Jonibek
+48	2026-10-15	2026-10-15-mantiq-20-chorsu-sotuvchilar	Mantiq maydoni	logic/management/commands/_puzzles_logic_17_24.py (puzzle 20)	Inom
+49	2026-10-15	2026-10-15-bobolar-xorazmiy-algoritm	Bobolar sirri	corner/management/commands/_stories_matematika_olami_01_03.py (story 1)	Jonibek

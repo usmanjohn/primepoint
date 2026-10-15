@@ -1,0 +1,256 @@
+{
+ "id": "2026-10-15-bobolar-xorazmiy-algoritm",
+ "number": 49,
+ "for": "Jonibek",
+ "date": "2026-10-15",
+ "series": "Bobolar sirri",
+ "title_uz": "«Algoritm» — bu ism",
+ "concept_uz": "Nevara bobosidan soʻraydi: telefon qaysi videoni koʻrsatishni qayerdan biladi? Javob — algoritm, va bu soʻz xorazmlik olim al-Xorazmiyning ismi. Bagʻdodda u oʻnta raqam va boʻsh oʻringa qoʻyiladigan nolni Yevropaga yetkazgan kitob yozgan. Oxirida tomoshabin nolsiz sonlarni qanday farqlashni oʻylaydi.",
+ "format_uz": "10 sahna × 8 soniya = 80 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_01_03.py (story 1)"
+ ],
+ "facts": [
+  {
+   "claim": "Muhammad ibn Muso al-Xorazmiy taxminan 780-yilda tugʻilgan; nomi Xorazmdan ekanini bildiradi",
+   "source": "_stories_matematika_olami_01_03.py story 1 body"
+  },
+  {
+   "claim": "Umrining katta qismini Bagʻdodda, Bayt ul-hikma — «Donishmandlik uyi»da ishlab oʻtkazgan; u yerda olimlar butun dunyodan kelgan kitoblarni tarjima qilgan",
+   "source": "story 1 body"
+  },
+  {
+   "claim": "Asarlari Yevropaga yetganda nomi lotinchada «Algoritmi» deb yozilgan; undan hisob oʻrganganlar oʻzlarini shu nom bilan atagan; «algoritm» — aniq qadamlar ketma-ketligi",
+   "source": "story 1 body + grammar"
+  },
+  {
+   "claim": "Uning hind raqamlari haqidagi kitobi orqali oʻnta raqam va razryadga asoslangan tizim hamda nol Yevropaga tarqalgan",
+   "source": "story 1 body + question 3"
+  },
+  {
+   "claim": "Oʻsha paytda Yevropa rim raqamlari bilan hisoblagan; bunday yozuvda ustunda qoʻshish deyarli imkonsiz",
+   "source": "story 1 body (MCMXLVIII misoli)"
+  },
+  {
+   "claim": "Telefon qaysi videoni koʻrsatishni tanlaganda «algoritm» ishlaydi",
+   "source": "story 1 body, birinchi xatboshi"
+  },
+  {
+   "claim": "105 va 15 faqat oʻnliklar oʻrnidagi 0 bilan farq qiladi (razryad gʻoyasi)",
+   "source": "story 1 grammar/razryad taʼrifi; 105 = 1·100 + 0·10 + 5, 15 = 1·10 + 5"
+  },
+  {
+   "claim": "Qum taxtasidagi ustunlar — razryadni koʻrsatish uchun badiiy tasvir, manbadagi fakt emas; hikoyachi buni tarixiy voqea deb aytmaydi",
+   "source": "rejissyor tanlovi"
+  }
+ ],
+ "style_line": "Cinematic photoreal, warm lamplight and deep night blues in the present day, golden candle and oil-lamp light in the past, 35mm film look, soft dust in the air, respectful historical drama mood. No text, no letters, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: Xorazm hovlisi kechasi",
+   "prompt": "Vertical 9:16 night shot of a modern Khorezm family courtyard with mud-brick walls, a carved wooden pillar, a grapevine overhead, a wide wooden tapchan with colourful cushions and a low table with a teapot and two bowls, one warm hanging lamp, stars above. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Nevara",
+   "prompt": "Vertical 9:16 full-body portrait of an Uzbek boy of about 12 with short black hair and bright curious eyes, a BRIGHT YELLOW hoodie and jeans, barefoot, holding a smartphone with a dark screen, standing in a warmly lit courtyard at night."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Bobo",
+   "prompt": "Vertical 9:16 full-body portrait of a kind Uzbek grandfather of about 70 with a short white beard, ROUND WIRE GLASSES, a grey quilted chapan robe and a black-and-white doppi skullcap, holding a small white teacup, standing in a warmly lit courtyard at night."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Bobo va nevara tapchanda",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot: the boy in the yellow hoodie lies on his stomach on the tapchan with the phone, the grandfather in round glasses sits cross-legged beside him with his teacup, under the hanging lamp. Same faces, same clothes, same light."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Muhit: Donishmandlik uyi",
+   "prompt": "Vertical 9:16 interior of a vast 9th-century Baghdad library hall: tall arched brick niches full of scrolls and bound books, low wooden desks, oil lamps, a carved wooden lattice window letting in warm light, scholars in robes and turbans reading and writing in the background, faces turned away."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Al-Xorazmiy",
+   "prompt": "Vertical 9:16 respectful historical reconstruction portrait of a Central Asian scholar of about 40: thoughtful dark eyes, neat dark beard, a WHITE turban, a deep BLUE robe with a simple woven sash, and a small BRASS ASTROLABE hanging from his sash, holding a reed pen, in warm lamplight."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Al-Xorazmiy Donishmandlik uyida",
+   "from": [
+    "R5",
+    "R6"
+   ],
+   "prompt": "Combine the attached images: the scholar with the white turban, blue robe and brass astrolabe sits at a low desk in the middle of the library hall, a scroll half unrolled in front of him, other scholars working around him. Same face, same clothes, same light, 9:16."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Al-Xorazmiy qum taxtasi bilan",
+   "from": "R6",
+   "prompt": "Change the scene: the same scholar kneels at a low wooden table holding a flat tray of fine pale sand, with a small pile of smooth pebbles beside it; he is about to draw in the sand with one fingertip. Same face, same white turban, blue robe and brass astrolabe, warm lamplight, 9:16. Nothing written in the sand yet."
+  },
+  {
+   "id": "R9",
+   "name_uz": "Yevropalik savdogar",
+   "prompt": "Vertical 9:16 medium shot of a medieval European merchant of about 50 with a tired face, a red wool cap and a fur-trimmed brown coat, sitting at a heavy wooden desk by one candle, a long parchment in front of him covered in illegible tangled ink marks, a quill in his hand. No readable letters or numbers."
+  },
+  {
+   "id": "R10",
+   "name_uz": "Yevropa: kitobni koʻchirish",
+   "prompt": "Vertical 9:16 candlelit medieval stone scriptorium: four young students in dark robes at slanted wooden desks copying pages from one thick old leather-bound book with a geometric Eastern-style cover, tall arched windows, warm candle glow. Pages show only illegible marks."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Telefon",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Nevara",
+     "text": "Bobo, bu telefon qaysi videoni koʻrsatishni qayerdan biladi?"
+    }
+   ],
+   "prompt": "Close-up of the boy in the yellow hoodie lying on the tapchan at night, his face lit blue by the phone; he flicks the screen, the light flashes as video after video jumps up, then he stops and frowns at it. Audio: rapid swipe whooshes, a short burst of video sounds, crickets. The boy asks in Uzbek with a lively, curious boy voice of about 12: \"Bobo, bu telefon qaysi videoni ko'rsatishni qayerdan biladi?\". No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Ism",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Bobo",
+     "text": "Algoritm biladi. Bu soʻz aslida bir odamning ismi — xorazmlik olimning."
+    },
+    {
+     "who": "Nevara",
+     "text": "Ismi?!"
+    }
+   ],
+   "prompt": "The grandfather in round glasses lowers his teacup and smiles slowly; the boy sits up in surprise. Gentle push-in on both. Audio: a cup set down on a saucer, crickets. The grandfather says in Uzbek with a slow, warm, slightly hoarse elderly male voice of about 70: \"Algoritm biladi. Bu so'z aslida bir odamning ismi — xorazmlik olimning.\". The boy gasps in Uzbek with a lively, curious boy voice of about 12: \"Ismi?!\". No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Bagʻdod",
+   "method": "Text to Video",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Taxminan yetti yuz saksoninchi yilda Xorazmda Muhammad ibn Muso al-Xorazmiy tugʻildi. Umrining koʻp qismini u Bagʻdodda oʻtkazdi."
+    }
+   ],
+   "prompt": "Vertical 9:16 slow aerial shot at dawn over an ancient round city of mud-brick walls, palm trees and domes on the bank of a wide river, mist on the water, boats with square sails. No people visible up close. Audio: river water, distant call of birds. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Taxminan yetti yuz saksoninchi yilda Xorazmda Muhammad ibn Muso al-Xorazmiy tug'ildi. Umrining ko'p qismini u Bag'dodda o'tkazdi.\". No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Donishmandlik uyi",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Bagʻdodda, «Donishmandlik uyi»da olimlar butun dunyodan kelgan kitoblarni tarjima qilardi."
+    }
+   ],
+   "prompt": "Slow dolly through the great hall of scrolls: scholars at low desks translating books by lamplight; the camera arrives at al-Khwarizmi with the brass astrolabe on his belt as he unrolls a scroll and looks up. Audio: rustling paper, quiet murmured reading, a reed pen scratching. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Bag'dodda, «Donishmandlik uyi»da olimlar butun dunyodan kelgan kitoblarni tarjima qilardi.\". No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Rim raqamlari",
+   "method": "Frames to Video",
+   "start": "R9",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Oʻsha paytda Yevropa rim raqamlari bilan hisoblardi. Bunday yozuvda ustunda qoʻshish deyarli imkonsiz edi."
+    },
+    {
+     "who": "Savdogar",
+     "text": "Yana adashdim!"
+    }
+   ],
+   "prompt": "A medieval European merchant at a candlelit desk stares at a parchment covered with long rows of tangled marks, counts on his fingers, loses track and drops his quill, rubbing his forehead. Comic, tired. Audio: quill scratching, a heavy sigh, a candle crackle. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"O'sha paytda Yevropa rim raqamlari bilan hisoblardi. Bunday yozuvda ustunda qo'shish deyarli imkonsiz edi.\". The merchant groans in Uzbek with a tired, irritated middle-aged male voice of about 50: \"Yana adashdim!\". No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Oʻnta belgi",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Al-Xorazmiy",
+     "text": "Oʻnta belgi yetadi. Raqamning oʻrni uning qiymatini aytadi."
+    }
+   ],
+   "prompt": "Close-up of al-Khwarizmi at a low table with a tray of fine sand: he draws straight vertical grooves to make columns and places small pebbles into them one column at a time, calm and precise. Audio: sand hiss, pebbles clicking. Al-Khwarizmi says in Uzbek with a calm, deep, measured male voice of about 40: \"O'nta belgi yetadi. Raqamning o'rni uning qiymatini aytadi.\". No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Nol",
+   "method": "Extend",
+   "extends": "6",
+   "lines": [
+    {
+     "who": "Al-Xorazmiy",
+     "text": "Boʻsh oʻrin ham belgi oladi. Bu — nol."
+    }
+   ],
+   "prompt": "Continue the shot: al-Khwarizmi reaches one column that has no pebbles, pauses, then with one fingertip draws a small empty circle in the sand of that column and looks up with a faint smile. Audio: one soft sand stroke, then silence. Al-Khwarizmi says quietly in Uzbek with a calm, deep, measured male voice of about 40: \"Bo'sh o'rin ham belgi oladi. Bu — nol.\". No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Algoritmi",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R10"
+   ],
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Kitoblari Yevropaga yetganda, ismi lotincha «Algoritmi» deb yozildi. Undan hisob oʻrganganlar oʻzlarini shu nom bilan atashdi."
+    }
+   ],
+   "prompt": "Candlelit medieval European scriptorium: young students in dark robes copy pages from one thick old book, one of them lifts his head and repeats a name to his friend with excitement. Audio: candles, pens scratching, an echoing stone hall. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Kitoblari Yevropaga yetganda, ismi lotincha «Algoritmi» deb yozildi. Undan hisob o'rganganlar o'zlarini shu nom bilan atashdi.\". No subtitles, no on-screen text."
+  },
+  {
+   "n": 9,
+   "title_uz": "Telefondagi bobo",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Nevara",
+     "text": "Demak, telefonimdagi algoritmda ham bobolarimiz bor ekan!"
+    },
+    {
+     "who": "Bobo",
+     "text": "Ha, bolam. Va har bir nolda ham."
+    }
+   ],
+   "prompt": "Back on the night tapchan: the boy looks at his phone, then at his grandfather, and laughs; the grandfather laughs with him and pats his shoulder. Audio: crickets, warm laughter. The boy says in Uzbek with a lively, curious boy voice of about 12: \"Demak, telefonimdagi algoritmda ham bobolarimiz bor ekan!\". The grandfather says, chuckling in Uzbek with a slow, warm, slightly hoarse elderly male voice of about 70: \"Ha, bolam. Va har bir nolda ham.\". No subtitles, no on-screen text."
+  },
+  {
+   "n": 10,
+   "title_uz": "Sizning navbatingiz",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Yuz besh bilan oʻn beshni faqat bitta nol ajratadi. Nol boʻlmasa, ularni qanday farqlardingiz? Izohda yozing!"
+    }
+   ],
+   "prompt": "Slow pull-back and rise from the tapchan into the starry night over the courtyard; the boy and grandfather sit still, small and warm in the lamp light. Audio: crickets fade, one soft chime. An off-screen narrator asks the viewer, friendly and curious, in Uzbek with a calm, warm middle-aged male storyteller voice: \"Yuz besh bilan o'n beshni faqat bitta nol ajratadi. Nol bo'lmasa, ularni qanday farqlardingiz? Izohda yozing!\". No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Telefoningiz qaysi videoni koʻrsatishni qayerdan biladi? Algoritm! Bu soʻz esa xorazmlik olim Muhammad al-Xorazmiyning ismidan qolgan. Uning kitobi orqali bugungi raqamlar va nol dunyoga tarqalgan. Savol: yuz besh bilan oʻn beshni faqat bitta nol ajratadi — nol boʻlmasa, ularni qanday farqlardingiz? Izohda yozing! #BobolarSirri #alXorazmiy #matematika #Powerty"
+}

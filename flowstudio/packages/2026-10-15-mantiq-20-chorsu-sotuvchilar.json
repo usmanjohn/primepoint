@@ -1,0 +1,177 @@
+{
+ "id": "2026-10-15-mantiq-20-chorsu-sotuvchilar",
+ "number": 48,
+ "for": "Inom",
+ "date": "2026-10-15",
+ "series": "Mantiq maydoni",
+ "title_uz": "Chorsudagi olti sotuvchi",
+ "concept_uz": "Chorsu bozorida olti sotuvchi bir qatorda turibdi. Har biri yo doim rost, yo doim yolgʻon gapiradi — va har biri bittadan gap aytadi. Olti gapdan keyin bozor muzlab qoladi: kim rostgoʻy? Javob keyingi hafta, 19-oktabrdan keyin.",
+ "format_uz": "7 sahna × 8 soniya = 56 soniya",
+ "sources": [
+  "logic/management/commands/_puzzles_logic_17_24.py (puzzle 20)"
+ ],
+ "facts": [
+  {
+   "claim": "Olti sotuvchi, rastalar 1–6: ziravor, qovun, non, quruq meva, asal, Chust pichoqlari",
+   "source": "logic/management/commands/_puzzles_logic_17_24.py puzzle 20 body_uz"
+  },
+  {
+   "claim": "Har biri yo rostgoʻy (har gapi rost), yo yolgʻonchi (har gapi yolgʻon)",
+   "source": "puzzle 20 body_uz"
+  },
+  {
+   "claim": "Olti gap: 1 «Qovunchi — yolgʻonchi»; 2 «Ziravorchi bilan asalchi bir xil toifada»; 3 «Pichoqchi — yolgʻonchi»; 4 «Ziravorchi — rostgoʻy»; 5 «Roppa-rosa uchtasi rostgoʻy»; 6 «Qovunchi bilan quruq mevachi har xil toifada»",
+   "source": "puzzle 20 body_uz"
+  },
+  {
+   "claim": "«Bir xil toifada» — ikkalasi ham rostgoʻy yoki ikkalasi ham yolgʻonchi; yagona yechim bor",
+   "source": "puzzle 20 lg-rule"
+  },
+  {
+   "claim": "Soʻraladigan javob: rostgoʻylarning rasta raqamlari yigʻindisi (javob videoda aytilmaydi)",
+   "source": "puzzle 20 lg-ask; answer_key '8' — faqat javob videosi uchun (2 + 6)"
+  },
+  {
+   "claim": "Raund 2: 2026-10-12 ochilgan, javobi 2026-10-19 da ochiladi — javob videosi 2026-10-22 da (Inom), 19-oktabrdan oldin emas",
+   "source": "_puzzles_logic_17_24.py SCHEDULE start 2026-10-05 + 7×(2−1)"
+  }
+ ],
+ "style_line": "Cinematic photoreal, bright late-morning sun under a market awning, warm saturated colours of spices, melons and honey, 35mm film look, lively Central Asian bazaar mood. No text, no letters, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: Chorsu rastalari",
+   "prompt": "Vertical 9:16 shot of one straight row of six small wooden market stalls under a shared canvas awning in an old Tashkent bazaar, a blue-tiled dome in the soft background. From left to right: 1 heaps of red, yellow and brown spices in bowls; 2 a pile of long yellow melons; 3 a stack of round patterned flatbreads; 4 baskets of raisins, dried apricots and nuts; 5 glass jars of golden honey with a honeycomb; 6 a rack of curved knives with carved handles. No people, no signs."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Olti sotuvchi rastada",
+   "from": "R1",
+   "prompt": "Add one seller behind each of the six stalls, all facing the camera, same stalls, same light, 9:16. 1 spices: a thin elderly man of about 65 with a white beard and a bright ORANGE skullcap. 2 melons: a big round jolly man of about 45 in a striped BLUE-AND-WHITE robe. 3 bread: a young woman of about 30 with a YELLOW headscarf, white apron and floury hands. 4 dried fruit: a woman of about 55 in a PURPLE atlas-silk dress with gold earrings. 5 honey: a young man of about 25 in a GREEN vest holding a wooden honey dipper. 6 knives: a man of about 40 with a grey moustache, a RED headband and a black leather apron. No signs, no numbers."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Yaqin plan: ziravorchi va qovunchi",
+   "from": "R2",
+   "prompt": "Change the framing: a medium two-shot of only the first two stalls and their sellers, the old spice seller in the orange skullcap and the big melon seller in the striped blue-and-white robe, side by side. Same faces, same clothes, same light, 9:16."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Yaqin plan: novvoy va quruq mevachi",
+   "from": "R2",
+   "prompt": "Change the framing: a medium two-shot of only the third and fourth stalls and their sellers, the baker woman in the yellow headscarf and the dried-fruit seller in the purple atlas dress, side by side. Same faces, same clothes, same light, 9:16."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Yaqin plan: asalchi va pichoqchi",
+   "from": "R2",
+   "prompt": "Change the framing: a medium two-shot of only the fifth and sixth stalls and their sellers, the young honey seller in the green vest and the knife seller in the red headband and black leather apron, side by side. Same faces, same clothes, same light, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Bozor shovqini",
+   "method": "Frames to Video",
+   "start": "R2",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Toshkent, Chorsu. Olti sotuvchi. Baʼzilari doim rost gapiradi, qolganlari — doim yolgʻon."
+    }
+   ],
+   "prompt": "Fast push-in along the row of six market stalls as all six sellers shout and wave at the camera at once, a melon is tossed in the air and caught, spice dust puffs up in the sunlight. Audio: loud bazaar hubbub, a donkey cart bell, the shouting stops suddenly. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Toshkent, Chorsu. Olti sotuvchi. Ba'zilari doim rost gapiradi, qolganlari — doim yolg'on.\". No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Olti rasta",
+   "method": "Frames to Video",
+   "start": "R2",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Rastalar birdan oltigacha: ziravor, qovun, non, quruq meva, asal va Chust pichoqlari."
+    }
+   ],
+   "prompt": "Slow sideways tracking shot from left to right past the six stalls in order: spices, melons, bread, dried fruit, honey, knives; each seller gives a small nod as the camera passes. Audio: soft bazaar murmur, a knife being sharpened, bees humming near the honey. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Rastalar birdan oltigacha: ziravor, qovun, non, quruq meva, asal va Chust pichoqlari.\". No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Ziravorchi va qovunchi",
+   "method": "Frames to Video",
+   "start": "R3",
+   "lines": [
+    {
+     "who": "Ziravorchi",
+     "text": "Qovunchi — yolgʻonchi."
+    },
+    {
+     "who": "Qovunchi",
+     "text": "Ziravorchi bilan asalchi bir xil toifada."
+    }
+   ],
+   "prompt": "Two-shot of the first two stalls. The old spice seller in the orange skullcap points a bony finger at his neighbour; the big melon seller in the striped blue-and-white robe slaps a melon and points back toward the far end of the row. Comic timing. Audio: a melon slap, spice jars clinking. The spice seller says sharply in Uzbek with a raspy, sharp elderly male voice of about 65: \"Qovunchi — yolg'onchi.\" Then the melon seller answers in Uzbek with a booming, jolly middle-aged male voice of about 45: \"Ziravorchi bilan asalchi bir xil toifada.\". No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Novvoy va quruq mevachi",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Novvoy",
+     "text": "Pichoqchi — yolgʻonchi."
+    },
+    {
+     "who": "Quruq mevachi",
+     "text": "Ziravorchi — rostgoʻy."
+    }
+   ],
+   "prompt": "Two-shot of the third and fourth stalls. The young baker woman in the yellow headscarf slams a round flatbread onto her stack with floury hands and nods toward the knife stall; the dried-fruit seller in the purple atlas dress pours raisins from a scoop and smiles knowingly toward the spice stall. Audio: bread thump, raisins rattling. The bread seller says in Uzbek with a brisk, clear young female voice of about 30: \"Pichoqchi — yolg'onchi.\" Then the dried-fruit seller says in Uzbek with a soft, sly middle-aged female voice of about 55: \"Ziravorchi — rostgo'y.\". No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Asalchi va pichoqchi",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Asalchi",
+     "text": "Oltovimizdan roppa-rosa uchtasi rostgoʻy."
+    },
+    {
+     "who": "Pichoqchi",
+     "text": "Qovunchi bilan quruq mevachi har xil toifada."
+    }
+   ],
+   "prompt": "Two-shot of the last two stalls. The young honey seller in the green vest lifts a dripping honey dipper and counts slowly on three fingers; the knife seller in the red headband and black leather apron rests a knife on his whetstone and taps the counter twice. Audio: honey dripping, a bee, steel on stone. The honey seller says in Uzbek with a slow, calm young male voice of about 25: \"Oltovimizdan roppa-rosa uchtasi rostgo'y.\" Then the knife seller says in Uzbek with a low, gravelly male voice of about 40: \"Qovunchi bilan quruq mevachi har xil toifada.\". No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Qoida",
+   "method": "Frames to Video",
+   "start": "R2",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Bir xil toifada — ikkalasi ham rostgoʻy yoki ikkalasi ham yolgʻonchi. Ularni ajratishning yagona yoʻli bor."
+    }
+   ],
+   "prompt": "The six sellers slowly turn their heads and look at each other suspiciously along the row, eyebrows raised, arms folded; nobody speaks. Camera slowly rises above the stalls. Audio: the bazaar noise fades to a single wind gust. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Bir xil toifada — ikkalasi ham rostgo'y yoki ikkalasi ham yolg'onchi. Ularni ajratishning yagona yo'li bor.\". No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Savol",
+   "method": "Frames to Video",
+   "start": "R2",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Kim rostgoʻy? Rostgoʻylarning rasta raqamlarini qoʻshing. Javobni izohda yozing yoki powerty.uz/logic da yuboring!"
+    }
+   ],
+   "prompt": "Slow pull-back from the row of six stalls; all six sellers freeze mid-gesture as if time stopped, a tossed apricot hangs still in the air. Hold on the frozen frame. Audio: total silence, then one soft bell. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Kim rostgo'y? Rostgo'ylarning rasta raqamlarini qo'shing. Javobni izohda yozing yoki powerty.uz/logic da yuboring!\", asking the viewer, friendly and curious. No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Chorsuda olti sotuvchi: baʼzilari doim rost, qolganlari doim yolgʻon gapiradi. Olti gap — va yagona yechim. Kim rostgoʻy? Rostgoʻylarning rasta raqamlarini qoʻshing va javobni izohda yozing yoki powerty.uz/logic da yuboring — toʻgʻri javob keyingi hafta! #mantiq #jumboq #MantiqMaydoni #Powerty"
+}
