@@ -151,6 +151,16 @@
     position: absolute; left: 0; color: var(--lw-ok);
 }
 
+/* abbreviations */
+.lw-abbr { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .5rem .9rem; margin: 0; }
+.lw-abbr > div {
+    display: flex; gap: .7rem; align-items: baseline; padding: .5rem .7rem;
+    background: #f8fafc; border: 1px solid var(--lw-line); border-radius: 8px;
+}
+.lw-abbr dt { flex: 0 0 4.6rem; font-weight: 700; color: var(--lw-navy); overflow-wrap: anywhere; }
+.lw-abbr dd { margin: 0; font-size: .9rem; }
+.lw-abbr dd small { display: block; color: var(--lw-muted); font-size: .8rem; }
+
 .lw-src { font-size: .85rem; color: var(--lw-muted); border-top: 1px solid var(--lw-line); padding-top: 1rem; }
 .lw-back { color: var(--lw-navy); font-weight: 600; text-decoration: none; }
 
@@ -187,7 +197,8 @@
     <div class="container-fluid px-4">
 
         <nav class="lw-nav">
-            <a href="#short">Коротко</a>
+            <a href="#short">Резюме</a>
+            <a href="#abbr">Сокращения</a>
             <a href="#pdn">ПДН</a>
             <a href="#income">Как считать доход</a>
             <a href="#dti">DTI</a>
@@ -199,7 +210,7 @@
         </nav>
 
         <section class="lw-box" id="short">
-            <h2><i class="fas fa-bolt"></i> За 30 секунд</h2>
+            <h2><i class="fas fa-clipboard-list"></i> Резюме</h2>
             <div class="lw-kpis">
                 <div class="lw-kpi"><b>≤ 50%</b><span>ПДН: платежи по всем кредитам / доход</span></div>
                 <div class="lw-kpi"><b>≤ 8× / 5×</b><span>DTI: долг по потреб. кредитам и микрозаймам / месячный доход (доход подтверждён / нет)</span></div>
@@ -209,11 +220,27 @@
             </div>
             <div class="lw-note mb-0">
                 <b>Кого касается</b>
-                Банки, включая микрофинансовые, по кредитам и микрозаймам <b>физическим лицам</b>, в том числе
+                Банки, включая микрофинансовые, по кредитам и микрозаймам <strong>физическим лицам</strong>, в том числе
                 самозанятым. Требования о долговой нагрузке отдельным постановлением (№ 3205-4) распространены и на
                 микрофинансовые организации и ломбарды.
             </div>
         </section>
+
+        <!-- ── Сокращения ─────────────────────────────────────────── -->
+        <section class="lw-box" id="abbr">
+            <h2><i class="fas fa-spell-check"></i> Сокращения</h2>
+            <dl class="lw-abbr">
+                <div><dt>ЦБ РУз</dt><dd>Центральный банк Республики Узбекистан</dd></div>
+                <div><dt>МЮ</dt><dd>Министерство юстиции<small>«рег. МЮ №» — номер государственной регистрации документа</small></dd></div>
+                <div><dt>ПДН</dt><dd>показатель долговой нагрузки<small>платежи / доход; в мировой практике — DSTI (Debt Service-to-Income)</small></dd></div>
+                <div><dt>DTI</dt><dd>долг к доходу<small>Debt-to-Income: основной долг / среднемесячный доход</small></dd></div>
+                <div><dt>LTV</dt><dd>кредит к стоимости залога<small>Loan-to-Value</small></dd></div>
+                <div><dt>ИП</dt><dd>индивидуальный предприниматель<small>на кредиты ИП ПДН и DTI не распространяются</small></dd></div>
+                <div><dt>Минэкономфин</dt><dd>Министерство экономики и финансов<small>рефинансирует часть ипотеки</small></dd></div>
+                <div><dt>гл. / п.</dt><dd>глава / пункт положения</dd></div>
+            </dl>
+        </section>
+
 
         <section class="lw-box" id="pdn">
             <h2><i class="fas fa-weight-hanging"></i> ПДН — показатель долговой нагрузки (гл. 2)</h2>
@@ -240,7 +267,7 @@
             <p class="small text-muted">Если срок по договору не длиннее — платежи делятся на фактическое число месяцев.</p>
             <div class="lw-alert">
                 <b><i class="fas fa-percent"></i> Исключения (п. 3–4)</b>
-                До <b>15% от числа</b> непогашенных кредитов банка можно выдать с ПДН до <b>100%</b>.
+                До <strong>15% от числа</strong> непогашенных кредитов банка можно выдать с ПДН до <strong>100%</strong>.
                 Ещё до 15% — самозанятым, зарегистрированным не более 6 месяцев назад, на доходную деятельность — без расчёта ПДН.
                 ПДН не применяется к кредитам ИП, по программам семейного предпринимательства и к образовательным кредитам.
             </div>
@@ -271,7 +298,7 @@
             </div>
             <div class="lw-tip mb-0">
                 <b>Разница с ПДН</b>
-                ПДН смотрит на <b>платёж</b> — его можно «уменьшить» длинным сроком. DTI смотрит на <b>сумму долга</b>,
+                ПДН смотрит на <strong>платёж</strong> — его можно «уменьшить» длинным сроком. DTI смотрит на <strong>сумму долга</strong>,
                 и срок его не меняет. Вместе они закрывают лазейку «растянем на 5 лет — и пройдём по ПДН».
                 DTI не применяется к кредитам ИП и образовательным кредитам.
             </div>
@@ -310,7 +337,7 @@
             <div class="lw-alert mb-0">
                 <b><i class="fas fa-calendar-check"></i> Переходный период</b>
                 Банки, которые не укладываются в лимиты по микрозаймам и картам, приводят портфель в норму поэтапно,
-                по графику, согласованному с ЦБ, — до <b>1 января 2029 года</b> (п. 33).
+                по графику, согласованному с ЦБ, — до <strong>1 января 2029 года</strong> (п. 33).
             </div>
         </section>
 

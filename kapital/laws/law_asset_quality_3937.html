@@ -151,6 +151,16 @@
     position: absolute; left: 0; color: var(--lw-ok);
 }
 
+/* abbreviations */
+.lw-abbr { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .5rem .9rem; margin: 0; }
+.lw-abbr > div {
+    display: flex; gap: .7rem; align-items: baseline; padding: .5rem .7rem;
+    background: #f8fafc; border: 1px solid var(--lw-line); border-radius: 8px;
+}
+.lw-abbr dt { flex: 0 0 4.6rem; font-weight: 700; color: var(--lw-navy); overflow-wrap: anywhere; }
+.lw-abbr dd { margin: 0; font-size: .9rem; }
+.lw-abbr dd small { display: block; color: var(--lw-muted); font-size: .8rem; }
+
 .lw-src { font-size: .85rem; color: var(--lw-muted); border-top: 1px solid var(--lw-line); padding-top: 1rem; }
 .lw-back { color: var(--lw-navy); font-weight: 600; text-decoration: none; }
 
@@ -187,7 +197,8 @@
     <div class="container-fluid px-4">
 
         <nav class="lw-nav">
-            <a href="#short">Коротко</a>
+            <a href="#short">Резюме</a>
+            <a href="#abbr">Сокращения</a>
             <a href="#classes">Пять категорий</a>
             <a href="#utp">Признаки без просрочки</a>
             <a href="#restr">Реструктуризация</a>
@@ -198,7 +209,7 @@
         </nav>
 
         <section class="lw-box" id="short">
-            <h2><i class="fas fa-bolt"></i> За 30 секунд</h2>
+            <h2><i class="fas fa-clipboard-list"></i> Резюме</h2>
             <div class="lw-kpis">
                 <div class="lw-kpi"><b>5</b><span>категорий: стандартные → безнадёжные</span></div>
                 <div class="lw-kpi"><b>1–100%</b><span>резерв: 1 / 10 / 25 / 50 / 100%</span></div>
@@ -212,6 +223,25 @@
                 понадобятся стадия МСФО 9, история реструктуризаций и срок нахождения актива в проблемных.
             </div>
         </section>
+
+        <!-- ── Сокращения ─────────────────────────────────────────── -->
+        <section class="lw-box" id="abbr">
+            <h2><i class="fas fa-spell-check"></i> Сокращения</h2>
+            <dl class="lw-abbr">
+                <div><dt>ЦБ РУз</dt><dd>Центральный банк Республики Узбекистан</dd></div>
+                <div><dt>МЮ</dt><dd>Министерство юстиции<small>«рег. МЮ №» — номер государственной регистрации документа</small></dd></div>
+                <div><dt>МСФО 9</dt><dd>Международный стандарт финансовой отчётности 9<small>IFRS 9 «Финансовые инструменты»: ожидаемые кредитные убытки</small></dd></div>
+                <div><dt>Стадия 1/2/3</dt><dd>стадии МСФО 9<small>1 — риск не вырос, 2 — значительно вырос, 3 — актив обесценен</small></dd></div>
+                <div><dt>ВЛА</dt><dd>высоколиквидные активы<small>уровни — как в положении № 2709</small></dd></div>
+                <div><dt>МБР</dt><dd>многосторонние банки развития<small>например, Всемирный банк, АБР, ЕБРР</small></dd></div>
+                <div><dt>Ch</dt><dd>дисконт по виду залога<small>haircut: какая часть залога не засчитывается</small></dd></div>
+                <div><dt>x, m</dt><dd>символы формулы резерва<small>x — валютный дисконт 0,1; m — ставка резерва категории</small></dd></div>
+                <div><dt>ПДН / DTI</dt><dd>долговая нагрузка / долг к доходу<small>см. страницу положения № 3618</small></dd></div>
+                <div><dt>S&amp;P, Fitch, Moody’s</dt><dd>международные рейтинговые агентства<small>CCC+…C и Caa1…Ca — шкалы, D — дефолт</small></dd></div>
+                <div><dt>п. / гл.</dt><dd>пункт / глава положения</dd></div>
+            </dl>
+        </section>
+
 
         <section class="lw-box" id="classes">
             <h2><i class="fas fa-stairs"></i> Пять категорий (п. 16)</h2>

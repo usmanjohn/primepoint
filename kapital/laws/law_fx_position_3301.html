@@ -1,0 +1,466 @@
+{% extends 'base.html' %}
+
+{% block title %}Открытая валютная позиция — Правила № 3301{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ── Law explainer pages. Every rule is scoped under .lw so the dashboard's own
+      .card / .btn / .table styles are never touched. ─────────────────────────── */
+.lw {
+    --lw-navy: #1e3a8a;
+    --lw-amber: #f59e0b;
+    --lw-amber-d: #b45309;
+    --lw-ink: #1f2937;
+    --lw-muted: #6b7280;
+    --lw-line: #e5e7eb;
+    --lw-soft: #fff8eb;
+    --lw-ok: #15803d;
+    --lw-ok-bg: #dcfce7;
+    --lw-warn: #b45309;
+    --lw-warn-bg: #fef3c7;
+    --lw-bad: #b91c1c;
+    --lw-bad-bg: #fee2e2;
+    color: var(--lw-ink);
+    padding-bottom: 3rem;
+}
+.lw section, .lw .lw-anchor { scroll-margin-top: 80px; }
+
+/* hero */
+.lw-hero {
+    background: linear-gradient(135deg, #e2d2ce, #f7cc8b);
+    color: #5b3a2e;
+    border-radius: 0 0 18px 18px;
+    padding: 2.25rem 0 1.75rem;
+    margin-bottom: 1.5rem;
+}
+.lw-hero h1 { font-size: 2rem; font-weight: 700; margin: .5rem 0; }
+.lw-hero .lw-lead { font-size: 1.1rem; max-width: 820px; margin: 0; }
+.lw-doc {
+    display: inline-block; background: rgba(255,255,255,.7); color: var(--lw-navy);
+    font-weight: 600; font-size: .85rem; border-radius: 999px; padding: .25rem .8rem;
+}
+.lw-meta { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+.lw-meta span {
+    background: rgba(255,255,255,.55); border-radius: 8px; padding: .3rem .65rem; font-size: .85rem;
+}
+.lw-meta a { color: var(--lw-navy); font-weight: 600; }
+
+/* in-page navigation */
+.lw-nav {
+    position: sticky; top: 56px; z-index: 5; background: rgba(241,245,249,.95);
+    backdrop-filter: blur(4px); padding: .5rem 0; margin-bottom: 1rem;
+    display: flex; flex-wrap: wrap; gap: .4rem;
+}
+.lw-nav a {
+    text-decoration: none; font-size: .85rem; color: var(--lw-navy);
+    border: 1px solid #c7d2fe; background: #fff; border-radius: 999px; padding: .25rem .75rem;
+}
+.lw-nav a:hover { background: var(--lw-navy); color: #fff; }
+
+/* blocks */
+.lw-box {
+    background: #fff; border-radius: 14px; box-shadow: 0 2px 10px rgba(15,23,42,.06);
+    padding: 1.5rem; margin-bottom: 1.5rem;
+}
+.lw-box > h2 {
+    font-size: 1.35rem; font-weight: 700; color: var(--lw-navy); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: .6rem;
+}
+.lw-box > h2 i { color: var(--lw-amber); }
+.lw-box h3 { font-size: 1.05rem; font-weight: 700; margin-top: 1rem; }
+
+/* KPI tiles */
+.lw-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: .9rem; }
+.lw-kpi {
+    background: var(--lw-soft); border: 1px solid #fde68a; border-radius: 12px; padding: 1rem;
+}
+.lw-kpi b { display: block; font-size: 1.75rem; color: var(--lw-navy); line-height: 1.1; }
+.lw-kpi span { font-size: .88rem; color: var(--lw-muted); }
+
+/* formula strip */
+.lw-formula {
+    background: #0f172a; color: #f8fafc; border-radius: 10px; padding: .85rem 1rem;
+    font-family: SFMono-Regular, Menlo, Consolas, monospace; font-size: .95rem;
+    overflow-x: auto; white-space: nowrap; margin: .75rem 0;
+}
+.lw-formula em { color: #fbbf24; font-style: normal; }
+
+/* callouts */
+.lw-note, .lw-tip, .lw-alert {
+    border-radius: 10px; padding: .85rem 1rem; margin: 1rem 0; font-size: .95rem;
+    border-left: 5px solid;
+}
+.lw-note  { background: #eff6ff; border-color: #3b82f6; }
+.lw-tip   { background: var(--lw-ok-bg); border-color: var(--lw-ok); }
+.lw-alert { background: var(--lw-warn-bg); border-color: var(--lw-amber); }
+.lw-note b, .lw-tip b, .lw-alert b { display: block; margin-bottom: .2rem; }
+
+/* tables */
+.lw-table-wrap { overflow-x: auto; }
+.lw-table { width: 100%; border-collapse: collapse; font-size: .93rem; }
+.lw-table th { background: var(--lw-navy); color: #fff; font-weight: 600; padding: .55rem .7rem; text-align: left; }
+.lw-table td { border-bottom: 1px solid var(--lw-line); padding: .55rem .7rem; vertical-align: top; }
+.lw-table tr:nth-child(even) td { background: #f9fafb; }
+.lw-table .num { text-align: right; white-space: nowrap; font-weight: 600; }
+
+/* ladder / stack */
+.lw-stack { display: flex; flex-direction: column-reverse; gap: 3px; max-width: 520px; }
+.lw-stack div {
+    border-radius: 6px; padding: .45rem .8rem; color: #fff; font-size: .9rem;
+    display: flex; justify-content: space-between;
+}
+
+/* steps */
+.lw-steps { counter-reset: lw; list-style: none; padding: 0; margin: 0; }
+.lw-steps li { position: relative; padding: 0 0 .9rem 2.6rem; }
+.lw-steps li::before {
+    counter-increment: lw; content: counter(lw);
+    position: absolute; left: 0; top: 0; width: 1.9rem; height: 1.9rem; border-radius: 50%;
+    background: var(--lw-amber); color: #fff; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* calculator */
+.lw-calc { background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; padding: 1.25rem; }
+.lw-calc label { font-size: .85rem; color: var(--lw-muted); margin-bottom: .2rem; }
+.lw-calc input, .lw-calc select { font-weight: 600; }
+.lw-out { margin-top: 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .75rem; }
+.lw-res { background: #fff; border-radius: 10px; padding: .8rem 1rem; border: 1px solid var(--lw-line); }
+.lw-res .lw-res-v { font-size: 1.5rem; font-weight: 700; }
+.lw-res .lw-res-l { font-size: .85rem; color: var(--lw-muted); }
+.lw-bar { height: 8px; background: #e5e7eb; border-radius: 99px; margin-top: .45rem; position: relative; overflow: hidden; }
+.lw-bar i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 99px; background: var(--lw-ok); }
+.lw-pill { display: inline-block; border-radius: 999px; padding: .1rem .6rem; font-size: .78rem; font-weight: 700; }
+.lw-ok   { background: var(--lw-ok-bg); color: var(--lw-ok); }
+.lw-warn { background: var(--lw-warn-bg); color: var(--lw-warn); }
+.lw-bad  { background: var(--lw-bad-bg); color: var(--lw-bad); }
+
+/* quiz / FAQ — native <details>, works without JS */
+.lw-q { border: 1px solid var(--lw-line); border-radius: 10px; margin-bottom: .6rem; background: #fff; }
+.lw-q summary { cursor: pointer; padding: .75rem 1rem; font-weight: 600; list-style: none; }
+.lw-q summary::-webkit-details-marker { display: none; }
+.lw-q summary::before { content: "\f059"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--lw-amber); margin-right: .55rem; }
+.lw-q[open] summary { border-bottom: 1px solid var(--lw-line); }
+.lw-q div { padding: .75rem 1rem; }
+
+/* checklist */
+.lw-check { list-style: none; padding: 0; }
+.lw-check li { padding: .3rem 0 .3rem 1.8rem; position: relative; }
+.lw-check li::before {
+    content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900;
+    position: absolute; left: 0; color: var(--lw-ok);
+}
+
+/* abbreviations */
+.lw-abbr { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .5rem .9rem; margin: 0; }
+.lw-abbr > div {
+    display: flex; gap: .7rem; align-items: baseline; padding: .5rem .7rem;
+    background: #f8fafc; border: 1px solid var(--lw-line); border-radius: 8px;
+}
+.lw-abbr dt { flex: 0 0 4.6rem; font-weight: 700; color: var(--lw-navy); overflow-wrap: anywhere; }
+.lw-abbr dd { margin: 0; font-size: .9rem; }
+.lw-abbr dd small { display: block; color: var(--lw-muted); font-size: .8rem; }
+
+.lw-src { font-size: .85rem; color: var(--lw-muted); border-top: 1px solid var(--lw-line); padding-top: 1rem; }
+.lw-back { color: var(--lw-navy); font-weight: 600; text-decoration: none; }
+
+@media (max-width: 768px) {
+    .lw-hero h1 { font-size: 1.5rem; }
+    .lw-hero .lw-lead { font-size: 1rem; }
+    .lw-box { padding: 1.1rem; }
+    .lw-nav { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .lw-nav a { white-space: nowrap; flex: 0 0 auto; }
+}
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+<div class="lw">
+
+    <!-- ── Заголовок ─────────────────────────────────────────────── -->
+    <div class="lw-hero">
+        <div class="container-fluid px-4">
+            <span class="lw-doc"><i class="fas fa-landmark"></i> Правила ЦБ РУз № 3301</span>
+            <h1>Открытая валютная позиция</h1>
+            <p class="lw-lead">
+                Сколько валютного риска банк держит на конец дня: длинные и короткие позиции по каждой
+                валюте и драгметаллу, их сумма и отношение к регулятивному капиталу.
+                <strong>Превышение лимита нельзя переносить на следующий день.</strong>
+            </p>
+            <div class="lw-meta">
+                <span><i class="far fa-calendar"></i> Зарегистрировано и вступило в силу: 07.05.2021</span>
+                <span><i class="fas fa-pen"></i> Изменения: № 3301-1 (с 25.10.2025), № 3301-2 (с 27.09.2026)</span>
+                <span><a href="https://lex.uz/docs/5421525" target="_blank" rel="noopener">Текст на lex.uz <i class="fas fa-arrow-up-right-from-square"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid px-4">
+
+        <nav class="lw-nav">
+            <a href="#short">Резюме</a>
+            <a href="#abbr">Сокращения</a>
+            <a href="#terms">Понятия</a>
+            <a href="#what">Что меняет позицию</a>
+            <a href="#limits">Лимиты</a>
+            <a href="#control">Контроль</a>
+            <a href="#calc">Калькулятор</a>
+            <a href="#example">Пример</a>
+            <a href="#quiz">Проверь себя</a>
+        </nav>
+
+        <!-- ── Резюме ────────────────────────────────────────────── -->
+        <section class="lw-box" id="short">
+            <h2><i class="fas fa-clipboard-list"></i> Резюме</h2>
+            <div class="lw-kpis">
+                <div class="lw-kpi"><b>+ / −</b><span>длинная позиция со знаком «+», короткая — со знаком «−» (п. 4)</span></div>
+                <div class="lw-kpi"><b>4 лимита</b><span>по каждой валюте, по сумме всех позиций, по сумме длинных и по сумме коротких (п. 8)</span></div>
+                <div class="lw-kpi"><b>% капитала</b><span>все лимиты — отношение позиции к регулятивному капиталу банка</span></div>
+                <div class="lw-kpi"><b>Конец дня</b><span>расчёт и контроль — по итогам каждого операционного дня, консолидированно</span></div>
+                <div class="lw-kpi"><b>0 дней</b><span>на перенос превышения: закрыть до конца текущего дня (п. 9)</span></div>
+            </div>
+            <div class="lw-alert">
+                <b><i class="fas fa-triangle-exclamation"></i> Цифр лимитов в Правилах нет</b>
+                Правила описывают, <strong>как</strong> считать позицию. Сами проценты лимитов устанавливает отдельное решение
+                Правления ЦБ (п. 8). Поэтому в калькуляторе ниже лимиты вводятся вручную — возьмите действующие
+                значения из решения ЦБ или из внутренних документов банка.
+            </div>
+            <div class="lw-note">
+                <b>Новое с 27.09.2026 (№ 3301-2)</b>
+                Правила прямо распространены на банки, ведущие исламскую банковскую деятельность, а по свопам в позицию теперь входят
+                и начисленные к получению и к уплате доходы и расходы по сделке (п. 2).
+            </div>
+        </section>
+
+        <!-- ── Сокращения ─────────────────────────────────────────── -->
+        <section class="lw-box" id="abbr">
+            <h2><i class="fas fa-spell-check"></i> Сокращения</h2>
+            <dl class="lw-abbr">
+                <div><dt>ОВП</dt><dd>открытая валютная позиция<small>требования и обязательства в валюте не равны</small></dd></div>
+                <div><dt>ЦБ РУз</dt><dd>Центральный банк Республики Узбекистан</dd></div>
+                <div><dt>МЮ</dt><dd>Министерство юстиции<small>«рег. МЮ №» — номер государственной регистрации документа</small></dd></div>
+                <div><dt>Long</dt><dd>длинная позиция<small>требований больше, чем обязательств; выигрывает от роста курса</small></dd></div>
+                <div><dt>Short</dt><dd>короткая позиция<small>обязательств больше; проигрывает от роста курса</small></dd></div>
+                <div><dt>Драгметаллы</dt><dd>аффинированные драгоценные металлы<small>считаются наравне с валютами</small></dd></div>
+                <div><dt>Внебаланс</dt><dd>счета «непредвиденных обстоятельств»<small>требования и обязательства по форвардам, свопам, фьючерсам, опционам</small></dd></div>
+                <div><dt>RWA</dt><dd>активы, взвешенные по риску<small>Risk-Weighted Assets; валютный риск входит в их рыночную часть</small></dd></div>
+                <div><dt>USD / EUR / RUB</dt><dd>доллар США / евро / российский рубль<small>коды валют ISO 4217</small></dd></div>
+                <div><dt>п.</dt><dd>пункт Правил</dd></div>
+            </dl>
+        </section>
+
+        <!-- ── Понятия ─────────────────────────────────────────────── -->
+        <section class="lw-box" id="terms">
+            <h2><i class="fas fa-book"></i> Основные понятия (п. 1)</h2>
+            <div class="lw-formula">ОВП по валюте = <em>Требования в валюте</em> − <em>Обязательства в валюте</em> (баланс + внебаланс)</div>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <h3 class="mt-0">Длинная позиция «+»</h3>
+                    <p class="mb-0">Требований больше, чем обязательств. Если валюта <b>дорожает</b> к суму — банк получает
+                    переоценочный доход, если дешевеет — убыток.</p>
+                </div>
+                <div class="col-md-6">
+                    <h3 class="mt-0">Короткая позиция «−»</h3>
+                    <p class="mb-0">Обязательств больше, чем требований. Банку опасен <b>рост</b> курса: долг в сумах
+                    становится больше.</p>
+                </div>
+            </div>
+            <div class="lw-note">
+                <b>Три «суммы» из Правил</b>
+                Сумма всех длинных позиций, сумма всех коротких позиций и сумма всех открытых позиций по всем валютам
+                и металлам. На каждую из них есть свой лимит.
+            </div>
+            <div class="lw-tip">
+                <b>Балансирующая позиция в сумах (п. 5)</b>
+                Разница между суммой длинных и суммой коротких позиций в сумовом эквиваленте. С ней итог длинных и итог
+                коротких должны совпасть — это арифметическая проверка отчёта.
+            </div>
+        </section>
+
+        <!-- ── Что меняет позицию ─────────────────────────────────── -->
+        <section class="lw-box" id="what">
+            <h2><i class="fas fa-arrows-rotate"></i> Что меняет позицию (п. 2, 6–7)</h2>
+            <ul class="lw-check">
+                <li>покупка и продажа иностранной валюты и драгметаллов;</li>
+                <li>начисление доходов и расходов в валюте — в день начисления, а не в день оплаты;</li>
+                <li>деривативы (форвард, своп, фьючерс, опцион) на валюту и металлы — независимо от способа расчётов;
+                    по свопу учитывается разница требований и обязательств, включая начисленные доходы и расходы;</li>
+                <li>другие сделки, где по условиям предусмотрена конверсия валюты.</li>
+            </ul>
+            <div class="lw-alert mb-0">
+                <b>Дата сделки, а не дата расчётов</b>
+                Позиция возникает в день заключения сделки купли-продажи (п. 7). Форвард на покупку долларов с поставкой
+                через месяц открывает длинную позицию <strong>сегодня</strong> — через внебалансовые счета.
+            </div>
+        </section>
+
+        <!-- ── Лимиты ─────────────────────────────────────────────── -->
+        <section class="lw-box" id="limits">
+            <h2><i class="fas fa-ruler-horizontal"></i> Лимиты (п. 8–9)</h2>
+            <div class="lw-table-wrap">
+                <table class="lw-table">
+                    <thead><tr><th>Лимит</th><th>Что ограничивает</th></tr></thead>
+                    <tbody>
+                        <tr><td><b>По каждой валюте и металлу</b></td><td>|позиция по валюте| / регулятивный капитал</td></tr>
+                        <tr><td><b>Сумма всех ОВП</b></td><td>общий валютный риск по всем валютам и металлам / регулятивный капитал</td></tr>
+                        <tr><td><b>Сумма длинных</b></td><td>все длинные позиции вместе / регулятивный капитал</td></tr>
+                        <tr><td><b>Сумма коротких</b></td><td>все короткие позиции вместе (по модулю) / регулятивный капитал</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="lw-alert">
+                <b>Правило конца дня (п. 9)</b>
+                Позиция сверх лимита не переносится на следующий операционный день. Если лимит превышен, банк до конца
+                текущего дня проводит балансирующие сделки и сокращает позицию до лимита.
+            </div>
+        </section>
+
+        <!-- ── Контроль ──────────────────────────────────────────── -->
+        <section class="lw-box" id="control">
+            <h2><i class="fas fa-eye"></i> Контроль и отчётность (п. 10–14)</h2>
+            <div class="row g-3">
+                <div class="col-lg-6">
+                    <ul class="mb-0">
+                        <li>Соблюдение лимитов контролируется <b>консолидированно</b> по итогам каждого операционного дня (п. 10).</li>
+                        <li>Лимиты для филиалов банк устанавливает сам и может перераспределять их в течение дня (п. 11).</li>
+                        <li>ЦБ следит по ежедневным отчётам, данным инспекций и ежедневному мониторингу счетов (п. 12).</li>
+                        <li>При нарушении банк объясняет ЦБ причины и принятые меры (п. 13).</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="mt-0">Что в отчёте (п. 14)</h3>
+                    <ul class="mb-0">
+                        <li>позиция по каждой валюте и металлу (длинная / короткая) по курсу ЦБ и её % к регулятивному капиталу;</li>
+                        <li>сбалансированная позиция в сумах после балансирующих операций;</li>
+                        <li>сумма всех открытых позиций и её % к регулятивному капиталу.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lw-note mb-0">
+                <b>Связь с другими нормативами</b>
+                Валютный риск открытой позиции входит в рыночный риск и, значит, в RWA (положение № 3697, глава 4).
+                Положение № 3427 требует стресс-тестировать изменение курсов валют в открытой позиции (п. 19).
+            </div>
+        </section>
+
+        <!-- ── Калькулятор ────────────────────────────────────────── -->
+        <section class="lw-box" id="calc">
+            <h2><i class="fas fa-calculator"></i> Калькулятор ОВП</h2>
+            <p class="text-muted small">Требования и обязательства — в млн единиц валюты (баланс + внебаланс), курс ЦБ — в сумах,
+                капитал — в млрд сум. Пустой лимит не проверяется. Расчёт упрощённый — для понимания, не для отчётности.</p>
+            <div class="lw-calc">
+                <div class="row g-3 mb-3">
+                    <div class="col-6 col-md-4 col-xl-2"><label for="fx-cap">Регулятивный капитал</label><input id="fx-cap" class="form-control" type="number" value="6000" min="0" step="any"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="fx-l1">Лимит на валюту, %</label><input id="fx-l1" class="form-control" type="number" min="0" step="any" placeholder="из решения ЦБ"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="fx-lt">Лимит сумма ОВП, %</label><input id="fx-lt" class="form-control" type="number" min="0" step="any" placeholder="из решения ЦБ"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="fx-ll">Лимит длинные, %</label><input id="fx-ll" class="form-control" type="number" min="0" step="any" placeholder="из решения ЦБ"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="fx-ls">Лимит короткие, %</label><input id="fx-ls" class="form-control" type="number" min="0" step="any" placeholder="из решения ЦБ"></div>
+                </div>
+                <div class="lw-table-wrap">
+                    <table class="lw-table" id="fx-table">
+                        <thead><tr><th>Валюта</th><th class="num">Требования</th><th class="num">Обязательства</th><th class="num">Курс ЦБ</th><th class="num">Позиция, млрд сум</th><th class="num">% капитала</th><th></th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <button type="button" class="btn btn-sm btn-outline-primary mt-2" id="fx-add"><i class="fas fa-plus"></i> Добавить валюту</button>
+                <div class="lw-out" id="fx-out"></div>
+            </div>
+        </section>
+
+        <!-- ── Пример ─────────────────────────────────────────────── -->
+        <section class="lw-box" id="example">
+            <h2><i class="fas fa-person-chalkboard"></i> Разбор на цифрах</h2>
+            <p>Регулятивный капитал — 6 000 млрд сум. Курсы для примера: USD 12 000, EUR 13 400.</p>
+            <ol class="lw-steps">
+                <li>USD: требования 120 млн, обязательства 100 млн → <b>+20 млн</b> × 12 000 = <b>+240 млрд сум</b> (длинная, 4,0% капитала).</li>
+                <li>EUR: требования 20 млн, обязательства 26 млн → <b>−6 млн</b> × 13 400 = <b>−80,4 млрд сум</b> (короткая, 1,34%).</li>
+                <li>Сумма длинных: 240 (4,0%); сумма коротких: 80,4 (1,34%).</li>
+                <li>Сумма всех открытых позиций по модулю: 240 + 80,4 = <b>320,4 млрд сум</b> (5,34%).</li>
+                <li>Балансирующая позиция в сумах: 240 − 80,4 = 159,6 (короткая в сумах) — итоги длинных и коротких сходятся.</li>
+            </ol>
+            <div class="lw-tip mb-0">
+                <b>Вывод</b>
+                Рост доллара на 10% даст банку +24 млрд сум, рост евро на 10% — −8 млрд сум. Именно этот риск и ограничивают
+                лимиты в процентах капитала.
+            </div>
+        </section>
+
+        <!-- ── Проверь себя ───────────────────────────────────────── -->
+        <section class="lw-box" id="quiz">
+            <h2><i class="fas fa-circle-question"></i> Проверь себя</h2>
+            <details class="lw-q"><summary>В 17:00 позиция по доллару выше лимита. Можно закрыть её завтра утром?</summary>
+                <div><b>Нет.</b> Превышение нельзя переносить на следующий операционный день — балансирующие сделки нужно провести до конца текущего дня (п. 9).</div></details>
+            <details class="lw-q"><summary>Банк заключил форвард на продажу евро с поставкой через 3 месяца. Когда меняется позиция?</summary>
+                <div><b>В день сделки</b> — через внебалансовые счета «непредвиденных обстоятельств» (п. 6–7). Позиция по евро уменьшается сразу.</div></details>
+            <details class="lw-q"><summary>Начислены проценты по валютному кредиту, но клиент заплатит через месяц. Влияет ли это на ОВП?</summary>
+                <div><b>Да</b>, позиция возникает в день начисления дохода в валюте (п. 7).</div></details>
+            <details class="lw-q"><summary>По какому курсу считается позиция?</summary>
+                <div>По <b>курсу ЦБ</b> на отчётную дату, в сумовом эквиваленте, отдельно по каждой валюте и металлу (п. 3).</div></details>
+            <details class="lw-q"><summary>Филиал превысил свой внутренний лимит, но по банку в целом всё в норме. Нарушены ли Правила?</summary>
+                <div>Норматив ЦБ контролируется <b>консолидированно</b> (п. 10), поэтому нет. Лимиты филиалов — внутренние,
+                банк устанавливает и перераспределяет их сам (п. 11).</div></details>
+            <details class="lw-q"><summary>Где посмотреть, сколько процентов составляет лимит?</summary>
+                <div>В <b>решении Правления ЦБ</b> об установлении лимитов (п. 8) — в самих Правилах цифр нет.</div></details>
+        </section>
+
+        <p class="lw-src">
+            Источник: Правила ведения открытой валютной позиции, утверждены постановлением Правления ЦБ РУз от 30.04.2021 № 8/1,
+            рег. МЮ № 3301 от 07.05.2021, с изменениями № 3301-1 (с 25.10.2025) и № 3301-2 (с 27.09.2026)
+            (<a href="https://lex.uz/docs/5421525" target="_blank" rel="noopener">lex.uz</a>).
+            Страница — упрощённое объяснение; юридическую силу имеет только официальный текст.
+            <br><a class="lw-back" href="{% url 'laws-home' %}"><i class="fas fa-arrow-left"></i> Ко всем законам</a>
+        </p>
+    </div>
+</div>
+
+<script>
+(function () {
+    var start = [['USD', 120, 100, 12000], ['EUR', 20, 26, 13400]];
+    var tbody = document.querySelector('#fx-table tbody');
+    function addRow(r) {
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<td><input class="form-control form-control-sm" data-c="0" value="' + r[0] + '" style="min-width:5rem"></td>' +
+            [1, 2, 3].map(function (c) { return '<td><input class="form-control form-control-sm text-end" type="number" step="any" data-c="' + c + '" value="' + r[c] + '" style="min-width:6rem"></td>'; }).join('') +
+            '<td class="num fx-pos"></td><td class="num fx-pct"></td>' +
+            '<td><button type="button" class="btn btn-sm btn-link text-danger fx-del" title="Удалить"><i class="fas fa-xmark"></i></button></td>';
+        tbody.appendChild(tr);
+    }
+    function lim(id) { var v = parseFloat(document.getElementById(id).value); return isNaN(v) ? null : v / 100; }
+    function pct(x) { return (x * 100).toLocaleString('ru-RU', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '%'; }
+    function bln(x) { return x.toLocaleString('ru-RU', { maximumFractionDigits: 1 }); }
+    function pill(ratio, limit) {
+        if (limit === null) return '<span class="small text-muted">лимит не задан</span>';
+        return ratio > limit ? '<span class="lw-pill lw-bad">выше лимита ' + pct(limit) + '</span>'
+                             : '<span class="lw-pill lw-ok">в пределах ' + pct(limit) + '</span>';
+    }
+    function render() {
+        var cap = parseFloat(document.getElementById('fx-cap').value) || 0;
+        var l1 = lim('fx-l1'), long = 0, short = 0, breach = 0;
+        tbody.querySelectorAll('tr').forEach(function (tr) {
+            var f = function (c) { var v = parseFloat(tr.querySelector('[data-c="' + c + '"]').value); return isNaN(v) ? 0 : v; };
+            var pos = (f(1) - f(2)) * f(3) / 1000;          // млн ед. × сум → млрд сум
+            if (pos > 0) long += pos; else short += -pos;
+            var r = cap > 0 ? Math.abs(pos) / cap : 0;
+            if (l1 !== null && r > l1) breach++;
+            tr.querySelector('.fx-pos').innerHTML = (pos > 0 ? '+' : '') + bln(pos) + ' <span class="small text-muted">' + (pos > 0 ? 'длинная' : pos < 0 ? 'короткая' : 'закрыта') + '</span>';
+            tr.querySelector('.fx-pct').innerHTML = cap > 0 ? pct(r) + (l1 !== null && r > l1 ? ' <span class="lw-pill lw-bad">!</span>' : '') : '—';
+        });
+        var out = document.getElementById('fx-out');
+        if (cap <= 0) { out.innerHTML = '<div class="lw-res">Введите регулятивный капитал больше нуля.</div>'; return; }
+        var total = long + short;
+        out.innerHTML =
+            '<div class="lw-res"><div class="lw-res-l">Сумма длинных</div><div class="lw-res-v">' + pct(long / cap) + '</div>' + pill(long / cap, lim('fx-ll')) + ' <span class="small text-muted">' + bln(long) + ' млрд</span></div>' +
+            '<div class="lw-res"><div class="lw-res-l">Сумма коротких</div><div class="lw-res-v">' + pct(short / cap) + '</div>' + pill(short / cap, lim('fx-ls')) + ' <span class="small text-muted">' + bln(short) + ' млрд</span></div>' +
+            '<div class="lw-res"><div class="lw-res-l">Сумма всех ОВП (по модулю)</div><div class="lw-res-v">' + pct(total / cap) + '</div>' + pill(total / cap, lim('fx-lt')) + ' <span class="small text-muted">' + bln(total) + ' млрд</span></div>' +
+            '<div class="lw-res"><div class="lw-res-l">Балансирующая позиция в сумах</div><div class="lw-res-v">' + bln(Math.abs(long - short)) + '</div><span class="small text-muted">' + (long >= short ? 'короткая в сумах' : 'длинная в сумах') + '; валют выше лимита: ' + (l1 === null ? '—' : breach) + '</span></div>';
+    }
+    start.forEach(addRow);
+    document.getElementById('fx-add').addEventListener('click', function () { addRow(['', 0, 0, 0]); render(); });
+    tbody.addEventListener('click', function (e) {
+        var b = e.target.closest('.fx-del'); if (b) { b.closest('tr').remove(); render(); }
+    });
+    document.getElementById('calc').addEventListener('input', render);
+    render();
+})();
+</script>
+{% endblock %}

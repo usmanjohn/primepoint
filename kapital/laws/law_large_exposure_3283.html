@@ -151,6 +151,16 @@
     position: absolute; left: 0; color: var(--lw-ok);
 }
 
+/* abbreviations */
+.lw-abbr { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .5rem .9rem; margin: 0; }
+.lw-abbr > div {
+    display: flex; gap: .7rem; align-items: baseline; padding: .5rem .7rem;
+    background: #f8fafc; border: 1px solid var(--lw-line); border-radius: 8px;
+}
+.lw-abbr dt { flex: 0 0 4.6rem; font-weight: 700; color: var(--lw-navy); overflow-wrap: anywhere; }
+.lw-abbr dd { margin: 0; font-size: .9rem; }
+.lw-abbr dd small { display: block; color: var(--lw-muted); font-size: .8rem; }
+
 .lw-src { font-size: .85rem; color: var(--lw-muted); border-top: 1px solid var(--lw-line); padding-top: 1rem; }
 .lw-back { color: var(--lw-navy); font-weight: 600; text-decoration: none; }
 
@@ -187,7 +197,8 @@
     <div class="container-fluid px-4">
 
         <nav class="lw-nav">
-            <a href="#short">Коротко</a>
+            <a href="#short">Резюме</a>
+            <a href="#abbr">Сокращения</a>
             <a href="#what">Что считается риском</a>
             <a href="#group">Группа заёмщиков</a>
             <a href="#related">Связанные лица</a>
@@ -197,7 +208,7 @@
         </nav>
 
         <section class="lw-box" id="short">
-            <h2><i class="fas fa-bolt"></i> За 30 секунд</h2>
+            <h2><i class="fas fa-clipboard-list"></i> Резюме</h2>
             <p>Все лимиты считаются от <b>капитала I уровня</b> (Tier 1) банка.</p>
             <div class="lw-kpis">
                 <div class="lw-kpi"><b>25%</b><span>один заёмщик или группа связанных заёмщиков (п. 3)</span></div>
@@ -209,6 +220,21 @@
             </div>
             <p class="small text-muted mt-2 mb-0">Для микрофинансовых банков установлены отдельные лимиты — на этой странице не рассматриваются.</p>
         </section>
+
+        <!-- ── Сокращения ─────────────────────────────────────────── -->
+        <section class="lw-box" id="abbr">
+            <h2><i class="fas fa-spell-check"></i> Сокращения</h2>
+            <dl class="lw-abbr">
+                <div><dt>ЦБ РУз</dt><dd>Центральный банк Республики Узбекистан</dd></div>
+                <div><dt>МЮ</dt><dd>Министерство юстиции<small>«рег. МЮ №» — номер государственной регистрации документа</small></dd></div>
+                <div><dt>Tier 1</dt><dd>капитал I уровня<small>база всех лимитов этого положения</small></dd></div>
+                <div><dt>РУз</dt><dd>Республика Узбекистан</dd></div>
+                <div><dt>МФО</dt><dd>международные финансовые организации<small>в т. ч. банки развития; не микрофинансовые организации</small></dd></div>
+                <div><dt>Бланк</dt><dd>бланковый кредит<small>кредит без обеспечения; лимит — 5% Tier 1</small></dd></div>
+                <div><dt>п.</dt><dd>пункт положения</dd></div>
+            </dl>
+        </section>
+
 
         <section class="lw-box" id="what">
             <h2><i class="fas fa-magnifying-glass-dollar"></i> Что входит в «риск» (п. 2)</h2>
@@ -303,7 +329,7 @@
             </div>
             <div class="lw-note mb-0">
                 <b>Клиент стал связанным уже после выдачи кредита</b>
-                Это не нарушение, если банк в течение <b>10 дней</b> сообщил ЦБ и взял обязательство привести
+                Это не нарушение, если банк в течение <strong>10 дней</strong> сообщил ЦБ и взял обязательство привести
                 риск в норму в согласованный с ЦБ срок (п. 23).
             </div>
         </section>

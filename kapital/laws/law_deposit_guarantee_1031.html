@@ -1,0 +1,428 @@
+{% extends 'base.html' %}
+
+{% block title %}Гарантии защиты вкладов — Закон ЗРУ-1031{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ── Law explainer pages. Every rule is scoped under .lw so the dashboard's own
+      .card / .btn / .table styles are never touched. ─────────────────────────── */
+.lw {
+    --lw-navy: #1e3a8a;
+    --lw-amber: #f59e0b;
+    --lw-amber-d: #b45309;
+    --lw-ink: #1f2937;
+    --lw-muted: #6b7280;
+    --lw-line: #e5e7eb;
+    --lw-soft: #fff8eb;
+    --lw-ok: #15803d;
+    --lw-ok-bg: #dcfce7;
+    --lw-warn: #b45309;
+    --lw-warn-bg: #fef3c7;
+    --lw-bad: #b91c1c;
+    --lw-bad-bg: #fee2e2;
+    color: var(--lw-ink);
+    padding-bottom: 3rem;
+}
+.lw section, .lw .lw-anchor { scroll-margin-top: 80px; }
+
+/* hero */
+.lw-hero {
+    background: linear-gradient(135deg, #e2d2ce, #f7cc8b);
+    color: #5b3a2e;
+    border-radius: 0 0 18px 18px;
+    padding: 2.25rem 0 1.75rem;
+    margin-bottom: 1.5rem;
+}
+.lw-hero h1 { font-size: 2rem; font-weight: 700; margin: .5rem 0; }
+.lw-hero .lw-lead { font-size: 1.1rem; max-width: 820px; margin: 0; }
+.lw-doc {
+    display: inline-block; background: rgba(255,255,255,.7); color: var(--lw-navy);
+    font-weight: 600; font-size: .85rem; border-radius: 999px; padding: .25rem .8rem;
+}
+.lw-meta { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+.lw-meta span {
+    background: rgba(255,255,255,.55); border-radius: 8px; padding: .3rem .65rem; font-size: .85rem;
+}
+.lw-meta a { color: var(--lw-navy); font-weight: 600; }
+
+/* in-page navigation */
+.lw-nav {
+    position: sticky; top: 56px; z-index: 5; background: rgba(241,245,249,.95);
+    backdrop-filter: blur(4px); padding: .5rem 0; margin-bottom: 1rem;
+    display: flex; flex-wrap: wrap; gap: .4rem;
+}
+.lw-nav a {
+    text-decoration: none; font-size: .85rem; color: var(--lw-navy);
+    border: 1px solid #c7d2fe; background: #fff; border-radius: 999px; padding: .25rem .75rem;
+}
+.lw-nav a:hover { background: var(--lw-navy); color: #fff; }
+
+/* blocks */
+.lw-box {
+    background: #fff; border-radius: 14px; box-shadow: 0 2px 10px rgba(15,23,42,.06);
+    padding: 1.5rem; margin-bottom: 1.5rem;
+}
+.lw-box > h2 {
+    font-size: 1.35rem; font-weight: 700; color: var(--lw-navy); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: .6rem;
+}
+.lw-box > h2 i { color: var(--lw-amber); }
+.lw-box h3 { font-size: 1.05rem; font-weight: 700; margin-top: 1rem; }
+
+/* KPI tiles */
+.lw-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: .9rem; }
+.lw-kpi {
+    background: var(--lw-soft); border: 1px solid #fde68a; border-radius: 12px; padding: 1rem;
+}
+.lw-kpi b { display: block; font-size: 1.75rem; color: var(--lw-navy); line-height: 1.1; }
+.lw-kpi span { font-size: .88rem; color: var(--lw-muted); }
+
+/* formula strip */
+.lw-formula {
+    background: #0f172a; color: #f8fafc; border-radius: 10px; padding: .85rem 1rem;
+    font-family: SFMono-Regular, Menlo, Consolas, monospace; font-size: .95rem;
+    overflow-x: auto; white-space: nowrap; margin: .75rem 0;
+}
+.lw-formula em { color: #fbbf24; font-style: normal; }
+
+/* callouts */
+.lw-note, .lw-tip, .lw-alert {
+    border-radius: 10px; padding: .85rem 1rem; margin: 1rem 0; font-size: .95rem;
+    border-left: 5px solid;
+}
+.lw-note  { background: #eff6ff; border-color: #3b82f6; }
+.lw-tip   { background: var(--lw-ok-bg); border-color: var(--lw-ok); }
+.lw-alert { background: var(--lw-warn-bg); border-color: var(--lw-amber); }
+.lw-note b, .lw-tip b, .lw-alert b { display: block; margin-bottom: .2rem; }
+
+/* tables */
+.lw-table-wrap { overflow-x: auto; }
+.lw-table { width: 100%; border-collapse: collapse; font-size: .93rem; }
+.lw-table th { background: var(--lw-navy); color: #fff; font-weight: 600; padding: .55rem .7rem; text-align: left; }
+.lw-table td { border-bottom: 1px solid var(--lw-line); padding: .55rem .7rem; vertical-align: top; }
+.lw-table tr:nth-child(even) td { background: #f9fafb; }
+.lw-table .num { text-align: right; white-space: nowrap; font-weight: 600; }
+
+/* ladder / stack */
+.lw-stack { display: flex; flex-direction: column-reverse; gap: 3px; max-width: 520px; }
+.lw-stack div {
+    border-radius: 6px; padding: .45rem .8rem; color: #fff; font-size: .9rem;
+    display: flex; justify-content: space-between;
+}
+
+/* steps */
+.lw-steps { counter-reset: lw; list-style: none; padding: 0; margin: 0; }
+.lw-steps li { position: relative; padding: 0 0 .9rem 2.6rem; }
+.lw-steps li::before {
+    counter-increment: lw; content: counter(lw);
+    position: absolute; left: 0; top: 0; width: 1.9rem; height: 1.9rem; border-radius: 50%;
+    background: var(--lw-amber); color: #fff; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* calculator */
+.lw-calc { background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; padding: 1.25rem; }
+.lw-calc label { font-size: .85rem; color: var(--lw-muted); margin-bottom: .2rem; }
+.lw-calc input, .lw-calc select { font-weight: 600; }
+.lw-out { margin-top: 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .75rem; }
+.lw-res { background: #fff; border-radius: 10px; padding: .8rem 1rem; border: 1px solid var(--lw-line); }
+.lw-res .lw-res-v { font-size: 1.5rem; font-weight: 700; }
+.lw-res .lw-res-l { font-size: .85rem; color: var(--lw-muted); }
+.lw-bar { height: 8px; background: #e5e7eb; border-radius: 99px; margin-top: .45rem; position: relative; overflow: hidden; }
+.lw-bar i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 99px; background: var(--lw-ok); }
+.lw-pill { display: inline-block; border-radius: 999px; padding: .1rem .6rem; font-size: .78rem; font-weight: 700; }
+.lw-ok   { background: var(--lw-ok-bg); color: var(--lw-ok); }
+.lw-warn { background: var(--lw-warn-bg); color: var(--lw-warn); }
+.lw-bad  { background: var(--lw-bad-bg); color: var(--lw-bad); }
+
+/* quiz / FAQ — native <details>, works without JS */
+.lw-q { border: 1px solid var(--lw-line); border-radius: 10px; margin-bottom: .6rem; background: #fff; }
+.lw-q summary { cursor: pointer; padding: .75rem 1rem; font-weight: 600; list-style: none; }
+.lw-q summary::-webkit-details-marker { display: none; }
+.lw-q summary::before { content: "\f059"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--lw-amber); margin-right: .55rem; }
+.lw-q[open] summary { border-bottom: 1px solid var(--lw-line); }
+.lw-q div { padding: .75rem 1rem; }
+
+/* checklist */
+.lw-check { list-style: none; padding: 0; }
+.lw-check li { padding: .3rem 0 .3rem 1.8rem; position: relative; }
+.lw-check li::before {
+    content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900;
+    position: absolute; left: 0; color: var(--lw-ok);
+}
+
+/* abbreviations */
+.lw-abbr { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .5rem .9rem; margin: 0; }
+.lw-abbr > div {
+    display: flex; gap: .7rem; align-items: baseline; padding: .5rem .7rem;
+    background: #f8fafc; border: 1px solid var(--lw-line); border-radius: 8px;
+}
+.lw-abbr dt { flex: 0 0 4.6rem; font-weight: 700; color: var(--lw-navy); overflow-wrap: anywhere; }
+.lw-abbr dd { margin: 0; font-size: .9rem; }
+.lw-abbr dd small { display: block; color: var(--lw-muted); font-size: .8rem; }
+
+.lw-src { font-size: .85rem; color: var(--lw-muted); border-top: 1px solid var(--lw-line); padding-top: 1rem; }
+.lw-back { color: var(--lw-navy); font-weight: 600; text-decoration: none; }
+
+@media (max-width: 768px) {
+    .lw-hero h1 { font-size: 1.5rem; }
+    .lw-hero .lw-lead { font-size: 1rem; }
+    .lw-box { padding: 1.1rem; }
+    .lw-nav { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .lw-nav a { white-space: nowrap; flex: 0 0 auto; }
+}
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+<div class="lw">
+
+    <!-- ── Заголовок ─────────────────────────────────────────────── -->
+    <div class="lw-hero">
+        <div class="container-fluid px-4">
+            <span class="lw-doc"><i class="fas fa-landmark"></i> Закон РУз № ЗРУ-1031</span>
+            <h1>Гарантии защиты вкладов в банках</h1>
+            <p class="lw-lead">
+                Что вернут вкладчику, если у банка отзовут лицензию, сколько и как быстро. С 2025 года
+                гарантия больше не 100%: <strong>до 200 млн сум на одного вкладчика в одном банке</strong>,
+                а банки платят взносы в Фонд гарантирования вкладов.
+            </p>
+            <div class="lw-meta">
+                <span><i class="far fa-calendar"></i> Подписан: 18.02.2025</span>
+                <span><i class="fas fa-play"></i> Вступил в силу: 19.02.2025</span>
+                <span><i class="fas fa-pen"></i> Изменения: ЗРУ-1126, с 29.06.2026</span>
+                <span><a href="https://lex.uz/docs/7389439" target="_blank" rel="noopener">Текст на lex.uz <i class="fas fa-arrow-up-right-from-square"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid px-4">
+
+        <nav class="lw-nav">
+            <a href="#short">Резюме</a>
+            <a href="#abbr">Сокращения</a>
+            <a href="#covered">Что гарантируется</a>
+            <a href="#payout">Выплата</a>
+            <a href="#old">Старые вклады</a>
+            <a href="#fund">Взносы банков</a>
+            <a href="#calc">Калькулятор</a>
+            <a href="#quiz">Проверь себя</a>
+        </nav>
+
+        <!-- ── Резюме ────────────────────────────────────────────── -->
+        <section class="lw-box" id="short">
+            <h2><i class="fas fa-clipboard-list"></i> Резюме</h2>
+            <div class="lw-kpis">
+                <div class="lw-kpi"><b>200 млн</b><span>сум — максимум компенсации одному вкладчику в одном банке (ст. 26)</span></div>
+                <div class="lw-kpi"><b>Физлица + юрлица</b><span>и ИП, в сумах и в валюте (ст. 25)</span></div>
+                <div class="lw-kpi"><b>7 раб. дней</b><span>доступ к выплате для ¾ вкладчиков с 01.01.2027 (сейчас — 15)</span></div>
+                <div class="lw-kpi"><b>≤ 0,5%</b><span>депозитной базы в квартал — потолок календарного взноса банка</span></div>
+                <div class="lw-kpi"><b>5%</b><span>гарантированных вкладов — целевой размер Фонда</span></div>
+            </div>
+            <div class="lw-alert">
+                <b><i class="fas fa-triangle-exclamation"></i> Что изменилось по сравнению со старым законом</b>
+                Закон № 360-II (2002) гарантировал вклады граждан полностью. Новый закон ставит лимит 200 млн сум,
+                распространяет защиту на <strong>юридических лиц</strong> и создаёт <strong>Агентство по гарантированию вкладов</strong> —
+                правопреемника Фонда гарантирования вкладов граждан (ст. 51).
+            </div>
+        </section>
+
+        <!-- ── Сокращения ─────────────────────────────────────────── -->
+        <section class="lw-box" id="abbr">
+            <h2><i class="fas fa-spell-check"></i> Сокращения</h2>
+            <dl class="lw-abbr">
+                <div><dt>ЗРУ</dt><dd>Закон Республики Узбекистан<small>номер закона, например ЗРУ-1031</small></dd></div>
+                <div><dt>ЦБ</dt><dd>Центральный банк Республики Узбекистан</dd></div>
+                <div><dt>Агентство</dt><dd>Агентство по гарантированию вкладов<small>управляет Фондом и выплачивает компенсации</small></dd></div>
+                <div><dt>Фонд</dt><dd>Фонд гарантирования вкладов<small>отдельные средства, из которых платят вкладчикам</small></dd></div>
+                <div><dt>ИП</dt><dd>индивидуальный предприниматель</dd></div>
+                <div><dt>Банк-агент</dt><dd>банк, через который Агентство платит компенсации<small>выбирается по согласованию с ЦБ</small></dd></div>
+                <div><dt>Промежуточный банк</dt><dd>промежуточный (bridge) банк, созданный по законодательству<small>6 месяцев не платит взносы (ст. 17)</small></dd></div>
+                <div><dt>ПОД/ФТ</dt><dd>противодействие легализации доходов и финансированию терроризма<small>деньги, признанные судом «грязными», не компенсируются</small></dd></div>
+                <div><dt>ст.</dt><dd>статья закона</dd></div>
+            </dl>
+        </section>
+
+        <!-- ── Что гарантируется ─────────────────────────────────── -->
+        <section class="lw-box" id="covered">
+            <h2><i class="fas fa-shield-halved"></i> Что гарантируется (ст. 25)</h2>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <h3 class="mt-0"><i class="fas fa-check text-success"></i> Гарантируется</h3>
+                    <ul class="lw-check">
+                        <li>вклады и остатки на счетах <b>физических лиц, ИП и юридических лиц</b>, в сумах и в иностранной валюте;</li>
+                        <li>средства на эскроу-счетах и по сберегательным (депозитным) сертификатам;</li>
+                        <li>начисленные, но не выплаченные до гарантийного случая проценты.</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h3 class="mt-0"><i class="fas fa-xmark text-danger"></i> Не гарантируется</h3>
+                    <ul>
+                        <li>вклады банков, лизинговых, страховых компаний, фондов и других финансовых организаций;</li>
+                        <li>вклады государственных органов, организаций и предприятий;</li>
+                        <li>вклады лиц, связанных с банком (кроме членов правления и ключевого персонала — в пределах зарплаты за 3 месяца);</li>
+                        <li>вклады в дочерних банках и филиалах за рубежом; средства индивидуальных накопительных пенсионных счетов;</li>
+                        <li>инвестиционные вклады в исламских банках (с 29.06.2026);</li>
+                        <li>деньги, связанные с отмыванием доходов и финансированием терроризма по решению суда.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lw-note">
+                <b>Вообще не считаются вкладом</b>
+                Акции и инструменты капитала банка, облигации и векселя банка, субординированный долг,
+                содержимое сейфовых ячеек, требования по деривативам и по доверительному управлению.
+                Клиенту, который купил облигацию банка, компенсация не положена.
+            </div>
+        </section>
+
+        <!-- ── Выплата ────────────────────────────────────────────── -->
+        <section class="lw-box" id="payout">
+            <h2><i class="fas fa-hand-holding-dollar"></i> Когда и как платят (ст. 26–31)</h2>
+            <p><b>Гарантийный случай</b> — ЦБ отозвал лицензию банка и принято решение о его принудительной ликвидации (ст. 3).</p>
+            <div class="lw-formula">Компенсация = min( <em>все вклады в этом банке</em> ; 200 млн ) − <em>просроченные долги вкладчика банку</em></div>
+            <ul>
+                <li>Лимит общий на <b>все вклады одного человека в одном банке</b>, независимо от валюты (ст. 26). Вклады в разных банках защищены отдельно.</li>
+                <li>Валютный вклад выплачивается <b>в сумах по курсу ЦБ</b> на дату гарантийного случая (ст. 27).</li>
+                <li>Если у вкладчика есть долг перед банком, срок которого наступил, — он вычитается из компенсации.</li>
+                <li>Всё, что выше 200 млн, вкладчик требует у ликвидируемого банка в общей очереди (ст. 31).</li>
+            </ul>
+            <h3>График выплат (ст. 29)</h3>
+            <div class="lw-table-wrap">
+                <table class="lw-table">
+                    <thead><tr><th>С какой даты</th><th class="num">Доступ к выплате для ¾ вкладчиков</th><th class="num">Реестр от ликвидатора</th><th class="num">Публикация Агентством</th></tr></thead>
+                    <tbody>
+                        <tr><td>01.01.2025</td><td class="num">20 раб. дней</td><td class="num">10 раб. дней</td><td class="num">2 раб. дня</td></tr>
+                        <tr><td>01.01.2026</td><td class="num">15 раб. дней</td><td class="num">8 раб. дней</td><td class="num">2 раб. дня</td></tr>
+                        <tr><td>01.01.2027</td><td class="num">7 раб. дней</td><td class="num">3 раб. дня</td><td class="num">1 раб. день</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="lw-tip">
+                <b>Деньги не сгорают</b>
+                Банк-агент платит до одного года. Невостребованные суммы остаются собственностью вкладчика —
+                их можно истребовать у Агентства в любое время (ст. 29, 32).
+            </div>
+            <div class="lw-note">
+                <b>Дополнительная компенсация (ст. 28)</b>
+                Если вклады получены по наследству или банки слились (в течение 6 месяцев после слияния),
+                лимит считается отдельно по каждому исходному банку. В эти 6 месяцев часть вклада сверх лимита
+                можно забрать досрочно без потери процентов.
+            </div>
+        </section>
+
+        <!-- ── Старые вклады ─────────────────────────────────────── -->
+        <section class="lw-box" id="old">
+            <h2><i class="fas fa-clock-rotate-left"></i> Вклады, открытые до 19.02.2025 (ст. 51)</h2>
+            <p>Лимит 200 млн <b>не применяется</b> к вкладам граждан, внесённым до вступления закона в силу, — кроме двух случаев:</p>
+            <ol class="lw-steps">
+                <li>вклад после 19.02.2025 <b>пополнили сверх лимита и продлили</b> срок;</li>
+                <li>вклады и требования <b>до востребования</b> (возвращаются по первому требованию).</li>
+            </ol>
+            <div class="lw-alert mb-0">
+                <b>Практический вывод для фронт-офиса</b>
+                Продление старого крупного срочного вклада с пополнением переводит его под лимит 200 млн.
+                Клиенту стоит сказать об этом заранее.
+            </div>
+        </section>
+
+        <!-- ── Взносы ─────────────────────────────────────────────── -->
+        <section class="lw-box" id="fund">
+            <h2><i class="fas fa-piggy-bank"></i> Взносы банков в Фонд (ст. 16–20)</h2>
+            <p>Участие в системе обязательно для каждого банка с лицензией — с момента её выдачи (ст. 14).
+            Взносы платятся в сумах, относятся на расходы и уменьшают налоговую базу (ст. 17).</p>
+            <div class="lw-table-wrap">
+                <table class="lw-table">
+                    <thead><tr><th>Взнос</th><th>Размер</th><th>Срок</th></tr></thead>
+                    <tbody>
+                        <tr><td><b>Единовременный</b> (новый банк)</td><td>0,1% минимального уставного капитала</td><td>10 раб. дней после выдачи лицензии</td></tr>
+                        <tr><td><b>Календарный</b></td><td>ставка × депозитная база; ставка ≤ 0,5% в квартал, утверждается ежегодно до 30 октября</td><td>до 15-го числа месяца после квартала</td></tr>
+                        <tr><td><b>Специальный</b></td><td>при дефиците Фонда; не чаще раза в 12 месяцев и не больше календарных взносов банка за 12 месяцев</td><td>не менее 10 дней после уведомления</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <ul class="mt-3 mb-0">
+                <li>Ставка может зависеть от <b>профиля риска</b> банка; сама оценка не раскрывается, кроме группы риска (ст. 19).</li>
+                <li>Просрочка календарного взноса — пеня по <b>двойной основной ставке ЦБ</b> за каждый день (ст. 19).</li>
+                <li>Целевой размер Фонда — <b>5%</b> гарантированных вкладов по итогам квартала (ст. 16); достичь его нужно за 5 лет (ст. 51).</li>
+                <li>Специальный взнос согласуется с ЦБ; если взнос угрожает платёжеспособности банка, ЦБ может потребовать для него отсрочку до 6 месяцев (ст. 20).</li>
+            </ul>
+        </section>
+
+        <!-- ── Калькулятор ────────────────────────────────────────── -->
+        <section class="lw-box" id="calc">
+            <h2><i class="fas fa-calculator"></i> Калькулятор компенсации</h2>
+            <p class="text-muted small">Один вкладчик, один банк, вклады после 19.02.2025. Суммы — в сумах, валюта — в единицах валюты по курсу ЦБ.</p>
+            <div class="lw-calc">
+                <div class="row g-3">
+                    <div class="col-6 col-md-4 col-xl-2"><label for="dg-uzs">Вклады в сумах</label><input id="dg-uzs" class="form-control" type="number" value="150000000" min="0" step="any"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="dg-fx">Вклады в валюте</label><input id="dg-fx" class="form-control" type="number" value="8000" min="0" step="any"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="dg-rate">Курс ЦБ</label><input id="dg-rate" class="form-control" type="number" value="12000" min="0" step="any"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="dg-int">Начисл. проценты</label><input id="dg-int" class="form-control" type="number" value="2000000" min="0" step="any"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="dg-debt">Просроч. долг банку</label><input id="dg-debt" class="form-control" type="number" value="0" min="0" step="any"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="dg-lim">Лимит</label><input id="dg-lim" class="form-control" type="number" value="200000000" min="0" step="any"></div>
+                </div>
+                <div class="lw-out" id="dg-out"></div>
+            </div>
+            <div class="lw-note mb-0">
+                <b>Пример по умолчанию</b>
+                150 млн сум + 8 000 $ × 12 000 = 96 млн + 2 млн процентов = 248 млн. Компенсация — 200 млн,
+                остальные 48 млн — требование к ликвидируемому банку.
+            </div>
+        </section>
+
+        <!-- ── Проверь себя ───────────────────────────────────────── -->
+        <section class="lw-box" id="quiz">
+            <h2><i class="fas fa-circle-question"></i> Проверь себя</h2>
+            <details class="lw-q"><summary>У клиента по 150 млн сум в двух разных банках. Оба лишились лицензии. Сколько он получит?</summary>
+                <div><b>300 млн</b>: лимит 200 млн считается отдельно по каждому банку, а каждый вклад меньше лимита.</div></details>
+            <details class="lw-q"><summary>У компании (ООО) 500 млн на расчётном счёте. Защищены ли эти деньги?</summary>
+                <div><b>Да, в пределах 200 млн.</b> Новый закон защищает и юридических лиц, если это не финансовая или государственная организация.</div></details>
+            <details class="lw-q"><summary>Вклад 20 000 $. В какой валюте выплатят компенсацию?</summary>
+                <div>В <b>сумах</b> по курсу ЦБ на дату гарантийного случая, в пределах 200 млн сум (ст. 27).</div></details>
+            <details class="lw-q"><summary>Клиент купил облигации банка на 50 млн. Это вклад?</summary>
+                <div><b>Нет.</b> Долговые ценные бумаги банка прямо исключены из понятия вклада (ст. 25).</div></details>
+            <details class="lw-q"><summary>Сколько максимум банк может заплатить календарным взносом за квартал?</summary>
+                <div>Ставка не выше <b>0,5%</b> депозитной базы за квартал; конкретную ставку утверждает Совет Агентства до 30 октября (ст. 19).</div></details>
+            <details class="lw-q"><summary>Срочный вклад гражданина на 400 млн открыт в 2024 году. Действует ли лимит?</summary>
+                <div><b>Нет</b>, пока вклад не пополнили сверх лимита с продлением срока после 19.02.2025 (ст. 51).
+                Для вкладов до востребования лимит действует в любом случае.</div></details>
+        </section>
+
+        <p class="lw-src">
+            Источник: Закон Республики Узбекистан от 18.02.2025 № ЗРУ-1031 «О гарантиях защиты вкладов в банках»,
+            вступил в силу 19.02.2025, с изменениями Закона от 27.03.2026 № ЗРУ-1126 (с 29.06.2026)
+            (<a href="https://lex.uz/docs/7389439" target="_blank" rel="noopener">lex.uz</a>). Закон № 360-II от 05.04.2002 утратил силу.
+            Страница — упрощённое объяснение; юридическую силу имеет только официальный текст.
+            <br><a class="lw-back" href="{% url 'laws-home' %}"><i class="fas fa-arrow-left"></i> Ко всем законам</a>
+        </p>
+    </div>
+</div>
+
+<script>
+(function () {
+    var ids = ['uzs', 'fx', 'rate', 'int', 'debt', 'lim'];
+    function val(id) { var v = parseFloat(document.getElementById('dg-' + id).value); return isNaN(v) ? 0 : v; }
+    function sum(x) { return Math.round(x).toLocaleString('ru-RU') + ' сум'; }
+    function box(label, value, note, pill) {
+        return '<div class="lw-res"><div class="lw-res-l">' + label + '</div><div class="lw-res-v">' + value + '</div>' +
+            (pill ? '<span class="lw-pill ' + pill[0] + '">' + pill[1] + '</span> ' : '') +
+            '<span class="small text-muted">' + note + '</span></div>';
+    }
+    function render() {
+        var total = val('uzs') + val('fx') * val('rate') + val('int');
+        var guaranteed = Math.min(total, val('lim'));
+        var comp = Math.max(0, guaranteed - val('debt'));
+        var excess = Math.max(0, total - val('lim'));
+        var share = total > 0 ? guaranteed / total * 100 : 0;
+        document.getElementById('dg-out').innerHTML =
+            box('Все вклады в банке', sum(total), 'сумы + валюта по курсу + проценты') +
+            box('Компенсация от Агентства', sum(comp), 'гарантировано ' + sum(guaranteed) + ' − долг ' + sum(val('debt')),
+                excess > 0 ? ['lw-warn', 'упёрлись в лимит'] : ['lw-ok', 'покрыто полностью']) +
+            box('Требование к ликвидируемому банку', sum(excess), 'часть сверх лимита, общая очередь') +
+            box('Доля, покрытая гарантией', share.toLocaleString('ru-RU', { maximumFractionDigits: 1 }) + '%', 'компенсация до вычета долгов / все вклады');
+    }
+    ids.forEach(function (id) { document.getElementById('dg-' + id).addEventListener('input', render); });
+    render();
+})();
+</script>
+{% endblock %}

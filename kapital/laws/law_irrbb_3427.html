@@ -1,0 +1,508 @@
+{% extends 'base.html' %}
+
+{% block title %}Процентный риск банковской книги — Положение № 3427{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ── Law explainer pages. Every rule is scoped under .lw so the dashboard's own
+      .card / .btn / .table styles are never touched. ─────────────────────────── */
+.lw {
+    --lw-navy: #1e3a8a;
+    --lw-amber: #f59e0b;
+    --lw-amber-d: #b45309;
+    --lw-ink: #1f2937;
+    --lw-muted: #6b7280;
+    --lw-line: #e5e7eb;
+    --lw-soft: #fff8eb;
+    --lw-ok: #15803d;
+    --lw-ok-bg: #dcfce7;
+    --lw-warn: #b45309;
+    --lw-warn-bg: #fef3c7;
+    --lw-bad: #b91c1c;
+    --lw-bad-bg: #fee2e2;
+    color: var(--lw-ink);
+    padding-bottom: 3rem;
+}
+.lw section, .lw .lw-anchor { scroll-margin-top: 80px; }
+
+/* hero */
+.lw-hero {
+    background: linear-gradient(135deg, #e2d2ce, #f7cc8b);
+    color: #5b3a2e;
+    border-radius: 0 0 18px 18px;
+    padding: 2.25rem 0 1.75rem;
+    margin-bottom: 1.5rem;
+}
+.lw-hero h1 { font-size: 2rem; font-weight: 700; margin: .5rem 0; }
+.lw-hero .lw-lead { font-size: 1.1rem; max-width: 820px; margin: 0; }
+.lw-doc {
+    display: inline-block; background: rgba(255,255,255,.7); color: var(--lw-navy);
+    font-weight: 600; font-size: .85rem; border-radius: 999px; padding: .25rem .8rem;
+}
+.lw-meta { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+.lw-meta span {
+    background: rgba(255,255,255,.55); border-radius: 8px; padding: .3rem .65rem; font-size: .85rem;
+}
+.lw-meta a { color: var(--lw-navy); font-weight: 600; }
+
+/* in-page navigation */
+.lw-nav {
+    position: sticky; top: 56px; z-index: 5; background: rgba(241,245,249,.95);
+    backdrop-filter: blur(4px); padding: .5rem 0; margin-bottom: 1rem;
+    display: flex; flex-wrap: wrap; gap: .4rem;
+}
+.lw-nav a {
+    text-decoration: none; font-size: .85rem; color: var(--lw-navy);
+    border: 1px solid #c7d2fe; background: #fff; border-radius: 999px; padding: .25rem .75rem;
+}
+.lw-nav a:hover { background: var(--lw-navy); color: #fff; }
+
+/* blocks */
+.lw-box {
+    background: #fff; border-radius: 14px; box-shadow: 0 2px 10px rgba(15,23,42,.06);
+    padding: 1.5rem; margin-bottom: 1.5rem;
+}
+.lw-box > h2 {
+    font-size: 1.35rem; font-weight: 700; color: var(--lw-navy); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: .6rem;
+}
+.lw-box > h2 i { color: var(--lw-amber); }
+.lw-box h3 { font-size: 1.05rem; font-weight: 700; margin-top: 1rem; }
+
+/* KPI tiles */
+.lw-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: .9rem; }
+.lw-kpi {
+    background: var(--lw-soft); border: 1px solid #fde68a; border-radius: 12px; padding: 1rem;
+}
+.lw-kpi b { display: block; font-size: 1.75rem; color: var(--lw-navy); line-height: 1.1; }
+.lw-kpi span { font-size: .88rem; color: var(--lw-muted); }
+
+/* formula strip */
+.lw-formula {
+    background: #0f172a; color: #f8fafc; border-radius: 10px; padding: .85rem 1rem;
+    font-family: SFMono-Regular, Menlo, Consolas, monospace; font-size: .95rem;
+    overflow-x: auto; white-space: nowrap; margin: .75rem 0;
+}
+.lw-formula em { color: #fbbf24; font-style: normal; }
+
+/* callouts */
+.lw-note, .lw-tip, .lw-alert {
+    border-radius: 10px; padding: .85rem 1rem; margin: 1rem 0; font-size: .95rem;
+    border-left: 5px solid;
+}
+.lw-note  { background: #eff6ff; border-color: #3b82f6; }
+.lw-tip   { background: var(--lw-ok-bg); border-color: var(--lw-ok); }
+.lw-alert { background: var(--lw-warn-bg); border-color: var(--lw-amber); }
+.lw-note b, .lw-tip b, .lw-alert b { display: block; margin-bottom: .2rem; }
+
+/* tables */
+.lw-table-wrap { overflow-x: auto; }
+.lw-table { width: 100%; border-collapse: collapse; font-size: .93rem; }
+.lw-table th { background: var(--lw-navy); color: #fff; font-weight: 600; padding: .55rem .7rem; text-align: left; }
+.lw-table td { border-bottom: 1px solid var(--lw-line); padding: .55rem .7rem; vertical-align: top; }
+.lw-table tr:nth-child(even) td { background: #f9fafb; }
+.lw-table .num { text-align: right; white-space: nowrap; font-weight: 600; }
+
+/* ladder / stack */
+.lw-stack { display: flex; flex-direction: column-reverse; gap: 3px; max-width: 520px; }
+.lw-stack div {
+    border-radius: 6px; padding: .45rem .8rem; color: #fff; font-size: .9rem;
+    display: flex; justify-content: space-between;
+}
+
+/* steps */
+.lw-steps { counter-reset: lw; list-style: none; padding: 0; margin: 0; }
+.lw-steps li { position: relative; padding: 0 0 .9rem 2.6rem; }
+.lw-steps li::before {
+    counter-increment: lw; content: counter(lw);
+    position: absolute; left: 0; top: 0; width: 1.9rem; height: 1.9rem; border-radius: 50%;
+    background: var(--lw-amber); color: #fff; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* calculator */
+.lw-calc { background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; padding: 1.25rem; }
+.lw-calc label { font-size: .85rem; color: var(--lw-muted); margin-bottom: .2rem; }
+.lw-calc input, .lw-calc select { font-weight: 600; }
+.lw-out { margin-top: 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .75rem; }
+.lw-res { background: #fff; border-radius: 10px; padding: .8rem 1rem; border: 1px solid var(--lw-line); }
+.lw-res .lw-res-v { font-size: 1.5rem; font-weight: 700; }
+.lw-res .lw-res-l { font-size: .85rem; color: var(--lw-muted); }
+.lw-bar { height: 8px; background: #e5e7eb; border-radius: 99px; margin-top: .45rem; position: relative; overflow: hidden; }
+.lw-bar i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 99px; background: var(--lw-ok); }
+.lw-pill { display: inline-block; border-radius: 999px; padding: .1rem .6rem; font-size: .78rem; font-weight: 700; }
+.lw-ok   { background: var(--lw-ok-bg); color: var(--lw-ok); }
+.lw-warn { background: var(--lw-warn-bg); color: var(--lw-warn); }
+.lw-bad  { background: var(--lw-bad-bg); color: var(--lw-bad); }
+
+/* quiz / FAQ — native <details>, works without JS */
+.lw-q { border: 1px solid var(--lw-line); border-radius: 10px; margin-bottom: .6rem; background: #fff; }
+.lw-q summary { cursor: pointer; padding: .75rem 1rem; font-weight: 600; list-style: none; }
+.lw-q summary::-webkit-details-marker { display: none; }
+.lw-q summary::before { content: "\f059"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--lw-amber); margin-right: .55rem; }
+.lw-q[open] summary { border-bottom: 1px solid var(--lw-line); }
+.lw-q div { padding: .75rem 1rem; }
+
+/* checklist */
+.lw-check { list-style: none; padding: 0; }
+.lw-check li { padding: .3rem 0 .3rem 1.8rem; position: relative; }
+.lw-check li::before {
+    content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900;
+    position: absolute; left: 0; color: var(--lw-ok);
+}
+
+/* abbreviations */
+.lw-abbr { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .5rem .9rem; margin: 0; }
+.lw-abbr > div {
+    display: flex; gap: .7rem; align-items: baseline; padding: .5rem .7rem;
+    background: #f8fafc; border: 1px solid var(--lw-line); border-radius: 8px;
+}
+.lw-abbr dt { flex: 0 0 4.6rem; font-weight: 700; color: var(--lw-navy); overflow-wrap: anywhere; }
+.lw-abbr dd { margin: 0; font-size: .9rem; }
+.lw-abbr dd small { display: block; color: var(--lw-muted); font-size: .8rem; }
+
+.lw-src { font-size: .85rem; color: var(--lw-muted); border-top: 1px solid var(--lw-line); padding-top: 1rem; }
+.lw-back { color: var(--lw-navy); font-weight: 600; text-decoration: none; }
+
+@media (max-width: 768px) {
+    .lw-hero h1 { font-size: 1.5rem; }
+    .lw-hero .lw-lead { font-size: 1rem; }
+    .lw-box { padding: 1.1rem; }
+    .lw-nav { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .lw-nav a { white-space: nowrap; flex: 0 0 auto; }
+}
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+<div class="lw">
+
+    <!-- ── Заголовок ─────────────────────────────────────────────── -->
+    <div class="lw-hero">
+        <div class="container-fluid px-4">
+            <span class="lw-doc"><i class="fas fa-landmark"></i> Положение ЦБ РУз № 3427 · глава 11²</span>
+            <h1>Процентный риск банковской книги (IRRBB)</h1>
+            <p class="lw-lead">
+                Что будет с капиталом и процентным доходом банка, если ставки резко изменятся.
+                С 25 апреля 2025 года банк обязан измерять этот риск <strong>двумя метриками</strong>
+                и прогонять <strong>шесть сценариев</strong> движения ставок.
+            </p>
+            <div class="lw-meta">
+                <span><i class="far fa-calendar"></i> Глава добавлена изменениями № 3427-1 (рег. 21.01.2025)</span>
+                <span><i class="fas fa-play"></i> Действует с: 25.04.2025</span>
+                <span><a href="https://lex.uz/docs/6436466" target="_blank" rel="noopener">Текст на lex.uz <i class="fas fa-arrow-up-right-from-square"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid px-4">
+
+        <nav class="lw-nav">
+            <a href="#short">Резюме</a>
+            <a href="#abbr">Сокращения</a>
+            <a href="#book">Банковская книга</a>
+            <a href="#sources">Три источника</a>
+            <a href="#metrics">EVE и NII</a>
+            <a href="#scenarios">Шесть сценариев</a>
+            <a href="#req">Что требуется</a>
+            <a href="#calc">Калькулятор</a>
+            <a href="#example">Пример</a>
+            <a href="#quiz">Проверь себя</a>
+        </nav>
+
+        <!-- ── Резюме ────────────────────────────────────────────── -->
+        <section class="lw-box" id="short">
+            <h2><i class="fas fa-clipboard-list"></i> Резюме</h2>
+            <div class="lw-kpis">
+                <div class="lw-kpi"><b>3</b><span>источника риска: разрыв сроков, базисный и опционный (п. 124¹³)</span></div>
+                <div class="lw-kpi"><b>2</b><span>метрики: влияние на экономическую стоимость капитала и на чистый процентный доход (п. 124¹⁷)</span></div>
+                <div class="lw-kpi"><b>6</b><span>сценариев стресс-теста: параллельные, наклон кривой, короткие ставки (п. 124¹⁸)</span></div>
+                <div class="lw-kpi"><b>Ежекв.</b><span>отчёт службы рисков наблюдательному совету, ежемесячно — правлению (п. 34)</span></div>
+            </div>
+            <div class="lw-alert">
+                <b><i class="fas fa-triangle-exclamation"></i> Размеры шоков положение не задаёт</b>
+                ЦБ перечисляет <strong>формы</strong> сценариев, но не их величину в базисных пунктах и не порог «слишком большого» риска.
+                Их банк устанавливает в своей политике и риск-аппетите. Значения в калькуляторе — пример.
+            </div>
+        </section>
+
+        <!-- ── Сокращения ─────────────────────────────────────────── -->
+        <section class="lw-box" id="abbr">
+            <h2><i class="fas fa-spell-check"></i> Сокращения</h2>
+            <dl class="lw-abbr">
+                <div><dt>IRRBB</dt><dd>процентный риск банковской книги<small>Interest Rate Risk in the Banking Book</small></dd></div>
+                <div><dt>EVE</dt><dd>экономическая стоимость капитала<small>Economic Value of Equity: текущая стоимость активов минус обязательств</small></dd></div>
+                <div><dt>ΔEVE</dt><dd>изменение EVE при шоке ставок<small>в положении — влияние на капитал (п. 124¹⁷)</small></dd></div>
+                <div><dt>NII</dt><dd>чистый процентный доход<small>Net Interest Income</small></dd></div>
+                <div><dt>ΔNII</dt><dd>изменение NII за 12 месяцев при шоке<small>в положении — влияние на чистый процентный доход</small></dd></div>
+                <div><dt>б.п. / bp</dt><dd>базисный пункт<small>0,01 процентного пункта: 200 б.п. = 2%</small></dd></div>
+                <div><dt>Гэп</dt><dd>разрыв: активы − обязательства в одном интервале пересмотра ставки<small>англ. repricing gap</small></dd></div>
+                <div><dt>ALCO</dt><dd>комитет по управлению активами и пассивами<small>Asset-Liability Committee</small></dd></div>
+                <div><dt>BCBS</dt><dd>Базельский комитет по банковскому надзору<small>его стандарт IRRBB (2016) — источник шести сценариев</small></dd></div>
+                <div><dt>Tier 1</dt><dd>капитал I уровня</dd></div>
+                <div><dt>п. 124¹⁸</dt><dd>пункт, добавленный поправками<small>нумерация с верхним индексом</small></dd></div>
+            </dl>
+        </section>
+
+        <!-- ── Банковская книга ───────────────────────────────────── -->
+        <section class="lw-box" id="book">
+            <h2><i class="fas fa-book"></i> Банковская и торговая книга (п. 1)</h2>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <h3 class="mt-0">Торговая книга</h3>
+                    <p class="mb-0">Инструменты, купленные, чтобы заработать на краткосрочных колебаниях цены, или для хеджирования.
+                    Их процентный риск — часть <b>рыночного</b> риска.</p>
+                </div>
+                <div class="col-md-6">
+                    <h3 class="mt-0">Банковская книга</h3>
+                    <p class="mb-0">Всё остальное, что держится до погашения: кредиты, депозиты, облигации до погашения, внебалансовые
+                    позиции. Это и есть основной баланс банка — и <b>основной</b> процентный риск.</p>
+                </div>
+            </div>
+            <div class="lw-note mb-0">
+                <b>Почему это важно</b>
+                Банк берёт короткие депозиты и выдаёт длинные кредиты. Когда ставки растут, депозиты переоцениваются быстрее —
+                маржа сжимается, а стоимость длинных активов с фиксированной ставкой падает.
+            </div>
+        </section>
+
+        <!-- ── Три источника ──────────────────────────────────────── -->
+        <section class="lw-box" id="sources">
+            <h2><i class="fas fa-code-branch"></i> Три источника риска (п. 124¹³)</h2>
+            <ol class="lw-steps">
+                <li><b>Риск разрыва (гэп).</b> Ставки по активам и обязательствам меняются в разное время: кредит на 5 лет по фиксированной ставке,
+                    депозит на 3 месяца — переоценивается каждый квартал.</li>
+                <li><b>Базисный риск.</b> Ставки привязаны к разным рыночным индикаторам, которые движутся неодинаково: кредит —
+                    к одному индексу, фондирование — к другому.</li>
+                <li><b>Опционный риск.</b> Клиент может изменить сумму или срок: досрочно погасить кредит, когда ставки падают,
+                    или забрать вклад, когда растут.</li>
+            </ol>
+        </section>
+
+        <!-- ── Метрики ────────────────────────────────────────────── -->
+        <section class="lw-box" id="metrics">
+            <h2><i class="fas fa-scale-balanced"></i> Две обязательные метрики (п. 124¹⁷)</h2>
+            <div class="row g-3">
+                <div class="col-lg-6">
+                    <h3 class="mt-0">ΔEVE — влияние на капитал</h3>
+                    <div class="lw-formula">ΔEVE = Σ <em>Гэп</em><sub>t</sub> × ( e<sup>−(r+Δr)·t</sup> − e<sup>−r·t</sup> )</div>
+                    <p class="mb-0">Как изменится текущая стоимость всех будущих потоков банковской книги. Смотрит на <b>весь срок</b>
+                    — длинные позиции весят больше всего.</p>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="mt-0">ΔNII — влияние на доход</h3>
+                    <div class="lw-formula">ΔNII = Σ<sub>t &lt; 1 год</sub> <em>Гэп</em><sub>t</sub> × Δr × (1 − t)</div>
+                    <p class="mb-0">Насколько изменится чистый процентный доход за ближайшие 12 месяцев, если баланс останется прежним.
+                    Видит только то, что переоценится <b>в течение года</b>.</p>
+                </div>
+            </div>
+            <div class="lw-tip">
+                <b>Почему две</b>
+                Они часто показывают противоположное. Банк с короткими обязательствами и длинными активами при росте ставок теряет
+                и в доходе, и в стоимости, а при «крутой» кривой доход может даже вырасти, пока стоимость падает. Одна метрика
+                прячет то, что видит другая.
+            </div>
+        </section>
+
+        <!-- ── Сценарии ───────────────────────────────────────────── -->
+        <section class="lw-box" id="scenarios">
+            <h2><i class="fas fa-chart-line"></i> Шесть сценариев стресс-теста (п. 124¹⁸)</h2>
+            <div class="lw-table-wrap">
+                <table class="lw-table">
+                    <thead><tr><th>Сценарий в положении</th><th>Как обычно моделируют (BCBS)</th></tr></thead>
+                    <tbody>
+                        <tr><td>1. Рост всех ставок</td><td>+P на всех сроках</td></tr>
+                        <tr><td>2. Снижение всех ставок</td><td>−P на всех сроках</td></tr>
+                        <tr><td>3. Короткие вниз, длинные вверх (крутая кривая)</td><td>−0,65 × короткий шок + 0,9 × длинный шок</td></tr>
+                        <tr><td>4. Короткие вверх, длинные вниз (плоская кривая)</td><td>+0,8 × короткий шок − 0,6 × длинный шок</td></tr>
+                        <tr><td>5. Резкий рост коротких ставок</td><td>S × e<sup>−t/4</sup> — сильнее на коротком конце</td></tr>
+                        <tr><td>6. Резкое снижение коротких ставок</td><td>−S × e<sup>−t/4</sup></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="small text-muted mt-2 mb-0">Короткий шок = S × e<sup>−t/4</sup>, длинный = L × (1 − e<sup>−t/4</sup>), t — срок в годах.
+                Формулы — из стандарта Базельского комитета (2016); положение ЦБ называет сценарии, но формул и величин не задаёт.</p>
+        </section>
+
+        <!-- ── Требования ─────────────────────────────────────────── -->
+        <section class="lw-box" id="req">
+            <h2><i class="fas fa-list-check"></i> Что требует положение (п. 124¹¹–124²⁰)</h2>
+            <div class="row g-3">
+                <div class="col-lg-6">
+                    <h3 class="mt-0">Система (п. 124¹²)</h3>
+                    <ul class="lw-check">
+                        <li>риск-аппетит по IRRBB;</li>
+                        <li>политика и порядок управления;</li>
+                        <li>инструменты оценки и мониторинга;</li>
+                        <li>порядок стресс-тестирования;</li>
+                        <li>отчётность.</li>
+                    </ul>
+                    <h3>Политика (п. 124¹⁵)</h3>
+                    <p class="mb-0">Распределение ролей, порядок установления лимитов, выявление, оценка, контроль и снижение риска,
+                    стресс-тесты, формы и периодичность отчётов для наблюдательного совета и правления.</p>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="mt-0">Отчёт по IRRBB (п. 124²⁰)</h3>
+                    <ul>
+                        <li>размер и описание риска каждого вида;</li>
+                        <li>нарушения установленных лимитов;</li>
+                        <li>результаты стресс-тестов.</li>
+                    </ul>
+                    <p class="mb-0">Форму, периодичность и объём определяет наблюдательный совет или правление (п. 124¹⁹).
+                    Внутренний порядок также описывает подготовку и проверку отчёта для ЦБ (п. 124¹⁶).</p>
+                </div>
+            </div>
+            <div class="lw-note mb-0">
+                <b>Ориентир из международной практики</b>
+                В стандарте Базельского комитета банк считается «выбросом», если ΔEVE в худшем сценарии превышает
+                <strong>15% капитала I уровня</strong>. В положении ЦБ такого порога нет — это только ориентир для внутренних лимитов.
+            </div>
+        </section>
+
+        <!-- ── Калькулятор ────────────────────────────────────────── -->
+        <section class="lw-box" id="calc">
+            <h2><i class="fas fa-calculator"></i> Калькулятор ΔEVE и ΔNII</h2>
+            <p class="text-muted small">Активы и обязательства — по сроку <b>до пересмотра ставки</b> (не до погашения), в млрд сум.
+                Шоки — в базисных пунктах; по умолчанию 200 / 300 / 150 — пример. Упрощение: поток в середине интервала,
+                непрерывное дисконтирование по одной ставке, без поведенческих моделей.</p>
+            <div class="lw-calc">
+                <div class="row g-3 mb-3">
+                    <div class="col-6 col-md-4 col-xl-2"><label for="ir-p">Параллельный шок P, б.п.</label><input id="ir-p" class="form-control" type="number" value="200" step="25"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="ir-s">Короткий шок S, б.п.</label><input id="ir-s" class="form-control" type="number" value="300" step="25"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="ir-l">Длинный шок L, б.п.</label><input id="ir-l" class="form-control" type="number" value="150" step="25"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="ir-r">Ставка дисконта, %</label><input id="ir-r" class="form-control" type="number" value="10" step="0.5"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="ir-t1">Капитал I уровня</label><input id="ir-t1" class="form-control" type="number" value="2000" min="0" step="any"></div>
+                </div>
+                <div class="lw-table-wrap">
+                    <table class="lw-table" id="ir-table">
+                        <thead><tr><th>Интервал</th><th class="num">Активы</th><th class="num">Обязательства</th><th class="num">Гэп</th><th class="num">Накопл. гэп</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <h3>Результаты по сценариям</h3>
+                <div class="lw-table-wrap">
+                    <table class="lw-table" id="ir-res">
+                        <thead><tr><th>Сценарий</th><th class="num">ΔEVE</th><th class="num">% Tier 1</th><th class="num">ΔNII (12 мес.)</th><th class="num">% Tier 1</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="lw-out" id="ir-out"></div>
+            </div>
+        </section>
+
+        <!-- ── Пример ─────────────────────────────────────────────── -->
+        <section class="lw-box" id="example">
+            <h2><i class="fas fa-person-chalkboard"></i> Разбор на цифрах (значения калькулятора по умолчанию)</h2>
+            <p>Типичный баланс: короткие депозиты, длинные кредиты. Капитал I уровня — 2 000 млрд сум.</p>
+            <ol class="lw-steps">
+                <li>Гэп до 6 месяцев отрицательный: обязательств переоценивается больше, чем активов (накопленный гэп −2 700).
+                    Дальше 1 года гэп положительный: длинные активы с фиксированной ставкой.</li>
+                <li><b>Рост всех ставок на 200 б.п.:</b> ΔEVE = <b>−226,5</b> (−11,33% Tier 1) — падает стоимость длинных активов;
+                    ΔNII = <b>−46,4</b> — депозиты дорожают раньше кредитов.</li>
+                <li><b>Резкий рост коротких ставок:</b> ΔNII = <b>−68,2</b> (−3,41%) — худший сценарий для дохода.</li>
+                <li><b>Крутая кривая:</b> ΔEVE = −32,5, но ΔNII = <b>+43,7</b> — дешевеет короткое фондирование, хотя стоимость падает.</li>
+            </ol>
+            <div class="lw-tip mb-0">
+                <b>Вывод</b>
+                Худший ΔEVE — −11,3% капитала I уровня: ниже базельского ориентира 15%, но близко. Сократить разрыв (такие решения обычно готовит ALCO) можно
+                более длинным фондированием, плавающими ставками по кредитам или процентным свопом.
+            </div>
+        </section>
+
+        <!-- ── Проверь себя ───────────────────────────────────────── -->
+        <section class="lw-box" id="quiz">
+            <h2><i class="fas fa-circle-question"></i> Проверь себя</h2>
+            <details class="lw-q"><summary>Какие две метрики обязательно оценивать?</summary>
+                <div>Влияние изменения ставок на <b>текущую стоимость</b> активов и обязательств банковской книги относительно капитала (ΔEVE)
+                и на <b>чистый процентный доход</b> (ΔNII) — п. 124¹⁷.</div></details>
+            <details class="lw-q"><summary>Кредит с плавающей ставкой на 5 лет, ставка пересматривается раз в квартал. В какой интервал его ставить?</summary>
+                <div>В интервал <b>1–3 месяца</b> (до ближайшего пересмотра): для процентного риска важен срок переоценки, а не погашения.</div></details>
+            <details class="lw-q"><summary>Клиенты массово гасят ипотеку досрочно, когда ставки падают. Какой это источник риска?</summary>
+                <div><b>Опционный риск</b> — у клиента есть право изменить сумму или срок платежей (п. 124¹³).</div></details>
+            <details class="lw-q"><summary>Устанавливает ли ЦБ размер шока в базисных пунктах?</summary>
+                <div><b>Нет.</b> Положение перечисляет шесть форм сценариев (п. 124¹⁸); величину шоков и лимиты банк задаёт в своей политике.</div></details>
+            <details class="lw-q"><summary>Отрицательный гэп до года. Что будет с NII при росте ставок?</summary>
+                <div>NII <b>снизится</b>: обязательств переоценивается больше, чем активов, расходы растут быстрее доходов.</div></details>
+            <details class="lw-q"><summary>Входит ли торговый портфель облигаций в IRRBB?</summary>
+                <div><b>Нет.</b> Торговая книга — часть рыночного риска; IRRBB касается банковской книги — того, что держится до погашения (п. 1).</div></details>
+        </section>
+
+        <p class="lw-src">
+            Источник: Положение о требованиях к системе управления рисками банков и банковских групп (рег. МЮ № 3427 от 18.04.2023),
+            глава 11² (процентный риск банковского портфеля), добавлена постановлением Правления ЦБ РУз
+            от 05.12.2024 № 37/6 (рег. № 3427-1 от 21.01.2025), действует с 25.04.2025
+            (<a href="https://lex.uz/docs/6436466" target="_blank" rel="noopener">lex.uz</a>). Формулы сценариев — стандарт BCBS «Interest rate risk in the banking book» (2016).
+            Страница — упрощённое объяснение; юридическую силу имеет только официальный текст.
+            <br><a class="lw-back" href="{% url 'laws-home' %}"><i class="fas fa-arrow-left"></i> Ко всем законам</a>
+        </p>
+    </div>
+</div>
+
+<script>
+(function () {
+    // [label, midpoint in years, assets, liabilities]
+    var buckets = [
+        ['до 1 мес', 1 / 24, 2500, 4000], ['1–3 мес', 2 / 12, 1500, 2500], ['3–6 мес', 4.5 / 12, 1800, 2000],
+        ['6–12 мес', 0.75, 2500, 2200], ['1–2 года', 1.5, 2200, 1200], ['2–3 года', 2.5, 1500, 600],
+        ['3–5 лет', 4, 1800, 300], ['5–10 лет', 7.5, 1200, 100], ['свыше 10 лет', 12.5, 300, 0]
+    ];
+    var scen = [
+        ['up', 'Рост всех ставок'], ['down', 'Снижение всех ставок'], ['steep', 'Крутая кривая'],
+        ['flat', 'Плоская кривая'], ['sup', 'Рост коротких ставок'], ['sdown', 'Снижение коротких ставок']
+    ];
+    var tbody = document.querySelector('#ir-table tbody');
+    buckets.forEach(function (b, i) {
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<td>' + b[0] + '</td>' +
+            '<td><input class="form-control form-control-sm text-end" type="number" step="any" data-i="' + i + '" data-c="2" value="' + b[2] + '" style="min-width:6rem"></td>' +
+            '<td><input class="form-control form-control-sm text-end" type="number" step="any" data-i="' + i + '" data-c="3" value="' + b[3] + '" style="min-width:6rem"></td>' +
+            '<td class="num ir-gap"></td><td class="num ir-cum"></td>';
+        tbody.appendChild(tr);
+    });
+    function v(id) { var x = parseFloat(document.getElementById(id).value); return isNaN(x) ? 0 : x; }
+    function n1(x) { return (x > 0 ? '+' : '') + x.toLocaleString('ru-RU', { minimumFractionDigits: 1, maximumFractionDigits: 1 }); }
+    function shock(s, t, P, S, L) {
+        var sh = S * Math.exp(-t / 4), lo = L * (1 - Math.exp(-t / 4));
+        var m = { up: P, down: -P, steep: -0.65 * Math.abs(sh) + 0.9 * Math.abs(lo),
+                  flat: 0.8 * Math.abs(sh) - 0.6 * Math.abs(lo), sup: sh, sdown: -sh };
+        return m[s] / 10000;
+    }
+    function render() {
+        var P = v('ir-p'), S = v('ir-s'), L = v('ir-l'), r = v('ir-r') / 100, t1 = v('ir-t1'), cum = 0;
+        var rows = tbody.querySelectorAll('tr');
+        var gaps = buckets.map(function (b, i) {
+            var a = parseFloat(rows[i].querySelector('[data-c="2"]').value) || 0;
+            var l = parseFloat(rows[i].querySelector('[data-c="3"]').value) || 0;
+            var g = a - l; cum += g;
+            rows[i].querySelector('.ir-gap').textContent = n1(g);
+            rows[i].querySelector('.ir-cum').textContent = n1(cum);
+            return [b[1], g];
+        });
+        var worstE = null, worstN = null, html = '';
+        scen.forEach(function (sc) {
+            var eve = 0, nii = 0;
+            gaps.forEach(function (x) {
+                var t = x[0], d = shock(sc[0], t, P, S, L);
+                eve += x[1] * (Math.exp(-(r + d) * t) - Math.exp(-r * t));
+                if (t < 1) nii += x[1] * d * (1 - t);
+            });
+            if (worstE === null || eve < worstE[1]) worstE = [sc[1], eve];
+            if (worstN === null || nii < worstN[1]) worstN = [sc[1], nii];
+            var pe = t1 > 0 ? eve / t1 * 100 : 0, pn = t1 > 0 ? nii / t1 * 100 : 0;
+            html += '<tr><td>' + sc[1] + '</td><td class="num">' + n1(eve) + '</td><td class="num">' + n1(pe) + '%</td>' +
+                '<td class="num">' + n1(nii) + '</td><td class="num">' + n1(pn) + '%</td></tr>';
+        });
+        document.querySelector('#ir-res tbody').innerHTML = html;
+        var we = t1 > 0 ? worstE[1] / t1 : 0;
+        var cls = we < -0.15 ? ['lw-bad', 'выше базельского ориентира 15%'] : ['lw-ok', 'в пределах ориентира 15%'];
+        document.getElementById('ir-out').innerHTML =
+            '<div class="lw-res"><div class="lw-res-l">Худший ΔEVE — ' + worstE[0] + '</div><div class="lw-res-v">' + n1(worstE[1]) + '</div>' +
+            '<span class="lw-pill ' + cls[0] + '">' + cls[1] + '</span> <span class="small text-muted">' + n1(we * 100) + '% Tier 1</span></div>' +
+            '<div class="lw-res"><div class="lw-res-l">Худший ΔNII — ' + worstN[0] + '</div><div class="lw-res-v">' + n1(worstN[1]) + '</div>' +
+            '<span class="small text-muted">за 12 месяцев, баланс неизменен</span></div>';
+    }
+    document.getElementById('calc').addEventListener('input', render);
+    render();
+})();
+</script>
+{% endblock %}

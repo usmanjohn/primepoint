@@ -1,0 +1,474 @@
+{% extends 'base.html' %}
+
+{% block title %}Обязательные резервы — Положение № 3002{% endblock %}
+
+{% block extra_css %}
+<style>
+/* ── Law explainer pages. Every rule is scoped under .lw so the dashboard's own
+      .card / .btn / .table styles are never touched. ─────────────────────────── */
+.lw {
+    --lw-navy: #1e3a8a;
+    --lw-amber: #f59e0b;
+    --lw-amber-d: #b45309;
+    --lw-ink: #1f2937;
+    --lw-muted: #6b7280;
+    --lw-line: #e5e7eb;
+    --lw-soft: #fff8eb;
+    --lw-ok: #15803d;
+    --lw-ok-bg: #dcfce7;
+    --lw-warn: #b45309;
+    --lw-warn-bg: #fef3c7;
+    --lw-bad: #b91c1c;
+    --lw-bad-bg: #fee2e2;
+    color: var(--lw-ink);
+    padding-bottom: 3rem;
+}
+.lw section, .lw .lw-anchor { scroll-margin-top: 80px; }
+
+/* hero */
+.lw-hero {
+    background: linear-gradient(135deg, #e2d2ce, #f7cc8b);
+    color: #5b3a2e;
+    border-radius: 0 0 18px 18px;
+    padding: 2.25rem 0 1.75rem;
+    margin-bottom: 1.5rem;
+}
+.lw-hero h1 { font-size: 2rem; font-weight: 700; margin: .5rem 0; }
+.lw-hero .lw-lead { font-size: 1.1rem; max-width: 820px; margin: 0; }
+.lw-doc {
+    display: inline-block; background: rgba(255,255,255,.7); color: var(--lw-navy);
+    font-weight: 600; font-size: .85rem; border-radius: 999px; padding: .25rem .8rem;
+}
+.lw-meta { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+.lw-meta span {
+    background: rgba(255,255,255,.55); border-radius: 8px; padding: .3rem .65rem; font-size: .85rem;
+}
+.lw-meta a { color: var(--lw-navy); font-weight: 600; }
+
+/* in-page navigation */
+.lw-nav {
+    position: sticky; top: 56px; z-index: 5; background: rgba(241,245,249,.95);
+    backdrop-filter: blur(4px); padding: .5rem 0; margin-bottom: 1rem;
+    display: flex; flex-wrap: wrap; gap: .4rem;
+}
+.lw-nav a {
+    text-decoration: none; font-size: .85rem; color: var(--lw-navy);
+    border: 1px solid #c7d2fe; background: #fff; border-radius: 999px; padding: .25rem .75rem;
+}
+.lw-nav a:hover { background: var(--lw-navy); color: #fff; }
+
+/* blocks */
+.lw-box {
+    background: #fff; border-radius: 14px; box-shadow: 0 2px 10px rgba(15,23,42,.06);
+    padding: 1.5rem; margin-bottom: 1.5rem;
+}
+.lw-box > h2 {
+    font-size: 1.35rem; font-weight: 700; color: var(--lw-navy); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: .6rem;
+}
+.lw-box > h2 i { color: var(--lw-amber); }
+.lw-box h3 { font-size: 1.05rem; font-weight: 700; margin-top: 1rem; }
+
+/* KPI tiles */
+.lw-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: .9rem; }
+.lw-kpi {
+    background: var(--lw-soft); border: 1px solid #fde68a; border-radius: 12px; padding: 1rem;
+}
+.lw-kpi b { display: block; font-size: 1.75rem; color: var(--lw-navy); line-height: 1.1; }
+.lw-kpi span { font-size: .88rem; color: var(--lw-muted); }
+
+/* formula strip */
+.lw-formula {
+    background: #0f172a; color: #f8fafc; border-radius: 10px; padding: .85rem 1rem;
+    font-family: SFMono-Regular, Menlo, Consolas, monospace; font-size: .95rem;
+    overflow-x: auto; white-space: nowrap; margin: .75rem 0;
+}
+.lw-formula em { color: #fbbf24; font-style: normal; }
+
+/* callouts */
+.lw-note, .lw-tip, .lw-alert {
+    border-radius: 10px; padding: .85rem 1rem; margin: 1rem 0; font-size: .95rem;
+    border-left: 5px solid;
+}
+.lw-note  { background: #eff6ff; border-color: #3b82f6; }
+.lw-tip   { background: var(--lw-ok-bg); border-color: var(--lw-ok); }
+.lw-alert { background: var(--lw-warn-bg); border-color: var(--lw-amber); }
+.lw-note b, .lw-tip b, .lw-alert b { display: block; margin-bottom: .2rem; }
+
+/* tables */
+.lw-table-wrap { overflow-x: auto; }
+.lw-table { width: 100%; border-collapse: collapse; font-size: .93rem; }
+.lw-table th { background: var(--lw-navy); color: #fff; font-weight: 600; padding: .55rem .7rem; text-align: left; }
+.lw-table td { border-bottom: 1px solid var(--lw-line); padding: .55rem .7rem; vertical-align: top; }
+.lw-table tr:nth-child(even) td { background: #f9fafb; }
+.lw-table .num { text-align: right; white-space: nowrap; font-weight: 600; }
+
+/* ladder / stack */
+.lw-stack { display: flex; flex-direction: column-reverse; gap: 3px; max-width: 520px; }
+.lw-stack div {
+    border-radius: 6px; padding: .45rem .8rem; color: #fff; font-size: .9rem;
+    display: flex; justify-content: space-between;
+}
+
+/* steps */
+.lw-steps { counter-reset: lw; list-style: none; padding: 0; margin: 0; }
+.lw-steps li { position: relative; padding: 0 0 .9rem 2.6rem; }
+.lw-steps li::before {
+    counter-increment: lw; content: counter(lw);
+    position: absolute; left: 0; top: 0; width: 1.9rem; height: 1.9rem; border-radius: 50%;
+    background: var(--lw-amber); color: #fff; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* calculator */
+.lw-calc { background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; padding: 1.25rem; }
+.lw-calc label { font-size: .85rem; color: var(--lw-muted); margin-bottom: .2rem; }
+.lw-calc input, .lw-calc select { font-weight: 600; }
+.lw-out { margin-top: 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .75rem; }
+.lw-res { background: #fff; border-radius: 10px; padding: .8rem 1rem; border: 1px solid var(--lw-line); }
+.lw-res .lw-res-v { font-size: 1.5rem; font-weight: 700; }
+.lw-res .lw-res-l { font-size: .85rem; color: var(--lw-muted); }
+.lw-bar { height: 8px; background: #e5e7eb; border-radius: 99px; margin-top: .45rem; position: relative; overflow: hidden; }
+.lw-bar i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 99px; background: var(--lw-ok); }
+.lw-pill { display: inline-block; border-radius: 999px; padding: .1rem .6rem; font-size: .78rem; font-weight: 700; }
+.lw-ok   { background: var(--lw-ok-bg); color: var(--lw-ok); }
+.lw-warn { background: var(--lw-warn-bg); color: var(--lw-warn); }
+.lw-bad  { background: var(--lw-bad-bg); color: var(--lw-bad); }
+
+/* quiz / FAQ — native <details>, works without JS */
+.lw-q { border: 1px solid var(--lw-line); border-radius: 10px; margin-bottom: .6rem; background: #fff; }
+.lw-q summary { cursor: pointer; padding: .75rem 1rem; font-weight: 600; list-style: none; }
+.lw-q summary::-webkit-details-marker { display: none; }
+.lw-q summary::before { content: "\f059"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--lw-amber); margin-right: .55rem; }
+.lw-q[open] summary { border-bottom: 1px solid var(--lw-line); }
+.lw-q div { padding: .75rem 1rem; }
+
+/* checklist */
+.lw-check { list-style: none; padding: 0; }
+.lw-check li { padding: .3rem 0 .3rem 1.8rem; position: relative; }
+.lw-check li::before {
+    content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900;
+    position: absolute; left: 0; color: var(--lw-ok);
+}
+
+/* abbreviations */
+.lw-abbr { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .5rem .9rem; margin: 0; }
+.lw-abbr > div {
+    display: flex; gap: .7rem; align-items: baseline; padding: .5rem .7rem;
+    background: #f8fafc; border: 1px solid var(--lw-line); border-radius: 8px;
+}
+.lw-abbr dt { flex: 0 0 4.6rem; font-weight: 700; color: var(--lw-navy); overflow-wrap: anywhere; }
+.lw-abbr dd { margin: 0; font-size: .9rem; }
+.lw-abbr dd small { display: block; color: var(--lw-muted); font-size: .8rem; }
+
+.lw-src { font-size: .85rem; color: var(--lw-muted); border-top: 1px solid var(--lw-line); padding-top: 1rem; }
+.lw-back { color: var(--lw-navy); font-weight: 600; text-decoration: none; }
+
+@media (max-width: 768px) {
+    .lw-hero h1 { font-size: 1.5rem; }
+    .lw-hero .lw-lead { font-size: 1rem; }
+    .lw-box { padding: 1.1rem; }
+    .lw-nav { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .lw-nav a { white-space: nowrap; flex: 0 0 auto; }
+}
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+<div class="lw">
+
+    <!-- ── Заголовок ─────────────────────────────────────────────── -->
+    <div class="lw-hero">
+        <div class="container-fluid px-4">
+            <span class="lw-doc"><i class="fas fa-landmark"></i> Положение ЦБ РУз № 3002</span>
+            <h1>Обязательные резервы банков в Центральном банке</h1>
+            <p class="lw-lead">
+                Какую часть привлечённых денег банк обязан держать в ЦБ, как считается эта сумма
+                и как работает усреднение. Нормативы с 1 июля 2026 года — <strong>4% по сумовым
+                и 7% по валютным депозитам</strong>.
+            </p>
+            <div class="lw-meta">
+                <span><i class="far fa-calendar"></i> Зарегистрировано: 25.04.2018</span>
+                <span><i class="fas fa-play"></i> Вступило в силу: 01.06.2018</span>
+                <span><i class="fas fa-pen"></i> Последняя редакция на lex.uz: 25.12.2025 (изм. № 3002-5)</span>
+                <span><a href="https://lex.uz/docs/3697778" target="_blank" rel="noopener">Текст на lex.uz <i class="fas fa-arrow-up-right-from-square"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid px-4">
+
+        <nav class="lw-nav">
+            <a href="#short">Резюме</a>
+            <a href="#abbr">Сокращения</a>
+            <a href="#base">Что резервируется</a>
+            <a href="#steps">Расчёт</a>
+            <a href="#avg">Усреднение</a>
+            <a href="#dates">Сроки</a>
+            <a href="#calc">Калькулятор</a>
+            <a href="#example">Пример</a>
+            <a href="#quiz">Проверь себя</a>
+        </nav>
+
+        <!-- ── Резюме ────────────────────────────────────────────── -->
+        <section class="lw-box" id="short">
+            <h2><i class="fas fa-clipboard-list"></i> Резюме</h2>
+            <div class="lw-kpis">
+                <div class="lw-kpi"><b>4%</b><span>норматив по депозитам в национальной валюте (с 01.07.2026)</span></div>
+                <div class="lw-kpi"><b>7%</b><span>норматив по депозитам в иностранной валюте</span></div>
+                <div class="lw-kpi"><b>1,0</b><span>коэффициент усреднения — весь резерв держится на корсчёте</span></div>
+                <div class="lw-kpi"><b>28 / 35</b><span>дней — период хранения, с четверга по среду</span></div>
+                <div class="lw-kpi"><b>≤ 2×</b><span>ставки рефинансирования — штраф на недовзнос (п. 29)</span></div>
+            </div>
+            <div class="lw-alert">
+                <b><i class="fas fa-triangle-exclamation"></i> Резервы — всегда в сумах</b>
+                Обязательные резервы формируются только в национальной валюте, даже если обязательство
+                валютное (cbu.uz). Поэтому рост валютных депозитов «съедает» сумовую ликвидность банка:
+                7% от них нужно держать в ЦБ в сумах.
+            </div>
+            <div class="lw-note">
+                <b>Где взять действующие нормативы</b>
+                Сами проценты в положении не записаны: их устанавливает Правление ЦБ (п. 2).
+                Актуальная таблица — на <a href="https://cbu.uz/ru/monetary-policy/standards-required-reserves/" target="_blank" rel="noopener">cbu.uz</a>,
+                там же календарь периодов хранения.
+            </div>
+        </section>
+
+        <!-- ── Сокращения ─────────────────────────────────────────── -->
+        <section class="lw-box" id="abbr">
+            <h2><i class="fas fa-spell-check"></i> Сокращения</h2>
+            <dl class="lw-abbr">
+                <div><dt>ЦБ РУз</dt><dd>Центральный банк Республики Узбекистан</dd></div>
+                <div><dt>МЮ</dt><dd>Министерство юстиции<small>«рег. МЮ №» — номер государственной регистрации документа</small></dd></div>
+                <div><dt>Корсчёт</dt><dd>корреспондентский счёт банка в ЦБ<small>на нём держится усреднённая часть резервов</small></dd></div>
+                <div><dt>10309</dt><dd>счёт обязательных резервов в балансе банка<small>в балансе ЦБ ему соответствует счёт 21312</small></dd></div>
+                <div><dt>10100</dt><dd>касса банка<small>часть наличных можно вычесть, если так решит Правление ЦБ</small></dd></div>
+                <div><dt>Резиденты / нерезиденты</dt><dd>клиенты из Узбекистана / из-за рубежа<small>в расчёте их обязательства показываются отдельными колонками</small></dd></div>
+                <div><dt>ВЛА</dt><dd>высоколиквидные активы<small>см. положение № 2709</small></dd></div>
+                <div><dt>п.</dt><dd>пункт положения</dd></div>
+            </dl>
+        </section>
+
+        <!-- ── База ──────────────────────────────────────────────── -->
+        <section class="lw-box" id="base">
+            <h2><i class="fas fa-layer-group"></i> С каких обязательств считается резерв (приложение 1)</h2>
+            <p>В базу входят 19 групп балансовых счетов. Главное, что нужно помнить:</p>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <h3 class="mt-0"><i class="fas fa-check text-success"></i> Входят</h3>
+                    <ul class="lw-check">
+                        <li>депозиты до востребования (20200), сберегательные (20400), срочные (20600);</li>
+                        <li>прочие депозиты клиентов (22600, с исключениями);</li>
+                        <li>выпущенные банком ценные бумаги (23600);</li>
+                        <li>полученные кредиты — краткосрочные (21600) и долгосрочные (22000);</li>
+                        <li>транзитные счета по картам, поступления с карт, бездействующие и невостребованные депозиты;</li>
+                        <li>субординированный долг (23700) — та часть, что <b>не</b> засчитана в капитал.</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h3 class="mt-0"><i class="fas fa-xmark text-danger"></i> Не входят (приложение 3)</h3>
+                    <ul>
+                        <li>кредиты, полученные <b>от ЦБ и от банков-резидентов</b> (строки 6 и 7);</li>
+                        <li>средства других банков и финорганизаций (21000) — учитываются <b>только нерезиденты</b>;</li>
+                        <li>субординированный долг, включённый в регулятивный капитал;</li>
+                        <li>отдельные субсчета, перечисленные в методике (например, 21002, 21006, 23416).</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lw-tip">
+                <b>Логика исключений</b>
+                Деньги, которые уже «внутри» банковской системы Узбекистана (межбанк с резидентами, кредиты ЦБ),
+                резервируются один раз — у того, кто привлёк их у клиента. Иначе один и тот же сум
+                резервировали бы дважды.
+            </div>
+        </section>
+
+        <!-- ── Расчёт ─────────────────────────────────────────────── -->
+        <section class="lw-box" id="steps">
+            <h2><i class="fas fa-list-ol"></i> Как считается сумма (п. 9–10, приложение 3)</h2>
+            <ol class="lw-steps">
+                <li><b>Среднее за расчётный период.</b> Расчётный период — отчётный месяц перед периодом хранения.
+                    Остатки каждого дня складываются и делятся на число календарных дней. За выходные и праздники
+                    берётся остаток последнего рабочего дня (п. 10).</li>
+                <li><b>Нормативная сумма</b> — среднее × норматив, отдельно по сумовым и валютным обязательствам,
+                    резидентам и нерезидентам:
+                    <div class="lw-formula">Норматив = <em>Сум</em> × 4% + <em>Валюта</em> × 7%</div></li>
+                <li><b>Вычет кассы.</b> Из нормативной суммы вычитается часть наличных в кассе (счёт 10100) —
+                    в размере, который установит Правление ЦБ (строка 21).</li>
+                <li><b>Усреднённая часть</b> = (норматив − вычет) × коэффициент усреднения. Её держат на корсчёте
+                    <b>в среднем</b> за период хранения (строка 24, п. 22).</li>
+                <li><b>На отдельный счёт в ЦБ</b> = (норматив − вычет) − усреднённая часть (строка 25).
+                    Сравнивается с тем, что уже лежит на 10309, — разницу банк довносит или ЦБ возвращает (строка 27).</li>
+            </ol>
+            <div class="lw-formula">К перечислению = (<em>Норматив</em> − <em>Вычет</em>) × (1 − <em>k</em>) − <em>остаток 10309</em></div>
+        </section>
+
+        <!-- ── Усреднение ────────────────────────────────────────── -->
+        <section class="lw-box" id="avg">
+            <h2><i class="fas fa-wave-square"></i> Усреднение (глава 3)</h2>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <p>Коэффициент усреднения <b>k</b> лежит между 0 и 1. Сейчас он равен <b>1,0</b>: вся сумма
+                    резерва не замораживается на отдельном счёте, а держится на корсчёте — <b>в среднем</b>
+                    за период хранения.</p>
+                    <p class="mb-0">Банк может в один день опуститься ниже, а в другой — подняться выше. Важно, чтобы
+                    <b>средний остаток</b> корсчёта за 28 или 35 дней был не меньше усреднённой суммы (п. 22).
+                    Так банк может гасить дневные колебания платежей, а ставки денежного рынка меньше скачут.</p>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="mt-0">Право на усреднение (п. 17–19)</h3>
+                    <ul class="mb-0">
+                        <li>Даётся банку, который соблюдает порядок расчёта и выполнил усреднённое требование в прошлом периоде.</li>
+                        <li>ЦБ рассматривает заявление <b>3 рабочих дня</b>; право действует со <b>следующего</b> периода хранения.</li>
+                        <li>Нарушил условия — право отзывается. Повторно можно просить <b>через два месяца</b>.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lw-alert">
+                <b>Ловушка конца периода</b>
+                Средний остаток считается по всем дням периода. Если первые три недели корсчёт был «тонким»,
+                в последние дни придётся держать очень много, чтобы вытянуть среднее, — а это дорогой день для казначейства.
+            </div>
+        </section>
+
+        <!-- ── Сроки ─────────────────────────────────────────────── -->
+        <section class="lw-box" id="dates">
+            <h2><i class="fas fa-calendar-check"></i> Сроки и ответственность</h2>
+            <div class="lw-table-wrap">
+                <table class="lw-table">
+                    <thead><tr><th>Что</th><th>Когда</th><th>Пункт</th></tr></thead>
+                    <tbody>
+                        <tr><td>Подать расчёт и довнести резерв</td><td>в течение 3 рабочих дней <b>до начала</b> периода хранения</td><td>п. 11</td></tr>
+                        <tr><td>Возврат излишне перечисленного</td><td>2 рабочих дня после подачи расчёта</td><td>п. 12</td></tr>
+                        <tr><td>Исправить расчёт</td><td>до начала следующего периода, с пояснительным письмом за подписью председателя правления</td><td>п. 15</td></tr>
+                        <tr><td>Расчёт в ЦБ</td><td>по электронной почте, с электронной цифровой подписью</td><td>п. 13</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row g-3 mt-1">
+                <div class="col-md-6">
+                    <h3>Что считается нарушением (п. 27)</h3>
+                    <ul class="mb-0">
+                        <li>расчёт подан не вовремя или с ошибкой;</li>
+                        <li>не перечислена недостающая сумма;</li>
+                        <li>не выполнено усреднённое требование.</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h3>Последствия (п. 29)</h3>
+                    <p class="mb-0">ЦБ в бесспорном порядке списывает недостающую сумму и штраф —
+                    <b>не больше двойной ставки рефинансирования</b> на сумму недовзноса.</p>
+                </div>
+            </div>
+            <div class="lw-note">
+                <b>Особые ситуации</b>
+                Санация, временная администрация или ограничения по корсчёту обязанность не отменяют (п. 24).
+                Обязанность прекращается только при отзыве лицензии; тогда ЦБ за 3 дня возвращает резервы
+                ликвидационной комиссии (п. 25, 30). Подразделения банка за рубежом резервируют по местным законам (п. 5).
+            </div>
+        </section>
+
+        <!-- ── Калькулятор ────────────────────────────────────────── -->
+        <section class="lw-box" id="calc">
+            <h2><i class="fas fa-calculator"></i> Калькулятор обязательных резервов</h2>
+            <p class="text-muted small">Средние остатки за расчётный месяц, в любых одинаковых единицах (например, млрд сум;
+                валютные — в сумовом эквиваленте). Расчёт упрощённый — для понимания, не для отчётности.</p>
+            <div class="lw-calc">
+                <div class="row g-3">
+                    <div class="col-6 col-md-4 col-xl-2"><label for="rr-uzs">База в сумах</label><input id="rr-uzs" class="form-control" type="number" value="20000" min="0" step="any"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="rr-fx">База в валюте (экв.)</label><input id="rr-fx" class="form-control" type="number" value="15000" min="0" step="any"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="rr-nu">Норматив сум, %</label><input id="rr-nu" class="form-control" type="number" value="4" min="0" step="0.5"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="rr-nf">Норматив валюта, %</label><input id="rr-nf" class="form-control" type="number" value="7" min="0" step="0.5"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="rr-cash">Вычет кассы</label><input id="rr-cash" class="form-control" type="number" value="0" min="0" step="any"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="rr-k">Коэфф. усреднения</label><input id="rr-k" class="form-control" type="number" value="1" min="0" max="1" step="0.05"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="rr-acc">Остаток на 10309</label><input id="rr-acc" class="form-control" type="number" value="0" min="0" step="any"></div>
+                    <div class="col-6 col-md-4 col-xl-2"><label for="rr-cor">План. средний корсчёт</label><input id="rr-cor" class="form-control" type="number" value="1700" min="0" step="any"></div>
+                </div>
+                <div class="lw-out" id="rr-out"></div>
+            </div>
+        </section>
+
+        <!-- ── Пример ─────────────────────────────────────────────── -->
+        <section class="lw-box" id="example">
+            <h2><i class="fas fa-person-chalkboard"></i> Разбор на цифрах</h2>
+            <p>Средние остатки за месяц: сумовые обязательства 20 000, валютные 15 000 (млрд сум в эквиваленте).
+            Вычета кассы нет, коэффициент усреднения 1,0.</p>
+            <ol class="lw-steps">
+                <li>Сумы: 20 000 × 4% = <b>800</b>.</li>
+                <li>Валюта: 15 000 × 7% = <b>1 050</b> — и эти 1 050 тоже держатся в сумах.</li>
+                <li>Нормативная сумма: 800 + 1 050 = <b>1 850</b>.</li>
+                <li>Усреднённая часть: 1 850 × 1,0 = <b>1 850</b>; на отдельный счёт 10309 — <b>0</b>.</li>
+                <li>Средний остаток корсчёта за период хранения должен быть <b>не меньше 1 850</b>.
+                    Если казначейство планирует 1 700 — не хватает 150 в среднем.</li>
+            </ol>
+            <div class="lw-tip mb-0">
+                <b>Вывод</b>
+                Если бы ЦБ снизил коэффициент до 0,8, банк перечислил бы на отдельный счёт 1 850 × 0,2 = 370,
+                а на корсчёте в среднем держал бы 1 480. Общая сумма та же, но «живой» её части стало бы меньше.
+            </div>
+        </section>
+
+        <!-- ── Проверь себя ───────────────────────────────────────── -->
+        <section class="lw-box" id="quiz">
+            <h2><i class="fas fa-circle-question"></i> Проверь себя</h2>
+            <details class="lw-q"><summary>Клиент принёс 1 млн долларов на срочный вклад. В какой валюте банк создаёт резерв?</summary>
+                <div>В <b>сумах</b>: резервы формируются только в национальной валюте, по нормативу для валютных обязательств — 7%.</div></details>
+            <details class="lw-q"><summary>Банк получил кредит от другого банка-резидента. Нужно ли его резервировать?</summary>
+                <div><b>Нет.</b> Кредиты от ЦБ и банков-резидентов исключаются из базы (приложение 3, строки 6–7).
+                Кредит от банка-нерезидента — резервируется.</div></details>
+            <details class="lw-q"><summary>Как считается средний остаток, если в месяце были праздники?</summary>
+                <div>Делим сумму остатков на <b>все календарные дни</b> месяца; за выходные и праздники берётся
+                остаток последнего рабочего дня перед ними (п. 10).</div></details>
+            <details class="lw-q"><summary>Коэффициент усреднения 1,0. Сколько денег лежит на счёте 10309?</summary>
+                <div>По расчёту — <b>ноль</b>: вся сумма усредняется и держится на корсчёте. Требование — средний остаток
+                корсчёта за период хранения не ниже нормативной суммы.</div></details>
+            <details class="lw-q"><summary>Банк выполнил среднее, но в один день корсчёт был ниже требования. Это нарушение?</summary>
+                <div><b>Нет</b>, если средний остаток за весь период хранения не ниже усреднённой суммы (п. 22).
+                Смысл усреднения как раз в том, чтобы разрешить дневные колебания.</div></details>
+            <details class="lw-q"><summary>Входят ли обязательные резервы в высоколиквидные активы?</summary>
+                <div><b>Нет.</b> По положению № 2709 средства обязательных резервов исключаются и из ВЛА уровня 1, и из мгновенной ликвидности.</div></details>
+        </section>
+
+        <p class="lw-src">
+            Источник: Положение об обязательных резервах коммерческих банков, депонируемых в Центральном банке
+            Республики Узбекистан, утверждено постановлением Правления ЦБ РУз от 31.03.2018 № 12/8, рег. МЮ № 3002
+            от 25.04.2018, в ред. до 25.12.2025 (<a href="https://lex.uz/docs/3697778" target="_blank" rel="noopener">lex.uz</a>);
+            нормативы — <a href="https://cbu.uz/ru/monetary-policy/standards-required-reserves/" target="_blank" rel="noopener">cbu.uz</a>, с 01.07.2026.
+            Страница — упрощённое объяснение; юридическую силу имеет только официальный текст.
+            <br><a class="lw-back" href="{% url 'laws-home' %}"><i class="fas fa-arrow-left"></i> Ко всем законам</a>
+        </p>
+    </div>
+</div>
+
+<script>
+(function () {
+    var ids = ['uzs', 'fx', 'nu', 'nf', 'cash', 'k', 'acc', 'cor'];
+    function val(id) { var v = parseFloat(document.getElementById('rr-' + id).value); return isNaN(v) ? 0 : v; }
+    function num(x) { return x.toLocaleString('ru-RU', { maximumFractionDigits: 1 }); }
+    function box(label, value, note, cls) {
+        return '<div class="lw-res"><div class="lw-res-l">' + label + '</div><div class="lw-res-v">' + value + '</div>' +
+            (cls ? '<span class="lw-pill ' + cls[0] + '">' + cls[1] + '</span> ' : '') +
+            '<span class="small text-muted">' + note + '</span></div>';
+    }
+    function render() {
+        var k = Math.max(0, Math.min(1, val('k')));
+        var uzs = val('uzs') * val('nu') / 100, fx = val('fx') * val('nf') / 100;
+        var norm = uzs + fx;
+        var net = Math.max(0, norm - val('cash'));
+        var averaged = net * k;
+        var separate = net - averaged;
+        var topup = separate - val('acc');
+        var gap = val('cor') - averaged;
+        var corCls = gap >= 0 ? ['lw-ok', 'хватает'] : ['lw-bad', 'не хватает ' + num(-gap)];
+        document.getElementById('rr-out').innerHTML =
+            box('Нормативная сумма', num(norm), 'сум ' + num(uzs) + ' + валюта ' + num(fx)) +
+            box('Усреднённая часть (корсчёт)', num(averaged), 'держать в среднем за период') +
+            box('На отдельный счёт 10309', num(separate), 'после вычета кассы, × (1 − k)') +
+            box(topup >= 0 ? 'Довнести на 10309' : 'Вернёт ЦБ', num(Math.abs(topup)), 'с учётом текущего остатка') +
+            box('Средний корсчёт vs требование', num(val('cor')) + ' / ' + num(averaged), '', corCls);
+    }
+    ids.forEach(function (id) { document.getElementById('rr-' + id).addEventListener('input', render); });
+    render();
+})();
+</script>
+{% endblock %}

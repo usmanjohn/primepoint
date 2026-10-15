@@ -151,6 +151,16 @@
     position: absolute; left: 0; color: var(--lw-ok);
 }
 
+/* abbreviations */
+.lw-abbr { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .5rem .9rem; margin: 0; }
+.lw-abbr > div {
+    display: flex; gap: .7rem; align-items: baseline; padding: .5rem .7rem;
+    background: #f8fafc; border: 1px solid var(--lw-line); border-radius: 8px;
+}
+.lw-abbr dt { flex: 0 0 4.6rem; font-weight: 700; color: var(--lw-navy); overflow-wrap: anywhere; }
+.lw-abbr dd { margin: 0; font-size: .9rem; }
+.lw-abbr dd small { display: block; color: var(--lw-muted); font-size: .8rem; }
+
 .lw-src { font-size: .85rem; color: var(--lw-muted); border-top: 1px solid var(--lw-line); padding-top: 1rem; }
 .lw-back { color: var(--lw-navy); font-weight: 600; text-decoration: none; }
 
@@ -186,7 +196,8 @@
     <div class="container-fluid px-4">
 
         <nav class="lw-nav">
-            <a href="#short">Коротко</a>
+            <a href="#short">Резюме</a>
+            <a href="#abbr">Сокращения</a>
             <a href="#lcr">LCR</a>
             <a href="#hqla">Что такое ВЛА</a>
             <a href="#nsfr">NSFR</a>
@@ -197,7 +208,7 @@
         </nav>
 
         <section class="lw-box" id="short">
-            <h2><i class="fas fa-bolt"></i> За 30 секунд</h2>
+            <h2><i class="fas fa-clipboard-list"></i> Резюме</h2>
             <div class="lw-kpis">
                 <div class="lw-kpi"><b>≥ 100%</b><span>LCR — покрытие оттока за 30 дней</span></div>
                 <div class="lw-kpi"><b>≥ 100%</b><span>NSFR — стабильное фондирование на год</span></div>
@@ -213,6 +224,26 @@
             <p class="mb-0 small text-muted">Пункт 43: обычные банки выполняют все четыре норматива;
                 микрофинансовые банки — LCR, NSFR и долю ВЛА (5% вместо 10%), без мгновенной ликвидности.</p>
         </section>
+
+        <!-- ── Сокращения ─────────────────────────────────────────── -->
+        <section class="lw-box" id="abbr">
+            <h2><i class="fas fa-spell-check"></i> Сокращения</h2>
+            <dl class="lw-abbr">
+                <div><dt>ЦБ РУз</dt><dd>Центральный банк Республики Узбекистан</dd></div>
+                <div><dt>МЮ</dt><dd>Министерство юстиции<small>«рег. МЮ №» — номер государственной регистрации документа</small></dd></div>
+                <div><dt>LCR</dt><dd>коэффициент покрытия ликвидности<small>Liquidity Coverage Ratio: стресс на 30 дней</small></dd></div>
+                <div><dt>NSFR</dt><dd>норматив чистого стабильного фондирования<small>Net Stable Funding Ratio: горизонт один год</small></dd></div>
+                <div><dt>ВЛА</dt><dd>высоколиквидные активы<small>в Базеле — HQLA (High-Quality Liquid Assets)</small></dd></div>
+                <div><dt>1 / 2A / 2B</dt><dd>уровни ВЛА<small>чем ниже уровень, тем больше дисконт и жёстче лимит</small></dd></div>
+                <div><dt>ASF</dt><dd>имеющееся стабильное фондирование<small>Available Stable Funding — числитель NSFR</small></dd></div>
+                <div><dt>RSF</dt><dd>требуемое стабильное фондирование<small>Required Stable Funding — знаменатель NSFR</small></dd></div>
+                <div><dt>МФО</dt><dd>международные финансовые организации<small>на этой странице — не микрофинансовые организации</small></dd></div>
+                <div><dt>AA- / Aa3</dt><dd>кредитные рейтинги<small>первый — шкала S&amp;P и Fitch, второй — Moody’s</small></dd></div>
+                <div><dt>Репо</dt><dd>сделка с обратным выкупом<small>бумага продана с обязательством выкупить её обратно</small></dd></div>
+                <div><dt>п.</dt><dd>пункт положения</dd></div>
+            </dl>
+        </section>
+
 
         <section class="lw-box" id="lcr">
             <h2><i class="fas fa-hourglass-half"></i> LCR — коэффициент покрытия ликвидности (п. 52)</h2>
