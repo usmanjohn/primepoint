@@ -8,6 +8,7 @@ thread, returns immediately with a job id, and the page polls.
 """
 from __future__ import annotations
 
+import re
 import threading
 import traceback
 import datetime as dt
@@ -33,10 +34,22 @@ _LOCK = threading.Lock()
 
 
 def _period_choices():
+    # value is a STRING on purpose: with USE_THOUSAND_SEPARATOR the template would print
+    # the int 202508 as "202 508", the form would send that back, and the date was lost.
     out = []
     for p in process.available_periods(DATA_DIR):
-        out.append({"value": p, "label": process.plabel_full(p)})
+        out.append({"value": str(p), "label": process.plabel_full(p)})
     return out
+
+
+def _period_int(v):
+    """'202508', '202 508', '202,508' -> 202508; anything else -> None."""
+    digits = re.sub(r"\D", "", str(v or ""))
+    return int(digits) if len(digits) == 6 else None
+
+
+def _plabel(p):
+    return process.plabel_full(p) if p else None
 
 
 def _worker(run_id: int):
@@ -89,19 +102,25 @@ def page(request):
         "periods": periods,
         "latest": periods[-1]["value"] if periods else None,
         "latest_label": periods[-1]["label"] if periods else None,
-        "runs": ReportRun.objects.all()[:15],
+        "runs": _with_labels(ReportRun.objects.all()[:15]),
         "n_files": len(periods),
         "n_done": ReportRun.objects.filter(status=ReportRun.DONE).count(),
     })
 
 
+def _with_labels(runs):
+    """History table: «сен 2025», never a raw (and possibly '202 508'-formatted) int."""
+    runs = list(runs)
+    for r in runs:
+        r.from_label, r.to_label, r.sel_label = (_plabel(r.period_from), _plabel(r.period_to),
+                                                 _plabel(r.selected_period))
+    return runs
+
+
 @require_POST
 def start(request):
-    def as_int(name):
-        v = (request.POST.get(name) or "").strip()
-        return int(v) if v.isdigit() else None
-
-    pf, pt, sel = as_int("period_from"), as_int("period_to"), as_int("selected_period")
+    pf, pt, sel = (_period_int(request.POST.get(k))
+                   for k in ("period_from", "period_to", "selected_period"))
     if pf and pt and pf > pt:
         return JsonResponse({"error": "начало периода позже конца"}, status=400)
     if sel and pf and sel < pf:
@@ -125,14 +144,21 @@ def start(request):
                   .order_by("-created_at").first())
         if cached and cached.html_path and Path(cached.html_path).exists():
             return JsonResponse({"id": cached.pk, "status": cached.status,
-                                 "cached": True})
+                                 "cached": True, "params": _params(pf, pt, sel)})
 
     run = ReportRun.objects.create(
         period_from=pf, period_to=pt, selected_period=sel,
         fingerprint=fp, created_by=username)
 
     threading.Thread(target=_worker, args=(run.pk,), daemon=True).start()
-    return JsonResponse({"id": run.pk, "status": run.status, "cached": False})
+    return JsonResponse({"id": run.pk, "status": run.status, "cached": False,
+                         "params": _params(pf, pt, sel)})
+
+
+def _params(pf, pt, sel):
+    """What the server actually understood — the page shows it, so a lost date is visible."""
+    return (f"динамика {_plabel(pf) or 'с начала'} — {_plabel(pt) or 'до конца'}, "
+            f"структура на {_plabel(sel) or 'последнюю дату'}")
 
 
 @require_GET
@@ -141,6 +167,7 @@ def status(request, pk: int):
     return JsonResponse({
         "id": r.pk, "status": r.status, "step": r.step, "error": r.error,
         "seconds": r.seconds, "stats": r.stats,
+        "params": _params(r.period_from, r.period_to, r.selected_period),
         "url": reverse("report-view", args=[r.pk]) if r.status == r.DONE else None,
     })
 

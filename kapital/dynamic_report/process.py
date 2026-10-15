@@ -768,8 +768,10 @@ def build_marts(panel, snap, periods, sel, has_oked):
     gg["rate"] = gg["n"] / gg.groupby(["period", "from_b"], observed=True)["n"].transform("sum")
     A["transitions"] = gg
 
-    # vintages — cohorts are keyed on origination month, so they ignore the window
-    vv = panel[panel["vintage"].notna() & panel["mob"].between(0, 36)].copy()
+    # vintages: only cohorts ISSUED inside the window. A loan issued before the window
+    # has its first months missing, so its "ever 90+ by month 12" would be understated.
+    vv = panel[panel["vintage"].notna() & (panel["vintage"] >= periods[0])
+               & panel["mob"].between(0, 36)].copy()
     THRS = sorted({t_ for t_, _ in VINTAGE_MARKS})
     for thr in THRS:
         vv[f"ever_{thr}"] = vv["peak_dpd"] > thr
@@ -1252,6 +1254,8 @@ def a07_vintage_quality(A, B, ctx):
             ins.append(f"Последние 6 когорт в среднем {fpct(a_)} против {fpct(b_)} у предыдущих 6 — "
                        f"выдачи {'ухудшаются' if a_ > b_ else 'улучшаются'}.")
     ins.append("Правые месяцы без красного столбца — когорты ещё не прожили 12 месяцев, это не ноль.")
+    ins.append(f"Показаны только выдачи с {vlabel_full(ctx['periods'][0])}: у более ранних нет полной "
+               "истории в выбранном периоде. Чем длиннее период, тем больше когорт.")
     return page(f, what="Качество выдач: как ведёт себя каждая когорта — все кредиты, выданные в один месяц. "
                         "Чем ниже столбцы, тем лучше выдавали.",
                 legend=[(COLORS["watch"], "GL30+@6MOB",

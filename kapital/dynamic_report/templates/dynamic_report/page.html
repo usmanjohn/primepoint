@@ -173,8 +173,8 @@
           {% for r in runs %}
           <tr>
             <td class="mono text-muted">{{ r.pk }}</td>
-            <td>{{ r.selected_period|default:"—" }}</td>
-            <td class="mono">{{ r.period_from|default:"…" }} – {{ r.period_to|default:"…" }}</td>
+            <td>{{ r.sel_label|default:"последняя" }}</td>
+            <td>{{ r.from_label|default:"с начала" }} – {{ r.to_label|default:"до конца" }}</td>
             <td><span class="pill p-{{ r.status }}">{{ r.get_status_display }}</span></td>
             <td class="text-end mono">{{ r.stats.n_charts|default:"—" }}</td>
             <td class="text-end mono">{{ r.seconds }}</td>
@@ -254,7 +254,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const st = s.stats || {};
         show(`Готово за ${s.seconds} с — ${st.n_charts || '—'} графиков, ` +
              `${st.n_periods || 0} отчётных дат, ` +
-             `${(st.n_clients || 0).toLocaleString('ru-RU')} клиентов. ` +
+             `${(st.n_clients || 0).toLocaleString('ru-RU')} клиентов` +
+             (s.params ? ` · ${s.params}. ` : '. ') +
              `<a class="go-link" href="view/${id}/" target="_blank" rel="noopener">` +
              `Открыть отчёт</a>`, 'ok');
         window.open(`view/${id}/`, '_blank', 'noopener');
@@ -292,8 +293,9 @@ document.addEventListener('DOMContentLoaded', function () {
         force.value = '0';
         return;
       }
-      if (s.cached) show('Такой отчёт уже построен — открываю…');
-      else show('Запуск расчёта…');
+      const what = s.params ? ` (${s.params})` : '';
+      if (s.cached) show('Такой отчёт уже построен — открываю…' + what);
+      else show('Запуск расчёта…' + what);
       force.value = '0';
       poll(s.id);
     } catch (e) {
