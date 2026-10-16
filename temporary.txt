@@ -8,3 +8,5 @@ python manage.py import_tutorials tutorial/management/commands/_tutorials_code_l
 python manage.py import_tutorials tutorial/management/commands/_tutorials_code_dynamic_report.py --author=powerty --republish
 python manage.py import_tutorials tutorial/management/commands/_tutorials_code_dynamic_report.py --author=powerty --republish
 python manage.py import_tutorials tutorial/management/commands/_tutorials_code_dynamic_report.py --author=powerty --republish
+python manage.py import_tutorials tutorial/management/commands/_tutorials_code_dynamic_report.py --author=powerty --republish
+python manage.py import_tutorials tutorial/management/commands/_tutorials_code_dynamic_report.py --author=powerty --republish

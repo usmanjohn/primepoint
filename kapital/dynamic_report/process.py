@@ -95,6 +95,12 @@ LABEL_BY_REPORT_DATE = True
 
 TOP_PASSPORTS, TOP_PRODUCTS, TOP_OKED = 5, 15, 10   # department pages: top 5 products + «Прочие»
 TOP_PER_DEPT = 5              # products page: this many per department, departments in DEPARTMENTS order
+# Rename products (passport) everywhere in the report: {"name in the data": "name to show"}.
+# Case, extra spaces and Latin look-alike letters do not matter on the left. If the new name
+# already exists as a product, the two are counted as one.
+PASSPORT_RENAME = {
+    "корпоратив кредит": "уполномоченный орган",
+}
 # «Из 100 клиентов» (B11): which icon stands for each department, and what the department is.
 DEPT_ICONS = {"rk": "person", "kk": "building", "mk": "shop", "sk": "card"}   # person/building/shop/card
 DEPT_ABOUT = {"rk": "физические лица", "kk": "корпоративные клиенты", "mk": "малый бизнес",
@@ -756,6 +762,9 @@ def read_months(data_dir, period_from=None, period_to=None):
     for c in ["department", "filial", "passport"] + [c for c in ("oked_name",) if c in df.columns]:
         df[c], merges[c] = _canonical(df[c])
         df[c] = _sorted_cats(df[c])
+    if PASSPORT_RENAME:
+        ren = {_name_key(k): v for k, v in PASSPORT_RENAME.items()}
+        df["passport"] = _sorted_cats(_recode(df["passport"], lambda v: ren.get(_name_key(v), v)))
     if df.empty:
         raise ValueError(f"нет данных за период {period_from}–{period_to}")
     df.attrs["merges"], df.attrs["files"] = merges, files_info
