@@ -10812,3 +10812,6 @@ msgstr "Faqat adminlar uchun — bu dars boshqalarga koʻrinmaydi."
 
 msgid "Admin only — this playlist is hidden from everyone else."
 msgstr "Faqat adminlar uchun — bu pleylist boshqalarga koʻrinmaydi."
+
+msgid "Copied"
+msgstr "Nusxalandi"

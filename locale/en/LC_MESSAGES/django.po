@@ -6279,3 +6279,6 @@ msgstr ""
 #: tutorial/views.py:382
 msgid "You already finished this tutorial."
 msgstr ""
+
+msgid "Copied"
+msgstr ""
