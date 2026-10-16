@@ -31,6 +31,8 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.io as pio
+import pyarrow.parquet as pq
+from pandas.api.types import union_categoricals
 
 
 # ==========================================================================
@@ -171,22 +173,28 @@ SUD_ORDER = ["norm", "neofficial", "official"]
 SUD_COLORS = {"norm": "#D9D4C7", "neofficial": "#E08A1E", "official": "#B3341F"}
 WRITE_OFF_COLOR = "#3A3A40"
 
+# Only the columns the report reads. Anything else in a file (tobo, dogovor_sana, protsent_*,
+# spisat_91501…) is never loaded: on the server 17M rows × every column did not fit in 15 GB.
 CANONICAL = [
-    "contragent", "anketa", "filial", "tobo", "valuta", "dogovor_sana", "vidacha_sana",
-    "department", "passport", "contragent_name",
-    "brutto_95_summa", "brutto_summa", "protsent_16309_summa", "protsent_16377_summa",
-    "protsent_16379_summa", "spisat_95413_summa", "spisat_91501_summa", "reserve_summa",
+    "contragent", "anketa", "filial", "valuta", "vidacha_sana",
+    "department", "passport",
+    "brutto_95_summa", "brutto_summa", "spisat_95413_summa", "reserve_summa",
     "vidacha_tekushiy_summa", "pogashen_tekushiy_summa", "maks_dni",
     "kategoriya_npl_90", "straxovka_summa", "straxovka_brutto_95_summa",
     "kategoriya_straxovka", "sud", "avto", "report_date",
 ]
-OPTIONAL = ["oked_name"]
+# contragent_name may be missing (names come from your top50_names file anyway);
+# oked_name is read only when the OKED pages are on.
+OPTIONAL = ["contragent_name"] + (["oked_name"] if SHOW_OKED else [])
 RENAME = {
     "vidacha_tm_summa": "vidacha_tekushiy_summa",
     "pogashen_tm_summa": "pogashen_tekushiy_summa",
 }
-DATE_COLS = ("dogovor_sana", "vidacha_sana", "report_date")
+DATE_COLS = ("vidacha_sana", "report_date")
 AMOUNT_COLS = [c for c in CANONICAL if c.endswith("_summa")]
+# Text columns are held as pandas categories: 17M copies of «Ташкент Центр» become 17M small
+# integers pointing at one string. Cleaning (strip, spelling merge) then runs per distinct value.
+TEXT_COLS = ["filial", "department", "passport", "contragent_name", "sud", "avto", "oked_name"]
 
 PCFG = {"displaylogo": False, "responsive": False,
         "modeBarButtonsToRemove": ["select2d", "lasso2d", "autoScale2d",
@@ -531,55 +539,80 @@ def glossary():
 # ==========================================================================
 # LOAD
 # ==========================================================================
+def _norm_name(c):
+    return RENAME.get(str(c).strip().lower().replace(" ", "_"), str(c).strip().lower().replace(" ", "_"))
+
+
 def normalise(df):
-    df = df.rename(columns=lambda c: str(c).strip().lower().replace(" ", "_")).rename(columns=RENAME)
+    """One file's rows -> the report's types. Runs per file, so only one raw file is in memory."""
+    df = df.rename(columns=_norm_name)
     missing = [c for c in CANONICAL if c not in df.columns]
     if missing:
         raise KeyError("в данных не хватает колонок: " + ", ".join(missing))
-
-    have_opt = [c for c in OPTIONAL if c in df.columns]
-    df = df[CANONICAL + have_opt].copy()
+    df = df[CANONICAL + [c for c in OPTIONAL if c in df.columns]].copy()
+    if "contragent_name" not in df.columns:
+        df["contragent_name"] = _empty_cat(len(df))
 
     # amounts and dates may arrive as text ("1 234,56", "01.12.2025") in some months: read them
     # all, and remember which rows could not be read — the data-check page counts them
-    bad_num = pd.Series(False, index=df.index)
+    bad_num = np.zeros(len(df), dtype=bool)
     for c in AMOUNT_COLS:
         raw_ = df[c]
-        df[c] = _to_num(raw_)
-        bad_num |= df[c].isna() & raw_.notna() & (raw_.astype("string").str.strip() != "")
-        df[c] = df[c].fillna(0.0)
-    bad_date = pd.Series(False, index=df.index)
+        if pd.api.types.is_numeric_dtype(raw_):
+            df[c] = raw_.astype("float64").fillna(0.0)      # a real number column has nothing unreadable
+            continue
+        num = _to_num(raw_)
+        bad_num |= (num.isna() & raw_.notna() & (raw_.astype("string").str.strip() != "")).to_numpy()
+        df[c] = num.fillna(0.0).astype("float64")   # plain float, like the months that arrive as numbers
+    bad_date = np.zeros(len(df), dtype=bool)
     for c in DATE_COLS:
         raw_ = df[c]
         df[c] = _to_date(raw_)
         if c == "vidacha_sana":
-            bad_date |= df[c].isna() & raw_.notna()
-    df["_badnum"], df["_baddate"] = bad_num.to_numpy(), bad_date.to_numpy()
+            bad_date |= (df[c].isna() & raw_.notna()).to_numpy()
+    df["_badnum"], df["_baddate"] = bad_num, bad_date
     df["maks_dni"] = _to_num(df["maks_dni"]).fillna(0).astype("int32")
     for c in ("kategoriya_npl_90", "kategoriya_straxovka"):
         df[c] = pd.to_numeric(df[c], errors="coerce").fillna(0).astype("int8")
     df["valuta"] = pd.to_numeric(df["valuta"], errors="coerce").fillna(0).astype("int32")
     for c in ("anketa", "contragent"):
         df[c] = pd.to_numeric(df[c], errors="coerce").astype("int64")
-    for c in ["filial", "tobo", "department", "passport",
-              "contragent_name", "sud", "avto"] + have_opt:
-        df[c] = df[c].astype("string").str.strip()
-    # one name, one spelling: "Микрокредит самозанятым", "микрокредит  самозанятым " and the same
-    # words typed with a Latin «с» are ONE product (else it changes colour and leaks to «Прочие»)
-    merges = {}
-    for c in ["department", "filial", "passport"] + have_opt:
-        df[c], merges[c] = _canonical(df[c])
-    df.attrs["merges"] = merges
 
+    for c in TEXT_COLS:
+        if c in df.columns:
+            df[c] = _recode(df[c], lambda v: str(v).strip())
     # avto: Latin pervichka / vtorichka (any case); everything else — 0, empty, other — is "not auto"
-    a = df["avto"].fillna("").str.lower()
-    df["avto"] = a.where(a.isin(["pervichka", "vtorichka"]), "non_auto").astype("string")
+    df["avto"] = _recode(df["avto"], lambda v: v.lower() if v.lower() in ("pervichka", "vtorichka")
+                         else "non_auto", na="non_auto")
     # spelling variants of the court stage collapse onto three keys; unknown values stay as they are
-    s = df["sud"].fillna("norm").str.lower()
-    df["sud"] = s.map(lambda v: SUD_ALIASES.get(v, v)).astype("string")
-    if have_opt:
-        df["oked_name"] = df["oked_name"].fillna("Не указано").replace({"": "Не указано"})
+    df["sud"] = _recode(df["sud"], lambda v: SUD_ALIASES.get(v.lower(), v.lower()), na="norm")
+    if "oked_name" in df.columns:
+        df["oked_name"] = _recode(df["oked_name"], lambda v: v or "Не указано", na="Не указано")
     return df
+
+
+def _empty_cat(n):
+    return pd.Categorical.from_codes(np.full(n, -1, dtype="int8"), categories=pd.Index([], dtype=object))
+
+
+def _recode(s, fn, na=None):
+    """
+    A text column as a category, with fn applied to each DISTINCT value instead of each row.
+    Values that fn makes equal merge into one category; na (if given) replaces missing values.
+    """
+    c = s if isinstance(s.dtype, pd.CategoricalDtype) else s.astype("category")
+    cats = c.cat.categories
+    labels = [fn(str(v)) for v in cats]
+    codes = c.cat.codes.to_numpy()
+    if na is not None:
+        labels.append(na)
+        codes = np.where(codes < 0, len(cats), codes)
+    if not labels:
+        return pd.Series(_empty_cat(len(c)), index=c.index)
+    remap, uniq = pd.factorize(pd.Index(labels, dtype=object))
+    new = np.where(codes < 0, -1, remap[np.maximum(codes, 0)])
+    return pd.Series(pd.Categorical.from_codes(new, categories=pd.Index(uniq, dtype=object)),
+                     index=c.index)
 
 
 def _to_num(s):
@@ -607,6 +640,7 @@ def _name_key(v):
 def _canonical(col):
     """Merge spelling variants; each name takes its most common spelling. Returns (column, merges)."""
     vc = col.value_counts(dropna=True)
+    vc = vc[vc > 0]
     if vc.empty:
         return col, {}
     keys = pd.Series({v: _name_key(v) for v in vc.index})
@@ -617,8 +651,13 @@ def _canonical(col):
             best[v] = variants.index[0]
         if len(variants) > 1:
             merged[variants.index[0]] = {str(v): int(n) for v, n in variants.items()}
-    out = col.map(best).astype("string")
-    return out.where(col.notna(), col), merged
+    return _recode(col, lambda v: best.get(v, v)), merged
+
+
+def _sorted_cats(col):
+    """Categories in alphabetical order, so grouping and sorting behave exactly like plain text."""
+    cats = col.cat.categories
+    return col.cat.reorder_categories(sorted(cats, key=str)) if len(cats) else col
 
 
 def _file_range(path):
@@ -679,25 +718,44 @@ def read_months(data_dir, period_from=None, period_to=None):
     if not chosen:
         raise ValueError(f"нет файлов за период {period_from}–{period_to}")
 
+    need = set(CANONICAL) | set(OPTIONAL)
     parts_ = []
     files_info = []
     for f in chosen:
-        x_ = pd.read_parquet(f)
-        rd = pd.to_datetime(x_["report_date"], errors="coerce", format="mixed", dayfirst=True) \
-            if "report_date" in x_.columns else pd.Series(dtype="datetime64[ns]")
+        # only the columns the report uses — reading every column is what ran the server out of RAM
+        names = pq.read_schema(f).names
+        x_ = pd.read_parquet(f, columns=[c for c in names if _norm_name(c) in need])
+        x_ = normalise(x_)
+        rd = x_["report_date"]
         files_info.append({"file": f.name, "rows": len(x_), "bad_report_date": int(rd.isna().sum()),
                            "first": rd.min(), "last": rd.max()})
+        # drop the months outside the window now, before the next file is read
+        per = _row_period(rd)
+        keep = np.ones(len(x_), dtype=bool)
+        if period_from:
+            keep &= (per >= int(period_from)).to_numpy()
+        if period_to:
+            keep &= (per <= int(period_to)).to_numpy()
+        if not keep.all():
+            x_ = x_[keep]
         parts_.append(x_)
-    df = normalise(pd.concat(parts_, ignore_index=True))
-    merges = df.attrs.get("merges", {})
+        del x_
 
-    per = _row_period(df["report_date"])
-    keep = pd.Series(True, index=df.index)
-    if period_from:
-        keep &= per >= int(period_from)
-    if period_to:
-        keep &= per <= int(period_to)
-    df = df[keep]
+    # glue the files: text columns are unioned as categories (pd.concat would turn them into
+    # plain strings again), everything else is concatenated as is
+    text = [c for c in TEXT_COLS if all(c in p_.columns for p_ in parts_)]
+    cats = {c: union_categoricals([p_[c] for p_ in parts_], ignore_order=True) for c in text}
+    df = pd.concat([p_.drop(columns=text) for p_ in parts_], ignore_index=True)
+    del parts_
+    for c in text:
+        df[c] = _sorted_cats(pd.Series(cats.pop(c), index=df.index))
+
+    # one name, one spelling: "Микрокредит самозанятым", "микрокредит  самозанятым " and the same
+    # words typed with a Latin «с» are ONE product (else it changes colour and leaks to «Прочие»)
+    merges = {}
+    for c in ["department", "filial", "passport"] + [c for c in ("oked_name",) if c in df.columns]:
+        df[c], merges[c] = _canonical(df[c])
+        df[c] = _sorted_cats(df[c])
     if df.empty:
         raise ValueError(f"нет данных за период {period_from}–{period_to}")
     df.attrs["merges"], df.attrs["files"] = merges, files_info
@@ -857,7 +915,13 @@ def _bucketise(dpd, buckets, order):
 
 
 def build_panel(raw):
-    d = raw.copy()
+    """
+    The loan × month panel. Takes OWNERSHIP of raw: call it as build_panel(read_months(...)),
+    so the raw table can be freed the moment the panel is built.
+    """
+    d = raw.copy(deep=False)        # new columns go on d only; no second copy of 17M rows
+    attrs = dict(raw.attrs)
+    del raw
     a = d["report_date"] - pd.Timedelta(days=1)
     d["period"] = (a.dt.year * 100 + a.dt.month).astype("int32")
     v = d["vidacha_sana"]
@@ -891,9 +955,10 @@ def build_panel(raw):
     d["npl_exposure"] = np.where(d["is_npl"], d["exposure"], 0.0)
     d["watch_exposure"] = np.where(d["is_watch"], d["exposure"], 0.0)
     d["npl_gross_exp"] = np.where(d["is_npl_gross"], d["exposure_gross"], 0.0)
-    d["cur_name"] = d["valuta"].map(CURRENCY_NAMES).fillna(d["valuta"].astype(str))
+    vals = d["valuta"].unique()
+    d["cur_name"] = d["valuta"].map({v: CURRENCY_NAMES.get(v, str(v)) for v in vals}).astype("category")
     uniq = d["department"].dropna().unique()
-    d["dkey"] = d["department"].map({u: dkey(u) for u in uniq}).astype("string")
+    d["dkey"] = d["department"].map({u: dkey(u) for u in uniq}).astype("category")
 
     has_oked = "oked_name" in d.columns
     keep = ["anketa", "contragent", "contragent_name", "period", "vintage", "mob", "mob_band",
@@ -902,16 +967,19 @@ def build_panel(raw):
             "npl_gross_exp", "reserve", "disbursed", "repaid", "written_amt", "writeoff",
             "insurance_paid", "filial", "department", "dkey", "passport", "avto",
             "valuta", "cur_name", "sud", "kat", "on_balance", "_badnum", "_baddate"] + (["oked_name"] if has_oked else [])
-    p = d[keep].sort_values(["anketa", "period"], kind="stable").reset_index(drop=True)
+    order = np.lexsort((d["period"].to_numpy(), d["anketa"].to_numpy()))   # = stable sort by anketa, period
+    p = d[keep].take(order).reset_index(drop=True)
+    del d
+    p.attrs.update(attrs)
 
     g = p.groupby("anketa", sort=False)
     p["mi"] = (p["period"] // 100) * 12 + (p["period"] % 100)
     p["peak_dpd"] = g["dpd"].cummax()
     prev_mi, next_mi = g["mi"].shift(1), g["mi"].shift(-1)
     back, fwd = prev_mi.eq(p["mi"] - 1), next_mi.eq(p["mi"] + 1)
-    p["prev_is_npl"] = g["is_npl"].shift(1).where(back)
+    p["prev_is_npl"] = g["is_npl"].shift(1).where(back).astype("float32")   # 1 / 0 / NaN = no previous month
     p["prev_exposure"] = g["exposure"].shift(1).where(back)
-    p["next_mbucket"] = g["mbucket"].shift(-1).astype("object").where(fwd, "EXIT")
+    p["next_mbucket"] = g["mbucket"].shift(-1).where(fwd, "EXIT")     # a category: EXIT is one of them
     p["exited_after"] = ~fwd
     return p
 
@@ -956,7 +1024,9 @@ def top_clients(panel, totals):
     Returns (all clients ranked per period, top rows, per-period summary, top by department).
     """
     excl = {dkey(x) for x in TOP_CLIENTS_EXCLUDE}
-    p = panel[panel["exposure"] > MIN_BALANCE]
+    p = panel.loc[(panel["exposure"] > MIN_BALANCE).to_numpy(),
+                  ["period", "contragent", "anketa", "dkey", "department", "exposure", "npl_exposure",
+                   "dpd", "contragent_name"]]
     # keep a client in a month only if they hold at least one loan OUTSIDE the excluded
     # departments that month; then all their loans count, the excluded ones included
     elsewhere = (~p["dkey"].isin(excl)).groupby([p["period"], p["contragent"]], observed=True).transform("any")
@@ -993,6 +1063,23 @@ def top_clients(panel, totals):
     return g, top, pd.DataFrame(rows), by_dep
 
 
+def _plain_text(obj):
+    """
+    The marts are small, so text goes back to plain strings before the charts see it: the
+    category trick is for the 17M-row panel only. Ordered categories (buckets, MOB bands)
+    are real orderings and stay as they are.
+    """
+    if isinstance(obj, dict):
+        return {k: _plain_text(v) for k, v in obj.items()}
+    if isinstance(obj, pd.DataFrame):
+        cols = [c for c in obj.columns
+                if isinstance(obj[c].dtype, pd.CategoricalDtype) and not obj[c].dtype.ordered]
+        return obj.astype({c: "string" for c in cols}) if cols else obj
+    if isinstance(obj, pd.Series) and isinstance(obj.dtype, pd.CategoricalDtype) and not obj.dtype.ordered:
+        return obj.astype("string")
+    return obj
+
+
 def build_marts(panel, snap, periods, sel, has_oked):
     # ---------------- Direction A: dynamics ----------------
     A = {"total": by_period(panel).sort_values("period")}
@@ -1011,13 +1098,16 @@ def build_marts(panel, snap, periods, sel, has_oked):
     A["stock_flow"] = t
 
     # NPL bridge: closing = opening + inflow - cured - exited + residual
+    # (masks on single columns: panel[mask] would copy every column of 17M rows)
     stock = panel.groupby("period", observed=True)["npl_exposure"].sum()
-    q = panel[panel["prev_is_npl"].notna()]
-    inflow = q[q["is_npl"] & ~q["prev_is_npl"].astype(bool)] \
-        .groupby("period", observed=True)["exposure"].sum()
-    cured = q[~q["is_npl"] & q["prev_is_npl"].astype(bool)] \
-        .groupby("period", observed=True)["prev_exposure"].sum()
-    exited = (panel[panel["is_npl"] & panel["exited_after"]]
+    has_prev = panel["prev_is_npl"].notna().to_numpy()
+    was_npl = panel["prev_is_npl"].where(has_prev, False).astype(bool).to_numpy()
+    is_npl = panel["is_npl"].to_numpy()
+    m_in, m_cu = has_prev & is_npl & ~was_npl, has_prev & ~is_npl & was_npl
+    inflow = panel.loc[m_in, "exposure"].groupby(panel.loc[m_in, "period"]).sum()
+    cured = panel.loc[m_cu, "prev_exposure"].groupby(panel.loc[m_cu, "period"]).sum()
+    m_ex = is_npl & panel["exited_after"].to_numpy()
+    exited = (panel.loc[m_ex, ["period", "exposure"]]
               .assign(np_=lambda x: x["period"].map(lambda v: shift_p(v, -1)))
               .groupby("np_", observed=True)["exposure"].sum())
     rows = []
@@ -1030,11 +1120,12 @@ def build_marts(panel, snap, periods, sel, has_oked):
     A["bridge"] = pd.DataFrame(rows)
 
     # migration between the FINE buckets, month over month
-    tr = panel[panel["next_mbucket"].notna()]
-    tr = pd.DataFrame({"period": tr["period"], "from_b": tr["mbucket"].astype("string"),
-                       "to_b": tr["next_mbucket"].astype("string"), "anketa": tr["anketa"]})
-    gg = tr.groupby(["period", "from_b", "to_b"], observed=True)["anketa"] \
-           .size().reset_index(name="n")
+    m_tr = panel["next_mbucket"].notna().to_numpy()
+    gg = (panel.loc[m_tr, ["period", "mbucket", "next_mbucket", "anketa"]]
+          .rename(columns={"mbucket": "from_b", "next_mbucket": "to_b"})
+          .groupby(["period", "from_b", "to_b"], observed=True)["anketa"].size().reset_index(name="n"))
+    gg = gg.astype({"from_b": "string", "to_b": "string"}) \
+           .sort_values(["period", "from_b", "to_b"], kind="stable").reset_index(drop=True)
     gg["rate"] = gg["n"] / gg.groupby(["period", "from_b"], observed=True)["n"].transform("sum")
     A["transitions"] = gg
 
@@ -1044,8 +1135,9 @@ def build_marts(panel, snap, periods, sel, has_oked):
     # the 6- and 12-month checkpoints vanish. A checkpoint m is shown once the cohort is m
     # months old at the LAST month of data.
     marks_all = sorted(set(VINTAGE_MARKS) | set(A07_MARKS))
-    vv = panel[panel["vintage"].notna() & (panel["vintage"] >= periods[0])
-               & panel["mob"].between(0, 36)]
+    vv = panel.loc[(panel["vintage"].notna() & (panel["vintage"] >= periods[0])
+                    & panel["mob"].between(0, 36)).to_numpy(),
+                   ["anketa", "vintage", "department", "peak_dpd", "mob"]]
     last = int(periods[-1])
     rows = []
     if len(vv):
@@ -1080,7 +1172,8 @@ def build_marts(panel, snap, periods, sel, has_oked):
 
     # month-on-month pieces for the «что изменилось» page
     A["passport"] = by_period(panel, "passport")
-    newnpl = panel[(panel["period"] == sel) & panel["is_npl"] & (panel["prev_is_npl"] == False)]  # noqa: E712
+    newnpl = panel.loc[((panel["period"] == sel) & panel["is_npl"]
+                        & (panel["prev_is_npl"] == False)).to_numpy(), ["department", "exposure"]]  # noqa: E712
     A["inflow_dep"] = newnpl.groupby("department", observed=True)["exposure"].sum()
 
     # products per department, chosen and ORDERED by their standing at SEL
@@ -1090,14 +1183,19 @@ def build_marts(panel, snap, periods, sel, has_oked):
              .groupby("passport", observed=True)["exposure"].sum()
              .sort_values(ascending=False))
         top_pass[str(dep)] = [str(x) for x in s.head(TOP_PASSPORTS).index]
-    pp = panel[["period", "department", "passport", "exposure", "npl_exposure"]].copy()
-    pp["passport_grp"] = pp["passport"].astype("string")
+    other = np.zeros(len(panel), dtype=bool)
     for dep, keep in top_pass.items():
-        mask = (pp["department"] == dep) & (~pp["passport"].isin(keep))
-        pp.loc[mask, "passport_grp"] = "Прочие"
-    gp = pp.groupby(["period", "department", "passport_grp"], observed=True)
-    A["passport_dep"] = pd.DataFrame({"exposure": gp["exposure"].sum(),
-                                      "npl_exposure": gp["npl_exposure"].sum()}).reset_index()
+        other |= ((panel["department"] == dep) & (~panel["passport"].isin(keep))).to_numpy()
+    grp = panel["passport"]
+    if "Прочие" not in grp.cat.categories:
+        grp = grp.cat.add_categories(["Прочие"])
+    grp = grp.mask(other, "Прочие").rename("passport_grp")
+    gp = panel[["period", "department", "exposure", "npl_exposure"]].assign(passport_grp=grp) \
+        .groupby(["period", "department", "passport_grp"], observed=True)
+    pdp = pd.DataFrame({"exposure": gp["exposure"].sum(),
+                        "npl_exposure": gp["npl_exposure"].sum()}).reset_index()
+    A["passport_dep"] = pdp.astype({"department": "string", "passport_grp": "string"}) \
+        .sort_values(["period", "department", "passport_grp"], kind="stable").reset_index(drop=True)
 
     A["clients_ranked"], A["top"], A["top_summary"], A["top_by_dep"] = \
         top_clients(panel, A["total"])
@@ -3161,12 +3259,12 @@ def run(data_dir, out_path, period_from=None, period_to=None,
     say = progress or (lambda *_: None)
     _ensure_template()
 
-    say("чтение файлов")
-    raw = read_months(data_dir, period_from, period_to)
-    has_oked = "oked_name" in raw.columns
-
-    say("построение панели")
-    panel = build_panel(raw)
+    say("чтение файлов и построение панели")
+    # read straight into the panel: no name keeps the raw table alive, so it is freed as soon as
+    # the panel exists (on 17M rows that is gigabytes)
+    panel = build_panel(read_months(data_dir, period_from, period_to))
+    has_oked = "oked_name" in panel.columns and SHOW_OKED
+    merges, files = panel.attrs.get("merges", {}), panel.attrs.get("files", [])
     periods = sorted(int(p) for p in panel["period"].unique())
     if not periods:
         raise ValueError("нет данных за выбранный период")
@@ -3182,11 +3280,12 @@ def run(data_dir, out_path, period_from=None, period_to=None,
 
     say("расчёт витрин")
     A, B, top_pass = build_marts(panel, snap, periods, sel, has_oked)
+    A, B = _plain_text(A), _plain_text(B)
     names = load_names(data_dir)                  # your top-50 names / aloqador table, if present
     apply_names(A, names)
     ctx = {"sel": sel, "periods": periods, "has_oked": has_oked,
            "departments": list(top_pass.keys()), "top_pass": top_pass,
-           "merges": raw.attrs.get("merges", {}), "files": raw.attrs.get("files", [])}
+           "merges": merges, "files": files}
 
     say("сборка отчёта")
     Path(out_path).parent.mkdir(parents=True, exist_ok=True)

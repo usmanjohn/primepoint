@@ -1,0 +1,28 @@
+My broest, it is working smoothly, charts are great. But working great on local server. I also have
+  deployment server ubuntu, nginx, gunicorn etc stuff. And I push my codes there and pull from server too. I added my parquet files
+  as well. Sometimes it is working correctly, but taking long time. Sometimes, iti s throwing errors like poteryana svyazi s
+  serverom. Unexpected token '<', " etc, or sometimescould not fetch etc. Here I am providing the results page here, some is gotov,
+  some is vipolnyatsya or something like that. What could be problem? Files and locations are same, codes same. But taking longer
+  to read I think, and also some hidden problem maybe. Please let me know your thoughts ans ask any info if you need.
+  Потеряна связь с сервером: Failed to fetch.
+
+  Потеряна связь с сервером: Unexpected token '<', "
+
+  Or sometimes just keeping running
+
+
+
+  Here the table:
+
+  Ранее построенные отчётыоткрываются мгновенно
+
+  #    Структура на    Период динамики    Статус    Графиков    Сек.    Создан
+  9    последняя    с начала – до конца    выполняется    —    0,0    16.10.2026 05:47
+  8    последняя    с начала – до конца    выполняется    —    0,0    16.10.2026 05:44
+  7    последняя    с начала – до конца    выполняется    —    0,0    16.10.2026 05:35
+  6    окт 2026    ноя 2025 – окт 2026    готов    31    78,5    16.10.2026 05:13    открыть · скачать ·удалить
+  5    последняя    с начала – до конца    выполняется    —    0,0    14.10.2026 09:48
+  4    последняя    с начала – до конца    выполняется    —    0,0    13.10.2026 14:54
+  3    последняя    с начала – до конца    выполняется    —    0,0    13.10.2026 14:53
+  2    последняя    с начала – до конца    выполняется    —    0,0    13.10.2026 14:43
+  1    последняя    с начала – до конца    выполняется    —    0,0    13.10.2026 14:41

@@ -1,17 +1,16 @@
 """
 Three views: the form, a status endpoint the page polls, and the report itself.
 
-The one thing that matters here: run() NEVER happens inside the request.
-8M rows takes minutes — it would blow past the gunicorn timeout, hold a worker
-the whole time, and give the user a dead browser tab. So the POST starts a
-thread, returns immediately with a job id, and the page polls.
+The one thing that matters here: run() NEVER happens inside the web server.
+Not in the request, and not in a thread of the gunicorn worker either: a full-history
+run needs gigabytes, and when the out-of-memory killer took the worker, the report, the
+status page and the row's status went with it. The POST starts a separate process
+(jobs.launch → manage.py build_report --run-id N), returns at once with the job id,
+and the page polls.
 """
 from __future__ import annotations
 
 import re
-import threading
-import traceback
-import datetime as dt
 from pathlib import Path
 
 from django.conf import settings
@@ -22,16 +21,12 @@ from django.urls import reverse
 from django.utils import timezone
 from django.views.decorators.http import require_GET, require_POST
 
-from . import process
+from . import jobs, process
 from .models import ReportRun
 
 BASE_DIR = Path(settings.BASE_DIR)
 DATA_DIR = BASE_DIR / "datasets" / "dynamics" / "yearly"
-OUT_DIR = BASE_DIR / "datasets" / "dynamics" / "report"
-
-# Only one heavy job at a time. Two concurrent 8M-row runs will exhaust RAM on
-# a modest server, and nobody needs two reports at once.
-_LOCK = threading.Lock()
+OUT_DIR = jobs.OUT_DIR
 
 
 def _period_choices():
@@ -59,51 +54,9 @@ def _plabel(p):
     return process.plabel_full(p) if p else None
 
 
-def _worker(run_id: int):
-    """Runs in a background thread. Owns its own DB connections."""
-    from django.db import connection
-
-    run = ReportRun.objects.get(pk=run_id)
-    if not _LOCK.acquire(blocking=False):
-        run.status, run.step = ReportRun.PENDING, "ожидание: другой отчёт выполняется"
-        run.save(update_fields=["status", "step"])
-        _LOCK.acquire()                      # now wait for the other job
-
-    try:
-        run.status, run.step = ReportRun.RUNNING, "запуск"
-        run.save(update_fields=["status", "step"])
-
-        def progress(msg):
-            ReportRun.objects.filter(pk=run_id).update(step=msg)
-
-        out = OUT_DIR / (f"report_{run.selected_period or 'last'}"
-                         f"_{run.pk}.html")
-        stats = process.run(DATA_DIR, out,
-                            period_from=run.period_from,
-                            period_to=run.period_to,
-                            selected_period=run.selected_period,
-                            progress=progress)
-
-        run.refresh_from_db()
-        run.status, run.step = ReportRun.DONE, "готово"
-        run.html_path, run.stats = str(out), stats
-        run.period_from = stats["period_from"]
-        run.period_to = stats["period_to"]
-        run.selected_period = stats["selected_period"]
-        run.finished_at = timezone.now()
-        run.save()
-    except Exception as exc:
-        ReportRun.objects.filter(pk=run_id).update(
-            status=ReportRun.FAILED, step="",
-            error=f"{type(exc).__name__}: {exc}\n\n{traceback.format_exc()[-2000:]}",
-            finished_at=timezone.now())
-    finally:
-        _LOCK.release()
-        connection.close()                   # a thread must not leak its connection
-
-
 def page(request):
     """The form plus the history of previous runs."""
+    jobs.reap_stale()                        # no row stays «выполняется» after its process died
     periods = _period_choices()
     return render(request, "dynamic_report/page.html", {
         "periods": periods,
@@ -154,11 +107,24 @@ def start(request):
             return JsonResponse({"id": cached.pk, "status": cached.status,
                                  "cached": True, "params": _params(pf, pt, sel)})
 
+        # the same report is already being built (e.g. the button was pressed again after the
+        # page lost the connection): follow that one instead of starting a second copy
+        jobs.reap_stale()
+        active = (ReportRun.objects.filter(fingerprint=fp, status__in=[ReportRun.PENDING, ReportRun.RUNNING])
+                  .order_by("-created_at").first())
+        if active:
+            return JsonResponse({"id": active.pk, "status": active.status,
+                                 "cached": False, "params": _params(pf, pt, sel)})
+
     run = ReportRun.objects.create(
         period_from=pf, period_to=pt, selected_period=sel,
         fingerprint=fp, created_by=username)
-
-    threading.Thread(target=_worker, args=(run.pk,), daemon=True).start()
+    try:
+        jobs.launch(run)
+    except Exception as exc:
+        ReportRun.objects.filter(pk=run.pk).update(
+            status=ReportRun.FAILED, error=f"не удалось запустить расчёт: {exc}", finished_at=timezone.now())
+        return JsonResponse({"error": f"не удалось запустить расчёт: {exc}"}, status=500)
     return JsonResponse({"id": run.pk, "status": run.status, "cached": False,
                          "params": _params(pf, pt, sel)})
 
@@ -172,6 +138,9 @@ def _params(pf, pt, sel):
 @require_GET
 def status(request, pk: int):
     r = get_object_or_404(ReportRun, pk=pk)
+    if r.is_active:
+        jobs.reap_stale()
+        r.refresh_from_db()
     return JsonResponse({
         "id": r.pk, "status": r.status, "step": r.step, "error": r.error,
         "seconds": r.seconds, "stats": r.stats,
@@ -206,6 +175,7 @@ def delete_report(request, pk: int):
     r = get_object_or_404(ReportRun, pk=pk)
     if r.is_active:
         return redirect("report-page")
+    jobs.log_path(r.pk).unlink(missing_ok=True)
     if r.html_path:
         f = Path(r.html_path)
         # never touch a file outside the reports folder, whatever the row says

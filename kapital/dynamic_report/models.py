@@ -47,7 +47,9 @@ class ReportRun(models.Model):
 
     @property
     def seconds(self):
-        end = self.finished_at or self.created_at
+        """Run time; for a job still running, the time so far."""
+        from django.utils import timezone
+        end = self.finished_at or (timezone.now() if self.is_active else self.created_at)
         return round((end - self.created_at).total_seconds(), 1)
 
     @property

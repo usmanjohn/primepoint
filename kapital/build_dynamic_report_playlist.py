@@ -22,10 +22,11 @@ FILES = [
     ('admin.py', 'python', 'Admin registration for ReportRun.'),
     ('apps.py', 'python', 'App config.'),
     ('urls.py', 'python', 'URL names report-page, report-start, report-status, report-view, report-download.'),
-    ('views.py', 'python', 'Form page, background-thread start, status polling, view/download. Reuses a finished report for identical requests.'),
+    ('views.py', 'python', 'Form page, start (launches the job process), status polling, view/download. Reuses a finished report for identical requests and follows a running one instead of starting it twice.'),
     ('process.py', 'python', 'The engine: reads datasets/dynamics/yearly/*.parquet, builds the panel and marts, renders all 29 charts into one HTML report.'),
     ('templates/dynamic_report/page.html', 'html', 'The report page: form, presets, live status, history table. Russian UI, scoped under .drp.'),
-    ('management/commands/build_report.py', 'python', 'The same engine from the command line.'),
+    ('management/commands/build_report.py', 'python', 'Builds one report: started by the page with --run-id, or by hand from the command line.'),
+    ('jobs.py', 'python', 'Last so the earlier lesson numbers stay put; install it with views.py. Runs each report as its own process (manage.py build_report --run-id N), one at a time server-wide (file lock), and marks a row failed when its process died (out of memory, restart).'),
 ]
 EMPTY = ['__init__.py', 'management/__init__.py', 'management/commands/__init__.py', 'migrations/__init__.py']
 
