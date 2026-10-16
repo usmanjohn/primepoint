@@ -438,8 +438,50 @@
 {% endblock %}
 
 {% block extra_js %}
+{% trans "Copy" as t_copy %}{% trans "Copied" as t_copied %}
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+    // A copy button on every code block. The text is the block's own textContent, so the
+    // clipboard gets exactly the file the lesson shows (indentation included).
+    function copyText(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            return navigator.clipboard.writeText(text);
+        }
+        return new Promise(function (resolve, reject) {      // plain-http fallback
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.setAttribute('readonly', '');
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy') ? resolve() : reject(); }
+            catch (err) { reject(err); }
+            finally { ta.remove(); }
+        });
+    }
+    document.querySelectorAll('#tut-content pre').forEach(function (pre) {
+        var wrap = document.createElement('div');
+        wrap.className = 'tut-code';
+        pre.parentNode.insertBefore(wrap, pre);
+        wrap.appendChild(pre);
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'tut-copy';
+        btn.innerHTML = '<i class="bi bi-clipboard" aria-hidden="true"></i><span>{{ t_copy|escapejs }}</span>';
+        btn.addEventListener('click', function () {
+            copyText(pre.textContent).then(function () {
+                btn.classList.add('tut-copy--done');
+                btn.innerHTML = '<i class="bi bi-check2" aria-hidden="true"></i><span>{{ t_copied|escapejs }}</span>';
+                setTimeout(function () {
+                    btn.classList.remove('tut-copy--done');
+                    btn.innerHTML = '<i class="bi bi-clipboard" aria-hidden="true"></i><span>{{ t_copy|escapejs }}</span>';
+                }, 1800);
+            });
+        });
+        wrap.appendChild(btn);
+    });
+
     if (window.MathJax) {
         MathJax.startup.promise.then(() =>
             MathJax.typesetPromise([document.getElementById('tut-content')])
