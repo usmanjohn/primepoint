@@ -87,9 +87,21 @@ BRANCHES_PER_PAGE = 18        # longer branch lists continue on the next page
 # was issued in September. False = label by the month the data describes.
 LABEL_BY_REPORT_DATE = True
 
-TOP_PASSPORTS, TOP_PRODUCTS, TOP_OKED = 7, 15, 10
+TOP_PASSPORTS, TOP_PRODUCTS, TOP_OKED = 5, 15, 10   # department pages: top 5 products + «Прочие»
 TOP_PER_DEPT = 5              # products page: this many per department, departments in DEPARTMENTS order
-PERSON_DEPTS = ["rk"]         # «из 100 клиентов»: people icons for these departments, buildings for the rest
+# «Из 100 клиентов» (B11): which icon stands for each department, and what the department is.
+DEPT_ICONS = {"rk": "person", "kk": "building", "mk": "shop", "sk": "card"}   # person/building/shop/card
+DEPT_ABOUT = {"rk": "физические лица", "kk": "корпоративные клиенты", "mk": "малый бизнес",
+              "sk": "онлайн-кредиты физлицам"}
+B10_SHOW_ALL = False          # B10: also draw the «все кредиты» bar (it is big and squeezes the other three)
+A07_MARKS = ((30, 3), (30, 6), (90, 12))   # A07 checkpoints; the ones with too few cohorts are skipped
+
+# Top-50 names. A small table YOU fill (Excel or CSV), in the folder above the data folder
+# (datasets/dynamics/top50_names.xlsx or .csv), columns:
+#     report_date | contragent | name | aloqador
+# report_date empty = the row is valid for every month; aloqador 1 / да / ha / x = related company.
+# Every report writes top50_template.csv next to itself, with all its top-50 ids, to start from.
+TOP_NAMES_FILE = "top50_names"
 
 # Regulation (from the kapital/laws pages). CBU 3937 minimum reserve by quality category;
 # collateral may lower the required reserve, so being under the minimum is a question, not a breach.
@@ -195,10 +207,12 @@ def _ensure_template():
         margin=dict(l=70, r=70, t=34, b=56),
         hoverlabel=dict(bgcolor=COLORS["ink"], font_color="white", font_size=13),
         xaxis=dict(showgrid=False, linecolor=rule, ticks="outside", tickcolor=rule,
-                   tickfont=dict(size=12), automargin=True),
+                   tickfont=dict(size=12), automargin=True, hoverformat=",.2f"),
         yaxis=dict(gridcolor=rule, zerolinecolor=rule, tickfont=dict(size=12),
-                   automargin=True),
+                   automargin=True, hoverformat=",.2f"),
         showlegend=False, width=CHART_W, height=CHART_H,
+        # paper first: a hover never shows 12.3456789 — two decimals at most
+        hovermode="closest",
         uniformtext=dict(minsize=9, mode="hide"),
     ))
     pio.templates.default = "kb"
@@ -395,6 +409,9 @@ def chunks(seq, n):
 def base(f, **layout):
     f.update_layout(**layout)
     for tr in f.data:
+        if tr.type in ("bar", "scatter") and tr.hovertemplate is None and tr.hoverinfo != "skip":
+            h = getattr(tr, "orientation", None) == "h"
+            tr.hovertemplate = ("%{y}<br>%{x:,.2f}" if h else "%{x}<br>%{y:,.2f}") + "<extra></extra>"
         if tr.type == "bar" and tr.textposition == "outside":
             tr.constraintext = "none"      # otherwise plotly hides labels wider than the bar
         if tr.type == "bar" and tr.textposition == "inside" and tr.textangle is None:
@@ -614,10 +631,103 @@ def data_fingerprint(data_dir):
     when a cached report stops being valid.
     """
     parts = []
-    for f in sorted(Path(str(data_dir)).glob("*.parquet")):
+    for f in sorted(Path(str(data_dir)).glob("*.parquet")) + [f for f in _names_files(data_dir) if f.exists()]:
         st = f.stat()
-        parts.append(f"{f.name}:{int(st.st_mtime)}:{st.st_size}")
+        parts.append(f"{f.name}:{int(st.st_mtime)}:{st.st_size}")   # your names table counts too
     return hashlib.sha256("|".join(parts).encode()).hexdigest()[:20]
+
+
+def _names_files(data_dir):
+    base = Path(str(data_dir)).parent / TOP_NAMES_FILE
+    return [base.with_suffix(e) for e in (".xlsx", ".xls", ".csv")]
+
+
+_TRUE = {"1", "да", "д", "ha", "xa", "yes", "y", "true", "x", "+", "1.0"}
+
+
+def load_names(data_dir):
+    """
+    Your top-50 names table -> ({(period, id): (name, related)}, {id: (name, related)}, file).
+    A row without report_date counts for every month. Unreadable or missing file = no names.
+    """
+    df, used = None, None
+    for f in _names_files(data_dir):
+        if not f.exists():
+            continue
+        try:
+            if f.suffix == ".csv":
+                for enc in ("utf-8-sig", "cp1251"):
+                    try:
+                        df = pd.read_csv(f, sep=None, engine="python", encoding=enc, dtype=str)
+                        break
+                    except UnicodeDecodeError:
+                        continue
+            else:
+                df = pd.read_excel(f, dtype=str)
+        except Exception:
+            df = None
+        if df is not None:
+            used = f
+            break
+    if df is None:
+        return {}, {}, None
+    df.columns = [re.sub(r"[\W_]", "", str(c).strip().lower()) for c in df.columns]
+    pick = lambda *ns: next((c for c in df.columns if c in ns), None)
+    cd = pick("reportdate", "date", "дата", "отчетнаядата", "отчётнаядата")
+    cc = pick("contragent", "контрагент", "id", "clientid")
+    cn = pick("name", "имя", "название", "наименование", "nomi")
+    ca = pick("aloqador", "связанная", "связанный", "related")
+    by_pc, by_c = {}, {}
+    if cc is None:
+        return by_pc, by_c, used
+    for _, r in df.iterrows():
+        raw = str(r[cc] if pd.notna(r[cc]) else "").strip().replace(" ", "")
+        if not re.fullmatch(r"\d+(\.0+)?", raw):
+            continue
+        cid = int(float(raw))
+        name = str(r[cn]).strip() if cn and pd.notna(r[cn]) and str(r[cn]).strip() else None
+        rel = str(r[ca]).strip().lower() in _TRUE if ca and pd.notna(r[ca]) else False
+        dval = str(r[cd]).strip() if cd and pd.notna(r[cd]) else ""
+        if dval:
+            d = pd.to_datetime(dval, dayfirst="." in dval, errors="coerce")
+            if pd.isna(d):
+                continue
+            d -= pd.Timedelta(days=1)                       # report_date 1st of next month -> period
+            by_pc[(d.year * 100 + d.month, cid)] = (name, rel)
+        else:
+            by_c[cid] = (name, rel)
+    return by_pc, by_c, used
+
+
+def apply_names(A, names):
+    """Give every top-50 row a shown name and the «связанная» flag from your table."""
+    by_pc, by_c, _ = names
+    t = A["top"]
+    shown, rel = [], []
+    for per, cid, nm in zip(t["period"], t["contragent"], t["name"]):
+        n_, r_ = by_pc.get((int(per), int(cid)), by_c.get(int(cid), (None, False)))
+        base_name = nm if pd.notna(nm) and str(nm).strip() and not str(nm).strip().isdigit() else None
+        shown.append(n_ or base_name or f"ID {int(cid)}")
+        rel.append(bool(r_))
+    A["top"] = t.assign(shown=shown, rel=rel)
+    rs = A["top"].groupby("period")[["exposure"]].apply(
+        lambda g: pd.Series({"rel_exp": float(g.loc[A["top"].loc[g.index, "rel"], "exposure"].sum()),
+                             "n_rel": int(A["top"].loc[g.index, "rel"].sum())}))
+    A["top_summary"] = A["top_summary"].merge(rs.reset_index(), on="period", how="left")
+    A["has_rel"] = bool(A["top"]["rel"].any())
+
+
+def write_top_template(A, out_dir):
+    """top50_template.csv: every top-50 id of this report, ready to fill (Excel opens it as is)."""
+    t = A["top"].sort_values(["period", "rank"])
+    rd = [f"{shift_p(p_, -1) // 100}-{shift_p(p_, -1) % 100:02d}-01" for p_ in t["period"]]
+    out = pd.DataFrame({"report_date": rd, "contragent": t["contragent"].astype(int),
+                        "name": [n if not str(n).startswith("ID ") else "" for n in t["shown"]],
+                        "aloqador": ["1" if r else "" for r in t["rel"]], "rank": t["rank"],
+                        "exposure_mln": (t["exposure"] / 1e6).round(1)})
+    f = Path(out_dir) / "top50_template.csv"
+    out.to_csv(f, sep=";", index=False, encoding="utf-8-sig")
+    return f
 
 
 def _code_fingerprint():
@@ -688,6 +798,7 @@ def build_panel(raw):
     d["mob_band"] = pd.cut(d["mob"].astype("float"), MOB_BINS, labels=MOB_LABELS)
 
     d["kat"] = d["kategoriya_npl_90"]
+    d["on_balance"] = d["brutto_summa"]
     d["is_npl"] = d["kategoriya_npl_90"].isin(NPL_CATEGORIES)
     d["is_watch"] = (~d["is_npl"]) & d["dpd"].between(*WATCH_DPD)
     d["is_new"] = d["disbursed"] > 0
@@ -710,7 +821,7 @@ def build_panel(raw):
             "in_court", "exposure", "exposure_gross", "npl_exposure", "watch_exposure",
             "npl_gross_exp", "reserve", "disbursed", "repaid", "written_amt", "writeoff",
             "insurance_paid", "filial", "department", "dkey", "passport", "avto",
-            "valuta", "cur_name", "sud", "kat"] + (["oked_name"] if has_oked else [])
+            "valuta", "cur_name", "sud", "kat", "on_balance"] + (["oked_name"] if has_oked else [])
     p = d[keep].sort_values(["anketa", "period"], kind="stable").reset_index(drop=True)
 
     g = p.groupby("anketa", sort=False)
@@ -847,11 +958,12 @@ def build_marts(panel, snap, periods, sel, has_oked):
     gg["rate"] = gg["n"] / gg.groupby(["period", "from_b"], observed=True)["n"].transform("sum")
     A["transitions"] = gg
 
+    VINTAGE_MARKS_ = sorted(set(VINTAGE_MARKS) | set(A07_MARKS))
     # vintages: only cohorts ISSUED inside the window. A loan issued before the window
     # has its first months missing, so its "ever 90+ by month 12" would be understated.
     vv = panel[panel["vintage"].notna() & (panel["vintage"] >= periods[0])
                & panel["mob"].between(0, 36)].copy()
-    THRS = sorted({t_ for t_, _ in VINTAGE_MARKS})
+    THRS = sorted({t_ for t_, _ in VINTAGE_MARKS_} | {30, 90})
     for thr in THRS:
         vv[f"ever_{thr}"] = vv["peak_dpd"] > thr
     gv = vv.groupby(["vintage", "mob"], observed=True)
@@ -863,7 +975,7 @@ def build_marts(panel, snap, periods, sel, has_oked):
     # rate comes from the SAME rows (sub), not from vin: assigning vin's column to an empty
     # selection used to create ghost NA rows whenever no cohort had reached that month yet
     marks = []
-    for thr, mob in VINTAGE_MARKS:
+    for thr, mob in VINTAGE_MARKS_:
         sub = vin[vin["mob"] == mob]
         marks.append(pd.DataFrame({"vintage": sub["vintage"], "metric": f"GL{thr}+@{mob}MOB",
                                    "rate": sub[f"gl{thr}"], "n_loans": sub["n_loans"],
@@ -884,19 +996,8 @@ def build_marts(panel, snap, periods, sel, has_oked):
         ed = pd.DataFrame({"n": ge.size(), "bad": ge["fb30"].apply(lambda s_: int((s_ <= 3).sum()))}).reset_index()
         ed["rate"] = ed["bad"] / ed["n"]
         A["early"] = ed[ed["n"] >= MIN_COHORT]
-        # vintage curves by issue quarter: % of the quarter's loans that ever reached 90+ by month m
-        lo["q"] = (lo["vintage"] // 100) * 10 + ((lo["vintage"] % 100 - 1) // 3 + 1)
-        rows = []
-        for q_, g_ in lo.groupby("q"):
-            if len(g_) < MIN_COHORT:
-                continue
-            age_q = int(g_["age"].min())             # the quarter's youngest month decides how far it goes
-            for m in range(1, min(age_q, 24) + 1):
-                rows.append({"q": int(q_), "mob": m, "n": len(g_), "rate": float((g_["fb90"] <= m).sum() / len(g_))})
-        A["curves"] = pd.DataFrame(rows, columns=["q", "mob", "n", "rate"])
     else:
         A["early"] = pd.DataFrame(columns=["vintage", "department", "n", "bad", "rate"])
-        A["curves"] = pd.DataFrame(columns=["q", "mob", "n", "rate"])
 
     # month-on-month pieces for the «что изменилось» page
     A["passport"] = by_period(panel, "passport")
@@ -1011,6 +1112,7 @@ def build_marts(panel, snap, periods, sel, has_oked):
 
     # reserves by quality category (CBU 3937)
     rc = snap.groupby("kat", observed=True).agg(exposure=("exposure", "sum"), reserve=("reserve", "sum"),
+                                                on_balance=("on_balance", "sum"), writeoff=("writeoff", "sum"),
                                                 n_loans=("anketa", "size")).reset_index()
     B["reserve_cat"] = rc[rc["kat"].isin(list(RESERVE_MIN))]
 
@@ -1077,6 +1179,15 @@ def _dept_legend(names, shares=None):
         sh = f" — {fpct(shares.get(d) * 100)} на дату" if shares is not None and _ok(shares.get(d)) else ""
         out.append((dcolor(d), _e(dname(d)), f"департамент{sh}", "bar"))
     return out
+
+
+def dept_start(exposure_series, frac=.005):
+    """First period a department really has a portfolio (≥ 0.5% of its peak) — no zeros before it."""
+    s_ = exposure_series.fillna(0)
+    if not len(s_) or s_.max() <= 0:
+        return None
+    hit = s_[s_ >= s_.max() * frac]
+    return hit.index[0] if len(hit) else None
 
 
 def _stack_text(v, share, step, i, n, min_share=10):
@@ -1191,52 +1302,65 @@ def a03_bucket_mix(A, B, ctx):
 
 def a04_npl_departments(A, B, ctx):
     sel = ctx["sel"]
-    piv = _piv(A["department"], "npl_ratio", "mean") * 100
-    deps = dept_sorted(piv.columns)
-    x = _x(piv.index)
+    ratio = _piv(A["department"], "npl_ratio", "mean") * 100
+    amt = _piv(A["department"], "npl_exposure")
+    expo = _piv(A["department"], "exposure")
+    deps = dept_sorted(ratio.columns)
+    for dep in deps:                                   # a new department starts where it starts
+        st = dept_start(expo[dep]) if dep in expo else None
+        if st is not None:
+            ratio.loc[ratio.index < st, dep] = np.nan
+            amt.loc[amt.index < st, dep] = np.nan
+    x = _x(ratio.index)
+    totn = amt.sum(axis=1)
+    share = amt.div(totn.replace(0, np.nan), axis=0) * 100
+    order = order_at(amt, sel)
     f = go.Figure()
+    n_, step = len(x), max(1, math.ceil(len(x) / fit(36)))
+    for dep in order:
+        light = shades(dcolor(dep), 3)[2]
+        f.add_bar(x=x, y=money(nan0(amt[dep])), name=dname(dep), marker_color=light,
+                  text=[_stack_text(None, z, step, i, n_, 8) for i, z in enumerate(share[dep])],
+                  textposition="inside", insidetextanchor="middle", textfont=dict(size=10.5, color=COLORS["ink"]),
+                  customdata=share[dep], hovertemplate="%{x} · " + _e(dname(dep)) + "<br>NPL %{y:,.1f} " + UNIT_NAME
+                                                      + " — %{customdata:.1f}% всего NPL<extra></extra>")
+    lines = []
     for dep in deps:
-        v = piv[dep]
-        f.add_scatter(x=x, y=v, name=dname(dep), mode="lines+markers+text",
+        v = ratio[dep]
+        lines.append(v)
+        f.add_scatter(x=x, y=v, name=dname(dep), yaxis="y2", mode="lines+markers+text",
                       line=dict(width=3, color=dcolor(dep)), marker=dict(size=4),
-                      text=thin(v, lambda z: f"{z:.1f}", max_labels=fit(80)),
-                      textposition="top center", textfont=dict(size=11, color=dcolor(dep)),
-                      hovertemplate="%{x} · " + _e(dname(dep)) + "<br>NPL %{y:.2f}%<extra></extra>")
-    tv = _total(A).reindex(piv.index)["npl_ratio"] * 100
-    f.add_scatter(x=x, y=tv, name="Банк", mode="lines",
-                  line=dict(color=COLORS["ink"], width=1.8, dash="dash"),
+                      text=thin(v, lambda z: f"{z:.1f}%", max_labels=fit(70)), textposition="top center",
+                      hovertemplate="%{x} · " + _e(dname(dep)) + "<br>NPL %{y:.2f}% своего портфеля<extra></extra>")
+    tv = _total(A).reindex(ratio.index)["npl_ratio"] * 100
+    f.add_scatter(x=x, y=tv, name="Банк", yaxis="y2", mode="lines", line=dict(color=COLORS["ink"], width=1.8, dash="dash"),
                   hovertemplate="%{x}<br>банк: %{y:.2f}%<extra></extra>")
-    base(f, yaxis=dict(title="NPL 90+, % портфеля департамента"))
+    ov = overlay(_safemax(money(totn)), tv, *lines, pct_title="NPL, % своего портфеля")
+    ov["yaxis"]["title"] = "NPL, " + UNIT_NAME
+    ov["yaxis2"]["tickfont"]["color"] = COLORS["ink"]
+    ov["yaxis2"]["title"]["font"]["color"] = COLORS["ink"]
+    base(f, barmode="stack", bargap=.25, **ov)
 
-    row = piv.loc[sel].dropna() if sel in piv.index else pd.Series(dtype=float)
+    row = ratio.loc[sel].dropna() if sel in ratio.index else pd.Series(dtype=float)
+    sh = share.loc[sel].dropna() if sel in share.index else pd.Series(dtype=float)
     ins = []
     if len(row):
         worst, best = row.idxmax(), row.idxmin()
-        ins.append(f"Самый высокий NPL на {plabel_full(sel)} — <b>{_e(dname(worst))}</b>: "
-                   f"{fpct(row[worst], 2)}; самый низкий — {_e(dname(best))}: {fpct(row[best], 2)}.")
-        bank = at(tv, sel)
-        above = [dname(d) for d in deps if _ok(row.get(d)) and row[d] > bank]
-        if above and _ok(bank):
-            ins.append(f"Выше банка ({fpct(bank, 2)}): {_e(', '.join(above))}.")
-        y1 = piv.loc[shift_p(sel, 12)] if shift_p(sel, 12) in piv.index else None
-        if y1 is not None:
-            moves = (row - y1).dropna()
-            if len(moves):
-                w = moves.idxmax()
-                ins.append(f"Сильнее всего за год вырос NPL у {_e(dname(w))}: {fpp(moves[w])}.")
-    nd = A["department"][A["department"]["period"] == sel].set_index("dim_value")["npl_exposure"]
-    contrib = nd / nd.sum() if nd.sum() else nd
-    if len(contrib):
-        top_c = contrib.idxmax()
-        ins.append(f"Больше всего NPL банка — у {_e(dname(top_c))}: <b>{fpct(contrib[top_c] * 100)}</b> "
-                   "всей суммы NPL (а не только своего портфеля).")
-    new = [dname(d) for d in deps if piv[d].first_valid_index() not in (None, piv.index[0])]
-    if new:
-        ins.append(f"Линия {_e(', '.join(new))} начинается позже: департамент появился в данных не с начала периода.")
-    return page(f, what="Доля NPL 90+ внутри каждого департамента: какая часть его собственного "
-                        "портфеля проблемная. Пунктир — банк целиком, для сравнения.",
-                legend=[(dcolor(d), _e(dname(d)), "NPL департамента, % его портфеля"
-                         + (f"; {fpct(contrib.get(d) * 100)} всего NPL банка" if _ok(contrib.get(d)) else ""), "line")
+        ins.append(f"Самый высокий NPL своего портфеля — <b>{_e(dname(worst))}</b>: {fpct(row[worst], 2)}; "
+                   f"самый низкий — {_e(dname(best))}: {fpct(row[best], 2)}.")
+    if len(sh):
+        top_c = sh.idxmax()
+        ins.append(f"Больше всего NPL банка — у <b>{_e(dname(top_c))}</b>: {fpct(sh[top_c])} всей суммы NPL "
+                   f"({fnum(at(amt[top_c], sel) / UNIT)} {UNIT_NAME}).")
+    if shift_p(sel, 12) in ratio.index and len(row):
+        moves = (row - ratio.loc[shift_p(sel, 12)]).dropna()
+        if len(moves):
+            ins.append(f"Сильнее всего за год вырос NPL у {_e(dname(moves.idxmax()))}: {fpp(moves.max())}.")
+    return page(f, what="Две вещи на одном графике. Столбцы — сумма NPL банка, разделённая по департаментам, "
+                        "с долей каждого во всём NPL (левая шкала). Линии — NPL внутри каждого департамента, "
+                        "% его собственного портфеля (правая шкала).",
+                legend=[(dcolor(d), _e(dname(d)), "светлый столбец — его доля всего NPL"
+                         + (f" ({fpct(sh.get(d))})" if _ok(sh.get(d)) else "") + ", линия — NPL % его портфеля", "line")
                         for d in deps] +
                        [(COLORS["ink"], "Пунктир", "NPL банка целиком", "dash")],
                 insights=ins, terms=["npl", "pp"])
@@ -1346,55 +1470,55 @@ def a06_bridge(A, B, ctx):
 def a07_vintage_quality(A, B, ctx):
     vm = A["vin_marks"]
     vm = vm[vm.reliable]
-    m12 = vm[vm.metric == "GL90+@12MOB"].set_index("vintage")["rate"] * 100
-    m6 = vm[vm.metric == "GL30+@6MOB"].set_index("vintage")["rate"] * 100
-    idx = sorted(set(m12.index) | set(m6.index))
-    if not idx:
-        raise Notice("Период слишком короткий для когорт: кредиту нужно прожить 6–12 месяцев внутри "
-                     "выбранного периода. Выберите динамику длиной от 12–18 месяцев — и страница заполнится.")
+    cols = {(30, 3): "#F2C230", (30, 6): COLORS["watch"], (60, 6): "#C2591F", (90, 9): "#A33418", (90, 12): COLORS["npl"]}
+    series = []
+    for thr, mob in A07_MARKS:
+        sr = vm[vm.metric == f"GL{thr}+@{mob}MOB"].set_index("vintage")["rate"] * 100
+        if sr.notna().sum() >= 3:                      # a checkpoint with < 3 cohorts says nothing
+            series.append((thr, mob, sr))
+    if not series:
+        raise Notice("Период слишком короткий для когорт: кредиту нужно прожить хотя бы 3 месяца внутри "
+                     "выбранного периода, и таких месяцев выдачи должно быть не меньше трёх.")
+    idx = sorted(set().union(*[set(sr.index) for *_, sr in series]))
     x = [vlabel(v) for v in idx]
-    v12, v6 = m12.reindex(idx), m6.reindex(idx)
     f = go.Figure()
-    f.add_bar(x=x, y=v6, name="GL30+@6MOB", marker_color=COLORS["watch"],
-              text=thin(v6, lambda z: f"{z:.1f}", max_labels=fit(16)), textposition="outside", textangle=-90,
-              cliponaxis=False, textfont=dict(size=11, color=COLORS["watch"]),
-              hovertemplate="выдача %{x}<br>GL30+@6MOB: %{y:.1f}%<extra></extra>")
-    f.add_bar(x=x, y=v12, name="GL90+@12MOB", marker_color=COLORS["npl"],
-              text=thin(v12, lambda z: f"{z:.1f}", max_labels=fit(16)), textposition="outside", textangle=-90,
-              cliponaxis=False, textfont=dict(size=11, color=COLORS["npl"]),
-              hovertemplate="выдача %{x}<br>GL90+@12MOB: %{y:.1f}%<extra></extra>")
-    avg = float(np.nanmean(v12)) if v12.notna().sum() else np.nan
-    if _ok(avg):
-        f.add_hline(y=avg, line=dict(color=COLORS["ink"], width=1.2, dash="dot"),
-                    annotation_text=f"среднее GL90+@12MOB: {avg:.1f}%",
-                    annotation_position="top left", annotation_font_size=12)
+    for thr, mob, sr in series:
+        v = sr.reindex(idx)
+        name = f"GL{thr}+@{mob}MOB"
+        f.add_bar(x=x, y=v, name=name, marker_color=cols.get((thr, mob), COLORS["neutral"]),
+                  text=thin(v, lambda z: f"{z:.1f}", max_labels=fit(16 if len(series) < 3 else 12)),
+                  textposition="outside", textangle=-90, cliponaxis=False,
+                  textfont=dict(size=10.5, color=COLORS["ink"]),
+                  hovertemplate="выдача %{x}<br>" + name + ": %{y:.1f}%<extra></extra>")
+    top = max(_safemax(sr) for *_, sr in series)
     base(f, barmode="group", bargap=.2, xaxis=dict(title="месяц выдачи кредита"),
-         yaxis=dict(title="% кредитов когорты", range=[0, max(_safemax(v6), _safemax(v12)) * 1.2]))
+         yaxis=dict(title="% кредитов когорты", range=[0, top * 1.25]))
 
-    ins = []
-    ex = v12.dropna()
-    if len(ex):
-        v = ex.index[-1]
-        ins.append(f"Пример: из 100 кредитов, выданных в {vlabel_full(v)}, <b>{ex.iloc[-1]:.0f}</b> "
-                   f"хотя бы раз ушли в просрочку больше 90 дней за первые 12 месяцев.")
-        w = ex.idxmax()
-        ins.append(f"Худшая когорта — {vlabel_full(w)}: {fpct(ex[w])}; среднее {fpct(avg)}.")
-        if len(ex) >= 12:
-            a_, b_ = ex.iloc[-6:].mean(), ex.iloc[-12:-6].mean()
-            ins.append(f"Последние 6 когорт в среднем {fpct(a_)} против {fpct(b_)} у предыдущих 6 — "
-                       f"выдачи {'ухудшаются' if a_ > b_ else 'улучшаются'}.")
-    ins.append("Правые месяцы без красного столбца — когорты ещё не прожили 12 месяцев, это не ноль.")
-    ins.append(f"Показаны только выдачи с {vlabel_full(ctx['periods'][0])}: у более ранних нет полной "
-               "истории в выбранном периоде. Чем длиннее период, тем больше когорт.")
+    main = series[-1]                                  # the deepest checkpoint the window allows
+    thr, mob, sr = main
+    ex = sr.dropna()
+    ins = [f"Пример: из 100 кредитов, выданных в {vlabel_full(ex.index[-1])}, <b>{ex.iloc[-1]:.0f}</b> хотя бы раз "
+           f"ушли в просрочку больше {thr} дней за первые {mob} месяцев.",
+           f"Худшая когорта по GL{thr}+@{mob}MOB — {vlabel_full(ex.idxmax())}: {fpct(ex.max())}; в среднем {fpct(ex.mean())}."]
+    if len(ex) >= 6:
+        a_, b_ = ex.iloc[-3:].mean(), ex.iloc[-6:-3].mean()
+        ins.append(f"Последние 3 когорты — {fpct(a_)} против {fpct(b_)} у трёх предыдущих: выдачи "
+                   f"{'ухудшаются' if a_ > b_ else 'улучшаются или стабильны'}.")
+    skipped = [f"GL{t_}+@{m_}MOB" for t_, m_ in A07_MARKS if not any(t_ == a and m_ == b for a, b, _ in series)]
+    if skipped:
+        ins.append(f"{', '.join(skipped)} не показан: в выбранном периоде меньше трёх когорт дожили до этой точки.")
+    if not skipped:
+        ins.append("Пустое место справа — молодые когорты ещё не дожили до контрольной точки; это не ноль.")
+    meaning = {(30, 3): "просрочка больше 30 дней в первые 3 месяца — самый ранний сигнал",
+               (30, 6): "просрочка больше 30 дней в первые 6 месяцев",
+               (90, 12): "просрочка больше 90 дней (дефолт) в первые 12 месяцев"}
     return page(f, what="Качество выдач: как ведёт себя каждая когорта — все кредиты, выданные в один месяц. "
-                        "Чем ниже столбцы, тем лучше выдавали.",
-                legend=[(COLORS["watch"], "GL30+@6MOB",
-                         "из 100 кредитов — сколько допустили просрочку больше 30 дней в первые 6 месяцев", "bar"),
-                        (COLORS["npl"], "GL90+@12MOB",
-                         "из 100 кредитов — сколько допустили просрочку больше 90 дней в первые 12 месяцев", "bar"),
-                        (COLORS["ink"], "Пунктир", "средний уровень GL90+@12MOB", "dash")],
+                        "Чем ниже столбцы, тем лучше выдавали. Ранние точки (3–6 месяцев) работают даже на "
+                        "коротком периоде.",
+                legend=[(cols.get((t_, m_), COLORS["neutral"]), f"GL{t_}+@{m_}MOB",
+                         "из 100 кредитов: " + meaning.get((t_, m_), f"просрочка больше {t_} дней за {m_} мес."), "bar")
+                        for t_, m_, _ in series],
                 insights=ins, terms=["gl", "cohort"])
-
 
 
 def a09_migration(A, B, ctx):
@@ -1490,8 +1614,10 @@ def a13_insurance(A, B, ctx):
                   text=thin(npl, lambda v: f"{v:.2f}"), textposition="bottom center",
                   textfont=dict(size=11, color=COLORS["npl"]),
                   hovertemplate="%{x}<br>фактический: %{y:.2f}%<extra></extra>")
-    f.add_scatter(x=x, y=watch, name=f"Зона риска {_wz()}", mode="lines",
-                  line=dict(color=COLORS["watch"], width=2, dash="dot"),
+    f.add_scatter(x=x, y=watch, name=f"Зона риска {_wz()}", mode="lines+markers+text",
+                  line=dict(color=COLORS["watch"], width=2, dash="dot"), marker=dict(size=4),
+                  text=thin(watch, lambda v: f"{v:.2f}", max_labels=fit(44)), textposition="bottom center",
+                  textfont=dict(size=10.5, color="#B86E0A"),
                   hovertemplate="%{x}<br>зона риска: %{y:.2f}%<extra></extra>")
     base(f, yaxis=dict(title="% портфеля", range=[0, max(_safemax(gross), _safemax(npl), _safemax(watch)) * 1.2]))
     s = d.set_index("period")
@@ -1518,8 +1644,8 @@ def _passport_chart(dep):
             raise ValueError(f"нет данных по департаменту «{dep}»")
         piv = d.pivot_table(index="period", columns="passport_grp", values="exposure",
                             aggfunc="sum").fillna(0)
-        tot_all = piv.sum(axis=1)
-        piv = piv[tot_all > 0]                         # a new department starts where it starts
+        st = dept_start(piv.sum(axis=1))
+        piv = piv[piv.index >= st] if st is not None else piv.iloc[0:0]   # a new department starts where it starts
         if piv.empty:
             raise ValueError(f"у департамента «{dep}» нет остатка")
         named = [c for c in order_at(piv, sel) if c != "Прочие"]
@@ -1627,7 +1753,13 @@ def a_top_clients(A, B, ctx):
     f.add_scatter(x=x, y=sh, yaxis="y2", mode="lines+markers+text", line=dict(color=COLORS["npl"], width=2.6),
                   marker=dict(size=4), text=t_, textposition=p_, textfont=dict(size=11, color=COLORS["npl"]),
                   hovertemplate="%{x}<br>доля в портфеле банка: %{y:.2f}%<extra></extra>")
-    ov = overlay(_safemax(tot), sh, pct_title="% портфеля банка")
+    rel = s["rel_exp"] / s["exposure"].replace(0, np.nan) * 100 if A.get("has_rel") else None
+    if rel is not None:
+        t2, p2 = line_text(rel, lambda v: f"{v:.1f}%" if v > 0 else "")   # no «0.0%» row along the axis
+        f.add_scatter(x=x, y=rel, yaxis="y2", mode="lines+markers+text", line=dict(color="#7A4E9A", width=2.4, dash="dash"),
+                      marker=dict(size=4), text=t2, textposition=p2,
+                      hovertemplate="%{x}<br>связанные: %{y:.1f}% суммы топ-50<extra></extra>")
+    ov = overlay(_safemax(tot), sh, *([rel] if rel is not None else []), pct_title="%")
     ov["yaxis"]["title"] = UNIT_NAME
     base(f, barmode="stack", bargap=.25, **ov)
     ex = ", ".join(TOP_CLIENTS_EXCLUDE)
@@ -1636,6 +1768,9 @@ def a_top_clients(A, B, ctx):
             if _ok(at(s["top1_share"], sel)) else ""),
            (f"За месяц в топ-{TOP_CLIENTS} вошли <b>{int(at(s['newcomers'], sel))}</b> новых клиентов."
             if _ok(at(s["newcomers"], sel)) else ""),
+           (f"Связанные компании (aloqador) — <b>{fpct(at(rel, sel))}</b> суммы топ-{TOP_CLIENTS}, "
+            f"{int(at(s['n_rel'], sel) or 0)} клиентов." if rel is not None and _ok(at(rel, sel)) else
+            f"Связанные компании появятся, когда вы отметите их в файле {TOP_NAMES_FILE}.xlsx (см. B07)."),
            f"Клиенты только с кредитами {_e(ex)} в рейтинге не участвуют; у клиентов, которые есть и в {_e(ex)}, "
            f"и в других департаментах, считается весь долг."]
     return page(f, title=f"Топ-{TOP_CLIENTS} клиентов по месяцам",
@@ -1644,7 +1779,9 @@ def a_top_clients(A, B, ctx):
                      f"месяце свой. Список на дату — на странице B08.",
                 legend=_dept_legend(order) + [
                     (COLORS["ink"], "Число над столбцом", f"сумма топ-{TOP_CLIENTS}, {UNIT_NAME}", "text"),
-                    (COLORS["npl"], "Красная линия", "их доля во всём портфеле банка, % (правая шкала)", "line")],
+                    (COLORS["npl"], "Красная линия", "их доля во всём портфеле банка, % (правая шкала)", "line")]
+                + ([("#7A4E9A", "Фиолетовый пунктир", "доля связанных компаний в сумме топ-50, %", "dash")]
+                   if rel is not None else []),
                 insights=ins, terms=["top"])
 
 
@@ -1842,13 +1979,13 @@ def b08_top_table(A, B, ctx):
     def table(rows):
         body = "".join(
             f"<tr><td class='n'>{int(r['rank'])}</td><td>{move(r)}</td>"
-            f"<td class='nm'>{_e(r['name'] if pd.notna(r['name']) else r.contragent)}</td>"
+            f"<td class='nm{' rel' if r.rel else ''}'>{_e(r.shown)}</td><td>{'●' if r.rel else ''}</td>"
             f"<td>{_e(', '.join(dname(x.strip()) for x in str(r.deps).split(',')))}</td>"
             f"<td class='n'>{fnum(r.exposure / UNIT, 2)}</td><td class='n'>{fpct(r.share, 2)}</td>"
             f"<td class='n'>{fpct(r.cum, 1)}</td>"
             f"<td class='n{' bad' if r.dpd > 90 else (' warn' if r.dpd > 0 else '')}'>{int(r.dpd)}</td></tr>"
             for _, r in rows.iterrows())
-        return ("<table class='tt'><thead><tr><th>#</th><th>Δ</th><th>Клиент</th><th>Деп.</th>"
+        return ("<table class='tt'><thead><tr><th>#</th><th>Δ</th><th>Клиент</th><th>св.</th><th>Деп.</th>"
                 f"<th>{UNIT_NAME}</th><th>% банка</th><th>накоп.</th><th>дн.</th></tr></thead>"
                 f"<tbody>{body}</tbody></table>")
 
@@ -1860,13 +1997,18 @@ def b08_top_table(A, B, ctx):
            f"Новых в списке по сравнению с {plabel_full(shift_p(sel, 1))}: {newc}.",
            (f"С просрочкой на дату: {len(late)} клиентов ({fnum(late.exposure.sum() / UNIT, 2)} {UNIT_NAME})."
             if len(late) else "Ни у одного клиента из списка нет просрочки на дату."),
+           (f"Связанные компании (●): <b>{int(t.rel.sum())}</b> из {len(t)}, {fpct(t[t.rel].share.sum(), 1)} портфеля банка."
+            if t.rel.any() else
+            f"Имена и связанные компании берутся из вашего файла {TOP_NAMES_FILE}.xlsx (или .csv) рядом с папкой "
+            f"данных; заготовка со всеми ID — top50_template.csv рядом с отчётом."),
            f"Клиенты только с кредитами {_e(', '.join(TOP_CLIENTS_EXCLUDE))} не участвуют; смешанные — со всем долгом."]
     return page(None, title=f"Топ-{TOP_CLIENTS} клиентов на {plabel_full(sel)}",
                 what=f"Крупнейшие клиенты по сумме остатка. Δ — изменение места по сравнению с прошлым месяцем; "
                      f"«накоп.» — доля портфеля банка у клиентов с 1-го по этот; «дн.» — максимальная просрочка, дней.",
                 legend=[(COLORS["good"], "▲ / ▼", "клиент поднялся / опустился в рейтинге", "text"),
                         ("#4F7CAC", "новый", "в прошлом месяце не был в топе", "text"),
-                        (COLORS["npl"], "Красное число дней", "просрочка больше 90 дней", "text")],
+                        (COLORS["npl"], "Красное число дней", "просрочка больше 90 дней", "text"),
+                        ("#7A4E9A", "● в «св.»", "связанная компания (aloqador) — из вашего файла", "text")],
                 insights=ins, terms=["top"], body_html=html_)
 
 
@@ -1905,7 +2047,9 @@ def b10_auto_court(A, B, ctx):
            "non_auto": "Прочие<br>(не авто)"}
     piv = c.pivot_table(index="avto", columns="stage", values="amount", aggfunc="sum").fillna(0)
     piv = piv.reindex([k for k in seg if k in piv.index])
-    piv.loc["all"] = piv.sum()
+    all_row = piv.sum()
+    if B10_SHOW_ALL:
+        piv.loc["all"] = all_row
     order = ["norm", "neofficial", "official", "writeoff"]      # bottom → top; bad on top
     stages = [s_ for s_ in order if s_ in piv.columns] + [s_ for s_ in piv.columns if s_ not in order]
     colors = dict(SUD_COLORS, writeoff=WRITE_OFF_COLOR)
@@ -1932,7 +2076,7 @@ def b10_auto_court(A, B, ctx):
                          text=f"<b>{fnum(totals[k] / UNIT, 1)}</b><br>" + "<br>".join(lines), font=dict(size=11))
     base(f, barmode="stack", bargap=.35, yaxis=dict(title=UNIT_NAME, range=[0, _safemax(money(totals)) * 1.35]))
 
-    a_ = piv.loc["all"]
+    a_ = all_row
     tot_all = float(a_.sum())
     bad = [x for x in ("writeoff", "official", "neofficial") if x in piv.columns]
     rate = {k: piv.loc[k, bad].sum() / totals[k] * 100 for k in piv.index if k != "all" and totals[k]}
@@ -2083,43 +2227,7 @@ def a02_issue_repay(A, B, ctx):
                 insights=ins, terms=["flow"])
 
 
-def a08_vintage_curves(A, B, ctx):
-    c = A["curves"]
-    if c.empty:
-        raise Notice("Период слишком короткий для кривых когорт: выберите динамику длиной от 12–18 месяцев.")
-    qs = sorted(c["q"].unique())[-8:]
-    cols = shades(COLORS["npl"], len(qs))[::-1]            # newest = darkest
-    f = go.Figure()
-    for q_, col in zip(qs, cols):
-        d = c[c["q"] == q_].sort_values("mob")
-        name = f"{q_ % 10} кв. {q_ // 10}"
-        f.add_scatter(x=d["mob"], y=d["rate"] * 100, name=name, mode="lines+markers",
-                      line=dict(color=col, width=2.6 if q_ == qs[-1] else 1.8), marker=dict(size=3),
-                      hovertemplate=name + "<br>%{x}-й месяц: %{y:.1f}%<extra></extra>")
-        last = d.iloc[-1]
-        f.add_annotation(x=last["mob"], y=last["rate"] * 100, text=f"{name}: {last['rate'] * 100:.1f}%", xanchor="left",
-                         xshift=6, showarrow=False, font=dict(size=10.5, color=col), bgcolor="rgba(255,255,255,.85)")
-    base(f, xaxis=dict(title="месяцев с выдачи (MOB)", dtick=3, range=[0.5, 27]),
-         yaxis=dict(title="% кредитов квартала, хотя бы раз 90+", rangemode="tozero"))
-    m12 = c[c["mob"] == 12].set_index("q")["rate"] * 100
-    ins = []
-    if len(m12):
-        best, worst = m12.idxmin(), m12.idxmax()
-        ins.append(f"К 12-му месяцу хуже всех — {worst % 10} кв. {worst // 10}: <b>{fpct(m12[worst])}</b>; лучше всех — "
-                   f"{best % 10} кв. {best // 10}: {fpct(m12[best])}.")
-    if len(qs) >= 2:
-        a_, b_ = c[c["q"] == qs[-1]], c[c["q"] == qs[-2]]
-        mm = min(a_["mob"].max(), b_["mob"].max())
-        ra, rb = (a_[a_["mob"] == mm]["rate"].mean() * 100, b_[b_["mob"] == mm]["rate"].mean() * 100)
-        if _ok(ra) and _ok(rb):
-            ins.append(f"Новейший квартал на {mm}-м месяце: {fpct(ra)} против {fpct(rb)} у предыдущего — "
-                       f"{'хуже' if ra > rb else 'лучше или так же'}.")
-    ins.append("Линия выше и круче соседних — квартал выдач, который портится быстрее остальных.")
-    return page(f, what="Кривые когорт: для каждого квартала выдачи — какая доля его кредитов хотя бы раз ушла в "
-                        "просрочку 90+ к каждому месяцу жизни. Тёмные линии — новые кварталы, светлые — старые.",
-                legend=[(cols[-1], "Тёмная линия", "самый новый квартал выдачи", "line"),
-                        (cols[0], "Светлая линия", "более старые кварталы", "line")],
-                insights=ins, terms=["cohort", "mob"])
+
 
 
 def a_early_defaults(A, B, ctx):
@@ -2163,14 +2271,18 @@ def a12_reserves(A, B, ctx):
     cov = d["coverage"] * 100
     f = go.Figure()
     f.add_bar(x=x, y=npl, name="NPL 90+", marker_color=COLORS["npl"],
+              text=thin(npl, famt, max_labels=fit(16)), textposition="outside", textangle=-90, cliponaxis=False,
+              textfont=dict(size=10.5, color=COLORS["npl"]),
               hovertemplate="%{x}<br>NPL %{y:,.1f} " + UNIT_NAME + "<extra></extra>")
     f.add_bar(x=x, y=res, name="Резервы", marker_color=COLORS["good"],
+              text=thin(res, famt, max_labels=fit(16)), textposition="outside", textangle=-90, cliponaxis=False,
+              textfont=dict(size=10.5, color=COLORS["good"]),
               hovertemplate="%{x}<br>резервы %{y:,.1f} " + UNIT_NAME + "<extra></extra>")
     t_, p_ = line_text(cov, lambda v: f"{v:.0f}%")
     f.add_scatter(x=x, y=cov, name="Покрытие", yaxis="y2", mode="lines+markers+text",
                   line=dict(color=COLORS["ink"], width=2.4), marker=dict(size=4), text=t_, textposition=p_,
                   hovertemplate="%{x}<br>покрытие %{y:.0f}%<extra></extra>")
-    ov = overlay(max(_safemax(npl), _safemax(res)), cov, pct_title="покрытие, %")
+    ov = overlay(max(_safemax(npl), _safemax(res)) * 1.15, cov, pct_title="покрытие, %")
     ov["yaxis"]["title"] = UNIT_NAME
     ov["yaxis2"]["tickfont"] = dict(size=11, color=COLORS["ink"])
     ov["yaxis2"]["title"]["font"]["color"] = COLORS["ink"]
@@ -2228,23 +2340,22 @@ def b_products(A, B, ctx):
 def b_branch_map(A, B, ctx):
     sel = ctx["sel"]
     d = B["branch_map"]
-    d = d[~d["name"].map(is_no_branch)].dropna(subset=["npl_ratio", "npl_then"])
+    d = d[~d["name"].map(is_no_branch)].dropna(subset=["npl_ratio", "npl_then"]).sort_values("exposure", ascending=False)
     if d.empty:
         raise Notice("Для карты филиалов нужен хотя бы один более ранний месяц.")
+    d = d.assign(num=range(1, len(d) + 1))
     b0 = B["branch_map_base"]
     x, y = d["npl_ratio"] * 100, (d["npl_ratio"] - d["npl_then"]) * 100
-    size = 12 + 38 * np.sqrt(d["exposure"] / d["exposure"].max())
+    size = 20 + 14 * np.sqrt(d["exposure"] / d["exposure"].max())       # small enough to stay apart
     bank = B["_tot_npl"] / B["_tot_exp"] * 100 if B["_tot_exp"] else np.nan
+    ncol = max(1, math.ceil(len(d) / 22))
+    list_w = 210 * ncol
     f = go.Figure()
-    share = d["exposure"] / d["exposure"].sum()
-    named = (share >= .02) | ((x > bank) & (y > 0) if _ok(bank) else False)   # big branches + the danger corner
     for dep in dept_sorted(d["dep"].dropna().unique()):
         m = d["dep"] == dep
-        f.add_scatter(x=x[m], y=y[m], mode="markers+text", name=dname(dep),
-                      text=[n if k else "" for n, k in zip(d["name"][m], named[m])], hovertext=d["name"][m],
-                      textposition="top center",
-                      textfont=dict(size=10.5), marker=dict(size=size[m], color=dcolor(dep), opacity=.75,
-                                                             line=dict(color="white", width=1)),
+        f.add_scatter(x=x[m], y=y[m], mode="markers+text", name=dname(dep), text=d["num"][m].astype(str),
+                      hovertext=d["name"][m], textposition="middle center", textfont=dict(size=10.5, color="white"),
+                      marker=dict(size=size[m], color=dcolor(dep), opacity=.9, line=dict(color="white", width=1.5)),
                       customdata=np.stack([money(d["exposure"][m])], axis=-1),
                       hovertemplate="<b>%{hovertext}</b><br>NPL %{x:.2f}%<br>изменение %{y:+.2f} п.п.<br>%{customdata[0]:,.1f} "
                                     + UNIT_NAME + "<extra></extra>")
@@ -2252,27 +2363,33 @@ def b_branch_map(A, B, ctx):
         f.add_vline(x=bank, line=dict(color=COLORS["ink"], width=1, dash="dash"),
                     annotation_text=f"NPL банка {bank:.2f}%", annotation_position="top", annotation_font_size=11)
     f.add_hline(y=0, line=dict(color=COLORS["neutral"], width=1))
-    xr, yr = [0, _safemax(x) * 1.15], [min(float(y.min()), 0) * 1.2 - .5, max(float(y.max()), 0) * 1.2 + .5]
+    xr, yr = [0, _safemax(x) * 1.12], [min(float(y.min()), 0) * 1.15 - .5, max(float(y.max()), 0) * 1.15 + .5]
     f.add_annotation(x=xr[1], y=yr[1], text="плохо и ухудшается", showarrow=False, xanchor="right", yanchor="top",
                      font=dict(size=12, color=COLORS["npl"]))
     f.add_annotation(x=xr[0], y=yr[0], text="хорошо и улучшается", showarrow=False, xanchor="left", yanchor="bottom",
                      font=dict(size=12, color=COLORS["good"]))
-    base(f, xaxis=dict(title=f"NPL 90+ филиала на {plabel_full(sel)}, %", range=xr, showgrid=True, gridcolor="#EFECE4"),
+    base(f, width=CHART_W - list_w - 10, xaxis=dict(title=f"NPL 90+ филиала на {plabel_full(sel)}, %", range=xr,
+                                                   showgrid=True, gridcolor="#EFECE4"),
          yaxis=dict(title=f"изменение с {plabel_full(b0)}, п.п.", range=yr))
+    rows = "".join(f"<li><b style='background:{dcolor(r.dep)}'>{r.num}</b><span>{_e(r.name)}</span>"
+                   f"<em>{fpct(r.npl_ratio * 100)} · {'+' if yy >= 0 else ''}{yy:.1f}</em></li>"
+                   for r, yy in zip(d.itertuples(), y))
+    plot = f.to_html(full_html=False, include_plotlyjs=False, config=PCFG,
+                     default_width=f"{CHART_W - list_w - 10}px", default_height=f"{CHART_H}px")
+    html_ = f"<div class='bm'>{plot}<ol class='bm-list' style='width:{list_w}px;columns:{ncol}'>{rows}</ol></div>"
     hot = d[(x > bank) & (y > 0)] if _ok(bank) else d.iloc[0:0]
     ins = [(f"В зоне «плохо и ухудшается» — <b>{len(hot)}</b> из {len(d)} филиалов: " +
-            _e(", ".join(hot.sort_values("exposure", ascending=False)["name"].head(4))) + "." if len(hot) else
+            _e(", ".join(f"{r.num} {r.name}" for r in hot.head(5).itertuples())) + "." if len(hot) else
             "Ни один филиал не находится одновременно выше NPL банка и в ухудшении."),
            f"Сильнее всего ухудшился {_e(d.loc[y.idxmax(), 'name'])}: {fpp(y.max())}." if y.max() > 0 else "",
            f"Сильнее всего улучшился {_e(d.loc[y.idxmin(), 'name'])}: {fpp(y.min())}." if y.min() < 0 else "",
-           "Размер круга — портфель филиала: большой круг справа сверху важнее маленького."]
-    return page(f, title=f"Карта филиалов: уровень NPL и его изменение, {plabel_full(sel)}",
-                what=f"Каждый круг — филиал. Вправо — выше NPL сейчас, вверх — сильнее рост NPL с {plabel_full(b0)}. "
-                     "Пунктир — NPL банка. Правый верхний угол — первые кандидаты на разбор.",
+           "Номер в круге — место филиала по размеру портфеля (1 — крупнейший); список справа от графика."]
+    return page(None, title=f"Карта филиалов: уровень NPL и его изменение, {plabel_full(sel)}",
+                what=f"Каждый круг — филиал, номер — его место по портфелю. Вправо — выше NPL сейчас, вверх — сильнее "
+                     f"рост NPL с {plabel_full(b0)}. Пунктир — NPL банка. Правый верхний угол — первые на разбор.",
                 legend=_dept_legend(dept_sorted(d["dep"].dropna().unique())) +
-                       [(COLORS["neutral"], "Размер круга", "портфель филиала", "text")],
-                insights=ins + ["Подписаны крупные филиалы (от 2% портфеля) и все из правого верхнего угла; "
-                                "остальные — при наведении."], terms=["npl", "pp"])
+                       [(COLORS["ink"], "Список справа", "номер · филиал · NPL · изменение, п.п.", "text")],
+                insights=ins, terms=["npl", "pp"], body_html=html_)
 
 
 def b_migration_matrix(A, B, ctx):
@@ -2338,24 +2455,32 @@ def b_client_icons(A, B, ctx):
             out[k] += 1
         return out, raw
 
+    shop = ("<svg viewBox='0 0 20 20' width='19' height='19'><path d='M2.5 9h15v10.5h-15z' fill='{c}'/>"
+            "<path d='M1 3.5h18l-1.3 5.5H2.3z' fill='{c}'/><path d='M6.5 3.5 5.6 9M10 3.5V9M13.5 3.5l.9 5.5' "
+            "stroke='#fff' stroke-width='1'/><rect x='8.2' y='12.5' width='3.6' height='7' fill='#fff'/></svg>")
+    card = ("<svg viewBox='0 0 20 20' width='19' height='19'><rect x='1' y='4' width='18' height='12.5' rx='2' fill='{c}'/>"
+            "<rect x='1' y='6.8' width='18' height='2.4' fill='#fff' opacity='.9'/>"
+            "<rect x='3' y='11.6' width='5.5' height='2.2' rx='.6' fill='#fff' opacity='.9'/></svg>")
+    shapes = {"person": person, "building": building, "shop": shop, "card": card}
     blocks, ins = [], []
     for dep in deps:
         counts = {k: int(st.loc[dep].get(k, 0)) for k in ("ok", "late", "npl")}
         icons, raw = hundred(counts)
-        shape = person if dkey(dep) in {dkey(x) for x in PERSON_DEPTS} else building
+        shape = shapes.get(DEPT_ICONS.get(dkey(dep), "building"), building)
         cells = "".join(shape.format(c=colors[k]) for k in ("ok", "late", "npl") for _ in range(icons[k]))
         cap = "".join(f"<div><i style='background:{colors[k]}'></i><b>{icons[k] if icons[k] or not counts[k] else '&lt;1'}</b> "
                       f"{words[k]}</div>" for k in ("ok", "late", "npl"))
         total = sum(counts.values())
-        blocks.append(f"<div class='ic'><h5>{_e(dname(dep))} <span>· {total:,} клиентов</span></h5>"
+        about = DEPT_ABOUT.get(dkey(dep))
+        blocks.append(f"<div class='ic'><h5>{_e(dname(dep))}{' — ' + _e(about) if about else ''} <span>· {total:,}</span></h5>"
                       f"<div class='ic-grid'>{cells}</div><div class='ic-cap'>{cap}</div></div>".replace(",", " "))
         ins.append(f"{_e(dname(dep))}: из 100 клиентов <b>{icons['npl']}</b> в NPL и {icons['late']} с просрочкой "
                    f"(точно: {raw['npl']:.1f}% и {raw['late']:.1f}%).")
     html_ = f"<div class='ic-row'>{''.join(blocks)}</div>"
     ins.append("Клиент считается по своему худшему кредиту; клиент двух департаментов есть в обоих.")
     return page(None, title=f"Из каждых 100 клиентов: кто платит, кто опаздывает, {plabel_full(sel)}",
-                what="Каждый значок — 1% клиентов департамента. Человек — физические лица, здание — компании. "
-                     "Цвет — состояние худшего кредита клиента на дату.",
+                what="Каждый значок — 1% клиентов департамента: человек — физлица, здание — корпоративные, "
+                     "магазин — малый бизнес, карта — онлайн-кредиты. Цвет — состояние худшего кредита клиента на дату.",
                 legend=[(colors[k], {"ok": "Платят вовремя", "late": "С просрочкой 1–90 дней",
                                      "npl": "В NPL 90+"}[k], {"ok": "ни одного дня просрочки",
                                                             "late": "просрочка, но ещё не NPL",
@@ -2369,29 +2494,33 @@ def b_reserve_norms(A, B, ctx):
     d = B["reserve_cat"].sort_values("kat")
     if d.empty:
         raise ValueError("нет категорий качества на дату")
-    d = d.assign(rate=d["reserve"] / d["exposure"].replace(0, np.nan) * 100, need=d["kat"].map(RESERVE_MIN))
+    # the base is the ON-BALANCE debt (brutto_summa): the written-off part is off balance and needs no reserve
+    d = d.assign(rate=d["reserve"] / d["on_balance"].replace(0, np.nan) * 100, need=d["kat"].map(RESERVE_MIN))
     names = [f"{int(k)} · {CATEGORY_NAMES.get(int(k), k)}" for k in d["kat"]]
     ok = d["rate"] >= d["need"] - 1e-9
     f = go.Figure()
+    labels = [f"<b>{fpct(r)}</b> · мин. {int(n)}%<br>на балансе {fnum(b / UNIT, 1)}"
+              + (f"<br>+ списано {fnum(w / UNIT, 1)}<br><i>резерв не нужен</i>" if w > 0 else "")
+              for r, n, b, w in zip(d["rate"], d["need"], d["on_balance"], d["writeoff"])]
     f.add_bar(x=names, y=d["rate"], marker_color=[COLORS["good"] if o else COLORS["watch"] for o in ok],
-              text=[f"<b>{fpct(r)}</b><br>{fnum(e / UNIT, 1)} {UNIT_NAME}" for r, e in zip(d["rate"], d["exposure"])],
-              textposition="outside", cliponaxis=False, textfont=dict(size=LABEL_SIZE),
-              hovertemplate="%{x}<br>резерв %{y:.1f}% от долга<extra></extra>")
-    f.add_scatter(x=names, y=d["need"], mode="markers+text", marker=dict(symbol="line-ew-open", size=60,
-                  color=COLORS["ink"], line=dict(width=3, color=COLORS["ink"])), text=[f"мин. {int(v)}%" for v in d["need"]],
-                  textposition="middle right", textfont=dict(size=11), hoverinfo="skip")
-    base(f, bargap=.45, yaxis=dict(title="резерв, % от суммы категории", range=[0, 118]))
+              text=labels, textposition="outside", cliponaxis=False, textfont=dict(size=11),
+              hovertemplate="%{x}<br>резерв %{y:.1f}% от долга на балансе<extra></extra>")
+    f.add_scatter(x=names, y=d["need"], mode="markers", marker=dict(symbol="line-ew-open", size=70, color=COLORS["ink"],
+                  line=dict(width=3, color=COLORS["ink"])), hoverinfo="skip")
+    base(f, bargap=.45, yaxis=dict(title="резерв, % от долга на балансе", range=[0, 140], tickvals=[0, 25, 50, 75, 100],
+                                   tickformat="d", ticksuffix="%"))
     short = d[~ok]
+    wsum = float(d["writeoff"].sum())
     ins = [(f"Ниже минимума: " + "; ".join(f"<b>{CATEGORY_NAMES.get(int(r.kat))}</b> — {fpct(r.rate)} при {int(r.need)}%"
                                         for r in short.itertuples()) + "." if len(short) else
             "Во всех категориях резерв не ниже минимальной ставки."),
            "Залог законно уменьшает требуемый резерв (Положение ЦБ № 3937), поэтому «ниже минимума» — повод "
            "проверить залоги, а не обязательно нарушение.",
-           f"Категории 3–5 (проблемные): {fnum(d[d.kat >= 3].exposure.sum() / UNIT)} {UNIT_NAME}, резерв "
-           f"{fpct(d[d.kat >= 3].reserve.sum() / max(d[d.kat >= 3].exposure.sum(), 1) * 100)}."]
+           (f"Списано (за балансом): {fnum(wsum / UNIT, 2)} {UNIT_NAME} — в расчёт резерва не входит." if wsum > 0 else "")]
     return page(f, title=f"Резервы против минимума ЦБ (№ 3937), {plabel_full(sel)}",
-                what="Сколько резерва создано на каждый сум долга в каждой категории качества (столбец) и минимальная "
-                     "ставка по Положению ЦБ № 3937 до учёта залога (чёрная черта): 1 / 10 / 25 / 50 / 100%.",
+                what="Резерв как % от долга НА БАЛАНСЕ (brutto_summa) в каждой категории качества и минимальная "
+                     "ставка Положения ЦБ № 3937 до учёта залога (чёрная черта): 1 / 10 / 25 / 50 / 100%. "
+                     "Списанная часть за балансом показана рядом — резерв на неё не требуется.",
                 legend=[(COLORS["good"], "Зелёный", "резерв не ниже минимальной ставки", "bar"),
                         (COLORS["watch"], "Оранжевый", "ниже минимума — проверить залоги", "bar"),
                         (COLORS["ink"], "Черта", "минимальная ставка резерва категории", "line")],
@@ -2439,7 +2568,6 @@ CHARTS_A_BASE = [
     ("СТОК", "Доля NPL 90+ по филиалам и месяцам", a05_branch_heatmap),
     ("ПОТОК", "Почему изменился NPL", a06_bridge),
     ("КОГОРТЫ", "Качество выдач по месяцу выдачи", a07_vintage_quality),
-    ("КОГОРТЫ", "Кривые когорт по кварталам выдачи", a08_vintage_curves),
     ("КОГОРТЫ", "Ранние дефолты по департаментам", a_early_defaults),
     ("ПОТОК", "Скорость ухода в дефолт", a09_migration),
     ("СТОК", "Доля валют в портфеле", a10_currency),
@@ -2471,6 +2599,8 @@ def chart_registry(ctx):
     a = [("A00", "ИТОГИ", "Что изменилось за месяц", a00_changes)]
     a += [(f"A{i:02d}", k, t, fn) for i, (k, t, fn) in enumerate(CHARTS_A_BASE, 1)]
     for dep in ctx.get("departments", []):
+        if len(ctx.get("top_pass", {}).get(dep, [])) < 2:
+            continue                                  # one product (sk) — a stack of one colour says nothing
         a.append((f"A{len(a):02d}", "СТОК", f"«{dname(dep)}»: портфель по продуктам", _passport_chart(dep)))
     if ctx.get("has_oked") and SHOW_OKED:
         a.append((f"A{len(a):02d}", "СТОК", "Отраслевая структура портфеля (ОКЭД)", a_oked_dynamics))
@@ -2506,7 +2636,7 @@ padding:3px 8px;border-radius:3px;white-space:nowrap}
 .chip.k{border-color:var(--gd);color:var(--gd);font-weight:600}
 .pb{flex:1;display:flex;flex-direction:column;gap:6px;padding-top:6px;min-height:0}
 .pc{flex:0 0 auto;width:100%;display:flex;justify-content:center}
-.pa{flex:1;min-height:0;border-top:1px solid var(--rule);padding-top:7px;overflow:hidden;font-size:11.5px;
+.pa{flex:1;min-height:0;border-top:1px solid var(--rule);padding-top:7px;overflow:hidden;font-size:11px;
 display:grid;grid-template-columns:1fr 1.15fr 1.45fr;gap:0 18px}
 .pa>div{min-width:0;overflow:hidden}
 .pa>div+div{border-left:1px solid var(--rule);padding-left:14px}
@@ -2580,6 +2710,15 @@ break-inside:avoid;font-size:12.5px}
 .ic-grid svg{display:block}
 .ic-cap{margin-top:8px;font-size:11.5px}.ic-cap div{display:flex;align-items:center;gap:6px;margin:2px 0}
 .ic-cap i{width:10px;height:10px;border-radius:50%;display:inline-block}
+/* branch map list */
+.bm{display:flex;gap:10px;width:""" + str(CHART_W) + """px;align-items:flex-start}
+.bm-list{list-style:none;margin:6px 0 0;padding:0;font-size:11px;column-gap:10px}
+.bm-list li{display:flex;align-items:center;gap:5px;margin:0 0 3px;break-inside:avoid}
+.bm-list b{flex:0 0 18px;height:18px;border-radius:50%;color:#fff;font-size:9.5px;display:flex;
+align-items:center;justify-content:center}
+.bm-list span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bm-list em{font-style:normal;color:var(--soft);white-space:nowrap;font-variant-numeric:tabular-nums}
+.tt td.rel{color:#7A4E9A;font-weight:600}
 /* top table */
 .tt2{display:flex;gap:16px;width:""" + str(CHART_W) + """px}
 .tt{border-collapse:collapse;font-size:10.5px;width:50%}
@@ -2871,12 +3010,18 @@ def run(data_dir, out_path, period_from=None, period_to=None,
 
     say("расчёт витрин")
     A, B, top_pass = build_marts(panel, snap, periods, sel, has_oked)
+    names = load_names(data_dir)                  # your top-50 names / aloqador table, if present
+    apply_names(A, names)
     ctx = {"sel": sel, "periods": periods, "has_oked": has_oked,
            "departments": list(top_pass.keys()), "top_pass": top_pass}
 
     say("сборка отчёта")
     Path(out_path).parent.mkdir(parents=True, exist_ok=True)
     n_pages = build_html(A, B, ctx, out_path, progress=say)
+    try:
+        write_top_template(A, Path(out_path).parent)
+    except Exception:
+        pass                                      # a template is a convenience, never a reason to fail
 
     T = _total(A)
     return {
@@ -2893,4 +3038,5 @@ def run(data_dir, out_path, period_from=None, period_to=None,
         "dropped_zero_balance": dropped,
         "n_charts": sum(len(x) for x in chart_registry(ctx)),
         "n_pages": n_pages + 3,
+        "names_file": str(names[2]) if names[2] else None,
     }
