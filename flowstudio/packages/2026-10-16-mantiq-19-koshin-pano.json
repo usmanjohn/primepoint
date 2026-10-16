@@ -1,0 +1,62 @@
+{
+ "id": "2026-10-16-mantiq-19-koshin-pano",
+ "number": 51,
+ "for": "Jonibek",
+ "date": "2026-10-16",
+ "series": "Mantiq maydoni",
+ "title_uz": "Koshin panodagi toʻrtburchaklar",
+ "concept_uz": "Madrasa hovlisi. Usta devorga beshga besh, 25 ta koʻk koshinli pano oʻrnatdi. Zerikkan shogird toʻrtburchaklarni sanay boshlaydi va saksondan oʻtganda adashib, taslim boʻladi. Usta jilmayadi: bittasini ham sanamasdan topishning yoʻli bor. Nechta? Javob keyingi hafta, 19-oktabrdan keyin.",
+ "format_uz": "7 sahna × 8 soniya = 56 soniya",
+ "sources": [
+  "logic/management/commands/_puzzles_logic_17_24.py (puzzle 19)"
+ ],
+ "facts": [
+  {"claim": "Usta koshinkor yangi madrasa hovlisi devoriga beshga besh, 25 ta koʻk koshinli kvadrat pano oʻrnatdi; zerikkan shogird toʻrtburchaklarni sanaydi", "source": "logic/management/commands/_puzzles_logic_17_24.py puzzle 19 body_uz"},
+  {"claim": "Bitta koshin, uchta koshinli qator, 2 × 4 blok, butun 5 × 5 pano — hammasi hisob; kvadratlar ham toʻgʻri toʻrtburchak", "source": "puzzle 19 body_uz"},
+  {"claim": "Ikki toʻrtburchak turli koshinlarni egallasa, har xil hisoblanadi", "source": "puzzle 19 lg-rule"},
+  {"claim": "Shogird saksondan oʻtganda taslim boʻldi; bittasini ham roʻyxatga olmasdan sanashning yoʻli bor", "source": "puzzle 19 body_uz"},
+  {"claim": "Soʻraladigan javob: toʻgʻri toʻrtburchaklarning umumiy soni (javob videoda aytilmaydi)", "source": "puzzle 19 lg-ask; answer_key '225' — faqat javob videosi uchun"},
+  {"claim": "Raund 2: 2026-10-12 ochilgan, javobi 2026-10-19 da ochiladi — javob videosi 2026-10-23 da (Jonibek), 19-oktabrdan oldin emas", "source": "_puzzles_logic_17_24.py SCHEDULE start 2026-10-05 + 7×(2−1)"}
+ ],
+ "style_line": "Cinematic photoreal, soft golden afternoon light in an old Central Asian madrasa courtyard, warm ochre brick against deep cobalt-blue glazed tiles, 35mm film look, calm craftsman's-workshop mood with a light comic touch. No text, no letters, no watermark.",
+ "refs": [
+  {"id": "R1", "name_uz": "Muhit: madrasa hovlisi",
+   "prompt": "Vertical 9:16 shot of a quiet courtyard of an old Central Asian madrasa in golden afternoon light: ochre brick arches, a mulberry tree, a wooden scaffold plank, buckets of mortar and a trowel on the ground. In the plain brick wall at chest height a brand-new square panel of exactly 25 identical cobalt-blue glazed square tiles, five rows of five, with thin white grout lines. No people, no writing."},
+  {"id": "R2", "name_uz": "Usta",
+   "prompt": "Vertical 9:16 full-body portrait of an Uzbek master tiler of about 60, calm wise face, short grey beard, a white skullcap, sleeves rolled up, a dark INDIGO canvas apron dusted with pale clay, holding a small wooden trowel, standing in a madrasa courtyard in golden afternoon light."},
+  {"id": "R3", "name_uz": "Pano yaqindan",
+   "prompt": "Vertical 9:16 straight-on close-up of a square wall panel of exactly 25 identical cobalt-blue glazed square tiles arranged five rows by five columns, thin even white grout lines between them, set in ochre brick, golden afternoon light making the glaze shine. Exactly five rows and five columns. No patterns, no writing."},
+  {"id": "R4", "name_uz": "Shogird",
+   "prompt": "Vertical 9:16 full-body portrait of an Uzbek apprentice boy of about 14, thin, messy black hair under a bright ORANGE headband, a pencil tucked behind his ear, a plain grey work shirt with clay stains, bored expression, sitting on an upturned bucket in a madrasa courtyard in golden afternoon light."},
+  {"id": "R5", "name_uz": "Hammasi panoning oldida",
+   "from": ["R1", "R2", "R4"],
+   "prompt": "Combine the attached images into one vertical 9:16 shot of the same courtyard: the apprentice sits on an upturned bucket right in front of the 5 × 5 blue tile panel, one finger raised toward the tiles as if counting; the master tiler stands a few steps behind him, wiping his trowel and watching with a hidden smile. Exactly 25 tiles, five by five. Same faces, same clothes, same light."},
+  {"id": "R6", "name_uz": "Boʻr bilan chizilgan 2 × 3 blok",
+   "from": "R3",
+   "prompt": "Edit the attached panel: draw one clear white chalk outline around a single block of tiles two rows high and three columns wide, near the upper left of the panel. Everything else unchanged: still exactly 25 tiles, five by five, same light, 9:16. No numbers, no writing."}
+ ],
+ "scenes": [
+  {"n": 1, "title_uz": "Sanash", "method": "Frames to Video", "start": "R5",
+   "lines": [{"who": "Shogird", "text": "Sakson bir, sakson ikki… voy, yana adashdim!"}],
+   "prompt": "The apprentice's finger jumps faster and faster from tile to tile across the blue panel, his lips moving, then he stops, clutches his head with both hands and groans; behind him the master tiler hides a smile. Audio: quick finger taps on glaze, a sparrow, then a long groan. The apprentice says in Uzbek with a cracking, impatient teenage boy's voice of about 14: \"Sakson bir, sakson ikki... voy, yana adashdim!\" No subtitles, no on-screen text."},
+  {"n": 2, "title_uz": "Pano", "method": "Frames to Video", "start": "R3",
+   "lines": [{"who": "Hikoyachi (kadr ortida)", "text": "Madrasa hovlisi. Yangi pano: beshga besh, yigirma beshta koʻk koshin."}],
+   "prompt": "Slow push-in on the square panel of 25 cobalt-blue tiles, five by five; a ray of afternoon sun slides across the glaze, making each tile flash one after another. Audio: soft courtyard wind, a distant dove, a gentle plucked dutar note. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Madrasa hovlisi. Yangi pano: beshga besh, yigirma beshta ko'k koshin.\" No subtitles, no on-screen text."},
+  {"n": 3, "title_uz": "Nima sanayapsan?", "method": "Ingredients to Video", "attach": ["R2", "R4", "R1"],
+   "lines": [{"who": "Usta", "text": "Nima sanayapsan, bolam?"}, {"who": "Shogird", "text": "Toʻrtburchaklarni, usta. Bitta koshin ham toʻrtburchak-ku!"}],
+   "prompt": "Two-shot by the tile panel: the master tiler walks up wiping his hands on his indigo apron and leans over the boy's shoulder; the boy taps one single tile with his pencil, very serious. Audio: footsteps on brick, pencil tap on glaze. The master says in Uzbek with a deep, calm, kind elderly male voice of about 60: \"Nima sanayapsan, bolam?\" Then the apprentice answers in Uzbek with a cracking, impatient teenage boy's voice of about 14: \"To'rtburchaklarni, usta. Bitta koshin ham to'rtburchak-ku!\" No subtitles, no on-screen text."},
+  {"n": 4, "title_uz": "Qoida", "method": "Frames to Video", "start": "R6",
+   "lines": [{"who": "Usta (kadr ortida)", "text": "Uchtalik qator ham, ikkiga toʻrt blok ham, butun pano ham — hammasi hisob."}],
+   "prompt": "Close-up of the panel with the white chalk outline around a two-by-three block; a weathered hand with a stick of chalk enters and lightly traces the outline again, then sweeps once around the whole panel's edge. Audio: chalk scratching on glaze, a soft tap. The master says off-screen in Uzbek with a deep, calm, kind elderly male voice of about 60: \"Uchtalik qator ham, ikkiga to'rt blok ham, butun pano ham — hammasi hisob.\" No subtitles, no on-screen text."},
+  {"n": 5, "title_uz": "Kvadratlar ham", "method": "Ingredients to Video", "attach": ["R2", "R3"],
+   "lines": [{"who": "Usta", "text": "Kvadratlar ham toʻrtburchak. Boshqa koshinlarni egallasa — boshqa toʻrtburchak."}],
+   "prompt": "Medium shot: the master tiler stands beside the blue panel and frames a small square of four tiles with his two hands, then slides his hands one tile to the right to frame a different square. Audio: courtyard ambience, a soft whoosh as his hands move. He says in Uzbek with a deep, calm, kind elderly male voice of about 60: \"Kvadratlar ham to'rtburchak. Boshqa koshinlarni egallasa — boshqa to'rtburchak.\" No subtitles, no on-screen text."},
+  {"n": 6, "title_uz": "Taslim", "method": "Ingredients to Video", "attach": ["R4", "R2", "R1"],
+   "lines": [{"who": "Shogird", "text": "Unda men taslim, usta!"}, {"who": "Usta", "text": "Bittasini ham sanamasdan topishning yoʻli bor."}],
+   "prompt": "The apprentice flops backwards off his bucket onto the brick floor, arms spread like a starfish, pencil flying; the master chuckles, looks at the panel, then back at the boy and raises one eyebrow knowingly. Comic timing. Audio: a bucket clatter, a sparrow flutters away, a warm chuckle. The apprentice says in Uzbek with a cracking, impatient teenage boy's voice of about 14: \"Unda men taslim, usta!\" Then the master says in Uzbek with a deep, calm, kind elderly male voice of about 60: \"Bittasini ham sanamasdan topishning yo'li bor.\" No subtitles, no on-screen text."},
+  {"n": 7, "title_uz": "Savol", "method": "Frames to Video", "start": "R5",
+   "lines": [{"who": "Hikoyachi (kadr ortida)", "text": "Beshga besh panoda nechta toʻgʻri toʻrtburchak bor? Javobni izohda yozing yoki powerty.uz/logic da yuboring!"}],
+   "prompt": "Slow pull-back from the blue tile panel: the master and the apprentice both turn and look at the camera, frozen as if time stopped, a puff of clay dust hanging still in the sunbeam. Hold on the frozen frame. Audio: silence, then one soft plucked dutar note. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice, friendly and curious: \"Beshga besh panoda nechta to'g'ri to'rtburchak bor? Javobni izohda yozing yoki powerty.uz/logic da yuboring!\" No subtitles, no on-screen text."}
+ ],
+ "post_text_uz": "Beshga besh, 25 ta koʻk koshin. Bitta koshin ham, butun pano ham, kvadratlar ham — hammasi toʻgʻri toʻrtburchak. Shogird saksondan oʻtib taslim boʻldi. Siz-chi? Nechta toʻgʻri toʻrtburchak bor? Javobni izohda yozing yoki powerty.uz/logic da yuboring — toʻgʻri javob keyingi hafta! #mantiq #jumboq #MantiqMaydoni #Powerty"
+}
