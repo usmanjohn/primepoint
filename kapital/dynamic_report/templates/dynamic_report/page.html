@@ -253,12 +253,36 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // The run can take minutes, so the page polls instead of waiting on the POST.
-  async function poll(id) {
-    try {
-      const r = await fetch(`status/${id}/`);
-      const s = await r.json();
+  // A JSON answer, or an Error saying what came instead. When the web server restarts, nginx
+  // answers with its own HTML error page — reading that as JSON gave «Unexpected token '<'».
+  async function getJson(r) {
+    const ct = r.headers.get('content-type') || '';
+    if (!ct.includes('json')) throw new Error(`сервер ответил ${r.status} ${r.statusText || ''}`.trim());
+    return r.json();
+  }
 
+  // The run can take minutes, so the page polls instead of waiting on the POST.
+  // The report builds in its own process, so a web-server hiccup does not stop it:
+  // keep asking for a while before giving up.
+  let misses = 0;
+  async function poll(id) {
+    let s;
+    try {
+      s = await getJson(await fetch(`status/${id}/`, {cache: 'no-store'}));
+      misses = 0;
+    } catch (e) {
+      misses += 1;
+      if (misses <= 60) {
+        show(`Сервер не отвечает (${e.message}) — расчёт продолжается, повтор через 5 с…`);
+        setTimeout(() => poll(id), 5000);
+        return;
+      }
+      show('Потеряна связь с сервером: ' + e.message +
+           '. Расчёт мог продолжиться — обновите страницу позже, отчёт появится в таблице.', 'err');
+      go.disabled = false;
+      return;
+    }
+    try {
       if (s.status === 'done') {
         const st = s.stats || {};
         show(`Готово за ${s.seconds} с — ${st.n_charts || '—'} графиков, ` +
@@ -278,9 +302,9 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
       show((s.step || 'выполняется') + ` … ${s.seconds} с`);
-      setTimeout(() => poll(id), 1200);
+      setTimeout(() => poll(id), 1500);
     } catch (e) {
-      show('Потеряна связь с сервером: ' + e.message, 'err');
+      show('Ошибка на странице: ' + e.message, 'err');
       go.disabled = false;
     }
   }
@@ -295,7 +319,7 @@ document.addEventListener('DOMContentLoaded', function () {
         headers: {'X-CSRFToken': csrf()},
         body: new FormData(form),
       });
-      const s = await r.json();
+      const s = await getJson(r);
       if (!r.ok) {
         show('Ошибка: ' + (s.error || r.status), 'err');
         go.disabled = false;

@@ -1,0 +1,20 @@
+I. Common stuff 
+Go to the project root folder and activate the environment to apply some changes.
+cd /var/ then cd www/ then cd dashboard then source delta/bin/activate then cd dashboard
+sudo journalctl -u gunicorn -f is the log panel
+
+
+II. Migration: 
+/var/www/dashboard/delta/bin/python manage.py makemigrations and migrate
+
+III. Increase the time wait at two places:
+   1. sudo nano /etc/systemd/system/gunicorn.service
+   2. sudo nano /etc/nginx/sites-available/default
+   3. sudo systemctl reload nginx
+   4. sudo systemctl daemon-reload
+   
+
+IV. Always restart gunicorn after git pull: sudo systemctl restart gunicorn
+
+ 
+
