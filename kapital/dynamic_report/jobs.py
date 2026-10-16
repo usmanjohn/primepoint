@@ -13,15 +13,19 @@ Now:
     only covered one worker, so three workers could run three reports at once);
   * the job writes its pid into the row; reap_stale() marks a row whose process is gone as
     failed, with the reason, so nothing stays «выполняется» forever.
+
+Works on the Linux server and on a Windows PC alike: the lock and the "is it alive" check
+have a branch for each (fcntl does not exist on Windows, and there os.kill(pid, 0) would
+not check the process — it would KILL it).
 """
 from __future__ import annotations
 
-import fcntl
 import os
 import signal
 import subprocess
 import sys
 import threading
+import time
 from contextlib import contextmanager
 from pathlib import Path
 
@@ -29,6 +33,13 @@ from django.conf import settings
 from django.utils import timezone
 
 from .models import ReportRun
+
+WINDOWS = os.name == "nt"
+if WINDOWS:
+    import ctypes
+    import msvcrt
+else:
+    import fcntl
 
 BASE_DIR = Path(settings.BASE_DIR)
 OUT_DIR = BASE_DIR / "datasets" / "dynamics" / "report"
@@ -49,11 +60,15 @@ def launch(run):
     if not manage.exists():
         raise FileNotFoundError(f"не найден {manage}")
     OUT_DIR.mkdir(parents=True, exist_ok=True)
+    if WINDOWS:   # no console window, and Ctrl+C in the runserver console does not reach the job
+        detach = dict(creationflags=subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.CREATE_NO_WINDOW)
+    else:
+        detach = dict(start_new_session=True)
     with open(log_path(run.pk), "ab") as log:
         proc = subprocess.Popen(
             [sys.executable, str(manage), "build_report", "--run-id", str(run.pk)],
             cwd=str(BASE_DIR), stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT,
-            start_new_session=True, close_fds=True)
+            close_fds=True, **detach)
     # wait for it in the background: collects the exit code (no zombie process) and turns
     # a crash into a readable error at once, without waiting for the next status poll
     threading.Thread(target=_watch, args=(proc, run.pk), daemon=True).start()
@@ -71,7 +86,7 @@ def _watch(proc, pk):
 
 
 def _exit_reason(code, pk):
-    if code == -signal.SIGKILL:
+    if not WINDOWS and code == -signal.SIGKILL:
         return OOM_HINT
     if code < 0:
         return f"процесс отчёта остановлен сигналом {-code}"
@@ -92,6 +107,8 @@ def _fail_if_active(pk, reason):
 
 def _alive(pid):
     """Is a build_report process with this pid still running? (A zombie counts as dead.)"""
+    if WINDOWS:
+        return _alive_windows(pid)
     try:
         os.kill(pid, 0)
     except ProcessLookupError:
@@ -107,6 +124,21 @@ def _alive(pid):
             return True
         return state != "Z" and b"build_report" in cmd
     return True
+
+
+def _alive_windows(pid):
+    """Windows: ask the system for the process's exit code; 259 = STILL_ACTIVE."""
+    k32 = ctypes.windll.kernel32
+    handle = k32.OpenProcess(0x1000, False, pid)        # PROCESS_QUERY_LIMITED_INFORMATION
+    if not handle:
+        return False                                    # no such process
+    try:
+        code = ctypes.c_ulong()
+        if not k32.GetExitCodeProcess(handle, ctypes.byref(code)):
+            return True
+        return code.value == 259
+    finally:
+        k32.CloseHandle(handle)
 
 
 def reap_stale():
@@ -128,11 +160,24 @@ def reap_stale():
 def build_lock(on_wait=None):
     """One report at a time on this server, whichever gunicorn worker or shell started it."""
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    with open(LOCK_FILE, "w") as f:
-        try:
-            fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        except BlockingIOError:
-            if on_wait:
-                on_wait()
-            fcntl.flock(f, fcntl.LOCK_EX)                 # wait for the other report to finish
+    with open(LOCK_FILE, "a+") as f:
+        if WINDOWS:
+            waited = False
+            while True:
+                try:
+                    f.seek(0)
+                    msvcrt.locking(f.fileno(), msvcrt.LK_NBLCK, 1)
+                    break
+                except OSError:                           # held by another report
+                    if not waited and on_wait:
+                        on_wait()
+                    waited = True
+                    time.sleep(2)
+        else:
+            try:
+                fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError:
+                if on_wait:
+                    on_wait()
+                fcntl.flock(f, fcntl.LOCK_EX)             # wait for the other report to finish
         yield                                             # closing the file releases the lock
