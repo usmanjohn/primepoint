@@ -7,4 +7,5 @@ urlpatterns = [
     path("status/<int:pk>/", views.status, name="report-status"),
     path("view/<int:pk>/", views.view_report, name="report-view"),
     path("download/<int:pk>/", views.download_report, name="report-download"),
+    path("delete/<int:pk>/", views.delete_report, name="report-delete"),
 ]

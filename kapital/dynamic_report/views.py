@@ -15,8 +15,9 @@ import datetime as dt
 from pathlib import Path
 
 from django.conf import settings
+from django.core.exceptions import PermissionDenied
 from django.http import FileResponse, Http404, JsonResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.utils import timezone
 from django.views.decorators.http import require_GET, require_POST
@@ -46,6 +47,12 @@ def _period_int(v):
     """'202508', '202 508', '202,508' -> 202508; anything else -> None."""
     digits = re.sub(r"\D", "", str(v or ""))
     return int(digits) if len(digits) == 6 else None
+
+
+def _is_admin(request):
+    """Admins (staff or superuser) may delete reports; everyone else only opens and downloads."""
+    user = getattr(request, "user", None)
+    return bool(getattr(user, "is_staff", False) or getattr(user, "is_superuser", False))
 
 
 def _plabel(p):
@@ -105,6 +112,7 @@ def page(request):
         "runs": _with_labels(ReportRun.objects.all()[:15]),
         "n_files": len(periods),
         "n_done": ReportRun.objects.filter(status=ReportRun.DONE).count(),
+        "is_admin": _is_admin(request),
     })
 
 
@@ -188,3 +196,20 @@ def download_report(request, pk: int):
         raise Http404("отчёт ещё не готов")
     name = f"portfel_{r.selected_period}.html"
     return FileResponse(open(r.html_path, "rb"), as_attachment=True, filename=name)
+
+
+@require_POST
+def delete_report(request, pk: int):
+    """Admin only: remove a report row and its HTML file. A running job cannot be deleted."""
+    if not _is_admin(request):
+        raise PermissionDenied("удалять отчёты может только администратор")
+    r = get_object_or_404(ReportRun, pk=pk)
+    if r.is_active:
+        return redirect("report-page")
+    if r.html_path:
+        f = Path(r.html_path)
+        # never touch a file outside the reports folder, whatever the row says
+        if f.exists() and OUT_DIR.resolve() in f.resolve().parents:
+            f.unlink()
+    r.delete()
+    return redirect("report-page")

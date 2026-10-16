@@ -44,6 +44,8 @@
              font-size:12.5px;padding:4px 13px;border-radius:999px;cursor:pointer;
              font-family:inherit}
   .drp .preset:hover{border-color:var(--gd);color:var(--gd)}
+  .drp .del-link{background:none;border:0;padding:0;color:#B3341F;font:inherit;cursor:pointer}
+  .drp .del-link:hover{text-decoration:underline}
   .drp .hint{font-size:12.5px;color:var(--muted)}
 
   .drp #drp-panel{display:none;border-left:3px solid var(--gold);background:#FCFAF4;
@@ -187,6 +189,13 @@
                 <a class="go-link" href="{% url 'report-download' r.pk %}">скачать</a>
               {% elif r.status == "failed" %}
                 <span class="text-muted" title="{{ r.error|truncatechars:200 }}">ошибка</span>
+              {% endif %}
+              {% if is_admin and not r.is_active %}
+                <span class="text-muted">·</span>
+                <form method="post" action="{% url 'report-delete' r.pk %}" class="d-inline"
+                      onsubmit="return confirm('Удалить отчёт #{{ r.pk }}? Файл будет удалён без возможности восстановления.');">
+                  {% csrf_token %}<button type="submit" class="del-link">удалить</button>
+                </form>
               {% endif %}
             </td>
           </tr>
