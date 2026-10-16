@@ -41,23 +41,27 @@ TITLE, BANK = "Обзор кредитного портфеля", "Kapitalbank"
 # Departments: the order they appear in everywhere (legends, B06), and one colour each.
 # Keys are matched case-insensitively, Cyrillic к/м/р/с count as k/m/r/s.
 DEPARTMENTS = ["kk", "mk", "rk", "sk"]
-DEPT_COLORS = {"kk": "#1F4E79", "mk": "#2E7D7A", "rk": "#7A4E9A", "sk": "#C9971A"}
+DEPT_COLORS = {"kk": "#F2C230", "mk": "#2A2A2E", "rk": "#C9971A", "sk": "#8A867C"}   # Kapitalbank yellow first
 DEPT_NAMES = {}            # e.g. {"kk": "Корпоративный"}; empty = show the value from the data
-EXTRA_COLORS = ["#5E5A52", "#4F7CAC", "#A88BC4", "#6FA8A3"]   # a department not listed above
+EXTRA_COLORS = ["#5E5A52", "#E0A526", "#B9B5AB", "#8C6A12"]   # a department not listed above
 
-# Meaning colours: the same thing is the same colour on every page.
+# Meaning colours: the same thing is the same colour on every page. Kapitalbank's yellow leads;
+# red is ONLY for NPL, orange only for the risk zone.
 COLORS = {
-    "npl": "#B3341F",        # NPL 90+, defaults, anything bad
-    "watch": "#E08A1E",      # risk zone
-    "good": "#2F6B4F",       # cured, issued, coverage
+    "npl": "#B3341F",        # NPL 90+, defaults — the only red
+    "watch": "#E08A1E",      # risk zone, early warnings
+    "good": "#F2C230",       # Kapitalbank yellow: issued, cured, reserves, "fine"
+    "good_text": "#8C6A12",  # the same idea as TEXT (yellow letters cannot be read on white)
+    "gold": "#C9971A",       # deep gold, the second brand tone
     "neutral": "#8A867C",    # "others", repayments, residuals
-    "light": "#D9D4C7",      # background stacks
+    "light": "#D9D4C7",      # background stacks, «Прочие»
     "ink": "#1A1A1E",        # totals, bank-wide lines
+    "char": "#2A2A2E",       # charcoal, the dark brand tone
 }
-CURRENCY_COLORS = {"Сум": "#D6D1C4", "USD": "#5E5A52", "EUR": "#1A1A1E"}
+CURRENCY_COLORS = {"Сум": "#F2C230", "USD": "#2A2A2E", "EUR": "#C9971A"}
 # Products inside one department (A14…): clearly different colours, largest first.
 # No red — red is the NPL line drawn over them. "Прочие" is always light grey.
-PRODUCT_COLORS = ["#1F4E79", "#E0A526", "#2E9C8F", "#7A4E9A", "#4F9BD9", "#8BB04A", "#D97A9B", "#8C6D4F"]
+PRODUCT_COLORS = ["#F2C230", "#2A2A2E", "#C9971A", "#8A867C", "#F7E3A1", "#8C6A12", "#5E5A52", "#E0A526"]
 
 # Delinquency: the risk zone shown on A01/A13 and the KPI, and the report's buckets.
 WATCH_DPD = (61, 90)
@@ -65,7 +69,7 @@ REPORT_BUCKETS = (
     (0, 0, "CUR"), (1, 30, "B01_30"), (31, 90, "B31_90"), (91, 180, "B91_180"),
     (181, 365, "B181_365"), (366, 10**9, "B365P"),
 )
-BUCKET_COLORS = {"CUR": "#2F6B4F", "B01_30": "#F2C230", "B31_90": "#E08A1E",
+BUCKET_COLORS = {"CUR": "#F7E3A1", "B01_30": "#F2C230", "B31_90": "#E08A1E",
                  "B91_180": "#C2591F", "B181_365": "#A33418", "B365P": "#6E1F0E"}
 SHOW_CURRENT_BUCKET = False   # False: the "0 дней" bucket is left out of A03/B02/B07
 
@@ -94,7 +98,8 @@ DEPT_ICONS = {"rk": "person", "kk": "building", "mk": "shop", "sk": "card"}   # 
 DEPT_ABOUT = {"rk": "физические лица", "kk": "корпоративные клиенты", "mk": "малый бизнес",
               "sk": "онлайн-кредиты физлицам"}
 B10_SHOW_ALL = False
-SHOW_DATA_CHECK = True        # last page «Проверка данных»: unreadable amounts/dates, merged spellings, jumps          # B10: also draw the «все кредиты» bar (it is big and squeezes the other three)
+SHOW_DATA_CHECK = True
+SHOW_BRANCH_MAP = False       # the branch scatter (NPL level × change); off by request, True brings it back        # last page «Проверка данных»: unreadable amounts/dates, merged spellings, jumps          # B10: also draw the «все кредиты» bar (it is big and squeezes the other three)
 A07_MARKS = ((30, 3), (30, 6), (90, 12))   # A07 checkpoints; the ones with too few cohorts are skipped
 
 # Top-50 names. A small table YOU fill (Excel or CSV), in the folder above the data folder
@@ -1221,6 +1226,11 @@ class Notice(Exception):
     """Not an error: the chart has nothing to show for this window. Rendered as a calm note."""
 
 
+def _ref(ctx, fn_name):
+    """The page number another page has in THIS run (pages renumber when one is switched off)."""
+    return ctx.get("cid_of", {}).get(fn_name, "—")
+
+
 def _x(periods):
     return [plabel(p) for p in periods]
 
@@ -1513,7 +1523,7 @@ def a06_bridge(A, B, ctx):
     f = go.Figure()
     spec = (("inflow", COLORS["npl"], "Новые NPL (+)", "кредиты, которые в этом месяце стали NPL"),
             ("cured", COLORS["good"], "Вылечились (−)", "были NPL, стали нормальными"),
-            ("exited", "#4F7CAC", "Ушли с баланса (−)", "NPL-кредиты закрыты или списаны"),
+            ("exited", COLORS["char"], "Ушли с баланса (−)", "NPL-кредиты закрыты или списаны"),
             ("residual", COLORS["light"], "Погашения и прочее", "частичные погашения внутри NPL"))
     for k, c, n, _ in spec:
         f.add_bar(x=x, y=money(d[k]), name=n, marker_color=c,
@@ -1615,7 +1625,7 @@ def a09_migration(A, B, ctx):
     f.add_scatter(x=x, y=cured, name="1–30 → норма", mode="lines+markers+text",
                   line=dict(color=COLORS["good"], width=2.6), marker=dict(size=4),
                   text=thin(cured, lambda v: f"{v:.0f}"), textposition="top center",
-                  textfont=dict(size=11, color=COLORS["good"]),
+                  textfont=dict(size=11, color=COLORS["good_text"]),
                   hovertemplate="%{x}<br>%{y:.1f} из 100 вернулись в норму<extra></extra>")
     base(f, bargap=.3, yaxis=dict(title="кредитов из 100", range=[0, max(_safemax(to_default), _safemax(cured)) * 1.15]))
     p_ = shift_p(sel, 1)   # the transition is recorded on the month it started from
@@ -1632,7 +1642,7 @@ def a09_migration(A, B, ctx):
     return page(f, what="Скорость ухода в дефолт: из каждых 100 кредитов корзины — сколько через месяц "
                         "перешли в следующую. Месяц на оси — месяц, из которого кредит переходил.",
                 legend=[(COLORS["npl"], "Красный столбец", "из 100 кредитов с просрочкой 61–90 — сколько ушли в 90+", "bar"),
-                        (COLORS["good"], "Зелёная линия", "из 100 кредитов с просрочкой 1–30 — сколько вернулись в норму", "line")],
+                        (COLORS["good"], "Жёлтая линия", "из 100 кредитов с просрочкой 1–30 — сколько вернулись в норму", "line")],
                 insights=ins, terms=["migration"])
 
 
@@ -1682,8 +1692,10 @@ def a13_insurance(A, B, ctx):
     x = _x(d["period"])
     npl, gross, watch = d.npl_ratio * 100, d.npl_ratio_gross * 100, d.watch_ratio * 100
     f = go.Figure()
-    f.add_scatter(x=x, y=gross, name="NPL без страховки", mode="lines",
-                  line=dict(color=COLORS["npl"], width=2.6, dash="dash"),
+    f.add_scatter(x=x, y=gross, name="NPL без страховки", mode="lines+markers+text",
+                  line=dict(color=COLORS["npl"], width=2.6, dash="dash"), marker=dict(size=4),
+                  text=thin(gross, lambda v: f"{v:.2f}", max_labels=fit(36)), textposition="top center",
+                  textfont=dict(size=10.5, color=COLORS["npl"]),
                   hovertemplate="%{x}<br>без страховки: %{y:.2f}%<extra></extra>")
     f.add_scatter(x=x, y=npl, name="NPL фактический", mode="lines+markers+text",
                   line=dict(color=COLORS["npl"], width=3), marker=dict(size=4),
@@ -1833,7 +1845,7 @@ def a_top_clients(A, B, ctx):
     rel = s["rel_exp"] / s["exposure"].replace(0, np.nan) * 100 if A.get("has_rel") else None
     if rel is not None:
         t2, p2 = line_text(rel, lambda v: f"{v:.1f}%" if v > 0 else "")   # no «0.0%» row along the axis
-        f.add_scatter(x=x, y=rel, yaxis="y2", mode="lines+markers+text", line=dict(color="#7A4E9A", width=2.4, dash="dash"),
+        f.add_scatter(x=x, y=rel, yaxis="y2", mode="lines+markers+text", line=dict(color=COLORS["char"], width=2.4, dash="dash"),
                       marker=dict(size=4), text=t2, textposition=p2,
                       hovertemplate="%{x}<br>связанные: %{y:.1f}% суммы топ-50<extra></extra>")
     ov = overlay(_safemax(tot), sh, *([rel] if rel is not None else []), pct_title="%")
@@ -1847,17 +1859,17 @@ def a_top_clients(A, B, ctx):
             if _ok(at(s["newcomers"], sel)) else ""),
            (f"Связанные компании (aloqador) — <b>{fpct(at(rel, sel))}</b> суммы топ-{TOP_CLIENTS}, "
             f"{int(at(s['n_rel'], sel) or 0)} клиентов." if rel is not None and _ok(at(rel, sel)) else
-            f"Связанные компании появятся, когда вы отметите их в файле {TOP_NAMES_FILE}.xlsx (см. B07)."),
+            f"Связанные компании появятся, когда вы отметите их в файле {TOP_NAMES_FILE}.xlsx (см. {_ref(ctx, 'b08_top_table')})."),
            f"Клиенты только с кредитами {_e(ex)} в рейтинге не участвуют; у клиентов, которые есть и в {_e(ex)}, "
            f"и в других департаментах, считается весь долг."]
     return page(f, title=f"Топ-{TOP_CLIENTS} клиентов по месяцам",
                 what=f"Сумма остатка {TOP_CLIENTS} крупнейших клиентов каждого месяца (столбцы, по департаментам) "
                      f"и их доля во всём портфеле банка (красная линия). Состав топ-{TOP_CLIENTS} в каждом "
-                     f"месяце свой. Список на дату — на странице B08.",
+                     f"месяце свой. Список на дату — на странице {_ref(ctx, 'b08_top_table')}.",
                 legend=_dept_legend(order) + [
                     (COLORS["ink"], "Число над столбцом", f"сумма топ-{TOP_CLIENTS}, {UNIT_NAME}", "text"),
                     (COLORS["npl"], "Красная линия", "их доля во всём портфеле банка, % (правая шкала)", "line")]
-                + ([("#7A4E9A", "Фиолетовый пунктир", "доля связанных компаний в сумме топ-50, %", "dash")]
+                + ([(COLORS["char"], "Тёмный пунктир", "доля связанных компаний в сумме топ-50, %", "dash")]
                    if rel is not None else []),
                 insights=ins, terms=["top"])
 
@@ -2082,10 +2094,10 @@ def b08_top_table(A, B, ctx):
     return page(None, title=f"Топ-{TOP_CLIENTS} клиентов на {plabel_full(sel)}",
                 what=f"Крупнейшие клиенты по сумме остатка. Δ — изменение места по сравнению с прошлым месяцем; "
                      f"«накоп.» — доля портфеля банка у клиентов с 1-го по этот; «дн.» — максимальная просрочка, дней.",
-                legend=[(COLORS["good"], "▲ / ▼", "клиент поднялся / опустился в рейтинге", "text"),
-                        ("#4F7CAC", "новый", "в прошлом месяце не был в топе", "text"),
+                legend=[(COLORS["good_text"], "▲ / ▼", "клиент поднялся / опустился в рейтинге", "text"),
+                        (COLORS["gold"], "новый", "в прошлом месяце не был в топе", "text"),
                         (COLORS["npl"], "Красное число дней", "просрочка больше 90 дней", "text"),
-                        ("#7A4E9A", "● в «св.»", "связанная компания (aloqador) — из вашего файла", "text")],
+                        (COLORS["good_text"], "● в «св.»", "связанная компания (aloqador) — из вашего файла", "text")],
                 insights=ins, terms=["top"], body_html=html_)
 
 
@@ -2266,7 +2278,7 @@ def a00_changes(A, B, ctx):
                 what="Главные движения последнего месяца в четырёх таблицах: где вырос NPL, где больше всего "
                      "изменился портфель и откуда пришли новые проблемные кредиты. Подробности — на страницах ниже.",
                 legend=[(COLORS["npl"], "Красное изменение", "ухудшение: NPL вырос", "text"),
-                        (COLORS["good"], "Зелёное изменение", "улучшение: NPL снизился", "text")],
+                        (COLORS["good_text"], "Тёмно-жёлтое изменение", "улучшение: NPL снизился", "text")],
                 insights=ins, terms=["npl", "pp"], body_html=html_)
 
 
@@ -2353,7 +2365,7 @@ def a12_reserves(A, B, ctx):
               hovertemplate="%{x}<br>NPL %{y:,.1f} " + UNIT_NAME + "<extra></extra>")
     f.add_bar(x=x, y=res, name="Резервы", marker_color=COLORS["good"],
               text=thin(res, famt, max_labels=fit(16)), textposition="outside", textangle=-90, cliponaxis=False,
-              textfont=dict(size=10.5, color=COLORS["good"]),
+              textfont=dict(size=10.5, color=COLORS["good_text"]),
               hovertemplate="%{x}<br>резервы %{y:,.1f} " + UNIT_NAME + "<extra></extra>")
     t_, p_ = line_text(cov, lambda v: f"{v:.0f}%")
     f.add_scatter(x=x, y=cov, name="Покрытие", yaxis="y2", mode="lines+markers+text",
@@ -2367,14 +2379,14 @@ def a12_reserves(A, B, ctx):
     s = d.set_index("period")
     ins = [_trend("Покрытие NPL резервами", s["coverage"] * 100, sel, dec=0),
            f"На {plabel_full(sel)}: NPL {fnum(at(s['npl_exposure'], sel) / UNIT)}, резервы {fnum(at(s['reserve'], sel) / UNIT)} {UNIT_NAME}.",
-           ("Зелёный столбец ниже красного: резервов меньше, чем проблемного долга — часть потерь ещё не признана."
+           ("Жёлтый столбец ниже красного: резервов меньше, чем проблемного долга — часть потерь ещё не признана."
             if _ok(at(s["coverage"], sel)) and at(s["coverage"], sel) < 1 else
             "Резервы покрывают NPL полностью."),
-           "Судебная работа — на странице B10."]
-    return page(f, what="Хватает ли резервов на проблемный долг: красный столбец — NPL, зелёный — созданные резервы, "
+           f"Судебная работа — на странице {_ref(ctx, 'b10_auto_court')}."]
+    return page(f, what="Хватает ли резервов на проблемный долг: красный столбец — NPL, жёлтый — созданные резервы, "
                         "чёрная линия — покрытие (резервы / NPL) на правой шкале.",
                 legend=[(COLORS["npl"], "Красный", "NPL 90+, " + UNIT_NAME, "bar"),
-                        (COLORS["good"], "Зелёный", "резервы, " + UNIT_NAME, "bar"),
+                        (COLORS["good"], "Жёлтый", "резервы, " + UNIT_NAME, "bar"),
                         (COLORS["ink"], "Чёрная линия", "покрытие = резервы / NPL, % (правая шкала)", "line")],
                 insights=ins, terms=["coverage"])
 
@@ -2445,7 +2457,7 @@ def b_branch_map(A, B, ctx):
     f.add_annotation(x=xr[1], y=yr[1], text="плохо и ухудшается", showarrow=False, xanchor="right", yanchor="top",
                      font=dict(size=12, color=COLORS["npl"]))
     f.add_annotation(x=xr[0], y=yr[0], text="хорошо и улучшается", showarrow=False, xanchor="left", yanchor="bottom",
-                     font=dict(size=12, color=COLORS["good"]))
+                     font=dict(size=12, color=COLORS["good_text"]))
     base(f, width=CHART_W - list_w - 10, xaxis=dict(title=f"NPL 90+ филиала на {plabel_full(sel)}, %", range=xr,
                                                    showgrid=True, gridcolor="#EFECE4"),
          yaxis=dict(title=f"изменение с {plabel_full(b0)}, п.п.", range=yr))
@@ -2574,7 +2586,11 @@ def b_reserve_norms(A, B, ctx):
     if d.empty:
         raise ValueError("нет категорий качества на дату")
     # base = ON-BALANCE debt (brutto_summa): the written-off part is off balance and needs no reserve
-    d = d.assign(rate=d["reserve"] / d["on_balance"].replace(0, np.nan) * 100, need=d["kat"].map(RESERVE_MIN))
+    gone = d[d["on_balance"] <= 0]                 # e.g. category 5 this month: all of it written off
+    d = d[d["on_balance"] > 0]
+    if d.empty:
+        raise ValueError("нет долга на балансе на дату")
+    d = d.assign(rate=d["reserve"] / d["on_balance"] * 100, need=d["kat"].map(RESERVE_MIN))
     names = [f"{int(k)} · {CATEGORY_NAMES.get(int(k), k)}" for k in d["kat"]]
     ok = d["rate"] >= d["need"] - 1e-9
     # the scale follows categories 1–4; category 5 (100%) is drawn to the top, hatched, its value written
@@ -2592,12 +2608,7 @@ def b_reserve_norms(A, B, ctx):
     keep = ~cut
     f.add_scatter(x=[n for n, k in zip(names, keep) if k], y=d["need"][keep.to_numpy()], mode="markers", hoverinfo="skip",
                   marker=dict(symbol="line-ew-open", size=70, color=COLORS["ink"], line=dict(width=3, color=COLORS["ink"])))
-    wsum = float(d["writeoff"].sum())
-    wo_name = "Списано · за балансом"
-    if wsum > 0:
-        f.add_bar(x=[wo_name], y=[0], marker_color=WRITE_OFF_COLOR, hoverinfo="skip")
-        f.add_annotation(x=wo_name, y=top * .08, yanchor="bottom", showarrow=False, font=dict(size=11, color=WRITE_OFF_COLOR),
-                         text=f"<b>{fnum(wsum / UNIT, 1)} {UNIT_NAME}</b><br>резерв не требуется:<br>за балансом")
+    wsum = float(B["reserve_cat"]["writeoff"].sum())
     base(f, bargap=.45, yaxis=dict(title="резерв, % от долга на балансе", range=[0, top], ticksuffix="%"))
     short = d[~ok]
     ins = [(f"Ниже минимума: " + "; ".join(f"<b>{CATEGORY_NAMES.get(int(r.kat))}</b> — {fpct(r.rate)} при {int(r.need)}%"
@@ -2605,17 +2616,18 @@ def b_reserve_norms(A, B, ctx):
             "Во всех категориях резерв не ниже минимальной ставки."),
            "Залог законно уменьшает требуемый резерв (Положение ЦБ № 3937), поэтому «ниже минимума» — повод "
            "проверить залоги, а не обязательно нарушение.",
-           (f"Списано (spisat_95413_summa): <b>{fnum(wsum / UNIT, 2)} {UNIT_NAME}</b> — за балансом, резерв на него "
-            "не создаётся; показано отдельным пунктом справа." if wsum > 0 else ""),
+           (f"Не показано: {', '.join(CATEGORY_NAMES.get(int(k), str(k)) for k in gone['kat'])} — на дату на балансе "
+            "ничего нет (всё списано)." if len(gone) else ""),
+           (f"Списано (spisat_95413_summa): {fnum(wsum / UNIT, 2)} {UNIT_NAME} — за балансом, резерв на него "
+            "не создаётся, поэтому в процентах резерва не участвует." if wsum > 0 else ""),
            ("Столбец со штриховкой и ↑ обрезан, чтобы не сжимать остальные: его значение подписано." if cut.any() else "")]
     return page(f, title=f"Резервы против минимума ЦБ (№ 3937), {plabel_full(sel)}",
                 what="Резерв как % от долга НА БАЛАНСЕ (brutto_summa) в каждой категории качества и минимальная "
                      "ставка Положения ЦБ № 3937 до учёта залога (чёрная черта): 1 / 10 / 25 / 50 / 100%. "
-                     "Справа — списанная сумма: она за балансом, резерв на неё не нужен.",
-                legend=[(COLORS["good"], "Зелёный", "резерв не ниже минимальной ставки", "bar"),
+                     "Списанная часть за балансом в расчёт не входит.",
+                legend=[(COLORS["good"], "Жёлтый", "резерв не ниже минимальной ставки", "bar"),
                         (COLORS["watch"], "Оранжевый", "ниже минимума — проверить залоги", "bar"),
-                        (COLORS["ink"], "Черта", "минимальная ставка резерва категории", "line"),
-                        (WRITE_OFF_COLOR, "Списано", "за балансом, резерв не требуется", "text")],
+                        (COLORS["ink"], "Черта", "минимальная ставка резерва категории", "line")],
                 insights=ins, terms=["coverage"])
 
 
@@ -2721,7 +2733,6 @@ CHARTS_B_BASE = [
     ("СРЕЗ", "Из выдач каких месяцев состоит портфель", b03_vintage_mix),
     ("СРЕЗ", "Крупнейшие продукты каждого департамента", b_products),
     ("СРЕЗ", "Структура просрочки внутри филиала", b07_filial_bucket),
-    ("СРЕЗ", "Карта филиалов", b_branch_map),
     ("ТАБЛИЦА", "Топ клиентов на дату", b08_top_table),
     ("СРЕЗ", "Кто формирует общий NPL банка", b09_npl_contribution),
     ("СРЕЗ", "Матрица миграции", b_migration_matrix),
@@ -2746,7 +2757,10 @@ def chart_registry(ctx):
         a.append((f"A{len(a):02d}", "СТОК", "Отраслевая структура портфеля (ОКЭД)", a_oked_dynamics))
     a.append((f"A{len(a):02d}", "СТОК", f"Топ-{TOP_CLIENTS} клиентов по месяцам", a_top_clients))
 
-    b = [(f"B{i:02d}", k, t, fn) for i, (k, t, fn) in enumerate(CHARTS_B_BASE, 1)]
+    base_b = list(CHARTS_B_BASE)
+    if SHOW_BRANCH_MAP:
+        base_b.insert(5, ("СРЕЗ", "Карта филиалов", b_branch_map))
+    b = [(f"B{i:02d}", k, t, fn) for i, (k, t, fn) in enumerate(base_b, 1)]
     if ctx.get("has_oked") and SHOW_OKED:
         b.append((f"B{len(b) + 1:02d}", "СРЕЗ", "Отраслевая концентрация (ОКЭД)", b12_oked))
     if TIER1_CAPITAL:
@@ -2761,7 +2775,7 @@ def chart_registry(ctx):
 # ==========================================================================
 CSS = """
 :root{--ink:#1A1A1E;--soft:#3A3A40;--gold:#F2C230;--gd:#C9971A;--rule:#E4E1D8;
---muted:#8A867C;--bad:#B3341F;--good:#2F6B4F;--paper:#fff;--desk:#E9E6DF}
+--muted:#8A867C;--bad:#B3341F;--good:#8C6A12;--paper:#fff;--desk:#E9E6DF}
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--desk);color:var(--ink);
 font-family:"Segoe UI",Roboto,Arial,sans-serif;font-size:13px;line-height:1.45}
@@ -2819,7 +2833,7 @@ border-top:2px solid var(--gold)}
 .kpi .v{font-size:27px;margin-top:5px}
 .kpi .d{font-size:12px;margin-top:2px}
 .kpi .s{font-size:11px;color:#8E8A80;margin-top:5px;line-height:1.35}
-.up{color:#E6A6A6}.dn{color:#9FD3B6}.flat{color:#A8A397}
+.up{color:#E6A6A6}.dn{color:#F2C230}.flat{color:#A8A397}
 .tip{display:none;position:absolute;left:8px;right:8px;top:100%;z-index:5;background:#fff;color:var(--ink);
 border-radius:6px;padding:10px 12px;font-size:12px;box-shadow:0 6px 24px rgba(0,0,0,.35);line-height:1.45}
 .tip b{display:block;margin-bottom:3px}
@@ -2863,7 +2877,7 @@ break-inside:avoid;font-size:12.5px}
 align-items:center;justify-content:center}
 .bm-list span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .bm-list em{font-style:normal;color:var(--soft);white-space:nowrap;font-variant-numeric:tabular-nums}
-.tt td.rel{color:#7A4E9A;font-weight:600}
+.tt td.rel{color:#8C6A12;font-weight:700}
 /* top table */
 .tt2{display:flex;gap:16px;width:""" + str(CHART_W) + """px}
 .tt{border-collapse:collapse;font-size:10.5px;width:50%}
@@ -2873,7 +2887,7 @@ align-items:center;justify-content:center}
 .tt td.n{text-align:right;font-variant-numeric:tabular-nums}
 .tt td.bad{color:var(--bad);font-weight:700}.tt td.warn{color:#B86E0A}
 .mv{font-size:10px;color:var(--muted)}.mv.up{color:var(--good)}.mv.dn{color:var(--bad)}
-.mv.new{color:#4F7CAC;font-weight:600}
+.mv.new{color:#C9971A;font-weight:600}
 @page{size:A4 landscape;margin:0}
 @media print{html,body{background:#fff}
 .page{margin:0;box-shadow:none;break-after:page;-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -3033,14 +3047,21 @@ def _render_pages(charts, A, B, ctx, progress):
 def build_html(A, B, ctx, out_path, progress=None):
     sel, periods = ctx["sel"], ctx["periods"]
     charts_a, charts_b = chart_registry(ctx)
+    ctx["cid_of"] = {getattr(fn, "__name__", ""): cid for cid, _, _, fn in charts_a + charts_b}
     pages_a = _render_pages(charts_a, A, B, ctx, progress)
     pages_b = _render_pages(charts_b, A, B, ctx, progress)
+    # the album opens straight into the charts; contents, how-to and «что изменилось» close it
+    tail = [x for x in pages_a if x[0] == "A00"]
+    pages_a = [x for x in pages_a if x[0] != "A00"]
 
     stamp = dt.datetime.now().strftime("%d.%m.%Y %H:%M")
     footer = f"{BANK} · {TITLE} · {plabel_full(sel)} · сформировано {stamp}"
     sec_a = f"A · Динамика {plabel(periods[0])} — {plabel(periods[-1])}"
     sec_b = f"B · Структура на {plabel_full(sel)}"
-    first_chart_page = 4
+    first_chart_page = 2
+    n_body = len(pages_a) + len(pages_b)
+    p_contents, p_howto = first_chart_page + n_body, first_chart_page + n_body + 1
+    p_tail = p_howto + 1
 
     # cover ---------------------------------------------------------------
     kp = _kpis(A, B, sel)
@@ -3060,7 +3081,7 @@ def build_html(A, B, ctx, out_path, progress=None):
                 if LABEL_BY_REPORT_DATE else "") + f"</div><div class='kpis'>{kpi}</div>"
              f"<div class='headline'><h3>Главное на {plabel_full(sel)}</h3><ul>{head}</ul></div>"
              f"<footer class='pf'><span>Наведите курсор на показатель — появится объяснение. "
-             f"Под значением: изменение за месяц и за год; красным — ухудшение, зелёным — улучшение.</span>"
+             f"Под значением: изменение за месяц и за год; красным — ухудшение, тёмно-жёлтым — улучшение. Содержание — в конце.</span>"
              f"<span>стр. 1</span></footer></section>")
 
     # contents --------------------------------------------------------------
@@ -3070,15 +3091,19 @@ def build_html(A, B, ctx, out_path, progress=None):
     contents = (f"<section class='page' id='contents'><header class='ph'><div class='ph-l'><span class='cid'>≡</span>"
                 f"<h2>Содержание</h2></div></header><div class='toc'>"
                 f"<h3>{_e(sec_a)}</h3>{toc(pages_a, first_chart_page)}"
-                f"<h3>{_e(sec_b)}</h3>{toc(pages_b, first_chart_page + len(pages_a))}</div>"
-                f"<footer class='pf'><span>{_e(footer)}</span><span>стр. 2</span></footer></section>")
+                f"<h3>{_e(sec_b)}</h3>{toc(pages_b, first_chart_page + len(pages_a))}"
+                f"<h3>Приложение</h3><a href='#contents'><span class='n'>≡</span><span>Содержание</span><span class='p'>{p_contents}</span></a>"
+                f"<a href='#howto'><span class='n'>?</span><span>Как читать отчёт</span><span class='p'>{p_howto}</span></a>"
+                f"{toc(tail, p_tail)}</div>"
+                f"<footer class='pf'><span>{_e(footer)}</span><span>стр. {p_contents}</span></footer></section>")
 
     # how to read -----------------------------------------------------------
     deps = ctx.get("departments", [])
     k1 = _legend_html(_dept_legend(deps))
     k2 = _legend_html([(COLORS["npl"], "Красный", "NPL, дефолты — всё, что плохо", "bar"),
                        (COLORS["watch"], "Оранжевый", f"зона риска {_wz()}, ранние сигналы", "bar"),
-                       (COLORS["good"], "Зелёный", "выдачи, выздоровление, покрытие", "bar"),
+                       (COLORS["good"], "Жёлтый — Kapitalbank", "главный цвет: kk, выдачи, сум, крупнейший продукт, «хорошо»", "bar"),
+                       (COLORS["char"], "Тёмный / золотой / серый", "второй, третий, четвёртый ряд", "bar"),
                        (COLORS["neutral"], "Серый", "погашения, «прочие», фон", "bar"),
                        (COLORS["ink"], "Чёрный", "итоги и банк целиком", "line")])
     k3 = _legend_html([(BUCKET_COLORS[b], lab(b), "корзина просрочки", "bar") for b in BUCKET_ORDER
@@ -3095,7 +3120,7 @@ def build_html(A, B, ctx, out_path, progress=None):
              f"Суммы — в {UNIT_NAME}.</p><h4 style='font-size:11px;letter-spacing:.2em;text-transform:uppercase;"
              f"color:#C9971A;margin:14px 0 4px'>Словарь</h4><dl class='gl'>{gl}</dl>"
              f"<footer class='pf'><span>Печать: Ctrl+P → A4, альбомная, поля «Нет», «Фон» включён.</span>"
-             f"<span>стр. 3</span></footer></section>")
+             f"<span>стр. {p_howto}</span></footer></section>")
 
     # chart pages -------------------------------------------------------------
     body, pno = [], first_chart_page
@@ -3106,6 +3131,8 @@ def build_html(A, B, ctx, out_path, progress=None):
             unit = "" if kind in ("КОГОРТЫ",) else UNIT_NAME
             body.append(_page_html(pg, cid, kind, section, unit, footer, pno, False))
             pno += 1
+    tail_html = "".join(_page_html(pg, cid, kind, "Приложение", UNIT_NAME, footer, p_tail + i, False)
+                        for i, (cid, kind, pg) in enumerate(tail))
 
     try:
         from plotly.offline import get_plotlyjs_version
@@ -3116,9 +3143,9 @@ def build_html(A, B, ctx, out_path, progress=None):
            f"<meta name='viewport' content='width=device-width,initial-scale=1'>"
            f"<title>{_e(TITLE)} — {plabel_full(sel)}</title>"
            f"<script src='https://cdn.plot.ly/plotly-{pver}.min.js'></script>"
-           f"<style>{CSS}</style></head><body>{cover}{contents}{howto}{''.join(body)}</body></html>")
+           f"<style>{CSS}</style></head><body>{cover}{''.join(body)}{contents}{howto}{tail_html}</body></html>")
     Path(out_path).write_text(doc, encoding="utf-8")
-    return len(pages_a) + len(pages_b)
+    return n_body + len(tail)
 
 
 # ==========================================================================
