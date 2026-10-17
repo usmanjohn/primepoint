@@ -1,0 +1,215 @@
+{
+ "id": "2026-10-17-hayot-sababsiz-tirbandlik",
+ "number": 52,
+ "for": "Inom",
+ "date": "2026-10-17",
+ "series": "Hayotdagi matematika",
+ "title_uz": "Sababsiz tirbandlik",
+ "concept_uz": "Sardor tirbandlikda oʻn daqiqa turadi, yoʻl ochilsa — oldinda hech narsa yoʻq: avariya ham, svetofor ham. 2008-yilgi yapon tajribasi sirni ochadi: aylana yoʻlda 22 ta mashina, hech qanday toʻsiq yoʻq, lekin kichik tormozlar kuchayib, tirbandlik oʻz-oʻzidan tugʻiladi va orqaga yuradi. Oxirida tomoshabinga hisob savoli.",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_30_36.py (story 29)"
+ ],
+ "facts": [
+  {
+   "claim": "Ba'zan tirbandlikdan keyin yoʻl ochiladi, oldinda avariya, taʼmirlash yoki svetofor yoʻq",
+   "source": "corner/management/commands/_stories_matematika_olami_30_36.py (story 29) body"
+  },
+  {
+   "claim": "2008-yilda yaponiyalik olimlar 230 metrli aylana trassaga 22 ta mashina qoʻyib, bir xil tezlik va masofada yurishni soʻrashgan",
+   "source": "corner/management/commands/_stories_matematika_olami_30_36.py (story 29) body; FAKTLAR: Sugiyama tajribasi (Yaponiya, 2008)"
+  },
+  {
+   "claim": "Bir haydovchi biroz sekinlashgan, orqadagilar kechroq sezib kuchliroq tormoz bergan, bir necha mashinadan keyin kimdir toʻxtagan",
+   "source": "corner/management/commands/_stories_matematika_olami_30_36.py (story 29) body"
+  },
+  {
+   "claim": "Tiqilinch joy orqaga qarab taxminan soatiga 20 km tezlikda siljigan",
+   "source": "corner/management/commands/_stories_matematika_olami_30_36.py (story 29) body"
+  },
+  {
+   "claim": "Stadion toʻlqini: odamlar joyida, toʻlqin yuradi",
+   "source": "corner/management/commands/_stories_matematika_olami_30_36.py (story 29) body"
+  },
+  {
+   "claim": "Har biri 2 marta kuchliroq tormoz bersa: 1, 2, 4, 8 — toʻrtinchisi 8 km/soat",
+   "source": "corner/management/commands/_stories_matematika_olami_30_36.py (story 29) question 2 (answer 8 km/soat)"
+  },
+  {
+   "claim": "Yetarli masofa saqlansa, toʻlqin shu haydovchida toʻxtaydi",
+   "source": "corner/management/commands/_stories_matematika_olami_30_36.py (story 29) body, last paragraph"
+  }
+ ],
+ "style_line": "Cinematic photoreal, modern Central Asian city, late golden-hour light, warm amber and teal tones, glowing red brake lights, soft film grain, 35mm look, light comic mood. No text, no letters, no logos, no number plates, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: tirbandlik",
+   "prompt": "Vertical 9:16 wide shot of a broad six-lane avenue in Tashkent at golden hour: a long jam of ordinary unbranded sedans and small vans in all lanes, red brake lights glowing, plane trees and modern apartment blocks along the road, a pedestrian bridge in the distance. No people visible outside the cars."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Sardor",
+   "prompt": "Vertical 9:16 waist-up portrait of an Uzbek man about thirty-five, short black hair, light stubble, expressive friendly face, ROUND BLACK-RIMMED GLASSES and a GREEN CHECKED SHIRT with rolled sleeves, sitting in the driver's seat of a plain white sedan, hands on the steering wheel, soft evening light through the windscreen."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Sardor rulda",
+   "from": [
+    "R1",
+    "R2"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot from the back seat: Sardor in his round glasses and green checked shirt at the wheel of the white sedan, drumming his fingers on the wheel; through the windscreen the endless jam of red brake lights on the avenue. Same face, same light."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Aylana trassa",
+   "prompt": "Vertical 9:16 high top-down drone view of a flat circular test track painted on a wide empty concrete airfield, a single ring road about 230 metres around, with exactly 22 identical small white cars spaced evenly all around the ring, all moving the same way, clear daylight, long soft shadows, a few cones on the grass inside the ring."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Trassadagi toʻlqin",
+   "from": "R4",
+   "prompt": "Change the scene: the same circular track and the same 22 white cars from the same drone view, but now on one part of the ring about seven cars are bunched tightly together with brake lights on, nearly stopped, while the rest of the ring has wide even gaps. Exactly 22 cars. Same light."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Stadion toʻlqini",
+   "prompt": "Vertical 9:16 wide shot of a packed football stadium stand at dusk, thousands of fans in plain coloured clothes doing a Mexican wave: one band of people standing with arms up, people on either side sitting. Floodlights on, no logos, no flags with writing, no scoreboard text."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Masofa saqlab",
+   "from": "R3",
+   "prompt": "Change the scene: the same back-seat view of Sardor at the wheel, now relaxed and smiling, driving smoothly on the same avenue with a long empty gap of road ahead of his car before the next car, gentle traffic moving freely. Same face, same glasses and green checked shirt, same golden light."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Yana tirbandlik",
+   "method": "Frames to Video",
+   "start": "R3",
+   "prompt": "Fast cascade of red brake lights rushing toward the camera down the jammed avenue, then cut inside: Sardor slams the brake, the car jerks, a horn blares behind him, he throws up his hands. Audio: tyres squeal softly, horns, engine idle. Sardor says in Uzbek with a lively, warm Uzbek male voice, about thirty-five, a slightly impatient city-driver tone: \"Yana tirbandlik! Oldinda nima bo'ldi ekan?\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Sardor",
+     "text": "Yana tirbandlik! Oldinda nima boʻldi ekan?"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "title_uz": "Hech narsa yoʻq",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "prompt": "Ten minutes later the jam suddenly melts; Sardor's white sedan speeds up along the open avenue and he cranes his neck left and right, searching for a crash, roadworks or a traffic light, and finds nothing at all. Comic disbelief. Audio: engine rising, wind. Sardor says in Uzbek with a lively, warm Uzbek male voice, about thirty-five, a slightly impatient city-driver tone: \"Hech narsa yo'q-ku! Unda nega turdik?\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Sardor",
+     "text": "Hech narsa yoʻq-ku! Unda nega turdik?"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "title_uz": "Tajriba",
+   "method": "Frames to Video",
+   "start": "R4",
+   "prompt": "Slow drone descent over the circular test track as the 22 white cars roll around the ring evenly spaced, like a calm clock. Audio: soft hum of engines, gentle documentary music. An off-screen narrator says in Uzbek with a calm, deep Uzbek male documentary voice, about fifty: \"2008-yil, Yaponiya. Olimlar 230 metrli aylana yo'lga 22 ta mashina qo'yishdi.\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "2008-yil, Yaponiya. Olimlar 230 metrli aylana yoʻlga 22 ta mashina qoʻyishdi."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "title_uz": "Topshiriq",
+   "method": "Extend",
+   "extends": "3",
+   "prompt": "Continue: the drone circles slowly above the ring while the cars keep perfect even gaps, round and round. Audio: steady engine hum, a quiet ticking clock. An off-screen narrator says in Uzbek with a calm, deep Uzbek male documentary voice, about fifty: \"Topshiriq oddiy: bir xil tezlikda, bir xil masofada yuring.\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Topshiriq oddiy: bir xil tezlikda, bir xil masofada yuring."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "title_uz": "Kichik tormoz",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R4"
+   ],
+   "prompt": "Low camera along the ring at bumper height: one white car eases off for a moment and its brake lights blink; the car behind brakes harder, the next one harder still, a chain of brake lights flaring brighter and brighter down the line. Audio: soft brake squeaks growing louder. An off-screen narrator says in Uzbek with a calm, deep Uzbek male documentary voice, about fifty: \"Bittasi ozgina sekinladi. Orqadagisi kuchliroq tormoz berdi, keyingisi yanada kuchliroq.\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Bittasi ozgina sekinladi. Orqadagisi kuchliroq tormoz berdi, keyingisi yanada kuchliroq."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "title_uz": "Toʻlqin orqaga yuradi",
+   "method": "Frames to Video",
+   "start": "R5",
+   "prompt": "Top-down drone view: the tight knot of stopped cars sits on the ring; cars leave the front of the knot and drive on while new cars join it from behind, so the knot itself slowly creeps BACKWARD around the ring, against the direction the cars drive. Audio: idling engines, a low musical sting. An off-screen narrator says in Uzbek with a calm, deep Uzbek male documentary voice, about fifty: \"Mana, sababsiz tirbandlik! Eng qizig'i — u orqaga qarab yuradi.\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Mana, sababsiz tirbandlik! Eng qizigʻi — u orqaga qarab yuradi."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "title_uz": "Stadion",
+   "method": "Frames to Video",
+   "start": "R6",
+   "prompt": "The wave rolls along the packed stadium stand: each person only stands up and sits down in place, yet the wave travels all the way around the stadium. Audio: crowd roaring as the wave passes. An off-screen narrator says in Uzbek with a calm, deep Uzbek male documentary voice, about fifty: \"Xuddi stadiondagi to'lqin: odamlar joyida, to'lqin esa yuradi.\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Xuddi stadiondagi toʻlqin: odamlar joyida, toʻlqin esa yuradi."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "title_uz": "Masofa",
+   "method": "Frames to Video",
+   "start": "R7",
+   "prompt": "Sardor drives calmly with a long gap ahead; the car in front brakes, and instead of slamming his brake he just lifts his foot off the gas a little and glides; behind him the traffic flows on smoothly. He nods, pleased with himself. Audio: smooth engine, soft music. Sardor says in Uzbek with a lively, warm Uzbek male voice, about thirty-five, a slightly impatient city-driver tone: \"Oldingi mashinaga yopishmayman. Masofa bo'lsa — to'lqin menda to'xtaydi.\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Sardor",
+     "text": "Oldingi mashinaga yopishmayman. Masofa boʻlsa — toʻlqin menda toʻxtaydi."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "title_uz": "Savol",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "prompt": "Medium close-up: Sardor parked at the roadside, turns to look straight into the camera, raises one finger with a sly half-smile, and holds the look at the end. Audio: distant city traffic, one soft horn. Sardor says in Uzbek with a lively, warm Uzbek male voice, about thirty-five, a slightly impatient city-driver tone: \"Har biri 2 marta kuchliroq tormoz bersa: birinchisi 1 km/soat… to'rtinchisi-chi? Izohda yozing!\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Sardor",
+     "text": "Har biri 2 marta kuchliroq tormoz bersa: birinchisi 1 km/soat… toʻrtinchisi-chi? Izohda yozing!"
+    }
+   ]
+  }
+ ],
+ "post_text_uz": "Oldinda avariya yoʻq, svetofor yoʻq — tirbandlik esa bor. 2008-yilda Yaponiyada 22 ta mashina aylana yoʻlda buni isbotladi: kichik tormoz kuchayib, toʻlqinga aylanadi. Har biri 2 marta kuchliroq tormoz bersa, birinchisi 1 km/soat sekinlashsa — toʻrtinchisi necha km/soat? Izohda yozing! #HayotdagiMatematika #tirbandlik #matematika #Powerty"
+}

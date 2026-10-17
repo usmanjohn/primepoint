@@ -1,0 +1,232 @@
+{
+ "id": "2026-10-17-hayot-notogri-bino",
+ "number": 53,
+ "for": "Jonibek",
+ "date": "2026-10-17",
+ "series": "Hayot hikoyasi",
+ "title_uz": "Notoʻgʻri bino",
+ "concept_uz": "Jasur hayotidagi eng muhim suhbatga erta keladi — lekin bir koʻchadagi nomi deyarli bir xil ikki binodan notoʻgʻrisiga kirib qoladi. Olti daqiqada yugurib boradi, suhbat barbod boʻladi. Burilish: ikki kundan keyin oʻsha «notoʻgʻri» binodagi kichik studiyadan qoʻngʻiroq — va u yerda besh yildan beri ishlaydi.",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "corner/management/commands/_stories_life_1_6.py (story 3)"
+ ],
+ "facts": [
+  {
+   "claim": "Hikoyachi hayotidagi eng muhim suhbatga yigirma daqiqa erta kelgan",
+   "source": "corner/management/commands/_stories_life_1_6.py (story 3) body"
+  },
+  {
+   "claim": "Oʻn toʻrtinchi qavatdagi qabul xodimi bu binoda bunday kompaniya yoʻqligini aytgan",
+   "source": "corner/management/commands/_stories_life_1_6.py (story 3) body"
+  },
+  {
+   "claim": "Bir koʻchada, uch koʻcha (three blocks) narida deyarli bir xil nomli ikkita bino boʻlgan",
+   "source": "corner/management/commands/_stories_life_1_6.py (story 3) body"
+  },
+  {
+   "claim": "Xatoni anglaganda toʻgʻri binoga yetish uchun roppa-rosa olti daqiqa qolgan, u butun yoʻlni yugurgan",
+   "source": "corner/management/commands/_stories_life_1_6.py (story 3) body"
+  },
+  {
+   "claim": "Suhbat falokat boʻlgan: oddiy savollarda duduqlangan, kechikkani uchun uzr soʻrashdan toʻxtay olmagan",
+   "source": "corner/management/commands/_stories_life_1_6.py (story 3) body"
+  },
+  {
+   "claim": "Ikki kundan keyin notoʻgʻri binoning oʻn toʻrtinchi qavatidagi kichik dizayn studiyasidan qoʻngʻiroq boʻlgan; qabul xodimi uni menejerga aytgan, menejer aynan shunday tajribali odam qidirayotgan, suhbat-imtihonsiz gaplashishga chaqirgan",
+   "source": "corner/management/commands/_stories_life_1_6.py (story 3) body"
+  },
+  {
+   "claim": "Besh yildan keyin ham u oʻsha studiyada ishlaydi; adashib, aynan kerakli joyga kelgan",
+   "source": "corner/management/commands/_stories_life_1_6.py (story 3) body"
+  }
+ ],
+ "style_line": "Cinematic photoreal drama, bright modern city morning, glass towers, clean cool blue and warm wood tones, soft film grain, 35mm look, gentle hopeful mood with light comedy. No text, no letters, no logos, no signage, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: ikki shisha bino",
+   "prompt": "Vertical 9:16 wide street-level shot of a busy downtown avenue on a sunny morning: two tall, nearly identical blue-glass office towers stand on the same side of the street, about three blocks apart, the far one smaller in the distance; wide sidewalks, young trees, people walking to work. Blank facades, no signs."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Jasur",
+   "prompt": "Vertical 9:16 full-body portrait of an Uzbek young man about twenty-five, neat short dark hair, clean-shaven, earnest slightly nervous face, a NAVY SUIT a little too big for him, a white shirt and a BRIGHT RED TIE, holding a BROWN LEATHER FOLDER to his chest, standing on a city sidewalk in morning light."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Qabul xodimi",
+   "prompt": "Vertical 9:16 waist-up portrait of an Uzbek woman about thirty, kind attentive face, dark hair in a low bun, a TEAL BLAZER, a YELLOW PENCIL tucked behind her right ear, standing behind a white reception desk in a bright glass office lobby, a potted plant beside her."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Qabulxonada",
+   "from": [
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot in the bright fourteenth-floor glass lobby: the young man in the navy suit and red tie stands at the reception desk holding out his phone, smiling hopefully; the receptionist in the teal blazer with the yellow pencil looks at the phone with a puzzled, apologetic frown. Same faces, morning light."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Yugurish",
+   "from": [
+    "R1",
+    "R2"
+   ],
+   "prompt": "Change the scene: the young man in the navy suit runs flat out along the sunny sidewalk toward the farther glass tower, red tie flying over his shoulder, brown folder clamped under his arm, people stepping aside. Low tracking angle, motion blur on the background. Same face, 9:16."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Suhbat xonasi",
+   "from": "R2",
+   "prompt": "Change the scene: a cold grey meeting room with a long table; the young man in the navy suit and red tie sits alone on one side, out of breath, hair messy, sweat on his forehead, shirt clinging; across the table two stern interviewers in dark suits, a middle-aged man and a woman, look at him over their papers. Same face, 9:16."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Uydagi qoʻngʻiroq",
+   "from": "R2",
+   "prompt": "Change the scene: two days later, a small cosy home kitchen in the morning; the young man in a plain grey T-shirt, same face, sits glumly at a wooden table with a cup of tea; his phone on the table lights up and vibrates. Window light, 9:16."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Kichik studiya",
+   "from": [
+    "R2",
+    "R3"
+   ],
+   "prompt": "Change the scene: five years later, a small warm design studio with big windows over the city, plants, wooden desks, sketches and colour swatches pinned on a board; the young man, now a little older and confident, same face, a RED TIE loosened over a casual shirt, sits at his desk and turns to the camera with a calm smile; in the background the receptionist in the teal blazer with the yellow pencil waves at him. 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Yigirma daqiqa erta",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "prompt": "Elevator DING: the doors slide open and the young man in the navy suit and red tie steps out, checks his watch, straightens his tie, and grins with confidence. Audio: elevator chime, footsteps on glossy floor. An off-screen young man says in Uzbek with a warm, slightly nervous young Uzbek male voice, about twenty-five, a calm storyteller tone: \"Hayotimdagi eng muhim suhbatga yigirma daqiqa erta keldim.\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Jasur (kadr ortida)",
+     "text": "Hayotimdagi eng muhim suhbatga yigirma daqiqa erta keldim."
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "title_uz": "Bunday kompaniya yoʻq",
+   "method": "Frames to Video",
+   "start": "R4",
+   "prompt": "The receptionist glances at his phone screen, then back at him, and gently shakes her head; his smile freezes. Audio: quiet lobby hum, a phone ringing far away. The receptionist says in Uzbek with a polite, clear young Uzbek female voice, about thirty: \"Kechirasiz, bu binoda bunday kompaniya yo'q.\" Jasur says in Uzbek with a warm, slightly nervous young Uzbek male voice, about twenty-five: \"Qanday qilib?..\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Qabul xodimi",
+     "text": "Kechirasiz, bu binoda bunday kompaniya yoʻq."
+    },
+    {
+     "who": "Jasur",
+     "text": "Qanday qilib?.."
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "title_uz": "Xato",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "prompt": "On the sidewalk outside, the young man stares at his phone, then slowly looks up and down the street and spots a second, almost identical glass tower three blocks away; his face falls, then panics. Audio: city traffic, a sharp intake of breath. An off-screen young man says in Uzbek with a warm, slightly nervous young Uzbek male voice, about twenty-five, a calm storyteller tone: \"Bir ko'chada nomi deyarli bir xil ikkita bino bor ekan — uch ko'cha narida.\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Jasur (kadr ortida)",
+     "text": "Bir koʻchada nomi deyarli bir xil ikkita bino bor ekan — uch koʻcha narida."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "title_uz": "Olti daqiqa",
+   "method": "Frames to Video",
+   "start": "R5",
+   "prompt": "He sprints along the sidewalk, dodging people, red tie flying, folder under his arm, glancing at his watch as he runs. Comic urgency. Audio: pounding footsteps, heavy breathing, a ticking clock. Jasur says in Uzbek with a warm, slightly nervous young Uzbek male voice, about twenty-five, gasping: \"Olti daqiqa! Olti daqiqa!\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Jasur",
+     "text": "Olti daqiqa! Olti daqiqa!"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "title_uz": "Falokat",
+   "method": "Frames to Video",
+   "start": "R6",
+   "prompt": "He tries to answer, stumbles over his words, wipes his forehead and keeps apologising; the two interviewers exchange a cool glance and write something down. Audio: clock ticking loudly, pen scratching. Jasur says in Uzbek with a warm, slightly nervous young Uzbek male voice, about twenty-five, stammering: \"Kechirasiz… kechikkanim uchun… yana kechirasiz.\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Jasur",
+     "text": "Kechirasiz… kechikkanim uchun… yana kechirasiz."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "title_uz": "Umid soʻndi",
+   "method": "Extend",
+   "extends": "5",
+   "prompt": "Continue: he walks out of the building into the afternoon, loosens the red tie and sits down heavily on a bench, folder on his knees, looking at the ground. Audio: street noise, a distant bird. An off-screen young man says in Uzbek with a warm, slightly nervous young Uzbek male voice, about twenty-five, a calm storyteller tone: \"Yagona imkoniyatimni boy berdim, deb o'yladim.\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Jasur (kadr ortida)",
+     "text": "Yagona imkoniyatimni boy berdim, deb oʻyladim."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "title_uz": "Qoʻngʻiroq",
+   "method": "Frames to Video",
+   "start": "R7",
+   "prompt": "The phone buzzes on the table; he picks it up without hope, listens, and slowly sits up straight, eyes widening. Audio: phone vibrating, tea cup clink, a small speaker voice. A woman's voice on the phone says in Uzbek with a friendly, confident Uzbek female voice, about fifty: \"Assalomu alaykum! Biz o'sha binoning o'n to'rtinchi qavatidagi kichik dizayn studiyasimiz.\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Menejer (telefonda)",
+     "text": "Assalomu alaykum! Biz oʻsha binoning oʻn toʻrtinchi qavatidagi kichik dizayn studiyasimiz."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "title_uz": "Taklif",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R7"
+   ],
+   "prompt": "Close-up of his face with the phone at his ear as the voice speaks; a disbelieving smile spreads across his face and he covers his mouth with his free hand. Audio: kitchen ambience, his small surprised laugh. A woman's voice on the phone says in Uzbek with a friendly, confident Uzbek female voice, about fifty: \"Bizga aynan siz kabi odam kerak. Kelib, shunchaki gaplashamizmi?\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Menejer (telefonda)",
+     "text": "Bizga aynan siz kabi odam kerak. Kelib, shunchaki gaplashamizmi?"
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "title_uz": "Besh yildan keyin",
+   "method": "Frames to Video",
+   "start": "R8",
+   "prompt": "Slow push-in on him at his desk in the sunny studio; he waves back at the receptionist, then looks into the camera with a warm smile and holds the look at the end. Audio: soft keyboard clicks, gentle piano. Jasur says in Uzbek with a warm, slightly nervous young Uzbek male voice, about twenty-five, calm and happy: \"Besh yildan beri shu yerdaman. Adashib, aynan kerakli joyga kelgan ekanman. Sizda ham shunday bo'lganmi?\" No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Jasur",
+     "text": "Besh yildan beri shu yerdaman. Adashib, aynan kerakli joyga kelgan ekanman. Sizda ham shunday boʻlganmi?"
+    }
+   ]
+  }
+ ],
+ "post_text_uz": "U eng muhim suhbatga erta keldi — lekin notoʻgʻri binoga. Suhbat barbod boʻldi. Ikki kundan keyin esa oʻsha «notoʻgʻri» binodan qoʻngʻiroq keldi… Baʼzan xato bizni aynan kerakli joyga olib boradi. Sizda ham shunday boʻlganmi? Izohda yozing. #HayotHikoyasi #taqdir #ish #Powerty"
+}
