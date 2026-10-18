@@ -1,0 +1,227 @@
+{
+ "id": "2026-10-18-kashfiyot-ada-dastur",
+ "number": 54,
+ "for": "Inom",
+ "date": "2026-10-18",
+ "series": "Buyuk kashfiyot",
+ "title_uz": "Hali yoʻq mashina uchun dastur",
+ "concept_uz": "1843-yil, London. Shoir Bayronning qizi Ada Bebbijning hali qurilmagan «Analitik mashina»si haqidagi maqolani tarjima qiladi va unga uch barobar uzun izoh yozadi — ichida qadam-baqadam hisoblash rejasi bor. Burilish: mashina hech qachon qurilmagan, lekin Ada uning kuy ham tuza olishini oldindan koʻrgan.",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_22_29.py (story 13)"
+ ],
+ "facts": [
+  {
+   "claim": "Ada 1815-yilda Londonda tugʻilgan, Lord Bayronning qizi; Bayron bir necha haftadan keyin oilani tashlab ketgan",
+   "source": "_stories_matematika_olami_22_29.py story 13"
+  },
+  {
+   "claim": "Onasi unga qatʼiy matematika oʻrgatgan",
+   "source": "story 13"
+  },
+  {
+   "claim": "17 yoshida Charlz Bebbij bilan tanishgan; mashina tishli gʻildiraklardan iborat, perfokartalar bilan boshqarilishi rejalashtirilgan, nomi «Analitik mashina»",
+   "source": "story 13"
+  },
+  {
+   "claim": "1843-yilda italyan muhandisining fransuzcha maqolasini tarjima qilgan; izohlari asl maqoladan uch barobar uzun",
+   "source": "story 13"
+  },
+  {
+   "claim": "«G» izohida qadam-baqadam hisoblash rejasi, takrorlanadigan qadamlar bilan — birinchi dasturlardan biri",
+   "source": "story 13"
+  },
+  {
+   "claim": "Mashina hech qachon qurilmagan",
+   "source": "story 13"
+  },
+  {
+   "claim": "Ada mashina musiqa qoidalari belgilar bilan yozilsa kuy ham tuza olishi mumkinligini yozgan",
+   "source": "story 13"
+  },
+  {
+   "claim": "1852-yilda 36 yoshida vafot etgan; 1980-yilda dasturlash tili «Ada» deb nomlangan",
+   "source": "story 13"
+  }
+ ],
+ "style_line": "Cinematic photoreal period drama, 1840s London, warm candlelight and grey window daylight, rich dark wood and brass, shallow depth of field, 35mm film grain, respectful historical reconstruction. No text, no letters, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: Adaning xonasi",
+   "prompt": "Vertical 9:16 interior of an 1840s London study at evening: a large writing desk by a tall rain-streaked window, a brass candle lamp, quill and inkwell, stacks of blank paper, a small upright piano against the wall, bookshelves, a green velvet chair. No people. Any papers and book spines are blank, without writing."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Ada",
+   "prompt": "Vertical 9:16 waist-up portrait of an elegant English woman of about 27 in the 1840s, dark brown hair parted in the middle and gathered into soft ringlets over the ears, intelligent grey eyes, slight knowing smile, deep sapphire-blue silk dress with a white lace collar, and a small round silver brooch at her throat (her continuity mark), seated at a writing desk holding a quill. Candlelight."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Kichkina Ada va onasi",
+   "from": "R2",
+   "prompt": "Transform this woman into herself as a 10-year-old girl, same face shape and grey eyes, dark hair in ringlets, a plain pale-blue girl's dress, sitting at a schoolroom table with a slate. Beside her stands her strict mother, a slim woman of about 40 in a dark grey high-necked dress, hair in a tight bun, pointing at the slate with a pencil. Daylight from a window, 9:16. The slate shows only simple chalk dots and lines, no letters or numbers."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Bebbij",
+   "prompt": "Vertical 9:16 waist-up portrait of an English gentleman inventor of about 50 in the 1840s, thinning grey hair, bushy grey side-whiskers, heavy eyebrows, dark frock coat, high white collar with a black cravat, a long silver watch chain across his waistcoat (his continuity mark), holding a small brass gear wheel between two fingers. Warm study light."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Ada va Bebbij chizmalar ustida",
+   "from": [
+    "R1",
+    "R2",
+    "R4"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot in the same study: the woman and the gentleman lean over the desk side by side, studying large engineering drawings of a machine made of stacked columns of brass gear wheels, with a small stack of punched cards beside the drawings. The drawings contain only lines and circles, no writing. Same faces, same clothes, candlelight."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Izohlar uyumi",
+   "from": [
+    "R1",
+    "R2"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot at night: the woman sits at the desk, tired but glowing with excitement, beside a thin pamphlet on the left and, on the right, a pile of her handwritten pages three times taller than the pamphlet. The candle has burned low. Handwriting is blurred and unreadable. Same face, same dress and brooch."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Ada pianino oldida",
+   "from": [
+    "R1",
+    "R2"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot: the woman sits at the small upright piano in the same study, one hand resting on the keys, turning her head toward the desk full of her papers, a thoughtful half-smile. Same face, same dress and brooch, candlelight."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Tun, sham",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "1843-yil, London. Bu ayol hali yoʻq mashina uchun dastur yozyapti."
+    }
+   ],
+   "prompt": "Fast push-in through rain on the window to the woman writing furiously by candlelight; the quill scratches loudly, a clock ticks, a distant rumble like heavy brass gears turning. An off-screen narrator says in Uzbek with a calm, warm, deep male storyteller voice: \"1843-yil, London. Bu ayol hali yo'q mashina uchun dastur yozyapti.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Qatʼiy ona",
+   "method": "Frames to Video",
+   "start": "R3",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "U shoir Bayronning qizi edi. Onasi unga sheʼr emas, matematika oʻrgatdi."
+    }
+   ],
+   "prompt": "The little girl looks longingly out of the window at the garden; her mother taps the slate with the pencil and the girl turns back to it with a sigh, then slowly starts to smile as she works. Audio: chalk squeaks, birdsong outside. An off-screen narrator says in Uzbek with a calm, warm, deep male storyteller voice: \"U shoir Bayronning qizi edi. Onasi unga she'r emas, matematika o'rgatdi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Bebbij",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R4",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Bebbij",
+     "text": "Bu mashina oʻzi hisoblaydi. Uni teshikli kartochkalar boshqaradi."
+    }
+   ],
+   "prompt": "Medium shot. The gentleman turns the small brass gear wheel in the candlelight and holds it out proudly toward the camera, eyes shining. Audio: a soft metallic click. He says in Uzbek with a gruff, kindly, slightly hoarse older male voice: \"Bu mashina o'zi hisoblaydi. Uni teshikli kartochkalar boshqaradi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Chizmalar",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Ada",
+     "text": "Men maqolani faqat tarjima qilmayman. Izoh ham yozaman."
+    }
+   ],
+   "prompt": "The woman traces a column of gears on the drawing with her finger, then looks up at the gentleman with a bold idea. He raises his bushy eyebrows. Audio: paper rustle, fire crackle. She says in Uzbek with a clear, bright, confident young English woman's voice speaking Uzbek: \"Men maqolani faqat tarjima qilmayman. Izoh ham yozaman.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Uch barobar",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Uning izohlari maqolaning oʻzidan uch barobar uzun boʻlib chiqdi."
+    }
+   ],
+   "prompt": "Slow orbit around the desk. The woman places one more handwritten page on top of the tall pile and pats it, then glances at the thin pamphlet beside it and laughs quietly. Audio: pages, a soft laugh, the clock. An off-screen narrator says in Uzbek with a calm, warm, deep male storyteller voice: \"Uning izohlari maqolaning o'zidan uch barobar uzun bo'lib chiqdi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "«G» izohi",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Ada",
+     "text": "Avval shu qadam, keyin mana bu. Bu qismni esa takror-takror bajar."
+    }
+   ],
+   "prompt": "Close-up of the woman writing, her quill moving in short decisive strokes, then circling back up the page to an earlier line. Her lips move as she thinks aloud. Handwriting stays blurred and unreadable. Audio: quill scratches, one gear click for each step. She says in Uzbek with a clear, bright, confident young English woman's voice speaking Uzbek: \"Avval shu qadam, keyin mana bu. Bu qismni esa takror-takror bajar.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Burilish",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Eng qizigʻi: bu mashina hech qachon qurilmadi."
+    }
+   ],
+   "prompt": "The camera slowly pulls back from the drawings to the dark empty corner of the study where the machine should stand: only shadows and dust in the candlelight. The gentleman looks at the empty corner and lowers his head. Audio: the gear rumble fades to silence. An off-screen narrator says in Uzbek with a calm, warm, deep male storyteller voice: \"Eng qizig'i: bu mashina hech qachon qurilmadi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Kuy",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Ada",
+     "text": "Agar musiqa qoidalarini belgilar bilan yozsak, mashina kuy ham tuza oladi."
+    }
+   ],
+   "prompt": "The woman presses two piano keys, listens, then looks at her papers with sudden excitement. Audio: two soft piano notes, then a short simple melody begins to play by itself, mechanical and gentle, like a music box. She says in Uzbek with a clear, bright, confident young English woman's voice speaking Uzbek: \"Agar musiqa qoidalarini belgilar bilan yozsak, mashina kuy ham tuza oladi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 9,
+   "title_uz": "Savol",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2"
+   ],
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Yuz yildan keyin bu gʻoya har bir kompyuterning asosiga aylandi. Siz mashinaga birinchi qanday buyruq berardingiz? Izohda yozing!"
+    }
+   ],
+   "prompt": "Close-up. The woman looks straight into the camera with her knowing smile as the candle flickers; the music-box melody fades. Hold on her look. An off-screen narrator says in Uzbek with a calm, warm, deep male storyteller voice: \"Yuz yildan keyin bu g'oya har bir kompyuterning asosiga aylandi. Siz mashinaga birinchi qanday buyruq berardingiz? Izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "1843-yil. Ada Lavleys hech qachon qurilmagan mashina uchun qadam-baqadam reja yozdi — va mashina bir kun kuy ham tuzishini oldindan koʻrdi. Siz mashinaga birinchi qanday buyruq berardingiz? Izohda yozing. Batafsil — powerty.uz #BuyukKashfiyot #AdaLavleys #dasturlash #matematika #Powerty"
+}

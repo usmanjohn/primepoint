@@ -1,0 +1,191 @@
+{
+ "id": "2026-10-18-nega-fibonachchi-qubba",
+ "number": 55,
+ "for": "Jonibek",
+ "date": "2026-10-18",
+ "series": "Nega shunday?",
+ "title_uz": "Qaragʻay qubbasi sanay oladi",
+ "concept_uz": "Togʻdagi qaragʻayzorda Zarinaning boshiga qubba tushadi. Bobosi spirallarni sanatadi: bir tomonga 8, teskarisiga 13 — ikkalasi ham «har bir son oldingi ikkitasining yigʻindisi» qatoridan. Kungaboqarda esa 34 va 55; sababi goʻzallik emas, joyni tejash.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_08.py (story 17)"
+ ],
+ "facts": [
+  {
+   "claim": "Fibonachchi ketma-ketligi: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89…; har bir son oldingi ikkitasining yigʻindisi",
+   "source": "_stories_matematika_olami_08.py story 17"
+  },
+  {
+   "claim": "Qaragʻay qubbasida spirallar bir tomonga 8, teskari tomonga 13",
+   "source": "story 17"
+  },
+  {
+   "claim": "Kungaboqarda koʻpincha 34 va 55, katta gullarda 55 va 89",
+   "source": "story 17"
+  },
+  {
+   "claim": "Sabab joyni tejash: urugʻlar bir-birini qismay, eng zich joylashadi",
+   "source": "story 17"
+  }
+ ],
+ "style_line": "Premium 3D animated feature film style, soft global illumination, warm late-afternoon mountain light, rich greens and golden yellows, expressive stylised characters, gentle magical-realism mood. No text, no letters, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: togʻdagi qaragʻayzor",
+   "prompt": "Vertical 9:16 wide shot of a sunny mountain pine forest clearing in Central Asia in late afternoon: tall pines, a mossy tree stump in the middle, pine cones scattered on the needles, snowy peaks far behind, golden light beams through the branches. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Bobo",
+   "prompt": "Vertical 9:16 full-body character of a cheerful Uzbek grandfather of about 70, round kind face, short white beard, twinkling eyes, black-and-white embroidered square skullcap (do'ppi), a long dark-green quilted chapan with a folded red waist scarf (his continuity mark), soft leather boots, holding a wooden walking stick, standing in a pine forest clearing."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Zarina",
+   "prompt": "Vertical 9:16 full-body character of a curious Uzbek girl of about 8, big dark eyes, two long black braids tied with bright yellow ribbons (her continuity mark), a colourful ikat-patterned dress over trousers, sneakers, standing in a pine forest clearing looking up."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Qubba yaqindan",
+   "prompt": "Vertical 9:16 macro close-up of one brown pine cone seen straight from its base, held in a small child's palm: its scales clearly form two crossing families of spirals, 8 spirals turning clockwise and 13 turning counter-clockwise, warm forest light."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Bobo va Zarina toʻnka yonida",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot in the same clearing: the grandfather sits on the mossy stump, the girl stands beside him holding a pine cone up to her eye. Same faces, same clothes, golden light."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Toshlar qatori",
+   "from": "R5",
+   "prompt": "Change the scene: on the flat top of the stump now lie small white pebbles arranged in six neat groups in a row from left to right: 1 pebble, 1 pebble, 2 pebbles, 3 pebbles, 5 pebbles, 8 pebbles. Exactly these counts. The grandfather points at the last group with his stick, the girl leans in. Same faces, 9:16."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Kungaboqarzor",
+   "from": [
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached characters into one vertical 9:16 shot in a sunflower field at the edge of the forest at golden hour: huge sunflowers taller than the girl, the grandfather tilts one giant flower head down toward her so its packed seed spirals face the camera. Same faces, same clothes."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Toq!",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Zarina",
+     "text": "Voy! Nega menga otding?"
+    }
+   ],
+   "prompt": "A pine cone drops from a high branch and bonks the girl on the head; she freezes, rubs her head, picks it up and frowns at it. Audio: a woody 'tok', a squirrel chitter, birds. She says in Uzbek with a lively, high, curious little Uzbek girl's voice: \"Voy! Nega menga otding?\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Sir",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Bobo",
+     "text": "Otmadi, qizim. Qubba senga bir sir aytmoqchi. Spirallarini sanab koʻr."
+    }
+   ],
+   "prompt": "The grandfather chuckles on the stump and leans toward the girl, tapping the cone in her hand with one finger. Audio: forest breeze. He says in Uzbek with a warm, slow, gravelly old Uzbek man's voice, smiling: \"Otmadi, qizim. Qubba senga bir sir aytmoqchi. Spirallarini sanab ko'r.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Sakkiz",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Zarina",
+     "text": "Bir, ikki, uch… sakkizta!"
+    }
+   ],
+   "prompt": "Macro shot: a small fingertip slides along the cone, following the spirals that turn one way, one after another; each spiral glows softly gold as it is touched, eight in total. Audio: a soft chime with each spiral. The girl counts off-screen in Uzbek with a lively, high, curious little Uzbek girl's voice: \"Bir, ikki, uch… sakkizta!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Oʻn uch",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Zarina",
+     "text": "Teskari tomonga… oʻn uchta!"
+    }
+   ],
+   "prompt": "Macro shot: the cone turns slightly and the fingertip now follows the spirals turning the OTHER way; each glows soft blue as it is touched, thirteen in total. Audio: chimes, slightly higher. The girl says off-screen in Uzbek with a lively, high, curious little Uzbek girl's voice, surprised: \"Teskari tomonga… o'n uchta!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Qoida",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Bobo",
+     "text": "Bir va bir — ikki. Bir va ikki — uch. Ikki va uch — besh. Har bir son oldingi ikkitasining yigʻindisi."
+    }
+   ],
+   "prompt": "The grandfather taps each pebble group with his stick from left to right; each group gives a soft click as it is touched. The girl's eyes widen. Audio: pebble clicks. He says in Uzbek with a warm, slow, gravelly old Uzbek man's voice, smiling: \"Bir va bir — ikki. Bir va ikki — uch. Ikki va uch — besh. Har bir son oldingi ikkitasining yig'indisi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Kashfiyot",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Zarina",
+     "text": "Besh va sakkiz — oʻn uch! Qubba ham shu qatorda-ku!"
+    }
+   ],
+   "prompt": "The girl looks from the pebbles to the cone in her hand and back, then gasps and jumps up with excitement, holding the cone high. The grandfather laughs and nods. Audio: a bright musical sting. She says in Uzbek with a lively, high, curious little Uzbek girl's voice: \"Besh va sakkiz — o'n uch! Qubba ham shu qatorda-ku!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Kungaboqar",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Bobo",
+     "text": "Kungaboqarda — oʻttiz toʻrt va ellik besh. Sababi — joyni tejash: urugʻlar eng zich joylashadi."
+    }
+   ],
+   "prompt": "Slow push-in on the giant sunflower head; its seeds glow in two sets of crossing spirals, then the camera dives in as if the seeds are spinning out from the centre one by one, packing tightly with no gaps. Audio: soft whoosh, bees. He says in Uzbek with a warm, slow, gravelly old Uzbek man's voice, smiling: \"Kungaboqarda — o'ttiz to'rt va ellik besh. Sababi — joyni tejash: urug'lar eng zich joylashadi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Savol",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3"
+   ],
+   "lines": [
+    {
+     "who": "Zarina",
+     "text": "Siz ham qubba toping va spirallarini sanang. Nechta chiqdi? Izohda yozing!"
+    }
+   ],
+   "prompt": "Close-up: the girl holds the pine cone next to her face and looks straight into the camera with a cheeky grin, yellow ribbons swinging. Hold on her look at the end. Audio: birds, one chime. She says in Uzbek with a lively, high, curious little Uzbek girl's voice: \"Siz ham qubba toping va spirallarini sanang. Nechta chiqdi? Izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Qaragʻay qubbasidagi spirallarni sanab koʻring: bir tomonga 8, teskarisiga 13. Kungaboqarda — 34 va 55. Hammasi bitta qatordan: 1, 1, 2, 3, 5, 8, 13… Sizda nechta chiqdi? Izohda yozing. Batafsil — powerty.uz #NegaShunday #Fibonachchi #tabiat #matematika #Powerty"
+}
