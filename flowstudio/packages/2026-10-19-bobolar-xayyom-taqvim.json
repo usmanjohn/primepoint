@@ -1,0 +1,206 @@
+{
+ "id": "2026-10-19-bobolar-xayyom-taqvim",
+ "number": 56,
+ "for": "Inom",
+ "date": "2026-10-19",
+ "series": "Bobolar sirri",
+ "title_uz": "Shoirning taqvimi",
+ "concept_uz": "Dunyo Umar Xayyomni rubobiylari orqali taniydi, lekin u Samarqandda algebra risolasini yozgan olim edi. 1079-yilda sulton Malikshoh undan yangi taqvim soʻraydi: quyosh yili butun kun emas. Burilish: «har 33 yilda 8 ta kabisa yili» degan oddiy kasr bugungi taqvimimizdan ham aniqroq chiqadi.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_22_29.py (story 5)"
+ ],
+ "facts": [
+  {
+   "claim": "Umar Xayyom 1048–1131 yillarda yashagan, Nishopurda tugʻilgan, rubobiylari bilan mashhur",
+   "source": "corner/management/commands/_stories_matematika_olami_22_29.py (story 5)"
+  },
+  {
+   "claim": "Yigirma yoshlarida Samarqandga kelgan va qozi Abu Tohir homiyligida algebra risolasini yozgan",
+   "source": "corner/management/commands/_stories_matematika_olami_22_29.py (story 5)"
+  },
+  {
+   "claim": "Kub tenglamalarni ikki egri chiziq (aylana va parabola) kesishgan nuqtasi orqali yechgan",
+   "source": "corner/management/commands/_stories_matematika_olami_22_29.py (story 5)"
+  },
+  {
+   "claim": "1079-yilda sulton Malikshoh unga yangi taqvim tuzishni topshirgan",
+   "source": "corner/management/commands/_stories_matematika_olami_22_29.py (story 5)"
+  },
+  {
+   "claim": "Quyosh yili ≈ 365,2422 kun",
+   "source": "corner/management/commands/_stories_matematika_olami_22_29.py (story 5)"
+  },
+  {
+   "claim": "Manbalarga koʻra, har 33 yilda 8 ta kabisa yili: oʻrtacha yil 365 + 8/33 ≈ 365,2424 kun; Jaloliy taqvimi",
+   "source": "corner/management/commands/_stories_matematika_olami_22_29.py (story 5)"
+  },
+  {
+   "claim": "Jaloliy taqvimi ~4300 yilda 1 kun adashadi; Grigorian taqvimi 500 yil keyin paydo boʻlgan va ~3200 yilda 1 kun adashadi",
+   "source": "corner/management/commands/_stories_matematika_olami_22_29.py (story 5)"
+  }
+ ],
+ "style_line": "Cinematic photoreal historical drama, 11th-century Samarkand, warm oil-lamp light and deep lapis-blue night skies, glazed turquoise tiles and ochre mud-brick, 35mm film grain, shallow depth of field, respectful historical reconstruction. No text, no letters, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: Samarqanddagi ilm xonasi",
+   "prompt": "Vertical 9:16 interior of an 11th-century Samarkand scholar's study at night: a low carved wooden reading stand, a floor carpet in red and indigo, scrolls and blank paper sheets, a brass compass and a ruler, a clay oil lamp, an arched window with a carved wooden screen opening onto turquoise-tiled domes under stars. No people. All papers are blank, no writing."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Umar Xayyom",
+   "prompt": "Vertical 9:16 waist-up portrait of a Persian scholar-poet of about 30 in the 11th century, lean thoughtful face, dark eyes, short neat black beard, a cream-white turban, a deep indigo robe with a thin gold border, and one silver ring with a turquoise stone on his right hand (his continuity mark), holding a reed pen. Warm lamplight, soft background."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Xayyom chizma ustida",
+   "from": [
+    "R1",
+    "R2"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot: the scholar kneels at the low reading stand in the same study and, with the brass compass, draws on a large blank sheet one circle and one curved parabola that cross each other at a single point, which he touches with his reed pen. Only lines, no writing. Same face, same turban, robe and ring, lamplight."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Sulton Malikshoh",
+   "prompt": "Vertical 9:16 waist-up portrait of a young Seljuk sultan of about 25 in the 11th century, strong calm face, short dark beard, a tall white turban with a single red jewel, a deep crimson silk robe embroidered with gold vines (his continuity mark), seated on a carved wooden throne with cushions in a palace hall with turquoise tile arches. Respectful historical reconstruction, no real emblem."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Saroyda: sulton va Xayyom",
+   "from": [
+    "R4",
+    "R2"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot in the same palace hall: the sultan on his throne leans forward and gestures to the scholar, who stands before him with a hand on his chest in a respectful bow. Courtiers softly blurred in the background. Same faces and clothes, warm daylight through arches."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Tomda: Xayyom va yulduzlar",
+   "from": "R2",
+   "prompt": "Change the scene: the same scholar stands on a flat mud-brick rooftop in Samarkand at night, holding up a large brass astrolabe toward a sky full of stars, the moon low over turquoise domes. Same face, same turban, robe and turquoise ring, 9:16."
+  },
+  {
+   "id": "R7",
+   "name_uz": "33 ta tosh",
+   "from": [
+    "R1",
+    "R2"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot: the scholar kneels on the carpet of the same study beside a long curving row of small grey river pebbles laid out on the floor; some of the pebbles in the row are bright white, spread out at intervals. He places one more white pebble with his ringed hand and looks up with a quiet smile. No writing, no numbers. Same face and clothes, lamplight."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Shoir… yoki olim?",
+   "method": "Frames to Video",
+   "start": "R3",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Dunyo uni shoir deb biladi. Aslida u bugungi taqvimimizdan ham aniqroq taqvim tuzgan."
+    }
+   ],
+   "prompt": "Fast push-in through the carved window screen to the scholar writing by lamplight; a gust makes the flame flare, his reed pen scratches loudly, then he looks up sharply as if he heard a question. Audio: night wind, pen scratch, one deep drum hit on the turn. An off-screen narrator says in Uzbek with a calm, warm, deep male storyteller voice: \"Dunyo uni shoir deb biladi. Aslida u bugungi taqvimimizdan ham aniqroq taqvim tuzgan.\" Lip-sync: no one on screen speaks, the scholar's mouth stays closed. No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Samarqand",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Nishopurlik yigit yigirma yoshlarida Samarqandga keldi. Algebra risolasini shu yerda yozdi."
+    }
+   ],
+   "prompt": "Morning in an 11th-century Samarkand street: the young scholar walks with a leather satchel of scrolls past a turquoise-domed madrasa gate, looks up at it in wonder, then steps inside. Audio: market chatter, a donkey, pigeons. An off-screen narrator says in Uzbek with a calm, warm, deep male storyteller voice: \"Nishopurlik yigit yigirma yoshlarida Samarqandga keldi. Algebra risolasini shu yerda yozdi.\" Lip-sync: no one on screen speaks. No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Ikki chiziq",
+   "method": "Frames to Video",
+   "start": "R3",
+   "lines": [
+    {
+     "who": "Umar Xayyom",
+     "text": "Ikki chiziq kesishgan nuqta — tenglamaning javobi."
+    }
+   ],
+   "prompt": "Close on the sheet: the reed pen traces along the circle and along the parabola until both meet at one point; the scholar taps that point and turns to the camera with a small proud smile. Audio: pen on paper, a soft chime on the tap. He speaks in Uzbek with a thoughtful, gentle male voice of about 30, soft Persian-Central Asian warmth: \"Ikki chiziq kesishgan nuqta — tenglamaning javobi.\" Lip-sync: only the scholar speaks. No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Sultonning buyrugʻi",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Sulton Malikshoh",
+     "text": "Xayyom, menga adashmaydigan taqvim kerak."
+    }
+   ],
+   "prompt": "Slow dolly toward the throne. The sultan leans forward and points at the scholar; the scholar bows lower. Audio: hall echo, rustle of silk, a fountain outside. The sultan speaks in Uzbek with a deep, commanding but kind male voice of about 25: \"Xayyom, menga adashmaydigan taqvim kerak.\" Lip-sync: only the sultan speaks, the scholar's mouth stays closed. No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Ortiqcha boʻlak",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Umar Xayyom",
+     "text": "Yil butun kun emas. Ortib qolgan boʻlakni qayerga qoʻyamiz?"
+    }
+   ],
+   "prompt": "On the rooftop the scholar lowers the astrolabe and frowns at the sky; the stars slowly wheel overhead in a gentle time-lapse, and he counts on his fingers, puzzled. Audio: crickets, a far-off night call, a soft wind chime. He speaks in Uzbek with a thoughtful, gentle male voice of about 30, soft Persian-Central Asian warmth, half to himself: \"Yil butun kun emas. Ortib qolgan bo'lakni qayerga qo'yamiz?\" Lip-sync: only the scholar speaks. No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Javob — oddiy kasr",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Umar Xayyom",
+     "text": "Har oʻttiz uch yilda — sakkizta kabisa yili."
+    }
+   ],
+   "prompt": "The scholar sets one more white pebble into the long row, sits back on his heels and smiles as the lamplight steadies. Camera rises slowly to show the whole curving row from above. Audio: the click of the pebble, a warm string note. He speaks in Uzbek with a thoughtful, gentle male voice of about 30, soft Persian-Central Asian warmth, quietly delighted: \"Har o'ttiz uch yilda — sakkizta kabisa yili.\" Lip-sync: only the scholar speaks. No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Kim aniqroq?",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2"
+   ],
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Manbalarga koʻra, bu Jaloliy taqvimi. U toʻrt ming uch yuz yilda bir kun adashadi. Biz ishlatadigan taqvim esa — uch ming ikki yuz yilda."
+    }
+   ],
+   "prompt": "Dreamlike montage: two tall brass hourglasses stand side by side on a starry desert dune; the left one's sand runs very slowly, the right one's runs a little faster; the scholar stands between them watching, the turquoise ring catching the starlight. Audio: soft falling sand, a low drone. An off-screen narrator says in Uzbek with a calm, warm, deep male storyteller voice: \"Manbalarga ko'ra, bu Jaloliy taqvimi. U to'rt ming uch yuz yilda bir kun adashadi. Biz ishlatadigan taqvim esa — uch ming ikki yuz yilda.\" Lip-sync: no one on screen speaks, the scholar's mouth stays closed. No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Sizning navbatingiz",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Umar Xayyom",
+     "text": "Ishonmaysizmi? Sakkizni oʻttiz uchga boʻling. Nima chiqdi? Javobni izohda yozing!"
+    }
+   ],
+   "prompt": "Medium close-up on the rooftop: the scholar turns from the stars, holds up one white pebble between two fingers, looks straight into the camera with a warm challenging half-smile. Hold on the look. Audio: night wind, one soft chime. He speaks in Uzbek with a thoughtful, gentle male voice of about 30, soft Persian-Central Asian warmth: \"Ishonmaysizmi? Sakkizni o'ttiz uchga bo'ling. Nima chiqdi? Javobni izohda yozing!\" Lip-sync: only the scholar speaks. No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Dunyo uni shoir deb biladi. Lekin Umar Xayyom Samarqandda algebra yozgan va bugungi taqvimimizdan ham aniqroq taqvim tuzgan. Sirri — bitta kasrda: har 33 yilda 8 ta kabisa yili. 8 ni 33 ga boʻlib koʻring — nima chiqdi? Izohda yozing! Batafsil: powerty.uz #BobolarSirri #Xayyom #Samarqand #matematika #Powerty"
+}

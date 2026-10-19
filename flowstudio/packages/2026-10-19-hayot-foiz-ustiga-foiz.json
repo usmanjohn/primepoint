@@ -1,0 +1,217 @@
+{
+ "id": "2026-10-19-hayot-foiz-ustiga-foiz",
+ "number": 57,
+ "for": "Jonibek",
+ "date": "2026-10-19",
+ "series": "Hayotdagi matematika",
+ "title_uz": "Foiz ustiga foiz",
+ "concept_uz": "Bobo nevarasi Sardordan soʻraydi: bir million soʻm yiliga 10 foizdan uch yilda qancha boʻladi? Sardor «1 300 000» deydi — yaqin, lekin notoʻgʻri. Bobo hovlida oltin daraxt ekadi: har yilgi meva ham meva beradi va summa 1 331 000 ga yetadi. Burilish: toʻlanmagan qarz ham xuddi shunday oʻsadi.",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_10.py (story 26)"
+ ],
+ "facts": [
+  {
+   "claim": "Oddiy foiz bilan 1 000 000 soʻm 10% da 3 yilda 1 300 000 boʻladi — bu notoʻgʻri javob",
+   "source": "corner/management/commands/_stories_matematika_olami_10.py (story 26)"
+  },
+  {
+   "claim": "Murakkab foiz: 1 100 000 → 1 210 000 → 1 331 000; qoʻshimchalar 100 000, 110 000, 121 000",
+   "source": "corner/management/commands/_stories_matematika_olami_10.py (story 26)"
+  },
+  {
+   "claim": "10 yildan keyin 2 000 000 emas, taxminan 2 594 000 soʻm",
+   "source": "corner/management/commands/_stories_matematika_olami_10.py (story 26)"
+  },
+  {
+   "claim": "Toʻlanmagan kredit ham yangi summadan foiz oladi va xuddi shunday oʻsadi",
+   "source": "corner/management/commands/_stories_matematika_olami_10.py (story 26)"
+  }
+ ],
+ "style_line": "Premium 3D animated feature film style, warm Uzbek family courtyard, golden late-afternoon light through grape leaves, soft rounded characters with expressive faces, rich warm colours, gentle magical glow. No text, no letters, no numbers, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: hovli va soʻri",
+   "prompt": "Vertical 9:16 wide shot of a cosy Uzbek family courtyard in late afternoon: a wooden raised platform (sori) with red patterned cushions and a low table with a teapot and bowls, a grapevine trellis overhead, a small square patch of dark soft garden soil in the middle of the brick yard, blue painted wooden gate, a low mud-brick wall. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Bobo",
+   "prompt": "Vertical 9:16 full-body character of a kind Uzbek grandfather of about 70, round friendly face, short white beard, black-and-white embroidered square skullcap (doppi), round wire glasses on the tip of his nose (his continuity mark), green striped chapan robe with a cloth belt, soft leather boots, a twinkle in his eye."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Sardor",
+   "prompt": "Vertical 9:16 full-body character of a lively Uzbek boy of about 10, messy black curly hair, big curious brown eyes, a gap from one missing front tooth (his continuity mark), bright orange T-shirt, blue shorts, red sneakers, counting on his fingers with a confident grin."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Bobo va Sardor soʻrida",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot: the grandfather and the boy sit cross-legged on the courtyard platform under the grapevine; between them on the low table lies a small cloth bundle tied with string, and the grandfather rests his hand on it. Same faces and clothes, golden light."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Oltin nihol",
+   "from": "R4",
+   "prompt": "Change the scene: the grandfather now kneels at the patch of garden soil in the middle of the courtyard, where a small glowing golden sapling has grown with exactly ten small round shining golden fruits; the boy crouches beside him, eyes wide. Same faces and clothes, same courtyard, 9:16."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Ulkan oltin daraxt",
+   "from": "R5",
+   "prompt": "Change the scene: the golden sapling has become a huge glowing golden tree whose crown fills the whole courtyard above the grapevine, heavy with hundreds of shining golden fruits; the boy stands under it with his jaw dropped, the grandfather beside him smiling and adjusting his glasses. Same faces and clothes, 9:16."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Devor ortidagi tikanli chirmovuq",
+   "from": "R6",
+   "prompt": "Change the scene: over the low mud-brick wall behind the golden tree creeps a dark grey thorny vine with dull grey fruits, growing in the same branching shape as the golden tree, casting a long shadow into the yard; the boy and the grandfather turn to look at it, the boy gulping. Not scary, gently comic. Same faces and clothes, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Savol",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Bobo",
+     "text": "Bir million soʻm. Bankka qoʻysang, yiliga oʻn foiz beradi. Uch yilda qancha boʻladi?"
+    }
+   ],
+   "prompt": "The grandfather drops the cloth bundle on the low table with a satisfying thump and pushes his glasses up, looking at the boy over them like a quiz master. Audio: thump, tea pouring, sparrows in the vine. He speaks in Uzbek with a warm, slow, slightly raspy Uzbek grandfather voice of about 70, amused: \"Bir million so'm. Bankka qo'ysang, yiliga o'n foiz beradi. Uch yilda qancha bo'ladi?\" Lip-sync: only the grandfather speaks, the boy's mouth stays closed. No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Oson… emas",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R2"
+   ],
+   "lines": [
+    {
+     "who": "Sardor",
+     "text": "Oson! Har yili yuz ming. Uch yilda — bir million uch yuz ming!"
+    },
+    {
+     "who": "Bobo",
+     "text": "Yaqin. Lekin notoʻgʻri."
+    }
+   ],
+   "prompt": "Medium two-shot on the platform. The boy counts quickly on his fingers and throws his arms up in triumph; the grandfather slowly shakes one finger and smiles. Audio: comic finger-tap sounds, a little 'ding'. The boy speaks first in Uzbek with a bright, quick Uzbek boy's voice of about 10, excited: \"Oson! Har yili yuz ming. Uch yilda — bir million uch yuz ming!\" Then the grandfather answers in Uzbek with a warm, slow, slightly raspy Uzbek grandfather voice of about 70, amused: \"Yaqin. Lekin noto'g'ri.\" Lip-sync: the boy speaks first, then the grandfather; never both at once. No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Birinchi yil",
+   "method": "Frames to Video",
+   "start": "R4",
+   "end": "R5",
+   "lines": [
+    {
+     "who": "Bobo",
+     "text": "Birinchi yil yuz ming qoʻshildi. Endi bir million yuz ming."
+    }
+   ],
+   "prompt": "The grandfather presses one shining golden coin into the soil patch; with a magical shimmer a golden sapling bursts up and ten golden fruits pop out one by one. Audio: soft magical whoosh, ten bright plinks. He speaks in Uzbek with a warm, slow, slightly raspy Uzbek grandfather voice of about 70, amused: \"Birinchi yil yuz ming qo'shildi. Endi bir million yuz ming.\" Lip-sync: only the grandfather speaks. No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Ikkinchi yil",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Bobo",
+     "text": "Ikkinchi yil foiz endi kattaroq summadan olinadi. Qoʻshimcha — yuz oʻn ming!"
+    }
+   ],
+   "prompt": "Close on the sapling: each of the ten golden fruits sprouts its own tiny golden twig with a new little fruit, and the trunk grows a little taller; the boy leans in, amazed. Audio: a cascade of tiny plinks, a rising chime. The grandfather speaks in Uzbek with a warm, slow, slightly raspy Uzbek grandfather voice of about 70, amused: \"Ikkinchi yil foiz endi kattaroq summadan olinadi. Qo'shimcha — yuz o'n ming!\" Lip-sync: only the grandfather speaks, the boy's mouth stays open in wonder but silent. No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Uchinchi yil",
+   "method": "Extend",
+   "extends": "4",
+   "lines": [
+    {
+     "who": "Sardor",
+     "text": "Uchinchi yil — yuz yigirma bir ming! Jami bir million uch yuz oʻttiz bir ming!"
+    }
+   ],
+   "prompt": "Continue: the golden tree grows one more burst, every new twig sprouting more fruit; the boy jumps up pointing at it and counts out loud. Audio: bigger cascade of plinks, a happy brass sting. The boy speaks in Uzbek with a bright, quick Uzbek boy's voice of about 10, excited: \"Uchinchi yil — yuz yigirma bir ming! Jami bir million uch yuz o'ttiz bir ming!\" Lip-sync: only the boy speaks. No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Murakkab foiz",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R2",
+    "R5"
+   ],
+   "lines": [
+    {
+     "who": "Sardor",
+     "text": "Foizning ham foizi bor ekan-ku!"
+    },
+    {
+     "who": "Bobo",
+     "text": "Barakalla. Buni murakkab foiz deyishadi."
+    }
+   ],
+   "prompt": "The boy spins round to the grandfather with a face of sudden discovery; the grandfather pats his curly head proudly. Audio: a comic 'aha' chime, birds. The boy speaks first in Uzbek with a bright, quick Uzbek boy's voice of about 10, excited: \"Foizning ham foizi bor ekan-ku!\" Then the grandfather answers in Uzbek with a warm, slow, slightly raspy Uzbek grandfather voice of about 70, amused: \"Barakalla. Buni murakkab foiz deyishadi.\" Lip-sync: the boy speaks first, then the grandfather; never both at once. No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Oʻn yil",
+   "method": "Frames to Video",
+   "start": "R5",
+   "end": "R6",
+   "lines": [
+    {
+     "who": "Bobo (kadr ortida)",
+     "text": "Oʻn yilda u ikki million emas, undan ancha koʻp boʻladi."
+    }
+   ],
+   "prompt": "Magical time-lapse: the sun and moon flicker across the sky, grape leaves turn green to gold and back, and the small golden tree grows faster and faster into a giant whose crown fills the courtyard. Audio: rising orchestral swell, rushing leaves. The grandfather speaks off-screen in Uzbek with a warm, slow, slightly raspy Uzbek grandfather voice of about 70, amused: \"O'n yilda u ikki million emas, undan ancha ko'p bo'ladi.\" Lip-sync: no one on screen speaks. No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Ikkinchi tomon",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Bobo",
+     "text": "Lekin yodda tut: toʻlanmagan qarz ham xuddi shunday oʻsadi."
+    }
+   ],
+   "prompt": "The dark thorny vine creeps a little further over the wall with a creak; the grandfather raises one eyebrow and points at it, the boy hides behind his own hands, peeking. Comic, not scary. Audio: creaking vine, a low comic tuba note. The grandfather speaks in Uzbek with a warm, slow, slightly raspy Uzbek grandfather voice of about 70, amused, serious but kind: \"Lekin yodda tut: to'lanmagan qarz ham xuddi shunday o'sadi.\" Lip-sync: only the grandfather speaks. No subtitles, no on-screen text."
+  },
+  {
+   "n": 9,
+   "title_uz": "Sizning navbatingiz",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R6"
+   ],
+   "lines": [
+    {
+     "who": "Sardor",
+     "text": "Xoʻsh, oʻn yilda bir million qancha boʻladi? Javobni izohda yozing!"
+    }
+   ],
+   "prompt": "Close-up of the boy under the giant golden tree; he catches a falling golden fruit, turns straight to the camera with his gap-toothed grin and raises his eyebrows. Hold on the look. Audio: a plink as he catches it, birdsong. He speaks in Uzbek with a bright, quick Uzbek boy's voice of about 10, excited: \"Xo'sh, o'n yilda bir million qancha bo'ladi? Javobni izohda yozing!\" Lip-sync: only the boy speaks. No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Bir million soʻm, yiliga 10 foiz, uch yil. 1 300 000 deysizmi? Yaqin, lekin notoʻgʻri — har yilgi foiz ham foiz beradi. Bu murakkab foiz. Oʻn yilda bir million qancha boʻladi? Javobni izohda yozing! #HayotdagiMatematika #foiz #pul #matematika #Powerty"
+}
