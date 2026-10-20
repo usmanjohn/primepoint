@@ -7,7 +7,7 @@ Sign: in the database loans are negative and deposits positive. Here every amoun
 as a positive number (abs), and the section says what it is.
 """
 from collections import defaultdict
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 from .accounts import STATUS_NAMES, classify, client_type
 
@@ -29,6 +29,12 @@ def _pct(part, whole):
 def _pct_txt(part, whole):
     """'1,2%' the Russian way, for the KPI notes."""
     return f'{_pct(part, whole) or 0}%'.replace('.', ',')
+
+
+def _month_end(first):
+    """date(2026, 2, 1) -> date(2026, 2, 28)"""
+    nxt = date(first.year + first.month // 12, first.month % 12 + 1, 1)
+    return nxt - timedelta(days=1)
 
 
 def _month_starts(pdate, n):
@@ -65,8 +71,36 @@ def _sum_by_label(accs):
             for k, v in sorted(rows.items(), key=lambda kv: -kv[1]['amount'])], total
 
 
-def _deals(deals, links, by_id, pdate):
-    """Each live deal with the balances of its own accounts."""
+def _overdue(facts, pdate, months):
+    """Overdue days from dealfact.
+
+    Per month: for every overdue episode that touches the month, days = (episode end, or the
+    last day of the month if it was still open then) − start. The month gets the MAX,
+    separately for principal (type 1) and interest (type 2).
+    Per deal: days overdue ON pdate (episodes still open that day).
+    """
+    per_month = []
+    for start in months:
+        end = _month_end(start)
+        worst = {1: 0, 2: 0}
+        for f in facts:
+            began, ended = _day(f['valuedate']), _day(f['tilldate'])
+            if began > end or ended < start:
+                continue                                  # episode not in this month
+            days = (min(ended, end) - began).days
+            worst[f['dealfacttypeid']] = max(worst[f['dealfacttypeid']], days)
+        per_month.append(worst)
+
+    now = defaultdict(int)
+    for f in facts:
+        began, ended = _day(f['valuedate']), _day(f['tilldate'])
+        if began <= pdate < ended:
+            now[f['dealid']] = max(now[f['dealid']], (pdate - began).days)
+    return per_month, now
+
+
+def _deals(deals, links, by_id, pdate, overdue_now):
+    """Each ACTIVE deal (balance > 0) with the balances of its own accounts."""
     accounts_of = defaultdict(set)
     for l in links:
         accounts_of[l['dealid']].add(l['accountid'])
@@ -81,11 +115,14 @@ def _deals(deals, links, by_id, pdate):
                        if a['section'] == 'interest' and a['status'] != 'reserve')
         unused = sum(a['amount'] for a in accs
                      if a['section'] == 'offbalance' and a['kind'] == 'unused')
+        if balance <= 0:
+            continue                                      # nothing left on it: not shown
         given = d['given_amount_eq'] or 0
+        overdue_days = overdue_now.get(d['dealid'], 0)
         close = _day(d['close_date'])
         days_left = (close - pdate).days if close else None
 
-        if overdue:
+        if overdue or overdue_days:
             flag = ('danger', 'Просрочка')
         elif days_left is not None and days_left < 0 and balance:
             flag = ('danger', 'Срок истёк')
@@ -97,8 +134,7 @@ def _deals(deals, links, by_id, pdate):
         out.append({
             'dealid': d['dealid'], 'rnk_dealid': d['rnk_dealid'], 'currencyid': d['currencyid'],
             'given': given, 'given_fx': d['given_amount'], 'balance': balance,
-            'repaid': max(given - balance, 0), 'repaid_pct': _pct(max(given - balance, 0), given),
-            'overdue': overdue, 'interest': interest, 'unused': unused,
+            'overdue': overdue, 'overdue_days': overdue_days, 'interest': interest, 'unused': unused,
             'close_date': close, 'days_left': days_left, 'flag': flag,
             'loan_accounts': sorted(a['accountno'] for a in loan),
             'account_ids': {a['account_id'] for a in loan},
@@ -177,13 +213,18 @@ def build(data, contragentid, pdate):
     collateral = off_sum('collateral')
 
     # ── deals and credit lines ──
-    deals = _deals(data['deals'], data['links'], by_id, pdate)
+    months = _month_starts(pdate, TURNOVER_MONTHS)
+    overdue_months, overdue_now = _overdue(data.get('overdue', []), pdate, months)
+    deals = _deals(data['deals'], data['links'], by_id, pdate, overdue_now)
     rnk = _rnk(deals)
     in_deals = set().union(*(d['account_ids'] for d in deals)) if deals else set()
     loose = [a for a in loans if a['status'] != 'reserve' and a['account_id'] not in in_deals]
 
     # ── turnover ──
     turnover = _turnover(data['turnover'], pdate)
+    for row, worst in zip(turnover, overdue_months):     # same 6 months, same order
+        row['od_days'], row['pr_days'] = worst[1], worst[2]
+    max_overdue_days = max([max(w.values()) for w in overdue_months] + [0])
     avg_in = sum(t['in'] for t in turnover) / TURNOVER_MONTHS
     avg_out = sum(t['out'] for t in turnover) / TURNOVER_MONTHS
 
@@ -221,6 +262,7 @@ def build(data, contragentid, pdate):
         'turnover': {'months': turnover, 'avg_in': avg_in, 'avg_out': avg_out,
                      'total_in': avg_in * TURNOVER_MONTHS,
                      # "the debt equals N months of income"
+                     'max_overdue_days': max_overdue_days,
                      'debt_months': round(gross / avg_in, 1) if avg_in and gross else None},
         'accounts': accounts,
     }

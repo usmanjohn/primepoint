@@ -1,9 +1,11 @@
 {% extends "base.html" %}
+{% load l10n %}
 {% comment %}
   Client portfolio: the form, then the portfolio of one client on one date.
   Bootstrap 5 from base.html + a small stylesheet scoped under .cpf.
   No JavaScript except the one-line «Печать» button.
   Money: floatformat:"0g" = whole so'm with thousands grouped.
+  Ids: |unlocalize, or USE_THOUSAND_SEPARATOR prints 12345678 as "12 345 678".
 {% endcomment %}
 
 {% block extra_css %}
@@ -79,10 +81,10 @@
     <div>
       <div class="eyebrow">Портфель клиента на {{ p.pdate|date:"d.m.Y" }}</div>
       <h1>{{ p.name }}</h1>
-      <div class="sub">ID {{ p.contragentid }} · {{ p.client_type }} · {{ p.accounts|length }} счетов с остатком</div>
+      <div class="sub">ID {{ p.contragentid|unlocalize }} · {{ p.client_type }} · {{ p.accounts|length }} счетов с остатком</div>
     </div>
     <div class="no-print d-flex gap-2">
-      <a class="btn btn-go btn-sm" href="{% url 'client-portfolio-excel' %}?contragentid={{ p.contragentid }}&pdate={{ p.pdate|date:'Y-m-d' }}">
+      <a class="btn btn-go btn-sm" href="{% url 'client-portfolio-excel' %}?contragentid={{ p.contragentid|unlocalize }}&pdate={{ p.pdate|date:'Y-m-d' }}">
         <i class="fas fa-file-excel me-1"></i>Excel</a>
       <button class="btn btn-outline-light btn-sm" type="button" onclick="window.print()">
         <i class="fas fa-print me-1"></i>Печать / PDF</button>
@@ -147,21 +149,21 @@
   {# ── deals ── #}
   {% if p.deals %}
   <div class="card">
-    <div class="card-header">Сделки <span class="hint">живые в портфеле на дату</span></div>
+    <div class="card-header">Активные сделки <span class="hint">с остатком на дату</span></div>
     <div class="table-responsive">
       <table class="table table-sm table-hover">
         <thead><tr><th>Сделка</th><th>РНК</th><th>Вал.</th><th class="m">Выдано (экв.)</th>
-          <th class="m">Остаток</th><th class="m">Погашено</th><th class="m">Просрочка</th>
+          <th class="m">Остаток</th><th class="m">Просрочка</th><th class="m">Дн. просрочки</th>
           <th class="m">Проценты</th><th>Закрытие</th><th class="m">Дней</th><th></th></tr></thead>
         <tbody>
         {% for d in p.deals %}
-          <tr><td>{{ d.dealid }}<div class="acc">{% for n in d.loan_accounts %}{{ n }}<br>{% endfor %}</div></td>
-            <td>{{ d.rnk_dealid|default:"—" }}</td>
-            <td>{{ d.currencyid }}</td>
+          <tr><td>{{ d.dealid|unlocalize }}<div class="acc">{% for n in d.loan_accounts %}{{ n }}<br>{% endfor %}</div></td>
+            <td>{% if d.rnk_dealid %}{{ d.rnk_dealid|unlocalize }}{% else %}—{% endif %}</td>
+            <td>{{ d.currencyid|unlocalize }}</td>
             <td class="m">{{ d.given|floatformat:"0g" }}</td>
             <td class="m">{{ d.balance|floatformat:"0g" }}</td>
-            <td class="m">{% if d.repaid_pct is not None %}{{ d.repaid_pct }}%{% else %}—{% endif %}</td>
             <td class="m{% if d.overdue %} red{% else %} zero{% endif %}">{{ d.overdue|floatformat:"0g" }}</td>
+            <td class="m{% if d.overdue_days %} red{% else %} zero{% endif %}">{{ d.overdue_days|default:"—" }}</td>
             <td class="m">{{ d.interest|floatformat:"0g" }}</td>
             <td>{{ d.close_date|date:"d.m.Y"|default:"—" }}</td>
             <td class="m">{{ d.days_left|default_if_none:"—" }}</td>
@@ -189,7 +191,7 @@
           <th>Последнее закрытие</th><th class="m">Дней</th></tr></thead>
         <tbody>
         {% for r in p.rnk %}
-          <tr><td>{{ r.rnk_dealid }}</td><td class="m">{{ r.deals }}</td>
+          <tr><td>{{ r.rnk_dealid|unlocalize }}</td><td class="m">{{ r.deals }}</td>
             <td class="m">{{ r.given|floatformat:"0g" }}</td>
             <td class="m">{{ r.balance|floatformat:"0g" }}</td>
             <td class="m{% if r.overdue %} red{% else %} zero{% endif %}">{{ r.overdue|floatformat:"0g" }}</td>
@@ -247,13 +249,15 @@
 
   {# ── turnover ── #}
   <div class="card mt-3">
-    <div class="card-header">Обороты по счетам за {{ p.turnover.months|length }} мес.
-      <span class="hint">без переводов между своими счетами</span></div>
+    <div class="card-header">Обороты и просрочка за {{ p.turnover.months|length }} мес.
+      <span class="hint">обороты без переводов между своими счетами</span></div>
     <div class="table-responsive">
       <table class="table table-sm">
         <thead><tr><th>Месяц</th><th class="m">Поступления</th><th class="m">Док.</th>
           <th class="m">Списания</th><th class="m">Док.</th><th class="m">Сальдо</th>
-          <th style="width:30%"></th></tr></thead>
+          <th style="width:24%"></th>
+          <th class="m" title="максимум за месяц">Просрочка ОД, дн.</th>
+          <th class="m" title="максимум за месяц">Просрочка %, дн.</th></tr></thead>
         <tbody>
         {% for m in p.turnover.months %}
           <tr><td>{{ m.label }}</td>
@@ -261,7 +265,9 @@
             <td class="m">{{ m.out|floatformat:"0g" }}</td><td class="m">{{ m.out_docs }}</td>
             <td class="m{% if m.net < 0 %} red{% endif %}">{{ m.net|floatformat:"0g" }}</td>
             <td><span class="bar in" style="width:{{ m.in_w }}%"></span>
-                <span class="bar out mt-1" style="width:{{ m.out_w }}%"></span></td></tr>
+                <span class="bar out mt-1" style="width:{{ m.out_w }}%"></span></td>
+            <td class="m{% if m.od_days %} red{% else %} zero{% endif %}">{{ m.od_days|default:"—" }}</td>
+            <td class="m{% if m.pr_days %} red{% else %} zero{% endif %}">{{ m.pr_days|default:"—" }}</td></tr>
         {% endfor %}
         </tbody>
       </table>
@@ -270,6 +276,8 @@
       <span class="bar in d-inline-block" style="width:14px"></span> поступления ·
       <span class="bar out d-inline-block" style="width:14px"></span> списания.
       В среднем поступает <strong>{{ p.turnover.avg_in|floatformat:"0g" }}</strong> в месяц.
+      {% if p.turnover.max_overdue_days %}Худшая просрочка за период: <strong class="red">{{ p.turnover.max_overdue_days }}</strong> дн.
+      {% else %}Просрочек за период не было.{% endif %}
       {% if p.turnover.debt_months %}Кредиты брутто = <strong>{{ p.turnover.debt_months }}</strong> мес. поступлений.{% endif %}
     </div>
   </div>
@@ -283,7 +291,7 @@
           <thead><tr><th>Счёт</th><th>Вал.</th><th>TOBO</th><th>Что это</th><th class="m">Сальдо в базе</th></tr></thead>
           <tbody>
           {% for a in p.accounts %}
-            <tr><td class="acc">{{ a.accountno }}</td><td>{{ a.currency_code }}</td><td>{{ a.toboid }}</td>
+            <tr><td class="acc">{{ a.accountno }}</td><td>{{ a.currency_code }}</td><td>{{ a.toboid|unlocalize }}</td>
               <td>{{ a.label }}</td><td class="m">{{ a.saldo|floatformat:"0g" }}</td></tr>
           {% endfor %}
           </tbody>
@@ -296,6 +304,8 @@
     Суммы — эквивалент в сумах на дату. Кредиты в базе отрицательные, здесь показаны по модулю.
     Счёт определяется по первым 5 цифрам по плану счетов ЦБ.
     «Выдано» по РНК — сумма выдач по сделкам линии, это не лимит.
+    Просрочка в месяце — максимум дней по всем сделкам клиента (и закрытым тоже): если просрочка
+    в том месяце ещё не была погашена, дни считаются до последнего дня месяца.
   </div>
   {% endif %}
 </div>

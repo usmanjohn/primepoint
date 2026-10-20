@@ -1,9 +1,10 @@
 """
 Two views: the page (form + portfolio) and the same portfolio as an Excel file.
 
-The form uses GET, so a portfolio has its own link: /client_portfolio/?contragentid=123&pdate=2026-10-01
+The form uses GET, so a portfolio has its own link: /cprofile/?contragentid=123&pdate=2026-10-01
 — send it to a colleague and they see the same thing.
 """
+import re
 from datetime import date
 
 import oracledb
@@ -16,7 +17,8 @@ from . import logic, queries
 
 def _params(request):
     """(contragentid, pdate, error). Error is a Russian message or None."""
-    cid = request.GET.get("contragentid", "").strip()
+    # digits only: with USE_THOUSAND_SEPARATOR an id can arrive as "12 345 678"
+    cid = re.sub(r"\D", "", request.GET.get("contragentid", ""))
     pd = request.GET.get("pdate", "").strip()
     if not cid.isdigit():
         return None, None, "Введите ID контрагента (только цифры)."
@@ -46,7 +48,7 @@ def page(request):
                     "pdate": request.GET.get("pdate", "")}}
     if "contragentid" in request.GET:
         ctx["p"], ctx["error"] = _portfolio(request)
-    return render(request, "client_portfolio/page.html", ctx)
+    return render(request, "cprofile/page.html", ctx)
 
 
 def excel(request):
