@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% comment %}
+  PDF converter: one card per tool, each card is its own form. No JavaScript.
+  The finished file comes back as a download; nothing is stored on the server.
+  Scoped under .cvt so the dashboard's own styles are not touched.
+{% endcomment %}
+
+{% block extra_css %}
+<style>
+  .cvt{--ink:#0B0B0C;--gold:#F2C230;--gd:#C9971A;--gtext:#8C6A12;--rule:#E4E1D8;--muted:#8A867C;--bad:#B3341F}
+  .cvt .hero{background:var(--ink);color:#fff;border-radius:10px;padding:22px 26px;margin-bottom:20px}
+  .cvt .hero .eyebrow{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+  .cvt .hero h1{font-weight:500;font-size:26px;margin:6px 0 4px}
+  .cvt .hero p{color:#B9B5AB;font-size:13.5px;margin:0;max-width:80ch}
+  .cvt .tool{border:1px solid var(--rule);border-radius:10px;background:#fff;height:100%;display:flex;flex-direction:column}
+  .cvt .tool.off{opacity:.6}
+  .cvt .tool-head{display:flex;gap:12px;align-items:center;padding:14px 16px;border-bottom:1px solid var(--rule);background:#FAF8F2;border-radius:10px 10px 0 0}
+  .cvt .tool-head i{font-size:22px;color:var(--gd);width:28px;text-align:center}
+  .cvt .tool-head h2{font-size:16px;margin:0;font-weight:600}
+  .cvt .tool-head small{color:var(--muted);display:block;font-size:12.5px}
+  .cvt form{padding:14px 16px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .cvt .form-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+  .cvt .hint{font-size:12px;color:var(--muted);margin-top:3px}
+  .cvt .btn-go{background:var(--gold);border:none;color:var(--ink);font-weight:600;margin-top:auto;align-self:flex-start;padding:7px 22px}
+  .cvt .btn-go:hover{background:var(--gd)}
+  .cvt .err{background:#FBF3F1;border-left:3px solid var(--bad);color:var(--bad);padding:8px 12px;font-size:13px;border-radius:0 6px 6px 0}
+  .cvt .rules{font-size:13px;color:var(--muted)}
+  .cvt code{color:var(--gtext)}
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+<div class="cvt container-fluid px-4 py-4">
+
+  <div class="hero">
+    <div class="eyebrow">Инструменты</div>
+    <h1>Конвертер PDF</h1>
+    <p>Объединить, разделить, переставить и повернуть страницы, перевести PDF в Word или Excel — прямо здесь,
+       без внешних сайтов. Файлы обрабатываются в памяти и сразу возвращаются вам: на сервере ничего не сохраняется.
+       До {{ max_mb }} МБ за раз.</p>
+  </div>
+
+  <div class="row row-cols-1 row-cols-lg-2 row-cols-xxl-3 g-3">
+    {% for t in tools %}
+    <div class="col" id="{{ t.key }}">
+      <div class="tool{% if not t.on %} off{% endif %}">
+        <div class="tool-head"><i class="fas {{ t.icon }}"></i>
+          <div><h2>{{ t.title }}</h2><small>{{ t.about }}</small></div></div>
+
+        <form method="post" enctype="multipart/form-data" action="{% url 'converter-run' t.key %}">
+          {% csrf_token %}
+          {% if error and error.tool == t.key %}<div class="err">{{ error.text }}</div>{% endif %}
+
+          {% if not t.on %}
+            <div class="hint">Выключено: на сервере нет пакета <code>{{ t.package }}</code>.
+              Администратор: <code>pip install {{ t.package }}</code></div>
+          {% else %}
+
+          {% if t.key == "merge" %}
+            <div><label class="form-label">PDF-файлы (два и больше)</label>
+              <input class="form-control" type="file" name="files" accept=".pdf" multiple required>
+              <div class="hint">Порядок — по именам файлов: «1_договор», «2_приложение», … «10_…» встанет после «9_…».</div></div>
+
+          {% elif t.key == "pages" %}
+            <div><label class="form-label">PDF</label>
+              <input class="form-control" type="file" name="files" accept=".pdf" required></div>
+            <div><label class="form-label">Какие страницы и в каком порядке</label>
+              <input class="form-control" name="keep" placeholder="например: 3, 1-2, 5-" autocomplete="off">
+              <div class="hint">Пусто = все. Порядок как написано, поэтому «3, 1-2» ставит третью страницу первой.</div></div>
+            <div><label class="form-label">Удалить страницы</label>
+              <input class="form-control" name="delete" placeholder="например: 4, 7-9" autocomplete="off"></div>
+
+          {% elif t.key == "split" %}
+            <div><label class="form-label">PDF</label>
+              <input class="form-control" type="file" name="files" accept=".pdf" required></div>
+            <div><label class="form-label">Страниц в каждой части</label>
+              <input class="form-control" type="number" name="every" value="1" min="1" required>
+              <div class="hint">1 = каждая страница отдельным файлом.</div></div>
+
+          {% elif t.key == "rotate" %}
+            <div><label class="form-label">PDF</label>
+              <input class="form-control" type="file" name="files" accept=".pdf" required></div>
+            <div class="row g-2">
+              <div class="col-7"><label class="form-label">Страницы</label>
+                <input class="form-control" name="pages" placeholder="пусто = все" autocomplete="off"></div>
+              <div class="col-5"><label class="form-label">По часовой</label>
+                <select class="form-select" name="angle"><option value="90">90°</option><option value="180">180°</option><option value="270">270°</option></select></div>
+            </div>
+
+          {% elif t.key == "word" %}
+            <div><label class="form-label">PDF</label>
+              <input class="form-control" type="file" name="files" accept=".pdf" required></div>
+            <div><label class="form-label">Страницы</label>
+              <input class="form-control" name="pages" placeholder="пусто = все" autocomplete="off">
+              <div class="hint">Лучше всего работает с PDF, сделанным из Word или системы. Скан превратится в картинки, а не в текст.</div></div>
+
+          {% elif t.key == "excel" %}
+            <div><label class="form-label">PDF</label>
+              <input class="form-control" type="file" name="files" accept=".pdf" required></div>
+            <div><label class="form-label">Страницы</label>
+              <input class="form-control" name="pages" placeholder="пусто = все" autocomplete="off"></div>
+            <div class="form-check"><input class="form-check-input" type="checkbox" name="one_sheet" value="1" id="one_sheet">
+              <label class="form-check-label" for="one_sheet">Все таблицы на один лист</label>
+              <div class="hint">Иначе каждая таблица — свой лист. Суммы вида «1 234 567,89» становятся числами, номера счетов остаются текстом.</div></div>
+          {% endif %}
+
+            <button class="btn btn-go" type="submit"><i class="fas fa-download me-1"></i>Скачать результат</button>
+          {% endif %}
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="rules mt-4">
+    <b>Как писать страницы:</b> <code>1-3</code> — с первой по третью, <code>5</code> — пятая, <code>8-</code> — с восьмой до конца,
+    <code>-4</code> — с первой по четвёртую, <code>5-3</code> — в обратном порядке. Через запятую: <code>1-3, 5, 8-</code>.
+    PDF под паролем нужно сначала открыть и сохранить без защиты.
+  </div>
+</div>
+{% endblock content %}
