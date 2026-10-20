@@ -1,7 +1,7 @@
 """
 All SQL of the client portfolio, and nothing else.
 
-Five small queries instead of one big join. Each one returns rows that cannot repeat,
+Six small queries instead of one big join. Each one returns rows that cannot repeat,
 and Python (logic.py) puts them together. Why not one join: the client's current
 account (20208) is linked in dealid_connection to EVERY deal it ever served, so a join
 multiplied the rows (15 accounts became 210).
@@ -38,10 +38,26 @@ and    t.summanoweq  <> 0
 order by t.accountno
 """
 
-# Q2. DEALS: the client's deals alive in the portfolio on the date.
-#     Starts from portfel, not from accounts, so a deal with a zero balance is not lost.
+# ACTIVE DEALS: a deal is active if one of its asset accounts (1xxxx: loan, overdue,
+# interest) has money on it on the date. The current account 20208 is linked to every
+# deal the client ever had, so it is deliberately NOT used here: with it, every old
+# closed deal came back. Used inside Q2 and Q3 below.
+ACTIVE_DEALS = """
+with active as (
+    select distinct dl.dealid
+    from   schema_2.dealid_connection dl
+    join   schema_1.account_table_1 t on t.id = dl.accountid
+    where  t.arcdate      = :pdate
+    and    t.contragentid = :contragentid
+    and    t.summanoweq  <> 0
+    and    substr(t.accountno, 1, 1) = '1'
+    and    dl.daiusettingid <> 0
+)
+"""
+
+# Q2. DEALS: the client's ACTIVE deals on the date, from portfel.
 #     currency_rate.base is always 1, so given_amount_eq = givenamount * rate / 100.
-SQL_DEALS = """
+SQL_DEALS = ACTIVE_DEALS + """
 select p.dealid,
        p.facilitydealid                     as rnk_dealid,
        p.expectedclosedate                  as close_date,
@@ -54,20 +70,16 @@ left join schema_2.currency_rate r
       and r.currencyid = p.currencyid
 where  p.arcdate      = :pdate
 and    p.contragentid = :contragentid
+and    p.dealid in (select dealid from active)
 order by p.dealid
 """
 
-# Q3. LINKS: which account belongs to which LIVE deal.
-#     Only deals from Q2, so links to old closed deals never come in.
-SQL_LINKS = """
+# Q3. LINKS: which account belongs to which ACTIVE deal.
+SQL_LINKS = ACTIVE_DEALS + """
 select distinct dl.accountid, dl.dealid
 from   schema_2.dealid_connection dl
 where  dl.daiusettingid <> 0
--- and dl.dealcloseid = 0          -- extra safety; switch on once you are sure 0 = open
-and    dl.dealid in (select p.dealid
-                     from   schema_2.portfel_table p
-                     where  p.arcdate      = :pdate
-                     and    p.contragentid = :contragentid)
+and    dl.dealid in (select dealid from active)
 """
 
 # Q4. TURNOVER: money in / out of the client's current and card accounts,
@@ -108,6 +120,24 @@ group by trunc(d.arcdate, 'MM')
 """
 
 
+# Q5. OVERDUE HISTORY: every overdue episode that touches the last 6 months, over ALL the
+#     client's deals in portfel (closed ones too: a loan repaid last month with 60 days
+#     overdue still matters). dealfacttypeid 1 = principal, 2 = interest.
+#     valuedate = overdue started, tilldate = overdue ended (01.01.3500 = still open).
+#     Old start is fine as long as it ended inside the window or is still open.
+SQL_OVERDUE = """
+select f.dealid, f.dealfacttypeid, f.valuedate, f.tilldate
+from   schema_2.dealfact f
+where  f.dealid in (select p.dealid
+                    from   schema_2.portfel_table p
+                    where  p.arcdate      = :pdate
+                    and    p.contragentid = :contragentid)
+and    f.dealfacttypeid in (1, 2)
+and    f.valuedate <= :pdate
+and    f.tilldate  >= add_months(trunc(:pdate, 'MM'), -6)
+"""
+
+
 def fetch(cur, sql, params):
     """Run one query and return a list of dicts with lower-case keys."""
     cur.execute(sql, params)
@@ -127,4 +157,5 @@ def load_client(contragentid, pdate):
             "deals": fetch(cur, SQL_DEALS, params),
             "links": fetch(cur, SQL_LINKS, params),
             "turnover": fetch(cur, SQL_TURNOVER, params),
+            "overdue": fetch(cur, SQL_OVERDUE, params),
         }

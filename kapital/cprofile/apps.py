@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 
-class ClientPortfolioConfig(AppConfig):
+class CprofileConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "client_portfolio"
+    name = "cprofile"
     verbose_name = "Портфель клиента"

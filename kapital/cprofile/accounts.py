@@ -16,10 +16,10 @@ Change a name or add an account here: nothing else needs to know.
 SHORT = {
     '121': 'Банки', '123': 'Правительство', '124': 'Бюджетные организации',
     '125': 'Физлица', '126': 'ИП', '127': 'Госпредприятия', '128': 'Фонд развития МСБ',
-    '130': 'ННО', '131': 'Юрлица', '132': 'НБФИ', '133': 'Сельхозпроизводители',
+    '129': 'Предприятия с иностр. инвест.', '130': 'ННО', '131': 'Юрлица', '132': 'НБФИ', '133': 'Сельхозпроизводители',
 }
 LONG = {
-    '144': 'Фонд развития МСБ', '145': 'Банки', '147': 'Правительство',
+    '143': 'Сельхозпроизводители', '144': 'Фонд развития МСБ', '145': 'Банки', '147': 'Правительство',
     '148': 'Бюджетные организации', '149': 'Физлица', '150': 'ИП', '151': 'Госпредприятия',
     '152': 'ННО', '153': 'Предприятия с иностр. инвест.', '154': 'НБФИ', '155': 'Юрлица',
 }
@@ -107,6 +107,10 @@ def _loan(code):
     elif main == '111':
         status = {'03': 'overdue', '05': 'court', '99': 'reserve'}.get(sub, 'current')
         label = 'Факторинг'
+    elif '121' <= main <= '155':
+        # safety net: a loan account this map does not know yet still counts as a loan
+        status = 'reserve' if sub == '99' else 'current'
+        label = f'Кредиты · счёт {main}00 (добавьте в accounts.py)'
     else:
         return None
     if code in LOAN_PRODUCT:
@@ -149,7 +153,7 @@ def client_type(codes):
     """Guess the client type from the accounts he has: company, IP or person."""
     codes = set(codes)
     if codes & {'20208', '20210', '20212', '20214', '20216', '22620'} or any(
-            c[:3] in ('131', '155') for c in codes):
+            c[:3] in ('127', '129', '131', '151', '153', '155') for c in codes):
         return 'Юридическое лицо'
     if codes & {'20218', '22619'} or any(c[:3] in ('126', '150') for c in codes):
         return 'Индивидуальный предприниматель'

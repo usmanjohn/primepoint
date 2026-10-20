@@ -40,13 +40,13 @@ def write(p, stream):
            + [("ИТОГО", L["current"], L["restructured"], L["overdue"], L["court"], L["gross"],
                L["reserve"], L["net"])], money_cols=range(2, 9))
 
-    _sheet(wb, "Сделки", ["Сделка", "РНК", "Валюта", "Выдано (экв.)", "Остаток", "Погашено, %",
-                          "Просрочка", "Проценты", "Неисп. линия", "Дата закрытия", "Дней осталось",
-                          "Счета"],
+    _sheet(wb, "Сделки", ["Сделка", "РНК", "Валюта", "Выдано (экв.)", "Остаток", "Просрочка",
+                          "Дн. просрочки", "Проценты", "Неисп. линия", "Дата закрытия",
+                          "Дней осталось", "Счета"],
            [(d["dealid"], d["rnk_dealid"], d["currencyid"], d["given"], d["balance"],
-             d["repaid_pct"], d["overdue"], d["interest"], d["unused"], d["close_date"],
+             d["overdue"], d["overdue_days"], d["interest"], d["unused"], d["close_date"],
              d["days_left"], ", ".join(d["loan_accounts"])) for d in p["deals"]],
-           money_cols=[4, 5, 7, 8, 9])
+           money_cols=[4, 5, 6, 8, 9])
 
     _sheet(wb, "РНК", ["РНК", "Сделок", "Выдано (экв.)", "Остаток", "Просрочка", "Неисп. линия",
                        "Последнее закрытие", "Дней осталось"],
@@ -62,9 +62,10 @@ def write(p, stream):
            money_cols=[2])
 
     _sheet(wb, "Обороты", ["Месяц", "Поступления", "Документов", "Списания", "Документов",
-                           "Сальдо"],
-           [(m["label"], m["in"], m["in_docs"], m["out"], m["out_docs"], m["net"])
-            for m in p["turnover"]["months"]], money_cols=[2, 4, 6])
+                           "Сальдо", "Просрочка ОД, дн.", "Просрочка %, дн."],
+           [(m["label"], m["in"], m["in_docs"], m["out"], m["out_docs"], m["net"],
+             m["od_days"], m["pr_days"]) for m in p["turnover"]["months"]],
+           money_cols=[2, 4, 6])
 
     _sheet(wb, "Счета", ["Счёт", "Бал. счёт", "Валюта", "TOBO", "Раздел", "Что это", "Сальдо (как в базе)"],
            [(a["accountno"], a["bal_acc"], a["currency_code"], a["toboid"], a["section"],
