@@ -47,6 +47,9 @@ PAGES = [
     ('law_irrbb_3427', 'Law page: Interest rate risk in the banking book (CBU Regulation 3427)', 'Interest rate risk in the banking book (CBU 3427)',
      'Django template: repricing gap, ΔEVE and ΔNII under the six rate scenarios, with a gap calculator. Russian UI.',
      'law_irrbb', 'laws/irrbb/', 'laws-irrbb-3427'),
+    ('law_chart_of_accounts_3336', 'Law page: Chart of accounts (CBU, reg. 3336)', 'Chart of accounts (CBU, reg. 3336)',
+     'Django template: 5- and 20-digit account numbers, classes, loan/deposit/off-balance families, loan entries, an account decoder and search over all ~1,200 accounts. Russian UI.',
+     'law_chart_of_accounts', 'laws/chart-of-accounts/', 'laws-chart-of-accounts-3336'),
 ]
 
 HEADER = '''# -*- coding: utf-8 -*-

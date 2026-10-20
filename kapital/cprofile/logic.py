@@ -75,7 +75,8 @@ def _overdue(facts, pdate, months):
     """Overdue days from dealfact.
 
     Per month: for every overdue episode that touches the month, days = (episode end, or the
-    last day of the month if it was still open then) − start. The month gets the MAX,
+    last day of the month if it was still open then) − start + 1 (the first day counts).
+    The month gets the MAX,
     separately for principal (type 1) and interest (type 2).
     Per deal: days overdue ON pdate (episodes still open that day).
     """
@@ -87,7 +88,7 @@ def _overdue(facts, pdate, months):
             began, ended = _day(f['valuedate']), _day(f['tilldate'])
             if began > end or ended < start:
                 continue                                  # episode not in this month
-            days = (min(ended, end) - began).days
+            days = (min(ended, end) - began).days + 1
             worst[f['dealfacttypeid']] = max(worst[f['dealfacttypeid']], days)
         per_month.append(worst)
 
@@ -95,7 +96,7 @@ def _overdue(facts, pdate, months):
     for f in facts:
         began, ended = _day(f['valuedate']), _day(f['tilldate'])
         if began <= pdate < ended:
-            now[f['dealid']] = max(now[f['dealid']], (pdate - began).days)
+            now[f['dealid']] = max(now[f['dealid']], (pdate - began).days + 1)
     return per_month, now
 
 

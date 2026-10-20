@@ -26,6 +26,7 @@ LONG = {
 LEASING_BORROWER = {   # 156xx: the last two digits say who the lessee is
     '01': 'Банки', '05': 'ИП', '07': 'Госпредприятия', '09': 'Предприятия с иностр. инвест.',
     '11': 'ННО', '13': 'Юрлица', '15': 'НБФИ',
+    '17': 'просрочка', '19': 'реструктуризация', '99': 'резерв',
 }
 COURT_BORROWER = {'01': 'Юрлица', '03': 'Физлица', '05': 'Лизинг', '07': 'ИП'}  # 157xx
 
@@ -93,7 +94,9 @@ def _loan(code):
     main, sub = code[:3], code[3:]
     if main in SHORT:
         status = {'05': 'overdue', '09': 'restructured', '99': 'reserve'}.get(sub, 'current')
-        label = 'Краткосрочный · ' + SHORT[main]
+        # 05 holds overdue loans of BOTH terms (13105 takes 15501/15505 too), so it is not
+        # labelled «Краткосрочный»: it gets its own row
+        label = ('Просрочка · ' if sub == '05' else 'Краткосрочный · ') + SHORT[main]
     elif main in LONG:
         # long-term has no overdue sub-account: 05 is RESTRUCTURED here
         status = {'05': 'restructured', '99': 'reserve'}.get(sub, 'current')
