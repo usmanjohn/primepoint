@@ -1,0 +1,302 @@
+{% extends "base.html" %}
+{% comment %}
+  Client portfolio: the form, then the portfolio of one client on one date.
+  Bootstrap 5 from base.html + a small stylesheet scoped under .cpf.
+  No JavaScript except the one-line «Печать» button.
+  Money: floatformat:"0g" = whole so'm with thousands grouped.
+{% endcomment %}
+
+{% block extra_css %}
+<style>
+  .cpf{--ink:#0B0B0C;--soft:#2A2A2E;--gold:#F2C230;--gd:#C9971A;--gtext:#8C6A12;
+       --rule:#E4E1D8;--muted:#8A867C;--bad:#B3341F;--warn:#D9822B;
+       font-family:Cambria,Georgia,serif;color:var(--ink)}
+  .cpf .hero{background:var(--ink);color:#fff;border-radius:10px;padding:24px 28px;margin-bottom:20px}
+  .cpf .eyebrow{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+  .cpf .hero h1{font-weight:400;font-size:28px;margin:6px 0 4px}
+  .cpf .hero .sub{color:#B9B5AB;font-size:13.5px}
+  .cpf .card{border:1px solid var(--rule);border-radius:10px;margin-bottom:20px;break-inside:avoid}
+  .cpf .card-header{background:#FAF8F2;border-bottom:1px solid var(--rule);font-size:11px;
+       letter-spacing:.14em;text-transform:uppercase;color:var(--gtext);padding:10px 16px}
+  .cpf .card-header .hint{letter-spacing:0;text-transform:none;color:var(--muted);float:right}
+  .cpf .form-label{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .cpf .btn-go{background:var(--gold);border:none;color:var(--ink);font-weight:600;padding:8px 26px}
+  .cpf .btn-go:hover{background:var(--gd)}
+  .cpf .kpi{border:1px solid var(--rule);border-radius:10px;padding:12px 14px;height:100%;background:#fff}
+  .cpf .kpi .l{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .cpf .kpi .v{font-size:20px;line-height:1.25;margin-top:4px;white-space:nowrap}
+  .cpf .kpi .n{font-size:12px;color:var(--muted)}
+  .cpf .kpi.bad{border-color:var(--bad)} .cpf .kpi.bad .v{color:var(--bad)}
+  .cpf table{font-size:13px;margin:0}
+  .cpf th{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+          font-weight:600;white-space:nowrap}
+  .cpf td.m,.cpf th.m{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .cpf tr.total td{font-weight:700;border-top:2px solid var(--soft)}
+  .cpf .red{color:var(--bad)} .cpf .zero{color:#C8C4BA}
+  .cpf .acc{font-family:Consolas,monospace;font-size:11.5px;color:var(--soft)}
+  .cpf .bar{height:9px;border-radius:2px;display:block;min-width:2px}
+  .cpf .bar.in{background:var(--gold)} .cpf .bar.out{background:var(--soft)}
+  .cpf .note{font-size:12.5px;color:var(--muted);padding:10px 16px;border-top:1px solid var(--rule)}
+  .cpf details summary{cursor:pointer;color:var(--gtext);font-size:13px;padding:10px 16px}
+  @media print{
+    .sb-topnav,#layoutSidenav_nav,.cpf .no-print{display:none!important}
+    #layoutSidenav_content{padding-left:0!important;margin-left:0!important}
+    .cpf .hero{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .cpf details{display:block} .cpf details>*{display:block}
+  }
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+<div class="cpf container-fluid px-4 py-4">
+
+  {# ── the form ── #}
+  <div class="card no-print">
+    <div class="card-header">Портфель клиента</div>
+    <div class="card-body">
+      <form method="get" class="row g-3 align-items-end">
+        <div class="col-sm-4 col-md-3">
+          <label class="form-label" for="cid">ID контрагента</label>
+          <input class="form-control" id="cid" name="contragentid" inputmode="numeric"
+                 value="{{ form.contragentid }}" required>
+        </div>
+        <div class="col-sm-4 col-md-3">
+          <label class="form-label" for="pd">Дата (arcdate)</label>
+          <input class="form-control" id="pd" type="date" name="pdate" value="{{ form.pdate }}" required>
+        </div>
+        <div class="col-sm-4 col-md-3">
+          <button class="btn btn-go" type="submit">Показать</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {% if error %}<div class="alert alert-warning">{{ error }}</div>{% endif %}
+
+  {% if p %}
+  {# ── header ── #}
+  <div class="hero d-flex flex-wrap justify-content-between align-items-end gap-3">
+    <div>
+      <div class="eyebrow">Портфель клиента на {{ p.pdate|date:"d.m.Y" }}</div>
+      <h1>{{ p.name }}</h1>
+      <div class="sub">ID {{ p.contragentid }} · {{ p.client_type }} · {{ p.accounts|length }} счетов с остатком</div>
+    </div>
+    <div class="no-print d-flex gap-2">
+      <a class="btn btn-go btn-sm" href="{% url 'client-portfolio-excel' %}?contragentid={{ p.contragentid }}&pdate={{ p.pdate|date:'Y-m-d' }}">
+        <i class="fas fa-file-excel me-1"></i>Excel</a>
+      <button class="btn btn-outline-light btn-sm" type="button" onclick="window.print()">
+        <i class="fas fa-print me-1"></i>Печать / PDF</button>
+    </div>
+  </div>
+
+  {# ── KPIs ── #}
+  <div class="row g-3 mb-4">
+    {% for k in p.kpis %}
+    <div class="col-6 col-md-4 col-xl">
+      <div class="kpi{% if k.bad %} bad{% endif %}">
+        <div class="l">{{ k.label }}</div>
+        <div class="v">{{ k.value|floatformat:"0g" }}</div>
+        <div class="n">{{ k.note }}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  {# ── loans by product ── #}
+  <div class="card">
+    <div class="card-header">Кредиты по продуктам <span class="hint">сум, эквивалент</span></div>
+    {% if p.loans.rows %}
+    <div class="table-responsive">
+      <table class="table table-sm table-hover">
+        <thead><tr><th>Продукт</th><th class="m">Срочные</th><th class="m">Реструкт.</th>
+          <th class="m">Просрочка</th><th class="m">Суд</th><th class="m">Брутто</th>
+          <th class="m">Резерв</th><th class="m">Нетто</th></tr></thead>
+        <tbody>
+        {% for r in p.loans.rows %}
+          <tr><td>{{ r.label }}</td>
+            <td class="m">{{ r.current|floatformat:"0g" }}</td>
+            <td class="m{% if not r.restructured %} zero{% endif %}">{{ r.restructured|floatformat:"0g" }}</td>
+            <td class="m{% if r.overdue %} red{% else %} zero{% endif %}">{{ r.overdue|floatformat:"0g" }}</td>
+            <td class="m{% if r.court %} red{% else %} zero{% endif %}">{{ r.court|floatformat:"0g" }}</td>
+            <td class="m">{{ r.gross|floatformat:"0g" }}</td>
+            <td class="m">{{ r.reserve|floatformat:"0g" }}</td>
+            <td class="m">{{ r.net|floatformat:"0g" }}</td></tr>
+        {% endfor %}
+          <tr class="total"><td>Итого</td>
+            <td class="m">{{ p.loans.current|floatformat:"0g" }}</td>
+            <td class="m">{{ p.loans.restructured|floatformat:"0g" }}</td>
+            <td class="m">{{ p.loans.overdue|floatformat:"0g" }}</td>
+            <td class="m">{{ p.loans.court|floatformat:"0g" }}</td>
+            <td class="m">{{ p.loans.gross|floatformat:"0g" }}</td>
+            <td class="m">{{ p.loans.reserve|floatformat:"0g" }}</td>
+            <td class="m">{{ p.loans.net|floatformat:"0g" }}</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      Начисленные проценты: <strong>{{ p.loans.interest_due|floatformat:"0g" }}</strong>,
+      из них просроченные: <strong{% if p.loans.interest_overdue %} class="red"{% endif %}>{{ p.loans.interest_overdue|floatformat:"0g" }}</strong>.
+      {% if p.loans.written_off %}Списано за баланс (95413): <strong class="red">{{ p.loans.written_off|floatformat:"0g" }}</strong>.{% endif %}
+      {% if p.loans.problem_pct %}Проблемные (просрочка + суд): <strong class="red">{{ p.loans.problem_pct }}%</strong> портфеля.{% endif %}
+    </div>
+    {% else %}
+    <div class="card-body text-muted">Кредитов на эту дату нет.</div>
+    {% endif %}
+  </div>
+
+  {# ── deals ── #}
+  {% if p.deals %}
+  <div class="card">
+    <div class="card-header">Сделки <span class="hint">живые в портфеле на дату</span></div>
+    <div class="table-responsive">
+      <table class="table table-sm table-hover">
+        <thead><tr><th>Сделка</th><th>РНК</th><th>Вал.</th><th class="m">Выдано (экв.)</th>
+          <th class="m">Остаток</th><th class="m">Погашено</th><th class="m">Просрочка</th>
+          <th class="m">Проценты</th><th>Закрытие</th><th class="m">Дней</th><th></th></tr></thead>
+        <tbody>
+        {% for d in p.deals %}
+          <tr><td>{{ d.dealid }}<div class="acc">{% for n in d.loan_accounts %}{{ n }}<br>{% endfor %}</div></td>
+            <td>{{ d.rnk_dealid|default:"—" }}</td>
+            <td>{{ d.currencyid }}</td>
+            <td class="m">{{ d.given|floatformat:"0g" }}</td>
+            <td class="m">{{ d.balance|floatformat:"0g" }}</td>
+            <td class="m">{% if d.repaid_pct is not None %}{{ d.repaid_pct }}%{% else %}—{% endif %}</td>
+            <td class="m{% if d.overdue %} red{% else %} zero{% endif %}">{{ d.overdue|floatformat:"0g" }}</td>
+            <td class="m">{{ d.interest|floatformat:"0g" }}</td>
+            <td>{{ d.close_date|date:"d.m.Y"|default:"—" }}</td>
+            <td class="m">{{ d.days_left|default_if_none:"—" }}</td>
+            <td>{% if d.flag %}<span class="badge bg-{{ d.flag.0 }}">{{ d.flag.1 }}</span>{% endif %}</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% if p.loose %}
+    <div class="note">Счета кредитов без живой сделки ({{ p.loose|length }}):
+      {% for a in p.loose %}<span class="acc">{{ a.accountno }}</span> — {{ a.amount|floatformat:"0g" }}{% if not forloop.last %}; {% endif %}{% endfor %}.
+      Их нет в portfel_table на эту дату — стоит проверить.</div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {# ── credit lines ── #}
+  {% if p.rnk %}
+  <div class="card">
+    <div class="card-header">Кредитные линии (РНК) <span class="hint">сумма сделок внутри линии, не лимит</span></div>
+    <div class="table-responsive">
+      <table class="table table-sm">
+        <thead><tr><th>РНК</th><th class="m">Сделок</th><th class="m">Выдано (экв.)</th>
+          <th class="m">Остаток</th><th class="m">Просрочка</th><th class="m">Неисп. линия (91809)</th>
+          <th>Последнее закрытие</th><th class="m">Дней</th></tr></thead>
+        <tbody>
+        {% for r in p.rnk %}
+          <tr><td>{{ r.rnk_dealid }}</td><td class="m">{{ r.deals }}</td>
+            <td class="m">{{ r.given|floatformat:"0g" }}</td>
+            <td class="m">{{ r.balance|floatformat:"0g" }}</td>
+            <td class="m{% if r.overdue %} red{% else %} zero{% endif %}">{{ r.overdue|floatformat:"0g" }}</td>
+            <td class="m{% if not r.unused %} zero{% endif %}">{{ r.unused|floatformat:"0g" }}</td>
+            <td>{{ r.last_close|date:"d.m.Y"|default:"—" }}</td>
+            <td class="m">{{ r.days_left|default_if_none:"—" }}</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="row g-3">
+    {# ── deposits ── #}
+    <div class="col-lg-6">
+      <div class="card h-100">
+        <div class="card-header">Депозиты и счета клиента</div>
+        {% if p.deposits.rows %}
+        <table class="table table-sm">
+          <thead><tr><th>Вид</th><th class="m">Счетов</th><th class="m">Сумма</th><th class="m">Доля</th></tr></thead>
+          <tbody>
+          {% for r in p.deposits.rows %}
+            <tr><td>{{ r.label }}</td><td class="m">{{ r.count }}</td>
+              <td class="m">{{ r.amount|floatformat:"0g" }}</td><td class="m">{{ r.share }}%</td></tr>
+          {% endfor %}
+            <tr class="total"><td>Итого</td><td></td><td class="m">{{ p.deposits.total|floatformat:"0g" }}</td><td></td></tr>
+          </tbody>
+        </table>
+        {% else %}<div class="card-body text-muted">Остатков на счетах нет.</div>{% endif %}
+      </div>
+    </div>
+    {# ── off-balance ── #}
+    <div class="col-lg-6">
+      <div class="card h-100">
+        <div class="card-header">Внебалансовые счета</div>
+        {% if p.offbalance.rows %}
+        <table class="table table-sm">
+          <thead><tr><th>Вид</th><th class="m">Счетов</th><th class="m">Сумма</th></tr></thead>
+          <tbody>
+          {% for r in p.offbalance.rows %}
+            <tr><td>{{ r.label }}</td><td class="m">{{ r.count }}</td>
+              <td class="m">{{ r.amount|floatformat:"0g" }}</td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        {% if p.offbalance.coverage_pct is not None %}
+        <div class="note">Обеспечение покрывает <strong>{{ p.offbalance.coverage_pct }}%</strong> кредитного портфеля
+          (залоги 945xx ÷ кредиты брутто).</div>
+        {% endif %}
+        {% else %}<div class="card-body text-muted">Внебалансовых остатков нет.</div>{% endif %}
+      </div>
+    </div>
+  </div>
+
+  {# ── turnover ── #}
+  <div class="card mt-3">
+    <div class="card-header">Обороты по счетам за {{ p.turnover.months|length }} мес.
+      <span class="hint">без переводов между своими счетами</span></div>
+    <div class="table-responsive">
+      <table class="table table-sm">
+        <thead><tr><th>Месяц</th><th class="m">Поступления</th><th class="m">Док.</th>
+          <th class="m">Списания</th><th class="m">Док.</th><th class="m">Сальдо</th>
+          <th style="width:30%"></th></tr></thead>
+        <tbody>
+        {% for m in p.turnover.months %}
+          <tr><td>{{ m.label }}</td>
+            <td class="m">{{ m.in|floatformat:"0g" }}</td><td class="m">{{ m.in_docs }}</td>
+            <td class="m">{{ m.out|floatformat:"0g" }}</td><td class="m">{{ m.out_docs }}</td>
+            <td class="m{% if m.net < 0 %} red{% endif %}">{{ m.net|floatformat:"0g" }}</td>
+            <td><span class="bar in" style="width:{{ m.in_w }}%"></span>
+                <span class="bar out mt-1" style="width:{{ m.out_w }}%"></span></td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <span class="bar in d-inline-block" style="width:14px"></span> поступления ·
+      <span class="bar out d-inline-block" style="width:14px"></span> списания.
+      В среднем поступает <strong>{{ p.turnover.avg_in|floatformat:"0g" }}</strong> в месяц.
+      {% if p.turnover.debt_months %}Кредиты брутто = <strong>{{ p.turnover.debt_months }}</strong> мес. поступлений.{% endif %}
+    </div>
+  </div>
+
+  {# ── all accounts, for checking ── #}
+  <div class="card">
+    <details>
+      <summary>Все счета ({{ p.accounts|length }}) — как в базе</summary>
+      <div class="table-responsive">
+        <table class="table table-sm">
+          <thead><tr><th>Счёт</th><th>Вал.</th><th>TOBO</th><th>Что это</th><th class="m">Сальдо в базе</th></tr></thead>
+          <tbody>
+          {% for a in p.accounts %}
+            <tr><td class="acc">{{ a.accountno }}</td><td>{{ a.currency_code }}</td><td>{{ a.toboid }}</td>
+              <td>{{ a.label }}</td><td class="m">{{ a.saldo|floatformat:"0g" }}</td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+
+  <div class="note no-print">
+    Суммы — эквивалент в сумах на дату. Кредиты в базе отрицательные, здесь показаны по модулю.
+    Счёт определяется по первым 5 цифрам по плану счетов ЦБ.
+    «Выдано» по РНК — сумма выдач по сделкам линии, это не лимит.
+  </div>
+  {% endif %}
+</div>
+{% endblock content %}
