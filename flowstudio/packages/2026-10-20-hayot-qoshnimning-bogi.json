@@ -1,0 +1,247 @@
+{
+ "id": "2026-10-20-hayot-qoshnimning-bogi",
+ "number": 58,
+ "for": "Inom",
+ "date": "2026-10-20",
+ "series": "Hayot hikoyasi",
+ "title_uz": "Qoʻshnimning bogʻi",
+ "concept_uz": "Sardor yangi mahallaga koʻchib keladi. Hammaning hovlisi ozoda, qoʻshni Zuhra opaning bogʻi esa yovvoyi — Sardor uni «qarovsiz» deb hukm qiladi. Burilish: opa deyarli oʻn yildan beri koʻrmaydi; u bogʻni koʻz uchun emas, hid va qoʻl uchun ekkan.",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "corner/management/commands/_stories_life_1_6.py (story 5, «My Neighbor's Garden»)"
+ ],
+ "facts": [
+  {
+   "claim": "Hikoyachi koʻchib kelgandan keyingi dastlabki oylarda qoʻshnisining bogʻiga tushunolmagan",
+   "source": "corner/management/commands/_stories_life_1_6.py (story 5) body"
+  },
+  {
+   "claim": "Koʻchadagi boshqa hovlilar tekis kesilgan, butalar toʻgʻri chiziqda, maysa qator-qator oʻrilgan; qoʻshnining bogʻi yovvoyi — gullar xohlagan joyda, baland oʻt devorga tegadi, chirmovuqlar har tomonga oʻrlaydi",
+   "source": "corner/management/commands/_stories_life_1_6.py (story 5) body"
+  },
+  {
+   "claim": "U qoʻshnisiga farqi yoʻq deb oʻylagan va uni hukm qilgan",
+   "source": "corner/management/commands/_stories_life_1_6.py (story 5) body"
+  },
+  {
+   "claim": "Bir kechqurun uni gullar orasida tiz choʻkib, barglarga qaramay, ularni qoʻli bilan sekin silayotganini koʻrgan",
+   "source": "corner/management/commands/_stories_life_1_6.py (story 5) body"
+  },
+  {
+   "claim": "Keyinroq boshqa qoʻshnidan u deyarli oʻn yil oldin koʻrish qobiliyatini yoʻqotganini bilgan",
+   "source": "corner/management/commands/_stories_life_1_6.py (story 5) body"
+  },
+  {
+   "claim": "Keyingi dam olish kuni oʻzini tanishtirgan; u bogʻni qarovsiz deb oʻylaganini tan olganda opa iliq kulgan",
+   "source": "corner/management/commands/_stories_life_1_6.py (story 5) body"
+  },
+  {
+   "claim": "Opaning soʻzlari: bogʻni bir koʻrinish uchun emas, bir hid va bir tuygʻu uchun ekadi",
+   "source": "corner/management/commands/_stories_life_1_6.py (story 5) body"
+  },
+  {
+   "claim": "Opa har oʻsimlikni hidi bilan atagan: bu yerda yalpiz, u yerda yasmin, devor boʻyida atirgullar",
+   "source": "corner/management/commands/_stories_life_1_6.py (story 5) body"
+  },
+  {
+   "claim": "Hikoyachi hamon maysasini odatdan toʻgʻri chiziqda oʻradi, lekin endi biror narsa kutganiga oʻxshamagani uchun notoʻgʻri deb oʻylamaydi",
+   "source": "corner/management/commands/_stories_life_1_6.py (story 5) body"
+  }
+ ],
+ "style_line": "Cinematic photoreal drama, a quiet Tashkent mahalla in late spring, warm low sun, soft film grain, 35mm look, rich greens and warm brick tones, tender hopeful mood. No text, no letters, no logos, no signage, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: ikki hovli",
+   "prompt": "Vertical 9:16 wide shot over a low brick fence between two neighbouring courtyards in a quiet Tashkent mahalla in late spring. On the left: a neat yard, grass mowed in perfectly straight stripes, a hedge cut into a straight box, a red petrol lawnmower. On the right: a wild, overflowing garden, flowers growing everywhere, tall grass brushing the fence, green vines climbing the wall in every direction, a wooden bench half hidden by roses. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Sardor",
+   "prompt": "Vertical 9:16 full-body portrait of an Uzbek man about thirty, short dark hair, neat stubble, slightly proud serious face, a MUSTARD-YELLOW T-shirt, grey work trousers, canvas gloves, standing in a neat courtyard with mowed grass in straight stripes, warm late afternoon light."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Zuhra opa",
+   "prompt": "Vertical 9:16 full-body portrait of a kind Uzbek woman about seventy, gentle wrinkled smiling face, calm eyes that look slightly past the camera, a WHITE HEADSCARF WITH SMALL BLUE FLOWERS, a long dark-green dress with a cardigan, standing among tall flowers and vines in a wild garden, one hand resting on a rose bush, warm low sun."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Butun koʻcha",
+   "from": "R1",
+   "prompt": "Change the scene: lift the camera high above the same street of the mahalla. A row of five courtyards: four are neat and identical, striped lawns and square hedges; one in the middle is a wild green island of flowers and vines. Same light, 9:16."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Kechqurun bogʻda",
+   "from": [
+    "R1",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot of the wild garden at dusk: the old woman in the white headscarf with blue flowers kneels among the flowers, eyes half closed, her hands slowly running over the leaves of a plant instead of looking at it. Warm last light, fireflies of dust in the air. Same face."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Darvoza oldida qoʻshni chol",
+   "from": "R2",
+   "prompt": "Change the scene: the street outside the courtyards in the evening. The young man in the mustard-yellow T-shirt stands by a green metal gate talking with an old Uzbek neighbour about seventy-five, white beard, a black-and-white embroidered doppi skullcap, a grey waistcoat, leaning on the gate. Same face, 9:16."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Tanishuv",
+   "from": [
+    "R5",
+    "R2"
+   ],
+   "prompt": "Change the scene: a bright weekend morning in the same wild garden. The young man in the mustard-yellow T-shirt stands at the garden gate holding a small plate of fresh bread, a little shy; the old woman in the white headscarf with blue flowers faces him, laughing warmly. Same faces, 9:16."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Hid boʻyicha sayr",
+   "from": "R7",
+   "prompt": "Change the scene: close medium shot in the same garden. The old woman gently guides the young man's hand to a bush of mint; behind them white jasmine flowers and a line of red and pink roses along the brick fence. He leans in with his eyes closed, smelling. Same faces, warm light, 9:16."
+  },
+  {
+   "id": "R9",
+   "name_uz": "Toʻgʻri chiziq",
+   "from": [
+    "R1",
+    "R2"
+   ],
+   "prompt": "Change the scene: the neat courtyard at golden hour. The young man in the mustard-yellow T-shirt pushes the red lawnmower in a perfectly straight line; over the low fence the wild garden glows, and he looks toward it with a soft smile. Same face, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Toʻgʻri chiziqlar",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Sardor (kadr ortida)",
+     "text": "Bu mahallaga koʻchib kelganimga bir necha oy boʻldi. Bitta narsaga tushunolmasdim."
+    }
+   ],
+   "prompt": "Opens with the loud roar of a lawnmower starting. The man in the mustard-yellow T-shirt mows a perfectly straight stripe, stops, wipes his brow, and his eyes drift over the low fence to the wild garden next door; he frowns. Audio: lawnmower engine, then it cuts off, birds. An off-screen man says in Uzbek with a calm, slightly dry Uzbek male voice, about thirty, a storyteller tone: \"Bu mahallaga ko'chib kelganimga bir necha oy bo'ldi. Bitta narsaga tushunolmasdim.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Bitta yovvoyi hovli",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Sardor (kadr ortida)",
+     "text": "Hammaning hovlisi tekis, ozoda. Uniki esa — yovvoyi."
+    }
+   ],
+   "prompt": "Slow aerial glide along the row of neat striped courtyards, then the camera stops above the one wild green garden in the middle, vines waving in the breeze. Audio: soft wind, a distant sprinkler. An off-screen man says in Uzbek with a calm, slightly dry Uzbek male voice, about thirty, a storyteller tone: \"Hammaning hovlisi tekis, ozoda. Uniki esa — yovvoyi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Hukm",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Sardor",
+     "text": "Bu odamga umuman farqi yoʻq shekilli."
+    }
+   ],
+   "prompt": "Medium shot. The man in the mustard-yellow T-shirt leans on the low fence, looks at the tall grass and climbing vines, shakes his head and clicks his tongue in disapproval. Audio: insects buzzing, a leaf rustle. He mutters in Uzbek with a calm, slightly dry Uzbek male voice, about thirty: \"Bu odamga umuman farqi yo'q shekilli.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Qoʻllar",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Sardor (kadr ortida)",
+     "text": "Bir kuni kechqurun uni gullar orasida koʻrdim. U barglarga qaramasdi — ularni silardi."
+    }
+   ],
+   "prompt": "Dusk. Slow push-in on the old woman kneeling in the flowers; her fingers glide slowly over the leaves, she touches a petal, then lifts her face to the breeze with her eyes closed, smiling. Close-up of her hands on the leaves. Audio: crickets, a soft breeze. An off-screen man says in Uzbek with a calm, slightly dry Uzbek male voice, about thirty, quieter now: \"Bir kuni kechqurun uni gullar orasida ko'rdim. U barglarga qaramasdi — ularni silardi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Bilmasmiding?",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Qoʻshni chol",
+     "text": "Bilmasmiding? Zuhra opa deyarli oʻn yil oldin koʻzidan ayrilgan."
+    }
+   ],
+   "prompt": "The old neighbour in the doppi glances toward the wild garden and speaks gently; the young man's face slowly changes from curiosity to shock, his mouth opens a little. Audio: evening street, a dog barking far away. The old neighbour says in Uzbek with a soft, slow, gravelly elderly Uzbek male voice, about seventy-five: \"Bilmasmiding? Zuhra opa deyarli o'n yil oldin ko'zidan ayrilgan.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Tanishuv",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Sardor",
+     "text": "Rostini aytsam, bogʻingizni qarovsiz deb oʻylagandim."
+    },
+    {
+     "who": "Zuhra opa",
+     "text": "Men uni koʻrinishi uchun ekmayman, bolam. Hidi va tegishi uchun ekaman."
+    }
+   ],
+   "prompt": "The young man scratches the back of his head and confesses, embarrassed; the old woman laughs warmly and pats his arm. Audio: morning birds, her warm laugh. He says in Uzbek with a calm, slightly dry Uzbek male voice, about thirty, embarrassed: \"Rostini aytsam, bog'ingizni qarovsiz deb o'ylagandim.\" She answers in Uzbek with a warm, gentle elderly Uzbek female voice, about seventy, smiling: \"Men uni ko'rinishi uchun ekmayman, bolam. Hidi va tegishi uchun ekaman.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Yalpiz, yasmin, atirgul",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Zuhra opa",
+     "text": "Mana bu — yalpiz. Ana u — yasmin. Devor boʻyida — atirgullar."
+    }
+   ],
+   "prompt": "The old woman walks slowly along the garden, touching each plant and naming it without looking; the young man follows, closes his eyes and breathes in each scent, amazed. Camera tracks beside them. Audio: bees, leaves brushing, soft footsteps. She says in Uzbek with a warm, gentle elderly Uzbek female voice, about seventy, proud and playful: \"Mana bu — yalpiz. Ana u — yasmin. Devor bo'yida — atirgullar.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Odat",
+   "method": "Frames to Video",
+   "start": "R9",
+   "lines": [
+    {
+     "who": "Sardor (kadr ortida)",
+     "text": "Maysamni hamon toʻgʻri chiziqda oʻraman — odat. Lekin endi bir qarashda hukm qilmayman."
+    }
+   ],
+   "prompt": "Golden hour. The young man mows one straight stripe, stops by the fence, turns off the mower and leans over to smell a rose that has climbed onto his side of the fence; he smiles. Audio: mower engine fading out, birds, the old woman humming softly off-screen. An off-screen man says in Uzbek with a calm, slightly dry Uzbek male voice, about thirty, warm now: \"Maysamni hamon to'g'ri chiziqda o'raman — odat. Lekin endi bir qarashda hukm qilmayman.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 9,
+   "title_uz": "Siz-chi?",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R9"
+   ],
+   "lines": [
+    {
+     "who": "Sardor",
+     "text": "Siz ham biror narsani bir qarashda notoʻgʻri deb oʻylaganmisiz? Izohda yozing."
+    }
+   ],
+   "prompt": "Medium close-up: the young man in the mustard-yellow T-shirt turns from the fence and looks straight into the camera with a gentle, honest half-smile, the glowing wild garden behind him. Hold on his face. Audio: soft breeze, one bird call. He says in Uzbek with a calm, slightly dry Uzbek male voice, about thirty, friendly: \"Siz ham biror narsani bir qarashda noto'g'ri deb o'ylaganmisiz? Izohda yozing.\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Hammaning hovlisi ozoda, uniki yovvoyi. Sardor uni «qarovsiz» deb oʻyladi — toki bir kuni haqiqatni bilguncha. Siz ham biror narsani bir qarashda notoʻgʻri baholaganmisiz? Izohda yozing. powerty.uz #hayothikoyasi #hikoya #qoʻshni #Powerty"
+}

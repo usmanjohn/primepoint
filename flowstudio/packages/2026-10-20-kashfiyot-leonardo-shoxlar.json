@@ -1,0 +1,232 @@
+{
+ "id": "2026-10-20-kashfiyot-leonardo-shoxlar",
+ "number": 59,
+ "for": "Jonibek",
+ "date": "2026-10-20",
+ "series": "Buyuk kashfiyot",
+ "title_uz": "Daraxt Pifagorni biladi",
+ "concept_uz": "Taxminan besh yuz yil oldin Leonardo da Vinchi daraxt chizar ekan, bir qoida yozib qoldiradi: shoxlar birga olinsa — tanaga teng. Burilish: ikki teng shox tanadan yarim ingichka emas, va bu qoida xuddi Pifagor teoremasi: 6² + 8² = 10².",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_30_36.py (story 19, «Leonardo da Vinchi va daraxt shoxlari qoidasi»)"
+ ],
+ "facts": [
+  {
+   "claim": "Taxminan besh yuz yil oldin Leonardo da Vinchi daftarlarida daraxt chizib, har qavatdagi barcha shoxlar birga olinsa tananing yoʻgʻonligiga teng boʻladi, deb yozgan",
+   "source": "corner/management/commands/_stories_matematika_olami_30_36.py (story 19) body"
+  },
+  {
+   "claim": "Tanani koʻndalang kessangiz doira (kesim) chiqadi; ikki shox kesimlari yuzalarining yigʻindisi tana kesimining yuzasiga teng",
+   "source": "corner/management/commands/_stories_matematika_olami_30_36.py (story 19) body"
+  },
+  {
+   "claim": "Ikki teng shox tanadan yarim ingichka boʻlmaydi: 20 sm li tana ikki teng shoxga boʻlinsa, har biri taxminan 14,1 sm",
+   "source": "corner/management/commands/_stories_matematika_olami_30_36.py (story 19) body + grammar (200 + 200 = 400)"
+  },
+  {
+   "claim": "Qoida: tana diametrining kvadrati shoxlar diametrlari kvadratlarining yigʻindisiga teng — xuddi Pifagor teoremasi; 10 sm li tana 6 va 8 sm li shoxlarga: 36 + 64 = 100",
+   "source": "corner/management/commands/_stories_matematika_olami_30_36.py (story 19) body + grammar"
+  },
+  {
+   "claim": "Olimlar qoidani haqiqiy daraxtlarda sinab koʻrgan, koʻp daraxtlarda ancha yaxshi bajariladi; sababi haqida bahs davom etadi",
+   "source": "corner/management/commands/_stories_matematika_olami_30_36.py (story 19) body"
+  },
+  {
+   "claim": "Kichik shox kichik daraxtga oʻxshaydi (oʻz-oʻziga oʻxshashlik); daryolar tarmogʻi, oʻpkadagi havo yoʻllari, qon tomirlarida ham uchraydi",
+   "source": "corner/management/commands/_stories_matematika_olami_30_36.py (story 19) body"
+  },
+  {
+   "claim": "Leonardo rassom edi, lekin chizishdan oldin oʻlchar edi",
+   "source": "corner/management/commands/_stories_matematika_olami_30_36.py (story 19) body"
+  },
+  {
+   "claim": "Arifmetika: 6² + 8² = 36 + 64 = 100 = 10²; 14,1² ≈ 198,8 ≈ 200, 200 + 200 = 400 = 20²",
+   "source": "hisoblab tekshirildi (story 19 grammar examples)"
+  }
+ ],
+ "style_line": "Cinematic photoreal historical drama, Tuscan countryside around 1500, warm golden late-afternoon light, soft haze, painterly Renaissance colour palette of ochre, olive green and deep red, 35mm film look, gentle sense of wonder. No text, no letters, no numbers, no writing, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: Toskana tepaligi",
+   "prompt": "Vertical 9:16 wide shot of a gentle Tuscan hillside around the year 1500 at golden hour: one large old oak tree with a thick trunk splitting into two big limbs and then into many smaller branches, olive groves and cypress trees behind, a stone farmhouse far away, a dirt path. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Leonardo",
+   "prompt": "Vertical 9:16 full-body portrait of a respectful reconstruction of the Renaissance artist Leonardo da Vinci in his fifties: long wavy greying hair, a long greying beard, thoughtful kind eyes, a DEEP RED knee-length Renaissance cloak over a brown tunic, a soft dark cap, holding a small leather-bound sketchbook and a stick of red chalk, standing on a Tuscan hillside in golden light."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Daftar va daraxt",
+   "from": [
+    "R1",
+    "R2"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 over-the-shoulder shot: the bearded artist in the deep red cloak sits on a stone under the big oak, his open sketchbook on his knee showing a red-chalk drawing of the tree's trunk and branches only, no writing; he looks up at the real branches. Same face, golden light."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Kesilgan tana va shoxlar",
+   "from": "R1",
+   "prompt": "Change the scene: on a rough wooden workbench under the oak lie three freshly sawn round wooden slices showing their growth rings: one large slice from a trunk, and two smaller slices from two branches. Clean pale wood, sawdust around them, warm light, top-down three-quarter view, 9:16."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Leonardo oʻlchayapti",
+   "from": [
+    "R4",
+    "R2"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot: the bearded artist in the deep red cloak leans over the workbench, measuring the large wooden slice with a pair of brass dividers, the two smaller slices beside it, his sketchbook open nearby with only drawings. Same face, golden light."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Toʻgʻri burchakli uchburchak",
+   "from": "R5",
+   "prompt": "Change the scene: on the same workbench three straight wooden sticks are laid to form a right-angled triangle, a short stick, a medium stick and the longest stick; next to each stick lies a matching round wooden slice, small, medium and large. The artist's hand rests beside the right angle. Same light, 9:16."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Daraxtdan daryoga",
+   "from": "R1",
+   "prompt": "Change the scene: view from high above at dusk of a wide river delta spreading across a plain into many branching channels, shaped exactly like the oak's branches, the water glowing gold in the low sun. 9:16."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Quyosh botishi",
+   "from": "R3",
+   "prompt": "Change the scene: sunset under the same oak. The bearded artist in the deep red cloak stands with his sketchbook closed under his arm, one hand raised, measuring a branch between thumb and finger against the sky, a quiet smile. Same face, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Shamol",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Taxminan besh yuz yil oldin bir rassom daraxtda sir topdi."
+    }
+   ],
+   "prompt": "Opens on a sudden gust of wind roaring through the oak's branches; leaves swirl; the bearded artist in the deep red cloak grabs his cap, stops, and stares up into the branches as if he has just noticed something. Camera tilts up from him into the branching canopy. Audio: strong wind, rustling leaves, a church bell far away. An off-screen man says in Uzbek with a deep, warm, mysterious adult Uzbek male narrator voice: \"Taxminan besh yuz yil oldin bir rassom daraxtda sir topdi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Daftar",
+   "method": "Frames to Video",
+   "start": "R3",
+   "lines": [
+    {
+     "who": "Leonardo",
+     "text": "Har qavatdagi shoxlar birga olinsa — tananing yoʻgʻonligiga teng."
+    }
+   ],
+   "prompt": "The artist's red chalk moves quickly over the sketchbook drawing branches; he pauses, looks up at the tree, then back at the drawing, and murmurs to himself with growing excitement. Close on his eyes, then the sketch. Audio: chalk scratching on paper, birds. He says in Uzbek with a calm, thoughtful Uzbek male voice in his fifties, almost whispering: \"Har qavatdagi shoxlar birga olinsa — tananing yo'g'onligiga teng.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Kesim",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Tanani koʻndalang kesing — doira chiqadi. Ikki shoxni ham kesing — ikki kichik doira."
+    }
+   ],
+   "prompt": "Slow overhead push-in on the three sawn wooden slices; sawdust drifts in the light; the camera circles the large slice, then the two small ones, the growth rings catching the sun. Audio: a last saw stroke, a slice tapping onto the wood, a soft musical swell. An off-screen man says in Uzbek with a deep, warm, mysterious adult Uzbek male narrator voice: \"Tanani ko'ndalang kesing — doira chiqadi. Ikki shoxni ham kesing — ikki kichik doira.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Yuzalar",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Ikki kichik doiraning yuzasi birga — katta doiraning yuzasiga teng."
+    }
+   ],
+   "prompt": "Magical realism: the faces of the two small wooden slices begin to glow with warm golden light, the light flows out of them like liquid honey across the bench and pours into the large slice, filling its face exactly to the rim, no more, no less. Audio: a soft rising chime, a satisfying click when it is full. An off-screen man says in Uzbek with a deep, warm, mysterious adult Uzbek male narrator voice: \"Ikki kichik doiraning yuzasi birga — katta doiraning yuzasiga teng.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Tuzoq",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Tana teng ikkiga boʻlinsa, har shox yarim ingichka boʻladimi?"
+    },
+    {
+     "who": "Leonardo",
+     "text": "Yoʻq!"
+    }
+   ],
+   "prompt": "The artist opens the brass dividers to half the width of the large slice and holds them over one small slice; the gap is clearly too small, he shakes his head with a playful smile and raises one finger. Audio: a metallic click of the dividers, a short comic pause. An off-screen man says in Uzbek with a deep, warm, mysterious adult Uzbek male narrator voice: \"Tana teng ikkiga bo'linsa, har shox yarim ingichka bo'ladimi?\" The artist answers in Uzbek with a calm, thoughtful Uzbek male voice in his fifties, firmly: \"Yo'q!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Yigirmadan oʻn toʻrtga",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R4"
+   ],
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Yigirma santimetrli tana ikki teng shoxga boʻlinsa — har biri taxminan oʻn toʻrt santimetr."
+    }
+   ],
+   "prompt": "Medium shot at the workbench: the artist holds up one small slice beside the large one toward the camera, turning them so we see the small one is clearly more than half as wide, and nods with a teacher's warmth. Audio: birdsong, wood knocking softly. An off-screen man says in Uzbek with a deep, warm, mysterious adult Uzbek male narrator voice: \"Yigirma santimetrli tana ikki teng shoxga bo'linsa — har biri taxminan o'n to'rt santimetr.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Bu — Pifagor!",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Oʻn santimetrli tana — olti va sakkiz santimetrli shoxlar. Oʻttiz olti qoʻshuv oltmish toʻrt — yuz. Bu xuddi Pifagor teoremasi!"
+    }
+   ],
+   "prompt": "Slow push-in on the three sticks forming a right-angled triangle; one by one the small, the medium and the large wooden slices glow next to their sticks, and the glow of the two smaller slices flows into the largest one. The artist's hand taps the right angle. Audio: three ascending notes, then a warm chord. An off-screen man says in Uzbek with a deep, warm, mysterious adult Uzbek male narrator voice, amazed: \"O'n santimetrli tana — olti va sakkiz santimetrli shoxlar. O'ttiz olti qo'shuv oltmish to'rt — yuz. Bu xuddi Pifagor teoremasi!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Hamma joyda",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Kichik shox — kichik daraxt. Daryolar, oʻpkadagi havo yoʻllari, qon tomirlari ham shunday shoxlanadi."
+    }
+   ],
+   "prompt": "The camera drifts down over the glowing river delta; the branching channels gently dissolve into a soft, clean glowing pattern of branching airways in a pair of lungs, then into fine branching veins, then back into the oak's branches against the sky. Gentle, beautiful, not medical or graphic. Audio: flowing water, a slow breath, soft music. An off-screen man says in Uzbek with a deep, warm, mysterious adult Uzbek male narrator voice: \"Kichik shox — kichik daraxt. Daryolar, o'pkadagi havo yo'llari, qon tomirlari ham shunday shoxlanadi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 9,
+   "title_uz": "Siz ham oʻlchang",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Leonardo chizishdan oldin oʻlchar edi. Siz ham bitta daraxtni oʻlchab koʻring — qoida ishladimi? Izohda yozing!"
+    }
+   ],
+   "prompt": "Sunset. The artist lowers his measuring hand, turns his head and looks straight into the camera with a knowing smile, then walks away down the path as the oak glows behind him. Hold on the tree at the end. Audio: evening crickets, a last soft gust in the leaves. An off-screen man says in Uzbek with a deep, warm, mysterious adult Uzbek male narrator voice, inviting: \"Leonardo chizishdan oldin o'lchar edi. Siz ham bitta daraxtni o'lchab ko'ring — qoida ishladimi? Izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Leonardo da Vinchi daraxt chizib, bir qoida topdi: shoxlar birga olinsa — tanaga teng. Ikki teng shox esa tanadan yarim ingichka emas! 6² + 8² = 10² — daraxt ichidagi Pifagor. Hovlingizdagi daraxtni oʻlchab koʻring va izohda yozing. powerty.uz #buyukkashfiyot #matematika #Leonardo #Pifagor #Powerty"
+}
