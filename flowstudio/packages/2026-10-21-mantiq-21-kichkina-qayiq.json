@@ -1,0 +1,177 @@
+{
+ "id": "2026-10-21-mantiq-21-kichkina-qayiq",
+ "number": 61,
+ "for": "Jonibek",
+ "date": "2026-10-21",
+ "series": "Mantiq maydoni",
+ "title_uz": "Kichkina qayiq",
+ "concept_uz": "Togʻda dam olayotgan besh kishilik oila daryodan oʻtishi kerak, qayiq esa koʻpi bilan 80 kg koʻtaradi. Bobo 80, dada 76, oyi 64, Jasur 40, Afsona 36 kg — birorta katta odam hech kim bilan sigʻmaydi. Hammasi eng kamida necha marta suzib oʻtadi? Javob keyingi hafta, 26-oktabrdan keyin.",
+ "format_uz": "7 sahna × 8 soniya = 56 soniya",
+ "sources": [
+  "logic/management/commands/_puzzles_logic_17_24.py (puzzle 21)"
+ ],
+ "facts": [
+  {
+   "claim": "Qayiq koʻpi bilan 80 kg koʻtaradi; bobo 80, dada 76, oyi 64, Jasur 40, Afsona 36 kg; hamma eshkak eshishni biladi",
+   "source": "puzzle 21 body_uz"
+  },
+  {
+   "claim": "Har bir suzishda kamida bitta odam boʻlishi shart; bir tomonga har bir suzish — bitta oʻtish",
+   "source": "puzzle 21 lg-rule"
+  },
+  {
+   "claim": "Birorta katta odam qayiqqa hech kim bilan sigʻmaydi — «umidsiz tuyuladi, lekin unday emas»",
+   "source": "puzzle 21 body_uz"
+  },
+  {
+   "claim": "Soʻraladigan javob: eng kam oʻtishlar soni (javob videoda aytilmaydi)",
+   "source": "puzzle 21 lg-ask; answer_key '13' — faqat javob videosi uchun"
+  },
+  {
+   "claim": "Raund 3: 2026-10-19 ochilgan, javobi 2026-10-26 da ochiladi — javob videosi 2026-10-28 da (Jonibek), 26-oktabrdan oldin emas",
+   "source": "_puzzles_logic_17_24.py SCHEDULE start 2026-10-05 + 7×(3−1)"
+  }
+ ],
+ "style_line": "Cinematic photoreal, crisp clear mountain morning, cold turquoise river, golden autumn poplars, 35mm film look, warm family-adventure mood. No text, no letters, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: togʻ daryosi va qayiq",
+   "prompt": "Vertical 9:16 wide shot of a fast clear turquoise mountain river between pebble banks, snowy peaks and golden poplars behind. On the near bank a very small old wooden rowing boat with two oars is pulled onto the pebbles. The far bank with a footpath is clearly visible. No people, no signs."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Besh kishilik oila qirgʻoqda",
+   "from": "R1",
+   "prompt": "Add a family of five standing in a row on the near bank beside the little boat, all facing the camera, same river, same light, 9:16. Left to right: a big broad grandfather of about 70 with a white beard and a dark BLUE skullcap; a tall father of about 40 in a GREY fleece jacket; a mother of about 38 with a RED scarf around her neck and a hiking backpack; a skinny 12-year-old boy in an ORANGE hoodie; a small 10-year-old girl with two braids and a PURPLE raincoat. Hiking clothes, no logos."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Bobo qayiqda",
+   "from": "R2",
+   "prompt": "Change the moment: the big grandfather in the dark blue skullcap now sits alone in the little boat at the water's edge, the boat pressed deep into the water with the rim just above the surface; the rest of the family stands on the bank watching with wide eyes. Same faces, same clothes, same light, 9:16."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Yaqin plan: dada va oyi",
+   "from": "R2",
+   "prompt": "Change the framing: a medium two-shot of only the father in the grey fleece and the mother with the red scarf, standing by the boat, looking at it and doubtfully at each other. Same faces, same clothes, same light, 9:16."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Yaqin plan: Jasur va Afsona",
+   "from": "R2",
+   "prompt": "Change the framing: a medium two-shot of only the boy in the orange hoodie and the girl in the purple raincoat with two braids, standing by the bow of the little boat, the boy proudly puffing out his chest, the girl smiling slyly. Same faces, same clothes, same light, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Qayiq choʻkayozdi",
+   "method": "Frames to Video",
+   "start": "R3",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Togʻdagi daryo. Besh kishi. Bitta kichkina qayiq — koʻpi bilan sakson kilogramm koʻtaradi."
+    }
+   ],
+   "prompt": "The grandfather sits down in the little boat and it sinks deep with a loud wooden creak, water lapping right at the rim; the family on the bank gasps and leans forward. Comic timing. Audio: wood creaking, a splash, the rushing river. An off-screen narrator says with a calm, warm middle-aged male storyteller voice in Uzbek: \"Tog'dagi daryo. Besh kishi. Bitta kichkina qayiq — ko'pi bilan sakson kilogramm ko'taradi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Bobo",
+   "method": "Frames to Video",
+   "start": "R3",
+   "lines": [
+    {
+     "who": "Bobo",
+     "text": "Men sakson kilo. Yonimga hech kim sigʻmaydi."
+    }
+   ],
+   "prompt": "The grandfather, still sitting in the low boat, spreads his hands with a good-humoured shrug and pats the empty seat beside him, shaking his head. Audio: river rushing, a gull far away. The grandfather says with a deep, slow, good-humoured voice of a 70-year-old man in Uzbek: \"Men sakson kilo. Yonimga hech kim sig'maydi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Dada va oyi",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Dada",
+     "text": "Men yetmish olti."
+    },
+    {
+     "who": "Oyi",
+     "text": "Men oltmish toʻrt. Biz ham faqat yolgʻiz suzamiz."
+    }
+   ],
+   "prompt": "Two-shot: the father taps his chest and points at the boat, the mother lifts one finger and shakes her head. Audio: pebbles crunching underfoot, the river. The father says with a steady, slightly worried voice of a 40-year-old man in Uzbek: \"Men yetmish olti.\" The mother says with a clear, practical voice of a 38-year-old woman in Uzbek: \"Men oltmish to'rt. Biz ham faqat yolg'iz suzamiz.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Bolalar",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Jasur",
+     "text": "Men qirq kilo!"
+    },
+    {
+     "who": "Afsona",
+     "text": "Men esa oʻttiz olti!"
+    }
+   ],
+   "prompt": "Two-shot: the boy in the orange hoodie puffs out his chest and flexes a skinny arm, the girl in the purple raincoat raises her hand like at school. Audio: a playful giggle, the river. Jasur says with an eager, bright voice of a 12-year-old boy in Uzbek: \"Men qirq kilo!\" Afsona says with a confident, playful voice of a 10-year-old girl in Uzbek: \"Men esa o'ttiz olti!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Qoida",
+   "method": "Frames to Video",
+   "start": "R2",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Har safar qayiqda koʻpi bilan sakson kilo. Qayiq oʻzi suzmaydi — kimdir eshib olib oʻtishi kerak."
+    }
+   ],
+   "prompt": "Slow aerial pull-up over the river: the tiny boat on the near bank, the family as small figures, the far bank waiting. Audio: wind, the river, a single low drum beat. An off-screen narrator says with a calm, warm middle-aged male storyteller voice in Uzbek: \"Har safar qayiqda ko'pi bilan sakson kilo. Qayiq o'zi suzmaydi — kimdir eshib olib o'tishi kerak.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Umidsiz emasmi?",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R4",
+    "R5",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Dada",
+     "text": "Katta odam hech kim bilan sigʻmaydi. Umidsiz-ku!"
+    },
+    {
+     "who": "Afsona",
+     "text": "Umidsiz emas, dada."
+    }
+   ],
+   "prompt": "The father sits on a rock with his head in his hands; the girl in the purple raincoat walks up, taps his shoulder and smiles mysteriously, glancing at her brother. Audio: a tired sigh, then a light playful plink. The father says with a steady, slightly worried voice of a 40-year-old man in Uzbek: \"Katta odam hech kim bilan sig'maydi. Umidsiz-ku!\" Afsona says with a confident, playful voice of a 10-year-old girl in Uzbek: \"Umidsiz emas, dada.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Savol",
+   "method": "Frames to Video",
+   "start": "R2",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Hammasi narigi qirgʻoqqa oʻtishi uchun eng kamida necha marta suzish kerak? Har bir tomonga suzish — bitta oʻtish. Javobni izohda yozing yoki powerty.uz/logic da yuboring!"
+    }
+   ],
+   "prompt": "Slow pull-back from the whole family on the bank beside the little boat; everyone freezes mid-gesture as if time stopped, a splash of river water hangs still in the air. Hold on the frozen frame. Audio: total silence, then one soft bell. An off-screen narrator says with a calm, warm middle-aged male storyteller voice in Uzbek: \"Hammasi narigi qirg'oqqa o'tishi uchun eng kamida necha marta suzish kerak? Har bir tomonga suzish — bitta o'tish. Javobni izohda yozing yoki powerty.uz/logic da yuboring!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Togʻ daryosi, besh kishilik oila va koʻpi bilan 80 kg koʻtaradigan kichkina qayiq. Bobo 80, dada 76, oyi 64, Jasur 40, Afsona 36 kg. Hammasi narigi qirgʻoqqa eng kamida necha marta suzib oʻtadi? Javobni izohda yozing yoki powerty.uz/logic da yuboring — toʻgʻri javob keyingi hafta! #mantiq #jumboq #MantiqMaydoni #Powerty"
+}

@@ -1,0 +1,189 @@
+{
+ "id": "2026-10-21-nega-asal-buzilmaydi",
+ "number": 60,
+ "for": "Inom",
+ "date": "2026-10-21",
+ "series": "Nega shunday?",
+ "title_uz": "Uch ming yillik asal",
+ "concept_uz": "Bola omborxonada changli, eski asal topib, tashlab yubormoqchi boʻladi. Buvisi: «Tashlama! Asal hech qachon buzilmaydi.» Isbot — Misr maqbarasidan topilgan uch ming yildan eski asal, u hali ham yeyishga yaroqli edi. Sababi: suv kam, shakar koʻp, asalari qoʻshgan modda mikrobni oʻldiradi.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_wonders_1_10.py (story 9, «꿀은 절대 상하지 않는다»)"
+ ],
+ "facts": [
+  {
+   "claim": "Arxeologlar Misr maqbaralaridan 3000 yildan eski asal topgan va u hali ham yeyishga yaroqli holatda edi",
+   "source": "wonders story 9 body + summary"
+  },
+  {
+   "claim": "Asal muzlatgichga solinmasa ham buzilmaydi",
+   "source": "wonders story 9 body, 1-gap"
+  },
+  {
+   "claim": "Asalda namlik juda kam, shakar koʻp — mikrob omon qolishi qiyin muhit",
+   "source": "wonders story 9 body, 2-xatboshi"
+  },
+  {
+   "claim": "Asalari asal yasash jarayonida mikroblarni oʻldiradigan modda tabiiy ravishda paydo boʻladi",
+   "source": "wonders story 9 body, 2-xatboshi"
+  },
+  {
+   "claim": "Qopqogʻi yaxshi yopib qoʻyilsa, asal amalda abadiy oʻzgarmaydi",
+   "source": "wonders story 9 body, oxirgi gap"
+  }
+ ],
+ "style_line": "Cinematic photoreal, warm golden amber light, honey tones, shallow depth of field, 35mm film look, cosy and curious mood. No text, no letters, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Bola omborxonada",
+   "prompt": "Vertical 9:16 shot of a small dim Uzbek home pantry with wooden shelves of glass jars, dried fruit and pickles, a beam of afternoon light through a small window with floating dust. A skinny 10-year-old boy with messy black hair and a bright YELLOW t-shirt stands on a low stool, holding up a dusty old glass jar of dark golden honey with a tied cloth lid, wrinkling his nose at it. No labels on the jars."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Bola va buvisi",
+   "from": "R1",
+   "prompt": "Add a kind 70-year-old Uzbek grandmother standing in the pantry doorway behind the boy, round face, deep smile lines, a white headscarf with a GREEN embroidered edge, a floral house dress, hands on her hips, amused. Same boy, same yellow t-shirt, same dusty honey jar in his hands, same light, 9:16."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Misr maqbarasi: arxeolog",
+   "prompt": "Vertical 9:16 shot inside an ancient Egyptian stone tomb chamber lit by warm work lamps and a torch beam, walls with faded painted figures, dust in the air. A 35-year-old woman archaeologist in a khaki field shirt with a RED neckerchief and her hair tied back kneels beside a sealed round clay jar half buried in sand, brushing it with a soft brush. No writing, no hieroglyph text close-ups."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Ochilgan koʻza: oltin asal",
+   "from": "R3",
+   "prompt": "Change the moment: the clay jar is now open, the archaeologist lifts a thin wooden stick out of it and a ribbon of glossy golden honey flows down, glowing in the lamp light as if fresh. Her face lit from below, eyes wide in wonder. Same woman, same red neckerchief, same tomb, 9:16."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Asal ichi: mikrob",
+   "prompt": "Vertical 9:16 macro fantasy shot inside a drop of honey: a glowing amber world of thick golden syrup with sugar crystals sparkling like gems. A tiny cute round green microbe with small eyes and wobbly little legs floats in the middle, looking worried. Pixar-like charm inside a photoreal macro world."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Asalari asal yasamoqda",
+   "prompt": "Vertical 9:16 extreme macro shot of a honeybee on golden honeycomb cells filled with shining honey, tiny droplets on its mouthparts, soft glittering particles drifting from the honey like a faint magic dust, warm backlight."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Eski asal",
+   "method": "Frames to Video",
+   "start": "R1",
+   "lines": [
+    {
+     "who": "Bola",
+     "text": "Buvi, bu asal juda eski-ku! Tashlab yuboraylikmi?"
+    }
+   ],
+   "prompt": "The boy on the stool blows dust off the old honey jar, a puff of dust glows in the light beam, he coughs and holds the jar at arm's length, disgusted. Audio: a dusty puff, a cough, a glass jar clink. The boy says with a bright, cheeky voice of a 10-year-old boy in Uzbek: \"Buvi, bu asal juda eski-ku! Tashlab yuboraylikmi?\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Buvi",
+   "method": "Frames to Video",
+   "start": "R2",
+   "lines": [
+    {
+     "who": "Buvi",
+     "text": "Tashlama! Asal hech qachon buzilmaydi."
+    }
+   ],
+   "prompt": "The grandmother in the doorway laughs, steps in and gently takes the jar from the boy's hands, patting it like a treasure. The boy looks puzzled. Audio: a soft laugh, the cloth lid rustling. The grandmother says with a warm, slightly husky, amused voice of a 70-year-old woman in Uzbek: \"Tashlama! Asal hech qachon buzilmaydi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Misr",
+   "method": "Frames to Video",
+   "start": "R3",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Misr. Qadimiy maqbara. Arxeologlar bu yerda uch ming yildan ham eski asal topishgan."
+    }
+   ],
+   "prompt": "Slow push-in through dust into the tomb chamber, torch beams sweeping across the painted walls, the archaeologist carefully brushes sand away from the sealed clay jar. Audio: deep wind in stone corridors, a soft brush on clay. An off-screen narrator says with a calm, warm, curious middle-aged male storyteller voice in Uzbek: \"Misr. Qadimiy maqbara. Arxeologlar bu yerda uch ming yildan ham eski asal topishgan.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Hali ham asal",
+   "method": "Frames to Video",
+   "start": "R3",
+   "end": "R4",
+   "lines": [
+    {
+     "who": "Arxeolog",
+     "text": "Bu… hali ham asal!"
+    },
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Va u hali ham yeyishga yaroqli edi."
+    }
+   ],
+   "prompt": "The archaeologist lifts the stick from the open jar and the golden honey flows down slowly and glossy, catching the light; she leans closer in disbelief. Audio: a slow sticky drip, a low magical shimmer. The archaeologist whispers with an awed, breathy voice of a 35-year-old woman in Uzbek: \"Bu… hali ham asal!\" An off-screen narrator says with a calm, warm, curious middle-aged male storyteller voice in Uzbek: \"Va u hali ham yeyishga yaroqli edi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Mikrob yashay olmaydi",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Nega? Asalda suv juda kam, shakar esa juda koʻp. Mikrob bu yerda yashay olmaydi."
+    }
+   ],
+   "prompt": "Inside the honey drop: the little green microbe tries to swim but the thick syrup slows it down, it slowly shrivels like a raisin as the sugar pulls the water out of it, then fades away with a sad little sigh. Gentle comic tone. Audio: a slow gloopy bubble, a tiny squeak. An off-screen narrator says with a calm, warm, curious middle-aged male storyteller voice in Uzbek: \"Nega? Asalda suv juda kam, shakar esa juda ko'p. Mikrob bu yerda yashay olmaydi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Asalari sirri",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Ustiga-ustak, asalari asal yasayotganda unga mikrobni oʻldiradigan modda tabiiy ravishda qoʻshiladi."
+    }
+   ],
+   "prompt": "Macro: the honeybee works on the honeycomb, depositing honey into a cell; soft glittering particles spread through the honey like an invisible shield. Audio: a warm close bee hum. An off-screen narrator says with a calm, warm, curious middle-aged male storyteller voice in Uzbek: \"Ustiga-ustak, asalari asal yasayotganda unga mikrobni o'ldiradigan modda tabiiy ravishda qo'shiladi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Qopqoq",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Buvi",
+     "text": "Qopqogʻini yaxshi yopsang, asal abadiy turadi."
+    },
+    {
+     "who": "Bola",
+     "text": "Unda bu asal mendan ham katta boʻlishi mumkin!"
+    }
+   ],
+   "prompt": "Back in the pantry, the grandmother firmly ties the cloth lid back on the old honey jar and puts it on the shelf; the boy looks at the jar with new respect, then grins. Audio: a cloth knot pulled tight, a jar set down on wood. The grandmother says with a warm, slightly husky, amused voice of a 70-year-old woman in Uzbek: \"Qopqog'ini yaxshi yopsang, asal abadiy turadi.\" The boy says with a bright, cheeky voice of a 10-year-old boy in Uzbek: \"Unda bu asal mendan ham katta bo'lishi mumkin!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Savol",
+   "method": "Frames to Video",
+   "start": "R2",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Uyingizdagi eng eski asal necha yoshda? Izohda yozing!"
+    }
+   ],
+   "prompt": "The boy dips a spoon into a fresh jar of honey and holds it up to the window; golden honey drips in slow motion in the sunbeam; the shot freezes on the hanging drop. Audio: a slow drip, then silence and one soft bell. An off-screen narrator says with a calm, warm, curious middle-aged male storyteller voice in Uzbek: \"Uyingizdagi eng eski asal necha yoshda? Izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Uch ming yildan eski asal — va u hali ham yeyishga yaroqli! Misr maqbarasidan topilgan asal nega buzilmagan? Suv kam, shakar koʻp, asalari esa unga mikrobni oʻldiradigan modda qoʻshadi. Uyingizdagi eng eski asal necha yoshda? Izohda yozing. Batafsil — powerty.uz #NegaShunday #fan #asal #Powerty"
+}
