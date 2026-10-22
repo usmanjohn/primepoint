@@ -12,39 +12,35 @@
 {% block content %}
 <div class="clt container-fluid px-4 py-4">
 
-  {# ── the date form ── #}
+  {# ── the update bar: when the data is from, and the button that refreshes it ── #}
   <div class="box no-print">
     <div class="box-head"><span><i class="fa-solid fa-shield-halved"></i>Обеспечение банка</span>
-      <a class="hint" href="{% url 'collateral-params' %}{% if day %}?date={{ day|date:'Y-m-d' }}{% endif %}">
-        <i class="fa-solid fa-sliders"></i>Параметры и SQL</a></div>
-    <div class="p-3">
-      <form method="get" class="row g-3 align-items-end">
-        <div class="col-sm-5 col-md-3">
-          <label class="form-label small text-muted" for="{{ form.date.id_for_label }}">{{ form.date.label }}</label>
-          {{ form.date }}
-        </div>
-        <div class="col-sm-7 col-md-4">
-          <div class="form-check mb-2">
-            {{ form.refresh }}
-            <label class="form-check-label small" for="{{ form.refresh.id_for_label }}">{{ form.refresh.label }}</label>
-          </div>
-        </div>
-        {% for key, value in filters %}<input type="hidden" name="{{ key }}" value="{{ value }}">{% endfor %}
-        <div class="col-md-3">
-          <button class="btn btn-go px-4" type="submit"><i class="fa-solid fa-magnifying-glass me-1"></i>Показать</button>
-        </div>
-      </form>
-      {% if saved %}
-      <div class="mt-3 small text-muted">Уже загружены:</div>
-      <div class="mt-1">
-        {% for s in saved|slice:":12" %}
-        <a class="chip" href="?date={{ s.day|date:'Y-m-d' }}"><i class="fa-regular fa-calendar me-1"></i>{{ s.day|date:"d.m.Y" }} <span class="text-muted">· {{ s.size }}</span></a>
-        {% endfor %}
+      <a class="hint" href="{% url 'collateral-params' %}"><i class="fa-solid fa-sliders"></i>Параметры и SQL</a></div>
+    <div class="p-3 d-flex flex-wrap justify-content-between align-items-center gap-3">
+      <div>
+        {% if updated %}
+        <div class="small text-muted">Данные обновлены</div>
+        <div class="fs-5 fw-semibold"><i class="fa-regular fa-clock me-2" style="color:#C9971A"></i>{{ updated|date:"d.m.Y" }} в {{ updated|date:"H:i" }}</div>
+        {% if day != today %}<div class="small mt-1" style="color:#B3341F"><i class="fa-solid fa-circle-exclamation me-1"></i>Это не сегодняшние данные — нажмите «Обновить из базы».</div>{% endif %}
+        {% else %}
+        <div class="fw-semibold">Данных ещё нет.</div>
+        <div class="small text-muted">Нажмите «Обновить из базы»: запрос возьмёт текущее состояние и сохранит его в datasets/collateral/.</div>
+        {% endif %}
       </div>
-      {% else %}
-      <div class="mt-3 small text-muted">Первый запрос на дату идёт в базу и сохраняется в datasets/collateral/ — следующие открываются из файла.</div>
-      {% endif %}
+      <form method="post" action="{% url 'collateral-refresh' %}">
+        {% csrf_token %}
+        <button class="btn btn-go px-4" type="submit"><i class="fa-solid fa-rotate me-1"></i>Обновить из базы</button>
+        <div class="small text-muted mt-1">может занять несколько минут</div>
+      </form>
     </div>
+    {% if saved|length > 1 %}
+    <div class="px-3 pb-3">
+      <div class="small text-muted mb-1">Сохранённые дни:</div>
+      {% for s in saved|slice:":12" %}
+      <a class="chip{% if s.day == day %} on{% endif %}" href="?date={{ s.day|date:'Y-m-d' }}"><i class="fa-regular fa-calendar me-1"></i>{{ s.day|date:"d.m.Y" }} <span class="text-muted">· {{ s.size }}</span></a>
+      {% endfor %}
+    </div>
+    {% endif %}
   </div>
 
   {% if error %}<div class="alert alert-warning"><i class="fa-solid fa-triangle-exclamation me-2"></i>{{ error }}</div>{% endif %}
@@ -70,7 +66,7 @@
         <button class="btn btn-outline-light btn-sm" type="button" onclick="window.print()"><i class="fa-solid fa-print me-1"></i>Печать</button>
       </div>
     </div>
-    <div class="small mt-2" style="color:#8A867C">Файл сохранён {{ saved_at|date:"d.m.Y H:i" }} · суммы в млн сум, эквивалент</div>
+    <div class="small mt-2" style="color:#8A867C">Файл collateral_{{ day|date:"Y-m-d" }}.parquet · суммы в млн сум, эквивалент</div>
   </div>
 
   {% if empty %}

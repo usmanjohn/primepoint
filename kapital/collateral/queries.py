@@ -17,10 +17,13 @@ To see which parameters exist at all, open the «Параметры» page of th
 WHAT TO CHANGE FOR YOUR DATABASE
 1. The import line of get_oracle_connection (just below).
 2. The three table names (DEAL_TABLE, PARAM_TABLE, PARENT_TABLE).
-3. ON_DATE, if your tables have no date_from column (see the comment there).
+
+NO DATE: like your old scripts, every query takes the LATEST version of each row
+(row_number ... order by date_to desc). So a run always gives «the state right now»;
+process.py saves it under today's date, and the page says when it was updated.
 
 To run a query by hand in your SQL tool: open the «Параметры» page, it prints the
-finished SQL. Replace :pdate with a date, e.g.  date '2026-10-01'.
+finished SQL, ready to copy.
 """
 import pandas as pd
 
@@ -35,16 +38,7 @@ PARENT_TABLE = "schema2.deal"                   # link to the анкета/РН�
 COLLATERAL_TYPE = 357                           # dealtypeid of a collateral deal in PARENT_TABLE
 
 
-# ── 2. WHICH VERSION OF A ROW COUNTS ON THE CHOSEN DATE ────────────────────────────
-# Both tables keep history: a new row every time something changes, closed by date_to.
-# The row that was valid on :pdate is the one with  date_from <= :pdate < date_to.
-# If your tables have NO date_from column, use this line instead (it takes every version
-# still open on the date, and the newest of them wins):
-#     ON_DATE = "{t}.date_to > :pdate"
-ON_DATE = "{t}.date_from <= :pdate and {t}.date_to > :pdate"
-
-
-# ── 3. PARAMETERS ──────────────────────────────────────────────────────────────────
+# ── 2. PARAMETERS ──────────────────────────────────────────────────────────────────
 # "NAME_IN_DATABASE": ("column_name", "Название по-русски")
 # column_name: short, latin, at most 30 characters (Oracle's limit for an alias).
 
@@ -198,10 +192,10 @@ def quoted(names):
 def make_sql(params):
     """
     The one skeleton behind all three queries. One row per collateral deal that has
-    at least one of `params` filled on :pdate, with each parameter in its own column.
+    at least one of `params` filled, with each parameter in its own column.
 
-      deals   — the collateral row valid on the date (amount, currency, branch ...)
-      params  — the parameter values valid on the date, one row per (deal, parameter)
+      deals   — the latest version of each collateral row (amount, currency, branch ...)
+      params  — the latest value of each parameter, one row per (deal, parameter)
       wide    — the same values turned into columns: one row per deal
     """
     names = list(params) + list(COMMON)
@@ -216,7 +210,6 @@ with deals as (
         select d.*,
                row_number() over (partition by d.id order by d.date_to desc) as rn
         from   {DEAL_TABLE} d
-        where  {ON_DATE.format(t='d')}
     )
     where rn = 1
 ),
@@ -226,8 +219,7 @@ params as (
         select v.dealid, v.paramname, v.paramvalue,
                row_number() over (partition by v.dealid, v.paramname order by v.date_to desc) as rn
         from   {PARAM_TABLE} v
-        where  {ON_DATE.format(t='v')}
-        and    v.paramname in ({quoted(names)})
+        where  v.paramname in ({quoted(names)})
     )
     where rn = 1
 ),
@@ -257,40 +249,39 @@ SQL_CARS = make_sql(CARS)
 SQL_PROPERTY = make_sql(PROPERTY)
 SQL_OTHERS = make_sql(others_flat())
 
-# Every parameter name that exists on the date, how many collateral deals have it and
+# Every parameter name that exists, how many collateral deals have it and
 # one example value. Shown on the «Параметры» page: that is where you find the address.
 SQL_PARAM_NAMES = f"""
 select v.paramname,
        count(distinct v.dealid) as deals,
        max(v.paramvalue)        as example
 from   {PARAM_TABLE} v
-where  {ON_DATE.format(t='v')}
-and    v.dealid in (select id from {PARENT_TABLE} where dealtypeid = {COLLATERAL_TYPE})
+where  v.dealid in (select id from {PARENT_TABLE} where dealtypeid = {COLLATERAL_TYPE})
 group by v.paramname
 order by deals desc
 """
 
 
-def run(cursor, sql, pdate):
+def run(cursor, sql):
     """Run one query and return it as a pandas table with lower-case column names."""
     cursor.arraysize = 5000                     # fetch in big packs: much faster on 100 000+ rows
-    cursor.execute(sql, {"pdate": pdate})
+    cursor.execute(sql)
     columns = [c[0].lower() for c in cursor.description]
     return pd.DataFrame(cursor.fetchall(), columns=columns)
 
 
-def load_day(pdate):
-    """The three queries for one date: {'car': table, 'property': table, 'other': table}."""
+def load_all():
+    """The three queries, state right now: {'car': table, 'property': table, 'other': table}."""
     with get_oracle_connection() as conn:
         cursor = conn.cursor()
         return {
-            "car": run(cursor, SQL_CARS, pdate),
-            "property": run(cursor, SQL_PROPERTY, pdate),
-            "other": run(cursor, SQL_OTHERS, pdate),
+            "car": run(cursor, SQL_CARS),
+            "property": run(cursor, SQL_PROPERTY),
+            "other": run(cursor, SQL_OTHERS),
         }
 
 
-def load_param_names(pdate):
-    """The «Параметры» page: every parameter name on the date."""
+def load_param_names():
+    """The «Параметры» page: every parameter name in the table."""
     with get_oracle_connection() as conn:
-        return run(conn.cursor(), SQL_PARAM_NAMES, pdate)
+        return run(conn.cursor(), SQL_PARAM_NAMES)

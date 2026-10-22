@@ -2,11 +2,12 @@
 Everything between the database and the page: save, read, clean, count.
 
 THE ROAD OF THE DATA
-1. save_day(day)     Oracle → one parquet file per date in datasets/collateral/.
-                     The database is asked only once per date (or when you tick
-                     «Загрузить заново»). The file keeps the raw values, as text.
+1. save_today()     Oracle (the state right now) → datasets/collateral/collateral_<today>.parquet.
+                     Runs only when someone presses «Обновить из базы». A second run on
+                     the same day overwrites that day's file. The file keeps raw text.
 2. read_day(day)     parquet → prepare() → a clean pandas table, kept in memory,
                      so clicking around the page does not read the file again.
+                     The page opens the newest file (latest_day) unless a date is clicked.
 3. prepare(table)    numbers become numbers, dates become dates, spelling variants of
                      the same brand are merged, and the extra columns the page groups by
                      are added (brand, age_group, area_group, dep_term ...).
@@ -22,7 +23,7 @@ THE TABLE (one row = one collateral deal)
 All the settings you may want to change are in the block just below.
 """
 import numbers
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 
 import pandas as pd
@@ -209,6 +210,17 @@ def saved_days():
     return days
 
 
+def latest_day():
+    """The newest saved date, or None if nothing was downloaded yet."""
+    days = saved_days()
+    return days[0]["day"] if days else None
+
+
+def updated_at(day):
+    """When the file of `day` was written (date and time)."""
+    return datetime.fromtimestamp(file_for(day).stat().st_mtime)
+
+
 def as_text(column):
     """
     Any column → text, without surprises:
@@ -221,9 +233,10 @@ def as_text(column):
     return text.mask(text.isin(BLANKS))
 
 
-def save_day(day):
-    """Ask Oracle for the three kinds on `day` and save them as ONE parquet file."""
-    parts = queries.load_day(day)
+def save_today():
+    """Ask Oracle for the three kinds (state right now) and save them as ONE file, today's date."""
+    day = date.today()
+    parts = queries.load_all()
     frames = []
     for kind in ["car", "property", "other"]:        # this order matters: see drop_duplicates
         part = parts[kind]
@@ -241,7 +254,11 @@ def save_day(day):
             table[column] = as_text(table[column])
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    table.to_parquet(file_for(day), index=False)
+    # write to a temporary file first, then swap: nobody ever reads a half-written file
+    temporary = DATA_DIR / "collateral_writing.tmp"
+    table.to_parquet(temporary, index=False)
+    temporary.replace(file_for(day))
+    return day
 
 
 # ═══════════════════════════════ 2. READ ═══════════════════════════════════════════
@@ -251,11 +268,9 @@ def save_day(day):
 MEMORY = {"key": None, "table": None}
 
 
-def read_day(day, refresh=False):
-    """The clean table for `day`. Goes to Oracle only if there is no file yet (or refresh)."""
+def read_day(day):
+    """The clean table of the file saved on `day` (the file must exist)."""
     path = file_for(day)
-    if refresh or not path.exists():
-        save_day(day)
     key = (str(path), path.stat().st_mtime)
     if MEMORY["key"] != key:
         MEMORY["table"] = prepare(pd.read_parquet(path), day)
@@ -599,7 +614,7 @@ def kpis(part, kind, day):
     amount, market = part["amount"].sum(), part["market"].sum()
     out = [
         {"label": "Сделок обеспечения", "value": number(len(part)), "icon": "fa-file-signature",
-         "note": "строк на дату"},
+         "note": "строк в файле"},
         {"label": "Сумма залога", "value": mln(amount), "icon": "fa-scale-balanced",
          "note": "млн сум, эквивалент"},
         {"label": "Рыночная стоимость", "value": mln(market), "icon": "fa-tags",
@@ -620,7 +635,7 @@ def kpis(part, kind, day):
                         "icon": "fa-road", "note": "км"})
         bad = int(part["problem_car_pasp_old"].sum())
         out.append({"label": "Техпаспорт просрочен", "value": number(bad), "icon": "fa-id-card",
-                    "note": "на выбранную дату", "bad": bad > 0})
+                    "note": "на дату файла", "bad": bad > 0})
     if kind == "property" and "total_area" in part:
         area = part["total_area"].sum()
         both = part[(part["total_area"] > 0) & (part["market"] > 0)]
