@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% comment %}
+  One collateral deal: every field that has a value, in two blocks (main, parameters).
+  «Назад» returns to the exact view the deal was opened from.
+{% endcomment %}
+
+{% block extra_css %}{% include "collateral/style.html" %}{% endblock extra_css %}
+
+{% block content %}
+<div class="clt container-fluid px-4 py-4">
+  <div class="hero">
+    <div class="eyebrow">Сделка обеспечения на {{ day|date:"d.m.Y" }}</div>
+    <h1><i class="fa-solid {{ card.kind.icon }}"></i>{{ card.title|default:card.kind.label }}</h1>
+    <div class="crumbs">
+      <a class="no-print" href="{% url 'collateral' %}?{{ back }}"><i class="fa-solid fa-arrow-left me-1"></i>Назад к списку</a>
+      <span class="sep">·</span>{{ card.kind.label }} · код {{ card.dealid }}
+    </div>
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-md-3"><div class="kpi"><div class="l"><i class="fa-solid fa-scale-balanced"></i>Сумма залога</div>
+      <div class="v">{{ card.amount }}</div><div class="n">сум, эквивалент</div></div></div>
+    <div class="col-6 col-md-3"><div class="kpi"><div class="l"><i class="fa-solid fa-tags"></i>Рыночная стоимость</div>
+      <div class="v">{{ card.market }}</div><div class="n">сум</div></div></div>
+  </div>
+
+  {% if card.issues %}
+  <div class="alert alert-warning">
+    <i class="fa-solid fa-triangle-exclamation me-2"></i><strong>Проверка данных:</strong>
+    {% for i in card.issues %}{{ i }}{% if not forloop.last %}; {% endif %}{% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="row g-3">
+    {% for s in card.sections %}
+    <div class="col-lg-6">
+      <div class="box">
+        <div class="box-head"><span><i class="fa-solid {{ s.icon }}"></i>{{ s.title }}</span></div>
+        {% if s.rows %}
+        <table class="table table-sm mb-0">
+          <tbody>
+          {% for label, value in s.rows %}
+            <tr><td class="text-muted" style="width:45%">{{ label }}</td><td>{{ value }}</td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <div class="nothing">Ни одно поле не заполнено.</div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

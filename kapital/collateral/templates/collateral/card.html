@@ -1,0 +1,37 @@
+{% comment %}
+  One breakdown card (included by page.html inside a loop over `cards`).
+  A row is a link that adds this card's filter: ?{{ link }}&{{ card.column }}=<value>.
+  When this column is already chosen, the rows are no longer links and the chosen one is lit.
+{% endcomment %}
+<div class="box h-100">
+  <div class="box-head"><span><i class="fa-solid {{ card.icon }}"></i>{{ card.title }}</span>
+    <span class="hint">шт · млн сум · доля суммы</span></div>
+  {% if card.nothing %}
+  <div class="nothing"><i class="fa-regular fa-circle-question me-1"></i>Поле не заполнено ни в одной сделке.</div>
+  {% else %}
+  <div class="table-responsive">
+    <table class="table table-sm align-middle">
+      <tbody>
+      {% for r in card.rows %}
+        <tr class="{% if r.active %}on{% endif %}{% if r.empty %} empty-val{% endif %}">
+          <td class="lab">{% if card.clickable %}<a href="?{{ link }}&{{ card.column }}={{ r.value|urlencode }}">{{ r.label }}</a>{% else %}{{ r.label }}{% endif %}</td>
+          <td class="m">{{ r.count }}</td>
+          <td class="m">{{ r.amount }}</td>
+          <td class="m text-muted">{{ r.share }} %</td>
+          <td class="bar-cell"><div class="bar" style="width:{{ r.width|stringformat:'.1f' }}%"></div></td>
+        </tr>
+      {% endfor %}
+      {% if card.rest %}
+        <tr class="rest">
+          <td class="lab">Остальные ({{ card.rest.n }})</td>
+          <td class="m">{{ card.rest.count }}</td>
+          <td class="m">{{ card.rest.amount }}</td>
+          <td class="m">{{ card.rest.share }} %</td>
+          <td></td>
+        </tr>
+      {% endif %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+</div>
