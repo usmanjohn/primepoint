@@ -1,0 +1,82 @@
+{% comment %}
+  The look of the collateral pages, shared by page.html, deal.html and params.html.
+  Kapitalbank colours: yellow leads, charcoal second, red only for problems.
+  Everything sits under .clt so it never touches the rest of the site.
+{% endcomment %}
+<style>
+  .clt{--ink:#0B0B0C;--soft:#2A2A2E;--gold:#F2C230;--gd:#C9971A;--gtext:#8C6A12;
+           --rule:#E4E1D8;--paper:#FAF8F2;--muted:#8A867C;--bad:#B3341F;
+           color:var(--ink)}
+  .clt a{color:inherit}
+  .clt .hero{background:var(--ink);color:#fff;border-radius:12px;padding:22px 26px;margin-bottom:20px}
+  .clt .hero .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .clt .hero h1{font-weight:500;font-size:26px;margin:6px 0 10px}
+  .clt .hero h1 i{color:var(--gold);margin-right:10px}
+  .clt .crumbs{font-size:13px;color:#B9B5AB}
+  .clt .crumbs a{color:#fff;text-decoration:none;border-bottom:1px dotted #777}
+  .clt .crumbs .t{color:#8A867C;font-size:11px;margin-right:3px}
+  .clt .crumbs .sep{margin:0 8px;color:var(--gold)}
+  .clt .btn-go{background:var(--gold);border:none;color:var(--ink);font-weight:600}
+  .clt .btn-go:hover{background:var(--gd);color:var(--ink)}
+  .clt .box{background:#fff;border:1px solid var(--rule);border-radius:12px;margin-bottom:20px}
+  .clt .box-head{background:var(--paper);border-bottom:1px solid var(--rule);border-radius:12px 12px 0 0;
+       padding:10px 16px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gtext);
+       display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .clt .box-head i{margin-right:8px;color:var(--gd)}
+  .clt .box-head .hint{letter-spacing:0;text-transform:none;color:var(--muted);font-size:12px}
+  .clt .kpi{background:#fff;border:1px solid var(--rule);border-radius:12px;padding:12px 14px;height:100%}
+  .clt .kpi .l{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .clt .kpi .l i{color:var(--gd);margin-right:6px}
+  .clt .kpi .v{font-size:21px;font-weight:600;margin-top:4px;white-space:nowrap}
+  .clt .kpi .n{font-size:12px;color:var(--muted)}
+  .clt .kpi.bad{border-color:var(--bad)} .clt .kpi.bad .v{color:var(--bad)}
+  /* the three big tiles */
+  .clt .tile{display:block;text-decoration:none;background:#fff;border:1px solid var(--rule);
+       border-radius:14px;padding:18px 20px;height:100%;transition:border-color .15s, box-shadow .15s}
+  .clt .tile:hover{border-color:var(--gold);box-shadow:0 4px 14px rgba(0,0,0,.07)}
+  .clt .tile .ic{width:54px;height:54px;border-radius:50%;background:var(--ink);color:var(--gold);
+       display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:12px}
+  .clt .tile .name{font-size:18px;font-weight:600}
+  .clt .tile .big{font-size:24px;font-weight:600;margin-top:6px}
+  .clt .tile .small{font-size:12.5px;color:var(--muted)}
+  .clt .tile .go{font-size:13px;color:var(--gtext);margin-top:10px}
+  .clt .subtile{display:flex;gap:12px;align-items:center;text-decoration:none;background:#fff;
+       border:1px solid var(--rule);border-radius:10px;padding:10px 12px;height:100%}
+  .clt .subtile:hover{border-color:var(--gold)}
+  .clt .subtile i{font-size:20px;color:var(--gd);width:26px;text-align:center}
+  .clt .subtile .name{font-size:13.5px;font-weight:600;line-height:1.2}
+  .clt .subtile .small{font-size:12px;color:var(--muted)}
+  /* the cards */
+  .clt table{font-size:13px;margin:0}
+  .clt th{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+       font-weight:600;white-space:nowrap}
+  .clt td.m,.clt th.m{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .clt td.lab{max-width:240px}
+  .clt td.lab a{text-decoration:none;border-bottom:1px dotted var(--muted)}
+  .clt td.lab a:hover{color:var(--gtext);border-color:var(--gold)}
+  .clt tr.on td{background:#FFF6D6;font-weight:600}
+  .clt .empty-val{color:var(--muted);font-style:italic}
+  .clt .bar-cell{width:28%;min-width:70px}
+  .clt .bar{height:9px;border-radius:3px;background:var(--gold);min-width:2px}
+  .clt .empty-val .bar,.clt tr.rest .bar{background:#D9D5CB}
+  .clt tr.rest td{color:var(--muted)}
+  .clt .nothing{padding:14px 16px;color:var(--muted);font-size:13px}
+  .clt .warn{color:var(--bad)}
+  .clt .problem{display:flex;justify-content:space-between;gap:10px;padding:8px 16px;
+       border-bottom:1px solid var(--rule);text-decoration:none;font-size:13.5px}
+  .clt .problem:last-child{border-bottom:none}
+  .clt .problem:hover{background:#FFF6EE}
+  .clt .problem i{color:var(--bad);margin-right:8px}
+  .clt .chip{display:inline-block;border:1px solid var(--rule);border-radius:20px;padding:3px 12px;
+       font-size:12.5px;text-decoration:none;margin:0 6px 6px 0;background:#fff}
+  .clt .chip:hover{border-color:var(--gold)}
+  .clt .code{font-family:Consolas,monospace;font-size:12px}
+  .clt pre.sql{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px;
+       font-size:12px;max-height:420px;overflow:auto}
+  @media print{
+    .sb-topnav,#layoutSidenav_nav,.clt .no-print{display:none!important}
+    #layoutSidenav_content{padding-left:0!important;margin-left:0!important}
+    .clt .hero,.clt .bar,.clt .tile .ic{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .clt .box,.clt .tile{break-inside:avoid}
+  }
+</style>

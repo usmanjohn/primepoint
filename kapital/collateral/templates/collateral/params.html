@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% comment %}
+  Help page for you, not for colleagues:
+  1. every parameter name that exists in the database on a date, and whether the app uses it
+     (this is where you find the address field and add it to queries.PROPERTY);
+  2. the finished SQL of the app, to copy into your SQL tool.
+{% endcomment %}
+
+{% block extra_css %}{% include "collateral/style.html" %}{% endblock extra_css %}
+
+{% block content %}
+<div class="clt container-fluid px-4 py-4">
+  <div class="box">
+    <div class="box-head"><span><i class="fa-solid fa-sliders"></i>Параметры обеспечения в базе</span>
+      <a class="hint" href="{% url 'collateral' %}"><i class="fa-solid fa-arrow-left me-1"></i>к обеспечению</a></div>
+    <div class="p-3">
+      <form method="get" class="row g-3 align-items-end">
+        <div class="col-sm-5 col-md-3">
+          <label class="form-label small text-muted" for="{{ form.date.id_for_label }}">{{ form.date.label }}</label>
+          {{ form.date }}
+        </div>
+        <div class="col-md-3"><button class="btn btn-go px-4" type="submit">Показать параметры</button></div>
+      </form>
+      <div class="small text-muted mt-2">Запрос идёт в базу напрямую (без файла) и может занять время.</div>
+    </div>
+  </div>
+
+  {% if error %}<div class="alert alert-warning">{{ error }}</div>{% endif %}
+
+  {% if names %}
+  <div class="box">
+    <div class="box-head"><span><i class="fa-solid fa-table-list"></i>Все параметры на дату</span>
+      <span class="hint">{{ names|length }} названий</span></div>
+    <div class="table-responsive">
+      <table class="table table-sm table-hover align-middle">
+        <thead><tr><th>paramname</th><th class="m">Сделок</th><th>Пример значения</th><th>В приложении</th></tr></thead>
+        <tbody>
+        {% for n in names %}
+          <tr>
+            <td class="code">{{ n.name }}</td>
+            <td class="m">{{ n.deals }}</td>
+            <td class="text-truncate" style="max-width:320px">{{ n.example|default:"—" }}</td>
+            <td>{% if n.used %}<i class="fa-solid fa-check text-success me-1"></i>{{ n.used }}{% else %}<span class="text-muted">не используется</span>{% endif %}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {% endif %}
+
+  <div class="box">
+    <div class="box-head"><span><i class="fa-solid fa-code"></i>SQL приложения</span>
+      <span class="hint">замените :pdate на дату, например date '2026-10-01'</span></div>
+    <div class="p-3">
+      {% for title, text in sql %}
+      <details class="mb-2"{% if forloop.first %} open{% endif %}>
+        <summary>{{ title }}</summary>
+        <pre class="sql mt-2">{{ text }}</pre>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock content %}
