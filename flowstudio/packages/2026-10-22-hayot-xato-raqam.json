@@ -1,0 +1,250 @@
+{
+ "id": "2026-10-22-hayot-xato-raqam",
+ "number": 63,
+ "for": "Jonibek",
+ "date": "2026-10-22",
+ "series": "Hayot hikoyasi",
+ "title_uz": "Xato raqam",
+ "concept_uz": "Aeroportda qiz doʻstiga yozgan xabarini bitta raqam xato bilan notanish odamga yuborib qoʻyadi. Ism ham, rasm ham yoʻq — oylab yozishishadi. Uchrashuv kuni maʼlum boʻladi: u bir yildan beri har ertalab xuddi shu kafeda, uch stol narida oʻtirgan ekan.",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "corner/management/commands/_stories_life_7_12.py (story 10)"
+ ],
+ "facts": [
+  {
+   "claim": "Xabar eski doʻstga moʻljallangan edi; bitta raqam xato terilgan",
+   "source": "corner/management/commands/_stories_life_7_12.py story 10 body, 1-paragraf"
+  },
+  {
+   "claim": "Hikoyachi aeroport polida, reys kechikkan, quvvatlagich ishlamaydi",
+   "source": "story 10 body, 1-paragraf"
+  },
+  {
+   "claim": "Notanish bir necha daqiqada javob berdi: «ogʻir kecha», «yaxshi boʻlib ketar» va aeroport qahvasi haqida hazil",
+   "source": "story 10 body, 2-paragraf"
+  },
+  {
+   "claim": "Rasm almashishmadi, haqiqiy ism aytishmadi; oylar davomida ogʻir kunlar va kichik gʻalabalar haqida yozishdi",
+   "source": "story 10 body, 3-paragraf"
+  },
+  {
+   "claim": "Uchrashuvni notanish taklif qildi — hikoyachining uyi yonidagi kafeda",
+   "source": "story 10 body, 4-paragraf"
+  },
+  {
+   "claim": "Barista kulib, uch stol naridagi yigitni koʻrsatdi: u bir yildan beri har ertalab xuddi shu vaqtda kelardi; ikkalasi telefonga band boʻlib bir-birini payqamagan",
+   "source": "story 10 body, 5-paragraf"
+  },
+  {
+   "claim": "Hikoyachining jinsi va qahramonlar qiyofasi matnda yoʻq — videoda tanlangan; aeroport qahvasi haqidagi soʻnggi hazil manba hazilining davomi sifatida qoʻshilgan",
+   "source": "story 10 (ijodiy talqin)"
+  }
+ ],
+ "style_line": "Cinematic photoreal, soft intimate light, rainy blue night tones at the airport turning into warm golden morning tones in the cafe, shallow depth of field, 35mm film look, quiet romantic-comedy mood. No text, no letters, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: tungi aeroport",
+   "prompt": "Vertical 9:16 wide shot of an almost empty airport departure gate late at night: rows of grey seats, a big rain-streaked glass wall with blurred runway lights outside, a dead wall socket near the floor, a paper coffee cup on the floor. Cool blue light. No people, no signs, no screens with writing."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Qiz (hikoyachi)",
+   "prompt": "Vertical 9:16 portrait of a young Central Asian woman about 28, dark hair in a loose low bun, tired kind eyes, a MUSTARD-YELLOW knitted scarf around her neck, a dark green wool coat, a small backpack, holding a smartphone in both hands. Natural face, no heavy makeup."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Yigit (notanish)",
+   "prompt": "Vertical 9:16 portrait of a young Central Asian man about 30, short dark hair, a light stubble, ROUND TORTOISESHELL GLASSES, a charcoal-grey wool coat over a white shirt, holding a smartphone and a ceramic coffee cup, a calm friendly face."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Muhit: kichik kafe",
+   "prompt": "Vertical 9:16 wide shot of a small cosy neighbourhood coffee shop in the morning: warm wood tables in a row along a big window, potted plants, a counter with an espresso machine at the back, golden sunlight and steam. No people, no signs, no menus with writing."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Qiz aeroport polida",
+   "from": [
+    "R1",
+    "R2"
+   ],
+   "prompt": "Combine the attached images: the young woman in the mustard-yellow scarf sits on the floor of the night airport gate with her back against the rain-streaked glass wall, knees up, phone in both hands, a useless charger cable lying beside her and the paper coffee cup at her feet. Same face, same clothes, cool blue light, 9:16."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Ertalabki kafe: ikkalasi telefonda",
+   "from": [
+    "R4",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot of the coffee shop in the morning: the young woman in the mustard-yellow scarf sits alone at the window table in the foreground looking down at her phone; three tables further back the young man in round tortoiseshell glasses sits alone also looking down at his phone. A few other customers between them. Neither looks at the other. Same faces, same clothes, warm golden light."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Barista",
+   "prompt": "Vertical 9:16 portrait of a cheerful woman barista about 40 with curly dark hair under a RED bandana, a coffee-brown apron, laughing eyes, standing behind a wooden cafe counter with an espresso machine."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Barista yigitni koʻrsatyapti",
+   "from": [
+    "R6",
+    "R7"
+   ],
+   "prompt": "Change the scene: the barista in the red bandana and coffee-brown apron leans over the counter laughing and points across the cafe at the young man in round tortoiseshell glasses three tables away; the young woman in the mustard-yellow scarf now stands near the counter, phone in hand, turning to look where she points. Same faces, same clothes, same light, 9:16."
+  },
+  {
+   "id": "R9",
+   "name_uz": "Yuzma-yuz",
+   "from": "R8",
+   "prompt": "Change the scene: the young man in round tortoiseshell glasses has stood up beside his table holding his phone and a coffee cup, and the young woman in the mustard-yellow scarf stands two steps in front of him; they face each other, surprised and starting to smile. The barista smiles in the soft background. Same faces, same clothes, same light, 9:16."
+  },
+  {
+   "id": "R10",
+   "name_uz": "Bir stolda, telefonlar yopiq",
+   "from": "R9",
+   "prompt": "Change the scene: the two of them now sit together at one small window table with two coffee cups between them, both phones lying face down on the table, laughing and talking. Golden morning light through the window. Same faces, same clothes, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Aeroport poli",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Qiz",
+     "text": "Reys kechikdi, quvvatlagich ishlamaydi… eng yomon kecha!"
+    }
+   ],
+   "prompt": "Night at an almost empty airport gate. The young woman in the mustard-yellow scarf sits on the floor against the glass, rain streaming down the window behind her; she types fast on her phone with both thumbs, sighs, and hits send. Audio: rain on glass, a distant boarding announcement chime, a sharp message whoosh. She mutters in Uzbek with a soft, tired-but-warm young female voice of about 28: \"Reys kechikdi, quvvatlagich ishlamaydi… eng yomon kecha!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Bitta raqam",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Qiz (kadr ortida)",
+     "text": "Doʻstimga yozgandim. Lekin bitta raqamni xato bosgan ekanman."
+    }
+   ],
+   "prompt": "Close-up of the young woman in the mustard-yellow scarf staring at her phone in the dim gate light; her eyes widen, she covers her mouth with one hand and shakes her head at herself. Audio: a soft heartbeat thump, rain. She says off-screen as a quiet inner voice, in Uzbek with a soft, tired-but-warm young female voice of about 28: \"Do'stimga yozgandim. Lekin bitta raqamni xato bosgan ekanman.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Javob keldi",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Notanish (kadr ortida)",
+     "text": "Ogʻir kecha ekan. Yaxshi boʻlib ketar. Aeroport qahvasi ham shunchalik yomonmi?"
+    }
+   ],
+   "prompt": "The phone in the young woman's hands buzzes and lights her face; she reads, frowns in surprise, then a small laugh escapes her and she looks down at the paper cup of airport coffee beside her and wrinkles her nose. Audio: a phone buzz, a soft surprised laugh. An unseen man's voice reads his message off-screen in Uzbek with a friendly, easy-going young male voice of about 30: \"Og'ir kecha ekan. Yaxshi bo'lib ketar. Aeroport qahvasi ham shunchalik yomonmi?\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Oylar",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Qiz (kadr ortida)",
+     "text": "Oylar oʻtdi. Ism aytmadik, rasm almashmadik. Ogʻir kunlar, kichik gʻalabalar — hammasini bir-birimizga yozdik."
+    }
+   ],
+   "prompt": "Morning in the small cosy coffee shop. Slow sideways dolly past the tables: the young woman in the mustard-yellow scarf at the window table smiles at her phone as she types; three tables away the young man in round tortoiseshell glasses and a charcoal coat also types and smiles at his phone. Neither looks up. Steam rises from both cups. Audio: soft cafe murmur, milk frother, gentle piano. She says off-screen as a narrator, in Uzbek with a soft, tired-but-warm young female voice of about 28: \"Oylar o'tdi. Ism aytmadik, rasm almashmadik. Og'ir kunlar, kichik g'alabalar — hammasini bir-birimizga yozdik.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Taklif",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2"
+   ],
+   "lines": [
+    {
+     "who": "Notanish (kadr ortida)",
+     "text": "Balki endi uchrasharmiz? Uyingiz yonidagi kafeda."
+    },
+    {
+     "who": "Qiz",
+     "text": "Uchrashamiz…"
+    }
+   ],
+   "prompt": "Evening at home by a window with city lights; the young woman in the mustard-yellow scarf sits on a sofa, the phone buzzes, she reads, presses the phone to her chest, takes a deep breath, then nods to herself. Audio: a phone buzz, a clock ticking, her nervous exhale. An unseen man's voice reads his message off-screen in Uzbek with a friendly, easy-going young male voice of about 30: \"Balki endi uchrasharmiz? Uyingiz yonidagi kafeda.\" Then she whispers in Uzbek with a soft, tired-but-warm young female voice of about 28: \"Uchrashamiz…\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Notanish yuz",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R4",
+    "R2"
+   ],
+   "lines": [
+    {
+     "who": "Qiz (kadr ortida)",
+     "text": "Notanish yuzni qidirdim. Hech kimni topa olmadim."
+    }
+   ],
+   "prompt": "Afternoon. The young woman in the mustard-yellow scarf walks into the small cosy coffee shop, stops by the door and slowly scans the room from table to table, holding her phone tightly. Point-of-view glances over ordinary customers. Audio: a door bell jingle, cafe murmur, her steps. She says off-screen as a narrator, in Uzbek with a soft, tired-but-warm young female voice of about 28: \"Notanish yuzni qidirdim. Hech kimni topa olmadim.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Barista kuldi",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Barista",
+     "text": "Anavi yigitmi? U bir yildan beri har kuni ertalab siz bilan bir vaqtda keladi-ku!"
+    }
+   ],
+   "prompt": "The barista in the coffee-brown apron and red bandana leans over the counter laughing and points across the room toward the young man in round tortoiseshell glasses three tables away; the young woman in the mustard-yellow scarf turns her head slowly to follow her finger. Audio: a coffee grinder stops, a short laugh. The barista says in Uzbek with a cheerful, laughing female voice of about 40: \"Anavi yigitmi? U bir yildan beri har kuni ertalab siz bilan bir vaqtda keladi-ku!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Uch stol narida",
+   "method": "Frames to Video",
+   "start": "R9",
+   "lines": [
+    {
+     "who": "Notanish",
+     "text": "Aeroport qahvasi… bunisidan yomonroq edi."
+    },
+    {
+     "who": "Qiz (kadr ortida)",
+     "text": "Bir yil davomida biz uch stol narida oʻtirgan ekanmiz."
+    }
+   ],
+   "prompt": "The young man in round tortoiseshell glasses stands up from his table holding his phone and a coffee cup, and the young woman in the mustard-yellow scarf stands facing him; they look at each other in disbelief, then both start laughing. Audio: cafe murmur fades, a warm piano chord. He says in Uzbek with a friendly, easy-going young male voice of about 30, raising his cup: \"Aeroport qahvasi… bunisidan yomonroq edi.\" Then she says off-screen as a narrator, in Uzbek with a soft, tired-but-warm young female voice of about 28: \"Bir yil davomida biz uch stol narida o'tirgan ekanmiz.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 9,
+   "title_uz": "Telefonni qoʻying",
+   "method": "Frames to Video",
+   "start": "R10",
+   "lines": [
+    {
+     "who": "Qiz (kadr ortida)",
+     "text": "Siz ham telefonga qarab, yoningizdagi odamni koʻrmay yurmayapsizmi? Izohda yozing."
+    }
+   ],
+   "prompt": "Both of them sit at the same small table by the window, they place their phones face down on the table at the same moment and smile at each other; the camera slowly pulls back through the window into the street. Audio: two soft taps of phones on wood, street sounds, the piano melody resolves. She says off-screen as a narrator, in Uzbek with a soft, tired-but-warm young female voice of about 28, gently: \"Siz ham telefonga qarab, yoningizdagi odamni ko'rmay yurmayapsizmi? Izohda yozing.\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Bitta raqam xato bosildi — va notanish odam bilan oylab yozishuv boshlandi. Ism yoʻq, rasm yoʻq. Uchrashuv kuni esa… u bir yildan beri uch stol narida oʻtirgan ekan. Siz ham telefonga qarab, yoningizdagi odamni koʻrmay yurmayapsizmi? Izohda yozing. Koʻproq hikoyalar — powerty.uz da. #HayotHikoyasi #hikoya #Powerty"
+}
