@@ -18,15 +18,16 @@ OUT = ROOT / 'tutorial' / 'management' / 'commands' / '_tutorials_code_collatera
 # (path inside the app, language, what it is) — in install order.
 FILES = [
     ('apps.py', 'python', 'App config.'),
-    ('urls.py', 'python', 'The pages: the drill-down, «Обновить из базы», one deal, Excel, the parquet file, parameters + SQL.'),
+    ('urls.py', 'python', 'The pages: the drill-down, «Обновить из базы», deleting old days, the 945xx accounts, one deal, Excel, the parquet file, parameters + SQL.'),
     ('queries.py', 'python', 'All the SQL. The three old scripts (avto / nedvijimost / others) as three parameter dicts and ONE skeleton. No date: always the latest version of each row. Change the import line and the three table names.'),
     ('process.py', 'python', '«Обновить из базы» → datasets/collateral/collateral_<today>.parquet → clean pandas table → cards, KPIs, data checks. All the settings (buckets, codes, cards) are at the top.'),
     ('views.py', 'python', 'The views: the newest file opens by itself; the refresh button (POST) runs the queries and saves today\'s file.'),
     ('templates/collateral/style.html', 'html', 'The look (Kapitalbank colours), shared by all pages.'),
     ('templates/collateral/card.html', 'html', 'One breakdown card: rows are links that add a filter.'),
     ('templates/collateral/page.html', 'html', 'The main page: «updated at» bar with the refresh button and saved days, header with breadcrumbs, KPIs, the three tiles, the cards, data checks, the deals list.'),
-    ('templates/collateral/deal.html', 'html', 'One collateral deal with every filled field.'),
+    ('templates/collateral/deal.html', 'html', 'One collateral deal with every filled field and its 945xx accounts.'),
     ('templates/collateral/params.html', 'html', 'Every parameter name in the database + the finished SQL to copy.'),
+    ('templates/collateral/accounts.html', 'html', 'Collateral against the 945xx off-balance accounts: totals, mismatches (they open the main page filtered), by account code, accounts with a balance but no collateral.'),
 ]
 EMPTY = ['__init__.py']
 
@@ -80,6 +81,10 @@ def main():
              '(<code>DEAL_TABLE</code>, <code>PARAM_TABLE</code>, <code>PARENT_TABLE</code>). Then open '
              '<code>/collateral/params/</code>: it lists every parameter in the database, so you can find '
              'the address field and add it to <code>PROPERTY</code>.</p>\n'
+             '<p>For the check against the 945xx accounts set four more names in <code>queries.py</code>: '
+             '<code>LINK_TABLE</code> (dealaccountinuse), <code>ACCOUNTS_TABLE</code>, <code>ACCOUNT_BALANCE</code> '
+             '(summanoqeq) and <code>ACCOUNT_NAME</code>. If that query fails, the collateral is still saved '
+             'and the «Счета 945xx» page shows the Oracle error.</p>\n'
              '<p>Sidebar link in base.html: <code>{% url \'collateral\' %}</code>, icon '
              '<code>fa-solid fa-shield-halved</code>.</p>\n'
              '<h3>Layout</h3>\n' + code(tree, 'plaintext') +
