@@ -1,0 +1,7 @@
+from django.apps import AppConfig
+
+
+class FastSearchConfig(AppConfig):
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "fast_search"
+    verbose_name = "Быстрый поиск"

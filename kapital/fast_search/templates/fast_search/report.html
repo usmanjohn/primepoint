@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% comment %}
+  One report: the form made from the :parameters of its SQL, then the result.
+  GET form, so every result has its own address; «Excel» = the same address + &excel=1. No JavaScript.
+{% endcomment %}
+
+{% block extra_css %}{% include "fast_search/style.html" %}{% endblock extra_css %}
+
+{% block content %}
+<div class="fs container-fluid px-3 px-md-4 py-4">
+  <div class="hero">
+    <div class="eyebrow">Быстрый поиск</div>
+    <h1><i class="fa-solid fa-table"></i>{{ report.title }}</h1>
+    <div class="sub"><a class="no-print" href="{% url 'fast-search' %}"><i class="fa-solid fa-arrow-left me-1"></i>Все отчёты</a>
+      {% if report.description %}<span class="mx-2" style="color:#F2C230">·</span>{{ report.description }}{% endif %}</div>
+  </div>
+
+  <form method="get" class="box no-print">
+    <div class="box-head"><span><i class="fa-solid fa-sliders"></i>Параметры</span>
+      <span class="hint">пустое поле = NULL в запросе</span></div>
+    <div class="box-body">
+      <div class="row g-3 align-items-end">
+        {% for f in fields %}
+        <div class="col-6 col-md-4 col-xl-2">
+          <label for="f-{{ f.name }}" class="form-label">{{ f.label }}</label>
+          <input id="f-{{ f.name }}" name="{{ f.name }}" value="{{ f.value }}" class="form-control form-control-sm"
+                 type="{% if f.type == 'date' %}date{% else %}text{% endif %}">
+        </div>
+        {% endfor %}
+        <div class="col-12 col-md-auto">
+          <button class="btn btn-go btn-sm px-4" type="submit" name="run" value="1"><i class="fa-solid fa-play me-1"></i>Показать</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  {% if errors %}
+  <div class="alert alert-warning err">{% for e in errors %}<div>{{ e }}</div>{% endfor %}</div>
+  {% endif %}
+
+  {% if oracle_error %}
+  <div class="alert alert-danger err">
+    <strong><i class="fa-solid fa-triangle-exclamation me-2"></i>Запрос вернул ошибку</strong>
+    <pre class="sql mt-2">{{ oracle_error }}</pre>
+  </div>
+  {% endif %}
+
+  {% if ran %}
+  <div class="box">
+    <div class="box-head">
+      <span><i class="fa-solid fa-table-list"></i>Результат</span>
+      <span class="d-flex align-items-center gap-2">
+        <span class="hint">{{ total }} строк · {{ seconds }} с{% if cut %} · показаны первые {{ rows|length }}, в Excel — все{% endif %}</span>
+        {% if total %}
+        <a class="btn btn-go btn-sm no-print" href="?{{ query }}&excel=1"><i class="fa-solid fa-file-excel me-1"></i>Excel</a>
+        <button class="btn btn-outline-secondary btn-sm no-print" type="button" onclick="window.print()"><i class="fa-solid fa-print"></i></button>
+        {% endif %}
+      </span>
+    </div>
+    {% if rows %}
+    <div class="result">
+      <table class="table table-sm table-hover align-middle">
+        <thead><tr>{% for c in columns %}<th{% if c.num %} class="m"{% endif %}>{{ c.name }}</th>{% endfor %}</tr></thead>
+        <tbody>
+        {% for row in rows %}
+          <tr>{% for cell in row %}<td{% if cell.num %} class="m"{% endif %}>{{ cell.v }}</td>{% endfor %}</tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="nothing"><i class="fa-solid fa-circle-info me-1"></i>Ничего не найдено.</div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  <details class="no-print">
+    <summary><i class="fa-solid fa-code me-1"></i>SQL этого отчёта — <code>fast_search/sql/{{ report.name }}.sql</code></summary>
+    <pre class="sql mt-2">{{ report.sql }}</pre>
+  </details>
+</div>
+{% endblock content %}

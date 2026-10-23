@@ -1,0 +1,43 @@
+{% comment %}
+  The look of fast search (Kapitalbank colours: yellow leads, charcoal second, red only for errors).
+  Everything sits under .fs so it never touches the rest of the site.
+{% endcomment %}
+<style>
+  .fs{--ink:#0B0B0C;--gold:#F2C230;--gd:#C9971A;--gtext:#8C6A12;--rule:#E4E1D8;--paper:#FAF8F2;--muted:#8A867C;--bad:#B3341F;color:var(--ink)}
+  .fs a{color:inherit}
+  .fs .hero{background:var(--ink);color:#fff;border-radius:12px;padding:20px 24px;margin-bottom:20px}
+  .fs .hero .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .fs .hero h1{font-weight:500;font-size:24px;margin:6px 0 8px}
+  .fs .hero h1 i{color:var(--gold);margin-right:10px}
+  .fs .hero .sub{font-size:13px;color:#B9B5AB}
+  .fs .hero .sub a{color:#fff;text-decoration:none;border-bottom:1px dotted #777}
+  .fs .btn-go{background:var(--gold);border:none;color:var(--ink);font-weight:600}
+  .fs .btn-go:hover{background:var(--gd);color:var(--ink)}
+  .fs .box{background:#fff;border:1px solid var(--rule);border-radius:12px;margin-bottom:20px}
+  .fs .box-head{background:var(--paper);border-bottom:1px solid var(--rule);border-radius:12px 12px 0 0;
+       padding:10px 16px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gtext);
+       display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+  .fs .box-head i{margin-right:8px;color:var(--gd)}
+  .fs .box-head .hint{letter-spacing:0;text-transform:none;color:var(--muted);font-size:12px}
+  .fs .box-body{padding:16px}
+  .fs .card-r{display:block;text-decoration:none;background:#fff;border:1px solid var(--rule);border-radius:12px;
+       padding:16px 18px;height:100%;transition:border-color .15s, box-shadow .15s}
+  .fs .card-r:hover{border-color:var(--gold);box-shadow:0 4px 14px rgba(0,0,0,.07)}
+  .fs .card-r .t{font-size:17px;font-weight:600}
+  .fs .card-r .d{font-size:13px;color:var(--muted);margin-top:4px}
+  .fs .chip{display:inline-block;font-size:11.5px;background:var(--paper);border:1px solid var(--rule);
+       border-radius:20px;padding:1px 9px;margin:8px 4px 0 0;color:var(--gtext)}
+  .fs label{font-size:12px;color:var(--muted);margin-bottom:3px}
+  .fs .result{max-height:70vh;overflow:auto}
+  .fs .result table{font-size:13px;margin:0}
+  .fs .result th{position:sticky;top:0;background:var(--paper);white-space:nowrap;font-weight:600;
+       border-bottom:2px solid var(--gold)}
+  .fs .result td{white-space:nowrap}
+  .fs .m{text-align:right;font-variant-numeric:tabular-nums}
+  .fs .err{border-left:4px solid var(--bad)}
+  .fs pre.sql{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:12px;font-size:12.5px;
+       white-space:pre-wrap;margin:0}
+  .fs details summary{cursor:pointer;color:var(--gtext);font-size:13px}
+  .fs .nothing{padding:16px;color:var(--muted)}
+  @media print{.no-print{display:none!important}.fs .result{max-height:none;overflow:visible}}
+</style>
