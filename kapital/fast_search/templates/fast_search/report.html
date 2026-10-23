@@ -2,6 +2,7 @@
 {% comment %}
   One report: the form made from the :parameters of its SQL, then the result.
   GET form, so every result has its own address; «Excel» = the same address + &excel=1. No JavaScript.
+  The SQL at the bottom is shown to staff only (Django admin «staff status»).
 {% endcomment %}
 
 {% block extra_css %}{% include "fast_search/style.html" %}{% endblock extra_css %}
@@ -74,9 +75,11 @@
   </div>
   {% endif %}
 
+  {% if show_sql %}
   <details class="no-print">
     <summary><i class="fa-solid fa-code me-1"></i>SQL этого отчёта — <code>fast_search/sql/{{ report.name }}.sql</code></summary>
     <pre class="sql mt-2">{{ report.sql }}</pre>
   </details>
+  {% endif %}
 </div>
 {% endblock content %}

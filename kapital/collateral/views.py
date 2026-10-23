@@ -25,6 +25,7 @@ from urllib.parse import urlencode
 from django.contrib import messages
 from django.http import FileResponse, Http404, HttpResponse, HttpResponseForbidden
 from django.shortcuts import redirect, render
+from django.urls import reverse
 from django.views.decorators.http import require_POST
 
 from . import process, queries
@@ -166,23 +167,32 @@ def accounts_excel(request):
     if day is None or process.accounts_of(day) is None:
         raise Http404("Счета 945xx за этот день не загружены")
     table = process.orphans_excel(process.accounts_of(day))
-    response = HttpResponse(
-        content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-    response["Content-Disposition"] = f'attachment; filename="accounts_945_{day.isoformat()}.xlsx"'
-    table.to_excel(response, index=False, sheet_name="Счета без залога")
-    return response
+    return download(table, f"accounts_945_{day.isoformat()}", "Счета без залога")
 
 
 def excel(request):
-    """The rows of the current view as an .xlsx file (all of them, not one page)."""
+    """The rows of the current view as an .xlsx file (all of them, not one page); .csv if big, nothing if huge."""
     day = chosen_day(request)
     if day is None:
         raise Http404("Данные ещё не загружены")
-    table = process.excel_table(process.read_day(day), read_filters(request))
-    response = HttpResponse(
-        content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-    response["Content-Disposition"] = f'attachment; filename="collateral_{day.isoformat()}.xlsx"'
-    table.to_excel(response, index=False, sheet_name="Обеспечение")
+    filters = read_filters(request)
+    table = process.excel_table(process.read_day(day), filters)
+    if table.size > process.CSV_MAX_CELLS:
+        messages.warning(request, f"В этой выборке {process.number(len(table))} строк — слишком много для Excel. "
+                                  "Выберите вид или фильтр (или скачайте Parquet).")
+        return redirect(reverse("collateral") + "?" + address(day, filters))
+    return download(table, f"collateral_{day.isoformat()}", "Обеспечение")
+
+
+def download(table, name, sheet):
+    """.xlsx, or .csv when the table is too big to write as Excel in time (process.EXCEL_MAX_CELLS)."""
+    if table.size > process.EXCEL_MAX_CELLS:
+        response = HttpResponse(process.to_csv(table), content_type="text/csv; charset=utf-8")
+        response["Content-Disposition"] = f'attachment; filename="{name}.csv"'
+        return response
+    response = HttpResponse(process.to_xlsx(table, sheet),
+                            content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    response["Content-Disposition"] = f'attachment; filename="{name}.xlsx"'
     return response
 
 

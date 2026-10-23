@@ -8,7 +8,6 @@ The form sends GET, so a result has its own address: send it to a colleague and 
 the same result. «Excel» is the same address with &excel=1.
 """
 from datetime import date
-from io import BytesIO
 
 from django.http import Http404, HttpResponse
 from django.shortcuts import render
@@ -28,7 +27,7 @@ def report(request, name):
         raise Http404("Нет такого отчёта")
 
     fields = [dict(f, value=request.GET.get(f["name"], "")) for f in rep["fields"]]
-    context = {"report": rep, "fields": fields}
+    context = {"report": rep, "fields": fields, "show_sql": request.user.is_staff}
     if "run" not in request.GET and "excel" not in request.GET:
         return render(request, "fast_search/report.html", context)
 
@@ -43,7 +42,9 @@ def report(request, name):
         return render(request, "fast_search/report.html", context)
 
     if "excel" in request.GET:
-        return download(table, name)
+        if table.size <= reports.CSV_MAX_CELLS:
+            return download(table, name)
+        context["errors"] = [f"{len(table):,} строк — слишком много для Excel. Сузьте параметры.".replace(",", " ")]
 
     query = request.GET.copy()
     query.pop("excel", None)
@@ -53,17 +54,13 @@ def report(request, name):
 
 
 def download(table, name):
-    """The whole result as .xlsx (or .csv when it is too big for Excel)."""
+    """The whole result as .xlsx (or .csv when it is too big to write as Excel in time)."""
     stamp = date.today().isoformat()
-    if len(table) > reports.EXCEL_MAX_ROWS:
-        response = HttpResponse(content_type="text/csv; charset=utf-8")
+    if table.size > reports.EXCEL_MAX_CELLS:
+        response = HttpResponse(reports.to_csv(table), content_type="text/csv; charset=utf-8")
         response["Content-Disposition"] = f'attachment; filename="{name}_{stamp}.csv"'
-        response.write("﻿")                # so Excel opens the Russian letters right
-        table.to_csv(response, index=False, sep=";")
         return response
-    buffer = BytesIO()
-    table.to_excel(buffer, index=False, sheet_name=name[:31])
-    response = HttpResponse(buffer.getvalue(),
+    response = HttpResponse(reports.to_xlsx(table, name),
                             content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
     response["Content-Disposition"] = f'attachment; filename="{name}_{stamp}.xlsx"'
     return response
