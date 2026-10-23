@@ -288,14 +288,20 @@ def to_number(column):
 
 
 def to_date(column):
-    """Text in any of DATE_FORMATS → a date; anything else → empty."""
+    """
+    Text in any of DATE_FORMATS → a date; anything else → empty.
+    A year outside 1900 … 2100 is a typo ('19.10.0218') → empty too: pandas 3 reads year 218
+    happily, but it does not fit in a date column and the whole page crashed on it.
+    """
     text = column.astype("string").str.strip()
     result = pd.Series(pd.NaT, index=column.index, dtype="datetime64[ns]")
     for fmt in DATE_FORMATS:
         missing = result.isna() & text.notna()
         if not missing.any():
             break
-        result[missing] = pd.to_datetime(text[missing], format=fmt, errors="coerce")
+        parsed = pd.to_datetime(text[missing], format=fmt, errors="coerce")
+        parsed = parsed[parsed.dt.year.between(1900, 2100)]
+        result[parsed.index] = parsed.astype("datetime64[ns]")
     return result
 
 

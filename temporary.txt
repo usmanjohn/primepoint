@@ -17,3 +17,4 @@ python manage.py import_tutorials tutorial/management/commands/_tutorials_code_c
 python manage.py import_tutorials tutorial/management/commands/_tutorials_code_converter.py --author=powerty --republish
 python manage.py import_tutorials tutorial/management/commands/_tutorials_code_collateral.py --author=powerty --republish
 python manage.py import_tutorials tutorial/management/commands/_tutorials_code_collateral.py --author=powerty --republish
+python manage.py import_tutorials tutorial/management/commands/_tutorials_code_collateral.py --author=powerty --republish
