@@ -316,7 +316,11 @@ def save_today():
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     write(table, file_for(day))
-    save_accounts(day)
+    if queries.CHECK_ACCOUNTS:
+        save_accounts(day)
+    else:                  # switched off: no 945xx file for this day, the pages work without it
+        accounts_file(day).unlink(missing_ok=True)
+        accounts_error_file(day).unlink(missing_ok=True)
     read_day(day)          # clean it now and write the ready copy: the first click is then fast
     return day
 
@@ -1037,7 +1041,8 @@ def excel_table(table, filters):
             out[c] = out[c].dt.date
         elif isinstance(out[c].dtype, pd.CategoricalDtype) or pd.api.types.is_string_dtype(out[c]):
             out[c] = out[c].astype("object").replace(EMPTY, None)
-    out["kind"] = out["kind"].astype("object").map(lambda k: KINDS[k]["label"])
+    if "kind" in out:              # not there when the filter left no rows
+        out["kind"] = out["kind"].astype("object").map(lambda k: KINDS[k]["label"])
     return out.rename(columns=names)
 
 
