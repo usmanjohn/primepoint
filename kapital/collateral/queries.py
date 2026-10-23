@@ -44,8 +44,10 @@ CLOSE_DATE = "closedate"                        # column of PARENT_TABLE: when t
 
 # The off-balance accounts where the collateral is booked (see «3. ACCOUNTS» below).
 LINK_TABLE = "schema2.dealaccountinuse"         # which account belongs to which deal: dealid, accountid
+LINK_CLOSED = "dealclosed"                      # column of LINK_TABLE: 1 = the link is closed, 0 or empty = in use
 ACCOUNTS_TABLE = "schema1.accounts"             # the accounts: id, arcdate, accountno, balance, description
-ACCOUNT_BALANCE = "summanoqeq"                  # the balance column, in tiyin (divided by 100)
+ACCOUNT_BALANCE = "summanoqeq"                  # the balance column, сум equivalent
+BALANCE_DIVIDER = 10                            # the balance is stored ×10: divide by this to get сум
 ACCOUNT_NAME = "description"                    # the account's name column
 
 
@@ -297,12 +299,13 @@ with links as (
     select distinct l.dealid, l.accountid
     from   {LINK_TABLE} l
     join   {PARENT_TABLE} p on p.id = l.dealid and p.dealtypeid = {COLLATERAL_TYPE}
+    where  nvl(l.{LINK_CLOSED}, 0) <> 1          -- closed links (1) are history, not the current account
 ),
 acc as (
     select id, accountno, balance, account_name, arcdate
     from (
         select a.id, a.accountno,
-               a.{ACCOUNT_BALANCE} / 100 as balance,
+               a.{ACCOUNT_BALANCE} / {BALANCE_DIVIDER} as balance,
                a.{ACCOUNT_NAME}          as account_name,
                a.arcdate,
                row_number() over (partition by a.id order by a.arcdate desc) as rn
