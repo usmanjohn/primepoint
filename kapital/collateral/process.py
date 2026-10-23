@@ -684,8 +684,6 @@ def find_problems(t, day):
     checks.update({
         "acc_none":   ("Залог действует, а счёта 945xx нет", active & ~linked if loaded else nothing),
         "acc_diff":   ("Остаток на 945xx не равен сумме залога", active & linked & differs),
-        "acc_closed": ("Залог закрыт, а на 945xx остался остаток",
-                       ~active & (t["acc_balance"] >= TOLERANCE) if loaded else nothing),
         "acc_wrong":  ("Залог на счёте не той группы 945xx", linked & ~t["acc_right"] if loaded else nothing),
         "acc_shared": ("Один счёт 945xx на несколько залогов", t["acc_shared"] if loaded else nothing),
     })
@@ -1015,7 +1013,7 @@ def deal_card(table, dealid, accounts=None):
     card = {"dealid": dealid, "kind": KINDS[r["kind"]], "title": show(r.get("title")),
             "amount": number(r["amount"]), "market": number(r["market"]),
             "sections": sections, "issues": issues}
-    if accounts is not None:
+    if accounts is not None and r["status"] == ACTIVE:      # only active collateral is compared
         mine = accounts[accounts["dealid"] == dealid]
         card["accounts"] = [{"no": a.accountno, "code_name": queries.ACCOUNT_CODES.get(a.code, "не 945xx"),
                              "name": show(a.account_name) or "", "balance": number(a.balance, 2),
@@ -1074,6 +1072,8 @@ def accounts_page(table, accounts):
         {"label": "Счета без залога", "value": number(len(lost)), "icon": "fa-circle-question",
          "note": f"с остатком {mln(lost['balance'].sum())} млн", "bad": len(lost) > 0},
     ]
+    if not queries.FIND_ORPHANS:
+        kpis[-1].update(value="—", note="поиск выключен (FIND_ORPHANS)", bad=False)
 
     codes = []
     for code, name in queries.ACCOUNT_CODES.items():
@@ -1103,7 +1103,7 @@ def accounts_page(table, accounts):
 
     return {"kpis": kpis, "codes": codes, "checks": checks, "by_kind": by_kind,
             "elsewhere": {"count": number(len(elsewhere)), "balance": mln(elsewhere["balance"].sum())},
-            "lost_total": number(len(lost)),
+            "lost_total": number(len(lost)), "find_orphans": queries.FIND_ORPHANS,
             "lost": [{"no": a.accountno, "name": show(a.account_name) or "", "balance": number(a.balance, 2),
                       "arcdate": show(a.arcdate) or "—"} for a in lost.head(100).itertuples()]}
 
