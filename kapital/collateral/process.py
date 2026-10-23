@@ -28,6 +28,7 @@ THE TABLE (one row = one collateral deal)
 
 All the settings you may want to change are in the block just below.
 """
+import io
 import numbers
 import os
 from datetime import date, datetime
@@ -174,6 +175,15 @@ EXPECTED_ACCOUNTS = {
 }
 DEFAULT_ACCOUNTS = ["94502", "94512"]    # cars, property, equipment, deposits, goods ...
 TOLERANCE = 1.0                          # сум: a smaller difference is rounding, not a mismatch
+
+# Excel files are slow to write (about 50 000 cells a second), CSV is about 10× faster.
+# Cells = rows × columns of the download:
+#   up to EXCEL_MAX_CELLS  → .xlsx   (≈ 10 seconds at most)
+#   up to CSV_MAX_CELLS    → .csv    (opens in Excel too; ≈ 15 seconds at most)
+#   more                   → no file: the page asks to narrow the view (Excel cannot open
+#                            a million rows anyway). Gunicorn stops a request after 30 s.
+EXCEL_MAX_CELLS = 600_000
+CSV_MAX_CELLS = 15_000_000
 
 
 def names(groups):
@@ -1026,6 +1036,24 @@ def deal_card(table, dealid, accounts=None):
         card["gap"] = number(mine["balance"].sum() - (r["amount"] if pd.notna(r["amount"]) else 0))
         card["gap_bad"] = abs(mine["balance"].sum() - (r["amount"] if pd.notna(r["amount"]) else 0)) >= TOLERANCE
     return card
+
+
+def to_xlsx(table, sheet):
+    """The table as .xlsx bytes. openpyxl's write-only mode: about 3× faster than table.to_excel."""
+    import openpyxl
+    book = openpyxl.Workbook(write_only=True)
+    page = book.create_sheet(sheet[:31])
+    page.append([str(c) for c in table.columns])
+    for row in table.astype(object).where(table.notna(), None).itertuples(index=False):
+        page.append(list(row))
+    buffer = io.BytesIO()
+    book.save(buffer)
+    return buffer.getvalue()
+
+
+def to_csv(table):
+    """The table as CSV text that Excel opens right: «;» between columns, BOM for the Russian letters."""
+    return "\ufeff" + table.to_csv(index=False, sep=";", decimal=",")
 
 
 def excel_table(table, filters):

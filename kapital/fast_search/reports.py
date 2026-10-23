@@ -27,6 +27,7 @@ AN OPTIONAL PARAMETER (empty field = everything) is written like this:
 EXTRA PYTHON (optional): a function in process.py with the SAME NAME as the file gets the
 table and the form values and returns the table to show. See process.py.
 """
+import io
 import re
 import time
 from datetime import date
@@ -54,7 +55,14 @@ FIELDS = {
 }
 
 SHOW_ROWS = 500          # rows shown on the page; Excel always gets them all
-EXCEL_MAX_ROWS = 1_000_000   # Excel holds 1 048 576 rows: a bigger result is given as CSV
+# Excel files are slow to write (about 50 000 cells a second), CSV is about 10× faster.
+# Cells = rows × columns of the download:
+#   up to EXCEL_MAX_CELLS  → .xlsx   (≈ 10 seconds at most)
+#   up to CSV_MAX_CELLS    → .csv    (opens in Excel too; ≈ 15 seconds at most)
+#   more                   → no file: the page asks to narrow the view (Excel cannot open
+#                            a million rows anyway). Gunicorn stops a request after 30 s.
+EXCEL_MAX_CELLS = 600_000
+CSV_MAX_CELLS = 15_000_000
 
 
 # ═══════════════════════════════ THE REPORTS ═══════════════════════════════════════
@@ -158,6 +166,24 @@ def run(sql, values):
         # Oracle gives unquoted names in CAPITALS: make them small. "Сумма" in quotes stays.
         columns = [c[0].lower() if c[0].isascii() and c[0].isupper() else c[0] for c in cursor.description]
         return pd.DataFrame(cursor.fetchall(), columns=columns)
+
+
+def to_xlsx(table, sheet):
+    """The table as .xlsx bytes. openpyxl's write-only mode: about 3× faster than table.to_excel."""
+    import openpyxl
+    book = openpyxl.Workbook(write_only=True)
+    page = book.create_sheet(sheet[:31])
+    page.append([str(c) for c in table.columns])
+    for row in table.astype(object).where(table.notna(), None).itertuples(index=False):
+        page.append(list(row))
+    buffer = io.BytesIO()
+    book.save(buffer)
+    return buffer.getvalue()
+
+
+def to_csv(table):
+    """The table as CSV text that Excel opens right: «;» between columns, BOM for the Russian letters."""
+    return "\ufeff" + table.to_csv(index=False, sep=";", decimal=",")
 
 
 # ═══════════════════════════════ SHOW ══════════════════════════════════════════════
