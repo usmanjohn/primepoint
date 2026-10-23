@@ -1,0 +1,235 @@
+{
+ "id": "2026-10-23-mantiq-19-koshin-pano-javob",
+ "number": 65,
+ "for": "Jonibek",
+ "date": "2026-10-23",
+ "series": "Mantiq maydoni",
+ "title_uz": "Koshin panodagi toʻrtburchaklar — javob",
+ "concept_uz": "16-oktabrdagi «Koshin panodagi toʻrtburchaklar» videosining javobi: 225. Usta shogirdga koshinlarga emas, chiziqlarga qarashni oʻrgatadi: 6 ta tik va 6 ta yotiq chiziq, har toʻrtburchak — ikkita tik va ikkita yotiq. Oltitadan ikkitasi — 15 usul, 15 × 15 = 225. Oldingi videodagi R1–R6 rasmlar saqlangan boʻlsa, qayta ishlating.",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "logic/management/commands/_puzzles_logic_17_24.py (puzzle 19)"
+ ],
+ "facts": [
+  {
+   "claim": "Javob: 225 (answer_key '225')",
+   "source": "logic/management/commands/_puzzles_logic_17_24.py (puzzle 19) answer_key"
+  },
+  {
+   "claim": "5 × 5 pano 6 ta tik va 6 ta yotiq chiziq bilan chiziladi (beshta koshinga oltita chiziq)",
+   "source": "logic/management/commands/_puzzles_logic_17_24.py (puzzle 19) solution_uz qadam 1"
+  },
+  {
+   "claim": "Har bir toʻrtburchak — 6 ta tik chiziqdan ikkitasi va 6 ta yotiq chiziqdan ikkitasi; har tanlov aynan bitta toʻrtburchak",
+   "source": "logic/management/commands/_puzzles_logic_17_24.py (puzzle 19) solution_uz qadam 2–3"
+  },
+  {
+   "claim": "Oltitadan ikkita chiziq: 6 × 5 ÷ 2 = 15 usul; 15 × 15 = 225",
+   "source": "logic/management/commands/_puzzles_logic_17_24.py (puzzle 19) solution_uz qadam 4–5"
+  },
+  {
+   "claim": "Sirri: narsalarni sanash qiyin boʻlsa, ularni yaratadigan qarorlarni sanang",
+   "source": "logic/management/commands/_puzzles_logic_17_24.py (puzzle 19) solution_uz lg-moral"
+  },
+  {
+   "claim": "Raund 2: 2026-10-12 ochilgan, javobi 2026-10-19 da ochildi — bugun (2026-10-23) javob videosi ruxsat; savol videosi 2026-10-16 da Jonibekka ketgan (№51)",
+   "source": "_puzzles_logic_17_24.py SCHEDULE start 2026-10-05 + puzzle 19 round 2; sent.tsv №51"
+  }
+ ],
+ "style_line": "Cinematic photoreal, soft golden afternoon light in an old Central Asian madrasa courtyard, warm ochre brick against deep cobalt-blue glazed tiles, 35mm film look, calm craftsman's-workshop mood with a light comic touch. No text, no letters, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: madrasa hovlisi (16-oktabr videosidagi rasm)",
+   "prompt": "Vertical 9:16 shot of a quiet courtyard of an old Central Asian madrasa in golden afternoon light: ochre brick arches, a mulberry tree, a wooden scaffold plank, buckets of mortar and a trowel on the ground. In the plain brick wall at chest height a brand-new square panel of exactly 25 identical cobalt-blue glazed square tiles, five rows of five, with thin white grout lines. No people, no writing."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Usta (16-oktabr videosidagi rasm)",
+   "prompt": "Vertical 9:16 full-body portrait of an Uzbek master tiler of about 60, calm wise face, short grey beard, a white skullcap, sleeves rolled up, a dark INDIGO canvas apron dusted with pale clay, holding a small wooden trowel, standing in a madrasa courtyard in golden afternoon light."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Pano yaqindan (16-oktabr videosidagi rasm)",
+   "prompt": "Vertical 9:16 straight-on close-up of a square wall panel of exactly 25 identical cobalt-blue glazed square tiles arranged five rows by five columns, thin even white grout lines between them, set in ochre brick, golden afternoon light making the glaze shine. Exactly five rows and five columns. No patterns, no writing."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Shogird (16-oktabr videosidagi rasm)",
+   "prompt": "Vertical 9:16 full-body portrait of an Uzbek apprentice boy of about 14, thin, messy black hair under a bright ORANGE headband, a pencil tucked behind his ear, a plain grey work shirt with clay stains, bored expression, sitting on an upturned bucket in a madrasa courtyard in golden afternoon light."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Hammasi panoning oldida (16-oktabr videosidagi rasm)",
+   "from": [
+    "R1",
+    "R2",
+    "R4"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot of the same courtyard: the apprentice sits on an upturned bucket right in front of the 5 × 5 blue tile panel, one finger raised toward the tiles as if counting; the master tiler stands a few steps behind him, wiping his trowel and watching with a hidden smile. Exactly 25 tiles, five by five. Same faces, same clothes, same light."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Boʻr bilan chizilgan 2 × 3 blok (16-oktabr videosidagi rasm)",
+   "from": "R3",
+   "prompt": "Edit the attached panel: draw one clear white chalk outline around a single block of tiles two rows high and three columns wide, near the upper left of the panel. Everything else unchanged: still exactly 25 tiles, five by five, same light, 9:16. No numbers, no writing."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Oltita tik chiziq porlaydi",
+   "from": "R3",
+   "prompt": "Edit the attached panel: the vertical lines of the grid now glow softly golden, like threads of light: the left edge, the right edge and the four grout lines between the columns, six vertical golden lines in total. The horizontal grout lines stay plain white. Still exactly 25 tiles, five by five, same light, 9:16. No numbers, no writing."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Ikki tik, ikki yotiq — bitta toʻrtburchak",
+   "from": "R3",
+   "prompt": "Edit the attached panel: two vertical grid lines are traced in bright red chalk (the second and the fourth line from the left) and two horizontal grid lines are traced in bright blue chalk (the first and the third line from the top); where they cross, the tiles they enclose glow slightly brighter, forming one clear rectangle two tiles high and two tiles wide. Still exactly 25 tiles, five by five, same light, 9:16. No numbers, no writing."
+  },
+  {
+   "id": "R9",
+   "name_uz": "Shogird gʻalaba qildi",
+   "from": "R5",
+   "prompt": "Change the scene: the apprentice now stands on his upturned bucket with both fists raised in triumph, a big grin, pencil in one hand; the master tiler stands beside him laughing and clapping, the 5 × 5 blue tile panel behind them. Same faces, same clothes (orange headband, indigo apron), same light, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Javob vaqti",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Oʻtgan hafta: beshga besh pano, yigirma beshta koshin. Nechta toʻrtburchak? Bugun — javob!"
+    }
+   ],
+   "prompt": "The frozen courtyard comes back to life: the hanging puff of clay dust drifts again, a sparrow lands on the scaffold plank, the apprentice blinks and stares at the tile panel. Fast push-in. Audio: one soft dutar note, then courtyard sounds return. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"O'tgan hafta: beshga besh pano, yigirma beshta koshin. Nechta to'rtburchak? Bugun — javob!\" excited. No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Chiziqlarga qara",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R4",
+    "R3"
+   ],
+   "lines": [
+    {
+     "who": "Usta",
+     "text": "Koshinlarga qarama, bolam. Chiziqlarga qara."
+    }
+   ],
+   "prompt": "The master tiler gently turns the boy's head away from the tiles with one hand and points with his trowel at the thin white grout lines between them. The boy squints. Audio: footsteps on brick, a soft tap on glaze. The master says in Uzbek with a deep, calm, kind elderly male voice of about 60: \"Koshinlarga qarama, bolam. Chiziqlarga qara.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Oltita chiziq",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Beshta koshinga oltita chiziq kerak: oltita tik, oltita yotiq."
+    }
+   ],
+   "prompt": "Slow push-in on the panel as the six vertical lines light up golden one by one from left to right. Audio: six soft rising chimes, one per line. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Beshta koshinga oltita chiziq kerak: oltita tik, oltita yotiq.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Toʻrtburchak — toʻrtta chiziq",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Usta (kadr ortida)",
+     "text": "Har bir toʻrtburchak — ikkita tik va ikkita yotiq chiziq. Boshqa hech narsa kerak emas."
+    }
+   ],
+   "prompt": "A weathered hand with chalk traces two red vertical lines and two blue horizontal lines; the tiles between them glow, a rectangle appears. Audio: chalk scratching, a bright pop when the rectangle lights up. The master says off-screen in Uzbek with a deep, calm, kind elderly male voice of about 60: \"Har bir to'rtburchak — ikkita tik va ikkita yotiq chiziq. Boshqa hech narsa kerak emas.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Tanlovni sana",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R4",
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Shogird",
+     "text": "Demak, chiziqlarni tanlashni sanash kifoya!"
+    },
+    {
+     "who": "Usta",
+     "text": "Ana, endi oʻylayapsan."
+    }
+   ],
+   "prompt": "The apprentice jumps up from his bucket, snaps his fingers and points at the panel, eyes shining; the master raises his eyebrows, pleased. Audio: a finger snap, a bucket wobble. The apprentice says in Uzbek with a cracking, impatient teenage boy's voice of about 14: \"Demak, chiziqlarni tanlashni sanash kifoya!\" The master says in Uzbek with a deep, calm, kind elderly male voice of about 60: \"Ana, endi o'ylayapsan.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Oʻn besh",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Oltitadan ikkita chiziq: olti karra besh, ikkiga boʻlinadi — oʻn besh usul."
+    }
+   ],
+   "prompt": "The golden vertical lines pulse in pairs: first and second, first and third, and onward faster and faster across the panel. Audio: a quick run of plucked notes speeding up. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Oltitadan ikkita chiziq: olti karra besh, ikkiga bo'linadi — o'n besh usul.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Ikki yuz yigirma besh",
+   "method": "Frames to Video",
+   "start": "R9",
+   "lines": [
+    {
+     "who": "Shogird",
+     "text": "Tik juftlik — oʻn besh, yotiq juftlik — oʻn besh. Oʻn besh karra oʻn besh…"
+    },
+    {
+     "who": "Usta",
+     "text": "Ikki yuz yigirma besh!"
+    }
+   ],
+   "prompt": "The apprentice on his bucket counts on his fingers, then throws both fists up; the master laughs and claps. Audio: a short drum roll and a cymbal. The apprentice says in Uzbek with a cracking, impatient teenage boy's voice of about 14: \"Tik juftlik — o'n besh, yotiq juftlik — o'n besh. O'n besh karra o'n besh...\" The master says in Uzbek with a deep, calm, kind elderly male voice of about 60: \"Ikki yuz yigirma besh!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Sirri",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R3"
+   ],
+   "lines": [
+    {
+     "who": "Usta",
+     "text": "Sanash qiyin boʻlsa, narsalarni emas, ularni yaratadigan tanlovlarni sana."
+    }
+   ],
+   "prompt": "Medium shot: the master tiler wipes his trowel, looks at the panel with quiet pride, then at the boy. Gentle mood. Audio: courtyard wind, a distant dove. The master says in Uzbek with a deep, calm, kind elderly male voice of about 60: \"Sanash qiyin bo'lsa, narsalarni emas, ularni yaratadigan tanlovlarni sana.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 9,
+   "title_uz": "Topdingizmi?",
+   "method": "Frames to Video",
+   "start": "R9",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Javob — ikki yuz yigirma besh. Topdingizmi? Izohda yozing! Yangi jumboqlar — powerty.uz/logic da."
+    }
+   ],
+   "prompt": "Slow pull-back and rise above the courtyard: the two figures by the shining blue panel grow small, the sun glints on the glaze. Audio: one final soft dutar note. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Javob — ikki yuz yigirma besh. Topdingizmi? Izohda yozing! Yangi jumboqlar — powerty.uz/logic da.\" friendly and curious. No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Javob: 225! Beshga besh panoda 6 ta tik va 6 ta yotiq chiziq bor. Har bir toʻrtburchak — ikkita tik va ikkita yotiq chiziq. Oltitadan ikkitasini 15 usulda tanlash mumkin: 15 × 15 = 225. Sirri: narsalarni emas, tanlovlarni sanang. Siz topdingizmi? Izohda yozing, yangi jumboqlar powerty.uz/logic da! #mantiq #jumboq #MantiqMaydoni #Powerty"
+}

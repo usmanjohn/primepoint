@@ -1,0 +1,212 @@
+{
+ "id": "2026-10-23-hayot-musiqa-kasrlar",
+ "number": 64,
+ "for": "Inom",
+ "date": "2026-10-23",
+ "series": "Hayotdagi matematika",
+ "title_uz": "Dutordagi kasrlar",
+ "concept_uz": "Usta dutor yasaydi, nabirasi Malika torni chertib oʻynaydi. U torni roppa-rosa oʻrtasidan bosadi — ovoz oʻsha nota boʻlib, faqat balandroq chiqadi. Usta chizgʻich bilan oʻlchab koʻrsatadi: yoqimli ovoz ortida sodda kasr turibdi — 1/2, 2/3, 3/4; tasodifiy joy esa gʻalati eshitiladi.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_07.py (story 30)"
+ ],
+ "facts": [
+  {
+   "claim": "Torni aynan oʻrtasidan bosib chertilsa, ovoz balandroq, lekin oʻsha nota boʻlib eshitiladi — oktava",
+   "source": "corner/management/commands/_stories_matematika_olami_07.py (story 30) body"
+  },
+  {
+   "claim": "Torning 1/2 qismi — oktava, 2/3 qismi — kvinta, 3/4 qismi — kvarta",
+   "source": "corner/management/commands/_stories_matematika_olami_07.py (story 30) body + grammar"
+  },
+  {
+   "claim": "Tasodifiy joydan, masalan 7/13 qismidan bosilsa, ovoz gʻalati va noqulay eshitiladi",
+   "source": "corner/management/commands/_stories_matematika_olami_07.py (story 30) body"
+  },
+  {
+   "claim": "Rivoyatga koʻra, buni Pifagor va shogirdlari sinchiklab tekshirgan (videoda ham «rivoyatga koʻra» deyiladi); taxminan ikki yarim ming yil oldin",
+   "source": "corner/management/commands/_stories_matematika_olami_07.py (story 30) body + summary"
+  },
+  {
+   "claim": "Quloqqa yoqimli juftliklar faqat sodda kasrlar chiqqanda paydo boʻladi",
+   "source": "corner/management/commands/_stories_matematika_olami_07.py (story 30) body"
+  },
+  {
+   "claim": "Nota davomiyliklari ham kasr: butun, yarim, chorak; 1/4+1/4+1/4+1/4 = 1 (oxirgi sahnadagi keyingi video ishorasi)",
+   "source": "corner/management/commands/_stories_matematika_olami_07.py (story 30) body + grammar"
+  }
+ ],
+ "style_line": "Cinematic photoreal, warm amber late-afternoon light through a small workshop window, golden mulberry-wood tones and floating sawdust, 35mm film look, intimate gentle mood with a light comic touch. No text, no letters, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: dutor ustaxonasi",
+   "prompt": "Vertical 9:16 shot of a small old Uzbek musical-instrument workshop: a long wooden workbench with chisels, clamps and wood shavings, half-finished long-necked two-string dutars hanging on the whitewashed wall, a small window with warm late-afternoon light, a low wooden stool, a pale wooden ruler on the bench. No people, no writing."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Usta",
+   "prompt": "Vertical 9:16 full-body portrait of an Uzbek instrument maker of about 60, kind patient face, neat white beard, ROUND WIRE SPECTACLES on his nose, a black-and-white skullcap, a BROWN FELT VEST over a white shirt, sawdust on his sleeves, holding a finished dutar, standing in a warm wooden workshop."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Malika",
+   "prompt": "Vertical 9:16 full-body portrait of an Uzbek girl of about 12, bright curious eyes, two long dark braids tied with a GREEN RIBBON, a simple yellow atlas-silk dress with a dark cardigan, sitting cross-legged on a low wooden stool in a warm wooden workshop, looking up with a cheeky smile."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Dutor yaqindan",
+   "prompt": "Vertical 9:16 close-up of a long-necked two-string Uzbek dutar lying on a wooden workbench, its long thin neck running from bottom to top of the frame, two thin strings shining in warm window light, a pale wooden ruler lying right beside the neck along its full length. No writing, no numbers on the ruler."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Usta va Malika ustaxonada",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot of the same workshop: the girl sits on the low stool with a dutar across her lap, plucking a string; the instrument maker stands behind the workbench a step away, looking at her over his round spectacles with a hidden smile. Same faces, same clothes, same light."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Barmoq torning oʻrtasida",
+   "from": "R4",
+   "prompt": "Edit the attached image: a girl's small finger with a GREEN RIBBON tied around the wrist presses the string down exactly at the middle of the string's length; a tiny white chalk dot on the neck marks the exact middle. Same dutar, same ruler, same light, 9:16. No numbers, no writing."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Rivoyat: Pifagor va shogirdlari",
+   "prompt": "Vertical 9:16 respectful historical reconstruction: an ancient Greek scholar of about 60 with a long grey beard and a plain white himation, seated in a sunlit stone courtyard with columns, plucking a single string stretched over a long wooden sound box, a small wooden bridge under the string; two young students in simple tunics lean in, listening closely. Same warm golden light. No writing."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Malika chalmoqda",
+   "from": "R5",
+   "prompt": "Change the scene: the girl now plays the dutar with eyes half closed and a proud happy smile, her fingers on the neck; the instrument maker has sat down on the edge of the workbench, nodding along, one hand keeping a gentle beat on his knee. Same faces, same clothes, same light, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Chert!",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Malika",
+     "text": "Voy! Xuddi oʻsha ovoz-ku, faqat balandroq!"
+    }
+   ],
+   "prompt": "The girl plucks a dutar string, a clear low note rings, then she presses the string at its middle, plucks again and her eyes go wide in surprise; behind her the master looks up over his round spectacles. Audio: a low dutar note, then the same note one octave higher. The girl says in Uzbek with a bright, quick, curious girl's voice of about 12: \"Voy! Xuddi o'sha ovoz-ku, faqat balandroq!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Oʻrtasi",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Torni roppa-rosa oʻrtasidan bossangiz, ovoz bir oktava koʻtariladi."
+    }
+   ],
+   "prompt": "Extreme close-up: the small finger with the green ribbon presses the string exactly on the white chalk dot at the middle; the string trembles after the pluck, catching the warm light. Audio: a single bright note ringing out. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Torni roppa-rosa o'rtasidan bossangiz, ovoz bir oktava ko'tariladi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Bu — kasr",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R3",
+    "R4"
+   ],
+   "lines": [
+    {
+     "who": "Usta",
+     "text": "Bu sehr emas, qizim. Bu — kasr. Torning yarmi: ikkidan bir."
+    }
+   ],
+   "prompt": "The master walks round the bench, picks up the pale wooden ruler, lays it along the dutar's string and taps the middle with his finger, smiling at the girl. Audio: wood tap, soft sawdust rustle. The master says in Uzbek with a deep, warm, unhurried elderly male voice of about 60: \"Bu sehr emas, qizim. Bu — kasr. Torning yarmi: ikkidan bir.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Rivoyat",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Rivoyatga koʻra, ikki yarim ming yil oldin Pifagor va shogirdlari buni sinchiklab tekshirgan."
+    }
+   ],
+   "prompt": "Slow push-in on the ancient scholar plucking his single string while the two students lean closer, one of them moving the small wooden bridge along the box. Audio: a pure single-string tone, wind in the columns. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Rivoyatga ko'ra, ikki yarim ming yil oldin Pifagor va shogirdlari buni sinchiklab tekshirgan.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Uchdan ikki",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R4",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Usta",
+     "text": "Uchdan ikki — kvinta. Toʻrtdan uch — kvarta. Ikkalasi ham yoqimli."
+    }
+   ],
+   "prompt": "The master takes the dutar, presses the string at two thirds of its length, plucks, then moves his finger and plucks at three quarters; two warm pleasant notes. The girl listens with her head tilted. Audio: two harmonious dutar notes. The master says in Uzbek with a deep, warm, unhurried elderly male voice of about 60: \"Uchdan ikki — kvinta. To'rtdan uch — kvarta. Ikkalasi ham yoqimli.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Tasodifiy joy",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Malika",
+     "text": "Bu-chi? Voy, qulogʻim!"
+    },
+    {
+     "who": "Usta",
+     "text": "Tasodifiy joy — gʻalati kasr. Oʻn uchdan yetti — gʻalati ovoz."
+    }
+   ],
+   "prompt": "The girl grabs the dutar back, presses the string at a random spot and plucks: a sour, wobbly note. She scrunches her whole face and covers one ear; the master laughs silently. Comic timing. Audio: an ugly off-key twang. The girl says in Uzbek with a bright, quick, curious girl's voice of about 12: \"Bu-chi? Voy, qulog'im!\" The master says in Uzbek with a deep, warm, unhurried elderly male voice of about 60: \"Tasodifiy joy — g'alati kasr. O'n uchdan yetti — g'alati ovoz.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Kasr chalyapman",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Malika",
+     "text": "Demak, men hozir kasr chalyapmanmi?"
+    },
+    {
+     "who": "Usta",
+     "text": "Ha. Har bir yoqimli ovoz ortida sodda kasr turibdi."
+    }
+   ],
+   "prompt": "The girl plays a short simple melody, her finger hopping between the middle, two thirds and three quarters of the string; the master nods along, tapping a gentle beat on his knee. Audio: a short sweet dutar melody. The girl says in Uzbek with a bright, quick, curious girl's voice of about 12: \"Demak, men hozir kasr chalyapmanmi?\" The master says in Uzbek with a deep, warm, unhurried elderly male voice of about 60: \"Ha. Har bir yoqimli ovoz ortida sodda kasr turibdi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Savol",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Notalar ham kasr: butun, yarim, chorak. Qaysi cholgʻuda yana kasr bor? Izohda yozing!"
+    }
+   ],
+   "prompt": "Slow pull-back out of the workshop window: the girl keeps playing, the master turns and winks at the camera, sawdust glittering in the sunbeam. Audio: the melody fading, one last soft note. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Notalar ham kasr: butun, yarim, chorak. Qaysi cholg'uda yana kasr bor? Izohda yozing!\" friendly and curious. No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Torni roppa-rosa oʻrtasidan bosing — ovoz oʻsha nota boʻlib, faqat balandroq chiqadi. Bu — oktava, yaʼni 1/2. Uchdan ikki — kvinta, toʻrtdan uch — kvarta. Yoqimli ovoz ortida doim sodda kasr turadi. Sizning cholgʻuingizda qaysi kasr bor? Izohda yozing! #matematika #musiqa #kasr #HayotdagiMatematika #Powerty"
+}
