@@ -43,6 +43,8 @@ CLOSE_DATE = "closedate"                        # column of PARENT_TABLE: when t
                                                 # (empty or later than the update = still active)
 
 # The off-balance accounts where the collateral is booked (see «3. ACCOUNTS» below).
+CHECK_ACCOUNTS = False                          # True = «Обновить из базы» also loads the 945xx accounts
+                                                # (slow on a big archive); False = collateral only, as at first
 LINK_TABLE = "schema2.dealaccountinuse"         # which account belongs to which deal: dealid, accountid
 LINK_CLOSED = "dealclosed"                      # column of LINK_TABLE: 1 = the link is closed, 0 or empty = in use
 ACCOUNTS_TABLE = "schema1.accounts"             # the accounts: id, arcdate, accountno, balance, description

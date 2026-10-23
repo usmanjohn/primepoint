@@ -80,6 +80,7 @@ def home(request, error=None):
     day = chosen_day(request)
     saved = process.saved_days()
     context = {"saved": saved, "error": error, "today": date.today(),
+               "check_accounts": queries.CHECK_ACCOUNTS,
                "saved_total": f"{sum(s['bytes'] for s in saved) / 1e6:.1f} МБ"}
     if day is None:                      # nothing downloaded yet: only the «Обновить» button
         return render(request, "collateral/page.html", context)
