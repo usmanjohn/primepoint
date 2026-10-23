@@ -46,9 +46,11 @@ CLOSE_DATE = "closedate"                        # column of PARENT_TABLE: when t
 LINK_TABLE = "schema2.dealaccountinuse"         # which account belongs to which deal: dealid, accountid
 LINK_CLOSED = "dealclosed"                      # column of LINK_TABLE: 1 = the link is closed, 0 or empty = in use
 ACCOUNTS_TABLE = "schema1.accounts"             # the accounts: id, arcdate, accountno, balance, description
-ACCOUNT_BALANCE = "summanoqeq"                  # the balance column, сум equivalent
+ACCOUNT_BALANCE = "summanoweq"                  # the balance column, сум equivalent
 BALANCE_DIVIDER = 10                            # the balance is stored ×10: divide by this to get сум
-ACCOUNT_NAME = "description"                    # the account's name column
+ACCOUNT_NAME = "discription"                    # the account's name column
+FIND_ORPHANS = False                            # True = also look for 945xx accounts with a balance and
+                                                # NO active collateral (reads the whole 945xx history: slow)
 
 
 # ── 2. PARAMETERS ──────────────────────────────────────────────────────────────────
@@ -289,31 +291,33 @@ ACCOUNT_CODES = {
     "94513": "Гарантии и поручительства — по прочим активам",
 }
 
-# One row per account: every 945xx account above PLUS any other account linked to a
-# collateral deal (so a collateral booked on a wrong account shows up too).
-#   acc    — the latest row of each account (row_number by arcdate desc, like date_to above)
-#   links  — which collateral deal each account belongs to
-# dealid is empty when a 945xx account has no collateral deal linked to it.
-SQL_ACCOUNTS = f"""
-with links as (
+# Only ACTIVE collateral is compared (closedate empty or in the future, link not closed):
+# a closed collateral has nothing to check, and the accounts table keeps a row per day
+# (arcdate), so reading every account ever would take very long.
+#   links  — which account belongs to which active collateral deal
+#   latest — the latest row of each of those accounts (row_number by arcdate desc)
+LINKS = f"""
+links as (
     select distinct l.dealid, l.accountid
     from   {LINK_TABLE} l
     join   {PARENT_TABLE} p on p.id = l.dealid and p.dealtypeid = {COLLATERAL_TYPE}
-    where  nvl(l.{LINK_CLOSED}, 0) <> 1          -- closed links (1) are history, not the current account
-),
-acc as (
-    select id, accountno, balance, account_name, arcdate
-    from (
-        select a.id, a.accountno,
+    where  nvl(l.{LINK_CLOSED}, 0) <> 1                          -- 1 = the link is closed
+      and  (p.{CLOSE_DATE} is null or p.{CLOSE_DATE} > trunc(sysdate))   -- active collateral only
+)"""
+
+LATEST_COLUMNS = f"""a.id, a.accountno,
                a.{ACCOUNT_BALANCE} / {BALANCE_DIVIDER} as balance,
                a.{ACCOUNT_NAME}          as account_name,
                a.arcdate,
-               row_number() over (partition by a.id order by a.arcdate desc) as rn
-        from   {ACCOUNTS_TABLE} a
-        where  substr(a.accountno, 1, 5) in ({quoted(ACCOUNT_CODES)})
-           or  a.id in (select accountid from links)
-    )
-    where rn = 1
+               row_number() over (partition by a.id order by a.arcdate desc) as rn"""
+
+# The accounts of active collateral (945xx or not: a wrong account shows up too).
+SQL_ACCOUNTS = f"""
+with {LINKS},
+latest as (
+    select {LATEST_COLUMNS}
+    from   {ACCOUNTS_TABLE} a
+    where  a.id in (select accountid from links)
 )
 select k.dealid,
        a.id                               as accountid,
@@ -321,8 +325,29 @@ select k.dealid,
        a.balance,
        a.account_name,
        to_char(a.arcdate, 'YYYY-MM-DD')   as arcdate
-from   acc a
-left join links k on k.accountid = a.id
+from   latest a
+join   links k on k.accountid = a.id
+where  a.rn = 1
+"""
+
+# Only when FIND_ORPHANS = True: 945xx accounts with a balance that no active collateral
+# uses (a collateral closed but its account not, a booking without a deal ...).
+SQL_ORPHANS = f"""
+with {LINKS},
+latest as (
+    select {LATEST_COLUMNS}
+    from   {ACCOUNTS_TABLE} a
+    where  substr(a.accountno, 1, 5) in ({quoted(ACCOUNT_CODES)})
+      and  not exists (select 1 from links k where k.accountid = a.id)
+)
+select null                               as dealid,
+       a.id                               as accountid,
+       a.accountno,
+       a.balance,
+       a.account_name,
+       to_char(a.arcdate, 'YYYY-MM-DD')   as arcdate
+from   latest a
+where  a.rn = 1 and a.balance <> 0
 """
 
 
@@ -346,9 +371,13 @@ def load_all():
 
 
 def load_accounts():
-    """The 945xx accounts and which collateral deal each belongs to (state right now)."""
+    """The accounts of active collateral (+ the orphans if FIND_ORPHANS), state right now."""
     with get_oracle_connection() as conn:
-        return run(conn.cursor(), SQL_ACCOUNTS)
+        cursor = conn.cursor()
+        accounts = run(cursor, SQL_ACCOUNTS)
+        if FIND_ORPHANS:
+            accounts = pd.concat([accounts, run(cursor, SQL_ORPHANS)], ignore_index=True)
+        return accounts
 
 
 def load_param_names():

@@ -208,6 +208,7 @@ def params(request):
                        ("Недвижимость", queries.SQL_PROPERTY),
                        ("Прочее", queries.SQL_OTHERS),
                        ("Счета 945xx", queries.SQL_ACCOUNTS),
+                       ("Счета 945xx без залога (FIND_ORPHANS)", queries.SQL_ORPHANS),
                        ("Все параметры", queries.SQL_PARAM_NAMES)]}
     if "run" in request.GET:
         try:
