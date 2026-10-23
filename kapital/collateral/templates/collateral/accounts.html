@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% comment %}
+  Collateral against the 945xx off-balance accounts (Chart of accounts, Положение 3336).
+  By law the balance on 945xx equals the collateral taken; this page shows where it does not.
+  Every check links to the main page already filtered (?issue=acc_…), so the drill-down,
+  the cards and Excel work on the mismatches too. No JavaScript.
+{% endcomment %}
+
+{% block extra_css %}{% include "collateral/style.html" %}{% endblock extra_css %}
+
+{% block content %}
+<div class="clt container-fluid px-4 py-4">
+  <div class="hero">
+    <div class="d-flex flex-wrap justify-content-between align-items-start gap-3">
+      <div>
+        <div class="eyebrow">Сверка на {{ day|date:"d.m.Y" }}</div>
+        <h1><i class="fa-solid fa-book"></i>Залоги и счета 945xx</h1>
+        <div class="crumbs">
+          <a class="no-print" href="{% url 'collateral' %}{% if day %}?date={{ day|date:'Y-m-d' }}{% endif %}"><i class="fa-solid fa-arrow-left me-1"></i>Всё обеспечение</a>
+          <span class="sep">·</span>остаток на внебалансовых счетах против суммы залога
+        </div>
+      </div>
+      {% if codes %}
+      <div class="no-print d-flex flex-wrap gap-2">
+        <a class="btn btn-go btn-sm" href="{% url 'collateral-accounts-excel' %}?date={{ day|date:'Y-m-d' }}"><i class="fa-solid fa-file-excel me-1"></i>Счета без залога</a>
+        <button class="btn btn-outline-light btn-sm" type="button" onclick="window.print()"><i class="fa-solid fa-print me-1"></i>Печать</button>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if not day %}
+  <div class="alert alert-light border">Данных ещё нет — нажмите «Обновить из базы» на главной странице.</div>
+
+  {% elif not codes %}
+  <div class="alert alert-warning">
+    <i class="fa-solid fa-triangle-exclamation me-2"></i><strong>Счета 945xx за этот день не загружены.</strong>
+    {% if error %}
+    <div class="mt-2 small">Запрос по счетам вернул ошибку (обеспечение при этом сохранено):</div>
+    <pre class="sql mt-1 mb-2">{{ error }}</pre>
+    <div class="small">Проверьте в <code>queries.py</code> названия <code>LINK_TABLE</code>, <code>ACCOUNTS_TABLE</code>,
+      <code>ACCOUNT_BALANCE</code>, <code>ACCOUNT_NAME</code>, затем снова «Обновить из базы».
+      Готовый SQL — на странице <a href="{% url 'collateral-params' %}">«Параметры и SQL»</a>.</div>
+    {% else %}
+    <div class="small mt-1">Этот файл сохранён до того, как появилась сверка со счетами. Нажмите «Обновить из базы».</div>
+    {% endif %}
+  </div>
+
+  {% else %}
+  {# ── the totals ── #}
+  <div class="row g-3 mb-4">
+    {% for k in kpis %}
+    <div class="col-6 col-xl-3">
+      <div class="kpi{% if k.bad %} bad{% endif %}">
+        <div class="l"><i class="fa-solid {{ k.icon }}"></i>{{ k.label }}</div>
+        <div class="v">{{ k.value }}</div>
+        <div class="n">{{ k.note }}</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="row g-3">
+    {# ── the checks: each opens the main page with that filter ── #}
+    <div class="col-lg-6">
+      <div class="box">
+        <div class="box-head"><span><i class="fa-solid fa-triangle-exclamation"></i>Расхождения</span>
+          <span class="hint">нажмите, чтобы увидеть сделки</span></div>
+        {% for c in checks %}
+        <a class="problem" href="{% url 'collateral' %}?date={{ day|date:'Y-m-d' }}&issue={{ c.code }}">
+          <span>{% if c.bad %}<i class="fa-solid fa-circle-exclamation"></i>{% else %}<i class="fa-solid fa-circle-check ok"></i>{% endif %}{{ c.label }}</span>
+          <span class="text-nowrap"><strong>{{ c.count }}</strong> <span class="text-muted">· залог {{ c.amount }} · на счетах {{ c.balance }} млн</span></span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    {# ── by kind, active collateral only ── #}
+    <div class="col-lg-6">
+      <div class="box">
+        <div class="box-head"><span><i class="fa-solid fa-layer-group"></i>По видам обеспечения</span>
+          <span class="hint">действующие · млн сум</span></div>
+        <table class="table table-sm align-middle">
+          <thead><tr><th>Вид</th><th class="m">Залог</th><th class="m">На 945xx</th><th class="m">Разница</th></tr></thead>
+          <tbody>
+          {% for k in by_kind %}
+            <tr><td><i class="fa-solid {{ k.icon }} me-2" style="color:#C9971A"></i><a href="{% url 'collateral' %}?date={{ day|date:'Y-m-d' }}&kind={{ k.key }}&status={{ "Действующее"|urlencode }}">{{ k.label }}</a></td>
+              <td class="m">{{ k.amount }}</td><td class="m">{{ k.balance }}</td>
+              <td class="m{% if k.bad %} warn{% endif %}">{{ k.gap }}</td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    {# ── by account code ── #}
+    <div class="col-12">
+      <div class="box">
+        <div class="box-head"><span><i class="fa-solid fa-list-ol"></i>По балансовым счетам</span>
+          <span class="hint">каждый счёт считается один раз · млн сум</span></div>
+        <div class="table-responsive">
+        <table class="table table-sm align-middle">
+          <thead><tr><th>Счёт</th><th>Наименование</th><th class="m">Счетов</th><th class="m">Остаток</th>
+            <th class="m">Привязано к залогу</th><th class="m">Без залога</th><th class="m">Их остаток</th></tr></thead>
+          <tbody>
+          {% for c in codes %}
+            <tr><td class="code">{{ c.code }}</td><td>{{ c.name }}</td><td class="m">{{ c.count }}</td>
+              <td class="m">{{ c.balance }}</td><td class="m">{{ c.linked }}</td>
+              <td class="m{% if c.lost != '0' %} warn{% endif %}">{{ c.lost }}</td><td class="m">{{ c.lost_amount }}</td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        </div>
+        {% if elsewhere.count != "0" %}
+        <div class="nothing"><i class="fa-solid fa-circle-info me-1"></i>Ещё {{ elsewhere.count }} счетов не из 945xx привязаны к залогам (остаток {{ elsewhere.balance }} млн) — это проверка «не той группы».</div>
+        {% endif %}
+      </div>
+    </div>
+
+    {# ── the accounts nobody claims ── #}
+    <div class="col-12">
+      <div class="box">
+        <div class="box-head"><span><i class="fa-solid fa-circle-question"></i>Счета 945xx с остатком, но без залога</span>
+          <span class="hint">{% if lost|length == 100 %}первые 100 из {{ lost_total }} · все — кнопкой Excel{% else %}{{ lost_total }} шт.{% endif %}</span></div>
+        {% if lost %}
+        <div class="table-responsive">
+        <table class="table table-sm table-hover align-middle">
+          <thead><tr><th>Счёт</th><th>Наименование</th><th class="m">Остаток, сум</th><th class="m">На дату</th></tr></thead>
+          <tbody>
+          {% for a in lost %}
+            <tr><td class="code">{{ a.no }}</td><td>{{ a.name }}</td><td class="m">{{ a.balance }}</td><td class="m">{{ a.arcdate }}</td></tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        </div>
+        {% else %}
+        <div class="nothing ok"><i class="fa-solid fa-circle-check me-1"></i>Таких счетов нет.</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock content %}

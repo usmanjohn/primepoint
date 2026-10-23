@@ -16,7 +16,10 @@ To see which parameters exist at all, open the «Параметры» page of th
 
 WHAT TO CHANGE FOR YOUR DATABASE
 1. The import line of get_oracle_connection (just below).
-2. The three table names (DEAL_TABLE, PARAM_TABLE, PARENT_TABLE).
+2. The table names (DEAL_TABLE, PARAM_TABLE, PARENT_TABLE) and, for the check against
+   the 945xx accounts, LINK_TABLE / ACCOUNTS_TABLE / ACCOUNT_BALANCE / ACCOUNT_NAME.
+   If the accounts query fails, the collateral is still saved; the «Счета 945xx» page
+   then shows the error.
 
 NO DATE: like your old scripts, every query takes the LATEST version of each row
 (row_number ... order by date_to desc). So a run always gives «the state right now»;
@@ -36,6 +39,14 @@ DEAL_TABLE = "schema1.second_deal"              # the collateral itself: amount,
 PARAM_TABLE = "schema1.second_deal_dop_param"   # extra parameters: dealid, paramname, paramvalue
 PARENT_TABLE = "schema2.deal"                   # link to the анкета/РНК and ТОБО
 COLLATERAL_TYPE = 357                           # dealtypeid of a collateral deal in PARENT_TABLE
+CLOSE_DATE = "closedate"                        # column of PARENT_TABLE: when the collateral was closed
+                                                # (empty or later than the update = still active)
+
+# The off-balance accounts where the collateral is booked (see «3. ACCOUNTS» below).
+LINK_TABLE = "schema2.dealaccountinuse"         # which account belongs to which deal: dealid, accountid
+ACCOUNTS_TABLE = "schema1.accounts"             # the accounts: id, arcdate, accountno, balance, description
+ACCOUNT_BALANCE = "summanoqeq"                  # the balance column, in tiyin (divided by 100)
+ACCOUNT_NAME = "description"                    # the account's name column
 
 
 # ── 2. PARAMETERS ──────────────────────────────────────────────────────────────────
@@ -238,7 +249,8 @@ select w.*,
        d.amounteq / 100          as amount,
        d.marketamount / 100      as market,
        d.creditnbusupplyid       as subtype,
-       d.securitydescription     as note
+       d.securitydescription     as note,
+       to_char(p.{CLOSE_DATE}, 'YYYY-MM-DD') as closedate
 from   wide w
 left join deals d          on d.id = w.dealid
 left join {PARENT_TABLE} p on p.id = w.dealid and p.dealtypeid = {COLLATERAL_TYPE}
@@ -262,6 +274,55 @@ order by deals desc
 """
 
 
+# ── 3. ACCOUNTS ────────────────────────────────────────────────────────────────────
+# By the Chart of accounts (Положение 3336) accepted collateral is booked off-balance on
+# 945xx accounts. The balance there should equal the collateral amount; this query brings
+# the accounts so the app can compare. The first 5 digits of the account number:
+ACCOUNT_CODES = {
+    "94501": "Ценные бумаги, принятые в залог",
+    "94502": "Имущество и имущественные права в залоге",
+    "94503": "Принятые гарантии, поручительства и страховые полисы",
+    "94511": "Ценные бумаги в залоге — по прочим активам",
+    "94512": "Имущество и имущественные права в залоге — по прочим активам",
+    "94513": "Гарантии и поручительства — по прочим активам",
+}
+
+# One row per account: every 945xx account above PLUS any other account linked to a
+# collateral deal (so a collateral booked on a wrong account shows up too).
+#   acc    — the latest row of each account (row_number by arcdate desc, like date_to above)
+#   links  — which collateral deal each account belongs to
+# dealid is empty when a 945xx account has no collateral deal linked to it.
+SQL_ACCOUNTS = f"""
+with links as (
+    select distinct l.dealid, l.accountid
+    from   {LINK_TABLE} l
+    join   {PARENT_TABLE} p on p.id = l.dealid and p.dealtypeid = {COLLATERAL_TYPE}
+),
+acc as (
+    select id, accountno, balance, account_name, arcdate
+    from (
+        select a.id, a.accountno,
+               a.{ACCOUNT_BALANCE} / 100 as balance,
+               a.{ACCOUNT_NAME}          as account_name,
+               a.arcdate,
+               row_number() over (partition by a.id order by a.arcdate desc) as rn
+        from   {ACCOUNTS_TABLE} a
+        where  substr(a.accountno, 1, 5) in ({quoted(ACCOUNT_CODES)})
+           or  a.id in (select accountid from links)
+    )
+    where rn = 1
+)
+select k.dealid,
+       a.id                               as accountid,
+       a.accountno,
+       a.balance,
+       a.account_name,
+       to_char(a.arcdate, 'YYYY-MM-DD')   as arcdate
+from   acc a
+left join links k on k.accountid = a.id
+"""
+
+
 def run(cursor, sql):
     """Run one query and return it as a pandas table with lower-case column names."""
     cursor.arraysize = 5000                     # fetch in big packs: much faster on 100 000+ rows
@@ -279,6 +340,12 @@ def load_all():
             "property": run(cursor, SQL_PROPERTY),
             "other": run(cursor, SQL_OTHERS),
         }
+
+
+def load_accounts():
+    """The 945xx accounts and which collateral deal each belongs to (state right now)."""
+    with get_oracle_connection() as conn:
+        return run(conn.cursor(), SQL_ACCOUNTS)
 
 
 def load_param_names():

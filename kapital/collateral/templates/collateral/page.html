@@ -39,6 +39,29 @@
       {% for s in saved|slice:":12" %}
       <a class="chip{% if s.day == day %} on{% endif %}" href="?date={{ s.day|date:'Y-m-d' }}"><i class="fa-regular fa-calendar me-1"></i>{{ s.day|date:"d.m.Y" }} <span class="text-muted">· {{ s.size }}</span></a>
       {% endfor %}
+
+      {# ── deleting old days: a native <details>, a checkbox per day, one POST ── #}
+      <details class="files mt-2">
+        <summary><i class="fa-solid fa-hard-drive me-1"></i>Файлы на сервере: {{ saved|length }} дн., {{ saved_total }} — удалить старые</summary>
+        <form method="post" action="{% url 'collateral-delete' %}" class="mt-2">
+          {% csrf_token %}
+          <table class="table table-sm align-middle mb-2">
+            <tbody>
+            {% for s in saved %}
+              <tr>
+                <td style="width:2rem">{% if forloop.first %}<i class="fa-solid fa-lock text-muted" title="последний день не удаляется"></i>{% else %}<input class="form-check-input" type="checkbox" name="day" value="{{ s.day|date:'Y-m-d' }}" id="d{{ forloop.counter }}">{% endif %}</td>
+                <td><label for="d{{ forloop.counter }}">{{ s.day|date:"d.m.Y" }}</label>{% if forloop.first %} <span class="small text-muted">· текущие данные</span>{% endif %}</td>
+                <td class="m text-muted">{{ s.size }}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+          <div class="d-flex flex-wrap align-items-center gap-3">
+            <label class="small"><input class="form-check-input me-1" type="checkbox" name="confirm" value="1">Да, удалить отмеченные дни навсегда</label>
+            <button class="btn btn-sm btn-outline-danger" type="submit"><i class="fa-solid fa-trash-can me-1"></i>Удалить выбранные</button>
+          </div>
+        </form>
+      </details>
     </div>
     {% endif %}
   </div>
@@ -61,6 +84,7 @@
         </div>
       </div>
       <div class="no-print d-flex flex-wrap gap-2">
+        <a class="btn btn-go btn-sm" href="{% url 'collateral-accounts' %}?date={{ day|date:'Y-m-d' }}"><i class="fa-solid fa-book me-1"></i>Счета 945xx</a>
         <a class="btn btn-go btn-sm" href="{% url 'collateral-excel' %}?{{ link }}"><i class="fa-solid fa-file-excel me-1"></i>Excel</a>
         <a class="btn btn-outline-light btn-sm" href="{% url 'collateral-file' %}?date={{ day|date:'Y-m-d' }}"><i class="fa-solid fa-database me-1"></i>Parquet</a>
         <button class="btn btn-outline-light btn-sm" type="button" onclick="window.print()"><i class="fa-solid fa-print me-1"></i>Печать</button>
@@ -150,7 +174,7 @@
     <div class="table-responsive">
       <table class="table table-sm table-hover align-middle">
         <thead><tr><th>Код сделки</th><th>МФО</th>{% for h in deals.headers %}<th>{{ h }}</th>{% endfor %}
-          <th class="m">Сумма залога</th><th class="m">Рыночная</th></tr></thead>
+          <th class="m">Сумма залога</th><th class="m">Рыночная</th>{% if deals.accounts %}<th class="m">На 945xx</th>{% endif %}</tr></thead>
         <tbody>
         {% for r in deals.rows %}
           <tr>
@@ -159,6 +183,7 @@
             {% for c in r.cells %}<td>{{ c }}</td>{% endfor %}
             <td class="m{% if r.warn %} warn{% endif %}">{{ r.amount }}</td>
             <td class="m">{{ r.market }}</td>
+            {% if deals.accounts %}<td class="m{% if r.off %} warn{% endif %}">{{ r.balance }}</td>{% endif %}
           </tr>
         {% endfor %}
         </tbody>

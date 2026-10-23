@@ -5,13 +5,19 @@ THE ROAD OF THE DATA
 1. save_today()     Oracle (the state right now) → datasets/collateral/collateral_<today>.parquet.
                      Runs only when someone presses «Обновить из базы». A second run on
                      the same day overwrites that day's file. The file keeps raw text.
+   save_accounts()   the same moment: the 945xx accounts → accounts_<today>.parquet.
 2. read_day(day)     parquet → prepare() → a clean pandas table, kept in memory,
                      so clicking around the page does not read the file again.
+                     The cleaned table is ALSO saved (collateral_<day>.ready.parquet): a gunicorn
+                     worker that has not seen the day yet reads it in ~2 s instead of cleaning
+                     for ~20-50 s. Change process.py or queries.py and it is made again by itself.
                      The page opens the newest file (latest_day) unless a date is clicked.
 3. prepare(table)    numbers become numbers, dates become dates, spelling variants of
                      the same brand are merged, and the extra columns the page groups by
                      are added (brand, age_group, area_group, dep_term ...).
 4. build_page(...)   the filtered table → KPIs, cards, the list of deals.
+5. accounts_page()   collateral against the 945xx accounts (the «Счета 945xx» page).
+   delete_day(day)   «Удалить выбранные»: every file of an old day.
 
 THE TABLE (one row = one collateral deal)
     kind       car / property / other
@@ -23,6 +29,7 @@ THE TABLE (one row = one collateral deal)
 All the settings you may want to change are in the block just below.
 """
 import numbers
+import os
 from datetime import date, datetime
 from pathlib import Path
 
@@ -38,6 +45,7 @@ DATA_DIR = Path(settings.BASE_DIR) / "datasets" / "collateral"
 TOP = 12              # rows in a card; the rest goes into «Остальные»
 PAGE_SIZE = 50        # deals per page in the list
 EMPTY = "не указано"  # what an empty value is called in the cards
+ACTIVE, CLOSED = "Действующее", "Закрыто"   # the «Статус» card (see prepare: closedate)
 
 KINDS = {
     "car":      {"label": "Автотранспорт", "icon": "fa-car"},
@@ -71,7 +79,8 @@ NUMBERS = ["mileage", "total_area", "land_area", "built_area", "useful_area", "l
 YEARS = ["made_year", "built_year", "eq_year"]
 
 DATES = ["pasp_date", "pasp_end", "in_use_date", "eq_in_use", "eq_doc_date", "dep_end",
-         "sec_issue", "sec_pay_date", "goods_list_date", "goods_act_date", "policy_date"]
+         "sec_issue", "sec_pay_date", "goods_list_date", "goods_act_date", "policy_date",
+         "closedate"]
 
 # The ways a date may be written in paramvalue. The first that fits wins.
 DATE_FORMATS = ["%d.%m.%Y", "%Y-%m-%d", "%Y-%m-%d %H:%M:%S", "%d.%m.%Y %H:%M:%S", "%d/%m/%Y"]
@@ -138,6 +147,7 @@ SUBKIND_CARDS = {
 }
 # Cards on every page.
 COMMON_CARDS = [
+    ("status", "Статус", "fa-lock-open", "label"),
     ("size_group", "Сумма залога", "fa-scale-balanced", "label"),
     ("currency_name", "Валюта", "fa-coins", "amount"),
     ("mfo", "Филиал (МФО)", "fa-building-columns", "amount"),
@@ -154,6 +164,17 @@ TERM_GROUPS = [(0, "истёк"), (31, "до 30 дней"), (91, "31–90 дне
                (10**6, "больше года")]
 PASP_GROUPS = [(0, "истёк"), (91, "истекает в 90 дней"), (10**6, "действует")]
 
+# THE 945xx ACCOUNTS (the codes and their names are in queries.ACCOUNT_CODES).
+# Which account the law expects for each kind of collateral: car, property, or a group of
+# «others» (keys of SUBKINDS). A kind not listed here is expected on DEFAULT_ACCOUNTS.
+EXPECTED_ACCOUNTS = {
+    "securities": ["94501", "94511"],
+    "insurance":  ["94503", "94513"],
+    "guarantee":  ["94503", "94513"],
+}
+DEFAULT_ACCOUNTS = ["94502", "94512"]    # cars, property, equipment, deposits, goods ...
+TOLERANCE = 1.0                          # сум: a smaller difference is rounding, not a mismatch
+
 
 def names(groups):
     """[(4, 'до 3 лет'), (8, '4–7 лет')] → ['до 3 лет', '4–7 лет']"""
@@ -165,7 +186,7 @@ ORDER = {
     "age_group": names(AGE_GROUPS), "area_group": names(AREA_GROUPS),
     "size_group": names(SIZE_GROUPS), "dep_term": names(TERM_GROUPS),
     "sec_term": names(TERM_GROUPS), "pasp_state": names(PASP_GROUPS),
-    "built_decade": ["до 1960"],
+    "built_decade": ["до 1960"], "status": [ACTIVE, CLOSED],
 }
 
 # The deals list: which columns to show for each kind (column, header).
@@ -188,14 +209,42 @@ EXTRA_LABELS = {
     "rooms_group": "Комнат", "built_decade": "Год постройки", "size_group": "Сумма залога",
     "dep_term": "До истечения депозита", "sec_term": "До погашения", "policy_year": "Год полиса",
     "title": "Описание", "issue": "Проверка данных",
+    "status": "Статус", "closedate": "Дата закрытия",
+    "acc_count": "Счетов 945xx", "acc_balance": "Остаток на 945xx", "acc_no": "Счёт 945xx",
+    "acc_diff": "Остаток 945xx минус сумма залога", "acc_right": "Счёт нужной группы",
+    "acc_shared": "Счёт общий с другим залогом",
 }
 
 
 # ═══════════════════════════════ 1. SAVE ═══════════════════════════════════════════
+# Each «Обновить из базы» writes, for its day:
+#     collateral_<day>.parquet        what Oracle returned (raw text) — the «Parquet» button
+#     accounts_<day>.parquet          the 945xx accounts (or accounts_<day>.error.txt if that query failed)
+#     collateral_<day>.ready.parquet  the same table already CLEANED by prepare(): opening a day
+#                                     reads this one in a second instead of cleaning for half a minute.
+#                                     It is only a copy: delete it and it is made again.
 
 def file_for(day):
     """datasets/collateral/collateral_2026-10-01.parquet"""
     return DATA_DIR / f"collateral_{day.isoformat()}.parquet"
+
+
+def accounts_file(day):
+    return DATA_DIR / f"accounts_{day.isoformat()}.parquet"
+
+
+def accounts_error_file(day):
+    return DATA_DIR / f"accounts_{day.isoformat()}.error.txt"
+
+
+def ready_file(day):
+    return DATA_DIR / f"collateral_{day.isoformat()}.ready.parquet"
+
+
+def files_of(day):
+    """Every file that belongs to `day` (the ones that exist)."""
+    paths = [file_for(day), accounts_file(day), accounts_error_file(day), ready_file(day)]
+    return [path for path in paths if path.exists()]
 
 
 def saved_days():
@@ -204,9 +253,10 @@ def saved_days():
     for path in sorted(DATA_DIR.glob("collateral_*.parquet"), reverse=True):
         try:
             day = date.fromisoformat(path.stem.replace("collateral_", ""))
-        except ValueError:
+        except ValueError:                       # collateral_<day>.ready.parquet and the like
             continue
-        days.append({"day": day, "size": f"{path.stat().st_size / 1e6:.1f} МБ"})
+        size = sum(f.stat().st_size for f in files_of(day))
+        days.append({"day": day, "size": f"{size / 1e6:.1f} МБ", "bytes": size})
     return days
 
 
@@ -233,8 +283,19 @@ def as_text(column):
     return text.mask(text.isin(BLANKS))
 
 
+def write(table, path):
+    """
+    Save a table as parquet. zstd packs our text about 2.5 times smaller than the default.
+    Written to a temporary file first, then swapped: nobody ever reads a half-written file
+    (the process id in the name: two workers may write the same file at once).
+    """
+    temporary = path.with_name(f"{path.name}.{os.getpid()}.tmp")
+    table.to_parquet(temporary, index=False, compression="zstd")
+    temporary.replace(path)
+
+
 def save_today():
-    """Ask Oracle for the three kinds (state right now) and save them as ONE file, today's date."""
+    """Ask Oracle for the three kinds and the accounts (state right now), save under today's date."""
     day = date.today()
     parts = queries.load_all()
     frames = []
@@ -254,18 +315,50 @@ def save_today():
             table[column] = as_text(table[column])
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    # write to a temporary file first, then swap: nobody ever reads a half-written file
-    temporary = DATA_DIR / "collateral_writing.tmp"
-    table.to_parquet(temporary, index=False)
-    temporary.replace(file_for(day))
+    write(table, file_for(day))
+    save_accounts(day)
+    read_day(day)          # clean it now and write the ready copy: the first click is then fast
     return day
+
+
+def save_accounts(day):
+    """
+    The 945xx accounts of `day`. If the query fails (a table name not set yet ...),
+    the collateral is still saved and the error is kept in a small text file for the page.
+    """
+    accounts_error_file(day).unlink(missing_ok=True)
+    try:
+        accounts = queries.load_accounts()
+    except Exception as error:
+        accounts_file(day).unlink(missing_ok=True)
+        accounts_error_file(day).write_text(str(error), encoding="utf-8")
+        return
+    for column in accounts.columns:
+        if column == "balance":
+            accounts[column] = pd.to_numeric(accounts[column], errors="coerce")
+        else:
+            accounts[column] = as_text(accounts[column])
+    write(accounts, accounts_file(day))
+
+
+def delete_day(day):
+    """Remove every file of `day`. The newest day is never removed: it is the current data."""
+    if day == latest_day():
+        return False
+    for path in files_of(day):
+        path.unlink()
+    return True
 
 
 # ═══════════════════════════════ 2. READ ═══════════════════════════════════════════
 
 # The last table read, so clicking around the page does not read the file every time.
-# It is read again when the file changes (a new download from Oracle).
-MEMORY = {"key": None, "table": None}
+# Each gunicorn worker keeps its own; a new download (the file changes) is read again.
+MEMORY = {"key": None, "table": None, "accounts": None}
+
+# If one of these files is newer than a ready copy, the copy is out of date (you changed a
+# setting, a card, a check ...) and is made again.
+CODE_FILES = [Path(__file__), Path(queries.__file__)]
 
 
 def read_day(day):
@@ -273,9 +366,46 @@ def read_day(day):
     path = file_for(day)
     key = (str(path), path.stat().st_mtime)
     if MEMORY["key"] != key:
-        MEMORY["table"] = prepare(pd.read_parquet(path), day)
+        MEMORY["accounts"] = read_accounts(day)
+        MEMORY["table"] = read_ready(day, MEMORY["accounts"])
         MEMORY["key"] = key
     return MEMORY["table"]
+
+
+def accounts_of(day):
+    """The 945xx accounts of `day` (None if they were not loaded). Call read_day first."""
+    read_day(day)
+    return MEMORY["accounts"]
+
+
+def read_accounts(day):
+    """accounts_<day>.parquet → a table with the first 5 digits as «code»; None if there is no file."""
+    path = accounts_file(day)
+    if not path.exists():
+        return None
+    accounts = pd.read_parquet(path)
+    accounts["accountno"] = accounts["accountno"].astype("string")
+    accounts["dealid"] = accounts["dealid"].astype("string")
+    accounts["code"] = accounts["accountno"].str[:5]
+    accounts["arcdate"] = to_date(accounts["arcdate"])
+    # An off-balance account may keep its balance with a minus sign; we compare the size.
+    accounts["balance"] = accounts["balance"].abs()
+    return accounts
+
+
+def read_ready(day, accounts):
+    """The cleaned table: from the ready copy if it is fresh, otherwise clean now and save the copy."""
+    ready = ready_file(day)
+    inputs = [file_for(day), accounts_file(day)] + CODE_FILES
+    newest_input = max(path.stat().st_mtime for path in inputs if path.exists())
+    if ready.exists() and ready.stat().st_mtime > newest_input:
+        return pd.read_parquet(ready)
+    table = prepare(pd.read_parquet(file_for(day)), day, accounts)
+    try:
+        write(table, ready)
+    except Exception:          # no space, no rights ...: the page works without the copy, only slower
+        pass
+    return table
 
 
 # ═══════════════════════════════ 3. PREPARE ════════════════════════════════════════
@@ -313,17 +443,27 @@ def to_year(column, day):
     return years.where((years >= 1900) & (years <= day.year + 1))
 
 
+def relabel(column, new_value, empty=EMPTY):
+    """
+    column.map(new_value), but new_value is called once per DIFFERENT value, not once per
+    row: a million rows hold only a few hundred different brands, so this takes a moment
+    where .map() takes seconds. Empty cells become `empty`.
+    """
+    codes, values = pd.factorize(column)     # codes: row → number of its value, -1 = empty
+    done = [new_value(v) for v in values] + [empty]     # code -1 picks the last one
+    return pd.Series(pd.array(done, dtype="object")[codes], index=column.index, dtype="object")
+
+
 def same_spelling(column):
     """
     'CHEVROLET', 'Chevrolet ', 'chevrolet' are one brand: all three get the spelling
     used most often. Empty → EMPTY, so the cards have a «не указано» row.
     """
-    text = as_text(column)
-    key = text.str.upper()
-    pairs = pd.DataFrame({"key": key, "text": text}).dropna()
-    counts = pairs.groupby(["key", "text"]).size().reset_index(name="n")
-    best = counts.sort_values("n", ascending=False).drop_duplicates("key")
-    return key.map(best.set_index("key")["text"]).fillna(EMPTY)
+    text = column.astype("string")               # already cleaned by as_text when saved
+    best = {}                                    # 'CHEVROLET' → 'Chevrolet'
+    for spelling in text.value_counts().index:   # most frequent first
+        best.setdefault(spelling.upper(), spelling)
+    return relabel(text, lambda spelling: best[spelling.upper()])
 
 
 def bucket(values, groups):
@@ -339,7 +479,7 @@ def bucket(values, groups):
 
 def year_text(years):
     """2019.0 → '2019' (as text: a number would be printed as '2 019' by Django)."""
-    return years.map(lambda y: EMPTY if pd.isna(y) else str(int(y)))
+    return years.round().astype("Int64").astype("string").astype("object").fillna(EMPTY)
 
 
 def days_left(dates, day):
@@ -356,8 +496,11 @@ def first_filled(table, columns):
     return result
 
 
-def prepare(table, day):
-    """The raw text from the file → a table ready for counting. Read top to bottom."""
+def prepare(table, day, accounts=None):
+    """
+    The raw text from the file → a table ready for counting. Read top to bottom.
+    `accounts`: the 945xx accounts of the same day (or None) — see add_accounts.
+    """
     table = table.copy()
 
     # numbers, dates, years
@@ -374,6 +517,12 @@ def prepare(table, day):
         if column in table:
             table[column] = to_year(table[column], day)
 
+    # closed = closedate is filled and not later than the day of the file; else active.
+    # (Files saved before closedate was added have no such column: all active.)
+    table["status"] = ACTIVE
+    if "closedate" in table:
+        table.loc[table["closedate"] <= pd.Timestamp(day), "status"] = CLOSED
+
     # the group of «others»: the first group in queries.OTHERS that has a filled parameter
     table["subkind"] = pd.Series(pd.NA, index=table.index, dtype="object")
     for name, params in queries.OTHERS.items():
@@ -381,7 +530,9 @@ def prepare(table, day):
         if columns:
             has_any = table[columns].notna().any(axis=1)
             table["subkind"] = table["subkind"].mask(table["subkind"].isna() & has_any, name)
-    table["subkind"] = table["subkind"].map(lambda s: SUBKINDS[s]["label"] if s in SUBKINDS else None)
+    table["subkind_key"] = table["subkind"]      # 'deposit' — the account check needs the key
+    table["subkind"] = relabel(table["subkind"], lambda s: SUBKINDS[s]["label"] if s in SUBKINDS else None,
+                               empty=None)
     table.loc[table["kind"] != "other", "subkind"] = EMPTY
     table["subkind"] = table["subkind"].fillna("Без параметров")
 
@@ -402,11 +553,11 @@ def prepare(table, day):
     if "total_area" in table:
         table["area_group"] = bucket(table["total_area"], AREA_GROUPS)
     if "rooms" in table:
-        table["rooms_group"] = table["rooms"].map(
-            lambda r: EMPTY if pd.isna(r) or r <= 0 else ("5 и больше" if r >= 5 else str(int(r))))
+        table["rooms_group"] = relabel(table["rooms"].where(table["rooms"] > 0),
+            lambda r: "5 и больше" if r >= 5 else str(int(r)))
     if "built_year" in table:
-        table["built_decade"] = table["built_year"].map(
-            lambda y: EMPTY if pd.isna(y) else ("до 1960" if y < 1960 else f"{int(y) // 10 * 10}-е"))
+        table["built_decade"] = relabel(table["built_year"],
+            lambda y: "до 1960" if y < 1960 else f"{int(y) // 10 * 10}-е")
         table["built_year"] = year_text(table["built_year"])
 
     # others: terms of deposits and securities, year of the policy, equipment year
@@ -422,10 +573,10 @@ def prepare(table, day):
     # every page: size of the collateral, currency name
     table["size_group"] = bucket(table["amount"], SIZE_GROUPS)
     codes = CODES["currency"]
-    table["currency_name"] = table["currency"].map(lambda c: codes.get(c, c) if pd.notna(c) else EMPTY)
+    table["currency_name"] = relabel(table["currency"], lambda c: codes.get(c, c))
     for column, names in CODES.items():
         if column != "currency" and column in table:
-            table[column] = table[column].map(lambda c: names.get(c, c) if pd.notna(c) else c)
+            table[column] = relabel(table[column], lambda c: names.get(c, c), empty=None)
 
     # every column a card groups by: one spelling, EMPTY for blanks
     for column, title, icon, order in all_cards():
@@ -439,11 +590,52 @@ def prepare(table, day):
     if "model" in table:                                   # cars: «Chevrolet Malibu»
         car = (table["kind"] == "car") & (table["model"] != EMPTY)
         table.loc[car, "title"] = table.loc[car, "brand"] + " " + table.loc[car, "model"]
-    table["kind_name"] = table["kind"].map(lambda k: KINDS[k]["label"])
+    table["kind_name"] = relabel(table["kind"], lambda k: KINDS[k]["label"])
+
+    # the 945xx accounts: balance, account number, is it the right account
+    if accounts is not None:
+        table = add_accounts(table, accounts)
 
     # the checks («Проверка данных»): one True/False column per check
     for code, (label, rows) in find_problems(table, day).items():
         table["problem_" + code] = rows.fillna(False).astype(bool)
+
+    # Text columns → «category»: each different value is kept once and the rows only point
+    # to it. A million rows of brands, colours, branches take ~15 times less memory
+    # (every gunicorn worker keeps its own copy!) and grouping them is faster.
+    for column in table.columns:
+        if table[column].dtype == object or pd.api.types.is_string_dtype(table[column]):
+            table[column] = table[column].astype("category")
+    return table
+
+
+def add_accounts(table, accounts):
+    """
+    Per collateral deal, from its 945xx accounts:
+        acc_count    how many accounts are linked to it
+        acc_balance  the balance on them together (сум)
+        acc_no       the account number (the first one, if several)
+        acc_right    True if at least one of them is the account the law expects (EXPECTED_ACCOUNTS)
+        acc_shared   True if one of its accounts is linked to another collateral deal too
+    """
+    linked = accounts[accounts["dealid"].notna()].copy()
+    # dealid → 'car' / 'property' / the group of «others» ('deposit' ...)
+    kind = table["kind"].where(table["kind"] != "other", table["subkind_key"])
+    kind_of = pd.Series(kind.to_numpy(dtype=object), index=table["dealid"].to_numpy(dtype=object))
+    linked["kind"] = linked["dealid"].astype("object").map(kind_of)
+    # an «other» without parameters: we do not know what it is, so we do not judge its account
+    linked["right"] = [pd.isna(kind) or code in EXPECTED_ACCOUNTS.get(kind, DEFAULT_ACCOUNTS)
+                       for code, kind in zip(linked["code"], linked["kind"])]
+    linked["shared"] = linked.groupby("accountid")["dealid"].transform("nunique") > 1
+    per_deal = linked.groupby("dealid", observed=True).agg(
+        acc_count=("accountno", "size"), acc_balance=("balance", "sum"),
+        acc_no=("accountno", "first"), acc_right=("right", "any"), acc_shared=("shared", "any"))
+    table = table.merge(per_deal, left_on="dealid", right_index=True, how="left")
+    table["acc_count"] = table["acc_count"].fillna(0).astype(int)
+    table["acc_balance"] = table["acc_balance"].fillna(0.0)
+    for column in ["acc_right", "acc_shared"]:
+        table[column] = table[column].astype("boolean").fillna(False).astype(bool)
+    table["acc_diff"] = table["acc_balance"] - table["amount"].fillna(0)
     return table
 
 
@@ -454,6 +646,7 @@ def find_problems(t, day):
     """
     today = pd.Timestamp(day)
     car, prop, other = t["kind"] == "car", t["kind"] == "property", t["kind"] == "other"
+    active = t["status"] == ACTIVE if "status" in t else pd.Series(True, index=t.index)
 
     def has(column):
         """True where the column is filled (and False everywhere if it does not exist)."""
@@ -461,24 +654,42 @@ def find_problems(t, day):
             return pd.Series(False, index=t.index)
         return t[column].notna() & (t[column] != EMPTY)
 
-    def before_day(column):
-        """True where the date in the column is already in the past."""
+    def before_day(column, days=0):
+        """True where the date in the column is more than `days` days in the past."""
         if column not in t:
             return pd.Series(False, index=t.index)
-        return t[column] < today
+        return t[column] < today - pd.Timedelta(days=days)
 
-    return {
+    checks = {
         "no_market":    ("Нет рыночной стоимости", t["market"].isna() | (t["market"] <= 0)),
         "over_market":  ("Сумма залога больше рыночной стоимости", t["amount"] > t["market"]),
         "no_parent":    ("Не привязан к анкете / РНК", t["parent_id"].isna()),
         "car_no_plate": ("Авто без госномера", car & ~has("plate")),
         "car_no_year":  ("Авто без года выпуска", car & ~has("made_year")),
-        "car_pasp_old": ("Техпаспорт просрочен", car & before_day("pasp_end")),
+        "car_pasp_old": ("Техпаспорт просрочен, а залог действует", car & active & before_day("pasp_end")),
         "prop_no_cad":  ("Недвижимость без кадастрового номера", prop & ~has("cadastre_no")),
         "prop_no_area": ("Недвижимость без площади", prop & ~(t.get("total_area", pd.Series(0, index=t.index)) > 0)),
-        "dep_expired":  ("Депозит в залоге уже истёк", other & before_day("dep_end")),
-        "sec_expired":  ("Ценная бумага уже погашена", other & before_day("sec_pay_date")),
+        "dep_expired":  ("Депозит истёк, а залог действует", other & active & before_day("dep_end")),
+        "sec_expired":  ("Ценная бумага погашена, а залог действует", other & active & before_day("sec_pay_date")),
+        # A policy is usually for one year; the table only has the date it was issued.
+        "policy_old":   ("Полису больше года, а залог действует",
+                         other & active & before_day("policy_date", days=365)),
     }
+
+    # Against the 945xx accounts (only when they were loaded: see add_accounts).
+    nothing = pd.Series(False, index=t.index)
+    loaded = "acc_count" in t
+    linked = t["acc_count"] > 0 if loaded else nothing
+    differs = (t["acc_diff"].abs() >= TOLERANCE) if loaded else nothing
+    checks.update({
+        "acc_none":   ("Залог действует, а счёта 945xx нет", active & ~linked if loaded else nothing),
+        "acc_diff":   ("Остаток на 945xx не равен сумме залога", active & linked & differs),
+        "acc_closed": ("Залог закрыт, а на 945xx остался остаток",
+                       ~active & (t["acc_balance"] >= TOLERANCE) if loaded else nothing),
+        "acc_wrong":  ("Залог на счёте не той группы 945xx", linked & ~t["acc_right"] if loaded else nothing),
+        "acc_shared": ("Один счёт 945xx на несколько залогов", t["acc_shared"] if loaded else nothing),
+    })
+    return checks
 
 
 def all_cards():
@@ -495,6 +706,7 @@ def number(x, digits=0):
     """1234567.891 → '1 234 568' (digits=0) or '1 234 567,9' (digits=1). Empty → '—'."""
     if x is None or pd.isna(x):
         return "—"
+    x = round(x, digits) + 0          # + 0 turns -0.0 into 0.0, so no «-0»
     text = f"{x:,.{digits}f}"
     return text.replace(",", " ").replace(".", ",")
 
@@ -552,8 +764,10 @@ def make_card(part, column, title, icon, order, filters):
     """
     if column not in part:
         return None
-    groups = part.groupby(column).agg(count=("dealid", "size"), amount=("amount", "sum"))
+    # observed=True: only the values that are in `part` (a category column knows them all)
+    groups = part.groupby(column, observed=True).agg(count=("dealid", "size"), amount=("amount", "sum"))
     groups = groups.reset_index()
+    groups[column] = groups[column].astype("object")   # sort as words, not in category order
     total = part["amount"].sum()
 
     if order == "label":
@@ -593,14 +807,15 @@ def make_card(part, column, title, icon, order, filters):
 def kind_tiles(part):
     """The three big tiles on the first page: cars / property / other."""
     total = part["amount"].sum()
+    sums = part.groupby("kind", observed=True).agg(count=("dealid", "size"), amount=("amount", "sum"),
+                                    market=("market", "sum"))
     tiles = []
     for key, info in KINDS.items():
-        rows = part[part["kind"] == key]
+        count, amount, market = sums.loc[key] if key in sums.index else (0, 0, 0)
         tiles.append({"key": key, "label": info["label"], "icon": info["icon"],
-                      "count": number(len(rows)), "amount": mln(rows["amount"].sum()),
-                      "market": mln(rows["market"].sum()),
-                      "share": number(percent(rows["amount"].sum(), total), 1),
-                      "width": percent(rows["amount"].sum(), total)})
+                      "count": number(count), "amount": mln(amount), "market": mln(market),
+                      "share": number(percent(amount, total), 1),
+                      "width": percent(amount, total)})
     return tiles
 
 
@@ -629,9 +844,17 @@ def kpis(part, kind, day):
          "icon": "fa-percent", "note": "сколько от рыночной цены принято в залог"},
         {"label": "Средний залог", "value": mln(amount / len(part)) if len(part) else "—",
          "icon": "fa-equals", "note": "млн сум на сделку"},
+        {"label": "Действующих", "value": number((part["status"] == ACTIVE).sum()),
+         "icon": "fa-lock-open", "note": f"закрыто: {number((part['status'] == CLOSED).sum())}"},
     ]
+    if "acc_balance" in part:
+        active = part[part["status"] == ACTIVE]
+        gap = active["acc_balance"].sum() - active["amount"].sum()
+        out.append({"label": "На счетах 945xx", "value": mln(active["acc_balance"].sum()),
+                    "icon": "fa-book", "note": f"у действующих; разница {mln(gap)} млн",
+                    "bad": abs(gap) >= TOLERANCE})
     if kind == "car" and "made_year" in part:
-        years = pd.to_numeric(part["made_year"], errors="coerce")
+        years = pd.to_numeric(part["made_year"].astype("object"), errors="coerce")
         ages = day.year - years
         old = (ages > 10).sum()
         out.append({"label": "Средний возраст", "value": number(ages.mean(), 1) + " г.",
@@ -641,7 +864,7 @@ def kpis(part, kind, day):
                         "icon": "fa-road", "note": "км"})
         bad = int(part["problem_car_pasp_old"].sum())
         out.append({"label": "Техпаспорт просрочен", "value": number(bad), "icon": "fa-id-card",
-                    "note": "на дату файла", "bad": bad > 0})
+                    "note": "у действующих залогов", "bad": bad > 0})
     if kind == "property" and "total_area" in part:
         area = part["total_area"].sum()
         both = part[(part["total_area"] > 0) & (part["market"] > 0)]
@@ -655,9 +878,9 @@ def kpis(part, kind, day):
                         "icon": "fa-landmark", "note": "млн сум"})
     if kind == "other":
         if "dep_end" in part:
-            soon = part["dep_term"].isin(["истёк", "до 30 дней"]).sum()
+            soon = (part["dep_term"].isin(["истёк", "до 30 дней"]) & (part["status"] == ACTIVE)).sum()
             out.append({"label": "Депозиты: истекают", "value": number(soon), "icon": "fa-piggy-bank",
-                        "note": "истёк или до 30 дней", "bad": soon > 0})
+                        "note": "истёк или до 30 дней, у действующих", "bad": soon > 0})
         if "jewel_weight" in part and part["jewel_weight"].notna().any():
             out.append({"label": "Вес ювелирных изделий", "value": number(part["jewel_weight"].sum(), 1),
                         "icon": "fa-gem", "note": "сумма по полю «Вес»"})
@@ -681,18 +904,20 @@ def problems(part):
 
 def find_problems_labels():
     """code → label of every check, without computing them (an empty table is enough)."""
-    empty = pd.DataFrame({"kind": [], "market": [], "amount": [], "parent_id": []})
+    empty = pd.DataFrame({"kind": [], "market": [], "amount": [], "parent_id": [], "status": []})
     return {code: label for code, (label, rows) in find_problems(empty, date.today()).items()}
 
 
 def deal_list(part, kind, page):
     """One page of the deals list, biggest first."""
     columns = [(c, h) for c, h in LIST_COLUMNS.get(kind or "all", []) if c in part]
-    part = part.sort_values("amount", ascending=False)
     pages = max(1, -(-len(part) // PAGE_SIZE))          # rounded up
     page = min(max(1, page), pages)
+    # sort only the amount column, then take the 50 rows of this page (sorting the whole
+    # table would copy every column of every row: seconds on a million rows)
+    order = part["amount"].sort_values(ascending=False).index
     rows = []
-    for _, r in part.iloc[(page - 1) * PAGE_SIZE: page * PAGE_SIZE].iterrows():
+    for _, r in part.loc[order[(page - 1) * PAGE_SIZE: page * PAGE_SIZE]].iterrows():
         cells = []
         for column, header in columns:
             value = r[column]
@@ -704,9 +929,11 @@ def deal_list(part, kind, page):
         rows.append({"dealid": r["dealid"], "mfo": r["mfo"] if pd.notna(r["mfo"]) else "—",
                      "cells": cells, "amount": number(r["amount"]),
                      "market": number(r["market"]),
-                     "warn": bool(pd.notna(r["market"]) and r["amount"] > r["market"])})
+                     "warn": bool(pd.notna(r["market"]) and r["amount"] > r["market"]),
+                     "balance": number(r["acc_balance"]) if "acc_balance" in r else None,
+                     "off": "acc_diff" in r and abs(r["acc_diff"]) >= TOLERANCE})
     return {"headers": [h for c, h in columns], "rows": rows, "page": page, "pages": pages,
-            "total": number(len(part))}
+            "total": number(len(part)), "accounts": "acc_balance" in part}
 
 
 def build_page(table, day, filters, page=1):
@@ -769,14 +996,14 @@ def show(value):
     return str(value)
 
 
-def deal_card(table, dealid):
+def deal_card(table, dealid, accounts=None):
     """All filled fields of one deal, in sections: [{'title', 'rows': [(label, value)]}]."""
     rows = table[table["dealid"] == dealid]
     if rows.empty:
         return None
     r = rows.iloc[0]
     names = labels()
-    main = ["kind_name", "subkind", "dealid", "mfo", "tobo", "parent_id", "currency_name",
+    main = ["kind_name", "subkind", "status", "closedate", "dealid", "mfo", "tobo", "parent_id", "currency_name",
             "amount", "market", "subtype", "source", "note"]
     names["kind_name"] = "Вид обеспечения"
     sections = [{"title": "Основное", "icon": "fa-circle-info",
@@ -785,23 +1012,106 @@ def deal_card(table, dealid):
     filled = [(label, show(r.get(column))) for column, label in params.values() if show(r.get(column))]
     sections.append({"title": "Параметры", "icon": "fa-list", "rows": filled})
     issues = [label for code, label in find_problems_labels().items() if r.get("problem_" + code)]
-    return {"dealid": dealid, "kind": KINDS[r["kind"]], "title": show(r.get("title")),
+    card = {"dealid": dealid, "kind": KINDS[r["kind"]], "title": show(r.get("title")),
             "amount": number(r["amount"]), "market": number(r["market"]),
             "sections": sections, "issues": issues}
+    if accounts is not None:
+        mine = accounts[accounts["dealid"] == dealid]
+        card["accounts"] = [{"no": a.accountno, "code_name": queries.ACCOUNT_CODES.get(a.code, "не 945xx"),
+                             "name": show(a.account_name) or "", "balance": number(a.balance, 2),
+                             "arcdate": show(a.arcdate) or "—"} for a in mine.itertuples()]
+        card["balance"] = number(mine["balance"].sum())
+        card["gap"] = number(mine["balance"].sum() - (r["amount"] if pd.notna(r["amount"]) else 0))
+        card["gap_bad"] = abs(mine["balance"].sum() - (r["amount"] if pd.notna(r["amount"]) else 0)) >= TOLERANCE
+    return card
 
 
 def excel_table(table, filters):
     """The filtered rows with Russian headers, only the columns that have something in them."""
     part = apply_filters(table, filters).sort_values("amount", ascending=False)
     names = labels()
-    skip = {"title", "kind_name"} | {c for c in part.columns if c.startswith("problem_")}
+    skip = {"title", "kind_name", "subkind_key"} | {c for c in part.columns if c.startswith("problem_")}
     columns = [c for c in part.columns if c not in skip and part[c].notna().any()
                and not (part[c] == EMPTY).all()]
     out = part[columns].copy()
     for c in columns:
         if pd.api.types.is_datetime64_any_dtype(out[c]):
             out[c] = out[c].dt.date
-        elif out[c].dtype == object or str(out[c].dtype) == "string":
-            out[c] = out[c].replace(EMPTY, None)
-    out["kind"] = out["kind"].map(lambda k: KINDS[k]["label"])
+        elif isinstance(out[c].dtype, pd.CategoricalDtype) or pd.api.types.is_string_dtype(out[c]):
+            out[c] = out[c].astype("object").replace(EMPTY, None)
+    out["kind"] = out["kind"].astype("object").map(lambda k: KINDS[k]["label"])
     return out.rename(columns=names)
+
+
+# ═══════════════════════════════ 6. THE 945xx ACCOUNTS PAGE ════════════════════════
+
+def orphans(accounts):
+    """945xx accounts with a balance but no collateral deal linked to them, biggest first."""
+    rows = accounts[accounts["dealid"].isna() & (accounts["balance"] >= TOLERANCE)
+                    & accounts["code"].isin(list(queries.ACCOUNT_CODES))]
+    return rows.sort_values("balance", ascending=False)
+
+
+def accounts_page(table, accounts):
+    """
+    Collateral against the 945xx accounts: totals, one row per account code, the checks
+    (they link to the main page, already filtered), and the accounts nobody claims.
+    """
+    active = table[table["status"] == ACTIVE]
+    ours = accounts[accounts["code"].isin(list(queries.ACCOUNT_CODES))]
+    # every account once (an account linked to two deals is in `accounts` twice)
+    once = ours.drop_duplicates("accountid")
+    lost = orphans(accounts)
+    gap = once["balance"].sum() - active["amount"].sum()
+
+    kpis = [
+        {"label": "Залог, действующий", "value": mln(active["amount"].sum()), "icon": "fa-scale-balanced",
+         "note": f"млн сум · {number(len(active))} сделок"},
+        {"label": "Остаток на 945xx", "value": mln(once["balance"].sum()), "icon": "fa-book",
+         "note": f"млн сум · {number(len(once))} счетов"},
+        {"label": "Разница", "value": mln(gap), "icon": "fa-not-equal",
+         "note": "остаток на счетах минус залог", "bad": abs(gap) >= TOLERANCE},
+        {"label": "Счета без залога", "value": number(len(lost)), "icon": "fa-circle-question",
+         "note": f"с остатком {mln(lost['balance'].sum())} млн", "bad": len(lost) > 0},
+    ]
+
+    codes = []
+    for code, name in queries.ACCOUNT_CODES.items():
+        here = once[once["code"] == code]
+        lost_here = lost[lost["code"] == code]
+        codes.append({"code": code, "name": name, "count": number(len(here)),
+                      "balance": mln(here["balance"].sum()),
+                      "linked": number(here["dealid"].notna().sum()),
+                      "lost": number(len(lost_here)), "lost_amount": mln(lost_here["balance"].sum())})
+    elsewhere = accounts[~accounts["code"].isin(list(queries.ACCOUNT_CODES))].drop_duplicates("accountid")
+
+    checks = []
+    for code, label in find_problems_labels().items():
+        if code.startswith("acc_"):
+            rows = table[table["problem_" + code]]
+            checks.append({"code": code, "label": label, "count": number(len(rows)),
+                           "amount": mln(rows["amount"].sum()),
+                           "balance": mln(rows["acc_balance"].sum()), "bad": len(rows) > 0})
+
+    by_kind = []
+    for key, info in KINDS.items():
+        rows = active[active["kind"] == key]
+        by_kind.append({"key": key, "label": info["label"], "icon": info["icon"],
+                        "amount": mln(rows["amount"].sum()), "balance": mln(rows["acc_balance"].sum()),
+                        "gap": mln(rows["acc_balance"].sum() - rows["amount"].sum()),
+                        "bad": abs(rows["acc_balance"].sum() - rows["amount"].sum()) >= TOLERANCE})
+
+    return {"kpis": kpis, "codes": codes, "checks": checks, "by_kind": by_kind,
+            "elsewhere": {"count": number(len(elsewhere)), "balance": mln(elsewhere["balance"].sum())},
+            "lost_total": number(len(lost)),
+            "lost": [{"no": a.accountno, "name": show(a.account_name) or "", "balance": number(a.balance, 2),
+                      "arcdate": show(a.arcdate) or "—"} for a in lost.head(100).itertuples()]}
+
+
+def orphans_excel(accounts):
+    """Every 945xx account with a balance and no collateral deal, for Excel."""
+    out = orphans(accounts)[["accountno", "account_name", "balance", "arcdate", "accountid"]].copy()
+    out["arcdate"] = out["arcdate"].dt.date
+    return out.rename(columns={"accountno": "Счёт", "account_name": "Наименование",
+                               "balance": "Остаток, сум", "arcdate": "Дата остатка",
+                               "accountid": "ID счёта"})
