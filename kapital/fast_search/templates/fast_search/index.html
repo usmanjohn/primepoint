@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% comment %}
+  Every report: one card per .sql file in fast_search/sql/. The chips are the form fields.
+{% endcomment %}
+
+{% block extra_css %}{% include "fast_search/style.html" %}{% endblock extra_css %}
+
+{% block content %}
+<div class="fs container-fluid px-3 px-md-4 py-4">
+  <div class="hero">
+    <div class="eyebrow">Запрос → таблица → Excel</div>
+    <h1><i class="fa-solid fa-magnifying-glass-chart"></i>Быстрый поиск</h1>
+    <div class="sub">Ничего не сохраняется: запрос выполняется, когда вы нажимаете «Показать».</div>
+  </div>
+
+  {% if reports %}
+  <div class="row g-3">
+    {% for r in reports %}
+    <div class="col-12 col-md-6 col-xl-4">
+      <a class="card-r" href="{% url 'fast-search-report' r.name %}">
+        <div class="t">{{ r.title }}</div>
+        {% if r.description %}<div class="d">{{ r.description }}</div>{% endif %}
+        {% for f in r.fields %}<span class="chip">{{ f.label }}</span>{% empty %}<span class="chip">без параметров</span>{% endfor %}
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="alert alert-light border">Отчётов пока нет. Положите файл <code>.sql</code> в папку <code>fast_search/sql/</code>.</div>
+  {% endif %}
+</div>
+{% endblock content %}
