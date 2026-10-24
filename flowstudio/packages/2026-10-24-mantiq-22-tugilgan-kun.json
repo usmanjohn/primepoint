@@ -1,0 +1,217 @@
+{
+ "id": "2026-10-24-mantiq-22-tugilgan-kun",
+ "number": 66,
+ "for": "Inom",
+ "date": "2026-10-24",
+ "series": "Mantiq maydoni",
+ "title_uz": "Bir kunda tugʻilganlar",
+ "concept_uz": "Sinfda 30 oʻquvchi. Ustoz garov oʻynaydi: «Ikkitangizning tugʻilgan kuni bir kunga toʻgʻri keladi». Sherbek kuladi — yilda 365 kun bor-ku! Tekshirishadi: Afsona ham, orqa partadagi bola ham 14-martda tugʻilgan. Ustoz: «Bu omad emas — 30 dan ancha kam oʻquvchi bilan ham yutardim». Eng kamida nechta? Javob keyingi hafta, 26-oktabrdan keyin.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "logic/management/commands/_puzzles_logic_17_24.py (puzzle 22)"
+ ],
+ "facts": [
+  {
+   "claim": "Sherbekning sinfida 30 oʻquvchi; ustoz ikkitasining tugʻilgan kuni bir kunga toʻgʻri keladi deb garov oʻynaydi",
+   "source": "puzzle 22 body_uz"
+  },
+  {
+   "claim": "Sherbek kuladi: yilda 365 kun bor, ular atigi 30 kishi",
+   "source": "puzzle 22 body_uz"
+  },
+  {
+   "claim": "Afsona va orqa partadagi bir bola ikkalasi ham 14-martda tugʻilgan; yili emas, faqat kuni va oyi bir xil",
+   "source": "puzzle 22 body_uz + figure caption"
+  },
+  {
+   "claim": "Ustoz 30 dan ancha kam oʻquvchi bilan ham garovni yutish ehtimoli yuqori boʻlardi",
+   "source": "puzzle 22 body_uz"
+  },
+  {
+   "claim": "Soʻraladigan javob: ehtimol 50% dan oshadigan eng kichik sinf hajmi (javob videoda aytilmaydi)",
+   "source": "puzzle 22 lg-ask; answer_key '23' — faqat javob videosi uchun"
+  },
+  {
+   "claim": "Raund 3: 2026-10-19 ochilgan, javobi 2026-10-26 da ochiladi — javob videosi 2026-10-31 da (Inom), 26-oktabrdan oldin emas",
+   "source": "_puzzles_logic_17_24.py SCHEDULE start 2026-10-05 + 7×(3−1)"
+  }
+ ],
+ "style_line": "Cinematic photoreal, warm autumn morning light through tall classroom windows, golden plane-tree leaves outside, soft dust in the sunbeams, 35mm film look, gentle school-comedy mood. No text, no letters, no numbers, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: sinfxona",
+   "prompt": "Vertical 9:16 wide shot of an empty Uzbek school classroom on an autumn morning, seen from the back: rows of old wooden two-seat desks, a large clean dark-green blackboard with nothing written on it, a teacher's wooden desk with a small potted geranium and a stack of exercise books, tall windows on the left with golden plane trees outside. No people, no posters, no writing anywhere."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Ustoz",
+   "prompt": "Vertical 9:16 medium-full portrait of an Uzbek woman teacher of about 40, warm confident face with a playful half-smile, dark hair in a neat low bun, round gold-rimmed glasses, a TEAL knitted cardigan over a cream blouse, holding a thin wooden pointer, standing in front of a clean dark-green blackboard. Eye-level camera."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Sherbek",
+   "prompt": "Vertical 9:16 medium portrait of a cheeky 12-year-old Uzbek boy sitting at a wooden school desk, short black hair with one stubborn cowlick sticking up at the back, white school shirt with a NAVY sweater vest, leaning back with arms crossed and a confident grin. Classroom softly blurred behind."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Afsona",
+   "prompt": "Vertical 9:16 medium portrait of a calm, bright 12-year-old Uzbek girl at a wooden school desk, two long dark braids tied with big WHITE ribbons, white blouse under a dark school pinafore, sitting straight with a polite small smile. Classroom softly blurred behind."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Orqa partadagi bola",
+   "prompt": "Vertical 9:16 medium portrait of a tall, lanky 12-year-old Uzbek boy at a wooden desk in the back row of a classroom, buzz-cut hair, big gap-toothed grin, white school shirt under a bright GREEN sweater vest, sleepy-but-friendly eyes. Classroom softly blurred behind."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Butun sinf",
+   "from": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot of the same classroom from the side of the teacher's desk, looking toward the pupils: the teacher in the teal cardigan stands at the front with her pointer; about thirty pupils sit at the desks; the boy in the navy vest sits front row centre; the girl with white ribbons sits in the second row; the lanky boy in the green vest sits in the very back row. Same faces, same clothes, same light."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Ikki qoʻl koʻtarilgan",
+   "from": "R6",
+   "prompt": "Change the moment: the girl with white ribbons in the second row and the lanky boy in the green vest in the back row are both standing with one hand raised, turning to stare at each other in surprise; the whole class has turned in their seats to look; the boy in the navy vest in the front row has his mouth wide open. Same faces, same clothes, same light, 9:16."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Sherbek kameraga qaraydi",
+   "from": "R3",
+   "prompt": "Change the framing: a close-up of the same boy in the navy vest at his desk, chin resting on his fist, frowning in thought and looking straight into the camera, the cowlick sticking up. Same face, same clothes, same classroom light, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Garov",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Ustoz",
+     "text": "Garov oʻynayman: ikkitangizning tugʻilgan kuni bir kunga toʻgʻri keladi!"
+    }
+   ],
+   "prompt": "The teacher snaps her wooden pointer down on her desk with a sharp crack, the noisy class falls instantly silent, then she raises one eyebrow and smiles. Audio: the crack of the pointer, chatter cut off, a chair creak. The teacher says in Uzbek with a warm, clear, confident female voice of about forty, a little playful: \"Garov o'ynayman: ikkitangizning tug'ilgan kuni bir kunga to'g'ri keladi!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Sherbek kuladi",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Sherbek",
+     "text": "Yilda uch yuz oltmish besh kun bor, biz esa atigi oʻttiz kishimiz. Yutqazasiz, ustoz!"
+    }
+   ],
+   "prompt": "Medium shot. The boy in the navy vest bursts out laughing, leans back on two chair legs with his arms crossed, and wags a finger at the teacher. Audio: a few giggles from the class, the chair creaks. He says in Uzbek with a bright, cheeky twelve-year-old boy's voice, very sure of himself: \"Yilda uch yuz oltmish besh kun bor, biz esa atigi o'ttiz kishimiz. Yutqazasiz, ustoz!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Tekshiramiz",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Ustoz",
+     "text": "Yili emas — faqat kuni va oyi. Qani, tekshiramiz!"
+    }
+   ],
+   "prompt": "Medium close-up of the teacher in the teal cardigan. She calmly pushes up her gold-rimmed glasses, opens a class register on her desk and taps it with the pointer, completely unworried. Audio: page rustle, a soft tap. She says in Uzbek with a warm, clear, confident female voice of about forty, a little playful: \"Yili emas — faqat kuni va oyi. Qani, tekshiramiz!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "14-mart",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R4",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Afsona",
+     "text": "Men oʻn toʻrtinchi martda tugʻilganman."
+    }
+   ],
+   "prompt": "The girl with white ribbons stands up neatly beside her desk and says her birthday politely, then starts to sit down. Audio: classroom hush, a desk lid knock. She says in Uzbek with a calm, clear twelve-year-old girl's voice: \"Men o'n to'rtinchi martda tug'ilganman.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Men ham!",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Orqa partadagi bola",
+     "text": "Men ham oʻn toʻrtinchi mart!"
+    }
+   ],
+   "prompt": "The lanky boy in the green vest in the back row jumps up so fast his chair scrapes, hand high in the air; the girl with white ribbons freezes half-seated and turns to him; the whole class turns around with a loud gasp; the boy in the navy vest's chair drops forward onto four legs with a thud. Audio: chair scrape, class gasp, thud. The lanky boy shouts in Uzbek with an excited, slightly cracking twelve-year-old boy's voice: \"Men ham o'n to'rtinchi mart!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Omadmi?",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R2"
+   ],
+   "lines": [
+    {
+     "who": "Sherbek",
+     "text": "Bu shunchaki omad-ku!"
+    },
+    {
+     "who": "Ustoz",
+     "text": "Omad emas, Sherbek."
+    }
+   ],
+   "prompt": "Two-shot across the classroom. The boy in the navy vest throws up both hands in protest; the teacher in the teal cardigan slowly shakes her head with a knowing smile. Audio: a few kids whispering. The boy says in Uzbek with a bright, cheeky twelve-year-old boy's voice, outraged: \"Bu shunchaki omad-ku!\" The teacher answers in Uzbek with a warm, clear, confident female voice of about forty, a little playful: \"Omad emas, Sherbek.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Ancha kam bilan ham",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Ustoz",
+     "text": "Men oʻttizdan ancha kam oʻquvchi bilan ham yutgan boʻlardim."
+    }
+   ],
+   "prompt": "Slow push-in on the teacher as she walks between the desks toward camera, pointer behind her back, leans in slightly and lowers her voice like telling a secret. Audio: footsteps on a wooden floor, a clock ticking. She says in Uzbek with a warm, clear, confident female voice of about forty, a little playful: \"Men o'ttizdan ancha kam o'quvchi bilan ham yutgan bo'lardim.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Savol",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Sherbek",
+     "text": "Sinfda eng kamida necha kishi boʻlsa, ustozning yutish ehtimoli ellik foizdan oshadi? Javobni izohda yozing!"
+    }
+   ],
+   "prompt": "Close-up: the boy in the navy vest, chin on his fist, narrows his eyes, then looks straight into the camera asking the viewer for help. Hold on his look at the end. Audio: the clock ticking, a single school bell ring at the very end. He says in Uzbek with a bright, cheeky twelve-year-old boy's voice, puzzled and curious: \"Sinfda eng kamida necha kishi bo'lsa, ustozning yutish ehtimoli ellik foizdan oshadi? Javobni izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Sinfda 30 oʻquvchi, yilda 365 kun. Ustoz garov oʻynaydi — va yutadi! Uning aytishicha, ancha kam oʻquvchi bilan ham yutardi. Sinfda eng kamida necha kishi boʻlsa, ikkitasining tugʻilgan kuni bir kunga toʻgʻri kelish ehtimoli 50% dan oshadi? Javobingizni izohda yozing yoki powerty.uz/logic da yuboring — toʻgʻri javob keyingi hafta! #mantiq #jumboq #ehtimollik #Powerty"
+}

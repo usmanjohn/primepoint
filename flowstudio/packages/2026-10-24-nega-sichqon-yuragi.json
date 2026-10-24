@@ -1,0 +1,159 @@
+{
+ "id": "2026-10-24-nega-sichqon-yuragi",
+ "number": 67,
+ "for": "Jonibek",
+ "date": "2026-10-24",
+ "series": "Nega shunday?",
+ "title_uz": "Sichqonning yuragi nega tez uradi",
+ "concept_uz": "Kichkina Sichqon yuragi daqiqasiga 500 marta urayotganidan hayron, Fil esa xotirjam — uniki 30 marta. Fil ikki yogʻoch kub bilan sirni ochadi: jism kattalashsa, hajmi terisidan ancha tez oʻsadi. Kichkinaning issigʻi teri orqali tez qochadi — shuning uchun u tez yeydi va tez nafas oladi. Oxirida chumoli koʻrsatadi: kichiklik — kuch.",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_16_21.py (story 20)"
+ ],
+ "facts": [
+  {"claim": "Sichqonning yuragi daqiqasiga taxminan 500 marta, filniki atigi 30 marta uradi", "source": "story 20 body"},
+  {"claim": "Qirrasi 1 sm kub: sirti 6 sm², hajmi 1 sm³", "source": "story 20 body"},
+  {"claim": "Qirrasi 10 sm kub: sirti 600 sm², hajmi 1000 sm³", "source": "story 20 body"},
+  {"claim": "Tana issiqlikni hajmi bilan ishlab chiqaradi, teri (sirt) orqali yoʻqotadi; kichik hayvon issiqlikni tez yoʻqotadi, shuning uchun tez yeydi, tez nafas oladi, yuragi tez uradi", "source": "story 20 body"},
+  {"claim": "Fil issiqlikni yaxshi saqlaydi; Afrika filining ulkan quloqlari radiator vazifasini bajaradi", "source": "story 20 body"},
+  {"claim": "Ikki marta kattalashsa: suyak 4 marta kuchayadi, ogʻirlik 8 marta oshadi (Galiley, 1638)", "source": "story 20 body + grammar block"},
+  {"claim": "Chumoli oʻz vaznidan oʻn barobarlab ogʻir yukni koʻtaradi — kuchli boʻlgani uchun emas, kichik boʻlgani uchun", "source": "story 20 body"}
+ ],
+ "style_line": "Premium 3D animated feature film style, warm golden-hour African savanna light, soft dust in the air, rich saturated colours, expressive cartoon animals with big readable eyes, gentle comic mood. No text, no letters, no numbers, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: savanna va tosh",
+   "prompt": "Vertical 9:16 wide shot of an African savanna at golden hour: one wide flat-topped acacia tree, tall dry golden grass, a big flat warm-coloured rock in the foreground like a little stage, distant hills in haze. No animals, no people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Sichqon",
+   "prompt": "Vertical 9:16 full-body character portrait of a tiny grey-brown field mouse standing on its hind legs, oversized round pink ears, huge shiny dark eyes, twitchy whiskers, a small knitted RED scarf around its neck, nervous but lovable expression, standing on a warm flat rock."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Fil",
+   "prompt": "Vertical 9:16 full-body character portrait of a big, wise, calm African elephant with enormous fan-shaped ears, kind wrinkled eyes, slightly worn tusks and a woven BLUE bead band around its right front leg, standing in golden savanna grass, gentle smile."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Ikkalasi tosh yonida",
+   "from": ["R1", "R2", "R3"],
+   "prompt": "Combine the attached images into one vertical 9:16 shot: the tiny mouse with the red scarf stands on the flat rock in the foreground; the elephant with the blue leg band stands right behind the rock and lowers its trunk and head down toward the mouse; the acacia tree behind them. Exactly one mouse and one elephant. Same characters, same light."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Ikki kub",
+   "from": "R4",
+   "prompt": "Change the scene: on the flat rock between the two characters stand two plain unpainted wooden toy cubes side by side: a tiny one the size of a sugar cube next to the mouse, and a big one exactly ten times wider and ten times taller, as tall as the mouse is wide twice over, under the elephant's trunk tip. Plain wood, no markings. Same characters, same light, 9:16."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Ulkan sichqon",
+   "from": "R2",
+   "prompt": "Change the scene: the same mouse with the red scarf has magically grown as big as an elephant, standing in the savanna grass beside the acacia tree, its thin legs bending and wobbling comically under its own huge body, eyes wide with alarm, a soft dreamy glow around the edges of the frame like a daydream. Cartoon comedy, no injury. Same character design, 9:16."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Chumoli va non uvogʻi",
+   "from": "R4",
+   "prompt": "Change the framing: a low macro shot across the flat rock. In the foreground one small cheerful red ant marches along carrying a breadcrumb many times bigger than itself above its head. Behind it, slightly blurred, the mouse with the red scarf watches with its mouth open and the elephant's big ear and trunk are visible. Same light, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Tuk-tuk-tuk",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {"who": "Sichqon", "text": "Nega mening yuragim bunaqa tez uradi?!"}
+   ],
+   "prompt": "Starts on an extreme close-up of the mouse's tiny chest visibly fluttering, then pulls back to reveal the mouse clutching its chest with both paws and the elephant above it. Audio: a very fast tiny heartbeat, then one slow deep heartbeat from the elephant like a big drum. The mouse squeaks in Uzbek with a high, quick, nervous little-creature voice: \"Nega mening yuragim bunaqa tez uradi?!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "30 va 500",
+   "method": "Ingredients to Video",
+   "attach": ["R3", "R2", "R1"],
+   "lines": [
+    {"who": "Fil", "text": "Meniki shoshmaydi: daqiqasiga atigi oʻttiz marta."},
+    {"who": "Sichqon", "text": "Meniki — besh yuz!"}
+   ],
+   "prompt": "The elephant slowly closes its eyes and puts the tip of its trunk to its own chest, listening calmly; the mouse below hops up and down, throwing its paws in the air. Audio: slow deep heartbeats, then a frantic tiny heartbeat. The elephant says in Uzbek with a deep, slow, warm old male voice: \"Meniki shoshmaydi: daqiqasiga atigi o'ttiz marta.\" The mouse squeaks in Uzbek with a high, quick, nervous little-creature voice: \"Meniki — besh yuz!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Ikki kub",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {"who": "Fil", "text": "Kichik kub: hajmi bir, sirti olti. Katta kub: hajmi ming, sirti atigi olti yuz."}
+   ],
+   "prompt": "The elephant taps the tiny wooden cube with the tip of its trunk, then the big one; the mouse looks from one cube to the other, ears turning. Audio: two wooden knocks, one light, one heavy. The elephant says in Uzbek with a deep, slow, warm old male voice, like a patient teacher: \"Kichik kub: hajmi bir, sirti olti. Katta kub: hajmi ming, sirti atigi olti yuz.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Sir",
+   "method": "Ingredients to Video",
+   "attach": ["R3", "R1"],
+   "lines": [
+    {"who": "Fil", "text": "Kattalashgan sari hajm teridan ancha tez oʻsadi."}
+   ],
+   "prompt": "Close-up of the elephant's wise face, one eye winking, a slow knowing nod, golden light on its wrinkles; a warm breeze moves the grass behind. Audio: a soft magical chime, wind in the grass. The elephant says in Uzbek with a deep, slow, warm old male voice: \"Kattalashgan sari hajm teridan ancha tez o'sadi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Issiq qochadi",
+   "method": "Ingredients to Video",
+   "attach": ["R2", "R1"],
+   "lines": [
+    {"who": "Sichqon", "text": "Demak, issigʻim terimdan tez qochib ketadi — shuning uchun tez yeyman, tez nafas olaman!"}
+   ],
+   "prompt": "The mouse shivers, its red scarf fluttering in a little breeze, then grabs a pile of grass seeds and stuffs them in its cheeks super fast while panting quickly. Comic speed. Audio: quick tiny panting, crunching seeds, the fast heartbeat underneath. The mouse says in Uzbek with a high, quick, nervous little-creature voice, mouth half full: \"Demak, issig'im terimdan tez qochib ketadi — shuning uchun tez yeyman, tez nafas olaman!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Quloq-radiator",
+   "method": "Ingredients to Video",
+   "attach": ["R3", "R1"],
+   "lines": [
+    {"who": "Fil", "text": "Men esa issiqni koʻp saqlayman. Quloqlarim — radiator."}
+   ],
+   "prompt": "The elephant slowly fans its enormous ears back and forth like great sails, dust and grass swirling in the wind they make; it looks pleasantly cooled. Audio: big whooshing flaps, a contented low rumble. The elephant says in Uzbek with a deep, slow, warm old male voice, amused: \"Men esa issiqni ko'p saqlayman. Quloqlarim — radiator.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Katta boʻlsam-chi?",
+   "method": "Ingredients to Video",
+   "attach": ["R2", "R3", "R1"],
+   "lines": [
+    {"who": "Sichqon", "text": "Unda men ham fildek katta boʻlsam-chi?"}
+   ],
+   "prompt": "The mouse stands on tiptoe on the rock, puffs out its chest and stretches its paws up toward the elephant's height, dreaming; the elephant raises one eyebrow. Audio: a hopeful little musical rise. The mouse says in Uzbek with a high, quick, nervous little-creature voice, dreamy: \"Unda men ham fildek katta bo'lsam-chi?\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "4 va 8",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {"who": "Fil (kadr ortida)", "text": "Ikki marta kattalashsang, suyaging toʻrt marta kuchayadi, ogʻirliging esa sakkiz marta!"}
+   ],
+   "prompt": "Daydream: the elephant-sized mouse wobbles, its thin legs bend like jelly, and it slowly, comically sits down on its bottom in the grass with a soft bounce, looking surprised. No injury. Then the dream shimmer fades. Audio: wobbly cartoon springs, a soft thump, dreamy harp. An off-screen elephant says in Uzbek with a deep, slow, warm old male voice: \"Ikki marta kattalashsang, suyaging to'rt marta kuchayadi, og'irliging esa sakkiz marta!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 9,
+   "title_uz": "Chumoli va savol",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {"who": "Fil (kadr ortida)", "text": "Chumoli kuchli boʻlgani uchun emas, kichik boʻlgani uchun koʻtaradi."},
+    {"who": "Sichqon", "text": "Sizning yuragingiz-chi? Bir daqiqa sanang va izohda yozing!"}
+   ],
+   "prompt": "The little ant marches proudly past with its giant breadcrumb; the mouse watches it go, then turns and looks straight into the camera with a big smile, pressing a paw to its chest. Hold on the look at the end. Audio: tiny marching footsteps, the fast heartbeat, a cheerful final note. An off-screen elephant says in Uzbek with a deep, slow, warm old male voice: \"Chumoli kuchli bo'lgani uchun emas, kichik bo'lgani uchun ko'taradi.\" Then the mouse says in Uzbek with a high, quick, nervous little-creature voice, now cheerful: \"Sizning yuragingiz-chi? Bir daqiqa sanang va izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Sichqonning yuragi daqiqasiga 500 marta, filniki atigi 30 marta uradi. Sababi — oddiy kubda: jism kattalashsa, hajmi terisidan ancha tez oʻsadi. Sizning yuragingiz bir daqiqada necha marta uradi? Sanab, izohda yozing! #negashunday #matematika #tabiat #Powerty"
+}
