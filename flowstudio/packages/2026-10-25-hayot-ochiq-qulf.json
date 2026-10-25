@@ -1,0 +1,252 @@
+{
+ "id": "2026-10-25-hayot-ochiq-qulf",
+ "number": 69,
+ "for": "Jonibek",
+ "date": "2026-10-25",
+ "series": "Hayotdagi matematika",
+ "title_uz": "Ochiq qulf",
+ "concept_uz": "Malika bankka parol yuboradi, tomdagi katta quloqli Tulki esa hamma xabarni eshitadi. Sezar shifri uni toʻxtatolmaydi — kalitlar bor-yoʻgʻi 25 ta. Burilish: bank kalitni emas, ochiq qulfni yuboradi, uning ichida esa oddiy koʻpaytirish yashiringan — oldinga oson, orqaga juda qiyin.",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_37_42.py (story 32, «Telefoningiz xabarni qanday yashiradi»)"
+ ],
+ "facts": [
+  {
+   "claim": "Telefondan yuborilgan xabar koʻp serverlardan oʻtadi, uni yoʻlda istalgan odam «eshitishi» mumkin",
+   "source": "corner/management/commands/_stories_matematika_olami_37_42.py (story 32, «Telefoningiz xabarni qanday yashiradi») body"
+  },
+  {
+   "claim": "Rivoyatlarga koʻra Yuliy Sezar har harfni 3 ta oldinga surgan: A oʻrniga D; OTA → RWD",
+   "source": "corner/management/commands/_stories_matematika_olami_37_42.py (story 32, «Telefoningiz xabarni qanday yashiradi») body + question 1"
+  },
+  {
+   "claim": "26 harfli alifboda bor-yoʻgʻi 25 ta foydali kalit bor — hammasini sinab chiqish mumkin",
+   "source": "corner/management/commands/_stories_matematika_olami_37_42.py (story 32, «Telefoningiz xabarni qanday yashiradi») body + question 2"
+  },
+  {
+   "claim": "Muammo: avval uchrashmagan bank bilan kalitni internet orqali yuborsangiz, uni ham hamma eshitadi",
+   "source": "corner/management/commands/_stories_matematika_olami_37_42.py (story 32, «Telefoningiz xabarni qanday yashiradi») body"
+  },
+  {
+   "claim": "1976-yilda Uitfild Diffi va Martin Xellman yechimni eʼlon qilgan; ochiq qulf misoli: bank ochiq qulf yuboradi, kalit unda qoladi",
+   "source": "corner/management/commands/_stories_matematika_olami_37_42.py (story 32, «Telefoningiz xabarni qanday yashiradi») body + question 3"
+  },
+  {
+   "claim": "61 × 67 = 4087 — koʻpaytirish oson, 4087 ni ikki tub songa ajratish qiyin (javob: 61 va 67)",
+   "source": "corner/management/commands/_stories_matematika_olami_37_42.py (story 32, «Telefoningiz xabarni qanday yashiradi») grammar (hisoblab tekshirildi: 61 va 67 tub, 61·67 = 4087)"
+  },
+  {
+   "claim": "1977-yil — RSA (Rivest, Shamir, Adleman); brauzerdagi qulf belgisi ulanish shifrlanganini bildiradi",
+   "source": "corner/management/commands/_stories_matematika_olami_37_42.py (story 32, «Telefoningiz xabarni qanday yashiradi») body"
+  }
+ ],
+ "style_line": "Premium 3D animated feature film style, soft rounded shapes, warm evening city light with teal and amber tones, expressive faces, gentle comedy, clean cinematic depth of field. No text, no letters, no numbers, no logos, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: kechki shahar",
+   "prompt": "Vertical 9:16 wide shot of a cosy modern Central Asian city at dusk in 3D animation: apartment blocks with warm lit windows, rooftops with antennas and satellite dishes, a tall plain glass bank-like building with no sign in the distance, soft teal sky. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Malika",
+   "prompt": "Vertical 9:16 full-body 3D animated character: a cheerful Uzbek girl about 15, long dark braid, big brown eyes, a bright YELLOW hoodie, jeans, white sneakers, holding a plain smartphone with a blank glowing screen, standing on a balcony at dusk."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Tulki Quloqvoy",
+   "prompt": "Vertical 9:16 full-body 3D animated character: a sly but lovable red fox with ENORMOUS ears and a small striped scarf, standing upright on a rooftop next to an antenna, one paw cupped to his ear, mischievous grin. Not scary."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Xabar uchmoqda",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot: the girl in the yellow hoodie on her balcony in the foreground, her message flying away from her phone as a small glowing paper plane over the rooftops; on a far rooftop the big-eared fox turns his ears toward it. Same characters, dusk light."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Sezar",
+   "prompt": "Vertical 9:16 3D animated respectful reconstruction of the Roman general Julius Caesar in a stone room lit by oil lamps: middle-aged, short hair, laurel wreath, red cloak over white tunic, sealing a rolled papyrus letter with wax at a wooden table. Warm amber light."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Tulki kalitlar bilan",
+   "from": "R3",
+   "prompt": "Change the scene: the big-eared fox in the striped scarf sits on the rooftop holding a big iron ring with exactly twenty-five small brass keys, trying one key on a small locked wooden box, smug grin. Same character, dusk light, 9:16."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Ochiq qulf keldi",
+   "from": [
+    "R2",
+    "R1"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot: on her balcony the girl in the yellow hoodie catches a small floating parcel arriving from the distant glass building; inside it is a shiny OPEN brass padlock with no key. She looks at it, curious. Same character, dusk light."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Qulflangan quti",
+   "from": [
+    "R7",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot: the girl in the yellow hoodie has put a glowing paper note into a small wooden box and clicked the brass padlock shut; on the balcony railing beside her the big-eared fox tugs at the locked padlock with both paws, frustrated. Same characters, dusk light."
+  },
+  {
+   "id": "R9",
+   "name_uz": "Qulf ichi",
+   "from": "R7",
+   "prompt": "Change the scene: a magical close-up inside the brass padlock: glowing golden gears and two small bright spheres of light merging easily into one large sphere, while a tangle of thin threads leads back from the large sphere like a maze. Dreamy, warm, no numbers, no writing. 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Parol uchdi",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Siz bankka parol yuboryapsiz. Yoʻlda uni istalgan odam eshitishi mumkin!"
+    }
+   ],
+   "prompt": "The glowing paper plane zips over the rooftops; the fox's huge ears snap toward it and twitch. Quick comic beat. Audio: a whoosh, city hum, a cartoon ear twitch sound. An off-screen man says in Uzbek with a warm, friendly young male narrator voice: \"Siz bankka parol yuboryapsiz. Yo'lda uni istalgan odam eshitishi mumkin!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Quloqvoy",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R2"
+   ],
+   "lines": [
+    {
+     "who": "Tulki",
+     "text": "Hammasini eshitaman! Hammasini!"
+    },
+    {
+     "who": "Malika",
+     "text": "Unda parolim qanday sir qoladi?"
+    }
+   ],
+   "prompt": "The fox leans over the rooftop edge, cupping his ear, then rubs his paws together. Cut to the girl on her balcony looking up, worried. Audio: rooftop wind, a sly chuckle. The fox says in Uzbek with a sly, raspy, playful cartoon male voice: \"Hammasini eshitaman! Hammasini!\" The girl says in Uzbek with a bright, clear teenage girl's voice: \"Unda parolim qanday sir qoladi?\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Sezar shifri",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Sezar",
+     "text": "Har bir harfni uchta oldinga sur. A oʻrniga — D. Hech kim oʻqiy olmaydi!"
+    }
+   ],
+   "prompt": "Caesar presses his seal into the wax, then taps the letter and looks up with a confident little smile. Audio: oil lamp crackle, wax press, distant footsteps. He says in Uzbek with a firm, deep, commanding middle-aged male voice: \"Har bir harfni uchta oldinga sur. A o'rniga — D. Hech kim o'qiy olmaydi!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "25 ta kalit",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Tulki",
+     "text": "Bor-yoʻgʻi yigirma beshta kalit? Bir daqiqada ochaman!"
+    }
+   ],
+   "prompt": "The fox flips through the keys one by one at cartoon speed; on a key near the end the box pops open and he grins. Audio: rapid jingling keys, a click, a triumphant cartoon sting. He says in Uzbek with a sly, raspy, playful cartoon male voice: \"Bor-yo'g'i yigirma beshta kalit? Bir daqiqada ochaman!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Muammo",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1",
+    "R3"
+   ],
+   "lines": [
+    {
+     "who": "Malika",
+     "text": "Bank bilan hech uchrashmaganman. Kalitni qanday beraman?"
+    },
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Kalitni yuborsangiz, uni ham hamma eshitadi."
+    }
+   ],
+   "prompt": "The girl paces on her balcony, phone in hand, glancing at the distant glass building, then at the fox on the far rooftop who waves cheekily. Audio: city ambience, a sigh. She says in Uzbek with a bright, clear teenage girl's voice: \"Bank bilan hech uchrashmaganman. Kalitni qanday beraman?\" An off-screen man says in Uzbek with a warm, friendly young male narrator voice: \"Kalitni yuborsangiz, uni ham hamma eshitadi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Burilish",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Ming toʻqqiz yuz yetmish oltinchi yil. Diffi va Xellman: kalitni emas — ochiq qulfni yuboring!"
+    }
+   ],
+   "prompt": "The parcel floats into her hands and opens; she lifts out the open brass padlock, turns it in the light, and her face lights up with understanding. Audio: a soft magical chime, a padlock shackle clinking. An off-screen man says in Uzbek with a warm, friendly young male narrator voice: \"Ming to'qqiz yuz yetmish oltinchi yil. Diffi va Xellman: kalitni emas — ochiq qulfni yuboring!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Qulf yopildi",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Tulki",
+     "text": "Ochiq qulf edi-ku! Endi ocholmayman!"
+    },
+    {
+     "who": "Malika",
+     "text": "Kaliti faqat bankda."
+    }
+   ],
+   "prompt": "The fox pulls at the padlock, braces his feet, pulls again, then flops down with his ears drooping. The girl grins. Audio: straining grunt, metal rattle, a comic deflating sound. The fox says in Uzbek with a sly, raspy, playful cartoon male voice: \"Ochiq qulf edi-ku! Endi ocholmayman!\" The girl says in Uzbek with a bright, clear teenage girl's voice: \"Kaliti faqat bankda.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Qulf ichida",
+   "method": "Frames to Video",
+   "start": "R9",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Ikki sonni koʻpaytirish — oson. Natijadan ularni qaytib topish — juda qiyin. Qulfning siri shu."
+    }
+   ],
+   "prompt": "Slow dreamy push-in: the two small spheres merge into one large sphere in an instant; then the camera tries to travel back through the tangled maze of threads and gets lost. Audio: gentle gears ticking, a quick bright merge sound, then a slow wandering hum. An off-screen man says in Uzbek with a warm, friendly young male narrator voice: \"Ikki sonni ko'paytirish — oson. Natijadan ularni qaytib topish — juda qiyin. Qulfning siri shu.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 9,
+   "title_uz": "Savol",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R8",
+    "R2"
+   ],
+   "lines": [
+    {
+     "who": "Malika",
+     "text": "Toʻrt ming sakson yetti — qaysi ikki tub sonning koʻpaytmasi? Kalkulyatorsiz topa olasizmi? Izohda yozing!"
+    },
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Javob — powerty.uz da."
+    }
+   ],
+   "prompt": "Medium close-up: the girl leans toward the camera holding the locked box, raises one eyebrow with a playful challenge; the fox peeks in from the edge of frame. Hold on her look at the end. Audio: soft city night, one padlock click. She says in Uzbek with a bright, clear teenage girl's voice: \"To'rt ming sakson yetti — qaysi ikki tub sonning ko'paytmasi? Kalkulyatorsiz topa olasizmi? Izohda yozing!\" Then an off-screen man says in Uzbek with a warm, friendly young male narrator voice: \"Javob — powerty.uz da.\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Parolingiz havoda uchadi — nega uni hech kim oʻqiy olmaydi? Sezar shifrining 25 ta kaliti, ochiq qulf va bitta koʻpaytirish: oldinga oson, orqaga juda qiyin. 4087 qaysi ikki tub sonning koʻpaytmasi? Izohda yozing! #matematika #shifr #HayotdagiMatematika #Powerty"
+}
