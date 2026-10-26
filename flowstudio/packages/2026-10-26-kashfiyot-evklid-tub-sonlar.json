@@ -1,0 +1,234 @@
+{
+ "id": "2026-10-26-kashfiyot-evklid-tub-sonlar",
+ "number": 71,
+ "for": "Jonibek",
+ "date": "2026-10-26",
+ "series": "Buyuk kashfiyot",
+ "title_uz": "Evklid: tub sonlar tugaydimi?",
+ "concept_uz": "Miloddan avvalgi 300-yillar, Iskandariya. Shogird Evkliddan soʻraydi: tub sonlar qachondir tugaydimi? Evklid «tugaydi, deylik» deb boshlaydi — hammasini koʻpaytirib, bitta qoʻshadi va roʻyxatda yoʻq yangi tub son chiqib keladi. Oxirida tomoshabinga kichik savol.",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_22_29.py (story 9, «Evklid «Negizlar»i»)"
+ ],
+ "facts": [
+  {
+   "claim": "«Negizlar» taxminan miloddan avvalgi 300-yilda Iskandariyada yozilgan, 13 kitobdan iborat, ikki ming yildan ortiq darslik boʻlgan",
+   "source": "story 9 body, 1- va 3-paragraf; fayl boshidagi faktlar ro'yxati"
+  },
+  {
+   "claim": "Shoh Ptolemey va «geometriyaga shohlar uchun alohida yoʻl yoʻq» — rivoyat",
+   "source": "story 9 body, 2-paragraf; fayl boshidagi izoh: «Qirollik yoʻli yoʻq» — RIVOYAT (Prokl)"
+  },
+  {
+   "claim": "Evklid aksiomalardan boshlaydi, masalan «ikki nuqta orqali bitta toʻgʻri chiziq oʻtkazish mumkin», qolganini isbotlaydi",
+   "source": "story 9 body, 3-paragraf"
+  },
+  {
+   "claim": "Isbot: tub sonlar tugaydi deb faraz qilib, hammasini koʻpaytirib 1 qoʻshiladi; qoldiq doim 1, demak roʻyxatda yoʻq tub boʻluvchi bor",
+   "source": "story 9 body, 5-paragraf; grammar bloki"
+  },
+  {
+   "claim": "2 × 3 × 5 + 1 = 31 (tub); 2 × 3 × 5 × 7 × 11 × 13 + 1 = 30031 = 59 × 509",
+   "source": "story 9 body, 6-paragraf (qayta hisoblandi: 30030 + 1 = 30031, 59 × 509 = 30031)"
+  },
+  {
+   "claim": "2 × 3 × 7 + 1 = 43 — tub son (tomoshabinga savol)",
+   "source": "story 9 questions, 2-savol"
+  },
+  {
+   "claim": "Shogird va sahnalardagi suhbatlar — ijodiy talqin; isbot mazmuni manbadan",
+   "source": "story 9 (ijodiy talqin)"
+  }
+ ],
+ "style_line": "Cinematic photoreal historical drama, Hellenistic Alexandria around 300 BC, bright Mediterranean light, white marble, sand and papyrus tones with deep sea blue, soft haze, 35mm film look, calm sense of wonder. No text, no letters, no numbers, no writing, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: Iskandariya hovlisi",
+   "prompt": "Vertical 9:16 wide shot of a sunny marble courtyard of a great ancient library in Alexandria around 300 BC: white columns, wooden shelves of rolled papyrus scrolls in the shade of a colonnade, a low wooden table holding a shallow tray of smooth sand, palm trees, the blue harbour and a tall lighthouse far away. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Evklid",
+   "prompt": "Vertical 9:16 full-body portrait of a respectful reconstruction of the ancient Greek mathematician Euclid, about 50: short curly dark-grey beard, receding hair, thoughtful calm eyes, a plain sand-coloured wool robe with ONE DARK-BLUE border band, a small BRONZE COMPASS hanging from a cord at his belt, holding a thin wooden stylus, standing in a marble colonnade."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Shoh Ptolemey",
+   "prompt": "Vertical 9:16 portrait of a respectful reconstruction of the Hellenistic king Ptolemy I of Egypt, about 60: strong jaw, short grey hair, a simple white ribbon diadem around his head, a deep purple cloak with a round gold brooch, sitting on a carved wooden chair with a half-unrolled papyrus scroll on his knees showing only faint drawn circles and lines, looking bored and tired."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Shogird",
+   "prompt": "Vertical 9:16 portrait of an eager Greek student about 16, curly brown hair, bright curious eyes, a short white tunic tied with a RED cord belt, bare feet in sandals, holding a small wooden wax tablet with nothing written on it, in a sunny marble courtyard."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Shoh va Evklid",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot in the same courtyard: the king in the purple cloak sits holding the scroll and frowns up at the bearded mathematician, who stands before him calm and polite with one hand on the bronze compass at his belt. Same faces, same bright light."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Qum ustidagi dars",
+   "from": [
+    "R1",
+    "R2",
+    "R4"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot: the bearded mathematician and the student with the red cord belt kneel at the low table with the tray of smooth sand; the mathematician presses two small dots into the sand and draws one straight line between them with his stylus, the student watching closely. No writing, no numbers. Same faces."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Toshchalar",
+   "from": "R6",
+   "prompt": "Change the scene: close high-angle shot of the sand tray. On it lie three small separate groups of white pebbles, a group of two, a group of three and a group of five, and next to them ONE single dark pebble held between the mathematician's fingers just above the sand. The student's hand with the red cord sleeve rests at the edge. No writing, no numbers."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Katta tosh uyumi",
+   "from": "R6",
+   "prompt": "Change the scene: the student with the red cord belt sits stunned beside a huge heap of thousands of white pebbles poured onto the courtyard floor, the wax tablet in his lap; the bearded mathematician stands behind him with a gentle knowing smile. Late afternoon golden light. Same faces."
+  },
+  {
+   "id": "R9",
+   "name_uz": "Evklid quyosh botganda",
+   "from": "R2",
+   "prompt": "Change the scene: the same bearded mathematician in the sand-coloured robe with the dark-blue border stands alone at the colonnade edge at sunset, the harbour and the distant lighthouse glowing orange behind him, turning to look straight at the camera with a quiet smile. Same face, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Shohning savoli",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Shoh Ptolemey",
+     "text": "Evklid, geometriyaning osonroq yoʻli yoʻqmi?"
+    },
+    {
+     "who": "Evklid",
+     "text": "Geometriyaga shohlar uchun alohida yoʻl yoʻq."
+    }
+   ],
+   "prompt": "Open on the king slapping the scroll down on his knee with a loud crack; he glares up. The mathematician bows slightly and answers with a calm smile; the king's eyebrows rise. Audio: the scroll smack, fountain water, distant gulls. The king says in Uzbek with a deep, gruff, impatient older male voice: \"Evklid, geometriyaning osonroq yo'li yo'qmi?\" The mathematician answers in Uzbek with a calm, clear, warm middle-aged male voice: \"Geometriyaga shohlar uchun alohida yo'l yo'q.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Rivoyat va kitob",
+   "method": "Text to Video",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Bu bir rivoyat. Lekin uning oʻn uch kitobli Negizlar asari haqiqiy: ikki ming yildan ortiq darslik boʻlgan."
+    }
+   ],
+   "prompt": "Vertical 9:16 slow aerial glide over ancient Alexandria at morning around 300 BC: white rooftops, palm trees, a great colonnaded library, the blue harbour and a tall stone lighthouse with a fire at its top. No people close up. Audio: sea wind, gulls, a soft low lyre note. An off-screen man says in Uzbek with a calm, low, unhurried male storyteller voice: \"Bu bir rivoyat. Lekin uning o'n uch kitobli Negizlar asari haqiqiy: ikki ming yildan ortiq darslik bo'lgan.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Ikki nuqta",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Evklid",
+     "text": "Ikki nuqta orqali bitta toʻgʻri chiziq oʻtadi. Shundan boshlaymiz, qolganini isbotlaymiz."
+    }
+   ],
+   "prompt": "The stylus draws a clean straight line between the two dots in the sand; the mathematician lifts the stylus and looks at the student, who nods slowly. Audio: the soft scratch of the stylus in sand, a bird. He says in Uzbek with a calm, clear, warm middle-aged male voice: \"Ikki nuqta orqali bitta to'g'ri chiziq o'tadi. Shundan boshlaymiz, qolganini isbotlaymiz.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Katta savol",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R4",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Shogird",
+     "text": "Ustoz, tub sonlar: ikki, uch, besh, yetti… Ular qachondir tugaydimi?"
+    }
+   ],
+   "prompt": "Close medium shot: the student looks up from the sand tray, counting on his fingers one, two, three, four, then spreads his hands wide in a puzzled question. Audio: fountain water, a soft wind through the columns. He asks in Uzbek with an eager, bright teenage male voice: \"Ustoz, tub sonlar: ikki, uch, besh, yetti... Ular qachondir tugaydimi?\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Tugaydi, deylik",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Evklid",
+     "text": "Tugaydi, deylik. Hammasini koʻpaytiramiz va bitta qoʻshamiz."
+    }
+   ],
+   "prompt": "The mathematician's fingers sweep the three groups of white pebbles together into one neat pile, then drop the single dark pebble on top with a click. Audio: pebbles sliding on sand, one sharp click. He says in Uzbek with a calm, clear, warm middle-aged male voice, with a sly smile: \"Tugaydi, deylik. Hammasini ko'paytiramiz va bitta qo'shamiz.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Oʻttiz bir",
+   "method": "Extend",
+   "extends": "5",
+   "lines": [
+    {
+     "who": "Evklid",
+     "text": "Ikki karra uch karra besh oʻttiz boʻladi. Bir qoʻshsak, oʻttiz bir. Hech biriga boʻlinmaydi. Yangi tub son!"
+    }
+   ],
+   "prompt": "He arranges the pile into rows that never come out even, one pebble always left over, and taps that lonely dark pebble; the student's mouth falls open. Audio: soft clicks of pebbles, a rising lyre note. He says in Uzbek with a calm, clear, warm middle-aged male voice: \"Ikki karra uch karra besh o'ttiz bo'ladi. Bir qo'shsak, o'ttiz bir. Hech biriga bo'linmaydi. Yangi tub son!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Shogird sinaydi",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Shogird",
+     "text": "Oltita tub sonni koʻpaytirib, bir qoʻshdim: oʻttiz ming oʻttiz bir. Bu tub emas-ku!"
+    }
+   ],
+   "prompt": "The student looks up from the huge heap of pebbles, triumphant, as if he has caught his teacher in a mistake, and points at the heap. Audio: pebbles trickling, his excited breath. He says in Uzbek with an eager, bright teenage male voice: \"Oltita tub sonni ko'paytirib, bir qo'shdim: o'ttiz ming o'ttiz bir. Bu tub emas-ku!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Burilish",
+   "method": "Extend",
+   "extends": "7",
+   "lines": [
+    {
+     "who": "Evklid",
+     "text": "Toʻgʻri. U ellik toʻqqiz va besh yuz toʻqqizga boʻlinadi. Ular roʻyxatingizda bormidi?"
+    },
+    {
+     "who": "Shogird",
+     "text": "Yoʻq…"
+    }
+   ],
+   "prompt": "The mathematician kneels beside the student, splits the heap with the side of his hand into two uneven parts and raises an eyebrow; the student's triumphant face slowly turns into amazement. Audio: pebbles sliding, a soft laugh. He says in Uzbek with a calm, clear, warm middle-aged male voice: \"To'g'ri. U ellik to'qqiz va besh yuz to'qqizga bo'linadi. Ular ro'yxatingizda bormidi?\" The student whispers in Uzbek with an eager, bright teenage male voice: \"Yo'q...\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 9,
+   "title_uz": "Savol sizga",
+   "method": "Frames to Video",
+   "start": "R9",
+   "lines": [
+    {
+     "who": "Evklid",
+     "text": "Demak, tub sonlar hech qachon tugamaydi. Endi siz: ikki karra uch karra yetti plyus bir tub sonmi? Izohda yozing!"
+    }
+   ],
+   "prompt": "Sunset at the colonnade; the mathematician looks straight into the camera with a quiet challenging smile, lifts the bronze compass from his belt and holds it up, and holds the look at the end. Audio: waves, wind, one soft lyre chord. He says in Uzbek with a calm, clear, warm middle-aged male voice: \"Demak, tub sonlar hech qachon tugamaydi. Endi siz: ikki karra uch karra yetti plyus bir tub sonmi? Izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Tub sonlar — 2, 3, 5, 7, 11… Ular tugaydimi? Evklid 2300 yil oldin isbotlagan: yoʻq! Hammasini koʻpaytirib, 1 qoʻshing — roʻyxatda yoʻq yangi tub son chiqadi. Siz-chi: 2 × 3 × 7 + 1 tub sonmi? Javobingizni izohda yozing. #Evklid #tubsonlar #matematika #BuyukKashfiyot #Powerty"
+}

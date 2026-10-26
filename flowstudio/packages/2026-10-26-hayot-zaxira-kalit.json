@@ -1,0 +1,63 @@
+{
+ "id": "2026-10-26-hayot-zaxira-kalit",
+ "number": 70,
+ "for": "Inom",
+ "date": "2026-10-26",
+ "series": "Hayot hikoyasi",
+ "title_uz": "Zaxira kalit",
+ "concept_uz": "Sardor yangi uyga koʻchib kelgan kuni qoʻshnisi Mohira opa unga «ehtiyot shart» deb kalit beradi. Kalit toʻrt yil tortmada unutilib yotadi. Bir kuni opaning eshigi oldida ikki kunlik gazeta uyilib qoladi — va oʻsha unutilgan kalit uning hayotini saqlab qoladi.",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "corner/management/commands/_stories_life_13_18.py (story 18, «The Spare Key»)"
+ ],
+ "facts": [
+  {"claim": "Qoʻshni kalitni hikoyachi koʻchib kelgan haftasiyoq, oʻzini tanishtirib ulgurmasidan berdi: «ehtiyot shart, boʻlmasa qoʻshnining nima keragi bor?»", "source": "story 18 body, 1-paragraf"},
+  {"claim": "Kalit oshxona tortmasida toʻrt yil deyarli unutilib yotdi; qoʻshnilar salomlashib, balkondagi bogʻidan sabzavot boʻlishib yashashdi", "source": "story 18 body, 2-paragraf"},
+  {"claim": "Gazeta ikki kun eshik oldida uyilib qoldi; taqillatdi — javob yoʻq; kalit bilan berilgan kartadagi raqamga qoʻngʻiroq qildi — javob yoʻq", "source": "story 18 body, 3-paragraf"},
+  {"claim": "Baxtiga oʻsha hafta uydan ishlayotgan edi; kalit bilan kirib, qoʻshnini oshxona polida topdi — kechqurun yiqilgan, telefoniga yetolmagan", "source": "story 18 body, 4-paragraf"},
+  {"claim": "Tez yordam darrov keldi, qoʻshni bir necha haftada butunlay tuzaldi va hazillashib «toʻrt yil foydang tegishini kutdim» deydi; hikoyachi ham unga oʻz zaxira kalitini tayyorlab qoʻydi", "source": "story 18 body, 5-paragraf"},
+  {"claim": "Manbada qoʻshni — Mrs. Yamada; videoda voqea Toshkentga koʻchirilgan, ismlar (Mohira opa, Sardor) va qiyofalar ijodiy talqin", "source": "story 18 (ijodiy talqin)"}
+ ],
+ "style_line": "Cinematic photoreal, a Tashkent apartment block, soft natural window light, warm honey tones for the memories and cooler grey-blue tones for the worried present, shallow depth of field, 35mm film look, quiet tender drama. No text, no letters, no numbers, no watermark.",
+ "refs": [
+  {"id": "R1", "name_uz": "Muhit: podyezd yoʻlagi", "prompt": "Vertical 9:16 shot of a clean landing in an older Tashkent apartment block: two facing wooden apartment doors painted dark brown, a tiled floor, a pot of geraniums on the windowsill, soft daylight from a stairwell window. No door numbers, no signs, no people."},
+  {"id": "R2", "name_uz": "Mohira opa", "prompt": "Vertical 9:16 full-body portrait of a kind Uzbek grandmother about 72, round warm face, laugh lines, a WHITE headscarf with small BLUE cornflower print tied at the nape, a dark green velvet vest over a long floral house dress, soft slippers, standing in the doorway of her apartment, smiling. Eye-level camera."},
+  {"id": "R3", "name_uz": "Sardor", "prompt": "Vertical 9:16 full-body portrait of a young Uzbek man about 27, short black hair, light stubble, a NAVY-BLUE hoodie with ONE thin ORANGE stripe across the chest, grey trousers, sneakers, friendly slightly shy face, standing on an apartment landing. Eye-level camera."},
+  {"id": "R4", "name_uz": "Kalit", "prompt": "Vertical 9:16 macro close-up of one old brass door key on a small RED silk tassel, lying in an open kitchen drawer among spoons, rubber bands and a candle stub, warm light. No writing anywhere."},
+  {"id": "R5", "name_uz": "Koʻchib kelgan kun", "from": ["R1", "R2", "R3"], "prompt": "Combine the attached images into one vertical 9:16 shot on the same landing: cardboard moving boxes stacked by the young man's open door; the grandmother in the cornflower headscarf steps across from her door and presses a brass key with a red tassel into his palm with both hands, while he holds a box under one arm, surprised. Warm honey light. Same faces."},
+  {"id": "R6", "name_uz": "Uyilgan gazetalar", "from": ["R1", "R3"], "prompt": "Change the scene: the same landing on a grey morning, four years later. In front of the grandmother's closed door lies a small pile of folded newspapers and one untouched bottle of milk. The young man in the navy hoodie with the orange stripe stands at her door, one fist raised to knock, worried face. Cooler grey-blue light. No readable print on the papers."},
+  {"id": "R7", "name_uz": "Tortmadagi kalit", "from": ["R4", "R3"], "prompt": "Combine the attached images into one vertical 9:16 shot in the young man's small kitchen: he has pulled a drawer wide open and holds the brass key with the red tassel up in front of his face, eyes wide with sudden hope. Cooler grey-blue light. Same face, same hoodie."},
+  {"id": "R8", "name_uz": "Oshxona polida", "from": ["R2", "R3"], "prompt": "Change the scene: the grandmother's kitchen. She sits on the floor leaning against a lower cabinet, tired and pale but awake, the cornflower headscarf slightly loose; her phone lies on the table high above, out of reach. The young man in the navy hoodie kneels beside her holding her hand, his own phone at his ear. No blood, no injury visible. Soft grey window light."},
+  {"id": "R9", "name_uz": "Balkonda choy", "from": ["R2", "R3"], "prompt": "Change the scene: a sunny apartment balcony full of tomato plants in pots and hanging green peppers. The grandmother, healthy and smiling, sits at a small table with a blue-and-white teapot and two bowls of tea; the young man sits across from her laughing. Warm golden afternoon light. Same faces."}
+ ],
+ "scenes": [
+  {"n": 1, "title_uz": "Taqillatish", "method": "Frames to Video", "start": "R6",
+   "lines": [{"who": "Sardor", "text": "Mohira opa? Opa, ochsangiz-chi…"}],
+   "prompt": "Open on a close-up of the young man's knuckles knocking hard three times on the brown door, then pull back to his worried face; he leans his ear to the door and listens. Silence. Audio: three loud knocks, a long empty pause, a distant car horn. He calls in Uzbek with a soft, warm young male voice, worried: \"Mohira opa? Opa, ochsangiz-chi...\" No subtitles, no on-screen text."},
+  {"n": 2, "title_uz": "Toʻrt yil oldin", "method": "Frames to Video", "start": "R5",
+   "lines": [{"who": "Mohira opa", "text": "Ehtiyot shart, bolam. Boʻlmasa qoʻshnining nima keragi bor?"}, {"who": "Sardor", "text": "Rahmat… lekin nimaga?"}],
+   "prompt": "Warm memory. The grandmother closes his fingers over the key with both hands and pats them; the young man, still holding the box, laughs awkwardly. Audio: tape tearing, boxes thudding, a kettle somewhere. She says in Uzbek with a warm, gentle, slightly creaky elderly female voice: \"Ehtiyot shart, bolam. Bo'lmasa qo'shnining nima keragi bor?\" He answers in Uzbek with a soft, warm young male voice, confused: \"Rahmat... lekin nimaga?\" No subtitles, no on-screen text."},
+  {"n": 3, "title_uz": "Unutilgan kalit", "method": "Ingredients to Video", "attach": ["R4", "R3"],
+   "lines": [{"who": "Sardor (kadr ortida)", "text": "Kalitni tortmaga tashladim. Toʻrt yil esimga ham kelmadi."}],
+   "prompt": "The young man's hand drops the brass key with the red tassel into a kitchen drawer and pushes it shut. Then a slow push-in on the closed drawer as the light outside the window changes from summer to autumn to snow to spring. Audio: the key clinks, the drawer slides shut, a soft ticking clock. An off-screen man says in Uzbek with a soft, warm young male voice, calm and reflective: \"Kalitni tortmaga tashladim. To'rt yil esimga ham kelmadi.\" No subtitles, no on-screen text."},
+  {"n": 4, "title_uz": "Qoʻshnichilik", "method": "Ingredients to Video", "attach": ["R2", "R3", "R1"],
+   "lines": [{"who": "Mohira opa", "text": "Ol, bolam, oʻzimning balkonimdan!"}],
+   "prompt": "Warm memory on the landing: the grandmother hands the young man a small bag of red tomatoes from her balcony garden; he bows his head slightly with a hand on his chest in thanks; they wave to each other as each closes a door. Audio: a paper bag rustling, footsteps, a friendly laugh. She says in Uzbek with a warm, gentle, slightly creaky elderly female voice, cheerful: \"Ol, bolam, o'zimning balkonimdan!\" No subtitles, no on-screen text."},
+  {"n": 5, "title_uz": "Javob yoʻq", "method": "Frames to Video", "start": "R6",
+   "lines": [{"who": "Sardor", "text": "Telefonni ham olmayapti… Ikki kundan beri gazetasi shu yerda."}],
+   "prompt": "Cool grey present. The young man holds his phone to his ear, staring at the pile of newspapers; behind the closed door a phone rings faintly, again and again, unanswered. He lowers the phone slowly. Audio: the faint muffled ringtone through the door, his breathing. He says in Uzbek with a soft, warm young male voice, frightened: \"Telefonni ham olmayapti... Ikki kundan beri gazetasi shu yerda.\" No subtitles, no on-screen text."},
+  {"n": 6, "title_uz": "Oʻsha kalit", "method": "Frames to Video", "start": "R7",
+   "lines": [{"who": "Sardor", "text": "Kalit! Oʻsha kalit!"}, {"who": "Sardor (kadr ortida)", "text": "Baxtimga, oʻsha hafta uydan ishlayotgan edim."}],
+   "prompt": "He rummages fast through the drawer, finds the brass key with the red tassel, lifts it into the light and turns to run out of the kitchen. Audio: spoons rattling, a sharp intake of breath, fast footsteps. He gasps in Uzbek with a soft, warm young male voice: \"Kalit! O'sha kalit!\" Then an off-screen man says in Uzbek with a soft, warm young male voice, calm and reflective: \"Baxtimga, o'sha hafta uydan ishlayotgan edim.\" No subtitles, no on-screen text."},
+  {"n": 7, "title_uz": "Topildi", "method": "Frames to Video", "start": "R8",
+   "lines": [{"who": "Mohira opa", "text": "Kecha yiqildim… telefonga yetolmadim."}, {"who": "Sardor", "text": "Hozir, opa, tez yordam kelyapti!"}],
+   "prompt": "The young man squeezes her hand and speaks into his phone; she looks up at him with weak relief and a tiny smile. No injury shown. Audio: a wall clock, distant siren growing closer. She says in Uzbek with a warm, gentle, slightly creaky elderly female voice, weak and tired: \"Kecha yiqildim... telefonga yetolmadim.\" He answers in Uzbek with a soft, warm young male voice, steady and kind: \"Hozir, opa, tez yordam kelyapti!\" No subtitles, no on-screen text."},
+  {"n": 8, "title_uz": "Bir necha haftadan keyin", "method": "Frames to Video", "start": "R9",
+   "lines": [{"who": "Mohira opa", "text": "Toʻrt yil kutdim-a, qachon foydang tegarkin deb!"}],
+   "prompt": "Weeks later on the sunny balcony. The grandmother pours tea, wags a finger at the young man with a mischievous grin; he laughs and covers his face. Audio: tea pouring, sparrows, children playing far below. She says in Uzbek with a warm, gentle, slightly creaky elderly female voice, teasing: \"To'rt yil kutdim-a, qachon foydang tegarkin deb!\" No subtitles, no on-screen text."},
+  {"n": 9, "title_uz": "Ikkinchi kalit", "method": "Extend", "extends": "8",
+   "lines": [{"who": "Sardor (kadr ortida)", "text": "Endi mening kalitim ham uning tortmasida. Sizning qoʻshningizda kalitingiz bormi?"}],
+   "prompt": "The young man takes a second key, a small silver one, from his pocket and places it in the grandmother's palm; she closes her hand over it and pats his hand, both smiling. Slow pull-back across the balcony full of tomato plants, holding on the two of them. Audio: sparrows, a soft warm piano note. An off-screen man says in Uzbek with a soft, warm young male voice, calm and reflective: \"Endi mening kalitim ham uning tortmasida. Sizning qo'shningizda kalitingiz bormi?\" No subtitles, no on-screen text."}
+ ],
+ "post_text_uz": "Qoʻshnim koʻchib kelgan kunimoq menga kalit berdi: «ehtiyot shart». Toʻrt yil u tortmada unutilib yotdi… bir kungacha. Sizning qoʻshningizda kalitingiz bormi? Izohda yozing. #HayotHikoyasi #qoʻshni #mehr #Powerty"
+}
