@@ -12,7 +12,8 @@ What is planted, so you can check the pages find it:
   * a few loans are restructured into category 3 without being 90+ (NPL ≠ 90+);
   * loans issued in 2019 appear from the first month (no start of history);
   * some loans have two rows in a month (two accounts), and some categories are 0;
-  * like the bank's file, 2020–2021 are QUARTERLY: 01.01.2020, 01.04.2020 … 01.01.2022, then monthly.
+  * like the bank's file, 2020–2021 are QUARTERLY: 01.01.2020, 01.04.2020 … 01.01.2022, then monthly;
+  * two passports: 40% «vtorichka», which goes overdue 1.5 times as often as «pervichka».
 """
 import datetime as dt
 
@@ -37,6 +38,7 @@ def make(path, seed=7, last=(2026, 9), monthly_from=dt.date(2022, 1, 1)):
     issue_m, amount, term = np.array(issue_m), np.array(amount), np.array(term)
     n = len(issue_m)
     risk = np.ones(n)
+    passport = np.where(rng.random(n) < 0.4, "vtorichka", "pervichka")
     issued = [first_of(m) for m in range(n_months)]
     for i, m in enumerate(range(n_months)):
         d = issued[m]
@@ -48,6 +50,7 @@ def make(path, seed=7, last=(2026, 9), monthly_from=dt.date(2022, 1, 1)):
         if d.month == 12:
             factor *= 1.3
         risk[issue_m == m] = factor
+    risk = risk * np.where(passport == "vtorichka", 1.5, 1.0)
 
     dpd = np.zeros(n)
     alive = np.ones(n, dtype=bool)
@@ -86,13 +89,14 @@ def make(path, seed=7, last=(2026, 9), monthly_from=dt.date(2022, 1, 1)):
         report = first_of(m + 1)                        # the 1st of the NEXT month
         if report < monthly_from and report.month not in (1, 4, 7, 10):
             continue                                    # quarterly years: no file for this month
-        rows.append(pl.DataFrame({
-            "date": [report] * len(live), "anketa": live + 100000,
-            "issue_date": [issued[k] + dt.timedelta(days=int(k % 27)) for k in issue_m[live]],
-            "maks_dni": new_dpd.astype(int), "npl_category": cat.astype(int), "portfel_amount": balance.round(2),
+        rows.append(pl.DataFrame({          # the bank's column names
+            "report_date": [report] * len(live), "anketa": live + 100000,
+            "valuedate": [issued[k] + dt.timedelta(days=int(k % 27)) for k in issue_m[live]],
+            "maks_dni": new_dpd.astype(int), "npl_category": cat.astype(int), "brutto_95_summa": balance.round(2),
+            "given_amount": amount[live].round(2), "passport": passport[live],
         }))
     df = pl.concat(rows)
-    twice = df.sample(fraction=0.01, seed=seed).with_columns(pl.col("portfel_amount") * 0.1)
+    twice = df.sample(fraction=0.01, seed=seed).with_columns(pl.col("brutto_95_summa") * 0.1)
     df = pl.concat([df, twice])
     path.parent.mkdir(parents=True, exist_ok=True)
     df.write_parquet(path)

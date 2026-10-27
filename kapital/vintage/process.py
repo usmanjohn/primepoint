@@ -13,10 +13,13 @@ Two analyses, the same machinery, a different "bad":
 
 Each is measured two ways:
     по количеству — bad loans / loans issued in that month
-    по сумме      — the balance the loan had when it first went bad / the vintage's starting
-                    balance (its portfel_amount in its first month). Dividing by the STARTING
-                    balance matters: today's balance shrinks with repayments, and the rate
-                    would grow by itself.
+    по сумме      — the balance the loan had when it first went bad / the amount ISSUED in
+                    that vintage (given_amount; the first month's balance if it is missing).
+                    Dividing by what was issued matters: today's balance shrinks with
+                    repayments, and the rate would grow by itself.
+
+Everything is built three times — all passports together and each passport (pervichka,
+vtorichka) on its own — and the page switches with ?seg=.
 
 HOW IT RUNS
     python manage.py build_vintage      reads datasets/vintage/input/*.parquet (tens of
@@ -56,13 +59,18 @@ LOG_FILE = BASE / "build.log"
 
 # our name → the column name in YOUR parquet. Change the right-hand side if yours differ.
 COLUMNS = {
-    "date": "date",                     # the 1st of the month
+    "date": "report_date",              # the 1st of the month
     "anketa": "anketa",                 # the loan id (repeats every month)
-    "issue_date": "issue_date",         # when the loan was issued
+    "issue_date": "valuedate",          # when the loan was issued
     "maks_dni": "maks_dni",             # overdue days in the period
     "npl_category": "npl_category",     # 1…5 (0 is read as 1)
-    "portfel_amount": "portfel_amount", # the balance in the period
+    "portfel_amount": "brutto_95_summa",# the balance in the period
+    "given_amount": "given_amount",     # the amount issued (the «по сумме» denominator)
+    "passport": "passport",             # the product: every analysis is built for all + each passport
 }
+# How the passport values are shown. A value not listed here is shown as it is.
+PASSPORTS = {"pervichka": "Первичка", "vtorichka": "Вторичка"}
+ALL = "all"                            # the «все паспорта» key in the address (?seg=all)
 # 2024-02-01 in the file means the portfolio at the end of JANUARY. True = shift back a month.
 DATE_IS_NEXT_MONTH = True
 
@@ -125,7 +133,7 @@ def bad_expr(kind):
 
 
 def read_loan_months(files, log=print):
-    """Every file → one row per loan per month: month, anketa, issue, dpd, cat, amount."""
+    """Every file → one row per loan per month: month, anketa, issue, dpd, cat, amount, given, passport."""
     c = COLUMNS
     month = pl.col("date").cast(pl.Date)
     if DATE_IS_NEXT_MONTH:
@@ -135,15 +143,19 @@ def read_loan_months(files, log=print):
                   pl.col(c["issue_date"]).cast(pl.Date).alias("issue"),
                   pl.col(c["maks_dni"]).cast(pl.Float64).fill_null(0).alias("dpd"),
                   pl.col(c["npl_category"]).cast(pl.Float64).fill_null(1).alias("cat"),
-                  pl.col(c["portfel_amount"]).cast(pl.Float64).fill_null(0).alias("amount"))
+                  pl.col(c["portfel_amount"]).cast(pl.Float64).fill_null(0).alias("amount"),
+                  pl.col(c["given_amount"]).cast(pl.Float64).alias("given"),
+                  pl.col(c["passport"]).cast(pl.Utf8).str.strip_chars().alias("passport"))
           .with_columns(month.dt.truncate("1mo").alias("month"),
                         pl.col("issue").dt.truncate("1mo"),
                         pl.col("cat").clip(1, 5).cast(pl.Int8)))
     rows = lf.select(pl.len()).collect().item()
     log(f"rows in the files: {rows:,}")
-    # one row per loan and month: several accounts of one loan are added up
+    # one row per loan and month: several accounts of one loan are added up (the balance);
+    # the issued amount is the same on every row of a loan, so it is not added up
     lm = (lf.group_by("anketa", "month")
-            .agg(pl.col("issue").min(), pl.col("dpd").max(), pl.col("cat").max(), pl.col("amount").sum())
+            .agg(pl.col("issue").min(), pl.col("dpd").max(), pl.col("cat").max(), pl.col("amount").sum(),
+                 pl.col("given").max(), pl.col("passport").drop_nulls().first())
             .collect()
             .sort("anketa", "month"))
     log(f"loan-months: {lm.height:,}")
@@ -202,7 +214,9 @@ def triangles(lm, first_month, last_month, data_months):
     v = v.filter(pl.col("mob") >= 0)
     loans = v.group_by("anketa").agg(
         pl.col("issue").first().alias("vintage"),
-        pl.col("amount").first().alias("start_amount"),          # rows are sorted by month
+        # the base of «по сумме»: the issued amount; the first month's balance if it is missing
+        pl.when(pl.col("given").first() > 0).then(pl.col("given").first())
+          .otherwise(pl.col("amount").first()).alias("start_amount"),   # rows are sorted by month
         *[pl.col("mob").filter(bad_expr(k)).min().alias(f"{k}_mob") for k in KINDS],
         *[pl.col("amount").filter(bad_expr(k)).first().alias(f"{k}_amount") for k in KINDS],
     )
@@ -250,12 +264,28 @@ def build(log=print):
     checks["Кредитов с отчётом раньше даты выдачи (эти месяцы пропущены)"] = wrong
     checks["Месяцев без данных (квартальные годы — пустые клетки в треугольнике)"] = len(missing)
 
-    log("transitions …")
-    tr = transitions(lm, last_month, data_months)
-    log("today's book …")
-    bk = book_today(lm, last_month)
-    log("triangles …")
-    tri = triangles(lm, first_month, last_month, data_months)
+    # one passport per loan: the latest one it had (and how many loans changed it)
+    pas = (lm.filter(pl.col("passport").is_not_null()).group_by("anketa")
+             .agg(pl.col("passport").last(), pl.col("passport").n_unique().alias("passports")))
+    checks["Кредитов, сменивших паспорт (взят последний)"] = pas.filter(pl.col("passports") > 1).height
+    lm = lm.drop("passport").join(pas.select("anketa", "passport"), on="anketa", how="left") \
+           .with_columns(pl.col("passport").fill_null("не указан")).sort("anketa", "month")
+    checks["Кредитов без суммы выдачи (база «по сумме» = остаток 1-го месяца)"] = \
+        lm.filter(~(pl.col("given") > 0))["anketa"].n_unique()
+    counts = lm.group_by("passport").agg(pl.col("anketa").n_unique().alias("loans")).sort("loans", descending=True)
+    segments = [{"key": ALL, "label": "Все паспорта", "loans": int(lm["anketa"].n_unique())}] + \
+               [{"key": r["passport"], "label": PASSPORTS.get(r["passport"], r["passport"]), "loans": int(r["loans"])}
+                for r in counts.iter_rows(named=True)]
+
+    tri, tr, bk = [], [], []
+    for seg in segments:
+        part = lm if seg["key"] == ALL else lm.filter(pl.col("passport") == seg["key"])
+        log(f"{seg['label']}: {seg['loans']:,} loans — transitions, today's book, triangles …")
+        tag = pl.lit(seg["key"]).alias("seg")
+        tr.append(transitions(part, last_month, data_months).with_columns(tag))
+        bk.append(book_today(part, last_month).with_columns(tag))
+        tri.append(triangles(part, first_month, last_month, data_months).with_columns(tag))
+    tri, tr, bk = pl.concat(tri), pl.concat(tr), pl.concat(bk)
 
     RESULT_DIR.mkdir(parents=True, exist_ok=True)
     for name, table in [("triangle", tri), ("transitions", tr), ("book", bk)]:
@@ -267,8 +297,7 @@ def build(log=print):
         "built_at": dt.datetime.now().isoformat(timespec="seconds"),
         "seconds": round(time.time() - started, 1),
         "loans": int(lm["anketa"].n_unique()),
-        "loans_in_vintages": int(tri.filter(pl.col("kind") == "dpd90").group_by("vintage")
-                                 .agg(pl.col("loans").first())["loans"].sum()),
+        "segments": segments,
         "files": [f.name for f in files], "checks": checks,
         "missing_from": missing[0].isoformat() if missing else None,
         "missing_to": missing[-1].isoformat() if missing else None,
@@ -305,10 +334,10 @@ def results():
     return CACHE["data"]
 
 
-def matrix(res, kind, measure):
+def matrix(res, kind, measure, seg=ALL):
     """The triangle as numbers: vintages (list of dates), R[vintage, mob] (NaN = not reached
-    yet), weight per vintage (starting balance or number of loans)."""
-    t = res["triangle"].filter(pl.col("kind") == kind).sort("vintage", "mob")
+    yet), weight per vintage (issued amount or number of loans). seg = a passport or ALL."""
+    t = res["triangle"].filter((pl.col("kind") == kind) & (pl.col("seg") == seg)).sort("vintage", "mob")
     vint = t.group_by("vintage").agg(pl.col("loans").first(), pl.col("base").first()).sort("vintage")
     vintages = vint["vintage"].to_list()
     k = months_between(res["meta"]["first_month"], res["meta"]["last_month"]) + 1
@@ -455,11 +484,11 @@ def seasonality(vintages, R, weight, ref):
     return rows
 
 
-def early_signal(res, late_kind):
+def early_signal(res, late_kind, seg=ALL):
     """Does 30+ at month EARLY_MOB predict LATE_MOB? Fitted on the vintages that reached
     LATE_MOB, then used on the young ones. Returns None when there is too little history."""
-    vintages, X, w = matrix(res, "dpd30", "amount")
-    _, Y, _ = matrix(res, late_kind, "amount")
+    vintages, X, w = matrix(res, "dpd30", "amount", seg)
+    _, Y, _ = matrix(res, late_kind, "amount", seg)
     if X.shape[1] <= LATE_MOB:
         return None
     x, y = X[:, EARLY_MOB], Y[:, LATE_MOB]
@@ -480,22 +509,72 @@ def early_signal(res, late_kind):
             "rows": rows[-12:], "late_label": KINDS[late_kind]["label"]}
 
 
+def segments(res):
+    """[{'key', 'label', 'loans'}] — ALL first, then each passport, biggest first."""
+    return res["meta"]["segments"]
+
+
+def segment_label(res, seg):
+    return next((s["label"] for s in segments(res) if s["key"] == seg), seg)
+
+
+def loans_in_vintages(res, seg=ALL):
+    t = res["triangle"].filter((pl.col("kind") == "dpd90") & (pl.col("seg") == seg))
+    return int(t.group_by("vintage").agg(pl.col("loans").first())["loans"].sum())
+
+
+COMPARE_MOBS = (6, 12, 24)
+
+
+def compare(res, kind, measure):
+    """The passports side by side: each one's typical curve (how a vintage issued today is
+    expected to age) and the actual average of its vintages that reached MOB 6 / 12 / 24.
+    Returns None when there is only one passport."""
+    segs = [s for s in segments(res) if s["key"] != ALL]
+    if len(segs) < 2:
+        return None
+    rows, lines = [], []
+    for n, s in enumerate(segments(res)):
+        vintages, R, w = matrix(res, kind, measure, s["key"])
+        if not vintages:
+            continue
+        steps, _ = average_steps(R, w)
+        curve = typical_curve(steps)
+        cells = []
+        for m in COMPARE_MOBS:
+            seen = [i for i in range(len(vintages)) if m < R.shape[1] and not np.isnan(R[i, m])][-RECENT_VINTAGES:]
+            fact = np.average(R[seen, m], weights=w[seen]) if seen and w[seen].sum() else np.nan
+            cells.append({"curve": pct(curve[m]) if m < len(curve) else "—", "fact": pct(fact)})
+        rows.append({"key": s["key"], "label": s["label"], "loans": f"{s['loans']:,}".replace(",", " "),
+                     "cells": cells, "raw12": curve[12] if len(curve) > 12 else np.nan, "all": s["key"] == ALL})
+        lines.append({"name": s["label"], "colour": "#0B0B0C" if s["key"] == ALL else COLOURS[(n + 1) % len(COLOURS)],
+                      "pts": list(enumerate(curve[:37])), "dashed": s["key"] == ALL})
+    sentence = None
+    a, b = [r for r in rows if not r["all"]][:2]
+    if a["raw12"] > 0 and b["raw12"] > 0:
+        worse, better = (a, b) if a["raw12"] > b["raw12"] else (b, a)
+        sentence = (f"«{worse['label']}» хуже: по типичной кривой к 12-му месяцу {pct(worse['raw12'])} против "
+                    f"{pct(better['raw12'])} у «{better['label']}» — в {num(worse['raw12'] / better['raw12'], 1)} раза.")
+    return {"rows": rows, "mobs": COMPARE_MOBS, "chart": chart(lines, 37), "sentence": sentence}
+
+
 # ═══════════════════════════════════ 6. THE PLAN ═══════════════════════════════════════
 #
-# Two parts, both in money (the starting balance of each vintage):
+# Two parts, both in money (the amount issued in each vintage):
 #   from today's book  — each existing vintage continues along its finished row (section 4);
-#                        the growth of its rate in month t × its starting balance = new bad money
+#                        the growth of its rate in month t × its issued amount = new bad money
 #   from new lending   — each planned month of lending follows the typical curve.
 # The result is a FLOW: how much balance newly reaches 90+ / NPL in each future month.
 
-def default_lending(res, kind):
-    t = res["triangle"].filter(pl.col("kind") == kind)
+def default_lending(res, kind, seg=ALL):
+    """The average monthly issuance of the last 12 months (the plan's starting suggestion)."""
+    t = res["triangle"].filter((pl.col("kind") == kind) & (pl.col("seg") == seg))
     vint = t.group_by("vintage").agg(pl.col("base").first()).sort("vintage")
     return float(vint["base"].tail(12).mean()) if vint.height else 0.0
 
 
-def plan(res, kind, lending, growth, months=PLAN_MONTHS):
-    vintages, R, weight = matrix(res, kind, "amount")
+def plan(res, kind, lending, growth, seg=ALL, months=PLAN_MONTHS):
+    vintages, R, weight = matrix(res, kind, "amount", seg)
     steps, _ = average_steps(R, weight)
     P, _ = projected(R, steps, extra=months + 1)
     curve = typical_curve(np.concatenate([steps, np.zeros(months + 1)]))
@@ -515,13 +594,13 @@ def plan(res, kind, lending, growth, months=PLAN_MONTHS):
     return rows
 
 
-def markov(res, group, lending, growth, months=PLAN_MONTHS):
+def markov(res, group, lending, growth, seg=ALL, months=PLAN_MONTHS):
     """The second route: today's book by state, moved month by month with the transitions
     table (balance a month later / balance now), plus the new lending entering the best state.
     Gives the SHARE of bad balance in the portfolio — a stock, where the plan above is a flow."""
     states = [n for _, n in reversed(DPD_BUCKETS)] if group == "dpd" else NPL_STATES
     bad = {"90+"} if group == "dpd" else set(NPL_STATES[NPL_FROM - 1:])
-    tr = res["transitions"].filter(pl.col("group") == group)
+    tr = res["transitions"].filter((pl.col("group") == group) & (pl.col("seg") == seg))
     M = np.zeros((len(states), len(states)))
     for row in tr.iter_rows(named=True):
         if row["from"] in states and row["to"] in states:
@@ -531,7 +610,7 @@ def markov(res, group, lending, growth, months=PLAN_MONTHS):
         if row["from"] in states:
             out_of[states.index(row["from"])] += row["amount"]
     M = np.divide(M, out_of[:, None], out=np.zeros_like(M), where=out_of[:, None] > 0)
-    book = res["book"].filter(pl.col("group") == group)
+    book = res["book"].filter((pl.col("group") == group) & (pl.col("seg") == seg))
     s = np.zeros(len(states))
     for row in book.iter_rows(named=True):
         if row["state"] in states:
@@ -592,7 +671,7 @@ COLOURS = ["#8A867C", "#2A6F97", "#2E7D4F", "#C9971A", "#7B4FA0", "#B3341F", "#0
 
 def curves_svg(vintages, R, weight, steps, last_month):
     """The picture: one line per issue year (the weighted average of its vintages, real data
-    only) and the dashed typical curve the projection uses. Plain SVG, no JavaScript.
+    only) and the dashed typical curve the projection uses.
     In the quarterly years only a third of a year's vintages have a value in any given month,
     so a month is skipped when none has one, and the line stops when fewer than half the
     year's vintages are old enough."""
@@ -613,32 +692,33 @@ def curves_svg(vintages, R, weight, steps, last_month):
             pts.append((m, float(np.average(R[ok, m], weights=w)) if w.sum() else float(R[ok, m].mean())))
         if pts:
             lines.append({"name": str(y), "colour": COLOURS[n % len(COLOURS)], "pts": pts})
-    curve = typical_curve(steps)[:k]
-    top = max([p[1] for line in lines for p in line["pts"]] + list(curve) + [1e-9]) * 1.1
+    lines.append({"name": "типичная кривая", "colour": "#0B0B0C", "dashed": True,
+                  "pts": list(enumerate(typical_curve(steps)[:k]))})
+    return chart(lines, k)
+
+
+def chart(lines, k):
+    """Lines [{'name', 'colour', 'pts': [(mob, rate)], 'dashed'?}] → everything the template
+    needs to draw a plain SVG (no JavaScript): polylines, the y grid and the x ticks."""
+    top = max([r for line in lines for _, r in line["pts"]] + [1e-9]) * 1.1
     W, H, L, B = 900, 320, 52, 30
 
     def xy(m, r):
         return L + m / max(k - 1, 1) * (W - L - 10), H - B - r / top * (H - B - 10)
 
-    def poly(pts):
-        return " ".join("%.1f,%.1f" % xy(m, r) for m, r in pts)
-
     for line in lines:
-        line["points"] = poly(line["pts"])
-    grid = []
-    for g in range(5):
-        r = top * g / 4
-        grid.append({"y": "%.1f" % xy(0, r)[1], "label": pct(r, 1)})
+        line["points"] = " ".join("%.1f,%.1f" % xy(m, r) for m, r in line["pts"])
+    grid = [{"y": "%.1f" % xy(0, top * g / 4)[1], "label": pct(top * g / 4, 1)} for g in range(5)]
     ticks = [{"x": "%.1f" % xy(m, 0)[0], "label": m} for m in range(0, k, 6)]
-    return {"lines": lines, "typical": poly(list(enumerate(curve))), "grid": grid, "ticks": ticks,
+    return {"lines": lines, "grid": grid, "ticks": ticks,
             "W": W, "H": H, "L": L, "B": B, "x_end": W - 10, "y_axis": H - B}
 
 
-def transitions_table(res, group, measure):
+def transitions_table(res, group, measure, seg=ALL):
     """The transitions as shares of each row, plus the key flows in words."""
     states = [n for _, n in reversed(DPD_BUCKETS)] if group == "dpd" else NPL_STATES
     cols = states + [GONE]
-    tr = res["transitions"].filter(pl.col("group") == group)
+    tr = res["transitions"].filter((pl.col("group") == group) & (pl.col("seg") == seg))
     value = "amount" if measure == "amount" else "count"
     cell = {(r["from"], r["to"]): r[value] for r in tr.iter_rows(named=True)}
     rows, share = [], {}
@@ -689,12 +769,12 @@ def xlsx(sheets):
     return buffer.getvalue()
 
 
-def excel_sheets(res, kind, measure):
-    vintages, R, weight = matrix(res, kind, measure)
+def excel_sheets(res, kind, measure, seg=ALL):
+    vintages, R, weight = matrix(res, kind, measure, seg)
     steps, reached = average_steps(R, weight)
     P, _ = projected(R, steps)
     k = R.shape[1]
-    header = ["Поколение", "Кредитов" if measure == "count" else f"Сумма в 1-й месяц"] + [f"MOB {m}" for m in range(k)]
+    header = ["Поколение", "Кредитов" if measure == "count" else "Выдано"] + [f"MOB {m}" for m in range(k)]
 
     def grid(A):
         return [[month_name(v), float(weight[i])] + [None if np.isnan(x) else round(float(x), 6) for x in A[i]]
@@ -704,7 +784,7 @@ def excel_sheets(res, kind, measure):
               ("Средняя кривая", ["MOB", "Шаг", "Накоплено", "Поколений дошло"],
                [[m, round(float(steps[m]), 6), round(float(c), 6), int(reached[m])]
                 for m, c in enumerate(typical_curve(steps))])]
-    tr = res["transitions"].filter(pl.col("group") == KINDS[kind]["group"]).sort("from", "to")
+    tr = res["transitions"].filter((pl.col("group") == KINDS[kind]["group"]) & (pl.col("seg") == seg)).sort("from", "to")
     sheets.append(("Переходы", ["Из", "В", "Кредитов", "Сумма (начало)", "Сумма (через месяц)"],
                    [[r["from"], r["to"], r["count"], r["amount"], r["next_amount"]] for r in tr.iter_rows(named=True)]))
     return sheets
