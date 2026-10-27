@@ -2,7 +2,7 @@
 """Assemble a finished episode from a kit folder — no CapCut (the user's request, 2026-10-07).
 
     python3 flowstudio/assemble.py PACKAGE.json KIT_DIR [--clips DIR] [--music FILE]
-                                   [--speed 1.2] [--tight]
+                                   [--speed 1.2] [--tight] [--no-subs]
 
 KIT_DIR is the folder kit.py made. Put the clips downloaded from Flow in KIT_DIR/4-kliplar/
 as S01.mp4, S02.mp4 … (one per scene), and optionally one music file KIT_DIR/musiqa.mp3.
@@ -15,8 +15,13 @@ The script then:
   3. joins the scenes in order;
   4. lays the music under everything, ducked automatically whenever anyone speaks;
   5. writes KIT_DIR/TAYYOR-<id>.mp4.
-A scene may carry "overlays": [{"t": 1.0, "d": 3.0, "text": "2 + 3 = 3 + 2"}] — maths drawn
+A scene may carry "overlays": [{"t": 1.0, "d": 3.0, "text": "2 + 3 = 3 + 2"}] (optional "y", "size") — maths drawn
 on the picture HERE, never by Veo (it garbles digits, and the style line forbids text).
+Spoken lines in another language carry "sub_uz" (2026-10-24, «The Last Ones»): the Uzbek subtitle is
+burned in at the bottom, timed to the speech by ElevenLabs speech-to-text (cached in .yigish/;
+without ELEVENLABS_API_KEY the lines are spread evenly over the clip). --no-subs leaves them out.
+A package may carry "inserts": [{"after": 7, "file": "A1-tagor.mp4"}] (2026-10-25): a ready-made
+animation from KIT_DIR/5-animatsiya/ cut in after that scene, its own sound kept (not levelled).
 --speed 1.2 plays picture and speech faster (pitch kept) but not the music; --tight trims the
 breath around the storyteller (the user's sister: "a little slow to wait", 2026-10-08).
 Needs ffmpeg (not ffprobe — this Mac has none).
@@ -26,6 +31,9 @@ import os
 import re
 import subprocess
 import sys
+import urllib.error
+import urllib.request
+import uuid
 
 W, H, FPS = 1080, 1920, 30
 VOICE_DELAY = 0.45         # s of breath before the storyteller starts (clear of the dissolve)
@@ -39,6 +47,11 @@ EDGE = 0.03                # s of audio fade at every cut — no clicks
 FONT = '/System/Library/Fonts/Supplemental/Arial Bold.ttf'   # has − × ≠ : (no ✓ — use = / ≠)
 OVERLAY_SIZE = 92
 OVERLAY_FADE = 0.25
+SUB_SIZE = 54              # Uzbek subtitles: ~30 characters a row fit 1080 px
+SUB_CHARS = 30
+SUB_Y = 0.80               # first row's centre, as a share of the height (clear of Reels' buttons)
+SUB_GAP = 0.5              # s of silence that separates two spoken lines in the transcript
+SUBS = True
 
 
 def run(args):
@@ -73,18 +86,106 @@ def overlay_filter(overlays, tmp, name):
         alpha = (f"if(lt(t,{a}),0,if(lt(t,{a + fd}),(t-{a})/{fd},"
                  f"if(lt(t,{b - fd}),1,if(lt(t,{b}),({b}-t)/{fd},0))))")
         y = o.get('y', 0.15)
-        out += (f",drawtext=fontfile='{FONT}':textfile='{path}':fontsize={OVERLAY_SIZE}:"
+        out += (f",drawtext=fontfile='{FONT}':textfile='{path}':fontsize={o.get('size', OVERLAY_SIZE)}:"
                 f"fontcolor=white:borderw=6:bordercolor=0x24184f:shadowx=0:shadowy=6:shadowcolor=black@0.35:"
                 f"x=(w-text_w)/2:y=h*{y}-text_h/2:alpha='{alpha}':enable='between(t,{a},{b})'")
     return out
 
 
-def segment(clip, voice, out, overlays=None):
+def transcribe(clip, cache):
+    """ElevenLabs speech-to-text → [(start, end)] of every spoken word; None without a key."""
+    if os.path.exists(cache):
+        with open(cache) as f:
+            return [tuple(w) for w in json.load(f)]
+    key = os.environ.get('ELEVENLABS_API_KEY')
+    if not key:
+        return None
+    wav = cache[:-5] + '.wav'
+    run(['-i', clip, '-vn', '-ac', '1', '-ar', '16000', wav])
+    b = uuid.uuid4().hex
+    with open(wav, 'rb') as f:
+        audio = f.read()
+    body = (f'--{b}\r\nContent-Disposition: form-data; name="model_id"\r\n\r\nscribe_v1\r\n'
+            f'--{b}\r\nContent-Disposition: form-data; name="file"; filename="a.wav"\r\n'
+            f'Content-Type: audio/wav\r\n\r\n').encode() + audio + f'\r\n--{b}--\r\n'.encode()
+    req = urllib.request.Request('https://api.elevenlabs.io/v1/speech-to-text', data=body,
+                                 headers={'xi-api-key': key, 'Content-Type': f'multipart/form-data; boundary={b}'})
+    try:
+        res = json.load(urllib.request.urlopen(req, timeout=120))
+    except (urllib.error.URLError, OSError) as err:
+        print(f'  (subtitr vaqti taxminiy: STT ishlamadi — {err})')
+        return None
+    words = [(w['start'], w['end']) for w in res.get('words', []) if w.get('type') == 'word']
+    print(f"  STT: «{res.get('text', '').strip()[:80]}»")
+    with open(cache, 'w') as f:
+        json.dump(words, f)
+    return words
+
+
+def subtitle_cues(subs, words, vd):
+    """Place each Uzbek subtitle over its spoken line: split the transcript at pauses; if the count
+    does not match, share the speech span out by the length of what is SAID. subs = [(said, sub)];
+    sub is None for a line spoken in Uzbek — it is not shown, but it still takes its place in the
+    speech (else «Yuramiz.» sat under Qodir Bobo's proverb, 2026-10-24)."""
+    if not any(sub for _, sub in subs):
+        return []
+    if words:
+        runs = [[words[0][0], words[0][1]]]
+        for a, b in words[1:]:
+            if a - runs[-1][1] >= SUB_GAP:
+                runs.append([a, b])
+            else:
+                runs[-1][1] = b
+        if len(runs) == len(subs):
+            return [(a, b + 0.25, t) for (a, b), (_, t) in zip(runs, subs) if t]
+        lo, hi = words[0][0], words[-1][1]
+    else:
+        lo, hi = 0.4, vd - 0.3
+    total = sum(len(said) for said, _ in subs)
+    cues, at = [], lo
+    for said, t in subs:
+        d = (hi - lo) * len(said) / total
+        if t:
+            cues.append((at, at + d + 0.2, t))
+        at += d
+    return cues
+
+
+def wrap(text):
+    rows, row = [], ''
+    for word in text.split():
+        if row and len(row) + 1 + len(word) > SUB_CHARS:
+            rows.append(row)
+            row = word
+        else:
+            row = f'{row} {word}'.strip()
+    return rows + [row] if row else rows
+
+
+def subtitle_filter(cues, tmp, name, vd):
+    out = ''
+    for k, (a, b, text) in enumerate(cues):
+        b = min(b, vd)
+        for r, row in enumerate(wrap(text)):
+            path = os.path.join(tmp, f'{name}-sub{k}-{r}.txt')
+            with open(path, 'w', encoding='utf-8') as f:
+                f.write(row)
+            out += (f",drawtext=fontfile='{FONT}':textfile='{path}':fontsize={SUB_SIZE}:fontcolor=white:"
+                    f"borderw=4:bordercolor=black@0.85:shadowx=0:shadowy=3:shadowcolor=black@0.5:"
+                    f"x=(w-text_w)/2:y=h*{SUB_Y}+{r * int(SUB_SIZE * 1.3)}-text_h/2:enable='between(t,{a:.2f},{b:.2f})'")
+    return out
+
+
+def segment(clip, voice, out, overlays=None, subs=None):
     """One scene → a normalised mp4 (with the voice-over mixed in, if any)."""
     vd = duration(clip)
     norm = (f'scale={W}:{H}:force_original_aspect_ratio=decrease,pad={W}:{H}:(ow-iw)/2:(oh-ih)/2,'
             f'setsar=1,fps={FPS},format=yuv420p')
     norm += overlay_filter(overlays, os.path.dirname(out), os.path.basename(out)[:-4])
+    if subs and SUBS:
+        words = transcribe(clip, out[:-4] + '-stt.json')
+        norm += subtitle_filter(subtitle_cues(subs, words, vd), os.path.dirname(out),
+                                os.path.basename(out)[:-4], vd)
     # level only clips where characters SPEAK; a voice-over scene keeps its quiet ambience as it is
     level = f',loudnorm=I={SPEECH_LUFS}:TP=-2:LRA=11,aresample=48000' if not voice else ''
     sound = (f'[0:a]aresample=48000,aformat=channel_layouts=stereo{level}' if has_audio(clip)
@@ -109,6 +210,17 @@ def segment(clip, voice, out, overlays=None):
          '-t', f'{total:.3f}', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-preset', 'medium', '-crf', '18',
          '-c:a', 'aac', '-b:a', '192k', out])
     return total
+
+
+def insert_segment(clip, out):
+    """A ready-made animation → the same format as the scenes, its sound untouched."""
+    vd = duration(clip)
+    run(['-i', clip, '-filter_complex',
+         f'[0:v]scale={W}:{H},setsar=1,fps={FPS},format=yuv420p[v];'
+         f'[0:a]aresample=48000,aformat=channel_layouts=stereo,atrim=0:{vd}[a]',
+         '-map', '[v]', '-map', '[a]', '-t', f'{vd}', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-preset', 'medium',
+         '-crf', '18', '-c:a', 'aac', '-b:a', '192k', out])
+    return vd
 
 
 def join(parts, lens, out):
@@ -169,9 +281,23 @@ def build(pkg_path, kit, clips_dir=None, music=None, speed=1.0):
         voice = os.path.join(kit, '3-ovoz', f'S{a:02d}-hikoyachi.mp3')
         out = os.path.join(tmp, f'{n}.mp4')
         overlays = [o for sc in pkg['scenes'] if int(sc['n']) == a for o in sc.get('overlays') or []]
-        lens.append(segment(path, voice if (a == b and os.path.exists(voice)) else None, out, overlays))
+        subs = [(said.strip(), (sub or '').strip() or None)
+                for sc in pkg['scenes'] if a <= int(sc['n']) <= b
+                for ln in sc.get('lines') or [] if not ln.get('tts')
+                for said, sub in zip(ln['text'].split('\n'),
+                                     (ln.get('sub_uz') or '').split('\n') if ln.get('sub_uz')
+                                     else [None] * (ln['text'].count('\n') + 1))
+                if said.strip()]
+        lens.append(segment(path, voice if (a == b and os.path.exists(voice)) else None, out, overlays, subs))
         parts.append(out)
         print(f'  {n} ✓  ({os.path.basename(path)})')
+        for ins in pkg.get('inserts') or []:
+            if int(ins['after']) == b:
+                src = os.path.join(kit, '5-animatsiya', ins['file'])
+                out = os.path.join(tmp, f"{n}-ins-{os.path.splitext(ins['file'])[0]}.mp4")
+                lens.append(insert_segment(src, out))
+                parts.append(out)
+                print(f"  + {ins['file']} ✓")
     joined = os.path.join(tmp, 'joined.mp4')
     length = join(parts, lens, joined)
 
@@ -216,6 +342,8 @@ if __name__ == '__main__':
             and (i == 0 or not sys.argv[i].startswith('--'))]
     if len(args) != 2:
         sys.exit(__doc__)
+    if '--no-subs' in sys.argv:
+        SUBS = False
     if '--tight' in sys.argv:
         VOICE_DELAY, VOICE_TAIL = 0.2, 0.25
     build(args[0], os.path.expanduser(args[1]), _opt(sys.argv, '--clips'), _opt(sys.argv, '--music'),

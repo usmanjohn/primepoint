@@ -1,0 +1,552 @@
+{
+ "_note": "1-qism, THRILLER rewrite (2026-10-24): English dialogue + native-language moments, Uzbek subtitles from sub_uz burned in by assemble.py. LOCAL kit — the user films it himself; not for Telegram.",
+ "id": "the-last-ones-01",
+ "number": 33,
+ "for": "Birga",
+ "date": "2026-10-24",
+ "series": "The Last Ones",
+ "title_uz": "1-qism. Bitta narsa",
+ "concept_uz": "Tunda oʻrmonda kimdir Charlini chaqiradi — keyin «3 kun oldin». Kapitan sakkiz begonaga: bitta narsa oling, chunki oldingilar juda koʻp olgan. Qirgʻoqda — hali issiq kul va ularniki boʻlmagan ulkan izlar. Qushlar jim boʻladi. Maksimning soʻzi bilan ular oʻrmonga kiradi — kimdir ularni kuzatyapti.",
+ "format_uz": "22 sahna, ingliz tilida (baʼzan rus, koreys, xitoy, oʻzbek), oʻzbekcha subtitr montajda avtomatik (~2:50, --speed 1.1 bilan ~2:35)",
+ "sources": [
+  "flowstudio/series/the_last_ones.md"
+ ],
+ "facts": [
+  {
+   "claim": "Oyoq uzunligi ≈ boʻyning 15 % i: 30 sm oyoq → ~2 m boʻy (30 × 6,6 ≈ 198 sm)",
+   "source": "antropometriya, oyoq/boʻy nisbati ~0,15"
+  },
+  {
+   "claim": "«Yurgan — daryo, oʻtirgan — boʻyra» — oʻzbek xalq maqoli",
+   "source": "xalq maqollari"
+  }
+ ],
+ "style_line": "Photorealistic cinematic film still, 35mm, rich natural colour, soft humid tropical light, a wild green island in a grey-blue sea, vertical 9:16. No text, no readable signs, no logos, no watermark.",
+ "post_text_uz": "The Last Ones · 1-qism 🏝\nSakkiz begona. Bitta orol. Har birida — bitta yashirin narsa.\nKul hali issiq. Izlar — ularniki emas. 👣\nKim nima olgan deb oʻylaysiz? 👇\n#TheLastOnes #triller #orol #powerty",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Qodir Bobo",
+   "prompt": "Character reference sheet of an Uzbek man of about sixty, upright and still strong: a short beard streaked with grey, calm wise eyes with laugh lines, a black-and-white Uzbek skullcap with white almond patterns, a short dark-green quilted robe (chapan) belted with a striped cotton sash over a white collarless shirt, dark trousers, soft brown leather boots. Expression: quiet, kind, a hidden smile. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Sarang (최사랑)",
+   "prompt": "Character reference sheet of a young Korean woman scientist in her late twenties, beautiful and composed: black hair in a neat high bun, clear skin, bright attentive eyes, a crisp white field jacket with many small pockets and rolled sleeves, a pale-blue shirt under it, slim navy trousers, white trainers. Expression: curious, measuring everything with her eyes. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Anna",
+   "prompt": "Character reference sheet of a European woman in her early thirties with the look of a secret agent: auburn hair in a tight high ponytail, sharp green eyes, a fitted black leather jacket over a black turtleneck, black tactical trousers, black lace-up boots, dark aviator sunglasses hooked on the collar. Expression: cool, alert, always watching the exits. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Jordan",
+   "prompt": "Character reference sheet of a very tall, powerfully built African man in his thirties: shaved head, short beard, broad friendly smile, a dark-red sleeveless athletic shirt, an open sand-coloured work shirt over it with the sleeves torn off, olive cargo shorts, heavy boots, a leather wristband. Expression: easy-going giant, laughing eyes. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Charlz (Charli)",
+   "prompt": "Character reference sheet of an American boy of nine: freckles, messy light-brown hair, a yellow baseball cap worn backwards, a blue-and-white striped T-shirt, denim dungarees with one strap undone, red sneakers, a plaster on one knee. Expression: cheeky, endlessly curious. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Tagor",
+   "prompt": "Character reference sheet of a young Indian software programmer in his late twenties: slim, neat side-parted black hair, a thin moustache, round black-rimmed glasses, a grey hoodie with the sleeves pulled down over his wrists, beige chinos, white sneakers, the look of someone who has not slept enough. Expression: clever, a little anxious. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Wei Yi",
+   "prompt": "Character reference sheet of a Chinese martial artist in his forties in the style of a drunken kung-fu master: wiry, a messy black topknot with loose strands, stubble, sleepy half-closed smiling eyes, rosy cheeks, a faded loose orange kung-fu jacket with frog buttons, wide black trousers, black cloth shoes. Relaxed, slightly swaying posture. Expression: lazy grin, but the eyes are sharp. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Maksim",
+   "prompt": "Character reference sheet of a blind Russian man in his forties: tall and lean, short light-brown hair and beard, dark round glasses, a navy-and-white striped Russian sailor shirt (telnyashka) under an open long grey wool coat, dark trousers, worn black boots. He carries no cane. Head slightly tilted as if listening. Expression: calm, inward, strong. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held."
+  },
+  {
+   "id": "R9",
+   "name_uz": "Kapitan",
+   "prompt": "Character reference sheet of an old sea captain: broad and heavy, a thick white beard, a worn white captain's cap with a black peak pulled low so the upper face and eyes are always lost in deep shadow, a long dark-navy double-breasted coat with dull brass buttons, a pipe in the corner of his mouth. Only the beard and mouth are visible under the shadow. Three views side by side: front full body, three-quarter full body, close-up of the shadowed face. Plain light grey studio background, soft even light. Empty hands, nothing held."
+  },
+  {
+   "id": "R10",
+   "name_uz": "Toʻrtovlon A",
+   "from": [
+    "R1",
+    "R2",
+    "R3",
+    "R4"
+   ],
+   "prompt": "Group reference of the four people from the attached pictures standing side by side, full body, front view, keeping every face, hairstyle and outfit exactly as in their pictures. Left to right: the tall African man in the dark-red sleeveless shirt, the European woman with the auburn ponytail in the black leather jacket, the Uzbek man with the grey-streaked beard in the skullcap and dark-green robe, the young Korean woman with the high bun in the white field jacket. Empty hands. Plain light grey background, soft even light, photorealistic, vertical 9:16. No text."
+  },
+  {
+   "id": "R11",
+   "name_uz": "Toʻrtovlon B",
+   "from": [
+    "R5",
+    "R6",
+    "R7",
+    "R8"
+   ],
+   "prompt": "Group reference of the four people from the attached pictures standing side by side, full body, front view, keeping every face, hairstyle and outfit exactly as in their pictures. Left to right: the tall blind man in dark round glasses and the striped sailor shirt under a grey coat, the boy with the yellow cap worn backwards, the Indian man with round glasses in the grey hoodie, the Chinese man with the topknot in the orange kung-fu jacket, swaying a little. Empty hands. Plain light grey background, soft even light, photorealistic, vertical 9:16. No text."
+  },
+  {
+   "id": "R12",
+   "name_uz": "Kema va orol",
+   "prompt": "Dawn at sea: an old two-masted wooden sailing ship with patched grey sails and a small rowing boat hanging at its side lies at anchor in calm grey-blue water. Behind it, through drifting mist, a wild island covered in dense dark-green jungle rises to a single steep mountain in the middle, from whose summit a thin white thread of smoke climbs straight into the pale sky. Wide shot from the water."
+  },
+  {
+   "id": "R13",
+   "name_uz": "Kema palubasi va sandiq",
+   "prompt": "The weathered wooden deck of an old sailing ship at dawn, coiled ropes, a ship's wheel, wet planks, mist and a jungle island visible beyond the rail. In the middle of the deck stands a big open wooden sea chest overflowing with a jumble of random things: tins of food, a lantern, a laptop with a tangled charger cable, a brass compass, umbrellas, a teapot, a hammer, a fishing rod, clothes, a radio, an old kettle, an hourglass, playing cards. Seen at eye level."
+  },
+  {
+   "id": "R14",
+   "name_uz": "Qirgʻoq",
+   "prompt": "A wild beach on a tropical island: pale sand, low waves, a small empty wooden rowing boat pulled up on the sand, driftwood, and a wall of dense dark-green jungle right behind the beach. Above the treetops rises a single steep mountain with a thin white thread of smoke at its summit. Out on the misty sea, far away, an old two-masted sailing ship. Seen from the waterline at eye level."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Tun. Oʻrmon",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R14",
+    "R3"
+   ],
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. Night in a dense jungle, almost black. A torch beam whips through wet leaves; we follow the arm of a woman in a black leather jacket, running hard, breathing fast. She skids to a stop, turns the beam in a full circle — only trees — and the torch flickers and dies. Total darkness. Lip-sync: nobody speaks — every mouth stays closed the whole time. Look: a tense cinematic thriller — cold, desaturated teal-grey grade, overcast light, deep shadows, mist; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: handheld, close behind her shoulder, shaking. Sound: heavy breathing, branches snapping, rain dripping, then the torch's click and silence; no music. No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Charli!",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R14",
+    "R4"
+   ],
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. Black screen, then barely visible shapes of jungle at night in faint moonlight. Somewhere far away a man's voice shouts into the dark. The voice speaks in English with a big, deep, booming, good-natured voice of a strong man — desperate, shouting from far away: \"Charlie!\" Delivery: grounded, low, real, never theatrical. Lip-sync: the voice comes from off-screen — no face is visible, no mouth moves; no other voices. Look: a tense cinematic thriller — cold, desaturated teal-grey grade, overcast light, deep shadows, mist; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: static, almost no light. Sound: the shout echoing, insects stopping all at once; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Jordan",
+     "lang": "en",
+     "text": "Charlie!",
+     "sub_uz": "Charli!"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "title_uz": "Tuman",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R12"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. Grey dawn at sea: the old two-masted sailing ship from the picture lies at anchor in thick fog; beyond it the dark jungle island and its steep mountain, a thin thread of smoke rising from the summit. No birds. Lip-sync: nobody speaks — every mouth stays closed the whole time. Look: a tense cinematic thriller — cold, desaturated teal-grey grade, overcast light, deep shadows, mist; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: very slow push-in across black water. Sound: low wind, water against the hull, a creaking mast, a distant bell buoy; no music. No subtitles, no on-screen text.",
+   "overlays": [
+    {
+     "t": 0.8,
+     "d": 3.4,
+     "y": 0.22,
+     "text": "3 kun oldin"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "title_uz": "Tanlanganlar",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R13",
+    "R10",
+    "R9"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. On the wet foggy deck, strangers stand in a loose row, tense, not looking at each other: the big African man in dark red, the auburn-haired woman in black leather, the Uzbek man in the skullcap and green robe, the young Korean woman in white. The old sea captain whose face is hidden in the shadow of his cap walks slowly along the row, hands behind his back. The old sea captain whose face is hidden in the shadow of his cap speaks in English with a deep, slow, gravelly voice of an old sea captain, almost a whisper — quietly, without stopping: \"Eight of you. Chosen.\" Then, lower: \"Don't ask me by whom.\" Delivery: grounded, low, real, never theatrical. Lip-sync: only the old sea captain whose face is hidden in the shadow of his cap moves the mouth and speaks, one line at a time; every other person keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold, desaturated teal-grey grade, overcast light, deep shadows, mist; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: slow tracking shot along the row, following the captain. Sound: rigging creaking, his heavy slow steps, fog horn far off; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Kapitan",
+     "lang": "en",
+     "text": "Eight of you. Chosen.\nDon't ask me by whom.",
+     "sub_uz": "Sakkiz kishi. Tanlangansiz.\nKim tanlaganini soʻramang."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "title_uz": "Qayerdamiz?",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R13",
+    "R3"
+   ],
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. On the foggy deck, the woman with a tight auburn ponytail in a black leather jacket does not take her eyes off the captain, who stands off-screen; her eyes flick once to the rail, the sea, the island, as if counting exits. The woman with a tight auburn ponytail in a black leather jacket speaks in English with a cool, low, calm voice of a woman in her thirties — cold, controlled: \"Where are we, Captain?\" Delivery: grounded, low, real, never theatrical. Lip-sync: only the woman with a tight auburn ponytail in a black leather jacket moves the mouth and speaks, one line at a time; every other person keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold, desaturated teal-grey grade, overcast light, deep shadows, mist; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: tight close-up, shallow focus. Sound: wind, the hull creaking; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Anna",
+     "lang": "en",
+     "text": "Where are we, Captain?",
+     "sub_uz": "Biz qayerdamiz, kapitan?"
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "title_uz": "Bitta narsa",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R13",
+    "R9"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. On the deck, the old sea captain whose face is hidden in the shadow of his cap ignores the question. He stops beside the big open sea chest overflowing with random things and lays one heavy hand on its lid. The old sea captain whose face is hidden in the shadow of his cap speaks in English with a deep, slow, gravelly voice of an old sea captain, almost a whisper — slowly: \"Take one thing. Something useful.\" Then, after a pause, raising one finger: \"Only one.\" Delivery: grounded, low, real, never theatrical. Lip-sync: only the old sea captain whose face is hidden in the shadow of his cap moves the mouth and speaks, one line at a time; every other person keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold, desaturated teal-grey grade, overcast light, deep shadows, mist; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: low angle, the chest in the foreground, his shadowed face above. Sound: wood creaking under his hand, wind; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Kapitan",
+     "lang": "en",
+     "text": "Take one thing. Something useful.\nOnly one.",
+     "sub_uz": "Bitta narsa oling. Foydali narsa.\nFaqat bitta."
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "title_uz": "Nega bitta?",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R13",
+    "R5"
+   ],
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. On the deck, the nine-year-old boy with freckles and a yellow cap worn backwards stands half hidden behind the others' legs, looking up at the captain off-screen, more curious than afraid. The nine-year-old boy with freckles and a yellow cap worn backwards speaks in English with a high, clear, curious voice of a nine-year-old boy — small, honest: \"Why only one?\" Delivery: grounded, low, real, never theatrical. Lip-sync: only the nine-year-old boy with freckles and a yellow cap worn backwards moves the mouth and speaks, one line at a time; every other person keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold, desaturated teal-grey grade, overcast light, deep shadows, mist; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: low, at the boy's height. Sound: wind, a rope tapping the mast; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Charli",
+     "lang": "en",
+     "text": "Why only one?",
+     "sub_uz": "Nega faqat bitta?"
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "title_uz": "Oldingilar",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R13",
+    "R9",
+    "R5"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. On the deck, the old sea captain whose face is hidden in the shadow of his cap slowly bends down to the boy with the yellow cap until his shadowed face is close to the boy's. The old sea captain whose face is hidden in the shadow of his cap speaks in English with a deep, slow, gravelly voice of an old sea captain, almost a whisper — almost a whisper: \"Because the last ones\" Then, slowly: \"took too much.\" The boy swallows. Behind them the adults exchange a glance. Delivery: grounded, low, real, never theatrical. Lip-sync: only the old sea captain whose face is hidden in the shadow of his cap moves the mouth and speaks, one line at a time; every other person keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold, desaturated teal-grey grade, overcast light, deep shadows, mist; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: slow push-in on the two faces. Sound: the wind dropping to almost nothing; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Kapitan",
+     "lang": "en",
+     "text": "Because the last ones\ntook too much.",
+     "sub_uz": "Chunki oldingilar\njuda koʻp olgan edi."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "title_uz": "Ular qayerda?",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R13",
+    "R6"
+   ],
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. On the deck, the young Indian man with round black glasses and a grey hoodie takes half a step forward, pushing his glasses up, pale. The young Indian man with round black glasses and a grey hoodie speaks in English with a quick, quiet, nervous voice of a young man — quick, nervous: \"Wait — the last ones?\" Then, almost whispering: \"Where are they now?\" Nobody answers him. Delivery: grounded, low, real, never theatrical. Lip-sync: only the young Indian man with round black glasses and a grey hoodie moves the mouth and speaks, one line at a time; every other person keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold, desaturated teal-grey grade, overcast light, deep shadows, mist; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: medium close-up, the fog behind him. Sound: silence, then the ship's bell once; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Tagor",
+     "lang": "en",
+     "text": "Wait — the last ones?\nWhere are they now?",
+     "sub_uz": "Toʻxtang — oldingilar?\nUlar hozir qayerda?"
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "title_uz": "Tanlov",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R13",
+    "R10",
+    "R11"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. On the foggy deck, hands reach into the overflowing sea chest, quick and secret: each stranger takes one thing and instantly hides it — into an inner pocket, under a jacket, behind a back — so the camera never sees what anyone chose. Only the tall blind man in dark glasses and the striped sailor shirt does not reach in; he stands still, listening, his empty hands at his sides. Lip-sync: nobody speaks — every mouth stays closed the whole time. Look: a tense cinematic thriller — cold, desaturated teal-grey grade, overcast light, deep shadows, mist; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: close shots of hands and backs only, never the objects, ending on the blind man's empty hands. Sound: rummaging, metal clinking, fabric rustling, then quiet; no music. No subtitles, no on-screen text."
+  },
+  {
+   "n": 11,
+   "title_uz": "Bu orol…",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R14",
+    "R7",
+    "R4"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. A small wooden rowing boat full of silent strangers crosses black water through the fog toward the jungle island. The big man in dark red rows with long, heavy strokes. In the bow, the Chinese man with a messy topknot in a faded orange kung-fu jacket stares at the approaching jungle, all sleepiness gone from his eyes. The Chinese man with a messy topknot in a faded orange kung-fu jacket speaks in Chinese with a soft, raspy, unhurried voice of a man in his forties — quietly, to himself: \"这个岛……不对劲。\" Delivery: grounded, low, real, never theatrical. Lip-sync: only the Chinese man with a messy topknot in a faded orange kung-fu jacket moves the mouth and speaks, one line at a time; every other person keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold, desaturated teal-grey grade, overcast light, deep shadows, mist; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: from the bow looking back at him, the island looming behind. Sound: oars dipping, water, fog, no birds; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Wei Yi",
+     "lang": "zh",
+     "text": "这个岛……不对劲。",
+     "sub_uz": "Bu orolda… nimadir notoʻgʻri."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "title_uz": "Omad",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R14",
+    "R9"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. At the waterline of the beach, the old sea captain whose face is hidden in the shadow of his cap stands in the empty rowing boat, pushes it off the sand with an oar, then turns his shadowed face back to the shore once. The old sea captain whose face is hidden in the shadow of his cap speaks in English with a deep, slow, gravelly voice of an old sea captain, almost a whisper — gruffly: \"Good luck.\" Then, quieter, almost to himself: \"You'll need it.\" He rows away into the fog; far out, the ship's horn sounds once, long and low. Delivery: grounded, low, real, never theatrical. Lip-sync: only the old sea captain whose face is hidden in the shadow of his cap moves the mouth and speaks, one line at a time; every other person keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold, desaturated teal-grey grade, overcast light, deep shadows, mist; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: from the beach, low, the boat sliding into the fog. Sound: the boat scraping off sand, oars, a long low ship's horn; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Kapitan",
+     "lang": "en",
+     "text": "Good luck.\nYou'll need it.",
+     "sub_uz": "Omad.\nU sizga kerak boʻladi."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "title_uz": "Issiq kul",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R14",
+    "R4"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. On the grey beach, the big muscular man with a shaved head in a dark-red sleeveless shirt stops at a ring of blackened stones half buried in the sand — an old campfire. He crouches and holds his palm over the ashes, then slowly looks up at the jungle. The big muscular man with a shaved head in a dark-red sleeveless shirt speaks in English with a big, deep, booming, good-natured voice of a strong man — very quietly, deadly serious: \"These ashes are still warm.\" Delivery: grounded, low, real, never theatrical. Lip-sync: only the big muscular man with a shaved head in a dark-red sleeveless shirt moves the mouth and speaks, one line at a time; every other person keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold, desaturated teal-grey grade, overcast light, deep shadows, mist; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: close on his hand over the ashes, then up to his face. Sound: waves, wind, a thin wisp of smoke hissing; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Jordan",
+     "lang": "en",
+     "text": "These ashes are still warm.",
+     "sub_uz": "Bu kul hali issiq."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "title_uz": "Izlar",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R14",
+    "R3"
+   ],
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. On the wet sand, the woman with a tight auburn ponytail in a black leather jacket crouches beside a line of large bare footprints that runs from the old campfire straight into the jungle. The woman with a tight auburn ponytail in a black leather jacket speaks in English with a cool, low, calm voice of a woman in her thirties — flat, alert: \"These aren't ours.\" Delivery: grounded, low, real, never theatrical. Lip-sync: only the woman with a tight auburn ponytail in a black leather jacket moves the mouth and speaks, one line at a time; every other person keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold, desaturated teal-grey grade, overcast light, deep shadows, mist; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: low along the footprints toward the black wall of trees. Sound: waves washing in, wind; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Anna",
+     "lang": "en",
+     "text": "These aren't ours.",
+     "sub_uz": "Bular bizniki emas."
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "title_uz": "Oʻttiz santimetr",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R14",
+    "R2"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. On the beach, the young Korean woman with a neat high bun in a crisp white field jacket kneels by one big bare footprint and measures it with her outstretched hand, thumb to little finger and again, counting under her breath, then looks at the others. The young Korean woman with a neat high bun in a crisp white field jacket speaks in Korean with a soft, clear, precise voice of a young woman — counting under her breath: \"이십팔... 아니, 삼십.\" Then it speaks in English with a soft, clear, precise voice of a young woman — quietly, to the group: \"Whoever this is — he's taller than Jordan.\" Delivery: grounded, low, real, never theatrical. Lip-sync: only the young Korean woman with a neat high bun in a crisp white field jacket moves the mouth and speaks, one line at a time; every other person keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold, desaturated teal-grey grade, overcast light, deep shadows, mist; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: close on her hand on the sand, then her face. Sound: waves, wind; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Sarang",
+     "lang": "ko",
+     "text": "이십팔... 아니, 삼십.",
+     "sub_uz": "Yigirma sakkiz… yoʻq, oʻttiz."
+    },
+    {
+     "who": "Sarang",
+     "lang": "en",
+     "text": "Whoever this is — he's taller than Jordan.",
+     "sub_uz": "Bu kim boʻlsa ham — Jordandan baland."
+    }
+   ],
+   "overlays": [
+    {
+     "t": 2.6,
+     "d": 3.2,
+     "y": 0.18,
+     "text": "30 sm × 6,6 ≈ 2 m"
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "title_uz": "Kemaga qaytsak",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R14",
+    "R6"
+   ],
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. On the beach, the young Indian man with round black glasses and a grey hoodie stares at the footprint, then out at the empty foggy sea where the ship has gone. The young Indian man with round black glasses and a grey hoodie speaks in English with a quick, quiet, nervous voice of a young man — trying to joke, voice shaking: \"Okay. I'd like to go back to the ship now.\" Nobody laughs. Delivery: grounded, low, real, never theatrical. Lip-sync: only the young Indian man with round black glasses and a grey hoodie moves the mouth and speaks, one line at a time; every other person keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold, desaturated teal-grey grade, overcast light, deep shadows, mist; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: medium close-up. Sound: a single wave, then silence; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Tagor",
+     "lang": "en",
+     "text": "Okay. I'd like to go back to the ship now.",
+     "sub_uz": "Xoʻp. Men endi kemaga qaytmoqchiman."
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "title_uz": "Jim!",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R14",
+    "R8"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. On the beach, the tall blind man with dark round glasses and a striped sailor shirt under a grey wool coat suddenly lifts his head toward the jungle and raises one hand. The tall blind man with dark round glasses and a striped sailor shirt under a grey wool coat speaks in Russian with a quiet, deep, unhurried voice of a man in his forties — sharp whisper: \"Тихо.\" Then it speaks in English with a quiet, deep, unhurried voice of a man in his forties — low, to everyone: \"Listen. The birds have stopped.\" Delivery: grounded, low, real, never theatrical. Lip-sync: only the tall blind man with dark round glasses and a striped sailor shirt under a grey wool coat moves the mouth and speaks, one line at a time; every other person keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold, desaturated teal-grey grade, overcast light, deep shadows, mist; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: slow push-in on his face, the jungle out of focus behind. Sound: the jungle's noise of birds and insects cutting out completely, only the sea remains; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Maksim",
+     "lang": "ru",
+     "text": "Тихо.",
+     "sub_uz": "Jim."
+    },
+    {
+     "who": "Maksim",
+     "lang": "en",
+     "text": "Listen. The birds have stopped.",
+     "sub_uz": "Eshiting. Qushlar jim boʻlib qoldi."
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "title_uz": "Siz-chi?",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R14",
+    "R3",
+    "R8"
+   ],
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. On the beach in the sudden silence, the woman with a tight auburn ponytail in a black leather jacket turns to the blind man, who stands apart with empty hands. The woman with a tight auburn ponytail in a black leather jacket speaks in English with a cool, low, calm voice of a woman in her thirties — low, testing him: \"You took nothing, Maksim.\" Then, sharper: \"Why?\" Delivery: grounded, low, real, never theatrical. Lip-sync: only the woman with a tight auburn ponytail in a black leather jacket moves the mouth and speaks, one line at a time; every other person keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold, desaturated teal-grey grade, overcast light, deep shadows, mist; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: over Anna's shoulder onto the blind man. Sound: waves, nothing else; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Anna",
+     "lang": "en",
+     "text": "You took nothing, Maksim.\nWhy?",
+     "sub_uz": "Siz hech narsa olmadingiz, Maksim.\nNega?"
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "title_uz": "Quloqlar",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R14",
+    "R8"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. On the beach, the tall blind man with dark round glasses and a striped sailor shirt under a grey wool coat turns his face toward her voice, calm. The tall blind man with dark round glasses and a striped sailor shirt under a grey wool coat speaks in English with a quiet, deep, unhurried voice of a man in his forties — quietly: \"You all took what you can see.\" Then, touching his ear, a faint smile: \"I brought what you can't. My ears.\" Delivery: grounded, low, real, never theatrical. Lip-sync: only the tall blind man with dark round glasses and a striped sailor shirt under a grey wool coat moves the mouth and speaks, one line at a time; every other person keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold, desaturated teal-grey grade, overcast light, deep shadows, mist; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: close-up, very slow push-in. Sound: waves, wind; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Maksim",
+     "lang": "en",
+     "text": "You all took what you can see.\nI brought what you can't. My ears.",
+     "sub_uz": "Hammangiz koʻradigan narsa oldingiz.\nMen koʻrinmaydiganini oldim. Quloqlarimni."
+    }
+   ]
+  },
+  {
+   "n": 20,
+   "title_uz": "Yursak — bilamiz",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R14",
+    "R8",
+    "R10"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. On the beach, the tall blind man with dark round glasses and a striped sailor shirt under a grey wool coat turns toward the thread of smoke on the mountain above the jungle; the others slowly look the same way. The tall blind man with dark round glasses and a striped sailor shirt under a grey wool coat speaks in English with a quiet, deep, unhurried voice of a man in his forties — steady, low: \"Someone lit that fire for us.\" Then, firm: \"If we stay, we wait. If we walk, we find out.\" Delivery: grounded, low, real, never theatrical. Lip-sync: only the tall blind man with dark round glasses and a striped sailor shirt under a grey wool coat moves the mouth and speaks, one line at a time; every other person keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold, desaturated teal-grey grade, overcast light, deep shadows, mist; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: from behind the group toward the mountain, then back to his face. Sound: wind rising in the trees; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Maksim",
+     "lang": "en",
+     "text": "Someone lit that fire for us.\nIf we stay, we wait. If we walk, we find out.",
+     "sub_uz": "Bu olovni kimdir biz uchun yoqqan.\nTursak — kutamiz. Yursak — bilamiz."
+    }
+   ]
+  },
+  {
+   "n": 21,
+   "title_uz": "Yurgan — daryo",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R14",
+    "R1",
+    "R8"
+   ],
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. On the beach, the man of about sixty with a grey-streaked beard, a black-and-white skullcap and a short dark-green quilted robe steps up beside the blind man, takes his hand and places it on his own shoulder so he can follow. The man of about sixty with a grey-streaked beard, a black-and-white skullcap and a short dark-green quilted robe speaks in Uzbek with a warm, steady, slightly husky voice of a wise man of about sixty — quietly, a proverb, almost to himself: \"Yurgan — daryo, o'tirgan — bo'yra.\" Then it speaks in English with a warm, steady, slightly husky voice of a wise man of about sixty — to the others, simply: \"We walk.\" Delivery: grounded, low, real, never theatrical. Lip-sync: only the man of about sixty with a grey-streaked beard, a black-and-white skullcap and a short dark-green quilted robe moves the mouth and speaks, one line at a time; every other person keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold, desaturated teal-grey grade, overcast light, deep shadows, mist; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: medium two-shot. Sound: waves, wind; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Qodir Bobo",
+     "lang": "uz",
+     "text": "Yurgan — daryo, oʻtirgan — boʻyra."
+    },
+    {
+     "who": "Qodir Bobo",
+     "lang": "en",
+     "text": "We walk.",
+     "sub_uz": "Yuramiz."
+    }
+   ]
+  },
+  {
+   "n": 22,
+   "title_uz": "Kimdir kuzatyapti",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R14",
+    "R10",
+    "R11"
+   ],
+   "seconds": 10,
+   "prompt": "A self-contained 10-second shot. Wide shot of the grey beach: the eight strangers walk up from the sand into the dark jungle in a ragged line, toward the mountain with the thread of smoke. The blind man holds the shoulder of the Uzbek man in the green robe; the boy in the yellow cap is last, glances back at the empty sea, then hurries after them. As the leaves close behind them, the camera slowly rises above the treetops — and in the shadows of the trees, unseen by them, a very tall dark figure stands perfectly still, watching. Lip-sync: nobody speaks — every mouth stays closed the whole time. Look: a tense cinematic thriller — cold, desaturated teal-grey grade, overcast light, deep shadows, mist; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: slow crane up and back from the waterline; the figure is only a silhouette, never clear. Sound: footsteps in sand, leaves closing, then a deep silence and one low heartbeat-like drum; no music. No subtitles, no on-screen text.",
+   "overlays": [
+    {
+     "t": 6.2,
+     "d": 3.6,
+     "y": 0.22,
+     "text": "THE LAST ONES"
+    },
+    {
+     "t": 7.2,
+     "d": 2.6,
+     "y": 0.3,
+     "text": "Davomi bor…"
+    }
+   ]
+  }
+ ]
+}

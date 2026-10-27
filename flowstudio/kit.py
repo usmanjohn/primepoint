@@ -90,6 +90,10 @@ def build(pkg_path, out):
                 g.append(f"       🔇 SOKIN sahna. Ovoz montajda: 3-ovoz/{name}-hikoyachi.mp3 ({note})")
             else:
                 g.append(f"       🗣 {ln['who']}: Veo oʻzi gapiradi — notoʻgʻri ogʻiz qimirlasa, qayta generatsiya")
+                if ln.get('sub_uz'):
+                    said = ' / '.join(x.strip() for x in ln['text'].split('\n'))
+                    sub = ' / '.join(x.strip() for x in ln['sub_uz'].split('\n'))
+                    g.append(f"          «{said}»  →  subtitr: «{sub}»")
     g += ['', '3) YIGʻISH — CapCut kerak emas',
           '  • Flowʼdan har bir sahnani yuklab oling va 4-kliplar/ papkasiga qoʻying. Nom S raqami bilan boshlansa',
           '    boʻldi: S05_1080p_….mp4 ham, ikki sahnani qamragan S02-03_….mp4 ham ishlaydi.',

@@ -30,13 +30,17 @@ LIMIT = 3900                      # Telegram's cap is 4096; leave room for tags
 BAD_APOSTROPHE = re.compile(r"[oOgG]['‘’`]")
 CYRILLIC = re.compile(r'[Ѐ-ӿ]')
 REF_ID = re.compile(r'^R\d+$')
+# a spoken line's language (2026-10-24, «The Last Ones»: English dialogue, native-language moments,
+# Uzbek subtitles burned in by assemble.py). Default 'uz'; any other needs a 'sub_uz'.
+LANGS = {'uz': 'Uzbek', 'en': 'English', 'ru': 'Russian', 'ko': 'Korean', 'zh': 'Chinese'}
 SECONDS = 8                       # one Veo clip
 BROTHERS = ('Inom', 'Jonibek')    # one package each, every day (the user's request, 2026-10-04)
 WHO = BROTHERS + ('Birga',)       # 'Birga' = a series package for whoever films it (2026-10-05)
 HERE = os.path.dirname(os.path.abspath(__file__))
 # A series with a fixed cast keeps ONE global picture numbering (the user's request, 2026-10-06):
 # every id means one picture for the whole series, so the brother's Flow folder never clashes.
-SERIES_CAST = {'Sonlar imperiyasi': os.path.join(HERE, 'series', 'sonlar_imperiyasi_cast.json')}
+SERIES_CAST = {'Sonlar imperiyasi': os.path.join(HERE, 'series', 'sonlar_imperiyasi_cast.json'),
+               'The Last Ones': os.path.join(HERE, 'series', 'the_last_ones_cast.json')}
 
 
 # ── the gate ─────────────────────────────────────────────────────────────
@@ -145,7 +149,12 @@ def check(pkg):
             errs.append(f'{tag}: missing prompt')
         if 'no subtitles' not in prompt.lower():
             errs.append(f'{tag}: prompt must end with "No subtitles, no on-screen text."')
-        if CYRILLIC.search(prompt) or re.search(r'[ʻʼ]', prompt):
+        bare = prompt                                   # foreign lines may keep their own script
+        for ln in sc.get('lines') or []:
+            if ln.get('lang', 'uz') != 'uz':
+                for part in (ln.get('text') or '').split('\n'):
+                    bare = bare.replace(part.strip(), '')
+        if CYRILLIC.search(bare) or re.search(r'[ʻʼ]', bare):
             errs.append(f"{tag}: prompt must be English; Uzbek lines inside it use a plain ' (to'g'ri)")
         spoken = [ln for ln in sc.get('lines') or [] if not ln.get('tts')]   # 'tts' = voice-over, made outside Veo
         if any(ln.get('tts') for ln in sc.get('lines') or []) and 'voice-over' not in prompt:
@@ -154,14 +163,24 @@ def check(pkg):
             if not ln.get('who') or not ln.get('text'):
                 errs.append(f'{tag}: every line needs who and text')
                 continue
-            errs += _uz_errors(f'{tag} line', f"{ln['who']} {ln['text']}")
+            lang = ln.get('lang', 'uz')
+            if lang not in LANGS:
+                errs.append(f"{tag}: lang {lang!r} not one of {sorted(LANGS)}")
+                continue
+            if lang == 'uz':
+                errs += _uz_errors(f'{tag} line', f"{ln['who']} {ln['text']}")
+            else:
+                sub = ln.get('sub_uz') or ''
+                errs += _uz_errors(f'{tag} sub_uz', f"{ln['who']} {sub}")
+                if not sub or sub.count('\n') != ln['text'].count('\n'):
+                    errs.append(f"{tag}: «{ln['text'][:30]}…» needs sub_uz with one Uzbek line per spoken line")
             if ln.get('tts'):
                 continue
+            if f'in {LANGS[lang].lower()}' not in prompt.lower():
+                errs.append(f'{tag}: say "speaks in {LANGS[lang]} with a … voice" in the prompt')
             # each verse line may sit in its own quote, with a direction between them (2026-10-07)
             if not all(_flat(part) in _flat(prompt) for part in ln['text'].split('\n') if part.strip()):
                 errs.append(f"{tag}: the line «{ln['text'][:40]}…» is not in the prompt word for word")
-        if spoken and 'in uzbek' not in prompt.lower():
-            errs.append(f'{tag}: say "speaks in Uzbek with a … voice" in the prompt')
         if voices is not None and sc.get('lines'):
             if not spoken and 'Lip-sync:' not in prompt:
                 errs.append(f'{tag}: add a "Lip-sync:" sentence — every mouth closed')
