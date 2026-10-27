@@ -26,6 +26,7 @@ FILES = [
     ('templates/vintage/style.html', 'html', 'The look (Kapitalbank colours), shared by both pages.'),
     ('templates/vintage/page.html', 'html', 'The analysis: insights, curves, the triangle, transitions, early signal, issue month, «how to read».'),
     ('templates/vintage/plan.html', 'html', 'The business plan: expected new 90+ / NPL per month, and the second route (transitions).'),
+    ('templates/vintage/chart.html', 'html', 'One line chart as plain SVG, used for the year curves and the passports comparison.'),
 ]
 EMPTY = ['__init__.py', 'management/__init__.py', 'management/commands/__init__.py']
 
@@ -39,7 +40,7 @@ Import:
 """
 
 PLAYLIST = {'title': 'Kapital — Vintage', 'category': 'programming', 'staff_only': True,
-            'description': 'Vintage analysis: loans grouped by issue month, followed month by month — overdue 30+/60+/90+ and NPL (category ≥ 3), the triangle, curves, transitions, an early signal and a 12-month business plan. One file per lesson in install order. Admin only.'}
+            'description': 'Vintage analysis for all passports and each one (pervichka / vtorichka): loans grouped by issue month, followed month by month — overdue 30+/60+/90+ and NPL (category ≥ 3), the triangle, curves, transitions, an early signal and a 12-month business plan. One file per lesson in install order. Admin only.'}
 
 TUTORIALS = []
 '''
@@ -64,8 +65,10 @@ def main():
              'There are no models, so no migrations.</p>\n'
              '<p>Needs <code>polars</code>, <code>numpy</code> and <code>openpyxl</code> (Excel). '
              'Put your parquet file(s) into <code>BASE_DIR/datasets/vintage/input/</code> — every <code>*.parquet</code> '
-             'there is read. Columns: <code>date</code> (1st of the month = the previous month), <code>anketa</code>, '
-             '<code>issue_date</code>, <code>maks_dni</code>, <code>npl_category</code>, <code>portfel_amount</code>. '
+             'there is read. Columns: <code>anketa</code>, <code>report_date</code> (1st of the month = the previous month), '
+             '<code>valuedate</code>, <code>maks_dni</code>, <code>npl_category</code>, <code>brutto_95_summa</code>, '
+             '<code>given_amount</code> and <code>passport</code> (pervichka / vtorichka): everything is built for all '
+             'passports together and for each one, and the pages switch between them. '
              'If yours are named differently, change the right-hand side of <code>COLUMNS</code> at the top of '
              '<code>process.py</code>.</p>\n'
              '<p>Then press «Пересчитать» on <code>/vintage/</code> (it runs the command in its own process, the page '

@@ -2,8 +2,9 @@
 The pages of the vintage app. Every view is short: it reads the address, asks process.py
 for the numbers and gives them to a template.
 
-    /vintage/?kind=dpd90&measure=amount     the analysis (kind: dpd30, dpd60, dpd90, npl;
-                                            measure: amount, count)
+    /vintage/?kind=dpd90&measure=amount&seg=all
+                                            the analysis (kind: dpd30, dpd60, dpd90, npl;
+                                            measure: amount, count; seg: all or a passport)
     /vintage/plan/?kind=dpd90&lending=…     the business plan for the next 12 months
     /vintage/excel/?kind=…&measure=…        everything of the analysis in Excel
     /vintage/rebuild/  (POST)               starts `manage.py build_vintage` in its own process
@@ -31,6 +32,13 @@ def chosen(request):
     measure = request.GET.get("measure")
     return (kind if kind in process.KINDS else "dpd90",
             measure if measure in process.MEASURES else "amount")
+
+
+def chosen_seg(request, res):
+    """?seg=vtorichka if that passport exists in the results, otherwise all passports."""
+    seg = request.GET.get("seg")
+    keys = [s["key"] for s in process.segments(res)] if res else []
+    return seg if seg in keys else process.ALL
 
 
 def pid_alive(pid):
@@ -62,11 +70,12 @@ def home(request):
     kind, measure = chosen(request)
     group = process.KINDS[kind]["group"]
     res = process.results()
-    context = {"status": build_status(), "kind": kind, "measure": measure,
+    seg = chosen_seg(request, res)
+    context = {"status": build_status(), "kind": kind, "measure": measure, "seg": seg,
                "kinds": process.KINDS, "measures": process.MEASURES, "input_dir": process.INPUT_DIR,
                "label": process.KINDS[kind]["label"], "measure_name": process.MEASURES[measure], "res": res}
     if res:
-        vintages, R, weight = process.matrix(res, kind, measure)
+        vintages, R, weight = process.matrix(res, kind, measure, seg)
         steps, reached = process.average_steps(R, weight)
         P, proj = process.projected(R, steps)
         mobs, rows = process.triangle_table(vintages, R, P, proj)
@@ -75,11 +84,14 @@ def home(request):
         context.update({
             "meta": meta, "mobs": mobs, "rows": rows, "insights": found, "ref": ref,
             "curves": process.curves_svg(vintages, R, weight, steps, res["meta"]["last_month"]),
-            "transitions": process.transitions_table(res, group, measure),
-            "early": process.early_signal(res, "npl" if group == "npl" else "dpd90"),
+            "transitions": process.transitions_table(res, group, measure, seg),
+            "early": process.early_signal(res, "npl" if group == "npl" else "dpd90", seg),
+            "comparison": process.compare(res, kind, measure),
+            "segments": [dict(s, loans_text=f"{s['loans']:,}".replace(",", " ")) for s in process.segments(res)],
+            "seg_label": process.segment_label(res, seg),
             "season": process.seasonality(vintages, R, weight, ref),
             "vintage_count": len(vintages),
-            "loans": f"{meta['loans_in_vintages']:,}".replace(",", " "),
+            "loans": f"{process.loans_in_vintages(res, seg):,}".replace(",", " "),
             "migration_months": process.MIGRATION_MONTHS, "recent": process.RECENT_VINTAGES,
             "early_mob": process.EARLY_MOB, "late_mob": process.LATE_MOB,
         })
@@ -109,8 +121,9 @@ def excel(request):
     res = process.results()
     if not res:
         return redirect("vintage")
-    data = process.xlsx(process.excel_sheets(res, kind, measure))
-    name = f"vintage_{kind}_{measure}_{res['meta']['last_month']:%Y-%m}.xlsx"
+    seg = chosen_seg(request, res)
+    data = process.xlsx(process.excel_sheets(res, kind, measure, seg))
+    name = f"vintage_{seg}_{kind}_{measure}_{res['meta']['last_month']:%Y-%m}.xlsx"
     response = HttpResponse(data, content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
     response["Content-Disposition"] = f'attachment; filename="{name}"'
     return response
@@ -130,11 +143,12 @@ def plan(request):
     res = process.results()
     if not res:
         return redirect("vintage")
-    default = process.default_lending(res, kind) / process.AMOUNT_DIVISOR
+    seg = chosen_seg(request, res)
+    default = process.default_lending(res, kind, seg) / process.AMOUNT_DIVISOR
     lending = max(0.0, number(request.GET.get("lending", ""), default))
     growth = number(request.GET.get("growth", ""), 0.0)
-    rows = process.plan(res, kind, lending * process.AMOUNT_DIVISOR, growth / 100)
-    stock = process.markov(res, process.KINDS[kind]["group"], lending * process.AMOUNT_DIVISOR, growth / 100)
+    rows = process.plan(res, kind, lending * process.AMOUNT_DIVISOR, growth / 100, seg)
+    stock = process.markov(res, process.KINDS[kind]["group"], lending * process.AMOUNT_DIVISOR, growth / 100, seg)
 
     if request.GET.get("excel"):
         sheets = [("План", ["Месяц", "Выдача", "Новые из текущего портфеля", "Новые из новой выдачи", "Всего", "Накоплено"],
@@ -143,7 +157,7 @@ def plan(request):
                    [[r["month"], r["total"], r["bad"], r["share"], "факт" if r["fact"] else "прогноз"] for r in stock])]
         response = HttpResponse(process.xlsx(sheets),
                                 content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-        response["Content-Disposition"] = f'attachment; filename="vintage_plan_{kind}.xlsx"'
+        response["Content-Disposition"] = f'attachment; filename="vintage_plan_{seg}_{kind}.xlsx"'
         return response
 
     top = max([r["total"] for r in rows] + [1])
@@ -154,6 +168,7 @@ def plan(request):
     lent = sum(r["lending"] for r in rows)
     return render(request, "vintage/plan.html", {
         "kind": kind, "label": process.KINDS[kind]["label"], "meta": res["meta"], "rows": shown,
+        "seg": seg, "seg_label": process.segment_label(res, seg), "segments": process.segments(res),
         "lending": process.num(lending, 1), "default": process.num(default, 1), "growth": process.num(growth, 1),
         "unit": process.AMOUNT_UNIT, "months": process.PLAN_MONTHS,
         "year_total": process.money(year), "year_lent": process.money(lent),

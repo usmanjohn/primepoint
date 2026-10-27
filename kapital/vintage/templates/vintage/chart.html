@@ -1,0 +1,14 @@
+{% comment %}
+  One line chart as plain SVG: {% include "vintage/chart.html" with c=curves %}.
+  c comes from process.chart(): lines (points, colour, dashed), grid, ticks, sizes.
+{% endcomment %}
+<svg class="curves" viewBox="0 0 {{ c.W }} {{ c.H }}" role="img">
+  {% for g in c.grid %}<line class="grid" x1="{{ c.L }}" x2="{{ c.x_end }}" y1="{{ g.y }}" y2="{{ g.y }}"/>
+  <text x="{{ c.L|add:'-6' }}" y="{{ g.y }}" text-anchor="end" dominant-baseline="middle">{{ g.label }}</text>{% endfor %}
+  <line class="axis" x1="{{ c.L }}" x2="{{ c.x_end }}" y1="{{ c.y_axis }}" y2="{{ c.y_axis }}"/>
+  {% for t in c.ticks %}<text x="{{ t.x }}" y="{{ c.H|add:'-10' }}" text-anchor="middle">{{ t.label }}</text>{% endfor %}
+  {% for line in c.lines %}<polyline class="{% if line.dashed %}typ{% endif %}" points="{{ line.points }}" stroke="{{ line.colour }}"><title>{{ line.name }}</title></polyline>{% endfor %}
+</svg>
+<div class="legend mt-2">
+  {% for line in c.lines %}<span>{% if line.dashed %}<i class="typ"></i>{% else %}<i style="background:{{ line.colour }}"></i>{% endif %}{{ line.name }}</span>{% endfor %}
+</div>

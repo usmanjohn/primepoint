@@ -12,19 +12,23 @@
 <div class="vtg container-fluid px-4 py-4">
 
   <div class="hero">
-    <div class="eyebrow"><a href="{% url 'vintage' %}?kind={{ kind }}" style="color:#F2C230">Винтажный анализ</a> · бизнес-план</div>
+    <div class="eyebrow"><a href="{% url 'vintage' %}?kind={{ kind }}&seg={{ seg|urlencode }}" style="color:#F2C230">Винтажный анализ</a> · бизнес-план · {{ seg_label }}</div>
     <h1><i class="fa-solid fa-bullseye"></i>{{ label }}: следующие {{ months }} месяцев</h1>
     <div><span class="lab">Что планируем</span>
-      <a class="chip {% if kind == 'dpd90' %}on{% endif %}" href="?kind=dpd90">Просрочка 90+</a>
-      <a class="chip {% if kind == 'npl' %}on{% endif %}" href="?kind=npl">NPL</a>
+      <a class="chip {% if kind == 'dpd90' %}on{% endif %}" href="?kind=dpd90&seg={{ seg|urlencode }}">Просрочка 90+</a>
+      <a class="chip {% if kind == 'npl' %}on{% endif %}" href="?kind=npl&seg={{ seg|urlencode }}">NPL</a>
+    </div>
+    <div><span class="lab">Паспорт</span>
+      {% for s in segments %}<a class="chip {% if s.key == seg %}on{% endif %}" href="?kind={{ kind }}&seg={{ s.key|urlencode }}">{{ s.label }}</a>{% endfor %}
     </div>
   </div>
 
   <div class="box no-print">
     <div class="box-head"><span><i class="fa-solid fa-sliders"></i>Плановая выдача</span>
-      <span class="hint">по умолчанию — средняя выдача последних 12 месяцев: {{ default }} {{ unit }}</span></div>
+      <span class="hint">по умолчанию — средняя выдача «{{ seg_label }}» за последние 12 месяцев: {{ default }} {{ unit }}</span></div>
     <form method="get" class="p-3 row g-3 align-items-end">
       <input type="hidden" name="kind" value="{{ kind }}">
+      <input type="hidden" name="seg" value="{{ seg }}">
       <div class="col-sm-4 col-lg-3"><label class="form-label small">Выдача в месяц, {{ unit }}</label>
         <input class="form-control" name="lending" value="{{ lending }}"></div>
       <div class="col-sm-4 col-lg-3"><label class="form-label small">Рост выдачи, % в месяц</label>
