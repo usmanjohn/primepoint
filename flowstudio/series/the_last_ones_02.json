@@ -1,0 +1,699 @@
+{
+ "_note": "2-qism (2026-10-25): the torch-and-bridge puzzle (Logic Arena #2) with all eight. People are named only by their Flow picture (@1.Qodir …), no looks. Minimum 38 min checked by brute force. LOCAL kit — the user films it himself.",
+ "id": "the-last-ones-02",
+ "number": 34,
+ "for": "Birga",
+ "date": "2026-10-25",
+ "series": "The Last Ones",
+ "title_uz": "2-qism. Koʻprik",
+ "concept_uz": "Togʻ yoʻlini chuqur jarlik toʻsadi: eski koʻprik, bir vaqtda ikki kishi, chiroq doim qaytishi kerak va 38 daqiqadan keyin koʻprik qulaydi. Choʻntaklarida kimdir yozgan kartochkalar — har birining tezligi. Tagor hisoblaydi: kimdir qolishi shart. Sarang boshqacha hisoblaydi — hech kim qolmaydi.",
+ "format_uz": "24 sahna, ingliz tilida (baʼzan rus, koreys, xitoy, oʻzbek), oʻzbekcha subtitr va taymer montajda avtomatik",
+ "sources": [
+  "flowstudio/series/the_last_ones.md",
+  "logic/management/commands/toc_logic_puzzles.txt"
+ ],
+ "facts": [
+  {
+   "claim": "Vaqtlar 1,2,3,4,5,7,8,10 daq, ikki kishidan, chiroq qaytadi: eng kam vaqt 38 daqiqa (Anna+Wei Yi tashiydi); Anna har birini olib oʻtsa 45, Maksimsiz 34",
+   "source": "toʻliq qidiruv (Dijkstra, scratchpad bridge.py); Logic Arena #2 «The Torch and the Bridge»"
+  }
+ ],
+ "style_line": "Photorealistic cinematic film still, 35mm, rich natural colour, soft humid tropical light, a wild green island in a grey-blue sea, vertical 9:16. No text, no readable signs, no logos, no watermark.",
+ "post_text_uz": "The Last Ones · 2-qism 🌉\nIkki kishi. Bitta chiroq. 38 daqiqa.\nSakkiz kishi oʻtishi kerak — hech kim qolmasligi kerak.\nSiz qanday oʻtkazardingiz? 👇\n#TheLastOnes #triller #mantiq #powerty",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Qodir Bobo",
+   "prompt": "Character reference sheet of an Uzbek man of about sixty, upright and still strong: a short beard streaked with grey, calm wise eyes with laugh lines, a black-and-white Uzbek skullcap with white almond patterns, a short dark-green quilted robe (chapan) belted with a striped cotton sash over a white collarless shirt, dark trousers, soft brown leather boots. Expression: quiet, kind, a hidden smile. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held.",
+   "saved": true
+  },
+  {
+   "id": "R2",
+   "name_uz": "Sarang (최사랑)",
+   "prompt": "Character reference sheet of a young Korean woman scientist in her late twenties, beautiful and composed: black hair in a neat high bun, clear skin, bright attentive eyes, a crisp white field jacket with many small pockets and rolled sleeves, a pale-blue shirt under it, slim navy trousers, white trainers. Expression: curious, measuring everything with her eyes. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held.",
+   "saved": true
+  },
+  {
+   "id": "R3",
+   "name_uz": "Anna",
+   "prompt": "Character reference sheet of a European woman in her early thirties with the look of a secret agent: auburn hair in a tight high ponytail, sharp green eyes, a fitted black leather jacket over a black turtleneck, black tactical trousers, black lace-up boots, dark aviator sunglasses hooked on the collar. Expression: cool, alert, always watching the exits. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held.",
+   "saved": true
+  },
+  {
+   "id": "R4",
+   "name_uz": "Jordan",
+   "prompt": "Character reference sheet of a very tall, powerfully built African man in his thirties: shaved head, short beard, broad friendly smile, a dark-red sleeveless athletic shirt, an open sand-coloured work shirt over it with the sleeves torn off, olive cargo shorts, heavy boots, a leather wristband. Expression: easy-going giant, laughing eyes. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held.",
+   "saved": true
+  },
+  {
+   "id": "R5",
+   "name_uz": "Charlz (Charli)",
+   "prompt": "Character reference sheet of an American boy of nine: freckles, messy light-brown hair, a yellow baseball cap worn backwards, a blue-and-white striped T-shirt, denim dungarees with one strap undone, red sneakers, a plaster on one knee. Expression: cheeky, endlessly curious. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held.",
+   "saved": true
+  },
+  {
+   "id": "R6",
+   "name_uz": "Tagor",
+   "prompt": "Character reference sheet of a young Indian software programmer in his late twenties: slim, neat side-parted black hair, a thin moustache, round black-rimmed glasses, a grey hoodie with the sleeves pulled down over his wrists, beige chinos, white sneakers, the look of someone who has not slept enough. Expression: clever, a little anxious. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held.",
+   "saved": true
+  },
+  {
+   "id": "R7",
+   "name_uz": "Wei Yi",
+   "prompt": "Character reference sheet of a Chinese martial artist in his forties in the style of a drunken kung-fu master: wiry, a messy black topknot with loose strands, stubble, sleepy half-closed smiling eyes, rosy cheeks, a faded loose orange kung-fu jacket with frog buttons, wide black trousers, black cloth shoes. Relaxed, slightly swaying posture. Expression: lazy grin, but the eyes are sharp. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held.",
+   "saved": true
+  },
+  {
+   "id": "R8",
+   "name_uz": "Maksim",
+   "prompt": "Character reference sheet of a blind Russian man in his forties: tall and lean, short light-brown hair and beard, dark round glasses, a navy-and-white striped Russian sailor shirt (telnyashka) under an open long grey wool coat, dark trousers, worn black boots. He carries no cane. Head slightly tilted as if listening. Expression: calm, inward, strong. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held.",
+   "saved": true
+  },
+  {
+   "id": "R10",
+   "name_uz": "Toʻrtovlon A",
+   "from": [
+    "R1",
+    "R2",
+    "R3",
+    "R4"
+   ],
+   "prompt": "Group reference of the four people from the attached pictures standing side by side, full body, front view, keeping every face, hairstyle and outfit exactly as in their pictures. Left to right: the tall African man in the dark-red sleeveless shirt, the European woman with the auburn ponytail in the black leather jacket, the Uzbek man with the grey-streaked beard in the skullcap and dark-green robe, the young Korean woman with the high bun in the white field jacket. Empty hands. Plain light grey background, soft even light, photorealistic, vertical 9:16. No text.",
+   "saved": true
+  },
+  {
+   "id": "R11",
+   "name_uz": "Toʻrtovlon B",
+   "from": [
+    "R5",
+    "R6",
+    "R7",
+    "R8"
+   ],
+   "prompt": "Group reference of the four people from the attached pictures standing side by side, full body, front view, keeping every face, hairstyle and outfit exactly as in their pictures. Left to right: the tall blind man in dark round glasses and the striped sailor shirt under a grey coat, the boy with the yellow cap worn backwards, the Indian man with round glasses in the grey hoodie, the Chinese man with the topknot in the orange kung-fu jacket, swaying a little. Empty hands. Plain light grey background, soft even light, photorealistic, vertical 9:16. No text.",
+   "saved": true
+  },
+  {
+   "id": "R15",
+   "name_uz": "Jarlik va koʻprik",
+   "prompt": "A deep jungle gorge at dusk: two steep cliff edges overgrown with ferns and hanging vines, and between them a long old suspension footbridge of grey weathered wooden planks hung on two rusted iron chains, many planks missing, sagging over a bottomless misty drop and vanishing into fog toward the far side. On the near edge, beside the bridge's iron anchor, a waist-high moss-covered standing stone. Cold blue dusk light, drifting mist. Seen from the near edge at eye level. No people."
+  },
+  {
+   "id": "R16",
+   "name_uz": "Qoida toshi va qum yuki",
+   "prompt": "Close view of the bridge anchor on a jungle cliff at dusk: a waist-high standing stone covered in moss, carved with simple pictures only — two small human figures side by side, an old oil lantern, and a long row of short notches. Behind it, the rusted iron chain of the bridge runs over a big wooden wheel down to a huge round stone weight that rests on a wooden box full of sand, with a small wooden plug in a hole at the bottom of the box. An old iron oil lantern hangs from a hook on the stone. No letters, no text, no people."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Jarlik",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R15",
+    "R10",
+    "R11"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. Dusk. The eight people from @R10 and @R11 push out of the dark jungle one by one and stop dead at the edge of the gorge from @R15. The old bridge hangs on its rusted chains over the misty drop and disappears into fog. Somebody's foot sends a pebble over the edge; it falls and falls, no sound of landing. Lip-sync: nobody speaks — every mouth stays closed the whole time. Nobody looks into the lens. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: from behind the group, slow push past their shoulders to the bridge. Sound: wind in the gorge, the chains creaking, the jungle loud behind them; no music. No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Qoidalar",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R16",
+    "R2"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. At the standing stone from @R16, @2.Sarang wipes the moss off the carved pictures with her sleeve and traces them with one finger: two figures, the lantern, the long row of notches. @2.Sarang speaks in English with a soft, clear, precise voice of a young woman — reading, careful: \"Two at a time. Always with the lantern.\" Then, quieter, touching the notches: \"And thirty-eight marks.\" Delivery: grounded, low, real, never theatrical. Eyes: @2.Sarang talks to the others standing behind her, never to the camera — never looks into the lens; we see the face in three-quarter profile or past someone's shoulder. Lip-sync: only @2.Sarang moves the mouth and speaks, one line at a time; everyone else keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: close on her hand on the stone, then her face in profile. Sound: wind, moss tearing, the chains creaking; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Sarang",
+     "lang": "en",
+     "text": "Two at a time. Always with the lantern.\nAnd thirty-eight marks.",
+     "sub_uz": "Bir vaqtda ikki kishi. Doim chiroq bilan.\nVa oʻttiz sakkizta belgi."
+    }
+   ],
+   "overlays": [
+    {
+     "t": 1.2,
+     "d": 3.0,
+     "y": 0.14,
+     "size": 76,
+     "text": "2 kishi · 1 chiroq"
+    },
+    {
+     "t": 4.6,
+     "d": 3.0,
+     "y": 0.14,
+     "size": 76,
+     "text": "38"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "title_uz": "Qum",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R16",
+    "R8"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. Behind the stone from @R16, @8.Maksim kneels by the huge stone weight on its box of sand, lays his palm on the wood and listens with his head tilted. @8.Maksim speaks in English with a quiet, deep, unhurried voice of a man in his forties — quietly: \"There's sand under this stone.\" Then, slowly: \"When the first of us steps on the bridge — it starts to run.\" Delivery: grounded, low, real, never theatrical. Eyes: @8.Maksim talks to the people behind him, his face turned toward their voices, never to the camera — never looks into the lens; we see the face in three-quarter profile or past someone's shoulder. Lip-sync: only @8.Maksim moves the mouth and speaks, one line at a time; everyone else keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: low, side-on, the weight and the chain above him. Sound: a faint dry hiss of sand, wind; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Maksim",
+     "lang": "en",
+     "text": "There's sand under this stone.\nWhen the first of us steps on the bridge — it starts to run.",
+     "sub_uz": "Bu toshning tagida qum bor.\nBirinchimiz koʻprikka qadam qoʻyganda — u oqa boshlaydi."
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "title_uz": "Kartochka",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R15",
+    "R5"
+   ],
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. At the cliff edge, @5.Charli pulls a small worn card with smudged unreadable handwriting out of his pocket and frowns at it. @5.Charli speaks in English with a high, clear, curious voice of a nine-year-old boy — puzzled, a little scared: \"This isn't mine. I never had this.\" Delivery: grounded, low, real, never theatrical. Eyes: @5.Charli talks to the adults beside him, holding the card up to them, never to the camera — never looks into the lens; we see the face in three-quarter profile or past someone's shoulder. Lip-sync: only @5.Charli moves the mouth and speaks, one line at a time; everyone else keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: medium close-up from the side, the fog behind. Sound: wind, paper rustling; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Charli",
+     "lang": "en",
+     "text": "This isn't mine. I never had this.",
+     "sub_uz": "Bu meniki emas. Menda bunaqasi yoʻq edi."
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "title_uz": "Kim oʻlchagan?",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R15",
+    "R3"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. At the cliff edge, @3.Anna finds the same small worn card inside her jacket, reads it, and her face goes cold. Around her the others are pulling identical cards from their own pockets. @3.Anna speaks in English with a cool, low, calm voice of a woman in her thirties — flat: \"My speed. My weight. My strength.\" Then, very low: \"Someone measured us.\" Delivery: grounded, low, real, never theatrical. Eyes: @3.Anna talks to the others, looking from face to face, never to the camera — never looks into the lens; we see the face in three-quarter profile or past someone's shoulder. Lip-sync: only @3.Anna moves the mouth and speaks, one line at a time; everyone else keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: over a shoulder onto Anna, slow push-in. Sound: wind, paper rustling, the chains; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Anna",
+     "lang": "en",
+     "text": "My speed. My weight. My strength.\nSomeone measured us.",
+     "sub_uz": "Tezligim. Vaznim. Kuchim.\nKimdir bizni oʻlchagan."
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "title_uz": "Raqamlar",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R15",
+    "R6"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. At the cliff edge, @6.Tagor crouches with all eight cards fanned in his hand and reads them out fast, tapping each card. @6.Tagor speaks in English with a quick, quiet, nervous voice of a young man — fast, nervous: \"Anna, one. Wei Yi, two. Charlie, three. Me — four.\" Then, faster: \"Sarang, five. Jordan, seven. Qodir, eight. Maksim — ten.\" Delivery: grounded, low, real, never theatrical. Eyes: @6.Tagor talks to the group standing around him, never to the camera — never looks into the lens; we see the face in three-quarter profile or past someone's shoulder. Lip-sync: only @6.Tagor moves the mouth and speaks, one line at a time; everyone else keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: high angle over the group onto him, then close on the cards. Sound: wind, cards tapping; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Tagor",
+     "lang": "en",
+     "text": "Anna, one. Wei Yi, two. Charlie, three. Me — four.\nSarang, five. Jordan, seven. Qodir, eight. Maksim — ten.",
+     "sub_uz": "Anna — bir. Wei Yi — ikki. Charli — uch. Men — toʻrt.\nSarang — besh. Jordan — yetti. Qodir — sakkiz. Maksim — oʻn."
+    }
+   ],
+   "overlays": [
+    {
+     "t": 0.5,
+     "d": 7.2,
+     "y": 0.08,
+     "size": 60,
+     "text": "Anna 1 · Wei Yi 2"
+    },
+    {
+     "t": 0.5,
+     "d": 7.2,
+     "y": 0.13,
+     "size": 60,
+     "text": "Charli 3 · Tagor 4"
+    },
+    {
+     "t": 0.5,
+     "d": 7.2,
+     "y": 0.18,
+     "size": 60,
+     "text": "Sarang 5 · Jordan 7"
+    },
+    {
+     "t": 0.5,
+     "d": 7.2,
+     "y": 0.23,
+     "size": 60,
+     "text": "Qodir 8 · Maksim 10"
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "title_uz": "Tagorning rejasi",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R15",
+    "R6",
+    "R3"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. At the cliff edge, @6.Tagor stands up and turns to @3.Anna, pointing across the bridge and back with the cards. @6.Tagor speaks in English with a quick, quiet, nervous voice of a young man — quick, thinking aloud: \"You're the fastest. You walk each of us over —\" Then, then: \"and bring the lantern back.\" Delivery: grounded, low, real, never theatrical. Eyes: @6.Tagor talks to @3.Anna, never to the camera — never looks into the lens; we see the face in three-quarter profile or past someone's shoulder. Lip-sync: only @6.Tagor moves the mouth and speaks, one line at a time; everyone else keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: two-shot from the side, both in profile. Sound: wind, chains; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Tagor",
+     "lang": "en",
+     "text": "You're the fastest. You walk each of us over —\nand bring the lantern back.",
+     "sub_uz": "Siz eng tezsiz. Har birimizni olib oʻtasiz —\nva chiroqni qaytarib kelasiz."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "title_uz": "Qirq besh",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R15",
+    "R6"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. At the cliff edge, @6.Tagor counts on his fingers, lips moving, and stops. The colour drains from his face. @6.Tagor speaks in English with a quick, quiet, nervous voice of a young man — barely a whisper: \"Forty-five minutes.\" Then, swallowing: \"We have thirty-eight.\" Delivery: grounded, low, real, never theatrical. Eyes: @6.Tagor talks to the group, looking down at his fingers, never to the camera — never looks into the lens; we see the face in three-quarter profile or past someone's shoulder. Lip-sync: only @6.Tagor moves the mouth and speaks, one line at a time; everyone else keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: slow push-in, his face in three-quarter profile. Sound: wind dropping, the faint hiss of sand; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Tagor",
+     "lang": "en",
+     "text": "Forty-five minutes.\nWe have thirty-eight.",
+     "sub_uz": "Qirq besh daqiqa.\nBizda oʻttiz sakkiz bor."
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "title_uz": "Bittamiz qolamiz",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R15",
+    "R4"
+   ],
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. At the cliff edge, @4.Jordan looks at the bridge, then at the others, jaw tight. @4.Jordan speaks in English with a big, deep, booming, good-natured voice of a strong man — low, heavy: \"So one of us stays behind.\" Delivery: grounded, low, real, never theatrical. Eyes: @4.Jordan talks to the group, not meeting anyone's eyes, never to the camera — never looks into the lens; we see the face in three-quarter profile or past someone's shoulder. Lip-sync: only @4.Jordan moves the mouth and speaks, one line at a time; everyone else keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: medium shot from the side, the fog behind him. Sound: wind, a distant branch snapping in the jungle; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Jordan",
+     "lang": "en",
+     "text": "So one of us stays behind.",
+     "sub_uz": "Demak, bittamiz shu yerda qolamiz."
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "title_uz": "Meni qoldiring",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R15",
+    "R8"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. Dusk at the edge of the gorge from @R15. @8.Maksim (the blind man in dark round glasses, his eyes always hidden behind them) stands alone near the edge, the misty drop behind him. He is silent for a beat, then turns his face toward the voices of people who are off-screen, calm. Only the person from the attached pictures is in this shot — no extra people, no crowd, nobody else. Keep each person exactly as in their picture: the same face, hair, glasses, hat and clothes. @8.Maksim speaks in Russian with a quiet, deep, unhurried voice of a man in his forties — quietly: \"Я самый медленный.\" Then @8.Maksim speaks in English with a quiet, deep, unhurried voice of a man in his forties — simply: \"Leave me. Go.\" Delivery: grounded, low, real, never theatrical. Eyes: @8.Maksim talks to the people off-screen, never to the camera — never looks into the lens; we see the face in three-quarter profile or past someone's shoulder. Lip-sync: only @8.Maksim moves the mouth and speaks, one line at a time; everyone else keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: close-up in profile, very slow push-in. Sound: wind, nothing else; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Maksim",
+     "lang": "ru",
+     "text": "Я самый медленный.",
+     "sub_uz": "Men eng sekiniman."
+    },
+    {
+     "who": "Maksim",
+     "lang": "en",
+     "text": "Leave me. Go.",
+     "sub_uz": "Meni qoldiring. Ketinglar."
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "title_uz": "Shoshma",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R15",
+    "R1",
+    "R8"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. At the cliff edge, @1.Qodir puts a hand on the shoulder of @8.Maksim and nods toward someone off to the side, crouched on the ground. @1.Qodir speaks in Uzbek with a warm, steady, slightly husky voice of a wise man of about sixty — softly: \"Shoshma, ukam.\" Then @1.Qodir speaks in English with a warm, steady, slightly husky voice of a wise man of about sixty — to the others, nodding aside: \"Let her think.\" Delivery: grounded, low, real, never theatrical. Eyes: @1.Qodir talks to @8.Maksim, then the others, never to the camera — never looks into the lens; we see the face in three-quarter profile or past someone's shoulder. Lip-sync: only @1.Qodir moves the mouth and speaks, one line at a time; everyone else keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: two-shot from the side. Sound: wind; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Qodir Bobo",
+     "lang": "uz",
+     "text": "Shoshma, ukam."
+    },
+    {
+     "who": "Qodir Bobo",
+     "lang": "en",
+     "text": "Let her think.",
+     "sub_uz": "Qoʻyinglar, oʻylasin."
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "title_uz": "Hisob",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R15",
+    "R2"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. Crouched at the cliff edge, @2.Sarang arranges small stones on the ground in two rows, moving them across and back, lips moving fast. She stops, looks up. @2.Sarang speaks in Korean with a soft, clear, precise voice of a young woman — to herself, counting: \"둘이 같이… 그래.\" Then @2.Sarang speaks in English with a soft, clear, precise voice of a young woman — clear, certain: \"Nobody stays.\" Delivery: grounded, low, real, never theatrical. Eyes: @2.Sarang talks to the group above her, never to the camera — never looks into the lens; we see the face in three-quarter profile or past someone's shoulder. Lip-sync: only @2.Sarang moves the mouth and speaks, one line at a time; everyone else keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: top shot of her hands and the stones, then her face from below in profile. Sound: stones clicking, wind; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Sarang",
+     "lang": "ko",
+     "text": "둘이 같이… 그래.",
+     "sub_uz": "Ikkovi birga… ha."
+    },
+    {
+     "who": "Sarang",
+     "lang": "en",
+     "text": "Nobody stays.",
+     "sub_uz": "Hech kim qolmaydi."
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "title_uz": "Eng sekinlar birga",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R15",
+    "R2"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. Dusk at the edge of the gorge from @R15. @2.Sarang (the young woman with a high bun in the white field jacket) stands up from the ground and speaks fast and precise to listeners off-screen, holding up two fingers, then pointing off-screen twice. Only the person from the attached pictures is in this shot — no extra people, no crowd, nobody else. Keep each person exactly as in their picture: the same face, hair, glasses, hat and clothes. @2.Sarang speaks in English with a soft, clear, precise voice of a young woman — precise: \"The two slowest cross together — we pay for their time once.\" Then, pointing: \"Anna and Wei Yi carry the lantern back. Every time.\" Delivery: grounded, low, real, never theatrical. Eyes: @2.Sarang talks to the listeners off-screen, never to the camera — never looks into the lens; we see the face in three-quarter profile or past someone's shoulder. Lip-sync: only @2.Sarang moves the mouth and speaks, one line at a time; everyone else keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: medium close-up from the side, the bridge and fog behind her. Sound: wind, chains; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Sarang",
+     "lang": "en",
+     "text": "The two slowest cross together — we pay for their time once.\nAnna and Wei Yi carry the lantern back. Every time.",
+     "sub_uz": "Eng sekin ikkitasi birga oʻtadi — vaqtini bir marta toʻlaymiz.\nChiroqni Anna va Wei Yi qaytaradi. Har safar."
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "title_uz": "Aytganimni qiling",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R15",
+    "R2",
+    "R3"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. At the edge of the gorge from @R15, @2.Sarang (the young woman with a high bun in the white field jacket) turns to @3.Anna (the woman with the auburn ponytail in the black leather jacket) and holds her eyes. Only the 2 people from the attached pictures are in this shot — no extra people, no crowd, nobody else. Keep each person exactly as in their picture: the same face, hair, glasses, hat and clothes. @2.Sarang speaks in English with a soft, clear, precise voice of a young woman — firm: \"Thirty-eight minutes. Not one more.\" Then, low: \"Do exactly as I say — and nobody dies.\" @3.Anna nods once. Delivery: grounded, low, real, never theatrical. Eyes: @2.Sarang talks to @3.Anna, never to the camera — never looks into the lens; we see the face in three-quarter profile or past someone's shoulder. Lip-sync: only @2.Sarang moves the mouth and speaks, one line at a time; everyone else keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: two-shot in profile, faces close. Sound: wind, the chains groaning; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Sarang",
+     "lang": "en",
+     "text": "Thirty-eight minutes. Not one more.\nDo exactly as I say — and nobody dies.",
+     "sub_uz": "Oʻttiz sakkiz daqiqa. Bir daqiqa ham koʻp emas.\nAytganimni aniq qiling — hech kim oʻlmaydi."
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "title_uz": "Boshladik",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R15",
+    "R7",
+    "R3"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. At the head of the bridge from @R15, @7.WeiYi (the man with a messy topknot in the faded orange kung-fu jacket) lights an old iron oil lantern, lifts it, and looks at @3.Anna (the woman with the auburn ponytail in the black leather jacket). Only the 2 people from the attached pictures are in this shot — no extra people, no crowd, nobody else. Keep each person exactly as in their picture: the same face, hair, glasses, hat and clothes. @7.WeiYi speaks in Chinese with a soft, raspy, unhurried voice of a man in his forties — calm: \"走。\" The two of them step onto the first plank together — and behind them, with a dull wooden clunk, something gives way. Delivery: grounded, low, real, never theatrical. Eyes: @7.WeiYi talks to @3.Anna, never to the camera — never looks into the lens; we see the face in three-quarter profile or past someone's shoulder. Lip-sync: only @7.WeiYi moves the mouth and speaks, one line at a time; everyone else keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: from behind the two of them onto the swaying bridge and the fog. Sound: the lantern's hiss, a heavy wooden clunk, then the start of a dry pouring sound; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Wei Yi",
+     "lang": "zh",
+     "text": "走。",
+     "sub_uz": "Ketdik."
+    }
+   ],
+   "overlays": [
+    {
+     "t": 4.0,
+     "d": 3.6,
+     "y": 0.14,
+     "size": 76,
+     "text": "00:00 / 38:00"
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "title_uz": "Qum oqmoqda",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R16"
+   ],
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. At the anchor from @R16, the wooden plug has dropped out: a thin steady stream of sand pours from the hole in the box, and the huge stone weight sinks a finger's width with a creak. No people in this shot. Lip-sync: nobody speaks — every mouth stays closed the whole time. Nobody looks into the lens. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: close and low on the falling sand, then up to the weight. Sound: pouring sand, the chain groaning on the wheel; no music. No subtitles, no on-screen text.",
+   "overlays": [
+    {
+     "t": 0.6,
+     "d": 4.0,
+     "y": 0.14,
+     "size": 76,
+     "text": "02:00 / 38:00"
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "title_uz": "Chiroq qaytadi",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R15",
+    "R3"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. On the bridge from @R15 in thick fog, @3.Anna (the woman with the auburn ponytail in the black leather jacket) hurries back alone with the lantern, stepping over the gaps without looking down. Deep in the fog behind her, a large dark shape shifts and is gone. Only the person from the attached pictures is in this shot — no extra people, no crowd, nobody else. Keep each person exactly as in their picture: the same face, hair, glasses, hat and clothes. Lip-sync: nobody speaks — every mouth stays closed the whole time. Nobody looks into the lens. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: from the near end, the lantern a small warm light coming out of the fog. Sound: planks knocking, her fast breathing, the chains; no music. No subtitles, no on-screen text.",
+   "overlays": [
+    {
+     "t": 0.6,
+     "d": 4.0,
+     "y": 0.14,
+     "size": 76,
+     "text": "03:00 / 38:00"
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "title_uz": "Jordanning qadami",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R15",
+    "R4",
+    "R2"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. Halfway across the bridge from @R15, a plank cracks under @4.Jordan (the very tall man in the dark-red sleeveless shirt) and he freezes, gripping the chain. Ahead of him, @2.Sarang (the young woman with a high bun in the white field jacket) holds the lantern and turns back to him. Only the 2 people from the attached pictures are in this shot — no extra people, no crowd, nobody else. Keep each person exactly as in their picture: the same face, hair, glasses, hat and clothes. @2.Sarang speaks in English with a soft, clear, precise voice of a young woman — calm, steady: \"Don't stop. Don't look down.\" @4.Jordan breathes out and takes the next step. Delivery: grounded, low, real, never theatrical. Eyes: @2.Sarang talks to @4.Jordan, never to the camera — never looks into the lens; we see the face in three-quarter profile or past someone's shoulder. Lip-sync: only @2.Sarang moves the mouth and speaks, one line at a time; everyone else keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: side-on from the fog, the two of them small on the long bridge. Sound: wood splitting, a piece falling into the gorge, the chains swinging; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Sarang",
+     "lang": "en",
+     "text": "Don't stop. Don't look down.",
+     "sub_uz": "Toʻxtamang. Pastga qaramang."
+    }
+   ],
+   "overlays": [
+    {
+     "t": 0.6,
+     "d": 4.0,
+     "y": 0.14,
+     "size": 76,
+     "text": "07:00 / 38:00"
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "title_uz": "Wei Yi yolgʻiz",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R15",
+    "R7"
+   ],
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. On the bridge from @R15, @7.WeiYi (the man with a messy topknot in the faded orange kung-fu jacket) runs back alone with the lantern, light and silent, and jumps clean over a gap of three missing planks without breaking stride. Only the person from the attached pictures is in this shot — no extra people, no crowd, nobody else. Keep each person exactly as in their picture: the same face, hair, glasses, hat and clothes. Lip-sync: nobody speaks — every mouth stays closed the whole time. Nobody looks into the lens. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: tracking alongside him through the fog. Sound: quick light steps, the lantern swinging, wind; no music. No subtitles, no on-screen text.",
+   "overlays": [
+    {
+     "t": 0.6,
+     "d": 4.0,
+     "y": 0.14,
+     "size": 76,
+     "text": "11:00 / 38:00"
+    }
+   ]
+  },
+  {
+   "n": 20,
+   "title_uz": "Koʻr va keksa",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R15",
+    "R1",
+    "R8"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. On the bridge from @R15, @1.Qodir (the older man in the black-and-white skullcap and the short green robe) walks slowly with the lantern; behind him @8.Maksim (the blind man in dark round glasses, his eyes always hidden behind them) keeps one hand on his shoulder and tests every plank with his foot. Only the 2 people from the attached pictures are in this shot — no extra people, no crowd, nobody else. Keep each person exactly as in their picture: the same face, hair, glasses, hat and clothes. @1.Qodir speaks in Uzbek with a warm, steady, slightly husky voice of a wise man of about sixty — softly, step by step: \"Qadam… yana bir qadam.\" A faint smile on the face of @8.Maksim. Delivery: grounded, low, real, never theatrical. Eyes: @1.Qodir talks to @8.Maksim behind him, glancing back over his shoulder, never to the camera — never looks into the lens; we see the face in three-quarter profile or past someone's shoulder. Lip-sync: only @1.Qodir moves the mouth and speaks, one line at a time; everyone else keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: from in front, slowly moving back as they come. Sound: careful steps, creaking planks, wind; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Qodir Bobo",
+     "lang": "uz",
+     "text": "Qadam… yana bir qadam."
+    }
+   ],
+   "overlays": [
+    {
+     "t": 0.6,
+     "d": 4.0,
+     "y": 0.14,
+     "size": 76,
+     "text": "21:00 / 38:00"
+    }
+   ]
+  },
+  {
+   "n": 21,
+   "title_uz": "Yuring!",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R16",
+    "R3",
+    "R6"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. At the anchor from @R16, the sand box is almost empty and the stone weight hangs low. @3.Anna (the woman with the auburn ponytail in the black leather jacket) stumbles off the bridge, exhausted, and grabs the hand of @6.Tagor (the young man in round black glasses and a grey hoodie), who has been waiting there alone. Only the 2 people from the attached pictures are in this shot — no extra people, no crowd, nobody else. Keep each person exactly as in their picture: the same face, hair, glasses, hat and clothes. @3.Anna speaks in English with a cool, low, calm voice of a woman in her thirties — gasping: \"Now. Run.\" Delivery: grounded, low, real, never theatrical. Eyes: @3.Anna talks to @6.Tagor, never to the camera — never looks into the lens; we see the face in three-quarter profile or past someone's shoulder. Lip-sync: only @3.Anna moves the mouth and speaks, one line at a time; everyone else keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: handheld, close, the weight looming behind them. Sound: the last trickle of sand, the chain straining, her breathing; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Anna",
+     "lang": "en",
+     "text": "Now. Run.",
+     "sub_uz": "Hozir. Yuguring."
+    }
+   ],
+   "overlays": [
+    {
+     "t": 0.6,
+     "d": 4.0,
+     "y": 0.14,
+     "size": 76,
+     "text": "34:00 / 38:00"
+    }
+   ]
+  },
+  {
+   "n": 22,
+   "title_uz": "Koʻprik qulaydi",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R15",
+    "R3",
+    "R6"
+   ],
+   "seconds": 8,
+   "prompt": "A self-contained 8-second shot. @3.Anna (the woman with the auburn ponytail in the black leather jacket) and @6.Tagor (the young man in round black glasses and a grey hoodie) sprint across the last planks of the bridge from @R15 with the lantern as it collapses behind them plank by plank; they dive onto the far rocky ledge as the whole bridge falls away into the gorge. Only the 2 people from the attached pictures are in this shot — no extra people, no crowd, nobody else. Keep each person exactly as in their picture: the same face, hair, glasses, hat and clothes. Lip-sync: nobody speaks — every mouth stays closed the whole time. Nobody looks into the lens. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: tracking ahead of them, the collapse chasing them. Sound: chains snapping, wood tearing, a long fall, then silence; no music. No subtitles, no on-screen text.",
+   "overlays": [
+    {
+     "t": 0.4,
+     "d": 3.0,
+     "y": 0.14,
+     "size": 76,
+     "text": "37:00 / 38:00"
+    },
+    {
+     "t": 4.6,
+     "d": 3.2,
+     "y": 0.14,
+     "size": 76,
+     "text": "38:00 / 38:00"
+    }
+   ]
+  },
+  {
+   "n": 23,
+   "title_uz": "Aniq",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R15",
+    "R6"
+   ],
+   "seconds": 6,
+   "prompt": "A self-contained 6-second shot. On the far rocky ledge of the gorge from @R15, in the dark, @6.Tagor (the young man in round black glasses and a grey hoodie) lies on his back next to the lantern, gasping, then lets out one shaky laugh. Only the person from the attached pictures is in this shot — no extra people, no crowd, nobody else. Keep each person exactly as in their picture: the same face, hair, glasses, hat and clothes. @6.Tagor speaks in English with a quick, quiet, nervous voice of a young man — breathless: \"Thirty-eight. Exactly.\" Delivery: grounded, low, real, never theatrical. Eyes: @6.Tagor talks to someone standing over him, off-screen, never to the camera — never looks into the lens; we see the face in three-quarter profile or past someone's shoulder. Lip-sync: only @6.Tagor moves the mouth and speaks, one line at a time; everyone else keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: top shot, then side-on. Sound: breathing, wind in the gorge; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Tagor",
+     "lang": "en",
+     "text": "Thirty-eight. Exactly.",
+     "sub_uz": "Oʻttiz sakkiz. Aynan."
+    }
+   ]
+  },
+  {
+   "n": 24,
+   "title_uz": "Narigi tomonda",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R15",
+    "R8",
+    "R3"
+   ],
+   "seconds": 10,
+   "prompt": "A self-contained 10-second shot. Night on the far ledge of the gorge from @R15; the bridge is gone, only broken chains hang into the mist. @8.Maksim (the blind man in dark round glasses, his eyes always hidden behind them) suddenly lifts his head toward the other side. Next to him, @3.Anna (the woman with the auburn ponytail in the black leather jacket) turns to look. Only the 2 people from the attached pictures are in this shot — no extra people, no crowd, nobody else. Keep each person exactly as in their picture: the same face, hair, glasses, hat and clothes. @8.Maksim speaks in Russian with a quiet, deep, unhurried voice of a man in his forties — a whisper: \"Там кто-то есть.\" Across the gorge, on the side they came from, far away and only a silhouette in the fog, a very tall dark shape stands at the edge, perfectly still — and slowly lights a lantern of its own. Delivery: grounded, low, real, never theatrical. Eyes: @8.Maksim talks to @3.Anna, never to the camera — never looks into the lens; we see the face in three-quarter profile or past someone's shoulder. Lip-sync: only @8.Maksim moves the mouth and speaks, one line at a time; everyone else keeps the mouth closed; no background voices or murmur. Look: a tense cinematic thriller — cold blue dusk turning to night, fog, deep shadows, warm lantern light the only colour; the acting is grounded and serious, no comedy, no mugging for the camera. Camera: from behind the two of them across the gorge, slow push toward the far light; the far shape stays a silhouette, never clear. Sound: wind, the drip of the gorge, then a match striking far away and one low drum; no music. No subtitles, no on-screen text.",
+   "lines": [
+    {
+     "who": "Maksim",
+     "lang": "ru",
+     "text": "Там кто-то есть.",
+     "sub_uz": "U yerda kimdir bor."
+    }
+   ],
+   "overlays": [
+    {
+     "t": 6.6,
+     "d": 3.2,
+     "y": 0.22,
+     "text": "THE LAST ONES"
+    },
+    {
+     "t": 7.6,
+     "d": 2.2,
+     "y": 0.3,
+     "text": "Davomi bor…"
+    }
+   ]
+  }
+ ],
+ "inserts": [
+  {
+   "after": 7,
+   "file": "A1-tagor.mp4"
+  },
+  {
+   "after": 13,
+   "file": "A2-sarang.mp4"
+  }
+ ]
+}

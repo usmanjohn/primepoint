@@ -1,0 +1,130 @@
+{
+ "_note": "The Last Ones (was «Ters dunyo») (v2, 2026-10-24; thriller, English + Uzbek subtitles) — eight strangers left on an island, ONE item each, items hidden until each owner's episode. Ids are GLOBAL and never reused; later packages copy a ref VERBATIM with \"saved\": true. Items (secret, never in a picture before their reveal): Qodir Bobo nay · Sarang ruler-protractor · Anna knife · Jordan rope · Charli a book · Tagor mechanical watch · Wei Yi gourd flask · Maksim NOTHING. Next free id: R17.",
+ "style_line": "Photorealistic cinematic film still, 35mm, rich natural colour, soft humid tropical light, a wild green island in a grey-blue sea, vertical 9:16. No text, no readable signs, no logos, no watermark.",
+ "voices": {
+  "Qodir Bobo": "a warm, steady, slightly husky voice of a wise man of about sixty",
+  "Sarang": "a soft, clear, precise voice of a young woman",
+  "Anna": "a cool, low, calm voice of a woman in her thirties",
+  "Jordan": "a big, deep, booming, good-natured voice of a strong man",
+  "Charli": "a high, clear, curious voice of a nine-year-old boy",
+  "Tagor": "a quick, quiet, nervous voice of a young man",
+  "Wei Yi": "a soft, raspy, unhurried voice of a man in his forties",
+  "Maksim": "a quiet, deep, unhurried voice of a man in his forties",
+  "Kapitan": "a deep, slow, gravelly voice of an old sea captain, almost a whisper"
+ },
+ "voice_alias": {
+  "Charlz": "Charli"
+ },
+ "cast": [
+  {
+   "id": "R1",
+   "name_uz": "Qodir Bobo",
+   "prompt": "Character reference sheet of an Uzbek man of about sixty, upright and still strong: a short beard streaked with grey, calm wise eyes with laugh lines, a black-and-white Uzbek skullcap with white almond patterns, a short dark-green quilted robe (chapan) belted with a striped cotton sash over a white collarless shirt, dark trousers, soft brown leather boots. Expression: quiet, kind, a hidden smile. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held.",
+   "introduced": "01"
+  },
+  {
+   "id": "R2",
+   "name_uz": "Sarang (최사랑)",
+   "prompt": "Character reference sheet of a young Korean woman scientist in her late twenties, beautiful and composed: black hair in a neat high bun, clear skin, bright attentive eyes, a crisp white field jacket with many small pockets and rolled sleeves, a pale-blue shirt under it, slim navy trousers, white trainers. Expression: curious, measuring everything with her eyes. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held.",
+   "introduced": "01"
+  },
+  {
+   "id": "R3",
+   "name_uz": "Anna",
+   "prompt": "Character reference sheet of a European woman in her early thirties with the look of a secret agent: auburn hair in a tight high ponytail, sharp green eyes, a fitted black leather jacket over a black turtleneck, black tactical trousers, black lace-up boots, dark aviator sunglasses hooked on the collar. Expression: cool, alert, always watching the exits. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held.",
+   "introduced": "01"
+  },
+  {
+   "id": "R4",
+   "name_uz": "Jordan",
+   "prompt": "Character reference sheet of a very tall, powerfully built African man in his thirties: shaved head, short beard, broad friendly smile, a dark-red sleeveless athletic shirt, an open sand-coloured work shirt over it with the sleeves torn off, olive cargo shorts, heavy boots, a leather wristband. Expression: easy-going giant, laughing eyes. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held.",
+   "introduced": "01"
+  },
+  {
+   "id": "R5",
+   "name_uz": "Charlz (Charli)",
+   "prompt": "Character reference sheet of an American boy of nine: freckles, messy light-brown hair, a yellow baseball cap worn backwards, a blue-and-white striped T-shirt, denim dungarees with one strap undone, red sneakers, a plaster on one knee. Expression: cheeky, endlessly curious. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held.",
+   "introduced": "01"
+  },
+  {
+   "id": "R6",
+   "name_uz": "Tagor",
+   "prompt": "Character reference sheet of a young Indian software programmer in his late twenties: slim, neat side-parted black hair, a thin moustache, round black-rimmed glasses, a grey hoodie with the sleeves pulled down over his wrists, beige chinos, white sneakers, the look of someone who has not slept enough. Expression: clever, a little anxious. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held.",
+   "introduced": "01"
+  },
+  {
+   "id": "R7",
+   "name_uz": "Wei Yi",
+   "prompt": "Character reference sheet of a Chinese martial artist in his forties in the style of a drunken kung-fu master: wiry, a messy black topknot with loose strands, stubble, sleepy half-closed smiling eyes, rosy cheeks, a faded loose orange kung-fu jacket with frog buttons, wide black trousers, black cloth shoes. Relaxed, slightly swaying posture. Expression: lazy grin, but the eyes are sharp. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held.",
+   "introduced": "01"
+  },
+  {
+   "id": "R8",
+   "name_uz": "Maksim",
+   "prompt": "Character reference sheet of a blind Russian man in his forties: tall and lean, short light-brown hair and beard, dark round glasses, a navy-and-white striped Russian sailor shirt (telnyashka) under an open long grey wool coat, dark trousers, worn black boots. He carries no cane. Head slightly tilted as if listening. Expression: calm, inward, strong. Three views side by side: front full body, three-quarter full body, close-up of the face. Plain light grey studio background, soft even light. Empty hands, nothing held.",
+   "introduced": "01"
+  },
+  {
+   "id": "R9",
+   "name_uz": "Kapitan",
+   "prompt": "Character reference sheet of an old sea captain: broad and heavy, a thick white beard, a worn white captain's cap with a black peak pulled low so the upper face and eyes are always lost in deep shadow, a long dark-navy double-breasted coat with dull brass buttons, a pipe in the corner of his mouth. Only the beard and mouth are visible under the shadow. Three views side by side: front full body, three-quarter full body, close-up of the shadowed face. Plain light grey studio background, soft even light. Empty hands, nothing held.",
+   "introduced": "01"
+  },
+  {
+   "id": "R10",
+   "name_uz": "Toʻrtovlon A",
+   "from": [
+    "R1",
+    "R2",
+    "R3",
+    "R4"
+   ],
+   "prompt": "Group reference of the four people from the attached pictures standing side by side, full body, front view, keeping every face, hairstyle and outfit exactly as in their pictures. Left to right: the tall African man in the dark-red sleeveless shirt, the European woman with the auburn ponytail in the black leather jacket, the Uzbek man with the grey-streaked beard in the skullcap and dark-green robe, the young Korean woman with the high bun in the white field jacket. Empty hands. Plain light grey background, soft even light, photorealistic, vertical 9:16. No text.",
+   "introduced": "01"
+  },
+  {
+   "id": "R11",
+   "name_uz": "Toʻrtovlon B",
+   "from": [
+    "R5",
+    "R6",
+    "R7",
+    "R8"
+   ],
+   "prompt": "Group reference of the four people from the attached pictures standing side by side, full body, front view, keeping every face, hairstyle and outfit exactly as in their pictures. Left to right: the tall blind man in dark round glasses and the striped sailor shirt under a grey coat, the boy with the yellow cap worn backwards, the Indian man with round glasses in the grey hoodie, the Chinese man with the topknot in the orange kung-fu jacket, swaying a little. Empty hands. Plain light grey background, soft even light, photorealistic, vertical 9:16. No text.",
+   "introduced": "01"
+  }
+ ],
+ "episode_refs": [
+  {
+   "id": "R12",
+   "introduced": "01",
+   "name_uz": "Kema va orol",
+   "prompt": "Dawn at sea: an old two-masted wooden sailing ship with patched grey sails and a small rowing boat hanging at its side lies at anchor in calm grey-blue water. Behind it, through drifting mist, a wild island covered in dense dark-green jungle rises to a single steep mountain in the middle, from whose summit a thin white thread of smoke climbs straight into the pale sky. Wide shot from the water."
+  },
+  {
+   "id": "R13",
+   "introduced": "01",
+   "name_uz": "Kema palubasi va sandiq",
+   "prompt": "The weathered wooden deck of an old sailing ship at dawn, coiled ropes, a ship's wheel, wet planks, mist and a jungle island visible beyond the rail. In the middle of the deck stands a big open wooden sea chest overflowing with a jumble of random things: tins of food, a lantern, a laptop with a tangled charger cable, a brass compass, umbrellas, a teapot, a hammer, a fishing rod, clothes, a radio, an old kettle, an hourglass, playing cards. Seen at eye level."
+  },
+  {
+   "id": "R14",
+   "introduced": "01",
+   "name_uz": "Qirgʻoq",
+   "prompt": "A wild beach on a tropical island: pale sand, low waves, a small empty wooden rowing boat pulled up on the sand, driftwood, and a wall of dense dark-green jungle right behind the beach. Above the treetops rises a single steep mountain with a thin white thread of smoke at its summit. Out on the misty sea, far away, an old two-masted sailing ship. Seen from the waterline at eye level."
+  },
+  {
+   "id": "R15",
+   "introduced": "02",
+   "name_uz": "Jarlik va koʻprik",
+   "prompt": "A deep jungle gorge at dusk: two steep cliff edges overgrown with ferns and hanging vines, and between them a long old suspension footbridge of grey weathered wooden planks hung on two rusted iron chains, many planks missing, sagging over a bottomless misty drop and vanishing into fog toward the far side. On the near edge, beside the bridge's iron anchor, a waist-high moss-covered standing stone. Cold blue dusk light, drifting mist. Seen from the near edge at eye level. No people."
+  },
+  {
+   "id": "R16",
+   "introduced": "02",
+   "name_uz": "Qoida toshi va qum yuki",
+   "prompt": "Close view of the bridge anchor on a jungle cliff at dusk: a waist-high standing stone covered in moss, carved with simple pictures only — two small human figures side by side, an old oil lantern, and a long row of short notches. Behind it, the rusted iron chain of the bridge runs over a big wooden wheel down to a huge round stone weight that rests on a wooden box full of sand, with a small wooden plug in a hole at the bottom of the box. An old iron oil lantern hangs from a hook on the stone. No letters, no text, no people."
+  }
+ ]
+}

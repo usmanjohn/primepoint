@@ -1,0 +1,13 @@
+# /etc/systemd/system/portfel.service
+# Copy User= and every Environment=/EnvironmentFile= line from gunicorn.service,
+# so the job reaches Oracle exactly the way the website does.
+[Unit]
+Description=Portfel: build the previous working day
+
+[Service]
+Type=oneshot
+User=www-data
+WorkingDirectory=/var/www/dashboard/dashboard
+ExecStart=/var/www/dashboard/delta/bin/python manage.py build_portfel
+# a stuck query is killed before the next try starts
+TimeoutStartSec=50min
