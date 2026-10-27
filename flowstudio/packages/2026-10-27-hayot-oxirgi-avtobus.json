@@ -1,0 +1,231 @@
+{
+ "id": "2026-10-27-hayot-oxirgi-avtobus",
+ "number": 73,
+ "for": "Jonibek",
+ "date": "2026-10-27",
+ "series": "Hayot hikoyasi",
+ "title_uz": "Oxirgi avtobus",
+ "concept_uz": "Yarim tun. Akmal oxirgi avtobusdan qoladi: telefoni oʻchyapti, choʻntagi boʻsh. Skameykaga notanish kishi ikki stakan kofe bilan kelib oʻtiradi, bittasini indamay unga uzatadi — keyin uyiga olib borib qoʻyadi va pul olmaydi. Yillar oʻtib, oʻsha bekatda endi Akmal ikki stakan kofe bilan oʻtiradi.",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "corner/management/commands/_stories_life_1_6.py (story 4)"
+ ],
+ "facts": [
+  {
+   "claim": "Yarim tunda oxirgi avtobus muallifsiz ketgan; telefoni deyarli oʻchgan, hamyoni deyarli boʻsh",
+   "source": "corner/management/commands/_stories_life_1_6.py (story 4)"
+  },
+  {
+   "claim": "Otasi tengi notanish kishi ikki stakan kofe bilan kelib, birini hech narsa demay taklif qilgan",
+   "source": "corner/management/commands/_stories_life_1_6.py (story 4)"
+  },
+  {
+   "claim": "Kishi yoʻli ustida ekanini aytib olib borgan, benzin puli olmagan, rahmatni tugatmasdan ketgan; ismini bilmagan",
+   "source": "corner/management/commands/_stories_life_1_6.py (story 4)"
+  },
+  {
+   "claim": "Endi muallif tunda qolib ketganlarga yordam beradi",
+   "source": "corner/management/commands/_stories_life_1_6.py (story 4)"
+  }
+ ],
+ "style_line": "Cinematic photoreal, Tashkent at midnight, sodium-orange streetlights against cold blue night, light mist, steam rising from paper cups, shallow depth of field, 35mm film look, quiet tender drama. No text, no letters, no numbers, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: tungi bekat",
+   "prompt": "Vertical 9:16 wide shot of an empty city bus stop in Tashkent at midnight: a glass shelter with a long metal bench, one orange streetlight, wet asphalt reflecting the light, bare plane trees, an empty wide avenue, light mist. No people, no signs with writing."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Akmal",
+   "prompt": "Vertical 9:16 full-body portrait of a young Uzbek man about 22, thin, short black hair, tired kind eyes, a dark green parka with a MUSTARD-YELLOW knitted scarf, a worn black backpack and a heavy travel bag, standing at night under an orange streetlight."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Notanish kishi",
+   "prompt": "Vertical 9:16 full-body portrait of an Uzbek man about 55, broad calm face, grey moustache, a DARK BROWN flat cap, a long charcoal-grey wool coat, holding two steaming paper coffee cups with no logos, standing at night under an orange streetlight, gentle quiet expression."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Ketgan avtobus",
+   "from": [
+    "R1",
+    "R2"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot: the young man in the mustard scarf has just stopped running at the edge of the curb, bag slipping off his shoulder, one arm still raised, as the red tail lights of a city bus with no markings pull away down the misty avenue. Same face, same light."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Skameykada ikkovi",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot at the same bus stop: the young man sits hunched at one end of the bench with his bags; the man in the brown flat cap sits at the other end and holds one steaming paper cup out toward him. Same faces, same light."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Mashinada",
+   "from": "R5",
+   "prompt": "Change the scene: inside an old white sedan with no badges, stopped at night outside a quiet apartment block. The man in the brown flat cap is at the wheel; the young man in the mustard scarf sits in the passenger seat holding out a few banknotes, and the older man gently pushes his hand back. Orange streetlight through the windscreen. Same faces, 9:16."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Yillar oʻtib",
+   "from": [
+    "R1",
+    "R2"
+   ],
+   "prompt": "Change the scene: the same bus stop at midnight, ten years later. The young man is now about 32, with a short neat beard and the SAME mustard-yellow knitted scarf over a dark wool coat, sitting on the bench holding two steaming paper cups. At the other end of the bench a tired student about 19 with a grey hoodie and a big backpack stares at a dark, dead phone. Same face, same light, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Ketdi",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Akmal",
+     "text": "Toʻxtang! Iltimos!"
+    },
+    {
+     "who": "Akmal (kadr ortida)",
+     "text": "Yarim tun edi. Oxirgi avtobus mensiz ketdi."
+    }
+   ],
+   "prompt": "The young man sprints into frame, bag bouncing, and stops at the curb as the bus's red tail lights slide away into the mist. His arm drops. Audio: running footsteps, the bus engine fading, then silence and wind. He shouts in Uzbek with a soft, slightly husky young Uzbek male voice, desperate: \"To'xtang! Iltimos!\" Then an off-screen man says in Uzbek with a soft, slightly husky young Uzbek male voice, calm and reflective: \"Yarim tun edi. Oxirgi avtobus mensiz ketdi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Yolgʻiz",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Akmal (kadr ortida)",
+     "text": "Telefon oʻchdi. Choʻntakda pul ham qolmagan edi."
+    }
+   ],
+   "prompt": "The young man sits on the bench, breath steaming; his phone screen dims and goes black in his hand; he opens his wallet, finds only a few coins and closes it. Audio: a faint phone shutdown chime, coins clinking, wind. An off-screen man says in Uzbek with a soft, slightly husky young Uzbek male voice, calm and reflective: \"Telefon o'chdi. Cho'ntakda pul ham qolmagan edi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Ikki stakan",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Akmal",
+     "text": "Menga…? Rahmat."
+    }
+   ],
+   "prompt": "The man in the brown flat cap, already seated at the far end, silently holds out a steaming paper cup without looking for thanks. The young man blinks, hesitates, then takes it with both cold hands. Audio: the bench creaks, steam, a passing car far away. The young man says in Uzbek with a soft, slightly husky young Uzbek male voice, surprised and shy: \"Menga...? Rahmat.\" Lip-sync: only the young man speaks; the older man's mouth stays closed. No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Suhbat",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Notanish kishi",
+     "text": "Qayerga borasan, bolam?"
+    },
+    {
+     "who": "Akmal",
+     "text": "Shahar chetiga… hali uzoq."
+    }
+   ],
+   "prompt": "Two shot on the bench: they sip coffee and talk; the older man chuckles softly, then turns to the young man. Audio: quiet city hum, the paper cups' soft crinkle. The older man says in Uzbek with a deep, calm, warm Uzbek male voice of a man in his fifties, kind: \"Qayerga borasan, bolam?\" The young man answers in Uzbek with a soft, slightly husky young Uzbek male voice: \"Shahar chetiga... hali uzoq.\" Lip-sync: only the speaker's mouth moves. No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Ikkilanish",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R2"
+   ],
+   "lines": [
+    {
+     "who": "Notanish kishi",
+     "text": "Yoʻlim ustida ekan. Yur, olib ketaman."
+    },
+    {
+     "who": "Akmal (kadr ortida)",
+     "text": "Yarim tunda notanish odam… Ikkilandim. Lekin negadir ishondim."
+    }
+   ],
+   "prompt": "The older man stands, jingles his car keys and nods toward the street. Close-up on the young man: he looks at the man, at the empty dark avenue, then back, unsure; finally he picks up his bag. Audio: keys jingling, a long pause, his exhale. The older man says in Uzbek with a deep, calm, warm Uzbek male voice of a man in his fifties, simply: \"Yo'lim ustida ekan. Yur, olib ketaman.\" An off-screen man says in Uzbek with a soft, slightly husky young Uzbek male voice, calm and reflective: \"Yarim tunda notanish odam... Ikkilandim. Lekin negadir ishondim.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Pul kerakmas",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Notanish kishi",
+     "text": "Kerakmas. Yaxshi bor, bolam."
+    },
+    {
+     "who": "Akmal",
+     "text": "Rahmat, aka, men…"
+    }
+   ],
+   "prompt": "Inside the car outside the apartment block: the young man offers the banknotes; the older man shakes his head with a smile and pushes his hand back. Audio: the engine idling, the indicator ticking. The older man says in Uzbek with a deep, calm, warm Uzbek male voice of a man in his fifties, warm but firm: \"Kerakmas. Yaxshi bor, bolam.\" The young man starts in Uzbek with a soft, slightly husky young Uzbek male voice: \"Rahmat, aka, men...\" Lip-sync: only the speaker's mouth moves. No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Ketdi",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2"
+   ],
+   "lines": [
+    {
+     "who": "Akmal (kadr ortida)",
+     "text": "Rahmatimni ham tugatmadim. Ismini soʻramabman. Uni boshqa koʻrmadim."
+    }
+   ],
+   "prompt": "Night street outside the apartment block: the young man stands with his bags on the pavement as the old white sedan pulls away before he can finish; he raises a hand, too late, and watches the tail lights disappear. Audio: the car door shutting, the engine fading, then quiet. An off-screen man says in Uzbek with a soft, slightly husky young Uzbek male voice, calm and reflective: \"Rahmatimni ham tugatmadim. Ismini so'ramabman. Uni boshqa ko'rmadim.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Yillar oʻtib",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Talaba",
+     "text": "Menga…?"
+    }
+   ],
+   "prompt": "Ten years later at the same bus stop: the bearded man in the mustard scarf quietly holds one steaming cup out to the tired student, without a word. The student looks up, surprised. Audio: wind, steam, a distant tram bell. The student says in Uzbek with a quiet, tired young Uzbek male voice of a student: \"Menga...?\" Lip-sync: only the student speaks; the bearded man's mouth stays closed, he just smiles. No subtitles, no on-screen text."
+  },
+  {
+   "n": 9,
+   "title_uz": "Endi men",
+   "method": "Extend",
+   "extends": "8",
+   "lines": [
+    {
+     "who": "Akmal (kadr ortida)",
+     "text": "Endi bekatda yolgʻiz qolgan odamni koʻrsam, men ham ikkita kofe olaman. Sizga ham notanish odam yordam berganmi? Izohda yozing."
+    }
+   ],
+   "prompt": "The student takes the cup with both hands; the bearded man smiles and slides a little closer on the bench. Slow pull-back from the glowing bus shelter into the misty empty avenue, holding on the two small figures. Audio: wind, a soft warm piano note. An off-screen man says in Uzbek with a soft, slightly husky young Uzbek male voice, calm and reflective: \"Endi bekatda yolg'iz qolgan odamni ko'rsam, men ham ikkita kofe olaman. Sizga ham notanish odam yordam berganmi? Izohda yozing.\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Yarim tunda oxirgi avtobusdan qoldim. Notanish kishi indamay menga kofe uzatdi, uyimgacha olib bordi va pul olmadi. Ismini ham bilmayman. Sizga ham notanish odam yordam berganmi? Izohda yozing. #HayotHikoyasi #mehr #notanish #Powerty"
+}

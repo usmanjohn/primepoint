@@ -1,0 +1,209 @@
+{
+ "id": "2026-10-27-hayot-qogoz-42-bukish",
+ "number": 72,
+ "for": "Inom",
+ "date": "2026-10-27",
+ "series": "Hayotdagi matematika",
+ "title_uz": "Qogʻozni 42 marta buklasang",
+ "concept_uz": "Kechqurun hovlida Dilnoza akasi Boburga aytadi: «Shu qogʻozni 42 marta buklasam, Oyga yetadi.» Bobur kuladi — lekin har buklashda qogʻoz ustuni ikki barobar oʻsib, daftardan gʻishtga, binoga, bulutlar ustiga va Oydan ham narigacha choʻziladi. Oxirida Dilnoza tomoshabindan soʻraydi: 27-da 13 km boʻlsa, 28-da qancha?",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_16_21.py (story 41)"
+ ],
+ "facts": [
+  {
+   "claim": "Oddiy qogʻoz qalinligi taxminan 0,1 mm; har buklash qavatlarni ikki barobar oshiradi",
+   "source": "corner/management/commands/_stories_matematika_olami_16_21.py (story 41)"
+  },
+  {
+   "claim": "7 bukish ≈ 1,3 sm; 10 bukish ≈ 10 sm (gʻisht); 14 bukish ≈ 1,6 m; 20 bukish ≈ 105 m (30 qavatli bino)",
+   "source": "corner/management/commands/_stories_matematika_olami_16_21.py (story 41)"
+  },
+  {
+   "claim": "27 bukish ≈ 13 km (Everest va laynerlardan baland); 28 bukish ≈ 26 km",
+   "source": "corner/management/commands/_stories_matematika_olami_16_21.py (story 41)"
+  },
+  {
+   "claim": "30 bukish ≈ 107 km — koinot; 42 bukish ≈ 440 000 km, Oygacha 384 400 km",
+   "source": "corner/management/commands/_stories_matematika_olami_16_21.py (story 41)"
+  },
+  {
+   "claim": "Amalda 7–8 martadan koʻp buklash qiyin; Britni Gallivan 2002-yilda 1 km dan uzun qogʻozni 12 marta buklagan",
+   "source": "corner/management/commands/_stories_matematika_olami_16_21.py (story 41)"
+  }
+ ],
+ "style_line": "Premium 3D animated feature film style, warm Tashkent evening, soft golden lamplight against a deep blue sky with a big bright full Moon, rich colours, expressive characters, gentle comic mood, cinematic depth of field. No text, no letters, no numbers, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: kechki hovli",
+   "prompt": "Vertical 9:16 wide shot of a cosy Uzbek family courtyard in Tashkent at dusk: a wooden tapchan platform with a red-patterned quilt and a low table, a grapevine trellis overhead, a warm yellow lamp on the wall, a small apricot tree, and a big bright full Moon rising in the deep blue sky above the rooftops. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Dilnoza",
+   "prompt": "Vertical 9:16 full-body portrait of an Uzbek girl about 11, big curious dark eyes, two black braids, a YELLOW star-shaped hair clip on the left side, a teal atlas-patterned dress over white leggings, holding one plain white sheet of paper, confident clever grin, standing in a courtyard at dusk."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Bobur",
+   "prompt": "Vertical 9:16 full-body portrait of an Uzbek boy about 15, lanky, messy black hair, a RED baseball cap worn backwards, a grey t-shirt and dark track trousers, sneakers, arms crossed with a teasing big-brother smirk, standing in a courtyard at dusk."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Tapchanda ikkovi",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot in the same courtyard at dusk: the girl with the yellow star clip kneels on the tapchan holding the white sheet of paper up toward the full Moon; her brother in the backwards red cap sits beside her, leaning back on his hands, smirking. Same faces, same light."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Ustun Dilnozaning boʻyicha",
+   "from": "R4",
+   "prompt": "Change the scene: the same courtyard. Beside the tapchan stands a neat white column of tightly stacked folded paper, exactly as tall as the girl, who stands next to it measuring it against her head with her flat hand, proud. Her brother stares at it with his mouth open, cap askew. Same faces, same light, 9:16."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Ustun bulutlar ustida",
+   "from": "R4",
+   "prompt": "Change the scene: a dramatic low-angle shot looking up from the courtyard. A thin white column of folded paper rises from the tapchan straight up past the rooftops, through the clouds, past a passenger airliner with no markings, and above a distant snowy mountain peak, vanishing into the dark sky. The two children are tiny at its base, heads tilted back. Same faces, 9:16."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Ustun Oydan oʻtdi",
+   "prompt": "Vertical 9:16 view from deep space: the blue Earth at the bottom of the frame, a thin glowing white column of folded paper stretching from it up through black starry space, passing the grey Moon and continuing beyond it toward the top of the frame. Majestic, quiet, slightly funny."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Bahs",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Dilnoza",
+     "text": "Bilasanmi, shu qogʻozni qirq ikki marta buklasam — Oyga yetadi."
+    },
+    {
+     "who": "Bobur",
+     "text": "Ha-ha! Nari borsa bir metr boʻladi!"
+    }
+   ],
+   "prompt": "The girl folds the white sheet in half with a crisp snap and points at the full Moon; her brother bursts out laughing and falls back on the quilt. Audio: a sharp paper fold, crickets, his laugh. She says in Uzbek with a bright, lively 11-year-old Uzbek girl's voice, certain: \"Bilasanmi, shu qog'ozni qirq ikki marta buklasam — Oyga yetadi.\" He answers in Uzbek with a cracking, teasing 15-year-old Uzbek boy's voice, laughing: \"Ha-ha! Nari borsa bir metr bo'ladi!\" Lip-sync: only the speaker's mouth moves. No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Qoida",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2"
+   ],
+   "lines": [
+    {
+     "who": "Dilnoza",
+     "text": "Qalinligi millimetrning oʻndan biricha. Lekin har buklasang — ikki barobar qalinlashadi."
+    }
+   ],
+   "prompt": "Macro close-up: the girl's fingers fold the sheet again and again; each fold makes a thicker little block. She glances up at the camera with a sly smile. Audio: one paper snap per fold, rising in pitch. She says in Uzbek with a bright, lively 11-year-old Uzbek girl's voice, explaining like a teacher: \"Qalinligi millimetrning o'ndan biricha. Lekin har buklasang — ikki barobar qalinlashadi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Daftar, gʻisht",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Bobur",
+     "text": "Yettitada — daftarcha. Oʻntada — gʻisht. Koʻrdingmi?"
+    },
+    {
+     "who": "Dilnoza",
+     "text": "Shoshma hali."
+    }
+   ],
+   "prompt": "Comic beat on the tapchan: the folded paper block grows to the thickness of a thin notebook, then pops up to the size of a brick in the girl's hands. Her brother taps it, unimpressed. Audio: two magical 'whoomp' sounds, a knock on the block. He says in Uzbek with a cracking, teasing 15-year-old Uzbek boy's voice, teasing: \"Yettitada — daftarcha. O'ntada — g'isht. Ko'rdingmi?\" She replies in Uzbek with a bright, lively 11-year-old Uzbek girl's voice, calm: \"Shoshma hali.\" Lip-sync: only the speaker's mouth moves. No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Boʻyim baravar",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Dilnoza",
+     "text": "Oʻn toʻrtta — mening boʻyim. Yigirmatada — oʻttiz qavatli bino."
+    }
+   ],
+   "prompt": "The column of paper grows taller beside the girl until it reaches her head, then keeps shooting up past the grapevine toward the rooftops. The brother's cap slides off as he looks up. Audio: a rising whoosh, leaves rustling, the cap dropping. She says in Uzbek with a bright, lively 11-year-old Uzbek girl's voice, proud: \"O'n to'rtta — mening bo'yim. Yigirmatada — o'ttiz qavatli bino.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Bulutlar ustida",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Bobur",
+     "text": "Yigirma yettitada… oʻn uch kilometr?! Samolyotdan ham baland!"
+    }
+   ],
+   "prompt": "Slow tilt up along the paper column through the clouds as a passenger airliner glides past it, then above a snowy peak. Cut to the brother's stunned face, then back up. Audio: wind, a distant jet roar, the brother's gulp. He says in Uzbek with a cracking, teasing 15-year-old Uzbek boy's voice, amazed, voice cracking: \"Yigirma yettitada... o'n uch kilometr?! Samolyotdan ham baland!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Oydan nariga",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Dilnoza (kadr ortida)",
+     "text": "Oʻttiztada — koinot. Qirq ikkitada — toʻrt yuz qirq ming kilometr. Oy esa yaqinroq."
+    }
+   ],
+   "prompt": "Majestic slow push along the glowing paper column through starry space as it passes the Moon and keeps going. Audio: deep quiet space hum, a soft choir swell, one tiny paper rustle. An off-screen girl says in Uzbek with a bright, lively 11-year-old Uzbek girl's voice, softly triumphant: \"O'ttiztada — koinot. Qirq ikkitada — to'rt yuz qirq ming kilometr. Oy esa yaqinroq.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Amalda",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Bobur",
+     "text": "Yetti… sakkiz… boʻlmayapti-ku!"
+    },
+    {
+     "who": "Dilnoza",
+     "text": "Oddiy varaqni sakkizdan koʻp buklash juda qiyin. Lekin bitta qiz uzun qogʻozni oʻn ikki marta buklagan!"
+    }
+   ],
+   "prompt": "Back in the courtyard: the brother grabs a fresh sheet and folds it furiously; at the seventh fold it becomes a tiny stubborn lump that will not bend, and he strains with both hands, red-faced. The girl giggles. Audio: paper creaking, his effort grunts. He says in Uzbek with a cracking, teasing 15-year-old Uzbek boy's voice, frustrated: \"Yetti... sakkiz... bo'lmayapti-ku!\" She says in Uzbek with a bright, lively 11-year-old Uzbek girl's voice, amused: \"Oddiy varaqni sakkizdan ko'p buklash juda qiyin. Lekin bitta qiz uzun qog'ozni o'n ikki marta buklagan!\" Lip-sync: only the speaker's mouth moves. No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Savol",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Dilnoza",
+     "text": "Yigirma yettitada oʻn uch kilometr edi. Yigirma sakkizinchisida qancha? Izohda yozing!"
+    }
+   ],
+   "prompt": "Medium close-up: the girl turns from her defeated brother and looks straight into the camera, holding up the small folded block, eyebrows raised. Hold on her look at the end. Audio: crickets, one soft paper snap. She says in Uzbek with a bright, lively 11-year-old Uzbek girl's voice, playful: \"Yigirma yettitada o'n uch kilometr edi. Yigirma sakkizinchisida qancha? Izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Oddiy qogʻozni 42 marta buklasangiz, u Oydan ham nariga yetadi. Sir — ikki barobar oʻsishda: boshida arzimas, keyin bir zumda hammasini egallaydi. 27-bukishda 13 km. 28-chisida qancha? Izohda yozing! #HayotdagiMatematika #matematika #qogʻoz #Powerty"
+}
