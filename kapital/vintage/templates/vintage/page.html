@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+{% comment %}
+  The vintage page. One template for every analysis: kind (30+/60+/90+/NPL) and measure
+  (по сумме / по количеству) are words in the address, so every view has its own link.
+  Every number arrives already formatted from process.py; the template only places it.
+  No JavaScript: while a build is running the page reloads itself with a <meta refresh>.
+{% endcomment %}
+
+{% block extra_css %}
+{% include "vintage/style.html" %}
+{% if status.running %}<meta http-equiv="refresh" content="15">{% endif %}
+{% endblock extra_css %}
+
+{% block content %}
+<div class="vtg container-fluid px-4 py-4">
+
+  {% if messages %}{% for m in messages %}<div class="alert alert-{% if m.tags == 'error' %}danger{% else %}{{ m.tags|default:'info' }}{% endif %} no-print">{{ m }}</div>{% endfor %}{% endif %}
+
+  {# ── the build bar: when the results are from, and the button that recalculates ── #}
+  <div class="box no-print">
+    <div class="box-head"><span><i class="fa-solid fa-layer-group"></i>Данные анализа</span>
+      <span class="hint">файлы: {{ input_dir }}</span></div>
+    <div class="p-3 d-flex flex-wrap justify-content-between align-items-center gap-3">
+      <div>
+        {% if status.running %}
+          <div class="fw-semibold"><i class="fa-solid fa-spinner fa-spin me-2" style="color:#C9971A"></i>Идёт расчёт (начат {{ status.started }})</div>
+          <div class="small text-muted">Страница обновляется сама каждые 15 секунд.</div>
+        {% elif res %}
+          <div class="small text-muted">Рассчитано</div>
+          <div class="fs-5 fw-semibold"><i class="fa-regular fa-clock me-2" style="color:#C9971A"></i>{{ meta.built_at|slice:":10" }} {{ meta.built_at|slice:"11:16" }}
+            <span class="small text-muted fw-normal">· {{ meta.seconds }} с · файлы: {{ meta.files|join:", " }}</span></div>
+        {% else %}
+          <div class="fw-semibold">Анализ ещё не рассчитан.</div>
+          <div class="small text-muted">Положите parquet-файл(ы) в папку выше и нажмите «Пересчитать».
+            Колонки: date, anketa, issue_date, maks_dni, npl_category, portfel_amount (названия меняются в process.py → COLUMNS).</div>
+        {% endif %}
+        {% if status.error %}<div class="small mt-1 warn"><i class="fa-solid fa-circle-exclamation me-1"></i>Последний расчёт не удался: {{ status.error }}</div>{% endif %}
+      </div>
+      <form method="post" action="{% url 'vintage-rebuild' %}">{% csrf_token %}
+        <button class="btn btn-go" {% if status.running %}disabled{% endif %}><i class="fa-solid fa-rotate me-2"></i>Пересчитать</button>
+      </form>
+    </div>
+  </div>
+
+  {% if res %}
+  {# ── the header: which analysis, which measure ── #}
+  <div class="hero">
+    <div class="eyebrow">Винтажный анализ · {{ meta.first_month|date:"m.Y" }} — {{ meta.last_month|date:"m.Y" }}</div>
+    <h1><i class="fa-solid fa-chart-line"></i>{{ label }} <span style="font-size:16px;color:#B9B5AB">{{ measure_name }}</span></h1>
+    <div><span class="lab">Анализ</span>
+      {% for key, k in kinds.items %}<a class="chip {% if key == kind %}on{% endif %}" href="?kind={{ key }}&measure={{ measure }}">{{ k.label }}</a>{% endfor %}
+    </div>
+    <div><span class="lab">Считать</span>
+      {% for key, name in measures.items %}<a class="chip {% if key == measure %}on{% endif %}" href="?kind={{ kind }}&measure={{ key }}">{{ name }}</a>{% endfor %}
+      <a class="chip no-print" href="{% url 'vintage-plan' %}?kind={% if kind == 'npl' %}npl{% else %}dpd90{% endif %}"><i class="fa-solid fa-bullseye me-1"></i>Бизнес-план</a>
+      <a class="chip no-print" href="{% url 'vintage-excel' %}?kind={{ kind }}&measure={{ measure }}"><i class="fa-solid fa-file-excel me-1"></i>Excel</a>
+      <a class="chip no-print" href="javascript:window.print()"><i class="fa-solid fa-print me-1"></i>Печать</a>
+    </div>
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-lg-3"><div class="kpi"><div class="l"><i class="fa-solid fa-file-invoice"></i>Кредитов в поколениях</div><div class="v">{{ loans }}</div><div class="n">выданы с {{ meta.first_month|date:"m.Y" }}</div></div></div>
+    <div class="col-6 col-lg-3"><div class="kpi"><div class="l"><i class="fa-solid fa-layer-group"></i>Поколений</div><div class="v">{{ vintage_count }}</div><div class="n">по месяцу выдачи</div></div></div>
+    <div class="col-6 col-lg-3"><div class="kpi"><div class="l"><i class="fa-solid fa-ruler-horizontal"></i>Сравниваем на</div><div class="v">{{ ref }}-м месяце</div><div class="n">жизни кредита</div></div></div>
+    <div class="col-6 col-lg-3"><div class="kpi"><div class="l"><i class="fa-solid fa-calendar"></i>Последний месяц</div><div class="v">{{ meta.last_month|date:"m.Y" }}</div><div class="n">данные на конец месяца</div></div></div>
+  </div>
+
+  {# ── the sentences ── #}
+  <div class="box">
+    <div class="box-head"><span><i class="fa-solid fa-lightbulb"></i>Что видно</span><span class="hint">{{ label }}, {{ measure_name }}</span></div>
+    {% if insights %}<ul class="insights">{% for s in insights %}<li>{{ s }}</li>{% endfor %}</ul>
+    {% else %}<div class="nothing">Слишком мало истории для выводов.</div>{% endif %}
+  </div>
+
+  {# ── the picture ── #}
+  <div class="box">
+    <div class="box-head"><span><i class="fa-solid fa-chart-line"></i>Кривые по году выдачи</span>
+      <span class="hint">ось X — месяц жизни кредита, ось Y — доля, накопленная к этому месяцу</span></div>
+    <div class="p-3">
+      <svg class="curves" viewBox="0 0 {{ curves.W }} {{ curves.H }}" role="img" aria-label="Кривые поколений">
+        {% for g in curves.grid %}<line class="grid" x1="{{ curves.L }}" x2="{{ curves.x_end }}" y1="{{ g.y }}" y2="{{ g.y }}"/>
+        <text x="{{ curves.L|add:'-6' }}" y="{{ g.y }}" text-anchor="end" dominant-baseline="middle">{{ g.label }}</text>{% endfor %}
+        <line class="axis" x1="{{ curves.L }}" x2="{{ curves.x_end }}" y1="{{ curves.y_axis }}" y2="{{ curves.y_axis }}"/>
+        {% for t in curves.ticks %}<text x="{{ t.x }}" y="{{ curves.H|add:'-10' }}" text-anchor="middle">{{ t.label }}</text>{% endfor %}
+        {% for line in curves.lines %}<polyline points="{{ line.points }}" stroke="{{ line.colour }}"><title>{{ line.name }}</title></polyline>{% endfor %}
+        <polyline class="typ" points="{{ curves.typical }}"><title>Типичная кривая (для прогноза)</title></polyline>
+      </svg>
+      <div class="legend mt-2">
+        {% for line in curves.lines %}<span><i style="background:{{ line.colour }}"></i>{{ line.name }}</span>{% endfor %}
+        <span><i class="typ"></i>типичная кривая (по {{ recent }} новейшим поколениям) — на ней строится прогноз</span>
+      </div>
+      <div class="small muted mt-1">Линия года обрывается, когда меньше половины его поколений дожили до этого месяца. Чем выше и круче линия — тем хуже выдача того года.</div>
+    </div>
+  </div>
+
+  {# ── the triangle ── #}
+  <div class="box">
+    <div class="box-head"><span><i class="fa-solid fa-table-cells"></i>Треугольник поколений, %</span>
+      <span class="hint">строка — месяц выдачи, столбец — месяц жизни (MOB)
+        <span class="key"></span>факт <span class="key p"></span>прогноз{% if meta.missing_from %} <span class="key gap"></span>нет данных{% endif %}</span></div>
+    <div class="tri-wrap">
+      <table class="tri">
+        <thead><tr><th class="v">Выдача</th>{% for m in mobs %}<th>{{ m }}</th>{% endfor %}</tr></thead>
+        <tbody>
+        {% for r in rows %}<tr class="{% if r.year_start %}ys{% endif %}"><td class="v">{{ r.vintage }}</td>{% for c in r.cells %}{% if c.gap %}<td class="gap"></td>{% else %}<td class="{% if c.proj %}p{% endif %}" style="background:{{ c.bg }};color:{{ c.fg }}">{{ c.text }}</td>{% endif %}{% endfor %}</tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="p-2 px-3 small muted">Читать по столбцу: одинаковый возраст — честное сравнение поколений. Читать по строке: как поколение стареет.
+      Штриховка — прогноз: последний факт строки плюс средний прирост этого месяца у {{ recent }} новейших поколений, которые до него дошли.
+      {% if meta.missing_from %}<br>С {{ meta.missing_from|date:"m.Y" }} по {{ meta.missing_to|date:"m.Y" }} данные поквартальные: у поколений тех лет значение есть только в месяцы среза, остальные клетки пустые — они не угадываются и не входят в средние.{% endif %}</div>
+  </div>
+
+  <div class="row g-3">
+    {# ── transitions ── #}
+    <div class="col-xl-6">
+      <div class="box h-100">
+        <div class="box-head"><span><i class="fa-solid fa-shuffle"></i>Куда кредиты переходят за месяц, %</span>
+          <span class="hint">последние {{ migration_months }} мес., {{ measure_name }}</span></div>
+        <div class="table-responsive">
+          <table class="table table-sm mig">
+            <thead><tr><th class="s">Из \ в</th>{% for c in transitions.cols %}<th>{{ c }}</th>{% endfor %}<th>Всего</th></tr></thead>
+            <tbody>{% for r in transitions.rows %}<tr><td class="s">{{ r.state }}</td>{% for c in r.cells %}<td class="{% if c.diag %}d{% endif %}" style="background:{{ c.bg }};color:{{ c.fg }}">{{ c.text }}</td>{% endfor %}<td class="muted">{{ r.total }}</td></tr>{% endfor %}</tbody>
+          </table>
+        </div>
+        {% for name, value in transitions.key %}<div class="flow"><span>{{ name }}</span><b>{{ value }}</b></div>{% endfor %}
+        <div class="p-2 px-3 small muted">Строка = где кредит был, столбец = где он через месяц; «вышел» — погашен, списан или продан. Жирная диагональ — остался на месте.</div>
+      </div>
+    </div>
+    {# ── early signal + seasonality ── #}
+    <div class="col-xl-6">
+      <div class="box">
+        <div class="box-head"><span><i class="fa-solid fa-bell"></i>Ранний сигнал</span>
+          <span class="hint">30+ на {{ early_mob }}-м мес. → {{ early.late_label|default:"" }} на {{ late_mob }}-м</span></div>
+        {% if early %}
+        <div class="p-3 pb-2" style="font-size:13.5px">
+          Связь <b>{{ early.strength }}</b> (корреляция {{ early.r }}, по {{ early.n }} поколениям, по сумме).<br>
+          <span class="muted">{{ early.formula }}</span>
+        </div>
+        {% if early.rows %}
+        <table class="table table-sm mb-0">
+          <thead><tr><th class="ps-3">Выдача</th><th class="m">30+ на {{ early_mob }}-м</th><th class="m">прогноз по сигналу</th><th class="m pe-3">прогноз по кривой</th></tr></thead>
+          <tbody>{% for r in early.rows %}<tr><td class="ps-3">{{ r.vintage }}</td><td class="m">{{ r.early }}</td><td class="m">{{ r.by_signal }}</td><td class="m pe-3">{{ r.by_curve }}</td></tr>{% endfor %}</tbody>
+        </table>{% endif %}
+        <div class="p-2 px-3 small muted">Если связь сильная, о поколении можно судить уже через {{ early_mob }} месяца — не дожидаясь года. Два прогноза рядом: если они сильно расходятся, поколение ведёт себя необычно.</div>
+        {% else %}<div class="nothing">Нужно хотя бы 8 поколений, доживших до {{ late_mob }}-го месяца.</div>{% endif %}
+      </div>
+      <div class="box">
+        <div class="box-head"><span><i class="fa-solid fa-calendar-days"></i>Месяц выдачи</span><span class="hint">{{ label }} на {{ ref }}-м месяце жизни</span></div>
+        {% if season %}
+        <table class="table table-sm mb-0"><tbody>
+          {% for s in season %}<tr><td class="ps-3" style="width:110px">{{ s.name }}</td><td><span class="bar" style="width:{{ s.bar }}%"></span></td><td class="m pe-3" style="width:80px">{{ s.value }}</td></tr>{% endfor %}
+        </tbody></table>
+        {% else %}<div class="nothing">Нужно хотя бы по 2 поколения на каждый календарный месяц.</div>{% endif %}
+      </div>
+    </div>
+  </div>
+
+  {# ── for the people who ask «how do I read this?» ── #}
+  <div class="box mt-3">
+    <div class="box-head"><span><i class="fa-solid fa-circle-question"></i>Как это читать</span></div>
+    <div class="p-3">
+      <details class="help"><summary>Что такое поколение и треугольник</summary>
+        <p class="mt-2">Поколение — все кредиты, выданные в один месяц. Каждое поколение отслеживается помесячно с момента выдачи (MOB — месяц жизни).
+          В клетке — доля поколения, которая <b>хотя бы раз</b> была в «{{ label }}» к этому месяцу жизни. «Хотя бы раз» — чтобы кредиты, которые потом
+          списали или вылечили, не выпадали и старые поколения не выглядели чище, чем были.</p>
+        <p>Общий процент NPL портфеля смешивает молодые кредиты (они ещё не успели испортиться) со старыми. Треугольник сравнивает поколения
+          в одинаковом возрасте — поэтому видно, стала ли выдача лучше или хуже.</p></details>
+      <details class="help mt-2"><summary>По сумме и по количеству</summary>
+        <p class="mt-2">По количеству — плохие кредиты / все кредиты поколения. По сумме — остаток кредита в месяц, когда он впервые стал плохим /
+          остаток поколения в первый месяц. Делим на начальный остаток, а не на текущий: текущий уменьшается с погашениями, и доля росла бы сама.</p></details>
+      <details class="help mt-2"><summary>Как получается бизнес-план</summary>
+        <p class="mt-2">Молодые поколения дописываются средними приростами старых (штриховка в треугольнике). Плановая выдача каждого месяца идёт
+          по типичной кривой. Сумма двух частей — ожидаемые новые {{ label }} по месяцам. Вторая проверка — матрица переходов, применённая к сегодняшнему портфелю.</p></details>
+      <details class="help mt-2"><summary>Проверки данных</summary>
+        <table class="table table-sm mt-2" style="max-width:760px">{% for k, v in meta.checks.items %}<tr><td>{{ k }}</td><td class="m">{{ v }}</td></tr>{% endfor %}</table></details>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock content %}

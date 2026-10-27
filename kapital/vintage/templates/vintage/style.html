@@ -1,0 +1,84 @@
+{% comment %}
+  The look of the vintage pages (page.html, plan.html) — the same Kapitalbank palette as
+  the collateral app: yellow leads, charcoal second, red only for problems.
+  Everything sits under .vtg so it never touches the rest of the site.
+{% endcomment %}
+<style>
+  .vtg{--ink:#0B0B0C;--soft:#2A2A2E;--gold:#F2C230;--gd:#C9971A;--gtext:#8C6A12;
+       --rule:#E4E1D8;--paper:#FAF8F2;--muted:#8A867C;--bad:#B3341F;color:var(--ink)}
+  .vtg a{color:inherit}
+  .vtg .hero{background:var(--ink);color:#fff;border-radius:12px;padding:22px 26px;margin-bottom:20px}
+  .vtg .hero .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .vtg .hero h1{font-weight:500;font-size:26px;margin:6px 0 12px}
+  .vtg .hero h1 i{color:var(--gold);margin-right:10px}
+  .vtg .hero .chip{background:transparent;color:#fff;border-color:#55524B}
+  .vtg .hero .chip.on{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+  .vtg .hero .lab{font-size:11px;color:#B9B5AB;margin-right:8px;text-transform:uppercase;letter-spacing:.08em}
+  .vtg .btn-go{background:var(--gold);border:none;color:var(--ink);font-weight:600}
+  .vtg .btn-go:hover{background:var(--gd);color:var(--ink)}
+  .vtg .btn-line{border:1px solid var(--rule);background:#fff;color:var(--ink)}
+  .vtg .btn-line:hover{border-color:var(--gold)}
+  .vtg .box{background:#fff;border:1px solid var(--rule);border-radius:12px;margin-bottom:20px}
+  .vtg .box-head{background:var(--paper);border-bottom:1px solid var(--rule);border-radius:12px 12px 0 0;
+       padding:10px 16px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gtext);
+       display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+  .vtg .box-head i{margin-right:8px;color:var(--gd)}
+  .vtg .box-head .hint{letter-spacing:0;text-transform:none;color:var(--muted);font-size:12px}
+  .vtg .kpi{background:#fff;border:1px solid var(--rule);border-radius:12px;padding:12px 14px;height:100%}
+  .vtg .kpi .l{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .vtg .kpi .l i{color:var(--gd);margin-right:6px}
+  .vtg .kpi .v{font-size:21px;font-weight:600;margin-top:4px;white-space:nowrap}
+  .vtg .kpi .n{font-size:12px;color:var(--muted)}
+  .vtg .chip{display:inline-block;border:1px solid var(--rule);border-radius:20px;padding:3px 12px;
+       font-size:12.5px;text-decoration:none;margin:0 6px 6px 0;background:#fff}
+  .vtg .chip:hover{border-color:var(--gold)}
+  .vtg .chip.on{border-color:var(--gold);background:#FFF6D6;font-weight:600}
+  .vtg .insights{margin:0;padding:12px 16px 12px 36px;font-size:14px;line-height:1.55}
+  .vtg .insights li{margin-bottom:6px}
+  .vtg table{font-size:13px;margin:0}
+  .vtg th{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;white-space:nowrap}
+  .vtg td.m,.vtg th.m{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .vtg .muted{color:var(--muted)}
+  .vtg .warn{color:var(--bad)}
+  .vtg .nothing{padding:14px 16px;color:var(--muted);font-size:13px}
+  /* the triangle */
+  .vtg .tri-wrap{overflow:auto;max-height:640px}
+  .vtg table.tri{border-collapse:separate;border-spacing:0;font-size:11.5px}
+  .vtg table.tri th,.vtg table.tri td{padding:3px 5px;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .vtg table.tri thead th{position:sticky;top:0;background:var(--paper);z-index:2;border-bottom:1px solid var(--rule)}
+  .vtg table.tri .v{position:sticky;left:0;background:#fff;z-index:1;text-align:left;font-weight:600;border-right:1px solid var(--rule)}
+  .vtg table.tri thead .v{z-index:3;background:var(--paper)}
+  .vtg table.tri tr.ys td{border-top:2px solid var(--ink)}
+  .vtg table.tri td.p{font-style:italic;opacity:.75;
+       background-image:repeating-linear-gradient(135deg,rgba(0,0,0,.07) 0 2px,transparent 2px 6px)!important}
+  .vtg table.tri td.gap,.vtg .key.gap{background:#EFEDE6}
+  .vtg .key{display:inline-block;width:22px;height:12px;border:1px solid var(--rule);vertical-align:middle;margin:0 4px 0 10px}
+  .vtg .key.p{background-image:repeating-linear-gradient(135deg,rgba(0,0,0,.18) 0 2px,transparent 2px 6px)}
+  /* transitions */
+  .vtg table.mig td,.vtg table.mig th{text-align:right;padding:4px 7px;font-variant-numeric:tabular-nums}
+  .vtg table.mig td.s,.vtg table.mig th.s{text-align:left;font-weight:600}
+  .vtg table.mig td.d{font-weight:700}
+  .vtg .flow{display:flex;justify-content:space-between;gap:10px;padding:7px 16px;border-top:1px solid var(--rule);font-size:13.5px}
+  .vtg .flow b{white-space:nowrap}
+  /* bars */
+  .vtg .bar{height:9px;border-radius:3px;background:var(--gold);min-width:2px;display:inline-block;vertical-align:middle}
+  .vtg .bar.dark{background:var(--soft)}
+  /* the curves picture */
+  .vtg svg.curves{width:100%;height:auto;display:block}
+  .vtg svg.curves .grid{stroke:var(--rule);stroke-width:1}
+  .vtg svg.curves .axis{stroke:var(--muted);stroke-width:1}
+  .vtg svg.curves text{font-size:11px;fill:var(--muted)}
+  .vtg svg.curves polyline{fill:none;stroke-width:2.2;stroke-linejoin:round}
+  .vtg svg.curves polyline.typ{stroke:var(--ink);stroke-dasharray:6 5;stroke-width:2}
+  .vtg .legend span{display:inline-block;margin:0 14px 4px 0;font-size:12.5px}
+  .vtg .legend i{display:inline-block;width:18px;height:3px;vertical-align:middle;margin-right:6px}
+  .vtg .legend i.typ{background:repeating-linear-gradient(90deg,var(--ink) 0 6px,transparent 6px 10px)}
+  .vtg details.help summary{cursor:pointer;color:var(--gtext);font-size:13.5px}
+  .vtg details.help{font-size:13.5px;line-height:1.55}
+  .vtg .tag{font-size:10.5px;border:1px solid var(--rule);border-radius:10px;padding:1px 7px;color:var(--muted)}
+  .vtg .box-head .hint{overflow-wrap:anywhere;min-width:0}
+  .vtg .insights,.vtg .flow span{overflow-wrap:anywhere}
+  @media (max-width:576px){.vtg{padding-left:12px!important;padding-right:12px!important}
+       .vtg .kpi .v{font-size:17px;white-space:normal}.vtg .hero h1{font-size:21px}}
+  @media print{.vtg .no-print{display:none!important}.vtg .tri-wrap{max-height:none;overflow:visible}}
+</style>

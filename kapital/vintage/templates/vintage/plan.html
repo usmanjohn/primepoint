@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% comment %}
+  The business plan: expected NEW 90+ / NPL money per month for the next 12 months, from the
+  existing book (finished triangle rows) and from the planned lending (typical curve), plus the
+  second route — the transitions table applied to today's portfolio.
+  The form is a plain GET form: every plan has its own link.
+{% endcomment %}
+
+{% block extra_css %}{% include "vintage/style.html" %}{% endblock extra_css %}
+
+{% block content %}
+<div class="vtg container-fluid px-4 py-4">
+
+  <div class="hero">
+    <div class="eyebrow"><a href="{% url 'vintage' %}?kind={{ kind }}" style="color:#F2C230">Винтажный анализ</a> · бизнес-план</div>
+    <h1><i class="fa-solid fa-bullseye"></i>{{ label }}: следующие {{ months }} месяцев</h1>
+    <div><span class="lab">Что планируем</span>
+      <a class="chip {% if kind == 'dpd90' %}on{% endif %}" href="?kind=dpd90">Просрочка 90+</a>
+      <a class="chip {% if kind == 'npl' %}on{% endif %}" href="?kind=npl">NPL</a>
+    </div>
+  </div>
+
+  <div class="box no-print">
+    <div class="box-head"><span><i class="fa-solid fa-sliders"></i>Плановая выдача</span>
+      <span class="hint">по умолчанию — средняя выдача последних 12 месяцев: {{ default }} {{ unit }}</span></div>
+    <form method="get" class="p-3 row g-3 align-items-end">
+      <input type="hidden" name="kind" value="{{ kind }}">
+      <div class="col-sm-4 col-lg-3"><label class="form-label small">Выдача в месяц, {{ unit }}</label>
+        <input class="form-control" name="lending" value="{{ lending }}"></div>
+      <div class="col-sm-4 col-lg-3"><label class="form-label small">Рост выдачи, % в месяц</label>
+        <input class="form-control" name="growth" value="{{ growth }}"></div>
+      <div class="col-sm-4 col-lg-6 d-flex gap-2 flex-wrap">
+        <button class="btn btn-go"><i class="fa-solid fa-calculator me-2"></i>Посчитать</button>
+        <a class="btn btn-line" href="?{{ query }}&excel=1"><i class="fa-solid fa-file-excel me-2"></i>Excel</a>
+        <a class="btn btn-line" href="javascript:window.print()"><i class="fa-solid fa-print me-2"></i>Печать</a>
+      </div>
+    </form>
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-lg-3"><div class="kpi"><div class="l"><i class="fa-solid fa-hand-holding-dollar"></i>Выдача за {{ months }} мес.</div><div class="v">{{ year_lent }}</div><div class="n">{{ unit }}</div></div></div>
+    <div class="col-6 col-lg-3"><div class="kpi"><div class="l"><i class="fa-solid fa-triangle-exclamation"></i>Новые {{ label }}</div><div class="v warn">{{ year_total }}</div><div class="n">{{ unit }}, всего за {{ months }} мес.</div></div></div>
+    <div class="col-6 col-lg-3"><div class="kpi"><div class="l"><i class="fa-solid fa-box-archive"></i>Из текущего портфеля</div><div class="v">{{ year_book }}</div><div class="n">{{ unit }}</div></div></div>
+    <div class="col-6 col-lg-3"><div class="kpi"><div class="l"><i class="fa-solid fa-seedling"></i>Из новой выдачи</div><div class="v">{{ year_new }}</div><div class="n">{{ unit }}</div></div></div>
+  </div>
+
+  <div class="box">
+    <div class="box-head"><span><i class="fa-solid fa-table"></i>Сколько остатка впервые станет «{{ label }}», {{ unit }}</span>
+      <span class="hint"><span class="bar dark" style="width:18px"></span> текущий портфель &nbsp; <span class="bar" style="width:18px"></span> новая выдача</span></div>
+    <div class="table-responsive">
+      <table class="table table-sm mb-0">
+        <thead><tr><th class="ps-3">Месяц</th><th class="m">Выдача</th><th class="m">Из портфеля</th><th class="m">Из новой выдачи</th><th class="m">Всего</th><th style="width:30%"></th><th class="m pe-3">Накоплено</th></tr></thead>
+        <tbody>{% for r in rows %}<tr>
+          <td class="ps-3">{{ r.month }}</td><td class="m muted">{{ r.lending }}</td><td class="m">{{ r.book }}</td><td class="m">{{ r.new }}</td>
+          <td class="m fw-semibold">{{ r.total }}</td>
+          <td><span class="bar dark" style="width:{{ r.bar_book }}%"></span><span class="bar" style="width:{{ r.bar_new }}%"></span></td>
+          <td class="m pe-3">{{ r.cum }}</td></tr>{% endfor %}</tbody>
+      </table>
+    </div>
+    <div class="p-2 px-3 small muted">Это поток: остаток, который <b>впервые</b> дойдёт до «{{ label }}» в этом месяце. Из портфеля — поколения,
+      выданные с {{ meta.first_month|date:"m.Y" }}, идут дальше по своим строкам треугольника (штриховка). Из новой выдачи — каждый плановый месяц
+      идёт по типичной кривой. Кредиты, выданные раньше {{ meta.first_month|date:"m.Y" }}, сюда не входят.</div>
+  </div>
+
+  <div class="box">
+    <div class="box-head"><span><i class="fa-solid fa-shuffle"></i>Проверка вторым способом: доля в портфеле</span>
+      <span class="hint">матрица переходов последних 12 мес. × сегодняшний портфель + плановая выдача</span></div>
+    <div class="table-responsive">
+      <table class="table table-sm mb-0">
+        <thead><tr><th class="ps-3">Месяц</th><th class="m">Портфель, {{ unit }}</th><th class="m">«{{ label }}», {{ unit }}</th><th class="m pe-3">Доля</th></tr></thead>
+        <tbody>{% for r in stock %}<tr {% if r.fact %}style="background:#FFF6D6"{% endif %}>
+          <td class="ps-3">{{ r.month }} {% if r.fact %}<span class="tag">факт</span>{% endif %}</td>
+          <td class="m">{{ r.total }}</td><td class="m">{{ r.bad }}</td><td class="m pe-3 fw-semibold">{{ r.share }}</td></tr>{% endfor %}</tbody>
+      </table>
+    </div>
+    <div class="p-2 px-3 small muted">Это запас, а не поток: какая доля портфеля будет в «{{ label }}» в конце месяца. Каждый месяц портфель
+      переходит между состояниями так, как переходил в последние 12 месяцев (с погашениями), а плановая выдача добавляется в лучшее состояние.
+      Если доля здесь растёт, а поток выше тоже растёт — сигнал одинаковый.</div>
+  </div>
+</div>
+{% endblock content %}
