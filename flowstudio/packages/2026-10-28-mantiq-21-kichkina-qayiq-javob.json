@@ -1,0 +1,237 @@
+{
+ "id": "2026-10-28-mantiq-21-kichkina-qayiq-javob",
+ "number": 75,
+ "for": "Jonibek",
+ "date": "2026-10-28",
+ "series": "Mantiq maydoni",
+ "title_uz": "Kichkina qayiq — javob",
+ "concept_uz": "21-oktabrdagi «Kichkina qayiq» videosining javobi: 13 marta. Sirri — «moki»: bolalar oʻtadi, bitta bola qaytadi, katta oʻtadi, ikkinchi bola qaytadi. Bu toʻrt oʻtish bitta kattani oʻtkazadi: 3 × 4 + 1 = 13. Oldingi videodagi R1–R5 rasmlar saqlangan boʻlsa, qayta ishlating.",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "logic/management/commands/_puzzles_logic_17_24.py (puzzle 21)"
+ ],
+ "facts": [
+  {
+   "claim": "Javob: 13 (answer_key '13')",
+   "source": "puzzle 21 answer_key"
+  },
+  {
+   "claim": "Jasur 40 + Afsona 36 = 76 kg — bolalar birga sigʻadi",
+   "source": "puzzle 21 body_uz; solution_uz qadam 1"
+  },
+  {
+   "claim": "1: bolalar birga oʻtadi; 2: Afsona qaytadi; 3: bobo yolgʻiz oʻtadi; 4: Jasur qaytadi — ikki bola yana boshlangʻich qirgʻoqda",
+   "source": "puzzle 21 solution_uz qadam 1–4"
+  },
+  {
+   "claim": "Bu toʻrt oʻtish dada uchun (5–8) va oyi uchun (9–12) takrorlanadi; oxirida bolalar birga oʻtadi — 13",
+   "source": "puzzle 21 solution_uz qadam 5–6"
+  },
+  {
+   "claim": "Nega kam emas: katta doim yolgʻiz oʻtadi, qayiqni katta qaytarsa suzishi behuda; har katta 4 oʻtish; 3 × 4 + 1 = 13",
+   "source": "puzzle 21 solution_uz qadam 7"
+  },
+  {
+   "claim": "Sirri: moki — avvalgi holatga qaytaradigan, lekin bitta ishni bajaradigan takroriy harakat",
+   "source": "puzzle 21 solution_uz lg-moral"
+  },
+  {
+   "claim": "Raund 3: 2026-10-19 ochilgan, javobi 2026-10-26 da ochildi — bugun (2026-10-28) javob videosi ruxsat; savol videosi 2026-10-21 da Jonibekka ketgan (№61)",
+   "source": "_puzzles_logic_17_24.py SCHEDULE start 2026-10-05 + round 3; sent.tsv №61"
+  }
+ ],
+ "style_line": "Cinematic photoreal, crisp clear mountain morning, cold turquoise river, golden autumn poplars, 35mm film look, warm family-adventure mood. No text, no letters, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: togʻ daryosi va qayiq (21-oktabr videosidagi rasm)",
+   "prompt": "Vertical 9:16 wide shot of a fast clear turquoise mountain river between pebble banks, snowy peaks and golden poplars behind. On the near bank a very small old wooden rowing boat with two oars is pulled onto the pebbles. The far bank with a footpath is clearly visible. No people, no signs."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Besh kishilik oila qirgʻoqda (21-oktabr videosidagi rasm)",
+   "from": "R1",
+   "prompt": "Add a family of five standing in a row on the near bank beside the little boat, all facing the camera, same river, same light, 9:16. Left to right: a big broad grandfather of about 70 with a white beard and a dark BLUE skullcap; a tall father of about 40 in a GREY fleece jacket; a mother of about 38 with a RED scarf around her neck and a hiking backpack; a skinny 12-year-old boy in an ORANGE hoodie; a small 10-year-old girl with two braids and a PURPLE raincoat. Hiking clothes, no logos."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Bobo qayiqda (21-oktabr videosidagi rasm)",
+   "from": "R2",
+   "prompt": "Change the moment: the big grandfather in the dark blue skullcap now sits alone in the little boat at the water's edge, the boat pressed deep into the water with the rim just above the surface; the rest of the family stands on the bank watching with wide eyes. Same faces, same clothes, same light, 9:16."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Yaqin plan: dada va oyi (21-oktabr videosidagi rasm)",
+   "from": "R2",
+   "prompt": "Change the framing: a medium two-shot of only the father in the grey fleece and the mother with the red scarf, standing by the boat, looking at it and doubtfully at each other. Same faces, same clothes, same light, 9:16."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Yaqin plan: Jasur va Afsona (21-oktabr videosidagi rasm)",
+   "from": "R2",
+   "prompt": "Change the framing: a medium two-shot of only the boy in the orange hoodie and the girl in the purple raincoat with two braids, standing by the bow of the little boat, the boy proudly puffing out his chest, the girl smiling slyly. Same faces, same clothes, same light, 9:16."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Bolalar birga qayiqda",
+   "from": "R2",
+   "prompt": "Change the scene: the little rowing boat is now in the middle of the turquoise river, filmed from the side. Only the boy in the orange hoodie and the girl in the purple raincoat with two braids sit in it together, the boy rowing; the boat floats comfortably. Small on the near bank behind them stand the grandfather, the father and the mother, waving. Same faces, same clothes, same light, 9:16."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Bobo yolgʻiz qayiqda",
+   "from": "R3",
+   "prompt": "Change the scene: the big grandfather in the dark blue skullcap rows the little low boat ALONE across the middle of the river, filmed from the far bank; on the far bank in the foreground stands the boy in the orange hoodie, waiting with open arms. Small on the near bank behind: the father, the mother and the girl in the purple raincoat. Same faces, same clothes, same light, 9:16."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Hammasi narigi qirgʻoqda",
+   "from": "R2",
+   "prompt": "Change the scene: all five family members now stand together on the FAR bank of the river, the little boat pulled up on the pebbles beside them, the near bank empty in the background. The grandfather lifts the girl onto his shoulders, the boy jumps with joy, the parents laugh. Same faces, same clothes, same light, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Javob: 13",
+   "method": "Frames to Video",
+   "start": "R2",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Javob: oʻn uch marta. Bundan kam boʻlmaydi. Qanday qilib? Koʻring."
+    }
+   ],
+   "prompt": "The frozen family on the bank comes back to life with one bright bell ring: the splash of water in the air falls, everyone blinks and turns to the boat. Fast push-in. Audio: a bell, then the river rushes again. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Javob: o'n uch marta. Bundan kam bo'lmaydi. Qanday qilib? Ko'ring.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Afsonaning gʻoyasi",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Afsona",
+     "text": "Men oʻttiz olti, akam qirq. Ikkalamiz — yetmish olti!"
+    },
+    {
+     "who": "Jasur",
+     "text": "Demak, biz birga sigʻamiz!"
+    }
+   ],
+   "prompt": "The girl in the purple raincoat grabs her brother by the sleeve and points at the boat, the boy nods eagerly. Audio: a light playful plink, the river. Afsona says in Uzbek with a confident, playful voice of a 10-year-old girl: \"Men o'ttiz olti, akam qirq. Ikkalamiz — yetmish olti!\" Jasur says in Uzbek with an eager, bright voice of a 12-year-old boy: \"Demak, biz birga sig'amiz!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "1 va 2",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Bir: bolalar birga oʻtadi. Ikki: Afsona qayiqni qaytarib keladi."
+    }
+   ],
+   "prompt": "The two children row together across the river and land on the far bank; then the girl jumps back into the boat alone and rows back towards the family. Audio: oars splashing, children laughing. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Bir: bolalar birga o'tadi. Ikki: Afsona qayiqni qaytarib keladi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "3 va 4",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Bobo",
+     "text": "Yetib keldim!"
+    },
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Uch: bobo yolgʻiz oʻtadi. Toʻrt: Jasur qayiqni qaytaradi."
+    }
+   ],
+   "prompt": "The grandfather rows alone across the river, the low boat creaking, and steps out onto the far bank; the boy in the orange hoodie hops in and rows back towards the near bank. Audio: wooden creak, splashing oars, a happy grunt. The grandfather says in Uzbek with a deep, slow, good-humoured voice of a 70-year-old man: \"Yetib keldim!\" An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Uch: bobo yolg'iz o'tadi. To'rt: Jasur qayiqni qaytaradi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Yana boshidagidek",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R5",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Jasur",
+     "text": "Ikkalamiz yana shu qirgʻoqdamiz!"
+    },
+    {
+     "who": "Afsona",
+     "text": "Lekin bobo endi narida!"
+    }
+   ],
+   "prompt": "On the near bank the two children stand side by side by the boat again, high-five each other and look at their father with a cheeky grin. Audio: a high-five slap, the river. Jasur says in Uzbek with an eager, bright voice of a 12-year-old boy: \"Ikkalamiz yana shu qirg'oqdamiz!\" Afsona says in Uzbek with a confident, playful voice of a 10-year-old girl: \"Lekin bobo endi narida!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Moki",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R4",
+    "R6",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Toʻrt oʻtish — bitta katta odam. Dada uchun yana toʻrtta, oyi uchun yana toʻrtta. Hammasi oʻn ikki."
+    }
+   ],
+   "prompt": "Quick montage on the same river: the children cross together, one comes back, the father rows alone, the other child comes back; then the same again with the mother rowing alone. Speeded-up, playful rhythm. Audio: a ticking metronome and splashing oars. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"To'rt o'tish — bitta katta odam. Dada uchun yana to'rtta, oyi uchun yana to'rtta. Hammasi o'n ikki.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Oʻn uchinchi",
+   "method": "Frames to Video",
+   "start": "R6",
+   "end": "R8",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Oʻn uch: bolalar oxirgi marta birga oʻtadi. Hamma narigi qirgʻoqda!"
+    }
+   ],
+   "prompt": "The two children row together one last time and land on the far bank, where the whole family runs to hug them; the grandfather lifts the girl onto his shoulders. Audio: oars, then cheering and laughter. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"O'n uch: bolalar oxirgi marta birga o'tadi. Hamma narigi qirg'oqda!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Nega kam emas?",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Bobo",
+     "text": "Katta odam qayiqni qaytarsa, suzgani behuda ketadi."
+    },
+    {
+     "who": "Dada",
+     "text": "Shuning uchun har birimizga toʻrtta oʻtish: uch karra toʻrt, yana bitta — oʻn uch."
+    }
+   ],
+   "prompt": "The grandfather, with the girl on his shoulders, wags a finger wisely at the camera; the father nods beside him. Audio: the river, a warm low cello note. The grandfather says in Uzbek with a deep, slow, good-humoured voice of a 70-year-old man: \"Katta odam qayiqni qaytarsa, suzgani behuda ketadi.\" The father says in Uzbek with a steady, slightly worried voice of a 40-year-old man: \"Shuning uchun har birimizga to'rtta o'tish: uch karra to'rt, yana bitta — o'n uch.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 9,
+   "title_uz": "Sirri",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Sirri: mokini toping — boshiga qaytaradigan, lekin bitta ishni bajaradigan harakat. Siz topdingizmi? Izohda yozing!"
+    }
+   ],
+   "prompt": "Slow pull-back and rise above the river: the family small on the far bank, the little boat resting on the pebbles, the mountains glowing in the sun. Audio: a final soft bell, wind. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Sirri: mokini toping — boshiga qaytaradigan, lekin bitta ishni bajaradigan harakat. Siz topdingizmi? Izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Javob: 13! Bolalar birga oʻtadi, bitta bola qaytadi, katta oʻtadi, ikkinchi bola qaytadi — bu «moki» bitta kattani oʻtkazadi. Uch katta: 3 × 4 = 12, oxirida bolalar birga — 13. Siz topdingizmi? Izohda yozing, yangi jumboqlar powerty.uz/logic da! #mantiq #jumboq #MantiqMaydoni #Powerty"
+}

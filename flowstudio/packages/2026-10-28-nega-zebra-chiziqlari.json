@@ -1,0 +1,210 @@
+{
+ "id": "2026-10-28-nega-zebra-chiziqlari",
+ "number": 74,
+ "for": "Inom",
+ "date": "2026-10-28",
+ "series": "Nega shunday?",
+ "title_uz": "Zebrani kim chizgan?",
+ "concept_uz": "Zebra toychogʻi onasidan soʻraydi: «Chiziqlarimizni kim chizgan?» Javob — hech kim. Alan Tyuring 1952-yilda koʻrsatgan: ikki modda — sekin «yoquvchi» va tez «oʻchiruvchi» — naqshni oʻz-oʻzidan tugʻdiradi. Oxirida tomoshabinga savol: yoʻl-yoʻl hayvonning dumi dogʻli boʻla oladimi?",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_30_36.py (story 21)"
+ ],
+ "facts": [
+  {
+   "claim": "Embrion paytida hayvon terisida hech qanday chizma yoʻq",
+   "source": "story 21 body, 1-xatboshi"
+  },
+  {
+   "claim": "Alan Tyuring — kompyuter gʻoyasining otasi; 1952-yilda tirik mavjudotlarda shakl hosil boʻlishi haqida maqola chop etgan",
+   "source": "story 21 body, 2-xatboshi"
+  },
+  {
+   "claim": "Yoquvchi teri rangini qoraytiradi va oʻzidan koʻproq hosil qiladi; oʻchiruvchi uni toʻxtatadi va tezroq, uzoqroqqa tarqaladi",
+   "source": "story 21 body, 3-xatboshi; grammar"
+  },
+  {
+   "claim": "Natijada qora dogʻ atrofida oq hoshiya chiqadi, keyingi dogʻ hoshiyadan narida tugʻiladi — naqsh oʻz-oʻzidan paydo boʻladi",
+   "source": "story 21 body, 4-xatboshi"
+  },
+  {
+   "claim": "Jeyms Myurrey: ingichka dumda dogʻga joy yetmaydi, faqat koʻndalang halqalar chiqadi; dogʻli hayvonning dumi yoʻl-yoʻl boʻlishi mumkin (gepard), yoʻl-yoʻl hayvonning dumi dogʻli boʻlmaydi",
+   "source": "story 21 body, 5-xatboshi; savol 2"
+  },
+  {
+   "claim": "Tyuring 1954-yilda vafot etgan; mexanizm keyin baliq terisida kuzatilgan",
+   "source": "story 21 body, 6-xatboshi (videoda faqat fon uchun)"
+  }
+ ],
+ "style_line": "Premium 3D animated feature film style, warm golden African savanna light, soft painterly textures, rich saturated colours, expressive cartoon animals, gentle wonder-filled mood. No text, no letters, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: savanna va koʻlmak",
+   "prompt": "Vertical 9:16 wide shot of a golden savanna at sunrise: tall dry grass, one flat-topped acacia tree, a small still rainwater puddle in the foreground that reflects the sky like a mirror, soft mist on the horizon. No animals, no people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Zebra ona va toychoq",
+   "from": "R1",
+   "prompt": "Add a mother zebra and her small zebra foal standing by the puddle, 9:16. The mother is calm and graceful with long eyelashes. The foal is tiny and wobbly with big shiny eyes and a funny FLUFFY TUFT of mane sticking straight up on its head; its stripes are soft brown-and-white. The foal is bending over the puddle, staring at its own striped reflection."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Alan Tyuring kabinetda",
+   "prompt": "Vertical 9:16 medium shot, respectful 3D animated reconstruction of a British mathematician of the early 1950s, about 40, dark wavy hair, thoughtful kind eyes, tweed jacket with a BROWN KNITTED TIE, sitting at a cluttered wooden desk by a rainy window at night, a desk lamp glowing, sheets of paper covered in hand-drawn spots and wavy lines (no readable writing), a pencil in his hand, a pinecone and a daisy on the desk."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Qorachi va Oqchi",
+   "prompt": "Vertical 9:16 shot inside a glowing microscopic world: a smooth pale cream landscape of soft round cells like tiny pebbles. Two cute cartoon characters stand on it: QORACHI, a round, heavy, slow dark-charcoal ink blob with sleepy half-closed eyes and a big lazy smile; OQCHI, a small, fast, glowing white spark-sprite with tiny wings and a long light trail behind it, grinning mischievously. Soft magical light."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Birinchi dogʻ va oq hoshiya",
+   "from": "R4",
+   "prompt": "Change the moment, same microscopic cream landscape, 9:16, top-down camera: in the centre one round dark spot has appeared where Qorachi sits, and around it a clear bright white ring where Oqchi is racing in a circle, leaving a glowing trail. The rest of the landscape is still blank cream."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Naqsh tugʻildi",
+   "from": "R5",
+   "prompt": "Change the moment, same top-down view, 9:16: the whole cream landscape is now covered with an even, beautiful pattern of dark spots and wavy dark stripes, each separated by a white gap; tiny Qorachi and Oqchi sit in the middle, proudly looking at their work."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Gepard daraxtda",
+   "from": "R1",
+   "prompt": "Change the scene to the acacia tree in close-up, 9:16: a sleek cheetah lies on a thick branch, its body covered in round dark spots, while its long thin tail hangs down towards the camera clearly showing dark RINGS (stripes) near its tip. Golden sunrise light."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Toychoq dumiga qaraydi",
+   "from": "R2",
+   "prompt": "Change the moment: the zebra foal with the fluffy tuft has turned around and is looking back over its shoulder at its own thin striped tail with a puzzled, thinking face, the mother zebra smiling behind it, same puddle and light, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Kim chizgan?",
+   "method": "Frames to Video",
+   "start": "R2",
+   "lines": [
+    {
+     "who": "Toychoq",
+     "text": "Oyi, chiziqlarimizni kim chizgan?"
+    },
+    {
+     "who": "Ona zebra",
+     "text": "Hech kim, bolam. Ular oʻzi paydo boʻlgan."
+    }
+   ],
+   "prompt": "The zebra foal stares at its reflection, splashes the puddle with a hoof, then looks up at its mother. Audio: a splash, crickets, savanna birds. The foal says in Uzbek with a bright, curious voice of a small child: \"Oyi, chiziqlarimizni kim chizgan?\" The mother zebra says in Uzbek with a soft, warm, calm voice of a gentle mother: \"Hech kim, bolam. Ular o'zi paydo bo'lgan.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Ona qornida",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Toychoq hali ona qornida boʻlganida, terisida birorta ham chiziq yoʻq edi. Naqsh qayerdan keladi?"
+    }
+   ],
+   "prompt": "The foal tilts its head, unbelieving; the camera slowly circles the mother and foal as the sun rises behind the acacia. Audio: soft wind in the grass, a gentle music sting. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Toychoq hali ona qornida bo'lganida, terisida birorta ham chiziq yo'q edi. Naqsh qayerdan keladi?\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Tyuring",
+   "method": "Frames to Video",
+   "start": "R3",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Kompyuter gʻoyasining otasi Alan Tyuring 1952-yilda bu savolga javob topdi: ikkita modda kifoya."
+    }
+   ],
+   "prompt": "Slow push-in on the mathematician at his desk; he draws a dark spot with a white ring around it on paper, stops, and smiles as if he has just understood something. Audio: rain on the window, pencil scratching, a ticking clock. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Kompyuter g'oyasining otasi Alan Tyuring 1952-yilda bu savolga javob topdi: ikkita modda kifoya.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Ikki qahramon",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Qorachi",
+     "text": "Men yoquvchiman. Qayerda boʻlsam, teri qorayadi."
+    },
+    {
+     "who": "Oqchi",
+     "text": "Men oʻchiruvchiman. Va men tezroq yuguraman!"
+    }
+   ],
+   "prompt": "Qorachi the slow dark blob yawns and waves lazily; Oqchi the white spark zooms around him twice in a flash and stops, grinning. Audio: a deep bloop, then a fast whoosh. Qorachi says in Uzbek with a deep, slow, sleepy, good-natured cartoon voice: \"Men yoquvchiman. Qayerda bo'lsam, teri qorayadi.\" Oqchi says in Uzbek with a quick, squeaky, excited cartoon voice: \"Men o'chiruvchiman. Va men tezroq yuguraman!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Dogʻ va hoshiya",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Yoquvchi bir joyda koʻpaydi — dogʻ qoraydi. Oʻchiruvchi esa tezroq qochib, atrofini oqlab qoʻyadi."
+    }
+   ],
+   "prompt": "Top-down: the dark spot in the centre grows slowly and pulses, while the white spark races around it faster and faster, keeping a clean white ring around the spot. Audio: a low hum for the dark spot, a high whoosh for the spark. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Yoquvchi bir joyda ko'paydi — dog' qoraydi. O'chiruvchi esa tezroq qochib, atrofini oqlab qo'yadi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Naqsh tugʻildi",
+   "method": "Frames to Video",
+   "start": "R5",
+   "end": "R6",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Keyingi dogʻ faqat oq hoshiyadan narida tugʻiladi. Hech kim chizmagan naqsh — oʻz-oʻzidan."
+    }
+   ],
+   "prompt": "Time-lapse from top-down: new dark spots pop up one after another just beyond each white ring, some stretch and join into wavy stripes, until the whole landscape is an even pattern. Audio: soft popping sounds building into a warm musical swell. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Keyingi dog' faqat oq hoshiyadan narida tug'iladi. Hech kim chizmagan naqsh — o'z-o'zidan.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Gepardning dumi",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Matematik Jeyms Myurrey sezdi: ingichka dumda dogʻga joy yetmaydi, u yerda faqat halqalar chiqadi."
+    }
+   ],
+   "prompt": "Slow tilt down from the spotted cheetah body to its thin ringed tail swinging lazily below the branch; the cheetah yawns. Audio: a lazy purr, savanna birds. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Matematik Jeyms Myurrey sezdi: ingichka dumda dog'ga joy yetmaydi, u yerda faqat halqalar chiqadi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Savol",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Toychoq",
+     "text": "Unda mening dumim dogʻli boʻla oladimi?"
+    },
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Siz nima deysiz? Javobni izohda yozing!"
+    }
+   ],
+   "prompt": "The foal looks at its own striped tail, swishes it, then turns to the camera with a puzzled face and freezes mid-thought. Hold on the frozen frame. Audio: a swish, then silence and one soft bell. The foal says in Uzbek with a bright, curious voice of a small child: \"Unda mening dumim dog'li bo'la oladimi?\" An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Siz nima deysiz? Javobni izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Zebraning chiziqlarini hech kim chizmagan. Alan Tyuring 1952-yilda koʻrsatgan: sekin «yoquvchi» va tez «oʻchiruvchi» modda naqshni oʻz-oʻzidan tugʻdiradi — dogʻ ham, chiziq ham. Endi savol: yoʻl-yoʻl hayvonning dumi dogʻli boʻla oladimi? Javobni izohda yozing! Batafsil — powerty.uz #NegaShunday #matematika #tabiat #Powerty"
+}
