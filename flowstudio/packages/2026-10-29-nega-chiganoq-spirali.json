@@ -1,0 +1,224 @@
+{
+ "id": "2026-10-29-nega-chiganoq-spirali",
+ "number": 77,
+ "for": "Jonibek",
+ "date": "2026-10-29",
+ "series": "Nega shunday?",
+ "title_uz": "Uyini oʻstirgan chigʻanoq",
+ "concept_uz": "Dengiz tubida Qisqichbaqa Nautiga: «Uying tor, koʻch!» Nauti koʻchmaydi — uyini oʻstiradi, shaklini buzmay: har yangi xona bir xil marta katta. Bu logarifmik spiral. Uni sevgan Bernullining qabr toshiga esa usta notoʻgʻri spiral oʻygan. Oxirida hisob-savol.",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_30_36.py (story 18)"
+ ],
+ "facts": [
+  {
+   "claim": "Chigʻanoq ichidagi jonivor eski uyini tashlamaydi, chetiga yangi qism qoʻshadi; yangi qism har safar bir xil marta katta boʻlsa, chigʻanoq oʻzining kattalashgan nusxasiga aylanadi",
+   "source": "story 18 body, 2-xatboshi"
+  },
+  {
+   "claim": "Arximed spiralida har gal bir xil son qoʻshiladi (1, 2, 3, 4), logarifmik spiralda bir xil songa koʻpayadi (1, 3, 9, 27)",
+   "source": "story 18 body, 3-xatboshi; grammar"
+  },
+  {
+   "claim": "Yakob Bernulli logarifmik spiralni qabr toshiga oʻyishni vasiyat qilgan; hikoya qilinishicha usta oddiy Arximed spiralini oʻygan; tosh bugun ham Bazel soborida",
+   "source": "story 18 body, 4-xatboshi; savol 3"
+  },
+  {
+   "claim": "«Nautilus oltin nisbatda» — afsona: oltin spiral har aylanishda taxminan 6,85 marta kengayishi kerak, haqiqiy nautiluslar oʻlchanganda 3 atrofida chiqqan",
+   "source": "story 18 body, 6-xatboshi"
+  },
+  {
+   "claim": "Har aylanishda 3 marta, 2 sm dan boshlab, ikki aylanishdan keyin: 2 × 3 × 3 = 18 sm",
+   "source": "story 18 savol 2 (javob 18 sm)"
+  }
+ ],
+ "style_line": "Premium 3D animated feature film style, sunlit turquoise underwater world, soft caustic light patterns, rich saturated colours, expressive cartoon sea creatures, playful wonder-filled mood. No text, no letters, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: dengiz tubi",
+   "prompt": "Vertical 9:16 wide shot of a sunny shallow sea floor: pale golden sand, pink coral, swaying green seagrass, scattered pebbles and small shells, shafts of sunlight and floating bubbles. No animals."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Nauti",
+   "prompt": "Vertical 9:16 character portrait on a turquoise underwater background: NAUTI, a cute small cartoon nautilus with a smooth cream-white coiled shell striped with warm orange-brown tiger stripes, big round shiny eyes peeking from the opening, a bundle of short soft tentacles, and a tiny BLUE STARFISH stuck on its shell like a badge. Cheerful, curious."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Qisqichbaqa",
+   "prompt": "Vertical 9:16 character portrait on a turquoise underwater background: a chubby red cartoon crab, an old grumpy uncle type, bushy white eyebrows, one claw much bigger than the other, a tiny pair of round spectacles on his eyestalks, arms crossed. Comic."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Ikkovi qumda",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot on the same sunny sea floor: Nauti (same shell, same blue starfish) sits on the sand, its shell clearly a bit too tight, tentacles squeezed; the grumpy crab (same spectacles) stands next to it pointing a big claw at the shell. Same light."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Nauti kattalashgan",
+   "from": "R4",
+   "prompt": "Change the moment, same place, 9:16: Nauti is now visibly bigger and comfortable, its shell has grown one new, larger outer chamber that glows softly, but the shell has EXACTLY the same spiral shape as before, just scaled up; the crab stares with his jaw dropped."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Arqon va chigʻanoq",
+   "from": "R4",
+   "prompt": "Change the moment, same place, 9:16, slightly top-down: on the sand the crab has coiled an old ship rope into a flat spiral whose rings are all the same distance apart; right next to it lies a large cut-open cream nautilus shell showing its spiral of chambers, each chamber clearly bigger than the one before. Nauti and the crab stand between them."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Usta ustaxonada",
+   "prompt": "Vertical 9:16 medium shot in the same 3D animated style: an 18th-century Swiss stonemason's workshop with dusty sunlight, a big round-faced stonemason in a leather apron and flat cap, rosy cheeks, holding a hammer and chisel, proudly standing beside a tall grey stone slab on which he has carved a flat spiral with rings all the same distance apart, like a coiled rope. Stone dust in the air."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Sobordagi tosh",
+   "from": "R7",
+   "prompt": "Change the scene: the same carved stone slab (same evenly spaced spiral) now stands set into the old red sandstone wall of a quiet cathedral cloister with Gothic arches, soft afternoon light, ivy, no people. 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Uying tor!",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Qisqichbaqa",
+     "text": "Hoy, uying tor boʻlib qoldi! Endi koʻchasanmi?"
+    },
+    {
+     "who": "Nauti",
+     "text": "Koʻchmayman. Uyimni oʻstiraman — shaklini buzmay!"
+    }
+   ],
+   "prompt": "Start on the crab knocking hard on Nauti's tight shell with his big claw; Nauti's eyes pop out of the opening. Audio: three loud knocks, bubbles, cheerful underwater music. The crab says in Uzbek with a raspy, grumpy, comic old-uncle cartoon voice: \"Hoy, uying tor bo'lib qoldi! Endi ko'chasanmi?\" Nauti says in Uzbek with a bright, cheerful, slightly squeaky young cartoon voice: \"Ko'chmayman. Uyimni o'stiraman — shaklini buzmay!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Yangi xona",
+   "method": "Frames to Video",
+   "start": "R4",
+   "end": "R5",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Jonivor eski uyini tashlamaydi. Chetiga yangi xona qoʻshadi — har safar bir xil marta katta."
+    }
+   ],
+   "prompt": "Nauti closes its eyes and glows; the shell gently grows one new outer chamber, shimmering, and the whole shell becomes a bigger copy of itself. The crab rubs his spectacles. Audio: a soft magical swell, bubbles. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Jonivor eski uyini tashlamaydi. Chetiga yangi xona qo'shadi — har safar bir xil marta katta.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Arqon spirali",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Qisqichbaqa",
+     "text": "Mening arqonim ham spiral-ku!"
+    },
+    {
+     "who": "Nauti",
+     "text": "Senikida har gal bittadan qoʻshiladi. Menikida — uch marta koʻpayadi!"
+    }
+   ],
+   "prompt": "The crab proudly points at his coiled rope, then Nauti points a tentacle at the cut-open shell, chambers glowing one after another from small to big. Audio: a rope creak, then little chimes rising in pitch. The crab says in Uzbek with a raspy, grumpy, comic old-uncle cartoon voice: \"Mening arqonim ham spiral-ku!\" Nauti says in Uzbek with a bright, cheerful, slightly squeaky young cartoon voice: \"Senikida har gal bittadan qo'shiladi. Menikida — uch marta ko'payadi!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Kattalashgan nusxa",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2"
+   ],
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Har bir oʻram oldingisining kattalashgan nusxasi. Bu — logarifmik spiral."
+    }
+   ],
+   "prompt": "Slow spiralling camera move into the opening of Nauti's shell; each turn of the spiral looks exactly like the one before, only bigger, like falling into a beautiful tunnel. Audio: a deep calm hum. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Har bir o'ram oldingisining kattalashgan nusxasi. Bu — logarifmik spiral.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Bernulli vasiyati",
+   "method": "Text to Video",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Shveysariyalik matematik Yakob Bernulli bu spiralni shunchalik sevganki, uni qabr toshiga oʻyishni vasiyat qilgan."
+    }
+   ],
+   "prompt": "Vertical 9:16, premium 3D animated feature film style: an 18th-century Swiss city by a wide river at sunset, red sandstone cathedral with two tall towers, tiled roofs, a sky with a soft spiral of clouds. No people in close-up. Audio: distant church bells, river. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Shveysariyalik matematik Yakob Bernulli bu spiralni shunchalik sevganki, uni qabr toshiga o'yishni vasiyat qilgan.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Usta xatosi",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Usta",
+     "text": "Spiral — spiral-da! Mana, tayyor."
+    },
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Hikoya qilinishicha, usta oddiy, teng oraliqli spiral oʻyib qoʻygan."
+    }
+   ],
+   "prompt": "The stonemason taps the last chip from the stone, steps back, wipes his hands on his apron and admires his evenly spaced spiral, very pleased. Audio: chisel taps, a satisfied hum. The stonemason says in Uzbek with a hearty, booming, self-satisfied adult male voice: \"Spiral — spiral-da! Mana, tayyor.\" An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Hikoya qilinishicha, usta oddiy, teng oraliqli spiral o'yib qo'ygan.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Bazel sobori",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Bu tosh bugun ham Bazel soborida turibdi. Notoʻgʻri spiral bilan."
+    }
+   ],
+   "prompt": "Slow push-in toward the stone in the quiet cloister; a leaf falls past it. Then a soft comic sting. Audio: birdsong, an echoing cloister, a tiny comic trombone note. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Bu tosh bugun ham Bazel soborida turibdi. Noto'g'ri spiral bilan.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Oltin afsona",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Qisqichbaqa",
+     "text": "Aytishlaricha, sen oltin nisbatdasan!"
+    },
+    {
+     "who": "Nauti",
+     "text": "Afsona! Meni oʻlchashgan — oltin nisbatdan ancha kam, taxminan uch marta."
+    }
+   ],
+   "prompt": "Back under the sea: the crab bows dramatically to big Nauti as if to a king; Nauti waves its tentacles, laughing, and shakes its shell no. Audio: bubbles, a playful fanfare cut short. The crab says in Uzbek with a raspy, grumpy, comic old-uncle cartoon voice: \"Aytishlaricha, sen oltin nisbatdasan!\" Nauti says in Uzbek with a bright, cheerful, slightly squeaky young cartoon voice: \"Afsona! Meni o'lchashgan — oltin nisbatdan ancha kam, taxminan uch marta.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 9,
+   "title_uz": "Savol",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Nauti",
+     "text": "Men har aylanishda uch marta kengayaman. Ikki santimetrdan boshlasam, ikki aylanishdan keyin necha santimetr boʻlaman? Izohda yozing!"
+    }
+   ],
+   "prompt": "Nauti swims up close to the camera, its big eyes sparkling, tilts its shell, then freezes with a curious look. Hold on the frozen frame. Audio: bubbles, then silence and one soft chime. Nauti says in Uzbek with a bright, cheerful, slightly squeaky young cartoon voice: \"Men har aylanishda uch marta kengayaman. Ikki santimetrdan boshlasam, ikki aylanishdan keyin necha santimetr bo'laman? Izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Chigʻanoq uyini tashlamaydi — oʻstiradi, shaklini buzmay. Sirri: har yangi xona bir xil MARTA katta. Bu logarifmik spiral. Uni sevgan Yakob Bernullining qabr toshiga esa, hikoya qilinishicha, usta oddiy spiral oʻyib qoʻygan. Savol: har aylanishda 3 marta kengaysa, 2 sm dan boshlab ikki aylanishdan keyin necha sm? Javobni izohda yozing! Batafsil — powerty.uz #NegaShunday #matematika #tabiat #Powerty"
+}

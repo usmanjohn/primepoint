@@ -1,0 +1,230 @@
+{
+ "id": "2026-10-29-kashfiyot-nyoter-simmetriya",
+ "number": 76,
+ "for": "Inom",
+ "date": "2026-10-29",
+ "series": "Buyuk kashfiyot",
+ "title_uz": "Maoshsiz professor",
+ "concept_uz": "1915-yil, Gyottingen. Professorlar bir ayolni dars berishga qoʻymaydi — Emmi Nyoter yillar davomida maoshsiz, Hilbert nomi ostida dars beradi. Aynan shu yillarda u fizikaning eng chuqur sirini topadi: har bir simmetriya ortida bitta saqlanish qonuni yashiringan. Oxirida tomoshabinga savol.",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_22_29.py (story 14)"
+ ],
+ "facts": [
+  {
+   "claim": "1915-yil, Gyottingen universiteti: Hilbert va Klein Emmi Nyoterni professorlar qatoriga olishni taklif qilgan, bir qism professorlar «askarlarimiz urushdan qaytib, ayoldan dars olishlari kerakmi?» deb qarshi chiqqan",
+   "source": "story 14 body, 1-xatboshi"
+  },
+  {
+   "claim": "Hilbertning «bu universitet senati, hammom emas» degan gapi — rivoyat (ehtimol keyin boʻyalgan); videoda «rivoyatga koʻra» deyiladi",
+   "source": "story 14 body, 2-xatboshi"
+  },
+  {
+   "claim": "Nyoter yillar davomida maoshsiz dars bergan, darslari Hilbert nomi bilan eʼlon qilingan",
+   "source": "story 14 body, 2-xatboshi; savol 1"
+  },
+  {
+   "claim": "Simmetriya — oʻzgartirilsa ham oʻzgarmay qolish (kvadratni 90 gradusga burish); saqlanish — miqdor yoʻqolmasligi va yoʻqdan paydo boʻlmasligi",
+   "source": "story 14 body, 4-xatboshi"
+  },
+  {
+   "claim": "Nyoter teoremasi: har bir simmetriya ortida bitta saqlanish qonuni; vaqt boʻyicha simmetriya → energiya saqlanadi; joy boʻyicha (Toshkent/London) → harakat miqdori saqlanadi",
+   "source": "story 14 body, 5–6-xatboshi; grammar"
+  },
+  {
+   "claim": "Bugungi zarralar fizikasi deyarli butunlay shu gʻoyaga tayanadi",
+   "source": "story 14 body, 7-xatboshi"
+  },
+  {
+   "claim": "1933-yilda natsistlar hukumati uni universitetdan haydagan, u AQShga koʻchgan, 1935-yilda vafot etgan; Eynshteyn uni ayollar oliy taʼlim ola boshlagandan beri chiqqan eng buyuk daho matematik degan",
+   "source": "story 14 body, 8-xatboshi"
+  }
+ ],
+ "style_line": "Cinematic photoreal period drama, early 20th-century Germany, warm amber lamplight and soft grey window light, 35mm film grain, muted browns, deep greens and chalk white, respectful historical reconstruction. No text, no letters, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: auditoriya",
+   "prompt": "Vertical 9:16 wide shot of an empty early-1900s university lecture hall in a German town: steep wooden benches, tall arched windows with grey rain light, a big dark green blackboard with only a few chalk-drawn squares and arrows on it (no writing), a wooden lectern, a tall pendulum clock by the wall. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Emmi Nyoter",
+   "prompt": "Vertical 9:16 medium portrait, respectful reconstruction of a German woman mathematician of 1915, about 33, round friendly face, small round wire-rimmed glasses, dark hair pinned up loosely with a few strands falling, plain dark-blue wool dress with a small round brooch at the collar, a white dusting of CHALK on her right sleeve, a stick of chalk in her hand, lively amused eyes. Standing in front of a blackboard, eye-level camera."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Hilbert",
+   "prompt": "Vertical 9:16 medium portrait, respectful reconstruction of a German professor of 1915, about 53, short trimmed greying beard, round glasses, high forehead, dark three-piece suit, holding a light STRAW HAT in his left hand, a dry half-smile. Wood-panelled room behind him."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Professorlar majlisi",
+   "from": "R3",
+   "prompt": "Change the scene: a wood-panelled university council room of 1915, a long table with green cloth and brass lamps, a dozen elderly professors in dark suits sitting and arguing. In the foreground one bald old professor with white side-whiskers half-rises and slaps the table. The same man with the straw hat (same face) sits calmly at the far end of the table. 9:16."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Nyoter dars bermoqda",
+   "from": [
+    "R1",
+    "R2"
+   ],
+   "prompt": "Combine the attached images: the same woman (same face, same glasses, chalk on her right sleeve) teaches at the blackboard of the same lecture hall, turned half toward a small group of eight young male students of 1915 in jackets on the front benches, all leaning forward, listening. Warm lamp light. 9:16."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Kvadrat taxtacha",
+   "from": "R2",
+   "prompt": "Change the scene: close-up at a wooden desk by a window, 9:16. The same woman (same glasses, chalk on her sleeve) holds a flat square wooden tile in both hands just above a wooden board with a matching square hole cut in it; the tile is turned diagonally, about to be rotated. Soft window light."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Koptok va soat",
+   "from": "R5",
+   "prompt": "Change the moment, same lecture hall, 9:16: the same woman stands by the tall window next to the pendulum clock, holding one small red rubber ball at arm's length between two fingers, ready to drop it; the students watch from the benches."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Vokzalda chamadon bilan",
+   "from": "R2",
+   "prompt": "Change the scene: the same woman about eighteen years older (greyer hair, same round glasses, same small brooch), in a dark coat, standing alone on a misty 1930s railway platform with one worn leather suitcase, looking back over her shoulder, calm and sad. Grey morning light. 9:16."
+  },
+  {
+   "id": "R9",
+   "name_uz": "Boʻsh auditoriya va boʻr",
+   "from": "R1",
+   "prompt": "Change the moment, same lecture hall, 9:16: empty benches, a beam of warm sunlight through the tall window falls on the blackboard, which now shows a chalk-drawn square with a curved rotation arrow around it (no writing); one stick of chalk lies alone on the ledge below. Dust floats in the light."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Ayoldan dars?",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Professor",
+     "text": "Askarlarimiz urushdan qaytib, ayoldan dars olishlari kerakmi?"
+    }
+   ],
+   "prompt": "Start on a loud slap: the bald old professor slaps the green table and half-rises, red-faced; the others murmur and nod. Audio: the slap, chairs creaking, angry murmur. He shouts in Uzbek with a gruff, indignant, elderly male voice: \"Askarlarimiz urushdan qaytib, ayoldan dars olishlari kerakmi?\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Hilbert",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R4",
+    "R3"
+   ],
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Rivoyatga koʻra, Hilbert shunday degan:"
+    },
+    {
+     "who": "Hilbert",
+     "text": "Janoblar, bu universitet senati, hammom emas!"
+    }
+   ],
+   "prompt": "The man with the straw hat slowly stands at the end of the table, puts the hat down and looks around the room with a dry smile; the room goes silent. Audio: a chair scraping, then silence and a ticking clock. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Rivoyatga ko'ra, Hilbert shunday degan:\" The man with the straw hat says in Uzbek with a dry, firm, older male voice with quiet humour: \"Janoblar, bu universitet senati, hammom emas!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Maoshsiz",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Haqiqat shu: Emmi Nyoter yillar davomida maoshsiz dars berdi. Darslari Hilbert nomi bilan eʼlon qilinardi."
+    }
+   ],
+   "prompt": "Slow dolly along the benches toward the woman at the blackboard; she draws a square and turns to the students, smiling, and they laugh softly. Audio: chalk tapping, rain on the windows, quiet laughter. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"Haqiqat shu: Emmi Nyoter yillar davomida maoshsiz dars berdi. Darslari Hilbert nomi bilan e'lon qilinardi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Simmetriya",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Emmi Nyoter",
+     "text": "Kvadratni burang — u oʻsha-oʻsha kvadrat. Bu — simmetriya."
+    }
+   ],
+   "prompt": "Close-up: her hands turn the square wooden tile by a quarter turn and drop it into the square hole, it fits perfectly; she lifts it, turns it again, fits again, and smiles. Audio: wood clicks, a soft musical ping each time it fits. She says in Uzbek with a clear, warm, energetic female voice in her thirties, quick and amused: \"Kvadratni burang — u o'sha-o'sha kvadrat. Bu — simmetriya.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Bugun va ertaga",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Emmi Nyoter",
+     "text": "Koptok bugun qanday tushsa, yuz yildan keyin ham shunday tushadi."
+    }
+   ],
+   "prompt": "She lets the red ball drop; it falls and bounces once on the wooden floor in slow motion while the pendulum clock swings behind her; she catches it and looks at the students. Audio: one bounce echoing in the hall, the clock ticking. She says in Uzbek with a clear, warm, energetic female voice in her thirties, quick and amused: \"Koptok bugun qanday tushsa, yuz yildan keyin ham shunday tushadi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Kashfiyot",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Emmi Nyoter",
+     "text": "Demak, energiya hech qachon yoʻqolmaydi. Har bir simmetriya ortida bitta saqlanish qonuni yashiringan!"
+    }
+   ],
+   "prompt": "Slow push-in on her face by the window as she holds up the red ball, eyes shining; a student on the front bench drops his pen. Audio: rain stops, a warm rising music swell. She says in Uzbek with a clear, warm, energetic female voice in her thirties, quick and amused: \"Demak, energiya hech qachon yo'qolmaydi. Har bir simmetriya ortida bitta saqlanish qonuni yashiringan!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Haydaldi",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "1933-yilda natsistlar hukumati uni universitetdan haydadi. U Amerikaga koʻchib ketdi."
+    }
+   ],
+   "prompt": "She stands on the misty platform with her suitcase, looks back once, then picks up the suitcase and walks toward a waiting train as steam drifts past. No soldiers, no crowd. Audio: a distant train whistle, steam hiss, slow footsteps. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"1933-yilda natsistlar hukumati uni universitetdan haydadi. U Amerikaga ko'chib ketdi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Eynshteyn soʻzi",
+   "method": "Frames to Video",
+   "start": "R9",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "1935-yilda u vafot etdi. Eynshteyn uni ayollar oliy taʼlim ola boshlagandan beri chiqqan eng buyuk daho matematik deb atadi."
+    }
+   ],
+   "prompt": "Very slow push-in on the empty lecture hall, sunlight on the chalk square, dust floating; the camera settles on the lone stick of chalk on the ledge. Audio: soft piano, a distant clock. An off-screen narrator says in Uzbek with a calm, warm middle-aged male storyteller voice: \"1935-yilda u vafot etdi. Eynshteyn uni ayollar oliy ta'lim ola boshlagandan beri chiqqan eng buyuk daho matematik deb atadi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 9,
+   "title_uz": "Savol",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Emmi Nyoter",
+     "text": "Qonunlar Toshkentda ham, Londonda ham bir xil. Xoʻsh, bundan nima saqlanadi? Javobni izohda yozing!"
+    }
+   ],
+   "prompt": "The young woman at the blackboard turns from her chalk square and looks straight into the camera with an amused, challenging half-smile, tossing the chalk once in her hand. Hold on her look at the end. Audio: the chalk tap, then silence. She says in Uzbek with a clear, warm, energetic female voice in her thirties, quick and amused: \"Qonunlar Toshkentda ham, Londonda ham bir xil. Xo'sh, bundan nima saqlanadi? Javobni izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Universitet unga yillar davomida maosh bermadi, darslari esa boshqa birovning nomi bilan eʼlon qilindi. Lekin aynan Emmi Nyoter fizikaning eng chuqur qonunini topdi: har bir simmetriya ortida bitta saqlanish qonuni bor. Qonunlar bugun ham, ertaga ham bir xil — demak energiya saqlanadi. Qonunlar Toshkentda ham, Londonda ham bir xil — demak nima saqlanadi? Javobni izohda yozing! Batafsil — powerty.uz #BuyukKashfiyot #matematika #fizika #Powerty"
+}
