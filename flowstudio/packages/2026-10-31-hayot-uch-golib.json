@@ -1,0 +1,255 @@
+{
+ "id": "2026-10-31-hayot-uch-golib",
+ "number": 79,
+ "for": "Jonibek",
+ "date": "2026-10-31",
+ "series": "Hayotdagi matematika",
+ "title_uz": "Bir xil ovozlar, uch xil gʻolib",
+ "concept_uz": "15 oʻquvchi sinf sardorini saylaydi: Aziz, Bekzod yoki Dilnoza. Qogʻozlar bitta — lekin faqat birinchi oʻrinni sanasak Aziz, ikki tur oʻtkazsak Bekzod, ball bersak Dilnoza yutadi. Burilish: Dilnoza har bir yakkama-yakka bahsda yutadi, lekin birinchi usulda oxirgi. Oxirida tomoshabindan soʻraymiz: qaysi usul adolatli?",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_30_36.py (story 28)"
+ ],
+ "facts": [
+  {
+   "claim": "15 oʻquvchi; 6: Aziz > Dilnoza > Bekzod; 5: Bekzod > Dilnoza > Aziz; 4: Dilnoza > Bekzod > Aziz",
+   "source": "story 28 body"
+  },
+  {
+   "claim": "Koʻpchilik usuli: Aziz 6, Bekzod 5, Dilnoza 4 — Aziz yutadi",
+   "source": "story 28 body, 1-usul"
+  },
+  {
+   "claim": "Ikki tur: Dilnoza chiqadi, uning 4 saylovchisi Bekzodga oʻtadi — 9 : 6, Bekzod yutadi",
+   "source": "story 28 body, 2-usul"
+  },
+  {
+   "claim": "Ball usuli (1-oʻrin 2, 2-oʻrin 1): Aziz 12, Bekzod 14, Dilnoza 19 — Dilnoza yutadi",
+   "source": "story 28 body, 3-usul + grammar"
+  },
+  {
+   "claim": "Dilnoza yakkama-yakka: Azizdan 9 : 6, Bekzoddan 10 : 5 ustun",
+   "source": "story 28 body"
+  },
+  {
+   "claim": "1951-yilda Kennet Errou: uch va undan koʻp nomzodda barcha adolat talablarini bajaradigan mukammal usul yoʻq",
+   "source": "story 28 body"
+  }
+ ],
+ "style_line": "Premium 3D animated feature film style, warm golden autumn afternoon light through tall windows, soft rounded characters with expressive faces, rich colours where red, blue and yellow pop clearly, gentle school-comedy mood. No text, no letters, no numbers, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: maktab zali",
+   "prompt": "Vertical 9:16 wide shot of an Uzbek school assembly hall on a sunny autumn afternoon: a low wooden stage at the front with three empty chairs in a row, a wooden ballot box with a slot on a small table in front of the stage, tall windows with golden poplars outside, a polished wooden floor. No people, no posters, no flags, no writing anywhere."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Aziz",
+   "prompt": "Vertical 9:16 medium-full portrait of a confident, energetic 12-year-old Uzbek boy, short spiky black hair, a big proud grin, wearing a bright RED sweater over a white school shirt, fists on his hips. Eye-level camera, softly blurred school hall behind."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Bekzod",
+   "prompt": "Vertical 9:16 medium-full portrait of a quiet, thoughtful 12-year-old Uzbek boy, neat side-parted hair, ROUND BLACK GLASSES, wearing a BLUE sweater over a white school shirt, holding a small notebook to his chest. Eye-level camera, softly blurred school hall behind."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Dilnoza",
+   "prompt": "Vertical 9:16 medium-full portrait of a calm, bright 12-year-old Uzbek girl, one long dark braid over her shoulder tied with a big YELLOW ribbon, a mustard-yellow cardigan over a white blouse, a small knowing smile. Eye-level camera, softly blurred school hall behind."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Ustoz",
+   "prompt": "Vertical 9:16 medium portrait of an Uzbek male teacher of about fifty, kind face with laugh lines, a neat GREY MOUSTACHE, short greying hair, a BROWN tweed jacket with elbow patches over a light-blue shirt, holding a wooden ballot box under one arm. Eye-level camera, softly blurred school hall behind."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Uch nomzod sahnada",
+   "from": [
+    "R1",
+    "R2",
+    "R3",
+    "R4"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot of the same hall: the three children stand side by side on the low stage — the boy in the red sweater on the left, the boy in blue with round glasses in the middle, the girl with the yellow ribbon on the right — each raising one arm high in victory at the same moment. The ballot box on the table in front. Same faces, same clothes, same light."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Uch guruh sharlar bilan",
+   "from": [
+    "R6",
+    "R5"
+   ],
+   "prompt": "Change the scene: the three candidates stand on the stage, and in front of them on the floor fifteen pupils in white school shirts stand in three clear groups — six pupils holding RED balloons in front of the boy in red, five pupils holding BLUE balloons in front of the boy in blue, four pupils holding YELLOW balloons in front of the girl with the yellow ribbon. The teacher with the grey moustache and brown tweed jacket stands at the side with the ballot box. Same faces, same clothes, same light, 9:16."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Sariqlar koʻkka oʻtadi",
+   "from": "R7",
+   "prompt": "Change the moment: the four pupils of the yellow group now hold BLUE balloons and stand with the blue group, which is now the biggest group of nine; the red group of six stays where it was; the girl with the yellow ribbon has stepped back with a calm smile; the boy in blue with round glasses raises his notebook in surprise. Same faces, same clothes, same light, 9:16."
+  },
+  {
+   "id": "R9",
+   "name_uz": "Uchta shisha idish",
+   "from": "R6",
+   "prompt": "Change the scene: on the table in front of the stage stand three tall clear glass jars, one in front of each candidate, filled with shiny gold tokens: the jar in front of the boy in red is filled about two thirds, the jar in front of the boy in blue a little higher, and the jar in front of the girl with the yellow ribbon is full to the very top. The three children stand behind their jars looking down at them. No writing, no numbers on the jars. Same faces, same clothes, same light, 9:16."
+  },
+  {
+   "id": "R10",
+   "name_uz": "Ustoz kameraga qaraydi",
+   "from": "R5",
+   "prompt": "Change the framing: a close-up of the same teacher with the grey moustache and brown tweed jacket, resting one hand on the wooden ballot box, eyebrows raised with a curious smile, looking straight into the camera. Same face, same clothes, same hall light, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Ikki gʻolib",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Aziz",
+     "text": "Men yutdim!"
+    },
+    {
+     "who": "Bekzod",
+     "text": "Yoʻq, men yutdim!"
+    }
+   ],
+   "prompt": "Hard start on a loud cheer. On the stage the boy in the red sweater and the boy in blue with round glasses both jump with arms raised and point at themselves at the same time, then turn and stare at each other. Audio: cheering crowd, a drumroll that stops abruptly. The boy in red shouts in Uzbek with a loud, confident twelve-year-old boy's voice: \"Men yutdim!\" The boy in blue answers in Uzbek with a soft, thoughtful twelve-year-old boy's voice, surprised: \"Yo'q, men yutdim!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Uchinchi gʻolib",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R4",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Dilnoza",
+     "text": "Aslida, men yutdim."
+    },
+    {
+     "who": "Ustoz (kadr ortida)",
+     "text": "Qogʻozlar bitta. Gʻolib esa uchta. Qanday qilib?"
+    }
+   ],
+   "prompt": "Medium shot: the girl with the yellow ribbon calmly steps forward on the stage and raises one hand, perfectly composed, while the hall goes quiet. Audio: the noise drops to silence, one cough. She says in Uzbek with a calm, clear, gentle twelve-year-old girl's voice: \"Aslida, men yutdim.\" Then an off-screen narrator says in Uzbek with a deep, kind, slightly husky male voice of about fifty, calm and amused: \"Qog'ozlar bitta. G'olib esa uchta. Qanday qilib?\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Oʻn besh qogʻoz",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Ustoz",
+     "text": "Oʻn besh oʻquvchi. Olti kishi Azizni birinchi qoʻydi, besh kishi Bekzodni, toʻrt kishi Dilnozani."
+    }
+   ],
+   "prompt": "Slow push-in over the three groups of pupils with red, blue and yellow balloons in front of the stage; the teacher with the grey moustache walks along them with the ballot box, nodding at each group. Audio: balloons squeaking, footsteps on the wooden floor. The teacher says in Uzbek with a deep, kind, slightly husky male voice of about fifty, calm and amused: \"O'n besh o'quvchi. Olti kishi Azizni birinchi qo'ydi, besh kishi Bekzodni, to'rt kishi Dilnozani.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "1-usul: koʻpchilik",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R7",
+    "R2"
+   ],
+   "lines": [
+    {
+     "who": "Ustoz",
+     "text": "Birinchi usul: faqat birinchi oʻrinni sanaymiz. Olti, besh, toʻrt. Aziz yutdi!"
+    },
+    {
+     "who": "Aziz",
+     "text": "Koʻrdinglarmi?!"
+    }
+   ],
+   "prompt": "The red group lifts their six red balloons high; the boy in the red sweater pumps both fists and struts across the stage. Audio: a short trumpet fanfare, cheers. The teacher says off-screen in Uzbek with a deep, kind, slightly husky male voice of about fifty, calm and amused: \"Birinchi usul: faqat birinchi o'rinni sanaymiz. Olti, besh, to'rt. Aziz yutdi!\" The boy in red shouts in Uzbek with a loud, confident twelve-year-old boy's voice, triumphant: \"Ko'rdinglarmi?!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "2-usul: ikki tur",
+   "method": "Frames to Video",
+   "start": "R7",
+   "end": "R8",
+   "lines": [
+    {
+     "who": "Ustoz",
+     "text": "Ikkinchi usul: eng kami chiqib ketadi. Dilnozaning toʻrttasi Bekzodga oʻtadi. Toʻqqiz — olti!"
+    },
+    {
+     "who": "Bekzod",
+     "text": "Demak, men yutdim!"
+    }
+   ],
+   "prompt": "The four pupils of the yellow group swap their yellow balloons for blue ones and walk across to join the blue group, which becomes the biggest; the boy in blue with round glasses lifts his notebook in surprise. Audio: balloon squeaks, shuffling feet, a rising whistle. The teacher says off-screen in Uzbek with a deep, kind, slightly husky male voice of about fifty, calm and amused: \"Ikkinchi usul: eng kami chiqib ketadi. Dilnozaning to'rttasi Bekzodga o'tadi. To'qqiz — olti!\" The boy in blue says in Uzbek with a soft, thoughtful twelve-year-old boy's voice, amazed: \"Demak, men yutdim!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "3-usul: ball",
+   "method": "Frames to Video",
+   "start": "R9",
+   "lines": [
+    {
+     "who": "Ustoz",
+     "text": "Uchinchi usul: birinchi oʻringa ikki ball, ikkinchiga bir ball. Aziz oʻn ikki, Bekzod oʻn toʻrt, Dilnoza — oʻn toʻqqiz!"
+    }
+   ],
+   "prompt": "Gold tokens rain softly into the three tall glass jars in front of the candidates; the jar in front of the girl with the yellow ribbon fills to the very top and overflows with a sparkle while the boys look on with open mouths. Audio: a cascade of clinking coins, a bright chime at the end. The teacher says off-screen in Uzbek with a deep, kind, slightly husky male voice of about fifty, calm and amused: \"Uchinchi usul: birinchi o'ringa ikki ball, ikkinchiga bir ball. Aziz o'n ikki, Bekzod o'n to'rt, Dilnoza — o'n to'qqiz!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Yakkama-yakka",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R4",
+    "R2",
+    "R3"
+   ],
+   "lines": [
+    {
+     "who": "Ustoz",
+     "text": "Dilnoza Azizdan toʻqqiz-olti, Bekzoddan oʻn-besh yutadi. Lekin birinchi usulda u oxirgi edi!"
+    }
+   ],
+   "prompt": "On the stage the girl with the yellow ribbon stands first beside the boy in red, then beside the boy in blue; each time the boy slowly lowers his raised arm and looks at her with respect. Audio: two soft gong hits. The teacher says off-screen in Uzbek with a deep, kind, slightly husky male voice of about fifty, calm and amused: \"Dilnoza Azizdan to'qqiz-olti, Bekzoddan o'n-besh yutadi. Lekin birinchi usulda u oxirgi edi!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Mukammal usul yoʻq",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R5",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Ustoz",
+     "text": "Olim Kennet Errou isbotlagan: uch nomzod boʻlsa, mukammal adolatli usul yoʻq."
+    }
+   ],
+   "prompt": "Medium shot of the teacher with the grey moustache and brown tweed jacket sitting on the edge of the stage, turning the wooden ballot box slowly in his hands like a riddle box. Audio: a quiet ticking, warm piano notes. He says in Uzbek with a deep, kind, slightly husky male voice of about fifty, calm and amused: \"Olim Kennet Errou isbotlagan: uch nomzod bo'lsa, mukammal adolatli usul yo'q.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 9,
+   "title_uz": "Qaysi biri adolatli?",
+   "method": "Frames to Video",
+   "start": "R10",
+   "lines": [
+    {
+     "who": "Ustoz",
+     "text": "Qogʻozlar bir xil, gʻolib esa sanashga bogʻliq. Sizningcha, qaysi usul adolatli? Izohda yozing!"
+    }
+   ],
+   "prompt": "Close-up: the teacher taps the lid of the ballot box twice, leans slightly toward the camera and smiles, waiting for an answer. Hold on his face at the end. Audio: two wooden taps, then a single school bell. He says in Uzbek with a deep, kind, slightly husky male voice of about fifty, calm and amused: \"Qog'ozlar bir xil, g'olib esa sanashga bog'liq. Sizningcha, qaysi usul adolatli? Izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Bir xil ovozlar — uch xil gʻolib! Faqat birinchi oʻrinni sanasak Aziz, ikki tur oʻtkazsak Bekzod, ball bersak Dilnoza yutadi. 1951-yilda Kennet Errou isbotlagan: uch nomzod boʻlsa, mukammal usul yoʻq. Sizningcha, qaysi usul adolatli? Izohda yozing! Batafsil — powerty.uz #matematika #saylov #HayotdagiMatematika #Powerty"
+}

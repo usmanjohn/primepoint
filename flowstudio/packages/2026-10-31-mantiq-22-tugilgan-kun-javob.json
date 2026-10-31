@@ -1,0 +1,253 @@
+{
+ "id": "2026-10-31-mantiq-22-tugilgan-kun-javob",
+ "number": 78,
+ "for": "Inom",
+ "date": "2026-10-31",
+ "series": "Mantiq maydoni",
+ "title_uz": "Bir kunda tugʻilganlar — javob",
+ "concept_uz": "24-oktabrdagi «Bir kunda tugʻilganlar» videosining javobi: 23 kishi. Ustoz teskarisini sanaydi — hech kimning kuni mos kelmasligini. 22 kishida mos kelish 47,6%, 23 kishida 50,7%. Sirri — juftliklarda: 23 kishi 253 juftlik. Oldingi videodagi rasmlar saqlangan boʻlsa, qayta ishlating (u yerdagi R8 bu yerda R7).",
+ "format_uz": "9 sahna × 8 soniya = 72 soniya",
+ "sources": [
+  "logic/management/commands/_puzzles_logic_17_24.py (puzzle 22)"
+ ],
+ "facts": [
+  {
+   "claim": "Javob: 23 — kamida ikki oʻquvchining tugʻilgan kuni bir xil boʻlish ehtimoli 50% dan oshadigan eng kichik sinf",
+   "source": "puzzle 22 answer_key '23', solution_uz"
+  },
+  {
+   "claim": "Teskarisi hisoblanadi: 2-oʻquvchi 364/365, 3-oʻquvchi 363/365 va hokazo",
+   "source": "puzzle 22 solution_uz 1–3"
+  },
+  {
+   "claim": "22 kishida mos kelish ≈ 47,6%, 23 kishida ≈ 50,7%",
+   "source": "puzzle 22 solution_uz 4–5"
+  },
+  {
+   "claim": "30 oʻquvchi bilan ustoz taxminan 70,6% hollarda yutadi",
+   "source": "puzzle 22 solution_uz 5"
+  },
+  {
+   "claim": "23 kishi 23 × 22 ÷ 2 = 253 juftlik hosil qiladi; har juftlik yangi imkoniyat",
+   "source": "puzzle 22 solution_uz 6"
+  },
+  {
+   "claim": "Sirri: «kamida bittasi»ni hisoblash qiyin boʻlsa, «hech biri»ni hisoblab, 1 dan ayiring",
+   "source": "puzzle 22 lg-moral (solution_uz)"
+  },
+  {
+   "claim": "Raund 3 javobi 2026-10-26 da ochilgan (start 2026-10-05 + 7×2 + 7) — 31-oktabrda yuborish mumkin",
+   "source": "_puzzles_logic_17_24.py SCHEDULE"
+  }
+ ],
+ "style_line": "Cinematic photoreal, warm autumn morning light through tall classroom windows, golden plane-tree leaves outside, soft dust in the sunbeams, 35mm film look, gentle school-comedy mood. No text, no letters, no numbers, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: sinfxona (24-oktabr videosidagi rasm)",
+   "prompt": "Vertical 9:16 wide shot of an empty Uzbek school classroom on an autumn morning, seen from the back: rows of old wooden two-seat desks, a large clean dark-green blackboard with nothing written on it, a teacher's wooden desk with a small potted geranium and a stack of exercise books, tall windows on the left with golden plane trees outside. No people, no posters, no writing anywhere."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Ustoz (24-oktabr videosidagi rasm)",
+   "prompt": "Vertical 9:16 medium-full portrait of an Uzbek woman teacher of about 40, warm confident face with a playful half-smile, dark hair in a neat low bun, round gold-rimmed glasses, a TEAL knitted cardigan over a cream blouse, holding a thin wooden pointer, standing in front of a clean dark-green blackboard. Eye-level camera."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Sherbek (24-oktabr videosidagi rasm)",
+   "prompt": "Vertical 9:16 medium portrait of a cheeky 12-year-old Uzbek boy sitting at a wooden school desk, short black hair with one stubborn cowlick sticking up at the back, white school shirt with a NAVY sweater vest, leaning back with arms crossed and a confident grin. Classroom softly blurred behind."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Afsona (24-oktabr videosidagi rasm)",
+   "prompt": "Vertical 9:16 medium portrait of a calm, bright 12-year-old Uzbek girl at a wooden school desk, two long dark braids tied with big WHITE ribbons, white blouse under a dark school pinafore, sitting straight with a polite small smile. Classroom softly blurred behind."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Orqa partadagi bola (24-oktabr videosidagi rasm)",
+   "prompt": "Vertical 9:16 medium portrait of a tall, lanky 12-year-old Uzbek boy at a wooden desk in the back row of a classroom, buzz-cut hair, big gap-toothed grin, white school shirt under a bright GREEN sweater vest, sleepy-but-friendly eyes. Classroom softly blurred behind."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Butun sinf (24-oktabr videosidagi rasm)",
+   "from": [
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot of the same classroom from the side of the teacher's desk, looking toward the pupils: the teacher in the teal cardigan stands at the front with her pointer; about thirty pupils sit at the desks; the boy in the navy vest sits front row centre; the girl with white ribbons sits in the second row; the lanky boy in the green vest sits in the very back row. Same faces, same clothes, same light."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Sherbek kameraga qaraydi (24-oktabr videosidagi R8 rasm)",
+   "from": "R3",
+   "prompt": "Change the framing: a close-up of the same boy in the navy vest at his desk, chin resting on his fist, frowning in thought and looking straight into the camera, the cowlick sticking up. Same face, same clothes, same classroom light, 9:16."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Bittalab turishadi",
+   "from": "R6",
+   "prompt": "Change the moment: the pupils stand up one by one along the rows — the first three or four already standing, the next one rising, the rest still seated; the teacher in the teal cardigan watches with her pointer raised like a conductor's baton. Same classroom, same faces, same clothes, same light, 9:16."
+  },
+  {
+   "id": "R9",
+   "name_uz": "Kunlar devori",
+   "from": "R1",
+   "prompt": "Change the scene: the whole back wall of the same classroom is covered with a huge grid of small blank cream paper squares, hundreds of them in neat rows; about twenty squares each hold one small coloured pin, scattered far apart. No writing, no numbers on any square. Same light, 9:16."
+  },
+  {
+   "id": "R10",
+   "name_uz": "Qizil iplar toʻri",
+   "from": [
+    "R6",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Change the scene: the desks are pushed to the walls and twenty-three pupils stand in a big circle in the middle of the same classroom; thin red threads run from every pupil to every other pupil, making a dense glowing red web across the circle. The teacher in the teal cardigan stands inside the circle holding one thread; the boy in the navy vest with the cowlick stands in the circle staring up at the web, mouth open. Same faces, same clothes, warm light, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Javob: 23",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Ustoz",
+     "text": "Javob: yigirma uch. Sinfda yigirma uch kishi boʻlsa, garovni koʻproq men yutaman."
+    }
+   ],
+   "prompt": "The frozen classroom comes back to life with one bright school-bell ring; the teacher in the teal cardigan taps her pointer on the desk and smiles at the class. Fast push-in on her. Audio: a bell, then chairs creaking. The teacher says in Uzbek with a warm, clear, confident female voice of about forty, a little playful: \"Javob: yigirma uch. Sinfda yigirma uch kishi bo'lsa, garovni ko'proq men yutaman.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Sherbek ishonmaydi",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Sherbek",
+     "text": "Atigi yigirma uch? Yilda uch yuz oltmish besh kun bor-ku!"
+    }
+   ],
+   "prompt": "Medium shot. The boy in the navy vest with the cowlick jumps up from his desk, arms wide, totally unconvinced. Audio: a desk lid bangs, a few giggles. He says in Uzbek with a bright, cheeky twelve-year-old boy's voice, outraged: \"Atigi yigirma uch? Yilda uch yuz oltmish besh kun bor-ku!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Teskarisini sanaymiz",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Ustoz",
+     "text": "Teskarisini sanaymiz: hech kimning tugʻilgan kuni mos kelmasin. Birinchi oʻquvchi — istalgan kun."
+    }
+   ],
+   "prompt": "The pupils begin to stand up one by one along the rows, like a slow wave; the teacher in the teal cardigan conducts them with her pointer. Audio: chair after chair scraping in a rhythm, a clock ticking. The teacher says in Uzbek with a warm, clear, confident female voice of about forty, a little playful: \"Teskarisini sanaymiz: hech kimning tug'ilgan kuni mos kelmasin. Birinchi o'quvchi — istalgan kun.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Kunlar devori",
+   "method": "Frames to Video",
+   "start": "R9",
+   "lines": [
+    {
+     "who": "Ustoz",
+     "text": "Ikkinchisi bitta kundan qochishi kerak. Uchinchisi — ikkitadan. Har yangi oʻquvchiga qochish qiyinlashadi."
+    }
+   ],
+   "prompt": "Slow pan along the huge wall of blank paper squares; one by one, small coloured pins pop into squares far apart, each with a soft click, and the free squares between them feel fewer and fewer. Audio: pin clicks speeding up, a tense soft drum. The teacher says off-screen in Uzbek with a warm, clear, confident female voice of about forty, a little playful: \"Ikkinchisi bitta kundan qochishi kerak. Uchinchisi — ikkitadan. Har yangi o'quvchiga qochish qiyinlashadi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "22 va 23",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Ustoz",
+     "text": "Yigirma ikki kishida mos kelish ehtimoli qirq yetti foiz. Yigirma uchtada — ellik foizdan oshadi!"
+    }
+   ],
+   "prompt": "Medium close-up of the teacher in the teal cardigan holding up two fingers, then three, with a triumphant little smile, pushing up her gold-rimmed glasses. Audio: a soft \"ding\" on the last word. She says in Uzbek with a warm, clear, confident female voice of about forty, a little playful: \"Yigirma ikki kishida mos kelish ehtimoli qirq yetti foiz. Yigirma uchtada — ellik foizdan oshadi!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Qizil iplar",
+   "method": "Frames to Video",
+   "start": "R10",
+   "lines": [
+    {
+     "who": "Ustoz",
+     "text": "Sirri — juftliklarda. Yigirma uch kishi ikki yuz ellik uchta juftlik boʻladi."
+    },
+    {
+     "who": "Sherbek",
+     "text": "Ikki yuz ellik uch?!"
+    }
+   ],
+   "prompt": "Slow upward crane over the circle of twenty-three pupils as the red threads between every pair glow brighter and brighter, filling the air with a dense web. Audio: soft string tones rising. The teacher says in Uzbek with a warm, clear, confident female voice of about forty, a little playful: \"Sirri — juftliklarda. Yigirma uch kishi ikki yuz ellik uchta juftlik bo'ladi.\" The boy in the navy vest gasps in Uzbek with a bright, cheeky twelve-year-old boy's voice, stunned: \"Ikki yuz ellik uch?!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Har juftlik — imkoniyat",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R10",
+    "R2",
+    "R3"
+   ],
+   "lines": [
+    {
+     "who": "Ustoz",
+     "text": "Gap sening tugʻilgan kuningda emas. Har bir juftlik — mos kelish uchun yangi imkoniyat."
+    }
+   ],
+   "prompt": "Inside the red web, the teacher in the teal cardigan gently plucks one red thread between two pupils; it hums and glows, and the glow runs along the whole web. The boy in the navy vest follows the glow with his eyes. Audio: a single plucked-string note. The teacher says in Uzbek with a warm, clear, confident female voice of about forty, a little playful: \"Gap sening tug'ilgan kuningda emas. Har bir juftlik — mos kelish uchun yangi imkoniyat.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "30 kishida — 70%",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R2",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Ustoz",
+     "text": "Oʻttiz kishida esa men taxminan yetmish foiz hollarda yutaman."
+    },
+    {
+     "who": "Sherbek",
+     "text": "Demak, kulgan men edim, yutqazgan ham men."
+    }
+   ],
+   "prompt": "Two-shot back at the desks. The teacher in the teal cardigan winks; the boy in the navy vest slumps onto his desk with a sheepish grin and covers his face with one hand. Audio: the class laughs warmly. The teacher says in Uzbek with a warm, clear, confident female voice of about forty, a little playful: \"O'ttiz kishida esa men taxminan yetmish foiz hollarda yutaman.\" The boy answers in Uzbek with a bright, cheeky twelve-year-old boy's voice, sheepish: \"Demak, kulgan men edim, yutqazgan ham men.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 9,
+   "title_uz": "Sirri",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Sherbek",
+     "text": "Sirri: «kamida bittasi»ni sanash qiyin boʻlsa, «hech biri»ni sanang. Siz topdingizmi? Izohda yozing!"
+    }
+   ],
+   "prompt": "Close-up: the boy in the navy vest, chin on his fist, breaks into a grin and looks straight into the camera, raising one finger like a little professor. Hold on his face at the end. Audio: the clock ticking, then a school bell at the very end. He says in Uzbek with a bright, cheeky twelve-year-old boy's voice, proud and curious: \"Sirri: «kamida bittasi»ni sanash qiyin bo'lsa, «hech biri»ni sanang. Siz topdingizmi? Izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Javob: 23! 22 kishida mos kelish ehtimoli 47,6%, 23 kishida esa 50,7%. Sirri — juftliklarda: 23 kishi 253 ta juftlik hosil qiladi va har biri mos kelish uchun yangi imkoniyat. 30 kishida ustoz taxminan 70% hollarda yutadi. Siz topdingizmi? Izohda yozing, yangi jumboqlar powerty.uz/logic da! #mantiq #jumboq #ehtimollik #MantiqMaydoni #Powerty"
+}
