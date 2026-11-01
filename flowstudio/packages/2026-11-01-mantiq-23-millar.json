@@ -1,0 +1,58 @@
+{
+ "id": "2026-11-01-mantiq-23-millar",
+ "number": 81,
+ "for": "Jonibek",
+ "date": "2026-11-01",
+ "series": "Mantiq maydoni",
+ "title_uz": "Millar uchrashganda",
+ "concept_uz": "Yarim tun. Toshkent kurantlari 12 ni chaladi, ikkala mil ustma-ust. Afsona bir sutka davomida millar necha marta aynan ustma-ust tushishini sanamoqchi. Jasur kuladi: «Oson, har soatda bir marta — 24!» Lekin u adashyapti. Unda nechta? Javob keyingi hafta, 2-noyabrdan keyin.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "logic/management/commands/_puzzles_logic_17_24.py (puzzle 23)"
+ ],
+ "facts": [
+  {"claim": "Amir Temur xiyoboni yonidagi Toshkent kurantlari yarim tunni chaladi; ikkala mil ustma-ust, 12 ni koʻrsatib turibdi", "source": "puzzle 23 body_uz"},
+  {"claim": "Afsona keyingi bir sutkada minut mili soat milining aynan ustiga tushgan har bir lahzani sanaydi", "source": "puzzle 23 body_uz"},
+  {"claim": "Bugun 00:00 hisobga olinadi, ertangi 00:00 olinmaydi; faqat aniq ustma-ust tushish sanaladi", "source": "puzzle 23 lg-rule"},
+  {"claim": "Jasur: «Har soatda bir marta, 24» — u adashyapti", "source": "puzzle 23 body_uz"},
+  {"claim": "Maslahat: soat 11:00 bilan 1:00 orasida nima boʻlishiga qarang", "source": "puzzle 23 hint_uz"},
+  {"claim": "Javob (videoda aytilmaydi): answer_key '22' — faqat javob videosi uchun", "source": "puzzle 23 answer_key"},
+  {"claim": "Raund 4: 2026-10-26 ochilgan, javobi 2026-11-02 da ochiladi — javob videosi 2026-11-08 da (Jonibek)", "source": "_puzzles_logic_17_24.py SCHEDULE start 2026-10-05 + 7×(4−1)"}
+ ],
+ "style_line": "Cinematic photoreal night, deep blue sky with a few stars, warm amber street lamps, soft mist in the air, gleaming wet paving stones, 35mm film look, quiet mysterious mood. No text, no letters, no numbers, no watermark.",
+ "refs": [
+  {"id": "R1", "name_uz": "Muhit: kurantlar tunda", "prompt": "Vertical 9:16 low-angle wide shot at night of a tall, elegant cream-white stone clock tower in a city square with plane trees, lit by warm floodlights; a big round white clock face near the top with a gold rim, simple gold bar markers instead of numerals, and two ornate black hands both pointing straight up, exactly on top of each other. Empty paved square, warm street lamps, no people, no signs, no writing anywhere."},
+  {"id": "R2", "name_uz": "Afsona", "prompt": "Vertical 9:16 medium-full portrait of a calm, clever 14-year-old Uzbek girl at night, two long dark braids, a warm PLUM-coloured padded jacket, a striped woollen scarf, holding a small closed notebook and a pencil, looking up thoughtfully. Warm street-lamp light on her face, a night city square softly blurred behind."},
+  {"id": "R3", "name_uz": "Jasur", "prompt": "Vertical 9:16 medium-full portrait of a cheerful, overconfident 14-year-old Uzbek boy at night, messy black hair, a bright ORANGE knitted beanie, a dark-green puffer jacket, holding a steaming metal thermos cup, grinning widely. Warm street-lamp light on his face, a night city square softly blurred behind."},
+  {"id": "R4", "name_uz": "Ikkalasi minora tagida", "from": ["R1", "R2", "R3"], "prompt": "Combine the attached images into one vertical 9:16 shot: the girl with braids in the plum jacket and the boy in the orange beanie sit on a stone bench in the square at night, both looking up at the tall clock tower behind them, whose round clock face shows both hands pointing straight up together. Same faces, same clothes, same night light."},
+  {"id": "R5", "name_uz": "Soat yuzi yaqindan", "from": "R1", "prompt": "Change the framing: an extreme close-up of the same round white clock face with gold bar markers and two ornate black hands, filling the frame, the hands both pointing straight up and exactly overlapping. Same night floodlight, same gold rim, 9:16."},
+  {"id": "R6", "name_uz": "Jasur kameraga", "from": "R3", "prompt": "Change the framing: a close-up of the same boy in the orange beanie, no longer grinning, frowning in thought with one hand scratching under his beanie, looking straight into the camera, the lit clock tower softly blurred behind. Same face, same clothes, same night light, 9:16."}
+ ],
+ "scenes": [
+  {"n": 1, "title_uz": "Yarim tun", "method": "Frames to Video", "start": "R1",
+   "lines": [{"who": "Hikoyachi", "text": "Yarim tun. Toshkent kurantlari. Ikkala mil ustma-ust."}],
+   "prompt": "Slow push-in on the lit clock tower at night as the big bell begins to toll midnight; mist drifts past the floodlights. Audio: a deep bronze bell strike, its echo across the empty square, distant wind. An off-screen man says in Uzbek with a low, calm, mysterious male narrator voice: \"Yarim tun. Toshkent kurantlari. Ikkala mil ustma-ust.\" No subtitles, no on-screen text."},
+  {"n": 2, "title_uz": "Sanaymiz", "method": "Frames to Video", "start": "R4",
+   "lines": [{"who": "Afsona", "text": "Ertangi yarim tungacha millar necha marta aynan ustma-ust tushadi? Sanaymiz."}],
+   "prompt": "On the bench the girl with braids opens her notebook and taps it with her pencil, looking up at the tower, while the boy in the orange beanie sips from his steaming thermos cup. Audio: the last bell echo fading, a page turning, a slurp. She says in Uzbek with a calm, clear, thoughtful teenage girl's voice: \"Ertangi yarim tungacha millar necha marta aynan ustma-ust tushadi? Sanaymiz.\" No subtitles, no on-screen text."},
+  {"n": 3, "title_uz": "Oson-ku!", "method": "Ingredients to Video", "attach": ["R3", "R1"],
+   "lines": [{"who": "Jasur", "text": "Oson-ku! Har soatda bir marta — yigirma toʻrt!"}],
+   "prompt": "Medium shot. The boy in the orange beanie laughs, waves his thermos cup like a toast and leans back on the bench, very pleased with himself. Audio: his laugh echoing in the square, a lamp buzzing. He says in Uzbek with a bright, cocky teenage boy's voice: \"Oson-ku! Har soatda bir marta — yigirma to'rt!\" No subtitles, no on-screen text."},
+  {"n": 4, "title_uz": "Qoida", "method": "Ingredients to Video", "attach": ["R2", "R1"],
+   "lines": [{"who": "Afsona", "text": "Hozirgisi hisob. Ertangi yarim tun — hisob emas. Faqat aniq ustma-ust tushish sanaladi."}],
+   "prompt": "Close on the girl with braids as she raises one finger, calm and precise, the lit clock face high behind her. Audio: a soft clock tick under her words. She says in Uzbek with a calm, clear, thoughtful teenage girl's voice: \"Hozirgisi hisob. Ertangi yarim tun — hisob emas. Faqat aniq ustma-ust tushish sanaladi.\" No subtitles, no on-screen text."},
+  {"n": 5, "title_uz": "Vaqt yuguradi", "method": "Frames to Video", "start": "R5",
+   "lines": [{"who": "Hikoyachi", "text": "Minut mili yuguradi. Soat mili sekin-sekin yuradi."}],
+   "prompt": "Time-lapse on the clock face: the minute hand sweeps round and round fast while the hour hand creeps slowly forward; the light on the clock face shifts from night blue to dawn pink to bright daylight. Audio: rapid ticking, a rising whoosh, birds waking at dawn. An off-screen man says in Uzbek with a low, calm, mysterious male narrator voice: \"Minut mili yuguradi. Soat mili sekin-sekin yuradi.\" No subtitles, no on-screen text."},
+  {"n": 6, "title_uz": "Sen adashyapsan", "method": "Ingredients to Video", "attach": ["R2", "R3"],
+   "lines": [{"who": "Afsona", "text": "Jasur, sen adashyapsan."}, {"who": "Jasur", "text": "Qanday qilib?!"}],
+   "prompt": "Two-shot on the bench at night. The girl with braids looks up from her notebook and slowly shakes her head with a small smile; the boy in the orange beanie nearly spills his thermos cup and turns to her, offended. Audio: a cup clink, a startled gasp. She says in Uzbek with a calm, clear, thoughtful teenage girl's voice: \"Jasur, sen adashyapsan.\" He answers in Uzbek with a bright, cocky teenage boy's voice, outraged: \"Qanday qilib?!\" No subtitles, no on-screen text."},
+  {"n": 7, "title_uz": "Maslahat", "method": "Ingredients to Video", "attach": ["R2", "R5"],
+   "lines": [{"who": "Afsona", "text": "Soat oʻn birdan birgacha nima boʻlishiga qara."}],
+   "prompt": "The girl with braids points her pencil up at the clock tower; cut to the clock face where the minute hand sweeps past the hour hand just before the top, the two hands sliding toward the top together. Audio: a slow, heavy tick-tock, a low mysterious string note. She says in Uzbek with a calm, clear, thoughtful teenage girl's voice, almost a whisper: \"Soat o'n birdan birgacha nima bo'lishiga qara.\" No subtitles, no on-screen text."},
+  {"n": 8, "title_uz": "Savol", "method": "Frames to Video", "start": "R6",
+   "lines": [{"who": "Jasur", "text": "Bir sutkada millar necha marta ustma-ust tushadi? Javobni izohda yozing!"}, {"who": "Hikoyachi", "text": "Javobni powerty.uz/logic da yuboring."}],
+   "prompt": "Close-up: the boy in the orange beanie scratches under his beanie, narrows his eyes, then looks straight into the camera asking the viewer for help. Hold on his look at the end. Audio: one final bell strike, then silence. He says in Uzbek with a bright, cocky teenage boy's voice, now puzzled and curious: \"Bir sutkada millar necha marta ustma-ust tushadi? Javobni izohda yozing!\" Then an off-screen man says in Uzbek with a low, calm, mysterious male narrator voice: \"Javobni powerty.uz/logic da yuboring.\" No subtitles, no on-screen text."}
+ ],
+ "post_text_uz": "Yarim tunda kurantning ikkala mili ustma-ust. Jasur aytadi: «Har soatda bir marta — 24!» Lekin u adashyapti. Bugun 00:00 dan ertangi 00:00 gacha (boshidagisi hisob, oxiridagisi emas) minut mili soat milini necha marta aynan yopadi? Javobingizni izohda yozing yoki powerty.uz/logic da yuboring — toʻgʻri javob keyingi hafta! #mantiq #jumboq #soat #Powerty"
+}

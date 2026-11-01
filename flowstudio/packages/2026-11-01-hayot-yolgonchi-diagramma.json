@@ -1,0 +1,59 @@
+{
+ "id": "2026-11-01-hayot-yolgonchi-diagramma",
+ "number": 80,
+ "for": "Inom",
+ "date": "2026-11-01",
+ "series": "Hayotdagi matematika",
+ "title_uz": "Uch barobar baland ustun",
+ "concept_uz": "Sahnada ikki tirik ustun: koʻk ustun — oʻtgan yilgi sotuv, toʻq sariq ustun — bu yilgi. Toʻq sariq ustun «Men uch barobar balandman!» deb maqtanadi. Malika sonlarni soʻraydi: 240 va 252 — oʻsish atigi 5 foiz. Burilish: Malika sahna pardasini ochadi — ikkala ustun ham pastga, yerga qadar davom etadi, oʻq noldan emas, 235 dan boshlangan ekan.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_12.py (story 27)"
+ ],
+ "facts": [
+  {"claim": "Diagrammadagi ikki ustun: 240 va 252; biri ikkinchisidan uch barobar baland koʻrinadi", "source": "story 27 body"},
+  {"claim": "Oʻsish 12 ta: 12 ÷ 240 = 5 foiz", "source": "story 27 body + grammar examples"},
+  {"claim": "Vertikal oʻq 235 dan boshlangan: koʻrinadigan qismlar 5 va 17 birlik — 3,4 barobar farq", "source": "story 27 body + grammar examples"},
+  {"claim": "Bu «kesilgan oʻq» deb ataladi; sonlar rost, faqat rasm boshqa narsani aytadi", "source": "story 27 body"},
+  {"claim": "44 va 40 foiz orasidagi farq 4 foiz punkti, ikki barobar emas", "source": "story 27 body + question 3"},
+  {"claim": "Uch savol: oʻq qayerdan boshlangan? Foiz nimadan olingan? Sonlarning oʻzi qani?", "source": "story 27 body"}
+ ],
+ "style_line": "Premium 3D animated feature film style, bright sunny afternoon in a green city park, soft rounded characters with big expressive eyes, clean saturated colours where sky blue and orange pop clearly, playful comedy mood. No text, no letters, no numbers, no watermark.",
+ "refs": [
+  {"id": "R1", "name_uz": "Muhit: bogʻdagi sahna", "prompt": "Vertical 9:16 wide shot of a small open-air wooden stage in a sunny green city park: the stage floor is raised about chest-high, and its whole front and sides are hidden behind a heavy DARK-BLUE velvet skirt curtain that hangs down to the grass; plane trees, flower beds and a park bench around it. Empty stage, no people, no signs, no writing anywhere."},
+  {"id": "R2", "name_uz": "Koʻk ustun", "prompt": "Vertical 9:16 full-body character design of a living bar from a bar chart: a short, chunky SKY-BLUE rectangular block with soft rounded edges, two big gentle dot eyes, a small shy smile and tiny stick arms, wearing a little WHITE bow tie at the top. Plain soft park background."},
+  {"id": "R3", "name_uz": "Toʻq sariq ustun", "prompt": "Vertical 9:16 full-body character design of a living bar from a bar chart: a very tall, slim ORANGE rectangular block with soft rounded edges, big confident eyes, a smug wide grin and tiny stick arms on its hips, a shiny GOLD medal hanging near the top. Plain soft park background."},
+  {"id": "R4", "name_uz": "Malika", "prompt": "Vertical 9:16 medium-full portrait of a sharp, curious 12-year-old Uzbek girl, a short black bob haircut, round RED-rimmed glasses, a mustard-yellow cardigan over a white blouse, holding a folded newspaper in one hand and a big brass magnifying glass in the other, one eyebrow raised. Sunny park softly blurred behind."},
+  {"id": "R5", "name_uz": "Ikki ustun sahnada", "from": ["R1", "R2", "R3", "R4"], "prompt": "Combine the attached images into one vertical 9:16 shot: the sky-blue bar with the white bow tie and the orange bar with the gold medal stand side by side on the raised park stage, their bottoms disappearing into the stage floor; the visible orange bar is about three and a half times taller than the visible blue bar; the girl with red glasses stands on the grass in front of the dark-blue curtain, looking up at them with her newspaper. Same faces, same colours, same light."},
+  {"id": "R6", "name_uz": "Parda ochildi", "from": "R5", "prompt": "Change the moment: the girl with red glasses has pulled the dark-blue curtain aside, revealing the space under the stage: both bars continue straight down through the stage floor all the way to the grass; seen whole, the two bars are almost the same height, the orange one only a tiny bit taller than the blue one. The orange bar looks down in shock, the blue bar peeks down curiously. Same faces, same colours, same light, 9:16."},
+  {"id": "R7", "name_uz": "Ikki ustun yerda", "from": "R6", "prompt": "Change the scene: the stage is gone and both bars stand on the grass side by side at their full height, almost exactly equal, the orange one only a hair taller; the orange bar droops sheepishly with its gold medal hanging crooked, the blue bar smiles kindly at it; the girl with red glasses stands between them, arms folded, smiling. Same faces, same colours, same light, 9:16."},
+  {"id": "R8", "name_uz": "Malika kameraga", "from": "R4", "prompt": "Change the framing: a close-up of the same girl with red glasses holding the brass magnifying glass up near her face so one eye looks huge through it, looking straight into the camera with a clever half-smile. Same face, same clothes, same sunny park light, 9:16."}
+ ],
+ "scenes": [
+  {"n": 1, "title_uz": "Maqtanchoq ustun", "method": "Frames to Video", "start": "R5",
+   "lines": [{"who": "Toʻq sariq ustun", "text": "Men undan uch barobar balandman! Sotuv keskin oʻsdi!"}],
+   "prompt": "A brass fanfare blasts as the orange bar with the gold medal stretches up proudly on the stage and flexes its tiny arms, while the short blue bar beside it shrinks shyly. Audio: fanfare sting, a cymbal crash, birds startled from a tree. The orange bar says in Uzbek with a loud, boastful, booming cartoon male voice: \"Men undan uch barobar balandman! Sotuv keskin o'sdi!\" No subtitles, no on-screen text."},
+  {"n": 2, "title_uz": "Malika shubhalanadi", "method": "Ingredients to Video", "attach": ["R4", "R1"],
+   "lines": [{"who": "Malika", "text": "Uch barobar? Qani, sonlaringizni aytinglar-chi."}],
+   "prompt": "Medium shot of the girl with red glasses lowering her newspaper, pushing up her glasses and stepping toward the stage, unimpressed. Audio: newspaper rustle, footsteps on grass. She says in Uzbek with a clear, calm, clever twelve-year-old girl's voice, a little teasing: \"Uch barobar? Qani, sonlaringizni aytinglar-chi.\" No subtitles, no on-screen text."},
+  {"n": 3, "title_uz": "240 va 252", "method": "Ingredients to Video", "attach": ["R2", "R3", "R1"],
+   "lines": [{"who": "Koʻk ustun", "text": "Men ikki yuz qirqman."}, {"who": "Toʻq sariq ustun", "text": "Men esa ikki yuz ellik ikki!"}],
+   "prompt": "Two-shot on the stage. The short blue bar with the white bow tie speaks first, quietly; then the tall orange bar with the gold medal leans down over it and answers with a puffed-up chest. Audio: a soft breeze, a tuba 'oompah' under the orange bar's line. The blue bar says in Uzbek with a soft, shy, gentle cartoon voice: \"Men ikki yuz qirqman.\" The orange bar says in Uzbek with a loud, boastful, booming cartoon male voice: \"Men esa ikki yuz ellik ikki!\" No subtitles, no on-screen text."},
+  {"n": 4, "title_uz": "Atigi 5 foiz", "method": "Ingredients to Video", "attach": ["R4", "R3"],
+   "lines": [{"who": "Malika", "text": "Farq atigi oʻn ikki. Oʻn ikkini ikki yuz qirqqa boʻlsak — besh foiz!"}],
+   "prompt": "The girl with red glasses counts on her fingers, then points her brass magnifying glass up at the orange bar, which freezes mid-pose and gulps. Audio: a small 'ding' when she finishes counting, the orange bar's nervous gulp. She says in Uzbek with a clear, calm, clever twelve-year-old girl's voice, a little teasing: \"Farq atigi o'n ikki. O'n ikkini ikki yuz qirqqa bo'lsak — besh foiz!\" No subtitles, no on-screen text."},
+  {"n": 5, "title_uz": "Parda ortida", "method": "Frames to Video", "start": "R5", "end": "R6",
+   "lines": [{"who": "Malika", "text": "Oʻq noldan emas, ikki yuz oʻttiz beshdan boshlangan!"}],
+   "prompt": "The girl with red glasses grabs the dark-blue curtain under the stage and whips it aside in one move; the camera tilts down to reveal both bars continue all the way down to the grass, almost the same height. Audio: a big curtain swoosh, a dramatic orchestral hit, a crowd-like 'ooh' from the birds. She says in Uzbek with a clear, calm, clever twelve-year-old girl's voice, triumphant: \"O'q noldan emas, ikki yuz o'ttiz beshdan boshlangan!\" No subtitles, no on-screen text."},
+  {"n": 6, "title_uz": "Sonlar rost edi", "method": "Frames to Video", "start": "R7",
+   "lines": [{"who": "Toʻq sariq ustun", "text": "Sonlarim rost edi... faqat rasm boshqa narsani aytdi."}],
+   "prompt": "The orange bar on the grass slowly sags, its gold medal slipping crooked, and rubs the back of its head with a tiny arm; the blue bar pats it kindly. Audio: a sad trombone 'wah-wah', a soft pat. The orange bar says in Uzbek with a loud, boastful, booming cartoon male voice, now small and embarrassed: \"Sonlarim rost edi... faqat rasm boshqa narsani aytdi.\" No subtitles, no on-screen text."},
+  {"n": 7, "title_uz": "Uch savol", "method": "Frames to Video", "start": "R8",
+   "lines": [{"who": "Malika", "text": "Har qanday diagrammadan uch narsani soʻrang: oʻq qayerdan boshlangan? Foiz nimadan olingan? Sonlarning oʻzi qani?"}],
+   "prompt": "Close-up of the girl with red glasses looking into the camera through her brass magnifying glass, then lowering it and ticking off three points on her fingers, one by one. Audio: three light 'tick' sounds, park birdsong. She says in Uzbek with a clear, calm, clever twelve-year-old girl's voice, friendly and serious: \"Har qanday diagrammadan uch narsani so'rang: o'q qayerdan boshlangan? Foiz nimadan olingan? Sonlarning o'zi qani?\" No subtitles, no on-screen text."},
+  {"n": 8, "title_uz": "Sizga savol", "method": "Ingredients to Video", "attach": ["R8", "R1"],
+   "lines": [{"who": "Malika", "text": "Qirq foiz va qirq toʻrt foiz. Bu ikki barobar farqmi? Javobni izohda yozing!"}, {"who": "Hikoyachi", "text": "Batafsil — powerty.uz da."}],
+   "prompt": "The girl with red glasses holds up one finger, raises an eyebrow at the camera and waits, smiling; hold on her look at the end. Audio: a playful plucked-string sting, a clock tick. She says in Uzbek with a clear, calm, clever twelve-year-old girl's voice, a little teasing: \"Qirq foiz va qirq to'rt foiz. Bu ikki barobar farqmi? Javobni izohda yozing!\" Then an off-screen man says in Uzbek with a warm, friendly young male narrator voice: \"Batafsil — powerty.uz da.\" No subtitles, no on-screen text."}
+ ],
+ "post_text_uz": "Ustun uch barobar baland — demak sotuv uch barobar oʻsdimi? Yoʻq! 240 dan 252 ga — atigi 5 foiz. Hammasi oʻqning qayerdan boshlanganida. Sizga savol: 40 foiz va 44 foiz — bu ikki barobar farqmi? Javobni izohda yozing! #matematika #diagramma #foiz #Powerty"
+}
