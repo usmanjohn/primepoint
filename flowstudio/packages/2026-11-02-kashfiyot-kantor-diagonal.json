@@ -1,0 +1,234 @@
+{
+ "id": "2026-11-02-kashfiyot-kantor-diagonal",
+ "number": 83,
+ "for": "Jonibek",
+ "date": "2026-11-02",
+ "series": "Buyuk kashfiyot",
+ "title_uz": "Bittasi qoldi",
+ "concept_uz": "Kantorning xonasida cheksiz munchoq ramkasi: har qatorda oq va qora munchoqlar. Mehmon maqtanadi: «Hammasini roʻyxatga terdim!» Kantor diagonal boʻylab yurib, har qatordan bittadan munchoq oladi va rangini teskarisiga oʻzgartiradi — yangi ip roʻyxatda yoʻq. Burilish: cheksizlik ham bir xil emas ekan.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_37_42.py (story 42)"
+ ],
+ "facts": [
+  {
+   "claim": "Georg Kantor — nemis matematigi, 1845–1918",
+   "source": "story 42 body"
+  },
+  {
+   "claim": "Qaysi toʻplam koʻp ekanini bilish uchun sanash shart emas — bittadan juftlash kifoya; kimda ortib qolsa, oʻsha koʻp",
+   "source": "story 42 body"
+  },
+  {
+   "claim": "Natural va juft sonlar juftlanadi (1↔2, 2↔4, 3↔6…), hech kim ortmaydi — ular teng",
+   "source": "story 42 body + question 2"
+  },
+  {
+   "claim": "Kantor barcha kasrlarni ham bitta roʻyxatga terib chiqish mumkinligini koʻrsatdi (izohdagi savolning javobi: teng)",
+   "source": "story 42 body"
+  },
+  {
+   "claim": "Diagonal: 1-qatordan 1-raqam, 2-qatordan 2-raqam… har birini teskarisiga oʻzgartirsak, yangi ketma-ketlik har qatordan farq qiladi va roʻyxatda yoʻq",
+   "source": "story 42 body + grammar"
+  },
+  {
+   "claim": "Demak 0–1 ketma-ketliklar natural sonlardan koʻp — cheksizliklarning ham pogʻonalari bor",
+   "source": "story 42 body + question 3"
+  },
+  {
+   "claim": "Kantor bu usulni 1891-yilda eʼlon qildi; koʻp zamondoshlari rad etdi, ammo vaqt uni oqladi",
+   "source": "story 42 body"
+  },
+  {
+   "claim": "«Hammasini roʻyxatga terdim» degan mehmon — oʻylab topilgan qahramon (matndagi «kimdir»)",
+   "source": "story 42 body"
+  }
+ ],
+ "style_line": "Cinematic photoreal period drama, a 1890s scholar's study lit by warm gaslight and candles, deep shadows, rich wood and brass, 35mm film look, quiet mystery mood. No text, no letters, no numbers, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: Kantorning xonasi",
+   "prompt": "Vertical 9:16 wide shot of a 1890s European scholar's study at night, warm gaslight: tall bookcases, a heavy oak desk with papers and an inkwell, a tall window with stars, and along one wall an enormous wooden frame strung with many horizontal brass wires, each wire threaded with a long row of BLACK and WHITE beads in mixed order; the rows of the frame continue down and away into darkness as if they never end. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Georg Kantor",
+   "prompt": "Vertical 9:16 full-body respectful reconstruction of a German mathematician of the 1890s, about 46, full dark beard with a touch of grey, receding dark hair, thoughtful deep-set eyes, a black frock coat, white high-collar shirt and a DARK-GREEN silk cravat, standing calmly with his hands behind his back in warm gaslight."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Mehmon",
+   "prompt": "Vertical 9:16 full-body portrait of a stout, self-satisfied gentleman of the 1890s, about 60, big grey handlebar moustache, a MONOCLE on a black cord, a grey three-piece suit with a gold watch chain, holding a top hat in one hand, chin raised proudly, in warm gaslight."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Xonada ikkalasi",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot in the same study: the stout gentleman with the monocle stands in front of the huge bead frame, sweeping one arm proudly along its endless rows; the bearded mathematician with the dark-green cravat stands a little apart by the desk, watching him with a calm, faint smile. Same faces, same clothes, same gaslight."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Kantor stolda koptokchalar bilan",
+   "from": [
+    "R2",
+    "R1"
+   ],
+   "prompt": "Change the scene: the same bearded mathematician with the dark-green cravat sits at the oak desk in the same study, leaning over two loose rows of glass marbles on the green leather desktop: a row of six BLUE marbles and below it a row of seven RED marbles, not yet lined up. He looks at them with a playful glint. Same face, same gaslight, 9:16."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Ikki cheksiz qator",
+   "from": "R2",
+   "prompt": "Change the scene: the same bearded mathematician with the dark-green cravat stands in a dreamlike dark starry void at the start of two endless parallel rows of glowing stones that stretch away to the horizon: an upper row of small WHITE glowing stones and a lower row of GOLDEN glowing stones, each white stone joined to exactly one golden stone below it by a thin shining thread, all the way into the distance. Same face, 9:16."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Diagonal",
+   "from": "R4",
+   "prompt": "Change the moment: the gentleman with the monocle steps back; the bearded mathematician stands at the top-left corner of the huge bead frame, one hand raised; a slanting line of beads glows softly: the first bead of the first row, the second bead of the second row, the third bead of the third row and so on, running diagonally down into the darkness. Same faces, same gaslight, 9:16."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Yangi ip",
+   "from": "R7",
+   "prompt": "Change the moment: the bearded mathematician holds up one single new brass wire threaded with beads in front of the frame; each bead on his new wire is the OPPOSITE colour of the glowing diagonal bead in the matching row, white where the diagonal is black and black where it is white. The gentleman with the monocle stares at it, monocle about to drop. Same faces, same gaslight, 9:16."
+  },
+  {
+   "id": "R9",
+   "name_uz": "Mehmon qidirmoqda",
+   "from": "R8",
+   "prompt": "Change the moment: the stout gentleman with the monocle holds up an oil lamp and peers closely along the rows of the bead frame, comparing them with the new wire, sweating and puzzled; behind him the bearded mathematician holds the new wire and waits patiently. Same faces, same gaslight, 9:16."
+  },
+  {
+   "id": "R10",
+   "name_uz": "Kantor deraza oldida",
+   "from": "R2",
+   "prompt": "Change the scene: the same bearded mathematician with the dark-green cravat stands at the tall window of his gaslit study at night, holding the single new bead wire loosely in one hand, looking up at a sky full of countless stars, a quiet confident smile. Same face, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Maqtanchoq",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Mehmon",
+     "text": "Hammasini roʻyxatga terdim! Birortasi ham qolmadi!"
+    },
+    {
+     "who": "Kantor",
+     "text": "Bittasi qoldi."
+    }
+   ],
+   "prompt": "The stout gentleman with the monocle slaps the huge bead frame proudly; the beads rattle loudly along the endless rows. He booms in Uzbek with a loud, pompous, self-satisfied older male voice: \"Hammasini ro'yxatga terdim! Birortasi ham qolmadi!\" Silence. The bearded mathematician by the desk answers quietly in Uzbek with a deep, calm, gently amused middle-aged male voice: \"Bittasi qoldi.\" The gentleman freezes. Audio: rattling beads, a ticking clock, gaslight hiss. No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Kantor",
+   "method": "Frames to Video",
+   "start": "R5",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Georg Kantor, nemis matematigi. U cheksizliklarni solishtirmoqchi edi."
+    },
+    {
+     "who": "Kantor",
+     "text": "Sanash shart emas. Juftlash kifoya."
+    }
+   ],
+   "prompt": "Slow push-in on the bearded mathematician at his desk with the blue and red marbles. An off-screen woman says in Uzbek with a warm, clear adult female storyteller voice: \"Georg Kantor, nemis matematigi. U cheksizliklarni solishtirmoqchi edi.\" He looks up with a small smile and says in Uzbek with a deep, calm, gently amused middle-aged male voice: \"Sanash shart emas. Juftlash kifoya.\" Audio: marbles clicking, a ticking clock. No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Juftlash",
+   "method": "Extend",
+   "extends": "2",
+   "lines": [
+    {
+     "who": "Kantor",
+     "text": "Kimda ortib qolsa — oʻsha koʻp."
+    }
+   ],
+   "prompt": "Close-up of his fingers sliding the marbles into pairs, one blue above one red, click, click, click, until six pairs stand neatly and one red marble is left alone at the end; he taps it gently. He says in Uzbek with a deep, calm, gently amused middle-aged male voice: \"Kimda ortib qolsa — o'sha ko'p.\" Audio: crisp glass clicks, one last lonely click. No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Teng!",
+   "method": "Frames to Video",
+   "start": "R6",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "Natural sonlar va juft sonlar ham shunday juftlanadi. Hech kim ortib qolmaydi — demak ular teng!"
+    }
+   ],
+   "prompt": "The camera flies low and fast along the two endless rows of glowing stones, white above and golden below, each pair joined by its shining thread, on and on toward the horizon, never a stone left alone; the mathematician watches from the start. Audio: a soft rising musical shimmer, each thread chiming as we pass. An off-screen woman says in Uzbek with a warm, clear adult female storyteller voice: \"Natural sonlar va juft sonlar ham shunday juftlanadi. Hech kim ortib qolmaydi — demak ular teng!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Qiya chiziq",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Kantor",
+     "text": "Birinchi qatordan birinchi munchoqni, ikkinchidan ikkinchisini olaman…"
+    }
+   ],
+   "prompt": "The bearded mathematician walks slowly down along the frame, touching one glowing bead in each row, stepping one bead further to the right each time, following the slanting line into the darkness. Audio: one soft bell tone for each bead touched, footsteps on wooden floor. He says in Uzbek with a deep, calm, gently amused middle-aged male voice: \"Birinchi qatordan birinchi munchoqni, ikkinchidan ikkinchisini olaman...\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Teskarisi",
+   "method": "Frames to Video",
+   "start": "R7",
+   "end": "R8",
+   "lines": [
+    {
+     "who": "Kantor",
+     "text": "Va har birini teskarisiga oʻzgartiraman: oqni qora, qorani oq."
+    }
+   ],
+   "prompt": "The glowing diagonal beads lift out of the frame one by one, flip colour in the air, white turning black and black turning white, and thread themselves onto a new brass wire in the mathematician's hands, which he then holds up. Audio: a crisp magical flip sound for each bead, then a low resonant hum. He says in Uzbek with a deep, calm, gently amused middle-aged male voice: \"Va har birini teskarisiga o'zgartiraman: oqni qora, qorani oq.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Qani u?",
+   "method": "Frames to Video",
+   "start": "R9",
+   "lines": [
+    {
+     "who": "Mehmon",
+     "text": "Qani u? Topolmayapman!"
+    },
+    {
+     "who": "Kantor",
+     "text": "Har qatordan bittada farq qiladi. U roʻyxatda yoʻq."
+    }
+   ],
+   "prompt": "The stout gentleman hurries along the rows with his oil lamp, holding it up to row after row, wiping his forehead; his monocle finally drops on its cord. He says in Uzbek with a loud, pompous, self-satisfied older male voice, now flustered: \"Qani u? Topolmayapman!\" The bearded mathematician says in Uzbek with a deep, calm, gently amused middle-aged male voice: \"Har qatordan bittada farq qiladi. U ro'yxatda yo'q.\" Audio: hurried footsteps, the lamp's flame flickering, the monocle's tiny clink. No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Savol",
+   "method": "Frames to Video",
+   "start": "R10",
+   "lines": [
+    {
+     "who": "Hikoyachi (kadr ortida)",
+     "text": "1891-yil: cheksizlik ham bir xil emas ekan. Kasrlar-chi — natural sonlardan koʻpmi? Izohda yozing!"
+    }
+   ],
+   "prompt": "Slow pull-back from the mathematician at the window as the stars outside multiply and spread without end; he glances over his shoulder toward the camera with a quiet, knowing smile. Hold on the look at the end. Audio: gentle strings, a ticking clock. An off-screen woman says in Uzbek with a warm, clear adult female storyteller voice: \"1891-yil: cheksizlik ham bir xil emas ekan. Kasrlar-chi — natural sonlardan ko'pmi? Izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Cheksizlik ham bir xil emas! Georg Kantor 1891-yilda diagonal hiylasi bilan isbotladi: qanday roʻyxat tuzmang, bittasi doim tashqarida qoladi. Siz-chi: kasrlar natural sonlardan koʻpmi? Javobingizni izohda yozing! #buyukkashfiyot #Kantor #cheksizlik #matematika #Powerty"
+}

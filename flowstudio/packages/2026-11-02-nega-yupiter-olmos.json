@@ -1,0 +1,223 @@
+{
+ "id": "2026-11-02-nega-yupiter-olmos",
+ "number": 82,
+ "for": "Inom",
+ "date": "2026-11-02",
+ "series": "Nega shunday?",
+ "title_uz": "Yupiterda olmos yomgʻiri",
+ "concept_uz": "Kechasi tom ustida Nilufar bobosiga aytadi: Yupiterda olmos yogʻar ekan! Biz bitta kichkina metan zarrachasi bilan Yupiter bulutlariga tushamiz: chaqmoq uni parchalaydi, qora qurum qoladi, chuqurlikdagi ulkan bosim uni olmosga aylantiradi. Burilish: olmos qurumdan tugʻiladi — va bu hali faraz, hech kim koʻrmagan.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_wonders_1_10.py (story 8)"
+ ],
+ "facts": [
+  {
+   "claim": "Yupiter va Saturnda chinakam olmos yomgʻiri yogʻishi mumkin",
+   "source": "story 8 body + summary"
+  },
+  {
+   "claim": "Bu olimlar jiddiy ilgari surgan faraz; hali bevosita tasdiqlanmagan",
+   "source": "story 8 body + question 3"
+  },
+  {
+   "claim": "Bu ulkan sayyoralarda chaqmoq tez-tez uradi va atmosferadagi metanni maydalab uglerodga aylantiradi",
+   "source": "story 8 body + question 1"
+  },
+  {
+   "claim": "Uglerod kukuni sayyora chuqurligiga tushgan sari ulkan bosim ostida qattiq olmosga aylanadi",
+   "source": "story 8 body + question 2"
+  }
+ ],
+ "style_line": "Premium 3D animated feature film style, rich cinematic lighting, deep night blues on Earth and glowing amber-orange storm clouds on Jupiter, soft rounded characters with big expressive eyes, sense of wonder. No text, no letters, no numbers, no watermark.",
+ "refs": [
+  {
+   "id": "R1",
+   "name_uz": "Muhit: tom ustida kecha",
+   "prompt": "Vertical 9:16 wide shot of a flat rooftop of an old mud-brick house in an Uzbek mahalla at night: a carpet and two cushions on the roof, a small brass telescope on a wooden tripod pointed at the sky, a teapot and two bowls on a low tray, a grapevine trellis at the edge, distant turquoise domes under a deep starry sky, one bright creamy-orange planet clearly visible among the stars. No people."
+  },
+  {
+   "id": "R2",
+   "name_uz": "Nilufar",
+   "prompt": "Vertical 9:16 full-body character design of a lively 10-year-old Uzbek girl with two long black braids tied with YELLOW ribbons, big curious dark eyes, a dark-blue quilted vest over a white embroidered dress, holding an open picture book about planets to her chest, excited open-mouthed smile. Soft night-blue background."
+  },
+  {
+   "id": "R3",
+   "name_uz": "Bobo",
+   "prompt": "Vertical 9:16 full-body character design of a kind elderly Uzbek grandfather, about 70, white trimmed beard, round wire spectacles pushed up on his forehead, a black-and-white doppi skullcap, a long striped chapan robe, a pencil tucked behind his ear, gentle knowing smile. Soft night-blue background."
+  },
+  {
+   "id": "R4",
+   "name_uz": "Tomda ikkalasi",
+   "from": [
+    "R1",
+    "R2",
+    "R3"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot on the same night rooftop: the grandfather sits cross-legged on the carpet with a tea bowl; the girl with yellow ribbons kneels by the telescope, turning to him and holding up her open planet book; the bright orange planet glows in the sky above them. Same faces, same clothes, same night light."
+  },
+  {
+   "id": "R5",
+   "name_uz": "Muhit: Yupiter bulutlari",
+   "prompt": "Vertical 9:16 epic view inside the upper atmosphere of Jupiter: towering swirling bands of cream, amber, rust and brown clouds, a huge storm vortex in the distance, branching blue-white lightning flashing inside the clouds, the clouds getting darker and denser toward the bottom of the frame. No people, no spacecraft."
+  },
+  {
+   "id": "R6",
+   "name_uz": "Metan zarrachasi",
+   "prompt": "Vertical 9:16 character design of a tiny cute molecule character floating in amber clouds: one round glossy BLACK ball as the body with big friendly eyes and a small smile, and four small shiny WHITE balls attached around it like little puffy arms and legs. Playful, innocent expression."
+  },
+  {
+   "id": "R7",
+   "name_uz": "Qurum zarrachasi tushmoqda",
+   "from": [
+    "R6",
+    "R5"
+   ],
+   "prompt": "Change the scene: the same black ball character, now WITHOUT the four white balls, a little dusty and sooty, falling head first down through the dark amber clouds of the attached Jupiter atmosphere, eyes wide, small sooty trail behind it, lightning far above. Same face, 9:16."
+  },
+  {
+   "id": "R8",
+   "name_uz": "Chuqurlikda siqilgan zarracha",
+   "from": "R7",
+   "prompt": "Change the scene: the same sooty black ball character deep inside the planet where the clouds are almost black and thick as syrup, heavy dark cloud walls pressing in from every side, the character squeezed and squinting with puffed cheeks, a faint glow starting inside it. Same face, 9:16."
+  },
+  {
+   "id": "R9",
+   "name_uz": "Olmosga aylandi",
+   "from": "R8",
+   "prompt": "Change the moment: the same character has turned into a clear, sparkling, perfectly cut DIAMOND, still with the same big friendly eyes and small smile, glowing brightly and lighting up the dark clouds around it with rainbow sparkles. Same face, 9:16."
+  },
+  {
+   "id": "R10",
+   "name_uz": "Olmos yomgʻiri",
+   "from": [
+    "R5",
+    "R9"
+   ],
+   "prompt": "Combine the attached images into one vertical 9:16 shot: hundreds of small sparkling diamonds falling like rain through the glowing amber and brown clouds of Jupiter, catching the blue-white flashes of lightning; in the foreground, slightly bigger, the smiling diamond character falls among them. Same light, 9:16."
+  },
+  {
+   "id": "R11",
+   "name_uz": "Nilufar kameraga",
+   "from": "R4",
+   "prompt": "Change the framing: a close-up of the same girl with yellow ribbons on the night rooftop, holding her planet book, looking straight into the camera with a curious, challenging half-smile, the bright orange planet softly blurred in the sky behind her. Same face, same clothes, same night light, 9:16."
+  }
+ ],
+ "scenes": [
+  {
+   "n": 1,
+   "title_uz": "Olmos yogʻmoqda",
+   "method": "Frames to Video",
+   "start": "R10",
+   "lines": [
+    {
+     "who": "Nilufar (kadr ortida)",
+     "text": "Bu yomgʻir emas. Bu — olmos!"
+    }
+   ],
+   "prompt": "The diamonds fall straight toward the camera through the glowing clouds and lightning; tiny crystal pings as they brush past the lens, a deep rumble of distant thunder. Fast, dazzling, magical. An off-screen girl says in Uzbek with a bright, excited 10-year-old Uzbek girl's voice: \"Bu yomg'ir emas. Bu — olmos!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 2,
+   "title_uz": "Tom ustida",
+   "method": "Frames to Video",
+   "start": "R4",
+   "lines": [
+    {
+     "who": "Nilufar",
+     "text": "Bobojon, Yupiterda olmos yogʻar ekan!"
+    },
+    {
+     "who": "Bobo",
+     "text": "Rostdanmi? Qani, aytchi, olmos qayerdan keladi?"
+    }
+   ],
+   "prompt": "The girl with yellow ribbons jumps up, holding her open book toward her grandfather and pointing at the orange planet in the sky. She says in Uzbek with a bright, excited 10-year-old Uzbek girl's voice: \"Bobojon, Yupiterda olmos yog'ar ekan!\" The grandfather lowers his tea bowl, smiles and raises his eyebrows. He says in Uzbek with a calm, warm, slightly gravelly elderly Uzbek male voice: \"Rostdanmi? Qani, aytchi, olmos qayerdan keladi?\" Audio: crickets, a distant dog, tea poured. No subtitles, no on-screen text."
+  },
+  {
+   "n": 3,
+   "title_uz": "Chaqmoq",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R6",
+    "R5"
+   ],
+   "lines": [
+    {
+     "who": "Bobo (kadr ortida)",
+     "text": "U yerda chaqmoq tez-tez chaqadi. Chaqmoq metan gazini parchalab tashlaydi."
+    }
+   ],
+   "prompt": "The little black-and-white molecule character floats happily through the amber clouds of Jupiter, waving its white ball arms. Suddenly a blue-white lightning bolt cracks right beside it: a bright flash, and the four white balls pop off and fly away like popcorn, leaving only the black ball, blinking in surprise. Comic, not scary. Audio: a huge thunder crack, four funny pops. An off-screen old man says in Uzbek with a calm, warm, slightly gravelly elderly Uzbek male voice: \"U yerda chaqmoq tez-tez chaqadi. Chaqmoq metan gazini parchalab tashlaydi.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 4,
+   "title_uz": "Qora qurum",
+   "method": "Frames to Video",
+   "start": "R7",
+   "lines": [
+    {
+     "who": "Nilufar (kadr ortida)",
+     "text": "Qolgani — uglerod! Xuddi oʻchoqdagi qora qurum."
+    }
+   ],
+   "prompt": "The sooty black ball character tumbles down through the darkening amber clouds, sneezes a small puff of soot, rubs its nose and keeps falling deeper. Camera follows it down. Audio: whistling wind, a tiny sneeze. An off-screen girl says in Uzbek with a bright, excited 10-year-old Uzbek girl's voice: \"Qolgani — uglerod! Xuddi o'choqdagi qora qurum.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 5,
+   "title_uz": "Bosim",
+   "method": "Frames to Video",
+   "start": "R8",
+   "lines": [
+    {
+     "who": "Bobo (kadr ortida)",
+     "text": "Pastga tushgan sari bosim oshadi. Juda-juda katta bosim."
+    }
+   ],
+   "prompt": "The heavy dark cloud walls slowly press in on the sooty black ball from every side; it squeezes smaller, puffs its cheeks, squints hard, and a faint warm glow begins inside it. Slow push-in. Audio: a deep groaning pressure sound, creaking like a ship's hull. An off-screen old man says in Uzbek with a calm, warm, slightly gravelly elderly Uzbek male voice: \"Pastga tushgan sari bosim oshadi. Juda-juda katta bosim.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 6,
+   "title_uz": "Olmos!",
+   "method": "Frames to Video",
+   "start": "R8",
+   "end": "R9",
+   "lines": [
+    {
+     "who": "Nilufar (kadr ortida)",
+     "text": "Va qora qurum… olmosga aylanadi!"
+    }
+   ],
+   "prompt": "The squeezed sooty ball glows brighter and brighter until it bursts into light and becomes a clear sparkling diamond with the same happy face, lighting the dark clouds with rainbow sparkles. It opens its eyes and admires itself. Audio: rising choir swell, a crystal chime. An off-screen girl says in Uzbek with a bright, excited 10-year-old Uzbek girl's voice: \"Va qora qurum... olmosga aylanadi!\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 7,
+   "title_uz": "Lekin…",
+   "method": "Ingredients to Video",
+   "attach": [
+    "R3",
+    "R1"
+   ],
+   "lines": [
+    {
+     "who": "Bobo",
+     "text": "Lekin bu hali faraz. Olimlar jiddiy taxmin qilgan, ammo hech kim oʻz koʻzi bilan koʻrmagan."
+    }
+   ],
+   "prompt": "Medium shot of the grandfather on the night rooftop. He pulls his spectacles down onto his nose, raises one finger gently and smiles kindly, honest and thoughtful. Audio: crickets, a soft breeze in the grapevine. He says in Uzbek with a calm, warm, slightly gravelly elderly Uzbek male voice: \"Lekin bu hali faraz. Olimlar jiddiy taxmin qilgan, ammo hech kim o'z ko'zi bilan ko'rmagan.\" No subtitles, no on-screen text."
+  },
+  {
+   "n": 8,
+   "title_uz": "Savol",
+   "method": "Frames to Video",
+   "start": "R11",
+   "lines": [
+    {
+     "who": "Nilufar",
+     "text": "Saturnda ham shunday boʻlishi mumkin ekan. Siz ishonasizmi? Izohda yozing!"
+    }
+   ],
+   "prompt": "The girl with yellow ribbons hugs her book, leans toward the camera, narrows her eyes playfully and asks the viewer directly. Hold on her curious look at the end. Audio: crickets, a faint crystal chime. She says in Uzbek with a bright, excited 10-year-old Uzbek girl's voice: \"Saturnda ham shunday bo'lishi mumkin ekan. Siz ishonasizmi? Izohda yozing!\" No subtitles, no on-screen text."
+  }
+ ],
+ "post_text_uz": "Yupiterda olmos yogʻishi mumkin! Chaqmoq metanni parchalaydi, qora uglerod chuqurlikka tushadi va ulkan bosim ostida olmosga aylanadi. Bu hali faraz — hech kim koʻrmagan. Siz ishonasizmi? Izohda yozing! #negashunday #Yupiter #olmos #fan #Powerty"
+}
