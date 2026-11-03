@@ -1,0 +1,58 @@
+{
+ "id": "2026-11-03-mantiq-25-non-kesish",
+ "number": 84,
+ "for": "Inom",
+ "date": "2026-11-03",
+ "series": "Mantiq maydoni",
+ "title_uz": "Nonni besh marta kesish",
+ "concept_uz": "Buvi dasturxonga katta dumaloq non qoʻyib, Sherbekka pichoq beradi: «Besh marta toʻgʻri kes — koʻraylik, necha boʻlak qilarkansan.» Sherbek gʻildirak kegaylaridek oʻrtasidan kesib, 10 boʻlak qiladi. Buvi jilmayadi: «Bundan ancha yaxshiroq qilsa boʻladi.» Koʻpi bilan nechta? Javob keyingi hafta.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "logic/management/commands/_puzzles_logic_25_32.py (puzzle 25)"
+ ],
+ "facts": [
+  {"claim": "Buvi dasturxonga katta dumaloq non qoʻyadi va Sherbekka uzun pichoq beradi: besh marta toʻgʻri, chetdan chetga kesish", "source": "puzzle 25 body_uz"},
+  {"claim": "Sherbek markazdan gʻildirak kegaylaridek besh marta kesib 10 boʻlak oladi; buvi: «Bundan ancha yaxshiroq qilsa boʻladi»", "source": "puzzle 25 body_uz"},
+  {"claim": "Qoida: buklash, ustma-ust qoʻyish, boʻlaklarni surish mumkin emas; boʻlaklar bir xil boʻlishi shart emas", "source": "puzzle 25 lg-rule + body_uz"},
+  {"claim": "Markazdan uch marta kesish olti boʻlak beradi", "source": "puzzle 25 figure caption"},
+  {"claim": "Maslahat: yangi kesish hamma oldingilarini kesib oʻtsin, lekin ikkitasi kesishgan joydan emas", "source": "puzzle 25 hint_uz"},
+  {"claim": "Javob (videoda aytilmaydi): answer_key '16' — faqat javob videosi uchun", "source": "puzzle 25 answer_key"},
+  {"claim": "Raund 5: 2026-11-02 ochilgan, javobi 2026-11-09 da ochiladi — javob videosi 2026-11-10 da (Inom)", "source": "_puzzles_logic_25_32.py SCHEDULE start 2026-10-05 + 7×(5−1)"}
+ ],
+ "style_line": "Cinematic photoreal, warm golden morning light through a window, cosy traditional Uzbek home, rich colours of a patterned dastarkhan, shallow depth of field, 35mm film look, gentle playful mood. No text, no letters, no numbers, no watermark.",
+ "refs": [
+  {"id": "R1", "name_uz": "Muhit: dasturxon va non", "prompt": "Vertical 9:16 top-down shot of a low wooden table covered with a red-and-gold patterned dastarkhan cloth; in the centre one big round golden Uzbek flatbread (non) with a stamped pattern in the middle and a raised glossy rim, sesame seeds on top. Around it a blue-and-white cotton-pattern teapot, two small bowls of tea, a dish of raisins. Warm morning light from a window. No people."},
+  {"id": "R2", "name_uz": "Buvi", "prompt": "Vertical 9:16 medium portrait of a kind, sharp-eyed Uzbek grandmother in her seventies, a WHITE headscarf with small blue flowers tied at the nape, a dark-green velvet vest over a long patterned dress, round wire glasses on her nose, a knowing half-smile. She sits on a cushion at a low table in a warm traditional room with carpets on the wall."},
+  {"id": "R3", "name_uz": "Sherbek", "prompt": "Vertical 9:16 medium portrait of an eager 11-year-old Uzbek boy with short black hair and a big gap-toothed grin, a bright YELLOW hoodie with rolled sleeves, sitting cross-legged on a cushion at a low table in a warm traditional room, holding a long bread knife carefully with the blade pointed down."},
+  {"id": "R4", "name_uz": "Ikkalasi dasturxonda", "from": ["R1", "R2", "R3"], "prompt": "Combine the attached images into one vertical 9:16 shot: the grandmother in the white flowered headscarf and the boy in the yellow hoodie sit on cushions at either side of the low table with the patterned dastarkhan; the big round non lies between them; the grandmother hands the boy the long bread knife handle-first. Same faces, same clothes, same warm morning light."},
+  {"id": "R5", "name_uz": "Non: kegaylar", "from": "R1", "prompt": "Change the scene: the same round non seen from straight above, now cut by five straight cuts that all pass through the very centre, like the spokes of a wheel, making ten equal wedge-shaped pieces still lying in place. Same dastarkhan, same light, 9:16."},
+  {"id": "R6", "name_uz": "Sherbek kameraga", "from": "R3", "prompt": "Change the framing: a close-up of the same boy in the yellow hoodie, no longer grinning, chin resting on his fist, frowning in thought as he looks straight into the camera; the cut non softly blurred on the table in front of him. Same face, same clothes, same light, 9:16."}
+ ],
+ "scenes": [
+  {"n": 1, "title_uz": "Pichoq", "method": "Frames to Video", "start": "R4",
+   "lines": [{"who": "Buvi", "text": "Besh marta kes. Toʻgʻri, bir chetidan ikkinchi chetigacha."}],
+   "prompt": "The grandmother in the white flowered headscarf slaps the big round non down onto the dastarkhan with a soft thump and hands the boy the long knife, handle first, eyes twinkling behind her glasses. Audio: the thump of bread, a teacup clink, a clock ticking. She says in Uzbek with a warm, crackly, teasing old woman's voice: \"Besh marta kes. To'g'ri, bir chetidan ikkinchi chetigacha.\" No subtitles, no on-screen text."},
+  {"n": 2, "title_uz": "Koʻraylik-chi", "method": "Ingredients to Video", "attach": ["R2", "R1"],
+   "lines": [{"who": "Buvi", "text": "Koʻraylik-chi, necha boʻlak qilarkansan."}],
+   "prompt": "Close on the grandmother as she folds her arms, leans back on her cushion and raises one eyebrow above her round glasses, like a teacher setting a test. Audio: a soft amused hum, a bird outside the window. She says in Uzbek with a warm, crackly, teasing old woman's voice: \"Ko'raylik-chi, necha bo'lak qilarkansan.\" No subtitles, no on-screen text."},
+  {"n": 3, "title_uz": "Oson-ku", "method": "Ingredients to Video", "attach": ["R3", "R1"],
+   "lines": [{"who": "Sherbek", "text": "Oson-ku! Oʻrtasidan kesaman."}],
+   "prompt": "The boy in the yellow hoodie grins, rolls his sleeves higher and positions the knife exactly over the centre of the round non, tongue poking out in concentration. Audio: sleeves rustling, a confident little whistle. He says in Uzbek with a bright, eager, cheeky boy's voice: \"Oson-ku! O'rtasidan kesaman.\" No subtitles, no on-screen text."},
+  {"n": 4, "title_uz": "Besh kesish", "method": "Frames to Video", "start": "R1", "end": "R5",
+   "lines": [{"who": "Hikoyachi", "text": "Bir, ikki, uch, toʻrt, besh. Hammasi oʻrtadan."}],
+   "prompt": "Top-down: a knife presses down through the centre of the round non five times, each straight cut through the very middle, turning the bread into wheel-spoke wedges. Audio: five crisp crunching cuts, crumbs pattering. An off-screen man says in Uzbek with a calm, warm, slightly playful male narrator voice: \"Bir, ikki, uch, to'rt, besh. Hammasi o'rtadan.\" No subtitles, no on-screen text."},
+  {"n": 5, "title_uz": "Oʻnta!", "method": "Frames to Video", "start": "R5",
+   "lines": [{"who": "Sherbek", "text": "Oʻnta boʻlak! Rekord!"}],
+   "prompt": "Slow push-in over the ten wedge pieces of non; the boy's hands spread proudly over them from the edge of frame and he taps the table twice. Audio: a proud drum-roll tap on the table, a little cheer. He says in Uzbek with a bright, eager, cheeky boy's voice: \"O'nta bo'lak! Rekord!\" No subtitles, no on-screen text."},
+  {"n": 6, "title_uz": "Bundan yaxshiroq", "method": "Ingredients to Video", "attach": ["R2", "R5"],
+   "lines": [{"who": "Buvi", "text": "Bundan ancha yaxshiroq qilsa boʻladi."}, {"who": "Sherbek", "text": "Qanday qilib?!"}],
+   "prompt": "The grandmother looks at the spoke-cut non, smiles slowly and shakes her head; the boy in the yellow hoodie freezes mid-cheer, mouth open. Audio: a teacup set down, a single surprised string pluck. She says in Uzbek with a warm, crackly, teasing old woman's voice: \"Bundan ancha yaxshiroq qilsa bo'ladi.\" He answers in Uzbek with a bright, eager, cheeky boy's voice, astonished: \"Qanday qilib?!\" No subtitles, no on-screen text."},
+  {"n": 7, "title_uz": "Maslahat", "method": "Ingredients to Video", "attach": ["R2", "R1"],
+   "lines": [{"who": "Buvi", "text": "Hammasi bir nuqtada uchrashmasin. Har yangi kesish eskilarining hammasini kessin."}],
+   "prompt": "The grandmother takes a fresh whole round non from a cloth bundle and, with one fingertip, slowly draws a slanted straight line across its top, then another crossing it off-centre, never through the middle. Audio: a soft fingertip scrape on crust, the clock ticking, a low curious marimba note. She says in Uzbek with a warm, crackly, teasing old woman's voice, gently: \"Hammasi bir nuqtada uchrashmasin. Har yangi kesish eskilarining hammasini kessin.\" No subtitles, no on-screen text."},
+  {"n": 8, "title_uz": "Savol", "method": "Frames to Video", "start": "R6",
+   "lines": [{"who": "Sherbek", "text": "Besh marta kesib, koʻpi bilan necha boʻlak? Javobni izohda yozing!"}, {"who": "Hikoyachi", "text": "Javobni powerty.uz/logic da yuboring."}],
+   "prompt": "Close-up: the boy in the yellow hoodie rubs his chin, narrows his eyes, then looks straight into the camera asking the viewer for help. Hold on his look at the end. Audio: the clock ticking, then silence. He says in Uzbek with a bright, eager, cheeky boy's voice, now puzzled: \"Besh marta kesib, ko'pi bilan necha bo'lak? Javobni izohda yozing!\" Then an off-screen man says in Uzbek with a calm, warm, slightly playful male narrator voice: \"Javobni powerty.uz/logic da yuboring.\" No subtitles, no on-screen text."}
+ ],
+ "post_text_uz": "Buvi Sherbekka non va pichoq berdi: «Besh marta toʻgʻri kes!» Sherbek oʻrtasidan kesib, 10 boʻlak qildi. Buvi esa: «Bundan ancha yaxshiroq qilsa boʻladi.» Buklash yoʻq, ustma-ust qoʻyish yoʻq, boʻlaklarni surish yoʻq — faqat besh marta toʻgʻri kesish. Koʻpi bilan necha boʻlak chiqadi? Javobingizni izohda yozing yoki powerty.uz/logic da yuboring — toʻgʻri javob keyingi hafta! #mantiq #jumboq #non #Powerty"
+}

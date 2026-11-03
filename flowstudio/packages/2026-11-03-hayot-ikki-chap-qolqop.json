@@ -1,0 +1,58 @@
+{
+ "id": "2026-11-03-hayot-ikki-chap-qolqop",
+ "number": 85,
+ "for": "Jonibek",
+ "date": "2026-11-03",
+ "series": "Hayot hikoyasi",
+ "title_uz": "Ikkita chap qoʻlqop",
+ "concept_uz": "Qishki bozorda yigit shoshib qoʻlqop sotib oladi. Kechqurun qarasa — ikkalasi ham chap qoʻlga. Ertasi almashtirgani borganda, yonidagi keksa ayol kulib: «Men ham oʻtgan hafta shunday qilganman», deydi va uni jamiyat markaziga taklif qiladi. Yillar oʻtib ham u oʻsha yerga boradi: bitta xato unga shaharda ikkinchi uy topib bergan.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_life_1_6.py (story 6)"
+ ],
+ "facts": [
+  {"claim": "Qishki bozor gavjum va sovuq; qoʻlqop rastasi non sotuvchi bilan qovurilgan kashtan sotuvchi orasida", "source": "story 6 body"},
+  {"claim": "U birinchi issiqroq juftni olib, tez pul toʻlab, tekshirmasdan uyga ketadi", "source": "story 6 body"},
+  {"claim": "Kechqurun axlat chiqarish uchun kiyganda ikkala qoʻlqop ham chap qoʻlga ekanini koʻradi", "source": "story 6 body"},
+  {"claim": "Ertasi kuni sotuvchi uni tanib, kechirim soʻraydi va qutilaridan juftini qidiradi; sotuvchi qutilarni tez-tez aralashtirib yuborishi doimiy xaridorlar orasida hazilga aylangan", "source": "story 6 body"},
+  {"claim": "Yonidagi keksa ayol kulib, oʻtgan hafta xuddi shu xatoni qilganini aytadi va uni yaqindagi jamiyat markazidagi haftalik yigʻinga taklif qiladi", "source": "story 6 body"},
+  {"claim": "U oʻsha shanba boradi va yillar oʻtib ham boradi; eng yaqin doʻstlarini oʻsha yerda topgan — xato unga shaharda ikkinchi uy bergan", "source": "story 6 body"}
+ ],
+ "style_line": "Cinematic photoreal winter, soft overcast daylight and warm amber stall lamps, light snow falling, breath visible in the cold air, gentle film grain, 35mm look, tender hopeful mood. No text, no letters, no numbers, no watermark.",
+ "refs": [
+  {"id": "R1", "name_uz": "Muhit: qishki bozor", "prompt": "Vertical 9:16 wide shot of a crowded open-air winter market under light snowfall: rows of wooden stalls with canvas roofs, a stall piled with round breads, a small cart roasting chestnuts with curling smoke, and between them a cosy stall hung with knitted gloves and mittens in many colours, lit by warm hanging bulbs. People in winter coats blurred in the background, no shop signs, no writing anywhere."},
+  {"id": "R2", "name_uz": "Yigit", "prompt": "Vertical 9:16 medium portrait of a shy, slightly lonely Uzbek man of about 25, short dark hair, a light stubble, a long CHARCOAL wool coat with a MUSTARD-YELLOW knitted scarf, cheeks red from cold, holding a small paper bag. Snowy market softly blurred behind him."},
+  {"id": "R3", "name_uz": "Sotuvchi", "prompt": "Vertical 9:16 medium portrait of a jolly, slightly scatter-brained Uzbek stallholder in his fifties, round face, grey moustache, a brown fur-lined hat with ear flaps, a quilted dark-blue chapan, standing behind a stall of knitted gloves with open cardboard boxes of gloves everywhere."},
+  {"id": "R4", "name_uz": "Keksa ayol", "prompt": "Vertical 9:16 medium portrait of a lively, kind Uzbek woman in her late sixties with bright laughing eyes, a long CHERRY-RED wool coat and a cream knitted headscarf, holding a string bag with bread. Snowy market softly blurred behind her."},
+  {"id": "R5", "name_uz": "Ikkita chap qoʻlqop", "prompt": "Vertical 9:16 close-up of two identical dark-grey knitted gloves lying side by side on a wooden kitchen table under a warm lamp, BOTH thumbs pointing the same way — two left-hand gloves, clearly not a pair; a crumpled paper bag beside them. Evening light, cosy apartment kitchen."},
+  {"id": "R6", "name_uz": "Rastada uchalasi", "from": ["R1", "R2", "R3", "R4"], "prompt": "Combine the attached images into one vertical 9:16 shot at the glove stall in the snowy market: the stallholder in the fur hat digs through open boxes of gloves; in front of the stall the young man in the charcoal coat and mustard scarf holds up a glove, and beside him the woman in the cherry-red coat laughs warmly. Same faces, same clothes, same light snow."},
+  {"id": "R7", "name_uz": "Jamiyat markazi", "from": ["R2", "R4"], "prompt": "Change the scene: a warm, bright community-centre hall in winter evening: people of all ages sit around long tables with tea, plov and board games, coats on hooks by the door, fogged windows with snow outside. The young man in the mustard scarf sits laughing among them; the woman in the cherry-red coat pours him tea. Same faces, same clothes, 9:16."}
+ ],
+ "scenes": [
+  {"n": 1, "title_uz": "Sovuq bozor", "method": "Frames to Video", "start": "R1",
+   "lines": [{"who": "Yigit", "text": "Oʻsha qish qoʻllarim muzlab qolgandi."}],
+   "prompt": "Slow drift through the snowy winter market toward the glove stall between the bread stall and the chestnut cart; snow falls, chestnut smoke curls in the lamp light. Audio: crunching footsteps on snow, sellers calling, chestnuts crackling in the pan. An off-screen man says in Uzbek with a soft, warm, reflective young male voice: \"O'sha qish qo'llarim muzlab qolgandi.\" No subtitles, no on-screen text."},
+  {"n": 2, "title_uz": "Shoshib", "method": "Ingredients to Video", "attach": ["R2", "R3"],
+   "lines": [{"who": "Yigit", "text": "Birinchi issiq juftni oldim, pulini berdim, qaramay ketdim."}],
+   "prompt": "The young man in the charcoal coat and mustard scarf, shivering, grabs the first pair of dark-grey gloves from the pile, hands the stallholder a few folded notes, stuffs the gloves into a paper bag and hurries away into the crowd without looking at them. Audio: rustling paper bag, a quick thank-you murmur, hurried footsteps. An off-screen man says in Uzbek with a soft, warm, reflective young male voice: \"Birinchi issiq juftni oldim, pulini berdim, qaramay ketdim.\" No subtitles, no on-screen text."},
+  {"n": 3, "title_uz": "Ikkalasi chap!", "method": "Frames to Video", "start": "R5",
+   "lines": [{"who": "Yigit", "text": "Kechqurun qarasam — ikkalasi ham chap qoʻlga!"}],
+   "prompt": "Evening in a small kitchen: a man's hand tries to pull on the second grey glove, the thumb ends up on the wrong side; he drops it back on the table next to the first, two left gloves side by side. Audio: a kettle ticking as it cools, a frustrated sigh, a short comic piano note. He says in Uzbek with a soft, warm, reflective young male voice, half annoyed, half amused: \"Kechqurun qarasam — ikkalasi ham chap qo'lga!\" No subtitles, no on-screen text."},
+  {"n": 4, "title_uz": "Sotuvchi", "method": "Ingredients to Video", "attach": ["R3", "R1"],
+   "lines": [{"who": "Sotuvchi", "text": "Voy, kechirasiz, ukam! Yana qutilarni aralashtiribman."}],
+   "prompt": "Next morning, quieter market. The stallholder in the fur hat sees the young man coming, slaps his own forehead with a laugh and starts digging through open cardboard boxes of gloves. Audio: boxes shuffled, gloves tossed, a few morning birds. He says in Uzbek with a jolly, booming, apologetic middle-aged male voice: \"Voy, kechirasiz, ukam! Yana qutilarni aralashtiribman.\" No subtitles, no on-screen text."},
+  {"n": 5, "title_uz": "Men ham", "method": "Frames to Video", "start": "R6",
+   "lines": [{"who": "Keksa ayol", "text": "Men ham oʻtgan hafta xuddi shunday qilganman!"}],
+   "prompt": "At the glove stall the woman in the cherry-red coat looks at the glove in the young man's hand and bursts out laughing, patting his arm; he smiles shyly for the first time. Audio: her warm laugh, his small embarrassed chuckle, the stallholder still rummaging. She says in Uzbek with a lively, warm, laughing old woman's voice: \"Men ham o'tgan hafta xuddi shunday qilganman!\" No subtitles, no on-screen text."},
+  {"n": 6, "title_uz": "Taklif", "method": "Ingredients to Video", "attach": ["R4", "R2"],
+   "lines": [{"who": "Keksa ayol", "text": "Shanba kuni markazga keling. Choy bor, odamlar yaxshi."}],
+   "prompt": "The two of them talk while waiting; the woman in the cherry-red coat points down the snowy street toward a low building with glowing windows; the young man in the mustard scarf hesitates, then nods. Audio: soft snow, distant chatter, a gentle guitar begins. She says in Uzbek with a lively, warm, laughing old woman's voice: \"Shanba kuni markazga keling. Choy bor, odamlar yaxshi.\" No subtitles, no on-screen text."},
+  {"n": 7, "title_uz": "Ikkinchi uy", "method": "Frames to Video", "start": "R7",
+   "lines": [{"who": "Yigit", "text": "Oʻsha shanba bordim. Yillar oʻtdi — hali ham boraman."}],
+   "prompt": "Inside the warm community-centre hall the young man in the mustard scarf laughs with people around a long table; the woman in the cherry-red coat pours him tea; snow falls past the fogged windows. Audio: friendly chatter, cups clinking, laughter, the gentle guitar growing warmer. An off-screen man says in Uzbek with a soft, warm, reflective young male voice: \"O'sha shanba bordim. Yillar o'tdi — hali ham boraman.\" No subtitles, no on-screen text."},
+  {"n": 8, "title_uz": "Xato", "method": "Ingredients to Video", "attach": ["R2", "R5"],
+   "lines": [{"who": "Yigit", "text": "Qoʻlqopni tekshirganimda, bularning hech biri boʻlmasdi. Sizni qaysi xato baxtli qilgan? Izohda yozing."}],
+   "prompt": "Close-up: the young man in the mustard scarf, now on a snowy street outside the glowing centre, holds up the two left gloves side by side, smiles and looks straight into the camera. Hold on his smile at the end. Audio: the guitar's last soft chord, snow hush. He says in Uzbek with a soft, warm, reflective young male voice: \"Qo'lqopni tekshirganimda, bularning hech biri bo'lmasdi. Sizni qaysi xato baxtli qilgan? Izohda yozing.\" No subtitles, no on-screen text."}
+ ],
+ "post_text_uz": "Qishki bozorda shoshib olingan qoʻlqop — ikkalasi ham chap qoʻlga. Almashtirgani borganda bir keksa ayol kulib: «Men ham shunday qilganman», dedi va uni shanbalik yigʻinga taklif qildi. Yillar oʻtib ham u oʻsha yerga boradi. Bitta kichik xato — shaharda ikkinchi uy. Sizni qaysi xato baxtli qilgan? Izohda yozing. #hayothikoyasi #doʻstlik #qish #Powerty"
+}
