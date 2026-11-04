@@ -1,0 +1,59 @@
+{
+ "id": "2026-11-04-hayot-bir-chimdim-sabr",
+ "number": 86,
+ "for": "Inom",
+ "date": "2026-11-04",
+ "series": "Hayot hikoyasi",
+ "title_uz": "Bir chimdim sabr",
+ "concept_uz": "Buvidan tunuka qutida retsept kartochkalari qoladi. Bittasining nomi yoʻq, oxirida esa «bir chimdim sabr» deb yozilgan. Nevara hammasini aniq oʻlchab pishiradi, shoshib pishiradi — taʼm baribir boshqa. Xolasi telefonni oʻchirib, uni plita yoniga oʻtqazadi va buvisi haqida gapirib, birga sekin pishiradi. Shunda taʼm qaytadi: yetishmagan narsa ziravor emas, shoshilmagan vaqt ekan.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_life_7_12.py (story 9)"
+ ],
+ "facts": [
+  {"claim": "Buvidan kichik tunuka quti va ehtiyotkor qoʻlyozmadagi retsept kartochkalari qoladi", "source": "story 9 body"},
+  {"claim": "Bitta kartochkaning nomi yoʻq, masalliqlar roʻyxati «bir chimdim sabr» (a pinch of patience) bilan tugaydi", "source": "story 9 body"},
+  {"claim": "Birinchi marta hamma oʻlchovni aniq bajaradi — ovqat yoqimli, lekin bolalikdagi yakshanbalardagidek emas", "source": "story 9 body"},
+  {"claim": "Ikkinchi marta qoʻngʻiroqlar va xatlar orasida, bir qoʻlda qoshiq, bir qoʻlda yozib pishiradi — natija oʻsha-oʻsha", "source": "story 9 body"},
+  {"claim": "Xolasi telefonni oʻchiradi, plita yoniga stul qoʻyadi, buvi haqida hikoya qilib, tatib, birga sekin pishiradi", "source": "story 9 body"},
+  {"claim": "Soatga qarashni toʻxtatganda oshxona iliqroq tuyuladi; ovqat aynan esidagidek chiqadi; yetishmagan narsa — sevgan odam bilan shoshilmay oʻtgan soatlar", "source": "story 9 body"}
+ ],
+ "style_line": "Cinematic photoreal, warm late-afternoon window light in a small Tashkent apartment kitchen, steam catching the sunbeams, soft amber and copper tones, shallow depth of field, gentle film grain, 35mm look, tender nostalgic mood. No text, no letters, no numbers, no watermark.",
+ "refs": [
+  {"id": "R1", "name_uz": "Muhit: kichik oshxona", "prompt": "Vertical 9:16 interior of a small, lived-in apartment kitchen in Tashkent: a white gas stove with a heavy dented aluminium pot, a wooden counter with onions, carrots and a bowl of spices, a window with a lace curtain and late sun coming in, a blue-patterned ceramic teapot, a wooden stool. No people."},
+  {"id": "R2", "name_uz": "Nevara", "prompt": "Vertical 9:16 medium portrait of a busy Uzbek woman of about 28, dark hair in a messy bun held by a YELLOW pencil, a MUSTARD-YELLOW knitted cardigan over a white blouse, tired but kind eyes, a smartphone in one hand, standing in a small kitchen with warm window light behind her."},
+  {"id": "R3", "name_uz": "Xola", "prompt": "Vertical 9:16 medium portrait of a lively, warm Uzbek woman in her mid fifties, round smiling face, laugh lines, a PLUM-PURPLE dress with a cream knitted shawl and a loosely tied white headscarf, sleeves pushed up, holding a wooden spoon, in a small kitchen with warm window light."},
+  {"id": "R4", "name_uz": "Buvi", "prompt": "Vertical 9:16 medium portrait of a gentle Uzbek grandmother in her late seventies, silver hair under a WHITE headscarf with small BLUE flowers, deep kind wrinkles, a dark green velvet vest over a long dress, sitting at a low table in a sunlit old courtyard house, smiling softly."},
+  {"id": "R5", "name_uz": "Tunuka quti", "prompt": "Vertical 9:16 close-up on a wooden kitchen table: a small old tin box with faded painted flowers, lid open, full of yellowed index cards covered in faint looping pen scribbles that are not readable, one card lifted out and lying apart from the others. Warm window light, dust in the air."},
+  {"id": "R6", "name_uz": "Shoshib pishirish", "from": ["R1", "R2"], "prompt": "Combine the attached images into one vertical 9:16 shot of the same kitchen in the evening: the woman in the mustard cardigan stands at the stove stirring the big pot with one hand while typing on a phone with the other, an open laptop glowing on the counter beside the onions, a wall clock in view. Same face, same clothes, same kitchen."},
+  {"id": "R7", "name_uz": "Plita yonida ikkovi", "from": ["R1", "R2", "R3"], "prompt": "Combine the attached images into one vertical 9:16 shot of the same kitchen at golden hour: two wooden stools pulled up close to the stove; the aunt in the plum dress tastes from a wooden spoon and laughs while telling a story; the young woman in the mustard cardigan sits beside her listening, smiling. A phone lies face-down and dark on the counter, the laptop is closed. Same faces, same clothes, steam in the sunlight."},
+  {"id": "R8", "name_uz": "Bolalikdagi yakshanba", "from": "R4", "prompt": "Change the scene: the same grandmother, a little younger, in a sunlit courtyard of an old house with a grapevine overhead, serving a steaming bowl from a big pot at a low table covered with a bright cloth; a little girl of about six with dark hair in a bun sits beside her, looking up at her with delight. Same face, same headscarf with blue flowers, soft dreamy light, 9:16."}
+ ],
+ "scenes": [
+  {"n": 1, "title_uz": "Quti", "method": "Frames to Video", "start": "R5",
+   "lines": [{"who": "Nevara (kadr ortida)", "text": "Buvim olamdan oʻtgach, menga bitta tunuka quti qoldi."}],
+   "prompt": "Slow push-in on the open tin box on the kitchen table; a woman's hand gently lifts out the loose card, dust drifting in the window light. Audio: a ticking wall clock, distant city traffic, the soft scrape of the tin lid. An off-screen woman says in Uzbek with a soft, warm, thoughtful young female voice: \"Buvim olamdan o'tgach, menga bitta tunuka quti qoldi.\" No subtitles, no on-screen text."},
+  {"n": 2, "title_uz": "Nomsiz kartochka", "method": "Ingredients to Video", "attach": ["R2", "R5"],
+   "lines": [{"who": "Nevara", "text": "Bunisining nomi yoʻq. Oxirida esa: bir chimdim sabr. Hazil qilgan-da, buvim!"}],
+   "prompt": "Medium close-up: the young woman in the mustard cardigan, the yellow pencil in her bun, reads the old card, raises her eyebrows, then laughs softly and shakes her head with affection. Audio: the clock ticking, a small laugh, paper rustle. She says in Uzbek with a soft, warm, thoughtful young female voice, amused: \"Bunisining nomi yo'q. Oxirida esa: bir chimdim sabr. Hazil qilgan-da, buvim!\" No subtitles, no on-screen text."},
+  {"n": 3, "title_uz": "Aniq oʻlchab", "method": "Ingredients to Video", "attach": ["R2", "R1"],
+   "lines": [{"who": "Nevara", "text": "Hammasini aniq oʻlchadim. Mazali… lekin buvimniki emas."}],
+   "prompt": "The young woman in the mustard cardigan carefully levels a spoon of spice, pours it into the pot, stirs, then tastes from the spoon and pauses, a little disappointed, looking down into the pot. Audio: a gentle bubbling pot, a spoon clinking the rim, a small sigh. She says in Uzbek with a soft, warm, thoughtful young female voice: \"Hammasini aniq o'lchadim. Mazali... lekin buvimniki emas.\" No subtitles, no on-screen text."},
+  {"n": 4, "title_uz": "Shoshib", "method": "Frames to Video", "start": "R6",
+   "lines": [{"who": "Nevara (kadr ortida)", "text": "Keyingi hafta yana pishirdim: bir qoʻlda qoshiq, bir qoʻlda telefon."}],
+   "prompt": "Fast handheld energy: the woman stirs with one hand and types with the other, the phone buzzes, the laptop pings, she glances at the wall clock, the pot nearly boils over and she yanks the lid off. Audio: phone vibrations, notification pings, a hissing pot, hurried breathing. An off-screen woman says in Uzbek with a soft, warm, thoughtful young female voice, tired: \"Keyingi hafta yana pishirdim: bir qo'lda qoshiq, bir qo'lda telefon.\" No subtitles, no on-screen text."},
+  {"n": 5, "title_uz": "Xola keldi", "method": "Ingredients to Video", "attach": ["R3", "R2", "R1"],
+   "lines": [{"who": "Xola", "text": "Telefoningni menga ber. Stul olib kel, oʻtir."}],
+   "prompt": "The aunt in the plum dress walks into the kitchen, sees the chaos, smiles, gently takes the phone out of the young woman's hand, switches it off and puts it face-down on the counter, then pats a stool by the stove. The young woman blinks, surprised, then obeys. Audio: a door closing, the phone's off click, the pot calming to a simmer. The aunt says in Uzbek with a warm, brisk, cheerful middle-aged female voice: \"Telefoningni menga ber. Stul olib kel, o'tir.\" No subtitles, no on-screen text."},
+  {"n": 6, "title_uz": "Hikoyalar", "method": "Frames to Video", "start": "R7",
+   "lines": [{"who": "Xola", "text": "Sening buving bu qozon yonida soatlab oʻtirardi. Tat-chi, tuzi yetdimi?"}],
+   "prompt": "The two women sit side by side at the stove in golden light; the aunt talks and laughs, hands the wooden spoon to her niece, who tastes and nods; the camera slowly circles them through the rising steam. Audio: gentle simmer, soft laughter, a slow warm dutar melody begins. The aunt says in Uzbek with a warm, brisk, cheerful middle-aged female voice: \"Sening buving bu qozon yonida soatlab o'tirardi. Tat-chi, tuzi yetdimi?\" No subtitles, no on-screen text."},
+  {"n": 7, "title_uz": "Yakshanbalar", "method": "Frames to Video", "start": "R8",
+   "lines": [{"who": "Nevara (kadr ortida)", "text": "Soatga qarashni toʻxtatdim — va bolaligimdagi yakshanbalar qaytib keldi."}],
+   "prompt": "A dreamy memory: in the sunlit grapevine courtyard the grandmother in the white headscarf with blue flowers ladles steaming food into a bowl and hands it to the little girl, who beams; leaves sway, sunlight flickers. Audio: the dutar melody, children laughing far away, birds, a spoon in a bowl. An off-screen woman says in Uzbek with a soft, warm, thoughtful young female voice: \"Soatga qarashni to'xtatdim — va bolaligimdagi yakshanbalar qaytib keldi.\" No subtitles, no on-screen text."},
+  {"n": 8, "title_uz": "Sabr", "method": "Ingredients to Video", "attach": ["R2", "R3"],
+   "lines": [{"who": "Nevara", "text": "Yetishmagani ziravor emas ekan — sevgan odam bilan shoshilmay oʻtgan vaqt ekan. Sizda shunday taom bormi?"}],
+   "prompt": "Close-up: the young woman in the mustard cardigan tastes from the spoon, her eyes fill with happy tears; the aunt in the plum dress puts an arm round her shoulders. She turns and looks straight into the camera with a soft smile. Hold on her smile at the end. Audio: the dutar's last gentle notes, a quiet simmer. She says in Uzbek with a soft, warm, thoughtful young female voice: \"Yetishmagani ziravor emas ekan — sevgan odam bilan shoshilmay o'tgan vaqt ekan. Sizda shunday taom bormi?\" No subtitles, no on-screen text."}
+ ],
+ "post_text_uz": "Buvidan qolgan nomsiz retsept, oxirida — «bir chimdim sabr». Aniq oʻlchab pishirsa ham, shoshib pishirsa ham taʼm boshqa. Telefon oʻchgach, xolasi bilan plita yonida oʻtirgach — taʼm qaytdi. Sizda kim bilandir birga pishiriladigan oilaviy taom bormi? Izohda yozing. #hayothikoyasi #oila #buvim #Powerty"
+}

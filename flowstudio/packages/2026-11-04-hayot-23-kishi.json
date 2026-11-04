@@ -1,0 +1,58 @@
+{
+ "id": "2026-11-04-hayot-23-kishi",
+ "number": 87,
+ "for": "Jonibek",
+ "date": "2026-11-04",
+ "series": "Hayotdagi matematika",
+ "title_uz": "Maydonda 23 kishi",
+ "concept_uz": "Oʻyin oldidan hakam darvozabondan soʻraydi: maydondagi 23 kishidan ikkitasining tugʻilgan kuni bir kunda boʻlishi ehtimoli qancha? Darvozabon kuladi: «Yilda 365 kun bor, besh foiz!» Toʻgʻri javob — yarmidan koʻp, chunki 23 kishidan 253 ta juftlik chiqadi. Oxirida tomoshabin oʻz sinfida tekshiradi.",
+ "format_uz": "8 sahna × 8 soniya = 64 soniya",
+ "sources": [
+  "corner/management/commands/_stories_matematika_olami_16_21.py (story 37)"
+ ],
+ "facts": [
+  {"claim": "Maydonda 22 futbolchi va bitta hakam — jami 23 kishi", "source": "story 37 body"},
+  {"claim": "Koʻpchilik ehtimolni juda kam, 5–6 foiz deb taxmin qiladi", "source": "story 37 body"},
+  {"claim": "23 kishida ikkitasining tugʻilgan kuni bir kunda boʻlishi ehtimoli 50 foizdan koʻp (50,7 %)", "source": "story 37 body"},
+  {"claim": "Adashish sababi: «kimdir aynan mening kunimda tugʻilganmi?» deb oʻylaymiz — buning uchun 253 kishi kerak", "source": "story 37 body"},
+  {"claim": "23 kishidan 23 × 22 ÷ 2 = 253 juftlik chiqadi", "source": "story 37 body, grammar block"},
+  {"claim": "30 kishida ehtimol taxminan 71 %, 70 kishida 99,9 %", "source": "story 37 body"},
+  {"claim": "Bu «tugʻilgan kun paradoksi» deb ataladi", "source": "story 37 body"}
+ ],
+ "style_line": "Cinematic photoreal, an amateur football pitch on the edge of Tashkent at blue-hour dusk, bright white floodlights, green artificial turf with dew, mountains faint on the horizon, glowing golden threads of light used as a visual effect, crisp sports-film look, playful curious mood. No text, no letters, no numbers, no logos, no watermark.",
+ "refs": [
+  {"id": "R1", "name_uz": "Muhit: futbol maydoni", "prompt": "Vertical 9:16 wide shot of an amateur football pitch at dusk under four bright floodlights: green turf with white lines, two goals with white nets, a low fence, a few empty benches, faint mountains on the horizon under a deep blue sky. No people, no signs, no advertising boards."},
+  {"id": "R2", "name_uz": "Hakam", "prompt": "Vertical 9:16 medium portrait of a wiry, witty Uzbek football referee of about 45, neat grey-black beard, bald head, a BLACK referee shirt with a bright ORANGE collar, a silver whistle on a cord, a playful know-it-all smile, holding a football under one arm, floodlit pitch behind him. No badges, no logos."},
+  {"id": "R3", "name_uz": "Darvozabon", "prompt": "Vertical 9:16 medium portrait of a big, cheerful, confident Uzbek goalkeeper of about 25, curly dark hair, a LIME-GREEN goalkeeper jersey with long sleeves, thick white gloves, a broad grin, standing in front of a goal net under floodlights. No numbers, no logos."},
+  {"id": "R4", "name_uz": "Hujumchi", "prompt": "Vertical 9:16 medium portrait of a quick, excitable Uzbek striker of about 20, short fade haircut, a RED headband, a plain white football shirt with red sleeves, sweaty and grinning, floodlit pitch behind him. No numbers, no logos."},
+  {"id": "R5", "name_uz": "Hammasi maydonda", "from": ["R1", "R2", "R3", "R4"], "prompt": "Combine the attached images into one vertical 9:16 shot on the same floodlit pitch before kick-off: two teams of eleven players lined up in the centre (one team in plain white shirts with red sleeves, the other in plain sky-blue shirts), the referee in the black-and-orange shirt standing in front of them holding the ball, the goalkeeper in lime green and the striker with the red headband in the front row. Exactly twenty-three people. Same faces, same clothes."},
+  {"id": "R6", "name_uz": "Nur iplari", "from": "R5", "prompt": "Change the scene: the same twenty-three people on the floodlit pitch, filmed from high above; between every two people stretches a thin glowing golden thread of light, so the whole group is woven into a dense shimmering web of hundreds of threads. Same faces, same clothes, magical but realistic, 9:16."}
+ ],
+ "scenes": [
+  {"n": 1, "title_uz": "Hushtak", "method": "Frames to Video", "start": "R5",
+   "lines": [{"who": "Hakam", "text": "Oʻyindan oldin bitta savol! Maydonda yigirma uch kishi. Ikkitasining tugʻilgan kuni bir kunda boʻlishi mumkinmi?"}],
+   "prompt": "Opens on a sharp whistle blast: the referee in the black-and-orange shirt lowers his whistle and turns to the lined-up players with a sly grin, spinning the ball on one finger; players exchange puzzled looks. Audio: a loud whistle, crowd murmur from a few fans, floodlight hum. He says in Uzbek with a dry, playful, know-it-all middle-aged male voice: \"O'yindan oldin bitta savol! Maydonda yigirma uch kishi. Ikkitasining tug'ilgan kuni bir kunda bo'lishi mumkinmi?\" No subtitles, no on-screen text."},
+  {"n": 2, "title_uz": "Besh foiz!", "method": "Ingredients to Video", "attach": ["R3", "R1"],
+   "lines": [{"who": "Darvozabon", "text": "Yilda uch yuz oltmish besh kun bor, aka! Koʻpi bilan besh foiz."}],
+   "prompt": "The goalkeeper in the lime-green jersey laughs loudly, claps his thick gloves together and waves a hand dismissively, very sure of himself, in front of his goal. Audio: glove clap, his booming laugh, a few teammates chuckling. He says in Uzbek with a big, booming, cheerful young male voice: \"Yilda uch yuz oltmish besh kun bor, aka! Ko'pi bilan besh foiz.\" No subtitles, no on-screen text."},
+  {"n": 3, "title_uz": "Yarmidan koʻp", "method": "Ingredients to Video", "attach": ["R2", "R3"],
+   "lines": [{"who": "Hakam", "text": "Men esa aytaman: yarmidan koʻp. Har ikki oʻyinning birida shunday juftlik bor."}],
+   "prompt": "Two-shot: the referee in the black-and-orange shirt steps close to the goalkeeper, raises one finger and calmly smiles; the goalkeeper's grin freezes and his eyebrows climb. Audio: a tense comic string pluck, distant traffic. The referee says in Uzbek with a dry, playful, know-it-all middle-aged male voice: \"Men esa aytaman: yarmidan ko'p. Har ikki o'yinning birida shunday juftlik bor.\" No subtitles, no on-screen text."},
+  {"n": 4, "title_uz": "Xato qayerda", "method": "Ingredients to Video", "attach": ["R3"],
+   "lines": [{"who": "Hakam (kadr ortida)", "text": "Sen oʻzingni oʻylayapsan: kimdir aynan mening kunimda tugʻilganmi? Buning uchun ikki yuz ellik uch kishi kerak."}],
+   "prompt": "The goalkeeper in the lime-green jersey stands alone in a single narrow spotlight that isolates him on the dark pitch; he points at his own chest and looks around at the shadowy figures, counting on his gloved fingers, confused. Audio: floodlights humming down, a lonely echoing heartbeat-like drum. An off-screen man says in Uzbek with a dry, playful, know-it-all middle-aged male voice: \"Sen o'zingni o'ylayapsan: kimdir aynan mening kunimda tug'ilganmi? Buning uchun ikki yuz ellik uch kishi kerak.\" No subtitles, no on-screen text."},
+  {"n": 5, "title_uz": "Juftliklar", "method": "Frames to Video", "start": "R5", "end": "R6",
+   "lines": [{"who": "Hakam (kadr ortida)", "text": "Savol esa — istalgan ikki kishi haqida. Har kim qolgan yigirma ikki kishi bilan juft boʻladi."}],
+   "prompt": "The camera rises slowly above the lined-up players; one by one, thin glowing golden threads of light shoot from each person to every other person, faster and faster, until the whole group is woven into a dense shimmering web. Audio: soft chimes for each thread, building into a rising magical shimmer. An off-screen man says in Uzbek with a dry, playful, know-it-all middle-aged male voice: \"Savol esa — istalgan ikki kishi haqida. Har kim qolgan yigirma ikki kishi bilan juft bo'ladi.\" No subtitles, no on-screen text."},
+  {"n": 6, "title_uz": "253 juftlik", "method": "Extend", "extends": "5",
+   "lines": [{"who": "Hakam (kadr ortida)", "text": "Yigirma uch karra yigirma ikki, ikkiga boʻlamiz: ikki yuz ellik uch juftlik — ikki yuz ellik uch imkoniyat!"}],
+   "prompt": "Continue: the golden web pulses brightly, the camera slowly spins high above the pitch, the threads glitter like a net of stars over the floodlit grass. Audio: the shimmer peaks, then a satisfying deep chime. An off-screen man says in Uzbek with a dry, playful, know-it-all middle-aged male voice, triumphant: \"Yigirma uch karra yigirma ikki, ikkiga bo'lamiz: ikki yuz ellik uch juftlik — ikki yuz ellik uch imkoniyat!\" No subtitles, no on-screen text."},
+  {"n": 7, "title_uz": "Topildi!", "method": "Ingredients to Video", "attach": ["R4", "R3"],
+   "lines": [{"who": "Hujumchi", "text": "Men ham yigirmanchi aprelda tugʻilganman!"}, {"who": "Darvozabon", "text": "Voy… men ham!"}],
+   "prompt": "Back on the ground: the striker with the red headband grabs the goalkeeper in lime green by the shoulders, eyes wide, both of them shouting in disbelief, then they burst into laughter and hug. Audio: excited shouts, teammates cheering, a whistle in the background. The striker shouts in Uzbek with a quick, excited, high young male voice: \"Men ham yigirmanchi aprelda tug'ilganman!\" The goalkeeper answers in Uzbek with a big, booming, cheerful young male voice, stunned: \"Voy... men ham!\" No subtitles, no on-screen text."},
+  {"n": 8, "title_uz": "Sinfingizda", "method": "Ingredients to Video", "attach": ["R2", "R1"],
+   "lines": [{"who": "Hakam", "text": "Oʻttiz kishilik sinfda ehtimol yetmish bir foiz. Sinfingizda tekshirib, izohda yozing!"}],
+   "prompt": "Close-up: the referee in the black-and-orange shirt walks toward the camera under the floodlights, tosses the ball up, catches it, and winks straight into the lens. Hold on his wink at the end. Audio: crowd cheer fading, one short final whistle. He says in Uzbek with a dry, playful, know-it-all middle-aged male voice: \"O'ttiz kishilik sinfda ehtimol yetmish bir foiz. Sinfingizda tekshirib, izohda yozing!\" No subtitles, no on-screen text."}
+ ],
+ "post_text_uz": "Maydonda 23 kishi. Ikkitasining tugʻilgan kuni bir kunda boʻlishi ehtimoli — 50 foizdan koʻp! Sababi: 23 kishidan 253 ta juftlik chiqadi. Bu «tugʻilgan kun paradoksi». 30 kishilik sinfda ehtimol 71 foiz. Sinfingizda bir kunda tugʻilganlar bormi? Izohda yozing. #hayotdagimatematika #ehtimollik #paradoks #Powerty"
+}
