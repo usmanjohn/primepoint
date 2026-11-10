@@ -328,3 +328,8 @@ storyvideo/tts_audios/
 # storyvideo/tts_scripts/ ATAYLAB ignore qilinmagan: kichik matn fayllari va
 # qaysi video qaysi matndan yozib olinganining yagona yozuvi.
 # («scripts» deb atalmagan — yuqoridagi venv bloki [Ss]cripts ni ignore qiladi.)
+
+# Phone photos / screenshots from the bank (emails, screens): never commit them.
+kapital/**/images/
+*.HEIC
+*.heic
