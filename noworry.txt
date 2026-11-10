@@ -1,0 +1,47 @@
+Agarda sening ketganingni hech kim sezmagan bo'lsa, demak sen bekorga ketmagan ekansan. Men qayttim azizlar!
+
+Hunarni asrabon, netgumdir oxir, olib tuprog'imga ketgumdir ohir. 
+
+Gumbokchalar, sog'liqlar qayerda?
+Ismlaring yaxshimi?
+Familiyam necha edi?
+
+Bir kuni Diyor yo'lda ketayotgan ekan, kiyib olibdi? Nimani kiyib olibdi? (ketani:)
+
+
+riddles, could be wrongly worded:
+1. There are 100 perfect logicians on an island, 50 with blue eyes 50 with brown eyes. They do not know their own eye colours, but can see everybody else's. They are forbidden from communicating with each other. Each day a boat arrives at the island and anyone who has deduced their own eye colour must leave. One day, a visitor comes to the island and says "at least one of you has blue eyes"
+
+The riddle is: what happens and when?
+
+2. Alice, Bob and Claire want to play table tennis. Since there is only one table and two bats, they decide that whoever loses a game steps out for the next game to let the other person in. The players of the first game are chosen randomly. By the end of their session, Alice has played 17 games, Bob 15 and Claire 10. Who lost the second game?
+
+3. A certain number of people take part in a round robin chess competition (each one plays every other one exactly once).
+
+The point system is as follows :
+
+(For each player, for one game of chess)
+
+Win - 1
+
+Draw - ½
+
+Loss - 0
+
+4 people have a total score of 17.5 while the remaining players all have the same score.
+
+How many people participated in this competition?
+
+5. Here's a game:
+
+Two players take turns picking integers 1 through 9. Once a number has been picked, it cannot be picked again by either player. A player wins when the sum of any three of the numbers they have picked is 15. If all 9 numbers are picked and neither player wins, the game is a tie.
+
+Is there an optimal strategy for the player who goes first? What about the player who goes second? Can you force a tie? 
+
+6. Fred brings home 100 kg of potatoes, which (being purely mathematical potatoes) consist of 99% water. He then leaves them outside overnight so that they consist of 98% water. What is their new weight?
+
+7. Do you know the one about the 1000 bottles, 1 poisoned with a poison so lethal, a single drop will make you die/puke , and you need to find it with the minimal number of rats/prisoners ? so like that but now there are 2 bottles chosen (and you must come up with a systematic solution, not a computer simulation to pick. (my computer simulation beats my systematic approach still. so I do not know the actual lower bound....))
+
+8. Slicing a pizza in 5 equal parts
+
+9. A math professor is walking with a colleague when the colleague asks, "Do you have any children?" Professor: "Yes, I have three daughters. The product of their ages is 36."

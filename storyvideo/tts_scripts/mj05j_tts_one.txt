@@ -1,0 +1,29 @@
+Xayrli tong, oshqovoqchalar! <break time='0.45s' /> Javob: atigi oʻnta sichqon!
+
+<break time='2.5s' />
+
+Kichikdan boshlaymiz: <break time='0.3s' /> sakkizta shisha, uchta sichqon. <break time='0.3s' /> Har shishaning raqami, ikkilik sanoqda.
+
+<break time='2.5s' />
+
+A, birinchi raqami bir boʻlganlardan ichadi. <break time='0.3s' /> B, ikkinchisi, C, uchinchisi.
+
+<break time='2.5s' />
+
+Ertasi kuni: A va C uxlab qoldi, B, bedor. <break time='0.45s' /> Bir, nol, bir, bu besh!
+
+<break time='2.5s' />
+
+Har yangi sichqon shishalar sonini ikki barobar oshiradi. <break time='0.45s' /> Oʻnta sichqon, ming yigirma toʻrtta shisha!
+
+<break time='2.5s' />
+
+Qoida: <break time='0.3s' /> har sichqon, bitta ha yoki yoʻq savoli.
+
+<break time='2.5s' />
+
+Endi siz: <break time='0.3s' /> ikki kun vaqt boʻlsa, nechta sichqon yetadi? <break time='0.45s' /> Izohda yozing!
+
+<break time='2.5s' />
+
+Har hafta yangi jumboqlar, Powertyda, Mantiq maydonida.

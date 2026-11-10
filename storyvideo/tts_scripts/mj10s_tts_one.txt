@@ -1,0 +1,25 @@
+Salom, gumbokchalar! Ismlaring yaxshimi? <break time='0.45s' /> Bugun, eng mashhur jumboqlardan biri.
+
+<break time='2.5s' />
+
+Ikki eshik: <break time='0.3s' /> biri, ozodlikka, <break time='0.3s' /> ikkinchisi, sher qafasiga.
+
+<break time='2.5s' />
+
+Har birining oldida qorovul. <break time='0.3s' /> Biri doim rost gapiradi, ikkinchisi doim yolgʻon. <break time='0.45s' /> Qaysi biri ekanini bilmaysiz.
+
+<break time='2.5s' />
+
+Qaysi eshik ozodlikka? Deb soʻrasangiz-chi? <break time='0.45s' /> Yolgʻonchiga duch kelsangiz, sherga!
+
+<break time='2.5s' />
+
+Sizda faqat bitta savol bor.
+
+<break time='2.5s' />
+
+Qanday savol berasiz? <break time='0.45s' /> Oʻylab koʻring!
+
+<break time='2.5s' />
+
+Savolingizni izohga yozing. <break time='0.45s' /> Yechimi, ertaga!

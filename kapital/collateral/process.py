@@ -15,16 +15,25 @@ THE ROAD OF THE DATA
 3. prepare(table)    numbers become numbers, dates become dates, spelling variants of
                      the same brand are merged, and the extra columns the page groups by
                      are added (brand, age_group, area_group, dep_term ...).
-4. build_page(...)   the filtered table → KPIs, cards, the list of deals.
+4. build_page(...)   the filtered table → KPIs and cards (summaries only: no list of deals).
 5. accounts_page()   collateral against the 945xx accounts (the «Счета 945xx» page).
    delete_day(day)   «Удалить выбранные»: every file of an old day.
 
 THE TABLE (one row = one collateral deal)
     kind       car / property / other
     subkind    for «other»: equipment, deposit, insurance ... (see queries.OTHERS)
-    dealid, mfo, tobo, parent_id, currency, amount, market, subtype, note
+    dealid, mfo, tobo, parent_id, currency, amount, market, subtype
     + one column per parameter (names from the dicts in queries.py)
     + the extra columns made by prepare()
+    In memory only SUMMARY_COLUMNS + the cards' columns stay (see «SUMMARY ONLY» above).
+
+SUMMARY ONLY, ACTIVE ONLY (2026-11-10). The server ran out of memory (ОЗУ): every gunicorn
+worker kept its own copy of a table with every field of every deal, closed ones too. Now
+    * Oracle returns active collateral only (queries.NOT_CLOSED), and prepare() drops any
+      closed row an older file still has;
+    * after the checks are counted, prepare() keeps only the columns the cards and KPIs
+      need (SUMMARY_COLUMNS): no deal ids, numbers, VINs, free text. So there is no list
+      of deals and no page of one deal any more, and Excel downloads the summary.
 
 All the settings you may want to change are in the block just below.
 """
@@ -148,7 +157,6 @@ SUBKIND_CARDS = {
 }
 # Cards on every page.
 COMMON_CARDS = [
-    ("status", "Статус", "fa-lock-open", "label"),
     ("size_group", "Сумма залога", "fa-scale-balanced", "label"),
     ("currency_name", "Валюта", "fa-coins", "amount"),
     ("mfo", "Филиал (МФО)", "fa-building-columns", "amount"),
@@ -176,6 +184,12 @@ EXPECTED_ACCOUNTS = {
 DEFAULT_ACCOUNTS = ["94502", "94512"]    # cars, property, equipment, deposits, goods ...
 TOLERANCE = 1.0                          # сум: a smaller difference is rounding, not a mismatch
 
+# The columns kept in memory after prepare(): the cards' columns (all_cards), the
+# problem_* checks and these. Everything else (ids, анкета fields) is dropped.
+SUMMARY_COLUMNS = ["kind", "subkind", "status", "amount", "market", "mileage", "total_area",
+                   "cadastre_value", "jewel_weight", "harvest_crop_area",
+                   "acc_count", "acc_balance", "acc_diff", "acc_right", "acc_shared"]
+
 # Excel files are slow to write (about 50 000 cells a second), CSV is about 10× faster.
 # Cells = rows × columns of the download:
 #   up to EXCEL_MAX_CELLS  → .xlsx   (≈ 10 seconds at most)
@@ -198,33 +212,6 @@ ORDER = {
     "sec_term": names(TERM_GROUPS), "pasp_state": names(PASP_GROUPS),
     "built_decade": ["до 1960"], "status": [ACTIVE, CLOSED],
 }
-
-# The deals list: which columns to show for each kind (column, header).
-LIST_COLUMNS = {
-    "car": [("brand", "Марка"), ("model", "Модель"), ("made_year", "Год"), ("plate", "Госномер")],
-    "property": [("building_kind", "Вид"), ("cadastre_no", "Кадастровый номер"),
-                 ("total_area", "Площадь, м²"), ("rooms", "Комнат"), ("address", "Адрес")],
-    "other": [("subkind", "Вид"), ("title", "Описание")],
-    "all": [("kind", "Вид"), ("title", "Описание")],
-}
-
-# Names of the extra columns made by prepare(), for the deal page and Excel.
-EXTRA_LABELS = {
-    "kind": "Вид обеспечения", "subkind": "Группа", "dealid": "Код сделки обеспечения",
-    "mfo": "МФО", "tobo": "Код ТОБО", "parent_id": "Код анкеты / РНК",
-    "currency": "Код валюты", "currency_name": "Валюта", "amount": "Сумма обеспечения, экв.",
-    "market": "Рыночная стоимость", "subtype": "Подтип обеспечения",
-    "note": "Дополнительная информация", "brand": "Марка (итог)", "model": "Модель (итог)",
-    "age_group": "Возраст автомобиля", "pasp_state": "Техпаспорт", "area_group": "Площадь",
-    "rooms_group": "Комнат", "built_decade": "Год постройки", "size_group": "Сумма залога",
-    "dep_term": "До истечения депозита", "sec_term": "До погашения", "policy_year": "Год полиса",
-    "title": "Описание", "issue": "Проверка данных",
-    "status": "Статус", "closedate": "Дата закрытия",
-    "acc_count": "Счетов 945xx", "acc_balance": "Остаток на 945xx", "acc_no": "Счёт 945xx",
-    "acc_diff": "Остаток 945xx минус сумма залога", "acc_right": "Счёт нужной группы",
-    "acc_shared": "Счёт общий с другим залогом",
-}
-
 
 # ═══════════════════════════════ 1. SAVE ═══════════════════════════════════════════
 # Each «Обновить из базы» writes, for its day:
@@ -407,6 +394,20 @@ def read_accounts(day):
     return accounts
 
 
+def read_raw(path):
+    """
+    The saved file, only the columns queries.py still asks for: a file saved before
+    2026-11-10 also has the анкета fields (VIN, engine number ...) — they are not even read.
+    """
+    import pyarrow.parquet
+    wanted = {"dealid", "kind", "mfo", "tobo", "parent_id", "currency", "amount", "market",
+              "subtype", "closedate"}
+    for params in [queries.CARS, queries.PROPERTY, queries.others_flat(), queries.COMMON]:
+        wanted |= {column for column, label in params.values()}
+    present = pyarrow.parquet.read_schema(path).names
+    return pd.read_parquet(path, columns=[c for c in present if c in wanted])
+
+
 def read_ready(day, accounts):
     """The cleaned table: from the ready copy if it is fresh, otherwise clean now and save the copy."""
     ready = ready_file(day)
@@ -414,7 +415,7 @@ def read_ready(day, accounts):
     newest_input = max(path.stat().st_mtime for path in inputs if path.exists())
     if ready.exists() and ready.stat().st_mtime > newest_input:
         return pd.read_parquet(ready)
-    table = prepare(pd.read_parquet(file_for(day)), day, accounts)
+    table = prepare(read_raw(file_for(day)), day, accounts)
     try:
         write(table, ready)
     except Exception:          # no space, no rights ...: the page works without the copy, only slower
@@ -536,6 +537,7 @@ def prepare(table, day, accounts=None):
     table["status"] = ACTIVE
     if "closedate" in table:
         table.loc[table["closedate"] <= pd.Timestamp(day), "status"] = CLOSED
+    table = table[table["status"] == ACTIVE].copy()      # active only (older files have closed rows)
 
     # the group of «others»: the first group in queries.OTHERS that has a filled parameter
     table["subkind"] = pd.Series(pd.NA, index=table.index, dtype="object")
@@ -597,15 +599,6 @@ def prepare(table, day, accounts=None):
         if column in table and column not in ["kind", "subkind"]:
             table[column] = same_spelling(table[column])
 
-    # a short description for the deals list (after the spelling merge: «Chevrolet», not «CHEVROLET»)
-    table["title"] = first_filled(table, [
-        "eq_name", "dep_name", "sec_name", "goods_name", "rights_asset", "rights_object",
-        "policy_no", "land_cadastre_no", "brand", "building_kind", "note"])
-    if "model" in table:                                   # cars: «Chevrolet Malibu»
-        car = (table["kind"] == "car") & (table["model"] != EMPTY)
-        table.loc[car, "title"] = table.loc[car, "brand"] + " " + table.loc[car, "model"]
-    table["kind_name"] = relabel(table["kind"], lambda k: KINDS[k]["label"])
-
     # the 945xx accounts: balance, account number, is it the right account
     if accounts is not None:
         table = add_accounts(table, accounts)
@@ -613,6 +606,11 @@ def prepare(table, day, accounts=None):
     # the checks («Проверка данных»): one True/False column per check
     for code, (label, rows) in find_problems(table, day).items():
         table["problem_" + code] = rows.fillna(False).astype(bool)
+
+    # summaries only: drop every column the cards and KPIs do not use (see SUMMARY_COLUMNS)
+    keep = set(SUMMARY_COLUMNS) | {column for column, title, icon, order in all_cards()}
+    table = table[[c for c in table.columns if c in keep or c.startswith("problem_")]]
+    table = table.reset_index(drop=True)
 
     # Text columns → «category»: each different value is kept once and the rows only point
     # to it. A million rows of brands, colours, branches take ~15 times less memory
@@ -777,7 +775,7 @@ def make_card(part, column, title, icon, order, filters):
     if column not in part:
         return None
     # observed=True: only the values that are in `part` (a category column knows them all)
-    groups = part.groupby(column, observed=True).agg(count=("dealid", "size"), amount=("amount", "sum"))
+    groups = part.groupby(column, observed=True).agg(count=("amount", "size"), amount=("amount", "sum"))
     groups = groups.reset_index()
     groups[column] = groups[column].astype("object")   # sort as words, not in category order
     total = part["amount"].sum()
@@ -819,7 +817,7 @@ def make_card(part, column, title, icon, order, filters):
 def kind_tiles(part):
     """The three big tiles on the first page: cars / property / other."""
     total = part["amount"].sum()
-    sums = part.groupby("kind", observed=True).agg(count=("dealid", "size"), amount=("amount", "sum"),
+    sums = part.groupby("kind", observed=True).agg(count=("amount", "size"), amount=("amount", "sum"),
                                     market=("market", "sum"))
     tiles = []
     for key, info in KINDS.items():
@@ -847,7 +845,7 @@ def kpis(part, kind, day):
     amount, market = part["amount"].sum(), part["market"].sum()
     out = [
         {"label": "Сделок обеспечения", "value": number(len(part)), "icon": "fa-file-signature",
-         "note": "строк в файле"},
+         "note": "действующих"},
         {"label": "Сумма залога", "value": mln(amount), "icon": "fa-scale-balanced",
          "note": "млн сум, эквивалент"},
         {"label": "Рыночная стоимость", "value": mln(market), "icon": "fa-tags",
@@ -856,8 +854,6 @@ def kpis(part, kind, day):
          "icon": "fa-percent", "note": "сколько от рыночной цены принято в залог"},
         {"label": "Средний залог", "value": mln(amount / len(part)) if len(part) else "—",
          "icon": "fa-equals", "note": "млн сум на сделку"},
-        {"label": "Действующих", "value": number((part["status"] == ACTIVE).sum()),
-         "icon": "fa-lock-open", "note": f"закрыто: {number((part['status'] == CLOSED).sum())}"},
     ]
     if "acc_balance" in part:
         active = part[part["status"] == ACTIVE]
@@ -889,7 +885,7 @@ def kpis(part, kind, day):
             out.append({"label": "Кадастровая стоимость", "value": mln(part["cadastre_value"].sum()),
                         "icon": "fa-landmark", "note": "млн сум"})
     if kind == "other":
-        if "dep_end" in part:
+        if "dep_term" in part:
             soon = (part["dep_term"].isin(["истёк", "до 30 дней"]) & (part["status"] == ACTIVE)).sum()
             out.append({"label": "Депозиты: истекают", "value": number(soon), "icon": "fa-piggy-bank",
                         "note": "истёк или до 30 дней, у действующих", "bad": soon > 0})
@@ -920,35 +916,7 @@ def find_problems_labels():
     return {code: label for code, (label, rows) in find_problems(empty, date.today()).items()}
 
 
-def deal_list(part, kind, page):
-    """One page of the deals list, biggest first."""
-    columns = [(c, h) for c, h in LIST_COLUMNS.get(kind or "all", []) if c in part]
-    pages = max(1, -(-len(part) // PAGE_SIZE))          # rounded up
-    page = min(max(1, page), pages)
-    # sort only the amount column, then take the 50 rows of this page (sorting the whole
-    # table would copy every column of every row: seconds on a million rows)
-    order = part["amount"].sort_values(ascending=False).index
-    rows = []
-    for _, r in part.loc[order[(page - 1) * PAGE_SIZE: page * PAGE_SIZE]].iterrows():
-        cells = []
-        for column, header in columns:
-            value = r[column]
-            if column == "kind":
-                value = KINDS[value]["label"]
-            elif isinstance(value, numbers.Number) and not pd.isna(value):
-                value = number(value, 1 if value % 1 else 0)
-            cells.append("—" if value is None or (not isinstance(value, str) and pd.isna(value)) else value)
-        rows.append({"dealid": r["dealid"], "mfo": r["mfo"] if pd.notna(r["mfo"]) else "—",
-                     "cells": cells, "amount": number(r["amount"]),
-                     "market": number(r["market"]),
-                     "warn": bool(pd.notna(r["market"]) and r["amount"] > r["market"]),
-                     "balance": number(r["acc_balance"]) if "acc_balance" in r else None,
-                     "off": "acc_diff" in r and abs(r["acc_diff"]) >= TOLERANCE})
-    return {"headers": [h for c, h in columns], "rows": rows, "page": page, "pages": pages,
-            "total": number(len(part)), "accounts": "acc_balance" in part}
-
-
-def build_page(table, day, filters, page=1):
+def build_page(table, day, filters):
     """Everything the page shows for the chosen date and filters."""
     part = apply_filters(table, filters)
     kind = dict(filters).get("kind")
@@ -963,7 +931,6 @@ def build_page(table, day, filters, page=1):
         "kpis": kpis(part, kind, day),
         "cards": cards,
         "problems": problems(part),
-        "deals": deal_list(part, kind, page),
         "empty": len(part) == 0,
     }
     if not kind:
@@ -988,15 +955,10 @@ def filter_label(column, value):
     return column, value
 
 
-# ═══════════════════════════════ 5. ONE DEAL, EXCEL ════════════════════════════════
-
-def labels():
-    """column → Russian name, for every column that may be in the table."""
-    return {**EXTRA_LABELS, **queries.all_labels()}
-
+# ═══════════════════════════════ 5. EXCEL (THE SUMMARY) ═══════════════════════════
 
 def show(value):
-    """One value as text for the deal page and Excel."""
+    """One value as text (the 945xx accounts page)."""
     if value is None or (not isinstance(value, str) and pd.isna(value)):
         return None
     if isinstance(value, pd.Timestamp):
@@ -1008,34 +970,30 @@ def show(value):
     return str(value)
 
 
-def deal_card(table, dealid, accounts=None):
-    """All filled fields of one deal, in sections: [{'title', 'rows': [(label, value)]}]."""
-    rows = table[table["dealid"] == dealid]
-    if rows.empty:
-        return None
-    r = rows.iloc[0]
-    names = labels()
-    main = ["kind_name", "subkind", "status", "closedate", "dealid", "mfo", "tobo", "parent_id", "currency_name",
-            "amount", "market", "subtype", "source", "note"]
-    names["kind_name"] = "Вид обеспечения"
-    sections = [{"title": "Основное", "icon": "fa-circle-info",
-                 "rows": [(names.get(c, c), show(r.get(c))) for c in main if show(r.get(c))]}]
-    params = {"car": queries.CARS, "property": queries.PROPERTY}.get(r["kind"], queries.others_flat())
-    filled = [(label, show(r.get(column))) for column, label in params.values() if show(r.get(column))]
-    sections.append({"title": "Параметры", "icon": "fa-list", "rows": filled})
-    issues = [label for code, label in find_problems_labels().items() if r.get("problem_" + code)]
-    card = {"dealid": dealid, "kind": KINDS[r["kind"]], "title": show(r.get("title")),
-            "amount": number(r["amount"]), "market": number(r["market"]),
-            "sections": sections, "issues": issues}
-    if accounts is not None and r["status"] == ACTIVE:      # only active collateral is compared
-        mine = accounts[accounts["dealid"] == dealid]
-        card["accounts"] = [{"no": a.accountno, "code_name": queries.ACCOUNT_CODES.get(a.code, "не 945xx"),
-                             "name": show(a.account_name) or "", "balance": number(a.balance, 2),
-                             "arcdate": show(a.arcdate) or "—"} for a in mine.itertuples()]
-        card["balance"] = number(mine["balance"].sum())
-        card["gap"] = number(mine["balance"].sum() - (r["amount"] if pd.notna(r["amount"]) else 0))
-        card["gap_bad"] = abs(mine["balance"].sum() - (r["amount"] if pd.notna(r["amount"]) else 0)) >= TOLERANCE
-    return card
+def summary_excel(table, filters):
+    """
+    The current view as a summary for Excel: one block per card of the page (every row,
+    not only the top 12), plus «Итого» first. Never a row per deal.
+    """
+    part = apply_filters(table, filters)
+    total = part["amount"].sum()
+    rows = [{"Разрез": "Итого", "Значение": "", "Сделок": len(part), "Сумма залога, сум": total,
+             "Рыночная стоимость, сум": part["market"].sum(), "Доля суммы, %": 100.0 if len(part) else 0}]
+    breakdowns = [("kind_name", "Вид обеспечения")] if not dict(filters).get("kind") else []
+    breakdowns += [(column, title) for column, title, icon, order in cards_for(filters) if column in part]
+    for column, title in breakdowns:
+        if column == "kind_name":
+            groups = part.groupby("kind", observed=True)
+        else:
+            groups = part.groupby(column, observed=True)
+        sums = groups.agg(count=("amount", "size"), amount=("amount", "sum"), market=("market", "sum"))
+        for value, g in sums.sort_values("amount", ascending=False).iterrows():
+            if column == "kind_name":
+                value = KINDS[value]["label"]
+            rows.append({"Разрез": title, "Значение": str(value), "Сделок": int(g["count"]),
+                         "Сумма залога, сум": g["amount"], "Рыночная стоимость, сум": g["market"],
+                         "Доля суммы, %": percent(g["amount"], total)})
+    return pd.DataFrame(rows)
 
 
 def to_xlsx(table, sheet):
@@ -1054,24 +1012,6 @@ def to_xlsx(table, sheet):
 def to_csv(table):
     """The table as CSV text that Excel opens right: «;» between columns, BOM for the Russian letters."""
     return "\ufeff" + table.to_csv(index=False, sep=";", decimal=",")
-
-
-def excel_table(table, filters):
-    """The filtered rows with Russian headers, only the columns that have something in them."""
-    part = apply_filters(table, filters).sort_values("amount", ascending=False)
-    names = labels()
-    skip = {"title", "kind_name", "subkind_key"} | {c for c in part.columns if c.startswith("problem_")}
-    columns = [c for c in part.columns if c not in skip and part[c].notna().any()
-               and not (part[c] == EMPTY).all()]
-    out = part[columns].copy()
-    for c in columns:
-        if pd.api.types.is_datetime64_any_dtype(out[c]):
-            out[c] = out[c].dt.date
-        elif isinstance(out[c].dtype, pd.CategoricalDtype) or pd.api.types.is_string_dtype(out[c]):
-            out[c] = out[c].astype("object").replace(EMPTY, None)
-    if "kind" in out:              # not there when the filter left no rows
-        out["kind"] = out["kind"].astype("object").map(lambda k: KINDS[k]["label"])
-    return out.rename(columns=names)
 
 
 # ═══════════════════════════════ 6. THE 945xx ACCOUNTS PAGE ════════════════════════

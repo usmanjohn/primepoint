@@ -1,0 +1,37 @@
+Xayrli tong, qaroqchilar! <break time='0.45s' /> Javob: kapitan toʻqson sakkiz tanga oladi!
+
+<break time='2.5s' />
+
+Kecha kapitan hammasi menga dedi, va dengizga uchdi.
+
+<break time='2.5s' />
+
+Sir: <break time='0.3s' /> oxiridan boshlab oʻylang.
+
+<break time='2.5s' />
+
+Faqat ikkitasi qolsa: <break time='0.3s' /> toʻrtinchi hammasini oladi. <break time='0.45s' /> Uning bitta ovozi, yarmi.
+
+<break time='2.5s' />
+
+Uchta qolsa: <break time='0.3s' /> uchinchi beshinchiga bitta tanga beradi. <break time='0.3s' /> Aks holda u hech narsa olmaydi.
+
+<break time='2.5s' />
+
+Toʻrtta qolsa: <break time='0.3s' /> ikkinchi toʻrtinchiga bitta tanga beradi.
+
+<break time='2.5s' />
+
+Beshta: <break time='0.3s' /> kapitan uchinchi va beshinchiga bittadan beradi. <break time='0.45s' /> Uch ovoz, qabul! Kapitanga, toʻqson sakkiz!
+
+<break time='2.5s' />
+
+Qoida: <break time='0.3s' /> murakkab qarorda, oxiridan orqaga yuring.
+
+<break time='2.5s' />
+
+Endi siz: <break time='0.3s' /> qaroqchilar oltita boʻlsa, kapitan qancha oladi? <break time='0.45s' /> Izohda yozing!
+
+<break time='2.5s' />
+
+Har hafta yangi jumboqlar, Powertyda, Mantiq maydonida.

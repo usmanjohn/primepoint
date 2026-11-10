@@ -1,0 +1,33 @@
+Xayrli tong, azizlar! <break time='0.45s' /> Javob, bitta ayyor savol.
+
+<break time='2.5s' />
+
+Kecha: oddiy savol yolgʻonchiga duch kelsa, sherga olib boradi.
+
+<break time='2.5s' />
+
+Istalgan qorovuldan soʻrang: <break time='0.3s' /> Sherigingiz qaysi eshikni koʻrsatardi?
+
+<break time='2.5s' />
+
+Rostgoʻydan soʻrasangiz: <break time='0.3s' /> u yolgʻonchining notoʻgʻri javobini rostdan aytadi, <break time='0.3s' /> sher eshigini.
+
+<break time='2.5s' />
+
+Yolgʻonchidan soʻrasangiz: <break time='0.3s' /> rostgoʻy ozodlikni koʻrsatardi, <break time='0.3s' /> yolgʻonchi esa buni ham buradi, <break time='0.3s' /> yana sher!
+
+<break time='2.5s' />
+
+Ikkalasi ham bir xil eshikni koʻrsatadi. <break time='0.45s' /> Demak, teskarisini tanlang, ozodlik!
+
+<break time='2.5s' />
+
+Qoida: <break time='0.3s' /> ikkala holatda bir xil javob beradigan savol bering.
+
+<break time='2.5s' />
+
+Endi siz: <break time='0.3s' /> Siz rostgoʻymisiz? Deb soʻrash nega befoyda? <break time='0.45s' /> Izohda yozing!
+
+<break time='2.5s' />
+
+Har hafta yangi jumboqlar, Powertyda, Mantiq maydonida.

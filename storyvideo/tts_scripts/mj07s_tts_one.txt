@@ -1,0 +1,21 @@
+Salom, doʻstlar! Sogʻliqlar joyidami? <break time='0.45s' /> Bugun, chumolilar jumbogʻi.
+
+<break time='2.5s' />
+
+Bir metrlik tayoqda chumolilar bor. <break time='0.3s' /> Har biri sekundiga bir santimetr yuradi.
+
+<break time='2.5s' />
+
+Ikki chumoli uchrashsa, <break time='0.3s' /> ikkalasi ham orqaga burilib ketadi. <break time='0.3s' /> Chetga yetgani, pastga tushadi.
+
+<break time='2.5s' />
+
+Toʻqnashuv ketidan toʻqnashuv... <break time='0.45s' /> [laughs] Boshim aylanib ketdi!
+
+<break time='2.5s' />
+
+Qanday boshlashmasin, <break time='0.3s' /> hammasi eng koʻpi bilan necha soniyada tushadi?
+
+<break time='2.5s' />
+
+Raqamingizni izohga yozing. <break time='0.45s' /> Yechimi, ertaga!

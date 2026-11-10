@@ -62,7 +62,21 @@ SHOW_ROWS = 500          # rows shown on the page; Excel always gets them all
 #   more                   → no file: the page asks to narrow the view (Excel cannot open
 #                            a million rows anyway). Gunicorn stops a request after 30 s.
 EXCEL_MAX_CELLS = 600_000
-CSV_MAX_CELLS = 15_000_000
+CSV_MAX_CELLS = 5_000_000
+
+# MEMORY (ОЗУ) LIMITS. A result is a pandas table in the memory of a gunicorn worker, and
+# every worker has its own. So:
+#   MAX_ROWS        a query that returns more rows is stopped while it is read, and the page
+#                   asks to narrow the parameters (the rows are read in packs, so a huge
+#                   result never sits in memory whole);
+#   KEEP_MAX_CELLS  only a result up to this size is kept for the Excel button; a bigger one
+#                   is forgotten at once and the Excel button runs the query again.
+MAX_ROWS = 300_000
+KEEP_MAX_CELLS = 1_000_000
+
+
+class TooManyRows(Exception):
+    """The query returned more than MAX_ROWS rows."""
 
 
 # ═══════════════════════════════ THE REPORTS ═══════════════════════════════════════
@@ -140,32 +154,46 @@ def read_values(report, data):
 # ═══════════════════════════════ RUN ═══════════════════════════════════════════════
 
 # The last result, so the Excel button does not run the same query again.
-# Each gunicorn worker keeps its own one (in memory only, never on disk).
+# Each gunicorn worker keeps its own one (in memory only, never on disk), so only a
+# small one is kept (KEEP_MAX_CELLS).
 MEMORY = {"key": None, "table": None, "seconds": None}
 
 
 def get_table(report, values):
     """The result of the report for these values: from MEMORY if it was just run, else from Oracle."""
     key = (report["name"], report["sql"], tuple(sorted((k, str(v)) for k, v in values.items())))
-    if MEMORY["key"] != key:
-        started = time.time()
-        table = run(report["sql"], values)
-        extra = getattr(process, report["name"], None)
-        if extra is not None:
-            table = extra(table, values)
-        MEMORY.update(key=key, table=table, seconds=time.time() - started)
-    return MEMORY["table"], MEMORY["seconds"]
+    if MEMORY["key"] == key:
+        return MEMORY["table"], MEMORY["seconds"]
+    MEMORY.update(key=None, table=None, seconds=None)      # let the old result go first
+    started = time.time()
+    table = run(report["sql"], values)
+    extra = getattr(process, report["name"], None)
+    if extra is not None:
+        table = extra(table, values)
+    seconds = time.time() - started
+    if table.size <= KEEP_MAX_CELLS:
+        MEMORY.update(key=key, table=table, seconds=seconds)
+    return table, seconds
 
 
 def run(sql, values):
-    """Run one query and return it as a pandas table."""
+    """Run one query and return it as a pandas table (TooManyRows past MAX_ROWS)."""
     with get_oracle_connection() as conn:
         cursor = conn.cursor()
         cursor.arraysize = 5000                 # fetch in big packs: much faster on big results
         cursor.execute(sql, values)
         # Oracle gives unquoted names in CAPITALS: make them small. "Сумма" in quotes stays.
         columns = [c[0].lower() if c[0].isascii() and c[0].isupper() else c[0] for c in cursor.description]
-        return pd.DataFrame(cursor.fetchall(), columns=columns)
+        rows = []
+        while True:
+            pack = cursor.fetchmany()
+            if not pack:
+                break
+            rows.extend(pack)
+            if len(rows) > MAX_ROWS:
+                cursor.close()
+                raise TooManyRows(f"Больше {MAX_ROWS:,} строк — слишком много. Сузьте параметры.".replace(",", " "))
+        return pd.DataFrame(rows, columns=columns)
 
 
 def to_xlsx(table, sheet):

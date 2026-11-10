@@ -622,3 +622,220 @@ body[data-subj="story"]    { --accent: #c08a52; --accent-dim: rgba(192,138,82,.1
 .lite.done .matn__k { color: var(--ink); }
 .lite.on   .matn__g,
 .lite.done .matn__g { opacity: 1; }
+
+/* ── BRIDGE KIT (bridgekit.py) — the «Mantiq jumbogʻi» night bridge ─────────
+ * 2026-10-29. One absolutely-positioned picture per scene, so every bridge
+ * scene is the same world at a later moment and the cuts disappear (cam hold).
+ * Everything that moves is a data-kf track (anim.js seekKf). */
+.bk { position: absolute; inset: 0; overflow: hidden; background: #0b1520; }
+.bk-cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px;
+          transform-origin: 0 0; }
+.bk-bg, .bk-amb, .bk-dark { position: absolute; inset: 0; }
+.bk-bg svg { display: block; }
+.bk-star { position: absolute; width: 6px; height: 6px; border-radius: 50%;
+           background: #fff; box-shadow: 0 0 10px 3px rgba(255,255,255,.55); }
+.bk-shim { position: absolute; left: 0; height: 4px; border-radius: 3px;
+           background: rgba(180,215,240,.35); }
+.bk-dark { background: radial-gradient(circle at calc(var(--lx, 540) * 1px) calc(var(--ly, 1200) * 1px),
+             rgba(5,10,18,0) 0px, rgba(5,10,18,0) calc(var(--lr, 360) * .32px),
+             rgba(5,10,18,.52) calc(var(--lr, 360) * 1px + 1px)); }
+.bk-p   { position: absolute; left: 0; top: 0; width: 0; height: 0; transform-origin: 0 0; }
+.bk-in  { position: absolute; left: 0; top: 0; width: 0; height: 0; }
+.bk-fig { position: absolute; }
+.bk-fig svg { display: block; filter: drop-shadow(0 4px 6px rgba(0,0,0,.45)); }
+.bk-num { position: absolute; left: 50%; top: -70px; transform: translateX(-50%);
+          width: 60px; height: 60px; border-radius: 50%; border: 4px solid #fff;
+          display: flex; align-items: center; justify-content: center;
+          font-family: var(--ff-body); font-weight: 900; font-size: 34px; color: #fff;
+          box-shadow: 0 3px 10px rgba(0,0,0,.45); }
+.bk-lamp .bk-lampsvg { position: absolute; left: -25px; top: -72px; }
+.bk-flame { position: absolute; left: -9px; top: -52px; width: 18px; height: 26px;
+            border-radius: 50% 50% 45% 45%; transform-origin: 50% 100%;
+            background: radial-gradient(ellipse at 50% 70%, #fff6d0 0, #ffc34d 45%, #ff8a1f 80%); }
+.bk-glow { position: absolute; left: -230px; top: -270px; width: 460px; height: 460px;
+           border-radius: 50%; mix-blend-mode: screen;
+           background: radial-gradient(circle, rgba(255,205,110,.62) 0,
+                       rgba(255,170,60,.22) 38%, rgba(255,150,40,0) 70%); }
+
+.bk-hud { position: absolute; left: 64px; top: 74px; width: 560px;
+          display: flex; flex-direction: column; gap: 20px; }
+.bk-clk { display: flex; align-items: center; gap: 18px; }
+.bk-n   { font-family: var(--ff-head); font-weight: 900; font-size: 120px; line-height: .9;
+          color: #f6d58e; min-width: 150px; text-align: right;
+          font-variant-numeric: lining-nums tabular-nums; }
+.bk-of  { font-family: var(--ff-body); font-weight: 800; font-size: 40px; color: #b9c8d4; }
+.bk-fuel { display: flex; align-items: center; gap: 18px; }
+.bk-fuel__l { font-family: var(--ff-body); font-weight: 800; font-size: 34px; color: #b9c8d4;
+              text-transform: uppercase; letter-spacing: .06em; }
+.bk-bar  { width: 380px; height: 30px; border-radius: 15px; background: rgba(255,255,255,.1);
+           border: 3px solid rgba(246,213,142,.55); overflow: hidden; }
+.bk-fill { display: block; height: 100%; width: calc(var(--fuel, 100) * 1%);
+           background: linear-gradient(90deg, #e04a3a 0, #f08a2e 25%, #f6d58e 70%) left / 374px 100%; }
+
+.bk-ledger { position: absolute; left: 30px; right: 30px; top: 1660px;
+             display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+.bk-led, .bk-tot { font-family: var(--ff-body); font-weight: 900; font-size: 42px;
+                   padding: 8px 20px; border-radius: 18px; line-height: 1.1;
+                   background: rgba(250,247,242,.94); color: var(--ink); }
+.bk-led--back { background: rgba(185,200,212,.9); }
+.bk-tot.bk-grn { background: #3d7a5c; color: #fff; }
+.bk-tot.bk-red { background: #b84444; color: #fff; }
+
+.bk-msg  { position: absolute; left: 60px; right: 60px; top: 470px;
+           display: flex; flex-direction: column; align-items: center; gap: 26px;
+           text-align: center; }
+.bk-kick { font-family: var(--ff-body); font-weight: 900; font-size: 38px; color: #fff;
+           background: var(--accent); border-radius: 999px; padding: 10px 30px;
+           letter-spacing: .03em; }
+.bk-hero { font-family: var(--ff-head); font-weight: 900; font-size: 168px; line-height: .92;
+           color: #f6d58e; text-shadow: 0 6px 30px rgba(0,0,0,.5);
+           font-variant-numeric: lining-nums; }
+.bk-slab { font-family: var(--ff-head); font-weight: 900; font-size: 70px; line-height: 1.08;
+           color: #fff; background: rgba(255,255,255,.08); border: 3px solid rgba(246,213,142,.5);
+           border-radius: 30px; padding: 18px 36px; }
+.bk-txt  { font-family: 'Okina', var(--ff-body); font-weight: 800; font-size: 56px;
+           line-height: 1.2; color: #e2eaf0; }
+.bk-msg .bk-red { color: #ff8070; }
+.bk-msg .bk-grn { color: #94dcb0; }
+.bk-hero.bk-red { color: #ff7a66; }
+.bk-hero.bk-grn { color: #94dcb0; }
+
+/* ── COIN KIT (coinkit.py) — the balance scale, «Mantiq jumbogʻi» #2 ───── */
+.ck { position: absolute; inset: 0; overflow: hidden; background: #f3ebdd; }
+.ck-bg { position: absolute; inset: 0; }
+.ck-bg svg { display: block; }
+.ck-beam { position: absolute; transform-origin: 320px 129px; }
+.ck-beam svg { display: block; filter: drop-shadow(0 6px 6px rgba(60,40,10,.25)); }
+.ck-pan, .ck-coin { position: absolute; left: 0; top: 0; width: 0; height: 0; }
+.ck-pan__in { position: absolute; left: -120px; top: -10px; }
+.ck-pan__in svg { display: block; }
+.ck-coin__in { position: absolute; left: -46px; top: -46px; width: 92px; height: 92px;
+               border-radius: 50%; display: flex; align-items: center; justify-content: center;
+               background: radial-gradient(circle at 35% 30%, #fff2b8 0, #f2c94c 35%, #c9922a 80%);
+               border: 5px solid #a8741c; box-shadow: 0 5px 8px rgba(60,40,10,.35),
+               inset 0 0 0 5px rgba(255,236,170,.6); }
+.ck-coin__in b { font-family: var(--ff-head); font-weight: 900; font-size: 44px; color: #6b4410;
+                 font-variant-numeric: lining-nums; position: relative; }
+.ck-ring { position: absolute; inset: -16px; border-radius: 50%; border: 8px solid #b84444;
+           box-shadow: 0 0 26px 8px rgba(184,68,68,.55); }
+.ck-tag { position: absolute; width: 0; height: 0; }
+.ck-tag span { position: absolute; left: 0; top: 0; transform: translate(-50%, -100%);
+               white-space: nowrap; font-family: var(--ff-body); font-weight: 900; font-size: 42px;
+               color: #fff; background: #3d7a5c; padding: 6px 22px; border-radius: 16px; }
+.ck-tag--eq span { background: #4a3f35; }
+.ck-hud { position: absolute; left: 64px; top: 80px; display: flex; align-items: baseline; gap: 16px; }
+.ck-hud__l { font-family: var(--ff-body); font-weight: 900; font-size: 40px; color: var(--ink-soft);
+             text-transform: uppercase; letter-spacing: .06em; }
+.ck-n { font-family: var(--ff-head); font-weight: 900; font-size: 130px; line-height: .9;
+        color: var(--gold); font-variant-numeric: lining-nums; }
+.ck-hud__of { font-family: var(--ff-body); font-weight: 800; font-size: 46px; color: var(--ink-faint); }
+.ck-msg { top: 450px; }
+.ck-msg .bk-txt { color: var(--ink); }
+.ck-msg .bk-hero { color: var(--gold); text-shadow: none; }
+.ck-msg .bk-slab { color: var(--ink); background: #fff; border-color: var(--gold); }
+.ck-msg .bk-red, .ck-msg .bk-hero.bk-red { color: var(--red); }
+.ck-msg .bk-grn, .ck-msg .bk-hero.bk-grn { color: var(--green); }
+
+/* ── RIVER KIT (rivkit.py) — the wolf, the goat and the cabbage ───────────── */
+.rk { position: absolute; inset: 0; overflow: hidden; background: #d6eef8; }
+.rk-amb { position: absolute; inset: 0; }
+.rk-ent { position: absolute; left: 0; top: 0; width: 0; height: 0; transform-origin: 0 0; }
+.rk-art { position: absolute; }
+.rk-art svg { display: block; filter: drop-shadow(0 4px 4px rgba(0,0,0,.22)); }
+.rk-boat { position: absolute; left: -115px; top: 1280px; }
+.rk-boat svg { display: block; }
+.rk-wave { position: absolute; left: 0; height: 5px; border-radius: 3px;
+           background: rgba(255,255,255,.45); }
+.rk-cloud { position: absolute; left: 0; width: 210px; height: 64px; border-radius: 32px;
+            background: rgba(255,255,255,.9);
+            box-shadow: 46px -26px 0 -6px rgba(255,255,255,.9), 100px -6px 0 -10px rgba(255,255,255,.9); }
+.ck-tag .rk-bad { background: var(--red); }
+.rk-ledger { top: 1580px; }
+
+/* ── ROPE KIT (ropekit.py) — two unevenly burning ropes ─────────────────── */
+.rp { position: absolute; inset: 0; overflow: hidden; background: #16232e; }
+.rp-bg { position: absolute; inset: 0;
+         background: radial-gradient(ellipse at 50% 62%, #2a3a48 0, #16232e 60%, #0d161e 100%); }
+.rp-ash { position: absolute; height: 12px; border-radius: 6px;
+          background: repeating-linear-gradient(90deg, #5d6670 0 14px, transparent 14px 24px); opacity: .7; }
+.rp-rope { position: absolute; height: 26px; border-radius: 13px;
+           left: calc(var(--a, 130) * 1px); width: calc((var(--b, 950) - var(--a, 130)) * 1px);
+           background: repeating-linear-gradient(115deg, #d9b27a 0 12px, #a8773f 12px 22px);
+           box-shadow: 0 4px 10px rgba(0,0,0,.45); }
+.rp-name { position: absolute; left: 60px; font-family: var(--ff-head); font-weight: 900;
+           font-size: 64px; color: #f6d58e; line-height: 1; }
+.rp-fire { position: absolute; left: 0; width: 0; height: 0; }
+.rp-flame { position: absolute; left: -24px; top: -74px; width: 48px; height: 78px;
+            transform-origin: 50% 100%; border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+            background: radial-gradient(ellipse at 50% 75%, #fff8d6 0, #ffd04d 30%, #ff8a1f 65%, rgba(255,80,20,0) 100%);
+            box-shadow: 0 0 40px 16px rgba(255,150,40,.45); }
+.rp-mid { position: absolute; top: 880px; width: 0; height: 480px;
+          border-left: 4px dashed rgba(246,213,142,.6); }
+.rp-mid span { position: absolute; left: 0; top: -56px; transform: translateX(-50%);
+               font-family: var(--ff-body); font-weight: 800; font-size: 38px; color: #f6d58e; }
+.rp-msg { top: 450px; }
+
+/* ── STAGE KIT (stagekit.py) — batch 2 of «Mantiq jumbogʻi» ─────────────── */
+.sk { position: absolute; inset: 0; overflow: hidden; }
+.sk--paper { background: #f3ebdd; }
+.sk--dark  { background: radial-gradient(ellipse at 50% 60%, #2a3a48 0, #16232e 60%, #0d161e 100%); }
+.sk-t  { position: absolute; left: 0; top: 0; width: 0; height: 0; transform-origin: 0 0; }
+.sk-in { position: absolute; display: flex; align-items: center; justify-content: center; }
+.sk-in > svg { display: block; }
+.sk-lab { position: absolute; left: 50%; bottom: -54px; transform: translateX(-50%);
+          font-family: var(--ff-head); font-weight: 900; font-size: 40px; color: var(--ink);
+          white-space: nowrap; font-variant-numeric: lining-nums; }
+.sk-zzz { font-family: var(--ff-head); font-weight: 900; font-size: 54px; color: #3b6ea5; }
+.sk-bill { border-radius: 12px; background: linear-gradient(135deg, #cfe6c3, #9cc68a);
+           border: 4px solid #5e8f4e; display: flex; align-items: center; justify-content: center;
+           box-shadow: 0 4px 8px rgba(0,0,0,.2); }
+.sk-bill span { font-family: var(--ff-body); font-weight: 900; font-size: 34px; color: #2f5524;
+                font-variant-numeric: lining-nums; }
+.sk-coin { border-radius: 50%; display: flex; align-items: center; justify-content: center;
+           background: radial-gradient(circle at 35% 30%, #fff2b8 0, #f2c94c 35%, #c9922a 80%);
+           border: 4px solid #a8741c; }
+.sk-coin span { font-size: 38px; color: #6b4410; font-weight: 900; }
+.sk-coin--t { background: radial-gradient(circle at 35% 30%, #f1f1f1 0, #c8ccd1 40%, #8d939a 85%);
+              border-color: #6d7279; }
+.sk-coin--t span { color: #4a4f55; }
+.sk-pir { position: relative; }
+.sk-pir > svg.fig { display: block; }
+.sk-hat { position: absolute; }
+.sk-rank { position: absolute; left: 50%; bottom: -58px; transform: translateX(-50%);
+           font-family: var(--ff-head); font-weight: 900; font-size: 44px; color: var(--ink); }
+.sk-doorlab { position: absolute; left: 50%; bottom: -60px; transform: translateX(-50%);
+              font-family: var(--ff-head); font-weight: 900; font-size: 48px; color: var(--ink); }
+.sk--dark .sk-lab, .sk--dark .sk-rank, .sk--dark .sk-doorlab { color: #f6d58e; }
+.sk-stick { border-radius: 10px; background: linear-gradient(#c49a63, #8a6236); }
+.sk-bubble { background: #fff; border: 4px solid var(--paper-3); border-radius: 28px; padding: 14px 24px;
+             font-family: 'Okina', var(--ff-body); font-weight: 800; font-size: 40px; color: var(--ink);
+             white-space: nowrap; box-shadow: 0 4px 10px rgba(0,0,0,.12); }
+.sk-big { font-family: var(--ff-head); font-weight: 900; font-size: 72px; color: var(--ink);
+          font-variant-numeric: lining-nums; white-space: nowrap; }
+.sk-row { position: absolute; left: 90px; width: 900px; height: 26px; }
+.sk-row svg { display: block; }
+.sk-drop { display: block; width: 26px; height: 26px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
+           background: #9b59b6; }
+.sk-bit  { display: block; transform: translate(-50%, -50%); }
+.bk-msg .sk-hero2 { font-size: 132px; white-space: nowrap; }
+.sk-desk { width: 220px; height: 140px; border-radius: 14px; background: linear-gradient(#a8743f, #7d5228);
+           border: 4px solid #5d3a1d; }
+.sk-stick { width: 100%; height: 100%; border-radius: 12px; background: linear-gradient(#c49a63, #8a6236);
+            box-shadow: 0 6px 10px rgba(0,0,0,.25); }
+.sk-tickm { position: absolute; width: 3px; height: 18px; background: #8a6236; }
+.sk--sea { background: linear-gradient(#9fd0ea 0, #d8eef7 55%, #2f7fae 76%, #1c5a82 100%); }
+.sk-deck { width: 100%; height: 100%; background: repeating-linear-gradient(90deg, #9a6337 0 130px, #8a5730 130px 134px);
+           border-top: 8px solid #5d3a1d; }
+.sk-gold { display: block; transform: translate(-50%, -50%); font-family: var(--ff-head); font-weight: 900;
+           font-size: 52px; color: #6b4410; background: radial-gradient(circle at 35% 30%, #fff2b8, #f2c94c 45%, #c9922a);
+           border: 4px solid #a8741c; border-radius: 999px; padding: 4px 22px; min-width: 70px; text-align: center;
+           font-variant-numeric: lining-nums; }
+.sk-t > div[data-at], .sk-t > div[data-in] { width: max-content; }
+.sk-gold { white-space: nowrap; }
+.sk-blind { width: 100%; height: 100%; background: #0d161e; }
+.sk-cut { width: 100%; height: 100%; background: var(--red); border-radius: 4px; }
+.sk-coin span { font-family: var(--ff-head); font-variant-numeric: lining-nums; }
+.sk-light { width: 100%; height: 100%; border-radius: 100px 100px 0 0;
+            background: radial-gradient(ellipse at 50% 60%, #fff8d6, #ffd877 60%, #f2b84b); }
+.sk-arrow { font-size: 76px; color: var(--red); line-height: 1; }
+

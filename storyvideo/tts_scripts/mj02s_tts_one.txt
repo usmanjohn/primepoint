@@ -1,0 +1,33 @@
+Salom, gumbokchalar! Sogʻliqlar qayerda? <break time='0.45s' /> Bugun, toʻqqizta tanga.
+
+<break time='2.5s' />
+
+Bittasi qalbaki: <break time='0.3s' /> u boshqalaridan sal yengilroq. <break time='0.45s' /> Koʻrinishi esa bir xil.
+
+<break time='2.5s' />
+
+Tarozida faqat ikki marta tortish mumkin. <break time='0.3s' /> Qalbakini qanday topamiz?
+
+<break time='2.5s' />
+
+Birinchi fikr: toʻrttaga toʻrtta qoʻyamiz. <break time='0.45s' /> Oʻng tomon yengil!
+
+<break time='2.5s' />
+
+Demak, qalbaki beshdan sakkizgacha. <break time='0.3s' /> Ikkitaga ikkita... <break time='0.45s' /> Yana oʻng tomon yengil.
+
+<break time='2.5s' />
+
+Yettinchimi, sakkizinchimi? <break time='0.3s' /> Bilish uchun yana tortish kerak. <break time='0.45s' /> [sighs] Ikki martada boʻlmadi!
+
+<break time='2.5s' />
+
+Ikki marta tortishda topishning yoʻli bor. <break time='0.45s' /> Qanday?
+
+<break time='2.5s' />
+
+Bonus: Diyor yoʻlda ketayotgan ekan, kiyib olibdi. <break time='0.3s' /> Nimani kiyib olibdi? <break time='0.45s' /> [laughs] Ketani!
+
+<break time='2.5s' />
+
+Javobingizni izohga yozing. <break time='0.45s' /> Yechimi, ertaga!

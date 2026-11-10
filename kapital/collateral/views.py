@@ -18,21 +18,41 @@ Every choice is a word in the address:
 A click on a row of a card adds one more word; a click on a breadcrumb removes the words
 after it. So every view of the data has its own link: send it to a colleague and they
 see the same thing.
+
+SUMMARY ONLY (2026-11-10): active collateral, cards and KPIs. There is no list of deals,
+no page of one deal and no parquet download: the анкета-level fields are not kept.
 """
 from datetime import date
+from functools import wraps
 from urllib.parse import urlencode
 
 from django.contrib import messages
-from django.http import FileResponse, Http404, HttpResponse, HttpResponseForbidden
+from django.http import Http404, HttpResponse, HttpResponseForbidden
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views.decorators.http import require_POST
 
 from . import process, queries
 
+# THE SWITCH. False = the app is turned off: every page shows «временно отключено» and
+# nothing is read, so the table is never loaded into memory (ОЗУ). True = on.
+# Since 2026-11-10 it keeps only active collateral and summary columns (process.py), so
+# it is light enough to be on. After changing it: sudo systemctl restart gunicorn.
+ENABLED = True
+
 # Who may delete saved days: False = anyone who can open the page,
 # True = only users with «staff status» in the Django admin.
 ONLY_STAFF_DELETES = False
+
+
+def switchable(view):
+    """While ENABLED is False the view does nothing heavy: it only says the app is off."""
+    @wraps(view)
+    def wrapper(request, *args, **kwargs):
+        if not ENABLED:
+            return render(request, "collateral/page.html", {"off": True}, status=503)
+        return view(request, *args, **kwargs)
+    return wrapper
 
 
 def chosen_day(request):
@@ -56,12 +76,6 @@ def read_filters(request):
     return filters
 
 
-def page_number(request):
-    """?page=3 → 3; anything else → 1."""
-    text = request.GET.get("page", "1")
-    return int(text) if text.isdigit() else 1
-
-
 def address(day, filters):
     """The part of the link after '?': date=2026-10-22&kind=car&brand=Chevrolet"""
     return urlencode([("date", day.isoformat())] + list(filters))
@@ -76,6 +90,7 @@ def breadcrumbs(day, filters):
     return crumbs
 
 
+@switchable
 def home(request, error=None):
     """The main page: the newest saved file (or the clicked one) with the chosen filters."""
     day = chosen_day(request)
@@ -87,7 +102,7 @@ def home(request, error=None):
         return render(request, "collateral/page.html", context)
 
     filters = read_filters(request)
-    context.update(process.build_page(process.read_day(day), day, filters, page_number(request)))
+    context.update(process.build_page(process.read_day(day), day, filters))
     context.update({
         "day": day,
         "updated": process.updated_at(day),
@@ -98,6 +113,7 @@ def home(request, error=None):
     return render(request, "collateral/page.html", context)
 
 
+@switchable
 @require_POST
 def refresh(request):
     """«Обновить из базы»: run the three queries now, save as today's file, show it."""
@@ -108,18 +124,7 @@ def refresh(request):
     return redirect("collateral")
 
 
-def deal(request, dealid):
-    """Every filled field of one collateral deal."""
-    day = chosen_day(request)
-    if day is None:
-        raise Http404("Данные ещё не загружены")
-    card = process.deal_card(process.read_day(day), dealid, process.accounts_of(day))
-    if card is None:
-        raise Http404("Такой сделки обеспечения нет в этом файле")
-    return render(request, "collateral/deal.html", {
-        "day": day, "card": card, "back": address(day, read_filters(request))})
-
-
+@switchable
 @require_POST
 def delete(request):
     """
@@ -146,6 +151,7 @@ def delete(request):
     return redirect("collateral")
 
 
+@switchable
 def accounts(request):
     """Collateral against the 945xx off-balance accounts."""
     day = chosen_day(request)
@@ -161,6 +167,7 @@ def accounts(request):
     return render(request, "collateral/accounts.html", context)
 
 
+@switchable
 def accounts_excel(request):
     """The 945xx accounts with a balance and no collateral deal, as .xlsx."""
     day = chosen_day(request)
@@ -170,18 +177,14 @@ def accounts_excel(request):
     return download(table, f"accounts_945_{day.isoformat()}", "Счета без залога")
 
 
+@switchable
 def excel(request):
-    """The rows of the current view as an .xlsx file (all of them, not one page); .csv if big, nothing if huge."""
+    """The current view as a summary (Итого + every card, every row of it): never a row per deal."""
     day = chosen_day(request)
     if day is None:
         raise Http404("Данные ещё не загружены")
-    filters = read_filters(request)
-    table = process.excel_table(process.read_day(day), filters)
-    if table.size > process.CSV_MAX_CELLS:
-        messages.warning(request, f"В этой выборке {process.number(len(table))} строк — слишком много для Excel. "
-                                  "Выберите вид или фильтр (или скачайте Parquet).")
-        return redirect(reverse("collateral") + "?" + address(day, filters))
-    return download(table, f"collateral_{day.isoformat()}", "Обеспечение")
+    table = process.summary_excel(process.read_day(day), read_filters(request))
+    return download(table, f"collateral_summary_{day.isoformat()}", "Сводка")
 
 
 def download(table, name, sheet):
@@ -196,15 +199,7 @@ def download(table, name, sheet):
     return response
 
 
-def parquet_file(request):
-    """The saved parquet file, as a download."""
-    day = chosen_day(request)
-    if day is None:
-        raise Http404("Данные ещё не загружены")
-    path = process.file_for(day)
-    return FileResponse(open(path, "rb"), as_attachment=True, filename=path.name)
-
-
+@switchable
 def params(request):
     """
     Help page: every parameter that exists in the database (live query, only when the

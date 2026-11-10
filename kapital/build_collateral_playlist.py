@@ -18,14 +18,14 @@ OUT = ROOT / 'tutorial' / 'management' / 'commands' / '_tutorials_code_collatera
 # (path inside the app, language, what it is) — in install order.
 FILES = [
     ('apps.py', 'python', 'App config.'),
-    ('urls.py', 'python', 'The pages: the drill-down, «Обновить из базы», deleting old days, the 945xx accounts, one deal, Excel, the parquet file, parameters + SQL.'),
+    ('urls.py', 'python', 'The pages: the drill-down, «Обновить из базы», deleting old days, the 945xx accounts, the Excel summary, parameters + SQL.'),
     ('queries.py', 'python', 'All the SQL. The three old scripts (avto / nedvijimost / others) as three parameter dicts and ONE skeleton. No date: always the latest version of each row. Change the import line and the three table names.'),
     ('process.py', 'python', '«Обновить из базы» → datasets/collateral/collateral_<today>.parquet → clean pandas table → cards, KPIs, data checks. All the settings (buckets, codes, cards) are at the top.'),
     ('views.py', 'python', 'The views: the newest file opens by itself; the refresh button (POST) runs the queries and saves today\'s file.'),
     ('templates/collateral/style.html', 'html', 'The look (Kapitalbank colours), shared by all pages.'),
     ('templates/collateral/card.html', 'html', 'One breakdown card: rows are links that add a filter.'),
-    ('templates/collateral/page.html', 'html', 'The main page: «updated at» bar with the refresh button and saved days, header with breadcrumbs, KPIs, the three tiles, the cards, data checks, the deals list.'),
-    ('templates/collateral/deal.html', 'html', 'One collateral deal with every filled field and its 945xx accounts.'),
+    ('templates/collateral/page.html', 'html', 'The main page: «updated at» bar with the refresh button and saved days, header with breadcrumbs, KPIs, the three tiles, the cards, data checks (summaries only, active collateral).'),
+    ('templates/collateral/deal.html', 'html', 'REMOVED 2026-11-10: delete this file on the work machine (the app shows summaries only, no page of one deal).'),
     ('templates/collateral/params.html', 'html', 'Every parameter name in the database + the finished SQL to copy.'),
     ('templates/collateral/accounts.html', 'html', 'Collateral against the 945xx off-balance accounts: totals, mismatches (they open the main page filtered), by account code, accounts with a balance but no collateral.'),
 ]
@@ -94,6 +94,11 @@ def main():
                              'Do this first: the app layout and settings.', setup))
 
     for k, (path, lang, summary) in enumerate(FILES, start=2):
+        if not (APP / path).exists():          # a removed file: the lesson says to delete it
+            body = (f'<p>Step {k} of {n}. <strong>Delete</strong> <code>collateral/{path}</code> '
+                    'if it is on the work machine. It is no longer used.</p>\n<p>' + html.escape(summary) + '</p>\n')
+            out.append('\n' + lesson(k, path, summary, body))
+            continue
         src = (APP / path).read_text()
         intro = f'<p>Step {k} of {n}. Save as <code>collateral/{path}</code>.</p>\n<h3>{path}</h3>\n'
         out.append('\n' + lesson(k, path, summary, intro + code(src, lang)))

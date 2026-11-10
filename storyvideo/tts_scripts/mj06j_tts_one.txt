@@ -1,0 +1,29 @@
+Xayrli tong, hisobchilar! <break time='0.45s' /> Ming soʻm hech qayerga ketmagan!
+
+<break time='2.5s' />
+
+Kecha: yigirma yetti ming plyus ikki ming, yigirma toʻqqiz ming. <break time='0.3s' /> Ming soʻm yoʻqoldimi?
+
+<break time='2.5s' />
+
+Pulni kuzatamiz: <break time='0.3s' /> choyxonachida yigirma besh ming, <break time='0.3s' /> ofitsiantda ikki ming, <break time='0.3s' /> doʻstlarda uch ming.
+
+<break time='2.5s' />
+
+Doʻstlar toʻlagan yigirma yetti mingning ichida <break time='0.3s' /> ofitsiantning ikki mingi allaqachon bor!
+
+<break time='2.5s' />
+
+Uni yana qoʻshish, ikki marta sanash. <break time='0.45s' /> Toʻgʻrisi: yigirma yetti ming plyus uch ming, oʻttiz ming.
+
+<break time='2.5s' />
+
+Qoida: <break time='0.3s' /> baʼzan savolning oʻzi xato boʻladi.
+
+<break time='2.5s' />
+
+Shunday jumboqni yana bilasizmi? <break time='0.45s' /> Izohda yozing!
+
+<break time='2.5s' />
+
+Har hafta yangi jumboqlar, Powertyda, Mantiq maydonida.

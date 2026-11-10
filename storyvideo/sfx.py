@@ -153,9 +153,36 @@ def whoosh():
     return 0.30 * out * np.sin(np.pi * np.linspace(0, 1, n)) ** 1.6
 
 
+def step():
+    """A foot on a plank. Low and woody, quieter than a tick, because a walk
+    across the bridge is twenty of them under the voice."""
+    d = 0.09
+    t = np.linspace(0, d, int(SR * d), endpoint=False)
+    f = 120 * np.exp(-6 * t)
+    knock = np.sin(2 * np.pi * f * t) + 0.3 * np.sin(2 * np.pi * 330 * t)
+    return 0.11 * knock * _env(len(t), 0.002, 1.3)
+
+
 # class fragment -> cue. First match wins, so order matters: the specific
 # component classes are tested before the generic text ones at the bottom.
 RULES = [
+    # The bridge films (bridgekit.py). Listed first so their class names never
+    # fall through to a generic rule by substring.
+    (("bk-step",), "step"),
+    (("bk-out",), "thud"),
+    (("bk-led",), "tick"),
+    (("bk-tot",), "chime"),
+    (("bk-in",), "whoosh"),
+    (("ck-drop",), "tick"),
+    (("ck-tip",), "swell"),
+    (("ck-found",), "chime"),
+    (("ck-tag",), "pop"),
+    (("rk-board",), "whoosh"),
+    (("rk-row",), "swell"),
+    (("rk-eat",), "thud"),
+    (("rp-light",), "whoosh"),
+    (("rp-out",), "pop"),
+    (("bk-kick", "bk-slab", "bk-txt"), "blip"),
     (("crowd__c", "seat--full", "chip", "pack", "sq--on", "tblbox", "side", "term",
       "solve__row", "tick", "bar__v"), "tick"),
     (("bar__b",), "rise"),
@@ -207,7 +234,8 @@ def events(video):
 
 MAKE = {"tick": tick, "pop": pop, "thud": thud, "chime": chime,
         "swell": swell, "blip": blip, "whoosh": whoosh,
-        "boom": boom, "rise": rise, "quest": quest, "settle": settle}
+        "boom": boom, "rise": rise, "quest": quest, "settle": settle,
+        "step": step}
 
 
 def track(video, seconds, gain=None):

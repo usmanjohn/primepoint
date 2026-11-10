@@ -1,0 +1,25 @@
+Salom, aqlli boshlar! <break time='0.45s' /> Bugungi jumboq, qorongʻida.
+
+<break time='2.5s' />
+
+Stolda yuzta tanga. <break time='0.3s' /> Oʻntasi gerb tomoni bilan yuqoriga qarab turibdi.
+
+<break time='2.5s' />
+
+Koʻzingiz bogʻlangan: <break time='0.3s' /> tangalarni koʻrmaysiz, <break time='0.3s' /> paypaslab ham bilmaysiz.
+
+<break time='2.5s' />
+
+Vazifa: tangalarni ikki toʻdaga ajrating, <break time='0.3s' /> ikkalasida gerb soni teng boʻlsin.
+
+<break time='2.5s' />
+
+Teng ikkiga boʻlsak-chi? <break time='0.3s' /> Omad kulsa, balki. <break time='0.45s' /> Lekin kafolat yoʻq!
+
+<break time='2.5s' />
+
+Koʻrmasdan qanday qilib teng qilasiz? <break time='0.45s' /> Oʻylab koʻring!
+
+<break time='2.5s' />
+
+Javobingizni izohga yozing. <break time='0.45s' /> Yechimi, ertaga!

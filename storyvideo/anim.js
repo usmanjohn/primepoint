@@ -113,7 +113,72 @@ function resolve(root = document) {
       delete box.dataset.in;
     });
   });
+  // Keyframed tracks (bridgekit, 2026-10-29). Same rule as everything above:
+  // authored relative to the scene, made absolute here, once.
+  root.querySelectorAll('.scene').forEach(scene => {
+    const start = parseFloat(scene.dataset.start);
+    scene.querySelectorAll('[data-kf]').forEach(el => {
+      const kf = JSON.parse(el.dataset.kf);
+      for (const k in kf) kf[k] = kf[k].map(([t, v]) => [t + start, v]);
+      el._kf = kf;
+      delete el.dataset.kf;
+      el.dataset.kfa = '1';
+    });
+  });
   document.body.dataset.resolved = '1';
+}
+
+/* ---- keyframed tracks: a thing that MOVES, not a thing that enters ----
+ *
+ * Added for the bridge puzzles (bridgekit.py), where a person walks across a
+ * bridge, a lantern follows a hand and the dark follows the lantern. An
+ * entrance cannot hold a state, so these live on their own attribute:
+ *
+ *   data-kf='{"x":[[t,v],...], "y":..., "s":..., "r":..., "o":...,
+ *             "m":..., "n":..., "--var":...}'
+ *
+ * Piecewise linear between keys and flat outside them -- a pure function of t
+ * like everything else here. x/y/s/r build the transform, o is opacity, n is
+ * the element's text (floored: a clock never shows a second that has not
+ * passed), --var sets a CSS custom property. `m` (0..1) means "walking": it
+ * adds a step bounce and a sway driven by the DISTANCE walked, so feet and
+ * floor agree at any speed. Never put data-kf and data-at on one element --
+ * both write transform. Wrap one in the other instead. */
+function track(keys, t) {
+  if (t <= keys[0][0]) return keys[0][1];
+  const last = keys[keys.length - 1];
+  if (t >= last[0]) return last[1];
+  for (let i = 1; i < keys.length; i++) {
+    const [t1, v1] = keys[i];
+    if (t <= t1) {
+      const [t0, v0] = keys[i - 1];
+      return v0 + (v1 - v0) * ((t - t0) / Math.max(t1 - t0, 1e-6));
+    }
+  }
+  return last[1];
+}
+
+function seekKf(scene, t) {
+  scene.querySelectorAll('[data-kfa]').forEach(el => {
+    const kf = el._kf;
+    if (!kf) return;
+    const v = {};
+    for (const k in kf) v[k] = track(kf[k], t);
+    if ('x' in v || 'y' in v || 's' in v || 'r' in v || 'm' in v || 'sx' in v) {
+      const x = v.x || 0, m = v.m || 0;
+      const ph = x / 21;
+      const bob = -Math.abs(Math.sin(ph)) * 9 * m;
+      const r = (v.r || 0) + Math.sin(ph) * 2.6 * m;
+      el.style.transform = `translate(${x}px, ${(v.y || 0) + bob}px) `
+                         + `rotate(${r}deg) scale(${(v.s ?? 1) * (v.sx ?? 1)}, ${v.s ?? 1})`;
+    }
+    if ('o' in v) el.style.opacity = clamp(v.o);
+    if ('n' in v) {
+      const txt = String(Math.floor(v.n + 1e-6));
+      if (el.textContent !== txt) el.textContent = txt;
+    }
+    for (const k in v) if (k.startsWith('--')) el.style.setProperty(k, v[k]);
+  });
 }
 
 function seek(t) {
@@ -192,6 +257,8 @@ function seek(t) {
       el.classList.toggle('on', t >= a && t < b);
       el.classList.toggle('done', t >= b);
     });
+
+    seekKf(scene, t);
 
     // Dots that tick away a silent thinking beat.
     scene.querySelectorAll('.tick').forEach(el => {

@@ -184,6 +184,9 @@ PROBE_JS = r"""
     const name = scene.dataset.name;
     scene.querySelectorAll('*').forEach(el => {
       if (el.classList.contains('pipguide')) return;
+      // A backdrop is scenery -- the night sky the bridge films are drawn in.
+      // It fills the frame by design, so it sits under the PIP by design too.
+      if (el.closest('[data-backdrop]')) return;
       // Report whole drawings, not the rects and paths inside them: a figure
       // that strays under the PIP is one finding, not thirty.
       const svg = el.closest('svg');
@@ -209,7 +212,10 @@ PROBE_JS = r"""
       // children -- otherwise a figure straying under the PIP is never reported.
       const hasBoxKid = el.tagName.toLowerCase() !== 'svg' &&
         [...el.children].some(c => c.getBoundingClientRect().width > 2);
-      if (r.x < -1 || r.y < -1 || r.right > W + 1 || r.bottom > H + 1)
+      // Under a camera (bridgekit's follow cam), leaving the frame is a pan,
+      // not a clipping bug.
+      if (!el.closest('[data-camera]') &&
+          (r.x < -1 || r.y < -1 || r.right > W + 1 || r.bottom > H + 1))
         out.push({scene: name, kind: 'overflow', el: tag,
                   box: [Math.round(r.x), Math.round(r.y), Math.round(r.right), Math.round(r.bottom)]});
       const nx = Math.max(r.x, Math.min(PIP[0], r.right));

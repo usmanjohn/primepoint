@@ -1,0 +1,45 @@
+Salom, oshqovoqchalar! <break time='0.45s' /> Kechagi daryo jumbogʻiga javob!
+
+<break time='2.5s' />
+
+Kecha: avval boʻri, karam yeb qoʻyildi. <break time='0.3s' /> Avval karam, echki yeb qoʻyildi.
+
+<break time='2.5s' />
+
+Yagona xavfsiz birinchi qadam: echkini olib oʻtish. <break time='0.3s' /> Boʻri karamga tegmaydi.
+
+<break time='2.5s' />
+
+Anvar aka yolgʻiz qaytadi.
+
+<break time='2.5s' />
+
+Endi boʻrini olib oʻtadi... <break time='0.3s' /> Lekin narigi tomonda echki kutyapti!
+
+<break time='2.5s' />
+
+Sir shu: <break time='0.3s' /> echkini ORTGA olib qaytadi! <break time='0.45s' /> [excited] Ana, gap qayerda!
+
+<break time='2.5s' />
+
+Karamni boʻrining yoniga qoʻyadi. <break time='0.3s' /> Boʻri karam yemaydi.
+
+<break time='2.5s' />
+
+Yana yolgʻiz qaytadi.
+
+<break time='2.5s' />
+
+Va nihoyat, echki. <break time='0.45s' /> Yetti qatnov, hammasi butun-sogʻ!
+
+<break time='2.5s' />
+
+Qoida: <break time='0.3s' /> baʼzan oldinga yurish uchun orqaga qaytish kerak.
+
+<break time='2.5s' />
+
+Endi siz: <break time='0.3s' /> qayiqqa ikkita yuk sigʻsa, necha qatnov kerak? <break time='0.45s' /> Izohda yozing!
+
+<break time='2.5s' />
+
+Har hafta yangi jumboqlar, Powertyda, Mantiq maydonida. <break time='0.3s' /> Eshitayotgandinglarmi?

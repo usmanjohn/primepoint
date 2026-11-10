@@ -37,6 +37,9 @@ def report(request, name):
         return render(request, "fast_search/report.html", context)
     try:
         table, seconds = reports.get_table(rep, values)
+    except reports.TooManyRows as error:        # too big for the server's memory
+        context["errors"] = [str(error)]
+        return render(request, "fast_search/report.html", context)
     except Exception as error:                  # an Oracle error: show it on the page
         context["oracle_error"] = str(error)
         return render(request, "fast_search/report.html", context)

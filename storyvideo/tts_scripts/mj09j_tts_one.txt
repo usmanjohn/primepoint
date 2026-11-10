@@ -1,0 +1,29 @@
+Xayrli tong, sehrgarlar! <break time='0.45s' /> Javob, juda oddiy va juda chiroyli.
+
+<break time='2.5s' />
+
+Kecha: teng ikkiga boʻlish faqat omadga bogʻliq edi.
+
+<break time='2.5s' />
+
+Istalgan oʻnta tangani ajrating. <break time='0.3s' /> Masalan, ichida uchta gerb bor, <break time='0.3s' /> qolganlarida yettita.
+
+<break time='2.5s' />
+
+Endi oʻsha oʻntaning hammasini aylantiring! <break time='0.45s' /> Uchta gerb, pastga, <break time='0.3s' /> yettita raqam, gerbga. <break time='0.3s' /> Yettiga yetti!
+
+<break time='2.5s' />
+
+Ajratilganda nechta gerb boʻlsa ham, <break time='0.3s' /> aylantirgandan keyin qolganlari bilan teng boʻladi.
+
+<break time='2.5s' />
+
+Qoida: <break time='0.3s' /> nechtaligini bilish shart emas, <break time='0.3s' /> tuzilma yetadi.
+
+<break time='2.5s' />
+
+Endi siz: <break time='0.3s' /> gerb yigirmata boʻlsa-chi? <break time='0.45s' /> Izohda yozing!
+
+<break time='2.5s' />
+
+Har hafta yangi jumboqlar, Powertyda, Mantiq maydonida.

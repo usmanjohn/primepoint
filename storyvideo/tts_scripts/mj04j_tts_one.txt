@@ -1,0 +1,33 @@
+Salom, yapaloqqushlar! <break time='0.45s' /> Kechagi arqon jumbogʻiga javob!
+
+<break time='2.5s' />
+
+Kecha: arqon notekis yonadi, <break time='0.3s' /> yarmini kesib, vaqtni oʻlchab boʻlmaydi.
+
+<break time='2.5s' />
+
+Sir: arqonni ikki uchidan yoqing. <break time='0.45s' /> Bir soatlik arqon oʻttiz daqiqada tugaydi.
+
+<break time='2.5s' />
+
+A ni ikki uchidan, B ni bitta uchidan yoqamiz. <break time='0.45s' /> A oʻttiz daqiqada tugaydi, <break time='0.3s' /> qarang, oʻrtada emas!
+
+<break time='2.5s' />
+
+Shu zahoti B ning ikkinchi uchini yoqamiz. <break time='0.3s' /> Qolgani ikki baravar tez yonadi. <break time='0.45s' /> [excited] Qirq besh!
+
+<break time='2.5s' />
+
+Oʻttiz qoʻshuv oʻn besh, <break time='0.3s' /> roppa-rosa qirq besh daqiqa.
+
+<break time='2.5s' />
+
+Qoida: <break time='0.3s' /> ikki uchidan yoqilgan arqon <break time='0.3s' /> ikki baravar tez tugaydi.
+
+<break time='2.5s' />
+
+Endi siz: <break time='0.3s' /> shu ikki arqon bilan yana qaysi vaqtlarni oʻlchash mumkin? <break time='0.45s' /> Izohda yozing!
+
+<break time='2.5s' />
+
+Har hafta yangi jumboqlar, Powertyda, Mantiq maydonida.

@@ -84,7 +84,7 @@
           <thead><tr><th>Вид</th><th class="m">Залог</th><th class="m">На 945xx</th><th class="m">Разница</th></tr></thead>
           <tbody>
           {% for k in by_kind %}
-            <tr><td><i class="fa-solid {{ k.icon }} me-2" style="color:#C9971A"></i><a href="{% url 'collateral' %}?date={{ day|date:'Y-m-d' }}&kind={{ k.key }}&status={{ "Действующее"|urlencode }}">{{ k.label }}</a></td>
+            <tr><td><i class="fa-solid {{ k.icon }} me-2" style="color:#C9971A"></i><a href="{% url 'collateral' %}?date={{ day|date:'Y-m-d' }}&kind={{ k.key }}">{{ k.label }}</a></td>
               <td class="m">{{ k.amount }}</td><td class="m">{{ k.balance }}</td>
               <td class="m{% if k.bad %} warn{% endif %}">{{ k.gap }}</td></tr>
           {% endfor %}

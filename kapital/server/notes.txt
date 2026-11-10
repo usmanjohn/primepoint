@@ -18,3 +18,20 @@ IV. Always restart gunicorn after git pull: sudo systemctl restart gunicorn
 
  
 
+
+
+V. Memory (ОЗУ) — gunicorn workers give their memory back (added 2026-11-10)
+   Each gunicorn worker is its own Python process and keeps its own big pandas tables.
+   With --max-requests a worker restarts after ~N requests and frees all of it.
+   1. sudo nano /etc/systemd/system/gunicorn.service
+   2. in the ExecStart line, after the other options, add:
+          --max-requests 200 --max-requests-jitter 50
+      (jitter = workers do not all restart at the same moment)
+      Optional, if RAM is still tight: fewer workers, more threads, e.g.
+          --workers 2 --threads 4
+   3. sudo systemctl daemon-reload
+   4. sudo systemctl restart gunicorn
+   5. check: systemctl status gunicorn   (must be "active (running)")
+             free -h                      (watch "available" over the day)
+   Collateral is switched off in collateral/views.py (ENABLED = False). To turn it back
+   on: ENABLED = True, then sudo systemctl restart gunicorn.

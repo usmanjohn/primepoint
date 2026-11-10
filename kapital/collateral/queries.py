@@ -25,6 +25,13 @@ NO DATE: like your old scripts, every query takes the LATEST version of each row
 (row_number ... order by date_to desc). So a run always gives «the state right now»;
 process.py saves it under today's date, and the page says when it was updated.
 
+ACTIVE ONLY, SUMMARY ONLY (2026-11-10, to save the server's memory — ОЗУ):
+  * closed collateral is never queried: a deal whose closedate is today or earlier is
+    skipped inside the SQL itself (see ACTIVE_ONLY);
+  * анкета-level fields (techpassport numbers, engine/body numbers, VIN ...) are not
+    fetched at all: the app shows summaries, not single deals. They are kept below as
+    comments («# анкета:»): remove the # to fetch one again.
+
 To run a query by hand in your SQL tool: open the «Параметры» page, it prints the
 finished SQL, ready to copy.
 """
@@ -41,6 +48,14 @@ PARENT_TABLE = "schema2.deal"                   # link to the анкета/РН�
 COLLATERAL_TYPE = 357                           # dealtypeid of a collateral deal in PARENT_TABLE
 CLOSE_DATE = "closedate"                        # column of PARENT_TABLE: when the collateral was closed
                                                 # (empty or later than the update = still active)
+
+# Closed collateral is left out INSIDE the SQL (less work for Oracle, less memory here).
+# A deal without a row in PARENT_TABLE has no closedate, so it counts as active (and the
+# «Не привязан к анкете» check still finds it).
+# (NOT EXISTS, not NOT IN: one empty id in a NOT IN list would make it return nothing.)
+NOT_CLOSED = f"""not exists (select 1 from {PARENT_TABLE} c
+                        where c.id = v.dealid and c.dealtypeid = {COLLATERAL_TYPE}
+                          and c.{CLOSE_DATE} <= trunc(sysdate))"""
 
 # The off-balance accounts where the collateral is booked (see «3. ACCOUNTS» below).
 CHECK_ACCOUNTS = False                          # True = «Обновить из базы» also loads the 945xx accounts
@@ -65,29 +80,29 @@ CARS = {
     "TRANSP_МАРКА":        ("brand_other", "Марка (если другое)"),   # yes, МАРКА is Cyrillic in the database
     "TRANS_MOD_NEW":       ("model_main", "Модель"),
     "TRANSP_MODEL":        ("model_other", "Модель (если другое)"),
-    "COMPLECT":            ("trim", "Модель и комплектация"),
+    # анкета: "COMPLECT":            ("trim", "Модель и комплектация"),
     "LICENSE_PLATE":       ("plate", "Госномер"),
     "PRODUCTION_YEAR":     ("made_year", "Год производства"),
     "TRANSMISSION_TYPE":   ("gearbox", "Коробка передач"),
     "TRANSP_COLOR":        ("color", "Цвет"),
     "TYPE OF FUEL":        ("fuel", "Вид топлива"),
-    "TECH_PASP_SN":        ("pasp_sn", "Серия и номер техпаспорта"),
-    "TECH_PASP_D":         ("pasp_date", "Дата техпаспорта"),
+    # анкета: "TECH_PASP_SN":        ("pasp_sn", "Серия и номер техпаспорта"),
+    # анкета: "TECH_PASP_D":         ("pasp_date", "Дата техпаспорта"),
     "TECH_PASP_EXP_D":     ("pasp_end", "Техпаспорт действует до"),
-    "TECH_SERIAL":         ("pasp_serial", "Серия техпаспорта"),
-    "TECH_NUM":            ("pasp_number", "Номер техпаспорта"),
-    "TECH_ISSUE":          ("pasp_issuer", "Кто выдал техпаспорт"),
-    "BODY_N":              ("body_no", "Номер кузова"),
-    "ENGINE_NUMBER":       ("engine_no", "Номер двигателя"),
-    "CHASSIS_N":           ("chassis_no", "Номер шасси"),
-    "INVENTORY_N":         ("inventory_no", "Инвентарный номер"),
+    # анкета: "TECH_SERIAL":         ("pasp_serial", "Серия техпаспорта"),
+    # анкета: "TECH_NUM":            ("pasp_number", "Номер техпаспорта"),
+    # анкета: "TECH_ISSUE":          ("pasp_issuer", "Кто выдал техпаспорт"),
+    # анкета: "BODY_N":              ("body_no", "Номер кузова"),
+    # анкета: "ENGINE_NUMBER":       ("engine_no", "Номер двигателя"),
+    # анкета: "CHASSIS_N":           ("chassis_no", "Номер шасси"),
+    # анкета: "INVENTORY_N":         ("inventory_no", "Инвентарный номер"),
     "TRANSP_RUN":          ("mileage", "Пробег"),
     "ORIG_COUNTRY":        ("country", "Страна производителя"),
     "CAR_PURCHASE_MARKET": ("buy_market", "Рынок приобретения"),
-    "CARPRICE":            ("car_price", "Стоимость по договору купли-продажи"),
-    "VEHICLE_ID":          ("vehicle_id", "Уникальный код ТС"),
-    "TYPEREGNEWCAR":       ("reg_type", "Вид регистрации нового авто"),
-    "VEHICLE_ADD_INFO":    ("car_info", "Доп. информация о ТС"),
+    # анкета: "CARPRICE":            ("car_price", "Стоимость по договору купли-продажи"),
+    # анкета: "VEHICLE_ID":          ("vehicle_id", "Уникальный код ТС"),
+    # анкета: "TYPEREGNEWCAR":       ("reg_type", "Вид регистрации нового авто"),
+    # анкета: "VEHICLE_ADD_INFO":    ("car_info", "Доп. информация о ТС"),
 }
 
 PROPERTY = {
@@ -97,13 +112,13 @@ PROPERTY = {
     "CADASTRAMOUNT":       ("cadastre_value", "Кадастровая стоимость"),
     "BUILDING_KIND":       ("building_kind", "Вид недвижимости"),
     "BUILDING_TYPE":       ("building_type", "Тип недвижимости"),
-    "TO_EXPL_D":           ("in_use_date", "Дата ввода в эксплуатацию"),
+    # анкета: "TO_EXPL_D":           ("in_use_date", "Дата ввода в эксплуатацию"),
     "YEAR_CONSTRUCTION":   ("built_year", "Год постройки"),
     "PROPERTY_AREA":       ("total_area", "Общая площадь, м²"),
-    "LAND_AREA":           ("land_area", "Площадь участка, м²"),
-    "BUILT_UP_AREA":       ("built_area", "Площадь застройки, м²"),
-    "EFFECTIVE_AREA":      ("useful_area", "Полезная площадь, м²"),
-    "LIVING_SPACE":        ("living_area", "Жилая площадь, м²"),
+    # анкета: "LAND_AREA":           ("land_area", "Площадь участка, м²"),
+    # анкета: "BUILT_UP_AREA":       ("built_area", "Площадь застройки, м²"),
+    # анкета: "EFFECTIVE_AREA":      ("useful_area", "Полезная площадь, м²"),
+    # анкета: "LIVING_SPACE":        ("living_area", "Жилая площадь, м²"),
     "ROOM_CNT":            ("rooms", "Количество комнат"),
     # The address is not in your old script. Find its real name on the «Параметры» page
     # (look for ADDR / ADRES / REGION / DISTRICT), then remove the # here:
@@ -222,7 +237,7 @@ def make_sql(params):
     )
     return f"""
 with deals as (
-    select id, siteid, currencyid, amounteq, marketamount, creditnbusupplyid, securitydescription
+    select id, siteid, currencyid, amounteq, marketamount, creditnbusupplyid
     from (
         select d.*,
                row_number() over (partition by d.id order by d.date_to desc) as rn
@@ -237,6 +252,7 @@ params as (
                row_number() over (partition by v.dealid, v.paramname order by v.date_to desc) as rn
         from   {PARAM_TABLE} v
         where  v.paramname in ({quoted(names)})
+          and  {NOT_CLOSED}         -- active collateral only
     )
     where rn = 1
 ),
@@ -255,11 +271,11 @@ select w.*,
        d.amounteq / 100          as amount,
        d.marketamount / 100      as market,
        d.creditnbusupplyid       as subtype,
-       d.securitydescription     as note,
        to_char(p.{CLOSE_DATE}, 'YYYY-MM-DD') as closedate
 from   wide w
 left join deals d          on d.id = w.dealid
 left join {PARENT_TABLE} p on p.id = w.dealid and p.dealtypeid = {COLLATERAL_TYPE}
+where  p.{CLOSE_DATE} is null or p.{CLOSE_DATE} > trunc(sysdate)
 """
 
 

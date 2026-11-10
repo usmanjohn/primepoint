@@ -1,0 +1,37 @@
+Salom, azizlar, ismlaring yaxshimi? <break time='0.45s' /> Kechagi toʻqqizta tangaga javob!
+
+<break time='2.5s' />
+
+Kecha toʻrttaga toʻrtta qoʻydik, <break time='0.3s' /> uch marta tortishga toʻgʻri keldi.
+
+<break time='2.5s' />
+
+Sir: tangalarni ikkiga emas, uchga boʻling. <break time='0.45s' /> Har guruhda uchtadan.
+
+<break time='2.5s' />
+
+Birinchi guruhni ikkinchisiga qoʻyamiz. <break time='0.45s' /> Teng! <break time='0.3s' /> Demak, qalbaki, uchinchi guruhda.
+
+<break time='2.5s' />
+
+Tarozi uch xil javob beradi: <break time='0.3s' /> chap, oʻng yoki teng. <break time='0.45s' /> Shuning uchun uchga boʻlamiz.
+
+<break time='2.5s' />
+
+Endi yettiga sakkiz. <break time='0.3s' /> Chap tomon yengil! <break time='0.45s' /> Qalbaki, yettinchi tanga.
+
+<break time='2.5s' />
+
+Har tortish shubhalilarni uch barobar kamaytiradi: <break time='0.3s' /> toʻqqiz, uch, bir.
+
+<break time='2.5s' />
+
+Qoida: <break time='0.3s' /> tarozi uch xil javob beradi, <break time='0.3s' /> uchalasidan ham foydalaning.
+
+<break time='2.5s' />
+
+Endi siz: <break time='0.3s' /> yigirma yettita tanga boʻlsa, necha tortish kerak? <break time='0.45s' /> Izohda yozing!
+
+<break time='2.5s' />
+
+Hunarni asrabon netgumdir oxir, <break time='0.3s' /> olib tuprogʻimga ketgumdir oxir. <break time='0.45s' /> Yechimni doʻstingizga ham yuboring!
