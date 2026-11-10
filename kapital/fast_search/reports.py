@@ -27,8 +27,10 @@ AN OPTIONAL PARAMETER (empty field = everything) is written like this:
 EXTRA PYTHON (optional): a function in process.py with the SAME NAME as the file gets the
 table and the form values and returns the table to show. See process.py.
 """
+import gc
 import io
 import re
+import threading
 import time
 from datetime import date
 from pathlib import Path
@@ -73,6 +75,9 @@ CSV_MAX_CELLS = 5_000_000
 #                   is forgotten at once and the Excel button runs the query again.
 MAX_ROWS = 300_000
 KEEP_MAX_CELLS = 1_000_000
+# A result is used once: it is forgotten right after its Excel download (forget()), and at
+# the latest KEEP_MINUTES after the query, even if nobody downloads it.
+KEEP_MINUTES = 10
 
 
 class TooManyRows(Exception):
@@ -155,8 +160,28 @@ def read_values(report, data):
 
 # The last result, so the Excel button does not run the same query again.
 # Each gunicorn worker keeps its own one (in memory only, never on disk), so only a
-# small one is kept (KEEP_MAX_CELLS).
+# small one is kept (KEEP_MAX_CELLS), and never for long (KEEP_MINUTES, forget()).
 MEMORY = {"key": None, "table": None, "seconds": None}
+_TIMER = {"timer": None}
+
+
+def forget():
+    """Drop the kept result now and give its memory back."""
+    MEMORY.update(key=None, table=None, seconds=None)
+    if _TIMER["timer"] is not None:
+        _TIMER["timer"].cancel()
+        _TIMER["timer"] = None
+    gc.collect()
+
+
+def _forget_later():
+    """Forget the result KEEP_MINUTES from now (a new result restarts the clock)."""
+    if _TIMER["timer"] is not None:
+        _TIMER["timer"].cancel()
+    timer = threading.Timer(KEEP_MINUTES * 60, forget)
+    timer.daemon = True              # never keeps gunicorn from stopping
+    timer.start()
+    _TIMER["timer"] = timer
 
 
 def get_table(report, values):
@@ -164,7 +189,7 @@ def get_table(report, values):
     key = (report["name"], report["sql"], tuple(sorted((k, str(v)) for k, v in values.items())))
     if MEMORY["key"] == key:
         return MEMORY["table"], MEMORY["seconds"]
-    MEMORY.update(key=None, table=None, seconds=None)      # let the old result go first
+    forget()                                               # let the old result go first
     started = time.time()
     table = run(report["sql"], values)
     extra = getattr(process, report["name"], None)
@@ -173,6 +198,7 @@ def get_table(report, values):
     seconds = time.time() - started
     if table.size <= KEEP_MAX_CELLS:
         MEMORY.update(key=key, table=table, seconds=seconds)
+        _forget_later()
     return table, seconds
 
 

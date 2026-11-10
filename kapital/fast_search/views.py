@@ -46,7 +46,10 @@ def report(request, name):
 
     if "excel" in request.GET:
         if table.size <= reports.CSV_MAX_CELLS:
-            return download(table, name)
+            response = download(table, name)
+            del table
+            reports.forget()                    # used once: no need to keep it in memory
+            return response
         context["errors"] = [f"{len(table):,} строк — слишком много для Excel. Сузьте параметры.".replace(",", " ")]
 
     query = request.GET.copy()
