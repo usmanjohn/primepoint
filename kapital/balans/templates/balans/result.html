@@ -2,7 +2,6 @@
 {% load currency_filters %}
 {% block content %}
 {% if user.is_authenticated %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
   .bal{--ink:#0B0B0C;--soft:#2A2A2E;--gold:#F2C230;--gd:#C9971A;--gtext:#8C6A12;
        --rule:#E4E1D8;--paper:#FAF8F2;--muted:#8A867C;--bad:#B3341F;color:var(--ink)}
@@ -89,14 +88,32 @@
     .bal .wf-row{grid-template-columns:1fr 110px}
     .bal .wf-track{grid-column:1 / -1;grid-row:2}
   }
+  /* PDF: the «Скачать PDF» button opens the print window -> «Сохранить как PDF».
+     Only the report is printed: the menu, the sidebar and the buttons are hidden. */
+  @page{size:A4 portrait;margin:10mm}
+  @media print{
+    html,body{background:#fff!important}
+    body *:not(:has(#export-area)):not(#export-area):not(#export-area *){display:none!important}
+    body *:has(#export-area){margin:0!important;padding:0!important;position:static!important;
+         transform:none!important;width:auto!important;max-width:none!important;min-height:0!important;
+         box-shadow:none!important;border:0!important;background:#fff!important}
+    #export-area{padding:0!important;border-radius:0}
+    #export-area,#export-area *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .bal .col-lg-6{flex:0 0 50%;max-width:50%}          /* keep the two columns side by side */
+    .bal .tiles{grid-template-columns:repeat(4,1fr)}
+    .bal .kpis{grid-template-columns:repeat(4,1fr)}
+    .bal .grp,.bal .wf-row,.bal .kpi,.bal tr,.bal .check,.bal .stack-row,.bal .legend,.bal .tile{break-inside:avoid}
+    .bal .box-head,.bal .side-head{break-after:avoid}
+    .bal .hero{break-after:avoid}
+  }
 </style>
 
 <div class="container-fluid py-3 bal" style="max-width:1280px">
-  <div class="toolbar" data-html2canvas-ignore>
+  <div class="toolbar">
     <a href="{% url 'balans-home' %}" class="btn btn-line rounded-pill px-4"><i class="fas fa-arrow-left me-2"></i>Другая дата</a>
     <div class="d-flex gap-2 flex-wrap">
       <a href="{% url 'risk-result' %}" class="btn btn-line rounded-pill px-4"><i class="fa-solid fa-bullhorn me-2"></i>Risk Page</a>
-      <button onclick="downloadDashboard()" class="btn btn-go rounded-pill px-4"><i class="fas fa-download me-2"></i>Экспорт (PNG)</button>
+      <button onclick="savePdf()" class="btn btn-go rounded-pill px-4"><i class="fas fa-file-pdf me-2"></i>Скачать PDF</button>
     </div>
   </div>
 
@@ -299,13 +316,13 @@
 </div>
 
 <script>
-  function downloadDashboard() {
-    html2canvas(document.getElementById("export-area"), {scale: 2, backgroundColor: "#ffffff"}).then(canvas => {
-      const link = document.createElement('a');
-      link.download = 'Balans_{{ date_str }}.png';
-      link.href = canvas.toDataURL("image/png");
-      link.click();
-    });
+  // The browser's own «Сохранить как PDF»: sharp text, no extra library.
+  // The page title becomes the file name, so it is set for the moment of printing.
+  function savePdf() {
+    const title = document.title;
+    document.title = 'Balans_{{ date_display }}';
+    window.print();
+    document.title = title;
   }
 </script>
 {% else %}
