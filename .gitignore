@@ -333,3 +333,7 @@ storyvideo/tts_audios/
 kapital/**/images/
 *.HEIC
 *.heic
+
+# Confidential bank scripts (Kapital) - never push
+kapital/portfel_daily_range.py
+kapital/portfel_shares.py

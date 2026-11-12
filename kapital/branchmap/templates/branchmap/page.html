@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% comment %}
+  Kapitalbank offices on the map of Uzbekistan. Plain SVG drawn in geo.py, no JavaScript,
+  no map tiles: hover a dot or a region for its name (the browser shows <title>).
+  The «shadow» look: the country is drawn twice — a dark copy shifted down and blurred
+  (the shadow), then the regions on top with a soft inner light.
+{% endcomment %}
+
+{% block extra_css %}
+<style>
+  .bmap{--ink:#0B0B0C;--gold:#F2C230;--gd:#C9971A;--gtext:#8C6A12;--rule:#E4E1D8;
+        --paper:#FAF8F2;--muted:#8A867C;color:var(--ink)}
+  .bmap .hero{background:var(--ink);color:#fff;border-radius:12px;padding:20px 26px;margin-bottom:20px}
+  .bmap .hero .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .bmap .hero h1{font-weight:500;font-size:26px;margin:6px 0 6px}
+  .bmap .hero h1 i{color:var(--gold);margin-right:10px}
+  .bmap .hero .sub{color:#B9B5AB;font-size:14px}
+  .bmap .box{background:#fff;border:1px solid var(--rule);border-radius:12px;margin-bottom:20px}
+  .bmap .box-head{background:var(--paper);border-bottom:1px solid var(--rule);border-radius:12px 12px 0 0;
+       padding:10px 16px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gtext);
+       display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .bmap .box-head i{margin-right:8px;color:var(--gd)}
+  .bmap .box-head .hint{letter-spacing:0;text-transform:none;color:var(--muted);font-size:12px}
+  .bmap .stage{background:radial-gradient(ellipse at 50% 40%, #FFFFFF 0%, #EFEBE0 100%);border-radius:0 0 12px 12px;padding:10px}
+  .bmap svg{display:block;width:100%;height:auto}
+  .bmap .reg{stroke:#FFFFFF;stroke-width:1.1;stroke-linejoin:round;fill-rule:evenodd}
+  .bmap .reg:hover{filter:brightness(.93)}
+  .bmap .lbl{font:600 12px/1 system-ui,sans-serif;fill:#3B3A36;text-anchor:middle;pointer-events:none;
+       paint-order:stroke;stroke:rgba(255,255,255,.75);stroke-width:3px;letter-spacing:.02em}
+  .bmap .leader{stroke:#6B675E;stroke-width:.8}
+  .bmap .leader-end{fill:#6B675E}
+  .bmap .dot{stroke:#fff;stroke-width:1.3}
+  .bmap .dot.branch{fill:var(--ink);stroke:var(--gold);stroke-width:2}
+  .bmap .dot.obu{fill:#C9971A}
+  .bmap .dot.mini{fill:#FFFFFF;stroke:var(--ink);stroke-width:1.4}
+  .bmap .frame{fill:none;stroke:var(--ink);stroke-width:1.2;stroke-dasharray:4 3}
+  .bmap .legend{display:flex;flex-wrap:wrap;gap:18px;font-size:13px;padding:12px 16px;border-top:1px solid var(--rule)}
+  .bmap .legend svg{display:inline-block;width:18px;height:18px;vertical-align:-4px;margin-right:6px}
+  .bmap .kpi{background:#fff;border:1px solid var(--rule);border-radius:12px;padding:12px 14px;height:100%}
+  .bmap .kpi .l{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .bmap .kpi .v{font-size:24px;font-weight:600;margin-top:4px}
+  .bmap table td.m,.bmap table th.m{text-align:right;font-variant-numeric:tabular-nums}
+  .bmap .bar{height:6px;background:var(--gold);border-radius:3px}
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+<div class="bmap container-fluid px-4 py-4">
+
+  <div class="hero">
+    <div class="eyebrow">Kapitalbank · сеть</div>
+    <h1><i class="fa-solid fa-map-location-dot"></i>Карта отделений</h1>
+    <div class="sub">{{ m.total }} офисов в {{ m.cities }} городах · данные kapitalbank.uz «Отделения», без банкоматов</div>
+  </div>
+
+  <div class="row g-3 mb-3">
+    <div class="col-6 col-lg-3"><div class="kpi"><div class="l">Всего офисов</div><div class="v">{{ m.total }}</div></div></div>
+    {% for k in m.kinds %}
+    <div class="col-6 col-lg-3"><div class="kpi"><div class="l">{{ k.label }}</div><div class="v">{{ k.count }}</div></div></div>
+    {% endfor %}
+  </div>
+
+  <div class="row g-3">
+    <div class="col-xl-8">
+      <div class="box">
+        <div class="box-head"><span><i class="fa-solid fa-earth-asia"></i>Узбекистан</span>
+          <span class="hint d-none d-md-inline">цвет региона — число офисов · наведите на точку</span></div>
+        <div class="stage">
+          <svg viewBox="0 0 {{ m.w }} {{ m.h|add:14 }}" role="img" aria-label="Карта офисов Kapitalbank">
+            <defs>
+              <filter id="bm-shadow" x="-10%" y="-10%" width="120%" height="130%">
+                <feGaussianBlur stdDeviation="6"/>
+              </filter>
+              <filter id="bm-soft" x="-5%" y="-5%" width="110%" height="110%">
+                <feDropShadow dx="0" dy="1.5" stdDeviation="1.2" flood-color="#000" flood-opacity=".18"/>
+              </filter>
+            </defs>
+            {# the shadow: the whole country, dark, shifted down and blurred #}
+            <g transform="translate(4 12)" filter="url(#bm-shadow)" opacity=".28">
+              {% for r in m.regions %}<path d="{{ r.d }}" fill="#2A2A2E" fill-rule="evenodd"/>{% endfor %}
+            </g>
+            {# the "thickness": the same country a few px lower, darker gold #}
+            <g transform="translate(0 5)">
+              {% for r in m.regions %}<path d="{{ r.d }}" fill="#B08A1E" fill-rule="evenodd"/>{% endfor %}
+            </g>
+            <g filter="url(#bm-soft)">
+              {% for r in m.regions %}<path class="reg" d="{{ r.d }}" fill="{{ r.fill }}"><title>{{ r.name }}: {{ r.count }} офисов</title></path>{% endfor %}
+            </g>
+            {% for r in m.regions %}{% if r.leader %}<line class="leader" x1="{{ r.leader.x1 }}" y1="{{ r.leader.y1 }}" x2="{{ r.leader.x2 }}" y2="{{ r.leader.y2 }}"/><circle class="leader-end" cx="{{ r.leader.x2 }}" cy="{{ r.leader.y2 }}" r="1.8"/>{% endif %}{% endfor %}
+            {% for r in m.regions %}{% if r.label %}<text class="lbl" x="{{ r.lx }}" y="{{ r.ly }}">{{ r.short }}</text>{% endif %}{% endfor %}
+            <rect class="frame" x="{{ m.frame.x }}" y="{{ m.frame.y }}" width="{{ m.frame.w }}" height="{{ m.frame.h }}"/>
+            {% for d in m.dots %}<circle class="dot {{ d.kind }}" cx="{{ d.x }}" cy="{{ d.y }}" r="{{ d.r }}"><title>{{ d.title }}</title></circle>{% endfor %}
+          </svg>
+        </div>
+        <div class="legend">
+          {% for k in m.kinds %}
+          <span><svg viewBox="0 0 18 18"><circle class="dot {{ k.key }}" cx="9" cy="9" r="{{ k.r }}"/></svg>{{ k.label }} — {{ k.count }}</span>
+          {% endfor %}
+          <span><svg viewBox="0 0 18 18"><rect class="frame" x="2" y="4" width="14" height="10"/></svg>Ташкент — увеличено справа</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4">
+      <div class="box">
+        <div class="box-head"><span><i class="fa-solid fa-city"></i>Ташкент</span>
+          <span class="hint">крупнее</span></div>
+        <div class="stage">
+          <svg viewBox="0 0 {{ m.city.w }} {{ m.city.h }}" role="img" aria-label="Офисы в Ташкенте">
+            <g filter="url(#bm-soft)">
+              {% for r in m.city.regions %}<path class="reg" d="{{ r.d }}" fill="{{ r.fill }}"><title>{{ r.name }}: {{ r.count }} офисов</title></path>{% endfor %}
+            </g>
+            {% for d in m.city.dots %}<circle class="dot {{ d.kind }}" cx="{{ d.x }}" cy="{{ d.y }}" r="{{ d.r }}"><title>{{ d.title }}</title></circle>{% endfor %}
+          </svg>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="box-head"><span><i class="fa-solid fa-table"></i>По регионам</span></div>
+        <div class="table-responsive">
+          <table class="table table-sm align-middle mb-0">
+            <thead><tr><th>Регион</th><th class="m">Всего</th>{% for k in m.kinds %}<th class="m" title="{{ k.label }}">{{ k.short }}</th>{% endfor %}</tr></thead>
+            <tbody>
+            {% for r in m.table %}
+              <tr><td>{{ r.name }}</td><td class="m fw-semibold">{{ r.total }}</td>
+                <td class="m">{{ r.mini|default:"—" }}</td><td class="m">{{ r.obu|default:"—" }}</td><td class="m">{{ r.branch|default:"—" }}</td></tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

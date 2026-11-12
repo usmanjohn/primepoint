@@ -1,0 +1,318 @@
+{% extends 'base.html' %}
+{% load currency_filters %}
+{% block content %}
+{% if user.is_authenticated %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  .bal{--ink:#0B0B0C;--soft:#2A2A2E;--gold:#F2C230;--gd:#C9971A;--gtext:#8C6A12;
+       --rule:#E4E1D8;--paper:#FAF8F2;--muted:#8A867C;--bad:#B3341F;color:var(--ink)}
+  .bal .toolbar{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;margin-bottom:16px}
+  .bal .btn-go{background:var(--gold);border:none;color:var(--ink);font-weight:600}
+  .bal .btn-go:hover{background:var(--gd);color:var(--ink)}
+  .bal .btn-line{border:1px solid var(--rule);background:#fff;color:var(--ink)}
+  .bal .btn-line:hover{border-color:var(--gold)}
+  #export-area{background:#fff;padding:24px;border-radius:14px}
+  .bal .hero{background:var(--ink);color:#fff;border-radius:12px;padding:22px 26px;margin-bottom:20px}
+  .bal .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .bal .hero h1{font-weight:500;font-size:26px;margin:6px 0 18px}
+  .bal .hero h1 i{color:var(--gold);margin-right:10px}
+  .bal .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+  .bal .tile{border:1px solid #3F3D38;border-radius:10px;padding:12px 14px}
+  .bal .tile .l{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#B9B5AB}
+  .bal .tile .v{font-size:20px;font-weight:600;margin-top:4px;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .bal .tile .n{font-size:12px;color:#B9B5AB}
+  .bal .tile.gold{border-color:var(--gold)}
+  .bal .tile.gold .v{color:var(--gold)}
+  .bal .box{background:#fff;border:1px solid var(--rule);border-radius:12px;margin-bottom:20px}
+  .bal .box-head{background:var(--paper);border-bottom:1px solid var(--rule);border-radius:12px 12px 0 0;
+       padding:10px 16px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gtext);
+       display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+  .bal .box-head i{margin-right:8px;color:var(--gd)}
+  .bal .box-head .hint{letter-spacing:0;text-transform:none;color:var(--muted);font-size:12px}
+  .bal .box-body{padding:14px 16px}
+  .bal .m{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .bal .muted{color:var(--muted)}
+  .bal .bad{color:var(--bad)}
+  /* the balance check */
+  .bal .check{display:flex;gap:14px;align-items:center;padding:14px 16px}
+  .bal .check .mark{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+       font-size:20px;flex-shrink:0;background:var(--gold);color:var(--ink)}
+  .bal .check.off .mark{background:var(--bad);color:#fff}
+  .bal table{font-size:13px;margin:0;width:100%}
+  .bal th{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;
+       padding:6px 8px;border-bottom:1px solid var(--rule)}
+  .bal td{padding:6px 8px;border-bottom:1px solid #F0EEE7}
+  /* stacked 100% bars */
+  .bal .stack-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  .bal .stack-row .lab{width:90px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+  .bal .stack{flex:1;display:flex;height:34px;border-radius:8px;overflow:hidden;background:#F0EEE7}
+  .bal .stack span{display:block;height:100%}
+  .bal .legend{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:12.5px;margin:4px 0 14px 102px}
+  .bal .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px}
+  /* group lists */
+  .bal .side-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--ink);
+       padding-bottom:6px;margin-bottom:8px}
+  .bal .side-head .t{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+  .bal .side-head .v{font-size:18px;font-weight:600;font-variant-numeric:tabular-nums}
+  .bal .grp{padding:9px 0;border-bottom:1px solid #F0EEE7}
+  .bal .grp-top{display:flex;align-items:center;gap:10px}
+  .bal .grp-icon{width:32px;height:32px;border-radius:8px;background:var(--paper);display:flex;align-items:center;
+       justify-content:center;color:var(--gd);flex-shrink:0;font-size:14px}
+  .bal .grp-name{flex:1;font-weight:500;font-size:14px;line-height:1.25}
+  .bal .grp-val{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:600}
+  .bal .grp-val small{display:block;font-weight:400;color:var(--muted)}
+  .bal .bar{height:6px;background:#F0EEE7;border-radius:6px;margin:6px 0 0 42px;overflow:hidden}
+  .bal .bar span{display:block;height:100%;background:var(--gold);border-radius:6px}
+  .bal .bar.dark span{background:var(--soft)}
+  .bal .net-line{margin:6px 0 0 42px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+  /* waterfall */
+  .bal .wf-row{display:grid;grid-template-columns:minmax(150px,230px) 1fr 150px;gap:10px;align-items:center;padding:4px 0}
+  .bal .wf-row.sub{border-top:1px solid var(--rule);font-weight:600}
+  .bal .wf-track{position:relative;height:20px}
+  .bal .wf-track span{position:absolute;top:0;height:100%;border-radius:3px;background:var(--gold)}
+  .bal .wf-row.neg .wf-track span{background:#B9B5AB}
+  .bal .wf-row.sub .wf-track span{background:var(--ink)}
+  .bal .wf-row.sub.neg .wf-track span{background:var(--bad)}
+  /* ratios */
+  .bal .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+  .bal .kpi{border:1px solid var(--rule);border-radius:10px;padding:12px 14px}
+  .bal .kpi .l{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .bal .kpi .l i{color:var(--gd);margin-right:6px}
+  .bal .kpi .v{font-size:24px;font-weight:600;margin:2px 0}
+  .bal .kpi .h{font-size:12px;color:var(--muted);line-height:1.35}
+  .bal .rules{margin:0;padding-left:18px;font-size:13.5px;line-height:1.6}
+  @media (max-width:576px){
+    #export-area{padding:10px}
+    .bal .legend{margin-left:0}
+    .bal .stack-row{flex-direction:column;align-items:stretch;gap:4px}
+    .bal .stack{flex:none;width:100%}
+    .bal .wf-row{grid-template-columns:1fr 110px}
+    .bal .wf-track{grid-column:1 / -1;grid-row:2}
+  }
+</style>
+
+<div class="container-fluid py-3 bal" style="max-width:1280px">
+  <div class="toolbar" data-html2canvas-ignore>
+    <a href="{% url 'balans-home' %}" class="btn btn-line rounded-pill px-4"><i class="fas fa-arrow-left me-2"></i>Другая дата</a>
+    <div class="d-flex gap-2 flex-wrap">
+      <a href="{% url 'risk-result' %}" class="btn btn-line rounded-pill px-4"><i class="fa-solid fa-bullhorn me-2"></i>Risk Page</a>
+      <button onclick="downloadDashboard()" class="btn btn-go rounded-pill px-4"><i class="fas fa-download me-2"></i>Экспорт (PNG)</button>
+    </div>
+  </div>
+
+  <div id="export-area">
+    <!-- 1. Hero -->
+    <div class="hero">
+      <div class="eyebrow">Аналитический баланс</div>
+      <h1><i class="fa-solid fa-building-columns"></i>Баланс на {{ date_display }}</h1>
+      <div class="tiles">
+        <div class="tile gold"><div class="l">Активы</div><div class="v">{{ total_assets|format_currency }}</div>
+          <div class="n">без {{ rules.assets }}</div></div>
+        <div class="tile"><div class="l">Обязательства</div><div class="v">{{ total_liabilities|format_currency }}</div>
+          <div class="n">без {{ rules.liabilities }}</div></div>
+        <div class="tile"><div class="l">Капитал</div><div class="v">{{ total_equity|format_currency }}</div>
+          <div class="n">{{ equity_pct|floatformat:1 }}% пассивов</div></div>
+        <div class="tile"><div class="l">Чистая прибыль</div>
+          <div class="v{% if net_profit < 0 %} bad{% endif %}">{{ net_profit|format_currency }}</div>
+          <div class="n">с начала года</div></div>
+      </div>
+    </div>
+
+    <!-- 2. Does it add up? -->
+    <div class="box">
+      <div class="check{% if not balance_ok %} off{% endif %}">
+        <div class="mark"><i class="fas {% if balance_ok %}fa-check{% else %}fa-xmark{% endif %}"></i></div>
+        <div>
+          {% if balance_ok %}
+            <strong>Баланс сходится:</strong> активы = обязательства + капитал.
+          {% else %}
+            <strong>Баланс не сходится на {{ balance_gap|format_currency }}.</strong>
+            {% if gap_is_profit %}Разница равна прибыли года — значит, она не добавлена в 31206.
+            {% elif gap_is_pairs %}Вся разница — из исключённых пар ниже: их стороны не равны друг другу.
+            {% else %}Посмотрите пары ниже и счета, не попавшие ни в одну группу («Прочие»).{% endif %}
+          {% endif %}
+          <div class="muted small">Активы {{ total_assets|format_currency }} · Обязательства + капитал {{ total_passive|format_currency }}</div>
+        </div>
+      </div>
+      <table>
+        <thead><tr><th>Исключённые пары</th><th class="m">Актив</th><th class="m">Пассив</th><th class="m">Разница</th></tr></thead>
+        <tbody>
+        {% for p in pairs %}
+          <tr><td>{{ p.label }}</td><td class="m">{{ p.a_val|format_currency }}</td><td class="m">{{ p.l_val|format_currency }}</td>
+              <td class="m{% if not p.ok %} bad{% endif %}">{{ p.diff|format_currency }}</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 3. Structure at a glance -->
+    <div class="box">
+      <div class="box-head"><span><i class="fas fa-chart-bar"></i>Структура баланса</span>
+        <span class="hint">каждая полоса = 100%</span></div>
+      <div class="box-body">
+        <div class="stack-row"><div class="lab">Активы</div>
+          <div class="stack">{% for r in assets_structure %}{% if r.net > 0 %}<span style="width:{{ r.w }}%;background:{{ r.colour }}" title="{{ r.name }}"></span>{% endif %}{% endfor %}</div></div>
+        <div class="legend">{% for r in assets_structure %}<span><i style="background:{{ r.colour }}"></i>{{ r.name }} {{ r.pct|floatformat:1 }}%</span>{% endfor %}</div>
+        <div class="stack-row"><div class="lab">Пассивы</div>
+          <div class="stack">{% for r in passive_bar %}{% if r.net > 0 %}<span style="width:{{ r.w }}%;background:{{ r.colour }}" title="{{ r.name }}"></span>{% endif %}{% endfor %}</div></div>
+        <div class="legend">{% for r in passive_bar %}<span><i style="background:{{ r.colour }}"></i>{{ r.name }} {{ r.pct|floatformat:1 }}%</span>{% endfor %}</div>
+      </div>
+    </div>
+
+    <!-- 4. Assets | Liabilities + Equity -->
+    <div class="row g-3">
+      <div class="col-lg-6">
+        <div class="box"><div class="box-body">
+          <div class="side-head"><span class="t">Активы</span><span class="v">{{ total_assets|format_currency }}</span></div>
+          {% for r in assets_structure %}
+          <div class="grp">
+            <div class="grp-top"><div class="grp-icon"><i class="fas {{ r.icon }}"></i></div>
+              <div class="grp-name">{{ r.name }}</div>
+              <div class="grp-val">{{ r.net|format_currency }}<small>{{ r.pct|floatformat:1 }}%</small></div></div>
+            <div class="bar"><span style="width:{{ r.w }}%"></span></div>
+            {% if r.has_reserve %}<div class="net-line">брутто {{ r.gross|format_currency }} · резервы и контрсчета −{{ r.reserve|format_currency }}</div>{% endif %}
+          </div>
+          {% endfor %}
+        </div></div>
+      </div>
+      <div class="col-lg-6">
+        <div class="box"><div class="box-body">
+          <div class="side-head"><span class="t">Обязательства</span><span class="v">{{ total_liabilities|format_currency }}</span></div>
+          {% for r in liabilities_structure %}
+          <div class="grp">
+            <div class="grp-top"><div class="grp-icon"><i class="fas {{ r.icon }}"></i></div>
+              <div class="grp-name">{{ r.name }}</div>
+              <div class="grp-val">{{ r.net|format_currency }}<small>{{ r.pct|floatformat:1 }}% пассивов</small></div></div>
+            <div class="bar dark"><span style="width:{{ r.w }}%"></span></div>
+          </div>
+          {% endfor %}
+          <div class="side-head mt-4"><span class="t">Капитал</span><span class="v">{{ total_equity|format_currency }}</span></div>
+          {% for r in equity_structure %}
+          <div class="grp">
+            <div class="grp-top"><div class="grp-icon"><i class="fas {{ r.icon }}"></i></div>
+              <div class="grp-name">{{ r.name }}</div>
+              <div class="grp-val{% if r.net < 0 %} bad{% endif %}">{{ r.net|format_currency }}<small>{{ r.pct|floatformat:1 }}% пассивов</small></div></div>
+            <div class="bar dark"><span style="width:{{ r.w }}%"></span></div>
+            {% if r.has_reserve %}<div class="net-line">выкупленные акции / неоплаченная подписка −{{ r.reserve|format_currency }}</div>{% endif %}
+          </div>
+          {% endfor %}
+        </div></div>
+      </div>
+    </div>
+
+    <!-- 5. Ratios -->
+    <div class="box">
+      <div class="box-head"><span><i class="fas fa-gauge-high"></i>Показатели</span>
+        <span class="hint">аналитика по балансу, не нормативы ЦБ</span></div>
+      <div class="box-body"><div class="kpis">
+        {% for r in ratios %}
+        <div class="kpi"><div class="l"><i class="fas {{ r.icon }}"></i>{{ r.name }}</div>
+          <div class="v">{{ r.value|floatformat:1 }}%</div><div class="h">{{ r.how }}</div></div>
+        {% endfor %}
+      </div></div>
+    </div>
+
+    <!-- 6. Profit -->
+    <div class="box">
+      <div class="box-head"><span><i class="fas fa-chart-line"></i>Как складывается прибыль</span>
+        <span class="hint">с 1 января по {{ date_display }}</span></div>
+      <div class="box-body">
+        {% for s in waterfall %}
+        <div class="wf-row{% if s.is_sub %} sub{% endif %}{% if s.neg %} neg{% endif %}">
+          <div>{{ s.label }}</div>
+          <div class="wf-track"><span style="left:{{ s.left }}%;width:{{ s.w }}%"></span></div>
+          <div class="m{% if s.is_sub and s.neg %} bad{% endif %}">{{ s.value|format_currency }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-lg-6">
+        <div class="box"><div class="box-body">
+          <div class="side-head"><span class="t">Доходы</span><span class="v">{{ total_income|format_currency }}</span></div>
+          {% for r in income_structure %}
+          <div class="grp">
+            <div class="grp-top"><div class="grp-icon"><i class="fas {{ r.icon }}"></i></div>
+              <div class="grp-name">{{ r.name }}</div>
+              <div class="grp-val">{{ r.net|format_currency }}<small>{{ r.pct|floatformat:1 }}%</small></div></div>
+            <div class="bar"><span style="width:{{ r.w }}%"></span></div>
+          </div>
+          {% endfor %}
+        </div></div>
+      </div>
+      <div class="col-lg-6">
+        <div class="box"><div class="box-body">
+          <div class="side-head"><span class="t">Расходы</span><span class="v">{{ total_expenses|format_currency }}</span></div>
+          {% for r in expense_structure %}
+          <div class="grp">
+            <div class="grp-top"><div class="grp-icon"><i class="fas {{ r.icon }}"></i></div>
+              <div class="grp-name">{{ r.name }}</div>
+              <div class="grp-val">{{ r.net|format_currency }}<small>{{ r.pct|floatformat:1 }}%</small></div></div>
+            <div class="bar dark"><span style="width:{{ r.w }}%"></span></div>
+          </div>
+          {% endfor %}
+        </div></div>
+      </div>
+    </div>
+
+    <!-- 7. Currency -->
+    <div class="box">
+      <div class="box-head"><span><i class="fas fa-coins"></i>Валютная структура</span></div>
+      <div class="box-body">
+        <div class="stack-row"><div class="lab">Активы</div>
+          <div class="stack">{% for r in assets_by_currency %}{% if r.money > 0 %}<span style="width:{{ r.w }}%;background:{{ r.colour }}" title="{{ r.cur }}"></span>{% endif %}{% endfor %}</div></div>
+        <div class="legend">{% for r in assets_by_currency %}<span><i style="background:{{ r.colour }}"></i>{{ r.cur }} {{ r.pct|floatformat:1 }}%</span>{% endfor %}</div>
+        <div class="stack-row"><div class="lab">Обязат.</div>
+          <div class="stack">{% for r in liabs_by_currency %}{% if r.money > 0 %}<span style="width:{{ r.w }}%;background:{{ r.colour }}" title="{{ r.cur }}"></span>{% endif %}{% endfor %}</div></div>
+        <div class="legend">{% for r in liabs_by_currency %}<span><i style="background:{{ r.colour }}"></i>{{ r.cur }} {{ r.pct|floatformat:1 }}%</span>{% endfor %}</div>
+      </div>
+    </div>
+
+    <!-- 8. Largest accounts -->
+    <div class="row g-3">
+      <div class="col-lg-6"><div class="box">
+        <div class="box-head"><span><i class="fas fa-list-ol"></i>Крупнейшие счета актива</span></div>
+        <table><thead><tr><th>Счёт</th><th>Группа</th><th class="m">Сумма</th><th class="m">%</th></tr></thead><tbody>
+        {% for a in top_assets %}<tr><td>{{ a.acc }}</td><td>{{ a.grp }}</td><td class="m">{{ a.money|format_currency }}</td><td class="m">{{ a.pct|floatformat:1 }}</td></tr>{% endfor %}
+        </tbody></table></div></div>
+      <div class="col-lg-6"><div class="box">
+        <div class="box-head"><span><i class="fas fa-list-ol"></i>Крупнейшие счета пассива</span></div>
+        <table><thead><tr><th>Счёт</th><th>Группа</th><th class="m">Сумма</th><th class="m">%</th></tr></thead><tbody>
+        {% for a in top_liabilities %}<tr><td>{{ a.acc }}</td><td>{{ a.grp }}</td><td class="m">{{ a.money|format_currency }}</td><td class="m">{{ a.pct|floatformat:1 }}</td></tr>{% endfor %}
+        </tbody></table></div></div>
+    </div>
+
+    <!-- 9. How it is calculated -->
+    <div class="box">
+      <div class="box-head"><span><i class="fas fa-circle-info"></i>Как считается</span></div>
+      <div class="box-body"><ul class="rules">
+        <li><strong>Активы</strong> — все счета на 1, кроме {{ rules.assets }}. Резервы, амортизация и дисконты (контрсчета) уже вычтены.</li>
+        <li><strong>Обязательства</strong> — все счета на 2, кроме {{ rules.liabilities }}.</li>
+        <li><strong>161 ↔ 222</strong> — расчёты головного офиса с филиалами: внутри банка они взаимно гасятся, поэтому убраны с обеих сторон.</li>
+        <li><strong>175 ↔ 23416</strong> — счета правительства и фонд специального назначения: транзитные бюджетные средства, тоже убраны парой.</li>
+        <li><strong>Капитал</strong> — все счета на 3. Прибыль текущего года (классы 4 и 5) добавлена в 31206 при загрузке.</li>
+        <li>Группы и исключения задаются списками в начале <code>functions.py</code>.</li>
+      </ul></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function downloadDashboard() {
+    html2canvas(document.getElementById("export-area"), {scale: 2, backgroundColor: "#ffffff"}).then(canvas => {
+      const link = document.createElement('a');
+      link.download = 'Balans_{{ date_str }}.png';
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    });
+  }
+</script>
+{% else %}
+<div class="container py-5 text-center">
+  <i class="fas fa-lock fa-3x mb-3"></i>
+  <h3>Доступ ограничен</h3>
+  <a href="{% url 'login' %}" class="btn btn-warning mt-2"><i class="fas fa-sign-in-alt me-1"></i>Войти</a>
+</div>
+{% endif %}
+{% endblock %}

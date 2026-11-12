@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+<style>
+  .bal{--ink:#0B0B0C;--gold:#F2C230;--gd:#C9971A;--gtext:#8C6A12;--rule:#E4E1D8;--paper:#FAF8F2;--muted:#8A867C;color:var(--ink)}
+  .bal .hero{background:var(--ink);color:#fff;border-radius:12px;padding:26px 28px;margin-bottom:20px}
+  .bal .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .bal .hero h1{font-weight:500;font-size:26px;margin:6px 0 8px}
+  .bal .hero h1 i{color:var(--gold);margin-right:10px}
+  .bal .hero p{color:#B9B5AB;margin:0}
+  .bal .box{background:#fff;border:1px solid var(--rule);border-radius:12px;padding:22px}
+  .bal .btn-go{background:var(--gold);border:none;color:var(--ink);font-weight:600}
+  .bal .btn-go:hover{background:var(--gd);color:var(--ink)}
+  .bal .what{margin:0;padding-left:18px;color:#55524B;line-height:1.7}
+</style>
+<div class="container py-4 bal" style="max-width:760px">
+  <div class="hero">
+    <div class="eyebrow">Аналитический баланс</div>
+    <h1><i class="fa-solid fa-building-columns"></i>Баланс банка на дату</h1>
+    <p>Активы, обязательства, капитал, прибыль с начала года и основные показатели — на одной странице.</p>
+  </div>
+  <div class="box mb-3">
+    <form method="post">
+      {% csrf_token %}
+      <label class="form-label fw-semibold" for="{{ form.selected_date.id_for_label }}">{{ form.selected_date.label }}</label>
+      <div class="d-flex gap-2 flex-wrap">
+        <div style="flex:1;min-width:200px">{{ form.selected_date }}</div>
+        <button type="submit" class="btn btn-go btn-lg px-4">Показать <i class="fas fa-arrow-right ms-1"></i></button>
+      </div>
+      {% if form.selected_date.errors %}<div class="text-danger small mt-2">{{ form.selected_date.errors|join:" " }}</div>{% endif %}
+    </form>
+  </div>
+  <div class="box">
+    <ul class="what">
+      <li>Если дата уже загружалась, отчёт откроется сразу; если нет — данные загрузятся из базы (это займёт немного времени).</li>
+      <li>Межфилиальные расчёты (161 / 222) и счета правительства (175 / 23416) исключены с обеих сторон.</li>
+      <li>На странице отчёта есть проверка: сходится ли баланс.</li>
+    </ul>
+  </div>
+</div>
+{% else %}
+<div class="container py-5 text-center">
+  <i class="fas fa-lock fa-3x mb-3"></i>
+  <h3>Доступ ограничен</h3>
+  <a href="{% url 'login' %}" class="btn btn-warning mt-2"><i class="fas fa-sign-in-alt me-1"></i>Войти</a>
+</div>
+{% endif %}
+{% endblock content %}
