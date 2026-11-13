@@ -1,0 +1,267 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block extra_css %}
+<style>
+  .frp{--ink:#0B0B0C;--soft:#2A2A2E;--gold:#F2C230;--gd:#C9971A;--gt:#8C6A12;--rule:#E4E1D8;
+       --muted:#8A867C;--bad:#B3341F;--paper:#FCFAF4;
+       font-family:Cambria,Georgia,serif;color:var(--ink)}
+
+  /* шапка */
+  .frp .hero{background:var(--ink);color:#fff;border-radius:12px;padding:26px 30px;
+             margin-bottom:20px;position:relative;overflow:hidden}
+  .frp .hero::after{content:"";position:absolute;right:-70px;top:-70px;width:240px;height:240px;
+             background:var(--gold);opacity:.10;border-radius:50%;pointer-events:none}
+  .frp .eyebrow{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+  .frp .hero h1{font-weight:400;font-size:28px;margin:6px 0 4px}
+  .frp .hero p{color:#B9B5AB;font-size:13.5px;margin:0;max-width:70ch}
+  .frp .facts{display:flex;gap:30px;flex-wrap:wrap;margin-top:16px;padding-top:14px;
+             border-top:1px solid var(--soft)}
+  .frp .fact .n{font-size:20px;line-height:1.1;font-variant-numeric:tabular-nums}
+  .frp .fact .l{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8E8A80;margin-top:3px}
+  .frp .btn-dyn{position:relative;z-index:1;background:transparent;border:1px solid var(--gold);
+             color:var(--gold);border-radius:999px;padding:7px 18px;font-size:13.5px;
+             text-decoration:none;display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+  .frp .btn-dyn:hover{background:var(--gold);color:var(--ink)}
+
+  /* карточки и поля */
+  .frp .card{border:1px solid var(--rule);border-radius:12px;box-shadow:none;background:#fff}
+  .frp .card-header{background:#FAF8F2;border-bottom:1px solid var(--rule);font-size:11px;
+             letter-spacing:.14em;text-transform:uppercase;color:var(--gt);padding:11px 18px;
+             border-radius:12px 12px 0 0;display:flex;justify-content:space-between;
+             align-items:center;gap:12px;flex-wrap:wrap}
+  .frp .card-header .note{letter-spacing:0;text-transform:none;font-size:12.5px;color:var(--muted)}
+  .frp .form-label{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+  .frp .form-control,.frp .form-select{font-family:inherit;font-size:14.5px;border-color:#CFCBC0;border-radius:6px}
+  .frp .form-control:focus,.frp .form-select:focus{border-color:var(--gd);box-shadow:0 0 0 .18rem rgba(242,194,48,.28)}
+
+  /* выбор группировок и метрик — «таблетки» */
+  .frp .chips{display:flex;flex-wrap:wrap;gap:8px;max-height:230px;overflow-y:auto;padding:2px}
+  .frp .chip{position:relative;margin:0;cursor:pointer}
+  .frp .chip input{position:absolute;opacity:0;width:1px;height:1px}
+  .frp .chip span{display:block;border:1px solid var(--rule);border-radius:10px;padding:6px 12px;
+             background:#fff;font-size:13.5px;line-height:1.25;color:var(--soft);transition:.12s}
+  .frp .chip small{display:block;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10.5px;color:var(--muted)}
+  .frp .chip:hover span{border-color:var(--gd)}
+  .frp .chip input:checked + span{background:#FBF2D9;border-color:var(--gd);color:var(--ink)}
+  .frp .chip input:checked + span::before{content:"✓ ";color:var(--gt);font-weight:700}
+  .frp .chip input:focus-visible + span{box-shadow:0 0 0 .18rem rgba(242,194,48,.45)}
+  .frp .chips--metric .chip input:checked + span{background:#F1F0EC;border-color:var(--soft)}
+  .frp .chips--metric .chip input:checked + span::before{color:var(--soft)}
+
+  /* кнопки */
+  .frp .btn-go{background:var(--gold);border:none;color:var(--ink);font-weight:600;font-family:inherit;
+             font-size:15px;padding:10px 28px;border-radius:6px}
+  .frp .btn-go:hover{background:var(--gd)}
+  .frp .btn-xl{background:#fff;border:1px solid var(--soft);color:var(--soft);font-family:inherit;
+             font-size:15px;padding:9px 22px;border-radius:6px}
+  .frp .btn-xl:hover{background:var(--soft);color:#fff}
+  .frp .btn-reset{color:var(--muted);font-size:14px;text-decoration:none;padding:10px 6px}
+  .frp .btn-reset:hover{color:var(--bad);text-decoration:underline}
+
+  /* таблица */
+  .frp .tbl-wrap{max-height:640px;overflow:auto}
+  .frp table{font-size:13.5px;margin:0;border-collapse:separate;border-spacing:0;width:100%}
+  .frp thead th{position:sticky;top:0;z-index:2;background:#fff;font-weight:600;font-size:12.5px;
+             color:var(--ink);border-bottom:2px solid var(--ink);padding:10px 14px;vertical-align:bottom;
+             line-height:1.25;min-width:110px}
+  .frp thead th small{display:block;font-weight:400;font-family:ui-monospace,Menlo,Consolas,monospace;
+             font-size:10px;color:var(--muted);margin-top:2px}
+  .frp thead th.grp{background:#FAF8F2}
+  .frp tbody td{padding:8px 14px;border-bottom:1px solid var(--rule);vertical-align:middle;white-space:nowrap}
+  .frp tbody td.grp{background:#FDFCF8;color:var(--soft)}
+  .frp tbody tr:hover td{background:var(--paper)}
+  .frp .num{text-align:right;font-variant-numeric:tabular-nums}
+  .frp .neg{color:var(--bad)}
+  .frp .dash{color:#C8C4BA}
+  .frp tfoot td{position:sticky;bottom:0;z-index:2;background:var(--ink);color:#fff;font-weight:600;
+             padding:10px 14px;white-space:nowrap}
+  .frp tfoot td.neg{color:#F3A99C}
+  .frp tfoot .lbl{color:var(--gold);letter-spacing:.12em;text-transform:uppercase;font-size:11px}
+  .frp .cut{background:#FBF2D9;border-left:3px solid var(--gold);padding:10px 16px;font-size:13.5px}
+  .frp .empty{padding:48px 20px;text-align:center;color:var(--muted)}
+  .frp .empty .big{font-size:20px;color:var(--soft);margin-bottom:6px}
+
+  @media (max-width:767.98px){
+    .frp .hero{padding:20px 18px}
+    .frp .hero h1{font-size:22px}
+    .frp .actions{flex-direction:column;align-items:stretch!important}
+    .frp .actions .btn-go,.frp .actions .btn-xl{width:100%}
+  }
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+<div class="container-fluid my-4 frp">
+
+  <!-- Шапка -->
+  <div class="hero">
+    <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+      <div>
+        <div class="eyebrow">Kapitalbank · кредитный портфель</div>
+        <h1>Конструктор финансовых отчётов</h1>
+        <p>Выберите период и фильтры, затем — по чему группировать строки и какие суммы показать в колонках.</p>
+      </div>
+      {% if user.is_staff %}
+      <a href="{% url 'report-page' %}" class="btn-dyn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+          <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94.03L6.05 4.608 4.53 8.783A.5.5 0 0 1 4 9H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2"/>
+        </svg>
+        Динамика
+      </a>
+      {% endif %}
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <div class="n">{{ start_date|default:filter_options.min_date }} — {{ end_date|default:filter_options.max_date }}</div>
+        <div class="l">Период</div>
+      </div>
+      <div class="fact"><div class="n">{{ total_rows|intcomma }}</div><div class="l">Строк в отчёте</div></div>
+      <div class="fact"><div class="n">{{ group_count }}</div><div class="l">Группировок</div></div>
+      <div class="fact"><div class="n">{{ selected_metrics|length }}</div><div class="l">Метрик</div></div>
+    </div>
+  </div>
+
+  <form method="GET" action="">
+    <!-- Фильтры -->
+    <div class="card mb-3">
+      <div class="card-header">Фильтры</div>
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-6 col-md-2">
+            <label class="form-label" for="f-start">Дата начала</label>
+            <input id="f-start" type="date" name="start_date" class="form-control"
+                   min="{{ filter_options.min_date }}" max="{{ filter_options.max_date }}"
+                   value="{{ start_date|default:filter_options.min_date }}">
+          </div>
+          <div class="col-6 col-md-2">
+            <label class="form-label" for="f-end">Дата окончания</label>
+            <input id="f-end" type="date" name="end_date" class="form-control"
+                   min="{{ filter_options.min_date }}" max="{{ filter_options.max_date }}"
+                   value="{{ end_date|default:filter_options.max_date }}">
+          </div>
+          <div class="col-12 col-md-2">
+            <label class="form-label" for="f-filial">Филиал</label>
+            <select id="f-filial" name="filial" class="form-select">
+              <option value="All">Все филиалы</option>
+              {% for f in filter_options.filials %}
+              <option value="{{ f }}" {% if selected_filial == f %}selected{% endif %}>{{ f }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-12 col-md-2">
+            <label class="form-label" for="f-dept">Департамент</label>
+            <select id="f-dept" name="department" class="form-select">
+              <option value="All">Все департаменты</option>
+              {% for d in filter_options.departments %}
+              <option value="{{ d }}" {% if selected_dept == d %}selected{% endif %}>{{ d }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="col-12 col-md-4">
+            <label class="form-label" for="f-pass">Паспорт продукта</label>
+            <select id="f-pass" name="passport" class="form-select">
+              <option value="All">Все паспорта</option>
+              {% for p in filter_options.passports %}
+              <option value="{{ p }}" {% if selected_passport == p %}selected{% endif %}>{{ p }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Структура отчёта -->
+    <div class="row g-3 mb-3">
+      <div class="col-12 col-lg-5">
+        <div class="card h-100">
+          <div class="card-header">Строки · группировать по <span class="note">порядок — как в списке</span></div>
+          <div class="card-body">
+            <div class="chips">
+              {% for col in grouping_options %}
+              <label class="chip" title="{{ col.code }}">
+                <input type="checkbox" name="groupings" value="{{ col.code }}" {% if col.code in selected_groupings %}checked{% endif %}>
+                <span>{{ col.label }}<small>{{ col.code }}</small></span>
+              </label>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-7">
+        <div class="card h-100">
+          <div class="card-header">Колонки · показывать суммы <span class="note">ничего не выбрано = все</span></div>
+          <div class="card-body">
+            <div class="chips chips--metric">
+              {% for m in metric_options %}
+              <label class="chip" title="{{ m.code }}">
+                <input type="checkbox" name="metrics" value="{{ m.code }}" {% if m.code in selected_metrics %}checked{% endif %}>
+                <span>{{ m.label }}<small>{{ m.code }}</small></span>
+              </label>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Кнопки: первая — «Сформировать», поэтому Enter строит отчёт, а не скачивает Excel -->
+    <div class="actions d-flex justify-content-end align-items-center gap-2 flex-wrap mb-4">
+      <a href="{% url 'dynamic-report' %}" class="btn-reset me-auto me-md-2">Сбросить фильтры</a>
+      <button type="submit" class="btn-go">Сформировать отчёт</button>
+      <button type="submit" name="download" value="excel" class="btn-xl">⬇ Скачать Excel</button>
+    </div>
+  </form>
+
+  <!-- Результат -->
+  <div class="card">
+    <div class="card-header">
+      Результаты отчёта
+      {% if total_rows %}<span class="note">{{ total_rows|intcomma }} строк{% if rows_cut %} · на экране первые {{ max_rows|intcomma }}{% endif %}</span>{% endif %}
+    </div>
+    {% if rows %}
+      {% if rows_cut %}
+      <div class="cut">Строк больше {{ max_rows|intcomma }} — на экране показаны первые {{ max_rows|intcomma }}, итог внизу считается по всем. Полный отчёт — кнопка «Скачать Excel».</div>
+      {% endif %}
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              {% for h in headers %}
+              <th class="{% if h.is_num %}num{% else %}grp{% endif %}">{{ h.label }}<small>{{ h.code }}</small></th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in rows %}
+            <tr>
+              {% for c in row %}
+                {% if c.is_num %}
+                <td class="num{% if c.neg %} neg{% endif %}">{% if c.v is None %}<span class="dash">—</span>{% else %}{{ c.v|floatformat:2|intcomma }}{% endif %}</td>
+                {% else %}
+                <td class="grp">{% if c.v is None %}<span class="dash">—</span>{% else %}{{ c.v }}{% endif %}</td>
+                {% endif %}
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="{{ group_count }}" class="lbl">Итого</td>
+              {% for t in totals %}
+              <td class="num{% if t.neg %} neg{% endif %}">{{ t.v|floatformat:2|intcomma }}</td>
+              {% endfor %}
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    {% else %}
+      <div class="empty">
+        <div class="big">Данных нет</div>
+        По выбранным датам и фильтрам ничего не найдено — попробуйте расширить период или выбрать «Все».
+      </div>
+    {% endif %}
+  </div>
+
+</div>
+{% endblock content %}

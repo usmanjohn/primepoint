@@ -27,6 +27,8 @@ FILES = [
     ('templates/dynamic_report/page.html', 'html', 'The report page: form, presets, live status, history table. Russian UI, scoped under .drp.'),
     ('management/commands/build_report.py', 'python', 'Builds one report: started by the page with --run-id, or by hand from the command line.'),
     ('jobs.py', 'python', 'Last so the earlier lesson numbers stay put; install it with views.py. Runs each report as its own process (manage.py build_report --run-id N), one at a time server-wide (file lock), and marks a row failed when its process died (out of memory, restart).'),
+    ('flexible_views.py', 'python', 'The flexible report builder (Конструктор финансовых отчётов): filter, group, sum, Excel. Russian column names in COLUMN_LABELS; parquet cached until the file changes; Итого row; page capped at 2,000 rows (Excel has all). Replaces your dynamic_report view — keep your own URL name dynamic-report.'),
+    ('templates/dynamic_report/flexible_report.html', 'html', 'The page for flexible_views.py: Kapitalbank colours, chip pickers showing the Russian name with the code under it, sticky header and Итого row, no JavaScript (Excel is a second submit button).'),
 ]
 EMPTY = ['__init__.py', 'management/__init__.py', 'management/commands/__init__.py', 'migrations/__init__.py']
 
