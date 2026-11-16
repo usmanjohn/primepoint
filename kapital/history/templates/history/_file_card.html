@@ -1,0 +1,29 @@
+{# One column of files. Used 4 times by home.html. #}
+<div class="col-md-6 col-xl-3">
+    <div class="card mb-3 h-100">
+        <div class="card-header bg-{{ color }} text-white d-flex justify-content-between align-items-center">
+            <h6 class="mb-0">{{ title }}</h6>
+            <span class="badge bg-light text-dark">{{ files|length }}</span>
+        </div>
+        <div class="card-body" style="max-height: 500px; overflow-y: auto;">
+            {% for f in files %}
+            <div class="mb-2 p-2 border rounded d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="mb-1 text-break small fw-semibold">{{ f.name }}</p>
+                    <a href="{% url 'download-file' f.name %}" class="btn btn-{{ color }} btn-sm">
+                        <i class="fa-solid fa-file-excel"></i> Скачать
+                    </a>
+                </div>
+                {% if request.user.is_staff %}
+                {# value = folder + file, so only THIS file is deleted #}
+                <input type="checkbox" name="selected_files" value="{{ f.path }}"
+                       class="form-check-input ms-2 border-danger" style="width:1.3em;height:1.3em;"
+                       title="Отметить для удаления">
+                {% endif %}
+            </div>
+            {% empty %}
+            <p class="text-muted">Нет доступных файлов.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid mt-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
+        <h1 class="page-header mb-0">Все файлы в datasets</h1>
+        <a href="{% url 'history' %}" class="btn btn-outline-secondary">
+            <i class="fa-solid fa-arrow-left"></i> Назад к отчётам
+        </a>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="alert alert-warning">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        Только для администратора. Всего файлов: <strong>{{ total_files }}</strong>,
+        общий размер: <strong>{{ total_size_mb }} МБ</strong>.
+        Отметьте файлы галочками и нажмите <strong>«Удалить выбранные»</strong>. Удаление необратимо.
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {# sticky button so it is always visible while scrolling #}
+        <div class="sticky-top bg-white py-2 mb-3 border-bottom">
+            <button type="submit" class="btn btn-danger"
+                    onclick="return confirm('Удалить отмеченные файлы? Это необратимо.');">
+                <i class="fa-solid fa-trash"></i> Удалить выбранные
+            </button>
+        </div>
+
+        {% for folder, files in folders.items %}
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h6 class="mb-0"><i class="fa-solid fa-folder text-warning"></i> datasets/{{ folder }}</h6>
+                <span class="badge bg-secondary">{{ files|length }} файл(ов)</span>
+            </div>
+            <div class="table-responsive" style="max-height: 420px; overflow-y: auto;">
+                <table class="table table-sm table-hover align-middle mb-0">
+                    <thead class="table-light" style="position: sticky; top: 0;">
+                        <tr>
+                            <th style="width: 40px;"></th>
+                            <th>Файл</th>
+                            <th class="text-end">Размер, МБ</th>
+                            <th class="text-end">Изменён</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for f in files %}
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="selected_files" value="{{ f.path }}"
+                                       id="f{{ forloop.parentloop.counter }}_{{ forloop.counter }}"
+                                       class="form-check-input border-danger">
+                            </td>
+                            <td>
+                                <label for="f{{ forloop.parentloop.counter }}_{{ forloop.counter }}" class="text-break mb-0">
+                                    {{ f.name }}
+                                </label>
+                            </td>
+                            <td class="text-end">{{ f.size_mb }}</td>
+                            <td class="text-end text-nowrap">{{ f.modified|date:"d.m.Y H:i" }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-muted">Папка datasets пуста.</p>
+        {% endfor %}
+    </form>
+</div>
+{% endblock content %}

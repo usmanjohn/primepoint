@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid mt-4">
+    <h1 class="page-header">Отчёты и данные</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="alert alert-info mb-4">
+        <h5>Описание страницы</h5>
+        <p class="mb-0">
+            На этой странице вы можете скачать отчёты и данные по кредитным портфелям.<br>
+            <strong>Портфель → Исходные данные</strong> — необработанные данные, загруженные из базы данных.<br>
+            <strong>Портфель → Готовые данные</strong> — обработанные данные.<br>
+            <strong>Портфель → Готовые свод</strong> — сводные данные по кредитным портфелям для анализа.<br>
+            <strong>Баланс против Портфель</strong> — сравнительная таблица балансов и портфеля.<br>
+            <strong>Свод Преса</strong> — все сводные данные, начиная с 2023 года.
+        </p>
+    </div>
+
+    <form action="{% url 'cleanup-portfels' %}" method="POST">
+        {% csrf_token %}
+
+        {% if request.user.is_staff %}
+        <div class="card border-danger mb-4">
+            <div class="card-header bg-danger text-white">
+                <h5 class="mb-0"><i class="fa-solid fa-triangle-exclamation"></i> Панель администратора: очистка диска</h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted mb-3">
+                    <strong>«Удалить выбранные»</strong> удаляет <u>только</u> отмеченные галочками файлы.<br>
+                    <strong>«Авто-очистка»</strong> удаляет файлы старше 7 дней, кроме отчётных дат (конец месяца).
+                </p>
+                <div class="d-flex flex-wrap gap-2">
+                    <button type="submit" name="action" value="selected" class="btn btn-danger"
+                            onclick="return confirm('Удалить только отмеченные файлы?');">
+                        <i class="fa-solid fa-trash"></i> Удалить выбранные
+                    </button>
+                    <button type="submit" name="action" value="auto" class="btn btn-outline-danger"
+                            onclick="return confirm('Удалить все файлы старше 7 дней (кроме отчётных дат)? Это необратимо.');">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Авто-очистка устаревших
+                    </button>
+                    <a href="{% url 'datasets-files' %}" class="btn btn-outline-dark ms-auto">
+                        <i class="fa-solid fa-folder-open"></i> Все файлы в datasets
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="row g-3">
+            {% include 'history/_file_card.html' with title='Портфель → Исходные данные' files=portfels_raw color='warning' %}
+            {% include 'history/_file_card.html' with title='Портфель → Готовые данные' files=portfels_all color='success' %}
+            {% include 'history/_file_card.html' with title='Портфель → Готовые свод' files=portfels_svod color='info' %}
+            {% include 'history/_file_card.html' with title='Баланс против Портфель' files=balans_svod color='danger' %}
+        </div>
+    </form>
+
+    <div class="row mt-4 mb-5">
+        <div class="col-12 text-center">
+            <a href="{% url 'export-model-to-excel' %}" class="btn btn-success btn-lg">
+                <i class="fa-solid fa-file-excel"></i> Скачать Свод Преса (Excel)
+            </a>
+            <p class="text-muted mt-2">Все сводные данные, начиная с 2023 года.</p>
+        </div>
+    </div>
+</div>
+{% endblock content %}
