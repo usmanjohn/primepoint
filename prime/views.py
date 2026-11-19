@@ -270,7 +270,44 @@ def cv_pdf_path():
 
 def about_me(request):
     """The founder's personal page — story, links, experience, résumé download."""
-    return render(request, 'prime/about_me.html', _resume_context(request))
+    ctx = _resume_context(request)
+    ctx['demo'] = DEMO_COPY[ctx['lang']] if (DEMO_DIR / 'index.html').exists() else None
+    return render(request, 'prime/about_me.html', ctx)
+
+
+# The risk dashboard I built at the bank, frozen on SYNTHETIC data
+# (kapital/demo/freeze.py writes prime/demo_dashboard/ + static/demo_dashboard/).
+# Its words live here, not in prime/resume.py, so the résumé PDF stays current.
+DEMO_DIR = settings.BASE_DIR / 'prime' / 'demo_dashboard'
+DEMO_COPY = {
+    'en': {
+        'cta': 'Live demo: risk dashboard',
+        'close': 'Write to me. You can also open the risk dashboard I built — '
+                 'the real pages, running on synthetic data.',
+    },
+    'uz': {
+        'cta': 'Jonli demo: risk dashbordi',
+        'close': 'Menga yozing. Men qurgan risk dashbordini ham ochib koʻrishingiz mumkin — '
+                 'haqiqiy sahifalar, sintetik maʼlumotlarda.',
+    },
+}
+
+
+def demo_dashboard(request, path='index.html'):
+    """Serve one file of the frozen dashboard demo — nothing outside DEMO_DIR."""
+    import mimetypes
+    root = DEMO_DIR.resolve()
+    target = (root / path).resolve()
+    if not target.is_relative_to(root) or not target.is_file():
+        raise Http404('No such demo page.')
+    ctype = mimetypes.guess_type(target.name)[0] or 'application/octet-stream'
+    if ctype == 'text/html':
+        ctype = 'text/html; charset=utf-8'
+    response = FileResponse(target.open('rb'), content_type=ctype,
+                            as_attachment=target.suffix == '.xlsx', filename=target.name)
+    response['Cache-Control'] = 'public, max-age=3600'
+    response['X-Robots-Tag'] = 'noindex'   # synthetic numbers: not for search results
+    return response
 
 
 def resume_print(request):

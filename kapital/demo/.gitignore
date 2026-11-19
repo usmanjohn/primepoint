@@ -1,0 +1,4 @@
+datasets/
+staticfiles/
+__pycache__/
+static/js/plotly.min.js

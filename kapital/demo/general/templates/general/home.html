@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+{% load currency_filters %} 
+
+
+{% block content %}
+<div class="container py-5">
+    <!-- Header Section -->
+    <div class="text-center mb-5"> 
+        <h1 class="page-header">Финансовая Панель</h1> 
+        <div class="mb-4">
+            <span class="badge bg-danger bg-opacity-10 text-danger border border-danger-subtle rounded-pill px-4 py-2 fw-semibold fs-5 shadow-sm">
+                🛡️ Департамент По Управлению Рисками
+            </span>
+        </div>
+        <p class="lead text-muted">Добро пожаловать в систему управления банковскими активами и аналитикой.</p> 
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-5">
+        
+        <!-- 1. Портфель -->
+        <div class="col">
+            <a href="{% url 'portfel-result' dept_type='total' %}" class="text-decoration-none text-dark h-100 d-block">
+                <div class="card h-100 border-0 shadow-sm custom-card text-center p-3">
+                    <div class="card-icon-wrapper bg-primary-subtle text-primary mx-auto mb-3">
+                        <i class="fas fa-briefcase fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-2">Портфель</h5>
+                    <p class="card-text text-muted small">Управление инвестиционными портфелями и структурой активов.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 2. Баланс -->
+        <div class="col">
+            <a href="{% url 'balans-result' %}" class="text-decoration-none text-dark h-100 d-block">
+                <div class="card h-100 border-0 shadow-sm custom-card text-center p-3">
+                    <div class="card-icon-wrapper bg-success-subtle text-success mx-auto mb-3">
+                        <i class="fas fa-scale-balanced fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-2">Баланс</h5>
+                    <p class="card-text text-muted small">Мониторинг текущих остатков, счетов и движения денежных средств.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 3. Риски -->
+        <div class="col">
+            <a href="{% url 'risk-result' %}" class="text-decoration-none text-dark h-100 d-block">
+                <div class="card h-100 border-0 shadow-sm custom-card text-center p-3">
+                    <div class="card-icon-wrapper bg-danger-subtle text-danger mx-auto mb-3">
+                        <i class="fas fa-shield-halved fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-2">Риски</h5>
+                    <p class="card-text text-muted small">Оценка банковских рисков, лимитов и стресс-тестирование.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 4. Динамика -->
+        <div class="col">
+            <a href="{% url 'dynamic-report' %}" class="text-decoration-none text-dark h-100 d-block">
+                <div class="card h-100 border-0 shadow-sm custom-card text-center p-3">
+                    <div class="card-icon-wrapper bg-info-subtle text-info mx-auto mb-3">
+                        <i class="fas fa-chart-line fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-2">Динамика</h5>
+                    <p class="card-text text-muted small">Отслеживание трендов, изменений показателей во времени.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 5. Аналитика -->
+        <div class="col">
+            <a href="#" class="text-decoration-none text-dark h-100 d-block">
+                <div class="card h-100 border-0 shadow-sm custom-card text-center p-3">
+                    <div class="card-icon-wrapper bg-warning-subtle text-warning mx-auto mb-3">
+                        <i class="fas fa-chart-pie fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-2">Аналитика</h5>
+                    <p class="card-text text-muted small">Глубокий анализ данных, отчеты и бизнес-статистика.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 6. Быстрый поиск -->
+        <div class="col">
+            <a href="{% url 'fast-search' %}" class="text-decoration-none text-dark h-100 d-block">
+                <div class="card h-100 border-0 shadow-sm custom-card text-center p-3">
+                    <div class="card-icon-wrapper bg-danger-subtle text-danger mx-auto mb-3">
+                        <i class="fas fa-jet-fighter-up fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-2">Быстрый поиск</h5>
+                    <p class="card-text text-muted small">Мгновенный поиск по клиентам, транзакциям и документам.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 7. Услуги -->
+        <div class="col">
+            <a href="{% url 'service-home' %}" class="text-decoration-none text-dark h-100 d-block">
+                <div class="card h-100 border-0 shadow-sm custom-card text-center p-3">
+                    <div class="card-icon-wrapper bg-warning-subtle text-warning mx-auto mb-3">
+                        <i class="fas fa-gears fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-2">Услуги</h5>
+                    <p class="card-text text-muted small">Конфигурация банковских продуктов и сервисных планов.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 8. Запросы -->
+        <div class="col">
+            <a href="{% url 'search-home' %}" class="text-decoration-none text-dark h-100 d-block">
+                <div class="card h-100 border-0 shadow-sm custom-card text-center p-3">
+                    <div class="card-icon-wrapper bg-info-subtle text-info mx-auto mb-3">
+                        <i class="fas fa-database fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-2">Запросы</h5>
+                    <p class="card-text text-muted small">Обработка входящих заявок, обращений и запросов данных.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 9. Право -->
+        <div class="col">
+            <a href="{% url 'laws-home' %}" class="text-decoration-none text-dark h-100 d-block">
+                <div class="card h-100 border-0 shadow-sm custom-card text-center p-3">
+                    <div class="card-icon-wrapper bg-primary-subtle text-primary mx-auto mb-3">
+                        <i class="fas fa-gavel fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-2">Право</h5>
+                    <p class="card-text text-muted small">Юридическое сопровождение, комплаенс и нормативные акты.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 10. Организация -->
+        <div class="col">
+            <a href="{% url 'topics-list' %}" class="text-decoration-none text-dark h-100 d-block">
+                <div class="card h-100 border-0 shadow-sm custom-card text-center p-3">
+                    <div class="card-icon-wrapper bg-success-subtle text-success mx-auto mb-3">
+                        <i class="fas fa-brands fa-weixin fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-2">Обсуждение</h5>
+                    <p class="card-text text-muted small">Управление структурой компании, филиалами и пользователями.</p>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Embedded Pure CSS for high-quality interactions (Zero JS) -->
+<style>
+    .custom-card {
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        border-radius: 16px !important;
+        overflow: hidden;
+    }
+    
+    /* Hover effect to make it premium and tactile */
+    .custom-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.12) !important;
+    }
+
+    .card-icon-wrapper {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        transition: transform 0.3s ease;
+    }
+
+    .custom-card:hover .card-icon-wrapper {
+        transform: scale(1.1);
+    }
+    
+    /* Row columns modifier layout fallback for perfect fitting grids */
+    @media (min-width: 1200px) {
+        .row-cols-xl-5 > * {
+            flex: 0 0 20%;
+            max-width: 20%;
+        }
+    }
+</style>
+{% endblock %}

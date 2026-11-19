@@ -1,0 +1,465 @@
+
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Risk Dashboard — Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="/static/demo_dashboard/css/styles.css" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v6.3.0/css/all.css" rel="stylesheet" />
+    <script src="/static/demo_dashboard/js/plotly.min.js"></script>
+    
+    
+    
+    
+    <link rel="icon" href="data:;base64,=">
+    <style>
+        body {
+            font-family: var(--font-sans);
+            background: linear-gradient(135deg, #e0f2fe 0%, #f1f5f9 100%);
+            color: var(--dark);
+            line-height: 1.7;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .currency-ticker-container {
+        overflow: hidden; /* Hides content outside the container */
+        white-space: nowrap; /* Keeps content on a single line */
+        width: 100%;
+        max-width: 500px; /* Adjust max-width as needed for navbar space */
+    }
+
+    .currency-ticker-wrap {
+        display: inline-block;
+        padding-left: 100%; /* Starts the animation off-screen to the right */
+        box-sizing: content-box;
+        animation: marquee 25s linear infinite; /* Adjust duration to control speed */
+    }
+
+    .currency-ticker-wrap:hover {
+        animation-play-state: paused; /* Pauses the animation on hover */
+    }
+
+    .ticker-item {
+        display: inline-block;
+        padding-right: 1rem; /* Space between items */
+    }
+
+    @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-100%); } /* Scrolls the entire content width to the left */
+    }
+
+    </style>
+    
+    
+</head>
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" id="alfa">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="index.html">
+            <span class="fw-bold text-warning"><i class="fa-solid fa-shield-halved"></i> Risk Dashboard</span>
+            <span class="badge bg-warning text-dark ms-1">DEMO</span>
+        </a>
+        
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        
+        <!-- Currency Exchange Ticker (New Section) -->
+        <div class="currency-ticker-container d-none d-md-block ms-auto me-0 me-md-3 my-2 my-md-0">
+            
+        </div>
+        
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw text-warning"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#!">Настройки</a></li>
+                    
+                    <!-- Admin Panel Button -->
+                    
+                
+                    
+                        <li><a class="dropdown-item" href="internal.html">Мой профиль</a></li>
+                    
+                    
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                        
+                            <a class="dropdown-item" href="internal.html">Выйти</a>
+                        
+                    </li>
+                </ul>
+            </li>
+        </ul>
+</nav>
+    
+    
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Скачать сводную таблицу в формате excel.">Основное</div>
+                        <a class="nav-link" href="index.html" 
+                        data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Перейти на главную страницу">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-house-chimney text-warning"></i></div>
+                            Главный 📌
+                        </a>
+                        
+                        <div class="sb-sidenav-menu-heading">Отчеты</div>
+                        <a class="nav-link" href="2026-11-01/total.html" 
+                        data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Перейти на главную страницу">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-briefcase text-warning"></i></div>
+                            Портфел 
+                        </a>
+                        
+                        <a class="nav-link" href="internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Вот сравнение суммы кредита по балансовым отчетам и отчетам по кредитному портфелю.">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-scale-balanced text-warning"></i></div>
+                            Баланс
+                        </a>
+                        
+                        <a class="nav-link" href="internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Перейдите на страницу ежемесячного отчета. Он будет обновляться раз в месяц">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-line text-warning"></i></div>
+                            Динамика
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Анализ</div>
+                        <a class="nav-link" href="internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="На этой странице в доступной форме объясняются и разъясняются правила и законы.">
+                            <div class="sb-nav-link-icon"><i class="fas fa-id-card text-warning"></i></div>
+                            Резюме
+                        </a>
+                        <a class="nav-link" href="internal.html" data-bs-toggle="tooltip"
+                        data-bs-placement="top" 
+                        title="Ежедневный мониторинг главных индикаторов риска по пяти направлениям.">
+                            <div class="sb-nav-link-icon"><i class="fas fa-shield-halved text-warning"></i></div>
+                            Риск
+                        </a>
+                        
+                        <a class="nav-link" href="internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="работаю над этим">
+                            <div class="sb-nav-link-icon"><i class="fas fa-car-burst text-warning"></i></div>
+                            Обеспечение
+                        </a> 
+                        <a class="nav-link" href="#" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="работаю над этим">
+                            <div class="sb-nav-link-icon"><i class="fas fa-car-burst text-warning"></i></div>
+                            Vintage
+                        </a> 
+                        
+                        <div class="sb-sidenav-menu-heading">Дополнения</div>
+                        <a class="nav-link" href="internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Эта страница поможет выполнить некоторые функции с данными">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-database text-warning"></i></div>
+                                Изменения Б2 
+                        </a>
+                        <a class="nav-link" href="internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Эта страница поможет выполнить некоторые функции с данными">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-magnifying-glass-dollar text-warning"></i></div>
+                            Поиск и загрузка
+                        </a>
+                        <a class="nav-link" href="internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Эта страница поможет выполнить некоторые функции с данными">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-jet-fighter-up text-warning"></i></div>
+                            Быстрый запрос
+                        </a>
+                        
+                        <a class="nav-link" href="internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Эта страница поможет выполнить некоторые функции с данными">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-handshake-angle text-warning"></i></div>
+                            Доп.Услуги
+                        </a>
+                        
+                        <a class="nav-link" href="internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="На этой странице в доступной форме объясняются и разъясняются правила и законы.">
+                            <div class="sb-nav-link-icon"><i class="fas fa-balance-scale text-warning"></i></div>
+                            Законы
+                        </a>
+                        
+                        <div class="sb-sidenav-menu-heading">Работающий</div>
+                        <a class="nav-link" href="internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="На этой странице в доступной форме объясняются и разъясняются правила и законы.">
+                            <div class="sb-nav-link-icon"><i class="fas fa-bitcoin-sign text-warning"></i></div>
+                            Рыночный Риск
+                        </a>
+                        
+                        
+                        <div class="sb-sidenav-menu-heading">Организация</div>
+                        <a class="nav-link" href="internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Обсудите различные темы с коллегами..">
+                            <div class="sb-nav-link-icon"><i class="fas fa-brands fa-weixin text-warning"></i></div>
+                            Обсуждение
+                        </a>
+                        <a class="nav-link" href="internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Найдите время для развлечений.">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-trophy text-warning"></i></div>
+                            Игры
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+                
+                <div class="sb-sidenav-footer">
+                    <div class="small">Вошел как:</div>
+                    <a class="btn btn-warning btn-sm" href="internal.html" data-bs-toggle="tooltip" 
+                    data-bs-placement="top" 
+                    title="Нажмите, если хотите перейти на страницу своего профиля.">
+                        guest
+                    </a>
+                </div>
+                
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <!-- Improved message rendering -->
+                
+                <div class="container-fluid px-4">
+                    
+                    
+                    
+                    
+                        <div class="alert alert-secondary alert-dismissible fade show mt-3" role="alert">
+                            Data is already processec, you can see results!
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    
+                    
+                    
+                </div>
+                
+            
+                <div class="alert alert-warning text-center rounded-0 mb-0 py-2 small">
+                    <i class="fa-solid fa-flask"></i>
+                    <strong>Демо на синтетических данных</strong> — все цифры выдуманы, это не данные какого-либо банка.
+                    · <em>Demo on synthetic data — every number is invented.</em> · <a href="/about/me/" class="alert-link">← Usmanjon Abduraimov</a>
+                </div>
+                
+<div class="container py-5">
+    <!-- Header Section -->
+    <div class="text-center mb-5"> 
+        <h1 class="page-header">Финансовая Панель</h1> 
+        <div class="mb-4">
+            <span class="badge bg-danger bg-opacity-10 text-danger border border-danger-subtle rounded-pill px-4 py-2 fw-semibold fs-5 shadow-sm">
+                🛡️ Департамент По Управлению Рисками
+            </span>
+        </div>
+        <p class="lead text-muted">Добро пожаловать в систему управления банковскими активами и аналитикой.</p> 
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-5">
+        
+        <!-- 1. Портфель -->
+        <div class="col">
+            <a href="2026-11-01/total.html" class="text-decoration-none text-dark h-100 d-block">
+                <div class="card h-100 border-0 shadow-sm custom-card text-center p-3">
+                    <div class="card-icon-wrapper bg-primary-subtle text-primary mx-auto mb-3">
+                        <i class="fas fa-briefcase fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-2">Портфель</h5>
+                    <p class="card-text text-muted small">Управление инвестиционными портфелями и структурой активов.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 2. Баланс -->
+        <div class="col">
+            <a href="internal.html" class="text-decoration-none text-dark h-100 d-block">
+                <div class="card h-100 border-0 shadow-sm custom-card text-center p-3">
+                    <div class="card-icon-wrapper bg-success-subtle text-success mx-auto mb-3">
+                        <i class="fas fa-scale-balanced fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-2">Баланс</h5>
+                    <p class="card-text text-muted small">Мониторинг текущих остатков, счетов и движения денежных средств.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 3. Риски -->
+        <div class="col">
+            <a href="internal.html" class="text-decoration-none text-dark h-100 d-block">
+                <div class="card h-100 border-0 shadow-sm custom-card text-center p-3">
+                    <div class="card-icon-wrapper bg-danger-subtle text-danger mx-auto mb-3">
+                        <i class="fas fa-shield-halved fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-2">Риски</h5>
+                    <p class="card-text text-muted small">Оценка банковских рисков, лимитов и стресс-тестирование.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 4. Динамика -->
+        <div class="col">
+            <a href="internal.html" class="text-decoration-none text-dark h-100 d-block">
+                <div class="card h-100 border-0 shadow-sm custom-card text-center p-3">
+                    <div class="card-icon-wrapper bg-info-subtle text-info mx-auto mb-3">
+                        <i class="fas fa-chart-line fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-2">Динамика</h5>
+                    <p class="card-text text-muted small">Отслеживание трендов, изменений показателей во времени.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 5. Аналитика -->
+        <div class="col">
+            <a href="#" class="text-decoration-none text-dark h-100 d-block">
+                <div class="card h-100 border-0 shadow-sm custom-card text-center p-3">
+                    <div class="card-icon-wrapper bg-warning-subtle text-warning mx-auto mb-3">
+                        <i class="fas fa-chart-pie fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-2">Аналитика</h5>
+                    <p class="card-text text-muted small">Глубокий анализ данных, отчеты и бизнес-статистика.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 6. Быстрый поиск -->
+        <div class="col">
+            <a href="internal.html" class="text-decoration-none text-dark h-100 d-block">
+                <div class="card h-100 border-0 shadow-sm custom-card text-center p-3">
+                    <div class="card-icon-wrapper bg-danger-subtle text-danger mx-auto mb-3">
+                        <i class="fas fa-jet-fighter-up fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-2">Быстрый поиск</h5>
+                    <p class="card-text text-muted small">Мгновенный поиск по клиентам, транзакциям и документам.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 7. Услуги -->
+        <div class="col">
+            <a href="internal.html" class="text-decoration-none text-dark h-100 d-block">
+                <div class="card h-100 border-0 shadow-sm custom-card text-center p-3">
+                    <div class="card-icon-wrapper bg-warning-subtle text-warning mx-auto mb-3">
+                        <i class="fas fa-gears fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-2">Услуги</h5>
+                    <p class="card-text text-muted small">Конфигурация банковских продуктов и сервисных планов.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 8. Запросы -->
+        <div class="col">
+            <a href="internal.html" class="text-decoration-none text-dark h-100 d-block">
+                <div class="card h-100 border-0 shadow-sm custom-card text-center p-3">
+                    <div class="card-icon-wrapper bg-info-subtle text-info mx-auto mb-3">
+                        <i class="fas fa-database fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-2">Запросы</h5>
+                    <p class="card-text text-muted small">Обработка входящих заявок, обращений и запросов данных.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 9. Право -->
+        <div class="col">
+            <a href="internal.html" class="text-decoration-none text-dark h-100 d-block">
+                <div class="card h-100 border-0 shadow-sm custom-card text-center p-3">
+                    <div class="card-icon-wrapper bg-primary-subtle text-primary mx-auto mb-3">
+                        <i class="fas fa-gavel fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-2">Право</h5>
+                    <p class="card-text text-muted small">Юридическое сопровождение, комплаенс и нормативные акты.</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- 10. Организация -->
+        <div class="col">
+            <a href="internal.html" class="text-decoration-none text-dark h-100 d-block">
+                <div class="card h-100 border-0 shadow-sm custom-card text-center p-3">
+                    <div class="card-icon-wrapper bg-success-subtle text-success mx-auto mb-3">
+                        <i class="fas fa-brands fa-weixin fa-2x"></i>
+                    </div>
+                    <h5 class="card-title fw-bold mb-2">Обсуждение</h5>
+                    <p class="card-text text-muted small">Управление структурой компании, филиалами и пользователями.</p>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<!-- Embedded Pure CSS for high-quality interactions (Zero JS) -->
+<style>
+    .custom-card {
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        border-radius: 16px !important;
+        overflow: hidden;
+    }
+    
+    /* Hover effect to make it premium and tactile */
+    .custom-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.12) !important;
+    }
+
+    .card-icon-wrapper {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        transition: transform 0.3s ease;
+    }
+
+    .custom-card:hover .card-icon-wrapper {
+        transform: scale(1.1);
+    }
+    
+    /* Row columns modifier layout fallback for perfect fitting grids */
+    @media (min-width: 1200px) {
+        .row-cols-xl-5 > * {
+            flex: 0 0 20%;
+            max-width: 20%;
+        }
+    }
+</style>
+
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    <script src="/static/demo_dashboard/js/scripts.js" defer></script>
+    
+    
+
+    
+</body>
+</html>

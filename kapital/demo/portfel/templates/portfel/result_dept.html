@@ -1,0 +1,188 @@
+{% extends 'portfel/result_base.html' %}
+{% load humanize %}
+{% load currency_filters %} 
+{% block dynamic_content %}
+
+<div class="row g-4 mb-4">           
+    <div class="col-xl-2 col-md-6">
+        
+        <div class="card stat-card h-90 shadow-sm">
+            <div class="card-body-1 gradient-{{ dept_type|default:'total' }} position-relative">
+                <div class="stat-label fw-bold text-uppercase">КП ⇛В Ташкент</div>
+                <div class="stat-value mt-2 fw-bold"> 
+                    {{ city_portfel|format_currency }}
+                    <span class="value-percentage fw-bold" style="font-size: 0.6em; color: #f8d7a1; margin-left: 5px;"
+              data-bs-toggle="tooltip" 
+              data-bs-placement="top" 
+              title="Чорсу, ЦОО, ОПЕРУ, ТГФ, МУФ, Сергели, Яшнабад, Юнусабад">
+            Ф!
+        </span>
+                </div>
+                <div class="overdue-info-1 mt-3 d-flex align-items-center flex-wrap" style="max-width: 97%;">
+                    <i class="fas fa-exclamation-triangle text-danger me-2"></i>
+                    <span class="fw-medium">NPL: </span>
+                    <span class="fw-bold text-danger ms-1" style="font-size: 1.3em;" >
+                        
+                        {{city_npl|format_currency}}➜{{ city_npl_percent|floatformat:1 }}%
+                    </span>
+                </div>
+                <div class="card-icon position-absolute end-0 top-0 p-3 opacity-90">
+                    <i class="fas fa-solid fa-city fa text-warning"></i>
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+    
+    <div class="col-xl-2 col-md-6">
+        
+        <div class="card stat-card h-90 shadow-sm">
+            <div class="card-body-1 gradient-{{ dept_type|default:'total' }} position-relative">
+                <div class="stat-label fw-bold text-uppercase">КП ⇛Вне Ташкент</div>
+                <div class="stat-value mt-2 fw-bold">
+                    {{ village_portfel|format_currency }}
+                    <span class="value-percentage fw-bold" style="font-size: 0.6em; color: #f8d7a1; margin-left: 5px;"
+              data-bs-toggle="tooltip" 
+              data-bs-placement="top" 
+              title="Наманган, Фергана, Бухара, Самарканд, Коканд, Термез, Нукус, Андижан, Ургенч, Карши">
+             Ф!
+        </span>
+                </div>
+                <div class="overdue-info-1 mt-3 d-flex align-items-center flex-wrap" style="max-width: 97%;">
+                    <i class="fas fa-exclamation-triangle text-danger me-2"></i>
+                    <span class="fw-medium">NPL: </span>
+                    <span class="fw-bold text-danger ms-1" style="font-size: 1.3em;">
+                        {{village_npl|format_currency}}➜{{ village_npl_percent|floatformat:1 }}%
+                    </span>
+                </div>
+                <div class="card-icon position-absolute end-0 top-0 p-3 opacity-90">
+                    <i class="fas fa-solid fa-vihara fa text-warning"></i>
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+    <div class="col-xl-4 col-md-6">
+        
+        <div class="card stat-card h-100 shadow-sm">
+            <div class="card-body-1 gradient-{{ dept_type|default:'total' }} position-relative">
+                <div class="stat-label-1 fw-bold text-uppercase">Кредитный Портфель (Все)</div>
+                <div class="stat-value mt-2 fw-bold">
+                    Портфель: {{ portfel|format_currency }}
+                </div>
+                <div class="overdue-info mt-3 d-flex align-items-center flex-wrap" style="max-width: 97%;">
+                    <i class="fas fa-exclamation-triangle text-danger me-2"></i>
+                    <span class="fw-medium">NPL: </span>
+                    <span class="fw-bold text-danger ms-1" style="font-size: 1.3em;">
+                        {{npl|format_currency}}➜{{ npl_percent|floatformat:1 }}%
+                    </span>
+                </div>
+                <div class="card-icon position-absolute end-0 top-0 p-3 opacity-90">
+                    <i class="fas fa-landmark fa-2x text-warning"></i>
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+    <div class="col-xl-2 col-md-6">
+        
+        
+        <div class="card stat-card h-90 shadow-sm">
+            <div class="card-body-1 gradient-{{ dept_type|default:'total' }} position-relative">
+                <div class="stat-label fw-bold text-uppercase">КП ⇛ Нац. Валюта</div>
+                <div class="stat-value mt-2 fw-bold">
+                    {{ local_portfel|format_currency }}
+                    <span class="value-percentage fw-bold" style="font-size: 0.6em; color: #f8d7a1; margin-left: 5px;"
+              data-bs-toggle="tooltip" 
+              data-bs-placement="top" 
+              title="Средняя процентная ставка по кредитам, выданным в узбекских сумах.">
+            {{ local_avg_percent|floatformat:1 }}%
+        </span>
+                </div>
+                <div class="overdue-info-1 mt-3 d-flex align-items-center flex-wrap" style="max-width: 97%;">
+                    <i class="fas fa-exclamation-triangle text-danger me-2"></i>
+                    <span class="fw-medium">NPL: </span>
+                    <span class="fw-bold text-danger ms-1" style="font-size: 1.3em;">
+                        {{local_npl|format_currency}}➜ {{ local_npl_percent|floatformat:1 }}%
+                    </span>
+                </div>
+                <div class="card-icon position-absolute end-0 top-0 p-3 opacity-90">
+                    
+                    <i class="fas fa-coins fa text-warning"></i>
+                    
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+    <div class="col-xl-2 col-md-6">
+        
+        <div class="card stat-card h-90 shadow-sm">
+            <div class="card-body-1 gradient-{{ dept_type|default:'total' }} position-relative">
+                <div class="stat-label fw-bold text-uppercase">КП ⇛ Иноц. Валюта</div>
+                <div class="stat-value mt-2 fw-bold">
+                    {{ global_portfel|format_currency }}
+                    <span class="value-percentage fw-bold" style="font-size: 0.6em; color: #f8d7a1; margin-left: 5px;"
+              data-bs-toggle="tooltip" 
+              data-bs-placement="top" 
+              title="Средняя процентная ставка по кредитам, выданным в иностранной валюте.">
+            {{ global_avg_percent|floatformat:0 }}%
+        </span>
+                </div>
+                <div class="overdue-info-1 mt-3 d-flex align-items-center flex-wrap" style="max-width: 97%;">
+                    <i class="fas fa-exclamation-triangle text-danger me-2"></i>
+                    <span class="fw-medium">NPL: </span>
+                    <span class="fw-bold text-danger ms-1" style="font-size: 1.3em;">
+                        {{global_npl|format_currency}}➜ {{ global_npl_percent|floatformat:1 }}%
+                    </span>
+                </div>
+                <div class="card-icon position-absolute end-0 top-0 p-3 opacity-90">
+                    <i class="fas fa-dollar-sign fa text-warning"></i>
+                    
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+</div>
+<div class="row g-4 mb-4">
+    <!-- KK Chart -->
+    <div class="col-xl-4">
+        <div class="card chart-card h-100">
+            <div class="card-header">
+                <i class="fas fa-chart-bar me-2 text-primary"></i>
+                {{dept_ru_name}} кредиты по филиалам
+            </div>
+            <div class="chart-container">
+                {{ chart_branch|safe }}
+            </div>
+        </div>
+    </div>
+
+    <!-- RK Chart -->
+    <div class="col-xl-4">
+        <div class="card chart-card h-100">
+            <div class="card-header">
+                <i class="fas fa-chart-bar me-2 text-primary"></i>
+                {{dept_ru_name}} кредиты по пасспортом
+            </div>
+            <div class="chart-container">
+                {{ npl_pie_chart|safe }}
+            </div>
+        </div>
+    </div>
+
+    <!-- MK Chart -->
+    <div class="col-xl-4">
+        <div class="card chart-card h-100">
+            <div class="card-header">
+                <i class="fas fa-chart-bar me-2 text-primary"></i>
+                {{dept_ru_name}} кредиты по категория
+            </div>
+            <div class="chart-container">
+                {{ chart_passport|safe }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock dynamic_content %}

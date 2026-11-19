@@ -42,6 +42,10 @@ The founder's personal page. Words: prime/resume.py (the résumé is English;
           {% endif %}
           <a class="me-btn me-btn--ghost" href="{% url 'resume_print' %}">
             <i class="bi bi-file-earmark-text"></i> {{ p.cta_view }}</a>
+          {% if demo %}
+          <a class="me-btn me-btn--ghost" href="{% url 'demo_dashboard' %}">
+            <i class="bi bi-speedometer2"></i> {{ demo.cta }}</a>
+          {% endif %}
           <a class="me-btn me-btn--ghost" href="mailto:{{ cv.EMAIL }}">
             <i class="bi bi-envelope"></i> {{ p.cta_mail }}</a>
         </div>
@@ -259,11 +263,15 @@ The founder's personal page. Words: prime/resume.py (the résumé is English;
   {# ── Close ────────────────────────────────────────────── #}
   <section class="me-close">
     <h2>{{ p.close_title }}</h2>
-    <p>{{ p.close_text }}</p>
+    <p>{% if demo %}{{ demo.close }}{% else %}{{ p.close_text }}{% endif %}</p>
     <div class="me-cta me-cta--center">
       {% if pdf_ready %}
       <a class="me-btn me-btn--primary" href="{% url 'resume_pdf' %}" download>
         <i class="bi bi-file-earmark-arrow-down-fill"></i> {{ p.cta_pdf }}</a>
+      {% endif %}
+      {% if demo %}
+      <a class="me-btn me-btn--light" href="{% url 'demo_dashboard' %}">
+        <i class="bi bi-speedometer2"></i> {{ demo.cta }}</a>
       {% endif %}
       <a class="me-btn me-btn--light" href="mailto:{{ cv.EMAIL }}">
         <i class="bi bi-envelope"></i> {{ cv.EMAIL }}</a>

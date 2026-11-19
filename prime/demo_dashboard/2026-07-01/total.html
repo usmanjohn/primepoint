@@ -1,0 +1,618 @@
+
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Risk Dashboard — Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="/static/demo_dashboard/css/styles.css" rel="stylesheet" />
+    <link href="https://use.fontawesome.com/releases/v6.3.0/css/all.css" rel="stylesheet" />
+    <script src="/static/demo_dashboard/js/plotly.min.js"></script>
+    
+    
+<script>
+    // Initialize all tooltips on the page
+document.addEventListener('DOMContentLoaded', function () {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+        new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+});
+</script>
+
+    
+    <link rel="icon" href="data:;base64,=">
+    <style>
+        body {
+            font-family: var(--font-sans);
+            background: linear-gradient(135deg, #e0f2fe 0%, #f1f5f9 100%);
+            color: var(--dark);
+            line-height: 1.7;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .currency-ticker-container {
+        overflow: hidden; /* Hides content outside the container */
+        white-space: nowrap; /* Keeps content on a single line */
+        width: 100%;
+        max-width: 500px; /* Adjust max-width as needed for navbar space */
+    }
+
+    .currency-ticker-wrap {
+        display: inline-block;
+        padding-left: 100%; /* Starts the animation off-screen to the right */
+        box-sizing: content-box;
+        animation: marquee 25s linear infinite; /* Adjust duration to control speed */
+    }
+
+    .currency-ticker-wrap:hover {
+        animation-play-state: paused; /* Pauses the animation on hover */
+    }
+
+    .ticker-item {
+        display: inline-block;
+        padding-right: 1rem; /* Space between items */
+    }
+
+    @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-100%); } /* Scrolls the entire content width to the left */
+    }
+
+    </style>
+    
+<link href="/static/demo_dashboard/css/dashboard.css" rel = "stylesheet">
+
+</head>
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" id="alfa">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="../index.html">
+            <span class="fw-bold text-warning"><i class="fa-solid fa-shield-halved"></i> Risk Dashboard</span>
+            <span class="badge bg-warning text-dark ms-1">DEMO</span>
+        </a>
+        
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        
+        <!-- Currency Exchange Ticker (New Section) -->
+        <div class="currency-ticker-container d-none d-md-block ms-auto me-0 me-md-3 my-2 my-md-0">
+            
+        </div>
+        
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw text-warning"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#!">Настройки</a></li>
+                    
+                    <!-- Admin Panel Button -->
+                    
+                
+                    
+                        <li><a class="dropdown-item" href="../internal.html">Мой профиль</a></li>
+                    
+                    
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                        
+                            <a class="dropdown-item" href="../internal.html">Выйти</a>
+                        
+                    </li>
+                </ul>
+            </li>
+        </ul>
+</nav>
+    
+    
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Скачать сводную таблицу в формате excel.">Основное</div>
+                        <a class="nav-link" href="../index.html" 
+                        data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Перейти на главную страницу">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-house-chimney text-warning"></i></div>
+                            Главный 📌
+                        </a>
+                        
+                        <div class="sb-sidenav-menu-heading">Отчеты</div>
+                        <a class="nav-link" href="../2026-07-01/total.html" 
+                        data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Перейти на главную страницу">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-briefcase text-warning"></i></div>
+                            Портфел 
+                        </a>
+                        
+                        <a class="nav-link" href="../internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Вот сравнение суммы кредита по балансовым отчетам и отчетам по кредитному портфелю.">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-scale-balanced text-warning"></i></div>
+                            Баланс
+                        </a>
+                        
+                        <a class="nav-link" href="../internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Перейдите на страницу ежемесячного отчета. Он будет обновляться раз в месяц">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-line text-warning"></i></div>
+                            Динамика
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Анализ</div>
+                        <a class="nav-link" href="../internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="На этой странице в доступной форме объясняются и разъясняются правила и законы.">
+                            <div class="sb-nav-link-icon"><i class="fas fa-id-card text-warning"></i></div>
+                            Резюме
+                        </a>
+                        <a class="nav-link" href="../internal.html" data-bs-toggle="tooltip"
+                        data-bs-placement="top" 
+                        title="Ежедневный мониторинг главных индикаторов риска по пяти направлениям.">
+                            <div class="sb-nav-link-icon"><i class="fas fa-shield-halved text-warning"></i></div>
+                            Риск
+                        </a>
+                        
+                        <a class="nav-link" href="../internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="работаю над этим">
+                            <div class="sb-nav-link-icon"><i class="fas fa-car-burst text-warning"></i></div>
+                            Обеспечение
+                        </a> 
+                        <a class="nav-link" href="#" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="работаю над этим">
+                            <div class="sb-nav-link-icon"><i class="fas fa-car-burst text-warning"></i></div>
+                            Vintage
+                        </a> 
+                        
+                        <div class="sb-sidenav-menu-heading">Дополнения</div>
+                        <a class="nav-link" href="../internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Эта страница поможет выполнить некоторые функции с данными">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-database text-warning"></i></div>
+                                Изменения Б2 
+                        </a>
+                        <a class="nav-link" href="../internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Эта страница поможет выполнить некоторые функции с данными">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-magnifying-glass-dollar text-warning"></i></div>
+                            Поиск и загрузка
+                        </a>
+                        <a class="nav-link" href="../internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Эта страница поможет выполнить некоторые функции с данными">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-jet-fighter-up text-warning"></i></div>
+                            Быстрый запрос
+                        </a>
+                        
+                        <a class="nav-link" href="../internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Эта страница поможет выполнить некоторые функции с данными">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-handshake-angle text-warning"></i></div>
+                            Доп.Услуги
+                        </a>
+                        
+                        <a class="nav-link" href="../internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="На этой странице в доступной форме объясняются и разъясняются правила и законы.">
+                            <div class="sb-nav-link-icon"><i class="fas fa-balance-scale text-warning"></i></div>
+                            Законы
+                        </a>
+                        
+                        <div class="sb-sidenav-menu-heading">Работающий</div>
+                        <a class="nav-link" href="../internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="На этой странице в доступной форме объясняются и разъясняются правила и законы.">
+                            <div class="sb-nav-link-icon"><i class="fas fa-bitcoin-sign text-warning"></i></div>
+                            Рыночный Риск
+                        </a>
+                        
+                        
+                        <div class="sb-sidenav-menu-heading">Организация</div>
+                        <a class="nav-link" href="../internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Обсудите различные темы с коллегами..">
+                            <div class="sb-nav-link-icon"><i class="fas fa-brands fa-weixin text-warning"></i></div>
+                            Обсуждение
+                        </a>
+                        <a class="nav-link" href="../internal.html" data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Найдите время для развлечений.">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-trophy text-warning"></i></div>
+                            Игры
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+                
+                <div class="sb-sidenav-footer">
+                    <div class="small">Вошел как:</div>
+                    <a class="btn btn-warning btn-sm" href="../internal.html" data-bs-toggle="tooltip" 
+                    data-bs-placement="top" 
+                    title="Нажмите, если хотите перейти на страницу своего профиля.">
+                        guest
+                    </a>
+                </div>
+                
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <!-- Improved message rendering -->
+                
+                <div class="container-fluid px-4">
+                    
+                    
+                    
+                    
+                        <div class="alert alert-secondary alert-dismissible fade show mt-3" role="alert">
+                            Data is already processec, you can see results!
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    
+                    
+                    
+                </div>
+                
+            
+                <div class="alert alert-warning text-center rounded-0 mb-0 py-2 small">
+                    <i class="fa-solid fa-flask"></i>
+                    <strong>Демо на синтетических данных</strong> — все цифры выдуманы, это не данные какого-либо банка.
+                    · <em>Demo on synthetic data — every number is invented.</em> · <a href="/about/me/" class="alert-link">← Usmanjon Abduraimov</a>
+                </div>
+                
+
+
+<main class="px-2 py-3"> 
+    <div class="container-fluid">
+        <!-- Header Section -->
+        <div class="row g-4 mb-4">
+            
+                <div class="d-flex flex-row gap-2">
+                    
+                    <a href="../2026-07-01/total.html" class="btn btn-alfa btn-outline-secondary active">
+                        <i class="fas fa-home"></i>
+                    </a>
+                    <a href="../2026-07-01/all.html" class="btn btn-alfa btn-outline-secondary ">Все</a>
+                    <a href="../2026-07-01/kk.html" class="btn btn-alfa btn-outline-secondary ">Корпоративный</a>
+                    <a href="../2026-07-01/rk.html" class="btn btn-alfa  btn-outline-secondary ">Розничный</a>
+                    <a href="../2026-07-01/mk.html" class="btn btn-alfa btn-outline-secondary ">Малый</a>
+                    
+                    <a href="../calendar.html" class="btn btn-info  btn-download ms-3" data-bs-toggle="tooltip" 
+                    data-bs-placement="top" 
+                    title="Select another date.">
+                        <i class="fa-solid fa-calendar-days"></i> Календар
+                    </a>
+                    <a href="../2026-07-01/portfel.xlsx" class="btn btn-warning  btn-download ms-3" data-bs-toggle="tooltip" 
+                    data-bs-placement="top" 
+                    title="Скачать сводную таблицу в формате excel.">
+                        <i class="fa-solid fa-file-arrow-down"></i> Скачать
+                    </a>
+                    <a href="../internal.html" class="btn btn-success  btn-download ms-3" data-bs-toggle="tooltip" 
+                    data-bs-placement="top" 
+                    title="Скачать сводную таблицу в формате excel.">
+                        <i class="fa-solid fa-clock-rotate-left"></i> История
+                    </a>
+                    <a href="../internal.html" class="btn btn-danger  btn-download ms-3" data-bs-toggle="tooltip" 
+                    data-bs-placement="top" 
+                    title="Баланс против Портфел расхождения.">
+                        <i class="fa-solid fa-scale-unbalanced"></i> Расхождения
+                    </a>
+                </div>
+                
+                <h1 class="page-header">Кредитный портфель за 2026-07-01</h1>
+                
+                
+            </div>
+        
+        
+
+        <!-- Total Value Card -->
+        
+
+
+
+
+
+<div class="row g-4 mb-4">           
+    <div class="col-xl-2 col-md-6">
+        
+        <div class="card stat-card h-90 shadow-sm">
+            <div class="card-body-1 gradient-total position-relative">
+                <div class="stat-label fw-bold text-uppercase">КП ⇛В Ташкент</div>
+                <div class="stat-value mt-2 fw-bold"> 
+                    1.5 Трлн.
+                    <span class="value-percentage fw-bold" style="font-size: 0.6em; color: #f8d7a1; margin-left: 5px;"
+              data-bs-toggle="tooltip" 
+              data-bs-placement="top" 
+              title="Центр, Чиланзар, Юнусабад, Мирабад, Сергели, Яшнабад, Алмазар, Учтепа">
+            Ф!
+        </span>
+                </div>
+                <div class="overdue-info-1 mt-3 d-flex align-items-center flex-wrap" style="max-width: 97%;">
+                    <i class="fas fa-exclamation-triangle text-danger me-2"></i>
+                    <span class="fw-medium">NPL: </span>
+                    <span class="fw-bold text-danger ms-1" style="font-size: 1.3em;" >
+                        
+                        76.3 Млрд.➜5,1%
+                    </span>
+                </div>
+                <div class="card-icon position-absolute end-0 top-0 p-3 opacity-90">
+                    <i class="fas fa-solid fa-city fa text-warning"></i>
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+    
+    <div class="col-xl-2 col-md-6">
+        
+        <div class="card stat-card h-90 shadow-sm">
+            <div class="card-body-1 gradient-total position-relative">
+                <div class="stat-label fw-bold text-uppercase">КП ⇛Вне Ташкент</div>
+                <div class="stat-value mt-2 fw-bold">
+                    944.2 Млрд.
+                    <span class="value-percentage fw-bold" style="font-size: 0.6em; color: #f8d7a1; margin-left: 5px;"
+              data-bs-toggle="tooltip" 
+              data-bs-placement="top" 
+              title="Наманган, Фергана, Бухара, Самарканд, Коканд, Термез, Нукус, Андижан, Ургенч, Карши">
+             Ф!
+        </span>
+                </div>
+                <div class="overdue-info-1 mt-3 d-flex align-items-center flex-wrap" style="max-width: 97%;">
+                    <i class="fas fa-exclamation-triangle text-danger me-2"></i>
+                    <span class="fw-medium">NPL: </span>
+                    <span class="fw-bold text-danger ms-1" style="font-size: 1.3em;">
+                        49.9 Млрд.➜5,3%
+                    </span>
+                </div>
+                <div class="card-icon position-absolute end-0 top-0 p-3 opacity-90">
+                    <i class="fas fa-solid fa-vihara fa text-warning"></i>
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+    <div class="col-xl-4 col-md-6">
+        <a href="../2026-07-01/all.html" class="text-decoration-none d-block">
+        <div class="card stat-card h-100 shadow-sm">
+            <div class="card-body-1 gradient-total position-relative">
+                <div class="stat-label-1 fw-bold text-uppercase">Кредитный Портфель (Все)</div>
+                <div class="stat-value mt-2 fw-bold">
+                    Портфель: 2.4 Трлн.
+                </div>
+                <div class="overdue-info mt-3 d-flex align-items-center flex-wrap" style="max-width: 97%;">
+                    <i class="fas fa-exclamation-triangle text-danger me-2"></i>
+                    <span class="fw-medium">NPL: </span>
+                    <span class="fw-bold text-danger ms-1" style="font-size: 1.3em;">
+                        126.1 Млрд.➜5,2%
+                    </span>
+                </div>
+                <div class="card-icon position-absolute end-0 top-0 p-3 opacity-90">
+                    <i class="fas fa-landmark fa-2x text-warning"></i>
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+    <div class="col-xl-2 col-md-6">
+               
+        <div class="card stat-card h-90 shadow-sm">
+            <div class="card-body-1 gradient-total position-relative">
+                <div class="stat-label fw-bold text-uppercase">КП ⇛ Нац. Валюта</div>
+                <div class="stat-value mt-2 fw-bold">
+                    2.0 Трлн.
+                    <span class="value-percentage fw-bold" style="font-size: 0.6em; color: #f8d7a1; margin-left: 5px;"
+              data-bs-toggle="tooltip" 
+              data-bs-placement="top" 
+              title="Средняя процентная ставка по кредитам, выданным в узбекских сумах.">
+            23,0%
+        </span>
+                </div>
+                <div class="overdue-info-1 mt-3 d-flex align-items-center flex-wrap" style="max-width: 97%;">
+                    <i class="fas fa-exclamation-triangle text-danger me-2"></i>
+                    <span class="fw-medium">NPL: </span>
+                    <span class="fw-bold text-danger ms-1" style="font-size: 1.3em;">
+                        103.7 Млрд.➜ 5,2%
+                    </span>
+                </div>
+                <div class="card-icon position-absolute end-0 top-0 p-3 opacity-90">
+                    
+                    <i class="fas fa-coins fa text-warning"></i>
+                    
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+    <div class="col-xl-2 col-md-6">
+        
+        <div class="card stat-card h-90 shadow-sm">
+            <div class="card-body-1 gradient-total position-relative">
+                <div class="stat-label fw-bold text-uppercase">КП ⇛ Иноц. Валюта</div>
+                <div class="stat-value mt-2 fw-bold">
+                    439.9 Млрд.
+                    <span class="value-percentage fw-bold" style="font-size: 0.6em; color: #f8d7a1; margin-left: 5px;"
+              data-bs-toggle="tooltip" 
+              data-bs-placement="top" 
+              title="Средняя процентная ставка по кредитам, выданным в иностранной валюте.">
+            10%
+        </span>
+                </div>
+                <div class="overdue-info-1 mt-3 d-flex align-items-center flex-wrap" style="max-width: 97%;">
+                    <i class="fas fa-exclamation-triangle text-danger me-2"></i>
+                    <span class="fw-medium">NPL: </span>
+                    <span class="fw-bold text-danger ms-1" style="font-size: 1.3em;">
+                        22.4 Млрд.➜ 5,1%
+                    </span>
+                </div>
+                <div class="card-icon position-absolute end-0 top-0 p-3 opacity-90">
+                    <i class="fas fa-dollar-sign fa text-warning"></i>
+                    
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+</div>
+<hr>
+<h3 class="page-header">Кредитный Портфель по Департаментам</h3>
+        <!-- Stats Cards Row -->
+        <div class="row g-4 mb-4">
+            <!-- Corporate Department Card -->
+            <div class="col-xl-4 col-md-6">
+                <a href="../2026-07-01/kk.html" class="text-decoration-none d-block">
+                <div class="card stat-card h-100 shadow-sm">
+                    <div class="card-body gradient-kk position-relative">
+                        <div class="stat-label fw-bold text-uppercase">Корпоративное Кредитование</div>
+                        <div class="stat-value mt-2 fw-bold">
+                            Портфель: 1.1 Трлн.
+                        </div>
+                        <div class="overdue-info mt-3 d-flex align-items-center flex-wrap" style="max-width: 92%;">
+                            <i class="fas fa-exclamation-triangle text-danger me-2"></i>
+                            <span class="fw-medium">NPL: </span>
+                            <span class="fw-bold text-danger ms-1" style="font-size: 1.3em;">
+                                42.8 Млрд.➜4,0%
+                            </span>
+                        </div>
+                        <div class="card-icon position-absolute end-0 top-0 p-3 opacity-90">
+                            <i class="fas fa-briefcase fa-2x text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            </div>
+            <div class="col-xl-4 col-md-6">
+                <a href="../2026-07-01/rk.html" class="text-decoration-none d-block">
+                <div class="card stat-card h-100 shadow-sm">
+                    <div class="card-body gradient-rk position-relative">
+                        <div class="stat-label fw-bold text-uppercase">Розничное Кредитование</div>
+                        <div class="stat-value mt-2 fw-bold">
+                            Портфель: 861.8 Млрд.
+                        </div>
+                        <div class="overdue-info mt-3 d-flex align-items-center flex-wrap" style="max-width: 92%;">
+                            <i class="fas fa-exclamation-triangle text-danger me-2"></i>
+                            <span class="fw-medium">NPL: </span>
+                            <span class="fw-bold text-danger ms-1" style="font-size: 1.3em;">
+                                47.6 Млрд.➜5,5%
+                            </span>
+                        </div>
+                        <div class="card-icon position-absolute end-0 top-0 p-3 opacity-90">
+                            <i class="fas fa-credit-card fa-2x text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            </div>
+            <div class="col-xl-4 col-md-6">
+                <a href="../2026-07-01/mk.html" class="text-decoration-none d-block">
+                <div class="card stat-card h-100 shadow-sm">
+                    <div class="card-body gradient-mk position-relative">
+                        <div class="stat-label fw-bold text-uppercase">Малое Кредитование</div>
+                        <div class="stat-value mt-2 fw-bold">
+                            Портфель: 487.2 Млрд.
+                        </div>
+                        <div class="overdue-info mt-3 d-flex align-items-center flex-wrap" style="max-width: 92%;">
+                            <i class="fas fa-exclamation-triangle text-danger me-2"></i>
+                            <span class="fw-medium">NPL: </span>
+                            <span class="fw-bold text-danger ms-1" style="font-size: 1.3em;">
+                                35.8 Млрд.➜7,3%
+                            </span>
+                        </div>
+                        <div class="card-icon position-absolute end-0 top-0 p-3 opacity-90">
+                            <i class="fas fa-store fa-2x text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-4">
+            <!-- KK Chart -->
+            <div class="col-xl-4">
+                <div class="card chart-card h-100">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar me-2 text-primary"></i>
+                        Корпоративные кредиты по филиалам
+                    </div>
+                    <div class="chart-container">
+                        
+    <div style="max-height: 450px; overflow-y: auto; overflow-x: hidden;">
+        <div style="height:450px; width:100%;">                            <div id="a681bc92-727b-447c-9464-826c47810724" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("a681bc92-727b-447c-9464-826c47810724")) {                    Plotly.newPlot(                        "a681bc92-727b-447c-9464-826c47810724",                        [{"customdata":[["22.4 \u041c\u043b\u0440\u0434.","97.7%","530.0 \u041c\u043b\u043d.","2.3%","22.9 \u041c\u043b\u0440\u0434."],["22.4 \u041c\u043b\u0440\u0434.","96.1%","914.7 \u041c\u043b\u043d.","3.9%","23.4 \u041c\u043b\u0440\u0434."],["26.8 \u041c\u043b\u0440\u0434.","95.4%","1.3 \u041c\u043b\u0440\u0434.","4.6%","28.1 \u041c\u043b\u0440\u0434."],["27.6 \u041c\u043b\u0440\u0434.","96.6%","984.1 \u041c\u043b\u043d.","3.4%","28.6 \u041c\u043b\u0440\u0434."],["32.0 \u041c\u043b\u0440\u0434.","98.2%","588.3 \u041c\u043b\u043d.","1.8%","32.6 \u041c\u043b\u0440\u0434."],["36.1 \u041c\u043b\u0440\u0434.","96.4%","1.4 \u041c\u043b\u0440\u0434.","3.6%","37.4 \u041c\u043b\u0440\u0434."],["36.6 \u041c\u043b\u0440\u0434.","96.9%","1.2 \u041c\u043b\u0440\u0434.","3.1%","37.7 \u041c\u043b\u0440\u0434."],["44.1 \u041c\u043b\u0440\u0434.","96.6%","1.5 \u041c\u043b\u0440\u0434.","3.4%","45.7 \u041c\u043b\u0440\u0434."],["53.3 \u041c\u043b\u0440\u0434.","98.6%","740.0 \u041c\u043b\u043d.","1.4%","54.1 \u041c\u043b\u0440\u0434."],["53.8 \u041c\u043b\u0440\u0434.","96.4%","2.0 \u041c\u043b\u0440\u0434.","3.6%","55.8 \u041c\u043b\u0440\u0434."],["56.6 \u041c\u043b\u0440\u0434.","97.5%","1.5 \u041c\u043b\u0440\u0434.","2.5%","58.1 \u041c\u043b\u0440\u0434."],["61.2 \u041c\u043b\u0440\u0434.","94.8%","3.4 \u041c\u043b\u0440\u0434.","5.2%","64.6 \u041c\u043b\u0440\u0434."],["61.5 \u041c\u043b\u0440\u0434.","94.7%","3.5 \u041c\u043b\u0440\u0434.","5.3%","64.9 \u041c\u043b\u0440\u0434."],["62.4 \u041c\u043b\u0440\u0434.","93.4%","4.4 \u041c\u043b\u0440\u0434.","6.6%","66.9 \u041c\u043b\u0440\u0434."],["66.0 \u041c\u043b\u0440\u0434.","97.4%","1.8 \u041c\u043b\u0440\u0434.","2.6%","67.7 \u041c\u043b\u0440\u0434."],["67.0 \u041c\u043b\u0440\u0434.","95.5%","3.2 \u041c\u043b\u0440\u0434.","4.5%","70.2 \u041c\u043b\u0440\u0434."],["87.8 \u041c\u043b\u0440\u0434.","94.6%","5.0 \u041c\u043b\u0440\u0434.","5.4%","92.8 \u041c\u043b\u0440\u0434."],["215.8 \u041c\u043b\u0440\u0434.","96.0%","8.9 \u041c\u043b\u0440\u0434.","4.0%","224.7 \u041c\u043b\u0440\u0434."]],"hoverlabel":{"bgcolor":"white","font":{"size":12},"namelength":-1},"hovertemplate":"\u003cb\u003e%{y}\u003c\u002fb\u003e\u003cbr\u003e\u0421\u0442\u0430\u043d\u0434\u0430\u0440\u0442: %{customdata[0]} (%{customdata[1]})\u003cbr\u003eNPL (90+): %{customdata[2]} (%{customdata[3]})\u003cbr\u003e\u0412\u0441\u0435\u0433\u043e \u041f\u043e\u0440\u0442\u0444\u0435\u043b: %{customdata[4]}\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":"#ef4444","cornerradius":3},"name":"NPL 90+","opacity":0.9,"orientation":"h","textfont":{"color":"#fff","size":16},"textposition":"none","x":{"dtype":"f8","bdata":"KEjnAp2Xv0EnyuBV80LLQW0o3YLTQdNB2rxOJ8tTzUG+dSd0TIjBQUzN0UQtStRBmwb1bRtF0UFK1+tJUO3WQTQ1LCepDcZBBoC4wwOm3UFZiKqy0wnWQYCoS+VCPelBt46ec8rA6UGy\u002fX4N+YLwQbvEg3y7vtpBuHq574i650HKlM+3+sryQegzqWX0jABC"},"y":["\u0423\u0440\u0433\u0435\u043d\u0447","\u0410\u043d\u0434\u0438\u0436\u0430\u043d","\u0411\u0443\u0445\u0430\u0440\u0430","\u041a\u043e\u043a\u0430\u043d\u0434","\u041d\u0430\u043c\u0430\u043d\u0433\u0430\u043d","\u0421\u0435\u0440\u0433\u0435\u043b\u0438","\u041a\u0430\u0440\u0448\u0438","\u0421\u0430\u043c\u0430\u0440\u043a\u0430\u043d\u0434","\u042f\u0448\u043d\u0430\u0431\u0430\u0434","\u0422\u0435\u0440\u043c\u0435\u0437","\u0410\u043b\u043c\u0430\u0437\u0430\u0440","\u0424\u0435\u0440\u0433\u0430\u043d\u0430","\u041c\u0438\u0440\u0430\u0431\u0430\u0434","\u0427\u0438\u043b\u0430\u043d\u0437\u0430\u0440","\u042e\u043d\u0443\u0441\u0430\u0431\u0430\u0434","\u041d\u0443\u043a\u0443\u0441","\u0423\u0447\u0442\u0435\u043f\u0430","\u0426\u0435\u043d\u0442\u0440"],"type":"bar"},{"customdata":[["22.4 \u041c\u043b\u0440\u0434.","97.7%","530.0 \u041c\u043b\u043d.","2.3%","22.9 \u041c\u043b\u0440\u0434."],["22.4 \u041c\u043b\u0440\u0434.","96.1%","914.7 \u041c\u043b\u043d.","3.9%","23.4 \u041c\u043b\u0440\u0434."],["26.8 \u041c\u043b\u0440\u0434.","95.4%","1.3 \u041c\u043b\u0440\u0434.","4.6%","28.1 \u041c\u043b\u0440\u0434."],["27.6 \u041c\u043b\u0440\u0434.","96.6%","984.1 \u041c\u043b\u043d.","3.4%","28.6 \u041c\u043b\u0440\u0434."],["32.0 \u041c\u043b\u0440\u0434.","98.2%","588.3 \u041c\u043b\u043d.","1.8%","32.6 \u041c\u043b\u0440\u0434."],["36.1 \u041c\u043b\u0440\u0434.","96.4%","1.4 \u041c\u043b\u0440\u0434.","3.6%","37.4 \u041c\u043b\u0440\u0434."],["36.6 \u041c\u043b\u0440\u0434.","96.9%","1.2 \u041c\u043b\u0440\u0434.","3.1%","37.7 \u041c\u043b\u0440\u0434."],["44.1 \u041c\u043b\u0440\u0434.","96.6%","1.5 \u041c\u043b\u0440\u0434.","3.4%","45.7 \u041c\u043b\u0440\u0434."],["53.3 \u041c\u043b\u0440\u0434.","98.6%","740.0 \u041c\u043b\u043d.","1.4%","54.1 \u041c\u043b\u0440\u0434."],["53.8 \u041c\u043b\u0440\u0434.","96.4%","2.0 \u041c\u043b\u0440\u0434.","3.6%","55.8 \u041c\u043b\u0440\u0434."],["56.6 \u041c\u043b\u0440\u0434.","97.5%","1.5 \u041c\u043b\u0440\u0434.","2.5%","58.1 \u041c\u043b\u0440\u0434."],["61.2 \u041c\u043b\u0440\u0434.","94.8%","3.4 \u041c\u043b\u0440\u0434.","5.2%","64.6 \u041c\u043b\u0440\u0434."],["61.5 \u041c\u043b\u0440\u0434.","94.7%","3.5 \u041c\u043b\u0440\u0434.","5.3%","64.9 \u041c\u043b\u0440\u0434."],["62.4 \u041c\u043b\u0440\u0434.","93.4%","4.4 \u041c\u043b\u0440\u0434.","6.6%","66.9 \u041c\u043b\u0440\u0434."],["66.0 \u041c\u043b\u0440\u0434.","97.4%","1.8 \u041c\u043b\u0440\u0434.","2.6%","67.7 \u041c\u043b\u0440\u0434."],["67.0 \u041c\u043b\u0440\u0434.","95.5%","3.2 \u041c\u043b\u0440\u0434.","4.5%","70.2 \u041c\u043b\u0440\u0434."],["87.8 \u041c\u043b\u0440\u0434.","94.6%","5.0 \u041c\u043b\u0440\u0434.","5.4%","92.8 \u041c\u043b\u0440\u0434."],["215.8 \u041c\u043b\u0440\u0434.","96.0%","8.9 \u041c\u043b\u0440\u0434.","4.0%","224.7 \u041c\u043b\u0440\u0434."]],"hoverlabel":{"bgcolor":"white","font":{"size":12},"namelength":-1},"hovertemplate":"\u003cb\u003e%{y}\u003c\u002fb\u003e\u003cbr\u003e\u0421\u0442\u0430\u043d\u0434\u0430\u0440\u0442: %{customdata[0]} (%{customdata[1]})\u003cbr\u003eNPL (90+): %{customdata[2]} (%{customdata[3]})\u003cbr\u003e\u0412\u0441\u0435\u0433\u043e \u041f\u043e\u0440\u0442\u0444\u0435\u043b: %{customdata[4]}\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":"#5E4D21","cornerradius":3},"name":"\u0421\u0442\u0430\u043d\u0434\u0430\u0440\u0442","opacity":0.9,"orientation":"h","text":["22.9 \u041c\u043b\u0440\u0434.","23.4 \u041c\u043b\u0440\u0434.","28.1 \u041c\u043b\u0440\u0434.","28.6 \u041c\u043b\u0440\u0434.","32.6 \u041c\u043b\u0440\u0434.","37.4 \u041c\u043b\u0440\u0434.","37.7 \u041c\u043b\u0440\u0434.","45.7 \u041c\u043b\u0440\u0434.","54.1 \u041c\u043b\u0440\u0434.","55.8 \u041c\u043b\u0440\u0434.","58.1 \u041c\u043b\u0440\u0434.","64.6 \u041c\u043b\u0440\u0434.","64.9 \u041c\u043b\u0440\u0434.","66.9 \u041c\u043b\u0440\u0434.","67.7 \u041c\u043b\u0440\u0434.","70.2 \u041c\u043b\u0440\u0434.","92.8 \u041c\u043b\u0440\u0434.","224.7 \u041c\u043b\u0440\u0434."],"textfont":{"color":"#fff","size":16},"textposition":"auto","x":{"dtype":"f8","bdata":"khmlbFnYFEKcW4MXe+cUQlL4hmKg9RhCl6nkHOSyGULGJQEnhssdQmknng7OzSBCXUUBbfwFIUJubd50IowkQp\u002fyu8pC0yhCGUZ7PXkMKUKnrZxD2GAqQomFIvkPgCxCH2KVPlWfLEJC1FaL8xAtQg5V\u002fa8Ati5C6HMUBjIvL0LvJ9uo43A0QpvI8xzdHklC"},"y":["\u0423\u0440\u0433\u0435\u043d\u0447","\u0410\u043d\u0434\u0438\u0436\u0430\u043d","\u0411\u0443\u0445\u0430\u0440\u0430","\u041a\u043e\u043a\u0430\u043d\u0434","\u041d\u0430\u043c\u0430\u043d\u0433\u0430\u043d","\u0421\u0435\u0440\u0433\u0435\u043b\u0438","\u041a\u0430\u0440\u0448\u0438","\u0421\u0430\u043c\u0430\u0440\u043a\u0430\u043d\u0434","\u042f\u0448\u043d\u0430\u0431\u0430\u0434","\u0422\u0435\u0440\u043c\u0435\u0437","\u0410\u043b\u043c\u0430\u0437\u0430\u0440","\u0424\u0435\u0440\u0433\u0430\u043d\u0430","\u041c\u0438\u0440\u0430\u0431\u0430\u0434","\u0427\u0438\u043b\u0430\u043d\u0437\u0430\u0440","\u042e\u043d\u0443\u0441\u0430\u0431\u0430\u0434","\u041d\u0443\u043a\u0443\u0441","\u0423\u0447\u0442\u0435\u043f\u0430","\u0426\u0435\u043d\u0442\u0440"],"type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05}}},"margin":{"l":5,"r":5,"t":5,"b":5},"font":{"size":16,"family":"Arial"},"legend":{"font":{"size":14},"orientation":"h","yanchor":"bottom","y":1.02,"xanchor":"right","x":1},"barmode":"stack","showlegend":true,"plot_bgcolor":"rgba(0,0,0,0)","paper_bgcolor":"rgba(0,0,0,0)","height":450,"yaxis":{"tickfont":{"size":12}}},                        {"modeBarButtonsToRemove": ["hoverClosestCartesian", "pan2d", "select2d", "zoom2d", "lasso2d", "zoomIn2d", "zoomOut2d", "autoScale2d", "resetScale2d"], "displaylogo": false, "responsive": true}                    )                };            </script>        </div>
+    </div>
+    
+                    </div>
+                </div>
+            </div>
+
+            <!-- RK Chart -->
+            <div class="col-xl-4">
+                <div class="card chart-card h-100">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar me-2 text-primary"></i>
+                        Розничные кредиты по филиалам
+                    </div>
+                    <div class="chart-container">
+                        
+    <div style="max-height: 450px; overflow-y: auto; overflow-x: hidden;">
+        <div style="height:450px; width:100%;">                            <div id="056f3b7c-fa11-457f-a100-ddf4bc52cdf2" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("056f3b7c-fa11-457f-a100-ddf4bc52cdf2")) {                    Plotly.newPlot(                        "056f3b7c-fa11-457f-a100-ddf4bc52cdf2",                        [{"customdata":[["17.2 \u041c\u043b\u0440\u0434.","94.3%","1.0 \u041c\u043b\u0440\u0434.","5.7%","18.2 \u041c\u043b\u0440\u0434."],["19.8 \u041c\u043b\u0440\u0434.","95.4%","951.7 \u041c\u043b\u043d.","4.6%","20.8 \u041c\u043b\u0440\u0434."],["23.1 \u041c\u043b\u0440\u0434.","93.1%","1.7 \u041c\u043b\u0440\u0434.","6.9%","24.8 \u041c\u043b\u0440\u0434."],["24.5 \u041c\u043b\u0440\u0434.","93.6%","1.7 \u041c\u043b\u0440\u0434.","6.4%","26.2 \u041c\u043b\u0440\u0434."],["29.7 \u041c\u043b\u0440\u0434.","94.0%","1.9 \u041c\u043b\u0440\u0434.","6.0%","31.6 \u041c\u043b\u0440\u0434."],["32.8 \u041c\u043b\u0440\u0434.","96.9%","1.0 \u041c\u043b\u0440\u0434.","3.1%","33.8 \u041c\u043b\u0440\u0434."],["33.6 \u041c\u043b\u0440\u0434.","93.8%","2.2 \u041c\u043b\u0440\u0434.","6.2%","35.9 \u041c\u043b\u0440\u0434."],["36.5 \u041c\u043b\u0440\u0434.","95.8%","1.6 \u041c\u043b\u0440\u0434.","4.2%","38.1 \u041c\u043b\u0440\u0434."],["38.7 \u041c\u043b\u0440\u0434.","92.6%","3.1 \u041c\u043b\u0440\u0434.","7.4%","41.8 \u041c\u043b\u0440\u0434."],["41.0 \u041c\u043b\u0440\u0434.","93.6%","2.8 \u041c\u043b\u0440\u0434.","6.4%","43.8 \u041c\u043b\u0440\u0434."],["46.1 \u041c\u043b\u0440\u0434.","95.1%","2.4 \u041c\u043b\u0440\u0434.","4.9%","48.4 \u041c\u043b\u0440\u0434."],["49.1 \u041c\u043b\u0440\u0434.","97.6%","1.2 \u041c\u043b\u0440\u0434.","2.4%","50.3 \u041c\u043b\u0440\u0434."],["47.1 \u041c\u043b\u0440\u0434.","93.5%","3.3 \u041c\u043b\u0440\u0434.","6.5%","50.3 \u041c\u043b\u0440\u0434."],["58.9 \u041c\u043b\u0440\u0434.","95.7%","2.7 \u041c\u043b\u0440\u0434.","4.3%","61.6 \u041c\u043b\u0440\u0434."],["63.4 \u041c\u043b\u0440\u0434.","92.8%","4.9 \u041c\u043b\u0440\u0434.","7.2%","68.3 \u041c\u043b\u0440\u0434."],["64.3 \u041c\u043b\u0440\u0434.","94.1%","4.0 \u041c\u043b\u0440\u0434.","5.9%","68.3 \u041c\u043b\u0440\u0434."],["85.4 \u041c\u043b\u0440\u0434.","93.5%","6.0 \u041c\u043b\u0440\u0434.","6.5%","91.4 \u041c\u043b\u0440\u0434."],["103.0 \u041c\u043b\u0440\u0434.","95.3%","5.1 \u041c\u043b\u0440\u0434.","4.7%","108.1 \u041c\u043b\u0440\u0434."]],"hoverlabel":{"bgcolor":"white","font":{"size":12},"namelength":-1},"hovertemplate":"\u003cb\u003e%{y}\u003c\u002fb\u003e\u003cbr\u003e\u0421\u0442\u0430\u043d\u0434\u0430\u0440\u0442: %{customdata[0]} (%{customdata[1]})\u003cbr\u003eNPL (90+): %{customdata[2]} (%{customdata[3]})\u003cbr\u003e\u0412\u0441\u0435\u0433\u043e \u041f\u043e\u0440\u0442\u0444\u0435\u043b: %{customdata[4]}\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":"#ef4444","cornerradius":3},"name":"NPL 90+","opacity":0.9,"orientation":"h","textfont":{"color":"#fff","size":16},"textposition":"none","x":{"dtype":"f8","bdata":"FPECdXe0zkFTExphKV3MQZLHHmQriNlBGUkERrgG2UGoudbU8FXcQQ5LrKnVCs9BneTklXGD4EGYnevoKZbXQdrCsB3BE+dBKWcUQ4oL5UETLhr7LJDhQR50BDoFU9JBhXTinD9s6EEWErUZnPTjQQ9SV0W\u002fPfJB\u002fdcHLWrm7UEeL+lPKjb2QfORHAxLFfNB"},"y":["\u041a\u0430\u0440\u0448\u0438","\u0423\u0440\u0433\u0435\u043d\u0447","\u0424\u0435\u0440\u0433\u0430\u043d\u0430","\u0421\u0430\u043c\u0430\u0440\u043a\u0430\u043d\u0434","\u041a\u043e\u043a\u0430\u043d\u0434","\u041d\u0430\u043c\u0430\u043d\u0433\u0430\u043d","\u0423\u0447\u0442\u0435\u043f\u0430","\u0410\u043b\u043c\u0430\u0437\u0430\u0440","\u0411\u0443\u0445\u0430\u0440\u0430","\u041d\u0443\u043a\u0443\u0441","\u0410\u043d\u0434\u0438\u0436\u0430\u043d","\u042f\u0448\u043d\u0430\u0431\u0430\u0434","\u0421\u0435\u0440\u0433\u0435\u043b\u0438","\u042e\u043d\u0443\u0441\u0430\u0431\u0430\u0434","\u0427\u0438\u043b\u0430\u043d\u0437\u0430\u0440","\u0422\u0435\u0440\u043c\u0435\u0437","\u041c\u0438\u0440\u0430\u0431\u0430\u0434","\u0426\u0435\u043d\u0442\u0440"],"type":"bar"},{"customdata":[["17.2 \u041c\u043b\u0440\u0434.","94.3%","1.0 \u041c\u043b\u0440\u0434.","5.7%","18.2 \u041c\u043b\u0440\u0434."],["19.8 \u041c\u043b\u0440\u0434.","95.4%","951.7 \u041c\u043b\u043d.","4.6%","20.8 \u041c\u043b\u0440\u0434."],["23.1 \u041c\u043b\u0440\u0434.","93.1%","1.7 \u041c\u043b\u0440\u0434.","6.9%","24.8 \u041c\u043b\u0440\u0434."],["24.5 \u041c\u043b\u0440\u0434.","93.6%","1.7 \u041c\u043b\u0440\u0434.","6.4%","26.2 \u041c\u043b\u0440\u0434."],["29.7 \u041c\u043b\u0440\u0434.","94.0%","1.9 \u041c\u043b\u0440\u0434.","6.0%","31.6 \u041c\u043b\u0440\u0434."],["32.8 \u041c\u043b\u0440\u0434.","96.9%","1.0 \u041c\u043b\u0440\u0434.","3.1%","33.8 \u041c\u043b\u0440\u0434."],["33.6 \u041c\u043b\u0440\u0434.","93.8%","2.2 \u041c\u043b\u0440\u0434.","6.2%","35.9 \u041c\u043b\u0440\u0434."],["36.5 \u041c\u043b\u0440\u0434.","95.8%","1.6 \u041c\u043b\u0440\u0434.","4.2%","38.1 \u041c\u043b\u0440\u0434."],["38.7 \u041c\u043b\u0440\u0434.","92.6%","3.1 \u041c\u043b\u0440\u0434.","7.4%","41.8 \u041c\u043b\u0440\u0434."],["41.0 \u041c\u043b\u0440\u0434.","93.6%","2.8 \u041c\u043b\u0440\u0434.","6.4%","43.8 \u041c\u043b\u0440\u0434."],["46.1 \u041c\u043b\u0440\u0434.","95.1%","2.4 \u041c\u043b\u0440\u0434.","4.9%","48.4 \u041c\u043b\u0440\u0434."],["49.1 \u041c\u043b\u0440\u0434.","97.6%","1.2 \u041c\u043b\u0440\u0434.","2.4%","50.3 \u041c\u043b\u0440\u0434."],["47.1 \u041c\u043b\u0440\u0434.","93.5%","3.3 \u041c\u043b\u0440\u0434.","6.5%","50.3 \u041c\u043b\u0440\u0434."],["58.9 \u041c\u043b\u0440\u0434.","95.7%","2.7 \u041c\u043b\u0440\u0434.","4.3%","61.6 \u041c\u043b\u0440\u0434."],["63.4 \u041c\u043b\u0440\u0434.","92.8%","4.9 \u041c\u043b\u0440\u0434.","7.2%","68.3 \u041c\u043b\u0440\u0434."],["64.3 \u041c\u043b\u0440\u0434.","94.1%","4.0 \u041c\u043b\u0440\u0434.","5.9%","68.3 \u041c\u043b\u0440\u0434."],["85.4 \u041c\u043b\u0440\u0434.","93.5%","6.0 \u041c\u043b\u0440\u0434.","6.5%","91.4 \u041c\u043b\u0440\u0434."],["103.0 \u041c\u043b\u0440\u0434.","95.3%","5.1 \u041c\u043b\u0440\u0434.","4.7%","108.1 \u041c\u043b\u0440\u0434."]],"hoverlabel":{"bgcolor":"white","font":{"size":12},"namelength":-1},"hovertemplate":"\u003cb\u003e%{y}\u003c\u002fb\u003e\u003cbr\u003e\u0421\u0442\u0430\u043d\u0434\u0430\u0440\u0442: %{customdata[0]} (%{customdata[1]})\u003cbr\u003eNPL (90+): %{customdata[2]} (%{customdata[3]})\u003cbr\u003e\u0412\u0441\u0435\u0433\u043e \u041f\u043e\u0440\u0442\u0444\u0435\u043b: %{customdata[4]}\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":"#1e3655","cornerradius":3},"name":"\u0421\u0442\u0430\u043d\u0434\u0430\u0440\u0442","opacity":0.9,"orientation":"h","text":["18.2 \u041c\u043b\u0440\u0434.","20.8 \u041c\u043b\u0440\u0434.","24.8 \u041c\u043b\u0440\u0434.","26.2 \u041c\u043b\u0440\u0434.","31.6 \u041c\u043b\u0440\u0434.","33.8 \u041c\u043b\u0440\u0434.","35.9 \u041c\u043b\u0440\u0434.","38.1 \u041c\u043b\u0440\u0434.","41.8 \u041c\u043b\u0440\u0434.","43.8 \u041c\u043b\u0440\u0434.","48.4 \u041c\u043b\u0440\u0434.","50.3 \u041c\u043b\u0440\u0434.","50.3 \u041c\u043b\u0440\u0434.","61.6 \u041c\u043b\u0440\u0434.","68.3 \u041c\u043b\u0440\u0434.","68.3 \u041c\u043b\u0440\u0434.","91.4 \u041c\u043b\u0440\u0434.","108.1 \u041c\u043b\u0440\u0434."],"textfont":{"color":"#fff","size":16},"textposition":"auto","x":{"dtype":"f8","bdata":"lNZBeCvyD0IWfUJ4OnMSQl2osTgQhBVC4BU92n7VFkKZ+CTNh6EbQq3mQ2O8hx5CP5AGrMZUH0LiNtHhQQIhQs1Eba9PBiJCmh3y2gkaI0LqukzHrHElQnj0hXAi3CZCxJBvdPHpJUKtvGFymHArQv+oTIO1hC1CmTLPOdvxLUICZr3Q6OQzQpNHdZ\u002fj+TdC"},"y":["\u041a\u0430\u0440\u0448\u0438","\u0423\u0440\u0433\u0435\u043d\u0447","\u0424\u0435\u0440\u0433\u0430\u043d\u0430","\u0421\u0430\u043c\u0430\u0440\u043a\u0430\u043d\u0434","\u041a\u043e\u043a\u0430\u043d\u0434","\u041d\u0430\u043c\u0430\u043d\u0433\u0430\u043d","\u0423\u0447\u0442\u0435\u043f\u0430","\u0410\u043b\u043c\u0430\u0437\u0430\u0440","\u0411\u0443\u0445\u0430\u0440\u0430","\u041d\u0443\u043a\u0443\u0441","\u0410\u043d\u0434\u0438\u0436\u0430\u043d","\u042f\u0448\u043d\u0430\u0431\u0430\u0434","\u0421\u0435\u0440\u0433\u0435\u043b\u0438","\u042e\u043d\u0443\u0441\u0430\u0431\u0430\u0434","\u0427\u0438\u043b\u0430\u043d\u0437\u0430\u0440","\u0422\u0435\u0440\u043c\u0435\u0437","\u041c\u0438\u0440\u0430\u0431\u0430\u0434","\u0426\u0435\u043d\u0442\u0440"],"type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05}}},"margin":{"l":5,"r":5,"t":5,"b":5},"font":{"size":16,"family":"Arial"},"legend":{"font":{"size":14},"orientation":"h","yanchor":"bottom","y":1.02,"xanchor":"right","x":1},"barmode":"stack","showlegend":true,"plot_bgcolor":"rgba(0,0,0,0)","paper_bgcolor":"rgba(0,0,0,0)","height":450,"yaxis":{"tickfont":{"size":12}}},                        {"modeBarButtonsToRemove": ["hoverClosestCartesian", "pan2d", "select2d", "zoom2d", "lasso2d", "zoomIn2d", "zoomOut2d", "autoScale2d", "resetScale2d"], "displaylogo": false, "responsive": true}                    )                };            </script>        </div>
+    </div>
+    
+                    </div>
+                </div>
+            </div>
+
+            <!-- MK Chart -->
+            <div class="col-xl-4">
+                <div class="card chart-card h-100">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar me-2 text-primary"></i>
+                        Малые кредиты по филиалам
+                    </div>
+                    <div class="chart-container">
+                        
+    <div style="max-height: 450px; overflow-y: auto; overflow-x: hidden;">
+        <div style="height:450px; width:100%;">                            <div id="c810ffac-7367-40a6-ad11-40680c4483d3" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("c810ffac-7367-40a6-ad11-40680c4483d3")) {                    Plotly.newPlot(                        "c810ffac-7367-40a6-ad11-40680c4483d3",                        [{"customdata":[["6.2 \u041c\u043b\u0440\u0434.","90.9%","616.3 \u041c\u043b\u043d.","9.1%","6.8 \u041c\u043b\u0440\u0434."],["7.9 \u041c\u043b\u0440\u0434.","92.9%","603.7 \u041c\u043b\u043d.","7.1%","8.5 \u041c\u043b\u0440\u0434."],["9.1 \u041c\u043b\u0440\u0434.","93.8%","596.3 \u041c\u043b\u043d.","6.2%","9.7 \u041c\u043b\u0440\u0434."],["11.5 \u041c\u043b\u0440\u0434.","96.7%","391.0 \u041c\u043b\u043d.","3.3%","11.9 \u041c\u043b\u0440\u0434."],["13.4 \u041c\u043b\u0440\u0434.","92.8%","1.0 \u041c\u043b\u0440\u0434.","7.2%","14.5 \u041c\u043b\u0440\u0434."],["13.7 \u041c\u043b\u0440\u0434.","91.3%","1.3 \u041c\u043b\u0440\u0434.","8.7%","15.0 \u041c\u043b\u0440\u0434."],["16.5 \u041c\u043b\u0440\u0434.","91.4%","1.5 \u041c\u043b\u0440\u0434.","8.6%","18.0 \u041c\u043b\u0440\u0434."],["19.1 \u041c\u043b\u0440\u0434.","92.2%","1.6 \u041c\u043b\u0440\u0434.","7.8%","20.7 \u041c\u043b\u0440\u0434."],["20.0 \u041c\u043b\u0440\u0434.","90.9%","2.0 \u041c\u043b\u0440\u0434.","9.1%","22.0 \u041c\u043b\u0440\u0434."],["21.2 \u041c\u043b\u0440\u0434.","93.5%","1.5 \u041c\u043b\u0440\u0434.","6.5%","22.7 \u041c\u043b\u0440\u0434."],["24.1 \u041c\u043b\u0440\u0434.","92.6%","1.9 \u041c\u043b\u0440\u0434.","7.4%","26.0 \u041c\u043b\u0440\u0434."],["34.6 \u041c\u043b\u0440\u0434.","91.8%","3.1 \u041c\u043b\u0440\u0434.","8.2%","37.7 \u041c\u043b\u0440\u0434."],["35.1 \u041c\u043b\u0440\u0434.","89.2%","4.3 \u041c\u043b\u0440\u0434.","10.8%","39.3 \u041c\u043b\u0440\u0434."],["37.6 \u041c\u043b\u0440\u0434.","94.2%","2.3 \u041c\u043b\u0440\u0434.","5.8%","39.9 \u041c\u043b\u0440\u0434."],["37.0 \u041c\u043b\u0440\u0434.","91.9%","3.3 \u041c\u043b\u0440\u0434.","8.1%","40.3 \u041c\u043b\u0440\u0434."],["38.3 \u041c\u043b\u0440\u0434.","91.5%","3.6 \u041c\u043b\u0440\u0434.","8.5%","41.9 \u041c\u043b\u0440\u0434."],["47.3 \u041c\u043b\u0440\u0434.","96.1%","1.9 \u041c\u043b\u0440\u0434.","3.9%","49.2 \u041c\u043b\u0440\u0434."],["58.7 \u041c\u043b\u0440\u0434.","93.3%","4.2 \u041c\u043b\u0440\u0434.","6.7%","62.9 \u041c\u043b\u0440\u0434."]],"hoverlabel":{"bgcolor":"white","font":{"size":12},"namelength":-1},"hovertemplate":"\u003cb\u003e%{y}\u003c\u002fb\u003e\u003cbr\u003e\u0421\u0442\u0430\u043d\u0434\u0430\u0440\u0442: %{customdata[0]} (%{customdata[1]})\u003cbr\u003eNPL (90+): %{customdata[2]} (%{customdata[3]})\u003cbr\u003e\u0412\u0441\u0435\u0433\u043e \u041f\u043e\u0440\u0442\u0444\u0435\u043b: %{customdata[4]}\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":"#ef4444","cornerradius":3},"name":"NPL 90+","opacity":0.9,"orientation":"h","textfont":{"color":"#fff","size":16},"textposition":"none","x":{"dtype":"f8","bdata":"vttPrStewkEMN53zCv7BQUBIBpgfxcFBAso5yrdNt0Fr0CC+Bf3OQRJeJfbRctNBSw4wOUoD10GLpyQ5mO\u002fXQfNoQiiK9N1BivslBGkf1kHyPEhCVbzcQakS46KXJOdBuyiPWgnD70Eq7iqB\u002fh7hQesotl02cOhBzLDVBpWw6kHNpcge5LPcQSvpnQPcR+9B"},"y":["\u0411\u0443\u0445\u0430\u0440\u0430","\u041a\u0430\u0440\u0448\u0438","\u0423\u0440\u0433\u0435\u043d\u0447","\u041d\u0430\u043c\u0430\u043d\u0433\u0430\u043d","\u0422\u0435\u0440\u043c\u0435\u0437","\u041a\u043e\u043a\u0430\u043d\u0434","\u0421\u0435\u0440\u0433\u0435\u043b\u0438","\u0424\u0435\u0440\u0433\u0430\u043d\u0430","\u041d\u0443\u043a\u0443\u0441","\u042e\u043d\u0443\u0441\u0430\u0431\u0430\u0434","\u0410\u043d\u0434\u0438\u0436\u0430\u043d","\u0423\u0447\u0442\u0435\u043f\u0430","\u0427\u0438\u043b\u0430\u043d\u0437\u0430\u0440","\u0410\u043b\u043c\u0430\u0437\u0430\u0440","\u041c\u0438\u0440\u0430\u0431\u0430\u0434","\u0421\u0430\u043c\u0430\u0440\u043a\u0430\u043d\u0434","\u042f\u0448\u043d\u0430\u0431\u0430\u0434","\u0426\u0435\u043d\u0442\u0440"],"type":"bar"},{"customdata":[["6.2 \u041c\u043b\u0440\u0434.","90.9%","616.3 \u041c\u043b\u043d.","9.1%","6.8 \u041c\u043b\u0440\u0434."],["7.9 \u041c\u043b\u0440\u0434.","92.9%","603.7 \u041c\u043b\u043d.","7.1%","8.5 \u041c\u043b\u0440\u0434."],["9.1 \u041c\u043b\u0440\u0434.","93.8%","596.3 \u041c\u043b\u043d.","6.2%","9.7 \u041c\u043b\u0440\u0434."],["11.5 \u041c\u043b\u0440\u0434.","96.7%","391.0 \u041c\u043b\u043d.","3.3%","11.9 \u041c\u043b\u0440\u0434."],["13.4 \u041c\u043b\u0440\u0434.","92.8%","1.0 \u041c\u043b\u0440\u0434.","7.2%","14.5 \u041c\u043b\u0440\u0434."],["13.7 \u041c\u043b\u0440\u0434.","91.3%","1.3 \u041c\u043b\u0440\u0434.","8.7%","15.0 \u041c\u043b\u0440\u0434."],["16.5 \u041c\u043b\u0440\u0434.","91.4%","1.5 \u041c\u043b\u0440\u0434.","8.6%","18.0 \u041c\u043b\u0440\u0434."],["19.1 \u041c\u043b\u0440\u0434.","92.2%","1.6 \u041c\u043b\u0440\u0434.","7.8%","20.7 \u041c\u043b\u0440\u0434."],["20.0 \u041c\u043b\u0440\u0434.","90.9%","2.0 \u041c\u043b\u0440\u0434.","9.1%","22.0 \u041c\u043b\u0440\u0434."],["21.2 \u041c\u043b\u0440\u0434.","93.5%","1.5 \u041c\u043b\u0440\u0434.","6.5%","22.7 \u041c\u043b\u0440\u0434."],["24.1 \u041c\u043b\u0440\u0434.","92.6%","1.9 \u041c\u043b\u0440\u0434.","7.4%","26.0 \u041c\u043b\u0440\u0434."],["34.6 \u041c\u043b\u0440\u0434.","91.8%","3.1 \u041c\u043b\u0440\u0434.","8.2%","37.7 \u041c\u043b\u0440\u0434."],["35.1 \u041c\u043b\u0440\u0434.","89.2%","4.3 \u041c\u043b\u0440\u0434.","10.8%","39.3 \u041c\u043b\u0440\u0434."],["37.6 \u041c\u043b\u0440\u0434.","94.2%","2.3 \u041c\u043b\u0440\u0434.","5.8%","39.9 \u041c\u043b\u0440\u0434."],["37.0 \u041c\u043b\u0440\u0434.","91.9%","3.3 \u041c\u043b\u0440\u0434.","8.1%","40.3 \u041c\u043b\u0440\u0434."],["38.3 \u041c\u043b\u0440\u0434.","91.5%","3.6 \u041c\u043b\u0440\u0434.","8.5%","41.9 \u041c\u043b\u0440\u0434."],["47.3 \u041c\u043b\u0440\u0434.","96.1%","1.9 \u041c\u043b\u0440\u0434.","3.9%","49.2 \u041c\u043b\u0440\u0434."],["58.7 \u041c\u043b\u0440\u0434.","93.3%","4.2 \u041c\u043b\u0440\u0434.","6.7%","62.9 \u041c\u043b\u0440\u0434."]],"hoverlabel":{"bgcolor":"white","font":{"size":12},"namelength":-1},"hovertemplate":"\u003cb\u003e%{y}\u003c\u002fb\u003e\u003cbr\u003e\u0421\u0442\u0430\u043d\u0434\u0430\u0440\u0442: %{customdata[0]} (%{customdata[1]})\u003cbr\u003eNPL (90+): %{customdata[2]} (%{customdata[3]})\u003cbr\u003e\u0412\u0441\u0435\u0433\u043e \u041f\u043e\u0440\u0442\u0444\u0435\u043b: %{customdata[4]}\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":"#174d39","cornerradius":3},"name":"\u0421\u0442\u0430\u043d\u0434\u0430\u0440\u0442","opacity":0.9,"orientation":"h","text":["6.8 \u041c\u043b\u0440\u0434.","8.5 \u041c\u043b\u0440\u0434.","9.7 \u041c\u043b\u0440\u0434.","11.9 \u041c\u043b\u0440\u0434.","14.5 \u041c\u043b\u0440\u0434.","15.0 \u041c\u043b\u0440\u0434.","18.0 \u041c\u043b\u0440\u0434.","20.7 \u041c\u043b\u0440\u0434.","22.0 \u041c\u043b\u0440\u0434.","22.7 \u041c\u043b\u0440\u0434.","26.0 \u041c\u043b\u0440\u0434.","37.7 \u041c\u043b\u0440\u0434.","39.3 \u041c\u043b\u0440\u0434.","39.9 \u041c\u043b\u0440\u0434.","40.3 \u041c\u043b\u0440\u0434.","41.9 \u041c\u043b\u0440\u0434.","49.2 \u041c\u043b\u0440\u0434.","62.9 \u041c\u043b\u0440\u0434."],"textfont":{"color":"#fff","size":16},"textposition":"auto","x":{"dtype":"f8","bdata":"3CKkB38S90FfgdlAKnn9QX9Oj9Th7wBCgc45NPN4BULvhXMQeQEJQjcF+oKFlwlCVjtKeae9DkJnWervCb4RQovR+BploBJCb\u002fMPJwm8E0Kyfe+B8WgWQvH0KdrJHiBCOkk3HrVTIEIzjweliYQhQslHe52JPSFCU3hw2YTYIUJ7dCqwsQYmQnjLjmz7WStC"},"y":["\u0411\u0443\u0445\u0430\u0440\u0430","\u041a\u0430\u0440\u0448\u0438","\u0423\u0440\u0433\u0435\u043d\u0447","\u041d\u0430\u043c\u0430\u043d\u0433\u0430\u043d","\u0422\u0435\u0440\u043c\u0435\u0437","\u041a\u043e\u043a\u0430\u043d\u0434","\u0421\u0435\u0440\u0433\u0435\u043b\u0438","\u0424\u0435\u0440\u0433\u0430\u043d\u0430","\u041d\u0443\u043a\u0443\u0441","\u042e\u043d\u0443\u0441\u0430\u0431\u0430\u0434","\u0410\u043d\u0434\u0438\u0436\u0430\u043d","\u0423\u0447\u0442\u0435\u043f\u0430","\u0427\u0438\u043b\u0430\u043d\u0437\u0430\u0440","\u0410\u043b\u043c\u0430\u0437\u0430\u0440","\u041c\u0438\u0440\u0430\u0431\u0430\u0434","\u0421\u0430\u043c\u0430\u0440\u043a\u0430\u043d\u0434","\u042f\u0448\u043d\u0430\u0431\u0430\u0434","\u0426\u0435\u043d\u0442\u0440"],"type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05}}},"margin":{"l":5,"r":5,"t":5,"b":5},"font":{"size":16,"family":"Arial"},"legend":{"font":{"size":14},"orientation":"h","yanchor":"bottom","y":1.02,"xanchor":"right","x":1},"barmode":"stack","showlegend":true,"plot_bgcolor":"rgba(0,0,0,0)","paper_bgcolor":"rgba(0,0,0,0)","height":450,"yaxis":{"tickfont":{"size":12}}},                        {"modeBarButtonsToRemove": ["hoverClosestCartesian", "pan2d", "select2d", "zoom2d", "lasso2d", "zoomIn2d", "zoomOut2d", "autoScale2d", "resetScale2d"], "displaylogo": false, "responsive": true}                    )                };            </script>        </div>
+    </div>
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+</div>
+</main>
+
+
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    <script src="/static/demo_dashboard/js/scripts.js" defer></script>
+    
+    
+
+    
+</body>
+</html>

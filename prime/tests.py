@@ -348,3 +348,47 @@ class ResumeTests(TestCase):
     def test_both_languages_have_the_same_keys(self):
         from prime import resume as cv
         self.assertEqual(set(cv.PAGE['en']), set(cv.PAGE['uz']))
+
+
+class DemoDashboardTests(TestCase):
+    """The bank risk dashboard, frozen on synthetic data under /about/me/demo/."""
+
+    def test_home_and_every_month_page_open(self):
+        from prime.views import DEMO_DIR
+        self.assertEqual(self.client.get(reverse('demo_dashboard')).status_code, 200)
+        months = sorted(p.name for p in DEMO_DIR.iterdir() if p.is_dir())
+        self.assertTrue(months)
+        for month in months:
+            for dept in ('total', 'all', 'kk', 'rk', 'mk'):
+                r = self.client.get(f'/about/me/demo/{month}/{dept}.html')
+                self.assertEqual(r.status_code, 200, (month, dept))
+                self.assertIn('синтетических данных', b''.join(r.streaming_content).decode())
+
+    def test_excel_downloads_as_an_attachment(self):
+        from prime.views import DEMO_DIR
+        month = sorted(p.name for p in DEMO_DIR.iterdir() if p.is_dir())[-1]
+        r = self.client.get(f'/about/me/demo/{month}/portfel.xlsx')
+        self.assertEqual(r.status_code, 200)
+        self.assertIn('attachment', r.headers['Content-Disposition'])
+
+    def test_nothing_outside_the_demo_folder_is_served(self):
+        for path in ('../views.py', '..%2Fviews.py', 'nope.html', '../../point/settings.py'):
+            self.assertEqual(self.client.get(f'/about/me/demo/{path}').status_code, 404, path)
+
+    def test_static_files_it_links_exist(self):
+        import re
+        from prime.views import DEMO_DIR
+        html = (DEMO_DIR / 'index.html').read_text(encoding='utf-8')
+        for url in re.findall(r'(?:href|src)="/static/(demo_dashboard/[^"?]+)', html):
+            self.assertTrue((settings.BASE_DIR / 'static' / url).exists(), url)
+
+    def test_about_me_links_the_demo(self):
+        body = self.client.get(reverse('about_me')).content.decode()
+        self.assertIn(reverse('demo_dashboard'), body)
+
+    def test_no_bank_name_in_the_demo(self):
+        from prime.views import DEMO_DIR
+        for page in DEMO_DIR.rglob('*.html'):
+            text = page.read_text(encoding='utf-8').lower()
+            for word in ('kapital', 'капиталбанк'):
+                self.assertNotIn(word, text, page.name)

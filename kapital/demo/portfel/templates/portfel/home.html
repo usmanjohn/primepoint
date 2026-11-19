@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container mt-5 py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+            <div class="text-center mb-5">
+                <h1 class="page-header">Главная страница</h2>
+                <p class="lead text-muted">
+                    Выберите дату для просмотра подробного отчета. Нажмите кнопку ниже, чтобы продолжить.
+                </p>
+            </div>
+
+            <!-- Explanation Placeholder -->
+            <div class="bg-light p-4 rounded-3 shadow-sm mb-5">
+                <h4 class="fw-semibold text-dark mb-3">О сервисе</h4>
+                <p class="text-muted">
+                    Эта страница поможет вам проанализировать концентрацию кредитного портфеля по различным видам.
+                </p>
+            </div>
+
+            <!-- Form Section -->
+            <div class="card border-0 shadow-lg p-4 rounded-4">
+                <div class="card-body">
+                    <h4 class="fw-semibold text-center text-dark mb-4">Выбор даты отчета</h4>
+                    <form action="" method="post" class="p-3">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            {{ form.as_p }}
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg px-5 py-2 fw-medium">
+                                Просмотреть отчет
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Table Section -->
+            {% if table %}
+            <div class="mt-5">
+                <h4 class="fw-semibold text-dark mb-4 text-center">Результаты отчета</h4>
+                <div class="table-responsive">
+                    {{ table|safe }}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Optional Custom CSS for Enhanced Styling -->
+<style>
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+    }
+    .btn-primary {
+        background-color: #0057D8;
+        border-color: #0057D8;
+        transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+        background-color: #0041A3;
+        border-color: #0041A3;
+    }
+    .form-control:focus {
+        border-color: #0057D8;
+        box-shadow: 0 0 0 0.2rem rgba(0, 87, 216, 0.25);
+    }
+</style>
+
+{% endblock content %}

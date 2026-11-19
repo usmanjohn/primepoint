@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5" style="max-width: 680px;">
+    <div class="card border-0 shadow-sm p-4 text-center">
+        <i class="fas fa-building-lock fa-3x text-warning mb-3"></i>
+        <h3 class="mb-3">Только во внутренней версии</h3>
+        <p class="text-muted mb-1">Этот раздел работает напрямую с базой данных банка, поэтому в демо его нет.</p>
+        <p class="text-muted"><em>This section reads the bank’s own database, so it is available only in the internal version.</em></p>
+        <a href="{% url 'portfel-result' dept_type='total' %}" class="btn btn-warning mt-2">
+            <i class="fa-solid fa-briefcase"></i> Открыть Портфель
+        </a>
+    </div>
+</div>
+{% endblock content %}
